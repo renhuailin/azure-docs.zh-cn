@@ -11,52 +11,48 @@ ms.date: 11/30/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 486a1c6c8103db8dc938a956eb1f77da3f15f49c
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: aa358b0c9d7747584deabe761160d3bcbcde8feb
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98613027"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99593174"
 ---
 # <a name="aadcloudsynctools-powershell-module-for-azure-ad-connect-cloud-sync"></a>AADCloudSyncTools PowerShell 模块 Azure AD Connect 云同步
 
-随着公共预览版刷新2的发布，Microsoft 引入了 AADCloudSyncTools PowerShell 模块。  此模块提供一组有用的工具，可用于帮助管理 Azure AD Connect 云同步部署。
+AADCloudSyncTools 模块提供一组有用的工具，可用于帮助管理 Azure AD Connect 云同步部署。
 
 ## <a name="pre-requisites"></a>先决条件
 需要以下先决条件：
-- 此模块使用 MSAL authentication，因此需要安装 MSAL.PS 模块。 它不再依赖于 Azure AD 或 Azure AD 预览。   若要验证，请在管理 PowerShell 窗口中执行 `Get-module MSAL.PS` 。 如果正确安装了模块，则会收到响应。  你可以使用 `Install-AADCloudSyncToolsPrerequisites` 来安装最新版本的 MSAL.PS
-- AzureAD PowerShell 模块。  某些 cmdlet 依赖于 AzureAD PowerShell 模块的各个部分来完成其任务。  若要验证，请在管理 PowerShell 窗口中执行 `Get-module AzureAD` 。 你应收到响应。  你可以使用 `Install-AADCloudSyncToolsPrerequisites` 来安装最新版本的 AzureAD PowerShell 模块。
-- 从 PowerShell 安装模块可能会强制使用 TLS 1.2。  若要确保可以安装模块，请设置以下各项： \
-`[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12 `
+
+- 此模块的所有必备组件都可以使用自动安装 `Install-AADCloudSyncToolsPrerequisites`
+- 此模块使用 MSAL authentication，因此需要安装 MSAL.PS 模块。 若要验证，请在 PowerShell 窗口中执行 `Get-module MSAL.PS -ListAvailable` 。 如果正确安装了模块，则会收到响应。 你可以使用 `Install-AADCloudSyncToolsPrerequisites` 来安装最新版本的 MSAL.PS
+- 尽管 AzureAD PowerShell 模块不是此模块的任何功能的先决条件，但使其也可使用自动安装 `Install-AADCloudSyncToolsPrerequisites` 。
+- 从 PowerShell 手动安装模块需要进行 TLS 1.2 强制。 若要确保可以安装模块，请在 PowerShell 会话中设置以下各项，然后使用
+  ```
+   Install-Module:
+  [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12 
+  ```
+
 
 ## <a name="install-the-aadcloudsynctools-powershell-module"></a>安装 AADCloudSyncTools PowerShell 模块
 若要安装和使用 AADCloudSyncTools 模块，请使用以下步骤：
 
-1.  用管理权限打开 Windows PowerShell
-2.  键入 `[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12` ，然后按 enter。
-3.  键入或复制并粘贴以下内容： 
-    ``` powershell
-    Import-module -Name "C:\Program Files\Microsoft Azure AD Connect Provisioning Agent\Utility\AADCloudSyncTools"
-    ```
-3.  按 Enter。
-4.  若要验证模块是否已安装，请输入或复制并粘贴以下内容“
-    ```powershell
-    Get-module AADCloudSyncTools
-    ```
-5.  现在应会看到有关模块的信息。
-6.  下次运行
-    ``` powershell
-    Install-AADCloudSyncToolsPrerequisites
-    ```
-7.  这将安装 PowerShell 获取模块。  关闭 PowerShell 窗口。
-8.  用管理权限打开 Windows PowerShell
-9.  再次使用步骤3导入模块。
-10. 运行 `Install-AADCloudSyncToolsPrerequisites` 以安装 MSAL 和 AzureAD 模块
+1. 用管理权限打开 Windows PowerShell
+2. 键入或复制并粘贴以下内容： `Import-module -Name "C:\Program Files\Microsoft Azure AD Connect Provisioning Agent\Utility\AADCloudSyncTools"`
+3. 按 Enter。
+4. 若要验证是否已导入该模块，请输入或复制并粘贴以下内容： `Get-module AADCloudSyncTools`
+5. 现在应会看到有关模块的信息。
+6. 接下来，若要安装 AADCloudSyncTools 模块必备组件，请运行： `Install-AADCloudSyncToolsPrerequisites`
+7. 首次运行时，将安装 PoweShellGet 模块（如果不存在）。 若要加载新的 PowershellGet 模块，请关闭 PowerShell 窗口，并使用管理权限打开新的 PowerShell 会话。 
+8. 再次使用步骤3导入模块。
+9. 运行 `Install-AADCloudSyncToolsPrerequisites` 以安装 MSAL 和 AzureAD 模块
 11. 所有预请求应该已成功安装 ![ 安装模块](media/reference-powershell/install-1.png)
+
 
 ## <a name="aadcloudsynctools--cmdlets"></a>AADCloudSyncTools Cmdlet
 ### <a name="connect-aadcloudsynctools"></a>Connect-AADCloudSyncTools
-使用 AzureAD 模块连接到 Azure AD，并使用 MSAL.PS 模块为请求标记 Microsoft Graph
+使用 MSAL.PS 模块请求 Azure AD 管理员访问 Microsoft Graph 
 
 
 ### <a name="export-aadcloudsynctoolslogs"></a>Export-AADCloudSyncToolsLogs

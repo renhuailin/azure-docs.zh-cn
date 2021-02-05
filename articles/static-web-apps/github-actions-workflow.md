@@ -5,14 +5,14 @@ services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: conceptual
-ms.date: 05/08/2020
+ms.date: 02/05/2021
 ms.author: cshoe
-ms.openlocfilehash: acdb635dec5abd73341cc1dda4991b58b82a18c0
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 785fd535c46b67cfd631cd18560f396a6901e5c0
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/05/2021
-ms.locfileid: "99574510"
+ms.locfileid: "99593938"
 ---
 # <a name="github-actions-workflows-for-azure-static-web-apps-preview"></a>Azure 静态 Web 应用的 GitHub Actions 工作流预览版
 
@@ -197,12 +197,13 @@ jobs:
 
 ## <a name="monorepo-support"></a>Monorepo 支持
 
-Monorepo 是包含多个应用程序的代码的存储库。 默认情况下，静态 Web 应用工作流文件跟踪存储库中的所有文件，但你可以将其调整为面向单个应用。 因此，对于 monorepos，每个静态站点都具有自己的配置文件，该文件在存储库的 *git* 文件夹中并行存在。
+Monorepo 是包含多个应用程序的代码的存储库。 默认情况下，静态 Web 应用工作流文件跟踪存储库中的所有文件，但你可以将其调整为面向单个应用。 因此，对于 monorepos，每个静态应用程序都有自己的配置文件，该文件在存储库的 *github/工作流* 文件夹中并行存在。
 
 ```files
-├── .git
-│   ├── azure-static-web-apps-purple-pond.yml
-│   └── azure-static-web-apps-yellow-shoe.yml
+├── .github
+│   └── workflows
+│       ├── azure-static-web-apps-purple-pond.yml
+│       └── azure-static-web-apps-yellow-shoe.yml
 │
 ├── app1  👉 controlled by: azure-static-web-apps-purple-pond.yml
 ├── app2  👉 controlled by: azure-static-web-apps-yellow-shoe.yml
@@ -210,7 +211,7 @@ Monorepo 是包含多个应用程序的代码的存储库。 默认情况下，�
 ├── api1  👉 controlled by: azure-static-web-apps-purple-pond.yml
 ├── api2  👉 controlled by: azure-static-web-apps-yellow-shoe.yml
 │
-└── readme.md
+└── README.md
 ```
 
 若要将工作流文件定位于单个应用，请在和部分中指定路径 `push` `pull_request` 。
@@ -236,7 +237,7 @@ on:
       - .github/workflows/azure-static-web-apps-purple-pond.yml
 ```
 
-在此实例中，只对以下文件进行的更改会触发新的生成：
+在此实例中，只有对以下文件所做的更改才会触发新生成：
 
 - *App1* 文件夹中的所有文件
 - *Api1* 文件夹中的所有文件

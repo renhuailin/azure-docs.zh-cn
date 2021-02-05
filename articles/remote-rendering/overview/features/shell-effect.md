@@ -6,12 +6,12 @@ ms.author: jumeder
 ms.date: 10/23/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f59c4f8225d31b61df08f30863c8b9300e20e820
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 7af95cba807cea340438a7de30f096758d0369ad
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94447570"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594157"
 ---
 # <a name="shell-rendering"></a>Shell 呈现
 
@@ -25,8 +25,8 @@ ms.locfileid: "94447570"
 
 | 参数      | 类型    | 说明                                             |
 |----------------|---------|---------------------------------------------------------|
-| `Desaturation` | FLOAT   | 要应用于通常的最终对象颜色的 desaturation 量，范围为 0 (no desaturation) 为 1 (full desaturation)  |
-| `Opacity`      | FLOAT   | Shell 呈现对象的不透明度，范围 0 (不可见) 为 1 (完全不透明)  |
+| `Desaturation` | float   | 要应用于通常的最终对象颜色的 desaturation 量，范围为 0 (no desaturation) 为 1 (full desaturation)  |
+| `Opacity`      | float   | Shell 呈现对象的不透明度，范围 0 (不可见) 为 1 (完全不透明)  |
 
 另请参阅下表，了解在应用于整个场景时的参数效果的示例：
 
@@ -42,18 +42,18 @@ Shell 效果应用于将以其他方式呈现场景的最终不透明颜色。 �
 以下代码通过 API 显示状态的示例用法 `ShellRenderingSettings` ：
 
 ```cs
-void SetShellSettings(AzureSession session)
+void SetShellSettings(RenderingSession session)
 {
-    ShellRenderingSettings shellRenderingSettings = session.Actions.ShellRenderingSettings;
+    ShellRenderingSettings shellRenderingSettings = session.Connection.ShellRenderingSettings;
     shellRenderingSettings.Desaturation = 0.5f;
     shellRenderingSettings.Opacity = 0.1f;
 }
 ```
 
 ```cpp
-void SetShellSettings(ApiHandle<AzureSession> session)
+void SetShellSettings(ApiHandle<RenderingSession> session)
 {
-    ApiHandle<ShellRenderingSettings> shellRenderingSettings = session->Actions()->GetShellRenderingSettings();
+    ApiHandle<ShellRenderingSettings> shellRenderingSettings = session->Connection()->GetShellRenderingSettings();
     shellRenderingSettings->SetDesaturation(0.5f);
     shellRenderingSettings->SetOpacity(0.1f);
 }

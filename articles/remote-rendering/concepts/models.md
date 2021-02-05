@@ -6,12 +6,12 @@ ms.author: jakras
 ms.date: 02/05/2020
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ff69486ab24c999e40b0afc13c91d6f729c352a0
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 0d1e66d09db3e3934871ed15493feb685d1cbe6a
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92206554"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99593868"
 ---
 # <a name="models"></a>模型
 
@@ -36,94 +36,105 @@ Azure 远程渲染中的模型指的是一个完整的对象表示法，由多�
 
 这里有两种不同的加载函数，它们在 Blob 存储中对资产的寻址方式不同：
 
-* 可以通过模型的 SAS URI 对模型进行寻址。 相关的加载函数为 `LoadModelFromSASAsync`，其参数为 `LoadModelFromSASParams`。 加载[内置模型](../samples/sample-model.md)时也使用此变体。
-* 如果 [Blob 存储已关联到帐户](../how-tos/create-an-account.md#link-storage-accounts)，则可直接按 Blob 存储参数直接对模型进行寻址。 在本例中，相关的加载函数为 `LoadModelAsync`，其参数为 `LoadModelParams`。
+* 如果 [Blob 存储已关联到帐户](../how-tos/create-an-account.md#link-storage-accounts)，则可直接按 Blob 存储参数直接对模型进行寻址。 在本例中，相关的加载函数为 `LoadModelAsync`，其参数为 `LoadModelOptions`。
+* 可以通过模型的 SAS URI 对模型进行寻址。 相关的加载函数为 `LoadModelFromSasAsync`，其参数为 `LoadModelFromSasOptions`。 加载[内置模型](../samples/sample-model.md)时也使用此变体。
 
-以下代码片段演示了如何使用这两个函数加载模型。 若要使用 SAS URI 加载模型，请使用如下所示的代码：
+以下代码片段演示了如何使用这两个函数加载模型。 若要使用 blob 存储参数加载模型，请使用如下所示的代码：
 
-```csharp
-async void LoadModel(AzureSession session, Entity modelParent, string modelUri)
+
+```cs
+async void LoadModel(RenderingSession session, Entity modelParent, string storageAccount, string containerName, string assetFilePath)
 {
     // load a model that will be parented to modelParent
-    var modelParams = new LoadModelFromSASParams(modelUri, modelParent);
-
-    var loadOp = session.Actions.LoadModelFromSASAsync(modelParams);
-
-    loadOp.ProgressUpdated += (float progress) =>
-    {
-        Debug.Log($"Loading: {progress * 100.0f}%");
-    };
-
-    await loadOp.AsTask();
-}
-```
-
-```cpp
-ApiHandle<LoadModelAsync> LoadModel(ApiHandle<AzureSession> session, ApiHandle<Entity> modelParent, std::string modelUri)
-{
-    LoadModelFromSASParams modelParams;
-    modelParams.ModelUrl = modelUri;
-    modelParams.Parent = modelParent;
-
-    ApiHandle<LoadModelAsync> loadOp = *session->Actions()->LoadModelFromSASAsync(modelParams);
-
-    loadOp->Completed([](const ApiHandle<LoadModelAsync>& async)
-    {
-        printf("Loading: finished.");
-    });
-    loadOp->ProgressUpdated([](float progress)
-    {
-        printf("Loading: %.1f%%", progress*100.f);
-    });
-
-    return loadOp;
-}
-```
-
-若要直接使用模型的 Blob 存储参数加载模型，请使用类似于以下代码段的代码：
-
-```csharp
-async void LoadModel(AzureSession session, Entity modelParent, string storageAccount, string containerName, string assetFilePath)
-{
-    // load a model that will be parented to modelParent
-    var modelParams = new LoadModelParams(
+    var modelOptions = new LoadModelOptions(
         storageAccount, // storage account name + '.blob.core.windows.net', e.g., 'mystorageaccount.blob.core.windows.net'
         containerName,  // name of the container in your storage account, e.g., 'mytestcontainer'
         assetFilePath,  // the file path to the asset within the container, e.g., 'path/to/file/myAsset.arrAsset'
         modelParent
     );
 
-    var loadOp = session.Actions.LoadModelAsync(modelParams);
+    var loadOp = session.Connection.LoadModelAsync(modelOptions, (float progress) =>
+    {
+        Debug.WriteLine($"Loading: {progress * 100.0f}%");
+    });
 
-    // ... (identical to the SAS URI snippet above)
+    await loadOp;
 }
 ```
 
 ```cpp
-ApiHandle<LoadModelAsync> LoadModel(ApiHandle<AzureSession> session, ApiHandle<Entity> modelParent, std::string storageAccount, std::string containerName, std::string assetFilePath)
+void LoadModel(ApiHandle<RenderingSession> session, ApiHandle<Entity> modelParent, std::string storageAccount, std::string containerName, std::string assetFilePath)
 {
-    LoadModelParams modelParams;
-    modelParams.Parent = modelParent;
-    modelParams.Blob.StorageAccountName = std::move(storageAccount);
-    modelParams.Blob.BlobContainerName = std::move(containerName);
-    modelParams.Blob.AssetPath = std::move(assetFilePath);
+    LoadModelOptions modelOptions;
+    modelOptions.Parent = modelParent;
+    modelOptions.Blob.StorageAccountName = std::move(storageAccount);
+    modelOptions.Blob.BlobContainerName = std::move(containerName);
+    modelOptions.Blob.AssetPath = std::move(assetFilePath);
 
-    ApiHandle<LoadModelAsync> loadOp = *session->Actions()->LoadModelAsync(modelParams);
-    // ... (identical to the SAS URI snippet above)
+    ApiHandle<LoadModelResult> result;
+    session->Connection()->LoadModelAsync(modelOptions,
+        // completion callback
+        [](Status status, ApiHandle<LoadModelResult> result)
+        {
+            printf("Loading: finished.");
+        },
+        // progress callback
+        [](float progress)
+        {
+            printf("Loading: %.1f%%", progress * 100.f);
+        }
+    );
+}
+```
+
+如果要使用 SAS 令牌加载模型，请使用类似于以下代码片段的代码：
+
+```cs
+async void LoadModel(RenderingSession session, Entity modelParent, string modelUri)
+{
+    // load a model that will be parented to modelParent
+    var modelOptions = new LoadModelFromSasOptions(modelUri, modelParent);
+
+    var loadOp = session.Connection.LoadModelFromSasAsync(modelOptions, (float progress) =>
+    {
+        Debug.WriteLine($"Loading: {progress * 100.0f}%");
+    });
+
+    await loadOp;
+}
+```
+
+```cpp
+void LoadModel(ApiHandle<RenderingSession> session, ApiHandle<Entity> modelParent, std::string modelUri)
+{
+    LoadModelFromSasOptions modelOptions;
+    modelOptions.ModelUri = modelUri;
+    modelOptions.Parent = modelParent;
+
+    ApiHandle<LoadModelResult> result;
+    session->Connection()->LoadModelFromSasAsync(modelOptions,
+        // completion callback
+        [](Status status, ApiHandle<LoadModelResult> result)
+        {
+            printf("Loading: finished.");
+        },
+        // progress callback
+        [](float progress)
+        {
+            printf("Loading: %.1f%%", progress * 100.f);
+        }
+    );
 }
 ```
 
 之后，你可以遍历实体层次结构并修改实体和组件。 多次加载同一模型会创建多个实例，每个实例都有自己的实体/组件结构副本。 由于网格、材料和纹理是[共享的资源](../concepts/lifetime.md)，将不会再次加载其数据。 因此，多次实例化模型会产生相对较少的内存开销。
 
-> [!CAUTION]
-> ARR 中的所有 Async 函数都返回异步操作对象。 在完成操作之前，必须存储对这些对象的引用。 否则，C# 垃圾回收器可能会提前删除该操作，并且该操作永远无法完成。 在上面的示例代码中，使用 await 可以确保局部变量“loadOp”在模型加载完成之前一直保留引用。 但是，如果要改用 Completed 事件，则需要将异步操作存储在成员变量中。
-
 ## <a name="api-documentation"></a>API 文档
 
-* [C # RemoteManager LoadModelAsync ( # B1 ](/dotnet/api/microsoft.azure.remoterendering.remotemanager.loadmodelasync)
-* [C # RemoteManager LoadModelFromSASAsync ( # B1 ](/dotnet/api/microsoft.azure.remoterendering.remotemanager.loadmodelfromsasasync)
-* [C + + RemoteManager：： LoadModelAsync ( # B1 ](/cpp/api/remote-rendering/remotemanager#loadmodelasync)
-* [C + + RemoteManager：： LoadModelFromSASAsync ( # B1 ](/cpp/api/remote-rendering/remotemanager#loadmodelfromsasasync)
+* [C # RenderingConnection LoadModelAsync ( # B1 ](/dotnet/api/microsoft.azure.remoterendering.renderingconnection.loadmodelasync)
+* [C # RenderingConnection LoadModelFromSasAsync ( # B1 ](/dotnet/api/microsoft.azure.remoterendering.renderingconnection.loadmodelfromsasasync)
+* [C + + RenderingConnection：： LoadModelAsync ( # B1 ](/cpp/api/remote-rendering/renderingconnection#loadmodelasync)
+* [C + + RenderingConnection：： LoadModelFromSasAsync ( # B1 ](/cpp/api/remote-rendering/renderingconnection#loadmodelfromsasasync)
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,5 +1,5 @@
 ---
-title: 使用 MS 图形 API 进行云同步的入站同步
+title: 如何使用 MS 图形 API 以编程方式配置云同步
 description: 本主题介绍如何只使用图形 API 启用入站同步
 services: active-directory
 author: billmath
@@ -11,14 +11,14 @@ ms.date: 12/04/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3796b3d86f647e38cf2ff018e8c0c903d9a64e41
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 6c84636ea86b3b640aef365c1c5d8e634b9a1f48
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98682032"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99593154"
 ---
-# <a name="inbound-synchronization-for-cloud-sync-using-ms-graph-api"></a>使用 MS 图形 API 进行云同步的入站同步
+# <a name="how-to-programmatically-configure-cloud-sync-using-ms-graph-api"></a>如何使用 MS 图形 API 以编程方式配置云同步
 
 以下文档介绍了如何使用 MSGraph Api 从头开始复制同步配置文件。  
 如何执行此操作的结构包括以下步骤。  它们是：
@@ -28,6 +28,7 @@ ms.locfileid: "98682032"
 - [创建同步作业](#create-sync-job)
 - [更新目标域](#update-targeted-domain)
 - [启用同步密码哈希](#enable-sync-password-hashes-on-configuration-blade)
+- [意外删除](#accidental-deletes)
 - [启动同步作业](#start-sync-job)
 - [查看状态](#review-status)
 
@@ -210,6 +211,71 @@ ObjectId： 8895955e-2e6c-4d79-8943-4d72ca36878f AppId： 00000014-0000-0000-c00
 ```
 
  在请求正文中添加架构。 
+
+## <a name="accidental-deletes"></a>意外删除
+本部分将介绍如何以编程方式启用/禁用和使用 [意外删除](how-to-accidental-deletes.md) 。
+
+
+### <a name="enabling-and-setting-the-threshold"></a>启用和设置阈值
+每个作业设置都可以使用两个，它们分别是：
+
+ - DeleteThresholdEnabled-设置为 "true" 时，为作业启用意外删除防护。 默认设置为 "true"。
+ - DeleteThresholdValue-定义在启用意外删除防护时，每次执行作业时允许的最大删除次数。 默认情况下，该值设置为500。  因此，如果将该值设置为500，则每次执行时允许的最大删除数为499。
+
+"删除阈值" 设置是的一部分 `SyncNotificationSettings` ，可以通过图形进行修改。 
+
+我们将需要更新此配置的目标 SyncNotificationSettings，以便更新机密。
+
+ ```
+ PUT – https://graph.microsoft.com/beta/servicePrincipals/[SERVICE_PRINCIPAL_ID]/synchronization/secrets
+ ```
+
+ 根据要尝试执行的操作，在下面的值数组中添加以下键/值对：
+
+```
+ Request body -
+ {
+   "value":[
+             {
+               "key":"SyncNotificationSettings",
+               "value": "{\"Enabled\":true,\"Recipients\":\"foobar@xyz.com\",\"DeleteThresholdEnabled\":true,\"DeleteThresholdValue\":50}"
+              }
+            ]
+  }
+
+
+```
+
+上述示例中的 "Enabled" 设置用于在隔离作业时启用/禁用通知电子邮件。
+
+
+目前，我们不支持为机密请求提供修补程序，因此，你将需要在 PUT 请求的正文中添加所有值 (如以上示例中所示) 以便保留其他值。
+
+可以使用检索所有机密的现有值 
+
+```
+GET https://graph.microsoft.com/beta/servicePrincipals/{id}/synchronization/secrets 
+```
+
+### <a name="allowing-deletes"></a>允许删除
+若要在作业进入隔离后允许删除流，你需要使用 "ForceDeletes" 作为作用域发出 restart。 
+
+```
+Request:
+POST https://graph.microsoft.com/beta/servicePrincipals/{id}/synchronization/jobs/{jobId}/restart
+```
+
+```
+Request Body:
+{
+  "criteria": {"resetScope": "ForceDeletes"}
+}
+```
+
+
+
+
+
 
 ## <a name="start-sync-job"></a>启动同步作业
 可以通过以下命令再次检索作业：

@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 8c740e2868d2cd2033bc896f9b6ca897b38e922f
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 0864db8a653ff1d6f89ed0b1c857e51053ff50ff
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/05/2021
-ms.locfileid: "99584815"
+ms.locfileid: "99592597"
 ---
 # <a name="azure-resources-for-qna-maker"></a>适用于 QnA Maker 的 Azure 资源
 
@@ -157,9 +157,9 @@ QnA Maker 服务处理两种类型的密钥： **创作密钥** 和用于在应�
 
     ![QnA Maker 资源列表](../media/qnamaker-how-to-key-management/qnamaker-resource-list.png)
 
-2. 中转到 **密钥**：
+2. 中转到 **密钥和终结点**：
 
-    ![订阅密钥](../media/qnamaker-how-to-key-management/subscription-key.PNG)
+    ![QnA Maker 托管 (预览版) 订阅密钥](../media/qnamaker-how-to-key-management/subscription-key-v2.png)
 
 ### <a name="find-query-endpoint-keys-in-the-qna-maker-portal"></a>在 QnA Maker 门户中查找查询终结点密钥
 

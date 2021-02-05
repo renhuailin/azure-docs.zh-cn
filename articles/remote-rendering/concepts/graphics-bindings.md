@@ -10,12 +10,12 @@ ms.date: 12/11/2019
 ms.topic: conceptual
 ms.service: azure-remote-rendering
 ms.custom: devx-track-csharp
-ms.openlocfilehash: cefd00609062c30b036f87a0a01a75dc2afb868b
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.openlocfilehash: 69bcc521b4cd00320a5fbecc5244e913ac16c68b
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98246139"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99593902"
 ---
 # <a name="graphics-binding"></a>图形绑定
 
@@ -38,30 +38,31 @@ Unity 的唯一其他相关部分是访问[基本绑定](#access)，可跳过下
 要选择图形绑定，请执行以下两个步骤：首先，初始化程序时，必须以静态方式初始化图形绑定：
 
 ```cs
-RemoteRenderingInitialization managerInit = new RemoteRenderingInitialization;
-managerInit.graphicsApi = GraphicsApiType.WmrD3D11;
-managerInit.connectionType = ConnectionType.General;
-managerInit.right = ///...
+RemoteRenderingInitialization managerInit = new RemoteRenderingInitialization();
+managerInit.GraphicsApi = GraphicsApiType.WmrD3D11;
+managerInit.ConnectionType = ConnectionType.General;
+managerInit.Right = ///...
 RemoteManagerStatic.StartupRemoteRendering(managerInit);
 ```
 
 ```cpp
 RemoteRenderingInitialization managerInit;
-managerInit.graphicsApi = GraphicsApiType::WmrD3D11;
-managerInit.connectionType = ConnectionType::General;
-managerInit.right = ///...
+managerInit.GraphicsApi = GraphicsApiType::WmrD3D11;
+managerInit.ConnectionType = ConnectionType::General;
+managerInit.Right = ///...
 StartupRemoteRendering(managerInit); // static function in namespace Microsoft::Azure::RemoteRendering
+
 ```
 
 需要进行上述调用，才可将 Azure 远程渲染初始化为全息 API。 在调用任意全息 API 和访问任何其他远程渲染 API 之前都必须先调用此函数。 同样，在不再调用全息 API 之后，应调用相应的 de-init 函数 `RemoteManagerStatic.ShutdownRemoteRendering();`。
 
 ## <a name="span-idaccessaccessing-graphics-binding"></a><span id="access">访问图形绑定
 
-设置客户端后，可以使用 `AzureSession.GraphicsBinding` getter 访问基本图形绑定。 例如，可以按如下所示检索最后一帧的统计信息：
+设置客户端后，可以使用 `RenderingSession.GraphicsBinding` getter 访问基本图形绑定。 例如，可以按如下所示检索最后一帧的统计信息：
 
 ```cs
-AzureSession currentSession = ...;
-if (currentSession.GraphicsBinding)
+RenderingSession currentSession = ...;
+if (currentSession.GraphicsBinding != null)
 {
     FrameStatistics frameStatistics;
     if (currentSession.GraphicsBinding.GetLastFrameStatistics(out frameStatistics) == Result.Success)
@@ -72,11 +73,11 @@ if (currentSession.GraphicsBinding)
 ```
 
 ```cpp
-ApiHandle<AzureSession> currentSession = ...;
+ApiHandle<RenderingSession> currentSession = ...;
 if (ApiHandle<GraphicsBinding> binding = currentSession->GetGraphicsBinding())
 {
     FrameStatistics frameStatistics;
-    if (*binding->GetLastFrameStatistics(&frameStatistics) == Result::Success)
+    if (binding->GetLastFrameStatistics(&frameStatistics) == Result::Success)
     {
         ...
     }
@@ -97,7 +98,7 @@ if (ApiHandle<GraphicsBinding> binding = currentSession->GetGraphicsBinding())
 #### <a name="inform-remote-rendering-of-the-used-coordinate-system"></a>通知所用坐标系统的远程渲染
 
 ```cs
-AzureSession currentSession = ...;
+RenderingSession currentSession = ...;
 IntPtr ptr = ...; // native pointer to ISpatialCoordinateSystem
 GraphicsBindingWmrD3d11 wmrBinding = (currentSession.GraphicsBinding as GraphicsBindingWmrD3d11);
 if (wmrBinding.UpdateUserCoordinateSystem(ptr) == Result.Success)
@@ -107,10 +108,10 @@ if (wmrBinding.UpdateUserCoordinateSystem(ptr) == Result.Success)
 ```
 
 ```cpp
-ApiHandle<AzureSession> currentSession = ...;
+ApiHandle<RenderingSession> currentSession = ...;
 void* ptr = ...; // native pointer to ISpatialCoordinateSystem
 ApiHandle<GraphicsBindingWmrD3d11> wmrBinding = currentSession->GetGraphicsBinding().as<GraphicsBindingWmrD3d11>();
-if (*wmrBinding->UpdateUserCoordinateSystem(ptr) == Result::Success)
+if (wmrBinding->UpdateUserCoordinateSystem(ptr) == Result::Success)
 {
     //...
 }
@@ -126,13 +127,13 @@ if (*wmrBinding->UpdateUserCoordinateSystem(ptr) == Result::Success)
 > 远程映像被 array.blit 到后台缓冲区中后，应使用单通道立体声呈现技术呈现本地内容，例如，使用 **SV_RenderTargetArrayIndex**。 使用其他立体声呈现技术（例如，在单独的刀路中呈现每个眼睛）可能会导致严重的性能下降或图形项目，应避免使用。
 
 ```cs
-AzureSession currentSession = ...;
+RenderingSession currentSession = ...;
 GraphicsBindingWmrD3d11 wmrBinding = (currentSession.GraphicsBinding as GraphicsBindingWmrD3d11);
 wmrBinding.BlitRemoteFrame();
 ```
 
 ```cpp
-ApiHandle<AzureSession> currentSession = ...;
+ApiHandle<RenderingSession> currentSession = ...;
 ApiHandle<GraphicsBindingWmrD3d11> wmrBinding = currentSession->GetGraphicsBinding().as<GraphicsBindingWmrD3d11>();
 wmrBinding->BlitRemoteFrame();
 ```
@@ -159,7 +160,7 @@ wmrBinding->BlitRemoteFrame();
 代理必须匹配后台缓冲区的分辨率，并且应为 *DXGI_FORMAT_R8G8B8A8_UNORM* 或 *DXGI_FORMAT_B8G8R8A8_UNORM* 格式的 int。 在呈现 stereoscopic 的情况下，如果使用的是颜色代理纹理和，则深度代理纹理需要有两个数组层而不是一个。 会话准备就绪后，需要先调用 `GraphicsBindingSimD3d11.InitSimulation` 才可连接到该会话：
 
 ```cs
-AzureSession currentSession = ...;
+RenderingSession currentSession = ...;
 IntPtr d3dDevice = ...; // native pointer to ID3D11Device
 IntPtr color = ...; // native pointer to ID3D11Texture2D
 IntPtr depth = ...; // native pointer to ID3D11Texture2D
@@ -172,7 +173,7 @@ simBinding.InitSimulation(d3dDevice, depth, color, refreshRate, flipBlitRemoteFr
 ```
 
 ```cpp
-ApiHandle<AzureSession> currentSession = ...;
+ApiHandle<RenderingSession> currentSession = ...;
 void* d3dDevice = ...; // native pointer to ID3D11Device
 void* color = ...; // native pointer to ID3D11Texture2D
 void* depth = ...; // native pointer to ID3D11Texture2D
@@ -184,7 +185,7 @@ ApiHandle<GraphicsBindingSimD3d11> simBinding = currentSession->GetGraphicsBindi
 simBinding->InitSimulation(d3dDevice, depth, color, refreshRate, flipBlitRemoteFrameTextureVertically, flipReprojectTextureVertically, stereoscopicRendering);
 ```
 
-需要为 init 函数提供指向本机 d3d 设备以及代理渲染目标的颜色和深度纹理的指针。 初始化后，可以多次调用 `AzureSession.ConnectToRuntime` 和 `DisconnectFromRuntime`，但切换到不同会话时，需要先在旧会话上调用 `GraphicsBindingSimD3d11.DeinitSimulation`，然后才能在另一个会话上调用 `GraphicsBindingSimD3d11.InitSimulation`。
+需要为 init 函数提供指向本机 d3d 设备以及代理渲染目标的颜色和深度纹理的指针。 初始化后，可以多次调用 `RenderingSession.ConnectAsync` 和 `Disconnect`，但切换到不同会话时，需要先在旧会话上调用 `GraphicsBindingSimD3d11.DeinitSimulation`，然后才能在另一个会话上调用 `GraphicsBindingSimD3d11.InitSimulation`。
 
 #### <a name="render-loop-update"></a>渲染循环更新
 
@@ -196,7 +197,7 @@ simBinding->InitSimulation(d3dDevice, depth, color, refreshRate, flipBlitRemoteF
 1. 接下来，需要将后台缓冲区绑定为渲染目标，并调用 `GraphicsBindingSimD3d11.ReprojectProxy`，此时可以显示后台缓冲区。
 
 ```cs
-AzureSession currentSession = ...;
+RenderingSession currentSession = ...;
 GraphicsBindingSimD3d11 simBinding = (currentSession.GraphicsBinding as GraphicsBindingSimD3d11);
 SimulationUpdateParameters updateParameters = new SimulationUpdateParameters();
 // Fill out camera data with current camera data
@@ -205,7 +206,7 @@ SimulationUpdateParameters updateParameters = new SimulationUpdateParameters();
 SimulationUpdateResult updateResult = new SimulationUpdateResult();
 simBinding.Update(updateParameters, out updateResult);
 // Is the frame data valid?
-if (updateResult.frameId != 0)
+if (updateResult.FrameId != 0)
 {
     // Bind proxy render target
     simBinding.BlitRemoteFrameToProxy();
@@ -223,7 +224,7 @@ else
 ```
 
 ```cpp
-ApiHandle<AzureSession> currentSession;
+ApiHandle<RenderingSession> currentSession;
 ApiHandle<GraphicsBindingSimD3d11> simBinding = currentSession->GetGraphicsBinding().as<GraphicsBindingSimD3d11>();
 
 SimulationUpdateParameters updateParameters;
@@ -233,7 +234,7 @@ SimulationUpdateParameters updateParameters;
 SimulationUpdateResult updateResult;
 simBinding->Update(updateParameters, &updateResult);
 // Is the frame data valid?
-if (updateResult.frameId != 0)
+if (updateResult.FrameId != 0)
 {
     // Bind proxy render target
     simBinding->BlitRemoteFrameToProxy();
@@ -257,18 +258,18 @@ else
 ```cs
 public struct SimulationUpdateParameters
 {
-    public UInt32 frameId;
-    public StereoMatrix4x4 viewTransform;
-    public StereoCameraFOV fieldOfView;
+    public int FrameId;
+    public StereoMatrix4x4 ViewTransform;
+    public StereoCameraFov FieldOfView;
 };
 
 public struct SimulationUpdateResult
 {
-    public UInt32 frameId;
-    public float nearPlaneDistance;
-    public float farPlaneDistance;
-    public StereoMatrix4x4 viewTransform;
-    public StereoCameraFOV fieldOfView;
+    public int FrameId;
+    public float NearPlaneDistance;
+    public float FarPlaneDistance;
+    public StereoMatrix4x4 ViewTransform;
+    public StereoCameraFov FieldOfView;
 };
 ```
 
@@ -276,48 +277,52 @@ public struct SimulationUpdateResult
 
 | 成员 | 说明 |
 |--------|-------------|
-| frameId | 连续帧标识符。 对于 SimulationUpdateParameters 输入是必需的，需要为每个新帧持续递增。 如果尚无帧数据可用，则将在 SimulationUpdateResult 中为0。 |
-| viewTransform | 帧的相机视图变换矩阵的左-右-立体声对。 对于 monoscopic 呈现，只有 `left` 成员有效。 |
-| fieldOfView | [视图约定的 OpenXR 字段](https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#angles)中的帧摄像机字段的左右-立体声对。 对于 monoscopic 呈现，只有 `left` 成员有效。 |
+| FrameId | 连续帧标识符。 对于 SimulationUpdateParameters 输入是必需的，需要为每个新帧持续递增。 如果尚无帧数据可用，则将在 SimulationUpdateResult 中为0。 |
+| ViewTransform | 帧的相机视图变换矩阵的左-右-立体声对。 对于 monoscopic 呈现，只有 `Left` 成员有效。 |
+| FieldOfView | [视图约定的 OpenXR 字段](https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#angles)中的帧摄像机字段的左右-立体声对。 对于 monoscopic 呈现，只有 `Left` 成员有效。 |
 | System.windows.media.media3d.projectioncamera.nearplanedistance | 用于当前远程帧的投影矩阵的近飞机距离。 |
 | System.windows.media.media3d.projectioncamera.farplanedistance | 当前远程帧的投影矩阵使用的远距离。 |
 
-立体声对 `viewTransform` ，并 `fieldOfView` 允许在启用 stereoscopic 呈现的情况下设置两个眼睛相机值。 否则， `right` 将忽略成员。 正如您所看到的，在没有指定投影矩阵的情况下，只有照相机的转换是作为纯4x4 变换矩阵传递的。 实际的矩阵由 Azure 远程呈现使用指定的视图字段以及 [CAMERASETTINGS API](../overview/features/camera.md)上的当前近平面和最远平面集进行计算。
+立体声对 `ViewTransform` ，并 `FieldOfView` 允许在启用 stereoscopic 呈现的情况下设置两个眼睛相机值。 否则， `Right` 将忽略成员。 正如您所看到的，在没有指定投影矩阵的情况下，只有照相机的转换是作为纯4x4 变换矩阵传递的。 实际的矩阵由 Azure 远程呈现使用指定的视图字段以及 [CAMERASETTINGS API](../overview/features/camera.md)上的当前近平面和最远平面集进行计算。
 
 由于可以根据需要在运行时更改 [CameraSettings](../overview/features/camera.md) 的接近平面和远端平面，并且该服务以异步方式应用这些设置，因此，每个 SimulationUpdateResult 还会在呈现相应的帧期间使用特定的近平面和远平面。 您可以使用这些平面值调整投影矩阵，以便呈现本地对象，以匹配远程帧渲染。
 
 最后，尽管 **模拟更新** 调用需要 OpenXR 约定中的字段视图，但出于标准化和算法安全原因，你可以使用以下结构填充示例中所示的转换函数：
 
 ```cs
-public SimulationUpdateParameters CreateSimulationUpdateParameters(UInt32 frameId, Matrix4x4 viewTransform, Matrix4x4 projectionMatrix)
+public SimulationUpdateParameters CreateSimulationUpdateParameters(int frameId, Matrix4x4 viewTransform, Matrix4x4 projectionMatrix)
 {
-    SimulationUpdateParameters parameters;
-    parameters.frameId = frameId;
-    parameters.viewTransform.left = viewTransform;
-    if(parameters.fieldOfView.left.fromProjectionMatrix(projectionMatrix) != Result.Success)
+    SimulationUpdateParameters parameters = default;
+    parameters.FrameId = frameId;
+    parameters.ViewTransform.Left = viewTransform;
+    if (parameters.FieldOfView.Left.FromProjectionMatrix(projectionMatrix) != Result.Success)
     {
         // Invalid projection matrix
-        return null;
+        throw new ArgumentException("Invalid projection settings");
     }
     return parameters;
 }
 
-public void GetCameraSettingsFromSimulationUpdateResult(SimulationUpdateResult result, out Matrix4x4 projectionMatrix, out Matrix4x4 viewTransform, out UInt32 frameId)
+public void GetCameraSettingsFromSimulationUpdateResult(SimulationUpdateResult result, out Matrix4x4 projectionMatrix, out Matrix4x4 viewTransform, out int frameId)
 {
-    if(result.frameId == 0)
+    projectionMatrix = default;
+    viewTransform = default;
+    frameId = 0;
+
+    if (result.FrameId == 0)
     {
         // Invalid frame data
         return;
     }
-    
+
     // Use the screenspace depth convention you expect for your projection matrix locally
-    if(result.fov.left.toProjectionMatrix(result.nearPlaneDistance, result.farPlaneDistance, DepthConvention.ZeroToOne, projectionMatrix) != Result.Success)
+    if (result.FieldOfView.Left.ToProjectionMatrix(result.NearPlaneDistance, result.FarPlaneDistance, DepthConvention.ZeroToOne, out projectionMatrix) != Result.Success)
     {
         // Invalid field-of-view
         return;
     }
-    viewTransform = result.viewTransform.left;
-    frameId = result.frameId;
+    viewTransform = result.ViewTransform.Left;
+    frameId = result.FrameId;
 }
 ```
 
@@ -325,9 +330,9 @@ public void GetCameraSettingsFromSimulationUpdateResult(SimulationUpdateResult r
 SimulationUpdateParameters CreateSimulationUpdateParameters(uint32_t frameId, Matrix4x4 viewTransform, Matrix4x4 projectionMatrix)
 {
     SimulationUpdateParameters parameters;
-    parameters.frameId = frameId;
-    parameters.viewTransform.left = viewTransform;
-    if(FovFromProjectionMatrix(projectionMatrix, parameters.fieldOfView.left) != Result::Success)
+    parameters.FrameId = frameId;
+    parameters.ViewTransform.Left = viewTransform;
+    if (FovFromProjectionMatrix(projectionMatrix, parameters.FieldOfView.Left) != Result::Success)
     {
         // Invalid projection matrix
         return {};
@@ -337,20 +342,20 @@ SimulationUpdateParameters CreateSimulationUpdateParameters(uint32_t frameId, Ma
 
 void GetCameraSettingsFromSimulationUpdateResult(const SimulationUpdateResult& result, Matrix4x4& projectionMatrix, Matrix4x4& viewTransform, uint32_t& frameId)
 {
-    if(result.frameId == 0)
+    if (result.FrameId == 0)
     {
         // Invalid frame data
         return;
     }
-    
+
     // Use the screenspace depth convention you expect for your projection matrix locally
-    if(FovToProjectionMatrix(result.fieldOfView.left, result.nearPlaneDistance, result.farPlaneDistance, DepthConvention::ZeroToOne, projectionMatrix) != Result::Success)
+    if (FovToProjectionMatrix(result.FieldOfView.Left, result.NearPlaneDistance, result.FarPlaneDistance, DepthConvention::ZeroToOne, projectionMatrix) != Result::Success)
     {
         // Invalid field-of-view
         return;
     }
-    viewTransform = result.viewTransform.left;
-    frameId = result.frameId;
+    viewTransform = result.ViewTransform.Left;
+    frameId = result.FrameId;
 }
 ```
 

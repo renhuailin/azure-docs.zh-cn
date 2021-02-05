@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 06/09/2020
 ms.author: surmb
-ms.openlocfilehash: 5e5be79371b640431603409a34b1a7812ed5c2a3
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.openlocfilehash: 95b74e5fc6c5d2c09ff04b3f14e920ae675ab6e1
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2021
-ms.locfileid: "98746098"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99592749"
 ---
 <a name="troubleshoot-backend-health-issues-in-application-gateway"></a>排查应用程序网关中的后端运行状况问题
 ==================================================
@@ -24,7 +24,7 @@ ms.locfileid: "98746098"
 
 ### <a name="how-to-check-backend-health"></a>如何检查后端运行状况
 
-若要检查后端池的运行状况，可以使用 Azure 门户中的“后端运行状况”页。 或者，可以使用 [Azure PowerShell](/powershell/module/az.network/get-azapplicationgatewaybackendhealth?view=azps-2.6.0)、[CLI](/cli/azure/network/application-gateway?view=azure-cli-latest#az-network-application-gateway-show-backend-health) 或 [REST API](/rest/api/application-gateway/applicationgateways/backendhealth)。
+若要检查后端池的运行状况，可以使用 Azure 门户中的“后端运行状况”页。 或者，可以使用 [Azure PowerShell](/powershell/module/az.network/get-azapplicationgatewaybackendhealth)、[CLI](/cli/azure/network/application-gateway#az-network-application-gateway-show-backend-health) 或 [REST API](/rest/api/application-gateway/applicationgateways/backendhealth)。
 
 所述任意方法检索到的状态可能为下列其中一项：
 
@@ -119,7 +119,7 @@ BackendAddressPoolsText : [
 
 1.  如果使用 Azure 默认 DNS，请与域名注册机构确认是否完成了正确的 A 记录或 CNAME 记录映射。
 
-1.  如果域是专用或内部域，请尝试从同一虚拟网络中的 VM 解析它。 如果能够解析，请重启应用程序网关，然后再次检查。 若要重启应用程序网关，需要使用相关链接资源中所述的 PowerShell 命令[停止](/powershell/module/azurerm.network/stop-azurermapplicationgateway?view=azurermps-6.13.0)再[启动](/powershell/module/azurerm.network/start-azurermapplicationgateway?view=azurermps-6.13.0)它。
+1.  如果域是专用或内部域，请尝试从同一虚拟网络中的 VM 解析它。 如果能够解析，请重启应用程序网关，然后再次检查。 若要重启应用程序网关，需要使用相关链接资源中所述的 PowerShell 命令[停止](/powershell/module/azurerm.network/stop-azurermapplicationgateway)再[启动](/powershell/module/azurerm.network/start-azurermapplicationgateway)它。
 
 #### <a name="tcp-connect-error"></a>TCP 连接错误
 

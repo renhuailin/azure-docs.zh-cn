@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: article
-ms.openlocfilehash: 26ac1714330bba06c01d33b47105f04c600c7729
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: fb26a669229ac140aba262032f8ce84ef9f37727
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96024089"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99593375"
 ---
 # <a name="color-materials"></a>颜色材料
 
@@ -62,9 +62,9 @@ ms.locfileid: "96024089"
 ## <a name="api-documentation"></a>API 文档
 
 * [C # ColorMaterial 类](/dotnet/api/microsoft.azure.remoterendering.colormaterial)
-* [C # RemoteManager CreateMaterial ( # B1 ](/dotnet/api/microsoft.azure.remoterendering.remotemanager.creatematerial)
+* [C # RenderingConnection CreateMaterial ( # B1 ](/dotnet/api/microsoft.azure.remoterendering.renderingconnection.creatematerial)
 * [C + + ColorMaterial 类](/cpp/api/remote-rendering/colormaterial)
-* [C + + RemoteManager：： CreateMaterial ( # B1 ](/cpp/api/remote-rendering/remotemanager#creatematerial)
+* [C + + RenderingConnection：： CreateMaterial ( # B1 ](/cpp/api/remote-rendering/renderingconnection#creatematerial)
 
 ## <a name="next-steps"></a>后续步骤
 

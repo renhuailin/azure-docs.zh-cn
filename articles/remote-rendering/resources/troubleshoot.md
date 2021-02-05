@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 34a947a2a0f6d8c87c0580f273130b671b4f17fc
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 4990f0d0a10709f2c1c5a17806020cd685f999fc
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97722226"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99593327"
 ---
 # <a name="troubleshoot"></a>疑难解答
 
@@ -191,9 +191,9 @@ Azure 远程渲染挂钩到 Unity 渲染管道中，以通过视频进行帧合�
 
 如果渲染的对象看起来像是随着头部移动而移动，则可能会遇到后期阶段重新投影 (LSR) 问题。 有关如何解决此类情况的指南，请参阅有关[后期阶段重新投影](../overview/features/late-stage-reprojection.md)的部分。
 
-不稳定全息影像（晃动、弯曲、抖动或跳转全息影像）的另一个原因可能是网络连接不佳，尤其是网络带宽不足或延迟过高。 网络连接质量的一个良好指示器是[性能统计信息](../overview/features/performance-queries.md)值 `ARRServiceStats.VideoFramesReused`。 重复使用的帧表示因为没有新视频帧可用，而需要在客户端上重复使用旧视频帧的情况（例如，由于数据包丢失或网络延迟变化）。 如果 `ARRServiceStats.VideoFramesReused` 经常大于零，则表示存在网络问题。
+不稳定全息影像（晃动、弯曲、抖动或跳转全息影像）的另一个原因可能是网络连接不佳，尤其是网络带宽不足或延迟过高。 网络连接质量的一个良好指示器是[性能统计信息](../overview/features/performance-queries.md)值 `ServiceStatistics.VideoFramesReused`。 重复使用的帧表示因为没有新视频帧可用，而需要在客户端上重复使用旧视频帧的情况（例如，由于数据包丢失或网络延迟变化）。 如果 `ServiceStatistics.VideoFramesReused` 经常大于零，则表示存在网络问题。
 
-另一个要查看的值是 `ARRServiceStats.LatencyPoseToReceiveAvg`。 它应始终低于 100 毫秒。 查看较高的值可能表明您连接到的数据中心太远。
+另一个要查看的值是 `ServiceStatistics.LatencyPoseToReceiveAvg`。 它应始终低于 100 毫秒。 查看较高的值可能表明您连接到的数据中心太远。
 
 有关可能的缓解措施的列表，请参阅[网络连接指导原则](../reference/network-requirements.md#guidelines-for-network-connectivity)。
 

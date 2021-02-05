@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/07/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 58c07654c174f5b94512574cb4c279d35897dc71
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 9c5ad4b21b428f38bbd4d9f7d19fa633c5161b5c
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94701936"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594174"
 ---
 # <a name="sky-reflections"></a>天空反射
 
@@ -41,57 +41,41 @@ Azure 远程渲染运用基于物理学的渲染 (PBR) 来计算现实照明。 
 若要更改环境地图，只需[加载纹理](../../concepts/textures.md)并更改会话的 `SkyReflectionSettings`：
 
 ```cs
-LoadTextureAsync _skyTextureLoad = null;
-void ChangeEnvironmentMap(AzureSession session)
+async void ChangeEnvironmentMap(RenderingSession session)
 {
-    _skyTextureLoad = session.Actions.LoadTextureFromSASAsync(new LoadTextureFromSASParams("builtin://VeniceSunset", TextureType.CubeMap));
-
-    _skyTextureLoad.Completed += (LoadTextureAsync res) =>
-        {
-            if (res.IsRanToCompletion)
-            {
-                try
-                {
-                    session.Actions.SkyReflectionSettings.SkyReflectionTexture = res.Result;
-                }
-                catch (RRException exception)
-                {
-                    System.Console.WriteLine($"Setting sky reflection failed: {exception.Message}");
-                }
-            }
-            else
-            {
-                System.Console.WriteLine("Texture loading failed!");
-            }
-        };
+    try
+    {
+        Texture skyTex = await session.Connection.LoadTextureFromSasAsync(new LoadTextureFromSasOptions("builtin://VeniceSunset", TextureType.CubeMap));
+        session.Connection.SkyReflectionSettings.SkyReflectionTexture = skyTex;
+    }
+    catch (RRException exception)
+    {
+        System.Console.WriteLine($"Setting sky reflection failed: {exception.Message}");
+    }
 }
 ```
 
 ```cpp
-void ChangeEnvironmentMap(ApiHandle<AzureSession> session)
+void ChangeEnvironmentMap(ApiHandle<RenderingSession> session)
 {
-    LoadTextureFromSASParams params;
+    LoadTextureFromSasOptions params;
     params.TextureType = TextureType::CubeMap;
-    params.TextureUrl = "builtin://VeniceSunset";
-    ApiHandle<LoadTextureAsync> skyTextureLoad = *session->Actions()->LoadTextureFromSASAsync(params);
-
-    skyTextureLoad->Completed([&](ApiHandle<LoadTextureAsync> res)
+    params.TextureUri = "builtin://VeniceSunset";
+    session->Connection()->LoadTextureFromSasAsync(params, [&](Status status, ApiHandle<Texture> res) {
+        if (status == Status::OK)
         {
-            if (res->GetIsRanToCompletion())
-            {
-                ApiHandle<SkyReflectionSettings> settings = session->Actions()->GetSkyReflectionSettings();
-                settings->SetSkyReflectionTexture(res->GetResult());
-            }
-            else
-            {
-                printf("Texture loading failed!\n");
-            }
-        });
+            ApiHandle<SkyReflectionSettings> settings = session->Connection()->GetSkyReflectionSettings();
+            settings->SetSkyReflectionTexture(res);
+        }
+        else
+        {
+            printf("Texture loading failed!\n");
+        }
+    });
 }
-
 ```
 
-请注意，上面使用了 `LoadTextureFromSASAsync` 变体，因为加载了内置纹理。 如果纹理是从[关联的 Blob 存储](../../how-tos/create-an-account.md#link-storage-accounts)加载的，请使用 `LoadTextureAsync` 变体。
+请注意，上面使用了 `LoadTextureFromSasAsync` 变体，因为加载了内置纹理。 如果纹理是从[关联的 Blob 存储](../../how-tos/create-an-account.md#link-storage-accounts)加载的，请使用 `LoadTextureAsync` 变体。
 
 ## <a name="sky-texture-types"></a>天空纹理类型
 
@@ -105,7 +89,7 @@ void ChangeEnvironmentMap(ApiHandle<AzureSession> session)
 
 ![已解包的立体地图](media/Cubemap-example.png)
 
-将 `AzureSession.Actions.LoadTextureAsync`/ `LoadTextureFromSASAsync` 与 `TextureType.CubeMap` 一起使用来加载立体地图纹理。
+将 `RenderingSession.Connection.LoadTextureAsync`/ `LoadTextureFromSasAsync` 与 `TextureType.CubeMap` 一起使用来加载立体地图纹理。
 
 ### <a name="sphere-environment-maps"></a>球体环境地图
 
@@ -113,7 +97,7 @@ void ChangeEnvironmentMap(ApiHandle<AzureSession> session)
 
 ![球面坐标中的天空图像](media/spheremap-example.png)
 
-结合使用 `TextureType.Texture2D` 和 `AzureSession.Actions.LoadTextureAsync` 加载球体环境地图。
+结合使用 `TextureType.Texture2D` 和 `RenderingSession.Connection.LoadTextureAsync` 加载球体环境地图。
 
 ## <a name="built-in-environment-maps"></a>内置环境地图
 
@@ -138,8 +122,8 @@ Azure 远程渲染提供了几个始终可用的内置环境地图。 所有内�
 
 ## <a name="api-documentation"></a>API 文档
 
-* [C # RemoteManager SkyReflectionSettings 属性](/dotnet/api/microsoft.azure.remoterendering.remotemanager.skyreflectionsettings)
-* [C + + RemoteManager：： SkyReflectionSettings ( # B1 ](/cpp/api/remote-rendering/remotemanager#skyreflectionsettings)
+* [C # RenderingConnection SkyReflectionSettings 属性](/dotnet/api/microsoft.azure.remoterendering.renderingconnection.skyreflectionsettings)
+* [C + + RenderingConnection：： SkyReflectionSettings ( # B1 ](/cpp/api/remote-rendering/renderingconnection#skyreflectionsettings)
 
 ## <a name="next-steps"></a>后续步骤
 

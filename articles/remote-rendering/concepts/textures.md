@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/05/2020
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b951dab1ad01187c7612fad047bc52eb6aa9700e
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: e01ddf0690f11d41021e0a5ae5958c7c80646743
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94701868"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594411"
 ---
 # <a name="textures"></a>纹理
 
@@ -35,66 +35,54 @@ ms.locfileid: "94701868"
 
 与加载模型类似，有两种用于在源 blob 存储中为纹理资产寻址的变体：
 
-* 纹理资产可以通过其 SAS URI 寻址。 相关的加载函数为具有参数 `LoadTextureFromSASParams` 的 `LoadTextureFromSASAsync`。 加载[内置纹理](../overview/features/sky.md#built-in-environment-maps)时也使用此变体。
-* 如果 [Blob 存储已链接到帐户](../how-tos/create-an-account.md#link-storage-accounts)，则可直接通过 Blob 存储参数对纹理进行寻址。 在本例中，相关的加载函数为具有参数 `LoadTextureParams` 的 `LoadTextureAsync`。
+* 如果 [Blob 存储已链接到帐户](../how-tos/create-an-account.md#link-storage-accounts)，则可直接通过 Blob 存储参数对纹理进行寻址。 在本例中，相关的加载函数为具有参数 `LoadTextureOptions` 的 `LoadTextureAsync`。
+* 纹理资产可以通过其 SAS URI 寻址。 相关的加载函数为具有参数 `LoadTextureFromSasOptions` 的 `LoadTextureFromSasAsync`。 加载[内置纹理](../overview/features/sky.md#built-in-environment-maps)时也使用此变体。
 
-下面的示例代码演示如何通过其 SAS URI （或内置纹理）加载纹理 - 请注意，只有加载函数/参数不同于另一种情况：
+下面的示例代码演示如何加载纹理：
 
 ```cs
-LoadTextureAsync _textureLoad = null;
-void LoadMyTexture(AzureSession session, string textureUri)
+async void LoadMyTexture(RenderingSession session, string storageContainer, string blobName, string assetPath)
 {
-    _textureLoad = session.Actions.LoadTextureFromSASAsync(new LoadTextureFromSASParams(textureUri, TextureType.Texture2D));
-    _textureLoad.Completed +=
-        (LoadTextureAsync res) =>
-        {
-            if (res.IsRanToCompletion)
-            {
-                //use res.Result
-            }
-            else
-            {
-                System.Console.WriteLine("Texture loading failed!");
-            }
-            _textureLoad = null;
-        };
+    try
+    {
+        LoadTextureOptions options = new LoadTextureOptions(storageContainer, blobName, assetPath, TextureType.Texture2D);
+        Texture texture = await session.Connection.LoadTextureAsync(options);
+    
+        // use texture...
+    }
+    catch (RRException ex)
+    {
+    }
 }
 ```
 
 ```cpp
-void LoadMyTexture(ApiHandle<AzureSession> session, std::string textureUri)
+void LoadMyTexture(ApiHandle<RenderingSession> session, std::string storageContainer, std::string blobName, std::string assetPath)
 {
-    LoadTextureFromSASParams params;
+    LoadTextureOptions params;
     params.TextureType = TextureType::Texture2D;
-    params.TextureUrl = std::move(textureUri);
-    ApiHandle<LoadTextureAsync> textureLoad = *session->Actions()->LoadTextureFromSASAsync(params);
-    textureLoad->Completed([](ApiHandle<LoadTextureAsync> res)
+    params.Blob.StorageAccountName = std::move(storageContainer);
+    params.Blob.BlobContainerName = std::move(blobName);
+    params.Blob.AssetPath = std::move(assetPath);
+    session->Connection()->LoadTextureAsync(params, [](Status status, ApiHandle<Texture> texture)
     {
-        if (res->GetIsRanToCompletion())
-        {
-            //use res->Result()
-        }
-        else
-        {
-            printf("Texture loading failed!");
-        }
+        // use texture...
     });
 }
 ```
 
-纹理类型和内容可能存在限制，具体取决于要使用的纹理。 例如，[PBR 材料](../overview/features/pbr-materials.md)的粗糙度图必须为灰度。
+请注意，在使用其 SAS 变体时，仅加载函数/参数不同。
 
-> [!CAUTION]
-> ARR 中的所有 Async 函数都返回异步操作对象。 在完成操作之前，必须存储对这些对象的引用。 否则，C# 垃圾回收器可能会提前删除该操作，并且该操作永远不能完成。 在上面的示例代码中，成员变量“_textureLoad”用于保存引用，直到“已完成”事件到达。
+纹理类型和内容可能存在限制，具体取决于要使用的纹理。 例如，[PBR 材料](../overview/features/pbr-materials.md)的粗糙度图必须为灰度。
 
 ## <a name="api-documentation"></a>API 文档
 
 * [C # 纹理类](/dotnet/api/microsoft.azure.remoterendering.texture)
-* [C # RemoteManager LoadTextureAsync ( # B1 ](/dotnet/api/microsoft.azure.remoterendering.remotemanager.loadtextureasync)
-* [C # RemoteManager LoadTextureFromSASAsync ( # B1 ](/dotnet/api/microsoft.azure.remoterendering.remotemanager.loadtexturefromsasasync)
+* [C # RenderingConnection LoadTextureAsync ( # B1 ](/dotnet/api/microsoft.azure.remoterendering.renderingconnection.loadtextureasync)
+* [C # RenderingConnection LoadTextureFromSasAsync ( # B1 ](/dotnet/api/microsoft.azure.remoterendering.renderingconnection.loadtexturefromsasasync)
 * [C + + 纹理类](/cpp/api/remote-rendering/texture)
-* [C + + RemoteManager：： LoadTextureAsync ( # B1 ](/cpp/api/remote-rendering/remotemanager#loadtextureasync)
-* [C + + RemoteManager：： LoadTextureFromSASAsync ( # B1 ](/cpp/api/remote-rendering/remotemanager#loadtexturefromsasasync)
+* [C + + RenderingConnection：： LoadTextureAsync ( # B1 ](/cpp/api/remote-rendering/renderingconnection#loadtextureasync)
+* [C + + RenderingConnection：： LoadTextureFromSasAsync ( # B1 ](/cpp/api/remote-rendering/renderingconnection#loadtexturefromsasasync)
 
 ## <a name="next-steps"></a>后续步骤
 

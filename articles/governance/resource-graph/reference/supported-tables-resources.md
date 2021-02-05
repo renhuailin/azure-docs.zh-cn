@@ -1,15 +1,15 @@
 ---
 title: 支持的 Azure 资源管理器资源类型
 description: 提供 Azure Resource Graph 和更改历史记录支持的 Azure 资源管理器资源类型的列表。
-ms.date: 01/06/2021
+ms.date: 02/04/2021
 ms.topic: reference
 ms.custom: generated
-ms.openlocfilehash: 4198c60bc298eb6a1b9902bb92e3df44648b2c0b
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 865aed468f8a6bcb848b77a82467efc2c531398b
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251771"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594327"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Azure Resource Graph 表格和资源类型参考
 
@@ -130,6 +130,9 @@ Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-mana
 - microsoft.azurestack/linkedsubscriptions
 - Test-azurestack/注册 (Azure Stack 中心) 
 - AzureStackHCI/群集 (Azure Stack HCI) 
+- azurestackhci/galleryimages
+- azurestackhci/networkinterfaces
+- azurestackhci/virtualnetworks
 - microsoft.baremetal/consoleconnections
 - BareMetal/crayServers (Cray 服务器) 
 - BareMetal/monitoringServers (监视服务器) 
@@ -331,6 +334,9 @@ Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-mana
 - workbooktemplates (Azure 工作簿模板) 
 - IntelligentITDigitalTwin/digitalTwins (Minervas) 
 - intelligentitdigitaltwin/digitaltwins/资产
+- intelligentitdigitaltwin/digitaltwins/executionplans
+- intelligentitdigitaltwin/digitaltwins/testplans
+- intelligentitdigitaltwin/digitaltwins/测试
 - IoT Central 应用程序的 IoTCentral/IoTApps () 
 - IoTSpaces/Graph (数字孪生 (弃用) # A3
 - microsoft.keyvault/hsmpools
@@ -494,6 +500,7 @@ Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-mana
 - TemplateSpecs (模板规格) 
 - microsoft.resources/templatespecs/versions
 - Microsoft SaaS/应用程序 (软件即服务 (经典) # A3
+-  (CPX 的 Microsoft SaaS/资源) 
 - 免费 (计划程序作业集合) 
 - microsoft.scvmm/clouds
 - VirtualMachines (SCVMM 虚拟机-Azure Arc) 
@@ -588,6 +595,7 @@ Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-mana
 - StaticSites)  (静态 Web Apps (预览版 # A3
 - WindowsESU/multipleActivationKeys (Windows 多个激活密钥) 
 - WindowsIoT/DeviceServices (Windows 10 IoT Core Services) 
+- workloadbuilder/migrationagents
 - microsoft.workloadbuilder/workloads
 - MyGet/services (MyGet 托管的 NuGet、NPM、Bower 和 Vsix) 
 - Paraleap CloudMonix/services (CloudMonix) 

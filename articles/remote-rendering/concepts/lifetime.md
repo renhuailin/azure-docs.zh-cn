@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: d031ff4a6ee86da2843f0f18ac428c50f7cfc121
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0945b35f7aff8e93a1a3ba23b89db288db3d8efa
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80681865"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99593885"
 ---
 # <a name="object-and-resource-lifetime"></a>对象和资源生存期
 
@@ -32,7 +32,7 @@ Azure 远程呈现区分两种类型： **对象** 和 **资源**。
 
 ### <a name="built-in-resources"></a>内置资源
 
-Azure 远程呈现包含某些内置资源，这些资源可在调用期间通过在其各自标识符前面追加来加载 `builtin://` `AzureSession.Actions.LoadXYZAsync()` 。 每个相关功能的文档中列出了可用的内置资源。 例如， [天空一章](../overview/features/sky.md) 列出了内置的天空纹理。
+Azure 远程呈现包含某些内置资源，这些资源可在调用期间通过在其各自标识符前面追加来加载 `builtin://` `RenderingSession.Connection.LoadXYZAsync()` 。 每个相关功能的文档中列出了可用的内置资源。 例如， [天空一章](../overview/features/sky.md) 列出了内置的天空纹理。
 
 ## <a name="general-lifetime"></a>常规生存期
 

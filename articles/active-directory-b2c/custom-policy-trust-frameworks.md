@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 12/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 514ce0a43904048952f38edd6a9d38713f6ef8f3
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: cb33e11af26d5f5a2676f5b236ac142179bdb550
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98936663"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99592834"
 ---
 # <a name="azure-ad-b2c-custom-policy-overview"></a>Azure AD B2C 自定义策略概述
 
@@ -115,7 +115,7 @@ Azure AD B2C 自定义策略[新手包](custom-policy-get-started.md#get-the-sta
 继承模型如下所示：
 
 - 任何级别的子策略可以继承自父策略，并通过添加新元素来扩展父策略。
-- 对于更复杂的方案，你可以添加更多的继承级别 (最多5个) 。
+- 对于更复杂的方案，你可以添加更多的继承级别 (最多为10个) 。
 - 你可添加更多的信赖方策略。 例如，删除我的帐户、更改电话号码、SAML 信赖方策略等等。
 
 下图显示了策略文件与信赖方应用程序之间的关系。

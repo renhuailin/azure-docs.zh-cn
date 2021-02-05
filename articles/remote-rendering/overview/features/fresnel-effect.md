@@ -6,12 +6,12 @@ ms.author: jumeder
 ms.date: 11/09/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c8ecd3afc95cf4b8054cd7db3530c15afebea3ce
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: f63cd3b50642c3cf531387b4446992b6f15116f2
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498228"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594106"
 ---
 # <a name="fresnel-effect"></a>菲涅尔透镜效果
 
@@ -32,7 +32,7 @@ ms.locfileid: "96498228"
 | 材料属性 | 类型 | 说明 |
 |-------------------|------|-------------|
 | FresnelEffectColor | Color4 | 最多添加为菲涅尔衰减的颜色。 Alpha 通道当前被忽略。 |
-| FresnelEffectExponent | FLOAT | 菲涅尔衰减的传播。 介于 0.01 (范围内的所有对象) 到 10 (只) 最 gracing 角。 |
+| FresnelEffectExponent | float | 菲涅尔衰减的传播。 介于 0.01 (范围内的所有对象) 到 10 (只) 最 gracing 角。 |
 
 实际上，不同的颜色和指数设置将如下所示：
 
@@ -49,7 +49,7 @@ ms.locfileid: "96498228"
 下面的代码示例演示了如何为 [.pbr 材料](../../overview/features/pbr-materials.md) 和 [颜色材料](../../overview/features/color-materials.md)启用和自定义菲涅尔衰减效果：
 
 ```cs
-    void SetFresnelEffect(AzureSession session, Material material)
+    void SetFresnelEffect(RenderingSession session, Material material)
     {
         if (material.MaterialSubType == MaterialType.Pbr)
         {
@@ -69,7 +69,7 @@ ms.locfileid: "96498228"
 ```
 
 ```cpp
-void SetFresnelEffect(ApiHandle<AzureSession> session, ApiHandle<Material> material)
+void SetFresnelEffect(ApiHandle<RenderingSession> session, ApiHandle<Material> material)
 {
     if (material->GetMaterialSubType() == MaterialType::Pbr)
     {

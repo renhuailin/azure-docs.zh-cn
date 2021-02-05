@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: article
-ms.openlocfilehash: f2e63903546e173e17f2b457b78eb41bcdf65dbd
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: e9908c106e57801cb1b7def8b3353a983cc97de0
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94555560"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99591933"
 ---
 # <a name="pbr-materials"></a>PBR 材料
 
@@ -26,7 +26,7 @@ ms.locfileid: "94555560"
 
 这些属性是所有材料共有的：
 
-* **albedoColor：** 此颜色与其他颜色（如 *albedoMap* 或 *:::no-loc text="vertex "::: 颜色* ）相乘。 如果对材料启用了 *透明度* ，则使用 alpha 通道调整不透明度， `1` 这意味着完全不透明并 `0` 表示完全透明。 默认值为白色。
+* **albedoColor：** 此颜色与其他颜色（如 *albedoMap* 或 *:::no-loc text="vertex "::: 颜色*）相乘。 如果对材料启用了 *透明度* ，则使用 alpha 通道调整不透明度， `1` 这意味着完全不透明并 `0` 表示完全透明。 默认值为白色。
 
   > [!NOTE]
   > 当某个 .PBR 材料完全透明（如完全透明的玻璃部分）时，它仍会反映该环境。 类似于 sun 的亮点仍在反射中可见。 这不同于 [颜色材料](color-materials.md)。
@@ -51,9 +51,9 @@ ms.locfileid: "94555560"
 
 ## <a name="pbr-material-properties"></a>.PBR 材料属性
 
-以物理方式呈现的核心概念是使用 *BaseColor* 、 *Metalness* 和 *粗糙度* 属性来模拟各种真实的资料。 有关 .PBR 的详细说明超出了本文的范围。 有关 .PBR 的详细信息，请参阅 [其他来源](http://www.pbr-book.org)。 以下属性特定于 .PBR 材料：
+以物理方式呈现的核心概念是使用 *BaseColor*、 *Metalness* 和 *粗糙度* 属性来模拟各种真实的资料。 有关 .PBR 的详细说明超出了本文的范围。 有关 .PBR 的详细信息，请参阅 [其他来源](http://www.pbr-book.org)。 以下属性特定于 .PBR 材料：
 
-* **baseColor：** 在 .PBR 材料中， *albedo 颜色* 称为 *基准颜色* 。 在 Azure 远程呈现中， *albedo 颜色* 属性已经通过公共材料属性提供，因此没有其他基本颜色属性。
+* **baseColor：** 在 .PBR 材料中， *albedo 颜色* 称为 *基准颜色*。 在 Azure 远程呈现中， *albedo 颜色* 属性已经通过公共材料属性提供，因此没有其他基本颜色属性。
 
 * **粗糙度** 和 **roughnessMap：** 粗糙度定义图面的大致程度或平滑程度。 粗糙面使光源的显示方向大于平滑曲面，这使反射模糊而不是清晰。 值范围从 `0.0` 到 `1.0` 。 当 `roughness` 等于时 `0.0` ，反射将会清晰。 当 `roughness` 等于时 `0.5` ，反射将变得模糊。
 
@@ -92,9 +92,9 @@ Azure 远程呈现使用带有 GGX 的 NDF、Schlick 菲涅尔衰减和 GGX Smit
 ## <a name="api-documentation"></a>API 文档
 
 * [C # PbrMaterial 类](/dotnet/api/microsoft.azure.remoterendering.pbrmaterial)
-* [C # RemoteManager CreateMaterial ( # B1 ](/dotnet/api/microsoft.azure.remoterendering.remotemanager.creatematerial)
+* [C # RenderingConnection CreateMaterial ( # B1 ](/dotnet/api/microsoft.azure.remoterendering.renderingconnection.creatematerial)
 * [C + + PbrMaterial 类](/cpp/api/remote-rendering/pbrmaterial)
-* [C + + RemoteManager：： CreateMaterial ( # B1 ](/cpp/api/remote-rendering/remotemanager#creatematerial)
+* [C + + RenderingConnection：： CreateMaterial ( # B1 ](/cpp/api/remote-rendering/renderingconnection#creatematerial)
 
 ## <a name="next-steps"></a>后续步骤
 

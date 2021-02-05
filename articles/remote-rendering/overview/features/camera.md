@@ -5,12 +5,12 @@ author: christophermanthei
 ms.author: chmant
 ms.date: 03/07/2020
 ms.topic: article
-ms.openlocfilehash: 76bb9d289e984dd8c229bdaaab09e679e11283fe
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.openlocfilehash: dbe86313054706af974ccb324a39e942e9b5ca44
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98246275"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594123"
 ---
 # <a name="camera"></a>照相机
 
@@ -57,14 +57,14 @@ ms.locfileid: "98246275"
 Azure 远程呈现 API 需要知道本地呈现器的深度缓冲区约定，以便正确地将远程深度组合到本地深度缓冲区。 如果深度缓冲区范围为 [0; 1]，则将此标志保留为 `false` 。 如果使用带 [1; 0] 范围的反转深度缓冲区，请将标志设置 `InverseDepth` 为 `true` 。
 
 > [!NOTE]
-> 对于 Unity，正确的设置已被应用， `RemoteManager` 因此无需手动干预。
+> 对于 Unity，正确的设置已被应用， `RenderingConnection` 因此无需手动干预。
 
 可以按如下所示更改相机设置：
 
 ```cs
-void ChangeCameraSetting(AzureSession session)
+void ChangeCameraSetting(RenderingSession session)
 {
-    CameraSettings settings = session.Actions.CameraSettings;
+    CameraSettings settings = session.Connection.CameraSettings;
 
     settings.SetNearAndFarPlane(0.1f, 20.0f);
     settings.EnableDepth = false;
@@ -73,9 +73,9 @@ void ChangeCameraSetting(AzureSession session)
 ```
 
 ```cpp
-void ChangeStageSpace(ApiHandle<AzureSession> session)
+void ChangeCameraSetting(ApiHandle<RenderingSession> session)
 {
-    ApiHandle<CameraSettings> settings = session->Actions()->GetCameraSettings();
+    ApiHandle<CameraSettings> settings = session->Connection()->GetCameraSettings();
 
     settings->SetNearAndFarPlane(0.1f, 20.0f);
     settings->SetEnableDepth(false);

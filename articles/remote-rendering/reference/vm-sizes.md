@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 05/28/2020
 ms.topic: reference
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b37aabb39e19fa5ec53d2b006a7cbc1793adad72
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0e2687954fb05ce826e780ae0dbd3931d899885f
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90988043"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594394"
 ---
 # <a name="server-sizes"></a>服务器大小
 
@@ -30,26 +30,35 @@ Azure 远程呈现提供两种服务器配置： `Standard` 和 `Premium` 。
 在呈现会话初始化时必须指定所需的服务器配置类型。 无法在正在运行的会话中更改它。 下面的代码示例显示了必须指定服务器大小的位置：
 
 ```cs
-async void CreateRenderingSession(AzureFrontend frontend)
+async void CreateRenderingSession(RemoteRenderingClient client)
 {
-    RenderingSessionCreationParams sessionCreationParams = new RenderingSessionCreationParams();
-    sessionCreationParams.Size = RenderingSessionVmSize.Standard; // or  RenderingSessionVmSize.Premium
+    RenderingSessionCreationOptions sessionCreationOptions = default;
+    sessionCreationOptions.Size = RenderingSessionVmSize.Standard; // or  RenderingSessionVmSize.Premium
 
-    AzureSession session = await frontend.CreateNewRenderingSessionAsync(sessionCreationParams).AsTask();
+    CreateRenderingSessionResult result = await client.CreateNewRenderingSessionAsync(sessionCreationOptions);
+    if (result.ErrorCode == Result.Success)
+    {
+        RenderingSession session = result.Session;
+        // do something with the session
+    }
 }
 ```
 
 ```cpp
-void CreateRenderingSession(ApiHandle<AzureFrontend> frontend)
+void CreateRenderingSession(ApiHandle<RemoteRenderingClient> client)
 {
-    RenderingSessionCreationParams sessionCreationParams;
-    sessionCreationParams.Size = RenderingSessionVmSize::Standard; // or  RenderingSessionVmSize::Premium
+    RenderingSessionCreationOptions sessionCreationOptions;
+    sessionCreationOptions.Size = RenderingSessionVmSize::Standard; // or  RenderingSessionVmSize::Premium
 
-    if (auto createSessionAsync = frontend->CreateNewRenderingSessionAsync(sessionCreationParams))
-    {
-        // ...
-    }
+    client->CreateNewRenderingSessionAsync(sessionCreationOptions, [](Status status, ApiHandle<CreateRenderingSessionResult> result) {
+        if (status == Status::OK && result->GetErrorCode() == Result::Success)
+        {
+            ApiHandle<RenderingSession> session = result->GetSession();
+            // do something with the session
+        }
+    });
 }
+
 ```
 
 对于 [示例 PowerShell 脚本](../samples/powershell-example-scripts.md)，必须在文件中指定所需的服务器大小 `arrconfig.json` ：
@@ -67,7 +76,7 @@ void CreateRenderingSession(ApiHandle<AzureFrontend> frontend)
 
 ### <a name="how-the-renderer-evaluates-the-number-of-polygons"></a>呈现器如何计算多边形的数目
 
-考虑的限制测试的多边形数是实际传递到呈现器的多边形的数目。 此几何图形通常是所有实例化模型的总和，但也有异常。 **不包括**以下几何图形：
+考虑的限制测试的多边形数是实际传递到呈现器的多边形的数目。 此几何图形通常是所有实例化模型的总和，但也有异常。 **不包括** 以下几何图形：
 * 已加载在视图上完全相同的模型实例。
 * 使用 [层次结构状态重写组件](../overview/features/override-hierarchical-state.md)切换到不可见的模型或模型部件。
 
@@ -76,8 +85,8 @@ void CreateRenderingSession(ApiHandle<AzureFrontend> frontend)
 ### <a name="how-to-determine-the-number-of-polygons"></a>如何确定多边形的数目
 
 可以通过两种方法来确定模型或场景中构成配置大小预算限制的多边形的数目 `standard` ：
-* 在模型转换端检索[转换输出 json 文件](../how-tos/conversion/get-information.md)，然后检查 `numFaces` [ *inputStatistics*节](../how-tos/conversion/get-information.md#the-inputstatistics-section)中的条目。
-* 如果你的应用程序处理的是动态内容，则在运行时可以动态查询呈现的多边形的数目。 使用 [性能评估查询](../overview/features/performance-queries.md#performance-assessment-queries) 并 `polygonsRendered` 在结构中检查成员 `FrameStatistics` 。 `polygonsRendered` `bad` 当呈现器达到多边形限制时，该字段将设置为。 棋盘背景始终是褪色的，并有一些延迟，以确保在执行此异步查询后可以执行用户操作。 例如，用户操作可以隐藏或删除模型实例。
+* 在模型转换端检索 [转换输出 json 文件](../how-tos/conversion/get-information.md)，然后检查 `numFaces` [ *inputStatistics* 节](../how-tos/conversion/get-information.md#the-inputstatistics-section)中的条目。
+* 如果你的应用程序处理的是动态内容，则在运行时可以动态查询呈现的多边形的数目。 使用 [性能评估查询](../overview/features/performance-queries.md#performance-assessment-queries) 并 `polygonsRendered` 在结构中检查成员 `FrameStatistics` 。 `PolygonsRendered` `bad` 当呈现器达到多边形限制时，该字段将设置为。 棋盘背景始终是褪色的，并有一些延迟，以确保在执行此异步查询后可以执行用户操作。 例如，用户操作可以隐藏或删除模型实例。
 
 ## <a name="pricing"></a>定价
 

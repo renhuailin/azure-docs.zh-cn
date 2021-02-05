@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 4e09f9b8564c9319e68984df1c0f8db7a496a6d0
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: beb45d0d650b07f6106a3307d2d3a955095ee8b1
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/05/2021
-ms.locfileid: "99584798"
+ms.locfileid: "99592256"
 ---
 # <a name="manage-qna-maker-resources"></a>管理 QnA Maker 资源
 
@@ -92,60 +92,10 @@ ms.locfileid: "99584798"
     ![资源已创建新 QnA Maker 管理 (预览版) 服务](../media/qnamaker-how-to-setup-service/resources-created-v2.png)
 
     具有 _认知服务_ 类型的资源具有您的 _订阅_ 密钥。
-
+    
 ---
 
-## <a name="find-authoring-keys-in-the-azure-portal"></a>在 Azure 门户中查找创作密钥
-
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA（稳定版本）](#tab/v1)
-
-你可以从创建 QnA Maker 资源的 Azure 门户查看和重置创作密钥。 这些密钥可能称为订阅密钥。
-
-1. 中转到 Azure 门户中的 QnA Maker 资源，并选择具有 _认知服务_ 类型的资源：
-
-    ![QnA Maker 资源列表](../media/qnamaker-how-to-key-management/qnamaker-resource-list.png)
-
-2. 中转到 **密钥和终结点**：
-
-    ![QnA Maker 托管 (预览版) 订阅密钥](../media/qnamaker-how-to-key-management/subscription-key-v2.png)
-
-### <a name="find-query-endpoint-keys-in-the-qna-maker-portal"></a>在 QnA Maker 门户中查找查询终结点密钥
-
-终结点与资源位于同一区域，因为终结点键用于调用知识库。
-
-可以从 [QnA Maker 门户](https://qnamaker.ai)管理终结点密钥。
-
-1. 登录到 [QnA Maker 门户](https://qnamaker.ai)，中转到你的配置文件，然后选择 " **服务设置**"：
-
-    ![终结点密钥](../media/qnamaker-how-to-key-management/Endpoint-keys.png)
-
-2. 查看或重置密钥：
-
-    > [!div class="mx-imgBorder"]
-    > ![终结点密钥管理器](../media/qnamaker-how-to-key-management/Endpoint-keys1.png)
-
-    >[!NOTE]
-    >如果你认为密钥已泄露，请刷新你的密钥。 这可能需要相应地更改客户端应用程序或机器人代码。
-
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/v2)
-
-你可以从 Azure 门户中查看和重置创作密钥，你可以在其中创建 QnA Maker 托管 (预览版) 资源。 这些密钥可能称为订阅密钥。
-
-1. 请在 Azure 门户中中转到 QnA Maker 托管 (预览版) 资源，并选择具有 *认知服务* 类型的资源：
-
-    ![QnA Maker 托管 (预览版) 资源列表](../media/qnamaker-how-to-key-management/qnamaker-v2-resource-list.png)
-
-2. 中转到 **密钥和终结点**：
-
-    ![QnA Maker 托管 (预览版) 订阅密钥](../media/qnamaker-how-to-key-management/subscription-key-v2.png)
-
-### <a name="update-the-resources"></a>更新资源
-
-了解如何升级知识库使用的资源。 QnA Maker 托管 () 预览版，请在预览阶段 **免费** 。 
-
----
-
-### <a name="recommended-settings-for-network-isolation"></a>用于网络隔离的推荐设置
+## <a name="recommended-settings-for-network-isolation"></a>用于网络隔离的推荐设置
 
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA（稳定版本）](#tab/v1)
 

@@ -8,16 +8,16 @@ ms.subservice: high-availability
 ms.custom: sqldbrb=2
 ms.devlang: ''
 ms.topic: conceptual
-author: sashan
-ms.author: sashan
-ms.reviewer: sstein, sashan
+author: emlisa
+ms.author: emlisa
+ms.reviewer: sstein, emlisa
 ms.date: 10/28/2020
-ms.openlocfilehash: 15067a046d8adc0ba38101bbe24cdc48cd433d56
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 53b6b4f5d783029cb53de71fe3c47b8cb2d26968
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97095434"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99593412"
 ---
 # <a name="high-availability-for-azure-sql-database-and-sql-managed-instance"></a>Azure SQL 数据库和 SQL 托管实例的高可用性
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -33,7 +33,7 @@ Azure SQL 数据库和 SQL 托管实例中的高可用性体系结构的目标�
 
 SQL 数据库和 SQL 托管实例均在最新稳定版本的 SQL Server 数据库引擎和 Windows OS 上运行，大多数用户不会察觉到正在持续执行升级。
 
-## <a name="basic-standard-and-general-purpose-service-tier-locally-redundant-availability"></a>基本、标准和常规用途服务层本地冗余可用性
+## <a name="basic-standard-and-general-purpose-service-tier-locally-redundant-availability"></a>“基本”、“标准”和“常规用途”服务层级本地冗余可用性
 
 “基本”、“标准”和“常规用途”服务层级利用标准可用性体系结构来实现无服务器和预配计算。 下图显示了具有隔离的计算和存储层的四个不同节点。
 
@@ -60,12 +60,12 @@ SQL 数据库和 SQL 托管实例均在最新稳定版本的 SQL Server 数据�
 ![适用于常规用途的区域冗余配置](./media/high-availability-sla/zone-redundant-for-general-purpose.png)
 
 > [!IMPORTANT]
-> 有关支持区域冗余数据库的区域的最新信息，请参阅 [按区域提供的服务支持](../../availability-zones/az-region.md)。 仅当选择 Gen5 计算硬件后，区域冗余配置才可用。 此功能在 SQL 托管实例中不可用。
+> 仅当选择 Gen5 计算硬件后，区域冗余配置才可用。 此功能在 SQL 托管实例中不可用。 "常规用途" 层的区域冗余配置仅在以下区域提供：美国东部、美国东部2、美国西部2、北欧、西欧、东南亚、澳大利亚东部、日本东部、英国南部和法国中部。
 
 > [!NOTE]
 > 常规用途大小为 80 vcore 的数据库可能会遇到使用区域冗余配置时的性能下降。 此外，对于超过 1 TB 的任何单个数据库，诸如备份、还原、数据库复制和设置异地灾难恢复关系之类的操作可能会遇到较慢的性能。 
 
-## <a name="premium-and-business-critical-service-tier-locally-redundant-availability"></a>高级和业务关键服务层本地冗余可用性
+## <a name="premium-and-business-critical-service-tier-locally-redundant-availability"></a>“高级”或“业务关键”服务层级本地冗余可用性
 
 高级和业务关键型服务层级利用高级可用性模型，该模型与单个节点上的计算资源（`sqlservr.exe` 进程）和存储（本地附加的 SSD）相集成。 实现高可用性的方式是将计算和存储资源复制到其他节点，从而建立由三到四个节点组成的群集。
 
@@ -112,11 +112,11 @@ SQL 数据库和 SQL 托管实例均在最新稳定版本的 SQL Server 数据�
 
 ## <a name="accelerated-database-recovery-adr"></a>加速的数据库恢复 (ADR)
 
-[加速的数据库恢复 (ADR)](../accelerated-database-recovery.md) 是一项新的数据库引擎功能，极大地提高数据库可用性（尤其是存在长期运行的事务时）。 ADR 目前适用于 Azure SQL 数据库、Azure SQL 托管实例和 Azure Synapse Analytics。
+[加速的数据库恢复 (ADR)](../accelerated-database-recovery.md) 是一项新的数据库引擎功能，极大地提高数据库可用性（尤其是存在长期运行的事务时）。 ADR 目前可用于 Azure SQL 数据库、Azure SQL 托管实例和 Azure Synapse Analytics。
 
 ## <a name="testing-application-fault-resiliency"></a>测试应用程序的故障复原能力
 
-高可用性是 SQL 数据库和 SQL 托管实例平台的基本功能，其运作对数据库应用程序透明。 不过，我们认识到，你可能需要先测试在计划内或计划外事件期间启动的自动故障转移操作对应用程序的具体影响，然后才会将其部署到生产环境。 可以通过调用特殊 API 来重启数据库、弹性池或托管实例，以便手动触发故障转移。 在区域冗余数据库或弹性池的情况下，API 调用将导致将客户端连接重定向到可用性区域中与旧主数据库的可用性区域不同的新主站点。 因此，除了测试故障转移对现有数据库会话的影响，还可以验证是否由于网络延迟的变化而更改了端到端性能。 由于重新启动操作是入侵的，很多用户可能会对平台造成压力，因此每个数据库、弹性池或托管实例只允许一个每15分钟进行一次故障转移呼叫。
+高可用性是 SQL 数据库和 SQL 托管实例平台的基本功能，其运作对数据库应用程序透明。 不过，我们认识到，你可能需要先测试在计划内或计划外事件期间启动的自动故障转移操作对应用程序的具体影响，然后才会将其部署到生产环境。 可以通过调用特殊 API 来重启数据库、弹性池或托管实例，以便手动触发故障转移。 在区域冗余数据库或弹性池的情况下，API 调用将导致将客户端连接重定向到可用性区域中与旧主数据库的可用性区域不同的新主站点。 因此，除了测试故障转移对现有数据库会话的影响，还可以验证是否由于网络延迟的变化而更改了端到端性能。 由于重启操作会干扰系统，其数量过多可能会对平台造成压力，因此每个数据库、弹性池或托管实例每 15 分钟只能进行一次故障转移调用。
 
 可以使用 PowerShell、REST API 或 Azure CLI 启动故障转移：
 

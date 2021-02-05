@@ -2,25 +2,29 @@
 title: 使用 Azure Pipelines 和模板实现 CI/CD
 description: 介绍如何使用 Azure 资源管理器模板在 Azure Pipelines 中配置持续集成。 它演示如何使用 PowerShell 脚本，或如何将文件复制到暂存位置并从该位置进行部署。
 ms.topic: conceptual
-ms.date: 10/01/2020
-ms.openlocfilehash: 86ad2839375b73bf9595cf3369960e614ec03e67
-ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
+ms.date: 02/05/2021
+ms.openlocfilehash: ea1ccac00f121bd81fd8b9b1f182b565fc53d214
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93233808"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594191"
 ---
 # <a name="integrate-arm-templates-with-azure-pipelines"></a>将 ARM 模板与 Azure Pipelines 集成
 
-可将 Azure 资源管理器模板（ARM 模板）与 Azure Pipelines 集成，以实现持续集成和持续部署 (CI/CD)。 教程 [ARM 模板与 Azure Pipelines 的持续集成](deployment-tutorial-pipeline.md)演示如何使用 [ARM 模板部署任务](https://github.com/microsoft/azure-pipelines-tasks/blob/master/Tasks/AzureResourceManagerTemplateDeploymentV3/README.md)从 GitHub 存储库部署模板。 如果要直接从存储库部署模板，则可以使用此方法。
+可将 Azure 资源管理器模板（ARM 模板）与 Azure Pipelines 集成，以实现持续集成和持续部署 (CI/CD)。 本文介绍两种更高级的方法来部署具有 Azure Pipelines 的模板。
 
-本文介绍使用 Azure Pipelines 部署模板的另外两种方法。 本文介绍以下操作：
+## <a name="select-your-option"></a>选择选项
 
-* **添加用于运行 Azure PowerShell 脚本的任务** 。 此选项的优势是可在整个开发生命周期中提供一致性，因为你可以使用运行本地测试时所用的同一脚本。 脚本将部署模板，但也可以执行其他操作，例如，获取要用作参数的值。
+在继续阅读本文之前，请考虑从管道部署 ARM 模板的不同选项。
+
+* **使用 ARM 模板部署任务**。 此选项是最简单的选项。 如果要直接从存储库部署模板，则可以使用此方法。 此选项不会在本文中介绍，但会在 [与 Azure Pipelines 的 ARM 模板持续集成](deployment-tutorial-pipeline.md)中介绍。 其中介绍了如何使用 [ARM 模板部署任务](https://github.com/microsoft/azure-pipelines-tasks/blob/master/Tasks/AzureResourceManagerTemplateDeploymentV3/README.md) 从 GitHub 存储库部署模板。
+
+* **添加用于运行 Azure PowerShell 脚本的任务**。 此选项的优势是可在整个开发生命周期中提供一致性，因为你可以使用运行本地测试时所用的同一脚本。 脚本将部署模板，但也可以执行其他操作，例如，获取要用作参数的值。 本文显示了此选项。 请参阅 [Azure PowerShell 任务](#azure-powershell-task)。
 
    Visual Studio 提供包含 PowerShell 脚本的 [Azure 资源组项目](create-visual-studio-deployment-project.md)。 该脚本会将项目中的生成工件暂存到资源管理器可以访问的存储帐户。 生成工件是项目中的一些项，例如链接的模板、脚本和应用程序二进制文件。 如果要继续使用项目中的脚本，请使用本文中显示的 PowerShell 脚本任务。
 
-* **添加用于复制和部署任务的任务** 。 此选项可以方便地取代项目脚本。 在管道中配置两个任务。 一个任务将生成工件暂存到可访问的位置。 其他任务从该位置部署模板。
+* **添加用于复制和部署任务的任务**。 此选项可以方便地取代项目脚本。 在管道中配置两个任务。 一个任务将生成工件暂存到可访问的位置。 其他任务从该位置部署模板。 本文显示了此选项。 请参阅 [复制和部署任务](#copy-and-deploy-tasks)。
 
 ## <a name="prepare-your-project"></a>准备项目
 
@@ -34,11 +38,11 @@ ms.locfileid: "93233808"
 
 ## <a name="create-pipeline"></a>创建管道
 
-1. 如果事先尚未添加管道，需要创建一个新管道。 在 Azure DevOps 组织中，选择“管道”和“新建管道”。  
+1. 如果事先尚未添加管道，需要创建一个新管道。 在 Azure DevOps 组织中，选择“管道”和“新建管道”。 
 
    ![添加新管道](./media/add-template-to-azure-pipelines/new-pipeline.png)
 
-1. 指定代码的存储位置。 在下图中，选择的是“Azure Repos Git”。 
+1. 指定代码的存储位置。 在下图中，选择的是“Azure Repos Git”。
 
    ![选择代码源](./media/add-template-to-azure-pipelines/select-source.png)
 
@@ -46,7 +50,7 @@ ms.locfileid: "93233808"
 
    ![选择存储库](./media/add-template-to-azure-pipelines/select-repo.png)
 
-1. 选择要创建的管道类型。 可以选择“初学者管道”。 
+1. 选择要创建的管道类型。 可以选择“初学者管道”。
 
    ![选择管道](./media/add-template-to-azure-pipelines/select-pipeline.png)
 
@@ -101,7 +105,7 @@ ScriptPath: '<your-relative-path>/<script-file-name>.ps1'
 ScriptArguments: -Location 'centralus' -ResourceGroupName 'demogroup' -TemplateFile templates\mainTemplate.json
 ```
 
-选择“保存”时，生成管道将自动运行。  返回生成管道的摘要并观察状态。
+选择“保存”时，生成管道将自动运行。 返回生成管道的摘要并观察状态。
 
 ![查看结果](./media/add-template-to-azure-pipelines/view-results.png)
 
@@ -226,7 +230,7 @@ steps:
     deploymentName: 'deploy1'
 ```
 
-选择“保存”时，生成管道将自动运行。  返回生成管道的摘要并观察状态。
+选择“保存”时，生成管道将自动运行。 返回生成管道的摘要并观察状态。
 
 ## <a name="next-steps"></a>后续步骤
 

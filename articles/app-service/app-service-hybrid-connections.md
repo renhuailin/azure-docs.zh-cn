@@ -4,15 +4,15 @@ description: 了解如何在 Azure 应用服务中创建混合连接来访问不
 author: ccompy
 ms.assetid: 66774bde-13f5-45d0-9a70-4e9536a4f619
 ms.topic: article
-ms.date: 02/04/2020
+ms.date: 02/05/2020
 ms.author: ccompy
 ms.custom: seodec18, fasttrack-edit
-ms.openlocfilehash: 20bdeef0a45bb02fab8841c0dd8ec7755143c693
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 1b3fc4a254c1157f2c2336e6360ba7621f31364d
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/05/2021
-ms.locfileid: "99575985"
+ms.locfileid: "99594225"
 ---
 # <a name="azure-app-service-hybrid-connections"></a>Azure 应用服务混合连接
 
@@ -201,13 +201,20 @@ Commands:
 
 ## <a name="troubleshooting"></a>故障排除 ##
 
-“已连接”状态表示，至少有一个 HCM 配置了该混合连接，且可以访问 Azure。 如果混合连接状态未显示“已连接”，则表示未在任何可访问 Azure 的 HCM 上配置该混合连接。
+“已连接”状态表示，至少有一个 HCM 配置了该混合连接，且可以访问 Azure。 如果混合连接状态未显示“已连接”，则表示未在任何可访问 Azure 的 HCM 上配置该混合连接。 当 HCM 显示 " **未连接** " 时，请注意以下几点：
 
-客户端无法连接到其终结点的主要原因是使用 IP 地址而不是 DNS 名称指定了终结点。 如果应用无法访问所需的终结点，而你使用了 IP 地址，请改为使用在运行 HCM 的主机上有效的 DNS 名称。 另请检查 DNS 名称是否能够在运行 HCM 的主机上正确解析。 确认运行 HCM 的主机是否与混合连接终结点建立了连接。  
+* 你的主机是否有到端口443上的 Azure 的出站访问权限？ 可以使用 PowerShell 命令 *Test-netconnection Destination-P 端口* 从 HCM 主机进行测试 
+* 你的 HCM 是否可能处于错误的状态？ 尝试重启 "Azure 混合连接管理器服务" 本地服务。
 
-在应用服务中，可以通过高级工具 (Kudu) 控制台调用 **tcpping** 命令行工具。 此工具可以告知你是否能够访问 TCP 终结点，但不会告知你是否能够访问混合连接终结点。 在控制台中针对混合连接终结点使用此工具时，只能确认混合连接是否使用了“主机:端口”组合。  
+如果状态显示为 " **已连接** "，但应用无法访问终结点，请执行以下操作：
 
-如果你的终结点有命令行客户端，则可以从应用控制台测试连接。 例如，可以使用 curl 测试对 Web 服务器终结点的访问。
+* 请确保在混合连接中使用 DNS 名称。 如果使用 IP 地址，则可能不会进行所需的客户端 DNS 查找。 如果在 web 应用中运行的客户端未执行 DNS 查找，则混合连接将不起作用
+* 检查混合连接中使用的 DNS 名称能否从 HCM 主机解析。 使用 *Nslookup EndpointDNSname* 检查分辨率，其中 EndpointDNSname 是与混合连接定义中使用的内容完全匹配。
+* 使用 PowerShell 命令 *Test-netconnection EndpointDNSname-P 端口*  测试从你的 HCM 主机到你的终结点的访问权限。如果无法从 HCM 主机访问终结点，请检查两个主机（包括目标主机上的任何基于主机的防火墙）之间的防火墙。
+
+在应用服务中，可以从 "高级工具" (Kudu) "控制台调用 **tcpping** 命令行工具。 此工具可以告知你是否能够访问 TCP 终结点，但不会告知你是否能够访问混合连接终结点。 在控制台中针对混合连接终结点使用此工具时，只能确认混合连接是否使用了“主机:端口”组合。  
+
+如果你有终结点的命令行客户端，则可以从应用控制台测试连接。 例如，可以使用 curl 测试对 Web 服务器终结点的访问。
 
 
 <!--Image references-->

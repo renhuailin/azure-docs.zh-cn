@@ -6,12 +6,12 @@ ms.author: jakras
 ms.date: 02/06/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7d8905fbdcfc03f2683698cca57ab6c066e77863
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: b3348e5a999b507aa0d286528970beb0e03f26cd
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92205925"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594366"
 ---
 # <a name="cut-planes"></a>剪切平面
 
@@ -25,9 +25,9 @@ ms.locfileid: "92205925"
 可以通过创建 *CutPlaneComponent* 在场景中添加裁切平面。 平面的位置和方向由组件的所有者[实体](../../concepts/entities.md)确定。
 
 ```cs
-void CreateCutPlane(AzureSession session, Entity ownerEntity)
+void CreateCutPlane(RenderingSession session, Entity ownerEntity)
 {
-    CutPlaneComponent cutPlane = (CutPlaneComponent)session.Actions.CreateComponent(ObjectType.CutPlaneComponent, ownerEntity);
+    CutPlaneComponent cutPlane = (CutPlaneComponent)session.Connection.CreateComponent(ObjectType.CutPlaneComponent, ownerEntity);
     cutPlane.Normal = Axis.X; // normal points along the positive x-axis of the owner object's orientation
     cutPlane.FadeColor = new Color4Ub(255, 0, 0, 128); // fade to 50% red
     cutPlane.FadeLength = 0.05f; // gradient width: 5cm
@@ -35,9 +35,9 @@ void CreateCutPlane(AzureSession session, Entity ownerEntity)
 ```
 
 ```cpp
-void CreateCutPlane(ApiHandle<AzureSession> session, ApiHandle<Entity> ownerEntity)
+void CreateCutPlane(ApiHandle<RenderingSession> session, ApiHandle<Entity> ownerEntity)
 {
-    ApiHandle<CutPlaneComponent> cutPlane = session->Actions()->CreateComponent(ObjectType::CutPlaneComponent, ownerEntity)->as<CutPlaneComponent>();;
+    ApiHandle<CutPlaneComponent> cutPlane = session->Connection()->CreateComponent(ObjectType::CutPlaneComponent, ownerEntity)->as<CutPlaneComponent>();;
     cutPlane->SetNormal(Axis::X); // normal points along the positive x-axis of the owner object's orientation
     Color4Ub fadeColor;
     fadeColor.channels = { 255, 0, 0, 128 }; // fade to 50% red
@@ -71,7 +71,7 @@ void CreateCutPlane(ApiHandle<AzureSession> session, ApiHandle<Entity> ownerEnti
 * 切割平面组件的位掩码通过其 `ObjectFilterMask` 属性设置
 * 几何子层次结构上的位掩码是通过[HierarchicalStateOverrideComponent](override-hierarchical-state.md#features)设置的。
 
-示例：
+示例:
 
 | 剪切平面筛选器掩码 | 几何筛选器掩码  | 逻辑的结果 `AND` | 切口平面会影响几何？  |
 |--------------------|-------------------|-------------------|:----------------------------:|

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/18/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 53c0d37d4a25c2f2092a9e52bcae8ea494046bb0
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 730f26039db0f5441563ac7bf5d6b0ab536cbcd2
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98210012"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99593123"
 ---
 # <a name="app-service-networking-features"></a>应用服务网络功能
 
@@ -113,6 +113,9 @@ Azure 应用服务缩放单元为每个部署中的多个客户提供支持。 �
 * 限制对通过外部负载均衡服务或具有已知出口 IP 地址的其他网络设备的流量的访问。 
 
 若要了解如何启用此功能，请参阅[配置访问限制][iprestrictions]。
+
+> [!NOTE]
+> 基于 IP 的访问限制规则仅在应用处于应用服务环境时处理虚拟网络地址范围。 如果你的应用位于多租户服务中，则需要使用 [服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md) 限制流量，以选择虚拟网络中的子网。
 
 #### <a name="access-restriction-rules-based-on-service-endpoints"></a>基于服务终结点的访问限制规则 
 
