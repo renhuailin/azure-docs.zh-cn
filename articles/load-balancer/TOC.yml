@@ -79,6 +79,8 @@
       href: load-balancer-standard-availability-zones.md
     - name: 浮动 IP 配置
       href: load-balancer-floating-ip.md
+    - name: 分配模式
+      href: distribution-mode-concepts.md
     - name: 安全性
       items:
         - name: 安全基线
@@ -115,7 +117,7 @@
           href: ../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-cli.md
         - name: Azure PowerShell
           href: ../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md
-        - name: Azure Resource Manager 模板
+        - name: Azure 资源管理器模板
           href: ../virtual-network/ipv6-configure-standard-load-balancer-template-json.md
           displayName: ARM
     - name: 配置 TCP 重置和空闲超时

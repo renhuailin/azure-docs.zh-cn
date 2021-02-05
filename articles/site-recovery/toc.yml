@@ -478,6 +478,8 @@
       href: hyper-v-vmm-powershell-resource-manager.md
     - name: 将自动化 Runbook 添加到恢复计划
       href: site-recovery-runbook-automation.md
+    - name: ARM 模板
+      href: asr-arm-templates.md
 - name: 监视
   items:
     - name: 有关监视的常见问题

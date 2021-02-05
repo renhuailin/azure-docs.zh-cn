@@ -42,6 +42,8 @@
       href: authentication.md
     - name: 安全基线
       href: security-baseline.md
+    - name: Azure Policy 的安全控件
+      href: ./security-controls-policy.md
 - name: 容器支持
   items:
     - name: 容器支持

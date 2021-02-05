@@ -11,13 +11,13 @@ metadata:
   author: TerryLanfear
   ms.author: terrylan
   manager: rkarlin
-  ms.date: 10/28/2019
-  ms.openlocfilehash: 95136ee22ec6799a4e35b9b4619d62994d708fc1
-  ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+  ms.date: 02/03/2021
+  ms.openlocfilehash: 87584400894b97f0ef0522d8f7c421100a673cba
+  ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 11/10/2020
-  ms.locfileid: "94410073"
+  ms.lasthandoff: 02/04/2021
+  ms.locfileid: "99550296"
 landingContent:
 - title: 关于 Azure 安全性
   linkLists:
@@ -51,13 +51,13 @@ landingContent:
     links:
     - text: 监视和管理
       url: management-monitoring-overview.md
-    - text: 高级威胁检测
+    - text: 威胁防护
       url: threat-detection.md
 - title: 保护云解决方案的最佳做法
   linkLists:
   - linkListType: concept
     links:
-    - text: 网络安全性
+    - text: 网络安全
       url: network-best-practices.md
     - text: IaaS 工作负荷
       url: iaas.md

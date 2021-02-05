@@ -13,13 +13,13 @@ metadata:
   author: TerryLanfear
   ms.author: terrylan
   manager: rkarlin
-  ms.date: 08/29/2019
-  ms.openlocfilehash: a96ff0e329fb00888645949f2eab5652d15cb941
-  ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+  ms.date: 02/03/2021
+  ms.openlocfilehash: e5944ae9a7c701f3bf84ff06fd543484bfe36b23
+  ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 12/02/2020
-  ms.locfileid: "96489677"
+  ms.lasthandoff: 02/04/2021
+  ms.locfileid: "99549807"
 highlightedContent:
   items:
   - title: Azure 安全性简介
@@ -76,7 +76,7 @@ conceptualContent:
     links:
     - url: ../key-vault/general/overview.md
       itemType: overview
-      text: 什么是 Azure 密钥保管库？
+      text: 什么是 Azure Key Vault？
     - url: ../key-vault/secrets/quick-create-cli.md
       itemType: quickstart
       text: 设置和检索机密
@@ -163,10 +163,10 @@ conceptualContent:
       text: Azure 安全中心的安全警报
     - url: ../storage/common/azure-defender-storage-configure.md
       itemType: concept
-      text: Azure 存储的高级威胁防护
+      text: 适用于存储的 Azure Defender
     - url: ../azure-sql/database/threat-detection-overview.md
       itemType: concept
-      text: Azure SQL 数据库的高级威胁防护
+      text: 适用于 SQL 的 Azure Defender
     footerLink:
       url: ./fundamentals/threat-detection.md
       text: 查看详细信息
@@ -221,7 +221,7 @@ conceptualContent:
     links:
     - url: ./fundamentals/encryption-overview.md#encryption-of-data-at-rest-with-azure-sql-database
       itemType: overview
-      text: 数据安全性
+      text: 数据安全
     - url: ./fundamentals/paas-applications-using-sql.md
       itemType: concept
       text: 适用于 PaaS 数据库的最佳做法

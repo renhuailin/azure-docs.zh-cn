@@ -63,7 +63,7 @@
             - name: 如何应用 Azure 预留折扣
               href: reservations/reservation-discount-application.md?toc=/azure/cost-management-billing/toc.json
             - name: 应用服务
-              href: reservations/reservation-discount-app-service-isolated-stamp.md?toc=/azure/cost-management-billing/toc.json
+              href: reservations/reservation-discount-app-service.md?toc=/azure/cost-management-billing/toc.json
             - name: 用于 Redis 的 Azure 缓存
               href: reservations/understand-azure-cache-for-redis-reservation-charges.md?toc=/azure/cost-management-billing/toc.json
             - name: Cosmos DB
@@ -303,7 +303,7 @@
             - name: 购买 Azure 预留
               href: reservations/prepare-buy-reservation.md?toc=/azure/cost-management-billing/toc.json
             - name: 应用服务
-              href: reservations/prepay-app-service-isolated-stamp.md?toc=/azure/cost-management-billing/toc.json
+              href: reservations/prepay-app-service.md?toc=/azure/cost-management-billing/toc.json
             - name: Azure Cache for Redis 预留项
               href: /azure/data-explorer/pricing-reserved-capacity?toc=/azure/cost-management-billing/toc.json
             - name: Cosmos DB
