@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: ryanwi
 ROBOTS: NOINDEX
-ms.openlocfilehash: 4a108f8f5c5b333a9fc7e6eabbfa516b6578ca76
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 28cfb3d8b09c9661d16ac6e7146c50e7043d913a
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98063818"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99581952"
 ---
 # <a name="how-to-find-a-specific-api-needed-for-a-custom-developed-application"></a>如何为自定义开发的应用程序查找所需的特定 API
 
-访问 API 需要配置访问作用域和访问角色。 如果想要将资源应用程序 Web API 公开至客户端应用程序，需要为 API 配置访问作用域和访问角色。 如果想要让客户端应用程序访问 Web API，需要配置权限以访问应用注册中的 API。
+访问 API 需要配置访问作用域和访问角色。 如果要将资源应用程序 web Api 公开给客户端应用程序，请为 API 配置访问作用域和角色。 如果希望客户端应用程序访问 web API，请在应用注册中配置权限以访问 API。
 
 ## <a name="configuring-a-resource-application-to-expose-web-apis"></a>将资源应用程序配置为公开 Web API
 

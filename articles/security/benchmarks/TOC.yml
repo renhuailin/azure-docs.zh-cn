@@ -231,3 +231,7 @@
       href: ../../vpn-gateway/security-baseline.md
     - name: Windows 虚拟桌面安全基线
       href: ../../virtual-desktop/security-baseline.md
+- name: 资源
+  items:
+    - name: 在 ASB 和 CIS 基准之间映射
+      href: v2-cis-benchmark.md

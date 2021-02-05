@@ -63,6 +63,8 @@
       items:
         - name: 创建虚拟机规模集
           href: ./scripts/cli-sample-create-simple-scale-set.md
+        - name: 创建和管理虚拟机规模集
+          href: ./scripts/cli-sample-manage-scale-set.md
         - name: 从自定义 VM 映像创建规模集
           href: ./scripts/cli-sample-create-scale-set-from-custom-image.md
         - name: 将应用程序安装到规模集

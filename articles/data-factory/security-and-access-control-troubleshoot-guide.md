@@ -5,15 +5,15 @@ services: data-factory
 author: lrtoyou1223
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 01/05/2021
+ms.date: 02/04/2021
 ms.author: lle
 ms.reviewer: craigg
-ms.openlocfilehash: 70e4d0c1a9f26f83924c1343e4e8e51c5595b324
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 37da2869f0cf315ac0a6851c9a77dcee4debf71a
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98944520"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99581680"
 ---
 # <a name="troubleshoot-azure-data-factory-security-and-access-control-issues"></a>排查 Azure 数据工厂安全性和访问控制问题
 
@@ -88,9 +88,10 @@ ms.locfileid: "98944520"
 #### <a name="resolution"></a>解决方法
 
 若要解决此问题，请执行以下操作：
-- 请参阅 azure [数据工厂的 Azure 专用链接](./data-factory-private-link.md#dns-changes-for-private-endpoints) 一文。 此说明用于配置专用 DNS 区域或服务器，以将数据工厂 FQDN 解析为专用 IP 地址。
 
-- 建议使用自定义 DNS 作为长期解决方案。 但是，如果不想配置专用 DNS 区域或服务器，请尝试以下临时解决方案：
+- 作为选项，我们建议你在数据工厂 "专用链接 DNS 区域" 下手动添加 "虚拟网络链接"。 有关详细信息，请参阅 azure [数据工厂的 Azure 专用链接](./data-factory-private-link.md#dns-changes-for-private-endpoints) 一文。 此说明用于配置专用 DNS 区域或自定义 DNS 服务器，以将数据工厂 FQDN 解析为专用 IP 地址。 
+
+- 但是，如果不想配置专用 DNS 区域或自定义 DNS 服务器，请尝试以下临时解决方案：
 
   1. 更改 Windows 中的主机文件，并将专用 IP (Azure 数据工厂专用终结点) 映射到 Azure 数据工厂 FQDN。
   

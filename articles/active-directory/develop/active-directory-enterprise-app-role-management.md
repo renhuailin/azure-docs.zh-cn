@@ -12,12 +12,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 12/07/2020
 ms.author: jeedes
-ms.openlocfilehash: 10b61dd4b6cc3a99b8eecf86cb5ba7e718d64743
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 076054b7240712fec57d0908615ce7abbfb62013
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98015107"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582224"
 ---
 # <a name="how-to-configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications"></a>如何：为企业应用程序配置 SAML 令牌中颁发的角色声明
 
@@ -30,7 +30,7 @@ ms.locfileid: "98015107"
 
 ## <a name="when-to-use-this-feature"></a>何时使用此功能
 
-如果应用程序预期 SAML 响应中会传递自定义角色，则需要使用此功能。 可创建尽可能多的角色，以便将其从 Azure AD 传递回应用程序。
+如果你的应用程序需要 Azure AD 返回的 SAML 响应中的自定义角色，请使用此功能。 您可以根据需要创建任意数量的角色。
 
 ## <a name="create-roles-for-an-application"></a>为应用程序创建角色
 
@@ -139,11 +139,11 @@ ms.locfileid: "98015107"
     ![“编辑分配”窗格和“选择角色”窗格](./media/active-directory-enterprise-app-role-management/graph-explorer-new6.png)
 
     
-    需要在 Azure 门户中刷新会话才能看到新角色。
+    刷新 Azure 门户中的会话，以查看新角色。
 
 1. 更新“属性”表以定义角色声明的自定义映射。
 
-1. 在“用户属性”对话框的“用户声明”部分执行以下步骤，以便添加 SAML 令牌属性，如下表所示：
+1. 在“用户属性”  对话框的“用户声明”  部分执行以下步骤，以便添加 SAML 令牌属性，如下表所示：
 
     | 特性名 | 特性值 |
     | -------------- | ----------------|

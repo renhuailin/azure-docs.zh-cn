@@ -14,8 +14,6 @@
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/'
     - name: 配额和限制
       href: speech-services-quotas-and-limits.md
-    - name: Docs 中的新增内容
-      href: whats-new.md
 - name: 语音转文本
   items:
     - name: 语音转文本文档
@@ -113,22 +111,10 @@
           href: long-audio-api.md
     - name: 自定义
       items:
-        - name: 合理部署
-          items:
-            - name: 自定义语音的限制
-              href: concepts-gating-overview.md
-            - name: 部署合成技术
-              href: concepts-guidelines-responsible-deployment-synthetic.md
-            - name: 为配音员披露
-              href: /legal/cognitive-services/speech-service/disclosure-voice-talent
-            - name: 披露设计准则
-              href: concepts-disclosure-guidelines.md
-            - name: 披露设计模式
-              href: concepts-disclosure-patterns.md
-            - name: 行为准则
-              href: /legal/cognitive-services/speech-service/tts-code-of-conduct
         - name: 自定义语音门户
           items:
+            - name: 什么是自定义神经语音？
+              href: custom-neural-voice.md
             - name: 自定义语音入门
               displayName: 'custom voice, neural voice'
               href: how-to-custom-voice.md
@@ -142,6 +128,32 @@
           items:
             - name: 音频内容创建
               href: how-to-audio-content-creation.md
+    - name: 负责使用 AI
+      items:
+        - name: 自定义神经语音
+          items:
+            - name: 透明度说明
+              items:
+                - name: 自定义神经语音的用例
+                  href: /legal/cognitive-services/speech-service/custom-neural-voice/transparency-note-custom-neural-voice?context=/azure/cognitive-services/speech-service/context/context
+                - name: 特征和限制
+                  href: /legal/cognitive-services/speech-service/custom-neural-voice/characteristics-and-limitations-custom-neural-voice?context=/azure/cognitive-services/speech-service/context/context
+            - name: 集成和负责使用
+              items:
+                - name: 有限的访问权限
+                  href: /legal/cognitive-services/speech-service/custom-neural-voice/limited-access-custom-neural-voice?context=/azure/cognitive-services/speech-service/context/context
+                - name: 合成语音的可靠部署
+                  href: concepts-guidelines-responsible-deployment-synthetic.md
+                - name: 为配音员披露
+                  href: /legal/cognitive-services/speech-service/disclosure-voice-talent?context=/azure/cognitive-services/speech-service/context/context
+                - name: 披露设计准则
+                  href: concepts-disclosure-guidelines.md
+                - name: 披露设计模式
+                  href: concepts-disclosure-patterns.md
+                - name: 行为准则
+                  href: /legal/cognitive-services/speech-service/tts-code-of-conduct?context=/azure/cognitive-services/speech-service/context/context
+            - name: 数据、隐私和安全
+              href: /legal/cognitive-services/speech-service/custom-neural-voice/data-privacy-security-custom-neural-voice?context=/azure/cognitive-services/speech-service/context/context
     - name: 参考
       items:
         - name: C++

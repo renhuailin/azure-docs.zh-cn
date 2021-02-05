@@ -13,12 +13,12 @@ ms.date: 08/31/2020
 ms.author: ryanwi
 ms.reviewer: arielgo, jiml
 ms.custom: aaddev, signin_art
-ms.openlocfilehash: 3ee59226853f4ea5aabf57a8866ba014aa874774
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 236e82ab97244e1428441f83295f6a5d4ed56350
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90706194"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99581986"
 ---
 # <a name="branding-guidelines-for-applications"></a>适用于应用程序的品牌准则
 
@@ -27,18 +27,18 @@ ms.locfileid: "90706194"
 在本文中，你将：
 
 - 了解 Microsoft 管理的两种用户帐户以及如何在应用程序中引用 Azure AD 帐户
-- 了解添加要在应用中使用的 Microsoft 徽标所需执行的操作
-- 下载官方的**登录**或**使用 Microsoft 登录**图像以在应用中使用
+- 了解在应用中使用 Microsoft 徽标的要求
+- 下载官方的 **登录** 或 **使用 Microsoft 登录** 图像以在应用中使用
 - 了解品牌和导航的注意事项
 
 ## <a name="personal-accounts-vs-work-or-school-accounts-from-microsoft"></a>个人帐户与 Microsoft 中的工作或学校帐户
 
 Microsoft 管理两种类型的用户帐户：
 
-- **个人帐户**（以前称为 Windows Live ID）。 这些帐户表示个人** 用户与 Microsoft 之间的关系，用于访问使用者的设备和 Microsoft 的服务。 这些帐户专供个人使用。
+- **个人帐户**（以前称为 Windows Live ID）。 这些帐户表示个人用户与 Microsoft 之间的关系，用于访问使用者的设备和 Microsoft 的服务。 这些帐户专供个人使用。
 - **工作或学校帐户。** 这些帐户由 Microsoft 代表使用 Azure Active Directory 的组织进行管理。 这些帐户用于登录到 Microsoft 365 和 Microsoft 的其他业务服务。
 
-Microsoft 工作或学校帐户帐户通常由组织（公司、学校、政府机构）分配给最终用户（员工、学生、联邦雇员）。 这些帐户直接在 Azure AD 平台) 或从本地目录（如 Windows Server Active Directory）同步到 Azure AD 中的云 (。 Microsoft 是工作或学校帐户的监管员**，但这些帐户由组织所有和控制。
+Microsoft 工作或学校帐户帐户通常由组织（公司、学校、政府机构）分配给最终用户（员工、学生、联邦雇员）。 这些帐户直接在 Azure AD 平台) 或从本地目录（如 Windows Server Active Directory）同步到 Azure AD 中的云 (。 Microsoft 是工作或学校帐户的监管员，但这些帐户由组织所有和控制。
 
 ## <a name="referring-to-azure-ad-accounts-in-your-application"></a>在应用程序中引用 Azure AD 帐户
 
@@ -49,13 +49,13 @@ Microsoft 不会向最终用户显示 Azure 或 Active Directory 品牌名称，
 
 ## <a name="user-account-pictogram"></a>用户帐户象形图
 
-在先前版本的准则中，我们建议使用“蓝色徽章”象形图。 根据用户和开发人员的反馈，我们现在建议改用 Microsoft 徽标。 Microsoft 徽标将帮助用户了解，他们可以重用其用于 Microsoft 365 或其他 Microsoft 业务服务的帐户来登录应用。
+在先前版本的准则中，我们建议使用“蓝色徽章”象形图。 根据用户和开发人员的反馈，我们现在建议改用 Microsoft 徽标。 Microsoft 徽标帮助用户了解他们可重用其用于 Microsoft 365 或其他 Microsoft 业务服务的帐户来登录应用。
 
 ## <a name="signing-up-and-signing-in-with-azure-ad"></a>使用 Azure AD 注册和登录
 
 应用程序可以为注册和登录提供不同的路径，以下部分提供了这两种应用场景的可视指南。
 
-**如果应用支持最终用户注册（例如免费试用或免费增值模式）**：可以显示“登录”**** 按钮，让用户使用其工作帐户或个人帐户访问应用。 当用户首次访问你的应用程序时，Azure AD 会显示许可提示。
+**如果应用支持最终用户注册（例如免费试用或免费增值模式）**：可以显示“登录”按钮，让用户使用其工作帐户或个人帐户访问应用。 当用户首次访问你的应用程序时，Azure AD 会显示许可提示。
 
 **如果应用需要只有管理员才能授予的权限，或者需要组织许可：** 请将管理员请求与用户登录区别开来。 “获取此应用”按钮  会将管理员重定向到登录页，然后要求他们代表其组织中的用户授权同意，这还有一个额外的好处，那就是在你的应用中抑制最终用户许可提示。
 
@@ -69,7 +69,7 @@ Microsoft 不会向最终用户显示 Azure 或 Active Directory 品牌名称，
 
 但是，我们建议编写说明性的文本而不要依赖于按钮。 例如：
 
-> *如果已使用 Microsoft Microsoft 365 或其他业务服务，则可以授予 <your_app_name> 访问组织的数据。这样，用户便可以使用其现有工作帐户访问 <your_app_name>。*
+> *如果已使用 Microsoft 365 或 Microsoft 的其他业务服务，可向 <your_app_name> 授予访问组织数据的权限。这样，用户便可以使用其现有工作帐户访问 <your_app_name>。*
 
 若要下载官方 Microsoft 徽标以在应用中使用，请右键单击要使用的徽标，然后将其保存到计算机。
 
@@ -100,13 +100,13 @@ Microsoft 徽标和“通过 Microsoft 登录”词语的关联可唯一地将 A
 
 ## <a name="branding-dos-and-donts"></a>品牌注意事项
 
-**务必**将“工作或学校帐户”与“通过 Microsoft 登录”按钮结合使用来提供附加说明，以便帮助最终用户识别他们是否可以使用该应用。 **请勿** 使用“企业帐户”、“业务帐户”或“公司帐户”等其他词语。
+**务必** 将“工作或学校帐户”与“通过 Microsoft 登录”按钮结合使用来提供附加说明，以便帮助最终用户识别他们是否可以使用该应用。 **请勿** 使用“企业帐户”、“业务帐户”或“公司帐户”等其他词语。
 
-**请勿** 使用 "Microsoft 365 ID" 或 "Azure ID"。 Microsoft 365 也是 Microsoft 的使用者产品名称，它不使用 Azure AD 进行身份验证。
+请勿使用“Microsoft 365 ID”或“Azure ID”。 Microsoft 365 也是 Microsoft 的消费型产品名称，它不使用 Azure AD 进行身份验证。
 
 **不要** 更改 Microsoft 徽标。
 
-**请勿**向最终用户显示 Azure 或 Active Directory 品牌。 但是，可以对开发人员、IT 专业人员和管理员使用这些词语。
+**请勿** 向最终用户显示 Azure 或 Active Directory 品牌。 但是，可以对开发人员、IT 专业人员和管理员使用这些词语。
 
 ## <a name="navigation-dos-and-donts"></a>导航注意事项
 

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 03/03/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: c302e10a169a190d11f016620ec048cc58e3ac28
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 4147adb004947c22ec39349f408d794bca160ef5
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99220158"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582173"
 ---
 # <a name="authentication-flows-and-application-scenarios"></a>身份验证流和应用程序方案
 
@@ -162,7 +162,7 @@ MSAL iOS 和 MSAL Android 默认使用系统 Web 浏览器。 但是，你可以
 
 可以使用 Microsoft 标识平台终结点来保护 Web 服务，例如应用的 RESTful Web API。 通过访问令牌调用受保护的 Web API。 该令牌帮助保护 API 的数据并对传入请求进行身份验证。 Web API 调用方会在 HTTP 请求的授权标头中追加一个访问令牌。
 
-若要保护 ASP.NET 或 ASP.NET Core Web API，需要验证访问令牌。 可以使用 ASP.NET JWT 中间件进行这种验证。 验证是由[适用于.NET 的 IdentityModel 扩展](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki)库而不是 MSAL.NET 完成的。
+如果要保护 ASP.NET 或 ASP.NET Core web API，请验证访问令牌。 可以使用 ASP.NET JWT 中间件进行这种验证。 验证是由[适用于.NET 的 IdentityModel 扩展](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki)库而不是 MSAL.NET 完成的。
 
 有关详细信息，请参阅[受保护的 Web API](scenario-protected-web-api-overview.md)。
 

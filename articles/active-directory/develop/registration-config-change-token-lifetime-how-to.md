@@ -12,22 +12,22 @@ ms.date: 10/23/2020
 ms.author: ryanwi
 ms.custom: aaddev, seoapril2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 5dec4958c3a1d955d8f8c1dce90e27696fbebfe5
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: d39f378171443f028ef6b549b120b22f2a3405c4
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98063342"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582935"
 ---
 # <a name="how-to-change-the-token-lifetime-defaults-for-a-custom-developed-application"></a>如何为自定义开发的应用程序更改令牌生存期默认设置
 
 本文介绍如何使用 Azure AD PowerShell 来设置访问令牌生存期策略。 Azure AD Premium 允许应用程序开发人员和租户管理员配置为非机密客户端颁发的令牌的生存期。 根据租户范围或要访问的资源设置令牌生存期策略。
 
 > [!IMPORTANT]
-> 在5月 2020 5 日后，租户将无法再配置刷新和会话令牌生存期。  在2021年1月30日后，Azure Active Directory 将停止在策略中遵守现有的刷新和会话令牌配置。 在弃用之后，你仍然可以配置访问令牌生存期。 有关详细信息，请参阅 [Azure AD 中的可配置令牌生存期](./active-directory-configurable-token-lifetimes.md)。
+> 在5月 2020 5 日后，租户将无法再配置刷新和会话令牌生存期。  Azure Active Directory 将在 2021 年 1 月 30 日之后停止执行策略中的现有刷新和会话令牌配置。 在弃用之后，你仍然可以配置访问令牌生存期。 有关详细信息，请参阅 [Azure AD 中的可配置令牌生存期](./active-directory-configurable-token-lifetimes.md)。
 > 已在 Azure AD 条件访问中实现 [身份验证会话管理功能](../conditional-access/howto-conditional-access-session-lifetime.md)   。 你可以使用此新功能，通过设置登录频率来配置刷新令牌生存期。  
 
-若要设置访问令牌生存期策略，需要下载 [Azure AD PowerShell 模块](https://www.powershellgallery.com/packages/AzureADPreview)。
+若要设置访问令牌生存期策略，请下载 [Azure AD PowerShell 模块](https://www.powershellgallery.com/packages/AzureADPreview)。
 运行 **Connect-AzureAD -Confirm** 命令。
 
 下面是一个示例策略，要求用户在 web 应用中更频繁地进行身份验证。 此策略设置对 web 应用的服务主体的访问生存期。 创建策略并将其分配给服务主体。 还需要获取服务主体的 ObjectId。

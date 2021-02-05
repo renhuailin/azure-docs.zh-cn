@@ -5,15 +5,15 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/28/2020
+ms.date: 02/04/2021
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 32f8ab3f7e222108bec4ec81b14c113705370096
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: db55a29e53c53e26fbb04d96ddf1864946bafbfd
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95913056"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99581272"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 的已知问题
 
@@ -41,7 +41,7 @@ Blob API 和 Data Lake Storage Gen2 API 可以对相同的数据执行操作。
 
 本部分介绍了同时使用 blob API 和 Data Lake Storage Gen2 API 对相同的数据执行操作时的问题和限制。
 
-* 不能使用 blob API 和 Data Lake Storage Api 写入文件的同一个实例。 如果使用 Data Lake Storage Gen2 API 向某个文件进行写入，则调用[获取 Block 列表](/rest/api/storageservices/get-block-list) blob API 时看不到该文件的块。 唯一的例外是在覆盖时可以使用。 可以使用任一 API 覆盖文件/Blob。
+* 不能使用 blob API 和 Data Lake Storage API 将内容写入到文件的同一实例。 如果使用 Data Lake Storage Gen2 API 向某个文件进行写入，则调用[获取 Block 列表](/rest/api/storageservices/get-block-list) blob API 时看不到该文件的块。 唯一的例外是在覆盖时可以使用。 可以使用任一 API 覆盖文件/Blob。
 
 * 如果在使用[列出 Blob](/rest/api/storageservices/list-blobs) 操作时不指定分隔符，则结果会包含目录和 Blob。 如果选择使用分隔符，请只使用正斜杠 (`/`)。 这是唯一支持的分隔符。
 
@@ -54,9 +54,6 @@ Blob API 和 Data Lake Storage Gen2 API 可以对相同的数据执行操作。
 * [获取页面范围](/rest/api/storageservices/get-page-ranges)
 * [增量复制 Blob](/rest/api/storageservices/incremental-copy-blob)
 * [从 URL 放置页](/rest/api/storageservices/put-page-from-url)
-* [追加块](/rest/api/storageservices/append-block)
-* [通过 URL 追加块](/rest/api/storageservices/append-block-from-url)
-
 
 具有分层命名空间的帐户不支持非托管 VM 磁盘。 若要在存储帐户中启用分层命名空间，请将非托管 VM 磁盘置于未启用分层命名空间功能的存储帐户中。
 
@@ -64,7 +61,7 @@ Blob API 和 Data Lake Storage Gen2 API 可以对相同的数据执行操作。
 
 ## <a name="support-for-setting-access-control-lists-acls-recursively"></a>支持以递归方式设置访问控制列表 (ACL)
 
-已公开将 ACL 更改从父目录递归应用于子项目的功能。 在此功能的当前版本中，你可以使用 PowerShell、Azure CLI 以及 .NET、Java 和 Python SDK 来应用 ACL 更改。 目前尚不支持 Azure 门户或 Azure 存储资源管理器。
+将 ACL 更改以递归方式从父目录应用到子项的功能已正式发布。 在此功能的当前版本中，你可以使用 PowerShell、Azure CLI、.NET、Java 和 Python SDK 应用 ACL 更改。 尚不支持 Azure 门户或 Azure 存储资源管理器。
 
 <a id="known-issues-tools"></a>
 

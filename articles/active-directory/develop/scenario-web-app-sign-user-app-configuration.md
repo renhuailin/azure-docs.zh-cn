@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 45f3a066283a921f60909a4aa3cfdc76f3faad06
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 54caea62feed6ae7c082a979901999a5dcb3bd71
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98753267"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582241"
 ---
 # <a name="web-app-that-signs-in-users-code-configuration"></a>可将用户登录的 Web 应用：代码配置
 
@@ -64,13 +64,13 @@ ms.locfileid: "98753267"
 
 ## <a name="configuration-files"></a>配置文件
 
-使用 Microsoft 标识平台将用户登录的 Web 应用程序是通过配置文件配置的。 需填充的设置为：
+使用 Microsoft 标识平台将用户登录的 Web 应用程序是通过配置文件配置的。 需要在配置中指定以下值：
 
 - 云实例 (`Instance`)（例如，如果需要在国家云中运行应用）
 - 租户 ID 中的受众 (`TenantId`)
 - 应用程序的客户端 ID (`ClientId`)，从 Azure 门户中复制
 
-有时，可以通过 `Authority`（`Instance` 与 `TenantId` 的串联）将应用程序参数化。
+你可能还会看到对的引用 `Authority` 。 `Authority`值是 `Instance` 和值的串联 `TenantId` 。
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
@@ -133,7 +133,7 @@ ms.locfileid: "98753267"
 }
 ```
 
-在 Azure 门户中，需要在应用程序的“身份验证”页中注册的回复 URI 需与这些 URL 相匹配。 对于上述两个配置文件，URL 为 `https://localhost:44321/signin-oidc`。 原因是 `applicationUrl` 为 `http://localhost:3110`，但指定的是 `sslPort` (44321)。 `CallbackPath` 是 `appsettings.json` 中定义的 `/signin-oidc`。
+在 Azure 门户中，在应用程序的 **身份验证** 页上注册的重定向 uri 需要与这些 url 匹配。 对于上述两个配置文件，URL 为 `https://localhost:44321/signin-oidc`。 原因是 `applicationUrl` 为 `http://localhost:3110`，但指定的是 `sslPort` (44321)。 `CallbackPath` 是 `appsettings.json` 中定义的 `/signin-oidc`。
 
 注销 URI 将采用相同方式设置为 `https://localhost:44321/signout-oidc`。
 
@@ -161,7 +161,7 @@ ms.locfileid: "98753267"
   </appSettings>
 ```
 
-在 Azure 门户中，需要在应用程序的“身份验证”页中注册的回复 URI 需与这些 URL 相匹配。 即，它们应是 `https://localhost:44326/`。
+在 Azure 门户中，在应用程序的 **身份验证** 页上注册的答复 uri 需要与这些 url 匹配。 即，它们应是 `https://localhost:44326/`。
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -175,7 +175,7 @@ aad.redirectUriSignin=http://localhost:8080/msal4jsample/secure/aad
 aad.redirectUriGraph=http://localhost:8080/msal4jsample/graph/me
 ```
 
-在 Azure 门户中，需要在应用程序的“身份验证”页中注册的回复 URI 需与应用程序定义的 `redirectUri` 实例相匹配。 即，它们应是 `http://localhost:8080/msal4jsample/secure/aad` 和 `http://localhost:8080/msal4jsample/graph/me`。
+在 Azure 门户中，你在你的应用程序的 **身份验证** 页上注册的答复 uri 需要与 `redirectUri` 应用程序定义的实例匹配。 即，它们应是 `http://localhost:8080/msal4jsample/secure/aad` 和 `http://localhost:8080/msal4jsample/graph/me`。
 
 # <a name="python"></a>[Python](#tab/python)
 

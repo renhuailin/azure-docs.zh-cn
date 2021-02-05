@@ -13,12 +13,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: c071cb9a8a27964a93e039e4d1536e078730bfc9
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 6e6eda3d711710ea7450165ab02d7a260067bfcb
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98753622"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582547"
 ---
 # <a name="get-a-token-for-a-mobile-app-that-calls-web-apis"></a>获取调用 Web API 的移动应用的令牌
 
@@ -26,7 +26,7 @@ ms.locfileid: "98753622"
 
 ## <a name="define-a-scope"></a>定义范围
 
-请求令牌时，需定义作用域。 作用域决定了应用能够访问哪些数据。
+请求令牌时，请定义一个作用域。 作用域决定了应用能够访问哪些数据。
 
 定义范围的最简单方法是将所需 Web API 的 `App ID URI` 与范围 `.default` 组合在一起。 此定义告知 Microsoft 标识平台，你的应用程序需要门户中设置的所有作用域。
 
@@ -236,7 +236,7 @@ catch(MsalUiRequiredException)
     如果令牌获取失败，而你想要让用户重新登录，则此选项会很有用。 在这种情况下，MSAL 会将 `prompt=login` 发送到标识提供者。 你可能希望在注重安全的应用程序中使用此选项。在此类应用程序中，组织监管政策要求用户在每次访问该应用程序的特定部分时都要登录。
 - `Never` 仅适用于 .NET 4.5 和 Windows 运行时 (WinRT)。 此常量不会提示用户，而是尝试使用隐藏的嵌入式 Web 视图中存储的 Cookie。 有关详细信息，请参阅[在 MSAL.NET 中使用 Web 浏览器](./msal-net-web-browsers.md)。
 
-    如果此选项失败，则 `AcquireTokenInteractive` 会引发异常，告知需要进行 UI 交互。 然后，需要使用另一个 `Prompt` 参数。
+    如果此选项失败，则 `AcquireTokenInteractive` 会引发异常，告知需要进行 UI 交互。 然后使用另一个 `Prompt` 参数。
 - `NoPrompt` 不会向标识提供者发送提示。
 
     此选项仅适用于 Azure Active Directory B2C 中的编辑配置文件策略。 有关详细信息，请参阅 [B2C 细节](https://aka.ms/msal-net-b2c-specificities)。

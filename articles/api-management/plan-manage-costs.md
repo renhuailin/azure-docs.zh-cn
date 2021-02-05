@@ -7,12 +7,12 @@ ms.custom: subject-cost-optimization
 ms.service: api-management
 ms.topic: how-to
 ms.date: 12/15/2020
-ms.openlocfilehash: e171e642440b7c6c99353169e426a722885f1bcf
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 1ebb89ae318e57f1d4e0708a08019515ca43158d
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98725931"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99581323"
 ---
 # <a name="plan-and-manage-costs-for-api-management"></a>规划和管理 API 管理的成本
 
@@ -89,10 +89,10 @@ API 管理的成本仅是 Azure 帐单中每月成本的一部分。 尽管本�
 
 ### <a name="choose-tier"></a>选择层
 
-查看 [AZURE API 管理层基于功能的比较](api-management-features.md) ，以帮助确定适用于你的方案的服务层。 不同的服务层支持为各种用例设计的特性和功能的组合，但成本不同。 随时[升级](upgrade-and-scale.md)到不同的服务层。
+查看 [AZURE API 管理层基于功能的比较](api-management-features.md) ，以帮助确定适用于你的方案的服务层。 不同的服务层支持为各种用例设计的特性和功能的组合，但成本不同。 
 
 * **消耗** 服务层提供不会产生固定成本的轻型无服务器选项。 将根据特定阈值上对服务的 API 调用数进行计费。 容量还会根据服务负载自动进行缩放。
-* 其他 API 管理层会产生每月费用，并为评估和生产工作负荷提供更大的吞吐量和更丰富的功能集。
+* **开发人员**、**基本**、**标准** 和 **高级** API 管理层将产生每月费用，并为评估和生产工作负荷提供更大的吞吐量和更丰富的功能集。 随时[升级](upgrade-and-scale.md)到不同的服务层。
 
 ### <a name="scale-using-capacity-units"></a>使用容量单位进行缩放
 

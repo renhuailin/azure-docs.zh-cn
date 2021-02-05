@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: bcbff131706854c079a5af2f38cad98f97018167
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 2109705116c323fd3632b7230a81ccd9158c1a64
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98753314"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582309"
 ---
 # <a name="a-web-app-that-calls-web-apis-code-configuration"></a>调用 Web API 的 Web 应用：代码配置
 
@@ -44,7 +44,7 @@ Microsoft 身份验证库 (MSAL) 中的以下库支持 Web 应用的授权代码
 
 ## <a name="client-secrets-or-client-certificates"></a>客户端密码或客户端证书
 
-鉴于 Web 应用现在调用下游 Web API，你需要在 appsettings.json 文件中提供客户端密码或客户端证书。 你还可以添加一个节来指定：
+假设 web 应用现在调用下游 web API，请在 *appsettings.js* 文件中提供客户端机密或客户端证书。 你还可以添加一个节来指定：
 
 - 下游 Web API 的 URL
 - 调用 API 所需的范围
@@ -184,7 +184,7 @@ Web 应用将需要获取下游 API 的令牌。 可通过在 `.AddMicrosoftIden
 :::image type="content" source="media/scenarios/microsoft-identity-web-startup-cs.svg" alt-text="此框图显示了 Startup.cs 中的服务配置选项，用于调用 Web API 和指定令牌缓存实现":::
 
 > [!NOTE]
-> 若要完全理解本文中的代码示例，需要熟悉 [ASP.NET Core 基础知识](/aspnet/core/fundamentals)，尤其是[依赖关系注入](/aspnet/core/fundamentals/dependency-injection)和[选项](/aspnet/core/fundamentals/configuration/options)。
+> 若要完全了解此处的代码示例，请熟悉 [ASP.NET Core 基础知识](/aspnet/core/fundamentals)，并特别了解 [依赖关系注入](/aspnet/core/fundamentals/dependency-injection) 和 [选项](/aspnet/core/fundamentals/configuration/options)。
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 

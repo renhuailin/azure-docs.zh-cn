@@ -5,13 +5,14 @@ author: robinsh
 ms.author: robinsh
 ms.topic: reference
 ms.service: iot-hub
+ms.custom: subject-monitoring
 ms.date: 10/22/2020
-ms.openlocfilehash: 609c44991e7deca183321758fabdef80b71210c5
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: f198b59f106b7d2a29e35d77b54274328be6fa93
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96460858"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99581595"
 ---
 # <a name="monitoring-azure-iot-hub-data-reference"></a>监视 Azure IoT 中心数据参考
 
@@ -277,7 +278,7 @@ Azure IoT 中心具有以下与它的一些路由和事件网格指标关联的�
 
 ### <a name="device-telemetry"></a>设备遥测
 
-设备遥测类别跟踪在 IoT 中心发生且与遥测管道相关的错误。 此类别包括发送遥测事件（例如限制）和接收遥测事件（例如未经授权的读取者）时发生的错误。 此类别无法捕捉设备本身运行的代码所造成的错误。
+设备遥测类别跟踪在 IoT 中心发生的、与遥测管道相关的错误。 此类别包括发送遥测事件（例如限制）和接收遥测事件（例如未经授权的读取者）时发生的错误。 此类别无法捕捉设备本身运行的代码所造成的错误。
 
 ```json
 {
@@ -329,7 +330,7 @@ Azure IoT 中心具有以下与它的一些路由和事件网格指标关联的�
 
 ### <a name="device-identity-operations"></a>设备标识操作
 
-设备标识操作类别跟踪你尝试在其 IoT 中心的标识注册表中创建、更新或删除条目时所发生的错误。 预配方案就很适合跟踪此类别。
+设备标识操作类别跟踪你尝试在 IoT 中心的标识注册表中创建、更新或删除条目时所发生的错误。 预配方案就很适合跟踪此类别。
 
 ```json
 {
@@ -354,9 +355,9 @@ Azure IoT 中心具有以下与它的一些路由和事件网格指标关联的�
 
 文件上传类别跟踪在 IoT 中心发生且与文件上传功能相关的错误。 此类别包括：
 
-* SAS URI 发生的错误，例如它在设备就上传完毕通知中心之前到期。
+* SAS URI 发生的错误，例如，它在设备向中心通知某个完成的上传前失效。
 
-* 设备报告的失败上传。
+* 由设备报告的失败上传。
 
 * 创建 IoT 中心通知消息期间在存储中找不到文件时发生的错误。
 
@@ -595,8 +596,8 @@ Azure IoT 中心具有以下与它的一些路由和事件网格指标关联的�
 
 | 属性 | 类型 | 说明 |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
-| **isRoutingEnabled** | String | True 或 false，指示 IoT 中心是否启用了消息路由 |
-| **parentSpanId** | String | 父消息的 [span-id](https://w3c.github.io/trace-context/#parent-id)，在这种情况下为 D2C 消息跟踪 |
+| **isRoutingEnabled** | 字符串 | True 或 false，指示 IoT 中心是否启用了消息路由 |
+| **parentSpanId** | 字符串 | 父消息的 [span-id](https://w3c.github.io/trace-context/#parent-id)，在这种情况下为 D2C 消息跟踪 |
 
 #### <a name="iot-hub-egress-logs"></a>IoT 中心流出日志
 
@@ -627,9 +628,9 @@ Azure IoT 中心具有以下与它的一些路由和事件网格指标关联的�
 
 | 属性 | 类型 | 说明 |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
-| **点** | String | 路由终结点的名称 |
-| **endpointType** | String | 路由终结点的类型 |
-| **parentSpanId** | String | 父消息的 [span-id](https://w3c.github.io/trace-context/#parent-id)，在这种情况下为 IoT 中心流入消息跟踪 |
+| **点** | 字符串 | 路由终结点的名称 |
+| **endpointType** | 字符串 | 路由终结点的类型 |
+| **parentSpanId** | 字符串 | 父消息的 [span-id](https://w3c.github.io/trace-context/#parent-id)，在这种情况下为 IoT 中心流入消息跟踪 |
 
 ### <a name="configurations"></a>配置
 

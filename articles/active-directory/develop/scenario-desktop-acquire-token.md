@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 01/06/2021
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: c58f4a553073eb3ed062ef9ec2a66c8e4f40e57b
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 4a244c543aa83ae84891e3f942995dc340a7209d
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98785119"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582649"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>用于调用 Web API 的桌面应用：获取令牌
 
@@ -445,7 +445,7 @@ application.acquireToken(with: interactiveParameters, completionBlock: { (result
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
-在 MSAL.NET 中，需要使用：
+在 MSAL.NET 中，使用：
 
 ```csharp
 AcquireTokenByIntegratedWindowsAuth(IEnumerable<string> scopes)
@@ -922,7 +922,7 @@ if not result:
 
 ### <a name="device-code-flow"></a>设备代码流
 
-如果你正在编写一个不包含 Web 控件的命令行工具，并且无法或者不想要使用前面所述的流，则需要使用设备代码流。
+如果你正在编写的命令行工具没有 web 控件，并且你不能或不想使用以前的流，请使用设备代码流。
 
 使用 Azure AD 的交互式身份验证需要 Web 浏览器。 有关详细信息，请参阅 [Web 浏览器的用法](https://aka.ms/msal-net-uses-web-browser)。 为了对不提供 Web 浏览器的设备或操作系统上的用户进行身份验证，设备代码流可让用户使用另一台设备（例如某台计算机或手机）以交互方式登录。 通过使用设备代码流，应用程序将通过专为这些设备或操作系统设计的两步过程获取令牌。 此类应用程序的例子包括 iOT 上运行的应用程序或命令行工具 (CLI)。 其思路是：
 

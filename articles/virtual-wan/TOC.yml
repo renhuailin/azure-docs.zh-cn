@@ -4,6 +4,15 @@
   items:
     - name: 什么是虚拟 WAN？
       href: virtual-wan-about.md
+- name: 快速入门
+  expanded: true
+  items:
+    - name: ARM 模板
+      expanded: true
+      items:
+        - name: 任意位置到任意位置的路由
+          displayName: Resource Manager Any-to-any routing
+          href: quickstart-any-to-any-template.md
 - name: 教程
   expanded: true
   items:

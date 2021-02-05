@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 04ee4ccc3b0553d6532869d6403000fdedd93b5f
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: 8dc9bff86a07f3d4a0ec6fd224de6d5633165a6d
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99062705"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582835"
 ---
 # <a name="daemon-app-that-calls-web-apis---move-to-production"></a>调用 Web API 的守护程序应用 - 移到生产环境
 
@@ -25,7 +25,7 @@ ms.locfileid: "99062705"
 
 ## <a name="deployment---multitenant-daemon-apps"></a>部署 - 多租户守护程序应用
 
-如果你是 ISV，创建可以在多个租户中运行的守护程序应用程序，则需确保租户管理员执行以下操作：
+如果你是创建可在多个租户中运行的后台应用程序的 ISV 应用程序，请确保租户管理员：
 
 - 为应用程序预配服务主体。
 - 授予对应用程序的许可。

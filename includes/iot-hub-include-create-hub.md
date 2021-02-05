@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/14/2020
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 4ad619fa5f0fb8f8e87333f2681727dabedda42b
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: cf651a1a09662e3084a8a9bdb6365b69b6ea52b5
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99427396"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99580174"
 ---
 此部分介绍如何使用 [Azure 门户](https://portal.azure.com)创建 IoT 中心。
 
@@ -45,7 +45,7 @@ ms.locfileid: "99427396"
 
 1. 在完成时选择“下一步:管理”，继续创建中心。
 
-   :::image type="content" source="./media/iot-hub-include-create-hub/iot-hub-management-screen.png" alt-text="使用 Azure 门户为新的中心设置大小和规模。":::
+   :::image type="content" source="./media/iot-hub-include-create-hub/iot-hub-management.png" alt-text="使用 Azure 门户为新的中心设置大小和规模。":::
 
     可在此处接受默认设置。 如果需要，可以修改以下任何字段：
 

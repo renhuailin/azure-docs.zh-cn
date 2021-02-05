@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
-ms.date: 1/29/2021
-ms.openlocfilehash: 84d37def6aa519eabf26a72ded7b0ab70994c430
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.date: 2/05/2021
+ms.openlocfilehash: abd47a17392e53770802b61e4ee6561252cc4c1e
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99063073"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99581561"
 ---
 # <a name="co-sell-partner-engagement"></a>联合销售合作伙伴参与
 
@@ -41,7 +41,7 @@ ms.locfileid: "99063073"
 
 |步骤    |产品/服务类型    |要求    |共同销售状态    |
 |----    |-------------    |------------    |---------------   |
-|<ol start=1><li>在合作伙伴中心创建一个帐户，并将产品/服务发布到商业市场。</li>|All|<ul><li>产品/服务满足商业市场发布要求。</li><li>合作伙伴中心有一个完整的业务配置文件。</li></ul>| 投放市场 |
+|<ol start=1><li>在合作伙伴中心创建一个帐户，并将产品/服务发布到商业市场。</li>|全部|<ul><li>产品/服务满足商业市场发布要求。</li><li>合作伙伴中心有一个完整的业务配置文件。</li></ul>| 投放市场 |
 |<ol start=2><li>提交所需的共同销售材料。</li>| [在商业市场中通过共同销售选项](commercial-marketplace-co-sell.md)提供 IP 服务|[在合作伙伴中心上传所需的资料](#how-to-submit-co-sell-materials-in-partner-center)|合作销售就绪|
 ||商业应用 [商店中没有共同销售选项](commercial-marketplace-co-sell.md)的 IP 优惠|<ul><li>[与云专家合作](https://partner.microsoft.com/campaigns/ced-nomination-form/)提供所需的共同销售文档的请求。</li></ul>|合作销售就绪|
 ||咨询服务|<ul><li>[与云专家合作](https://partner.microsoft.com/campaigns/ced-nomination-form/)提供所需的共同销售文档的请求。</li><li>活动金牌资格。</li></ul>|合作销售就绪|
@@ -79,6 +79,9 @@ ms.locfileid: "99063073"
 
 1. 继续之前，请保存草稿。
 1. 完成产品/服务的所有必需部分后，可以提交产品/服务以供审阅和发布。 在右上角选择 " **查看并发布**"。 查看产品/服务详细信息，然后选择 " **发布**"。
+
+> [!NOTE]
+> 你不再需要联系我们，为你提供共同销售的产品/服务。 完成 "与 Microsoft 共同销售" 页上的所有必填字段并重新发布产品/服务后，我们将查看你的产品/服务以确定其是否满足共同销售状态的要求。
 
 ## <a name="see-your-offers-co-sell-status"></a>查看产品/服务的共同销售状态
 

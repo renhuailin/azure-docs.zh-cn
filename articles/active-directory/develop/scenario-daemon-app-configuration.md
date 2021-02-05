@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 09/19/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: c858f48a67cd434a620fb610046833d29b7475f7
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 8a01ee4e2b0d4e72c1b17cf56953675e735ead79
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756601"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582884"
 ---
 # <a name="daemon-app-that-calls-web-apis---code-configuration"></a>调用 Web API 的守护程序应用 - 代码配置
 
@@ -111,7 +111,7 @@ ms.locfileid: "98756601"
 
 ### <a name="instantiate-the-msal-application"></a>实例化 MSAL 应用程序
 
-若要实例化 MSAL 应用程序，你需要添加、引用或导入 MSAL 包（取决于语言）。
+若要实例化 MSAL 应用程序，请根据语言)  (添加、引用或导入 MSAL 包。
 
 构造取决于你是使用客户端机密还是使用证书（还是使用已签名断言，这是一种高级方案）。
 
@@ -289,7 +289,7 @@ MSAL.NET 可以通过两种方法将签名的断言提供给机密客户端应�
 - `.WithClientAssertion()`
 - `.WithClientClaims()`
 
-使用 `WithClientAssertion` 时，需提供签名的 JWT。 [客户端断言](msal-net-client-assertions.md)详细介绍了这一高级方案。
+使用时 `WithClientAssertion` ，请提供已签名的 JWT。 [客户端断言](msal-net-client-assertions.md)详细介绍了这一高级方案。
 
 ```csharp
 string signedClientAssertion = ComputeAssertion();

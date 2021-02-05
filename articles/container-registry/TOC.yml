@@ -101,6 +101,8 @@
               href: container-registry-access-selected-networks.md
             - name: 使用服务终结点限制访问（预览版）
               href: container-registry-vnet.md
+            - name: 允许受信任的服务访问
+              href: allow-access-trusted-services.md
             - name: 使用客户管理的密钥加密
               href: container-registry-customer-managed-keys.md
             - name: 在防火墙后访问

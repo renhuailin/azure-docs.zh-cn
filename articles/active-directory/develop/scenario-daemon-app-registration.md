@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 09/15/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 3b77cc93385efb0bbb8a9b87d29de9bad5cd4ceb
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 938a19276839d5e0d2bd3e0244510fc068cb029c
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95995993"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582901"
 ---
 # <a name="daemon-app-that-calls-web-apis---app-registration"></a>调用 Web API 的守护程序应用 - 应用注册
 
@@ -24,7 +24,7 @@ ms.locfileid: "95995993"
 
 ## <a name="supported-account-types"></a>支持的帐户类型
 
-守护程序应用程序只能在 Azure AD 租户中使用。 因此，在创建应用程序时，需要选择以下选项之一：
+守护程序应用程序只能在 Azure AD 租户中使用。 因此，在创建应用程序时，请选择以下选项之一：
 
 - **仅此组织目录中的帐户**。 此选择是最常见的，因为守护程序应用程序通常是由业务线 (LOB) 开发人员编写的。
 - **任何组织目录中的帐户**。 如果你是 ISV，需向客户提供实用程序工具，则可进行此选择。 需要获得客户的租户管理员批准。
@@ -50,4 +50,4 @@ ms.locfileid: "95995993"
 
 ## <a name="next-steps"></a>后续步骤
 
-转到本方案中的下一篇文章 [应用代码配置](./scenario-daemon-app-configuration.md)。
+转到此方案中的下一篇文章：[应用代码配置](./scenario-daemon-app-configuration.md)。

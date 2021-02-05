@@ -5,16 +5,16 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 11/09/2020
-ms.openlocfilehash: 4f64bab698cb87e26fa4fd1587c4269acf99fa59
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: 5dde3da693d87d537fd2177a6f12b55297b5776e
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94384081"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582190"
 ---
 # <a name="precise-answering"></a>精确应答
 
-精确应答功能使你可以从任何用户查询的知识库中提供的最佳候选答案中获得精确的简短答案。 此功能使用深度学习模型，此模型在运行时了解用户查询的意图，并检测答案段的准确简短答案（如果答案在答案中存在）。 
+QnA Maker 托管 (预览版) 中引入的精确应答功能，您可以从任何用户查询的知识库中获得的最佳候选答案中获得精确的简短答案。 此功能使用深度学习模型，此模型在运行时了解用户查询的意图，并检测答案段的准确简短答案（如果答案在答案中存在）。 
 
 此功能在 "测试" 窗格中默认启用，因此可以测试特定于方案的功能。 对于内容开发人员和最终用户来说，此功能非常有用。 现在，内容开发人员无需针对知识库中的每个事实手动组织特定的 QnA 对，最终用户无需浏览从服务返回的整个答案，就能找到回答用户查询的实际事实。 
 
@@ -22,7 +22,7 @@ ms.locfileid: "94384081"
 
 在 QnA Maker 门户中，打开 "测试" 窗格时，会显示一个用于在顶部 **显示简短答案** 的选项。 默认情况下将选择此选项。 当你在 "测试" 窗格中输入查询时，如果答案产生了一个简短答案，你会看到一个简短答案以及答案段。 
  
-![托管启用的测试窗格](../QnAMaker/media/conversational-context/test-pane-with-managed.png)
+![托管的已启用的测试窗格](../QnAMaker/media/conversational-context/test-pane-with-managed.png)
 
 如果只想在测试窗格中查看答案段，则可以取消选中 " **显示简短答案** " 选项。 
 
@@ -32,7 +32,7 @@ ms.locfileid: "94384081"
 
 ## <a name="publishing-a-qna-maker-bot"></a>发布 QnA Maker 机器人
 
-发布机器人时，默认情况下，你可以在应用程序中获得精确的应答启用体验，你会在其中看到简短答案以及答案段。 用户通过使用第 eBot 应用服务更新模板，可以灵活选择其他体验。 
+发布机器人时，默认情况下，你可以在应用程序中获得精确的应答启用体验，你会在其中看到简短答案以及答案段。 请参阅 API 参考，获取有关如何在响应中使用称为 AnswerSpan) 的确切答案 (获取 [答案](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerv5.0-preview.1/knowledgebase/generateanswer#answerspan) 。 用户通过机器人应用服务更新模板可以灵活选择其他体验。 
 
 ## <a name="language-support"></a>语言支持
 

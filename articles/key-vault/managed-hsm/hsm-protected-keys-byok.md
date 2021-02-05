@@ -6,14 +6,14 @@ author: amitbapat
 tags: azure-resource-manager
 ms.service: key-vault
 ms.topic: conceptual
-ms.date: 02/01/2021
+ms.date: 02/04/2021
 ms.author: ambapat
-ms.openlocfilehash: 444f279f8e96486bd6ad61a2ea2640a18b491c9c
-ms.sourcegitcommit: 983eb1131d59664c594dcb2829eb6d49c4af1560
+ms.openlocfilehash: 1a15ed6b92ade96dd2ed9ef6ffbbe17e2b1452ef
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99222228"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99581391"
 ---
 # <a name="import-hsm-protected-keys-to-managed-hsm-byok"></a>将受 HSM 保护的密钥导入到托管 HSM (BYOK) 
 
@@ -69,17 +69,20 @@ az login
 |Cryptomathic|ISV（企业密钥管理系统）|多个 HSM 品牌和型号，包括<ul><li>nCipher</li><li>Thales</li><li>Utimaco</li></ul>有关详细信息，请参阅 [Cryptomathic 站点](https://www.cryptomathic.com/azurebyok)|[Cryptomathic BYOK 工具和文档](https://www.cryptomathic.com/azurebyok)|
 |Securosys SA|制造商，HSM 即服务|Primus HSM 系列，Securosys Clouds HSM|[Primus BYOK 工具和文档](https://www.securosys.com/primus-azure-byok)|
 |StorMagic|ISV（企业密钥管理系统）|多个 HSM 品牌和型号，包括<ul><li>Utimaco</li><li>Thales</li><li>nCipher</li></ul>请参阅 [StorMagic 站点](https://stormagic.com/doc/svkms/Content/Integrations/Azure_KeyVault_BYOK.htm)以了解详细信息|[SvKMS 和 Azure Key Vault BYOK](https://stormagic.com/doc/svkms/Content/Integrations/Azure_KeyVault_BYOK.htm)|
-|IBM|制造商|IBM 476x，CryptoExpress|[IBM 企业密钥管理基础](https://www.ibm.com/security/key-management/ekmf-bring-your-own-key-azure)|
+|IBM|制造商|IBM 476x, CryptoExpress|[IBM Enterprise Key Management Foundation](https://www.ibm.com/security/key-management/ekmf-bring-your-own-key-azure)|
 ||||
 
 
 ## <a name="supported-key-types"></a>支持的密钥类型
 
-|项名|密钥类型|密钥大小|源|说明|
+|项名|密钥类型|密钥大小/曲线|源|说明|
 |---|---|---|---|---|
 |密钥交换密钥 (KEK)|RSA| 2,048 位<br />3,072 位<br />4,096 位|托管的 HSM|托管 HSM 中生成的支持 HSM 的 RSA 密钥对|
-|目标密钥|RSA|2,048 位<br />3,072 位<br />4,096 位|供应商 HSM|要传输到托管 HSM 的密钥|
-
+|目标密钥|
+||RSA|2,048 位<br />3,072 位<br />4,096 位|供应商 HSM|要传输到托管 HSM 的密钥|
+||EC|P-256<br />P-384<br />P-521|供应商 HSM|要传输到托管 HSM 的密钥|
+||对称密钥 (10 月-HSM) |128位<br />192位<br />256位|供应商 HSM|要传输到托管 HSM 的密钥|
+||||
 ## <a name="generate-and-transfer-your-key-to-the-managed-hsm"></a>生成密钥并将其传输到托管 HSM
 
 生成密钥并将其传输到托管 HSM：

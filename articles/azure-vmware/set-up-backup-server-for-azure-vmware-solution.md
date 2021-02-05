@@ -2,13 +2,13 @@
 title: 设置 Azure VMware 解决方案的 Azure 备份服务器
 description: 使用 Azure 备份服务器设置 Azure VMware 解决方案环境以备份虚拟机。
 ms.topic: how-to
-ms.date: 10/23/2020
-ms.openlocfilehash: 7885c0bc73bd5f7cd802e76ed9db470f77eda30d
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.date: 02/04/2021
+ms.openlocfilehash: e9204b9f86c7e9ef67d2e3d6b45ccf4248d00b32
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98703396"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99581476"
 ---
 # <a name="set-up-azure-backup-server-for-azure-vmware-solution"></a>设置 Azure VMware 解决方案的 Azure 备份服务器
 
@@ -389,7 +389,7 @@ Azure 备份服务器 v3 仅接受存储卷。 添加卷时，Azure 备份服务
 
 ## <a name="next-steps"></a>后续步骤
 
-继续学习下一教程，了解如何使用 Azure 备份服务器配置在 Azure VMware 解决方案上运行的 VMware Vm 的备份。
+现在，你已介绍了如何设置 Azure VMware 解决方案的 Azure 备份服务器，接下来，你可能想要了解：
 
-> [!div class="nextstepaction"]
-> [配置 Azure VMware 解决方案 Vm 的备份](backup-azure-vmware-solution-virtual-machines.md)
+- [配置 Azure VMware 解决方案 vm 的备份](backup-azure-vmware-solution-virtual-machines.md)。
+- [通过 Azure 安全中心集成保护 Azure VMware 解决方案 vm](azure-security-integration.md)。

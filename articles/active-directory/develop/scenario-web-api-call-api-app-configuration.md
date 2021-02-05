@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/26/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: b8360a22c815fa28626bb07a1518bd82ba6e3e46
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: d1ab7da9753642093505fa91ea76b9327612a6ac
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98753508"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582360"
 ---
 # <a name="a-web-api-that-calls-web-apis-code-configuration"></a>调用 Web API 的 Web API：代码配置
 
@@ -33,7 +33,7 @@ Microsoft 建议在调用下游 Web API 开发 ASP.NET Core 保护的 API 时，
 
 ## <a name="client-secrets-or-client-certificates"></a>客户端密码或客户端证书
 
-鉴于 Web API 现在调用了下游 Web API，你需要在 appsettings.json 文件中提供客户端密码或客户端证书。 还可添加一个部分来指定：
+假设你的 web API 现在调用下游 web API，请在 *appsettings.js* 的文件中提供客户端密码或客户端证书。 还可添加一个部分来指定：
 
 - 下游 Web API 的 URL
 - 调用 API 所需的范围
@@ -169,7 +169,7 @@ public class Startup
 :::image type="content" source="media/scenarios/microsoft-identity-web-startup-cs.svg" alt-text="显示 Startup.cs 中的服务配置选项的框图，说明如何调用 Web API 和指定令牌缓存实现":::
 
 > [!NOTE]
-> 若要完全理解本文中的代码示例，需要熟悉 [ASP.NET Core 基础知识](/aspnet/core/fundamentals)，尤其是[依赖关系注入](/aspnet/core/fundamentals/dependency-injection)和[选项](/aspnet/core/fundamentals/configuration/options)。
+> 若要完全了解此处的代码示例，请熟悉 [ASP.NET Core 基础知识](/aspnet/core/fundamentals)，并特别了解 [依赖关系注入](/aspnet/core/fundamentals/dependency-injection) 和 [选项](/aspnet/core/fundamentals/configuration/options)。
 
 # <a name="java"></a>[Java](#tab/java)
 

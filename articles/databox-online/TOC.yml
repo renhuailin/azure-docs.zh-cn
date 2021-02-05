@@ -176,6 +176,10 @@
               href: azure-stack-edge-gpu-deploy-sample-module.md
             - name: 通过市场的 GPU 模块
               href: azure-stack-edge-gpu-deploy-sample-module-marketplace.md
+            - name: FPGA 设备中的模块
+              href: azure-stack-edge-gpu-modify-fpga-modules-gpu.md
+            - name: 通过 Azure 门户的模块
+              href: azure-stack-edge-gpu-deploy-compute-module-simple.md
         - name: 部署 Kubernetes 工作负载
           items:
             - name: 通过 kubectl

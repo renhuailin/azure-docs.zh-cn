@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: pafarley
-ms.openlocfilehash: f6d610db01b465306cdaaafa9b1308dba63ff9ca
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: a8eecabe71cb439949f7e0638c7339eb31b08500
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98936151"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99581255"
 ---
 # <a name="whats-new-in-form-recognizer"></a>表单识别器的新增功能
 
@@ -209,7 +209,7 @@ GitHub 上提供了 **新的示例**。
 
 ## <a name="next-steps"></a>后续步骤
 
-完成[快速入门](quickstarts/client-library.md)，开始使用表单识别器以你选择的语言编写表单处理应用。
+完成 [快速入门](quickstarts/client-library.md) ，开始使用所选的开发语言编写窗体识别器来编写窗体处理应用。
 
 ## <a name="see-also"></a>请参阅
 

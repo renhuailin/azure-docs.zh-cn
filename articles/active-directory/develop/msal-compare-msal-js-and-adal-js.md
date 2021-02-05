@@ -13,12 +13,12 @@ ms.date: 04/10/2019
 ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: a1ec8c31681ab6c0ac40ba33e94f33057ee948e7
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 1a56685c830fc7aa717add3e826c68c04449e378
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98754800"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99580840"
 ---
 # <a name="differences-between-msaljs-and-adaljs"></a>MSAL.js 与 ADAL.js 的差异
 
@@ -48,7 +48,7 @@ ms.locfileid: "98754800"
 
 在 v1.0 中，使用 `https://login.microsoftonline.com/common` 颁发机构可让用户使用任何 Azure AD 帐户（适用于任何组织）登录。
 
-在 v2.0 中，使用 `https://login.microsoftonline.com/common` 颁发机构可让用户使用任何 Azure AD 组织帐户或 Microsoft 个人帐户 (MSA) 登录。 若要限制为只能登录到 Azure AD 帐户（与 ADAL.js 中的行为类似），需要使用 `https://login.microsoftonline.com/organizations`。 有关详细信息，请参阅[使用 MSAL.js 初始化](msal-js-initializing-client-applications.md)中的 `authority` 配置选项。
+在 v2.0 中，使用 `https://login.microsoftonline.com/common` 颁发机构可让用户使用任何 Azure AD 组织帐户或 Microsoft 个人帐户 (MSA) 登录。 若要将登录限制为仅 Azure AD 帐户 (与 ADAL.js) 相同的行为，请使用 `https://login.microsoftonline.com/organizations` 。 有关详细信息，请参阅[使用 MSAL.js 初始化](msal-js-initializing-client-applications.md)中的 `authority` 配置选项。
 
 ### <a name="scopes-for-acquiring-tokens"></a>用于获取令牌的范围
 * 身份验证请求中用于获取令牌的范围而不是资源参数

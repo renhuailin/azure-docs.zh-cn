@@ -381,7 +381,7 @@
           href: deployment-center-launcher.md
         - name: 适用于 Kubernetes 的 GitHub 操作
           href: ../aks/kubernetes-action.md
-    - name: 疑难解答
+    - name: 故障排除
       items:
         - name: 常见问题
           href: troubleshooting.md

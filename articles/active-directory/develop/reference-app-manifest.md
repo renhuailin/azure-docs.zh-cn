@@ -13,12 +13,12 @@ ms.date: 02/02/2021
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
-ms.openlocfilehash: d544d884a82a7532bf343f38049102dfccae342f
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: 0291d2e6f0cee07bd7164b63dfd4ac8b02c42a01
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99507261"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99583037"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Azure Active Directory 应用清单
 
@@ -27,7 +27,7 @@ ms.locfileid: "99507261"
 可以通过 Azure 门户或者使用 [REST API](/graph/api/resources/application) 或 [PowerShell](/powershell/module/azuread#applications) 以编程方式配置应用的属性。 但是，在某些情况下，需要编辑应用清单来配置应用的属性。 这些方案包括：
 
 * 如果已将应用注册为 Azure AD 多租户和个人 Microsoft 帐户，则不能在 UI 中更改支持的 Microsoft 帐户。 而是必须使用应用程序清单编辑器来更改支持的帐户类型。
-* 如果需要定义你的应用支持的权限和角色，则必须修改应用程序清单。
+* 若要定义应用支持的权限和角色，必须修改应用程序清单。
 
 ## <a name="configure-the-app-manifest"></a>配置应用清单
 

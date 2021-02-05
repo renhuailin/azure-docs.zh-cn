@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 01/31/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 45af940382a261f1793583e471871b9cceed0a57
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 00a70b585ddf522a25e81703fe5bdf55efbcb7e1
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98753831"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582768"
 ---
 # <a name="scenario-daemon-application-that-calls-web-apis"></a>方案：用于调用 Web API 的守护程序应用程序
 
@@ -52,7 +52,7 @@ ms.locfileid: "98753831"
 对于开发人员来说，此方案的端到端体验具有以下特点：
 
 - 守护程序应用程序只能在 Azure AD 租户中工作。 构建尝试操作 Microsoft 个人帐户的后台应用程序并无意义。 如果你是业务线 (LOB) 应用开发人员，则需在租户中创建守护程序应用。 如果你是 ISV，你可能希望创建多租户守护程序应用程序， 每个租户管理员都需要提供许可。
-- 在[注册应用程序](./scenario-daemon-app-registration.md)期间，回复 URI 不是必需的。 你需要与 Azure AD 共享机密或证书或已签名断言。 你还需要请求应用程序权限，并授予管理员许可才能使用这些应用权限。
+- 在[注册应用程序](./scenario-daemon-app-registration.md)期间，回复 URI 不是必需的。 与 Azure AD 共享机密或证书或签名断言。 你还需要请求应用程序权限，并授予管理员许可才能使用这些应用权限。
 - [应用程序配置](./scenario-daemon-app-configuration.md)需要提供客户端凭据，这些凭据是在应用程序注册期间与 Azure AD 共享的。
 - 用于通过客户端凭据流获取令牌的[作用域](scenario-daemon-acquire-token.md#scopes-to-request)必须是静态作用域。
 

@@ -12,12 +12,12 @@ ms.date: 11/25/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: b35b39d7072b22d9cc3f7b4f4ef8886431b06f69
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 7e2fcf2dc0dc53038b82bbf182cb12f580d88357
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98754672"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99583580"
 ---
 # <a name="scopes-for-a-web-api-accepting-v10-tokens"></a>接受 v1.0 令牌中的 Web API 的范围
 
@@ -37,7 +37,7 @@ var scopes = new [] {  ResourceId+"/user_impersonation"};
 var scopes = [ ResourceId + "/user_impersonation"];
 ```
 
-若要使用 Microsoft Graph API (https：/graph.microsoft.com/) 来读取和写入 MSAL.NET Azure AD \/ ，需要创建范围列表，如以下示例中所示：
+若要使用 MSAL.NET Azure AD 使用 Microsoft Graph API 读取和写入 (https： \/ /graph.microsoft.com/) ，请创建一个范围列表，如以下示例中所示：
 
 ```csharp
 string ResourceId = "https://graph.microsoft.com/";
@@ -49,7 +49,7 @@ var ResourceId = "https://graph.microsoft.com/";
 var scopes = [ ResourceId + "Directory.Read", ResourceID + "Directory.Write"];
 ```
 
-若要将对应于 Azure 资源管理器 API 的作用域写入 (https： \/ /management.core.windows.net/) ，需要请求以下范围 (注意两个斜杠) ：
+若要将对应于 Azure 资源管理器 API 的作用域写入 (https： \/ /management.core.windows.net/) ，请请求以下范围 (注意这两个斜杠) ：
 
 ```csharp
 var scopes = new[] {"https://management.core.windows.net//user_impersonation"};
@@ -59,7 +59,7 @@ var result = await app.AcquireTokenInteractive(scopes).ExecuteAsync();
 ```
 
 > [!NOTE]
-> 你需要使用两个斜杠，这是因为，Azure 资源管理器 API 要求在其受众声明 (aud) 中使用一个斜杠，然后使用一个斜杠来分隔 API 名称与范围。
+> 使用两个斜杠，因为 Azure 资源管理器 API 在其受众声明中需要斜杠 (aud) ，然后有一个斜杠用于将 API 名称与范围分隔开来。
 
 下面是 Azure AD 使用的逻辑：
 

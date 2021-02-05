@@ -8,14 +8,14 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: keys
 ms.topic: conceptual
-ms.date: 05/29/2020
+ms.date: 02/04/2021
 ms.author: ambapat
-ms.openlocfilehash: feef35ef86a933f32949468366fea85eb87d4866
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 141abea0c0946c98b6dfe627f32f01682a18be44
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91315773"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99581017"
 ---
 # <a name="bring-your-own-key-specification"></a>“创建自己的密钥”规范
 
@@ -35,7 +35,7 @@ Key Vault 客户希望安全地将密钥从 Azure 外部的 HSM 传输到 HSM �
 |---|---|---|---|
 |密钥交换密钥 (KEK)|RSA|Azure Key Vault HSM|在 Azure Key Vault 中生成的 HSM 支持的 RSA 密钥对
 环绕键|AES|供应商 HSM|HSM 在本地上生成的 [暂时性] AES 密钥
-目标密钥|RSA、EC、AES|供应商 HSM|要传输到 Azure Key Vault HSM 的密钥
+目标密钥|RSA、EC、AES (仅限托管 HSM) |供应商 HSM|要传输到 Azure Key Vault HSM 的密钥
 
 **密钥交换密钥**：客户在将导入 BYOK 密钥的密钥保管库中生成的支持 HSM 的密钥。 此 KEK 必须具有以下属性：
 
@@ -130,9 +130,16 @@ JSON blob 存储在扩展名为 "byok" 的文件中，以便在使用 (CLI) 命�
 
 客户会将密钥传输 Blob ( "byok" 文件) 传输到联机工作站，然后运行 **az keyvault key import** 命令，将此 Blob 作为新的 HSM 支持的密钥导入 Key Vault 中。 
 
+若要导入 RSA 密钥，请使用此命令：
 ```azurecli
 az keyvault key import --vault-name ContosoKeyVaultHSM --name ContosoFirstHSMkey --byok-file KeyTransferPackage-ContosoFirstHSMkey.byok --ops encrypt decrypt
 ```
+若要导入 EC 键，必须指定键类型和曲线名称。
+
+```azurecli
+az keyvault key import --vault-name ContosoKeyVaultHSM --name ContosoFirstHSMkey --byok-file --kty EC-HSM --curve-name "P-256" KeyTransferPackage-ContosoFirstHSMkey.byok --ops sign verify
+```
+
 
 执行上述命令时，将导致发送 REST API 请求，如下所示：
 
@@ -140,7 +147,7 @@ az keyvault key import --vault-name ContosoKeyVaultHSM --name ContosoFirstHSMkey
 PUT https://contosokeyvaulthsm.vault.azure.net/keys/ContosoFirstHSMKey?api-version=7.0
 ```
 
-请求正文：
+导入 RSA 密钥时的请求正文：
 ```json
 {
   "key": {
@@ -156,6 +163,25 @@ PUT https://contosokeyvaulthsm.vault.azure.net/keys/ContosoFirstHSMKey?api-versi
   }
 }
 ```
+
+导入 EC 键时的请求正文：
+```json
+{
+  "key": {
+    "kty": "EC-HSM",
+    "crv": "P-256",
+    "key_ops": [
+      "sign",
+      "verify"
+    ],
+    "key_hsm": "<Base64 encoded BYOK_BLOB>"
+  },
+  "attributes": {
+    "enabled": true
+  }
+}
+```
+
 "key_hsm" 值是以 Base64 格式编码的 KeyTransferPackage-ContosoFirstHSMkey. byok 的全部内容。
 
 ## <a name="references"></a>参考

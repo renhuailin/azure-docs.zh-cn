@@ -13,12 +13,12 @@ ms.tgt_pltfrm: multiple
 ms.date: 06/26/2020
 ms.author: ryanwi
 ms.reviewer: tomfitz
-ms.openlocfilehash: 096b8ed60bf9880b6904ab952d4558939ca13574
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: b07679c6dd5e03131fde1439213783893971a088
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97652069"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99581799"
 ---
 # <a name="how-to-use-azure-powershell-to-create-a-service-principal-with-a-certificate"></a>如何：通过 Azure PowerShell 使用证书创建服务主体
 
@@ -72,7 +72,7 @@ New-AzRoleAssignment -RoleDefinitionName Reader -ServicePrincipalName $sp.Applic
 
 可以使用 **ResourceGroupName** 参数将角色分配范围限制为特定资源组。 还可以使用 **ResourceType** 和 **ResourceName** 参数将范围限制为特定资源。 
 
-如果 **未使用 Windows 10 或 Windows Server 2016**，需要从 Microsoft 脚本中心下载 [自签名证书生成器](https://gallery.technet.microsoft.com/scriptcenter/Self-signed-certificate-5920a7c6/)。 解压其内容，并导入所需的 cmdlet。
+如果没有 **windows 10 或 Windows Server 2016**，请从 Microsoft 脚本中心下载 [自签名证书生成器](https://gallery.technet.microsoft.com/scriptcenter/Self-signed-certificate-5920a7c6/) 。 解压其内容，并导入所需的 cmdlet。
 
 ```powershell
 # Only run if you could not use New-SelfSignedCertificate
@@ -91,7 +91,7 @@ $cert = Get-ChildItem -path Cert:\CurrentUser\my | where {$PSitem.Subject -eq 'C
 
 ### <a name="provide-certificate-through-automated-powershell-script"></a>通过自动执行的 PowerShell 脚本提供证书
 
-以服务主体方式登录时，需提供 AD 应用所在目录的租户 ID。 租户是 Azure AD 的实例。
+当你以服务主体身份登录时，请提供广告应用的目录的租户 ID。 租户是 Azure AD 的实例。
 
 ```powershell
 $TenantId = (Get-AzSubscription -SubscriptionName "Contoso Default").TenantId
@@ -151,7 +151,7 @@ Param (
 ```
 
 ### <a name="provide-certificate-through-automated-powershell-script"></a>通过自动执行的 PowerShell 脚本提供证书
-以服务主体方式登录时，需提供 AD 应用所在目录的租户 ID。 租户是 Azure AD 的实例。
+当你以服务主体身份登录时，请提供广告应用的目录的租户 ID。 租户是 Azure AD 的实例。
 
 ```powershell
 Param (

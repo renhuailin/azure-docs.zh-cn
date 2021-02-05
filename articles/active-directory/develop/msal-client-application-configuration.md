@@ -13,12 +13,12 @@ ms.date: 11/20/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 46626c3ebe9d70600be1cc5f73c43677f67bcd09
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 00768f363d08bc476350e57a8eac69eafd9c3589
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98761369"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99580932"
 ---
 # <a name="application-configuration-options"></a>应用程序配置选项
 
@@ -73,7 +73,7 @@ Azure AD 云颁发机构有两个组成部分：
 
 登录受众取决于应用的业务需求：
 
-- 业务线应用程序 (LOB) 开发人员也许会生成一个只在其组织中使用的单租户应用程序。 在这种情况下，需要按租户 ID（Azure AD 实例的 ID）或者与 Azure AD 实例关联的域名指定组织。
+- 业务线应用程序 (LOB) 开发人员也许会生成一个只在其组织中使用的单租户应用程序。 在这种情况下，请通过其租户 ID 指定组织 (Azure AD 实例的 ID) 或通过与 Azure AD 实例关联的域名来指定。
 - ISV 可能想要使用任一组织或某些组织（多租户应用）中的用户工作帐户和学校帐户将用户登录。 但你可能还希望让用户使用他们的个人 Microsoft 帐户登录。
 
 ### <a name="how-to-specify-the-audience-in-your-codeconfiguration"></a>如何在代码/配置中指定受众
@@ -122,9 +122,9 @@ Azure AD 云颁发机构有两个组成部分：
   | UWP | `WebAuthenticationBroker.GetCurrentApplicationCallbackUri()` 的值。 这可以通过浏览器启用 SSO，方法是：将值设置为需注册的 WebAuthenticationBroker.GetCurrentApplicationCallbackUri() 的结果 |
   | .NET Core | `https://localhost`. 这样用户就可以将系统浏览器用于交互式身份验证，因为 .NET Core 目前没有 UI 用于嵌入式 Web 视图。 |
 
-- 若要构建不支持代理的 Xamarin Android 和 iOS 应用程序，则不需添加重定向 URI（对于 Xamarin Android 和 iOS，重定向 URI 会自动设置为 `msal{ClientId}://auth`
+- 如果要构建的 Xamarin Android 和 iOS 应用程序不支持 broker 重定向 URI，则无需添加重定向 URI。 对于 Xamarin Android 和 iOS，它会自动设置为 `msal{ClientId}://auth` 。
 
-- 需要在[应用注册](https://aka.ms/appregistrations)中配置重定向 URI：
+- 在 [应用注册](https://aka.ms/appregistrations)中配置重定向 URI：
 
    ![应用注册中的重定向 URI](media/msal-client-application-configuration/redirect-uri.png)
 
@@ -146,7 +146,7 @@ Azure AD 云颁发机构有两个组成部分：
 
 此选项指定机密客户端应用的客户端机密。 此机密 (应用程序密码) 由应用程序注册门户提供，或在应用程序注册过程中通过 PowerShell AzureAD、PowerShell AzureRM 或 Azure CLI 提供给 Azure AD。
 
-## <a name="logging"></a>日志记录
+## <a name="logging"></a>Logging
 为了帮助调试和身份验证故障排除方案，Microsoft 身份验证库提供了内置日志记录支持。 日志记录是以下文章中介绍的每个库：
 
 :::row:::

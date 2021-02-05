@@ -13,12 +13,12 @@ ms.date: 05/22/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: b81b34010736bce33085cb1ebf0faa3da6a41bd6
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 5244a8e572abb56c00d87d0bdd7e8d1291af9b9e
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98755389"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99581901"
 ---
 # <a name="authentication-vs-authorization"></a>身份验证和授权
 
@@ -34,7 +34,7 @@ ms.locfileid: "98755389"
 
 ## <a name="authentication-and-authorization-using-the-microsoft-identity-platform"></a>使用 Microsoft 标识平台进行身份验证和授权
 
-当你需要在多个应用中添加或删除用户时，创建每个应用程序，每个应用程序都维护其自己的用户名和密码信息。 相反，你的应用程序可以将该责任委托给一个集中的标识提供者。
+当在多个应用中添加或删除用户时，创建每个应用程序，每个应用程序都维护其自己的用户名和密码信息。 相反，你的应用程序可以将该责任委托给一个集中的标识提供者。
 
 Azure Active Directory (Azure AD) 就是云中的一个集中标识提供程序。 将身份验证和授权委派给它可以实现如下方案：
 

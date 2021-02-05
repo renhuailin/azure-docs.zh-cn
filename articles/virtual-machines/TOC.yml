@@ -103,6 +103,8 @@
       href: ./linux/tutorial-elasticsearch.md
     - name: FreeBSD 数据包筛选器
       href: ./linux/freebsd-pf-nat.md
+    - name: 大型机重新托管
+      href: ./workloads/mainframe-rehosting/overview.md
     - name: 数据库
       items:
         - name: SUSE 上的 MySQL
@@ -504,7 +506,7 @@
           href: ./extensions/update-linux-agent.md
         - name: 导出扩展
           href: ./extensions/export-templates.md
-        - name: 疑难解答
+        - name: 故障排除
           href: ./extensions/troubleshoot.md
         - name: 启用了 Python 3 的 Linux 系统的问题
           href: ./extensions/issues-using-vm-extensions-python-3.md
@@ -1330,7 +1332,7 @@
                   href: ../azure-monitor/platform/data-sources-custom-logs.md?context=/azure/virtual-machines/context/context
                 - name: 自定义字段
                   href: ../azure-monitor/platform/custom-fields.md?context=/azure/virtual-machines/context/context
-        - name: 疑难解答
+        - name: 故障排除
           items:
             - name: Log Analytics VM 扩展
               href: ../azure-monitor/platform/vmext-troubleshoot.md?context=/azure/virtual-machines/context/context
@@ -1448,6 +1450,8 @@
               href: ./linux/move-vm.md
             - name: PowerShell
               href: ./windows/move-vm.md
+            - name: 更改市场 VM 的订阅
+              href: azure-cli-change-subscription-marketplace.md
         - name: 将 VM 移到另一个区域
           href: ../site-recovery/azure-to-azure-tutorial-migrate.md
         - name: 移动到可用性区域
@@ -1480,7 +1484,7 @@
     - name: Azure DevOps
       href: ./linux/tutorial-azure-devops-blue-green-strategy.md
 - name: 故障排除
-  href: ./troubleshooting/index.yml
+  href: 'https://docs.microsoft.com/troubleshoot/azure/virtual-machines/welcome-virtual-machines'
 - name: 资源
   items:
     - name: 云采用框架

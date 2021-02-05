@@ -13,12 +13,12 @@ ms.date: 12/3/2020
 ms.author: hirsin
 ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 22352f6d0c7dc48b98be5fcb4101f262adc480d6
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: cfbcc8523ff1d5858317a3654b58ec7b2d23607a
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98795630"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582020"
 ---
 # <a name="microsoft-identity-platform-application-authentication-certificate-credentials"></a>Microsoft 标识平台应用程序身份验证证书凭据
 
@@ -101,12 +101,12 @@ Gh95kHCOEGq5E_ArMBbDXhwKR577scxYaoJ1P{a lot of characters here}KKJDEg"
 
 ### <a name="updating-the-application-manifest"></a>更新应用程序清单
 
-拥有证书后需计算：
+获取证书后，计算以下值：
 
 - `$base64Thumbprint` - 证书哈希的 Base64 编码值
 - `$base64Value` - 证书原始数据的 Base64 编码值
 
-还需要提供 GUID 来标识应用程序清单中的密钥 (`$keyId`)。
+提供 GUID 来标识应用程序清单中的密钥， (`$keyId`) 。
 
 在客户端应用程序的 Azure 应用注册中：
 1. 选择“清单”以打开应用程序清单。
