@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.author: absha
-ms.openlocfilehash: 3e8eb79d519e2f7bfbf006b852f0c5294976b727
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 7c5b4f0d5d4b153684683963c56b7506e76d963e
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93397143"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575647"
 ---
 # <a name="rewrite-http-headers-with-application-gateway"></a>重写应用程序网关的 HTTP 标头
 
@@ -49,14 +49,14 @@ HTTP 标头可让客户端和服务器连同请求或响应一起传递附加的
 使用重写操作指定要重写的请求和响应标头，以及标头的新值。 可以创建新标头、修改现有标头的值，或删除现有标头。 新标头或现有标头的值可设置为以下类型的值：
 
 - 文本。
-- 请求标头。 若要指定请求标头，需使用语法 {http_req_ *headerName* }。
-- 响应标头。 若要指定响应标头，需使用语法 {http_resp_ *headerName* }。
-- 服务器变量。 若要指定服务器变量，需使用语法 {var_ *serverVariable* }。
+- 请求标头。 若要指定请求标头，需使用语法 {http_req_ *headerName*}。
+- 响应标头。 若要指定响应标头，需使用语法 {http_resp_ *headerName*}。
+- 服务器变量。 若要指定服务器变量，需使用语法 {var_ *serverVariable*}。
 - 文本、请求标头、响应标头和服务器变量的组合。
 
 ## <a name="server-variables"></a>服务器变量
 
-应用程序网关使用服务器变量来存储有关服务器、与客户端建立的连接以及对连接的当前请求的有用信息。 例如，存储的信息包括客户端的 IP 地址和 Web 浏览器类型。 服务器变量会动态更改，例如，加载新页或发布表单时就会更改。 可以使用这些变量来评估重写条件和重写标头。 若要使用服务器变量的值重写标头，需要在语法 {var_ *serverVariable* } 中指定这些变量
+应用程序网关使用服务器变量来存储有关服务器、与客户端建立的连接以及对连接的当前请求的有用信息。 例如，存储的信息包括客户端的 IP 地址和 Web 浏览器类型。 服务器变量会动态更改，例如，加载新页或发布表单时就会更改。 可以使用这些变量来评估重写条件和重写标头。 若要使用服务器变量的值重写标头，需要在语法 {var_ *serverVariable*} 中指定这些变量
 
 应用程序网关支持以下服务器变量：
 
@@ -69,21 +69,21 @@ HTTP 标头可让客户端和服务器连同请求或响应一起传递附加的
 | client_port                | 客户端端口。                                                  |
 | client_tcp_rtt             | 有关客户端 TCP 连接的信息。 在支持 TCP_INFO 套接字选项的系统上可用。 |
 | client_user                | 使用 HTTP 身份验证时提供用于身份验证的用户名。 |
-| host                       | 按此优先顺序排列：请求行中的主机名、Host 请求标头字段中的主机名，或与请求匹配的服务器名称。 示例：在请求 http://contoso.com:8080/article.aspx?id=123&title=fabrikam 中，主机值将为 contoso.com  |
+| host                       | 按此优先顺序排列：请求行中的主机名、Host 请求标头字段中的主机名，或与请求匹配的服务器名称。 示例：在请求中 `http://contoso.com:8080/article.aspx?id=123&title=fabrikam` ，主机值将为 *contoso.com* |
 | cookie_ *name*              | *name* Cookie。                                            |
 | http_method                | 用于发出 URL 请求的方法。 例如 GET 或 POST。 |
 | http_status                | 会话状态。 例如 200、400 或 403。                       |
 | http_version               | 请求协议。 通常为 HTTP/1.0、HTTP/1.1 或 HTTP/2.0。 |
-| query_string               | 请求的 URL 中“?”后面的变量/值对列表。 示例：在请求 http://contoso.com:8080/article.aspx?id=123&title=fabrikam 中，query_string 值将为 id=123&title=fabrikam  |
+| query_string               | 请求的 URL 中“?”后面的变量/值对列表。 示例：在请求中 `http://contoso.com:8080/article.aspx?id=123&title=fabrikam` ，query_string 值将为 *id = 123&title = fabrikam* |
 | received_bytes             | 请求的长度（包括请求行、标头和请求正文）。 |
 | request_query              | 请求行中的参数。                                |
 | request_scheme             | 请求方案：http 或 https。                            |
-| request_uri                | 完整的原始请求 URI（带参数）。 示例：在请求 http://contoso.com:8080/article.aspx?id=123&title=fabrikam 中，request_uri 值将为 /article.aspx?id=123&title=fabrikam    |
+| request_uri                | 完整的原始请求 URI（带参数）。 示例：在请求中 `http://contoso.com:8080/article.aspx?id=123&title=fabrikam` ，request_uri 值将为 */article.aspx？ id = 123&title = fabrikam*   |
 | sent_bytes                 | 发送到客户端的字节数。                             |
 | server_port                | 接受请求的服务器端口。                 |
 | ssl_connection_protocol    | 已建立的 TLS 连接的协议。        |
 | ssl_enabled                | 如果连接在 TLS 模式下建立，则为“On”。 否则为空字符串。 |
-| uri_path                   | 标识 Web 客户端要访问的主机中的特定资源。 这是请求 URI 中没有参数的部分。 示例：在请求 http://contoso.com:8080/article.aspx?id=123&title=fabrikam 中，uri_path 值将为 /article.aspx   |
+| uri_path                   | 标识 Web 客户端要访问的主机中的特定资源。 这是请求 URI 中没有参数的部分。 示例：在请求中 `http://contoso.com:8080/article.aspx?id=123&title=fabrikam` ，uri_path 值将为 */article.aspx*  |
 
 ## <a name="rewrite-configuration"></a>重写配置
 
@@ -91,19 +91,19 @@ HTTP 标头可让客户端和服务器连同请求或响应一起传递附加的
 
 1. 创建 HTTP 标头重写所需的对象：
 
-   - **重写操作** ：用于指定要重写的请求和请求标头字段，以及标头的新值。 可将一个或多个重写条件关联到一个重写操作。
+   - **重写操作**：用于指定要重写的请求和请求标头字段，以及标头的新值。 可将一个或多个重写条件关联到一个重写操作。
 
-   - **重写条件** ：一个可选配置。 重写条件评估 HTTP(S) 请求和响应的内容。 如果 HTTP(S) 请求或响应与重写条件匹配，则会发生重写操作。
+   - **重写条件**：一个可选配置。 重写条件评估 HTTP(S) 请求和响应的内容。 如果 HTTP(S) 请求或响应与重写条件匹配，则会发生重写操作。
 
      如果将多个条件关联到一个操作，仅当满足所有条件时，才会发生该操作。 换言之，操作属于逻辑 AND 运算。
 
-   - **重写规则** ：包含多个重写操作/重写条件的组合。
+   - **重写规则**：包含多个重写操作/重写条件的组合。
 
-   - **规则顺序** ：帮助确定重写规则的执行顺序。 在一个重写集中使用多个重写规则时，此配置非常有用。 规则顺序值较小的重写规则最先运行。 如果为两个重写规则分配了相同的规则顺序，则执行顺序是不确定的。
+   - **规则顺序**：帮助确定重写规则的执行顺序。 在一个重写集中使用多个重写规则时，此配置非常有用。 规则顺序值较小的重写规则最先运行。 如果为两个重写规则分配了相同的规则顺序，则执行顺序是不确定的。
 
-   - **重写集** ：包含要与请求路由规则关联的多个重写规则。
+   - **重写集**：包含要与请求路由规则关联的多个重写规则。
 
-2. 将重写集 ( *rewriteRuleSet* ) 附加到路由规则。 重写配置将通过路由规则附加到源侦听器。 使用基本路由规则时，标头重写配置与源侦听器相关联，并且是全局标头重写。 使用基于路径的路由规则时，将在 URL 路径映射中定义标头重写配置。 在这种情况下，该规则只会应用到站点的特定路径区域。
+2. 将重写集 (*rewriteRuleSet*) 附加到路由规则。 重写配置将通过路由规则附加到源侦听器。 使用基本路由规则时，标头重写配置与源侦听器相关联，并且是全局标头重写。 使用基于路径的路由规则时，将在 URL 路径映射中定义标头重写配置。 在这种情况下，该规则只会应用到站点的特定路径区域。
    > [!NOTE]
    > URL 重写会改变标头，而不会更改路径的 URL。
 

@@ -5,12 +5,12 @@ ms.custom: subject-cost-optimization
 ms.service: app-service
 ms.topic: how-to
 ms.date: 01/01/2021
-ms.openlocfilehash: 9d742606435f62d48446bb8ad56ece7a31b76e47
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 3df08705859678525526f8fef198826f58249d8b
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736215"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99573358"
 ---
 # <a name="plan-and-manage-costs-for-azure-app-service"></a>规划和管理 Azure App Service 的成本
 
@@ -125,7 +125,7 @@ ms.locfileid: "98736215"
 
 预订实例定价适用于你的订阅中的适用实例，最大数量为你保留的实例数。 预订实例是计费的，不依赖于特定计算实例。 如果你运行的实例数少于在预留期内的任何时间预留的实例数，则仍需为保留实例付费。 如果在预留期间运行的实例数超出了预留时间，则会支付额外实例的正常应计成本。
 
- (应用服务环境) 的 **隔离** 层还支持1年和3年的保留期，价格将降低。 有关详细信息，请参阅 [如何将预订折扣应用于 Azure App Service 隔离的戳记](../cost-management-billing/reservations/reservation-discount-app-service-isolated-stamp.md)。
+ (应用服务环境) 的 **隔离** 层还支持1年和3年的保留期，价格将降低。 有关详细信息，请参阅 [如何将预订折扣应用于 Azure App Service](../cost-management-billing/reservations/reservation-discount-app-service.md)。
 
 ## <a name="monitor-costs"></a>监视成本
 

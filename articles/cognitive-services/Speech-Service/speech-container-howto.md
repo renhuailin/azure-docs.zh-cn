@@ -12,12 +12,12 @@ ms.date: 11/17/2020
 ms.author: aahi
 ms.custom: cog-serv-seo-aug-2020
 keywords: 本地, Docker, 容器
-ms.openlocfilehash: 79e53bf39e411569f87a46bfc275c784ce84babc
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 7bebaf7558de8ec5c1fcca3c9a4526330da1d695
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98703320"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575782"
 ---
 # <a name="install-and-run-docker-containers-for-the-speech-service-apis"></a>为语音服务 Api 安装并运行 Docker 容器 
 
@@ -41,10 +41,10 @@ ms.locfileid: "98703320"
 
 | 容器 | 功能 | 最新 |
 |--|--|--|
-| 语音转文本 | 利用中间结果分析情绪和转录连续实时语音或批处理音频记录。  | 2.7.0 |
-| 自定义语音转文本 | 使用 [自定义语音门户](https://speech.microsoft.com/customspeech)中的自定义模型，转录连续实时语音或批处理音频记录到带有中间结果的文本中。 | 2.7.0 |
-| 文本转语音 |  (SSML) ，以纯文本输入或语音合成标记语言将文本转换为自然声音。 | 1.9.0 |
-| 自定义文本到语音转换 | 使用 [自定义语音门户](https://aka.ms/custom-voice-portal)中的自定义模型，使用纯文本输入或语音合成标记语言 (SSML) 将文本转换为自然声音。 | 1.9.0 |
+| 语音转文本 | 利用中间结果分析情绪和转录连续实时语音或批处理音频记录。  | 2.9.0 |
+| 自定义语音转文本 | 使用 [自定义语音门户](https://speech.microsoft.com/customspeech)中的自定义模型，转录连续实时语音或批处理音频记录到带有中间结果的文本中。 | 2.9.0 |
+| 文本转语音 |  (SSML) ，以纯文本输入或语音合成标记语言将文本转换为自然声音。 | 1.11.0 |
+| 自定义文本到语音转换 | 使用 [自定义语音门户](https://aka.ms/custom-voice-portal)中的自定义模型，使用纯文本输入或语音合成标记语言 (SSML) 将文本转换为自然声音。 | 1.11.0 |
 | 语音语言检测 | 检测音频文件中的语言。 | 1.0 |
 | 神经文本转语音 | 使用 deep 神经网络技术将文本转换为自然声音，允许使用更自然的合成语音。 | 1.3.0 |
 
@@ -119,7 +119,7 @@ grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detect
 |-----------|------------|
 | 自定义语音转文本 | `mcr.microsoft.com/azure-cognitive-services/speechservices/custom-speech-to-text:latest` |
 
-# <a name="text-to-speech"></a>[文本到语音转换](#tab/tts)
+# <a name="text-to-speech"></a>[文本转语音](#tab/tts)
 
 | 容器 | 存储库 |
 |-----------|------------|
@@ -194,7 +194,7 @@ docker pull mcr.microsoft.com/azure-cognitive-services/speechservices/custom-spe
 > [!NOTE]
 > `locale` `voice` 自定义语音容器的和由容器的自定义模型引入确定。
 
-# <a name="text-to-speech"></a>[文本到语音转换](#tab/tts)
+# <a name="text-to-speech"></a>[文本转语音](#tab/tts)
 
 #### <a name="docker-pull-for-the-text-to-speech-container"></a>文本到语音容器的 Docker 拉取
 
@@ -316,6 +316,28 @@ ApiKey={API_KEY}
 > [!NOTE]
 > 容器使用适用 gstreamer 支持语音 SDK 的压缩音频输入。
 > 若要在容器中安装适用 gstreamer，请遵循适用于适用 gstreamer 的 Linux 说明， [将编解码器压缩的音频输入与语音 SDK 配合使用](how-to-use-codec-compressed-audio-input-streams.md)。
+
+#### <a name="diarization-on-the-speech-to-text-output"></a>语音到文本输出的 Diarization
+默认情况下，启用 Diarization。 若要在响应中获取 diarization，请使用 `diarize_speech_config.set_service_property` 。
+
+1. 将短语输出格式设置为 `Detailed` 。
+2. 设置 diarization 的模式。 支持的模式为 `Identity` 和 `Anonymous` 。
+```python
+diarize_speech_config.set_service_property(
+    name='speechcontext-PhraseOutput.Format',
+    value='Detailed',
+    channel=speechsdk.ServicePropertyChannel.UriQueryParameter
+)
+
+diarize_speech_config.set_service_property(
+    name='speechcontext-phraseDetection.speakerDiarization.mode',
+    value='Identity',
+    channel=speechsdk.ServicePropertyChannel.UriQueryParameter
+)
+```
+> [!NOTE]
+> "标识" 模式返回 `"SpeakerId": "Customer"` 或 `"SpeakerId": "Agent"` 。
+> "匿名" 模式返回 `"SpeakerId": "Speaker 1"` 或 `"SpeakerId": "Speaker 2"`
 
 
 #### <a name="analyze-sentiment-on-the-speech-to-text-output"></a>分析语音到文本输出的情绪 
@@ -455,7 +477,7 @@ Checking available base model for en-us
 从自定义语音到文本容器的 v 2.5.0 开始，你可以在输出中获取自定义发音结果。 你只需在自定义模型中设置自己的自定义发音规则并将模型装载到自定义语音到文本容器。
 
 
-# <a name="text-to-speech"></a>[文本到语音转换](#tab/tts)
+# <a name="text-to-speech"></a>[文本转语音](#tab/tts)
 
 若要运行标准 *文本到语音转换* 容器，请执行以下 `docker run` 命令。
 
@@ -749,7 +771,7 @@ speech_config.set_service_property(
 * 语音为 Docker 提供四个 Linux 容器，封装各种功能：
   * *语音到文本*
   * *自定义语音转文本*
-  * *文本到语音转换*
+  * *文本转语音*
   * *自定义文本到语音转换*
   * *神经文本转语音*
   * *语音语言检测*

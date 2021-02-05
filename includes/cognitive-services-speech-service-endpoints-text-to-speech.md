@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/06/2019
 ms.author: wolfma
-ms.openlocfilehash: 650ce0cc9586118b30593767c6a3ddb92f494ac3
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: df6f7311613057c445ae714b8b11240d0d5be14b
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95972636"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99569486"
 ---
 ### <a name="standard-and-neural-voices"></a>标准语音和神经语音
 
@@ -20,7 +20,7 @@ ms.locfileid: "95972636"
 | 澳大利亚东部 | `https://australiaeast.tts.speech.microsoft.com/cognitiveservices/v1` | 是 | 是 |
 | Brazil South | `https://brazilsouth.tts.speech.microsoft.com/cognitiveservices/v1` | 是 | 否 |
 | 加拿大中部 | `https://canadacentral.tts.speech.microsoft.com/cognitiveservices/v1` | 是 | 是 |
-| 美国中部 | `https://centralus.tts.speech.microsoft.com/cognitiveservices/v1` | 是 | 否 |
+| Central US | `https://centralus.tts.speech.microsoft.com/cognitiveservices/v1` | 是 | 否 |
 | 东亚 | `https://eastasia.tts.speech.microsoft.com/cognitiveservices/v1` | 是 | 否 |
 | 美国东部 | `https://eastus.tts.speech.microsoft.com/cognitiveservices/v1` | 是 | 是 |
 | 美国东部 2 | `https://eastus2.tts.speech.microsoft.com/cognitiveservices/v1` | 是 | 否 |
@@ -45,7 +45,7 @@ ms.locfileid: "95972636"
 
 如果已经创建了自定义语音字体，请使用已创建的终结点。 还可以使用下面列出的终结点，并将 `{deploymentId}` 替换为语音模型的部署 ID。
 
-| 区域 | 终结点 |
+| 区域 | 端点 |
 |--------|----------|
 | 澳大利亚东部 | `https://australiaeast.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId}` |
 | 巴西南部 | `https://brazilsouth.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId}` |
@@ -67,3 +67,14 @@ ms.locfileid: "95972636"
 | 西欧 | `https://westeurope.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId}` |
 | 美国西部 | `https://westus.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId}` |
 | 美国西部 2 | `https://westus2.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId}` |
+
+### <a name="custom-neural-voice"></a>自定义的神经声音
+
+下表详细说明了对自定义神经语音功能的区域支持。
+
+| 功能 | 支持的区域 |
+|---|---|
+| 语音模型托管 | 美国东部、美国西部2、美国中南部、东南亚、英国南部、西欧、澳大利亚东部 |
+| 实时字符 | 美国东部、美国西部2、美国中南部、东南亚、英国南部、西欧、澳大利亚东部 |
+| 长音频字符 | 美国东部、西欧、英国南部、东南亚、印度中部 |
+| 自定义神经定型 | 美国东部，英国南部 |

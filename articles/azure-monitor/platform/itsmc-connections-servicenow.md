@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 12/21/2020
-ms.openlocfilehash: cc4f961c399e9ac5e853085106924584eb3935d0
-ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
+ms.openlocfilehash: 222257f5045984a71c2aee9de83b5fa420306728
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99223383"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99573409"
 ---
 # <a name="connect-servicenow-with-it-service-management-connector"></a>连接 ServiceNow 与 IT 服务管理连接器
 
@@ -123,7 +123,7 @@ ServiceNow 管理员必须为其 ServiceNow 实例生成客户端 ID 和客户�
    | --- | --- |
    | **连接名称**   | 输入要使用 ITSMC 连接的 ServiceNow 实例的名称。 稍后在配置 ITSM 工作项和查看详细分析时 Log Analytics 使用此名称。 |
    | **合作伙伴类型**   | 选择“ServiceNow”。 |
-   | **服务器 Url**   | 输入要连接到 ITSMC 的 ServiceNow 实例的 URL。 URL 应指向支持的 SaaS 版本，并使用 *servicenow.com* (例如 https://XXXXX.service-now.com/) 。|
+   | **服务器 Url**   | 输入要连接到 ITSMC 的 ServiceNow 实例的 URL。 该 URL 应指向 *servicenow.com* (支持的 SaaS 版本，如 `https://XXXXX.service-now.com/`) 。|
    | **用户名**   | 输入在 ServiceNow 应用中创建的、用于支持连接到 ITSMC 的集成用户名。|
    | **密码**   | 输入与此用户名关联的密码。 **注意**：用户名和密码仅用于生成身份验证令牌。 它们不存储在 ITSMC 服务中的任何位置。  |
    | **客户端 Id**   | 输入要用于之前生成的 OAuth2 authentication 的客户端 ID。 有关生成客户端 ID 和机密的详细信息，请参阅 [设置 OAuth](https://old.wiki/index.php/OAuth_Setup)。 |

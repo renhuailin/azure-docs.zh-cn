@@ -8,12 +8,12 @@ ms.date: 08/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: fd74872bc1c46f3dddda1b6d15f14f26dc2187cb
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: ba7d6d8deb2034f8b2a853cf74635687561c41ea
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499367"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99573596"
 ---
 # <a name="use-the-azure-portal-to-enable-end-to-end-encryption-using-encryption-at-host"></a>使用 Azure 门户在主机上使用加密启用端到端加密
 
@@ -37,7 +37,7 @@ ms.locfileid: "96499367"
 
 ## <a name="prerequisites"></a>先决条件
 
-为了能够为 VM 或虚拟机规模集使用主机加密，必须在订阅上启用该功能。 向 encryptionAtHost@microsoft 发送电子邮件。 带有订阅 Id 的 com 用于为你的订阅启用该功能。
+为了能够为 VM 或虚拟机规模集使用主机加密，必须在订阅上启用该功能。 使用你的订阅 Id 向发送电子邮件 encryptionAtHost@microsoft.com ，以便为你的订阅启用该功能。
 
 使用 [提供的链接](https://aka.ms/diskencryptionupdates)登录到 Azure 门户。
 

@@ -10,19 +10,21 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: c34410fcb5e1992f8b7a358801a354a1e1cf190c
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 01e5095e5ff5c65bff508f4bd526ee5f85e3dc56
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98808008"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575154"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>将 Azure SQL 数据库流量迁移到更新的网关
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 Azure 基础结构改进后，Microsoft 会定期刷新硬件，以确保提供最佳的客户体验。 在接下来的几个月中，我们计划添加基于较新的硬件代构建的网关，将流量迁移到这些网关，并最终解除在某些区域中的旧硬件上构建网关。  
 
-在每个区域中提供的任何网关更改之前，将通过电子邮件和 Azure 门户获取客户通知。 在 [AZURE SQL 数据库网关 IP 地址](connectivity-architecture.md#gateway-ip-addresses) 表中将保留最新的信息。
+在对每个区域中可用的网关进行任何更改之前，将通过服务运行状况通知提前通知客户。 客户可以 [使用 Azure 门户来设置活动日志警报](https://docs.microsoft.com/azure/service-health/alerts-activity-log-service-notifications-portal)。
+
+在 [AZURE SQL 数据库网关 IP 地址](connectivity-architecture.md#gateway-ip-addresses) 表中将保留最新的信息。
 
 ## <a name="status-updates"></a>状态更新
 
@@ -112,7 +114,7 @@ Azure 基础结构改进后，Microsoft 会定期刷新硬件，以确保提供�
 - 美国西部
 - 西欧
 - 美国东部
-- 美国中部
+- Central US
 - 东南亚
 - 美国中南部
 - 北欧

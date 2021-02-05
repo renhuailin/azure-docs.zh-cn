@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 10/21/2020
 ms.author: alkohli
-ms.openlocfilehash: f99a3110880626b3a809e6bab5edc02398094547
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 887aaf32592c74a5884916bc7ad63d79544fb554
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426228"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575849"
 ---
 # <a name="azure-stack-edge-blob-storage-requirements"></a>Azure Stack 边缘 Blob 存储要求
 
@@ -26,7 +26,7 @@ ms.locfileid: "92426228"
 |     功能                                             |     Azure 存储                                     |     Azure Stack 边缘 Blob 存储 |
 |---------------------------------------------------------|-------------------------------------------------------|---------------------------|
 |    Azure 文件存储                                   |    支持基于云的 SMB 文件共享              |    不支持      |
-|    存储帐户类型                                 |    常规用途和 Azure blob 存储帐户    |    仅常规用途 v1|
+|    存储帐户类型                                 |    常规用途和 Azure Blob 存储帐户    |    仅常规用途 v1|
 |    Blob 名称                                            |    1024 个字符（2048 个字节）                     |    880 个字符（1760 个字节）|
 |    块 blob 最大大小                              |    4.75 TB（100 MB X 50,000 块）                   |    4.75 TB (100 MB x 50000 块) 用于 Azure Stack 边缘|
 |    页 blob 最大大小                               |    8 TB                                               |    1 TB                   |

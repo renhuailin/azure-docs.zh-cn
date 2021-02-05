@@ -9,18 +9,18 @@ ms.reviewer: estfan, daviburg, logicappspm
 ms.topic: article
 ms.date: 02/01/2021
 tags: connectors
-ms.openlocfilehash: edf4ce188c9239e697e2148d4fff51966d91f85a
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: cbbc0edf710b8823c1a36daa66bc01d89acf63da
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99252604"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575477"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>从 Azure 逻辑应用连接到 SAP 系统
 
 本文介绍如何使用 [sap 连接器](https://docs.microsoft.com/connectors/sap/)从逻辑应用访问 SAP 资源。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。
 
@@ -504,7 +504,7 @@ SAP 连接器除了简单的字符串和数字输入以外，还接受以下表�
   * 若要将这些段发布到 SAP，请联系 SAP 系统的 ABAP 工程师。
 ### <a name="asynchronous-request-reply-for-triggers"></a>异步请求应答触发器
 
-SAP 连接器支持逻辑应用触发器的 Azure [异步请求-答复模式](/azure/architecture/patterns/async-request-reply.md) 。 您可以使用此模式创建成功的请求，否则会失败，并使用默认的同步请求-答复模式。 
+SAP 连接器支持逻辑应用触发器的 Azure [异步请求-答复模式](/azure/architecture/patterns/async-request-reply) 。 您可以使用此模式创建成功的请求，否则会失败，并使用默认的同步请求-答复模式。 
 
 > [!TIP]
 > 在具有多个响应操作的逻辑应用中，所有响应操作必须使用相同的请求-答复模式。 例如，如果逻辑应用使用具有多个可能的响应操作的 switch 控件，则必须将所有响应操作配置为使用相同的请求-答复模式，无论是同步还是异步。 
@@ -1264,7 +1264,7 @@ SAP 连接器支持逻辑应用触发器的 Azure [异步请求-答复模式](/a
 
 1. 在 "操作 **初始化变量**" 的编辑器中，配置以下设置。 然后，保存所做的更改。
 
-    1. 对于 " **名称**"，请输入变量的名称。 例如，`IDOCtransferID`。
+    1. 对于 " **名称**"，请输入变量的名称。 例如 `IDOCtransferID`。
 
     1. 对于 " **类型**"，选择 " **字符串** " 作为变量类型。
 
@@ -1282,7 +1282,7 @@ SAP 连接器支持逻辑应用触发器的 Azure [异步请求-答复模式](/a
 
     1. 对于 " **确认 TID**"，请选择 " **否**"。
 
-    1. 选择 "**添加新参数列表**  >  **事务 ID GUID**"。 选择该文本框以打开 "动态内容" 菜单。 在 " **变量** " 选项卡下，选择所创建的变量的名称。 例如，`IDOCtransferID`。
+    1. 选择 "**添加新参数列表**  >  **事务 ID GUID**"。 选择该文本框以打开 "动态内容" 菜单。 在 " **变量** " 选项卡下，选择所创建的变量的名称。 例如 `IDOCtransferID`。
 
 1. 在操作的标题栏上 **，选择**   >  "发送 IDOC"**设置**。 对于 **重试策略**，建议选择 " **默认** &gt; **完成**"。 不过，你可以根据自己的特定需求来配置自定义策略。 对于自定义策略，建议至少配置一次重试，以克服暂时的网络故障。
 
@@ -1290,7 +1290,7 @@ SAP 连接器支持逻辑应用触发器的 Azure [异步请求-答复模式](/a
 
 1. 在 "操作 **确认事务 ID**" 的编辑器中，配置以下设置。 然后，保存所做的更改。
 
-    1. 对于 " **事务 ID**"，请再次输入变量的名称。 例如，`IDOCtransferID`。
+    1. 对于 " **事务 ID**"，请再次输入变量的名称。 例如 `IDOCtransferID`。
 
 1. （可选）在测试环境中验证重复数据删除。 使用在上一步中使用的相同 **事务 ID** GUID 重复 **Send IDOC** 操作。 当你同时发送相同的 IDoc 时，可以验证 SAP 是否能够识别 tRFC 调用的重复项，并将两次调用解析为单个入站 IDoc 消息。
 

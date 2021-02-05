@@ -6,12 +6,12 @@ author: v-dalc
 ms.topic: article
 ms.date: 01/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 02611bdf9689d2f62f661f558fd547ea46bd4d36
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 52b30730ee8ab126521ad0760204ee48ef6a63fe
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98744263"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576002"
 ---
 # <a name="storsimple-virtual-array-update-13-release-notes"></a>StorSimple 虚拟阵列更新1.3 发行说明
 
@@ -28,15 +28,15 @@ ms.locfileid: "98744263"
 
 ## <a name="whats-new-in-update-13"></a>更新1.3 中的新增功能
 
-此更新包含以下改进：
+此更新包含以下改进： KB4540725
 
 - 传输层安全性 (TLS) 1.2 是必需更新，必须安装。 在此版本中，TLS 1.2 成为所有 Azure 门户通信的标准协议。
 - 当设备和存储帐户位于两个远距离区域时，垃圾收集 bug 修复会提高垃圾回收周期的性能。
 - 修复了因 blob 超时导致的备份失败。
 - 更新的 OS/.NET framework 安全修补程序：
-  - [KB4540725](\\winsehotfix.segroup.winse.corp.microsoft.com\hotfixes\Windows6.3\RTM\KB4540725\V1.001\free\NEU\X64)：2020年3月 (服务堆栈更新) 
-  - [KB4565541](\\winsehotfix.segroup.winse.corp.microsoft.com\hotfixes\Windows6.3\RTM\KB4565541\V1.014\free\NEU\X64)：2020年7月汇总
-  - [KB4565622](\\winsehotfix.segroup.winse.corp.microsoft.com\hotfixes\Partner\DOTNET47x\KB4565622\V1.000\free\NEU\x64)：2020年7月 .NET Framework 更新
+  - [KB4540725](https://support.microsoft.com/topic/servicing-stack-update-for-windows-8-1-rt-8-1-and-server-2012-r2-march-10-2020-cfa082a3-0b58-a8a3-7dc7-ab424de91b86)：2020年3月 (服务堆栈更新) 
+  - [KB4565541](https://support.microsoft.com/topic/july-14-2020-kb4565541-monthly-rollup-fed6b2b1-3d23-5981-34df-9215a8d8ce01)：2020年7月汇总
+  - [KB4565622](https://support.microsoft.com/topic/security-and-quality-rollup-for-net-framework-4-6-4-6-1-4-6-2-4-7-4-7-1-4-7-2-for-windows-8-1-rt-8-1-and-windows-server-2012-r2-kb4565622-b7320848-1889-a624-da01-719f55ee8a00)：2020年7月 .NET Framework 更新
 
 ## <a name="download-update-13"></a>下载更新1。3
 

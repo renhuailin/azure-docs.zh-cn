@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/25/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: e987f96402f4c922bdaca8ecf32348bc99c34199
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: 01cd79afe3e718a32663544a76a2a43353bc082e
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98798375"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575375"
 ---
 # <a name="azure-security-baseline-for-windows-virtual-desktop"></a>适用于 Windows 虚拟桌面的 Azure 安全基线
 
@@ -64,7 +64,7 @@ Windows 虚拟桌面服务包括服务本身，Windows 10 企业版适用于多�
 
 - [Azure VPN 概述](../vpn-gateway/vpn-gateway-about-vpngateways.md) 
 
-- [虚拟网络对等](/azure/virtual-network/virtual-network-peering-overvie)
+- [虚拟网络对等](/azure/virtual-network/virtual-network-peering-overview)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -96,7 +96,7 @@ Windows 虚拟桌面不打算运行 web 应用程序，并且不需要配置任�
 
 - [Azure Marketplace 包含第三方 ID 功能](https://azuremarketplace.microsoft.com/marketplace?search=IDS) 
 
-- [Microsoft Defender ATP EDR 功能](/windows/security/threat-protection/microsoft-defender-atp/overviewendpoint-detection-response)
+- [Microsoft Defender ATP EDR 功能](/bs-cyrl-ba/windows/security/threat-protection/microsoft-defender-atp/overview-endpoint-detection-response)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -310,7 +310,7 @@ Windows 虚拟桌面支持传统的基于密码的身份验证，例如仅限云
 
 使用 Azure Active Directory (Azure AD) ，Microsoft Defender 高级威胁防护 (ATP) 或 Microsoft Intune 部署用于管理任务的安全管理用户工作站。 可以集中管理安全的工作站来强制实施受保护的配置，包括强身份验证、软件和硬件基准、受限的逻辑和网络访问。
 
-- [了解特权访问工作站](/azure/active-directory/devices/concept-azure-managed-workstation) 
+- [了解特权访问工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/) 
 
 - [部署特权访问工作站](/azure/active-directory/devices/howto-azure-managed-workstation)
 
@@ -488,7 +488,7 @@ Azure 信息保护 (AIP) 提供的监视功能针对已分类并标记的信息�
 
 ## <a name="logging-and-threat-detection"></a>日志记录和威胁检测
 
-有关详细信息，请参阅 [Azure 安全基准：日志记录和威胁检测](/azure/security/benchmarks/security-controls-v2-logging-threat-protection)。
+有关详细信息，请参阅 [Azure 安全基准：日志记录和威胁检测](/azure/security/benchmarks/security-controls-v2-logging-threat-detection)。
 
 ### <a name="lt-1-enable-threat-detection-for-azure-resources"></a>LT-1：为 Azure 资源启用威胁检测
 
@@ -684,7 +684,7 @@ Azure 安全中心为每条警报分配严重性，方便你根据优先级来�
 
 ## <a name="posture-and-vulnerability-management"></a>安全状况和漏洞管理
 
-有关详细信息，请参阅 [Azure 安全基准：安全状况和漏洞管理](/azure/security/benchmarks/security-controls-v2-vulnerability-management)。
+有关详细信息，请参阅 [Azure 安全基准：安全状况和漏洞管理](/azure/security/benchmarks/security-controls-v2-posture-vulnerability-management)。
 
 ### <a name="pv-3-establish-secure-configurations-for-compute-resources"></a>PV-3：为计算资源建立安全配置
 
@@ -765,9 +765,9 @@ Windows 虚拟桌面可以使用第三方解决方案来执行网络设备和 we
 
 为 Configuration Manager 使用第三方软件或 System Center Updates Publisher 的第三方修补程序管理解决方案。
 
-- [如何在 Azure 中为虚拟机配置更新管理](/azure/automation/automation-update-management) 
+- [如何在 Azure 中为虚拟机配置更新管理](/azure/automation/update-management/overview) 
 
-- [管理 Azure VM 的更新和修补程序](/azure/automation/automation-tutorial-update-management)
+- [管理 Azure VM 的更新和修补程序](/azure/automation/update-management/manage-updates-for-vm)
 
 - [为 Windows 虚拟桌面配置 Microsoft Endpoint Configuration Manager](configure-automatic-updates.md)
 
@@ -928,9 +928,9 @@ Azure 备份/azure/backup/security-overview 中的安全功能概述
 
 - [云采用框架 - Azure 数据安全和加密最佳做法](https://docs.microsoft.com/azure/security/fundamentals/data-encryption-best-practices?toc=/azure/cloud-adoption-framework/toc.json&amp;bc=/azure/cloud-adoption-framework/_bread/toc.json)
 
-- [Azure 安全基准 - 资产管理](/azure/security/benchmarks/security-benchmark-v2-asset-management)
+- [Azure 安全基准 - 资产管理](/azure/security/benchmarks/security-controls-v2-asset-management)
 
-- [Azure 安全基准 - 数据保护](/azure/security/benchmarks/security-benchmark-v2-data-protection)
+- [Azure 安全基准 - 数据保护](/azure/security/benchmarks/security-controls-v2-data-protection)
 
 **Azure 安全中心监视**：不适用
 
@@ -958,7 +958,7 @@ Azure 备份/azure/backup/security-overview 中的安全功能概述
 
 **指导**：持续衡量并缓解你的个人资产及其托管环境的风险。 确定高价值资产和暴露程度高的受攻击面（例如已发布的应用程序、网络入口和出口点、用户和管理员终结点等）的优先级。
 
-- [Azure 安全基准 - 状况和漏洞管理](/azure/security/benchmarks/security-benchmark-v2-posture-vulnerability-management)
+- [Azure 安全基准 - 状况和漏洞管理](/azure/security/benchmarks/security-controls-v2-posture-vulnerability-management)
 
 **Azure 安全中心监视**：不适用
 
@@ -999,7 +999,7 @@ Azure 备份/azure/backup/security-overview 中的安全功能概述
 有关详细信息，请参阅以下资源：
 - [Azure 安全最佳做法 11 - 体系结构。单一的统一安全策略](/azure/cloud-adoption-framework/security/security-top-10#11-architecture-establish-a-single-unified-security-strategy)
 
-- [Azure 安全基准 - 网络安全](/azure/security/benchmarks/security-benchmark-v2-network-security)
+- [Azure 安全基准 - 网络安全](/azure/security/benchmarks/security-controls-v2-network-security)
 
 - [Azure 网络安全概述](../security/fundamentals/network-overview.md)
 
@@ -1027,9 +1027,9 @@ Azure 备份/azure/backup/security-overview 中的安全功能概述
 
 有关详细信息，请参阅以下资源：
 
-- [Azure 安全基准 - 标识管理](/azure/security/benchmarks/security-benchmark-v2-identity-management)
+- [Azure 安全基准 - 标识管理](/azure/automation/update-management/overview)
 
-- [Azure 安全基准 - 特权访问](/azure/security/benchmarks/security-benchmark-v2-privileged-access)
+- [Azure 安全基准 - 特权访问](/azure/security/benchmarks/security-controls-v2-privileged-access)
 
 - [Azure 安全最佳做法 11 - 体系结构。单一的统一安全策略](/azure/cloud-adoption-framework/security/security-top-10#11-architecture-establish-a-single-unified-security-strategy)
 
@@ -1061,9 +1061,9 @@ Azure 备份/azure/backup/security-overview 中的安全功能概述
 
 有关详细信息，请参阅以下资源：
 
-- [Azure 安全基准 - 日志记录和威胁检测](/azure/security/benchmarks/security-benchmark-v2-logging-threat-detection)
+- [Azure 安全基准 - 日志记录和威胁检测](/azure/security/benchmarks/security-controls-v2-logging-threat-detection)
 
-- [Azure 安全基准 - 事件响应](/azure/security/benchmarks/security-benchmark-v2-incident-response)
+- [Azure 安全基准 - 事件响应](/azure/security/benchmarks/security-controls-v2-incident-response)
 
 - [Azure 安全最佳做法 4 - 流程。更新云的事件响应流程](/azure/cloud-adoption-framework/security/security-top-10#4-process-update-incident-response-ir-processes-for-cloud)
 

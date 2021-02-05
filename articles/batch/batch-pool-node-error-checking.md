@@ -5,12 +5,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 02/03/2020
 ms.topic: how-to
-ms.openlocfilehash: 8901877ab3055c02dfc8c129fb35864418cd19d8
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 2b67eada5dfa89f95e2c9ae045c6bbe3fa0bb1ce
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99549129"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576306"
 ---
 # <a name="check-for-pool-and-node-errors"></a>检查池和节点错误
 
@@ -24,7 +24,7 @@ ms.locfileid: "99549129"
 
 ### <a name="resize-timeout-or-failure"></a>调整大小超时或失败
 
-创建新池或重设现有池大小时，将指定目标节点数。 创建或调整大小操作会立即完成，但新节点的实际分配或现有节点的删除操作可能需要几分钟才能完成。 可在 [创建](/rest/api/batchservice/pool/add) 或 [调整](/rest/api/batchservice/pool/resize) API 中指定 cam 调整超时。 如果在调整超时期限期间 Batch 无法获取目标节点数，则池将进入稳定状态，并报告调整大小错误。
+创建新池或重设现有池大小时，将指定目标节点数。 创建或调整大小操作会立即完成，但新节点的实际分配或现有节点的删除操作可能需要几分钟才能完成。 可以在 [创建](/rest/api/batchservice/pool/add) API 或 [调整大小](/rest/api/batchservice/pool/resize) API 中指定调整大小超时。 如果在调整超时期限期间 Batch 无法获取目标节点数，则池将进入稳定状态，并报告调整大小错误。
 
 最新评估的 [ResizeError](/rest/api/batchservice/pool/get#resizeerror) 属性会列出发生的错误。
 

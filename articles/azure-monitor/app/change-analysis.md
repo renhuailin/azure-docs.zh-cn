@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: cawams
 ms.author: cawa
 ms.date: 05/04/2020
-ms.openlocfilehash: 728fd8f4705d24f719b6dd47ba88d89fb399fd5a
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 133a7d9b3fa04797648fa253825505d29e37ca98
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98195868"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576377"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>使用 Azure Monitor 中的应用程序更改分析（预览版）
 
@@ -28,6 +28,17 @@ ms.locfileid: "98195868"
 下图演示了更改分析的体系结构：
 
 ![演示更改分析如何获取更改数据并将其提供给客户端工具的体系结构示意图](./media/change-analysis/overview.png)
+
+## <a name="supported-resource-types"></a>支持的资源类型
+
+应用程序更改分析服务支持所有 Azure 资源类型中的资源属性级别更改，包括常见资源，如：
+- 虚拟机
+- 虚拟机规模集
+- 应用服务
+- Azure Kubernetes 服务
+- Azure 函数
+- 网络资源：网络安全组、虚拟网络、应用程序网关等。
+- 数据服务：即存储、SQL、Redis 缓存、Cosmos DB 等。
 
 ## <a name="data-sources"></a>数据源
 
@@ -49,17 +60,27 @@ ms.locfileid: "98195868"
 
 ### <a name="dependency-changes"></a>依赖项更改
 
-对资源依赖项的更改也可能会导致 Web 应用出现问题。 例如，如果某个 Web 应用调用 Redis 缓存，Redis 缓存 SKU 可能会影响该 Web 应用的性能。 若要检测依赖项的更改，更改分析将检查 Web 应用的 DNS 记录。 它通过这种方式识别所有应用组件中可能导致出现问题的更改。
-目前支持以下依赖项：
+对资源依赖项所做的更改也可能会导致资源问题。 例如，如果某个 Web 应用调用 Redis 缓存，Redis 缓存 SKU 可能会影响该 Web 应用的性能。 另一个示例是，如果端口22在虚拟机的网络安全组中关闭，则会导致连接错误。 
+
+#### <a name="web-app-diagnose-and-solve-problems-navigator-preview"></a>Web 应用诊断和解决问题导航器 (预览) 
+若要检测依赖项的更改，更改分析将检查 Web 应用的 DNS 记录。 它通过这种方式识别所有应用组件中可能导致出现问题的更改。
+目前， **Web 应用诊断和解决问题中支持以下依赖项 |导航器 (预览)**：
 - Web 应用
 - Azure 存储
 - Azure SQL
 
-## <a name="application-change-analysis-service"></a>应用程序更改分析服务
+#### <a name="related-resources"></a>相关资源
+应用程序更改分析检测相关资源。 常见示例包括与虚拟机相关的网络安全组、虚拟网络、应用程序网关和负载均衡器。 通常，网络资源是在使用资源的资源组中自动预配的，因此按资源组筛选更改将显示虚拟机和相关网络资源的所有更改。
+
+![网络更改屏幕截图](./media/change-analysis/network-changes.png)
+
+## <a name="application-change-analysis-service-enablement"></a>应用程序更改分析服务支持
 
 应用程序更改分析服务计算并聚合上述数据源中的更改数据。 它提供一组分析，使用户能够轻松地浏览所有资源更改，并识别故障排除或监视上下文中的相关更改。
-需将“Microsoft.ChangeAnalysis”资源提供程序注册到某个订阅，然后才可使用 Azure 资源管理器的跟踪属性和代理设置更改数据。 当你输入 Web 应用 "诊断和解决问题" 工具或显示 "更改分析独立" 选项卡时，将自动注册此资源提供程序。 它不会为你的订阅提供任何性能或成本实现。 当你为 web 应用启用更改分析 (或启用) 的 "诊断和解决问题" 工具时，它将对 web 应用造成性能影响，无需支付费用。
-对于 Web 应用的来宾中更改，需要单独的支持才能在 Web 应用中扫描代码文件。 有关详细信息，请参阅本文后面 [的诊断和解决问题工具](#application-change-analysis-in-the-diagnose-and-solve-problems-tool) 一节中的更改分析。
+需将“Microsoft.ChangeAnalysis”资源提供程序注册到某个订阅，然后才可使用 Azure 资源管理器的跟踪属性和代理设置更改数据。 当你输入 Web 应用 "诊断和解决问题" 工具或显示 "更改分析独立" 选项卡时，将自动注册此资源提供程序。 对于 Web 应用的来宾中更改，需要单独的支持才能在 Web 应用中扫描代码文件。 有关详细信息，请参阅本文后面 [的诊断和解决问题工具](#application-change-analysis-in-the-diagnose-and-solve-problems-tool) 一节中的更改分析。
+
+## <a name="cost"></a>Cost
+应用程序更改分析是一项免费服务，它不会对启用它的订阅产生任何计费费用。 对于扫描 Azure 资源属性更改，服务也不会产生任何性能影响。 当你为 web 应用中的 "来宾文件更改" 启用更改分析 (或启用) 的 "诊断和解决问题" 工具时，它将对 web 应用造成性能影响，无需支付费用。
 
 ## <a name="visualizations-for-application-change-analysis"></a>应用程序更改分析的可视化效果
 
@@ -82,6 +103,11 @@ ms.locfileid: "98195868"
 有关任何反馈，请使用边栏选项卡或电子邮件中的 "发送反馈" 按钮 changeanalysisteam@microsoft.com 。
 
 ![“更改分析”边栏选项卡中反馈按钮的屏幕截图](./media/change-analysis/change-analysis-feedback.png)
+
+#### <a name="multiple-subscription-support"></a>支持多个订阅
+UI 支持选择多个订阅以查看资源更改。 使用订阅筛选器：
+
+![支持选择多个订阅的订阅筛选器的屏幕截图](./media/change-analysis/multiple-subscriptions-support.png)
 
 ### <a name="web-app-diagnose-and-solve-problems"></a>Web 应用诊断和解决问题
 
@@ -169,7 +195,7 @@ foreach ($webapp in $webapp_list)
 
 ```
 
-## <a name="troubleshoot"></a>疑难解答
+## <a name="troubleshoot"></a>故障排除
 
 ### <a name="having-trouble-registering-microsoftchange-analysis-resource-provider-from-change-history-tab"></a>注册 Microsoft 时遇到问题。请从 "更改历史记录" 选项卡更改分析资源提供程序
 如果是第一次在其与应用程序更改分析集成后查看更改历史记录，则会看到它会自动注册资源提供程序 **ChangeAnalysis**。 在极少数情况下，可能会由于以下原因而失败：

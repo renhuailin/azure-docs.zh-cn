@@ -11,24 +11,24 @@ ms.topic: how-to
 ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a0d5b369e1c143b3df4157329bcf7d3a3f7142d7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 99368da8b4018e93ad537e4722ffefd476e61291
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87489463"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99573681"
 ---
 # <a name="integrating-trusona-with-azure-active-directory-b2c"></a>将 Trusona 与 Azure Active Directory B2C 集成
 
 Trusona 是独立的软件供应商 (ISV) 提供商，可通过启用无密码 authentication、多重身份验证和数字许可扫描来帮助保护登录。 本文介绍如何在 Azure AD B2C 中将 Trusona 添加为标识提供程序，以启用无密码 authentication。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要开始，你将需要：
 
 * 一个 Azure AD 订阅。 如果没有订阅，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。
 * 链接到 Azure 订阅的[Azure AD B2C 租户](tutorial-create-tenant.md)。
-* Trusona 上的[试用帐户](https://www.trusona.com/aadb2c)
+* Trusona 上的[试用帐户](https://www.trusona.com/)
 
 ## <a name="scenario-description"></a>方案描述
 
@@ -53,7 +53,7 @@ Trusona 是独立的软件供应商 (ISV) 提供商，可通过启用无密码 a
 
 ## <a name="onboard-with-trusona"></a>内置 Trusona
 
-1. 填写 [表单](https://www.trusona.com/aadb2c) 以创建 Trusona 帐户并开始使用。
+1. 填写 [表单](https://www.trusona.com/) 以创建 Trusona 帐户并开始使用。
 
 2. 从应用商店下载 Trusona 移动应用。 安装应用并注册电子邮件。
 
@@ -67,7 +67,7 @@ Trusona 是独立的软件供应商 (ISV) 提供商，可通过启用无密码 a
 
 7. 选择 " **创建 OpenID Connect 集成**"。
 
-8. 提供你选择的 **名称** ，并使用之前提供的域信息 (例如，Contoso) **客户端重定向主机 "字段**中。  
+8. 提供你选择的 **名称** ，并使用之前提供的域信息 (例如，Contoso) **客户端重定向主机 "字段** 中。  
 
    > [!NOTE]
    > Azure Active Directory 的初始域名用作客户端重定向主机。
@@ -91,11 +91,11 @@ Trusona 是独立的软件供应商 (ISV) 提供商，可通过启用无密码 a
 
 3. 选择 " **标识提供者**"。
 
-4. 选择“添加”  。
+4. 选择 **添加** 。
 
 ### <a name="configure-an-identity-provider"></a>配置标识提供者  
 
-1. 选择 "**标识提供者类型**  >  **OpenID 连接 (预览") **。
+1. 选择 "**标识提供者类型**  >  **OpenID 连接 (预览")**。
 
 2. 填写表单以设置标识提供者：  
 
@@ -107,7 +107,7 @@ Trusona 是独立的软件供应商 (ISV) 提供商，可通过启用无密码 a
    | 响应类型 | Id_token |
    | 响应模式  | Form_post |
 
-3. 选择“确定”  。  
+3. 选择“确定”。  
 
 4. 选择 " **映射此标识提供者的声明**"。  
 
@@ -140,11 +140,11 @@ Trusona 是独立的软件供应商 (ISV) 提供商，可通过启用无密码 a
    > [!NOTE]
    > 由于 Trusona 本质上是多重身份验证，因此最好禁用多重身份验证。
 
-1. 选择“创建”  。
+1. 选择“创建”。
 
 1. 在 " **用户属性和声明**" 下，选择 " **显示更多**"。 在窗体中，选择在前面部分的标识提供程序安装过程中指定的至少一个属性。
 
-1. 选择“确定”  。  
+1. 选择“确定”。  
 
 ### <a name="test-the-policy"></a>测试策略
 

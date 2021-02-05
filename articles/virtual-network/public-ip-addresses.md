@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/28/2020
 ms.author: allensu
-ms.openlocfilehash: 702ca4f4c3fc92eca70479ba02b1ddc8f6858857
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 9a80242422631995f6d5c24ba2118ee98a9b8d32
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99549654"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576170"
 ---
 # <a name="public-ip-addresses"></a>公共 IP 地址
 
@@ -62,6 +62,9 @@ ms.locfileid: "99549654"
 
 > [!NOTE]
 > 使用[实例元数据服务 IMDS](../virtual-machines/windows/instance-metadata-service.md) 时，只有具有基本 SKU 的公共 IP 地址可用。 不支持标准 SKU。
+
+> [!NOTE]
+> 使用标准 SKU 公共 IP 地址时，"资源" 边栏选项卡上不会显示诊断设置。 若要对 Stanrd 公共 IP 地址资源启用日志记录，请导航到 Azure Monitor 边栏选项卡下的 "诊断设置"，然后选择 "IP 地址" 资源。
 
 ### <a name="basic"></a>基本
 

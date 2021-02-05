@@ -4,15 +4,15 @@ description: 本文介绍如何使用 Azure 门户、PowerShell 或 REST API 管
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 11/30/2020
+ms.date: 2/4/2021
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 9fdd6b6a195d0c6d4c4bf0489a037cb138a23a42
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 62acb526a247362b17c4dfd4e26c52760deecd71
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96351718"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99573477"
 ---
 # <a name="manage-server-administrators"></a>管理服务器管理员
 
@@ -20,7 +20,9 @@ ms.locfileid: "96351718"
 
 添加“安全组”时，请使用 `obj:groupid@tenantid`。 添加到服务器管理员角色的安全组不支持服务主体。
 
-如果启用了服务器防火墙，则必须在防火墙规则中包括服务器管理员客户端计算机的 IP 地址。 若要了解详细信息，请参阅 [配置服务器防火墙](analysis-services-qs-firewall.md)。
+若要了解有关将服务主体添加到服务器管理员角色的详细信息，请参阅 [将服务主体添加到服务器管理员角色](analysis-services-addservprinc-admins.md)。
+
+如果已启用服务器防火墙，则必须在防火墙规则中包括服务器管理员客户端计算机的 IP 地址。 若要了解详细信息，请参阅[配置服务器防火墙](analysis-services-qs-firewall.md)。
 
 ## <a name="to-add-server-administrators-by-using-azure-portal"></a>使用 Azure 门户添加服务器管理员
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol, rosssmi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 672a3f95efad24c07379fafe8b22088dc731c2df
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 720cd46ac37a82f56aa37c0041ca8d92db177071
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97881155"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575765"
 ---
 # <a name="how-to-require-app-protection-policy-and-an-approved-client-app-for-cloud-app-access-with-conditional-access"></a>如何：要求应用保护策略和核准的客户端设备通过条件访问来访问云应用
 
@@ -34,7 +34,7 @@ ms.locfileid: "97881155"
 > 并非所有应用程序都支持作为已批准的应用程序或支持应用程序保护策略。 有关符合条件的客户端应用的列表，请参阅[应用保护策略要求](concept-conditional-access-grant.md#require-app-protection-policy)。
 
 > [!NOTE]
-> Grant 控件下的 "需要一个选定控件" 与 OR 子句类似。 此功能在策略中使用，以使用户能够利用支持 " **需要应用保护策略** " 或 " **需要批准的客户端应用** 授权控制" 的应用。 如果两个策略都支持应用，则需要强制实施 **应用保护策略**。 若要详细了解哪些应用支持“需要应用保护策略”授权控件，请参阅[应用保护策略要求](concept-conditional-access-grant.md#require-app-protection-policy)。
+> Grant 控件下的 "需要一个选定控件" 与 OR 子句类似。 此功能在策略中使用，以使用户能够利用支持 " **需要应用保护策略** " 或 " **需要批准的客户端应用** 授权控制" 的应用。 当应用程序支持该授予控件时，需要强制实施 **应用保护策略**。 若要详细了解哪些应用支持“需要应用保护策略”授权控件，请参阅[应用保护策略要求](concept-conditional-access-grant.md#require-app-protection-policy)。
 
 ## <a name="scenario-1-microsoft-365-apps-require-approved-apps-with-app-protection-policies"></a>方案1： Microsoft 365 应用需要具有应用保护策略的已批准应用
 

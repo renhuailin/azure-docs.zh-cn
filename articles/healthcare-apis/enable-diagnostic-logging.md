@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.reviewer: dseven
 ms.author: cavoeg
 author: CaitlinV39
-ms.date: 11/01/2019
-ms.openlocfilehash: 54119585d4f1377b60b85fbad01fe90f097a304f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.date: 02/03/2021
+ms.openlocfilehash: 8dc87ae5b296f322d9d5a4d59c0a8c9b1c50d5da
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95905168"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575427"
 ---
 # <a name="enable-diagnostic-logging-in-azure-api-for-fhir"></a>在 Azure API for FHIR 中启用诊断日志记录
 
@@ -35,9 +35,9 @@ ms.locfileid: "95905168"
     2. 流式传输到事件中心，供第三方服务或自定义分析解决方案引入。  在配置此步骤之前，需先创建事件中心命名空间和事件中心策略。
     3. 流式传输到 Azure Monitor 中的 Log Analytics 工作区。  在选择此选项之前，需先创建 Logs Analytics 工作区。
 
-6. 选择 **AuditLogs** 和要捕获的任何指标。 如果你使用的是用于 FHIR 的 Azure IoT 连接器，请确保为指标选择 " **错误"、"流量" 和 "延迟** "。 
+6. 选择 **AuditLogs** 和/或 **AllMetrics**。 指标包括服务名称、可用性、数据大小、总延迟、请求总数、错误总数和时间戳。
 
-   :::image type="content" source="media/iot-metrics-export/diagnostic-setting-add.png" alt-text="IoT Connector2" lightbox="media/iot-metrics-export/diagnostic-setting-add.png":::
+   :::image type="content" source="media/diagnostic-logging/fhir-diagnostic-setting.png" alt-text="Azure FHIR 诊断设置。选择 AuditLogs 和/或 AllMetrics。" lightbox="media/diagnostic-logging/fhir-diagnostic-setting.png":::
 
 7. 选择“保存”
 
@@ -53,24 +53,24 @@ ms.locfileid: "95905168"
 |字段名称  |类型  |说明  |
 |---------|---------|---------|
 |CallerIdentity|动态|包含标识信息的泛型属性包
-|CallerIdentityIssuer|String|颁发者 
-|CallerIdentityObjectId|String|Object_Id 
-|CallerIPAddress|String|调用方的 IP 地址 
-|CorrelationId|String| 相关性 ID
-|FhirResourceType|String|已对其执行操作的资源类型
-|LogCategory|String|日志类别 (我们当前返回的是 "AuditLogs" LogCategory) 
-|位置|String|处理请求的服务器的位置 (例如，美国中南部) 
+|CallerIdentityIssuer|字符串|颁发者 
+|CallerIdentityObjectId|字符串|Object_Id 
+|CallerIPAddress|字符串|调用方的 IP 地址 
+|CorrelationId|字符串| 相关性 ID
+|FhirResourceType|字符串|已对其执行操作的资源类型
+|LogCategory|字符串|日志类别 (我们当前返回的是 "AuditLogs" LogCategory) 
+|位置|字符串|处理请求的服务器的位置 (例如，美国中南部) 
 |OperationDuration|int|完成此请求所需的时间（秒）
 |OperationName|String| 描述操作类型 (例如更新、搜索类型) 
-|RequestUri|String|请求 URI 
-|ResultType|String|当前 **已启动**、**成功** 或 **失败** 的可用值
+|RequestUri|字符串|请求 URI 
+|ResultType|字符串|当前 **已启动**、**成功** 或 **失败** 的可用值
 |StatusCode|int|HTTP 状态代码。  (，例如 200)  
 |TimeGenerated|DateTime|事件的日期和时间|
-|属性|String| 介绍 fhirResourceType 的属性
-|SourceSystem|String| 在这种情况下，源系统 (总是 Azure) 
-|TenantId|String|租户 ID
+|属性|字符串| 介绍 fhirResourceType 的属性
+|SourceSystem|字符串| 在这种情况下，源系统 (总是 Azure) 
+|TenantId|字符串|租户 ID
 |类型|字符串|在这种情况下，日志类型 (始终 MicrosoftHealthcareApisAuditLog) 
-|_ResourceId|String|有关资源的详细信息
+|_ResourceId|字符串|有关资源的详细信息
 
 ## <a name="sample-queries"></a>示例查询
 

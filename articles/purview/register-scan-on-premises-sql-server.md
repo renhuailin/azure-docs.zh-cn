@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 09/18/2020
-ms.openlocfilehash: 86942f509ab067a53c47b5132c451f0585760050
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: b5f4218cfcd5f9ccfbe43efac46e2f70fdc30905
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99549637"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99574951"
 ---
 # <a name="register-and-scan-an-on-premises-sql-server"></a>注册并扫描本地 SQL server
 
@@ -67,7 +67,7 @@ SQL 帐户必须拥有对 **master** 数据库的访问权限。 这是因为在
 如果要创建新的登录名和用户以扫描 SQL server，请执行以下步骤：
 
 > [!Note]
-    > 可以使用 [此处](https://github.com/Azure/Purview-Samples/blob/master/TSQL-Code-Permissions/grant-access-to-on-prem-sql-databases.sql)提供的代码执行以下所有步骤。
+   > 可以使用[此处](https://github.com/Azure/Purview-Samples/blob/master/TSQL-Code-Permissions/grant-access-to-on-prem-sql-databases.sql)提供的代码执行以下所有步骤
 
 1. 导航到 SQL Server Management Studio (SSMS) ，连接到服务器，导航到 "安全性"，右键单击 "登录" 并创建新的登录名。 请确保选择 "SQL 身份验证"。
 

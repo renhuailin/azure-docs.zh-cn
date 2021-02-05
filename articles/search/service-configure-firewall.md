@@ -8,12 +8,12 @@ ms.author: mcarter
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: 3e8a94b6b9b71d2d71b634edd70ea4150652b143
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 67fa53e565de70d3da0b90e36a968b68d54d667f
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88932791"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99573239"
 ---
 # <a name="configure-ip-firewall-for-azure-cognitive-search"></a>为 Azure 认知搜索配置 IP 防火墙
 
@@ -31,7 +31,7 @@ Azure 认知搜索支持“入站防火墙支持”的 IP 规则。 此模型为
 Azure 门户提供了以 CIDR 格式指定 IP 地址和 IP 地址范围的功能。 CIDR 表示法的示例是 8.8.8.0/24，它表示范围从 8.8.8.0 到 8.8.8.255 的 IP。
 
 > [!NOTE]
-> 为 Azure 认知搜索服务启用 IP 访问控制策略后，将拒绝从 IP 地址范围允许列表中不包含的计算机向数据平面发出的所有请求。 配置 IP 规则时，将禁用 Azure 门户的某些功能。 你将能够查看和管理服务级别信息，但出于安全方面的考虑，已限制对索引数据以及此服务中的各种组件（如索引、索引器和技能集定义）的门户访问。
+> 为 Azure 认知搜索服务启用 IP 访问控制策略后，将拒绝从 IP 地址范围允许列表中不包含的计算机向数据平面发出的所有请求。 配置 IP 规则时，将禁用 Azure 门户的某些功能。 你将能够查看和管理服务级别信息，但出于安全方面的考虑，已限制对索引数据以及此服务中的各种组件（如索引、索引器和技能集定义）的门户访问。 作为门户的替代方法，可以使用 [VS Code 扩展](https://aka.ms/vscode-search) 与服务中的各种组件进行交互。
 
 ### <a name="requests-from-your-current-ip"></a>来自当前 IP 的请求
 
@@ -59,4 +59,4 @@ Azure 门户提供了以 CIDR 格式指定 IP 地址和 IP 地址范围的功能
 
 若要详细了解如何通过专用链接访问搜索服务，请参阅以下文章：
 
-* [创建用于与 Azure 认知搜索建立安全连接的专用终结点](service-create-private-endpoint.md)
+* [创建专用终结点以建立到 Azure 认知搜索的安全连接](service-create-private-endpoint.md)

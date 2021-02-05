@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: tisande
 ms.reviewer: sngun
-ms.openlocfilehash: 0bd572da9bba9048e2c8b9c4b426056620c4c265
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: ad9e6b99b396465c2cff95bd6ab340ef9d668085
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340696"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575951"
 ---
 # <a name="stored-procedures-triggers-and-user-defined-functions"></a>存储过程、触发器和用户定义的函数
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-Azure Cosmos DB 提供 JavaScript 的语言集成式事务执行。 在 Azure Cosmos DB 中使用 SQL API 时，可以采用 JavaScript 语言编写 **存储过程** 、 **触发器** 和 **用户定义的函数 (UDF)** 。 可以使用 JavaScript 编写可在数据库引擎内部执行的逻辑。 可以使用 [Azure 门户](https://portal.azure.com/)、[Azure Cosmos DB 中的 JavaScript 语言集成式查询 API](javascript-query-api.md) 或 [Cosmos DB SQL API 客户端 SDK](how-to-use-stored-procedures-triggers-udfs.md) 来创建及执行触发器、存储过程与 UDF。
+Azure Cosmos DB 提供 JavaScript 的语言集成式事务执行。 在 Azure Cosmos DB 中使用 SQL API 时，可以采用 JavaScript 语言编写 **存储过程**、**触发器** 和 **用户定义的函数 (UDF)** 。 可以使用 JavaScript 编写可在数据库引擎内部执行的逻辑。 可以使用 [Azure 门户](https://portal.azure.com/)、[Azure Cosmos DB 中的 JavaScript 语言集成式查询 API](javascript-query-api.md) 或 [Cosmos DB SQL API 客户端 SDK](how-to-use-stored-procedures-triggers-udfs.md) 来创建及执行触发器、存储过程与 UDF。
 
 ## <a name="benefits-of-using-server-side-programming"></a>使用服务器端编程的优势
 
@@ -26,7 +26,7 @@ Azure Cosmos DB 提供 JavaScript 的语言集成式事务执行。 在 Azure Co
 
 * **过程逻辑：** 作为一种高级编程语言，JavaScript 提供用户熟悉的丰富接口来表达业务逻辑。 可以针对数据执行一系列复杂操作。
 
-* **原子事务：** Azure Cosmos DB 在单个存储过程或触发器内执行的数据库操作是原子的。 此原子功能可让应用程序在单个批中合并相关操作，因此操作要么全部成功，要么全部失败。
+* **原子事务：** 在单个存储过程或触发器内执行的 Azure Cosmos DB 数据库操作具有原子性。 此原子功能可让应用程序在单个批中合并相关操作，因此操作要么全部成功，要么全部失败。
 
 * **性能：** JSON 数据在本质上会映射到 JavaScript 语言类型系统。 这种映射可以实现多种优化，例如，在缓冲池中将 JSON 文档惰性具体化，并使其可按需供执行代码使用。 还有其他与传送业务逻辑到数据库相关的性能优势，包括：
 
@@ -43,7 +43,7 @@ Azure Cosmos DB 提供 JavaScript 的语言集成式事务执行。 在 Azure Co
 
 ## <a name="transactions"></a>事务
 
-典型数据库中的事务可以定义为一系列作为单个逻辑单元工作执行的操作。 每个事务提供 **ACID 属性保证** 。 ACID 是一个众所周知的缩写词，表示：原子性、一致性、隔离性和持久性。    
+典型数据库中的事务可以定义为一系列作为单个逻辑单元工作执行的操作。 每个事务提供 **ACID 属性保证**。 ACID 是一个众所周知的缩写词，表示：原子性、一致性、隔离性和持久性。    
 
 * 原子性保证将一个事务内部执行的所有操作视为一个单位，这些操作要么全部提交，要么都不提交。 
 
@@ -72,7 +72,7 @@ Azure Cosmos DB 提供 JavaScript 的语言集成式事务执行。 在 Azure Co
 
 ## <a name="bounded-execution"></a>绑定的执行
 
-所有 Azure Cosmos DB 操作必须在指定的超时持续时间内完成。 此约束适用于 JavaScript 函数 - 存储过程、触发器和用户定义的函数。 如果某个操作未在该时间限制内完成，事务将会回滚。
+所有 Azure Cosmos DB 操作必须在指定的超时持续时间内完成。 存储过程的超时限制为5秒。 此约束适用于 JavaScript 函数 - 存储过程、触发器和用户定义的函数。 如果某个操作未在该时间限制内完成，事务将会回滚。
 
 可以确保 JavaScript 函数在时间限制内完成，或者实施一个基于延续的模型来批处理/恢复执行。 为了简化存储过程和触发器的开发以应对时间限制，Azure Cosmos 容器下的所有函数（例如，项的创建、读取、更新和删除）将返回表示该操作是否完成的布尔值。 如果此值为 false，则表示过程必须结束执行，因为脚本占用的时间或预配吞吐量超过了配置的值。 如果存储过程及时完成且没有任何更多请求在排队的话，将保证完成排在第一个拒绝存储操作之前的操作。 因此，应该使用 JavaScript 的回调约定管理脚本的控制流，以将操作逐个排队。 由于脚本在服务器端环境中执行，因此受到严格的调控。 反复违反执行边界的脚本可标记为非活动状态且不可执行，应根据执行边界重新创建它们。
 
