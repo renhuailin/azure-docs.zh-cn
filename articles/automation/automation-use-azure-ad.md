@@ -4,12 +4,12 @@ description: 本文介绍如何使用 Azure 自动化中的 Azure AD 作为向 A
 services: automation
 ms.date: 03/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 41eaab7be66d446109e1052948a29ad4723b191c
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 336c0387ac9febcc517c2ce358d0b04c80d10678
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98894654"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576797"
 ---
 # <a name="use-azure-ad-to-authenticate-to-azure"></a>使用 Azure AD 向 Azure 进行身份验证
 
@@ -50,7 +50,7 @@ ms.locfileid: "98894654"
 
 1. 请确保已在计算机上启用 Microsoft .NET Framework 3.5.x 功能。 计算机可能已安装较新版本，但可启用或禁用较旧版本的 .NET Framework 的后向兼容性。 
 
-2. 安装 64 位版本的 [Microsoft Online Services 登录助手](https://www.microsoft.com/download/details.aspx?id=41950)。
+2. 安装 64 位版本的 [Microsoft Online Services 登录助手](https://www.microsoft.com/Download/details.aspx?id=28177)。
 
 3. 以管理员身份运行 Windows PowerShell，创建提升的 Windows PowerShell 命令提示符。
 

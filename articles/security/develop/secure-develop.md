@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 421fb7b0c91171756f55ad25c918955870054e3e
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 8e69803f4740a58adb4230bd82cc723221762cb4
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97511274"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576610"
 ---
 # <a name="develop-secure-applications-on-azure"></a>在 Azure 上开发安全的应用程序
 本文介绍开发云应用程序时要考虑的安全活动和控制措施， 并涵盖 Microsoft [安全开发生命周期 (SDL)](/previous-versions/windows/desktop/cc307891(v=msdn.10)) 的实现和验证阶段要考虑的安全问题和概念。 目标在于帮助定义可用于开发更安全的应用程序的活动和 Azure 服务。
@@ -140,7 +140,7 @@ DAST 与静态应用程序安全测试 (SAST) 不同。 SAST 工具在代码未�
 
 在代码执行完成后评审攻击面有助于确保已考虑对应用程序或系统进行的任何设计或实现更改。 它有助于确保已评审和缓解由于更改而创建的任何新攻击途径，包括威胁模型。
 
-可通过扫描应用程序来生成攻击面概览。 Microsoft 提供名为 [Attack Surface Analyzer](https://www.microsoft.com/download/details.aspx?id=24487) 的攻击面分析工具。 你可从许多商业动态测试和漏洞扫描工具或服务中进行选择，其中包括 [OWASP Zed Attack Proxy Project](https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project)、[Arachni](http://arachni-scanner.com/)、[Skipfish](https://code.google.com/p/skipfish/) 和 [w3af](http://w3af.sourceforge.net/)。 这些扫描工具可抓取应用并映射可通过 Web 访问的应用程序部分。 你也可以在 Azure 市场中搜索类似的[开发人员工具](https://azuremarketplace.microsoft.com/marketplace/apps/category/developer-tools?page=1)。
+可通过扫描应用程序来生成攻击面概览。 Microsoft 提供名为 [Attack Surface Analyzer](https://www.microsoft.com/download/details.aspx?id=58105) 的攻击面分析工具。 你可从许多商业动态测试和漏洞扫描工具或服务中进行选择，其中包括 [OWASP Zed Attack Proxy Project](https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project)、[Arachni](http://arachni-scanner.com/)、[Skipfish](https://code.google.com/p/skipfish/) 和 [w3af](http://w3af.sourceforge.net/)。 这些扫描工具可抓取应用并映射可通过 Web 访问的应用程序部分。 你也可以在 Azure 市场中搜索类似的[开发人员工具](https://azuremarketplace.microsoft.com/marketplace/apps/category/developer-tools?page=1)。
 
 ### <a name="perform-security-penetration-testing"></a>执行安全渗透测试
 

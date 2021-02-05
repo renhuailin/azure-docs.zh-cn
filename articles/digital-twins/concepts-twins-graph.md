@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 105128af60b90324e93bcad1bd9900a55461378f
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: 00058f75a2c4378371c427ff9ebabe7e2336b06a
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99071709"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576542"
 ---
 # <a name="understand-digital-twins-and-their-twin-graph"></a>了解数字孪生及其克隆图形
 
@@ -58,9 +58,9 @@ ms.locfileid: "99071709"
 
 ### <a name="create-relationships"></a>创建关系
 
-下面是一些客户端代码示例，它使用 [DigitalTwins api](/rest/api/digital-twins/dataplane/twins)在名为 *GroundFloor* 的 *楼层* 类型数字硬编码与称为 *咖啡馆* 的 *房间* 类型数字硬编码之间建立关系。
+下面是一些客户端代码示例，它使用 [DigitalTwins api](/rest/api/digital-twins/dataplane/twins) 从一个数字克隆 (从 "源" 双子) 到 ("目标" 中的 "目标" 对等) 的数字克隆。
 
-:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_other.cs" id="CreateRelationship_3":::
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_other.cs" id="CreateRelationship_short":::
 
 ## <a name="json-representations-of-graph-elements"></a>Graph 元素的 JSON 表示形式
 

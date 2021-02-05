@@ -7,18 +7,18 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 11/11/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: b6e523fc4a3dcd0eb8c8ed7a44b3d7d9fcdd7d34
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 37c8b4bc186c217ecb27638f5f50297102345de7
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98887156"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576525"
 ---
 # <a name="access-your-application-in-a-private-network"></a>在专用网络中访问应用程序
 
 本文档介绍如何在专用网络中访问应用程序的终结点。  若要获取访问权限，需要在订阅中创建一个 **Azure 专用 DNS 区域** ，以将专用完全限定的域名转换/解析 (FQDN) 到其 IP 地址。
 
-在虚拟网络中部署了 Azure 春季云服务实例中的应用程序的 **分配终结点** 时，终结点是专用 FQDN。 只能在专用网络中访问域。 应用和服务使用应用程序终结点。 它们包括 [验证过渡部署](spring-cloud-howto-staging-environment.md#verify-the-staging-deployment)中所述的 **测试终结点**。 **日志流式处理**（ [实时传输 Azure 春季云应用日志中](spring-cloud-howto-log-streaming.md)所述）也仅适用于专用网络中。
+在虚拟网络中部署了 Azure 春季云服务实例中的应用程序的 **分配终结点** 时，终结点是专用 FQDN。 只能在专用网络中访问域。 应用和服务使用应用程序终结点。 它们包括 [查看应用和部署](spring-cloud-howto-staging-environment.md#view-apps-and-deployments)中所述的 **测试终结点**。 **日志流式处理**（ [实时传输 Azure 春季云应用日志中](spring-cloud-howto-log-streaming.md)所述）也仅适用于专用网络中。
 
 ## <a name="create-a-private-dns-zone"></a>创建专用 DNS 区域
 

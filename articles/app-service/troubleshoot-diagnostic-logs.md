@@ -5,12 +5,12 @@ ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
 ms.topic: article
 ms.date: 09/17/2019
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 875254071d0ea252508242b83102fb8ca8b44e53
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.openlocfilehash: 3b7f8f5a0f48bf0cdca7f72e5fb364ea0a5d1315
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97825371"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576593"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>为 Azure 应用服务中的应用启用诊断日志记录
 ## <a name="overview"></a>概述
@@ -171,7 +171,7 @@ az webapp log tail --name appname --resource-group myResourceGroup --path http
 | **应用程序日志** |*/LogFiles/Application/* | 包含一个或多个文本文件。 日志消息的格式取决于所用的日志记录提供程序。 |
 | **失败请求跟踪** | */LogFiles/W3SVC#########/* | 包含 XML 文件和一个 XSL 文件。 可以在浏览器中查看带格式的 XML 文件。 |
 | **详细错误日志** | */LogFiles/DetailedErrors/* | 包含 HTM 错误文件。 可以在浏览器中查看 HTM 文件。<br/>查看失败请求跟踪的另一种方法是在门户中导航到应用页。 在左侧菜单中选择“诊断和解决问题”，搜索“失败请求跟踪日志”，然后单击相应的图标来浏览和查看所需的跟踪。  |
-| **Web 服务器日志** | */LogFiles/http/RawLogs/* | 包含使用 [W3C 扩展日志文件格式](/windows/desktop/Http/w3c-logging)的文本文件。 可以使用文本编辑器或诸如[日志分析程序](https://go.microsoft.com/fwlink/?LinkId=246619)之类实用工具来阅读此信息。<br/>应用服务不支持 `s-computername`、`s-ip` 或 `cs-version` 字段。 |
+| **Web 服务器日志** | */LogFiles/http/RawLogs/* | 包含使用 [W3C 扩展日志文件格式](/windows/desktop/Http/w3c-logging)的文本文件。 可以使用文本编辑器或诸如[日志分析程序](https://www.iis.net/downloads/community/2010/04/log-parser-22)之类实用工具来阅读此信息。<br/>应用服务不支持 `s-computername`、`s-ip` 或 `cs-version` 字段。 |
 | **部署日志** | */LogFiles/Git/* 和 */deployments/* | 包含内部部署进程生成的日志，以及 Git 部署的日志。 |
 
 ## <a name="send-logs-to-azure-monitor-preview"></a>将日志发送到 Azure Monitor（预览版）
@@ -189,7 +189,7 @@ az webapp log tail --name appname --resource-group myResourceGroup --path http
 |-|-|-|-|-|-|
 | AppServiceConsoleLogs | Java SE 和 Tomcat | 是 | 是 | 是 | 标准输出和标准错误 |
 | AppServiceHTTPLogs | 是 | 是 | 是 | 是 | Web 服务器日志 |
-| AppServiceEnvironmentPlatformLogs | 是 | 空值 | 是 | 是 | 应用服务环境：缩放、配置更改和状态日志|
+| AppServiceEnvironmentPlatformLogs | 是 | 不适用 | 是 | 是 | 应用服务环境：缩放、配置更改和状态日志|
 | AppServiceAuditLogs | 是 | 是 | 是 | 是 | 通过 FTP 和 Kudu 进行的登录活动 |
 | AppServiceFileAuditLogs | 是 | 是 | TBA | TBA | 对站点内容所做的文件更改；仅适用于高级层和更高层级 |
 | AppServiceAppLogs | ASP .NET | ASP .NET | Java SE 和 Tomcat Blessed 图像 <sup>1</sup> | Java SE 和 Tomcat Blessed 图像 <sup>1</sup> | 应用程序日志 |

@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 11/08/2019
 ms.author: sumi
 ms.custom: ''
-ms.openlocfilehash: 5e97a35a272684a99e1ca21cbec9c8f3edef253c
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 8926e99db926fc8182e98509c3deff0ccc3d1612
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99097416"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576661"
 ---
 # <a name="virtual-network-service-endpoints"></a>虚拟网络服务终结点
 
@@ -126,7 +126,7 @@ ms.locfileid: "99097416"
 
 有关内置角色的详细信息，请参阅 [Azure 内置角色](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 有关将特定权限分配给自定义角色的详细信息，请参阅 [Azure 自定义角色](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 
-虚拟网络和 Azure 服务资源可以位于相同或不同的订阅中。 如果虚拟网络和 Azure 服务资源位于不同的订阅中，资源必须在相同的 Active Directory (AD) 租户下。 
+虚拟网络和 Azure 服务资源可以位于相同或不同的订阅中。 某些 Azure 服务 (不是所有) 例如 Azure 存储和 Azure Key Vault 也支持跨不同 Active Directory 的服务终结点 (AD) 租户，即虚拟网络和 Azure 服务资源可以位于不同 Active Directory (AD) 租户中。 有关更多详细信息，请查看各个服务文档。  
 
 ## <a name="pricing-and-limits"></a>定价和限制
 

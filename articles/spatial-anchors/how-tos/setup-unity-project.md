@@ -8,29 +8,29 @@ ms.author: parkerra
 ms.date: 2/3/2021
 ms.topic: how-to
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: e058186d8848256bf97d99ee1b8b1ddae7d78383
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 56532c17c91e6c703a6acd7990bbae47cd248165
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99550617"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576559"
 ---
 # <a name="configuring-azure-spatial-anchors-in-a-unity-project"></a>在 Unity 项目中配置 Azure 空间锚
 
 本指南将演示如何在 Unity 项目中开始处理 Azure 空间锚点 SDK。
 
-## <a name="requirements"></a>要求
+## <a name="project-requirements"></a>项目要求
 
-Azure 空间定位点当前支持具有以下配置的 Unity 2019.4 (LTS) 。
-
-* Azure 空间锚 2.4.0 + 支持 Unity 2019.4 with AR Foundation 3.1。
+[!INCLUDE [Unity Project Requirements](../../../includes/spatial-anchors-unity-project-requirements.md)]
 
 ## <a name="configuring-a-project"></a>配置项目
 
-### <a name="download-packages"></a>下载包
+在 Unity 项目中包含 Azure 空间锚点 SDK 之前，请务必通过 Unity 包管理器安装 [所需](#project-requirements) 的包。
+
+### <a name="download-asa-packages"></a>下载 ASA 包
 [!INCLUDE [Download Unity Packages](../../../includes/spatial-anchors-unity-download-packages.md)]
 
-### <a name="import-packages"></a>导入程序包
+### <a name="import-asa-packages"></a>导入 ASA 包
 [!INCLUDE [Import Unity Packages](../../../includes/spatial-anchors-unity-import-packages.md)]
 
 ### <a name="android-only-configure-the-maintemplategradle-file"></a>仅限 Android：配置 Maintemplate.json. gradle 文件

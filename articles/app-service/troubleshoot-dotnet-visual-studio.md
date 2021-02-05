@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/29/2016
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 346b1f83a9c18e35b009e88ae82d6984274fd4e4
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: a177b22f0f91d82013956bff36eaa57a084c27d1
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92147738"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576576"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>使用 Visual Studio 对 Azure 应用服务中的应用进行故障排除
 ## <a name="overview"></a>概述
@@ -38,7 +38,7 @@ ms.locfileid: "92147738"
 流式日志功能仅适用于面向 .NET Framework 4 或更高版本的应用程序。
 
 ## <a name="app-configuration-and-management"></a><a name="sitemanagement"></a>应用配置和管理
-通过 Visual Studio，用户可以访问 [Azure 门户](https://go.microsoft.com/fwlink/?LinkId=529715)中提供的一部分应用管理功能和配置设置。 本节介绍使用“服务器资源管理器”可以实现的功能。 若要了解最新的 Azure 集成功能，请同时试用**云资源管理器**。 可以从“视图”菜单打开这两个窗口。
+通过 Visual Studio，用户可以访问 [Azure 门户](https://go.microsoft.com/fwlink/?LinkId=529715)中提供的一部分应用管理功能和配置设置。 本节介绍使用“服务器资源管理器”可以实现的功能。 若要了解最新的 Azure 集成功能，请同时试用 **云资源管理器**。 可以从“视图”菜单打开这两个窗口。
 
 1. 如果还没有登录 Visual Studio 中的 Azure ，右键单击“Azure”，然后选择连接到“服务器资源管理器”中的“Microsoft Azure 订阅”  。
 
@@ -70,17 +70,17 @@ ms.locfileid: "92147738"
 
 **'/' 应用程序中出现服务器错误：**
 
-:::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/genericerror.png" alt-text="在 web 浏览器中显示 &quot;/&quot; 应用程序错误中出现服务器错误的屏幕截图。":::
+:::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/genericerror.png" alt-text="Web 浏览器的屏幕截图，其中显示“'/' 应用程序中出现服务器错误”。":::
 
 **发生错误：**
 
-:::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/genericerror1.png" alt-text="在 web 浏览器中显示 &quot;/&quot; 应用程序错误中出现服务器错误的屏幕截图。":::
+:::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/genericerror1.png" alt-text="Web 浏览器的屏幕截图，其中显示 Web 浏览器的一般性错误的示例。":::
 
 **网站无法显示页面**
 
-:::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/genericerror2.png" alt-text="在 web 浏览器中显示 &quot;/&quot; 应用程序错误中出现服务器错误的屏幕截图。":::
+:::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/genericerror2.png" alt-text="Web 浏览器的屏幕截图，其中显示“网站无法显示页面”错误。":::
 
-找出错误原因的最简捷方法通常是启用详细错误消息，之前保留的屏幕快照中的第一个快照会告诉你如何做。 而实现此目的需要在部署的 Web.config 文件中进行更改。 可以编辑项目中的 *Web.config* 文件，并重新部署该项目，或创建 [Web.config 转换](https://www.asp.net/mvc/tutorials/deployment/visual-studio-web-deployment/web-config-transformations)并部署调试版本，但还有一个更快捷的方式：在“解决方案资源管理器”中，可以通过使用*远程视图*功能直接查看并编辑远程应用中的文件。
+找出错误原因的最简捷方法通常是启用详细错误消息，之前保留的屏幕快照中的第一个快照会告诉你如何做。 而实现此目的需要在部署的 Web.config 文件中进行更改。 可以编辑项目中的 *Web.config* 文件，并重新部署该项目，或创建 [Web.config 转换](https://www.asp.net/mvc/tutorials/deployment/visual-studio-web-deployment/web-config-transformations)并部署调试版本，但还有一个更快捷的方式：在“解决方案资源管理器”中，可以通过使用 *远程视图* 功能直接查看并编辑远程应用中的文件。
 
 1. 在“服务器资源管理器”中，依次展开“Azure”、“应用服务”、应用所在的资源组以及应用的节点  。
 
@@ -139,7 +139,7 @@ ms.locfileid: "92147738"
 
 1. 在“服务器资源管理器”中，右键单击应用，并单击“附加调试器” 。
 
-    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-attachdebugger.png" alt-text="在 web 浏览器中显示 &quot;/&quot; 应用程序错误中出现服务器错误的屏幕截图。":::
+    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-attachdebugger.png" alt-text="服务器资源管理器窗口的屏幕截图，其中显示选中了应用，然后单击“附加调试器”。":::
 
     浏览器自动打开运行在 Azure 中的主页。 可能需要等待大约 20 秒，以便 Azure 针对调试设置服务器。 此延迟只在 48 小时内首次于应用上运行调试模式时出现。 如果在同一时段再次开始调试，不会发生延迟。
 
@@ -192,7 +192,7 @@ ms.locfileid: "92147738"
 
 8. 单击“附加调试器”。
 
-    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/wjattach.png" alt-text="在 web 浏览器中显示 &quot;/&quot; 应用程序错误中出现服务器错误的屏幕截图。":::
+    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/wjattach.png" alt-text="服务器资源管理器的屏幕截图，其中显示在下拉菜单中选中了“ContosoAdsWebJob”，并选中了“附加调试器”。":::
 
     浏览器自动打开运行在 Azure 中的主页。 可能需要等待大约 20 秒，以便 Azure 针对调试设置服务器。 此延迟只在 48 小时内首次于应用上运行调试模式时出现。 如果在同一时段再次开始调试，不会发生延迟。
 
@@ -340,11 +340,11 @@ ms.locfileid: "92147738"
 1. 在浏览器窗口的地址栏中，将 trace.axd 添加到 URL，然后按 Enter（URL 类似于 `http://localhost:53370/trace.axd`）。
 1. 在“应用程序跟踪”页面上，单击第一行中（非浏览器链接中）的“查看详细信息”。
 
-    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-traceaxd1.png" alt-text="在 web 浏览器中显示 &quot;/&quot; 应用程序错误中出现服务器错误的屏幕截图。":::
+    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-traceaxd1.png" alt-text="Web 浏览器中“应用程序跟踪”页的屏幕截图，其中显示选中了第一行的“查看详细信息”。":::
 
     “请求细节”页面显示，在“跟踪信息”部分会看到添加到 `Index` 方法的跟踪语句的输出。
 
-    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-traceaxd2.png" alt-text="在 web 浏览器中显示 &quot;/&quot; 应用程序错误中出现服务器错误的屏幕截图。":::
+    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-traceaxd2.png" alt-text="Web 浏览器中“请求细节”页的屏幕截图，其中突出显示了“跟踪信息”部分的信息。":::
 
     默认情况下，`trace.axd` 仅供本地使用。 如果希望可以从远程应用使用，可将 `localOnly="false"` 添加到 *Web.config* 文件中的 `trace` 元素，如以下示例所示：
 
@@ -361,11 +361,11 @@ ms.locfileid: "92147738"
     在 Visual Studio 发布更新后，会打开一个主页的浏览器窗口（假设没有清除“连接”选项卡上的“目标 URL”）。
 3. 在“服务器资源管理器”中，右键单击应用，并选择“查看流式处理日志” 。
 
-    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-viewlogsmenu.png" alt-text="在 web 浏览器中显示 &quot;/&quot; 应用程序错误中出现服务器错误的屏幕截图。":::
+    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-viewlogsmenu.png" alt-text="右键单击应用后服务器资源管理器的屏幕截图，其中在新窗口选中了“查看流式处理日志”。":::
 
     “输出”窗口显示已连接至日志流式传输服务，每过一分钟没有要显示的日志，就添加一个通知行。
 
-    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-nologsyet.png" alt-text="在 web 浏览器中显示 &quot;/&quot; 应用程序错误中出现服务器错误的屏幕截图。":::
+    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-nologsyet.png" alt-text="“输出”窗口的屏幕截图，其中显示了与带有通知行的日志流式处理服务的连接示例。":::
 
 4. 在显示应用程序主页的浏览器窗口，单击“联系人”。
 
@@ -394,7 +394,7 @@ ms.locfileid: "92147738"
 ### <a name="output-window-features"></a>输出窗口特性
 “输出”窗口的“Microsoft Azure 日志”选项卡上有若干按钮和一个文本框 ：
 
-:::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-icons.png" alt-text="在 web 浏览器中显示 &quot;/&quot; 应用程序错误中出现服务器错误的屏幕截图。":::
+:::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-icons.png" alt-text="“输出”窗口的屏幕截图，其中显示了“Microsoft Azure 日志”选项卡的按钮和文本框。":::
 
 这些控件执行以下功能：
 
@@ -414,10 +414,10 @@ Web 服务器日志将记录应用上所有的 HTTP 活动。 若要在“输出
 1. 在通过“服务器资源管理器”打开的“Azure Web 应用配置”选项卡上，将“Web 服务器日志记录”的状态更改为“开启”，并单击“保存”。
 
     ![启用 Web 服务器日志记录](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-webserverloggingon.png)
-2. 在“输出”窗口中，单击“指定要监视的 Microsoft Azure 日志”按钮********。
+2. 在“输出”窗口中，单击“指定要监视的 Microsoft Azure 日志”按钮。
 
     ![指定要监视的 Azure 日志。](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-specifylogs.png)
-3. 在“Microsoft Azure 日志记录选项”对话框中，选择“Web 服务器日志”，然后单击“确定”************。
+3. 在“Microsoft Azure 日志记录选项”对话框中，选择“Web 服务器日志”，然后单击“确定”。
 
     ![监视 Web 服务器日志](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-monitorwslogson.png)
 4. 在显示应用的浏览器窗口中，依次单击“主页”、“关于”、“联系人”  。
@@ -437,9 +437,9 @@ Web 服务器日志将记录应用上所有的 HTTP 活动。 若要在“输出
 
     ![启用详细的错误消息](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-detailedlogson.png)
 
-2. 在“输出”窗口中，单击“指定要监视的 Microsoft Azure 日志”按钮********。
+2. 在“输出”窗口中，单击“指定要监视的 Microsoft Azure 日志”按钮。
 
-3. 在“Microsoft Azure 日志记录选项”对话框中，单击“所有日志”，然后单击“确定”************。
+3. 在“Microsoft Azure 日志记录选项”对话框中，单击“所有日志”，然后单击“确定”。
 
     ![监视所有日志](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-monitorall.png)
 
@@ -458,18 +458,18 @@ Web 服务器日志将记录应用上所有的 HTTP 活动。 若要在“输出
 
 1. 在“输出”窗口中单击“下载流式处理日志”。
 
-    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-downloadicon.png" alt-text="在 web 浏览器中显示 &quot;/&quot; 应用程序错误中出现服务器错误的屏幕截图。":::
+    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-downloadicon.png" alt-text="“输出”窗口的屏幕截图，其中突出显示了“下载流式日志”按钮。":::
 
     “文件资源管理器”打开，其中显示 *Downloads* 文件夹中已下载文件处于选定状态。
 
-    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-downloadedfile.png" alt-text="在 web 浏览器中显示 &quot;/&quot; 应用程序错误中出现服务器错误的屏幕截图。":::
+    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-downloadedfile.png" alt-text="文件资源管理器中“下载”文件夹的屏幕截图，其中选中了下载的文件。":::
 
 2. 提取该 *.zip* 文件，会看到以下文件夹结构：
 
-    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-logfilefolders.png" alt-text="在 web 浏览器中显示 &quot;/&quot; 应用程序错误中出现服务器错误的屏幕截图。":::
+    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-logfilefolders.png" alt-text="提取文件后 .zip 文件文件夹结构的屏幕截图。":::
 
    * 应用程序跟踪日志位于 *LogFiles\Application* 文件夹的 *.txt* 文件中。
-   * Web 服务器日志位于 *LogFiles\http\RawLogs* 文件夹的 *.log* 文件中。 可以使用诸如 [Log Parser](https://www.microsoft.com/download/details.aspx?displaylang=en&id=24659) 之类的工具查看并处理这些文件。
+   * Web 服务器日志位于 *LogFiles\http\RawLogs* 文件夹的 *.log* 文件中。 可以使用诸如 [Log Parser](https://www.iis.net/downloads/community/2010/04/log-parser-22) 之类的工具查看并处理这些文件。
    * 详细的错误消息日志位于 *LogFiles\DetailedErrors* 文件夹的 *.html* 文件中。
 
      （*deployments* 文件夹内是由源代码管理发布创建的文件；其中没有任何有关 Visual Studio 发布的内容。 *Git* 文件夹内是与源代码管理发布以及日志文件流式传输服务相关的跟踪。）  
@@ -678,7 +678,7 @@ Internet 上对于 ASP.NET 跟踪没有全面且最新的介绍。 最佳做法�
 ### <a name="analyzing-web-server-logs"></a>分析 Web 服务器日志
 有关分析 Web 服务器日志的详细信息，请参阅以下资源：
 
-* [LogParser](https://www.microsoft.com/download/details.aspx?id=24659)<br/>
+* [LogParser](https://www.iis.net/downloads/community/2010/04/log-parser-22)<br/>
   用于查看 Web 服务器日志（ *.log* 文件）中的数据的工具。
 * [使用 LogParser 排查 IIS 性能问题或应用程序错误](https://www.iis.net/learn/troubleshoot/performance-issues/troubleshooting-iis-performance-issues-or-application-errors-using-logparser)<br/>
   可用于分析 Web 服务器日志的 Log Parser 工具介绍。

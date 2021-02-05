@@ -12,12 +12,12 @@ ms.date: 11/23/2020
 ms.author: aahi
 ms.custom: seodec18, cog-serv-seo-aug-2020
 keywords: 本地、OCR、Docker、容器
-ms.openlocfilehash: a9eae2e547b347c88f8e745742ed34194c37a3b2
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: 2298c7b931a5bb51d5067a9f789135ecf86ef3e5
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97862475"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576814"
 ---
 # <a name="install-read-ocr-docker-containers-preview"></a> (预览中安装读取 OCR Docker 容器)  
 
@@ -32,17 +32,17 @@ ms.locfileid: "97862475"
 > [!NOTE]
 > Read 3.0-preview 容器已弃用。 
 
-Read 3.2-preview 容器提供：
+Read 3.2-preview OCR 容器提供：
 * 用于增强准确性的新模型。
-* 同一文档中支持多种语言
-* 支持：荷兰语、英语、法语、德语、意大利语、葡萄牙语和西班牙语。
+* 同一文档中支持多种语言。
+* 支持总共73种语言。 请参阅 [OCR 支持的语言](./language-support.md#optical-character-recognition-ocr)的完整列表。
 * 针对文档和图像执行一项操作。
 * 支持较大的文档和图像。
-* 置信度分数为0到1。
-* 支持同时包含打印文本和手写文本的文档
-* 支持简体中文和日语。
-* 用于打印文本和手写文本的置信度和标签。 
+* 置信度分数。
+* 支持同时包含打印文本和手写文本的文档。
 * 只能从文档中)  (的选定页面提取文本。
+* 选择 "文本行输出顺序"，默认为更自然的读取顺序。
+* 文本行分类为手写样式，而不是仅适用于拉丁语言。
 
 如果目前使用的是读取2.0 容器，请参阅 [迁移指南](read-container-migration-guide.md) ，了解有关新版本中的更改的信息。
 
@@ -207,7 +207,7 @@ ApiKey={API_KEY}
 可以同时使用 `POST /vision/v3.2/read/analyze` 和 `GET /vision/v3.2/read/operations/{operationId}` 操作来异步读取图像，类似于计算机视觉服务使用相应 REST 操作的方式。 异步 POST 方法将返回一个 `operationId`，它用作 HTTP GET 请求的标识符。
 
 
-在 Swagger UI 中，选择 `asyncBatchAnalyze` 以在浏览器中将其展开。 然后选择“试用” > “选择文件”。 在本示例中，我们将使用以下图像：
+在 Swagger UI 中，选择 `Analyze` 以在浏览器中将其展开。 然后选择“试用” > “选择文件”。 在本示例中，我们将使用以下图像：
 
 ![制表符与空格](media/tabs-vs-spaces.png)
 
@@ -225,51 +225,99 @@ ApiKey={API_KEY}
 ```json
 {
   "status": "succeeded",
-  "createdDateTime": "2020-09-02T10:30:14Z",
-  "lastUpdatedDateTime": "2020-09-02T10:30:15Z",
+  "createdDateTime": "2021-02-04T06:32:08.2752706+00:00",
+  "lastUpdatedDateTime": "2021-02-04T06:32:08.7706172+00:00",
   "analyzeResult": {
     "version": "3.2.0",
     "readResults": [
       {
         "page": 1,
-        "angle": 2.12,
+        "angle": 2.1243,
         "width": 502,
         "height": 252,
         "unit": "pixel",
-        "language": "",
         "lines": [
           {
-            "boundingBox": [58, 42, 314, 59, 311, 123, 56, 121],
+            "boundingBox": [
+              58,
+              42,
+              314,
+              59,
+              311,
+              123,
+              56,
+              121
+            ],
             "text": "Tabs vs",
             "appearance": {
-              "style": "handwriting",
-              "styleConfidence": 0.999
+              "style": {
+                "name": "handwriting",
+                "confidence": 0.96
+              }
             },
             "words": [
               {
-                "boundingBox": [85, 45, 242, 62, 241, 122, 83, 123],
+                "boundingBox": [
+                  68,
+                  44,
+                  225,
+                  59,
+                  224,
+                  122,
+                  66,
+                  123
+                ],
                 "text": "Tabs",
-                "confidence": 0.981
+                "confidence": 0.933
               },
               {
-                "boundingBox": [258, 64, 314, 72, 314, 123, 256, 123],
+                "boundingBox": [
+                  241,
+                  61,
+                  314,
+                  72,
+                  314,
+                  123,
+                  239,
+                  122
+                ],
                 "text": "vs",
-                "confidence": 0.958
+                "confidence": 0.977
               }
             ]
           },
           {
-            "boundingBox": [286, 171, 415, 165, 417, 197, 287, 201],
+            "boundingBox": [
+              286,
+              171,
+              415,
+              165,
+              417,
+              197,
+              287,
+              201
+            ],
             "text": "paces",
             "appearance": {
-              "style": "print",
-              "styleConfidence": 0.603
+              "style": {
+                "name": "handwriting",
+                "confidence": 0.746
+              }
             },
             "words": [
               {
-                "boundingBox": [303, 175, 415, 167, 415, 198, 306, 199],
+                "boundingBox": [
+                  286,
+                  179,
+                  404,
+                  166,
+                  405,
+                  198,
+                  290,
+                  201
+                ],
                 "text": "paces",
-                "confidence": 0.918
+                "confidence": 0.938
               }
             ]
           }
