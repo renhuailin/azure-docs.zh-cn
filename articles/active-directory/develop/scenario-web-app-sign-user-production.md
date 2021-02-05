@@ -12,27 +12,22 @@ ms.workload: identity
 ms.date: 09/17/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: c7abad31c9936729b8d9c19ed2efcb841ac103ca
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: e4a47112d2f66edc8af9b7f100d48bc205f2e85e
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756230"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584291"
 ---
 # <a name="web-app-that-signs-in-users-move-to-production"></a>用于登录用户的 Web 应用：移到生产环境
 
-现在你已了解如何获取用于调用 Web API 的令牌，接下来学习如何将其移到生产环境。
+现在，你已了解如何获取令牌来调用 web Api，以下是将应用程序移动到生产环境时要考虑的一些事项。
 
-[!INCLUDE [Move to production common steps](../../../includes/active-directory-develop-scenarios-production.md)]
+[!INCLUDE [Common steps to move to production](../../../includes/active-directory-develop-scenarios-production.md)]
 
 ## <a name="troubleshooting"></a>故障排除
-
-> [!NOTE]
-> 用户首次登录到 Web 应用程序时，他们将需要同意。 但是，在某些组织中，用户可能会看到如下所示的消息：
->
-> “AppName 需要权限来访问组织中只有管理员才能授权的资源。请先让管理员授予对此应用的权限，然后你才能使用此应用。”
->
-> 这是因为租户管理员已禁用让用户同意的功能。 在这种情况下，你需要与租户管理员联系，以便他们针对应用程序要求的范围进行管理员许可。
+用户首次登录到 Web 应用程序时，他们将需要同意。 但是，在某些组织中，用户可以看到如下所示的消息： *AppName 需要访问你组织中只有管理员才能授予的资源的权限。请让管理员向此应用授予权限，然后才能使用该应用。*
+这是因为租户管理员已禁用让用户同意的功能。 在这种情况下，请与你的租户管理员联系，以便他们对应用程序所需的范围进行管理员同意。
 
 ## <a name="same-site"></a>同一站点
 

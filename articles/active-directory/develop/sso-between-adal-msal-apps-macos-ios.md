@@ -13,12 +13,12 @@ ms.date: 08/28/2019
 ms.author: marsma
 ms.reviewer: ''
 ms.custom: aaddev
-ms.openlocfilehash: 60189b8ba952bc3315bf514c5d0786601840665a
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 396e9cfeace8791a59dec4a9c9c7203212f57304
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756196"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584241"
 ---
 # <a name="how-to-sso-between-adal-and-msal-apps-on-macos-and-ios"></a>如何：在 macOS 和 iOS 上，在 ADAL 和 MSAL 应用之间 SSO
 
@@ -34,7 +34,7 @@ ms.locfileid: "98756196"
 
 ### <a name="cache-format"></a>缓存格式
 
-ADAL 2.7.x 可以读取 MSAL 缓存格式。 对于版本 ADAL 2.7.x 的跨应用 SSO，无需执行任何特殊操作。 但是，需要注意这两个库支持的帐户标识符的差异。
+ADAL 2.7.x 可以读取 MSAL 缓存格式。 对于版本 ADAL 2.7.x 的跨应用 SSO，无需执行任何特殊操作。 但是，请注意这两个库支持的帐户标识符之间的差异。
 
 ### <a name="account-identifier-differences"></a>帐户标识符差异
 
@@ -49,8 +49,8 @@ MSAL 和 ADAL 使用不同的帐户标识符。 ADAL 使用 UPN 作为主要帐�
 | 帐户标识符                | MSAL                                                         | ADAL 2.7.x      | 旧版 ADAL（ADAL 2.7.x 以前的版本） |
 | --------------------------------- | ------------------------------------------------------------ | --------------- | ------------------------------ |
 | 可显示的标识符            | `username`                                                   | `userId`        | `userId`                       |
-| 不可显示的唯一标识符 | `identifier`                                                 | `homeAccountId` | 空值                            |
-| 没有任何已知的帐户 ID               | 通过 `allAccounts:` 中的 `MSALPublicClientApplication` API 查询所有帐户 | 不适用             | 空值                            |
+| 不可显示的唯一标识符 | `identifier`                                                 | `homeAccountId` | 不适用                            |
+| 没有任何已知的帐户 ID               | 通过 `allAccounts:` 中的 `MSALPublicClientApplication` API 查询所有帐户 | 不适用             | 不适用                            |
 
 这是提供这些标识符的 `MSALAccount` 接口：
 

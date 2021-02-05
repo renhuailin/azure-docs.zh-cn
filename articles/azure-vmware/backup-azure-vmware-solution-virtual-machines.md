@@ -2,13 +2,13 @@
 title: 备份具有 Azure 备份服务器的 Azure VMware 解决方案 Vm
 description: 使用 Azure 备份服务器配置 Azure VMware 解决方案环境以备份虚拟机。
 ms.topic: how-to
-ms.date: 06/09/2020
-ms.openlocfilehash: d4273980a134fbdaabe64215aaf0b66a53253788
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.date: 02/04/2021
+ms.openlocfilehash: ea2164ba19703660e54879c25b975342d824662c
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92495705"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99585018"
 ---
 # <a name="back-up-azure-vmware-solution-vms-with-azure-backup-server"></a>备份具有 Azure 备份服务器的 Azure VMware 解决方案 Vm
 
@@ -35,33 +35,33 @@ ms.locfileid: "92495705"
 
 1. 在 "VMware **入门** " 页上，选择 " **下载受信任的根 CA 证书**"。
 
-   :::image type="content" source="../backup/media/backup-azure-backup-server-vmware/vsphere-web-client.png" alt-text="vSphere Web 客户端&quot;:::
+   :::image type="content" source="../backup/media/backup-azure-backup-server-vmware/vsphere-web-client.png" alt-text="vSphere Web 客户端":::
 
 1. 将 **download.zip** 文件保存到 Azure 备份服务器计算机，然后将其内容提取到 **证书** 文件夹，其中包含：
 
    - 根证书文件，其扩展名以编号序列（如 .0 和. 1）开头。
    - 其扩展名以类似于 r0 或 r1 的序列开头的 CRL 文件。
 
-1. 在 &quot; **证书** &quot; 文件夹中，右键单击根证书文件，然后选择 &quot; **重命名** &quot;，将扩展名更改为 **.crt**。
+1. 在 " **证书** " 文件夹中，右键单击根证书文件，然后选择 " **重命名** "，将扩展名更改为 **.crt**。
 
    文件图标将更改为表示根证书的图标。
 
-1. 右键单击根证书，并选择 &quot; **安装证书**&quot;。
+1. 右键单击根证书，并选择 " **安装证书**"。
 
-1. 在 **证书导入向导**中，选择 &quot; **本地计算机** &quot; 作为证书的目标，然后选择 &quot; **下一步**&quot;。
+1. 在 **证书导入向导** 中，选择 " **本地计算机** " 作为证书的目标，然后选择 " **下一步**"。
 
    ![向导欢迎页](../backup/media/backup-azure-backup-server-vmware/certificate-import-wizard1.png)
 
    > [!NOTE] 
    > 如果需要，请确认是否允许对计算机进行更改。
 
-1. 选择 **&quot;将所有证书放入下列存储**&quot;，然后选择 &quot; **浏览** &quot; 以选择证书存储。
+1. 选择 **"将所有证书放入下列存储**"，然后选择 " **浏览** " 以选择证书存储。
 
    ![证书存储](../backup/media/backup-azure-backup-server-vmware/cert-import-wizard-local-store.png)
 
-1. 选择 &quot; **受信任的根证书颁发机构** &quot; 作为目标文件夹，然后选择 **&quot;确定&quot;**。
+1. 选择 " **受信任的根证书颁发机构** " 作为目标文件夹，然后选择 **"确定"**。
 
-1. 查看设置，然后选择 &quot; **完成** " 以开始导入证书。
+1. 查看设置，然后选择 " **完成** " 以开始导入证书。
 
    ![验证证书是否位于正确的文件夹中](../backup/media/backup-azure-backup-server-vmware/cert-wizard-final-screen.png)
 
@@ -116,7 +116,7 @@ VMware 6.7 之前已启用 TLS 作为通信协议。
 
    ![在“管理证书”对话框中，选择“添加” 。](../backup/media/backup-azure-backup-server-vmware/mabs-manage-credentials-dialog.png)
 
-1. 在“添加凭据”对话框中，输入新凭据的名称和说明。**** 指定你在 VMware 服务器上定义的用户名和密码。
+1. 在“添加凭据”对话框中，输入新凭据的名称和说明。 指定你在 VMware 服务器上定义的用户名和密码。
 
    > [!NOTE] 
    > 如果 VMware 服务器和 Azure 备份服务器不在同一个域中，请在 " **用户名** " 框中指定域。
@@ -180,7 +180,7 @@ VMware 6.7 之前已启用 TLS 作为通信协议。
 
    ![“创建新保护组”向导对话框](../backup/media/backup-azure-backup-server-vmware/protection-wizard.png)
 
-1. 在“选择保护组类型”页上选择“服务器”，然后选择“下一步”。**** **** **** 此时将显示 " **选择组成员** " 页。
+1. 在“选择保护组类型”页上选择“服务器”，然后选择“下一步”。   此时将显示 " **选择组成员** " 页。
 
 1. 在 " **选择组成员** " 页上，选择要备份的 vm (或 vm 文件夹) ，然后选择 " **下一步**"。
 
@@ -200,66 +200,54 @@ VMware 6.7 之前已启用 TLS 作为通信协议。
    - **保持期**：保留磁盘恢复点的天数。
    - **快速完整备份**：创建磁盘恢复点的频率。 若要更改短期备份发生的时间或日期，请选择 " **修改**"。
 
-   :::image type="content" source="media/azure-vmware-solution-backup/new-protection-group-specify-short-term-goals.png" alt-text="vSphere Web 客户端&quot;:::
+   :::image type="content" source="media/azure-vmware-solution-backup/new-protection-group-specify-short-term-goals.png" alt-text="指定基于磁盘的保护的短期目标":::
 
-1. 将 **download.zip** 文件保存到 Azure 备份服务器计算机，然后将其内容提取到 **证书** 文件夹，其中包含：
-
-   - 根证书文件，其扩展名以编号序列（如 .0 和. 1）开头。
-   - 其扩展名以类似于 r0 或 r1 的序列开头的 CRL 文件。
-
-1. 在 &quot; **证书** &quot; 文件夹中，右键单击根证书文件，然后选择 &quot; **重命名** &quot;，将扩展名更改为 **.crt**。
-
-   文件图标将更改为表示根证书的图标。
-
-1. 右键单击根证书，并选择 &quot; **安装证书**&quot;。
-
-1. 在 **证书导入向导**中，选择 &quot; **本地计算机** &quot; 作为证书的目标，然后选择 &quot; **下一步**&quot;。
-
-   ![向导欢迎页](../backup/media/backup-azure-backup-server-vmware/certificate-import-wizard1.png)
-
-   > [!NOTE] 
-   > 如果需要，请确认是否允许对计算机进行更改。
-
-1. 选择 **&quot;将所有证书放入下列存储**&quot;，然后选择 &quot; **浏览** &quot; 以选择证书存储。
-
-   ![证书存储](../backup/media/backup-azure-backup-server-vmware/cert-import-wizard-local-store.png)
-
-1. 选择 &quot; **受信任的根证书颁发机构** &quot; 作为目标文件夹，然后选择 **&quot;确定&quot;**。
-
-1. 查看设置，然后选择 &quot; **完成** " 页上，查看为 VM 备份提供的磁盘空间。
+1. 在 " **查看磁盘存储分配** " 页上，查看为 VM 备份提供的磁盘空间。
 
    - 建议的磁盘分配基于指定的保留期、工作负荷类型，以及受保护数据的大小。 做出所需的任何更改，然后选择“下一步”。
    - **数据大小：** 保护组中数据的大小。
    - **磁盘空间：** 建议用于保护组的磁盘空间量。 如果要修改此设置，请选择稍微大于您估计的每个数据源的大小的空间。
    - **存储池详细信息：** 显示存储池的状态，包括总磁盘大小和剩余磁盘大小。
 
-   :::image type="content" source="media/azure-vmware-solution-backup/review-disk-allocation.png" alt-text="vSphere Web 客户端&quot;:::
+   :::image type="content" source="media/azure-vmware-solution-backup/review-disk-allocation.png" alt-text="查看存储池中提供的磁盘空间":::
 
-1. 将 **download.zip** 文件保存到 Azure 备份服务器计算机，然后将其内容提取到 **证书** 文件夹，其中包含：
+   > [!NOTE]
+   > 在某些情况下，报告的数据大小高于实际 VM 大小。 我们注意到该问题，当前正在调查此问题。
 
-   - 根证书文件，其扩展名以编号序列（如 .0 和. 1）开头。
-   - 其扩展名以类似于 r0 或 r1 的序列开头的 CRL 文件。
+1. 在 " **选择副本创建方法** " 页上，指明要如何进行初始备份，然后选择 " **下一步**"。
 
-1. 在 &quot; **证书** &quot; 文件夹中，右键单击根证书文件，然后选择 &quot; **重命名** &quot;，将扩展名更改为 **.crt**。
+   - 默认设置为“自动通过网络”和“立即”。  如果使用默认值，请指定非高峰时间。 如果你选择 " **以后**"，请指定日期和时间。
+   - 如果数据量很大或者网络状态欠佳，请考虑使用可移动介质脱机复制数据。
 
-   文件图标将更改为表示根证书的图标。
+   ![选择副本创建方法](../backup/media/backup-azure-backup-server-vmware/replica-creation.png)
 
-1. 右键单击根证书，并选择 &quot; **安装证书**&quot;。
+1. 对于 **一致性检查选项**，请选择如何以及何时自动执行一致性检查，然后选择 " **下一步**"。
 
-1. 在 **证书导入向导**中，选择 &quot; **本地计算机** &quot; 作为证书的目标，然后选择 &quot; **下一步**&quot;。
+   - 当副本数据变得不一致时，可以运行一致性检查；也可以根据设置的计划运行该检查。
+   - 如果不想配置自动一致性检查，则可以通过右键单击保护组 " **执行一致性检查**" 来运行手动检查。
 
-   ![向导欢迎页](../backup/media/backup-azure-backup-server-vmware/certificate-import-wizard1.png)
+1. 在 " **指定联机保护数据** " 页上，选择要备份的 VM 或 vm 文件夹，然后选择 " **下一步**"。 
 
-   > [!NOTE] 
-   > 如果需要，请确认是否允许对计算机进行更改。
+   > [!TIP]
+   > 可以逐个选择成员，也可以选择 " **全选** " 选择所有成员。
 
-1. 选择 **&quot;将所有证书放入下列存储**&quot;，然后选择 &quot; **浏览** &quot; 以选择证书存储。
+   ![指定在线保护数据](../backup/media/backup-azure-backup-server-vmware/select-data-to-protect.png)
 
-   ![证书存储](../backup/media/backup-azure-backup-server-vmware/cert-import-wizard-local-store.png)
+1. 在 " **指定联机备份计划** " 页上，指定要将数据从本地存储备份到 Azure 的频率。 
 
-1. 选择 &quot; **受信任的根证书颁发机构** &quot; 作为目标文件夹，然后选择 **&quot;确定&quot;**。
+   - 要根据计划生成的数据的云恢复点。 
+   - 生成恢复点后，该恢复点将传输到 Azure 中的恢复服务保管库。
 
-1. 查看设置，然后选择 &quot; **完成** " **创建组**"。
+   ![指定联机备份计划](../backup/media/backup-azure-backup-server-vmware/online-backup-schedule.png)
+
+1. 在 " **指定联机保留策略** " 页上，指定要将恢复点从备份创建到 Azure 的时间长度。
+
+   - 在 Azure 中保留数据的时间长短没有限制。
+   - 唯一的限制是每个受保护实例的恢复点数不能超过9999个。 在本示例中，受保护的实例是 VMware 服务器。
+
+   ![指定联机保留策略](../backup/media/backup-azure-backup-server-vmware/retention-policy.png)
+
+1. 在 " **摘要** " 页上，查看设置，然后选择 " **创建组**"。
 
    ![保护组成员和设置摘要](../backup/media/backup-azure-backup-server-vmware/protection-group-summary.png)
 
@@ -273,41 +261,15 @@ VMware 6.7 之前已启用 TLS 作为通信协议。
 - 在 " **保护** " 任务区域中，你可以检查保护组中的卷和共享的状态。 你还可以检查配置设置，如恢复设置、磁盘分配和备份计划。
 - 在 " **管理** " 任务区域中，可以查看 " **磁盘"、"联机**" 和 " **代理** " 选项卡，以检查存储池中的磁盘的状态、注册到 Azure 并部署 DPM 代理状态。
 
-:::image type="content" source="media/azure-vmware-solution-backup/monitor-backup-jobs.png" alt-text="vSphere Web 客户端&quot;:::
-
-1. 将 **download.zip** 文件保存到 Azure 备份服务器计算机，然后将其内容提取到 **证书** 文件夹，其中包含：
-
-   - 根证书文件，其扩展名以编号序列（如 .0 和. 1）开头。
-   - 其扩展名以类似于 r0 或 r1 的序列开头的 CRL 文件。
-
-1. 在 &quot; **证书** &quot; 文件夹中，右键单击根证书文件，然后选择 &quot; **重命名** &quot;，将扩展名更改为 **.crt**。
-
-   文件图标将更改为表示根证书的图标。
-
-1. 右键单击根证书，并选择 &quot; **安装证书**&quot;。
-
-1. 在 **证书导入向导**中，选择 &quot; **本地计算机** &quot; 作为证书的目标，然后选择 &quot; **下一步**&quot;。
-
-   ![向导欢迎页](../backup/media/backup-azure-backup-server-vmware/certificate-import-wizard1.png)
-
-   > [!NOTE] 
-   > 如果需要，请确认是否允许对计算机进行更改。
-
-1. 选择 **&quot;将所有证书放入下列存储**&quot;，然后选择 &quot; **浏览** &quot; 以选择证书存储。
-
-   ![证书存储](../backup/media/backup-azure-backup-server-vmware/cert-import-wizard-local-store.png)
-
-1. 选择 &quot; **受信任的根证书颁发机构** &quot; 作为目标文件夹，然后选择 **&quot;确定&quot;**。
-
-1. 查看设置，然后选择 &quot; **完成** ":::
+:::image type="content" source="media/azure-vmware-solution-backup/monitor-backup-jobs.png" alt-text="监视 Azure 备份服务器中备份作业的状态":::
 
 ## <a name="restore-vmware-virtual-machines"></a>还原 VMware 虚拟机
 
 在 Azure 备份服务器管理员控制台中，有两种方法可用于查找可恢复数据。 您可以搜索或浏览。 在恢复数据时，你可能或不希望将数据或 VM 还原到同一位置。 出于此原因，Azure 备份服务器支持用于 VMware VM 备份的三个恢复选项：
 
-- **原始位置恢复 (OLR) **：使用 OLR 将受保护的 VM 还原到其原始位置。 仅当备份发生之后未添加或删除任何磁盘时，才可以将 VM 还原到其原始位置。 如果添加或删除了磁盘，则必须使用备用位置恢复。
-- **备用位置恢复 (ALR) **：在缺少原始 vm 时使用，或者不希望扰乱原始 vm。 提供 ESXi 主机、资源池、文件夹以及存储数据存储和路径的位置。 为帮助区分已还原的 VM 与原始 VM，Azure 备份服务器将 *"恢复"* 追加到 VM 的名称。
-- **单个文件位置恢复 (ILR) **：如果受保护的 Vm 是 WINDOWS Server VM，则可以使用 AZURE 备份服务器的 ILR 功能来恢复 VM 内的单个文件或文件夹。 若要恢复单个文件，请参阅本文稍后所述的过程。 从 VM 还原单个文件仅适用于 Windows VM 和磁盘恢复点。
+- **原始位置恢复 (OLR)**：使用 OLR 将受保护的 VM 还原到其原始位置。 仅当备份发生之后未添加或删除任何磁盘时，才可以将 VM 还原到其原始位置。 如果添加或删除了磁盘，则必须使用备用位置恢复。
+- **备用位置恢复 (ALR)**：在缺少原始 vm 时使用，或者不希望扰乱原始 vm。 提供 ESXi 主机、资源池、文件夹以及存储数据存储和路径的位置。 为帮助区分已还原的 VM 与原始 VM，Azure 备份服务器将 *"恢复"* 追加到 VM 的名称。
+- **单个文件位置恢复 (ILR)**：如果受保护的 Vm 是 WINDOWS Server VM，则可以使用 AZURE 备份服务器的 ILR 功能来恢复 VM 内的单个文件或文件夹。 若要恢复单个文件，请参阅本文稍后所述的过程。 从 VM 还原单个文件仅适用于 Windows VM 和磁盘恢复点。
 
 ### <a name="restore-a-recovery-point"></a>还原恢复点
 
@@ -322,35 +284,27 @@ VMware 6.7 之前已启用 TLS 作为通信协议。
    > [!NOTE] 
    > 对于短期保护，选择基于磁盘的恢复点以实现更快的恢复。 短期恢复点过期后，你将仅看到要恢复的 **联机** 恢复点。
 
-1. 从联机恢复点恢复之前，请确保暂存位置包含足够的可用空间来容纳你要恢复的 VM 的完全未压缩大小。 可以通过运行 **配置订阅设置向导**来查看或更改暂存位置。
+1. 从联机恢复点恢复之前，请确保暂存位置包含足够的可用空间来容纳你要恢复的 VM 的完全未压缩大小。 可以通过运行 **配置订阅设置向导** 来查看或更改暂存位置。
 
-   :::image type="content" source="media/azure-vmware-solution-backup/mabs-recovery-folder-settings.png" alt-text="vSphere Web 客户端&quot;:::
+   :::image type="content" source="media/azure-vmware-solution-backup/mabs-recovery-folder-settings.png" alt-text="Azure 备份服务器恢复文件夹设置":::
 
-1. 将 **download.zip** 文件保存到 Azure 备份服务器计算机，然后将其内容提取到 **证书** 文件夹，其中包含：
+1. 选择 " **恢复** " 打开 " **恢复向导**"。
 
-   - 根证书文件，其扩展名以编号序列（如 .0 和. 1）开头。
-   - 其扩展名以类似于 r0 或 r1 的序列开头的 CRL 文件。
+   ![恢复向导，"复查恢复选择" 页](../backup/media/restore-azure-backup-server-vmware/recovery-wizard.png)
 
-1. 在 &quot; **证书** &quot; 文件夹中，右键单击根证书文件，然后选择 &quot; **重命名** &quot;，将扩展名更改为 **.crt**。
+1. 选择 " **下一步** " 以前往 " **指定恢复选项** " 屏幕。 再次选择 " **下一步** " 以切换到 " **选择恢复类型** " 屏幕。 
 
-   文件图标将更改为表示根证书的图标。
+   > [!NOTE]
+   > VMware 工作负荷不支持启用网络带宽限制。
 
-1. 右键单击根证书，并选择 &quot; **安装证书**&quot;。
+1. 在 " **选择恢复类型** " 页上，恢复到原始实例或新位置。
 
-1. 在 **证书导入向导**中，选择 &quot; **本地计算机** &quot; 作为证书的目标，然后选择 &quot; **下一步**&quot;。
+   - 如果选择“恢复到原始实例”，则无需在向导中做出任何更多选择。 会使用原始实例的数据。
+   - 如果选择“在任何主机上作为虚拟机恢复”，则在“指定目标”屏幕上，为“ESXi 主机”、“资源池”、“文件夹”和“路径”提供相关信息。
 
-   ![向导欢迎页](../backup/media/backup-azure-backup-server-vmware/certificate-import-wizard1.png)
+   ![选择恢复类型页](../backup/media/restore-azure-backup-server-vmware/recovery-type.png)
 
-   > [!NOTE] 
-   > 如果需要，请确认是否允许对计算机进行更改。
-
-1. 选择 **&quot;将所有证书放入下列存储**&quot;，然后选择 &quot; **浏览** &quot; 以选择证书存储。
-
-   ![证书存储](../backup/media/backup-azure-backup-server-vmware/cert-import-wizard-local-store.png)
-
-1. 选择 &quot; **受信任的根证书颁发机构** &quot; 作为目标文件夹，然后选择 **&quot;确定&quot;**。
-
-1. 查看设置，然后选择 &quot; **完成** " 以启动恢复过程。 
+1. 在 " **摘要** " 页上，查看设置，然后选择 " **恢复** " 以启动恢复过程。 
 
    “恢复状态”屏幕显示恢复操作的进度。
 
@@ -383,7 +337,7 @@ VMware 6.7 之前已启用 TLS 作为通信协议。
 
    ![复查恢复选择](../backup/media/restore-azure-backup-server-vmware/vmware-rp-disk-ilr-2.png)
 
-1. 选择要恢复的项目后，在管理员控制台工具功能区中，选择 " **恢复** " 打开 " **恢复向导**"。 在 **恢复向导**中，" **复查恢复选择** " 屏幕会显示要恢复的选定项目。
+1. 选择要恢复的项目后，在管理员控制台工具功能区中，选择 " **恢复** " 打开 " **恢复向导**"。 在 **恢复向导** 中，" **复查恢复选择** " 屏幕会显示要恢复的选定项目。
 
 1. 在 " **指定恢复选项** " 屏幕上，执行以下步骤之一：
 
@@ -402,7 +356,7 @@ VMware 6.7 之前已启用 TLS 作为通信协议。
 
 ## <a name="next-steps"></a>后续步骤
 
-设置备份时若要排查问题，请查看 Azure 备份服务器的故障排除指南。
+现在，你已介绍了如何通过 Azure 备份服务器来备份 Azure VMware 解决方案 Vm，你可能想要了解以下内容： 
 
-> [!div class="nextstepaction"]
-> [Azure 备份服务器疑难解答指南](../backup/backup-azure-mabs-troubleshoot.md)
+- [在 Azure 备份服务器中设置备份时进行故障排除](../backup/backup-azure-mabs-troubleshoot.md)。
+- [Azure VMware 解决方案 vm 的生命周期管理](lifecycle-management-of-azure-vmware-solution-vms.md)。

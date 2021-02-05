@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 06/16/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: ebc22e3cf300b664aae5842f7cf924769d4d907e
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 1187c768a54dd04d25b6de0e6785ebb81a7dfc24
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756490"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584425"
 ---
 # <a name="configure-a-mobile-app-that-calls-web-apis"></a>配置调用 Web API 的移动应用
 
@@ -82,7 +82,7 @@ var app = PublicClientApplicationBuilder.Create(clientId)
 
 ##### <a name="specify-the-parent-ui-window-or-activity"></a>指定父 UI、窗口或活动
 
-在 Android 上，需要在执行交互式身份验证之前传递父活动。 在 iOS 上使用中介时，需要传入 `ViewController`。 在 UWP 上，可以相同的方式传入父窗口。 请在获取令牌时将其传入。 但在创建应用程序时，还可以指定一个回调作为返回 `UIParent` 的委托。
+在 Android 上，在执行交互式身份验证之前传递父活动。 在 iOS 上，使用 broker 时 `ViewController` 。 在 UWP 上，可以相同的方式传入父窗口。 请在获取令牌时将其传入。 但在创建应用程序时，还可以指定一个回调作为返回 `UIParent` 的委托。
 
 ```csharp
 IPublicClientApplication application = PublicClientApplicationBuilder.Create(clientId)

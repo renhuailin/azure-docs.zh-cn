@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 12/24/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 45f02850797582f97220e91d1582b04b3be711c0
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 0fb4cce8eca2516957c394635e3dab2dbf282385
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97882477"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584475"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>使用 Azure Monitor 日志管理使用情况和成本    
 
@@ -132,9 +132,9 @@ Azure 在 [Azure 成本管理和计费](../../cost-management-billing/costs/quic
 
 ## <a name="change-the-data-retention-period"></a>更改数据保留期
 
-以下步骤说明如何配置日志数据在工作区中的保留期限。 工作区级别的数据保留期可以配置为30到730天 (2 年内所有工作区) ，除非他们使用旧版免费定价层。[详细了解更](https://azure.microsoft.com/pricing/details/monitor/) 长的数据保留期。 单个数据类型的保留期最小可设置为4天。 
+以下步骤说明如何配置日志数据在工作区中的保留期限。 对于所有工作区，工作区级别的数据保留期可配置为 30 到 730 天（2 年），除非其使用的是旧版免费定价层。[了解更多](https://azure.microsoft.com/pricing/details/monitor/)有关更长数据保留期定价的信息。 单个数据类型的保留期可以设置为低至 4 天。 
 
-### <a name="workspace-level-default-retention"></a>工作区级别默认保持期
+### <a name="workspace-level-default-retention"></a>工作区级别的默认保留期
 
 若要设置工作区的默认保留期，请执行以下操作： 
  
@@ -158,7 +158,7 @@ Azure 在 [Azure 成本管理和计费](../../cost-management-billing/costs/quic
 
 ### <a name="retention-by-data-type"></a>按数据类型保留
 
-还可以为每个数据类型指定不同的保留设置，该数据类型为4到730天 (除了旧的免费定价层中的工作区) ，替代工作区级默认保留期。 每个数据类型都是工作区的子资源。 例如，可以在 [Azure 资源管理器](../../azure-resource-manager/management/overview.md)中对 SecurityEvent 表进行寻址，如下所示：
+还可以为单个数据类型指定不同的保留期设置 - 从 30 天到 730 天（旧版免费定价层中的工作区除外），以覆盖工作区级别的默认保留期。 每个数据类型都是工作区的子资源。 例如，可以在 [Azure 资源管理器](../../azure-resource-manager/management/overview.md)中对 SecurityEvent 表进行寻址，如下所示：
 
 ```
 /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/Microsoft.OperationalInsights/workspaces/MyWorkspaceName/Tables/SecurityEvent
@@ -216,7 +216,7 @@ armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/
 > 每日上限无法以精确到指定的每日上限的级别停止数据收集，且可能出现某些多余的数据，尤其是在工作区接收大量数据的情况下。 请参阅[下文](#view-the-effect-of-the-daily-cap)，了解有助于研究每日上限行为的查询。 
 
 > [!WARNING]
-> 每日上限不会停止 [Azure 安全中心每日每个 (节点](#log-analytics-and-security-center) 的 WindowsEvent、SecurityAlert、SecurityBaseline、SecurityBaselineSummary、SecurityDetection、SecurityEvent、Windows 防火墙、MaliciousIPCommunication、LinuxAuditLog、SysmonEvent、ProtectionStatus、Update 和 UpdateSummary) 包含在 Azure 安全中心中的数据类型集合，但在2017年6月19日之前安装了 Azure 安全中心的工作区除外。 
+> 每日上限不会停止收集 [Azure 安全中心每日每节点限额](#log-analytics-and-security-center)中包含的数据类型（WindowsEvent、SecurityAlert、SecurityBaseline、SecurityBaselineSummary、SecurityDetection、SecurityEvent、WindowsFirewall、MaliciousIPCommunication、LinuxAuditLog、SysmonEvent、ProtectionStatus、Update 和 UpdateSummary），但 2017 年 6 月 19 日之前已安装 Azure 安全中心的工作区除外。 
 
 ### <a name="identify-what-daily-data-limit-to-define"></a>确定要定义的每日数据限制
 
@@ -420,10 +420,9 @@ find where TimeGenerated > ago(24h) project _ResourceId, _BilledSize, _IsBillabl
 对于 Azure 中托管的节点的数据，可以按 Azure 订阅获取引入的数据的大小，请按如下所示来使用 `_SubscriptionId` 属性：
 
 ```kusto
-find where TimeGenerated > ago(24h) project _ResourceId, _BilledSize, _IsBillable
+find where TimeGenerated > ago(24h) project _ResourceId, _BilledSize, _IsBillable, _SubscriptionId
 | where _IsBillable == true 
-| summarize BillableDataBytes = sum(_BilledSize) by _ResourceId
-| summarize BillableDataBytes = sum(BillableDataBytes) by _SubscriptionId | sort by BillableDataBytes nulls last
+| summarize BillableDataBytes = sum(_BilledSize) by _SubscriptionId | sort by BillableDataBytes nulls last
 ```
 
 若要按资源组获取数据量，可以分析 `_ResourceId`：

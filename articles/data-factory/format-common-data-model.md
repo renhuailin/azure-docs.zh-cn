@@ -5,14 +5,14 @@ author: kromerm
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 12/07/2020
+ms.date: 02/04/2021
 ms.author: makromer
-ms.openlocfilehash: e3152f1dff4a80ce3ae8bd121215ceb2595b9ee2
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: a08457ba041fa39fda367976498a4a89930c56e3
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96853998"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99585154"
 ---
 # <a name="common-data-model-format-in-azure-data-factory"></a>Azure 数据工厂中的通用数据模型格式
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -32,7 +32,7 @@ ms.locfileid: "96853998"
 
 下表列出了 CDM 源支持的属性。 可以在 " **源选项** " 选项卡中编辑这些属性。
 
-| 名称 | 说明 | 必选 | 允许的值 | 数据流脚本属性 |
+| 名称 | 说明 | 必须 | 允许的值 | 数据流脚本属性 |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | 格式 | 格式必须为 `cdm` | 是 | `cdm` | format |
 | 元数据格式 | 数据实体引用所在的位置。 如果使用 CDM 版本1.0，则选择 "清单"。 如果使用1.0 之前的 CDM 版本，请选择 "model.js打开"。 | 是 | `'manifest'` 或 `'model'` | manifestType |
@@ -40,7 +40,7 @@ ms.locfileid: "96853998"
 | 根位置：文件夹路径 | CDM 文件夹的根文件夹位置 | 是 | 字符串 | folderPath |
 | 清单文件：实体路径 | 根文件夹中实体的文件夹路径 | 否 | 字符串 | entityPath |
 | 清单文件：清单名称 | 清单文件的名称。 默认值为 "default"  | 否 | 字符串 | manifestName |
-| 按上次修改时间筛选 | 选择根据文件上次更改时间筛选文件 | 否 | Timestamp | ModifiedAfter <br> modifiedBefore | 
+| 按上次修改时间筛选 | 选择根据文件上次更改时间筛选文件 | 否 | 时间戳 | ModifiedAfter <br> modifiedBefore | 
 | 架构链接的服务 | 语料库所在的链接服务 | 是，如果使用清单 | `'adlsgen2'` 或 `'github'` | corpusStore | 
 | 实体引用容器 | 容器语料库处于 | 是，如果在 ADLS Gen2 中使用清单和语料库 | 字符串 | adlsgen2_fileSystem |
 | 实体引用存储库 | GitHub 存储库名称 | 是，如果使用 GitHub 中的清单和语料库 | 字符串 | github_repository |
@@ -85,6 +85,7 @@ CDM 仅可用作内联数据集，并且默认情况下不具有关联的架构�
 2. 查找分区。Location 属性 
 3. 将 "blob.core.windows.net" 更改为 "dfs.core.windows.net"
 4. 将 URL 中的任何 "% 2F" 编码修复为 "/"
+5. 如果使用 ADF 数据流，则必须将分区文件路径中的特殊字符替换为字母数字值，或切换到 Synapse 数据流
 
 ### <a name="cdm-source-data-flow-script-example"></a>CDM 源数据流脚本示例
 
@@ -114,7 +115,7 @@ source(output(
 
 下表列出了 CDM 接收器支持的属性。 可以在 " **设置** " 选项卡中编辑这些属性。
 
-| 名称 | 说明 | 必选 | 允许的值 | 数据流脚本属性 |
+| 名称 | 说明 | 必须 | 允许的值 | 数据流脚本属性 |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | 格式 | 格式必须为 `cdm` | 是 | `cdm` | format |
 | 根位置：容器 | CDM 文件夹的容器名称 | 是 | 字符串 | fileSystem |

@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: pafarley
-ms.openlocfilehash: a63f910b3a939e33b8c71d8f22d15f6d610a12cc
-ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
+ms.openlocfilehash: d529e74614a4fd5ee49d7e6161c65f68e8e76fce
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/01/2021
-ms.locfileid: "97845557"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99585052"
 ---
 # <a name="form-recognizer-layout-service"></a>表单识别器布局服务
 
@@ -56,7 +56,7 @@ Azure 窗体识别器可以使用其布局服务从文档中提取文本、表�
 
 |字段| 类型 | 可能值 |
 |:-----|:----:|:----|
-|status | 字符串 | `notStarted`：分析操作尚未开始。<br /><br />`running`：正在进行分析操作。<br /><br />`failed`：分析操作失败。<br /><br />`succeeded`：分析操作已成功。|
+|status | string | `notStarted`：分析操作尚未开始。<br /><br />`running`：正在进行分析操作。<br /><br />`failed`：分析操作失败。<br /><br />`succeeded`：分析操作已成功。|
 
 此操作以迭代方式调用，直到其返回 `succeeded` 值。 使用3到5秒的间隔，以避免超出每秒 (RPS) 速率的请求数。
 
@@ -89,7 +89,7 @@ JSON 输出分为两部分：
 ## <a name="next-steps"></a>后续步骤
 
 - 使用[窗体识别器示例 UI](https://fott-preview.azurewebsites.net/)尝试您自己的布局提取
-- 完成 [表单识别器快速入门](quickstarts/client-library.md) ，开始使用所选的语言提取布局。
+- 完成 [表单识别器快速入门](quickstarts/client-library.md) ，开始使用所选的开发语言提取布局。
 
 ## <a name="see-also"></a>请参阅
 

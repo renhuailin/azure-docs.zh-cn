@@ -6,12 +6,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 6b9077fec13dd177ec4e07e7fbd7818ded2fd0a1
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.openlocfilehash: 3f2e8fef35095a007051999d806f2942089ae19a
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98164934"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584730"
 ---
 # <a name="accept-active-learning-suggested-questions-in-the-knowledge-base"></a>接受知识库中的活动学习建议问题
 
@@ -49,18 +49,39 @@ ms.locfileid: "98164934"
 
 <a name="#score-proximity-between-knowledge-base-questions"></a>
 
+## <a name="active-learning-suggestions-are-saved-in-the-exported-knowledge-base"></a>活动学习建议保存在导出的知识库中
+
+当你的应用启用了活动学习并导出应用后， `SuggestedQuestions` tsv 文件中的列将保留活动的学习数据。
+
+此 `SuggestedQuestions` 列是隐式、和显式反馈信息的 JSON 对象 `autosuggested` `usersuggested` 。 此 JSON 对象的一个示例是，针对的单个用户提交的问题 `help` 是：
+
+```JSON
+[
+    {
+        "clusterHead": "help",
+        "totalAutoSuggestedCount": 1,
+        "totalUserSuggestedCount": 0,
+        "alternateQuestionList": [
+            {
+                "question": "help",
+                "autoSuggestedCount": 1,
+                "userSuggestedCount": 0
+            }
+        ]
+    }
+]
+```
+
+当您重新导入此应用程序时，主动学习将继续收集相关信息并为您的知识库提出建议。
+
+
 ### <a name="architectural-flow-for-using-generateanswer-and-train-apis-from-a-bot"></a>使用 GenerateAnswer 并通过 bot 训练 Api 的体系结构流
 
 机器人或其他客户端应用程序应使用以下体系结构流来使用活动学习：
 
 * 机器人使用 GenerateAnswer API [从知识库获取答案](#use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers) ，并使用 `top` 属性获取多个答案。
-* 机器人确定显式反馈：
-    * 使用您自己的 [自定义业务逻辑](#use-the-score-property-along-with-business-logic-to-get-list-of-answers-to-show-user)，筛选出低分数。
-    * 在机器人或客户端应用程序中，显示用户的可能答案列表，并获得用户选定的答案。
-* 机器人会 [将选择的应答发送回 QnA Maker](#bot-framework-sample-code) 的 [训练 API](#train-api)。
 
-
-### <a name="use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers"></a>使用 GenerateAnswer 请求中的 top 属性获取几个匹配的答案
+#### <a name="use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers"></a>使用 GenerateAnswer 请求中的 top 属性获取几个匹配的答案
 
 提交问题以 QnA Maker 获取答案时， `top` JSON 正文的属性将设置要返回的应答的数目。
 
@@ -71,6 +92,12 @@ ms.locfileid: "98164934"
     "top": 3
 }
 ```
+
+* 机器人确定显式反馈：
+    * 使用您自己的 [自定义业务逻辑](#use-the-score-property-along-with-business-logic-to-get-list-of-answers-to-show-user)，筛选出低分数。
+    * 在机器人或客户端应用程序中，显示用户的可能答案列表，并获得用户选定的答案。
+* 机器人会 [将选择的应答发送回 QnA Maker](#bot-framework-sample-code) 的 [训练 API](#train-api)。
+
 
 ### <a name="use-the-score-property-along-with-business-logic-to-get-list-of-answers-to-show-user"></a>使用评分属性以及业务逻辑获取显示用户的答案列表
 
@@ -132,10 +159,10 @@ Content-Type: application/json
 
 |HTTP 请求属性|名称|类型|用途|
 |--|--|--|--|
-|URL 路由参数|知识库 ID|字符串|知识库的 GUID。|
-|自定义子域|QnAMaker 资源名称|字符串|资源名称用作 QnA Maker 的自定义子域。 发布知识库后，可以在 "设置" 页上找到此功能。 它作为列出 `host` 。|
-|标头|Content-Type|字符串|发送到 API 的正文的媒体类型。 默认值为： `application/json`|
-|标头|授权|字符串|终结点密钥 (EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx)。|
+|URL 路由参数|知识库 ID|string|知识库的 GUID。|
+|自定义子域|QnAMaker 资源名称|string|资源名称用作 QnA Maker 的自定义子域。 发布知识库后，可以在 "设置" 页上找到此功能。 它作为列出 `host` 。|
+|Header|Content-Type|string|发送到 API 的正文的媒体类型。 默认值为： `application/json`|
+|Header|授权|字符串|终结点密钥 (EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx)。|
 |POST 正文|JSON 对象|JSON|培训反馈|
 
 JSON 正文具有几个设置：
@@ -143,9 +170,9 @@ JSON 正文具有几个设置：
 |JSON 正文属性|类型|目的|
 |--|--|--|--|
 |`feedbackRecords`|array|反馈列表。|
-|`userId`|字符串|接受建议问题的人员的用户 ID。 用户 ID 格式由您来了解。 例如，电子邮件地址可以是体系结构中的有效用户 ID。 可选。|
-|`userQuestion`|字符串|用户查询的确切文本。 必需。|
-|`qnaID`|数字|[GenerateAnswer 响应](metadata-generateanswer-usage.md#generateanswer-response-properties)中找到的问题 ID。 |
+|`userId`|string|接受建议问题的人员的用户 ID。 用户 ID 格式由您来了解。 例如，电子邮件地址可以是体系结构中的有效用户 ID。 可选。|
+|`userQuestion`|string|用户查询的确切文本。 必需。|
+|`qnaID`|number|[GenerateAnswer 响应](metadata-generateanswer-usage.md#generateanswer-response-properties)中找到的问题 ID。 |
 
 示例 JSON 正文如下所示：
 
@@ -310,34 +337,7 @@ async callTrain(stepContext){
 }
 ```
 
-## <a name="active-learning-is-saved-in-the-exported-knowledge-base"></a>活动学习保存在导出的知识库中
-
-当你的应用启用了活动学习并导出应用后， `SuggestedQuestions` tsv 文件中的列将保留活动的学习数据。
-
-此 `SuggestedQuestions` 列是隐式、和显式反馈信息的 JSON 对象 `autosuggested` `usersuggested` 。 此 JSON 对象的一个示例是，针对的单个用户提交的问题 `help` 是：
-
-```JSON
-[
-    {
-        "clusterHead": "help",
-        "totalAutoSuggestedCount": 1,
-        "totalUserSuggestedCount": 0,
-        "alternateQuestionList": [
-            {
-                "question": "help",
-                "autoSuggestedCount": 1,
-                "userSuggestedCount": 0
-            }
-        ]
-    }
-]
-```
-
-当您重新导入此应用程序时，主动学习将继续收集相关信息并为您的知识库提出建议。
-
-
-
-## <a name="best-practices"></a>最佳实践
+## <a name="best-practices"></a>最佳做法
 
 有关使用主动学习的最佳做法，请参阅[最佳做法](../Concepts/best-practices.md#active-learning)。
 

@@ -7,23 +7,23 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 07/14/2020
+ms.date: 02/04/2021
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 750c24fd84629f709beb7a92e92fd1ecf581c09a
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: 53334dfdcdb917c754c9bc4205b0918c6d207da8
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97862218"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584781"
 ---
-# <a name="install-and-run-form-recognizer-containers-preview"></a> (预览安装并运行窗体识别器容器) 
+# <a name="install-and-run-form-recognizer-containers-retiring"></a> (注销时安装并运行窗体识别器容器) 
 
 [!INCLUDE [Form Recognizer containers limit](includes/container-limit.md)]
 
 Azure 表单识别器应用机器学习技术从表单中识别和提取键值对和表。 它将值和表项与键值对相关联，然后输出包含原始文件中的关系的结构化数据。 
 
-若要降低复杂性并轻松地将自定义表单识别器模型集成到工作流自动化过程或其他应用程序中，可以使用简单的 REST API 来调用该模型。 只需要五个窗体文档 (或一个空窗体和两个已填充的窗体) ，因此你可以快速、准确地获取结果并针对特定内容进行定制。 而无需进行繁琐的手动干预，也不需要具备丰富的数据科学专业知识。 它不要求标记或标注数据。
+若要降低复杂性并轻松地将自定义表单识别器模型集成到工作流自动化过程或其他应用程序中，可以使用简单的 REST API 来调用该模型。 只需要五个窗体文档，因此你可以快速、准确地获取结果并针对特定内容进行定制。 而无需进行繁琐的手动干预，也不需要具备丰富的数据科学专业知识。 它不要求标记或标注数据。
 
 | 函数 | 功能 |
 |----------|----------|
@@ -63,7 +63,7 @@ Azure 表单识别器应用机器学习技术从表单中识别和提取键值�
 ![获取两个密钥之一供以后使用](../containers/media/keys-copy-api-key.png)
 
 > [!IMPORTANT]
-> 这些订阅密钥用于访问认知服务 API。 不要共享你的密钥。 安全地存储它们，例如，使用 Azure Key Vault。 此外，我们建议定期重新生成这些密钥。 发出 API 调用只需一个密钥。 重新生成第一个密钥时，可以使用第二个密钥来持续访问服务。
+> 这些订阅密钥用于访问认知服务 API。 不要共享你的密钥。 以安全方式存储密钥（例如，使用 Azure Key Vault 来存储）。 此外，我们建议定期重新生成这些密钥。 发出 API 调用只需一个密钥。 重新生成第一个密钥时，可以使用第二个密钥来持续访问服务。
 
 ## <a name="the-host-computer"></a>主计算机
 
@@ -84,37 +84,9 @@ Azure 表单识别器应用机器学习技术从表单中识别和提取键值�
 > [!Note]
 > 最小值和建议值基于 Docker 限制，而不是基于主机资源。
 
-## <a name="get-the-container-images-with-the-docker-pull-command"></a>通过 docker pull 命令获取容器映像
-
-以下容器注册表中提供了 **窗体识别器** 和 **识别文本** 产品/服务的容器映像：
-
-| 容器 | 完全限定的映像名称 |
-|-----------|------------|
-| 表单识别器 | `containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer:latest` |
-| 识别文本 | `containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text:latest` |
-
-你将需要这两个容器，请注意，[本文外详细介绍](../Computer-vision/computer-vision-how-to-install-containers.md#get-the-container-image-with-docker-pull)了 **识别器文本** 容器。
+你将需要窗体识别器和识别文本容器，请注意， **识别文本** 容器在 [本文外详细说明。](../Computer-vision/computer-vision-how-to-install-containers.md#get-the-container-image-with-docker-pull)
 
 [!INCLUDE [Tip for using docker list](../../../includes/cognitive-services-containers-docker-list-tip.md)]
-
-### <a name="docker-pull-for-the-form-recognizer-container"></a>适用于表单识别器容器的 Docker 拉取
-
-#### <a name="form-recognizer"></a>表单识别器
-
-若要获取表单识别器容器，请使用以下命令：
-
-```Docker
-docker pull containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer:latest
-```
-### <a name="docker-pull-for-the-recognize-text-container"></a>适用于“识别文本”容器的 Docker 拉取
-
-#### <a name="recognize-text"></a>识别文本
-
-若要获取识别文本容器，请使用以下命令：
-
-```Docker
-docker pull containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text:latest
-```
 
 ## <a name="how-to-use-the-container"></a>如何使用容器
 

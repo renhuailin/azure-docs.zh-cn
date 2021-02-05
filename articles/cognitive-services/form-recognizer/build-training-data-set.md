@@ -9,20 +9,20 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: pafarley
-ms.openlocfilehash: 661b0bbf1aa389dc76567d95ad917548255a1b35
-ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
+ms.openlocfilehash: ee57ccb82e771ee8ab93b09e476a94df32278069
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/01/2021
-ms.locfileid: "97845596"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99585103"
 ---
 # <a name="build-a-training-data-set-for-a-custom-model"></a>为自定义模型构建定型数据集
 
 使用窗体识别器自定义模型时，您可以向 [定型自定义模型](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync) 操作提供您自己的定型数据，以使该模型能够定型您特定于行业的窗体。 遵循本指南了解如何收集和准备数据以有效地训练模型。
 
-如果你是在没有手动标签的情况下定型，则可以使用五个填充窗体或空窗体 (必须在文件名中包含单词 "empty") 加上两种填充形式。 即使您具有足够的填充窗体，将空的窗体添加到定型数据集也可以提高模型的准确性。
+需要至少五个相同类型的已填充窗体。
 
-如果要使用手动标记的定型数据，则必须从至少五个相同类型的填充窗体开始。 除了所需的数据集之外，还可以使用未标记的窗体和空窗体。
+如果要使用手动标记的定型数据，则必须从至少五个相同类型的填充窗体开始。 除了所需的数据集之外，你还可以使用未标记的窗体。
 
 ## <a name="custom-model-input-requirements"></a>自定义模型输入要求
 

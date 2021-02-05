@@ -1,6 +1,6 @@
 ---
-title: 监视 Azure 机器学习数据引用 |Microsoft Docs
-description: 用于监视 Azure 机器学习的参考文档。 了解 & 在 Azure Monitor 中收集和可用的数据。
+title: 监视 Azure 机器学习数据引用 | Microsoft Docs
+description: 用于监视 Azure 机器学习的参考文档。 了解 Azure Monitor 中收集的和提供的数据和资源。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -8,13 +8,14 @@ ms.topic: reference
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
+ms.custom: subject-monitoring
 ms.date: 10/02/2020
-ms.openlocfilehash: d231de8e262194cd7dda2462a3f54d7d531eb63c
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 6da9c6775a6d5c96bc52183fefc3e5330272e9ff
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95542076"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99585120"
 ---
 # <a name="monitoring-azure-machine-learning-data-reference"></a>监视 Azure 机器学习数据引用
 
@@ -22,7 +23,7 @@ ms.locfileid: "95542076"
 
 ## <a name="metrics"></a>指标
 
-此部分列出了为 Azure 机器学习收集的所有自动收集的平台指标。 这些指标的资源提供程序是 [MachineLearningServices/工作区](../azure-monitor/platform/metrics-supported.md#microsoftmachinelearningservicesworkspaces)。
+本部分列出了为 Azure 机器学习自动收集的所有平台指标。 这些指标的资源提供程序是 [Microsoft.MachineLearningServices/workspaces](../azure-monitor/platform/metrics-supported.md#microsoftmachinelearningservicesworkspaces)。
 
 **Model**
 
@@ -73,23 +74,23 @@ ms.locfileid: "95542076"
 
 ## <a name="metric-dimensions"></a>指标维度
 
-有关指标维度的详细信息，请参阅 [多维指标](../azure-monitor/platform/data-platform-metrics.md#multi-dimensional-metrics)。
+有关指标维度定义的详细信息，请参阅[多维指标](../azure-monitor/platform/data-platform-metrics.md#multi-dimensional-metrics)。
 
-Azure 机器学习具有与度量值相关联的下列维度。
+Azure 机器学习具有以下与指标关联的维度。
 
 | 维度 | 说明 |
 | ---- | ---- |
-| 群集名称 | 计算群集资源的名称。 适用于所有配额指标。 |
+| 群集名称 | 计算群集资源的名称。 可用于所有配额指标。 |
 | VM 系列名称 | 群集使用的 VM 系列的名称。 可用于配额使用率百分比。 |
 | VM 优先级 | VM 的优先级。 可用于配额使用率百分比。
-| CreatedTime | 仅适用于 Cpu 利用率和 GpuUtilization。 |
+| CreatedTime | 仅适用于 CpuUtilization 和 GpuUtilization。 |
 | DeviceId | 设备 (GPU) 的 ID。 仅适用于 GpuUtilization。 |
-| NodeId | 作业运行时所在的已创建节点的 ID。 仅适用于 Cpu 利用率和 GpuUtilization。 |
-| RunId | 运行/作业的 ID。 仅适用于 Cpu 利用率和 GpuUtilization。 |
-| ComputeType | 运行时使用的计算类型。 仅可用于已完成的运行、失败的运行和已启动的运行。 |
-| PipelineStepType | 运行时使用的 [PipelineStep](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinestep?preserve-view=true&view=azure-ml-py) 类型。 仅可用于已完成的运行、失败的运行和已启动的运行。 |
-| PublishedPipelineId | 运行时使用的已发布管道的 ID。 仅可用于已完成的运行、失败的运行和已启动的运行。 |
-| RunType | 运行的类型。 仅可用于已完成的运行、失败的运行和已启动的运行。 |
+| NodeId | 作业运行时所在的已创建节点的 ID。 仅适用于 CpuUtilization 和 GpuUtilization。 |
+| RunId | 运行/作业的 ID。 仅适用于 CpuUtilization 和 GpuUtilization。 |
+| ComputeType | 运行时使用的计算类型。 仅适用于已完成的运行数、失败运行数和已启动的运行数。 |
+| PipelineStepType | 运行时使用的 [PipelineStep](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinestep?preserve-view=true&view=azure-ml-py) 类型。 仅适用于已完成的运行数、失败运行数和已启动的运行数。 |
+| PublishedPipelineId | 运行时使用的已发布管道的 ID。 仅适用于已完成的运行数、失败运行数和已启动的运行数。 |
+| RunType | 运行的类型。 仅适用于已完成的运行数、失败运行数和已启动的运行数。 |
 
 RunType 维度的有效值为：
 
@@ -102,21 +103,21 @@ RunType 维度的有效值为：
 
 ## <a name="activity-log"></a>活动日志
 
-下表列出了与可以在活动日志中创建 Azure 机器学习相关的操作。
+下表列出了可能在活动日志中创建的与 Azure 机器学习相关的操作。
 
-| 操作 | 说明 |
+| Operation | 说明 |
 |:---|:---|
 | 创建或更新机器学习工作区 | 已创建或更新工作区 |
-| CheckComputeNameAvailability | 检查计算名称是否已在使用中 |
-| 创建或更新计算资源 | 计算资源已创建或更新 |
-| 删除计算资源 | 计算资源已删除 |
-| 列出机密 | 机器学习工作区的操作列出的机密 |
+| 检查计算名称可用性 | 检查计算名称是否已在使用中 |
+| 创建或更新计算资源 | 已创建或更新计算资源 |
+| 删除计算资源 | 已删除计算资源 |
+| 列出机密 | 执行操作时列出的机器学习工作区的机密 |
 
 ## <a name="resource-logs"></a>资源日志
 
 本部分列出了可为 Azure 机器学习工作区收集的资源日志类型。
 
-资源提供程序和类型： [MachineLearningServices/工作区](../azure-monitor/platform/resource-logs-categories.md#microsoftmachinelearningservicesworkspaces)。
+资源提供程序和类型：[Microsoft.MachineLearningServices/workspace](../azure-monitor/platform/resource-logs-categories.md#microsoftmachinelearningservicesworkspaces).
 
 | 类别 | 显示名称 |
 | ----- | ----- |
@@ -128,7 +129,7 @@ RunType 维度的有效值为：
 
 ## <a name="schemas"></a>架构
 
-正在使用以下架构 Azure 机器学习
+Azure 机器学习正在使用以下架构
 
 ### <a name="amlcomputejobevents-table"></a>AmlComputeJobEvents 表
 
@@ -147,8 +148,8 @@ RunType 维度的有效值为：
 | ResourceGroupName | 资源组的名称 |
 | JobName | 作业的名称 |
 | ClusterId | 群集的 ID |
-| EventType | 作业事件的类型。 例如，JobSubmitted、JobRunning、JobFailed、JobSucceeded。 |
-| ExecutionState | 作业状态 (运行) 。 例如，已排队、正在运行、成功、失败 |
+| EventType | 作业事件的类型。 例如 JobSubmitted、JobRunning、JobFailed、JobSucceeded。 |
+| ExecutionState | 作业（运行）的状态。 例如已排队、正在运行、成功、失败 |
 | ErrorDetails | 作业错误的详细信息 |
 | CreationApiVersion | 用于创建作业的 Api 版本 |
 | ClusterResourceGroupName | 群集的资源组名称 |
@@ -214,7 +215,7 @@ RunType 维度的有效值为：
 | VmSize | 节点的 VM 大小 |
 | VmFamilyName | 节点所属的 VM 系列 |
 | VmPriority | 已创建的节点的优先级 Dedicated/LowPriority |
-| 发布者 | Vm 映像的发布者。 例如，microsoft dsvm |
+| 发布者 | VM 映像的发布者。 例如 microsoft-dsvm |
 | 产品/服务 | 与 VM 创建相关联的产品/服务 |
 | SKU | 已创建的节点/VM 的 SKU |
 | 版本 | 创建节点/VM 时使用的映像版本 |
@@ -228,7 +229,7 @@ RunType 维度的有效值为：
 | TotalE2ETimeInSeconds | 总时间节点处于活动状态 |
 
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 - 有关监视 Azure 机器学习的说明，请参阅[监视 Azure 机器学习](monitor-azure-machine-learning.md)。
 - 有关监视 Azure 资源的详细信息，请参阅[通过 Azure Monitor 监视 Azure 资源](../azure-monitor/insights/monitor-azure-resource.md)。

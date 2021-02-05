@@ -12,12 +12,12 @@ ms.date: 09/08/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 73fbda9a3356e2877617391430a7f2b555b1a0e5
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: ee9f374d110115b224c48853f26037dc461e5fa0
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98063478"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99583835"
 ---
 # <a name="use-microsoft-authenticator-or-intune-company-portal-on-xamarin-applications"></a>在 Xamarin 应用程序中使用 Microsoft Authenticator 或 Intune 公司门户
 
@@ -91,7 +91,7 @@ public override bool OpenUrl(UIApplication app, NSUrl url,
 
 ### <a name="step-4-set-uiviewcontroller"></a>步骤 4：设置 UIViewController()
 
-仍然是在 AppDelegate.cs 文件中，你需要设置一个对象窗口。 对于 Xamarin iOS，通常不需要设置对象窗口，但若要发送和接收中介的响应，则需要一个对象窗口。
+仍在 *AppDelegate.cs* 文件中，设置对象窗口。 对于 Xamarin iOS，通常不需要设置对象窗口，但若要发送和接收中介的响应，则需要一个对象窗口。
 
 若要设置对象窗口：
 
@@ -237,7 +237,7 @@ result = await app.AcquireTokenInteractive(scopes)
 
 ### <a name="step-4-add-a-redirect-uri-to-your-app-registration"></a>步骤 4：向应用注册中添加重定向 URI
 
-MSAL 使用 URL 调用中介，然后返回到你的应用。 若要完成该往返过程，需要使用 [Azure 门户](https://portal.azure.com)为应用注册一个 **重定向 URI**。
+MSAL 使用 URL 调用中介，然后返回到你的应用。 若要完成这种往返过程，请使用 [Azure 门户](https://portal.azure.com)注册应用程序的 **重定向 URI** 。
 
 应用程序的重定向 URI 的格式依赖于用于对 APK 进行签名的证书。 例如：
 

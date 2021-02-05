@@ -8,13 +8,13 @@ ms.topic: reference
 ms.date: 10/02/2020
 ms.author: normesta
 ms.subservice: logs
-ms.custom: monitoring
-ms.openlocfilehash: 16ae2f9e74202aff47e58a22dbe21a28d8280a7e
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.custom: subject-monitoring
+ms.openlocfilehash: 6dd53358b67eef481948d3349afc07086ea26fcd
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96780716"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584900"
 ---
 # <a name="azure-blob-storage-monitoring-data-reference"></a>Azure Blob 存储监视数据引用
 
@@ -176,4 +176,4 @@ Azure 存储支持对 Azure Monitor 中的指标使用以下维度。
 ## <a name="see-also"></a>另请参阅
 
 - 有关如何监视 Azure 存储的说明，请参阅[监视 Azure 存储](monitor-blob-storage.md)。
-- 有关监视 Azure 资源的详细信息，请参阅[使用 Azure Monitor 监视 Azure 资源](../../azure-monitor/insights/monitor-azure-resource.md)。
+- 有关监视 Azure 资源的详细信息，请参阅[通过 Azure Monitor 监视 Azure 资源](../../azure-monitor/insights/monitor-azure-resource.md)。

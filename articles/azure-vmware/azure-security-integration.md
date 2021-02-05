@@ -2,13 +2,13 @@
 title: 通过 Azure 安全中心集成保护 Azure VMware 解决方案 Vm
 description: 了解如何通过 azure 安全中心中的单个仪表板使用 Azure 的本机安全工具保护 Azure VMware 解决方案 Vm。
 ms.topic: how-to
-ms.date: 11/06/2020
-ms.openlocfilehash: 66270c5abef48f9d9f30ed1b262a6b4f2f8144c8
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.date: 02/04/2021
+ms.openlocfilehash: 58cfa1e8e7faa56675d966f86d3b390e52acec27
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99061458"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584951"
 ---
 # <a name="protect-your-azure-vmware-solution-vms-with-azure-security-center-integration"></a>通过 Azure 安全中心集成保护 Azure VMware 解决方案 Vm
 
@@ -36,7 +36,12 @@ Log Analytics 工作区收集日志后，可以使用 Azure 安全中心配置 L
 
 - Azure 本机服务可用于 Azure、Azure VMware 解决方案和本地服务中的混合环境安全性。
 - 使用 Log Analytics 工作区，你可以将数据或日志收集到一个点，并向不同的 Azure 本机服务提供相同的数据。
-- Azure 安全中心提供了安全功能，如文件完整性监视、fileless 攻击检测、操作系统修补程序评估、安全错误配置评估和 endpoint protection 评估。
+- Azure 安全中心提供了许多功能，包括：
+    - 文件完整性监视
+    - Fileless 攻击检测
+    - 操作系统修补程序评估 
+    - 安全配置错误评估
+    - 终结点保护评估
 - Azure Sentinel 使你能够：
     - 跨所有用户、设备、应用程序和基础结构，在本地和多个云中收集云规模的数据。
     - 检测以前未检测到的威胁。
@@ -183,7 +188,7 @@ Azure Sentinel 构建在 Log Analytics 工作区之上。 加入 Azure Sentinel 
 
 6. 在 " **事件设置** " 选项卡上，启用 "从此 **分析规则触发的警报创建事件** "，然后选择 " **下一步：自动响应 >**。
  
-    :::image type="content" source="media/azure-security-integration/create-new-analytic-rule-wizard.png" alt-text="用于在 Azure Sentinel 中创建新规则的分析规则向导屏幕截图，其中显示了 &quot;已启用此分析规则触发的警报的创建事件&quot;。":::
+    :::image type="content" source="media/azure-security-integration/create-new-analytic-rule-wizard.png" alt-text="用于在 Azure Sentinel 中创建新规则的分析规则向导的屏幕截图。显示 &quot;根据启用的此规则触发的警报创建事件&quot;。":::
 
 7. 选择 **下一步：查看 >**。
 
@@ -231,10 +236,12 @@ Azure Sentinel 构建在 Log Analytics 工作区之上。 加入 Azure Sentinel 
     - 输入映射
     - 策略
     
-3. 选择“创建”  。 然后，您可以选择创建的查询、 **运行查询** 并 **查看结果**。
+3. 选择“创建”。 然后，您可以选择创建的查询、 **运行查询** 并 **查看结果**。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解如何使用 [Azure Defender 仪表板](../security-center/azure-defender-dashboard.md)。
-- 了解 [Azure Defender](../security-center/azure-defender.md)提供的全部保护。
-- 了解 [Azure Sentinel 中的高级多阶段攻击检测](../azure-monitor/learn/quick-create-workspace.md)。
+现在，你已介绍了如何保护 Azure VMware 解决方案 Vm，你可能想要了解：
+
+- 使用 [Azure Defender 仪表板](../security-center/azure-defender-dashboard.md)。
+- [Azure Sentinel 中的高级多阶段攻击检测](../azure-monitor/learn/quick-create-workspace.md)。
+- [Azure VMware 解决方案 vm 的生命周期管理](lifecycle-management-of-azure-vmware-solution-vms.md)。

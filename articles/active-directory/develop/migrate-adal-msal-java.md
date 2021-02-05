@@ -14,12 +14,12 @@ ms.date: 11/04/2019
 ms.author: sagonzal
 ms.reviewer: nacanuma, twhitney
 ms.custom: aaddev, devx-track-java
-ms.openlocfilehash: 1d1512447b5d0474f8fabe92dbc7a36259f4618c
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 620f77655f8281919ba0831a7e53af8cd28bc5f2
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98754977"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99583987"
 ---
 # <a name="adal-to-msal-migration-guide-for-java"></a>适用于 Java 的 ADAL 到 MSAL 迁移指南
 
@@ -80,7 +80,7 @@ MSAL for Java 添加了[令牌缓存](msal-acquire-cache-tokens.md)，在可能�
 
 在 v1.0 中，如果你使用 `https://login.microsoftonline.com/common` 颁发机构，则用户可以使用任何 Azure Active Directory (AAD) 帐户（适用于任何组织）登录。
 
-如果你使用的是 v2.0 `https://login.microsoftonline.com/common` 中的权限，则用户可以使用任何 AAD 组织，甚至 Microsoft 个人帐户 (MSA) 登录。 在 MSAL for Java 中，若要限制登录到任何 AAD 帐户，则需要使用 `https://login.microsoftonline.com/organizations` 颁发机构（与 ADAL4J 中的行为相同）。 若要指定颁发机构，请在创建 `PublicClientApplication` 类时，在 [PublicClientApplication.Builder](https://javadoc.io/doc/com.microsoft.azure/msal4j/1.0.0/com/microsoft/aad/msal4j/PublicClientApplication.Builder.html) 方法中设置 `authority` 参数。
+如果你使用的是 v2.0 `https://login.microsoftonline.com/common` 中的权限，则用户可以使用任何 AAD 组织，甚至 Microsoft 个人帐户 (MSA) 登录。 在适用于 Java 的 MSAL 中，如果要将登录限制为任何 AAD 帐户，请使用 `https://login.microsoftonline.com/organizations` 与 ADAL4J) 相同的行为 (。 若要指定颁发机构，请在创建 `PublicClientApplication` 类时，在 [PublicClientApplication.Builder](https://javadoc.io/doc/com.microsoft.azure/msal4j/1.0.0/com/microsoft/aad/msal4j/PublicClientApplication.Builder.html) 方法中设置 `authority` 参数。
 
 ## <a name="v10-and-v20-tokens"></a>v1.0 和 v2.0 令牌
 

@@ -8,13 +8,14 @@ ms.topic: conceptual
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
+ms.custom: subject-monitoring
 ms.date: 10/01/2020
-ms.openlocfilehash: 183d8b415ccb35d22dcc23ccf11d0707ad0778dd
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: c9b7230ca734bba1527ec5ecd975e1bae141a9b4
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97963649"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584679"
 ---
 # <a name="monitor-azure-machine-learning"></a>监视 Azure 机器学习
 
@@ -92,7 +93,7 @@ Azure 机器学习的所有指标都位于命名空间 **机器学习服务工�
 若要参考，可以查看 [Azure Monitor 中所有受支持的资源指标](../azure-monitor/platform/metrics-supported.md)列表。
 
 > [!TIP]
-> Azure Monitor 度量值数据可达90天。 但是，在创建图表时，只能可视化30天。 例如，如果想要将90天的时间显示为 30 90 天，则必须将其分成三个图表，每30天。
+> Azure Monitor 指标数据有效期为 90 天。 但在创建图表时，只直观显示 30 天的数据。 例如，如果想要直观显示 90 天的数据，必须将它拆分成 90 天内包含 30 天的数据的三个图表。
 ### <a name="filtering-and-splitting"></a>筛选和拆分
 
 对于支持维度的指标，应用筛选器时可以使用维度值。 例如，筛选“群集名称”为 `cpu-cluster` 的“活动核心”。 

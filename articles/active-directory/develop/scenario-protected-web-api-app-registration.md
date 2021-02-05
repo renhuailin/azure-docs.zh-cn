@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: c3d9cd5e710eb263707e87c4afe0f08809b8d50c
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 5d93df0b6d59e013c22e138942ab4651784421ae
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756457"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584374"
 ---
 # <a name="protected-web-api-app-registration"></a>受保护的 Web API：应用注册
 
@@ -58,7 +58,7 @@ Web API 不需注册重定向 URI，因为没有任何用户以交互方式登�
 
 范围通常采用 `resourceURI/scopeName` 格式。 对于 Microsoft Graph，范围具有快捷方式。 例如，`User.Read` 是 `https://graph.microsoft.com/user.read` 的快捷方式。
 
-在应用注册过程中，需定义以下参数：
+在应用注册过程中，定义以下参数：
 
 - 资源 URI
 - 一个或多个范围
@@ -68,7 +68,7 @@ Web API 不需注册重定向 URI，因为没有任何用户以交互方式登�
 
 对于客户端应用程序，范围将显示为委托的权限，应用角色将显示为 Web API 的应用程序权限。 
 
-范围还会出现在向应用用户显示的许可窗口中。 因此，需要提供用于描述范围的相应字符串：
+范围还会出现在向应用用户显示的许可窗口中。 因此，请提供描述范围的相应字符串：
 
 - 用户看到的内容。
 - 可授予管理员许可的租户管理员看到的内容。
@@ -99,7 +99,7 @@ Web API 不需注册重定向 URI，因为没有任何用户以交互方式登�
 
 #### <a name="exposing-application-permissions-app-roles"></a>公开应用程序权限（应用角色）
 
-若要公开应用程序权限，需要编辑清单。
+若要公开应用程序权限，请编辑清单。
 
 1. 在应用程序的应用程序注册中选择“清单”。
 1. 若要编辑清单，请找到 `appRoles` 设置并添加应用程序角色。 以下示例 JSON 块中提供了角色定义。

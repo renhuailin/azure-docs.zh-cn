@@ -13,12 +13,12 @@ ms.date: 11/22/2019
 ms.author: negoe
 ms.reviewer: marsma, nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 2f9396e20ae0f426dddd57b32297cfe98e135c44
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: 01a69dbf9230154b74145f932b678d6bbebbde08
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99225810"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99583953"
 ---
 # <a name="use-msal-in-a-national-cloud-environment"></a>在国家/地区云环境中使用 MSAL
 
@@ -40,7 +40,7 @@ ms.locfileid: "99225810"
 
 ### <a name="choose-the-appropriate-identities"></a>选择适当的标识
 
-[Azure 政府](../../azure-government/index.yml) 版应用程序可使用 Azure AD 政府标识，Azure AD 公共标识对用户进行身份验证。 由于可以使用任何这些标识，因此需要决定应为方案选择哪个颁发机构终结点：
+[Azure 政府](../../azure-government/index.yml) 版应用程序可使用 Azure AD 政府标识，Azure AD 公共标识对用户进行身份验证。 因为你可以使用任何这些标识，所以应决定应为方案选择哪个颁发机构终结点：
 
 - Azure AD 公有：如果你的组织已有 Azure AD 公有租户支持 Microsoft 365 (公共或 GCC) 或其他应用程序，则通常使用此操作。
 - Azure AD 政府：如果你的组织已有 Azure AD 政府租户支持 Office 365 (GCC 高或 DoD) 或正在 Azure AD 政府创建新租户，则通常使用此项。

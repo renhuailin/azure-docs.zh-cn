@@ -9,12 +9,12 @@ ms.subservice: monitoring
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: mahi
-ms.openlocfilehash: 2f9fa6e7ef9a7ee8ea7dd2a09622f26f6fd9739e
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 00407b4a55b3c074fa77d4c3664f6e218c23fe21
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98223119"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584496"
 ---
 # <a name="use-synapse-studio-to-monitor-your-apache-spark-applications"></a>使用 Synapse Studio 监视 Apache Spark 应用程序
 
@@ -155,6 +155,26 @@ ms.locfileid: "98223119"
 6. 检查错误信息。
 
    ![失败的作业信息](./media/how-to-monitor-spark-applications/failed-job-info.png)
+
+## <a name="compare-apache-spark-applications"></a>比较 Apache Spark 应用程序
+单击 " **比较应用程序** " 按钮并选择用于比较性能的应用程序，用户可以直观地了解两个应用程序之间的差异。
+
+![比较应用程序](./media/how-to-monitor-spark-applications/compare-applications.png)
+
+1. 使用鼠标将鼠标悬停在应用程序上，然后显示 " **比较应用程序** " 图标。
+
+2. 单击 " **比较应用程序** " 图标，随即弹出 "比较应用程序" 页。
+
+3. 单击 " **选择应用程序** " 按钮打开 " **选择比较应用程序** " 页。
+
+4. 选择比较应用程序时，用户需要输入应用程序 URL，或从定期列表中进行选择。 然后单击 **"确定"** 按钮。 
+
+   ![选择比较应用程序](./media/how-to-monitor-spark-applications/choose-comparison-application.png)
+
+5. 比较结果将显示在 "比较应用程序" 页上。
+
+   ![比较结果](./media/how-to-monitor-spark-applications/comparison-result.png)
+
 
 ## <a name="next-steps"></a>后续步骤
 

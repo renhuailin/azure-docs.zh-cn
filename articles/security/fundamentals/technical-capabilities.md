@@ -2,20 +2,21 @@
 title: Azure 中的安全技术功能-Microsoft Azure
 description: 本文介绍了 Azure 中的安全服务，这些服务可帮助保护云中的数据、资源和应用程序。
 services: security
-author: terrylanfear
+author: TerryLanfear
+manager: rkarlin
 ms.assetid: ''
 ms.service: security
 ms.subservice: security-fundamentals
 ms.devlang: na
 ms.topic: article
-ms.date: 07/13/2020
+ms.date: 02/04/2021
 ms.author: terrylan
-ms.openlocfilehash: 353b1708a1c6014f9108ad2be62f22c1e0b0604c
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 6e0642a2124d58bb3af483313ac824568b6bbb39
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99092762"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99585137"
 ---
 # <a name="azure-security-technical-capabilities"></a>Azure 安全技术功能
 本文介绍了 Azure 中的安全服务，这些服务可帮助保护云中的数据、资源和应用程序，并满足业务的安全需求。
@@ -431,20 +432,6 @@ Azure 操作安全性建立在一个框架上，该框架融合了通过 Microso
 > [!Note]
 > Resource Manager 提供了一种新方法来部署和管理解决方案。 如果使用早期的部署模型并想了解这些更改，请参阅[了解 Resource Manager 部署和经典部署](../../azure-resource-manager/management/deployment-models.md)。
 
-## <a name="next-steps"></a>后续步骤
+## <a name="next-step"></a>后续步骤
 
-阅读一些深度安全性主题，了解有关安全性的更多信息：
-
-- [审核和日志记录](https://www.microsoft.com/en-us/trustcenter/security/auditingandlogging)
-
-- [网络犯罪](https://www.microsoft.com/en-us/trustcenter/security/cybercrime)
-
-- [设计和运营安全性](https://www.microsoft.com/en-us/trustcenter/security/designopsecurity)
-
-- [加密](https://www.microsoft.com/en-us/trustcenter/security/encryption)
-
-- [标识和访问管理](https://www.microsoft.com/en-us/trustcenter/security/identity)
-
-- [网络安全](https://www.microsoft.com/en-us/trustcenter/security/networksecurity)
-
-- [威胁管理](https://www.microsoft.com/en-us/trustcenter/security/threatmanagement)
+[Azure 安全基准](../benchmarks/introduction.md)计划包括一系列安全建议，可用于帮助保护在 Azure 中使用的服务。

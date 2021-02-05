@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 38115f18d9b35545912fad97767f38fd3827d626
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 8c740e2868d2cd2033bc896f9b6ca897b38e922f
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99559984"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584815"
 ---
 # <a name="azure-resources-for-qna-maker"></a>适用于 QnA Maker 的 Azure 资源
 
@@ -134,6 +134,94 @@ QnA Maker 托管是一项免费服务，吞吐量当前每秒上限为10个事�
 
 ---
 
+## <a name="keys-in-qna-maker"></a>QnA Maker 中的密钥
+
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA（稳定版本）](#tab/v1)
+
+QnA Maker 服务处理两种类型的密钥： **创作密钥** 和用于在应用服务中托管的运行时的 **查询终结点密钥** 。
+
+通过 Api 向服务发出请求时使用这些密钥。
+
+![密钥管理](../media/qnamaker-how-to-key-management/key-management.png)
+
+|名称|位置|目的|
+|--|--|--|
+|创作/订阅密钥|[Azure 门户](https://azure.microsoft.com/free/cognitive-services/)|这些密钥用来访问 [QnA Maker 管理服务 API](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase)。 通过这些 Api，您可以编辑知识库中的问题和解答，并发布您的知识库。 这些密钥是在创建新的 QnA Maker 服务时创建的。<br><br>在 "**密钥**" 页上的 "**认知服务**" 资源上查找这些密钥。|
+|查询终结点密钥|[QnA Maker 门户](https://www.qnamaker.ai)|这些键用于查询已发布的知识库终结点，以获取用户问题的响应。 通常在聊天机器人中或连接到 QnA Maker 服务的客户端应用程序代码中使用此查询终结点。 这些密钥是在您发布 QnA Maker 知识库时创建的。<br><br>在 " **服务设置** " 页中查找这些密钥。 在下拉菜单上页面右上角的用户菜单中找到此页。|
+
+### <a name="find-authoring-keys-in-the-azure-portal"></a>在 Azure 门户中查找创作密钥
+
+你可以从创建 QnA Maker 资源的 Azure 门户查看和重置创作密钥。 这些密钥可能称为订阅密钥。
+
+1. 中转到 Azure 门户中的 QnA Maker 资源，并选择具有 _认知服务_ 类型的资源：
+
+    ![QnA Maker 资源列表](../media/qnamaker-how-to-key-management/qnamaker-resource-list.png)
+
+2. 中转到 **密钥**：
+
+    ![订阅密钥](../media/qnamaker-how-to-key-management/subscription-key.PNG)
+
+### <a name="find-query-endpoint-keys-in-the-qna-maker-portal"></a>在 QnA Maker 门户中查找查询终结点密钥
+
+终结点与资源位于同一区域，因为终结点键用于调用知识库。
+
+可以从 [QnA Maker 门户](https://qnamaker.ai)管理终结点密钥。
+
+1. 登录到 [QnA Maker 门户](https://qnamaker.ai)，中转到你的配置文件，然后选择 " **服务设置**"：
+
+    ![终结点密钥](../media/qnamaker-how-to-key-management/Endpoint-keys.png)
+
+2. 查看或重置密钥：
+
+    > [!div class="mx-imgBorder"]
+    > ![终结点密钥管理器](../media/qnamaker-how-to-key-management/Endpoint-keys1.png)
+
+    >[!NOTE]
+    >如果你认为密钥已泄露，请刷新你的密钥。 这可能需要相应地更改客户端应用程序或机器人代码。
+
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/v2)
+
+QnA Maker 托管 (预览版) 服务处理两种密钥： **创作密钥** 和 **Azure 认知搜索密钥** ，用于访问客户订阅中的服务。
+
+通过 Api 向服务发出请求时使用这些密钥。
+
+![密钥管理托管预览版](../media/qnamaker-how-to-key-management/qnamaker-v2-key-management.png)
+
+|名称|位置|目的|
+|--|--|--|
+|创作/订阅密钥|[Azure 门户](https://azure.microsoft.com/free/cognitive-services/)|这些密钥用来访问 [QnA Maker 管理服务 API](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase)。 通过这些 Api，您可以编辑知识库中的问题和解答，并发布您的知识库。 这些密钥是在创建新的 QnA Maker 服务时创建的。<br><br>在 "**密钥**" 页上的 "**认知服务**" 资源上查找这些密钥。|
+|Azure 认知搜索管理密钥|[Azure 门户](../../../search/search-security-api-keys.md)|这些密钥用于与在用户的 Azure 订阅中部署的 Azure 认知搜索服务通信。 将 Azure 认知搜索与 QnA Maker 托管 (预览版) 服务相关联时，管理密钥会自动传递到 QnA Maker 服务。 <br><br>可以在 "**密钥**" 页上的 " **Azure 认知搜索** 资源上找到这些密钥。|
+
+### <a name="find-authoring-keys-in-the-azure-portal"></a>在 Azure 门户中查找创作密钥
+
+你可以从 Azure 门户中查看和重置创作密钥，你可以在其中创建 QnA Maker 托管 (预览版) 资源。 这些密钥可能称为订阅密钥。
+
+1. 请在 Azure 门户中中转到 QnA Maker 托管 (预览版) 资源，并选择具有 *认知服务* 类型的资源：
+
+    ![QnA Maker 托管 (预览版) 资源列表](../media/qnamaker-how-to-key-management/qnamaker-v2-resource-list.png)
+
+2. 中转到 **密钥和终结点**：
+
+    ![QnA Maker 托管 (预览版) 订阅密钥](../media/qnamaker-how-to-key-management/subscription-key-v2.png)
+
+### <a name="update-the-resources"></a>更新资源
+
+了解如何升级知识库使用的资源。 QnA Maker 托管 () 预览版，请在预览阶段 **免费** 。 
+
+---
+
+## <a name="management-service-region"></a>管理服务区域
+
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA（稳定版本）](#tab/v1)
+
+QnA Maker 的管理服务仅用于 QnA Maker 门户和初始数据处理。 此服务仅在 **美国西部** 区域提供。 此美国西部服务中未存储任何客户数据。
+
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/v2)
+
+在 QnA Maker 托管 (预览版中) 管理和预测服务共同位于同一区域中。 目前 QnA Maker 托管 (预览版) 在 **美国中南部、北欧和澳大利亚东部** 提供。
+
+---
+
 ## <a name="resource-naming-considerations"></a>资源命名注意事项
 
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA（稳定版本）](#tab/v1)
@@ -224,31 +312,6 @@ QnA Maker 创建多个 Azure 资源。 若要减少成本共享的管理和权�
 
 了解 [如何将 QnA Maker 配置](../How-To/set-up-qnamaker-service-azure.md#configure-qna-maker-to-use-different-cognitive-search-resource) 为使用不同的认知服务资源，而不是创建 QnA Maker 资源创建过程的一部分。
 
-## <a name="management-service-region"></a>管理服务区域
-
-QnA Maker 的管理服务仅用于 QnA Maker 门户和初始数据处理。 此服务仅在 **美国西部** 区域提供。 此美国西部服务中未存储任何客户数据。
-
-## <a name="keys-in-qna-maker"></a>QnA Maker 中的密钥
-
-QnA Maker 服务处理两种类型的密钥： **创作密钥** 和用于在应用服务中托管的运行时的 **查询终结点密钥** 。
-
-通过 Api 向服务发出请求时使用这些密钥。
-
-![密钥管理](../media/qnamaker-how-to-key-management/key-management.png)
-
-|名称|位置|目的|
-|--|--|--|
-|创作/订阅密钥|[Azure 门户](https://azure.microsoft.com/free/cognitive-services/)|这些密钥用来访问 [QnA Maker 管理服务 API](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase)。 通过这些 Api，您可以编辑知识库中的问题和解答，并发布您的知识库。 这些密钥是在创建新的 QnA Maker 服务时创建的。<br><br>在 "**密钥**" 页上的 "**认知服务**" 资源上查找这些密钥。|
-|查询终结点密钥|[QnA Maker 门户](https://www.qnamaker.ai)|这些键用于查询已发布的知识库终结点，以获取用户问题的响应。 通常在聊天机器人中或连接到 QnA Maker 服务的客户端应用程序代码中使用此查询终结点。 这些密钥是在您发布 QnA Maker 知识库时创建的。<br><br>在 " **服务设置** " 页中查找这些密钥。 在下拉菜单上页面右上角的用户菜单中找到此页。|
-
-### <a name="recommended-settings-for-network-isolation"></a>用于网络隔离的推荐设置
-
-* 通过 [配置虚拟网络](../../cognitive-services-virtual-networks.md?tabs=portal)来保护认知服务资源免受公共访问。
-* 从公共访问中保护应用服务 (QnA 运行时) ：
-    * 仅允许来自认知服务 Ip 的流量。 服务标记 "CognitiveServicesManagement" 中已包含这些项。 这对于创作 Api (创建/更新 KB) ，以相应地调用应用服务和更新 Azure 搜索服务是必需的。
-    * 确保还允许使用其他入口点（如机器人服务） QnA Maker 门户 (可以是你的公司网络) 等。
-    * 查看 [有关服务标记的详细信息。](../../../virtual-network/service-tags-overview.md)
-
 # <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/v2)
 
 QnA Maker 管理的 (预览版) 资源的资源名称 `qna-westus-f0-b` 也用于命名其他资源。
@@ -294,27 +357,6 @@ QnA Maker 管理的 (预览版) 资源的资源名称 `qna-westus-f0-b` 也用�
 ### <a name="qna-maker-resource"></a>QnA Maker 资源
 
 QnA Maker 托管的 (预览版) 资源提供对创作和发布 Api 的访问，承载排名运行时以及提供遥测。
-
-## <a name="region-support"></a>区域支持
-
-在 QnA Maker 托管 (预览版中) 管理和预测服务共同位于同一区域中。 目前 QnA Maker 托管 (预览版) 在 **美国中南部、北欧和澳大利亚东部** 提供。
-
-### <a name="keys-in-qna-maker-managed-preview"></a>QnA Maker 托管 (预览版中的密钥) 
-
-QnA Maker 托管 (预览版) 服务处理两种密钥： **创作密钥** 和 **Azure 认知搜索密钥** ，用于访问客户订阅中的服务。
-
-通过 Api 向服务发出请求时使用这些密钥。
-
-![密钥管理托管预览版](../media/qnamaker-how-to-key-management/qnamaker-v2-key-management.png)
-
-|名称|位置|目的|
-|--|--|--|
-|创作/订阅密钥|[Azure 门户](https://azure.microsoft.com/free/cognitive-services/)|这些密钥用来访问 [QnA Maker 管理服务 API](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase)。 通过这些 Api，您可以编辑知识库中的问题和解答，并发布您的知识库。 这些密钥是在创建新的 QnA Maker 服务时创建的。<br><br>在 "**密钥**" 页上的 "**认知服务**" 资源上查找这些密钥。|
-|Azure 认知搜索管理密钥|[Azure 门户](../../../search/search-security-api-keys.md)|这些密钥用于与在用户的 Azure 订阅中部署的 Azure 认知搜索服务通信。 将 Azure 认知搜索与 QnA Maker 托管 (预览版) 服务相关联时，管理密钥会自动传递到 QnA Maker 服务。 <br><br>可以在 "**密钥**" 页上的 " **Azure 认知搜索** 资源上找到这些密钥。|
-
-### <a name="recommended-settings-for-network-isolation"></a>用于网络隔离的推荐设置 
-
-通过 [配置虚拟网络](../../cognitive-services-virtual-networks.md?tabs=portal)来保护认知服务资源免受公共访问。
 
 ---
 

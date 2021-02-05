@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 1fd4279cd35e54e2e04f88973c4a825218a75142
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 4cd762d6c264d95ecb1bd0f3f4c3a4d96eb5a57d
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131113"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99585086"
 ---
 # <a name="form-recognizer-prebuilt-business-cards-model"></a>表单识别器预生成的名片模型 
 
@@ -34,8 +34,8 @@ Azure 窗体识别器可以使用其预建的名片模型来分析和提取名�
 |名称| 类型 | 说明 | 文本 | 
 |:-----|:----|:----|:----|
 | ContactNames | 对象数组 | 从名片提取的联系人姓名 | [{"FirstName"： "John"，"LastName"： "Doe"}] |
-| FirstName | 字符串 | 第一个 (给定) 联系人姓名 | "John" | 
-| LastName | 字符串 | 上次 (家庭) 联系人姓名 |   "Doe" | 
+| FirstName | string | 第一个 (给定) 联系人姓名 | "John" | 
+| LastName | string | 上次 (家庭) 联系人姓名 |     "Doe" | 
 | CompanyNames | 字符串数组 | 从名片提取的公司名称 | ["Contoso"] | 
 | Departments | 字符串数组 | 联系人的部门或组织 | ["R&D"] | 
 | JobTitles | 字符串数组 | 联系人职务 | ["软件工程师"] | 
@@ -45,7 +45,7 @@ Azure 窗体识别器可以使用其预建的名片模型来分析和提取名�
 | MobilePhones | 电话号码的数组 | 从名片提取的移动电话号码 | ["+ 19876543210"] |
 | 传真 | 电话号码的数组 | 从名片提取的传真电话号码 | ["+ 19876543211"] |
 | WorkPhones | 电话号码的数组 | 从名片提取的工作电话号码 | ["+ 19876543231"] |
-| OtherPhones    | 电话号码的数组 | 从名片中提取的其他电话号码 | ["+ 19876543233"] |
+| OtherPhones     | 电话号码的数组 | 从名片中提取的其他电话号码 | ["+ 19876543233"] |
 
 
 名片 API 还可以从名片返回所有已识别的文本。 此 OCR 输出包含在 JSON 响应中。  
@@ -68,7 +68,7 @@ Azure 窗体识别器可以使用其预建的名片模型来分析和提取名�
 
 |字段| 类型 | 可能值 |
 |:-----|:----:|:----|
-|status | 字符串 | notStarted：分析操作尚未开始。<br /><br />正在运行：分析操作正在进行。<br /><br />失败：分析操作失败。<br /><br />succeeded：分析操作成功。|
+|status | string | notStarted：分析操作尚未开始。<br /><br />正在运行：分析操作正在进行。<br /><br />失败：分析操作失败。<br /><br />succeeded：分析操作成功。|
 
 当 " **状态** " 字段的值为 " **成功** " 时，如果请求，JSON 响应将包括业务卡理解和可选的文本识别结果。 业务卡理解结果被组织为命名字段值的字典，其中每个值都包含提取的文本、规范化值、边界框、置信度和对应的单词元素。 文本识别结果组织为带有文本、边界框和置信度信息的线条和单词的层次结构。
 

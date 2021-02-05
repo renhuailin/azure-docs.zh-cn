@@ -13,12 +13,12 @@ ms.date: 01/11/2021
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 5b3f7f8016d9b5da70d76322aead551613b8d9c3
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 2687141ea870b0af0a4405ebef2261c5a303c767
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99090215"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584106"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Microsoft 标识平台和 OAuth 2.0 授权代码流
 
@@ -44,7 +44,7 @@ OAuth 2.0 授权代码授予可用于设备上所安装的应用，以访问受�
 
 `access to XMLHttpRequest at 'https://login.microsoftonline.com/common/v2.0/oauth2/token' from origin 'yourApp.com' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.`
 
-则需要访问应用注册，并更新应用的重定向 URI 以键入 `spa`。
+然后，访问应用注册，并更新应用的重定向 URI 以键入 `spa` 。
 
 ## <a name="request-an-authorization-code"></a>请求授权代码
 
@@ -159,9 +159,9 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 | 已更新参数 | 必需/可选 | 说明 |
 |---------------|-------------|--------------|
-|`response_type`| 必需 | 添加 `id_token` 会向服务器指示应用程序在终结点响应中需要 ID 令牌 `/authorize` 。  |
-|`scope`| 必需 | 对于 ID 令牌，必须将其更新为包含 ID 标记范围- `openid` ，以及（可选） `profile` `email` 。 |
-|`nonce`| 必需|     包含在请求中的值，由应用生成，这些值将作为声明包含在生成的 id_token 中。 然后，应用可以验证此值，以减少令牌重播攻击。 该值通常是随机的唯一字符串，可用于标识请求的来源。 |
+|`response_type`| 必须 | 添加 `id_token` 会向服务器指示应用程序在终结点响应中需要 ID 令牌 `/authorize` 。  |
+|`scope`| 必须 | 对于 ID 令牌，必须将其更新为包含 ID 标记范围- `openid` ，以及（可选） `profile` `email` 。 |
+|`nonce`| 必须|     包含在请求中的值，由应用生成，这些值将作为声明包含在生成的 id_token 中。 然后，应用可以验证此值，以减少令牌重播攻击。 该值通常是随机的唯一字符串，可用于标识请求的来源。 |
 |`response_mode`| 建议 | 指定将生成的令牌送回到应用程序时应该使用的方法。 `query`对于授权代码，默认为，但 `fragment` 如果请求包含 id_token `response_type` 。|
 
 使用 `fragment` 作为响应模式可能会导致从重定向读取代码的 web 应用程序出现问题，因为浏览器不会将该片段传递到 web 服务器。  在这些情况下，建议应用使用 `form_post` 响应模式，以确保将所有数据发送到服务器。 

@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 07/27/2020
-ms.openlocfilehash: 9abf5a17330566aee2414b8499f228d297880cbf
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 39bdf9cb0c97e19a67b23046c6f06b60daa30147
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323796"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584934"
 ---
 # <a name="evaluate-model-module"></a>“评估模型”模块
 
@@ -42,7 +42,7 @@ ms.locfileid: "93323796"
 
     > [!IMPORTANT]
     > + 若要计算结果，输出数据集应包含符合评估模型模块要求的特定分数列名称。
-    > + `Labels`该列将被视为实际标签。
+    > + `Labels` 列会被视为实际标签。
     > + 对于回归任务，要计算的数据集必须设一个列，名为 `Regression Scored Labels`，表示评分标签。
     > + 对于二进制分类任务，要计算的数据集必须具有两列，名为 `Binary Class Scored Labels`、`Binary Class Scored Probabilities`，分别表示评分标签和概率。
     > + 对于多分类任务，要计算的数据集必须设一个列，名为 `Multi Class Scored Labels`，表示评分标签。
@@ -94,7 +94,7 @@ ms.locfileid: "93323796"
   
 -   “F1 分数”计算为查准率与查全率的加权平均值，介于 0 到 1 之间，理想的 F1 分数值为 1。  
   
--   “AUC”度量绘制的曲线下面的面积（在 y 轴上绘制真报率，在 x 轴上绘制误报率）。 此指标非常有用，因为它提供单个数字让你比较不同类型的模型。  
+-   “AUC”度量绘制的曲线下面的面积（在 y 轴上绘制真报率，在 x 轴上绘制误报率）。 此指标非常有用，因为它提供单个数字让你比较不同类型的模型。 AUC 是分类阈值固定的。 它会衡量模型预测的质量，而不考虑所选的分类阈值。
 
 
 ### <a name="metrics-for-regression-models"></a>回归模型的指标

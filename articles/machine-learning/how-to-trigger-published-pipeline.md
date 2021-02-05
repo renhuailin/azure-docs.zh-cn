@@ -7,19 +7,19 @@ ms.service: machine-learning
 ms.subservice: core
 ms.author: laobri
 author: lobrien
-ms.date: 12/16/2020
+ms.date: 01/29/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: a006dfd4f78f90ed323e5780b173cffb6daeac4a
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 56a3183e259a0b1c661dfe84d5e47c4c221e5d48
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881731"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584850"
 ---
-# <a name="trigger-machine-learning-pipelines-with-azure-machine-learning-sdk-for-python"></a>通过适用于 Python 的 Azure 机器学习 SDK 来触发机器学习管道
+# <a name="trigger-machine-learning-pipelines"></a>触发机器学习管道
 
-本文介绍如何以编程方式计划管道，使其在 Azure 上运行。 可以选择创建基于运行时间或文件系统更改的计划。 基于时间的计划可用于处理例行任务，如监视数据偏移。 基于更改的计划可用于响应非常规或无法预测的更改，例如上传新数据或编辑旧数据。 了解如何创建计划后，你将了解如何检索和停用它们。 最后，你将了解如何使用 Azure 逻辑应用来创建更复杂的触发逻辑或行为。
+本文介绍如何以编程方式计划管道，使其在 Azure 上运行。 你可以基于运行时间或文件系统更改创建计划。 基于时间的计划可用于处理例行任务，如监视数据偏移。 基于更改的计划可用于响应非常规或无法预测的更改，例如上传新数据或编辑旧数据。 了解如何创建计划后，你将了解如何检索和停用它们。 最后，你将了解如何使用其他 Azure 服务、Azure 逻辑应用和 Azure 数据工厂来运行管道。 Azure 逻辑应用允许使用更复杂的触发逻辑或行为。 使用 Azure 数据工厂管道可以将机器学习管道作为较大数据业务流程管道的一部分进行调用。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -29,7 +29,7 @@ ms.locfileid: "98881731"
 
 * 包含已发布管道的机器学习工作区。 可以使用[使用 Azure 机器学习 SDK 创建和运行机器学习管道](./how-to-create-machine-learning-pipelines.md)中提供的工作区。
 
-## <a name="initialize-the-workspace--get-data"></a>初始化工作区并获取数据
+## <a name="trigger-pipelines-with-azure-machine-learning-sdk-for-python"></a>利用适用于 Python 的 Azure 机器学习 SDK 触发管道
 
 若要计划管道，需要引用工作区、已发布管道的标识符以及要在其中创建计划的试验的名称。 可通过以下代码获取这些值：
 
@@ -81,7 +81,7 @@ recurring_schedule = Schedule.create(ws, name="MyRecurringSchedule",
 
 ### <a name="create-a-change-based-schedule"></a>创建基于更改的计划
 
-由文件更改触发的管道可能比基于时间的计划更有效。 例如，你可能需要在文件更改时或者在将新文件添加到数据目录时执行预处理步骤。 可以监视对数据存储的任何更改，或监视数据存储中特定目录中的更改。 如果监视特定目录，该目录的子目录中的更改将不会触发运行。
+由文件更改触发的管道可能比基于时间的计划更有效。 如果要在文件更改前执行操作，或者在将新文件添加到数据目录时执行操作，则可以预处理该文件。 可以监视对数据存储的任何更改，或监视数据存储中特定目录中的更改。 如果监视特定目录，该目录的子目录中的更改将不会触发运行。
 
 若要创建响应文件的 `Schedule`，必须在对 [Schedule.create](/python/api/azureml-pipeline-core/azureml.pipeline.core.schedule.schedule?preserve-view=true&view=azure-ml-py#&preserve-view=truecreate-workspace--name--pipeline-id--experiment-name--recurrence-none--description-none--pipeline-parameters-none--wait-for-provisioning-false--wait-timeout-3600--datastore-none--polling-interval-5--data-path-parameter-name-none--continue-on-step-failure-none--path-on-datastore-none---workflow-provider-none---service-endpoint-none-) 的调用中设置 `datastore` 参数。 若要监视文件夹，请设置 `path_on_datastore` 参数。
 
@@ -104,7 +104,7 @@ reactive_schedule = Schedule.create(ws, name="MyReactiveSchedule", description="
 
 在 Web 浏览器中，导航到 Azure 机器学习。 在导航面板的“终结点”部分中，选择“管道终结点” 。 将转到已在工作区中发布的管道的列表。
 
-![AML 的“管道”页](./media/how-to-trigger-published-pipeline/scheduled-pipelines.png)
+:::image type="content" source="./media/how-to-trigger-published-pipeline/scheduled-pipelines.png" alt-text="AML 的“管道”页":::
 
 在此页中，可以看到工作区中所有的管道摘要信息，包括名称、说明、状态等。 单击管道可深入了解其信息。 在由此打开的页面上，显示了有关该管道的更多详细信息，可以向下钻取到单次运行。
 
@@ -161,11 +161,11 @@ published_pipeline.endpoint
 
 1. 导航到逻辑应用设计器视图，并选择“空白逻辑应用”模板。 
     > [!div class="mx-imgBorder"]
-    > ![空白模板](media/how-to-trigger-published-pipeline/blank-template.png)
+    > :::image type="content" source="media/how-to-trigger-published-pipeline/blank-template.png" alt-text="空白模板":::
 
 1. 在设计器中，搜索 **blob**。 选择“添加或修改 blob 时(仅属性)”触发器并将此触发器添加到你的逻辑应用。
     > [!div class="mx-imgBorder"]
-    > ![添加触发器](media/how-to-trigger-published-pipeline/add-trigger.png)
+    > :::image type="content" source="media/how-to-trigger-published-pipeline/add-trigger.png" alt-text="添加触发器":::
 
 1. 填写你要监视其 blob 添加或修改的 Blob 存储帐户的连接信息。 选择要监视的容器。 
  
@@ -177,7 +177,7 @@ published_pipeline.endpoint
 1. 添加当检测到新的或修改的 blob 时要运行的 HTTP 操作。 选择“+ 新建步骤”，然后搜索并选择该 HTTP 操作。
 
   > [!div class="mx-imgBorder"]
-  > ![搜索 HTTP 操作](media/how-to-trigger-published-pipeline/search-http.png)
+  > :::image type="content" source="media/how-to-trigger-published-pipeline/search-http.png" alt-text="搜索 HTTP 操作":::
 
   使用以下设置来配置你的操作：
 
@@ -208,12 +208,18 @@ published_pipeline.endpoint
     将已添加到工作区的 `DataStoreName` 用作[先决条件](#prerequisites)。
      
     > [!div class="mx-imgBorder"]
-    > ![HTTP 设置](media/how-to-trigger-published-pipeline/http-settings.png)
+    > :::image type="content" source="media/how-to-trigger-published-pipeline/http-settings.png" alt-text="HTTP 设置":::
 
 1. 选择“保存”，你的计划现已准备就绪。
 
 > [!IMPORTANT]
 > 如果使用 Azure 基于角色的访问控制 (Azure RBAC) 来管理对管道的访问，请[设置管道方案的权限（训练或评分）](how-to-assign-roles.md#common-scenarios)。
+
+## <a name="call-machine-learning-pipelines-from-azure-data-factory-pipelines"></a>从 Azure 数据工厂管道调用机器学习管道
+
+在 Azure 数据工厂管道中， *机器学习执行管道* "活动运行 Azure 机器学习管道。 可在数据工厂的 "创作" 页中的 " *机器学习* " 类别下找到此活动：
+
+:::image type="content" source="media/how-to-trigger-published-pipeline/azure-data-factory-pipeline-activity.png" alt-text="在 Azure 数据工厂创作环境中显示 ML 管道活动的屏幕截图":::
 
 ## <a name="next-steps"></a>后续步骤
 

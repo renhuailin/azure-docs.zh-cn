@@ -13,12 +13,12 @@ ms.date: 05/16/2019
 ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 428405fc200751d2581ad9ca6e8ec97382594c09
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 73dd7877b399d34a009c9fe479550eb1bf6dc0f1
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98064838"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99583970"
 ---
 # <a name="known-issues-on-internet-explorer-browsers-msaljs"></a>Internet Explorer 浏览器 (MSAL.js) 的已知问题
 
@@ -39,7 +39,7 @@ ms.locfileid: "98064838"
 将应用程序部署到生产环境（例如，部署到 Azure Web 应用）通常是可行的，前提是最终用户已接受弹出窗口。 我们已在 Internet Explorer 11 中测试了它。
 
 ### <a name="running-locally"></a>在本地运行
-若要在本地运行并调试在 Internet Explorer 中运行的应用程序，则需了解以下注意事项（假设要将应用程序作为 *http://localhost:1234* 运行）：
+如果你想要在 Internet Explorer 中运行的应用程序本地运行和调试，请注意以下注意事项 (假设你要将应用程序作为) 运行 *http://localhost:1234* ：
 
 - Internet Explorer 有一个名为“保护模式”的安全机制，该机制会妨碍 MSAL.js 正常运行。 其症状是，在登录后，页面可能会重定向到 http://localhost:1234/null 。
 
