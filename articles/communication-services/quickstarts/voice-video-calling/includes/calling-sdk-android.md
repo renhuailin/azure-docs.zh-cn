@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: 5d81e37ab547d12e33cfacb9725d9bdb22666142
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 26e39b8f0429995bfa336c4971c76f90d903ff55
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97628651"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99628884"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -111,7 +111,9 @@ call oneToOneCall = callAgent.call(appContext, participants, startCallOptions);
 
 ### <a name="place-a-1n-call-with-users-and-pstn"></a>将1： n 调用与用户和 PSTN 一起使用
 > [!WARNING]
-> 当前不支持 PSTN 调用，无法对用户和 PSTN 号码进行1： n 调用，你必须指定被呼叫方的电话号码。
+> 当前不支持 PSTN 调用
+
+若要对用户和 PSTN 号码进行1： n 调用，必须指定被呼叫方的电话号码。
 必须将通信服务资源配置为允许 PSTN 调用：
 ```java
 CommunicationUser acsUser1 = new CommunicationUser(<USER_ID>);
@@ -629,7 +631,7 @@ DeviceManager deviceManager = callClient.getDeviceManager().get();
 
 ### <a name="enumerate-local-devices"></a>枚举本地设备
 
-若要访问本地设备，可以在设备管理器上使用枚举方法。 枚举是同步操作。
+若要访问本地设备，可以在 Device Manager 上使用枚举方法。 枚举是同步操作。
 
 ```java
 //  Get a list of available video devices for use.
