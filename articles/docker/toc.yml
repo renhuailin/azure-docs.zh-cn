@@ -1,10 +1,10 @@
 - name: Docker 文档
   href: index.yml
 - name: 快速入门
-  expanded: true
   items:
     - name: 使用 Docker 部署 Ubuntu VM
       href: 'https://azure.microsoft.com/resources/templates/docker-simple-on-ubuntu/'
+  expanded: true
 - name: 教程
   items:
     - name: 使用 Docker 和 PostgreSQL 的 Python Web 应用
@@ -15,8 +15,6 @@
   items:
     - name: Docker VM 扩展
       href: 'https://github.com/Azure/azure-docker-extension/blob/master/README.md'
-    - name: Docker 计算机
-      href: ../virtual-machines/linux/docker-machine.md
     - name: Docker 容器注册表
       href: ../container-registry/container-registry-get-started-portal.md
 - name: 资源

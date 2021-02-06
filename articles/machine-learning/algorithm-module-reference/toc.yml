@@ -28,8 +28,6 @@
       href: convert-to-dataset.md
     - name: 转换为指示器值
       href: convert-to-indicator-values.md
-    - name: 清理缺失数据
-      href: clean-missing-data.md
     - name: 编辑元数据
       href: edit-metadata.md
     - name: 将数据分组到箱中

@@ -1,14 +1,14 @@
 ---
 title: 英国官方和英国 NHS 蓝图示例概述
 description: 英国官方和英国 NHS 蓝图示例的概述和体系结构。 此蓝图示例可帮助客户评估特定控制要求。
-ms.date: 11/02/2020
+ms.date: 02/05/2021
 ms.topic: sample
-ms.openlocfilehash: 8f68af5f61c0ae89e7ad55abec1fe235fa807d56
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: fa628aa1d78909e33e196e025bd483ce21c03835
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93420290"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99627527"
 ---
 # <a name="overview-of-the-uk-official-and-uk-nhs-blueprint-samples"></a>英国官方和英国 NHS 蓝图示例的概述
 
