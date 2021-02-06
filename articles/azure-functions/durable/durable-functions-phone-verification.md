@@ -4,12 +4,12 @@ description: 了解如何在 Azure Functions 的 Durable Functions 中处理人�
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: cba3cd0fd5d8727c4ffa4d1b42d7cd9250f21032
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.openlocfilehash: dd7f8416b2f4520ec8e94c8608f753f7412afc4d
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98028297"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99627366"
 ---
 # <a name="human-interaction-in-durable-functions---phone-verification-sample"></a>Durable Functions 中的人机交互 - 电话验证示例
 
@@ -37,6 +37,9 @@ ms.locfileid: "98028297"
 
 * `E4_SmsPhoneVerification`：执行电话验证过程的业务流程 [协调程序函数](durable-functions-bindings.md#orchestration-trigger) ，包括管理超时和重试次数。
 * `E4_SendSmsChallenge`：通过短信发送代码的 [活动函数](durable-functions-bindings.md#activity-trigger) 。
+
+> [!NOTE]
+> `HttpStart`[示例应用和快速入门](#prerequisites)中的函数充当[业务流程客户端](durable-functions-bindings.md#orchestration-client)，后者触发了业务流程协调程序函数。
 
 ### <a name="e4_smsphoneverification-orchestrator-function"></a>E4_SmsPhoneVerification orchestrator 函数
 

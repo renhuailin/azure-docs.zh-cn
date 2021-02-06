@@ -6,14 +6,19 @@ ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: vturecek
 ms.custom: mvc, devcenter
-ms.openlocfilehash: a7f25d4156c3d2671e1a15a1253ed7ba22265af0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 650755cf2692b613b2998e8ef7b706e09022b178
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91354864"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99626903"
 ---
 # <a name="introduction-to-service-fabric-resource-model"></a>Service Fabric 资源模型简介
+
+> [!IMPORTANT]
+> Azure Service Fabric 网格的预览已停用。 不允许再通过 Service Fabric 的网格 API 来进行新的部署。 对现有部署的支持将持续到2021年4月28日。
+> 
+> 有关详细信息，请参阅 [Azure Service Fabric 网格预览停](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/)用。
 
 Service Fabric 资源模型描述了一种定义包含 Service Fabric 网格应用程序的资源的简单方法。 可将单个资源部署到任何 Service Fabric 环境。  此外，Azure 资源管理器模型还与 Azure 资源管理器模型兼容。 此模型当前支持以下类型的资源：
 

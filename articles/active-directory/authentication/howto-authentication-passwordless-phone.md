@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 35eff46a0470d429c8ec6f364ffa836501c65f47
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 62dea67f139857befc7ca24b8b8a105241b5c949
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96743592"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99626149"
 ---
 # <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app-preview"></a>使用 Microsoft Authenticator 应用 (预览版启用无密码登录) 
 
@@ -57,17 +57,20 @@ Azure AD 允许选择在登录过程中可使用的身份验证方法。 然后�
 若要为无密码 phone 登录启用身份验证方法，请完成以下步骤：
 
 1. 使用 *全局管理员* 帐户登录到 [Azure 门户](https://portal.azure.com)。
-1. 搜索并选择 " *Azure Active Directory*"，然后浏览到 "**安全**  >  **身份验证方法**" "  >  **身份验证方法" " (预览")**
-1. 在 " **无密码手机登录**" 下，选择以下选项：
+1. 搜索并选择 *Azure Active Directory*，然后浏览到 **安全**  >  **身份验证方法**  >  **策略**。
+1. 在 **Microsoft Authenticator (预览 ")** 下，选择以下选项：
    1. **启用** -是或否
    1. **目标** -所有用户或选择用户
+1. 默认情况下，每个添加的组或用户都处于启用状态，以在无密码和推送通知模式下使用 Microsoft Authenticator)  ( "任何" 模式。 若要更改此项，请为每行：
+   1. 浏览到 **...**  > **配置**。
+   1. 对于 **身份验证模式** -Any、无密码或 Push
 1. 若要应用新策略，请选择 " **保存**"。
 
 ## <a name="user-registration-and-management-of-microsoft-authenticator"></a>Microsoft Authenticator 的用户注册和管理
 
 用户通过执行以下步骤，注册 Azure AD 的无密码 authentication 方法：
 
-1. 浏览到 [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) 。
+1. 浏览到 [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo)。
 1. 登录，然后通过选择 " **添加方法 > 验证器应用**" 添加验证器应用，然后选择 " **添加**"。
 1. 按照说明在设备上安装和配置 Microsoft Authenticator 应用。
 1. 选择 **"完成"** 以完成身份验证器配置。

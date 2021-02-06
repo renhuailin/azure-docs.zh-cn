@@ -4,12 +4,12 @@ ms.author: dobett
 ms.service: iot-pnp
 ms.topic: include
 ms.date: 11/19/2020
-ms.openlocfilehash: b72bbe944a2709d639fdbc3ca467e6950a4c9fbf
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: ea136069da73d88174d9d40fe9c60e84982909df
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95511402"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99616621"
 ---
 ## <a name="model-id-announcement"></a>模型 ID 公告
 
@@ -25,6 +25,9 @@ deviceClient = new DeviceClient(deviceConnectionString, protocol, options);
 
 > [!TIP]
 > 对于模块和 IoT Edge，使用 `ModuleClient` 代替 `DeviceClient` 。
+
+> [!TIP]
+> 这是设备可以设置模型 ID 的唯一时间，在设备连接后将无法更新。
 
 ## <a name="dps-payload"></a>DPS 有效负载
 

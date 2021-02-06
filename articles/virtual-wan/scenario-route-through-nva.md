@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 78ff0440fa83b6bd002cdf4256dc066342b1b390
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 9d4eb90d49e8cc671156833f22a85e7c2b4dd15b
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424757"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99626654"
 ---
-# <a name="scenario-route-traffic-through-an-nva"></a>方案：通过 NVA 路由流量
+# <a name="scenario-route-traffic-through-an-nva"></a>场景：通过 NVA 路由流量
 
 使用虚拟 WAN 虚拟中心路由时，有很多可用方案。 在此 NVA 方案中，目标是将流量路由到分支到 VNet 的 NVA (网络虚拟) 设备，并将 VNet 路由到分支。 有关虚拟中心路由的信息，请参阅[关于虚拟中心路由](about-virtual-hub-routing.md)。
 
@@ -31,13 +31,13 @@ ms.locfileid: "92424757"
 在此方案中，我们将使用命名约定：
 
 * 对于用户已部署 NVA 并已将其他虚拟网络作为辐射 (VNet 2 和 VNet 4 的虚拟网络 **，请在) 下面的 "** NVA vnet"。
-* 连接到 NVA VNet 的虚拟网络的 "NVA 轮辐" (VNet 5、VNet 6、VNet 7 和中的 VNet 8 **，如下所) **示。
-* 对于连接到未使用 NVA 或其他 Vnet 对等互连的虚拟 WAN 的虚拟网络，"NVA Vnet" 在 **连接矩阵**中 (VNet 1 和 vnet 3，请在下面) 。
+* 连接到 NVA VNet 的虚拟网络的 "NVA 轮辐" (VNet 5、VNet 6、VNet 7 和中的 VNet 8 **，如下所)** 示。
+* 对于连接到未使用 NVA 或其他 Vnet 对等互连的虚拟 WAN 的虚拟网络，"NVA Vnet" 在 **连接矩阵** 中 (VNet 1 和 vnet 3，请在下面) 。
 * 适用于 Microsoft 托管的虚拟 WAN 中心的 "中心"，其中 NVA Vnet 连接到。 NVA 轮辐 Vnet 无需连接到虚拟 WAN 中心，只能连接到 NVA Vnet。
 
 下面的连接矩阵汇总了此方案中支持的流：
 
-**连接性矩阵**
+**连接矩阵**
 
 | 源             | 到:|   *NVA 轮辐*|*NVA Vnet*|*非 NVA Vnet*|*分支*|
 |---|---|---|---|---|---|
@@ -87,25 +87,25 @@ ms.locfileid: "92424757"
 
 ## <a name="architecture"></a><a name="architecture"></a>体系结构
 
-在 **图 2**中，有两个中心： **Hub1** 和 **Hub2**。
+在 **图 2** 中，有两个中心： **Hub1** 和 **Hub2**。
 
 * **Hub1** 和 **Hub2** 直接连接到 NVA Vnet **VNet 2** 和 **vnet 4**。
 
-* **Vnet 5** 和 **Vnet 6** 与 **vnet 2**对等互连。
+* **Vnet 5** 和 **Vnet 6** 与 **vnet 2** 对等互连。
 
-* **Vnet 7** 和 **Vnet 8** 与 **vnet 4**对等互连。
+* **Vnet 7** 和 **Vnet 8** 与 **vnet 4** 对等互连。
 
 * **Vnet 5、6、7、8** 是间接轮辐，不直接连接到虚拟中心。
 
 **图 2**
 
-:::image type="content" source="./media/routing-scenarios/nva/nva.png" alt-text="图 1" lightbox="./media/routing-scenarios/nva/nva.png":::
+:::image type="content" source="./media/routing-scenarios/nva/nva.png" alt-text="图 2" lightbox="./media/routing-scenarios/nva/nva.png":::
 
 ## <a name="scenario-workflow"></a><a name="workflow"></a>方案工作流
 
 若要通过 NVA 设置路由，请执行以下步骤：
 
-1. 标识 NVA 辐射 VNet 连接。 在 **图 2**中，它们是 **vnet 2 连接 (Eastusconn) ** 和 **VNet 4 连接 (weconn) **。
+1. 标识 NVA 辐射 VNet 连接。 在 **图 2** 中，它们是 **vnet 2 连接 (Eastusconn)** 和 **VNet 4 连接 (weconn)**。
 
    确保已设置 Udr：
    * 从 VNet 5 和 VNet 6 到 VNet 2 NVA IP
@@ -117,7 +117,7 @@ ms.locfileid: "92424757"
 
 2. 将 Vnet 2、5、6的聚合静态路由条目添加到中心1的默认路由表。
 
-   :::image type="content" source="./media/routing-scenarios/nva/nva-static-expand.png" alt-text="图 1":::
+   :::image type="content" source="./media/routing-scenarios/nva/nva-static-expand.png" alt-text="示例":::
 
 3. 为 VNet 2 的虚拟网络连接中的 Vnet 5、6配置静态路由。 若要为虚拟网络连接设置路由配置，请参阅 [虚拟中心路由](how-to-virtual-hub-routing.md#routing-configuration)。
 
@@ -125,11 +125,11 @@ ms.locfileid: "92424757"
 
 5. 对于中心2的默认路由表，重复步骤2、3和4。
 
-这将导致路由配置更改，如下面的 **图 3**所示。
+这将导致路由配置更改，如下面的 **图 3** 所示。
 
-**图 3**
+**图3**
 
-   :::image type="content" source="./media/routing-scenarios/nva/nva-result.png" alt-text="图 1" lightbox="./media/routing-scenarios/nva/nva-result.png":::
+   :::image type="content" source="./media/routing-scenarios/nva/nva-result.png" alt-text="图3" lightbox="./media/routing-scenarios/nva/nva-result.png":::
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: ba5286b16b6e640e968b50174e39a05328e750a4
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: 5f82e8b7359b90d5127e2c20a2b89cc5ad739a56
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98797296"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99624753"
 ---
 # <a name="continuous-integration-and-delivery-for-azure-synapse-workspace"></a>Azure Synapse 工作区的持续集成和交付
 
@@ -101,7 +101,7 @@ ms.locfileid: "98797296"
 
      ![安装扩展](media/install-extension.png)
 
-1. 请确保 Azure DevOps 管道的服务主体已被授予订阅的权限，并且已被指定为目标工作区的工作区管理员。 
+1. 请确保 Azure DevOps 管道的服务主体已被授予订阅的权限，并且已分配为目标工作区的工作区管理员权限。 
 
 1. 创建新任务。 搜索 " **Synapse 工作区部署**"，然后选择 " **添加**"。
 
@@ -139,8 +139,8 @@ ms.locfileid: "98797296"
 
 ### <a name="use-the-synapse-workspace-deployment-task"></a>使用 Synapse 工作区部署任务
 
-在 Synapse 中，所有类型的项目都不是 ARM 资源，不同于 ADF。 不能使用 ARM 模板部署任务来部署 Synapse 项目
+在 Synapse 中，有许多不是 ARM 资源的项目。 这不同于 Azure 数据工厂。 ARM 模板部署任务无法正常工作以部署 Synapse 项目
  
 ### <a name="unexpected-token-error-in-release"></a>发布中出现意外的标记错误
 
-如果参数文件包含未转义的参数值，则发布管道将无法分析文件，并出现意外标记错误。 建议你重写参数或 KeyVault 以获取参数。 你还可以将其作为一种解决方法。
+如果参数文件包含未转义的参数值，则发布管道将无法分析文件，并将生成错误 "意外标记"。 建议替代参数或使用 Azure KeyVault 检索参数值。 你还可以使用双转义符作为解决方法。

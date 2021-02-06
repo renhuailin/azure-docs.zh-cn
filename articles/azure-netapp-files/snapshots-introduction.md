@@ -12,16 +12,16 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/12/2021
+ms.date: 02/05/2021
 ms.author: b-juche
-ms.openlocfilehash: beadd250ec4472b894f0f474b1057ad44cf474ed
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 526ef0af08833954aef4136716930cec0df40eea
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98133508"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99625241"
 ---
-# <a name="how-azure-netapp-files-snapshots-work"></a>Azure NetApp 文件快照的工作方式
+# <a name="how-azure-netapp-files-snapshots-work"></a>Azure NetApp 文件快照的工作原理
 
 本文介绍 Azure NetApp 文件快照的工作方式。 Azure NetApp 文件快照技术提供稳定性、可伸缩性和更快的可恢复性，不会影响性能。 Azure NetApp 文件快照技术为数据保护解决方案奠定了基础，包括单个文件还原、卷还原和克隆以及跨区域复制。 
 
@@ -49,26 +49,26 @@ Underlaying 卷虚拟化技术的独特功能，这是 Azure NetApp 文件的一
 
 由于卷快照只记录自最新快照以来的块更改，因此它具有以下主要优点：
 
-* 快照为 ***存储效率** 为 *。   
-    快照占用的存储空间最少，因为它不复制整个卷的数据块。 序列中所采用的两个快照仅在两者之间的时间间隔内添加或更改的块不同。 此块增量行为限制了关联的存储容量消耗。 许多备用快照实现使用与活动文件系统相同的存储卷，从而提高存储容量需求。 根据应用程序每日 _block 级别 * 更改率，Azure NetApp 文件快照会消耗更多或更少的容量，但仅占用更改的数据。 平均每日快照消耗范围为多个应用程序卷的已用卷容量的1-5%，或高达20-30%，如 SAP HANA 数据库卷。 请确保 [监视卷和快照的使用情况](azure-netapp-files-metrics.md#volumes) ，以获取快照容量消耗相对于创建和维护的快照数的限制。   
+* 快照 ***存储效率更高***。   
+    快照占用的存储空间最少，因为它不复制整个卷的数据块。 序列中所采用的两个快照仅在两者之间的时间间隔内添加或更改的块不同。 此块增量行为限制了关联的存储容量消耗。 许多备用快照实现使用与活动文件系统相同的存储卷，从而提高存储容量需求。 根据应用程序的每日 *块级别* 更改率，Azure NetApp 文件快照会消耗更多或更少的容量，只占用更改的数据。 平均每日快照消耗范围为多个应用程序卷的已用卷容量的1-5%，或高达20-30%，如 SAP HANA 数据库卷。 请确保 [监视卷和快照的使用情况](azure-netapp-files-metrics.md#volumes) ，以获取快照容量消耗相对于创建和维护的快照数的限制。   
 
-* 快照可 **用于创建、复制、还原或克隆** _。   
+* 快照可 ***快速创建、复制、还原或克隆***。   
     无论卷大小和活动级别如何，只需几秒钟即可创建、复制、还原或克隆快照。 可以按 [需](azure-netapp-files-manage-snapshots.md#create-an-on-demand-snapshot-for-a-volume)创建卷快照。 你还可以使用 [快照策略](azure-netapp-files-manage-snapshots.md#manage-snapshot-policies) 来指定 Azure NetApp 文件应何时自动创建快照，以及要为卷保留多少快照。  可以通过使用应用程序层协调快照来实现应用程序一致性，例如，使用用于 SAP HANA 的 [AzAcSnap 工具](azacsnap-introduction.md) 。
 
-_ 快照对卷 ***性能** _ 没有影响。   
+* 快照对卷 ***性能*** 没有影响。   
     由于 underlaying 技术的 "写入时重定向" 性质，存储或保留 Azure NetApp 文件快照不会对性能造成任何影响，甚至会导致数据活动过大。 在大多数情况下，删除快照也几乎不会对性能产生任何影响。 
 
-_ 快照提供了 ***可伸缩性** _，因为它们可以经常创建，并且可以保留许多快照。   
+* 快照提供了 ***可伸缩性*** ，因为它们可以经常创建，并且很多可以保留。   
     Azure NetApp 文件卷最多支持255个快照。 如果能够存储大量的低影响、频繁创建的快照，则可能会增加成功恢复所需版本的数据的可能性。
 
-_ 快照提供了 ***用户可见性** 和 _*_文件可恢复_*_ 性。   
+* 快照提供了 ***用户可见性** _ 和 _ *_文件可恢复_ 性 * *。   
 Azure NetApp 文件快照技术的高性能、可伸缩性和稳定性意味着它为用户驱动的恢复提供理想的联机备份。 可以使快照成为用户可访问的文件、目录或卷还原用途。 其他解决方案允许将备份复制到脱机存储或 [复制跨区域](cross-region-replication-introduction.md) ，以便进行保留或灾难恢复。
 
 ## <a name="ways-to-create-snapshots"></a>创建快照的方式   
 
 您可以使用多种方法来创建和维护快照：
 
-_ 手动 (按需) ，使用：   
+* 手动 (按需) ，方法是使用：   
     * [Azure 门户](azure-netapp-files-manage-snapshots.md#create-an-on-demand-snapshot-for-a-volume)、 [REST API](/rest/api/netapp/snapshots)、 [Azure CLI](/cli/azure/netappfiles/snapshot)或[PowerShell](/powershell/module/az.netappfiles/new-aznetappfilessnapshot)工具
     * 脚本 (参阅 [示例](azure-netapp-files-solution-architectures.md#sap-tech-community-and-blog-posts)) 
 
@@ -161,7 +161,7 @@ Azure NetApp 文件快照技术极大地提高了备份的频率和可靠性。 
 * [快照策略问题故障排除](troubleshoot-snapshot-policies.md)
 * [Azure NetApp 文件的资源限制](azure-netapp-files-resource-limits.md)
 * [Azure NetApp 文件快照101视频](https://www.youtube.com/watch?v=uxbTXhtXCkw)
-* [NetApp 快照-NetApp 视频库](https://tv.netapp.com/detail/video/2579133646001/snapshot)
+* [Azure NetApp 文件快照概述](https://anfcommunity.com/2021/01/31/azure-netapp-files-snapshot-overview/)
 
 
 

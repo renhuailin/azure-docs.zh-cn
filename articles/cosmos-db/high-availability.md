@@ -4,15 +4,15 @@ description: 本文介绍 Azure Cosmos DB 如何提供高可用性
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 01/18/2021
+ms.date: 02/05/2021
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: d827011c4f831433a7446c90eed0c30c7b1e94d7
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 16d2bf39d61961e2f83910735db1d0ddf1c91849
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98600559"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99627359"
 ---
 # <a name="how-does-azure-cosmos-db-provide-high-availability"></a>Azure Cosmos DB 如何提供高可用性？
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -80,7 +80,7 @@ Azure Cosmos DB 提供了全面的 Sla，其中包含吞吐量、99% 的延迟�
 
 * 在读取区域服务中断期间，使用任何一致性级别或强一致性且具有三个或更多读取区域的 Azure Cosmos 帐户仍将对读取和写入保持高可用性。
 
-* 使用强一致性且读取区域（包括读取和写入区域）不超过两个的 Azure Cosmos 帐户会在一个读取区域发生服务中断时失去读写可用性。
+* 使用强一致性的 Azure Cosmos 帐户，其中三个或更少的总区域 (一次写入，两次读取) 在读取区域中断期间将失去写入可用性。 但是，具有四个或更多个区域的客户可以通过提交支持票证来选择使用动态阅读仲裁。 在此配置中维护至少两个读取区域的帐户将保留写入可用性。
 
 * 受影响的区域将自动断开连接，并标记为脱机。 [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md) 会将读取调用重定向到首选区域列表中的下一个可用区域。
 
@@ -112,15 +112,15 @@ Azure Cosmos DB 提供了全面的 Sla，其中包含吞吐量、99% 的延迟�
 |区域故障–可用性 | 可用性损失 | 无可用性损失 | 无可用性损失 | 无可用性损失 |
 |地区性中断–数据丢失 | 数据丢失 |  数据丢失 | 依赖于一致性级别。 有关详细信息，请参阅 [一致性、可用性和性能折衷](consistency-levels-tradeoffs.md) 。 | 依赖于一致性级别。 有关详细信息，请参阅 [一致性、可用性和性能折衷](consistency-levels-tradeoffs.md) 。
 |地区性中断–可用性 | 可用性损失 | 可用性损失 | 读取区域故障没有可用性损失，导致写入区域失败 | 无可用性损失 |
-|价格 ( **_1_* _)  | 不适用 | 预配 RU/s x 1.25 速率 | 预配 RU/s x 1.25 速率 (_*_2_*_)  | 多区域写入速率 |
+|价格 ( ***1** _)  | 不适用 | 预配 RU/s x 1.25 速率 | 预配 RU/s x 1.25 速率 (_ *_2_* * )  | 多区域写入速率 |
 
-_*_1_*_ 对于无服务器帐户，请求单位 (RU) 乘以系数1.25。
+***1*** 对于无服务器帐户，请求单位 (RU) 乘以系数1.25。
 
-_*_2_*_ 1.25 rate 仅适用于启用了 AZ 的区域。
+***2*** 1.25 rate 仅适用于启用了 AZ 的区域。
 
 可以通过以下方式启用可用性区域：
 
-_ [Azure 门户](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
+* [Azure 门户](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
 
 * [Azure PowerShell](manage-with-powershell.md#create-account)
 

@@ -6,14 +6,19 @@ ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: gwallace
 ms.custom: mvc, devcenter , devx-track-azurecli
-ms.openlocfilehash: 00addbe992bc113c67df08f73414107d51b3bce5
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 40d10568e13ad455bc5178821da80e89f4132e93
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96007386"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99625831"
 ---
 # <a name="mount-an-azure-files-based-volume-in-a-service-fabric-mesh-application"></a>在 Service Fabric 网格应用程序中装载基于 Azure 文件的卷 
+
+> [!IMPORTANT]
+> Azure Service Fabric 网格的预览已停用。 不允许再通过 Service Fabric 的网格 API 来进行新的部署。 对现有部署的支持将持续到2021年4月28日。
+> 
+> 有关详细信息，请参阅 [Azure Service Fabric 网格预览停](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/)用。
 
 本文介绍了如何将基于 Azure 文件的卷装载到 Service Fabric 网格应用程序的服务中。  Azure 文件卷驱动程序是将 Azure 文件共享装载到容器的 Docker 卷驱动程序，可使用它来保存服务状态。 卷提供常规用途文件存储，并允许使用正常磁盘 I/O 文件 API 读取/写入文件。  有关卷和应用程序数据存储选项的详细信息，请参阅[存储状态](service-fabric-mesh-storing-state.md)。
 

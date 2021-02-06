@@ -5,14 +5,19 @@ author: georgewallace
 ms.author: gwallace
 ms.date: 12/12/2018
 ms.topic: conceptual
-ms.openlocfilehash: 479e975abd40be80e17fc187f1d13500d11cb983
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fc234f6954cf263423cc517bb3dda2ba2efa3358
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91842744"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99625729"
 ---
 # <a name="set-up-your-windows-development-environment-to-build-service-fabric-mesh-apps"></a>设置 Windows 开发环境以生成 Service Fabric 网格应用
+
+> [!IMPORTANT]
+> Azure Service Fabric 网格的预览已停用。 不允许再通过 Service Fabric 的网格 API 来进行新的部署。 对现有部署的支持将持续到2021年4月28日。
+> 
+> 有关详细信息，请参阅 [Azure Service Fabric 网格预览停](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/)用。
 
 若要在 Windows 开发计算机上生成并运行 Azure Service Fabric 网格应用程序，需要具有以下项：
 
@@ -46,9 +51,9 @@ ms.locfileid: "91842744"
 
 下载并安装最新版本的 [Docker Community Edition for Windows][download-docker] 来支持 Service Fabric 网格使用的容器化 Service Fabric 应用。
 
-在安装过程中出现提示时，请选择“使用 Windows 容器而不是 Linux 容器”****。
+在安装过程中出现提示时，请选择“使用 Windows 容器而不是 Linux 容器”。
 
-如果在你的计算机上未启用 Hyper-v，则 Docker 的安装程序将启用它。 如果出现提示，单击“确定”**** 以执行此操作。
+如果在你的计算机上未启用 Hyper-v，则 Docker 的安装程序将启用它。 如果出现提示，单击“确定”以执行此操作。
 
 #### <a name="install-docker-on-windows-server-2016"></a>在 Windows Server 2016 上安装 Docker
 
@@ -78,7 +83,7 @@ Install-WindowsFeature Containers
 ## <a name="build-a-cluster"></a>生成群集
 
 > [!IMPORTANT]
-> 在生成群集之前，Docker **必须**正在运行。
+> 在生成群集之前，Docker **必须** 正在运行。
 > 若要测试 Docker 是否正在运行，请打开一个终端窗口，运行 `docker ps` 并查看是否出错。 如果响应中未指示错误，则表示 Docker 正在运行，可以生成群集。
 
 > [!Note]
@@ -103,7 +108,7 @@ Install-WindowsFeature Containers
     ```powershell
     . "C:\Program Files\Microsoft SDKs\Service Fabric\Tools\ServiceFabricLocalClusterManager\ServiceFabricLocalClusterManager.exe"
     ```
-5. 服务群集管理器工具运行后（它出现在系统托盘中），右键单击它并单击“启动本地群集”****。
+5. 服务群集管理器工具运行后（它出现在系统托盘中），右键单击它并单击“启动本地群集”。
 
 ![图 1 - 启动本地群集](./media/service-fabric-mesh-howto-setup-developer-environment-sdk/start-local-cluster.png)
 

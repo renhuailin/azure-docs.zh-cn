@@ -5,12 +5,12 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/12/2020
-ms.openlocfilehash: 88e2161cfddf95f7f250b8b76c067d045f1529da
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 6e37501a56bdf247bce2111e8e5a5bf02f37d898
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99092228"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99626115"
 ---
 # <a name="azure-hdinsight-release-notes"></a>Azure HDInsight 发行说明
 
@@ -51,7 +51,7 @@ HDInsight 为缩放操作添加了网络安全组 (NSG) 和用户定义的路由
 即将发布的版本中将推出以下变更。
 
 ### <a name="breaking-change-for-net-for-apache-spark-100"></a>Apache Spark 1.0.0 的 .NET 的重大更改
-HDInsight 将在下一版本中介绍 .NET for Apache Spark 的第一个主要版本。 它提供 Spark 2.4. x 和 Spark 3.0. x 与其他功能的数据帧 API 完整性。 此主要版本有重大更改，请参阅 [此迁移 guid](https://github.com/dotnet/spark/blob/master/docs/migration-guide.md#upgrading-from-microsoftspark-0x-to-10) ，了解更新代码和管道所需的步骤。 在[此处](https://docs.microsoft.com/azure/hdinsight/spark/spark-dotnet-version-update#using-net-for-apache-spark-v10-in-hdinsight)了解更多信息。
+HDInsight 将在下一版本中介绍 .NET for Apache Spark 的第一个主要版本。 它提供 Spark 2.4. x 和 Spark 3.0. x 与其他功能的数据帧 API 完整性。 此主要版本有重大更改，请参阅 [此迁移指南](https://github.com/dotnet/spark/blob/master/docs/migration-guide.md#upgrading-from-microsoftspark-0x-to-10) ，了解更新代码和管道所需的步骤。 在[此处](https://docs.microsoft.com/azure/hdinsight/spark/spark-dotnet-version-update#using-net-for-apache-spark-v10-in-hdinsight)了解更多信息。
 
 ### <a name="default-cluster-vm-size-will-be-changed-to-ev3-family"></a>默认群集 VM 大小将更改为 Ev3 系列
 从下一个版本开始（1 月底左右），默认群集 VM 大小将从 D 系列更改为 Ev3 系列。 此更改适用于头节点和工作器节点。 要避免此更改，请指定要在 ARM 模板中使用的 VM 大小。

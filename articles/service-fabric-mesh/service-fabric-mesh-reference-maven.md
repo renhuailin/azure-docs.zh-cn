@@ -6,16 +6,21 @@ ms.author: suhuruli
 ms.date: 11/26/2018
 ms.topic: reference
 ms.custom: devx-track-java
-ms.openlocfilehash: 3a1aa004f47ba700ef4b96004dfe5b835788dcc7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dd42752dc7ef2c7686073b7a2d780fe9356425c7
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87372461"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99625577"
 ---
 # <a name="maven-plugin-for-service-fabric-mesh"></a>适用于 Service Fabric 网格的 Maven 插件
 
-## <a name="prerequisites"></a>必备条件
+> [!IMPORTANT]
+> Azure Service Fabric 网格的预览已停用。 不允许再通过 Service Fabric 的网格 API 来进行新的部署。 对现有部署的支持将持续到2021年4月28日。
+> 
+> 有关详细信息，请参阅 [Azure Service Fabric 网格预览停](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/)用。
+
+## <a name="prerequisites"></a>先决条件
 
 - Java SDK
 - Maven
@@ -110,7 +115,7 @@ mvn azure-sfmesh:addservice -DapplicationName=helloworldserver -DserviceName=hel
 
 - 在名为 `service_helloworldservice` 的文件夹 `servicefabric->helloworldservice` 中创建一个引用 `helloworldservicenetwork` 和 `helloworldserver` 应用的服务 YAML
 - 该服务将侦听端口 8080
-- 该服务将使用 helloworldserver:latest****** 作为其容器映像。
+- 该服务将使用 helloworldserver:latest 作为其容器映像。
 
 #### <a name="add-a-new-gateway-resource-to-your-application"></a>向应用程序添加新网关资源
 运行以下命令以创建网关资源 yaml。 

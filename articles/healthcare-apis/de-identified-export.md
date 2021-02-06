@@ -7,12 +7,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 9/28/2020
 ms.author: matjazl
-ms.openlocfilehash: bdbab0e032764d07119402686051d391376cb913
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 60a2a41a8005e8bd0fbc313c9a177d54df6dac5e
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91843759"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99627157"
 ---
 # <a name="exporting-de-identified-data-preview"></a>导出已取消识别的数据 (预览) 
 
@@ -22,6 +22,9 @@ ms.locfileid: "91843759"
 "$Export" 命令还可用于从 FHIR 服务器导出已取消识别的数据。 它使用 [匿名的 FHIR 工具](https://github.com/microsoft/FHIR-Tools-for-Anonymization)中的匿名引擎，并在查询参数中使用匿名的配置详细信息。 你可以创建自己的匿名配置文件，或者使用适用于 HIPAA Safe 安全港方法的 [示例配置文件](https://github.com/microsoft/FHIR-Tools-for-Anonymization#sample-configuration-file-for-hipaa-safe-harbor-method) 作为起点。 
 
  `https://<<FHIR service base URL>>/$export?_container=<<container_name>>&_anonymizationConfig=<<config file name>>&_anonymizationConfigEtag=<<ETag on storage>>`
+
+> [!Note] 
+> 现在，适用于 FHIR 的 Azure API 仅支持在系统级别上取消识别的导出 ($export) 。
 
 |查询参数            | 示例 |可选性| 说明|
 |---------------------------|---------|-----------|------------|

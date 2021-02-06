@@ -4,8 +4,7 @@ description: 了解有助于标识管理的核心 Azure 安全功能。 了解�
 services: security
 documentationcenter: na
 author: TerryLanfear
-manager: barbkess
-editor: TomSh
+manager: rkarlin
 ms.assetid: 5aa0a7ac-8f18-4ede-92a1-ae0dfe585e28
 ms.service: security
 ms.subservice: security-fundamentals
@@ -13,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/19/2018
+ms.date: 02/05/2021
 ms.author: terrylan
 Customer intent: As an IT Pro or decision maker I am trying to learn about identity management capabilities in Azure
-ms.openlocfilehash: 2c7d51da361816841ff556c1da696a48d2ce6a06
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: d931d3923ff49dde2bea234278c995e79670429f
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843683"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99627627"
 ---
 # <a name="azure-identity-management-security-overview"></a>Azure 标识管理安全概述
 
@@ -62,9 +61,9 @@ Azure AD 将本地 Active Directory 环境扩展到云，让用户不仅能够�
 
 了解详细信息：
 
-* [单一登录概述](https://azure.microsoft.com/documentation/videos/overview-of-single-sign-on/)
-* [Azure Active Directory 的应用程序访问与单一登录是什么？](../../active-directory/manage-apps/what-is-single-sign-on.md)
-* [应用管理中的快速入门系列](../../active-directory/manage-apps/view-applications-portal.md)
+* [SSO 概述](../../active-directory/manage-apps/what-is-single-sign-on.md)
+* [有关身份验证基础的视频](https://www.youtube.com/watch?v=fbSVgC8nGz4&feature=emb_title)
+* [应用程序管理的快速入门系列](../../active-directory/manage-apps/view-applications-portal.md)
 
 ## <a name="reverse-proxy"></a>反向代理
 
@@ -79,7 +78,7 @@ Azure AD 将本地 Active Directory 环境扩展到云，让用户不仅能够�
 
 ## <a name="multi-factor-authentication"></a>多重身份验证
 
-Azure AD 多重身份验证是一种需要使用多种验证方法并向用户登录和事务添加关键的第二层安全性的身份验证方法。 多重身份验证可帮助保护对数据和应用程序的访问，同时可以满足用户对简单登录过程的需求。 它通过各种验证选项（例如电话、短信、移动应用通知或验证码以及第三方 OAuth 令牌）来提供强身份验证。
+Azure AD 多重身份验证是需要使用多种验证方法的身份验证方法，为用户登录和事务又增加了一层至关重要的安全保障。 多重身份验证可帮助保护对数据和应用程序的访问，同时可以满足用户对简单登录过程的需求。 它通过各种验证选项（例如电话、短信、移动应用通知或验证码以及第三方 OAuth 令牌）来提供强身份验证。
 
 了解详细信息：
 

@@ -6,14 +6,20 @@ ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: srrengar
 ms.custom: mvc, devcenter, devx-track-azurecli
-ms.openlocfilehash: 63c79169646f05cddc7c605c764398bdef7492d4
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 02de8ea5dd5c53192d2b8c7beba8bc36143beac6
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98682065"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99626988"
 ---
 # <a name="monitoring-and-diagnostics"></a>监视和诊断
+
+> [!IMPORTANT]
+> Azure Service Fabric 网格的预览已停用。 不允许再通过 Service Fabric 的网格 API 来进行新的部署。 对现有部署的支持将持续到2021年4月28日。
+> 
+> 有关详细信息，请参阅 [Azure Service Fabric 网格预览停](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/)用。
+
 Azure Service Fabric 网格是一个完全托管的服务，由此开发者可部署微服务应用程序，而无需管理虚拟机、存储或网络。 Service Fabric 网格的监控和诊断分为三大类型诊断数据：
 
 - 应用程序日志 - 这是基于应用程序检测方式的容器化应用程序的日志（如 docker 日志）
@@ -51,14 +57,14 @@ az mesh code-package-log get --resource-group <nameOfRG> --application-name SbzV
 | AllocatedMemory | 按 Azure 资源管理器模板分配的内存 | MB |
 | ActualCpu | CPU 使用率 | Millicores |
 | ActualMemory | 内存使用率 | MB |
-| ContainerStatus | 0-无效：容器状态未知 <br> 1-挂起：容器已计划启动 <br> 2-正在启动：容器处于启动过程中 <br> 3-已启动：容器已成功启动 <br> 4-正在停止：正在停止容器 <br> 5-已停止：容器已成功停止 | N/A |
-| ApplicationStatus | 0-未知：状态不可检索 <br> 1-准备就绪：应用程序正在成功运行 <br> 2-正在升级：正在进行升级 <br> 3-正在创建：正在创建应用程序 <br> 4-正在删除：正在删除应用程序 <br> 5-失败：应用程序部署失败 | N/A |
-| ServiceStatus | 0-无效：服务当前没有运行状况状态 <br> 1-正常：服务正常  <br> 2-警告：可能有问题需要调查 <br> 3-错误：需要调查的内容有误 <br> 4-未知：状态不可检索 | N/A |
-| ServiceReplicaStatus | 0-无效：副本当前不具有运行状况状态 <br> 1-正常：服务正常  <br> 2-警告：可能有问题需要调查 <br> 3-错误：需要调查的内容有误 <br> 4-未知：状态不可检索 | N/A | 
-| RestartCount | 容器重启次数 | N/A |
+| ContainerStatus | 0-无效：容器状态未知 <br> 1-挂起：容器已计划启动 <br> 2-正在启动：容器处于启动过程中 <br> 3-已启动：容器已成功启动 <br> 4-正在停止：正在停止容器 <br> 5-已停止：容器已成功停止 | 不适用 |
+| ApplicationStatus | 0-未知：状态不可检索 <br> 1-准备就绪：应用程序正在成功运行 <br> 2-正在升级：正在进行升级 <br> 3-正在创建：正在创建应用程序 <br> 4-正在删除：正在删除应用程序 <br> 5-失败：应用程序部署失败 | 不适用 |
+| ServiceStatus | 0-无效：服务当前没有运行状况状态 <br> 1-正常：服务正常  <br> 2-警告：可能有问题需要调查 <br> 3-错误：需要调查的内容有误 <br> 4-未知：状态不可检索 | 不适用 |
+| ServiceReplicaStatus | 0-无效：副本当前不具有运行状况状态 <br> 1-正常：服务正常  <br> 2-警告：可能有问题需要调查 <br> 3-错误：需要调查的内容有误 <br> 4-未知：状态不可检索 | 不适用 | 
+| RestartCount | 容器重启次数 | 不适用 |
 
 > [!NOTE]
-> ServiceStatus 和 ServiceReplicaStatus 值与 Service Fabric 中的 [HealthState](/dotnet/api/system.fabric.health.healthstate?view=azure-dotnet) 相同。 
+> ServiceStatus 和 ServiceReplicaStatus 值与 Service Fabric 中的 [HealthState](/dotnet/api/system.fabric.health.healthstate) 相同。
 
 每个指标都可以在不同的维度上使用，因此可以在不同级别查看聚合。 维度的当前列表如下所示：
 

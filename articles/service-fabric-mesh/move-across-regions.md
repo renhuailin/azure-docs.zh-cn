@@ -6,20 +6,25 @@ ms.author: edoyle
 ms.topic: how-to
 ms.date: 01/14/2020
 ms.custom: subject-moving-resources
-ms.openlocfilehash: c842a065f108a924c6bffd70d6c2edbbd31b6dff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1b59d482b8b88e37da2d61636ff3f254a46ba5c2
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86260145"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99626081"
 ---
 # <a name="move-a-service-fabric-mesh-application-to-another-azure-region"></a>将 Service Fabric 网格应用程序移动到另一个 Azure 区域
+
+> [!IMPORTANT]
+> Azure Service Fabric 网格的预览已停用。 不允许再通过 Service Fabric 的网格 API 来进行新的部署。 对现有部署的支持将持续到2021年4月28日。
+> 
+> 有关详细信息，请参阅 [Azure Service Fabric 网格预览停](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/)用。
 
 本文介绍如何将 Service Fabric 网格应用程序及其资源移到不同的 Azure 区域。 由于各种原因，你可能需要将资源移动到其他区域。 例如，为了应对中断，只需获取特定区域中提供的功能或服务，以满足内部策略和监管要求，或者响应容量规划要求。
 
  [Service Fabric 网格不支持](../azure-resource-manager/management/region-move-support.md#microsoftservicefabricmesh) 在 Azure 区域之间直接移动资源。 但是，你可以通过将当前 Azure 资源管理器模板的副本部署到新的目标区域，然后将流量和依赖项重定向到新创建的 Service Fabric 网格应用程序，间接移动资源。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * 入口控制器 (例如， [应用程序网关](../application-gateway/index.yml)) 用于在客户端与 Service Fabric 网格应用程序之间路由流量的媒介
 * Service Fabric 网格 (预览版在目标 Azure 区域中) 可用性 (`westus` 、 `eastus` 或 `westeurope`) 
@@ -44,9 +49,9 @@ ms.locfileid: "86260145"
 
 1. 部署完成后，请测试 (的应用程序终结点) ，验证应用程序的功能。
 
-2. 你还可以通过检查应用程序状态 ([az 网格应用显示](/cli/azure/ext/mesh/mesh/app?view=azure-cli-latest#ext-mesh-az-mesh-app-show)) 并查看应用程序日志，并 ([az 网格代码包-记录](/cli/azure/ext/mesh/mesh/code-package-log?view=azure-cli-latest)) [Service Fabric](./service-fabric-mesh-quickstart-deploy-container.md#set-up-service-fabric-mesh-cli)命令来验证应用程序的状态。
+2. 你还可以通过检查应用程序状态 ([az 网格应用显示](/cli/azure/ext/mesh/mesh/app#ext-mesh-az-mesh-app-show)) 并查看应用程序日志，并 ([az 网格代码包-记录](/cli/azure/ext/mesh/mesh/code-package-log)) [Service Fabric](./service-fabric-mesh-quickstart-deploy-container.md#set-up-service-fabric-mesh-cli)命令来验证应用程序的状态。
 
-## <a name="commit"></a>Commit
+## <a name="commit"></a>提交
 
 确认目标区域中 Service Fabric 网格应用程序的等效功能后，配置入口控制器 (例如， [应用程序网关](../application-gateway/redirect-overview.md)) ，将流量重定向到新应用程序。
 

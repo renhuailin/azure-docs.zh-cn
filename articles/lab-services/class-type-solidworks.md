@@ -5,12 +5,12 @@ author: nicolela
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: nicolela
-ms.openlocfilehash: dc6fdadbdfdbdd1d32f640e356a67841187a83c9
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 3a7e8c47977f0518a3a3e9f8a6fd2e57454e1c42
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95999257"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99626098"
 ---
 # <a name="set-up-a-lab-for-engineering-classes-using-solidworks"></a>使用 SOLIDWORKS 设置工程类的实验室
 
@@ -31,7 +31,7 @@ SOLIDWORKS 网络许可要求你已在许可证服务器上安装并激活 Solid
 
 ## <a name="lab-configuration"></a>实验室配置
 
-若要设置此实验室，需要一个 Azure 订阅和实验室帐户才能开始使用。 如果没有 Azure 订阅，请在开始之前先创建一个[免费帐户](https://azure.microsoft.com/free/)。 获取 Azure 订阅后，可以在 Azure 实验室服务中创建新的实验室帐户。 有关创建新实验室帐户的详细信息，请参阅有关 [如何设置实验室帐户](./tutorial-setup-lab-account.md)的教程。 你还可以使用现有的实验室帐户。
+若要设置此实验室，需要一个 Azure 订阅和实验室帐户才能开始使用。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。 获取 Azure 订阅后，可以在 Azure 实验室服务中创建新的实验室帐户。 有关创建新实验室帐户的详细信息，请参阅有关 [如何设置实验室帐户](./tutorial-setup-lab-account.md)的教程。 你还可以使用现有的实验室帐户。
 
 ### <a name="lab-account-settings"></a>实验室帐户设置
 
@@ -57,7 +57,7 @@ SOLIDWORKS 网络许可要求你已在许可证服务器上安装并激活 Solid
 > **小型 GPU (可视化)** 虚拟机大小配置为实现高性能的图形体验。  有关此虚拟机大小的详细信息，请参阅有关 [如何使用 gpu 设置实验室](./how-to-setup-lab-gpu.md)的文章。
 
 > [!WARNING]
-> 在创建实验室 **之前**，不要忘记将实验室帐户的虚拟网络与许可证服务器的虚拟网络 [对等](https://www.mathworks.com/support/requirements/matlab-system-requirements.html)。
+> 在创建实验室 **之前**，不要忘记将实验室帐户的虚拟网络与许可证服务器的虚拟网络 [对等](./how-to-connect-peer-virtual-network.md)。
 
 ## <a name="template-virtual-machine-configuration"></a>模板虚拟机配置
 
@@ -76,7 +76,7 @@ SOLIDWORKS 网络许可要求你已在许可证服务器上安装并激活 Solid
     > [!NOTE]
     > 在 " **添加服务器** " 对话框中，系统会提示输入用于许可证服务器的 **端口号** 以及许可证服务器的名称或 IP 地址。
 
-## <a name="cost"></a>Cost
+## <a name="cost"></a>节约成本
 
 我们来介绍此类的可能的成本估算。 此估计不包括运行许可证服务器的成本。 我们将使用一类25名学生。 计划的类时间有20小时。 此外，每个学生在计划的类时间之外为家庭作业或分配获取10小时配额。 我们选择的虚拟机大小为 **小 GPU (可视化)**，即160实验室单元。
 

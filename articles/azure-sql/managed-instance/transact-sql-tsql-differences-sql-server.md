@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, bonova, danil
 ms.date: 11/10/2020
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: 66198291420d48e04df0821d8d110812d6aa01d7
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: cc31ad851441c980365841b1131405339a1092fa
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99525799"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99626268"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>SQL Server 与 Azure SQL 托管实例之间的 T-SQL 差异
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -168,7 +168,7 @@ WITH PRIVATE KEY (<private_key_options>)
     - 在同一 Azure AD 域中将数据库从 SQL 托管实例导出以及将其导入 SQL 数据库。 
     - 在同一 Azure AD 域中从 SQL 数据库导出数据库以及将其导入 SQL 托管实例。
     - 将数据库从 SQL 托管实例导出以及将其导入 SQL Server（2012 或更高版本）。
-      - 在此配置中，所有 Azure AD 用户都作为 SQL Server 数据库主体 (用户) 无需登录名创建。 用户的类型列为 `SQL` ，并 `SQL_USER` 在 sys.database_principals) 中可见。 其权限和角色保留在 SQL Server 数据库元数据中，可以用于模拟。 但是，它们不能用来通过其凭据访问和登录 SQL Server。
+      - 在此配置中，所有 Azure AD 用户都创建为没有登录名的 SQL Server 数据库主体（用户）。 用户类型以 `SQL` 的形式列出，在 sys.database_principals 中以 `SQL_USER` 的形式呈现。 其权限和角色保留在 SQL Server 数据库元数据中，可以用于模拟。 但是，它们不能用来通过其凭据访问和登录 SQL Server。
 
 - 只有服务器级主体登录名（由 SQL 托管实例预配进程创建）、服务器角色的成员（例如 `securityadmin` 或 `sysadmin`）或者在服务器级别拥有 ALTER ANY LOGIN 权限的其他登录名可以在 SQL 托管实例的 master 数据库中创建 Azure AD 服务器主体（登录名）。
 - 如果登录名是 SQL 主体，则只有属于 `sysadmin` 角色的登录名才能使用 create 命令来为 Azure AD 帐户创建登录名。
@@ -277,7 +277,7 @@ WITH PRIVATE KEY (<private_key_options>)
 - `SINGLE_USER`
 - `WITNESS`
 
-某些 `ALTER DATABASE` 语句 (例如，在数据库创建后， [设置包含](https://docs.microsoft.com/sql/relational-databases/databases/migrate-to-a-partially-contained-database?#converting-a-database-to-partially-contained-using-transact-sql)) 可能 transiently 失败（例如，在自动数据库备份期间）。 在此情况下， `ALTER DATABASE` 应重试语句。 有关相关错误消息的详细信息，请参阅 " [备注" 部分](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-mi-current&preserve-view=true&tabs=sqlpool#remarks-2)。
+某些 `ALTER DATABASE` 语句（例如 [SET CONTAINMENT](https://docs.microsoft.com/sql/relational-databases/databases/migrate-to-a-partially-contained-database?#converting-a-database-to-partially-contained-using-transact-sql)）可能会暂时失败，例如，在自动数据库备份期间失败，或者在数据库创建后立即失败。 在这种情况下应重试 `ALTER DATABASE` 语句。 有关相关错误消息的详细信息，请参阅[备注部分](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-mi-current&preserve-view=true&tabs=sqlpool#remarks-2)。
 
 有关详细信息，请参阅 [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql-file-and-filegroup-options)。
 
@@ -305,7 +305,7 @@ WITH PRIVATE KEY (<private_key_options>)
   - 尚不支持警报。
   - 不支持代理。
 - 不支持 EventLog。
-- 用户必须直接映射到 Azure AD 服务器主体 (登录) ，以便创建、修改或执行 SQL 代理作业。 如果用户不是直接映射的用户（例如，属于具有创建、修改或执行 SQL 代理作业权限的 Azure AD 组的用户），则将无法有效地执行这些操作。 这是由于托管实例模拟和 [EXECUTE AS 限制](#logins-and-users)的缘故。
+- 用户必须直接映射到 Azure AD 服务器主体（登录名），才能创建、修改或执行 SQL 代理作业。 未直接映射的用户（例如，属于有权创建、修改或执行 SQL 代理作业的 Azure AD 组的用户）将无法有效地执行这些操作。 这是由于托管实例模拟和 [EXECUTE AS 限制](#logins-and-users)的缘故。
 
 目前不支持以下 SQL 代理功能：
 
@@ -400,12 +400,12 @@ Azure SQL 托管实例当前不支持本地或 Azure 虚拟机中的 MSDTC 通�
 SQL 托管实例中的链接服务器支持有限数量的目标：
 
 - 支持的目标为 SQL 托管实例、SQL 数据库、Azure Synapse SQL [无服务器](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/) 和专用池，以及 SQL Server 实例。 
-- 分布式可写事务仅在托管实例之间可用。 有关详细信息，请参阅 [分布式事务](https://docs.microsoft.com/azure/azure-sql/database/elastic-transactions-overview)。 但是，不支持 MS DTC。
+- 分布式可写事务仅在托管实例之间可用。 有关详细信息，请参阅[分布式事务](https://docs.microsoft.com/azure/azure-sql/database/elastic-transactions-overview)。 但是，MS DTC 不受支持。
 - 不支持的目标为文件、Analysis Services 和其他 RDBMS。 尝试使用 `BULK INSERT` 或 `OPENROWSET` 作为文件导入的替代方法，或使用 [azure Synapse Analytics 中的无服务器 SQL 池](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/)加载文件。
 
 操作： 
 
-- 仅托管实例支持[跨实例](https://docs.microsoft.com/azure/azure-sql/database/elastic-transactions-overview)写入事务。
+- 只有托管实例才支持[跨实例](https://docs.microsoft.com/azure/azure-sql/database/elastic-transactions-overview)写入事务。
 - 支持使用 `sp_dropserver` 删除链接服务器。 请参阅 [sp_dropserver](/sql/relational-databases/system-stored-procedures/sp-dropserver-transact-sql)。
 - `OPENROWSET` 函数只能用于在 SQL Server 实例上执行查询。 它们可以是托管的、位于本地或位于虚拟机中。 请参阅 [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql)。
 - `OPENDATASOURCE` 函数只能用于在 SQL Server 实例上执行查询。 它们可以是托管的、位于本地或位于虚拟机中。 仅支持将 `SQLNCLI`、`SQLNCLI11` 和 `SQLOLEDB` 值用作提供程序。 例如 `SELECT * FROM OPENDATASOURCE('SQLNCLI', '...').AdventureWorks2012.HumanResources.Employee`。 请参阅 [OPENDATASOURCE](/sql/t-sql/functions/opendatasource-transact-sql)。
@@ -413,7 +413,7 @@ SQL 托管实例中的链接服务器支持有限数量的目标：
 
 ### <a name="polybase"></a>PolyBase
 
-唯一可用的外部源类型是公共预览版中的 RDBMS () Azure SQL 数据库、Azure SQL 托管实例和 Azure Synapse 池。 您可以使用 [外部表引用 Synapse Analytics 中的无服务器 SQL 池](https://devblogs.microsoft.com/azure-sql/read-azure-storage-files-using-synapse-sql-external-tables/) 作为直接从 Azure 存储空间读取的 Polybase 外部表的解决方法。 在 Azure SQL 托管实例中，可以使用链接服务器连接到 [Synapse Analytics 中的无服务器 SQL 池](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/) 或 SQL Server 来读取 Azure 存储数据。
+唯一可用的外部源类型是 Azure SQL 数据库、Azure SQL 托管实例和 Azure Synapse 池的 RDBMS（公共预览版）。 您可以使用 [外部表引用 Synapse Analytics 中的无服务器 SQL 池](https://devblogs.microsoft.com/azure-sql/read-azure-storage-files-using-synapse-sql-external-tables/) 作为直接从 Azure 存储空间读取的 Polybase 外部表的解决方法。 在 Azure SQL 托管实例中，可以使用链接服务器连接到 [Synapse Analytics 中的无服务器 SQL 池](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/) 或 SQL Server 来读取 Azure 存储数据。
 有关 PolyBase 的信息，请参阅 [PolyBase](/sql/relational-databases/polybase/polybase-guide)。
 
 ### <a name="replication"></a>复制
@@ -490,7 +490,7 @@ SQL 托管实例中的链接服务器支持有限数量的目标：
   - `scan for startup procs`
 - 不支持 `sp_execute_external_scripts`。 请参阅 [sp_execute_external_scripts](/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql#examples)。
 - 不支持 `xp_cmdshell`。 请参阅 [xp_cmdshell](/sql/relational-databases/system-stored-procedures/xp-cmdshell-transact-sql)。
-- 不支持 `Extended stored procedures`，其中包括 `sp_addextendedproc` 和 `sp_dropextendedproc`。 请参阅[扩展存储过程](/sql/relational-databases/system-stored-procedures/general-extended-stored-procedures-transact-sql)。
+- `Extended stored procedures` 不受支持，并且这包括 `sp_addextendedproc` 和 `sp_dropextendedproc` 。 此功能不受支持，因为它位于 SQL Server 的弃用路径中。 有关更多详细信息，请参阅 [扩展存储过程](/sql/relational-databases/extended-stored-procedures-programming/database-engine-extended-stored-procedures-programming)。
 - 不支持 `sp_attach_db`、`sp_attach_single_file_db` 和 `sp_detach_db`。 请参阅 [sp_attach_db](/sql/relational-databases/system-stored-procedures/sp-attach-db-transact-sql)、[sp_attach_single_file_db](/sql/relational-databases/system-stored-procedures/sp-attach-single-file-db-transact-sql) 和 [sp_detach_db](/sql/relational-databases/system-stored-procedures/sp-detach-db-transact-sql)。
 
 ### <a name="system-functions-and-variables"></a>系统函数和变量
@@ -509,14 +509,14 @@ SQL 托管实例中的链接服务器支持有限数量的目标：
 
 ### <a name="subnet"></a>子网
 -  在部署 SQL 托管实例的子网中，无法放置其他任何资源（例如虚拟机）。 请使用其他子网部署这些资源。
-- 子网必须有足够数量的可用 [IP 地址](connectivity-architecture-overview.md#network-requirements)。 最小值为在子网中至少具有 32 IP 地址。
+- 子网必须有足够数量的可用 [IP 地址](connectivity-architecture-overview.md#network-requirements)。 子网中至少要有 32 个 IP 地址。
 - 可以在某个区域部署的 vCore 数和实例类型存在一些[约束和限制](resource-limits.md#regional-resource-limitations)。
-- 必须在子网中应用 [网络配置](connectivity-architecture-overview.md#network-requirements) 。
+- 有一个必须应用于子网的[网络配置](connectivity-architecture-overview.md#network-requirements)。
 
 ### <a name="vnet"></a>VNET
 - VNet 可以使用资源模型进行部署 - 不支持适用于 VNet 的经典模型。
 - 创建 SQL 托管实例后，不支持将 SQL 托管实例或 VNet 移到另一个资源组或订阅。
-- 对于在 9/22/2020 [全局对等](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) 之前创建的虚拟群集中托管的 SQL 托管实例，不支持。 可以通过 VNet 网关经由 ExpressRoute 或 VNet-to-VNet 连接到这些资源。
+- 对于在 2020/9/22 之前创建的虚拟群集中托管的 SQL 托管实例，[全球对等互连](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)不受支持。 可以通过 VNet 网关经由 ExpressRoute 或 VNet-to-VNet 连接到这些资源。
 
 ### <a name="failover-groups"></a>故障转移组
 系统数据库不会复制到故障转移组中的辅助实例。 因此，除非在辅助实例上手动创建系统数据库中的对象，否则依赖于该对象的方案将不可能在辅助实例上出现。

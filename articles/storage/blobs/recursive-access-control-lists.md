@@ -5,16 +5,16 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/22/2021
+ms.date: 02/05/2021
 ms.author: normesta
 ms.reviewer: prishet
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 626e626cbd8fa86bd0366516cbaf5a54789f3988
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 737608e4f83846187decb92b090f2385a8ff4ac6
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98741037"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99627334"
 ---
 # <a name="set-access-control-lists-acls-recursively-for-azure-data-lake-storage-gen2"></a>以递归方式为 Azure Data Lake Storage Gen2 设置访问控制列表 (ACL)
 
@@ -22,11 +22,14 @@ ACL 继承已可用于在父目录下创建的新子项。 你现在还可以以
 
 [库](#libraries) | [示例](#code-samples) | [最佳做法](#best-practice-guidelines)
 
+> [!NOTE]
+> Azure 存储资源管理器现在支持以递归方式应用 Acl。 若要了解详细信息，请参阅 [在 Azure 存储资源管理器中以递归方式应用 acl](data-lake-storage-explorer.md#apply-acls-recursively)。 
+
 ## <a name="prerequisites"></a>先决条件
 
 - Azure 订阅。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
-- 一个已启用分层命名空间 (HNS) 的存储帐户。 按[这些](create-data-lake-storage-account.md)说明创建一个。
+- 已启用分层命名空间 (HNS) 的存储帐户。 按[这些](create-data-lake-storage-account.md)说明创建一个。
 
 - 执行递归 ACL 过程所需的正确权限。 正确的权限包括下列任一项： 
 
