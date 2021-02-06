@@ -8,12 +8,12 @@ ms.date: 04/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: e549a79930cf599b89cd549691e23f3587e8a85c
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 4a3f272ab6e4a1788368442d7d060233391442fd
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202702"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99627809"
 ---
 # <a name="introduction-to-azure-managed-disks"></a>Azure 托管磁盘简介
 
@@ -44,6 +44,10 @@ Azure 托管磁盘是由 Azure 托管并与 Azure 虚拟机配合使用的块级
 ### <a name="azure-backup-support"></a>Azure 备份支持
 
 若要防范区域灾难，可以使用 [Azure 备份](../backup/backup-overview.md)创建具有基于时间的备份和备份保留策略的备份作业。 这样就可以随意执行 VM 或托管磁盘还原。 目前，Azure 备份支持高达 32 太字节 (TiB) 的磁盘大小。 [详细了解](../backup/backup-support-matrix-iaas.md) Azure VM 备份支持。
+
+#### <a name="azure-disk-backup"></a>Azure 磁盘备份
+
+Azure 备份以基于云的本机备份解决方案的形式提供 Azure 磁盘备份 (预览) ，以保护托管磁盘中的数据。 这是一个简单、安全且经济高效的解决方案，使你可以通过几个步骤配置对托管磁盘的保护。 Azure 磁盘备份提供了一个全包式解决方案，该解决方案通过使用备份策略自动创建快照并将其保留为配置的持续时间，为托管磁盘提供快照生命周期管理。 有关 Azure 磁盘备份的详细信息，请参阅 [预览版) 中的 Azure 磁盘备份概述 (](../backup/disk-backup-overview.md)。
 
 ### <a name="granular-access-control"></a>粒度访问控制
 

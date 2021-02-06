@@ -6,12 +6,12 @@ ms.author: rosouz
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/30/2020
-ms.openlocfilehash: 82133f990c1714276aa13ff22c3f19d0993d16df
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: cef5f178ea879ba98df90da36ec9c4b639dd100a
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96488708"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99627763"
 ---
 # <a name="frequently-asked-questions-about-azure-synapse-link-for-azure-cosmos-db"></a>有关 Azure Synapse Link for Azure Cosmos DB 的常见问题
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -22,7 +22,7 @@ Azure Synapse Link for Azure Cosmos DB 在 Azure Cosmos DB 和 Azure Synapse Ana
 
 ### <a name="is-azure-synapse-link-supported-for-all-azure-cosmos-db-apis"></a>所有 Azure Cosmos DB API 是否都支持 Azure Synapse Link？
 
-Azure Cosmos DB SQL (Core) API 和适用于 MongoDB 的 Azure Cosmos DB API 支持 Azure Synapse 链接。 
+Azure Cosmos DB SQL (Core) API 和 Azure Cosmos DB API for MongoDB 支持 Azure Synapse Link。 
 
 ### <a name="is-azure-synapse-link-supported-for-multi-region-azure-cosmos-db-accounts"></a>多区域 Azure Cosmos DB 帐户是否支持 Azure Synapse Link？
 
@@ -32,13 +32,13 @@ Azure Cosmos DB SQL (Core) API 和适用于 MongoDB 的 Azure Cosmos DB API 支�
 
 ### <a name="can-i-choose-to-enable-azure-synapse-link-for-only-certain-region-and-not-all-regions-in-a-multi-region-account-set-up"></a>我是否可以选择仅为特定区域启用 Azure Synapse Link，而不为多区域帐户设置中的所有区域启用它？
 
-为多区域帐户启用 Azure Synapse 链接时，将在所有区域中创建分析存储。 基础数据针对事务存储中的吞吐量和事务一致性进行了优化。
+为多区域帐户启用 Azure Synapse Link 时，将在所有区域中创建分析存储。 基础数据针对事务存储中的吞吐量和事务一致性进行了优化。
 
 ### <a name="is-backup-and-restore-supported-for-azure-synapse-link-enabled-accounts"></a>启用了 Azure Synapse Link 的帐户是否支持备份和还原？
 
 对于启用了分析存储的容器，目前不支持自动备份和还原分析存储中的数据。 
 
-在数据库帐户上启用 Synapse Link 后，Azure Cosmos DB 将像往常一样，继续以计划的备份间隔自动（仅）对容器的事务性存储中的数据[执行备份](./online-backup-and-restore.md)。 需要特别注意的是，将启用了分析存储的容器还原到新帐户时，将仅使用事务性存储来还原容器，而不会启用分析存储。 
+在数据库帐户上启用 Synapse Link 后，Azure Cosmos DB 会像往常一样，继续按计划的备份间隔以自动方式仅对容器的事务性存储中的数据[执行备份](./online-backup-and-restore.md)。 需要特别注意的是，将启用了分析存储的容器还原到新帐户时，将仅使用事务性存储来还原容器，而不会启用分析存储。 
 
 ### <a name="can-i-disable-the-azure-synapse-link-feature-for-my-azure-cosmos-db-account"></a>我是否可以为 Azure Cosmos DB 帐户禁用 Azure Synapse Link 功能？
 
@@ -46,9 +46,9 @@ Azure Cosmos DB SQL (Core) API 和适用于 MongoDB 的 Azure Cosmos DB API 支�
 
 如果需要关闭该功能，可以选择 2 个选项。 第一个选项是删除并重新创建新的 Azure Cosmos DB 帐户，根据需要迁移数据。 第二个选项是打开支持票证，以获取有关将数据迁移到其他帐户的帮助。
 
-### <a name="does-analytical-store-have-any-impact-on-cosmos-db-transactional-slas"></a>分析存储是否会对 Cosmos DB 事务性 Sla 有任何影响？
+### <a name="does-analytical-store-have-any-impact-on-cosmos-db-transactional-slas"></a>分析存储是否对 Cosmos DB 事务性 SLA 有一些影响？
 
-不会有任何影响。
+否，没有任何影响。
 
 ## <a name="azure-cosmos-db-analytical-store"></a>Azure Cosmos DB 分析存储
 
@@ -77,7 +77,7 @@ Azure Cosmos DB 保证事务和分析工作负荷之间的性能隔离。 在容
 只能使用 Azure Synapse Analytics 提供的各种运行时来访问和运行针对分析存储的查询。 可以使用以下对象查询和分析分析存储：
 
 * 完全支持 Scala、Python、SparkSQL 和 C# 的 Synapse Spark。 Synapse Spark 是数据工程和科学方案的核心
-* 具有 T-sql 语言的无服务器 SQL 池和对熟悉的 BI 工具的支持 (例如，Power BI Premium 等 ) 
+* 采用 T-SQL 语言且支持熟悉的 BI 工具（例如 Power BI Premium 等）的无服务器 SQL 池
 
 ### <a name="can-i-connect-to-analytical-store-from-synapse-sql-provisioned"></a>我是否可以从预配的 Synapse SQL 连接到分析存储？
 
@@ -109,9 +109,9 @@ Azure Cosmos DB 保证事务和分析工作负荷之间的性能隔离。 在容
 
 ## <a name="analytical-time-to-live-ttl"></a>分析生存时间 (TTL)
 
-### <a name="is-ttl-for-analytical-data-supported-at-both-container-and-item-level"></a>是否在容器和项级别支持分析数据的 TTl？
+### <a name="is-ttl-for-analytical-data-supported-at-both-container-and-item-level"></a>容器和项级别支持的分析数据是否为 TTL？
 
-目前，分析数据的 TTl 只能在容器级别配置，不支持在项级别设置分析 TTL。
+目前，分析数据的 TTL 只能在容器级别配置，不支持在项级别设置分析 TTL。
 
 ### <a name="after-setting-the-container-level--analytical-ttl-on-an-azure-cosmos-db-container-can-i-change-to-a-different-value-later"></a>在 Azure Cosmos DB 容器上设置容器级别分析 TTL 后，我是否可以在以后将其更改为其他值？
 
@@ -127,7 +127,7 @@ Azure Cosmos DB 保证事务和分析工作负荷之间的性能隔离。 在容
 
 Azure Synapse Link 的计费模型包括使用 Azure Cosmos DB 分析存储和 Synapse 运行时所产生的成本。 若要了解详细信息，请参阅 [Azure Cosmos DB 分析存储定价](analytical-store-introduction.md#analytical-store-pricing)和 [Azure Synapse Analytics 定价](https://azure.microsoft.com/pricing/details/synapse-analytics/)文章。
 
-### <a name="what-is-the-billing-impact-if-i-enable-synapse-link-in-my-azure-cosmos-db-database-account"></a>如果在 Azure Cosmos DB 数据库帐户中启用 Synapse 链接，会对计费产生什么影响？
+### <a name="what-is-the-billing-impact-if-i-enable-synapse-link-in-my-azure-cosmos-db-database-account"></a>如果在 Azure Cosmos DB 数据库帐户中启用 Synapse Link，会对计费产生什么影响？
 
 无。 仅当创建已启用分析存储的容器并开始加载数据时，才会向你收费。
 
@@ -148,7 +148,7 @@ Azure Synapse Link 的计费模型包括使用 Azure Cosmos DB 分析存储和 S
 |Azure Synapse 无服务器 SQL 池    | 读取、查看 |
 |Azure Synapse SQL 预配   |  不可用 |
 
-### <a name="do-my-azure-synapse-spark-tables-sync-with-my-azure-synapse-serverless-sql-pool-tables-the-same-way-they-do-with-azure-data-lake"></a>我的 Azure Synapse Spark 表是否与我的 Azure Synapse 无服务器 SQL 池表同步，其方式与 Azure Data Lake 相同？
+### <a name="do-my-azure-synapse-spark-tables-sync-with-my-azure-synapse-serverless-sql-pool-tables-the-same-way-they-do-with-azure-data-lake"></a>Azure Synapse Spark 表与 Azure Synapse 无服务器 SQL 池表同步的方式是否和它们与 Azure Data Lake 同步的方式相同？
 
 目前，此功能不可用。
 
