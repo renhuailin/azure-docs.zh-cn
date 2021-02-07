@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 758f7de46c524406f31a40072250eb7d59745d42
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 648e7991784212e4fe781efd5d9f01cb571c5012
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736082"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807846"
 ---
 # <a name="azure-security-baseline-for-app-service"></a>适用于应用服务的 Azure 安全基准
 
@@ -737,7 +737,7 @@ Microsoft 管理底层平台，并将所有客户数据视为敏感数据，并�
 
 **指导**：使用 Azure Policy 对可以在订阅中创建的资源类型施加限制。
 
-使用 Azure 资源关系图可以在其订阅中查询或发现资源。  确保环境中存在的所有 Azure 资源已获得批准。 
+使用 Azure 资源关系图可以在其订阅中查询或发现资源。  确保环境中的所有 Azure 资源均已获得批准。 
 
 - [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md) 
 
@@ -795,7 +795,7 @@ Microsoft 管理底层平台，并将所有客户数据视为敏感数据，并�
 
 **指南**：创建一个流程以定期查看未经授权的 azure 服务，以确保仅在订阅中使用已授权的 azure 服务。
 
-使用此过程中的 Azure 资源关系图来查询或发现其订阅中的资源。 确保环境中存在的所有 Azure 资源已获得批准。
+使用此过程中的 Azure 资源关系图来查询或发现其订阅中的资源。 确保环境中的所有 Azure 资源均已获得批准。
 
 使用以下内置策略定义，将 Azure 策略配置为对可在订阅中创建的资源类型施加限制：
 
@@ -1111,7 +1111,7 @@ Microsoft 管理底层平台，并将所有客户数据视为敏感数据，并�
 
 ### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10.5：将安全警报整合到事件响应系统中
 
-**指导**：使用连续导出功能导出安全中心警报和建议。 使用连续导出可以手动导出或者持续导出警报和建议。 根据业务需求，使用安全中心数据连接器流式传输警报 Sentinel。
+**指导**：使用连续导出功能导出安全中心警报和建议。 使用连续导出可以手动导出或者持续导出警报和建议。 根据业务需要，使用安全中心数据连接器将警报流式传输到 Azure Sentinel。
 
 - [如何配置连续导出](../security-center/continuous-export.md)
 

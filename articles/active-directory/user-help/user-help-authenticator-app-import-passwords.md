@@ -11,12 +11,12 @@ ms.topic: end-user-help
 ms.date: 01/28/2021
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: b0d7eeeb840a3efc560c20310b38bee93a038795
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: ecc6580148dfba92077336a26ff9160fbe88eb2c
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99055712"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99806149"
 ---
 # <a name="import-passwords-into-the-microsoft-authenticator-app"></a>将密码导入 Microsoft Authenticator 应用
 
@@ -24,7 +24,7 @@ Microsoft Authenticator 支持从 Google Chrome、Firefox、LastPass、Bitwarden
 
 ## <a name="import-from-google-chrome-or-android-smart-lock"></a>从 Google Chrome 或 Android Smart Lock 导入
 
-可以将密码从 Google Chrome 或 Android Smart Lock 导入到 smartphone 或台式计算机上的身份验证器。 可以执行以下操作：
+可以将密码从 Google Chrome 或 Android Smart Lock 导入到 smartphone 或台式计算机上的身份验证器。 方法：
 
 - [从 Android 和 iOS 上的 Chrome 导入](#import-from-chrome-on-android-and-ios)
 - [从 Chrome 桌面浏览器导入](#import-from-chrome-desktop-browser)
@@ -39,21 +39,21 @@ Android 和 Apple 手机上的 Google Chrome 用户可以直接从手机导入�
 
 1. ![对于 Android 手机，请点击右上角的 Google Chrome 省略号菜单 ](./media/user-help-authenticator-app-import-passwords/ellipsis-chrome.png) ，然后点击 "**设置"。**
 
-   &nbsp; | &nbsp;
+   平台 | 链接
    ---------- | --------
    Android | ![Google Chrome 设置菜单位置](./media/user-help-authenticator-app-import-passwords/android-settings-menu.png)
    iOS | ![Google Chrome 设置菜单图标](./media/user-help-authenticator-app-import-passwords/apple-settings-menu.png)
 
 1. 在 " **设置**" 中，打开 **密码**。
 
-   &nbsp; | &nbsp;
+   平台 | 链接
    ---------- | --------
    Android | ![Andoid Chrome 密码命令位置](./media/user-help-authenticator-app-import-passwords/android-passwords-location.png)
    iOS | ![Apple Chrome 密码命令位置](./media/user-help-authenticator-app-import-passwords/apple-passwords-location.png)
 
 1. 在 Android 设备上，点击右上角的 " ![ android 手机" 或 "iOS 设备" 右下方的 "Google Chrome 省略号" 菜单 ](./media/user-help-authenticator-app-import-passwords/ellipsis-chrome.png) ，然后点击 " **导出密码**"。
 
-   &nbsp; | &nbsp;
+   平台 | 链接
    ---------- | --------
    Android | ![Android Chrome 导出密码位置](./media/user-help-authenticator-app-import-passwords/android-export-passwords-location.png)
    iOS | ![Apple Chrome 导出密码位置](./media/user-help-authenticator-app-import-passwords/apple-export-passwords-location.png)
@@ -62,7 +62,7 @@ Android 和 Apple 手机上的 Google Chrome 用户可以直接从手机导入�
 
 1. 导出密码后，Chrome 会提示你选择要导入的应用。 选择 " **身份验证** 器" 以开始导入密码。完成后，会通知你导入状态。
 
-   &nbsp; | &nbsp;
+   平台 | 链接
    ---------- | --------
    Android | ![Android Chrome 导入密码位置](./media/user-help-authenticator-app-import-passwords/android-chrome-import.png)
    iOS | ![Apple Chrome 导入密码位置](./media/user-help-authenticator-app-import-passwords/apple-chrome-import.png)
@@ -105,7 +105,7 @@ Firefox 仅允许从桌面浏览器导出密码，因此在从 Firefox 导入密
 
       1. 使用首选和安全的方式在 Android 或 iOS 手机上传输导出的 CSV 文件，然后下载该文件。 接下来，与验证器应用共享 CSV 文件以开始导入。
 
-         &nbsp; | &nbsp;
+         平台 | 链接
          ---------- | --------
          Android | ![Android Chrome 导入密码位置](./media/user-help-authenticator-app-import-passwords/android-chrome-import.png)
          iOS | ![Apple Chrome 导入密码位置](./media/user-help-authenticator-app-import-passwords/apple-chrome-import.png)
@@ -134,7 +134,7 @@ LastPass 仅支持从桌面浏览器导出密码，因此在开始导入密码�
 
       1. 使用首选和安全的方式在智能手机上传输导出的 CSV 文件，然后下载该文件。 然后，与验证器应用共享 CSV 文件以开始导入。
 
-         &nbsp; | &nbsp;
+         平台 | 链接
          ---------- | --------
          Android | ![Android LastPass 导入密码位置](./media/user-help-authenticator-app-import-passwords/android-chrome-import.png)
          iOS | ![Apple LastPass 导入密码位置](./media/user-help-authenticator-app-import-passwords/apple-chrome-import.png)
@@ -153,7 +153,7 @@ Bitwarden 仅支持从桌面浏览器导出密码，因此在开始导入密码�
 
       1. 使用首选和安全的方式在智能手机上传输导出的 CSV 文件，然后下载该文件。 然后，与验证器应用共享 CSV 文件以开始导入。
 
-         &nbsp; | &nbsp;
+         平台 | 链接
          ---------- | --------
          Android | ![Android Bitwarden 导入密码位置](./media/user-help-authenticator-app-import-passwords/android-chrome-import.png)
          iOS | ![Apple Bitwarden 导入密码位置](./media/user-help-authenticator-app-import-passwords/apple-chrome-import.png)
@@ -186,7 +186,7 @@ Roboform 仅允许从其桌面应用导出密码，因此在开始导入之前�
 
       1. 使用首选和安全的方式在智能手机上传输导出的 CSV 文件，然后下载该文件。 然后，与验证器应用共享 CSV 文件以开始导入。
 
-         &nbsp; | &nbsp;
+         平台 | 链接
          ---------- | --------
          Android | ![Android Roboform 导入密码位置](./media/user-help-authenticator-app-import-passwords/android-chrome-import.png)
          iOS | ![Apple Roboform 导入密码位置](./media/user-help-authenticator-app-import-passwords/apple-chrome-import.png)
@@ -209,7 +209,7 @@ Roboform 仅允许从其桌面应用导出密码，因此在开始导入之前�
 
       1. 使用首选和安全的方式在智能手机上传输导出的 CSV 文件，然后下载该文件。 然后，与验证器应用共享 CSV 文件以开始导入。
 
-         &nbsp; | &nbsp;
+         平台 | 链接
          ---------- | --------
          Android | ![Android CSV 导入密码位置](./media/user-help-authenticator-app-import-passwords/android-chrome-import.png)
          iOS | ![Apple CSV 导入密码位置](./media/user-help-authenticator-app-import-passwords/apple-chrome-import.png)

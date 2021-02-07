@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: 08ab78171376f702aecb1f49571dda583eae5d82
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: df53062c7c897493a47d88ea2873f9710b9825bf
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97813864"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99806250"
 ---
 # <a name="manage-ddos-protection-plans-permissions-and-restrictions"></a>管理 DDoS 保护计划：权限和限制
 
@@ -43,12 +43,12 @@ DDoS 防护计划跨区域和订阅工作。 同一计划可从不同区域中�
 
 大多数组织都不需要创建多个计划。 无法直接在订阅之间移动计划。 如果要更改计划所位于的订阅，需要删除现有计划并创建新的计划。
 
-对于拥有各种订阅的客户，以及希望确保在其租户中部署单个计划以实现成本控制的客户，可以使用 Azure 策略 [限制创建 Azure DDoS 保护标准计划](https://github.com/Azure/Azure-Network-Security/tree/master/Azure%20DDoS%20Protection/Restrict%20creation%20of%20Azure%20DDoS%20Protection%20Standard%20Plans%20with%20Azure%20Policy)。 此策略将阻止创建任何 DDoS 计划，除非订阅之前标记为异常。 此策略还将显示已部署 DDoS 计划的所有订阅的列表，但不应将其标记为 "不符合"。
+对于拥有各种订阅的客户，以及希望确保在其租户中部署单个计划以实现成本控制的客户，可以使用 Azure 策略 [限制创建 Azure DDoS 保护标准计划](https://aka.ms/ddosrestrictplan)。 此策略将阻止创建任何 DDoS 计划，除非订阅之前标记为异常。 此策略还将显示已部署 DDoS 计划的所有订阅的列表，但不应将其标记为 "不符合"。
 
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解如何查看和配置 DDoS 防护计划的遥测，请继续阅读教程。
+要了解如何查看和配置 DDoS 防护计划的遥测，请继续阅读教程。
 
 > [!div class="nextstepaction"]
 > [查看和配置 DDoS 防护遥测](telemetry.md)

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: yelevin
-ms.openlocfilehash: a9d2cd48e3b686614f7361d2007f6f8183c2361e
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 66c315132ef0ef4d320e9edd8e9bcc28b2240924
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94657017"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99805084"
 ---
 # <a name="normalization-in-azure-sentinel"></a>Azure Sentinel 中的规范化
 
@@ -105,11 +105,11 @@ Azure Sentinel [官方 GitHub 存储库](https://github.com/Azure/Azure-Sentinel
 
 #### <a name="using-the-parsers"></a>使用分析器
 
-启用后，可以使用元分析器在当前启用的所有分析器上查询统一视图。 为此，请在 "Sentinel 日志" 页上，执行以下查询：
+启用后，可以使用元分析器在当前启用的所有分析器上查询统一视图。 若要执行此操作，请在 Azure Sentinel 日志页上，然后查询元分析器：
 
 :::image type="content" source="./media/normalization/query-parser.png" alt-text="查询分析器":::
  
-您还可以通过单击 "查询资源管理器"，在 "Sentinel 日志" 页中使用查询资源管理器访问元分析程序或单独的分析程序：
+您还可以通过单击 "查询资源管理器"，在 "日志" 页中使用查询资源管理器访问元分析器或单独的分析程序：
 
 :::image type="content" source="./media/normalization/query-explorer.png" alt-text="查询资源管理器":::
 

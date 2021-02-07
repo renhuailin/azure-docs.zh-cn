@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 1/12/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 7d045ad104f8e2055ae85b74f4aae8f4d3fd61a4
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: 5d2d923fc448beeff8fa165226890d88d97d01ad
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99509513"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99805659"
 ---
 # <a name="activate-and-set-up-your-sensor"></a>激活和设置传感器
 
@@ -96,7 +96,7 @@ ms.locfileid: "99509513"
 1. 定义证书名称。
 1. 上传 CRT 和密钥文件。
 1. 如果需要，请输入通行短语并上传 PEM 文件。
-1. 选择“下一步”。 验证屏幕将打开。 默认情况下，会在管理控制台和连接的传感器之间启用验证。
+1. 选择“**下一页**”。 验证屏幕将打开。 默认情况下，会在管理控制台和连接的传感器之间启用验证。
 1. 关闭 " **启用系统范围的验证** 切换" 以禁用验证。 建议启用验证。
 1. 选择“保存”。  
 
@@ -204,7 +204,7 @@ ms.locfileid: "99509513"
 | 窗口 | 图标 | 说明 |
 |---|---|---|
 | 用户 | :::image type="icon" source="media/concept-sensor-console-overview/users-icon-azure.png" border="false"::: | 定义具有不同访问级别的用户和角色。 |
-| 转发 | :::image type="icon" source="media/concept-sensor-console-overview/forwarding-icon-azure.png" border="false"::: | 将警报信息转发给合作伙伴，并将内部源 (例如，Sentinel) 与用于 IoT 的 Defender、电子邮件地址、webhook 服务器等集成。 <br /> 有关详细信息，请参阅 [转发警报信息](how-to-forward-alert-information-to-partners.md) 。 |
+| 转发 | :::image type="icon" source="media/concept-sensor-console-overview/forwarding-icon-azure.png" border="false"::: | 将警报信息转发给合作伙伴，并将内部源 (例如，Azure Sentinel) 与 Defender for IoT 集成、电子邮件地址、webhook 服务器等。 <br /> 有关详细信息，请参阅 [转发警报信息](how-to-forward-alert-information-to-partners.md) 。 |
 | 系统设置 | :::image type="icon" source="media/concept-sensor-console-overview/system-settings-icon-azure.png" border="false"::: | 配置系统设置。 例如，定义 DHCP 设置，提供邮件服务器详细信息，或创建端口别名。 |
 | 导入设置 | :::image type="icon" source="media/concept-sensor-console-overview/import-settings-icon-azure.png" border="false"::: | 显示 " **导入设置** " 窗口。 你可以在设备信息中执行手动更改。<br /> 有关详细信息，请参阅 [导入设备信息](how-to-import-device-information.md) 。 |
 
@@ -214,7 +214,7 @@ ms.locfileid: "99509513"
 |----|---|---|
 | 支持 | :::image type="icon" source="media/concept-sensor-console-overview/support-icon-azure.png" border="false"::: | 联系 [Microsoft 支持部门](https://support.microsoft.com/) 获取帮助。 |
 
-### <a name="see-also"></a>另请参阅
+### <a name="see-also"></a>请参阅
 
 [加入传感器](getting-started.md#4-onboard-a-sensor)
 

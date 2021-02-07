@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/28/2021
 ms.author: cholse
 ms.reviewer: dbakevlar
-ms.openlocfilehash: 3122b1c5d7ac8b9dca0e244a4b7e73a57c4c5fca
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: ac045694e8975509635e03221a8cb9cc84446b55
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99072398"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99806403"
 ---
 # <a name="back-up-and-recover-an-oracle-database-19c-database-on-an-azure-linux-vm-using-azure-backup"></a>使用 Azure 备份来备份和恢复 Azure Linux VM 上的 Oracle Database 19c 数据库
 
@@ -73,7 +73,7 @@ ms.locfileid: "99072398"
     export ORACLE_SID=test;
     ```
 
-    还应将 ORACLE_SID 变量添加到 `oracle` 用户文件， `.bashrc` 以便以后使用以下命令登录：
+    你还应使用以下命令将 ORACLE_SID 变量添加到 `oracle` 用户 `.bashrc` 文件以供将来登录：
 
     ```bash
     echo "export ORACLE_SID=test" >> ~oracle/.bashrc
@@ -697,7 +697,7 @@ $ scp vmoracle19c_xxxxxx_xxxxxx_xxxxxx.py azureuser@<publicIpAddress>:/tmp
 
    1. 在 Azure 门户中，选择 " **+ 创建资源** "，搜索并选择 " **存储帐户**"。
     
-      ![存储帐户添加页](./media/oracle-backup-recovery/storage-1.png)
+      ![显示创建资源的位置的屏幕截图。](./media/oracle-backup-recovery/storage-1.png)
     
     
    1. 在 "创建存储帐户" 页中，选择现有的资源组 **rg-oracle**，将存储帐户命名为 **oracrestore** ，然后选择 " **存储 V2" (generalpurpose V2)** 帐户类型。 将复制更改为 **本地冗余存储 (LRS)** 并将性能设置为 **Standard**。 确保将 "位置" 设置为与资源组中的所有其他资源相同的区域。 
@@ -877,7 +877,7 @@ $ scp vmoracle19c_xxxxxx_xxxxxx_xxxxxx.py azureuser@<publicIpAddress>:/tmp
 
 5.  现在，必须分离用 VM 还原操作创建的 NIC，因为它被配置为主接口。 单击 " **分离网络接口** "，然后选择类似于 **VMORACLE19C** 的新 NIC，并单击 **"确定"**
 
-    ![IP 地址值](./media/oracle-backup-recovery/create-ip-05.png)
+    ![显示在何处选择分离网络接口的屏幕截图。](./media/oracle-backup-recovery/create-ip-05.png)
     
     重新创建的 VM 现在将具有原始 NIC，该 NIC 与原始 IP 地址和网络安全组规则关联
     

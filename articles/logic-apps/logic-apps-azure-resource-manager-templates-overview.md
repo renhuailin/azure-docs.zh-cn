@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: article
 ms.date: 11/06/2020
-ms.openlocfilehash: 4070f373175f3497156ced011a57e2ed7bd6e770
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 2e1536d4f2ea7d71691c611e9127109c154f3266
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96009766"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807337"
 ---
 # <a name="overview-automate-deployment-for-azure-logic-apps-by-using-azure-resource-manager-templates"></a>概述：使用 Azure 资源管理器模板将 Azure 逻辑应用部署自动化
 
@@ -86,7 +86,7 @@ REST API 中的逻辑应用，请从 [Azure 逻辑应用 REST API 概述](/rest/
 * 逻辑用来通过[托管连接器](../connectors/apis-list.md)访问其他服务和系统的连接
 * 逻辑应用需要对部署使用的其他资源
 
-  例如，如果逻辑应用针对企业对企业 (B2B) 方案使用[集成帐户](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)，则模板的顶级 `parameters` 对象会声明接受该集成帐户的资源 ID 的参数。
+  例如，如果逻辑应用使用企业到企业 (B2B) 方案的 [集成帐户](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) ，则模板的顶级 `parameters` 对象将声明接受该集成帐户的资源 ID 的参数。
 
 下面是参数定义的一般结构和语法，[参数 - 资源管理器模板的结构和语法](../azure-resource-manager/templates/template-syntax.md#parameters)中对此做了全面介绍：
 
@@ -328,7 +328,7 @@ REST API 中的逻辑应用，请从 [Azure 逻辑应用 REST API 概述](/rest/
 
 下面是特定于逻辑应用资源定义的属性：
 
-| 属性 | 必需 | 类型 | 说明 |
+| 属性 | 必须 | 类型 | 说明 |
 |-----------|----------|------|-------------|
 | `state` | 是 | String | 逻辑应用在部署时的状态，`Enabled` 表示逻辑应用处于活动状态，`Disabled` 表示逻辑应用处于非活动状态。 例如，如果你尚未准备好推出逻辑应用，而是想要部署草稿版本，则可以使用 `Disabled` 选项。 |
 | `integrationAccount` | 否 | Object | 如果逻辑应用使用集成帐户（用于存储企业到企业 (B2B) 方案的项目），则此对象包含用于指定集成帐户 ID 的 `id` 属性。 |
@@ -627,7 +627,7 @@ REST API 中的逻辑应用，请从 [Azure 逻辑应用 REST API 概述](/rest/
 }
 ```
 
-连接资源定义引用模板的顶级参数作为其值，这意味着，在部署时可以使用参数文件提供这些值。 确保连接使用与逻辑应用相同的 Azure 资源组和位置。
+连接资源定义引用模板的顶级参数作为其值，以便可以在部署时使用参数文件来提供这些值。 确保连接使用与逻辑应用相同的 Azure 资源组和位置。
 
 下面是 Office 365 Outlook 连接的示例资源定义以及相应的模板参数：
 
@@ -746,12 +746,12 @@ REST API 中的逻辑应用，请从 [Azure 逻辑应用 REST API 概述](/rest/
                      }
                   }
                }
-            },
-            <other-logic-app-resource-information>,
-            "dependsOn": [
-               "[resourceId('Microsoft.Web/connections', parameters('office365_1_Connection_Name'))]"
-            ]
-         }
+            }
+         },
+         <other-logic-app-resource-information>,
+         "dependsOn": [
+            "[resourceId('Microsoft.Web/connections', parameters('office365_1_Connection_Name'))]"
+         ]
          // End logic app resource definition
       },
       // Office 365 Outlook API connection resource definition

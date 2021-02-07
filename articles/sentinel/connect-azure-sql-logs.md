@@ -8,26 +8,26 @@ ms.subservice: azure-sentinel
 ms.topic: how-to
 ms.date: 01/06/2021
 ms.author: yelevin
-ms.openlocfilehash: df132c35ebb04596d91720431f5b08cb88e2abd9
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: a3a09ceffc75e2d396d7bd7aeedd97b7f2b6ec2b
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98104177"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807727"
 ---
 # <a name="connect-azure-sql-database-diagnostics-and-auditing-logs"></a>连接 Azure SQL 数据库诊断和审核日志
 
 Azure SQL 是一种完全托管的平台即服务 (PaaS) 数据库引擎，可处理大多数数据库管理功能，例如升级、修补、备份和监视，无需用户参与。 
 
-利用 Azure SQL 数据库连接器，你可以将数据库审核和诊断日志流式传输到 Sentinel，使你能够在所有实例中持续监视活动。
+利用 Azure SQL 数据库连接器，可以将数据库审核和诊断日志流式传输到 Azure Sentinel，使你能够在所有实例中持续监视活动。
 
-- 连接诊断日志可将不同数据类型的数据库诊断日志发送到 "Sentinel" 工作区。
+- 通过连接诊断日志，可将不同数据类型的数据库诊断日志发送到 Azure Sentinel 工作区。
 
 - 连接审核日志使你可以从服务器级别的所有 Azure SQL 数据库流式传输安全审核日志。
 
 了解有关 [监视 AZURE SQL 数据库](../azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md)的详细信息。
 
-## <a name="prerequisites"></a>必备知识
+## <a name="prerequisites"></a>先决条件
 
 - 你必须具有 Azure Sentinel 工作区的读取和写入权限。
 
@@ -50,7 +50,7 @@ Azure SQL 是一种完全托管的平台即服务 (PaaS) 数据库引擎，可�
 1. **(可选)** 若要轻松查找数据库资源，请选择顶部 "筛选器" 栏上的 " **添加筛选器** "。
     1. 在 " **筛选器** " 下拉列表中，选择 " **资源类型**"。
     1. 在 " **值** " 下拉列表中，取消选择 " **全选**"，然后选择 " **SQL 数据库**"。
-    1. 单击“应用”。
+    1. 单击“应用”  。
     
 1. 选择要将其诊断日志发送到 Azure Sentinel 的数据库资源。
 

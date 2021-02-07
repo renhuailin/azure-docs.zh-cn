@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 22c49502883cb444027bd59a24bfb5bb3c32da4c
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 42d4467a6441e517ef3194f701eb47e7e68505b1
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97915158"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99806301"
 ---
 # <a name="view-and-configure-ddos-diagnostic-logging"></a>查看和配置 DDoS 诊断日志记录
 
@@ -73,12 +73,12 @@ Azure DDoS 防护标准通过 DDoS 攻击分析提供详细的攻击见解和可
 | **ResourceId** | 公共 IP 地址的资源 ID。 |
 | **类别** | 对于通知，这将为 `DDoSProtectionNotifications` 。|
 | **ResourceGroup** | 包含公共 IP 地址和虚拟网络的资源组。 |
-| **订阅** | DDoS 保护计划订阅 ID。 |
+| **SubscriptionId** | DDoS 保护计划订阅 ID。 |
 | **资源** | 公共 IP 地址的名称。 |
 | **ResourceType** | 这将始终为 `PUBLICIPADDRESS` 。 |
 | **OperationName** | 对于通知，这将为 `DDoSProtectionNotifications` 。  |
 | **消息** | 攻击的详细信息。 |
-| 类型 | 通知的类型。 可能的值包括 `MitigationStarted` 。 `MitigationStopped`. |
+| **类型** | 通知的类型。 可能的值包括 `MitigationStarted` 。 `MitigationStopped`. |
 | **PublicIpAddress** | 公共 IP 地址。 |
 
 # <a name="ddosmitigationflowlogs"></a>[DDoSMitigationFlowLogs](#tab/DDoSMitigationFlowLogs)
@@ -89,7 +89,7 @@ Azure DDoS 防护标准通过 DDoS 攻击分析提供详细的攻击见解和可
 | **ResourceId** | 公共 IP 地址的资源 ID。 |
 | **类别** | 对于流日志，这将为 `DDoSMitigationFlowLogs` 。|
 | **ResourceGroup** | 包含公共 IP 地址和虚拟网络的资源组。 |
-| **订阅** | DDoS 保护计划订阅 ID。 |
+| **SubscriptionId** | DDoS 保护计划订阅 ID。 |
 | **资源** | 公共 IP 地址的名称。 |
 | **ResourceType** | 这将始终为 `PUBLICIPADDRESS` 。 |
 | **OperationName** | 对于流日志，这将为 `DDoSMitigationFlowLogs` 。 |
@@ -98,7 +98,7 @@ Azure DDoS 防护标准通过 DDoS 攻击分析提供详细的攻击见解和可
 | **SourcePort** | 端口号范围介于0到65535之间。 |
 | **DestPublicIpAddress** | 公共 IP 地址。 |
 | **DestPort** | 端口号范围介于0到65535之间。 |
-| 协议  | 协议类型。 可能的值包括 `tcp` 、 `udp` 、 `other` 。|
+| **协议** | 协议类型。 可能的值包括 `tcp` 、 `udp` 、 `other` 。|
 
 # <a name="ddosmitigationreports"></a>[DDoSMitigationReports](#tab/DDoSMitigationReports)
 
@@ -108,7 +108,7 @@ Azure DDoS 防护标准通过 DDoS 攻击分析提供详细的攻击见解和可
 | **ResourceId** | 公共 IP 地址的资源 ID。 |
 | **类别** | 对于通知，这将为 `DDoSProtectionNotifications` 。|
 | **ResourceGroup** | 包含公共 IP 地址和虚拟网络的资源组。 |
-| **订阅** | DDoS 保护计划订阅 ID。 |
+| **SubscriptionId** | DDoS 保护计划订阅 ID。 |
 | **资源** | 公共 IP 地址的名称。 |
 | **ResourceType** | 这将始终为 `PUBLICIPADDRESS` 。 |
 | **OperationName** | 对于缓解报告，这将为 `DDoSMitigationReports` 。 |
@@ -128,9 +128,9 @@ Azure DDoS 防护标准通过 DDoS 攻击分析提供详细的攻击见解和可
 
 ## <a name="enable-diagnostic-logging-on-all-public-ips"></a>对所有公共 Ip 启用诊断日志记录
 
-此 [模板](https://github.com/Azure/Azure-Network-Security/tree/master/Azure%20DDoS%20Protection/Enable%20Diagnostic%20Logging/Azure%20Policy) 创建一个 Azure 策略定义，用于在定义的作用域内的所有公共 IP 日志上自动启用诊断日志记录。
+此 [模板](https://aka.ms/ddosdiaglogs) 创建一个 Azure 策略定义，用于在定义的作用域内的所有公共 IP 日志上自动启用诊断日志记录。
 
-[![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Network-Security%2Fmaster%2FAzure%2520DDoS%2520Protection%2FEnable%2520Diagnostic%2520Logging%2FAzure%2520Policy%2FDDoSLogs.json)
+[![“部署到 Azure”](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Network-Security%2Fmaster%2FAzure%2520DDoS%2520Protection%2FEnable%2520Diagnostic%2520Logging%2FAzure%2520Policy%2FDDoSLogs.json)
 
 ## <a name="view-log-data-in-workbooks"></a>查看工作簿中的日志数据
 
@@ -142,9 +142,9 @@ Azure DDoS 防护标准通过 DDoS 攻击分析提供详细的攻击见解和可
 
 ### <a name="azure-ddos-protection-workbook"></a>Azure DDoS 保护工作簿
 
-可以使用此 Azure 资源管理器 (ARM) 模板来部署攻击分析工作簿。 利用此工作簿，可以可视化多个可筛选面板中的攻击数据，轻松了解面临的威胁。 
+可以使用 [此 Azure 资源管理器 (ARM) 模板](https://aka.ms/ddosworkbook) 来部署攻击分析工作簿。 利用此工作簿，可以可视化多个可筛选面板中的攻击数据，轻松了解面临的威胁。 
 
-[![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Network-Security%2Fmaster%2FAzure%2520DDoS%2520Protection%2FAzure%2520DDoS%2520Protection%2520Workbook%2FAzureDDoSWorkbook_ARM.json)
+[![“部署到 Azure”](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Network-Security%2Fmaster%2FAzure%2520DDoS%2520Protection%2FAzure%2520DDoS%2520Protection%2520Workbook%2FAzureDDoSWorkbook_ARM.json)
 
 ![DDoS 保护工作簿](./media/ddos-attack-telemetry/ddos-attack-analytics-workbook.png)
 
@@ -154,7 +154,7 @@ Azure DDoS 防护标准通过 DDoS 攻击分析提供详细的攻击见解和可
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你将了解：
+在本教程中，你了解了如何执行以下操作：
 
 - 配置 DDoS 诊断日志，包括通知、缓解报告和缓解流日志。 
 - 对定义的作用域中的所有公共 Ip 启用诊断日志记录。

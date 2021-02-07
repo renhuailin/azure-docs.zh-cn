@@ -3,12 +3,12 @@ title: 启用容器 Azure Monitor |Microsoft Docs
 description: 本文介绍如何为容器启用和配置 Azure Monitor，使你了解容器的性能以及已识别的性能相关问题。
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: f598b42f1a8d9fcb42f09d17e40850cf3a1282be
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 56f60b58cff351aa37e98cdba933c929aaaedab6
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98943828"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99805996"
 ---
 # <a name="enable-azure-monitor-for-containers"></a>对容器启用 Azure Monitor
 
@@ -35,6 +35,12 @@ ms.locfileid: "98943828"
 ## <a name="prerequisites"></a>先决条件
 
 首先，请确保你已满足以下要求：
+
+> [!IMPORTANT]
+> Log Analytics 容器化 Linux 代理 (replicaset pod) 向群集内 Kubelet 安全端口 (10250) 上的所有 Windows 节点进行 API 调用，以收集与节点和容器性能相关的指标。 Kubelet 安全端口 (： 10250) 应在群集的虚拟网络中打开，以便对 Windows 节点和容器性能相关指标集合进行入站和出站操作。
+>
+> 如果你有一个包含 Windows 节点的 Kubernetes 群集，请查看并配置网络安全组和网络策略，以确保为群集的虚拟网络中的入站和出站打开 Kubelet 安全端口 (： 10250) 。
+
 
 - 拥有一个 Log Analytics 工作区。
 

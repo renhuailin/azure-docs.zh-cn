@@ -1,5 +1,5 @@
 ---
-title: 使用监控范围发现和浏览 ADF 中的数据
+title: 使用 Purview 发现和探索 ADF 中的数据
 description: 了解如何使用监控范围在 Azure 数据工厂中发现数据
 services: data-factory
 documentationcenter: ''
@@ -11,14 +11,14 @@ ms.author: lle
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 01/15/2021
-ms.openlocfilehash: 1a8ed80daa4406f32909a6622b8649f37ec48063
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: accb9bbf195daa3d25e1aed109e36ef309083385
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99063737"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99805303"
 ---
-# <a name="discover-and-explore-data-in-adf-using-purview"></a>使用监控范围发现和浏览 ADF 中的数据
+# <a name="discover-and-explore-data-in-adf-using-purview"></a>使用 Purview 发现和探索 ADF 中的数据
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
@@ -47,7 +47,7 @@ ms.locfileid: "99063737"
 ### <a name="actions-that-you-can-perform-over-datasets-with-data-factory-resources"></a>可以通过数据工厂资源对数据集执行的操作 
 你可以直接在 Azure 监控范围中搜索的数据上创建链接服务、数据集或数据流。
 
-:::image type="content" source="./media/data-factory-purview/actions-over-purview-data.png" alt-text="用于执行数据集的屏幕截图。":::
+:::image type="content" source="./media/data-factory-purview/actions-over-purview-data.png" alt-text="屏幕截图显示了如何在 Azure 监控范围搜索的数据上直接创建链接的服务、数据集或数据流。":::
 
 ##  <a name="nextsteps"></a>后续步骤 
 

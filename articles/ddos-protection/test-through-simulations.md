@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: 55042c8d1e612598cc5728668c9e87b054fb3afa
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: e95495e48725a68ab1fe3f37d235e5765b2c8015
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98537842"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99806233"
 ---
 # <a name="test-through-simulations"></a>通过模拟进行测试
 
@@ -38,7 +38,7 @@ ms.locfileid: "98537842"
 
 1. 输入或选择以下值，然后选择 " **开始测试**"：
 
-    |设置        |“值”                                              |
+    |设置        |值                                              |
     |---------      |---------                                          |
     |目标 IP 地址           | 输入要测试的公共 IP 地址之一。                     |
     |端口号   | 输入 _443_。                       |
@@ -63,7 +63,7 @@ ms.locfileid: "98537842"
 
 ### <a name="breakingpoint-cloud-api-script"></a>BreakingPoint 云 API 脚本
 
-此 [API 脚本](https://github.com/Azure/Azure-Network-Security/tree/master/Azure%20DDoS%20Protection/Breaking%20Point%20SDK) 可用于通过运行一次或使用 cron 来计划常规测试来自动执行 DDoS 测试。 这对于验证日志记录是否已正确配置以及检测和响应过程是否有效非常有用。 脚本需要 (使用 Ubuntu 18.04 LTS) 和 Python 3 进行测试的 Linux 操作系统。 使用所包含的脚本或 [BreakingPoint 云](http://breakingpoint.cloud/) 网站上的文档安装必备组件和 API 客户端。
+此 [API 脚本](https://aka.ms/ddosbreakingpoint) 可用于通过运行一次或使用 cron 来计划常规测试来自动执行 DDoS 测试。 这对于验证日志记录是否已正确配置以及检测和响应过程是否有效非常有用。 脚本需要 (使用 Ubuntu 18.04 LTS) 和 Python 3 进行测试的 Linux 操作系统。 使用所包含的脚本或 [BreakingPoint 云](http://breakingpoint.cloud/) 网站上的文档安装必备组件和 API 客户端。
 
 ## <a name="next-steps"></a>后续步骤
 

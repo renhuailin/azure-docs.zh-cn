@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/28/2021
 ms.author: cholse
 ms.reviewer: dbakevlar
-ms.openlocfilehash: 695f151e6d6cc0a677942f60c751567da0cfca7c
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: fce947c43e8559f4ea2a65645805e987a9015d3f
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99063784"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99806267"
 ---
 # <a name="back-up-and-recover-an-oracle-database-19c-database-on-an-azure-linux-vm-using-azure-storage"></a>使用 Azure 存储在 Azure Linux VM 上备份和恢复 Oracle Database 19c 数据库
 
@@ -31,19 +31,19 @@ ms.locfileid: "99063784"
    ssh azureuser@<publicIpAddress>
    ```
    
-2. 切换到 **_root_* _ 用户：
+2. 切换到 ***根*** 用户：
  
    ```bash
    sudo su -
    ```
     
-3. 将 oracle 用户添加到 _*_ /etc/sudoers_ * _ 文件中：
+3. 将 oracle 用户添加到 ***/etc/sudoers*** 文件：
 
    ```bash
    echo "oracle   ALL=(ALL)      NOPASSWD: ALL" >> /etc/sudoers
    ```
 
-4. 此步骤假设你有一个在名为 _vmoracle19c * 的 VM 上运行的 Oracle 实例 (测试) 。
+4. 此步骤假定你有一个在名为 *vmoracle19c* 的 VM 上运行的 Oracle 实例 (测试) 。
 
    将用户切换到 *oracle* 用户：
 
@@ -57,7 +57,7 @@ ms.locfileid: "99063784"
     export ORACLE_SID=test;
     ```
    
-   还应将 ORACLE_SID 变量添加到 `oracle` 用户文件， `.bashrc` 以便以后使用以下命令登录：
+   你还应使用以下命令将 ORACLE_SID 变量添加到 `oracle` 用户 `.bashrc` 文件以供将来登录：
 
     ```bash
     echo "export ORACLE_SID=test" >> ~oracle/.bashrc
@@ -182,31 +182,31 @@ ms.locfileid: "99063784"
 
 1. 在 Azure 门户中配置文件存储
 
-    在 Azure 门户中，选择 "***+ 创建资源**"，搜索并选择 _*_存储帐户_*_
+    在 Azure 门户中，选择 "***+ 创建资源**"，搜索并选择 "*_存储帐户_*"*
     
-    ![存储帐户添加页](./media/oracle-backup-recovery/storage-1.png)
+    ![屏幕截图，显示创建资源的位置，并选择存储帐户。](./media/oracle-backup-recovery/storage-1.png)
     
-2. 在 "创建存储帐户" 页中，选择现有的资源组 _*_rg-oracle_*_，将存储帐户命名为 _*_oracbkup1_*_ ，然后选择 " _*_存储 V2" (generalpurpose V2)_*_ 帐户类型。 将复制更改为 _*_本地冗余存储 (LRS)_*_ 并将性能设置为 _*_Standard_*_。 确保将 "位置" 设置为与资源组中的所有其他资源相同的区域。 
+2. 在 "创建存储帐户" 页中，选择现有的资源组 ***rg-oracle** _，为你的存储帐户 _*_oracbkup1_*_ 命名，并为帐户类型选择 _*_存储 V2 (generalpurpose V2)_*_ 。 将复制更改为 _*_本地冗余存储 (LRS)_*_ 并将性能设置为 _ *_标准_* *。 确保将 "位置" 设置为与资源组中的所有其他资源相同的区域。 
     
-    ![存储帐户添加页](./media/oracle-backup-recovery/file-storage-1.png)
+    ![屏幕截图显示了在何处选择现有的资源组。](./media/oracle-backup-recovery/file-storage-1.png)
    
    
-3. 单击 " _*_高级_*_ " 选项卡，在 "Azure 文件" 下，将 _*_大文件共享_*_ 设置为 " _*_已启用_*_"。 依次单击“查看 + 创建”、“创建”。
+3. 单击 "**高级**" 选项卡，然后在 "Azure 文件" 下，将 " _*_大型文件共享_*_ " 设置为 "_已启用_"。 依次单击“查看 + 创建”、“创建”。
     
-    ![存储帐户添加页](./media/oracle-backup-recovery/file-storage-2.png)
-    
-    
-4. 创建存储帐户后，请前往资源并选择 " _*_文件共享_"*_
-    
-    ![存储帐户添加页](./media/oracle-backup-recovery/file-storage-3.png)
-    
-5. 单击 " _*_ + 文件 share_ *_"，然后在 "*_新建文件共享_"*边栏选项卡中，为文件共享 _*_orabkup1_*_ 命名。将 _*_Quota_*_ 设置为 _*_10240_*_ GiB，并检查 _*_事务优化_*_ 作为层。配额反映文件共享可以增长到的上限。由于我们使用的是标准存储，因此 PAYG 和未预配资源，因此将其设置为 10 TiB 不会产生超出你使用范围的成本。如果备份策略需要更多的存储空间，则必须将配额设置为适当的级别以保存所有备份。  完成 "新建文件共享" 边栏选项卡后，单击*"_创建_"。
-    
-    ![存储帐户添加页](./media/oracle-backup-recovery/file-storage-4.png)
+    ![显示将大文件共享设置为启用的位置的屏幕截图。](./media/oracle-backup-recovery/file-storage-2.png)
     
     
-6. 创建后，单击 "文件共享设置" 页上的 " _*_orabkup1_*_ "。 
-    单击 " _*_连接_*_ " 选项卡以打开 "连接" 边栏选项卡，然后单击 " _*_Linux_*_ " 选项卡。复制提供的命令，以便使用 SMB 协议装载文件共享。 
+4. 创建存储帐户后，请前往资源并选择 "***文件共享***"
+    
+    ![显示在何处选择文件共享的屏幕截图。](./media/oracle-backup-recovery/file-storage-3.png)
+    
+5. 单击 "打开 ***+ 文件共享**"，然后在 " _*_新建文件共享_*_ " 边栏选项卡中，为文件共享 _*_orabkup1_*_。 将 _*_配额_*_ 设置为 _*_10240_*_ GiB，并检查优化为层的 _*_事务_*_ 。 配额反映文件共享可以增长到的上限。 由于我们使用的是标准存储，因此 PAYG 和未预配资源，因此将其设置为 10 TiB 不会产生超出你使用范围的成本。 如果备份策略需要更多的存储空间，则必须将配额设置为适当的级别以保存所有备份。   完成 "新建文件共享" 边栏选项卡后，单击 "_创建_"。
+    
+    ![显示在何处添加新文件共享的屏幕截图。](./media/oracle-backup-recovery/file-storage-4.png)
+    
+    
+6. 创建后，单击 "文件共享设置" 页上的 " ***orabkup1*** "。 
+    单击 "**连接**" 选项卡以打开 "连接" 边栏选项卡，然后单击 "_ *_Linux_**" 选项卡。复制提供的命令，以便使用 SMB 协议装载文件共享。 
     
     ![存储帐户添加页](./media/oracle-backup-recovery/file-storage-5.png)
 
@@ -371,7 +371,7 @@ ms.locfileid: "99063784"
 
     ```bash
     cd /u02/oradata/TEST
-    rm -f _.dbf
+    rm -f *.dbf
     ```
 
 3. 以下命令使用 RMAN 还原缺少的数据文件并恢复数据库：

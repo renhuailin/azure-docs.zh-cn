@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
-ms.date: 01/25/2021
-ms.openlocfilehash: 8e5b43383e0b49c0fe6fffdd9ffee6667fb540f8
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.date: 02/05/2021
+ms.openlocfilehash: 6c064acc44e180d3e99bdcf68d2e1e129d52fd5d
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99054748"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99805928"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure 逻辑应用的限制和配置信息
 
@@ -47,7 +47,7 @@ ms.locfileid: "99054748"
 
 下面是针对单个逻辑应用运行的限制：
 
-| 名称 | 多租户限制 | 集成服务环境限制 | 注释 |
+| 名称 | 多租户限制 | 集成服务环境限制 | 说明 |
 |------|--------------------|---------------------------------------|-------|
 | 运行持续时间 | 90 天 | 366 天 | 运行持续时间是使用运行开始时间以及在开始时工作流设置“[运行历史记录保留期(天)](#change-duration)”中指定的限制计算的。 <p><p>若要更改默认限制，请参阅[更改存储中的运行持续时间和历史记录保留期](#change-duration)。 |
 | 存储中的运行历史记录保留期 | 90 天 | 366 天 | 当运行的持续时间超过当前运行历史记录保留期限制时，将从存储的运行历史记录中删除该运行。 无论运行是完成还是超时，都会始终使用运行开始时间和工作流设置“[运行历史记录保留期(天)](#change-retention)”中指定的当前限制来计算运行历史记录保留期。 无论先前的限制如何，将始终使用当前限制来计算保留期。 <p><p>若要更改默认限制以及了解详细信息，请参阅存储[在存储中更改持续时间和运行历史记录保留期](#change-retention)。 若要提高最大限制，[请联系逻辑应用团队](mailto://logicappsemail@microsoft.com)，就你的要求获取帮助。 |
@@ -122,7 +122,7 @@ ms.locfileid: "99054748"
 
 ### <a name="concurrency-and-debatching"></a>并发和取消批处理
 
-| 名称 | 限制 | 注释 |
+| 名称 | 限制 | 说明 |
 | ---- | ----- | ----- |
 | 触发器并发 | 并发关闭：无限制 <p><p>启用并发后无法撤消： <p><p>- 默认值：25 <br>- 最小值：1 <br>- 最大值：50 | 此限制是可以同时运行的逻辑应用实例的最大数量，也可以是并行运行。 <p><p>**注意**：启用并发后，[解除数组批处理](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch)的 SplitOn 限制会降低到 100 个项。 <p><p>若要更改此限制，请参阅[更改触发器并发限制](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency)或[按顺序触发实例](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger)。 |
 | 最大等待运行数 | 并发关闭： <p><p>- 最小值：1 <br>- 最大值：50 <p><p>并发启用： <p><p>- 最小值：10 加上并发运行的数量（触发器并发） <br>- 最大值：100 | 此限制是逻辑应用已在运行最大并发实例时可以等待运行的逻辑应用实例的最大数量。 <p><p>若要更改此限制，请参阅[更改等待的运行限制](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs)。 |
@@ -137,7 +137,7 @@ ms.locfileid: "99054748"
 
 ### <a name="multi-tenant-logic-apps-service"></a>多租户逻辑应用服务
 
-| 名称 | 限制 | 注释 |
+| 名称 | 限制 | 说明 |
 | ---- | ----- | ----- |
 | 操作：每 5 分钟执行的次数 | 默认限制为 100,000，最大限制为 300,000。 | 若要将此默认限制增加到逻辑应用的最大值，请参阅处于预览阶段的[在高吞吐量模式下运行](#run-high-throughput-mode)。 也可根据需要[在多个逻辑应用之间分配工作负载](../logic-apps/handle-throttling-problems-429-errors.md#logic-app-throttling)。 |
 | 操作：并发出站调用 | ~2,500 | 你可减少并发请求数，或根据需要减少持续时间。 |
@@ -225,7 +225,7 @@ Azure 逻辑应用支持通过网关执行写入操作（包括插入和更新�
 
 某些连接器操作会进行异步调用或侦听 Webhook 请求，因此，这些操作的超时时间可能会长于以下限制。 有关详细信息，请参阅特定连接器的技术详细信息以及[工作流触发器和操作](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action)。
 
-| 名称 | 逻辑应用（多租户） |  (预览的逻辑应用)  | Integration service 环境 | 注释 |
+| 名称 | 逻辑应用（多租户） |  (预览的逻辑应用)  | Integration service 环境 | 说明 |
 |------|---------------------------|----------------------|---------------------------------|-------|
 | 出站请求 | 120 秒 <br>（2 分钟） | 230 秒 <br> (3.9 分钟)  | 240 秒 <br>（4 分钟） | 出站请求的示例包括 HTTP 触发器或操作发出的调用。 有关预览版本的详细信息，请参阅 [Azure 逻辑应用预览](logic-apps-overview-preview.md)。 <p><p>**提示**：对于运行时间较长的操作，请使用 [异步轮询模式](../logic-apps/logic-apps-create-api-app.md#async-pattern)或 [until 循环](../logic-apps/logic-apps-workflow-actions-triggers.md#until-action)。 在调用其他具有[可调用终结点](logic-apps-http-endpoint.md)的逻辑应用时，若要绕过超时限制，可改用内置的 Azure 逻辑应用操作（可在“内置”下的连接器连接器中找到）。 |
 | 入站请求 | 120 秒 <br>（2 分钟） | 230 秒 <br> (3.9 分钟)  | 240 秒 <br>（4 分钟） | 入站请求的示例包括请求触发器、HTTP Webhook 触发器和 HTTP Webhook 操作收到的调用。 有关预览版本的详细信息，请参阅 [Azure 逻辑应用预览](logic-apps-overview-preview.md)。 <p><p>**注意**：要使原始调用方能够获得响应，则除非以嵌套工作流的形式调用其他逻辑应用，否则必须在限制内完成响应的所有步骤。 有关详细信息，请参阅[调用、触发器或嵌套逻辑应用](../logic-apps/logic-apps-http-endpoint.md)。 |
@@ -235,7 +235,7 @@ Azure 逻辑应用支持通过网关执行写入操作（包括插入和更新�
 
 #### <a name="message-size"></a>消息大小
 
-| 名称 | 多租户限制 | 集成服务环境限制 | 注释 |
+| 名称 | 多租户限制 | 集成服务环境限制 | 说明 |
 |------|--------------------|---------------------------------------|-------|
 | 消息大小 | 100 MB | 200 MB | 若要解决此限制问题，请参阅[使用分块处理大型消息](../logic-apps/logic-apps-handle-large-messages.md)。 但是，某些连接器和 API 可能不支持分块，甚至不支持默认限制。 <p><p>- 连接器（如 AS2、X12 和 EDIFACT）具有自己的 [B2B 消息限制](#b2b-protocol-limits)。 <br>- ISE 连接器使用 ISE 限制，而不是非 ISE 连接器限制。 |
 | 使用分块的消息大小 | 1 GB | 5 GB | 此限制适用于本机支持分块或可在其运行时配置中启用分块的操作。 <p><p>如果你使用的是 ISE，则逻辑应用引擎支持此限制，但连接器具有自己的分块限制（不超过引擎限制），例如请参阅 [Azure Blob 存储连接器的 API 参考](/connectors/azureblob/)。 有关分块的详细信息，请参阅[使用分块处理大型消息](../logic-apps/logic-apps-handle-large-messages.md)。 |
@@ -243,7 +243,7 @@ Azure 逻辑应用支持通过网关执行写入操作（包括插入和更新�
 
 #### <a name="character-limits"></a>字符限制
 
-| 名称 | 注释 |
+| 名称 | 说明 |
 |------|-------|
 | 表达式计算限制 | 131,072 个字符 | `@concat()`、`@base64()`、`@string()` 表达式的长度不能超过此限制。 |
 | 请求 URL 字符限制 | 16,384 个字符 |
@@ -253,7 +253,7 @@ Azure 逻辑应用支持通过网关执行写入操作（包括插入和更新�
 
 #### <a name="retry-policy"></a>重试策略
 
-| 名称 | 限制 | 注释 |
+| 名称 | 限制 | 说明 |
 | ---- | ----- | ----- |
 | 重试次数 | 90 | 默认值为 4。 若要更改默认值，请使用[重试策略参数](../logic-apps/logic-apps-workflow-actions-triggers.md)。 |
 | 重试最大延迟 | 1 天 | 若要更改默认值，请使用[重试策略参数](../logic-apps/logic-apps-workflow-actions-triggers.md)。 |
@@ -266,7 +266,7 @@ Azure 逻辑应用支持通过网关执行写入操作（包括插入和更新�
 
 如果逻辑应用从使用请求触发器开始，并启用 [Azure Active Directory 开放式身份验证](../active-directory/develop/index.yml) (Azure AD OAuth) 来授权对请求触发器的入站调用，则应遵循以下限制：
 
-| 名称 | 限制 | 注释 |
+| 名称 | 限制 | 说明 |
 | ---- | ----- | ----- |
 | Azure AD 授权策略 | 5 | |
 | 每个授权策略的声明 | 10 | |
@@ -279,7 +279,7 @@ Azure 逻辑应用支持通过网关执行写入操作（包括插入和更新�
 
 下面介绍对可通过 Web API 创建的自定义连接器的限制。
 
-| 名称 | 多租户限制 | 集成服务环境限制 | 注释 |
+| 名称 | 多租户限制 | 集成服务环境限制 | 说明 |
 |------|--------------------|---------------------------------------|-------|
 | 自定义连接器数 | 每个 Azure 订阅 1,000 | 每个 Azure 订阅 1,000 ||
 | 自定义连接器的每分钟请求数 | 每分钟每个连接 500 个请求 | 每分钟每个自定义连接器 2,000 个请求 ||
@@ -339,7 +339,7 @@ Azure 逻辑应用支持通过网关执行写入操作（包括插入和更新�
 
 ### <a name="artifact-capacity-limits"></a>项目容量限制
 
-| 项目 | 限制 | 注释 |
+| 项目 | 限制 | 说明 |
 | -------- | ----- | ----- |
 | Assembly | 8 MB | 若要上传大于 2 MB 的文件，请使用 [Azure 存储帐户和 blob 容器](../logic-apps/logic-apps-enterprise-integration-schemas.md)。 |
 | 映射（XSLT 文件） | 8 MB | 若要上传大于 2 MB 的文件，请使用 [Azure 逻辑应用 REST API - 映射](/rest/api/logic/maps/createorupdate)。 <p><p>**注意**：映射可以成功处理的数据或记录量取决于 Azure 逻辑应用中的消息大小和操作超时限制。 例如，如果使用 HTTP 操作，则根据 [HTTP 消息大小和超时限制](#http-limits)，在操作能够在 HTTP 超时限制内完成的情况下，映射最多可以处理达到 HTTP 消息大小限制的数据量。 |
@@ -350,7 +350,7 @@ Azure 逻辑应用支持通过网关执行写入操作（包括插入和更新�
 
 ### <a name="throughput-limits"></a>吞吐量限制
 
-| 运行时终结点 | 免费 | 基本 | 标准 | 注释 |
+| 运行时终结点 | 免费 | 基本 | 标准 | 说明 |
 |------------------|------|-------|----------|-------|
 | 每 5 分钟读取调用 | 3,000 | 30,000 | 60,000 | 此限制适用于从逻辑应用的运行历史记录获取原始输入和输出的调用。 你可根据需要在多个帐户之间分配工作负荷。 |
 | 每 5 分钟调用调用 | 3,000 | 30,000 | 45,000 | 你可根据需要在多个帐户之间分配工作负荷。 |
@@ -364,7 +364,7 @@ Azure 逻辑应用支持通过网关执行写入操作（包括插入和更新�
 
 以下消息大小限制适用于 B2B 协议：
 
-| 名称 | 多租户限制 | 集成服务环境限制 | 注释 |
+| 名称 | 多租户限制 | 集成服务环境限制 | 说明 |
 |------|--------------------|---------------------------------------|-------|
 | AS2 | v2 - 100 MB<br>v1 - 25 MB | v2 - 200 MB <br>v1 - 25 MB | 适用于解码和编码 |
 | X12 | 50 MB | 50 MB | 适用于解码和编码 |
@@ -427,6 +427,12 @@ Azure 逻辑应用支持通过网关执行写入操作（包括插入和更新�
 
 > [!TIP]
 > 为帮助你更简单地创建安全规则，可选择性地使用[服务标记](../virtual-network/service-tags-overview.md) LogicAppsManagement，而不是为每个区域指定入站逻辑应用 IP 地址前缀。 另外，还可以使用 **AzureConnectors** 服务标记进行托管的连接器，将入站 webhook 回调到逻辑应用服务，而不是为每个区域指定入站托管连接器 IP 地址前缀。 这些标记适用于可使用逻辑应用服务的区域。
+>
+> 以下连接器使入站 webhook 回调逻辑应用服务：
+>
+> Adobe Creative Cloud、Adobe 签署、Adobe 符号演示、Adobe 签署预览、Adobe 签署阶段、Azure Sentinel、Business Central、Calendly、Common Data Service、DocuSign、DocuSign 演示、用于 Fin 的 Dynamics 365 & Ops、LiveChat、Office 365 Outlook、Outlook.com、Parserr、SAP *、Microsoft 团队的倒班、团队团队项目、Typeform
+>
+> \***SAP**：返回调用方取决于部署环境是多租户 AZURE 还是 ISE。 在多租户环境中，本地数据网关将调用逻辑应用服务。 在 ISE 中，SAP 连接器会将调用返回给逻辑应用服务。
 
 <a name="multi-tenant-inbound"></a>
 
