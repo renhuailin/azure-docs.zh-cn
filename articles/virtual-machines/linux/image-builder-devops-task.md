@@ -7,12 +7,12 @@ ms.date: 01/27/2021
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: imaging
-ms.openlocfilehash: df97ecd1668dcc0e21408b7d39b0973e8f0d8fbf
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 56f1e78e0f2bbba15b50664b88bd8808731e6836
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98934256"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807608"
 ---
 # <a name="azure-image-builder-service-devops-task"></a>Azure 映像生成器服务 DevOps 任务
 
@@ -26,7 +26,7 @@ ms.locfileid: "98934256"
 
 * ["不稳定" 的 AIB 任务](https://marketplace.visualstudio.com/items?itemName=AzureImageBuilder.devOps-task-for-azure-image-builder-canary)，这使我们可以将最新的更新和功能放入最新的更新和功能，让客户在将其升级到 "稳定" 任务之前对其进行测试。 如果没有报告的问题，并且我们的遥测未显示任何问题，请在大约1周后将任务代码提升为 "稳定"。 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * [从 Visual Studio Marketplace 安装稳定的 DevOps 任务](https://marketplace.visualstudio.com/items?itemName=AzureImageBuilder.devOps-task-for-azure-image-builder)。
 * 你必须具有 VSTS DevOps 帐户，并创建了一个生成管道
@@ -156,10 +156,10 @@ ms.locfileid: "98934256"
 
    可以引用多个脚本，也可以添加更多命令，例如：
 
-       ```PowerShell
-       & 'c:\buildArtifacts\webapp\webconfig.ps1'
-       & 'c:\buildArtifacts\webapp\installAgent.ps1'
-       ```
+    ```PowerShell
+    & 'c:\buildArtifacts\webapp\webconfig.ps1'
+    & 'c:\buildArtifacts\webapp\installAgent.ps1'
+    ```
 * Linux-在 Linux 系统上，生成项目放置在 `/tmp` 目录中。 但是，在许多 Linux 操作系统上，重新启动时，将删除/tmp 目录内容。 如果希望项目存在于映像中，则必须创建另一个目录并将其复制到其中。  例如：
 
     ```bash
@@ -312,7 +312,7 @@ starting run template...
 
 ### <a name="can-i-specify-the-image-template-name"></a>能否指定映像模板名称？
 
-不是。 使用唯一的模板名称，然后将其删除。
+不能。 使用唯一的模板名称，然后将其删除。
 
 ### <a name="the-image-builder-failed-how-can-i-troubleshoot"></a>图像生成器失败。 如何进行故障排除？
 

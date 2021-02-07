@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/13/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 4bda3622c1bb1cb66e83b82df0d13cbfee9e20a3
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: b50ab8cae91aab56be287f517fa6e6a0b25db8e1
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878115"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807863"
 ---
 # <a name="azure-security-baseline-for-azure-web-application-firewall"></a>Azure Web 应用程序防火墙的 azure 安全基线
 
@@ -135,7 +135,7 @@ ms.locfileid: "98878115"
 
 **指南**：配置 Azure Web 应用程序防火墙 () WAF 要发送到 SIEM 安全日志管理解决方案（如 Azure Sentinel）或第三方的日志。 这些日志包括 Azure 活动、诊断和实时 WAF 日志，然后可以在不同的工具（例如 Azure Monitor、Excel 和 Power BI）中查看这些日志。 通过 azure Web 应用程序防火墙日志，可了解 Azure WAF 评估、匹配和阻止的数据。
 
-Azure Sentinel 包含一个内置的 Azure WAF 工作簿，该工作簿提供 Azure WAF 上的安全事件概述。 此工作簿包含事件、匹配和阻止规则，以及记录到防火墙日志中的其他所有内容。 此遥测可用于启动操作手册自动化，以根据 Sentinel 收集的 WAF 事件来通知或采取更正措施。
+Azure Sentinel 包含一个内置的 Azure WAF 工作簿，该工作簿提供 Azure WAF 上的安全事件概述。 此工作簿包含事件、匹配和阻止规则，以及记录到防火墙日志中的其他所有内容。 此遥测可用于启动操作手册自动化，以根据 Azure Sentinel 收集的 WAF 事件来通知或采取更正措施。
 
 - [查看活动日志](../azure-resource-manager/management/view-activity-logs.md)
 

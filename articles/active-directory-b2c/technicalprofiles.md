@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 66172fc9e258ae99e8ed263342025f5c33f7a168
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 5eff20ecb1366114ead80877b684ef512742803b
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99219666"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99805388"
 ---
 # <a name="technicalprofiles"></a>TechnicalProfiles
 
@@ -84,7 +84,7 @@ ms.locfileid: "99219666"
 
 **TechnicalProfile** 元素包含以下属性：
 
-| Attribute | 必需 | 说明 |
+| Attribute | 必须 | 说明 |
 |---------|---------|---------|
 | ID | 是 | 技术配置文件的唯一标识符。 可以使用此标识符从策略文件中的其他元素引用技术配置文件。 例如，**OrchestrationSteps** 和 **ValidationTechnicalProfile**。 |
 
@@ -118,7 +118,7 @@ ms.locfileid: "99219666"
 
 协议指定用于与另一方通信的协议。 Protocol  元素包含以下属性：
 
-| Attribute | 必需 | 说明 |
+| Attribute | 必须 | 说明 |
 | --------- | -------- | ----------- |
 | 名称 | 是 | Azure AD B2C 支持的有效协议的名称，用作技术配置文件的一部分。 可能的值：`OAuth1`、`OAuth2`、`SAML2`、`OpenIdConnect`、`Proprietary` 或 `None`。 |
 | Handler | 否 | 如果 "协议名称" 设置为 `Proprietary` ，则指定 Azure AD B2C 用来确定协议处理程序的程序集的名称。 |
@@ -135,7 +135,7 @@ Metadata 元素包含特定协议的相关配置选项。 相应的[技术配置
 
 Metadata 元素的 Item 元素包含以下属性 ：
 
-| 属性 | 必需 | 说明 |
+| 属性 | 必须 | 说明 |
 | --------- | -------- | ----------- |
 | 密钥 | 是 | 元数据密钥。 请参阅每种[技术配置文件类型](#type-of-technical-profiles)，了解元数据项的列表。 |
 
@@ -189,7 +189,7 @@ Metadata 元素的 Item 元素包含以下属性 ：
 
 **Key** 元素包含以下属性：
 
-| Attribute | 必需 | 说明 |
+| Attribute | 必须 | 说明 |
 | --------- | -------- | ----------- |
 | ID | 否 | 从策略文件中的其他元素引用的特定密钥对的唯一标识符。 |
 | StorageReferenceId | 是 | 从策略文件中的其他元素引用的存储密钥容器的标识符。 |
@@ -210,7 +210,7 @@ InputClaimsTransformations 元素可以包含一组输入声明转换元素，�
 
 **InputClaimsTransformation** 元素包含以下属性：
 
-| Attribute | 必需 | 说明 |
+| Attribute | 必须 | 说明 |
 | --------- | -------- | ----------- |
 | ReferenceId | 是 | 已在策略文件或父策略文件中定义的声明转换的标识符。 |
 
@@ -249,7 +249,7 @@ InputClaims  元素包含以下元素：
 
 InputClaim  元素包含以下属性：
 
-| Attribute | 必需 | 说明 |
+| Attribute | 必须 | 说明 |
 | --------- | -------- | ----------- |
 | ClaimTypeReferenceId | 是 | 声明类型的标识符。 声明已在策略文件或父策略文件的声明架构部分中定义。 |
 | DefaultValue | 否 | 当 ClaimTypeReferenceId 指示的声明不存在时用来创建声明的默认值。技术配置文件可将生成的声明用作 InputClaim。 |
@@ -323,7 +323,7 @@ PersistedClaims 元素包含 [Azure AD 技术配置文件](active-directory-tech
 
 **PersistedClaim** 元素包含以下属性：
 
-| Attribute | 必需 | 说明 |
+| Attribute | 必须 | 说明 |
 | --------- | -------- | ----------- |
 | ClaimTypeReferenceId | 是 | 已在策略文件或父策略文件的 ClaimsSchema 节中定义的声明类型的标识符。 |
 | DefaultValue | 否 | 要用于创建声明的默认值（如果声明不存在）。 |
@@ -354,7 +354,7 @@ OutputClaims 是在技术配置文件完成后返回到声明包的声明的集�
 
 OutputClaim 元素包含以下属性：
 
-| Attribute | 必需 | 说明 |
+| Attribute | 必须 | 说明 |
 | --------- | -------- | ----------- |
 | ClaimTypeReferenceId | 是 | 已在策略文件或父策略文件的 ClaimsSchema 节中定义的声明类型的标识符。 |
 | DefaultValue | 否 | 要用于创建声明的默认值（如果声明不存在）。 |
@@ -377,7 +377,7 @@ OutputClaim 元素包含以下属性：
 
 **OutputClaimsTransformation** 元素包含以下属性：
 
-| Attribute | 必需 | 说明 |
+| Attribute | 必须 | 说明 |
 | --------- | -------- | ----------- |
 | ReferenceId | 是 | 已在策略文件或父策略文件中定义的声明转换的标识符。 |
 
@@ -428,7 +428,7 @@ OutputClaim 元素包含以下属性：
 
 SubjectNamingInfo 定义[依赖方策略](relyingparty.md#subjectnaminginfo)中的令牌中使用的使用者名称。 **SubjectNamingInfo** 包含以下属性：
 
-| Attribute | 必需 | 说明 |
+| Attribute | 必须 | 说明 |
 | --------- | -------- | ----------- |
 | ClaimType | 是 | 已在策略文件的 ClaimsSchema 节中定义的声明类型的标识符。 |
 
@@ -440,7 +440,7 @@ SubjectNamingInfo 定义[依赖方策略](relyingparty.md#subjectnaminginfo)中�
 
 **IncludeTechnicalProfile** 元素包含以下属性：
 
-| Attribute | 必需 | 说明 |
+| Attribute | 必须 | 说明 |
 | --------- | -------- | ----------- |
 | ReferenceId | 是 | 已在策略文件或父策略文件中定义的技术配置文件的标识符。 |
 
@@ -448,14 +448,14 @@ SubjectNamingInfo 定义[依赖方策略](relyingparty.md#subjectnaminginfo)中�
 以下示例说明了包含的用法：
 
 - REST-API-Common - 具有基本配置的通用技术配置文件。
-- REST-ValidateProfile - 包括 REST-API-Commom 技术配置文件，并指定输入和输出声明 。
-- REST-UpdateProfile - 包括 REST-API-Commom 技术配置文件，指定输入声明，并覆盖 `ServiceUrl` 元数据 。
+- *Rest-ValidateProfile* -包括 *rest API 常用* 技术配置文件，并指定输入和输出声明。
+- *Rest-UpdateProfile* -包括 *rest API 常用* 技术配置文件，指定输入声明，并覆盖 `ServiceUrl` 元数据。
 
 ```xml
 <ClaimsProvider>
   <DisplayName>REST APIs</DisplayName>
   <TechnicalProfiles>
-    <TechnicalProfile Id="REST-API-Commom">
+    <TechnicalProfile Id="REST-API-Common">
       <DisplayName>Base REST API configuration</DisplayName>
       <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
       <Metadata>
@@ -480,7 +480,7 @@ SubjectNamingInfo 定义[依赖方策略](relyingparty.md#subjectnaminginfo)中�
       <OutputClaims>
         <OutputClaim ClaimTypeReferenceId="promoCode" />
       </OutputClaims>
-      <IncludeTechnicalProfile ReferenceId="REST-API-Commom" />
+      <IncludeTechnicalProfile ReferenceId="REST-API-Common" />
     </TechnicalProfile>
 
     <TechnicalProfile Id="REST-UpdateProfile">
@@ -492,7 +492,7 @@ SubjectNamingInfo 定义[依赖方策略](relyingparty.md#subjectnaminginfo)中�
         <InputClaim ClaimTypeReferenceId="objectId" />
         <InputClaim ClaimTypeReferenceId="email" />
       </InputClaims>
-      <IncludeTechnicalProfile ReferenceId="REST-API-Commom" />
+      <IncludeTechnicalProfile ReferenceId="REST-API-Common" />
     </TechnicalProfile>
   </TechnicalProfiles>
 </ClaimsProvider>
@@ -549,7 +549,7 @@ AAD-UserReadUsingAlternativeSecurityId 包括 `AAD-Common` 技术配置文件。
 
 UseTechnicalProfileForSessionManagement 元素引用了[单一登录会话技术配置文件](custom-policy-reference-sso.md)。 **UseTechnicalProfileForSessionManagement** 元素包含以下属性：
 
-| Attribute | 必需 | 说明 |
+| Attribute | 必须 | 说明 |
 | --------- | -------- | ----------- |
 | ReferenceId | 是 | 已在策略文件或父策略文件中定义的技术配置文件的标识符。 |
 

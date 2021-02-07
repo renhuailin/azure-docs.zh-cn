@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/28/2020
 ms.author: yitoh
-ms.openlocfilehash: d9b77def3ccefe3c866ccef78684d38da0b8a268
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: ea62b5df7159440a7538c7db0711b7d8f63ec220
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97915141"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99806284"
 ---
 # <a name="view-and-configure-ddos-protection-alerts"></a>查看和配置 DDoS 防护警报
 
@@ -41,15 +41,15 @@ Azure DDoS 防护标准通过 DDoS 攻击分析提供详细的攻击见解和可
 使用这些模板，可以为已启用诊断日志记录的所有公共 IP 地址配置警报。 因此，若要使用这些警报模板，首先需要一个启用了诊断设置的 Log Analytics 工作区。 请参阅 [查看和配置 DDoS 诊断日志记录](diagnostic-logging.md)。
 
 ### <a name="azure-monitor-alert-rule"></a>Azure Monitor 警报规则
-此 [Azure Monitor 警报规则](https://github.com/Azure/Azure-Network-Security/tree/master/Azure%20DDoS%20Protection/Azure%20Monitor%20Alert%20-%20DDoS%20Mitigation%20Started) 将运行一个简单的查询，以检测发生活动 DDoS 缓解的时间。 这表明可能存在攻击。 操作组可用于作为警报的结果调用操作。
+此 [Azure Monitor 警报规则](https://aka.ms/ddosmitigationstatus) 将运行一个简单的查询，以检测发生活动 DDoS 缓解的时间。 这表明可能存在攻击。 操作组可用于作为警报的结果调用操作。
 
-[![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Network-Security%2Fmaster%2FAzure%2520DDoS%2520Protection%2FAzure%2520Monitor%2520Alert%2520-%2520DDoS%2520Mitigation%2520Started%2FDDoSMitigationStarted.json)
+[![“部署到 Azure”](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Network-Security%2Fmaster%2FAzure%2520DDoS%2520Protection%2FAzure%2520Monitor%2520Alert%2520-%2520DDoS%2520Mitigation%2520Started%2FDDoSMitigationStarted.json)
 
 ### <a name="azure-monitor-alert-rule-with-logic-app"></a>逻辑应用 Azure Monitor 警报规则
 
-此 [模板](https://github.com/Azure/Azure-Network-Security/tree/master/Azure%20DDoS%20Protection/DDoS%20Mitigation%20Alert%20Enrichment) 可部署已扩充的 DDoS 缓解警报的必要组件： Azure Monitor 警报规则、操作组和逻辑应用。 此过程的结果是一封电子邮件警报，其中包含有关受攻击的 IP 地址的详细信息，包括与 IP 关联的资源的相关信息。 资源的所有者将作为电子邮件的收件人以及安全团队添加。 还会执行基本应用程序可用性测试，并将结果包含在电子邮件警报中。
+此 [模板](https://aka.ms/ddosalert) 可部署已扩充的 DDoS 缓解警报的必要组件： Azure Monitor 警报规则、操作组和逻辑应用。 此过程的结果是一封电子邮件警报，其中包含有关受攻击的 IP 地址的详细信息，包括与 IP 关联的资源的相关信息。 资源的所有者将作为电子邮件的收件人以及安全团队添加。 还会执行基本应用程序可用性测试，并将结果包含在电子邮件警报中。
 
-[![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Network-Security%2Fmaster%2FAzure%2520DDoS%2520Protection%2FDDoS%2520Mitigation%2520Alert%2520Enrichment%2FEnrich-DDoSAlert.json)
+[![“部署到 Azure”](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Network-Security%2Fmaster%2FAzure%2520DDoS%2520Protection%2FDDoS%2520Mitigation%2520Alert%2520Enrichment%2FEnrich-DDoSAlert.json)
 
 ## <a name="configure-alerts-through-portal"></a>通过门户配置警报
 
@@ -64,7 +64,7 @@ Azure DDoS 防护标准通过 DDoS 攻击分析提供详细的攻击见解和可
     |---------                |---------                                                                                           |
     | 范围                   | 选中“选择资源”。 </br> 选择包含要记录的公共 IP 地址的 **订阅**，选择 "**资源类型** 的 **公共 ip 地址**"，然后选择要为其记录指标的特定公共 ip 地址。 </br> 选择“完成”。 | 
     | 条件 | 选择 " **选择条件**"。 </br> 在 "信号名称" 下，选择 **"DDoS 攻击"**。 </br> 在 " **运算符**" 下，选择 " **大于或等于**"。 </br> 在 " **聚合类型**" 下，选择 " **最大值**"。 </br> 在 " **阈值**" 下，输入 *1*。 对于 " **DDoS 攻击" 或 "非** 指标"， **0** 表示未受到攻击，而 **1** 表示受到攻击。 </br> 选择“完成”。 | 
-    | Actions | 选择 " **添加操作组**"。 </br> 选择“创建操作组”。 </br> 在 " **通知**" 下的 " **通知类型**" 下，选择 " **电子邮件/短信/推送/语音**"。 </br> 在 " **名称**" 下输入 _MyUnderAttackEmailAlert_。 </br> 单击 "编辑" 按钮，选择 " **电子邮件** "，并选择所需的以下任意选项，然后选择 **"确定"**。 </br> 选择“查看 + 创建”。 | 
+    | 操作 | 选择 " **添加操作组**"。 </br> 选择“创建操作组”。 </br> 在 " **通知**" 下的 " **通知类型**" 下，选择 " **电子邮件/短信/推送/语音**"。 </br> 在 " **名称**" 下输入 _MyUnderAttackEmailAlert_。 </br> 单击 "编辑" 按钮，选择 " **电子邮件** "，并选择所需的以下任意选项，然后选择 **"确定"**。 </br> 选择“查看 + 创建”。 | 
     | 警报规则详细信息 | 在 " **警报规则名称**" 下输入 _MyDdosAlert_。 |
 
 在检测到几分钟后，你应该会收到一封来自 Azure Monitor 度量值的电子邮件，如下图所示：
@@ -92,7 +92,7 @@ Azure 安全中心提供 [安全警报](../security-center/security-center-manag
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你将了解：
+在本教程中，你了解了如何执行以下操作：
 
 - 通过 Azure Monitor 配置警报
 - 通过门户配置警报

@@ -3,12 +3,12 @@ title: 跨租户管理体验
 description: Azure 委派资源管理可实现跨租户管理体验。
 ms.date: 02/02/2021
 ms.topic: conceptual
-ms.openlocfilehash: 5180b2c28bc1157cb785c04f794cc5c9636764c8
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 41047a35328d4eac370d98a6d660f20e5006a2bb
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99576678"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99805168"
 ---
 # <a name="cross-tenant-management-experiences"></a>跨租户管理体验
 
@@ -143,7 +143,7 @@ Azure PowerShell [AzSubscription cmdlet](/powershell/module/Az.Accounts/Get-AzSu
 
 - 管理[客户租户中的](../../sentinel/multiple-tenants-service-providers.md) Azure Sentinel 资源
 - [跟踪攻击并查看跨多个租户的安全警报](https://techcommunity.microsoft.com/t5/azure-sentinel/using-azure-lighthouse-and-azure-sentinel-to-monitor-across/ba-p/1043899)
-- 跨租户跨多个 Sentinel 工作区[查看事件](../../sentinel/multiple-workspace-view.md)
+- 跨租户跨多个 Azure Sentinel 工作区[查看事件](../../sentinel/multiple-workspace-view.md)
 
 [Azure 服务运行状况](../../service-health/index.yml)：
 

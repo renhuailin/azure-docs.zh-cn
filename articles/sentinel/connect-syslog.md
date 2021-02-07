@@ -1,6 +1,6 @@
 ---
 title: 将 Syslog 数据连接到 Azure Sentinel |Microsoft Docs
-description: 使用设备和 Sentinel 之间 Linux 计算机上的代理将支持 Syslog 的任何计算机或设备连接到 Azure Sentinel。
+description: 在设备和 Azure Sentinel 之间使用 Linux 计算机上的代理将支持 Syslog 的任何计算机或设备连接到 Azure Sentinel。
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
-ms.openlocfilehash: 8c3cf4c3c135b3f275542af4f531d1071e180ebe
-ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
+ms.openlocfilehash: 35c8c2aa31887feb294b04b8a88bbe5478659e5e
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98747184"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807897"
 ---
 # <a name="collect-data-from-linux-based-sources-using-syslog"></a>使用 Syslog 从基于 Linux 的源收集数据
 
@@ -77,7 +77,7 @@ ms.locfileid: "98747184"
 
 1. 如果已添加要监视的所有设备，并调整每个设备的任何严重性选项，请选中 " **将下面的配置应用到我的计算机**" 复选框。
 
-1. 选择“保存” 。 
+1. 选择“保存”。 
 
 1. 在 VM 或设备上，请确保正在发送指定的设施。
 

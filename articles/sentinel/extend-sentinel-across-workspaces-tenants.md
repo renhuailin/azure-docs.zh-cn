@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/11/2020
 ms.author: yelevin
-ms.openlocfilehash: 4312a819f8fd41805dca095556efdc6189f23af9
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: dfd8f94dc7ab4e428647b8f44a86a2cd06634e2a
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98757113"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807235"
 ---
 # <a name="extend-azure-sentinel-across-workspaces-and-tenants"></a>跨工作区和租户扩展 Azure Sentinel
 
@@ -127,7 +127,7 @@ Azure Sentinel 提供预先加载的查询示例，旨在帮助您入门并熟�
 
 若要配置和管理多个 Azure Sentinel 工作区，需要自动使用 Azure Sentinel 管理 API。 有关如何自动部署 Azure Sentinel 资源的详细信息，包括警报规则、搜寻查询、工作簿和行动手册，请参阅 [扩展 Azure sentinel： api、集成和管理自动化](https://techcommunity.microsoft.com/t5/azure-sentinel/extending-azure-sentinel-apis-integration-and-management/ba-p/1116885)。
 
-另请参阅 [部署和管理 Azure Sentinel 作为代码](https://techcommunity.microsoft.com/t5/azure-sentinel/deploying-and-managing-azure-sentinel-as-code/ba-p/1131928) ，以及如何将 azure [Lighthouse 与 Sentinel 的 DevOps 功能结合使用](https://techcommunity.microsoft.com/t5/azure-sentinel/combining-azure-lighthouse-with-sentinel-s-devops-capabilities/ba-p/1210966) ，以获得用于将 azure sentinel 作为代码进行管理并从专用 GitHub 存储库部署和配置资源的合并社区贡献式方法。 
+另请参阅 [部署和管理 Azure sentinel 作为代码](https://techcommunity.microsoft.com/t5/azure-sentinel/deploying-and-managing-azure-sentinel-as-code/ba-p/1131928) ，以及如何将 azure [Lighthouse 与 Azure sentinel 的 DevOps 功能结合使用](https://techcommunity.microsoft.com/t5/azure-sentinel/combining-azure-lighthouse-with-sentinel-s-devops-capabilities/ba-p/1210966) ，以获得用于将 azure sentinel 作为代码进行管理并从专用 GitHub 存储库部署和配置资源的综合社区提供的方法。 
 
 ## <a name="managing-workspaces-across-tenants-using-azure-lighthouse"></a>使用 Azure Lighthouse 跨租户管理工作区
 

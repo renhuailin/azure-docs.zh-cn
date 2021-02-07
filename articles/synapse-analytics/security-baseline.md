@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 89a437504394797b8cbed5325210186248082c33
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 5e2f6d8ca1f3911959f396eb1ed77ce8377c0e3c
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98218224"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807829"
 ---
 # <a name="azure-security-baseline-for-azure-synapse-analytics"></a>Azure Synapse Analytics 的 azure 安全基线
 
@@ -129,7 +129,7 @@ Azure Synapse Analytics 的 Azure 安全基准包含有助于改进部署安全�
 
 * [了解 Azure SQL 数据库的服务终结点的服务标记](../azure-sql/database/vnet-service-endpoint-rule-overview.md#limitations)
 
-* [了解和使用服务标记](../virtual-network/service-tags-overview.md)
+* [了解并使用服务标记](../virtual-network/service-tags-overview.md)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -1013,7 +1013,7 @@ Azure Synapse Analytics 的 Azure 安全基准包含有助于改进部署安全�
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9.1：确保定期执行自动备份
 
-**指南**：在创建七天可用的还原点当天，会自动创建专用 SQL 池的快照。 无法更改此保留期。 专用 SQL 池支持 (RPO) 的8小时恢复点目标。 可以根据过去七天捕获的任意一个快照，还原主要区域中的数据仓库。 请注意，如果需要，还可以手动触发快照。
+**指南**：在创建七天可用的还原点当天，会自动创建专用 SQL 池的快照。 无法更改此保留期。 专用 SQL 池支持八小时恢复点目标 (RPO)。 可以根据过去七天捕获的任意一个快照，还原主要区域中的数据仓库。 请注意，如果需要，还可以手动触发快照。
 
 * [在专用 SQL 池中备份和还原](./sql-data-warehouse/backup-and-restore.md)
 
@@ -1023,7 +1023,7 @@ Azure Synapse Analytics 的 Azure 安全基准包含有助于改进部署安全�
 
 ### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9.2：执行完整系统备份，并备份客户管理的所有密钥
 
-**指南**：数据仓库的快照在一整天内会自动创建，创建的还原点可用于七天。 无法更改此保留期。 专用 SQL 池支持 (RPO) 的8小时恢复点目标。 可以根据过去七天捕获的任意一个快照，还原主要区域中的数据仓库。 请注意，如果需要，还可以手动触发快照。
+**指南**：数据仓库的快照在一整天内会自动创建，创建的还原点可用于七天。 无法更改此保留期。 专用 SQL 池支持八小时恢复点目标 (RPO)。 可以根据过去七天捕获的任意一个快照，还原主要区域中的数据仓库。 请注意，如果需要，还可以手动触发快照。
 
 如果使用客户管理的密钥来加密数据库加密密钥，请确保密钥正在备份。
 
@@ -1057,7 +1057,7 @@ Azure Synapse Analytics 的 Azure 安全基准包含有助于改进部署安全�
 
 * [管理 Azure SQL 数据库长期备份保留](../azure-sql/database/long-term-backup-retention-configure.md)
 
-* [适用于静态数据的 Azure 存储加密](../storage/common/storage-service-encryption.md)
+* [静态数据的 Azure 存储加密](../storage/common/storage-service-encryption.md)
 
 * [如何在 Key Vault 中启用软删除](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
@@ -1111,7 +1111,7 @@ Azure Synapse Analytics 的 Azure 安全基准包含有助于改进部署安全�
 
 ### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10.5：将安全警报整合到事件响应系统中
 
-**指导**：使用连续导出功能导出 Azure 安全中心警报和建议。 使用连续导出可以手动导出或者持续导出警报和建议。 可以使用 Azure 安全中心数据连接器将警报流式传输到 Sentinel。
+**指导**：使用连续导出功能导出 Azure 安全中心警报和建议。 使用连续导出可以手动导出或者持续导出警报和建议。 可以使用 Azure 安全中心数据连接器将警报流式传输到 Azure Sentinel。
 
 * [如何配置连续导出](../security-center/continuous-export.md)
 

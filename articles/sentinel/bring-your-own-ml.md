@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.author: yelevin
-ms.openlocfilehash: 6a891a301d5869603a7d90d28bb9063d7d5bdb1d
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: f8d795dcf64230140e1dd07e3f30ca3aa6825ab4
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660570"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99806997"
 ---
 # <a name="bring-your-own-machine-learning-ml-into-azure-sentinel"></a>自带机器学习 (ML) 到 Azure Sentinel
 
@@ -82,7 +82,7 @@ BYO ML 包包含 Microsoft 在 ML 的前端的最佳实践和研究，以实现�
 | 文件名 | 说明 |
 | --------- | ----------- |
 | azure_sentinel_utilities. whl | 包含用于从 Azure 读取 blob 并写入 Log Analytics 的实用程序。 |
-| AnomalousRASampleData | 笔记本演示如何在 Sentinel 中使用异常资源访问模型以及生成的定型和测试示例数据。 |
+| AnomalousRASampleData | 笔记本演示如何在 Azure Sentinel 中使用异常资源访问模型，并生成定型和测试示例数据。 |
 | AnomalousRATraining.ipynb | 用于训练算法、生成并保存模型的笔记本。 |
 | AnomalousRAScoring.ipynb | 用于计划要运行的模型的笔记本，直观显示结果，并将评分写回到 Azure Sentinel。 |
 |
@@ -99,7 +99,7 @@ BYO ML 包包含 Microsoft 在 ML 的前端的最佳实践和研究，以实现�
 
 ### <a name="auto-export-instruction"></a>自动导出指令
 
-若要基于 Sentinel 中自己的数据构建自定义 ML 模型，需要将数据从 Log Analytics 导出到 Blob 存储或事件中心资源，以便 ML 模型可以从 Databricks 访问该模型。 了解如何将 [数据引入 Azure Sentinel](connect-data-sources.md)。
+若要基于 Azure Sentinel 中自己的数据构建自定义 ML 模型，需要将数据从 Log Analytics 导出到 Blob 存储或事件中心资源，以便 ML 模型可以从 Databricks 访问该模型。 了解如何将 [数据引入 Azure Sentinel](connect-data-sources.md)。
 
 在此示例中，需要在 Azure blob 存储中为文件共享访问日志提供训练数据。 笔记本和库中记录了数据的格式。
 
@@ -141,7 +141,7 @@ az monitor log-analytics workspace data-export list --resource-group "RG_NAME" -
 
 ### <a name="correlate-with-data-outside-of-azure-sentinel"></a>与 Azure Sentinel 之外的数据关联
 
-你还可以将 Azure Sentinel 之外的数据引入 blob 存储或事件中心，并将其与 Sentinel 数据相关联，以生成 ML 模型。 
+你还可以将 Azure Sentinel 之外的数据引入 blob 存储或事件中心，并将其与 Azure Sentinel 数据相关联，以生成 ML 模型。 
  
 ### <a name="copy-and-install-the-related-packages"></a>复制并安装相关程序包
 

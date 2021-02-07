@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.custom: it-pro
-ms.openlocfilehash: 9117474c3cbf5087a5b63512fcc17c4771bf7aa6
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: b63db3d02b471a577586ecd54f56caa59af504d6
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96343869"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99805506"
 ---
 # <a name="add-an-api-connector-to-a-sign-up-user-flow-preview"></a>将 API 连接器添加到注册用户流 (预览) 
 
@@ -36,7 +36,7 @@ ms.locfileid: "96343869"
 6. 提供 API 调用的 **终结点 URL** 。
 7. 提供 API 的身份验证信息。
 
-   - 目前仅支持基本身份验证。 如果希望出于开发目的使用没有基本身份验证的 API，只需输入 API 可以忽略的 "虚拟" **用户名** 和 **密码** 。 若要将 Azure 函数与 API 密钥一起使用，可以将代码作为查询参数包含在 **终结点 URL** 中 (例如，https： []() //contoso.azurewebsites.net/api/endpoint <b>？ code = 0123456789</b>) 。
+   - 目前仅支持基本身份验证。 如果希望出于开发目的使用没有基本身份验证的 API，只需输入 API 可以忽略的 "虚拟" **用户名** 和 **密码** 。 若要将 Azure 函数与 API 密钥一起使用，可以将代码作为查询参数包含在 **终结点 URL** 中 (例如 `https://contoso.azurewebsites.net/api/endpoint?code=0123456789`) 。
 
    ![配置新的 API 连接器](./media/add-api-connector/api-connector-config.png)
 8. 选择“保存”。
@@ -73,7 +73,7 @@ Content-type: application/json
 }
 ```
 
-只有 **Azure AD B2C** 用户属性体验中列出的用户属性和自定义属性  >  **User attributes** 可在请求中发送。
+只有 **Azure AD B2C** 用户属性体验中列出的用户属性和自定义属性  >  可在请求中发送。
 
 自定义属性在目录的 **extension_ \<extensions-app-id> _CustomAttribute**  格式中存在。 你的 API 应该会接收此相同序列化格式的声明。 有关自定义属性的详细信息，请参阅 [在 Azure Active Directory B2C 中定义自定义属性](user-flow-custom-attributes.md)。
 
@@ -103,7 +103,7 @@ Content-type: application/json
 
 ## <a name="after-signing-in-with-an-identity-provider"></a>使用标识提供者登录后
 
-在用户使用标识 (提供者（如 Google、Facebook、& Azure AD) 进行身份验证后，会立即调用注册过程中的 API 连接器。 此步骤优先于 **_属性集合页_* _，这是向用户显示的用于收集用户特性的窗体。 如果用户正在使用本地帐户注册，则不会调用此步骤。
+在用户使用标识 (提供者（如 Google、Facebook、& Azure AD) 进行身份验证后，会立即调用注册过程中的 API 连接器。 此步骤优先于 " ***属性集合" 页***，它是向用户显示的用于收集用户属性的窗体。 如果用户正在使用本地帐户注册，则不会调用此步骤。
 
 ### <a name="example-request-sent-to-the-api-at-this-step"></a>此步骤发送到 API 的示例请求
 ```http
@@ -240,8 +240,8 @@ Content-type: application/json
 | 参数                                          | 类型              | 必须 | 说明                                                                                                                                                                                                                                                                            |
 | -------------------------------------------------- | ----------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 版本                                            | 字符串            | 是      | API 的版本。                                                                                                                                                                                                                                                                |
-| action                                             | 字符串            | 是      | 值必须是 `Continue`。                                                                                                                                                                                                                                                              |
-| \<builtInUserAttribute>                            | \<attribute-type> | 否       | 返回的值可以覆盖从用户收集的值。 如果选择此选项，则还可以在令牌中返回。                                              |
+| 操作                                             | 字符串            | 是      | 值必须是 `Continue`。                                                                                                                                                                                                                                                              |
+| \<builtInUserAttribute>                            | \<attribute-type> | 否       | 返回的值可以覆盖从用户收集的值。 如果选择作为 **应用程序声明**，还可以在令牌中返回。                                              |
 | \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | 否       | 声明不需要包含 `_<extensions-app-id>_` 。 返回的值可以覆盖从用户收集的值。 如果选择作为 **应用程序声明**，还可以在令牌中返回。  |
 
 ### <a name="example-of-a-blocking-response"></a>阻塞响应的示例
@@ -261,7 +261,7 @@ Content-type: application/json
 | 参数   | 类型   | 必须 | 说明                                                                |
 | ----------- | ------ | -------- | -------------------------------------------------------------------------- |
 | 版本     | 字符串 | 是      | API 的版本。                                                    |
-| action      | 字符串 | 是      | 值必须是 `ShowBlockPage`                                              |
+| 操作      | 字符串 | 是      | 值必须是 `ShowBlockPage`                                              |
 | userMessage | 字符串 | 是      | 要向用户显示的消息。                                            |
 
 **阻止响应的最终用户体验**
@@ -287,8 +287,8 @@ Content-type: application/json
 | 参数   | 类型    | 必须 | 说明                                                                |
 | ----------- | ------- | -------- | -------------------------------------------------------------------------- |
 | 版本     | 字符串  | 是      | API 的版本。                                                    |
-| action      | 字符串  | 是      | 值必须是 `ValidationError`。                                           |
-| 状态      | Integer | 是      | 必须是 `400` ValidationError 响应的值。                        |
+| 操作      | 字符串  | 是      | 值必须是 `ValidationError`。                                           |
+| status      | Integer | 是      | 必须是 `400` ValidationError 响应的值。                        |
 | userMessage | 字符串  | 是      | 要向用户显示的消息。                                            |
 
 > [!NOTE]
@@ -304,7 +304,7 @@ Content-type: application/json
 ### <a name="using-serverless-cloud-functions"></a>使用无服务器云功能
 无服务器函数（如 Azure Functions 中的 HTTP 触发器）提供了一种简单的方法来创建 API 终结点，以便与 API 连接器一起使用。 [例如](code-samples.md#api-connectors)，你可以使用无服务器云功能来执行验证逻辑，并将登录限制到特定电子邮件域。 无服务器云功能还可以调用和调用其他 web Api、用户存储和其他云服务，以实现更复杂的方案。
 
-### <a name="best-practices"></a>最佳实践
+### <a name="best-practices"></a>最佳做法
 请确保：
 * API 遵循上述 API 请求和响应约定。 
 * API 连接器的 **终结点 URL** 指向正确的 API 终结点。

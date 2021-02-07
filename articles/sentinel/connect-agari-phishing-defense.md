@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/03/2021
 ms.author: yelevin
-ms.openlocfilehash: ba37b2280ba4d7138f4ed652b7b330bcaf7b9935
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 3684b5a8069a6b683ae562c527af89814362a7f9
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99566719"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99806980"
 ---
 # <a name="connect-your-agari-phishing-defense-and-brand-protection-solutions-to-azure-sentinel"></a>将 Agari 仿冒防御和品牌保护解决方案连接到 Azure Sentinel
 
@@ -58,7 +58,7 @@ Agari 解决方案可以使用 Azure Function App 将日志直接集成到 Azure
 
 1. **(可选) 启用安全图形 API：** 
 
-    Agari Function App 允许通过安全图形 API 与 Sentinel 共享威胁情报。 若要使用此功能，你将需要启用 [Sentinel 威胁情报平台连接器](connect-threat-intelligence.md) ，同时在 Azure Active Directory 中 [注册应用程序](/graph/auth-register-app-v2) 。
+    Agari Function App 允许通过安全图形 API 与 Azure Sentinel 共享威胁情报。 若要使用此功能，你将需要启用 [Sentinel 威胁情报平台连接器](connect-threat-intelligence.md) ，同时在 Azure Active Directory 中 [注册应用程序](/graph/auth-register-app-v2) 。
 
     此过程将提供以下三条信息，供你在部署 Function App 时使用： **图形租户 id**、 **GRAPH 客户端 id** 和 **graph 客户端机密**。
 

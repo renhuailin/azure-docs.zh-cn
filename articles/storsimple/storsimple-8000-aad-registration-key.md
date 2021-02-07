@@ -1,19 +1,19 @@
 ---
-title: 设备管理器中 StorSimple 8000 的 Azure AD 身份验证
+title: Device Manager 中 StorSimple 8000 的 Azure AD 身份验证
 description: 说明如何将基于 AAD 的身份验证用于服务、生成新注册密钥以及执行设备的手动注册。
 author: alkohli
 ms.service: storsimple
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: alkohli
-ms.openlocfilehash: 0e071a20051f047efbd040dfc01a30e3c1381367
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b09d68e7859a787c05a2fc62294f081c4345ae08
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91631318"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99805034"
 ---
-# <a name="use-azuer-active-directory-ad-authentication-for-your-storsimple"></a>使用 Azure Active Directory StorSimple (AD) 身份验证
+# <a name="use-azure-active-directory-ad-authentication-for-your-storsimple"></a>使用适用于 StorSimple 的 Azure Active Directory (AD) 身份验证
 
 [!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
 
@@ -75,9 +75,9 @@ AAD 身份验证在运行 Update 5 或更高版本的 StorSimple 8000 系列设�
 
 #### <a name="to-generate-the-aad-service-registration-key"></a>生成 AAD 服务注册密钥的步骤
 
-1. 在“StorSimple 设备管理器”**** 中，转到“管理”**&gt;“密钥”** ****。 还可以使用搜索栏搜索密钥__。
+1. 在“StorSimple 设备管理器”中，转到“管理”**&gt;“密钥”** 。 还可以使用搜索栏搜索密钥。
     
-2. 单击“生成密钥”****。
+2. 单击“生成密钥”。
 
     ![单击“重新生成”](./media/storsimple-8000-aad-registration-key/aad-click-generate-registration-key.png)
 

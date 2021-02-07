@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/25/2021
 ms.author: yelevin
-ms.openlocfilehash: 7944ea48feaca1eb8312e01d876bf9627af429d1
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 458c801e1434832bf65da669ca89cb5c5eebe2e8
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98784789"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807557"
 ---
 # <a name="identify-advanced-threats-with-user-and-entity-behavior-analytics-ueba-in-azure-sentinel"></a>在 Azure Sentinel 中通过用户和实体行为分析来识别高级威胁 (UEBA) 
 
 > [!IMPORTANT]
 >
-> - "UEBA" 和 "实体" 页功能现已 **公开上市** ，其中包括：*_所有_* _ Azure Sentinel 地域和区域。
+> - UEBA 和实体页功能现已在 **_所有_** Azure Sentinel 地理位置和区域 **公开上市**。
 
 ## <a name="what-is-user-and-entity-behavior-analytics-ueba"></a>什么是用户和实体行为分析 (UEBA) ？
 
@@ -35,7 +35,7 @@ ms.locfileid: "98784789"
 
 Azure Sentinel 中的 UEBA 功能从分析师的工作负载和不确定性中消除了完成，提供了高保真、可操作的智能，使他们能够专注于调查和修正工作。
 
-由于 Azure Sentinel 从其所有连接的数据源收集日志和警报，因此会对其进行分析，并在每次和对等组范围内 ) 的用户、主机、IP 地址、应用程序等 (生成基线行为配置文件。 使用多种技术和机器学习功能，Sentinel 可以确定异常活动，并帮助你确定资产是否已泄露。 此外，它还可以确定特定资产的相对敏感度，确定对等组资产，并评估 (") " 的任何已泄露资产的潜在影响。 掌握这些信息后，您可以有效地划分调查和事件处理的优先级。 
+由于 Azure Sentinel 从其所有连接的数据源收集日志和警报，因此会对其进行分析，并构建组织实体的基线行为配置文件， (例如用户、主机、IP 地址和应用程序) 跨时间和对等组范围。 Azure Sentinel 可以使用各种技术和机器学习功能来识别异常活动，并帮助你确定资产是否已泄露。 此外，它还可以确定特定资产的相对敏感度，确定对等组资产，并评估 (") " 的任何已泄露资产的潜在影响。 掌握这些信息后，您可以有效地划分调查和事件处理的优先级。 
 
 ### <a name="architecture-overview"></a>体系结构概述
 
@@ -45,7 +45,7 @@ Azure Sentinel 中的 UEBA 功能从分析师的工作负载和不确定性中�
 
 根据 Gartner 的 UEBA 解决方案，Azure Sentinel 根据三个参考框架提供了 "外接程序" 方法：
 
-- _ *用例：** 按与 MITRE ATT&CK 框架的策略、技术和子技术（将各种实体作为中的受害者、perpetrators 或透视点）进行排序，从而确定相关攻击向量和方案的优先级;Azure Sentinel 专门针对每个数据源可以提供的最有价值的日志。
+- **用例：** 根据与 MITRE ATT&CK 框架的策略、技术和子方法的相关攻击向量和方案的优先级，它们将各种实体用作 kill 链中的受害者、perpetrators 或枢点;Azure Sentinel 专门针对每个数据源可以提供的最有价值的日志。
 
 - **数据源：** 虽然首先支持 Azure 数据源，但 Azure Sentinel 周全选择第三方数据源来提供与我们的威胁方案相匹配的数据。
 
@@ -68,7 +68,7 @@ Azure Sentinel 提供的项目可帮助您的安全分析人员清楚地了解�
 
 有关其工作原理的示例，请参阅如何在 [Microsoft Cloud App Security](https://techcommunity.microsoft.com/t5/microsoft-security-and/prioritize-user-investigations-in-cloud-app-security/ba-p/700136) 中使用行为分析。
 
-## <a name="entities-in-azure-sentinel"></a>Azure 中的实体 Sentinel
+## <a name="entities-in-azure-sentinel"></a>Azure Sentinel 中的实体
 
 ### <a name="entity-identifiers"></a>实体标识符
 
@@ -87,7 +87,7 @@ Azure Sentinel 提供的项目可帮助您的安全分析人员清楚地了解�
 - Ip 地址 (IP) 
 - 恶意软件
 - 文件
-- 进程
+- 过程
 - 云应用程序 (CloudApplication) 
 - 域名 (DNS) 
 - Azure 资源

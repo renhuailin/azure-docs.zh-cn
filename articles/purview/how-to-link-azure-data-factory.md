@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/22/2020
-ms.openlocfilehash: 0e993cb1e53645f7081a20fc6a2785b8cfef1cce
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 010cfc307d2b2c10c31168fce73673fb1fb611b8
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954170"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807642"
 ---
 # <a name="how-to-connect-azure-data-factory-and-azure-purview"></a>如何连接 Azure 数据工厂和 Azure 监控范围
 
@@ -107,29 +107,29 @@ Azure 监控范围从以下 Azure 数据工厂活动中捕获运行时沿袭：
 
 ### <a name="data-factory-copy-data-support"></a>数据工厂复制数据支持
 
-| 数据存储系统 | 支持用作源 | 支持用作接收器 |
-| ------------------- | ------------------- | ----------------- |
-| ADLS Gen1 | 是 | 是 (仅限非二进制副本)  |
-| ADLS Gen2 | 是 | 是 |
-| Azure Blob | 是 | 是 |
-| Azure Cosmos DB (SQL API) | 是 | 是 |
-| Azure Cosmos DB (Mongo API)  | 是 | 是 |
-| Azure 认知搜索 | 是 | 是 |
-| Azure 数据资源管理器 | 是 | 是 |
-| 用于 Maria DB 的 Azure 数据库 \* | 是 | 是 |
-| 用于 MYSQL 的 Azure 数据库 \* | 是 | 是 |
-| Azure Database for PostgreSQL \* | 是 | 是 |
-| Azure 文件存储 | 是 | 是 |
-| Azure 表存储 | 是 | 是 |
-| Azure SQL 数据库 \* | 是 | 是 |
-| Azure SQL MI \* | 是 | 是 |
-| Azure Synapse Analytics (以前的 SQL DW) \* | 是 | 是 |
-| 需要 SQL Server 本地 (SHIR) \* | 是 | 是 |
-| Amazon S3 | 是 | 是 |
-| Teradata | 是 | 是 |
-| SAP s4 Hana | 是 | 是 |
-| SAP ECC | 是 | 是 |
-| Hive | 是 | 是 |
+| 数据存储系统 | 支持用作源 | 
+| ------------------- | ------------------- | 
+| ADLS Gen1 | 是 | 
+| ADLS Gen2 | 是 | 
+| Azure Blob | 是 |
+| Azure Cosmos DB (SQL API) | 是 | 
+| Azure Cosmos DB (Mongo API)  | 是 |
+| Azure 认知搜索 | 是 | 
+| Azure 数据资源管理器 | 是 | 
+| 用于 Maria DB 的 Azure 数据库 \* | 是 | 
+| 用于 MYSQL 的 Azure 数据库 \* | 是 | 
+| Azure Database for PostgreSQL \* | 是 |
+| Azure 文件存储 | 是 | 
+| Azure 表存储 | 是 |
+| Azure SQL 数据库 \* | 是 | 
+| Azure SQL MI \* | 是 | 
+| Azure Synapse Analytics (以前的 SQL DW) \* | 是 | 
+| SQL Server 本地  \* | 是 | 
+| Amazon S3 | 是 | 
+| Teradata | 是 | 
+| SAP 表连接器 | 是 |
+| SAP ECC | 是 | 
+| Hive | 是 | 
 
 > [!Note]
 > 沿袭功能在数据工厂复制活动中具有一定的性能开销。 对于在监控范围中设置数据工厂连接的用户，你可能会发现某些复制作业要花费更长时间才能完成。 大多数情况下，影响不会忽略。 如果复制作业的完成时间比平时长得多，请联系支持人员进行时间比较。
@@ -137,7 +137,7 @@ Azure 监控范围从以下 Azure 数据工厂活动中捕获运行时沿袭：
 ### <a name="data-factory-data-flow-support"></a>数据工厂数据流支持
 
 | 数据存储系统 | 支持 |
-| ------------------- | ------------------- | ----------------- |
+| ------------------- | ------------------- | 
 | ADLS Gen1 | 是 |
 | ADLS Gen2 | 是 |
 | Azure Blob | 是 |
@@ -147,7 +147,7 @@ Azure 监控范围从以下 Azure 数据工厂活动中捕获运行时沿袭：
 ### <a name="data-factory-execute-ssis-package-support"></a>数据工厂执行 SSIS 包支持
 
 | 数据存储系统 | 支持 |
-| ------------------- | ------------------- | ----------------- |
+| ------------------- | ------------------- |
 | Azure Blob | 是 |
 | ADLS Gen1 | 是 |
 | ADLS Gen2 | 是 |

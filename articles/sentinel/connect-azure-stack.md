@@ -1,6 +1,6 @@
 ---
 title: 将 Azure Stack 集线器虚拟机载入 Azure Sentinel |Microsoft Docs
-description: 本文介绍如何在 Azure Stack 中心虚拟机上预配 Azure Monitor、更新和配置管理虚拟机扩展，并通过 Sentinel 开始对其进行监视。
+description: 本文介绍如何在 Azure Stack 中心虚拟机上预配 Azure Monitor、更新和配置管理虚拟机扩展，并通过 Azure Sentinel 开始对其进行监视。
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: yelevin
-ms.openlocfilehash: 068296a02af0abd2fb18d284fdaf01b7c1b198fa
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 120f160e3c7bc7a9a0e81586ea4b97ee827dd33e
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98631136"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807422"
 ---
 # <a name="connect-azure-stack-hub-virtual-machines-to-azure-sentinel"></a>将 Azure Stack 集线器虚拟机连接到 Azure Sentinel
 

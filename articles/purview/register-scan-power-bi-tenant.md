@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/19/2020
-ms.openlocfilehash: 5f42b5f2b2a7660ee0de975068f64572c470503a
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 78187b2cbb6603a0ae0df55465b9a5ce5e7dca7f
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98874900"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807540"
 ---
 # <a name="register-and-scan-a-power-bi-tenant-preview"></a>注册并扫描 Power BI 租户 (预览版) 
 
@@ -84,7 +84,7 @@ ms.locfileid: "98874900"
 
     :::image type="content" source="media/setup-power-bi-scan-catalog-portal/select-power-bi-data-source.png" alt-text="显示可供选择的数据源列表的图像":::
 
-1. 为 Power BI 实例指定友好名称。
+3. 为 Power BI 实例指定友好名称。
 
     :::image type="content" source="media/setup-power-bi-scan-catalog-portal/power-bi-friendly-name.png" alt-text="显示 Power BI 数据源-友好名称的图像":::
 
@@ -94,17 +94,21 @@ ms.locfileid: "98874900"
 
     :::image type="content" source="media/setup-power-bi-scan-catalog-portal/power-bi-datasource-registered.png" alt-text="已注册 Power BI 数据源":::
 
-1. 为扫描指定一个名称。 请注意，唯一支持的身份验证方法是 **托管标识**。
+    > [!Note]
+    > 对于 Power BI，只允许一个实例的数据源注册和扫描。
+
+
+4. 为扫描指定一个名称。 请注意，唯一支持的身份验证方法是 **托管标识**。
 
     :::image type="content" source="media/setup-power-bi-scan-catalog-portal/power-bi-scan-setup.png" alt-text="显示 Power BI 扫描设置的图像":::
 
     扫描名称长度必须介于3-63 个字符之间，并且必须仅包含字母、数字、下划线和连字符。  不允许使用空格。
 
-1. 设置扫描触发器。 你的选项为 **每7天****一次**，**每隔30天**。
+5. 设置扫描触发器。 你的选项为 **每7天****一次**，**每隔30天**。
 
     :::image type="content" source="media/setup-power-bi-scan-catalog-portal/scan-trigger.png" alt-text="扫描触发器图像":::
 
-1. **查看新扫描** 时，选择 "**保存并运行**" 以启动扫描。
+6. **查看新扫描** 时，选择 "**保存并运行**" 以启动扫描。
 
     :::image type="content" source="media/setup-power-bi-scan-catalog-portal/save-run-power-bi-scan.png" alt-text="保存并运行 Power BI 屏幕图像":::
 

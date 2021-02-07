@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.custom: references_regions, devx-track-azurecli
 author: bwren
 ms.author: bwren
-ms.date: 10/14/2020
-ms.openlocfilehash: bc369b072f90e675cf882d52b2edae30530f1c18
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.date: 02/07/2021
+ms.openlocfilehash: 03061f71ee0cceaa39c7ab9b258f9d3a0a84f1be
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98895962"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807880"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Azure Monitor 中的 Log Analytics 工作区数据导出功能（预览版）
 使用 Azure Monitor 中的 Log Analytics 工作区数据导出功能，可以在收集 Log Analytics 工作区中所选表的数据时，将数据持续导出到 Azure 存储帐户或 Azure 事件中心。 本文提供了有关此功能的详细信息以及在工作区中配置数据导出的步骤。
@@ -28,8 +28,7 @@ ms.locfileid: "98895962"
 ## <a name="other-export-options"></a>其他导出选项
 Log Analytics 工作区数据导出会持续从 Log Analytics 工作区导出数据。 针对特定场景导出数据的其他选项包括：
 
-- 使用逻辑应用从日志查询进行计划性导出。 这类似于数据导出功能，但你可向 Azure 存储发送经过筛选或聚合的数据。 不过，此方法受限于[日志查询限制](../service-limits.md#log-analytics-workspaces)。请参阅[使用逻辑应用将 Log Analytics 工作区中的数据存档到 Azure 存储](logs-export-logic-app.md)。
-- 使用逻辑应用一次性导出。 请参阅[适用于逻辑应用和 Power Automate 的 Azure Monitor 日志连接器](logicapp-flow-connector.md)。
+- 使用逻辑应用从日志查询进行计划性导出。 这类似于数据导出功能，但你可向 Azure 存储发送经过筛选或聚合的数据。 尽管此方法受 [日志查询限制的限制](../service-limits.md#log-analytics-workspaces)，请参阅 [使用逻辑应用将数据从 Log Analytics 工作区存档到 Azure 存储](logs-export-logic-app.md)。
 - 使用 PowerShell 脚本一次性导出到本地计算机。 请参阅 [Invoke-AzOperationalInsightsQueryExport](https://www.powershellgallery.com/packages/Invoke-AzOperationalInsightsQueryExport)。
 
 
@@ -47,16 +46,7 @@ Log Analytics 工作区数据导出会持续从 Log Analytics 工作区导出数
 - 你可以在工作区中创建两个导出规则--在中，可以是一个到事件中心的规则，一个规则到存储帐户。
 - 目标存储帐户或事件中心必须与 Log Analytics 工作区位于同一区域。
 - 对于存储帐户，要导出的表的名称不能超过 60 个字符，而对于事件中心，不能超过 47 个字符。 名称较长的表将不会被导出。
-
-> [!NOTE]
-> Log Analytics 数据导出将数据作为追加 Blob 写入，该功能当前在 Azure Data Lake Storage Gen2 中为预览版。 配置以此存储为导出位置的导出之前，需要提出支持请求。 对于此请求，请使用以下详细信息。
-> - 问题类型：技术
-> - 订阅：你的订阅
-> - 服务：Data Lake Storage Gen2
-> - 资源：你的资源名称
-> - 摘要：请求订阅注册以接受来自 Log Analytics 数据导出的数据。
-> - 问题类型：连接
-> - 问题子类型：连接性问题
+- Azure Data Lake Storage 的追加 blob 支持现已在[公共预览版](https://azure.microsoft.com/updates/append-blob-support-for-azure-data-lake-storage-preview/)中提供限制
 
 ## <a name="data-completeness"></a>数据完整性
 如果目标不可用，数据导出会继续重新尝试发送数据，最多持续 30 分钟。 如果 30 分钟后仍不可用，数据将被放弃，直到目标变为可用。
@@ -76,6 +66,9 @@ Log Analytics 工作区数据导出会持续从 Log Analytics 工作区导出数
 [![存储示例数据](media/logs-data-export/storage-data.png)](media/logs-data-export/storage-data.png#lightbox)
 
 当基于时间的保留策略启用了 allowProtectedAppendWrites 设置时，Log Analytics 数据导出可以将追加 Blob 写入不可变存储帐户。 该设置允许将新块写入追加 Blob，同时维持不可变性保护和合规性。 请参阅[允许受保护的追加 Blob 写入](../../storage/blobs/storage-blob-immutable-storage.md#allow-protected-append-blobs-writes)。
+
+> [!NOTE]
+> 现已在所有 Azure 区域中的预览版中提供 Azure Data Lake 存储的 "追加 blob" 支持。 创建导出规则到 Azure Data Lake 存储之前，请先[注册到有限的公共预览版](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR4mEEwKhLjlBjU3ziDwLH-pURDk2NjMzUTVEVzU5UU1XUlRXSTlHSlkxQS4u)。 如果没有此注册，导出将不起作用。
 
 ### <a name="event-hub"></a>事件中心
 数据到达 Azure Monitor 时，将准实时地发送到事件中心。 将为导出的每个数据类型创建一个事件中心，其名称为 am- 后跟表的名称。 例如，表 SecurityEvent 将发送到名为 am-SecurityEvent 的事件中心中 。 如果要将导出的数据传递到特定事件中心，或者有一个表的名称超过了 47 个字符的限制，则可提供自己的事件中心名称并将定义的表的所有数据导出到该事件中心。
@@ -683,7 +676,7 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 | NWConnectionMonitorTestResult | |
 | NWConnectionMonitorTestResult | |
 | OfficeActivity | 部分支持。 某些数据通过 Webhook 从 Office 365 引入到 Log Analytics。 当前不导出此数据。 |
-| Operation | 部分支持。 某些数据是通过不支持导出的内部服务引入的。 当前不导出此数据。 |
+| 操作 | 部分支持。 某些数据是通过不支持导出的内部服务引入的。 当前不导出此数据。 |
 | 性能 | 部分支持。 当前仅支持 Windows 性能数据。 当前未导出 Linux 性能数据。 |
 | ProtectionStatus | |
 | SCCMAssessmentRecommendation | |

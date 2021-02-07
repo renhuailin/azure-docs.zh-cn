@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa6726bb5c60dceab0a58632da99c04361183246
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 26403c20d7f3274e8f3f2dcae479f72e9a7e3354
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97932684"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807014"
 ---
 # <a name="add-an-api-connector-to-a-user-flow"></a>向用户流添加 API 连接器
 
@@ -38,7 +38,7 @@ ms.locfileid: "97932684"
 6. 提供 API 调用的 **终结点 URL** 。
 7. 提供 API 的身份验证信息。
 
-   - 目前仅支持基本身份验证。 如果希望出于开发目的使用没有基本身份验证的 API，只需输入 API 可以忽略的虚拟 **用户名** 和 **密码** 。 若要将 Azure 函数与 API 密钥一起使用，可以将代码作为查询参数包含在 **终结点 URL** 中 (例如，https： []() //contoso.azurewebsites.net/api/endpoint <b>？ code = 0123456789</b>) 。
+   - 目前仅支持基本身份验证。 如果希望出于开发目的使用没有基本身份验证的 API，只需输入 API 可以忽略的虚拟 **用户名** 和 **密码** 。 若要将 Azure 函数与 API 密钥一起使用，可以将代码作为查询参数包含在 **终结点 URL** 中 (例如 `https://contoso.azurewebsites.net/api/endpoint?code=0123456789`) 。
 
    ![配置新的 API 连接器](./media/self-service-sign-up-add-api-connector/api-connector-config.png)
 8. 选择“保存”。
@@ -109,7 +109,7 @@ Content-type: application/json
 
 ## <a name="after-signing-in-with-an-identity-provider"></a>使用标识提供者登录后
 
-在用户使用标识提供者进行身份验证 (Google、Facebook、Azure AD) 后，立即调用注册过程中的 API 连接器。 此步骤优先于 **_属性集合页_* _，这是向用户显示的用于收集用户特性的窗体。 
+在用户使用标识提供者进行身份验证 (Google、Facebook、Azure AD) 后，立即调用注册过程中的 API 连接器。 此步骤优先于 " ***属性集合" 页***，它是向用户显示的用于收集用户属性的窗体。 
 
 <!-- The following are examples of API connector scenarios you may enable at this step:
 - Use the email or federated identity that the user provided to look up claims in an existing system. Return these claims from the existing system, pre-fill the attribute collection page, and make them available to return in the token.
@@ -247,11 +247,11 @@ Content-type: application/json
 }
 ```
 
-| 参数                                          | 类型              | 必需 | 说明                                                                                                                                                                                                                                                                            |
+| 参数                                          | 类型              | 必须 | 说明                                                                                                                                                                                                                                                                            |
 | -------------------------------------------------- | ----------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 版本                                            | 字符串            | 是      | API 的版本。                                                                                                                                                                                                                                                                |
-| action                                             | 字符串            | 是      | 值必须是 `Continue`。                                                                                                                                                                                                                                                              |
-| \<builtInUserAttribute>                            | \<attribute-type> | 否       | 值可以存储在目录中，前提是这些值在 API 连接器配置和用户流的 **用户属性** 中被选为 _ *声明来接收**。 如果选择作为 **应用程序声明**，则可以在令牌中返回值。                                              |
+| 操作                                             | 字符串            | 是      | 值必须是 `Continue`。                                                                                                                                                                                                                                                              |
+| \<builtInUserAttribute>                            | \<attribute-type> | 否       | 如果值被选为要在 API 连接器配置中 **接收的声明** ，则这些值可以存储在目录中，并可存储在用户流的 **用户属性** 中。 如果选择作为 **应用程序声明**，则可以在令牌中返回值。                                              |
 | \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | 否       | 返回的声明不需要包含 `_<extensions-app-id>_` 。 如果值被选为要在 API 连接器配置和用户流的 **用户属性** 中 **接收的声明**，则这些值将存储在目录中。 自定义属性不能在令牌中发回。 |
 
 ### <a name="example-of-a-blocking-response"></a>阻塞响应的示例
@@ -269,10 +269,10 @@ Content-type: application/json
 
 ```
 
-| 参数   | 类型   | 必需 | 说明                                                                |
+| 参数   | 类型   | 必须 | 说明                                                                |
 | ----------- | ------ | -------- | -------------------------------------------------------------------------- |
 | 版本     | 字符串 | 是      | API 的版本。                                                    |
-| action      | 字符串 | 是      | 值必须是 `ShowBlockPage`                                              |
+| 操作      | 字符串 | 是      | 值必须是 `ShowBlockPage`                                              |
 | userMessage | 字符串 | 是      | 要向用户显示的消息。                                            |
 | code        | 字符串 | 否       | 错误代码。 可用于调试目的。 不会向用户显示。 |
 
@@ -295,10 +295,10 @@ Content-type: application/json
 }
 ```
 
-| 参数   | 类型    | 必需 | 说明                                                                |
+| 参数   | 类型    | 必须 | 说明                                                                |
 | ----------- | ------- | -------- | -------------------------------------------------------------------------- |
 | 版本     | 字符串  | 是      | API 的版本。                                                    |
-| action      | 字符串  | 是      | 值必须是 `ValidationError`。                                           |
+| 操作      | 字符串  | 是      | 值必须是 `ValidationError`。                                           |
 | status      | Integer | 是      | 必须是 `400` ValidationError 响应的值。                        |
 | userMessage | 字符串  | 是      | 要向用户显示的消息。                                            |
 | code        | 字符串  | 否       | 错误代码。 可用于调试目的。 不会向用户显示。 |
