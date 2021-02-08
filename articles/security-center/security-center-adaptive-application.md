@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/06/2020
+ms.date: 02/07/2021
 ms.author: memildin
-ms.openlocfilehash: 103f2c87cf9d14f81462fed145ff8df3d69bfca0
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: cc35f9ee25511faec5723b49763cbdae8963e88b
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98916127"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820749"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>使用自适应应用程序控制来减少计算机的攻击面
 
@@ -44,7 +44,7 @@ ms.locfileid: "98916127"
 - 防止使用组织禁止的特定软件
 - 加强对访问敏感数据的应用的监管
 
-
+无强制选项可用，无计划。 自适应应用程序控件旨在提供安全警报，前提是任何应用程序都不是您定义为安全的应用程序。
 
 ## <a name="availability"></a>可用性
 
@@ -235,7 +235,12 @@ REST API 提供的一些函数：
    > 在 Put 请求中使用 JSON 之前，请删除以下属性：recommendationStatus、configurationStatus、issues、location 和 sourceSystem。
 
 
+## <a name="faq---adaptive-application-controls"></a>FAQ-自适应应用程序控件
 
+### <a name="are-there-any-options-to-enforce-the-application-controls"></a>是否有任何用于强制应用程序控件的选项？
+无强制选项可用，无计划。 自适应应用程序控件旨在提供 **安全警报** ，前提是任何应用程序都不是您定义为安全的应用程序。 它们具有一系列优势 ([自适应应用程序控件的好处是什么？](#what-are-the-benefits-of-adaptive-application-controls)) 并且非常可自定义，如本页中所示。
+
+ 
 
 ## <a name="next-steps"></a>后续步骤
 本文档介绍了如何在 Azure 安全中心使用自适应应用程序控制来定义 Azure 和非 Azure 计算机中运行的应用程序允许列表。 要详细了解安全中心的一些其他云工作负载保护功能，请参阅：

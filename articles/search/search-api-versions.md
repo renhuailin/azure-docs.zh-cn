@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/05/2020
-ms.openlocfilehash: feca2e83646264b28e42125b3fdebf41266c06bd
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 489c6be7bf977d01207fee4d1bd1fda13dc12025
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422716"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820511"
 ---
 # <a name="api-versions-in-azure-cognitive-search"></a>Azure 认知搜索中的 API 版本
 
@@ -53,10 +53,10 @@ Azure 认知搜索服务实例支持几个 REST API 版本，包括最新版本�
 
 创建和管理有关搜索服务的内容。
 
-| 版本&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   | 状态 | 说明 |
+| 版本&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   | 状态 | 描述 |
 |-------------------------|--------|------------------------------|
-| [搜索 2020-06-30](/rest/api/searchservice/index)| Stable | 搜索 REST Api 的最新稳定版本，在相关性评分和一般可用性方面进行了改进。|
-| [搜索 2020-06-30-Preview](/rest/api/searchservice/index-preview)| 预览 | 与稳定版本关联的预览版本。 包括多个 [预览功能](search-api-preview.md)。 |
+| [搜索 2020-06-30](/rest/api/searchservice/index)| Stable | 搜索 REST API 的最新稳定版本，在相关性评分和知识存储的普遍可用性方面有改进。|
+| [搜索 2020-06-30-Preview](/rest/api/searchservice/index-preview)| 预览 | 与稳定版本关联的预览版本。 包括多个[预览功能](search-api-preview.md)。 |
 | 搜索 2019-05-06 | Stable  | 添加了[复杂类型](search-howto-complex-data-types.md)。 |
 | 搜索 2019-05-06-Preview | 预览 | 与稳定版本关联的预览版本。 |
 | 搜索 2017-11-11 | Stable | 添加了技能集和 [AI 扩充](cognitive-search-concept-intro.md)。 |
@@ -72,12 +72,12 @@ Azure 认知搜索服务实例支持几个 REST API 版本，包括最新版本�
 
 创建和配置搜索服务，并管理 API 密钥。
 
-| 版本&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   | 状态 | 说明 |
+| 版本&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   | 状态 | 描述 |
 |-------------------------|--------|------------------------------|
-| [管理2020-08-01](/rest/api/searchmanagement/) | Stable | 管理 REST Api 的最新稳定版本。 为除预览版本中所述除外的所有出站访问的资源添加了公开可用的共享专用链接资源支持 |
-| [管理 2020-08-01-预览](/rest/api/searchmanagement/index-preview) | 预览  | 目前处于预览阶段：对 Azure Functions 和 Azure Database for MySQL 的共享的专用链接资源支持。 |
+| [管理 2020-08-01](/rest/api/searchmanagement/) | Stable | 管理 REST API 的最新稳定版本。 为所有出站访问的资源（预览版中注明的资源除外）添加通用的共享专用链接资源支持 |
+| [管理 2020-08-01-Preview](/rest/api/searchmanagement/index-preview) | 预览  | 当前处于预览状态：对 Azure Functions 和 Azure Database for MySQL 的共享专用链接资源支持。 |
 | 管理 2020-03-13  | Stable | 通过专用链接、新服务的[网络 IP 规则](service-configure-firewall.md)添加[专用终结点](service-create-private-endpoint.md)。 有关详细信息，请参阅此 [swagger 规范](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/search/resource-manager/Microsoft.Search/stable/2020-08-01)。 |
-| 管理 2019-10-01-Preview | 预览  | 此列表中没有引入的预览功能。 此预览版在功能上等同于2020-03-13。 有关详细信息，请参阅此 [swagger 规范](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/search/resource-manager/Microsoft.Search/preview/2019-10-01-preview)。 |
+| 管理 2019-10-01-Preview | 预览  | 此列表中没有引入预览功能。 此预览版在功能上等同于 2020-03-13。 有关详细信息，请参阅此 [swagger 规范](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/search/resource-manager/Microsoft.Search/preview/2019-10-01-preview)。 |
 | 管理 2015-08-19  | Stable | 管理 REST API 的第一个正式发布版本。 提供服务预配、纵向扩展和 API 密钥管理。 有关详细信息，请参阅此 [swagger 规范](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/search/resource-manager/Microsoft.Search/stable/2015-08-19)。 |
 | 管理 2015-08-19-Preview  | 预览 | 管理 REST API 的第一个预览版本。 有关详细信息，请参阅此 [swagger 规范](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/search/resource-manager/Microsoft.Search/stable/2015-08-19)。 |
 
@@ -85,11 +85,11 @@ Azure 认知搜索服务实例支持几个 REST API 版本，包括最新版本�
 
 下表提供了最新 SDK 版本的链接。 
 
-| SDK 版本 | 状态 | 说明 |
+| SDK 版本 | 状态 | 描述 |
 |-------------|--------|------------------------------|
-| [Azure.Search.Documents 11](/dotnet/api/overview/azure/search.documents-readme) | Stable | Azure .NET SDK 中的新客户端库，2020 年 7 月发布。 面向搜索 REST api 版本 = 2020-06-30 REST API 但尚不支持，异地筛选器。 |
-| [Microsoft Azure. 搜索10](https://www.nuget.org/packages/Microsoft.Azure.Search/) | Stable | 2019 年 5 月发布。 面向搜索 REST api-version=2019-05-06。|
-| [4.0.0 的搜索](/dotnet/api/overview/azure/search/management) | Stable | 面向管理 REST api 版本 = 2020-08-01。  |
+| [Azure.Search.Documents 11](/dotnet/api/overview/azure/search.documents-readme) | Stable | Azure .NET SDK 中的新客户端库，2020 年 7 月发布。 面向搜索 REST api 版本 = 2020-06-30 REST API 但尚不提供对地域筛选器的本机支持。 建议为地理操作提供 [Microsoft 空间](https://www.nuget.org/packages/Microsoft.Spatial/) 包。 示例可用于 [System.Text.Js上](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/core/Microsoft.Azure.Core.Spatial/README.md) 的和 [Newtonsoft.Js](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/core/Microsoft.Azure.Core.Spatial.NewtonsoftJson/README.md)。 |
+| [Microsoft.Azure.Search 10](https://www.nuget.org/packages/Microsoft.Azure.Search/) | Stable | 2019 年 5 月发布。 面向搜索 REST api-version=2019-05-06。|
+| [Microsoft.Azure.Management.Search 4.0.0](/dotnet/api/overview/azure/search/management) | Stable | 针对管理 REST api-version=2020-08-01。  |
 | Microsoft.Azure.Management.Search 3.0.0 | Stable | 针对管理 REST api-version=2015-08-19。  |
 
 ## <a name="azure-sdk-for-java"></a>用于 Java 的 Azure SDK

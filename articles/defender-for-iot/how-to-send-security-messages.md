@@ -1,65 +1,65 @@
 ---
-title: 发送用于 IoT 的 Defender 设备安全消息
-description: 了解如何使用用于 IoT 的 Defender 发送安全消息。
+title: 发送 Defender for IoT 设备安全消息
+description: 了解如何使用 Defender for IoT 发送安全消息。
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
-author: mlottner
+author: shhazam-ms
 manager: rkarlin
 editor: ''
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/09/2020
-ms.author: mlottner
+ms.date: 2/8/2021
+ms.author: shhazam
 ms.custom: devx-track-js
-ms.openlocfilehash: 5217940a3696bd001db421e61be8313453807c8b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d59121f2dbae208ba045a9c2e6d66245296537a0
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91318511"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820681"
 ---
 # <a name="send-security-messages-sdk"></a>发送安全消息 SDK
 
-当你选择在不使用 IoT 代理的情况下收集和发送设备安全消息，并说明如何执行此操作时，本操作方法指南介绍了用于 IoT 服务功能的 Defender。
+本操作方法指南介绍了在不使用用于 IoT 代理的情况下，选择收集和发送设备安全消息时的 IoT 服务功能，并说明如何执行此操作。
 
 本指南介绍如何：
 
 > [!div class="checklist"]
 > * 使用 Azure IoT C SDK 发送安全消息
-> * 使用 Azure IoT c # SDK 发送安全消息
+> * 使用 Azure IoT C# SDK 发送安全消息
 > * 使用 Azure IoT Python SDK 发送安全消息
 > * 使用 Azure IoT Node.js SDK 发送安全消息
 > * 使用 Azure IoT Java SDK 发送安全消息
 
-## <a name="defender-for-iot-capabilities"></a>用于 IoT 功能的 Defender
+## <a name="defender-for-iot-capabilities"></a>Defender for IoT 功能
 
-只要发送的数据符合 [IoT 架构的 defender](https://aka.ms/iot-security-schemas) 并将消息设置为安全消息，就可以处理和分析任何类型的安全消息数据。
+Defender for IoT 可以处理和分析任何类型的安全消息数据，前提是发送的数据符合 [Defender for IoT 架构](https://aka.ms/iot-security-schemas)并且消息已设置为安全消息。
 
 ## <a name="security-message"></a>安全消息
 
 Defender for IoT 使用以下条件定义安全消息：
 
-- 如果消息是通过 Azure IoT SDK 发送的
-- 如果消息符合 [安全消息架构](https://aka.ms/iot-security-schemas)
-- 如果在发送之前将消息设置为安全消息，则为
+- 如果消息是使用 Azure IoT SDK 发送的
+- 如果消息符合[安全消息架构](https://aka.ms/iot-security-schemas)
+- 如果消息在发送之前已设置为安全消息
 
-每个安全消息都包含发件人的元数据 `AgentId` ，如、 `AgentVersion` `MessageSchemaVersion` 和安全事件的列表。
+每个安全消息都包含发送方的元数据，如 `AgentId`、`AgentVersion`、`MessageSchemaVersion` 和一个安全事件列表。
 架构定义安全消息的有效属性和必需属性，包括事件类型。
 
 > [!NOTE]
 > 发送的消息如果不符合该架构，则将被忽略。 在开始发送数据之前，请务必验证架构，因为当前不会存储已忽略的消息。
 
 > [!NOTE]
-> 使用 Azure IoT SDK 未设置为安全消息的发送的消息将不会路由到 IoT 管道的 Defender。
+> 未使用 Azure IoT SDK 设置为安全消息的已发送消息将不会路由到 Defender for IoT 管道。
 
-## <a name="valid-message-example"></a>有效的消息示例
+## <a name="valid-message-example"></a>有效消息示例
 
 下面的示例显示了有效的安全消息对象。 该示例包含消息元数据和一个 `ProcessCreate` 安全事件。
 
-一旦设置为安全消息并发送，此消息将由 Defender for IoT 处理。
+一旦设置为安全消息并已发送，此消息将由 Defender for IoT 处理。
 
 ```json
 "AgentVersion": "0.0.1",
@@ -91,15 +91,15 @@ Defender for IoT 使用以下条件定义安全消息：
 
 ## <a name="send-security-messages"></a>发送安全消息
 
-通过使用[Azure Iot C 设备 sdk](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview)、 [Azure iot c # 设备 Sdk](https://github.com/Azure/azure-iot-sdk-csharp/tree/preview)、 [azure IoT Node.js SDK](https://github.com/Azure/azure-iot-sdk-node)、 [Azure IOT Python sdk](https://github.com/Azure/azure-iot-sdk-python)或[Azure iot Java Sdk](https://github.com/Azure/azure-iot-sdk-java)，*无需*使用用于 IoT 代理的 Defender 的安全消息。
+通过使用 [Azure IoT C 设备 SDK](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview)、[Azure IoT C# 设备 SDK](https://github.com/Azure/azure-iot-sdk-csharp/tree/preview)、[Azure IoT Node.js SDK](https://github.com/Azure/azure-iot-sdk-node)、[Azure IoT Python SDK](https://github.com/Azure/azure-iot-sdk-python) 或 [Azure IoT Java SDK](https://github.com/Azure/azure-iot-sdk-java)（而不使用 Defender for IoT 代理）发送安全消息。
 
-若要从设备发送用于 IoT 的设备数据进行处理，请使用以下 Api 之一将消息标记为正确路由到用于 IoT 处理管道的 Defender。
+若要从设备发送设备消息以供 Defender for IoT 处理，请使用以下 API 之一来标记消息，以便将消息正确路由到 Defender for IoT 处理管道。
 
-即使标记为正确的标头，发送的所有数据也必须符合 [IoT 消息架构的 Defender](https://aka.ms/iot-security-schemas)。
+即使已使用正确的标头进行标记，发送的所有数据也必须符合 [Defender for IoT 消息架构](https://aka.ms/iot-security-schemas)。
 
 ### <a name="send-security-message-api"></a>发送安全消息 API
 
-**发送安全消息**API 目前在 c 和 c #、Python、Node.js 和 Java 中可用。
+“发送安全消息”API 目前可在 C 和 C#、Python、Node.js 以及 Java 中使用。
 
 #### <a name="c-api"></a>C API
 
@@ -194,9 +194,9 @@ function SendSecurityMessage(messageContent)
 
 #### <a name="python-api"></a>Python API
 
-若要使用 Python API，需要安装 [azure iot-设备](https://pypi.org/project/azure-iot-device/)包。
+若要使用 Python API，需要安装 [azure-iot-device](https://pypi.org/project/azure-iot-device/) 包。
 
-使用 Python API 时，可以通过模块或使用唯一设备或模块连接字符串通过设备发送安全消息。 使用以下 Python 脚本示例时，使用的是设备，使用 **IoTHubDeviceClient**，使用模块时，请使用 **IoTHubModuleClient**。
+使用 Python API 时，可以使用唯一设备或模块连接字符串，通过模块或通过设备发送安全消息。 使用以下 Python 脚本示例时，如果与之配合使用的是设备，请使用 IoTHubDeviceClient；如果与之配合使用的是模块，请使用 IoTHubModuleClient。
 
 ```python
 from azure.iot.device.aio import IoTHubDeviceClient, IoTHubModuleClient
@@ -228,8 +228,8 @@ public void SendSecurityMessage(string message)
 
 ## <a name="next-steps"></a>后续步骤
 
-- 阅读用于 IoT 服务的 Defender [概述](overview.md)
-- 了解有关用于 IoT[体系结构](architecture.md)的 Defender 的详细信息
+- 阅读 Defender for IoT 服务[概述](overview.md)
+- 详细了解 Defender for IoT [体系结构](architecture.md)
 - 启用该[服务](quickstart-onboard-iot-hub.md)
 - 阅读[常见问题解答](resources-frequently-asked-questions.md)
 - 了解如何访问[原始安全数据](how-to-security-data-access.md)

@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/07/2021
+ms.date: 02/08/2021
 ms.author: shhazam
-ms.openlocfilehash: a8f4b96b27eb09443c2644fd63a8783faaa610e4
-ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
+ms.openlocfilehash: f15c4ed6bb7da5cd33eca96c171bfada68092b35
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/08/2021
-ms.locfileid: "99809501"
+ms.locfileid: "99820664"
 ---
 # <a name="whats-new-in-azure-defender-for-iot"></a>用于 IoT 的 Azure Defender 有哪些新功能？
 
@@ -27,13 +27,13 @@ ms.locfileid: "99809501"
 记录的功能处于预览阶段。 [Azure 预览版补充条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)包含适用于 beta 版、预览版或其他尚未正式发布的 Azure 功能的其他法律条款。
 ## <a name="february-2021"></a>2021 年 2 月
 
-### <a name="enhanced-custom-alert-rules"></a>增强的自定义警报规则
+### <a name="sensor---enhanced-custom-alert-rules"></a>传感器增强的自定义警报规则
 
 你现在可以创建自定义警报规则，该规则基于天，检测到的一组日期和时间段网络活动。  使用日期和时间规则条件非常有用，例如，在警报严重性发生在警报事件发生时的情况下。 例如，创建自定义规则，该规则在周末或晚上检测到网络活动时触发高严重性警报。
 
 此功能在版本10.1 版的传感器上可用。
 
-### <a name="export-alerts-from-on-premises-management-console"></a>从本地管理控制台导出警报
+### <a name="on-premises-management-console---export-alerts"></a>本地管理控制台-导出警报
 
 现在可以从本地管理控制台将警报信息导出到 .csv 文件。 您可以导出检测到的所有警报的信息，或基于筛选视图导出信息。
 
@@ -48,7 +48,7 @@ ms.locfileid: "99809501"
 - **安全状态管理** -主动监视 IoT 设备的安全状况。
 - **连续实时 IoT/OT 威胁检测** -检测僵尸网络、暴力强行尝试、加密挖掘者采用和可疑网络活动等威胁
 
-不推荐使用的安全模块文档将移到经典文件夹中。
+不推荐使用的安全模块文档将移到 *>经典文件夹的设备构建者的基于代理的解决方案* 中。
 
 此功能集适用于当前的公共预览版云版本。
 
@@ -58,7 +58,7 @@ ms.locfileid: "99809501"
 - [载入](#onboarding)
 - [可用性](#usability)
 - [其他更新](#other-updates)
-### <a name="security"></a>安全
+### <a name="security"></a>安全性
 
 此版本的证书和密码恢复增强功能。
 

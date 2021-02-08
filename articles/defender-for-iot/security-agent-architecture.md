@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2021
 ms.author: shhazam
-ms.openlocfilehash: 929b8de8a6b70519bb44e41ba5cfede9ec12f110
-ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
+ms.openlocfilehash: ff837fe88f878c522366b2b6bc19a1ef3954b667
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/08/2021
-ms.locfileid: "99808855"
+ms.locfileid: "99820647"
 ---
 # <a name="security-agent-reference-architecture"></a>安全代理参考体系结构
 
@@ -34,7 +34,7 @@ Azure Defender for IoT 为通过 IoT 中心记录、处理、聚合和发送安�
 
 - 将原始安全事件聚合到通过 IoT 中心发送的消息中。
 
-- 使用 azureiotsecurity 模块孪生远程配置。 请参阅[配置 Defender for IoT 代理](how-to-agent-configuration.md)了解详细信息。
+- 使用 azureiotsecurity 模块孪生远程配置。 若要了解详细信息，请参阅 [为 IoT 代理配置 Defender](how-to-agent-configuration.md)。
 
 Defender for IoT Security agent 作为开放源代码项目开发，可从 GitHub 获得：
 

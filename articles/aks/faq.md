@@ -3,12 +3,12 @@ title: 有关 Azure Kubernetes 服务 (AKS) 的常见问题解答
 description: 查找有关 Azure Kubernetes 服务 (AKS) 的某些常见问题的解答。
 ms.topic: conceptual
 ms.date: 08/06/2020
-ms.openlocfilehash: 7fc348ae7b3edb79e75aa1acd08941fec447da6f
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: 6c2eddf3b7002b101fed8face4a58f2d2b2f4878
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98127628"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820256"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>有关 Azure Kubernetes 服务 (AKS) 的常见问题解答
 
@@ -20,7 +20,7 @@ ms.locfileid: "98127628"
 
 ## <a name="can-i-spread-an-aks-cluster-across-regions"></a>能否跨区域分布 AKS 群集？
 
-否。 AKS 群集是区域资源，不能跨区域。 如需了解如何创建包含多个区域的体系结构，请参阅[业务连续性和灾难恢复最佳做法][bcdr-bestpractices]。
+否。 AKS 群集是区域性资源，不能跨区域。 有关如何创建包括多个区域的体系结构的指南，请参阅[用于实现业务连续性和灾难恢复的最佳做法][bcdr-bestpractices]。
 
 ## <a name="can-i-spread-an-aks-cluster-across-availability-zones"></a>AKS 群集是否可以跨可用性区域？
 
@@ -43,7 +43,7 @@ Azure 会按照夜间计划自动将安全修补程序应用于群集中的 Linu
 
 - 通过 Azure 门户或 Azure CLI 手动执行。
 - 通过升级 AKS 群集。 群集自动升级 [cordon 和 drain 节点][cordon-drain]，然后使用最新的 Ubuntu 映像和新修补程序版本或 Kubernetes 次要版本将新节点联机。 有关详细信息，请参阅[升级 AKS 群集][aks-upgrade]。
-- 使用 [节点映像升级](node-image-upgrade.md)。
+- 通过使用[节点映像升级](node-image-upgrade.md)。
 
 ### <a name="windows-server-nodes"></a>Windows Server 节点
 
@@ -79,7 +79,7 @@ AKS 在多个 Azure 基础结构资源之上构建，包括虚拟机规模集、
 
 如果修改或删除节点资源组中 Azure 创建的标记和其他资源属性，可能会出现意外的结果，例如缩放和升级错误。 使用 AKS，可以创建和修改由最终用户创建的自定义标记，还可以在[创建节点池](use-multiple-node-pools.md#specify-a-taint-label-or-tag-for-a-node-pool)时添加这些标记。 例如，可以创建或修改标记，以分配业务单位或成本中心。 这也可以通过在托管资源组上创建具有作用域的 Azure 策略来实现。
 
-但是，在 AKS 群集中的节点资源组下修改资源的任何 **Azure 创建的标记** 是不受支持的操作，这会中断服务级别目标 (SLO) 。 有关详细信息，请参阅 [AKS 是否提供服务级别协议？](#does-aks-offer-a-service-level-agreement)
+但是，在 AKS 群集中的节点资源组下修改任何 Azure 在资源中创建的标记是不受支持的操作，这会中断服务级别目标 (SLO)。 有关详细信息，请参阅 [AKS 是否提供服务级别协议？](#does-aks-offer-a-service-level-agreement)
 
 ## <a name="what-kubernetes-admission-controllers-does-aks-support-can-admission-controllers-be-added-or-removed"></a>AKS 支持哪些 Kubernetes 许可控制器？ 是否可以添加或删除许可控制器？
 
@@ -101,7 +101,7 @@ AKS 支持以下[许可控制器][admission-controllers]：
 
 ## <a name="can-i-use-admission-controller-webhooks-on-aks"></a>是否可以在 AKS 上使用许可控制器 Webhook？
 
-是的，可以在 AKS 上使用许可控制器 Webhook。 建议你排除使用 **控制平面标签** 标记的内部 AKS 命名空间。 例如，可以将以下内容添加到 Webhook 配置：
+是的，可以在 AKS 上使用许可控制器 Webhook。 建议排除带有 control-plane 标记的内部 AKS 命名空间。 例如，可以将以下内容添加到 Webhook 配置：
 
 ```
 namespaceSelector:
@@ -110,7 +110,7 @@ namespaceSelector:
       operator: DoesNotExist
 ```
 
-AKS 使 API 服务器进入防火墙，以便需要从群集内访问许可控制器 webhook。
+AKS 对 API 服务器出口设置了防火墙，因此需要能够从群集内部访问许可控制器 Webhook。
 
 ## <a name="can-admission-controller-webhooks-impact-kube-system-and-internal-aks-namespaces"></a>许可控制器 Webhook 是否会影响 kube 系统和内部 AKS 命名空间？
 
@@ -132,7 +132,9 @@ Windows Server 对节点池的支持具有一些限制，Kubernetes 项目中的
 
 ## <a name="does-aks-offer-a-service-level-agreement"></a>AKS 是否提供服务级别协议？
 
-AKS 提供 SLA 保证作为可选的附加功能，包括 [运行时间 SLA][uptime-sla]。
+AKS 提供 SLA 保证作为可选的附加功能，包括 [运行时间 SLA][uptime-sla]。 
+
+默认情况下提供的免费 SLA 不保证高可用 API 服务器终结点 (我们的服务级别目标为 99.5% ) 。 可能会出现暂时性的连接问题，如升级、不正常的是节点、平台维护等。如果工作负荷不允许 APIServer 重启，则建议使用运行时间 SLA。
 
 ## <a name="can-i-apply-azure-reservation-discounts-to-my-aks-agent-nodes"></a>是否可将 Azure 预留折扣应用于 AKS 代理节点？
 
@@ -156,47 +158,47 @@ AKS 代理节点按标准 Azure 虚拟机计费，因此，如果你已为在 AK
 
 ## <a name="why-is-my-cluster-delete-taking-so-long"></a>为何群集删除需要如此长的时间？
 
-大多数群集是按用户请求删除的；某些情况下，尤其是在客户引入自己的资源组或执行跨 RG 任务的情况下，删除操作可能需要更多的时间，或者可能会失败。 如果删除有问题，请仔细检查是否在 RG 上没有锁，RG 之外的任何资源是否与 RG 断开关联，等等。
+大多数群集是按用户请求删除的；某些情况下，尤其是在客户引入自己的资源组或执行跨 RG 任务的情况下，删除操作可能需要更多的时间，或者可能会失败。 如果在删除时出现问题，请仔细检查，确保没有在 RG 上进行锁定、RG 之外的任何资源均已取消与 RG 的关联，等等。
 
 ## <a name="if-i-have-pod--deployments-in-state-nodelost-or-unknown-can-i-still-upgrade-my-cluster"></a>如果 Pod/部署处于“NodeLost”或“未知”状态，是否仍然可以升级群集？
 
-您可以，但 AKS 不推荐这样做。 当群集状态为已知且正常时，应执行升级。
+可以，但是 AKS 不建议这样做。 升级应该在群集状态已知且正常的情况下完成。
 
 ## <a name="if-i-have-a-cluster-with-one-or-more-nodes-in-an-unhealthy-state-or-shut-down-can-i-perform-an-upgrade"></a>如果我有一个群集的一个或多个节点处于“运行不正常”状态或关闭状态，是否可以进行升级？
 
-否，删除/删除处于失败状态的任何节点，或在升级之前从群集中删除。
+否。请删除/移除任何处于故障状态的节点或因为其他原因从群集中移除的节点，然后再进行升级。
 
 ## <a name="i-ran-a-cluster-delete-but-see-the-error-errno-11001-getaddrinfo-failed"></a>我运行了群集删除操作，但出现错误：`[Errno 11001] getaddrinfo failed`
 
-这种情况最可能的原因是用户有一个或多个网络安全组 (NSG) 仍在使用并与群集相关联。  请将其删除，然后重试删除。
+这种情况最可能的原因是用户有一个或多个网络安全组 (NSG) 仍在使用并与群集相关联。  请将其移除，然后再次尝试删除操作。
 
 ## <a name="i-ran-an-upgrade-but-now-my-pods-are-in-crash-loops-and-readiness-probes-fail"></a>我运行了升级，但现在我的 Pod 处于崩溃循环中，且就绪情况探测失败。
 
-确认你的服务主体未过期。  请参阅： [AKS 服务主体](./kubernetes-service-principal.md) 和 [AKS 更新凭据](./update-credentials.md)。
+请确认你的服务主体尚未过期。  请参阅：[AKS 服务主体](./kubernetes-service-principal.md)和 [AKS 更新凭据](./update-credentials.md)。
 
-## <a name="my-cluster-was-working-but-suddenly-cant-provision-loadbalancers-mount-pvcs-etc"></a>我的群集正在运行，但突然无法预配 LoadBalancers、装载 Pvc 等。
+## <a name="my-cluster-was-working-but-suddenly-cant-provision-loadbalancers-mount-pvcs-etc"></a>我的群集在运行，但突然不能预配 LoadBalancer，不能装载 PVC，等等。
 
-确认你的服务主体未过期。  请参阅： [AKS 服务主体](./kubernetes-service-principal.md)  和 [AKS 更新凭据](./update-credentials.md)。
+请确认你的服务主体尚未过期。  请参阅：[AKS 服务主体](./kubernetes-service-principal.md)和 [AKS 更新凭据](./update-credentials.md)。
 
 ## <a name="can-i-scale-my-aks-cluster-to-zero"></a>能否将 AKS 群集缩放为零？
 可以完全 [停止正在运行的 AKS 群集](start-stop-cluster.md)，并保存各自的计算成本。 此外，还可以选择将 [所有或特定 `User` 节点池缩放或自动缩放](scale-cluster.md#scale-user-node-pools-to-0) 到0，只维护必要的群集配置。
-不能直接将 [系统节点池](use-system-pools.md) 缩放为零。
+你不能直接将[系统节点池](use-system-pools.md)缩放为零。
 
 ## <a name="can-i-use-the-virtual-machine-scale-set-apis-to-scale-manually"></a>是否可以使用虚拟机规模集 API 手动进行缩放？
 
 否。使用虚拟机规模集 API 进行的缩放操作不受支持。 请使用 AKS API (`az aks scale`)。
 
-## <a name="can-i-use-virtual-machine-scale-sets-to-manually-scale-to-zero-nodes"></a>能否使用虚拟机规模集手动缩放到零节点？
+## <a name="can-i-use-virtual-machine-scale-sets-to-manually-scale-to-zero-nodes"></a>是否可以使用虚拟机规模集手动缩放为 0 个节点？
 
 否。使用虚拟机规模集 API 进行的缩放操作不受支持。 你可以使用 AKS API 扩展到零个非系统节点池，或者改为 [停止群集](start-stop-cluster.md) 。
 
 ## <a name="can-i-stop-or-de-allocate-all-my-vms"></a>是否可以停止或解除分配我的所有 VM？
 
-尽管 AKS 具有可经受此类配置并从中恢复的复原机制，但这不是一种受支持的配置。 改为[停止群集](start-stop-cluster.md)。
+虽然 AKS 有对抗此类配置并从其恢复的复原机制，但这不是受支持的配置。 改为[停止群集](start-stop-cluster.md)。
 
 ## <a name="can-i-use-custom-vm-extensions"></a>是否可以使用自定义 VM 扩展？
 
-支持 Log Analytics 代理，因为它是由 Microsoft 管理的扩展。 在其他情况下不支持。AKS 是一项托管服务，不支持操作 IaaS 资源。 若要安装自定义组件，请使用 Kubernetes Api 和机制。 例如，使用 DaemonSets 安装所需组件。
+支持 Log Analytics 代理，因为它是由 Microsoft 管理的扩展。 在其他情况下不支持。AKS 是一项托管服务，不支持操作 IaaS 资源。 若要安装自定义组件，请使用 Kubernetes API 和机制。 例如，使用 DaemonSets 安装所需组件。
 
 ## <a name="does-aks-store-any-customer-data-outside-of-the-clusters-region"></a>AKS 是否将任何客户数据存储在群集区域之外？
 
@@ -204,22 +206,22 @@ AKS 代理节点按标准 Azure 虚拟机计费，因此，如果你已为在 AK
 
 ## <a name="are-aks-images-required-to-run-as-root"></a>AKS 映像是否需要以根用户身份运行？
 
-除了以下两个图像，AKS 不需要以 root 身份运行映像：
+除了以下两个映像之外，其他 AKS 映像不需要以根用户身份运行：
 
 - *mcr.microsoft.com/oss/kubernetes/coredns*
 - *mcr.microsoft.com/azuremonitor/containerinsights/ciprod*
 
-## <a name="what-is-azure-cni-transparent-mode-vs-bridge-mode"></a>什么是 Azure CNI 透明模式与 Bridge 模式？
+## <a name="what-is-azure-cni-transparent-mode-vs-bridge-mode"></a>什么是 Azure CNI 透明模式与桥模式？
 
-在1.2.0 中，Azure CNI 将具有适用于单个租户 Linux CNI 部署的默认透明模式。 透明模式正在替换桥模式。 在本部分中，我们将详细介绍有关这两种模式的差异，以及在 Azure CNI 中使用透明模式的优点/限制。
+从 v1.2.0 开始，Azure CNI 会将透明模式作为单租户 Linux CNI 部署的默认模式。 透明模式将替换桥模式。 在本部分，我们将详细讨论这两种模式的差异，以及在 Azure CNI 中使用透明模式的优点/限制。
 
 ### <a name="bridge-mode"></a>桥模式
 
-顾名思义，桥模式 Azure CNI 在 "实时" 方式下将创建一个名为 "azure0" 的二级桥。 所有主机端 pod `veth` 配对接口都将连接到此桥。 因此 Pod-Pod VM 通信，其余流量将通过此桥。 所涉及的桥是第2层虚拟设备，其自己无法接收或传输任何内容，除非你将一个或多个实际设备绑定到该设备。 出于此原因，Linux VM 的 eth0 必须转换为 "azure0" 桥。 这会在 Linux VM 中创建复杂的网络拓扑，作为 CNI，必须处理其他网络功能，例如 DNS 服务器更新等。
+顾名思义，桥模式 Azure CNI 会以“实时”方式创建一个名为“azure0”的 L2 桥。 所有主机端 Pod `veth` 对接口都会连接到此桥。 因此，Pod 到 Pod 内部 VM 通信和其余流量都通过此桥。 所涉及的桥是一个第 2 层虚拟设备，它自己无法接收或传输任何内容，除非你将一个或多个真实设备绑定到该桥。 因此，Linux VM 的 eth0 必须转换为“azure0”桥的下级。 这会在 Linux VM 中创建复杂的网络拓扑，一个征兆就是，CNI 必须处理其他网络功能，例如 DNS 服务器更新等。
 
 :::image type="content" source="media/faq/bridge-mode.png" alt-text="桥模式拓扑":::
 
-下面是 ip 路由设置在 Bridge 模式下的外观示例。 无论该节点有多少个 pod，都只会有两个路由。 第一种说法，所有不包括 azure0 本地的流量都将通过 ip 为 "src 10.240.0.4 (" 的接口（节点主 IP) ，第二个是 "10.20" Pod 空间，第二个是 "" Pod 空间来确定内核）的默认网关。
+下面是桥模式下的 IP 路由设置示例。 不管节点有多少个 Pod，都只会有两个路由。 第一个路由：azure0 上除本地流量以外的所有流量都将通过 IP 为“src 10.240.0.4”（即节点主 IP）的接口进入子网的默认网关；第二个路由：从“10.20.x.x”Pod 空间到内核，由内核决定。
 
 ```bash
 default via 10.240.0.1 dev azure0 proto dhcp src 10.240.0.4 metric 100
@@ -229,11 +231,11 @@ root@k8s-agentpool1-20465682-1:/#
 ```
 
 ### <a name="transparent-mode"></a>透明模式
-透明模式使用一种方法来设置 Linux 网络。 在此模式下，Azure CNI 不会更改 Linux VM 中 eth0 接口的任何属性。 这种更改 Linux 网络属性的最小方法有助于减少群集可能会在 Bridge 模式下面临的复杂的极端情况问题。 在透明模式下，Azure CNI 将创建并添加主机端 pod `veth` 对接口，这些接口将添加到主机网络中。 VM 盒到 Pod 的通信是通过 CNI 将添加的 ip 路由完成的。 从本质上讲盒到 Pod 的通信的方式高于第3层，而 Pod 流量由 L3 路由规则路由。
+透明模式采用直截了当的方法来设置 Linux 网络。 在此模式下，Azure CNI 不会更改 Linux VM 中 eth0 接口的任何属性。 这种对 Linux 网络属性更改最少的方法有助于减少群集在桥模式下可能会遇到的复杂极端情况问题。 在透明模式下，Azure CNI 会创建并添加那些将添加到主机网络的主机端 Pod `veth` 对接口。 内部 VM Pod 到 Pod 通信通过 CNI 会添加的 IP 路由进行。 基本上，Pod 到 Pod 通信通过第 3 层进行，Pod 通信通过 L3 路由规则进行路由。
 
 :::image type="content" source="media/faq/transparent-mode.png" alt-text="透明模式拓扑":::
 
-下面是透明模式的 ip 路由设置示例，每个 Pod 的接口都将连接一个静态路由，以便将具有目标 IP 的流量直接发送到 Pod 的主机端 `veth` 对接口。
+下面是透明模式的 IP 路由设置示例，每个 Pod 的接口都会连接一个静态路由，这样，目标 IP 为 Pod 的流量会直接发送到 Pod 的主机端 `veth` 对接口。
 
 ```bash
 10.240.0.216 dev azv79d05038592 proto static
@@ -249,17 +251,17 @@ root@k8s-agentpool1-20465682-1:/#
 
 ### <a name="benefits-of-transparent-mode"></a>透明模式的优点
 
-- 为 `conntrack` dns 并行争用情况提供缓解，并避免5秒 dns 延迟问题，而无需设置节点本地 dns (出于性能原因，你仍可以使用节点本地 dns) 。
-- 消除了今天由于 "实时" 桥接设置而导致的最初5秒 DNS 延迟 CNI 桥。
-- 网桥模式下的一个角落情况是，Azure CNI 不能继续更新自定义 DNS 服务器列表用户添加到 VNET 或 NIC 的列表。 这会导致 CNI 仅选取 DNS 服务器列表的第一个实例。 在透明模式下解决，因为 CNI 不会更改任何 eth0 属性。 在[此处](https://github.com/Azure/azure-container-networking/issues/713)了解详细信息。
-- 更好地处理 UDP 流量，并在 ARP 超时时降低 UDP 淹没风暴。在桥接模式下，当桥不知道 VM 内盒到 Pod 通信中的目标 pod 的 MAC 地址时，设计时，这会导致将数据包风暴到所有端口。 在透明模式下解决，因为路径中没有 L2 设备。 在[此处](https://github.com/Azure/azure-container-networking/issues/704)了解详细信息。
-- 与 bridge 模式相比，透明模式在吞吐量和延迟方面的 VM Pod 到 Pod 通信中性能更佳。
+- 针对 `conntrack` DNS 并行争用情况提供缓解措施，避免 5 秒 DNS 延迟问题，无需设置节点本地 DNS（出于性能方面的原因，你仍可以使用节点本地 DNS）。
+- 消除了 CNI 桥模式目前由于“实时”桥设置而引入的最初 5 秒 DNS 延迟。
+- 桥模式下的极端情况之一是，Azure CNI 无法不断更新用户添加到 VNET 或 NIC 的自定义 DNS 服务器列表。 这会导致 CNI 仅选取 DNS 服务器列表的第一个实例。 此问题在透明模式下得到解决，因为 CNI 不更改任何 eth0 属性。 在[此处](https://github.com/Azure/azure-container-networking/issues/713)了解详细信息。
+- 提供了更好的 UDP 流量处理，并且在 ARP 超时时可以缓解 UDP 数据风暴。在桥模式下，当桥在 VM 内部 Pod 到 Pod 通信中不知道目标 Pod 的 MAC 地址时，按照设计，这会导致所有端口都出现数据包风暴。 此问题在透明模式下得到解决，因为路径中没有 L2 设备。 在[此处](https://github.com/Azure/azure-container-networking/issues/704)了解详细信息。
+- 与桥模式相比，在内部 VM Pod 到 Pod 通信中，透明模式在吞吐量和延迟方面的性能更佳。
 
-## <a name="how-to-avoid-permission-ownership-setting-slow-issues-when-the-volume-has-a-lot-of-files"></a>如果卷包含大量文件，如何避免权限所有权设置慢问题？
+## <a name="how-to-avoid-permission-ownership-setting-slow-issues-when-the-volume-has-a-lot-of-files"></a>当卷中有很多文件时，如何避免权限所有权设置缓慢问题？
 
-通常情况下，如果你的 pod 作为非根用户运行 (应) ，则必须在 `fsGroup` pod 的安全上下文中指定，以便该卷可供盒读写。 [此处](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/)更详细地介绍了这一要求。
+通常情况下，如果你的 pod 作为非根用户运行 (应) ，则必须在 `fsGroup` pod 的安全上下文中指定，以便该卷可供盒读写。 [此处](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/)将更详细地介绍此要求。
 
-但设置的一个副作用 `fsGroup` 是，每次装入一个卷时，Kubernetes 必须以递归方式 `chown()` 和 `chmod()` 卷内的所有文件和目录-下面记下一些例外。 即使卷的组所有权已经与请求的组所有权匹配， `fsGroup` 但对于包含大量小文件的较大卷来说，这种情况也会非常昂贵，这会导致 pod 启动花费很长时间。 此方案是 v 1.20 前的一个已知问题，而解决方法是将 Pod 设置为 root 运行：
+但是设置 `fsGroup` 的一个影响是，每次装载卷时，Kubernetes 都必须通过 `chown()` 和 `chmod()` 递归卷内的所有文件和目录（下面提到的一些情况例外）。 即使卷的组所有权已经与请求的 `fsGroup` 匹配，也会发生这种情况，而对于包含大量小文件的较大卷来说，价格可能会非常高昂，这会导致 Pod 需要花费很长时间才能启动。 在 v1.20 之前，这种情况是一个已知问题，解决方法是将 Pod 设置为以根用户身份运行：
 
 ```yaml
 apiVersion: v1
@@ -272,7 +274,7 @@ spec:
     fsGroup: 0
 ```
 
-此问题已由 Kubernetes v 1.20 解决。有关更多详细信息，请参阅 [Kubernetes 1.20：对卷权限更改的精细控制](https://kubernetes.io/blog/2020/12/14/kubernetes-release-1.20-fsgroupchangepolicy-fsgrouppolicy/) 。
+此问题已由 Kubernetes v1.20 解决，有关详细信息，请参阅 [Kubernetes 1.20：批量许可更改的粒度控制](https://kubernetes.io/blog/2020/12/14/kubernetes-release-1.20-fsgroupchangepolicy-fsgrouppolicy/)。
 
 
 <!-- LINKS - internal -->

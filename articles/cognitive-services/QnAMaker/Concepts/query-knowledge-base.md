@@ -3,12 +3,12 @@ title: 查询知识库-QnA Maker
 description: 必须发布知识库。 发布后，将使用 generateAnswer API 在运行时预测终结点上查询知识库。
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: d8f986299edee46bf5cace7a9f4c805c29b3ce0c
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: deefc53fdc94851da0e9e255962fbf85692d1393
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96346199"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820375"
 ---
 # <a name="query-the-knowledge-base-for-answers"></a>查询知识库以获取答案
 
@@ -31,7 +31,7 @@ ms.locfileid: "96346199"
 |1|客户端应用程序将用户查询发送到 [GENERATEANSWER API](../how-to/metadata-generateanswer-usage.md)。|
 |2|QnA Maker 通过语言检测、spellers 和断字符来预处理用户查询。|
 |3|此预处理用于更改最佳搜索结果的用户查询。|
-|4|此更改的查询将发送到 Azure 认知搜索索引，该索引将接收 `top` 结果数。 如果这些结果中没有正确答案，请将值略微增大 `top` 。 通常， `top` 90% 的查询中的值为10。|
+|4|此更改的查询将发送到 Azure 认知搜索索引，该索引将接收 `top` 结果数。 如果这些结果中没有正确答案，请将值略微增大 `top` 。 通常， `top` 90% 的查询中的值为10。 Azure 搜索筛选器会在此步骤中 [停止字词](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/STOPWORDS.md) 。|
 |5|QnA Maker 使用语法和语义特征化来确定用户查询与提取的 QnA 结果之间的相似性。|
 |6|机器学习的 ranker 模型使用步骤5中的不同功能来确定置信度和新的排名顺序。|
 |7|新结果将按顺序返回到客户端应用程序。|
@@ -54,7 +54,7 @@ ms.locfileid: "96346199"
 |1|客户端应用程序将用户查询发送到 [GENERATEANSWER API](../how-to/metadata-generateanswer-usage.md)。|
 |2|QnA Maker 通过语言检测、spellers 和断字符来预处理用户查询。|
 |3|此预处理用于更改最佳搜索结果的用户查询。|
-|4|此更改的查询将发送到 Azure 认知搜索索引，该索引将接收 `top` 结果数。 如果这些结果中没有正确答案，请将值略微增大 `top` 。 通常， `top` 90% 的查询中的值为10。|
+|4|此更改的查询将发送到 Azure 认知搜索索引，该索引将接收 `top` 结果数。 如果这些结果中没有正确答案，请将值略微增大 `top` 。 通常， `top` 90% 的查询中的值为10。 Azure 搜索筛选器会在此步骤中 [停止字词](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/STOPWORDS.md) 。|
 |5|QnA Maker 使用基于先进转换器的模型来确定用户查询与从 Azure 认知搜索提取的候选 QnA 结果之间的相似性。 基于转换器的模型是一个深度学习多语言模型，它在水平方向上适用于所有语言，以确定置信度和新的排名顺序。|
 |6|新结果将按顺序返回到客户端应用程序。|
 |||

@@ -5,25 +5,18 @@ author: rayne-wiselman
 manager: evansma
 ms.service: resource-move
 ms.topic: conceptual
-ms.date: 02/01/2021
+ms.date: 02/04/2021
 ms.author: raynew
-ms.openlocfilehash: ab4b8f5a691bc8e4091e9f3f01b709391deeddb0
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: c586832386f3bf6419d8af94ad23662c6801b1ae
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99550702"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820868"
 ---
 # <a name="common-questions"></a>常见问题
 
 本文提供关于 [Azure 资源转移器](overview.md)的常见问题的解答。
-
-## <a name="general"></a>常规
-
-### <a name="is-resource-mover-generally-available"></a>资源转移器是否已正式发布？
-
-资源转移器目前提供公共预览版。 支持生产工作负载。
-
 
 
 ## <a name="moving-across-regions"></a>跨区域移动
@@ -45,13 +38,16 @@ ms.locfileid: "99550702"
 - 内部和公共负载均衡器 
 - Azure SQL 数据库和弹性池
 
+### <a name="can-i-move-disks-across-regions"></a>能否跨区域移动磁盘？
+
+不能选择磁盘作为跨区域移动的资源。 但是，磁盘将作为 VM 移动的一部分进行移动。
 
 ### <a name="can-i-move-resources-across-subscriptions-when-i-move-them-across-regions"></a>当我跨区域移动资源时，我能否跨订阅移动资源？
 
 可以在将资源移动到目标区域后更改订阅。 [详细了解](../azure-resource-manager/management/move-resource-group-and-subscription.md)如何将资源移动到其他订阅。 
 
 ### <a name="does-azure-resource-move-service-store-customer-data"></a>Azure 资源移动服务是否会将客户数据存储在一起？ 
-不能。 资源移动服务不存储客户数据，它只存储元数据信息，这有助于客户跟踪和跟踪选定要移动的资源。
+否。 资源移动服务不存储客户数据，它只存储元数据信息，这有助于客户跟踪和跟踪选定要移动的资源。
 
 
 ### <a name="where-is-the-metadata-for-moving-across-regions-stored"></a>跨区域移动的元数据存储在何处？
@@ -97,6 +93,12 @@ Azure 资源转移器托管标识至少需要以下权限：
 ### <a name="how-can-i-do-multiple-moves-together"></a>如何一起执行多个移动？
 
 使用门户中的更改选项根据需要更改源/目标组合。
+
+### <a name="what-happens-when-i-remove-a-resource-from-a-list-of-move-resources"></a>从移动资源列表中删除资源时会发生什么情况？
+
+您可以删除已添加到移动列表中的资源。 从列表中删除资源时的行为取决于资源状态。 [了解详细信息](remove-move-resources.md#vm-resource-state-after-removing)。
+
+
 
 ## <a name="next-steps"></a>后续步骤
 

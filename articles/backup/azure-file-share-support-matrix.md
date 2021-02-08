@@ -4,12 +4,12 @@ description: 汇总了备份 Azure 文件共享时的支持设置和限制。
 ms.topic: conceptual
 ms.date: 5/07/2020
 ms.custom: references_regions
-ms.openlocfilehash: 6381170df93fdf52c2d0dc7059ad47bbff734025
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 999cb4c764e9960c509d19faa61016b2522259ac
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89378026"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99819854"
 ---
 # <a name="support-matrix-for-azure-file-share-backup"></a>Azure 文件共享备份的支持矩阵
 
@@ -60,7 +60,7 @@ Azure 文件共享备份在除以下项 **之外** 的所有地区提供：德�
 | 设置                                                      | 限制   |
 | ------------------------------------------------------------ | ------- |
 | 每天的还原数上限                           | 10      |
-| 每次还原的文件数上限                         | 10      |
+| 每次还原的文件数上限                         | 99      |
 | 大型文件共享的每次还原的建议还原大小上限 | 15 TiB |
 
 ## <a name="retention-limits"></a>保留期限制

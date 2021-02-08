@@ -1,6 +1,6 @@
 ---
-title: '在 Windows 设备上安装 c # 代理'
-description: 了解如何在32位或64位 Windows 设备上安装用于 IoT 代理的 Defender。
+title: 在 Windows 设备上安装 C# 代理
+description: 了解如何在 32 位或 64 位 Windows 设备上安装 Defender for IoT 代理。
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/09/2020
 ms.author: mlottner
-ms.openlocfilehash: 04b33c7e63efbd6ffabf978708e1b8ed81f1fc42
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6c441c9f81477a586c3e153e23b1fc63f2f76344
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90934656"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99819919"
 ---
-# <a name="deploy-an-defender-for-iot-c-based-security-agent-for-windows"></a>为 Windows 部署基于 IoT c # 的安全代理 Defender
+# <a name="deploy-a-defender-for-iot-c-based-security-agent-for-windows"></a>为 Windows 部署基于 IoT c # 的安全代理 Defender
 
-本指南介绍了如何在 Windows 上安装基于 IoT c # 的基于 Windows 的安全代理的 Defender。
+本指南介绍如何在 Windows 上安装 Defender for IoT 基于 C# 的安全代理。
 
 本指南介绍如何：
 
@@ -35,9 +35,9 @@ ms.locfileid: "90934656"
 
 ## <a name="prerequisites"></a>先决条件
 
-有关其他平台和代理风格，请参阅 [选择正确的安全代理](how-to-deploy-agent.md)。
+有关其他平台和代理风格，请参阅[选择适当的安全代理](how-to-deploy-agent.md)。
 
-1. 要在其上安装的计算机上的本地管理员权限。
+1. 要安装它的计算机上的本地管理员权限。
 
 1. 为设备[创建安全模块](quickstart-create-security-twin.md)。
 
@@ -45,18 +45,18 @@ ms.locfileid: "90934656"
 
 若要安装安全代理，请使用以下工作流：
 
-1. 在设备上安装用于 IoT Windows c # 代理的 Defender。 从适用于 IoT [GitHub 存储库](https://github.com/Azure/Azure-IoT-Security-Agent-CS)的 Defender 将最新版本下载到你的计算机。
+1. 在设备上安装 Defender for IoT Windows C# 代理。 从 Defender for IoT [GitHub 存储库](https://github.com/Azure/Azure-IoT-Security-Agent-CS)将最新版本下载到计算机。
 
 1. 提取包的内容，并导航到 /Install 文件夹。
 
 1. 以管理员身份打开 Windows PowerShell。
-1. 通过运行以下内容将运行权限添加到 InstallSecurityAgent 脚本：
+1. 运行以下命令，将运行权限添加到 InstallSecurityAgent 脚本：
 
     ```
     Unblock-File .\InstallSecurityAgent.ps1
     ```
 
-    然后运行：
+    然后，运行以下命令：
 
     ```
     .\InstallSecurityAgent.ps1 -Install -aui <authentication identity> -aum <authentication method> -f <file path> -hn <host name> -di <device id> -cl <certificate location kind>
@@ -68,18 +68,18 @@ ms.locfileid: "90934656"
     .\InstallSecurityAgent.ps1 -Install -aui Device -aum SymmetricKey -f c:\Temp\Key.txt -hn MyIotHub.azure-devices.net -di Mydevice1 -cl store
     ```
 
-    有关身份验证参数的详细信息，请参阅 [如何配置身份验证](concept-security-agent-authentication-methods.md)。
+    有关身份验证参数的详细信息，请参阅[如何配置身份验证](concept-security-agent-authentication-methods.md)。
 
 此脚本执行以下操作：
 
 * 安装必备组件。
-* 添加已禁用交互式登录) 的服务用户 (。
-* 将代理作为**系统服务**安装。
+* 添加服务用户（在禁用交互式登录的情况下）。
+* 将代理作为 **系统服务** 安装。
 * 使用提供的身份验证参数配置代理。
 
-有关更多帮助，请在 PowerShell 中使用 Get-Help 命令。
+如需其他帮助，请在 PowerShell 中使用 Get-Help 命令。
 
-Get-Help 示例：    ```Get-Help .\InstallSecurityAgent.ps1```
+Get-Help 示例：```Get-Help .\InstallSecurityAgent.ps1```
 
 ### <a name="verify-deployment-status"></a>验证部署状态
 
@@ -99,11 +99,11 @@ Get-Help 示例：    ```Get-Help .\InstallSecurityAgent.ps1```
 
 ## <a name="troubleshooting"></a>疑难解答
 
-如果代理无法启动，请启用日志记录（日志记录默认设置为“禁用”**）以获取更多信息。
+如果代理无法启动，请启用日志记录（日志记录默认设置为“禁用”）以获取更多信息。
 
 若要启用日志记录，请执行以下操作：
 
-1. 使用标准文件编辑器打开 ( # A0) 的配置文件进行编辑。
+1. 使用标准文件编辑器打开配置文件 (General.config) 进行编辑。
 
 1. 编辑以下值：
 
@@ -115,11 +115,11 @@ Get-Help 示例：    ```Get-Help .\InstallSecurityAgent.ps1```
    ```
 
     > [!NOTE]
-    > 建议在故障排除操作完成后关闭日志记录功能。**** 让日志记录保持启用状态会增加日志文件大小和数据使用量。****
+    > 建议在故障排除操作完成后关闭日志记录功能。 让日志记录保持启用状态会增加日志文件大小和数据使用量。
 
 1. 运行以下 PowerShell 或命令行，以便重启代理：
 
-    **Powershell**
+    **PowerShell**
 
      ```
      Restart-Service "ASC IoT Agent"
@@ -140,8 +140,8 @@ Get-Help 示例：    ```Get-Help .\InstallSecurityAgent.ps1```
 
 ## <a name="next-steps"></a>后续步骤
 
-* 阅读用于 IoT 服务的 Defender [概述](overview.md)
-* 了解有关用于 IoT[体系结构](architecture.md)的 Defender 的详细信息
+* 阅读 Defender for IoT 服务[概述](overview.md)
+* 详细了解 Defender for IoT [体系结构](architecture.md)
 * 启用该[服务](quickstart-onboard-iot-hub.md)
 * 阅读[常见问题解答](resources-frequently-asked-questions.md)
 * 了解[警报](concept-security-alerts.md)

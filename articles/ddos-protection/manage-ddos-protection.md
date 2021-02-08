@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/17/2019
 ms.author: kumud
-ms.openlocfilehash: fd154ec40ed4d1650e44a67fd5d362a2bc0c519d
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: f4ce830c889feaeda05745eeb02b72f55ad9314a
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97813932"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99819837"
 ---
 # <a name="quickstart-create-and-configure-azure-ddos-protection-standard"></a>快速入门：创建和配置 Azure DDoS 保护标准
 
@@ -54,7 +54,7 @@ DDoS 防护计划在订阅中定义一组已启用 DDoS 防护标准的虚拟网
 ### <a name="enable-ddos-protection-for-a-new-virtual-network"></a>为新的虚拟网络启用 DDoS 保护
 
 1. 在 Azure 门户的左上角选择 " **创建资源** "。
-2. 选择“网络”，然后选择“虚拟网络”   。
+2. 选择“网络”，然后选择“虚拟网络” 。
 3. 输入或选择以下值，接受其余默认值，然后选择 " **创建**"：
 
     | 设置         | 值                                           |
@@ -77,9 +77,9 @@ DDoS 防护计划在订阅中定义一组已启用 DDoS 防护标准的虚拟网
 
 ### <a name="enable-ddos-protection-for-all-virtual-networks"></a>为所有虚拟网络启用 DDoS 保护
 
-此 [策略](https://github.com/Azure/Azure-Network-Security/tree/master/Azure%20DDoS%20Protection/Policy%20-%20Virtual%20Networks%20should%20be%20associated%20with%20an%20Azure%20DDoS%20Protection%20Standard%20plan) 将检测定义的作用域中未启用 DDoS 保护标准的任何虚拟网络，然后可以选择创建一个将创建关联的修正任务来保护 VNet。 有关如何部署此策略的详细分步说明，请参阅 https://aka.ms/ddosvnetpolicy-techcommunity 。
+此 [策略](https://aka.ms/ddosvnetpolicy) 将检测定义的作用域中未启用 DDoS 保护标准的任何虚拟网络，然后可以选择创建一个将创建关联的修正任务来保护 VNet。 有关如何部署此策略的详细分步说明，请参阅 https://aka.ms/ddosvnetpolicy-techcommunity 。
 
-## <a name="validate-and-test"></a>验证和测试
+## <a name="validate-and-test"></a>验证并测试
 
 首先，请查看 DDoS 保护计划的详细信息：
 
@@ -113,7 +113,7 @@ DDoS 防护计划在订阅中定义一组已启用 DDoS 防护标准的虚拟网
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解如何查看和配置 DDoS 防护计划的遥测，请继续阅读教程。
+要了解如何查看和配置 DDoS 防护计划的遥测，请继续阅读教程。
 
 > [!div class="nextstepaction"]
 > [查看和配置 DDoS 防护遥测](telemetry.md)

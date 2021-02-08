@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/09/2020
 ms.author: mlottner
-ms.openlocfilehash: 132c21588df2f2180ddd973d208eb95ea6657e7d
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 3e653983b39e8eb4ac13ad840ca53e4ab6d1cfc7
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97832448"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820613"
 ---
 # <a name="azure-defender-for-iot-edge-security-module"></a>Azure Defender for IoT Edge 安全模块
 
@@ -43,7 +43,7 @@ Defender for IoT 模块收集、聚合和分析来自你的操作系统和容器
 
 - 通过使用安全模块孪生来删除配置。
 
-  请参阅[配置 Defender for IoT 代理](how-to-agent-configuration.md)来了解详细信息。
+  若要了解详细信息，请参阅 [配置用于 IoT 代理的 Defender](how-to-agent-configuration.md) 。
 
 适用于 IoT Edge 的 Defender for IoT 安全模块在 IoT Edge 下以特权模式运行。
 要使模块能够监视操作系统和其他 IoT Edge 模块，需要使用特权模式。
