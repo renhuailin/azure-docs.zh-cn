@@ -72,6 +72,8 @@
       href: my-account-portal-sign-ins-page.md
     - name: 更改门户设置
       href: my-account-portal-settings.md
+    - name: 查找我的帐户管理员
+      href: my-account-find-administrator.md
     - name: 切换组织
       href: cross-tenant-switcher.md
 - name: 安全信息帮助

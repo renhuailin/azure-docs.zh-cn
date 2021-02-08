@@ -117,23 +117,33 @@
         - name: 配置 Azure AD 租户
           href: openvpn-azure-ad-tenant.md
         - name: 客户端配置文件
-          href: about-vpn-profile-download.md
-        - name: 全局和基于中心的配置文件
-          href: global-hub-profile.md
-        - name: 配置适用于 Windows 10 的 Azure VPN 客户端
-          href: openvpn-azure-ad-client.md
-        - name: 配置 OpenVPN 客户端
-          href: howto-openvpn-clients.md?
-        - name: 配置 Always On VPN 用户隧道
-          href: howto-always-on-user-tunnel.md
-        - name: 配置 Always On VPN 设备隧道
-          href: howto-always-on-device-tunnel.md
-        - name: 启用多重身份验证 (MFA)
-          href: openvpn-azure-ad-mfa.md
-        - name: 配置 Azure AD 身份验证
-          href: virtual-wan-point-to-site-azure-ad.md
-        - name: 配置多应用程序 Azure AD 身份验证
-          href: openvpn-azure-ad-tenant-multi-app.md
+          items:
+            - name: 下载全局配置文件和基于中心的配置文件
+              href: global-hub-profile.md
+            - name: 提取和查看配置文件信息
+              href: about-vpn-profile-download.md
+            - name: 使用 Intune 部署配置文件
+              href: vpn-profile-intune.md
+        - name: VPN 客户端
+          items:
+            - name: Windows 10
+              href: openvpn-azure-ad-client.md
+            - name: OpenVPN
+              href: howto-openvpn-clients.md?
+        - name: 配置 Always-On 隧道
+          items:
+            - name: 用户隧道
+              href: howto-always-on-user-tunnel.md
+            - name: 设备隧道
+              href: howto-always-on-device-tunnel.md
+        - name: 身份验证
+          items:
+            - name: 多重身份验证 (MFA)
+              href: openvpn-azure-ad-mfa.md
+            - name: Azure AD 身份验证
+              href: virtual-wan-point-to-site-azure-ad.md
+            - name: 多应用程序 Azure AD 身份验证
+              href: openvpn-azure-ad-tenant-multi-app.md
     - name: 路由
       items:
         - name: 如何配置虚拟中心路由

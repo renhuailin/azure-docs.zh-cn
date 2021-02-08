@@ -116,6 +116,8 @@
               href: use-dynamic-groups.md
             - name: 了解 B2B 用户
               href: user-properties.md
+            - name: 重置兑换状态
+              href: reset-redemption-status.md
             - name: 用于 Azure AD 集成应用的 B2B
               href: configure-saas-apps.md
         - name: 在混合组织中管理来宾访问权限
