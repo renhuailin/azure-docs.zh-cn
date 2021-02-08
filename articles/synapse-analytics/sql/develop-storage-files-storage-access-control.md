@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: e693bd15e5255fda135a7a1dc416dd67f24f7f25
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: b493ee7d77fc45018dbf8d2bac748b03e3d74b8a
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98120404"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430203"
 ---
 # <a name="control-storage-account-access-for-serverless-sql-pool-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中控制无服务器 SQL 池对存储帐户的访问
 
@@ -94,6 +94,9 @@ ms.locfileid: "98120404"
 
 访问受防火墙保护的存储时，可使用用户标识或托管标识。 
 
+> [!NOTE]
+> 存储上的防火墙功能现为公共预览版，它在所有公共云区域中都可用。 
+
 #### <a name="user-identity"></a>用户标识
 
 若要通过用户标识访问受防火墙保护的存储，可以使用 PowerShell 模块 Az.Storage。
@@ -102,12 +105,13 @@ ms.locfileid: "98120404"
 按照以下步骤配置存储帐户防火墙，并为 Synapse 工作区添加例外。
 
 1. 打开 PowerShell 或[安装 PowerShell](/powershell/scripting/install/installing-powershell-core-on-windows?preserve-view=true&view=powershell-7.1)
-2. 安装已更新的 Az. Storage 模块： 
+2. 安装 Az.Storage 3.0.1 模块和 Az.Synapse 0.7.0： 
     ```powershell
     Install-Module -Name Az.Storage -RequiredVersion 3.0.1-preview -AllowPrerelease
+    Install-Module -Name Az.Synapse -RequiredVersion 0.7.0
     ```
     > [!IMPORTANT]
-    > 请确保使用 3.0.1 或更新版本。 可以通过运行以下命令来检查 Az.Storage 版本：  
+    > 确保使用 3.0.1 版。 可以通过运行以下命令来检查 Az.Storage 版本：  
     > ```powershell 
     > Get-Module -ListAvailable -Name  Az.Storage | select Version
     > ```
@@ -121,16 +125,23 @@ ms.locfileid: "98120404"
     - 资源组名称 - 可以在 Azure 门户中的“Synapse 工作区概述”中找到此内容。
     - 帐户名称 - 受防火墙规则保护的存储帐户的名称。
     - 租户 ID - 可在 Azure 门户中的“租户中的 Azure Active Directory 信息”中找到此内容。
-    - 资源组 ID - 可以在 Azure 门户中的“Synapse 工作区概述”中找到此内容。
+    - 工作区名称 - Synapse 工作区的名称。
 
     ```powershell
         $resourceGroupName = "<resource group name>"
         $accountName = "<storage account name>"
         $tenantId = "<tenant id>"
-        $resourceId = "<Synapse workspace resource id>"
+        $workspaceName = "<synapse workspace name>"
+        
+        $workspace = Get-AzSynapseWorkspace -Name $workspaceName
+        $resourceId = $workspace.Id
+        $index = $resourceId.IndexOf("/resourceGroups/", 0)
+        # Replace G with g - /resourceGroups/ to /resourcegroups/
+        $resourceId = $resourceId.Substring(0,$index) + "/resourcegroups/" + $resourceId.Substring($index + "/resourceGroups/".Length)
+        $resourceId
     ```
     > [!IMPORTANT]
-    > 请确保资源 id 与此模板匹配。
+    > 确保资源 ID 在 resourceId 变量的输出中与此模板匹配。
     >
     > 以小写形式书写“resourcegroups”很重要。
     > 一个资源 id 的示例： 
@@ -145,7 +156,14 @@ ms.locfileid: "98120404"
 6. 验证是否已在存储帐户中应用规则： 
     ```powershell
         $rule = Get-AzStorageAccountNetworkRuleSet -ResourceGroupName $resourceGroupName -Name $accountName
-        $rule.ResourceAccessRules
+        $rule.ResourceAccessRules | ForEach-Object { 
+        if ($_.ResourceId -cmatch "\/subscriptions\/(\w\-*)+\/resourcegroups\/(.)+") { 
+            Write-Host "Storage account network rule is successfully configured." -ForegroundColor Green
+            $rule.ResourceAccessRules
+        } else {
+            Write-Host "Storage account network rule is not configured correctly. Remove this rule and follow the steps in detail." -ForegroundColor Red
+            $rule.ResourceAccessRules
+        }
     ```
 
 #### <a name="managed-identity"></a>托管标识

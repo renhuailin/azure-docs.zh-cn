@@ -8,16 +8,16 @@ ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
 ms.custom: references_regions
-ms.openlocfilehash: 0d1b2bd039f3e110c83d7ad4bf32f1e53e4c7a79
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: 85585b771d9c0ed7c6fcdba9cfef7b589a987c8c
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98610142"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99429256"
 ---
-# <a name="microsoft-azure-attestation-preview"></a>Microsoft Azure 证明（预览版）
+# <a name="microsoft-azure-attestation"></a>Microsoft Azure 证明 
 
-Microsoft Azure 证明（预览版）是一个统一的解决方案，用于远程验证平台的可信度和在该平台中运行的二进制文件的完整性。 该服务支持对受信任的平台模块 (TPM) 支持的平台的证明，以及对受信任执行环境 (TEE) 的状态进行证明的功能，例如 [Intel® Software Guard Extensions](https://www.intel.com/content/www/us/en/architecture-and-technology/software-guard-extensions.html) (SGX) enclave 和[基于虚拟化的安全性](/windows-hardware/design/device-experiences/oem-vbs) (VBS) enclave。 
+Microsoft Azure 证明是一个统一的解决方案，用于远程验证平台的可信度和在该平台中运行的二进制文件的完整性。 该服务支持对受信任的平台模块 (TPM) 支持的平台的证明，以及对受信任执行环境 (TEE) 的状态进行证明的功能，例如 [Intel® Software Guard Extensions](https://www.intel.com/content/www/us/en/architecture-and-technology/software-guard-extensions.html) (SGX) enclave 和[基于虚拟化的安全性](/windows-hardware/design/device-experiences/oem-vbs) (VBS) enclave。 
 
 证明是演示如何在受信任的平台上正确实例化软件二进制文件的过程。 然后，远程信赖方可以确信只有此类软件在受信任的硬件上运行。 Azure 证明是一个统一的面向客户的认证服务和框架。
 
@@ -67,7 +67,7 @@ Azure 证明是用于证明 TEE 的首选服务，因为它具有以下优势：
 
 - 统一的框架，可证明多种环境，如 TPM、SGX enclave 和 VBS enclave 
 - 多租户服务，允许配置自定义证明提供程序和策略来限制令牌生成
-- 提供默认提供程序，它们无需用户配置即可进行证明
+- 提供区域共享提供程序，它们无需用户配置即可进行证明
 - 可在与 SGX enclave 中的实现一起使用时保护其数据
 - 高度可用的服务 
 

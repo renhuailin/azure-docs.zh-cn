@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 09/28/2020
 ms.author: glenga
-ms.openlocfilehash: a525d1e14e642a64235c263ba29bf7a181bf9e30
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 2517f132578b5de6b062b38ce94581f118327a13
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96008144"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493578"
 ---
 ## <a name="publish-the-project-to-azure"></a>将项目发布到 Azure
 
@@ -21,7 +21,7 @@ ms.locfileid: "96008144"
 
 1. 在活动栏中选择“Azure”图标，然后在“Azure:函数”区域中，选择“部署到函数应用...”按钮。
 
-    ![将项目发布到 Azure](media/functions-publish-project-vscode/function-app-publish-project.png)
+    ![将项目发布到 Azure](./media/functions-publish-project-vscode/function-app-publish-project.png)
 
 1. 根据提示提供以下信息：
 
@@ -35,16 +35,18 @@ ms.locfileid: "96008144"
     
     - **选择新资源的位置**：为了获得更好的性能，请选择你附近的 [区域](https://azure.microsoft.com/regions/)。 
     
+    在 Azure 中创建单个资源时，扩展会在通知区域显示这些资源的状态。
+
+    :::image type="content" source="media/functions-publish-project-vscode/resource-notification.png" alt-text="Azure 资源创建通知":::
+    
 1.  完成后，将使用基于函数应用名称的名称在订阅中创建以下 Azure 资源：
     
-    - 一个资源组：相关资源的逻辑容器。
-    - 一个标准 Azure 存储帐户：用于维护项目的状态和其他信息。
-    - 一个消耗计划：用于定义无服务器函数应用的基础主机。 
-    - 一个函数应用：提供用于执行函数代码的环境。 可以通过函数应用将函数分组为逻辑单元，以便在同一托管计划中更轻松地管理、部署和共享资源。
-    - 一个连接到函数应用的 Application Insights 实例：用于跟踪无服务器函数的使用情况。
+    [!INCLUDE [functions-vs-code-created-resources](functions-vs-code-created-resources.md)]
 
     创建函数应用并应用了部署包之后，会显示一个通知。 
-    
-1. 在此通知中选择“查看输出”以查看创建和部署结果，其中包括你创建的 Azure 资源。 如果错过了通知，请选择右下角的响铃图标以再次查看。
+
+    [!INCLUDE [functions-vs-code-create-tip](functions-vs-code-create-tip.md)]
+
+4. 在此通知中选择“查看输出”以查看创建和部署结果，其中包括你创建的 Azure 资源。 如果错过了通知，请选择右下角的响铃图标以再次查看。
 
     ![创建完成通知](media/functions-publish-project-vscode/function-create-notifications.png)

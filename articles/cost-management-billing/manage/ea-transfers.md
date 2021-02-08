@@ -6,15 +6,15 @@ ms.reviewer: baolcsva
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.topic: conceptual
-ms.date: 11/11/2020
+ms.date: 01/27/2021
 ms.author: banders
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: f5555662c6cb5f44be3959ec3d22d1cf1953674d
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 7aa57fa20c3a043cdb210ccd8a5ddbf61323716d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97030087"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943691"
 ---
 # <a name="azure-enterprise-transfers"></a>Azure Enterprise 传输
 
@@ -55,22 +55,22 @@ ms.locfileid: "97030087"
 - 注册处于到期/延期状态，且新协议正在商定中。
 - 你有多个注册，并希望合并单个注册下的所有帐户和账单。
 
-此部分仅供参考，因为企业管理员无法执行该操作。 需要支持请求才能将企业注册转移到新注册。
+此部分仅供参考，因为企业管理员无法执行该操作。 除非注册有资格进行[自动注册转移](#auto-enrollment-transfer)，否则需要发出支持请求才能将企业注册转移到新的注册。
 
 请求将整个企业注册转移到某个注册时，将发生以下操作：
 
 - 所有 Azure 服务、订阅、帐户、部门和整个注册结构（包括所有 EA 部门管理员）将转移到新的目标注册。
 - 注册状态将设置为“已转移”。 转移的注册仅可用于历史使用情况报告。
-- 无法将角色或订阅添加到处于已转移状态的注册。 已转移状态可防止注册进一步产生使用费。
+- 无法将角色或订阅添加到处于已转移状态的注册。 “已转移”状态可防止注册进一步产生使用费。
 - 协议中任何剩余的 Azure 预付款余额都将丢失（包括将来的款项）。
--    如果作为转移源的注册中购买了 RI，系统仍会将 RI 购买费保留在源注册中，但会转移所有 RI 权益以供在新注册中使用。
--    不会向新合约转移旧合约中已产生的市场一次性购买费和任何固定费用。 将传输基于使用量的市场费用。
+-    如果作为转移来源的注册中购买了预留实例 (RI)，系统仍会将 RI 购买费保留在源注册中，但会转移所有 RI 权益以供在新注册中使用。
+-    不会向新注册转移旧注册中已产生的市场一次性购买费和任何固定包月费用。 将传输基于使用量的市场费用。
 
 ### <a name="effective-transfer-date"></a>转移生效日期
 
 转移生效日期可以是目标注册的开始日期当日或之后的某个日期。
 
-源注册的使用费根据 Azure 预付款或超额计收。 在转移生效日期之后发生的使用费将转移到新注册并相应地收费。
+源注册的使用费根据 Azure 预付款或超额计收。 在转移生效日期之后发生的使用费将转移到新注册并收费。
 
 ### <a name="prerequisites"></a>先决条件
 
@@ -85,6 +85,17 @@ ms.locfileid: "97030087"
 - 需要经过目标和源注册 EA 管理员的批准。
 - 如果注册转移不符合要求，请考虑进行帐户转移。
 - 源注册状态将更新为“已转移”，并仅用于历史使用情况报告。
+
+### <a name="auto-enrollment-transfer"></a>自动注册转移
+
+即使未提交支持票证来请求注册转移，你也可能会看到注册处于“已转移”状态。 “已转移”状态是在自动注册转移过程中生成的。 为了在续订期间进行自动注册转移过程，新协议必须包含以下项：
+
+- 先前的注册号（必须位于 EA 门户）
+- 先前的注册号的到期日期是新协议生效开始日期的前一天
+- 新协议具有已开票的 Azure 预付款订单，订单上的日期不超过当前日期
+- 新注册在 EA 门户中创建
+
+如果在 EA 门户中，先前注册和新注册的使用数据相同，则无需创建转移支持票证。
 
 ### <a name="azure-prepayment"></a>Azure 预付款
 

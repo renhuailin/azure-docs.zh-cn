@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
 ms.custom: ''
-ms.openlocfilehash: 61a8dbbdde87af792bb4337660d4d3c34f7cf802
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 729444b1d1ccf55f34e54a4b59508131458c472b
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132289"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054798"
 ---
 # <a name="understand-and-work-with-scopes"></a>了解并使用范围
 
@@ -114,7 +114,7 @@ Azure 订阅嵌套在注册帐户下。 计费用户有权在其各自范围下�
 
     资源类型：不适用
 
-个人 Azure 订阅帐户管理员可以在 [Azure 帐户中心](https://account.azure.com/subscriptions)查看和管理计费数据，例如发票和付款。 但是，他们无法在 Azure 门户中查看成本数据或管理资源。 若要向帐户管理员授予访问权限，请使用前面所述的成本管理角色。
+Azure 订阅个人帐户管理员可访问 [Azure 门户](https://portal.azure.com) > “订阅”，然后选择一个订阅来查看和管理计费数据，例如发票和付款。
 
 与 EA 不同，个人 Azure 订阅帐户管理员可以在 Azure 门户中查看其发票。 请记住，成本管理读取者和成本管理参与者角色不提供对发票的访问权限。 有关详细信息，请参阅[如何授予对发票的访问权限](../manage/manage-billing-access.md#give-read-only-access-to-billing)。
 

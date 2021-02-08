@@ -4,19 +4,19 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 10/18/2020
 ms.author: glenga
-ms.openlocfilehash: 29a31948c5bfc9b5fd3a31f39144d186dbfe4885
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 99ae35aca485ac928f7c5ef9f98295eed4bc1245
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96028086"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99500122"
 ---
 ## <a name="create-supporting-azure-resources-for-your-function"></a>创建函数的支持性 Azure 资源
 
 在将函数代码部署到 Azure 之前，需要创建三个资源：
 
-- 一个资源组：相关资源的逻辑容器。
-- 一个存储帐户：维护有关项目的状态和其他信息。
+- 一个[资源组](../articles/azure-resource-manager/management/overview.md)：相关资源的逻辑容器。
+- 一个[存储帐户](../articles/storage/common/storage-account-create.md)：用于维护有关函数的状态和其他信息。
 - 一个函数应用：提供用于执行函数代码的环境。 函数应用映射到本地函数项目，可让你将函数分组为一个逻辑单元，以便更轻松地管理、部署和共享资源。
 
 使用以下命令创建这些项。 支持 Azure CLI 和 PowerShell。

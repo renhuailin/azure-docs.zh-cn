@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/10/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: 8e54f71ef58b3ea76a5fe55347a1caa173046320
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 675a5526bfd741876de16fe41c969c09a4ed0ad7
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98754498"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98938236"
 ---
 # <a name="quickstart-aspnet-core-web-app-that-signs-in-users-and-calls-microsoft-graph-on-their-behalf"></a>快速入门：实现用户登录并代表用户调用 Microsoft Graph 的 ASP.NET Core Web 应用
 
@@ -55,7 +55,7 @@ ms.locfileid: "98754498"
 > 1. 输入 `https://localhost:44321/signin-oidc` 的“重定向 URI”。
 > 1. 选择“注册”  。
 > 1. 在“管理”下，选择“身份验证”。 
-> 1. 输入 `https://localhost:44321/signout-oidc` 的“注销 URL”。
+> 1. 输入前向通道注销 URL `https://localhost:44321/signout-oidc`。
 > 1. 选择“保存”。
 > 1. 在“管理”下，选择“证书和机密” > “新建客户端机密”  。
 > 1. 输入描述，例如 `clientsecret1`。
@@ -64,7 +64,7 @@ ms.locfileid: "98754498"
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>步骤 1：在 Azure 门户中配置应用程序
-> 要使此快速入门的代码示例正常运行，需要将答复 URL 添加为 `https://localhost:44321/signin-oidc`，将注销 URL 添加为 `https://localhost:44321/signout-oidc`。
+> 要使用本快速入门的示例代码，需要在注册应用时提供重定向 URI `https://localhost:44321/signin-oidc` 和前向通道注销 URL `https://localhost:44321/signout-oidc` 。
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [执行此更改]()
 >

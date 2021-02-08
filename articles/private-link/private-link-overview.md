@@ -5,15 +5,15 @@ services: private-link
 author: malopMSFT
 ms.service: private-link
 ms.topic: overview
-ms.date: 09/03/2020
+ms.date: 01/28/2021
 ms.author: allensu
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: 974631f9cba66404a3881caed1382be7ff3c00d1
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 681e4efc8a9edda896249fdc939d19b4f644f246
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881327"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98986473"
 ---
 # <a name="what-is-azure-private-link"></a>什么是 Azure 专用链接？ 
 使用 Azure 专用链接，可以通过虚拟网络中的[专用终结点](private-endpoint-overview.md)访问 Azure PaaS 服务（例如，Azure 存储和 SQL 数据库）和 Azure 托管的客户拥有的服务/合作伙伴服务。
@@ -54,6 +54,7 @@ Azure 专用链接提供以下优势：
 |  Azure Database for PostgreSQL - 单一服务器         | 所有公共区域 <br/> 所有政府区域<br/>所有中国区域     | 在常规用途和内存优化定价层中受支持 | GA <br/> [了解如何为 Azure Database for PostgreSQL 创建专用终结点。](../postgresql/concepts-data-access-and-security-private-link.md)      |
 |  Azure Database for MySQL         | 所有公共区域<br/> 所有政府区域<br/>所有中国区域      |  | GA <br/> [了解如何为 Azure Database for MySQL 创建专用终结点。](../mysql/concepts-data-access-security-private-link.md)     |
 |  Azure Database for MariaDB         | 所有公共区域<br/> 所有政府区域<br/>所有中国区域     |  | GA <br/> [了解如何为 Azure Database for MariaDB 创建专用终结点。](../mariadb/concepts-data-access-security-private-link.md)      |
+|  Azure 数字孪生         | Azure 数字孪生支持的所有公共区域     |  | 预览 <br/> [了解如何为 Azure 数字孪生创建专用终结点。](../digital-twins/how-to-enable-private-link.md)      |
 |  Azure Key Vault         | 所有公共区域<br/> 所有政府区域      |  | GA   <br/> [了解如何为 Azure Key Vault 创建专用终结点。](../key-vault/general/private-link-service.md)   |
 |Azure Kubernetes 服务 - Kubernetes API | 所有公共区域      |  | GA   <br/> [了解如何为 Azure Kubernetes 服务创建专用终结点。](../aks/private-clusters.md)   |
 |Azure 搜索 | 所有公共区域 <br/> 所有政府区域 | 在隐私模式下的服务中受支持 | GA   <br/> [了解如何为 Azure 搜索服务创建专用终结点。](../search/service-create-private-endpoint.md)    |

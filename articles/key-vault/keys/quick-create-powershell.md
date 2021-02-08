@@ -7,14 +7,14 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: keys
 ms.topic: quickstart
-ms.date: 03/30/2020
+ms.date: 01/27/2021
 ms.author: mbaldwin
-ms.openlocfilehash: e3570a716eccf131cf19192454bfbc1008a6306e
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: adbf3080367e54147c981c8ccf0bb6236111b8c7
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97935030"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99071199"
 ---
 # <a name="quickstart-set-and-retrieve-a-key-from-azure-key-vault-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 在 Azure Key Vault 中设置和检索密钥
 
@@ -32,61 +32,35 @@ Login-AzAccount
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 创建 Azure 资源组。 资源组是在其中部署和管理 Azure 资源的逻辑容器。 
-
-```azurepowershell-interactive
-New-AzResourceGroup -Name ContosoResourceGroup -Location EastUS
-```
+[!INCLUDE [Create a resource group](../../../includes/key-vault-powershell-rg-creation.md)]
 
 ## <a name="create-a-key-vault"></a>创建密钥保管库
 
-接下来创建 Key Vault。 执行此步骤时，需要一些信息：
+[!INCLUDE [Create a key vault](../../../includes/key-vault-powershell-kv-creation.md)]
 
-虽然在本快速入门中我们始终使用“Contoso KeyVault2”作为密钥保管库的名称，但你必须使用唯一的名称。
-
-- **保管库名称** Contoso-Vault2。
-- 资源组名称 **ContosoResourceGroup**。
-- **位置**“美国东部”。
-
-```azurepowershell-interactive
-New-AzKeyVault -Name 'Contoso-Vault2' -ResourceGroupName 'ContosoResourceGroup' -Location 'East US'
-```
-
-此 cmdlet 的输出显示新创建的密钥保管库的属性。 请记下下面列出的两个属性：
-
-* **保管库名称**：在本示例中为 **Contoso-Vault2**。 将在其他密钥保管库 cmdlet 中使用此名称。
-* **保管库 URI**：在本示例中为 https://Contoso-Vault2.vault.azure.net/ 。 通过其 REST API 使用保管库的应用程序必须使用此 URI。
-
-创建保管库以后，你的 Azure 帐户是唯一能够对这个新的保管库执行任何操作的帐户。
-
-## <a name="add-a-key-to-key-vault"></a>向密钥保管库中添加密钥
+## <a name="add-a-key-to-key-vault"></a>向 Key Vault 添加密钥
 
 只需再执行几个步骤便可向保管库中添加密钥。 此密钥可供应用程序使用。 
 
 键入以下命令，创建名为 ExampleKey  的密钥：
 
 ```azurepowershell-interactive
-Add-AzKeyVaultKey -VaultName 'Contoso-Vault2' -Name 'ExampleKey' -Destination 'Software'
+Add-AzKeyVaultKey -VaultName "<your-unique-keyvault-name>" -Name "ExampleKey" -Destination "Software"
 ```
 
-现在，可以通过 URI 来引用已添加到 Azure Key Vault 的此密钥。 使用“https://Contoso-Vault2.vault.azure.net/keys/ExampleKey”获取当前版本。 
+现在，可以通过 URI 来引用已添加到 Azure Key Vault 的此密钥。 使用“https://<your-unique-keyvault-name>.vault.azure.net/keys/ExampleKey”来获取当前版本。 
 
 若要查看以前存储的密钥，请使用以下命令：
 
 ```azurepowershell-interactive
-Get-AzKeyVaultKey -VaultName 'Contoso-Vault2' -KeyName 'ExampleKey'
+Get-AzKeyVaultKey -VaultName "<your-unique-keyvault-name>" -KeyName "ExampleKey"
 ```
 
 现在，你已创建了一个密钥保管库，存储了一个密钥并检索了该密钥。
 
 ## <a name="clean-up-resources"></a>清理资源
 
-本系列中的其他快速入门和教程是在本快速入门的基础上制作的。 如果打算继续使用后续的快速入门和教程，则可能需要保留这些资源。
-如果不再需要资源组和所有相关资源，可以使用 [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) 命令将其删除。 可以删除资源，如下所示：
-
-```azurepowershell-interactive
-Remove-AzResourceGroup -Name ContosoResourceGroup
-```
+[!INCLUDE [Create a key vault](../../../includes/key-vault-powershell-delete-resources.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -9,12 +9,12 @@ ms.subservice: common
 ms.topic: reference
 ms.date: 01/26/2021
 ms.author: banders
-ms.openlocfilehash: 40eb6bbb952596e015be7c1ed29dbefb3fb6016d
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 12c13b8a65296fb0ee74e0ee0449b604facf2f48
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98897707"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99051255"
 ---
 # <a name="automation-scenarios-for-billing-and-cost-management"></a>计费和成本管理自动化方案
 
@@ -49,8 +49,8 @@ ms.locfileid: "98897707"
 | 使用情况详细信息               |             X             |         X        |           X          |         X        |          X         |     X     |
 | 计费周期             |             X             |         X        |           X          |         X        |                    |           |
 | 发票                    |             X             |         X        |           X          |         X        |                    |           |
-| RateCard                    |             X             |                  |           X          |         X        |          X         |           |
-| 未分级的使用情况               |             X             |                  |           X          |                  |          X         |           |
+| Azure 零售价格                    |             X             |                  |           X          |         X        |                    |           |
+
 
 > [!NOTE]
 > 方案到 API 的映射不包括企业消耗 API。 请尽可能使用常规使用情况 API 来解决全新开发方案的问题。
@@ -74,9 +74,7 @@ ms.locfileid: "98897707"
 
 -    [使用情况详细信息 API](/rest/api/consumption/usagedetails)：从 Microsoft 获取所有 Azure 资源的费用和使用情况信息。 信息采用使用情况详细信息记录的形式，这些记录目前会每天按计量发出。 使用此信息，可以计算所有资源的费用总和，也可以调查特定资源的费用/使用情况。
 
--    [RateCard API](/previous-versions/azure/reference/mt219005(v=azure.100))：如果你是 Web 直连客户，可获取计量费率。 然后，可以结合使用返回的信息和资源使用情况信息，手动计算预期帐单。
-
--    [未计费的使用情况 API](/previous-versions/azure/reference/mt219003(v=azure.100))：获取在 Azure 进行任何计量/计费前的原始使用情况信息。
+-    [Azure 零售价格](/rest/api/cost-management/retail-prices/azure-retail-prices)：获取采用即用即付定价的计量费率。 然后，可以结合使用返回的信息和资源使用情况信息，手动计算预期帐单。
 
 ### <a name="billing"></a>计费
 -    [计费周期 API](/rest/api/billing/enterprise/billing-enterprise-api-billing-periods)：确定要分析的计费周期，以及此周期的发票 ID。 可以将发票 ID 与发票 API 结合使用。
@@ -107,16 +105,6 @@ ms.locfileid: "98897707"
 
 - 消耗 API 适用于所有客户，但存在几种例外情况。 有关详细信息，请参阅 [Azure 消耗 API 概述](consumption-api-overview.md)和 [Azure 消耗 API 参考](/rest/api/consumption/)。 建议将提供的 API 用作最新开发方案的解决方案。
 
-### <a name="whats-the-difference-between-the-usage-details-api-and-the-usage-api"></a>使用情况详细信息 API 与使用情况 API 有何区别？
-这些 API 提供本质不同的数据：
-
-- [使用情况详细信息 API](/rest/api/consumption/usagedetails) 提供每个计量实例的 Azure 使用情况和成本信息。 提供的数据已通过 Azure 成本计量系统进行传递，其中已应用费用和其他可能的更改：
-
-   - 用于预付 Azure 预付款的帐户的更改
-   - Azure 发现的用量差异帐户的更改
-
-- [使用情况 API](/previous-versions/azure/reference/mt219003(v=azure.100)) 提供通过 Azure 成本计量系统传递前的原始 Azure 使用情况信息。 此数据可能与通过 Azure 成本计量系统传递后显示的使用情况或费用金额没有任何关联。
-
 ### <a name="whats-the-difference-between-the-invoice-api-and-the-usage-details-api"></a>发票 API 与使用情况详细信息 API 有何区别？
 这些 API 提供包含相同数据的不同视图：
 
@@ -129,7 +117,7 @@ ms.locfileid: "98897707"
 
 - [价目表 API](/rest/api/consumption/pricesheet) 提供与企业客户协商好的自定义定价。
 
-- [RateCard API](/previous-versions/azure/reference/mt219005(v=azure.100)) 提供适用于 Web 直连客户的面向公众的定价。
+- [Azure 零售价格 API](/rest/api/cost-management/retail-prices/azure-retail-prices) 提供面向公众的即用即付定价，该定价适用于 Web Direct 客户。
 
 ## <a name="next-steps"></a>后续步骤
 

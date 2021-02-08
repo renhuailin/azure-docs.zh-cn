@@ -3,17 +3,17 @@ title: Windows 虚拟桌面中有哪些新增功能？ - Azure
 description: Windows 虚拟桌面的新增功能和产品更新。
 author: Heidilohr
 ms.topic: overview
-ms.date: 01/06/2021
+ms.date: 01/29/2021
 ms.author: helohr
 ms.reviewer: thhickli; darank
 manager: lizross
 ms.custom: references_regions
-ms.openlocfilehash: 2f49ec0fef5aa79c602e561746eb0f6dba16cb33
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: f34a5b957f64558b468c456686f0f86172630135
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98876591"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258789"
 ---
 # <a name="whats-new-in-windows-virtual-desktop"></a>Windows 虚拟桌面中有哪些新增功能？
 
@@ -25,6 +25,61 @@ Windows 虚拟桌面会定期更新。 本文介绍了以下内容：
 - Bug 修复
 
 本文每月更新一次。 请务必时常查看本文，以及时了解最新更新。
+
+## <a name="client-updates"></a>客户端更新
+
+要了解 Windows 虚拟桌面和远程桌面服务的客户端更新，请参阅以下文章：
+
+- [Windows](/windows-server/remote/remote-desktop-services/clients/windowsdesktop-whatsnew)
+- [macOS](/windows-server/remote/remote-desktop-services/clients/mac-whatsnew)
+- [iOS](/windows-server/remote/remote-desktop-services/clients/ios-whatsnew)
+- [Android](/windows-server/remote/remote-desktop-services/clients/android-whatsnew)
+- [Web](/windows-server/remote/remote-desktop-services/clients/web-client-whatsnew)
+
+## <a name="fslogix-updates"></a>FSLogix 更新
+
+想知道 FSLogix 的最新更新吗？ 请查看 [FSLogix 的新增功能](/fslogix/whats-new)。
+
+## <a name="january-2021"></a>2021 年 1 月
+
+以下是 2021 年 1 月的更改内容：
+
+### <a name="new-windows-virtual-desktop-offer"></a>Windows 虚拟桌面新优惠
+
+如果使用原生 Microsoft 解决方案，则对于 D 系列和 B 系列虚拟机，新客户可节省 30% 的 Windows 虚拟桌面计算成本（此优惠只提供 90 天）。 你可于 2021 年 3 月 31 日之前在 Azure 门户中兑换此优惠。 有关详细信息，请参阅 [Windows 虚拟桌面优惠页面](https://azure.microsoft.com/services/virtual-desktop/offer/)。
+
+### <a name="networksecuritygrouprules-value-change"></a>networkSecurityGroupRules 值更改 
+
+在 Azure 资源管理器嵌套模板中，我们将 networkSecurityGroupRules 的默认值从对象更改为了数组。 这将避免在未指定 networkSecurityGroupRules 的值的情况下使用 managedDisks-customimagevm.json 时出现任何错误。 这不是一项中断性变更，而且向后兼容。
+
+### <a name="fslogix-hotfix-update"></a>FSLogix 修补程序更新
+
+我们发布了版本 2009 HF_01 (2.9.7654.46150) 的 FSLogix，用于解决上一版本 (2.9.7621.30127) 中的问题。 建议你尽快停止使用上一版本并更新 FSLogix。
+
+有关详细信息，请查看 [FSLogix 中的新增功能](/fslogix/whats-new.md#fslogix-apps-2009-hf_01-29765446150)中的发行说明。
+
+### <a name="azure-portal-experience-improvements"></a>Azure 门户体验改进
+
+我们对 Azure 门户体验进行了以下改进：
+
+- 现在，你可直接添加本地虚拟机 (VM) 管理员凭据，无需添加使用 Active Directory 域加入帐户凭据创建的本地帐户。
+- 现在，用户可在单独的选项卡中为单个用户和组列出个人和组分配情况。
+- 现在，可在主机池的虚拟机概述中查看 Windows 虚拟桌面代理的版本号。
+- 对主机池和应用程序组添加了批量删除功能。
+- 现在，你可为主机池中的多个会话主机启用或禁用排出模式。
+- 从 VM 详细信息页面中删除了公共 IP 字段。
+
+### <a name="windows-virtual-desktop-agent-troubleshooting"></a>Windows 虚拟桌面代理故障排除
+
+我们近来设定了 [Windows 虚拟桌面代理故障排除指南](troubleshoot-agent.md)，来帮助遇到常见问题的客户。
+
+### <a name="microsoft-defender-for-endpoint-integration"></a>Microsoft Defender for Endpoint 集成
+
+Microsoft Defender for Endpoint 集成现已正式发布。 此功能为 Windows 虚拟桌面 VM 提供了与本地 Windows 10 计算机相同的调查体验。 如果你使用 Windows 10 企业版多会话，Microsoft Defender for Endpoint 将支持多达 50 个并发用户连接，从而为你节省 Windows 10 企业版多会话成本并增强你使用 Microsoft Defender for Endpoint 的信心。 有关详细信息，请查看我们的[博客文章](https://techcommunity.microsoft.com/t5/microsoft-defender-for-endpoint/windows-virtual-desktop-support-is-now-generally-available/ba-p/2103712)。
+
+### <a name="azure-security-baseline-for-windows-virtual-desktop"></a>Windows 虚拟桌面的 Azure 安全基线
+
+我们最近发布了[一篇有关 Windows 虚拟桌面的 Azure 安全基线的文章](security-baseline.md)，请注意查看。 可在这些指南中了解如何将 2.0 版的 Azure 安全基准应用于 Windows 虚拟桌面。 Azure 安全基准介绍了我们建议的用于保护 Azure 上的云解决方案的设置和做法。
 
 ## <a name="december-2020"></a>2020 年 12 月
 
@@ -257,16 +312,6 @@ Windows 虚拟桌面现已集成到 Azure 资源管理器中。 在最新更新�
 我们对适用于 Windows 虚拟桌面的 Microsoft Teams 进行了一些改进。 最重要的是，Windows 虚拟桌面现在支持通话音频和视觉对象重定向。 用户使用音频或视频进行通话时，重定向可在用户之间创建直接路径，从而改善延迟。 距离越短意味着跃点越少，因此通话的视频和音频都会更流畅。
 
 要了解详细信息，请参阅[我们的博客文章](https://azure.microsoft.com/updates/windows-virtual-desktop-media-optimization-for-microsoft-teams-is-now-available-in-public-preview/)。
-
-## <a name="client-updates"></a>客户端更新
-
-要了解 Windows 虚拟桌面和远程桌面服务的客户端更新，请参阅以下文章：
-
-- [Windows](/windows-server/remote/remote-desktop-services/clients/windowsdesktop-whatsnew)
-- [macOS](/windows-server/remote/remote-desktop-services/clients/mac-whatsnew)
-- [iOS](/windows-server/remote/remote-desktop-services/clients/ios-whatsnew)
-- [Android](/windows-server/remote/remote-desktop-services/clients/android-whatsnew)
-- [Web](/windows-server/remote/remote-desktop-services/clients/web-client-whatsnew)
 
 ## <a name="next-steps"></a>后续步骤
 

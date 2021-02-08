@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/27/2021
+ms.date: 02/03/2021
 ms.author: memildin
-ms.openlocfilehash: 5dd58dd5f43481184b17ca4bdd694a1df76697db
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: cdc29f89307a986b2d71604ca495eac45458632b
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98916451"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526613"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure 安全中心的新增功能
 
@@ -29,6 +29,49 @@ ms.locfileid: "98916451"
 
 > [!TIP]
 > 如果要查找 6 个月之前的项目，可查看 [Azure 安全中心的新增功能存档](release-notes-archive.md)。
+
+
+## <a name="february-2021"></a>2021 年 2 月
+
+2 月的更新包括：
+
+- [Kubernetes 工作负载保护建议发布了正式版 (GA)](#kubernetes-workload-protection-recommendations-released-for-general-availability-ga)
+- [直接链接到建议详细信息页中的策略](#direct-link-to-policy-from-recommendation-details-page)
+- [SQL 数据分类建议不再影响安全功能分数](#sql-data-classification-recommendation-no-longer-affect-your-secure-score)
+
+### <a name="kubernetes-workload-protection-recommendations-released-for-general-availability-ga"></a>Kubernetes 工作负载保护建议发布了正式版 (GA)
+
+我们很高兴地宣布，已正式发布一组针对 Kubernetes 工作负载保护的建议。
+
+为了确保 Kubernetes 工作负载在默认情况下是安全的，安全中心添加了 Kubernetes 级别的强化建议，其中包括具有 Kubernetes 准入控制的执行选项。
+
+在 Azure Kubernetes 服务 (AKS) 群集上安装适用于 Kubernetes 的 Azure Policy 加载项后，将按照预先定义的一组最佳做法（显示为 13 条安全建议）监视对 Kubernetes API 服务器的每个请求，然后再将其保存到群集。 然后，可以配置为强制实施最佳做法，并规定将其用于未来的工作负载。
+
+例如，可以规定不应创建特权容器，并且阻止以后的任何请求。
+
+有关详细信息，请参阅[使用 Kubernetes 准入控制实现工作负载保护最佳做法](container-security.md#workload-protection-best-practices-using-kubernetes-admission-control)。
+
+> [!NOTE]
+> 虽然建议之前为预览版，但它们当时未显示 AKS 群集资源运行不正常，而且在计算安全功能分数时没有纳入这些建议。 发布此 GA 后，计算分数时将纳入这些建议。 如果尚未对其进行修正，则可能会对安全功能分数造成轻微影响。 请尽量进行修正，具体请参阅[修正 Azure 安全中心内的建议](security-center-remediate-recommendations.md)。
+
+
+### <a name="direct-link-to-policy-from-recommendation-details-page"></a>直接链接到建议详细信息页中的策略
+
+查看建议的详细信息时，能够查看基础策略通常会很有帮助。 对于策略支持的每条建议，建议详细信息页面上都有一个新链接：
+
+:::image type="content" source="media/release-notes/view-policy-definition.png" alt-text="链接到 Azure Policy 页面，了解支持建议的特定策略":::
+
+使用此链接可查看策略定义和计算逻辑。 
+
+如果查看[安全建议参考指南](recommendations-reference.md)上的建议列表，你还将看到以下指向策略定义页面的链接：
+
+:::image type="content" source="media/release-notes/view-policy-definition-from-documentation.png" alt-text="直接从 Azure 安全中心建议参考页访问 Azure Policy 页面来了解特定策略":::
+
+
+### <a name="sql-data-classification-recommendation-no-longer-affect-your-secure-score"></a>SQL 数据分类建议不再影响安全功能分数
+
+“应对 SQL 数据库中的敏感数据进行分类”建议不再影响安全功能分数。 这是“应用数据分类”安全控件中唯一的建议，因此该控件目前的安全功能分数值为 0。
+
 
 
 ## <a name="january-2021"></a>2021 年 1 月
@@ -102,9 +145,12 @@ Azure 安全基准是由 Microsoft 创作的特定于 Azure 的一组准则，�
 
 ### <a name="secure-score-api-is-released-for-general-availability-ga"></a>安全分数 API 已发布正式发布版 (GA)
 
-现在可以通过[安全分数 API](/rest/api/securitycenter/securescores/) 访问分数。 通过 API 方法，可灵活地查询数据，久而久之构建自己的安全功能分数报告机制。 例如，可以使用安全功能分数 API 来获取特定订阅的分数。 此外，还可以使用安全功能分数控件 API 列出安全控件和订阅的当前分数。
+现在可以通过[安全分数 API](/rest/api/securitycenter/securescores/) 访问分数。 通过 API 方法，可灵活地查询数据，久而久之构建自己的安全功能分数报告机制。 例如：
 
-有关使用安全功能分数 API 实现的外部工具的示例，请参阅 [GitHub 社区的安全功能分数区域](https://github.com/Azure/Azure-Security-Center/tree/master/Secure%20Score)。
+- 使用安全功能分数 API 获取特定订阅的分数
+- 使用安全功能分数控件 API 列出安全控件和订阅的当前分数
+
+若要了解可通过安全功能分数 API 实现的外部工具，请参阅 [GitHub 社区的安全功能分数区域](https://github.com/Azure/Azure-Security-Center/tree/master/Secure%20Score)。
 
 详细了解 [Azure 安全中心的安全分数和安全控件](secure-score-security-controls.md)。
 
@@ -156,7 +202,7 @@ Azure 安全中心可保护 Azure、Amazon Web Services (AWS) 和 Google Cloud P
 
 我们正在扩展免除功能，以免除所有建议。 提供其他选项来微调安全中心针对订阅、管理组或资源提出的安全建议。
 
-有时，当你知道问题已被第三方工具解决，而安全中心未检测到时，资源将被列为运行不正常。 或者，建议会在你认为它不属于的范围内显示。 该建议可能不适用于特定的订阅。 或者，组织可能只决定接受与特定资源或建议相关的风险。
+有时，当你知道问题已被第三方工具解决，而安全中心未检测到时，资源将被列为运行不正常。 或者，建议会在你认为它不属于的范围内显示。 该建议可能不适用于特定的订阅。 或者，组织可能决定接受与特定资源或建议相关的风险。
 
 使用此预览功能，现在可以针对建议创建免除，以执行以下操作：
 
@@ -358,7 +404,7 @@ Azure 安全中心的“清单”页面已刷新，它具有以下更改：
 
 “Web 应用应请求一个 SSL 证书用于所有传入请求”这一建议已从“管理访问和权限”安全控制（最多值 4 分）移至“实现安全最佳做法”（不值任何分数） 。 
 
-确保 Web 应用请求证书肯定会使其更安全。 但是，对于面向公众的 Web 应用，这是不相关的。 如果通过 HTTP 而不是 HTTPS 访问站点，不会收到任何客户端证书。 因此，如果应用程序需要客户端证书，则你不应允许通过 HTTP 对应用程序发出请求。 有关详细信息，请参阅[为 Azure 应用服务配置 TLS 相互身份验证](../app-service/app-service-web-configure-tls-mutual-auth.md)。
+确保 Web 应用请求的是肯定会增强其安全性的证书。 但是，对于面向公众的 Web 应用，这是不相关的。 如果通过 HTTP 而不是 HTTPS 访问站点，不会收到任何客户端证书。 因此，如果应用程序需要客户端证书，则你不应允许通过 HTTP 对应用程序发出请求。 有关详细信息，请参阅[为 Azure 应用服务配置 TLS 相互身份验证](../app-service/app-service-web-configure-tls-mutual-auth.md)。
 
 在此更改后，此建议现在已是推荐的最佳做法，不会影响你的分数。 
 
@@ -371,7 +417,7 @@ Azure 安全中心会监视所有已连接的资源并生成安全建议。 可�
 
 随着安全中心不断扩展其覆盖范围和功能，安全建议的列表每月都在扩充。 例如，请参阅[添加了 29 条预览建议，以扩大 Azure 安全基准的覆盖范围](#29-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark)。
 
-随着列表的扩充，需要能够筛选出最感兴趣的建议。 11 月，我们在“建议”页面中添加了筛选器（请参阅[建议列表现包含筛选器](#recommendations-list-now-includes-filters)）。
+随着列表的扩充，需要筛选建议来找出最感兴趣的建议。 11 月，我们在“建议”页面中添加了筛选器（请参阅[建议列表现包含筛选器](#recommendations-list-now-includes-filters)）。
 
 本月添加的筛选器提供了一些选项，可根据以下条件优化建议列表：
 
@@ -423,7 +469,7 @@ Azure 安全中心会监视所有已连接的资源并生成安全建议。 可�
 
 ### <a name="29-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark"></a>添加了 29 条预览建议，以扩大 Azure 安全基准的覆盖范围
 
-Azure 安全基准是由 Microsoft 创作的特定于 Azure 的一组准则，适用于基于常见合规框架的安全与合规最佳做法。 [详细了解 Azure 安全基准](../security/benchmarks/introduction.md)。
+Azure 安全基准是 Microsoft 制定的一组 Azure 专属准则，适合基于常见合规框架的安全性与合规性最佳做法。 [详细了解 Azure 安全基准](../security/benchmarks/introduction.md)。
 
 已在安全中心添加下列 29 条预览建议，以扩大此基准的覆盖范围。
 
@@ -475,7 +521,7 @@ NIST SP 800-171 R2 标准现可以内置计划的形式提供，用于安全中�
 
 通过在新的和现有的 Azure VM 上安装所需的扩展，使 VM 能够受益于安全中心的保护，自动预配功能有助于降低管理开销。 
 
-随着 Azure 安全中心的发展，更多的扩展得到了开发，安全中心可以监视更大的资源类型列表。 自动预配工具现已扩展，可通过利用 Azure Policy 的功能来支持其他扩展和资源类型。
+随着 Azure 安全中心的发展，更多的扩展得到了开发，安全中心可以监视更大的资源类型列表。 自动预配工具已经过扩展，现支持通过 Azure Policy 的功能使用其他扩展和资源类型。
 
 你现在可配置以下项的自动预配：
 
@@ -575,7 +621,7 @@ NIST SP 800-171 R2 标准现可以内置计划的形式提供，用于安全中�
 
 安全中心的法规合规性仪表板基于你满足特定合规控制和要求的情况来提供合规态势的见解。
 
-该仪表板包含一组默认的法规标准。 如果提供的任何标准都与你的组织不相关，现在就可以简单地从订阅的 UI 中将其删除。 只能在“订阅”级别删除标准，而不能从管理组范围删除。
+该仪表板包含一组默认的法规标准。 如果提供的任何标准都与你的组织不相关，那么现在简单操作一下就可在订阅的 UI 中将它们删除。 只能在“订阅”级别删除标准，而不能从管理组范围删除。
 
 有关详细信息，请参阅[从仪表板中删除标准](update-regulatory-compliance-packages.md#removing-a-standard-from-your-dashboard)。
 
@@ -699,7 +745,7 @@ extract("^(.+)/providers/Microsoft.Security/assessments/.+$",1,id)))))
 
 ### <a name="security-center-gets-a-new-look"></a>安全中心获得新的外观！
 
-我们已发布安全中心门户页面的更新 UI。 新页面包括新的概述页面以及用于安全分数、资产清单和 Azure Defender 的面板。
+我们已发布安全中心门户页面的更新 UI。 新页面中有一个新的概述页面，还有安全功能分数、资产清单和 Azure Defender 的面板。
 
 重新设计的概述页面现在包含一个磁贴，用于访问安全分数、资产清单和 Azure Defender 的面板。 它还包含一个可以链接到合规性面板的磁贴。
 
@@ -892,114 +938,3 @@ Pod 安全策略（预览版）功能已设置为弃用，并且在 2020 年 10 
 现在，建议的详细信息页面包括一个刷新时间间隔指示器（如相关），并且清楚显示了建议的严重性。
 
 :::image type="content" source="./media/release-notes/recommendations-severity-freshness-indicators.png" alt-text="显示刷新频率和严重性的建议页面":::
-
-
-
-## <a name="august-2020"></a>2020 年 8 月
-
-8 月的更新包括：
-
-- [资产清单 - 功能强大的资产安全状况新视图](#asset-inventory---powerful-new-view-of-the-security-posture-of-your-assets)
-- [添加了对 Azure Active Directory 安全默认值的支持（用于多重身份验证）](#added-support-for-azure-active-directory-security-defaults-for-multi-factor-authentication)
-- [添加了服务主体建议](#service-principals-recommendation-added)
-- [VM 上的漏洞评估 - 已合并建议和策略](#vulnerability-assessment-on-vms---recommendations-and-policies-consolidated)
-- [新的 AKS 安全策略已添加到 ASC_default 计划 - 仅供个人预览版客户使用](#new-aks-security-policies-added-to-asc_default-initiative--for-use-by-private-preview-customers-only)
-
-
-### <a name="asset-inventory---powerful-new-view-of-the-security-posture-of-your-assets"></a>资产清单 - 功能强大的资产安全状况新视图
-
-安全中心的资产清单页（当前为预览版）提供了一种方法，用于查看已连接到安全中心的资源的安全状况。
-
-安全中心会定期分析 Azure 资源的安全状态，以识别潜在的安全漏洞。 然后会提供有关如何消除这些安全漏洞的建议。 当任何资源具有未完成的建议时，它们将显示在清单中。
-
-你可以使用该视图及其筛选器来浏览安全状况数据，并根据发现结果采取更多操作。
-
-详细了解[资产清单](asset-inventory.md)。
-
-
-### <a name="added-support-for-azure-active-directory-security-defaults-for-multi-factor-authentication"></a>添加了对 Azure Active Directory 安全默认值的支持（用于多重身份验证）
-
-安全中心已添加对[安全默认值](../active-directory/fundamentals/concept-fundamentals-security-defaults.md)（Microsoft 的免费标识安全保护）的全部支持。
-
-安全默认值提供了预配置的标识安全设置，以保护组织免受与标识相关的常见攻击。 安全默认值总计已保护了逾 500 万名租户；50,000 名租户也受安全中心的保护。
-
-现在，安全中心在识别出未启用安全默认值的 Azure 订阅时将提供安全建议。 到目前为止，安全中心建议使用条件访问启用多重身份验证，这是 Azure Active Directory (AD) 高级许可证的一部分。 对于使用 Azure AD Free 的客户，我们现在建议启用安全默认值。 
-
-我们旨在鼓励更多客户使用 MFA 保护其云环境，并缓解对[安全功能分数](secure-score-security-controls.md)影响最大的最高风险。
-
-详细了解[安全默认值](../active-directory/fundamentals/concept-fundamentals-security-defaults.md)。
-
-
-### <a name="service-principals-recommendation-added"></a>添加了服务主体建议
-
-添加了一条新建议，该建议推荐使用管理证书来管理订阅的安全中心客户改用服务主体。
-
-“应使用服务主体而不是管理证书来保护订阅”这一建议推荐使用服务主体或 Azure 资源管理器，以更安全地管理订阅。 
-
-详细了解 [Azure Active Directory 中的应用程序对象和服务主体对象](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object)。
-
-
-### <a name="vulnerability-assessment-on-vms---recommendations-and-policies-consolidated"></a>VM 漏洞评估 - 合并了建议和策略
-
-安全中心检查 VM，以检测其是否正在运行漏洞评估解决方案。 如果未找到漏洞评估解决方案，安全中心将建议简化部署。
-
-如果发现漏洞，安全中心将建议总结结果，以便必要时进行调查和修正。
-
-无论用户使用哪些类型的扫描仪，为确保所有用户享受一致的体验，我们已将四条建议统一为以下两条：
-
-|统一的建议|更改描述|
-|----|:----|
-|**应在虚拟机上启用漏洞评估解决方案**|替换以下两条建议：<br> • 在虚拟机上启用内置漏洞评估解决方案（由 Qualys 提供技术支持）（现已弃用）（仅标准层显示此建议）<br> • 漏洞评估解决方案应安装在虚拟机上（现已弃用）（标准和免费层显示此建议）|
-|**应修正虚拟机中的漏洞**|替换以下两条建议：<br>• 修正虚拟机上发现的漏洞（由 Qualys 提供支持）（现已弃用）<br>• 应通过漏洞评估解决方案修正漏洞（现已弃用）|
-|||
-
-现在可根据同一建议从 Qualys 或 Rapid7 等合作伙伴部署安全中心的漏洞评估扩展或专用许可解决方案（“BYOL”）。
-
-此外，发现漏洞并报告到安全中心时，无论哪个漏洞评估解决方案标识了结果，都会有一条建议提醒你注意这些结果。
-
-#### <a name="updating-dependencies"></a>更新依赖项
-
-如果脚本、查询或自动化引用了先前的建议或策略密钥/名称，请使用下表更新引用：
-
-##### <a name="before-august-2020"></a>2020 年 8 月之前
-
-|建议|范围|
-|----|:----|
-|**在虚拟机上启用内置漏洞评估解决方案（由 Qualys 提供支持）**<br>注册表项：550e890b-e652-4d22-8274-60b3bdb24c63|内置|
-|修正虚拟机上发现的漏洞（由 Qualys 提供支持）<br>注册表项：1195afff-c881-495e-9bc5-1486211ae03f|内置|
-|应在虚拟机上安装漏洞评估解决方案<br>注册表项：01b1ed4c-b733-4fee-b145-f23236e70cf3|BYOL|
-|**应通过漏洞评估解决方案修复漏洞**<br>注册表项：71992a2a-d168-42e0-b10e-6b45fa2ecddb|BYOL|
-||||
-
-
-|策略|范围|
-|----|:----|
-|**应对虚拟机启用漏洞评估**<br>策略 ID：501541f7-f7e7-4cd6-868c-4190fdad3ac9|内置|
-|**应通过漏洞评估解决方案修正漏洞**<br>策略 ID：760a85ff-6162-42b3-8d70-698e268f648c|BYOL|
-||||
-
-
-##### <a name="from-august-2020"></a>2020 年 8 月之后
-
-|建议|范围|
-|----|:----|
-|**应在虚拟机上启用漏洞评估解决方案**<br>密钥：ffff0522-1e88-47fc-8382-2a80ba848f5d|内置 + BYOL|
-|**应修正虚拟机中的漏洞**<br>注册表项：1195afff-c881-495e-9bc5-1486211ae03f|内置 + BYOL|
-||||
-
-|策略|范围|
-|----|:----|
-|[应对虚拟机启用漏洞评估](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f501541f7-f7e7-4cd6-868c-4190fdad3ac9)<br>策略 ID：501541f7-f7e7-4cd6-868c-4190fdad3ac9 |内置 + BYOL|
-||||
-
-
-### <a name="new-aks-security-policies-added-to-asc_default-initiative--for-use-by-private-preview-customers-only"></a>新的 AKS 安全策略已添加到 ASC_default 计划 - 仅供个人预览版客户使用
-
-为了确保 Kubernetes 工作负载在默认情况下是安全的，安全中心将添加 Kubernetes 级别策略和强化建议，其中包括具有 Kubernetes 准入控制的执行选项。
-
-早期阶段的此项目包括个人预览版，并增加了 ASC_default 计划的新策略（默认情况下禁用）。
-
-可以放心地忽略这些策略，这些策略不会对环境造成影响。 如果想要启用这些策略，请在 https://aka.ms/SecurityPrP 注册预览版，并从以下选项中进行选择：
-
-1. **单个预览版** – 仅加入此个人预览版。 明确提及将“ASC 连续扫描”作为要加入的预览版。
-1. **正在进行的程序** – 将添加到当前个人预览版和将来的个人预览版。 你需要完成个人资料和隐私协议。

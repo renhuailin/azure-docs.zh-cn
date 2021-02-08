@@ -1,14 +1,14 @@
 ---
 title: 快速入门：使用 REST API 进行新策略分配
 description: 本快速入门介绍如何使用 REST API 创建 Azure Policy 分配以识别不合规资源。
-ms.date: 10/14/2020
+ms.date: 01/29/2021
 ms.topic: quickstart
-ms.openlocfilehash: ab05079c5bb319f0808a743a1d668649df51b1b3
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 438d8004cd50e6e2ef7586c51adc63257f37978b
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92073999"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99219971"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-with-rest-api"></a>快速入门：使用 REST API 创建策略分配以识别不合规资源
 
@@ -47,6 +47,11 @@ REST API 用于创建和管理 Azure 资源。 本指南使用 REST API 创建�
          "displayName": "Audit VMs without managed disks Assignment",
          "description": "Shows all virtual machines not using managed disks",
          "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/06a78e20-9358-41c9-923c-fb736d382a4d",
+         "nonComplianceMessages": [
+             {
+                 "message": "Virtual machines should use a managed disk"
+             }
+         ]
        }
      }
      ```
@@ -59,12 +64,13 @@ REST API URI：
   - 订阅：`/subscriptions/{subscriptionId}`
   - 资源组：`/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}`
   - 资源：`/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}`
-- **名称** - 分配的实际名称。 对于此示例，使用 _audit-vm-manageddisks_ 。
+- **名称** - 分配的实际名称。 对于此示例，使用 _audit-vm-manageddisks_。
 
 请求正文：
 - **显示名称** - 策略分配的显示名称。 本例使用了“审核未使用托管磁盘分配的虚拟机”  。
 - **说明** - 有关策略用途或将其分配到此范围的原因的更深入说明。
 - **policyDefinitionId** - 策略定义 ID，用作创建分配的依据。 在本例中，它为策略定义“审核未使用托管磁盘的 VM”的 ID  。
+- **nonComplianceMessages** - 设置资源因不合规而被拒绝时或被评估为不合规时显示的消息。 有关详细信息，请参阅[“分配不合规”消息](./concepts/assignment-structure.md#non-compliance-messages)。
 
 ## <a name="identify-non-compliant-resources"></a>识别不合规的资源
 

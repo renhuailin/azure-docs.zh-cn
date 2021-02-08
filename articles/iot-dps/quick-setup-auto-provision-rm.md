@@ -3,17 +3,17 @@ title: 快速入门 - 使用 Azure 资源管理器模板（ARM 模板）创建 A
 description: Azure 快速入门 - 了解如何使用 Azure 资源管理器模板（ARM 模板）创建 Azure IoT 中心设备预配服务 (DPS)。
 author: wesmc7777
 ms.author: wesmc
-ms.date: 12/03/2020
+ms.date: 01/27/2021
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc, subject-armqs, devx-track-azurecli
-ms.openlocfilehash: 73beed4e4262d911f68c2b4b33bc0c1ee24164f8
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: cc55d1569c85dd0873d0132833acc99bd5d06136
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96746194"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98928932"
 ---
 # <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-dps-with-an-arm-template"></a>快速入门：使用 ARM 模板设置 IoT 中心设备预配服务 (DPS)
 
@@ -35,6 +35,9 @@ ms.locfileid: "96746194"
 ## <a name="review-the-template"></a>查看模板
 
 本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/101-iothub-device-provisioning/)。
+
+> [!NOTE]
+> 目前没有 ARM 模板支持使用新的 DPS 资源创建注册。 关于此功能的请求很常见，我们已知晓，且正在考虑实现它。
 
 :::code language="json" source="~/quickstart-templates/101-iothub-device-provisioning/azuredeploy.json":::
 

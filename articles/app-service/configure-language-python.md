@@ -2,15 +2,15 @@
 title: 配置 Linux Python 应用
 description: 了解如何使用 Azure 门户和 Azure CLI 配置运行 Web 应用的 Python 容器。
 ms.topic: quickstart
-ms.date: 11/16/2020
+ms.date: 02/01/2021
 ms.reviewer: astay; kraigb
 ms.custom: mvc, seodec18, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 7589b5c66bf4fa86db243574f551ec585ccccea1
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 83c49eea8bda10d665c0a08666276e905c60c584
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96855050"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493696"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>为 Azure 应用服务配置 Linux Python 应用
 
@@ -67,10 +67,13 @@ ms.locfileid: "96855050"
 
 在使用 Git 或 zip 包部署应用时，应用服务的生成系统（称为 Oryx）执行以下步骤：
 
-1. 如果由 `PRE_BUILD_COMMAND` 设置指定，请运行预先生成的自定义脚本。
+1. 如果由 `PRE_BUILD_COMMAND` 设置指定，请运行预先生成的自定义脚本。 （该脚本自身可运行其他 Python 和 Node.js 脚本、pip 和 npm 命令，以及 yarn 等基于节点的工具，例如 `yarn install` 和 `yarn build`。）
+
 1. 运行 `pip install -r requirements.txt`。 requirements.txt 文件必须存在于项目的根文件夹中。 否则，生成过程将报告错误：“找不到 setup.py 或 requirements.txt；未运行 pip install。”
+
 1. 如果在存储库的根文件夹中找到了 manage.py（指示 Django 应用），则运行 manage.py collectstatic 。 但如果 `DISABLE_COLLECTSTATIC` 设置为 `true`，则跳过此步骤。
-1. 如果由 `POST_BUILD_COMMAND` 设置指定，请运行后期生成的自定义脚本。
+
+1. 如果由 `POST_BUILD_COMMAND` 设置指定，请运行后期生成的自定义脚本。 （同样，该脚本也可运行其他 Python 和 Node.js 脚本、pip 和 npm 命令，以及基于节点的工具。）
 
 默认情况下，`PRE_BUILD_COMMAND`、`POST_BUILD_COMMAND` 和 `DISABLE_COLLECTSTATIC` 设置为空。 
 
@@ -131,6 +134,52 @@ ms.locfileid: "96855050"
 | `ALLOWED_HOSTS` | 在生产环境中，Django 要求在 settings.py 的 `ALLOWED_HOSTS` 数组中包含应用的 URL。 可使用 `os.environ['WEBSITE_HOSTNAME']` 代码在运行时检索此 URL。 应用服务会自动将 `WEBSITE_HOSTNAME` 环境变量设置为应用的 URL。 |
 | `DATABASES` | 在应用服务中为数据库连接定义设置，并将这些设置加载为环境变量以填充 [`DATABASES`](https://docs.djangoproject.com/en/3.1/ref/settings/#std:setting-DATABASES) 字典。 也可以将值（尤其是用户名和密码）存储为 [Azure Key Vault 机密](../key-vault/secrets/quick-create-python.md)。 |
 
+## <a name="serve-static-files-for-django-apps"></a>提供 Django 应用的静态文件
+
+如果 Django Web 应用包含静态前端文件，请先按照 Django 文档中有关[管理静态文件](https://docs.djangoproject.com/en/3.1/howto/static-files/)的说明进行操作。
+
+然后，对应用服务进行以下修改：
+
+1. 请考虑使用环境变量（对于本地开发）和应用设置（部署到云时）动态设置 Django 变量 `STATIC_URL` 和 `STATIC_ROOT`。 例如：    
+
+    ```python
+    STATIC_URL = os.environ.get("DJANGO_STATIC_URL", "/static/")
+    STATIC_ROOT = os.environ.get("DJANGO_STATIC_ROOT", "./static/")    
+    ```
+
+    可根据需要更改本地环境和云环境的 `DJANGO_STATIC_URL` 和 `DJANGO_STATIC_ROOT`。 例如，如果静态文件的生成过程将其置于名为 `django-static` 的文件夹中，那么你可将 `DJANGO_STATIC_URL` 设置为 `/django-static/`，以避免使用默认值。
+
+1. 如果你有一个预生成脚本，且它在其他文件夹中生成静态文件，请将该文件夹添加到 Django 变量 `STATICFILES_DIRS` 中，以便 Django 的 `collectstatic` 进程查找它们。 例如，如果你在前端文件夹中运行 `yarn build`，并且 yarn 生成包含静态文件的 `build/static` 文件夹，则请按如下所示添加该文件夹：
+
+    ```python
+    FRONTEND_DIR = "path-to-frontend-folder" 
+    STATICFILES_DIRS = [os.path.join(FRONTEND_DIR, 'build', 'static')]    
+    ```
+
+    此处是 `FRONTEND_DIR`，它用于生成一个指向运行 yarn 等生成工具的位置的路径。 你可根据需要再次使用环境变量和应用设置。
+
+1. 将 `whitenoise` 添加到 requirements.txt 文件。 [Whitenoise](http://whitenoise.evans.io/en/stable/) (whitenoise.evans.io) 是一种 Python 包，可使生产 Django 应用轻松地为自己的静态文件提供服务。 Whitenoise 专门为在 Django `STATIC_ROOT` 变量指定的文件夹中找到的文件提供服务。
+
+1. 在 settings.py 文件中，为 Whitenoise 添加以下行：
+
+    ```python
+    STATICFILES_STORAGE = ('whitenoise.storage.CompressedManifestStaticFilesStorage')
+    ```
+
+1. 同时修改 `MIDDLEWARE` 和 `INSTALLED_APPS` 列表以包含 Whitenoise：
+
+    ```python
+    MIDDLEWARE = [
+        "whitenoise.middleware.WhiteNoiseMiddleware",
+        # Other values follow
+    ]
+
+    INSTALLED_APPS = [
+        "whitenoise.runserver_nostatic",
+        # Other values follow
+    ]
+    ```
+
 ## <a name="container-characteristics"></a>容器特征
 
 部署到应用服务时，Python 应用在[应用服务 Python GitHub 存储库](https://github.com/Azure-App-Service/python)中定义的 Linux Docker 容器内运行。 可以在特定于版本的目录中找到映像配置。
@@ -150,6 +199,8 @@ ms.locfileid: "96855050"
 
 - 应用服务使用 Web 应用的 URL 自动定义名为 `WEBSITE_HOSTNAME` 的环境变量，例如 `msdocs-hello-world.azurewebsites.net`。 它还使用应用的名称定义 `WEBSITE_SITE_NAME`，例如 `msdocs-hello-world`。 
    
+- npm 和 Node.js 安装在容器中，因此你可运行基于节点的生成工具，例如 yarn。
+
 ## <a name="container-startup-process"></a>容器启动过程
 
 在启动期间，Linux 上的应用服务容器将运行以下步骤：
@@ -270,7 +321,7 @@ gunicorn --bind=0.0.0.0 --timeout 600 app:app
 ```python
 db_server = os.environ['DATABASE_SERVER']
 ```
-    
+
 ## <a name="detect-https-session"></a>检测 HTTPS 会话
 
 在应用服务中，[SSL 终止](https://wikipedia.org/wiki/TLS_termination_proxy) (wikipedia.org) 在网络负载均衡器上发生，因此，所有 HTTPS 请求将以未加密的 HTTP 请求形式访问你的应用。 如果应用逻辑需要检查用户请求是否已加密，可以检查 `X-Forwarded-Proto` 标头。

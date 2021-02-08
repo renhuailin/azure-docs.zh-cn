@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/02/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: af0082ef04416d6b3700bbcd96995a154614e0d6
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: b451e2509ee618ac0996fd91191a7d59dcfd9fc9
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98798650"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99500438"
 ---
 ### <a name="is-azure-virtual-wan-in-ga"></a>Azure 虚拟 WAN 是否已正式发布 (GA)？
 
@@ -141,6 +141,10 @@ ms.locfileid: "98798650"
 
 从分支或 VPN 设备到 Azure 虚拟 WAN 的连接只是一个 VPN 连接，它实际上连接了虚拟中心内的 VPN 站点和 Azure VPN 网关。
 
+### <a name="what-happens-if-the-on-premise-vpn-device-only-has-1-tunnel-to-a-azure-virtual-wan-vpn-gateway"></a>如果本地 VPN 设备只有 1 个隧道通往一个 Azure 虚拟 WAN VPN 网关，会发生什么情况？
+
+Azure 虚拟 WAN 连接包含 2 个隧道。 虚拟 WAN VPN 网关以主动-主动模式部署在虚拟中心，这意味着本地设备中有单独的隧道在单独的实例上终止 - 建议所有用户采用这种形式。 但是，如果用户选择只有 1 个隧道通往一个虚拟 WAN VPN 网关实例，那么当出于任何原因（维护、修补等），网关实例处于脱机状态时，该隧道将移动到辅助活动实例，并且用户可能会遭遇重新连接的情况。 还请记住，BGP 会话不会在实例之间移动。
+
 ### <a name="can-the-on-premises-vpn-device-connect-to-multiple-hubs"></a>本地 VPN 设备是否可以连接到多个中心？
 
 是的。 开始时的流量流将从本地设备发送到最近的 Microsoft 网络边缘，然后才发送到虚拟中心。
@@ -159,7 +163,7 @@ ms.locfileid: "98798650"
 
 ### <a name="can-a-spoke-vnet-have-a-virtual-network-gateway"></a>辐射 VNet 是否可以包含虚拟网络网关？
 
-不是。 如果辐射 VNet 已连接到虚拟中心，则不能包含虚拟网络网关。
+否。 如果辐射 VNet 已连接到虚拟中心，则不能包含虚拟网络网关。
 
 ### <a name="is-there-support-for-bgp-in-vpn-connectivity"></a>VPN 连接是否支持 BGP？
 

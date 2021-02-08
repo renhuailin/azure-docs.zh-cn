@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, devx-track-js
-ms.openlocfilehash: bd750a05f34a18a1260226fb979a82cc620dfbfb
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: fec130ff02d9796fb9a6cea7a831bbdcb25cb1ed
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178273"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99225624"
 ---
 # <a name="quickstart-add-sign-in-using-openid-connect-to-a-nodejs-web-app"></a>快速入门：向 Node.js Web 应用添加使用 OpenID Connect 登录功能
 
@@ -37,15 +37,15 @@ ms.locfileid: "98178273"
 1. 输入应用程序的名称（例如 `MyWebApp`）。 应用的用户可能会看到此名称，你稍后可对其进行更改。
 1. 在“支持的帐户类型”部分，选择“任何组织目录中的帐户和个人 Microsoft 帐户(例如 Skype、Xbox、Outlook.com)” 。
 
-    如果有多个重定向 URI，以后需要在成功创建应用后，从“身份验证”选项卡添加这些 URI。
+    如果有多个重定向 URI，请在成功创建应用后，在“身份验证”选项卡中添加这些 URI。
 
 1. 选择“注册”以创建应用。
 1. 在应用的“概述”页上，找到“应用程序(客户端) ID”值，并记下该值供稍后使用。  稍后需要在此项目中使用此值来配置应用程序。
 1. 在“管理”下，选择“身份验证”。 
 1. 选择“添加平台” > “Web” 。 
 1. 在“重定向 URI”部分中，输入 `http://localhost:3000/auth/openid/return`。
-1. 输入注销 URL `https://localhost:3000`。
-1. 在隐式授权部分，选中“ID 令牌”，因为该示例需要启用[隐式授权流](./v2-oauth2-implicit-grant-flow.md)才能让用户登录。
+1. 输入前向通道注销 URL `https://localhost:3000`。
+1. 在“隐式授权和混合流”部分，选择“ID 令牌”，因为该示例需要启用[隐式授权流](./v2-oauth2-implicit-grant-flow.md)才能让用户登录 。
 1. 选择“配置” 。
 1. 在“管理”下，选择“证书和机密” > “新建客户端机密”  。
 1. 输入实例应用机密的密钥说明。

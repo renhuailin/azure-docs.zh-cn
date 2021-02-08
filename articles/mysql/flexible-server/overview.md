@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/21/2020
-ms.openlocfilehash: f6ec6bced9c84e4e5b0f04cc32eebb438052bd6c
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 7841affc7a8988cb113af3b728ae117093000011
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348281"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99257451"
 ---
 # <a name="azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL 灵活服务器（预览版）
 
@@ -132,20 +132,22 @@ MySQL 是一种常用的数据库引擎，用于运行 Internet 规模的 Web �
 
 在 Azure 中运行工作负载的一个优点是，它可覆盖全球范围。 现在，在以下 Azure 区域提供适用于 Azure Database for MySQL 的灵活服务器：
 
-- 西欧
-- 北欧
-- 英国南部
-- 美国东部 2
-- 美国西部 2
-- 美国中部
-- 美国东部
-- 加拿大中部
-- 东南亚
-- 韩国中部
-- 日本东部
-- 澳大利亚东部
+| Region | 可用性 | 区域冗余 HA | 
+| --- | --- | --- |
+| 西欧 | :heavy_check_mark: | :heavy_check_mark: |
+| 北欧 | :heavy_check_mark: | :heavy_check_mark: |
+| 英国南部 | :heavy_check_mark: | :x: | 
+| 美国东部 2 | :heavy_check_mark: | :heavy_check_mark: |
+| 美国西部 2 | :heavy_check_mark: | :heavy_check_mark: |
+| 美国中部 | :heavy_check_mark: | :x: | 
+| 美国东部 | :heavy_check_mark: | :heavy_check_mark: |
+| 加拿大中部 | :heavy_check_mark: | :x: | 
+| Southeast Asia | :heavy_check_mark: | :heavy_check_mark: |
+| 韩国中部 | :heavy_check_mark: | :x: | 
+| Japan East | :heavy_check_mark: | :x: | 
+| 澳大利亚东部 | :heavy_check_mark: | :heavy_check_mark: |
 
-即将添加新的服务器。
+我们即将添加新的区域。
 
 ## <a name="contacts"></a>联系人
 如果有任何关于使用 Azure Database for MySQL 灵活服务器的问题或建议，请发送电子邮件至 Azure Database for MySQL 团队 ([@Ask Azure DB for MySQL](mailto:AskAzureDBforMySQL@service.microsoft.com))。 此电子邮件地址不是技术支持别名。

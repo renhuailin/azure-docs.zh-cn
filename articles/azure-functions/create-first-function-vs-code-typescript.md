@@ -3,12 +3,12 @@ title: 使用 Visual Studio Code 创建 TypeScript 函数 - Azure Functions
 description: 了解如何创建 TypeScript 函数，然后使用 Visual Studio Code 中的 Azure Functions 扩展将本地 Node.js 项目发布到 Azure Functions 中的无服务器托管。
 ms.topic: quickstart
 ms.date: 11/04/2020
-ms.openlocfilehash: 48295aab80b8a15a313ce7fa7acf94606357930b
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 4470741c8c7f2f6c9832ea73aa9c6207764bc903
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93424675"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493437"
 ---
 # <a name="quickstart-create-a-function-in-azure-with-typescript-using-visual-studio-code"></a>快速入门：在 Azure 中使用 Visual Studio Code 创建 TypeScript 函数
 
@@ -74,7 +74,7 @@ ms.locfileid: "93424675"
 
 1. 在活动栏中选择“Azure”图标，然后在“Azure:函数”区域中，选择“部署到函数应用...”按钮。
 
-    ![将项目发布到 Azure](media/functions-create-first-function-vs-code/function-app-publish-project.png)
+    ![将项目发布到 Azure](../../includes/media/functions-publish-project-vscode/function-app-publish-project.png)
 
 1. 根据提示提供以下信息：
 
@@ -90,17 +90,19 @@ ms.locfileid: "93424675"
 
     + **选择新资源的位置**：为了获得更好的性能，请选择你附近的 [区域](https://azure.microsoft.com/regions/)。
 
+    在 Azure 中创建单个资源时，扩展会在通知区域显示这些资源的状态。
+
+    :::image type="content" source="../../includes/media/functions-publish-project-vscode/resource-notification.png" alt-text="Azure 资源创建通知":::
+
 1. 完成后，将使用基于函数应用名称的名称在订阅中创建以下 Azure 资源：
 
-    + 一个资源组：相关资源的逻辑容器。
-    + 一个标准 Azure 存储帐户：用于维护项目的状态和其他信息。
-    + 一个消耗计划：用于定义无服务器函数应用的基础主机。 
-    + 一个函数应用：提供用于执行函数代码的环境。 可以通过函数应用将函数分组为逻辑单元，以便在同一托管计划中更轻松地管理、部署和共享资源。
-    + 一个连接到函数应用的 Application Insights 实例：用于跟踪无服务器函数的使用情况。
+    [!INCLUDE [functions-vs-code-created-resources](../../includes/functions-vs-code-created-resources.md)]
 
     创建函数应用并应用了部署包之后，会显示一个通知。 
 
-1. 在此通知中选择“查看输出”以查看创建和部署结果，其中包括你创建的 Azure 资源。 如果错过了通知，请选择右下角的响铃图标以再次查看。
+    [!INCLUDE [functions-vs-code-create-tip](../../includes/functions-vs-code-create-tip.md)]
+
+4. 在此通知中选择“查看输出”以查看创建和部署结果，其中包括你创建的 Azure 资源。 如果错过了通知，请选择右下角的响铃图标以再次查看。
 
     ![创建完成通知](./media/functions-create-first-function-vs-code/function-create-notifications.png)
 
@@ -110,7 +112,7 @@ ms.locfileid: "93424675"
 
 ## <a name="next-steps"></a>后续步骤
 
-你已使用 Visual Studio Code 通过简单的 HTTP 触发函数创建了函数应用。 在下一篇文章中，将通过添加输出绑定来扩展该函数。 此绑定将 HTTP 请求中的字符串写入 Azure 队列存储队列中的消息。 
+你已使用 [Visual Studio Code](functions-develop-vs-code.md?tabs=javascript) 通过简单的 HTTP 触发函数创建了函数应用。 在下一篇文章中，你将通过连接到 Azure 存储来扩展该函数。 若要详细了解如何连接到其他 Azure 服务，请参阅[将捆绑项添加到 Azure Functions 中的现有函数](add-bindings-existing-function.md?tabs=typescript)。   
 
 > [!div class="nextstepaction"]
 > [连接到 Azure 存储队列](functions-add-output-binding-storage-queue-vs-code.md?pivots=programming-language-typescript)

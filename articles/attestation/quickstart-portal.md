@@ -7,22 +7,26 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 3ab1e6011a1c127c9ac5a2c7652a4bf458372e1e
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 86adac557c6de133e95e97bfedbd302cc6a2b27e
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98733931"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99429151"
 ---
 # <a name="quickstart-set-up-azure-attestation-with-azure-portal"></a>快速入门：使用 Azure 门户设置 Azure 证明
 
+## <a name="prerequisites"></a>先决条件
+
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+
 请按照以下步骤使用 Azure 门户管理证明提供程序。
 
-## <a name="attestation-provider"></a>证明提供程序
+## <a name="1-attestation-provider"></a>1.证明提供程序
 
-### <a name="create-an-attestation-provider"></a>创建证明提供程序
+### <a name="11-create-an-attestation-provider"></a>1.1 创建证明提供程序
 
-#### <a name="to-configure-the-provider-with-unsigned-policies"></a>配置具有未签名策略的提供程序
+#### <a name="111-to-configure-the-provider-with-unsigned-policies"></a>1.1.1 配置具有未签名策略的提供程序
 
 1.  在 Azure 门户菜单或“主页”中，选择“创建资源”
 2.  在搜索框中输入“证明”
@@ -42,7 +46,7 @@ ms.locfileid: "98733931"
 6.  提供所需的输入后，单击“查看+创建”
 7.  修复验证问题（如果有），然后单击“创建”。
 
-#### <a name="to-configure-the-provider-with-signed-policies"></a>配置具有签名策略的提供程序
+#### <a name="112-to-configure-the-provider-with-signed-policies"></a>1.1.2 配置具有签名策略的提供程序
 
 1.  在 Azure 门户菜单或“主页”中，选择“创建资源”
 2.  在搜索框中输入“证明”
@@ -62,12 +66,12 @@ ms.locfileid: "98733931"
 6.  提供所需的输入后，单击“查看+创建”
 7.  修复验证问题（如果有），然后单击“创建”。
 
-### <a name="view-attestation-provider"></a>查看证明提供程序
+### <a name="12-view-attestation-provider"></a>1.2 查看证明提供程序
 
 1.  在 Azure 门户菜单或“主页”页上，选择“所有资源”
 2.  在筛选器框中，输入证明提供程序名称并选择它
 
-### <a name="delete-attestation-provider"></a>删除证明提供程序
+### <a name="13-delete-attestation-provider"></a>1.3 删除证明提供程序
 
 1.  在 Azure 门户菜单或“主页”页上，选择“所有资源”
 2.  在筛选器框中，输入证明提供程序名称
@@ -79,9 +83,9 @@ ms.locfileid: "98733931"
 4.  单击顶部菜单中的“删除”，然后单击“是” 
 
 
-## <a name="attestation-policy-signers"></a>证明策略签名者
+## <a name="2-attestation-policy-signers"></a>2.证明策略签名者
 
-### <a name="view-policy-signer-certificates"></a>查看策略签名者证书
+### <a name="21-view-policy-signer-certificates"></a>2.1 查看策略签名者证书
 
 1.  在 Azure 门户菜单或“主页”页上，选择“所有资源”
 2.  在筛选器框中，输入证明提供程序名称
@@ -91,7 +95,7 @@ ms.locfileid: "98733931"
 6.  下载的文本文件将具有 JWS 格式的所有证书。
 a.  验证已下载的证书计数和证书。
 
-### <a name="add-policy-signer-certificate"></a>添加策略签名者证书
+### <a name="22-add-policy-signer-certificate"></a>2.2 添加策略签名者证书
 
 1.  在 Azure 门户菜单或“主页”页上，选择“所有资源”
 2.  在筛选器框中，输入证明提供程序名称
@@ -100,7 +104,7 @@ a.  验证已下载的证书计数和证书。
 5.  单击顶部菜单中的“添加”（如果创建的证明提供程序没有策略签名要求，该按钮将被禁用）
 6.  上传策略签名者证书文件，然后单击“添加”。 请参阅[此处](./policy-signer-examples.md)的示例
 
-### <a name="delete-policy-signer-certificate"></a>删除策略签名者证书
+### <a name="23-delete-policy-signer-certificate"></a>2.3 删除策略签名者证书
 
 1.  在 Azure 门户菜单或“主页”页上，选择“所有资源”
 2.  在筛选器框中，输入证明提供程序名称
@@ -109,9 +113,9 @@ a.  验证已下载的证书计数和证书。
 5.  单击顶部菜单中的“删除”（如果创建的证明提供程序没有策略签名要求，该按钮将被禁用）
 6.  上传策略签名者证书文件，然后单击“删除”。 请参阅[此处](./policy-signer-examples.md)的示例 
 
-## <a name="attestation-policy"></a>证明策略
+## <a name="3-attestation-policy"></a>3.证明策略
 
-### <a name="view-attestation-policy"></a>查看证明策略
+### <a name="31-view-attestation-policy"></a>3.1 查看证明策略
 
 1.  在 Azure 门户菜单或“主页”页上，选择“所有资源”
 2.  在筛选器框中，输入证明提供程序名称
@@ -119,9 +123,9 @@ a.  验证已下载的证书计数和证书。
 4.  单击左侧资源菜单或底部窗格中的“策略”
 5.  选择首选的“证明类型”并查看“当前策略” 
 
-### <a name="configure-attestation-policy"></a>配置证明策略
+### <a name="32-configure-attestation-policy"></a>3.2 配置证明策略
 
-#### <a name="when-attestation-provider-is-created-without-policy-signing-requirement"></a>如果创建的证明提供程序没有策略签名要求
+#### <a name="321-when-attestation-provider-is-created-without-policy-signing-requirement"></a>3.2.1 如果创建的证明提供程序没有策略签名要求
 
 ##### <a name="upload-policy-in-jwt-format"></a>以 JWT 格式上传策略
 
@@ -153,7 +157,7 @@ a.  验证已下载的证书计数和证书。
 
 8.  单击“刷新”以查看配置的策略
 
-#### <a name="when-attestation-provider-is-created-with-policy-signing-requirement"></a>如果创建的证明提供程序有策略签名要求
+#### <a name="322-when-attestation-provider-is-created-with-policy-signing-requirement"></a>3.2.2 如果创建的证明提供程序有策略签名要求
 
 ##### <a name="upload-policy-in-jwt-format"></a>以 JWT 格式上传策略
 
@@ -168,4 +172,9 @@ a.  验证已下载的证书计数和证书。
     对于文件上传选项，策略预览将以文本格式显示，并且策略预览不可编辑。
     
 8.  单击“刷新”以查看配置的策略
+
+## <a name="next-steps"></a>后续步骤
+
+- [如何创作证明策略并对其签名](author-sign-policy.md)
+- [使用代码示例证明 SGX enclave](/samples/browse/?expanded=azure&terms=attestation)
 

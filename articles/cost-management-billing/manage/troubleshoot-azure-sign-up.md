@@ -8,14 +8,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: troubleshooting
-ms.date: 08/20/2020
+ms.date: 01/28/2021
 ms.author: v-miegge
-ms.openlocfilehash: 85f6e64cb20a14b9cd03776d138872d6a4191535
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 015e6058236190a04df152573621f0e57030d23b
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96344481"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054155"
 ---
 # <a name="troubleshoot-issues-when-you-sign-up-for-a-new-account-in-azure-portal-or-azure-account-center"></a>排查在 Azure 门户或 Azure 帐户中心注册新帐户时遇到的问题
 
@@ -139,19 +139,18 @@ InPrivate 浏览如何？
 
 ## <a name="other-issues"></a>其他问题
 
-### <a name="cant-activate-azure-benefit-plan-like-msdn-bizspark-bizsparkplus-or-mpn"></a>无法激活 MSDN、BizSpark、BizSparkPlus 或 MPN 等 Azure 权益计划
+### <a name="cant-activate-azure-benefit-plan-like-visual-studio-bizspark-bizsparkplus-or-mpn"></a>无法激活 Visual Studio、BizSpark、BizSparkPlus 或 MPN 等 Azure 权益计划
 
 请检查使用的是否是正确的登录凭据。 然后检查权益计划，并验证是否符合资格。
-- MSDN
-  - 在 [MSDN 帐户页](https://msdn.microsoft.com/subscriptions/manage/default.aspx)上验证资格状态。
-  - 如果无法验证资格状态，请联系 [MSDN 订阅客服中心](/previous-versions/mappoint/aa493452(v=msdn.10))。
+- Visual Studio
+  - 在 [Visual Studio 帐户页面](https://my.visualstudio.com/Benefits)上验证资格状态。
+  - 如果无法验证状态，请联系 [Visual Studio 订阅支持部门](https://visualstudio.microsoft.com/subscriptions/support/)。
 - 适用于初创企业的 Microsoft
   - 登录到[适用于初创企业的 Microsoft 门户](https://startups.microsoft.com/#start-two)，验证你的资格状态，看你是否符合适用于初创企业的 Microsoft 的资格。
   - 如果无法验证你的状态，可以在[适用于初创企业的 Microsoft 论坛](https://www.microsoftpartnercommunity.com/t5/Microsoft-for-Startups/ct-p/Microsoft_Startups)上获取帮助。
 - MPN
   - 登录到 [MPN 门户](https://mspartner.microsoft.com/Pages/Locale.aspx)，验证资格状态。 如果拥有相应的[云平台能力](https://mspartner.microsoft.com/pages/membership/cloud-platform-competency.aspx)，可能会符合其他权益的资格。
   - 如果无法验证资格状态，请联系 [MPN 支持](https://mspartner.microsoft.com/Pages/Support/Premium/contact-support.aspx)。
-
 
 ### <a name="cant-activate-new-azure-in-open-subscription"></a>无法激活新的 Azure 开放许可订阅
 

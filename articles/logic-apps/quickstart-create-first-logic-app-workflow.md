@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/30/2020
-ms.openlocfilehash: 9d402599c4d6732ce92b8c64af6f660bcedbc4ba
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: d90b9e38158d951990fffc21a43317c688da12c9
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96455066"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99052036"
 ---
 # <a name="quickstart-create-your-first-logic-apps-workflow---azure-portal"></a>快速入门：创建第一个逻辑应用工作流 - Azure 门户
 
@@ -30,11 +30,14 @@ ms.locfileid: "96455066"
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅。 如果没有 Azure 订阅，可以[注册免费的 Account 帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+* Azure 帐户和订阅。 如果没有 Azure 订阅，可以[注册免费的 Account 帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+
 * 逻辑应用支持的服务（例如 Office 365 Outlook 或 Outlook.com）提供的电子邮件帐户。 如需其他受支持的电子邮件提供程序，请[查看连接器列表](/connectors/)。
 
     > [!IMPORTANT]
     > 如果使用的是 [Gmail 连接器](/connectors/gmail/)，请注意，只有 G Suite 帐户才能在逻辑应用中不受限制地使用此连接器。 如果有 Gmail 用户帐户，则除非[创建用于通过 Gmail 连接器进行身份验证的 Google 客户端应用](/connectors/gmail/#authentication-and-bring-your-own-application)，否则只能将此连接器与 Google 批准的特定服务一起使用。 有关详细信息，请参阅 [Azure 逻辑应用中 Google 连接器的数据安全和隐私策略](../connectors/connectors-google-data-security-privacy-policy.md)。
+
+* 如果逻辑应用需要通过仅限流量流经特定 IP 地址的防火墙进行通信，则该防火墙需要允许访问该逻辑应用所在的 Azure 区域中的逻辑应用服务或运行时使用的[入站](logic-apps-limits-and-config.md#inbound)和[出站](logic-apps-limits-and-config.md#outbound) IP 地址。 如果逻辑应用还使用[托管连接器](../connectors/apis-list.md#managed-api-connectors)（例如 Office 365 Outlook 连接器或 SQL 连接器），或者还使用[自定义连接器](/connectors/custom-connectors/)，则防火墙还需要允许访问该逻辑应用所在的 Azure 区域中的所有[托管连接器出站 IP 地址](logic-apps-limits-and-config.md#outbound)。
 
 <a name="create-logic-app"></a>
 
@@ -51,8 +54,8 @@ ms.locfileid: "96455066"
    ![Azure 门户中“逻辑应用”服务页的屏幕截图，显示了逻辑应用列表和所选按钮“添加”。](./media/quickstart-create-first-logic-app-workflow/add-new-logic-app.png)
 
 1. 在“逻辑应用”窗格上，为逻辑应用提供基本的详细信息和设置。 为此，请为示例逻辑应用创建新的[资源组](../azure-resource-manager/management/overview.md#terminology)。
-    
-   | 属性 | 值 | 描述 |
+
+   | 属性 | 值 | 说明 |
    |----------|-------|-------------|
    | **名称** | <*logic-app-name*> | 逻辑应用的名称，该名称必须在区域中是唯一的。 名称只能包含字母、数字、连字符 (`-`)、下划线 (`_`)、括号（`(`、`)`）和句点 (`.`)。 此示例使用“My-First-Logic-App”。 |
    | **订阅** | <*Azure-subscription-name*> | Azure 订阅的名称。 |

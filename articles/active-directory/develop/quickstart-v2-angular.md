@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 03/18/2020
 ms.author: janutter
-ms.openlocfilehash: 161b7fcf4660ddb9515f0b82887f416d83598bdc
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 56359ba07513ac648c682b8114001e251b0ee44c
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98754433"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99225793"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-an-angular-single-page-application"></a>快速入门：在 Angular 单页应用程序中将用户登录并获取访问令牌
 
@@ -49,11 +49,11 @@ ms.locfileid: "98754433"
 > 1. 如果帐户有权访问多个租户，请在右上角选择该帐户，然后将门户会话设置为要使用的 Azure AD 租户。
 > 1. 按照说明在 Azure 门户中[注册单页应用程序](./scenario-spa-app-registration.md)。
 > 1. 在应用注册的“身份验证”窗格中添加新的平台，并注册重定向 URI：`http://localhost:4200/`。
-> 1. 本快速入门使用[隐式授权流](v2-oauth2-implicit-grant-flow.md)。 针对“ID 令牌”和“访问令牌”选择“隐式授权”设置。 由于此应用要将用户登录并调用 API，因此需要 ID 令牌和访问令牌。
+> 1. 本快速入门使用[隐式授权流](v2-oauth2-implicit-grant-flow.md)。 在“隐式授权和混合流”部分，选择“ID 令牌”和“访问令牌”  。 由于此应用要将用户登录并调用 API，因此需要 ID 令牌和访问令牌。
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-the-application-in-the-azure-portal"></a>步骤 1：在 Azure 门户中配置应用程序
-> 为使本快速入门的代码示例正常运行，需将重定向 URI 添加为 **http://localhost:4200/** 并启用“隐式授权”。
+> 为使本快速入门的代码示例正常运行，需将重定向 URI 添加为 http://localhost:4200/ 并启用“隐式授权”。
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [为我进行这些更改]()
 >

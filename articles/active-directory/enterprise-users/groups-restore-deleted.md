@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dfdc96df548a4a3df2b789759889b85835e1382a
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 1eacba47e68310dd45976bcd9ddff052fa193436
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96860722"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090131"
 ---
 # <a name="restore-a-deleted-microsoft-365-group-in-azure-active-directory"></a>在 Azure Active Directory 中还原已删除的 Microsoft 365 组
 
@@ -32,7 +32,7 @@ ms.locfileid: "96860722"
 角色 | 权限
 --------- | ---------
 全局管理员、组管理员、合作伙伴 2 级支持人员和 Intune 管理员 | 可以还原任何已删除的 Microsoft 365 组
-用户管理员与合作伙伴 1 级支持人员 | 可以还原任何已删除的 Microsoft 365 组，但分配给公司管理员角色的组除外
+用户管理员与合作伙伴 1 级支持人员 | 可还原任何已删除的 Microsoft 365 组，但分配给全局管理员角色的组除外
 User | 可以还原他们拥有的任何已删除 Microsoft 365 组
 
 ## <a name="view-and-manage-the-deleted-microsoft-365-groups-that-are-available-to-restore"></a>查看和管理可还原的已删除 Microsoft 365 组

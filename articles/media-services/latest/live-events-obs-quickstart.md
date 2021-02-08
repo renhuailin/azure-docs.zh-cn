@@ -1,5 +1,5 @@
 ---
-title: 使用 OBS Studio 创建 Azure 媒体服务实时传送流
+title: 使用 OBS Studio 创建实时传送流
 description: 了解如何使用门户和 OBS Studio 创建 Azure 媒体服务实时传送流
 services: media-services
 ms.service: media-services
@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.author: inhenkel
 author: IngridAtMicrosoft
 ms.date: 08/31/2020
-ms.openlocfilehash: 04b0ef0d6a480270b1f0a3546319b2608d638677
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 83f072b67f5aa162137a55d2b311dccf0daf7f53
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89265501"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98956066"
 ---
 # <a name="create-an-azure-media-services-live-stream-with-obs"></a>使用 OBS 创建 Azure 媒体服务实时传送流
 
@@ -83,7 +83,7 @@ OBS 启动时有一个默认场景，但未选择任何输入。
 
 ### <a name="add-a-video-source"></a>添加视频源
 
-1. 在“源”面板中，单击**添加**图标，选择新的源设备。 此时会打开“源”菜单。
+1. 在“源”面板中，单击 **添加** 图标，选择新的源设备。 此时会打开“源”菜单。
 
 1. 从源设备菜单中选择“视频捕获设备”。 此时会打开“创建/选择源”菜单。
 
@@ -99,7 +99,7 @@ OBS 启动时有一个默认场景，但未选择任何输入。
 
 ### <a name="add-an-audio-source"></a>添加音频源
 
-1. 在“源”面板中，单击**添加**图标，选择新的源设备。 此时会打开“源设备”菜单。
+1. 在“源”面板中，单击 **添加** 图标，选择新的源设备。 此时会打开“源设备”菜单。
 
 1. 从源设备菜单中选择“音频输入捕获”。 此时会打开“创建/选择源”菜单。
 

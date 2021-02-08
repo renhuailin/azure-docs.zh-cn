@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/25/2021
 ms.author: memildin
-ms.openlocfilehash: 99dadea37a519289120fcf30e394df1e0f7af5e7
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: d5de16c8156762a229d6c707080bc197dc206a7c
+ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98757705"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99475584"
 ---
 # <a name="important-upcoming-changes-to-azure-security-center"></a>即将推出的对 Azure 安全中心的重要更改
 
@@ -38,7 +38,7 @@ ms.locfileid: "98757705"
 
 ### <a name="kubernetes-workload-protection-recommendations-will-soon-be-released-for-general-availability-ga"></a>Kubernetes 工作负载保护建议即将发布正式版 (GA)
 
-**预计更改日期：** 2021 年 1 月
+**预计更改日期：** 2021 年 2 月
 
 [保护 Kubernetes 工作负载](kubernetes-workload-protections.md)中介绍的 Kubernetes 工作负载保护建议当前为预览版。 虽然建议目前为预览版，但它不会导致资源运行不正常，在计算安全功能分数时也不会包含这些建议。
 
@@ -83,7 +83,7 @@ Kubernetes 工作负载保护建议如下：
 
 **预计更改日期：** 2021 年第 2 季度
 
-“应用数据分类”安全控制中“应对 SQL 数据库中的敏感数据进行分类”建议的当前版本将被弃用，并替换为更符合 Microsoft 的数据分类策略的新版本 。 因此：
+“应用数据分类”安全控制中“应对 SQL 数据库中的敏感数据进行分类”建议的当前版本将替换为更符合 Microsoft 的数据分类策略的新版本 。 因此：
 
 - 该建议将不再影响安全功能分数
 - 安全控制（“应用数据分类”）将不再影响安全功能分数

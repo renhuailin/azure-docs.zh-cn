@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 12966503bfa17030fc4ebcb4d790a2f4655142a2
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: b937dad6c3c8f5a5773ca7779493b41c905307b1
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98116528"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226499"
 ---
 # <a name="azure-synapse-analytics-ip-firewall-rules"></a>Azure Synapse Analytics IP 防火墙规则
 
@@ -43,7 +43,10 @@ IP 防火墙规则基于每个请求的来源 IP 地址授予或拒绝对 Synaps
 
 此外，还需要允许 Synapse Studio 在 UDP 端口 53 上的传出通信。 若要使用 SSMS 和 Power BI 等工具进行连接，必须允许 TCP 端口 1433 上的传出通信。
 
-如果使用默认的重定向连接策略设置，则可能需要允许其他端口上的传出通信。 可在[此处](../../azure-sql/database/connectivity-architecture.md#connection-policy)了解有关连接策略的详细信息。
+工作区的 SQL 连接策略设置为“默认”。 可在[此处](../../azure-sql/database/connectivity-architecture.md#connection-policy)详细了解客户端应允许与之进行出站通信的 IP 地址和端口。
+
+
+
 
 ## <a name="next-steps"></a>后续步骤
 

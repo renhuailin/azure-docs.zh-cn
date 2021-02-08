@@ -7,12 +7,12 @@ ms.reviewer: jonfan, deli, logicappspm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/28/2020
-ms.openlocfilehash: 170a919ca184c959800e62cb0d8ede8659c96df4
-ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
+ms.openlocfilehash: f46c093bffcc26b5f7975d25ccaca648bdc527da
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2020
-ms.locfileid: "97708985"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054680"
 ---
 # <a name="quickstart-create-and-manage-logic-app-workflow-definitions-by-using-visual-studio-code"></a>快速入门：使用 Visual Studio Code 创建和管理逻辑应用工作流定义
 
@@ -23,6 +23,8 @@ ms.locfileid: "97708985"
 对于本文，可以创建此[快速入门](../logic-apps/quickstart-create-first-logic-app-workflow.md)提供的同一逻辑应用，重点介绍基本概念。 还可[了解如何在 Visual Studio 中创建示例应用](quickstart-create-logic-apps-with-visual-studio.md)，并[了解如何通过 Azure 命令行接口 (Azure CLI) 创建和管理应用](quickstart-logic-apps-azure-cli.md)。 在 Visual Studio Code 中，逻辑应用看起来如下例所示：
 
 ![示例逻辑应用工作流定义](./media/quickstart-create-logic-apps-visual-studio-code/visual-studio-code-overview.png)
+
+## <a name="prerequisites"></a>必备条件
 
 在开始之前，请确保做好以下各项准备：
 
@@ -49,6 +51,8 @@ ms.locfileid: "97708985"
     ![验证扩展已正确安装](./media/quickstart-create-logic-apps-visual-studio-code/confirm-installed-visual-studio-code-extension.png)
 
     有关详细信息，请参阅[扩展市场](https://code.visualstudio.com/docs/editor/extension-gallery)。 若要为此扩展的开源版本贡献内容，请访问 [GitHub 上适用于 Visual Studio Code 的 Azure 逻辑应用扩展](https://github.com/Microsoft/vscode-azurelogicapps)。
+
+* 如果逻辑应用需要通过仅限流量流经特定 IP 地址的防火墙进行通信，则该防火墙需要允许访问该逻辑应用所在的 Azure 区域中的逻辑应用服务或运行时使用的[入站](logic-apps-limits-and-config.md#inbound)和[出站](logic-apps-limits-and-config.md#outbound) IP 地址。 如果逻辑应用还使用[托管连接器](../connectors/apis-list.md#managed-api-connectors)（例如 Office 365 Outlook 连接器或 SQL 连接器），或者还使用[自定义连接器](/connectors/custom-connectors/)，则防火墙还需要允许访问该逻辑应用所在的 Azure 区域中的所有[托管连接器出站 IP 地址](logic-apps-limits-and-config.md#outbound)。
 
 <a name="access-azure"></a>
 

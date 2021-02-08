@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/11/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: c20685c0c392ece68dc80b57afc6680f2efd9e35
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: b2e42dcaeb72a053f20afa47439d1825445b0ad8
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98754515"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99225827"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>快速入门：向 ASP.NET Core Web 应用添加 Microsoft 登录功能
 
@@ -56,13 +56,13 @@ ms.locfileid: "98754515"
 > 1. 选择“注册”  。
 > 1. 在“管理”下，选择“身份验证”。 
 > 1. 在“重定向 URI”下，选择“添加 URI”，然后输入 `https://localhost:44321/signin-oidc` 。
-> 1. 输入 `https://localhost:44321/signout-oidc` 的“注销 URL”。
-> 1. 选择“隐式授权”下的“ID 令牌”。
+> 1. 输入前向通道注销 URL `https://localhost:44321/signout-oidc`。
+> 1. 在“隐式授权和混合流”下，选择“ID 令牌” 。
 > 1. 选择“保存”。
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>步骤 1：在 Azure 门户中配置应用程序
-> 为使此快速入门中的代码示例正常运行，需将回复 URL 添加为 `https://localhost:44321/` 和 `https://localhost:44321/signin-oidc`，将注销 URL 添加为 `https://localhost:44321/signout-oidc`，并请求将由授权终结点颁发的 ID 令牌。
+> 本快速入门的示例代码要求使用重定向 URI `https://localhost:44321/` 和 `https://localhost:44321/signin-oidc`，以及前向通道注销 URL `https://localhost:44321/signout-oidc` 。 请求 ID 令牌将由授权终结点颁发。
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [执行此更改]()
 >

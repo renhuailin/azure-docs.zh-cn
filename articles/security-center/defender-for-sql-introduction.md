@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: security-center
 ms.custom: references_regions
 manager: rkarlin
-ms.openlocfilehash: 81ae46a7b6c19557eeadd2d5b28ad2fa46e77115
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 28ec6659430cfdbc81533f05863ccb0ddc560e32
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881361"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99508026"
 ---
 # <a name="introduction-to-azure-defender-for-sql"></a>适用于 SQL 的 Azure Defender 简介
 
@@ -72,7 +72,6 @@ ms.locfileid: "98881361"
 
 ## <a name="next-steps"></a>后续步骤
 
-本文介绍了适用于 SQL 的 Azure Defender。
+本文介绍了适用于 SQL 的 Azure Defender。 若要使用所描述的服务：
 
-> [!div class="nextstepaction"]
-> [使用 Azure Defender 扫描 SQL Server 是否存在漏洞](defender-for-sql-usage.md)
+- 在计算机上使用 Azure Defender for SQL 服务器[扫描 SQL 服务器是否存在漏洞](defender-for-sql-usage.md)

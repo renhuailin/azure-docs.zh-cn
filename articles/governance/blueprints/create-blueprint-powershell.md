@@ -1,14 +1,14 @@
 ---
 title: 快速入门：使用 PowerShell 创建蓝图
 description: 本快速入门中通过 PowerShell 使用 Azure 蓝图创建、定义和部署项目。
-ms.date: 08/27/2020
+ms.date: 01/27/2021
 ms.topic: quickstart
-ms.openlocfilehash: 339cd4628cda5f469a783db02c10f86259c93941
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 65d573d0aec7d5f292bc985483e1f12c350ae03a
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89051485"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98918273"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-powershell"></a>快速入门：使用 PowerShell 定义和分配 Azure 蓝图
 
@@ -16,9 +16,9 @@ ms.locfileid: "89051485"
 
 ## <a name="prerequisites"></a>先决条件
 
-如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free)。
-
-如果尚未安装，请按照[添加 Az.Blueprint 模块](./how-to/manage-assignments-ps.md#add-the-azblueprint-module)中的说明安装并验证 PowerShell 库中的 Az.Blueprint 模块。
+- 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free)。
+- 如果尚未安装，请按照[添加 Az.Blueprint 模块](./how-to/manage-assignments-ps.md#add-the-azblueprint-module)中的说明安装并验证 PowerShell 库中的 Az.Blueprint 模块。
+- 如果你之前未用过 Azure 蓝图，请通过 Azure PowerShell 使用 `Register-AzResourceProvider -ProviderNamespace Microsoft.Blueprint` 注册资源提供程序。
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -374,7 +374,7 @@ Publish-AzBlueprint -Blueprint $blueprint -Version '{BlueprintVersion}'
      },
      ```
 
-     **用户分配的托管标识**可以位于任何订阅和资源组中，只要分配蓝图的用户有权访问它即可。
+     **用户分配的托管标识** 可以位于任何订阅和资源组中，只要分配蓝图的用户有权访问它即可。
 
      > [!IMPORTANT]
      > Azure 蓝图不管理用户分配的托管标识。 用户负责分配足够的角色和权限，否则蓝图分配会失败。

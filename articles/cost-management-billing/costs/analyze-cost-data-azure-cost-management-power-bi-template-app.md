@@ -3,25 +3,25 @@ title: 使用 Power BI 应用分析 Azure 成本
 description: 本文介绍如何安装和使用 Azure 成本管理 Power BI 应用。
 author: bandersmsft
 ms.author: banders
-ms.date: 11/09/2020
+ms.date: 1/29/2021
 ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: benshy
-ms.openlocfilehash: 1c5adf58f670f3cadcedbe710568551004b77b78
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: d3439f5a86c445898d95191a32496b5f0c86be0b
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94413235"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99070151"
 ---
 # <a name="analyze-cost-with-the-azure-cost-management-power-bi-app-for-enterprise-agreements-ea"></a>使用适用于企业协议 (EA) 的 Azure 成本管理 Power BI 应用分析成本
 
 本文介绍如何安装和使用 Azure 成本管理 Power BI 应用。 该应用可帮助你在 Power BI 中分析和管理 Azure 成本。 可以使用该应用来监视成本和使用趋势，并确定可用于减少支出的成本优化选项。
 
-可以按原样使用该应用，或者对其进行修改，以根据自己的自定义需求扩展默认筛选器、视图和可视化效果。 然后，使用该应用联接更多的数据，以创建自定义报表，获取总体业务成本的全方位视图。
-
 Azure 成本管理 Power BI 应用目前仅支持已签署[企业协议](https://azure.microsoft.com/pricing/enterprise-agreement/)的客户。
+
+该应用在可自定义方面存在限制。 如果要修改和扩展默认的筛选器、视图和可视化效果来根据需要进行自定义，请改用 [Power BI Desktop 中的 Azure 成本管理连接器](/power-bi/connect-data/desktop-connect-azure-cost-management)。 借助 Azure 成本管理连接器，可联接来自其他源的其他数据以创建自定义报表，从而全面了解整体业务成本。 该连接器还支持 Microsoft 客户协议。
 
 > [!NOTE]
 > Power BI 模板应用不支持下载 PBIX 文件。

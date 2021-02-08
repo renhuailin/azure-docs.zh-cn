@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, contperf-fy21q1
-ms.openlocfilehash: e2a71313294457e09e2bb152dea98c84b7730236
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 420415cc3bc2228a104ccf054098543bf04847b0
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98754415"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99225759"
 ---
 # <a name="quickstart-add-microsoft-identity-platform-sign-in-to-an-aspnet-web-app"></a>快速入门：向 ASP.NET Web 应用添加 Microsoft 标识平台登录功能
 
@@ -54,12 +54,13 @@ ms.locfileid: "98754415"
 > 1. 输入应用程序的名称（例如 `ASPNET-Quickstart`）。 应用的用户可能会看到此名称，你稍后可对其进行更改。
 > 1. 在“重定向 URI”中添加 `https://localhost:44368/`，然后选择“注册” 。
 > 1. 在“管理”下，选择“身份验证”。 
-> 1. 在“隐式授权”子部分下，选择“ID 令牌”。
+> 1. 在“隐式授权和混合流”部分，选择“ID 令牌” 。
 > 1. 选择“保存”。
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-azure-portal"></a>步骤 1：在 Azure 门户中配置应用程序
-> 要使此快速入门中的代码示例正常运行，需要将答复 URL 添加为 `https://localhost:44368/`。
+> 本快速入门的示例代码要求使用重定向 URI `https://localhost:44368/`。
+
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [执行此更改]()
 >

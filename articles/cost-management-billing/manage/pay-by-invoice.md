@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 01/13/2021
 ms.author: banders
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: a5c95ca2e1fbe00f410c0a5015f8ce695783b27b
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 0afaa9a577432741da44317a9d13e288cdea0d0d
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98538201"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99052475"
 ---
 # <a name="pay-for-your-azure-subscription-by-invoice"></a>按发票为 Azure 订阅付款
 
@@ -108,4 +108,4 @@ ms.locfileid: "98538201"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 根据需要在 [Azure 帐户中心](https://account.azure.com/Profile)更新计费联系人信息。
+* 根据需要在 [Azure 门户](https://portal.azure.com)更新账单联系人信息。

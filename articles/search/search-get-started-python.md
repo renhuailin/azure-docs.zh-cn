@@ -1,32 +1,32 @@
 ---
 title: 快速入门：使用 Python 创建搜索索引
 titleSuffix: Azure Cognitive Search
-description: 介绍如何使用 Python、笔记本 和 Azure.Documents.Search 库创建索引、加载数据以及运行查询。
+description: 了解如何使用 Python、Jupyter Notebook 和用于 Python 的 Azure.Documents.Search 客户端库来创建搜索索引、加载数据和运行查询。
 author: HeidiSteen
 manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 11/19/2020
+ms.date: 01/29/2021
 ms.custom: devx-track-python
-ms.openlocfilehash: 126fc69678148d4d478c96ff8d05f194c7e3d1b3
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: eb5de33fd41d3a454f4d0b8d44325ed30f9c5d47
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96861861"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99071624"
 ---
-# <a name="quickstart-create-an-azure-cognitive-search-index-in-python-using-jupyter-notebooks"></a>快速入门：使用 Jupyter Notebook 通过 Python 创建 Azure 认知搜索索引
+# <a name="quickstart-create-an-azure-cognitive-search-index-in-python-using-jupyter-notebook"></a>快速入门：使用 Jupyter Notebook 通过 Python 创建 Azure 认知搜索索引
 
 > [!div class="op_single_selector"]
 > * [Python](search-get-started-python.md)
-> * [PowerShell (REST)](./search-get-started-powershell.md)
-> * [C#](./search-get-started-dotnet.md)
+> * [PowerShell (REST)](search-get-started-powershell.md)
+> * [C#](search-get-started-dotnet.md)
 > * [REST](search-get-started-rest.md)
 > * [门户](search-get-started-portal.md)
 >
 
-使用 Python 和用于 Python 的 Azure SDK 中的 [azure-search-documents 库](/python/api/overview/azure/search-documents-readme)生成可创建、加载和查询 Azure 认知搜索索引的 Jupyter Notebook。 本文介绍如何逐步生成笔记本。 你也可以[下载并运行一个已完成的 Jupyter Python 笔记本](https://github.com/Azure-Samples/azure-search-python-samples)。
+使用 Python 和 Azure SDK for Python 中的 [azure-search-documents 库](/python/api/overview/azure/search-documents-readme)生成可创建、加载和查询 Azure 认知搜索索引的笔记本。 本文介绍如何逐步生成笔记本。 你也可以[下载并运行一个已完成的 Jupyter Python 笔记本](https://github.com/Azure-Samples/azure-search-python-samples)。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -38,7 +38,7 @@ ms.locfileid: "96861861"
 
 * [azure-search-documents 包](https://pypi.org/project/azure-search-documents/)
 
-* [创建 Azure 认知搜索服务](search-create-service-portal.md)或在当前订阅下[查找现有服务](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 对于本快速入门，可以使用免费层。 
+* [创建搜索服务](search-create-service-portal.md)或在当前订阅下[查找现有服务](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 对于本快速入门，可以使用免费层。 
 
 ## <a name="copy-a-key-and-url"></a>复制密钥和 URL
 
@@ -48,13 +48,13 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 
 1. 在“设置” > “密钥”中，获取有关该服务的完全权限的管理员密钥 。 有两个可交换的管理员密钥，为保证业务连续性而提供，以防需要滚动一个密钥。 可以在请求中使用主要或辅助密钥来添加、修改和删除对象。
 
-![获取 HTTP 终结点和访问密钥](media/search-get-started-rest/get-url-key.png "获取 HTTP 终结点和访问密钥")
+   ![获取 HTTP 终结点和访问密钥](media/search-get-started-rest/get-url-key.png "获取 HTTP 终结点和访问密钥")
 
 所有请求对发送到服务的每个请求都需要 API 密钥。 具有有效的密钥可以在发送请求的应用程序与处理请求的服务之间建立信任关系，这种信任关系以每个请求为基础。
 
 ## <a name="connect-to-azure-cognitive-search"></a>连接到 Azure 认知搜索
 
-在此任务中，请启动一个 Jupyter Notebook 并验证是否可以连接到 Azure 认知搜索。 为此，你将从服务请求索引列表。 在装有 Anaconda3 的 Windows 上，可以使用 Anaconda Navigator 来启动笔记本。
+在此任务中，请启动 Jupyter Notebook 并验证能否连接到 Azure 认知搜索。 为此，你将从服务请求索引列表。 在装有 Anaconda3 的 Windows 上，可以使用 Anaconda Navigator 来启动笔记本。
 
 1. 创建新的 Python3 笔记本。
 
@@ -63,7 +63,7 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
    ```python
     !pip install azure-search-documents --pre
     !pip show azure-search-documents
-
+    
     import os
     from azure.core.credentials import AzureKeyCredential
     from azure.search.documents.indexes import SearchIndexClient 
@@ -82,17 +82,17 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 1. 在第二个单元格中，输入用作每个请求中的常量的请求元素。 输入在上一步中复制的搜索服务名称、管理员 API 密钥和查询 API 密钥。 此单元格还设置了将用于执行特定操作的客户端：用于创建索引的 [SearchIndexClient](/python/api/azure-search-documents/azure.search.documents.indexes.searchindexclient)，以及用于查询索引的 [SearchClient](/python/api/azure-search-documents/azure.search.documents.searchclient)。
 
    ```python
-    service_name = ["SEARCH_ENDPOINT - do not include search.windows.net"]
-    admin_key = ["Cognitive Search Admin API Key"]
-
+    service_name = "YOUR-SEARCH-SERIVCE-NAME"
+    admin_key = "YOUR-SEARCH-SERVICE-ADMIN-API-KEY"
+    
     index_name = "hotels-quickstart"
-
+    
     # Create an SDK client
     endpoint = "https://{}.search.windows.net/".format(service_name)
     admin_client = SearchIndexClient(endpoint=endpoint,
                           index_name=index_name,
                           credential=AzureKeyCredential(admin_key))
-
+    
     search_client = SearchClient(endpoint=endpoint,
                           index_name=index_name,
                           credential=AzureKeyCredential(admin_key))
@@ -121,6 +121,7 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 1. 在下一个单元格中，将以下示例粘贴到某个单元格以提供架构。
 
     ```python
+    # Specify the index schema
     name = index_name
     fields = [
             SimpleField(name="HotelId", type=SearchFieldDataType.String, key=True),
@@ -128,13 +129,13 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
             SearchableField(name="Description", type=SearchFieldDataType.String, analyzer_name="en.lucene"),
             SearchableField(name="Description_fr", type=SearchFieldDataType.String, analyzer_name="fr.lucene"),
             SearchableField(name="Category", type=SearchFieldDataType.String, facetable=True, filterable=True, sortable=True),
-
+        
             SearchableField(name="Tags", collection=True, type=SearchFieldDataType.String, facetable=True, filterable=True),
-
+    
             SimpleField(name="ParkingIncluded", type=SearchFieldDataType.Boolean, facetable=True, filterable=True, sortable=True),
             SimpleField(name="LastRenovationDate", type=SearchFieldDataType.DateTimeOffset, facetable=True, filterable=True, sortable=True),
             SimpleField(name="Rating", type=SearchFieldDataType.Double, facetable=True, filterable=True, sortable=True),
-
+    
             ComplexField(name="Address", fields=[
                 SearchableField(name="StreetAddress", type=SearchFieldDataType.String),
                 SearchableField(name="City", type=SearchFieldDataType.String, facetable=True, filterable=True, sortable=True),
@@ -150,20 +151,20 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 
 1. 在另一个单元格中构建请求。 此 create_index 请求以搜索服务的索引集合为目标，并基于在上一单元格中提供的索引架构创建 [SearchIndex](/python/api/azure-search-documents/azure.search.documents.indexes.models.searchindex)。
 
-   ```python
+    ```python
     index = SearchIndex(
         name=name,
         fields=fields,
         scoring_profiles=scoring_profiles,
         suggesters = suggester,
         cors_options=cors_options)
-
+    
     try:
         result = admin_client.create_index(index)
         print ('Index', result.name, 'created')
     except Exception as ex:
         print (ex)
-   ```
+    ```
 
 1. 运行每个步骤。
 
@@ -176,8 +177,7 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 1. 在新单元格中，提供符合索引架构的四个文档。 指定每个文档的上传操作。
 
     ```python
-    documents = {
-        "value": [
+    documents = [
         {
         "@search.action": "upload",
         "HotelId": "1",
@@ -255,98 +255,96 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
             }
         }
     ]
-    }
     ```  
 
 1. 在另一个单元格中构建请求。 此 upload_documents 请求以 hotels-quickstart 索引的文档集合为目标，将在上一步骤中提供的文档推送到认知搜索索引。
 
-
-   ```python
+    ```python
     try:
         result = search_client.upload_documents(documents=documents)
         print("Upload of new document succeeded: {}".format(result[0].succeeded))
     except Exception as ex:
         print (ex.message)
-   ```
+    ```
 
 1. 运行每个步骤，将文档推送到搜索服务中的索引。
 
 ## <a name="3---search-an-index"></a>3 - 搜索索引
 
-此步骤说明如何使用[搜索文档 REST API](/rest/api/searchservice/search-documents) 查询索引。
+此步骤说明如何使用[搜索文档 (REST)](/rest/api/searchservice/search-documents) 查询索引。
 
 1. 对于此操作，请使用 search_client。 此查询执行空搜索 (`search=*`)，返回任意文档的未排名列表 (search score = 1.0)。 由于没有条件，因此所有文档都包含在结果中。 此查询仅输出每个文档中的两个字段。 它还会添加 `include_total_count=True` 以获取结果中所有文档 (4) 的计数。
 
-   ```python
+    ```python
     results =  search_client.search(search_text="*", include_total_count=True)
-
+    
     print ('Total Documents Matching Query:', results.get_count())
     for result in results:
         print("{}: {}".format(result["HotelId"], result["HotelName"]))
-   ```
+    ```
 
 1. 下一个查询将整个术语添加到搜索表达式 ("wifi")。 此查询指定结果仅包含 `select` 语句中的那些字段。 限制返回的字段可最大程度地减少通过网络发回的数据量，并降低搜索延迟。
 
-   ```python
+    ```python
     results =  search_client.search(search_text="wifi", include_total_count=True, select='HotelId,HotelName,Tags')
-
+    
     print ('Total Documents Matching Query:', results.get_count())
     for result in results:
         print("{}: {}: {}".format(result["HotelId"], result["HotelName"], result["Tags"]))
-   ```
+    ```
 
 1. 接下来，应用筛选表达式，仅返回评分高于 4 的酒店（按降序排列）。
 
-   ```python
+    ```python
     results =  search_client.search(search_text="hotels", select='HotelId,HotelName,Rating', filter='Rating gt 4', order_by='Rating desc')
-
+    
     for result in results:
         print("{}: {} - {} rating".format(result["HotelId"], result["HotelName"], result["Rating"]))
-   ```
+    ```
 
 1. 添加 `search_fields`，将查询匹配的范围限制为单一字段。
 
-   ```python
+    ```python
     results =  search_client.search(search_text="sublime", search_fields='HotelName', select='HotelId,HotelName')
-
+    
     for result in results:
         print("{}: {}".format(result["HotelId"], result["HotelName"]))
-   ```
+    ```
 
 1. Facet 是可用于组成 Facet 导航结构的标签。 此查询返回类别的 Facet 和计数。
 
-   ```python
+    ```python
     results =  search_client.search(search_text="*", facets=["Category"])
-
+    
     facets = results.get_facets()
-
+    
     for facet in facets["Category"]:
         print("    {}".format(facet))
-   ```
+    ```
 
 1. 在此示例中，根据文档的键查找特定的文档。 用户单击搜索结果中的文档时，通常你需要返回文档。
 
-   ```python
+    ```python
     result = search_client.get_document(key="3")
-
+    
     print("Details for hotel '3' are:")
-    print("        Name: {}".format(result["HotelName"]))
-    print("      Rating: {}".format(result["Rating"]))
-    print("    Category: {}".format(result["Category"]))
-   ```
+    print("Name: {}".format(result["HotelName"]))
+    print("Rating: {}".format(result["Rating"]))
+    print("Category: {}".format(result["Category"]))
+    ```
 
 1. 在此示例中，我们将使用自动完成函数。 用户在搜索框中键入内容时，通常在搜索框中使用该函数来帮助自动完成潜在匹配。
 
    创建索引时，还会创建名为“sg”的建议器作为请求的一部分。 建议器定义指定哪些字段可用于查找建议器请求的潜在匹配。 在此示例中，这些字段是“标签”、“地址/城市”、“地址/国家/地区”。 若要模拟自动完成，请输入字母“sa”作为字符串的一部分。 [SearchClient](/python/api/azure-search-documents/azure.search.documents.searchclient) 的自动完成方法会发回可能的术语匹配。
 
-   ```python
+    ```python
     search_suggestion = 'sa'
     results = search_client.autocomplete(search_text=search_suggestion, suggester_name="sg", mode='twoTerms')
-
+    
     print("Autocomplete for:", search_suggestion)
     for result in results:
         print (result['text'])
-   ```
+    ```
 
 ## <a name="clean-up"></a>清理
 

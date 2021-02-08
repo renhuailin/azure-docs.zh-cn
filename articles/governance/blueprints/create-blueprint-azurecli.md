@@ -1,14 +1,14 @@
 ---
 title: 快速入门：使用 Azure CLI 创建蓝图
 description: 在本快速入门中，通过 Azure CLI 使用 Azure 蓝图创建、定义和部署项目。
-ms.date: 01/26/2021
+ms.date: 01/27/2021
 ms.topic: quickstart
-ms.openlocfilehash: a0e44925bdec78b8b02a50c8b3f91db0bb764976
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 6ce3031c93f973c2efb251fad371a6f3750ae0fd
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/27/2021
-ms.locfileid: "98875188"
+ms.locfileid: "98920234"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-azure-cli"></a>快速入门：使用 Azure CLI 定义和分配 Azure 蓝图
 
@@ -167,6 +167,9 @@ ms.locfileid: "98875188"
         --parameters artifacts\policyTags.json
      ```
 
+     > [!NOTE]
+     > 在 Mac 上使用 `az blueprint` 时，对于包含路径的参数值，请将 `\` 替换为 `/`。 在此情况下，参数的值为 `artifacts/policyTags.json`。
+
 1. 在订阅中为存储标记（重复使用 storageAccountType 参数）添加其他策略分配。 此附加的策略分配项目演示了蓝图上定义的参数可由多个项目使用。 在示例中，storageAccountType 用于在资源组上设置一个标记。 此值提供有关下一步骤中创建的存储帐户的信息。 此示例使用 GUID 为 `49c88fc8-6fd1-46fd-a676-f12d1d3a4c71` 的“将标记及其默认值应用于资源组”内置策略。
 
    - JSON 文件 - artifacts\policyStorageTags.json
@@ -193,6 +196,9 @@ ms.locfileid: "98875188"
         --description 'Apply storage tag and the parameter also used by the template to resource groups' \
         --parameters artifacts\policyStorageTags.json
      ```
+
+     > [!NOTE]
+     > 在 Mac 上使用 `az blueprint` 时，对于包含路径的参数值，请将 `\` 替换为 `/`。 在此情况下，参数的值为 `artifacts/policyStorageTags.json`。
 
 1. 在资源组下添加模板。 ARM 模板的 template 参数包含模板的标准 JSON 组件。 系统会向模板一一传递 **storageAccountType**、**tagName** 和 **tagValue** 蓝图参数，让模板重复使用这些参数。 通过使用参数 parameters 和在使用键-值对的模板 JSON 中注入值，模板可以使用蓝图参数。 蓝图和模板参数名称可以相同。
 
@@ -276,6 +282,9 @@ ms.locfileid: "98875188"
         --parameters artifacts\templateStorageParams.json \
         --resource-group-art 'storageRG'
      ```
+
+     > [!NOTE]
+     > 在 Mac 上使用 `az blueprint` 时，对于包含路径的参数值，请将 `\` 替换为 `/`。 在此情况下，模板的值为 `artifacts/templateStorage.json`，参数的值为 `artifacts/templateStorageParams.json` 。
 
 1. 在资源组下添加角色分配。 与上一角色分配项类似，以下示例对“所有者”角色使用定义标识符，并向其提供不同于蓝图参数的另一参数。 此示例使用 GUID 为 `8e3af657-a8ff-443c-a75c-2fe8c4bcb635` 的“所有者”内置角色。
 

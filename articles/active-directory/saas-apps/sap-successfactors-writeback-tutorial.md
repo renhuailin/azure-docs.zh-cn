@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.workload: identity
 ms.date: 10/14/2020
 ms.author: chmutali
-ms.openlocfilehash: d39e00a80ab167936a749c73867b4343e6ed9d76
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 3260787dec4ae26cd6ef7cc3bd562f39db8e3655
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96006432"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526969"
 ---
 # <a name="tutorial-configure-attribute-write-back-from-azure-ad-to-sap-successfactors"></a>教程：将属性写回从 Azure AD 配置到 SAP SuccessFactors
 本教程旨在介绍将属性从 Azure AD 写回到 SAP SuccessFactors Employee Central 的步骤。 
@@ -282,7 +282,7 @@ SuccessFactors 写回预配应用使用特定代码值以便在 Employee Central
    | 3 | 8448 | emailType | 此常数值是与业务电子邮件关联的 SuccessFactors ID 值。 更新此值以与 SuccessFactors 环境匹配。 有关设置此值的步骤，请参阅[检索 emailType 的常数值](#retrieve-constant-value-for-emailtype)部分。 |
    | 4 | true | emailIsPrimary | 使用此属性将业务电子邮件设置为 SuccessFactors 中的主电子邮件。 如果业务电子邮件不是主电子邮件，请将此标志设置为 false。 |
    | 5 | userPrincipalName | [custom01 – custom15] | 使用“添加新映射”，可以根据需要将 userPrincipalName 或任意 Azure AD 属性写入 SuccessFactors 用户对象中可用的自定义属性。  |
-   | 6 | on-prem-samAccountName | username | 使用“添加新映射”，可以根据需要将本地 samAccountName 映射到 SuccessFactors username 属性。 |
+   | 6 | On Prem SamAccountName | username | 使用“添加新映射”，可以根据需要将本地 samAccountName 映射到 SuccessFactors username 属性。 使用 [Azure AD Connect 同步：目录扩展](../hybrid/how-to-connect-sync-feature-directory-extensions.md)将 samAccountName 同步到 Azure AD。 它将在源下拉列表中显示为 extension_yourTenantGUID_samAccountName |
    | 7 | SSO | loginMethod | 如果将 SuccessFactors 租户设置为[部分 SSO](https://apps.support.sap.com/sap/support/knowledge/en/2320766)，则使用“添加新映射”可以根据需要将 loginMethod 设置为“SSO”或“PWD”的常数值。 |
    | 8 | telephoneNumber | businessPhoneNumber | 使用此映射使 telephoneNumber 从 Azure AD 流入 SuccessFactors 业务/工作电话号码。 |
    | 9 | 10605 | businessPhoneType | 此常数值是与业务电话关联的 SuccessFactors ID 值。 更新此值以与 SuccessFactors 环境匹配。 有关设置此值的步骤，请参阅[检索 phoneType 的常数值](#retrieve-constant-value-for-phonetype)部分。 |

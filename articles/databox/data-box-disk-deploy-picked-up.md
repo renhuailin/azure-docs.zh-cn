@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 12/10/2020
+ms.date: 02/02/2021
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: d529c5900d851368d60099091bb5745660036dea
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 542eed34f2be05cce3829baab2f07a5c58413ba0
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97029883"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526290"
 ---
 ::: zone target="docs"
 
@@ -63,7 +63,7 @@ ms.locfileid: "97029883"
 
     - 给本地 UPS 打电话（特定于国家/地区的免费电话号码）。
     - 在通话中，引用反向装运跟踪号码，如打印的标签中所示。
-    - 如果未引用跟踪号码，UPS 将要求你在提货时支付额外费用。
+    - 如果未引用跟踪号码，UPS 将在取件时要求你支付额外费用。
     - 也可以在最近的卸货位置放置 Data Box Disk，而不是安排提货。
 
 
@@ -83,7 +83,7 @@ ms.locfileid: "97029883"
 
 澳大利亚的 Azure 数据中心会提供额外的安全通知。 所有入境装运必须收到提前通知。 对于澳大利亚的取件，请执行以下步骤。
 
-1. 使用提供的退货发运标签，并确保在它上面写下 TAU 代码（参考编号）。 如果缺少提供的发运标签，或者有任何其他问题，请向 [Data Box 亚洲运营部门](mailto:adbo@microsoft.com)发送电子邮件。 在主题标题中提供订单名称，并提供所面临问题的详细信息。
+1. 使用提供的退货发运标签，并确保在它上面写下 TAU 代码（参考编号）。 如果缺少提供的发运标签，或者有任何其他问题，请向 [Data Box 亚洲运营部门](mailto:adbo@microsoft.com)发送电子邮件。 在主题标题中提供订单名称，并提供问题的详细信息。
 2. 将标签粘贴在盒子上。
 3. 打开链接 https://mydhl.express.dhl/au/en/schedule-pickup.html#/schedule-pickup#label-reference ，在线预约取件。
 
@@ -119,13 +119,13 @@ ms.locfileid: "97029883"
 1. 请务必附上退还托运单。
 2. 若要在提供有托运单的情况下请求取件，请执行以下操作：
     1. 在办公时间（星期一到星期五的上午 10 点到下午 5 点）拨打 *Quantium Solutions International* 热线 070-8231-1418。 请注明“Microsoft Azure 取件”和服务请求编号，以便安排收件。  
-    2. 如果热线繁忙，请向 `microsoft@rocketparcel.com` 发送电子邮件，并附上电子邮件主题“Microsoft Azure 取件”和服务请求编号作为参考。
-    3. 如果快递公司未前来收件，请拨打 *Quantium Solutions International* 热线安排其他快递公司。
+    2. 如果热线繁忙，请向 [microsoft@rocketparcel.com](mailto:microsoft@rocketparcel.com) 发送电子邮件，并附上电子邮件主题“Microsoft Azure 取件”和服务请求编号作为参考。
+    3. 如果快递公司未前来收件，请拨打 Quantium Solutions International 热线安排其他快递公司。
     4. 你将会收到取件安排的电子邮件确认函。
 3. 仅当托运单未提供时，才执行此步骤。 请求取件：
-    1. 在办公时间（星期一到星期五的上午 10 点到下午 5 点）拨打 *Quantium Solutions International* 热线 070-8231-1418。 请注明“Microsoft Azure 取件”和服务请求编号，以便安排收件。 指明你需要新的托运单，以便安排收件。 请提供发件人（客户）、收件人信息（Azure 数据中心）以及参考编号（服务请求编号）。 
-    2. 如果热线繁忙，请向 `microsoft@rocketparcel.com` 发送电子邮件，并附上电子邮件主题“Microsoft Azure 取件”和服务请求编号作为参考。
-    3. 如果快递公司未前来收件，请拨打 *Quantium Solutions International* 热线安排其他快递公司。
+    1. 在办公时间（星期一到星期五的上午 10 点到下午 5 点）拨打 *Quantium Solutions International* 热线 070-8231-1418。 请注明“Microsoft Azure 取件”和服务请求编号，以便安排收件。 指明你需要新的托运单，以便安排收件。 请提供发件人（客户）、收件人信息（Azure 数据中心）以及参考编号（服务请求编号）。
+    2. 如果热线繁忙，请向 [microsoft@rocketparcel.com](mailto:microsoft@rocketparcel.com) 发送电子邮件，并附上电子邮件主题“Microsoft Azure 取件”和服务请求编号作为参考。
+    3. 如果快递公司未前来收件，请拨打 Quantium Solutions International 热线安排其他快递公司。
     4. 如果请求是通过电话进行的，你会收到口头确认。
 
 ### <a name="singapore"></a>[新加坡](#tab/in-singapore)
@@ -152,7 +152,7 @@ ms.locfileid: "97029883"
    > * 如果在下午 3 点之前收到，分拣将在下一个工作日的上午 9 点到下午 1 点进行。
    > * 如果在下午 3 点之后收到，分拣将在下一个工作日的下午 2 点到下午 6 点进行。
 
-   如果遇到任何问题，请访问 Data Box Operations Asia，网址为 adbo@microsoft.com。 提供主题标头中的作业名称和遇到的问题。
+   如果遇到任何问题，请联系 Data Box Operations Asia ([adbo@microsoft.com](mailto:adbo@microsoft.com))。 提供主题标头中的作业名称和遇到的问题。
 
 3. 转交给快递员。
 
@@ -185,7 +185,7 @@ ms.locfileid: "97029883"
 
     * 或者，将包裹放在最近的 DHL 服务点。
 
-5. 如果遇到任何问题，请向 [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com) 发送电子邮件，说明所遇到的问题的详细信息，并将运单号放入主题行。 还可以致电 +27(0)119213902。
+5. 如果遇到任何问题，请向 [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com) 发送电子邮件，说明问题的详细信息，并将运单号放入主题行。 还可以致电 +27(0)119213902。
 
 ### <a name="china"></a>[中国](#tab/in-china)
 
@@ -205,7 +205,7 @@ ms.locfileid: "97029883"
 
 3. 完成预订取件后，接收来自 FedEx 的电子邮件确认。  
 
-4. 如果遇到任何问题，请向 [DL-DC-SHA@oe.21vianet.com](mailto:DL-DC-SHA@oe.21vianet.com) 发送电子邮件，其中需包含所遇到问题的详细信息，并且其主题需提到订单名称。
+4. 如果遇到任何问题，请向 [DL-DC-SHA@oe.21vianet.com](mailto:DL-DC-SHA@oe.21vianet.com) 发送电子邮件，提供问题的详细信息，并在主题行填写订单名称。
 
 #### <a name="premier-customer-care-contact-information"></a>Premier Customer Care 联系信息
 
@@ -229,7 +229,7 @@ ms.locfileid: "97029883"
 
 ### <a name="self-managed"></a>[自托管](#tab/in-selfmanaged)
 
-如果在美国政府、日本、新加坡、韩国、西欧、韩国或印度使用 Data Box Disk，并在创建订单时选择了自我管理的寄送选项，请按以下说明操作。
+如果在美国政府、日本、新加坡、韩国、英国、西欧、澳大利亚、南非或印度使用 Data Box Disk，并在创建订单时选择了自我管理式寄送选项，请按以下说明操作。
 
 1. 在 Azure 门户中转到订单的“概览”边栏选项卡。 如果选择“安排提货”，请查看显示的说明。 应会看到在进行订单送货时使用的授权代码。
 
@@ -240,7 +240,7 @@ ms.locfileid: "97029883"
     Subject: Request for Azure Data Box Disk drop-off for order: 'orderName'
     Body:
      a. Order name
-     b. Contact name of the person dropping off. You will need to display a Government approved ID during the drop off.
+     b. Contact name of the person dropping off. You will need to display a Government approved ID during the drop-off.
     ```
 3. Azure Data Box 运营团队会与你协作安排送货到 Azure 数据中心。
 
@@ -256,7 +256,7 @@ ms.locfileid: "97029883"
 >
 > * 将 Data Box 磁盘寄送到 Microsoft
 
-转到下一个操作指南，了解如何验证从 Data Box Disk 上传到 Azure 存储帐户的数据。
+转到下一个操作指南，了解如何验证从 Data Box Disk 到 Azure 存储帐户的数据上传情况。
 
 > [!div class="nextstepaction"]
 > [验证从 Azure Data Box Disk 上传的数据](./data-box-disk-deploy-upload-verify.md)

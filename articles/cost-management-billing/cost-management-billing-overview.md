@@ -4,17 +4,17 @@ description: 可以使用 Azure 成本管理和计费功能执行计费管理任
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/26/2020
+ms.date: 01/28/2021
 ms.topic: overview
 ms.service: cost-management-billing
 ms.subservice: common
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 34034a99641d75e44783cb5b87af8948b4db1628
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: a070b2329777accab6f62b767f74dbc28e5d2623
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97029934"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99051087"
 ---
 # <a name="what-is-azure-cost-management--billing"></a>什么是 Azure 成本管理和计费？
 
@@ -43,11 +43,11 @@ Azure 计费功能用于查看已开票成本并管理对计费信息的访问�
 
 Azure 门户当前支持以下类型的计费帐户：
 
-- **Microsoft Online Services 计划**：当你通过 Azure 网站注册 Azure 时，将创建 Microsoft Online Services 计划的个人计费帐户。 例如，当你注册 Azure 免费帐户、采用即用即付费率的帐户或作为 Visual Studio 订阅者时。
+- **Microsoft Online Services 计划**：当你通过 Azure 网站注册 Azure 时，将创建 Microsoft Online Services 计划的个人计费帐户。 例如，当你注册 [Azure 免费帐户](./manage/create-free-services.md)、采用即用即付费率的帐户，或者以 Visual Studio 订阅者的身份进行注册时。
 
 - **企业协议**：当组织签署使用 Azure 的企业协议 (EA) 时，将为企业协议创建一个计费帐户。
 
-- **Microsoft 客户协议**：当组织与 Microsoft 代表一起签署 Microsoft 客户协议时，将会为 Microsoft 客户协议创建一个计费帐户。 特定区域的某些客户通过 Azure 网站注册采用即用即付费率的帐户或者升级其 Azure 免费帐户，这些客户可能也有一个适用于 Microsoft 客户协议的计费帐户。
+- **Microsoft 客户协议**：当组织与 Microsoft 代表一起签署 Microsoft 客户协议时，将会为 Microsoft 客户协议创建一个计费帐户。 特定区域的某些客户通过 Azure 网站注册采用即用即付费率的帐户或者升级其 [Azure 免费帐户](./manage/create-free-services.md)，这些客户可能也有一个适用于 Microsoft 客户协议的计费帐户。
 
 ### <a name="scopes-for-billing-accounts"></a>计费帐户的范围
 范围是计费帐户中的一个节点，可使用该节点查看和管理计费。 可以在其中管理计费数据、付款、发票，以及执行常规的帐户管理。

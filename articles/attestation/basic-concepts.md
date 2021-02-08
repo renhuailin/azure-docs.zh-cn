@@ -7,12 +7,13 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: c6c09dc771692cb2fc2f36840e729874cfaf2d09
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.custom: references_regions
+ms.openlocfilehash: 3cd7d2541cb980fc5ca6a1a9c42a430eac1ecb1b
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98572810"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99429273"
 ---
 # <a name="basic-concepts"></a>基本概念
 
@@ -30,9 +31,9 @@ ms.locfileid: "98572810"
 
 证明提供程序属于名为 Microsoft.Attestation 的 Azure 资源提供程序。 资源提供程序是提供 Azure 证明 REST 协定的服务终结点，并使用 [Azure 资源管理器](../azure-resource-manager/management/overview.md)进行部署。 每个证明提供程序都遵循特定的可发现策略。 证明提供程序是使用每种证明类型的默认策略创建的（请注意，VBS enclave 没有默认策略）。 有关 SGX 的默认策略的更多详细信息，请参阅[证明策略的示例](policy-examples.md)。
 
-### <a name="regional-default-provider"></a>区域默认提供程序
+### <a name="regional-shared-provider"></a>区域共享提供程序
 
-Azure 证明在每个区域中提供了默认提供程序。 客户可以选择使用默认提供程序进行证明，或者使用自定义策略创建自己的提供程序。 任何 Azure AD 用户都可以访问默认提供程序，并且不能更改与默认提供程序关联的策略。
+Azure 证明在每个可用区域中提供了一个区域共享提供程序。 客户可选择使用区域共享提供程序进行证明，也可使用自定义策略创建自己的提供程序。 任何 Azure AD 用户都可访问共享提供程序，并且不能更改与这类提供程序关联的策略。
 
 | 区域 | 证明 Uri | 
 |--|--|
