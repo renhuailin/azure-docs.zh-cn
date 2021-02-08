@@ -760,6 +760,10 @@
           href: solution-template-databricks-notebook.md
     - name: 了解定价
       items:
+        - name: 数据流 - 预留容量概述
+          href: data-flow-reserved-capacity-overview.md
+        - name: 数据流 - 了解预留费用
+          href: data-flow-understand-reservation-charges.md
         - name: 计划和管理成本
           href: plan-manage-costs.md
         - name: 定价示例
