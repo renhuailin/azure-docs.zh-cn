@@ -4,15 +4,15 @@ description: 了解使用 Azure IoT Central 构建的联网废弃物管理解决
 author: miriambrus
 ms.author: miriamb
 ms.date: 12/11/2020
-ms.topic: tutorial
+ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 94098a1a2a9ac1b4889ad165a65c8b9d50d734dd
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 2d6c8c693db42789a965ee896a6d913d6ee20ae0
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97586799"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99831665"
 ---
 # <a name="connected-waste-monitoring-reference-architecture"></a>连接的废弃物检测参考体系结构 
 
