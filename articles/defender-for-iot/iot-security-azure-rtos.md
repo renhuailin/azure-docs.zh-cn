@@ -4,30 +4,30 @@ description: 详细了解 Azure RTOS 安全模块支持和实现，该模块是 
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
-author: mlottner
+author: shhazam-ms
 manager: rkarlin
 editor: ''
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/07/2020
-ms.author: mlottner
-ms.openlocfilehash: 9950f3727aac365205e979d9590edacebd32f1fc
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.date: 01/14/2021
+ms.author: shhazam
+ms.openlocfilehash: 47b2b49a21a82be13c987b95c7c775f5014a532e
+ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97832737"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99809076"
 ---
 # <a name="overview-defender-for-iot-security-module-for-azure-rtos-preview"></a>概述：Defender for IoT Azure RTOS 安全模块（预览版）
 
-Azure Defender for IoT 安全模块为使用 Azure RTOS 的设备提供了一个全面的安全解决方案。 它覆盖了实时操作系统 (RTOS) 设备上的常见威胁和潜在恶意活动。 Azure RTOS 现在随附了内置的 Azure IoT 安全模块。
+Azure Defender for IoT 微模块为使用 Azure RTO 的设备提供了一个全面的安全解决方案。 它覆盖了实时操作系统 (RTOS) 设备上的常见威胁和潜在恶意活动。 Azure RTOS 现在随附了内置的 Azure IoT 安全模块。
 
 :::image type="content" source="./media/architecture/azure-rtos-security-monitoring.png" alt-text="Defender for IoT Azure RTOS 的可视化。":::
 
 
-Azure RTOS 安全模块提供以下功能：
+Azure RTO 的微模块提供以下功能：
 
 - 恶意网络活动检测
 - 基于自定义警报的设备行为基线

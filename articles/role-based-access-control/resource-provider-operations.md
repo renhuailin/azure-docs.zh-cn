@@ -9,12 +9,12 @@ author: rolyon
 ms.author: rolyon
 ms.date: 02/01/2021
 ms.custom: generated
-ms.openlocfilehash: 768a327421a941a39b6f66be411712a565097f66
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 72a8f2eb93a9c12510b093e29c7b8fc6867cb2eb
+ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99557329"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99809369"
 ---
 # <a name="azure-resource-provider-operations"></a>Azure 资源提供程序操作
 
@@ -160,7 +160,9 @@ ms.locfileid: "99557329"
 | [Microsoft.Intune](#microsoftintune) |
 | **其他** |
 | [Microsoft.BingMaps](#microsoftbingmaps) |
+| [Microsoft.DesktopVirtualization](#microsoftdesktopvirtualization) |
 | [Microsoft.DigitalTwins](#microsoftdigitaltwins) |
+| [ServicesHub](#microsoftserviceshub) |
 
 
 ## <a name="general"></a>常规
@@ -10268,6 +10270,51 @@ Azure 服务：[必应地图](/BingMaps/)
 > | Microsoft.BingMaps/mapApis/listUsageMetrics/action | 列出 Microsoft.BingMaps/mapApis 的指标 |
 > | Microsoft.BingMaps/Operations/read | 列出 Microsoft.BingMaps 的操作 |
 
+### <a name="microsoftdesktopvirtualization"></a>Microsoft.DesktopVirtualization
+
+Azure 服务： [Windows 虚拟桌面](../virtual-desktop/index.yml)
+
+> [!div class="mx-tableFixed"]
+> | 操作 | 说明 |
+> | --- | --- |
+> | DesktopVirtualization/注册/操作 | 注册订阅 |
+> | DesktopVirtualization/applicationgroups/read | 读取 applicationgroups |
+> | DesktopVirtualization/applicationgroups/write | 写入 applicationgroups |
+> | DesktopVirtualization/applicationgroups/delete | 删除 applicationgroups |
+> | DesktopVirtualization/applicationgroups/应用程序/读取 | 读取 applicationgroups/应用程序 |
+> | DesktopVirtualization/applicationgroups/应用程序/写入 | 编写 applicationgroups/应用程序 |
+> | DesktopVirtualization/applicationgroups/应用程序/删除 | 删除 applicationgroups/应用程序 |
+> | DesktopVirtualization/applicationgroups/台式电脑/读取 | 读取 applicationgroups/台式机 |
+> | DesktopVirtualization/applicationgroups/台式电脑/写入 | 写入 applicationgroups/台式机 |
+> | DesktopVirtualization/applicationgroups/台式电脑/delete | 删除 applicationgroups/台式机 |
+> | DesktopVirtualization/applicationgroups/externaluserassignments/read |  |
+> | DesktopVirtualization/applicationgroups/providers/diagnosticSettings/read | 获取诊断设置 |
+> | DesktopVirtualization/applicationgroups/providers/diagnosticSettings/write | 创建或更新诊断设置 |
+> | DesktopVirtualization/applicationgroups/providers/logDefinitions/read | 获取可用日志 |
+> | DesktopVirtualization/applicationgroups/startmenuitems/read | 阅读开始菜单项 |
+> | DesktopVirtualization/hostpools/read | 读取 hostpools |
+> | DesktopVirtualization/hostpools/write | 写入 hostpools |
+> | DesktopVirtualization/hostpools/delete | 删除 hostpools |
+> | DesktopVirtualization/hostpools/providers/diagnosticSettings/read | 获取诊断设置 |
+> | DesktopVirtualization/hostpools/providers/diagnosticSettings/write | 创建或更新诊断设置 |
+> | DesktopVirtualization/hostpools/providers/logDefinitions/read | 获取可用日志 |
+> | DesktopVirtualization/hostpools/sessionhosts/read | Read hostpools/sessionhosts |
+> | DesktopVirtualization/hostpools/sessionhosts/write | Write hostpools/sessionhosts |
+> | DesktopVirtualization/hostpools/sessionhosts/delete | 删除 hostpools/sessionhosts |
+> | DesktopVirtualization/hostpools/sessionhosts/usersessions/read | Read hostpools/sessionhosts/usersessions |
+> | DesktopVirtualization/hostpools/sessionhosts/usersessions/write | Write hostpools/sessionhosts/usersessions |
+> | DesktopVirtualization/hostpools/sessionhosts/usersessions/delete | Delete hostpools/sessionhosts/usersessions |
+> | DesktopVirtualization/hostpools/sessionhosts/usersessions/disconnect/action | 断开用户会话窗体会话主机的连接 |
+> | DesktopVirtualization/hostpools/sessionhosts/usersessions/sendMessage/action | 向用户会话发送消息 |
+> | DesktopVirtualization/工作区/读取 | 读取工作区 |
+> | DesktopVirtualization/工作区/写入 | 编写工作区 |
+> | DesktopVirtualization/工作区/删除 | 删除工作区 |
+> | DesktopVirtualization/workspace/providers/diagnosticSettings/read | 获取诊断设置 |
+> | DesktopVirtualization/工作区/提供程序/diagnosticSettings/写入 | 创建或更新诊断设置 |
+> | DesktopVirtualization/workspace/providers/logDefinitions/read | 获取可用日志 |
+> | **DataAction** | **说明** |
+> | DesktopVirtualization/applicationgroups/useapplications/action | 使用 ApplicationGroup |
+
 ### <a name="microsoftdigitaltwins"></a>Microsoft.DigitalTwins
 
 Azure 服务： [Azure 数字孪生](../digital-twins/index.yml)
@@ -10316,6 +10363,20 @@ Azure 服务： [Azure 数字孪生](../digital-twins/index.yml)
 > | Microsoft.DigitalTwins/models/read | 读取任何模型 |
 > | Microsoft.DigitalTwins/models/write | 创建或更新任何模型 |
 > | Microsoft.DigitalTwins/models/delete | 删除任何模型 |
+
+### <a name="microsoftserviceshub"></a>ServicesHub
+
+Azure 服务： [服务中心](/services-hub/)
+
+> [!div class="mx-tableFixed"]
+> | 操作 | 说明 |
+> | --- | --- |
+> | ServicesHub/连接器/写入 | 创建或更新服务中心连接器 |
+> | ServicesHub/连接器/读取 | 查看或列出服务中心连接器 |
+> | ServicesHub/连接器/delete | 删除服务中心连接器 |
+> | ServicesHub/连接器/checkAssessmentEntitlement/action | 列出给定服务中心工作区的评估权利 |
+> | ServicesHub/supportOfferingEntitlement/read | 查看给定服务中心工作区的支持产品权利 |
+> | ServicesHub/工作区/读取 | 列出给定用户的服务中心工作区 |
 
 ## <a name="next-steps"></a>后续步骤
 

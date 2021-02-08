@@ -1,24 +1,24 @@
 ---
-title: 安全代理体系结构
+title: 安全代理概述
 description: 了解 Azure Defender for IoT 服务中所使用代理的安全代理体系结构。
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
-author: mlottner
+author: shhazam-ms
 manager: rkarlin
 editor: ''
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/26/2019
-ms.author: mlottner
-ms.openlocfilehash: 5773f7af3bb065976e8f05d7b54c58b90da2d3d2
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.date: 01/24/2021
+ms.author: shhazam
+ms.openlocfilehash: 929b8de8a6b70519bb44e41ba5cfede9ec12f110
+ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97835119"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99808855"
 ---
 # <a name="security-agent-reference-architecture"></a>安全代理参考体系结构
 
@@ -28,22 +28,22 @@ Azure Defender for IoT 为通过 IoT 中心记录、处理、聚合和发送安�
 
 安全代理不支持以下功能：
 
+- 使用现有的设备标识或专用模块标识进行身份验证。 若要了解详细信息，请参阅 [安全代理身份验证方法](concept-security-agent-authentication-methods.md)。
+
 - 从基础操作系统（Linux、Windows）收集原始安全事件。 请参阅 [Defender for IoT 代理配置](how-to-agent-configuration.md)详细了解可用的安全数据收集器。
 
 - 将原始安全事件聚合到通过 IoT 中心发送的消息中。
 
-- 使用现有的设备标识或专用模块标识进行身份验证。 请参阅[安全代理身份验证方法](concept-security-agent-authentication-methods.md)了解详细信息。
-
 - 使用 azureiotsecurity 模块孪生远程配置。 请参阅[配置 Defender for IoT 代理](how-to-agent-configuration.md)了解详细信息。
 
-Defender for IoT 安全代理作为开源项目开发，可从 GitHub 获得：
+Defender for IoT Security agent 作为开放源代码项目开发，可从 GitHub 获得：
 
 - [Defender for IoT 基于 C 的代理](https://github.com/Azure/Azure-IoT-Security-Agent-C)
 - [Defender for IoT 基于 C# 的代理](https://github.com/Azure/Azure-IoT-Security-Agent-CS)
 
 ## <a name="agent-supported-platforms"></a>代理支持的平台
 
-Defender for IoT 为 32 位及 64 位 Windows 和 Linux 提供不同的安装程序代理。 请确保按照下表为每个设备设置正确的代理安装程序：
+Defender for IoT 为32位和64位 Windows 提供不同的安装程序代理，适用于32位和64位 Linux。 请确保按照下表为每个设备设置正确的代理安装程序：
 
 | 体系结构 | Linux | Windows | 详细信息 |
 |--|--|--|--|
@@ -53,7 +53,7 @@ Defender for IoT 为 32 位及 64 位 Windows 和 Linux 提供不同的安装程
 
 ## <a name="next-steps"></a>后续步骤
 
-本文介绍了 Defender for IoT 安全代理聚合体系结构以及可用的安装程序。
+本文概要介绍了用于 IoT 安全模块体系结构和可用安装程序的 Defender。
 
 请参阅以下文章继续着手部署 Defender for IoT：
 

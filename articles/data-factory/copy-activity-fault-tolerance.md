@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: yexu
-ms.openlocfilehash: e64f4ab31aed5c4c3e70ef10faf2049027525014
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: 0fb6beb776f5a553e85f690d49e3433f93b9ee16
+ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94593633"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99809535"
 ---
 #  <a name="fault-tolerance-of-copy-activity-in-azure-data-factory"></a>Azure 数据工厂中复制活动的容错
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -27,7 +27,7 @@ ms.locfileid: "94593633"
 
 将数据从源复制到目标存储时，Azure 数据工厂复制活动提供一定程度的容错，以防止数据移动过程中因出现故障而中断。 例如，你要将数百万行从源复制到目标存储，其中，在目标数据库中创建了主键，但源数据库没有定义任何主键。 当你将重复行从源复制到目标时，将在目标数据库上遇到 PK 冲突故障。 目前，复制活动提供了两种处理此类错误的方法： 
 - 如果遇到任何故障，你可以中止复制活动。 
-- 可以通过启用容错以跳过不兼容的数据，继续复制其余部分。 例如，在这种情况下，跳过重复的行。 此外，还可以通过在复制活动中启用会话日志来记录跳过的数据。 有关更多详细信息，可以参阅 [复制活动中的会话日志](copy-activity-log.md) 。
+- 可以通过启用容错以跳过不兼容的数据，继续复制其余部分。 例如，在这种情况下，跳过重复的行。 此外，还可以通过在复制活动中启用会话日志来记录跳过的数据。 有关更多详细信息，可以参阅[复制活动中的会话日志](copy-activity-log.md)。
 
 ## <a name="copying-binary-files"></a>复制二进制文件 
 
@@ -58,7 +58,8 @@ ADF 在复制二进制文件时支持以下容错方案。 在以下情况下，
     "skipErrorFile": { 
         "fileMissing": true, 
         "fileForbidden": true, 
-        "dataInconsistency": true 
+        "dataInconsistency": true,
+        "invalidFileName": true     
     }, 
     "validateDataConsistency": true, 
     "logSettings": {
@@ -77,12 +78,13 @@ ADF 在复制二进制文件时支持以下容错方案。 在以下情况下，
     }
 } 
 ```
-属性 | 说明 | 允许的值 | 必选
+属性 | 说明 | 允许的值 | 必须
 -------- | ----------- | -------------- | -------- 
 skipErrorFile | 一组属性，用于指定在数据移动过程中要跳过的失败类型。 | | 否
 fileMissing | SkipErrorFile 属性包中的一个键值对，用于确定是否要跳过在复制 ADF 时被其他应用程序删除的文件。 <br/> -True：跳过其他应用程序正在删除的文件，复制其余内容。 <br/> -False：在数据移动过程中，一旦从源存储中删除任何文件则中止复制活动。 <br/>默认情况下，该属性设置为 True。 | True（默认值） <br/>False | 否
 fileForbidden | SkipErrorFile 属性包中的一个键值对，用来确定当这些文件或文件夹的 ACL 需要比 ADF 中配置的连接更高的权限级别时，是否要跳过特定文件。 <br/> -True：要通过跳过文件来复制其余内容。 <br/> -False：在获取文件夹或文件的权限问题后，要中止复制活动。 | True <br/>False（默认值） | 否
 dataInconsistency | SkipErrorFile 属性包中的一个键值对，用于确定是否要跳过源和目标存储之间不一致的数据。 <br/> -True：要通过跳过不一致的数据来复制其余内容。 <br/> -False：找到不一致的数据后要中止复制活动。 <br/>请注意，仅当你将 validateDataConsistency 设置为 True 时，此属性才有效。 | True <br/>False（默认值） | 否
+invalidFileName | SkipErrorFile 属性包中的一个键值对，用于确定是否要跳过特定文件，前提是目标存储的文件名无效。 <br/> -True：要通过跳过文件名称无效的文件来复制其余内容。 <br/> -False：要在任何文件具有无效文件名时中止复制活动。 <br/>请注意，将二进制文件从任何存储存储复制到 ADLS Gen2 或将二进制文件从 AWS S3 复制到任何存储存储时，此属性有效。 | True <br/>False（默认值） | 否
 logSettings  | 当要记录跳过的对象名称时可以指定的一组属性。 | &nbsp; | 否
 linkedServiceName | [Azure Blob 存储](connector-azure-blob-storage.md#linked-service-properties)或 [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties) 的链接服务，用于存储会话日志文件。 | `AzureBlobStorage` 或 `AzureBlobFS` 类型链接服务的名称，指代用于存储日志文件的实例。 | 否
 path | 日志文件的路径。 | 指定用于存储日志文件的路径。 如果未提供路径，服务会为用户创建一个容器。 | 否
@@ -133,11 +135,11 @@ path | 日志文件的路径。 | 指定用于存储日志文件的路径。 如
 
 列 | 说明 
 -------- | -----------  
-Timestamp | ADF 跳过文件时的时间戳。
+时间戳 | ADF 跳过文件时的时间戳。
 级别 | 此项的日志级别。 对于显示文件跳过的项，它将处于“警告”级别。
 OperationName | 每个文件上的 ADF 复制活动操作行为。 它将为“FileSkip”，以指定要跳过的文件。
 OperationItem | 要跳过的文件名。
-Message | 说明为何要跳过文件的详细信息。
+消息 | 说明为何要跳过文件的详细信息。
 
 日志文件的示例如下所示： 
 ```
@@ -153,11 +155,11 @@ Timestamp,Level,OperationName,OperationItem,Message
 ### <a name="supported-scenarios"></a>支持的方案
 复制活动支持三种检测、跳过和记录不兼容表格数据的方案：
 
-- **源数据类型与接收器本机类型不兼容** 。 
+- **源数据类型与接收器本机类型不兼容**。 
 
     例如：将数据从 Blob 存储中的 CSV 文件复制到具有架构定义的包含三个 INT 类型列的 SQL 数据库。 包含数值数据的 CSV 文件行（如 123,456,789）成功复制到接收器存储。 但是，包含非数字值的行（如 123,456, abc ）检测为不兼容，并被跳过。
 
-- **源与接收器之间的列数不匹配** 。
+- **源与接收器之间的列数不匹配**。
 
     例如：使用包含六个列的架构定义，将数据从 Blob 存储中的 CSV 文件复制到 SQL 数据库。 包含六个列的 CSV 文件行会成功复制到接收器存储。 包含多于六列的 CSV 文件行将检测为不兼容，并被跳过。
 
@@ -166,7 +168,7 @@ Timestamp,Level,OperationName,OperationItem,Message
     例如：将数据从 SQL 服务器复制到 SQL 数据库。 接收器 SQL 数据库中定义了主键，但源 SQL 服务器中未定义此类主键。 源中的重复行无法复制到接收器。 复制活动仅将源数据的第一行复制到接收器。 包含重复主键值的后续源行会被检测为不兼容，并被跳过。
 
 >[!NOTE]
->- 若要使用 PolyBase 将数据加载到 Azure Synapse Analytics（以前称为 SQL 数据仓库），请配置 PolyBase 的原生容错设置，方法是在复制活动中通过 [polyBaseSettings](connector-azure-sql-data-warehouse.md#azure-sql-data-warehouse-as-sink) 指定拒绝策略。 同时，仍然可以正常启用将 PolyBase 不兼容行重定向到 Blob 或 ADLS，如下所示。
+>- 若要使用 PolyBase 将数据加载到 Azure Synapse Analytics，请配置 PolyBase 的原生容错设置，方法是在复制活动中通过 [polyBaseSettings](connector-azure-sql-data-warehouse.md#azure-sql-data-warehouse-as-sink) 指定拒绝策略。 同时，仍然可以正常启用将 PolyBase 不兼容行重定向到 Blob 或 ADLS，如下所示。
 >- 将复制活动配置为调用 [AmazonRedShift 卸载](connector-amazon-redshift.md#use-unload-to-copy-data-from-amazon-redshift)时，此功能不适用。
 >- 当复制活动配置为调用 [SQL 接收器中的存储过程](./connector-azure-sql-database.md#invoke-a-stored-procedure-from-a-sql-sink)时，此功能不适用。
 
@@ -199,7 +201,7 @@ Timestamp,Level,OperationName,OperationItem,Message
 }, 
 ```
 
-属性 | 说明 | 允许的值 | 必选
+属性 | 说明 | 允许的值 | 必须
 -------- | ----------- | -------------- | -------- 
 enableSkipIncompatibleRow | 指定是否在复制期间跳过不兼容的行。 | True<br/>False（默认值） | 否
 logSettings | 若要记录不兼容行，可以指定的一组属性。 | &nbsp; | 否
@@ -229,11 +231,11 @@ path | 包含已跳过行的日志文件的路径。 | 指定要用于记录不�
 
 列 | 说明 
 -------- | -----------  
-Timestamp | ADF 跳过不兼容行时的时间戳
+时间戳 | ADF 跳过不兼容行时的时间戳
 级别 | 此项的日志级别。 如果此项显示跳过的行，它将处于“警告”级别
 OperationName | 每个行上的 ADF 复制活动操作行为。 它将为“TabularRowSkip”以指定已跳过特定不兼容行
 OperationItem | 源数据存储中的已跳过行。
-Message | 说明此特定行不兼容性的详细信息。
+消息 | 说明此特定行不兼容性的详细信息。
 
 
 下面的示例展示了日志文件内容：
@@ -273,7 +275,7 @@ Timestamp, Level, OperationName, OperationItem, Message
 }
 ```
 
-属性 | 说明 | 允许的值 | 必选
+属性 | 说明 | 允许的值 | 必须
 -------- | ----------- | -------------- | -------- 
 enableSkipIncompatibleRow | 指定是否在复制期间跳过不兼容的行。 | True<br/>False（默认值） | 否
 redirectIncompatibleRowSettings | 若要记录不兼容行，可以指定的一组属性。 | &nbsp; | 否
