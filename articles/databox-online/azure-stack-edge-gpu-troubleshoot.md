@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: troubleshooting
-ms.date: 01/21/2021
+ms.date: 02/04/2021
 ms.author: alkohli
-ms.openlocfilehash: 0976dd9f3c4d0228ec0f170a755ec13800da435b
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: c56fcecbd850dd0add26e5d50093eea595e3d825
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98761535"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99833416"
 ---
 # <a name="troubleshoot-issues-on-your-azure-stack-edge-pro-gpu-device"></a>排查 Azure Stack Edge Pro GPU 设备上的问题 
 
@@ -167,7 +167,7 @@ ms.locfileid: "98761535"
 
 2. 验证是否安装了正确的 PowerShell 模块，如 [此处](azure-stack-edge-j-series-connect-resource-manager.md#step-4-set-up-azure-powershell-on-the-client)所述。
 
-3. 验证 Azure 资源管理器和登录终结点是否可访问。 可以尝试对终结点进行 ping 操作。 例如：
+3. 验证 Azure 资源管理器和登录终结点是否可访问。 可以尝试对终结点进行 ping 操作。 例如： 。
 
    `ping management.28bmdw2-bb9.microsoftdatabox.com`
    `ping login.28bmdw2-bb9.microsoftdatabox.com`
@@ -196,7 +196,7 @@ ms.locfileid: "98761535"
 |AzCopy 命令在显示以下错误之前，似乎停止了响应，时间长达 20 分钟：<br>`Error parsing source location https://<accountname>.blob.<serialnumber>.microsoftdatabox.com/<cntnr>. No such device or address`|检查是否已在 `/etc/hosts` 将终结点名称 `<accountname>.blob.<serialnumber>.microsoftdatabox.com` 添加到 hosts 文件。|
 |显示此错误之前，AzCopy 命令似乎停止响应20分钟： `Error parsing source location… The SSL connection could not be established` 。|将你的设备的 SSL 证书导入到系统的证书存储中。 有关详细信息，请参阅 [下载证书](../databox/data-box-deploy-copy-data-via-rest.md#download-certificate)。|
 |其中一个 HTTP 标头的值的格式不正确。|Data Box 不支持用于 Python 的 Microsoft Azure 存储库的已安装版本。 请查看 Azure Data Box Blob 存储要求，了解支持的版本。|
-|… [SSL:CERTIFICATE_VERIFY_FAILED] …| 在运行 Python 之前，将 REQUESTS_CA_BUNDLE 环境变量设置为 Base64 编码的 SSL 证书文件的路径 (参阅如何 [下载证书](../databox/data-box-deploy-copy-data-via-rest.md#download-certificate)。 例如：<br>`export REQUESTS_CA_BUNDLE=/tmp/mycert.cer`<br>`python`<br>或者，将证书添加到系统的证书存储中，然后将此环境变量设置为该存储区的路径。 例如，在 Ubuntu 上为：<br>`export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt`<br>`python`.|
+|… [SSL:CERTIFICATE_VERIFY_FAILED] …| 在运行 Python 之前，将 REQUESTS_CA_BUNDLE 环境变量设置为 Base64 编码的 SSL 证书文件的路径 (参阅如何 [下载证书](../databox/data-box-deploy-copy-data-via-rest.md#download-certificate)。 例如： 。<br>`export REQUESTS_CA_BUNDLE=/tmp/mycert.cer`<br>`python`<br>或者，将证书添加到系统的证书存储中，然后将此环境变量设置为该存储区的路径。 例如，在 Ubuntu 上为：<br>`export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt`<br>`python`.|
 |连接超时。|登录到 Azure Stack Edge Pro，并检查它是否已解锁。 设备重新启动时，它将一直保持锁定状态，直到有人登录。|
 
 ## <a name="troubleshoot-iot-edge-errors"></a>排查 IoT Edge 错误

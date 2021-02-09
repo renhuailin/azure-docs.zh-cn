@@ -7,12 +7,12 @@ ms.date: 11/16/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 8c26afc9cf9630f6d26ddc76759393a6ea1a8696
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: a7d26eebb24662a448d8ccb44d037e7706fe776b
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94990260"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99832838"
 ---
 # <a name="tutorial-use-device-groups-to-analyze-device-telemetry"></a>教程：使用设备组分析设备遥测数据
 
@@ -82,6 +82,10 @@ ms.locfileid: "94990260"
     :::image type="content" source="media/tutorial-use-device-groups/view-analysis.png" alt-text="显示所有 Contoso 设备平均值的屏幕截图":::
 
     可以自定义视图，更改显示的时间段，并导出数据。
+
+## <a name="clean-up-resources"></a>清理资源
+
+[!INCLUDE [iot-central-clean-up-resources](../../../includes/iot-central-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

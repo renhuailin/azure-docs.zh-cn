@@ -6,20 +6,20 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 07/15/2020
+ms.date: 02/05/2021
 ms.author: alkohli
-ms.openlocfilehash: 4deeec1b6c9db80c15b001efb7b40bdb4bb9d515
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: c87c8cfd40903f6296f0a36f5c83c0b5c5cb7818
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452641"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99831565"
 ---
 # <a name="azure-stack-edge-pro-system-requirements"></a>Azure Stack Edge Pro 系统要求
 
 本文介绍 Microsoft Azure Stack Edge Pro 解决方案以及连接到 Azure Stack Edge Pro 的客户端的重要系统要求。 建议你在部署 Azure Stack Edge Pro 之前仔细查看信息。 在部署和执行后续操作期间，如有必要，可以回来参考此信息。
 
-Azure Stack Edge Pro 的系统要求包括：
+Azure Stack Edge Pro 的系统要求包括： 
 
 - **主机的软件要求** - 介绍支持的平台、本地配置 UI 的浏览器、SMB 客户端以及访问设备的客户端的任何其他要求。
 - **设备的网络要求** - 提供有关物理设备运转的网络要求的信息。
@@ -58,7 +58,7 @@ Azure IoT Edge 允许使用支持的 IoT 中心协议从本地 Edge 设备来与
 
 对托管 Azure IoT Edge 运行时的服务器使用下表中的端口配置：
 
-| 端口号。 | 入或出 | 端口范围 | 必须 | 指南 |
+| 端口号。 | 入或出 | 端口范围 | 必需 | 指南 |
 |----------|-----------|------------|----------|----------|
 | TCP 443 (HTTPS)| 出       | WAN        | 是      | 为 IoT Edge 预配打开此出站端口。 使用手动脚本或 Azure IoT 设备预配服务 (DPS) 时，此配置是必需的。|
 

@@ -1,18 +1,18 @@
 ---
 title: 模板函数 - 比较
-description: 介绍在 Azure 资源管理器模板中使用的用于比较值的 (ARM 模板) 的函数。
+description: 介绍可在 Azure 资源管理器模板（ARM 模板）中使用的用于比较值的函数。
 ms.topic: conceptual
 ms.date: 11/18/2020
-ms.openlocfilehash: 1b7192db361f510e0246a737de47930534a1cb9d
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 95655a4c92a1de9bb7a7faebcdaa83fb0fa75696
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920537"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99833994"
 ---
 # <a name="comparison-functions-for-arm-templates"></a>ARM 模板的比较函数
 
-资源管理器提供了几个用于在 Azure 资源管理器模板中进行比较的函数 (ARM 模板) ：
+资源管理器提供了多个用于在 Azure 资源管理器模板（ARM 模板）中进行比较的函数：
 
 * [coalesce](#coalesce)
 * [equals](#equals)
@@ -106,18 +106,18 @@ param objectToTest object = {
   ]
 }
 
-output stringOutput string = coalesce(objectToTest.null1, objectToTest.null2, objectToTest.string)
-output intOutput int = coalesce(objectToTest.null1, objectToTest.null2, objectToTest.int)
-output objectOutput object = coalesce(objectToTest.null1, objectToTest.null2, objectToTest.object)
-output arrayOutput array = coalesce(objectToTest.null1, objectToTest.null2, objectToTest.array)
-output emptyOutput bool =empty(coalesce(objectToTest.null1, objectToTest.null2))
+output stringOutput string = objectToTest.null1 ?? objectToTest.null2 ?? objectToTest.string
+output intOutput int = objectToTest.null1 ?? objectToTest.null2 ?? objectToTest.int
+output objectOutput object = objectToTest.null1 ?? objectToTest.null2 ?? objectToTest.object
+output arrayOutput array = objectToTest.null1 ?? objectToTest.null2 ?? objectToTest.array
+output emptyOutput bool =empty(objectToTest.null1 ?? objectToTest.null2)
 ```
 
 ---
 
 上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
 | stringOutput | String | 默认值 |
 | intOutput | int | 1 |
@@ -129,11 +129,11 @@ output emptyOutput bool =empty(coalesce(objectToTest.null1, objectToTest.null2))
 
 `equals(arg1, arg2)`
 
-检查两个值是否相等。 `equals`Bicep 中不支持此函数。 请改用 `==` 运算符。
+检查两个值是否相等。 Bicep 不支持 `equals` 函数。 请改用 `==` 运算符。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |int、string、array 或 object |要检查是否相等的第一个值。 |
 | arg2 |是 |int、string、array 或 object |要检查是否相等的第二个值。 |
@@ -166,7 +166,7 @@ equals 函数通常与 `condition` 元素一起使用来测试资源是否已部
 # <a name="bicep"></a>[Bicep](#tab/bicep)
 
 > [!NOTE]
-> `Conditions` 尚未在 Bicep 中实现。 请参阅 [条件](https://github.com/Azure/bicep/issues/186)。
+> `Conditions` 尚未在 Bicep 中实现。 请参阅[条件](https://github.com/Azure/bicep/issues/186)。
 
 ---
 
@@ -313,11 +313,11 @@ output checkNotEquals bool = ! (1 == 2)
 
 `greater(arg1, arg2)`
 
-检查第一个值是否大于第二个值。 `greater`Bicep 中不支持此函数。 请改用 `>` 运算符。
+检查第一个值是否大于第二个值。 Bicep 不支持 `greater` 函数。 请改用 `>` 运算符。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |int 或 string |用于大于比较的第一个值。 |
 | arg2 |是 |int 或 string |用于大于比较的第二个值。 |
@@ -394,11 +394,11 @@ output checkStrings bool = firstString > secondString
 
 `greaterOrEquals(arg1, arg2)`
 
-检查第一个值是否大于或等于第二个值。 `greaterOrEquals`Bicep 中不支持此函数。 请改用 `>=` 运算符。
+检查第一个值是否大于或等于第二个值。 Bicep 不支持 `greaterOrEquals` 函数。 请改用 `>=` 运算符。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |int 或 string |用于大于或等于比较的第一个值。 |
 | arg2 |是 |int 或 string |用于大于或等于比较的第二个值。 |
@@ -475,11 +475,11 @@ output checkStrings bool = firstString >= secondString
 
 `less(arg1, arg2)`
 
-检查第一个值是否小于第二个值。 `less`Bicep 中不支持此函数。 请改用 `<` 运算符。
+检查第一个值是否小于第二个值。 Bicep 不支持 `less` 函数。 请改用 `<` 运算符。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |int 或 string |用于小于比较的第一个值。 |
 | arg2 |是 |int 或 string |用于小于比较的第二个值。 |
@@ -556,11 +556,11 @@ output checkStrings bool = firstString < secondString
 
 `lessOrEquals(arg1, arg2)`
 
-检查第一个值是否小于或等于第二个值。 `lessOrEquals`Bicep 中不支持此函数。 请改用 `<=` 运算符。
+检查第一个值是否小于或等于第二个值。 Bicep 不支持 `lessOrEquals` 函数。 请改用 `<=` 运算符。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |int 或 string |用于小于或等于比较的第一个值。 |
 | arg2 |是 |int 或 string |用于小于或等于比较的第二个值。 |
@@ -635,4 +635,4 @@ output checkStrings bool = firstString <= secondString
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关 ARM 模板中各部分的说明，请参阅 [了解 arm 模板的结构和语法](template-syntax.md)。
+* 有关 ARM 模板中各部分的说明，请参阅[了解 ARM 模板的结构和语法](template-syntax.md)。

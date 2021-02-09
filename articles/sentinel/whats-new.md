@@ -7,13 +7,13 @@ ms.author: bagol
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
-ms.date: 02/02/2021
-ms.openlocfilehash: 0eb3b8feda09d931654d1781ea37737d68a1b377
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.date: 02/04/2021
+ms.openlocfilehash: 37a9294b156bd41b72e777696f10a1c4ac2bb354
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99526630"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99832753"
 ---
 # <a name="whats-new-in-azure-sentinel"></a>Azure Sentinel 中的新增功能
 
@@ -32,6 +32,7 @@ ms.locfileid: "99526630"
 
 ## <a name="january-2021"></a>2021 年 1 月
 
+- [分析规则向导： (公开预览版，改进了查询编辑体验) ](#analytics-rule-wizard-improved-query-editing-experience-public-preview)
 - [SecurityInsights PowerShell 模块 (公开预览版) ](#azsecurityinsights-powershell-module-public-preview)
 - [SQL 数据库连接器](#sql-database-connector)
 - [改进的事件评论](#improved-incident-comments)
@@ -40,6 +41,16 @@ ms.locfileid: "99526630"
 - [通过分析规则预览关系图改进了规则优化](#improved-rule-tuning-with-the-analytics-rule-preview-graphs-public-preview)
 
 
+## <a name="analytics-rule-wizard-improved-query-editing-experience-public-preview"></a>分析规则向导： (公开预览版，改进了查询编辑体验) 
+
+Azure Sentinel 计划分析规则向导现在提供了以下用于编写和编辑查询的增强功能：
+
+-   可扩展的编辑窗口，提供更多屏幕空间来查看查询。
+-   在查询代码中突出显示关键字。
+-   扩展了自动完成支持。
+-   实时查询验证。 查询中的错误现在在滚动条中显示为红色块，并作为 " **设置规则逻辑** " 选项卡名称中的红点。 此外，不能保存带有错误的查询。
+
+有关详细信息，请参阅 [教程：就地检测到威胁](tutorial-detect-threats-built-in.md)。
 ### <a name="azsecurityinsights-powershell-module-public-preview"></a>SecurityInsights PowerShell 模块 (公开预览版) 
 
 Azure Sentinel 现在支持新的 [Az SecurityInsights](https://www.powershellgallery.com/packages/Az.SecurityInsights/) PowerShell 模块。

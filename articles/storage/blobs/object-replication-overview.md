@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 01/13/2021
+ms.date: 02/08/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e7fa6b1ee7c92f82c3e15335991f5a240c7acc52
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 391c33e72f45e7c0c0b56128b32a8e73399e417a
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98762871"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99834317"
 ---
 # <a name="object-replication-for-block-blobs"></a>块 blob 的对象复制
 
@@ -42,6 +42,8 @@ ms.locfileid: "98762871"
 - [Blob 版本控制](versioning-overview.md)：必须同时在源帐户和目标帐户上启用。 若要了解如何启用版本控制，请参阅 [启用和管理 blob 版本控制](versioning-enable.md)。
 
 启用更改源和 blob 版本控制可能会产生额外的成本。 有关更多详细信息，请参阅 [Azure 存储定价页](https://azure.microsoft.com/pricing/details/storage/)。
+
+只有常规用途 v2 存储帐户才支持对象复制。 源帐户和目标帐户都必须是常规用途 v2。 
 
 ## <a name="how-object-replication-works"></a>对象复制的工作原理
 

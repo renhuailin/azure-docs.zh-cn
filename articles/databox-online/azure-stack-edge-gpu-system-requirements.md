@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 10/12/2020
+ms.date: 02/05/2021
 ms.author: alkohli
-ms.openlocfilehash: d97f500bb84f816bacf44208ba305840e797b3bd
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: d2fa464214f6a4201b1ecd62ee1a5dacdd7ec158
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96447692"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99832447"
 ---
 # <a name="system-requirements-for-azure-stack-edge-pro-with-gpu"></a>带有 GPU Azure Stack Edge Pro 的系统要求 
 
@@ -40,7 +40,7 @@ Azure Stack Edge Pro 的系统要求包括：
 
 设备的 REST 接口支持以下边缘存储帐户。 在设备上创建边缘存储帐户。 有关详细信息，请参阅 [边缘存储帐户](azure-stack-edge-j-series-manage-storage-accounts.md#about-edge-storage-accounts)。
 
-|类型  |存储帐户  |说明  |
+|类型  |存储帐户  |注释  |
 |---------|---------|---------|
 |标准     |GPv1：块 Blob         |         |
 
@@ -50,7 +50,7 @@ Azure Stack Edge Pro 的系统要求包括：
 
 当你连接到本地 Azure 资源管理器时，会通过设备本地 Api 创建这些存储帐户。 支持以下存储帐户：
 
-|类型  |存储帐户  |说明  |
+|类型  |存储帐户  |注释  |
 |---------|---------|---------|
 |标准     |GPv1：块 Blob、页 Blob        | SKU 类型为 Standard_LRS       |
 |高级     |GPv1：块 Blob、页 Blob        | SKU 类型为 Premium_LRS        |
@@ -79,7 +79,7 @@ Azure IoT Edge 允许使用支持的 IoT 中心协议从本地 Edge 设备来与
 
 对托管 Azure IoT Edge 运行时的服务器使用下表中的端口配置：
 
-| 端口号。 | 入或出 | 端口范围 | 必须 | 指南 |
+| 端口号。 | 入或出 | 端口范围 | 必需 | 指南 |
 |----------|-----------|------------|----------|----------|
 | TCP 443 (HTTPS)| 出       | WAN        | 是      | 为 IoT Edge 预配打开此出站端口。 使用手动脚本或 Azure IoT 设备预配服务 (DPS) 时，此配置是必需的。|
 

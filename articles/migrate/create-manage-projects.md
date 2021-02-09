@@ -6,16 +6,18 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 11/23/2020
-ms.openlocfilehash: 750cf0a938fffd4e5bfe25811bb276f7cb1b5583
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 0d4ccc1a60f9ac3c2183023d3d3772da6a1e307b
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98757553"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99830747"
 ---
 # <a name="create-and-manage-azure-migrate-projects"></a>创建和管理 Azure Migrate 项目
 
-本文介绍如何创建、管理和删除 [Azure Migrate](migrate-services-overview.md) 项目。 如果使用的是经典 Azure Migrate 项目，请删除这些项目，然后按照步骤创建新的 Azure Migrate 项目。 不能将经典 Azure Migrate 项目或组件升级到 Azure Migrate。 在开始创建过程之前，请查看 [常见问题解答](https://docs.microsoft.com/azure/migrate/resources-faq#i-have-a-project-with-the-previous-classic-experience-of-azure-migrate-how-do-i-start-using-the-new-version) 。
+本文介绍如何创建、管理和删除 [Azure Migrate](migrate-services-overview.md) 项目。 
+
+经典 Azure Migrate 在2024年2月停用。 2024年2月之后，将不再支持经典版本的 Azure Migrate，并且将删除经典项目中的清单元数据。 如果使用的是经典 Azure Migrate 项目，请删除这些项目，然后按照步骤创建新的 Azure Migrate 项目。 不能将经典 Azure Migrate 项目或组件升级到 Azure Migrate。 在开始创建过程之前，请查看 [常见问题解答](https://docs.microsoft.com/azure/migrate/resources-faq#i-have-a-project-with-the-previous-classic-experience-of-azure-migrate-how-do-i-start-using-the-new-version) 。
 
 Azure Migrate 项目用于存储从正在评估或迁移的环境中收集的发现、评估和迁移元数据。 在项目中，可以跟踪发现的资产，创建评估，并安排迁移到 Azure。  
 
@@ -46,7 +48,7 @@ Azure Migrate 项目用于存储从正在评估或迁移的环境中收集的发
     - 地理位置仅用于存储从本地计算机收集的元数据。 你可以选择任何要迁移的目标区域。 
     - 查看[公有云](migrate-support-matrix.md#supported-geographies-public-cloud)和[政府云](migrate-support-matrix.md#supported-geographies-azure-government)支持的地理位置。
 
-8. 选择“创建”。
+8. 选择“创建”  。
 
    ![页面到输入项目设置](./media/create-manage-projects/project-details.png)
 

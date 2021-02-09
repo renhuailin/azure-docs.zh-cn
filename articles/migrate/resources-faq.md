@@ -6,12 +6,12 @@ ms.author: panshar
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: b36a4089a15118499b0ce57500f221b74af82242
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 6396ca4483f5e9782890123a7c39a0cbcdbd30a3
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96753734"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99832566"
 ---
 # <a name="azure-migrate-common-questions"></a>Azure Migrate：常见问题
 
@@ -33,10 +33,10 @@ Azure Migrate 提供了一个中心，用于跟踪发现、评估和将本地应
 [Azure Migrate](migrate-services-overview.md) 提供了一个集中式中心，用于评估和迁移到 Azure。 
 
 - 借助 Azure Migrate 工具、其他 Azure 服务和第三方工具，可使用 Azure Migrate 提供互操作性和未来的扩展性。
-- Azure Migrate：服务器迁移工具专门用于将服务器迁移到 Azure。 此方法针对迁移进行了优化。 不需要了解与迁移没有直接关联的概念和方案。 
-- 从为 VM 启动复制的 180 天内，不收取迁移的工具使用费用。 这为完成迁移提供了时间。 只需为复制中使用的存储和网络资源以及测试迁移期间使用的计算付费。
-- Azure Migrate 支持 Site Recovery 支持的所有迁移方案。 此外，对于 VMware VM，Azure Migrate 提供无代理迁移选项。
-- 我们仅优先考虑 Azure Migrate：服务器迁移工具的新迁移功能。 这些功能不针对 Site Recovery。
+- Azure Migrate：服务器迁移工具专用于将服务器迁移到 Azure。 此方法针对迁移进行了优化。 不需要了解与迁移没有直接关联的概念和方案。 
+- 从为 VM 启动复制的 180 天内，不收取迁移的工具使用费用。 它为您提供了完成迁移的时间。 只需为复制中使用的存储和网络资源以及测试迁移期间使用的计算付费。
+- Azure Migrate 支持 Site Recovery 支持的所有迁移方案。 此外，对于 VMware Vm，Azure Migrate 提供无代理迁移选项。
+- 我们仅确定 Azure Migrate： Server 迁移工具的新迁移功能的优先级。 这些功能不针对 Site Recovery。
 
 [Azure Site Recovery](../site-recovery/site-recovery-overview.md) 应仅用于灾难恢复。
 
@@ -44,7 +44,7 @@ Azure Migrate：服务器迁移工具使用一些后端 Site Recovery 功能来�
 
 ## <a name="i-have-a-project-with-the-previous-classic-experience-of-azure-migrate-how-do-i-start-using-the-new-version"></a>我有一个项目，该项目具有以前的经典体验 Azure Migrate。 如何实现开始使用新版本吗？
 
-无法将以前版本中的项目或组件升级到新版本。 需要[创建新的 Azure Migrate 项目](create-manage-projects.md)并向其[添加评估和迁移工具](./create-manage-projects.md)。 学习教程，了解如何使用可用的评估和迁移工具。 如果已将 Log Analytics 工作区附加到了经典项目，则可以在删除经典项目后将其附加到当前版本的项目。
+经典 Azure Migrate 在2024年2月停用。 2024年2月之后，将不再支持经典版本的 Azure Migrate，并且将删除经典项目中的清单元数据。 无法将以前版本中的项目或组件升级到新版本。 需要[创建新的 Azure Migrate 项目](create-manage-projects.md)并向其[添加评估和迁移工具](./create-manage-projects.md)。 学习教程，了解如何使用可用的评估和迁移工具。 如果已将 Log Analytics 工作区附加到了经典项目，则可以在删除经典项目后将其附加到当前版本的项目。
 
 ## <a name="whats-the-difference-between-azure-migrate-server-assessment-and-the-map-toolkit"></a>Azure Migrate：服务器评估和地图工具包之间的区别是什么？
 

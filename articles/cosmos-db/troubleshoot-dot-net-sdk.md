@@ -3,18 +3,18 @@ title: 诊断和排查在使用 Azure Cosmos DB .NET SDK 时出现的问题
 description: 通过客户端日志记录等功能及其他第三方工具来识别、诊断和排查在使用 .NET SDK 时出现的 Azure Cosmos DB 问题。
 author: anfeldma-ms
 ms.service: cosmos-db
-ms.date: 09/12/2020
+ms.date: 02/05/2021
 ms.author: anfeldma
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 6a78b38bd71a2822d94e58834ab17824c9ef6ec6
-ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
+ms.openlocfilehash: 04813b9d70557314e619fded5294644f5f6fadf5
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97683107"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99831240"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-net-sdk"></a>诊断和排查在使用 Azure Cosmos DB .NET SDK 时出现的问题
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -54,12 +54,12 @@ ms.locfileid: "97683107"
 ### <a name="check-the-portal-metrics"></a>检查门户指标
 检查[门户指标](./monitor-cosmos-db.md)有助于确定问题是否与客户端相关，或者服务是否有问题。 例如，如果指标中包含较高比率的速率受限请求（HTTP 状态代码 429，表示请求受到限制），请查看[请求速率过大](troubleshoot-request-rate-too-large.md)部分。 
 
-## <a name="retry-logic"></a>重试逻辑 <a id="retry-logics"></a>
-如果 SDK 中的 "重试" 可行，则任何 IO 故障 Cosmos DB SDK 都将尝试重试失败的操作。 对任何失败进行重试是一种很好的做法，但具体来说，处理/重试写入失败是必须的。 建议使用最新的 SDK，因为重试逻辑不断提高。
+## <a name="retry-logic"></a>重试逻辑<a id="retry-logics"></a>
+如果可以在 SDK 中重试，则任何 IO 故障的 Cosmos DB SDK 都将尝试重试失败的操作。 重试任何故障是一种好习惯，特别是处理/重试写入故障必不可少。 由于重试逻辑不断改进，因此建议使用最新的 SDK。
 
-1. 读取和查询 IO 故障将由 SDK 重试，而不会将其呈现给最终用户。
-2. 写入 (Create、Upsert、Replace、Delete) 为 "not" 幂等，因此，SDK 无法始终盲目地重试失败的写入操作。 需要用户的应用程序逻辑来处理失败，然后重试。
-3. [疑难解答 sdk 可用性](troubleshoot-sdk-availability.md) 解释多区域 Cosmos DB 帐户的重试。
+1. SDK 会重试读取和查询 IO 故障，而不会将它们呈现给最终用户。
+2. 写入（创建、更新、替换、删除）不是幂等的，因此，SDK 不能总是盲目地重试失败的写入操作。 要求用户的应用程序逻辑能够处理故障并重试。
+3. [SDK 可用性疑难解答](troubleshoot-sdk-availability.md)说明了多区域 Cosmos DB 帐户的重试。
 
 ## <a name="common-error-status-codes"></a>常见错误状态代码 <a id="error-codes"></a>
 
@@ -67,11 +67,12 @@ ms.locfileid: "97683107"
 |----------|-------------|
 | 400 | 错误请求（取决于错误消息）| 
 | 401 | [未授权](troubleshoot-unauthorized.md) | 
+| 403 | 已禁止 |
 | 404 | [找不到资源](troubleshoot-not-found.md) |
 | 408 | [请求已超时](troubleshoot-dot-net-sdk-request-timeout.md) |
 | 409 | 冲突失败是指为写入操作中的资源提供的 ID 已被现有资源使用。 对资源使用另一个 ID 可解决此问题，因为 ID 在具有相同分区键值的所有文档中必须唯一。 |
 | 410 | 消失异常（不应违反 SLA 的瞬间失败） |
-| 412 | 前提条件失败是操作指定的 eTag 与服务器上提供的版本不同。 这是一个开放式并发错误。 在读取资源的最新版本并更新请求中的 eTag 后重试该请求。
+| 412 | 前提条件失败是操作指定的 eTag 与服务器上提供的版本不同。 这是乐观并发错误。 在读取资源的最新版本并更新请求中的 eTag 后重试该请求。
 | 413 | [请求实体太大](concepts-limits.md#per-item-limits) |
 | 429 | [请求过多](troubleshoot-request-rate-too-large.md) |
 | 449 | 仅在进行写入操作时才发生的暂时性错误，可安全重试 |

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/07/2021
 ms.author: memildin
-ms.openlocfilehash: cc35f9ee25511faec5723b49763cbdae8963e88b
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: a7ad5f661d4eca07deb0942c7684b89ac59931a2
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820749"
+ms.locfileid: "99834385"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>使用自适应应用程序控制来减少计算机的攻击面
 
@@ -44,7 +44,7 @@ ms.locfileid: "99820749"
 - 防止使用组织禁止的特定软件
 - 加强对访问敏感数据的应用的监管
 
-无强制选项可用，无计划。 自适应应用程序控件旨在提供安全警报，前提是任何应用程序都不是您定义为安全的应用程序。
+当前没有任何强制选项可用。 自适应应用程序控件旨在提供安全警报，前提是任何应用程序都不是您定义为安全的应用程序。
 
 ## <a name="availability"></a>可用性
 
@@ -238,7 +238,7 @@ REST API 提供的一些函数：
 ## <a name="faq---adaptive-application-controls"></a>FAQ-自适应应用程序控件
 
 ### <a name="are-there-any-options-to-enforce-the-application-controls"></a>是否有任何用于强制应用程序控件的选项？
-无强制选项可用，无计划。 自适应应用程序控件旨在提供 **安全警报** ，前提是任何应用程序都不是您定义为安全的应用程序。 它们具有一系列优势 ([自适应应用程序控件的好处是什么？](#what-are-the-benefits-of-adaptive-application-controls)) 并且非常可自定义，如本页中所示。
+当前没有任何强制选项可用。 自适应应用程序控件旨在提供 **安全警报** ，前提是任何应用程序都不是您定义为安全的应用程序。 它们具有一系列优势 ([自适应应用程序控件的好处是什么？](#what-are-the-benefits-of-adaptive-application-controls)) 并且非常可自定义，如本页中所示。
 
  
 

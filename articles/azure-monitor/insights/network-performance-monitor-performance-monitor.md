@@ -6,14 +6,17 @@ ms.topic: conceptual
 author: abshamsft
 ms.author: absha
 ms.date: 02/20/2018
-ms.openlocfilehash: 2c20f668c57e8c2e74c320ca535aea18e633daf8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6502d4259aa383c1466967d01282cecfbb8d1ded
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87326114"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99832957"
 ---
 # <a name="network-performance-monitor-solution-performance-monitoring"></a>网络性能监视器解决方案：性能监视
+
+> [!IMPORTANT]
+> 自2021年7月1日起，你将无法在现有工作区中添加新测试，也无法在网络性能监视器中启用新的工作区。 你可以继续使用在2021年7月之前创建的测试。 若要最大程度地减少对当前工作负荷的服务中断，请在2024年2月29日之前将 [测试从网络性能监视器迁移到](https://docs.microsoft.com/azure/network-watcher/migrate-to-connection-monitor-from-network-performance-monitor) Azure 网络观察程序中的新连接监视器。
 
 借助[网络性能监视器](network-performance-monitor.md)中的性能监视器功能可以监视网络中各个位置的网络连接。 可以监视云部署和本地位置、多个数据中心和分支机构、任务关健型多层应用程序或微服务。 使用性能监视器，可以在用户产生抱怨之前检测到网络问题。 主要优势包括： 
 
@@ -65,7 +68,7 @@ ms.locfileid: "87326114"
 6. 选择监视条件。 若要针对运行状况事件生成设置自定义阈值，请输入阈值。 只要条件值超出其针对所选网络或子网对选择的阈值，就会生成运行状况事件。 
 7. 选择“保存”  以保存配置。 
 
-保存监视规则后，可以选择“创建警报”，将该规则与警报管理集成。  系统将使用搜索查询自动创建警报规则。 其他所需参数会自动填入。 使用警报规则可以收到基于电子邮件的警报，以及网络性能监视器中的现有警报。 警报还能配合 Runbook 触发补救措施，或者，可以使用 Webhook 将警报与现有服务管理解决方案集成。 选择“管理警报”以编辑警报设置。  
+保存监视规则后，可以选择“创建警报”，将该规则与警报管理集成。  系统将使用搜索查询自动创建警报规则。 其他所需参数会自动填入。 使用警报规则可以收到基于电子邮件的警报，以及网络性能监视器中的现有警报。 警报还可以使用 runbook 触发补救措施，也可以使用 webhook 与现有服务管理解决方案集成。 选择“管理警报”以编辑警报设置。  
 
 现在可以创建多个性能监视器规则或移动到解决方案仪表板来开始使用此功能。
 
@@ -129,4 +132,3 @@ ms.locfileid: "87326114"
 
 ## <a name="next-steps"></a>后续步骤
 [搜索日志](../log-query/log-query-overview.md)以查看详细的网络性能数据记录。
-

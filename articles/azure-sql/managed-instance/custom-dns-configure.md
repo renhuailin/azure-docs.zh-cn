@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova
 ms.date: 07/17/2019
-ms.openlocfilehash: 017698975706aa8501cd059351cf9a9d88594f77
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: a54907dd3f7b3fbc06033624f14b12de14d9afb9
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92779894"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99831495"
 ---
 # <a name="configure-a-custom-dns-for-azure-sql-managed-instance"></a>为 Azure SQL 托管实例配置自定义 DNS
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -30,7 +30,7 @@ Azure SQL 托管实例必须部署在 Azure [虚拟网络 (VNet)](../../virtual-
 > 始终对邮件服务器、SQL Server 实例和其他服务使用完全限定的域名 (FQDN)，即使它们位于专用 DNS 区域内也是如此。 例如，请对邮件服务器使用 `smtp.contoso.com`，因为 `smtp` 无法正确解析。 创建引用同一虚拟网络中的 SQL Server VM 的链接服务器或复制也需要 FQDN 和默认 DNS 后缀。 例如，`SQLVM.internal.cloudapp.net`。 有关详细信息，请参阅[使用自己的 DNS 服务器的名称解析](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)。
 
 > [!IMPORTANT]
-> 更新虚拟网络 DNS 服务器不会立即影响 SQL 托管实例。 SQL 托管实例 DNS 配置会在 DHCP 租约到期后或平台升级后进行更新，具体取决于哪一项先发生。 建议用户在创建第一个托管实例之前，先设置其虚拟网络 DNS 配置。
+> 更新虚拟网络 DNS 服务器不会立即影响 SQL 托管实例。 有关更多详细信息，请参阅 [如何在 SQL 托管实例虚拟群集上同步虚拟网络 DNS 服务器设置](synchronize-vnet-dns-servers-setting-on-virtual-cluster.md) 。
 
 ## <a name="next-steps"></a>后续步骤
 

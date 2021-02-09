@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
-ms.openlocfilehash: 2ff97dd30d9b993385f52ea531653a89197f8756
-ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
+ms.openlocfilehash: c13821544ff9725a387534370fc716c70072bb85
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97734617"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99831767"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>如何配置 Azure Redis 缓存
 本主题介绍可用于 Azure Redis 缓存实例的配置。 本主题还介绍了适用于 Azure Redis 缓存实例的默认 Redis 服务器配置。
@@ -236,10 +236,7 @@ Redis 密钥空间通知是在“高级设置”  边栏选项卡上配置的。
 
 如果要指定维护时段，请勾选合适的日期，并指定每天的维护时段开始时间，最后再单击“确定”  。 维护时段使用 UTC 时间。
 
-> [!IMPORTANT]
-> “计划更新”  功能仅适用于高级层缓存。 有关详细信息和说明，请参阅 [Azure Redis 缓存管理 - 计划更新](cache-administration.md#schedule-updates)。
->
->
+有关详细信息和说明，请参阅 [用于 Redis 的 Azure 缓存管理-计划更新](cache-administration.md#schedule-updates)
 
 ### <a name="geo-replication"></a>异地复制
 

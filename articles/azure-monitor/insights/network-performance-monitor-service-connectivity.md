@@ -6,21 +6,24 @@ ms.topic: conceptual
 author: abshamsft
 ms.author: absha
 ms.date: 02/20/2018
-ms.openlocfilehash: 18c07266cec68aaf6e95fe4085b9d21244fecff4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5d7c7068c4a8669cdff782267030d38ac0f73584
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761033"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99832923"
 ---
 # <a name="service-connectivity-monitor"></a>服务连接监视器
+
+> [!IMPORTANT]
+> 自2021年7月1日起，你将无法在现有工作区中添加新测试，也无法在网络性能监视器中启用新的工作区。 你可以继续使用在2021年7月之前创建的测试。 若要最大程度地减少对当前工作负荷的服务中断，请在2024年2月29日之前将 [测试从网络性能监视器迁移到](https://docs.microsoft.com/azure/network-watcher/migrate-to-connection-monitor-from-network-performance-monitor) Azure 网络观察程序中的新连接监视器。
 
 可以使用[网络性能监视器](network-performance-monitor.md)中的服务连接监视器功能，监视与 TCP 端口打开的任何终结点之间的网络连接。 此类终结点包括网站、SaaS 应用程序、PaaS 应用程序和 SQL 数据库。 
 
 可以使用服务连接监视器实现以下功能： 
 
 - 监视从多个分支机构或位置到应用程序和网络服务的网络连接。 应用程序和网络服务包括 Microsoft 365、Dynamics CRM、内部业务线应用程序和 SQL 数据库。
-- 使用内置测试来监视与 Microsoft 365 和 Dynamics 365 终结点之间的网络连接。 
+- 使用内置测试来监视与 Microsoft 365 和 Dynamics 365 终结点建立的网络连接。 
 - 确定在连接到终结点时经历的响应时间、网络延迟和数据包丢失情况。
 - 确定应用程序性能差是由于网络问题，还是由于应用程序提供商一端出现某种问题。
 - 通过查看拓扑图中每个跃点造成的延迟，来查明网络中可能导致应用程序性能差的热点。
@@ -99,7 +102,7 @@ netsh advfirewall firewall add rule name="NPMDICMPV6TimeExceeded" protocol="icmp
 
 确定问题是由于网络导致的后，可以在拓扑图上选择“拓扑”视图链接来查明有问题的跃点。  下图中显示了一个示例。 节点与应用程序终结点之间的总延迟为 105 毫秒，其中，96 毫秒的延迟是带有红色标记的跃点造成的。 查明有问题的跃点后，可以采取纠正措施。 
 
-![服务连接监视器终结点拓扑](media/network-performance-monitor-service-endpoint/service-endpoint-topology.png)
+![“服务连接监视器”终结点拓扑](media/network-performance-monitor-service-endpoint/service-endpoint-topology.png)
 
 ## <a name="diagnostics"></a>诊断 
 
@@ -134,4 +137,3 @@ netsh advfirewall firewall add rule name="NPMDICMPV6TimeExceeded" protocol="icmp
 
 ## <a name="next-steps"></a>后续步骤
 [搜索日志](../log-query/log-query-overview.md)以查看详细的网络性能数据记录。
-

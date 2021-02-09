@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 11/18/2020
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: dc8044ee72689634a1d4ce3e0e8b1a499404c5ce
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 0fcea6a44f5379ff3da5b348ae45486be6c2516a
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99560307"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99831308"
 ---
 # <a name="use-workspace-behind-a-firewall-for-azure-machine-learning"></a>将防火墙后的工作区用于 Azure 机器学习
 
@@ -123,6 +123,7 @@ ms.locfileid: "99560307"
 | ----- | ----- | ----- | ----- |
 | Azure Active Directory | login.microsoftonline.com | login.microsoftonline.us | login.chinacloudapi.cn |
 | Azure 门户 | management.azure.com | management.azure.us | management.azure.cn |
+| Azure 资源管理器 | management.azure.com | management.usgovcloudapi.net | management.chinacloudapi.cn |
 
 **Azure 机器学习主机**
 
@@ -146,7 +147,7 @@ ms.locfileid: "99560307"
 | **要求** | **Azure 公共** | **Azure Government** | **Azure 中国世纪互联** |
 | ----- | ----- | ----- | ----- |
 | 计算群集/实例 | \*.batchai.core.windows.net | \*.batchai.core.usgovcloudapi.net |\*.batchai.ml.azure.cn |
-| 计算群集/实例 | graph.windows.net |  |  |
+| 计算群集/实例 | graph.windows.net | graph.windows.net | graph.chinacloudapi.cn |
 | 计算实例 | \*.instances.azureml.net | \*.instances.azureml.us | \*.instances.azureml.cn |
 | 计算实例 | \*.instances.azureml.ms |  |  |
 

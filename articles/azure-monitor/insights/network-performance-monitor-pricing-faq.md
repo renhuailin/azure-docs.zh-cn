@@ -6,14 +6,17 @@ ms.topic: conceptual
 author: agummadi
 ms.author: agummadi
 ms.date: 04/02/2018
-ms.openlocfilehash: f44afd84c58c94c6a8d3e6145e8a4f66e0e2e782
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4b9e8a81095a63c667925f8b51d9f9f2aa081f8d
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86539646"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99832872"
 ---
 # <a name="pricing-changes-for-azure-network-performance-monitor"></a>Azure 网络性能监视器的定价变化
+
+> [!IMPORTANT]
+> 自2021年7月1日起，你将无法在现有工作区中添加新测试，也无法在网络性能监视器中启用新的工作区。 你可以继续使用在2021年7月之前创建的测试。 若要最大程度地减少对当前工作负荷的服务中断，请在2024年2月29日之前将 [测试从网络性能监视器迁移到](https://docs.microsoft.com/azure/network-watcher/migrate-to-connection-monitor-from-network-performance-monitor) Azure 网络观察程序中的新连接监视器。
 
 我们听取了客户的反馈，最近已针对 Azure 中的各种监视服务推出了[新的定价体验](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/)。 本文以易于阅读的“问答”形式，汇总了与 Azure [网络性能监视器](../../networking/network-monitoring-overview.md) (NPM) 相关的定价变化。
 

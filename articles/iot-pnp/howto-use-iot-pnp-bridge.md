@@ -7,12 +7,12 @@ ms.date: 12/11/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: bf730dbc28d15c3d036e9ebeedbe035db087c5d8
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 9bcf256b6144702254bbff4a57e5ff402abaa962
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97673014"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99834096"
 ---
 # <a name="how-to-connect-an--iot-plug-and-play-bridge-sample-running-on-linux-or-windows-to-iot-hub"></a>如何将在 Linux 或 Windows 上运行的 IoT 即插即用 bridge 示例连接到 IoT 中心
 
@@ -44,7 +44,7 @@ az iot hub device-identity show-connection-string --hub-name <YourIoTHubName> --
 
 ## <a name="download-and-run-the-bridge"></a>下载并运行桥接
 
-本文介绍了两个运行桥的选项。 方法：
+本文介绍了两个运行桥的选项。 可以执行以下操作：
 
 - 下载预生成的可执行文件，并按本部分中所述运行该可执行文件。
 - 下载源代码，然后 [生成并运行桥](#build-and-run-the-bridge) ，如以下部分所述。
@@ -279,6 +279,8 @@ cd iot-plug-and-play-bridge/pnpbridge/cmake/pnpbridge_x86/src/pnpbridge/samples/
 桥启动后，使用 Azure IoT 资源管理器工具验证它是否正常工作。 您可以查看模型中定义的遥测、属性和命令 `dtmi:com:example:PnpBridgeEnvironmentalSensor;1` 。
 
 [!INCLUDE [iot-pnp-iot-explorer.md](../../includes/iot-pnp-iot-explorer.md)]
+
+## <a name="clean-up-resources"></a>清理资源
 
 [!INCLUDE [iot-pnp-clean-resources.md](../../includes/iot-pnp-clean-resources.md)]
 
