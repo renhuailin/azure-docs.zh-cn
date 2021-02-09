@@ -3,17 +3,17 @@ title: 管理 Confluent 云-Azure 合作伙伴解决方案
 description: 本文介绍 Azure 门户上的 Confluent 云的管理。 如何设置单一登录、删除 Confluent 组织并获得支持。
 ms.service: partner-services
 ms.topic: conceptual
-ms.date: 01/15/2021
+ms.date: 02/08/2021
 author: tfitzmac
 ms.author: tomfitz
-ms.openlocfilehash: 2d13c183f0b3891fa92b5e2a6534acbf8102e032
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: f8a54096ecda4729f7070120a02be3055f933cea
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98253348"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99989102"
 ---
-# <a name="manage-the-confluent-cloud-resource"></a>管理 Confluent 云资源
+# <a name="manage-the-confluent-cloud-resource"></a>管理 Confluent Cloud 资源
 
 本文介绍如何在 Azure 上管理 Confluent 云的 Apache Kafka 实例。 它演示如何设置单一登录 (SSO) ，删除 Confluent 组织，并创建支持请求。
 
@@ -66,13 +66,23 @@ ms.locfileid: "98253348"
 > [!NOTE]
 > 用户首次登录到 Confluent 支持门户之前，请重置密码。 如果你没有使用 Confluent 云的帐户，请向发送电子邮件以 `cloud-support@confluent.io` 获取进一步的帮助。
 
+在门户中，可以通过 Azure 帮助和支持提交请求，或直接从 Azure 上的 Confluent 的 Apache Kafka 实例中提交请求。
+
+通过 Azure 帮助和支持提交请求：
+
+1. 选择“帮助 + 支持”。
+1. 选择 " **创建支持请求**"。
+1. 在窗体中，选择 " **技术** " 作为 " **问题类型**"。 选择订阅。 在服务列表中，选择 **"Azure 上的 Confluent"**。
+
+    :::image type="content" source="media/support-request-help.png" alt-text="通过 &quot;帮助&quot; 创建支持请求。":::
+
 若要从资源提交请求，请执行以下步骤：
 
 1. 在 Azure 门户中，选择 Confluent 组织。
 1. 在屏幕左侧的菜单中，选择 " **新建支持请求**"。
 1. 若要创建支持请求，请选择指向 **Confluent 门户** 的链接。
 
-    :::image type="content" source="media/support-request.png" alt-text="创建支持请求。":::
+    :::image type="content" source="media/support-request.png" alt-text="创建实例的支持请求。":::
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: '使用 GitOps 配置启用了 Azure Arc 的 Kubernetes 群集 (预览) '
 keywords: GitOps、Kubernetes、K8s、Azure、Arc、Azure Kubernetes 服务、AKS、容器
-ms.openlocfilehash: a068ed90ea53b3b25a1f41cebd9a5b8e607afa54
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 72dc42fffb3653de81477fa504c11b9b0328d2eb
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737178"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988703"
 ---
 # <a name="deploy-configurations-using-gitops-on-arc-enabled-kubernetes-cluster-preview"></a>在已启用 Arc 的 Kubernetes 群集上使用 GitOps 部署配置（预览版）
 
@@ -97,7 +97,7 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 
 #### <a name="use-a-private-git-repo-with-ssh-and-flux-created-keys"></a>使用带有 SSH 和 Flux 密钥的专用 Git 存储库
 
-| 参数 | 格式 | 注意
+| 参数 | 格式 | 注释
 | ------------- | ------------- | ------------- |
 | --存储库-url | ssh://user@server/repo[git] 或 user@server:repo [git] | `git@` 可能替换为 `user@`
 
@@ -106,7 +106,7 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 
 #### <a name="use-a-private-git-repo-with-ssh-and-user-provided-keys"></a>使用带有 SSH 和用户提供的密钥的专用 Git 存储库
 
-| 参数 | 格式 | 注意 |
+| 参数 | 格式 | 注释 |
 | ------------- | ------------- | ------------- |
 | --存储库-url  | ssh://user@server/repo[git] 或 user@server:repo [git] | `git@` 可能替换为 `user@` |
 | --ssh-私钥 | [PEM 格式](https://aka.ms/PEMformat)的 base64 编码的密钥 | 直接提供密钥 |
@@ -117,7 +117,7 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 
 #### <a name="use-a-private-git-host-with-ssh-and-user-provided-known-hosts"></a>使用带有 SSH 和用户提供的已知主机的专用 Git 主机
 
-| 参数 | 格式 | 注意 |
+| 参数 | 格式 | 注释 |
 | ------------- | ------------- | ------------- |
 | --存储库-url  | ssh://user@server/repo[git] 或 user@server:repo [git] | `git@` 可能替换为 `user@` |
 | --基于 ssh 的主机 | base64 编码 | 直接提供的已知主机内容 |
@@ -129,7 +129,7 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 
 #### <a name="use-a-private-git-repo-with-https"></a>使用具有 HTTPS 的专用 Git 存储库
 
-| 参数 | 格式 | 注意 |
+| 参数 | 格式 | 注释 |
 | ------------- | ------------- | ------------- |
 | --存储库-url | https://server/repo[git] | HTTPS 与基本身份验证 |
 | --https-用户 | raw 或 base64 编码 | HTTPS 用户名 |
@@ -148,17 +148,17 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 
 `--helm-operator-params`：Helm 运算符（若已启用）的可选图表值。  例如“--set helm.versions=v3”。
 
-`--helm-operator-chart-version`：Helm 运算符（若已启用）的可选图表版本。 默认值： "1.2.0"。
+`--helm-operator-version`：Helm 运算符（若已启用）的可选图表版本。 使用 "1.2.0" 或更高版本。 默认值： "1.2.0"。
 
 `--operator-namespace`：运算符命名空间的可选名称。 默认值： "default"。 最多23个字符。
 
-`--operator-params`：运算符的可选参数。 必须用单引号括起来。 例如： ```--operator-params='--git-readonly --git-path=releases --sync-garbage-collection' ```
+`--operator-params`：运算符的可选参数。 必须用单引号括起来。 例如： ```--operator-params='--git-readonly --sync-garbage-collection --git-branch=main' ```
 
 --operator-params 中支持的选项
 
 | 选项 | 说明 |
 | ------------- | ------------- |
-| --git-branch  | 用于 Kubernetes 清单的 Git 存储库的分支。 默认为“master”。 |
+| --git-branch  | 用于 Kubernetes 清单的 Git 存储库的分支。 默认为“master”。 较新的存储库具有名为 "main" 的根分支，在这种情况下，需要设置--git-branch = main。 |
 | --git-path  | Git 存储库中供 Flux 查找 Kubernetes 清单的相对路径。 |
 | --git-readonly | Git 存储库将被视为只读；Flux 不会尝试向其写入。 |
 | --manifest-generation  | 如果启用，Flux 将查找 .flux.yaml 并运行 Kustomize 或其他清单生成器。 |
@@ -226,16 +226,13 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 }
 ```
 
-创建 `sourceControlConfiguration` 时，后台将发生以下情况：
+当 `sourceControlConfiguration` 创建或更新时，可能会出现以下情况：
 
-1. Azure Arc `config-agent` 监视 Azure 资源管理器，查看是否存在新配置或更新的配置 (`Microsoft.KubernetesConfiguration/sourceControlConfigurations`)
-1. `config-agent` 通知新的 `Pending` 配置
-1. `config-agent` 读取配置属性并准备部署 `flux` 的托管实例
-    * `config-agent` 创建目标命名空间
-    * `config-agent` 准备具有适当权限（`cluster` 或 `namespace` 作用域）的 Kubernetes 服务帐户
-    * `config-agent` 部署 `flux` 的一个实例
-    * `flux` 如果将 SSH 选项与 Flux 生成的密钥结合使用，则将生成 SSH 密钥并记录公钥 () 
-1. `config-agent` 将状态报告回 `sourceControlConfiguration` Azure 中的资源
+1. Azure Arc `config-agent` 监视 azure 资源管理器 () 的新的或更新的配置 `Microsoft.KubernetesConfiguration/sourceControlConfigurations` ，并通知新的 `Pending` 配置。
+1. `config-agent`读取配置属性并创建目标命名空间。
+1. Azure Arc `controller-manager` 准备 Kubernetes 服务帐户，该帐户具有相应的权限 (`cluster` 或 `namespace` 范围) ，然后部署的实例 `flux` 。
+1. 如果将 SSH 选项与 Flux 生成的密钥一起使用，将 `flux` 生成 ssh 密钥并记录公钥。
+1. `config-agent`报表状态返回到 `sourceControlConfiguration` Azure 中的资源。
 
 在预配过程中，`sourceControlConfiguration` 会经历几次状态更改。 使用上面的 `az k8sconfiguration show ...` 命令监视进度：
 

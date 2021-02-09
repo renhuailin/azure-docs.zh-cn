@@ -5,12 +5,12 @@ description: 本文介绍可用于 Azure HDInsight 群集上静态数据的两�
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/10/2020
-ms.openlocfilehash: c9e50885a7283d3f7fcd231bf222415389212a93
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 58b3d892ea24430a9d951a5a0230282f6c4fd584
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98927329"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988623"
 ---
 # <a name="azure-hdinsight-double-encryption-for-data-at-rest"></a>Azure HDInsight 静态数据双重加密
 
@@ -116,7 +116,7 @@ HDInsight 仅支持 Azure Key Vault。 如果拥有自己的密钥保管库，�
 
 现在已准备好新建 HDInsight 群集。 客户管理的密钥只能在群集创建期间应用于新群集。 无法从客户管理的密钥群集中删除加密，无法将客户管理的密钥添加到现有群集。
 
-从 [2020 年 11 月版本](hdinsight-release-notes.md#release-date-11182020)开始，HDInsight 支持使用版本控制和不限版本的密钥 URI 创建群集。 如果使用不限版本的密钥 URI 创建群集，则在 Azure Key Vault 中的密钥更新时，HDInsight 群集将尝试执行密钥自动轮替。 如果使用版本控制的密钥 URI 创建群集，则必须执行手动密钥轮替，如[轮换加密密钥](#rotating-the-encryption-key)中所述。
+从 2020 年 11 月版本开始，HDInsight 支持使用版本控制和不限版本的密钥 URI 创建群集。 如果使用不限版本的密钥 URI 创建群集，则在 Azure Key Vault 中的密钥更新时，HDInsight 群集将尝试执行密钥自动轮替。 如果使用版本控制的密钥 URI 创建群集，则必须执行手动密钥轮替，如[轮换加密密钥](#rotating-the-encryption-key)中所述。
 
 对于在 2020 年 11 月版本之前创建的群集，必须使用版本控制的密钥 URI 手动执行密钥轮替。
 

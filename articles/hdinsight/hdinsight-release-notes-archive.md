@@ -4,19 +4,47 @@ description: Azure HDInsight 的已存档发行说明。 获取 Hadoop、Spark�
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 10/07/2020
-ms.openlocfilehash: 8e6f27c378a6cea8fffbdcda58c4fc3bb865e51e
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.date: 02/08/2021
+ms.openlocfilehash: 902b13c947cb005189e23dee943867100809564e
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98932160"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988548"
 ---
 # <a name="archived-release-notes"></a>已存档的发行说明
 
 ## <a name="summary"></a>摘要
 
 Azure HDInsight 是 Azure 中最受企业客户青睐的开源 Apache Hadoop 和 Apache Spark 分析服务之一。
+
+## <a name="release-date-11182020"></a>发行日期：2020/11/18
+
+此版本适用于 HDInsight 3.6 和 HDInsight 4.0。 HDInsight 发行版在几天后即会在所有区域中推出。 此处的发行日期是指在第一个区域中的发行日期。 如果看不到以下更改，请耐心等待，几天后发行版会在你所在的区域推出。
+
+### <a name="new-features"></a>新增功能
+#### <a name="auto-key-rotation-for-customer-managed-key-encryption-at-rest"></a>为客户管理的密钥静态加密自动轮替密钥
+从此发行版开始，客户可使用不限 Azure KeyValut 版本的加密密钥 URL 来管理客户管理的密钥静态加密。 密钥过期时，HDInsight 会自动轮替密钥，或将其替换为新的版本。 请访问[此处](./disk-encryption.md)了解更多详细信息。
+
+#### <a name="ability-to-select-different-zookeeper-virtual-machine-sizes-for-spark-hadoop-and-ml-services"></a>能够为 Spark、Hadoop 和 ML 服务选择不同的 Zookeeper 虚拟机大小
+HDInsight 之前不支持为 Spark、Hadoop 和 ML 服务群集类型自定义 Zookeeper 节点大小。 默认情况下为 A2_v2/A2 虚拟机大小（免费提供）。 从此版本开始，你可以选择最适合自己方案的 Zookeeper 虚拟机大小。 虚拟机大小不是 A2_v2/A2 的 Zookeeper 节点需要付费。 A2_v2 和 A2 虚拟机仍免费提供。
+
+#### <a name="moving-to-azure-virtual-machine-scale-sets"></a>迁移到 Azure 虚拟机规模集
+HDInsight 目前使用 Azure 虚拟机来预配群集。 从此版本开始，该服务将逐渐迁移到 [Azure 虚拟机规模集](../virtual-machine-scale-sets/overview.md)。 整个过程可能需要几个月。 迁移区域和订阅后，新创建的 HDInsight 群集将在虚拟机规模集上运行，而无需客户执行任何操作。 预计不会有中断性变更。
+
+### <a name="deprecation"></a>弃用
+#### <a name="deprecation-of-hdinsight-36-ml-services-cluster"></a>弃用 HDInsight 3.6 ML 服务群集
+HDInsight 3.6 ML 服务群集类型将于 2020 年 12 月 31 日终止支持。 2020 年 12 月 31 日之后，客户将不能创建新的 3.6 ML 服务群集。 现有群集将在没有 Microsoft 支持的情况下按原样运行。 请在[此处](./hdinsight-component-versioning.md#available-versions)检查 HDInsight 版本的有效期限和群集类型。
+
+#### <a name="disabled-vm-sizes"></a>禁用的 VM 大小
+自 2020 年 11 月 16 日起，HDInsight 将阻止新客户使用 standand_A8、standand_A9、standand_A10 和 standand_A11 VM 大小创建群集。 过去三个月内使用过这些 VM 大小的现有客户将不会受到影响。 自 2021 年 1 月 9 日起，HDInsight 将阻止所有客户使用 standand_A8、standand_A9、standand_A10 和 standand_A11 VM 大小创建群集。 现有群集将照常运行。 请考虑迁移到 HDInsight 4.0，避免出现潜在的系统/支持中断。
+
+### <a name="behavior-changes"></a>行为更改
+#### <a name="add-nsg-rule-checking-before-scaling-operation"></a>添加在缩放操作前进行的 NSG 规则检查
+HDInsight 为缩放操作添加了网络安全组 (NSG) 和用户定义的路由 (UDR) 检查。 除了群集创建外，还会对群集缩放执行相同的验证。 此验证有助于防止不可预知的错误。 如果验证未通过，则缩放会失败。 若要详细了解如何正确配置 NSG 和 UDR，请参阅 [HDInsight 管理 IP 地址](./hdinsight-management-ip-addresses.md)。
+
+### <a name="component-version-change"></a>组件版本更改
+此发行版未发生组件版本更改。 可以在[此文档](./hdinsight-component-versioning.md)中查找 HDInsight 4.0 和 HDInsight 3.6 的当前组件版本。
 
 ## <a name="release-date-11092020"></a>发行日期：2020/11/09
 
@@ -595,11 +623,11 @@ Apache Storm 和机器学习服务在 HDInsight 4.0 中不可用。
 
     b.  [**Apache Kafka 1.0 中的新增功能**](https://kafka.apache.org/downloads#1.0.0)
 
-*  ***将 R Server 9.1 更新到机器学习服务 9.3** _ –在此版本中，我们将向数据科学家和工程师提供最优秀的开源，其中包含算法创新和易用性，并以 Apache Spark 的速度提供其首选语言。 此版本扩展了 R Server 的功能，添加了对 Python 的支持，群集名称因而从 R Server 更改为 ML Services。 
+*  ***更新 R Server 9.1 到机器学习服务 9.3*** –在此版本中，我们将向数据科学家和工程师提供最优秀的开源，其中包含算法创新和易用性，并以 Apache Spark 的速度提供其首选语言。 此版本扩展了 R Server 的功能，添加了对 Python 的支持，群集名称因而从 R Server 更改为 ML Services。 
 
-_  ***支持 Azure Data Lake Storage Gen2** _ - HDInsight 将支持 Azure Data Lake Storage Gen2 的预览版本。 在可用区域中，客户可以选择将 ADLS Gen2 帐户作为 HDInsight 群集的主要存储或辅助存储。
+*  ***支持 Azure Data Lake Storage Gen2*** - HDInsight 将支持 Azure Data Lake Storage Gen2 的预览版本。 在可用区域中，客户可以选择将 ADLS Gen2 帐户作为 HDInsight 群集的主要存储或辅助存储。
 
-_  ***HDInsight 企业安全性套餐更新（预览版）** _ -（预览版）[虚拟网络服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)支持 Azure Blob 存储、ADLS Gen1、Cosmos DB 和 Azure DB。
+*  ***HDInsight 企业安全性套餐更新（预览版）*** -（预览版）[虚拟网络服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)支持 Azure Blob 存储、ADLS Gen1、Cosmos DB 和 Azure DB。
 
 ### <a name="component-versions"></a>组件版本
 
@@ -797,7 +825,7 @@ HDP 2.6.4 提供 Hadoop Common 2.7.3 和以下 Apache 修补程序：
 
 除以下修补程序以外，此版本还提供 Hive 1.2.1 和 Hive 2.1.0：
 
-_Hive 1.2.1 Apache 修补程序：*
+**Hive 1.2.1 Apache 修补程序：**
 
 -   [*HIVE-10697*](https://issues.apache.org/jira/browse/HIVE-10697)：ObjectInspectorConvertors\#UnionConvertor 执行错误的转换。
 

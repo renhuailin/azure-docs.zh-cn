@@ -2,13 +2,13 @@
 title: 部署流量管理器以平衡 Azure VMware 解决方案工作负荷
 description: 了解如何将流量管理器与 Azure VMware 解决方案集成，以在不同区域中跨多个终结点平衡应用程序工作负载。
 ms.topic: how-to
-ms.date: 12/29/2020
-ms.openlocfilehash: 6dbd58f17e29b045bd654bee90b6390f608803ab
-ms.sourcegitcommit: 31d242b611a2887e0af1fc501a7d808c933a6bf6
+ms.date: 02/08/2021
+ms.openlocfilehash: 46570c5a61fc0a641d83126fd0f8ef35b3dc42cc
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97809728"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988596"
 ---
 # <a name="deploy-traffic-manager-to-balance-azure-vmware-solution-workloads"></a>部署流量管理器以平衡 Azure VMware 解决方案工作负荷
 
@@ -130,9 +130,9 @@ ms.locfileid: "97809728"
 
 ## <a name="next-steps"></a>后续步骤
 
-了解有关以下方面的详细信息：
+现在，你已介绍了如何将 Azure 流量管理器与 Azure VMware 解决方案集成，你可能想要了解：
 
-- [使用 Azure VMware 解决方案上的 Azure 应用程序网关](protect-azure-vmware-solution-with-application-gateway.md)
-- [流量管理器路由方法](../traffic-manager/traffic-manager-routing-methods.md)
-- [在 Azure 中组合负载平衡服务](../traffic-manager/traffic-manager-load-balancing-azure.md)
-- [测量流量管理器性能](../traffic-manager/traffic-manager-performance-considerations.md)
+- [使用 Azure VMware 解决方案上的 Azure 应用程序网关](protect-azure-vmware-solution-with-application-gateway.md)。
+- [流量管理器路由方法](../traffic-manager/traffic-manager-routing-methods.md)。
+- [结合 Azure 中的负载均衡服务](../traffic-manager/traffic-manager-load-balancing-azure.md)。
+- [测量流量管理器性能](../traffic-manager/traffic-manager-performance-considerations.md)。

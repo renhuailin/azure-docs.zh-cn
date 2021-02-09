@@ -8,12 +8,13 @@ ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/03/2021
-ms.openlocfilehash: 266538a7aff11bff0b6dc5c2d2b6a7a3d25c18ab
-ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
+ms.custom: contperf-fy21q3
+ms.openlocfilehash: 74813fabec4d5fe43cd158bb4aa359c2a3b0188a
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99474975"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988716"
 ---
 # <a name="how-to-configure-blob-indexing-in-cognitive-search"></a>如何在认知搜索中配置 blob 索引
 
@@ -199,9 +200,9 @@ api-key: [admin key]
 
   + **metadata_storage_name** (`Edm.String`) -blob 的文件名。 例如，对于 Blob /my-container/my-folder/subfolder/resume.pdf 而言，此字段的值是 `resume.pdf`。
 
-  + **metadata_storage_path** (`Edm.String`) -BLOB 的完整 URI，包括存储帐户。 例如，`https://myaccount.blob.core.windows.net/my-container/my-folder/subfolder/resume.pdf`
+  + **metadata_storage_path** (`Edm.String`) -BLOB 的完整 URI，包括存储帐户。 例如 `https://myaccount.blob.core.windows.net/my-container/my-folder/subfolder/resume.pdf`
 
-  + **metadata_storage_content_type** (`Edm.String`) -内容类型，由用于上传 blob 的代码指定。 例如，`application/octet-stream` 。
+  + **metadata_storage_content_type** (`Edm.String`) -内容类型，由用于上传 blob 的代码指定。 例如，`application/octet-stream`。
 
   + **metadata_storage_last_modified** (`Edm.DateTimeOffset`) -上次修改 blob 的时间戳。 Azure 认知搜索使用此时间戳来识别已更改的 Blob，避免在初次编制索引之后再次为所有内容编制索引。
 

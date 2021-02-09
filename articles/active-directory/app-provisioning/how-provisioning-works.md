@@ -12,12 +12,12 @@ ms.date: 11/04/2020
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 1f4466dea35fe3d52f86386f0bf0cc0c3b6a658f
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 048adee21d5c2e49ef02f518002a1dc6025c1ecd
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99256333"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988975"
 ---
 # <a name="how-provisioning-works"></a>预配工作原理
 
@@ -43,7 +43,7 @@ Azure AD 预配服务使用 [SCIM 2.0 协议](https://techcommunity.microsoft.co
 
 ## <a name="authorization"></a>授权
 
-Azure AD 需要凭据才能连接到应用程序的用户管理 API。 在为应用程序配置自动用户预配时，需要输入有效凭据。 对于库应用程序，可以通过参考应用教程来查找应用程序的凭据类型和要求。 对于非库应用程序，可以参考 [SCIM](./use-scim-to-provision-users-and-groups.md#authorization-for-provisioning-connectors-in-the-application-gallery) 文档来了解凭据类型和要求。 在 Azure 门户中，你将能够让 Azure AD 尝试使用提供的凭据连接到该应用的预配应用来测试凭据。
+Azure AD 需要凭据才能连接到应用程序的用户管理 API。 在为应用程序配置自动用户预配时，需要输入有效凭据。 对于库应用程序，可以通过参考应用教程来查找应用程序的凭据类型和要求。 对于非库应用程序，可以参考 [SCIM](./use-scim-to-provision-users-and-groups.md#authorization-to-provisioning-connectors-in-the-application-gallery) 文档来了解凭据类型和要求。 在 Azure 门户中，你将能够让 Azure AD 尝试使用提供的凭据连接到该应用的预配应用来测试凭据。
 
 ## <a name="mapping-attributes"></a>映射属性
 
@@ -198,7 +198,7 @@ Azure AD [预配日志（预览）](../reports-monitoring/concept-provisioning-l
 
 如果在属性映射中看到属性 IsSoftDeleted，则该属性用于确定用户的状态以及是否发送 active = false 的更新请求以软删除用户。
 
-**已知限制**
+**已知的限制**
 
 * 如果先前由预配服务管理的用户未从应用中分配或从分配到应用的组中取消分配，我们将发送禁用请求。 此时，该用户不受服务管理，将不会在从目录中删除时发送删除请求。
 * 不支持在 Azure AD 中预配已禁用的用户。 它们必须在设置之前处于 Azure AD 状态。

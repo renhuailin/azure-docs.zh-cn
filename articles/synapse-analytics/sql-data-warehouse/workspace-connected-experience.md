@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/23/2020
 ms.author: anvang
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5efb1df378df323585bc0ca1094451cdb095fe4e
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: d477693667c8d78687d27b291d2b3c15612a0f30
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499775"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99989045"
 ---
 # <a name="enabling-synapse-workspace-features-on-an-existing-dedicated-sql-pool-formerly-sql-dw"></a> (以前的 SQL DW) 启用现有专用 SQL 池上的 Synapse 工作区功能
 
@@ -31,8 +31,8 @@ ms.locfileid: "96499775"
 使用专用的 SQL DW (以前启用了 Synapse 工作区功能的 SQL DW) 时，将应用以下信息： 
 - **SQL 功能** 启用 Synapse 工作区功能后，所有 SQL 功能都将保留在逻辑 SQL server 上。 启用工作区后，仍然可以通过 SQL 资源提供程序访问服务器。 所有管理功能都可通过工作区启动，操作将在托管 SQL 池的逻辑 SQL Server 上进行。 启用工作区后，不会中断或中断现有的自动化、工具或连接。  
 - **资源移动**  在启用了 Synapse 工作区功能的服务器上启动资源移动将导致服务器和工作区之间的链接中断，并且你将不再能够从工作区 (以前的 SQL DW) 实例访问现有专用 SQL 池。 为了确保保持连接，建议将两个资源保留在相同的订阅和资源组中。 
-- **监视** 通过启用了工作区中的 Synapse Studio 提交的 SQL 请求， (以前的 SQL DW) 可以在监视中心中查看。 对于所有其他监视活动，你可以在以前的 SQL DW) 监视 (Azure 门户专用 SQL 池。 
-- **安全性** 和 **访问控制** 如上所述，sql server 的所有管理功能和专用 sql DW (以前的 sql DW) 实例将继续驻留在逻辑 SQL server 上。 这些功能包括防火墙规则管理、设置服务器 Azure AD 管理员以及专用 SQL 池中的数据的所有访问控制 (以前的 SQL DW) 。 必须执行以下步骤以确保专用 SQL DW)  (以前的 SQL DW 可访问，并可通过 Synapse 工作区使用。 工作区角色成员身份不会授予用户对专用 SQL 池中的数据的权限， (以前的 SQL DW) 实例。 遵循一般的 [sql 身份验证](sql-data-warehouse-authentication.md) 策略，以确保用户可以访问逻辑服务器上 (以前的 sql DW) 实例的专用 sql 池。 
+- **监视** 通过启用了工作区中的 Synapse Studio 提交的 SQL 请求， (以前的 SQL DW) 可以在监视中心中查看。 对于所有其他监视活动，你可以转到 Azure 门户专用 SQL 池（以前的 SQL DW）监视。 
+- **安全性** 和 **访问控制** 如上所述，sql server 的所有管理功能和专用 sql DW (以前的 sql DW) 实例将继续驻留在逻辑 SQL server 上。 这些功能包括防火墙规则管理、设置服务器 Azure AD 管理员以及专用 SQL 池中的数据的所有访问控制 (以前的 SQL DW) 。 必须执行以下步骤以确保专用 SQL DW)  (以前的 SQL DW 可访问，并可通过 Synapse 工作区使用。 工作区角色成员身份不会授予用户对专用 SQL 池中的数据的权限， (以前的 SQL DW) 实例。 遵循一般的 [sql 身份验证](sql-data-warehouse-authentication.md) 策略，以确保用户可以访问逻辑服务器上 (以前的 sql DW) 实例的专用 sql 池。 如果专用 SQL 池 (以前的 SQL DW) 主机服务器已经分配了托管标识，则此托管标识的名称将与工作区托管标识的名称相同，该标识是自动创建的，用于支持工作区伙伴服务 (如 ADF 管道) 。  连接的方案中可以存在两个具有相同名称的托管标识。 托管标识可由其 Azure AD 对象 Id 区分，即将推出使用对象 Id 创建 SQL 用户的功能。
 
     ```sql
     CREATE USER [<workspace managed identity] FROM EXTERNAL PROVIDER 

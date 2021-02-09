@@ -2,13 +2,13 @@
 title: 使用 Azure 应用程序网关保护 Azure VMware 解决方案上的 web 应用
 description: 配置 Azure 应用程序网关，以安全地公开在 Azure VMware 解决方案上运行的 web 应用。
 ms.topic: how-to
-ms.date: 11/13/2020
-ms.openlocfilehash: 02e439989c985354dbe06fa3e231d5daf7099d70
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.date: 02/08/2021
+ms.openlocfilehash: fdef37bd76b08a8778db8401a1e8a0406c2ed652
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94628957"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988631"
 ---
 # <a name="use-azure-application-gateway-to-protect-your-web-apps-on-azure-vmware-solution"></a>使用 Azure 应用程序网关保护 Azure VMware 解决方案上的 web 应用
 
@@ -44,34 +44,34 @@ ms.locfileid: "94628957"
 
 ## <a name="deployment-and-configuration"></a>部署和配置
 
-1. 在 Azure 门户中，搜索 " **应用程序网关** "，然后选择 " **创建应用程序网关** "。
+1. 在 Azure 门户中，搜索 " **应用程序网关** "，然后选择 " **创建应用程序网关**"。
 
-2. 提供基本详细信息，如下图所示：然后选择 " **下一步：前端>** 。 
+2. 提供基本详细信息，如下图所示：然后选择 " **下一步：前端>**。 
 
     :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/create-app-gateway.png" alt-text="显示 Azure 门户中的 &quot;创建应用程序网关&quot; 页的屏幕截图。":::
 
-3. 选择前端 IP 地址类型。 对于 "公用"，请选择现有的公共 IP 地址，或创建一个新的 IP 地址。 选择 **下一步：后端>** 。
+3. 选择前端 IP 地址类型。 对于 "公用"，请选择现有的公共 IP 地址，或创建一个新的 IP 地址。 选择 **下一步：后端>**。
 
     > [!NOTE]
     > 专用前端仅支持标准和 Web 应用程序防火墙 (WAF) Sku。
 
-4. 添加在 Azure VMware 解决方案基础结构上运行的 Vm 的后端池。 提供在 Azure VMware 解决方案私有云上运行的 web 服务器的详细信息，并选择 " **添加** "。  然后选择 " **下一步：配置>** 。
+4. 添加在 Azure VMware 解决方案基础结构上运行的 Vm 的后端池。 提供在 Azure VMware 解决方案私有云上运行的 web 服务器的详细信息，并选择 " **添加**"。  然后选择 " **下一步：配置>**。
 
-1. 在 " **配置** " 选项卡上，选择 " **添加路由规则** "。
+1. 在 " **配置** " 选项卡上，选择 " **添加路由规则**"。
 
 6. 在 " **侦听器** " 选项卡上，提供侦听器的详细信息。 如果选择了 HTTPS，则必须从 PFX 文件或现有 Azure Key Vault 证书提供证书。 
 
-7. 选择 " **后端目标** " 选项卡，然后选择以前创建的后端池。 对于 " **HTTP 设置** " 字段，请选择 " **新增** "。
+7. 选择 " **后端目标** " 选项卡，然后选择以前创建的后端池。 对于 " **HTTP 设置** " 字段，请选择 " **新增**"。
 
 8. 配置 HTTP 设置的参数。 选择 **添加** 。
 
-9. 如果要配置基于路径的规则，请选择 " **添加多个目标" 以创建基于路径的规则** 。 
+9. 如果要配置基于路径的规则，请选择 " **添加多个目标" 以创建基于路径的规则**。 
 
-10. 添加基于路径的规则，然后选择 " **添加** "。 重复此步骤以添加其他基于路径的规则。 
+10. 添加基于路径的规则，然后选择 " **添加**"。 重复此步骤以添加其他基于路径的规则。 
 
-11. 添加完基于路径的规则后，请再次选择 " **添加** ";然后选择 " **下一步：标记">** 。 
+11. 添加完基于路径的规则后，请再次选择 " **添加** ";然后选择 " **下一步：标记">**。 
 
-12. 添加标记，然后选择 " **下一步"：查看 + 创建>** 。
+12. 添加标记，然后选择 " **下一步"：查看 + 创建>**。
 
 13. 验证将在应用程序网关上运行;如果成功，请选择 " **创建** " 以进行部署。
 
@@ -101,13 +101,13 @@ ms.locfileid: "94628957"
     Add-Content -Path C:\inetpub\wwwroot\Default.htm -Value $($env:computername)
     ```
 
-2. 在现有应用程序网关实例中，从左侧菜单中选择 " **后端池** "，选择 "  **添加** "，然后输入新的池的详细信息。 在右窗格中选择 " **添加** "。
+2. 在现有应用程序网关实例中，从左侧菜单中选择 " **后端池** "，选择 "  **添加**"，然后输入新的池的详细信息。 在右窗格中选择 " **添加** "。
 
     :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-multi-backend-pool-02.png" alt-text="用于添加后端池的 &quot;后端池&quot; 页的屏幕截图。" lightbox="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-multi-backend-pool-02.png":::
 
-3. 在 " **侦听器** " 部分中，为每个网站创建一个新的侦听器。 输入每个侦听器的详细信息，然后选择 " **添加** "。
+3. 在 " **侦听器** " 部分中，为每个网站创建一个新的侦听器。 输入每个侦听器的详细信息，然后选择 " **添加**"。
 
-4. 在左侧，选择 " **HTTP 设置** "，并在左窗格中选择 " **添加** "。 填写详细信息以创建新的 HTTP 设置，然后选择 " **保存** "。
+4. 在左侧，选择 " **HTTP 设置** "，并在左窗格中选择 " **添加** "。 填写详细信息以创建新的 HTTP 设置，然后选择 " **保存**"。
 
     :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-multi-backend-pool-03.png" alt-text="&quot;HTTP 设置&quot; 页的屏幕截图，用于创建新的 HTTP 设置。" lightbox="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-multi-backend-pool-03.png":::
 
@@ -155,7 +155,7 @@ ms.locfileid: "94628957"
 2. 在现有应用程序网关实例中添加三个新的后端池。 
 
    1. 从左侧菜单中选择“后端池”。 
-   1. 选择 " **添加** "，然后输入第一个池（ **contoso-web** ）的详细信息。 
+   1. 选择 " **添加** "，然后输入第一个池（ **contoso-web**）的详细信息。 
    1. 将一个 VM 添加为目标。 
    1. 选择 **添加** 。 
    1. 为 **contoso-images** 和 **contoso-视频** 重复此过程，并将一个唯一的 VM 添加为目标。 
@@ -164,7 +164,7 @@ ms.locfileid: "94628957"
 
 3. 在 " **侦听器** " 部分中，使用端口8080创建一个类型为 "基本" 的新侦听器。
 
-4. 在左侧导航栏中，选择 " **HTTP 设置** "，并在左窗格中选择 " **添加** "。 填写详细信息以创建新的 HTTP 设置，然后选择 " **保存** "。
+4. 在左侧导航栏中，选择 " **HTTP 设置** "，并在左窗格中选择 " **添加** "。 填写详细信息以创建新的 HTTP 设置，然后选择 " **保存**"。
 
     :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-url-route-backend-pool-04.png" alt-text="显示 HTTP 设置配置的 &quot;添加 HTTP 设置&quot; 页的屏幕截图。":::
 
@@ -188,4 +188,8 @@ ms.locfileid: "94628957"
 
 ## <a name="next-steps"></a>后续步骤
 
-有关更多配置示例，请查看 [Azure 应用程序网关文档](../application-gateway/index.yml) 。
+现在，你已介绍了如何使用应用程序网关保护在 Azure VMware 解决方案上运行的 web 应用，你可能想要了解：
+
+- [配置不同方案的 Azure 应用程序网关](../application-gateway/configuration-overview.md)。
+- [部署流量管理器以平衡 Azure VMware 解决方案工作负荷](deploy-traffic-manager-balance-workloads.md)。
+- 将[Azure NetApp 文件与基于 Azure VMware 解决方案的工作负荷集成](netapp-files-with-azure-vmware-solution.md)。

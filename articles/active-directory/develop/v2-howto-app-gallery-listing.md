@@ -12,12 +12,12 @@ ms.date: 12/14/2020
 ms.author: kenwith
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 3ce00c5182246513aaf3178118058826528619d2
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: f2a04a341239b62290eecac8c0e1ce70b7c927c1
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99584258"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988906"
 ---
 # <a name="publish-your-app-to-the-azure-ad-app-gallery"></a>将应用发布到 Azure AD 应用库
 
@@ -186,7 +186,7 @@ Azure AD 提供了 [参考代码](https://aka.ms/scimoverview) ，可帮助您�
 
 或者，Azure AD 租户附带每个 Microsoft 365 订阅。 若要设置免费 Microsoft 365 开发环境，请参阅 [加入 Microsoft 365 开发人员计划](/office/developer-program/microsoft-365-developer-program)。
 
-拥有租户后，请测试单一登录和 [预配](../app-provisioning/use-scim-to-provision-users-and-groups.md#step-4-integrate-your-scim-endpoint-with-the-azure-ad-scim-client)。 
+拥有租户后，请测试单一登录和 [预配](../app-provisioning/use-scim-to-provision-users-and-groups.md#integrate-your-scim-endpoint-with-the-aad-scim-client)。 
 
 **对于 OIDC 或 Oath 应用** 程序，请将 [应用程序注册](quickstart-register-app.md) 为多租户应用程序。 在 "受支持的帐户类型" 中选择 "任何组织目录和个人 Microsoft 帐户中的帐户" 选项。
 

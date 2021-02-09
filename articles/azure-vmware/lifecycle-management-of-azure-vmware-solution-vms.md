@@ -2,13 +2,13 @@
 title: Azure VMware 解决方案 Vm 的生命周期管理
 description: 了解如何通过 Microsoft Azure 本机工具来管理 Azure VMware 解决方案 Vm 生命周期的所有方面。
 ms.topic: conceptual
-ms.date: 09/11/2020
-ms.openlocfilehash: 5bba9cbbc8783cc285ff09f790ee1b35b20ba358
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.date: 02/08/2021
+ms.openlocfilehash: d8224a37e46b336ebf889fe1c075930f34f10ca4
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99062890"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988529"
 ---
 # <a name="lifecycle-management-of-azure-vmware-solution-vms"></a>Azure VMware 解决方案 Vm 的生命周期管理
 
@@ -110,3 +110,11 @@ Azure Monitor 是一种全面的解决方案，用于从云和本地环境收集
     - [使用 Azure Monitor 创建、查看和管理日志警报](../azure-monitor/platform/alerts-log.md)。
     - 用于设置自动操作和通知的[操作规则](../azure-monitor/platform/alerts-action-rules.md)。
     - [使用 IT 服务管理连接器将 Azure 连接到 ITSM 工具](../azure-monitor/platform/itsmc-overview.md)。
+    
+ ## <a name="next-steps"></a>后续步骤
+
+现在，你已介绍使用 Azure 的本机工具来管理 Azure VMware 解决方案 Vm 的整个生命周期，你可能想要了解：
+
+- [通过 Azure 安全中心保护 Azure VMware 解决方案 vm](azure-security-integration.md)。
+- [设置 Azure VMware 解决方案的 Azure 备份服务器](set-up-backup-server-for-azure-vmware-solution.md)。
+- [将 Azure VMware 解决方案集成到中心和辐射型体系结构中](concepts-hub-and-spoke.md)。
