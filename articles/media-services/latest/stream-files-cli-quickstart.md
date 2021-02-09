@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 媒体服务和 Azure CLI 流式传输视频文件
+title: 使用 Azure 媒体服务 CLI 流式传输视频文件
 description: 按照本教程的步骤，使用 Azure CLI 创建新的 Azure 媒体服务帐户、对文件进行编码并将文件流式传输到 Azure Media Player。
 services: media-services
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.custom: devx-track-azurecli
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: f4a71509c29555da2fdbc1e7eed2fd985237d6a5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: c78205d7e2b41628de9e8b92c9fa5506e82158cb
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91268746"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954490"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---azure-cli"></a>教程：基于 URL 对远程文件进行编码并流式传输视频 - Azure CLI
 
@@ -85,7 +85,7 @@ az ams account create --n amsaccount -g amsResourceGroup --storage-account amsst
 
 ## <a name="start-the-streaming-endpoint"></a>启动流式处理终结点
 
-以下 Azure CLI 命令将启动默认的**流式处理终结点**。
+以下 Azure CLI 命令将启动默认的 **流式处理终结点**。
 
 ```azurecli-interactive
 az ams streaming-endpoint start  -n default -a amsaccount -g amsResourceGroup
@@ -128,7 +128,7 @@ az ams streaming-endpoint start  -n default -a amsaccount -g amsResourceGroup
 
 ## <a name="create-a-transform-for-adaptive-bitrate-encoding"></a>创建适用于自适应比特率编码的转换
 
-创建一个**转换**，以便配置对视频进行编码或分析的常见任务。 本示例执行自适应比特率编码。 然后，在创建的转换下提交某个作业。 该作业是向媒体服务发出的请求，目的是将转换应用到给定的视频或音频内容输入。
+创建一个 **转换**，以便配置对视频进行编码或分析的常见任务。 本示例执行自适应比特率编码。 然后，在创建的转换下提交某个作业。 该作业是向媒体服务发出的请求，目的是将转换应用到给定的视频或音频内容输入。
 
 ```azurecli-interactive
 az ams transform create --name testEncodingTransform --preset AdaptiveStreaming --description 'a simple Transform for Adaptive Bitrate Encoding' -g amsResourceGroup -a amsaccount
@@ -160,7 +160,7 @@ az ams transform create --name testEncodingTransform --preset AdaptiveStreaming 
 
 ## <a name="create-an-output-asset"></a>创建输出资产
 
-创建一个输出**资产**用作编码作业的输出。
+创建一个输出 **资产** 用作编码作业的输出。
 
 ```azurecli-interactive
 az ams asset create -n testOutputAssetName -a amsaccount -g amsResourceGroup
@@ -237,7 +237,7 @@ az ams job start --name testJob001 --transform-name testEncodingTransform --base
 
 ### <a name="check-status"></a>查看状态
 
-在 5 分钟内检查作业的状态。 该状态应该是“Finished”。 如果作业未完成，请在几分钟后重新检查。 如果作业已完成，请转到下一步骤并创建**流式处理定位符**。
+在 5 分钟内检查作业的状态。 该状态应该是“Finished”。 如果作业未完成，请在几分钟后重新检查。 如果作业已完成，请转到下一步骤并创建 **流式处理定位符**。
 
 ```azurecli-interactive
 az ams job show -a amsaccount -g amsResourceGroup -t testEncodingTransform -n testJob001

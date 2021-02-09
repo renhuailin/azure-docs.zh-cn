@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 40b44fd277eac14a5bf2c15f58fccfd9d5b156c4
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 5c43d61b1e7cd98674eab4c6d857cc1114a06013
+ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881479"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99475314"
 ---
 # <a name="reset-an-azure-cloud-service-extended-support"></a>重置 Azure 云服务（外延支持） 
 这些示例涵盖了重置现有 Azure 云服务（外延支持）部署的各种方式。
@@ -21,24 +21,47 @@ ms.locfileid: "98881479"
 ## <a name="reimage-role-instances-of-cloud-service"></a>重置云服务角色实例的映像
 ```powershell
 $roleInstances = @("ContosoFrontEnd_IN_0", "ContosoBackEnd_IN_1")
-Reset-AzCloudService -ResourceGroupName "ContosOrg" -CloudServiceName "ContosoCS" -RoleInstance $roleInstances -Reimage
+Invoke-AzCloudServiceReimage -ResourceGroupName "ContosOrg" -CloudServiceName "ContosoCS" -RoleInstance $roleInstances
 ```
-此命令会重置 ContosOrg 资源组中 ContosoCS 云服务的 2 个角色实例（ContosoFrontEnd\_IN\_0 和 ContosoBackEnd\_IN\_1）的映像 。
+此命令会重置 ContosoCS 资源组中 ContosoCS 云服务的 2 个角色实例（ContosoFrontEnd_IN_0 和 ContosoBackEnd_IN_1）的映像。
 
 ## <a name="reimage-all-roles-of-cloud-service"></a>重置云服务的所有角色的映像
 ```powershell
-Reset-AzCloudService -ResourceGroupName "ContosOrg" -CloudServiceName "ContosoCS" -RoleInstance "*" -Reimage
+Invoke-AzCloudServiceReimage -ResourceGroupName "ContosOrg" -CloudServiceName "ContosoCS" -RoleInstance "*"
 ```
+此命令会重置 ContosOrg 资源组中 ContosoCS 云服务的所有角色实例的映像。
 
 ## <a name="reimage-a-single-role-instance-of-a-cloud-service"></a>重置云服务的单个角色实例的映像
 ```powershell
-Reset-AzCloudServiceRoleInstance -ResourceGroupName "ContosOrg" -CloudServiceName "ContosoCS" -RoleInstanceName "ContosoFrontEnd_IN_0" -Reimage
+Invoke-AzCloudServiceRoleInstanceReimage -ResourceGroupName "ContosOrg" -CloudServiceName "ContosoCS" -RoleInstanceName "ContosoFrontEnd_IN_0"
 ```
+此命令会重置 ContosOrg 资源组中 ContosoCS 云服务的 ContosoFrontEnd_IN_0 角色实例的映像。
 
-## <a name="restart-a-single-role-instance-of-a-cloud-service"></a>重启云服务的单个角色实例
+## <a name="rebuild-role-instances-of-cloud-service"></a>重新生成云服务的角色实例
 ```powershell
-Reset-AzCloudService -ResourceGroupName "ContosOrg" -CloudServiceName "ContosoCS" -RoleInstance "*" -Restart
+$roleInstances = @("ContosoFrontEnd_IN_0", "ContosoBackEnd_IN_1")
+Invoke-AzCloudServiceRebuild -ResourceGroupName "ContosOrg" -CloudServiceName "ContosoCS" -RoleInstance $roleInstances
 ```
+此命令会重新生成 ContosoCS 资源组中 ContosoCS 云服务的 2 个角色实例（ContosoFrontEnd_IN_0 和 ContosoBackEnd_IN_1）。
+
+## <a name="rebuild-all-roles-of-cloud-service"></a>重新生成云服务的所有角色
+```powershell
+Invoke-AzCloudServiceRebuild -ResourceGroupName "ContosOrg" -CloudServiceName "ContosoCS" -RoleInstance "*"
+```
+此命令会重新生成 ContosOrg 资源组中 ContosoCS 云服务的所有角色实例。
+
+## <a name="restart-role-instances-of-cloud-service"></a>重启云服务的角色实例
+```powershell
+$roleInstances = @("ContosoFrontEnd_IN_0", "ContosoBackEnd_IN_1")
+Restart-AzCloudService -ResourceGroupName "ContosOrg" -CloudServiceName "ContosoCS" -RoleInstance $roleInstances
+```
+此命令会重启 ContosoCS 资源组中 ContosoCS 云服务的 2 个角色实例（ContosoFrontEnd_IN_0 和 ContosoBackEnd_IN_1）。
+
+## <a name="restart-all-roles-of-cloud-service"></a>重启云服务的所有角色
+```powershell
+Restart-AzCloudService -ResourceGroupName "ContosOrg" -CloudServiceName "ContosoCS" -RoleInstance "*"
+```
+此命令会重启 ContosOrg 资源组中 ContosoCS 云服务的所有角色实例。
 
 ## <a name="next-steps"></a>后续步骤
 

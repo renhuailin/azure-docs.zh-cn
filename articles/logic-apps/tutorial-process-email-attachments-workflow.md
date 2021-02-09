@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: tutorial
 ms.custom: mvc, devx-track-csharp
 ms.date: 02/27/2020
-ms.openlocfilehash: 7e58dcf8206ae9feab4d8a09517bf9efda244dd5
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 95cc13a79f39888a5be10e423bda4c7cd7c84cb3
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96451573"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054782"
 ---
 # <a name="tutorial-automate-tasks-to-process-emails-by-using-azure-logic-apps-azure-functions-and-azure-storage"></a>教程：使用 Azure 逻辑应用、Azure Functions 和 Azure 存储来自动执行处理电子邮件的任务
 
@@ -36,7 +36,7 @@ Azure 逻辑应用有助于跨 Azure 服务、Microsoft 服务、其他软件即
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。
+* Azure 帐户和订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。
 
 * 逻辑应用支持的电子邮件提供商（例如 Office 365 Outlook、Outlook.com 或 Gmail）提供的电子邮件帐户。 至于其他提供商，请[查看此处的连接器列表](/connectors/)。
 
@@ -47,6 +47,8 @@ Azure 逻辑应用有助于跨 Azure 服务、Microsoft 服务、其他软件即
 
 * 下载并安装[免费 Microsoft Azure 存储资源管理器](https://storageexplorer.com/)。 此工具可以用于检查存储容器是否已正确设置。
 
+* 如果逻辑应用需要通过将流量限制为特定 IP 地址的防火墙进行通信，则该防火墙需要允许访问逻辑应用所在的 Azure 区域中的逻辑应用服务或运行时所使用的[入站](logic-apps-limits-and-config.md#inbound)和[出站](logic-apps-limits-and-config.md#outbound) IP 地址。 如果逻辑应用还使用[托管连接器](../connectors/apis-list.md#managed-api-connectors)（如 Office 365 Outlook 连接器或 SQL 连接器），或使用[自定义连接器](/connectors/custom-connectors/)，则防火墙还需要允许访问逻辑应用的 Azure 区域中的所有[托管连接器出站 IP 地址](logic-apps-limits-and-config.md#outbound)。
+
 ## <a name="set-up-storage-to-save-attachments"></a>设置用于保存附件的存储。
 
 可以在 [Azure 存储容器](../storage/common/storage-introduction.md)中以 Blob 形式保存传入电子邮件和附件。
@@ -55,7 +57,7 @@ Azure 逻辑应用有助于跨 Azure 服务、Microsoft 服务、其他软件即
 
 1. 在创建存储容器之前，请先在 Azure 门户中的“基本信息”选项卡上使用以下设置[创建一个存储帐户](../storage/common/storage-account-create.md)：
 
-   | 设置 | 值 | 描述 |
+   | 设置 | 值 | 说明 |
    |---------|-------|-------------|
    | **订阅** | <*Azure-subscription-name*> | Azure 订阅的名称 |  
    | **资源组** | <Azure-resource-group> | 用于组织和管理相关资源的 [Azure 资源组](../azure-resource-manager/management/overview.md)的名称。 此示例使用“LA-Tutorial-RG”。 <p>**注意：** 资源组存在于特定的区域内。 本教程中的项目可能不在所有区域提供，请尽可能尝试使用同一区域。 |
@@ -86,7 +88,7 @@ Azure 逻辑应用有助于跨 Azure 服务、Microsoft 服务、其他软件即
 
       ![复制并保存存储帐户名称和密钥](./media/tutorial-process-email-attachments-workflow/copy-save-storage-name-key.png)
 
-   若要获取存储帐户的访问密钥，也可以使用 [Azure PowerShell](/powershell/module/az.storage/get-azstorageaccountkey) 或 [Azure CLI](/cli/azure/storage/account/keys?view=azure-cli-latest.md#az-storage-account-keys-list)。
+   若要获取存储帐户的访问密钥，也可以使用 [Azure PowerShell](/powershell/module/az.storage/get-azstorageaccountkey) 或 [Azure CLI](/cli/azure/storage/account/keys.md#az-storage-account-keys-list)。
 
 1. 为电子邮件附件创建 Blob 存储容器。
 
@@ -102,7 +104,7 @@ Azure 逻辑应用有助于跨 Azure 服务、Microsoft 服务、其他软件即
 
       ![完成的存储容器](./media/tutorial-process-email-attachments-workflow/created-storage-container.png)
 
-   若要创建存储容器，也可以使用 [Azure PowerShell](/powershell/module/az.storage/new-azstoragecontainer) 或 [Azure CLI](/cli/azure/storage/container?view=azure-cli-latest#az-storage-container-create)。
+   若要创建存储容器，也可以使用 [Azure PowerShell](/powershell/module/az.storage/new-azstoragecontainer) 或 [Azure CLI](/cli/azure/storage/container#az-storage-container-create)。
 
 接下来，将存储资源管理器连接到存储帐户。
 

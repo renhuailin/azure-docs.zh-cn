@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
 ms.author: justinha
-ms.openlocfilehash: d5dbb7b71e2d67ed5b3f624c93c3c143d6c98e5d
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 6da1d285440daa5d1d5a230905a77057728d4ae6
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96618529"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99256536"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>教程：为 Azure Active Directory 域服务托管域配置安全 LDAP
 
@@ -212,6 +212,12 @@ Thumbprint                                Subject
 为托管域启用安全 LDAP 需要花费几分钟时间。 如果提供的安全 LDAP 证书不符合所需的条件，为托管域启用安全 LDAP 的操作将会失败。
 
 失败的一些常见原因包括域名不正确、证书的加密算法不是 TripleDES-SHA1 或者证书即将过期或已过期。 可以使用有效的参数重新创建证书，然后使用此更新的证书启用安全 LDAP。
+
+## <a name="change-an-expiring-certificate"></a>更改过期证书
+
+1. 通过执行[创建安全 LDAP 证书](#create-a-certificate-for-secure-ldap)的步骤来创建替换安全 LDAP 证书。
+1. 若要将替换证书应用于 Azure AD DS，请在 Azure 门户中 Azure AD DS 的左侧菜单中，选择“安全 LDAP”，然后选择“更改证书” 。
+1. 将证书分发给使用安全 LDAP 连接的所有客户端。 
 
 ## <a name="lock-down-secure-ldap-access-over-the-internet"></a>锁定通过 Internet 进行的安全 LDAP 访问
 

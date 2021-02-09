@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/10/2019
+ms.date: 01/22/2021
 ms.author: jeedes
-ms.openlocfilehash: a62863607798e7f64a74926ebea4f1a1d05cbd6c
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 220a575a252bb16cb5ac895a3d4c1ebedfd7c83e
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92517712"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99431011"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-veracode"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Veracode 集成
 
@@ -25,8 +25,6 @@ ms.locfileid: "92517712"
 * 在 Azure AD 中控制谁有权访问 Veracode。
 * 让用户使用其 Azure AD 帐户自动登录到 Veracode。
 * 在一个中心位置（Azure 门户）管理帐户。
-
-若要了解服务型软件 (SaaS) 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -43,18 +41,18 @@ ms.locfileid: "92517712"
 
 若要配置 Veracode 与 Azure AD 的集成，请从库中将 Veracode 添加到托管 SaaS 应用程序列表。
 
-1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
+1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 Azure 门户。
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
 1. 转到“企业应用程序”，并选择“所有应用程序”。  
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
-1. 在“从库中添加”部分的搜索框中，键入“Veracode”  。
-1. 从结果面板中选择“Veracode”，然后添加该应用  。 在该应用添加到租户时等待几秒钟。
+1. 在“从库中添加”部分的搜索框中，键入“Veracode”。
+1. 从结果面板中选择“Veracode”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-veracode"></a>配置并测试 Veracode 的 Azure AD 单一登录
+## <a name="configure-and-test-azure-ad-sso-for-veracode"></a>配置并测试 Veracode 的 Azure AD SSO
 
-使用名为 B.Simon 的测试用户配置和测试 Veracode 的 Azure AD SSO  。 若要运行 SSO，必须在 Azure AD 用户与 Veracode 中相关用户之间建立链接。
+使用名为 B.Simon 的测试用户配置和测试 Veracode 的 Azure AD SSO。 若要运行 SSO，必须在 Azure AD 用户与 Veracode 中相关用户之间建立链接。
 
-若要配置和测试 Veracode 的 Azure AD SSO，请完成以下构建基块：
+若要配置并测试 Veracode 的 Azure AD SSO，请执行以下步骤：
 
 1. **[配置 Azure AD SSO](#configure-azure-ad-sso)** ，使用户能够使用此功能。
     * **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** ，以使用 B.Simon 测试 Azure AD 单一登录。
@@ -67,15 +65,15 @@ ms.locfileid: "92517712"
 
 按照下列步骤在 Azure 门户中启用 Azure AD SSO。
 
-1. 在 [Azure 门户](https://portal.azure.com/)的 Veracode 应用程序集成页上，找到“管理”部分   。 选择“单一登录”  。
-1. 在“选择单一登录方法”页上选择“SAML”   。
+1. 在 Azure 门户的 Veracode 应用程序集成页上，找到“管理”部分 。 选择“单一登录”  。
+1. 在“选择单一登录方法”页上选择“SAML” 。
 1. 在“设置 SAML 单一登录”页上，选择“基本 SAML 配置”对应的笔形图标以编辑设置   。
 
-   ![“设置 SAML 单一登录”的屏幕截图，其中突出显示了笔形图标](common/edit-urls.png)
+   ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 在基本 SAML 配置  部分，应用程序进行了预配置，且已通过 Azure 预填充了必要的 URL。 选择“保存”。 
+1. 在基本 SAML 配置部分，应用程序进行了预配置，且已通过 Azure 预填充了必要的 URL。 选择“保存”。
 
-1. 在“设置 SAML 单一登录”页的“SAML 签名证书”部分，找到“证书(Base64)”    。 选择“下载”以下载证书，并将其保存在计算机上。 
+1. 在“设置 SAML 单一登录”页的“SAML 签名证书”部分，找到“证书(Base64)”  。 选择“下载”以下载证书，并将其保存在计算机上。 
 
     ![“SAML 签名证书”部分的屏幕截图，其中突出显示了“下载”链接](common/certificatebase64.png)
 
@@ -91,100 +89,89 @@ ms.locfileid: "92517712"
     | 姓 |User.surname |
     | 电子邮件 |User.mail |
 
-1. 在“设置 Veracode”部分中，根据要求复制相应的 URL  。
+1. 在“设置 Veracode”部分中，根据要求复制相应的 URL。
 
     ![“设置 Veracode”部分的屏幕截图，其中突出显示了配置 URL](common/copy-configuration-urls.png)
-
-## <a name="configure-veracode-sso"></a>配置 Veracode SSO
-
-1. 在另一个 Web 浏览器窗口中，以管理员身份登录到 Veracode 公司站点。
-
-1. 在顶部菜单中，选择“设置” > “管理员”   。
-   
-    ![“Veracode 管理”的屏幕截图，突出显示了“设置”图标和“管理员”](./media/veracode-tutorial/ic802911.png "管理")
-
-1. 选择“SAML”选项卡  。
-
-1. 在“组织 SAML 设置”  部分中执行以下步骤：
-
-    ![“组织 SAML 设置”部分的屏幕截图](./media/veracode-tutorial/ic802912.png "管理")
-
-    a.  对于“证书颁发者”，粘贴从 Azure 门户复制的“Azure AD 标识符”值   。
-
-    b. 对于“断言签名证书”，请选择“选择文件”从 Azure 门户上传已下载的证书   。
-
-    c. 对于“自动注册”，选择“启用自动注册”   。
-
-1. 在“自助注册设置”部分，请执行以下步骤，并选择“保存”   ：
-
-    ![“自动注册设置”部分的屏幕截图，突出显示了各种选项](./media/veracode-tutorial/ic802913.png "管理")
-
-    a. 对于“新用户激活”，选择“不需要激活”   。
-
-    b. 对于“用户数据更新”，选择“首选项 Veracode 用户数据”   。
-
-    c. 对于“SAML 属性的详细信息”  ，选择以下选项：
-      * **用户角色**
-      * “策略管理员” 
-      * “审阅者” 
-      * “安全主管” 
-      * “执行经理” 
-      * “提交者” 
-      * “创建者” 
-      * “所有扫描类型” 
-      * “团队成员身份” 
-      * “默认团队” 
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
 在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
 
-1. 在 Azure 门户的左窗格中，选择“Azure Active Directory” >“用户” > “所有用户”。   
-1. 选择屏幕顶部的“新建用户”  。
-1. 在“用户”属性中执行以下步骤  ：
-
-   1. 对于“名称”  ，请输入 `B.Simon`。  
-   1. 对于“用户名”  ，请输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
-   1. 选择“显示密码”并记下显示的值  。
-   1. 选择“创建”  。
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”  。
+1. 选择屏幕顶部的“新建用户”。
+1. 在“用户”属性中执行以下步骤：
+   1. 在“名称”字段中，输入 `B.Simon`。  
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
+   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
+   1. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
-在本部分中，通过授予 B.Simon 访问 Veracode 的权限，允许其使用 Azure 单一登录。
+在本部分中，将通过授予 B.Simon 访问 Veracode 的权限，允许其使用 Azure 单一登录。
 
-1. 在 Azure 门户中，选择“企业应用程序” > “所有应用程序”。  
-1. 在应用程序列表中，选择“Veracode”  。
-1. 在应用的概述页中找到“管理”部分，然后选择“用户和组”   。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。 
+1. 在应用程序列表中，选择“Veracode”。
+1. 在应用的概述页中，找到“管理”部分，选择“用户和组” 。
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
+1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。
+1. 如果你希望将某角色分配给用户，可以从“选择角色”下拉列表中选择该角色。 如果尚未为此应用设置任何角色，你将看到选择了“默认访问权限”角色。
+1. 在“添加分配”对话框中，单击“分配”按钮。
 
-   ![“管理”部分的屏幕截图，其中突出显示了“用户和组”](common/users-groups-blade.png)
+## <a name="configure-veracode-sso"></a>配置 Veracode SSO
 
-1. 选择“添加用户”。  在“添加分配”对话框中选择“用户和组”。  
+1. 在另一个 Web 浏览器窗口中，以管理员身份登录到 Veracode 公司站点。
 
-    ![“用户和组”页的屏幕截图，其中已突出显示“添加用户”](common/add-assign-user.png)
+1. 在顶部菜单中，选择“设置” > “管理员” 。
+   
+    ![“Veracode 管理”的屏幕截图，突出显示了“设置”图标和“管理员”](./media/veracode-tutorial/admin.png "管理")
 
-1. 在“用户和组”对话框中，从“用户”中选择 B.Simon    。 然后选择屏幕底部的“选择”  。
-1. 如果希望在 SAML 断言中使用任何角色值，请在“选择角色”对话框中，从列表中为用户选择相应的角色。  然后选择屏幕底部的“选择”  。
-1. 在“添加分配”对话框中选择“分配”。  
+1. 选择“SAML”选项卡。
+
+1. 在“组织 SAML 设置”部分中执行以下步骤：
+
+    ![“组织 SAML 设置”部分的屏幕截图](./media/veracode-tutorial/saml.png "管理")
+
+    a.  对于“证书颁发者”，粘贴从 Azure 门户复制的“Azure AD 标识符”值。
+
+    b. 对于“断言签名证书”，请选择“选择文件”从 Azure 门户上传已下载的证书。
+
+    c. 对于“自动注册”，选择“启用自动注册”。
+
+1. 在“自助注册设置”部分，请执行以下步骤，并选择“保存”：
+
+    ![“自动注册设置”部分的屏幕截图，突出显示了各种选项](./media/veracode-tutorial/save.png "管理")
+
+    a. 对于“新用户激活”，选择“不需要激活”。
+
+    b. 对于“用户数据更新”，选择“首选项 Veracode 用户数据”。
+
+    c. 对于“SAML 属性的详细信息”，选择以下选项：
+      * **用户角色**
+      * **“策略管理员”**
+      * “审阅者”
+      * “安全主管”
+      * **主管**
+      * “提交者”
+      * **创建者**
+      * “所有扫描类型”
+      * “团队成员身份”
+      * “默认团队”
 
 ### <a name="create-veracode-test-user"></a>创建 Veracode 测试用户
 
-若要登录到 Veracode，必须将 Azure AD 用户预配为 Veracode。 这项任务是自动完成的，无需手动执行任何操作。 如有必要，在第一次尝试单一登录时会自动创建用户。
+本部分将在 Veracode 中创建一个名为 B.Simon 的用户。 Veracode 支持默认启用的实时用户预配。 此部分不存在任何操作项。 如果 Veracode 中尚不存在用户，则会在进行身份验证后创建一个新用户。
 
 > [!NOTE]
 > 可以使用 Veracode 提供的任何其他 Veracode 用户帐户创建工具或 API 来预配 Azure AD 用户帐户。
 
 ## <a name="test-sso"></a>测试 SSO
 
-在本部分中，使用访问面板测试 Azure AD 单一登录配置。
+在本部分，你将使用以下选项测试 Azure AD 单一登录配置。
 
-选择“访问面板”中的“Veracode”时，应当会自动登录到为其设置了 SSO 的 Veracode  。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+* 在 Azure 门户中单击“测试此应用程序”后，应会自动登录到为其设置了 SSO 的 Veracode。
 
-## <a name="additional-resources"></a>其他资源
+* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 Veracode 磁贴时，应当会自动登录到为其设置了 SSO 的 Veracode。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
+## <a name="next-steps"></a>后续步骤
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
-
-- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
-
-- [通过 Azure AD 试用 Veracode](https://aad.portal.azure.com/)
+配置 Veracode 后，可以强制实施会话控制，从而实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。

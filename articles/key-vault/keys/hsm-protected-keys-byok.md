@@ -8,14 +8,14 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: keys
 ms.topic: tutorial
-ms.date: 02/01/2021
+ms.date: 02/04/2021
 ms.author: ambapat
-ms.openlocfilehash: 98da8057fb09cf43a59b921694386cbf3fa8ca21
-ms.sourcegitcommit: 983eb1131d59664c594dcb2829eb6d49c4af1560
+ms.openlocfilehash: 51ba981dcc6f36df3bfaacebb503782faed5c91f
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99222211"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99581000"
 ---
 # <a name="import-hsm-protected-keys-to-key-vault-byok"></a>将受 HSM 保护的密钥导入 Key Vault (BYOK)
 
@@ -71,10 +71,13 @@ ms.locfileid: "99222211"
 
 ## <a name="supported-key-types"></a>支持的密钥类型
 
-|项名|密钥类型|密钥大小|源|说明|
+|项名|密钥类型|密钥大小/曲线|源|说明|
 |---|---|---|---|---|
 |密钥交换密钥 (KEK)|RSA| 2,048 位<br />3,072 位<br />4,096 位|Azure Key Vault HSM|在 Azure Key Vault 中生成的由 HSM 支持的 RSA 密钥对|
-|目标密钥|RSA|2,048 位<br />3,072 位<br />4,096 位|供应商 HSM|要传输到 Azure Key Vault HSM 的密钥|
+|目标密钥|
+||RSA|2,048 位<br />3,072 位<br />4,096 位|供应商 HSM|要传输到 Azure Key Vault HSM 的密钥|
+||EC|P-256<br />P-384<br />P-521|供应商 HSM|要传输到 Azure Key Vault HSM 的密钥|
+||||
 
 ## <a name="generate-and-transfer-your-key-to-the-key-vault-hsm"></a>生成密钥并将其传输到 Key Vault HSM
 
@@ -120,7 +123,7 @@ az keyvault key download --name KEKforBYOK --vault-name ContosoKeyVaultHSM --fil
 将 BYOK 文件传输到连接的计算机。
 
 > [!NOTE] 
-> 不支持导入 RSA 1,024 位密钥。 当前不支持导入椭圆曲线 (EC) 密钥。
+> 不支持导入 RSA 1,024 位密钥。 不支持导入带有曲线 P-256K 的椭圆曲线密钥。
 > 
 > 已知问题：仅固件版本 7.4.0 或更高版本支持从 Luna HSM 导入 RSA 4K 目标密钥。
 
@@ -128,8 +131,15 @@ az keyvault key download --name KEKforBYOK --vault-name ContosoKeyVaultHSM --fil
 
 若要完成密钥导入，请将密钥传输包（BYOK 文件）从断开连接的计算机传输到连接到 Internet 的计算机。 使用 [az keyvault key import](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-import) 命令将 BYOK 文件上传到 Key Vault HSM。
 
+若要导入 RSA 密钥，请使用以下命令。 --kty 参数可选，默认值为“RSA-HSM”。
 ```azurecli
 az keyvault key import --vault-name ContosoKeyVaultHSM --name ContosoFirstHSMkey --byok-file KeyTransferPackage-ContosoFirstHSMkey.byok
+```
+
+若要导入 EC 密钥，必须指定密钥类型和曲线名称。
+
+```azurecli
+az keyvault key import --vault-name ContosoKeyVaultHSM --name ContosoFirstHSMkey --byok-file --kty EC-HSM --curve-name "P-256" KeyTransferPackage-ContosoFirstHSMkey.byok
 ```
 
 如果上传成功，Azure CLI 将显示导入密钥的属性。

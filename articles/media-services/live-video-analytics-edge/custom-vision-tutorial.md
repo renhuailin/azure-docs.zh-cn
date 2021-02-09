@@ -4,12 +4,12 @@ description: 了解如何使用 Azure 自定义视觉构建可检测玩具卡车
 ms.topic: tutorial
 ms.date: 09/08/2020
 zone_pivot_groups: ams-lva-edge-programming-languages
-ms.openlocfilehash: de788c337ce8030b73538565e4f374ffc7db55b8
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 0b5d011ac7832436edf1f5c898b1fe1e239d0aea
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060484"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99055359"
 ---
 # <a name="tutorial-analyze-live-video-with-live-video-analytics-on-iot-edge-and-azure-custom-vision"></a>教程：使用 IoT Edge 上的实时视频分析和 Azure 自定义视觉分析实时视频
 
@@ -51,7 +51,6 @@ ms.locfileid: "98060484"
 
 ## <a name="prerequisites"></a>先决条件
 
-
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [prerequisites](includes/custom-vision-tutorial/csharp/prerequisites.md)]
 ::: zone-end
@@ -59,6 +58,10 @@ ms.locfileid: "98060484"
 ::: zone pivot="programming-language-python"
 [!INCLUDE [prerequisites](includes/custom-vision-tutorial/python/prerequisites.md)]
 ::: zone-end
+
+> [!IMPORTANT]
+> 此自定义视觉模块仅支持 Intel x86 和 amd64 体系结构。 请在继续操作之前检查边缘设备的体系结构。
+
 ## <a name="review-the-sample-video"></a>观看示例视频
 
 本教程使用[玩具汽车推理视频](https://lvamedia.blob.core.windows.net/public/t2.mkv)文件来模拟实时流。 可以通过某个应用程序（例如 [VLC 媒体播放器](https://www.videolan.org/vlc/)）来观看视频。 选择“Ctrl+N”，然后粘贴[玩具汽车推理视频](https://lvamedia.blob.core.windows.net/public/t2.mkv)的链接开始播放。 观看视频时，请注意，在 36 秒标记处，玩具卡车出现在视频中。 自定义模型已经过训练，可以检测到这一特定玩具卡车。 
@@ -81,6 +84,9 @@ HTTP 扩展节点扮演代理的角色。  它对使用 `samplingOptions` 字段
 顾名思义，你可以使用自定义视觉在云中构建你自己的自定义对象检测器或分类器。 它提供了一个简单易用的直观界面，用于构建可通过容器部署在云或边缘上的自定义视觉模型。
 
 若要构建玩具卡车检测器，请按照[快速入门：使用自定义视觉网站生成对象检测器](../../cognitive-services/custom-vision-service/get-started-build-detector.md)中的步骤操作。
+
+> [!IMPORTANT]
+> 此自定义视觉模块仅支持 Intel x86 和 amd64 体系结构。 请在继续操作之前检查边缘设备的体系结构。
 
 其他说明：
  

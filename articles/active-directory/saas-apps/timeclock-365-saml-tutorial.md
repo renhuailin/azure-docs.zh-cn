@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/16/2020
+ms.date: 01/28/2021
 ms.author: jeedes
-ms.openlocfilehash: 329e0fbfdea43f3933333744f89ed1c03ef0ed13
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: d0c8364cc85cfce900021272d17456527919122b
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98729274"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99050798"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-timeclock-365-saml"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Timeclock 365 SAML 集成
 
@@ -70,7 +70,7 @@ ms.locfileid: "98729274"
 
 1. 在 Azure 门户的“Timeclock 365 SAML”应用程序集成页上，找到“管理”部分，选择“单一登录”  。
 1. 在“选择单一登录方法”页上选择“SAML” 。
-1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置 。
+1. 在“设置 SAML 单一登录”页面上，单击“基本 SAML 配置”旁边的铅笔图标以编辑设置 。
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
@@ -109,7 +109,15 @@ ms.locfileid: "98729274"
 
 ## <a name="configure-timeclock-365-saml-sso"></a>配置 Timeclock 365 SAML SSO
 
-1. 在浏览器中打开新选项卡，并以管理员身分登录 Timeclock 365 SAML 公司站点。
+1. 若要在 Timeclock 365 SAML 中自动执行配置，需要通过单击“安装扩展”来安装“我的应用安全登录浏览器扩展” 。
+
+    ![我的应用扩展](common/install-myappssecure-extension.png)
+
+2. 将扩展添加到浏览器后，单击“设置 Timeclock 365 SAML”，此时会将你定向到 Timeclock 365 SAML 应用程序。 在此处，提供管理员凭据以登录到 Timeclock 365 SAML。 浏览器扩展会自动配置应用程序，并自动执行步骤 3-4。
+
+    ![设置配置](common/setup-sso.png)
+
+3. 若要手动设置 Timeclock 365 SAML，请在另一个 Web 浏览器窗口中，以管理员身份登录到 Timeclock 365 SAML 公司站点。
 
 1. 执行下面提到的步骤。
 

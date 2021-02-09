@@ -2,15 +2,15 @@
 author: memildin
 ms.service: security-center
 ms.topic: include
-ms.date: 01-26-2021
+ms.date: 02-03-2021
 ms.author: memildin
 ms.custom: generated
-ms.openlocfilehash: 024aced08b1efdc840d3ceb23c524dbbcce9110c
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: fbf3abb7e80d52a40fbb89573085a1107ed844c6
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98797198"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99539226"
 ---
 这一类别有 58 条相关建议。
 
@@ -59,7 +59,7 @@ ms.locfileid: "98797198"
 |应为 MySQL 服务器禁用公用网络访问 |禁用公用网络访问属性以提高安全性，并确保只能从专用终结点访问 Azure Database for MySQL。 此配置严格禁止访问 Azure IP 范围之外的任何公共地址空间，并拒绝与 IP 或基于虚拟网络的防火墙规则匹配的所有登录。<br />（相关策略：[应为 MySQL 服务器禁用公用网络访问](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fd9844e8a-1437-4aeb-a32c-0c992f056095)） |中型 |
 |应为 PostgreSQL 服务器禁用公用网络访问 |禁用公用网络访问属性以提高安全性，并确保只能从专用终结点访问 Azure Database for PostgreSQL。 此配置禁止访问 Azure IP 范围之外的任何公共地址空间，并拒绝与 IP 或基于虚拟网络的防火墙规则匹配的所有登录。<br />（相关策略：[应为 PostgreSQL 服务器禁用公用网络访问](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fb52376f7-9612-48a1-81cd-1ffe4b61032c)） |中型 |
 |应对 SQL 数据库中的敏感数据进行分类 |Azure SQL DB 数据发现和分类功能可用于发现、分类、标记和保护数据库中的敏感数据。 将数据进行分类后，可以使用 Azure SQL DB 审核来审核访问和监视敏感数据。 Azure SQL DB 还启用了高级威胁防护功能，这些功能基于对敏感数据的访问模式的改变创建智能警报。<br />（相关策略：[应对 SQL 数据库中的敏感数据进行分类](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fmicrosoft.authorization%2fpolicydefinitions%2fcc9835f2-9f6b-4cc8-ab4a-f8ef615eb349)） |高 |
-|SQL 托管实例应使用客户管理的密钥进行静态数据加密 |使用你自己的密钥实现透明数据加密 (TDE) 可增加透明度和对 TDE 保护器的控制，增强由 HSM 提供支持的外部服务的安全性，并促进职责划分。 此建议适用于具有相关合规性要求的组织。<br />（无相关策略） |低 |
+|SQL 托管实例应使用客户管理的密钥进行静态数据加密 |使用你自己的密钥实现透明数据加密 (TDE) 可增加透明度和对 TDE 保护器的控制，增强由 HSM 提供支持的外部服务的安全性，并促进职责划分。 此建议适用于具有相关合规性要求的组织。<br />（相关策略：[SQL 托管实例应使用客户管理的密钥进行静态数据加密](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f048248b0-55cd-46da-b1ff-39efd52db260) |低 |
 |SQL Server 应使用客户管理的密钥进行静态数据加密 |使用你自己的密钥实现透明数据加密 (TDE) 可增加透明度和对 TDE 保护器的控制，增强由 HSM 提供支持的外部服务的安全性，并促进职责划分。 此建议适用于具有相关合规性要求的组织。<br />（相关策略：[SQL Server 应使用客户管理的密钥进行静态数据加密](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f0d134df8-db83-46fb-ad72-fe0c9428c8dd)） |低 |
 |存储帐户应使用专用链接连接 |专用链接通过与存储帐户建立专用连接来强制实施安全通信<br />（相关策略：[存储帐户应使用专用链接连接](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f6edd7eda-6dd8-40f7-810d-67160c639cd9)） |中型 |
 |应将存储帐户迁移到新 Azure 资源管理器资源 |若要充分利用 Azure 资源管理器中的新功能，可将现有部署从经典部署模型中迁移出来。 Azure 资源管理器启用安全增强功能，例如：更强的访问控制 (RBAC)、更好地审核、基于 ARM 的部署和治理、托管标识访问权限、用于提供机密的密钥保管库的访问权限、基于 Azure AD 的身份验证以及可实现更轻松安全管理的标记和资源组支持。 <a target='_blank' href='https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-overview'>了解详细信息</a><br />（相关策略：[应将存储帐户迁移到新的 Azure 资源管理器资源](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f37e0d2fe-28a5-43d6-a273-67d37d1f5606)） |低 |
@@ -69,7 +69,7 @@ ms.locfileid: "98797198"
 |应在 SQL 数据库上启用透明数据加密 |启用透明数据加密以保护静态数据并满足合规性要求<br />（相关策略：[应对 SQL 数据库启用透明数据加密](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f17k78e20-9358-41c9-923c-fb736d382a12)） |低 |
 |VM 映像生成器模板应使用专用链接 |审核没有配置虚拟网络的 VM 映像生成器模板。 当没有配置虚拟网络时，就会改为创建并使用公共 IP，这样可能会将资源直接暴露给 Internet，并扩大潜在攻击面。<br />（相关策略：[VM 映像生成器模板应使用专用链接](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f2154edb9-244f-4741-9970-660785bccdaa)） |中型 |
 |应修正关于 SQL 数据库的漏洞评估结果 |SQL 漏洞评估会扫描数据库中的安全漏洞，并显示与最佳实践之间的任何偏差，如配置错误、权限过多和敏感数据未受保护。 解决发现的漏洞可以极大地改善数据库安全态势。 <a href='https://aka.ms/SQL-Vulnerability-Assessment/'>了解详细信息</a><br />（相关策略：[应修正 SQL 数据库中的漏洞](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fmicrosoft.authorization%2fpolicydefinitions%2ffeedbf84-6b99-488c-acc2-71c829aa5ffc)） |高 |
-|应修正关于计算机上 SQL 服务器的漏洞评估结果 |SQL 漏洞评估会扫描数据库中的安全漏洞，并显示与最佳实践之间的任何偏差，如配置错误、权限过多和敏感数据未受保护。 解决发现的漏洞可以极大地改善数据库安全态势。 <a href='https://aka.ms/explore-vulnerability-assessment-reports/'>了解详细信息</a><br />（无相关策略） |高 |
+|应修正关于计算机上 SQL 服务器的漏洞评估结果 |SQL 漏洞评估会扫描数据库中的安全漏洞，并显示与最佳实践之间的任何偏差，如配置错误、权限过多和敏感数据未受保护。 解决发现的漏洞可以极大地改善数据库安全态势。 <a href='https://aka.ms/explore-vulnerability-assessment-reports/'>了解详细信息</a><br />（相关策略：[应修正计算机上 SQL 服务器的漏洞](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fmicrosoft.authorization%2fpolicydefinitions%2f6ba6d016-e7c3-4842-b8f2-4992ebc0d72d) |高 |
 |应对 SQL 托管实例启用漏洞评估 |漏洞评估可发现、跟踪和帮助你修正潜在数据库漏洞。<br />（相关策略：[应对 SQL 托管实例启用漏洞评估](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f1b7aa243-30e4-4c9e-bca8-d0d3022b634a)） |高 |
 |应对 SQL Server 启用漏洞评估 |漏洞评估可发现、跟踪和帮助你修正潜在数据库漏洞。<br />（相关策略：[应对 SQL Server 启用漏洞评估](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fef2a8f2a-b3d9-49cd-a8a8-9a3aaaf647d9)） |高 |
 |应为应用程序网关启用 Web 应用程序防火墙 (WAF) |将 Azure Web 应用程序防火墙 (WAF) 部署在面向公众的 Web 应用程序的前面，以便对传入流量进行额外检查。 Web 应用程序防火墙 (WAF) 为 Web 应用程序提供集中保护，使其免受常见攻击和漏洞的侵害，例如 SQL 注入、跨站脚本以及本地和远程文件执行。 还可以通过自定义规则，按国家/地区、IP 地址范围和其他 http(s) 参数限制对 Web 应用程序的访问。<br />（相关策略：[应为应用程序网关启用 Web 应用程序防火墙 (WAF)](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f564feb30-bf6a-4854-b4bb-0d2d2d1e6c66)） |低 |

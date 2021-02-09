@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/20/2020
+ms.date: 01/22/2021
 ms.author: jeedes
-ms.openlocfilehash: f928df7b2e2da59b716950d4e7757cc508cb8936
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 6da04bda9e9d1a00ff10cc94d3dcef557a3f2802
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92446304"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99062937"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-saba-talentspace"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Saba TalentSpace 的集成
 
@@ -25,8 +25,6 @@ ms.locfileid: "92446304"
 * 在 Azure AD 中控制谁有权访问 Saba TalentSpace。
 * 让用户使用其 Azure AD 帐户自动登录到 Saba TalentSpace。
 * 在一个中心位置（Azure 门户）管理帐户。
-
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -40,24 +38,23 @@ ms.locfileid: "92446304"
 本教程在测试环境中配置并测试 Azure AD SSO。
 
 * Saba TalentSpace 支持 **SP** 发起的 SSO
-* 配置 Saba TalentSpace 后，就可以强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。
 
-## <a name="adding-saba-talentspace-from-the-gallery"></a>从库中添加 Saba TalentSpace
+## <a name="add-saba-talentspace-from-the-gallery"></a>从库中添加 Saba TalentSpace
 
 若要配置 Saba TalentSpace 与 Azure AD 的集成，需要从库中将 Saba TalentSpace 添加到托管 SaaS 应用列表。
 
-1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
+1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 Azure 门户。
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
 1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
-1. 在“从库中添加”部分的搜索框中，键入 **Saba TalentSpace** 。 
+1. 在“从库中添加”部分的搜索框中，键入 **Saba TalentSpace**。 
 1. 在结果面板中选择“Saba TalentSpace”，然后添加该应用。  在该应用添加到租户时等待几秒钟。
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-saba-talentspace"></a>配置并测试 Saba TalentSpace 的 Azure AD 单一登录
+## <a name="configure-and-test-azure-ad-sso-for-saba-talentspace"></a>配置并测试 Saba TalentSpace 的 Azure AD SSO
 
 使用名为 **B.Simon** 的测试用户配置并测试 Saba TalentSpace 的 Azure AD SSO。 若要正常使用 SSO，需要在 Azure AD 用户与 Saba TalentSpace 中的相关用户之间建立链接关系。
 
-若要配置并测试 Saba TalentSpace 的 Azure AD SSO，请完成以下构建基块：
+若要配置并测试 Saba TalentSpace 的 Azure AD SSO，请执行以下步骤：
 
 1. **[配置 Azure AD SSO](#configure-azure-ad-sso)** - 使用户能够使用此功能。
     * **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 B. Simon 测试 Azure AD 单一登录。
@@ -70,19 +67,19 @@ ms.locfileid: "92446304"
 
 按照下列步骤在 Azure 门户中启用 Azure AD SSO。
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的“Saba TalentSpace”应用程序集成页上，找到“管理”部分并选择“单一登录”。   
-1. 在“选择单一登录方法”页上选择“SAML”   。
-1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置   。
+1. 在 Azure 门户中的“Saba TalentSpace”应用程序集成页上，找到“管理”部分并选择“单一登录”  。
+1. 在“选择单一登录方法”页上选择“SAML” 。
+1. 在“设置 SAML 单一登录”页面上，单击“基本 SAML 配置”旁边的铅笔图标以编辑设置 。
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 在“基本 SAML 配置”  部分中，按照以下步骤操作：
+1. 在“基本 SAML 配置”部分中，按照以下步骤操作：
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://global.hgncloud.com/[companyname]/saml/login` 
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://global.hgncloud.com/[companyname]/saml/login`
 
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://global.hgncloud.com/[companyname]/saml/metadata` 
+    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://global.hgncloud.com/[companyname]/saml/metadata`
 
-    c. 在“回复 URL (断言使用者服务 URL)”  文本框中，使用以下模式键入 URL：`https://global.hgncloud.com/[companyname]/saml/SSO`
+    c. 在“回复 URL (断言使用者服务 URL)”文本框中，使用以下模式键入 URL：`https://global.hgncloud.com/[companyname]/saml/SSO`
 
     > [!NOTE]
     > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [Saba TalentSpace 客户端支持团队](https://support.saba.com/)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -99,13 +96,13 @@ ms.locfileid: "92446304"
 
 在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
 
-1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”    。
-1. 选择屏幕顶部的“新建用户”  。
-1. 在“用户”属性中执行以下步骤  ：
-   1. 在“名称”  字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension  。 例如，`B.Simon@contoso.com` 。
-   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。  
-   1. 单击“创建”。 
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”  。
+1. 选择屏幕顶部的“新建用户”。
+1. 在“用户”属性中执行以下步骤：
+   1. 在“名称”字段中，输入 `B.Simon`。  
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
+   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
+   1. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -114,22 +111,16 @@ ms.locfileid: "92446304"
 1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。  
 1. 在“应用程序”列表中选择“Saba TalentSpace”。 
 1. 在应用的概述页中，找到“管理”部分，选择“用户和组”   。
-
-   ![“用户和组”链接](common/users-groups-blade.png)
-
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。   
-
-    ![“添加用户”链接](common/add-assign-user.png)
-
-1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。   
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。  
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
+1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。
+1. 如果你希望将某角色分配给用户，可以从“选择角色”下拉列表中选择该角色。 如果尚未为此应用设置任何角色，你将看到选择了“默认访问权限”角色。
 1. 在“添加分配”对话框中，单击“分配”按钮。  
 
 ## <a name="configure-saba-talentspace-sso"></a>配置 Saba TalentSpace SSO
 
 1. 在另一个浏览器窗口中，以管理员身份登录到 **Saba TalentSpace** 应用程序。
 
-2. 单击“ **选项** ”选项卡。
+2. 单击“**选项**”选项卡。
   
     ![显示“saba TalentSpace”主页的屏幕截图，其中“选项”选项卡处于选中状态。](./media/halogen-software-tutorial/tutorial-halogen-12.png)
 
@@ -141,7 +132,7 @@ ms.locfileid: "92446304"
 
     ![显示“SAML 配置”页的屏幕截图，其中突出显示了“设置”选项。](./media/halogen-software-tutorial/tutorial-halogen-14.png)
 
-    a. 选择 **NameID** 作为 **唯一标识符** 。
+    a. 选择 **NameID** 作为 **唯一标识符**。
 
     b. 对于“唯一标识符映射到”，请选择“用户名”  。 
   
@@ -150,7 +141,7 @@ ms.locfileid: "92446304"
     d. 若要测试配置，请单击“运行测试”。 
 
     > [!NOTE]
-    > 需要等待消息“ *SAML 测试已完成。请关闭此窗口* ”。 然后，关闭打开的浏览器窗口。 仅在测试完成的情况下，才会启用“启用 SAML”复选框。 
+    > 需要等待消息“*SAML 测试已完成。请关闭此窗口*”。 然后，关闭打开的浏览器窗口。 仅在测试完成的情况下，才会启用“启用 SAML”复选框。 
 
     e. 选择“启用 SAML”  。
 
@@ -172,30 +163,26 @@ ms.locfileid: "92446304"
 
     ![什么是 Azure AD Connect](./media/halogen-software-tutorial/tutorial-halogen-301.png)
 
-    a. 在“名字”文本框中键入用户的名字，例如 **B** 。 
+    a. 在“名字”文本框中键入用户的名字，例如 **B**。 
 
     b. 在“姓氏”文本框中，键入用户的姓氏（如“Simon”）   。
 
-    c. 在“用户名”文本框中键入 **B.Simon** （与 Azure 门户中相同的用户名）。 
+    c. 在“用户名”文本框中键入 **B.Simon**（与 Azure 门户中相同的用户名）。 
 
     d. 在“密码”文本框中，键入 B.Simon 的密码。 
 
-    e. 单击“ **保存** ”。
+    e. 单击“ **保存**”。
 
 ## <a name="test-sso"></a>测试 SSO
 
-在本部分中，使用访问面板测试 Azure AD 单一登录配置。
+在本部分，你将使用以下选项测试 Azure AD 单一登录配置。 
 
-在访问面板中单击“Saba TalentSpace”磁贴时，应会自动登录到设置了 SSO 的 Saba TalentSpace。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+* 在 Azure 门户中单击“测试此应用程序”。 这会重定向到 Saba TalentSpace 登录 URL，可可以从那里启动登录流。 
 
-## <a name="additional-resources"></a>其他资源
+* 直接转到 Saba TalentSpace 登录 URL，并在其中启动登录流。
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
+* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“Saba TalentSpace”磁贴时，应会自动登录到设置了 SSO 的 Saba TalentSpace。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+## <a name="next-steps"></a>后续步骤
 
-- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
-
-- [在 Azure AD 中试用 Saba TalentSpace](https://aad.portal.azure.com/)
-
-- [Microsoft Cloud App Security 中的会话控制是什么？](/cloud-app-security/proxy-intro-aad)
+ 配置 Saba TalentSpace 后，就可以强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。

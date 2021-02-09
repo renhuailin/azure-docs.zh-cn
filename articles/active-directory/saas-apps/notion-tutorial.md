@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/05/2021
 ms.author: jeedes
-ms.openlocfilehash: 512436c9d72e0318ec14bf7551a2fde76c6ef3d8
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 520eb25bcb138c96b24166816d3374255fb7c3b2
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98735898"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493983"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-notion"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Notion 的集成
 
@@ -40,7 +40,7 @@ ms.locfileid: "98735898"
 * Notion 支持 SP 和 IDP 发起的 SSO
 * Notion 支持实时用户预配
 > [!NOTE]
-> 此应用程序的标识符是一个固定字符串值，因此只能在一个租户中配置一个实例。
+> 此应用程序的标识符是一个固定字符串值，因此只能在一个租户中配置一个 Notion 工作区。
 
 
 ## <a name="adding-notion-from-the-gallery"></a>从库中添加 Notion
@@ -80,14 +80,14 @@ ms.locfileid: "98735898"
 
 1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值   ：
 
-    在“回复 URL”文本框中，使用以下模式键入 URL：`https://www.notion.so/sso/saml/<CUSTOM_ID>`
+    在“回复 URL”文本框中，输入具有以下模式的 URL,可以从 Notion 工作区的“设置和成员”>“安全性和标识”>“单一登录 URL”中获取：`https://www.notion.so/sso/saml/<CUSTOM_ID>`   
 
 1. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
-    在“登录 URL”文本框中，使用以下模式键入 URL：`https://www.notion.so/sso/saml/<CUSTOM_ID>`
+    在“登录 URL”文本框中，输入以下 URL：`https://www.notion.so/login`
 
     > [!NOTE]
-    > 这些不是实际值。 请使用实际的“回复 URL”和“注销 URL”更新这些值。 请联系 [Notion 客户端支持团队](mailto:team@makenotion.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
+    > 这些不是实际值。 请使用实际的“回复 URL”和“注销 URL”更新这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
 
 1. Notion 应用程序需要特定格式的 SAML 断言，这要求将自定义属性映射添加到 SAML 令牌属性配置。 以下屏幕截图显示了默认属性的列表。
 
@@ -102,7 +102,7 @@ ms.locfileid: "98735898"
     | lastName | user.surname |
 
 
-1. 在“使用 SAML 设置单一登录”  页的“SAML 签名证书”  部分中，单击“复制”按钮，以复制“应用联合元数据 URL”  ，并将它保存在计算机上。
+1. 在“设置 SAML 单一登录”页的“SAML 签名证书”部分中，单击“复制”按钮以复制“应用联合元数据 URL”  。 转到 Notion 工作区“设置和成员” > “安全性和标识”，将你复制的值粘贴到“IDP 元数据 URL”字段中   。
 
     ![证书下载链接](common/copy-metadataurl.png)
 
@@ -132,7 +132,13 @@ ms.locfileid: "98735898"
 
 ## <a name="configure-notion-sso"></a>配置 Notion SSO
 
-若要在 Notion 端配置单一登录，需要将应用联合元数据 URL 发送到 [Notion 支持团队](mailto:team@makenotion.com) 。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+转到 Notion 工作区“设置和成员” > “安全性和标识”，将你复制的“应用联合元数据 URL”值粘贴到“IDP 元数据 URL”字段中    。
+
+在同一设置页的“电子邮件域”下，单击“联系支持人员”以添加组织的电子邮件域 。
+
+在电子邮件域获得批准并添加该域后，使用“启用 SAML”切换来启用 SAML SSO。
+
+成功测试后，可以使用“强制实施 SAML”切换来强制实施 SAML SSO。 请注意，Notion 工作区管理员保留了使用电子邮件登录的功能，但所有其他成员都必须使用 SAML SSO 登录到 Notion。
 
 ### <a name="create-notion-test-user"></a>创建 Notion 测试用户
 

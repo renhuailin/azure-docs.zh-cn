@@ -4,12 +4,12 @@ description: 在本教程中，将使用由 Intel 提供的 AI 模型服务器�
 ms.topic: tutorial
 ms.date: 09/08/2020
 titleSuffix: Azure
-ms.openlocfilehash: 4ef0b919384839108c003488b0697054ebfa14a0
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: db018c5c8d8f3990fd465f4d586ef4dc70980542
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98629158"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955710"
 ---
 # <a name="tutorial-analyze-live-video-by-using-openvino-model-server--ai-extension-from-intel"></a>教程：使用 OpenVINO™ Model Server（由 Intel 提供的 AI 扩展）来分析实时视频 
 
@@ -124,6 +124,12 @@ Intel® 分发版 [OpenVINO™ 工具套件](https://software.intel.com/content/
     否则，请在左下角“AZURE IOT 中心”窗格附近选择“更多操作”图标，然后选择“设置 IoT 中心连接字符串”  。 可以从 appsettings.json 文件中复制字符串。 或者，为确保在 Visual Studio Code 中配置了正确的 IoT 中心，请使用[选择 IoT 中心命令](https://github.com/Microsoft/vscode-azure-iot-toolkit/wiki/Select-IoT-Hub)。
     
     ![设置 IoT 中心连接字符串](./media/quickstarts/set-iotconnection-string.png)
+
+> [!NOTE]
+> 系统可能会要求你提供 IoT 中心的内置终结点信息。 若要获取该信息，请在 Azure 门户中导航到 IoT 中心，并在左侧导航窗格中查找“内置终结点”选项。 单击此处，在“与事件中心兼容的终结点”部分下查找“与事件中心兼容的终结点” 。 复制并使用框中的文本。 终结点将如下所示：  
+    ```
+    Endpoint=sb://iothub-ns-xxx.servicebus.windows.net/;SharedAccessKeyName=iothubowner;SharedAccessKey=XXX;EntityPath=<IoT Hub name>
+    ```
 
 1. 右键单击 src/edge/config/deployment.openvino.amd64.json，然后选择“为单个设备创建部署”。 
 

@@ -3,19 +3,18 @@ title: 用于存储的 Azure Defender - 优点和功能
 description: 了解用于存储的 Azure Defender 的优点和功能。
 author: memildin
 ms.author: memildin
-ms.date: 9/22/2020
+ms.date: 02/04/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 42e8a1f4ff06f6ca6af4afd428008ca174823c5f
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: eb1635cec2b0bcf7f2c13101b2aeab25a869dc66
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98916415"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99558588"
 ---
 # <a name="introduction-to-azure-defender-for-storage"></a>用于存储的 Azure Defender 简介
-
 
 用于存储的 Azure Defender 是 Azure 原生安全智能层，用于检测试图访问或利用你的存储帐户的异常或可能有害的企图。 它利用安全 AI 的高级功能和[ Microsoft 威胁智能](https://go.microsoft.com/fwlink/?linkid=2128684)提供上下文安全警报和建议。
 
@@ -68,7 +67,40 @@ ms.locfileid: "98916415"
 >
 > 可以在订阅级别或资源级别启用 **用于存储的 Azure Defender**。
 
+## <a name="trigger-a-test-alert-for-azure-defender-for-storage"></a>触发 Azure Defender for Storage 的测试警报
 
+若要在你的环境中测试 Azure Defender for Storage 发出的安全警报，请执行以下步骤，生成“从 Tor 出口节点访问存储帐户”警报：
+
+1. 打开存储帐户，并启用 Azure Defender for Storage。
+1. 从边栏中选择“容器”，打开现有容器或创建一个新容器。
+
+    :::image type="content" source="media/defender-for-storage-introduction/opening-storage-container.png" alt-text="从 Azure 存储帐户打开 blob 容器" lightbox="media/defender-for-storage-introduction/opening-storage-container.png":::
+
+1. 将文件上传到该容器。
+
+    > [!CAUTION]
+    > 不要上传包含敏感数据的文件。
+
+1. 在上传的文件上使用上下文菜单以选择“生成 SAS”。
+
+    :::image type="content" source="media/defender-for-storage-introduction/generate-sas.png" alt-text="lob 容器中的文件的“生成 SAS”选项":::
+
+1. 保留默认选项，然后选择“生成 SAS 令牌和 URL”。
+
+1. 复制生成的 SAS URL。
+
+1. 在本地计算机上，打开 Tor 浏览器。
+
+    > [!TIP]
+    > 可以从 Tor 项目站点 [https://www.torproject.org/download/](https://www.torproject.org/download/) 下载 Tor。
+
+1. 在 Tor 浏览器中，导航到 SAS URL。
+
+1. 下载步骤 3 中上传的文件。
+
+    在两个小时内，你将从安全中心获得以下安全警报：
+
+    :::image type="content" source="media/defender-for-storage-introduction/tor-access-alert-storage.png" alt-text="有关从 Tor 出口节点访问的安全警报":::
 
 ## <a name="next-steps"></a>后续步骤
 

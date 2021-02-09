@@ -7,15 +7,15 @@ author: asudbring
 manager: KumudD
 ms.service: azure-cdn
 ms.topic: tutorial
-ms.date: 11/06/2020
+ms.date: 02/04/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 03ed47ee97f52aca708118f202fad583753549bf
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: b0e8f2b14d506eb408660b939a7c925a33215cca
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94331190"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99537740"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-endpoint"></a>教程：将自定义域添加到终结点
 
@@ -163,6 +163,10 @@ Azure DNS 将别名记录用于同一订阅中的 Azure 资源。
 
 注册自定义域以后，即可将其添加到 CDN 终结点。 
 
+
+---
+# <a name="azure-portal"></a>[**Azure 门户**](#tab/azure-portal)
+
 1. 登录到 [Azure 门户](https://portal.azure.com/)，浏览到 CDN 配置文件，其中包含需要映射到自定义域的终结点。
     
 2. 在“CDN 配置文件”页上，选择要与自定义域关联的 CDN 终结点。 
@@ -189,7 +193,43 @@ Azure DNS 将别名记录用于同一订阅中的 Azure 资源。
     - 对于 **Akamai 的 Azure CDN 标准版** 配置文件，传播通常可在一分钟内完成。 
     - 对于“Verizon 提供的 Azure CDN 标准版”  和“Verizon 提供的 Azure CDN 高级版”  配置文件，传播通常在 10 分钟内完成。   
 
+# <a name="powershell"></a>[**PowerShell**](#tab/azure-powershell)
 
+1. 登录到 Azure PowerShell：
+
+```azurepowershell-interactive
+    Connect-AzAccount
+
+```
+2. 使用 [AzCdnCustomDomain](/powershell/module/az.cdn/new-azcdncustomdomain) 将自定义域映射到 CDN 终结点。 
+
+    * 将 myendpoint8675.azureedge.net 替换为你的终结点 URL。
+    * 将 myendpoint8675 替换为 CDN 终结点名称。
+    * 将 www.contoso.com 替换为你的自定义域名。
+    * 将 myCDN 替换为你的 CDN 配置文件名称。
+    * 将 myResourceGroupCDN 替换为你的资源组名称。
+
+```azurepowershell-interactive
+    $parameters = @{
+        Hostname = 'myendpoint8675.azureedge.net'
+        EndPointName = 'myendpoint8675'
+        CustomDomainName = 'www.contoso.com'
+        ProfileName = 'myCDN'
+        ResourceGroupName = 'myResourceGroupCDN'
+    }
+    New-AzCdnCustomDomain @parameters
+```
+
+Azure 会验证所输入的自定义域名是否存在 CNAME 记录。 如果该 CNAME 正确，会验证自定义域。 
+
+   新的自定义域设置传播到所有 CDN 边缘节点可能需要一些时间： 
+
+- 对于 **Microsoft 推出的 Azure CDN 标准版** 配置文件，传播通常可在 10 分钟内完成。 
+- 对于 **Akamai 的 Azure CDN 标准版** 配置文件，传播通常可在一分钟内完成。 
+- 对于“Verizon 提供的 Azure CDN 标准版”  和“Verizon 提供的 Azure CDN 高级版”  配置文件，传播通常在 10 分钟内完成。   
+
+
+---
 ## <a name="verify-the-custom-domain"></a>验证自定义域
 
 完成自定义域的注册后，请验证该自定义域是否引用 CDN 终结点。
@@ -200,6 +240,9 @@ Azure DNS 将别名记录用于同一订阅中的 Azure 资源。
 
 ## <a name="clean-up-resources"></a>清理资源
 
+---
+# <a name="azure-portal"></a>[**Azure 门户**](#tab/azure-portal-cleanup)
+
 如果不再需要将终结点与自定义域相关联，可通过以下步骤删除自定义域：
  
 1. 在 CDN 配置文件中，选择其自定义域需要删除的终结点。
@@ -208,6 +251,29 @@ Azure DNS 将别名记录用于同一订阅中的 Azure 资源。
 
    自定义域于是与 CDN 终结点解除关联。
 
+# <a name="powershell"></a>[**PowerShell**](#tab/azure-powershell-cleanup)
+
+如果不再需要将终结点与自定义域相关联，可通过以下步骤删除自定义域：
+
+1. 使用 [AzCdnCustomDomain](/powershell/module/az.cdn/remove-azcdncustomdomain) 从终结点中删除自定义域：
+
+    * 将 myendpoint8675 替换为 CDN 终结点名称。
+    * 将 www.contoso.com 替换为你的自定义域名。
+    * 将 myCDN 替换为你的 CDN 配置文件名称。
+    * 将 myResourceGroupCDN 替换为你的资源组名称。
+
+
+```azurepowershell-interactive
+    $parameters = @{
+        CustomDomainName = 'www.contoso.com'
+        EndPointName = 'myendpoint8675'
+        ProfileName = 'myCDN'
+        ResourceGroupName = 'myResourceGroupCDN'
+    }
+    Remove-AzCdnCustomDomain @parameters
+```
+
+---
 ## <a name="next-steps"></a>后续步骤
 
 在本教程中，你了解了如何执行以下操作：

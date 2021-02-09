@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/03/2020
-ms.openlocfilehash: fcc3e487d949a9450f792a6cc230b64e7dbe950a
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: bfb808c634ba946e1a4825d7828db6df8963352c
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202940"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98951237"
 ---
 # <a name="tutorial-use-the-rest-apis"></a>教程：使用 REST API
 
@@ -92,7 +92,7 @@ ms.locfileid: "98202940"
 
 1. 对于“访问权限分配对象”，保留默认值，即“用户、组或服务主体” 
 
-1. 对于“选择”，输入要分配的用户、Azure Active Directory 组或服务主体的名称，然后在结果窗格中单击其名称。
+1. 对于“选择”，输入之前创建的要分配的服务主体的名称，然后在结果窗格中单击其名称。
 
 1. 单击“保存”
 

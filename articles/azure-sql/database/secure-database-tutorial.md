@@ -10,12 +10,12 @@ ms.author: vanto
 ms.reviewer: ''
 ms.date: 09/21/2020
 ms.custom: seoapril2019 sqldbrb=1
-ms.openlocfilehash: 77ed71d74e75abfdf7f84aee9b116f1d9d2ccc9d
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: f42db48e0fa0e85d919d6894e5476b7ef5380698
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94985842"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99089286"
 ---
 # <a name="tutorial-secure-a-database-in-azure-sql-database"></a>教程：保护 Azure SQL 数据库中的数据库
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -124,7 +124,7 @@ SQL 数据库中的数据库受 Azure 中防火墙的保护。 默认情况下�
     ![选择 active directory](./media/secure-database-tutorial/admin-settings.png)  
 
     > [!IMPORTANT]
-    > 需要是“公司管理员”或“全局管理员”才能执行此任务。
+    > 需要是“全局管理员”才能执行此任务。
 
 1. 在“添加管理员”页上搜索并选择 AD 用户或组，然后选择“选择” 。 将会列出 Active Directory 的所有成员和组，灰显的条目不能用作 Azure AD 管理员。 请参阅 [Azure AD 功能和限制](authentication-aad-overview.md#azure-ad-features-and-limitations)。
 

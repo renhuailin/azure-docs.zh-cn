@@ -7,12 +7,12 @@ ms.author: allensu
 ms.service: private-link
 ms.topic: tutorial
 ms.date: 9/25/2020
-ms.openlocfilehash: 477856bd5772cdc0a9ec00d81adf9c50847afdd0
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 3a7e75641f6bb84b490231fcd06e04c3cbad06d3
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97631943"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063461"
 ---
 # <a name="tutorial-connect-to-an-azure-cosmos-account-using-an-azure-private-endpoint"></a>教程：使用 Azure 专用终结点连接到 Azure Cosmos 帐户
 
@@ -218,19 +218,19 @@ Azure 专用终结点是 Azure 中专用链接的构建基块。 它使 Azure �
 
 1. 在左侧导航窗格中选择“资源组”。
 
-2. 选择“myResourceGroup”。
+1. 选择“myResourceGroup”。
 
-3. 选择“myVM”。
+1. 选择“myVM”。
 
-4. 在 **myVM** 的“概述”页上，选择“连接”，然后选择“堡垒”。
+1. 在 **myVM** 的“概述”页上，选择“连接”，然后选择“堡垒”。
 
-5. 选择蓝色的“使用堡垒”按钮。
+1. 选择蓝色的“使用堡垒”按钮。
 
-6. 输入在创建虚拟机期间输入的用户名和密码。
+1. 输入在创建虚拟机期间输入的用户名和密码。
 
-7. 连接后，在服务器上打开 Windows PowerShell。
+1. 连接后，在服务器上打开 Windows PowerShell。
 
-8. 输入 `nslookup <cosmosdb-account-name>.documents.azure.com`。 将 \<cosmosdb-account-name> 替换为你在前面步骤中创建的 Cosmos DB 帐户的名称。 
+1. 输入 `nslookup <cosmosdb-account-name>.documents.azure.com` 并验证名称解析。 将 \<cosmosdb-account-name> 替换为你在前面步骤中创建的 Cosmos DB 帐户的名称。 
 
     ```powershell
     Server:  UnKnown
@@ -241,28 +241,31 @@ Azure 专用终结点是 Azure 中专用链接的构建基块。 它使 Azure �
     Address:  10.1.0.5
     Aliases:  mycosmosdb8675.documents.azure.com
     ```
-
     将为 Cosmos DB 帐户名称返回专用 IP 地址 10.1.0.5。  此地址位于你之前创建的虚拟网络的子网中。
+    
+1. 从门户获取 Azure Cosmos DB 主连接字符串。 有效的连接字符串采用以下格式：
+   
+   对于 SQL API 帐户：`https://<accountName>.documents.azure.com:443/;AccountKey=<accountKey>;` 对于用于 MongoDB 的 Azure Cosmos DB API：`mongodb://<accountName>:<accountKey>@cdbmongo36.mongo.cosmos.azure.com:10255/?ssl=true&replicaSet=globaldb&retrywrites=false`
 
-9. 在虚拟机上安装 [Microsoft Azure 存储资源管理器](../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows&toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
+1. 在虚拟机上安装 [Microsoft Azure 存储资源管理器](../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows&toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
 
-10. 安装“Microsoft Azure 存储资源管理器”后选择“完成”。   保持选中此复选框以打开应用程序。
+1. 安装“Microsoft Azure 存储资源管理器”后选择“完成”。   保持选中此复选框以打开应用程序。
 
-11. 在“连接到 Azure 存储”屏幕中，选择“取消” 。
+1. 在“连接到 Azure 存储”屏幕中，选择“取消” 。
 
-12. 在存储资源管理器中，右键单击“Cosmos DB 帐户”，然后选择“连接到 Cosmos DB” 。
+1. 在存储资源管理器中，右键单击“Cosmos DB 帐户”，然后选择“连接到 Cosmos DB” 。
 
-13. 在“选择 API”下，保留默认值“SQL” 。
+1. 在“选择 API”下，保留默认值“SQL” 。
 
-14. 在“连接字符串”下的框中，粘贴在前面步骤中复制的 Cosmos DB 帐户的连接字符串。
+1. 在“连接字符串”下的框中，粘贴在前面步骤中复制的 Cosmos DB 帐户的连接字符串。
 
-15. 选择“**下一页**”。
+1. 选择“**下一页**”。
 
-16. 在“连接摘要”中验证设置是否正确。  
+1. 在“连接摘要”中验证设置是否正确。  
 
-17. 选择“连接”  。
+1. 选择“连接”  。
 
-18. 关闭到 **myVM** 的连接。
+1. 关闭到 **myVM** 的连接。
 
 
 ## <a name="clean-up-resources"></a>清理资源

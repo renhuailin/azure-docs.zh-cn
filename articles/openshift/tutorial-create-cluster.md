@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 10/26/2020
-ms.openlocfilehash: 7b0aead6ada87ca259c838f3f56e68f1030302a2
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: e6be2b659223fb110d7e13b14d732561df9ad408
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675723"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99072230"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-4-cluster"></a>教程：创建 Azure Red Hat OpenShift 4 群集
 
@@ -88,11 +88,11 @@ Red Hat 拉取机密使群集能够访问 Red Hat 容器注册表以及其他内
 
 * OpenShift 控制台将在 URL（如 `https://console-openshift-console.apps.example.com`）上可用，而在内置域 `https://console-openshift-console.apps.<random>.<location>.aroapp.io` 中不可用。
 
-* 默认情况下，OpenShift 对自定义域 `*.apps.example.com` 上创建的所有路由使用自签名证书。  如果在连接到群集后选择使用自定义 DNS，则需按照 OpenShift 文档[为入口控制器配置自定义 CA](https://docs.openshift.com/aro/4/authentication/certificates/replacing-default-ingress-certificate.html)，并[为 API 服务器配置自定义 CA](https://docs.openshift.com/aro/4/authentication/certificates/api-server.html)。
+* 默认情况下，OpenShift 对自定义域 `*.apps.example.com` 上创建的所有路由使用自签名证书。  如果在连接到群集后选择使用自定义 DNS，则需按照 OpenShift 文档[为入口控制器配置自定义 CA](https://docs.openshift.com/container-platform/4.6/security/certificates/replacing-default-ingress-certificate.html)，并[为 API 服务器配置自定义 CA](https://docs.openshift.com/container-platform/4.6/security/certificates/api-server.html)。
 
 ### <a name="create-a-virtual-network-containing-two-empty-subnets"></a>创建包含两个空子网的虚拟网络
 
-接下来，你将创建一个包含两个空子网的虚拟网络。
+接下来，你将创建一个包含两个空子网的虚拟网络。 如果现有虚拟网络满足你的需求，则可以跳过此步骤。
 
 1. **在将执行 `az` 命令的 shell 环境中设置以下变量。**
 
@@ -131,7 +131,7 @@ Red Hat 拉取机密使群集能够访问 Red Hat 容器注册表以及其他内
 
 2. **创建虚拟网络。**
 
-   运行 OpenShift 4 的 Azure Red Hat OpenShift 群集需要一个包含两个空子网（用于主节点和工作器节点）的虚拟网络。
+   运行 OpenShift 4 的 Azure Red Hat OpenShift 群集需要一个包含两个空子网（用于主节点和工作器节点）的虚拟网络。 可以为此创建新的虚拟网络，也可以使用现有虚拟网络。
 
    在之前创建的同一资源组中创建新的虚拟网络：
 

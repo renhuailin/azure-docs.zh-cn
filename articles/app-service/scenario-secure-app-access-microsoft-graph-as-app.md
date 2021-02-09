@@ -7,16 +7,16 @@ manager: CelesteDG
 ms.service: app-service-web
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 12/16/2020
+ms.date: 01/28/2021
 ms.author: ryanwi
 ms.reviewer: stsoneff
 ms.custom: azureday1
-ms.openlocfilehash: 3d6e9d1d66425655f0db5751a28746b6a6a31c86
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 06837ab0f4685787f8d2615e81d0405fdb8ec711
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97631759"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99062554"
 ---
 # <a name="tutorial-access-microsoft-graph-from-a-secured-app-as-the-app"></a>教程：以应用身份从安全的应用访问 Microsoft Graph
 
@@ -125,9 +125,9 @@ az rest --method post --uri $uri --body $body --headers "Content-Type=applicatio
 
 若要查看作为示例应用程序一部分的代码，请参阅 [GitHub 上的示例](https://github.com/Azure-Samples/ms-identity-easyauth-dotnet-storage-graphapi/tree/main/3-WebApp-graphapi-managed-identity)。
 
-### <a name="install-the-microsoftgraph-client-library-package"></a>安装 Microsoft.Graph 客户端库包
+### <a name="install-the-microsoftidentitywebmicrosoftgraph-client-library-package"></a>安装 Microsoft.Identity.Web.MicrosoftGraph 客户端库包
 
-使用 .NET Core 命令行接口或 Visual Studio 中的包管理器控制台，在项目中安装 [Microsoft.Graph NuGet 包](https://www.nuget.org/packages/Microsoft.Graph)。
+使用 .NET Core 命令行接口或 Visual Studio 中的包管理器控制台，在项目中安装 [Microsoft.Identity.Web.MicrosoftGraph NuGet 包](https://www.nuget.org/packages/Microsoft.Identity.Web.MicrosoftGraph)。
 
 # <a name="command-line"></a>[命令行](#tab/command-line)
 
@@ -136,7 +136,7 @@ az rest --method post --uri $uri --body $body --headers "Content-Type=applicatio
 运行安装命令。
 
 ```dotnetcli
-dotnet add package Microsoft.Graph
+dotnet add package Microsoft.Identity.Web.MicrosoftGraph
 ```
 
 # <a name="package-manager"></a>[包管理器](#tab/package-manager)
@@ -145,7 +145,7 @@ dotnet add package Microsoft.Graph
 
 运行安装命令。
 ```powershell
-Install-Package Microsoft.Graph
+Install-Package Microsoft.Identity.Web.MicrosoftGraph
 ```
 
 ---

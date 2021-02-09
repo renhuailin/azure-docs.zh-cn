@@ -6,16 +6,16 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 11/23/2020
-ms.openlocfilehash: 9cfe8c7e7d2484649bf458524032365b692c9243
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 07b0dd38b616525728c264bd315c5cb8ddcaa79a
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97093513"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99072046"
 ---
 # <a name="network-concepts-for-azure-red-hat-openshift-aro"></a>Azure Red Hat OpenShift (ARO) 的网络概念
 
-本指南概述 OpenShift 4 群集上的 Azure Red Hat OpenShift 中的网络，并提供重要终结点的图示和列表。 若要详细了解核心 OpenShift 网路概念，请参阅 [Azure Red Hat OpenShift 4 网络文档](https://docs.openshift.com/aro/4/networking/understanding-networking.html)。
+本指南概述 OpenShift 4 群集上的 Azure Red Hat OpenShift 中的网络，并提供重要终结点的图示和列表。 若要详细了解核心 OpenShift 网路概念，请参阅 [Azure Red Hat OpenShift 4 网络文档](https://docs.openshift.com/container-platform/4.6/networking/understanding-networking.html)。
 
 ![Azure Red Hat OpenShift 4 网络示意图](./media/concepts-networking/aro4-networking-diagram.png)
 
@@ -64,19 +64,22 @@ ms.locfileid: "97093513"
 
 ## <a name="networking-basics-in-openshift"></a>OpenShift 中的网络基础知识
 
-OpenShift 软件定义的网络 [(SDN)](https://docs.openshift.com/container-platform/4.5/networking/openshift_sdn/about-openshift-sdn.html) 用于通过 Open vSwitch [(OVS)](https://www.openvswitch.org/) 配置叠加网络，这是一种基于容器网络接口 (CNI) 规范的 OpenFlow 实现。 SDN 支持不同的插件，网络策略是在 OpenShift 4 上的 Azure Red Hat 中使用的插件。 所有网络通信都由 SDN 管理，因此虚拟网络上不需要额外的路由来实现 Pod 到 Pod 通信。
+OpenShift 软件定义的网络 [(SDN)](https://docs.openshift.com/container-platform/4.6/networking/openshift_sdn/about-openshift-sdn.html) 用于通过 Open vSwitch [(OVS)](https://www.openvswitch.org/) 配置叠加网络，这是一种基于容器网络接口 (CNI) 规范的 OpenFlow 实现。 SDN 支持不同的插件，网络策略是在 OpenShift 4 上的 Azure Red Hat 中使用的插件。 所有网络通信都由 SDN 管理，因此虚拟网络上不需要额外的路由来实现 Pod 到 Pod 通信。
 
 ## <a name="networking--for-azure-red-hat-openshift"></a>Azure Red Hat OpenShift 的网络
 
-以下网络功能特定于 Azure Red Hat OpenShift：
+以下网络功能特定于 Azure Red Hat OpenShift：  
 * 用户可以在现有虚拟网络中创建其 ARO 群集，也可以在创建其 ARO 群集时创建虚拟网络。
 * Pod 和服务网络 CIDR 是可配置的。
 * 节点和主节点位于不同的子网中。
 * 节点和主节点虚拟网络子网的最小值应设为 /27。
-* Pod CIDR 的最小值应设为 /18（Pod 网络是不可路由的 IP，并且仅在 OpenShift SDN 内使用）。
+* 默认 Pod CIDR 为 10.128.0.0/14。
+* 默认服务 CIDR 为 172.30.0.0/16。
+* Pod 和服务网络 CIDR 不应当与网络上使用的其他地址范围重叠，并且不得在群集的虚拟网络 IP 地址范围内。
+* Pod CIDR 的最小值应设为 /18。 （Pod 网络是不可路由的 IP，并且仅在 OpenShift SDN 内使用。）
 * 每个节点都为其 Pod 分配 /23 子网 （512 个 IP）。 此值不能更改。
 * 不能将 Pod 附加到多个网络。
-* 不能配置出口静态 IP。 （这是一种 OpenShift 功能。 有关信息，请参阅[配置出口 IP](https://docs.openshift.com/container-platform/4.5/networking/openshift_sdn/assigning-egress-ips.html)）。
+* 不能配置出口静态 IP。 （这是一种 OpenShift 功能。 有关信息，请参阅[配置出口 IP](https://docs.openshift.com/container-platform/4.6/networking/openshift_sdn/assigning-egress-ips.html)）。
 
 ## <a name="network-settings"></a>网络设置
 
@@ -95,7 +98,7 @@ OpenShift 软件定义的网络 [(SDN)](https://docs.openshift.com/container-pla
 如果 API 服务器公开可见，则无法创建网络安全组并将其分配给 NIC。
 
 ## <a name="domain-forwarding"></a>域转发
-Azure Red Hat OpenShift 使用 CoreDNS。 可以配置域转发。 你无法将自己的 DNS 引入虚拟网络。 有关详细信息，请参阅关于如何[使用 DNS 转发](https://docs.openshift.com/aro/4/networking/dns-operator.html#nw-dns-forward_dns-operator)的文档。
+Azure Red Hat OpenShift 使用 CoreDNS。 可以配置域转发。 你无法将自己的 DNS 引入虚拟网络。 有关详细信息，请参阅关于如何[使用 DNS 转发](https://docs.openshift.com/container-platform/4.6/networking/dns-operator.html#nw-dns-forward_dns-operator)的文档。
 
 ## <a name="whats-new-in-openshift-45"></a>OpenShift 4.5 中的新增内容
 

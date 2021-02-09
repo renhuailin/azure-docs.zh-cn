@@ -11,13 +11,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: seo-nov-2020
 ms.topic: tutorial
-ms.date: 09/25/2019
-ms.openlocfilehash: fed568d67c688a8c2adab979eb68eaf384a72172
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.date: 02/03/2021
+ms.openlocfilehash: 359f268f69918ccfd9fe34a28c3f8d1c79988393
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539287"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575598"
 ---
 # <a name="tutorial-migrate-mongodb-to-azure-cosmos-dbs-api-for-mongodb-online-using-dms"></a>教程：使用 DMS 将 MongoDB 联机迁移到 Azure Cosmos DB 的用于 MongoDB 的 API
 
@@ -69,9 +69,21 @@ ms.locfileid: "98539287"
 * 打开 Windows 防火墙，使 Azure 数据库迁移服务能够访问源 MongoDB 服务器（默认情况下为 TCP 端口 27017）。
 * 在源数据库的前面使用了防火墙设备时，可能需要添加防火墙规则以允许 Azure 数据库迁移服务访问要迁移的源数据库。
 
+## <a name="configure-azure-cosmos-db-server-side-retries-for-efficient-migration"></a>配置 Azure Cosmos DB 服务器端重试功能来实现高效迁移
+
+资源治理功能有利于从 MongoDB 迁移到 Azure Cosmos DB 的客户，它保证能够充分利用对吞吐量预配的每秒处理请求单位 (RU/秒)。 如果某指定数据迁移服务请求超出了容器预配的每秒处理请求单位 (RU/秒)，Azure Cosmos DB 可能会在迁移过程中限制该请求；随后，需要停用该请求。 数据迁移服务可执行重试，但数据迁移服务与 Azure Cosmos DB 之间的网络跃点中涉及的往返时间会影响该请求的总体响应时间。 缩短受限请求的响应时间可缩短迁移所需的总时间。 借助 Azure Cosmos DB 的服务器端重试功能，服务可截获限制错误代码，并以更短的往返时间重试，从而显著缩短请求响应时间。
+
+你可在 Azure Cosmos DB 门户的“功能”边栏选项卡中找到服务器端重试功能
+
+![MongoDB 服务器端重试功能的屏幕截图。](media/tutorial-mongodb-to-cosmosdb-online/mongo-server-side-retry-feature.png)
+
+如果该功能被禁用，建议你如下所示将其启用
+
+![MongoDB 服务器端重试启用的屏幕截图。](media/tutorial-mongodb-to-cosmosdb-online/mongo-server-side-retry-enable.png)
+
 ## <a name="register-the-microsoftdatamigration-resource-provider"></a>注册 Microsoft.DataMigration 资源提供程序
 
-1. 登录到 Azure 门户，选择“所有服务”  ，然后选择“订阅”  。
+1. 登录到 Azure 门户，选择“所有服务”，然后选择“订阅”。
 
    ![显示门户订阅](media/tutorial-mongodb-to-cosmosdb-online/portal-select-subscription1.png)
 
@@ -89,7 +101,7 @@ ms.locfileid: "98539287"
 
     ![Azure 市场](media/tutorial-mongodb-to-cosmosdb-online/portal-marketplace.png)
 
-2. 在“Azure 数据库迁移服务”屏幕上，选择“创建”   。
+2. 在“Azure 数据库迁移服务”屏幕上，选择“创建” 。
 
     ![创建 Azure 数据库迁移服务实例](media/tutorial-mongodb-to-cosmosdb-online/dms-create1.png)
   
@@ -116,7 +128,7 @@ ms.locfileid: "98539287"
 
 创建服务后，在 Azure 门户中找到并打开它，然后创建一个新的迁移项目。
 
-1. 在 Azure 门户中，选择“所有服务”  ，搜索 Azure 数据库迁移服务，然后选择“Azure 数据库迁移服务”  。
+1. 在 Azure 门户中，选择“所有服务”，搜索 Azure 数据库迁移服务，然后选择“Azure 数据库迁移服务”。
 
     ![查找 Azure 数据库迁移服务的所有实例](media/tutorial-mongodb-to-cosmosdb-online/dms-search.png)
 

@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 媒体服务 v3 对远程文件进行编码和流式传输
+title: 使用媒体服务对远程文件进行编码和流式传输
 description: 按照本教程的步骤，使用 REST 通过 Azure 媒体服务基于 URL 对文件进行编码并流式传输内容。
 services: media-services
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 10/12/2020
 ms.author: inhenkel
-ms.openlocfilehash: c1798ca74493ba22d29cd9ce819d469c29cd5ec3
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 21f7203af267f53d37e26390ea73c896ea9db76e
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98059562"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98953982"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---rest"></a>教程：基于 URL 对远程文件进行编码并流式传输视频 - REST
 

@@ -3,7 +3,7 @@ title: 教程：使用 Postgre 部署 Python Django 应用
 description: 创建使用 PostgreSQL 数据库的 Python Web 应用并将其部署到 Azure。 本教程使用 Django 框架，应用托管在 Linux 上的 Azure 应用服务上。
 ms.devlang: python
 ms.topic: tutorial
-ms.date: 01/04/2021
+ms.date: 02/02/2021
 ms.custom:
 - mvc
 - seodec18
@@ -11,12 +11,12 @@ ms.custom:
 - cli-validate
 - devx-track-python
 - devx-track-azurecli
-ms.openlocfilehash: ffde74a0567661d6b9f77e45a80bfd585e5c7212
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: 05bdbd6c9d5dc3862c3191e4564a79e7a44bc0b8
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97898583"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99494050"
 ---
 # <a name="tutorial-deploy-a-django-web-app-with-postgresql-in-azure-app-service"></a>教程：在 Azure 应用服务中部署使用 PostgreSQL 的 Django Web 应用
 
@@ -39,7 +39,7 @@ ms.locfileid: "97898583"
 
 1. 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 1. 安装 <a href="https://www.python.org/downloads/" target="_blank">Python 3.6 或更高版本</a>。
-1. 安装 <a href="/cli/azure/install-azure-cli" target="_blank">Azure CLI</a> 2.0.80 或更高版本，使用它可以在任何 shell 中运行命令来预配和配置 Azure 资源。
+1. 安装 <a href="/cli/azure/install-azure-cli" target="_blank">Azure CLI</a> 2.18.0 或更高版本，使用它可以在任何 shell 中运行命令来预配和配置 Azure 资源。
 
 打开终端窗口并检查 Python 版本是否为 3.6 或更高版本：
 
@@ -63,11 +63,13 @@ py -3 --version
 
 ---
 
-检查 Azure CLI 版本是否为 2.0.80 或更高版本：
+检查 Azure CLI 版本是否为 2.18.0 或更高版本：
 
 ```azurecli
 az --version
 ```
+
+如果需要升级，请尝试 `az upgrade` 命令（需要版本 2.11+）或请参阅<a href="/cli/azure/install-azure-cli" target="_blank">安装 Azure CLI</a>。
 
 然后通过 CLI 登录到 Azure：
 
@@ -229,7 +231,7 @@ Django 数据库迁移会确保 Azure 数据库上的 PostgreSQL 中的架构与
 
     将 `<app-name>` 替换为之前在 `az webapp up` 命令中使用的名称。
 
-    在 macOS 和 Linux 上，可以使用 [`az webapp ssh`](/cli/azure/webapp?view=azure-cli-latest&preserve-view=true#az_webapp_ssh) 命令以其他方式连接到 SSH 会话。
+    可以使用 [`az webapp ssh`](/cli/azure/webapp?view=azure-cli-latest&preserve-view=true#az_webapp_ssh) 命令以其他方式连接到 SSH 会话。 在 Windows 上，此命令需要 Azure CLI 2.18.0 或更高版本。
 
     如果你无法连接到 SSH 会话，则表示应用本身已启动失败。 [请查看诊断日志](#6-stream-diagnostic-logs)以了解详细信息。 例如，如果你没有在上一部分中创建必要的应用设置，则日志将指示 `KeyError: 'DBNAME'`。
 
@@ -239,8 +241,11 @@ Django 数据库迁移会确保 Azure 数据库上的 PostgreSQL 中的架构与
     # Change to the app folder
     cd $APP_PATH
     
-    # Activate the venv (requirements.txt is installed automatically)
+    # Activate the venv
     source /antenv/bin/activate
+
+    # Install requirements
+    pip install -r requirements.txt
 
     # Run database migrations
     python manage.py migrate
@@ -398,6 +403,7 @@ az webapp up
 ```
 cd $APP_PATH
 source /antenv/bin/activate
+pip instal -r requirements.txt
 python manage.py migrate
 ```
 

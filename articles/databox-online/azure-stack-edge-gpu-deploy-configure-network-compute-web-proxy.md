@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 12/07/2020
+ms.date: 01/27/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: 640098e118db87214d7364132a5119e35cb94c0a
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: ac64233467166ca6567f1601c3b90f80fdba3dcf
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96778710"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954642"
 ---
 # <a name="tutorial-configure-network-for-azure-stack-edge-pro-with-gpu"></a>教程：使用 GPU 为 Azure Stack Edge Pro 配置网络
 
@@ -132,7 +132,8 @@ ms.locfileid: "96778710"
 
 > [!IMPORTANT]
 > * 如果在 Azure Stack Edge Pro 设备上启用计算和使用 IoT Edge 模块，建议将 Web 代理身份验证设置为“无”。 不支持 NTLM。
->* 不支持代理自动配置 (PAC) 文件。 PAC 文件定义了 Web 浏览器和其他用户代理如何自动选择适当的代理服务器（访问方法）来获取给定 URL。 尝试拦截和读取所有流量（然后用其自己的证书对所有内容进行重新签名）的代理不兼容，因为代理的证书不受信任。 通常，透明代理非常适用于 Azure Stack Edge Pro。 不支持非透明的 Web 代理。
+> * 不支持代理自动配置 (PAC) 文件。 PAC 文件定义了 Web 浏览器和其他用户代理如何自动选择适当的代理服务器（访问方法）来获取给定 URL。 
+> * 透明代理非常适用于 Azure Stack Edge Pro。 对于截获和读取所有流量（通过代理服务器上安装的证书）的非透明代理，请将代理证书的公钥上传为 Azure Stack Edge Pro 设备上的签名链。 然后，你可以在 Azure Stack Edge 设备上配置代理服务器设置。 有关详细信息，请参阅[使用自己的证书并通过本地 UI 上传](azure-stack-edge-gpu-deploy-configure-certificates.md#bring-your-own-certificates)。  
 
 <!--1. Go to the **Get started** page in the local web UI of your device.
 2. On the **Network** tile, configure your web proxy server settings. Although web proxy configuration is optional, if you use a web proxy, you can configure it on this page only.

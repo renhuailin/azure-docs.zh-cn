@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 08/06/2020
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, devx-track-js
-ms.openlocfilehash: 874488e5de7888edad5310afce1afd1baec4ece0
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: d790b466f669ed067863b6643c8f59662eb628a7
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98753072"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226432"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>教程：让用户登录并从 JavaScript 单页应用程序 (SPA) 调用 Microsoft 图形 API
 
@@ -275,7 +275,7 @@ ms.locfileid: "98753072"
 1. 选择“注册”  。
 1. 在应用的“概述”页上，记下“应用程序(客户端) ID”值，供稍后使用 。
 1. 在“管理”下，选择“身份验证”。 
-1. 在“隐式授权”部分中，选择“ID 令牌”，然后选择“访问令牌”  。 由于此应用必须将用户登录并调用 API，因此需要 ID 令牌和访问令牌。
+1. 在“隐式授权和混合流”部分，选择“ID 令牌”和“访问令牌”  。 由于此应用必须将用户登录并调用 API，因此需要 ID 令牌和访问令牌。
 1. 选择“保存”。
 
 > ### <a name="set-a-redirect-url-for-nodejs"></a>设置 Node.js 的重定向 URL

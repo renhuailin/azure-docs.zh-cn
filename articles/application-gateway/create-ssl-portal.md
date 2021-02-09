@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 08/14/2020
+ms.date: 01/28/2021
 ms.author: victorh
-ms.openlocfilehash: 96b33c619ecfde8d1a470069f7fab4d840536b46
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: c976ea236ae1d37cc0a543b10a9de55609035632
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93397636"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98986746"
 ---
 # <a name="tutorial-configure-an-application-gateway-with-tls-termination-using-the-azure-portal"></a>教程：使用 Azure 门户配置带有 TLS 终止的应用程序网关
 
@@ -77,8 +77,8 @@ Export-PfxCertificate `
 
 1. 在“基本信息”选项卡上，输入这些值作为以下应用程序网关设置：
 
-   - **资源组** ：选择 **myResourceGroupAG** 作为资源组。 如果该资源组不存在，请选择“新建”，创建一个新的。
-   - **应用程序网关名称** ：输入 *myAppGateway* 作为应用程序网关的名称。
+   - **资源组**：选择 **myResourceGroupAG** 作为资源组。 如果该资源组不存在，请选择“新建”，创建一个新的。
+   - **应用程序网关名称**：输入 *myAppGateway* 作为应用程序网关的名称。
 
         ![新建应用程序网关：基础知识](./media/application-gateway-create-gateway-portal/application-gateway-create-basics.png)
 
@@ -86,13 +86,13 @@ Export-PfxCertificate `
 
     在“配置虚拟网络”下，通过选择“新建”创建新的虚拟网络 。 在打开的“创建虚拟网络”窗口中，输入以下值以创建虚拟网络和两个子网：
 
-    - **名称** ：输入 *myVNet* 作为虚拟网络的名称。
+    - **名称**：输入 *myVNet* 作为虚拟网络的名称。
 
-    - **子网名称** （应用程序网关子网）：子网网关将显示名为“默认值”的子网。 将此子网的名称更改为 myAGSubnet。<br>应用程序网关子网只能包含应用程序网关。 不允许其他资源。
+    - **子网名称**（应用程序网关子网）：子网网关将显示名为“默认值”的子网。 将此子网的名称更改为 myAGSubnet。<br>应用程序网关子网只能包含应用程序网关。 不允许其他资源。
 
-    - **子网名称** （后端服务器子网）：在子网网关的第二行中，在“子网名称”列输入“myBackendSubnet”。
+    - **子网名称**（后端服务器子网）：在子网网关的第二行中，在“子网名称”列输入“myBackendSubnet”。
 
-    - **地址范围** （后端服务器子网）：在子网网格的第二行中，输入不会与 myAGSubnet 的地址范围重叠的地址范围。 例如，如果 myAGSubnet 的地址范围为 10.0.0.0/24，则为 myBackendSubnet 的地址范围输入 10.0.1.0/24  。
+    - **地址范围**（后端服务器子网）：在子网网格的第二行中，输入不会与 myAGSubnet 的地址范围重叠的地址范围。 例如，如果 myAGSubnet 的地址范围为 10.0.0.0/24，则为 myBackendSubnet 的地址范围输入 10.0.1.0/24  。
 
     选择“确定”以关闭“创建虚拟网络”窗口，并保存虚拟网络设置 。
 
@@ -106,22 +106,22 @@ Export-PfxCertificate `
    > [!NOTE]
    > 对于应用程序网关 v2 SKU，只能选择 **公共** 前端 IP 配置。 目前尚未为此 v2 SKU 启用专用前端 IP 配置。
 
-2. 为“公共 IP 地址”选择“新建”，输入“myAGPublicIPAddress”作为公共 IP 地址名称，然后选择“确定” 。 
+2. 为“公共 IP 地址”选择“新增”，输入“myAGPublicIPAddress”作为公共 IP 地址名称，然后选择“确定” 。 
 
    ![新建应用程序网关：前端](./media/application-gateway-create-gateway-portal/application-gateway-create-frontends.png)
 
-3. 在完成时选择“下一步: **后端** 。
+3. 在完成时选择“下一步:**后端**。
 
 ### <a name="backends-tab"></a>“后端”选项卡
 
 后端池用于将请求路由到为请求提供服务的后端服务器。 后端池可以包含 NIC、虚拟机规模集、公共 IP、内部 IP、完全限定的域名 (FQDN) 和多租户后端（例如 Azure 应用服务）。 在此示例中，将使用应用程序网关创建空的后端池，然后将后端目标添加到后端池。
 
-1. 在“后端”选项卡上，选择“+添加后端池” 。
+1. 在“后端”选项卡上，选择“添加后端池” 。
 
 2. 在打开的“添加后端池”窗口中，输入以下值以创建空的后端池：
 
-    - **名称** ：输入“myBackendPool”作为后端池的名称。
-    - **添加不包含目标的后端池** ：选择“是”以创建不包含目标的后端池。 你将在创建应用程序网关之后添加后端目标。
+    - **名称**：输入“myBackendPool”作为后端池的名称。
+    - **添加不包含目标的后端池**：选择“是”以创建不包含目标的后端池。 你将在创建应用程序网关之后添加后端目标。
 
 3. 在“添加后端池”窗口中，选择“添加”以保存后端池配置并返回到“后端”选项卡  。
 
@@ -133,30 +133,31 @@ Export-PfxCertificate `
 
 在“配置”选项卡上，将连接使用传递规则创建的前端和后端池。
 
-1. 选择“传递规则”列中的“添加规则” 。
+1. 选择“传递规则”列中的“添加传递规则” 。
 
 2. 在打开的“添加传递规则”窗口中，输入“myRoutingRule”作为规则名称。
 
 3. 传递规则需要侦听器。 在“添加传递规则”窗口中的“侦听器”选项卡上，输入侦听器的以下值 ：
 
-    - **侦听器名称** ：输入“myListener”作为侦听器名称。
-    - **前端 IP** ：选择“公共”，以选择为前端创建的公共 IP。
-    - **协议** ：选择 **HTTPS** 。
-    - **端口** ：验证是否为端口输入了 443。
+    - **侦听器名称**：输入“myListener”作为侦听器名称。
+    - **前端 IP**：选择“公共”，以选择为前端创建的公共 IP。
+    - **协议**：选择 **HTTPS**。
+    - **端口**：验证是否为端口输入了 443。
 
-   在“HTTPS 证书”下：
+   在“HTTPS 设置”下：
 
+   - 对于“选择证书”，请选择“上传证书” 。
    - **PFX 证书文件** - 浏览到并选择前面创建的 c:\appgwcert.pfx 文件。
    - **证书名称** - 键入“mycert1”作为证书的名称。
-   - 密码 - 键入密码。
+   - 对于“密码”，请键入创建证书所用的密码。
   
         接受“侦听器”选项卡上其他设置的默认值，然后选择“后端目标”选项卡以配置剩余的传递规则 。
 
    ![新建应用程序网关：侦听器](./media/create-ssl-portal/application-gateway-create-rule-listener.png)
 
-4. 在“后端目标”选项卡上，为“后端目标”选择“myBackendPool”  。
+4. 在“后端目标”选项卡上，为“后端目标”选择“myBackendPool”    。
 
-5. 对于“HTTP 设置”，选择“新建”以创建新的 HTTP 设置 。 HTTP 设置将决定传递规则的行为。 在打开的“添加 HTTP 设置”窗口中，为“HTTP 设置名称”输入“myHTTPSetting”。 接受“添加 HTTP 设置”窗口中其他设置的默认值，然后选择“添加”以返回到“添加传递规则”窗口  。 
+5. 对于“HTTP 设置”，请选择“新建”以添加新的 HTTP 设置 。 HTTP 设置将决定传递规则的行为。 在打开的“添加 HTTP 设置”窗口中，为“HTTP 设置名称”输入“myHTTPSetting”。 接受“添加 HTTP 设置”窗口中其他设置的默认值，然后选择“添加”以返回到“添加传递规则”窗口  。 
 
    :::image type="content" source="./media/create-ssl-portal/application-gateway-create-httpsetting.png" alt-text="新建应用程序网关：HTTP 设置":::
 
@@ -164,11 +165,11 @@ Export-PfxCertificate `
 
    ![新建应用程序网关：传递规则](./media/application-gateway-create-gateway-portal/application-gateway-create-rule-backends.png)
 
-7. 在完成时选择“下一步:标记”，然后选择“下一步:查看 + 创建”。
+7. 在完成时选择“下一步:  标记”，然后选择“下一步:  查看 + 创建”。
 
 ### <a name="review--create-tab"></a>“查看 + 创建”选项卡
 
-复查“查看 + 创建”选项卡上的设置，然后选择“创建”以创建虚拟网络、公共 IP 地址和应用程序网关 。 Azure 可能需要数分钟时间来创建应用程序网关。 请等待部署成功完成，然后再前进到下一部分。
+复查“查看 + 创建”选项卡上的设置，然后选择“创建”以创建虚拟网络、公共 IP 地址和应用程序网关   。 Azure 可能需要数分钟时间来创建应用程序网关。 请等待部署成功完成，然后再前进到下一部分。
 
 ## <a name="add-backend-targets"></a>添加后端目标
 
@@ -182,23 +183,23 @@ Export-PfxCertificate `
 
 ### <a name="create-a-virtual-machine"></a>创建虚拟机
 
-1. 在 Azure 门户中，选择“创建资源”。 此时会显示“新建”窗口。
+1. 在 Azure 门户中，选择“创建资源”。  此时会显示“新建”窗口。
 2. 在“常用”列表中选择“Windows Server 2016 Datacenter” 。 此时会显示“创建虚拟机”页。
 
    应用程序网关可将流量路由到其后端池中使用的任何类型的虚拟机。 本示例使用 Windows Server 2016 Datacenter。
 
 1. 对于以下虚拟机设置，请在“基本信息”选项卡中输入相应值：
 
-    - **资源组** ：选择 **myResourceGroupAG** 作为资源组名称。
-    - **虚拟机名称** ：输入 *myVM* 作为虚拟机的名称。
-    - **用户名** ：输入 *azureuser* 作为管理员用户名。
-    - **密码** ：输入管理员帐户的密码。
-1. 接受其他默认值，然后选择“下一步: **磁盘”** 。  
-2. 接受“磁盘” **选项卡的默认值** ，然后选择“下一步: **网络”** 。
-3. 在“网络”选项卡上，验证是否已选择 **myVNet** 作为 **虚拟网络** ，以及是否已将“子网”设置为 **myBackendSubnet** 。 接受其他默认值，然后选择“下一步: **管理”** 。
+    - **资源组**：选择 **myResourceGroupAG** 作为资源组名称。
+    - **虚拟机名称**：输入 *myVM* 作为虚拟机的名称。
+    - **用户名**：为管理员用户名输入一个名称。
+    - **密码**：输入管理员帐户的密码。
+1. 接受其他默认值，然后选择“下一步:**磁盘”** 。  
+2. 接受“磁盘”**选项卡的默认值**，然后选择“下一步:**网络”** 。
+3. 在“网络”选项卡上，验证是否已选择 **myVNet** 作为 **虚拟网络**，以及是否已将“子网”设置为 **myBackendSubnet**。 接受其他默认值，然后选择“下一步:**管理”** 。
 
    应用程序网关可与其所在的虚拟网络外部的实例进行通信，但需要确保已建立 IP 连接。
-1. 在“管理”选项卡上，将“启动诊断”设置为“关闭”。 接受其他默认值，然后选择“复查 + 创建”。
+1. 在“管理”选项卡上，将“启动诊断”设置为“禁用”  。 接受其他默认值，然后选择“复查 + 创建”。
 2. 在“复查 + 创建”选项卡上复查设置，更正任何验证错误，然后选择“创建”。
 3. 等待部署完成，然后再继续。
 
@@ -210,7 +211,7 @@ Export-PfxCertificate `
 
     ![安装自定义扩展](./media/application-gateway-create-gateway-portal/application-gateway-extension.png)
 
-2. 运行以下命令以在虚拟机上安装 IIS： 
+2. 更改你的环境的位置设置，然后运行以下命令在虚拟机上安装 IIS： 
 
    ```azurepowershell-interactive
           Set-AzVMExtension `
@@ -221,7 +222,7 @@ Export-PfxCertificate `
             -ExtensionType CustomScriptExtension `
             -TypeHandlerVersion 1.4 `
             -SettingString '{"commandToExecute":"powershell Add-WindowsFeature Web-Server; powershell Add-Content -Path \"C:\\inetpub\\wwwroot\\Default.htm\" -Value $($env:computername)"}' `
-            -Location EastUS
+            -Location <location>
    ```
 
 3. 使用以前完成的步骤创建第二个虚拟机并安装 IIS。 使用 *myVM2* 作为虚拟机名称，以及作为 **Set-AzVMExtension** cmdlet 的 **VMName** 设置。
@@ -234,9 +235,11 @@ Export-PfxCertificate `
 
 3. 选择“myBackendPool”。
 
-4. 在“目标”下，从下拉列表中选择“虚拟机”。
+4. 在“目标”类型下，从下拉列表中选择“虚拟机” 。
 
-5. 在“虚拟机”和“网络接口” 下，从下拉列表中选择 **myVM** 和 **myVM2** 虚拟机及其关联的网络接口。
+5. 在“目标”下，从下拉列表中选择“myVM”下的网络接口 。
+
+6. 重复此步骤以添加“myVM2”的网络接口。
 
     ![添加后端服务器](./media/application-gateway-create-gateway-portal/application-gateway-backend.png)
 

@@ -8,12 +8,12 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.date: 09/15/2020
-ms.openlocfilehash: b67d75ac99f247659723ac0b5a90fd32ebf627e3
-ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
+ms.openlocfilehash: 5a631d9ae7a7d1792e3c4e4a2cbf8281e1168283
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98569872"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226011"
 ---
 # <a name="tutorial-create-a-blazor-server-app-that-uses-the-microsoft-identity-platform-for-authentication"></a>教程：创建使用 Microsoft 标识平台进行身份验证的 Blazor Server 应用
 
@@ -40,7 +40,7 @@ ms.locfileid: "98569872"
 - 对于“支持的帐户类型”设置，请选择“仅限此组织目录中的帐户”。 
 - 将“重定向 URI”下拉框的设置保留为“Web”并输入 `https://localhost:5001/signin-oidc`。 在 Kestrel 上运行的应用的默认端口为 5001。 如果应用通过一个不同的端口提供，请指定该端口号而非 `5001`。
 
-在“身份验证” > “隐式授权”中，选中“访问令牌”和“ID 令牌”的复选框，然后选择“保存”按钮。
+在“管理”下，选择“身份验证” > “隐式授权和混合流”  。 选择“访问令牌”和“ID 令牌”，然后选择“保存”  。
 
 最后，因为应用调用了一个受保护的 API（在本例中为 Microsoft Graph），因此在请求访问令牌来调用该 API 时，它需要一个客户端机密来验证其身份。
 

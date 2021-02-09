@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/18/2021
 ms.author: jeedes
-ms.openlocfilehash: 3628cb6dbb397b561ff91ba6b6747293a39fd602
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 1d66396b2d97a7f33158f91025f5735c7714cd65
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98632777"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99221036"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-github-ae"></a>教程：Azure Active Directory 与 GitHub AE 的单一登录 (SSO) 集成
 
@@ -71,7 +71,7 @@ ms.locfileid: "98632777"
 
 1. 在 Azure 门户的“GitHub AE”应用程序集成页上，找到“管理”部分并选择“单一登录”  。
 1. 在“选择单一登录方法”页上选择“SAML” 。
-1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置 。
+1. 在“设置 SAML 单一登录”页面上，单击“基本 SAML 配置”旁边的铅笔图标以编辑设置 。
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
@@ -93,11 +93,19 @@ ms.locfileid: "98632777"
 
     ![image](common/default-attributes.png)
 
-1. 除了上述属性，GitHub AE 应用程序还要求在 SAML 响应中传递回更多的属性，如下所示。 这些属性也是预先填充的，但可以根据要求查看它们。
-    
-    | 名称 |  源属性|
-    | ----------- | --------- |
-    | 主要区域中的 | 是 |
+1. 编辑“用户属性和声明”。
+
+1. 单击“添加新声明”，并在文本框中输入名称作为“管理员” 。
+
+1. 展开“声明条件”，并从“用户类型”中选择“成员”  。
+
+1. 单击“选择组”，搜索要包括此声明的“组”，该组的成员应为 GHAE 的管理员 。
+
+1. 为“源”选择“属性”，为“值”输入“true”   。 
+
+10. 单击“ **保存**”。
+
+    ![管理声明](./media/github-ae-tutorial/administrator.png)
 
     > [!NOTE]
     > 若要了解有关如何添加声明的说明，请按照[链接](https://docs.github.com/en/github-ae@latest/admin/authentication/configuring-authentication-and-provisioning-for-your-enterprise-using-azure-ad)中的步骤操作。
@@ -118,7 +126,7 @@ ms.locfileid: "98632777"
 1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 

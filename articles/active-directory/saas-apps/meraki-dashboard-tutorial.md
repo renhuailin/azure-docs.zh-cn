@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/28/2020
 ms.author: jeedes
-ms.openlocfilehash: f635a4c4c6e0b1dcb4d4842d3cddb337d2b26407
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 74009c7e7f2ad28655c9c5322a063a17da96e0c5
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98735147"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493899"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-meraki-dashboard"></a>教程：Azure Active Directory 与 Meraki Dashboard 的单一登录 (SSO) 集成
 
@@ -103,7 +103,7 @@ ms.locfileid: "98735147"
 
     ![编辑 SAML 签名证书](common/edit-certificate.png)
 
-1. 在“SAML 签名证书”部分，复制“指纹值”并将其保存在计算机上。  
+1. 在“SAML 签名证书”部分，复制“指纹值”并将其保存在计算机上。   需要将此值转换为包含冒号，Meraki Dashboard 才能理解它。 例如，如果 Azure 中的指纹为 `C2569F50A4AAEDBB8E`，则需要将其更改为 `C2:56:9F:50:A4:AA:ED:BB:8E`，以便稍后在 Meraki Dashboard 中使用。
 
     ![复制指纹值](common/copy-thumbprint.png)
 
@@ -116,10 +116,10 @@ ms.locfileid: "98735147"
 在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
 
 1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”  。
-1. 选择屏幕顶部的“新建用户”  。
+1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 
@@ -165,7 +165,7 @@ ms.locfileid: "98735147"
 
     ![Meraki Dashboard“添加 SAML IdP”](./media/meraki-dashboard-tutorial/configure-3.png)
 
-1. 在“X.590 证书 SHA1 指纹”文本框中，粘贴从 Azure 门户复制的“指纹”值。   然后单击“保存”  。 保存后，会显示“使用者 URL”。 复制“使用者 URL”值，将其粘贴到 Azure 门户的“基本 SAML 配置”部分的“回复 URL”文本框中。  
+1. 将转换后的指纹值粘贴到“X.590 证书 SHA1 指纹”文本框中，这些值从 Azure 门户复制并已转换为前面部分的步骤 9 中所述的指定格式 。 然后单击“保存”  。 保存后，会显示“使用者 URL”。 复制“使用者 URL”值，将其粘贴到 Azure 门户的“基本 SAML 配置”部分的“回复 URL”文本框中。  
 
     ![Meraki Dashboard 配置](./media/meraki-dashboard-tutorial/configure-4.png)
 

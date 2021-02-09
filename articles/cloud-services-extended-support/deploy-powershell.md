@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 8bfa7c164f5b974a8cf8974b3ff346f3401dd218
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: d6d988b4dd71fadccba056e501ba7c799b46d0d9
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880214"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99508890"
 ---
 # <a name="deploy-a-cloud-service-extended-support-using-azure-powershell"></a>使用 Azure PowerShell 部署云服务（外延支持）
 
@@ -88,7 +88,7 @@ ms.locfileid: "98880214"
     $networkProfile = @{loadBalancerConfiguration = $loadBalancerConfig} 
     ```
  
-9. 创建 Key Vault。 此 Key Vault 将用于存储与云服务（外延支持）角色关联的证书。 Key Vault 必须与云服务位于同一区域和订阅中，并且名称必须唯一。 有关详细信息，请参阅[在 Azure 云服务（外延支持）中使用证书](certificates-and-key-vault.md)。
+9. 创建 Key Vault。 此 Key Vault 将用于存储与云服务（外延支持）角色关联的证书。 确保已启用“访问策略”（在门户中）以访问“用于部署的 Azure 虚拟机”和“用于模板部署的 Azure 资源管理器”。 Key Vault 必须与云服务位于同一区域和订阅中，并且名称必须唯一。 有关详细信息，请参阅[在 Azure 云服务（外延支持）中使用证书](certificates-and-key-vault.md)。
 
     ```powershell
     New-AzKeyVault -Name "ContosKeyVault” -ResourceGroupName “ContosoOrg” -Location “East US” 
@@ -138,6 +138,8 @@ ms.locfileid: "98880214"
     $expiration = (Get-Date).AddYears(1) 
     $extension = New-AzCloudServiceRemoteDesktopExtensionObject -Name 'RDPExtension' -Credential $credential -Expiration $expiration -TypeHandlerVersion '1.2.1' 
 
+    $storageAccountKey = Get-AzStorageAccountKey -ResourceGroupName "ContosOrg" -Name "contosostorageaccount"
+    $configFile = "<WAD public configuration file path>"
     $wadExtension = New-AzCloudServiceDiagnosticsExtension -Name "WADExtension" -ResourceGroupName "ContosOrg" -CloudServiceName "ContosCS" -StorageAccountName "ContosSA" -StorageAccountKey $storageAccountKey[0].Value -DiagnosticsConfigurationPath $configFile -TypeHandlerVersion "1.5" -AutoUpgradeMinorVersion $true 
     $extensionProfile = @{extension = @($rdpExtension, $wadExtension)} 
     ```

@@ -3,12 +3,12 @@ title: 播放多天录制的内容 - Azure
 description: 本教程介绍如何使用 Azure 媒体服务 API 播放多天连续录制的视频内容。
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: 1ec9260be7241057478b06446ac2aa53c14bcb47
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: 81a778b40649c1318b3738a289f0db37fd35376a
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91803426"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99492783"
 ---
 # <a name="tutorial-playback-of-multi-day-recordings"></a>教程：播放多天录制的内容  
 
@@ -57,7 +57,7 @@ ms.locfileid: "91803426"
 }
 ```
 
-接下来，在 Visual Studio 代码中，打开 src/ams-asset-player。 该文件夹包含本教程所需的文件。 打开 appsettings.json 文件，然后将其内容复制到新文件 appsettings.development.json 中。 对后一个文件进行以下编辑：
+接下来，在 Visual Studio 代码中，打开 src/ams-asset-player。 该文件夹包含本教程所需的文件。 打开 appsettings.json 文件，然后将其内容复制到新文件 appsettings.development.json 中。 对新创建的 appsettings.development.json 进行以下编辑：
 
 ```
   "AMS" : {
@@ -78,7 +78,7 @@ ms.locfileid: "91803426"
 1. 搜索并启用“显示详细消息”。
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="扩展设置":::
+    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="显示详细消息":::
 1. <!--In Visual Studio Code, you can click-->单击左侧的“运行”图标（或按 Ctrl+Shift+D），以打开要运行的可用应用程序：
 
     ![显示在 Visual Studio Code 中选择了运行项的菜单的屏幕截图。](./media/playback-multi-day-recordings-tutorial/run.png)

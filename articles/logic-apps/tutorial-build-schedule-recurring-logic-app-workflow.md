@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/30/2020
-ms.openlocfilehash: aad271875abb9024a1ecc7f45018c04d8c79ce95
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 95275e68d0c7674caf4dd2b20f5586db5193fd03
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91842557"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054054"
 ---
 # <a name="tutorial-create-schedule-based-and-recurring-automation-workflows-with-azure-logic-apps"></a>教程：使用 Azure 逻辑应用创建基于计划的、定期执行的自动化工作流
 
@@ -42,6 +42,8 @@ ms.locfileid: "91842557"
   > 如果要使用 Gmail 连接器，则只有 G-Suite 商业帐户可以在逻辑应用中不受限制地使用此连接器。 如果有 Gmail 用户帐户，则只能将此连接器与 Google 批准的特定服务一起使用，也可以[创建用于通过 Gmail 连接器进行身份验证的 Google 客户端应用](/connectors/gmail/#authentication-and-bring-your-own-application)。 有关详细信息，请参阅 [Azure 逻辑应用中 Google 连接器的数据安全和隐私策略](../connectors/connectors-google-data-security-privacy-policy.md)。
 
 * 若要获取路线的行程时间，需要必应地图 API 的访问密钥。 若要获取此密钥，请执行[如何获取必应地图密钥](/bingmaps/getting-started/bing-maps-dev-center-help/getting-a-bing-maps-key)中的步骤。
+
+* 如果逻辑应用需要通过将流量限制为特定 IP 地址的防火墙进行通信，则该防火墙需要允许访问逻辑应用所在的 Azure 区域中的逻辑应用服务或运行时所使用的[入站](logic-apps-limits-and-config.md#inbound)和[出站](logic-apps-limits-and-config.md#outbound) IP 地址。 如果逻辑应用还使用[托管连接器](../connectors/apis-list.md#managed-api-connectors)（如 Office 365 Outlook 连接器或 SQL 连接器），或使用[自定义连接器](/connectors/custom-connectors/)，则防火墙还需要允许访问逻辑应用的 Azure 区域中的所有[托管连接器出站 IP 地址](logic-apps-limits-and-config.md#outbound)。
 
 ## <a name="create-your-logic-app"></a>创建逻辑应用
 
@@ -82,7 +84,7 @@ ms.locfileid: "91842557"
 
    ![屏幕截图显示了逻辑应用设计器搜索框，其中包含“recurrence”搜索词，而在“触发器”列表中，“Recurrence”触发器显示为选中状态。](./media/tutorial-build-scheduled-recurring-logic-app-workflow/add-schedule-recurrence-trigger.png)
 
-1. 在“重复”形状中选择**省略号** ( **...** ) 按钮，然后选择“重命名”。  重命名触发器并提供以下说明：`Check travel time every weekday morning`
+1. 在“重复”形状中选择 **省略号** ( **...** ) 按钮，然后选择“重命名”。  重命名触发器并提供以下说明：`Check travel time every weekday morning`
 
    ![屏幕截图显示省略号按钮处于选定状态，“设置”列表处于打开状态，“重命名”命令处于选定状态。](./media/tutorial-build-scheduled-recurring-logic-app-workflow/rename-recurrence-schedule-trigger.png)
 

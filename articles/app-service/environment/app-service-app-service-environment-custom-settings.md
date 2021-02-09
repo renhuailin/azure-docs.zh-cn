@@ -1,18 +1,18 @@
 ---
 title: 配置自定义设置
 description: 配置应用到整个 Azure 应用服务环境的设置。 了解如何通过 Azure 资源管理器模板来这样做。
-author: stefsch
+author: ccompy
 ms.assetid: 1d1d85f3-6cc6-4d57-ae1a-5b37c642d812
 ms.topic: tutorial
-ms.date: 10/03/2020
-ms.author: stefsch
+ms.date: 01/29/2021
+ms.author: ccompy
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 88163c07d570df5e0ff343776c17c463010ce368
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 5c1e81d02aa35a40a296f04e456be09eeed10331
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91713291"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226383"
 ---
 # <a name="custom-configuration-settings-for-app-service-environments"></a>应用服务环境的自定义配置设置
 ## <a name="overview"></a>概述
@@ -50,18 +50,18 @@ ms.locfileid: "91713291"
 也可以使用 [Azure 资源浏览器](https://resources.azure.com)更新应用服务环境。  
 
 1. 在资源浏览器中，转到应用服务环境的节点（“订阅” > “resourceGroups” > “提供程序” > “Micrososft.Web” > “hostingEnvironments”）。 然后单击要更新的特定应用服务环境。
-2. 在右窗格中，单击上方工具栏中的“读/写”，允许在资源浏览器中进行交互式编辑。****  
-3. 单击蓝色的“编辑”按钮，使 Resource Manager 模板可供编辑。****
+2. 在右窗格中，单击上方工具栏中的“读/写”，允许在资源浏览器中进行交互式编辑。  
+3. 单击蓝色的“编辑”按钮，使 Resource Manager 模板可供编辑。
 4. 滚动到右窗格底部。 **clusterSettings** 属性位于最底部，可以在此输入或更新其值。
 5. 键入（或复制并粘贴）希望在 **clusterSettings** 属性中出现的配置值数组。  
-6. 单击右窗格顶部的绿色“PUT”按钮，以提交对应用服务环境的更改。****
+6. 单击右窗格顶部的绿色“PUT”按钮，以提交对应用服务环境的更改。
 
 不过，提交更改后，约需 30 分钟乘以应用服务环境中前端数量的时间，更改才会生效。
 例如，如果应用服务环境有四个前端，大约需要两个小时才能完成配置更新。 实行配置更改时，就无法在应用服务环境中进行其他缩放操作或配置更改操作。
 
 ## <a name="enable-internal-encryption"></a>启用内部加密
 
-应用服务环境作为一个黑框系统运行，你将看不到系统中的内部组件或通信。 为了实现更高的吞吐量，默认情况下，在内部组件之间不启用加密。 系统很安全，因为流量完全无法访问，不管你是要监视流量还是要访问流量。 如果你的符合性要求必须从端到端对数据路径进行完全加密，则可通过一种方法使用 clusterSetting 实现此要求。  
+应用服务环境作为一个黑框系统运行，你将看不到系统中的内部组件或通信。 为了实现更高的吞吐量，默认情况下，在内部组件之间不启用加密。 系统很安全，因为流量无法访问，不管你是要监视流量还是要访问流量。 如果你的合规性要求必须从端到端对数据路径进行完全加密，则可通过一种方法使用 clusterSetting 启用对完整数据路径的加密。  
 
 ```json
 "clusterSettings": [
@@ -71,7 +71,7 @@ ms.locfileid: "91713291"
     }
 ],
 ```
-这会对前端和辅助角色之间的 ASE 中的内部网络流量进行加密，还会对页面文件和辅助角色磁盘进行加密。 启用 InternalEncryption clusterSetting 后，可能会影响系统性能。 进行更改以启用 InternalEncryption 后，ASE 会处于不稳定状态，直到更改传播完毕。 更改的传播可能需要几个小时才能完成，具体取决于 ASE 中有多少实例。 强烈建议不要在它仍处于使用状态的情况下在 ASE 上启用它。 如果需要对主动使用的 ASE 启用此操作，强烈建议将流量转移到备份环境，直到操作完成。 
+将 InternalEncryption 设置为 true 可对前端和辅助角色之间的 ASE 中的内部网络流量进行加密，还可对页面文件和辅助角色磁盘进行加密。 启用 InternalEncryption clusterSetting 后，可能会影响系统性能。 进行更改以启用 InternalEncryption 后，ASE 会处于不稳定状态，直到更改传播完毕。 更改的传播可能需要几个小时才能完成，具体取决于 ASE 中有多少实例。 强烈建议不要在 InternalEncryption 仍处于使用状态的情况下在 ASE 上启用它。 如果需要对主动使用的 ASE 启用 InternalEncryption，强烈建议将流量转移到备份环境，直到操作完成。 
 
 
 ## <a name="disable-tls-10-and-tls-11"></a>禁用 TLS 1.0 和 TLS 1.1
@@ -92,13 +92,13 @@ ms.locfileid: "91713291"
 设置的名称显示 1.0，但在配置以后，却禁用了 TLS 1.0 和 TLS 1.1。
 
 ## <a name="change-tls-cipher-suite-order"></a>更改 TLS 密码套件顺序
-来自客户的另一个问题是，他们是否可以修改由其服务器协商的密码列表，而这可以通过修改 **clusterSettings** 来实现，如下所示。 可以从[此 MSDN 文章](https://msdn.microsoft.com/library/windows/desktop/aa374757\(v=vs.85\).aspx)检索可用的密码套件列表。
+ASE 支持更改默认密码套件。 默认密码集与多租户服务中使用的密码集相同。 更改密码套件会影响整个应用服务部署，因此只能在单租户 ASE 中实现此功能。 ASE 需要两个密码套件：TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 和 TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256。 如果你希望使用最强和最小的密码套件集来操作 ASE，请仅使用两个必需的密码。 若要将 ASE 配置为仅使用它所需的密码，请修改 clusterSettings，如下所示。 
 
 ```json
 "clusterSettings": [
     {
         "name": "FrontEndSSLCipherSuiteOrder",
-        "value": "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384_P256,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256_P256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P256,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA_P256,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA_P256"
+        "value": "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256"
     }
 ],
 ```

@@ -7,16 +7,16 @@ manager: CelesteDG
 ms.service: app-service-web
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 11/30/2020
+ms.date: 01/28/2021
 ms.author: ryanwi
 ms.reviewer: stsoneff
 ms.custom: azureday1
-ms.openlocfilehash: e07ec17a4e14f0099d82bd444f2ee8d37abe9908
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 3413c1a3f27b48c60ae730ad230c653928702faa
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96434985"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063377"
 ---
 # <a name="tutorial-access-microsoft-graph-from-a-secured-app-as-the-user"></a>教程：以用户身份从安全的应用访问 Microsoft Graph
 
@@ -85,7 +85,7 @@ Web 应用现在具有所需的权限，并且还将 Microsoft Graph 的客户�
 
 ### <a name="install-client-library-packages"></a>安装客户端库包
 
-使用 .NET Core 命令行接口或 Visual Studio 中的包管理器控制台，在项目中安装 [Microsoft.Identity.Web](https://www.nuget.org/packages/Microsoft.Identity.Web/) 和 [Microsoft.Graph](https://www.nuget.org/packages/Microsoft.Graph) NuGet 包。
+使用 .NET Core 命令行接口或 Visual Studio 中的包管理器控制台，在项目中安装 [Microsoft.Identity.Web](https://www.nuget.org/packages/Microsoft.Identity.Web/) 和 [Microsoft.Identity.Web.MicrosoftGraph](https://www.nuget.org/packages/Microsoft.Identity.Web.MicrosoftGraph) NuGet 包。
 
 # <a name="command-line"></a>[命令行](#tab/command-line)
 
@@ -94,7 +94,7 @@ Web 应用现在具有所需的权限，并且还将 Microsoft Graph 的客户�
 运行安装命令。
 
 ```dotnetcli
-dotnet add package Microsoft.Graph
+dotnet add package Microsoft.Identity.Web.MicrosoftGraph
 
 dotnet add package Microsoft.Identity.Web
 ```
@@ -105,7 +105,7 @@ dotnet add package Microsoft.Identity.Web
 
 运行安装命令。
 ```powershell
-Install-Package Microsoft.Graph
+Install-Package Microsoft.Identity.Web.MicrosoftGraph
 
 Install-Package Microsoft.Identity.Web
 ```

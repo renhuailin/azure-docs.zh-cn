@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 11/02/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 37bd7d91dfe9e4b9e620f89e7504331d8f631a6a
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 4851d06ffedaacb441d28cae24d7d32bfe1c611c
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98602121"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576255"
 ---
 # <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>教程：使用 Azure 数字孪生 API 编写代码
 
@@ -253,12 +253,16 @@ Azure 数字孪生的主要功能是能够轻松有效地[查询](concepts-query
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/fullClientApp.cs":::
 
 ## <a name="clean-up-resources"></a>清理资源
- 
-本教程中使用的实例可重复用于下一教程 [*教程：使用示例客户端应用了解基础知识*](tutorial-command-line-app.md)。 如果打算继续学习下一个教程，可以保留在此处设置的 Azure 数字孪生实例。
+
+完成本教程后，可选择想要删除的资源，这具体取决于你接下来要执行哪些操作。
+
+* 如果打算继续学习下一个教程，可在下一教程中重复使用本教程中的实例。 你可保留在此处设置的 Azure 数字孪生资源，并跳过本部分的其余部分。
+
+[!INCLUDE [digital-twins-cleanup-clear-instance.md](../../includes/digital-twins-cleanup-clear-instance.md)]
  
 [!INCLUDE [digital-twins-cleanup-basic.md](../../includes/digital-twins-cleanup-basic.md)]
 
-最后，删除在本地计算机上创建的项目文件夹。
+你可能还需要从本地计算机中删除项目文件夹。
 
 ## <a name="next-steps"></a>后续步骤
 

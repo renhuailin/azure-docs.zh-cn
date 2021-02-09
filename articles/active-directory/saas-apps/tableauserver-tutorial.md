@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/27/2020
+ms.date: 01/25/2021
 ms.author: jeedes
-ms.openlocfilehash: 3c9d79ef4fd73adbe3ba376f1723693ea8e85197
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 7ee22121fd023f3942eed64bd605bf87b961d893
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736501"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99429815"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-tableau-server"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Tableau Server 集成
 
@@ -40,7 +40,7 @@ ms.locfileid: "98736501"
 
 * Tableau Server 支持 **SP** 发起的 SSO
 
-## <a name="adding-tableau-server-from-the-gallery"></a>从库中添加 Tableau Server
+## <a name="add-tableau-server-from-the-gallery"></a>从库中添加 Tableau Server
 
 要配置 Tableau Server 与 Azure AD 的集成，需要从库中将 Tableau Server 添加到托管 SaaS 应用列表。
 
@@ -83,7 +83,7 @@ ms.locfileid: "98736501"
     c. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://azure.<domain name>.link/wg/saml/SSO/index.html`
 
     > [!NOTE]
-    > 上面的值不是实际值。 请使用来自 Tableau Server 配置页面的实际 URL 和标识符更新这些值，本教程下文中介绍了此页面。
+    > 上面的值不是实际值。 请使用来自 Tableau Server 配置页面的实际登录 URL、标识符和回复 URL 更新这些值，本教程下文中介绍了此页面。
 
 1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中找到“联合元数据 XML”，选择“下载”以下载该证书并将其保存在计算机上   。
 
@@ -123,11 +123,11 @@ ms.locfileid: "98736501"
 
 2. 在“配置”选项卡上，选择“用户标识和访问”，然后选择“身份验证方法”选项卡。
 
-    ![显示从“用户标识和访问”选择了“身份验证”的屏幕截图。](./media/tableauserver-tutorial/tutorial-tableauserver-auth.png)
+    ![显示从“用户标识和访问”选择了“身份验证”的屏幕截图。](./media/tableauserver-tutorial/auth.png)
 
 3. 在“配置”页上，执行以下步骤：
 
-    ![显示可在其中输入所述值的“配置”页的屏幕截图。](./media/tableauserver-tutorial/tutorial-tableauserver-config.png)
+    ![显示可在其中输入所述值的“配置”页的屏幕截图。](./media/tableauserver-tutorial/config.png)
 
     a. 对于 **身份验证方法**，请选择“SAML”。
 
@@ -143,7 +143,7 @@ ms.locfileid: "98736501"
 
     g. 输入 IdP 用来保存用户名、显示名称和电子邮件地址的属性的名称。
 
-    h. 单击“保存”
+    h. 单击“ **保存**”。
 
     > [!NOTE]
     > 客户必须上传 PEM 编码的 x509 证书文件（扩展名为 .crt）以及作为证书密钥文件的 RSA 或 DSA 私钥文件（扩展名为 .key）。 有关证书文件和证书密钥文件的详细信息，请参阅[此](https://help.tableau.com/current/server/en-us/saml_requ.htm)文档。 如果需要帮助在 Tableau Server 上配置 SAML，请参阅此文：[配置服务器端 SAML](https://help.tableau.com/current/server/en-us/config_saml.htm)。
@@ -165,9 +165,8 @@ ms.locfileid: "98736501"
 
 * 直接转到 Tableau Server 登录 URL，并在其中启动登录流。
 
-* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 Tableau Server 磁贴时，会重定向到 Tableau Server 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
-
+* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 Tableau Server 磁贴时，会重定向到 Tableau Server 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
 
 ## <a name="next-steps"></a>后续步骤
 
-配置 Tableau Server 后，即可强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-aad)
+配置 Tableau Server 后，就可以强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。

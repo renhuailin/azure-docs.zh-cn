@@ -16,12 +16,12 @@ ms.custom:
 ms.date: 02/22/2019
 ms.topic: tutorial
 ms.service: iot-hub
-ms.openlocfilehash: 060ed8bfc424fcb9dab8fc12faf5e3822fa86a31
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 253ec23a421415c11e4b47670dca870ebc463256
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98621438"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99538667"
 ---
 # <a name="tutorial-use-a-simulated-device-to-test-connectivity-with-your-iot-hub"></a>教程：使用模拟设备测试与 IoT 中心的连接
 
@@ -66,15 +66,15 @@ node --version
 
 登录门户，导航到 IoT 中心。 然后导航到“IoT 设备”工具：
 
-![“IoT 设备”工具](media/tutorial-connectivity/iot-devices-tool.png)
+:::image type="content" source="media/tutorial-connectivity/iot-devices-tool.png" alt-text="“IoT 设备”工具":::
 
-若要注册新设备，请单击“+ 添加”，将“设备 ID”设置为 **MyTestDevice**，然后单击“保存”：  
+若要注册新设备，请单击“+ 新建”，将“设备 ID”设置为 MyTestDevice，然后单击“保存”   。
 
-![添加新设备](media/tutorial-connectivity/add-device.png)
+:::image type="content" source="media/tutorial-connectivity/add-device.png" alt-text="添加新设备":::
 
-若要检索 **MyTestDevice** 的连接字符串，请在设备列表中单击它，然后复制“连接字符串-主键”的值。 连接字符串包含设备的共享访问密钥。
+若要检索 MyTestDevice 的连接字符串，请在设备列表中单击它，然后复制“主连接字符串”值 。 连接字符串包含设备的共享访问密钥。
 
-![检索设备连接字符串](media/tutorial-connectivity/copy-connection-string.png)
+:::image type="content" source="media/tutorial-connectivity/copy-connection-string.png" alt-text="检索设备连接字符串}":::
 
 若要模拟 **MyTestDevice** 将遥测数据发送到 IoT 中心，请运行以前下载的 Node.js 模拟设备应用程序。
 
@@ -176,7 +176,7 @@ node SimulatedDevice-2.js "{Your SAS token}"
 首先，请使用以下命令检索模拟设备的当前连接字符串：
 
 ```azurecli-interactive
-az iot hub device-identity show-connection-string --device-id MyTestDevice --output table --hub-name {YourIoTHubName}
+az iot hub device-identity connection-string show --device-id MyTestDevice --output table --hub-name {YourIoTHubName}
 ```
 
 若要运行可发送消息的模拟设备，请导航到已下载代码中的 **iot-hub\Tutorials\ConnectivityTests** 文件夹。

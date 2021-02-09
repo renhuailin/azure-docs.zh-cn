@@ -8,12 +8,12 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.date: 10/16/2020
-ms.openlocfilehash: 4d6401c53071235784a5371a4a6315e4e25a438f
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 30b7f1054f7bfee8dc58638791f0b8a424de92a4
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98680259"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226416"
 ---
 # <a name="tutorial-sign-in-users-and-call-a-protected-api-from-a-blazor-webassembly-app"></a>教程：从 Blazor WebAssembly 应用让用户登录并调用受保护的 API
 
@@ -42,7 +42,7 @@ ms.locfileid: "98680259"
 - 对于“支持的帐户类型”设置，请选择“仅限此组织目录中的帐户”。 
 - 将“重定向 URI”下拉框的设置保留为“Web”并输入 `https://localhost:5001/authentication/login-callback`。 在 Kestrel 上运行的应用的默认端口为 5001。 如果应用通过一个不同的端口提供，请指定该端口号而非 `5001`。
 
-注册后，在“身份验证” > “隐式授权”中，选中“访问令牌”和“ID 令牌”的复选框，然后选择“保存”按钮    。
+注册后，在“管理”下，选择“身份验证” > “隐式授权和混合流”  。 选择“访问令牌”和“ID 令牌”，然后选择“保存”  。
 
 ## <a name="create-the-app-using-the-net-core-cli"></a>使用 .NET Core CLI 创建应用
 
@@ -80,7 +80,7 @@ dotnet run --framework netstandard2.1
 
 [Microsoft Graph](/graph/overview) 包含使用户可访问 Microsoft 365 数据的 API，并且支持 Microsoft 标识平台颁发的令牌，这使得它成为很棒的受保护 API，可用作示例。 在本部分，你将添加代码来调用 Microsoft Graph，并在应用程序的“提取数据”页面上显示用户的电子邮件。
 
-本部分采用常见方法编写，该方法使用命名客户端调用受保护的 API。 这一方法可用于其他要调用的受保护 API。 但是，如果你确实计划从应用程序调用 Microsoft Graph，那么可使用 Graph SDK 来减少样板。 .NET 文档包含有关[如何使用 Graph SDK](/aspnet/core/blazor/security/webassembly/graph-api?view=aspnetcore-5.0) 的说明。
+本部分采用常见方法编写，该方法使用命名客户端调用受保护的 API。 这一方法可用于其他要调用的受保护 API。 但是，如果你确实计划从应用程序调用 Microsoft Graph，那么可使用 Graph SDK 来减少样板。 .NET 文档包含有关[如何使用 Graph SDK](/aspnet/core/blazor/security/webassembly/graph-api?view=aspnetcore-5.0&preserve-view=true) 的说明。
 
 在开始之前，请注销你的应用，因为你将对所需权限进行更改，并且你的当前令牌将不起作用。 如果你尚未这样做，请再次运行应用，并在更新以下代码之前选择“注销”。
 

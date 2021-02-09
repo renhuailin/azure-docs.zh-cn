@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 5/8/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: db85bf19c1b040fea1ed2f5d6dcf904288366c7f
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 5658bfcf0bf877db1dd001c2af58a40f3b027bd9
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98050232"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576238"
 ---
 # <a name="tutorial-explore-azure-digital-twins-with-a-sample-client-app"></a>教程：使用示例客户端应用了解 Azure 数字孪生
 
@@ -274,12 +274,15 @@ Azure 数字孪生的主要功能是能够轻松有效地[查询](concepts-query
 
 ## <a name="clean-up-resources"></a>清理资源
 
-本教程中的项目为下一个教程（即 [*教程：连接端到端解决方案*](tutorial-end-to-end.md)）奠定基础。 如果打算继续学习下一个教程，则可以保留此处设置的资源，以便继续使用此 Azure 数字孪生实例和已配置的示例应用。
-* 在本例中，可以使用示例应用的 `DeleteAllTwins` 和 `DeleteAllModels` 命令分别清除实例中的孪生和模型。 这将为下一个教程奠定基础。
+完成本教程后，可选择想要删除的资源，这具体取决于你接下来要执行哪些操作。
+
+* 如果打算继续学习下一个教程，可保留在此处设置的资源，以便继续在下一个教程中使用此 Azure 数字孪生实例和已配置的示例应用
+
+* 若要继续使用 Azure 数字孪生实例，但想要清除其所有模型、孪生和关系，可使用示例应用的 `DeleteAllTwins` 和 `DeleteAllModels` 命令分别清除实例中的孪生和模型。 这将为下一个教程奠定基础。
 
 [!INCLUDE [digital-twins-cleanup-basic.md](../../includes/digital-twins-cleanup-basic.md)]
 
-最后，删除下载到本地计算机上的项目示例文件夹。
+你可能还需要从本地计算机中删除项目文件夹。
 
 ## <a name="next-steps"></a>后续步骤 
 

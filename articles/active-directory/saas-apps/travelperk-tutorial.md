@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/23/2020
 ms.author: jeedes
-ms.openlocfilehash: 23a741e96807acdb7b162b65597c651a2a6c3235
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: eefc47e1308dc5b59d8b57d7481a5250a7d2af93
+ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92509210"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99475737"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-travelperk"></a>教程：Azure Active Directory 单一登录 (SSO) 与 TravelPerk 的集成
 
@@ -31,7 +31,7 @@ ms.locfileid: "92509210"
 若要开始操作，需备齐以下项目：
 
 * 一个 Azure AD 订阅。 如果没有订阅，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。
-* 已启用 TravelPerk 单一登录 (SSO) 的订阅。
+* 具有高级订阅的 TravelPerk 帐户。
 
 ## <a name="scenario-description"></a>方案描述
 
@@ -78,16 +78,16 @@ ms.locfileid: "92509210"
 
 1. 在“基本 SAML 配置”部分，输入以下字段的值：
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<COMPANY>.travelperk.com/`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<COMPANY>.travelperk.com/` 
 
     b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<COMPANY>.travelperk.com/accounts/saml2/metadata/<APPLICATION_ID>`
 
     c. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<COMPANY>.travelperk.com/accounts/saml2/callback/<APPLICATION_ID>/?acs`
 
     > [!NOTE]
-    > 这些不是实际值。 请使用实际登录 URL、回复 URL 和标识符更新这些值。 请联系 [TravelPerk 客户端支持团队](mailto:trex@travelperk.com)以获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
+    > 这些不是实际值。 请使用实际登录 URL、回复 URL 和标识符更新这些值。 可在你的 TravelPerk 帐户中找到这些值：转到“公司设置” > “集成” > “单一登录”  。 若要获得帮助，请访问 [TravelPerk 帮助中心](https://support.travelperk.com/hc/en-us/articles/360052450271-How-can-I-setup-SSO-for-Azure-SAML-)。
 
-1. TravelPerk 应用程序需要特定格式的 SAML 断言，这就需要将自定义属性映射添加到 SAML 令牌属性配置。 以下屏幕截图显示了默认属性的列表，其中的 **emailaddress** 通过 **user.mail** 进行映射。 TravelPerk 应用程序需要 user.userprincipalname 与 emailaddress 进行映射，因此你需要通过单击“编辑”图标来编辑属性映射，然后更改属性映射  。
+1. TravelPerk 应用程序需要特定格式的 SAML 断言，这就需要将自定义属性映射添加到 SAML 令牌属性配置。 以下屏幕截图显示了默认属性的列表。 在默认映射中，emailaddress 是使用 user.mail 映射的 。 但是，TravelPerk 应用程序期望使用 user.userprincipalname 映射 emailaddress 。 对于 TravelPerk，必须编辑属性映射：单击“编辑”图标，然后更改属性映射。 若要编辑某一属性，只需单击该属性以打开编辑模式。
 
     ![image](common/default-attributes.png)
 
@@ -106,7 +106,7 @@ ms.locfileid: "92509210"
 1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 
