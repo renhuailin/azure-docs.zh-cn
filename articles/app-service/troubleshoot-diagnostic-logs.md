@@ -5,12 +5,12 @@ ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
 ms.topic: article
 ms.date: 09/17/2019
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 3b7f8f5a0f48bf0cdca7f72e5fb364ea0a5d1315
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 8f3fb0be08bb806d74c689a7656c1c55019eb105
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99576593"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99980603"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>为 Azure 应用服务中的应用启用诊断日志记录
 ## <a name="overview"></a>概述
@@ -189,12 +189,13 @@ az webapp log tail --name appname --resource-group myResourceGroup --path http
 |-|-|-|-|-|-|
 | AppServiceConsoleLogs | Java SE 和 Tomcat | 是 | 是 | 是 | 标准输出和标准错误 |
 | AppServiceHTTPLogs | 是 | 是 | 是 | 是 | Web 服务器日志 |
-| AppServiceEnvironmentPlatformLogs | 是 | 不适用 | 是 | 是 | 应用服务环境：缩放、配置更改和状态日志|
+| AppServiceEnvironmentPlatformLogs | 是 | 空值 | 是 | 是 | 应用服务环境：缩放、配置更改和状态日志|
 | AppServiceAuditLogs | 是 | 是 | 是 | 是 | 通过 FTP 和 Kudu 进行的登录活动 |
-| AppServiceFileAuditLogs | 是 | 是 | TBA | TBA | 对站点内容所做的文件更改；仅适用于高级层和更高层级 |
+| AppServiceFileAuditLogs | 是 | 是 | TBA | TBA | 对网站内容所做的文件更改; **仅适用于高级层和更高版本** |
 | AppServiceAppLogs | ASP .NET | ASP .NET | Java SE 和 Tomcat Blessed 图像 <sup>1</sup> | Java SE 和 Tomcat Blessed 图像 <sup>1</sup> | 应用程序日志 |
 | AppServiceIPSecAuditLogs  | 是 | 是 | 是 | 是 | 来自 IP 规则的请求 |
 | AppServicePlatformLogs  | TBA | 是 | 是 | 是 | 容器操作日志 |
+| AppServiceAntivirusScanAuditLogs | 是 | 是 | 是 | 是 | 使用 Microsoft Defender [的防病毒扫描日志](https://azure.github.io/AppService/2020/12/09/AzMon-AppServiceAntivirusScanAuditLogs.html);**仅适用于高级层** | 
 
 <sup>1</sup> 对于 Java SE 应用，请将“$WEBSITE_AZMON_PREVIEW_ENABLED”添加到应用设置，并将其设置为“1”或“true”。
 

@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 0864db8a653ff1d6f89ed0b1c857e51053ff50ff
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: f46a0938ebb8d9fe7e032162120056dca96b9567
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99592597"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979756"
 ---
 # <a name="azure-resources-for-qna-maker"></a>适用于 QnA Maker 的 Azure 资源
 
@@ -244,74 +244,6 @@ QnA Maker 资源的资源名称（如 `qna-westus-f0-b` ）还用于命名其他
 > [!TIP]
 > 使用命名约定在资源或资源组的名称中指示定价层。 如果在创建新知识库或添加新文档时收到错误，则认知搜索定价层限制是常见问题。
 
-### <a name="resource-purposes"></a>资源目的
-
-使用 QnA Maker 创建的每个 Azure 资源都有特定用途：
-
-* QnA Maker 资源
-* 认知搜索资源
-* 应用服务
-* 应用计划服务
-* Application Insights 服务
-
-
-### <a name="cognitive-search-resource"></a>认知搜索资源
-
-[认知搜索](../../../search/index.yml)资源用于：
-
-* 存储 QnA 对
-* 在运行时提供 QnA 对的初始排名 (ranker #1) 
-
-#### <a name="index-usage"></a>索引使用情况
-
-资源保留一个索引作为测试索引，其余索引与每个已发布的知识库关联。
-
-定价为包含15个索引的资源将保留14个发布的知识库，而一个索引用于测试所有知识库。 此测试索引按知识库分区，以便使用 "交互式测试" 窗格的查询将使用测试索引，但仅从与特定知识库关联的特定分区返回结果。
-
-#### <a name="language-usage"></a>语言用法
-
-在 QnA Maker 资源中创建的第一个知识库用于确定认知搜索资源及其所有索引的 _单一_ 语言集。 只能为 QnA Maker 服务 _设置一种语言_ 。
-
-### <a name="qna-maker-resource"></a>QnA Maker 资源
-
-QnA Maker 资源提供对创作和发布 Api 的访问，以及自然语言处理 (NLP) 的第二排名层 (在运行时 QnA 对的 ranker #2) 。
-
-第二个排名适用于智能筛选器，这些筛选器可以包含元数据和跟进提示。
-
-#### <a name="qna-maker-resource-configuration-settings"></a>QnA Maker 资源配置设置
-
-在 [QnA Maker 门户](https://qnamaker.ai)中创建新知识库时，" **语言** " 设置是在资源级别应用的唯一设置。 您在为资源创建第一个知识库时选择语言。
-
-### <a name="app-service-and-app-service-plan"></a>应用服务和应用服务计划
-
-[应用服务](../../../app-service/index.yml)由客户端应用程序用于通过运行时终结点访问已发布的知识库。
-
-若要查询已发布的知识库，所有发布的知识库均使用相同的 URL 终结点，但在路由中指定 **知识库 ID** 。
-
-`{RuntimeEndpoint}/qnamaker/knowledgebases/{kbId}/generateAnswer`
-
-### <a name="application-insights"></a>Application Insights
-
-[Application Insights](../../../azure-monitor/app/app-insights-overview.md) 用于收集聊天日志和遥测数据。 查看常见的 [Kusto 查询](../how-to/get-analytics-knowledge-base.md) 以获取有关服务的信息。
-
-## <a name="share-services-with-qna-maker"></a>与 QnA Maker 共享服务
-
-QnA Maker 创建多个 Azure 资源。 若要减少成本共享的管理和权益，请使用下表来了解可以和不能共享的内容：
-
-|服务|共享|原因|
-|--|--|--|
-|认知服务|X|不能通过设计|
-|应用服务计划|✔|为应用服务计划分配的固定磁盘空间。 如果共享同一应用服务计划的其他应用使用了大量磁盘空间，QnAMaker 应用服务实例将会遇到问题。|
-|应用服务|X|不能通过设计|
-|Application Insights|✔|可以共享|
-|搜索服务|✔|1. `testkb` 是 QnAMaker 服务的保留名称; 其他名称不能使用它。<br>2. 名称的同义词映射 `synonym-map` 是为 QnAMaker 服务保留的。<br>3. 已发布的知识库数受搜索服务层限制。 如果有可用的可用索引，则其他服务可以使用这些索引。|
-
-### <a name="using-a-single-cognitive-search-service"></a>使用单个认知搜索服务
-
-如果通过门户创建 QnA 服务及其依赖项 (如搜索) ，系统会为您创建一个搜索服务并将其链接到 QnA Maker 服务。 创建这些资源后，你可以更新应用服务设置，以使用以前存在的搜索服务，并删除刚刚创建的搜索服务。
-
-了解 [如何将 QnA Maker 配置](../How-To/set-up-qnamaker-service-azure.md#configure-qna-maker-to-use-different-cognitive-search-resource) 为使用不同的认知服务资源，而不是创建 QnA Maker 资源创建过程的一部分。
-
 # <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/v2)
 
 QnA Maker 管理的 (预览版) 资源的资源名称 `qna-westus-f0-b` 也用于命名其他资源。
@@ -330,12 +262,87 @@ QnA Maker 管理的 (预览版) 资源的资源名称 `qna-westus-f0-b` 也用�
 > [!TIP]
 > 使用命名约定在资源或资源组的名称中指示定价层。 如果在创建新知识库或添加新文档时收到错误，则认知搜索定价层限制是常见问题。
 
-### <a name="resource-purposes"></a>资源目的
+---
+
+## <a name="resource-purposes"></a>资源目的
+
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA（稳定版本）](#tab/v1)
+
+使用 QnA Maker 创建的每个 Azure 资源都有特定用途：
+
+* QnA Maker 资源
+* 认知搜索资源
+* 应用服务
+* 应用计划服务
+* Application Insights 服务
+
+### <a name="qna-maker-resource"></a>QnA Maker 资源
+
+QnA Maker 资源提供对创作和发布 Api 的访问，以及自然语言处理 (NLP) 的第二排名层 (在运行时 QnA 对的 ranker #2) 。
+
+第二个排名适用于智能筛选器，这些筛选器可以包含元数据和跟进提示。
+
+#### <a name="qna-maker-resource-configuration-settings"></a>QnA Maker 资源配置设置
+
+在 [QnA Maker 门户](https://qnamaker.ai)中创建新知识库时，" **语言** " 设置是在资源级别应用的唯一设置。 您在为资源创建第一个知识库时选择语言。
+
+### <a name="cognitive-search-resource"></a>认知搜索资源
+
+[认知搜索](../../../search/index.yml)资源用于：
+
+* 存储 QnA 对
+* 在运行时提供 QnA 对的初始排名 (ranker #1) 
+
+#### <a name="index-usage"></a>索引使用情况
+
+资源保留一个索引作为测试索引，其余索引与每个已发布的知识库关联。
+
+定价为包含15个索引的资源将保留14个发布的知识库，而一个索引用于测试所有知识库。 此测试索引按知识库分区，以便使用 "交互式测试" 窗格的查询将使用测试索引，但仅从与特定知识库关联的特定分区返回结果。
+
+#### <a name="language-usage"></a>语言用法
+
+在 QnA Maker 资源中创建的第一个知识库用于确定认知搜索资源及其所有索引的 _单一_ 语言集。 只能为 QnA Maker 服务 _设置一种语言_ 。
+
+#### <a name="using-a-single-cognitive-search-service"></a>使用单个认知搜索服务
+
+如果通过门户创建 QnA 服务及其依赖项 (如搜索) ，系统会为您创建一个搜索服务并将其链接到 QnA Maker 服务。 创建这些资源后，你可以更新应用服务设置，以使用以前存在的搜索服务，并删除刚刚创建的搜索服务。
+
+了解 [如何将 QnA Maker 配置](../How-To/set-up-qnamaker-service-azure.md#configure-qna-maker-to-use-different-cognitive-search-resource) 为使用不同的认知服务资源，而不是创建 QnA Maker 资源创建过程的一部分。
+
+### <a name="app-service-and-app-service-plan"></a>应用服务和应用服务计划
+
+[应用服务](../../../app-service/index.yml)由客户端应用程序用于通过运行时终结点访问已发布的知识库。
+
+若要查询已发布的知识库，所有发布的知识库均使用相同的 URL 终结点，但在路由中指定 **知识库 ID** 。
+
+`{RuntimeEndpoint}/qnamaker/knowledgebases/{kbId}/generateAnswer`
+
+### <a name="application-insights"></a>Application Insights
+
+[Application Insights](../../../azure-monitor/app/app-insights-overview.md) 用于收集聊天日志和遥测数据。 查看常见的 [Kusto 查询](../how-to/get-analytics-knowledge-base.md) 以获取有关服务的信息。
+
+### <a name="share-services-with-qna-maker"></a>与 QnA Maker 共享服务
+
+QnA Maker 创建多个 Azure 资源。 若要减少成本共享的管理和权益，请使用下表来了解可以和不能共享的内容：
+
+|服务|共享|原因|
+|--|--|--|
+|认知服务|X|不能通过设计|
+|应用服务计划|✔|为应用服务计划分配的固定磁盘空间。 如果共享同一应用服务计划的其他应用使用了大量磁盘空间，QnAMaker 应用服务实例将会遇到问题。|
+|应用服务|X|不能通过设计|
+|Application Insights|✔|可以共享|
+|搜索服务|✔|1. `testkb` 是 QnAMaker 服务的保留名称; 其他名称不能使用它。<br>2. 名称的同义词映射 `synonym-map` 是为 QnAMaker 服务保留的。<br>3. 已发布的知识库数受搜索服务层限制。 如果有可用的可用索引，则其他服务可以使用这些索引。|
+
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/v2)
 
 使用 QnA Maker 托管 () 预览版创建的每个 Azure 资源都有特定用途：
 
 * QnA Maker 资源
 * 认知搜索资源
+
+### <a name="qna-maker-resource"></a>QnA Maker 资源
+
+QnA Maker 托管的 (预览版) 资源提供对创作和发布 Api 的访问，承载排名运行时以及提供遥测。
 
 ### <a name="azure-cognitive-search-resource"></a>Azure 认知搜索资源
 
@@ -353,10 +360,6 @@ QnA Maker 管理的 (预览版) 资源的资源名称 `qna-westus-f0-b` 也用�
 #### <a name="language-usage"></a>语言用法
 
 使用 QnA Maker 托管 (预览版，) 可以选择使用一种或多种语言为知识库设置 QnA Maker 服务。 在 QnA Maker 服务中创建第一个知识库时，请选择此选项。 请参阅 [此处](#pricing-tier-considerations) 如何启用每个知识库的语言设置。
-
-### <a name="qna-maker-resource"></a>QnA Maker 资源
-
-QnA Maker 托管的 (预览版) 资源提供对创作和发布 Api 的访问，承载排名运行时以及提供遥测。
 
 ---
 

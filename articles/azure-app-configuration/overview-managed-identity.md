@@ -7,12 +7,12 @@ ms.date: 02/25/2020
 ms.author: barbkess
 ms.reviewer: lcozzens
 ms.service: azure-app-configuration
-ms.openlocfilehash: 270f8d471a95e67939a31357bc1cc056fe8ea4a1
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: e6ced30e8c8c5eb60eea3806d9c8080df7c2a12d
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92072792"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979583"
 ---
 # <a name="how-to-use-managed-identities-for-azure-app-configuration"></a>如何将托管标识用于 Azure 应用程序配置
 
@@ -99,7 +99,7 @@ ms.locfileid: "92072792"
 
 ## <a name="removing-an-identity"></a>删除标识
 
-可通过使用 Azure CLI 中的 [az appconfig identity remove](/cli/azure/appconfig/identity?view=azure-cli-latest#az-appconfig-identity-remove) 命令禁用此功能来删除系统分配的标识。 可以单独删除用户分配的标识。 以这种方式删除系统分配的标识也会将它从 AAD 中删除。 删除应用资源时，也将自动从 AAD 中删除系统分配的标识。
+可通过使用 Azure CLI 中的 [az appconfig identity remove](/cli/azure/appconfig/identity#az-appconfig-identity-remove) 命令禁用此功能来删除系统分配的标识。 可以单独删除用户分配的标识。 以这种方式删除系统分配的标识也会将它从 AAD 中删除。 删除应用资源时，也将自动从 AAD 中删除系统分配的标识。
 
 ## <a name="next-steps"></a>后续步骤
 

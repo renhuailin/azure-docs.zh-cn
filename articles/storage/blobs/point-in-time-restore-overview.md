@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/28/2020
+ms.date: 02/01/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 518df665db0ba3770bee757f45d02b6ccd303a00
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: 1df2f12d6947734314609dc50787a59a2fa88731
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97803861"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99980502"
 ---
 # <a name="point-in-time-restore-for-block-blobs"></a>块 blob 的时间点还原
 
@@ -32,6 +32,10 @@ ms.locfileid: "97803861"
 若要启动时间点还原，请调用 [还原 Blob 范围](/rest/api/storagerp/storageaccounts/restoreblobranges) 操作并指定 UTC 时间的还原点。 您可以指定要还原的容器和 blob 名称的字典范围，或省略存储帐户中所有容器的还原范围。 每个还原操作最多支持10个字典范围。
 
 Azure 存储会分析在所请求的还原点（UTC 时间）和当前时间段内指定的 blob 所做的所有更改。 还原操作是原子操作，因此要么完全还原所有更改，要么失败。 如果存在无法还原的 blob，则操作将失败，并且会恢复受影响的容器的读取和写入操作。
+
+下图显示了时间点还原的工作方式。 一个或多个容器或 blob 范围还原到其状态 *n* 天前，其中 *n* 小于或等于为时间点还原定义的保持期。 其作用是恢复在保留期内发生的写入和删除操作。
+
+:::image type="content" source="media/point-in-time-restore-overview/point-in-time-restore-diagram.png" alt-text="显示时间点如何将容器还原到以前状态的关系图":::
 
 一次只能在一个存储帐户上运行一个还原操作。 还原操作在执行后将无法取消，但可以执行第二个还原操作来撤消第一个操作。
 

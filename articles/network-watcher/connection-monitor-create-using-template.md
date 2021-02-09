@@ -1,5 +1,5 @@
 ---
-title: 创建连接监视器-ARM 模板
+title: 创建连接监视器 - ARM template
 titleSuffix: Azure Network Watcher
 description: 了解如何使用 ARMClient 创建连接监视器。
 services: network-watcher
@@ -12,16 +12,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: vinigam
-ms.openlocfilehash: 46d569eae768178815a933d9a857e19bacdaaeb9
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 46bdaf932d4224bf97b46e7713d49d815ca1bcdd
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98013220"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99832991"
 ---
 # <a name="create-a-connection-monitor-using-the-arm-template"></a>使用 ARM 模板创建连接监视器
 
-了解如何使用 ARMClient 创建连接监视器来监视资源之间的通信。 它支持混合部署和 Azure 云部署。
+> [!IMPORTANT]
+> 自2021年7月1日起，你将无法在现有工作区中添加新测试，也无法在网络性能监视器中启用新的工作区。 你还将无法在 (经典) 的连接监视器中添加新的连接监视器。 你可以继续使用在2021年7月1日之前创建的测试和连接监视器。 若要最大程度地减少对当前工作负荷的服务中断，请在2024年2月29日之前，将 [测试从网络性能监视器 ](migrate-to-connection-monitor-from-network-performance-monitor.md) 或  [从连接监视器迁移 (经典) ](migrate-to-connection-monitor-from-connection-monitor-classic.md) 升级到 Azure 网络观察程序中的新连接监视器。
+
+了解如何使用 ARMClient 创建连接监视器以监视资源之间的通信。 它支持混合部署和 Azure 云部署。
 
 
 ## <a name="before-you-begin"></a>准备阶段 

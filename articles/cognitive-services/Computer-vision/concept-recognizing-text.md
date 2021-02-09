@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/11/2020
 ms.author: pafarley
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 17a7ad29596c5ab5ed65868fde0e814bc83e8c37
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 1d633b1a9f5fee0a5cceb48f2b37aaec2092069f
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99576716"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979517"
 ---
 # <a name="optical-character-recognition-ocr"></a>光学字符识别 (OCR)
 
@@ -64,7 +64,7 @@ Azure 的计算机视觉 API 包含光学字符识别 (OCR) 功能，这些功�
 
 |字段| 类型 | 可能值 |
 |:-----|:----:|:----|
-|status | 字符串 | notStarted：操作尚未开始。 |
+|状态 | string | notStarted：操作尚未开始。 |
 | |  | 正在运行：正在处理操作。 |
 | |  | failed：操作失败。 |
 | |  | succeeded：操作成功。 |
@@ -132,20 +132,20 @@ Azure 的计算机视觉 API 包含光学字符识别 (OCR) 功能，这些功�
 }
 ```
 
-## <a name="select-pages-or-page-ranges-for-text-extraction"></a>选择页面 (s) 或页面范围进行文本提取
-使用 [Read 3.2 预览 API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-2/operations/5d986960601faab4bf452005)，对于大的多页文档，使用 `pages` query 参数指定页码或页面范围以便仅从这些页面提取文本。 例如，下面的示例显示一个文档，其中包含10页（对于这两种情况），所有页 (1-10) ，所选页面 (3-6) 。
+## <a name="natural-reading-order-output"></a>自然读取顺序输出
+对于 [读取3.2 预览 API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-2/operations/5d986960601faab4bf452005)，请指定文本行与查询参数的输出顺序 `readingOrder` 。 使用 `natural` 更友好的读取顺序输出，如以下示例中所示。
 
-:::image border type="content" source="./Images/ocr-select-pages.png" alt-text="所选页面输出":::
-
-## <a name="specify-text-line-order-in-the-output"></a>指定输出中的文本行顺序
-对于 [读取3.2 预览 API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-2/operations/5d986960601faab4bf452005)，请指定文本行与查询参数的输出顺序 `read order` 。 选择 `basic` 默认的 "从左到右" 和 "从上到下" 行顺序，或选择 "与 `natural` 人更易于阅读" 的行顺序。 下面的示例显示了相同的两列文档的两组行顺序号。 请注意，右侧的图像显示每个列中的顺序行号，以表示读取顺序。
-
-:::image border type="content" source="./Images/ocr-read-order.png" alt-text="OCR 阅读顺序示例":::
+:::image border type="content" source="./Images/ocr-reading-order-example.png" alt-text="OCR 阅读顺序示例":::
 
 ## <a name="handwritten-classification-for-text-lines-latin-only"></a>文本行的手写分类仅 (拉丁语) 
 [阅读3.2 预览 API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-2/operations/5d986960601faab4bf452005)响应包括对每个文本行是否为手写样式，同时还包括置信度分数。 此功能仅支持拉丁语。 下面的示例演示了图像中文本的手写分类。
 
-:::image border type="content" source="./Images/handwritten-text-line.png" alt-text="OCR 手写分类示例":::
+:::image border type="content" source="./Images/ocr-handwriting-classification.png" alt-text="OCR 手写分类示例":::
+
+## <a name="select-pages-or-page-ranges-for-text-extraction"></a>选择页面 (s) 或页面范围进行文本提取
+使用 [Read 3.2 预览 API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-2/operations/5d986960601faab4bf452005)，对于大的多页文档，使用 `pages` query 参数指定页码或页面范围以便仅从这些页面提取文本。 以下示例显示了一个包含10个页面的文档，同时为这两种情况提取了文本-所有页面 (1-10) ，所选页面 (3-6) 。
+
+:::image border type="content" source="./Images/ocr-select-pages.png" alt-text="所选页面输出":::
 
 ## <a name="supported-languages"></a>支持的语言
 对于打印样式文本，读取 Api 支持总共73种语言。 请参阅 [OCR 支持的语言](./language-support.md#optical-character-recognition-ocr)的完整列表。 手写样式 OCR 仅支持英语。

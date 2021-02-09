@@ -5,14 +5,14 @@ author: bwren
 ms.author: bwren
 services: azure-monitor
 ms.topic: conceptual
-ms.date: 04/27/2020
+ms.date: 02/08/2021
 ms.subservice: logs
-ms.openlocfilehash: a6f8e681f68fb53d7cf88582b4bf4416efc11c86
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: 5e1a1c62cafd982d44be3e06b98fc8c30461021c
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820545"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979974"
 ---
 # <a name="create-diagnostic-settings-to-send-platform-logs-and-metrics-to-different-destinations"></a>创建诊断设置以将平台日志和指标发送到不同的目标
 Azure 中的[平台日志](platform-logs-overview.md)（包括 Azure 活动日志和资源日志）提供 Azure 资源及其所依赖的 Azure 平台的详细诊断和审核信息。 默认情况下会收集[平台指标](data-platform-metrics.md)，它们通常存储在 Azure Monitor 指标数据库中。 本文详细介绍如何创建和配置诊断设置，以将平台指标和平台日志发送到不同的目标。
@@ -181,7 +181,7 @@ az monitor diagnostic-settings create  \
 
    不支持度量值类别 "*xxxx*"
 
-例如： 。 
+例如： 
 
    "指标类别 ' ActionsFailed ' 不受支持"
 
@@ -189,7 +189,7 @@ az monitor diagnostic-settings create  \
 
 当使用资源管理器模板、诊断设置 REST API、Azure CLI 或 Azure PowerShell 时，会出现此问题。 通过 Azure 门户创建的诊断设置不受影响，因为仅显示支持的类别名称。
 
-此问题是由基础 API 的最新更改引起的。 除 "AllMetrics" 之外的指标类别不受支持，并且绝不会超出特定的 IP 允许列表方案。 过去，部署诊断设置时，将忽略其他类别名称。 Azure Monitor 后端直接将这些类别重定向到 "AllMetrics"。  从2021年2月开始，更新后端以明确确认提供的指标类别是否准确。 此更改导致某些部署失败。
+此问题是由基础 API 的最新更改引起的。 除 "AllMetrics" 之外的指标类别不受支持，并且绝不会有少量特定的 Azure 服务。 过去，部署诊断设置时，将忽略其他类别名称。 Azure Monitor 后端直接将这些类别重定向到 "AllMetrics"。  从2021年2月开始，更新后端以明确确认提供的指标类别是否准确。 此更改导致某些部署失败。
 
 如果收到此错误，请更新部署，将任何指标类别名称替换为 "AllMetrics" 以解决此问题。 如果部署之前添加了多个类别，则应该只保留一个具有 "AllMetrics" 引用的类别。 如果仍然遇到问题，请通过 Azure 门户联系 Azure 支持部门。 
 

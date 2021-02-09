@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: how-to
 ms.date: 07/27/2020
 ms.author: alkemper
-ms.openlocfilehash: fd3f7dbfd824360dcba9f8a166c579e3b55527ba
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: c5e0cc3eb29fb612460b16d8de9dee62949b5bd2
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96932109"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979600"
 ---
 # <a name="push-settings-to-app-configuration-with-azure-pipelines"></a>使用 Azure Pipelines 将设置推送到应用配置
 
@@ -27,7 +27,7 @@ ms.locfileid: "96932109"
 
 ## <a name="create-a-service-connection"></a>创建服务连接
 
-通过 [服务连接](/azure/devops/pipelines/library/service-endpoints) ，可以从 azure DevOps 项目访问 azure 订阅中的资源。
+通过[服务连接](/azure/devops/pipelines/library/service-endpoints)，可以从 Azure DevOps 项目访问 Azure 订阅中的资源。
 
 1. 在 Azure DevOps 中，访问包含目标管道的项目，并打开左下方的“项目设置”。
 1. 在“管道”下选择“服务连接”，并在右上方选择“新建服务连接”。
@@ -56,7 +56,7 @@ ms.locfileid: "96932109"
 
 本部分介绍如何在 Azure DevOps 生成管道中使用“Azure 应用配置推送”任务。
 
-1. 通过单击“管道” > “管道”，导航到“生成管道”页。 可在[此处](/azure/devops/pipelines/create-first-pipeline?tabs=tfs-2018-2&view=azure-devops)找到有关生成管道的文档。
+1. 通过单击“管道” > “管道”，导航到“生成管道”页。 可在[此处](/azure/devops/pipelines/create-first-pipeline?tabs=tfs-2018-2)找到有关生成管道的文档。
       - 如果要创建新的生成管道，请在管道右侧选择“显示助手”，然后搜索“Azure 应用配置推送”任务。
       - 如果要使用现有的生成管道，请在编辑管道时导航到“任务”选项卡，然后搜索“Azure 应用配置推送”任务。
 2. 配置任务的必要参数，以将配置文件中的键值推送到应用配置存储。 “配置文件路径”参数从文件存储库的根目录开始。
@@ -66,10 +66,10 @@ ms.locfileid: "96932109"
 
 本部分介绍如何在 Azure DevOps 发布管道中使用“Azure 应用配置推送”任务。
 
-1. 通过选择“管道” > “发布”，导航到“发布管道”页。 可在[此处](/azure/devops/pipelines/release?view=azure-devops)找到有关发布管道的文档。
+1. 通过选择“管道” > “发布”，导航到“发布管道”页。 可在[此处](/azure/devops/pipelines/release)找到有关发布管道的文档。
 1. 选择现有的发布管道。 如果没有现有的发布管道，请选择“+ 新建”创建一个新的发布管道。
 1. 选择右上角的“编辑”按钮以编辑发布管道。
-1. 选择“阶段”以添加任务。 可在[此处](/azure/devops/pipelines/release/environments?view=azure-devops)找到有关阶段的详细信息。
+1. 选择“阶段”以添加任务。 可在[此处](/azure/devops/pipelines/release/environments)找到有关阶段的详细信息。
 1. 选择与该作业对应的 **+** ，然后在“部署”选项卡下添加“Azure 应用配置推送”任务。 
 1. 配置任务内的必要参数，以将配置文件中的键值推送到应用配置存储。 参数的说明在下面的“参数”部分以及每个参数旁边的工具提示中提供。
 1. 保存并将一个发布排入队列。 发布日志将显示任务执行过程中遇到的任何故障。

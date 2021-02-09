@@ -1,6 +1,7 @@
 - name: 用于 MySQL 的 Azure 数据库文档
   href: index.yml
 - name: 概述
+  expanded: true
   items:
     - name: 什么是用于 MySQL 的 Azure DB？
       href: overview.md
@@ -12,7 +13,6 @@
       href: concepts-version-policy.md
       displayName: version policy
 - name: 单台服务器
-  expanded: true
   items:
     - name: 单服务器文档
       href: single-server/index.yml

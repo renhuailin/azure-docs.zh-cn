@@ -6,14 +6,17 @@ ms.topic: conceptual
 author: abshamsft
 ms.author: absha
 ms.date: 11/27/2018
-ms.openlocfilehash: a9f268e5080a5c04c5cdb4767f2db5fd2d77cd3c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 91bb303fca4517f84ad8b430f26543e9f116fddc
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87326148"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99833076"
 ---
 # <a name="expressroute-monitor"></a>ExpressRoute 监视器
+
+> [!IMPORTANT]
+> 自2021年7月1日起，你将无法在现有工作区中添加新测试，也无法在网络性能监视器中启用新的工作区。 你可以继续使用在2021年7月之前创建的测试。 若要最大程度地减少对当前工作负荷的服务中断，请在2024年2月29日之前将 [测试从网络性能监视器迁移到](https://docs.microsoft.com/azure/network-watcher/migrate-to-connection-monitor-from-network-performance-monitor) Azure 网络观察程序中的新连接监视器。
 
 可以使用[网络性能监视器](network-performance-monitor.md)中的 Azure ExpressRoute 监视器功能通过 Azure ExpressRoute 监视分支办事处与 Azure 之间的端到端连接和性能。 主要优势包括： 
 
@@ -37,8 +40,8 @@ ms.locfileid: "87326148"
  
 ### <a name="discover-expressroute-peering-connections"></a>发现 ExpressRoute 对等连接 
  
-1. 选择“ExpressRoute 对等互连”视图。 
-2. 选择“立即发现”  ，以便发现所有已连接到 Azure 订阅（通过此 Azure Log Analytics 工作区进行链接）中的虚拟网络的 ExpressRoute 专用对等互连。
+1. 选择“ExpressRoute 对等互连”视图。
+2. 选择“立即发现”，以便发现所有已连接到 Azure 订阅（通过此 Azure Log Analytics 工作区进行链接）中的虚拟网络的 ExpressRoute 专用对等互连。
 
     >[!NOTE]
     > 此解决方案目前只发现 ExpressRoute 专用对等互连。 
@@ -53,16 +56,16 @@ ms.locfileid: "87326148"
 ### <a name="enable-monitoring-of-the-expressroute-peering-connections"></a>启用 ExpressRoute 对等连接监视 
 
 1. 选择要监视的专用对等连接。
-2. 在右侧窗格中，选中“监视此对等互连”  复选框。 
-3. 如果想要为此连接创建运行状况事件，请选中“为此对等互连启用运行状况监视”。  
+2. 在右侧窗格中，选中“监视此对等互连”复选框。 
+3. 如果想要为此连接创建运行状况事件，请选中“为此对等互连启用运行状况监视”。 
 4. 选择监视条件。 可以通过输入阈值，针对运行状况事件生成设置自定义阈值。 每当条件值超出其针对对等互连选择的阈值时，就会生成一个运行状况事件。 
-5. 选择“添加代理”，以选择想要用来监视此对等连接的监视代理。  确保在连接的两端都添加代理。 连接到此对等互连的虚拟网络中至少需要有一个代理。 至少还需要有一个连接到此对等互连的本地代理。 
+5. 选择“添加代理”，以选择想要用来监视此对等连接的监视代理。 确保在连接的两端都添加代理。 连接到此对等互连的虚拟网络中至少需要有一个代理。 至少还需要有一个连接到此对等互连的本地代理。 
 6. 选择“保存”  以保存配置。 
 
    ![ExpressRoute 监视配置](media/network-performance-monitor-expressroute/expressroute-configure-discovery.png)
 
 
-在启用规则并选择值和代理后，等待 30 到 60 分钟来填充值并等待 **ExpressRoute 监视**磁贴显示。 看到监视磁贴后，网络性能监视器也将开始监视 ExpressRoute 线路和连接资源。 
+在启用规则并选择值和代理后，等待 30 到 60 分钟来填充值并等待 **ExpressRoute 监视** 磁贴显示。 看到监视磁贴后，网络性能监视器也将开始监视 ExpressRoute 线路和连接资源。 
 
 >[!NOTE]
 > 在已升级到新查询语言的工作区中，此功能能够可靠地运行。
@@ -81,19 +84,19 @@ ms.locfileid: "87326148"
 
 ### <a name="trends-of-loss-latency-and-throughput"></a>丢包、延迟和吞吐量的趋势 
 
-带宽利用率、延迟和丢包图表是交互式的。 可以使用鼠标控件放大这些图表的任何部分。 还可以看到其他时间间隔的带宽、延迟和丢包数据。 在左上角的 **“操作”** 按钮下，选择 **“日期/时间”** 。 
+带宽利用率、延迟和丢包图表是交互式的。 可以使用鼠标控件放大这些图表的任何部分。 还可以看到其他时间间隔的带宽、延迟和丢包数据。 在左上角的 **“操作”** 按钮下，选择  **“日期/时间”**。 
 
 ![ExpressRoute 延迟](media/network-performance-monitor-expressroute/expressroute-latency.png) 
 
 ### <a name="peerings-list"></a>对等互连列表 
 
-若要显示通过专用对等互连建立的到虚拟网络的所有连接的列表，请选择仪表板上的“专用对等互连”磁贴。  可以在此处选择一个虚拟网络连接，并查看其运行状态以及数据包丢失、带宽使用率和延迟的趋势图表。 
+若要显示通过专用对等互连建立的到虚拟网络的所有连接的列表，请选择仪表板上的“专用对等互连”磁贴。 可以在此处选择一个虚拟网络连接，并查看其运行状态以及数据包丢失、带宽使用率和延迟的趋势图表。 
 
 ![ExpressRoute 对等互连](media/network-performance-monitor-expressroute/expressroute-peerings.png) 
 
 ### <a name="circuit-topology"></a>线路拓扑 
 
-若要查看线路拓扑，请选择“拓扑”磁贴。  此操作将显示所选线路或对等互连的拓扑视图。 此拓扑图显示该网络上每个分段的延迟情况，并且每个第 3 层跃点由图表上的一个节点表示。 选择某个跃点可查看该跃点的详细信息。 若要增大可见级别以包含本地跃点，请移动“筛选器”下的滚动条。  向左或向右移动滚动条可增加或减少拓扑图中的跃点数。 还将显示每个分段的延迟情况，据此可以更快地隔离网络中的高延迟分段。
+若要查看线路拓扑，请选择“拓扑”磁贴。 此操作将显示所选线路或对等互连的拓扑视图。 此拓扑图显示该网络上每个分段的延迟情况，并且每个第 3 层跃点由图表上的一个节点表示。 选择某个跃点可查看该跃点的详细信息。 若要增大可见级别以包含本地跃点，请移动“筛选器”下的滚动条。 向左或向右移动滚动条可增加或减少拓扑图中的跃点数。 还将显示每个分段的延迟情况，据此可以更快地隔离网络中的高延迟分段。
 
 ![ExpressRoute 拓扑](media/network-performance-monitor-expressroute/expressroute-topology.png)
 
@@ -107,7 +110,7 @@ ms.locfileid: "87326148"
 
 可以借助网络性能监视器诊断多种线路连接问题。 以下列出了可能出现的一些问题。
 
-可通过 LogAnalytics 查看通知代码并设置警报  。 在“NPM 诊断”页面上，可看到触发的每条诊断消息的说明  。
+可通过 LogAnalytics 查看通知代码并设置警报。 在“NPM 诊断”页面上，可看到触发的每条诊断消息的说明。
 
 | 通知代码（日志） | 说明 |
 | --- | --- |
@@ -141,4 +144,3 @@ ms.locfileid: "87326148"
 
 ## <a name="next-steps"></a>后续步骤
 [搜索日志](../log-query/log-query-overview.md)以查看详细的网络性能数据记录。
-

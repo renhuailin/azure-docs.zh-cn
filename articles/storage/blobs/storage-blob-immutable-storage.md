@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 11/13/2020
+ms.date: 02/01/2021
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: acb2ebb0d7ce70c6b5963a8a6c3e392091e4bb1e
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 9654ff6eab53acfe3e656afdcacd758c548232ba
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96010055"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979125"
 ---
 # <a name="store-business-critical-blob-data-with-immutable-storage"></a>使用不可变的存储来存储业务关键型 Blob 数据
 
@@ -53,6 +53,10 @@ Azure Blob 存储的不可变存储可让用户以 WORM（一次写入，多次�
 Azure Blob 存储的不可变存储支持两类 WORM 或不可变策略：基于时间的保留和法定保留。 在容器上应用基于时间的保留策略或法定保留时，所有现有的 Blob 会在 30 秒内转为不可变的 WORM 状态。 所有上传到受该策略保护的容器的新 Blob 也会转为不可变状态。 所有 Blob 转为不可变状态后，将确认不可变策略，并且不允许在不可变容器中执行任何覆盖或删除操作。
 
 如果容器中的任何 Blob 受到法定保留策略或锁定的基于时间的策略的保护，则也不允许删除容器和存储帐户。 法定保留策略会防止删除 Blob、容器和存储帐户。 锁定的和未锁定的基于时间的策略会防止在指定的时间删除 Blob。 仅当容器中至少有一个 Blob 时，未锁定和锁定的基于时间的策略才会防止删除容器。 只有具有锁定的基于时间的策略的容器才能防止删除存储帐户；具有未锁定的基于时间的策略的容器不提供存储帐户删除保护与合规性。
+
+下图显示了基于时间的保留策略和合法保存的方式如何阻止写入和删除操作生效。
+
+:::image type="content" source="media/storage-blob-immutable-storage/worm-diagram.png" alt-text="显示保留策略和合法保留如何阻止写入和删除操作的关系图":::
 
 若要详细了解如何设置和锁定基于时间的保留策略，请参阅[为 Blob 存储设置和管理不可变性策略](storage-blob-immutability-policies-manage.md)。
 
@@ -116,7 +120,7 @@ Azure Blob 存储的不可变存储支持两类 WORM 或不可变策略：基于
 <sup>2</sup> 追加块只能用于基于时间且启用了 `allowProtectedAppendWrites` 属性的保留策略。 有关详细信息，请参阅[允许受保护的追加 Blob 写入](#allow-protected-append-blobs-writes)部分。
 
 > [!IMPORTANT]
-> 某些工作负荷（如 [SQL 备份到 URL](/sql/relational-databases/backup-restore/sql-server-backup-to-url)）创建 blob，然后将其添加到其中。 如果容器具有活动的基于时间的保留策略或合法保留，此模式将不会成功。
+> 某些工作负载（如 [SQL Server 备份到 URL](/sql/relational-databases/backup-restore/sql-server-backup-to-url)）可创建 blob，然后将其添加到其中。 如果容器具有有效的基于时间的保留策略或法定保留，则此模式不会成功。
 
 ## <a name="pricing"></a>定价
 

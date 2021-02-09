@@ -8,12 +8,12 @@ ms.date: 4/24/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: devx-track-js
-ms.openlocfilehash: 3bc24e88368af056e4d4506a5cf688e1172d4930
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: e0c0d18dbb3596733d02430554fd40ec16180c64
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98051558"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99980654"
 ---
 # <a name="create-custom-sdks-for-azure-digital-twins-using-autorest"></a>使用 AutoRest 创建 Azure 数字孪生的自定义 Sdk
 
@@ -93,7 +93,7 @@ AutoRest 支持多种语言代码生成器。
 
 REST API 调用通常返回强类型对象。 不过，由于 Azure 数字孪生允许用户定义孪生的自定义类型，因此无法为许多 Azure 数字孪生调用预定义静态返回数据。 相反，Api 将返回强类型化包装器类型（如果适用），并且自定义类型的 Json.NET 对象在 API 签名) 中显示数据类型 "对象" (使用。 您可以在代码中适当地强制转换这些对象。
 
-### <a name="error-handling"></a>错误处理
+### <a name="error-handling"></a>错误处理。
 
 每当 SDK 中发生错误时 (包括 HTTP 错误，如 404) ，SDK 会引发异常。 出于此原因，请务必将 try/catch 块内的所有 API 调用封装。
 
@@ -112,6 +112,9 @@ AutoRest 为 SDK 生成两种类型的分页模式：
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="FindOutgoingRelationshipsMethod":::
 
 第二种模式仅为查询 API 生成。 它显式使用 `continuationToken` 。
+
+>[!TIP]
+> 获取页面的主要原因是为了计算查询 API 调用的 [查询单位费用](concepts-query-units.md) 。
 
 下面是此模式的示例：
 

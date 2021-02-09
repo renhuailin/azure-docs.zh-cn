@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 02/03/2021
-ms.openlocfilehash: 72efcacf20b0d67c9d6a8255426a09f9813f17b4
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 9276f845c95b5e736180159b282ddedc33523c17
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99550492"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99980739"
 ---
 # <a name="create-and-manage-a-self-hosted-integration-runtime"></a>创建和管理自承载集成运行时
 
@@ -41,7 +41,7 @@ ms.locfileid: "99550492"
 
    - 复制并粘贴身份验证密钥。
 
-   - 从本地 Windows 计算机上的 [Azure 数据工厂 Integration Runtime](https://www.microsoft.com/download/details.aspx?id=39717) 下载自承载集成运行时。 运行安装程序。
+   - 从本地 Windows 计算机上的 [Microsoft Integration Runtime](https://www.microsoft.com/download/details.aspx?id=39717) 下载自承载集成运行时。 运行安装程序。
 
    - 在 " **注册 Integration Runtime (自承载)** " 页上，粘贴之前保存的两个密钥之一，然后选择 " **注册**"。
 

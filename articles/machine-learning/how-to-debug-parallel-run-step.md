@@ -1,7 +1,7 @@
 ---
 title: 排查 ParallelRunStep 问题
 titleSuffix: Azure Machine Learning
-description: 使用机器学习管道中的 ParallelRunStep 时，如何排查错误的提示。
+description: 有关在机器学习管道中使用 ParallelRunStep 出现错误时如何进行故障排除的提示。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,22 +11,22 @@ ms.reviewer: larryfr, vaidyas, laobri, tracych
 ms.author: trmccorm
 author: tmccrmck
 ms.date: 09/23/2020
-ms.openlocfilehash: 6ea796fb2ec038a03595d37d903fe8ee3ce904db
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: a0f813253520d76731a9b49a89b0bcace7c2ef34
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98070263"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979158"
 ---
 # <a name="troubleshooting-the-parallelrunstep"></a>排查 ParallelRunStep 问题
 
-本文介绍如何在使用[AZURE 机器学习 SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)中的[ParallelRunStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallel_run_step.parallelrunstep?preserve-view=true&view=azure-ml-py)类收到错误时进行故障排除。
+本文介绍在 [Azure 机器学习 SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) 中使用 [ParallelRunStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallel_run_step.parallelrunstep?preserve-view=true&view=azure-ml-py) 出现错误时如何进行故障排除。
 
-有关对管道进行故障排除的一般提示，请参阅 [计算机学习管道故障排除](how-to-debug-pipelines.md)。
+有关对管道进行故障排除的一般提示，请参阅[对机器学习管道进行故障排除](how-to-debug-pipelines.md)。
 
 ## <a name="testing-scripts-locally"></a>在本地测试脚本
 
- 你的 ParallelRunStep 作为 ML 管道中的一个步骤运行。 你可能需要在 [本地测试脚本](how-to-debug-visual-studio-code.md#debug-and-troubleshoot-machine-learning-pipelines) ，作为第一步。
+ ParallelRunStep 作为 ML 管道中的一个步骤运行。 第一步，需要[在本地测试脚本](how-to-debug-visual-studio-code.md#debug-and-troubleshoot-machine-learning-pipelines)。
 
 ##  <a name="script-requirements"></a>脚本要求
 
@@ -137,7 +137,7 @@ parallelrun_step = ParallelRunStep(
 
 ## <a name="debugging-scripts-from-remote-context"></a>从远程上下文调试脚本
 
-要实现从在本地调试评分脚本到在实际管道中调试评分脚本这一飞跃可能很困难。 若要了解如何在门户中查找日志，请参阅  ["机器学习管道" 部分，了解如何从远程上下文调试脚本](how-to-debug-pipelines.md)。 该部分中的信息也适用于 ParallelRunStep。
+要实现从在本地调试评分脚本到在实际管道中调试评分脚本这一飞跃可能很困难。 若要了解如何在门户中查找日志，请参阅[有关从远程上下文调试脚本的机器学习管道部分](how-to-debug-pipelines.md)。 该部分中的信息也适用于 ParallelRunStep。
 
 例如，日志文件 `70_driver_log.txt` 包含来自启动 ParallelRunStep 代码的控制器的信息。
 
@@ -171,7 +171,16 @@ parallelrun_step = ParallelRunStep(
     - 总项数、成功处理的项计数和失败的项计数。
     - 开始时间、持续时间、处理时间和运行方法时间。
 
-此外，还可以找到有关每个工作进程的资源使用情况的信息。 此信息采用 CSV 格式，并且位于 `~/logs/sys/perf/<ip_address>/node_resource_usage.csv` 中。 有关每个进程的信息可在 `~logs/sys/perf/<ip_address>/processes_resource_usage.csv` 下找到。
+你还可以查看每个节点的资源使用情况的期刊检查结果。 日志文件和安装程序文件位于以下文件夹中：
+
+- `~/logs/perf`：设置 `--resource_monitor_interval` 以更改检查时间间隔（以秒为单位）。 默认间隔为 `600` ，约为10分钟。 若要停止监视，请将值设置为 `0` 。 每个 `<ip_address>` 文件夹包括：
+
+    - `os/`：有关节点中所有正在运行的进程的信息。 一项检查运行操作系统命令，并将结果保存到文件。 在 Linux 上，命令为 `ps` 。 在 Windows 上，使用 `tasklist` 。
+        - `%Y%m%d%H`：子文件夹名称是到小时的时间。
+            - `processes_%M`：文件以检查时间的分钟结束。
+    - `node_disk_usage.csv`：节点的详细磁盘使用情况。
+    - `node_resource_usage.csv`：节点的资源使用情况概述。
+    - `processes_resource_usage.csv`：每个进程的资源使用情况概述。
 
 ### <a name="how-do-i-log-from-my-user-script-from-a-remote-context"></a>如何从远程上下文中的用户脚本记录？
 
@@ -233,25 +242,25 @@ labels_path = args.labels_dir
 
 ```python
 service_principal = ServicePrincipalAuthentication(
-    tenant_id="**_",
-    service_principal_id="_*_",
-    service_principal_password="_*_")
+    tenant_id="***",
+    service_principal_id="***",
+    service_principal_password="***")
  
 ws = Workspace(
-    subscription_id="_*_",
-    resource_group="_*_",
-    workspace_name="_*_",
+    subscription_id="***",
+    resource_group="***",
+    workspace_name="***",
     auth=service_principal
     )
  
-default_blob_store = ws.get_default_datastore() # or Datastore(ws, '_*_datastore-name_*_') 
-ds = Dataset.File.from_files(default_blob_store, '_*path**_')
-registered_ds = ds.register(ws, '_*_dataset-name_*_', create_new_version=True)
+default_blob_store = ws.get_default_datastore() # or Datastore(ws, '***datastore-name***') 
+ds = Dataset.File.from_files(default_blob_store, '**path***')
+registered_ds = ds.register(ws, '***dataset-name***', create_new_version=True)
 ```
 
 ## <a name="next-steps"></a>后续步骤
 
-_ 请参阅这些[展示了 Azure 机器学习管道的 Jupyter 笔记本](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/machine-learning-pipelines)
+* 请参阅以下 [演示 Azure 机器学习管道的 Jupyter 笔记本](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/machine-learning-pipelines)
 
 * 请查看 SDK 参考，获取有关 [azureml-pipeline-steps](/python/api/azureml-pipeline-steps/azureml.pipeline.steps?preserve-view=true&view=azure-ml-py) 包的帮助。 查看 ParallelRunStep 类的参考[文档](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallelrunstep?preserve-view=true&view=azure-ml-py)。
 

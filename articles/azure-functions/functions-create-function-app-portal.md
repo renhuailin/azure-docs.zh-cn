@@ -4,18 +4,21 @@ description: 了解如何使用 Azure 门户创建第一个可无服务器执行
 ms.topic: how-to
 ms.date: 03/26/2020
 ms.custom: devx-track-csharp, mvc, devcenter, cc996988-fb4f-47
-ms.openlocfilehash: bebef4e8964576b968af8f8aebd06030ca0d0227
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 63e9c87d1d94d6b803c27862bc9f2755e02f3111
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222711"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99980928"
 ---
 # <a name="create-your-first-function-in-the-azure-portal"></a>在 Azure 门户中创建第一个函数
 
 Azure Functions 用于在无服务器环境中运行代码，无需先创建虚拟机 (VM) 或发布 Web 应用程序。 本文介绍如何使用 Azure Functions 在 Azure 门户中创建 HTTP 触发器函数“hello world”。
 
-我们建议[在本地开发函数](functions-develop-local.md)，然后发布到 Azure 中的函数应用。  
+>[!NOTE]
+>仅 JavaScript、PowerShell、TypeScript 和 c # 脚本函数支持门户中编辑。<br><br>对于 c # 类库、Java 和 Python 函数，你可以在门户中创建 function app，但你还必须在本地创建函数，然后将其发布到 Azure。 
+
+建议你在 [本地开发函数](functions-develop-local.md) 并发布到 Azure 中的函数应用。  
 通过以下链接之一开始使用所选的本地开发环境和语言：
 
 | Visual Studio Code | 终端/命令提示符 | Visual Studio |
@@ -66,7 +69,7 @@ Azure Functions 用于在无服务器环境中运行代码，无需先创建虚�
 
     ![浏览器中的函数响应。](./media/functions-create-first-azure-function/function-app-browser-testing.png)
 
-    如果请求 URL 包含 () 的 [访问密钥](functions-bindings-http-webhook-trigger.md#authorization-keys) `?code=...` ，则意味着在创建函数时选择 " **函数** " 而不是 " **匿名** 访问" 级别。 在这种情况下，应追加 `&name=<your_name>` 。
+    如果请求 URL 包含[访问密钥](functions-bindings-http-webhook-trigger.md#authorization-keys) (`?code=...`)，则意味着在创建函数时选择“Function”而不是“Anonymous”访问级别。 在这种情况下，应改为追加 `&name=<your_name>`。
 
 1. 运行函数时，会在日志中写入跟踪信息。 若要查看跟踪输出，请返回到门户中的“代码 + 测试”页，并展开页面底部的“日志”箭头。
 

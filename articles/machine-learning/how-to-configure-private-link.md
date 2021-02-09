@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 09/30/2020
-ms.openlocfilehash: 2953f85a5c21cdd670d6e133d09ffacf06f178ef
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 5ba1b9d53255406a73b1b74dbc59fe39e3f9a0d7
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842696"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979175"
 ---
 # <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace"></a>为 Azure 机器学习工作区配置 Azure 专用链接
 
@@ -35,7 +35,8 @@ ms.locfileid: "94842696"
 
 ## <a name="limitations"></a>限制
 
-使用具有专用链接的 Azure 机器学习工作区在 Azure 政府区域或 Azure 中国世纪互联区域中不可用。
+* Azure 政府区域或 Azure 中国世纪互联区域不支持使用具有专用链接的 Azure 机器学习工作区。
+* 如果为使用私有链接保护的工作区启用公共访问，并通过公共 internet 使用 Azure 机器学习 studio，则设计器等某些功能可能无法访问你的数据。 如果数据存储在 VNet 保护的服务中，则会发生此问题。 例如，Azure 存储帐户。
 
 ## <a name="create-a-workspace-that-uses-a-private-endpoint"></a>创建使用专用终结点的工作区
 
@@ -46,7 +47,7 @@ ms.locfileid: "94842696"
 
 # <a name="python"></a>[Python](#tab/python)
 
-Azure 机器学习 Python SDK 提供了 [PrivateEndpointConfig](/python/api/azureml-core/azureml.core.privateendpointconfig?view=azure-ml-py) 类，该类可用于 [工作区。创建 ( # B1 ](/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---tags-none--friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--adb-workspace-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--private-endpoint-config-none--private-endpoint-auto-approval-true--exist-ok-false--show-output-true-) 来创建具有专用终结点的工作区。 此类需要现有虚拟网络。
+Azure 机器学习 Python SDK 提供 [PrivateEndpointConfig](/python/api/azureml-core/azureml.core.privateendpointconfig?view=azure-ml-py) 类，此类可与 [Workspace.create()](/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---tags-none--friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--adb-workspace-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--private-endpoint-config-none--private-endpoint-auto-approval-true--exist-ok-false--show-output-true-) 配合使用来创建具有专用终结点的工作区。 此类需要现有虚拟网络。
 
 ```python
 from azureml.core import Workspace
@@ -70,7 +71,7 @@ ws = Workspace.create(name='myworkspace',
 * `--pe-auto-approval`：是否应自动批准与工作区的专用终结点连接。
 * `--pe-resource-group`：要在其中创建专用终结点的资源组。 必须是包含虚拟网络的同一个组。
 * `--pe-vnet-name`：要在其中创建专用终结点的现有虚拟网络。
-* `--pe-subnet-name`：要在其中创建专用终结点的子网的名称。 默认值为 `default`。
+* `--pe-subnet-name`：要在其中创建专用终结点的子网的名称。 默认值是 `default`。
 
 # <a name="portal"></a>[门户](#tab/azure-portal)
 
@@ -158,6 +159,31 @@ ws.delete_private_endpoint_connection(private_endpoint_connection_name=connectio
 > 为了避免暂时中断连接，Microsoft 建议你在启用专用链接后在连接到工作区的计算机上刷新 DNS 缓存。 
 
 有关 Azure 虚拟机的信息，请参阅[虚拟机文档](../virtual-machines/index.yml)。
+
+## <a name="enable-public-access"></a>启用公共访问
+
+使用专用终结点配置工作区后，可以选择启用对工作区的公共访问。 这样做不会删除专用终结点。 除了专用访问，它还支持公共访问。 若要对启用了专用链接的工作区启用公共访问，请使用以下步骤：
+
+# <a name="python"></a>[Python](#tab/python)
+
+使用 [Workspace.delete_private_endpoint_connection](/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#delete-private-endpoint-connection-private-endpoint-connection-name-) 删除专用终结点。
+
+```python
+from azureml.core import Workspace
+
+ws = Workspace.from_config()
+ws.update(allow_public_access_when_behind_vnet=True)
+```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+[机器学习的 Azure CLI 扩展](reference-azure-machine-learning-cli.md)提供了[az ml workspace update](/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest#ext_azure_cli_ml_az_ml_workspace_update)命令。 若要启用工作区公共访问权限，请添加参数 `--allow-public-access true` 。
+
+# <a name="portal"></a>[门户](#tab/azure-portal)
+
+当前无法使用门户启用此功能。
+
+---
 
 
 ## <a name="next-steps"></a>后续步骤

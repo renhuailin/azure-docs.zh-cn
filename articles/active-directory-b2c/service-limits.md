@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 02/02/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 92652c33e261f08e0cb1c8eb57c66d363801f34e
-ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
+ms.openlocfilehash: 190d88e62069a34b61017a0079f75696d67f6c82
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99475060"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979906"
 ---
 # <a name="azure-active-directory-b2c-service-limits-and-restrictions"></a>Azure Active Directory B2C 服务限制和限制
 
@@ -26,7 +26,7 @@ ms.locfileid: "99475060"
 
 以下最终用户相关服务限制适用于 Azure AD B2C 支持的所有身份验证和授权协议，包括 SAML、Open ID Connect、OAuth2 和 ROPC。
 
-|类别 |限制    |
+|Category |限制    |
 |---------|---------|
 |每个 Azure AD B2C 租户的每个 IP 地址的请求数       |6000/就          |
 |每 Azure AD B2C 租户的请求总数     |12000/min          |
@@ -37,9 +37,8 @@ ms.locfileid: "99475060"
 
 下表列出了 Azure AD B2C 服务中的管理配置限制。
 
-|类别  |限制  |
+|Category  |限制  |
 |---------|---------|
-|每个 Azure AD B2C 租户的应用程序数   |250           |
 |每个应用程序的作用域数        |1000          |
 |每个用户的[自定义属性](user-profile-attributes.md#extension-attributes)数   <sup>1</sup>       |100         |
 |每个应用程序的重定向 Url 数量       |100         |

@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/15/2020
+ms.date: 02/01/2021
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: a2c26c3e41f64a1593a2d3386c76427c0b9682e9
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: d380b9d6a20cbe28a8fc4b64179437cd31fd2937
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98127475"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979279"
 ---
 # <a name="soft-delete-for-blobs"></a>blob 的软删除
 
@@ -27,6 +27,10 @@ Blob 的软删除可防止意外地或错误地修改或删除数据。 在为�
 ## <a name="about-soft-delete-for-blobs"></a>关于 Blob 的软删除
 
 在存储帐户上启用了 Blob 的软删除时，可以在已删除对象之后（在指定的数据保留期内）恢复这些对象。 此保护可扩展到因覆盖而擦除的任何 Blob（块 Blob、追加 Blob 或页 Blob）。
+
+下图显示了在启用 blob 软删除后，如何还原已删除的 blob：
+
+:::image type="content" source="media/soft-delete-blob-overview/blob-soft-delete-diagram.png" alt-text="显示如何还原软删除 blob 的图示":::
 
 如果在启用 blob 软删除的情况下删除了现有 blob 或快照中的数据，但未启用 blob 版本控制，则会生成软删除的快照以保存覆盖的数据的状态。 在指定的保持期到期后，将永久删除该对象。
 

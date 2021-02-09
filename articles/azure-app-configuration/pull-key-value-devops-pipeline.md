@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: how-to
 ms.date: 11/17/2020
 ms.author: drewbat
-ms.openlocfilehash: 4d80c034ab03fed6b9ae2ed0c4c0420afe6f7e32
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 7bd163781203a277f4c9d6866a156c11e4d5d520
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98728085"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979566"
 ---
 # <a name="pull-settings-to-app-configuration-with-azure-pipelines"></a>使用 Azure Pipelines 从应用程序配置中拉取设置
 
@@ -60,7 +60,7 @@ ms.locfileid: "98728085"
 
 本部分介绍如何在 Azure DevOps 生成管道中使用“Azure 应用程序配置”任务。
 
-1. 通过单击“管道” > “管道”，导航到“生成管道”页。 有关生成管道的文档，请参阅[创建你的第一个管道](/azure/devops/pipelines/create-first-pipeline?view=azure-devops&tabs=net%2Ctfs-2018-2%2Cbrowser)。
+1. 通过单击“管道” > “管道”，导航到“生成管道”页。 有关生成管道的文档，请参阅[创建你的第一个管道](/azure/devops/pipelines/create-first-pipeline?tabs=net%2Ctfs-2018-2%2Cbrowser)。
       - 如果要创建新的生成管道，请单击“新建管道”，然后为管道选择存储库。 选择管道右侧的“显示助手”，然后搜索“Azure 应用程序配置”任务。
       - 如果使用现有生成管道，请选择“编辑”以编辑管道。 在“任务”选项卡中，搜索“Azure 应用程序配置”任务。
 1. 配置任务的必要参数，以便从应用程序配置存储中拉取键值。 参数说明在下面的“参数”部分以及每个参数旁边的工具提示中提供。
@@ -73,10 +73,10 @@ ms.locfileid: "98728085"
 
 本部分介绍如何在 Azure DevOps 发布管道中使用“Azure 应用程序配置”任务。
 
-1. 通过选择“管道” > “发布”，导航到“发布管道”页。 有关发布管道的文档，请参阅[发布管道](/azure/devops/pipelines/release?view=azure-devops)。
+1. 通过选择“管道” > “发布”，导航到“发布管道”页。 有关发布管道的文档，请参阅[发布管道](/azure/devops/pipelines/release)。
 1. 选择现有的发布管道。 如果没有，请单击“新建管道”创建一个新的发布管道。
 1. 选择右上角的“编辑”按钮以编辑发布管道。
-1. 选择“阶段”以添加任务。 有关阶段的详细信息，请参阅[添加阶段、依赖项和条件](/azure/devops/pipelines/release/environments?view=azure-devops)。
+1. 选择“阶段”以添加任务。 有关阶段的详细信息，请参阅[添加阶段、依赖项和条件](/azure/devops/pipelines/release/environments)。
 1. 为“在代理上运行”单击 **+** ，然后在“添加任务”选项卡下添加“Azure 应用程序配置”任务。
 1. 配置任务内的必要参数，以便从应用程序配置存储中拉取键值。 参数说明在下面的“参数”部分以及每个参数旁边的工具提示中提供。
       - 将“Azure 订阅”参数设置为你在前面步骤中创建的服务连接的名称。
@@ -105,7 +105,7 @@ echo "$env:myBuildSetting"
 值将输出到控制台。
 
 > [!NOTE]
-> 应用配置中 Azure Key Vault 引用将被解析并设置为 [机密变量](/azure/devops/pipelines/process/variables#secret-variables)。 在 Azure 管道中，将从日志中屏蔽机密变量。 它们不会作为环境变量传递到任务中，而必须作为输入传递。 
+> 将解析应用程序配置中的 Azure Key Vault 引用，并将其设置为[机密变量](/azure/devops/pipelines/process/variables#secret-variables)。 在 Azure 管道中，会从日志中屏蔽机密变量。 它们不会作为环境变量传递到任务中，而是作为输入传递。 
 
 ## <a name="troubleshooting"></a>疑难解答
 

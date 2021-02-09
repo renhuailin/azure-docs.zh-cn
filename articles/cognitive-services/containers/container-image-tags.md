@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: reference
 ms.date: 11/17/2020
 ms.author: aahi
-ms.openlocfilehash: 8abe785cac4f46401b3efeb7868b061d13810b29
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: c3023c32f2a31235f5a733639a548c190197b413
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99576221"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99981113"
 ---
 # <a name="azure-cognitive-services-container-image-tags-and-release-notes"></a>Azure 认知服务容器映像标记和发行说明
 
@@ -53,14 +53,14 @@ Azure 认知服务提供了许多容器映像。 容器注册表和相应的存�
 # <a name="latest-version"></a>[最新版本](#tab/current)
 
 发行说明 `3.2-preview.2` ：
-
-* 新的3.2 容器
+* Distroless 版本
+* 用于在 JSON 响应中的文本行顺序之间进行选择的 ReadingOrder 参数
+* 增强的日志记录
+* 到 CJK 模型的修补程序
 
 | 映像标记                    | 说明 |
 |-------------------------------|:------|
-| `latest`                      |       |
-| `3.2-preview.2` |  |
-| `3.2-preview.1` |  |
+|3.2.2.014850001-49e0eac6-preview                     |       |
 
 # <a name="previous-versions"></a>[旧版](#tab/previous)
 

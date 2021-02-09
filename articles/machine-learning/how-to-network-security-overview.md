@@ -11,12 +11,12 @@ author: peterclu
 ms.date: 10/06/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, references_regions, contperf-fy21q1
-ms.openlocfilehash: 664264f2cd810f232b967f5af78ba3d522f0a41f
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 857fba6dfa6191163c06c423cefb42d57f25dc1d
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060004"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99980569"
 ---
 # <a name="virtual-network-isolation-and-privacy-overview"></a>虚拟网络隔离和隐私概述
 
@@ -137,6 +137,15 @@ ms.locfileid: "98060004"
 ### <a name="limitations"></a>限制
 - AKS 群集必须与工作区及其关联资源属于同一 VNet。 
 
+## <a name="optional-enable-public-access"></a>可选：启用公共访问
+
+你可以使用专用终结点保护 VNet 后面的工作区，并且仍允许通过公共 internet 进行访问。 初始配置与 [保护工作区和关联资源](#secure-the-workspace-and-associated-resources)的方式相同。 
+
+使用专用链接保护工作区后，将 [启用公共访问](how-to-configure-private-link.md#enable-public-access)。 此后，你可以从公共 internet 和 VNet 访问工作区。
+
+### <a name="limitations"></a>限制
+
+- 如果通过公共 internet 使用 Azure 机器学习 studio，则设计器等某些功能可能无法访问你的数据。 如果数据存储在 VNet 保护的服务中，则会发生此问题。 例如，Azure 存储帐户。
 ## <a name="optional-enable-studio-functionality"></a>可选：启用 studio 功能
 
 [保护工作区](#secure-the-workspace-and-associated-resources)  > [保护定型环境](#secure-the-training-environment)  > [保护推断环境](#secure-the-inferencing-environment)  > **启用 studio 功能**  > [配置防火墙设置](#configure-firewall-settings)

@@ -1,23 +1,23 @@
 ---
 title: Azure Cosmos DB 模拟器的命令行和 PowerShell 参考
-description: 了解 Azure Cosmos DB 模拟器的命令行参数，如何用 PowerShell 控制模拟器，以及如何更改可在模拟器中创建的容器数。
+description: 了解 Azure Cosmos DB 模拟器的命令行参数、如何使用 PowerShell 控制模拟器，以及如何更改可以在模拟器中创建的容器数。
 ms.service: cosmos-db
 ms.topic: how-to
 author: markjbrown
 ms.author: mjbrown
 ms.date: 09/17/2020
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 2579326e92144149472874611b5307920a93c049
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: e0c795484bf860402d05c1dc5779633962a44ec2
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97031396"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979498"
 ---
 # <a name="command-line-and-powershell-reference-for-azure-cosmos-db-emulator"></a>Azure Cosmos DB 模拟器的命令行和 PowerShell 参考
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
-Azure Cosmos DB 模拟器提供了一个模拟 Azure Cosmos DB 服务的本地环境，用于本地开发目的。 [安装模拟器](local-emulator.md)后，可以通过命令行和 PowerShell 命令控制模拟器。 本文介绍如何使用命令行和 PowerShell 命令启动和停止模拟器、配置选项和执行其他操作。 必须从安装位置运行命令。
+为方便本地开发，Azure Cosmos DB 模拟器提供了一个模拟 Azure Cosmos DB 服务的本地环境。 [安装模拟器](local-emulator.md)后，可以通过命令行和 PowerShell 命令控制模拟器。 本文介绍如何使用命令行和 PowerShell 命令启动和停止模拟器、配置选项和执行其他操作。 必须从安装位置运行命令。
 
 ##  <a name="manage-the-emulator-with-command-line-syntax"></a><a id="command-line"></a>用命令行语法管理模拟器
 
@@ -75,10 +75,10 @@ Microsoft.Azure.Cosmos.Emulator.exe [/Shutdown] [/DataPath] [/Port] [/MongoPort]
 Import-Module "$env:ProgramFiles\Azure Cosmos DB Emulator\PSModules\Microsoft.Azure.CosmosDB.Emulator"
 ```
 
-或者，将 `PSModules` 目录放置在 `PSModulesPath` 上，并按如下命令中所示将其导入：
+或者，将 `PSModules` 目录放置在 `PSModulePath` 上，并按如下命令中所示将其导入：
 
 ```powershell
-$env:PSModulesPath += "$env:ProgramFiles\Azure Cosmos DB Emulator\PSModules"
+$env:PSModulePath += "$env:ProgramFiles\Azure Cosmos DB Emulator\PSModules"
 Import-Module Microsoft.Azure.CosmosDB.Emulator
 ```
 
@@ -127,14 +127,14 @@ Import-Module Microsoft.Azure.CosmosDB.Emulator
 
 ## <a name="change-the-number-of-default-containers"></a><a id="set-partitioncount"></a>更改默认容器数量
 
-默认情况下，最多可以创建25个固定大小的容器 (仅支持使用 Azure Cosmos DB Sdk) ，或使用 Azure Cosmos DB 模拟器的5个无限制容器。 通过修改 PartitionCount 值，可最多创建 250 个固定大小的容器或 50 个不受限容器，也可创建两者的任意组合（前提是总数不超过 250 个固定大小的容器，其中 1 个不受限容器 = 5 个固定大小的容器）。 但是，建议不要设置用 200 个以上固定大小的容器进行运行的模拟器。 因为这会造成磁盘 IO 操作的开销增加，导致在运行终结点 API 时出现不可预测的超时情况。
+默认情况下，可最多创建 25 个固定大小的容器（仅支持使用 Azure Cosmos DB SDK 进行创建），或使用 Azure Cosmos DB 模拟器创建 5 个不受限容器。 通过修改 PartitionCount 值，可最多创建 250 个固定大小的容器或 50 个不受限容器，也可创建两者的任意组合（前提是总数不超过 250 个固定大小的容器，其中 1 个不受限容器 = 5 个固定大小的容器）。 但是，建议不要设置用 200 个以上固定大小的容器进行运行的模拟器。 因为这会造成磁盘 IO 操作的开销增加，导致在运行终结点 API 时出现不可预测的超时情况。
 
 如果在已超过当前分区计数后尝试创建容器，则模拟器将引发 ServiceUnavailable 异常，并收到以下消息。
 
 > 很抱歉，此区域当前需求较高，暂时无法满足你的请求。 我们在持续努力推出越来越多的容量，请进行重试。
 > ActivityId:12345678-1234-1234-1234-123456789abc
 
-若要更改 Azure Cosmos DB 模拟器中可用的容器数，请运行以下步骤：
+若要更改 Azure Cosmos DB 模拟器中可用容器的数量，请执行以下步骤：
 
 1. 通过在系统任务栏上右键单击“Azure Cosmos DB 模拟器”图标，并单击“重置数据...”，删除所有本地 Azure Cosmos DB 模拟器数据。
 

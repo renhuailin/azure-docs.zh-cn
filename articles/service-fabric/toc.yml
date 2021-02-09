@@ -104,7 +104,7 @@
           href: service-fabric-tutorial-standalone-install-an-application.md
         - name: 4- 清理群集和删除基础结构
           href: service-fabric-tutorial-standalone-clean-up.md
-- name: 最佳做法
+- name: 最佳实践
   items:
     - name: Service Fabric 最佳做法概述
       href: service-fabric-best-practices-overview.md
@@ -605,7 +605,7 @@
           href: service-fabric-how-to-specify-environment-variables.md
         - name: 部署或删除应用程序
           items:
-            - name: Azure Resource Manager
+            - name: Azure 资源管理器
               href: service-fabric-application-arm-resource.md
             - name: Azure PowerShell
               href: service-fabric-deploy-remove-applications.md
@@ -713,8 +713,6 @@
                   href: service-fabric-cluster-security-update-certs-azure.md
                 - name: 远程连接到群集节点 VM
                   href: service-fabric-cluster-remote-connect-to-azure-cluster-node.md
-                - name: 将群集节点升级为使用托管磁盘
-                  href: upgrade-managed-disks.md
         - name: 独立群集
           items:
             - name: 创建

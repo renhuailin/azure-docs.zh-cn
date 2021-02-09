@@ -10,12 +10,12 @@ ms.date: 02/02/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e5f8264221ada261ccae1b347c47cdf27967d5d8
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 267fd57b2fd359a73d5c1e01568aba14594e9290
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99537146"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99980159"
 ---
 # <a name="blob-versioning"></a>Blob 版本控制
 
@@ -37,6 +37,10 @@ Microsoft 建议使用 blob 版本控制来维护以前版本的 blob，以实�
 版本捕获 blob 在给定时间点的状态。 为存储帐户启用 blob 版本控制后，每次修改或删除 blob 时，Azure 存储会自动创建新版本的 blob。
 
 当你创建启用了版本控制的 blob 时，新的 blob 是 (的 blob 的当前版本或基本 blob) 。 如果你随后修改了该 blob，Azure 存储将创建一个在修改之前捕获 blob 状态的版本。 修改后的 blob 将成为新的当前版本。 每次修改 blob 时都会创建一个新版本。
+
+下图显示了如何在编写和删除操作上创建版本，以及如何将早期版本升级为最新版本：
+
+:::image type="content" source="media/versioning-overview/blob-versioning-diagram.png" alt-text="显示 blob 版本控制工作原理的关系图":::
 
 每个 blob 具有大量版本可能会增加 blob 列表操作的延迟。 Microsoft 建议为每个 blob 保留少于1000个版本。 你可以使用生命周期管理来自动删除旧版本。 有关生命周期管理的详细信息，请参阅 [通过自动化 Azure Blob 存储访问层优化成本](storage-lifecycle-management-concepts.md)。
 
@@ -189,7 +193,7 @@ Blob 版本控制用于保护数据免遭意外或恶意删除。 若要增强�
 
 | 说明 | Blob 服务操作 | 需要 Azure RBAC 数据操作 | Azure 内置角色支持 |
 |----------------------------------------------|------------------------|---------------------------------------------------------------------------------------|-------------------------------|
-| 正在删除 blob 的当前版本 | 删除 Blob | **StorageAccounts/blobServices/容器/blob/删除** | 存储 Blob 数据参与者 |
+| 正在删除 blob 的当前版本 | 删除 Blob | **Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete** | 存储 Blob 数据参与者 |
 | 删除版本 | 删除 Blob | **Microsoft.Storage/storageAccounts/blobServices/containers/blobs/deleteBlobVersion/action** | 存储 Blob 数据所有者 |
 
 ### <a name="shared-access-signature-sas-parameters"></a> (SAS) 参数的共享访问签名
@@ -293,7 +297,7 @@ Blob 存储无法确定两个块是否包含相同的数据。 每个上传和�
 | 如果 blob 软删除和版本控制均已启用 | 完全内容长度的所有现有版本，与层无关。 |
 | 如果启用了 blob 软删除但禁用了版本控制 | 所有现有软删除快照（按完整内容长度），不考虑层级。 |
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 - [启用和管理 blob 版本控制](versioning-enable.md)
 - [创建 blob 的快照](/rest/api/storageservices/creating-a-snapshot-of-a-blob)

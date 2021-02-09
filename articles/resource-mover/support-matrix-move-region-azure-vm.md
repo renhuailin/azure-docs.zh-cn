@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: evansma
 ms.service: resource-move
 ms.topic: how-to
-ms.date: 10/11/2020
+ms.date: 02/08/2021
 ms.author: raynew
-ms.openlocfilehash: fa0017b0633d856906609818dd56b5971b1879a7
-ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
+ms.openlocfilehash: 3022b2d4954ffaef71e17ed28dd9b6f141d4da70
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99222792"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99980484"
 ---
 # <a name="support-for-moving-azure-vms-between-azure-regions"></a>对在 Azure 区域之间移动 Azure VM 的支持
 
@@ -116,7 +116,7 @@ Azure RBAC 策略 | 不支持 | VM 上的 Azure 基于角色的访问控制 (Azu
 此表汇总了对 Azure VM OS 磁盘、数据磁盘和临时磁盘的支持。 务必要查看 [托管磁盘](../virtual-machines/disks-scalability-targets.md) 的 VM 磁盘限制和目标，以避免出现任何性能问题。
 
 > [!NOTE]
-> 目标 VM 大小应当等于或大于源 VM 大小。 用于验证的参数有：数据磁盘计数、NIC 计数、可用 CPU 数、内存大小 (GB)。 如果不是，则会发出错误。
+> 目标 VM 大小应当等于或大于源 VM 大小。 用于验证的参数有：数据磁盘计数、NIC 计数、可用 CPU 数、内存大小 (GB)。 如果 sn't，则会发出错误。
 
 
 **组件** | **支持** | **详细信息**
@@ -134,6 +134,8 @@ OS 磁盘的最大大小 | 2048 GB | [深入了解 ](../virtual-machines/managed
 标准 SSD | 支持 |
 第 2 代（UEFI 启动） | 支持
 启动诊断存储帐户 | 不支持 | 将 VM 移动到目标区域后，重新启用它。
+启用了 Azure 磁盘加密的 Vm | 支持 | [了解详细信息](tutorial-move-region-encrypted-virtual-machines.md)
+使用客户托管密钥的服务器端加密的 Vm | 支持 | [了解详细信息](tutorial-move-region-encrypted-virtual-machines.md)
 
 ### <a name="limits-and-data-change-rates"></a>限制和数据更改率
 

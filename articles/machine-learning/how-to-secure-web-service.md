@@ -10,12 +10,12 @@ author: aashishb
 ms.date: 01/04/2021
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 8399cfb4ceed9f50a5c9de0d3d16912a718bbfaa
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: 68163f7ca8cc1b37bda4e1224330f966265554c2
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98070110"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99980466"
 ---
 # <a name="use-tls-to-secure-a-web-service-through-azure-machine-learning"></a>使用 TLS 保护通过 Azure 机器学习部署的 Web 服务
 
@@ -27,7 +27,9 @@ ms.locfileid: "98070110"
 > [!TIP]
 > Azure 机器学习 SDK 使用术语“SSL”表示与安全通信相关的属性。 这并不意味着 Web 服务不会使用 TLS。 SSL 只是更广泛公认的术语。
 >
-> 具体而言，通过 Azure 机器学习部署的 web 服务支持 AKS 和 ACI 的 TLS 1.2 版。 对于 ACI 部署，如果在用较旧的 TLS 版本，建议重新部署以使用最新 TLS 版本。
+> 具体来说，通过 Azure 机器学习部署的 Web 服务支持 AKS 和 ACI 的 TLS 版本 1.2。 对于 ACI 部署，如果在用较旧的 TLS 版本，建议重新部署以使用最新 TLS 版本。
+>
+> 不支持 Azure 机器学习 AKS 推理的 TLS 版本1.3。
 
 TLS 和 SSL 均依赖数字证书，这有助于加密和身份验证。 有关数字证书工作原理的详细信息，请参阅维基百科主题[公钥基础结构](https://en.wikipedia.org/wiki/Public_key_infrastructure)。
 
@@ -72,21 +74,21 @@ TLS 和 SSL 均依赖数字证书，这有助于加密和身份验证。 有关�
 
 ## <a name="enable-tls-and-deploy"></a><a id="enable"></a> 启用 TLS 并进行部署
 
-**对于 AKS 部署**，可以在 AML 工作区中 [创建或附加 AKS 群集](how-to-create-attach-kubernetes.md) 时启用 TLS 终止。 在 AKS 模型部署时，你可以使用部署配置对象禁用 TLS 终止，否则，默认情况下，所有 AKS 模型部署都将在 AKS 群集创建或附加时间启用 TLS 终止。
+对于 AKS 部署，可以在 AML 工作区中[创建或附加 AKS 群集](how-to-create-attach-kubernetes.md)时启用 TLS 终止。 在 AKS 模型部署期间，可以使用部署配置对象来禁用 TLS 终止，否则，默认情况下，在创建或附加 AKS 群集时，所有 AKS 模型部署都将启用 TLS 终止。
 
-对于 ACI 部署，可以通过部署配置对象在模型部署时启用 TLS 终止。
+对于 ACI 部署，可以使用部署配置对象在模型部署期间启用 TLS 终止。
 
 
-### <a name="deploy-on-azure-kubernetes-service"></a>在 Azure Kubernetes Service 上部署
+### <a name="deploy-on-azure-kubernetes-service"></a>在 Azure Kubernetes 服务上部署
 
   > [!NOTE]
   > 为设计器部署安全的 Web 服务时，此部分中的信息也适用。 如果不熟悉如何使用 Python SDK，请参阅[什么是适用于 Python 的 Azure 机器学习 SDK？](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)。
 
-在 AML 工作区中 [创建或附加 AKS 群集](how-to-create-attach-kubernetes.md) 时，可以使用 **[AksCompute.provisioning_configuration ( # B1](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#&preserve-view=trueprovisioning-configuration-agent-count-none--vm-size-none--ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--location-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--service-cidr-none--dns-service-ip-none--docker-bridge-cidr-none--cluster-purpose-none--load-balancer-type-none--load-balancer-subnet-none-)** 和 **[AksCompute.attach_configuration ( # B3](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#&preserve-view=trueattach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)** 配置对象来启用 TLS 终止。 这两种方法都返回具有 **enable_ssl** 方法的配置对象，您可以使用 **enable_ssl** 方法来启用 TLS。
+在 AML 工作区中[创建或附加 AKS 群集](how-to-create-attach-kubernetes.md)时，可以使用 [AksCompute.provisioning_configuration()](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#&preserve-view=trueprovisioning-configuration-agent-count-none--vm-size-none--ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--location-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--service-cidr-none--dns-service-ip-none--docker-bridge-cidr-none--cluster-purpose-none--load-balancer-type-none--load-balancer-subnet-none-) 和 [AksCompute.attach_configuration()](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#&preserve-view=trueattach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-) 配置对象来启用 TLS 终止 。 两种方法都会返回具有 enable_ssl 方法的配置对象，并且你可以使用 enable_ssl 方法来启用 TLS 。
 
-你可以使用 Microsoft 证书或从 CA 购买的自定义证书来启用 TLS。 
+可以使用 Microsoft 证书或从 CA 购买的自定义证书来启用 TLS。 
 
-* **使用 Microsoft 的证书时**，必须使用 *leaf_domain_label* 参数。 此参数生成服务的 DNS 名称。 例如，使用值“contoso”将创建域名“contoso\<six-random-characters>.\<azureregion>.cloudapp.azure.com”，其中 \<azureregion> 是包含该服务的区域。 或者，可使用 overwrite_existing_domain 参数覆盖现有的 leaf_domain_label 。 下面的示例演示如何创建一个配置，以使用 Microsoft 证书启用 TLS：
+* 使用 Microsoft 提供的证书时，必须使用 leaf_domain_label 参数。 此参数生成服务的 DNS 名称。 例如，使用值“contoso”将创建域名“contoso\<six-random-characters>.\<azureregion>.cloudapp.azure.com”，其中 \<azureregion> 是包含该服务的区域。 或者，可使用 overwrite_existing_domain 参数覆盖现有的 leaf_domain_label 。 下面的示例演示如何创建一个配置，以使用 Microsoft 提供的证书启用 TLS：
 
     ```python
     from azureml.core.compute import AksCompute
@@ -113,9 +115,9 @@ TLS 和 SSL 均依赖数字证书，这有助于加密和身份验证。 有关�
     > 如果使用 Microsoft 的证书，则无需购买属于自己的证书或域名。
 
     > [!WARNING]
-    > 如果使用内部负载均衡器配置了 AKS 群集，则 __不支持__ 使用 Microsoft 提供的证书，必须使用自定义证书来启用 TLS。
+    > 如果为 AKS 群集配置了内部负载均衡器，则不支持使用 Microsoft 提供的证书，并且你必须使用自定义证书启用 TLS。
 
-* **使用所购买的自定义证书时**，可以使用 *ssl_cert_pem_file*、 *ssl_key_pem_file* 和 *ssl_cname* 参数。 下面的示例演示如何使用 .pem 文件创建使用所购买的 TLS/SSL 证书的配置：
+* 使用你购买的自定义证书时，请使用 ssl_cert_pem_file、ssl_key_pem_file 和 ssl_cname 参数  。 下面的示例演示如何使用 .pem 文件创建使用所购买的 TLS/SSL 证书的配置：
  
     ```python
     from azureml.core.compute import AksCompute
@@ -149,15 +151,15 @@ aci_config = AciWebservice.deploy_configuration(
 
 ## <a name="update-your-dns"></a>更新 DNS
 
-对于具有自定义证书或 ACI 部署的 AKS 部署，必须更新 DNS 记录，使其指向计分终结点的 IP 地址。
+对于使用自定义证书进行的 AKS 部署，或者对于 ACI 部署，你必须更新 DNS 记录，使其指向评分终结点的 IP 地址。
 
   > [!IMPORTANT]
-  > 使用 Microsoft 的证书进行 AKS 部署时，无需手动更新群集的 DNS 值。 应自动设置该值。
+  > 将 Microsoft 提供的证书用于 AKS 部署时，无需手动更新群集的 DNS 值。 应自动设置该值。
 
-你可以按照以下步骤更新自定义域名的 DNS 记录：
-* 从计分终结点 URI 获取计分终结点 IP 地址，该 URI 的格式通常为 *http://104.214.29.152:80/api/v1/service/<service-name>/score* 。 
-* 使用域名注册机构的工具来更新域名的 DNS 记录。 记录必须指向计分终结点的 IP 地址。
-* DNS 记录更新之后，可以使用 *nslookup 自定义域-name* 命令验证 dns 解析。 如果 DNS 记录已正确更新，自定义域名将指向计分终结点的 IP 地址。
+可以按照以下步骤更新自定义域名的 DNS 记录：
+* 从评分终结点 URI（其格式通常为 *http://104.214.29.152:80/api/v1/service/<service-name>/score* ）获取评分终结点 IP 地址。 
+* 使用域名注册机构的工具来更新域名的 DNS 记录。 该记录必须指向评分终结点的 IP 地址。
+* DNS 记录更新之后，可以使用 nslookup custom-domain-name 命令验证 DNS 解析。 如果 DNS 记录已正确更新，自定义域名将指向评分终结点的 IP 地址。
 * 可能延迟几分钟到几小时之后客户端才能解析域名，具体取决于注册机构和为域名配置的“生存时间”(TTL)。
 
 
@@ -167,7 +169,7 @@ TLS/SSL 证书已过期，必须续订。 通常每年都会发生这种情况�
 
 ### <a name="update-a-microsoft-generated-certificate"></a>更新 Microsoft 生成的证书
 
-如果证书最初是由 Microsoft (生成的，则在使用 *leaf_domain_label* 创建服务) 时，该证书将在需要时 **自动续订** 。 如果要手动续订该证书，请使用以下示例之一更新证书：
+如果该证书最初是由 Microsoft 生成的（在使用 leaf_domain_label 来创建服务时），它将会在需要时自动续订。 如果需要手动续订，请使用以下示例之一来更新该证书：
 
 > [!IMPORTANT]
 > * 如果现有证书仍然有效，请使用 `renew=True` (SDK) 或 `--ssl-renew` (CLI) 强制执行配置以续订该证书。 例如，如果现有证书在 10 天内仍然有效，并且你不使用 `renew=True`，则可能不会续订该证书。

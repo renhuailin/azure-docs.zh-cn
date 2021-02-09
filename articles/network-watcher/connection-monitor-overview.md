@@ -1,6 +1,6 @@
 ---
 title: Azure 中的连接监视器 |Microsoft Docs
-description: 了解如何使用连接监视器来监视分布式环境中的网络通信。
+description: 了解如何使用连接监视器监视分布式环境中的网络通信。
 services: network-watcher
 documentationcenter: na
 author: vinynigam
@@ -15,14 +15,17 @@ ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: vinigam
 ms.custom: mvc
-ms.openlocfilehash: 57228c6b7da04b139c7075c83e313b207907e214
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: 0fa5e09dbe7c0a8cd45557d535353ea4a0a00b16
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97898005"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99833093"
 ---
-# <a name="network-connectivity-monitoring-with-connection-monitor"></a>用连接监视器监视网络连接
+# <a name="network-connectivity-monitoring-with-connection-monitor"></a>使用连接监视器进行网络连接监视
+
+> [!IMPORTANT]
+> 自2021年7月1日起，你将无法在现有工作区中添加新测试，也无法在网络性能监视器中启用新的工作区。 你还将无法在 (经典) 的连接监视器中添加新的连接监视器。 你可以继续使用在2021年7月1日之前创建的测试和连接监视器。 若要最大程度地减少对当前工作负荷的服务中断，请在2024年2月29日之前，将 [测试从网络性能监视器 ](migrate-to-connection-monitor-from-network-performance-monitor.md) 或  [从连接监视器迁移 (经典) ](migrate-to-connection-monitor-from-connection-monitor-classic.md) 升级到 Azure 网络观察程序中的新连接监视器。
 
 连接监视器在 Azure 网络观察程序中提供统一的端到端连接监视。 连接监视器功能支持混合部署和 Azure 云部署。 网络观察程序提供的工具可用于监视、诊断和查看针对 Azure 部署的与连接相关的指标。
 
@@ -30,7 +33,7 @@ ms.locfileid: "97898005"
 
 - 前端 Web 服务器 VM 与多层应用程序中的数据库服务器 VM 进行通信。 你希望检查两个 VM 之间的网络连接。
 - 希望美国东部区域中的 Vm 对美国中部区域中的 Vm 进行 ping 操作，并且需要比较跨区域网络延迟。
-- 你有多个位于华盛顿州西雅图的本地办公场所，在阿什本，弗吉尼亚州。 Office 站点连接到 Microsoft 365 Url。 对于 Microsoft 365 Url 的用户，比较西雅图与阿什本之间的延迟。
+- 你有多个位于华盛顿州西雅图的本地办公场所，在阿什本，弗吉尼亚州。 你的办公地点连接到 Microsoft 365 URL。 对于 Microsoft 365 Url 的用户，比较西雅图与阿什本之间的延迟。
 - 混合应用程序需要连接到 Azure 存储终结点。 本地站点和 Azure 应用程序连接到相同的 Azure 存储终结点。 希望比较本地站点的延迟与 Azure 应用程序的延迟。
 - 希望检查本地设置与托管云应用程序的 Azure VM 之间的连接。
 
@@ -92,10 +95,10 @@ ms.locfileid: "97898005"
 ### <a name="access-connection-monitor"></a>访问连接监视器
 
 1. 在 Azure 门户主页上，转到“网络观察程序”。
-1. 在左侧的 " **监视** " 部分中，选择 " **连接监视器**"。
+1. 在左侧的“监视”部分，选择“连接监视器” 。
 1. 你会看到在连接监视器中创建的所有连接监视器。 若要查看在经典连接监视器体验中创建的连接监视器，请转到“连接监视器”选项卡。
     
-  :::image type="content" source="./media/connection-monitor-2-preview/cm-resource-view.png" alt-text="显示连接监视器中创建的连接监视器的屏幕截图" lightbox="./media/connection-monitor-2-preview/cm-resource-view.png":::
+  :::image type="content" source="./media/connection-monitor-2-preview/cm-resource-view.png" alt-text="屏幕截图显示了在连接监视器中创建的连接监视器" lightbox="./media/connection-monitor-2-preview/cm-resource-view.png":::
 
 ### <a name="create-a-connection-monitor"></a>创建连接监视器
 
@@ -111,7 +114,7 @@ ms.locfileid: "97898005"
 
  ![显示连接监视器的示意图（该图定义了测试组和测试之间的关系）](./media/connection-monitor-2-preview/cm-tg-2.png)
 
-可以使用[Azure 门户](./connection-monitor-create-using-portal.md)或[ARMClient](./connection-monitor-create-using-template.md)创建连接监视器
+可以使用[Azure 门户](./connection-monitor-create-using-portal.md)、 [ARMClient](./connection-monitor-create-using-template.md)或[PowerShell](connection-monitor-create-using-powershell.md)创建连接监视器
 
 添加到测试组中的所有源、目标和测试配置将细分为单独的测试。 下面是如何分解源和目标的示例：
 
@@ -151,7 +154,7 @@ ms.locfileid: "97898005"
 
 ### <a name="checks-in-a-test"></a>签入测试
 
-根据你在测试配置中选择的协议，连接监视器将为源-目标对运行一系列检查。 根据所选测试频率运行检查。
+根据你在测试配置中所选的协议，连接监视器对源-目标对运行一系列检查。 根据所选测试频率运行检查。
 
 如果使用 HTTP，则服务会计算返回了有效响应代码的 HTTP 响应数。 可使用 PowerShell 和 CLI 设置有效的响应代码。 结果确定检查失败的百分比。 为了计算 RTT，服务会测量 HTTP 调用和响应之间的时间。
 
@@ -161,13 +164,13 @@ ms.locfileid: "97898005"
 
 根据检查返回的数据，测试可以具有以下状态：
 
-* **Pass** –失败检查和 RTT 百分比的实际值在指定的阈值内。
-* **Fail** –失败检查或 RTT 百分比的实际值超出了指定的阈值。 如果未指定阈值，则当检查失败的百分比为 100 时，测试进入失败状态。
-* **警告** – 
-     * 如果指定了阈值，并且连接监视器观察到失败百分比超过80% 的阈值，则测试将被标记为 "警告"。
+* 通过 - 检查失败和 RTT 的百分比的实际值都在指定的阈值内。
+* 失败 - 检查失败或 RTT 的百分比的实际值超出指定的阈值。 如果未指定阈值，则当检查失败的百分比为 100 时，测试进入失败状态。
+* 警告 - 
+     * 如果指定了阈值，并且连接监视器观察到检查失败百分比超过阈值的 80%，则测试将标记为“警告”。
      * 如果没有指定的阈值，连接监视器会自动分配一个阈值。 超过此阈值时，测试状态将更改为“警告”。 对于 TCP 或 ICMP 测试中的往返时间，阈值为 750msec。 对于检查失败百分比，阈值为 10%。 
-* 不 **确定**  – Log Analytics 工作区中没有数据。  检查指标。 
-* **未运行**  -禁用了 "测试组"  
+* 不确定  - Log Analytics 工作区中没有数据。  检查指标。 
+* 未运行  - 已通过禁用测试组进行禁用  
 
 ### <a name="data-collection-analysis-and-alerts"></a>数据收集、分析和警报
 
@@ -181,11 +184,11 @@ ms.locfileid: "97898005"
 
 在监视仪表板上，可以查看可以访问的订阅、区域、时间戳、源和目标类型的连接监视器列表。
 
-从网络观察程序中转到连接监视器后，可以通过以下方式查看数据：
+从网络观察程序中转到连接监视器时，可以通过以下方式查看数据：
 
-* **连接监视器** –为你的订阅、区域、时间戳、源和目标类型创建的所有连接监视器的列表。 此视图为默认视图。
-* **测试组** –为你的订阅、区域、时间戳、源和目标类型创建的所有测试组的列表。 这些测试组不由连接监视器进行筛选。
-* **测试** –为你的订阅、区域、时间戳、源和目标类型运行的所有测试的列表。 这些测试不由连接监视器或测试组进行筛选。
+* 连接监视器 - 为订阅、区域、时间戳、源和目标类型创建的所有连接监视器的列表。 此视图为默认视图。
+* 测试组 - 为订阅、区域、时间戳、源和目标类型创建的所有测试组的列表。 这些测试组不由连接监视器进行筛选。
+* 测试 - 针对订阅、区域、时间戳、源和目标类型运行的所有测试的列表。 这些测试不由连接监视器或测试组进行筛选。
 
 在下图中，这三个数据视图由箭头 1 指示。
 
@@ -193,27 +196,27 @@ ms.locfileid: "97898005"
 
 你可以基于以下内容筛选列表：
 
-* **顶级筛选器** –按文本、实体类型 (连接监视器、测试组或测试) 时间戳和范围搜索列表。 范围包括订阅、区域、源和目标类型。 请查看下图中的框 1。
-* **基于状态的筛选** 器–按连接监视器、测试组或测试的状态进行筛选。 请查看下列图像中的框 2。
+* 顶层筛选器 - 按文本、实体类型（连接监视器、测试组或测试）时间戳和范围搜索列表。 范围包括订阅、区域、源和目标类型。 请查看下图中的框 1。
+* 基于状态的筛选器 - 按连接监视器、测试组或测试的状态进行筛选。 请查看下列图像中的框 2。
 * **基于警报的筛选器** - 按连接监视器资源上触发的警报进行筛选。 请查看下图中的框 3。
 
-  :::image type="content" source="./media/connection-monitor-2-preview/cm-view.png" alt-text="显示如何在连接监视器中筛选连接监视器、测试组和测试的视图的屏幕截图 " lightbox="./media/connection-monitor-2-preview/cm-view.png":::
+  :::image type="content" source="./media/connection-monitor-2-preview/cm-view.png" alt-text="屏幕截图显示了如何在连接监视器中筛选连接监视器、测试组和测试的视图" lightbox="./media/connection-monitor-2-preview/cm-view.png":::
     
-例如，若要查看连接监视器中源 IP 为10.192.64.56 的所有测试：
+例如，若要在连接监视器中查看源 IP 是 10.192.64.56 的的所有测试，请执行以下操作：
 1. 将视图更改为“测试”。
 1. 在搜索字段中键入“10.192.64.56”
 1. 在顶层筛选器的“范围”中，选择“源” 。
 
-仅显示在源 IP 为10.192.64.56 的连接监视器中失败的测试：
+若要在连接监视器中仅显示源 IP 是 10.192.64.56 的失败测试，请执行以下操作：
 1. 将视图更改为“测试”。
 1. 对于基于状态的筛选器，请选择“失败”。
 1. 在搜索字段中键入“10.192.64.56”
 1. 在顶层筛选器的“范围”中，选择“源” 。
 
-仅显示连接监视器中目标为 outlook.office365.com 的失败的测试：
+若要在连接监视器中仅显示目标为 outlook.office365.com 的失败测试，请执行以下操作：
 1. 将视图更改为“测试”。
 1. 对于基于状态的筛选器，请选择“失败”。
-1. 在搜索字段中，输入 *office.live.com*
+1. 在搜索字段中，输入“office.live.com”
 1. 在顶层筛选器的“范围”中，选择“目标” 。
   
   :::image type="content" source="./media/connection-monitor-2-preview/tests-view.png" alt-text="显示筛选为仅显示 Outlook.Office365.com 目标测试失败的视图的屏幕截图" lightbox="./media/connection-monitor-2-preview/tests-view.png":::
@@ -265,25 +268,26 @@ ms.locfileid: "97898005"
 
 #### <a name="metrics-in-azure-monitor"></a>Azure Monitor 中的指标
 
-在连接监视器体验之前创建的连接监视器中，所有四个指标都可用：% 探测失败、AverageRoundtripMs、ChecksFailedPercent (预览) 和 RoundTripTimeMs (预览) 。 在连接监视器体验中创建的连接监视器中，数据仅适用于标记有 *(Preview)* 的指标。
+在连接监视器体验推出之前创建的连接监视器中，以下所有四个指标都可用：探测失败百分比、AverageRoundtripMs、ChecksFailedPercent (预览版) 和 RoundTripTimeMs (预览版)。 在连接监视器体验中创建的连接监视器中，数据仅可用于标记为“(预览版)”的指标。
 
-  :::image type="content" source="./media/connection-monitor-2-preview/monitor-metrics.png" alt-text="显示连接监视器中指标的屏幕截图" lightbox="./media/connection-monitor-2-preview/monitor-metrics.png":::
+  :::image type="content" source="./media/connection-monitor-2-preview/monitor-metrics.png" alt-text="屏幕截图显示了连接监视器中的指标" lightbox="./media/connection-monitor-2-preview/monitor-metrics.png":::
 
 使用指标时，将资源类型设置为“Microsoft.Network/networkWatchers/connectionMonitors”
 
 | 指标 | Display name | 计价单位 | 聚合类型 | 说明 | 维度 |
 | --- | --- | --- | --- | --- | --- |
-| ProbesFailedPercent | 失败的探测百分比 | 百分比 | 平均值 | 连接监视探测的失败百分比。 | 无维度 |
-| AverageRoundtripMs | 平均值往返时间（毫秒） | 毫秒 | 平均值 | 源和目标之间发送的连接监视探测的平均网络 RTT。 |             无维度 |
-| ChecksFailedPercent（预览版） | 失败检查（预览版） | 百分比 | 平均值 | 测试的检查失败百分比。 | ConnectionMonitorResourceId <br>SourceAddress <br>SourceName <br>SourceResourceId <br>SourceType <br>协议 <br>目的地地址 <br>DestinationName <br>DestinationResourceId <br>目标类型 <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>区域 |
-| RoundTripTimeMs（预览版） | 往返时间（毫秒）（预览版） | 毫秒 | 平均值 | 在源和目标之间发送的用于检查的 RTT。 此值不是平均值。 | ConnectionMonitorResourceId <br>SourceAddress <br>SourceName <br>SourceResourceId <br>SourceType <br>协议 <br>目的地地址 <br>DestinationName <br>DestinationResourceId <br>目标类型 <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>区域 |
+| ProbesFailedPercent (经典)  |  (经典) 探测失败 | 百分比 | 平均值 | 连接监视探测的失败百分比。 | 无维度 |
+| AverageRoundtripMs (经典)  | 平均往返时间 (ms)  (经典)  | 毫秒 | 平均值 | 源和目标之间发送的连接监视探测的平均网络 RTT。 |             无维度 |
+| ChecksFailedPercent | % 检查失败 | 百分比 | 平均值 | 测试的检查失败百分比。 | ConnectionMonitorResourceId <br>SourceAddress <br>SourceName <br>SourceResourceId <br>SourceType <br>协议 <br>目的地地址 <br>DestinationName <br>DestinationResourceId <br>目标类型 <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>区域 |
+| RoundTripTimeMs | 往返时间（毫秒） | 毫秒 | 平均值 | 在源和目标之间发送的用于检查的 RTT。 此值不是平均值。 | ConnectionMonitorResourceId <br>SourceAddress <br>SourceName <br>SourceResourceId <br>SourceType <br>协议 <br>目的地地址 <br>DestinationName <br>DestinationResourceId <br>目标类型 <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>区域 |
+| TestResult | 测试结果 | 计数 | 平均值 | 连接监视器测试结果 | SourceAddress <br>SourceName <br>SourceResourceId <br>SourceType <br>协议 <br>目的地地址 <br>DestinationName <br>DestinationResourceId <br>目标类型 <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>SourceIP <br>DestinationIP <br>SourceSubnet <br>DestinationSubnet |
 
 #### <a name="metric-based-alerts-for-connection-monitor"></a>连接监视器基于指标的警报
 
 可使用以下方法在连接监视器上创建指标警报 
 
-1. 从连接监视器中，[使用 Azure 门户](connection-monitor-preview-create-using-portal.md#)创建连接监视器 
-1. 从连接监视器中，在仪表板中使用 "配置警报" 
+1. 通过连接监视器：此方法在[使用 Azure 门户](connection-monitor-preview-create-using-portal.md#)创建连接监视器期间使用 
+1. 通过连接监视器：使用仪表板中的“配置警报” 
 1. 通过 Azure Monitor - 若要在 Azure Monitor 中创建警报： 
     1. 选择在连接监视器中创建的连接监视器资源。
     1. 确保“指标”显示为连接监视器的信号类型。
@@ -293,7 +297,7 @@ ms.locfileid: "97898005"
     1. 在“警报逻辑”中填写以下详细信息：
         * 条件类型：静态。
         * 条件和阈值 。
-        * **聚合粒度和计算频率**：连接监视器每分钟更新一次数据。
+        * 计算的聚合粒度和计算频率：连接监视器每分钟更新一次数据。
     1. 在“操作”中选择操作组。
     1. 提供警报详细信息。
     1. 创建警报规则。
@@ -302,14 +306,14 @@ ms.locfileid: "97898005"
 
 ## <a name="diagnose-issues-in-your-network"></a>诊断网络中的问题
 
-连接监视器有助于诊断连接监视器和网络中的问题。 混合网络中的问题通过你之前安装的 Log Analytics 代理进行检测。 Azure 中的问题由网络观察程序扩展进行检测。 
+连接监视器可以帮助你诊断连接监视器中的问题和网络中的问题。 混合网络中的问题通过你之前安装的 Log Analytics 代理进行检测。 Azure 中的问题由网络观察程序扩展进行检测。 
 
 可以在网络拓扑的 Azure 网络中查看问题。
 
 对于源为本地 VM 的网络，可以检测到以下问题：
 
 * 请求已超时。
-* 终结点未通过 DNS 解析-临时或持久。 URL 无效。
+* DNS 未解析终结点 - 暂时或永久。 URL 无效。
 * 无法找到主机。
 * 源无法连接到目标。 无法通过 ICMP 访问目标。
 * 与证书相关的问题： 
@@ -348,5 +352,5 @@ ms.locfileid: "97898005"
 
 ## <a name="next-steps"></a>后续步骤
     
-   * 了解 [如何使用 Azure 门户创建连接监视器](./connection-monitor-create-using-portal.md)  
-   * 了解 [如何使用 ARMClient 创建连接监视器](./connection-monitor-create-using-template.md)
+   * 了解[如何使用 Azure 门户创建连接监视器](./connection-monitor-create-using-portal.md)  
+   * 了解[如何使用 ARMClient 创建连接监视器](./connection-monitor-create-using-template.md)

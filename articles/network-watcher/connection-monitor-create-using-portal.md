@@ -1,5 +1,5 @@
 ---
-title: 创建连接监视器-Azure 门户
+title: 创建连接监视器 - Azure 门户
 titleSuffix: Azure Network Watcher
 description: 本文介绍如何使用 Azure 门户在连接监视器中创建监视器。
 services: network-watcher
@@ -12,21 +12,24 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/23/2020
 ms.author: vinigam
-ms.openlocfilehash: a6ba9c02b384c1b30977d962659983d600c7b2ac
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: bd13712d137ec5a1fdfa6dec8e6f6d1e0a7432cb
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95545714"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99833161"
 ---
 # <a name="create-a-monitor-in-connection-monitor-by-using-the-azure-portal"></a>使用 Azure 门户在连接监视器中创建监视器
 
-了解如何使用连接监视器来监视资源之间的通信。 本文介绍了如何使用 Azure 门户创建监视器。 连接监视器支持混合部署和 Azure 云部署。
+> [!IMPORTANT]
+> 自2021年7月1日起，你将无法在现有工作区中添加新测试，也无法在网络性能监视器中启用新的工作区。 你还将无法在 (经典) 的连接监视器中添加新的连接监视器。 你可以继续使用在2021年7月1日之前创建的测试和连接监视器。 若要最大程度地减少对当前工作负荷的服务中断，请在2024年2月29日之前，将 [测试从网络性能监视器 ](migrate-to-connection-monitor-from-network-performance-monitor.md) 或  [从连接监视器迁移 (经典) ](migrate-to-connection-monitor-from-connection-monitor-classic.md) 升级到 Azure 网络观察程序中的新连接监视器。
+
+了解如何使用连接监视器监视资源之间的通信。 本文介绍了如何使用 Azure 门户创建监视器。 连接监视器支持混合部署和 Azure 云部署。
 
 
 ## <a name="before-you-begin"></a>准备阶段 
 
-在使用连接监视器创建的连接监视器中，可以将本地计算机和 Azure Vm 添加为源。 这些连接监视器还可以监视与终结点的连接。 终结点可以位于 Azure 上，也可以位于任何其他 URL 或 IP 上。
+在使用连接监视器创建的连接监视器中，可以将本地计算机和 Azure VM 添加为源。 这些连接监视器还可以监视与终结点的连接。 终结点可以位于 Azure 上，也可以位于任何其他 URL 或 IP 上。
 
 以下是一些可助你入门的定义：
 
@@ -48,17 +51,17 @@ ms.locfileid: "95545714"
 
 ## <a name="create-a-connection-monitor"></a>创建连接监视器
 
-使用 Azure 门户在连接监视器中创建监视器：
+若要使用 Azure 门户在连接监视器中创建监视器，请执行以下操作：
 
 1. 在 Azure 门户主页上，转到“网络观察程序”。
-1. 在左窗格中的 " **监视** " 部分，选择 " **连接监视器**"。
+1. 在左侧窗格的“监视”部分，选择“连接监视器” 。
 
-   你将看到在连接监视器中创建的所有连接监视器。 若要查看在经典连接监视器中创建的连接监视器，请转到“连接监视器”选项卡。
+   你会看到在连接监视器中创建的所有连接监视器。 若要查看在经典连接监视器中创建的连接监视器，请转到“连接监视器”选项卡。
 
-   :::image type="content" source="./media/connection-monitor-2-preview/cm-resource-view.png" alt-text="显示连接监视器中创建的连接监视器的屏幕截图。":::
+   :::image type="content" source="./media/connection-monitor-2-preview/cm-resource-view.png" alt-text="该屏幕截图显示了在连接监视器中创建的连接监视器。":::
    
     
-1. 在 " **连接监视器** " 仪表板的左上角，选择 " **创建**"。
+1. 在“连接监视器”仪表板的左上角选择“创建” 。
 
    
 
@@ -87,9 +90,9 @@ ms.locfileid: "95545714"
 1. 先在“查看 + 创建”选项卡上查看基本信息和测试组，再创建连接监视器。 如果需要编辑连接监视器，可以返回到相应的选项卡来执行此操作。 
    :::image type="content" source="./media/connection-monitor-2-preview/review-create-cm.png" alt-text="屏幕截图显示了连接监视器中的“查看 + 创建”选项卡。":::
    > [!NOTE] 
-   > " **查看** " 和 "创建" 选项卡显示连接监视器阶段每月的费用。 目前，“当前成本/月”列未显示任何费用。 连接监视器公开上市之后，此列才会显示每月费用。 
+   > “查看 + 创建”选项卡显示“连接监视器”阶段每月的成本。 目前，“当前成本/月”列未显示任何费用。 连接监视器公开上市之后，此列才会显示每月费用。 
    > 
-   > 即使在连接监视器阶段，也会收取 Log Analytics 引入费用。
+   > 即使在“连接监视器”阶段，也仍然需要支付 Log Analytics 引入费用。
 
 1. 准备好创建连接监视器后，在“查看 + 创建”选项卡的底部，选择“创建” 。
 
