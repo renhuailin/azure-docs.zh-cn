@@ -38,7 +38,7 @@ Azure RBAC 是在 [Azure 资源管理器](../azure-resource-manager/management/o
 
 ## <a name="how-azure-rbac-works"></a>Azure RBAC 的工作原理
 
-使用 Azure RBAC 控制资源访问权限的方式是创建角色分配。 这是一个需要理解的重要概念 — 它涉及到如何强制实施权限。 角色分配包含三个要素：安全主体、角色订阅和范围。
+使用 Azure RBAC 控制资源访问权限的方式是创建角色分配。 这是一个需要理解的重要概念 — 它涉及到如何强制实施权限。 角色分配包含三个要素：安全主体、角色定义和范围。
 
 ### <a name="security-principal"></a>安全主体
 
