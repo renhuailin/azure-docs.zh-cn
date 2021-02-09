@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/03/2021
+ms.date: 02/04/2021
 ms.author: memildin
-ms.openlocfilehash: cdc29f89307a986b2d71604ca495eac45458632b
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: fe031fa6de86b8059ba175fc4e1df6385ca7e796
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99526613"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99551019"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure 安全中心的新增功能
 
@@ -37,7 +37,8 @@ ms.locfileid: "99526613"
 
 - [Kubernetes 工作负载保护建议发布了正式版 (GA)](#kubernetes-workload-protection-recommendations-released-for-general-availability-ga)
 - [直接链接到建议详细信息页中的策略](#direct-link-to-policy-from-recommendation-details-page)
-- [SQL 数据分类建议不再影响安全功能分数](#sql-data-classification-recommendation-no-longer-affect-your-secure-score)
+- [SQL 数据分类建议不再影响安全功能分数](#sql-data-classification-recommendation-no-longer-affects-your-secure-score)
+- [工作流自动化可由对监管合规性评估（预览版）的更改触发](#workflow-automations-can-be-triggered-by-changes-to-regulatory-compliance-assessments-preview)
 
 ### <a name="kubernetes-workload-protection-recommendations-released-for-general-availability-ga"></a>Kubernetes 工作负载保护建议发布了正式版 (GA)
 
@@ -63,15 +64,21 @@ ms.locfileid: "99526613"
 
 使用此链接可查看策略定义和计算逻辑。 
 
-如果查看[安全建议参考指南](recommendations-reference.md)上的建议列表，你还将看到以下指向策略定义页面的链接：
+如果查看[安全建议参考指南](recommendations-reference.md)上的建议列表，你还将看到指向策略定义页面的链接：
 
-:::image type="content" source="media/release-notes/view-policy-definition-from-documentation.png" alt-text="直接从 Azure 安全中心建议参考页访问 Azure Policy 页面来了解特定策略":::
+:::image type="content" source="media/release-notes/view-policy-definition-from-documentation.png" alt-text="直接从 Azure 安全中心建议参考页访问 Azure Policy 页面来了解特定策略" lightbox="media/release-notes/view-policy-definition-from-documentation.png":::
 
 
-### <a name="sql-data-classification-recommendation-no-longer-affect-your-secure-score"></a>SQL 数据分类建议不再影响安全功能分数
+### <a name="sql-data-classification-recommendation-no-longer-affects-your-secure-score"></a>SQL 数据分类建议不再影响安全功能分数
 
 “应对 SQL 数据库中的敏感数据进行分类”建议不再影响安全功能分数。 这是“应用数据分类”安全控件中唯一的建议，因此该控件目前的安全功能分数值为 0。
 
+
+### <a name="workflow-automations-can-be-triggered-by-changes-to-regulatory-compliance-assessments-preview"></a>工作流自动化可由对监管合规性评估（预览版）的更改触发
+
+我们向工作流自动化的触发器选项添加了第三种数据类型：对监管合规性评估的更改。
+
+:::image type="content" source="media/release-notes/regulatory-compliance-triggers-workflow-automation.png" alt-text="使用对监管合规性评估的更改来触发工作流自动化" lightbox="media/release-notes/regulatory-compliance-triggers-workflow-automation.png":::
 
 
 ## <a name="january-2021"></a>2021 年 1 月
