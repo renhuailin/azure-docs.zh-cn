@@ -3,12 +3,12 @@ title: 使用托管标识进行身份验证
 description: 通过使用用户分配或系统分配的托管 Azure 标识，提供对专用容器注册表中映像的访问。
 ms.topic: article
 ms.date: 01/16/2019
-ms.openlocfilehash: 9a144f0e865cfc9bf857752eed65dbe5cda88bd9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 68564cc5743b1deb43bf39f897c239dc683c334c
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91253456"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99987745"
 ---
 # <a name="use-an-azure-managed-identity-to-authenticate-to-an-azure-container-registry"></a>使用 Azure 托管标识向 Azure 容器注册表验证身份 
 
@@ -53,7 +53,7 @@ Azure 资源的托管标识可在 Azure Active Directory (Azure AD) 中为 Azure
 
 ## <a name="create-a-docker-enabled-vm"></a>创建一个启用了 Docker 的 VM
 
-创建一个启用了 Docker 的 Ubuntu 虚拟机。 还需要在该虚拟机上安装 [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。 如果已有 Azure 虚拟机，请跳过此虚拟机创建步骤。
+创建一个启用了 Docker 的 Ubuntu 虚拟机。 还需要在该虚拟机上安装 [Azure CLI](/cli/azure/install-azure-cli)。 如果已有 Azure 虚拟机，请跳过此虚拟机创建步骤。
 
 使用 [az vm create][az-vm-create] 部署默认的 Ubuntu Azure 虚拟机。 以下示例在名为 *myResourceGroup* 的现有资源组中创建名为 *myDockerVM* 的 VM：
 
@@ -86,7 +86,7 @@ sudo apt install docker.io -y
 安装完成后，运行以下命令验证 Docker 在 VM 上是否正常运行：
 
 ```bash
-sudo docker run -it hello-world
+sudo docker run -it mcr.microsoft.com/hello-world
 ```
 
 输出：
@@ -99,7 +99,7 @@ This message shows that your installation appears to be working correctly.
 
 ### <a name="install-the-azure-cli"></a>安装 Azure CLI
 
-按照[使用 apt 安装 Azure CLI](/cli/azure/install-azure-cli-apt?view=azure-cli-latest) 中的步骤在 Ubuntu 虚拟机上安装 Azure CLI。 在本文中，请确保安装版本 2.0.55 或更高版本。
+按照[使用 apt 安装 Azure CLI](/cli/azure/install-azure-cli-apt) 中的步骤在 Ubuntu 虚拟机上安装 Azure CLI。 在本文中，请确保安装版本 2.0.55 或更高版本。
 
 退出 SSH 会话。
 
@@ -107,7 +107,7 @@ This message shows that your installation appears to be working correctly.
 
 ### <a name="create-an-identity"></a>创建标识
 
-使用 [az identity create](/cli/azure/identity?view=azure-cli-latest#az-identity-create) 命令在订阅中创建标识。 可以使用先前用于创建容器注册表或虚拟机的相同资源组，也可以使用不同的资源组。
+使用 [az identity create](/cli/azure/identit#az-identity-create) 命令在订阅中创建标识。 可以使用先前用于创建容器注册表或虚拟机的相同资源组，也可以使用不同的资源组。
 
 ```azurecli-interactive
 az identity create --resource-group myResourceGroup --name myACRId
@@ -231,7 +231,7 @@ az acr login --name myContainerRegistry
 docker pull mycontainerregistry.azurecr.io/aci-helloworld:v1
 ```
 > [!NOTE]
-> 系统分配的托管服务标识可用于与 Acr 交互，应用服务可以使用系统分配的托管服务标识。 但是，不能将它们组合在一起，因为应用服务无法使用 MSI 来与 ACR 通信。 唯一的方法是为 ACR 启用管理员，并使用管理员用户名/密码。
+> 系统分配的托管服务标识可用于与 ACR 交互，应用服务可以使用系统分配的托管服务标识。 但是，不能合并这些标识，因为应用服务无法使用 MSI 与 ACR 通信。 唯一方法是在 ACR 上启用管理员，并使用管理员用户名/密码。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -63,6 +63,8 @@
       href: azure-netapp-files-faqs.md
     - name: 什么是 Azure 应用程序一致性快照工具
       href: azacsnap-introduction.md
+    - name: 对量硬配额的更改是指
+      href: volume-hard-quota-guidelines.md
 - name: 操作指南
   items:
     - name: 注册 Azure NetApp 文件

@@ -51,6 +51,8 @@
   items:
     - name: 使用 Azure Functions 生成可信的身份验证服务
       href: tutorials/trusted-service-tutorial.md
+    - name: 通过使用 C# 的 HMAC 签名对 HTTP 请求签名
+      href: tutorials/hmac-header-tutorial.md
     - name: 为通信服务 (Node.js) 准备 Web 应用
       href: tutorials/building-app-start.md
 - name: 概念
@@ -88,6 +90,8 @@
       href: concepts/client-and-server-architecture.md
     - name: 呼叫流
       href: concepts/call-flows.md
+    - name: 调用流拓扑
+      href: concepts/detailed-call-flows.md
     - name: 客户端库和 REST API
       href: concepts/sdk-options.md
     - name: 定价模型
@@ -108,6 +112,8 @@
       href: concepts/metrics.md
     - name: 疑难解答
       href: concepts/troubleshooting-info.md
+    - name: 已知问题
+      href: concepts/known-issues.md
 - name: 示例
   items:
     - name: 出色的分组呼叫示例

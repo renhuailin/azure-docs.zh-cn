@@ -7,12 +7,12 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 09/07/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: d8944c9e49bde8c452a10a1886cae316a0f7a33f
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 168833ea0a451913f4ed019cba832a16207e0d9c
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98945071"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988150"
 ---
 # <a name="create-luis-resources"></a>创建 LUIS 资源
 
@@ -236,6 +236,10 @@ Azure 资源（例如 LUIS 资源）归包含该资源的订阅所有。
 
 1. 从此 [网站](https://resources.azure.com/api/token?plaintext=true)获取 Azure 资源管理器令牌。 此令牌将会过期，因此立即使用它。 该请求将返回 Azure 资源管理器令牌。
 
+    ```azurecli
+    az account get-access-token --resource=https://management.core.windows.net/ --query accessToken --output tsv
+    ```
+    
     ![显示用于请求 Azure 资源管理器令牌的网站的屏幕截图。](./media/luis-manage-keys/get-arm-token.png)
 
 1. 使用令牌跨订阅请求 LUIS 运行时资源。 使用用户帐户有权访问的 [GET LUIS Azure 帐户 API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5be313cec181ae720aa2b26c)。

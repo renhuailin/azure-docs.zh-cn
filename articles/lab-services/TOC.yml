@@ -36,7 +36,7 @@
           href: classroom-labs-scenarios.md
         - name: 使用实验室服务开展编程马拉松
           href: hackathon-labs.md
-        - name: 实验室 - 课程类型
+        - name: 实验室类类型
           items:
             - name: 课程类型概述
               href: class-types.md
@@ -46,9 +46,11 @@
               href: class-type-shell-scripting-linux.md
             - name: 道德黑客攻击
               href: class-type-ethical-hacking.md
+            - name: GNS3 的网络
+              href: class-type-networking-gns3.md
             - name: 数据库管理
               href: class-type-database-management.md
-            - name: Azure Sql 数据库管理和开发
+            - name: SQL 数据库管理和开发
               href: class-type-sql-server.md
             - name: Python 和 Jupyter Notebook
               href: class-type-jupyter-notebook.md
@@ -58,8 +60,8 @@
               href: class-type-matlab.md
             - name: SolidWorks 计算机辅助设计 (CAD)
               href: class-type-solidworks.md
-            - name: GNS3 的网络
-              href: class-type-networking-gns3.md
+            - name: ArcGIS
+              href: class-type-arcgis.md
             - name: 项目导向
               href: class-type-pltw.md
         - name: 使用 Teams 中的 Azure 实验室服务

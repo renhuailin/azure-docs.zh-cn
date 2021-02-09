@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.openlocfilehash: 362d5f2046ff4e9ba52dd2e73433cc39e80f7a50
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 6ca489dc0c5c7ba8ba67f3456d04be953544a8fb
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93420591"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99987815"
 ---
 # <a name="scale-for-performance-on-azure-cognitive-search"></a>Azure 认知搜索的性能缩放
 
@@ -30,7 +30,7 @@ ms.locfileid: "93420591"
 
 1. 从较小的每秒查询数 (QPS) 开始，并逐渐增加在测试中执行的数量，直到查询延迟降到定义的目标之下为止。 这是一个重要的基准，可帮助你计划应用程序在使用量增长方面的规模。
 
-1. 只要有可能，请重用 HTTP 连接。 如果你使用的是 Azure 认知搜索 .NET SDK，这意味着你应重复使用实例或 [SearchClient](/dotnet/api/azure.search.documents.searchclient) 实例，如果使用 REST API，则应重用单个 HttpClient。
+1. 只要有可能，请重用 HTTP 连接。 如果使用的是 Azure 认知搜索 .NET SDK，这意味着你应该重用某个实例或 [SearchClient](/dotnet/api/azure.search.documents.searchclient) 实例，如果使用的是 REST API，则应该重用单个 HttpClient。
 
 1. 差异化查询请求的主旨，以针对索引的不同组成部分执行搜索。 差异化很重要，因为如果不断执行相同的搜索请求，那么比起包含一个更加迥然不同的查询集，数据的缓存将开始使性能看起变得更好。
 
@@ -45,27 +45,27 @@ ms.locfileid: "93420591"
 > [!Tip]
 > 您可以使用负载测试工具来模拟真实的查询负载。 尝试使用 [Azure DevOps 进行负载测试，](/azure/devops/test/load-test/get-started-simple-cloud-load-test) 或使用其中一种 [替代方法](/azure/devops/test/load-test/overview#alternatives)。
 
-## <a name="scale-for-high-query-volume"></a>高查询量的规模
+## <a name="scale-for-high-query-volume"></a>针对高查询量的缩放
 
-当查询时间过长或服务开始删除请求时，会对服务进行过载。 如果发生这种情况，可以通过以下两种方式之一解决该问题：
+如果查询时间过长或者服务开始丢弃请求，则表示服务已经过载。 如果发生这种情况，可通过以下两种方式之一解决问题：
 
 + **添加副本**  
 
-  每个副本都是数据的副本，允许服务对多个副本的请求进行负载均衡。  所有负载平衡和数据复制均由 Azure 认知搜索进行管理，你可以随时更改为服务分配的副本数。 最大可在一个标准搜索服务中分配 12 个副本，并在一个基本搜索服务中分配 3 个副本。 可以从 [Azure 门户](search-create-service-portal.md)或 [PowerShell](search-manage-powershell.md) 调整副本。
+  每个副本是数据的副本，它可以让服务根据多个副本对请求进行负载均衡。  所有负载均衡和数据复制均由 Azure 认知搜索管理，随时可以更改为服务分配的副本数量。 最大可在一个标准搜索服务中分配 12 个副本，并在一个基本搜索服务中分配 3 个副本。 可以从 [Azure 门户](search-create-service-portal.md)或 [PowerShell](search-manage-powershell.md) 调整副本。
 
 + **在更高的层上创建新服务**  
 
-  Azure 认知搜索分为多个级别，每个 [层](https://azure.microsoft.com/pricing/details/search/) 提供不同级别的性能。 在某些情况下，你可能会遇到如此多的查询，因为你所在的层不能提供足够的周转时间，甚至在副本被极限时也是如此。在这种情况下，请考虑移动到性能较高的层，如标准 S3 层，这是为具有大量文档和极高查询工作负荷的方案而设计的。
+  Azure 认知搜索提供[许多的层](https://azure.microsoft.com/pricing/details/search/)，每个层提供不同级别的性能。 在某些情况下，可能有太多查询，即使在副本数已达到最大数目，所在的层仍无法提供足够的周转时间。对于这种情况，请考虑转移到性能更高的层，例如“标准 S3”层，该层可以满足包含大量文档和极高查询工作负荷的方案。
 
-## <a name="scale-for-slow-individual-queries"></a>用于慢速单个查询的缩放
+## <a name="scale-for-slow-individual-queries"></a>针对单个查询速度缓慢进行缩放
 
 延迟率增大的另一个原因是，完成单个查询花费了太长的时间。 在这种情况下，添加副本不起作用。 有作用的两个可能选项包括：
 
 + **增加分区**
 
-  分区跨额外的计算资源拆分数据。 两个分区将数据拆分为半个，第三个分区将数据拆分为三分之二，依此类推。 一个有利的副作用是，由于并行计算，较慢的查询有时执行速度更快。 我们在低选择性查询（例如，匹配许多文档的查询，或提供大量文档的计数的分面）上注意到了并行化效果。 由于为文档相关性评分或统计文档数目需要消耗大量的计算资源，添加额外的分区有助于加快查询的完成速度。  
+  分区在额外的计算资源之间拆分数据。 两个分区会将数据拆分为两半，三个分区会将数据拆分为三份，依此类推。 一个有利的副作用是，由于并行计算，较慢的查询有时执行速度更快。 我们在低选择性查询（例如，匹配许多文档的查询，或提供大量文档的计数的分面）上注意到了并行化效果。 由于为文档相关性评分或统计文档数目需要消耗大量的计算资源，添加额外的分区有助于加快查询的完成速度。  
    
-  在标准搜索服务中最多可以有12个分区，在基本搜索服务中最多可以有1个分区。 可以从 [Azure 门户](search-create-service-portal.md)或 [PowerShell](search-manage-powershell.md) 调整分区。
+  在标准搜索服务中最多可以有 12 个分区，在基本搜索服务中最多可以有 1 个分区。 可以从 [Azure 门户](search-create-service-portal.md)或 [PowerShell](search-manage-powershell.md) 调整分区。
 
 + **限制高基数字段**
 
@@ -75,31 +75,52 @@ ms.locfileid: "93420591"
 
   另一种方法是，向上移动到更高的 Azure 认知搜索层，可以为较慢的查询改进性能。 每个更高的层提供更快的 CPU 和更多的内存，这会对查询性能产生积极的影响。
 
-## <a name="scale-for-availability"></a>可用性缩放
+## <a name="scale-for-availability"></a>针对可用性进行缩放
 
-副本不仅有助于减少查询延迟，还可以实现高可用性。 借助单个副本，应该可以预期周期性的停机时间，因为在软件更新之后，或针对其他将执行的维护活动后，服务器会周期性停机。 因此，请务必考虑应用程序是否需要搜索（查询）以及写入（编制索引事件）的高可用性。 Azure 认知搜索在具有以下属性的所有付费搜索产品/服务上提供 SLA 选项：
+副本不仅可以帮助缩短查询延迟，而且还能实现高可用性。 借助单个副本，应该可以预期周期性的停机时间，因为在软件更新之后，或针对其他将执行的维护活动后，服务器会周期性停机。 因此，请务必考虑应用程序是否需要搜索（查询）以及写入（编制索引事件）的高可用性。 Azure 认知搜索在具有以下属性的所有付费搜索产品/服务上提供 SLA 选项：
 
 + 对于只读工作负荷（查询），需要有两个副本才能实现高可用性
 
-+ 三个或更多副本以实现读写工作负荷的高可用性 (查询和索引) 
++ 针对读写工作负荷（查询和索引），需要有三个或更多副本才可实现高可用性
 
 有关这方面的更多详细信息，请访问 [Azure 认知搜索服务级别协议](https://azure.microsoft.com/support/legal/sla/search/v1_0/)。
 
-由于副本是你的数据的副本，因此具有多个副本将允许 Azure 认知搜索针对一个副本执行计算机重启和维护，同时查询执行将继续在其他副本上执行。 相反，如果删除副本，将会导致查询性能下降，并认为这些副本是未充分利用的资源。
+由于副本是数据的副本，因此，使用多个副本可让 Azure 认知搜索针对一个副本执行计算机重新启动和维护，同时可继续针对其他副本执行查询。 相反，如果删除副本，将会导致查询性能下降，并认为这些副本是未充分利用的资源。
 
-## <a name="scale-for-geo-distributed-workloads-and-geo-redundancy"></a>地理分布式工作负荷和异地冗余的规模
+### <a name="availability-zones"></a>可用性区域
 
-对于地理上分散的工作负荷，位于主机数据中心以外的用户会有更高的延迟费率。 一种缓解措施是在与这些用户更靠近的区域中预配多个搜索服务。
+[可用性区域](https://docs.microsoft.com/azure/availability-zones/az-overview) 将区域的数据中心分成不同的物理位置组，以提供高可用性突破。 搜索服务在一个区域中运行;副本在不同的区域中运行。
+
+可以通过将两个或多个副本添加到搜索服务来利用 Azure 认知搜索可用性区域。 每个副本都将放置在该区域内的不同可用性区域中。 如果副本数多于可用性区域，副本将在可用性区域之间平均分布。
+
+Azure 认知搜索当前支持为标准层或更高版本的搜索服务可用性区域，这些服务在以下某个区域中创建：
++ 澳大利亚东部 (创建2021年1月30日，或更高版本) 
++ 加拿大中部 (创建2021年1月30日，或更高版本) 
++ 美国中部 (创建2020年12月4日或更高版本) 
++ 2021年1月30日，美国东部 2 (创建) 
++ 法国中部 (于10月23日（2020或更高版本）创建) 
++ 日本东部 (创建2021年1月30日，或更高版本) 
++ 2021年1月28日北欧创建 () 
++ 2021年1月31日，或更高版本创建的南部 (东亚) 
++ 2021年1月30日或更高版本创建的英国南部 () 
++ 2021年1月29日西欧创建 () 
++ 2021年1月30日，或更高) 版本创建的美国西部 2 (
+
+可用性区域不会影响 [Azure 认知搜索服务级别协议](https://azure.microsoft.com/support/legal/sla/search/v1_0/)。
+
+## <a name="scale-for-geo-distributed-workloads-and-geo-redundancy"></a>针对地理分散的工作负荷和异地冗余进行缩放
+
+对于地理分散的工作负荷，与宿主数据中心距离较远的用户将遇到更高的延迟率。 一种缓解措施是在与这些用户更靠近的区域中预配多个搜索服务。
 
 Azure 认知搜索当前不提供自动化方法来跨区域异地复制 Azure 认知搜索索引，但有一些技巧，可以用来使此过程很容易实现和管理。 我们会在下面几节介绍这些技巧。
 
-地理分布式一组搜索服务的目标是让两个或更多的索引在两个或更多个区域中可用，在这种情况下，用户会路由到 Azure 认知搜索服务，该服务提供的延迟时间最低，如以下示例所示：
+地理分散的搜索服务集的目标是，让两个或更多索引在两个或更多区域中可用，在这些区域中用户会被路由到 Azure 认知搜索服务，以提供最低延迟，如以下示例中所示：
 
    ![按区域的服务的交叉表][1]
 
-### <a name="keep-data-synchronized-across-multiple-services"></a>跨多个服务保持数据同步
+### <a name="keep-data-synchronized-across-multiple-services"></a>在多个服务之间保持数据同步
 
-有两个选项可让分布式搜索服务保持同步，其中包括使用 [azure 认知搜索索引器](search-indexer-overview.md) 或推送 API (也称为 [azure 认知搜索 REST API](/rest/api/searchservice/)) 。  
+有两个选项可让分布式搜索服务保持同步，包括使用 [Azure 认知搜索索引器](search-indexer-overview.md)或推送 API（也称为 [Azure 认知搜索 REST API](/rest/api/searchservice/)）。  
 
 ### <a name="use-indexers-for-updating-content-on-multiple-services"></a>使用索引器更新多个服务中的内容
 
@@ -121,7 +142,7 @@ Azure 认知搜索当前不提供自动化方法来跨区域异地复制 Azure �
 
 ## <a name="next-steps"></a>后续步骤
 
-若要详细了解每种定价层和服务限制，请参阅 [服务限制](search-limits-quotas-capacity.md)。 有关分区和副本组合的详细信息，请参阅 [规划容量](search-capacity-planning.md) 。
+若要详细了解定价层和每个层的服务限制，请参阅[服务限制](search-limits-quotas-capacity.md)。 参阅[规划容量](search-capacity-planning.md)详细了解分区和副本的组合。
 
 有关本文所述技术的性能和演示的讨论，请观看以下视频：
 

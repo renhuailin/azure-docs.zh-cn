@@ -8,14 +8,14 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/04/2021
-ms.openlocfilehash: 68c50cf72c5592b7593c9f87445679b08116dd43
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: 393270018cd5706b9cbcfa544a6e6a54d5ab9cc6
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/09/2021
-ms.locfileid: "99980094"
+ms.locfileid: "99988217"
 ---
-# <a name="partner-solutions"></a>合作伙伴解决方案
+# <a name="partner-spotlight"></a>合作伙伴聚焦
 
 从构建包含 Azure 认知搜索的端到端解决方案的 Microsoft 合作伙伴获得专家帮助。 以下合作伙伴在各种业务和技术方案中利用全文搜索和 AI 扩充提供了深入经验。
 

@@ -23,6 +23,8 @@
       href: common-errors.md
     - name: 修复损坏的 Automanage 帐户
       href: repair-automanage-account.md
+    - name: 跨区域移动 Automanaged 虚拟机
+      href: move-automanaged-vms.md
 - name: 资源
   expanded: true
   items:

@@ -6,17 +6,23 @@ ms.author: anmuk
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: reference
-ms.date: 11/20/2020
-ms.openlocfilehash: 7458b027add8be86d9491c674c2f1a0bc9fbc68c
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.date: 2/5/2021
+ms.openlocfilehash: d98f2f80bf22627eb34855234e22e314c241c852
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96551743"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988318"
 ---
 # <a name="supported-classifications-in-azure-purview"></a>Azure 监控范围中支持的分类
 
 本文列出了 Azure 监控范围 (预览) 中支持和定义的系统分类。
+
+
+- **Distinct match 阈值**：在扫描程序运行数据模式之前，需要在列中找到的不同数据值的总数。 我们的系统分类规则要求每个列中至少有8个不同的值，以便将它们分类。 系统需要此值以确保列包含足够的数据，以便扫描程序准确地分类。 例如，包含多个包含值1的行的列不会进行分类。 如果列包含一个值，并且行的其余部分具有 null 值，则不会对这些列进行分类。 如果指定多种模式，此值将应用于每个模式。
+
+- **最小匹配阈值**：对于要应用分类的扫描程序必须找到的列中的数据值匹配的最小百分比。 系统分类值设置为60%。
+
 
 ## <a name="defined-system-classifications"></a>定义的系统分类
 
@@ -157,12 +163,12 @@ iaea
 - 两位数
 -  (不区分大小写的五个数字或字母) 
 
-要么
+或
 
 - 一至两个可选字母 (不区分大小写) 
 - 4到9位数字
 
-要么
+或
 
 -  (不区分大小写的九位数或字母) 
 
@@ -274,7 +280,7 @@ Driver's License#
 Driver's Licenses#
 ```
 
-## <a name="australia-medical-account-number"></a>澳大利亚医疗帐号
+## <a name="australian-medicare-number"></a>澳大利亚管理局 number
 
 ### <a name="format"></a>格式
 
@@ -291,7 +297,7 @@ Driver's Licenses#
 
 ### <a name="keywords"></a>关键字
 
-#### <a name="keyword_australia_medical_account_number"></a>Keyword_Australia_Medical_Account_Number
+#### <a name="keyword_australia_medicare_number"></a>Keyword_Australia_Medicare_Number
 
 ```
 bank account details
@@ -2964,7 +2970,7 @@ ad, ae, al, at, az, ba, be, bg, bh, ch, cr, cy, cz, de, dk, do, ee, es, fi, fo, 
 
 ### <a name="keywords"></a>关键字
 
-无
+None
 
 ## <a name="ireland-personal-public-service-pps-number"></a>爱尔兰个人公共服务 (PPS) 号
 
@@ -3953,7 +3959,7 @@ RRN
 
 ### <a name="keywords"></a>关键字
 
-无
+None
 
 ## <a name="sweden-national-id"></a>瑞典国家 ID
 
@@ -4321,7 +4327,7 @@ Birth Date
 - 六位数
 - "A"、"B"、"C" 或 "d" (如前缀，只允许在后缀中使用某些字符;不区分大小写) 
 
-要么
+或
 
 - 两个字母
 - 空格或短划线

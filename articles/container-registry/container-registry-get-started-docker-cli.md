@@ -1,21 +1,21 @@
 ---
-title: 推送和拉取 Docker 映像
-description: 使用 Docker CLI 在 Azure 的专用容器注册表中推送和拉取 Docker 映像
+title: 推送 & 拉取容器映像
+description: 使用 Docker CLI 将 Docker 映像推送和拉取到 Azure 中的专用容器注册表
 ms.topic: article
 ms.date: 01/23/2019
 ms.custom: seodec18, H1Hack27Feb2017
-ms.openlocfilehash: d04a5fcbc4d6294a216ddfc9a8e6ea1ef98825a3
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: 83ef385313b035f5e5d7d993e7948725906c75a7
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98071623"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99987759"
 ---
-# <a name="push-your-first-image-to-a-private-docker-container-registry-using-the-docker-cli"></a>使用 Docker CLI 将第一个映像推送到专用 Docker 容器注册表
+# <a name="push-your-first-image-to-your-azure-container-registry-using-the-docker-cli"></a>使用 Docker CLI 将第一个映像推送到 Azure 容器注册表
 
-Azure 容器注册表存储和管理专用 [Docker](https://hub.docker.com) 容器映像，其方式类似于 [Docker Hub](https://hub.docker.com/) 存储公共 Docker 映像。 可以使用 [Docker 命令行接口](https://docs.docker.com/engine/reference/commandline/cli/) (Docker CLI) 对容器注册表执行[登录](https://docs.docker.com/engine/reference/commandline/login/)、[推送](https://docs.docker.com/engine/reference/commandline/push/)、[提取](https://docs.docker.com/engine/reference/commandline/pull/)和其他操作。
+Azure 容器注册表可存储和管理专用容器映像和其他项目，类似于 [Docker Hub](https://hub.docker.com/) 存储公共 Docker 容器映像的方式。 可以使用 docker [命令行界面](https://docs.docker.com/engine/reference/commandline/cli/) (docker CLI) 在容器注册表上 [进行登录](https://docs.docker.com/engine/reference/commandline/login/)、 [推送](https://docs.docker.com/engine/reference/commandline/push/)、 [请求](https://docs.docker.com/engine/reference/commandline/pull/)和其他容器映像操作。
 
-以下步骤从公共 Docker 中心注册表下载正式的 [Nginx 映像](https://store.docker.com/images/nginx)，为专用 Azure 容器注册表标记该映像，将其推入到注册表，然后从注册表提取。
+在以下步骤中，你将下载一个公共 [Nginx 映像](https://store.docker.com/images/nginx)，为专用 Azure 容器注册表标记该映像，将其推送到注册表，然后从注册表中提取它。
 
 ## <a name="prerequisites"></a>必备条件
 
@@ -24,9 +24,10 @@ Azure 容器注册表存储和管理专用 [Docker](https://hub.docker.com) 容�
 
 ## <a name="log-in-to-a-registry"></a>登录到注册表
 
-可[通过多种方式验证](container-registry-authentication.md)专用容器注册表。 在命令行中操作时，建议的方法是使用 Azure CLI 命令 [az acr login](/cli/azure/acr?view=azure-cli-latest#az-acr-login)。 例如，若要登录到名为 *myregistry* 的注册表：
+可[通过多种方式验证](container-registry-authentication.md)专用容器注册表。 在命令行中操作时，建议的方法是使用 Azure CLI 命令 [az acr login](/cli/azure/acr#az-acr-login)。 例如，若要登录到名为 *myregistry* 的注册表，请登录到该 Azure CLI，然后对注册表进行身份验证：
 
 ```azurecli
+az login
 az acr login --name myregistry
 ```
 
@@ -38,25 +39,25 @@ docker login myregistry.azurecr.io
 
 完成后，这两个命令将返回 `Login Succeeded`。
 > [!NOTE]
->* 你可能希望将 Visual Studio Code 与 Docker 扩展一起使用，以便更快、更方便地登录。
+>* 你可能需要将 Visual Studio Code 与 Docker 扩展配合使用，以更快、更方便地登录。
 
 > [!TIP]
 > 使用 `docker login` 以及标记要推送到注册表的映像时，请始终指定完全限定的注册表名称（全部小写）。 在本文的示例中，完全限定的名称为 *myregistry.azurecr.io*。
 
-## <a name="pull-the-official-nginx-image"></a>提取正式的 Nginx 映像
+## <a name="pull-a-public-nginx-image"></a>请求公用 Nginx 映像
 
-首次将公共 Nginx 映像提取到本地计算机。
+首先，将公共 Nginx 映像提取到本地计算机。 此示例从 Microsoft 容器注册表中提取映像。
 
 ```
-docker pull nginx
+docker pull mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
 ```
 
 ## <a name="run-the-container-locally"></a>在本地运行容器
 
-执行以下 [docker run](https://docs.docker.com/engine/reference/run/) 命令，在端口 8080 上以交互方式启动 Nginx 容器的本地实例 (`-it`)。 `--rm` 参数指定在停止容器时应将其删除。
+执行以下 [docker run](https://docs.docker.com/engine/reference/run/) 命令，以交互方式启动 Nginx 容器的本地实例， (`-it` 端口8080上的) 。 `--rm` 参数指定在停止容器时应将其删除。
 
 ```
-docker run -it --rm -p 8080:80 nginx
+docker run -it --rm -p 8080:80 mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
 ```
 
 浏览到 `http://localhost:8080`，查看由正在运行的容器中的 Nginx 提供服务的默认网页。 应看到类似于下面的页面：
@@ -72,7 +73,7 @@ docker run -it --rm -p 8080:80 nginx
 运行 [docker tag](https://docs.docker.com/engine/reference/commandline/tag/)，使用注册表的完全限定路径创建映像的别名。 此示例指定了 `samples` 命名空间，以免注册表根目录中出现混乱。
 
 ```
-docker tag nginx myregistry.azurecr.io/samples/nginx
+docker tag mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine myregistry.azurecr.io/samples/nginx
 ```
 
 有关使用命名空间进行标记的详细信息，请参阅 [Azure 容器注册表的最佳做法](container-registry-best-practices.md)的[存储库命名空间](container-registry-best-practices.md#repository-namespaces)部分。

@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: e523b35afca33213a40060819a1293e94d413b00
-ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
+ms.openlocfilehash: bf5582016f74e67926c38111a3d8d2f468f3ac79
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99222859"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99987983"
 ---
 # <a name="plan-your-qna-maker-app"></a>规划 QnA Maker 应用
 
@@ -124,17 +124,17 @@ ms.locfileid: "99222859"
 
 协作者可以是共享知识库应用程序的完整开发堆栈的其他开发人员，也可以仅编写该知识库。
 
-知识库创作支持在 Azure 门户中应用的多个 [基于角色的访问权限](../reference-role-based-access-control.md) ，以限制合作者的能力范围。
+知识库创作支持在 Azure 门户中应用的多个基于角色的访问权限，以限制合作者的能力范围。
 
 ## <a name="integration-with-client-applications"></a>与客户端应用程序集成
 
-与 [客户端应用程序](../index.yml) 集成是通过向预测运行时终结点发送查询来完成的。 使用 SDK 或基于 REST 的请求将查询发送到你的 QnA Maker 的 web 应用终结点。
+与客户端应用程序集成是通过向预测运行时终结点发送查询来完成的。 使用 SDK 或基于 REST 的请求将查询发送到你的 QnA Maker 的 web 应用终结点。
 
 若要正确验证客户端请求，客户端应用程序必须发送正确的凭据和知识库 ID。 如果使用的是 Azure 机器人服务，请在 Azure 门户中将这些设置配置为机器人配置的一部分。
 
 ### <a name="conversation-flow-in-a-client-application"></a>客户端应用程序中的会话流
 
-[客户端应用程序](../index.yml)中的会话流（如 Azure 机器人）可能需要在与知识库交互前后使用功能。
+客户端应用程序中的会话流（如 Azure 机器人）可能需要在与知识库交互前后使用功能。
 
 你的客户端应用程序是否支持会话流，方法是提供替代方法来处理后续提示或包括 chit-chit？ 如果是这样，请及早设计这些设置，并确保客户端应用程序查询可以通过其他服务或发送到您的知识库进行正确处理。
 
@@ -148,7 +148,7 @@ ms.locfileid: "99222859"
 
 ### <a name="active-learning-from-a-client-application"></a>来自客户端应用程序的活动学习
 
-QnA Maker 使用 _活动学习_ ，通过向答案建议替代问题来改善您的知识库。 客户端应用程序负责此 [活动学习](active-learning-suggestions.md)。 通过会话式提示，客户端应用程序可以确定该知识库是否返回了对用户无效的答案，还可以确定更好的答案。 客户端应用程序需要将 [该信息发送回知识库](active-learning-suggestions.md#how-you-give-explicit-feedback-with-the-train-api) 以提高预测质量。
+QnA Maker 使用 _活动学习_ ，通过向答案建议替代问题来改善您的知识库。 客户端应用程序负责此 [活动学习](../How-To/use-active-learning.md)。 通过会话式提示，客户端应用程序可以确定该知识库是否返回了对用户无效的答案，还可以确定更好的答案。 客户端应用程序需要将该信息发送回知识库以提高预测质量。
 
 ### <a name="providing-a-default-answer"></a>提供默认答案
 
@@ -208,16 +208,16 @@ QnA Maker 使用 _活动学习_ ，通过向答案建议替代问题来改善您
 
 ### <a name="knowledge-base-development-of-qna-maker-pairs"></a>QnA Maker 对的知识库开发
 
-应根据客户端应用程序的使用情况设计和开发 [QnA 对](question-answer-set.md) 。
+应根据客户端应用程序的使用情况设计和开发 QnA 对。
 
 每个对可以包含：
 * 元数据-可在查询时进行筛选，以允许通过有关数据的源、内容、格式和用途的附加信息来标记 QnA 对。
 * 跟进提示-帮助确定通过知识库的路径，使用户到达正确的答案。
-* 替换问题-重要的是，允许搜索与不同形式的问题的答案相匹配。 [活动学习建议](active-learning-suggestions.md) 变成了替代问题。
+* 替换问题-重要的是，允许搜索与不同形式的问题的答案相匹配。 [活动学习建议](../How-To/use-active-learning.md) 变成了替代问题。
 
 ### <a name="devops-development"></a>DevOps 开发
 
-若要开发要插入到 DevOps 管道中的知识库，需要在 [批处理测试](../index.yml)过程中隔离此知识库。
+若要开发要插入到 DevOps 管道中的知识库，需要在批处理测试过程中隔离此知识库。
 
 知识库与 QnA Maker 资源上的所有其他知识库共享认知搜索的索引。 虽然知识库是按分区隔离的，但在与已发布的知识库进行比较时，共享索引可能会导致分数不同。
 

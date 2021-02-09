@@ -7,45 +7,48 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 01/23/2020
 ms.author: irenehua
-ms.openlocfilehash: ef018e58f8336220b96eba568c94efc40a0fb0c7
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 3bf910d3309285c8b700c39af68fb90715f8863a
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98045387"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99987719"
 ---
 # <a name="upgrade-azure-public-load-balancer"></a>升级 Azure 公共负载均衡器
 [Azure 标准负载均衡器](load-balancer-overview.md)通过区域冗余提供丰富的功能和高可用性。 有关负载均衡器 SKU 的详细信息，请参阅[比较表](./skus.md#skus)。
 
 升级分为两个阶段：
 
-1. 将 IP 分配方法从动态更改为静态。
+1. 将 IP 分配方法由动态更改为静态。
 2. 运行 PowerShell 脚本以完成升级和流量迁移。
+
+> [!IMPORTANT]
+> 脚本当前正在进行维护。 有关如何从基本 SKU 和标准 SKU 升级公共 IP 地址的说明，请参阅 [此处](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address-upgrade?tabs=option-upgrade-cli%2Coption-migrate-powershell#tabpanel_CeZOj-G++Q_option-upgrade-cli) 的说明。
 
 ## <a name="upgrade-overview"></a>升级概述
 
 我们提供了一个用于执行以下操作的 Azure PowerShell 脚本：
 
 * 使用在基本标准负载均衡器的同一资源组中指定的位置创建标准 SKU 负载均衡器。
-* 将公共 IP 地址从基本 SKU 升级到标准 SKU。
+* 将公共 IP 地址从基本 SKU 就地升级到标准 SKU。
 * 将基本 SKU 负载均衡器的配置无缝复制到新建的标准负载均衡器。
 * 创建允许出站连接的默认出站规则。
 
 ### <a name="caveatslimitations"></a>注意事项/限制
 
 * 脚本仅支持公共负载均衡器升级。 若要进行内部基本负载均衡器升级，请参阅[此页](./upgrade-basicinternal-standard.md)以获取说明。
-* 在运行该脚本之前，必须将公共 IP 地址的分配方法更改为 "静态"。 
+* 在运行脚本之前，必须将公共 IP 地址的分配方法更改为“静态”。 
 * 如果负载均衡器没有任何前端 IP 配置或后端池，则运行脚本时可能会遇到错误。 请确保负载均衡器不是空的。
 
-### <a name="change-allocation-method-of-the-public-ip-address-to-static"></a>将公共 IP 地址的分配方法更改为静态
+### <a name="change-allocation-method-of-the-public-ip-address-to-static"></a>将公共 IP 地址的分配方法更改为“静态”
 
-* * * 下面是我们的建议步骤：
+* **下面是我们的建议步骤：
 
     1. 若要执行本快速入门中的任务，请登录 [Azure 门户](https://portal.azure.com)。
  
-    1. 选择左侧菜单中的 " **所有资源** "，然后从资源列表中选择 **与基本负载均衡器关联的基本公共 IP 地址** 。
+    1. 在左侧菜单中选择“所有资源”，然后从资源列表中选择“与基本负载均衡器关联的基本公共 IP 地址” 。
    
-    1. 在 " **设置**" 下，选择 " **配置**"。
+    1. 在“设置”下，选择“配置” 。
    
     1. 在“分配”下，选择“静态”。
     1. 选择“保存” 。
@@ -115,11 +118,11 @@ ms.locfileid: "98045387"
 
 ### <a name="how-long-does-the-upgrade-take"></a>升级需要多长时间？
 
-脚本需要大约5-10 分钟时间才能完成，并且可能需要更长时间，具体取决于负载均衡器配置的复杂性。 因此，请记住停机时间，如有必要，请规划故障转移。
+该脚本通常需要 5-10 分钟才能完成，并且可能需要更长的时间，具体取决于负载均衡器配置的复杂性。 因此，请记住故障时间，并在必要时做出故障转移的计划。
 
 ### <a name="does-the-azure-powershell-script-also-switch-over-the-traffic-from-my-basic-load-balancer-to-the-newly-created-standard-load-balancer"></a>Azure PowerShell 脚本是否还会将流量从基本负载均衡器切换到新建的标准负载均衡器？
 
-是的。 Azure PowerShell 脚本不仅会升级公共 IP 地址、将配置从 Basic 复制到标准负载均衡器，还会将 VM 迁移到新创建的标准公共负载均衡器的后面。 
+是的。 Azure PowerShell 脚本不仅升级公共 IP 地址，将配置从基本负载均衡器复制到标准负载均衡器，而且还将 VM 迁移到新建标准公共负载均衡器的后面。 
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -62,7 +62,7 @@
       items:
         - name: 转换
           href: how-to-transformation.md
-        - name: 与 MS Graph API 的入站同步
+        - name: 使用 MS 图形 API 以编程方式配置云同步
           href: how-to-inbound-synch-ms-graph.md
         - name: Azure AD 同步 API
           href: /graph/api/resources/synchronization-overview

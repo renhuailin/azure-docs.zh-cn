@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 05/15/2020
-ms.openlocfilehash: cb6d0ee9c651ca1dcc554f5951a5733727af2d6b
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: f43fa06cf93d383efcb0fe746de28ab143280e50
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954100"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988022"
 ---
 # <a name="collaborate-with-other-authors-and-editors"></a>与其他作者和编辑人员协作
 
@@ -35,7 +35,7 @@ ms.locfileid: "98954100"
 > [!div class="mx-imgBorder"]
 > ![下图显示了从作者的角度来登录到 QnA Maker 门户并使用创作 Api 的流。](../media/qnamaker-how-to-collaborate-knowledge-base/rbac-flow-from-portal-to-service.png)
 
-|步骤|说明|
+|步骤|描述|
 |--|--|
 |1|门户获取 QnA Maker 资源的标记。|
 |2|门户会调用适当的 QnA Maker 创作 API (APIM) 传递令牌，而不是密钥。|
@@ -46,7 +46,7 @@ ms.locfileid: "98954100"
 
 ## <a name="authenticate-by-qna-maker-portal"></a>QnA Maker 门户进行身份验证
 
-如果使用 QnA Maker 门户创建和协作，则在 [将适当的角色添加到协作者的资源](../index.yml)之后，QnA Maker 门户将管理所有访问权限。
+如果使用 QnA Maker 门户创建和协作，则在将适当的角色添加到协作者的资源之后，QnA Maker 门户将管理所有访问权限。
 
 ## <a name="authenticate-by-qna-maker-apis-and-sdks"></a>QnA Maker Api 和 Sdk 进行身份验证
 
@@ -54,4 +54,4 @@ ms.locfileid: "98954100"
 
 ## <a name="next-step"></a>后续步骤
 
-* 为[语言](../index.yml)和[客户端应用程序](../index.yml)设计知识库
+* 为语言和客户端应用程序设计知识库

@@ -167,7 +167,7 @@
               href: vpn-profile-intune.md
         - name: OpenVPN
           items:
-            - name: 为点到站点连接配置 OpenVPN
+            - name: 配置 OpenVPN 隧道类型
               href: vpn-gateway-howto-openvpn.md
             - name: 配置 OpenVPN 客户端
               href: vpn-gateway-howto-openvpn-clients.md

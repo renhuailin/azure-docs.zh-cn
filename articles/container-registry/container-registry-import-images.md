@@ -3,12 +3,12 @@ title: 导入容器映像
 description: 使用 Azure API 将容器映像导入到 Azure 容器注册表中，无需运行 Docker 命令。
 ms.topic: article
 ms.date: 01/15/2021
-ms.openlocfilehash: 364c90b857d0d7d479152e2aa56db4d80041f037
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: e6976f854b449f68faedd51878c2f3a7fe75cb0f
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99524492"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988246"
 ---
 # <a name="import-container-images-to-a-container-registry"></a>向容器注册表导入容器映像
 
@@ -68,13 +68,15 @@ az acr repository show-manifests \
   --repository hello-world
 ```
 
-下面的示例从 Docker 中心中的 `tensorflow` 存储库导入公共映像：
+如果拥有 [Docker 中心帐户](https://www.docker.com/pricing)，我们建议在从 Docker 中心导入映像时使用凭据。 将 Docker 中心用户名、密码或 [个人访问令牌](https://docs.docker.com/docker-hub/access-tokens/) 作为参数传递给 `az acr import` 。 以下示例 `tensorflow` 使用 Docker hub 凭据从 Docker 中心的存储库导入公共映像：
 
 ```azurecli
 az acr import \
   --name myregistry \
   --source docker.io/tensorflow/tensorflow:latest-gpu \
   --image tensorflow:latest-gpu
+  --username <Docker Hub user name>
+  --password <Docker Hub token>
 ```
 
 ### <a name="import-from-microsoft-container-registry"></a>从 Microsoft 容器注册表导入

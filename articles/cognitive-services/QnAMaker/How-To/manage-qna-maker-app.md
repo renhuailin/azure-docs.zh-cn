@@ -5,21 +5,17 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: e4f0e229488093067b231a5c92334238ca216234
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 652489e8de68d61707fd419843f0dbb2ffd83754
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99550549"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99987943"
 ---
 # <a name="manage-qna-maker-app"></a>管理 QnA Maker 应用
 
 QnA Maker 允许你通过提供一种基于协作者角色限制协作者访问的功能，使你能够与不同的作者和内容编辑器进行协作。
 详细了解 [QnA Maker 协作者身份验证概念](../Concepts/role-based-access-control.md)。
-
-还可以通过 [活动学习](../Concepts/active-learning-suggestions.md)建议替代问题，从而提高知识库的质量。 将考虑用户提交，并在替代问题列表中显示为建议。 您可以灵活地将这些建议添加为替代问题或拒绝它们。
-
-知识库不会自动更改。 要使更改生效，必须接受建议。 这些建议会添加问题，但不会更改或删除现有问题。
 
 ## <a name="add-azure-role-based-access-control-azure-rbac"></a> (Azure RBAC) 中添加 Azure 基于角色的访问控制
 

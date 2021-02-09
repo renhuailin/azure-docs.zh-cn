@@ -107,26 +107,15 @@
       href: ./workloads/mainframe-rehosting/overview.md
     - name: 数据库
       items:
-        - name: SUSE 上的 MySQL
-          href: ./linux/mysql-on-opensuse.md
         - name: MongoDB
           items:
-            - name: Linux
-              href: ./linux/install-mongodb.md
             - name: Windows
               href: ./windows/install-mongodb.md
-        - name: PostgreSQL
-          href: ./linux/postgresql-install.md
         - name: Linux 上的 MS SQL
           href: /sql/linux/sql-server-linux-azure-virtual-machine
     - name: 高性能计算 (HPC)
       href: /azure/architecture/topics/high-performance-computing/
     - name: 容器
-      items:
-        - name: 使用 Docker 计算机
-          href: ./linux/docker-machine.md
-        - name: 使用 Docker Compose
-          href: ./linux/docker-compose-quickstart.md
     - name: Visual Studio
       href: ./windows/using-visual-studio-vm.md
 - name: 实例数
@@ -979,10 +968,18 @@
       href: disks-scalability-targets.md
     - name: 备份和数据保护
       items:
-        - name: 磁盘的备份和灾难恢复
-          href: backup-and-disaster-recovery-for-azure-iaas-disks.md
         - name: 启用增量快照
           href: disks-incremental-snapshots.md
+        - name: Azure 磁盘备份
+          items:
+            - name: 概述
+              href: ../backup/disk-backup-overview.md?context=/azure/virtual-machines/context/context
+            - name: 配置 Azure 磁盘备份
+              href: ../backup/backup-managed-disks.md?context=/azure/virtual-machines/context/context
+            - name: 用 Azure 磁盘备份还原磁盘
+              href: ../backup/restore-managed-disks.md?context=/azure/virtual-machines/context/context
+        - name: 磁盘的备份和灾难恢复
+          href: backup-and-disaster-recovery-for-azure-iaas-disks.md
         - name: 拍摄磁盘快照 - CLI
           href: ./linux/snapshot-copy-managed-disk.md
         - name: 拍摄磁盘快照 - PowerShell
@@ -1281,8 +1278,6 @@
       href: ../azure-monitor/insights/monitor-vm-azure.md?context=/azure/virtual-machines/context/context
     - name: 监视 VM
       items:
-        - name: Linux
-          href: ./linux/tutorial-monitor.md
         - name: Windows
           href: ./windows/tutorial-monitor.md
     - name: 代理

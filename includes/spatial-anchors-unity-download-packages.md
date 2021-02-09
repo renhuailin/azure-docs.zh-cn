@@ -4,13 +4,15 @@ ms.service: azure-spatial-anchors
 ms.topic: include
 ms.date: 2/3/21
 ms.author: parkerra
-ms.openlocfilehash: c97067c66296e8980a36b21298a7b2061e0f9b4c
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: f6c2780ccbb914228a9870cb3b5fe4b0e3d0b214
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/04/2021
-ms.locfileid: "99550368"
+ms.locfileid: "99569576"
 ---
+若要下载所需的包，你需要安装 <a href="https://www.npmjs.com/get-npm" target="_blank">NPM</a>。
+
 运行以下命令，将 `<version_number>` 替换为要下载到当前文件夹的 Azure 空间定位点的版本：
 
 ```bash

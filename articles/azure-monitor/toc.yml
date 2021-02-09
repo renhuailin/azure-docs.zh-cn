@@ -917,7 +917,7 @@
               displayname: 'correlation, dependency, dependencies, track dependency, OWIN, queue, service bus, background tasks, long running background tasks, outgoing dependency tracking, parallel operations, System.Diagnostics.Activity, System.Diagnostics.DiagnosticSource, StartOperation, StopOperation'
             - name: 自定义电子邮件报告
               href: app/automate-custom-reports.md
-            - name: 例外
+            - name: 异常
               href: app/asp-net-exceptions.md
             - name: 日志跟踪
               href: app/asp-net-trace-logs.md
@@ -1044,6 +1044,8 @@
               href: insights/container-insights-enable-new-cluster.md
             - name: 为现有的 AKS 群集启用
               href: insights/container-insights-enable-existing-clusters.md
+            - name: 为使用 Azure Policy 的 AKS 启用
+              href: containers/container-insights-enable-aks-policy.md
             - name: 为已启用 Arc 的群集启用
               href: insights/container-insights-enable-arc-enabled-clusters.md
             - name: 针对混合群集启用

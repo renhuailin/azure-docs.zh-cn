@@ -8,6 +8,8 @@
   href: network-requirements.md
 - name: 限制
   href: limits.md
+- name: 数据驻留
+  href: data-residency.md
 - name: 远程渲染示例存储库 (GitHub)
   href: 'https://github.com/Azure/azure-remote-rendering'
 - name: Azure 混合现实资源管理 REST API
