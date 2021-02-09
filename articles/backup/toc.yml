@@ -404,7 +404,7 @@
               href: backup-azure-arm-userestapi-restoreazurevms.md
             - name: 管理 Azure 备份作业
               href: backup-azure-arm-userestapi-managejobs.md
-        - name: 资源管理器模板
+        - name: Resource Manager 模板
           href: backup-rm-template-samples.md
     - name: 安全性
       items:
@@ -437,7 +437,7 @@
           href: ./security-controls-policy.md
         - name: 安全基线
           href: security-baseline.md
-    - name: 疑难解答
+    - name: 故障排除
       items:
         - name: Azure VM
           href: backup-azure-vms-troubleshoot.md
@@ -472,7 +472,7 @@
     - name: Azure PowerShell
       href: /powershell/module/az.recoveryservices
     - name: PowerShell – Azure 备份代理
-      href: /powershell/module/msonlinebackup
+      href: /powershell/module/msonlinebackup/msonlinebackup
     - name: REST - 备份
       href: /rest/api/backup/
     - name: REST - 恢复服务保管库

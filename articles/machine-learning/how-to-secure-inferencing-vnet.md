@@ -11,12 +11,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 10/23/2020
 ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1, devx-track-azurecli
-ms.openlocfilehash: 4dfe2130d8274e2b3463c0fb42587b50fef77f18
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 80abe036ef4a08f7ed6f0f19cffc2abde70a6ea9
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98953727"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99981300"
 ---
 # <a name="secure-an-azure-machine-learning-inferencing-environment-with-virtual-networks"></a>使用虚拟网络保护 Azure 机器学习推理环境
 
@@ -257,7 +257,7 @@ Azure 容器实例在部署模型时动态创建。 你必须为部署使用的�
 > * 与 Azure 机器学习工作区在同一资源组中。
 > * 如果工作区具有专用终结点，则用于 Azure 容器实例的虚拟网络必须与工作区专用终结点使用的虚拟网络相同。
 >
-> 在虚拟网络中使用 Azure 容器实例时，你的工作区的 Azure 容器注册表 (ACR) 不能也在该虚拟网络中。
+> 在虚拟网络中使用 Azure 容器实例时，工作区的 Azure 容器注册表 (ACR) 不能在虚拟网络中。
 
 若要将虚拟网络中的 ACI 用于工作区，请按照以下步骤操作：
 

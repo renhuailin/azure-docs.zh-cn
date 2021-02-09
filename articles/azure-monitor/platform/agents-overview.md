@@ -7,21 +7,21 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/12/2021
-ms.openlocfilehash: d1350248e3819863a30ecf21ff68bb7b9488b6ef
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 33758391b3715dae3928812a38ac2ee4e1baffb6
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98232924"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99981419"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Azure Monitor 代理概述
 
 虚拟机和其他计算资源需要代理收集所需的监视数据，以度量其来宾操作系统和工作负荷的性能和可用性。 本文介绍 Azure Monitor 使用的代理，并帮助你确定需要满足特定环境的哪些要求。
 
 > [!NOTE]
-> 由于 Azure Monitor 和 Log Analytics 最近已合并到一起，Azure Monitor 目前有多个代理。 虽然它们的特性可能存在重叠，但每个特性都有独特的功能。 根据你的要求，你可能需要在计算机上有一个或多个代理。 
+> 由于 Azure Monitor 和 Log Analytics 最近已合并到一起，Azure Monitor 目前有多个代理。 虽然它们的特性可能存在重叠，但每个特性都有独特的功能。 可能需要在计算机上有一个或多个代理，具体取决于要求。 
 
-您可能有一组特定的要求，这些要求对于特定计算机的单个代理无法完全满足。 例如，你可能想要使用需要 Azure 诊断扩展的指标警报，但同时又想要利用用于 VM 的 Azure Monitor 功能，该功能需要 Log Analytics 代理和依赖项代理。 在这样的情况下，可以使用多个代理。对于需要每个代理中的功能的客户，这很常见。
+你可能有一组特定的要求，这些要求在为特定计算机设置单个代理的情况下无法完全满足。 例如，你可能想要使用需要 Azure 诊断扩展的指标警报，但同时又想要利用用于 VM 的 Azure Monitor 功能，该功能需要 Log Analytics 代理和依赖项代理。 在这样的情况下，可以使用多个代理。对于需要每个代理中的功能的客户，这很常见。
 
 ## <a name="summary-of-agents"></a>代理摘要
 
@@ -69,14 +69,14 @@ Azure Monitor 代理的限制包括：
 
 ## <a name="log-analytics-agent"></a>Log Analytics 代理
 
-[Log Analytics 代理](log-analytics-agent.md)从来宾操作系统和 Azure、其他云提供程序和本地计算机中的虚拟机工作负荷收集监视数据。 它会将数据发送到 Log Analytics 工作区。 Log Analytics 代理是 System Center Operations Manager 使用的代理，你可以通过多宿主代理计算机同时与管理组和 Azure Monitor 通信。 Azure Monitor 和 Azure 中的其他服务中的某些见解也需要此代理。
+[Log Analytics 代理](log-analytics-agent.md)从 Azure 中的虚拟机、其他云提供商和本地计算机的来宾操作系统与工作负载收集监视数据。 它会将数据发送到 Log Analytics 工作区。 Log Analytics 代理是 System Center Operations Manager 使用的代理，你可以通过多宿主代理计算机同时与管理组和 Azure Monitor 通信。 Azure Monitor 和 Azure 中的其他服务中的某些见解也需要此代理。
 
 > [!NOTE]
 > 适用于 Windows 的 Log Analytics 代理通常称作 Microsoft Monitoring Agent (MMA)。 适用于 Linux 的 Log Analytics 代理通常称作 OMS 代理。
 
 如果需要执行以下操作，请使用 Log Analytics 代理：
 
-* 从 azure 外部托管的 Azure 虚拟机或混合计算机收集日志和性能数据。
+* 从 Azure 外部托管的 Azure 虚拟机或混合计算机收集日志和性能数据。
 * 将数据发送到 Log Analytics 工作区，以利用 [Azure Monitor 日志](data-platform-logs.md)支持的功能，例如[日志查询](../log-query/log-query-overview.md)。
 * 使用 [用于 VM 的 Azure Monitor](../insights/vminsights-overview.md) 允许你大规模监视计算机，并监视其进程和其他资源和外部进程的依赖项。  
 * 使用 [Azure 安全中心](../../security-center/security-center-introduction.md)  或 [azure Sentinel](../../sentinel/overview.md)管理你的计算机的安全性。
@@ -145,6 +145,7 @@ Azure 诊断扩展的限制包括：
 | Windows Server 2016 Core                                 |   |   |   | X |
 | Windows Server 2012 R2                                   | X | X | X | X |
 | Windows Server 2012                                      | X | X | X | X |
+| Windows Server 2008 R2 SP1                               | X | X | X | X |
 | Windows Server 2008 R2                                   |   | X | X | X |
 | Windows 10 企业版<br>（包括多会话）和专业版<br>（仅限服务器方案）  | X | X | X | X |
 | Windows 8 企业版和专业版<br>（仅限服务器方案）  |   | X | X |   |
@@ -154,40 +155,45 @@ Azure 诊断扩展的限制包括：
 
 | 操作系统 | Azure Monitor 代理 | Log Analytics 代理 | 依赖关系代理 | 诊断扩展 | 
 |:---|:---:|:---:|:---:|:---:
-| Amazon Linux 2017.09                                     |   | X |   |   |
-| CentOS Linux 8                                           |   | X | X |   |
-| CentOS Linux 7                                           | X | X | X | X |
-| CentOS Linux 6                                           |   | X |   |   |
-| CentOS Linux 6.5+                                        |   | X | X | X |
-| Debian 9                                                 | X | X | x | X |
-| Debian 8                                                 |   | X | X |   |
-| Debian 7                                                 |   |   |   | X |
-| OpenSUSE 13.1+                                           |   |   |   | X |
-| Oracle Linux 8                                           |   | X |   |   |
-| Oracle Linux 7                                           | X | X |   | X |
-| Oracle Linux 6                                           |   | X |   |   |
-| Oracle Linux 6.4+                                        |   | X |   | X |
-| Red Hat Enterprise Linux Server 8                        |   | X | X |   |
-| Red Hat Enterprise Linux Server 7                        | X | X | X | X |
-| Red Hat Enterprise Linux Server 6                        |   | X | X |   |
-| Red Hat Enterprise Linux Server 6.7+                     |   | X | X | X |
-| SUSE Linux Enterprise Server 15。1                        |   | X |   |   |
-| SUSE Linux Enterprise Server 15                          | X | X | X |   |
-| SUSE Linux Enterprise Server 12                          | X | X | X | X |
-| Ubuntu 20.04 LTS                                         |   | X | X |   |
-| Ubuntu 18.04 LTS                                         | X | X | X | X |
-| Ubuntu 16.04 LTS                                         | X | X | X | X |
-| Ubuntu 14.04 LTS                                         |   | X |   | X |
+| Amazon Linux 2017.09                                        |   | X |   |   |
+| CentOS Linux 8 <sup>1</sup> <sup>2</sup>                    | X | X | X |   |
+| CentOS Linux 7                                              | X | X | X | X |
+| CentOS Linux 6                                              |   | X |   |   |
+| CentOS Linux 6.5+                                           |   | X | X | X |
+| Debian 10 <sup>1</sup>                                      | X |   |   |   |
+| Debian 9                                                    | X | X | x | X |
+| Debian 8                                                    |   | X | X |   |
+| Debian 7                                                    |   |   |   | X |
+| OpenSUSE 13.1+                                              |   |   |   | X |
+| Oracle Linux 8 <sup>1</sup> <sup>2</sup>                    | X | X |   |   |
+| Oracle Linux 7                                              | X | X |   | X |
+| Oracle Linux 6                                              |   | X |   |   |
+| Oracle Linux 6.4+                                           |   | X |   | X |
+| Red Hat Enterprise Linux Server 8 <sup>1</sup> <sup>2</sup> | X | X | X |   |
+| Red Hat Enterprise Linux Server 7                           | X | X | X | X |
+| Red Hat Enterprise Linux Server 6                           |   | X | X |   |
+| Red Hat Enterprise Linux Server 6.7+                        |   | X | X | X |
+| SUSE Linux Enterprise Server 15.2 <sup>1</sup> <sup>2</sup> | X |   |   |   |
+| SUSE Linux Enterprise Server 15.1 <sup>1</sup> <sup>2</sup> | X | X |   |   |
+| SUSE Linux Enterprise Server 15                             | X | X | X |   |
+| SUSE Linux Enterprise Server 12                             | X | X | X | X |
+| Ubuntu 20.04 LTS <sup>1</sup>                               | X | X | X |   |
+| Ubuntu 18.04 LTS                                            | X | X | X | X |
+| Ubuntu 16.04 LTS                                            | X | X | X | X |
+| Ubuntu 14.04 LTS                                            |   | X |   | X |
 
+<sup>1</sup> 要求在计算机上安装 Python 3。
+
+<sup>2</sup> ：收集 Syslog 事件的已知问题。 目前仅支持性能数据。
 #### <a name="dependency-agent-linux-kernel-support"></a>Dependency Agent Linux 内核支持
 
 由于 Dependency Agent 在内核级别工作，因此支持也依赖于内核版本。 下表列出了 Dependency Agent 的主要和次要 Linux OS 版本以及支持的内核版本。
 
 | 分发 | OS 版本 | 内核版本 |
 |:---|:---|:---|
-|  Red Hat Linux 8   | 8.2     | 4. 18. 0-193/> el8_2. x86_64 |
-|                    | 8.1     | 4. 18. 0-147/> el8_1. x86_64 |
-|                    | 8.0     | 4.18.0-80. \* el8.x86_64<br>4. 18. 0-80/> el8_0. x86_64 |
+|  Red Hat Linux 8   | 8.2     | 4.18.0-193.\*el8_2.x86_64 |
+|                    | 8.1     | 4.18.0-147.\*el8_1.x86_64 |
+|                    | 8.0     | 4.18.0-80.\*el8.x86_64<br>4.18.0-80.\*el8_0.x86_64 |
 |  Red Hat Linux 7   | 7.9     | 3.10.0-1160 |
 |                    | 7.8     | 3.10.0-1136 |
 |                    | 7.7     | 3.10.0-1062 |
@@ -196,9 +202,9 @@ Azure 诊断扩展的限制包括：
 |                    | 7.4     | 3.10.0-693  |
 | Red Hat Linux 6    | 6.10    | 2.6.32-754 |
 |                    | 6.9     | 2.6.32-696  |
-| CentOS Linux 8     | 8.2     | 4. 18. 0-193/> el8_2. x86_64 |
-|                    | 8.1     | 4. 18. 0-147/> el8_1. x86_64 |
-|                    | 8.0     | 4.18.0-80. \* el8.x86_64<br>4. 18. 0-80/> el8_0. x86_64 |
+| CentOS Linux 8     | 8.2     | 4.18.0-193.\*el8_2.x86_64 |
+|                    | 8.1     | 4.18.0-147.\*el8_1.x86_64 |
+|                    | 8.0     | 4.18.0-80.\*el8.x86_64<br>4.18.0-80.\*el8_0.x86_64 |
 | CentOS Linux 7     | 7.9     | 3.10.0-1160 |
 |                    | 7.8     | 3.10.0-1136 |
 |                    | 7.7     | 3.10.0-1062 |
@@ -206,7 +212,7 @@ Azure 诊断扩展的限制包括：
 |                    | 6.9     | 2.6.32-696.30.1<br>2.6.32-696.18.7 |
 | Ubuntu Server      | 20.04   | 5.4\* |
 |                    | 18.04   | 5.3.0-1020<br>5.0（包括 Azure 优化内核）<br>4.18 *<br>4.15* |
-|                    | 16.04.3 | 4.15。\* |
+|                    | 16.04.3 | 4.15.\* |
 |                    | 16.04   | 4.13.\*<br>4.11.\*<br>4.10.\*<br>4.8.\*<br>4.4.\* |
 | SUSE Linux 12 Enterprise Server | 15     | 4.12.14-150\*
 |                                 | 12 SP4 | 4.12.*（包括 Azure 优化内核） |

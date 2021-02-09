@@ -9,12 +9,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to, data4ml
 ms.date: 05/14/2020
-ms.openlocfilehash: b7eaf374e72997013f09b1c94ce16c67d115a818
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: a4f15a1a0911e5a33da8b5f9445709cb42e7e10e
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94987365"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99981504"
 ---
 # <a name="create-and-explore-azure-machine-learning-dataset-with-labels"></a>创建和浏览带标签的 Azure 机器学习数据集
 
@@ -39,6 +39,9 @@ ms.locfileid: "94987365"
 ### <a name="coco"></a>COCO 
 
  COCO 文件是在 Azure 机器学习工作区的默认 Blob 存储中创建的，该存储位于 *export/coco* 内的某个文件夹中。 
+ 
+>[!NOTE]
+>在对象检测项目中，COCO 文件中导出的 "bbox"： [x，y，width，height] "值已规范化。 它们将扩展为1。 示例：一个边界框位于 (10，10) 位置，0.015625 像素的宽度为30像素，60像素高，将批注为 (。 0.02083、0.046875、0.125) 。 由于 coordintes 是规范化的，因此，所有图像的 "width" 和 "height" 将显示为 "0.0"。 可以使用 Python 库（如 OpenCV 或 Pillow (PIL) ）获取实际的宽度和高度。
 
 ### <a name="azure-machine-learning-dataset"></a>Azure 机器学习数据集
 

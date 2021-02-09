@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 12/18/2020
+ms.date: 02/04/2021
 ms.author: alkohli
-ms.openlocfilehash: 627196c0a76f1de23f7e5421c47a33356a73967f
-ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
+ms.openlocfilehash: cc24839396116a5b581758b29b087c237a6f902b
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2020
-ms.locfileid: "97709429"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99981334"
 ---
 # <a name="azure-stack-edge-pro-r-safety-instructions"></a>Azure Stack Edge Pro R 安全性说明
 
@@ -37,7 +37,7 @@ ms.locfileid: "97709429"
 | 图标 | 说明 |
 |:--- |:--- |
 | ![请首先阅读所有说明](./media/azure-stack-edge-pro-r-safety/icon-safety-read-all-instructions.png) | 请首先阅读所有说明 |
-| ![危险符号](./media/azure-stack-edge-pro-r-safety/icon-safety-warning.png) | 危险符号 |
+| ![注意图标](./media/azure-stack-edge-mini-r-safety/icon-safety-notice.png) **NOTICE:** | 指示应该给予重视但不涉及危险情况的信息。 || ![危险符号](./media/azure-stack-edge-pro-r-safety/icon-safety-warning.png) | 危险符号 |
 | ![“尖端危险”图标](./media/azure-stack-edge-pro-r-safety/icon-safety-tip-hazard.png)  | 倾覆危险|
 | ![“举重”图标](./media/azure-stack-edge-pro-r-safety/icon-safety-heavy-weight.png)  | 重体重风险|
 | ![“电击”图标](./media/azure-stack-edge-pro-r-safety/icon-safety-electric-shock.png) | 电击危险 |
@@ -88,6 +88,7 @@ ms.locfileid: "97709429"
   * 提供足够的空间来访问电源线 () ，因为它们用作产品的主电源断开连接。
 * 产品未提供以太网电缆。 为了减少电磁干扰，建议使用 Cat 6 屏蔽双绞线 (STP) 布线。
 * 在工作区域中设置设备，允许在设备周围实现充足的空气循环;确保在设备运行时完全删除前面和背面。
+* 产品未提供以太网电缆。 为了减少电磁干扰，建议使用 Cat 6 防护 (STP) 布线。
 * 将设备安装在温度控制区中，无导电污染物，并为设备提供充足的空气流通。
 * 让设备远离液体和过度 humid 的环境。
 * 不允许任何液体或任何异物输入系统。 请勿将饮料或任何其他液体容器置于系统或附近。
@@ -207,7 +208,7 @@ A device that has a UPS installed is designed to operate in the following enviro
 > Maximum corrosive contaminant levels measured at &lt;/= 50% relative humidity. --> 
 
 
-> ![注意图标 ](./media/azure-stack-edge-pro-r-safety/icon-safety-notice.png) **通知：** 对 &nbsp; Microsoft 未明确批准的设备所做的更改或修改可能会使用户无权操作设备。
+> ![注意图标-2 ](./media/azure-stack-edge-pro-r-safety/icon-safety-notice.png) **通知：** 对 &nbsp; Microsoft 未明确批准的设备所做的更改或修改可能会使用户无权操作设备。
 
 加拿大和美国：
 

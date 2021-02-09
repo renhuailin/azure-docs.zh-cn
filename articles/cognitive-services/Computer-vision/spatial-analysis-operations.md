@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: 4e389114dc873d067a32389b288e1bb98d497850
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: af220106c415165a0dbe7cda64a31a6068f53164
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99226044"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99981776"
 ---
 # <a name="spatial-analysis-operations"></a>空间分析操作
 
@@ -89,8 +89,8 @@ ms.locfileid: "99226044"
 
 | 名称 | 类型| 说明|
 |---------|---------|---------|
-| `gpu_index` | 字符串| 此操作将在其上运行的 GPU 索引。|
-| `do_calibration` | 字符串 | 指示已启用校准。 `do_calibration` 若要使 **cognitiveservices account** 正常工作，必须为 true。 默认情况下，do_calibration 设置为 True。 |
+| `gpu_index` | string| 此操作将在其上运行的 GPU 索引。|
+| `do_calibration` | string | 指示已启用校准。 `do_calibration` 若要使 **cognitiveservices account** 正常工作，必须为 true。 默认情况下，do_calibration 设置为 True。 |
 | `enable_recalibration` | bool | 指示是否启用自动来校准。 默认值为 `true`。|
 | `calibration_quality_check_frequency_seconds` | int | 每个质量检查之间的最小秒数，以确定是否需要来校准。 默认值为 `86400` (24 小时) 。 仅当 `enable_recalibration=True` 时使用。|
 | `calibration_quality_check_sampling_num` | int | 为每个质量检查错误度量使用的随机选择的存储数据示例数。 默认值为 `80`。 仅当 `enable_recalibration=True` 时使用。|
@@ -125,13 +125,13 @@ ms.locfileid: "99226044"
 | 名称 | 类型| 说明|
 |---------|---------|---------|
 | `zones` | list| 区域列表。 |
-| `name` | 字符串| 此区域的友好名称。|
+| `name` | string| 此区域的友好名称。|
 | `polygon` | list| 每个值对表示多边形顶点的 x、y。 多边形表示跟踪或计数人员的区域，并且多边形点基于标准化坐标 (0-1) ，其中左上角 (0.0，0.0) ，右下角 (1.0，1.0) 。   
-| `threshold` | float| 当 AI 模型的置信度大于或等于此值时，将出口事件。 |
-| `type` | 字符串| 对于 **cognitiveservices account，spatialanalysis-personcount** `count` 。|
-| `trigger` | 字符串| 用于发送事件的触发器的类型。 支持的值 `event` 用于在计数发生更改或 `interval` 定期发送事件时发送事件，而不考虑计数是否已更改。
+| `threshold` | FLOAT| 当 AI 模型的置信度大于或等于此值时，将出口事件。 |
+| `type` | string| 对于 **cognitiveservices account，spatialanalysis-personcount** `count` 。|
+| `trigger` | string| 用于发送事件的触发器的类型。 支持的值 `event` 用于在计数发生更改或 `interval` 定期发送事件时发送事件，而不考虑计数是否已更改。
 | `output_frequency` | int | 出口事件的速率。 When `output_frequency` = X 时，每个 X 事件都是出口，例如 `output_frequency` = 2 表示输出每个其他事件。 `output_frequency`适用于 `event` 和 `interval` 。 |
-| `focus` | 字符串| 用于计算事件的人员边界框内的点位置。 焦点的值可以 `footprint` (人员) 的占用量， `bottom_center` (人员边界框的下中心) ， `center` (人员的边界框) 。|
+| `focus` | string| 用于计算事件的人员边界框内的点位置。 焦点的值可以 `footprint` (人员) 的占用量， `bottom_center` (人员边界框的下中心) ， `center` (人员的边界框) 。|
 
 ### <a name="line-configuration-for-cognitiveservicesvisionspatialanalysis-personcrossingline"></a>Cognitiveservices account 的线条配置。 spatialanalysis-personcrossingline
 
@@ -170,14 +170,14 @@ ms.locfileid: "99226044"
 | 名称 | 类型| 说明|
 |---------|---------|---------|
 | `lines` | list| 行的列表。|
-| `name` | 字符串| 此行的友好名称。|
+| `name` | string| 此行的友好名称。|
 | `line` | list| 线条的定义。 这是一个方向线，可让你了解 "entry" 与 "exit"。|
 | `start` | 值对| x，y 坐标用于线条的起点。 Float 值表示顶点相对于顶部、左侧的位置。 若要计算绝对 x，y 值，请将这些值与帧大小相乘。 |
 | `end` | 值对| x，y 坐标用于线条的终点。 Float 值表示顶点相对于顶部、左侧的位置。 若要计算绝对 x，y 值，请将这些值与帧大小相乘。 |
-| `threshold` | float| 当 AI 模型的置信度大于或等于此值时，将出口事件。 默认值为 16。 这是实现最大准确性的推荐值。 |
-| `type` | 字符串| 对于 **cognitiveservices account，spatialanalysis-personcrossingline** `linecrossing` 。|
-|`trigger`|字符串|用于发送事件的触发器的类型。<br>支持的值： "事件"：当有人跨越行时激发。|
-| `focus` | 字符串| 用于计算事件的人员边界框内的点位置。 焦点的值可以 `footprint` (人员) 的占用量， `bottom_center` (人员边界框的下中心) ， `center` (人员的边界框) 。 默认值为 "占用空间"。|
+| `threshold` | FLOAT| 当 AI 模型的置信度大于或等于此值时，将出口事件。 默认值为 16。 这是实现最大准确性的推荐值。 |
+| `type` | string| 对于 **cognitiveservices account，spatialanalysis-personcrossingline** `linecrossing` 。|
+|`trigger`|string|用于发送事件的触发器的类型。<br>支持的值： "事件"：当有人跨越行时激发。|
+| `focus` | string| 用于计算事件的人员边界框内的点位置。 焦点的值可以 `footprint` (人员) 的占用量， `bottom_center` (人员边界框的下中心) ， `center` (人员的边界框) 。 默认值为 "占用空间"。|
 
 ### <a name="zone-configuration-for-cognitiveservicesvisionspatialanalysis-personcrossingpolygon"></a>Cognitiveservices account. spatialanalysis 的区域配置-personcrossingpolygon
 
@@ -216,12 +216,12 @@ ms.locfileid: "99226044"
 | 名称 | 类型| 说明|
 |---------|---------|---------|
 | `zones` | list| 区域列表。 |
-| `name` | 字符串| 此区域的友好名称。|
+| `name` | string| 此区域的友好名称。|
 | `polygon` | list| 每个值对表示多边形顶点的 x、y。 多边形表示跟踪或计数人员的区域。 Float 值表示顶点相对于顶部、左侧的位置。 若要计算绝对 x，y 值，请将这些值与帧大小相乘。 
-| `threshold` | float| 当 AI 模型的置信度大于或等于此值时，将出口事件。 当类型为 zonecrossing 时，默认值为48，而 time 为 DwellTime 时默认值为16。 下面是建议的值，用于实现最大准确性。  |
-| `type` | 字符串| 对于 **cognitiveservices account，spatialanalysis-personcrossingpolygon 此项** 应为 `zonecrossing` 或 `zonedwelltime` 。|
-| `trigger`|字符串|用于发送事件的触发器的类型<br>支持的值： "事件"：某人进入或退出区域时触发。|
-| `focus` | 字符串| 用于计算事件的人员边界框内的点位置。 焦点的值可以 `footprint` (人员) 的占用量， `bottom_center` (人员边界框的下中心) ， `center` (人员的边界框) 。 默认值为 "占用空间"。|
+| `threshold` | FLOAT| 当 AI 模型的置信度大于或等于此值时，将出口事件。 当类型为 zonecrossing 时，默认值为48，而 time 为 DwellTime 时默认值为16。 下面是建议的值，用于实现最大准确性。  |
+| `type` | string| 对于 **cognitiveservices account，spatialanalysis-personcrossingpolygon 此项** 应为 `zonecrossing` 或 `zonedwelltime` 。|
+| `trigger`|string|用于发送事件的触发器的类型<br>支持的值： "事件"：某人进入或退出区域时触发。|
+| `focus` | string| 用于计算事件的人员边界框内的点位置。 焦点的值可以 `footprint` (人员) 的占用量， `bottom_center` (人员边界框的下中心) ， `center` (人员的边界框) 。 默认值为 "占用空间"。|
 
 ### <a name="zone-configuration-for-cognitiveservicesvisionspatialanalysis-persondistance"></a>Cognitiveservices account. spatialanalysis 的区域配置-persondistance
 
@@ -250,15 +250,15 @@ ms.locfileid: "99226044"
 | 名称 | 类型| 说明|
 |---------|---------|---------|
 | `zones` | list| 区域列表。 |
-| `name` | 字符串| 此区域的友好名称。|
+| `name` | string| 此区域的友好名称。|
 | `polygon` | list| 每个值对表示多边形顶点的 x、y。 多边形表示统计人员的区域，以及用户之间的距离。 Float 值表示顶点相对于顶部、左侧的位置。 若要计算绝对 x，y 值，请将这些值与帧大小相乘。 
-| `threshold` | float| 当 AI 模型的置信度大于或等于此值时，将出口事件。 |
-| `type` | 字符串| 对于 **cognitiveservices account，spatialanalysis-persondistance** `people_distance` 。|
-| `trigger` | 字符串| 用于发送事件的触发器的类型。 支持的值 `event` 用于在计数发生更改或 `interval` 定期发送事件时发送事件，而不考虑计数是否已更改。
+| `threshold` | FLOAT| 当 AI 模型的置信度大于或等于此值时，将出口事件。 |
+| `type` | string| 对于 **cognitiveservices account，spatialanalysis-persondistance** `people_distance` 。|
+| `trigger` | string| 用于发送事件的触发器的类型。 支持的值 `event` 用于在计数发生更改或 `interval` 定期发送事件时发送事件，而不考虑计数是否已更改。
 | `output_frequency` | int | 出口事件的速率。 When `output_frequency` = X 时，每个 X 事件都是出口，例如 `output_frequency` = 2 表示输出每个其他事件。 `output_frequency`适用于 `event` 和 `interval` 。|
-| `minimum_distance_threshold` | float| 当用户小于该距离时，将触发 "TooClose" 事件的距离（以英尺为间隔）。|
-| `maximum_distance_threshold` | float| 当人们大于该距离时，将触发 "TooFar" 事件的距离（以英尺为间隔）。|
-| `focus` | 字符串| 用于计算事件的人员边界框内的点位置。 焦点的值可以 `footprint` (人员) 的占用量， `bottom_center` (人员边界框的下中心) ， `center` (人员的边界框) 。|
+| `minimum_distance_threshold` | FLOAT| 当用户小于该距离时，将触发 "TooClose" 事件的距离（以英尺为间隔）。|
+| `maximum_distance_threshold` | FLOAT| 当人们大于该距离时，将触发 "TooFar" 事件的距离（以英尺为间隔）。|
+| `focus` | string| 用于计算事件的人员边界框内的点位置。 焦点的值可以 `footprint` (人员) 的占用量， `bottom_center` (人员边界框的下中心) ， `center` (人员的边界框) 。|
 
 请参阅 [相机位置](spatial-analysis-camera-placement.md) 准则，了解区域和线路配置。
 
@@ -363,41 +363,41 @@ ms.locfileid: "99226044"
 
 | 事件字段名称 | 类型| 说明|
 |---------|---------|---------|
-| `id` | 字符串| 事件 ID|
-| `type` | 字符串| 事件类型|
-| `detectionsId` | array| 触发此事件的人员检测的唯一标识符的大小为1的数组|
+| `id` | string| 事件 ID|
+| `type` | string| 事件类型|
+| `detectionsId` | 数组| 触发此事件的人员检测的唯一标识符的大小为1的数组|
 | `properties` | collection| 值的集合|
-| `trackinId` | 字符串| 检测到的人员的唯一标识符|
-| `zone` | 字符串 | 表示已越过区域的多边形的 "名称" 字段|
-| `trigger` | 字符串| 触发器类型为 "事件" 或 "间隔"，具体取决于中的值 `trigger` SPACEANALYTICS_CONFIG|
+| `trackinId` | string| 检测到的人员的唯一标识符|
+| `zone` | string | 表示已越过区域的多边形的 "名称" 字段|
+| `trigger` | string| 触发器类型为 "事件" 或 "间隔"，具体取决于中的值 `trigger` SPACEANALYTICS_CONFIG|
 
 | 检测字段名称 | 类型| 说明|
 |---------|---------|---------|
-| `id` | 字符串| 检测 ID|
-| `type` | 字符串| 检测类型|
+| `id` | string| 检测 ID|
+| `type` | string| 检测类型|
 | `region` | collection| 值的集合|
-| `type` | 字符串| 区域类型|
+| `type` | string| 区域类型|
 | `points` | collection| 当区域类型为矩形时，左上方和右下点 |
-| `confidence` | float| 算法置信度|
-| `face_Mask` | float | 范围 (为 0-1) 的属性置信度值表示检测到的人员正在戴上面部面具 |
-| `face_noMask` | float | 范围 (为 0-1) 的属性置信度值表示检测到的人 **不** 戴面部面具 |
+| `confidence` | FLOAT| 算法置信度|
+| `face_Mask` | FLOAT | 范围 (为 0-1) 的属性置信度值表示检测到的人员正在戴上面部面具 |
+| `face_noMask` | FLOAT | 范围 (为 0-1) 的属性置信度值表示检测到的人 **不** 戴面部面具 |
 
 | SourceInfo 字段名称 | 类型| 说明|
 |---------|---------|---------|
-| `id` | 字符串| 相机 ID|
+| `id` | string| 相机 ID|
 | `timestamp` | date| 发出 JSON 有效负载时的 UTC 日期|
 | `width` | int | 视频帧宽度|
 | `height` | int | 视频帧高度|
 | `frameId` | int | 帧标识符|
 | `cameraCallibrationInfo` | collection | 值的集合|
-| `status` | 字符串 | 格式为的校准状态 `state[;progress description]` 。 状态可以为 `Calibrating` ， `Recalibrating` (如果启用了来校准) ，则为; 否则为 `Calibrated` 。 进度说明部分仅在处于 `Calibrating` 和状态时有效 `Recalibrating` ，后者用于显示当前校准过程的进度。|
-| `cameraHeight` | float | 相机上地面的高度。 这是从自动校准推断出来的。 |
-| `focalLength` | float | 以像素为单位的摄像机焦点长度。 这是从自动校准推断出来的。 |
-| `tiltUpAngle` | float | 相机倾斜角度与垂直。 这是从自动校准推断出来的。|
+| `status` | string | 格式为的校准状态 `state[;progress description]` 。 状态可以为 `Calibrating` ， `Recalibrating` (如果启用了来校准) ，则为; 否则为 `Calibrated` 。 进度说明部分仅在处于 `Calibrating` 和状态时有效 `Recalibrating` ，后者用于显示当前校准过程的进度。|
+| `cameraHeight` | FLOAT | 相机上地面的高度。 这是从自动校准推断出来的。 |
+| `focalLength` | FLOAT | 以像素为单位的摄像机焦点长度。 这是从自动校准推断出来的。 |
+| `tiltUpAngle` | FLOAT | 相机倾斜角度与垂直。 这是从自动校准推断出来的。|
 
 | SourceInfo 字段名称 | 类型| 说明|
 |---------|---------|---------|
-| `id` | 字符串| 相机 ID|
+| `id` | string| 相机 ID|
 | `timestamp` | date| 发出 JSON 有效负载时的 UTC 日期|
 | `width` | int | 视频帧宽度|
 | `height` | int | 视频帧高度|
@@ -462,28 +462,28 @@ ms.locfileid: "99226044"
 ```
 | 事件字段名称 | 类型| 说明|
 |---------|---------|---------|
-| `id` | 字符串| 事件 ID|
-| `type` | 字符串| 事件类型|
-| `detectionsId` | array| 触发此事件的人员检测的唯一标识符的大小为1的数组|
+| `id` | string| 事件 ID|
+| `type` | string| 事件类型|
+| `detectionsId` | 数组| 触发此事件的人员检测的唯一标识符的大小为1的数组|
 | `properties` | collection| 值的集合|
-| `trackinId` | 字符串| 检测到的人员的唯一标识符|
-| `status` | 字符串| 交叉行方向，"CrossLeft" 或 "CrossRight"|
-| `zone` | 字符串 | 所交叉行的 "名称" 字段|
+| `trackinId` | string| 检测到的人员的唯一标识符|
+| `status` | string| 交叉行方向，"CrossLeft" 或 "CrossRight"|
+| `zone` | string | 所交叉行的 "名称" 字段|
 
 | 检测字段名称 | 类型| 说明|
 |---------|---------|---------|
-| `id` | 字符串| 检测 ID|
-| `type` | 字符串| 检测类型|
+| `id` | string| 检测 ID|
+| `type` | string| 检测类型|
 | `region` | collection| 值的集合|
-| `type` | 字符串| 区域类型|
+| `type` | string| 区域类型|
 | `points` | collection| 当区域类型为矩形时，左上方和右下点 |
-| `confidence` | float| 算法置信度|
-| `face_Mask` | float | 范围 (为 0-1) 的属性置信度值表示检测到的人员正在戴上面部面具 |
-| `face_noMask` | float | 范围 (为 0-1) 的属性置信度值表示检测到的人 **不** 戴面部面具 |
+| `confidence` | FLOAT| 算法置信度|
+| `face_Mask` | FLOAT | 范围 (为 0-1) 的属性置信度值表示检测到的人员正在戴上面部面具 |
+| `face_noMask` | FLOAT | 范围 (为 0-1) 的属性置信度值表示检测到的人 **不** 戴面部面具 |
 
 | SourceInfo 字段名称 | 类型| 说明|
 |---------|---------|---------|
-| `id` | 字符串| 相机 ID|
+| `id` | string| 相机 ID|
 | `timestamp` | date| 发出 JSON 有效负载时的 UTC 日期|
 | `width` | int | 视频帧宽度|
 | `height` | int | 视频帧高度|
@@ -607,26 +607,26 @@ ms.locfileid: "99226044"
 
 | 事件字段名称 | 类型| 说明|
 |---------|---------|---------|
-| `id` | 字符串| 事件 ID|
-| `type` | 字符串| 事件类型。 该值可以是 _personZoneDwellTimeEvent_ 或 _personZoneEnterExitEvent_|
-| `detectionsId` | array| 触发此事件的人员检测的唯一标识符的大小为1的数组|
+| `id` | string| 事件 ID|
+| `type` | string| 事件类型。 该值可以是 _personZoneDwellTimeEvent_ 或 _personZoneEnterExitEvent_|
+| `detectionsId` | 数组| 触发此事件的人员检测的唯一标识符的大小为1的数组|
 | `properties` | collection| 值的集合|
-| `trackinId` | 字符串| 检测到的人员的唯一标识符|
-| `status` | 字符串| 多边形交叉的方向，"Enter" 或 "Exit"|
+| `trackinId` | string| 检测到的人员的唯一标识符|
+| `status` | string| 多边形交叉的方向，"Enter" 或 "Exit"|
 | `side` | int| 人员所跨越的多边形的边号。 每一侧都是表示区域的多边形两个顶点之间的编号边界。 多边形的前两个顶点之间的边缘表示第一侧|
-| `durationMs` | float | 表示用户在区域中花费的时间的毫秒数。 当事件类型为 _personZoneDwellTimeEvent_ 时，提供此字段|
-| `zone` | 字符串 | 表示已越过区域的多边形的 "名称" 字段|
+| `durationMs` | FLOAT | 表示用户在区域中花费的时间的毫秒数。 当事件类型为 _personZoneDwellTimeEvent_ 时，提供此字段|
+| `zone` | string | 表示已越过区域的多边形的 "名称" 字段|
 
 | 检测字段名称 | 类型| 说明|
 |---------|---------|---------|
-| `id` | 字符串| 检测 ID|
-| `type` | 字符串| 检测类型|
+| `id` | string| 检测 ID|
+| `type` | string| 检测类型|
 | `region` | collection| 值的集合|
-| `type` | 字符串| 区域类型|
+| `type` | string| 区域类型|
 | `points` | collection| 当区域类型为矩形时，左上方和右下点 |
-| `confidence` | float| 算法置信度|
-| `face_Mask` | float | 范围 (为 0-1) 的属性置信度值表示检测到的人员正在戴上面部面具 |
-| `face_noMask` | float | 范围 (为 0-1) 的属性置信度值表示检测到的人 **不** 戴面部面具 |
+| `confidence` | FLOAT| 算法置信度|
+| `face_Mask` | FLOAT | 范围 (为 0-1) 的属性置信度值表示检测到的人员正在戴上面部面具 |
+| `face_noMask` | FLOAT | 范围 (为 0-1) 的属性置信度值表示检测到的人 **不** 戴面部面具 |
 
 ### <a name="json-format-for-cognitiveservicesvisionspatialanalysis-persondistance-ai-insights"></a>Cognitiveservices account 的 JSON 格式。 spatialanalysis-persondistance AI Insights
 
@@ -722,27 +722,27 @@ ms.locfileid: "99226044"
 
 | 事件字段名称 | 类型| 说明|
 |---------|---------|---------|
-| `id` | 字符串| 事件 ID|
-| `type` | 字符串| 事件类型|
-| `detectionsId` | array| 触发此事件的人员检测的唯一标识符的大小为1的数组|
+| `id` | string| 事件 ID|
+| `type` | string| 事件类型|
+| `detectionsId` | 数组| 触发此事件的人员检测的唯一标识符的大小为1的数组|
 | `properties` | collection| 值的集合|
 | `personCount` | int| 发出事件时检测到的人员数|
-| `averageDistance` | float| 所有检测到的人在英尺内的平均距离|
-| `minimumDistanceThreshold` | float| 当用户小于该距离时，将触发 "TooClose" 事件的距离（以英尺为间隔）。|
-| `maximumDistanceThreshold` | float| 当人们大于距离相隔时，将触发 "TooFar" 事件的距离（以英尺为间隔）。|
-| `eventName` | 字符串| 事件名称为 `TooClose` `minimumDistanceThreshold` ，违反，违反 `TooFar` `maximumDistanceThreshold` ，或 `unknown` 在未完成自动校准时|
+| `averageDistance` | FLOAT| 所有检测到的人在英尺内的平均距离|
+| `minimumDistanceThreshold` | FLOAT| 当用户小于该距离时，将触发 "TooClose" 事件的距离（以英尺为间隔）。|
+| `maximumDistanceThreshold` | FLOAT| 当人们大于距离相隔时，将触发 "TooFar" 事件的距离（以英尺为间隔）。|
+| `eventName` | string| 事件名称为 `TooClose` `minimumDistanceThreshold` ，违反，违反 `TooFar` `maximumDistanceThreshold` ，或 `unknown` 在未完成自动校准时|
 | `distanceViolationPersonCount` | int| 在违反或的情况中检测到的用户数 `minimumDistanceThreshold``maximumDistanceThreshold`|
-| `zone` | 字符串 | 多边形的 "名称" 字段，表示为用户之间的 distancing 监视的区域|
-| `trigger` | 字符串| 触发器类型为 "事件" 或 "间隔"，具体取决于中的值 `trigger` SPACEANALYTICS_CONFIG|
+| `zone` | string | 多边形的 "名称" 字段，表示为用户之间的 distancing 监视的区域|
+| `trigger` | string| 触发器类型为 "事件" 或 "间隔"，具体取决于中的值 `trigger` SPACEANALYTICS_CONFIG|
 
 | 检测字段名称 | 类型| 说明|
 |---------|---------|---------|
-| `id` | 字符串| 检测 ID|
-| `type` | 字符串| 检测类型|
+| `id` | string| 检测 ID|
+| `type` | string| 检测类型|
 | `region` | collection| 值的集合|
-| `type` | 字符串| 区域类型|
+| `type` | string| 区域类型|
 | `points` | collection| 当区域类型为矩形时，左上方和右下点 |
-| `confidence` | float| 算法置信度|
+| `confidence` | FLOAT| 算法置信度|
 | `centerGroundPoint` | 2浮点值| `x`， `y` 其中的值具有人员在地面上的推断位置的坐标。 `x` 和 `y` 是地面平面上的坐标，假设地面为水平。 照相机的位置为原点。 |
 
 计算时 `centerGroundPoint` ， `x` 是沿与相机图像平面垂直的线沿相机与人之间的距离。 `y` 与相机之间沿与相机图像平面平行的直线的距离。 
@@ -754,16 +754,16 @@ ms.locfileid: "99226044"
 
 | SourceInfo 字段名称 | 类型| 说明|
 |---------|---------|---------|
-| `id` | 字符串| 相机 ID|
+| `id` | string| 相机 ID|
 | `timestamp` | date| 发出 JSON 有效负载时的 UTC 日期|
 | `width` | int | 视频帧宽度|
 | `height` | int | 视频帧高度|
 | `frameId` | int | 帧标识符|
 | `cameraCallibrationInfo` | collection | 值的集合|
-| `status` | 字符串 | 格式为的校准状态 `state[;progress description]` 。 状态可以为 `Calibrating` ， `Recalibrating` (如果启用了来校准) ，则为; 否则为 `Calibrated` 。 进度说明部分仅在处于 `Calibrating` 和状态时有效 `Recalibrating` ，后者用于显示当前校准过程的进度。|
-| `cameraHeight` | float | 相机上地面的高度。 这是从自动校准推断出来的。 |
-| `focalLength` | float | 以像素为单位的摄像机焦点长度。 这是从自动校准推断出来的。 |
-| `tiltUpAngle` | float | 相机倾斜角度与垂直。 这是从自动校准推断出来的。|
+| `status` | string | 格式为的校准状态 `state[;progress description]` 。 状态可以为 `Calibrating` ， `Recalibrating` (如果启用了来校准) ，则为; 否则为 `Calibrated` 。 进度说明部分仅在处于 `Calibrating` 和状态时有效 `Recalibrating` ，后者用于显示当前校准过程的进度。|
+| `cameraHeight` | FLOAT | 相机上地面的高度。 这是从自动校准推断出来的。 |
+| `focalLength` | FLOAT | 以像素为单位的摄像机焦点长度。 这是从自动校准推断出来的。 |
+| `tiltUpAngle` | FLOAT | 相机倾斜角度与垂直。 这是从自动校准推断出来的。|
 
 
 ## <a name="use-the-output-generated-by-the-container"></a>使用容器生成的输出
@@ -965,7 +965,7 @@ ms.locfileid: "99226044"
   ```
 | 名称 | 类型| 说明|
 |---------|---------|---------|
-| `batch_size` | int | 指示要在操作中使用的照相机的数目。 |
+| `batch_size` | int | 如果所有相机都具有相同的分辨率，则将设置 `batch_size` 为要在该操作中使用的相机数; 否则，设置 `batch_size` 为1，或将其保留为默认 (1) ，这指示不支持批处理。 |
 
 ## <a name="next-steps"></a>后续步骤
 

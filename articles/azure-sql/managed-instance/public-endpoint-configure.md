@@ -9,13 +9,13 @@ ms.topic: how-to
 author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: vanto, sstein
-ms.date: 05/07/2019
-ms.openlocfilehash: 73fa4d4988c7a036dc1d2eb7dc81c3c1c5d77026
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.date: 02/08/2021
+ms.openlocfilehash: 7d5f40be895aea26a234d9ae622aa5bf22528231
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92788275"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99981436"
 ---
 # <a name="configure-public-endpoint-in-azure-sql-managed-instance"></a>在 Azure SQL 托管实例中配置公共终结点
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -41,7 +41,7 @@ ms.locfileid: "92788275"
 ## <a name="enabling-public-endpoint-for-a-managed-instance-in-the-azure-portal"></a>在 Azure 门户中为托管实例启用公共终结点
 
 1. 启动 Azure 门户 (<https://portal.azure.com/.>)
-1. 打开包含托管实例的资源组，然后选择要在其上配置公共终结点的 **SQL 托管实例** 。
+1. 打开包含托管实例的资源组，然后选择要在其上配置公共终结点的 **SQL 托管实例**。
 1. 在“安全性”设置中，选择“虚拟网络”选项卡。 
 1. 在虚拟网络配置页中选择“启用”，然后选择“保存”图标以更新配置。 
 
@@ -86,7 +86,7 @@ Set-AzSqlInstance -PublicDataEndpointEnabled $false -force
 
     ![屏幕截图显示了“虚拟网络配置”页，可在其中找到虚拟网络/子网值。](./media/public-endpoint-configure/mi-overview.png)
 
-1. 在虚拟网络的左侧配置窗格中选择“子网”选项卡，并记下托管实例的 **安全组** 。
+1. 在虚拟网络的左侧配置窗格中选择“子网”选项卡，并记下托管实例的 **安全组**。
 
     ![屏幕截图显示了“子网”选项卡，可在其中获取托管实例的安全组。](./media/public-endpoint-configure/mi-vnet-subnet.png)
 
@@ -112,7 +112,7 @@ Set-AzSqlInstance -PublicDataEndpointEnabled $false -force
 ## <a name="obtaining-the-managed-instance-public-endpoint-connection-string"></a>获取托管实例公共终结点的连接字符串
 
 1. 导航到为公共终结点启用的托管实例配置页。 选择“设置”配置下的“连接字符串”选项卡。 
-1. 请注意，公用终结点主机名的格式 <mi_name>。 **public** <dns_zone> database.windows.net，用于连接的端口为3342。
+1. 请注意，公用终结点主机名的格式 <mi_name>。<dns_zone> database.windows.net，用于连接的端口为3342。 下面是表示可在 SQL Server Management Studio 或 Azure Data Studio 连接中使用的公共终结点端口的连接字符串的服务器值的示例： `<mi_name>.public.<dns_zone>.database.windows.net,3342`
 
     ![屏幕截图显示了公共终结点和专用终结点的连接字符串。](./media/public-endpoint-configure/mi-public-endpoint-conn-string.png)
 
