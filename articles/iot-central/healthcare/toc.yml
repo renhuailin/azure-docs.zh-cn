@@ -1,13 +1,16 @@
-- name: 医疗保健业用 Azure IoT Central 的文档
+- name: 适用于医疗保健业的 Azure IoT Central 的文档
   href: index.yml
 - name: 概述
   items:
     - name: 使用 Azure IoT Central 生成医疗保健解决方案
       href: overview-iot-central-healthcare.md
 - name: 教程
+  expanded: true
   items:
     - name: 创建持续患者监视解决方案
       href: tutorial-continuous-patient-monitoring.md
+    - name: 创建健康状况数据分类仪表板
+      href: howto-health-data-triage.md
 - name: 概念
   items:
     - name: 持续患者监视体系结构
@@ -18,8 +21,6 @@
       href: ../core/concepts-app-templates.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
 - name: 操作指南
   items:
-    - name: 创建健康状况数据分类仪表板
-      href: howto-health-data-triage.md
     - name: 连接和开发设备
       items:
         - name: 准备和连接 Rigado Cascade 500

@@ -7,16 +7,16 @@ ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 01/02/2021
 ms.custom: MVC
-ms.openlocfilehash: 3e098e64eacf8b126d6a6d72b1f242443e88d55c
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: aeeb810174ff5c21a81bcec8aa9265ff100edf91
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881089"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99626319"
 ---
 # <a name="migrate-machines-as-physical-servers-to-azure"></a>将计算机作为物理服务器迁移到 Azure
 
-本文介绍如何使用 Azure Migrate:服务器迁移工具将计算机作为物理服务器迁移到 Azure。 通过将计算机视为物理服务器来迁移计算机在许多情况下很有用：
+本文介绍如何使用 Azure Migrate 的服务器迁移工具将计算机作为物理服务器迁移到Azure。 通过将计算机视为物理服务器来迁移计算机在许多情况下很有用：
 
 - 迁移本地物理服务器。
 - 迁移 Xen、KVM 等平台虚拟化的 VM。
@@ -28,9 +28,9 @@ ms.locfileid: "98881089"
 本教程是教程系列中的第三篇教程，演示了如何评估物理服务器并将其迁移到 Azure。 在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
-> * 准备将 Azure 与 Azure Migrate:服务器迁移配合使用。
+> * 准备将 Azure 与 Azure Migrate 一起使用：服务器迁移。
 > * 检查要迁移的计算机的要求，并准备 Azure Migrate 复制设备的计算机，用于发现计算机并将其迁移到 Azure。
-> * 在 Azure Migrate 中心添加 Azure Migrate 服务器迁移工具。
+> * 添加 Azure Migrate：Azure Migrate 中心内的服务器迁移工具。
 > * 设置复制设备。
 > * 在要迁移的计算机上安装移动服务。
 > * 启用复制。
@@ -51,7 +51,7 @@ ms.locfileid: "98881089"
 
 ## <a name="prepare-azure"></a>准备 Azure
 
-准备 Azure 以使用服务器迁移进行迁移。
+让 Azure 准备好使用 Azure Migrate 进行迁移：服务器迁移。
 
 **任务** | **详细信息**
 --- | ---
@@ -89,7 +89,7 @@ ms.locfileid: "98881089"
 确保计算机符合迁移到 Azure 的要求。 
 
 > [!NOTE]
-> 迁移物理计算机时，Azure Migrate:服务器迁移使用与 Azure Site Recovery 服务中基于代理的灾难恢复相同的复制体系结构，并且某些组件共享相同的代码库。 某些内容可能链接到 Site Recovery 文档。
+> 迁移物理计算机时，Azure Migrate 的服务器迁移工具会使用与 Azure Site Recovery 服务中基于代理的灾难恢复功能相同的复制体系结构，并且某些组件共享同一代码库。 某些内容可能链接到 Site Recovery 文档。
 
 1. [验证](migrate-support-matrix-physical-migration.md#physical-server-requirements)物理服务器要求。
 2. 验证复制到 Azure 的本地计算机是否符合 [Azure VM 要求](migrate-support-matrix-physical-migration.md#azure-vm-requirements)。
@@ -99,7 +99,7 @@ ms.locfileid: "98881089"
 
 ### <a name="prepare-a-machine-for-the-replication-appliance"></a>为复制设备准备计算机
 
-Azure Migrate:服务器迁移使用复制设备将计算机复制到 Azure。 复制设备运行以下组件。
+“Azure Migrate:Azure Migrate 使用复制设备将计算机复制到 Azure。 复制设备运行以下组件。
 
 - **配置服务器**：配置服务器在本地和 Azure 之间协调通信并管理数据复制。
 - **进程服务器**：进程服务器充当复制网关。 它接收复制数据，通过缓存、压缩和加密对其进行优化，然后将其发送到 Azure 中的缓存存储帐户。 
@@ -116,7 +116,7 @@ Azure Migrate:服务器迁移使用复制设备将计算机复制到 Azure。 �
 
 ## <a name="set-up-the-replication-appliance"></a>设置复制设备
 
-第一个迁移步骤是设置复制设备。 若要设置设备以进行物理服务器迁移，请下载设备的安装程序文件，然后在[准备好的计算机](#prepare-a-machine-for-the-replication-appliance)上运行。 安装设备后，将其注册到 Azure Migrate 服务器迁移。
+第一个迁移步骤是设置复制设备。 若要设置设备以进行物理服务器迁移，请下载设备的安装程序文件，然后在[准备好的计算机](#prepare-a-machine-for-the-replication-appliance)上运行。 安装设备后，将其注册到 Azure Migrate 的服务器迁移。
 
 
 ### <a name="download-the-replication-appliance-installer"></a>下载复制设备安装程序
@@ -129,7 +129,7 @@ Azure Migrate:服务器迁移使用复制设备将计算机复制到 Azure。 �
 4. 在“目标区域”中，选择要将计算机迁移到的 Azure 区域。
 5. 选择“确认迁移的目标区域为 <区域名称>”。
 6. 单击“创建资源”。 随即会在后台创建一个 Azure Site Recovery 保管库。
-    - 如果已设置使用 Azure Migrate 服务器迁移进行迁移，则无法配置目标选项，因为之前已设置了资源。    
+    - 如果已使用 Azure Migrate 的服务器迁移工具设置迁移，则由于已设置资源，因此无法配置目标选项。    
     - 单击此按钮后，无法更改此项目的目标区域。
     - 所有后续迁移的目标都是此区域。
 
@@ -145,7 +145,7 @@ Azure Migrate:服务器迁移使用复制设备将计算机复制到 Azure。 �
 
     ![完成注册](./media/tutorial-migrate-physical-virtual-machines/finalize-registration.png)
 
-完成注册后，可能需要一些时间才能将发现的计算机显示在 Azure Migrate 服务器迁移中。 随着 VM 的发现，“已发现的服务器”计数会不断增大。
+完成注册后，可能需要一些时间才能将发现的计算机显示在 Azure Migrate 的服务器迁移。 随着 VM 的发现，“已发现的服务器”计数会不断增大。
 
 ![已发现的服务器](./media/tutorial-migrate-physical-virtual-machines/discovered-servers.png)
 

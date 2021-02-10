@@ -12,6 +12,8 @@
   items:
     - name: 将 Azure VM 移动到另一区域
       href: tutorial-move-region-virtual-machines.md
+    - name: 将加密的 Azure VM 移到另一个区域
+      href: tutorial-move-region-encrypted-virtual-machines.md
     - name: 将 SQL 资源移动到另一个区域
       href: tutorial-move-region-sql.md
 - name: 概念

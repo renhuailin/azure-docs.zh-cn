@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/26/2021
+ms.date: 02/08/2021
 ms.author: memildin
-ms.openlocfilehash: 04dfd731f1dcf0e9e7c045e0f7ef335c8db5b359
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: e827178d8ccb0f7de8d32433d03502a7412d1139
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98805625"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99834042"
 ---
 # <a name="feature-coverage-for-machines"></a>适用于计算机的功能覆盖范围
 
@@ -54,7 +54,7 @@ ms.locfileid: "98805625"
 
 |**功能**|**Azure 虚拟机**|**Azure 虚拟机规模集**|**已启用 Azure Arc 的计算机**|**需要 Azure Defender**
 |----|:----:|:----:|:----:|:----:|
-|[Microsoft Defender for Endpoint 集成](security-center-wdatp.md)|-|-|-|是|
+|[Microsoft Defender for Endpoint 集成](security-center-wdatp.md)|-|-|-|-|
 |[虚拟机行为分析（和安全警报）](./azure-defender.md)|✔</br>（在支持的版本上）|✔</br>（在支持的版本上）|✔|是|
 |[无文件安全警报](alerts-reference.md#alerts-windows)|-|-|-|是|
 |[基于网络的安全警报](other-threat-protections.md#network-layer)|✔|✔|-|是|
@@ -96,10 +96,10 @@ ms.locfileid: "98805625"
 | Trend Micro – Deep Security | Windows Server 系列  | 否 | 是 |
 | Symantec v12.1.1100+| Windows Server 系列  | 否 | 是 |
 | McAfee v10+ | Windows Server 系列  | 否 | 是 |
-| McAfee v10+ | Linux 服务器系列  | 否 | 是 * *\** _ |
-| Sophos V9+| Linux 服务器系列  | 否 | 是 _*\**_  |
+| McAfee v10+ | Linux 服务器系列  | 否 | 是 **\*** |
+| Sophos V9+| Linux 服务器系列  | 否 | 是  **\***  |
 
- _*\**_ 覆盖率状态和支持数据目前仅在与受保护订阅关联的 Log Analytics 工作区中可用。 这些数据不会在 Azure 安全中心门户中反映。
+ **\*** 覆盖状态和支持数据目前仅在与受保护订阅关联的 Log Analytics 工作区中提供。 这些数据不会在 Azure 安全中心门户中反映。
 
 > [!NOTE]
 > 在 Windows Server 2008 R2 虚拟机上检测 System Center Endpoint Protection (SCEP) 需要在 PowerShell（v3.0 或更高版本）之后安装 SCEP。
@@ -136,7 +136,7 @@ ms.locfileid: "98805625"
 |[Kubernetes 工作负载保护](kubernetes-workload-protections.md)|-|-|
 |||
 
-(1) 需要用于服务器的 Azure Defender*
+(1) 需要用于服务器的 Azure Defender
 
 (2) 部分完成
 

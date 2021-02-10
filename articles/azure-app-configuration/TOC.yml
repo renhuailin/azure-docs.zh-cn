@@ -40,7 +40,7 @@
           href: quickstart-feature-flag-spring-boot.md
 - name: 教程
   items:
-    - name: 启用动态配置
+    - name: 使用轮询模型启用动态配置
       items:
         - name: ASP.NET Core
           href: enable-dynamic-configuration-aspnet-core.md
@@ -52,6 +52,10 @@
           href: enable-dynamic-configuration-azure-functions-csharp.md
         - name: Spring Boot
           href: enable-dynamic-configuration-java-spring-app.md
+    - name: 使用推送模型启用动态配置
+      items:
+        - name: .NET Core
+          href: enable-dynamic-configuration-dotnet-core-push-refresh.md
     - name: 使用功能标志
       items:
         - name: ASP.NET Core

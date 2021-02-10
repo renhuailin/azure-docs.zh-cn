@@ -8,18 +8,22 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 1/25/2021
+ms.date: 02/08/2021
 ms.author: kenwith
-ms.openlocfilehash: 89b40ac68143c2af0d94434ddedec489a2208839
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 03eacf4405217ee883689a088499d86d6f2262b5
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99256401"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99830696"
 ---
 # <a name="tutorial---customize-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>教程 - 为 Azure Active Directory 中的 SaaS 应用程序自定义用户预配属性映射
 
 Microsoft Azure AD 支持将用户预配到第三方 SaaS 应用程序，例如 Salesforce、G Suite 等等。 如果为第三方 SaaS 应用程序启用用户预配，Azure 门户将通过属性映射控制其属性值。
+
+开始之前，确保你熟悉应用管理和单一登录 (SSO) 概念，请查看以下链接：
+- [Azure AD 中的应用管理快速入门系列](../manage-apps/view-applications-portal.md)
+- [什么是单一登录 (SSO)？](../manage-apps/what-is-single-sign-on.md)
 
 Azure AD 用户对象与每个 SaaS 应用的用户对象之间存在一组预先配置的属性和属性映射。 某些应用与用户一起管理其他类型的对象，例如“组”。
 

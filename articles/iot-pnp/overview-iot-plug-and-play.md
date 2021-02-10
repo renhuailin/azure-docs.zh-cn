@@ -9,12 +9,12 @@ ms.service: iot-pnp
 services: iot-pnp
 manager: eliotgra
 ms.custom: references_regions
-ms.openlocfilehash: d6cba4bcb76094ed156ef35b1ea76cea7001c372
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: dcdd19faec5e428ac26917178aa8114245c205b3
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95486290"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594563"
 ---
 # <a name="what-is-iot-plug-and-play"></a>什么是 IoT 即插即用？
 
@@ -45,11 +45,13 @@ IoT 即插即用适用于两种类型的开发人员：
 
 ## <a name="use-iot-plug-and-play-devices"></a>使用 IoT 即插即用设备
 
-解决方案构建者可以开发使用 IoT 即插即用设备的云托管式 IoT 解决方案。 [IoT 中心](../iot-hub/about-iot-hub.md) - 一项充当消息中心的托管式云服务，用于在 IoT 应用程序与设备之间进行双向通信。
+解决方案构建者可通过 [IoT Central](../iot-central/core/overview-iot-central.md) 或 [IoT 中心](../iot-hub/about-iot-hub.md) 开发使用 IoT 即插即用设备的云托管式 IoT 解决方案。
 
-将 IoT 即插即用设备连接到 IoT 中心时，你可以使用 [Azure IoT 资源管理器](./howto-use-iot-explorer.md)工具查看构成模型的接口中定义的遥测、属性和命令。
+通过 IoT Central 中的 Web UI，可监视设备条件、创建规则，还可在其整个生命周期中管理数百万台设备及其数据。 IoT 即插即用设备直接连接到 IoT Central 应用程序，你可在这里使用可自定义的仪表板监视和控制你的设备。 你也可使用 IoT Central Web UI 中的设备模板创建和编辑 DTDL 模型。
 
-如果已将现有传感器附加到 Windows 或 Linux 网关，则可以使用 [IoT 即插即用桥接](./concepts-iot-pnp-bridge.md)连接这些传感器并创建 IoT 即插即用设备，而无需编写设备软件/固件（针对[支持的协议](./concepts-iot-pnp-bridge.md#supported-protocols-and-sensors)）。
+IoT 中心 - 一项充当消息中心的托管式云服务，用于在 IoT 应用程序与设备之间进行安全的双向通信。 将 IoT 即插即用设备连接到 IoT 中心时，可使用 [Azure IoT 资源管理器](./howto-use-iot-explorer.md)工具查看 DTDL 模型中定义的遥测、属性和命令。
+
+如果已将现有传感器附加到 Windows 或 Linux 网关，则可使用 [IoT 即插即用桥接](./concepts-iot-pnp-bridge.md)来连接这些传感器和创建 IoT 即插即用设备，无需编写设备软件/固件（针对[支持的协议](./concepts-iot-pnp-bridge.md#supported-protocols-and-sensors)）。
 
 ## <a name="develop-an-iot-device-application"></a>开发 IoT 设备应用程序
 

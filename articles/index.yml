@@ -13,12 +13,12 @@ metadata:
   ms.date: 01/29/2021
   featureFlags:
   - clicktale
-  ms.openlocfilehash: 57d3607b2076b7a5990361278c8c1372fff1b711
-  ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+  ms.openlocfilehash: 2f792ffb95323444d8666c4c676025995f5db438
+  ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 02/01/2021
-  ms.locfileid: "99225575"
+  ms.lasthandoff: 02/09/2021
+  ms.locfileid: "99979464"
 highlightedContent:
   items:
   - title: Azure 开发人员入门指南
@@ -71,6 +71,12 @@ productDirectory:
     - ai-machine-learning
     - analytics
     url: /azure/databricks/
+  - title: 运行状况机器人
+    summary: 专用于开发虚拟医疗保健助手的托管服务。
+    imageSrc: media/index/health-bot-logo.svg
+    azureCategories:
+    - ai-machine-learning
+    url: /azure/health-bot/
   - title: Azure 机器学习
     summary: 通过试验和模型管理，使用端到端、可缩放的可信平台，让所有人都能够获得 AI 体验
     imageSrc: https://static.docs.com/ui/media/product/azure/machine-learning.svg
@@ -1129,13 +1135,13 @@ productDirectory:
     azureCategories:
     - security
     url: security-center/azure-defender.md
-  - title: Azure Defender for IoT（预览版）
+  - title: 适用于 IoT 的 Azure Defender
     summary: 针对非托管和托管 IoT/OT 设备的连续资产管理和威胁检测
     imageSrc: ./media/index/defender-iot.svg
     azureCategories:
     - security
     - iot
-    url: ./security-center/azure-defender.md
+    url: ./defender-for-iot/index.yml
   - title: Azure DDoS 防护
     summary: 保护应用程序免遭分布式拒绝服务 (DDoS) 攻击
     imageSrc: https://static.docs.com/ui/media/product/azure/ddos-protection.svg

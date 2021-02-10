@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 01/03/2021
-ms.openlocfilehash: 9c79a1ab46513da54d61f1da5c1ba3a6dd480a95
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 23bc476c0d4fd90e19428d52b1468d090ffe2a1b
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98785357"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820783"
 ---
 # <a name="tutorial-migrate-sql-server-to-azure-sql-database-offline-using-dms"></a>教程：使用 DMS 将 SQL Server 脱机迁移到 Azure SQL 数据库
 
@@ -237,6 +237,9 @@ ms.locfileid: "98785357"
 1. 在“选择目标”屏幕中，指定目标 Azure SQL 数据库的连接详细信息，这是使用数据迁移助手向其部署 Adventureworks2016 架构的预配 Azure SQL 数据库 。
 
     ![选择目标](media/tutorial-sql-server-to-azure-sql/dms-select-target2.png)
+    
+    > [!NOTE]
+    > Azure 数据库迁移服务支持面向 Azure SQL 数据库的专用终结点连接，使用自定义 DNS 名称时除外。 
 
 2. 在完成时选择“下一步:映射到目标数据库”屏幕，映射源和目标数据库以进行迁移。
 

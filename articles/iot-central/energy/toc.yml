@@ -1,10 +1,11 @@
-- name: 能源行业用 Azure IoT Central 文档
+- name: 适用于能源行业的 Azure IoT Central 文档
   href: index.yml
 - name: 概述
   items:
     - name: 使用 Azure IoT Central 生成能源解决方案
       href: overview-iot-central-energy.md
 - name: 教程
+  expanded: true
   items:
     - name: 创建智能计量监视应用
       href: tutorial-smart-meter-app.md

@@ -1,48 +1,54 @@
 ---
-title: 如何部署视频分析-对象和运动检测 Azure IoT Central 应用程序模板
-description: 本指南汇总了使用视频分析-对象和运动检测应用程序模板部署 Azure IoT Central 应用程序的步骤。
+title: Tutorial:如何部署 Azure IoT Central 的“视频分析 - 对象和运动检测”应用程序模板
+description: 教程 - 本指南汇总了使用“视频分析 - 对象和运动检测”应用程序模板部署 Azure IoT Central 应用程序的步骤。
 services: iot-central
 ms.service: iot-central
 ms.subservice: iot-central-retail
-ms.topic: how-to
+ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: decfa7020be7778e8ca64a9fb0cb4aac1657da27
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
-ms.translationtype: MT
+ms.openlocfilehash: abeae674cef8f13a092b53bde6040ad853bd0cca
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91873330"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820358"
 ---
-# <a name="how-to-deploy-an-iot-central-application-using-the-video-analytics---object-and-motion-detection-application-template"></a>如何使用视频分析-对象和动作检测应用程序模板部署 IoT Central 应用程序
+# <a name="tutorial-how-to-deploy-an-iot-central-application-using-the-video-analytics---object-and-motion-detection-application-template"></a>Tutorial:如何使用“视频分析 - 对象和运动检测”应用程序模板部署 IoT Central 应用程序
 
-有关关键 *视频分析-对象和动作检测* 应用程序组件的概述，请参阅 [对象和动作检测视频分析应用程序体系结构](architecture-video-analytics.md)。
+若要简要了解关键的“视频分析 - 对象和运动检测”应用程序组件，请查看[“对象和运动检测视频分析”应用程序体系结构](architecture-video-analytics.md)。
 
-以下视频提供了有关如何使用 _视频分析-对象和动作检测应用程序模板_ 部署 IoT Central 解决方案的演练：
+下面的视频演示了如何使用“视频分析 - 对象和运动检测”应用程序模板来部署 IoT Central 解决方案：
 
 > [!VIDEO https://www.youtube.com/embed/Bo3FziU9bSA]
 
 ## <a name="deploy-the-application"></a>部署应用程序
 
-完成以下步骤以使用视频分析应用程序模板部署 IoT Central 应用程序：
+完成以下步骤，使用视频分析应用程序模板部署 IoT Central 应用程序：
 
-1. 完成在 [azure 中创建视频分析应用程序 IoT Central (YOLO v3) ](tutorial-video-analytics-create-app-yolo-v3.md) 或在 [azure 中创建视频分析 IoT Central (OpenVINO &trade;) ](tutorial-video-analytics-create-app-openvino.md) 教程来：
+1. 完成[在 Azure IoT Central 中创建视频分析应用程序 (YOLO v3)](tutorial-video-analytics-create-app-yolo-v3.md) 或[在 Azure IoT Central 中创建视频分析 (OpenVINO&trade;)](tutorial-video-analytics-create-app-openvino.md) 教程来执行以下任务：
     - 创建 Azure 媒体服务帐户。
-    - 从 "视频分析-对象和运动检测应用程序模板" 创建 IoT Central 应用程序。
-    - 在 IoT Central 应用程序中配置网关设备。 通过网关，照相机设备可以连接到应用程序。
+    - 通过“视频分析 - 对象和运动检测”应用程序模板创建 IoT Central 应用程序。
+    - 在 IoT Central 应用程序中配置网关设备。 相机设备可通过网关连接到应用程序。
 
-1. 完成 [创建视频分析 (LINUX VM 的 IoT Edge 实例) ](tutorial-video-analytics-iot-edge-vm.md) 或 [教程：创建视频分析的 IoT Edge 实例 (Intel NUC) ](tutorial-video-analytics-iot-edge-nuc.md) 教程来：
-    - 创建 Azure IoT Edge 运行时安装的 Azure VM。-准备 IoT Edge 安装以托管视频分析模块。
+1. 完成[创建用于视频分析的 IoT Edge 实例 (Linux VM)](tutorial-video-analytics-iot-edge-vm.md) 或[教程：创建用于视频分析的 IoT Edge 实例 (Intel NUC)](tutorial-video-analytics-iot-edge-nuc.md) 来执行以下任务：
+    - 在已安装 Azure IoT Edge 运行时的情况下创建 Azure VM。- 准备 IoT Edge 安装来托管视频分析模块。
     - 将 IoT Edge 设备连接到 IoT Central 应用程序。
 
-1. 完成 [监视并管理视频分析应用程序](tutorial-video-analytics-manage.md) 教程，以：
-    - 在 IoT Central 应用程序中将对象和动作检测相机添加到网关。
-    - 开始处理照相机。
-    - 安装本地 media player 以查看 AMS 中捕获的视频。
-    - 查看显示检测到的对象的捕获视频。
-    - 整理。
+1. 完成[监视和管理视频分析应用程序](tutorial-video-analytics-manage.md)教程来执行以下任务：
+    - 将对象和运动检测相机添加到 IoT Central 应用程序中的网关。
+    - 开始相机处理。
+    - 安装本地媒体播放器来查看 AMS 中捕获的视频。
+    - 查看已捕获且显示所检测对象的视频。
+    - 进行整理。
 
 ## <a name="next-steps"></a>后续步骤
 
-现在，你已概述了部署和使用视频分析应用程序模板的步骤，请参阅 [在 azure 中创建视频分析应用程序 IoT Central (YOLO v3) ](tutorial-video-analytics-create-app-yolo-v3.md) 或 [在 azure 中创建视频分析 IoT Central (OpenVINO &trade;) ](tutorial-video-analytics-create-app-openvino.md) 开始使用。
+现在你概要了解了部署和使用视频分析应用程序模板的步骤，接着若要开始操作，请查看
+
+> [!div class="nextstepaction"]
+> [在 Azure IoT Central 中创建视频分析应用程序 (YOLO v3)](tutorial-video-analytics-create-app-yolo-v3.md) 或
+
+> [!div class="nextstepaction"]
+> [在 Azure IoT Central 中创建视频分析 (OpenVINO&trade;)](tutorial-video-analytics-create-app-openvino.md)。

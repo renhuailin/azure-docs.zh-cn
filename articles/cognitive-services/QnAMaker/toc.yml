@@ -30,6 +30,8 @@
       href: Concepts/azure-resources.md
     - name: 数据源和内容
       href: Concepts/data-sources-and-content.md
+    - name: Azure 基于角色的访问控制 (Azure RBAC)
+      href: Concepts/role-based-access-control.md
     - name: 排名程序进程
       displayName: 'DefaultAnswer, Default answer'
       href: Concepts/query-knowledge-base.md
@@ -46,7 +48,7 @@
     - name: 管理 Azure 资源
       href: How-To/set-up-qnamaker-service-azure.md
       displayName: 'azure, resource, key, upgrade, pricing, tier,'
-    - name: 管理 QnA Maker 应用
+    - name: 管理 QnA Maker 资源访问
       href: How-To/manage-qna-maker-app.md
     - name: 启用主动学习
       href: How-To/use-active-learning.md
@@ -92,8 +94,6 @@
       href: Concepts/confidence-score.md
     - name: 疑难解答
       href: troubleshooting.md
-    - name: 问答集
-      href: Concepts/question-answer-set.md
     - name: 精确应答
       href: reference-precise-answering.md
     - name: 添加受保护的 SharePoint 文件
@@ -105,14 +105,6 @@
       href: reference-app-service.md
     - name: 内容格式指南
       href: reference-document-format-guidelines.md
-    - name: 内容和数据格式
-      items:
-        - name: 内容格式指南
-          href: reference-document-format-guidelines.md
-        - name: URL
-          href: reference-document-type-url.md
-        - name: 导入和导出数据指南
-          href: reference-data-guidelines.md
     - name: 显示格式
       href: reference-markdown-format.md
     - name: 专用链接

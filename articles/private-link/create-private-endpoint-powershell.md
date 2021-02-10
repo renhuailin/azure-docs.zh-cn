@@ -7,14 +7,14 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 11/02/2020
 ms.author: allensu
-ms.openlocfilehash: 7add424c23e430a8ca5059d45acd037fff8836ad
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 68a4703cc2dc1b2898057e138fda7de9eff146e7
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94368655"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807456"
 ---
-# <a name="quickstart-create-a-private-endpoint-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建专用终结点
+# <a name="use-powershell-to-create-a-private-endpoint"></a>使用 PowerShell 创建专用终结点
 
 使用专用终结点安全连接到 Azure Web 应用以开始使用 Azure 专用链接。
 
@@ -29,7 +29,7 @@ ms.locfileid: "94368655"
     * 有关详细信息及示例，请参阅[快速入门：在 Azure 中创建 ASP.NET Core Web 应用](../app-service/quickstart-dotnetcore.md)。 
     * 有关创建 Web 应用和终结点的详细教程，请参阅[教程：使用 Azure 专用终结点连接到 Web 应用](tutorial-private-endpoint-webapp-portal.md)。
 
-如果选择在本地安装并使用 PowerShell，则本文需要 Azure PowerShell 模块 5.4.1 或更高版本。 运行 `Get-Module -ListAvailable Az` 查找已安装的版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](/powershell/azure/install-Az-ps)（安装 Azure PowerShell 模块）。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 以创建与 Azure 的连接。
+如果选择在本地安装并使用 PowerShell，则本文需要 Azure PowerShell 模块 5.4.1 或更高版本。 运行 `Get-Module -ListAvailable Az` 查找已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-Az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 以创建与 Azure 的连接。
 
 ## <a name="create-a-resource-group"></a>创建资源组
 

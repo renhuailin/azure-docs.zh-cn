@@ -1,10 +1,11 @@
-- name: 面向政府的 Azure IoT Central 文档
+- name: 适用于政府的 Azure IoT Central 文档
   href: index.yml
 - name: 概述
   items:
     - name: 使用 Azure IoT Central 生成政府解决方案
       href: overview-iot-central-government.md
 - name: 教程
+  expanded: true
   items:
     - name: 创建连接的废弃物管理应用
       href: tutorial-connected-waste-management.md

@@ -3,16 +3,16 @@ title: 将 GCP 帐户连接到 Azure 安全中心
 description: 通过 Azure 安全中心监视 GCP 资源
 author: memildin
 ms.author: memildin
-ms.date: 01/24/2021
+ms.date: 02/07/2021
 ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: d5f8278765c3f62fded44e4b89fb5fded6137c94
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 8ee7b37861be299dd36a596ae1cd4899b0ebffab
+ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98757604"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99809399"
 ---
 #  <a name="connect-your-gcp-accounts-to-azure-security-center"></a>将 GCP 帐户连接到 Azure 安全中心
 
@@ -20,7 +20,7 @@ ms.locfileid: "98757604"
 
 Azure 安全中心可保护 Azure、Amazon Web Services (AWS) 和 Google Cloud Platform (GCP) 中的工作负载。
 
-将 GCP 帐户加入安全中心，并将 GCP 安全命令和 Azure 安全中心相集成。 这样安全中心便可同时在这两个云环境中提供可见性和保护，从而能够：
+通过将 GCP 帐户加入安全中心，将 GCP 安全命令和 Azure 安全中心进行集成。 这样安全中心便可同时在这两个云环境中提供可见性和保护，从而能够：
 
 - 检测安全配置错误
 - 集中通过一个视图显示安全中心建议和 GCP 安全命令中心的发现结果
@@ -44,7 +44,10 @@ Azure 安全中心可保护 Azure、Amazon Web Services (AWS) 和 Google Cloud P
 
 ## <a name="connect-your-gcp-account"></a>连接到你的 GCP 帐户
 
-按照以下步骤创建 GCP 云连接器。 
+按照以下步骤，创建 GCP 云连接器来连接组织级别或项目级别的 Google Cloud 资源。 
+
+> [!TIP]
+> 有关 Google Cloud 资源层次结构，请在[此处](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy)查看其联机文档。
 
 ### <a name="step-1-set-up-gcp-security-command-center-with-security-health-analytics"></a>步骤 1。 使用“安全运行状况分析”设置 GCP 安全和命令中心
 
@@ -120,6 +123,15 @@ Azure 安全中心可保护 Azure、Amazon Web Services (AWS) 和 Google Cloud P
 
 :::image type="content" source="./media/quickstart-onboard-gcp/gcp-resource-types-in-inventory.png" alt-text="“资产清单”页面的资源类型筛选器，其中显示了 GCP 选项"::: 
 
+
+## <a name="faq-for-connecting-gcp-accounts-to-azure-security-center"></a>有关将 GCP 帐户连接到 Azure 安全中心的常见问题解答
+
+### <a name="can-i-connect-multiple-gcp-accounts-to-security-center"></a>是否可将多个 GCP 帐户连接到安全中心？
+是的。 如上所述，可连接组织级别或项目级别的 Google Cloud 资源。 有关 Google Cloud 资源层次结构，请在[此处](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy)查看其联机文档。
+
+
+### <a name="is-there-an-api-for-connecting-my-gcp-resources-to-security-center"></a>是否有 API 可用于将我的 GCP 资源连接到安全中心？
+是的。 若要使用 REST API 创建、编辑或删除安全中心云连接器，请查看[连接器 API](/rest/api/securitycenter/connectors) 的详细信息。
 
 ## <a name="next-steps"></a>后续步骤
 

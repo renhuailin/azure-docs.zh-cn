@@ -766,6 +766,8 @@
                   href: troubleshoot-not-found.md
                 - name: 故障排除未经授权
                   href: troubleshoot-unauthorized.md
+                - name: 故障排除被禁止
+                  href: troubleshoot-forbidden.md
                 - name: 多区域环境中的可用性问题
                   href: troubleshoot-sdk-availability.md
             - name: .NET

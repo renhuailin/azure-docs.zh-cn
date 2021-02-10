@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 09/02/2020
+ms.date: 02/05/2021
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: b451e2509ee618ac0996fd91191a7d59dcfd9fc9
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: d275f2f4cad83c8f378c471e5a3fa1313d6c0e7d
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99500438"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99624857"
 ---
 ### <a name="is-azure-virtual-wan-in-ga"></a>Azure 虚拟 WAN 是否已正式发布 (GA)？
 
@@ -21,19 +21,25 @@ ms.locfileid: "99500438"
 
 ### <a name="does-the-user-need-to-have-hub-and-spoke-with-sd-wanvpn-devices-to-use-azure-virtual-wan"></a>用户是否需要将中心辐射型拓扑与 SD-WAN/VPN 设备配合使用才能使用 Azure 虚拟 WAN？
 
-虚拟 WAN 提供了许多内置于单个窗格中的功能，例如站点/站点到站点 VPN 连接、用户/P2S 连接、ExpressRoute 连接、虚拟网络连接、VPN ExpressRoute 互连、VNet 到 VNet 可传递连接、集中路由、Azure 防火墙和防火墙管理器安全性、监视、ExpressRoute 加密以及许多其他功能。 无需所有这些用例即可开始使用虚拟 WAN。 仅需一个用例即可开始使用。 虚拟 WAN 体系结构是一种内置了规模和性能的中心辐射型体系结构，其中的分支（VPN/SD-WAN 设备）、用户（Azure VPN 客户端、openVPN 或 IKEv2 客户端）、ExpressRoute 线路和虚拟网络充当虚拟中心的辐条。 所有中心均在标准虚拟 WAN 中以完整网格的形式进行连接，使得用户能够轻松地使用 Microsoft 主干进行任意分支到任意分支的连接。 对于包含 SD-WAN/VPN 设备的中心辐射型体系结构，用户可以在 Azure 虚拟 WAN 门户中手动设置该它，也可以使用虚拟 WAN 合作伙伴 CPE (SD-WAN/VPN) 来设置与 Azure 的连接。 虚拟 WAN 合作伙伴提供自动进行连接的功能：将设备信息导出到 Azure 中，下载 Azure 配置，然后建立与 Azure 虚拟 WAN 中心的连接。 对于点到站点/用户 VPN 连接，我们支持 [Azure VPN 客户端](https://go.microsoft.com/fwlink/?linkid=2117554)、OpenVPN 或 IKEv2 客户端。 
+虚拟 WAN 提供了许多内置于单个窗格中的功能，例如站点/站点到站点 VPN 连接、用户/P2S 连接、ExpressRoute 连接、虚拟网络连接、VPN ExpressRoute 互连、VNet 到 VNet 可传递连接、集中路由、Azure 防火墙和防火墙管理器安全性、监视、ExpressRoute 加密以及许多其他功能。 无需所有这些用例即可开始使用虚拟 WAN。 仅需一个用例即可开始使用。
+
+虚拟 WAN 体系结构是一种内置了规模和性能的中心辐射型体系结构，其中的分支（VPN/SD-WAN 设备）、用户（Azure VPN 客户端、openVPN 或 IKEv2 客户端）、ExpressRoute 线路和虚拟网络充当虚拟中心的辐条。 所有中心均在标准虚拟 WAN 中以完整网格的形式进行连接，使得用户能够轻松地使用 Microsoft 主干进行任意分支到任意分支的连接。 对于包含 SD-WAN/VPN 设备的中心辐射型体系结构，用户可以在 Azure 虚拟 WAN 门户中手动设置该它，也可以使用虚拟 WAN 合作伙伴 CPE (SD-WAN/VPN) 来设置与 Azure 的连接。
+
+虚拟 WAN 合作伙伴提供自动进行连接的功能：将设备信息导出到 Azure 中，下载 Azure 配置，然后建立与 Azure 虚拟 WAN 中心的连接。 对于点到站点/用户 VPN 连接，我们支持 [Azure VPN 客户端](https://go.microsoft.com/fwlink/?linkid=2117554)、OpenVPN 或 IKEv2 客户端。
 
 ### <a name="can-you-disable-fully-meshed-hubs-in-a-virtual-wan"></a>可否在虚拟 WAN 中禁用全网格式中心？
 
-虚拟 WAN 有两种形式：“基本”和“标准”。 在基本虚拟 WAN 中，中心不是网格式的。 在标准虚拟 WAN 中，中心是网格式的，并且可在首次设置虚拟 WAN 后自动连接。 用户无需执行任何特定操作， 也无需禁用或启用获取网格式中心的功能。 虚拟 WAN 提供了许多路由选项，用于引导任何分支（VNet、VPN 或 ExpressRoute）之间的通信。 它兼具全网格式中心的易用性和根据需求路由流量的灵活性。 
+虚拟 WAN 有两种形式：“基本”和“标准”。 在基本虚拟 WAN 中，中心不是网格式的。 在标准虚拟 WAN 中，中心是网格式的，并且可在首次设置虚拟 WAN 后自动连接。 用户无需执行任何特定操作， 也无需禁用或启用获取网格式中心的功能。 虚拟 WAN 提供了许多路由选项，用于引导任何分支（VNet、VPN 或 ExpressRoute）之间的通信。 它兼具全网格式中心的易用性和根据需求路由流量的灵活性。
 
 ### <a name="how-are-availability-zones-and-resiliency-handled-in-virtual-wan"></a>虚拟 WAN 中如何处理可用性区域和复原？
 
-虚拟 WAN 是中心以及其中提供的服务的集合。 用户可以根据需要拥有任意数量的虚拟 WAN。 虚拟 WAN 中心内包含多个服务，例如 VPN、ExpressRoute 等。其中每个服务（Azure 防火墙除外）均部署在“可用性区域”区域中（如果该区域支持可用性区域）。 如果在中心进行初始部署后，某个区域成为可用性区域，则用户可以重新创建网关，这将触发可用性区域部署。 所有网关在中心内都预配为主动-主动，这意味着中心内置了复原能力。 如果用户需要跨区域的复原能力，可以连接到多个中心。 尽管虚拟 WAN 的概念是全球性的，但实际的虚拟 WAN 资源基于资源管理器，并且按区域进行部署。 如果虚拟 WAN 区域本身遇到问题，则该虚拟 WAN 中的所有中心都将继续按原样运行，但在虚拟 WAN 区域可用之前，用户无法创建新的中心。
+虚拟 WAN 是中心以及其中提供的服务的集合。 用户可以根据需要拥有任意数量的虚拟 WAN。 虚拟 WAN 中心内包含多个服务，例如 VPN、ExpressRoute 等。其中每个服务（Azure 防火墙除外）均部署在“可用性区域”区域中（如果该区域支持可用性区域）。 如果在中心进行初始部署后，某个区域成为可用性区域，则用户可以重新创建网关，这将触发可用性区域部署。 所有网关在中心内都预配为主动-主动，这意味着中心内置了复原能力。 如果用户需要跨区域的复原能力，可以连接到多个中心。
+
+尽管虚拟 WAN 的概念是全球性的，但实际的虚拟 WAN 资源基于资源管理器，并且按区域进行部署。 如果虚拟 WAN 区域本身遇到问题，则该虚拟 WAN 中的所有中心都将继续按原样运行，但在虚拟 WAN 区域可用之前，用户无法创建新的中心。
 
 ### <a name="what-client-does-the-azure-virtual-wan-user-vpn-point-to-site-support"></a>Azure 虚拟 WAN 用户 VPN（点到站点）支持什么客户端？
 
-虚拟 WAN 支持 [Azure VPN 客户端](https://go.microsoft.com/fwlink/?linkid=2117554)、OpenVPN 客户端或任何 IKEv2 客户端。 Azure VPN 客户端支持 Azure AD 身份验证。至少需要 Windows 10 客户端 OS 17763.0 或更高版本。  OpenVPN 客户端可以支持基于证书的身份验证。 在网关上选择基于证书的身份验证后，可看到需下载到设备的 .ovpn 文件。 IKEv2 支持证书和 RADIUS 身份验证。 
+虚拟 WAN 支持 [Azure VPN 客户端](https://go.microsoft.com/fwlink/?linkid=2117554)、OpenVPN 客户端或任何 IKEv2 客户端。 Azure VPN 客户端支持 Azure AD 身份验证。至少需要 Windows 10 客户端 OS 17763.0 或更高版本。  OpenVPN 客户端可以支持基于证书的身份验证。 在网关上选择基于证书的身份验证后，可看到需下载到设备的 .ovpn* 文件。 IKEv2 支持证书和 RADIUS 身份验证。 
 
 ### <a name="for-user-vpn-point-to-site--why-is-the-p2s-client-pool-split-into-two-routes"></a>就用户 VPN（点到站点）来说，为什么将 P2S 客户端池拆分为两个路由？
 
@@ -87,7 +93,7 @@ ms.locfileid: "99500438"
 
 ### <a name="for-user-vpn-point-to-site--how-many-clients-are-supported"></a>就用户 VPN（点到站点）来说，支持多少个客户端？
 
-每个用户 VPN P2S 网关都有两个实例，每个实例支持的用户数会随缩放单元的变化而变化，并有一个上限。 缩放单元 1-3 支持 500 个连接，缩放单元 4-6 支持 1000 个连接，缩放单元 7-12 支持 5000 个连接，缩放单元 13-18 支持最多 10,000 个连接。 
+每个用户 VPN P2S 网关都有两个实例，每个实例支持的用户数会随缩放单元的变化而变化，并有一个上限。 缩放单元 1-3 支持 500 个连接，缩放单元 4-6 支持 1000 个连接，缩放单元 7-12 支持 5000 个连接，缩放单元 13-18 支持最多 10,000 个连接。
 
 例如，假设用户选择 1 个缩放单元。 每个缩放单元的存在都意味着已部署主动-主动网关，并且每个实例（在本例中为 2 个）都支持最多 500 个连接。 每个网关可以获得 500 * 2 个连接，但这并不意味着你要为此缩放单元的 1000 个（而不是 500 个）连接做规划。 系统可能需要为实例提供服务，而在服务期间，当你超过建议的连接数时，系统可能会中断这额外的 500 个连接。 此外，如果决定在缩放单元上纵向扩展或缩减，或者在 VPN 网关上更改点到站点配置，请确保计划停机时间。
 
@@ -101,7 +107,7 @@ ms.locfileid: "99500438"
 
 虚拟网络网关 VPN 限制为 30 个隧道。 对于连接，应当为大型 VPN 使用虚拟 WAN。 每个区域（虚拟中心）最多可以连接 1,000 个分支连接，每个中心有 20 Gbps 聚合。 连接是从本地 VPN 设备到虚拟中心的主动-主动隧道。 每个区域中可以有一个中心，这意味着你可以跨中心连接到 1,000 多个分支。
 
-### <a name="what-is-a-virtual-wan-gateway-scale-unit"></a>什么是虚拟 WAN 网关缩放单元
+### <a name="what-is-a-virtual-wan-gateway-scale-unit"></a>什么是虚拟 WAN 网关缩放单元？
 
 根据定义，缩放单元是用于选择虚拟中心内网关的聚合吞吐量的单位。 1 个缩放单元的 VPN 为 500 Mbps。 1 个缩放单元的 ExpressRoute 为 2 Gbps。 示例：10 个缩放单元的 VPN：500 Mbps * 10 = 5 Gbps
 
@@ -139,11 +145,11 @@ ms.locfileid: "99500438"
 
 ### <a name="what-is-a-branch-connection-to-azure-virtual-wan"></a>到 Azure 虚拟 WAN 的分支连接是什么？
 
-从分支或 VPN 设备到 Azure 虚拟 WAN 的连接只是一个 VPN 连接，它实际上连接了虚拟中心内的 VPN 站点和 Azure VPN 网关。
+从分支或 VPN 设备到 Azure 虚拟 WAN 的连接是一个 VPN 连接，它实际上连接了虚拟中心内的 VPN 站点和 Azure VPN 网关。
 
-### <a name="what-happens-if-the-on-premise-vpn-device-only-has-1-tunnel-to-a-azure-virtual-wan-vpn-gateway"></a>如果本地 VPN 设备只有 1 个隧道通往一个 Azure 虚拟 WAN VPN 网关，会发生什么情况？
+### <a name="what-happens-if-the-on-premises-vpn-device-only-has-1-tunnel-to-an-azure-virtual-wan-vpn-gateway"></a>如果本地 VPN 设备只有 1 个隧道通往一个 Azure 虚拟 WAN VPN 网关，会发生什么情况？
 
-Azure 虚拟 WAN 连接包含 2 个隧道。 虚拟 WAN VPN 网关以主动-主动模式部署在虚拟中心，这意味着本地设备中有单独的隧道在单独的实例上终止 - 建议所有用户采用这种形式。 但是，如果用户选择只有 1 个隧道通往一个虚拟 WAN VPN 网关实例，那么当出于任何原因（维护、修补等），网关实例处于脱机状态时，该隧道将移动到辅助活动实例，并且用户可能会遭遇重新连接的情况。 还请记住，BGP 会话不会在实例之间移动。
+Azure 虚拟 WAN 连接包含 2 个隧道。 虚拟 WAN VPN 网关以主动-主动模式部署在虚拟中心，这意味着本地设备中有单独的隧道在单独的实例上终止。 建议所有用户都采用这种形式。 但是，如果用户选择只有 1 个隧道通往一个虚拟 WAN VPN 网关实例，那么当出于任何原因（维护、修补等），网关实例处于脱机状态时，该隧道将移动到辅助活动实例，并且用户可能会遭遇重新连接的情况。 BGP 会话不会在实例之间移动。
 
 ### <a name="can-the-on-premises-vpn-device-connect-to-multiple-hubs"></a>本地 VPN 设备是否可以连接到多个中心？
 
@@ -179,15 +185,17 @@ Azure 虚拟 WAN 连接包含 2 个隧道。 虚拟 WAN VPN 网关以主动-主�
 
 ### <a name="can-spoke-vnets-connected-to-a-virtual-hub-communicate-with-each-other-v2v-transit"></a>连接到虚拟中心的分支 VNet 能否相互通信（V2V 传输）？
 
-是的。 标准虚拟 WAN 支持通过 VNet 所连接到的虚拟 WAN 中心建立 VNet 到 VNet 可传递连接。 在虚拟 WAN 的术语中，这些路径称为“本地虚拟 WAN VNet 传输”（适用于已连接到单个区域中虚拟 WAN 中心的 VNet），或“全局虚拟 WAN VNet 传输”（适用于通过多个虚拟 WAN 中心跨两个或更多个区域连接的 VNet）。 对于某些方案，除了使用本地或全局虚拟 WAN VNet 传输以外，还可以使用[虚拟网络对等互连](../articles/virtual-network/virtual-network-peering-overview.md)将各个分支 VNet 直接对等互连。 在这种情况下，VNet 对等互连优先于通过虚拟 WAN 中心建立的可传递连接。
+是的。 标准虚拟 WAN 支持通过 VNet 所连接到的虚拟 WAN 中心建立 VNet 到 VNet 可传递连接。 在虚拟 WAN 的术语中，对于已连接到单个区域中的虚拟 WAN 中心的 VNet，这些路径被称为“本地虚拟 WAN VNet 传输”，而对于通过多个虚拟 WAN 中心跨两个或更多个区域连接的 VNet，则称为“全局虚拟 WAN VNet 传输”。
+
+在某些方案中，除了本地或全局虚拟 WAN VNet 传输，还可使用[虚拟网络对等互连](../articles/virtual-network/virtual-network-peering-overview.md)将各分支 VNet 直接对等互连。 在这种情况下，VNet 对等互连优先于通过虚拟 WAN 中心建立的可传递连接。
 
 ### <a name="is-branch-to-branch-connectivity-allowed-in-virtual-wan"></a>虚拟 WAN 中是否允许分支到分支连接？
 
-是的，分支到分支连接在虚拟 WAN 中可用。 分支在概念上适用于 VPN 站点、ExpressRoute 线路或点到站点/用户 VPN 用户。 默认情况下，“启用分支到分支”处于启用状态，你可在 WAN 配置设置中找到它。 这使得 VPN 分支/用户能够连接到其他 VPN 分支，并在 VPN 和 ExpressRoute 用户之间启用传输连接。
+是的，分支到分支连接在虚拟 WAN 中可用。 分支在概念上适用于 VPN 站点、ExpressRoute 线路或点到站点/用户 VPN 用户。 “启用分支到分支”设置默认启用，你可在 WAN 配置设置中找到它。 这使得 VPN 分支/用户能够连接到其他 VPN 分支，还可在 VPN 和 ExpressRoute 用户之间启用传输连接。
 
 ### <a name="does-branch-to-branch-traffic-traverse-through-the-azure-virtual-wan"></a>分支到分支流量是否可以通过 Azure 虚拟 WAN？
 
-是的。
+是的。 分支到分支流量会通过 Azure 虚拟 WAN。
 
 ### <a name="does-virtual-wan-require-expressroute-from-each-site"></a>虚拟 WAN 是否要求每个站点中都有 ExpressRoute？
 
@@ -204,11 +212,12 @@ Azure 虚拟 WAN 连接包含 2 个隧道。 虚拟 WAN VPN 网关以主动-主�
 一个中心的总 VPN 吞吐量最多为 20 Gbps，具体取决于为 VPN 网关选择的缩放单元。 吞吐量由所有现有连接共享。 连接中的每个隧道最多可以支持 1 Gbps。
 
 ### <a name="can-i-use-nat-t-on-my-vpn-connections"></a>可在 VPN 连接上使用 NAT-T 吗？
-可以，支持 NAT 遍历 (NAT-T)。 虚拟 WAN VPN 网关将不再指向/来自 IPsec 隧道的内部数据包上执行任何类似 NAT 的功能。 在此配置中，请确保本地设备启动 IPSec 隧道。
+
+可以，支持 NAT 遍历 (NAT-T)。 虚拟 WAN VPN 网关将不在指向/来自 IPsec 隧道的内部数据包上执行任何类似 NAT 的功能。 在此配置中，请确保本地设备启动 IPSec 隧道。
 
 ### <a name="i-dont-see-the-20-gbps-setting-for-the-virtual-hub-in-portal-how-do-i-configure-that"></a>我在门户中看不到虚拟中心的 20 Gbps 设置。 我该如何配置它？
 
-导航到门户上中心内的 VPN 网关，并单击缩放单元，将其更改为适当的设置。
+导航到门户上中心内的 VPN 网关，然后单击缩放单元，将其更改为适当的设置。
 
 ### <a name="does-virtual-wan-allow-the-on-premises-device-to-utilize-multiple-isps-in-parallel-or-is-it-always-a-single-vpn-tunnel"></a>虚拟 WAN 是否允许本地设备并行利用多个 ISP？亦或它始终为单个 VPN 隧道？
 
@@ -226,21 +235,23 @@ Azure 虚拟 WAN 连接包含 2 个隧道。 虚拟 WAN VPN 网关以主动-主�
 
 是的。 支持 IPsec 的 Internet 连接和物理设备，最好是来自我们的集成[虚拟 WAN 合作伙伴](../articles/virtual-wan/virtual-wan-locations-partners.md)。 还可以从你偏爱的设备手动管理 Azure 的配置和连接。
 
-### <a name="how-do-i-enable-default-route-00000-in-a-connection-vpn-expressroute-or-virtual-network"></a>如何在连接（VPN、ExpressRoute 或虚拟网络）中启用默认路由 (0.0.0.0/0)？
+### <a name="how-do-i-enable-default-route-00000-for-a-connection-vpn-expressroute-or-virtual-network"></a>如何对连接（VPN、ExpressRoute 或虚拟网络）启用默认路由 (0.0.0.0/0)？
 
-如果连接上的标志为“已启用”，则虚拟中心可将获知的默认路由传播到虚拟网络/站点到站点 VPN/ExpressRoute 连接。 当用户编辑虚拟网络连接、VPN 连接或 ExpressRoute 连接时，将显示此标志。 默认情况下，当站点或 ExpressRoute 线路连接到中心时，将禁用此标志。 如果添加虚拟网络连接以将 VNet 连接到虚拟中心，则默认情况下启用此功能。 默认路由不是源自虚拟 WAN 中心；只有当虚拟 WAN 中心由于在中心部署防火墙而获知默认路由或另一个连接的站点已启用强制隧道时，此标志才会将默认路由传播到连接。 默认路由不在中心之间（中心间）传播。
+如果连接上的标志为“已启用”，则虚拟中心可将获知的默认路由传播到虚拟网络/站点到站点 VPN/ExpressRoute 连接。 当用户编辑虚拟网络连接、VPN 连接或 ExpressRoute 连接时，将显示此标志。 默认情况下，当站点或 ExpressRoute 线路连接到中心时，将禁用此标志。 如果添加虚拟网络连接以将 VNet 连接到虚拟中心，则默认情况下启用此功能。
 
-### <a name="how-does-the-virtual-hub-in-a-virtual-wan-select-the-best-path-for-a-route-from-multiple-hubs"></a>虚拟 WAN 中的虚拟中心如何从多个中心选择路由的最佳路径
+默认路由不是源自虚拟 WAN 中心；只有当虚拟 WAN 中心由于在中心部署防火墙而获知默认路由或另一个连接的站点已启用强制隧道时，此标志才会将默认路由传播到连接。 默认路由不在中心之间（中心间）传播。
+
+### <a name="how-does-the-virtual-hub-in-a-virtual-wan-select-the-best-path-for-a-route-from-multiple-hubs"></a>虚拟 WAN 中的虚拟中心如何从多个中心选择路由的最佳路径？
 
 如果某个虚拟中心从多个远程中心获知同一路由，则其决定顺序如下所示：
 
 1. 最长前缀匹配。
-2. 本地路由优先于中心间路由（虚拟中心为中心间 AS 分配65520-65520）
-3. 静态路由优先于 BGP 路由：这与虚拟中心路由器做出的决定有关。 但是，如果决策者是其中的站点通过 BGP 播发路由的 VPN 网关，或者是提供静态地址前缀的 VPN 网关，则静态路由可能优先于 BGP 路由。
-4. ExpressRoute (ER) 优先于 VPN：在本地中心，ER 优先于 VPN。 ExpressRoute 线路之间的传输连接只能通过 Global Reach 提供。 因此，当有一个 ExpressRoute 线路连接到一个中心，并且有另一个 ExpressRoute 线路通过 VPN 连接连接到其他中心时，对于中心间路由方案，VPN 可能是首选项。
-5. AS 路径长度。
+1. 本地路由优先于中心间路由（虚拟中心为中心间 AS 分配65520-65520）。
+1. 静态路由优先于 BGP 路由：这与虚拟中心路由器做出的决定有关。 但是，如果决策者是其中的站点通过 BGP 播发路由的 VPN 网关，或者是提供静态地址前缀的 VPN 网关，则静态路由可能优先于 BGP 路由。
+1. ExpressRoute (ER) 优先于 VPN：在本地中心，ER 优先于 VPN。 ExpressRoute 线路之间的传输连接只能通过 Global Reach 提供。 因此，当有一个 ExpressRoute 线路连接到一个中心，并且有另一个 ExpressRoute 线路通过 VPN 连接连接到其他中心时，对于中心间路由方案，VPN 可能是首选项。
+1. AS 路径长度。
 
-### <a name="does-virtual-wan-hub-allow-connectivity-between-expressroute-circuits"></a>虚拟 WAN 中心是否允许 ExpressRoute 线路之间的连接。
+### <a name="does-the-virtual-wan-hub-allow-connectivity-between-expressroute-circuits"></a>虚拟 WAN 中心是否允许 ExpressRoute 线路之间的连接？
 
 ER 到 ER 之间的传输始终通过 Global Reach 进行。 虚拟中心网关部署在 DC 或 Azure 区域中。 当两条 ExpressRoute 线路通过 Global Reach 连接时，不需要流量完全从边缘路由器传递到虚拟中心 DC。
 
@@ -250,28 +261,31 @@ ER 到 ER 之间的传输始终通过 Global Reach 进行。 虚拟中心网关�
 
 ### <a name="does-virtual-wan-prefer-expressroute-over-vpn-for-traffic-egressing-azure"></a>对于传出 Azure 的流量，虚拟 WAN 是否优先选择 ExpressRoute 而非 VPN
 
-是的。
+是的。 对于传出 Azure 的流量，虚拟 WAN 优先选择 ExpressRoute 而非 VPN。
 
 ### <a name="when-a-virtual-wan-hub-has-an-expressroute-circuit-and-a-vpn-site-connected-to-it-what-would-cause-a-vpn-connection-route-to-be-preferred-over-expressroute"></a>当虚拟 WAN 中心具有 ExpressRoute 线路和连接到该线路的 VPN 站点时，什么原因会导致优先选择 VPN 连接而非 ExpressRoute？
 
-当 ExpressRoute 线路连接到虚拟中心时，Microsoft 边缘路由器是在本地与 Azure 之间进行通信的第一个节点。 这些边缘路由器与虚拟 WAN ExpressRoute 网关通信，而这些网关从控制虚拟 WAN 中任何网关之间的所有路由的虚拟中心路由器获知路由。 Microsoft 边缘路由器优先处理虚拟中心 ExpressRoute 路由而非从本地获知的路由。 如果 VPN 连接因任何原因而成为虚拟中心获知路由的主要媒介（例如 ExpressRoute 和 VPN 之间的故障转移方案），那么除非 VPN 站点具有较长的 AS 路径长度，否则虚拟中心将继续与 ExpressRoute 网关分享获知的 VPN 路由，这将导致 Microsoft 边缘路由器优先处理 VPN 路由而非本地路由。
+当 ExpressRoute 线路连接到虚拟中心时，Microsoft 边缘路由器是在本地与 Azure 之间进行通信的第一个节点。 这些边缘路由器与虚拟 WAN ExpressRoute 网关通信，而这些网关从控制虚拟 WAN 中任何网关之间的所有路由的虚拟中心路由器获知路由。 Microsoft 边缘路由器优先处理虚拟中心 ExpressRoute 路由而非从本地获知的路由。
+
+如果 VPN 连接因任何原因而成为虚拟中心获知路由的主要媒介（例如 ExpressRoute 和 VPN 之间的故障转移方案），那么除非 VPN 站点具有较长的 AS 路径长度，否则虚拟中心将继续与 ExpressRoute 网关分享获知的 VPN 路由。 这将导致 Microsoft 边缘路由器优先处理 VPN 路由而非本地路由。
 
 ### <a name="when-two-hubs-hub-1-and-2-are-connected-and-there-is-an-expressroute-circuit-connected-as-a-bow-tie-to-both-the-hubs-what-is-the-path-for-a-vnet-connected-to-hub-1-to-reach-a-vnet-connected-in-hub-2"></a>如果连接了两个中心（中心 1 和 2），并且有一条 ExpressRoute 线路以蝴蝶结的形式连接到这两个中心，那么连接到中心 1 的 VNet 通过什么路径到达中心 2 中连接的 VNet？
 
 对于 VNet 到 VNet 连接，当前行为优先选择 ExpressRoute 线路路径而非中心到中心。 但是，不建议在虚拟 WAN 设置中进行此选择。 虚拟 WAN 团队正在研究修补程序，以支持优先选择中心到中心而非 ExpressRoute 路径。 对于区域间流量流，建议将多个 ExpressRoute 线路（不同提供商）连接到一个中心，并使用虚拟 WAN 提供的中心到中心连接。
 
 ### <a name="can-hubs-be-created-in-different-resource-group-in-virtual-wan"></a>是否可以在虚拟 WAN 的不同资源组中创建中心？
+
 是的。 目前只能通过 PowerShell 使用此选项。 虚拟 WAN 门户要求中心与虚拟 WAN 资源本身位于同一资源组中。
 
 ### <a name="is-there-support-for-ipv6-in-virtual-wan"></a>虚拟 WAN 是否支持 IPv6？
 
-虚拟 WAN 中心及其网关不支持 IPv6。 如果你具有支持 IPv4 和 IPv6 的 VNet，并且要将 VNet 连接到虚拟 WAN，那么当前不支持此方案。 
+虚拟 WAN 中心及其网关不支持 IPv6。 如果你具有支持 IPv4 和 IPv6 的 VNet，并且要将 VNet 连接到虚拟 WAN，那么当前不支持此方案。
 
 对于通过 Azure 防火墙打开 Internet 接入点的点到站点（用户）VPN 方案，你可能需要关闭客户端设备上的 IPv6 连接，以强制流量流向虚拟 WAN 中心。 这是因为新式设备默认使用 IPv6 地址。
 
 ### <a name="what-is-the-recommended-api-version-to-be-used-by-scripts-automating-various-virtual-wan-functionalities"></a>对于自动完成多种虚拟 WAN 功能的脚本，建议其使用哪个 API 版本？
 
-所需的最低版本为 05-01-2020（2020 年 5 月 1 日）。 
+所需的最低版本为 05-01-2020（2020 年 5 月 1 日）。
 
 ### <a name="are-there-any-virtual-wan-limits"></a>是否存在虚拟 WAN 限制？
 
@@ -281,10 +295,10 @@ ER 到 ER 之间的传输始终通过 Global Reach 进行。 虚拟中心网关�
 
 请参阅[基本和标准虚拟 WAN](../articles/virtual-wan/virtual-wan-about.md#basicstandard)。 如需了解定价，请参阅[定价](https://azure.microsoft.com/pricing/details/virtual-wan/)页面。
 
-### <a name="does-virtual-wan-store-customer-data"></a>虚拟 WAN 是否会存储客户数据？ 
+### <a name="does-virtual-wan-store-customer-data"></a>虚拟 WAN 是否会存储客户数据？
 
 不是。 虚拟 WAN 不存储任何客户数据。
 
-### <a name="are-there-any-managed-service-providers-that-can-manage-virtual-wan-for-users-as-a-service"></a>是否有托管服务提供程序可为用户管理虚拟 WAN 并作为一项服务进行管理？ 
+### <a name="are-there-any-managed-service-providers-that-can-manage-virtual-wan-for-users-as-a-service"></a>是否有托管服务提供程序可为用户管理虚拟 WAN 并作为一项服务进行管理？
 
 是。 有关通过 Azure 市场启用的托管服务提供程序 (MSP) 解决方案的列表，请参阅 [Azure 网络 MSP 合作伙伴提供的 Azure 市场产品/服务](../articles/networking/networking-partners-msp.md#msp)。
