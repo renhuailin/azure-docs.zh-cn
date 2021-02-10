@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 12/07/2020
+ms.date: 02/08/2021
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6491de18e65c5071ac0972e7ff49d1253cbd402
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 4f1abbabb9197011b826e58d518ddff4364edab7
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96779528"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100008179"
 ---
 # <a name="complete-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>在 Azure AD 访问评审中完成对组和应用程序的访问评审
 
@@ -46,37 +46,49 @@ ms.locfileid: "96779528"
 
 1. 在列表中，单击“访问评审”。
 
-    若要查看未来的访问评审实例，请导航到 "访问评审" 并选择 "计划的审阅"。
+    若要查看访问评审的未来实例，请导航到访问评审，然后选择计划的评审。
 
-    在“概览”页上可以看到进度。  在评审完成之前，目录中的任何访问权限都不会更改。
+    在 " **概述** " 页上，可以查看当前实例的进度。 在评审完成之前，目录中的任何访问权限都不会更改。
 
-    ![访问评审进度](./media/complete-access-review/overview-progress.png)
-    
-    如果你正在查看查看 (预览版) Microsoft 365 组中的来宾访问权限的访问评审，则 "概述" 边栏选项卡将列出评审中的每个组。  
+     ![查看所有公司组](./media/complete-access-review/all-company-group.png)
 
-   ![查看跨 Microsoft 365 组的来宾访问权限](./media/complete-access-review/review-guest-access-across-365-groups.png)
+    当前下的所有边栏选项卡仅在每个评审实例的持续时间内可查看。 
 
-    单击某个组可以查看该组的审核进度。
+    "结果" 页提供了有关在实例中评审的每个用户的详细信息，包括停止、重置和下载结果的能力。
 
-   ![详细查看跨 Microsoft 365 组的来宾访问权限](./media/complete-access-review/progress-group-review.png)
+    ![查看跨 Microsoft 365 组的来宾访问权限](./media/complete-access-review/all-company-group-results.png)
+
+
+    如果正在查看评审来宾跨 Microsoft 365 组（预览版）访问的访问评审，“概述”边栏选项卡会列出评审中的每个组。 
+   
+    ![跨 Microsoft 365 组的评审来宾访问](./media/complete-access-review/review-guest-access-across-365-groups.png)
+
+    单击某个组可以查看该组的审核进度，以及停止、重置、应用和删除。
+
+   ![跨 Microsoft 365 组的评审来宾访问详细信息](./media/complete-access-review/progress-group-review.png)
 
 1. 如果要在某个访问评审达到计划的结束日期之前停止它，请单击“停止”按钮。
 
-    停止某个评审后，审阅者将再也不能提供回复。 停止后将无法重新开始评审。
+    当你停止审阅时，审阅者将无法再给出响应。 停止后将无法重新开始评审。
 
 1. 如果不再关注此访问评审，可以单击“删除”按钮将其删除。
 
 ## <a name="apply-the-changes"></a>应用更改
 
-如果“将结果自动应用到资源”选项已启用，并且该选项是基于你在“完成后操作”设置中所做的选择，则自动应用会在审阅者的结束日期之后执行，或在你手动停止评审后执行。
+如果基于您在 **完成设置** 中所做的选择启用了 "**自动应用结果**"，则将在评审结束日期之后或在您手动停止审阅时执行自动应用。
 
-如果未为评审启用“将结果自动应用到资源”，请单击“应用”，手动应用所做的更改。 如果在评审中拒绝了某个用户的访问权限，则当你单击“应用”时，Azure AD 会删除该用户的成员资格或应用程序分配。
+如果没有为审核启用 "**自动应用结果**" 功能，请在评审持续时间结束后导航到 "**系列**" 下的 "**查看历史记录**"，或在早期停止评审后，单击要应用的评审的实例。
 
 ![应用访问评审更改](./media/complete-access-review/apply-changes.png)
 
+单击 " **应用** " 以手动应用更改。 如果在评审中拒绝了某个用户的访问权限，则当你单击“应用”时，Azure AD 会删除该用户的成员资格或应用程序分配。
+
+![应用访问评审更改按钮](./media/complete-access-review/apply-changes-button.png)
+
+
 评审状态将从“已完成”变为各种中间状态（例如“正在应用”），并最终变为“结果已应用”状态。 几分钟后，应会看到被拒绝的用户（如果有）已从组成员身份或应用程序分配中删除。
 
-为评审配置自动应用或者选择“应用”不会影响源自本地目录的组，也不会影响动态组。 若要更改源自本地的组，请下载结果，并将这些更改应用到该目录中组的表示形式。
+手动或自动应用结果不会影响源自本地目录或动态组的组。 若要更改源自本地的组，请下载结果，并将这些更改应用到该目录中组的表示形式。
 
 ## <a name="retrieve-the-results"></a>检索结果
 

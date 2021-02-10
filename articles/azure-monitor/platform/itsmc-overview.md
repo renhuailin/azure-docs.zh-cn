@@ -7,12 +7,12 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 12/16/2020
 ms.custom: references_regions
-ms.openlocfilehash: ed13837eabadc38cee50efac3b9340c973c8ea70
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: d22bb05ad6db3630e9b0242e098fd81f65e34b05
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99492427"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100007306"
 ---
 # <a name="it-service-management-connector-overview"></a>IT 服务管理连接器概述
 
@@ -32,7 +32,8 @@ ITSMC 支持使用以下 ITSM 工具建立的连接：
 -   Cherwell
 
    >[!NOTE]
-> 我们建议 Cherwell 和 Provance 客户使用 [Webhook 操作](./action-groups.md#webhook) 来 Cherwell 和 Provance 终结点作为集成的另一个解决方案。
+> 从2020年10月1日到的 Cherwell 和 Provance ITSM 集成，将不再为新客户启用。 不支持新的 ITSM 连接。
+> 将支持现有的 ITSM 连接。
 
 通过 ITSMC，你可以：
 

@@ -3,12 +3,12 @@ title: 概念-私有云更新和升级
 description: 了解 Azure VMware 解决方案中的关键升级过程和功能。
 ms.topic: conceptual
 ms.date: 02/02/2021
-ms.openlocfilehash: 2d5f789304cc264f07aad1865b0bcb2ed4182d4b
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 78d4b566aa9156cdddfdcd69b50ebfd1d10aa784
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99536978"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100006694"
 ---
 # <a name="azure-vmware-solution-private-cloud-updates-and-upgrades"></a>Azure VMware 解决方案私有云更新和升级
 
@@ -53,7 +53,7 @@ Azure VMware 解决方案将以下类型的更新应用于 VMware 组件：
 
 在出现故障时，Azure VMware 解决方案可以从配置备份还原这些设置。 
 
-有关 VMware 软件版本的详细信息，请参阅 [私有云和群集概念文章](concepts-private-clouds-clusters.md) 和 [常见问题解答](faq.md)。
+有关 VMware 软件版本的详细信息，请参阅 [私有云和群集概念文章](concepts-private-clouds-clusters.md) 和 [常见问题解答](faq.yml)。
 
 ## <a name="next-steps"></a>后续步骤
 

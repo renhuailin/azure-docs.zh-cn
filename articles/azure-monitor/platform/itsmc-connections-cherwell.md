@@ -6,19 +6,20 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 12/21/2020
-ms.openlocfilehash: 73fc13cf2a49d7cacd7540d06c6d0afd9cea68e5
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: a24ece3c0b75d0d0d22e13c6e5367c27fbaeab66
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97729610"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100006779"
 ---
 # <a name="connect-cherwell-with-it-service-management-connector"></a>将 Cherwell 连接 IT 服务管理连接器
 
 本文提供了有关如何在 Cherwell 实例与 IT 服务管理连接器 (ITSMC) Log Analytics 中配置连接以集中管理工作项的信息。
 
 > [!NOTE]
-> 我们建议 Cherwell 和 Provance 客户使用 [Webhook 操作](./action-groups.md#webhook) 来 Cherwell 和 Provance 终结点作为集成的另一个解决方案。
+> 从2020年10月 Cherwell ITSM 集成 Azure 警报将不再为新客户启用。 不支持新的 ITSM 连接。
+> 将支持现有的 ITSM 连接。
 
 以下部分提供有关如何将 Cherwell 产品连接到 Azure 中的 ITSMC 的详细信息。
 
@@ -80,6 +81,6 @@ ms.locfileid: "97729610"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [ITSM 连接器概述](itsmc-overview.md)
+* [IT 服务管理连接器概述](itsmc-overview.md)
 * [根据 Azure 警报日志创建 ITSM 工作项](./itsmc-definition.md#create-itsm-work-items-from-azure-alerts)
 * [排查 ITSM 连接器中的问题](./itsmc-resync-servicenow.md)

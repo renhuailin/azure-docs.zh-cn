@@ -5,12 +5,12 @@ services: automation
 ms.subservice: ''
 ms.date: 06/30/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 6668fe3c30bd5187016ac2e0c766e7e78d5b3e8c
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 41388e46f5204acaa53f376bc05cebf975361dad
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98896505"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100008156"
 ---
 # <a name="troubleshoot-feature-deployment-issues"></a>排查功能部署问题
 
@@ -148,7 +148,7 @@ The link cannot be updated or deleted because it is linked to Update Management 
 删除功能资源后，可取消链接工作区。 有必要从工作区和 Azure 自动化帐户中清除来自这些功能的所有现有项目：
 
 * 对于“更新管理”功能，请从自动化帐户中删除“更新部署（计划）”。
-* 对于“在非工作时间启动/停止 VM”功能，请在自动化帐户的“设置” > “锁定”下删除功能组件上的所有锁 。 有关详细信息，请参阅[删除功能](../automation-solution-vm-management.md#remove-the-feature)。
+* 对于“在非工作时间启动/停止 VM”功能，请在自动化帐户的“设置” > “锁定”下删除功能组件上的所有锁 。 有关详细信息，请参阅[删除功能](../automation-solution-vm-management-remove.md)。
 
 ## <a name="log-analytics-for-windows-extension-failures"></a><a name="mma-extension-failures"></a>Windows 扩展的 Log Analytics 故障
 

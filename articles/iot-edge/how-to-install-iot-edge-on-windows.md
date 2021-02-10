@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/20/2021
 ms.author: v-tcassi
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: be807c7654123962f93820d9a3d54f3c7c070d97
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 049c24beb6bb1573458779bf0796357fa634898f
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99526952"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100008564"
 ---
 # <a name="install-and-provision-azure-iot-edge-for-linux-on-a-windows-device-preview"></a>在 Windows 设备上安装和设置适用于 Linux 的 Azure IoT Edge (预览版) 
 
@@ -27,8 +27,10 @@ Windows 上适用于 Linux 的 Azure IoT Edge 允许使用 Linux 虚拟机在 Wi
 
 >[!NOTE]
 >IoT Edge for Linux on Windows 现提供[公共预览版](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+>
+>虽然在 windows 环境中使用 Azure IoT Edge 时建议使用 windows 中的 Linux IoT Edge，但仍可使用 Windows 容器。 如果希望使用 Windows 容器，请参阅 [安装和管理 windows Azure IoT Edge](how-to-install-iot-edge-windows-on-windows.md)的操作方法指南。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 含有效订阅的 Azure 帐户。 如果还没有 [Azure 订阅](../guides/developer/azure-developer-guide.md#understanding-accounts-subscriptions-and-billing)，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/)。
 

@@ -3,12 +3,12 @@ title: 关于存储库和映像
 description: Azure 容器注册表、存储库和容器映像的重要概念简介。
 ms.topic: article
 ms.date: 06/16/2020
-ms.openlocfilehash: cd2f93c119817c722401f7290064894f3d39dac9
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 0cc7df22236c60bd473385d92c8db563be68f688
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94335888"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100008513"
 ---
 # <a name="about-registries-repositories-and-images"></a>关于注册表、存储库和映像
 
@@ -81,7 +81,30 @@ Azure 容器注册表中的项目地址包括以下元素。
 
 ### <a name="manifest"></a>清单
 
-推送到容器注册表的每个容器映像或项目都与一个清单相关联。 推送映像时由注册表生成的清单唯一标识映像并指定其层。 可以使用 Azure CLI 命令 [az acr repository show-manifests][az-acr-repository-show-manifests] 列出存储库的清单：
+推送到容器注册表的每个容器映像或项目都与一个清单相关联。 推送映像时由注册表生成的清单唯一标识映像并指定其层。 
+
+Linux 映像的基本清单 `hello-world` 类似于以下内容：
+
+  ```json
+  {
+    "schemaVersion": 2,
+    "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+    "config": {
+        "mediaType": "application/vnd.docker.container.image.v1+json",
+        "size": 1510,
+        "digest": "sha256:fbf289e99eb9bca977dae136fbe2a82b6b7d4c372474c9235adc1741675f587e"
+      },
+    "layers": [
+        {
+          "mediaType": "application/vnd.docker.image.rootfs.diff.tar.gzip",
+          "size": 977,
+          "digest": "sha256:2c930d010525941c1d56ec53b97bd057a67ae1865eebf042686d2a2d18271ced"
+        }
+      ]
+  }
+  ```
+
+可以使用 Azure CLI 命令 [az acr repository show-manifests][az-acr-repository-show-manifests] 列出存储库的清单：
 
 ```azurecli
 az acr repository show-manifests --name <acrName> --repository <repositoryName>

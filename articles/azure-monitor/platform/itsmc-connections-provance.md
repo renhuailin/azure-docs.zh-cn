@@ -6,19 +6,20 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 12/21/2020
-ms.openlocfilehash: 19d2ef1d4d711738d60938aac502dfd490e021a1
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 0cdbcf0a895a2fc9b81df464f364e04aa79abf99
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97729607"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100006762"
 ---
 # <a name="connect-provance-with-it-service-management-connector"></a>将 Provance 连接 IT 服务管理连接器
 
 本文提供了有关如何在 Provance 实例与 IT 服务管理连接器 (ITSMC) Log Analytics 中配置连接以集中管理工作项的信息。
 
 > [!NOTE]
-> 我们建议 Cherwell 和 Provance 客户使用 [Webhook 操作](./action-groups.md#webhook) 来 Cherwell 和 Provance 终结点作为集成的另一个解决方案。
+> 从2020年10月 Provance ITSM 集成 Azure 警报将不再为新客户启用。 不支持新的 ITSM 连接。
+> 将支持现有的 ITSM 连接。
 
 以下部分提供有关如何将 Provance 产品连接到 Azure 中的 ITSMC 的详细信息。
 
@@ -69,6 +70,6 @@ ms.locfileid: "97729607"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [ITSM 连接器概述](itsmc-overview.md)
+* [IT 服务管理连接器概述](itsmc-overview.md)
 * [根据 Azure 警报日志创建 ITSM 工作项](./itsmc-definition.md#create-itsm-work-items-from-azure-alerts)
 * [排查 ITSM 连接器中的问题](./itsmc-resync-servicenow.md)

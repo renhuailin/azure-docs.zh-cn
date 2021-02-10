@@ -7,16 +7,23 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/01/2021
 keywords: java、jakartaee、javaee、microprofile、开放式、websphere、、aks、kubernetes
-ms.openlocfilehash: 2e025c706512b6ab3945118da996b11a5a8a9585
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: d0e6f2fea6894378da736ba83a90ee28402ec7f9
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99526884"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100007120"
 ---
 # <a name="deploy-a-java-application-with-open-liberty-or-websphere-liberty-on-an-azure-kubernetes-service-aks-cluster"></a>在 Azure Kubernetes Service (AKS) 群集上，使用开放式自由或 WebSphere 自由部署 Java 应用程序
 
-本指南演示如何在开放的自由或 WebSphere 自由运行时运行 Java、Java EE、 [雅加达 EE](https://jakarta.ee/)或 [MicroProfile](https://microprofile.io/) 应用程序，然后使用开放式自由运算符将容器化应用程序部署到 AKS 群集。 开放式自由运算符简化了在开放自由 Kubernetes 群集上运行的应用程序的部署和管理。 你还可以执行更高级的操作，如使用运算符收集跟踪和转储。 本文介绍如何准备可自由应用的应用程序，构建应用程序 Docker 映像并在 AKS 群集上运行容器化应用程序。  有关开放自由的详细信息，请参阅 [打开自由项目页](https://openliberty.io/)。 有关 IBM WebSphere 的更多详细信息，请参阅 [WebSphere 自由产品页](https://www.ibm.com/cloud/websphere-liberty)。
+本文演示了以下内容的操作方法：  
+* 在开放的自由或 WebSphere 自由运行时运行 Java、Java EE、雅加达 EE 或 MicroProfile 应用程序。
+* 使用开放式自由容器映像构建应用程序 Docker 映像。
+* 使用开放式自由运算符将容器化应用程序部署到 AKS 群集。   
+
+开放式自由运算符简化了在 Kubernetes 群集上运行的应用程序的部署和管理。 利用开放式自由运算符，还可以执行更高级的操作，例如收集跟踪和转储。 
+
+有关开放自由的详细信息，请参阅 [打开自由项目页](https://openliberty.io/)。 有关 IBM WebSphere 的更多详细信息，请参阅 [WebSphere 自由产品页](https://www.ibm.com/cloud/websphere-liberty)。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -24,17 +31,20 @@ ms.locfileid: "99526884"
 
 * 本文需要 Azure CLI 的最新版本。 如果使用 Azure Cloud Shell，则最新版本已安装。
 * 如果本地运行本指南中的命令 (而不是 Azure Cloud Shell) ：
-  * 使用安装了类似于 Unix 的操作系统 (例如，Ubuntu、macOS) 准备本地计算机。
+  * 使用 (安装了类似于 Unix 的操作系统（例如，Ubuntu、macOS、适用于 Linux 的 Windows 子系统) ）准备本地计算机。
   * 安装 Java SE 实现 (例如， [AdoptOpenJDK OpenJDK 8 LTS/OpenJ9](https://adoptopenjdk.net/?variant=openjdk8&jvmVariant=openj9)) 。
   * 安装 [Maven](https://maven.apache.org/download.cgi) 3.5.0 或更高版本。
   * 安装适用于你的操作系统的 [Docker](https://docs.docker.com/get-docker/) 。
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-Azure 资源组是一个逻辑组，用于部署和管理 Azure 资源。 在 *eastus* 位置使用 [az group create](/cli/azure/group#az_group_create)命令创建资源组、以 *java 为* 中心的项目。 稍后将用于创建 Azure 容器注册表 (ACR) 实例和 AKS 群集。 
+Azure 资源组是一个逻辑组，用于部署和管理 Azure 资源。  
+
+在 *eastus* 位置使用 [az group create](/cli/azure/group#az_group_create)命令创建名为 "以 *java* 为中心" 的资源组。 稍后将使用此资源组创建 Azure 容器注册表 (ACR) 实例和 AKS 群集。 
 
 ```azurecli-interactive
-az group create --name java-liberty-project --location eastus
+RESOURCE_GROUP_NAME=java-liberty-project
+az group create --name $RESOURCE_GROUP_NAME --location eastus
 ```
 
 ## <a name="create-an-acr-instance"></a>创建 ACR 实例
@@ -42,7 +52,8 @@ az group create --name java-liberty-project --location eastus
 使用 [az acr create](/cli/azure/acr#az_acr_create) 命令创建 acr 实例。 下面的示例创建一个名为 *youruniqueacrname* 的 ACR 实例。 请确保 *youruniqueacrname* 在 Azure 中是唯一的。
 
 ```azurecli-interactive
-az acr create --resource-group java-liberty-project --name youruniqueacrname --sku Basic --admin-enabled
+REGISTRY_NAME=youruniqueacrname
+az acr create --resource-group $RESOURCE_GROUP_NAME --name $REGISTRY_NAME --sku Basic --admin-enabled
 ```
 
 短时间之后，应会看到包含以下内容的 JSON 输出：
@@ -55,10 +66,9 @@ az acr create --resource-group java-liberty-project --name youruniqueacrname --s
 
 ### <a name="connect-to-the-acr-instance"></a>连接到 ACR 实例
 
-若要将图像推送到 ACR 实例，需要先登录到该实例。 运行以下命令以验证连接：
+你需要先登录到 ACR 实例，然后才能向其中推送映像。 运行以下命令以验证连接：
 
 ```azurecli-interactive
-REGISTRY_NAME=youruniqueacrname
 LOGIN_SERVER=$(az acr show -n $REGISTRY_NAME --query 'loginServer' -o tsv)
 USER_NAME=$(az acr credential show -n $REGISTRY_NAME --query 'username' -o tsv)
 PASSWORD=$(az acr credential show -n $REGISTRY_NAME --query 'passwords[0].value' -o tsv)
@@ -73,7 +83,8 @@ docker login $LOGIN_SERVER -u $USER_NAME -p $PASSWORD
 使用 [az aks create](/cli/azure/aks#az_aks_create) 命令创建 AKS 群集。 以下示例创建一个具有一个节点的名为 myAKSCluster 的群集。 此操作将需要几分钟才能完成。
 
 ```azurecli-interactive
-az aks create --resource-group java-liberty-project --name myAKSCluster --node-count 1 --generate-ssh-keys --enable-managed-identity
+CLUSTER_NAME=myAKSCluster
+az aks create --resource-group $RESOURCE_GROUP_NAME --name $CLUSTER_NAME --node-count 1 --generate-ssh-keys --enable-managed-identity
 ```
 
 几分钟后，该命令完成并返回有关群集的 JSON 格式信息，其中包括：
@@ -96,7 +107,7 @@ az aks install-cli
 若要将 `kubectl` 配置为连接到 Kubernetes 群集，请使用 [az aks get-credentials](/cli/azure/aks#az_aks_get_credentials) 命令。 此命令将下载凭据，并将 Kubernetes CLI 配置为使用这些凭据。
 
 ```azurecli-interactive
-az aks get-credentials --resource-group java-liberty-project --name myAKSCluster --overwrite-existing
+az aks get-credentials --resource-group $RESOURCE_GROUP_NAME --name $CLUSTER_NAME --overwrite-existing
 ```
 
 > [!NOTE]
@@ -144,6 +155,7 @@ curl -L https://raw.githubusercontent.com/OpenLiberty/open-liberty-operator/mast
 1. 克隆本指南的示例代码。 该示例位于 [GitHub](https://github.com/Azure-Samples/open-liberty-on-aks)上。
 1. 将目录更改为 `javaee-app-simple-cluster` 你的本地副本。
 1. 运行 `mvn clean package` 将应用程序打包。
+1. 运行 `mvn liberty:dev` 以测试应用程序。 `The defaultServer server is ready to run a smarter planet.`如果成功，应在命令输出中看到。 使用 `CTRL-C` 停止应用程序。
 1. 运行以下命令之一来生成应用程序映像并将其推送到 ACR 实例。
    * 如果希望使用开放式自由作为轻量开源 Java™运行时，请使用开放式自由基映像生成：
 
@@ -206,12 +218,12 @@ curl -L https://raw.githubusercontent.com/OpenLiberty/open-liberty-operator/mast
 kubectl get service javaee-app-simple-cluster --watch
 
 NAME                        TYPE           CLUSTER-IP     EXTERNAL-IP     PORT(S)          AGE
-javaee-app-simple-cluster   LoadBalancer   10.0.251.169   52.152.189.57   9080:31732/TCP   68s
+javaee-app-simple-cluster   LoadBalancer   10.0.251.169   52.152.189.57   80:31732/TCP     68s
 ```
 
-等待 *外部 ip* 地址从 " *挂起* " 更改为实际的公共 IP 地址，使用 `CTRL-C` 停止 `kubectl` 监视进程。
+*外部 ip* 地址从 "*挂起*" 更改为实际的公共 IP 地址后，使用 `CTRL-C` 停止 `kubectl` 监视进程。
 
-在上面的示例中打开 web 浏览器，以访问服务 (的外部 IP 地址和端口 `52.152.189.57:9080`) 查看应用程序主页。 你应看到应用程序副本的 pod 名称显示在页面的左上角。 等待几分钟并刷新页面，你可能会看到因 AKS 群集提供的负载平衡而显示的不同 pod 名称。
+在上面的示例中打开 web 浏览器，以访问服务的外部 IP 地址 (`52.152.189.57`) 查看应用程序主页。 你应看到应用程序副本的 pod 名称显示在页面的左上角。 等待几分钟并刷新页面，以查看由于 AKS 群集提供的负载平衡而显示的不同 pod 名称。
 
 :::image type="content" source="./media/howto-deploy-java-liberty-app/deploy-succeeded.png" alt-text="已成功在 AKS 上部署 Java 自由应用程序":::
 
@@ -220,10 +232,10 @@ javaee-app-simple-cluster   LoadBalancer   10.0.251.169   52.152.189.57   9080:3
 
 ## <a name="clean-up-the-resources"></a>清理资源
 
-若要避免 Azure 费用，应清除不需要的资源。  如果不再需要群集，请使用 [az group delete](/cli/azure/group#az_group_delete) 命令删除资源组、容器服务、容器注册表和所有相关资源。
+若要避免 Azure 费用，应清除不必要的资源。  如果不再需要群集，请使用 [az group delete](/cli/azure/group#az_group_delete) 命令删除资源组、容器服务、容器注册表和所有相关资源。
 
 ```azurecli-interactive
-az group delete --name java-liberty-project --yes --no-wait
+az group delete --name $RESOURCE_GROUP_NAME --yes --no-wait
 ```
 
 ## <a name="next-steps"></a>后续步骤

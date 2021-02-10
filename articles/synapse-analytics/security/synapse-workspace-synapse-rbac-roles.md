@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 12/1/2020
 ms.author: billgib
 ms.reviewer: jrasnick
-ms.openlocfilehash: 1ffbb5579ea19d7d608dd9c9d600342cd89d371c
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: 958a954d37ba1f808be4bf1806f1efd32f498a48
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99225068"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100007187"
 ---
 # <a name="synapse-rbac-roles"></a>Synapse RBAC 角色
 
@@ -42,7 +42,7 @@ ms.locfileid: "99225068"
 |Synapse 管理员  |完全 Synapse 访问无服务器 SQL 池、Apache Spark 池和集成运行时。  包括对所有已发布代码项目的创建、读取、更新和删除访问权限。  包括对工作区系统标识凭据的计算运算符、链接数据管理器和凭据用户权限。  包括分配 Synapse RBAC 角色。 除了 Synapse 管理员，Azure 所有者还可以分配 Synapse RBAC 角色。 需要 Azure 权限才能创建、删除和管理计算资源。 </br></br>_可以读取和写入项目， </br> 对 Spark 活动执行所有操作。 </br> 可以查看 Spark 池日志 </br> 可以查看已保存的笔记本，管道输出 </br> 可以使用链接服务存储的机密，还可以使用 </br> sql、、和权限连接到 sql 无服务器终结点，并且 `db_datareader` `db_datawriter` `connect` `grant` </br> 可以在当前范围内分配和撤消 Synapse RBAC 角色_|工作区 </br> Spark 池<br/>集成运行时 </br>链接服务</br>凭据 |
 |Synapse Apache Spark 管理员</br>|Apache Spark 池的完全 Synapse 访问权限。  创建、读取、更新和删除对发布的 Spark 作业定义、笔记本及其输出以及库、链接服务和凭据的访问权限。  包括对所有其他已发布代码项目的读取访问权限。 不包括使用凭据和运行管道的权限。 不包括授予访问权限。 </br></br>_可对 spark 项目执行所有操作 </br> 可以对 spark 活动执行所有操作_|工作区</br>Spark 池|
 |Synapse SQL 管理员|对无服务器 SQL 池的完全 Synapse 访问。  创建、读取、更新和删除已发布的 SQL 脚本、凭据和链接服务的访问权限。  包括对所有其他已发布代码项目的读取访问权限。  不包括使用凭据和运行管道的权限。 不包括授予访问权限。 </br></br>*可以对 sql 脚本执行的所有操作都 <br/> 可以通过 sql `db_datareader` 、 `db_datawriter` 、 `connect` 和 `grant` 权限连接到 sql 无服务器终结点*|工作区|
-|Synapse 参与者|完全 Synapse 访问无服务器 SQL 池、Apache Spark 池、集成运行时。  包括对所有已发布代码项目及其输出的创建、读取、更新和删除访问权限，包括凭据和链接服务。  包含计算操作员权限。 不包括使用凭据和运行管道的权限。 不包括授予访问权限。 </br></br>_可以读取和写入项目 </br> 可查看已保存的笔记本和管道输出 </br> 可以对 spark 活动执行所有操作 </br> 可以查看 spark 池日志_|工作区 </br> Spark 池<br/> 集成运行时|
+|Synapse 参与者|完全 Synapse 访问 Apache Spark 池和集成运行时。 包括对所有已发布代码项目及其输出的创建、读取、更新和删除访问权限，包括凭据和链接服务。  包含计算操作员权限。 不包括使用凭据和运行管道的权限。 不包括授予访问权限。 </br></br>_可以读取和写入项目 </br> 可查看已保存的笔记本和管道输出 </br> 可以对 spark 活动执行所有操作 </br> 可以查看 spark 池日志_|工作区 </br> Spark 池<br/> 集成运行时|
 |Synapse 项目发布服务器|创建、读取、更新和删除已发布代码项目及其输出的访问权限。 不包括运行代码或管道的权限，或授予访问权限。 </br></br>_可以读取已发布的项目并发布项目 </br> 可查看已保存的笔记本、Spark 作业和管道输出_|工作区
 |Synapse 项目用户|对已发布代码项目及其输出的读取访问权限。 可以创建新项目，但不能发布更改，也不能运行代码而无需其他权限。|工作区
 |Synapse 计算运算符 |提交 Spark 作业和笔记本，并查看日志。  包括取消任何用户提交的 Spark 作业。 需要对工作区系统标识使用额外的凭据权限来运行管道、查看管道运行和输出。 </br></br>_可以提交和取消作业，包括其他人提交的作业 </br> 可以查看 Spark 池日志_|工作区</br>Spark 池</br>集成运行时|

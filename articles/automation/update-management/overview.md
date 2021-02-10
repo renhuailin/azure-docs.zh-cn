@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 01/22/2021
 ms.topic: conceptual
-ms.openlocfilehash: 718e812a8193797ad350fa61444bb05fe5a4b724
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 6e312d354a25113a764bca5e9492909d22af9873
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98896895"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100007731"
 ---
 # <a name="update-management-overview"></a>更新管理概述
 
@@ -67,14 +67,14 @@ ms.locfileid: "98896895"
 
 ### <a name="supported-operating-systems"></a>支持的操作系统
 
-下表列出了适用于更新评估和修补的支持的操作系统。 修补需要系统混合 Runbook 辅助角色，该辅助角色会在你启用虚拟机或服务器以便通过更新管理进行管理时自动安装。 有关混合 Runbook 辅助角色系统需求的信息，请参阅[部署 Windows 混合 Runbook 辅助角色](../automation-windows-hrw-install.md)和[部署 Linux 混合 Runbook 辅助角色](../automation-linux-hrw-install.md)。
+下表列出了适用于更新评估和修补的支持的操作系统。 修补需要一个系统混合 Runbook 辅助角色（在你通过更新管理启用虚拟机或服务器进行管理时自动安装）。 有关混合 Runbook 辅助角色系统需求的信息，请参阅[部署 Windows 混合 Runbook 辅助角色](../automation-windows-hrw-install.md)和[部署 Linux 混合 Runbook 辅助角色](../automation-linux-hrw-install.md)。
 
 > [!NOTE]
 > 仅自动化帐户和 Log Analytics 工作区[映射表](../how-to/region-mappings.md#supported-mappings)中列出的特定区域支持 Linux 计算机的更新评估。
 
-|操作系统  |说明  |
+|操作系统  |注释  |
 |---------|---------|
-|Windows Server 2019 (Datacenter/Datacenter Core/Standard)<br>Windows Server 2016 (Datacenter/Datacenter Core/Standard)<br>Windows Server 2012 R2(Datacenter/Standard)<br>Windows Server 2012 |
+|Windows Server 2019 (Datacenter/Standard，包括 Server Core) <br><br>Windows Server 2016 (不包括 Server Core) 的数据中心/标准<br><br>Windows Server 2012 R2(Datacenter/Standard)<br><br>Windows Server 2012 | |
 |Windows Server 2008 R2（RTM 和 SP1 Standard）| 更新管理仅支持对此操作系统进行评估和修补。 Windows Server 2008 R2 不支持[混合 Runbook 辅助角色](../automation-windows-hrw-install.md)。 |
 |CentOS 6 和 7 (x64)      | Linux 代理需要具有访问更新存储库的权限。 基于分类的修补需要借助 `yum` 来返回 CentOS 的 RTM 版本中没有的安全数据。 有关 CentOS 上基于分类的修补的详细信息，请参阅 [Linux 上的更新分类](view-update-assessments.md#linux)。          |
 |Red Hat Enterprise 6 和 7 (x64)     | Linux 代理需要具有访问更新存储库的权限。        |
@@ -88,7 +88,7 @@ ms.locfileid: "98896895"
 
 下表列出了更新管理不支持的操作系统：
 
-|操作系统  |说明  |
+|操作系统  |注释  |
 |---------|---------|
 |Windows 客户端     | 不支持客户端操作系统（例如 Windows 7 和 Windows 10）。<br> 对于 Azure Windows 虚拟桌面 (WVD)，管理更新<br> 若要管理更新，请 [Configuration Manager](../../virtual-desktop/configure-automatic-updates.md) 适用于 Windows 10 客户端计算机的修补程序管理。 |
 |Windows Server 2016 Nano Server     | 不支持。       |
@@ -96,14 +96,14 @@ ms.locfileid: "98896895"
 
 ### <a name="system-requirements"></a>系统要求
 
-以下信息描述了特定于操作系统的要求。 有关其他指南，请参阅[网络规划](#ports)。 若要了解 TLS 1.2 的要求，请参阅 [Azure 自动化的 TLS 1.2 强制执行](../automation-managing-data.md#tls-12-enforcement-for-azure-automation)。
+以下信息介绍操作系统特定的要求。 有关其他指南，请参阅[网络规划](#ports)。 若要了解 TLS 1.2 的要求，请参阅[强制 Azure 自动化执行 TLS 1.2](../automation-managing-data.md#tls-12-enforcement-for-azure-automation)。
 
 #### <a name="windows"></a>Windows
 
 软件要求：
 
-- 需要 .NET Framework 4.6 或更高版本。  ([下载 .NET Framework](/dotnet/framework/install/guide-for-developers)。
--  ([下载 Windows Management Framework 5.1](https://www.microsoft.com/download/details.aspx?id=54616)) ，需要 Windows PowerShell 5。1
+- 需要 .NET Framework 4.6 或更高版本。 （[下载 .NET Framework](/dotnet/framework/install/guide-for-developers)。
+- 需要 Windows PowerShell 5.1（[下载 Windows Management Framework 5.1](https://www.microsoft.com/download/details.aspx?id=54616)。）
 
 Windows 代理必须配置为与 WSUS 服务器通信或需要有权访问 Microsoft 更新。 对于混合计算机，我们建议通过首先将计算机连接到 [启用了 Azure arc 的服务器](../../azure-arc/servers/overview.md)来安装适用于 windows 的 Log Analytics 代理，然后使用 Azure 策略将 [部署 Log Analytics 代理分配到 Windows Azure arc 计算机](../../governance/policy/samples/built-in-policies.md#monitoring) 内置策略。 或者，如果你计划使用用于 VM 的 Azure Monitor 来监视计算机，请改用 [启用用于 VM 的 Azure Monitor](../../governance/policy/samples/built-in-initiatives.md#monitoring) 计划。
 
@@ -118,7 +118,7 @@ Windows 代理必须配置为与 WSUS 服务器通信或需要有权访问 Micro
 
 软件要求：
 
-- 计算机需要访问 "私有" 或 "公共" 的更新存储库。
+- 计算机需要有权访问专用或公共的更新存储库。
 - 需要 TLS 1.1 或 TLS 1.2 才能与更新管理进行交互。
 - 已安装 Python 2.x。
 
@@ -139,11 +139,11 @@ Windows 代理必须配置为与 WSUS 服务器通信或需要有权访问 Micro
 
 ### <a name="hybrid-runbook-worker-groups"></a>混合 Runbook 辅助角色组
 
-启用更新管理后，直接连接到 Log Analytics 工作区的任何 Windows 计算机会自动配置为系统混合 Runbook 辅助角色，以支持支持更新管理的 runbook。
+启用更新管理以后，任何直接连接到 Log Analytics 工作区的 Windows 计算机都会自动配置为系统混合 Runbook 辅助角色，为支持更新管理的 runbook 提供支持。
 
 更新管理托管的每个 Windows 计算机都会作为自动化帐户的一个“系统混合辅助角色组”列在“混合辅助角色组”窗格中。 这些组使用 `Hostname FQDN_GUID` 命名约定。 不能在帐户中通过 Runbook 将这些组作为目标进行操作。 如果尝试，则尝试会失败。 这些组仅用于为更新管理提供支持。 若要详细了解如何查看配置为混合 Runbook 辅助角色的 Windows 计算机的列表，请参阅[查看混合 Runbook 辅助角色](../automation-hybrid-runbook-worker.md#view-system-hybrid-runbook-workers)。
 
-如果你将同一帐户用于更新管理和混合 Runbook 辅助角色组成员身份，则可以将 Windows 计算机添加到自动化帐户中的用户混合 Runbook 辅助角色组，以支持自动化 runbook。 此功能是在 7.2.12024.0 版本的混合 Runbook 辅助角色中添加的。
+如果对更新管理和混合 Runbook 辅助角色组成员身份使用同一帐户，则可以将 Windows 计算机添加到自动化帐户中的用户混合 Runbook 辅助角色组，为自动化 runbook 提供支持。 此功能是在 7.2.12024.0 版本的混合 Runbook 辅助角色中添加的。
 
 ### <a name="management-packs"></a>管理包
 

@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: conceptual
 ms.date: 02/04/2021
 ms.author: raynew
-ms.openlocfilehash: c586832386f3bf6419d8af94ad23662c6801b1ae
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: a75cd3c5dbf205f49aa606bfe96623a61bce39db
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820868"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100007050"
 ---
 # <a name="common-questions"></a>常见问题
 
@@ -42,6 +42,10 @@ ms.locfileid: "99820868"
 
 不能选择磁盘作为跨区域移动的资源。 但是，磁盘将作为 VM 移动的一部分进行移动。
 
+### <a name="what-does-it-mean-to-move-a-resource-group"></a>移动资源组的意思是什么？
+
+选择要移动的资源时，会自动添加相应的资源组进行移动。 这是必需的，因为目标资源需要放在与目标中的资源组相同的资源组下。 添加后，可以选择自定义并提供因此资源组进行移动。 请注意，移动资源组 **并不** 意味着源资源组中的所有资源都将被移动。
+
 ### <a name="can-i-move-resources-across-subscriptions-when-i-move-them-across-regions"></a>当我跨区域移动资源时，我能否跨订阅移动资源？
 
 可以在将资源移动到目标区域后更改订阅。 [详细了解](../azure-resource-manager/management/move-resource-group-and-subscription.md)如何将资源移动到其他订阅。 
@@ -69,7 +73,7 @@ ms.locfileid: "99820868"
 - 如果在门户中跨区域移动资源，此过程将自动执行。
 - 如果使用 PowerShell 移动资源，则运行 cmdlet 为集合分配系统分配的标识，然后为标识主体分配具有正确订阅权限的角色。 
 
-### <a name="what-managed-identity-permissions-does-resource-mover-need"></a>资源转移器需要哪些托管标识权限？
+### <a name="what-managed-identity-permissions-does-resource-mover-need"></a>资源转移器需要哪些托管标识权限？ 
 
 Azure 资源转移器托管标识至少需要以下权限： 
 

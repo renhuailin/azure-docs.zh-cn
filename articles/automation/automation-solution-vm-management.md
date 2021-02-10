@@ -1,20 +1,20 @@
 ---
 title: Azure 自动化“在空闲时间启动/停止 VM”的概述
-description: 本文介绍“在空闲时间启动/停止 VM”功能，该功能按计划启动或停止 VM 并主动通过 Azure Monitor 日志监视这些 VM。
+description: 本文介绍在空闲时间启动/停止 VM 功能，该功能按计划启动或停止 Vm，并从 Azure Monitor 日志主动监视它们。
 services: automation
 ms.subservice: process-automation
-ms.date: 09/22/2020
+ms.date: 02/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: 89566bdfb56ca662813b586b2203eec7e7e5566b
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 991ef6e7ffc26294f75ba5bd2f24c62ea6e0b421
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99055375"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100007000"
 ---
 # <a name="startstop-vms-during-off-hours-overview"></a>“在空闲时间启动/停止 VM”概述
 
-在空闲时间启动/停止 VM 功能启动或停止启用的 Azure Vm。 它根据用户定义的计划启动或停止计算机、通过 Azure Monitor 日志提供见解，并通过使用[操作组](../azure-monitor/platform/action-groups.md)发送可选的电子邮件。 在大多数情况下，可同时在 Azure 资源管理器和经典 VM 上启用此功能。 
+在空闲时间启动/停止 VM 功能启动或停止启用的 Azure Vm。 它根据用户定义的计划启动或停止计算机、通过 Azure Monitor 日志提供见解，并通过使用[操作组](../azure-monitor/platform/action-groups.md)发送可选的电子邮件。 在大多数情况下，可同时在 Azure 资源管理器和经典 VM 上启用此功能。
 
 此功能使用 [new-azvm](/powershell/module/az.compute/start-azvm) cmdlet 来启动 vm。 它使用 [new-azvm](/powershell/module/az.compute/stop-azvm) 停止 vm。
 
@@ -39,9 +39,9 @@ ms.locfileid: "99055375"
 
 - “在空闲时间启动/停止 VM”功能的 runbook 使用 [Azure 运行方式帐户](./automation-security-overview.md#run-as-accounts)。 运行方式帐户是首选的身份验证方法，因为它使用证书身份验证，而不是可能会过期或经常更改的密码。
 
-- 链接的自动化帐户和 Log Analytics 的工作区必须位于同一资源组中。
+- 一个 [Azure Monitor Log Analytics 工作区，该工作区](../azure-monitor/platform/design-logs-deployment.md) 将 runbook 作业日志和作业流结果存储在工作区中进行查询和分析。 自动化帐户可以链接到新的或现有的 Log Analytics 工作区，并且这两个资源需要位于同一资源组中。
 
-- 对于为“在空闲时间启动/停止 VM”功能启用的 VM，建议使用单独的自动化帐户。 Azure 模块版本经常升级，其参数可能会更改。 此功能不按照与之相同的频率升级，所以可能不适用于它所使用的较新版本的 cmdlet。 建议先在测试自动化帐户中测试模块更新，再将其导入生产自动化帐户。
+对于为“在空闲时间启动/停止 VM”功能启用的 VM，建议使用单独的自动化帐户。 Azure 模块版本经常升级，其参数可能会更改。 此功能不按照与之相同的频率升级，所以可能不适用于它所使用的较新版本的 cmdlet。 在将更新的模块导入到你的生产自动化帐户 () 之前，建议将它们导入测试自动化帐户，以验证是否不存在任何兼容性问题。
 
 ## <a name="permissions"></a>权限
 
@@ -148,7 +148,7 @@ ms.locfileid: "99055375"
 |Internal_ResourceGroupName | 自动化帐户资源组名称。|
 
 >[!NOTE]
->对于变量 `External_WaitTimeForVMRetryInSeconds`，默认值已从 600 更新为 2100。 
+>对于变量 `External_WaitTimeForVMRetryInSeconds`，默认值已从 600 更新为 2100。
 
 在所有方案中，变量 `External_Start_ResourceGroupNames`、`External_Stop_ResourceGroupNames` 和 `External_ExcludeVMNames` 对于目标 VM 来说是必需的，但 AutoStop_CreateAlert_Parent、SequencedStartStop_Parent 和 ScheduledStartStop_Parent runbook 的以逗号分隔的 VM 列表除外  。 也就是说，你的 VM 必须属于目标资源组，才能执行启动和停止操作。 此逻辑的工作方式类似于 Azure Policy，因为可以在订阅或资源组中设定目标，并且具有新创建的 VM 继承的操作。 此方法避免了必须为每个 VM 维护一个单独计划和管理规模启动和停止操作。
 
@@ -174,18 +174,14 @@ ms.locfileid: "99055375"
 
 如果每个云服务有超过 20 个 VM，请参考以下建议：
 
-* 使用父 runbook ScheduledStartStop_Parent 创建多个计划，并为每个计划指定 20 个 VM。 
-* 在计划属性中，使用 `VMList` 参数将 VM 名称指定为以逗号分隔的列表， (不) 空格。 
+* 使用父 runbook ScheduledStartStop_Parent 创建多个计划，并为每个计划指定 20 个 VM。
+* 在计划属性中，使用 `VMList` 参数将 VM 名称指定为以逗号分隔的列表， (不) 空格。
 
 否则，如果此功能的自动化作业运行超过三个小时，将根据[公平份额](automation-runbook-execution.md#fair-share)限制暂时将其卸载或停止。
 
 Azure CSP 订阅仅支持 Azure 资源管理器模型。 非 Azure 资源管理器服务在计划中不可用。 当“在空闲时间启动/停止 VM”功能运行时，可能会收到错误，因为它具有用于管理经典资源的 cmdlet。 若要了解有关 CSP 的详细信息，请参阅 [CSP 订阅中可用的服务](/azure/cloud-solution-provider/overview/azure-csp-available-services)。 如果使用 CSP 订阅，则应在部署之后将 [External_EnableClassicVMs](#variables) 变量设置为 False。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
-
-## <a name="enable-the-feature"></a>启用功能
-
-若要开始使用此功能，请按照[启用“在空闲时间启动/停止 VM”](automation-solution-vm-management-enable.md)中的步骤操作。
 
 ## <a name="view-the-feature"></a>查看功能
 
@@ -195,7 +191,7 @@ Azure CSP 订阅仅支持 Azure 资源管理器模型。 非 Azure 资源管理�
 
 * 导航到链接到自动化帐户的 Log Analytics 工作区。 选择工作区后，请从左窗格中选择“解决方案”。 在“解决方案”页上，从列表中选择“Start-Stop-VM[workspace]”。  
 
-选择该功能会显示 Start-Stop-VM[workspace] 页面。 在此处可以查看重要详细信息，例如 StartStopVM 磁贴中的信息。 如同在 Log Analytics 工作区中一样，此磁贴显示功能中已成功启动和完成的 runbook 作业计数与图形表示。
+选择该功能将显示 " **启动-停止-VM [工作区]** " 页。 在此处可以查看重要详细信息，例如 StartStopVM 磁贴中的信息。 如同在 Log Analytics 工作区中一样，此磁贴显示功能中已成功启动和完成的 runbook 作业计数与图形表示。
 
 ![Azure 更新管理页面](media/automation-solution-vm-management/azure-portal-vmupdate-solution-01.png)
 
@@ -203,37 +199,7 @@ Azure CSP 订阅仅支持 Azure 资源管理器模型。 非 Azure 资源管理�
 
 ## <a name="update-the-feature"></a>更新功能
 
-如果你部署了“在空闲时间启动/停止 VM”的以前版本，则在部署更新的版本之前，必须先从帐户中将其删除。 按照以下步骤[删除此功能](#remove-the-feature)，然后按照步骤[启用它](automation-solution-vm-management-enable.md)。
-
-## <a name="remove-the-feature"></a>删除功能
-
-如果不再需要使用此功能，可从自动化帐户中删除它。 删除此功能只会删除关联的 runbook， 而不会删除添加此功能时创建的计划或变量。 
-
-删除“在空闲时间启动/停止 VM”：
-
-1. 在自动化帐户中，选择“相关资源”下的“链接的工作区” 。
-
-2. 选择“转到工作区”。
-
-3. 单击“常规”下的“解决方案” 。 
-
-4. 在“解决方案”页上，选择“Start-Stop-VM[Workspace]”。 
-
-5. 在“VMManagementSolution[Workspace]”页上，从菜单中选择“删除”。<br><br> ![删除 VM 管理功能](media/automation-solution-vm-management/vm-management-solution-delete.png)
-
-6. 在“删除解决方案”窗口中，确认要删除此功能。
-
-7. 在验证信息和删除此功能时，可以在菜单中的“通知”下面跟踪操作进度。 删除后，将返回到“解决方案”页。
-
-8. 此进程不会删除自动化帐户和 Log Analytics 工作区。 如果不想保留 Log Analytics 工作区，则必须从 Azure 门户中手动删除它：
-
-    1. 搜索并选择“Log Analytics 工作区”。
-
-    2. 在“Log Analytics 工作区”页面上，选择工作区。
-
-    3. 从菜单中选择“删除”。
-
-    4. 如果不想保留 Azure 自动化帐户[功能组件](#components)，可以手动删除每个组件。
+如果你部署了“在空闲时间启动/停止 VM”的以前版本，则在部署更新的版本之前，必须先从帐户中将其删除。 按照以下步骤[删除此功能](automation-solution-vm-management-remove.md#delete-the-feature)，然后按照步骤[启用它](automation-solution-vm-management-enable.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

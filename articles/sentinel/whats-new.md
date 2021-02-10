@@ -8,12 +8,12 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.date: 02/04/2021
-ms.openlocfilehash: 37a9294b156bd41b72e777696f10a1c4ac2bb354
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: 9136947767bffb7bea800cdd2a735794baf8f329
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99832753"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100007357"
 ---
 # <a name="whats-new-in-azure-sentinel"></a>Azure Sentinel 中的新增功能
 
@@ -41,7 +41,7 @@ ms.locfileid: "99832753"
 - [通过分析规则预览关系图改进了规则优化](#improved-rule-tuning-with-the-analytics-rule-preview-graphs-public-preview)
 
 
-## <a name="analytics-rule-wizard-improved-query-editing-experience-public-preview"></a>分析规则向导： (公开预览版，改进了查询编辑体验) 
+### <a name="analytics-rule-wizard-improved-query-editing-experience-public-preview"></a>分析规则向导： (公开预览版，改进了查询编辑体验) 
 
 Azure Sentinel 计划分析规则向导现在提供了以下用于编写和编辑查询的增强功能：
 

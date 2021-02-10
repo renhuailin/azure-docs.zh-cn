@@ -3,12 +3,12 @@ title: 事件传递、托管服务标识和专用链接
 description: 本文介绍如何为 Azure 事件网格主题启用托管服务标识。 用于将事件转发到受支持的目标。
 ms.topic: how-to
 ms.date: 01/28/2021
-ms.openlocfilehash: ca154c252976911627184a63386cba1544ed21e0
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 3e643465db7cc918499ca962c4697cb61cb4b594
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99054411"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100007765"
 ---
 # <a name="event-delivery-with-a-managed-identity"></a>使用托管标识进行事件传递
 本文介绍如何为 Azure 事件网格自定义主题或域启用 [托管服务标识](../active-directory/managed-identities-azure-resources/overview.md) 。 使用它将事件转发到受支持的目标，如服务总线队列和主题、事件中心和存储帐户。
@@ -237,7 +237,7 @@ az eventgrid event-subscription create
 ```
 
 ### <a name="use-the-azure-cli---azure-storage-queue"></a>使用 Azure CLI - Azure 存储队列 
-本部分介绍如何使用 Azure CLI 启用系统分配的标识，以将事件传送到 Azure 存储队列。 该标识必须是存储帐户上“存储 Blob 数据参与者”角色的成员。
+本部分介绍如何使用 Azure CLI 启用系统分配的标识，以将事件传送到 Azure 存储队列。 标识必须是存储帐户上 **存储队列数据消息发送方** 角色的成员。 它还必须是用于死信的存储帐户上的“存储 Blob 数据参与者”角色的成员。
 
 #### <a name="define-variables"></a>定义变量  
 

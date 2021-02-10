@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/11/2020
 ms.author: yelevin
-ms.openlocfilehash: dfd8f94dc7ab4e428647b8f44a86a2cd06634e2a
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 9cbafa2a87db9aa59769ac759da9b56a6463874a
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807235"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100006677"
 ---
 # <a name="extend-azure-sentinel-across-workspaces-and-tenants"></a>跨工作区和租户扩展 Azure Sentinel
 
@@ -98,7 +98,7 @@ Azure Sentinel 支持 [在单个查询中查询多个工作区](../azure-monitor
 <!-- Bookmark added for backward compatibility with old heading -->
 跨工作区查询现在可以包含在计划的分析规则中，但有以下限制：
 
-- 单个查询最多可包含15个工作区。
+- 单个查询最多可以包含20个工作区。
 - Azure Sentinel 必须部署在查询中引用的每个工作区上。
 
 > [!NOTE] 

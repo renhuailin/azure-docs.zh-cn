@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2020
-ms.openlocfilehash: 2ca8a814fbaf2d8c257d094f81d17a5c871793b0
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: a8d3ded1d11a350ff53ffda71348b2cc707760b8
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878929"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100008411"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor 常见问题解答
 
@@ -81,10 +81,12 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
 
 ### <a name="how-do-i-retrieve-log-data"></a>如何检索日志数据？
 可使用以 Kusto 查询语言 (KQL) 编写的日志查询从 Log Analytics 工作区检索所有数据。 你可编写自己的查询，也可使用包含特定应用程序或服务的日志查询的解决方案和见解。 请参阅 [Azure Monitor 中的日志查询概述](log-query/log-query-overview.md)。
-p
+
 ### <a name="can-i-delete-data-from-a-log-analytics-workspace"></a>能否从 Log Analytics 工作区中删除数据？
 系统会根据数据的[保留期](platform/manage-cost-storage.md#change-the-data-retention-period)从工作区中删除数据。 出于隐私或合规性原因，你可以删除特定数据。 有关详细信息，请参阅[如何导出和删除私人数据](platform/personal-data-mgmt.md#how-to-export-and-delete-private-data)。
 
+### <a name="is-log-analytics-storage-immutable"></a>Log Analytics 存储是否不可变？
+数据库存储中的数据在引入后将无法更改，但可以通过 [*清除* API 路径删除以删除私有数据](platform/personal-data-mgmt.md#delete)。 尽管不能更改数据，但某些证书要求数据是不可变的，并且不能在存储中更改或删除。 可以通过将 [数据导出](platform/logs-data-export.md) 到配置为 [不可变存储](../storage/blobs/storage-blob-immutability-policies-manage.md)的存储帐户来实现数据永久性。
 
 ### <a name="what-is-a-log-analytics-workspace"></a>什么是 Log Analytics 工作区？
 Azure Monitor 收集的所有日志数据都存储在 Log Analytics 工作区中。 工作区实质上是从各种来源收集日志数据的容器。 可为所有监视数据使用一个 Log Analytics 工作区，也可要求使用多个工作区。 请参阅[设计 Azure Monitor 日志部署](platform/design-logs-deployment.md)。
@@ -345,7 +347,7 @@ WireData
 
 **所有** 八进制数的客户端 web 地址始终设置为 0，查找异地位置属性。
 
-默认情况下， [Application Insights JAVASCRIPT SDK](app/javascript.md) 不会在其自动完成中包含任何个人数据。 不过，SDK 可能会获取应用程序中使用的某些个人数据 (例如，中的全名 `window.title` 或 XHR URL 查询参数) 中的帐户 id。 对于自定义个人数据掩码，请添加 [遥测初始值设定项](app/api-filtering-sampling.md#javascript-web-applications)。
+默认情况下，[Application Insights JavaScript SDK](app/javascript.md) 不会在其自动完成中包含任何个人数据。 但是，应用程序中使用的一些个人数据可能会被 SDK 获取（例如，`window.title` 中的全名或 XHR URL 查询参数中的帐户 ID）。 对于自定义个人数据掩码，请添加[遥测初始化表达式](app/api-filtering-sampling.md#javascript-web-applications)。
 
 ### <a name="my-instrumentation-key-is-visible-in-my-web-page-source"></a>可在网页源中查看检测密钥。
 

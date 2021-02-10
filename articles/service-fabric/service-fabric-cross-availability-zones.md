@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: ff7de678e40a02b364451e7c88d661d2e38ed9d4
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 50ab66a1f98d06d79a46d61f683d56822b619721
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98918917"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100007034"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-across-availability-zones"></a>跨可用性区域部署 Azure Service Fabric 群集
 Azure 中的可用性区域是一种高可用性产品，可保护应用程序和数据免受数据中心故障的影响。 可用性区域是一种独特的物理位置，它在 Azure 区域内配有独立的电源、冷却和网络。
@@ -374,8 +374,8 @@ Set-AzureRmPublicIpAddress -PublicIpAddress $PublicIP
 * 第一个值为 **multipleAvailabilityZones** ，它应设置为适用于 nodeType 的 true。
 * 第二个值为 **sfZonalUpgradeMode** ，它是可选的。 如果群集中已存在具有多个 AZ 的 nodetype，则无法修改此属性。
       属性控制升级域中 Vm 的逻辑分组。
-          如果 value 设置为 false (平面模式) ：节点类型下的 Vm 将按 UD 分组，忽略5个 UDs 中的区域信息。
-          如果省略值或将值设置为 true (分层模式) ： Vm 将分组，以反映最多15个 UDs 的区域性分布。 3个区域中的每一个都有5个 UDs。
+          如果将 value 设置为 "Parallel"：将在虚拟机组下的虚拟机上按
+          如果省略值或将值设置为 "层次结构"：将对 Vm 进行分组，以反映最多15个 UDs 的区域性分布。 3个区域中的每一个都有5个 UDs。
           此属性仅定义 ServiceFabric 应用程序和代码升级的升级行为。 底层虚拟机规模集升级仍将在所有 AZ 的中并行进行。
       对于未启用多个区域的节点类型，此属性不会产生任何影响。
 * 第三个值为 **vmssZonalUpgradeMode = Parallel**。 如果添加了具有多个 AZs 的 nodeType，则这是在群集中配置的 *必需* 属性。 此属性定义虚拟机规模集更新的升级模式，这将同时在所有 AZ 中并行发生。
