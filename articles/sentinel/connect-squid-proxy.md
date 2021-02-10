@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/17/2021
 ms.author: yelevin
-ms.openlocfilehash: b183abf8d42e6f4b1c43db2d87b2650721e0c2a9
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.openlocfilehash: eec88bf85f1b7a2ec8db2bf23c43629d84cc5106
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98567879"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100090439"
 ---
 # <a name="connect-your-squid-proxy-to-azure-sentinel"></a>将 Squid 代理连接到 Azure Sentinel
 
 > [!IMPORTANT]
 > Squid 代理连接器当前为 **预览版**。 请参阅 [Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) ，了解适用于 Azure 功能的其他法律条款，这些功能适用于 beta 版、预览版或其他情况下尚未公开上市。
 
-本文介绍如何将 Squid 代理设备连接到 Azure Sentinel。 使用 Squid 代理数据连接器，可以轻松地将你的 Squid 日志与 Azure Sentinel 连接，这样你就可以查看工作簿中的数据，使用它创建自定义警报，并将其合并以改进调查。 Squid 代理与 Azure Sentinel 之间的集成利用 Syslog。
+本文介绍如何将 Squid 代理设备连接到 Azure Sentinel。 使用 Squid 代理数据连接器，可以轻松地将你的 Squid 日志与 Azure Sentinel 连接，这样你就可以查看工作簿中的数据，使用它创建自定义警报，并将其合并以改进调查。 在 Squid Proxy 和 Azure Sentinel 之间进行集成，Log Analytics 代理使用本地文件处理。
 
 > [!NOTE]
 > 数据将存储在运行 Azure Sentinel 的工作区的地理位置。
@@ -35,9 +35,9 @@ ms.locfileid: "98567879"
 
 - 你必须具有 Azure Sentinel 工作区的 "读取" 和 "写入" 权限。
 
-## <a name="forward-squid-proxy-logs-to-the-syslog-agent"></a>将 Squid Proxy 日志转发到 Syslog 代理  
+## <a name="forward-squid-proxy-logs-to-the-log-analytics-agent"></a>将 Squid Proxy 日志转发到 Log Analytics 代理  
 
-将 Squid Proxy 配置为通过 Syslog 代理将 Syslog 消息转发到 Azure 工作区。
+将 Squid Proxy 配置为通过 Log Analytics 代理将日志文件发送到 Azure 工作区。
 
 1. 在 Azure Sentinel 导航菜单中，选择 " **数据连接器**"。
 

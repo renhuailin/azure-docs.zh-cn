@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d0a082149d85736000b5bb6a91e2fc7132205a88
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 6f17f6eb913d1ea54e8db6acd369d165553e16ec
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98220280"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100091034"
 ---
 # <a name="plan-and-deploy-on-premises-azure-active-directory-password-protection"></a>规划和部署本地 Azure Active Directory 密码保护
 
@@ -42,7 +42,7 @@ ms.locfileid: "98220280"
 * 用户经常使用不安全的密码。
 * 他们需要通知用户即将执行的安全强制更改、可能对这些更改的影响，以及如何选择更安全的密码。
 
-还可以通过更强的密码验证来影响现有 Active Directory 域控制器部署自动化。 建议在审核期评估过程中至少发生一次 DC 升级和一个 DC 降级，以帮助发现此类问题。 有关详细信息，请参阅以下文章：
+还可以通过更强的密码验证来影响现有 Active Directory 域控制器部署自动化。 建议在审核期评估过程中至少发生一次 DC 升级和一个 DC 降级，以帮助发现此类问题。 有关详细信息，请参阅下列文章：
 
 * [Ntdsutil.exe 无法设置弱目录服务修复模式密码](howto-password-ban-bad-on-premises-troubleshoot.md#ntdsutilexe-fails-to-set-a-weak-dsrm-password)
 * [由于目录服务修复模式密码弱，域控制器副本升级失败](howto-password-ban-bad-on-premises-troubleshoot.md#domain-controller-replica-promotion-fails-because-of-a-weak-dsrm-password)
@@ -85,7 +85,8 @@ Azure AD 密码保护 DC 代理软件的设计可减轻与高可用性相关的�
 * 所有安装了 Azure AD Password Protection 组件的计算机都必须安装有通用 C 运行时。
     * 可以通过确保所有更新都 Windows 更新来获取运行时。 也可以在特定于 OS 的更新包中获取它。 有关详细信息，请参阅 [Windows 中的通用 C 运行时更新](https://support.microsoft.com/help/2999226/update-for-uniersal-c-runtime-in-windows)。
 * 你需要一个在目录林根级域中具有 Active Directory 域管理员权限的帐户，以便向 Azure AD 注册 Windows Server Active Directory 林。
-* 必须在运行 Windows Server 2012 的域中的所有域控制器上启用密钥分发服务。 默认情况下，此服务通过手动触发器启动启用。
+* 必须在运行 Windows Server 2012 及更高版本的域中的所有域控制器上启用密钥分发服务。 默认情况下，此服务通过手动触发器启动启用。
+
 * 每个域中至少一个域控制器之间必须存在网络连接，并且至少有一台服务器承载用于 Azure AD 密码保护的代理服务。 此连接必须允许域控制器访问 RPC 终结点映射器端口135和代理服务上的 RPC 服务器端口。
     * 默认情况下，RPC 服务器端口是动态 RPC 端口，但可以配置为 [使用静态端口](#static)。
 * 将安装 Azure AD 密码保护代理服务的所有计算机必须具有对以下终结点的网络访问权限：

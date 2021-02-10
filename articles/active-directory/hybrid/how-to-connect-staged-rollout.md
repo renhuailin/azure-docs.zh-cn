@@ -10,12 +10,12 @@ ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10fe3b895ea5084247822f1c35275e68d80b73fa
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: c9e0a645bc580ab3a0794ca6ded1e60159df7d92
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98762979"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100090592"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout-preview"></a>使用分阶段推出迁移到云身份验证（预览）
 
@@ -83,10 +83,6 @@ ms.locfileid: "98762979"
     - 分阶段推出不支持动态组。
     - 组内的联系人对象会阻止添加组。
 
-- 仍需要使用 Azure AD Connect 或 PowerShell 进行从联合身份验证到云身份验证的最终转换。 分阶段部署不会将域从联合域切换到托管域。  有关域切换的详细信息，请参阅 [从联合迁移到密码哈希同步](plan-migrate-adfs-password-hash-sync.md) 和 [从联合迁移到直通身份验证](plan-migrate-adfs-pass-through-authentication.md)
-
-
-
 - 首次为分阶段推出添加安全组时，限制于 200 个用户，以避免 UX 超时。添加组后，可以根据需要直接向其添加更多用户。
 
 - 当用户处于分阶段推出时，启用 EnforceCloudPasswordPolicyForPasswordSyncedUsers 时，密码过期策略设置为90天，无选项可对其进行自定义。 
@@ -95,7 +91,9 @@ ms.locfileid: "98762979"
 
 - 如果用户的本地 UPN 不可路由，Windows 10 混合加入或 Azure AD 会为所有版本加入主刷新令牌获取。 此方案将在分阶段推出模式下回退到 WS-Trust 终结点，但当分阶段迁移完成并且用户登录不再依赖于联合服务器时，将停止工作。
 
-
+  >[!NOTE]
+  >仍需要使用 Azure AD Connect 或 PowerShell 进行从联合身份验证到云身份验证的最终转换。 过渡部署不会将域从联合切换到托管域。  有关域切换的详细信息，请参阅 [从联合迁移到密码哈希同步](plan-migrate-adfs-password-hash-sync.md#step-3-change-the-sign-in-method-to-password-hash-synchronization-and-enable-seamless-sso) 和 [从联合迁移到直通身份验证](plan-migrate-adfs-password-hash-sync.md#step-3-change-the-sign-in-method-to-password-hash-synchronization-and-enable-seamless-sso)
+  
 ## <a name="get-started-with-staged-rollout"></a>分阶段推出入门
 
 若要使用分阶段推出测试密码哈希同步登录，请遵循下一节中的准备工作说明。
@@ -257,3 +255,5 @@ A:是的。 若要了解如何使用 PowerShell 执行分阶段推出，请参�
 
 ## <a name="next-steps"></a>后续步骤
 - [Azure AD 2.0 预览版](/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout )
+- [将登录方法更改为 "密码哈希同步"](plan-migrate-adfs-password-hash-sync.md#step-3-change-the-sign-in-method-to-password-hash-synchronization-and-enable-seamless-sso)
+- [将登录方法更改为直通身份验证](plan-migrate-adfs-password-hash-sync.md#step-3-change-the-sign-in-method-to-password-hash-synchronization-and-enable-seamless-sso)

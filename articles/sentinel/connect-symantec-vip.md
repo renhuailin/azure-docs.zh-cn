@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
-ms.openlocfilehash: 2809ff6abe36956123e0e581e16aa85edeb40395
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c7429108f70d735cb6e314a0d4daa27ba0d31637
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87095931"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100090405"
 ---
 # <a name="connect-your-symantec-vip-to-azure-sentinel"></a>将 Symantec VIP 连接到 Azure Sentinel
 
 > [!IMPORTANT]
 > Azure Sentinel 中的 Symantec VIP 数据连接器目前为公共预览版。
-> 此功能在提供时没有服务级别协议，不建议用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> 此功能不附带服务级别协议，不建议将其用于生产工作负载。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 本文介绍如何将 [SYMANTEC VIP](https://vip.symantec.com/) 设备连接到 Azure Sentinel。 Symantec VIP 数据连接器可让你轻松地通过 Azure Sentinel 连接 Symantec VIP 日志、查看仪表板、创建自定义警报，以及改进调查。 Symantec VIP 和 Azure Sentinel 之间的集成利用 Syslog。
 

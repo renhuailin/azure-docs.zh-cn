@@ -259,6 +259,8 @@
           href: /samples/azure-samples/dtdl-validator/dtdl-validator/
         - name: DTMI 规范
           href: 'https://github.com/Azure/digital-twin-model-identifier'
+    - name: Learn：使用 Azure 数字孪生进行开发
+      href: /learn/paths/develop-azure-digital-twins/
     - name: Channel 9 视频
       href: 'https://channel9.msdn.com/Search?term=%22Azure%20Digital%20Twins%22'
     - name: 客户案例
