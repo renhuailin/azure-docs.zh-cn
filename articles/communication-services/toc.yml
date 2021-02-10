@@ -58,6 +58,8 @@
 - name: 概念
   expanded: false
   items:
+    - name: Teams 互操作性
+      href: concepts/teams-interop.md
     - name: 聊天
       items:
         - name: 聊天客户端概述
@@ -78,8 +80,6 @@
           href: concepts/voice-video-calling/calling-sdk-features.md
         - name: 语音和视频概念
           href: concepts/voice-video-calling/about-call-types.md
-        - name: Teams 互操作性
-          href: concepts/voice-video-calling/teams-interop.md
     - name: UI 框架
       items:
         - name: UI 框架概述

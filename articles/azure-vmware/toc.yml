@@ -107,7 +107,7 @@
         - name: 就部署失败发起支持请求
           href: fix-deployment-provisioning-failures.md
     - name: 常见问题解答
-      href: faq.md
+      href: faq.yml
 - name: 参考
   items:
     - name: Azure CLI
