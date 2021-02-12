@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/27/2020
-ms.openlocfilehash: e2e97b857f648390ec017a529115b23c4f17a68d
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 64cdb41540d9750be8664dc60c2b6ceda6c324ca
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427983"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99831920"
 ---
 # <a name="tutorial-create-an-iot-edge-instance-for-video-analytics-intel-nuc"></a>教程：创建用于视频分析的 IoT Edge 实例 (Intel NUC)
 
@@ -148,6 +148,14 @@ Azure IoT Edge 是一项完全托管的服务，可通过部署和运行以下�
 
 > [!TIP]
 > 尝试使用媒体播放器（如 VLC）在 IoT Edge 计算机上查看相机流。
+
+## <a name="clean-up-resources"></a>清理资源
+
+如果应用程序使用完毕，可以删除创建的所有资源，如下所示：
+
+1. 在 IoT Central 应用程序中，请导航至“管理”部分中的“你的应用程序”页面 。 然后选择“删除”。
+1. 在 Azure 门户中，删除“lva-rg”资源组。
+1. 在本地计算机上，停止“amp-viewer”Docker 容器。
 
 ## <a name="next-steps"></a>后续步骤
 

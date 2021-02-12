@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: abeae674cef8f13a092b53bde6040ad853bd0cca
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: f7f1952ab8c98553a447c3ed1955fb556ba48124
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820358"
+ms.locfileid: "99831937"
 ---
 # <a name="tutorial-how-to-deploy-an-iot-central-application-using-the-video-analytics---object-and-motion-detection-application-template"></a>Tutorial:如何使用“视频分析 - 对象和运动检测”应用程序模板部署 IoT Central 应用程序
 
@@ -22,6 +22,10 @@ ms.locfileid: "99820358"
 下面的视频演示了如何使用“视频分析 - 对象和运动检测”应用程序模板来部署 IoT Central 解决方案：
 
 > [!VIDEO https://www.youtube.com/embed/Bo3FziU9bSA]
+
+## <a name="prerequisites"></a>先决条件
+
+建议使用 Azure 订阅。 或者，可使用 7 天免费试用版。 如果没有 Azure 订阅，则可在 [Azure 注册页](https://aka.ms/createazuresubscription)上创建一个。
 
 ## <a name="deploy-the-application"></a>部署应用程序
 
@@ -42,6 +46,14 @@ ms.locfileid: "99820358"
     - 安装本地媒体播放器来查看 AMS 中捕获的视频。
     - 查看已捕获且显示所检测对象的视频。
     - 进行整理。
+
+## <a name="clean-up-resources"></a>清理资源
+
+应用程序使用完毕后，可以删除创建的所有资源，如下所示：
+
+1. 在 IoT Central 应用程序中，请导航至“管理”部分中的“你的应用程序”页面 。 然后选择“删除”。
+1. 在 Azure 门户中，删除“lva-rg”资源组。
+1. 在本地计算机上，停止“amp-viewer”Docker 容器。
 
 ## <a name="next-steps"></a>后续步骤
 

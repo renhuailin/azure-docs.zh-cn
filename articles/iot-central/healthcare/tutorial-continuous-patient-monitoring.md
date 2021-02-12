@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: 1967a2fb5adebe01ef4bff8d58f7832bffe95762
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f98482a43516683499e83bebafe4eeadc5b7a8b7
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90531264"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99832498"
 ---
 # <a name="tutorial-deploy-and-walkthrough-a-continuous-patient-monitoring-app-template"></a>教程：部署和演练持续患者监视应用模板
 
@@ -24,6 +24,10 @@ ms.locfileid: "90531264"
 > [!div class="checklist"]
 > * 创建应用程序模板
 > * 演练应用程序模板
+
+## <a name="prerequisites"></a>先决条件
+
+建议使用 Azure 订阅。 或者，可使用 7 天免费试用版。 如果没有 Azure 订阅，则可在 [Azure 注册页](https://aka.ms/createazuresubscription)上创建一个。
 
 ## <a name="create-an-application-template"></a>创建应用程序模板
 
@@ -61,11 +65,11 @@ ms.locfileid: "90531264"
 
 * 更改设备的患者状态以指示该设备是用于住院患者方案还是远程方案  。
 
-:::image type="content" source="media/lamna-in-patient.png" alt-text="医疗保健应用模板":::
+:::image type="content" source="media/lamna-in-patient.png" alt-text="住院患者状态":::
 
 还可以选择“转到远程患者仪表板”，查看 Burkville 医院操作员仪表板。 此仪表板包含一组类似的操作、遥测和信息。 还可以查看正在使用的多个设备，并选择“更新每个设备上的固件”。
 
-:::image type="content" source="media/lamna-remote.png" alt-text="医疗保健应用模板":::
+:::image type="content" source="media/lamna-remote.png" alt-text="远程操作员仪表板":::
 
 ### <a name="device-templates"></a>设备模板
 
@@ -75,7 +79,7 @@ ms.locfileid: "90531264"
 
 * **Smart Knee Brace**：此设备表示患者在从膝关节置换手术中恢复过来时使用的膝盖支架。 如果选择此模板，则会看到设备数据、运动范围和加速等功能。
 
-:::image type="content" source="media/smart-vitals-device-template.png" alt-text="医疗保健应用模板":::
+:::image type="content" source="media/smart-vitals-device-template.png" alt-text="智能补丁模板":::
 
 ### <a name="device-groups"></a>设备组
 
@@ -93,7 +97,7 @@ ms.locfileid: "90531264"
 
 * **Patch 电量不足**：当设备上的电池电量低于 10% 时将触发此规则。 使用此规则来触发通知，通知患者为其设备充电。
 
-:::image type="content" source="media/brace-temp-rule.png" alt-text="医疗保健应用模板":::
+:::image type="content" source="media/brace-temp-rule.png" alt-text="规则":::
 
 ### <a name="jobs"></a>作业
 
@@ -113,7 +117,7 @@ ms.locfileid: "90531264"
 
 通过“命令”选项卡，可以在设备上运行命令。
 
-:::image type="content" source="media/knee-brace-dashboard.png" alt-text="医疗保健应用模板":::
+:::image type="content" source="media/knee-brace-dashboard.png" alt-text="膝盖支架仪表板":::
 
 ### <a name="data-export"></a>数据导出
 
@@ -123,7 +127,7 @@ ms.locfileid: "90531264"
 
 如果不打算继续使用此应用程序，请依次访问“管理”>“应用程序设置”，然后单击“删除”来删除该应用程序 。
 
-:::image type="content" source="media/admin-delete.png" alt-text="医疗保健应用模板":::
+:::image type="content" source="media/admin-delete.png" alt-text="整理资源":::
 
 ## <a name="next-steps"></a>后续步骤
 

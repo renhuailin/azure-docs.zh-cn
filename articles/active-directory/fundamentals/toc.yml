@@ -143,6 +143,8 @@
                   href: resilience-client-app.md
                 - name: 守护程序应用程序
                   href: resilience-daemon-app.md
+            - name: 监视应用程序运行状况以进行复原
+              href: monitor-sign-in-health-for-resilience.md
         - name: Azure 中使用的证书颁发机构
           href: certificate-authorities.md
     - name: 部署指南

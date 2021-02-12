@@ -101,20 +101,12 @@
       href: ./workloads/oracle/oracle-database-quick-create.md
     - name: Elasticsearch
       href: ./linux/tutorial-elasticsearch.md
-    - name: FreeBSD 数据包筛选器
-      href: ./linux/freebsd-pf-nat.md
     - name: 大型机重新托管
       href: ./workloads/mainframe-rehosting/overview.md
-    - name: 数据库
-      items:
-        - name: MongoDB
-        - name: Linux 上的 MS SQL
-          href: /sql/linux/sql-server-linux-azure-virtual-machine
+    - name: 虚拟机上的 SQL
+      href: 'https://docs.microsoft.com/azure/azure-sql/virtual-machines/'
     - name: 高性能计算 (HPC)
       href: /azure/architecture/topics/high-performance-computing/
-    - name: 容器
-    - name: Visual Studio
-      href: ./windows/using-visual-studio-vm.md
 - name: 实例数
   items:
     - name: 大小
@@ -492,7 +484,7 @@
           href: ./extensions/update-linux-agent.md
         - name: 导出扩展
           href: ./extensions/export-templates.md
-        - name: 故障排除
+        - name: 疑难解答
           href: ./extensions/troubleshoot.md
         - name: 启用了 Python 3 的 Linux 系统的问题
           href: ./extensions/issues-using-vm-extensions-python-3.md
@@ -592,6 +584,8 @@
               href: ./linux/flatcar-create-upload-vhd.md
             - name: FreeBSD
               href: ./linux/freebsd-intro-on-azure.md
+            - name: FreeBSD 数据包筛选器
+              href: ./linux/freebsd-pf-nat.md
             - name: Oracle Linux
               href: ./linux/oracle-create-upload-vhd.md
             - name: OpenBSD
@@ -636,6 +630,8 @@
           href: ./windows/capture-image-resource.md
         - name: 从托管映像创建 VM
           href: ./windows/create-vm-generalized-managed.md
+        - name: Visual Studio
+          href: ./windows/using-visual-studio-vm.md
     - name: 共享映像库
       items:
         - name: 概述
@@ -1326,7 +1322,7 @@
                   href: ../azure-monitor/platform/data-sources-custom-logs.md?context=/azure/virtual-machines/context/context
                 - name: 自定义字段
                   href: ../azure-monitor/platform/custom-fields.md?context=/azure/virtual-machines/context/context
-        - name: 故障排除
+        - name: 疑难解答
           items:
             - name: Log Analytics VM 扩展
               href: ../azure-monitor/platform/vmext-troubleshoot.md?context=/azure/virtual-machines/context/context

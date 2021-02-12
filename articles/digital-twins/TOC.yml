@@ -103,10 +103,10 @@
       items:
         - name: 管理终结点和路由
           items:
-            - name: API 和 CLI 版本
-              href: how-to-manage-routes-apis-cli.md
             - name: 门户版本
               href: how-to-manage-routes-portal.md
+            - name: API 和 CLI 版本
+              href: how-to-manage-routes-apis-cli.md
         - name: 为路由事件启用托管标识
           href: how-to-enable-managed-identities.md
         - name: 与 Azure Maps 集成

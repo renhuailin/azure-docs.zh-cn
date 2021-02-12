@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 02/04/2021
+ms.date: 02/09/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: e020aecb7248c6f205e946137bf4050cb759e142
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 2cbadf42e131940bf06e07cfca39082c6f642d2c
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99561858"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100094027"
 ---
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -45,7 +45,7 @@ ms.locfileid: "99561858"
 |[部署“将 Azure 安全中心数据导出到 Log Analytics 工作区”](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fffb6f416-7bd2-4488-8828-56585fef2be9) |启用“将 Azure 安全中心数据导出到 Log Analytics 工作区”。 此策略会在分配的作用域上使用所设定的条件和目标工作区来部署“导出到 Log Analytics 工作区”配置。 若要在新建的订阅上部署此策略，请打开“合规性”选项卡，选择相关的不合规分配，并创建修正任务。 |deployIfNotExists |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_ExportToLogAnalyticsWorkspaceAzureSecurityCenterAlertsAndRecommendations_Deploy.json) |
 |[为 Azure 安全中心警报部署工作流自动化](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff1525828-9a90-4fcf-be48-268cdd02361e) |启用 Azure 安全中心警报的自动化。 此策略会在分配的作用域上使用所设定的条件和触发器来部署工作流自动化。 若要在新建的订阅上部署此策略，请打开“合规性”选项卡，选择相关的不合规分配，并创建修正任务。 |deployIfNotExists |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_WorkflowAutomationAzureSecurityCenterAlerts_Deploy.json) |
 |[为 Azure 安全中心建议部署工作流自动化](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F73d6ab6c-2475-4850-afd6-43795f3492ef) |启用 Azure 安全中心建议的自动化。 此策略会在分配的作用域上使用所设定的条件和触发器来部署工作流自动化。 若要在新建的订阅上部署此策略，请打开“合规性”选项卡，选择相关的不合规分配，并创建修正任务。 |deployIfNotExists |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_WorkflowAutomationAzureSecurityCenterRecommendations_Deploy.json) |
-|[部署 Azure 安全中心法规遵从性的工作流自动化](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F509122b9-ddd9-47ba-a5f1-d0dac20be63c) |实现 Azure 安全中心法规遵从性的自动化。 此策略会在分配的作用域上使用所设定的条件和触发器来部署工作流自动化。 若要在新建的订阅上部署此策略，请打开“合规性”选项卡，选择相关的不合规分配，并创建修正任务。 |deployIfNotExists |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_WorkflowAutomationAzureSecurityCenterRegulatoryCompliance_Deploy.json) |
+|[部署 Azure 安全中心合规工作流自动化](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F509122b9-ddd9-47ba-a5f1-d0dac20be63c) |启用 Azure 安全中心合规自动化。 此策略会在分配的作用域上使用所设定的条件和触发器来部署工作流自动化。 若要在新建的订阅上部署此策略，请打开“合规性”选项卡，选择相关的不合规分配，并创建修正任务。 |deployIfNotExists |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_WorkflowAutomationAzureSecurityCenterRegulatoryCompliance_Deploy.json) |
 |[应从订阅中删除弃用的帐户](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F6b1cbf55-e8b6-442f-ba4c-7246b6381474) |应从订阅中删除弃用的帐户。  已弃用帐户是已阻止登录的帐户。 |AuditIfNotExists、Disabled |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_RemoveDeprecatedAccounts_Audit.json) |
 |[应从订阅中删除拥有所有者权限的已弃用帐户](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Febb62a0c-3560-49e1-89ed-27e074e9f8ad) |应从订阅中删除拥有所有者权限的已弃用帐户。  已弃用帐户是已阻止登录的帐户。 |AuditIfNotExists、Disabled |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_RemoveDeprecatedAccountsWithOwnerPermissions_Audit.json) |
 |[应启用高严重性警报的电子邮件通知](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F6e2593d9-add6-4083-9c9b-4b7d2188c899) |当某个订阅中存在潜在的安全漏洞时，若要确保组织中的相关人员收到通知，请在安全中心为高严重性警报启用电子邮件通知。 |AuditIfNotExists、Disabled |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_Email_notification.json) |

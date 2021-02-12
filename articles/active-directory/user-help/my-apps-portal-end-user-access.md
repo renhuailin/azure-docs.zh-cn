@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: end-user-help
-ms.date: 10/19/2020
+ms.date: 01/19/2021
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: 61dd185d00cef2382763e7435c081e1d412cdb92
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 6dd9d65ee56bcbf8ca1da72f7d99d4545c5d7fbb
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93127870"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100094995"
 ---
 # <a name="sign-in-and-start-apps-from-the-my-apps-portal"></a>从“我的应用”门户登录并启动应用
 
@@ -31,6 +31,11 @@ ms.locfileid: "93127870"
 
 > [!IMPORTANT]
 > 此内容适用于“我的应用”用户。 如果你是管理员，可以在[应用程序管理文档](../manage-apps/index.yml)中查找有关如何设置和管理基于云的应用的详细信息。
+>
+> 如果在使用个人 Microsoft 帐户登录时出现错误，你仍可以使用组织的域名 (例如，你可以通过以下 Url 之一中的管理员使用你的组织的域名例如 contoso.com) 或你的组织的 **租户 ID** ：
+>
+>   - https://myapplications.microsoft.com?tenantId=*your_domain_name*
+>   - https://myapplications.microsoft.com?tenant=*your_tenant_ID*
 
 ## <a name="supported-browsers"></a>支持的浏览器
 
@@ -60,7 +65,7 @@ ms.locfileid: "93127870"
 
 ### <a name="download-and-install-the-my-apps-secure-sign-in-extension"></a>下载并安装我的应用安全登录扩展
 
-如果系统提示，请下载并安装 " **我的应用" 安全登录扩展** 。 此扩展可帮助你使用桌面浏览器对你的组织的云应用程序使用单一登录。 只需将鼠标悬停在 " **我的应用** " 门户中的应用，选择 " **...** "，然后选择 " **管理应用程序** "。
+如果系统提示，请下载并安装 " **我的应用" 安全登录扩展**。 此扩展可帮助你使用桌面浏览器对你的组织的云应用程序使用单一登录。 只需将鼠标悬停在 " **我的应用** " 门户中的应用，选择 " **...**"，然后选择 " **管理应用程序**"。
 
 如果组织已将你设置为单一登录，则会自动安装该扩展，可以跳过此部分。
 
@@ -77,9 +82,9 @@ ms.locfileid: "93127870"
 
 - **Microsoft edge** -从 Microsoft Store 中，转到 " [我的应用" "安全登录扩展](https://microsoftedge.microsoft.com/addons/detail/my-apps-secure-signin-ex/gaaceiggkkiffbfdpmfapegoiohkiipl) " 功能，然后选择 " **获取** " 以获取 Microsoft Edge 旧版浏览器的扩展。
 
-- **Google chrome** -从 Chrome Web 应用商店中转到 " [我的应用安全登录扩展](https://chrome.google.com/webstore/detail/my-apps-secure-sign-in-ex/ggjhpefgjjfobnfoldnjipclpcfbgbhl) 功能"，然后选择 " **添加到 Chrome** "。
+- **Google chrome** -从 Chrome Web 应用商店中转到 " [我的应用安全登录扩展](https://chrome.google.com/webstore/detail/my-apps-secure-sign-in-ex/ggjhpefgjjfobnfoldnjipclpcfbgbhl) 功能"，然后选择 " **添加到 Chrome**"。
 
-- **Mozilla firefox** -从 " **firefox 外接程序** " 页，中转到 " [我的应用安全登录扩展](https://addons.mozilla.org/firefox/addon/access-panel-extension/) 功能"，然后选择 " **添加到 Firefox** "。
+- **Mozilla firefox** -从 " **firefox 外接程序** " 页，中转到 " [我的应用安全登录扩展](https://addons.mozilla.org/firefox/addon/access-panel-extension/) 功能"，然后选择 " **添加到 Firefox**"。
 
 将在 **地址** 栏的右侧添加一个图标，让用户登录并自定义扩展。
 
@@ -113,7 +118,7 @@ ms.locfileid: "93127870"
 
 如果管理员已授予你权限，则可以将新应用添加到“应用”页。
 
-1. 从 " **应用** " 页中，选择 " **添加自助服务应用** "。
+1. 从 " **应用** " 页中，选择 " **添加自助服务应用**"。
 
    ![myapplications.microsoft.com 上“我的应用”门户中的“添加应用”页](media/my-apps-portal/my-apps-portal-add-app-link.png)
 
@@ -138,7 +143,7 @@ ms.locfileid: "93127870"
 - 将应用整理到组织创建和提供的各种类别中。 有关详细信息，请参阅[在“我的应用”门户中访问和使用集合](my-applications-portal-workspaces.md)。
 - 查看、更新或撤销授予应用程序的权限。 有关详细信息，请参阅[在“我的应用”门户中编辑或撤销应用程序权限](my-applications-portal-permissions-saved-accounts.md)。
 - 创建、更新和删除应用帐户。 有关详细信息，请参阅 [编辑或撤消应用程序权限](my-applications-portal-permissions-saved-accounts.md)。
-- 从用于帐户管理的 " **我的应用** " 门户访问 [**我的帐户**](my-account-portal-overview.md)：
+- 从用于帐户管理的 "**我的应用**" 门户访问 [**我的帐户**](my-account-portal-overview.md)：
   
   - 正在检查异常登录活动
   - 管理密码

@@ -3,12 +3,12 @@ title: 使用 PowerShell 备份和恢复 Azure VM
 description: 介绍如何使用 Azure 备份与 PowerShell 来备份和恢复 Azure VM
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 90bb6f60712fc59aec05ff2e85364fccf00ff1df
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 66b8fe0109a4dd2e054106b67f893def2ee596b0
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98804793"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100095078"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>使用 PowerShell 备份和恢复 Azure VM
 
@@ -343,7 +343,7 @@ Set-AzureRmRecoveryServicesBackupProtectionPolicy -policy $bkpPol
 
 ### <a name="exclude-disks-for-a-protected-vm"></a>排除受保护的 VM 的磁盘
 
-Azure VM 备份提供一项功能，可选择性地排除或包括在 [这些情况下](selective-disk-backup-restore.md#scenarios)非常有用的磁盘。 如果虚拟机已受到 Azure VM 备份的保护，并且所有磁盘都已备份，则可以修改保护，以便有选择地包括或排除磁盘，如 [此处](selective-disk-backup-restore.md#modify-protection-for-already-backed-up-vms-with-powershell)所述。
+Azure VM 备份提供了一项有选择地排除或包括磁盘的功能，这在[这些方案](selective-disk-backup-restore.md#scenarios)中很有用。 如果虚拟机已经受 Azure VM 备份保护，并且所有磁盘都已备份，则可以修改保护以有选择地包括或排除磁盘，如[此处](selective-disk-backup-restore.md#modify-protection-for-already-backed-up-vms-with-powershell)所述。
 
 ### <a name="trigger-a-backup"></a>触发备份
 
@@ -520,12 +520,59 @@ $details = Get-AzRecoveryServicesBackupJobDetails -Job $restorejob -VaultId $tar
 
 #### <a name="restore-selective-disks"></a>还原选择性磁盘
 
-用户可以有选择地还原几个磁盘，而不是整个备份集。 提供所需的磁盘 Lun 作为参数，以便仅还原它们，而不是还原整个集，如 [此处](selective-disk-backup-restore.md#restore-selective-disks-with-powershell)所述。
+用户可以有选择地还原少数磁盘，而不是整个备份集。 提供所需的磁盘 LUN 作为参数，以便仅还原这些磁盘，而不是整个磁盘集，如[此处](selective-disk-backup-restore.md#restore-selective-disks-with-powershell)所述。
 
 > [!IMPORTANT]
-> 一种是有选择性地备份磁盘以有选择地还原磁盘。 [此处](selective-disk-backup-restore.md#selective-disk-restore)提供了详细信息。
+> 若要有选择地还原磁盘，必须有选择地备份磁盘。 [此处](selective-disk-backup-restore.md#selective-disk-restore)提供了详细信息。
 
 还原磁盘以后，转到下一部分来了解如何创建 VM。
+
+#### <a name="restore-disks-to-a-secondary-region"></a>将磁盘还原到次要区域
+
+如果在保护 Vm 的保管库上启用跨区域还原，则会将备份数据复制到次要区域。 你可以使用备份数据来执行还原。 执行以下步骤以在次要区域中触发还原：
+
+1. 提取 Vm 受保护的[保管库 ID](#fetch-the-vault-id) 。
+1. 选择 [要还原的正确备份项](#select-the-vm-when-restoring-files)。
+1. 选择要用于执行还原的次要区域中的相应恢复点。
+
+    若要完成此步骤，请运行以下命令：
+
+    ```powershell
+    $rp=Get-AzRecoveryServicesBackupRecoveryPoint -UseSecondaryRegion -Item $backupitem -VaultId $targetVault.ID
+    $rp=$rp[0]
+    ```
+
+1. 使用参数执行 [AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem) cmdlet， `-RestoreToSecondaryRegion` 以在次要区域中触发还原。
+
+    若要完成此步骤，请运行以下命令：
+
+    ```powershell
+    $restorejob = Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -StorageAccountName "DestAccount" -StorageAccountResourceGroupName "DestRG" -TargetResourceGroupName "DestRGforManagedDisks" -VaultId $targetVault.ID -VaultLocation $targetVault.Location -RestoreToSecondaryRegion -RestoreOnlyOSDisk
+    ```
+
+    输出将类似于以下示例：
+
+    ```output
+    WorkloadName     Operation             Status              StartTime                 EndTime          JobID
+    ------------     ---------             ------              ---------                 -------          ----------
+    V2VM             CrossRegionRestore   InProgress           4/23/2016 5:00:30 PM                       cf4b3ef5-2fac-4c8e-a215-d2eba4124f27
+    ```
+
+1. 用参数执行 [AzRecoveryServicesBackupJob](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupjob) cmdlet `-UseSecondaryRegion` 以监视还原作业。
+
+    若要完成此步骤，请运行以下命令：
+
+    ```powershell
+    Get-AzRecoveryServicesBackupJob -From (Get-Date).AddDays(-7).ToUniversalTime() -To (Get-Date).ToUniversalTime() -UseSecondaryRegion -VaultId $targetVault.ID
+    ```
+
+    输出将类似于以下示例：
+
+    ```output
+    WorkloadName     Operation            Status               StartTime                 EndTime                   JobID
+    ------------     ---------            ------               ---------                 -------                   -----
+    V2VM             CrossRegionRestore   InProgress           2/8/2021 4:24:57 PM                                 2d071b07-8f7c-4368-bc39-98c7fb2983f7
+    ```
 
 ## <a name="replace-disks-in-azure-vm"></a>更换 Azure VM 中的磁盘
 

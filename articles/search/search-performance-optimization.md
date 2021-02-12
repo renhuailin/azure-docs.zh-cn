@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.openlocfilehash: 6ca489dc0c5c7ba8ba67f3456d04be953544a8fb
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: b7c71524dc40f7eabd5ff86ee21c8197acfae1a3
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99987815"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100102285"
 ---
 # <a name="scale-for-performance-on-azure-cognitive-search"></a>Azure 认知搜索的性能缩放
 
@@ -87,13 +87,16 @@ ms.locfileid: "99987815"
 
 由于副本是数据的副本，因此，使用多个副本可让 Azure 认知搜索针对一个副本执行计算机重新启动和维护，同时可继续针对其他副本执行查询。 相反，如果删除副本，将会导致查询性能下降，并认为这些副本是未充分利用的资源。
 
+<a name="availability-zones"></a>
+
 ### <a name="availability-zones"></a>可用性区域
 
-[可用性区域](https://docs.microsoft.com/azure/availability-zones/az-overview) 将区域的数据中心分成不同的物理位置组，以提供高可用性突破。 搜索服务在一个区域中运行;副本在不同的区域中运行。
+[可用性区域](https://docs.microsoft.com/azure/availability-zones/az-overview) 将区域的数据中心分成不同的物理位置组，以在同一区域内提供高可用性。 对于认知搜索，各个副本是区域分配的单位。 搜索服务在一个区域中运行;其副本在不同的区域中运行。
 
 可以通过将两个或多个副本添加到搜索服务来利用 Azure 认知搜索可用性区域。 每个副本都将放置在该区域内的不同可用性区域中。 如果副本数多于可用性区域，副本将在可用性区域之间平均分布。
 
 Azure 认知搜索当前支持为标准层或更高版本的搜索服务可用性区域，这些服务在以下某个区域中创建：
+
 + 澳大利亚东部 (创建2021年1月30日，或更高版本) 
 + 加拿大中部 (创建2021年1月30日，或更高版本) 
 + 美国中部 (创建2020年12月4日或更高版本) 
@@ -106,7 +109,7 @@ Azure 认知搜索当前支持为标准层或更高版本的搜索服务可用�
 + 2021年1月29日西欧创建 () 
 + 2021年1月30日，或更高) 版本创建的美国西部 2 (
 
-可用性区域不会影响 [Azure 认知搜索服务级别协议](https://azure.microsoft.com/support/legal/sla/search/v1_0/)。
+可用性区域不会影响 [Azure 认知搜索服务级别协议](https://azure.microsoft.com/support/legal/sla/search/v1_0/)。 你仍需要3个或更多个副本来实现查询高可用性。
 
 ## <a name="scale-for-geo-distributed-workloads-and-geo-redundancy"></a>针对地理分散的工作负荷和异地冗余进行缩放
 

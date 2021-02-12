@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 02/02/2020
+ms.date: 02/02/2021
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 228f837a8826612bbbadf2ca8c5ef339ab248397
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 267094ea6a7295a65b93fb7700c97e4280da341d
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99524986"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99539105"
 ---
 ::: zone target="docs"
 
@@ -267,6 +267,35 @@ ms.locfileid: "99524986"
     ```
 
 如果遇到任何问题，请向 Data Box 亚洲运营部门 [adbo@microsoft.com](mailto:adbo@microsoft.com) 发送电子邮件，说明问题的详细信息，并在主题行中加入作业名称。
+
+::: zone target="chromeless"
+
+## <a name="verify-data-upload-to-azure"></a>验证 Azure 中的数据上传
+
+[!INCLUDE [data-box-verify-upload](../../includes/data-box-verify-upload.md)]
+
+## <a name="erasure-of-data-from-data-box"></a>从 Data Box 中擦除数据
+ 
+
+::: zone-end
+
+## <a name="united-arab-emirates"></a>[阿拉伯联合酋长国](#tab/in-uae)
+
+1. 保留寄送设备所用的原始包装盒供退回寄送时使用。
+2. 确保数据已复制到设备，并且“准备交付”步骤已成功完成。
+3. 记下设备本地 Web UI 的“准备交付”页面上的参考编号。
+4. 关闭设备电源并拔下电缆。 将设备随附的电源线卷好并安全地放在设备后面。
+6. 在原始包装盒中打包设备以退回寄送。
+7. 请向 [Azure Data Box 运营中心](mailto:adbops@microsoft.com)发送电子邮件以获取一个 ID，该 ID 将用于在数据中心返回包时对其进行识别。
+8. 在打印出来的发货标签上写下此 ID，然后填写寄信人地址，确保清晰可见。  
+9. 通过转到 [DHL Express UAE](https://mydhl.express.dhl/ae/en/home.html#/schedulePickupTab) > “计划取件”，在线预订取件。
+   - 从运单号码字段的设备本地 Web UI 的“准备交付”页中输入参考编号。
+   - 预约时间为上午 9:00 至下午 2:00，每周六天（不包括周五和公共节假日）。
+   - 取件请求应至少在客户关门时间之前 90 分钟提出。
+10. 如果遇到有关 DHL 预订工具的任何问题，可以使用以下任一种方法与 DHL 联系：
+    - 致电 04-2924545。
+    - 请向 [ecom.ae@dhl.com](mailto:ecom.ae@dhl.com) 发送电子邮件，说明问题的详细信息，并将运单号放入主题行。
+    - 致电 DHL 客户支持 600 567567。
 
 ::: zone target="chromeless"
 

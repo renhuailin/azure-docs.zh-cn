@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: 67fc80b5f34cf3a98fd39ddc352cb2dd9a5e7151
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7b32baa23a31342095e542d60745a503b81e89a9
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85564922"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100092700"
 ---
 # <a name="connect-your-symantec-icdx-appliance"></a>连接 Symantec ICDx 设备 
 
@@ -40,7 +40,7 @@ Symantec ICDx 可以将日志直接集成到 Azure Sentinel。
 2. 在 ICDx 导航栏上，单击 " **配置**"。 
 3. 在 **配置** 屏幕的顶部，单击 " **转发器**"。
 4. 在 " **转发器**" 下的 "Microsoft Azure Sentinel (Log Analytics") 中，单击 " **添加**"。 
-4. 在 **Microsoft Azure Sentinel (Log Analytics) ** "窗口中，单击" **显示高级**"。 
+4. 在 **Microsoft Azure Sentinel (Log Analytics)** "窗口中，单击" **显示高级**"。 
 5. 在展开到 Microsoft Azure Sentinel (Log Analytics) "窗口中，执行以下操作：
     -   **名称**：键入不超过30个字符的转发器的名称。 选择唯一的有意义的名称。 此名称显示在 " **配置** " 屏幕上的转发器列表和 **仪表板** 屏幕上的仪表板中。 例如： Log Analytics 东 Microsoft Azure。 此字段为必需字段。
     -   **说明**：键入转发器的描述。 此说明也出现在 " **配置** " 屏幕上的转发器列表中。 包括详细信息，例如要转发的事件类型和需要检查数据的组。

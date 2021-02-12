@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 22ac3b9ac5f7a10226e8dc7197fdf60dc0a84e3b
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: ffddcc45975648be39117c3f2d174fe58ca957fc
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99627610"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100102914"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 中的管理员角色权限
 
@@ -89,6 +89,10 @@ ms.locfileid: "99627610"
 ### <a name="attack-simulation-administrator"></a>[攻击模拟管理员](#attack-simulation-administrator-permissions)
 
 拥有此角色的用户可以创建和管理攻击模拟创建的所有方面、启动/调度模拟以及查看模拟结果。 此角色的成员对租户中的所有模拟具有此访问权限。
+
+### <a name="azure-ad-joined-device-local-administratordevice-administrators"></a>[Azure AD 联接的设备本地管理员](#azure-ad-joined-device-local-administrator-permissions)/Device 管理员
+
+此角色只能作为[设备设置](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/DeviceSettings/menuId/)中的其他本地管理员进行分配。 拥有此角色的用户成为所有已加入 Azure Active Directory 的 Windows 10 设备上的本地计算机管理员。 他们无权管理 Azure Active Directory 中的设备对象。
 
 ### <a name="azure-devops-administrator"></a>[Azure DevOps 管理员](#azure-devops-administrator-permissions)
 
@@ -164,12 +168,7 @@ In | 有权执行的操作
 
 ### <a name="desktop-analytics-administrator"></a>[桌面分析管理员](#desktop-analytics-administrator-permissions)
 
-
 充当此角色的用户可以管理桌面分析以及 Office 自定义和策略服务。 对于 Desktop Analytics，此权限包括查看资产库存、创建部署计划、查看部署和运行状态。 对于 Office 自定义和策略服务，此角色可让用户管理 Office 策略。
-
-### <a name="device-administrators"></a>[设备管理员](#device-administrators-permissions)
-
-此角色只能作为[设备设置](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/DeviceSettings/menuId/)中的其他本地管理员进行分配。 拥有此角色的用户成为所有已加入 Azure Active Directory 的 Windows 10 设备上的本地计算机管理员。 他们无权管理 Azure Active Directory 中的设备对象。
 
 ### <a name="directory-readers"></a>[目录读取者](#directory-readers-permissions)
 
@@ -449,6 +448,10 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 在 Windows Defender ATP
 > [!NOTE]
 > 在 Microsoft Graph API 和 Azure AD PowerShell 中，此角色标识为“Lync 服务管理员”。 它是 [Azure 门户](https://portal.azure.com/)中的“Skype for Business 管理员”。
 
+### <a name="teams-administrator"></a>[Teams 管理员](#teams-administrator-permissions)
+
+充当此角色的用户可以通过 Microsoft Teams 和 Skype for Business 管理中心以及相应的 PowerShell 模块来管理 Microsoft Teams 工作负荷的所有方面。 这包括（但不限于）与电话、消息、会议和 Teams 自身相关的所有管理工具。 另外，利用此角色，还可以创建和管理所有 Microsoft 365 组，管理支持票证并监视服务运行状况。
+
 ### <a name="teams-communications-administrator"></a>[Teams 通信管理员](#teams-communications-administrator-permissions)
 
 充当此角色的用户可以管理 Microsoft Teams 工作负荷的语音与电话相关方面。 这包括用于分配电话号码的管理工具、语音和会议策略，以及通话分析工具集的完全访问权限。
@@ -464,10 +467,6 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 在 Windows Defender ATP
 ### <a name="teams-devices-administrator"></a>[Teams 设备管理员](#teams-devices-administrator-permissions)
 
 具有此角色的用户可以在 Teams 管理中心管理 [Teams 认证的设备](https://www.microsoft.com/microsoft-365/microsoft-teams/across-devices/devices)。 此角色允许同时查看所有设备，并能够搜索和筛选设备。 用户可以检查每个设备的详细信息，包括设备的登录帐户、品牌和型号。 用户可以更改设备上的设置并更新软件版本。 此角色不会授权检查 Teams 活动和设备的通话质量。 
-
-### <a name="teams-service-administrator"></a>[Teams 服务管理员](#teams-service-administrator-permissions)
-
-充当此角色的用户可以通过 Microsoft Teams 和 Skype for Business 管理中心以及相应的 PowerShell 模块来管理 Microsoft Teams 工作负荷的所有方面。 这包括（但不限于）与电话、消息、会议和 Teams 自身相关的所有管理工具。 另外，利用此角色，还可以创建和管理所有 Microsoft 365 组，管理支持票证并监视服务运行状况。
 
 ### <a name="usage-summary-reports-reader"></a>[使用情况摘要报表读取者](#usage-summary-reports-reader-permissions)
 
@@ -602,6 +601,16 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 在 Windows Defender ATP
 > | microsoft.office365.protectionCenter/attackSimulator/payload/allProperties/allTasks | 在攻击模拟器中创建和管理攻击有效负载。 |
 > | microsoft.office365.protectionCenter/attackSimulator/reports/allProperties/read | 读取有关攻击模拟、响应和相关培训的报告。 |
 > | microsoft.office365.protectionCenter/attackSimulator/simulation/allProperties/allTasks | 在攻击模拟器中创建和管理攻击模拟模板。 |
+
+### <a name="azure-ad-joined-device-local-administrator-permissions"></a>Azure AD 联接的设备本地管理员权限
+
+分配到此角色的用户将添加到已加入 Azure AD 的设备上的本地管理员组。
+
+> [!div class="mx-tableFixed"]
+> | 操作 | 说明 |
+> | --- | --- |
+> | microsoft.directory/groupSettings/basic/read | 读取 Azure Active Directory 中 groupSettings 的基本属性。 |
+> | microsoft.directory/groupSettingTemplates/basic/read | 读取 Azure Active Directory 中 groupSettingTemplates 的基本属性。 |
 
 ### <a name="azure-devops-administrator-permissions"></a>Azure DevOps 管理员权限
 
@@ -911,16 +920,6 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 在 Windows Defender ATP
 > | microsoft.office365.desktopAnalytics/allEntities/allTasks | 管理桌面分析的各个方面。 |
 > | microsoft.office365.serviceHealth/allEntities/allTasks | 读取和配置 Microsoft 365 服务运行状况。 |
 > | microsoft.office365.supportTickets/allEntities/allTasks | 创建和管理 Office 365 支持票证。 |
-
-### <a name="device-administrators-permissions"></a>设备管理员权限
-
-分配到此角色的用户将添加到已加入 Azure AD 的设备上的本地管理员组。
-
-> [!div class="mx-tableFixed"]
-> | 操作 | 说明 |
-> | --- | --- |
-> | microsoft.directory/groupSettings/basic/read | 读取 Azure Active Directory 中 groupSettings 的基本属性。 |
-> | microsoft.directory/groupSettingTemplates/basic/read | 读取 Azure Active Directory 中 groupSettingTemplates 的基本属性。 |
 
 ### <a name="directory-readers-permissions"></a>目录读取者权限
 可以读取基本目录信息。 用于授予对应用程序的访问权限，不针对用户。
@@ -1847,6 +1846,36 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 在 Windows Defender ATP
 > | office365. usageReports/allEntities/allProperties/read | 阅读 Office 365 使用情况报告。 |
 > | microsoft.office365.webPortal/allEntities/standard/read | 读取 microsoft.office365.webPortal 中所有资源的基本属性。 |
 
+### <a name="teams-administrator-permissions"></a>团队管理员权限
+
+可以管理 Microsoft Teams 服务。
+
+> [!NOTE]
+> 此角色拥有 Azure Active Directory 外部的其他权限。 有关详细信息，请参阅上面的角色说明。
+
+
+> [!div class="mx-tableFixed"]
+> | 操作 | 说明 |
+> | --- | --- |
+> | microsoft.azure.serviceHealth/allEntities/allTasks | 读取和配置 Azure 服务运行状况。 |
+> | microsoft.azure.supportTickets/allEntities/allTasks | 为目录级服务创建和管理 Azure 支持票证。 |
+> | microsoft.directory/groups/hiddenMembers/read | 读取 Azure Active Directory 中的 groups.hiddenMembers 属性。 |
+> | microsoft.directory/groups/unified/appRoleAssignments/update | 更新 Azure Active Directory 中的 groups.unified 属性。 |
+> | microsoft. directory/groups. 统一/基本/更新 | 更新 Microsoft 365 组的基本属性。 |
+> | microsoft. 目录/组。统一/创建 | 创建 Microsoft 365 组。 |
+> | microsoft. directory/groups. 统一/删除 | 删除 Microsoft 365 组。 |
+> | microsoft. 目录/组。统一/成员/更新 | 更新 Microsoft 365 组的成员资格。 |
+> | microsoft. 目录/组。统一/所有者/更新 | 更新 Microsoft 365 组的所有权。 |
+> | microsoft. 目录/组。统一/还原 | 还原 Microsoft 365 组 |
+> | 服务主体/managePermissionGrantsForGroup. microsoft-all-application-permissions | 代表组授予委派权限的许可 |
+> | microsoft.office365.network/performance/allProperties/read | 在 M365 管理中心内读取网络性能页。 |
+> | microsoft.office365.serviceHealth/allEntities/allTasks | 读取和配置 Microsoft 365 服务运行状况。 |
+> | microsoft.office365.skypeForBusiness/allEntities/allTasks | 管理 Skype for Business Online 的所有方面 |
+> | microsoft.office365.supportTickets/allEntities/allTasks | 创建和管理 Office 365 支持票证。 |
+> | office365. usageReports/allEntities/allProperties/read | 阅读 Office 365 使用情况报告。 |
+> | microsoft.office365.webPortal/allEntities/standard/read | 读取 microsoft.office365.webPortal 中所有资源的基本属性。 |
+> | microsoft.teams/allEntities/allProperties/allTasks | 管理 Teams 中的所有资源。 |
+
 ### <a name="teams-communications-administrator-permissions"></a>Teams 通信管理员权限
 
 可以管理 Microsoft Teams 服务中的通话和会议功能。
@@ -1913,36 +1942,6 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 在 Windows Defender ATP
 > | --- | --- |
 > | microsoft.office365.webPortal/allEntities/basic/read | 读取 microsoft.office365.webPortal 中所有资源的基本属性。 |
 > | microsoft.teams/devices/basic/read | 管理经 Teams 认证的设备的所有方面，包括配置策略。 |
-
-### <a name="teams-service-administrator-permissions"></a>Teams 服务管理员权限
-
-可以管理 Microsoft Teams 服务。
-
-> [!NOTE]
-> 此角色拥有 Azure Active Directory 外部的其他权限。 有关详细信息，请参阅上面的角色说明。
-
-
-> [!div class="mx-tableFixed"]
-> | 操作 | 说明 |
-> | --- | --- |
-> | microsoft.azure.serviceHealth/allEntities/allTasks | 读取和配置 Azure 服务运行状况。 |
-> | microsoft.azure.supportTickets/allEntities/allTasks | 为目录级服务创建和管理 Azure 支持票证。 |
-> | microsoft.directory/groups/hiddenMembers/read | 读取 Azure Active Directory 中的 groups.hiddenMembers 属性。 |
-> | microsoft.directory/groups/unified/appRoleAssignments/update | 更新 Azure Active Directory 中的 groups.unified 属性。 |
-> | microsoft. directory/groups. 统一/基本/更新 | 更新 Microsoft 365 组的基本属性。 |
-> | microsoft. 目录/组。统一/创建 | 创建 Microsoft 365 组。 |
-> | microsoft. directory/groups. 统一/删除 | 删除 Microsoft 365 组。 |
-> | microsoft. 目录/组。统一/成员/更新 | 更新 Microsoft 365 组的成员资格。 |
-> | microsoft. 目录/组。统一/所有者/更新 | 更新 Microsoft 365 组的所有权。 |
-> | microsoft. 目录/组。统一/还原 | 还原 Microsoft 365 组 |
-> | 服务主体/managePermissionGrantsForGroup. microsoft-all-application-permissions | 代表组授予委派权限的许可 |
-> | microsoft.office365.network/performance/allProperties/read | 在 M365 管理中心内读取网络性能页。 |
-> | microsoft.office365.serviceHealth/allEntities/allTasks | 读取和配置 Microsoft 365 服务运行状况。 |
-> | microsoft.office365.skypeForBusiness/allEntities/allTasks | 管理 Skype for Business Online 的所有方面 |
-> | microsoft.office365.supportTickets/allEntities/allTasks | 创建和管理 Office 365 支持票证。 |
-> | office365. usageReports/allEntities/allProperties/read | 阅读 Office 365 使用情况报告。 |
-> | microsoft.office365.webPortal/allEntities/standard/read | 读取 microsoft.office365.webPortal 中所有资源的基本属性。 |
-> | microsoft.teams/allEntities/allProperties/allTasks | 管理 Teams 中的所有资源。 |
 
 ### <a name="usage-summary-reports-reader-permissions"></a>使用情况摘要报表读取者权限
 只能查看 M365 使用情况分析和生产力分数中的租户级聚合。
@@ -2016,9 +2015,9 @@ B2C IEF 策略管理员 | B2C IEF 策略管理员 | 3edaf663-341e-4475-9f94-5c39
 条件访问管理员 | 条件访问管理员 | b1be1c3e-b65d-4f19-8427-f6fa0d97feb9
 客户密码箱访问审批者 | 客户密码箱访问审批者 | 5c4f9dcd-47dc-4cf7-8c9a-9e4207cbfc91
 桌面分析管理员 | 桌面分析管理员 | 38a96431-2bdf-4b4c-8b6e-5d3d8abac1a4
-设备联接 | 不推荐使用 | 9c094953-4995-41c8-84c8-3ebb9b32c93f
-设备管理器 | 不推荐使用 | 2b499bcd-da44-4968-8aec-78e1674fa64d
-设备用户 | 不推荐使用 | d405c6df-0af8-4e3b-95e4-4d06e542189e
+设备联接 | 已放弃 | 9c094953-4995-41c8-84c8-3ebb9b32c93f
+设备管理器 | 已放弃 | 2b499bcd-da44-4968-8aec-78e1674fa64d
+设备用户 | 已放弃 | d405c6df-0af8-4e3b-95e4-4d06e542189e
 目录读者 | 目录读者 | 88d8e3e3-8f55-4a1e-953a-9b9898b8876b
 目录同步帐户 | 不显示，因为不应使用它 | d29b2b05-8046-44ba-8758-1e26182fcf32
 目录编写人员 | 目录编写人员 | 9360feb5-f418-4baa-8175-e2a00bac4301
@@ -2027,7 +2026,7 @@ Exchange 管理员 | Exchange 管理员 | 29232cdf-9323-42fd-ade2-1d097af3e4de
 外部 ID 用户流管理员 | 外部 ID 用户流管理员 | 6e591065-9bad-43ed-90f3-e9424366d2f0
 外部 ID 用户流属性管理员 | 外部 ID 用户流属性管理员 | 0f971eea-41eb-4569-a71e-57bb8a3eff1e
 外部标识提供者管理员 | 外部标识提供者管理员 | be2f45a1-457d-42af-a067-6ec1fa63bc45
-全局管理员角色 | 全局管理员 | 62e90394-69f5-4237-9190-012177145e10
+全局管理员 | 全局管理员 | 62e90394-69f5-4237-9190-012177145e10
 全局读取者 | 全局读取者 | f2ef992c-3afb-46b9-b7cf-a126ee74c451
 组管理员 | 组管理员 | fdd7a751-b60b-444a-984c-02652fe8fa1c 
 来宾邀请者 | 来宾邀请者 | 95e79109-95c0-4d8e-aee3-d01accf2d47b
@@ -2061,15 +2060,15 @@ Power Platform 管理员 | Power Platform 管理员 | 11648597-926c-4cf3-9c36-bc
 服务支持管理员 | 服务支持管理员 | f023fd81-a637-4b56-95fd-791ac0226033
 SharePoint 管理员 | SharePoint 管理员 | f28a1f50-f6e7-4571-818b-6a12f2af6b6c
 Skype for Business 管理员 | Skype for Business 管理员 | 75941009-915a-4869-abe7-691bff18279e
+Teams 管理员 | 团队管理员 | 69091246-20e8-4a56-aa4d-066075b2a7a8
 Teams 通信管理员 | Teams 通信管理员 | baf37b3a-610e-45da-9e62-d9d1e5e8914b
 Teams 通信支持工程师 | Teams 通信支持工程师 | f70938a0-fc10-4177-9e90-2178f8765737
 Teams 通信支持专家 | Teams 通信支持专家 | fcf91098-03e3-41a9-b5ba-6f0ec8188a12
 Teams 设备管理员 | Teams 设备管理员 | 3d762c5a-1b6c-493f-843e-55a3b42923d4
-Teams 服务管理员 | Teams 服务管理员 | 69091246-20e8-4a56-aa4d-066075b2a7a8
 使用情况摘要报表读取者 | 使用情况摘要报表读取者 | 75934031-6c7e-415a-99d7-48dbd49e875e
 用户 | 未显示，因为无法使用它 | a0b1b346-4d3e-4e8b-98f8-753987be4970
 用户管理员 | 用户管理员 | fe930be7-5e62-47db-91af-98c3a49a38b1
-工作区设备联接 | 不推荐使用 | c34f683f-4d5a-4403-affd-6615e00e3a7f
+工作区设备联接 | 已放弃 | c34f683f-4d5a-4403-affd-6615e00e3a7f
 
 ## <a name="deprecated-roles"></a>已弃用的角色
 
@@ -2089,16 +2088,16 @@ Azure 门户中不一定会显示 PowerShell 或 MS Graph API 返回的每个角
 
 API 名称 | Azure 门户中的名称 | 说明
 -------- | ------------------- | -------------
-设备联接 | 不推荐使用 | [已弃用角色的文档](permissions-reference.md#deprecated-roles)
-设备管理器 | 不推荐使用 | [已弃用角色的文档](permissions-reference.md#deprecated-roles)
-设备用户 | 不推荐使用 | [已弃用角色的文档](permissions-reference.md#deprecated-roles)
+设备联接 | 已放弃 | [已弃用角色的文档](permissions-reference.md#deprecated-roles)
+设备管理器 | 已放弃 | [已弃用角色的文档](permissions-reference.md#deprecated-roles)
+设备用户 | 已放弃 | [已弃用角色的文档](permissions-reference.md#deprecated-roles)
 目录同步帐户 | 未显示，因为不应使用它 | [目录同步帐户文档](permissions-reference.md#directory-synchronization-accounts)
 来宾用户 | 未显示，因为无法使用它  | NA
 合作伙伴层 1 支持 | 未显示，因为不应使用它 | [合作伙伴一线支持人员文档](permissions-reference.md#partner-tier1-support)
 合作伙伴层 2 支持 | 未显示，因为不应使用它 | [合作伙伴二线支持人员文档](permissions-reference.md#partner-tier2-support)
 受限来宾用户 | 未显示，因为无法使用它 | NA
 用户 | 未显示，因为无法使用它 | NA
-工作区设备联接 | 不推荐使用 | [已弃用角色的文档](permissions-reference.md#deprecated-roles)
+工作区设备联接 | 已放弃 | [已弃用角色的文档](permissions-reference.md#deprecated-roles)
 
 ## <a name="password-reset-permissions"></a>密码重置权限
 
@@ -2110,7 +2109,6 @@ API 名称 | Azure 门户中的名称 | 说明
 目录读者 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
 全局管理员 | &nbsp; | &nbsp; | &nbsp; | &nbsp; | :heavy_check_mark: | :heavy_check_mark:\*
 组管理员 | &nbsp; | &nbsp; | &nbsp; | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
-来宾 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
 来宾邀请者 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
 支持管理员 | &nbsp; | :heavy_check_mark: | &nbsp; | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
 消息中心读取者 | &nbsp; | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
@@ -2118,7 +2116,6 @@ API 名称 | Azure 门户中的名称 | 说明
 特权身份验证管理员 | &nbsp; | &nbsp; | &nbsp; | &nbsp; | :heavy_check_mark: | :heavy_check_mark:
 特权角色管理员 | &nbsp; | &nbsp; | &nbsp; | &nbsp; | :heavy_check_mark: | :heavy_check_mark:
 报告读者 | &nbsp; | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
-受限来宾 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
 不 (管理员角色的用户)  | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
 用户管理员 | &nbsp; | &nbsp; | &nbsp; | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
 使用情况摘要报表读取者 | &nbsp; | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
