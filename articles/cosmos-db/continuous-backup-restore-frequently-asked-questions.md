@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/01/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: c0af1db12f3ade2945524f48e4539d2d2e9aa6b9
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 1cf94964f420f7a7d4fc0f6ba0b77813b3e75787
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99539173"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100393218"
 ---
 # <a name="frequently-asked-questions-on-the-azure-cosmos-db-point-in-time-restore-feature-preview"></a>Azure Cosmos DB 时间点还原功能的常见问题解答 (预览版) 
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -31,7 +31,7 @@ ms.locfileid: "99539173"
 根据数据库或容器等关键资源是否存在，还原可能不会发生。 你可以通过输入时间并在给定的时间内查看所选数据库或容器来进行验证。 如果看不到要还原的资源，还原过程将不起作用。
 
 ### <a name="how-can-i-track-if-an-account-is-being-restored"></a>如何跟踪帐户是否正在还原？
-提交还原命令并等待同一页后，操作完成后，状态栏将显示 "已成功还原还原的帐户" 消息。 你还可以搜索已还原的帐户，并 [跟踪正在还原的帐户的状态](continuous-backup-restore-portal.md#track-restore-status)。 当还原正在进行时，帐户的状态将为 "正在创建"，还原操作完成后，帐户状态将更改为 "联机"。
+提交还原命令并等待同一页后，操作完成后，状态栏将显示 "已成功还原还原的帐户" 消息。 你还可以搜索已还原的帐户，并 [跟踪正在还原的帐户的状态](continuous-backup-restore-portal.md#track-restore-status)。 当还原正在进行时，将 *创建* 帐户的状态，还原操作完成后，帐户状态将更改为 " *联机*"。
 
 同样，对于 PowerShell 和 CLI，可以通过执行命令来跟踪还原操作的进度，如下所示 `az cosmosdb show` ：
 
@@ -39,7 +39,7 @@ ms.locfileid: "99539173"
 az cosmosdb show --name "accountName" --resource-group "resourceGroup"
 ```
 
-当帐户处于联机状态时，provisioningState 将显示 "成功"。
+当帐户联机时，provisioningState 显示 *成功* 。
 
 ```json
 {
@@ -60,7 +60,7 @@ az cosmosdb show --name "accountName" --resource-group "resourceGroup"
 ### <a name="how-can-i-find-out-whether-an-account-was-restored-from-another-account"></a>如何确定帐户是否已从另一个帐户还原？
 运行 `az cosmosdb show` 命令，在输出中可以看到属性的值 `createMode` 。 如果值设置为 **Restore**，则为。 它表示该帐户已从另一个帐户还原。 `restoreParameters`属性有更多详细信息 `restoreSource` ，例如，具有源帐户 ID。 参数中的最后一个 GUID `restoreSource` 是源帐户的 instanceId。
 
-例如，在下面的输出中，源帐户的实例 ID 为 "7b4bb-f6a0-430e-ade1-638d781830cc"
+例如，在下面的输出中，源帐户的实例 ID 为 *7b4bb-f6a0-430e-ade1-638d781830cc*
 
 ```json
 "restoreParameters": {
@@ -75,9 +75,9 @@ az cosmosdb show --name "accountName" --resource-group "resourceGroup"
 整个共享吞吐量数据库都会还原。 你无法在共享吞吐量数据库中选择用于还原的容器的子集。
 
 ### <a name="what-is-the-use-of-instanceid-in-the-account-definition"></a>在帐户定义中使用 InstanceID 的情况如何？
-在任意给定时间点，Azure Cosmos DB 帐户的 "accountName" 属性在活动状态下是全局唯一的。 但是，在删除帐户后，可以创建同名的另一个帐户，因此 "accountName" 不再足以标识帐户的实例。 
+在任意给定时间点，Azure Cosmos DB 帐户的 `accountName` 属性在活动状态下是全局唯一的。 但是，在删除帐户后，可以创建同名的另一个帐户，因此 "accountName" 不再足以标识帐户的实例。 
 
-ID 或 "instanceId" 是帐户实例的一个属性，它用于在多个帐户之间消除歧义， (live 和 deleted) 如果它们具有相同的还原名称。 可以通过运行或命令获取实例 ID `Get-AzCosmosDBRestorableDatabaseAccount`  `az cosmosdb restorable-database-account` 。 Name 属性值表示 "InstanceID"。
+ID 或 `instanceId` 是帐户实例的一个属性，它用于在多个帐户之间消除歧义， (live 和 deleted) 如果它们具有相同的还原名称。 可以通过运行或命令获取实例 ID `Get-AzCosmosDBRestorableDatabaseAccount`  `az cosmosdb restorable-database-account` 。 Name 属性值表示 "InstanceID"。
 
 ## <a name="next-steps"></a>后续步骤
 

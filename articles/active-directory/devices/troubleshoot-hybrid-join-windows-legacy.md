@@ -1,5 +1,5 @@
 ---
-title: 排除旧版混合 Azure Active Directory 联接设备的故障
+title: 排查已加入旧版混合 Azure Active Directory 的设备的问题
 description: 排查已加入混合 Azure Active Directory 的下层设备问题。
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 057ff064264485a9aea6fc2b31fe57ce37c805ce
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: 18104f06e779046786a2c7794736d01c35139490
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97895608"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100365797"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-down-level-devices"></a>排查已加入混合 Azure Active Directory 的下层设备问题 
 
@@ -39,12 +39,13 @@ ms.locfileid: "97895608"
 **应了解的内容：** 
 
 - 下层 Windows 设备混合 Azure AD 加入的工作方式与它在 Windows 10 中的工作方式略有不同。 许多客户没有意识到他们需要配置 AD FS（对于联合域）或无缝 SSO（对于托管域）。
+- 无缝 SSO 在 Firefox 和 Microsoft Edge 浏览器的隐私浏览模式下不起作用。 它在以增强保护模式下运行的 Internet Explorer 中也不起作用。
 - 对于具有联合域的客户，如果服务连接点 (SCP) 配置为指向托管域名（例如 contoso.onmicrosoft.com 而非 contoso.com），则下层 Windows 设备混合 Azure AD 加入不会工作。
 - 当有多个域用户登录到加入了混合 Azure AD 的下层设备时，同一物理设备在 Azure AD 中出现多次。  例如：如果 *jdoe* 和 *jharnett* 登录到某个设备，会在“用户信息”选项卡中为其中每个用户单独创建一个注册 (DeviceID)。 
 - 由于操作系统的重新安装或手动重新注册，在用户信息选项卡上也可能会出现同一设备的多个条目。
 - 设备的初始注册/加入配置为在登录或锁定/解锁时执行尝试。 可能会有 5 分钟的延迟，由任务计划程序任务触发。 
 - 对于 Windows 7 SP1 或 Windows Server 2008 R2 SP1，请确保安装 [KB4284842](https://support.microsoft.com/help/4284842)。 此更新可防止将来因客户更改密码后无法访问受保护密钥而导致身份验证失败。
-- 更改用户的 UPN 后，混合 Azure AD 联接可能会失败，从而破坏无缝 SSO 身份验证过程。 在联接过程中，你可能会发现它仍将旧的 UPN 发送到 Azure AD，除非清除了浏览器会话 cookie 或用户显式注销并删除了旧的 UPN。
+- 混合 Azure AD 联接可能会在用户更改其 UPN 后失败，从而破坏无缝 SSO 身份验证过程。 在加入过程中，你可能会看到它仍在将旧的 UPN 发送到 Azure AD，除非清除浏览器会话 Cookie 或者用户显式注销并删除旧的 UPN。
 
 ## <a name="step-1-retrieve-the-registration-status"></a>步骤 1：检索注册状态 
 
@@ -56,7 +57,7 @@ ms.locfileid: "97895608"
 
 此命令会显示一个对话框，其中提供了有关加入状态的详细信息。
 
-:::image type="content" source="./media/troubleshoot-hybrid-join-windows-legacy/01.png" alt-text="&quot;Workplace Join for Windows&quot; 对话框的屏幕截图。包含电子邮件地址的文本表明某个设备已加入工作区。" border="false":::
+:::image type="content" source="./media/troubleshoot-hybrid-join-windows-legacy/01.png" alt-text="Workplace Join for Windows 对话框的屏幕截图。包含电子邮件地址的文本提示某个设备已加入工作区。" border="false":::
 
 ## <a name="step-2-evaluate-the-hybrid-azure-ad-join-status"></a>步骤 2：评估混合 Azure AD 加入状态 
 
@@ -66,18 +67,18 @@ ms.locfileid: "97895608"
 
 - AD FS 或 Azure AD 配置不当或网络存在问题
 
-    :::image type="content" source="./media/troubleshoot-hybrid-join-windows-legacy/02.png" alt-text="&quot;Workplace Join for Windows&quot; 对话框的屏幕截图。文本报告在帐户身份验证期间发生了错误。" border="false":::
+    :::image type="content" source="./media/troubleshoot-hybrid-join-windows-legacy/02.png" alt-text="Workplace Join for Windows 对话框的屏幕截图。文本报告在帐户身份验证期间发生了错误。" border="false":::
     
    - Autoworkplace.exe 无法以无提示方式通过 Azure AD 或 AD FS 进行身份验证。 可能的原因如下：AD FS 缺少或配置不当（对于联合域）、Azure AD 无缝单一登录缺少或配置不当（对于托管域）或者网络存在问题。 
-   - 这可能是为用户启用/配置了多重身份验证 (MFA) ，而未在 AD FS 服务器上配置 WIAORMULTIAUTHN。 
+   - 还可能是由于为用户启用/配置了多重身份验证 (MFA)，但没有在 AD FS 服务器上配置 WIAORMULTIAUTHN。 
    - 另一种可能性是主领域发现 (HRD) 页面正在等待用户交互，从而阻止了 **autoworkplace.exe** 以无提示方式请求令牌。
    - 客户端的 IE 的 intranet 区域中可能缺少 AD FS 和 Azure AD URL。
    - 网络连接问题可能阻止 **autoworkplace.exe** 访问 AD FS 或 Azure AD URL。 
-   - **Autoworkplace.exe** 要求客户端能够从客户端直接连接到组织的本地 AD 域控制器，这意味着仅当客户端连接到组织的 intranet 时才会成功加入混合 Azure AD 加入。
+   - Autoworkplace.exe 要求客户端能够直接从客户端看到组织的本地 AD 域控制器。这意味着，只有当客户端连接到组织的 Intranet 时，混合 Azure AD 加入才会成功。
    - 你的组织使用 Azure AD 无缝单一登录，设备的 IE intranet 设置中不存在 `https://autologon.microsoftazuread-sso.com` 或 `https://aadg.windows.net.nsatc.net`，未对 Intranet 区域启用“允许通过脚本更新状态栏”。
 - 登录身份不是域用户
 
-   :::image type="content" source="./media/troubleshoot-hybrid-join-windows-legacy/03.png" alt-text="&quot;Workplace Join for Windows&quot; 对话框的屏幕截图。文本报告在帐户验证期间发生了错误。" border="false":::
+   :::image type="content" source="./media/troubleshoot-hybrid-join-windows-legacy/03.png" alt-text="Workplace Join for Windows 对话框的屏幕截图。文本报告在帐户验证期间发生了错误。" border="false":::
 
    以下几种不同原因可能会导致此问题：
 
@@ -85,11 +86,11 @@ ms.locfileid: "97895608"
    - 客户端无法连接到域控制器。    
 - 已达到配额
 
-    :::image type="content" source="./media/troubleshoot-hybrid-join-windows-legacy/04.png" alt-text="&quot;Workplace Join for Windows&quot; 对话框的屏幕截图。文本报告错误，因为用户已达到联接设备的最大数量。" border="false":::
+    :::image type="content" source="./media/troubleshoot-hybrid-join-windows-legacy/04.png" alt-text="Workplace Join for Windows 对话框的屏幕截图。文本报告一个错误，因为用户的已加入设备达到了最大数量。" border="false":::
 
 - 服务未响应 
 
-    :::image type="content" source="./media/troubleshoot-hybrid-join-windows-legacy/05.png" alt-text="&quot;Workplace Join for Windows&quot; 对话框的屏幕截图。文本报告由于服务器没有响应而发生错误。" border="false":::
+    :::image type="content" source="./media/troubleshoot-hybrid-join-windows-legacy/05.png" alt-text="Workplace Join for Windows 对话框的屏幕截图。文本报告因服务器没有响应而发生了错误。" border="false":::
 
 此外，也可以在“应用程序和服务日志\Microsoft-Workplace Join”下面的事件日志中找到状态信息
   

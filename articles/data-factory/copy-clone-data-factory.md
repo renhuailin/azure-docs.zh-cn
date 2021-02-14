@@ -1,22 +1,18 @@
 ---
 title: 在 Azure 数据工厂中复制或克隆数据工厂
 description: 了解如何在 Azure 数据工厂中复制或克隆数据工厂
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
-ms.workload: data-services
 author: chez-charlie
 ms.author: chez
-manager: jroth
 ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 304c39f4b6f7852068d4e72adfad2d41eeefc26c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1ea16785502ce8a82087b79dd8e7f0014c0059fc
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85552969"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100375232"
 ---
 # <a name="copy-or-clone-a-data-factory-in-azure-data-factory"></a>在 Azure 数据工厂中复制或克隆数据工厂
 
@@ -40,7 +36,7 @@ ms.locfileid: "85552969"
 
 1. 如果你处于 GIT 模式下：
     1. 每次从门户发布时，工厂的资源管理器模板都会保存到 adf\_publish 分支的 GIT 中
-    1. 将新工厂连接到_同一_存储库，并从 adf\_publish 分支进行构建。 资源（如管道、数据集和触发器）将一起克隆
+    1. 将新工厂连接到 _同一_ 存储库，并从 adf\_publish 分支进行构建。 资源（如管道、数据集和触发器）将一起克隆
 
 1. 如果你处于实时模式：
     1. 可以利用数据工厂 UI，将数据工厂的整个有效负载导出到资源管理器模板文件和参数文件中。 可以从门户中的“ARM 模板\导出资源管理器模板”按钮访问它们。

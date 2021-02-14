@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 02/04/2021
 ms.author: ambapat
-ms.openlocfilehash: 1a15ed6b92ade96dd2ed9ef6ffbbe17e2b1452ef
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 71cc36541b8809d93c84225edf771400d2878b4f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99581391"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100376048"
 ---
 # <a name="import-hsm-protected-keys-to-managed-hsm-byok"></a>将受 HSM 保护的密钥导入到托管 HSM (BYOK) 
 
@@ -30,7 +30,7 @@ ms.locfileid: "99581391"
 
 这里是编写过程的概述。 本文后面将介绍要完成的具体步骤。
 
-* 在托管 HSM 中，生成一个密钥 (称为 *密钥交换密钥* (KEK) # A3。 KEK 必须是仅具有 `import` 密钥操作的 RSA-HSM 密钥。 
+* 在托管 HSM 中，生成一个密钥 (称为 *密钥交换密钥* (KEK) ) 。 KEK 必须是仅具有 `import` 密钥操作的 RSA-HSM 密钥。 
 * 以 .pem 文件形式下载 KEK 公钥。
 * 将 KEK 公钥传输到连接到本地 HSM 的脱机计算机。
 * 在脱机计算机中，使用 HSM 供应商提供的 BYOK 工具来创建 BYOK 文件。 
@@ -70,6 +70,7 @@ az login
 |Securosys SA|制造商，HSM 即服务|Primus HSM 系列，Securosys Clouds HSM|[Primus BYOK 工具和文档](https://www.securosys.com/primus-azure-byok)|
 |StorMagic|ISV（企业密钥管理系统）|多个 HSM 品牌和型号，包括<ul><li>Utimaco</li><li>Thales</li><li>nCipher</li></ul>请参阅 [StorMagic 站点](https://stormagic.com/doc/svkms/Content/Integrations/Azure_KeyVault_BYOK.htm)以了解详细信息|[SvKMS 和 Azure Key Vault BYOK](https://stormagic.com/doc/svkms/Content/Integrations/Azure_KeyVault_BYOK.htm)|
 |IBM|制造商|IBM 476x, CryptoExpress|[IBM Enterprise Key Management Foundation](https://www.ibm.com/security/key-management/ekmf-bring-your-own-key-azure)|
+|Utimaco|制造商，<br/>HSM 即服务|手杖信锚，CryptoServer|[Utimaco BYOK 工具和集成指南](https://support.hsm.utimaco.com/support/downloads/byok)|
 ||||
 
 

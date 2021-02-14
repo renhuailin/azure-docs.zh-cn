@@ -1,23 +1,18 @@
 ---
 title: 排查复制活动的性能问题
 description: 了解如何排查 Azure 数据工厂中复制活动的性能问题。
-services: data-factory
-documentationcenter: ''
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/07/2021
-ms.openlocfilehash: 203782ef2d95cd2b47082f630fa12531a110d49e
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 07be5d29ccb55fe97f38123ff4a850d28cd39ead
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98933927"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387676"
 ---
 # <a name="troubleshoot-copy-activity-performance"></a>排查复制活动的性能问题
 
@@ -223,7 +218,7 @@ ms.locfileid: "98933927"
 
     - 若要列出工作表，可以改为在工作表下拉框中单击“编辑”并输入工作表名称/索引。
 
-    - 若要将 ( # B0 100 MB) 的大型 excel 文件复制到其他存储，可以使用运动流式处理读取和执行的数据流 Excel 源。
+    - 若要将 (>100 MB) 的大型 excel 文件复制到其他存储，可以使用运动流式处理读取和执行的数据流 Excel 源。
     
 ## <a name="other-references"></a>其他参考资料
 

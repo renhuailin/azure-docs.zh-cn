@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: TheJY
 ms.author: jeanyd
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 02/11/2021
 ms.topic: how-to
-ms.openlocfilehash: 45bb045e7bad2d5f8a56b71787b3abb5921cb7d5
-ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
+ms.openlocfilehash: 4ff45eea8e07a282d8529c745344c11706bc27bb
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98985880"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387982"
 ---
 # <a name="create-an-azure-arc-enabled-postgresql-hyperscale-server-group"></a>创建启用了 Azure Arc 的 PostgreSQL 超大规模服务器组
 
@@ -81,14 +81,14 @@ azdata arc postgres server create -n <name> --workers <# worker nodes with #>=2>
 > [!IMPORTANT]
 > - 用于备份 (存储类- _-scb_) 默认为数据控制器的数据存储类（如果未提供）。
 > - 若要将服务器组还原到单独的服务器组 (如时间点还原) 必须配置服务器组以将 Pvc 用于 ReadWriteMany 访问模式。 创建服务器组时需要执行此操作。 创建后不能对其进行更改。 有关更多详细信息，请参阅：
->    - [有关备份和还原的此部分](https://docs.microsoft.com/azure/azure-arc/data/backup-restore-postgresql-hyperscale#create-a-server-group-that-is-ready-for-backups-and-restores)
->    - [本部分介绍启用了 Azure Arc PostgreSQL 超大规模的限制](https://docs.microsoft.com/azure/azure-arc/data/limitations-postgresql-hyperscale)
+>    - [创建可供备份和还原的服务器组](backup-restore-postgresql-hyperscale.md#create-a-server-group-that-is-ready-for-backups-and-restores)
+>    - [启用 Azure Arc 的限制 PostgreSQL 超大规模](limitations-postgresql-hyperscale.md)
 
 
 > [!NOTE]
 > - **还有其他可用的命令行参数。 通过运行查看选项的完整列表 `azdata arc postgres server create --help` 。**
-
-> - --Volume-* 参数所接受的单位是 Kubernetes 的资源数量， (整数后跟其中一个 SI 后缀 (T，G，M，K，m) 或它们的两个等效项 (Ti，Gi，Mi，Ki) # A5。
+>
+> - --Volume-* 参数所接受的单位是 Kubernetes 的资源数量， (整数后跟其中一个 SI 后缀 (T，G，M，K，m) 或它们的两个等效项 () ) Ti，
 > - 名称长度必须小于或等于12个字符，并且符合 DNS 命名约定。
 > - 系统将提示你输入 _postgres_ 标准管理用户的密码。  在运行 create 命令之前，可以通过设置 `AZDATA_PASSWORD` 会话环境变量来跳过交互式提示。
 > - 如果使用 AZDATA_USERNAME 部署了数据控制器并在同一终端会话中 AZDATA_PASSWORD 会话环境变量，则 AZDATA_PASSWORD 的值也将用于部署 PostgreSQL 超大规模服务器组。 如果你想要使用另一个密码，则 (1) 更新 AZDATA_PASSWORD 或 (2 的值) 删除 AZDATA_PASSWORD 环境变量，或在创建服务器组时，提示删除其值以交互方式输入密码。

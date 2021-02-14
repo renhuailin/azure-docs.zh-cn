@@ -7,12 +7,13 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/24/2020
-ms.openlocfilehash: 6432cc9affd34c0fa9b832aea91932a2b9e7540f
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.custom: references_regions
+ms.openlocfilehash: 9a73f9b734d5404d07e05dd37d5ad8571c1aab2e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576666"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100383885"
 ---
 # <a name="supported-data-sources-and-file-types-in-azure-purview"></a>Azure 监控范围中受支持的数据源和文件类型
 
@@ -70,6 +71,28 @@ Azure 监控范围支持以下源：
 - 100文件中 **(JSON、XML、TXT) 的其他结构化文件类型** 将在被视为 "资源集" 的一个或一组分区文件中 (L3 扫描) 进行采样
 - **SQL 对象和 CosmosDB 实体** -每个文件都是 L3 扫描的。
 - **文档文件类型** -每个文件都是 L3 扫描的。 资源集模式不适用于这些文件类型。
+
+## <a name="scan-regions"></a>扫描区域
+下面是监控范围扫描程序运行) 区域 (数据中心的所有 Azure 数据源的列表。 如果 Azure 数据源位于此列表之外的某个区域，则该扫描程序将在监控范围实例的区域中运行。
+ 
+### <a name="purview-scanner-regions"></a>监控范围扫描仪区域
+
+- EastUs
+- EastUs2 
+- Default-machinelearning-southcentralus
+- WestUs
+- WestUs2
+- SoutheastAsia
+- 西欧
+- NorthEurope
+- UkSouth
+- AustraliaEast
+- CanadaCentral
+- BrazilSouth
+- CentralIndia
+- JapanEast
+- SouthAfricaNorth
+- FranceCentral
 
 ## <a name="classification"></a>分类
 

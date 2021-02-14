@@ -3,14 +3,14 @@ title: 为 Azure Batch 帐户配置 Azure Key Vault 和托管标识的客户托�
 description: 了解如何使用客户管理的密钥加密 Batch 数据。
 author: pkshultz
 ms.topic: how-to
-ms.date: 01/25/2021
+ms.date: 02/11/2021
 ms.author: peshultz
-ms.openlocfilehash: 01dc21f067b03ad8e07a05a18aa6312ed7f7189e
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: d3f10436b95aaeb5eb35a873c2a3862c1492bd47
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98789407"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100385058"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-batch-account-with-azure-key-vault-and-managed-identity"></a>为 Azure Batch 帐户配置 Azure Key Vault 和托管标识的客户托管密钥
 
@@ -21,11 +21,6 @@ ms.locfileid: "98789407"
 有两种类型的托管标识： [*系统分配* 和 *用户分配*](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types)。
 
 您可以使用系统分配的托管标识创建 Batch 帐户，也可以创建单独的用户分配的托管标识，该标识将有权访问客户管理的密钥。 查看 [比较表](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) 以了解不同之处，并考虑哪个选项最适合您的解决方案。 例如，如果想要使用同一托管标识来访问多个 Azure 资源，则需要使用用户分配的托管标识。 否则，与 Batch 帐户关联的系统分配的托管标识可能已足够。 使用用户分配的托管标识，还可以选择在创建 Batch 帐户时强制执行客户托管的密钥，如 [以下示例中](#create-a-batch-account-with-user-assigned-managed-identity-and-customer-managed-keys)所示。
-
-> [!IMPORTANT]
-> Azure Batch 当前正在公开预览版中的客户托管密钥西欧、北欧、瑞士北部、美国中南部、美国中南部、美国西部、美国东部、美国东部2、美国西部2、US Gov 弗吉尼亚州和 US Gov 亚利桑那州地区。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
-> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="create-a-batch-account-with-system-assigned-managed-identity"></a>使用系统分配的托管标识创建 Batch 帐户
 
@@ -68,7 +63,7 @@ az batch account show \
 ```
 
 > [!NOTE]
-> 在 Batch 帐户中创建的系统分配的托管标识仅用于从 Key Vault 检索客户管理的密钥。 此标识在 Batch 池上不可用。
+> 在 Batch 帐户中创建的系统分配的托管标识仅用于从 Key Vault 检索客户管理的密钥。 此标识在 Batch 池上不可用。 若要在池中使用用户分配的托管标识，请参阅 [在 Batch 池中配置托管标识](managed-identity-pools.md)。
 
 ## <a name="create-a-user-assigned-managed-identity"></a>创建用户分配的托管标识
 
@@ -90,7 +85,7 @@ az batch account show \
 
 在 Key Vault Azure 门户的 "设置" 下的 " **访问策略** " 中，在 " **设置**" 下，添加使用托管标识的 Batch 帐户访问权限。 在 " **密钥权限**" 下，选择 " **获取**"、" **换行** 并 **解包** 密钥"。
 
-![显示 "添加访问策略" 屏幕的 Screenshow。](./media/batch-customer-managed-key/key-permissions.png)
+![显示 "添加访问策略" 屏幕的屏幕截图。](./media/batch-customer-managed-key/key-permissions.png)
 
 在 "**主体**" 下的 "**选择**" 字段中，填写以下项之一：
 
@@ -159,7 +154,7 @@ var account = await batchManagementClient.Account.CreateAsync("MyResourceGroup",
 
 ## <a name="update-the-customer-managed-key-version"></a>更新客户托管的密钥版本
 
-当你创建密钥的新版本时，请更新 Batch 帐户以使用新版本。 执行以下步骤：
+当你创建密钥的新版本时，请更新 Batch 帐户以使用新版本。 请执行下列步骤：
 
 1. 在 Azure 门户中导航到 Batch 帐户，并显示加密设置。
 2. 输入新密钥版本的 URI。 或者，你可以再次选择 "Key Vault" 和 "密钥" 来更新版本。
@@ -193,7 +188,7 @@ az batch account set \
 
 ## <a name="frequently-asked-questions"></a>常见问题
 
-- **现有批处理帐户是否支持客户托管的密钥？** 否。 仅新的批处理帐户支持客户管理的密钥。
+- **现有批处理帐户是否支持客户托管的密钥？** 不是。 仅新的批处理帐户支持客户管理的密钥。
 - **能否选择大于2048位的 RSA 密钥大小？** 是的，还支持 RSA 密钥大小 `3072` 和 `4096` 位数。
 - **吊销客户管理的密钥后可执行哪些操作？** 如果批处理失去了对客户管理的密钥的访问权限，则唯一允许的操作是帐户删除。
 - **如果意外删除了 Key Vault 的密钥，应该如何还原批处理帐户的访问权限？** 由于已启用清除保护和软删除，因此可以还原现有密钥。 有关详细信息，请参阅 [恢复 Azure Key Vault](../key-vault/general/key-vault-recovery.md)。
@@ -201,8 +196,8 @@ az batch account set \
 - **如何轮换密钥？** 客户管理的密钥不会自动轮替。 若要轮换密钥，请更新与帐户相关联的密钥标识符。
 - **还原访问权限后，批处理帐户再次工作需要多长时间？** 还原访问后，最多可能需要10分钟的时间才能访问该帐户。
 - **虽然批处理帐户不可用，但我的资源会发生什么情况呢？** 当 Batch 访问客户托管密钥时，正在运行的所有池将继续运行。 但是，节点将转换为不可用状态，并且任务将停止运行 (，并) 重新排队。 还原访问权限后，节点将再次变得可用，任务将重新启动。
-- **此加密机制是否适用于批处理池中的 VM 磁盘？** 否。 对于云服务配置池，不对 OS 和临时磁盘应用加密。 对于虚拟机配置池，默认情况下，将使用 Microsoft 平台托管密钥对 OS 和任何指定的数据磁盘进行加密。 目前，不能为这些磁盘指定您自己的密钥。 若要使用 Microsoft 平台托管密钥为批处理池加密 Vm 的临时磁盘，必须在[虚拟机配置](/rest/api/batchservice/pool/add#virtualmachineconfiguration)池中启用[diskEncryptionConfiguration](/rest/api/batchservice/pool/add#diskencryptionconfiguration)属性。 对于高度敏感的环境，我们建议启用临时磁盘加密，避免将敏感数据存储在 OS 和数据磁盘上。 有关详细信息，请参阅 [创建启用了磁盘加密的池](./disk-encryption.md)
-- **系统分配的托管标识在计算节点上可用的批处理帐户上吗？** 否。 系统分配的托管标识目前仅用于访问客户托管的密钥的 Azure Key Vault。
+- **此加密机制是否适用于批处理池中的 VM 磁盘？** 不是。 对于云服务配置池，不对 OS 和临时磁盘应用加密。 对于虚拟机配置池，默认情况下，将使用 Microsoft 平台托管密钥对 OS 和任何指定的数据磁盘进行加密。 目前，不能为这些磁盘指定您自己的密钥。 若要使用 Microsoft 平台托管密钥为批处理池加密 Vm 的临时磁盘，必须在[虚拟机配置](/rest/api/batchservice/pool/add#virtualmachineconfiguration)池中启用[diskEncryptionConfiguration](/rest/api/batchservice/pool/add#diskencryptionconfiguration)属性。 对于高度敏感的环境，我们建议启用临时磁盘加密，避免将敏感数据存储在 OS 和数据磁盘上。 有关详细信息，请参阅 [创建启用了磁盘加密的池](./disk-encryption.md)
+- **系统分配的托管标识在计算节点上可用的批处理帐户上吗？** 不是。 系统分配的托管标识目前仅用于访问客户托管的密钥的 Azure Key Vault。 若要在计算节点上使用用户分配的托管标识，请参阅 [在 Batch 池中配置托管标识](managed-identity-pools.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

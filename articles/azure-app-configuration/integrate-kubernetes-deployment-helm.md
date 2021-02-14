@@ -8,12 +8,12 @@ ms.service: azure-app-configuration
 ms.topic: tutorial
 ms.date: 04/14/2020
 ms.author: shuawan
-ms.openlocfilehash: c388bd22ba20dd681997064496a90a81dabb292f
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 4e38366ddcee07f38ca390acf9d580b8764c1c00
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426714"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979821"
 ---
 # <a name="integrate-with-kubernetes-deployment-using-helm"></a>使用 Helm 来与 Kubernetes 部署集成
 
@@ -33,7 +33,7 @@ ms.locfileid: "92426714"
 ## <a name="prerequisites"></a>先决条件
 
 - [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-- 安装 [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)（2.4.0 或更高版本）
+- 安装 [Azure CLI](/cli/azure/install-azure-cli)（2.4.0 或更高版本）
 - 安装 [Helm](https://helm.sh/docs/intro/install/)（2.14.0 或更高版本）
 - 一个 Kubernetes 群集。
 
@@ -57,10 +57,10 @@ ms.locfileid: "92426714"
 3. 选择“配置资源管理器”。 
 
 4. 选择“+ 创建” > “Key Vault 引用”，然后指定以下值：  
-    - **密钥** ：选择“secrets.password”  。
-    - **标签** ：将此值保留空白。
+    - **密钥**：选择“secrets.password”  。
+    - **标签**：将此值保留空白。
     - “订阅”、“资源组”和“Key Vault”：    输入上一步在 Key Vault 中创建的项相对应的值。
-    - **机密** ：选择在上一部分创建的名为 Password 的机密  。
+    - **机密**：选择在上一部分创建的名为 Password 的机密  。
 
 ## <a name="create-helm-chart"></a>创建 Helm 图表 ##
 首先，使用以下命令创建一个示例 Helm 图表
@@ -185,7 +185,7 @@ settings:
 首先，将应用程序配置中的配置下载到 myConfig.yaml 文件  。 使用密钥筛选器，以便仅下载以 settings. 开头的密钥  。 如果密钥筛选器不足以排除 Key Vault 引用的密钥，可以使用参数 --skip-keyvault 来排除它们  。 
 
 > [!TIP]
-> 详细了解 [export 命令](/cli/azure/appconfig/kv?view=azure-cli-latest#az-appconfig-kv-export)。 
+> 详细了解 [export 命令](/cli/azure/appconfig/kv#az-appconfig-kv-export)。 
 
 ```azurecli-interactive
 az appconfig kv export -n myAppConfiguration -d file --path myConfig.yaml --key "settings.*"  --separator "." --format yaml
@@ -242,4 +242,4 @@ else{
 在本教程中，你已通过 Helm 导出了要在 Kubernetes 部署中使用的 Azure 应用程序配置数据。 若要了解有关如何使用应用程序配置的更多信息，请继续阅读 Azure CLI 示例。
 
 > [!div class="nextstepaction"]
-> [Azure CLI](/cli/azure/appconfig?view=azure-cli-latest)
+> [Azure CLI](/cli/azure/appconfig)

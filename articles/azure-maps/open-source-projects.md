@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: df82e76fa2e5a9ea70c447411beafb8a2df9b036
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 16e7f04c62f25e787c3cab44b85a075e1c7d7277
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98601600"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100386741"
 ---
 # <a name="azure-maps-community---open-source-projects"></a>Azure Maps 社区-开源项目
 
@@ -66,11 +66,14 @@ ms.locfileid: "98601600"
 | [使用 Azure Maps 实现 IoT 空间分析](https://github.com/Azure-Samples/iothub-to-azure-maps-geofencing) | 跟踪和捕获时空中发生的相关事件是一个常见的 IoT 应用场景。 |
 
 **第三方地图控制插件**
+<a name="third-part-map-control-plugins"></a>
 
 | 项目名称 | 说明 |
 |-|-|
+| [Azure Maps Cesium 插件](https://github.com/azure-samples/azure-maps-cesium) | [CESIUM JS](https://cesium.com/cesiumjs/)插件，可以轻松地将 Azure Maps 服务（如[磁贴层](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview)和[地理编码服务](https://docs.microsoft.com/rest/api/maps/search)）集成。 |
 | [Azure Maps Leaflet 插件](https://github.com/azure-samples/azure-maps-leaflet) | [Leaflet](https://leafletjs.com/) JavaScript 插件，可轻松地覆盖[Azure Maps 磁贴服务](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview)中的图块层。 |
- 
+ | [Azure Maps OpenLayers 插件](https://github.com/azure-samples/azure-maps-openlayers) | [OpenLayers](https://www.openlayers.org/) JavaScript 插件，可轻松地覆盖[Azure Maps 磁贴服务](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview)中的图块层。 |
+
 **工具和资源**
 
 | 项目名称 | 说明 |

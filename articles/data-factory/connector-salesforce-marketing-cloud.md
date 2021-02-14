@@ -1,23 +1,18 @@
 ---
 title: 从 Salesforce Marketing Cloud 复制数据
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 Salesforce Marketing Cloud 复制到支持的接收器数据存储。
-services: data-factory
-documentationcenter: ''
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/17/2020
-ms.openlocfilehash: 1f0fb1ee8580c0c7f6eb30228b65e0a3780ef0a8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 161b81b196a1e178c7244845b25594440e6d6e1e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87076803"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100369741"
 ---
 # <a name="copy-data-from-salesforce-marketing-cloud-using-azure-data-factory"></a>使用 Azure 数据工厂从 Salesforce Marketing Cloud 复制数据
 
@@ -170,7 +165,7 @@ Salesforce Marketing Cloud 链接的服务支持以下属性：
 
 ### <a name="salesforce-marketing-cloud-as-source"></a>Salesforce Marketing Cloud 作为源
 
-要从 Salesforce Marketing Cloud 复制数据，请将复制活动中的源类型设置为 SalesforceMarketingCloudSource  。 复制活动**source**部分支持以下属性：
+要从 Salesforce Marketing Cloud 复制数据，请将复制活动中的源类型设置为 SalesforceMarketingCloudSource  。 复制活动 **source** 部分支持以下属性：
 
 | 属性 | 描述 | 必须 |
 |:--- |:--- |:--- |

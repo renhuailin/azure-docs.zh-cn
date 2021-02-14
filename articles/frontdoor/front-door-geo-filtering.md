@@ -13,18 +13,19 @@ ms.topic: article
 ms.date: 09/28/2020
 ms.author: duau
 ms.reviewer: tyao
-ms.openlocfilehash: 42697a57d39f4a34eee4866b67e2cde947db1ff5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1cd3d4837c39fdeb0e7addced10ab2e7fd330b9a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91449257"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100369418"
 ---
 # <a name="geo-filtering-on-a-domain-for-azure-front-door"></a>Azure 前门域上的地理筛选
 
 默认情况下，无论请求来自何处，Azure 前门都将对所有用户请求做出响应。 在某些情况下，你可能想要按国家/地区限制对你的 web 应用程序的访问。 使用 Web 应用程序防火墙 (WAF) service 在前门中，你可以使用自定义访问规则为终结点上的特定路径定义策略，以允许或阻止来自指定国家/地区的访问。 
 
-WAF 策略包含一组自定义规则。 规则由匹配条件、操作和优先级组成。 在匹配条件中，定义匹配变量、运算符和匹配值。 对于地理筛选规则，REMOTE_ADDR 匹配变量，运算符为 GeoMatch，值为一个有两个字母的国家/地区代码。 可以结合使用 GeoMatch 条件和 REQUEST_URI 字符串匹配条件来创建基于路径的地理筛选规则。
+WAF 策略包含一组自定义规则。 规则由匹配条件、操作和优先级组成。 在匹配条件中，定义匹配变量、运算符和匹配值。 对于地理筛选规则，REMOTE_ADDR 匹配变量，运算符为 GeoMatch，值为一个有两个字母的国家/地区代码。 "ZZ" 国家/地区代码或 "未知" 国家/地区捕获尚未映射到数据集的国家/地区的 IP 地址。 可以将 ZZ 添加到匹配条件，以避免误报。 可以结合使用 GeoMatch 条件和 REQUEST_URI 字符串匹配条件来创建基于路径的地理筛选规则。 
+
 
 你可以通过使用 [Azure PowerShell](front-door-tutorial-geo-filtering.md) 或使用 [快速入门模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-front-door-geo-filtering)为前门配置异地筛选策略。
 

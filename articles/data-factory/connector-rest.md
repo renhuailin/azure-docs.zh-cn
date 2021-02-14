@@ -1,22 +1,17 @@
 ---
 title: 使用 Azure 数据工厂从 REST 终结点复制数据以及向其中复制数据
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从云或本地 REST 源复制到受支持的接收器数据存储，或者从受支持的源数据存储复制到 REST 接收器。
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/08/2020
 ms.author: jingwang
-ms.openlocfilehash: 3fc567b7d4b2efab03e5d93adda62839d47f7522
-ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
+ms.openlocfilehash: 972a7b32e6308c3aa8a3b42705038838dae9b2be
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99223082"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100369877"
 ---
 # <a name="copy-data-from-and-to-a-rest-endpoint-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 REST 终结点复制数据以及向其中复制数据
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -385,7 +380,7 @@ REST 连接器作为接收器时适用于接受 JSON 的 REST API。 数据将�
 
 **示例：**
 
-Facebook 图形 API 返回采用以下结构的响应，在此情况下，下一页的 URL 将在 *_paging.next_* 中表示：
+Facebook 图形 API 返回采用以下结构的响应，在此情况下，下一页的 URL 将在 ***paging.next*** 中表示：
 
 ```json
 {
@@ -440,7 +435,7 @@ Facebook 图形 API 返回采用以下结构的响应，在此情况下，下一
 ### <a name="about-the-solution-template"></a>关于解决方案模板
 
 该模板包含两个活动：
-- Web 活动检索持有者令牌，然后将其作为 Authorization 标头传递到后续的“复制”活动。
+- “Web”活动检索持有者令牌，然后将其作为 Authorization 标头传递到后续的“复制”活动  。
 - “复制”活动将数据从 REST 复制到 Azure Data Lake Storage  。
 
 该模板定义两个参数：

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 02/01/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 2e09542cbe56df7c8d6984a98fe77142f543ec03
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 9ea71dae746ac423e7b17b6235b4d5cd3e143cd7
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99539180"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100377323"
 ---
 # <a name="configure-and-manage-continuous-backup-and-point-in-time-restore-preview---using-azure-cli"></a>配置和管理连续备份和时间点还原 (预览) -使用 Azure CLI
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -46,7 +46,7 @@ Azure Cosmos DB 的时间点还原功能 (预览版) 可帮助你从容器内的
 
 ## <a name="provision-a-sql-api-account-with-continuous-backup"></a><a id="provision-sql-api"></a>使用连续备份预配 SQL API 帐户
 
-若要设置包含连续备份的 SQL API 帐户，应将额外的参数 `--backup-policy-type Continuous` 与常规预配命令一起使用。 以下命令是 `pitracct2` 使用在 "myrg" 资源组下的 "美国西部" 区域创建的连续备份策略命名的单个区域写入帐户的示例：
+若要设置包含连续备份的 SQL API 帐户，应将额外的参数 `--backup-policy-type Continuous` 与常规预配命令一起使用。 以下命令是 `pitracct2` 使用 *myrg* 资源组下的 "*美国西部*" 区域中创建的连续备份策略命名的单个区域写入帐户的示例：
 
 ```azurecli-interactive
 
@@ -61,7 +61,7 @@ az cosmosdb create \
 
 ## <a name="provision-an-azure-cosmos-db-api-for-mongodb-account-with-continuous-backup"></a><a id="provision-mongo-api"></a>为 MongoDB 帐户预配包含连续备份的 Azure Cosmos DB API
 
-以下命令显示了一个名为 with 连续备份策略的单个区域写入帐户的示例，其中 `pitracct3` 创建了 "myrg" 资源组下的 "美国西部" 区域：
+以下命令显示了一个名为 with 连续备份策略的单个区域写入帐户的示例， `pitracct3` 该帐户在 *myrg* 资源组下创建了 "*美国西部*" 区域：
 
 ```azurecli-interactive
 
@@ -145,13 +145,13 @@ az cosmosdb restorable-database-account list --account-name "pitrbb"
   }
 ```
 
-与帐户的 "CreationTime" 或 "DeletionTime" 一样，该区域也存在 "CreationTime" 或 "DeletionTime"。 利用这些时间，你可以选择正确的区域和要还原到该区域的有效时间范围。
+与帐户的 `CreationTime` 或类似 `DeletionTime` ，该区域也有一个 `CreationTime` 或 `DeletionTime` 。 利用这些时间，你可以选择正确的区域和要还原到该区域的有效时间范围。
 
 **列出实时数据库帐户中的所有数据库版本**
 
 列出数据库的所有版本可在数据库存在的实际时间未知的情况下选择适当的数据库。
 
-运行以下 CLI 命令以列出数据库的所有版本。 此命令仅适用于 live 帐户。 "InstanceId" 和 "location" 参数是从命令响应中的 "name" 和 "location" 属性获取的 `az cosmosdb restorable-database-account list` 。 InstanceId 属性也是要还原的源数据库帐户的属性：
+运行以下 CLI 命令以列出数据库的所有版本。 此命令仅适用于 live 帐户。 `instanceId`和 `location` 参数 `name` `location` 在命令响应中从和属性获取 `az cosmosdb restorable-database-account list` 。 InstanceId 属性也是要还原的源数据库帐户的属性：
 
 ```azurecli-interactive
 az cosmosdb sql restorable-database list \
@@ -198,7 +198,7 @@ az cosmosdb sql restorable-database list \
 
 **列出实时数据库帐户中数据库的所有 SQL 容器版本**
 
-使用以下命令可列出 SQL 容器的所有版本。 此命令仅适用于 live 帐户。 "DatabaseRid" 参数是要还原的数据库的 "ResourceId"。 它是在命令响应中找到的 "ownerResourceid" 属性的值 `az cosmosdb sql restorable-database list` 。
+使用以下命令可列出 SQL 容器的所有版本。 此命令仅适用于 live 帐户。 `databaseRid`参数是 `ResourceId` 要还原的数据库的。 它是 `ownerResourceid` 在命令响应中找到的属性的值 `az cosmosdb sql restorable-database list` 。
 
 ```azurecli-interactive
 az cosmosdb sql restorable-container list \
@@ -265,7 +265,7 @@ az cosmosdb sql restorable-resource list \
 
 ## <a name="enumerate-restorable-resources-for-mongodb-api-account"></a><a id="enumerate-mongodb-api"></a>枚举 MongoDB API 帐户的可恢复资源
 
-下面描述的枚举命令可帮助你发现可在各种时间戳上还原的资源。 此外，它们还提供可恢复帐户、数据库和容器资源上的密钥事件的源。 与 SQL API 一样，可以使用命令， `az cosmosdb` 但使用 "mongodb" 作为参数，而不是使用 "sql"。 这些命令仅适用于 live 帐户。
+下面描述的枚举命令可帮助你发现可在各种时间戳上还原的资源。 此外，它们还提供可恢复帐户、数据库和容器资源上的密钥事件的源。 与使用 SQL API 一样，可以使用 `az cosmosdb` 命令，但使用 with 参数， `mongodb` 而不是 `sql` 。 这些命令仅适用于 live 帐户。
 
 **列出实时数据库帐户中 mongodb 数据库的所有版本**
 

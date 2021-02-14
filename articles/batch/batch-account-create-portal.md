@@ -4,12 +4,12 @@ description: 了解如何在 Azure 门户中创建 Azure Batch 帐户，以便�
 ms.topic: how-to
 ms.date: 01/26/2021
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 943fd145dbd4964e0d43d91f726ea5a79fda59de
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: bd9dd9b6d6d3a8d6938427b83528746ae5d09318
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98895982"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100368500"
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>使用 Azure 门户创建 Batch 帐户
 
@@ -67,6 +67,9 @@ ms.locfileid: "98895982"
 ## <a name="additional-configuration-for-user-subscription-mode"></a>用户订阅模式的其他配置
 
 如果选择在用户订阅模式下创建 Batch 帐户，请在创建帐户前执行以下附加步骤。
+
+> [!IMPORTANT]
+> 在用户订阅模式下创建 Batch 帐户的用户需要为要在其中创建批处理帐户的订阅具有参与者或所有者角色分配。
 
 ### <a name="allow-azure-batch-to-access-the-subscription-one-time-operation"></a>允许 Azure Batch 访问订阅（一次性操作）
 

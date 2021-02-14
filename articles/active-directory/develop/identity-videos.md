@@ -12,12 +12,12 @@ ms.date: 08/03/2020
 ms.author: marsma
 ms.custom: aaddev
 ms.reviewer: celested
-ms.openlocfilehash: adb6be99fdfe9ef0a7fa21e025a9ef9a2c0dfffe
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: 0f9ef58fc9ad8c94e445638f98bcb57a19716ff6
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100104223"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100366001"
 ---
 # <a name="microsoft-identity-platform-videos"></a>Microsoft 标识平台视频
 
@@ -30,17 +30,17 @@ ms.locfileid: "100104223"
 ___
 
 :::row:::
-  :::column:::
+    :::column:::
         <a href="https://www.youtube.com/watch?v=tkQJSHFsduY" target="_blank">新式身份验证的基础知识-Microsoft 标识平台</a> (12:28) 
     :::column-end:::
     :::column:::
-        <a href="https://www.youtube.com/watch?v=tkQJSHFsduY" target="_blank"> <img src="./media/identity-videos/id-for-devs-07.jpg" alt="Video thumbnail for a video about the basics of modern authentication on the Microsoft identity platform."></a>
+        > [!Video https://www.youtube.com/embed/tkQJSHFsduY] 
     :::column-end:::
     :::column:::
         <a href="https://www.youtube.com/watch?v=7_vxnHiUA1M" target="_blank">新式验证：我们的内容-Microsoft 标识平台</a> (15:47) 
     :::column-end:::
     :::column:::
-        <a href="https://www.youtube.com/watch?v=7_vxnHiUA1M" target="_blank"> <img src="./media/identity-videos/id-for-devs-08.jpg" alt="Video thumbnail for a video about modern authentication and the Microsoft identity platform." class="mx-imgBorder"></a>
+        > [!Video https://www.youtube.com/embed/7_vxnHiUA1M]
     :::column-end:::
 :::row-end:::
 :::row:::
@@ -48,7 +48,7 @@ ___
         <a href="https://www.youtube.com/watch?v=JpeMeTjQJ04" target="_blank">概述：在移动应用程序中实现单一登录-Microsoft 标识平台</a> (20:30) 
     :::column-end:::
     :::column:::
-        <a href="https://www.youtube.com/watch?v=JpeMeTjQJ04" target="_blank"><img src="./media/identity-videos/mobile-single-sign-on.jpg" alt="Video thumbnail for a video about implementing mobile single sign on using the Microsoft identity platform."> </a> (20:30) 
+        >[!Video https://www.youtube.com/embed/JpeMeTjQJ04]
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -75,13 +75,13 @@ ___
         1-面向 <a href="https://www.youtube.com/watch?v=zjezqZPPOfc&list=PLLasX02E8BPBxGouWlJV-u-XZWOc2RkiX&index=1" target="_blank">开发人员的 Microsoft 标识平台</a> (33:55) 的概述
     :::column-end:::
     :::column:::
-        <a href="https://www.youtube.com/watch?v=zjezqZPPOfc" target="_blank"> <img src="./media/identity-videos/id-for-devs-01.jpg" alt="Video thumbnail for a video overview of the Microsoft identity platform for developers."></a>
+        >[!Video https://www.youtube.com/embed/zjezqZPPOfc]
     :::column-end:::
      :::column:::
         2- <a href="https://www.youtube.com/watch?v=Mtpx_lpfRLs&list=PLLasX02E8BPBxGouWlJV-u-XZWOc2RkiX&index=2" target="_blank">如何通过 Microsoft 标识平台对应用程序用户进行身份验证 </a> (29:09) 
     :::column-end:::
     :::column:::
-        <a href="https://www.youtube.com/watch?v=Mtpx_lpfRLs" target="_blank"> <img src="./media/identity-videos/id-for-devs-02.jpg" alt="Video thumbnail for a video about how to authenticate users of your apps with the Microsoft identity platform."></a>
+        >[!Video https://www.youtube.com/embed/Mtpx_lpfRLs]
     :::column-end:::
 :::row-end:::
 :::row:::
@@ -89,13 +89,13 @@ ___
         3- <a href="https://www.youtube.com/watch?v=toAWRNqqDL4&list=PLLasX02E8BPBxGouWlJV-u-XZWOc2RkiX&index=3" target="_blank">Microsoft 标识平台的权限和许可框架</a> (45:08) 
     :::column-end:::
     :::column:::
-        <a href="https://www.youtube.com/watch?v=toAWRNqqDL4" target="_blank"> <img src="./media/identity-videos/id-for-devs-03.jpg" alt="Video thumbnail for a video about Microsoft identity platform’s permissions and consent framework."></a>
+        >[!Video https://www.youtube.com/embed/toAWRNqqDL4]
     :::column-end:::
     :::column:::
         4- <a href="https://www.youtube.com/watch?v=IIQ7QW4bYqA&list=PLLasX02E8BPBxGouWlJV-u-XZWOc2RkiX&index=4" target="_blank">如何使用 Microsoft 标识平台保护 api</a> (33:17) 
     :::column-end:::
     :::column:::
-        <a href="https://www.youtube.com/watch?v=IIQ7QW4bYqA" target="_blank"> <img src="./media/identity-videos/id-for-devs-04.jpg" alt="Video thumbnail for a video about how to protect APIs using the Microsoft identity platform."></a>
+        >[!Video https://www.youtube.com/embed/IIQ7QW4bYqA]
     :::column-end:::
 :::row-end:::
 :::row:::
@@ -103,7 +103,7 @@ ___
         5- <a href="https://www.youtube.com/watch?v=-BK2iBDrmNo&list=PLLasX02E8BPBxGouWlJV-u-XZWOc2RkiX&index=5" target="_blank">Microsoft 标识平台上的应用程序角色和安全组</a> (15:52) 
     :::column-end:::
     :::column:::
-        <a href="https://www.youtube.com/watch?v=-BK2iBDrmNo" target="_blank"> <img src="./media/identity-videos/id-for-devs-05.jpg" alt="Video thumbnail for a video about application roles and security groups on the Microsoft identity platform."></a>
+        >[!Video https://www.youtube.com/embed/-BK2iBDrmNo]
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -138,13 +138,13 @@ ___
         1- <a href="https://www.youtube.com/watch?v=fbSVgC8nGz4&list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy&index=1" target="_blank">基础知识：新式身份验证的概念</a> (4:33) 
     :::column-end:::
     :::column:::
-        <a href="https://www.youtube.com/watch?v=fbSVgC8nGz4" target="_blank"> <img src="./media/identity-videos/aad-auth-fund-01.jpg" alt="Video thumbnail for a video about the concept of modern authentication."></a>
+        >[!Video https://www.youtube.com/embed/fbSVgC8nGz4]
     :::column-end:::
      :::column:::
         2- <a href="https://www.youtube.com/watch?v=tCNcG1lcCHY&list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy&index=2" target="_blank">web 应用程序的新式验证</a> (6:02) 
     :::column-end:::
     :::column:::
-        <a href="https://www.youtube.com/watch?v=tCNcG1lcCHY" target="_blank"> <img src="./media/identity-videos/aad-auth-fund-02.jpg" alt="Video thumbnail for a video about modern authentication for web applications."></a>
+        >[!Video https://www.youtube.com/embed/tCNcG1lcCHY]
     :::column-end:::
 :::row-end:::
 :::row:::
@@ -152,13 +152,13 @@ ___
         3- <a href="https://www.youtube.com/watch?v=51B-jSOBF8U&list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy&index=3" target="_blank">Web 单一登录</a> (4:13) 
     :::column-end:::
     :::column:::
-        <a href="https://www.youtube.com/watch?v=51B-jSOBF8U" target="_blank"> <img src="./media/identity-videos/aad-auth-fund-03.jpg" alt="Video thumbnail for a video about web single sign-on."></a>
+        >[!Video https://www.youtube.com/embed/51B-jSOBF8U]
     :::column-end:::
     :::column:::
         4- <a href="https://www.youtube.com/watch?v=CjarTgjKcX8&list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy&index=4" target="_blank">联合 web 身份验证</a> (6:19) 
     :::column-end:::
     :::column:::
-        <a href="https://www.youtube.com/watch?v=CjarTgjKcX8" target="_blank"> <img src="./media/identity-videos/aad-auth-fund-04.jpg" alt="Video thumbnail for a video about federated web authentication."></a>
+        >[!Video https://www.youtube.com/embed/CjarTgjKcX8]
     :::column-end:::
 :::row-end:::
 :::row:::
@@ -166,13 +166,13 @@ ___
         5- <a href="https://www.youtube.com/watch?v=OGMDnuDrAcQ&list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy&index=5" target="_blank">Native client 应用程序-第 1 </a> (8:12) 
     :::column-end:::
     :::column:::
-        <a href="https://www.youtube.com/watch?v=OGMDnuDrAcQ" target="_blank"> <img src="./media/identity-videos/aad-auth-fund-05.jpg" alt="Video thumbnail for part 1 of a video about native client applications."></a>
+        >[!Video https://www.youtube.com/embed/OGMDnuDrAcQ]
     :::column-end:::
     :::column:::
         6- <a href="https://www.youtube.com/watch?v=2RE6IhXfmHY&list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy&index=6" target="_blank">Native client 应用程序-第2部分 </a> (5:33) 
     :::column-end:::
     :::column:::
-        <a href="https://www.youtube.com/watch?v=2RE6IhXfmHY" target="_blank"> <img src="./media/identity-videos/aad-auth-fund-06.jpg" alt="Video thumbnail for part 2 of a video about native client applications."></a>
+        >[!Video https://www.youtube.com/embed/2RE6IhXfmHY]
     :::column-end:::
 :::row-end:::
 
@@ -203,135 +203,125 @@ ___
         <a href="https://www.youtube.com/watch?v=bNlcFuIo3r8" target="_blank">Microsoft 标识平台概述 </a>
     :::column-end:::
     :::column:::
-        <a href="https://www.youtube.com/watch?v=bNlcFuIo3r8" target="_blank"> <img src="./media/identity-videos/one-dev-question-jm.jpg" alt="Video thumbnail for an overview video about Microsoft identity platform."></a>
+        >[!Video https://www.youtube.com/embed/bNlcFuIo3r8]
     :::column-end:::
-    :::column:::
-    :::column-end:::
-    :::column:::
-    :::column-end:::
-:::row-end:::
-:::row:::
     :::column:::
         <a href="https://www.youtube.com/watch?v=apbbx2n4tnU" target="_blank">Microsoft Graph 和 Microsoft 身份验证库 (MSAL) </a>
     :::column-end:::
     :::column:::
-        <a href="https://www.youtube.com/watch?v=apbbx2n4tnU" target="_blank"> <img src="./media/identity-videos/graph-and-msal.jpg" alt="Video thumbnail for a video about Microsoft Graph and the Microsoft Authentication Library (MSAL)."></a>
+        >[!Video https://www.youtube.com/embed/apbbx2n4tnU]
     :::column-end:::
+:::row-end:::
+:::row:::
     :::column:::
         <a href="https://www.youtube.com/watch?v=yLVEBU9Z96Q" target="_blank">什么是 MSAL 系列的库？</a>
     :::column-end:::
     :::column:::
-        <a href="https://www.youtube.com/watch?v=yLVEBU9Z96Q" target="_blank"> <img src="./media/identity-videos/one-dev-question-jm.jpg" alt="Video thumbnail for a video about the MSAL family of libraries."></a>
+        >[!Video https://www.youtube.com/embed/yLVEBU9Z96Q]
     :::column-end:::
-:::row-end:::
-:::row:::
     :::column:::
         <a href="https://www.youtube.com/watch?v=eiPHOoLmGJs" target="_blank">范围说明 </a>
     :::column-end:::
     :::column:::
-        <a href="https://www.youtube.com/watch?v=eiPHOoLmGJs" target="_blank"> <img src="./media/identity-videos/one-dev-question-jm.jpg" alt="Video thumbnail for a video that explains scopes."></a>
+        >[!Video https://www.youtube.com/embed/eiPHOoLmGJs]
     :::column-end:::
+:::row-end:::
+:::row:::
     :::column:::
         <a href="https://www.youtube.com/watch?v=Zd_Uubnu0U0" target="_blank">什么是代理 </a>
     :::column-end:::
     :::column:::
-        <a href="https://www.youtube.com/watch?v=Zd_Uubnu0U0" target="_blank"> <img src="./media/identity-videos/one-dev-question-jm.jpg" alt="Video thumbnail for a video about brokers."> </a>
+        >[!Video https://www.youtube.com/embed/Zd_Uubnu0U0]
     :::column-end:::
-:::row-end:::
-:::row:::
     :::column:::
         <a href="https://www.youtube.com/watch?v=znSN_3JAuoU" target="_blank">重定向 URI 的用途</a>
     :::column-end:::
     :::column:::
-        <a href="https://www.youtube.com/watch?v=znSN_3JAuoU" target="_blank"> <img src="./media/identity-videos/one-dev-question-jm.jpg" alt="Video thumbnail for a video that describers what redirect URIs do."></a>
+        >[!Video https://www.youtube.com/embed/znSN_3JAuoU]
     :::column-end:::
+:::row-end:::
+:::row:::
     :::column:::
         <a href="https://www.youtube.com/watch?v=mDhT4Zv1fZU" target="_blank">租户说明 </a>
     :::column-end:::
     :::column:::
-        <a href="https://www.youtube.com/watch?v=mDhT4Zv1fZU" target="_blank"> <img src="./media/identity-videos/one-dev-question-jm.jpg" alt="Video thumbnail for a video that explains tenants."></a>
+        >[!Video https://www.youtube.com/embed/mDhT4Zv1fZU]
     :::column-end:::
-:::row-end:::
-:::row:::
     :::column:::
         <a href="https://www.youtube.com/watch?v=zDEC7A5ZS2Q" target="_blank">Azure AD 的角色 </a>
     :::column-end:::
     :::column:::
-        <a href="https://www.youtube.com/watch?v=zDEC7A5ZS2Q" target="_blank"> <img src="./media/identity-videos/one-dev-question-jm.jpg" alt="Video thumbnail for a video that describes the role of Azure AD."></a>
+        >[!Video https://www.youtube.com/embed/zDEC7A5ZS2Q]
     :::column-end:::
+:::row-end:::
+:::row:::
     :::column:::
         <a href="https://www.youtube.com/watch?v=HEpq_YSmuWw" target="_blank">Azure AD 应用对象的角色</a>
     :::column-end:::
     :::column:::
-        <a href="https://www.youtube.com/watch?v=HEpq_YSmuWw" target="_blank"> <img src="./media/identity-videos/one-dev-question-jm.jpg" alt="Video thumbnail for a video that describes the role of Azure AD app objects."></a>
+        >[!Video https://www.youtube.com/embed/HEpq_YSmuWw]
     :::column-end:::
-:::row-end:::
-:::row:::
     :::column:::
         <a href="https://www.youtube.com/watch?v=E2OUluQQKSk" target="_blank">组织和个人 Microsoft 帐户的差异</a>
     :::column-end:::
     :::column:::
-        <a href="https://www.youtube.com/watch?v=E2OUluQQKSk" target="_blank"> <img src="./media/identity-videos/one-dev-question-jm.jpg" alt="Video thumbnail for a video about organizational and personal Microsoft account differences."></a>
+        >[!Video https://www.youtube.com/embed/E2OUluQQKSk]
     :::column-end:::
+:::row-end:::
+:::row:::
     :::column:::
         <a href="https://www.youtube.com/watch?v=ZJirt7eTVw8" target="_blank">SPA 和 Web 应用的差异</a>
     :::column-end:::
     :::column:::
-        <a href="https://www.youtube.com/watch?v=ZJirt7eTVw8" target="_blank"> <img src="./media/identity-videos/one-dev-question-jm.jpg" alt="Video thumbnail for a video about SPA and web app differences."></a>
+        >[!Video https://www.youtube.com/embed/ZJirt7eTVw8]
     :::column-end:::
-:::row-end:::
-:::row:::
     :::column:::
         <a href="https://www.youtube.com/watch?v=6R3W9T01gdE" target="_blank">什么是应用程序权限与委托权限？</a>
     :::column-end:::
     :::column:::
-        <a href="https://www.youtube.com/watch?v=6R3W9T01gdE" target="_blank"> <img src="./media/identity-videos/aad-basics-12.jpg" alt="Video thumbnail for a video about the differences between application permissions and delegated permissions."></a>
+        >[!Video https://www.youtube.com/embed/6R3W9T01gdE]
     :::column-end:::
+:::row-end:::
+:::row:::
     :::column:::
         <a href="https://www.youtube.com/watch?v=Gm6sALdXtpg" target="_blank">什么是 Microsoft 标识平台 OpenID Connect 认证？</a>
     :::column-end:::
     :::column:::
-        <a href="https://www.youtube.com/watch?v=Gm6sALdXtpg" target="_blank"> <img src="./media/identity-videos/one-dev-question-hs.jpg" alt="Video thumbnail for a video about Microsoft identity platform OpenID Connect certified."></a>
+        >[!Video https://www.youtube.com/embed/Gm6sALdXtpg]
     :::column-end:::
-:::row-end:::
-:::row:::
     :::column:::
         <a href="https://www.youtube.com/watch?v=NrydwrckYaw" target="_blank">什么是不同的 Azure Active Directory 应用类型，如何进行比较？</a>
     :::column-end:::
     :::column:::
-        <a href="https://www.youtube.com/watch?v=NrydwrckYaw" target="_blank"> <img src="./media/identity-videos/aad-basics-13.jpg" alt="Video thumbnail for a video that compares Azure Active Directory app types."></a>
+        >[!Video https://www.youtube.com/embed/NrydwrckYaw]
     :::column-end:::
+:::row-end:::
+:::row:::
     :::column:::
         <a href="https://www.youtube.com/watch?v=cZKgTqF4o88" target="_blank">如果你使用 MSAL，应了解哪些重要协议概念？</a>
     :::column-end:::
     :::column:::
-        <a href="https://www.youtube.com/watch?v=cZKgTqF4o88" target="_blank"> <img src="./media/identity-videos/one-dev-question-hs.jpg" alt="Video thumbnail for a video about protocol concepts you should know if you use MSAL."></a>
+        >[!Video https://www.youtube.com/embed/cZKgTqF4o88]
     :::column-end:::
-:::row-end:::
-:::row:::
     :::column:::
         <a href="https://www.youtube.com/watch?v=41vmzPdbfXM" target="_blank">ID 令牌、访问令牌、刷新令牌和会话令牌之间有何区别？</a>
     :::column-end:::
     :::column:::
-        <a href="https://www.youtube.com/watch?v=41vmzPdbfXM" target="_blank"> <img src="./media/identity-videos/aad-auth-fund-08.jpg" alt="Video thumbnail for a video that explains the difference between ID tokens, access tokens, refresh tokens, and session tokens."></a>
-    :::column-end:::
-    :::column:::
-        <a href="https://www.youtube.com/watch?v=jEEwN7XAtUo" target="_blank">授权请求和令牌之间的关系是什么？</a>
-    :::column-end:::
-    :::column:::
-        <a href="https://www.youtube.com/watch?v=jEEwN7XAtUo" target="_blank"> <img src="./media/identity-videos/one-dev-question-hs.jpg" alt="Video thumbnail for a video that describes the relationship between an authorization request and tokens."></a>
+        >[!Video https://www.youtube.com/embed/41vmzPdbfXM]
     :::column-end:::
 :::row-end:::
 :::row:::
     :::column:::
+        <a href="https://www.youtube.com/watch?v=jEEwN7XAtUo" target="_blank">授权请求和令牌之间的关系是什么？</a>
+    :::column-end:::
+    :::column:::
+        >[!Video https://www.youtube.com/embed/jEEwN7XAtUo]
+    :::column-end:::
+    :::column:::
         <a href="https://www.youtube.com/watch?v=4pwuRYcZbz4" target="_blank">使用协议的哪些方面会使 MSAL 库更轻松？</a>
     :::column-end:::
     :::column:::
-        <a href="https://www.youtube.com/watch?v=4pwuRYcZbz4" target="_blank"> <img src="./media/identity-videos/id-for-devs-06.jpg" alt="Video thumbnail for video that describes what aspects of using protocols does the MSAL libraries make easier."></a>
-    :::column-end:::
-    :::column:::
-    :::column-end:::
-    :::column:::
+        >[!Video https://www.youtube.com/embed/4pwuRYcZbz4]
     :::column-end:::
 :::row-end:::
 
@@ -345,13 +335,13 @@ ___
         <a href="https://www.youtube.com/watch?v=qpdC45tZYDg" target="_blank">为什么从 ADAL 迁移到 MSAL</a>
     :::column-end:::
     :::column:::
-        <a href="https://www.youtube.com/watch?v=qpdC45tZYDg" target="_blank"> <img src="./media/identity-videos/one-dev-question-jm.jpg" alt="Video thumbnail for a video that explains why to migrate from ADAL to MSAL."></a>
+        >[!Video https://www.youtube.com/embed/qpdC45tZYDg]
     :::column-end:::
      :::column:::
         <a href="https://www.youtube.com/watch?v=xgL_z9yCnrE" target="_blank">将 ADAL 基本代码迁移到 MSAL</a>
     :::column-end:::
     :::column:::
-        <a href="https://www.youtube.com/watch?v=xgL_z9yCnrE" target="_blank"> <img src="./media/identity-videos/one-dev-question-jm.jpg" alt="Video thumbnail for a video that describes migrating your ADAL codebase to MSAL."></a>
+        >[!Video https://www.youtube.com/embed/xgL_z9yCnrE]
     :::column-end:::
 :::row-end:::
 :::row:::
@@ -359,12 +349,12 @@ ___
         <a href="https://www.youtube.com/watch?v=q-TDszj2O-4" target="_blank">MSAL 相较于 ADAL 的优势</a>
     :::column-end:::
     :::column:::
-        <a href="https://www.youtube.com/watch?v=q-TDszj2O-4" target="_blank"> <img src="./media/identity-videos/one-dev-question-jm.jpg" alt="Video thumbnail for a video that describes the advantages of MSAL over ADAL."></a>
+        >[!Video https://www.youtube.com/embed/q-TDszj2O-4]
     :::column-end:::
     :::column:::
         <a href="https://www.youtube.com/watch?v=aBMUxC4evhU" target="_blank">V1 和 v2 身份验证之间的区别是什么？</a>
     :::column-end:::
     :::column:::
-        <a href="https://www.youtube.com/watch?v=aBMUxC4evhU" target="_blank"> <img src="./media/identity-videos/one-dev-question-hs.jpg" alt="Video thumbnail"></a>
+        >[!Video https://www.youtube.com/embed/aBMUxC4evhU]
     :::column-end:::
 :::row-end:::

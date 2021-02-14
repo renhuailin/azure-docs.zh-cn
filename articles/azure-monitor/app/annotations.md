@@ -3,12 +3,12 @@ title: Application Insights 的版本批注 | Microsoft 文档
 description: 为 Application Insights 中的指标资源管理器图表添加部署或版本标记。
 ms.topic: conceptual
 ms.date: 08/14/2020
-ms.openlocfilehash: 58f6603687838713fafbf4cd5cc3f100e22b7401
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c23c973bc02482e7000cfd1d066a322fff93542a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95993714"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100386027"
 ---
 # <a name="annotations-on-metric-charts-in-application-insights"></a>为 Application Insights 中的指标图表添加批注
 
@@ -81,7 +81,7 @@ ms.locfileid: "95993714"
 
 现在，每当使用发布模板部署新版本时，就会将批注发送到 Application Insights。 可在以下位置查看批注：
 
-使用情况窗格，还可以手动创建版本批注：
+**使用情况** 窗格，还可以手动创建版本批注：
 
 ![显示一段时间内显示的用户访问数的条形图的屏幕截图。 版本批注在图表上方显示为绿色复选标记，指示发布发生的时间](./media/annotations/usage-pane.png)
 

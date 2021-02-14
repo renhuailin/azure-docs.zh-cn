@@ -5,14 +5,14 @@ ms.topic: conceptual
 ms.custom: devx-track-dotnet
 author: DaleKoetke
 ms.author: dalek
-ms.date: 5/7/2020
+ms.date: 2/7/2021
 ms.reviewer: mbullwin
-ms.openlocfilehash: 477a96f1bf66255b11b2fee36c38e55b18cddb69
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 3ae3224ae17d0dee2ed1080669c6057ca62959d9
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99556125"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100384497"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>管理 Application Insights 的使用情况和成本
 
@@ -286,15 +286,18 @@ Application Insights 资源的默认保留期为 90 天。 可以为每个 Appli
 
 对于 Azure Application Insights 的早期采用者而言，仍有两种可能存在的定价层：基本计划和企业计划。 “基本”定价层如上所述，它是默认层。 其中包括所有的“企业”层功能，不另外收费。 “基本”层主要针对所引入的数据量计费。
 
-> [!NOTE]
-> 这些旧的定价层已经过重命名。 “企业”定价层现在称为“按节点”层，而“基本”定价层现在称为“按 GB”层 。 下文和 Azure 门户中将使用这些新名称。  
+这些旧的定价层已经过重命名。 “企业”定价层现在称为“按节点”层，而“基本”定价层现在称为“按 GB”层 。 下文和 Azure 门户中将使用这些新名称。  
 
-“按节点”（以前称为“企业”）层按节点收费，并且每个节点都会收到每日数据限额。 在“按节点”定价层中，你需要为引入的数据中超出规定限额的数据付费。 如果你使用的是 Operations Management Suite，应选择“按节点”层。
+“按节点”（以前称为“企业”）层按节点收费，并且每个节点都会收到每日数据限额。 在“按节点”定价层中，你需要为引入的数据中超出规定限额的数据付费。 如果你使用的是 Operations Management Suite，应选择“按节点”层。 在 2018 年 4 月，我们[引入了](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/) Azure 监视的新定价模型。 此模型在监视服务的完整组合中采用简单的“即用即付”模型。 了解有关 [新定价模型](../platform/usage-estimated-costs.md)的详细信息。
 
 有关在你所在区域中以适合你的货币计价的当前价格，请参阅 [Application Insights 定价](https://azure.microsoft.com/pricing/details/application-insights/)。
 
-> [!NOTE]
-> 在 2018 年 4 月，我们[引入了](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/) Azure 监视的新定价模型。 此模型在监视服务的完整组合中采用简单的“即用即付”模型。 深入了解[新的定价模型](../platform/usage-estimated-costs.md)、如何根据使用模式[评估移到此模型的影响](../platform/usage-estimated-costs.md#understanding-your-azure-monitor-costs)以及[如何选择加入该新模型](../platform/usage-estimated-costs.md#azure-monitor-pricing-model)
+### <a name="understanding-billed-usage-on-the-legacy-enterprise-per-node-tier"></a>了解旧企业 (按节点) 层的计费使用情况 
+
+如下面更详细地说明，每个节点) 层的旧企业 (将使用情况与订阅中所有 Application Insights 资源的使用情况相结合，以计算节点数和数据超额量。 由于此组合过程，将 **仅针对其中一个资源报告订阅中所有 Application Insights 资源的使用情况**。  这会使 [计费的使用](https://docs.microsoft.com/azure/azure-monitor/app/pricing#viewing-application-insights-usage-on-your-azure-bill) 与每个 Application Insights 资源的使用情况非常复杂。 
+
+> [!WARNING]
+> 由于跟踪和了解 Application Insights 资源在旧版企业 (的使用情况) 层，因此强烈建议使用当前的即用即付定价层。 
 
 ### <a name="per-node-tier-and-operations-management-suite-subscription-entitlements"></a>“按节点”层和 Operations Management Suite 订阅权利
 
@@ -320,7 +323,7 @@ Application Insights 资源的默认保留期为 90 天。 可以为每个 Appli
 
 ### <a name="examples-of-how-to-determine-distinct-node-count"></a>演示如何确定不同节点计数的示例
 
-| 方案                               | 每日节点计数总数 |
+| 场景                               | 每日节点计数总数 |
 |:---------------------------------------|:----------------:|
 | 1 个应用程序使用 3 个 Azure 应用服务实例和 1 个虚拟服务器 | 4 |
 | 3 个应用程序正运行在 2 个 VM 上，这些应用程序的 Application Insights 资源属于同一订阅，并且位于“按节点”层中 | 2 | 
@@ -347,4 +350,3 @@ Application Insights 资源的默认保留期为 90 天。 可以为每个 Appli
 [start]: ./app-insights-overview.md
 [pricing]: https://azure.microsoft.com/pricing/details/application-insights/
 [pricing]: https://azure.microsoft.com/pricing/details/application-insights/
-

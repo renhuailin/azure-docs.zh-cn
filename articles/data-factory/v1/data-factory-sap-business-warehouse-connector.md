@@ -1,23 +1,18 @@
 ---
 title: 使用 Azure 数据工厂从 SAP 业务仓库移动数据
 description: 了解如何使用 Azure 数据工厂从 SAP Business Warehouse 移动数据。
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-editor: ''
+ms.author: jingwang
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: fb91a09ed31658c2d547a7b46cf2f986bfbd0e50
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 513d6b28908b99594eaa525e86690fa75bffb103
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97508282"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100386962"
 ---
 # <a name="move-data-from-sap-business-warehouse-using-azure-data-factory"></a>使用 Azure 数据工厂从 SAP Business Warehouse 移动数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -288,7 +283,7 @@ encryptedCredential | 加密的凭据字符串。 | string | 否
 
 ABAP 字典中的数据类型 | .NET 数据类型
 -------------------------------- | --------------
-ACCP |  int
+ACCP |    int
 CHAR | String
 CLNT | String
 CURR | 小数

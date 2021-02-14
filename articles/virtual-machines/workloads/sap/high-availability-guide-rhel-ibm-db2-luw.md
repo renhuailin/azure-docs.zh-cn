@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/16/2020
 ms.author: juergent
-ms.openlocfilehash: 85f268990ac9e0c04cba1b9c409a232a24ce0d61
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: 8202b9bd496b4f539df99e35a3118ed109dbd31c
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96608628"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100365100"
 ---
 # <a name="high-availability-of-ibm-db2-luw-on-azure-vms-on-red-hat-enterprise-linux-server"></a>Red Hat Enterprise Linux Server 上 Azure VM 中 IBM Db2 LUW 的高可用性
 
@@ -37,7 +37,7 @@ IBM Db2 for Linux、UNIX 和 Windows (LUW) 在 [高可用性和灾难恢复 (HAD
 
 在开始安装之前，请参阅以下 SAP 说明和文档：
 
-| SAP 说明 | 描述 |
+| SAP 说明 | 说明 |
 | --- | --- |
 | [1928533] | Azure 上的 SAP 应用程序：支持的产品和 Azure VM 类型 |
 | [2015553] | Azure 上的 SAP：支持先决条件 |
@@ -145,10 +145,6 @@ Red Hat Enterprise Linux Server HA 加载项中包含 IBM Db2 LUW 的资源代�
     + 使用 Azure Marketplace 中的 SAP 映像 Red Hat Enterprise Linux。
     + 选择你在步骤3中创建的 Azure 可用性集，或选择 "可用性区域 (与步骤3中所述的相同) 的区域。
 1. 向 Vm 添加数据磁盘，然后在 [IBM Db2 Azure 虚拟机 DBMS 部署的 SAP 工作负荷][dbms-db2]一文中查看文件系统设置的建议。
-
-## <a name="create-the-pacemaker-cluster"></a>创建 Pacemaker 群集
-    
-若要为此 IBM Db2 服务器创建基本 Pacemaker 群集，请参阅在 [Azure 中的 Red Hat Enterprise Linux 上设置 Pacemaker][rhel-pcs-azr]。 
 
 ## <a name="install-the-ibm-db2-luw-and-sap-environment"></a>安装 IBM Db2 LUW 和 SAP 环境
 
@@ -277,7 +273,6 @@ SOCK_RECV_BUF_REQUESTED,ACTUAL(bytes) = 0, 369280
              READS_ON_STANDBY_ENABLED = N
 
 
-
 #Secondary output:
 Database Member 0 -- Database ID2 -- Standby -- Up 1 days 15:45:18 -- Date 2019-06-25-10.56.19.820474
 
@@ -324,84 +319,10 @@ SOCK_RECV_BUF_REQUESTED,ACTUAL(bytes) = 0, 367360
                  PEER_WINDOW(seconds) = 1000
                       PEER_WINDOW_END = 06/25/2019 11:12:59.000000 (1561461179)
              READS_ON_STANDBY_ENABLED = N
-
 </code></pre>
-
-
-
-## <a name="db2-pacemaker-configuration"></a>Db2 Pacemaker 配置
-
-如果在发生节点故障时使用 Pacemaker 进行自动故障转移，则需要相应地配置 Db2 实例和 Pacemaker。 本部分介绍此类型的配置。
-
-以下各项带有前缀：
-
-- **[A]**：适用于所有节点
-- **[1]**：仅适用于节点1 
-- **[2]**：仅适用于节点2
-
-**[A]** Pacemaker 配置的先决条件：
-1. 通过 db2stop 关闭具有用户 db2 的两个数据库服务器 \<sid> 。
-1. 将 db2 用户的 shell 环境更改 \<sid> 为 */bin/ksh*：
-<pre><code># Install korn shell:
-sudo yum install ksh
-# Change users shell:
-sudo usermod -s /bin/ksh db2&lt;sid&gt;</code></pre>
-   
-
-### <a name="pacemaker-configuration"></a>Pacemaker 配置
-
-**[1]** IBM Db2 HADR 特定的 Pacemaker 配置：
-<pre><code># Put Pacemaker into maintenance mode
-sudo pcs property set maintenance-mode=true 
-</code></pre>
-
-**[1]** 创建 IBM Db2 资源：
-<pre><code># Replace <b>bold strings</b> with your instance name db2sid, database SID, and virtual IP address/Azure Load Balancer.
-sudo pcs resource create Db2_HADR_<b>ID2</b> db2 instance='<b>db2id2</b>' dblist='<b>ID2</b>' master meta notify=true resource-stickiness=5000
-
-#Configure resource stickiness and correct cluster notifications for master resoruce
-sudo pcs resource update Db2_HADR_<b>ID2</b>-master meta notify=true resource-stickiness=5000
-
-# Configure virtual IP - same as Azure Load Balancer IP
-sudo pcs resource create vip_<b>db2id2</b>_<b>ID2</b> IPaddr2 ip='<b>10.100.0.40</b>'
-
-# Configure probe port for Azure load Balancer
-sudo pcs resource create nc_<b>db2id2</b>_<b>ID2</b> azure-lb port=<b>62500</b>
-
-#Create a group for ip and Azure loadbalancer probe port
-sudo pcs resource group add g_ipnc_<b>db2id2</b>_<b>ID2</b> vip_<b>db2id2</b>_<b>ID2</b> nc_<b>db2id2</b>_<b>ID2</b>
-
-#Create colocation constrain - keep Db2 HADR Master and Group on same node
-sudo pcs constraint colocation add g_ipnc_<b>db2id2</b>_<b>ID2</b> with master Db2_HADR_<b>ID2</b>-master
-
-#Create start order constrain
-sudo pcs constraint order promote Db2_HADR_<b>ID2</b>-master then g_ipnc_<b>db2id2</b>_<b>ID2</b>
-</code></pre>
-
-**[1]** 启动 IBM Db2 资源：
-* 将 Pacemaker 置于维护模式。
-<pre><code># Put Pacemaker out of maintenance-mode - that start IBM Db2
-sudo pcs property set maintenance-mode=false</pre></code>
-
-**[1]** 确保群集状态为 "正常"，并且所有资源均已启动。 资源在哪个节点上运行并不重要。
-<pre><code>sudo pcs status</code>
-2 nodes configured
-5 resources configured
-
-Online： [az-idb01 az-idb02]
-
-完整的资源列表：
-
- rsc_st_azure (stonith： fence_azure_arm) ：已启动 az-idb01 Master/从属集： Db2_HADR_ID2 master [Db2_HADR_ID2] master： [az-idb01] 资源组： [az-idb02] 资源组： g_ipnc_db2id2_ID2 vip_db2id2_ID2 (ocf：：检测信号： IPaddr2) ：已启动 az-idb01 nc_db2id2_ID2 (ocf：： idb01： azure-lb) ：
-
-Daemon 状态： corosync： active/disabled pacemaker： active/disabled pcsd： active/enabled
-</pre>
-
-> [!IMPORTANT]
-> 必须使用 Pacemaker 工具管理 Pacemaker 群集 Db2 实例。 如果使用 db2 命令（如 db2stop），则 Pacemaker 会将操作检测为资源故障。 如果要执行维护，可以将节点或资源置于维护模式。 Pacemaker 挂起监视资源，然后可以使用普通的 db2 管理命令。
-
 
 ### <a name="configure-azure-load-balancer"></a>配置 Azure 负载均衡器
+
 若要配置 Azure 负载均衡器，建议使用 [azure 标准负载均衡器 SKU](../../../load-balancer/load-balancer-overview.md) ，然后执行以下操作：
 
 > [!NOTE]
@@ -409,7 +330,6 @@ Daemon 状态： corosync： active/disabled pacemaker： active/disabled pcsd�
 
 > [!IMPORTANT]
 > 负载平衡方案中的 NIC 辅助 IP 配置不支持浮动 IP。 有关详细信息，请参阅 [Azure 负载均衡器限制](../../../load-balancer/load-balancer-multivip-overview.md#limitations)。 如果需要 VM 的其他 IP 地址，请部署第二个 NIC。  
-
 
 1. 创建前端 IP 池：
 
@@ -435,7 +355,7 @@ Daemon 状态： corosync： active/disabled pacemaker： active/disabled pcsd�
 
    e. 选择 IBM Db2 群集的虚拟机。
 
-   f. 选择“确定”  。
+   f. 选择“确定”。
 
 1. 创建运行状况探测：
 
@@ -464,8 +384,119 @@ Daemon 状态： corosync： active/disabled pacemaker： active/disabled pcsd�
    g. 选择“确定”。
 
 **[A]** 为探测端口添加防火墙规则：
+
 <pre><code>sudo firewall-cmd --add-port=<b><probe-port></b>/tcp --permanent
 sudo firewall-cmd --reload</code></pre>
+
+## <a name="create-the-pacemaker-cluster"></a>创建 Pacemaker 群集
+    
+若要为此 IBM Db2 服务器创建基本 Pacemaker 群集，请参阅在 [Azure 中的 Red Hat Enterprise Linux 上设置 Pacemaker][rhel-pcs-azr]。 
+
+## <a name="db2-pacemaker-configuration"></a>Db2 Pacemaker 配置
+
+如果在发生节点故障时使用 Pacemaker 进行自动故障转移，则需要相应地配置 Db2 实例和 Pacemaker。 本部分介绍此类型的配置。
+
+以下各项带有前缀：
+
+- **[A]**：适用于所有节点
+- **[1]**：仅适用于节点1 
+- **[2]**：仅适用于节点2
+
+**[A]** Pacemaker 配置的先决条件：
+1. 通过 db2stop 关闭具有用户 db2 的两个数据库服务器 \<sid> 。
+1. 将 db2 用户的 shell 环境更改 \<sid> 为 */bin/ksh*：
+<pre><code># Install korn shell:
+sudo yum install ksh
+# Change users shell:
+sudo usermod -s /bin/ksh db2&lt;sid&gt;</code></pre>  
+
+### <a name="pacemaker-configuration"></a>Pacemaker 配置
+
+**[1]** IBM Db2 HADR 特定的 Pacemaker 配置：
+<pre><code># Put Pacemaker into maintenance mode
+sudo pcs property set maintenance-mode=true 
+</code></pre>
+
+**[1]** 创建 IBM Db2 资源：
+
+如果在 **RHEL 7、windows** 上构建群集，请使用以下命令：
+
+<pre><code># Replace <b>bold strings</b> with your instance name db2sid, database SID, and virtual IP address/Azure Load Balancer.
+sudo pcs resource create Db2_HADR_<b>ID2</b> db2 instance='<b>db2id2</b>' dblist='<b>ID2</b>' master meta notify=true resource-stickiness=5000
+
+#Configure resource stickiness and correct cluster notifications for master resoruce
+sudo pcs resource update Db2_HADR_<b>ID2</b>-master meta notify=true resource-stickiness=5000
+
+# Configure virtual IP - same as Azure Load Balancer IP
+sudo pcs resource create vip_<b>db2id2</b>_<b>ID2</b> IPaddr2 ip='<b>10.100.0.40</b>'
+
+# Configure probe port for Azure load Balancer
+sudo pcs resource create nc_<b>db2id2</b>_<b>ID2</b> azure-lb port=<b>62500</b>
+
+#Create a group for ip and Azure loadbalancer probe port
+sudo pcs resource group add g_ipnc_<b>db2id2</b>_<b>ID2</b> vip_<b>db2id2</b>_<b>ID2</b> nc_<b>db2id2</b>_<b>ID2</b>
+
+#Create colocation constrain - keep Db2 HADR Master and Group on same node
+sudo pcs constraint colocation add g_ipnc_<b>db2id2</b>_<b>ID2</b> with master Db2_HADR_<b>ID2</b>-master
+
+#Create start order constrain
+sudo pcs constraint order promote Db2_HADR_<b>ID2</b>-master then g_ipnc_<b>db2id2</b>_<b>ID2</b>
+</code></pre>
+
+如果在 **RHEL** 2.x 上构建群集，请使用以下命令：
+
+<pre><code># Replace <b>bold strings</b> with your instance name db2sid, database SID, and virtual IP address/Azure Load Balancer.
+sudo pcs resource create Db2_HADR_<b>ID2</b> db2 instance='<b>db2id2</b>' dblist='<b>ID2</b>' promotable meta notify=true resource-stickiness=5000
+
+#Configure resource stickiness and correct cluster notifications for master resoruce
+sudo pcs resource update Db2_HADR_<b>ID2</b>-clone meta notify=true resource-stickiness=5000
+
+# Configure virtual IP - same as Azure Load Balancer IP
+sudo pcs resource create vip_<b>db2id2</b>_<b>ID2</b> IPaddr2 ip='<b>10.100.0.40</b>'
+
+# Configure probe port for Azure load Balancer
+sudo pcs resource create nc_<b>db2id2</b>_<b>ID2</b> azure-lb port=<b>62500</b>
+
+#Create a group for ip and Azure loadbalancer probe port
+sudo pcs resource group add g_ipnc_<b>db2id2</b>_<b>ID2</b> vip_<b>db2id2</b>_<b>ID2</b> nc_<b>db2id2</b>_<b>ID2</b>
+
+#Create colocation constrain - keep Db2 HADR Master and Group on same node
+sudo pcs constraint colocation add g_ipnc_<b>db2id2</b>_<b>ID2</b> with master Db2_HADR_<b>ID2</b>-clone
+
+#Create start order constrain
+sudo pcs constraint order promote Db2_HADR_<b>ID2</b>-clone then g_ipnc_<b>db2id2</b>_<b>ID2</b>
+</code></pre>
+
+**[1]** 启动 IBM Db2 资源：
+* 将 Pacemaker 置于维护模式。
+<pre><code># Put Pacemaker out of maintenance-mode - that start IBM Db2
+sudo pcs property set maintenance-mode=false</pre></code>
+
+**[1]** 确保群集状态为 "正常"，并且所有资源均已启动。 资源在哪个节点上运行并不重要。
+<pre><code>sudo pcs status
+2 nodes configured
+5 resources configured
+
+Online: [ az-idb01 az-idb02 ]
+
+Full list of resources:
+
+ rsc_st_azure   (stonith:fence_azure_arm):      Started az-idb01
+ Master/Slave Set: Db2_HADR_ID2-master [Db2_HADR_ID2]
+     Masters: [ az-idb01 ]
+     Slaves: [ az-idb02 ]
+ Resource Group: g_ipnc_db2id2_ID2
+     vip_db2id2_ID2     (ocf::heartbeat:IPaddr2):       Started az-idb01
+     nc_db2id2_ID2      (ocf::heartbeat:azure-lb):      Started az-idb01
+
+Daemon Status:
+  corosync: active/disabled
+  pacemaker: active/disabled
+  pcsd: active/enabled
+</code></pre>
+
+> [!IMPORTANT]
+> 必须使用 Pacemaker 工具管理 Pacemaker 群集 Db2 实例。 如果使用 db2 命令（如 db2stop），则 Pacemaker 会将操作检测为资源故障。 如果要执行维护，可以将节点或资源置于维护模式。 Pacemaker 挂起监视资源，然后可以使用普通的 db2 管理命令。
 
 ### <a name="make-changes-to-sap-profiles-to-use-virtual-ip-for-connection"></a>对 SAP 配置文件进行更改，以使用虚拟 IP 进行连接
 若要连接到 HADR 配置的主实例，SAP 应用程序层需要使用为 Azure 负载均衡器定义和配置的虚拟 IP 地址。 需要进行以下更改：
@@ -479,11 +510,9 @@ j2ee/dbhost = db-virt-hostname
 <pre><code>Hostname=db-virt-hostname
 </code></pre>
 
-
-
 ## <a name="install-primary-and-dialog-application-servers"></a>安装主应用程序和对话框应用程序服务器
 
-在针对 Db2 HADR 配置安装主应用程序服务器和对话框应用程序服务器时，请使用为配置选择的虚拟主机名。 
+在针对 Db2 HADR 配置安装主应用程序服务器和对话框应用程序服务器时，请使用为配置选择的虚拟主机名。
 
 如果在创建 Db2 HADR 配置之前执行了安装，请按照上一节中所述的方式进行更改，并遵循 SAP Java stack。
 
@@ -501,12 +530,13 @@ j2ee/dbhost = db-virt-hostname
     
     <pre><code>jdbc:db2://db-virt-hostname:5912/TSP:deferPrepares=0</code></pre>  
     
-1. 选择 **添加** 。
+1. 选择“添加”。
 1. 若要保存所做的更改，请在左上角选择磁盘图标。
 1. 关闭配置工具。
 1. 重新启动 Java 实例。
 
 ## <a name="configure-log-archiving-for-hadr-setup"></a>配置 HADR 安装的日志存档
+
 若要为 HADR 安装程序配置 Db2 日志存档，我们建议你将主数据库和备用数据库配置为从所有日志存档位置自动执行日志检索功能。 主数据库和备用数据库都必须能够从所有日志存档位置检索日志存档文件，其中一个数据库实例可能会将日志文件存档。 
 
 日志存档仅在主数据库中执行。 如果更改数据库服务器的 HADR 角色或发生故障，则新的主数据库将负责日志存档。 如果已设置多个日志存档位置，则日志可能会存档两次。 在本地或远程追赶的情况下，你可能还必须手动将存档的日志从旧的主服务器复制到新的主服务器的活动日志位置。
@@ -553,9 +583,6 @@ SAP 系统中的原始状态记录在 DBACOCKPIT > Configuration > 概述中，�
 
 ![DBACockpit-预迁移](./media/high-availability-guide-rhel-ibm-db2-luw/hadr-sap-mgr-org-rhel.png)
 
-
-
-
 ### <a name="test-takeover-of-ibm-db2"></a>IBM Db2 的测试接管
 
 
@@ -565,9 +592,12 @@ SAP 系统中的原始状态记录在 DBACOCKPIT > Configuration > 概述中，�
 > * 迁移测试)  (leftovers 没有位置约束
 > * IBM Db2 HADR 同步正在运行。 咨询用户 db2\<sid> <pre><code>db2pd -hadr -db \<DBSID></code></pre>
 
-
 通过执行以下命令迁移运行主 Db2 数据库的节点：
-<pre><code>sudo pcs resource move Db2_HADR_<b>ID2</b>-master</code></pre>
+<pre><code># On RHEL 7.x
+sudo pcs resource move Db2_HADR_<b>ID2</b>-master
+# On RHEL 8.x
+sudo pcs resource move Db2_HADR_<b>ID2</b>-clone --master
+</code></pre>
 
 完成迁移后，crm 状态输出如下所示：
 <pre><code>2 nodes configured
@@ -594,8 +624,13 @@ SAP 系统中的原始状态记录在 DBACOCKPIT > Configuration > 概述中，�
 具有 "pc 资源移动" 的资源迁移创建位置约束。 在这种情况下，位置约束阻止在 az-idb01 上运行 IBM Db2 实例。 如果不删除位置约束，则资源无法故障回复。
 
 删除位置约束，将在 az-idb01 上启动备用节点。
-<pre><code>sudo pcs resource clear Db2_HADR_<b>ID2</b>-master</code></pre>
+<pre><code># On RHEL 7.x
+sudo pcs resource clear Db2_HADR_<b>ID2</b>-master
+# On RHEL 8.x
+sudo pcs resource clear Db2_HADR_<b>ID2</b>-clone</code></pre>
+
 和群集状态更改为：
+
 <pre><code>2 nodes configured
 5 resources configured
 
@@ -613,13 +648,16 @@ Full list of resources:
 
 ![DBACockpit-已删除位置约束](./media/high-availability-guide-rhel-ibm-db2-luw/hadr-sap-mgr-clear-rhel.png)
 
-
 将资源迁移回 *az-idb01* 并清除位置约束
-<pre><code>sudo pcs resource move Db2_HADR_<b>ID2</b>-master az-idb01
+<pre><code># On RHEL 7.x
+sudo pcs resource move Db2_HADR_<b>ID2</b>-master az-idb01
 sudo pcs resource clear Db2_HADR_<b>ID2</b>-master
-</code></pre>
+# On RHEL 8.x
+sudo pcs resource move Db2_HADR_<b>ID2</b>-clone --master
+sudo pcs resource clear Db2_HADR_<b>ID2</b>-clone</code></pre>
 
-- **电脑资源移动 \<res_name> <host> ：** 创建位置约束并可能导致接管问题
+- **RHEL 7. x-pc 资源移动 \<res_name> <host> ：** 创建位置约束，并可能会导致接管问题
+- **RHEL 8. x pc 资源移动 \<res_name> --master：** 创建位置约束，并可能会导致接管问题
 - **电脑资源清除 \<res_name>**：清除位置约束
 - **电脑资源清理 \<res_name>**：清除资源的所有错误
 
@@ -763,7 +801,7 @@ Failed Actions:
 
 ### <a name="crash-the-vm-that-runs-the-hadr-primary-database-instance-with-halt"></a>通过 "停止" 将运行 HADR 主数据库实例的 VM 崩溃
 
-<pre><code>#Linux kernel panic. 
+<pre><code>#Linux kernel panic.
 sudo echo b > /proc/sysrq-trigger</code></pre>
 
 在这种情况下，Pacemaker 将检测到运行主数据库实例的节点没有响应。

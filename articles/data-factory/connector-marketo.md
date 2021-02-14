@@ -1,22 +1,17 @@
 ---
 title: 使用 Azure 数据工厂（预览版）从 Marketo 复制数据
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 Marketo 复制到支持的接收器数据存储。
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/04/2020
 ms.author: jingwang
-ms.openlocfilehash: 08f117e2fc4939eee1458c0807cac5a292785608
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aae25536f0ac1d5d3b43b5173d3e5789cd66a774
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84669862"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100385636"
 ---
 # <a name="copy-data-from-marketo-using-azure-data-factory-preview"></a>使用 Azure 数据工厂（预览版）从 Marketo 复制数据
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -113,7 +108,7 @@ Marketo 链接服务支持以下属性：
 
 ### <a name="marketo-as-source"></a>Marketo 作为源
 
-若要从 Marketo 复制数据，请将复制活动中的源类型设置为“MarketoSource”。 复制活动**source**部分支持以下属性：
+若要从 Marketo 复制数据，请将复制活动中的源类型设置为“MarketoSource”。 复制活动 **source** 部分支持以下属性：
 
 | 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |

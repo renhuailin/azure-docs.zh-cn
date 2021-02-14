@@ -3,12 +3,12 @@ title: 保护 Azure Functions
 description: 了解如何使 Azure 中运行的函数代码更安全，使其免遭常见攻击的威胁。
 ms.date: 4/13/2020
 ms.topic: conceptual
-ms.openlocfilehash: ee54ff8c1efaee00999888891e6de255060aa416
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 351bdca7ff94b6c058b5ab62fd9c16d707e7dc78
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491318"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100368483"
 ---
 # <a name="securing-azure-functions"></a>保护 Azure Functions
 
@@ -28,7 +28,7 @@ ms.locfileid: "94491318"
 
 ### <a name="log-and-monitor"></a>日志和监视器
 
-检测攻击的一种方法是通过活动监视活动和日志记录分析。 Functions 与 Application Insights 相集成，可收集函数应用的日志、性能和错误数据。 Application Insights 可自动检测性能异常，并且包含了强大的分析工具来帮助你诊断问题并了解函数的使用方式。 若要了解详细信息，请参阅[监视 Azure Functions](functions-monitoring.md)。
+检测攻击的一种方法是对活动进行监视和进行日志分析。 Functions 与 Application Insights 相集成，可收集函数应用的日志、性能和错误数据。 Application Insights 可自动检测性能异常，并且包含了强大的分析工具来帮助你诊断问题并了解函数的使用方式。 若要了解详细信息，请参阅[监视 Azure Functions](functions-monitoring.md)。
 
 Functions 还与 Azure Monitor 日志集成，使你能够将函数应用日志与系统事件合并，以便更轻松地进行分析。 你可以使用诊断设置将函数的平台日志和指标流式导出配置到你选择的目标位置，例如 Log Analytics 工作区。 若要了解更多信息，请参阅[使用 Azure Monitor 日志监视 Azure Functions](functions-monitor-log-analytics.md)。 
 
@@ -107,6 +107,8 @@ Functions 还与 Azure Monitor 日志集成，使你能够将函数应用日志�
 
 [!INCLUDE [app-service-managed-identities](../../includes/app-service-managed-identities.md)]
 
+托管标识可用于替代来自某些触发器和绑定的连接的机密。 请参阅 [基于标识的连接](#identity-based-connections)。
+
 有关详细信息，请参阅[如何使用应用服务和 Azure Functions 的托管标识](../app-service/overview-managed-identity.md?toc=%2fazure%2fazure-functions%2ftoc.json)。
 
 #### <a name="restrict-cors-access"></a>限制 CORS 访问
@@ -136,6 +138,14 @@ Functions 还与 Azure Monitor 日志集成，使你能够将函数应用日志�
 虽然应用程序设置足以满足大多数功能，但你可能希望跨多个服务共享相同的机密。 在这种情况下，机密的冗余存储会导致更多潜在的漏洞。 一种更安全的方法是使用中央机密存储服务，并使用对该服务的引用而不是对机密本身的引用。      
 
 [Azure Key Vault](../key-vault/general/overview.md) 是一项服务，可以提供集中式机密管理，并且可以完全控制访问策略和审核历史记录。 你可在应用程序设置中使用 Key Vault 引用来代替连接字符串或密钥。 若要了解详细信息，请参阅[使用应用服务和 Azure Functions 的 Key Vault 引用](../app-service/app-service-key-vault-references.md?toc=%2fazure%2fazure-functions%2ftoc.json)。
+
+### <a name="identity-based-connections"></a>基于标识的连接
+
+标识可用于代替机密来连接到某些资源。 这种方法的优点是不需要管理机密，而是提供更精细的访问控制和审核。 
+
+编写用于创建与 [支持 Azure AD 身份验证的 Azure 服务](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)的连接的代码时，可以选择使用标识，而不是使用机密或连接字符串。 每个服务的文档中介绍了这两种连接方法的详细信息。
+
+某些 Azure Functions 的触发器和绑定扩展可以使用基于标识的连接进行配置。 如今，这包括 [Azure Blob](./functions-bindings-storage-blob.md) 和 [azure 队列](./functions-bindings-storage-queue.md) 扩展。 有关如何配置这些扩展以使用标识的信息，请参阅 [如何在 Azure Functions 中使用基于标识的连接](./functions-reference.md#configure-an-identity-based-connection)。
 
 ### <a name="set-usage-quotas"></a>设置使用配额
 

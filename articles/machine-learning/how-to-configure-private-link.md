@@ -10,13 +10,13 @@ ms.custom: how-to, devx-track-azurecli
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 09/30/2020
-ms.openlocfilehash: 5ba1b9d53255406a73b1b74dbc59fe39e3f9a0d7
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.date: 02/09/2021
+ms.openlocfilehash: 75ea473c8669e9d50d2e9971a20a5fc1c3070779
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99979175"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100368007"
 ---
 # <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace"></a>为 Azure 机器学习工作区配置 Azure 专用链接
 
@@ -31,8 +31,9 @@ ms.locfileid: "99979175"
 
 ## <a name="prerequisites"></a>先决条件
 
-如果计划将启用了专用链接的工作区与客户托管的密钥配合使用，则必须使用支持票证请求此功能。 有关详细信息，请参阅[管理和增加配额](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases)。
+* 如果计划将启用了专用链接的工作区与客户托管的密钥配合使用，则必须使用支持票证请求此功能。 有关详细信息，请参阅[管理和增加配额](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases)。
 
+* 必须具有现有虚拟网络才能在中创建专用终结点。 在添加专用终结点之前，您还必须 [对专用终结点禁用网络策略](../private-link/disable-private-endpoint-network-policy.md) 。
 ## <a name="limitations"></a>限制
 
 * Azure 政府区域或 Azure 中国世纪互联区域不支持使用具有专用链接的 Azure 机器学习工作区。
@@ -73,6 +74,19 @@ ws = Workspace.create(name='myworkspace',
 * `--pe-vnet-name`：要在其中创建专用终结点的现有虚拟网络。
 * `--pe-subnet-name`：要在其中创建专用终结点的子网的名称。 默认值是 `default`。
 
+除了 create 命令所需的参数外，还需要这些参数。 例如，以下命令使用现有的资源组和 VNet 在美国西部区域创建一个新的工作区：
+
+```azurecli
+az ml workspace create -r myresourcegroup \
+    -l westus \
+    -n myworkspace \
+    --pe-name myprivateendpoint \
+    --pe-auto-approval \
+    --pe-resource-group myresourcegroup \
+    --pe-vnet-name myvnet \
+    --pe-subnet-name mysubnet
+```
+
 # <a name="portal"></a>[门户](#tab/azure-portal)
 
 使用 Azure 机器学习 studio 中的 " __网络__ " 选项卡可以配置专用终结点。 但是，它需要现有虚拟网络。 有关详细信息，请参阅 [在门户中创建工作区](how-to-manage-workspace.md)。
@@ -82,10 +96,6 @@ ws = Workspace.create(name='myworkspace',
 ## <a name="add-a-private-endpoint-to-a-workspace"></a>向工作区添加专用终结点
 
 使用以下方法之一将专用终结点添加到现有工作区：
-
-> [!IMPORTANT]
->
-> 必须具有现有虚拟网络才能在中创建专用终结点。 在添加专用终结点之前，您还必须 [对专用终结点禁用网络策略](../private-link/disable-private-endpoint-network-policy.md) 。
 
 > [!WARNING]
 >

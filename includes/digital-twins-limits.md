@@ -5,16 +5,19 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 6/9/2020
 ms.author: baanders
-ms.openlocfilehash: 08ae189253c6141a6b84035b71016ff5099ec162
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 4a69b2ff15fc4857e9fb292d2f753aa68ed875d4
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98690045"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100370083"
 ---
 ### <a name="functional-limits"></a>功能限制
 
-下表列出了 Azure 数字孪生的功能限制。
+下表列出了 Azure 数字孪生的功能限制。 
+
+> [!TIP]
+> 有关在这些功能限制内操作的建模建议，请参阅 [设计模型的最佳实践](../articles/digital-twins/concepts-models.md#best-practices-for-designing-models)。
 
 | 区域 | 功能 | 默认限制 | 可调? |
 | --- | --- | --- | --- |
@@ -28,6 +31,7 @@ ms.locfileid: "98690045"
 | 路由 | 单个 Azure 数字孪生实例的路由数 | 6 | 是 |
 | 模型 | 单个 Azure 数字孪生实例内的模型数 | 10,000 | 是 |
 | 模型 | 可在单个 API 调用中上载的模型数 | 250 | 否 |
+| 模型 | PUT 或 PATCH 请求中 JSON 正文的最大大小 (单个模型)  | 1 MB | 否 |
 | 模型 | 在单个页面中返回的项目数 | 100 | 否 |
 | 查询 | 在单个页面中返回的项目数 | 100 | 是 |
 | 查询 | `AND`  /  `OR` 查询中的表达式数 | 50 | 是 |

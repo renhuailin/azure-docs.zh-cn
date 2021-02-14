@@ -2,13 +2,13 @@
 title: 使用 Azure 应用程序网关保护 Azure VMware 解决方案上的 web 应用
 description: 配置 Azure 应用程序网关，以安全地公开在 Azure VMware 解决方案上运行的 web 应用。
 ms.topic: how-to
-ms.date: 02/08/2021
-ms.openlocfilehash: fdef37bd76b08a8778db8401a1e8a0406c2ed652
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.date: 02/10/2021
+ms.openlocfilehash: 9b10c206114ca922cc11bd8cb0321941b8ba672c
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99988631"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100384191"
 ---
 # <a name="use-azure-application-gateway-to-protect-your-web-apps-on-azure-vmware-solution"></a>使用 Azure 应用程序网关保护 Azure VMware 解决方案上的 web 应用
 
@@ -35,7 +35,7 @@ ms.locfileid: "99988631"
 
 :::image type="content" source="media/hub-spoke/azure-vmware-solution-second-level-traffic-segmentation.png" alt-text="显示用于通过 Azure VMware 解决方案 web 应用程序验证应用程序网关的测试方案的关系图。" border="false":::
 
-应用程序网关实例部署在中心的专用子网中。 它具有 Azure 公共 IP 地址。 建议为虚拟网络激活标准 DDoS 保护。 Web 服务器托管在 NSX T0 和 T1 路由器后面的 Azure VMware 解决方案私有云上。 Azure VMware 解决方案使用 [ExpressRoute Global Reach](../expressroute/expressroute-global-reach.md) 来实现与集线器和本地系统的通信。
+应用程序网关实例部署在中心的专用子网中。 它具有 Azure 公共 IP 地址。 建议为虚拟网络激活标准 DDoS 保护。 Web 服务器托管在 NSX T0 和 T1 网关后面的 Azure VMware 解决方案私有云上。 Azure VMware 解决方案使用 [ExpressRoute Global Reach](../expressroute/expressroute-global-reach.md) 来实现与集线器和本地系统的通信。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -57,17 +57,17 @@ ms.locfileid: "99988631"
 
 4. 添加在 Azure VMware 解决方案基础结构上运行的 Vm 的后端池。 提供在 Azure VMware 解决方案私有云上运行的 web 服务器的详细信息，并选择 " **添加**"。  然后选择 " **下一步：配置>**。
 
-1. 在 " **配置** " 选项卡上，选择 " **添加路由规则**"。
+5. 在 " **配置** " 选项卡上，选择 " **添加路由规则**"。
 
 6. 在 " **侦听器** " 选项卡上，提供侦听器的详细信息。 如果选择了 HTTPS，则必须从 PFX 文件或现有 Azure Key Vault 证书提供证书。 
 
 7. 选择 " **后端目标** " 选项卡，然后选择以前创建的后端池。 对于 " **HTTP 设置** " 字段，请选择 " **新增**"。
 
-8. 配置 HTTP 设置的参数。 选择 **添加** 。
+8. 配置 HTTP 设置的参数。 选择“添加”。
 
 9. 如果要配置基于路径的规则，请选择 " **添加多个目标" 以创建基于路径的规则**。 
 
-10. 添加基于路径的规则，然后选择 " **添加**"。 重复此步骤以添加其他基于路径的规则。 
+10. 添加基于路径的规则，然后选择 " **添加**"。 重复此步骤以添加更多基于路径的规则。 
 
 11. 添加完基于路径的规则后，请再次选择 " **添加** ";然后选择 " **下一步：标记">**。 
 
@@ -77,7 +77,7 @@ ms.locfileid: "99988631"
 
 ## <a name="configuration-examples"></a>配置示例
 
-在本部分中，你将了解如何将应用程序网关配置为 Azure VMware 解决方案 Vm，作为这些用例的后端池： 
+现在，我们会将应用程序网关配置为 Azure VMware 解决方案 Vm，作为以下用例的后端池： 
 
 - [托管多个站点](#hosting-multiple-sites)
 - [按 URL 路由](#routing-by-url)
@@ -94,7 +94,7 @@ ms.locfileid: "99988631"
 
     :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-multi-backend-pool.png" alt-text="显示 VSphere 客户端中 web 服务器详细信息摘要的屏幕截图。":::
 
-    我们使用了 Windows Server 2016，其中安装了 Internet Information Services (IIS) 角色来说明本教程。 安装 Vm 后，运行以下 PowerShell 命令，在每个 Vm 上配置 IIS。 
+    我们已将 Windows Server 2016 与 Internet Information Services (IIS) 角色一起使用。 安装 Vm 后，运行以下 PowerShell 命令，在每个 Vm 上配置 IIS。 
 
     ```powershell
     Install-WindowsFeature -Name Web-Server
@@ -111,9 +111,9 @@ ms.locfileid: "99988631"
 
     :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-multi-backend-pool-03.png" alt-text="&quot;HTTP 设置&quot; 页的屏幕截图，用于创建新的 HTTP 设置。" lightbox="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-multi-backend-pool-03.png":::
 
-5. 在左侧菜单的 " **规则** " 部分中创建规则。 将每个规则与相应的侦听器相关联。 选择 **添加** 。
+5. 在左侧菜单的 " **规则** " 部分中创建规则。 将每个规则与相应的侦听器相关联。 选择“添加”。
 
-6. 配置相应的后端池和 HTTP 设置。 选择 **添加** 。
+6. 配置相应的后端池和 HTTP 设置。 选择“添加”。
 
 7. 测试连接。 打开首选浏览器并导航到 Azure VMware 解决方案环境中托管的不同网站，例如 http://www.fabrikam.com 。
 
@@ -121,7 +121,7 @@ ms.locfileid: "99988631"
 
 ### <a name="routing-by-url"></a>按 URL 路由
 
-此过程说明如何使用现有应用程序网关上的 Azure VMware 解决方案私有云上运行的 Vm 定义后端地址池。 然后创建路由规则，以确保 Web 流量到达池中的相应服务器。
+以下步骤使用 Azure VMware 解决方案私有云上运行的 Vm 定义后端地址池。 私有云在现有的应用程序网关上。 然后创建路由规则，以确保 Web 流量到达池中的相应服务器。
 
 1. 在私有云中，创建虚拟机池来表示 web 场。 
 
@@ -157,7 +157,7 @@ ms.locfileid: "99988631"
    1. 从左侧菜单中选择“后端池”。 
    1. 选择 " **添加** "，然后输入第一个池（ **contoso-web**）的详细信息。 
    1. 将一个 VM 添加为目标。 
-   1. 选择 **添加** 。 
+   1. 选择“添加”。 
    1. 为 **contoso-images** 和 **contoso-视频** 重复此过程，并将一个唯一的 VM 添加为目标。 
 
     :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-url-route-backend-pool-02.png" alt-text="后端池页的屏幕截图，显示添加了三个新的后端池。" lightbox="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-url-route-backend-pool-02.png":::
@@ -168,7 +168,7 @@ ms.locfileid: "99988631"
 
     :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-url-route-backend-pool-04.png" alt-text="显示 HTTP 设置配置的 &quot;添加 HTTP 设置&quot; 页的屏幕截图。":::
 
-5. 在左侧菜单的 " **规则** " 部分中创建规则。 将每个规则与以前创建的侦听器相关联。 然后配置主后端池和 HTTP 设置。 选择 **添加** 。
+5. 在左侧菜单的 " **规则** " 部分中创建规则。 将每个规则与以前创建的侦听器相关联。 然后配置主后端池和 HTTP 设置。 选择“添加”。
 
     :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-url-route-backend-pool-07.png" alt-text="&quot;添加路由规则&quot; 页的屏幕截图，用于配置到后端目标的路由规则。":::
 

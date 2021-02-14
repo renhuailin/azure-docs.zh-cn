@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: sstein
 ms.date: 12/8/2020
-ms.openlocfilehash: b0d599b7d52d8a0e93f16761d1983ad25fa45c61
-ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
+ms.openlocfilehash: 1b8be7fc6295c6332d26718b5752d2fd8f2a6f73
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97687407"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100393235"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL 数据库无服务器
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -25,14 +25,14 @@ ms.locfileid: "97687407"
 
 ## <a name="serverless-compute-tier"></a>无服务器计算层
 
-Azure SQL 数据库中单一数据库的无服务器计算层由计算自动缩放范围和 autopause 延迟参数化。 这些参数的配置将组成数据库性能经验和计算成本。
+Azure SQL 数据库中单一数据库的无服务器计算层由计算自动缩放范围和自动暂停延迟参数化。 这些参数的配置将组成数据库性能经验和计算成本。
 
 ![无服务器计费](./media/serverless-tier-overview/serverless-billing.png)
 
 ### <a name="performance-configuration"></a>性能配置
 
 - “最小 vCore 数”和“最大 vCore 数”是可配置的参数，用于定义数据库可用的计算容量范围。  内存和 IO 限制与指定的 vCore 范围成正比。  
-- **自动暂停延迟** 是可配置的参数，用于定义数据库在自动暂停之前必须处于非活动状态的时间段。 发生下次登录或其他活动时，数据库会自动恢复。  或者，可以禁用自动暂停。
+- **自动暂停延迟** 是一个可配置参数，该参数定义数据库在自动暂停之前必须处于非活动状态的时间段。 发生下次登录或其他活动时，数据库会自动恢复。  或者，可以禁用自动暂停。
 
 ### <a name="cost"></a>成本
 
@@ -48,16 +48,16 @@ Azure SQL 数据库中单一数据库的无服务器计算层由计算自动缩�
 
 对于具有间歇性、不可预测的使用模式，在空闲使用时间段后的计算预热期间能够容忍一定延迟的单一数据库来说，无服务器是一种高性价比的方案。 相比之下，对于具有较高的平均使用量，并且计算预热期间无法容忍任何延迟的单一数据库或多个数据库，预配计算层是更具性价比的方案。
 
-### <a name="scenarios-well-suited-for-serverless-compute"></a>适合无服务器计算的场景
+### <a name="scenarios-well-suited-for-serverless-compute"></a>适用于无服务器计算的方案
 
 - 具有间歇性、不可预测的使用模式，中间穿插着非活动时段且一段时间内平均计算利用率较低的单一数据库。
 - 预配计算层中经常重新缩放的单一数据库；客户更倾向于将计算重新缩放委托到服务。
 - 不提供用量历史记录，且在 SQL 数据库中部署之前难以或者无法估算计算大小的新单一数据库。
 
-### <a name="scenarios-well-suited-for-provisioned-compute"></a>适合预配计算的场景
+### <a name="scenarios-well-suited-for-provisioned-compute"></a>适用于预配计算的方案
 
 - 采用较有规律的可预测使用模式，且在一段时间内平均计算利用率较高的单一数据库。
-- 不能容忍因较频繁的内存微调或从暂停状态下自动恢复的延迟，而导致需要对性能做出妥协的数据库。
+- 不能容忍性能降低的数据库，这些数据库会导致更频繁的内存修整或从暂停状态恢复的延迟。
 - 采用间歇性、不可预测使用模式，可整合到弹性池以提高性价比优化的多个数据库。
 
 ## <a name="comparison-with-provisioned-compute-tier"></a>与预配计算层的比较
@@ -93,40 +93,40 @@ Azure SQL 数据库中单一数据库的无服务器计算层由计算自动缩�
 - 当最近使用的缓存条目的总大小低于某个时间段的阈值时，主动缓存利用率将视为低。
 - 触发缓存回收后，目标缓存大小将递减到以前大小的一部分，并且仅当使用率保持较低时才继续回收。
 - 发生缓存回收时，用于选择要逐出的缓存条目的策略与当内存压力较高时适用于预配计算数据库的策略相同。
-- 缓存大小永远不会减至小于最小 vCore 数定义的最小内存限制（可配置）。
+- 缓存大小永远不会降低到可配置的最小内存限制（以最小 Vcore 定义）。
 
 在无服务器数据库和预配的计算数据库中，如果使用了所有可用内存，则可能会逐出缓存条目。
 
-请注意，当 CPU 使用率较低时，主动缓存利用率可能会保持较高水平（具体取决于使用模式），并会阻止内存回收。  此外，用户活动停止后，在内存回收之前，可能会有额外的延迟，因为后台进程会定期响应先前的用户活动。  例如，删除操作和 QDS 清除任务会生成标记为“需删除”的虚影记录，但在虚影清除进程运行（这可能涉及到将数据页读入缓存）之前不会进行物理删除。
+请注意，当 CPU 使用率较低时，主动缓存利用率可能会保持较高水平（具体取决于使用模式），并会阻止内存回收。  此外，用户活动停止后，可能会有额外的延迟，因为响应先前用户活动会定期后台进程。  例如，"删除操作" 和 "QDS 清除任务" 生成标记为删除的虚影记录，但不会在物理上删除，直到运行了可将数据页读入缓存的虚影清除进程为止。
 
 #### <a name="cache-hydration"></a>缓存合成
 
 随着从磁盘中不断提取数据，SQL 缓存也会不断增大，其增长速度与预配的数据库相同。 当数据库处于繁忙状态时，允许缓存无约束增大，但不能超过最大内存限制。
 
-## <a name="autopausing-and-autoresuming"></a>自动暂停和自动恢复
+## <a name="auto-pause-and-auto-resume"></a>自动暂停和自动恢复
 
-### <a name="autopausing"></a>自动暂停
+### <a name="auto-pause"></a>自动暂停
 
-如果在自动暂停延迟的时间段内，下面的所有条件均成立，则会触发自动暂停：
+如果在自动暂停延迟期间满足以下所有条件，则会触发自动暂停：
 
 - 会话数目 = 0
 - CPU = 0（对于在用户池中运行的用户工作负荷）
 
-如有需要，系统也提供了禁用自动暂停的选项。
+如果需要，将提供一个选项来禁用自动暂停。
 
-以下功能不支持自动暂停，但支持自动缩放。  如果使用了以下任意功能，那么无论数据库处于不活动状态的时间有多长，都应禁用自动暂停，让数据库保持联机状态：
+以下功能不支持自动暂停，但支持自动缩放。  如果使用以下任何功能，则应禁用自动暂停，并且数据库将保持联机状态，而不考虑数据库的非活动持续时间：
 
 - 异地复制（活动异地复制和自动故障转移组）。
 - 长期备份保留 (LTR)。
-- SQL 数据同步中使用的同步数据库。与同步数据库不同，中心数据库和成员数据库支持自动暂停。
+- SQL 数据同步中使用的同步数据库。 与同步数据库不同，中心和成员数据库支持自动暂停。
 - DNS 别名
 - 弹性作业（预览版）中使用的作业数据库。
 
-在部署某些需要数据库联机的服务更新期间，会暂时阻止自动暂停。  在这种情况下，一旦服务更新完成，就会再次允许自动暂停。
+在部署某些需要数据库联机的服务更新的过程中，会暂时阻止自动暂停。  在这种情况下，服务更新完成后，将再次允许自动暂停。
 
-### <a name="autoresuming"></a>自动恢复
+### <a name="auto-resuming"></a>自动恢复
 
-如果在任何时候，下面的任意条件成立，均会触发自动恢复：
+如果以下任一条件为真，则会触发自动恢复：
 
 |功能|自动恢复触发器|
 |---|---|
@@ -135,11 +135,11 @@ Azure SQL 数据库中单一数据库的无服务器计算层由计算自动缩�
 |数据发现和分类|添加、修改、删除或查看敏感度标签|
 |审核|查看审核记录。<br>更新或查看审核策略。|
 |数据屏蔽|添加、修改、删除或查看数据屏蔽规则|
-|透明数据加密|查看透明数据加密的状态或状态|
+|透明数据加密|查看透明数据加密的状况或状态|
 |漏洞评估|如果启用，则为临时扫描和定期扫描|
 |查询（性能）数据存储|修改或查看查询存储设置|
 |性能建议|查看或应用性能建议|
-|自动优化|自动优化建议的应用和验证，例如自动索引|
+|自动优化|应用和验证自动优化建议，例如自动索引|
 |数据库复制|创建数据库作为副本。<br>导出到 BACPAC 文件。|
 |SQL 数据同步|按照可配置的时间表或手动执行中心和成员数据库之间的同步|
 |修改特定的数据库元数据|添加新的数据库标记。<br>更改最大 vCore 数、最小 vCore 数或自动暂停延迟。|
@@ -147,7 +147,7 @@ Azure SQL 数据库中单一数据库的无服务器计算层由计算自动缩�
 
 监视解决方案、管理解决方案或其他执行上述任何操作的解决方案将触发自动恢复。
 
-在部署某些需要数据库联机的服务更新时，也会触发自动刷新。
+在部署某些需要数据库联机的服务更新的过程中，也会触发自动恢复。
 
 ### <a name="connectivity"></a>连接
 
@@ -155,7 +155,7 @@ Azure SQL 数据库中单一数据库的无服务器计算层由计算自动缩�
 
 ### <a name="latency"></a>延迟
 
-自动恢复或自动暂停无服务器数据库的延迟时间通常为 1 分钟自动恢复，1-10 分钟自动暂停。
+自动重新开始和自动暂停无服务器数据库的延迟通常是从1分钟到自动恢复，并按1-10 分钟自动暂停。
 
 ### <a name="customer-managed-transparent-data-encryption-byok"></a>客户托管透明数据加密 (BYOK)
 
@@ -209,7 +209,7 @@ CREATE DATABASE testdb
 ( EDITION = 'GeneralPurpose', SERVICE_OBJECTIVE = 'GP_S_Gen5_1' ) ;
 ```
 
-有关详细信息，请参阅 [CREATE DATABASE](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current)。  
+有关详细信息，请参阅 [CREATE DATABASE](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current&preserve-view=true)。  
 
 ### <a name="move-a-database-from-the-provisioned-compute-tier-into-the-serverless-compute-tier"></a>将数据库从预配的计算层移到无服务器计算层
 
@@ -234,14 +234,14 @@ az sql db update -g $resourceGroupName -s $serverName -n $databaseName `
 
 #### <a name="use-transact-sql-t-sql"></a>使用 Transact-SQL (T-SQL)
 
-使用 T-SQL 时，最小 vCore 数和自动暂停延迟将应用默认值。
+使用 T-sql 时，默认值适用于最小 vcore 和自动暂停延迟。
 
 ```sql
 ALTER DATABASE testdb 
 MODIFY ( SERVICE_OBJECTIVE = 'GP_S_Gen5_1') ;
 ```
 
-有关详细信息，请参阅 [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current)。
+有关详细信息，请参阅 [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current&preserve-view=true)。
 
 ### <a name="move-a-database-from-the-serverless-compute-tier-into-the-provisioned-compute-tier"></a>将数据库从无服务器计算层移到预配的计算层
 
