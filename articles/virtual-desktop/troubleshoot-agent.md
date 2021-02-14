@@ -6,19 +6,19 @@ ms.topic: troubleshooting
 ms.date: 12/16/2020
 ms.author: sefriend
 manager: clarkn
-ms.openlocfilehash: 8e3c372cb186d3043e89b0b084a86b7be128146d
-ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
+ms.openlocfilehash: 1500a635d5177ed8899cdc3f1364e57a8525892c
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99475246"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100099942"
 ---
 # <a name="troubleshoot-common-windows-virtual-desktop-agent-issues"></a>排查常见的 Windows 虚拟桌面代理问题
 
 由于多个因素，Windows 虚拟桌面代理可能会导致连接问题：
    - 代理停止服务时出现错误。
    - 更新问题。
-   - 在代理安装过程中安装时出现问题，这会破坏到会话主机的连接。
+   - 在代理安装过程中安装的问题会破坏到会话主机的连接。
 
 本文将指导你完成这些常见方案的解决方案，以及如何解决连接问题。
 
@@ -31,7 +31,7 @@ ms.locfileid: "99475246"
 若要解决此问题，请启动 RDAgent 启动加载程序：
 
 1. 在 "服务" 窗口中，右键单击 " **远程桌面代理加载程序**"。
-2. 选择“启动”。 如果此选项为你灰显，则你没有管理员权限，将需要使其启动服务。
+2. 选择“开始”。 如果此选项为你灰显，则你没有管理员权限，将需要使其启动服务。
 3. 等待10秒，然后右键单击 " **远程桌面代理加载程序**"。
 4. 选择“刷新”。
 5. 如果服务在启动并刷新后停止，则可能是注册失败。 有关详细信息，请参阅 [INVALID_REGISTRATION_TOKEN](#error-invalid_registration_token)。
@@ -184,7 +184,7 @@ ms.locfileid: "99475246"
 1. 以管理员身份打开命令提示符。
 2. 输入 **qwinsta** 命令并运行该命令。
 3. 应显示两个堆栈组件： **rdp-tcp** 和 **rdp-sxs**。 
-   - 根据所使用的操作系统版本， **rdp-sxs** 后面可能会跟随内部版本号，如以下屏幕截图所示。 如果是，请确保稍后将此数字记下来。
+   - 根据所使用的操作系统版本， **rdp-sxs** 后面可能跟有生成号。 如果是，请确保稍后将此数字记下来。
 4. 打开注册表编辑器。
 5. 请参阅 **HKEY_LOCAL_MACHINE**  >  **SYSTEM**  >  **CurrentControlSet**  >  **Control**  >  **Terminal Server**  >  **WinStations**。
 6. 在 **WinStations** 下，你可能会看到不同堆栈版本的多个文件夹。 选择与步骤3中的版本号匹配的文件夹。
@@ -207,7 +207,7 @@ ms.locfileid: "99475246"
 以管理员身份打开 PowerShell 窗口并运行以下 cmdlet：
 
 ```powershell
-Get-AzWvdSessionHost -TenantName <tenantname> -HostPoolName <hostpoolname>|Select-Object *
+Get-AzWvdSessionHost -ResourceGroupName <resourcegroupname> -HostPoolName <hostpoolname> | Select-Object *
 ```
 
 如果为主机池中的会话主机或主机列出的状态始终显示 " **不可用** " 或 "正在 **升级**"，则代理或堆栈安装可能已失败
@@ -327,7 +327,7 @@ VM 的名称已经注册，可能是重复的。
 2. 右键单击刚刚下载的代理和启动加载程序安装程序。
 3. 选择“属性”。
 4. 选择“取消阻止”。
-5. 选择“确定”。
+5. 选择“确定”  。
 6. 运行代理安装程序。
 7. 当安装程序要求你提供注册令牌时，请从剪贴板中粘贴注册密钥。 
 

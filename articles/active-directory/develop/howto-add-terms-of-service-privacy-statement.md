@@ -12,12 +12,12 @@ ms.date: 05/22/2019
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja
 ms.custom: aaddev
-ms.openlocfilehash: 46919a97364aeff29e2b458c619315571dba7710
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 311dfd976610c392909a0ec3d91fecaa4d733539
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98013662"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104189"
 ---
 # <a name="how-to-configure-terms-of-service-and-privacy-statement-for-an-app"></a>如何：配置应用的服务条款和隐私声明
 
@@ -58,11 +58,11 @@ ms.locfileid: "98013662"
 ### <a name="using-the-azure-portal"></a><a name="azure-portal"></a>使用 Azure 门户
 在 Azure 门户中执行以下步骤。
 
-1. 登录到<a href="https://portal.azure.com/" target="_blank">Azure 门户 <span class="docon docon-navigate-external x-hidden-focus"></span> </a>，选择正确的 AzureAD 租户 (不是 B2C) 。
-2. 导航到“应用注册”部分并选择应用  。
-3. 打开“品牌”  窗格。
+1. 登录到 <a href="https://portal.azure.com/" target="_blank">Azure 门户</a> 并选择正确的 Azure AD 租户 (非 B2C) 。
+2. 导航到 " **应用注册** " 部分，然后选择应用。
+3. 在 " **管理**" 下，选择 " **品牌**"。
 4. 填写“服务条款 URL”和“隐私声明 URL”字段   。
-5. 保存所做更改。
+5. 选择“保存”。 
 
     ![应用属性包含服务条款和隐私声明 URL](./media/howto-add-terms-of-service-privacy-statement/azure-portal-terms-service-privacy-statement-urls.png)
 

@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 84a49ea2f6ce4a5119af024ab3de67fa2b89c02e
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: f1f2caa194972bb870dc58cfa0bd6ccb2f8db053
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539734"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100099908"
 ---
 # <a name="session-host-virtual-machine-configuration"></a>会话主机虚拟机配置
 
@@ -193,7 +193,7 @@ Windows 虚拟桌面并行堆栈随 Windows Server 2019 自动安装。 使用 M
 > [!div class="mx-imgBorder"]
 > ![已安装或启用并行堆栈，其中 qwinsta 在输出中列为 rdp-sxs。](media/23b8e5f525bb4e24494ab7f159fa6b62.png)
 
-检查下面列出的注册表项，并确认它们的值是否匹配。 如果缺少注册表项或值不匹配，请按照如何重新安装并行堆栈中的 [使用 PowerShell 创建主机池](create-host-pools-powershell.md) 中的说明进行操作。
+检查下面列出的注册表项，并确认它们的值是否匹配。 如果缺少注册表项或值不匹配，请确保运行 [的是受支持的操作系统](troubleshoot-agent.md#error-operating-a-pro-vm-or-other-unsupported-os)。 如果是，请遵循 [使用 PowerShell 创建主机池](create-host-pools-powershell.md) 中的说明，了解如何重新安装并排堆栈。
 
 ```registry
     HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal

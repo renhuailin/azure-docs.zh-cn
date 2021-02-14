@@ -158,6 +158,8 @@
           href: migration-resources.md
         - name: 将 AD FS 应用迁移到 Azure
           href: migrate-adfs-apps-to-azure.md
+        - name: 将应用程序身份验证迁移到 Azure Active Directory
+          href: migrate-application-authentication-to-azure-active-directory.md
         - name: 使用 AD FS 应用程序活动报表（预览版）
           href: migrate-adfs-application-activity.md
     - name: 配置本地连接器

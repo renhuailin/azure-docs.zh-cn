@@ -13,20 +13,20 @@ metadata:
   author: BlackMist
   ms.date: 09/21/2020
   ms.custom: contperf-fy21q1
-  ms.openlocfilehash: 44f260d5e336433c7366dcbe7ce6f1bb79f92c3c
-  ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+  ms.openlocfilehash: b52e7908d07dcd342be59f9870dece13701f1dc6
+  ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 01/22/2021
-  ms.locfileid: "98683974"
+  ms.lasthandoff: 02/10/2021
+  ms.locfileid: "100096321"
 landingContent:
 - title: 入门：代码优先
   linkLists:
   - linkListType: tutorial
     links:
-    - text: 入门教程 (Python)
+    - text: Python 脚本入门
       url: tutorial-1st-experiment-sdk-setup-local.md
-    - text: “使用 Jupyter Notebooks”教程
+    - text: Jupyter 笔记本 (Python) 入门
       url: tutorial-1st-experiment-sdk-setup.md
     - text: 使用 ML 管道的批量推理 (Python)
       url: tutorial-pipeline-batch-scoring-classification.md

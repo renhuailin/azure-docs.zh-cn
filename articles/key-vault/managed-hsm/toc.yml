@@ -39,8 +39,6 @@
       href: access-control.md
     - name: 本地 RBAC 内置角色
       href: built-in-roles.md
-- name: 操作指南
-  items: null
 - name: 参考
   items:
     - name: Azure PowerShell

@@ -15,12 +15,12 @@ ms.custom:
 - cog-serv-seo-aug-2020
 - contperf-fy21q2
 keywords: computer vision, computer vision applications, computer vision service
-ms.openlocfilehash: 62d82388d975f36c422f7eb1e9feff8ce2725d54
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 69edbf558b4bd452c67478bac828bfde26be5a70
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033283"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575934"
 ---
 # <a name="what-is-computer-vision"></a>什么是计算机视觉？
 
@@ -32,7 +32,7 @@ ms.locfileid: "97033283"
 
 ## <a name="optical-character-recognition-ocr"></a>光学字符识别 (OCR)
 
-计算机视觉包括[光学字符识别 (OCR)](concept-recognizing-text.md) 功能。 可以使用新的 Read API 从图像和文档中提取印刷体文本和手写文本。 它使用最新的模型，可在各种表面和背景上处理文本。 文本类型包括收据、海报、名片、信件和白板。 这两种 OCR API 支持提取[多种语言](./language-support.md)的印刷体文本。 按[快速入门](./quickstarts-sdk/client-library.md)的说明开始操作。
+计算机视觉包括[光学字符识别 (OCR)](concept-recognizing-text.md) 功能。 可以使用新的 Read API 从图像和文档中提取印刷体文本和手写文本。 它使用基于深度学习的模型，并处理各种表面和背景上的文本， 包括业务文档、发票、收据、海报、名片、信件和白板。 这些 OCR API 支持提取[多种语言](./language-support.md)的印刷体文本。 按[快速入门](./quickstarts-sdk/client-library.md)的说明开始操作。
 
 ## <a name="computer-vision-for-digital-asset-management"></a>用于数字资产管理的计算机视觉
 

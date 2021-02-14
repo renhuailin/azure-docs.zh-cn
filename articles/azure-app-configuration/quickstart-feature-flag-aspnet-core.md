@@ -7,12 +7,12 @@ ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 09/28/2020
 ms.author: alkemper
-ms.openlocfilehash: a4890dd93cf77e20aff09ca6fd33ec3434a45a4b
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 8ca4a6e78ab3c6ccf492869bb68c5296ae91de21
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98663040"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99806064"
 ---
 # <a name="quickstart-add-feature-flags-to-an-aspnet-core-app"></a>快速入门：将功能标志添加到 ASP.NET Core 应用
 
@@ -207,7 +207,7 @@ dotnet new mvc --no-https --output TestFeatureFlags
 
 1. 在 Views\\Shared 目录下，打开 _Layout.cshtml”  。 在 `<body>` > `<header>` 下找到 `<nav>` 条码。 在“主页”和“隐私”导航栏项之间插入新的 `<feature>` 标记，如以下突出显示的行中所示 。
 
-    :::code language="html" source="../../includes/azure-app-configuration-navbar.md" range="15-38" highlight="13-17":::
+    :::code language="html" source="../../includes/azure-app-configuration-navbar.md" range="15-38" highlight="14-18":::
 
 1. 创建一个 Views/Beta 目录，以及一个包含以下标记的 Index.cshtml 文件 。
 

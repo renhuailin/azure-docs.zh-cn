@@ -1,6 +1,6 @@
 ---
-title: 快速入门：适用于 .NET 的表单识别器客户端库
-description: 使用适用于 .NET 的表单识别器客户端库创建一个表单处理应用，该应用从自定义文档中提取键值对和表数据。
+title: 快速入门：表单识别器 REST API
+description: 使用表单识别器 REST API 创建一个表单处理应用，该应用从自定义文档中提取键/值对和表数据。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 12/15/2020
 ms.author: pafarley
-ms.openlocfilehash: 31e1a0d912c6623f57d4ea256968102604ce42ff
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 3112c93e0877a8441875e3c7627c2a7b84ac8ab1
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98132260"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99808447"
 ---
 > [!NOTE]
 > 本指南使用 cURL 执行 REST API 调用。 还有[GitHub 上的示例代码](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/python/FormRecognizer/rest)，它说明了如何使用 Python 调用 REST API。
@@ -34,28 +34,23 @@ ms.locfileid: "98132260"
 
 ## <a name="analyze-layout"></a>分析布局
 
-可使用表单识别器来识别并提取文档中的表格、线条和单词，无需训练模型。 运行该命令之前，请进行以下更改：
+可以使用表单识别器来分析并提取文档中的表格、选定内容标记、文本和结构，而无需训练模型。 有关布局提取的详细信息，请参阅[布局概念指南](../../concept-layout.md)。 运行该命令之前，请进行以下更改：
 
 1. 将 `{Endpoint}` 替换为从表单识别器订阅中获取的终结点。
 1. 将 `{subscription key}` 替换为从上一步复制的订阅密钥。
-1. 将请求正文中的 URL 替换为其中一个示例 URL。
+1. 将 `\"{your-document-url}` 替换为示例 URL 之一。
 
 # <a name="v20"></a>[v2.0](#tab/v2-0)    
 
+
 ```bash
-curl -v -X POST "https://{Endpoint}/formrecognizer/v2.0/layout/analyze"
--H "Content-Type: application/json"
--H "Ocp-Apim-Subscription-Key: {subscription key}"
---data-ascii "{\"source\": \"http://example.com/test.jpg\"}" 
+curl -v -i POST "https://{Endpoint}/formrecognizer/v2.0/layout/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{'source': '{your-document-url}'}"
 ```
 
 # <a name="v21-preview"></a>[v2.1 预览版](#tab/v2-1)    
 
 ```bash
-curl -v -X POST "https://{Endpoint}/formrecognizer/v2.1-preview.2/layout/analyze"
--H "Content-Type: application/json"
--H "Ocp-Apim-Subscription-Key: {subscription key}"
---data-ascii "{\"source\": \"http://example.com/test.jpg\"}" 
+curl -v -i POST "https://{Endpoint}/formrecognizer/v2.1-preview.2/layout/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{'source': '{your-document-url}'}"
 ```
 ---
 
@@ -76,14 +71,13 @@ https://cognitiveservice/formrecognizer/v2.1-preview.2/layout/analyzeResults/54f
 # <a name="v20"></a>[v2.0](#tab/v2-0)    
 
 ```bash
-curl -v -X GET "https://{Endpoint}/formrecognizer/v2.0/layout/analyzeResults/{resultId}"
--H "Ocp-Apim-Subscription-Key: {subscription key}"
+curl -v -X GET "https://{Endpoint}/formrecognizer/v2.0/layout/analyzeResults/{resultId}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
 ```
+
 
 # <a name="v21-preview"></a>[v2.1 预览版](#tab/v2-1)  
 ```bash
-curl -v -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.2/layout/analyzeResults/{resultId}"
--H "Ocp-Apim-Subscription-Key: {subscription key}"
+curl -v -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.2/layout/analyzeResults/{resultId}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
 ```
 ---
 
@@ -91,7 +85,7 @@ curl -v -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.2/layout/analyzeR
 
 你将收到包含 JSON 内容的 `200 (success)` 响应。
 
-请查看以下发票图像及其相应的 JSON 输出。 为了简单起见，已缩短输出。 `"readResults"` 节点包含每一行文本，以及其各自在页面上的边界框位置。 `"selectionMarks"` 节点（在 v2.1 预览版中）显示每个选择标记（复选框、单选框），并显示其状态是“已选中”还是“未选中”。 `"pageResults"` 字段显示表中的每个文本段，均带有行-列坐标。
+请查看以下发票图像及其相应的 JSON 输出。 为了简单起见，已缩短输出。 `"readResults"` 节点包含每一行文本，以及其各自在页面上的边界框位置。 `"selectionMarks"` 节点（在 v2.1 预览版中）显示每个选择标记（复选框、单选框），并显示其状态是“已选中”还是“未选中”。 `"pageResults"` 部分包含提取的表。 对于每个表，将会提取文本、行和列索引、行和列跨距、边界框等。
 
 :::image type="content" source="../../media/contoso-invoice.png" alt-text="包含表的 Contoso 项目声明文档。":::
 
@@ -319,9 +313,690 @@ curl -v -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.2/layout/analyzeR
 
 ---
 
+
+
+## <a name="analyze-invoices"></a>分析发票
+
+# <a name="version-20"></a>[版本 2.0](#tab/v2-0)
+
+> [!IMPORTANT]
+> 此功能在所选的 API 版本中不可用。
+
+# <a name="version-21-preview"></a>[版本 2.1 预览](#tab/v2-1)
+
+若要开始分析发票，请使用下面的 cURL 命令。 有关发票分析的详细信息，请参阅[发票概念指南](../../concept-invoices.md)。 运行该命令之前，请进行以下更改：
+
+1. 将 `{Endpoint}` 替换为从表单识别器订阅中获取的终结点。
+1. 将 `{your invoice URL}` 替换为账单文档的 URL 地址。
+1. 将 `{subscription key}` 替换为订阅密钥。
+
+
+```bash
+curl -v -i POST "https://{Endpoint}/formrecognizer/v2.1-preview.2/prebuilt/invoice/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key:  {subscription key}" --data-ascii "{'source': '{your invoice URL}'}"
+```
+
+你将收到 `202 (Success)` 响应，其中包含“Operation-Location”标头。 此标头的值包含一个可用于查询异步操作状态和获取结果的操作 ID。
+
+```console
+https://cognitiveservice/formrecognizer/v2.1-preview.2/prebuilt/invoice/analyzeResults/54f0b076-4e38-43e5-81bd-b85b8835fdfb
+```
+
+### <a name="get-invoice-results"></a>获取账单结果
+
+调用 **[分析发票](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/5ed8c9843c2794cbb1a96291)** API 后，可以调用 **[获取分析发票结果](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/5ed8c9acb78c40a2533aee83)** API，来获取操作状态和已提取的数据。 运行该命令之前，请进行以下更改：
+
+1. 将 `{Endpoint}` 替换为从表单识别器订阅密钥中获得的终结点。 可以在表单识别器资源的“概览”选项卡中找到该终结点。
+1. 将 `{resultId}` 替换为上一步中的操作 ID。
+1. 将 `{subscription key}` 替换为订阅密钥。
+
+```bash
+curl -v -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.2/prebuilt/invoice/analyzeResults/{resultId}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
+```
+
+### <a name="examine-the-response"></a>检查响应
+
+你将收到包含 JSON 输出的 `200 (Success)` 响应。 `"readResults"` 字段包含从账单提取的每行文本，`"pageResults"` 包含从账单提取的表格和选择标记，而 `"documentResults"` 字段包含账单中最相关部分的键/值信息。
+
+请查看下列账单文档及其对应的 JSON 输出。 为便于阅读，已将该 JSON 内容缩短。
+
+* [示例发票](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/curl/form-recognizer/sample-invoice.pdf)
+
+```json
+{
+    "status": "succeeded",
+    "createdDateTime": "2020-11-06T23:32:11Z",
+    "lastUpdatedDateTime": "2020-11-06T23:32:20Z",
+    "analyzeResult": {
+        "version": "2.1.0",
+        "readResults": [{
+            "page": 1,
+            "angle": 0,
+            "width": 8.5,
+            "height": 11,
+            "unit": "inch"
+        }],
+        "pageResults": [{
+            "page": 1,
+            "tables": [{
+                "rows": 3,
+                "columns": 4,
+                "cells": [{
+                    "rowIndex": 0,
+                    "columnIndex": 0,
+                    "text": "QUANTITY",
+                    "boundingBox": [0.4953,
+                    5.7306,
+                    1.8097,
+                    5.7306,
+                    1.7942,
+                    6.0122,
+                    0.4953,
+                    6.0122]
+                },
+                {
+                    "rowIndex": 0,
+                    "columnIndex": 1,
+                    "text": "DESCRIPTION",
+                    "boundingBox": [1.8097,
+                    5.7306,
+                    5.7529,
+                    5.7306,
+                    5.7452,
+                    6.0122,
+                    1.7942,
+                    6.0122]
+                },
+                ...
+                ],
+                "boundingBox": [0.4794,
+                5.7132,
+                8.0158,
+                5.714,
+                8.0118,
+                6.5627,
+                0.4757,
+                6.5619]
+            },
+            {
+                "rows": 2,
+                "columns": 6,
+                "cells": [{
+                    "rowIndex": 0,
+                    "columnIndex": 0,
+                    "text": "SALESPERSON",
+                    "boundingBox": [0.4979,
+                    4.963,
+                    1.8051,
+                    4.963,
+                    1.7975,
+                    5.2398,
+                    0.5056,
+                    5.2398]
+                },
+                {
+                    "rowIndex": 0,
+                    "columnIndex": 1,
+                    "text": "P.O. NUMBER",
+                    "boundingBox": [1.8051,
+                    4.963,
+                    3.3047,
+                    4.963,
+                    3.3124,
+                    5.2398,
+                    1.7975,
+                    5.2398]
+                },
+                ...
+                ],
+                "boundingBox": [0.4976,
+                4.961,
+                7.9959,
+                4.9606,
+                7.9959,
+                5.5204,
+                0.4972,
+                5.5209]
+            }]
+        }],
+        "documentResults": [{
+            "docType": "prebuilt:invoice",
+            "pageRange": [1,
+            1],
+            "fields": {
+                "AmountDue": {
+                    "type": "number",
+                    "valueNumber": 610,
+                    "text": "$610.00",
+                    "boundingBox": [7.3809,
+                    7.8153,
+                    7.9167,
+                    7.8153,
+                    7.9167,
+                    7.9591,
+                    7.3809,
+                    7.9591],
+                    "page": 1,
+                    "confidence": 0.875
+                },
+                "BillingAddress": {
+                    "type": "string",
+                    "valueString": "123 Bill St, Redmond WA, 98052",
+                    "text": "123 Bill St, Redmond WA, 98052",
+                    "boundingBox": [0.594,
+                    4.3724,
+                    2.0125,
+                    4.3724,
+                    2.0125,
+                    4.7125,
+                    0.594,
+                    4.7125],
+                    "page": 1,
+                    "confidence": 0.997
+                },
+                "BillingAddressRecipient": {
+                    "type": "string",
+                    "valueString": "Microsoft Finance",
+                    "text": "Microsoft Finance",
+                    "boundingBox": [0.594,
+                    4.1684,
+                    1.7907,
+                    4.1684,
+                    1.7907,
+                    4.2837,
+                    0.594,
+                    4.2837],
+                    "page": 1,
+                    "confidence": 0.998
+                },
+                ...                
+            }
+        }]
+    }
+}
+```
+
+---
+
+## <a name="train-a-custom-model"></a>训练自定义模型
+
+若要训练自定义模型，需要 Azure 存储 Blob 中的一组训练数据。 至少需要相同类型/结构的五个已填写表单（PDF 文档和/或图像）。 有关整理训练数据的提示和选项，请参阅[为自定义模型生成训练数据集](../../build-training-data-set.md)。
+
+在没有已标记数据的情况下进行训练是默认操作，并且更简单。 或者，可以预先手动标记部分或全部训练数据。 这是一个更为复杂的过程，但会生成更好的经过训练的模型。
+
+> [!NOTE]
+> 你还可以使用图形用户界面（例如[表单识别器示例标记工具](../../quickstarts/label-tool.md)）来训练模型。
+
+
+### <a name="train-a-model-without-labels"></a>不使用标签训练模型
+
+若要使用 Azure Blob 容器中的文档训练表单识别器模型，请运行下面的 cURL 命令来调用[训练自定义模型](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync) API  。 运行该命令之前，请进行以下更改：
+
+1. 将 `{Endpoint}` 替换为从表单识别器订阅中获取的终结点。
+1. 将 `{subscription key}` 替换为从上一步复制的订阅密钥。
+1. 将 `{SAS URL}` 替换为 Azure Blob 存储容器的共享访问签名 (SAS) URL。 [!INCLUDE [get SAS URL](../sas-instructions.md)]
+
+   :::image type="content" source="../../media/quickstarts/get-sas-url.png" alt-text="SAS URL 检索":::
+
+# <a name="v20"></a>[v2.0](#tab/v2-0)
+```bash
+curl -i -X POST "https://{Endpoint}/formrecognizer/v2.0/custom/models" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ 'source': '{SAS URL}'}"
+```
+
+# <a name="v21-preview"></a>[v2.1 预览版](#tab/v2-1)    
+```bash
+curl -i -X POST "https://{Endpoint}/formrecognizer/v2.1-preview.2/custom/models" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ 'source': '{SAS URL}'}"
+```
+
+---
+
+
+你将收到包含“Location”标头的 `201 (Success)` 响应  。 此标头的值是要训练的新模型的 ID。
+
+### <a name="train-a-model-with-labels"></a>使用标签训练模型
+
+若要使用标签训练，你需要在 blob 存储容器中添加特殊标签信息文件 (`\<filename\>.pdf.labels.json`) 和训练文档。 [表单识别器示例标记工具](../../quickstarts/label-tool.md)提供了可帮助你创建这些标签文件的 UI。 有了这些文件之后，可以在 JSON 正文中将 `"useLabelFile"` 参数设置为 `true`，调用 **[训练自定义模型](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync)** API。
+
+运行该命令之前，请进行以下更改：
+
+1. 将 `{Endpoint}` 替换为从表单识别器订阅中获取的终结点。
+1. 将 `{subscription key}` 替换为从上一步复制的订阅密钥。
+1. 将 `{SAS URL}` 替换为 Azure Blob 存储容器的共享访问签名 (SAS) URL。 [!INCLUDE [get SAS URL](../sas-instructions.md)]
+
+   :::image type="content" source="../../media/quickstarts/get-sas-url.png" alt-text="SAS URL 检索":::
+
+# <a name="v20"></a>[v2.0](#tab/v2-0)
+```bash
+curl -i -X POST "https://{Endpoint}/formrecognizer/v2.0/custom/models" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ 'source': '{SAS URL}', 'useLabelFile':true }"
+```
+# <a name="v21-preview"></a>[v2.1 预览版](#tab/v2-1)    
+```bash
+curl -i -X POST "https://{Endpoint}/formrecognizer/v2.1-preview.2/custom/models" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ 'source': '{SAS URL}', 'useLabelFile':true}"
+```
+
+---
+
+
+你将收到包含“Location”标头的 `201 (Success)` 响应  。 此标头的值是要训练的新模型的 ID。
+
+### <a name="get-training-results"></a>获取训练结果
+
+开始训练操作后，可以使用新操作[获取自定义模型](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/GetCustomModel)检查训练状态  。 将模型 ID 传递到此 API 调用以检查训练状态：
+
+1. 将 `{Endpoint}` 替换为从表单识别器订阅密钥中获得的终结点。
+1. 将 `{subscription key}` 替换为订阅密钥
+1. 将 `{model ID}` 替换为在上一步骤收到的模型 ID
+
+
+# <a name="v20"></a>[v2.0](#tab/v2-0)    
+```bash
+curl -X GET "https://{Endpoint}/formrecognizer/v2.0/custom/models/{model ID}" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}"
+```
+# <a name="v21-preview"></a>[v2.1 预览版](#tab/v2-1)    
+```bash
+curl -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.2/custom/models/{model ID}" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}"
+```
+    
+---
+
+你将收到以下格式的 JSON 正文的 `200 (Success)` 响应。 请注意 `"status"` 字段。 完成训练后，将出现值 `"ready"`。 如果模型没有完成训练，则需要重新运行该命令以再次查询该服务。 我们建议两次调用间隔一秒或更长时间。
+
+`"modelId"` 字段包含要训练的模型的 ID。 下一步骤需要用到此字段。
+
+```json
+{
+  "modelInfo":{
+    "status":"ready",
+    "createdDateTime":"2019-10-08T10:20:31.957784",
+    "lastUpdatedDateTime":"2019-10-08T14:20:41+00:00",
+    "modelId":"1cfb372bab404ba3aa59481ab2c63da5"
+  },
+  "trainResult":{
+    "trainingDocuments":[
+      {
+        "documentName":"invoices\\Invoice_1.pdf",
+        "pages":1,
+        "errors":[
+
+        ],
+        "status":"succeeded"
+      },
+      {
+        "documentName":"invoices\\Invoice_2.pdf",
+        "pages":1,
+        "errors":[
+
+        ],
+        "status":"succeeded"
+      },
+      {
+        "documentName":"invoices\\Invoice_3.pdf",
+        "pages":1,
+        "errors":[
+
+        ],
+        "status":"succeeded"
+      },
+      {
+        "documentName":"invoices\\Invoice_4.pdf",
+        "pages":1,
+        "errors":[
+
+        ],
+        "status":"succeeded"
+      },
+      {
+        "documentName":"invoices\\Invoice_5.pdf",
+        "pages":1,
+        "errors":[
+
+        ],
+        "status":"succeeded"
+      }
+    ],
+    "errors":[
+
+    ]
+  },
+  "keys":{
+    "0":[
+      "Address:",
+      "Invoice For:",
+      "Microsoft",
+      "Page"
+    ]
+  }
+}
+```
+
+## <a name="analyze-forms-with-a-custom-model"></a>使用自定义模型分析表单
+
+接下来，使用新的经过训练的模型分析文档并从中提取键值对和表。 运行以下 cURL 命令来调用[分析表单](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm) API  。 运行该命令之前，请进行以下更改：
+
+1. 将 `{Endpoint}` 替换为从表单识别器订阅密钥中获取的终结点。 可以在表单识别器资源的“概览”选项卡中找到该终结点。 
+1. 将 `{model ID}` 替换为在上一部分收到的模型 ID。
+1. 将 `{SAS URL}` 替换为指向 Azure 存储中文件的 SAS URL。 按照“训练”部分中的步骤操作，但不是获取整个 blob 容器的 SAS URL，而是获取要分析的特定文件的 URL。
+1. 将 `{subscription key}` 替换为订阅密钥。
+
+# <a name="v20"></a>[v2.0](#tab/v2-0)    
+
+```bash
+curl -v "https://{Endpoint}/formrecognizer/v2.0/custom/models/{model ID}/analyze?includeTextDetails=true" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" -d "{ 'source': '{SAS URL}' } "
+```
+
+# <a name="v21-preview"></a>[v2.1 预览版](#tab/v2-1)    
+```bash
+curl -v "https://{Endpoint}/formrecognizer/v2.1-preview.2/custom/models/{model ID}/analyze?includeTextDetails=true" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" -d "{ 'source': '{SAS URL}' } "
+```
+    
+---
+
+
+
+你将收到 `202 (Success)` 响应，其中包含“Operation-Location”标头  。 此标头的值包括用于跟踪“分析”操作结果的结果 ID。 保存此结果 ID 以供下一步使用。
+
+### <a name="get-the-analyze-results"></a>获取分析结果
+
+调用获取 **[分析表单结果](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/GetAnalyzeFormResult)** API 可查询分析操作的结果。
+
+1. 将 `{Endpoint}` 替换为从表单识别器订阅密钥中获取的终结点。 可以在表单识别器资源的“概览”选项卡中找到该终结点。 
+1. 将 `{result ID}` 替换为上一部分中收到的 ID。
+1. 将 `{subscription key}` 替换为订阅密钥。
+
+# <a name="v20"></a>[v2.0](#tab/v2-0)    
+```bash
+curl -X GET "https://{Endpoint}/formrecognizer/v2.0/custom/models/{model ID}/analyzeResults/{result ID}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
+```
+# <a name="v21-preview"></a>[v2.1 预览版](#tab/v2-1)    
+```bash
+curl -X GET "https://{Endpoint}/formrecognizer/v2.1-preview/custom/models/{model ID}/analyzeResults/{result ID}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
+```
+---
+
+你将收到以下格式的 JSON 正文的 `200 (Success)` 响应。 为了简单起见，已缩短输出。 请注意底部附近的 `"status"` 字段。 完成“分析”操作时，会出现 `"succeeded"` 值。 如果“分析”操作尚未完成，则需要重新运行该命令以再次查询该服务。 我们建议两次调用间隔一秒或更长时间。
+
+在不使用标签训练的自定义模型中，键/值对关联和表位于 JSON 输出的 `"pageResults"` 节点中。 在使用标签训练的自定义模型中，键/值对关联位于 `"documentResults"` 节点中。 如果还通过 includeTextDetails URL 参数指定了纯文本提取，则 `"readResults"` 节点将显示文档中所有文本的内容和位置  。
+
+为了简单起见，已缩短此示例 JSON 输出。
+
+# <a name="v20"></a>[v2.0](#tab/v2-0)
+```JSON
+{
+  "status": "succeeded",
+  "createdDateTime": "2020-08-21T00:46:25Z",
+  "lastUpdatedDateTime": "2020-08-21T00:46:32Z",
+  "analyzeResult": {
+    "version": "2.0.0",
+    "readResults": [
+      {
+        "page": 1,
+        "angle": 0,
+        "width": 8.5,
+        "height": 11,
+        "unit": "inch",
+        "lines": [
+          {
+            "text": "Project Statement",
+            "boundingBox": [
+              5.0153,
+              0.275,
+              8.0944,
+              0.275,
+              8.0944,
+              0.7125,
+              5.0153,
+              0.7125
+            ],
+            "words": [
+              {
+                "text": "Project",
+                "boundingBox": [
+                  5.0153,
+                  0.275,
+                  6.2278,
+                  0.275,
+                  6.2278,
+                  0.7125,
+                  5.0153,
+                  0.7125
+                ]
+              },
+              {
+                "text": "Statement",
+                "boundingBox": [
+                  6.3292,
+                  0.275,
+                  8.0944,
+                  0.275,
+                  8.0944,
+                  0.7125,
+                  6.3292,
+                  0.7125
+                ]
+              }
+            ]
+          }, 
+        ...
+        ]
+      }
+    ],
+    "pageResults": [
+      {
+        "page": 1,
+        "keyValuePairs": [
+          {
+            "key": {
+              "text": "Date:",
+              "boundingBox": [
+                6.9722,
+                1.0264,
+                7.3417,
+                1.0264,
+                7.3417,
+                1.1931,
+                6.9722,
+                1.1931
+              ],
+              "elements": [
+                "#/readResults/0/lines/2/words/0"
+              ]
+            },
+            "confidence": 1
+          },
+         ...
+        ],
+        "tables": [
+          {
+            "rows": 4,
+            "columns": 5,
+            "cells": [
+              {
+                "text": "Training Date",
+                "rowIndex": 0,
+                "columnIndex": 0,
+                "boundingBox": [
+                  0.6931,
+                  4.2444,
+                  1.5681,
+                  4.2444,
+                  1.5681,
+                  4.4125,
+                  0.6931,
+                  4.4125
+                ],
+                "confidence": 1,
+                "rowSpan": 1,
+                "columnSpan": 1,
+                "elements": [
+                  "#/readResults/0/lines/15/words/0",
+                  "#/readResults/0/lines/15/words/1"
+                ],
+                "isHeader": true,
+                "isFooter": false
+              },
+              ...
+            ]
+          }
+        ], 
+        "clusterId": 0
+      }
+    ],
+    "documentResults": [],
+    "errors": []
+  }
+}
+```    
+# <a name="v21-preview"></a>[v2.1 预览版](#tab/v2-1)    
+```JSON
+{
+  "status": "succeeded",
+  "createdDateTime": "2020-08-21T01:13:28Z",
+  "lastUpdatedDateTime": "2020-08-21T01:13:42Z",
+  "analyzeResult": {
+    "version": "2.1.0",
+    "readResults": [
+      {
+        "page": 1,
+        "angle": 0,
+        "width": 8.5,
+        "height": 11,
+        "unit": "inch",
+        "lines": [
+          {
+            "text": "Project Statement",
+            "boundingBox": [
+              5.0444,
+              0.3613,
+              8.0917,
+              0.3613,
+              8.0917,
+              0.6718,
+              5.0444,
+              0.6718
+            ],
+            "words": [
+              {
+                "text": "Project",
+                "boundingBox": [
+                  5.0444,
+                  0.3587,
+                  6.2264,
+                  0.3587,
+                  6.2264,
+                  0.708,
+                  5.0444,
+                  0.708
+                ]
+              },
+              {
+                "text": "Statement",
+                "boundingBox": [
+                  6.3361,
+                  0.3635,
+                  8.0917,
+                  0.3635,
+                  8.0917,
+                  0.6396,
+                  6.3361,
+                  0.6396
+                ]
+              }
+            ]
+          }, 
+          ...
+        ] 
+      }
+    ],
+    "pageResults": [
+      {
+        "page": 1,
+        "keyValuePairs": [
+          {
+            "key": {
+              "text": "Date:",
+              "boundingBox": [
+                6.9833,
+                1.0615,
+                7.3333,
+                1.0615,
+                7.3333,
+                1.1649,
+                6.9833,
+                1.1649
+              ],
+              "elements": [
+                "#/readResults/0/lines/2/words/0"
+              ]
+            },
+            "value": {
+              "text": "9/10/2020",
+              "boundingBox": [
+                7.3833,
+                1.0802,
+                7.925,
+                1.0802,
+                7.925,
+                1.174,
+                7.3833,
+                1.174
+              ],
+              "elements": [
+                "#/readResults/0/lines/3/words/0"
+              ]
+            },
+            "confidence": 1
+          },
+          ...
+        ], 
+        "tables": [
+          {
+            "rows": 5,
+            "columns": 5,
+            "cells": [
+              {
+                "text": "Training Date",
+                "rowIndex": 0,
+                "columnIndex": 0,
+                "boundingBox": [
+                  0.6944,
+                  4.2779,
+                  1.5625,
+                  4.2779,
+                  1.5625,
+                  4.4005,
+                  0.6944,
+                  4.4005
+                ],
+                "confidence": 1,
+                "rowSpan": 1,
+                "columnSpan": 1,
+                "elements": [
+                  "#/readResults/0/lines/15/words/0",
+                  "#/readResults/0/lines/15/words/1"
+                ],
+                "isHeader": true,
+                "isFooter": false
+              },
+              ...
+            ]
+          }
+        ], 
+        "clusterId": 0
+      }
+    ], 
+    "documentResults": [],
+    "errors": []
+  }
+}
+``` 
+---
+
+### <a name="improve-results"></a>改进结果
+
+[!INCLUDE [improve results](../improve-results-unlabeled.md)]
+
 ## <a name="analyze-receipts"></a>分析回执
 
-若要开始分析回执，可使用以下 cURL 命令调用[分析收据](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeReceiptAsync) API。 运行该命令之前，请进行以下更改：
+本部分演示如何使用预先训练的收据模型分析和提取美国收据中的常见字段。 有关收据分析的详细信息，请参阅[收据概念指南](../../concept-receipts.md)。 若要开始分析回执，可使用以下 cURL 命令调用[分析收据](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeReceiptAsync) API。 运行该命令之前，请进行以下更改：
 
 1. 将 `{Endpoint}` 替换为从表单识别器订阅中获取的终结点。
 1. 将 `{your receipt URL}` 替换为回执图像的 URL 地址。
@@ -330,13 +1005,13 @@ curl -v -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.2/layout/analyzeR
 # <a name="v20"></a>[v2.0](#tab/v2-0)
 
 ```bash
-curl -i -X POST "https://{Endpoint}/formrecognizer/v2.0/prebuilt/receipt/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ \"source\": \"{your receipt URL}\"}"
+curl -i -X POST "https://{Endpoint}/formrecognizer/v2.0/prebuilt/receipt/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ 'source': '{your receipt URL}'}"
 ```
 
 # <a name="v21-preview"></a>[v2.1 预览版](#tab/v2-1)    
 
 ```bash
-curl -i -X POST "https://{Endpoint}/formrecognizer/v2.1-preview.2/prebuilt/receipt/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ \"source\": \"{your receipt URL}\"}"
+curl -i -X POST "https://{Endpoint}/formrecognizer/v2.1-preview.2/prebuilt/receipt/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ 'source': '{your receipt URL}'}"
 ```
 ---
 
@@ -708,14 +1383,14 @@ curl -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.2/prebuilt/receipt/a
 
 # <a name="v21-preview"></a>[v2.1 预览版](#tab/v2-1)  
 
-若要开始分析名片，请使用以下 cURL 命令调用[分析名片](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeBusinessCardAsync) API。 运行该命令之前，请进行以下更改：
+本部分演示如何使用预先训练的模型分析和提取英文名片中的常见字段。 有关名片分析的详细信息，请参阅[名片概念指南](../../concept-business-cards.md)。 若要开始分析名片，请使用以下 cURL 命令调用[分析名片](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeBusinessCardAsync) API。 运行该命令之前，请进行以下更改：
 
 1. 将 `{Endpoint}` 替换为从表单识别器订阅中获取的终结点。
 1. 将 `{your receipt URL}` 替换为回执图像的 URL 地址。
 1. 将 `{subscription key}` 替换为从上一步复制的订阅密钥。
 
 ```bash
-curl -i -X POST "https://{Endpoint}/formrecognizer/v2.1-preview.2/prebuilt/businessCard/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ \"source\": \"{your receipt URL}\"}"
+curl -i -X POST "https://{Endpoint}/formrecognizer/v2.1-preview.2/prebuilt/businessCard/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ 'source': '{your receipt URL}'}"
 ```
 
 你将收到 `202 (Success)` 响应，其中包含“Operation-Location”标头。 此标头的值包含一个可用于查询异步操作状态和获取结果的操作 ID。
@@ -861,661 +1536,11 @@ curl -v -X GET "https://westcentralus.api.cognitive.microsoft.com/formrecognizer
 
 ---
 
-## <a name="analyze-invoices"></a>分析发票
-
-# <a name="version-20"></a>[版本 2.0](#tab/v2-0)
-
-> [!IMPORTANT]
-> 此功能在所选的 API 版本中不可用。
-
-# <a name="version-21-preview"></a>[版本 2.1 预览](#tab/v2-1)
-
-若要开始分析账单，请使用以下 cURL 命令脚本调用[分析账单](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/5ed8c9843c2794cbb1a96291) API。 运行该命令之前，请进行以下更改：
-
-1. 将 `{Endpoint}` 替换为从表单识别器订阅中获取的终结点。
-1. 将 `{your invoice URL}` 替换为账单文档的 URL 地址。
-1. 将 `{subscription key}` 替换为订阅密钥。
-
-```bash
-curl -v -X POST "https://{Endpoint}/formrecognizer/v2.1-preview.2/prebuilt/invoice/analyze"
--H "Content-Type: application/json"
--H "Ocp-Apim-Subscription-Key: {subscription key}"
---data-ascii "{ \"source\": \"{your invoice URL}\"}"
-```
-
-你将收到 `202 (Success)` 响应，其中包含“Operation-Location”标头。 此标头的值包含一个可用于查询异步操作状态和获取结果的操作 ID。
-
-```console
-https://cognitiveservice/formrecognizer/v2.1-preview.2/prebuilt/invoice/analyzeResults/54f0b076-4e38-43e5-81bd-b85b8835fdfb
-```
-
-### <a name="get-invoice-results"></a>获取账单结果
-
-调用分析账单 API 后，可调用[获取分析账单结果](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/5ed8c9acb78c40a2533aee83) API，来获取操作状态和已提取的数据 。 运行该命令之前，请进行以下更改：
-
-1. 将 `{Endpoint}` 替换为从表单识别器订阅密钥中获得的终结点。 可以在表单识别器资源的“概览”选项卡中找到该终结点。
-1. 将 `{resultId}` 替换为上一步中的操作 ID。
-1. 将 `{subscription key}` 替换为订阅密钥。
-
-```bash
-curl -v -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.2/prebuilt/invoice/analyzeResults/{resultId}"
--H "Ocp-Apim-Subscription-Key: {subscription key}"
-```
-
-### <a name="examine-the-response"></a>检查响应
-
-你将收到包含 JSON 输出的 `200 (Success)` 响应。 `"readResults"` 字段包含从账单提取的每行文本，`"pageResults"` 包含从账单提取的表格和选择标记，而 `"documentResults"` 字段包含账单中最相关部分的键/值信息。
-
-请查看下列账单文档及其对应的 JSON 输出。 为便于阅读，已将该 JSON 内容缩短。
-
-* [示例发票](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/curl/form-recognizer/sample-invoice.pdf)
-
-```json
-{
-    "status": "succeeded",
-    "createdDateTime": "2020-11-06T23:32:11Z",
-    "lastUpdatedDateTime": "2020-11-06T23:32:20Z",
-    "analyzeResult": {
-        "version": "2.1.0",
-        "readResults": [{
-            "page": 1,
-            "angle": 0,
-            "width": 8.5,
-            "height": 11,
-            "unit": "inch"
-        }],
-        "pageResults": [{
-            "page": 1,
-            "tables": [{
-                "rows": 3,
-                "columns": 4,
-                "cells": [{
-                    "rowIndex": 0,
-                    "columnIndex": 0,
-                    "text": "QUANTITY",
-                    "boundingBox": [0.4953,
-                    5.7306,
-                    1.8097,
-                    5.7306,
-                    1.7942,
-                    6.0122,
-                    0.4953,
-                    6.0122]
-                },
-                {
-                    "rowIndex": 0,
-                    "columnIndex": 1,
-                    "text": "DESCRIPTION",
-                    "boundingBox": [1.8097,
-                    5.7306,
-                    5.7529,
-                    5.7306,
-                    5.7452,
-                    6.0122,
-                    1.7942,
-                    6.0122]
-                },
-                ...
-                ],
-                "boundingBox": [0.4794,
-                5.7132,
-                8.0158,
-                5.714,
-                8.0118,
-                6.5627,
-                0.4757,
-                6.5619]
-            },
-            {
-                "rows": 2,
-                "columns": 6,
-                "cells": [{
-                    "rowIndex": 0,
-                    "columnIndex": 0,
-                    "text": "SALESPERSON",
-                    "boundingBox": [0.4979,
-                    4.963,
-                    1.8051,
-                    4.963,
-                    1.7975,
-                    5.2398,
-                    0.5056,
-                    5.2398]
-                },
-                {
-                    "rowIndex": 0,
-                    "columnIndex": 1,
-                    "text": "P.O. NUMBER",
-                    "boundingBox": [1.8051,
-                    4.963,
-                    3.3047,
-                    4.963,
-                    3.3124,
-                    5.2398,
-                    1.7975,
-                    5.2398]
-                },
-                ...
-                ],
-                "boundingBox": [0.4976,
-                4.961,
-                7.9959,
-                4.9606,
-                7.9959,
-                5.5204,
-                0.4972,
-                5.5209]
-            }]
-        }],
-        "documentResults": [{
-            "docType": "prebuilt:invoice",
-            "pageRange": [1,
-            1],
-            "fields": {
-                "AmountDue": {
-                    "type": "number",
-                    "valueNumber": 610,
-                    "text": "$610.00",
-                    "boundingBox": [7.3809,
-                    7.8153,
-                    7.9167,
-                    7.8153,
-                    7.9167,
-                    7.9591,
-                    7.3809,
-                    7.9591],
-                    "page": 1,
-                    "confidence": 0.875
-                },
-                "BillingAddress": {
-                    "type": "string",
-                    "valueString": "123 Bill St, Redmond WA, 98052",
-                    "text": "123 Bill St, Redmond WA, 98052",
-                    "boundingBox": [0.594,
-                    4.3724,
-                    2.0125,
-                    4.3724,
-                    2.0125,
-                    4.7125,
-                    0.594,
-                    4.7125],
-                    "page": 1,
-                    "confidence": 0.997
-                },
-                "BillingAddressRecipient": {
-                    "type": "string",
-                    "valueString": "Microsoft Finance",
-                    "text": "Microsoft Finance",
-                    "boundingBox": [0.594,
-                    4.1684,
-                    1.7907,
-                    4.1684,
-                    1.7907,
-                    4.2837,
-                    0.594,
-                    4.2837],
-                    "page": 1,
-                    "confidence": 0.998
-                },
-                ...                
-            }
-        }]
-    }
-}
-```
-
----
-
-## <a name="train-a-custom-model"></a>训练自定义模型
-
-若要训练自定义模型，需要 Azure 存储 Blob 中的一组训练数据。 应至少有五个类型/结构与主要输入数据相同的已填写表单（PDF 文档和/或图像）。 或者，可以使用一个空表单和两个已填充表单。 空表单的文件名需要包括单词“empty”。 有关整理训练数据的提示和选项，请参阅[为自定义模型生成训练数据集](../../build-training-data-set.md)。
-
-> [!NOTE]
-> 可以使用标记数据功能来手动预先标记部分或全部训练数据。 这是一个更为复杂的过程，但会生成更好的经过训练的模型。 有关此功能的详细信息，请参阅概述的[通过标签进行训练](../../overview.md#train-with-labels)部分。
-
-若要使用 Azure Blob 容器中的文档训练表单识别器模型，请运行下面的 cURL 命令来调用[训练自定义模型](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync) API  。 运行该命令之前，请进行以下更改：
-
-1. 将 `{Endpoint}` 替换为从表单识别器订阅中获取的终结点。
-1. 将 `{subscription key}` 替换为从上一步复制的订阅密钥。
-1. 将 `{SAS URL}` 替换为 Azure Blob 存储容器的共享访问签名 (SAS) URL。 [!INCLUDE [get SAS URL](../sas-instructions.md)]
-
-   :::image type="content" source="../../media/quickstarts/get-sas-url.png" alt-text="SAS URL 检索":::
-
-# <a name="v20"></a>[v2.0](#tab/v2-0)    
-```bash
-curl -i -X POST "https://{Endpoint}/formrecognizer/v2.0/custom/models" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ \"source\": \""{SAS URL}"\"}"
-```
-# <a name="v21-preview"></a>[v2.1 预览版](#tab/v2-1)    
-```bash
-curl -i -X POST "https://{Endpoint}/formrecognizer/v2.1-preview.2/custom/models" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ \"source\": \""{SAS URL}"\"}"
-```
-
----
-
-
-你将收到包含“Location”标头的 `201 (Success)` 响应  。 此标头的值是要训练的新模型的 ID。
-
-### <a name="get-training-results"></a>获取训练结果
-
-开始训练操作后，可以使用新操作[获取自定义模型](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/GetCustomModel)检查训练状态  。 将模型 ID 传递到此 API 调用以检查训练状态：
-
-1. 将 `{Endpoint}` 替换为从表单识别器订阅密钥中获得的终结点。
-1. 将 `{subscription key}` 替换为订阅密钥
-1. 将 `{model ID}` 替换为在上一步骤收到的模型 ID
-
-
-# <a name="v20"></a>[v2.0](#tab/v2-0)    
-```bash
-curl -X GET "https://{Endpoint}/formrecognizer/v2.0/custom/models/{model ID}" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}"
-```
-# <a name="v21-preview"></a>[v2.1 预览版](#tab/v2-1)    
-```bash
-curl -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.2/custom/models/{model ID}" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}"
-```
-    
----
-
-你将收到以下格式的 JSON 正文的 `200 (Success)` 响应。 请注意 `"status"` 字段。 完成训练后，将出现值 `"ready"`。 如果模型没有完成训练，则需要重新运行该命令以再次查询该服务。 我们建议两次调用间隔一秒或更长时间。
-
-`"modelId"` 字段包含要训练的模型的 ID。 下一步骤需要用到此字段。
-
-```json
-{
-  "modelInfo":{
-    "status":"ready",
-    "createdDateTime":"2019-10-08T10:20:31.957784",
-    "lastUpdatedDateTime":"2019-10-08T14:20:41+00:00",
-    "modelId":"1cfb372bab404ba3aa59481ab2c63da5"
-  },
-  "trainResult":{
-    "trainingDocuments":[
-      {
-        "documentName":"invoices\\Invoice_1.pdf",
-        "pages":1,
-        "errors":[
-
-        ],
-        "status":"succeeded"
-      },
-      {
-        "documentName":"invoices\\Invoice_2.pdf",
-        "pages":1,
-        "errors":[
-
-        ],
-        "status":"succeeded"
-      },
-      {
-        "documentName":"invoices\\Invoice_3.pdf",
-        "pages":1,
-        "errors":[
-
-        ],
-        "status":"succeeded"
-      },
-      {
-        "documentName":"invoices\\Invoice_4.pdf",
-        "pages":1,
-        "errors":[
-
-        ],
-        "status":"succeeded"
-      },
-      {
-        "documentName":"invoices\\Invoice_5.pdf",
-        "pages":1,
-        "errors":[
-
-        ],
-        "status":"succeeded"
-      }
-    ],
-    "errors":[
-
-    ]
-  },
-  "keys":{
-    "0":[
-      "Address:",
-      "Invoice For:",
-      "Microsoft",
-      "Page"
-    ]
-  }
-}
-```
-
-## <a name="analyze-forms-with-a-custom-model"></a>使用自定义模型分析表单
-
-接下来，使用新的经过训练的模型分析文档并从中提取键值对和表。 运行以下 cURL 命令来调用[分析表单](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm) API  。 运行该命令之前，请进行以下更改：
-
-1. 将 `{Endpoint}` 替换为从表单识别器订阅密钥中获取的终结点。 可以在表单识别器资源的“概览”选项卡中找到该终结点。 
-1. 将 `{model ID}` 替换为在上一部分收到的模型 ID。
-1. 将 `{SAS URL}` 替换为指向 Azure 存储中文件的 SAS URL。 按照“训练”部分中的步骤操作，但不是获取整个 blob 容器的 SAS URL，而是获取要分析的特定文件的 URL。
-1. 将 `{subscription key}` 替换为订阅密钥。
-
-# <a name="v20"></a>[v2.0](#tab/v2-0)    
-
-```bash
-curl -v "https://{Endpoint}/formrecognizer/v2.0/custom/models/{model ID}/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" -d "{ \"source\": \""{SAS URL}"\" } "
-```
-
-# <a name="v21-preview"></a>[v2.1 预览版](#tab/v2-1)    
-```bash
-curl -v "https://{Endpoint}/formrecognizer/v2.1-preview.2/custom/models/{model ID}/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" -d "{ \"source\": \""{SAS URL}"\" } "
-```
-    
----
-
-
-
-你将收到 `202 (Success)` 响应，其中包含“Operation-Location”标头  。 此标头的值包括用于跟踪“分析”操作结果的结果 ID。 保存此结果 ID 以供下一步使用。
-
-### <a name="get-the-analyze-results"></a>获取分析结果
-
-使用以下 API 查询“分析”操作的结果。
-
-1. 将 `{Endpoint}` 替换为从表单识别器订阅密钥中获取的终结点。 可以在表单识别器资源的“概览”选项卡中找到该终结点。 
-1. 将 `{result ID}` 替换为上一部分中收到的 ID。
-1. 将 `{subscription key}` 替换为订阅密钥。
-
-# <a name="v20"></a>[v2.0](#tab/v2-0)    
-```bash
-curl -X GET "https://{Endpoint}/formrecognizer/v2.0/custom/models/{model ID}/analyzeResults/{result ID}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
-```
-# <a name="v21-preview"></a>[v2.1 预览版](#tab/v2-1)    
-```bash
-curl -X GET "https://{Endpoint}/formrecognizer/v2.1-preview/custom/models/{model ID}/analyzeResults/{result ID}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
-```
----
-
-你将收到以下格式的 JSON 正文的 `200 (Success)` 响应。 为了简单起见，已缩短输出。 请注意底部附近的 `"status"` 字段。 完成“分析”操作时，会出现 `"succeeded"` 值。 如果“分析”操作尚未完成，则需要重新运行该命令以再次查询该服务。 我们建议两次调用间隔一秒或更长时间。
-
-主键/值对关联和表位于 `"pageResults"` 节点中。 如果还通过 includeTextDetails URL 参数指定了纯文本提取，则 `"readResults"` 节点将显示文档中所有文本的内容和位置  。
-
-为了简单起见，已缩短此示例 JSON 输出。
-
-# <a name="v20"></a>[v2.0](#tab/v2-0)
-```JSON
-{
-  "status": "succeeded",
-  "createdDateTime": "2020-08-21T00:46:25Z",
-  "lastUpdatedDateTime": "2020-08-21T00:46:32Z",
-  "analyzeResult": {
-    "version": "2.0.0",
-    "readResults": [
-      {
-        "page": 1,
-        "angle": 0,
-        "width": 8.5,
-        "height": 11,
-        "unit": "inch",
-        "lines": [
-          {
-            "text": "Project Statement",
-            "boundingBox": [
-              5.0153,
-              0.275,
-              8.0944,
-              0.275,
-              8.0944,
-              0.7125,
-              5.0153,
-              0.7125
-            ],
-            "words": [
-              {
-                "text": "Project",
-                "boundingBox": [
-                  5.0153,
-                  0.275,
-                  6.2278,
-                  0.275,
-                  6.2278,
-                  0.7125,
-                  5.0153,
-                  0.7125
-                ]
-              },
-              {
-                "text": "Statement",
-                "boundingBox": [
-                  6.3292,
-                  0.275,
-                  8.0944,
-                  0.275,
-                  8.0944,
-                  0.7125,
-                  6.3292,
-                  0.7125
-                ]
-              }
-            ]
-          }, 
-        ...
-        ]
-      }
-    ],
-    "pageResults": [
-      {
-        "page": 1,
-        "keyValuePairs": [
-          {
-            "key": {
-              "text": "Date:",
-              "boundingBox": [
-                6.9722,
-                1.0264,
-                7.3417,
-                1.0264,
-                7.3417,
-                1.1931,
-                6.9722,
-                1.1931
-              ],
-              "elements": [
-                "#/readResults/0/lines/2/words/0"
-              ]
-            },
-            "confidence": 1
-          },
-         ...
-        ],
-        "tables": [
-          {
-            "rows": 4,
-            "columns": 5,
-            "cells": [
-              {
-                "text": "Training Date",
-                "rowIndex": 0,
-                "columnIndex": 0,
-                "boundingBox": [
-                  0.6931,
-                  4.2444,
-                  1.5681,
-                  4.2444,
-                  1.5681,
-                  4.4125,
-                  0.6931,
-                  4.4125
-                ],
-                "confidence": 1,
-                "rowSpan": 1,
-                "columnSpan": 1,
-                "elements": [
-                  "#/readResults/0/lines/15/words/0",
-                  "#/readResults/0/lines/15/words/1"
-                ],
-                "isHeader": true,
-                "isFooter": false
-              },
-              ...
-            ]
-          }
-        ], 
-        "clusterId": 0
-      }
-    ],
-    "documentResults": [],
-    "errors": []
-  }
-}
-```    
-# <a name="v21-preview"></a>[v2.1 预览版](#tab/v2-1)    
-```JSON
-{
-  "status": "succeeded",
-  "createdDateTime": "2020-08-21T01:13:28Z",
-  "lastUpdatedDateTime": "2020-08-21T01:13:42Z",
-  "analyzeResult": {
-    "version": "2.1.0",
-    "readResults": [
-      {
-        "page": 1,
-        "angle": 0,
-        "width": 8.5,
-        "height": 11,
-        "unit": "inch",
-        "lines": [
-          {
-            "text": "Project Statement",
-            "boundingBox": [
-              5.0444,
-              0.3613,
-              8.0917,
-              0.3613,
-              8.0917,
-              0.6718,
-              5.0444,
-              0.6718
-            ],
-            "words": [
-              {
-                "text": "Project",
-                "boundingBox": [
-                  5.0444,
-                  0.3587,
-                  6.2264,
-                  0.3587,
-                  6.2264,
-                  0.708,
-                  5.0444,
-                  0.708
-                ]
-              },
-              {
-                "text": "Statement",
-                "boundingBox": [
-                  6.3361,
-                  0.3635,
-                  8.0917,
-                  0.3635,
-                  8.0917,
-                  0.6396,
-                  6.3361,
-                  0.6396
-                ]
-              }
-            ]
-          }, 
-          ...
-        ] 
-      }
-    ],
-    "pageResults": [
-      {
-        "page": 1,
-        "keyValuePairs": [
-          {
-            "key": {
-              "text": "Date:",
-              "boundingBox": [
-                6.9833,
-                1.0615,
-                7.3333,
-                1.0615,
-                7.3333,
-                1.1649,
-                6.9833,
-                1.1649
-              ],
-              "elements": [
-                "#/readResults/0/lines/2/words/0"
-              ]
-            },
-            "value": {
-              "text": "9/10/2020",
-              "boundingBox": [
-                7.3833,
-                1.0802,
-                7.925,
-                1.0802,
-                7.925,
-                1.174,
-                7.3833,
-                1.174
-              ],
-              "elements": [
-                "#/readResults/0/lines/3/words/0"
-              ]
-            },
-            "confidence": 1
-          },
-          ...
-        ], 
-        "tables": [
-          {
-            "rows": 5,
-            "columns": 5,
-            "cells": [
-              {
-                "text": "Training Date",
-                "rowIndex": 0,
-                "columnIndex": 0,
-                "boundingBox": [
-                  0.6944,
-                  4.2779,
-                  1.5625,
-                  4.2779,
-                  1.5625,
-                  4.4005,
-                  0.6944,
-                  4.4005
-                ],
-                "confidence": 1,
-                "rowSpan": 1,
-                "columnSpan": 1,
-                "elements": [
-                  "#/readResults/0/lines/15/words/0",
-                  "#/readResults/0/lines/15/words/1"
-                ],
-                "isHeader": true,
-                "isFooter": false
-              },
-              ...
-            ]
-          }
-        ], 
-        "clusterId": 0
-      }
-    ], 
-    "documentResults": [],
-    "errors": []
-  }
-}
-``` 
----
-
-### <a name="improve-results"></a>改进结果
-
-[!INCLUDE [improve results](../improve-results-unlabeled.md)]
-
 ## <a name="manage-custom-models"></a>管理自定义模型
 
 ### <a name="get-a-list-of-custom-models"></a>获取自定义模型列表
 
-使用以下命令返回一个列表，其中列出属于你的订阅的所有自定义模型。
+在以下命令中使用 **[列出自定义模型](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/GetCustomModels)** API 返回一个列表，其中列出属于你的订阅的所有自定义模型。
 
 1. 将 `{Endpoint}` 替换为从表单识别器订阅中获取的终结点。
 1. 将 `{subscription key}` 替换为从上一步复制的订阅密钥。
@@ -1557,7 +1582,7 @@ curl -v -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.2/custom/models?o
 
 ### <a name="get-a-specific-model"></a>获取特定模型
 
-若要检索特定自定义模型的详细信息，请使用以下命令。
+若要检索有关特定自定义模型的详细信息，请在以下命令中使用 **[获取自定义模型](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/GetCustomModel)** API。
 
 1. 将 `{Endpoint}` 替换为从表单识别器订阅中获取的终结点。
 1. 将 `{subscription key}` 替换为从上一步复制的订阅密钥。
@@ -1566,17 +1591,13 @@ curl -v -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.2/custom/models?o
 # <a name="v20"></a>[v2.0](#tab/v2-0)    
 
 ```bash
-curl -v -X GET "https://{Endpoint}/formrecognizer/v2.0/custom/models/{modelId}"
--H "Ocp-Apim-Subscription-Key: {subscription key}"
---data-ascii "{body}" 
+curl -v -X GET "https://{Endpoint}/formrecognizer/v2.0/custom/models/{modelId}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
 ```
 
 # <a name="v21-preview"></a>[v2.1 预览版](#tab/v2-1)    
 
 ```bash
-curl -v -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.2/custom/models/{modelId}"
--H "Ocp-Apim-Subscription-Key: {subscription key}"
---data-ascii "{body}" 
+curl -v -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.2/custom/models/{modelId}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
 ```
 ---
 
@@ -1619,6 +1640,30 @@ curl -v -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.2/custom/models/{
   }
 }
 ```
+
+### <a name="delete-a-model-from-the-resource-account"></a>从资源帐户中删除模型
+
+还可以通过引用模型的 ID 从帐户中删除该模型。 此命令调用 **[删除自定义模型](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/DeleteCustomModel)** API，以删除在上一部分中使用的模型。
+
+1. 将 `{Endpoint}` 替换为从表单识别器订阅中获取的终结点。
+1. 将 `{subscription key}` 替换为从上一步复制的订阅密钥。
+1. 将 `{modelId}` 替换为要查找的自定义模型的 ID。
+
+# <a name="v20"></a>[v2.0](#tab/v2-0)    
+
+```bash
+curl -v -X DELETE "https://{Endpoint}/formrecognizer/v2.0/custom/models/{modelId}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
+```
+
+# <a name="v21-preview"></a>[v2.1 预览版](#tab/v2-1)
+
+```bash
+curl -v -X DELETE "https://{Endpoint}/formrecognizer/v2.1-preview.2/custom/models/{modelId}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
+```
+---
+
+你将收到 `204` 成功响应，指示模型已标记为待删除。 模型项目将在 48 小时内删除。
+
 
 ## <a name="next-steps"></a>后续步骤
 

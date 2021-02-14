@@ -6,20 +6,20 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 11/17/2020
+ms.date: 02/09/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5802070bf9b495c0e866d160d6661349369a444e
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 5b6bd16eacf4b1bbb7b93f5500813e7fa9dc7eef
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95993732"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100095829"
 ---
 # <a name="enable-and-manage-blob-versioning"></a>启用和管理 blob 版本控制
 
-可以启用 Blob 存储版本控制来自动维护对象的以前版本。  启用 blob 版本控制后，如果错误地修改或删除了数据，则可以还原该 blob 的早期版本以恢复数据。
+可以启用 Blob 存储版本控制，以便在修改或删除 blob 时，自动维护以前版本的 blob。 启用 blob 版本控制后，可以还原较早版本的 blob，以在数据被错误修改或删除的情况下恢复数据。
 
 本文介绍如何使用 Azure 门户或 Azure 资源管理器模板启用或禁用存储帐户的 blob 版本控制。 若要了解有关 blob 版本控制的详细信息，请参阅 [blob 版本控制](versioning-overview.md)。
 
@@ -29,13 +29,39 @@ ms.locfileid: "95993732"
 
 # <a name="azure-portal"></a>[Azure 门户](#tab/portal)
 
-在 Azure 门户中启用 blob 版本控制：
+为 Azure 门户中的存储帐户启用 blob 版本控制：
 
 1. 导航到门户中的存储帐户。
 1. 在 " **Blob 服务**" 下，选择 " **数据保护**"。
 1. 在 " **版本控制** " 部分，选择 " **已启用**"。
 
 :::image type="content" source="media/versioning-enable/portal-enable-versioning.png" alt-text="显示如何在 Azure 门户中启用 blob 版本控制的屏幕截图":::
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+若要使用 PowerShell 为存储帐户启用 blob 版本控制，请首先安装 [Az. storage](https://www.powershellgallery.com/packages/Az.Storage) module 版本2.3.0 或更高版本。 然后调用 [AzStorageBlobServiceProperty](/powershell/module/az.storage/update-azstorageblobserviceproperty) 命令来启用版本控制，如下面的示例中所示。 请记住，将尖括号中的值替换为自己的值：
+
+```powershell
+# Set resource group and account variables.
+$rgName = "<resource-group>"
+$accountName = "<storage-account>"
+
+# Enable versioning.
+Update-AzStorageBlobServiceProperty -ResourceGroupName $rgName `
+    -StorageAccountName $accountName `
+    -IsVersioningEnabled $true
+```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+若要为具有 Azure CLI 的存储帐户启用 blob 版本控制，请首先安装 Azure CLI 版本2.2.0 或更高版本。 然后调用 [az storage account blob-service-properties update](/cli/azure/ext/storage-blob-preview/storage/account/blob-service-properties#ext_storage_blob_preview_az_storage_account_blob_service_properties_update) 命令来启用版本控制，如下面的示例中所示。 请记住，将尖括号中的值替换为自己的值：
+
+```azurecli
+az storage account blob-service-properties update \
+    --resource-group <resource_group> \
+    --account-name <storage-account> \
+    --enable-versioning true
+```
 
 # <a name="template"></a>[模板](#tab/template)
 

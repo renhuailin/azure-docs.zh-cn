@@ -13,12 +13,12 @@ ms.date: 11/13/2020
 ms.author: kkrishna
 ms.reviewer: marsma, kkrishna, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: b2ac90334ade52d68c775d9db5a84545774f3844
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: fce963bd9ffdc6f768d7b3de4a9e4870add06136
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98013696"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104240"
 ---
 # <a name="how-to-add-app-roles-to-your-application-and-receive-them-in-the-token"></a>如何：在应用程序中添加应用角色并在令牌中接收它们
 
@@ -30,10 +30,10 @@ ms.locfileid: "98013696"
 
 ## <a name="declare-roles-for-an-application"></a>为应用程序声明角色
 
-使用 [Azure 门户](https://portal.azure.com)定义应用角色。 应用程序角色通常在应用程序注册（表示服务、应用程序或 API）上定义。 当用户登录到应用程序时，Azure AD `roles` 会为每个角色发出一个声明，指出已将用户或服务主体分别授予用户及其组成员身份。 这可用于实现基于声明的授权。 应用角色可以分配 [给一个用户或一组用户](../manage-apps/add-application-portal-assign-users.md#assign-users-to-an-app)。 还可以将应用程序角色分配给另一个应用程序的服务主体，或分配给 [托管标识的服务主体](../managed-identities-azure-resources/how-to-assign-app-role-managed-identity-powershell.md)。
+使用 [Azure 门户](https://portal.azure.com)定义应用角色。 应用角色通常在表示服务、应用或 API 的应用程序注册上定义。 当用户登录到应用程序时，Azure AD 会针对每个角色发出一个 `roles` 声明。这些角色包括单独授予用户或服务主体的，以及通过组成员身份获得的。 这可用于实现基于声明的授权。 应用角色可以分配 [给一个用户或一组用户](../manage-apps/add-application-portal-assign-users.md#assign-users-to-an-app)。 应用角色也可以分配给另一个应用程序的服务主体，或者[分配给托管标识的服务主体](../managed-identities-azure-resources/how-to-assign-app-role-managed-identity-powershell.md)。
 
 > [!IMPORTANT]
-> 目前，如果将服务主体添加到组，然后将应用角色分配给该组，则 Azure AD 不会将声明添加到 `roles` 它颁发的令牌中。
+> 目前，如果将服务主体添加到组，然后将应用角色分配给该组，则 Azure AD 不会将 `roles` 声明添加到它颁发的令牌中。
 
 可以通过两种方法使用 Azure 门户来声明应用角色：
 
@@ -49,7 +49,7 @@ ms.locfileid: "98013696"
 
 若要使用 Azure 门户的用户界面创建应用角色，请执行以下操作：
 
-1. 登录到<a href="https://portal.azure.com/" target="_blank">Azure 门户 <span class="docon docon-navigate-external x-hidden-focus"></span> </a>。
+1. 登录到 <a href="https://portal.azure.com/" target="_blank">Azure 门户</a>。
 1. 在顶部菜单中选择“目录 + 订阅”筛选器，然后选择包含要向其添加应用角色的应用注册的 Azure Active Directory 租户。
 1. 搜索并选择“Azure Active Directory”  。
 1. 在“管理”下，选择“应用注册”，然后选择要在其中定义应用角色的应用程序 。
@@ -74,7 +74,7 @@ ms.locfileid: "98013696"
 
 如需通过直接编辑清单来添加角色，请执行以下操作：
 
-1. 登录到<a href="https://portal.azure.com/" target="_blank">Azure 门户 <span class="docon docon-navigate-external x-hidden-focus"></span> </a>。
+1. 登录到 <a href="https://portal.azure.com/" target="_blank">Azure 门户</a>。
 1. 在顶部菜单中选择“目录 + 订阅”筛选器，然后选择包含要向其添加应用角色的应用注册的 Azure Active Directory 租户。
 1. 搜索并选择“Azure Active Directory”  。
 1. 在“管理”下，选择“应用注册”，然后选择要在其中定义应用角色的应用程序 。
@@ -136,7 +136,7 @@ ms.locfileid: "98013696"
 
 若要使用 Azure 门户将用户和组分配给角色，请执行以下操作：
 
-1. 登录到<a href="https://portal.azure.com/" target="_blank">Azure 门户 <span class="docon docon-navigate-external x-hidden-focus"></span> </a>。
+1. 登录到 <a href="https://portal.azure.com/" target="_blank">Azure 门户</a>。
 1. 在 Azure Active Directory 的左侧导航菜单中选择“企业应用程序” 。
 1. 选择“所有应用程序”，查看所有应用程序的列表。 如果应用程序未显示在列表中，请使用“所有应用程序”列表顶部的筛选器来限制此列表，或者在列表中向下滚动寻找你的应用程序。
 1. 选择一个应用程序，以便在其中为角色分配用户或安全组。
@@ -158,7 +158,7 @@ ms.locfileid: "98013696"
 
 若要使用 Azure 门户将应用角色分配给应用程序，请执行以下操作：
 
-1. 登录到<a href="https://portal.azure.com/" target="_blank">Azure 门户 <span class="docon docon-navigate-external x-hidden-focus"></span> </a>。
+1. 登录到 <a href="https://portal.azure.com/" target="_blank">Azure 门户</a>。
 1. 在 Azure Active Directory 的左侧导航菜单中，选择“应用注册” 。
 1. 选择“所有应用程序”，查看所有应用程序的列表。 如果应用程序未显示在列表中，请使用“所有应用程序”列表顶部的筛选器来限制此列表，或者在列表中向下滚动寻找你的应用程序。
 1. 选择要向其分配应用角色的应用程序。

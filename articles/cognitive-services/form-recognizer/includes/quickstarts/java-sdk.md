@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 09/21/2020
 ms.custom: devx-track-java
 ms.author: pafarley
-ms.openlocfilehash: 3923f3d0a65412c23d5fc32d7a4cea8648686df4
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 4f48416153f5a378f9e4eff84802519250488301
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98948633"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584587"
 ---
 > [!IMPORTANT]
 > 为了简单起见，本文中的代码使用了同步方法和不受保护的凭据存储。
@@ -155,7 +155,7 @@ mkdir -p src/main/java
 
 `FormRecognizerClient` 提供操作以实现以下目的：
 
-- 使用经过训练的自定义模型识别表单域和内容，以识别自定义表单。  这些值在 `RecognizedForm` 对象的集合中返回。 请参阅示例[分析自定义表单](#analyze-forms-with-a-custom-model)。
+- 使用为了分析自定义表单而训练的自定义模型，来识别表单字段和内容。  这些值在 `RecognizedForm` 对象的集合中返回。 请参阅示例[分析自定义表单](#analyze-forms-with-a-custom-model)。
 - 无需训练模型即可识别表单内容，包括表格、行和单词。  表单内容在 `FormPage` 对象的集合中返回。 请参阅示例[分析布局](#analyze-layout)。
 - 使用表单识别器服务上预先训练的回执模型，识别美国回执中的常见字段。  这些字段和元数据在 `RecognizedForm` 对象的集合中返回。 请参阅示例[分析回执](#analyze-receipts)。
 
@@ -163,8 +163,8 @@ mkdir -p src/main/java
 
 `FormTrainingClient` 提供操作以实现以下目的：
 
-- 训练自定义模型以识别在自定义表单中找到的所有字段和值。  返回一个 `CustomFormModel`，它指示模型将识别的表单类型，以及将为每种表单类型提取的字段。
-- 训练自定义模型，以识别通过标记自定义表单指定的特定字段和值。  返回一个 `CustomFormModel`，它指示模型将提取的字段以，及每个字段的估计准确度。
+- 训练自定义模型，以分析在自定义表单中找到的所有字段和值。  将会返回一个 `CustomFormModel`，它指示模型将分析的表单类型，以及将为每种表单类型提取的字段。
+- 训练自定义模型，以分析通过标记自定义表单指定的特定字段和值。  返回一个 `CustomFormModel`，它指示模型将提取的字段以，及每个字段的估计准确度。
 - 管理在帐户中创建的模型。
 - 将自定义模型从一个表单识别器资源复制到另一个资源。
 
@@ -202,9 +202,9 @@ mkdir -p src/main/java
 
 ## <a name="analyze-layout"></a>分析布局
 
-可以使用表单识别器识别文档中的表格、线条和单词，而无需训练模型。
+可以使用表单识别器分析文档中的表格、线条和单词，而无需训练模型。 有关布局提取的详细信息，请参阅[布局概念指南](../../concept-layout.md)。
 
-若要识别位于给定 URL 的文件的内容，请使用 beginRecognizeContentFromUrl 方法。
+若要分析位于给定 URL 的文件的内容，请使用 beginRecognizeContentFromUrl 方法。
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_getcontent_call)]
 
@@ -233,65 +233,6 @@ Cell has text $89,024.34.
 Cell has text ET.
 ```
 
-## <a name="analyze-receipts"></a>分析回执
-
-本部分演示如何使用预先训练的回执模型识别和提取美国回执中的常见字段。
-
-若要从 URI 识别回执，请使用 beginRecognizeReceiptsFromUrl 方法。 
-
-[!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_receipts_call)]
-
-> [!TIP]
-> 还可识别本地回执图像。 请参阅 [FormRecognizerClient](/java/api/com.azure.ai.formrecognizer.formrecognizerclient) 方法，例如 beginRecognizeReceipts。 或者，请参阅 [GitHub](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) 上的示例代码，了解涉及本地图像的方案。
-
-返回的值是 RecognizedReceipt 对象的集合：提交的文档中的每一页对应一个对象。 接下来的代码块会循环访问回执，并将其详细信息输出到控制台。
-
-[!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_receipts_print)]
-
-接下来的代码块会循环访问在回执上检测到的各个项，并将其详细信息输出到控制台。
-
-[!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_receipts_print_items)]
-
-### <a name="output"></a>输出 
-
-```console
-Analyze receipt...
------------ Recognized Receipt page 0 -----------
-Merchant Name: Contoso Contoso, confidence: 0.62
-Merchant Address: 123 Main Street Redmond, WA 98052, confidence: 0.99
-Transaction Date: 2020-06-10, confidence: 0.90
-Receipt Items:
-Name: Cappuccino, confidence: 0.96s
-Quantity: null, confidence: 0.957s]
-Total Price: 2.200000, confidence: 0.95
-Name: BACON & EGGS, confidence: 0.94s
-Quantity: null, confidence: 0.927s]
-Total Price: null, confidence: 0.93
-```
-
-## <a name="analyze-business-cards"></a>分析名片
-
-#### <a name="version-20"></a>[版本 2.0](#tab/ga)
-
-> [!IMPORTANT]
-> 此功能在所选的 API 版本中不可用。
-
-#### <a name="version-21-preview"></a>[版本 2.1 预览](#tab/preview)
-
-本部分演示如何使用预先训练的模型识别和提取英文名片中的常见字段。
-
-若要从 URL 识别名片，请使用 `beginRecognizeBusinessCardsFromUrl` 方法。 
-
-[!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java?name=snippet_bc_call)]
-
-> [!TIP]
-> 还可识别本地名片图像。 请参阅 [FormRecognizerClient](/java/api/com.azure.ai.formrecognizer.formrecognizerclient) 方法，例如 beginRecognizeBusinessCards。 或者，请参阅 [GitHub](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) 上的示例代码，了解涉及本地图像的方案。
-
-返回的值是 RecognizedForm 对象的集合：文档中的每一张卡片都对应一个对象。 以下代码处理给定 URI 的名片，并将主字段和值输出到控制台。
-
-[!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java?name=snippet_bc_print)]
-
----
 
 ## <a name="analyze-invoices"></a>分析发票
 
@@ -302,16 +243,16 @@ Total Price: null, confidence: 0.93
 
 #### <a name="version-21-preview"></a>[版本 2.1 预览](#tab/preview)
 
-本部分演示如何使用预先训练的模型识别和提取销售发票中的常见字段。
+本部分演示如何使用预先训练的模型分析和提取销售发票中的常见字段。 有关发票分析的详细信息，请参阅[发票概念指南](../../concept-invoices.md)。
 
-若要从 URL 识别名片，请使用 `beginRecognizeInvoicesFromUrl` 方法。 
+若要分析位于某个 URL 的发票，请使用 `beginRecognizeInvoicesFromUrl` 方法。 
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java?name=snippet_invoice_call)]
 
 > [!TIP]
-> 还可识别本地发票。 请参阅 [FormRecognizerClient](/java/api/com.azure.ai.formrecognizer.formrecognizerclient) 方法，例如 beginRecognizeInvoices。 或者，请参阅 [GitHub](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) 上的示例代码，了解涉及本地图像的方案。
+> 你还可以分析本地发票。 请参阅 [FormRecognizerClient](/java/api/com.azure.ai.formrecognizer.formrecognizerclient?view=azure-java-stable) 方法，例如 beginRecognizeInvoices。 或者，请参阅 [GitHub](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) 上的示例代码，了解涉及本地图像的方案。
 
-返回的值是 RecognizedForm 对象的集合：文档中的每一张发票都对应一个对象。 以下代码处理给定 URI 的名片，并将主字段和值输出到控制台。
+返回的值是 RecognizedForm 对象的集合：文档中的每一张发票都对应一个对象。 以下代码处理给定 URI 的发票，并将主字段和值输出到控制台。
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java?name=snippet_invoice_print)]
 
@@ -326,14 +267,14 @@ Total Price: null, confidence: 0.93
 
 ### <a name="train-a-model-without-labels"></a>不使用标签训练模型
 
-训练自定义模型可以识别在自定义表单中找到的所有字段和值，而无需手动标记训练文档。
+训练自定义模型可分析在自定义表单中找到的所有字段和值，无需手动标记训练文档。
 
 下面的方法使用给定文档集训练模型，并将该模型的状态输出到控制台。 
 
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_train_call)]
 
-返回的 CustomFormModel 对象包含该模型可以识别的表单类型以及它可以从每种表单类型中提取的字段的相关信息。 下面的代码块将此信息输出到控制台。
+返回的 CustomFormModel 对象包含该模型可以分析的表单类型以及它可以从每种表单类型中提取的字段的相关信息。 下面的代码块将此信息输出到控制台。
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_train_print)]
 
@@ -428,6 +369,65 @@ Field 'field-5' has label 'Charges' with a confidence score of 1.00.
 Field 'field-6' has label 'VAT ID' with a confidence score of 1.00.
 ```
 
+## <a name="analyze-receipts"></a>分析回执
+
+本部分演示如何使用预先训练的收据模型分析和提取美国收据中的常见字段。 有关收据分析的详细信息，请参阅[收据概念指南](../../concept-receipts.md)。
+
+若要分析位于某个 URI 的收据，请使用 beginRecognizeReceiptsFromUrl 方法。 
+
+[!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_receipts_call)]
+
+> [!TIP]
+> 你还可以分析本地收据图像。 请参阅 [FormRecognizerClient](/java/api/com.azure.ai.formrecognizer.formrecognizerclient?view=azure-java-stable) 方法，例如 beginRecognizeReceipts。 或者，请参阅 [GitHub](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) 上的示例代码，了解涉及本地图像的方案。
+
+返回的值是 RecognizedReceipt 对象的集合：提交的文档中的每一页对应一个对象。 接下来的代码块会循环访问回执，并将其详细信息输出到控制台。
+
+[!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_receipts_print)]
+
+接下来的代码块会循环访问在回执上检测到的各个项，并将其详细信息输出到控制台。
+
+[!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_receipts_print_items)]
+
+### <a name="output"></a>输出 
+
+```console
+Analyze receipt...
+----------- Recognized Receipt page 0 -----------
+Merchant Name: Contoso Contoso, confidence: 0.62
+Merchant Address: 123 Main Street Redmond, WA 98052, confidence: 0.99
+Transaction Date: 2020-06-10, confidence: 0.90
+Receipt Items:
+Name: Cappuccino, confidence: 0.96s
+Quantity: null, confidence: 0.957s]
+Total Price: 2.200000, confidence: 0.95
+Name: BACON & EGGS, confidence: 0.94s
+Quantity: null, confidence: 0.927s]
+Total Price: null, confidence: 0.93
+```
+
+## <a name="analyze-business-cards"></a>分析名片
+
+#### <a name="version-20"></a>[版本 2.0](#tab/ga)
+
+> [!IMPORTANT]
+> 此功能在所选的 API 版本中不可用。
+
+#### <a name="version-21-preview"></a>[版本 2.1 预览](#tab/preview)
+
+本部分演示如何使用预先训练的模型分析和提取英文名片中的常见字段。 有关名片分析的详细信息，请参阅[名片概念指南](../../concept-business-cards.md)。
+
+若要分析位于某个 URL 的名片，请使用 `beginRecognizeBusinessCardsFromUrl` 方法。 
+
+[!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java?name=snippet_bc_call)]
+
+> [!TIP]
+> 你还可以分析本地名片图像。 请参阅 [FormRecognizerClient](/java/api/com.azure.ai.formrecognizer.formrecognizerclient?view=azure-java-stable) 方法，例如 beginRecognizeBusinessCards。 或者，请参阅 [GitHub](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) 上的示例代码，了解涉及本地图像的方案。
+
+返回的值是 RecognizedForm 对象的集合：文档中的每一张卡片都对应一个对象。 以下代码处理给定 URI 的名片，并将主字段和值输出到控制台。
+
+[!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java?name=snippet_bc_print)]
+
+---
 
 ## <a name="manage-custom-models"></a>管理自定义模型
 
@@ -502,7 +502,7 @@ gradle run
 
 如果想要清理并删除认知服务订阅，可以删除资源或资源组。 删除资源组同时也会删除与之相关联的任何其他资源。
 
-* [Portal](../../../cognitive-services-apis-create-account.md#clean-up-resources)
+* [门户](../../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 ## <a name="troubleshooting"></a>疑难解答

@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla, rarayudu
 ms.topic: conceptual
-ms.date: 01/20/2021
-ms.openlocfilehash: a74868beea6e5903b6b17a7bc0c82cc822fcd36f
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.date: 02/12/2021
+ms.openlocfilehash: d7ed3fb268920d6f4d015886c560b2d9fcbdc632
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99055172"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104495"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>在 Azure 逻辑应用中保护访问和数据
 
@@ -123,11 +123,11 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
 ### <a name="enable-azure-active-directory-open-authentication-azure-ad-oauth"></a>启用 Azure Active Directory 开放式身份验证 (Azure AD OAuth)
 
-对于针对某个终结点（由基于请求的触发器创建）进行的入站调用，你可以通过为逻辑应用定义或添加授权策略来启用 [Azure Active Directory 开放式身份验证 (Azure AD OAuth)](../active-directory/develop/index.yml)。 这样，入站调用将使用 OAuth [访问令牌](../active-directory/develop/access-tokens.md)进行授权。
+对于由基于请求的触发器创建的终结点的入站调用，你可以通过为逻辑应用定义或添加授权策略来启用 [Azure AD OAuth](../active-directory/develop/index.yml) 。 这样，入站调用将使用 OAuth [访问令牌](../active-directory/develop/access-tokens.md)进行授权。
 
 当你的逻辑应用收到包含 OAuth 访问令牌的入站请求时，Azure 逻辑应用服务会将令牌的声明与每个授权策略指定的声明进行比较。 如果令牌的声明与至少一个策略中的所有声明之间存在匹配项，则入站请求的授权成功。 令牌的声明数可以大于授权策略指定的声明数。
 
-在启用 Azure AD OAuth 之前，请查看以下注意事项：
+#### <a name="considerations-before-you-enable-azure-ad-oauth"></a>启用 Azure AD OAuth 之前的注意事项
 
 * 对请求终结点的入站调用只能使用一个授权方案，即 Azure AD OAuth 或[共享访问签名 (SAS)](#sas)。 尽管使用一个方案不会禁用另一个方案，但同时使用这两个方案会导致错误，因为逻辑应用服务不知道要选择哪个方案。
 
@@ -180,11 +180,15 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
    }
    ```
 
+#### <a name="enable-azure-ad-oauth-for-your-logic-app"></a>为逻辑应用启用 Azure AD OAuth
+
+针对 Azure 门户或 Azure 资源管理器模板执行以下步骤：
+
 <a name="define-authorization-policy-portal"></a>
 
-#### <a name="define-authorization-policy-in-azure-portal"></a>在 Azure 门户中定义授权策略
+#### <a name="portal"></a>[门户](#tab/azure-portal)
 
-若要在 Azure 门户中为逻辑应用启用 Azure AD OAuth，请按照以下步骤将一个或多个授权策略添加到逻辑应用：
+在 [Azure 门户](https://portal.azure.com)中，向逻辑应用添加一个或多个授权策略：
 
 1. 在 [Azure 门户](https://portal.microsoft.com)的逻辑应用设计器中查找并打开逻辑应用。
 
@@ -196,7 +200,7 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
    ![提供授权策略的信息](./media/logic-apps-securing-a-logic-app/set-up-authorization-policy.png)
 
-   | properties | 必须 | 说明 |
+   | 属性 | 必须 | 说明 |
    |----------|----------|-------------|
    | 策略名称 | 是 | 要用于授权策略的名称 |
    | **申请** | 是 | 逻辑应用从入站调用接受的声明类型和值。 声明值限制为 [最多字符数](logic-apps-limits-and-config.md#authentication-limits)。 下面是可用的声明类型： <p><p>- 颁发者 <br>- 受众 <br>- **主题** <br>- JWT ID（JSON Web 令牌 ID） <p><p>声明列表必须至少包含颁发者声明，该声明的值（作为 Azure AD 颁发者 ID）以 `https://sts.windows.net/` 或 `https://login.microsoftonline.com/` 开头。  有关这些声明类型的详细信息，请参阅 [Azure AD 安全令牌中的声明](../active-directory/azuread-dev/v1-authentication-scenarios.md#claims-in-azure-ad-security-tokens)。 你还可以指定自己的声明类型和值。 |
@@ -216,9 +220,9 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
 <a name="define-authorization-policy-template"></a>
 
-#### <a name="define-authorization-policy-in-azure-resource-manager-template"></a>在 Azure 资源管理器模板中定义授权策略
+#### <a name="resource-manager-template"></a>[资源管理器模板](#tab/azure-resource-manager)
 
-若要在用于部署逻辑应用的 ARM 模板中启用 Azure AD OAuth，请遵循以下步骤和语法：
+在 ARM 模板中，按照以下步骤和语法定义授权策略：
 
 1. 在[逻辑应用的资源定义](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#logic-app-resource-definition)的 `properties` 部分中，如果不存在任何 `accessControl` 对象，请添加一个包含 `triggers` 对象的该对象。
 
@@ -271,6 +275,8 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 ],
 ```
 
+---
+
 <a name="include-auth-header"></a>
 
 #### <a name="include-authorization-header-in-request-trigger-outputs"></a>在请求触发器输出中包括“Authorization”标头
@@ -310,11 +316,13 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
 无论你指定的 IP 地址如何，你仍可以使用 [逻辑应用 REST API：工作流触发器-运行](/rest/api/logic/workflowtriggers/run) 请求或使用 API 管理，来运行具有基于请求的触发器的逻辑应用。 不过，这种情况下仍需要针对 Azure REST API 进行[身份验证](../active-directory/develop/authentication-vs-authorization.md)。 所有事件都会显示在 Azure 审核日志中。 请确保相应地设置访问控制策略。
 
+若要限制逻辑应用的入站 IP 地址，请针对 Azure 门户或 Azure 资源管理器模板执行以下步骤：
+
 <a name="restrict-inbound-ip-portal"></a>
 
-#### <a name="restrict-inbound-ip-ranges-in-azure-portal"></a>在 Azure 门户中限制入站 IP 范围
+#### <a name="portal"></a>[门户](#tab/azure-portal)
 
-使用门户限制逻辑应用的入站 IP 地址时，无论门户中的 "**允许入站 ip 地址**" 下的说明如何，这些限制都将影响触发器 *和* 操作。 若要单独设置对触发器的限制，请在[ `accessControl` 逻辑应用的 Azure 资源管理器模板](#restrict-inbound-ip-template)或逻辑应用中使用对象[REST API：工作流-创建或更新操作](/rest/api/logic/workflows/createorupdate)。
+在 [Azure 门户](https://portal.azure.com)中，此筛选器会影响触发器 *和* 操作，这与门户中的 " **允许的入站 IP 地址**" 下的说明相反。 若要为触发器和操作分别设置此筛选器，请使用 `accessControl` 逻辑应用的 Azure 资源管理器模板中的对象，或者使用 [逻辑应用 REST API： Workflow-创建或更新操作](/rest/api/logic/workflows/createorupdate)。
 
 1. 在 [Azure 门户](https://portal.azure.com)的逻辑应用设计器中打开逻辑应用。
 
@@ -323,23 +331,23 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 1. 在 " **访问控制配置** " 部分的 " **允许的入站 IP 地址**" 下，选择方案的路径：
 
    * 若要通过使用内置的 [Azure 逻辑应用操作](../logic-apps/logic-apps-http-endpoint.md)将逻辑应用作为嵌套逻辑应用进行调用，只需选择 **其他逻辑应用**， *仅* 当使用 **Azure 逻辑应用** 操作调用嵌套的逻辑应用时，此操作才有效。
-   
+
      此选项将向逻辑应用资源中写入一个空数组，并要求只有来自使用内置 **Azure 逻辑应用** 操作的父逻辑应用的调用才能触发嵌套的逻辑应用。
 
    * 若要通过使用 HTTP 操作将逻辑应用作为嵌套应用来调用，请选择 **特定的 IP 范围**， *而* 不仅是 **其他逻辑应用**。 当 " **触发器的 IP 范围** " 框出现时，输入父逻辑应用的 [出站 IP 地址](../logic-apps/logic-apps-limits-and-config.md#outbound)。 有效的 IP 范围使用以下格式： *x.x.x.x/x* 或 *x.* x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x
-   
+
      > [!NOTE]
      > 如果 **只使用其他逻辑应用** 选项和 HTTP 操作来调用嵌套逻辑应用，则会阻止调用，并收到 "401 未授权" 错误。
-        
+
    * 对于希望限制来自其他 Ip 的入站调用的方案，当 " **触发器的 ip 范围** " 框出现时，指定触发器接受的 ip 地址范围。 有效的 IP 范围使用以下格式： *x.x.x.x/x* 或 *x.* x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x
 
 1. 根据需要，在 " **限制调用以从运行历史记录中获取输入和输出消息到提供的 IP 地址**" 下，你可以指定可访问运行历史记录中的输入和输出消息的入站调用的 IP 地址范围。
 
 <a name="restrict-inbound-ip-template"></a>
 
-#### <a name="restrict-inbound-ip-ranges-in-azure-resource-manager-template"></a>在 Azure 资源管理器模板中限制入站 IP 范围
+#### <a name="resource-manager-template"></a>[资源管理器模板](#tab/azure-resource-manager)
 
-如果 [使用资源管理器模板自动部署逻辑应用](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)，则可以使用部分在逻辑应用的资源定义中指定允许的入站 IP 地址范围 `accessControl` 。 在本部分中，根据 `triggers` 需要使用、 `actions` 和可选 `contents` 节，并将部分包含 `allowedCallerIpAddresses` 在 `addressRange` 属性中，并将属性值设置为 *x.*  x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x
+在 ARM 模板中，使用部分指定逻辑应用的资源定义中允许的入站 IP 地址范围 `accessControl` 。 在本部分中，根据 `triggers` 需要使用、 `actions` 和可选 `contents` 节，并将部分包含 `allowedCallerIpAddresses` 在 `addressRange` 属性中，并将属性值设置为 *x.*  x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x
 
 * 如果嵌套逻辑应用 **仅使用其他逻辑应用** 选项（该选项仅允许来自使用 Azure 逻辑应用操作的其他逻辑应用的入站调用），请将 `addressRange` 属性设置为空数组 (**[]**) 。
 
@@ -439,6 +447,8 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 }
 ```
 
+---
+
 <a name="secure-operations"></a>
 
 ## <a name="access-to-logic-app-operations"></a>对逻辑应用操作的访问
@@ -473,13 +483,17 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
 ### <a name="restrict-access-by-ip-address-range"></a>按 IP 地址范围限制访问
 
-可以限制对逻辑应用运行历史记录中的输入和输出的访问，以便只有来自特定 IP 地址范围的请求才能查看这些数据。 例如，若要阻止任何人访问输入和输出，请指定类似于 `0.0.0.0-0.0.0.0` 的 IP 地址范围。 只有拥有管理员权限的人员才能去除此限制，使“实时”访问逻辑应用的数据成为可能。 可以使用 Azure 门户或者在用于逻辑应用部署的 Azure 资源管理器模板中指定要限制的 IP 范围。
+可以限制对逻辑应用运行历史记录中的输入和输出的访问，以便只有来自特定 IP 地址范围的请求才能查看这些数据。
 
-#### <a name="restrict-ip-ranges-in-azure-portal"></a>在 Azure 门户中限制 IP 范围
+例如，若要阻止任何人访问输入和输出，请指定类似于 `0.0.0.0-0.0.0.0` 的 IP 地址范围。 只有拥有管理员权限的人员才能去除此限制，使“实时”访问逻辑应用的数据成为可能。
 
-1. 在 Azure 门户的逻辑应用设计器中打开逻辑应用。
+若要指定允许的 IP 范围，请针对 Azure 门户或 Azure 资源管理器模板执行以下步骤：
 
-1. 在逻辑应用的菜单中，在“设置”  下，选择“工作流设置”  。
+#### <a name="portal"></a>[门户](#tab/azure-portal)
+
+1. 在 [Azure 门户](https://portal.azure.com)的逻辑应用设计器中打开逻辑应用。
+
+1. 在逻辑应用的菜单中，在“设置”下，选择“工作流设置”。
 
 1. 在“访问控制配置” > “允许的入站 IP 地址”下，选择“特定 IP 范围”  。
 
@@ -487,9 +501,9 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
    有效的 IP 范围使用这些格式：x.x.x.x/x 或 x.x.x.x-x.x.x.x 
 
-#### <a name="restrict-ip-ranges-in-azure-resource-manager-template"></a>在 Azure 资源管理器模板中限制 IP 范围
+#### <a name="resource-manager-template"></a>[资源管理器模板](#tab/azure-resource-manager)
 
-如果[使用资源管理器模板自动执行逻辑应用部署](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)，则可以通过在逻辑应用的资源定义中结合使用 `accessControl` 和 `contents` 部分来指定 IP 范围，例如：
+在 ARM 模板中，通过在 `accessControl` 逻辑应用的资源定义中使用部分来指定 IP 范围 `contents` ，例如：
 
 ``` json
 {
@@ -528,11 +542,41 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 }
 ```
 
+---
+
 <a name="obfuscate"></a>
 
 ### <a name="secure-data-in-run-history-by-using-obfuscation"></a>使用模糊处理保护运行历史记录中的数据
 
-许多触发器和操作具有用于保护逻辑应用的运行历史记录中的输入和/或输出的设置。 在使用这些设置帮助你保护此数据之前，请[查看以下注意事项](#obfuscation-considerations)。
+许多触发器和操作具有用于保护逻辑应用的运行历史记录中的输入和/或输出的设置。 在使用这些设置帮助你保护此数据之前，请查看以下注意事项：
+
+* 遮盖触发器或操作的输入或输出时，逻辑应用不会将安全数据发送到 Azure Log Analytics。 此外，不能将[跟踪的属性](../logic-apps/monitor-logic-apps-log-analytics.md#extend-data)添加到该触发器或操作进行监视。
+
+* [用于处理工作流历史记录的逻辑应用 API](/rest/api/logic/) 不会返回受保护的输出。
+
+* 若要保护可遮盖输入或显式遮盖输出的操作的输出，请在该操作中手动打开“安全输出”。
+
+* 请确保在你希望运行历史记录来遮盖该数据的下游操作中打开“安全输入”或“安全输出” 。
+
+  安全输出设置
+
+  在触发器或操作中手动打开“安全输出”时，逻辑应用会隐藏运行历史记录中的这些输出。 如果下游操作显式使用这些安全输出作为输入，则逻辑应用会隐藏运行历史记录中的此操作的输入，但不会启用操作的“安全输入”设置。
+
+  ![用作输入的受保护输出，以及对大多数操作的下游影响](./media/logic-apps-securing-a-logic-app/secure-outputs-as-inputs-flow.png)
+
+  “撰写”、“分析 JSON”和“响应”操作仅提供“保护输入”设置。 启用后，此设置也会隐藏这些操作的输出。 如果这些操作显式使用上游的受保护输出作为输入，则逻辑应用会隐藏这些操作的输入和输出，但不会启用这些操作的“保护输入”设置。 如果下游操作显式使用“撰写”、“分析 JSON”或“响应”操作中隐藏的输出作为输入，则逻辑应用不会隐藏此下游操作的输入或输出。
+
+  ![用作输入的受保护输出，以及对特定操作的下游影响](./media/logic-apps-securing-a-logic-app/secure-outputs-as-inputs-flow-special.png)
+
+  安全输入设置
+
+  在触发器或操作中手动打开“安全输入”时，逻辑应用会隐藏运行历史记录中的这些输入。 如果下游操作显式使用该触发器或操作中的可见输出作为输入，则逻辑应用会隐藏运行历史记录中的此下游操作的输入，但不会启用此操作中的“安全输入”，并且不会隐藏此操作的输出。
+
+  ![受保护的输入以及对大多数操作的下游影响](./media/logic-apps-securing-a-logic-app/secure-inputs-impact-on-downstream.png)
+
+  如果“撰写”、“分析 JSON”和“响应”操作显式使用具有受保护输入的触发器或操作中的可见输出，则逻辑应用将隐藏这些操作的输入和输出，但不会启用这些操作的“保护输入”设置。 如果下游操作显式使用“撰写”、“分析 JSON”或“响应”操作中隐藏的输出作为输入，则逻辑应用不会隐藏此下游操作的输入或输出。
+
+  ![受保护的输入以及对特定操作的下游影响](./media/logic-apps-securing-a-logic-app/secure-inputs-flow-special.png)
 
 #### <a name="secure-inputs-and-outputs-in-the-designer"></a>保护设计器中的输入和输出
 
@@ -575,8 +619,6 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 * `"inputs"`：在运行历史记录中保护输入。
 * `"outputs"`：保护运行历史记录中的输出。
 
-使用这些设置帮助你保护此数据时，请[查看以下注意事项](#obfuscation-considerations)。
-
 ```json
 "<trigger-or-action-name>": {
    "type": "<trigger-or-action-type>",
@@ -594,38 +636,6 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
    <other-attributes>
 }
 ```
-
-<a name="obfuscation-considerations"></a>
-
-#### <a name="considerations-when-securing-inputs-and-outputs"></a>保护输入和输出时的注意事项
-
-* 遮盖触发器或操作的输入或输出时，逻辑应用不会将安全数据发送到 Azure Log Analytics。 此外，不能将[跟踪的属性](../logic-apps/monitor-logic-apps-log-analytics.md#extend-data)添加到该触发器或操作进行监视。
-
-* [用于处理工作流历史记录的逻辑应用 API](/rest/api/logic/) 不会返回受保护的输出。
-
-* 若要保护可遮盖输入或显式遮盖输出的操作的输出，请在该操作中手动打开“安全输出”。
-
-* 请确保在你希望运行历史记录来遮盖该数据的下游操作中打开“安全输入”或“安全输出” 。
-
-  安全输出设置
-
-  在触发器或操作中手动打开“安全输出”时，逻辑应用会隐藏运行历史记录中的这些输出。 如果下游操作显式使用这些安全输出作为输入，则逻辑应用会隐藏运行历史记录中的此操作的输入，但不会启用操作的“安全输入”设置。
-
-  ![用作输入的受保护输出，以及对大多数操作的下游影响](./media/logic-apps-securing-a-logic-app/secure-outputs-as-inputs-flow.png)
-
-  “撰写”、“分析 JSON”和“响应”操作仅提供“保护输入”设置。 启用后，此设置也会隐藏这些操作的输出。 如果这些操作显式使用上游的受保护输出作为输入，则逻辑应用会隐藏这些操作的输入和输出，但不会启用这些操作的“保护输入”设置。 如果下游操作显式使用“撰写”、“分析 JSON”或“响应”操作中隐藏的输出作为输入，则逻辑应用不会隐藏此下游操作的输入或输出。
-
-  ![用作输入的受保护输出，以及对特定操作的下游影响](./media/logic-apps-securing-a-logic-app/secure-outputs-as-inputs-flow-special.png)
-
-  安全输入设置
-
-  在触发器或操作中手动打开“安全输入”时，逻辑应用会隐藏运行历史记录中的这些输入。 如果下游操作显式使用该触发器或操作中的可见输出作为输入，则逻辑应用会隐藏运行历史记录中的此下游操作的输入，但不会启用此操作中的“安全输入”，并且不会隐藏此操作的输出。
-
-  ![受保护的输入以及对大多数操作的下游影响](./media/logic-apps-securing-a-logic-app/secure-inputs-impact-on-downstream.png)
-
-  如果“撰写”、“分析 JSON”和“响应”操作显式使用具有受保护输入的触发器或操作中的可见输出，则逻辑应用将隐藏这些操作的输入和输出，但不会启用这些操作的“保护输入”设置。 如果下游操作显式使用“撰写”、“分析 JSON”或“响应”操作中隐藏的输出作为输入，则逻辑应用不会隐藏此下游操作的输入或输出。
-
-  ![受保护的输入以及对特定操作的下游影响](./media/logic-apps-securing-a-logic-app/secure-inputs-flow-special.png)
 
 <a name="secure-action-parameters"></a>
 
@@ -923,7 +933,7 @@ HTTP 和 HTTPS 终结点支持各种身份验证。 在用于向这些终结点�
 | [客户端证书](#client-certificate-authentication) | Azure API 管理、Azure 应用服务、HTTP、HTTP + Swagger、HTTP Webhook |
 | [Active Directory OAuth](#azure-active-directory-oauth-authentication) | Azure API 管理、Azure 应用服务、Azure Functions、HTTP、HTTP + Swagger、HTTP Webhook |
 | [原始](#raw-authentication) | Azure API 管理、Azure 应用服务、Azure Functions、HTTP、HTTP + Swagger、HTTP Webhook |
-| [托管的标识](#managed-identity-authentication) | **内置触发器和操作** <p><p>Azure API 管理、Azure 应用服务、Azure Functions、HTTP、HTTP Webhook <p><p>**托管连接器** <p><p>Azure AD Identity Protection，Azure 自动化，Azure 容器实例，Azure 数据资源管理器，Azure 数据工厂，Azure Data Lake，Azure 事件网格，Azure IoT Central V3，Azure Key Vault，Azure Log Analytics，Azure Monitor 日志，Azure 资源管理器，Azure Sentinel，HTTP with Azure AD <p><p>**注意**：对托管连接器的支持目前以预览版提供。 |
+| [托管的标识](#managed-identity-authentication) | **内置触发器和操作** <p><p>Azure API 管理、Azure 应用服务、Azure Functions、HTTP、HTTP Webhook <p><p>**托管的连接器** <p><p>Azure AD Identity Protection，Azure 自动化，Azure 容器实例，Azure 数据资源管理器，Azure 数据工厂，Azure Data Lake，Azure 事件网格，Azure IoT Central V3，Azure Key Vault，Azure Log Analytics，Azure Monitor 日志，Azure 资源管理器，Azure Sentinel，HTTP with Azure AD <p><p>**注意**：对托管连接器的支持目前以预览版提供。 |
 |||
 
 <a name="basic-authentication"></a>

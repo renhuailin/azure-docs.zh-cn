@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: end-user-help
-ms.date: 10/19/2020
+ms.date: 01/19/2021
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: 8da9e97aaa2c6d99990df4221d8b6e99ab18ac83
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 34885e2a364778a2f81f4920aa26aa3bb5f40320
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93124806"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100095012"
 ---
 # <a name="perform-an-access-review-from-the-my-apps-portal"></a>在“我的应用”门户中执行访问评审
 
@@ -29,6 +29,11 @@ ms.locfileid: "93124806"
 
 >[!Important]
 >此内容适用于“我的应用”用户。 如果你是管理员，可以在[应用程序管理文档](../manage-apps/index.yml)中查找有关如何设置和管理基于云的应用的详细信息。
+>
+> 如果在使用个人 Microsoft 帐户登录时出现错误，你仍可以使用组织的域名 (例如，你可以通过以下 Url 之一中的管理员使用你的组织的域名例如 contoso.com) 或你的组织的 **租户 ID** ：
+>
+>   - https://myapplications.microsoft.com?tenantId=*your_domain_name*
+>   - https://myapplications.microsoft.com?tenant=*your_tenant_ID*
 
 ## <a name="manage-access-reviews"></a>管理访问评审
 
@@ -41,17 +46,17 @@ ms.locfileid: "93124806"
 
 1. 登录到工作或学校帐户。
 
-2. 打开 Web 浏览器并转到 https://myapps.microsoft.com ，或使用组织提供的链接。 例如，你可能会被定向到组织的自定义页面，如 https://myapps.microsoft.com/contoso.com 。
+1. 打开 Web 浏览器并转到 https://myapps.microsoft.com ，或使用组织提供的链接。 例如，你可能会被定向到组织的自定义页面，如 https://myapps.microsoft.com/contoso.com 。
 
     此时将显示“应用”页面，其中显示组织拥有并可供你使用的所有基于云的应用。
 
     ![“我的应用”门户中的“应用”页](media/my-apps-portal/my-apps-home.png)
 
-3. 选择“访问评审”磁贴，查看等待批准的访问评审列表。
+1. 选择“访问评审”磁贴，查看等待批准的访问评审列表。
 
     ![“访问评审”页，其中显示了组织的待定访问评审](media/my-apps-portal/my-apps-portal-access-reviews-page.png)
 
-4. 选择“开始评审”以开始访问评审。
+1. 选择“开始评审”以开始访问评审。
 
 5. 查看访问权限并确定该权限是否仍是必需的。
 

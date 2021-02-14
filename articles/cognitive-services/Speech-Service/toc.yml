@@ -529,8 +529,6 @@
           displayName: 'ACI,azure container instances,container instances,containers'
           maintainContext: true
           href: ../containers/azure-container-instance-recipe.md
-        - name: 容器常见问题解答
-          href: speech-container-faq.md
         - name: 认知服务容器文档
           href: ../containers/index.yml
 - name: 设备

@@ -1,18 +1,18 @@
 ---
 title: Azure Batch 的 Azure Policy 法规符合性控制
 description: 列出可用于 Azure Batch 的 Azure Policy 法规符合性控制。 这些内置的策略定义提供了管理 Azure 资源符合性的常用方法。
-ms.date: 01/29/2021
+ms.date: 02/09/2021
 ms.topic: sample
 author: JnHs
 ms.author: jenhayes
 ms.service: batch
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: e0039bd41e257495d214d0e4304086aa50e75e24
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 804f2154f4100cf2040309abc0c0ad8282208327
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99092603"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100097462"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-batch"></a>Azure Batch 的 Azure Policy 法规符合性控制
 

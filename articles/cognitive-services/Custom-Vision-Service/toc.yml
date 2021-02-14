@@ -31,7 +31,7 @@
   items:
     - name: 测试模型
       href: test-your-model.md
-    - name: 改进分类器
+    - name: 改进模型
       href: getting-started-improving-your-classifier.md
     - name: 选择域
       href: select-domain.md

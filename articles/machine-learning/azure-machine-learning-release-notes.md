@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 09/10/2020
-ms.openlocfilehash: a01aab13b87398b7d27af02fa84dd7fadf7b8345
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: b814c12a0d57230a81a68f6030a26ded93bd0399
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99430991"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100097069"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure 机器学习发行说明
 
@@ -67,19 +67,19 @@ ms.locfileid: "99430991"
 
  ## <a name="2021-01-11"></a>2021-01-11
 
-### <a name="azure-machine-learning-sdk-for-python-v1200"></a>用于 Python 的 Azure 机器学习 SDK 1.20。0
+### <a name="azure-machine-learning-sdk-for-python-v1200"></a>用于 Python 的 Azure 机器学习 SDK v1.20.0
 + **Bug 修复与改进**
   + **azure-cli-ml**
-    + framework_version 在 OptimizationConfig 中添加。 在将模型注册到框架多个时，将使用此方法。
-  + **contrib-优化**
-    + framework_version 在 OptimizationConfig 中添加。 在将模型注册到框架多个时，将使用此方法。
+    + 已在 OptimizationConfig 中添加了 framework_version。 在将模型注册到框架 MULTI 时会使用它。
+  + **azureml-contrib-optimization**
+    + 已在 OptimizationConfig 中添加了 framework_version。 在将模型注册到框架 MULTI 时会使用它。
   + **azureml-pipeline-steps**
-    + 引入将执行命令的 CommandStep。 命令可以包含可执行文件、shell 命令、脚本等。
+    + 引入将接受待处理命令的 CommandStep。 命令可以包含可执行文件、shell 命令、脚本等。
   + **azureml-core**
-    + 现在工作区创建支持用户分配的标识。 从 SDK/CLI 添加 uai 支持
-    + 已修复有关服务的问题。请重新加载 ( # A1，在本地部署中选择 score.py 上的更改。
-    + `run.get_details()` 具有一个名为 "提交者" 的额外字段，该字段显示该运行的作者名称。
-    + 已编辑的模型。注册方法文档，以了解如何直接从运行中注册模型
+    + 现在，工作区创建操作支持用户分配的标识。 从 SDK/CLI 添加 uai 支持
+    + 修复了 service.reload() 上的问题，以便选取本地部署中 score.py 上的更改。
+    + `run.get_details()` 具有一个名为“submittedBy”的额外字段，该字段显示此运行的作者名称。
+    + 已编辑了 Model.register 方法文档，以说明如何直接从运行中注册模型
     + 修复了 IOT-Server 连接状态更改处理问题。
    
 
@@ -160,18 +160,18 @@ ms.locfileid: "99430991"
     + 不再使用 Mpi 作为估算器类的有效输入类型，改为将 MpiConfiguration 和 ScriptRunConfig 配合使用。
 
 ## <a name="2020-11-30"></a>2020-11-30
-### <a name="azure-machine-learning-studio-notebooks-experience-november-update"></a>Azure 机器学习 Studio 笔记本体验 (11 月更新版) 
+### <a name="azure-machine-learning-studio-notebooks-experience-november-update"></a>Azure 机器学习工作室笔记本体验（11 月更新）
 + **新功能**
-   + 本机终端。 用户现在可以通过[集成终端](./how-to-run-jupyter-notebooks.md#terminal)访问集成终端以及 Git 操作。
+   + 本机终端。 用户现在可以访问集成终端，并可以通过[集成终端](./how-to-access-terminal.md)访问 Git 操作。
   + 复制文件夹 
-  + 计算下拉下拉的成本 
+  + “计算的成本”下拉列表 
   + 脱机计算 Pylance 
 
 + **Bug 修复与改进**
   + 改进了页面加载时间
   + 提高了性能 
   + 提高了速度和内核可靠性
-  + 大型文件上传。 你现在可以将文件上传 >95mb
+  + 大型文件上传。 你现在可以上传大于 95MB 的文件
 
 ## <a name="2020-11-09"></a>2020-11-09
 
@@ -353,7 +353,7 @@ ms.locfileid: "99430991"
     + 已更新 AzureML MLflow 文档和笔记本示例 
     + 对带有 AzureML 后端的 MLflow 项目的新支持
     + MLflow 模型注册表支持
-    + 添加了 Azure RBAC 对 AzureML-MLflow 操作的支持 
+    + 为 AzureML-MLflow 操作添加了 Azure RBAC 支持 
     
   + **azureml-pipeline-core**
     + 改进了 PipelineOutputFileDataset.parse_* 方法的文档。

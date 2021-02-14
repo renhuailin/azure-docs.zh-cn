@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 01/28/2020
 ms.author: b-juche
-ms.openlocfilehash: 70b42fb5522b31b5e7e15b5715717f0d010d56dc
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 725f15d72694534da1fd924b3b6ffe223722fd3d
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99052407"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104461"
 ---
 # <a name="create-a-dual-protocol-nfsv3-and-smb-volume-for-azure-netapp-files"></a>为 Azure NetApp 文件创建双重协议 (NFSv3 和 SMB) 卷
 
 Azure NetApp 文件支持使用 NFS (NFSv3 和 NFSv 4.1) 、SMB3 或双重协议创建卷。 本文介绍如何创建使用 NFSv3 和 SMB 的双重协议的卷，并支持 LDAP 用户映射。  
 
 
-## <a name="before-you-begin"></a>开始之前 
+## <a name="before-you-begin"></a>在开始之前 
 
 * 你必须已创建容量池。  
     请参阅 [设置容量池](azure-netapp-files-set-up-capacity-pool.md)。   
@@ -140,4 +140,4 @@ Azure NetApp 文件支持使用 NFS (NFSv3 和 NFSv 4.1) 、SMB3 或双重协议
 ## <a name="next-steps"></a>后续步骤  
 
 * [为 Azure NetApp 文件配置 NFS 客户端](configure-nfs-clients.md)
-* [双重协议卷故障排除](troubleshoot-dual-protocol-volumes.md)
+* [SMB 或双重协议卷故障排除](troubleshoot-dual-protocol-volumes.md)

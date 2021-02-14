@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 9/24/2020
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: f6bd6b13ab4a2e654bdabc86355f2c3388abed31
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 9d09bca246938f972a212f7ee71f03a618e16ac4
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98050521"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575666"
 ---
 # <a name="quickstart---explore-a-sample-azure-digital-twins-scenario-using-adt-explorer"></a>快速入门 - 使用 ADT Explorer 探索示例 Azure 数字孪生方案
 
@@ -306,11 +306,15 @@ Azure 数字孪生的主要功能是能够轻松有效地[查询](concepts-query
 
 若要结束本快速入门的工作，请先结束正在运行的控制台应用。 此操作将关闭与浏览器中 ADT Explorer 应用的连接。 你将无法在浏览器中查看实时数据。 你可关闭浏览器标签页。
 
-如果你计划继续学习 Azure 数字孪生教程，可将本快速入门中使用的实例重复用于那些文章，不用将它们删除。
+然后，可选择想要删除的资源，这具体取决于你接下来要执行哪些操作。
+
+* 如果你计划继续学习 Azure 数字孪生教程，可将本快速入门中使用的实例重复用于那些文章，无需将它们删除。
+
+[!INCLUDE [digital-twins-cleanup-clear-instance.md](../../includes/digital-twins-cleanup-clear-instance.md)]
  
 [!INCLUDE [digital-twins-cleanup-basic.md](../../includes/digital-twins-cleanup-basic.md)]
 
-最后，删除已下载到本地计算机的项目示例文件夹 Azure_Digital_Twins__ADT__explorer。 可能需要既删除压缩版本，又删除解压缩版本。
+你可能还需要从本地计算机中删除项目文件夹。
 
 ## <a name="next-steps"></a>后续步骤
 
