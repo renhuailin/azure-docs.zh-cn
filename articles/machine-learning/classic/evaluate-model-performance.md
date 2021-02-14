@@ -3,22 +3,22 @@ title: ML Studio (经典) ：评估 & 交叉验证模型-Azure
 description: 了解可用于在 Azure 机器学习 Studio (经典) 中监视模型性能的指标。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: ca369f8a3e680a4d2aae49df83dda0cdd3dc4075
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: b2ca78d30659fce6e4246c81216cae94b404955e
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93310150"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100520011"
 ---
 # <a name="evaluate-model-performance-in-azure-machine-learning-studio-classic"></a>在 Azure 机器学习工作室（经典）中评估模型性能
 
-**适用对象：** ![适用于.](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典）   ![不适用于. ](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
+**适用对象：** ![适用于.](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典）   ![不适用于.](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 
 本文介绍可用于监视 Azure 机器学习工作室（经典）中的模型性能的指标。  评估模型性能是数据科学过程的核心阶段之一。 它指示训练的模型为某个数据集评分的成功程度。 Azure 机器学习工作室（经典）通过它的两个主要机器学习模块支持模型评估： 
@@ -47,7 +47,7 @@ ms.locfileid: "93310150"
 在以下部分中，我们将使用[评估模型][evaluate-model]和[交叉验证模型][cross-validate-model]模块生成简单的回归和分类模型，并评估其性能。
 
 ## <a name="evaluating-a-regression-model"></a>评估回归模型
-假设我们要使用某些特征（如尺寸、马力、引擎规格等）预测一辆汽车的价格。 这是典型的回归问题，其中目标变量（ *价格* ）是一个连续数值。 我们可以采用一个线性回归模型，该模型可在给定特定汽车的特征值的情况下预测该汽车的价格。 此回归模型可用于为我们训练所用的相同数据集评分。 得到预测的汽车价格后，我们可以通过查看预测与实际价格的平均偏离程度来评估模型性能。 为了演示此操作，我们使用机器学习工作室（经典）的“已保存数据集”部分中提供的 *汽车价格数据（原始）数据集* 。
+假设我们要使用某些特征（如尺寸、马力、引擎规格等）预测一辆汽车的价格。 这是典型的回归问题，其中目标变量（*价格*）是一个连续数值。 我们可以采用一个线性回归模型，该模型可在给定特定汽车的特征值的情况下预测该汽车的价格。 此回归模型可用于为我们训练所用的相同数据集评分。 得到预测的汽车价格后，我们可以通过查看预测与实际价格的平均偏离程度来评估模型性能。 为了演示此操作，我们使用机器学习工作室（经典）的“已保存数据集”部分中提供的 *汽车价格数据（原始）数据集*。
 
 ### <a name="creating-the-experiment"></a>创建实验
 在 Azure 机器学习工作室（经典）中将以下模块添加到工作区：
@@ -65,7 +65,7 @@ ms.locfileid: "93310150"
 图 1. 评估回归模型。
 
 ### <a name="inspecting-the-evaluation-results"></a>检查评估结果
-运行实验后，可单击[评估模型][evaluate-model]模块的输出端口，并选择“可视化”来查看评估结果。 可用于回归模型的评估指标包括： *平均绝对误差* 、 *根平均绝对误差* 、 *相对绝对误差* 、 *相对方误差* 和 *决定系数* 。
+运行实验后，可单击[评估模型][evaluate-model]模块的输出端口，并选择“可视化”来查看评估结果。 可用于回归模型的评估指标包括：*平均绝对误差*、*根平均绝对误差*、*相对绝对误差*、*相对方误差* 和 *决定系数*。
 
 术语“误差”在此处表示预测值和真实值之间的差。 通常会计算此差的绝对值或平方来捕获所有实例上的误差总量，因为预测值和真实值之差在某些情况下可能为负。 误差指标通过预测与真实值之间的平均偏差来测量回归模型的预测性能。 误差值较低意味着模型在预测方面更准确。 总体错误指标为零意味着模型与数据完美拟合。
 
@@ -76,7 +76,7 @@ ms.locfileid: "93310150"
 图 2. 线性回归评估指标。
 
 ### <a name="using-cross-validation"></a>使用交叉验证
-如前所述，可使用[交叉验证模型][cross-validate-model]模块自动执行重复训练、评分和评估。 在此情况下只需要一个数据集、一个未训练的模型和一个[交叉验证模型][cross-validate-model]模块（请参阅下图）。 您需要在 " [交叉验证模型][cross-validate-model]" 模块的属性中将标签列设置为 " *价格* "。
+如前所述，可使用[交叉验证模型][cross-validate-model]模块自动执行重复训练、评分和评估。 在此情况下只需要一个数据集、一个未训练的模型和一个[交叉验证模型][cross-validate-model]模块（请参阅下图）。 您需要在 "[交叉验证模型][cross-validate-model]" 模块的属性中将标签列设置为 "*价格*"。
 
 ![交叉验证回归模型](./media/evaluate-model-performance/3.png)
 
@@ -107,7 +107,7 @@ ms.locfileid: "93310150"
 图 5。 评估二元分类模型。
 
 ### <a name="inspecting-the-evaluation-results"></a>检查评估结果
-运行实验后，可单击[评估模型][evaluate-model]模块的输出端口，并选择“可视化”来查看评估结果（图 7）。 可用于二元分类模型的评估指标包括： *准确性* 、 *精度* 、 *召回率* 、 *F1 分数* 和 *AUC* 。 此外，模块输出一个显示真正、假负、假正和真负的混淆矩阵，以及 *ROC* 、 *精度/召回率* 和 *升力* 曲线。
+运行实验后，可单击[评估模型][evaluate-model]模块的输出端口，并选择“可视化”来查看评估结果（图 7）。 可用于二元分类模型的评估指标包括：*准确性*、*精度*、*召回率*、*F1 分数* 和 *AUC*。 此外，模块输出一个显示真正、假负、假正和真负的混淆矩阵，以及 *ROC*、*精度/召回率* 和 *升力* 曲线。
 
 准确性就是正确分类的实例的比例。 它通常是评估分类器时所查看的第一个指标。 但是，如果测试数据不平衡 (其中大多数实例属于) 的其中一个类，或者您对其中一个类的性能更感兴趣，则准确性并不真正地捕获分类器的有效性。 在收入级别分类器方案中，假设在测试的数据中，99% 的实例代表每年收入小于或等于 50K 的人。 可以通过对所有实例的 "<= 50K" 类进行预测来实现0.99 准确性。 此情况下的分类器看起来总体上表现不错，但实际上，它未能正确分类任何高收入个体（那 1% 的人）。
 
@@ -123,12 +123,12 @@ ms.locfileid: "93310150"
 
 图 7。 二元分类评估结果。
 
-另一个常用的相关指标是 **F1 分数** ，该指标同时考虑精度和召回率。 它是这两个指标的调和平均值，计算方式如下：F1 = 2（精度 x 召回率）/（精度 + 召回率）。 F1 评分是在单个数字中汇总评估的好方法，但始终最好同时查看精度和回忆，以更好地了解分类器的行为方式。
+另一个常用的相关指标是 **F1 分数**，该指标同时考虑精度和召回率。 它是这两个指标的调和平均值，计算方式如下：F1 = 2（精度 x 召回率）/（精度 + 召回率）。 F1 评分是在单个数字中汇总评估的好方法，但始终最好同时查看精度和回忆，以更好地了解分类器的行为方式。
 
 此外，可在“受试者工作特性曲线 (ROC)”曲线和对应的“曲线下面积 (AUC)”值中检查真正与假正的比率。 此曲线越接近左上角，分类器的性能就越好 (，它最大程度地提高真实速率，同时最大程度地降低误报) 的最小值。 离图的对角线很近的曲线，产生自倾向于进行接近随机猜测的预测的分类器。
 
 ### <a name="using-cross-validation"></a>使用交叉验证
-和在回归示例中一样，我们执行交叉验证以自动重复训练、评分和评估数据的不同子集。 同样，我们可以使用[交叉验证模型][cross-validate-model]模块、一个未训练的逻辑回归模型和一个数据集。 必须在 " [交叉验证模型][cross-validate-model]" 模块的属性中将标签列设置为 " *收入* "。 运行实验并单击[交叉验证模型][cross-validate-model]模块的右输出端口后，除了每一折的平均和标准偏差，我们可以看到每一折的二元分类指标值。 
+和在回归示例中一样，我们执行交叉验证以自动重复训练、评分和评估数据的不同子集。 同样，我们可以使用[交叉验证模型][cross-validate-model]模块、一个未训练的逻辑回归模型和一个数据集。 必须在 "[交叉验证模型][cross-validate-model]" 模块的属性中将标签列设置为 "*收入*"。 运行实验并单击[交叉验证模型][cross-validate-model]模块的右输出端口后，除了每一折的平均和标准偏差，我们可以看到每一折的二元分类指标值。 
 
 ![交叉验证二元分类模型](./media/evaluate-model-performance/8.png)
 

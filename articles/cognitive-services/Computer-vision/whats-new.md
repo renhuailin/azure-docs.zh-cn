@@ -10,16 +10,32 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 01/13/2021
 ms.author: pafarley
-ms.openlocfilehash: f10319de67a105b4b5e4641c4171ccd0a6e63440
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 31ca65099d645b7fdfee70275515f0a864cd905f
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99490871"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100007391"
 ---
 # <a name="whats-new-in-computer-vision"></a>计算机视觉中的新增功能
 
 了解服务中的新增功能。 这些内容可能包括发布说明、视频、博客文章和其他类型的信息。 请将本页加入书签，以随时了解该服务的最新信息。
+
+## <a name="february-2021"></a>2021 年 2 月
+
+### <a name="read-api-v32-public-preview-with-ocr-support-for-73-languages"></a>读取 API v3.2 公共预览版（带有对 73 种语言的 OCR 支持）
+计算机视觉的读取 API v3.2 公共预览版（可用作云服务和 Docker 容器）包括以下更新：
+* [用于 73 种语言的 OCR](./language-support.md#optical-character-recognition-ocr)，这些语言包括简体中文和繁体中文、日语、韩语和拉丁语言。
+* 用于文本行输出的自然读取顺序。
+* 文本行的手写样式分类以及置信度分数（仅限拉丁语言）。
+* 对于多页文档，仅提取所选页面的文本。
+* 可为本地部署用作 [Distroless 容器](./computer-vision-how-to-install-containers.md?tabs=version-3-2)。
+
+[详细了解](concept-recognizing-text.md)读取 API。
+
+> [!div class="nextstepaction"]
+> [使用读取 API v3.2 公共预览版](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-2/operations/5d986960601faab4bf452005)
+
 
 ## <a name="january-2021"></a>2021 年 1 月
 

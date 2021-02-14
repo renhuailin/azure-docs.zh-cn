@@ -4,18 +4,17 @@ titleSuffix: Azure Data Science Virtual Machine
 description: 了解如何在 Data Science Virtual Machine 上安全地存储访问凭据。 你将了解如何使用托管服务标识和 Azure Key Vault 存储访问凭据。
 keywords: 深度学习, AI, 数据科学工具, 数据科学虚拟机, 地理空间分析, 团队数据科学过程
 services: machine-learning
-ms.service: machine-learning
-ms.subservice: data-science-vm
+ms.service: data-science-vm
 author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 05/08/2018
-ms.openlocfilehash: d5604e42c2c27463e10c136ccd18c3c21846fc5a
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: adc66fc794ac6cce3fc0f8fd1552f701a4968860
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93309149"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100519671"
 ---
 # <a name="store-access-credentials-securely-on-an-azure-data-science-virtual-machine"></a>在 Azure Data Science Virtual Machine 上安全存储访问凭据
 

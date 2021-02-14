@@ -1,24 +1,18 @@
 ---
 title: 基于时间分区文件名增量复制新文件
 description: 创建一个 Azure 数据工厂，然后使用复制数据工具仅根据时间分区文件名以增量方式加载新文件。
-services: data-factory
-documentationcenter: ''
 author: dearandyxu
 ms.author: yexu
-ms.reviewer: ''
-manager: ''
 ms.service: data-factory
-ms.workload: data-services
-ms.devlang: na
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/09/2020
-ms.openlocfilehash: ae66bb025f2a49a79120fe86e0de7c4a3ccf26ca
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 8e68852434a4a8bea43b575523a60c9346b2a569
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94555356"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100384769"
 ---
 # <a name="incrementally-copy-new-files-based-on-time-partitioned-file-name-by-using-the-copy-data-tool"></a>使用复制数据工具仅根据时间分区文件名以增量方式复制新文件
 
@@ -38,14 +32,14 @@ ms.locfileid: "94555356"
 
 ## <a name="prerequisites"></a>先决条件
 
-* **Azure 订阅** ：如果没有 Azure 订阅，请在开始之前创建一个 [免费帐户](https://azure.microsoft.com/free/)。
-* **Azure 存储帐户** ：将 Blob 存储用作源  和接收器  数据存储。 如果没有 Azure 存储帐户，请参阅[创建存储帐户](../storage/common/storage-account-create.md)中的说明。
+* **Azure 订阅**：如果没有 Azure 订阅，请在开始之前创建一个 [免费帐户](https://azure.microsoft.com/free/)。
+* **Azure 存储帐户**：将 Blob 存储用作源  和接收器  数据存储。 如果没有 Azure 存储帐户，请参阅[创建存储帐户](../storage/common/storage-account-create.md)中的说明。
 
 ### <a name="create-two-containers-in-blob-storage"></a>在 Blob 存储中创建两个容器
 
 执行以下步骤，准备本教程所需的 Blob 存储。
 
-1. 创建名为 **source** 的容器。  在容器中将文件夹路径创建为“2020/03/17/03”  。 创建空的文本文件，并将其命名为 **file1.txt** 。 将 file1.txt 上传到存储帐户中的文件夹路径“source/2020/03/17/03”  。  可以使用各种工具（例如 [Azure 存储资源管理器](https://storageexplorer.com/)）来执行这些任务。
+1. 创建名为 **source** 的容器。  在容器中将文件夹路径创建为“2020/03/17/03”  。 创建空的文本文件，并将其命名为 **file1.txt**。 将 file1.txt 上传到存储帐户中的文件夹路径“source/2020/03/17/03”  。  可以使用各种工具（例如 [Azure 存储资源管理器](https://storageexplorer.com/)）来执行这些任务。
 
     ![上传文件](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/upload-file.png)
 
@@ -56,7 +50,7 @@ ms.locfileid: "94555356"
 
 ## <a name="create-a-data-factory"></a>创建数据工厂
 
-1. 在左侧菜单中，选择 " **创建资源**  >  **集成**  >  **数据工厂** "：
+1. 在左侧菜单中，选择“创建资源” > “集成” > “数据工厂”  ：
 
    ![在“新建”窗格中选择“数据工厂”](./media/doc-common-process/new-azure-data-factory-menu.png)
 
@@ -66,8 +60,8 @@ ms.locfileid: "94555356"
 
    ![新的数据工厂错误消息](./media/doc-common-process/name-not-available-error.png)
 
-   如果收到有关名称值的错误消息，请为数据工厂输入另一名称。 例如，使用名称 _**yourname**_ **ADFTutorialDataFactory** 。 有关数据工厂项目的命名规则，请参阅[数据工厂命名规则](naming-rules.md)。
-3. 选择要在其中创建新数据工厂的 Azure **订阅** 。
+   如果收到有关名称值的错误消息，请为数据工厂输入另一名称。 例如，使用名称 _**yourname**_ **ADFTutorialDataFactory**。 有关数据工厂项目的命名规则，请参阅[数据工厂命名规则](naming-rules.md)。
+3. 选择要在其中创建新数据工厂的 Azure **订阅**。
 4. 对于“资源组”，请执行以下步骤之一： 
 
     a. 选择“使用现有资源组”，并从下拉列表选择现有的资源组。 
@@ -93,7 +87,7 @@ ms.locfileid: "94555356"
 
 2. 在“属性”页上执行以下步骤： 
 
-    a. 在“任务名称”下  输入 **DeltaCopyFromBlobPipeline** 。
+    a. 在“任务名称”下  输入 **DeltaCopyFromBlobPipeline**。
 
     b. 在“任务频率或任务计划”下  ，选择“按计划定期运行”  。
 
@@ -101,7 +95,7 @@ ms.locfileid: "94555356"
 
     d. 在“重复周期”下输入“1 小时”。  
 
-    e. 选择“ **下一步** ”。
+    e. 选择“**下一步**”。
 
     数据工厂 UI 将使用指定的任务名称创建一个管道。
 
@@ -164,7 +158,7 @@ ms.locfileid: "94555356"
 
     ![屏幕截图显示了目标的管道运行详细信息。](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs3.png)
 
-12. 将另一个使用新名称的空文本文件创建为 **file2.txt** 。 将 file2.txt 文件上传到存储帐户中的文件夹路径“source/2020/03/17/04”  。 可以使用各种工具（例如 [Azure 存储资源管理器](https://storageexplorer.com/)）来执行这些任务。
+12. 将另一个使用新名称的空文本文件创建为 **file2.txt**。 将 file2.txt 文件上传到存储帐户中的文件夹路径“source/2020/03/17/04”  。 可以使用各种工具（例如 [Azure 存储资源管理器](https://storageexplorer.com/)）来执行这些任务。
 
     > [!NOTE]
     > 你可能知道，必须创建新的文件夹路径。 请根据 UTC 时间调整文件夹名称。  例如，如果当前的 UTC 时间为 2020 年 3 月 17 日早上 4:20，则可按规则“/{年}/{月}/{日}/{小时}/”  创建文件夹路径“source/2020/03/17/04/”  。

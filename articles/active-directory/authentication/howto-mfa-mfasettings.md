@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: 209125a5cc8d86c1af07966d52681aa91ea7dc19
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 584266a8f6aa82d8a47b5e3faff044acf0ef298c
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97026993"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100361615"
 ---
 # <a name="configure-azure-ad-multi-factor-authentication-settings"></a>配置 Azure AD 多重身份验证设置
 
@@ -25,7 +25,7 @@ ms.locfileid: "97026993"
 
 Azure 门户中提供了以下 Azure AD 多重身份验证设置：
 
-| Feature | 描述 |
+| Feature | 说明 |
 | ------- | ----------- |
 | [帐户锁定](#account-lockout) | 如果行中拒绝过多的身份验证尝试，请暂时锁定帐户以使用 Azure AD 多重身份验证。 此功能仅适用于输入 PIN 进行身份验证的用户。 （MFA 服务器） |
 | [阻止/解除阻止用户](#block-and-unblock-users) | 阻止特定用户接收 Azure AD 多重身份验证请求。 自动拒绝任何针对受阻止用户的身份验证尝试。 用户在被阻止或被手动解除阻止时，将在90天内保持被阻止。 |
@@ -65,9 +65,7 @@ Azure 门户中提供了以下 Azure AD 多重身份验证设置：
 
 1. 浏览到“Azure Active Directory” > “安全性” > “MFA” > “阻止/解除阻止用户”   。
 1. 选择“添加”以阻止用户。
-1. 选择 **复制组**，并选择 " *Azure 默认值*"。
-
-    输入被阻止的用户的用户名作为 `username\@domain.com` ，然后在 " *原因* " 字段中提供注释。
+1. 输入被阻止的用户的用户名作为 `username@domain.com` ，然后在 " *原因* " 字段中提供注释。
 1. 准备就绪后，选择 **"确定"** 以阻止用户。
 
 ### <a name="unblock-a-user"></a>解除阻止用户
@@ -244,7 +242,7 @@ Azure AD 多重身份验证的 _受信任的 ip_ 功能会绕过从定义的 IP 
 
 | Azure AD 租户类型 | 受信任的 IP 功能选项 |
 |:--- |:--- |
-| 托管 |**特定 ip 地址范围**：管理员指定一个 ip 地址范围，该范围可以为从公司 intranet 登录的用户绕过多重身份验证。 最多可以配置50个受信任的 IP 范围。|
+| Managed |**特定 ip 地址范围**：管理员指定一个 ip 地址范围，该范围可以为从公司 intranet 登录的用户绕过多重身份验证。 最多可以配置50个受信任的 IP 范围。|
 | 联合 |**所有联合用户**：从组织内部登录的所有联合用户都可以绕过多重身份验证。 用户使用由 Active Directory 联合身份验证服务 (AD FS) 颁发的声明绕过验证。<br/>**特定 ip 地址范围**：管理员指定一个 ip 地址范围，该范围可以为从公司 intranet 登录的用户绕过多重身份验证。 |
 
 受信任的 IP 绕过只能从公司 intranet 内部使用。 如果选择 " **所有联合用户** " 选项，并且用户从公司 intranet 外部登录，则用户必须使用多重身份验证进行身份验证。 即使用户提供了 AD FS 声明，验证过程也相同。

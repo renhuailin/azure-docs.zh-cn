@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 12/31/2020
-ms.openlocfilehash: 7801145ba1bcaa2ffd543becfe190f05d232e8c8
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: 8ca77c1fa1232f7aed88b0d6942d8a0085caf0d5
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100104954"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100380213"
 ---
 # <a name="connect-servicenow-to-azure-monitor"></a>将 ServiceNow 连接到 Azure Monitor
 
@@ -23,6 +23,7 @@ ms.locfileid: "100104954"
 
 * 已注册 Azure AD。
 * 你具有受支持的 ServiceNow 事件管理版本-ITOM (纽约或更高版本) 。
+* 在 ServiceNow 实例上安装的[应用程序](https://store.servicenow.com/sn_appstore_store.do#!/store/application/ac4c9c57dbb1d090561b186c1396191a/1.2.0?referer=%2Fstore%2Fsearch%3Flistingtype%3Dallintegrations%25253Bancillary_app%25253Bcertified_apps%25253Bcontent%25253Bindustry_solution%25253Boem%25253Butility%26q%3Devent%2520management%2520connectors&sl=sh)。
 
 ## <a name="configure-the-servicenow-connection"></a>配置 ServiceNow 连接
 

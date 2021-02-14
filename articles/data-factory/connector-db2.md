@@ -1,22 +1,17 @@
 ---
 title: 使用 Azure 数据工厂从 DB2 复制数据
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 DB2 复制到支持的接收器数据存储。
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: jingwang
-ms.openlocfilehash: f890e4c47a427b6ca8c07463d6795f0813ef5bbd
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 642f12386a7695e026eb0c30016acf6f53fc9e95
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92638187"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100381114"
 ---
 # <a name="copy-data-from-db2-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 DB2 复制数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -67,22 +62,22 @@ ms.locfileid: "92638187"
 
 DB2 链接服务支持以下属性：
 
-| properties | 说明 | 必选 |
+| properties | 说明 | 必须 |
 |:--- |:--- |:--- |
-| type | type 属性必须设置为： **Db2** | 是 |
+| type | type 属性必须设置为：**Db2** | 是 |
 | connectionString | 指定连接到 DB2 实例所需的信息。<br/> 还可以将密码放在 Azure 密钥保管库中，并从连接字符串中拉取 `password` 配置。 有关更多详细信息，请参阅以下示例和[在 Azure 密钥保管库中存储凭据](store-credentials-in-key-vault.md)一文。 | 是 |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 在[先决条件](#prerequisites)部分了解更多信息。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
 
 连接字符串中的典型属性：
 
-| properties | 说明 | 必选 |
+| properties | 说明 | 必须 |
 |:--- |:--- |:--- |
 | server |DB2 服务器的名称。 可以在冒号分隔的服务器名称后面指定端口号，例如 `server:port`。<br>DB2 连接器采用 DDM/DRDA 协议，如果未指定，则默认使用端口 50000。 特定 DB2 数据库使用的端口可能会因版本和设置而有所不同，例如，对于 DB2 LUW，默认端口为 50000，对于 AS400，默认端口为 446 或 448（如果启用 TLS）。 请参阅以下 DB2 文档，了解端口的典型配置方式：[DB2 z/OS](https://www.ibm.com/support/knowledgecenter/SSEPGG_11.5.0/com.ibm.db2.luw.qb.dbconn.doc/doc/t0008229.html)、[DB2 iSeries](https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_74/ddp/rbal1ports.htm) 和 [DB2 LUW](https://www.ibm.com/support/knowledgecenter/en/SSEKCU_1.1.3.0/com.ibm.psc.doc/install/psc_t_install_typical_db2_port.html)。 |是 |
 | database |DB2 数据库的名称。 |是 |
-| authenticationType |用于连接 DB2 数据库的身份验证类型。<br/>允许的值为： **基本** 。 |是 |
+| authenticationType |用于连接 DB2 数据库的身份验证类型。<br/>允许的值为：**基本**。 |是 |
 | username |指定用于连接到 DB2 数据库的用户名。 |是 |
 | password |指定为用户名指定的用户帐户的密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 |是 |
-| packageCollection | 指定在查询数据库时，ADF 自动创建所需的包的位置。 如果未设置此值，数据工厂将使用 {username} 作为默认值。 | 否 |
+| packageCollection    | 指定在查询数据库时，ADF 自动创建所需的包的位置。 如果未设置此值，数据工厂将使用 {username} 作为默认值。 | 否 |
 | certificateCommonName | 使用安全套接字层 (SSL) 或传输层安全性 (TLS) 加密时，必须为“证书公用名称”输入值。 | 否 |
 
 > [!TIP]
@@ -164,10 +159,10 @@ DB2 链接服务支持以下属性：
 
 若要从 DB2 复制数据，需要支持以下属性：
 
-| properties | 说明 | 必选 |
+| properties | 说明 | 必须 |
 |:--- |:--- |:--- |
-| type | 数据集的 type 属性必须设置为： **Db2Table** | 是 |
-| schema | 架构的名称。 |否（如果指定了活动源中的“query”）  |
+| type | 数据集的 type 属性必须设置为：**Db2Table** | 是 |
+| 架构 | 架构的名称。 |否（如果指定了活动源中的“query”）  |
 | 表 | 表的名称。 |否（如果指定了活动源中的“query”）  |
 | tableName | 具有架构的表的名称。 支持此属性是为了向后兼容。 对于新的工作负荷，请使用 `schema` 和 `table`。 | 否（如果指定了活动源中的“query”） |
 
@@ -199,9 +194,9 @@ DB2 链接服务支持以下属性：
 
 若要从 DB2 复制数据，复制活动的 **source** 节需要支持以下属性：
 
-| properties | 说明 | 必选 |
+| properties | 说明 | 必须 |
 |:--- |:--- |:--- |
-| type | 复制活动 source 的 type 属性必须设置为： **Db2Source** | 是 |
+| type | 复制活动 source 的 type 属性必须设置为：**Db2Source** | 是 |
 | query | 使用自定义 SQL 查询读取数据。 例如：`"query": "SELECT * FROM \"DB2ADMIN\".\"Customers\""`。 | 否（如果指定了数据集中的“tableName”） |
 
 **示例：**
@@ -247,28 +242,28 @@ DB2 链接服务支持以下属性：
 | BigInt |Int64 |
 | 二进制 |Byte[] |
 | Blob |Byte[] |
-| Char |字符串 |
-| Clob |字符串 |
+| Char |String |
+| Clob |String |
 | Date |datetime |
-| DB2DynArray |字符串 |
-| DbClob |字符串 |
+| DB2DynArray |String |
+| DbClob |String |
 | 小数 |小数 |
 | DecimalFloat |小数 |
 | Double |Double |
 | Float |Double |
-| Graphic |字符串 |
+| Graphic |String |
 | Integer |Int32 |
 | LongVarBinary |Byte[] |
-| LongVarChar |字符串 |
-| LongVarGraphic |字符串 |
+| LongVarChar |String |
+| LongVarGraphic |String |
 | Numeric |小数 |
 | Real |Single |
 | SmallInt |Int16 |
 | 时间 |TimeSpan |
 | 时间戳 |DateTime |
 | VarBinary |Byte[] |
-| VarChar |字符串 |
-| VarGraphic |字符串 |
+| VarChar |String |
+| VarGraphic |String |
 | Xml |Byte[] |
 
 ## <a name="lookup-activity-properties"></a>Lookup 活动属性

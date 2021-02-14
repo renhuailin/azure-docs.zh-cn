@@ -3,22 +3,22 @@ title: ML Studio (经典) ：使用 API 管理来管理 web 服务-Azure
 description: 介绍如何使用 API 管理来管理 AzureML Web 服务的指南。 通过定义用户访问权限、使用限制和仪表板监视管理 REST API 终结点。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/03/2017
-ms.openlocfilehash: b00e75c5fda8a05f4ed0f3a756ba20cca570ba5c
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 293643ab5354c51142baaf281b1845cfc9fa6f23
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93305984"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100518022"
 ---
 # <a name="manage-azure-machine-learning-studio-classic-web-services-using-api-management"></a>使用 API 管理以管理 Azure 机器学习工作室（经典）Web 服务
 
-**适用对象：** ![适用于.](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典）   ![不适用于. ](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
+**适用对象：** ![适用于.](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典）   ![不适用于.](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 
 ## <a name="overview"></a>概述
@@ -43,7 +43,7 @@ Azure API 管理是一项 Azure 服务，支持通过定义用户访问权限、
 3. 在搜索框中键入“API 管理”，然后选择“API 管理”资源。
 4. 单击“创建”。
 5. “名称”值用于创建唯一 URL（本示例使用“demoazureml”）。
-6. 为服务实例选择 **订阅** 、 **资源组** 和 **位置** 。
+6. 为服务实例选择 **订阅**、**资源组** 和 **位置**。
 7. 指定“组织名称”的值（本示例使用“demoazureml”）。
 8. 输入“管理员电子邮件”- 此电子邮件用于接收 API 管理系统发出的通知。
 9. 单击“创建”。
@@ -69,7 +69,7 @@ Azure API 管理是一项 Azure 服务，支持通过定义用户访问权限、
 4. 输入“Web API URL 后缀”。 这是客户向服务实例发送请求时使用的 URL 的最后一个部分（本示例使用“azureml-demo”）。
 5. 对于“Web API URL 方案”，请选择“HTTPS”。 
 6. 对于“产品”，请选择“初学者”。 
-7. 单击“ **保存** ”。
+7. 单击“ **保存**”。
 
 
 ## <a name="add-the-operations"></a>添加操作
@@ -106,7 +106,7 @@ Azure API 管理是一项 Azure 服务，支持通过定义用户访问权限、
 3. 对于“URL 模板”，请键入“`/workspaces/{workspace}/services/{service}/jobs?api-version={apiversion}`”。
 4. 输入“显示名称”（本示例使用“BES 提交”）。
 5. 在左侧依次单击“响应” > “添加”，并选择“200 正常”。
-6. 单击“ **保存** ”。
+6. 单击“ **保存**”。
 
 ### <a name="start-a-batch-execution-job"></a>启动批处理执行作业
 
@@ -115,7 +115,7 @@ Azure API 管理是一项 Azure 服务，支持通过定义用户访问权限、
 3. 对于“HTTP 谓词”，请键入“`/workspaces/{workspace}/services/{service}/jobs/{jobid}/start?api-version={apiversion}`”。
 4. 输入“显示名称”（本示例使用“BES 启动”）。
 6. 在左侧依次单击“响应” > “添加”，并选择“200 正常”。
-7. 单击“ **保存** ”。
+7. 单击“ **保存**”。
 
 ### <a name="get-the-status-or-result-of-a-batch-execution-job"></a>获取批处理执行作业的状态或结果
 
@@ -124,7 +124,7 @@ Azure API 管理是一项 Azure 服务，支持通过定义用户访问权限、
 3. 对于“URL 模板”，请键入“`/workspaces/{workspace}/services/{service}/jobs/{jobid}?api-version={apiversion}`”。
 4. 输入“显示名称”（本示例使用“BES 状态”）。
 6. 在左侧依次单击“响应” > “添加”，并选择“200 正常”。
-7. 单击“ **保存** ”。
+7. 单击“ **保存**”。
 
 ### <a name="delete-a-batch-execution-job"></a>删除批处理执行作业
 
@@ -133,7 +133,7 @@ Azure API 管理是一项 Azure 服务，支持通过定义用户访问权限、
 3. 对于“URL 模板”，请键入“`/workspaces/{workspace}/services/{service}/jobs/{jobid}?api-version={apiversion}`”。
 4. 输入“显示名称”（本示例使用“BES 删除”）。
 5. 在左侧依次单击“响应” > “添加”，并选择“200 正常”。
-6. 单击“ **保存** ”。
+6. 单击“ **保存**”。
 
 ## <a name="call-an-operation-from-the-developer-portal"></a>从开发人员门户调用操作
 
@@ -151,9 +151,9 @@ Azure API 管理是一项 Azure 服务，支持通过定义用户访问权限、
 
    ![屏幕截图显示了 Azure M L 演示 A P I 对话框，并在其中选择了 Post R R S，并有一个 "试用" 按钮。](./media/manage-web-service-endpoints-using-api-management/try-it.png)
 
-4. 对于“请求参数”，请键入自己的 **工作区** 和 **服务** ，为 **apiversion** 键入“2.0”，为 **details** 键入“true”。 可在 AzureML Web 服务仪表板中查找“工作区”和“服务”（请参阅附录 A 中的 **测试 Web 服务** ）。
+4. 对于“请求参数”，请键入自己的 **工作区** 和 **服务**，为 **apiversion** 键入“2.0”，为 **details** 键入“true”。 可在 AzureML Web 服务仪表板中查找“工作区”和“服务”（请参阅附录 A 中的 **测试 Web 服务**）。
 
-   对于“请求标头”，请单击“添加标头”，并键入“Content-Type”和“application/json”。  再次单击“添加标头”，键入“Authorization”和“Bearer \<your service API-KEY\>”。 可在 AzureML Web 服务仪表板中找到 API-KEY（请参阅附录 A 中的 **测试 Web 服务** ）。
+   对于“请求标头”，请单击“添加标头”，并键入“Content-Type”和“application/json”。  再次单击“添加标头”，键入“Authorization”和“Bearer \<your service API-KEY\>”。 可在 AzureML Web 服务仪表板中找到 API-KEY（请参阅附录 A 中的 **测试 Web 服务**）。
 
    对于“请求正文”，请键入 `{"Inputs": {"input1": {"ColumnNames": ["Col2"], "Values": [["This is a good day"]]}}, "GlobalParameters": {}}`。
 

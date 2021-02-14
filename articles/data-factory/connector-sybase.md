@@ -1,22 +1,17 @@
 ---
 title: 使用 Azure 数据工厂从 Sybase 复制数据
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 Sybase 复制到支持的接收器数据存储。
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/10/2020
 ms.author: jingwang
-ms.openlocfilehash: ac9dff4b16d8ba1b346a2827f3b5487dbf97392e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2ef63eded5403c1cf5faddec71ed3503c3ae2138
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84669828"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100384803"
 ---
 # <a name="copy-data-from-sybase-using-azure-data-factory"></a>使用 Azure 数据工厂从 Sybase 复制数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -38,7 +33,7 @@ ms.locfileid: "84669828"
 具体而言，此 Sybase 连接器支持：
 
 - SAP Sybase SQL Anywhere (ASA) 版本 16 及更高版本。
-- 使用**基本**或 **Windows** 身份验证复制数据。
+- 使用 **基本** 或 **Windows** 身份验证复制数据。
 
 不支持 Sybase IQ 和 ASE。 可以改用带有 Sybase 驱动程序的通用 ODBC 连接器。
 

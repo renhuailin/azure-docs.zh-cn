@@ -1,83 +1,83 @@
 ---
 title: 概念 - Azure Kubernetes 服务 (AKS) 中的访问和标识
-description: 了解 Azure Kubernetes Service (AKS) 中的访问和标识，包括 Azure Active Directory 集成、Kubernetes 基于角色的访问控制 (Kubernetes RBAC) 以及角色和绑定。
+description: 了解 Azure Kubernetes 服务 (AKS) 中的访问和标识，包括 Azure Active Directory 集成、Kubernetes 基于角色的访问控制 (Kubernetes RBAC) 以及角色和绑定。
 services: container-service
 ms.topic: conceptual
 ms.date: 07/07/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: 3c291d9a9d48b6f75148b673848b8451521bab91
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 8d69033dedc3a45263b087c9b9ee5b156af460be
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97615795"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100361054"
 ---
 # <a name="access-and-identity-options-for-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 的访问和标识选项
 
-可通过不同的方式来对 Kubernetes 群集进行身份验证、控制访问权限/授权和实施保护。 使用 Kubernetes 基于角色的访问控制 (Kubernetes RBAC) ，你可以仅向用户、组和服务帐户授予对所需资源的访问权限。 借助 Azure Kubernetes 服务 (AKS)，可以通过使用 Azure Active Directory 和 Azure RBAC 进一步增强安全性和权限结构。 这些方法有助于保护群集访问，并仅向开发者和操作员提供所需的最低权限。
+可通过不同的方式来对 Kubernetes 群集进行身份验证、控制访问权限/授权和实施保护。 使用 Kubernetes 基于角色的访问控制 (Kubernetes RBAC)，可以仅向用户、组和服务帐户授予对所需资源的访问权限。 借助 Azure Kubernetes 服务 (AKS)，可以通过使用 Azure Active Directory 和 Azure RBAC 进一步增强安全性和权限结构。 这些方法有助于保护群集访问，并仅向开发者和操作员提供所需的最低权限。
 
-本文介绍可帮助你在 AKS 中进行身份验证和分配权限的核心概念。
+本文介绍了有助于在 AKS 中进行身份验证和分配权限的核心概念。
 
 ## <a name="aks-service-permissions"></a>AKS 服务权限
 
-创建群集时，AKS 会创建或修改代表用户创建群集所需的资源，例如 Vm 和 Nic。 此标识与群集的标识权限不同，后者是在群集创建过程中创建的。
+创建群集时，AKS 会代表创建群集的用户创建或修改在创建和运行群集时所需的资源，例如 VM 和 NIC。 此标识与群集的标识权限不同，后者是在群集创建过程中创建的。
 
-### <a name="identity-creating-and-operating-the-cluster-permissions"></a>标识创建和操作群集权限
+### <a name="identity-creating-and-operating-the-cluster-permissions"></a>创建和操作群集的标识的权限
 
-创建和操作群集需要以下权限。
-
-| 权限 | 原因 |
-|---|---|
-| Microsoft.Compute/diskEncryptionSets/read | 需要读取磁盘加密集 ID。 |
-| Microsoft.Compute/proximityPlacementGroups/write | 更新邻近位置组所必需的。 |
-| Microsoft.Network/applicationGateways/read <br/> Microsoft.Network/applicationGateways/write <br/> Microsoft.Network/virtualNetworks/subnets/join/action | 需要配置应用程序网关并加入子网。 |
-| Microsoft.Network/virtualNetworks/subnets/join/action | 需要在使用自定义 VNET 时为子网配置网络安全组。|
-| Microsoft.Network/publicIPAddresses/join/action <br/> Microsoft.Network/publicIPPrefixes/join/action | 需要配置标准负载均衡器上的出站公共 Ip。 |
-| Microsoft.operationalinsights/workspace/sharedkeys/read <br/> Microsoft.OperationalInsights/workspaces/read <br/> Microsoft.OperationsManagement/solutions/write <br/> Microsoft.OperationsManagement/solutions/read <br/> Microsoft.ManagedIdentity/userAssignedIdentities/assign/action | 需要为容器创建和更新 Log Analytics 工作区和 Azure 监视。 |
-
-### <a name="aks-cluster-identity-permissions"></a>AKS 群集身份权限
-
-在创建群集时，会创建 AKS 群集标识并将其与 AKS 群集相关联，从而使用以下权限。 出于以下原因，将使用每个权限：
+创建和操作群集的标识需要以下权限。
 
 | 权限 | 原因 |
 |---|---|
-| Microsoft.Network/loadBalancers/delete <br/> Microsoft.Network/loadBalancers/read <br/> Microsoft.Network/loadBalancers/write | 需要为 LoadBalancer 服务配置负载均衡器。 |
-| Microsoft.Network/publicIPAddresses/delete <br/> Microsoft.Network/publicIPAddresses/read <br/> Microsoft.Network/publicIPAddresses/write | 需要为 LoadBalancer 服务查找和配置公共 Ip。 |
-| Microsoft.Network/publicIPAddresses/join/action | 需要用于为 LoadBalancer 服务配置公共 Ip。 |
-| Microsoft.Network/networkSecurityGroups/read <br/> Microsoft.Network/networkSecurityGroups/write | 需要为 LoadBalancer 服务创建或删除安全规则。 |
-| Microsoft.Compute/disks/delete <br/> Microsoft.Compute/disks/read <br/> Microsoft.Compute/disks/write <br/> DiskOperations/位置/读取 | 配置 AzureDisks 时需要。 |
-| Microsoft.Storage/storageAccounts/delete <br/> Microsoft.Storage/storageAccounts/listKeys/action <br/> Microsoft.Storage/storageAccounts/read <br/> Microsoft.Storage/storageAccounts/write <br/> Microsoft.Storage/operations/read | 需要为 AzureFile 或 Add-azuredisk 配置存储帐户。 |
-| Microsoft.Network/routeTables/read <br/> Microsoft.Network/routeTables/routes/delete <br/> Microsoft.Network/routeTables/routes/read <br/> Microsoft.Network/routeTables/routes/write <br/> Microsoft.Network/routeTables/write | 需要配置节点的路由表和路由。 |
-| Microsoft.Compute/virtualMachines/read | 需要在 VMAS 中查找虚拟机的信息，如区域、容错域、大小和数据磁盘。 |
-| Microsoft.Compute/virtualMachines/write | 需要将 AzureDisks 附加到 VMAS 中的虚拟机。 |
-| Microsoft.Compute/virtualMachineScaleSets/read <br/> Microsoft.Compute/virtualMachineScaleSets/virtualMachines/read <br/> VirtualMachineScaleSets/virtualmachines/instanceView/read | 需要在虚拟机规模集中查找虚拟机的信息，如区域、容错域、大小和数据磁盘。 |
-| Microsoft.Network/networkInterfaces/write | 需要将 VMAS 中的虚拟机添加到负载均衡器后端地址池。 |
-| Microsoft.Compute/virtualMachineScaleSets/write | 需要将虚拟机规模集添加到负载均衡器后端地址池，并在虚拟机规模集中横向扩展节点。 |
-| VirtualMachineScaleSets/virtualmachines/write | 需要附加 AzureDisks 并将虚拟机从虚拟机规模集添加到负载均衡器。 |
-| Microsoft.Network/networkInterfaces/read | 需要在 VMAS 中搜索虚拟机的内部 Ip 和负载均衡器后端地址池。 |
-| Microsoft.Compute/virtualMachineScaleSets/virtualMachines/networkInterfaces/read | 需要在虚拟机规模集中搜索虚拟机的内部 Ip 和负载均衡器后端地址池。 |
-| VirtualMachineScaleSets/virtualMachines/networkInterfaces/ipconfiguration/publicipaddresses/read | 需要在虚拟机规模集中查找虚拟机的公共 Ip。 |
-| Microsoft.Network/virtualNetworks/read <br/> Microsoft.Network/virtualNetworks/subnets/read | 需要验证是否存在另一个资源组中的内部负载均衡器的子网。 |
-| Microsoft.Compute/snapshots/delete <br/> Microsoft.Compute/snapshots/read <br/> Microsoft.Compute/snapshots/write | 需要为 Add-azuredisk 配置快照。 |
-| Microsoft.Compute/locations/vmSizes/read <br/> Microsoft.Compute/locations/operations/read | 需要找到虚拟机大小以查找 Add-azuredisk 卷限制。 |
+| Microsoft.Compute/diskEncryptionSets/read | 读取磁盘加密集 ID 时必需。 |
+| Microsoft.Compute/proximityPlacementGroups/write | 更新邻近放置组时必需。 |
+| Microsoft.Network/applicationGateways/read <br/> Microsoft.Network/applicationGateways/write <br/> Microsoft.Network/virtualNetworks/subnets/join/action | 配置应用程序网关和加入子网时必需。 |
+| Microsoft.Network/virtualNetworks/subnets/join/action | 使用自定义 VNET 为子网配置网络安全组时必需。|
+| Microsoft.Network/publicIPAddresses/join/action <br/> Microsoft.Network/publicIPPrefixes/join/action | 在标准负载均衡器上配置出站公共 IP 时必需。 |
+| Microsoft.OperationalInsights/workspaces/sharedkeys/read <br/> Microsoft.OperationalInsights/workspaces/read <br/> Microsoft.OperationsManagement/solutions/write <br/> Microsoft.OperationsManagement/solutions/read <br/> Microsoft.ManagedIdentity/userAssignedIdentities/assign/action | 为容器创建和更新 Log Analytics 工作区和 Azure 监视时必需。 |
 
-### <a name="additional-cluster-identity-permissions"></a>其他群集身份权限
+### <a name="aks-cluster-identity-permissions"></a>AKS 群集标识权限
+
+以下权限由 AKS 群集标识使用，该标识在创建 AKS 群集时随群集创建并与群集相关联。 使用每个权限的原因如下：
+
+| 权限 | 原因 |
+|---|---|
+| Microsoft.Network/loadBalancers/delete <br/> Microsoft.Network/loadBalancers/read <br/> Microsoft.Network/loadBalancers/write | 为 LoadBalancer 服务配置负载均衡器时必需。 |
+| Microsoft.Network/publicIPAddresses/delete <br/> Microsoft.Network/publicIPAddresses/read <br/> Microsoft.Network/publicIPAddresses/write | 为 LoadBalancer 服务查找和配置公共 IP 时必需。 |
+| Microsoft.Network/publicIPAddresses/join/action | 为 LoadBalancer 服务配置公共 IP 时必需。 |
+| Microsoft.Network/networkSecurityGroups/read <br/> Microsoft.Network/networkSecurityGroups/write | 为 LoadBalancer 服务创建或删除安全规则时必需。 |
+| Microsoft.Compute/disks/delete <br/> Microsoft.Compute/disks/read <br/> Microsoft.Compute/disks/write <br/> Microsoft.Compute/locations/DiskOperations/read | 配置 AzureDisk 时必需。 |
+| Microsoft.Storage/storageAccounts/delete <br/> Microsoft.Storage/storageAccounts/listKeys/action <br/> Microsoft.Storage/storageAccounts/read <br/> Microsoft.Storage/storageAccounts/write <br/> Microsoft.Storage/operations/read | 为 AzureFile 或 AzureDisk 配置存储帐户时必需。 |
+| Microsoft.Network/routeTables/read <br/> Microsoft.Network/routeTables/routes/delete <br/> Microsoft.Network/routeTables/routes/read <br/> Microsoft.Network/routeTables/routes/write <br/> Microsoft.Network/routeTables/write | 为节点配置路由表和路由时必需。 |
+| Microsoft.Compute/virtualMachines/read | 查找 VMAS 中的虚拟机的信息（例如区域、容错域、大小和数据磁盘）时必需。 |
+| Microsoft.Compute/virtualMachines/write | 将 AzureDisk 附加到 VMAS 中的虚拟机时必需。 |
+| Microsoft.Compute/virtualMachineScaleSets/read <br/> Microsoft.Compute/virtualMachineScaleSets/virtualMachines/read <br/> Microsoft.Compute/virtualMachineScaleSets/virtualmachines/instanceView/read | 查找虚拟机规模集中的虚拟机的信息（例如区域、容错域、大小和数据磁盘）时必需。 |
+| Microsoft.Network/networkInterfaces/write | 将 VMAS 中的虚拟机添加到负载均衡器后端地址池时必需。 |
+| Microsoft.Compute/virtualMachineScaleSets/write | 将虚拟机规模集添加到负载均衡器后端地址池以及在虚拟机规模集中横向扩展节点时必需。 |
+| Microsoft.Compute/virtualMachineScaleSets/virtualmachines/write | 附加 AzureDisk 以及将虚拟机规模集中的虚拟机添加到负载均衡器时必需。 |
+| Microsoft.Network/networkInterfaces/read | 搜索 VMAS 中的虚拟机的内部 IP 和负载均衡器后端地址池时必需。 |
+| Microsoft.Compute/virtualMachineScaleSets/virtualMachines/networkInterfaces/read | 搜索虚拟机规模集中的虚拟机的内部 IP 和负载均衡器后端地址池时必需。 |
+| Microsoft.Compute/virtualMachineScaleSets/virtualMachines/networkInterfaces/ ipconfigurations/publicipaddresses/read | 查找虚拟机规模集中的虚拟机的公共 IP 时必需。 |
+| Microsoft.Network/virtualNetworks/read <br/> Microsoft.Network/virtualNetworks/subnets/read | 验证另一个资源组中是否存在内部负载均衡器的子网时必需。 |
+| Microsoft.Compute/snapshots/delete <br/> Microsoft.Compute/snapshots/read <br/> Microsoft.Compute/snapshots/write | 配置 AzureDisk 的快照时必需。 |
+| Microsoft.Compute/locations/vmSizes/read <br/> Microsoft.Compute/locations/operations/read | 查找虚拟机大小以查找 AzureDisk 卷限制时必需。 |
+
+### <a name="additional-cluster-identity-permissions"></a>其他群集标识权限
 
 创建具有特定属性的群集时，群集标识需要以下其他权限。 不会自动分配这些权限，因此，在创建群集标识之后，必须将这些权限添加到群集标识。
 
 | 权限 | 原因 |
 |---|---|
-| Microsoft.Network/networkSecurityGroups/write <br/> Microsoft.Network/networkSecurityGroups/read | 如果在另一个资源组中使用网络安全组，则是必需的。 需要为 LoadBalancer 服务配置安全规则。 |
-| Microsoft.Network/virtualNetworks/subnets/read <br/> Microsoft.Network/virtualNetworks/subnets/join/action | 如果使用其他资源组（如自定义 VNET）中的子网，则是必需的。 |
-| Microsoft.Network/routeTables/routes/read <br/> Microsoft.Network/routeTables/routes/write | 如果使用的子网与另一个资源组中的路由表相关联，如使用自定义路由表的自定义 VNET，则需要此项。 需要验证其他资源组中的子网是否已存在子网。 |
-| Microsoft.Network/virtualNetworks/subnets/read | 如果使用另一资源组中的内部负载均衡器，则是必需的。 需要验证资源组中的内部负载均衡器是否已存在子网。 |
+| Microsoft.Network/networkSecurityGroups/write <br/> Microsoft.Network/networkSecurityGroups/read | 使用另一资源组中的网络安全组时必需。 为 LoadBalancer 服务配置安全规则时必需。 |
+| Microsoft.Network/virtualNetworks/subnets/read <br/> Microsoft.Network/virtualNetworks/subnets/join/action | 使用另一资源组（例如自定义 VNET）中的子网时必需。 |
+| Microsoft.Network/routeTables/routes/read <br/> Microsoft.Network/routeTables/routes/write | 如果使用的子网与另一资源组（例如采用自定义路由表的自定义 VNET）中的路由表相关联，则需要此权限。 若要验证是否已存在一个对应于另一资源组中的子网的子网，则需要此权限。 |
+| Microsoft.Network/virtualNetworks/subnets/read | 如果使用另一资源组中的内部负载均衡器，则需要此权限。 验证资源组中是否已存在内部负载均衡器的子网时必需。 |
 
-## <a name="kubernetes-role-based-access-control-kubernetes-rbac"></a>Kubernetes 基于角色的访问控制 (Kubernetes RBAC) 
+## <a name="kubernetes-role-based-access-control-kubernetes-rbac"></a>Kubernetes 基于角色的访问控制 (Kubernetes RBAC)
 
-为了提供用户可以执行的操作的具体筛选，Kubernetes 使用 Kubernetes 基于角色的访问控制 (Kubernetes RBAC) 。 使用此控制机制，可以向用户或用户组分配执行各种操作的权限，例如创建或修改资源，或者查看正在运行的应用程序工作负载的日志。 可将这些权限的范围限制为单个命名空间，也可以授予面向整个 AKS 群集的权限。 使用 Kubernetes RBAC，可通过创建“角色”来定义权限，然后通过“角色绑定”将这些角色分配给用户 。
+为了精确地筛选用户可执行的操作，Kubernetes 采用 Kubernetes 基于角色的访问控制 (Kubernetes RBAC)。 使用此控制机制，可以向用户或用户组分配执行各种操作的权限，例如创建或修改资源，或者查看正在运行的应用程序工作负载的日志。 可将这些权限的范围限制为单个命名空间，也可以授予面向整个 AKS 群集的权限。 使用 Kubernetes RBAC，可通过创建“角色”来定义权限，然后通过“角色绑定”将这些角色分配给用户 。
 
-有关详细信息，请参阅 [Using KUBERNETES RBAC authorization][kubernetes-rbac]。
+有关详细信息，请参阅[使用 Kubernetes RBAC 授权][kubernetes-rbac]。
 
 ### <a name="roles-and-clusterroles"></a>角色和 ClusterRole
 
@@ -89,7 +89,7 @@ ClusterRole 的工作原理与授予对资源的权限相同，但前者可应�
 
 ### <a name="rolebindings-and-clusterrolebindings"></a>RoleBinding 和 ClusterRoleBinding
 
-定义了角色来授予针对资源的权限后，可通过 RoleBinding 来分配这些 Kubernetes RBAC 权限。 如果你的 AKS 群集 [与 Azure Active Directory (Azure AD) 相集成 ](#azure-active-directory-integration)，则绑定是向这些用户授予在群集内执行操作的权限的方式，请参阅如何 [使用 Kubernetes 基于角色的访问控制和 Azure AD 标识来控制对群集资源的访问](azure-ad-rbac.md)权限。
+定义了角色来授予针对资源的权限后，可通过 RoleBinding 来分配这些 Kubernetes RBAC 权限。 若 AKS 群集[与 Azure Active Directory (Azure AD) 集成](#azure-active-directory-integration)，则向 Azure AD 用户授予在群集中执行操作的权限的过程就称为“绑定”。有关具体操作，请参阅[使用 Kubernetes 基于角色的访问控制和 Azure Active Directory 标识来控制对群集资源的访问](azure-ad-rbac.md)。
 
 角色绑定用于针对给定命名空间分配角色。 此方法可以从逻辑上分离各 AKS 群集，使用户只能访问向其分配的命名空间中的应用程序资源。 若需要针对整个群集或给定命名空间外的群集资源来绑定角色，可以改用“ClusterRoleBinding”。
 
@@ -131,12 +131,12 @@ Kubernetes 中的一个主要用户类型是“服务帐户”。 服务帐户�
 5. API 服务器配置身份验证 WebHook 服务器来执行验证。
 6. 身份验证 Webhook 服务器将检查 Azure AD 公共签名密钥，以确认 JSON Web 令牌签名有效。
 7. 服务器应用程序使用用户提供的凭据从 MS Graph API 查询已登录用户的组成员身份。
-8. 将使用用户信息（如用户主体名称 (UPN) 的访问令牌声明）和用户的组成员身份（基于对象 ID）将响应发送到 API 服务器。
+8. 将向 API 服务器发送一个响应，其中包含用户信息，例如访问令牌的用户主体名称 (UPN) 声明，以及基于对象 ID 的用户的组成员身份。
 9. API 基于 Kubernetes Role/RoleBinding 执行授权决策。
 10. 授权后，API 服务器会将响应返回到 kubectl。
 11. Kubectl 向用户提供反馈。
  
-**[在此处](managed-aad.md)了解如何将 AKS 与 AAD 集成。**
+[在此处](managed-aad.md)了解如何将 AKS 与 AAD 集成。
 
 ## <a name="azure-role-based-access-control-azure-rbac"></a>Azure 基于角色的访问控制 (Azure RBAC)
 
@@ -150,7 +150,7 @@ Azure RBAC 是在 [Azure 资源管理器](../azure-resource-manager/management/o
 
 完全操作 AKS 群集需要两个级别的访问权限： 
 1. [访问 Azure 订阅中的 AKS 资源](#azure-rbac-to-authorize-access-to-the-aks-resource)。 借助此过程，可以使用 AKS API 来控制群集缩放或升级，还可以拉取 kubeconfig。
-2. 访问 Kubernetes API。 此访问权限可通过[KUBERNETES RBAC](#kubernetes-role-based-access-control-kubernetes-rbac) (传统) 或通过将[AZURE RBAC 与 AKS 集成以进行 Kubernetes 授权](#azure-rbac-for-kubernetes-authorization-preview)控制
+2. 访问 Kubernetes API。 此访问通过 [Kubernetes RBAC](#kubernetes-role-based-access-control-kubernetes-rbac) 进行控制（传统方式），或通过[将 Azure RBAC 与 AKS 集成以实现 Kubernetes 授权](#azure-rbac-for-kubernetes-authorization-preview)来进行控制。
 
 ### <a name="azure-rbac-to-authorize-access-to-the-aks-resource"></a>使用 Azure RBAC 授予对 AKS 资源的访问权限
 
@@ -160,24 +160,26 @@ Azure RBAC 是在 [Azure 资源管理器](../azure-resource-manager/management/o
 
 在[此处](control-kubeconfig-access.md)详细了解如何使用 Azure RBAC 来保护对 kubeconfig 文件的访问，该文件可提供对 Kubernetes API 的访问权限。
 
-### <a name="azure-rbac-for-kubernetes-authorization-preview"></a>用于 Kubernetes 授权的 Azure RBAC (预览版) 
+### <a name="azure-rbac-for-kubernetes-authorization-preview"></a>使用 Azure RBAC 进行 Kubernetes 授权（预览）
 
-使用 Azure RBAC 集成，AKS 将使用 Kubernetes Authorization webhook 服务器来使用 Azure 角色定义和角色分配来管理 Azure AD 集成的 K8s 群集资源的权限和分配。
+使用 Azure RBAC 集成，AKS 将使用 Kubernetes 授权 Webhook 服务器来允许你使用 Azure 角色定义和角色分配管理 Azure AD 集成 K8s 群集资源的权限和分配。
 
-![适用于 Kubernetes 授权流的 Azure RBAC](media/concepts-identity/azure-rbac-k8s-authz-flow.png)
+![使用 Azure RBAC 执行 Kubernetes 授权流](media/concepts-identity/azure-rbac-k8s-authz-flow.png)
 
-如上图所示，使用 Azure RBAC 集成时，对 Kubernetes API 的所有请求将遵循 [Azure Active integration 部分](#azure-active-directory-integration)所述的相同身份验证流。 
+如上图所示，使用 Azure RBAC 集成时，对 Kubernetes API 的所有请求都将遵循 [Azure Active Directory 集成 "部分](#azure-active-directory-integration)所述的相同身份验证流。 
 
-但在此之后，只要在 AAD 中存在发出请求的标识，请求就会被 Azure 授权，而不是仅依赖于 Kubernetes RBAC 进行授权。 如果 AAD 中不存在该标识（例如，Kubernetes 服务帐户），则 Azure RBAC 将不会启动，并且它将是普通的 Kubernetes RBAC。
+但在此之后，只要 AAD 中存在发出请求的标识，请求实际上就由 Azure 进行授权，而不是仅依赖于 Kubernetes RBAC 进行授权。 如果 AAD 中不存在该标识（例如，Kubernetes 服务帐户），则 Azure RBAC 不会启动，它将是普通的 Kubernetes RBAC。
 
-在这种情况下，你可以为用户提供四个内置角色之一，或创建自定义角色，就像使用 Kubernetes 角色时一样，但在此情况下，使用 Azure RBAC 机制和 Api。 
+在这种情况下，你可以向用户授予四个内置角色之一，或者创建自定义角色，就像使用 Kubernetes 角色时一样，但在此情况下，你将使用 Azure RBAC 机制和 API。 
 
-例如，使用此功能，你不仅可以在多个订阅之间提供对 AKS 资源的权限，还可以设置并为他们提供这些群集内的角色和权限，它们控制对 Kubernetes API 的访问。 例如，你可以 `Azure Kubernetes Service RBAC Viewer` 在订阅作用域上授予角色，其接收方将能够列出和获取所有群集中的所有 Kubernetes 对象，但不能进行修改。
+例如，使用此功能，你不仅可以向用户授予对订阅中的 AKS 资源的权限，而且还可以设置并授予用户在每个群集中将拥有的对 Kubernetes API 的访问进行控制的角色和权限。 例如，你可以在订阅范围内授予 `Azure Kubernetes Service RBAC Viewer` 角色，其接收人将能够列出和获取所有群集中的所有 Kubernetes 对象，但不能修改它们。
 
+> [!IMPORTANT]
+> 请注意，在使用此功能之前，你需要启用 Azure RBAC Kubernetes 授权。 有关详细信息和分步指南， [请参阅此处](manage-azure-rbac.md)。
 
 #### <a name="built-in-roles"></a>内置角色
 
-AKS 提供以下四个内置角色。 它们类似于 [Kubernetes 内置角色](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles)，但有一些不同之处，例如支持 CRD。 有关每个内置角色允许操作的完整列表，请参阅 [此处](../role-based-access-control/built-in-roles.md)。
+AKS 提供以下四个内置角色。 它们类似于 [Kubernetes 内置角色](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles)，但有一些不同之处，例如支持 CRD。 有关每个内置角色允许的操作的完整列表，请参阅[此文](../role-based-access-control/built-in-roles.md)。
 
 | 角色                                | 描述  |
 |-------------------------------------|--------------|
@@ -186,23 +188,22 @@ AKS 提供以下四个内置角色。 它们类似于 [Kubernetes 内置角色](
 | Azure Kubernetes 服务 RBAC 管理员  | 允许要在命名空间内授予的管理员访问权限。 允许对命名空间（或群集范围）中的大多数资源进行读/写访问，包括在命名空间内创建角色和角色绑定。 此角色不允许对资源配额或命名空间本身进行写入访问。 |
 | Azure Kubernetes 服务 RBAC 群集管理员  | 允许超级用户访问权限（对任何资源执行任何操作）。 它提供对群集中每个资源和所有命名空间的完全控制。 |
 
-**若要了解如何启用适用于 Kubernetes 授权的 Azure RBAC，请 [阅读此处](manage-azure-rbac.md)。**
 
-## <a name="summary"></a>总结
+## <a name="summary"></a>摘要
 
-此表总结了启用 Azure AD 集成时用户可以向 Kubernetes 进行身份验证的方式。  在所有情况下，用户的命令序列都是：
+此表总结了当启用 Azure AD 集成时用户可以向 Kubernetes 进行身份验证的方式。  在所有情况下，用户的命令序列都是：
 1. 运行 `az login` 对 Azure 进行身份验证。
-1. 运行 `az aks get-credentials` 将群集的凭据下载到 `.kube/config` 。
-1. 运行 `kubectl` 命令 (第一个命令可能会触发基于浏览器的身份验证，以便对群集进行身份验证，如下表) 所述。
+1. 运行 `az aks get-credentials` 将群集的凭据下载到 `.kube/config` 中。
+1. 运行 `kubectl` 命令（第一个命令可能会触发基于浏览器的身份验证以向群集进行身份验证，如下表所述）。
 
-第二列中提到的角色授予是 "Azure RBAC 角色授予"，它显示在 "Azure 门户中的" **访问控制** "选项卡上。 "群集管理员 Azure AD" 组显示在门户的 " **配置** " 选项卡上 (或 `--aad-admin-group-object-ids` Azure CLI) 中的参数名称。
+第二列中提到的“角色授予”是 Azure 门户中的“访问控制”选项卡上显示的 Azure RBAC 角色授予。 “群集管理员 Azure AD 组”显示在门户中的“配置”选项卡上（或在 Azure CLI 中通过参数名称 `--aad-admin-group-object-ids` 指定）。
 
-| 说明        | 需要角色授予| 群集管理 Azure AD 组 (s)  | 何时使用 |
+| 说明        | 需要的角色授予| 群集管理员 Azure AD 组 | 何时使用 |
 | -------------------|------------|----------------------------|-------------|
-| 使用客户端证书的旧管理员登录名| **Azure Kubernetes 管理员角色**。 此角色允许 `az aks get-credentials` 与标志一起使用 `--admin` ，该标志将旧的 [ (非 Azure AD) 群集管理证书](control-kubeconfig-access.md) 下载到用户的中 `.kube/config` 。 这是 "Azure Kubernetes 管理员角色" 的唯一目的。|不适用|如果你被永久阻止，不能访问具有群集访问权限的有效 Azure AD 组。| 
-| 与手动 (群集 Azure AD) RoleBindings| **Azure Kubernetes 用户角色**。 "User" 角色允许在 `az aks get-credentials` 没有标志的情况下使用 `--admin` 。  (这是 "Azure Kubernetes 用户角色" 的唯一用途。 ) 结果，在启用了 Azure AD 的群集上，是将 [空项](control-kubeconfig-access.md) 下载到 `.kube/config` 中，这会在首次使用时触发基于浏览器的身份验证 `kubectl` 。| 用户不在任何这些组中。 由于用户不在任何群集管理组中，因此，由群集管理员设置的任何 RoleBindings 或 ClusterRoleBindings 将完全控制其权限。  (群集) RoleBindings [提名 Azure AD 用户或 Azure AD 组](azure-ad-rbac.md) 作为其 `subjects` 。 如果未设置此类绑定，则用户将无法 excute 任何 `kubectl` 命令。|如果你想要进行精细的访问控制，并且没有使用 Azure RBAC 进行 Kubernetes 授权。 请注意，设置绑定的用户必须通过此表中列出的其他方法之一进行登录。|
-| 由管理组的成员 Azure AD| 同上|用户是此处列出的其中一个组的成员。 AKS 自动生成将所有列出的组绑定到 Kubernetes 角色的 ClusterRoleBinding `cluster-admin` 。 因此这些组中的用户可以将所有 `kubectl` 命令作为运行 `cluster-admin` 。|如果你希望方便地向用户授予完全管理员权限，并且 _不_ 使用 Azure RBAC 进行 Kubernetes 授权。|
-| Azure AD Azure RBAC 进行 Kubernetes 授权|以下两个角色： First、 **Azure Kubernetes 用户角色** (如上所述) 。 其次，"Azure Kubernetes 服务 **RBAC**..." 中的一个以上列出的角色或你自己的自定义替代项。|启用 Kubernetes 授权的 Azure RBAC 时，"配置" 选项卡上的 "管理角色" 字段是不相关的。|使用 Azure RBAC 进行 Kubernetes 授权。 此方法提供了精细的控制，无需设置 RoleBindings 或 ClusterRoleBindings。|
+| 使用客户端证书的旧管理员登录名| Azure Kubernetes 管理员角色。 此角色允许在使用 `--admin` 标志的情况下使用 `az aks get-credentials`，以便将[旧的（非 Azure AD）群集管理证书](control-kubeconfig-access.md)下载到用户的 `.kube/config` 中。 这是“Azure Kubernetes 管理员角色”的唯一用途。|不适用|如果你被永久阻止，不能访问对你的群集具有访问权限的有效 Azure AD 组。| 
+| 具有手动 (Cluster)RoleBinding 的 Azure AD| Azure Kubernetes 用户角色。 “用户”角色允许在不使用 `--admin` 标志的情况下使用 `az aks get-credentials`。 （这是“Azure Kubernetes 用户角色”的唯一用途。）因此，在启用了 Azure AD 的群集上，[一个空条目](control-kubeconfig-access.md)会下载到 `.kube/config` 中，在首次被 `kubectl` 使用时会触发基于浏览器的身份验证。| 用户不在这些组的任何一个中。 因为用户不在任何群集管理员组中，所以其权限将完全由群集管理员已设置的任何 RoleBinding 或 ClusterRoleBinding 控制。 (Cluster)RoleBinding [指定 Azure AD 用户或 Azure AD 组](azure-ad-rbac.md)作为其 `subjects`。 如果未设置此类绑定，则用户将无法执行任何 `kubectl` 命令。|如果你想要进行精细的访问控制，并且不使用 Azure RBAC 进行 Kubernetes 授权。 请注意，设置绑定的用户必须通过此表中列出的其他方法之一进行登录。|
+| 由管理员组成员使用的 Azure AD| 同上|用户是此处列出的其中一个组的成员。 AKS 会自动生成一个 ClusterRoleBinding，后者将所有列出的组绑定到 `cluster-admin` Kubernetes 角色。 因此，这些组中的用户可以作为 `cluster-admin` 运行所有 `kubectl` 命令。|如果你希望方便地向用户授予完全的管理员权限，并且不使用 Azure RBAC 进行 Kubernetes 授权。|
+| 将 Azure AD 与 Azure RBAC 配合使用进行 Kubernetes 授权|两个角色：第一个为 Azure Kubernetes 用户角色（如上所述）。 第二个为上面列出的“Azure Kubernetes 服务 RBAC...”角色之一，或你自己的自定义替代项。|启用了“使用 Azure RBAC 进行 Kubernetes 授权”时，“配置”选项卡上的管理员角色字段不相关。|你使用 Azure RBAC 进行 Kubernetes 授权。 此方法提供了精细的控制，无需设置 RoleBinding 或 ClusterRoleBinding。|
 
 ## <a name="next-steps"></a>后续步骤
 

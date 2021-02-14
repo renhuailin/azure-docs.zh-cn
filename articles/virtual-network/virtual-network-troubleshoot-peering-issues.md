@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2019
 ms.author: kaushika
-ms.openlocfilehash: cb5ce421b6a38edcb8d92866f749a544eff927d6
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: f3e1ea8861646490875667f6238b3f8813bd6c4b
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99096383"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100518158"
 ---
 # <a name="troubleshoot-virtual-network-peering-issues"></a>排查虚拟网络对等互连问题
 
@@ -233,7 +233,7 @@ ms.locfileid: "99096383"
 
 ### <a name="failed-to-peer-a-databricks-virtual-network"></a>无法对等互连 Databricks 虚拟网络
 
-若要解决此问题，请在“Azure Databricks”下配置虚拟网络对等互连，然后使用“资源 ID”指定目标虚拟网络。  有关详细信息，请参阅[将 Databricks 虚拟网络对等互连到远程虚拟网络](https://docs.azuredatabricks.net/administration-guide/cloud-configurations/azure/vnet-peering.html#id2)。
+若要解决此问题，请在“Azure Databricks”下配置虚拟网络对等互连，然后使用“资源 ID”指定目标虚拟网络。  有关详细信息，请参阅[将 Databricks 虚拟网络对等互连到远程虚拟网络](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-peering#id2)。
 
 ### <a name="the-remote-virtual-network-lacks-a-gateway"></a>远程虚拟网络缺少网关
 

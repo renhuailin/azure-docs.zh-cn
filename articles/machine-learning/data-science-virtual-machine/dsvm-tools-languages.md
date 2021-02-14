@@ -4,19 +4,18 @@ titleSuffix: Azure Data Science Virtual Machine
 description: Data Science Virtual Machine 上预安装的支持的程序语言和相关工具。
 keywords: 数据科学工具, 数据科学虚拟机, 数据科学工具, Linux 数据科学
 services: machine-learning
-ms.service: machine-learning
-ms.subservice: data-science-vm
+ms.service: data-science-vm
 ms.custom: devx-track-python
 author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: 8a73336ba0a324c65ee0de764d81a8e69ab6079c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 42110eb896a751080044247932770f37617174c9
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87843260"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100516424"
 ---
 # <a name="languages-supported-on-the-data-science-virtual-machine"></a>数据科学虚拟机支持的语言 
 
@@ -56,11 +55,11 @@ Data Science Virtual Machine (DSVM) 附带了几种预构建的语言和开发�
   使用安装在 Visual Studio Community Edition 中的针对 Visual Studio 的 Python 工具 (PTVS)。 默认情况下，在 PTVS 中自动设置的唯一环境是 Python 3.6。 
 
     > [!NOTE]
-    > 要将 PTVS 指向 Python 2.7，必须在 PTVS 中创建自定义环境。 要在 Visual Studio Community Edition 中设置此环境路径，请转到“工具” -> “Python 工具” -> “Python 环境”，然后选择“自定义”   。 然后，将位置设置为“c:\anaconda\envs\python2”并选择“自动检测”********。
+    > 要将 PTVS 指向 Python 2.7，必须在 PTVS 中创建自定义环境。 要在 Visual Studio Community Edition 中设置此环境路径，请转到“工具” -> “Python 工具” -> “Python 环境”，然后选择“自定义”   。 然后，将位置设置为“c:\anaconda\envs\python2”并选择“自动检测”。
 
 * 在 Jupyter 中使用：
 
-  打开 Jupyter，然后选择“新建”以创建新的笔记本****。 可以将 Python 3.7 的内核类型设置为“Python [Conda Root]”，而将 Python 2.7 的内核类型设置为“Python [Conda env:python2]” 。
+  打开 Jupyter，然后选择“新建”以创建新的笔记本。 可以将 Python 3.7 的内核类型设置为“Python [Conda Root]”，而将 Python 2.7 的内核类型设置为“Python [Conda env:python2]” 。
 
 * 安装 Python 包：
 
@@ -98,7 +97,7 @@ Data Science Virtual Machine (DSVM) 附带了几种预构建的语言和开发�
 
 * 在 Jupyter 中使用：
 
-  打开 Jupyter，然后选择“新建”以创建新的笔记本****。 可以将 Python 2.7 的内核类型设置为“Python [Conda Root]”，而将 Python 3.5 环境的内核类型设置为“Python [Conda env:py35]”********。 
+  打开 Jupyter，然后选择“新建”以创建新的笔记本。 可以将 Python 2.7 的内核类型设置为“Python [Conda Root]”，而将 Python 3.5 环境的内核类型设置为“Python [Conda env:py35]”。 
 
 * 安装 Python 包：
 
@@ -129,7 +128,7 @@ Data Science Virtual Machine (DSVM) 附带了几种预构建的语言和开发�
 
 * 在 Jupyter 中使用
 
-  打开 Jupyter，然后选择“新建”以创建新的笔记本****。 你可以将内核类型设置为 R，以使用 Jupyter R 内核 (IRKernel)****。
+  打开 Jupyter，然后选择“新建”以创建新的笔记本。 你可以将内核类型设置为 R，以使用 Jupyter R 内核 (IRKernel)。
 
 * 安装 R 包：
 
@@ -147,7 +146,7 @@ Linux：
 
 * 在 Jupyter 中使用：
 
-  打开 Jupyter，然后选择“新建”以创建新的笔记本****。 你可以将内核类型设置为 R，以使用 Jupyter R 内核 (IRKernel)****。 
+  打开 Jupyter，然后选择“新建”以创建新的笔记本。 你可以将内核类型设置为 R，以使用 Jupyter R 内核 (IRKernel)。 
 
 * 安装 R 包：
 
@@ -177,7 +176,7 @@ Linux：
 
 * 在 Jupyter 中使用：
 
-  打开 Jupyter，然后选择“新建”以创建新的笔记本****。 可以将内核类型设置为 Julia VERSION****。
+  打开 Jupyter，然后选择“新建”以创建新的笔记本。 可以将内核类型设置为 Julia VERSION。
 
 * 安装 Julia 包：
 
@@ -190,11 +189,11 @@ Linux：
   打开终端窗口并运行 `julia`。
 * 在 IDE 中使用：
 
-  使用 `Juno`，并在 DSVM 上安装 Julia IDE 并将其用作应用程序菜单快捷方式****。
+  使用 `Juno`，并在 DSVM 上安装 Julia IDE 并将其用作应用程序菜单快捷方式。
 
 * 在 Jupyter 中使用：
 
-  打开 Jupyter，然后选择“新建”以创建新的笔记本****。 可以将内核类型设置为 Julia VERSION****。
+  打开 Jupyter，然后选择“新建”以创建新的笔记本。 可以将内核类型设置为 Julia VERSION。
 
 * 安装 Julia 包：
 

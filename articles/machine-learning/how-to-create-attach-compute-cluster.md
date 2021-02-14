@@ -11,12 +11,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: 0d1cbb8efe0882f48a345d44a650eb711a44d570
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: f9b970f498db7530b35c57a75edeae55dec3f22d
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97739179"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100098837"
 ---
 # <a name="create-an-azure-machine-learning-compute-cluster"></a>创建 Azure 机器学习计算群集
 
@@ -100,7 +100,7 @@ az ml computetarget create amlcompute -n cpu --min-nodes 1 --max-nodes 1 -s STAN
 
  ## <a name="lower-your-compute-cluster-cost"></a><a id="low-pri-vm"></a> 降低计算群集成本
 
-也可以选择使用[低优先级 VM](concept-plan-manage-cost.md#low-pri-vm) 来运行部分或全部工作负载。 这些 VM 的可用性未得到保证，在使用时可能会被占用。 对于被占用的作业，在重新可用时将重新启动，而不是直接续用。 
+也可以选择使用[低优先级 VM](concept-plan-manage-cost.md#low-pri-vm) 来运行部分或全部工作负载。 这些 VM 的可用性未得到保证，在使用时可能会被占用。 你将必须重新启动已抢占的作业。 
 
 请使用以下任一方法指定低优先级 VM：
     
@@ -214,7 +214,7 @@ az ml computetarget create amlcompute --name lowpriocluster --vm-size Standard_N
 
 ## <a name="troubleshooting"></a>疑难解答
 
-在 GA 版本之前，从 Azure 门户创建其 Azure 机器学习工作区的某些用户可能无法在该工作区中创建 AmlCompute。 可对服务提出支持请求，也可通过门户或 SDK 创建新的工作区以立即解除锁定。
+如果用户在 GA 发布之前已通过 Azure 门户创建了自己的 Azure 机器学习工作区，则他们可能无法在该工作区中创建 AmlCompute。 可对服务提出支持请求，也可通过门户或 SDK 创建新的工作区以立即解除锁定。
 
 如果 Azure 机器学习计算群集在根据节点状态重设大小时卡住 (0 -> 0)，可能是由于 Azure 资源锁定而导致的。
 

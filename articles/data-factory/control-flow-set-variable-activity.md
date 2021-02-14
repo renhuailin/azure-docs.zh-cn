@@ -1,22 +1,18 @@
 ---
 title: Azure 数据工厂中的设置变量活动
 description: 了解如何使用“设置变量”活动来设置数据工厂管道中定义的现有变量的值
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/07/2020
 author: dcstwh
 ms.author: weetok
-manager: jroth
 ms.reviewer: maghan
-ms.openlocfilehash: f3c1fae2cbf2a1ba8b71dcbc8f6639bda4765f5c
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 122a0a01c420d5efa12fa267a0d3605fc7a25960
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498381"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100385330"
 ---
 # <a name="set-variable-activity-in-azure-data-factory"></a>Azure 数据工厂中的设置变量活动
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]

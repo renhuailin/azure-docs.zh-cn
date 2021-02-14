@@ -1,22 +1,18 @@
 ---
 title: Azure 数据工厂中的 Validation 活动
 description: Validation 活动在使用用户指定的某些条件验证附加的数据集之前，不会继续执行管道。
-services: data-factory
-documentationcenter: ''
 author: dcstwh
 ms.author: weetok
-manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.openlocfilehash: 63f4a7df76fc0480a2b0cdf2de13ff5e85aa93ef
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: e00090fc31c129f35632d30b9a5ed6c39c13a414
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96485818"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100385245"
 ---
 # <a name="validation-activity-in-azure-data-factory"></a>Azure 数据工厂中的 Validation 活动
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]

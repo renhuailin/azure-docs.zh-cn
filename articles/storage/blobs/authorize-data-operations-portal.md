@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/08/2020
+ms.date: 02/10/2021
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: blobs
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 8c963f11a34217253f02cb5d116d66cdbf8bcc19
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 319bbdd7809e224ca608fdac06d4b304c2052e86
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033951"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100391535"
 ---
 # <a name="choose-how-to-authorize-access-to-blob-data-in-the-azure-portal"></a>选择如何在 Azure 门户中授予对 blob 数据的访问权限
 
@@ -37,6 +37,9 @@ ms.locfileid: "97033951"
 - [存储帐户参与者](../../role-based-access-control/built-in-roles.md#storage-account-contributor)角色
 
 尝试在 Azure 门户中访问 Blob 数据时，门户首先会检查你是否拥有一个包含 **Microsoft.Storage/storageAccounts/listkeys/action** 的角色。 如果你被分配了包含此操作的角色，则门户将使用帐户密钥来访问 blob 数据。 如果你不拥有包含此操作的角色，则门户会尝试使用你的 Azure AD 帐户访问数据。
+
+> [!IMPORTANT]
+> 当使用 Azure 资源管理器 **ReadOnly** 锁锁定存储帐户时，不允许该存储帐户执行 [列表键](/rest/api/storagerp/storageaccounts/listkeys) 操作。 **列出密钥** 是一项 POST 操作，并且为该帐户配置了 **ReadOnly** 锁后，将阻止所有 POST 操作。 出于此原因，当使用 **ReadOnly** 锁锁定帐户时，用户必须使用 Azure AD 凭据来访问门户中的 blob 数据。 有关使用 Azure AD 访问门户中的 blob 数据的信息，请参阅 [使用您的 Azure AD 帐户](#use-your-azure-ad-account)。
 
 > [!NOTE]
 > 经典订阅管理员角色“服务管理员”和“共同管理员”具有 Azure 资源管理器[所有者](../../role-based-access-control/built-in-roles.md#owner)角色的等效权限。 “所有者”角色包含所有操作，其中包括 **Microsoft.Storage/storageAccounts/listkeys/action**，因此，拥有其中一种管理角色的用户也可以使用帐户密钥访问 Blob 数据。 有关详细信息，请参阅[经典订阅管理员角色、Azure 角色和 Azure AD 管理员角色](../../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles)。

@@ -9,16 +9,46 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 09/10/2020
-ms.openlocfilehash: b814c12a0d57230a81a68f6030a26ded93bd0399
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: c54034ef927bb49a955ef6121f5a8d56b57f0bd3
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100097069"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100375555"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure 机器学习发行说明
 
 本文介绍 Azure 机器学习的版本。  有关完整的 SDK 参考内容，请访问 Azure 机器学习的[适用于 Python 的主要 SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) 参考页。
+
+
+## <a name="2021-02-09"></a>2021-02-09
+
+### <a name="azure-machine-learning-sdk-for-python-v1220"></a>用于 Python 的 Azure 机器学习 SDK 1.22。0
++ **Bug 修复与改进**
+  + **azureml-automl-core**
+    + 修复了一个 bug，其中向视觉对象模型的 conda docker-compose.override.yml 文件添加了额外的 pip 依赖项。
+  + **azureml-automl-runtime**
+    + 修复了传统预测模型 (例如，AutoArima) 可能接收其中不存在具有数据估算目标值的行的定型数据的 bug。 这违反了这些模型的数据约定。 * 修复了时序滞后运算符中具有滞后时间行为的各种 bug。 之前，延迟操作不会正确标记所有数据估算行，因此不会始终生成正确的出现滞后值。 还修复了 lag 运算符与滚动窗口运算符之间的一些兼容性问题以及出现延迟的行为。 这种情况以前会导致滚动窗口运算符从其他应使用的定型数据中删除一些行。
+  + **azureml-core**
+    + 添加访问群体对令牌身份验证的支持。
+    + 添加 `process_count` 到 [PyTorchConfiguration](/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration?preserve-view=true&view=azure-ml-py) ，以支持多进程多节点 PyTorch 作业。
+  + **azureml-pipeline-steps**
+    + [CommandStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.commandstep?preserve-view=true&view=azure-ml-py) 现已正式发布，不再进行实验。
+    + [ParallelRunConfig](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallelrunconfig?preserve-view=true&view=azure-ml-py)：将参数 allowed_failed_count 和 allowed_failed_percent 添加到最小批处理级别上检查错误阈值。 错误阈值现在有3种风格：
+       + error_threshold-允许的失败小型批处理项的数量; 
+       + allowed_failed_count-允许的失败小型批处理数; 
+       + allowed_failed_percent-允许的失败小型批处理的百分比。 
+       
+       如果超过了某个作业，则该作业将停止。 需要 error_threshold，使其保持向后兼容。 将值设置为-1 可忽略此值。
+    + 修复了 AutoMLStep 名称中的空格处理。
+    + ScriptRunConfig 现在受 HyperDriveStep 支持
+  + **azureml-train-core**
+    + 从 ScriptRun 调用的 HyperDrive 运行现在将被视为子运行。
+    + 添加 `process_count` 到 [PyTorchConfiguration](/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration?preserve-view=true&view=azure-ml-py) ，以支持多进程多节点 PyTorch 作业。
+  + **azureml-widgets**
+    + 添加小组件 ParallelRunStepDetails 以显示 ParallelRunStep 的状态。
+    + 允许 hyperdrive 用户在平行坐标图上查看附加轴，该图显示每个子运行的每组超参数对应的指标值。
+
 
  ## <a name="2021-01-31"></a>2021-01-31
 ### <a name="azure-machine-learning-studio-notebooks-experience-january-update"></a>Azure 机器学习 Studio 笔记本体验 (1 月更新版) 
@@ -35,6 +65,7 @@ ms.locfileid: "100097069"
   + 提高了性能 
   + 提高了速度和内核可靠性
   
+
  ## <a name="2021-01-25"></a>2021-01-25
 
 ### <a name="azure-machine-learning-sdk-for-python-v1210"></a>用于 Python 的 Azure 机器学习 SDK 1.21。0
@@ -145,7 +176,7 @@ ms.locfileid: "100097069"
     + HyperDriveRun.get_children_sorted_by_primary_metric() 现在应当会更快地完成
     + 改进了 HyperDrive SDK 中的错误处理。
     +  弃用了所有估算器类，改为使用 ScriptRunConfig 来配置试验运行。 弃用的类包括：
-        + MMLBaseEstimator
+        + MMLBase
         + 估算器
         + PyTorch 
         + TensorFlow 
@@ -1743,7 +1774,7 @@ Azure 机器学习现在是事件网格的资源提供程序，你可以通过 A
     + 引入了 run.[get_details](/python/api/azureml-core/azureml.core.run%28class%29#get-details--)['datasets'] 用于获取与提交的运行关联的数据集
     + 添加了 API `Dataset.Tabular`.[from_json_lines_files()](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory#from-json-lines-files-path--validate-true--include-path-false--set-column-types-none--partition-format-none-) 用于从 JSON 行文件创建 TabularDataset。 若要了解有关 TabularDataset 上的 JSON 行文件中的此表格数据，请访问 https://aka.ms/azureml-data 获取文档。
     + 为 [supported_vmsizes()](/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute#supported-vmsizes-workspace--location-none-) 函数添加了更多的 VM 大小字段（OS 磁盘、GPU 数目）
-    + 向 list_nodes 中添加了其他字段 [ ( # B1 ](/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute#list-nodes--) 函数显示运行、专用和公共 IP、端口等。
+    + 将其他字段添加到 [list_nodes () ](/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute#list-nodes--) 函数，以显示运行、专用和公共 IP、端口等。
     + 在群集[预配](/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute#provisioning-configuration-vm-size-----vm-priority--dedicated---min-nodes-0--max-nodes-none--idle-seconds-before-scaledown-none--admin-username-none--admin-user-password-none--admin-user-ssh-key-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--tags-none--description-none--remote-login-port-public-access--notspecified--)期间可以指定新字段，可将其设置为启用或禁用，具体取决于在创建群集时是要将 SSH 端口保留为打开还是关闭状态。 如果不指定此字段，服务将会根据是否在 VNet 中部署群集，智能地打开或关闭该端口。
   + **azureml-explain-model**
     + 改进了分类方案中解释输出的文档。

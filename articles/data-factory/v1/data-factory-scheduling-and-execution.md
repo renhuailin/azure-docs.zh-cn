@@ -1,22 +1,18 @@
 ---
 title: 数据工厂计划和执行
 description: 了解 Azure 数据工厂应用程序模型的计划和执行方面。
-services: data-factory
-documentationcenter: ''
 author: dcstwh
 ms.author: weetok
-manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 60410eb2a9a5f18abf2daf87646943ffdc944402
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: bfdae688f7736149fe7ddf04cd3833d9adf30818
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96495168"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100382712"
 ---
 # <a name="data-factory-scheduling-and-execution"></a>数据工厂计划和执行
 > [!NOTE]
@@ -233,7 +229,7 @@ ms.locfileid: "96495168"
 | 策略名称 | 说明 | 适用对象 | 必须 | 默认 |
 | --- | --- | --- | --- | --- |
 | minimumSizeMB | 验证 **Azure Blob** 中的数据是否满足最小大小要求（以兆字节为单位）。 |Azure Blob |否 |NA |
-| minimumRows | 验证 **AZURE SQL 数据库** 或 **azure 表** 中的数据是否包含最小行数。 |<ul><li>Azure SQL Database</li><li>Azure 表</li></ul> |否 |NA |
+| minimumRows | 验证 **AZURE SQL 数据库** 或 **azure 表** 中的数据是否包含最小行数。 |<ul><li>Azure SQL 数据库</li><li>Azure 表</li></ul> |否 |NA |
 
 #### <a name="examples"></a>示例
 **minimumSizeMB:**

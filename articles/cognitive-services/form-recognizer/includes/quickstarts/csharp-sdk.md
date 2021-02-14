@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 10/06/2020
 ms.author: pafarley
-ms.openlocfilehash: 93282e79321f8999ddf8c737ebcb5ea76fbf6e02
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: e85a6ad4619897a6c655874b43e6a6b1a7723d3a
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98948181"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584585"
 ---
 > [!IMPORTANT]
 > 为了简单起见，本文中的代码使用了同步方法和不受保护的凭据存储。
@@ -112,7 +112,7 @@ dotnet add package Azure.AI.FormRecognizer --version 3.1.0-beta.1
 
 `FormRecognizerClient` 提供操作以实现以下目的：
 
- - 使用经过训练的自定义模型识别表单域和内容，以识别自定义表单。  这些值在 `RecognizedForm` 对象的集合中返回。 请参阅示例[分析自定义表单](#analyze-forms-with-a-custom-model)。
+ - 使用为了分析自定义表单而训练的自定义模型，来识别表单字段和内容。  这些值在 `RecognizedForm` 对象的集合中返回。 请参阅示例[分析自定义表单](#analyze-forms-with-a-custom-model)。
  - 无需训练模型即可识别表单内容，包括表格、行和单词。  表单内容在 `FormPage` 对象的集合中返回。 请参阅示例[分析布局](#analyze-layout)。
  - 使用表单识别器服务上预先训练的回执模型，识别美国回执中的常见字段。 这些字段和元数据在 `RecognizedForm` 对象的集合中返回。 请参阅示例[分析回执](#analyze-receipts)。
 
@@ -120,8 +120,8 @@ dotnet add package Azure.AI.FormRecognizer --version 3.1.0-beta.1
 
 `FormTrainingClient` 提供操作以实现以下目的：
 
-- 训练自定义模型以识别在自定义表单中找到的所有字段和值。  返回一个 `CustomFormModel`，它指示模型将识别的表单类型，以及将为每种表单类型提取的字段。
-- 训练自定义模型，以识别通过标记自定义表单指定的特定字段和值。  返回一个 `CustomFormModel`，它指示模型将提取的字段以，及每个字段的估计准确度。
+- 训练自定义模型，以分析在自定义表单中找到的所有字段和值。  将会返回一个 `CustomFormModel`，它指示模型将分析的表单类型，以及将为每种表单类型提取的字段。
+- 训练自定义模型，以分析通过标记自定义表单指定的特定字段和值。  返回一个 `CustomFormModel`，它指示模型将提取的字段以，及每个字段的估计准确度。
 - 管理在帐户中创建的模型。
 - 将自定义模型从一个表单识别器资源复制到另一个资源。
 
@@ -191,9 +191,9 @@ dotnet add package Azure.AI.FormRecognizer --version 3.1.0-beta.1
 
 ## <a name="analyze-layout"></a>分析布局
 
-可以使用表单识别器识别文档中的表格、线条和单词，而无需训练模型。 返回的值是 FormPage 对象的集合：提交的文档中的每一页对应一个对象。 
+可以使用表单识别器分析文档中的表格、线条和单词，而无需训练模型。 返回的值是 FormPage 对象的集合：提交的文档中的每一页对应一个对象。 有关布局提取的详细信息，请参阅[布局概念指南](../../concept-layout.md)。
 
-若要识别位于给定 URL 的文件的内容，请使用 `StartRecognizeContentFromUri` 方法。
+若要分析位于给定 URL 的文件的内容，请使用 `StartRecognizeContentFromUri` 方法。
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_getcontent_call)]
 
@@ -239,89 +239,6 @@ Table 0 has 2 rows and 6 columns.
     Cell (1, 5) contains text: 'PT'.
 ```
 
-## <a name="analyze-receipts"></a>分析回执
-
-本部分演示如何使用预先训练的回执模型识别和提取美国回执中的常见字段。
-
-若要从 URL 识别回执，请使用 `StartRecognizeReceiptsFromUri` 方法。 
-
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_receipt_call)]
-
-> [!TIP]
-> 还可识别本地回执图像。 请参阅 [FormRecognizerClient](/dotnet/api/azure.ai.formrecognizer.formrecognizerclient) 方法，例如 StartRecognizeReceipts。 或者，请参阅 [GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) 上的示例代码，了解涉及本地图像的方案。
-
-返回的值是 `RecognizedReceipt` 对象的集合：提交的文档中的每一页对应一个对象。 下面代码处理给定 URI 的回执，并将主字段和值输出到控制台。
-
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_receipt_print)]
-
-### <a name="output"></a>输出 
-
-```console
-Form Page 1 has 18 lines.
-    Line 0 has 1 word, and text: 'Contoso'.
-    Line 1 has 1 word, and text: 'Address:'.
-    Line 2 has 3 words, and text: 'Invoice For: Microsoft'.
-    Line 3 has 4 words, and text: '1 Redmond way Suite'.
-    Line 4 has 3 words, and text: '1020 Enterprise Way'.
-    Line 5 has 3 words, and text: '6000 Redmond, WA'.
-    Line 6 has 3 words, and text: 'Sunnayvale, CA 87659'.
-    Line 7 has 1 word, and text: '99243'.
-    Line 8 has 2 words, and text: 'Invoice Number'.
-    Line 9 has 2 words, and text: 'Invoice Date'.
-    Line 10 has 3 words, and text: 'Invoice Due Date'.
-    Line 11 has 1 word, and text: 'Charges'.
-    Line 12 has 2 words, and text: 'VAT ID'.
-    Line 13 has 1 word, and text: '34278587'.
-    Line 14 has 1 word, and text: '6/18/2017'.
-    Line 15 has 1 word, and text: '6/24/2017'.
-    Line 16 has 1 word, and text: '$56,651.49'.
-    Line 17 has 1 word, and text: 'PT'.
-Table 0 has 2 rows and 6 columns.
-    Cell (0, 0) contains text: 'Invoice Number'.
-    Cell (0, 1) contains text: 'Invoice Date'.
-    Cell (0, 2) contains text: 'Invoice Due Date'.
-    Cell (0, 3) contains text: 'Charges'.
-    Cell (0, 5) contains text: 'VAT ID'.
-    Cell (1, 0) contains text: '34278587'.
-    Cell (1, 1) contains text: '6/18/2017'.
-    Cell (1, 2) contains text: '6/24/2017'.
-    Cell (1, 3) contains text: '$56,651.49'.
-    Cell (1, 5) contains text: 'PT'.
-Merchant Name: 'Contoso Contoso', with confidence 0.516
-Transaction Date: '6/10/2019 12:00:00 AM', with confidence 0.985
-Item:
-    Name: '8GB RAM (Black)', with confidence 0.916
-    Total Price: '999', with confidence 0.559
-Item:
-    Name: 'SurfacePen', with confidence 0.858
-    Total Price: '99.99', with confidence 0.386
-Total: '1203.39', with confidence '0.774'
-```
-
-## <a name="analyze-business-cards"></a>分析名片
-
-#### <a name="version-20"></a>[版本 2.0](#tab/ga)
-
-> [!IMPORTANT]
-> 此功能在所选的 API 版本中不可用。
-
-#### <a name="version-21-preview"></a>[版本 2.1 预览](#tab/preview)
-
-
-本部分演示如何使用预先训练的模型识别和提取英文名片中的常见字段。
-
-若要从 URL 识别名片，请使用 `StartRecognizeBusinessCardsFromUriAsync` 方法。 
-
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs?name=snippet_bc_call)]
-
-> [!TIP]
-> 还可识别本地回执图像。 请参阅 [FormRecognizerClient](/dotnet/api/azure.ai.formrecognizer.formrecognizerclient) 方法，例如 StartRecognizeBusinessCards。 或者，请参阅 [GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) 上的示例代码，了解涉及本地图像的方案。
-
-返回的值是 `RecognizedForm` 对象的集合：文档中的每一张卡片都对应一个对象。 以下代码处理给定 URI 的名片，并将主字段和值输出到控制台。
-
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs?name=snippet_bc_print)]
-
----
 
 ## <a name="analyze-invoices"></a>分析发票
 
@@ -332,14 +249,14 @@ Total: '1203.39', with confidence '0.774'
 
 #### <a name="version-21-preview"></a>[版本 2.1 预览](#tab/preview)
 
-本部分演示如何使用预先训练的模型识别和提取销售发票中的常见字段。
+本部分演示如何使用预先训练的模型分析和提取销售发票中的常见字段。 有关发票分析的详细信息，请参阅[发票概念指南](../../concept-invoices.md)。
 
-若要从 URL 识别发票，请使用 `StartRecognizeInvoicesFromUriAsync` 方法。 
+若要分析位于某个 URL 的发票，请使用 `StartRecognizeInvoicesFromUriAsync` 方法。 
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs?name=snippet_invoice_call)]
 
 > [!TIP]
-> 还可识别本地发票图像。 请参阅 [FormRecognizerClient](/dotnet/api/azure.ai.formrecognizer.formrecognizerclient) 方法，例如 StartRecognizeInvoices。 或者，请参阅 [GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) 上的示例代码，了解涉及本地图像的方案。
+> 你还可以分析本地发票图像。 请参阅 [FormRecognizerClient](/dotnet/api/azure.ai.formrecognizer.formrecognizerclient?view=azure-dotnet) 方法，例如 StartRecognizeInvoices。 或者，请参阅 [GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) 上的示例代码，了解涉及本地图像的方案。
 
 返回的值是 `RecognizedForm` 对象的集合：提交的文档中的每一张发票都对应一个对象。 以下代码处理给定 URI 的发票，并将主字段和值输出到控制台。
 
@@ -357,13 +274,13 @@ Total: '1203.39', with confidence '0.774'
 
 ### <a name="train-a-model-without-labels"></a>不使用标签训练模型
 
-训练自定义模型可以识别在自定义表单中找到的所有字段和值，而无需手动标记训练文档。 下面的方法使用给定文档集训练模型，并将该模型的状态输出到控制台。 
+训练自定义模型可分析在自定义表单中找到的所有字段和值，无需手动标记训练文档。 下面的方法使用给定文档集训练模型，并将该模型的状态输出到控制台。 
 
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_train)]
 
 
-返回的 `CustomFormModel` 对象包含该模型可以识别的表单类型以及它可以从每种表单类型中提取的字段的相关信息。 下面的代码块将此信息输出到控制台。
+返回的 `CustomFormModel` 对象包含该模型可以分析的表单类型以及它可以从每种表单类型中提取的字段的相关信息。 下面的代码块将此信息输出到控制台。
 
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_train_response)]
@@ -560,6 +477,90 @@ Field 'Azure.AI.FormRecognizer.Models.FieldValue:
     Confidence: '0.114
    ...
 ```
+
+## <a name="analyze-receipts"></a>分析回执
+
+本部分演示如何使用预先训练的收据模型分析和提取美国收据中的常见字段。 有关收据分析的详细信息，请参阅[收据概念指南](../../concept-receipts.md)。
+
+若要分析位于某个 URL 的收据，请使用 `StartRecognizeReceiptsFromUri` 方法。 
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_receipt_call)]
+
+> [!TIP]
+> 你还可以分析本地收据图像。 请参阅 [FormRecognizerClient](/dotnet/api/azure.ai.formrecognizer.formrecognizerclient?view=azure-dotnet) 方法，例如 StartRecognizeReceipts。 或者，请参阅 [GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) 上的示例代码，了解涉及本地图像的方案。
+
+返回的值是 `RecognizedReceipt` 对象的集合：提交的文档中的每一页对应一个对象。 下面代码处理给定 URI 的回执，并将主字段和值输出到控制台。
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_receipt_print)]
+
+### <a name="output"></a>输出 
+
+```console
+Form Page 1 has 18 lines.
+    Line 0 has 1 word, and text: 'Contoso'.
+    Line 1 has 1 word, and text: 'Address:'.
+    Line 2 has 3 words, and text: 'Invoice For: Microsoft'.
+    Line 3 has 4 words, and text: '1 Redmond way Suite'.
+    Line 4 has 3 words, and text: '1020 Enterprise Way'.
+    Line 5 has 3 words, and text: '6000 Redmond, WA'.
+    Line 6 has 3 words, and text: 'Sunnayvale, CA 87659'.
+    Line 7 has 1 word, and text: '99243'.
+    Line 8 has 2 words, and text: 'Invoice Number'.
+    Line 9 has 2 words, and text: 'Invoice Date'.
+    Line 10 has 3 words, and text: 'Invoice Due Date'.
+    Line 11 has 1 word, and text: 'Charges'.
+    Line 12 has 2 words, and text: 'VAT ID'.
+    Line 13 has 1 word, and text: '34278587'.
+    Line 14 has 1 word, and text: '6/18/2017'.
+    Line 15 has 1 word, and text: '6/24/2017'.
+    Line 16 has 1 word, and text: '$56,651.49'.
+    Line 17 has 1 word, and text: 'PT'.
+Table 0 has 2 rows and 6 columns.
+    Cell (0, 0) contains text: 'Invoice Number'.
+    Cell (0, 1) contains text: 'Invoice Date'.
+    Cell (0, 2) contains text: 'Invoice Due Date'.
+    Cell (0, 3) contains text: 'Charges'.
+    Cell (0, 5) contains text: 'VAT ID'.
+    Cell (1, 0) contains text: '34278587'.
+    Cell (1, 1) contains text: '6/18/2017'.
+    Cell (1, 2) contains text: '6/24/2017'.
+    Cell (1, 3) contains text: '$56,651.49'.
+    Cell (1, 5) contains text: 'PT'.
+Merchant Name: 'Contoso Contoso', with confidence 0.516
+Transaction Date: '6/10/2019 12:00:00 AM', with confidence 0.985
+Item:
+    Name: '8GB RAM (Black)', with confidence 0.916
+    Total Price: '999', with confidence 0.559
+Item:
+    Name: 'SurfacePen', with confidence 0.858
+    Total Price: '99.99', with confidence 0.386
+Total: '1203.39', with confidence '0.774'
+```
+
+## <a name="analyze-business-cards"></a>分析名片
+
+#### <a name="version-20"></a>[版本 2.0](#tab/ga)
+
+> [!IMPORTANT]
+> 此功能在所选的 API 版本中不可用。
+
+#### <a name="version-21-preview"></a>[版本 2.1 预览](#tab/preview)
+
+
+本部分演示如何使用预先训练的模型分析和提取英文名片中的常见字段。 有关名片分析的详细信息，请参阅[名片概念指南](../../concept-business-cards.md)。
+
+若要分析位于某个 URL 的名片，请使用 `StartRecognizeBusinessCardsFromUriAsync` 方法。 
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs?name=snippet_bc_call)]
+
+> [!TIP]
+> 你还可以分析本地收据图像。 请参阅 [FormRecognizerClient](/dotnet/api/azure.ai.formrecognizer.formrecognizerclient?view=azure-dotnet) 方法，例如 StartRecognizeBusinessCards。 或者，请参阅 [GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) 上的示例代码，了解涉及本地图像的方案。
+
+返回的值是 `RecognizedForm` 对象的集合：文档中的每一张卡片都对应一个对象。 以下代码处理给定 URI 的名片，并将主字段和值输出到控制台。
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs?name=snippet_bc_print)]
+
+---
 
 ## <a name="manage-custom-models"></a>管理自定义模型
 

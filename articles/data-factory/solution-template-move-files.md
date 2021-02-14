@@ -1,22 +1,19 @@
 ---
 title: 在基于文件的存储之间移动数据
 description: 了解如何使用解决方案模板通过 Azure 数据工厂在基于文件的存储之间移动文件。
-services: data-factory
 author: dearandyxu
 ms.author: yexu
 ms.reviewer: ''
-manager: shwang
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 7/12/2019
-ms.openlocfilehash: f6baea73c0c4964bb3937304603a2a92a13d52b2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c88f2d25046ee017fccd2cee6e951be72d4dda91
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86522714"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100361938"
 ---
 # <a name="move-files-with-azure-data-factory"></a>使用 Azure 数据工厂移动文件
 
@@ -41,22 +38,22 @@ ADF 复制活动在存储存储之间复制二进制文件时，对 "移动" 方
 - **Delete** 从源存储中删除同一个文件。
 
 该模板定义了四个参数：
-- ** SourceStore_Location 是要从中移动文件的源存储的文件夹路径。 
-- ** SourceStore_Directory 是要从中移动文件的源存储的子文件夹路径。
-- ** DestinationStore_Location 是要将文件移到的目标存储的文件夹路径。 
-- ** DestinationStore_Directory 是要将文件移到的目标存储的子文件夹路径。
+- SourceStore_Location 是要从中移动文件的源存储的文件夹路径。 
+- SourceStore_Directory 是要从中移动文件的源存储的子文件夹路径。
+- DestinationStore_Location 是要将文件移到的目标存储的文件夹路径。 
+- DestinationStore_Directory 是要将文件移到的目标存储的子文件夹路径。
 
 ## <a name="how-to-use-this-solution-template"></a>如何使用此解决方案模板
 
-1. 转到“移动文件”模板。**** 选择现有的连接，或者与要从中移动文件的源文件存储建立**新**的连接。 请注意，**DataSource_Folder** 和 **DataSource_File** 是对源文件存储的相同连接的引用。
+1. 转到“移动文件”模板。 选择现有的连接，或者与要从中移动文件的源文件存储建立 **新** 的连接。 请注意，**DataSource_Folder** 和 **DataSource_File** 是对源文件存储的相同连接的引用。
 
     ![与源建立新的连接](media/solution-template-move-files/move-files1.png)
 
-2. 选择现有的连接，或者与要将文件移到的目标文件存储建立**新**的连接。
+2. 选择现有的连接，或者与要将文件移到的目标文件存储建立 **新** 的连接。
 
     ![与目标建立新的连接](media/solution-template-move-files/move-files2.png)
 
-3. 选择“使用此模板”**** 选项卡。
+3. 选择“使用此模板”选项卡。
     
 4. 你将看到管道，如以下示例所示：
 

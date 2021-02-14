@@ -1,26 +1,26 @@
 ---
 title: 通过 Azure 安全中心集成保护 Azure VMware 解决方案 Vm
-description: 了解如何通过 azure 安全中心中的单个仪表板使用 Azure 的本机安全工具保护 Azure VMware 解决方案 Vm。
+description: 通过 azure 安全中心仪表板中的 Azure 本机安全工具保护 Azure VMware 解决方案 Vm。
 ms.topic: how-to
-ms.date: 02/04/2021
-ms.openlocfilehash: 58cfa1e8e7faa56675d966f86d3b390e52acec27
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.date: 02/12/2021
+ms.openlocfilehash: b37d09d6e8f239586a18c0fa3b1dcd7bfee98102
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99584951"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100516356"
 ---
 # <a name="protect-your-azure-vmware-solution-vms-with-azure-security-center-integration"></a>通过 Azure 安全中心集成保护 Azure VMware 解决方案 Vm
 
-Azure 本机安全工具为 Azure、Azure VMware 解决方案的混合环境和本地虚拟机 (Vm) 提供了一个安全的基础结构。 本文介绍如何设置 Azure tools for 混合环境安全性。 你将使用各种工具来识别和解决不同类型的威胁。
+Azure 本机安全工具为 Azure、Azure VMware 解决方案的混合环境和本地虚拟机 (Vm) 提供保护。 本文介绍如何设置 Azure tools for 混合环境安全性。 你将使用这些工具来确定和解决各种威胁。
 
 ## <a name="azure-native-services"></a>Azure 本机服务
 
-下面是每个 Azure 本机服务的快速摘要：
+下面是 Azure 本机服务的快速摘要：
 
 - **Log Analytics 工作区：** Log Analytics 工作区是存储日志数据的唯一环境。 每个工作区都有其自己的数据存储库和配置。 数据源和解决方案配置为将其数据存储在特定的工作区中。
-- **Azure 安全中心：** Azure 安全中心是一个统一的基础结构安全管理系统。 它增强了数据中心的安全状况，并在云中或本地的混合工作负荷中提供高级威胁防护。
-- **Azure Sentinel：** Azure Sentinel 是云本机、安全信息事件管理 (SIEM) 和安全业务流程自动响应 (之忠诚度) 解决方案。 它在整个环境中提供智能安全分析和威胁智能。 它是用于警报检测、威胁可见性、主动搜寻和威胁响应的单一解决方案。
+- **Azure 安全中心：** Azure 安全中心是一个统一的基础结构安全管理系统。 它增强了数据中心的安全性，并跨云和本地的混合工作负荷提供高级威胁防护。
+- **Azure Sentinel：** Azure Sentinel 是 (SIEM) 解决方案的云本机安全信息事件管理。 它在整个环境中提供安全分析、警报检测和自动威胁响应。
 
 ## <a name="topology"></a>拓扑
 
@@ -30,13 +30,13 @@ Log Analytics 代理允许收集 Azure、Azure VMware 解决方案和本地 Vm �
 
 Log Analytics 工作区收集日志后，可以使用 Azure 安全中心配置 Log Analytics 工作区。 Azure 安全中心将评估 Azure VMware 解决方案 Vm 的漏洞状态，并为任何严重漏洞发出警报。 例如，它会评估缺少的操作系统修补程序、安全错误配置和 [endpoint protection](../security-center/security-center-services.md)。
 
-可以通过 Azure Sentinel 配置 Log Analytics 工作区，以实现警报检测、威胁可见性、主动搜寻和威胁响应。 在上图中，Azure 安全中心使用 Azure 安全中心连接器连接到 Azure Sentinel。 Azure 安全中心会将环境漏洞转发到 Azure Sentinel 来创建事件，并与其他威胁进行映射。 你还可以创建 "计划的规则" 查询来检测不需要的活动，并将其转换为事件。
+可以通过 Azure Sentinel 配置 Log Analytics 工作区，以便进行警报检测、威胁可见性、搜寻和威胁响应。 在上图中，Azure 安全中心使用 Azure 安全中心连接器连接到 Azure Sentinel。 Azure 安全中心会将环境漏洞转发到 Azure Sentinel 来创建事件，并与其他威胁进行映射。 你还可以创建 "计划的规则" 查询来检测不需要的活动，并将其转换为事件。
 
 ## <a name="benefits"></a>优点
 
 - Azure 本机服务可用于 Azure、Azure VMware 解决方案和本地服务中的混合环境安全性。
 - 使用 Log Analytics 工作区，你可以将数据或日志收集到一个点，并向不同的 Azure 本机服务提供相同的数据。
-- Azure 安全中心提供了许多功能，包括：
+- Azure 安全中心提供许多功能，包括：
     - 文件完整性监视
     - Fileless 攻击检测
     - 操作系统修补程序评估 
@@ -50,15 +50,15 @@ Log Analytics 工作区收集日志后，可以使用 Azure 安全中心配置 L
 
 ## <a name="create-a-log-analytics-workspace"></a>创建 Log Analytics 工作区
 
-你将需要一个 Log Analytics 工作区，用于从各种源收集数据。 有关详细信息，请参阅 [从 Azure 门户创建 Log Analytics 工作区](../azure-monitor/learn/quick-create-workspace.md)。 
+需要 Log Analytics 工作区来收集来自各种源的数据。 有关详细信息，请参阅 [从 Azure 门户创建 Log Analytics 工作区](../azure-monitor/learn/quick-create-workspace.md)。 
 
 ## <a name="deploy-security-center-and-configure-azure-vmware-solution-vms"></a>部署安全中心并配置 Azure VMware 解决方案 Vm
 
-Azure 安全中心是预配置的工具，不需要进行部署。 在 Azure 门户中，搜索 " **安全中心** " 并选择它。
+Azure 安全中心是一个预先配置的工具，不需要进行部署。 在 Azure 门户中，搜索 " **安全中心** " 并选择它。
 
 ### <a name="enable-azure-defender"></a>启用 Azure Defender
 
-Azure Defender 跨本地和云中的混合工作负荷扩展 Azure 安全中心的高级威胁防护。 因此，若要保护你的 Azure VMware 解决方案 Vm，你将需要启用 Azure Defender。 
+在本地和云中，azure Defender 将跨混合工作负荷扩展 Azure 安全中心的高级威胁防护。 因此，若要保护 Azure VMware 解决方案 Vm，需要启用 Azure Defender。 
 
 1. 在安全中心中，选择 " **入门**"。
 
@@ -149,7 +149,7 @@ Azure Sentinel 构建在 Log Analytics 工作区之上。 加入 Azure Sentinel 
 
 ## <a name="create-rules-to-identify-security-threats"></a>创建用于识别安全威胁的规则
 
-将数据源连接到 Azure Sentinel 后，可以创建规则，以根据检测到的威胁生成警报。 在下面的示例中，我们将创建一个规则，用于识别使用错误的密码登录到 Windows server 的尝试。
+将数据源连接到 Azure Sentinel 后，可以创建规则以生成检测到的威胁的警报。 在下面的示例中，我们将创建一个规则，用于尝试使用错误的密码登录到 Windows server。
 
 1. 在 Azure Sentinel 概述页上的 "配置" 下，选择 " **分析**"。
 
@@ -160,7 +160,7 @@ Azure Sentinel 构建在 Log Analytics 工作区之上。 加入 Azure Sentinel 
 4. 在 " **常规** " 选项卡上，输入所需信息。
 
     - 名称
-    - 说明
+    - 描述
     - 策略
     - 严重性
     - 状态
@@ -184,7 +184,7 @@ Azure Sentinel 构建在 Log Analytics 工作区之上。 加入 Azure Sentinel 
     - 事件分组
     - 禁止
 
-    选择“**下一页**”。
+    选择“下一步”。
 
 6. 在 " **事件设置** " 选项卡上，启用 "从此 **分析规则触发的警报创建事件** "，然后选择 " **下一步：自动响应 >**。
  
@@ -196,7 +196,7 @@ Azure Sentinel 构建在 Log Analytics 工作区之上。 加入 Azure Sentinel 
 
 在第三次尝试登录到 Windows server 后，创建的规则将触发每次尝试失败的事件。
 
-## <a name="view-generated-alerts"></a>查看生成的警报
+## <a name="view-alerts"></a>查看警报
 
 可以通过 Azure Sentinel 查看生成的事件。 你还可以分配事件，并在解决后关闭它们，所有这些事件都从 Azure Sentinel 内完成。
 
@@ -231,7 +231,7 @@ Azure Sentinel 构建在 Log Analytics 工作区之上。 加入 Azure Sentinel 
 2. 填写以下信息以创建自定义查询。
 
     - 名称
-    - 说明
+    - 描述
     - 自定义查询
     - 输入映射
     - 策略

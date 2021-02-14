@@ -6,12 +6,12 @@ ms.author: panshar
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: 6396ca4483f5e9782890123a7c39a0cbcdbd30a3
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: a5db000ad76f23be60d279923a590204c2fcf5e5
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99832566"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100377374"
 ---
 # <a name="azure-migrate-common-questions"></a>Azure Migrate：常见问题
 
@@ -44,7 +44,7 @@ Azure Migrate：服务器迁移工具使用一些后端 Site Recovery 功能来�
 
 ## <a name="i-have-a-project-with-the-previous-classic-experience-of-azure-migrate-how-do-i-start-using-the-new-version"></a>我有一个项目，该项目具有以前的经典体验 Azure Migrate。 如何实现开始使用新版本吗？
 
-经典 Azure Migrate 在2024年2月停用。 2024年2月之后，将不再支持经典版本的 Azure Migrate，并且将删除经典项目中的清单元数据。 无法将以前版本中的项目或组件升级到新版本。 需要[创建新的 Azure Migrate 项目](create-manage-projects.md)并向其[添加评估和迁移工具](./create-manage-projects.md)。 学习教程，了解如何使用可用的评估和迁移工具。 如果已将 Log Analytics 工作区附加到了经典项目，则可以在删除经典项目后将其附加到当前版本的项目。
+经典 Azure Migrate 在2024年2月停用。 2024年2月之后，将不再支持经典版本的 Azure Migrate，并且将删除经典项目中的清单元数据。 无法将以前版本中的项目或组件升级到新版本。 需要[创建新的 Azure Migrate 项目](create-manage-projects.md)并向其[添加评估和迁移工具](./create-manage-projects.md)。 学习教程，了解如何使用可用的评估和迁移工具。 如果已将 Log Analytics 工作区附加到经典项目，则在删除经典项目后，可以将其附加到当前版本的项目。
 
 ## <a name="whats-the-difference-between-azure-migrate-server-assessment-and-the-map-toolkit"></a>Azure Migrate：服务器评估和地图工具包之间的区别是什么？
 

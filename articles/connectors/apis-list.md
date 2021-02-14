@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: article
-ms.date: 01/07/2021
-ms.openlocfilehash: c2b89450c0e474f5030f8812e888890f1fedde7e
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.date: 02/12/2021
+ms.openlocfilehash: 4b431220dbab49b74f38a8f37be8aac1a0c5c460
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98019629"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100382882"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>适用于 Azure 逻辑应用的连接器
 
@@ -28,7 +28,7 @@ ms.locfileid: "98019629"
 
 <a name="built-in"></a>
 
-* [**内置**](#built-ins)：内置触发器和操作在 Azure 逻辑应用中以本机方式运行，因此，在使用之前无需创建连接，并可帮助你为逻辑应用执行这些任务：
+* [**内置**](#built-ins)：内置触发器和操作以原生方式在 Azure 逻辑应用中运行，因此它们不要求你在使用它们之前创建连接，并且可帮助你为逻辑应用执行以下任务：
 
   * 按自定义计划和高级计划运行。
 
@@ -393,51 +393,51 @@ ms.locfileid: "98019629"
 
 <a name="recurrence-behavior"></a>
 
-## <a name="recurrence-behavior"></a>重复行为
+## <a name="recurrence-behavior"></a>定期触发行为
 
-在 Azure 逻辑应用中以本机方式运行的定期内置触发器的行为（如 [定期触发器](../connectors/connectors-native-recurrence.md)）不同于基于连接的重复触发器的行为，需要首先创建连接，如 SQL connector 触发器。
+以原生方式在 Azure 逻辑应用中运行的定期内置触发器（例如此[定期触发器](../connectors/connectors-native-recurrence.md)）的行为与基于连接的定期触发器（需要先创建连接，例如 SQL 连接器触发器）的行为不同。
 
-但是，对于这两种类型的触发器，如果重复周期未指定特定的开始日期和时间，则在保存或部署逻辑应用时，将立即运行第一个重复项，而不管触发器的重复设置如何。 若要避免此行为，请为希望第一次定期运行的时间提供开始日期和时间。
+但是，对于这两种类型的触发器，如果定期未指定具体的开始日期和时间，则在保存或部署逻辑应用时，会立即运行第一次定期触发，而不管触发器的定期设置如何。 若要避免此行为，请提供你希望运行第一次定期触发的开始日期和时间。
 
 <a name="recurrence-built-in"></a>
 
-### <a name="recurrence-for-built-in-triggers"></a>内置触发器的重复周期
+### <a name="recurrence-for-built-in-triggers"></a>内置触发器的定期触发
 
-定期内置触发器遵循您设置的计划，包括您指定的任何时区。 但是，如果重复周期未指定任何其他高级计划选项（如特定时间）来运行未来的重复，则这些重复项将基于上一次触发器的执行。 因此，这些重复周期的开始时间可能会由于诸如存储调用期间的延迟等因素而发生偏差。 此外，如果未选择时区，则 (DST) 的夏令时可能会影响触发器运行的时间，例如，在 DST 开始时，将开始时间向前移动一小时，在 DST 结束时将开始时间向后移动一小时。
+定期内置触发器遵循你设置的计划，包括你指定的任何时区。 但是，如果某个定期触发未指定任何其他高级计划选项（例如具体时间）来运行将来的定期触发，则这些将来的定期触发会以上一次触发器执行为基础。 因此，这些定期触发的开始时间可能会因存储调用期间的延迟等因素而发生偏移。 此外，如果未选择时区，则 (DST) 的夏令时可能会影响触发器运行的时间，例如，在 DST 开始时，将开始时间向前移动一小时，在 DST 结束时将开始时间向后移动一小时。
 
-若要确保逻辑应用在指定的开始时间运行并且不会错过定期操作，请尝试使用以下解决方案：
+为了确保逻辑应用在你指定的开始时间运行并且不会错过定期触发（特别是在频率为几天（或更长时间）一次的情况下），请尝试以下解决方案：
 
-* 请确保选择时区，以便逻辑应用在指定的开始时间运行。 否则，DST 可能会影响触发器运行的时间，例如，在 DST 开始时，将开始时间前移一小时，在 DST 结束时，将开始时间向后移动一小时。
+* 确保选择一个时区，以便逻辑应用在你指定的开始时间运行。 否则，DST 可能会影响触发器运行的时间，例如，在 DST 开始时，将开始时间前移一小时，在 DST 结束时，将开始时间向后移动一小时。
 
-  计划作业时，逻辑应用会将消息放入队列中，并指定该消息何时变为可用，具体取决于上次运行作业的 UTC 时间和计划运行下一个作业的 UTC 时间。 通过指定时区，逻辑应用的 UTC 时间也会发生变化。 但是，当时间发生变化时，windows 可能会导致问题。 有关详细信息和示例，请参阅 [夏令时和标准时间定期](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#daylight-saving-standard-time)。
+  计划作业时，逻辑应用会将要处理的消息放入队列中，并指定该消息何时变得可用，具体取决于运行上次作业的 UTC 时间和计划运行下次作业的 UTC 时间。 指定时区后，逻辑应用的 UTC 时间也会发生偏移以应对季节性时间变化。 但是，当时间发生变化时，windows 可能会导致问题。 有关详细信息和示例，请参阅 [夏令时和标准时间定期](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#daylight-saving-standard-time)。
 
-* 使用 "定期触发器"，并提供重复周期的开始日期和时间，以及在这 **段** 时间内使用名为的 **属性（这些** 属性仅适用于 " **日** " 和 " **周** " 频率）运行后续重复执行的特定时间。
+* 使用定期触发器，并提供定期触发的开始日期和时间，以及运行后续定期触发的具体时间，这可以通过“在这些小时”和“在这些分钟”属性来进行，仅适用于“日”和“周”频率。
 
 * 使用[滑动窗口触发器](../connectors/connectors-native-sliding-window.md)，而不是使用重复触发器。
 
 <a name="recurrence-connection-based"></a>
 
-### <a name="recurrence-for-connection-based-triggers"></a>基于连接的触发器的重复周期
+### <a name="recurrence-for-connection-based-triggers"></a>基于连接的触发器的定期触发
 
-在重复的基于连接的触发器（如 SQL 或 SFTP）中，计划不是控制执行的唯一驱动程序，时区只确定初始开始时间。 后续运行取决于循环计划、上一次触发器执行以及可能导致运行时间发生偏差或产生意外行为 *的其他因素* ，例如：
+在基于连接的定期触发器（例如 SQL 或 SFTP-SSH）中，计划不是控制执行的唯一驱动因素，并且时区只决定最初的开始时间。 后续运行取决于定期计划、上一次触发器执行以及其他可能导致运行时间发生偏差或产生意外行为的因素，例如：
 
-* 触发器是否访问具有更多数据的服务器，触发器会立即尝试提取。
+* 触发器是否访问具有更多数据的服务器（触发器会立即尝试获取这些数据）。
 
-* 触发器产生的任何故障或重试。
+* 触发器引发的任何故障或重试。
 
-* 存储调用期间的延迟。
+* 调用存储期间的延迟。
 
 * 当夏令时 (DST) 开始和结束时，不保留指定的计划。
 
-* 下一次运行时可能影响的其他因素。
+* 可能影响下次运行时的出现时间的其他因素。
 
-若要解决或解决这些问题，请尝试以下解决方案：
+若要解决或绕过这些问题，请尝试以下解决方案：
 
-* 若要确保重复执行时间在 DST 生效时不会发生变化，请手动调整重复周期，使逻辑应用继续按预期时间运行。 否则，开始时间将在 DST 开始时向前移动1小时，在 DST 结束时向后移动一小时。
+* 若要确保重复周期时间在 DST 生效时不会移动，请手动调整重复周期，使逻辑应用继续按预期时间运行。 否则，开始时间将在 DST 开始时向前移动 1 小时，在 DST 结束时向后移动 1 小时。
 
-* 使用定期触发器，以便您可以指定时区、开始日期和时间，*以及* 在这些时间运行的特定时间 **，并使用****在** 这些时间指定的属性（仅适用于 **日** 和 **周** 频率）。 但是，当时间发生变化时，windows 可能仍会出现问题。 有关详细信息和示例，请参阅 [夏令时和标准时间定期](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#daylight-saving-standard-time)。
+* 使用定期触发器，以便指定时区、开始日期和时间，以及运行后续定期触发的具体时间，这可以通过“在这些小时”和“在这些分钟”属性来进行，仅适用于“日”和“周”频率。    但是，当时间发生变化时，windows 可能仍会出现问题。 有关详细信息和示例，请参阅 [夏令时和标准时间定期](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#daylight-saving-standard-time)。
 
-* 若要避免丢失重复出现，请使用 [滑动窗口触发器](../connectors/connectors-native-sliding-window.md)，而不是重复执行触发器。
+* 为了避免错过定期触发，请使用[滑动窗口触发器](../connectors/connectors-native-sliding-window.md)，而不是使用定期触发器。
 
 <a name="custom"></a>
 
@@ -452,15 +452,21 @@ ms.locfileid: "98019629"
 >
 > 有关创建 ISEs 的详细信息，请参阅 [从 Azure 逻辑应用连接到 azure 虚拟网络](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)。
 
+## <a name="get-ready-for-deployment"></a>准备部署
+
+尽管从逻辑应用中创建连接，但连接是具有自己的资源定义的单独 Azure 资源。 若要查看这些连接资源定义，请[将逻辑应用从 Azure 下载到 Visual Studio 中](../logic-apps/manage-logic-apps-with-visual-studio.md)，这是创建最适用部署的有效参数化逻辑应用模板的最简单方法。
+
 <a name="block-connections"></a>
 
 ## <a name="block-creating-connections"></a>阻止创建连接
 
 如果组织不允许使用 Azure 逻辑应用中的连接器连接到特定资源，则可以在逻辑应用工作流中使用 [Azure Policy](../governance/policy/overview.md) [阻止为特定连接器创建这些连接的功能](../logic-apps/block-connections-connectors.md)。 有关详细信息，请参阅[在 Azure 逻辑应用中阻止特定连接器创建的连接](../logic-apps/block-connections-connectors.md)。
 
-## <a name="get-ready-for-deployment"></a>准备部署
+## <a name="known-issues"></a>已知问题
 
-尽管从逻辑应用中创建连接，但连接是具有自己的资源定义的单独 Azure 资源。 若要查看这些连接资源定义，请[将逻辑应用从 Azure 下载到 Visual Studio 中](../logic-apps/manage-logic-apps-with-visual-studio.md)，这是创建最适用部署的有效参数化逻辑应用模板的最简单方法。
+#### <a name="error-badgateway-client-request-id-guid"></a>错误： BadGateway。 客户端请求 id： "{GUID}"
+
+此错误是由于在一个或多个连接不支持 Azure Active Directory (Azure AD) OAuth 身份验证（如 SFTP AD SQL）中断这些连接的逻辑应用上更新标记导致的。 若要防止此行为，请避免更新这些标记。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -632,7 +638,7 @@ ms.locfileid: "98019629"
 [google-sheets-doc]: ./connectors-create-api-googlesheet.md "连接到 Google Sheets，以便修改工作表"
 [google-tasks-doc]: ./connectors-create-api-googletasks.md "连接到 Google Tasks，以便管理任务"
 [ibm-3270-doc]: ./connectors-run-3270-apps-ibm-mainframe-create-api-3270.md "连接到 IBM 大型机上的 3270 应用"
-[ibm-db2-doc]: ./connectors-create-api-db2.md "连接到云中或本地的 IBM DB2。更新行、获取表等"
+[ibm-db2-doc]: ./connectors-create-api-db2.md "连接到云中或本地的 IBM DB2。更新行、获取表，等等"
 [ibm-informix-doc]: ./connectors-create-api-informix.md "连接到云中或本地的 Informix。读取行、列出表，等等"
 [ibm-mq-doc]: ./connectors-create-api-mq.md "连接到本地或 Azure 中的 IBM MQ 以发送和接收消息"
 [instagram-doc]: ./connectors-create-api-instagram.md "连接到 Instagram。触发事件或针对事件进行操作"

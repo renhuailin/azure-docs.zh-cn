@@ -3,12 +3,12 @@ title: 使用 Azure CLI 和模板部署资源
 description: 使用 Azure 资源管理器和 Azure CLI 将资源部署到 Azure。 资源在 Resource Manager 模板中定义。
 ms.topic: conceptual
 ms.date: 01/26/2021
-ms.openlocfilehash: f01409db36ca29deb2f6938ce3118cdcb20cd1a1
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 6a8efcebcd6ae18eaf91c6ec1e7df184db8c244c
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881293"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100378666"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-cli"></a>通过 ARM 模板和 Azure CLI 来部署资源
 
@@ -102,11 +102,11 @@ az deployment group create \
   --parameters storageAccountType=Standard_GRS
 ```
 
-前面的示例要求模板的 URI 可公开访问，它适用于大多数情况，因为模板应该不会包含敏感数据。 如果需要指定敏感数据（如管理员密码），请以安全参数的形式传递该值。 但是，如果想要管理对模板的访问权限，请考虑使用 [模板规范](#deploy-template-spec)。
+前面的示例要求模板的 URI 可公开访问，它适用于大多数情况，因为模板应该不会包含敏感数据。 如果需要指定敏感数据（如管理员密码），请以安全参数的形式传递该值。 但是，如果想要管理对模板的访问权限，请考虑使用[模板规格](#deploy-template-spec)。
 
 若要使用存储在存储帐户中的相对路径部署远程链接模板，请使用 `query-string` 指定 SAS 令牌：
 
-```azurepowershell
+```azurecli-interactive
 az deployment group create \
   --name linkedTemplateWithRelativePath \
   --resource-group myResourceGroup \
@@ -144,11 +144,11 @@ deploymentName='ExampleDeployment'$(date +"%d-%b-%Y")
 
 ## <a name="deploy-template-spec"></a>部署模板规格
 
-你可以创建 [模板规范](template-specs.md)，而不是部署本地或远程模板。模板规范是包含 ARM 模板的 Azure 订阅中的资源。 这使你可以轻松地与组织中的用户安全地共享模板。 可使用 Azure 基于角色的访问控制 (Azure RBAC) 来授予对模板规格的访问权限。此功能目前以预览版提供。
+你可以创建[模板规格](template-specs.md)，而不是部署本地或远程模板。模板规格是 Azure 订阅中包含 ARM 模板的资源。 这使你可以轻松地与组织中的用户安全地共享模板。 可使用 Azure 基于角色的访问控制 (Azure RBAC) 来授予对模板规格的访问权限。此功能目前以预览版提供。
 
-下面的示例演示如何创建和部署模板规范。
+下面的示例演示如何创建和部署模板规格。
 
-首先，通过提供 ARM 模板创建模板规范。
+首先，通过提供 ARM 模板创建模板规格。
 
 ```azurecli
 az ts create \
@@ -159,7 +159,7 @@ az ts create \
   --template-file "./mainTemplate.json"
 ```
 
-然后，获取模板规范的 ID 并进行部署。
+然后，获取模板规格的 ID 并部署它。
 
 ```azurecli
 id = $(az ts show --name storageSpec --resource-group templateSpecRG --version "1.0" --query "id")
@@ -169,7 +169,7 @@ az deployment group create \
   --template-spec $id
 ```
 
-有关详细信息，请参阅 [Azure 资源管理器模板规格 (预览版) ](template-specs.md)。
+有关详细信息，请参阅 [Azure 资源管理器模板规格（预览版）](template-specs.md)。
 
 ## <a name="preview-changes"></a>预览更改
 

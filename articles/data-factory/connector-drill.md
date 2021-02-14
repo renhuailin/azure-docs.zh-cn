@@ -1,22 +1,17 @@
 ---
 title: 使用 Azure 数据工厂从 Drill 复制数据
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 Drill 复制到支持的接收器数据存储。
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: jingwang
-ms.openlocfilehash: 050037748969fe76dd1be9db80d68fb23ccd7940
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1bdd8df45d9e63898b3d08542aa0370d3c430651
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81417386"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100381029"
 ---
 # <a name="copy-data-from-drill-using-azure-data-factory"></a>使用 Azure 数据工厂从 Drill 复制数据
 
@@ -82,13 +77,13 @@ Drill 链接服务支持以下属性：
         "type": "Drill",
         "typeProperties": {
             "connectionString": "ConnectionType=Direct;Host=<host>;Port=<port>;AuthenticationType=Plain;UID=<user name>;",
-            "pwd": { 
-                "type": "AzureKeyVaultSecret", 
-                "store": { 
-                    "referenceName": "<Azure Key Vault linked service name>", 
-                    "type": "LinkedServiceReference" 
-                }, 
-                "secretName": "<secretName>" 
+            "pwd": { 
+                "type": "AzureKeyVaultSecret", 
+                "store": { 
+                    "referenceName": "<Azure Key Vault linked service name>", 
+                    "type": "LinkedServiceReference" 
+                }, 
+                "secretName": "<secretName>" 
             }
         },
         "connectVia": {
@@ -136,7 +131,7 @@ Drill 链接服务支持以下属性：
 
 ### <a name="drillsource-as-source"></a>以 DrillSource 作为源
 
-要从 Drill 复制数据，请将复制活动中的源类型设置为“DrillSource”  。 复制活动**source**部分支持以下属性：
+要从 Drill 复制数据，请将复制活动中的源类型设置为“DrillSource”  。 复制活动 **source** 部分支持以下属性：
 
 | 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |

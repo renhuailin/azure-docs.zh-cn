@@ -3,15 +3,15 @@ title: Windows 虚拟桌面 .MSIX 应用附加门户预览-Azure
 description: 如何使用 Azure 门户为 Windows 虚拟桌面设置 .MSIX 应用附加。
 author: Heidilohr
 ms.topic: how-to
-ms.date: 12/14/2020
+ms.date: 02/11/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 34bcef24d5e7fbda53984f14a2307859c9210262
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 19ce054ce29b744f900676ecf4e55af3487d9891
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98185948"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100373464"
 ---
 # <a name="set-up-msix-app-attach-with-the-azure-portal"></a>通过 Azure 门户设置 MSIX 应用附加
 
@@ -65,7 +65,7 @@ reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager\De
 
 若要设置管理界面：
 
-1. [打开预览门户](https://preview.portal.azure.com/?feature.msixapplications=true#home)。
+1. [打开 Azure 门户](https://portal.azure.com)。
 2. 如果您收到询问是否将该扩展视为可信的提示，请选择 " **允许**"。
 
       > [!div class="mx-imgBorder"]
@@ -171,6 +171,9 @@ reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager\De
 ## <a name="assign-a-user-to-an-app-group"></a>将用户分配到应用组
 
 将 .MSIX 应用分配到应用组后，需要授予用户对其的访问权限。 可以通过向已发布的 .MSIX 应用程序添加用户或用户组，来分配访问权限。 按照 [使用 Azure 门户管理应用组](manage-app-groups.md) 中的说明将用户分配到应用组。
+
+>[!NOTE]
+>当你在公共预览版期间测试远程应用时，.MSIX 应用附加远程应用可能会从源中消失。 应用程序不会显示，因为在评估环境中使用的主机池正由生产环境中的 RD 代理提供服务。 由于生产环境中的 RD Broker 未注册 .MSIX 应用附加远程应用的存在，因此应用不会显示在源中。
 
 ## <a name="change-msix-package-state"></a>更改 .MSIX 包状态
 
