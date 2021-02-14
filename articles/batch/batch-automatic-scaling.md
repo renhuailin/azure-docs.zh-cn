@@ -4,12 +4,12 @@ description: 对云池启用自动缩放功能可以动态调整池中计算节�
 ms.topic: how-to
 ms.date: 11/23/2020
 ms.custom: H1Hack27Feb2017, fasttrack-edit, devx-track-csharp
-ms.openlocfilehash: 033272f22b98b27c67e9a551bce952368d35a043
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 06f717e7c3ab8285b494f89c39838af6b0d96c8f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95737286"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100381420"
 ---
 # <a name="create-an-automatic-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>创建用于缩放 Batch 池中的计算节点的自动公式
 
@@ -128,6 +128,7 @@ $NodeDeallocationOption = taskcompletion;
 | $PendingTasks |$ActiveTasks 和 $RunningTasks 的总和。 |
 | $SucceededTasks |成功完成的任务数。 |
 | $FailedTasks |失败的任务数。 |
+| $TaskSlotsPerNode |可用于在池中单个计算节点上运行并发任务的任务槽数。 |
 | $CurrentDedicatedNodes |当前的专用计算节点数。 |
 | $CurrentLowPriorityNodes |当前低优先级计算节点数，包括任何已占用的节点。 |
 | $PreemptedNodeCount | 池中处于预占状态的节点数。 |
@@ -136,7 +137,7 @@ $NodeDeallocationOption = taskcompletion;
 > 这些只读的服务定义变量是对象，它们提供了各种方法来访问与其关联的数据。 有关详细信息，请参阅本文稍后的[获取样本数据](#obtain-sample-data)。
 
 > [!NOTE]
-> `$RunningTasks`基于在某个时间点运行的任务数进行缩放时，以及 `$ActiveTasks` 基于要运行的任务数进行缩放时使用。
+> 根据在某个时间点运行的任务数进行缩放时使用 `$RunningTasks`，根据排队等待运行的任务数进行缩放时使用 `$ActiveTasks`。
 
 ## <a name="types"></a>类型
 
@@ -384,7 +385,7 @@ $NodeDeallocationOption = taskcompletion;
 ```
 
 > [!NOTE]
-> 可以根据需要在公式字符串中包含注释和分行符。 还要注意，缺少分号可能会导致计算错误。
+> 可以根据需要在公式字符串中包含注释和分行符。 还要注意，缺少分号可能导致计算错误。
 
 ## <a name="automatic-scaling-interval"></a>自动缩放间隔
 

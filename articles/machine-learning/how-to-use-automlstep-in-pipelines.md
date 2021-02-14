@@ -11,12 +11,12 @@ manager: cgronlun
 ms.date: 12/04/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, automl
-ms.openlocfilehash: 1b9d515c197b56f7e0520539b23be60504059675
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 14e3991c7a9c24ea8fa2a619dc7100af2cd8617c
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131247"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100362754"
 ---
 # <a name="use-automated-ml-in-an-azure-machine-learning-pipeline-in-python"></a>在 Python 的 Azure 机器学习管道中使用自动化 ML
 
@@ -37,7 +37,7 @@ Azure 机器学习的自动化 ML 功能可帮助你发现高性能模型，而�
 
 `PipelineStep` 有多个子类。 除了 `AutoMLStep`，本文还将显示一个 `PythonScriptStep` 用于数据准备，另一个用于注册模型。
 
-最初将数据移动到 ML 管道时，首选方法是使用 `Dataset` 对象。 若要在步骤 _之间_ 移动数据以及从运行中保存数据输出，首选方法是与 [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) 和 [`OutputTabularDatasetConfig`](/python/api/azureml-core/azureml.data.output_dataset_config.outputtabulardatasetconfig?preserve-view=true&view=azure-ml-py) 对象。 若要与 `AutoMLStep` 结合使用，必须将 `PipelineData` 对象转换为 `PipelineOutputTabularDataset` 对象。 有关详细信息，请参阅[来自 ML 管道的输入和输出数据](how-to-move-data-in-out-of-pipelines.md)。
+最初将数据移动到 ML 管道时，首选方法是使用 `Dataset` 对象。 要在步骤之间移动数据并能够保存来自运行的数据输出，首选方法是使用 [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) 和 [`OutputTabularDatasetConfig`](/python/api/azureml-core/azureml.data.output_dataset_config.outputtabulardatasetconfig?preserve-view=true&view=azure-ml-py) 对象。 若要与 `AutoMLStep` 结合使用，必须将 `PipelineData` 对象转换为 `PipelineOutputTabularDataset` 对象。 有关详细信息，请参阅[来自 ML 管道的输入和输出数据](how-to-move-data-in-out-of-pipelines.md)。
 
 通过 `AutoMLConfig` 对象配置 `AutoMLStep`。 `AutoMLConfig` 是一个灵活的类，如[使用 Python 配置自动化 ML 试验](./how-to-configure-auto-train.md#configure-your-experiment-settings)中所述。 
 
@@ -108,32 +108,15 @@ compute_target = ws.compute_targets[compute_name]
 
 ### <a name="configure-the-training-run"></a>配置训练运行
 
-下一步是确保远程训练运行包含训练步骤所需的所有依赖项。 通过创建和配置 `RunConfiguration` 对象来设置依赖项和运行时上下文。 
+AutoMLStep 在作业提交期间自动配置其依赖项。 通过创建和配置对象来设置运行时上下文 `RunConfiguration` 。 此处设置计算目标。
 
 ```python
 from azureml.core.runconfig import RunConfiguration
-from azureml.core.conda_dependencies import CondaDependencies
-from azureml.core import Environment 
 
 aml_run_config = RunConfiguration()
 # Use just-specified compute target ("cpu-cluster")
 aml_run_config.target = compute_target
-
-USE_CURATED_ENV = True
-if USE_CURATED_ENV :
-    curated_environment = Environment.get(workspace=ws, name="AzureML-Tutorial")
-    aml_run_config.environment = curated_environment
-else:
-    aml_run_config.environment.python.user_managed_dependencies = False
-    
-    # Add some packages relied on by data prep step
-    aml_run_config.environment.python.conda_dependencies = CondaDependencies.create(
-        conda_packages=['pandas','scikit-learn'], 
-        pip_packages=['azureml-sdk[automl]', 'azureml-dataprep[fuse,pandas]'], 
-        pin_sdk_version=False)
 ```
-
-以上代码显示了处理依赖项的两个选项。 如前所述，当 `USE_CURATED_ENV = True`，配置基于特选环境。 特选环境中“预先准备”有常见的互依赖库，可以大大加快联机速度。 特选环境在 [Microsoft 容器注册表](https://hub.docker.com/publishers/microsoftowner)中具有预先生成的 Docker 映像。 将 `USE_CURATED_ENV` 更改为 `False` 所采用的路径显示了显式设置依赖项的模式。 在这种情况下，将在资源组内的 Azure 容器注册表中创建和注册新的自定义 Docker 映像（请参阅 [Azure 中的专用 Docker 容器注册表简介](../container-registry/container-registry-intro.md)）。 创建和注册此映像可能需要几分钟的时间。 
 
 ## <a name="prepare-data-for-automated-machine-learning"></a>为自动化机器学习准备数据
 
@@ -243,7 +226,7 @@ dataprep_step = PythonScriptStep(
     allow_reuse=True
 )
 ```
-`prepped_data_path`对象的类型为指向 `OutputFileDatasetConfig` 目录的类型。  请注意，它是在参数中指定的 `arguments` 。 如果回顾上一步，你将看到在数据准备代码中，参数 `'--output_path'` 的值即将 Parquet 文件写入到的文件路径。 
+`prepped_data_path` 对象的类型为 `OutputFileDatasetConfig`，它指向一个目录。  请注意，它是在 `arguments` 参数中指定的。 如果回顾上一步，你将看到在数据准备代码中，参数 `'--output_path'` 的值即将 Parquet 文件写入到的文件路径。 
 
 ## <a name="train-with-automlstep"></a>通过 AutoMLStep 训练
 
@@ -251,7 +234,7 @@ dataprep_step = PythonScriptStep(
 
 ### <a name="send-data-to-automlstep"></a>将数据发送到 `AutoMLStep`
 
-在 ML 管道中，输入数据必须是 `Dataset` 对象。 性能最高的方法是以 `OutputTabularDatasetConfig` 对象的形式提供输入数据。 使用在上创建该类型的对象  `read_delimited_files()` `OutputFileDatasetConfig` ，如 `prepped_data_path` ，如 `prepped_data_path` 对象。
+在 ML 管道中，输入数据必须是 `Dataset` 对象。 性能最高的方法是以 `OutputTabularDatasetConfig` 对象的形式提供输入数据。 可以使用 `OutputFileDatasetConfig` 上的 `read_delimited_files()` 创建该类型的对象，例如 `prepped_data_path`，例如 `prepped_data_path` 对象。
 
 ```python
 # type(prepped_data_path) == OutputFileDatasetConfig

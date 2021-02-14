@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 09/06/2019
+ms.date: 02/12/2021
 ms.author: erhopf
-ms.openlocfilehash: 85f239afd1b9263440abff1f924c12cdb7eeadaa
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: db3d8f4424f59d8432221753af776a5b55859882
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99560276"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100388849"
 ---
 # <a name="how-to-create-human-labeled-transcriptions"></a>如何创建人为标记的听录
 
@@ -24,7 +24,12 @@ ms.locfileid: "99560276"
 若要改善识别，建议使用大量的脚本数据，建议提供10到20小时的脚本数据。 在此页上，我们将查看旨在帮助你创建高质量听录的准则。 本指南按区域设置划分为“美国英语”、“中国大陆普通话”和“德语”三部分。
 
 > [!NOTE]
-> 并非所有基本模型都支持音频文件的自定义。 如果基本模型不支持该模型，则训练将使用与使用相关文本相同的方式来使用转录的文本。
+> 并非所有基本模型都支持音频文件的自定义。 如果基本模型不支持该模型，则训练将使用与使用相关文本相同的方式来使用转录的文本。 有关支持音频数据定型的基本模型的列表，请参阅 [语言支持](language-support.md#speech-to-text) 。
+
+> [!NOTE]
+> 如果更改了用于定型的基本模型，并在定型数据集中具有音频，请 *始终* 检查新选择的基本模型是否 [支持音频数据定型](language-support.md#speech-to-text)。 如果以前使用的基本模型不支持对音频数据进行定型，而定型数据集包含音频，则新基础模型的定型时间将会 **大幅** 增加，并且可能会轻松地从几个小时到几天及更长时间。 如果你的语音服务订阅 **不** 在 [具有专用硬件](custom-speech-overview.md#set-up-your-azure-account) 培训的区域中，则更是如此。
+>
+> 如果你面对上述段落中所述的问题，则可以通过减少数据集中的音频量或完全删除该数据并仅留下文本，来快速缩短定型时间。 如果你的语音服务订阅 **不** 在 [具有专用硬件](custom-speech-overview.md#set-up-your-azure-account) 培训的区域中，则强烈建议使用后一种方法。
 
 ## <a name="us-english-en-us"></a>美国英语 (en-US)
 

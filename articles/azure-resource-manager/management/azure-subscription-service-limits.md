@@ -3,12 +3,12 @@ title: Azure 订阅限制和配额
 description: 提供常见的 Azure 订阅和服务限制、配额和约束的列表。 本文包括有关如何增加限制以及最大值的信息。
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 0a20d38d0f8d5be4a19dcdb8b6b846699bac6cc1
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: ac35f09e1a7274019a8ca504fc697ca81de000f7
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98920455"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100370085"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure 订阅和服务限制、配额和约束
 
@@ -364,6 +364,9 @@ ms.locfileid: "98920455"
 
 有关 Azure Synapse Analytics 限制，请参阅 [Azure Synapse 资源限制](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md)。
 
+## <a name="azure-files-and-azure-file-sync"></a>Azure 文件和 Azure 文件同步
+若要详细了解 Azure 文件和文件同步的限制，请参阅 [Azure 文件可伸缩性和性能目标](../../storage/files/storage-files-scale-targets.md)。
+
 ## <a name="storage-limits"></a>存储限制
 
 <!--like # storage accts -->
@@ -378,16 +381,6 @@ ms.locfileid: "98920455"
 ### <a name="azure-blob-storage-limits"></a>Azure Blob 存储限制
 
 [!INCLUDE [storage-blob-scale-targets](../../../includes/storage-blob-scale-targets.md)]
-
-### <a name="azure-files-limits"></a>Azure 文件限制
-
-有关 Azure 文件限制的详细信息，请参阅 [Azure 文件可伸缩性和性能目标](../../storage/files/storage-files-scale-targets.md)。
-
-[!INCLUDE [storage-files-scale-targets](../../../includes/storage-files-scale-targets.md)]
-
-### <a name="azure-file-sync-limits"></a>Azure 文件同步限制
-
-[!INCLUDE [storage-sync-files-scale-targets](../../../includes/storage-sync-files-scale-targets.md)]
 
 ### <a name="azure-queue-storage-limits"></a>Azure 队列存储限制
 

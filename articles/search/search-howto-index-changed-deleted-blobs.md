@@ -8,14 +8,14 @@ ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/29/2021
-ms.openlocfilehash: b23dabb4388331de9e37ee9db1d4b9d727ccde68
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 79d5583f8c9e562a0d21a91c210aa6259472661d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99430554"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100383528"
 ---
-# <a name="how-to-set-up-change-and-deletion-detection-for-blobs-in-azure-cognitive-search-indexing"></a>如何在 Azure 认知搜索索引中为 Blob 设置更改和删除检测
+# <a name="change-and-deletion-detection-in-blob-indexing-azure-cognitive-search"></a>Azure 认知搜索 (的 blob 索引中的更改和删除检测) 
 
 创建初始搜索索引后，你可能希望后续索引器作业仅选取新的和已更改的文档。 对于源自 Azure Blob 存储的搜索内容，当你使用计划触发索引时，将自动执行更改检测。 默认情况下，服务仅为已更改的 Blob 重新编制索引，正如由 Blob 的 `LastModified` 时间戳所确定。 与搜索索引器支持的其他数据源不同，Blob 始终具有时间戳，无需手动设置更改检测策略。
 

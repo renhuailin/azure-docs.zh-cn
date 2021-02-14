@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 09/16/2020
-ms.openlocfilehash: 1222108694ff7274e5d8fd063635b70a76ffc59c
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: bcd89274b1f2ba7b31a10a481e3d73901eac2c60
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954743"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100375181"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Azure Monitor 日志专用群集
 
@@ -55,7 +55,7 @@ Log Analytics 专用群集使用产能预留定价模型，该模型至少为 10
 
 ## <a name="asynchronous-operations-and-status-check"></a>异步操作和状态检查
 
-某些配置步骤是异步运行的，因为它们无法快速完成。 响应中的状态可能包含以下项之一：“InProgress”、“Updating”、“Deleting”、“Succeeded”或“Failed”，包括错误代码。 使用 REST 时，响应最初返回 HTTP 状态代码 202 (接受 Azure-AsyncOperation 属性的) 和标头：
+某些配置步骤是异步运行的，因为它们无法快速完成。 响应中的状态可能包含以下项之一：“InProgress”、“Updating”、“Deleting”、“Succeeded”或“Failed”，包括错误代码。 使用 REST 时，响应最初返回 HTTP 状态代码 202（已接受）和包含 Azure-AsyncOperation 属性的标头：
 
 ```JSON
 "Azure-AsyncOperation": "https://management.azure.com/subscriptions/subscription-id/providers/Microsoft.OperationalInsights/locations/region-name/operationStatuses/operation-id?api-version=2020-08-01"
@@ -84,7 +84,7 @@ Authorization: Bearer <token>
 每个区域每个订阅最多可以有2个活动群集。 如果删除群集，它仍保留14天。 每个区域每个订阅最多可以有4个保留群集 (活动或最近删除的) 。
 
 > [!WARNING]
-> 创建群集会触发资源分配和预配。 此操作可能需要一个小时才能完成。 建议以异步方式运行。
+> 创建群集会触发资源分配和预配。 此操作可能需要几个小时才能完成。 建议以异步方式运行。
 
 创建群集的用户帐户必须具有标准 Azure 资源创建权限： `Microsoft.Resources/deployments/*` 和群集写入权限， `Microsoft.OperationalInsights/clusters/write` 方法是将其角色分配到此特定操作或 `Microsoft.OperationalInsights/*` 或 `*/write` 。
 
@@ -124,7 +124,7 @@ Content-type: application/json
 
 *响应*
 
-应为 202 (接受) 和标头。
+应为 202（已接受）和一个标头。
 
 ### <a name="check-cluster-provisioning-status"></a>检查群集预配状态
 
@@ -228,7 +228,7 @@ Content-type: application/json
 
 *响应*
 
-202 (接受) 和标头。
+202（已接受）和标头。
 
 ### <a name="check-workspace-link-status"></a>检查工作区链接状态
   
@@ -525,7 +525,7 @@ Remove-AzOperationalInsightsLinkedService -ResourceGroupName {resource-group-nam
 
 - 如果在创建群集时出现冲突，则可能是你在过去14天内删除了群集，并且该群集处于软删除状态。 软删除期间，群集名称保持为预留，并且无法新建同名群集。 永久删除群集时，名称将在软删除期结束后释放。
 
-- 如果在群集处于预配或更新状态时更新群集，则更新将失败。
+- 如果在群集处于预配或更新状态时对其进行更新，则更新将失败。
 
 - 部分操作较为耗时，可能需要一段时间才能完成 - 包括群集创建、群集密钥更新和群集删除。 可以通过两种方式检查操作状态：
   - 使用 REST 时，从响应中复制 Azure-AsyncOperation URL 值，并进行[异步操作状态检查](#asynchronous-operations-and-status-check)。

@@ -1,31 +1,31 @@
 ---
-title: 创建支持 Azure Arc 的加入服务主体（预览）
+title: '创建启用了 Azure Arc 的载入服务主体 (预览) '
 services: azure-arc
 ms.service: azure-arc
-ms.date: 05/19/2020
+ms.date: 02/09/2021
 ms.topic: article
 author: mlearned
 ms.author: mlearned
-description: '创建支持 Azure Arc 的加入服务主体 '
+description: '创建启用了 Azure Arc 的载入服务主体 '
 keywords: Kubernetes、Arc、Azure、容器
-ms.openlocfilehash: 8eb38dbc04d964c0ab4869e801099ee9420d6ac2
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 8772cf7634d9a833af120784e3e7868b41d202c4
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98184690"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390481"
 ---
-# <a name="create-an-azure-arc-enabled-onboarding-service-principal-preview"></a>创建支持 Azure Arc 的加入服务主体（预览）
+# <a name="create-an-azure-arc-enabled-onboarding-service-principal-preview"></a>创建启用了 Azure Arc 的载入服务主体 (预览) 
 
 ## <a name="overview"></a>概述
 
-可以使用具有有限权限的角色分配的服务主体，将 Kubernetes 群集加入到 Azure Arc。此方法在持续集成和持续部署 (CI/CD) 管道（如 Azure Pipelines 和 GitHub Actions）中非常有用。
+可以将 Kubernetes 群集加入 Azure Arc，使用具有有限权限角色分配的服务主体。 此功能可用于 (CI/CD) 管道中的持续集成和持续部署，如 Azure Pipelines 和 GitHub 操作。
 
-以下步骤提供了使用服务主体将 Kubernetes 群集加入 Azure Arc 的相关演练。
+演练以下步骤，了解如何使用服务主体将 Kubernetes 群集载入 Azure Arc。
 
 ## <a name="create-a-new-service-principal"></a>创建新服务主体
 
-使用信息性名称创建新服务主体。 请注意，该名称必须在 Azure Active Directory 租户中是唯一的：
+使用信息性名称创建一个新的服务主体，该服务主体是 Azure Active Directory 租户的唯一信息。
 
 ```console
 az ad sp create-for-RBAC --skip-assignment --name "https://azure-arc-for-k8s-onboarding"
@@ -45,16 +45,16 @@ az ad sp create-for-RBAC --skip-assignment --name "https://azure-arc-for-k8s-onb
 
 ## <a name="assign-permissions"></a>分配权限
 
-创建新的服务主体后，将 "Kubernetes Cluster-Azure Arc 载入" 角色分配给新创建的主体。 这是具有有限权限的内置 Azure 角色，只允许主体向 Azure 注册群集。 主体无法更新、删除或修改订阅中的任何其他群集或资源。
+将 "Kubernetes Cluster-Azure Arc 载入" 角色分配到新创建的服务主体。 此具有有限权限的内置 Azure 角色仅允许主体将群集注册到 Azure。 具有此已分配角色的主体无法更新、删除或修改订阅中的任何其他群集或资源。
 
 由于功能有限，客户可以轻松地将此主体重用于加入多个群集。
 
-可以在分配角色时传入相应的 `--scope` 参数，从而进一步限制权限。 这使得客户可以限制群集注册。 各类 `--scope` 参数支持以下场景：
+可以在分配角色时传入相应的参数，进一步限制权限 `--scope` 。 这使得客户可以限制群集注册。 各类 `--scope` 参数支持以下场景：
 
 | 资源  | `scope` 参数| 效果 |
 | ------------- | ------------- | ------------- |
-| 订阅 | `--scope /subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333` | 服务主体可以在给定订阅的现有资源组内注册任何群集 |
-| 资源组 | `--scope /subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333/resourceGroups/myGroup`  | 服务主体只能在资源组 `myGroup` 中注册群集 |
+| 订阅 | `--scope /subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333` | 服务主体可以在给定订阅中的现有资源组内注册任何群集。 |
+| 资源组 | `--scope /subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333/resourceGroups/myGroup`  | 服务主体 __只能__ 注册资源组中的群集 `myGroup` 。 |
 
 ```console
 az role assignment create \
@@ -78,9 +78,9 @@ az role assignment create \
 }
 ```
 
-## <a name="use-service-principal-with-the-azure-cli"></a>在 Azure CLI 中使用服务主体
+## <a name="use-service-principal-with-the-azure-cli"></a>将服务主体用于 Azure CLI
 
-引用新创建的服务主体：
+将新创建的服务主体引用为以下命令：
 
 ```azurecli
 az login --service-principal -u mySpnClientId -p mySpnClientSecret --tenant myTenantID

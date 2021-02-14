@@ -13,20 +13,30 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 10/18/2019
+ms.date: 02/10/2021
 ms.author: b-juche
-ms.openlocfilehash: 870caffe2bd286c2eec3390915bc5e64e0103a07
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ac83e5a9366a12c5adce0e08f04f2bb28a7d788d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85483459"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100374875"
 ---
 # <a name="troubleshoot-azure-netapp-files-resource-provider-errors"></a>排查 Azure NetApp 文件资源提供程序错误 
 
 本文介绍常见的 Azure NetApp 文件资源提供程序错误、其原因、解决方案和解决方法 (如有) 。
 
 ## <a name="common-azure-netapp-files-resource-provider-errors"></a>常见的 Azure NetApp 文件资源提供程序错误
+
+***`netAppAccounts`在此区域中，的创建受到限制。***
+
+当订阅 waitlisted Azure NetApp 文件，并且用户尝试创建 NetApp 帐户时，会发生这种情况。
+
+* 原因：   
+Azure NetApp 文件的 azure 资源提供程序未成功注册。 
+ 
+* 解决方案：   
+完成订阅后，完成 [Azure NetApp 资源提供程序注册](azure-netapp-files-register.md#resource-provider) 中所述的所有步骤 waitlisted。
 
 ***无法更改 BareMetalTenantId。***  
 
@@ -259,7 +269,7 @@ Azure API 依赖于 Azure NetApp 文件 API 来管理卷。 此错误表示 API 
 * 原因：   
 发生了内部错误，无法完成操作。
 * 解决方案：   
-此错误可能是暂时性的。 请稍等几分钟，然后重试。 如果问题仍然存在，请创建一个票证，让技术支持部门调查问题。
+此错误可能是暂时性的。 请等候几分钟，然后重试。 如果问题仍然存在，请创建一个票证，让技术支持部门调查问题。
 * 解决方法：   
 请稍等几分钟，然后检查问题是否仍然存在。
 

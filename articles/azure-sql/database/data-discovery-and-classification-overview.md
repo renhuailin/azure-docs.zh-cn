@@ -11,24 +11,24 @@ ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 12/01/2020
+ms.date: 02/11/2021
 tags: azure-synapse
-ms.openlocfilehash: 41ad711de81f075727e4c177c318054677cb0ece
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 254d69c723a97d9007a1f6c0f0eb7b34bcfe3c4e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98185345"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100392759"
 ---
 # <a name="data-discovery--classification"></a>数据发现和分类
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-数据发现和分类内置于 Azure SQL 数据库、Azure SQL 托管实例和 Azure Synapse Analytics 中。 它提供了在数据库中发现、分类、标记和报告敏感数据的基本功能。
+数据发现和分类内置于 Azure SQL 数据库、Azure SQL 托管实例和 Azure Synapse Analytics 中。 它提供用于发现、分类、标记和报告数据库中的敏感数据的基本功能。
 
 最敏感的数据可能包括业务、财务、医疗保健或个人信息。 发现和分类这些数据在组织的信息保护方法中发挥举足轻重的作用。 它可以充当基础结构，用于：
 
 - 帮助满足数据隐私标准和法规符合性要求。
-- 各种安全方案，如监视 (审核) 对敏感数据的访问。
+- 各种安全方案，如监视（审核）对敏感数据的访问。
 - 控制对包含高度敏感数据的数据库的访问并增强其安全性。
 
 > [!NOTE]
@@ -36,7 +36,7 @@ ms.locfileid: "98185345"
 
 ## <a name="what-is-data-discovery--classification"></a><a id="what-is-dc"></a>什么是数据发现和分类？
 
-数据发现 & 分类在 Azure 中引入了一组基本服务和新功能。 它构成适用于 SQL 数据库、SQL 托管实例和 Azure Synapse 的信息保护范例，旨在保护数据，而不仅仅是数据库。 范例包括：
+数据发现和分类在 Azure 中引入了一组基本服务和新功能。 它构成适用于 SQL 数据库、SQL 托管实例和 Azure Synapse 的信息保护范例，旨在保护数据，而不仅仅是数据库。 范例包括：
 
 - **发现和建议：** 分类引擎扫描数据库，并识别包含潜在敏感数据的列。 使用此功能可以通过 Azure 门户轻松地查看和应用建议的分类。
 
@@ -183,6 +183,13 @@ ms.locfileid: "98185345"
 - [获取](/rest/api/sql/sensitivitylabels/get)：获取指定列的敏感度标签。
 - [按数据库列出当前敏感度](/rest/api/sql/sensitivitylabels/listcurrentbydatabase)：获取指定数据库的当前敏感度标签。
 - [按数据库列出建议敏感度](/rest/api/sql/sensitivitylabels/listrecommendedbydatabase)：获取指定数据库的建议敏感度标签。
+
+
+## <a name="faq---advanced-classification-capabilities"></a>常见问题解答-高级分类功能
+
+**问**： [Azure 监控范围](https://docs.microsoft.com/azure/purview/overview) 是否会将 sql 数据发现替换 & 分类，或是否会立即停用 & 分类的 sql 数据发现？
+**答**：我们将继续支持 & 分类的 SQL 数据发现，并鼓励你采用具有更丰富功能的 [Azure 监控范围](https://docs.microsoft.com/azure/purview/overview) 来驱动高级分类功能和数据管理。 如果我们决定停用任何服务、功能、API 或 SKU，你将会收到包含迁移或转换路径的提前通知。 在此处了解有关 Microsoft 生命周期策略的详细信息。
+
 
 ## <a name="next-steps"></a><a id="next-steps"></a>后续步骤
 

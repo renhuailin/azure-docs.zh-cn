@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/19/2020
-ms.openlocfilehash: 78187b2cbb6603a0ae0df55465b9a5ce5e7dca7f
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: a4883bfce2469af0ee8bcc34933f94b0b5329959
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807540"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100518073"
 ---
 # <a name="register-and-scan-a-power-bi-tenant-preview"></a>注册并扫描 Power BI 租户 (预览版) 
 
@@ -23,7 +23,7 @@ ms.locfileid: "99807540"
 
 ## <a name="create-a-security-group-for-permissions"></a>创建权限的安全组
 
-若要设置身份验证，请创建一个安全组，并向其添加目录的托管标识。
+若要设置身份验证，请创建一个安全组，并向其添加监控范围托管标识。
 
 1. 在 [Azure 门户](https://portal.azure.com)中，搜索 **Azure Active Directory**。
 1. 在 Azure Active Directory 中创建一个新的安全组，方法是 [使用 Azure Active Directory 创建一个基本组并添加成员](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)。
@@ -35,11 +35,11 @@ ms.locfileid: "99807540"
 
     :::image type="content" source="./media/setup-power-bi-scan-PowerShell/security-group.png" alt-text="安全组类型":::
 
-1. 将目录的托管标识添加到此安全组。 选择 " **成员**"，然后选择 " **+ 添加成员**"。
+1. 将监控范围托管标识添加到此安全组。 选择 " **成员**"，然后选择 " **+ 添加成员**"。
 
     :::image type="content" source="./media/setup-power-bi-scan-PowerShell/add-group-member.png" alt-text="将目录的托管实例添加到组。":::
 
-1. 搜索你的目录并将其选中。
+1. 搜索监控范围托管标识并将其选中。
 
     :::image type="content" source="./media/setup-power-bi-scan-PowerShell/add-catalog-to-group-by-search.png" alt-text="通过搜索来添加目录":::
 
@@ -61,14 +61,14 @@ ms.locfileid: "99807540"
     :::image type="content" source="./media/setup-power-bi-scan-PowerShell/allow-service-principals-power-bi-admin.png" alt-text="显示如何允许服务主体获得只读 Power BI 管理 API 权限的图像":::
 
     > [!Caution]
-    > 如果允许创建的安全组 (将数据目录托管标识作为成员) 使用只读 Power BI 管理 Api，则还允许该安全组访问此租户中所有 ) 项目的元数据 (例如仪表板和报表名称、所有者、说明等。 将元数据提取到 Azure 监控范围中后，监控范围的权限（而不是 Power BI 权限）确定可以查看该元数据的用户。
+    > 如果允许创建的安全组 (将监控范围托管标识作为成员) 使用只读 Power BI 管理 Api，则还允许该安全组访问此租户中的所有 ) 项目的元数据 (例如仪表板和报表名称、所有者、说明等。 将元数据提取到 Azure 监控范围中后，监控范围的权限（而不是 Power BI 权限）确定可以查看该元数据的用户。
 
     > [!Note]
     > 你可以从开发人员设置中删除安全组，但不会从监控范围帐户中删除之前提取的元数据。 如果需要，可以单独删除它。
 
 ## <a name="register-your-power-bi-and-set-up-a-scan"></a>注册 Power BI 并设置扫描
 
-现在，你已将目录权限指定为连接到 Power BI 租户的管理员 API，你可以从目录门户设置扫描。
+现在，你已将监控范围托管标识权限连接到 Power BI 租户的管理员 API，你可以从 Azure 监控范围 Studio 设置扫描。
 
 首先，将一个特殊的功能标志添加到监控范围 URL 
 

@@ -1,19 +1,17 @@
 ---
 title: Azure 数据工厂中的 Power Query 活动
 description: 了解如何使用数据工厂管道中的数据整理功能的 Power Query 活动
-services: data-factory
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/18/2021
-ms.openlocfilehash: c0ad769ceba4fc3fa7f602d70188ea1942ca73aa
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: fc4f20db55f8e7e0b2f92cb8309c1c128b235089
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98791688"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100385449"
 ---
 # <a name="power-query-activity-in-data-factory"></a>数据工厂中的 Power query 活动
 

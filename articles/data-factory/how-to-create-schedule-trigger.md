@@ -1,23 +1,19 @@
 ---
 title: 在 Azure 数据工厂中创建计划触发器
 description: 了解如何在 Azure 数据工厂中创建按计划运行管道的触发器。
-services: data-factory
-documentationcenter: ''
 author: chez-charlie
 ms.author: chez
-manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/30/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: a6f53d6ce41085b2348857ccb5b45c06132d6a99
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 3673dd9eba717d2bdb569b4248936bbb59a8eae7
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96001977"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387574"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-schedule"></a>创建按计划运行管道的触发器
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -49,18 +45,18 @@ ms.locfileid: "96001977"
 1. 在“新建触发器”页中执行以下步骤： 
 
     1. 确认在“类型”中选择了“计划”。 
-    1. 为 **开始日期** 指定触发器的开始日期时间。 默认情况下，它在协调世界时 (UTC) 设置为当前日期时间。
-    1. 指定将在其中创建触发器的时区。 时区设置将应用于 " **开始日期**"、" **结束日期**" 和 "计划在高级定期选项中 **执行时间** "。 更改时区设置将不会自动更改开始日期。 请确保开始日期在指定的时区中是正确的。 请注意，触发器的计划执行时间将被认为是 "开始日期" (确保 "开始日期" 的1minute 早于执行时间，否则，它将在下一次定期) 触发管道。 
+    1. 对于“开始日期”，请指定触发器的开始日期/时间。 默认情况下，它设置为采用协调世界时 (UTC) 格式的当前日期/时间。
+    1. 指定将在其中创建触发器的时区。 时区设置将应用于高级定期选项中的“开始日期”、“结束日期”和“计划执行时间”。 更改时区设置不会自动更改开始日期。 请确保“开始日期”在指定的时区中是正确的。 请注意，触发器的计划执行时间将被视为在“开始日期”之后（请确保“开始日期”至少比执行时间早 1 分钟，否则会在下个周期触发管道）。 
 
         > [!NOTE]
-        > 对于观看夏令时的时区，触发器时间将自动调整年更改两次。 若要选择退出夏令时更改，请选择不遵守夏令时的时区（例如 UTC）
+        > 对于实施夏令时的时区，触发器时间会根据此每年两次的变更自动调整。 若要选择退出夏令时变更，请选择不实施夏令时的时区，例如 UTC
 
     1. 指定触发器的“重复周期”。 从下拉列表中选择一个值（“每分钟”、“每小时”、“每日”、“每周”和“每月”）。 在文本框中输入乘数。 例如，如果希望触发器每隔 15 分钟运行一次，请选择“每分钟”，并在文本框中输入 **15**。 
-    1. 若要指定结束日期时间，请选择 " **指定结束日期**"，然后指定 " _结束_ 时间"，然后选择 **"确定"**。 每次管道运行都需要付出相关成本。 若要进行测试，需确保只触发管道几次。 但是，请确保在发布时间和结束时间之间有足够的时间来运行管道。 只有在将解决方案发布到数据工厂之后，触发器才会生效，而不是在 UI 中保存触发器就会使该触发器生效。
+    1. 若要指定结束日期时间，请选择“指定结束日期”，指定“结束日期”，然后选择“确定”。 每次管道运行都需要付出相关成本。 若要进行测试，需确保只触发管道几次。 但是，请确保在发布时间和结束时间之间有足够的时间来运行管道。 只有在将解决方案发布到数据工厂之后，触发器才会生效，而不是在 UI 中保存触发器就会使该触发器生效。
 
         ![触发器设置](./media/how-to-create-schedule-trigger/trigger-settings-01.png)
 
-        ![结束日期的触发器设置](./media/how-to-create-schedule-trigger/trigger-settings-02.png)
+        ![对应于“结束日期”的触发器设置](./media/how-to-create-schedule-trigger/trigger-settings-02.png)
 
 1. 在“新建触发器”窗口中，选择“已激活”选项中的“是”，然后选择“确定”   。 以后，可以使用此复选框停用该触发器。 
 
@@ -78,7 +74,7 @@ ms.locfileid: "96001977"
 
     ![监视触发的运行](./media/how-to-create-schedule-trigger/monitor-triggered-runs.png)
 
-1. 切换到 "**触发器运行**  \  **计划**" 视图。 
+1. 切换到“触发器运行” \ “计划”视图。  
 
     ![监视触发器运行](./media/how-to-create-schedule-trigger/monitor-trigger-runs.png)
 
@@ -123,18 +119,18 @@ ms.locfileid: "96001977"
     ```
 
     在 JSON 代码片段中：
-    - 触发器的 **type** 元素设置为 "ScheduleTrigger"。
-    - **frequency** 元素设置为“Minute”，**interval** 元素设置为 15。 同样，触发器在开始和结束时间之间每15分钟运行一次管道。
-    - **时区** 元素指定在其中创建触发器的时区。 此设置会影响 **startTime** 和 **endTime**。
-    - **endTime** 元素比 **startTime** 元素的值晚一小时。 因此，该触发器在开始时间15分钟、30分钟和45分钟运行管道。 不要忘记将开始时间更新为当前 UTC 时间，将结束时间更新为比开始时间晚一小时。 
+    - 触发器的 **type** 元素设置为“ScheduleTrigger”。
+    - **frequency** 元素设置为“Minute”，**interval** 元素设置为 15。 因此，触发器在开始时间与结束时间之间每 15 分钟运行一次管道。
+    - **timeZone** 元素指定在其中创建触发器的时区。 此设置会影响 **startTime** 和 **endTime**。
+    - **endTime** 元素比 **startTime** 元素的值晚一小时。 因此，触发器将在开始时间之后的 15 分钟、30 分钟和 45 分钟运行管道。 不要忘记将开始时间更新为当前 UTC 时间，将结束时间更新为比开始时间晚一小时。 
 
         > [!IMPORTANT]
-        > 对于 UTC 时区，startTime 和 endTime 需要遵循格式 "yyyy-mm-dd-Yyyy-mm-ddthh： MM： ss **Z**"，而对于其他时区，Starttime 和 endtime 遵循 "Yyyy-mm-dd-yyyy-mm-ddthh： MM： ss"。 
+        > 对于 UTC 时区，startTime 和 endTime 需要遵循格式“yyyy-MM-ddTHH:mm:ss **Z**”，而对于其他时区，startTime 和 endTime 遵循“yyyy-MM-ddTHH:mm:ss”。 
         > 
-        > 按照 ISO 8601 标准，用于时间戳的 _Z_ 后缀将 datetime 标记为 UTC 时区，而呈现的时区字段毫无用处。 如果缺少 UTC 时区的 _Z_ 后缀，将导致触发器 _激活_ 时出现错误。
+        > 按照 ISO 8601 标准，时间戳的 Z 后缀将日期/时间标记为 UTC 时区，使 timeZone 字段变得无用。 如果 UTC 时区缺少 Z 后缀，则在触发器激活时将出现错误。
 
     - 触发器与 **Adfv2QuickStartPipeline** 管道相关联。 若要将多个管道与某个触发器相关联，请添加多个 **pipelineReference** 节。
-    - 快速入门中的管道采用两个 **参数** 值：**inputPath** 和 **outputPath**。 并从触发器传递这些参数的值。
+    - 快速入门中的管道采用两个 **参数** 值：**inputPath** 和 **outputPath**。 可以通过触发器传递这些参数的值。
 
 1. 使用 **Set-AzDataFactoryV2Trigger** cmdlet 创建一个触发器：
 
@@ -167,7 +163,7 @@ ms.locfileid: "96001977"
     ```
     
     > [!NOTE]
-    > 计划触发器的触发时间是在 UTC 时间戳中指定的。 _TriggerRunStartedAfter_ 和 _TRIGGERRUNSTARTEDBEFORE_ 还需要 UTC 时间戳
+    > 计划触发器的触发时间是采用 UTC 时间戳指定的。 _TriggerRunStartedAfter_ 和 _TriggerRunStartedBefore_ 也需要 UTC 时间戳
 
     若要在 Azure 门户中监视触发器运行和管道运行，请参阅[监视管道运行](quickstart-create-data-factory-resource-manager-template.md#monitor-the-pipeline)。
 
@@ -226,7 +222,7 @@ ms.locfileid: "96001977"
             client.Triggers.Start(resourceGroup, dataFactoryName, triggerName);
 ```
 
-若要在不同时区中创建触发器，而不是 UTC，则需要以下设置：
+若要在不同于 UTC 的其他时区中创建触发器，需要进行以下设置：
 ```csharp
 <<ClientInstance>>.SerializationSettings.DateFormatHandling = Newtonsoft.Json.DateFormatHandling.IsoDateFormat;
 <<ClientInstance>>.SerializationSettings.DateTimeZoneHandling = Newtonsoft.Json.DateTimeZoneHandling.Unspecified;
@@ -351,46 +347,46 @@ Azure 数据工厂版本 1 支持使用以下系统变量读取或写入分区�
 
 | JSON 属性 | 说明 |
 |:--- |:--- |
-| **startTime** | 一个日期/时间值。 对于简单的计划，**startTime** 属性的值适用于第一个匹配项。 对于复杂的计划，触发器的启动时间不早于指定的 **startTime** 值。 <br> 对于 UTC 时区，format 为 `'yyyy-MM-ddTHH:mm:ssZ'` ，对于其他时区，格式为 `'yyyy-MM-ddTHH:mm:ss'` 。 |
-| **endTime** | 触发器的结束日期和时间。 该触发器不在指定的结束日期和时间之后执行。 属性的值不能是过去的时间。 此属性是可选的。  <br> 对于 UTC 时区，format 为 `'yyyy-MM-ddTHH:mm:ssZ'` ，对于其他时区，格式为 `'yyyy-MM-ddTHH:mm:ss'` 。 |
-| **timeZone** | 在其中创建触发器的时区。 此设置会影响 **startTime**、 **endTime** 和 **schedule**。 请参阅 [支持的时区列表](#time-zone-option) |
+| **startTime** | 一个日期/时间值。 对于简单的计划，**startTime** 属性的值适用于第一个匹配项。 对于复杂的计划，触发器的启动时间不早于指定的 **startTime** 值。 <br> 对于 UTC 时区，格式为 `'yyyy-MM-ddTHH:mm:ssZ'`，对于其他时区，格式为 `'yyyy-MM-ddTHH:mm:ss'`。 |
+| **endTime** | 触发器的结束日期和时间。 该触发器不在指定的结束日期和时间之后执行。 属性的值不能是过去的时间。 此属性是可选的。  <br> 对于 UTC 时区，格式为 `'yyyy-MM-ddTHH:mm:ssZ'`，对于其他时区，格式为 `'yyyy-MM-ddTHH:mm:ss'`。 |
+| **timeZone** | 在其中创建触发器的时区。 此设置会影响 **startTime**、**endTime** 和 **schedule**。 请参阅[支持的时区列表](#time-zone-option) |
 | **recurrence** | 一个 recurrence 对象，指定触发器的定期触发规则。 recurrence 对象支持 **frequency**、**interval**、**endTime**、**count** 和 **schedule** 元素。 定义 recurrence 对象时，**frequency** 元素是必需的。 recurrence 对象的其他元素为可选元素。 |
 | **frequency** | 触发器定期触发的频率单位。 支持的值包括 "minute"、"hour"、"day"、"week" 和 "month"。 |
 | **interval** | 一个正整数，表示 **frequency** 值对应的时间间隔，决定了触发器的运行频率。 例如，如果 **interval** 为 3，**frequency** 为“week”，则触发器每 3 周定期触发一次。 |
 | **schedule** | 触发器的定期触发计划。 指定了 **frequency** 值的触发器会根据定期触发计划更改其定期触发。 **schedule** 属性包含对定期触发的修改，这些修改是按分钟、小时、工作日、月份日期和周次进行的。
 
 > [!IMPORTANT]
-> 对于 UTC 时区，startTime 和 endTime 需要遵循格式 "yyyy-mm-dd-Yyyy-mm-ddthh： MM： ss **Z**"，而对于其他时区，Starttime 和 endtime 遵循 "Yyyy-mm-dd-yyyy-mm-ddthh： MM： ss"。 
+> 对于 UTC 时区，startTime 和 endTime 需要遵循格式“yyyy-MM-ddTHH:mm:ss **Z**”，而对于其他时区，startTime 和 endTime 遵循“yyyy-MM-ddTHH:mm:ss”。 
 > 
-> 按照 ISO 8601 标准，用于时间戳的 _Z_ 后缀将 datetime 标记为 UTC 时区，而呈现的时区字段毫无用处。 如果缺少 UTC 时区的 _Z_ 后缀，将导致触发器 _激活_ 时出现错误。
+> 按照 ISO 8601 标准，时间戳的 Z 后缀将日期/时间标记为 UTC 时区，使 timeZone 字段变得无用。 如果 UTC 时区缺少 Z 后缀，则在触发器激活时将出现错误。
 
 ### <a name="schema-defaults-limits-and-examples"></a>架构默认值、限制和示例
 
-| JSON 属性 | 类型 | 必须 | 默认值 | 有效值 | 示例 |
+| JSON 属性 | 类型 | 必选 | 默认值 | 有效值 | 示例 |
 |:--- |:--- |:--- |:--- |:--- |:--- |
-| **startTime** | String | 是 | 无 | ISO-8601 日期时间 | 对于 UTC 时区 `"startTime" : "2013-01-09T09:30:00-08:00Z"` <br> 适用于其他时区 `"2013-01-09T09:30:00-08:00"` |
-| **timeZone** | String | 是 | 无 | [时区值](#time-zone-option)  | `"UTC"` |
+| **startTime** | String | 是 | 无 | ISO-8601 日期时间 | 对于 UTC 时区为 `"startTime" : "2013-01-09T09:30:00-08:00Z"` <br> 对于其他时区为 `"2013-01-09T09:30:00-08:00"` |
+| **timeZone** | 字符串 | 是 | 无 | [时区值](#time-zone-option)  | `"UTC"` |
 | **recurrence** | Object | 是 | 无 | Recurrence 对象 | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
 | **interval** | Number | 否 | 1 | 1 到 1,000 | `"interval":10` |
-| **endTime** | String | 是 | 无 | 代表将来某个时间的日期/时间值。 | 对于 UTC 时区 `"endTime" : "2013-02-09T09:30:00-08:00Z"` <br> 适用于其他时区 `"endTime" : "2013-02-09T09:30:00-08:00"`|
+| **endTime** | String | 是 | 无 | 代表将来某个时间的日期/时间值。 | 对于 UTC 时区为 `"endTime" : "2013-02-09T09:30:00-08:00Z"` <br> 对于其他时区为 `"endTime" : "2013-02-09T09:30:00-08:00"`|
 | **schedule** | Object | 否 | 无 | Schedule 对象 | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
 
 ### <a name="time-zone-option"></a>时区选项
 
-下面是用于计划触发器的部分时区：
+下面是计划触发器支持的一些时区：
 
-| 时区 | UTC 偏移量 (非夏令时)  | 时区值 | 查看夏令时 | 时间戳格式 |
+| 时区 | UTC 偏移量（非夏令时） | 时区值 | 实施夏令时 | 时间戳格式 |
 | :--- | :--- | :--- | :--- | :--- |
 | 协调世界时 | 0 | `UTC` | 否 | `'yyyy-MM-ddTHH:mm:ssZ'`|
-| 太平洋时间 (PT)  | -8 | `Pacific Standard Time` | 是 | `'yyyy-MM-ddTHH:mm:ss'` |
-| 中心时间 (CT)  | -6 | `Central Standard Time` | 是 | `'yyyy-MM-ddTHH:mm:ss'` |
-| 东部时间 (ET)  | -5 | `Eastern Standard Time` | 是 | `'yyyy-MM-ddTHH:mm:ss'` |
-| 格林尼治标准时间 (GMT)  | 0 | `GMT Standard Time` | 是 | `'yyyy-MM-ddTHH:mm:ss'` |
+| 太平洋时间 (PT) | -8 | `Pacific Standard Time` | 是 | `'yyyy-MM-ddTHH:mm:ss'` |
+| 中部时间 (CT) | -6 | `Central Standard Time` | 是 | `'yyyy-MM-ddTHH:mm:ss'` |
+| 东部时间 (ET) | -5 | `Eastern Standard Time` | 是 | `'yyyy-MM-ddTHH:mm:ss'` |
+| 格林威治标准时间 (GMT) | 0 | `GMT Standard Time` | 是 | `'yyyy-MM-ddTHH:mm:ss'` |
 | 中欧标准时间 | +1 | `W. Europe Standard Time` | 是 | `'yyyy-MM-ddTHH:mm:ss'` |
-| 印度标准时间 (IST)  | + 5:30 | `India Standard Time` | 否 | `'yyyy-MM-ddTHH:mm:ss'` |
-| 中国标准时间 | + 8 | `China Standard Time` | 否 | `'yyyy-MM-ddTHH:mm:ss'` |
+| 印度标准时间 (IST) | +5:30 | `India Standard Time` | 否 | `'yyyy-MM-ddTHH:mm:ss'` |
+| 中国标准时间 | +8 | `China Standard Time` | 否 | `'yyyy-MM-ddTHH:mm:ss'` |
 
-此列表不完整。 有关时区选项的完整列表，请在数据工厂门户[触发器创建页](#data-factory-ui)中浏览
+此列表不完整。 有关时区选项的完整列表，请在数据工厂门户中浏览[触发器创建页](#data-factory-ui)
 
 ### <a name="starttime-property"></a>startTime 属性
 下表说明了 **startTime** 属性如何控制触发器运行：
@@ -402,9 +398,9 @@ Azure 数据工厂版本 1 支持使用以下系统变量读取或写入分区�
 
 让我们查看一个示例，了解在开始时间是过去的时间，并且指定了定期触发但未指定计划的情况下，会发生什么事情。 假设当前时间为 `2017-04-08 13:00`，开始时间为 `2017-04-07 14:00`，定期触发为每两天触发一次。 （定义 **recurrence** 值时，可将 **frequency** 属性设置为 "day"，**interval** 属性设置为 2。）请注意，**startTime** 值为过去的时间，发生在当前时间之前。
 
-在这些情况下，第一次执行的位置为 `2017-04-09` `14:00` 。 计划程序引擎从开始时间计算执行循环。 过去的所有实例会被丢弃。 引擎将使用将来发生的下一个实例。 在这种情况下，开始时间 `2017-04-07` 为 `2:00pm` ，因此下一个实例是从该时间开始的两天， `2017-04-09` 即 `2:00pm` 。
+在这些情况下，首次执行时间为 `2017-04-09` `14:00`。 计划程序引擎从开始时间计算执行循环。 过去的所有实例会被丢弃。 引擎将使用将来发生的下一个实例。 在本方案中，开始时间为 `2017-04-07` `2:00pm`，因此下一个实例为从该时间算起的 2 天，即 `2017-04-09` `2:00pm`。
 
-首次执行时间是相同的，即使 **startTime** 值为 `2017-04-05 14:00` 或 `2017-04-01 14:00`。 在首次执行后，使用该计划计算后续执行。 因此，后续执行位于、 `2017-04-11` 之后、 `2:00pm` 之后， `2017-04-13` 等等 `2:00pm` `2017-04-15` `2:00pm` 。
+首次执行时间是相同的，即使 **startTime** 值为 `2017-04-05 14:00` 或 `2017-04-01 14:00`。 在首次执行后，使用该计划计算后续执行。 因此，后续执行的时间分别为 `2017-04-11` `2:00pm`、`2017-04-13` `2:00pm`、`2017-04-15` `2:00pm`，依此类推。
 
 最后，如果没有在触发器的计划中设置小时或分钟，则会将第一次执行时对应的小时或分钟值用作默认值。
 

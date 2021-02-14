@@ -1,22 +1,17 @@
 ---
 title: 有关如何配置 Azure-SSIS 集成运行时以加入虚拟网络的教程
-description: 了解如何加入 Azure SSIS 集成运行时，加入 Azure 虚拟网络。
-services: data-factory
-documentationcenter: ''
+description: 了解如何将 Azure-SSIS 集成运行时加入 Azure 虚拟网络。
 author: chugugrace
 ms.author: chugu
-ms.reviewer: ''
-manager: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 1/10/2020
-ms.openlocfilehash: fc34c2422816f23c0c3eb8adf8a02b5e7ed3b4c0
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 3dbbce4adc44696fdd12f6ce948b48b34caaed75
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636980"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100391229"
 ---
 # <a name="configure-an-azure-sql-server-integration-services-ssis-integration-runtime-ir-to-join-a-virtual-network"></a>配置 Azure SQL Server Integration Services (SSIS) 集成运行时 (IR) 以加入虚拟网络
 
@@ -31,9 +26,9 @@ ms.locfileid: "92636980"
 
 ## <a name="prerequisites"></a>先决条件
 
-- **Azure-SSIS 集成运行时** 。 如果没有 Azure SSIS 集成运行时，请在开始之前[在 Azure 数据工厂中预配 Azure SSIS 集成运行时](tutorial-deploy-ssis-packages-azure.md)。
+- **Azure-SSIS 集成运行时**。 如果没有 Azure SSIS 集成运行时，请在开始之前[在 Azure 数据工厂中预配 Azure SSIS 集成运行时](tutorial-deploy-ssis-packages-azure.md)。
 
-- **用户权限** 。 创建 Azure-SSIS IR 的用户必须至少使用以下选项之一在 Azure 数据工厂资源上进行[角色分配](../role-based-access-control/role-assignments-list-portal.md#list-role-assignments-for-a-user-at-a-scope)：
+- **用户权限**。 创建 Azure-SSIS IR 的用户必须至少使用以下选项之一在 Azure 数据工厂资源上进行[角色分配](../role-based-access-control/role-assignments-list-portal.md#list-role-assignments-for-a-user-at-a-scope)：
 
     - 使用内置的“网络参与者”角色。 此角色具有 _Microsoft.Network/\*_ 权限，具有比所需作用域更大的作用域。
     - 创建仅包括必需的 _Microsoft.Network/virtualNetworks/\*/join/action_ 权限的一个自定义角色。 如果你还想要使用自己的 Azure-SSIS IR 公共 IP 地址，同时将其加入 Azure 资源管理器虚拟网络，请在角色中包含 _Microsoft.Network/publicIPAddresses/*/join/action_ 权限。
@@ -98,7 +93,7 @@ ms.locfileid: "92636980"
 
    ![确认“已注册”状态](media/join-azure-ssis-integration-runtime-virtual-network/batch-registered-confirmation.png)
 
-   如果列表中未出现 **Microsoft.Batch** ，若要注册该提供程序，请在订阅中 [创建一个空的 Azure Batch 帐户](../batch/batch-account-create-portal.md)。 稍后可以删除该帐户。
+   如果列表中未出现 **Microsoft.Batch**，若要注册该提供程序，请在订阅中 [创建一个空的 Azure Batch 帐户](../batch/batch-account-create-portal.md)。 稍后可以删除该帐户。
 
 ## <a name="join-the-azure-ssis-ir-to-a-virtual-network"></a>将 Azure-SSIS IR 加入虚拟网络
 
@@ -137,9 +132,9 @@ ms.locfileid: "92636980"
 
    1. 对于“类型”，请选择虚拟网络的类型：“经典”或“Azure 资源管理器”。 我们建议选择 Azure 资源管理器虚拟网络，因为经典虚拟网络在不久后将被弃用。
 
-   1. 对于“VNet 名称”，请选择虚拟网络的名称。 它应与用于具有虚拟网络服务终结点的 SQL 数据库或带有专用终结点的 SQL 托管实例一起用于托管 SSISDB。 或者，它应该是连接到本地网络的同一个虚拟网络。 否则，它可以是为 Azure-SSIS IR 提供你自己的静态公共 IP 地址的任何虚拟网络。
+   1. 对于“VNet 名称”，请选择虚拟网络的名称。 它应该与具有虚拟网络服务终结点的 SQL 数据库或具有专用终结点的 SQL 托管实例托管 SSISDB 所用的虚拟网络相同。 或者，它应该是连接到本地网络的同一个虚拟网络。 否则，它可以是为 Azure-SSIS IR 提供你自己的静态公共 IP 地址的任何虚拟网络。
 
-   1. 对于“子网名称”，请选择虚拟网络的子网名称。 它应与用于 SQL 数据库的虚拟网络服务终结点相同，以便托管 SSISDB。 或者，它应与用于 SQL 托管实例的子网不同，专用终结点用于托管 SSISDB。 否则，它可以是为 Azure-SSIS IR 提供你自己的静态公共 IP 地址的任何子网。
+   1. 对于“子网名称”，请选择虚拟网络的子网名称。 它应与用于 SQL 数据库的虚拟网络服务终结点相同，以便托管 SSISDB。 或者，它应该与使用专用终结点来托管 SSISDB 的 SQL 托管实例所用的子网不同。 否则，它可以是为 Azure-SSIS IR 提供你自己的静态公共 IP 地址的任何子网。
 
    1. 选择“VNet 验证”。 如果验证成功，请选择“继续”。
 

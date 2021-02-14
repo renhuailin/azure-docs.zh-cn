@@ -4,12 +4,12 @@ description: Azure 应用服务的应用程序性能监视。 对加载和响应
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js, devx-track-dotnet
-ms.openlocfilehash: c0ee68659f4729ed8f63b9ea990343adf51513bd
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: cd203c64695a9a61a93409a96f6a92b9acf9fe70
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186365"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100365219"
 ---
 # <a name="monitor-azure-app-service-performance"></a>监视 Azure 应用服务性能
 
@@ -75,9 +75,10 @@ ms.locfileid: "96186365"
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/netcore)
 
-支持以下版本的 ASP.NET Core： ASP.NET Core 2.1、ASP.NET Core 2.2、ASP.NET Core 3.0、ASP.NET Core 3。1
+> [!IMPORTANT]
+> 支持以下版本的 ASP.NET Core： ASP.NET Core 2.1、3.1 和5.0。 版本2.0、2.2 和3.0 已经停用，不再受支持。 请升级到 [受支持](https://dotnet.microsoft.com/platform/support/policy/dotnet-core) 的 .net Core 版本，使自动检测能够正常工作。
 
-基于代理/扩展的监视，当前 **不支持** 基于 ASP.NET Core、自包含部署和基于 Linux 的应用程序的完整框架。 （在上述所有方案中，都可通过代码进行[手动检测](./asp-net-core.md)。）
+基于代理/扩展的监视目前不支持将 ASP.NET Core 提供的完整框架、独立部署和基于 Linux 的应用程序作为目标。 （在上述所有方案中，都可通过代码进行[手动检测](./asp-net-core.md)。）
 
 1. 在应用服务的 Azure 控制面板中，选择“Application Insights”。
 
@@ -90,7 +91,7 @@ ms.locfileid: "96186365"
 
      ![检测 Web 应用](./media/azure-web-apps/create-resource-01.png)
 
-2. 指定要使用哪些资源后，可以选择 Application Insights 根据平台为应用程序收集数据的方式。 ASP.NET Core 提供 ASP.NET Core 2.1、2.2、3.0 和3.1 的 **推荐收集** 或 **禁用** 。
+2. 指定要使用哪些资源后，可以选择 Application Insights 根据平台为应用程序收集数据的方式。 ASP.NET Core 提供 ASP.NET Core 2.1 和3.1 的 **推荐收集** 或 **禁用** 。
 
     ![根据平台选择选项](./media/azure-web-apps/choose-options-new-net-core.png)
 
@@ -100,7 +101,7 @@ ms.locfileid: "96186365"
 
 # <a name="java"></a>[Java](#tab/java)
 
-按照 [Application Insights java 3.0 代理](./java-in-process-agent.md) 的准则为 java 应用启用自动检测，无需更改代码。
+遵循 [Application Insights Java 3.0 代理](./java-in-process-agent.md)的准则，在不更改代码的情况下为 Java 应用启用自动检测。
 应用服务尚不支持自动集成。
 
 # <a name="python"></a>[Python](#tab/python)
@@ -128,7 +129,7 @@ ms.locfileid: "96186365"
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/netcore)
 
-**默认情况下**，使用 **建议集合** 为 ASP.NET Core 应用启用客户端监视，而不考虑应用设置 "APPINSIGHTS_JAVASCRIPT_ENABLED" 是否存在。
+对于使用“建议的集合”的 ASP.NET Core 应用，默认已启用客户端监视，无论是否存在应用设置“APPINSIGHTS_JAVASCRIPT_ENABLED” 。
 
 如果出于某种原因想要禁用客户端监视：
 
@@ -348,7 +349,7 @@ $app = Set-AzWebApp -AppSettings $newAppSettings -ResourceGroupName $app.Resourc
 
 ## <a name="troubleshooting"></a>故障排除
 
-下面是针对在 Azure 应用 Services 上运行的基于 ASP.NET 和 ASP.NET Core 的应用程序的基于扩展/代理监视的分步疑难解答指南。
+下面是我们针对 Azure 应用服务中运行的基于 ASP.NET 和 ASP.NET Core 的应用程序的基于扩展/代理的监视提供的分步故障排除指南。
 
 > [!NOTE]
 > 监视 Java 应用程序的建议方法是在不更改代码的情况下使用自动检测。 请按照 [Application Insights Java 3.0 代理](./java-in-process-agent.md)指南进行操作。
@@ -372,31 +373,31 @@ $app = Set-AzWebApp -AppSettings $newAppSettings -ResourceGroupName $app.Resourc
 
     * 确认 `AppAlreadyInstrumented`、`AppContainsDiagnosticSourceAssembly` 和 `AppContainsAspNetTelemetryCorrelationAssembly` 没有任何对应的条目。
         * 如果存在其中的任何条目，请从应用程序中删除以下包：`Microsoft.ApplicationInsights`、`System.Diagnostics.DiagnosticSource` 和 `Microsoft.AspNet.TelemetryCorrelation`。
-        * 仅适用于 ASP.NET Core 应用：在应用程序引用任何 Application Insights 包时（例如，如果之前已检测到 (或尝试使用 [ASP.NET CORE SDK](./asp-net-core.md)检测应用) ，则启用应用服务集成可能不会生效，并且数据可能不会出现在 Application Insights 中。 若要解决此问题，请在门户中打开 "与 Application Insights SDK 互操作"，将开始查看数据 Application Insights 
+        * 仅适用于 ASP.NET Core 应用：在应用程序引用任何 Application Insights 包时（例如，如果你先前已使用 [ASP.NET Core SDK](./asp-net-core.md) 检测（或尝试检测）应用），则启用应用服务集成可能不会生效，并且数据可能不会显示在 Application Insights 中。 若要解决此问题，请在门户中打开“与 Application Insights SDK 互操作”，你将开始在 Application Insights 中看到数据 
         > [!IMPORTANT]
         > 此功能处于预览阶段 
 
-        ![启用设置现有应用](./media/azure-web-apps/netcore-sdk-interop.png)
+        ![启用现有应用设置](./media/azure-web-apps/netcore-sdk-interop.png)
 
-        即使 Application Insights SDK 最初使用或尝试使用，数据现在仍将使用无代码置备方法发送。
+        即使 Application Insights SDK 被最初使用或尝试使用，现在仍将使用无代码方法发送数据。
 
         > [!IMPORTANT]
-        > 如果应用程序使用 Application Insights SDK 发送任何遥测数据，则将禁用此类遥测-换言之，自定义遥测（如有任何跟踪 * ( # A1 方法）以及任何自定义设置（例如采样）都将被禁用。 
+        > 如果应用程序使用 Application Insights SDK 发送任何遥测数据，则将禁用此类遥测数据，换言之，自定义遥测（如有任何 Track * () 方法，以及任何自定义设置，如采样）都将被禁用。 
 
 
 ### <a name="php-and-wordpress-are-not-supported"></a>不支持 PHP 和 WordPress
 
-不支持 PHP 和 WordPress 站点。 目前没有官方支持的 SDK/代理可用于在服务器端监视这些工作负荷。 但是，通过将客户端 JavaScript 添加到网页，可以使用 [JAVASCRIPT SDK](./javascript.md)在 PHP 或 WordPress 站点上手动检测客户端事务。
+不支持 PHP 和 WordPress 站点。 目前没有官方支持的 SDK/代理可用于在服务器端监视这些工作负荷。 但是，可以通过将客户端 javascript 添加到网页，使用 [JavaScript SDK](./javascript.md) 在 PHP 或 WordPress 站点上手动检测客户端事务。
 
 下表更详细地解释了这些值的含义、其根本原因和建议的修复方法：
 
 |问题值|说明|Fix
 |---- |----|---|
 | `AppAlreadyInstrumented:true` | 此值表示扩展已检测到 SDK 的某个功能已在应用程序中存在，因此将会回退。 原因可能是引用了 `System.Diagnostics.DiagnosticSource`、`Microsoft.AspNet.TelemetryCorrelation` 或 `Microsoft.ApplicationInsights`  | 删除引用。 某中的某些引用是从特定的 Visual Studio 模板默认添加的，而旧版 Visual Studio 可能会添加对 `Microsoft.ApplicationInsights` 的引用。
-|`AppAlreadyInstrumented:true` | 如果应用程序面向的是 ASP.NET Core 2.1 或2.2，则此值表示扩展已检测到 SDK 中已存在某些方面，并将会被恢复 | [建议](https://github.com/aspnet/Announcements/issues/287) .NET Core 2.1、2.2 客户改用 Microsoft.AspNetCore.App 元包。 此外，在门户中打开 "与 Application Insights SDK 互操作" (请参阅上述说明) 。|
+|`AppAlreadyInstrumented:true` | 如果应用程序面向 ASP.NET Core 2.1 或 2.2，此值表示扩展已检测到 SDK 的某个功能已在应用程序中存在，因此将会回退 | [建议](https://github.com/aspnet/Announcements/issues/287) .NET Core 2.1、2.2 客户改用 Microsoft.AspNetCore.App 元包。 此外，在门户中打开“与 Application Insights SDK 互操作”（请参阅上面的说明）。|
 |`AppAlreadyInstrumented:true` | 出现此值的原因还可能是前一部署的应用文件夹中存在上述 dll。 | 清除应用文件夹，以确保删除这些 dll。 检查本地应用的 bin 目录和应用服务的 wwwroot 目录。 （检查应用服务 Web 应用的 wwwroot 目录：高级工具(Kudu) > 调试控制台 > CMD > home\site\wwwroot）。
 |`AppContainsAspNetTelemetryCorrelationAssembly: true` | 此值表示扩展已检测到对应用程序中的 `Microsoft.AspNet.TelemetryCorrelation` 的引用，因此将会回退。 | 删除引用。
-|`AppContainsDiagnosticSourceAssembly**:true`|此值表示扩展已检测到对应用程序中的 `System.Diagnostics.DiagnosticSource` 的引用，因此将会回退。| 对于 ASP.NET，请删除引用。 
+|`AppContainsDiagnosticSourceAssembly**:true`|此值表示扩展已检测到对应用程序中的 `System.Diagnostics.DiagnosticSource` 的引用，因此将会回退。| 对于 ASP.NET，删除引用。 
 |`IKeyExists:false`|此值表示 AppSetting 中不存在检测密钥 `APPINSIGHTS_INSTRUMENTATIONKEY`。 可能的原因：可能意外删除了这些值，忘记了在自动化脚本中设置这些值，等等。 | 确保该设置在应用服务的应用程序设置中存在。
 
 ### <a name="appinsights_javascript_enabled-and-urlcompression-is-not-supported"></a>不支持 APPINSIGHTS_JAVASCRIPT_ENABLED 和 urlCompression
@@ -412,13 +413,19 @@ $app = Set-AzWebApp -AppSettings $newAppSettings -ResourceGroupName $app.Resourc
 
 ### <a name="default-website-deployed-with-web-apps-does-not-support-automatic-client-side-monitoring"></a>用 Web 应用部署的默认网站不支持自动客户端监视
 
-使用 `ASP.NET` 或 `ASP.NET Core` 运行时在 Azure 应用服务中创建 Web 应用时，该应用会部署单个静态 HTML 页面作为入门网站。 静态网页还会在 IIS 中加载 ASP.NET 托管 web 部件。 这使得能够测试无代码服务器端监视，但不支持自动客户端监视。
+使用 `ASP.NET` 或 `ASP.NET Core` 运行时在 Azure 应用服务中创建 Web 应用时，该应用会部署单个静态 HTML 页面作为入门网站。 该静态网页还会在 IIS 中加载 ASP.NET 托管 Web 部件。 这使得能够测试无代码服务器端监视，但不支持自动客户端监视。
 
 如果你希望在 Azure 应用服务 Web 应用中测试 ASP.NET 或 ASP.NET Core 的无代码服务器和客户端监视，建议遵循[创建 ASP.NET Core Web 应用](../../app-service/quickstart-dotnetcore.md)和[创建 ASP.NET Framework Web 应用](../../app-service/quickstart-dotnet-framework.md)官方指南，然后按照当前文章中的说明来启用监视。
 
 ### <a name="connection-string-and-instrumentation-key"></a>连接字符串和检测密钥
 
 使用无代码监视时，只需要连接字符串。 但是，我们仍然建议设置检测密钥，以便在执行手动检测时保持与旧版 SDK 的后向兼容性。
+
+### <a name="difference-between-standard-metrics-from-application-insights-vs-azure-app-service-metrics"></a>标准指标与 Application Insights 与 Azure App Service 指标之间有何区别？
+
+Application Insights 为发出到应用程序的请求收集遥测数据。 如果在 WebApps/IIS 中发生故障，并且请求未到达用户应用程序，则 Application Insights 将不会有任何有关它的遥测。
+
+Application Insights 计算的持续时间 `serverresponsetime` 不一定与 Web 应用观察到的服务器响应时间匹配。 这是因为 Application Insights 只计算请求实际到达用户应用程序时的持续时间。 如果请求在 IIS 中停滞/排队，则该等待时间将包含在 Web 应用指标中，但不会包含在 Application Insights 度量值中。
 
 ## <a name="release-notes"></a>发行说明
 

@@ -8,12 +8,12 @@ ms.date: 02/01/2021
 ms.author: govindk
 ms.reviewer: sngun
 ms.custom: references_regions
-ms.openlocfilehash: 036f086c88267f6a20da51746ca875c48a248712
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: d1dc108ecec93dddeb768eb61af425ba67f23002
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99538835"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100393133"
 ---
 # <a name="continuous-backup-with-point-in-time-restore-preview-feature-in-azure-cosmos-db"></a>带有时间点还原的持续备份 (预览) 功能 Azure Cosmos DB
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -33,7 +33,7 @@ Azure Cosmos DB 在后台执行数据备份，而不使用任何额外的预配�
 
 :::image type="content" source="./media/continuous-backup-restore-introduction/continuous-backup-restore-blob-storage.png" alt-text="Azure Cosmos DB 数据备份到 Azure Blob 存储。" lightbox="./media/continuous-backup-restore-introduction/continuous-backup-restore-blob-storage.png" border="false":::
 
-"还原 (的可用时间窗口" 也称为 "保留期") 是以下两个值中的较小值： "30 天后过期" 或 "直到资源创建时间"。 还原的时间点可以是保持期内的任何时间戳。
+Restore (的可用时间窗口（也称为保持期) ）是以下两个值中的较小值： *过去的30天后（从现在* 起），或 *直到资源创建时间*。 还原的时间点可以是保持期内的任何时间戳。
 
 在公共预览版中，你可以使用 [Azure 门户](continuous-backup-restore-portal.md)、 [Azure 命令行接口](continuous-backup-restore-command-line.md) (az CLI) 、 [AZURE POWERSHELL](continuous-backup-restore-powershell.md)或 [Azure 资源管理器](continuous-backup-restore-template.md)将 SQL API 或 MongoDB 内容点的 Azure Cosmos DB 帐户还原到另一个帐户。
 
@@ -59,17 +59,18 @@ Azure Cosmos DB 在后台执行数据备份，而不使用任何额外的预配�
 
 ## <a name="restore-scenarios"></a>还原方案
 
-下面是由时间点还原功能解决的一些关键方案。 方案 [a] 到 [c] 演示如果事先知道还原时间戳，如何触发还原。 但是，在某些情况下，你不知道意外删除或损坏的确切时间。 方案 [d] 和 [e] 演示如何使用可还原的数据库或容器上的新事件源 Api 来 _发现_ 还原时间戳。
+下面是由时间点还原功能解决的一些关键方案。 方案 [a] 到 [c] 演示如果事先知道还原时间戳，如何触发还原。
+但是，在某些情况下，你不知道意外删除或损坏的确切时间。 方案 [d] 和 [e] 演示如何使用可还原的数据库或容器上的新事件源 Api 来 _发现_ 还原时间戳。
 
 :::image type="content" source="./media/continuous-backup-restore-introduction/restorable-account-scenario.png" alt-text="可还原帐户的生命周期事件和时间戳。" lightbox="./media/continuous-backup-restore-introduction/restorable-account-scenario.png" border="false":::
 
-a. **还原已删除的帐户** -可以从 " **还原** " 窗格查看所有可还原的已删除帐户。 例如，如果在时间戳 T3 上删除 "帐户 A"。 在这种情况下，刚好在 T3、位置、目标帐户名称、资源组和目标帐户名称之前的时间戳足以从 [Azure 门户](continuous-backup-restore-portal.md#restore-deleted-account)、 [PowerShell](continuous-backup-restore-powershell.md#trigger-restore)或 [CLI](continuous-backup-restore-command-line.md#trigger-restore)进行还原。  
+a. **还原已删除的帐户** -可以从 " **还原** " 窗格查看所有可还原的已删除帐户。 例如，如果在时间戳 T3 上删除 *帐户 A* 。 在这种情况下，刚好在 T3、位置、目标帐户名称、资源组和目标帐户名称之前的时间戳足以从 [Azure 门户](continuous-backup-restore-portal.md#restore-deleted-account)、 [PowerShell](continuous-backup-restore-powershell.md#trigger-restore)或 [CLI](continuous-backup-restore-command-line.md#trigger-restore)进行还原。  
 
 :::image type="content" source="./media/continuous-backup-restore-introduction/restorable-container-database-scenario.png" alt-text="可还原数据库和容器具有时间戳的生命周期事件。" lightbox="./media/continuous-backup-restore-introduction/restorable-container-database-scenario.png" border="false":::
 
-b. **还原特定区域中某个帐户的数据** -例如，如果 "帐户 a" 存在于 "美国东部" 和 "美国西部" 两个区域的时间戳 T3。 如果在 "美国西部" 中需要帐户 A 的副本，则可以使用 "美国西部" 作为目标位置，从 [Azure 门户](continuous-backup-restore-portal.md)、 [PowerShell](continuous-backup-restore-powershell.md#trigger-restore)或 [CLI](continuous-backup-restore-command-line.md#trigger-restore) 执行时间点还原。
+b. **还原特定区域中的帐户数据** -例如，如果 *帐户 a* 存在于两个区域， *美国东部* 和 *美国西部* 。 如果在 *美国西部* 需要帐户 a 的副本，则可以使用 "美国西部" 作为目标位置，从 [Azure 门户](continuous-backup-restore-portal.md)、 [PowerShell](continuous-backup-restore-powershell.md#trigger-restore)或 [CLI](continuous-backup-restore-command-line.md#trigger-restore) 执行时间点还原。
 
-c. **使用已知的还原时间戳从容器内的意外写入或删除操作中恢复** （例如，如果 **知道** "数据库 1" 中的 "容器 1" 的内容在时间戳 T3 上被意外修改。 可以从 [Azure 门户](continuous-backup-restore-portal.md#restore-live-account)、 [PowerShell](continuous-backup-restore-powershell.md#trigger-restore)或 [CLI](continuous-backup-restore-command-line.md#trigger-restore) 执行时间点还原，并将其转换为时间戳 T3 上的其他帐户，以恢复容器的所需状态。
+c. **使用已知的还原时间戳从容器内的意外写入或删除操作中恢复**（例如，如果你 **知道***数据库 1* 内 *容器 1* 的内容在时间戳 T3 上被意外修改。 可以从 [Azure 门户](continuous-backup-restore-portal.md#restore-live-account)、 [PowerShell](continuous-backup-restore-powershell.md#trigger-restore)或 [CLI](continuous-backup-restore-command-line.md#trigger-restore) 执行时间点还原，并将其转换为时间戳 T3 上的其他帐户，以恢复容器的所需状态。
 
 d. 在 **意外删除数据库之前将帐户还原到以前的某个时间点**-在 [Azure 门户](continuous-backup-restore-portal.md#restore-live-account)中，可以使用 "事件源" 窗格确定数据库的删除时间，并找到还原时间。 同样，使用 [Azure CLI](continuous-backup-restore-command-line.md#trigger-restore) 和 [PowerShell](continuous-backup-restore-powershell.md#trigger-restore)，可以通过枚举数据库事件源来发现数据库删除事件，然后使用所需的参数触发 restore 命令。
 
@@ -81,7 +82,7 @@ Azure Cosmos DB 允许你隔离和限制对特定角色或主体的连续备份�
 
 ## <a name="pricing"></a><a id="continuous-backup-pricing"></a>定价
 
-Azure Cosmos DB 启用了连续备份的帐户将每月额外的费用添加到 "存储备份" 和 "还原数据"。 每次启动还原操作时，都会添加还原成本。 如果使用连续备份配置帐户，但不还原数据，则只会在帐单中包含备份存储开销。
+如果 Azure Cosmos DB 启用了连续备份的帐户，则将会额外收取每月一次 *存储备份* 和 *还原数据* 的费用。 每次启动还原操作时，都会添加还原成本。 如果使用连续备份配置帐户，但不还原数据，则只会在帐单中包含备份存储开销。
 
 下面的示例基于在美国非政府地区部署的 Azure Cosmos 帐户的价格。 定价和计算可能因所使用的区域而异，有关最新定价信息，请参阅 [Azure Cosmos DB 定价页](https://azure.microsoft.com/pricing/details/cosmos-db/) 。
 

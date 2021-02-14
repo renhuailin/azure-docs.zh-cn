@@ -1,22 +1,18 @@
 ---
 title: 从 HTTP 源移动数据-Azure
 description: 了解如何使用 Azure 数据工厂从本地或云 HTTP 源移动数据。
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
+ms.author: jingwang
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/22/2018
-ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 653a53d6bb5c69cd95fd5e9a2483b51de8293b40
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: ce29b5a112d70575a721b0b527947fd95868da80
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97608572"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100382916"
 ---
 # <a name="move-data-from-an-http-source-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 HTTP 源移动数据
 
@@ -49,7 +45,7 @@ ms.locfileid: "97608572"
 
 下表描述了特定于 HTTP 链接服务的 JSON 元素：
 
-| properties | 说明 | 必需 |
+| properties | 说明 | 必须 |
 | --- | --- | --- |
 | type | **type** 属性必须设置为 **Http**。 | 是 |
 | url | Web 服务器的基 URL。 | 是 |
@@ -64,7 +60,7 @@ ms.locfileid: "97608572"
 
 将“authenticationType”设置为“基本”、“摘要式”或“Windows”。 除了前面部分所述的通用 HTTP 连接器属性，还设置以下属性：
 
-| properties | 说明 | 必选 |
+| properties | 说明 | 必须 |
 | --- | --- | --- |
 | userName | 用于访问 HTTP 终结点的用户名。 | 是 |
 | password | 用户 (**用户名**) 的密码。 | 是 |
@@ -95,7 +91,7 @@ ms.locfileid: "97608572"
 | properties | 说明 | 必须 |
 | --- | --- | --- |
 | embeddedCertData | PFX 文件的二进制数据的 Base64 编码内容。 | 指定 **embeddedCertData** 或 **certThumbprint** |
-| certThumbprint | 在网关计算机的证书存储中安装的证书的指纹。 仅当从本地 HTTP 源复制数据时才适用。 | 指定 **embeddedCertData** 或 **certThumbprint** |
+| certThumbprint | 网关计算机的证书存储中安装的证书的指纹。 仅当从本地 HTTP 源复制数据时才适用。 | 指定 **embeddedCertData** 或 **certThumbprint** |
 | password | 与证书关联的密码。 | 否 |
 
 如果使用 **certThumbprint** 进行身份验证，并在本地计算机的个人存储中安装了证书，则需要向网关服务授予读取权限：
@@ -155,7 +151,7 @@ ms.locfileid: "97608572"
 
 每个数据集类型的 **typeProperties** 节都不同。 **typeProperties** 节提供有关数据在数据存储中的位置的信息。 **Http** 类型的数据集的 **typeProperties** 节具有以下属性：
 
-| properties | 说明 | 必需 |
+| properties | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 数据集的 **type** 必须设置为 **Http**。 | 是 |
 | relativeUrl | 包含数据的资源的相对 URL。 未指定路径时，仅使用链接服务定义中指定的 URL。 <br><br> 若要构造动态 URL，可以使用[数据工厂函数和系统变量](data-factory-functions-variables.md)。 示例：**relativeUrl**: **$$Text.Format('/my/report?month={0:yyyy}-{0:MM}&fmt=csv', SliceStart)**。 | 否 |
@@ -218,7 +214,7 @@ ms.locfileid: "97608572"
 
 目前，如果复制活动中的源为 **HttpSource** 类型，则支持以下属性：
 
-| properties | 说明 | 必需 |
+| properties | 说明 | 必须 |
 | -------- | ----------- | -------- |
 | httpRequestTimeout | 用于获取响应的 HTTP 请求的超时 （TimeSpan 值）  。 这是获取响应而不是读取响应数据的超时。 | 否<br /> (默认值： **00:01:40**)  |
 

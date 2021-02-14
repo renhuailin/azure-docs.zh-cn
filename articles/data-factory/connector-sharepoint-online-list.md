@@ -1,22 +1,17 @@
 ---
 title: 使用 Azure 数据工厂从 SharePoint Online 列表复制数据
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 SharePoint Online 列表中复制到受支持的接收器数据存储。
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: jingwang
-ms.openlocfilehash: 440dd561beddc9696ec703142fe82655b69fbb48
-ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
+ms.openlocfilehash: 3f05c90ba3c7e6b47009cbb597c56dac8a01427a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99474941"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100393422"
 ---
 # <a name="copy-data-from-sharepoint-online-list-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 SharePoint Online 列表复制数据
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -196,7 +191,7 @@ SharePoint Online 列表链接的服务支持以下属性：
 | 多行文本                          | Edm.String                                           | 字符串                                   |
 | 选项（可供选择的菜单）                    | Edm.String                                           | 字符串                                   |
 | 数字（1、1.0、100）                            | Edm.Double                                           | Double                                   |
-| 货币（$、¥、€）                              | Edm.Double                                           | Double                                   |
+| 货币 ($，¥， &euro;)                               | Edm.Double                                           | Double                                   |
 | 日期和时间                                   | Edm.DateTime                                         | DateTime                                 |
 | 查阅项（此网站已有的信息）       | Edm.Int32                                            | Int32                                    |
 | 是/否（复选框）                              | Edm.Boolean                                          | Boolean                                  |

@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fc51a8af85b85db28265d1fca420a5b9b368b078
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: d843755847d074e00aec9ed2830cb873b6bb3382
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99576875"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100365406"
 ---
 # <a name="reset-redemption-status-for-a-guest-user"></a>重置来宾用户的兑换状态
 
@@ -26,7 +26,7 @@ ms.locfileid: "99576875"
 - 用户已移动到其他公司，但仍需要对你的资源具有相同的访问权限
 - 用户的责任已传递给其他用户
 
-若要在之前管理这些方案，你必须从你的目录中手动删除来宾用户的帐户，并 reinvite 用户。 现在，你可以使用 PowerShell 或 Microsoft Graph 邀请 API 来重置用户的兑换状态并 reinvite 用户，同时保留用户的对象 ID、组成员身份和应用分配。 当用户兑换新邀请时，新的电子邮件地址将变成用户的 UPN。 然后，用户可以使用新电子邮件或已添加到该用户对象的属性的电子邮件登录 `otherMails` 。
+若要在之前管理这些方案，你必须从你的目录中手动删除来宾用户的帐户，并 reinvite 用户。 现在，你可以使用 PowerShell 或 Microsoft Graph 邀请 API 来重置用户的兑换状态并 reinvite 用户，同时保留用户的对象 ID、组成员身份和应用分配。 当用户兑换新邀请时，用户的 UPN 将不会更改，但用户的登录名称将更改为新的电子邮件。 然后，用户可以使用新电子邮件或已添加到该用户对象的属性的电子邮件登录 `otherMails` 。
 
 ## <a name="use-powershell-to-reset-redemption-status"></a>使用 PowerShell 重置兑换状态
 

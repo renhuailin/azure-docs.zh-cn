@@ -4,67 +4,101 @@ description: 了解 Azure 文件的可伸缩性和性能目标信息，包括容
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/16/2019
+ms.date: 02/12/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: e10f45af89e19f6fe62ff729f96d870e008c96ec
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: 6ef255d78d3dd3ff6fcc5eba7aad522018185299
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98611094"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100518889"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Azure 文件可伸缩性和性能目标
+[Azure 文件](storage-files-introduction.md) 在云中提供完全托管的文件共享，这些共享可通过 SMB 和 NFS 文件系统协议进行访问。 本文讨论了 Azure 文件和 Azure 文件同步的可伸缩性和性能目标。
 
-[Azure 文件](storage-files-introduction.md)在云中提供完全托管的文件共享，这些共享项可通过行业标准 SMB 协议进行访问。 本文讨论了 Azure 文件和 Azure 文件同步的可伸缩性和性能目标。
-
-此处列出的可伸缩性和性能目标是高端目标，但可能会受部署中的其他变量影响。 例如，除了受限于托管着 Azure 文件服务的服务器之外，针对文件的吞吐量还可能会受限于可变的网络带宽。 强烈建议你对使用模式进行测试，以确定 Azure 文件的可伸缩性和性能是否满足你的要求。 随着时间的推移，我们也一直在努力提高这些限制。 如果希望我们提高某些限制，请尽管通过下面的评论或者通过 [Azure 文件 UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files) 向我们提供反馈。
-
-## <a name="azure-storage-account-scale-targets"></a>Azure 存储帐户规模目标
-
-Azure 文件共享的父资源是 Azure 存储帐户。 存储帐户表示 Azure 中的一个存储池，该存储池可供包括 Azure 文件在内多个存储服务用来存储数据。 在存储帐户中存储数据的其他服务有 Azure Blob 存储、Azure 队列存储和 Azure 表存储。 以下目标适用于在存储帐户中存储数据的所有存储服务：
-
-[!INCLUDE [azure-storage-account-limits-standard](../../../includes/azure-storage-account-limits-standard.md)]
-
-[!INCLUDE [azure-storage-limits-azure-resource-manager](../../../includes/azure-storage-limits-azure-resource-manager.md)]
-
-> [!Important]  
-> 其他存储服务的常规用途存储帐户利用率会影响存储帐户中的 Azure 文件共享。 例如，如果由于 Azure Blob 存储而达到了最大存储帐户容量，则将无法在 Azure 文件共享上创建新文件，即使 Azure 文件共享低于最大共享大小。
+此处列出的可伸缩性和性能目标是高端目标，但可能会受部署中的其他变量影响。 例如，文件的吞吐量也可能受到可用网络带宽的限制，而不只是托管 Azure 文件共享的服务器。 强烈建议你对使用模式进行测试，以确定 Azure 文件的可伸缩性和性能是否满足你的要求。 随着时间的推移，我们也一直在努力提高这些限制。 
 
 ## <a name="azure-files-scale-targets"></a>Azure 文件规模目标
+Azure 文件共享将部署到存储帐户。存储帐户是代表存储共享池的顶级对象。 此存储池可用于部署多个文件共享。 因此需要考虑三个类别：存储帐户、Azure 文件共享和文件。
 
-对于 Azure 文件存储，需要考虑三类限制：存储帐户、共享和文件。
+### <a name="storage-account-scale-targets"></a>存储帐户缩放目标
+对于客户的不同存储方案，Azure 支持多种类型的存储帐户，但对于 Azure 文件存储，有两个主要类型的存储帐户。 需要创建的存储帐户类型取决于你是要创建标准文件共享还是要创建高级文件共享： 
 
-例如：使用高级文件共享时，单个共享可以达到 100,000 IOPS，单个文件最多可以扩展到 5,000 IOPS。 因此，如果一个共享中有三个文件，则可以从该共享获取的最大 IOPS 为 15,000。
+- **常规用途版本 2 (GPv2) 存储帐户**：使用 GPv2 存储帐户可以在标准的/基于硬盘（基于 HDD）的硬件上部署 Azure 文件共享。 除了存储 Azure 文件共享以外，GPv2 存储帐户还可以存储其他存储资源，例如 Blob 容器、队列或表。 文件共享可部署到优化 (默认) 、热或冷层的事务中。
 
-### <a name="standard-storage-account-limits"></a>标准存储帐户限制
+- **FileStorage 存储帐户**：使用 FileStorage 存储帐户可以在高级/基于固态磁盘（基于 SSD）的硬件上部署 Azure 文件共享。 FileStorage 帐户只能用于存储 Azure 文件共享；其他存储资源（Blob 容器、队列、表等）都不能部署在 FileStorage 帐户中。
 
-有关这些限制，请参阅 [Azure 存储帐户规模目标](#azure-storage-account-scale-targets)部分。
+| 特性 | GPv2 存储帐户 (标准)  | FileStorage 存储帐户 (高级)  |
+|-|-|-|
+| 每个订阅每个区域的存储帐户数 | 250 | 250 |
+| 最大存储帐户容量 | 5 PiB<sup>1</sup> | 100 TiB (预配)  |
+| 最大文件共享数 | 无限制 | 无限制，所有共享的预配总大小必须小于最大存储帐户容量 |
+| 最大并发请求速率 | 20000 IOPS<sup>1</sup> | 100,000 IOPS |
+| 最大入口 | <ul><li>美国/欧洲： 10 Gbp/sec<sup>1</sup></li><li>其他区域 (LRS/ZRS) ： 10 Gbp/秒<sup>1</sup></li><li> (GRS) 的其他区域： 5 Gbp/秒<sup>1</sup></li></ul> | 4136 MiB/秒 |
+| 出口上限 | 50 Gbp/秒<sup>1</sup> | 6204 MiB/秒 |
+| 虚拟网络规则的最大数目 | 200 | 200 |
+| 最大 IP 地址规则数 | 200 | 200 |
+| 管理读取操作 | 每 5 分钟 800 次 | 每 5 分钟 800 次 |
+| 管理写入操作 | 每小时10美元/每小时1200 | 每小时10美元/每小时1200 |
+| 管理列表操作 | 每 5 分钟 100 次 | 每 5 分钟 100 次 |
 
-### <a name="premium-filestorage-account-limits"></a>高级 FileStorage 帐户限制
+<sup>1</sup> 常规用途版本2存储帐户通过请求支持更高的容量限制和更高的入口限制。 若要请求增加帐户限制，请与 [Azure 支持](https://azure.microsoft.com/support/faq/)联系。
 
-[!INCLUDE [azure-storage-limits-filestorage](../../../includes/azure-storage-limits-filestorage.md)]
+### <a name="azure-file-share-scale-targets"></a>Azure 文件共享缩放目标
+| 特性 | 标准文件共享<sup>1</sup> | 高级文件共享 |
+|-|-|-|
+| 文件共享的最小大小 | 无最低 | 100 GiB (预配)  |
+| 预配大小增加/减少单位 | 不可用 | 1 GiB |
+| 文件共享的最大大小 | <ul><li>100 TiB，已启用大文件共享功能<sup>2</sup></li><li>5 TiB，默认值</li></ul> | 100 TiB |
+| 文件共享中的文件数上限 | 无限制 | 无限制 |
+| 最大请求速率 (最大 IOPS)  | <ul><li>10000，启用了大文件共享功能<sup>2</sup></li><li>每100毫秒1000或100请求，默认值为</li></ul> | <ul><li>基线 IOPS： 400 + 每个 GiB 1 IOPS，最高100000</li><li>IOPS 突发：最大 (4000，每个 GiB) 3 倍的 IOPS，最多100000</li></ul> |
+| 单个文件共享的最大流入量 | <ul><li>最高 300 MiB/秒，启用了大文件共享功能<sup>2</sup></li><li>最高 60 MiB/秒，默认值</li></ul> | 40 MiB/秒 + 0.04 * 预配 GiB |
+| 单个文件共享的最大流出量 | <ul><li>最高 300 MiB/秒，启用了大文件共享功能<sup>2</sup></li><li>最高 60 MiB/秒，默认值</li></ul> | 60 MiB/秒 + 0.06 * 预配 GiB |
+| 共享快照的最大数目 | 200快照 | 200快照 |
+| 最大对象（目录和文件）名称长度 | 2,048 个字符 | 2,048 个字符 |
+| 最大路径名组成部分（在路径 \A\B\C\D 中，每个字母是一个组成部分） | 255 个字符 | 255 个字符 |
+| 硬链接限制（仅限 NFS） | 不可用 | 178 |
+| SMB 多路通道的最大数量 | 不适用 | 4 |
+| 每个文件共享的存储的访问策略的最大数目 | 5 | 5 |
 
-> [!IMPORTANT]
-> 存储帐户限制适用于所有共享。 仅当每个 FileStorage 帐户只有一个共享时，才能实现 FileStorage 帐户的最大扩展。
+<sup>1</sup> 标准文件共享的限制适用于标准文件共享可用的所有三个层：事务优化、热和冷。
 
-### <a name="file-share-and-file-scale-targets"></a>文件共享和文件缩放目标
+<sup>2</sup> 标准文件共享上的默认值为 5 TiB，请参阅 [启用和创建大型文件共享](./storage-files-how-to-create-large-file-share.md) ，了解有关如何增加最多 100 TiB 的标准文件共享容量的详细信息。
 
-> [!NOTE]
-> 超过 5 TiB 的标准文件共享具有某些限制。 有关启用较大文件共享大小的限制和说明的列表，请参阅规划指南的[在标准文件共享上启用较大文件共享](storage-files-planning.md#enable-standard-file-shares-to-span-up-to-100-tib)部分。
+### <a name="file-scale-targets"></a>文件缩放目标
+| 特性 | 标准文件共享中的文件  | 高级文件共享中的文件  |
+|-|-|-|
+| 文件大小上限 | 4 TiB | 4 TiB |
+| 最大并发请求速率 | 1,000 IOPS | 最高 8000<sup>1</sup> |
+| 文件的最大入口 | 60 MiB/秒 | 200 MiB/秒 (最多1个 GiB/s，SMB 多通道预览版) <sup>2</sup>|
+| 文件的最大出口 | 60 MiB/秒 | 300 MiB/秒 (最多1个 GiB/s，SMB 多通道预览版) <sup>2</sup> |
+| 最大并发句柄数 | 2000句柄 | 2000句柄  |
 
-[!INCLUDE [storage-files-scale-targets](../../../includes/storage-files-scale-targets.md)]
-
-[!INCLUDE [storage-files-premium-scale-targets](../../../includes/storage-files-premium-scale-targets.md)]
+<sup>1 适用于读取和写入 io (通常小于或等于 64 KiB) 的较小 IO 大小。除读取和写入之外的元数据操作可能较低。</sup> 
+<sup>2 根据计算机网络限制、可用带宽、IO 大小、队列深度以及其他因素。有关详细信息，请参阅[SMB 多通道性能](./storage-files-smb-multichannel-performance.md)。</sup>
 
 ## <a name="azure-file-sync-scale-targets"></a>Azure 文件同步规模目标
+下表指示了 Microsoft 测试的边界，还指出了哪些目标是硬限制：
 
-Azure 文件同步的设计目标是无限使用，但并非总是可以无限使用。 下表指示了 Microsoft 测试的边界，还指出了哪些目标是硬限制：
+| 资源 | 目标 | 硬限制 |
+|----------|--------------|------------|
+| 每个区域的存储同步服务数 | 100 个存储同步服务 | 是 |
+| 每个存储同步服务的同步组数 | 200 个同步组 | 是 |
+| 每个存储同步服务的已注册服务器 | 99 台服务器 | 是 |
+| 每个同步组的云终结点数 | 1 个云终结点 | 是 |
+| 每个同步组的服务器终结点数 | 100 个服务器终结点 | 是 |
+| 每个服务器的服务器终结点数 | 30 个服务器终结点 | 是 |
+| 每个同步组的文件系统对象数（目录和文件） | 1 亿个对象 | 否 |
+| 目录中的最大文件系统对象（目录和文件）数 | 500 万个对象 | 是 |
+| 最大对象（目录和文件）安全描述符大小 | 64 KiB | 是 |
+| 文件大小 | 100 GiB | 否 |
+| 要进行分层的文件的最小文件大小 | V9 及更高版本：基于文件系统群集大小（双文件系统群集大小）。 例如，如果文件系统群集大小为 4 KiB，则文件的最小大小为 8 KiB。<br> V8 和更早版本：64 KiB  | 是 |
 
-[!INCLUDE [storage-sync-files-scale-targets](../../../includes/storage-sync-files-scale-targets.md)]
+> [!Note]  
+> Azure 文件同步终结点可以纵向扩展到 Azure 文件共享的大小。 如果达到 Azure 文件共享大小限制，同步将无法运行。
 
 ### <a name="azure-file-sync-performance-metrics"></a>Azure 文件同步性能指标
-
 因为 Azure 文件同步代理在连接到 Azure 文件共享的 Windows Server 计算机上运行，所以实际的同步性能取决于基础结构中的许多元素：Windows Server 和基础磁盘配置、服务器与 Azure 存储之间的网络带宽、文件大小、总数据集大小以及数据集上的活动。 由于 Azure 文件同步在文件级别工作，因此可以更好地通过每秒处理的对象数（文件和目录）这一指标来度量基于 Azure 文件同步的解决方案的性能特征。
 
 对于 Azure 文件同步，性能在两个阶段至关重要：
@@ -92,14 +126,12 @@ Azure 文件同步的设计目标是无限使用，但并非总是可以无限�
 | 命名空间下载吞吐量 | 每秒 400 个对象 |
 
 ### <a name="initial-one-time-provisioning"></a>初始的一次性预配
-
 **初始云更改枚举**：创建新的同步组后，初始云更改枚举是将执行的第一个步骤。 在此过程中，系统将枚举 Azure 文件共享中的所有项目。 在此过程中，将不会有任何同步活动，即，不会将任何项从云终结点下载到服务器终结点，并且不会将任何项从服务器终结点上传到云终结点。 初始云更改枚举完成后，同步活动将继续。
 性能速率为每秒20个对象。 客户可以通过确定云共享中的项目数并使用以下公式获取时间（以天为单位）来估计完成初始云更改枚举所需的时间。 
 
    **初始云枚举的时间 (天)  (= 云终结点中的对象数) / (20 * 60 * 60 * 24)**
 
 **命名空间下载吞吐量** 将新服务器终结点添加到现有同步组时，Azure 文件同步代理不会从云终结点下载任何文件内容。 它将首先同步整个命名空间，然后触发后台调用来将文件整体下载，或者根据服务器终结点上设置的云分层策略进行下载（如果启用了云分层）。
-
 
 | 持续同步  | 详细信息  |
 |-|--|
@@ -120,6 +152,5 @@ Azure 文件同步的设计目标是无限使用，但并非总是可以无限�
 - 对象吞吐量与每秒 MiB 数这一吞吐量成反比。 对于较小的文件，每秒处理的对象数这一吞吐量较高，但每秒 MiB 数这一吞吐量较低。 相反，对于较大的文件，每秒处理的对象数较少，但每秒 MiB 数这一吞吐量较高。 每秒 MiB 数这一吞吐量受限于 Azure 文件规模目标。
 
 ## <a name="see-also"></a>另请参阅
-
 - [规划 Azure 文件部署](storage-files-planning.md)
 - [规划 Azure 文件同步部署](storage-sync-files-planning.md)

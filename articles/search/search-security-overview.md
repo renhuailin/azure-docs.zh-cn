@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/04/2021
 ms.custom: references_regions
-ms.openlocfilehash: 954d08fa163b481393df28ae22016859badea694
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 46f2035e5f8409cd38faeb9c327b88b06fc7d7a0
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99537300"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100097630"
 ---
 # <a name="security-overview-for-azure-cognitive-search"></a>Azure 认知搜索的安全性概述
 
@@ -30,7 +30,7 @@ ms.locfileid: "99537300"
 
 > [!VIDEO https://channel9.msdn.com/Shows/AI-Show/Azure-Cognitive-Search-Whats-new-in-security/player]
 
-## <a name="network-security"></a>网络安全
+## <a name="network-security"></a>网络安全性
 
 <a name="service-access-and-authentication"></a>
 
@@ -113,12 +113,6 @@ ms.locfileid: "99537300"
 
 > [!Note]
 > 利用 Azure 范围内的机制，可以锁定订阅或资源，以防止具备管理员权限的用户意外或在未经授权的情况下删除搜索服务。 有关详细信息，请参阅[锁定资源以防止意外删除](../azure-resource-manager/management/lock-resources.md)。
-
-## <a name="threat-protection"></a>威胁防护
-
-可以通过查询独占访问搜索服务中的内容。 如果搜索服务是查询攻击的目标，则系统将在系统接近高峰容量时删除查询。 
-
-对不同 API 的限制行为各不相同。 系统会根据服务的负载动态限制查询 API（搜索/建议/自动完成）和索引 API。 索引 Api 和服务操作 API 具有静态请求速率限制。 可以在 [限制限制](search-limits-quotas-capacity.md#throttling-limits)中查看静态速率请求限制。 若要深入了解限制行为，请参阅 [监视查询请求](search-monitor-queries.md)。
 
 <a name="encryption"></a>
 
