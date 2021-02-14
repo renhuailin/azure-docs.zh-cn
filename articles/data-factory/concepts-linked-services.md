@@ -1,22 +1,18 @@
 ---
 title: Azure 数据工厂中的链接服务
 description: 了解数据工厂中的链接服务。 链接服务将计算/数据存储链接到数据工厂。
-services: data-factory
-documentationcenter: ''
 author: dcstwh
 ms.author: weetok
-manager: anandsub
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/21/2020
-ms.openlocfilehash: 172694363b482edf6d463aa74b85e81c91fa6a9c
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 768af9e8568a3842b642a3ebd447d9df8064e840
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500098"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100389920"
 ---
 # <a name="linked-services-in-azure-data-factory"></a>Azure 数据工厂中的链接服务
 
@@ -32,7 +28,7 @@ ms.locfileid: "96500098"
 
 ## <a name="overview"></a>概述
 
-数据工厂可以包含一个或多个数据管道。 “管道”是共同执行一项任务的活动的逻辑分组。 管道中的活动定义对数据执行的操作。 例如，可使用复制活动将数据从 SQL Server 复制到 Azure Blob 存储。 然后，可使用在 Azure HDInsight 群集上运行 Hive 脚本的 Hive 活动，将 Blob 存储中的数据处理为生成输出数据。 最后，你可能会使用第二个复制活动将输出数据复制到 Azure Synapse Analytics 中，这是在生成商业智能 (BI) 报表解决方案之上的。 有关管道和活动的详细信息，请参阅 Azure 数据工厂中的[管道和活动](concepts-pipelines-activities.md)。
+数据工厂可以包含一个或多个数据管道。 “管道”是共同执行一项任务的活动的逻辑分组。 管道中的活动定义对数据执行的操作。 例如，可使用复制活动将数据从 SQL Server 复制到 Azure Blob 存储。 然后，可使用在 Azure HDInsight 群集上运行 Hive 脚本的 Hive 活动，将 Blob 存储中的数据处理为生成输出数据。 最后，可再使用一个复制活动将输出数据复制到 Azure Synapse Analytics，在此基础上构建商业智能 (BI) 报告解决方案。 有关管道和活动的详细信息，请参阅 Azure 数据工厂中的[管道和活动](concepts-pipelines-activities.md)。
 
 现在，数据集这一名称的意义已经变为看待数据的一种方式，就是以输入和输出的形式指向或引用活动中要使用的数据 。
 
@@ -95,7 +91,7 @@ connectVia | 用于连接到数据存储的[集成运行时](concepts-integratio
 
 ## <a name="create-linked-services"></a>创建链接服务
 
-可以通过 [管理中心](author-management-hub.md) 和引用这些服务的任何活动、数据集或数据流在 Azure 数据工厂 UX 中创建链接服务。
+在 Azure 数据工厂 UX 中通过[管理中心](author-management-hub.md)以及引用链接服务的任何活动、数据集或数据流创建链接服务。
 
 可以使用以下任一工具或 SDK 创建链接服务：[.NET API](quickstart-create-data-factory-dot-net.md)、[PowerShell](quickstart-create-data-factory-powershell.md)、[REST API](quickstart-create-data-factory-rest-api.md)、Azure 资源管理器模板和 Azure 门户。
 

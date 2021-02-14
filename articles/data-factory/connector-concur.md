@@ -1,22 +1,17 @@
 ---
 title: 使用 Azure 数据工厂（预览版）从 Concur 复制数据
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 Concur 复制到支持的接收器数据存储。
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/25/2020
 ms.author: jingwang
-ms.openlocfilehash: f6d6c830eec8e711e700733a90611c353b68439d
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 974682aa9e9bebd6e2d17237decd8389174ff28d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96030792"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100383664"
 ---
 # <a name="copy-data-from-concur-using-azure-data-factory-preview"></a>使用 Azure 数据工厂（预览版）从 Concur 复制数据
 
@@ -49,23 +44,23 @@ ms.locfileid: "96030792"
 
 Concur 链接服务支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 描述 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**Concur** | 是 |
 | connectionProperties | 定义如何连接到 Concur 的一组属性。 | 是 |
-| _在 `connectionProperties` 下：_ _* | | |
-| authenticationType | 允许的值为 `OAuth_2.0_Bearer` ，并 `OAuth_2.0` (旧) 。 OAuth 2.0 authentication 选项适用于自2月 2 2017 日以来弃用的旧 Concur API。 | 是 |
-| host | Concur 服务器的终结点， `implementation.concursolutions.com` 例如。  | 是 |
-| baseUrl | Concur 的授权 URL 的基 URL。 | 是进行 `OAuth_2.0_Bearer` 身份验证 |
-| clientId | Concur 应用管理提供的应用程序客户端 ID。  | 是 |
-| clientSecret | 与客户端 ID 相对应的客户端密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是进行 `OAuth_2.0_Bearer` 身份验证 |
+| 在 `connectionProperties` 下： | | |
+| authenticationType | 允许的值为 `OAuth_2.0_Bearer` 和 `OAuth_2.0`（旧版）。 OAuth 2.0 验证选项适用于 2017 年 2 月已弃用的旧 Concur API。 | 是 |
+| host | Concur 服务器的终结点，例如 `implementation.concursolutions.com`。  | 是 |
+| baseUrl | Concur 授权 URL 的基 URL。 | 对于 `OAuth_2.0_Bearer`选择“是” |
+| clientId | 由 Concur 应用管理提供的应用程序客户端 ID。  | 是 |
+| clientSecret | 与客户端 ID 相对应的客户端密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 对于 `OAuth_2.0_Bearer`选择“是” |
 | username | 用于访问 Concur 服务的用户名。 | 是 |
 | password | 在“用户名”字段中提供的用户名所对应的密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
 | useEncryptedEndpoints | 指定是否使用 HTTPS 加密数据源终结点。 默认值为 true。  | 否 |
 | useHostVerification | 指定通过 TLS 进行连接时是否要求服务器证书中的主机名与服务器的主机名匹配。 默认值为 true。  | 否 |
 | usePeerVerification | 指定通过 TLS 进行连接时是否要验证服务器的标识。 默认值为 true。  | 否 |
 
-_ *示例：* *
+**示例：**
 
 ```json
 { 
@@ -96,9 +91,9 @@ _ *示例：* *
 } 
 ```
 
-**旧)  (示例：**
+**示例（旧版）：**
 
-请注意，以下是一个旧的链接服务模型，不需要 `connectionProperties` 使用 `OAuth_2.0` 身份验证。
+请注意，以下是没有 `connectionProperties` 且使用 `OAuth_2.0` 身份验证的旧版链接服务模型。
 
 ```json
 {
@@ -123,7 +118,7 @@ _ *示例：* *
 
 要从 Concur 复制数据，请将数据集的 type 属性设置为“ConcurObject”  。 此类型的数据集中没有任何其他特定于类型的属性。 支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 描述 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：**ConcurObject** | 是 |
 | tableName | 表的名称。 | 否（如果指定了活动源中的“query”） |
@@ -154,7 +149,7 @@ _ *示例：* *
 
 要从 Concur 复制数据，请将复制活动中的源类型设置为“ConcurSource”  。 复制活动 **source** 部分支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 描述 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动 source 的 type 属性必须设置为：**ConcurSource** | 是 |
 | query | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM Opportunities where Id = xxx "`。 | 否（如果指定了数据集中的“tableName”） |

@@ -1,24 +1,20 @@
 ---
 title: 托管的虚拟网络 & 托管的专用终结点
 description: 了解 Azure 数据工厂中托管的虚拟网络和托管的专用终结点。
-services: data-factory
 ms.author: abnarain
 author: nabhishek
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom:
 - seo-lt-2019
 - references_regions
 ms.date: 07/15/2020
-ms.openlocfilehash: 81d82bccd6b6bd97b84df5269dd59ffac4903370
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: d950b05dd34788c2c5ef0b34b8ec8ac0b20ad4b6
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94980349"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100379567"
 ---
 # <a name="azure-data-factory-managed-virtual-network-preview"></a>Azure 数据工厂托管的虚拟网络 (预览) 
 
@@ -51,7 +47,7 @@ ms.locfileid: "94980349"
 
 ![新托管专用终结点](./media/tutorial-copy-data-portal-private/new-managed-private-endpoint.png)
 
-Azure 数据工厂支持专用链接。 通过专用链接，你可以访问 Azure (PaaS) 服务 (如 Azure 存储、Azure Cosmos DB、Azure Synapse 分析 (以前的 SQL 数据仓库) # A5。
+Azure 数据工厂支持专用链接。 通过专用链接，你可以访问 Azure (PaaS) 服务 (如 Azure 存储、Azure Cosmos DB、Azure Synapse Analytics) 。
 
 使用专用链接时，数据存储和托管虚拟网络之间的流量完全通过 Microsoft 骨干网络进行遍历。 专用链接可防止数据泄露风险。 可以通过创建专用终结点来建立到资源的专用链接。
 
@@ -86,7 +82,7 @@ Azure 数据工厂支持专用链接。 通过专用链接，你可以访问 Azu
 - Azure 文件
 - Azure Data Lake Gen2
 - Azure SQL Database (不包括 Azure SQL 托管实例) 
-- Azure Synapse Analytics（以前称为 SQL 数据仓库）
+- Azure Synapse Analytics
 - Azure CosmosDB SQL
 - Azure Key Vault
 - Azure 专用链接服务
@@ -102,11 +98,11 @@ Azure 数据工厂支持专用链接。 通过专用链接，你可以访问 Azu
 - 美国西部
 - 美国西部 2
 - 美国中南部
-- 美国中部
+- Central US
 - 北欧
 - 西欧
 - 英国南部
-- 东南亚
+- Southeast Asia
 - 澳大利亚东部
 - 澳大利亚东南部
 
@@ -115,7 +111,7 @@ Azure 数据工厂支持专用链接。 通过专用链接，你可以访问 Azu
 - 不支持将 Azure 存储和 Azure Data Lake Gen2 从 ADF 托管的虚拟网络通过公共终结点进行连接。
 
 ### <a name="linked-service-creation-of-azure-key-vault"></a>Azure Key Vault 的链接服务创建 
-- 为 Azure Key Vault 创建链接服务时，不 Azure Integration Runtime 引用。 因此，在 Azure Key Vault 的链接服务创建过程中无法创建专用终结点。 但是，当你为引用 Azure Key Vault 链接服务的数据存储创建链接服务，并且此链接服务引用启用了托管虚拟网络 Azure Integration Runtime 时，你可以在创建期间为 Azure Key Vault 链接的服务创建专用终结点。 
+- 为 Azure Key Vault 创建链接服务时，没有 Azure Integration Runtime 引用。 因此，在 Azure Key Vault 的链接服务创建过程中无法创建专用终结点。 但是，当你为引用 Azure Key Vault 链接服务的数据存储创建链接服务，并且此链接服务引用启用了托管虚拟网络 Azure Integration Runtime 时，你可以在创建期间为 Azure Key Vault 链接的服务创建专用终结点。 
 - Azure Key Vault 的链接服务的 **测试连接** 操作仅验证 URL 格式，但不执行任何网络操作。
 
 ## <a name="next-steps"></a>后续步骤

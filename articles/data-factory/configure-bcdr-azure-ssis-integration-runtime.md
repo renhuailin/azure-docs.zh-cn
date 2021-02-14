@@ -1,23 +1,19 @@
 ---
 title: 为 SQL 数据库故障转移配置 Azure-SSIS 集成运行时
 description: 本文介绍了如何针对 Azure SQL 数据库异地复制和 SSISDB 数据库的故障转移配置 Azure-SSIS 集成运行时
-services: data-factory
 ms.service: data-factory
-ms.workload: data-services
 ms.devlang: powershell
 author: swinarko
 ms.author: sawinark
-manager: mflasko
-ms.reviewer: douglasl
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/06/2020
-ms.openlocfilehash: 6b37a0df994546762abbcf3452d8e7b52dec6847
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: e12939d1003ce708889ca0b3dbc710096f9ee955
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94331407"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100364437"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-with-sql-database-geo-replication-and-failover"></a>针对 SQL 数据库异地复制和故障转移配置 Azure-SSIS 集成运行时
 
@@ -54,7 +50,7 @@ SMK 不会在故障转移组中复制。 故障转移后，需要在主实例和
 
 ### <a name="scenario-1-azure-ssis-ir-is-pointing-to-a-readwrite-listener-endpoint"></a>应用场景 1：Azure-SSIS IR 指向读/写侦听器终结点
 
-如果希望 Azure-SSIS IR 指向读/写侦听器终结点，则需要首先指向主服务器终结点。 在故障转移组中放置 SSISDB 后，可以停止 Azure-SSIS IR，将其更改为指向使用 Azure PowerShell 的读取/写入侦听器终结点，然后重新启动它。
+如果希望 Azure-SSIS IR 指向读/写侦听器终结点，则需要首先指向主服务器终结点。 将 SSISDB 放入故障转移组后，可以停止 Azure-SSIS IR，使用 Azure PowerShell 将其更改为指向读/写侦听器终结点，然后重启它。
 
 ```powershell
 Set-AzDataFactoryV2IntegrationRuntime -CatalogServerEndpoint "Azure SQL Managed Instance read/write listener endpoint"
@@ -100,9 +96,9 @@ Set-AzDataFactoryV2IntegrationRuntime -CatalogServerEndpoint "Azure SQL Managed 
 
 3. 重启 Azure-SSIS IR。
 
-### <a name="scenario-3-azure-ssis-ir-is-pointing-to-a-public-endpoint-of-a-sql-managed-instance"></a>方案3： Azure-SSIS IR 指向 SQL 托管实例的公共终结点
+### <a name="scenario-3-azure-ssis-ir-is-pointing-to-a-public-endpoint-of-a-sql-managed-instance"></a>应用场景 3：Azure-SSIS IR 指向 SQL 托管实例的公共终结点
 
-如果 Azure-SSIS IR 指向 Azure SQL 托管实例的公共终结点，并且它不加入虚拟网络，则此方案适用。 此方案与方案 2 的唯一区别在于，故障转移后无需编辑 Azure-SSIS IR 的虚拟网络信息。
+如果 Azure-SSIS IR 指向 Azure SQL 托管实例的公共终结点且其不加入虚拟网络，则此方案适用。 此方案与方案 2 的唯一区别在于，故障转移后无需编辑 Azure-SSIS IR 的虚拟网络信息。
 
 #### <a name="solution"></a>解决方案
 
@@ -181,7 +177,7 @@ Set-AzDataFactoryV2IntegrationRuntime -CatalogServerEndpoint "Azure SQL Managed 
 - Azure-SSIS IR 指向故障转移组的读/写侦听器终结点。
 - SQL 数据库服务器未配置虚拟网络服务终结点规则。
 
-如果希望 Azure-SSIS IR 指向读/写侦听器终结点，则需要首先指向主服务器终结点。 在故障转移组中放置 SSISDB 后，可以停止 Azure-SSIS IR，将其更改为指向使用 Azure PowerShell 的读取/写入侦听器终结点，然后重新启动它。
+如果希望 Azure-SSIS IR 指向读/写侦听器终结点，则需要首先指向主服务器终结点。 将 SSISDB 放入故障转移组后，可以停止 Azure-SSIS IR，使用 Azure PowerShell 将其更改为指向读/写侦听器终结点，然后重启它。
 
 ```powershell
 Set-AzDataFactoryV2IntegrationRuntime -CatalogServerEndpoint "Azure SQL Database read/write listener endpoint"

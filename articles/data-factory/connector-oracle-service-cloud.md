@@ -1,22 +1,18 @@
 ---
 title: 从 Oracle 服务云复制数据（预览版）
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 Oracle 服务云复制到支持的接收器数据存储。
-services: data-factory
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/01/2019
-ms.openlocfilehash: c3f9046bd0cca8cb191397413c09a72c4cc11c55
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 33f2dcd13b64069949930606c5f619543fa36668
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81416814"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100368432"
 ---
 # <a name="copy-data-from-oracle-service-cloud-using-azure-data-factory-preview"></a>使用 Azure 数据工厂从 Oracle 服务云复制数据（预览版）
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -115,7 +111,7 @@ Oracle 服务云链接服务支持以下属性：
 
 ### <a name="oracle-service-cloud-as-source"></a>作为源的 Oracle 服务云
 
-若要从 Oracle 服务云复制数据，请将复制活动中的源类型设置为“OracleServiceCloudSource”  。 复制活动**source**部分支持以下属性：
+若要从 Oracle 服务云复制数据，请将复制活动中的源类型设置为“OracleServiceCloudSource”  。 复制活动 **source** 部分支持以下属性：
 
 | 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |

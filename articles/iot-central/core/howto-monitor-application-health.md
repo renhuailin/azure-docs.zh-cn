@@ -3,25 +3,25 @@ title: 监视 Azure IoT Central 应用程序的运行状况 |Microsoft Docs
 description: 作为操作员或管理员，监视连接到 IoT Central 应用程序的设备的总体运行状况。
 author: dominicbetts
 ms.author: dobett
-ms.date: 05/14/2020
+ms.date: 01/27/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 12485e07bc3cad9d420141ecc6ee66763ac010b7
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 1c16da10a8a7853b1392383855aba0ff24424f33
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98760769"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100515863"
 ---
-# <a name="monitor-the-overall-health-of-the-devices-connected-to-an-iot-central-application"></a>监视连接到 IoT Central 应用程序的设备的总体运行状况
+# <a name="monitor-the-overall-health-of-an-iot-central-application"></a>监视 IoT Central 应用程序的总体运行状况
 
 > [!NOTE]
 > 指标仅适用于版本 3 IoT Central 应用程序。 若要了解如何检查您的应用程序版本，请参阅 [关于您的应用程序](./howto-get-app-info.md)。
 
 *本文适用于操作员和管理员。*
 
-本文介绍如何使用 IoT Central 提供的指标集来评估连接到 IoT Central 应用程序的设备的总体运行状况。
+本文介绍如何使用 IoT Central 提供的指标集来评估连接到 IoT Central 应用程序的设备的运行状况，以及正在运行的数据导出的运行状况。
 
 默认情况下，对 IoT Central 应用程序启用指标，并从 [Azure 门户](https://portal.azure.com/)访问它们。 [Azure Monitor 的数据平台公开了这些指标](../../azure-monitor/platform/data-platform-metrics.md)，并提供了几种方式来与它们进行交互。 例如，你可以在 Azure 门户中使用图表，或在 PowerShell 中使用 REST API 或查询，或者 Azure CLI。
 
@@ -31,7 +31,7 @@ ms.locfileid: "98760769"
 
 ## <a name="view-metrics-in-the-azure-portal"></a>查看 Azure 门户中的度量值
 
-以下步骤假设你有一个 [IoT Central 应用程序](./quick-deploy-iot-central.md) 与一些 [连接的设备](./tutorial-connect-device.md)。
+以下步骤假设你有一个 [IoT Central 应用程序](./quick-deploy-iot-central.md) ，其中包含一些 [连接的设备](./tutorial-connect-device.md) 或正在运行的 [数据导出](howto-export-data.md)。
 
 若要在门户中查看 IoT Central 度量值：
 

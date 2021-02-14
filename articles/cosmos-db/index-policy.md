@@ -5,14 +5,14 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 02/02/2021
+ms.date: 02/10/2021
 ms.author: tisande
-ms.openlocfilehash: 58ee3bcd0ba14359ea9adaa131b8280b81008b57
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 26465eb9826c60daad7b44e1c2fe6ae3c19b1ed0
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99526749"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100378802"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Azure Cosmos DB 中的索引策略
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -38,10 +38,10 @@ Azure Cosmos DB 支持两种索引模式：
 
 ## <a name="index-size"></a><a id="index-size"></a>索引大小
 
-在 Azure Cosmos DB 中，所用存储空间总量是指数据大小和索引大小的总和。 下面是索引大小的一些功能：
+在 Azure Cosmos DB 中，所用存储空间总量是指数据大小和索引大小的总和。 下面是索引大小的一些特性：
 
-* 索引大小取决于索引策略。 如果为所有属性编制了索引，则索引大小可以大于数据大小。
-* 当删除数据时，索引将按近乎连续的方式压缩。 但是，对于较小的数据删除，你可能不会立即看到索引大小的减小。
+* 索引大小取决于索引策略。 如果所有属性都已编制索引，则索引大小可能会大于数据大小。
+* 当删除数据时，索引将近乎连续地进行压缩。 但是，对于较小的数据删除，你可能不会立即观察到索引大小的减小。
 * 物理分区拆分后，索引大小会临时增加。 分区拆分完成后释放索引空间。
 
 ## <a name="including-and-excluding-property-paths"></a><a id="include-exclude-paths"></a>包含和排除属性路径
@@ -290,7 +290,7 @@ WHERE c.firstName = "John" AND Contains(c.lastName, "Smith", true)
 ORDER BY c.firstName, c.lastName
 ```
 
-创建组合索引来优化包含筛选器和 `ORDER BY` 子句的查询时，请注意以下事项：
+创建复合索引以使用筛选器和子句优化查询时，请注意以下事项 `ORDER BY` ：
 
 * 对于包含针对一个属性的筛选器并包含一个使用不同属性的独立 `ORDER BY` 子句的查询，如果未为它定义组合索引，该查询仍会成功。 但是，使用组合索引可以减少查询的 RU 开销，尤其是 `ORDER BY` 子句中的属性具有较高的基数时。
 * 如果查询针对属性进行筛选，应该首先将这些属性包含在 `ORDER BY` 子句中。
@@ -308,6 +308,26 @@ ORDER BY c.firstName, c.lastName
 | ```(name ASC, timestamp ASC)```          | ```SELECT * FROM c WHERE c.name = "John" ORDER BY c.timestamp ASC``` | ```No```   |
 | ```(age ASC, name ASC, timestamp ASC)``` | ```SELECT * FROM c WHERE c.age = 18 and c.name = "John" ORDER BY c.age ASC, c.name ASC,c.timestamp ASC``` | `Yes` |
 | ```(age ASC, name ASC, timestamp ASC)``` | ```SELECT * FROM c WHERE c.age = 18 and c.name = "John" ORDER BY c.timestamp ASC``` | `No` |
+
+### <a name="queries-with-a-filter-and-an-aggregate"></a>使用筛选器和聚合进行查询 
+
+如果查询筛选一个或多个属性并且具有聚合系统函数，则在筛选器和聚合系统函数中为属性创建复合索引可能会很有用。 此优化适用于 [SUM](sql-query-aggregate-sum.md) 和 [AVG](sql-query-aggregate-avg.md) 系统函数。
+
+在创建复合索引以使用筛选器和聚合系统函数优化查询时，需要考虑以下注意事项。
+
+* 在运行包含聚合的查询时，复合索引是可选的。 但是，查询的 RU 开销通常可以通过组合索引大幅降低。
+* 如果查询筛选多个属性，则相等筛选器必须是复合索引中的第一个属性。
+* 每个复合索引最多可以有一个范围筛选器，并且它必须位于聚合系统函数中的属性上。
+* 聚合系统函数中的属性应在复合索引中最后定义。
+* `order` (`ASC` 或 `DESC`) 并不重要。
+
+| **组合索引**                      | **示例查询**                                  | **是否受组合索引的支持？** |
+| ---------------------------------------- | ------------------------------------------------------------ | --------------------------------- |
+| ```(name ASC, timestamp ASC)```          | ```SELECT AVG(c.timestamp) FROM c WHERE c.name = "John"``` | `Yes` |
+| ```(timestamp ASC, name ASC)```          | ```SELECT AVG(c.timestamp) FROM c WHERE c.name = "John"``` | `No` |
+| ```(name ASC, timestamp ASC)```          | ```SELECT AVG(c.timestamp) FROM c WHERE c.name > "John"``` | `No` |
+| ```(name ASC, age ASC, timestamp ASC)```          | ```SELECT AVG(c.timestamp) FROM c WHERE c.name = "John" AND c.age = 25``` | `Yes` |
+| ```(age ASC, timestamp ASC)```          | ```SELECT AVG(c.timestamp) FROM c WHERE c.name = "John" AND c.age > 25``` | `No` |
 
 ## <a name="index-transformationmodifying-the-indexing-policy"></a>修改索引策略><索引转换
 

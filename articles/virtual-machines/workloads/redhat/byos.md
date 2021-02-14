@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/10/2020
 ms.author: alsin
 ms.reviewer: cynthn
-ms.openlocfilehash: 7006096154d8958e13e7a86783bd07067b95d293
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 38bf8b3c1c39322aea27f5f4d427c31010837bfb
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98872886"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100391014"
 ---
 # <a name="red-hat-enterprise-linux-bring-your-own-subscription-gold-images-in-azure"></a>在 Azure 中 Red Hat Enterprise Linux 自带订阅金牌映像
 
@@ -30,9 +30,6 @@ Red Hat Enterprise Linux (RHEL) 映像在 Azure 中通过 "即用即付" 或 "�
 - 从 Red Hat 黄金映像预配的 Vm 不会携带 rhel 费用与 RHEL 即用即付映像关联。
 - 图像是未获授权。 必须使用 Red Hat Subscription-Manager 来注册和订阅 Vm，才能直接从 Red Hat 获取更新。
 - 可以使用 [Azure 混合权益](../../linux/azure-hybrid-benefit-linux.md)从即用即付映像切换到 BYOS。 但不能从最初部署的 BYOS 切换为适用于 Linux 映像的即用即付计费模式。 若要将计费模型从 BYOS 切换为即用即付模式，你必须从相应的映像中重新部署 VM。
-
->[!NOTE]
-> 第2代 RHEL BYOS 映像当前不可通过 marketplace 产品/服务使用。 如果需要第2代 RHEL BYOS 映像，请访问 Red Hat 订阅管理中的云访问控制板。 有关详细信息，请参阅 [Red Hat 文档](https://access.redhat.com/articles/4847681)。
 
 ## <a name="requirements-and-conditions-to-access-the-red-hat-gold-images"></a>访问 Red Hat 黄金映像的要求和条件
 

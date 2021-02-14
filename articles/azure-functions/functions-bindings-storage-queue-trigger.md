@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, cc996988-fb4f-47, devx-track-python
-ms.openlocfilehash: 95560801d4132735435e4d45e8a588476636ec38
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 59cedb25295770ba4ae4a33aac3287c5fed1297d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "96001229"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100381488"
 ---
 # <a name="azure-queue-storage-trigger-for-azure-functions"></a>适用于 Azure Functions 的 Azure 队列存储触发器
 
@@ -162,7 +162,7 @@ module.exports = async function (context, message) {
 
 下面的示例演示如何通过触发器读取传递给函数的队列消息。
 
-在设置为的文件 *function.js* 中定义了存储队列触发器 `type` `queueTrigger` 。
+存储队列触发器在 function.json 文件中定义，其中的 `type` 设置为 `queueTrigger`。
 
 ```json
 {
@@ -178,7 +178,7 @@ module.exports = async function (context, message) {
 }
 ```
 
-*Run.ps1* 文件中的代码将参数声明为 `$QueueItem` ，这允许您在函数中读取队列消息。
+Run.ps1 文件中的代码将参数声明为 `$QueueItem`，以允许你在函数中读取队列消息。
 
 ```powershell
 # Input bindings are passed in via param block.
@@ -353,17 +353,19 @@ Python 不支持特性。
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|**type** | 不适用| 必须设置为 `queueTrigger`。 在 Azure 门户中创建触发器时，会自动设置此属性。|
+|type  | 不适用| 必须设置为 `queueTrigger`。 在 Azure 门户中创建触发器时，会自动设置此属性。|
 |**direction**| 不适用 | 只能在 *function.json* 文件中设置。 必须设置为 `in`。 在 Azure 门户中创建触发器时，会自动设置此属性。 |
 |**name** | 不适用 |函数代码中包含队列项有效负载的变量的名称。  |
 |**queueName** | **QueueName**| 要轮询的队列的名称。 |
-|连接  | **Connection** |包含要用于此绑定的存储连接字符串的应用设置的名称。 如果应用设置名称以“AzureWebJobs”开始，则只能在此处指定该名称的余下部分。 例如，如果将 `connection` 设置为“MyStorage”，Functions 运行时将会查找名为“MyStorage”的应用设置。 如果将 `connection` 留空，函数运行时将使用名为 `AzureWebJobsStorage` 的应用设置中的默认存储连接字符串。|
+|连接  | **Connection** |包含要用于此绑定的存储连接字符串的应用设置的名称。 如果应用设置名称以“AzureWebJobs”开始，则只能在此处指定该名称的余下部分。<br><br>例如，如果将 `connection` 设置为“MyStorage”，Functions 运行时将会查找名为“MyStorage”的应用设置。 如果将 `connection` 留空，函数运行时将使用名为 `AzureWebJobsStorage` 的应用设置中的默认存储连接字符串。<br><br>如果你使用的是 [版本 5. x 或更高版本](./functions-bindings-storage-queue.md#storage-extension-5x-and-higher)，而不是连接字符串，则可以提供对定义该连接的配置节的引用。 请参阅 [连接](./functions-reference.md#connections)。|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 ## <a name="usage"></a>使用情况
 
 # <a name="c"></a>[C#](#tab/csharp)
+
+### <a name="default"></a>默认
 
 使用 `string paramName` 等方法参数访问消息数据。 可以绑定到以下任何类型：
 
@@ -374,7 +376,17 @@ Python 不支持特性。
 
 如果在尝试绑定到 `CloudQueueMessage` 时出现错误消息，请确保引用[正确的存储 SDK 版本](functions-bindings-storage-queue.md#azure-storage-sdk-version-in-functions-1x)。
 
+### <a name="additional-types"></a>其他类型
+
+使用 [存储扩展插件的5.0.0 或更高版本](./functions-bindings-storage-queue.md#storage-extension-5x-and-higher) 的应用程序也可以使用 [Azure SDK for .net](/dotnet/api/overview/azure/storage.queues-readme)中的类型。 此版本支持旧 `CloudQueueMessage` 类型，以支持以下类型：
+
+- [QueueMessage](/dotnet/api/azure.storage.queues.models.queuemessage)
+ 
+有关使用这些类型的示例，请参阅 [GitHub 存储库](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Microsoft.Azure.WebJobs.Extensions.Storage.Queues#examples)中的扩展。
+
 # <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
+
+### <a name="default"></a>默认
 
 使用 `string paramName` 等方法参数访问消息数据。 `paramName` 是在 *function.json* 的 `name` 属性中指定的值。 可以绑定到以下任何类型：
 
@@ -384,6 +396,14 @@ Python 不支持特性。
 * [CloudQueueMessage]
 
 如果在尝试绑定到 `CloudQueueMessage` 时出现错误消息，请确保引用[正确的存储 SDK 版本](functions-bindings-storage-queue.md#azure-storage-sdk-version-in-functions-1x)。
+
+### <a name="additional-types"></a>其他类型
+
+使用 [存储扩展插件的5.0.0 或更高版本](./functions-bindings-storage-queue.md#storage-extension-5x-and-higher) 的应用程序也可以使用 [Azure SDK for .net](/dotnet/api/overview/azure/storage.queues-readme)中的类型。 此版本支持旧 `CloudQueueMessage` 类型，以支持以下类型：
+
+- [QueueMessage](/dotnet/api/azure.storage.queues.models.queuemessage)
+
+有关使用这些类型的示例，请参阅 [GitHub 存储库](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Microsoft.Azure.WebJobs.Extensions.Storage.Queues#examples)中的扩展。
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -395,7 +415,7 @@ Python 不支持特性。
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-通过 string 参数访问队列消息，该参数与 `name` 文件中 *function.js* 的绑定参数指定的名称相匹配。
+通过与 function.json 文件中绑定的 `name` 参数指定的名称匹配的字符串参数访问队列消息。
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -448,7 +468,7 @@ Python 不支持特性。
 
 ## <a name="hostjson-properties"></a>host.json 属性
 
-[host.json](functions-host-json.md#queues) 文件包含控制队列触发器行为的设置。 有关可用设置的详细信息，请参阅 [host.json 设置](functions-bindings-storage-queue-output.md#hostjson-settings)部分。
+[host.json](functions-host-json.md#queues) 文件包含控制队列触发器行为的设置。 有关可用设置的详细信息，请参阅 [host.json 设置](functions-bindings-storage-queue.md#hostjson-settings)部分。
 
 ## <a name="next-steps"></a>后续步骤
 

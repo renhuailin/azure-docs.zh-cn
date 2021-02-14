@@ -2,13 +2,13 @@
 title: Azure NetApp 文件与 Azure VMware 解决方案
 description: 结合使用 Azure NetApp 文件和 Azure VMware 解决方案 Vm，在本地服务器、Azure VMware 解决方案 Vm 和云基础结构之间迁移和同步数据。
 ms.topic: how-to
-ms.date: 02/08/2021
-ms.openlocfilehash: 69d4e3a99de28d55b2fd95b1fc05c04c2ae0a37b
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.date: 02/10/2021
+ms.openlocfilehash: db7d8eb05e5bd70f6a2397b3017924093218e78e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99988654"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100371560"
 ---
 # <a name="azure-netapp-files-with-azure-vmware-solution"></a>Azure NetApp 文件与 Azure VMware 解决方案
 
@@ -16,7 +16,7 @@ ms.locfileid: "99988654"
 
 ## <a name="azure-netapp-files-overview"></a>Azure NetApp 文件概述
 
-[Azure NetApp 文件](../azure-netapp-files/azure-netapp-files-introduction.md) 是一项 azure 服务，用于迁移和运行云中最苛刻的企业文件工作负荷。 这包括数据库、SAP 和高性能计算应用程序，无任何代码更改。
+[Azure NetApp 文件](../azure-netapp-files/azure-netapp-files-introduction.md) 是一项 azure 服务，用于迁移和运行云中最苛刻的企业文件工作负荷：数据库、SAP 和高性能计算应用程序，无代码更改。
 
 ### <a name="features"></a>功能
  (使用 Azure NetApp 文件的服务。 ) 
@@ -31,13 +31,13 @@ Azure NetApp 文件在许多 Azure 区域中提供，并支持跨区域复制。
 
 ## <a name="reference-architecture"></a>参考体系结构
 
-下图说明了通过 Azure ExpressRoute 连接到 Azure VMware 解决方案私有云的连接。 Azure VMware 解决方案环境访问安装在 Azure VMware 解决方案 Vm 上的 Azure NetApp 文件共享。
+下图说明了通过 Azure ExpressRoute 连接到 Azure VMware 解决方案私有云的连接。 Azure VMware 解决方案环境访问 Azure VMware 解决方案 Vm 上装载的 Azure NetApp 文件共享。
 
 ![显示 Azure VMware 解决方案体系结构的 NetApp 文件的关系图。](media/net-app-files/net-app-files-topology.png)
 
 本文介绍如何针对 Azure VMware 解决方案 Vm 设置、测试和验证 Azure NetApp 文件卷，作为文件共享。 在此方案中，我们使用了 NFS 协议。 Azure NetApp 文件和 Azure VMware 解决方案在同一 Azure 区域中创建。
 
-## <a name="prerequisites"></a>必备条件 
+## <a name="prerequisites"></a>先决条件 
 
 > [!div class="checklist"]
 > * Azure 订阅已启用 Azure NetApp 文件
@@ -83,11 +83,13 @@ Azure NetApp 文件在许多 Azure 区域中提供，并支持跨区域复制。
 
     :::image type="content" source="media/net-app-files/configuration-of-volume.png" alt-text="显示卷的配置详细信息的屏幕截图。":::
 
-    你可以看到，卷 anfvolume 的大小为 200 GiB，容量池为 anfpool1。  它通过10.22.3.4 导出为 NFS 文件共享：/ANFVOLUME。 Azure 虚拟网络中的一个专用 IP (VNet) 是为 Azure NetApp 文件创建的，另一个是在 VM 上装载的 NFS 路径。 若要了解 Azure NetApp 文件按大小或 "配额" 的容量性能，请参阅 [Azure Netapp 文件的性能注意事项](../azure-netapp-files/azure-netapp-files-performance-considerations.md)。 
+    你可以看到，anfvolume 的大小为 200 GiB，在容量池中 anfpool1。 它通过10.22.3.4 导出为 NFS 文件共享：/ANFVOLUME。 Azure 虚拟网络中的一个专用 IP (VNet) 是为 Azure NetApp 文件创建的，另一个是在 VM 上装载的 NFS 路径。
+
+    若要了解 Azure NetApp 文件按大小或 "配额" 的容量性能，请参阅 [Azure Netapp 文件的性能注意事项](../azure-netapp-files/azure-netapp-files-performance-considerations.md)。 
 
 ## <a name="verify-pre-configured-azure-vmware-solution-vm-share-mapping"></a>验证预配置的 Azure VMware 解决方案 VM 共享映射
 
-若要使 azure NetApp 文件共享可供 Azure VMware 解决方案 VM 访问，了解 SMB 和 NFS 共享映射很重要。 仅在配置 SMB 或 NFS 卷之后，才能按此处所述装载它们。
+若要使 azure NetApp 文件共享可供 Azure VMware 解决方案 VM 访问，需要了解 SMB 和 NFS 共享映射。 仅在配置 SMB 或 NFS 卷后，可以按此处所述装载它们。
 
 - SMB 共享：在部署 SMB 卷之前创建 Active Directory 连接。 若要成功连接，Azure NetApp 文件的委托子网必须可以访问指定的域控制器。 在 Azure NetApp 文件帐户内配置 Active Directory 后，在创建 SMB 卷时，它将显示为可选择的项目。
 

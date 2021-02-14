@@ -3,18 +3,17 @@ title: 试验跟踪和部署模型
 titleSuffix: Azure Data Science Virtual Machine
 description: 了解如何通过 Azure 机器学习和/或 MLFlow 从 Data Science Virtual Machine 跟踪和记录试验。
 services: machine-learning
-ms.service: machine-learning
-ms.subservice: data-science-vm
+ms.service: data-science-vm
 author: samkemp
 ms.author: samkemp
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.openlocfilehash: 7726fce7ac69ebfaabf44049abc49c53f8175718
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 3795d531c5c4c543587ab817c05cd1cfeea6be06
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98704534"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100518532"
 ---
 # <a name="track-experiments-and-deploy-models-in-azure-machine-learning"></a>在 Azure 机器学习中跟踪试验和部署模型
 
@@ -30,7 +29,7 @@ ms.locfileid: "98704534"
 
 ## <a name="create-a-new-notebook"></a>创建新的 Notebook
 
-Azure 机器学习和 MLFlow SDK 已预安装在 Data Science VM 上，并可在 *azureml_py36_\*_ conda 环境中访问。 在 JupyterLab 中，单击 "启动程序"，并选择以下内核：
+Azure 机器学习和 MLFlow SDK 已预安装在 Data Science VM 上，并可在 azureml_py36_\* conda 环境中访问。 在 JupyterLab 中，单击 "启动程序"，并选择以下内核：
 
 ![内核选择](./media/how-to-track-experiments/experiment-tracking-1.png)
 
@@ -137,7 +136,7 @@ with mlflow.start_run():
 
 在“新建推理群集”窗格中填写以下内容的详细信息：
 
-_ 计算名称
+* 计算名称
 * Kubernetes 服务 - 选择“新建”
 * 选择区域
 * 选择 VM 大小（就本教程而言，默认值 Standard_D3_v2 就足够了）

@@ -4,18 +4,17 @@ titleSuffix: Azure Data Science Virtual Machine
 description: 通过这些示例和演练，了解如何使用 Data Science Virtual Machine 处理常见任务和方案。
 keywords: 数据科学工具, 数据科学虚拟机, 数据科学工具, Linux 数据科学
 services: machine-learning
-ms.service: machine-learning
-ms.subservice: data-science-vm
+ms.service: data-science-vm
 author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 98a1cd883867aa2f785b15f4c7ae4f2266a421ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cda5dfd936243602775e1f4f965032b9d746b0b7
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87012563"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100519756"
 ---
 # <a name="samples-on-azure-data-science-virtual-machines"></a>Azure Data Science Virtual Machine 示例
 
@@ -46,7 +45,7 @@ Azure Data Science Virtual Machine (DSVM) 包含一整套示例代码。 这些�
 
 ## <a name="access-jupyter"></a>访问 Jupyter 
 
-若要访问 Jupyter，请选择桌面或应用程序菜单中的 Jupyter 图标****。 还可以在 Linux 版的 DSVM 上访问 Jupyter。 若要在 Web 浏览器中执行远程访问，请在 Ubuntu 上转到 `https://<Full Domain Name or IP Address of the DSVM>:8000`。
+若要访问 Jupyter，请选择桌面或应用程序菜单中的 Jupyter 图标。 还可以在 Linux 版的 DSVM 上访问 Jupyter。 若要在 Web 浏览器中执行远程访问，请在 Ubuntu 上转到 `https://<Full Domain Name or IP Address of the DSVM>:8000`。
 
 若要添加例外并允许通过浏览器访问 Jupyter，请使用以下指南：
 

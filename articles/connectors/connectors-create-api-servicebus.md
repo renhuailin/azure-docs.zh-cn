@@ -3,16 +3,16 @@ title: 使用 Azure 服务总线交换消息
 description: 在 Azure 逻辑应用中创建使用 Azure 服务总线发送和接收消息的自动化任务和工作流
 services: logic-apps
 ms.suite: integration
-ms.reviewer: logicappspm
+ms.reviewer: logicappspm, azla
 ms.topic: conceptual
-ms.date: 10/22/2020
+ms.date: 02/10/2021
 tags: connectors
-ms.openlocfilehash: b6276ff940d8b156a671cb5386ce53ede30dd879
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 98d2ee8a85d25065c0021841a9b99a6d616a35d8
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96019697"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100367412"
 ---
 # <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>使用 Azure 逻辑应用和 Azure 服务总线在云中交换消息
 
@@ -68,7 +68,7 @@ ms.locfileid: "96019697"
 
 1. 登录到 [Azure 门户](https://portal.azure.com)，然后在逻辑应用设计器中打开空白逻辑应用。
 
-1. 在门户的搜索框中，输入 `azure service bus` 。 从显示的 "触发器" 列表中，选择所需的触发器。
+1. 在门户的搜索框中，输入 `azure service bus`。 从出现的“触发器”列表中选择所需的触发器。
 
    例如，若要在有新项发送到服务总线队列时触发逻辑应用，请选择“队列中收到消息时(自动完成)”触发器。
 
@@ -81,9 +81,9 @@ ms.locfileid: "96019697"
    * 某些触发器（例如“一条或多条消息抵达队列时(自动完成)”触发器）可能会返回一条或多条消息。 这些触发器在触发时返回的消息数至少为 1，至多为触发器的 **最大消息计数** 属性指定的消息数。
 
      > [!NOTE]
-     > 自动完成触发器会自动完成一条消息，但仅在下一次调用服务总线时才会完成。 此行为可能会影响逻辑应用的设计。 例如，应避免更改自动完成触发器的并发性，因为如果逻辑应用进入受限制状态，此更改可能会导致重复的消息。 更改并发控制会形成以下情况：跳过受限制的触发器并显示 `WorkflowRunInProgress` 代码、完成操作不会发生以及下一次触发器运行会在轮询间隔后发生。 必须将服务总线锁定持续时间设置为比轮询间隔更长的值。 但是尽管进行此设置，如果逻辑应用在下一个轮询间隔内保持受限制状态，则消息仍可能不会完成。
+     > 自动完成触发器会自动完成消息，但只有在下一次调用服务总线时才会完成。 此行为可能会影响逻辑应用的设计。 例如，应避免更改自动完成触发器的并发性，因为如果逻辑应用进入受限制状态，此更改可能会导致重复的消息。 更改并发控制会形成以下情况：跳过受限制的触发器并显示 `WorkflowRunInProgress` 代码、完成操作不会发生以及下一次触发器运行会在轮询间隔后发生。 必须将服务总线锁定持续时间设置为比轮询间隔更长的值。 但是尽管进行此设置，如果逻辑应用在下一个轮询间隔内保持受限制状态，则消息仍可能不会完成。
 
-   * 如果打开服务总线触发器 [的并发设置](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency) ，则该属性的默认值 `maximumWaitingRuns` 为10。 基于服务总线实体的 "锁定持续时间" 设置和逻辑应用实例的运行持续时间，此默认值可能太大，可能会导致 "锁定丢失" 异常。 若要查找方案的最佳值，请使用属性的值1或2开始测试 `maximumWaitingRuns` 。 若要更改最大等待运行值，请参阅 [更改等待运行限制](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs)。
+   * 如果为服务总线触发器[启用并发设置](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency)，则 `maximumWaitingRuns` 属性的默认值为 10。 根据服务总线实体的锁定持续时间设置和逻辑应用实例的运行持续时间，此默认值可能太大，并可能导致“锁丢失”异常。 若要为方案找到最佳值，请对 `maximumWaitingRuns` 属性使用值 1 或值 2 开始测试。 若要更改最大等待运行值，请参阅[更改等待运行限制](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs)。
 
 1. 如果触发器是首次连接到服务总线命名空间，则请在逻辑应用设计器提示你输入连接信息时执行以下步骤。
 
@@ -123,7 +123,7 @@ ms.locfileid: "96019697"
 
    或者将鼠标指针移到这些步骤之间的箭头上，以便在步骤之间添加操作。 选择出现的加号 ( **+** )，然后选择“添加操作”。
 
-1. 在“选择操作”下的搜索框中输入 `azure service bus`。 从显示的 "操作" 列表中，选择所需的操作。 
+1. 在“选择操作”下的搜索框中输入 `azure service bus`。 从出现的“操作”列表中选择所需的操作。 
 
    在此示例中，请选择“发送消息”操作。
 
@@ -169,7 +169,7 @@ ms.locfileid: "96019697"
 
 ## <a name="delays-in-updates-to-your-logic-app-taking-effect"></a>逻辑应用的更新延迟生效
 
-如果服务总线触发器的轮询间隔较小，例如10秒，则逻辑应用的更新在长达10分钟后可能不会生效。 若要解决此问题，可以在更新逻辑应用之前，暂时将轮询间隔增加到更大的值，例如30秒或1分钟。 进行更新后，可以将轮询间隔重置为原始值。 
+如果服务总线触发器的轮询间隔很短（例如 10 秒），则对逻辑应用的更新可能会在长达 10 分钟的时间内不会生效。 若要解决此问题，可以禁用逻辑应用，进行更改，然后重新启用逻辑应用。
 
 <a name="connector-reference"></a>
 

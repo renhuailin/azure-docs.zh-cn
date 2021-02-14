@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 04/29/2018
-ms.openlocfilehash: fe5feed4bb6f9b84a3f161692310922f7a6d2f00
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 49929cfe0abc634dc4b704aba1c7b11a5d7dd777
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424797"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100383579"
 ---
 # <a name="replicate-azure-vms-to-another-azure-region"></a>将 Azure VM 复制到另一个 Azure 区域
 
@@ -36,10 +36,10 @@ ms.locfileid: "92424797"
    - **源订阅**：源 VM 所属的订阅。 这可以是存在恢复服务保管库的同一 Azure Active Directory 租户中的任何订阅。
    - **资源组**：源虚拟机所属的资源组。 所选资源组下的所有 VM 都会在下一步中列出，以供保护。
 
-     ![突出显示配置复制所需字段的屏幕截图。](./media/site-recovery-replicate-azure-to-azure/enabledrwizard1.png)
+     ![屏幕截图突出显示了配置复制所需的字段。](./media/site-recovery-replicate-azure-to-azure/enabledrwizard1.png)
 
 3. 在“虚拟机”>“选择虚拟机”  中，单击并选择要复制的每个 VM。 只能选择可以启用复制的计算机。  。
-    ![突出显示你选择虚拟机的位置的屏幕截图。](./media/site-recovery-replicate-azure-to-azure/virtualmachine_selection.png)
+    ![屏幕截图突出显示了选择虚拟机的位置。](./media/site-recovery-replicate-azure-to-azure/virtualmachine_selection.png)
 
 4. 在“设置”中，可以选择性地配置目标站点设置： 
 
@@ -53,8 +53,11 @@ ms.locfileid: "92424797"
    - **目标虚拟网络**：默认情况下，Site Recovery 会在目标位置中创建一个名称带“asr”后缀的新虚拟网络。 这会映射到源网络并会用于任何将来的保护。 [详细了解](./azure-to-azure-network-mapping.md)网络映射。
    - **目标存储帐户（源 VM 不使用托管磁盘）** ：默认情况下，Site Recovery 会创建模拟源 VM 存储配置的新目标存储帐户。 如果存储帐户已存在，则重复使用。
    - **副本托管磁盘（源 VM 使用托管磁盘）** ：Site Recovery 在目标区域新建托管磁盘副本，以生成和源 VM 的托管磁盘存储类型一致（标准或高级）的镜像磁盘。
-   - **缓存存储帐户**：Site Recovery 需要源区域中称为“缓存存储”的额外存储帐户。 在复制到目标位置前，系统会跟踪源 VM 上发生的所有更改并发送到缓存存储帐户。 此存储帐户应是标准存储帐户。
-   - **目标可用性集**：默认情况下，Site Recovery 会在目标区域中创建一个名称带“asr”后缀（针对源区域中属于可用性集的 VM）的新可用性集。 如果 Site recovery 创建的可用性集已存在，则重复使用它。
+   - **缓存存储帐户**：Site Recovery 需要源区域中称为“缓存存储”的额外存储帐户。 在复制到目标位置之前，会跟踪源 Vm 上发生的所有更改并将其发送到缓存存储帐户。 此存储帐户应是标准存储帐户。
+   - **目标可用性集**：默认情况下，Site Recovery 在目标区域中创建一个新可用性集，该可用性集的名称中包含 "Azure Site Recovery" 后缀，适用于属于源区域中可用性集的虚拟机。 如果 Site recovery 创建的可用性集已存在，则重复使用它。
+     >[!NOTE]
+     >配置目标可用性集时，请为不同大小的 Vm 配置不同的可用性集。 
+     >
    - **目标可用性区域**：默认情况下，Site Recovery 会在目标区域中分配与源区域相同的区域编号，前提是目标区域支持可用性区域。
 
      如果目标区域不支持可用性区域，则会将目标 VM 默认配置为单一实例。 如果需要，可以单击“自定义”，以便在目标区域中将此类 VM 配置为可用性集的一部分。
@@ -101,7 +104,7 @@ ms.locfileid: "92424797"
     - 在“可用性集”中，可将可用性集设置添加到 VM（如果它们是源区域中可用性集的一部分）。
     - 在“目标存储帐户”中，选择要使用的帐户。
 
-        ![显示如何自定义目标订阅设置的屏幕截图。](./media/site-recovery-replicate-azure-to-azure/customize.PNG)
+        ![屏幕截图显示了如何自定义目标订阅设置。](./media/site-recovery-replicate-azure-to-azure/customize.PNG)
 3. 单击“自定义:”以修改默认设置。
 4. 在“多 VM 一致性”中，选择要一起复制的 VM。
     - 故障转移时，复制组中的所有计算机将具有共享的崩溃一致性恢复点和应用程序一致性恢复点。
@@ -111,7 +114,7 @@ ms.locfileid: "92424797"
     - 如果启用了多 VM 一致性，则复制组中的计算机将通过端口 20004 相互通信。
     - 确保防火墙设备没有阻止 VM 之间通过端口 20004 进行的内部通信。
     - 如果想要 Linux VM 成为复制组的一部分，请确保按照特定 Linux 版本的指南手动打开端口 20004 上的出站流量。
-![显示多 VM 一致性设置的屏幕截图。](./media/site-recovery-replicate-azure-to-azure/multivmsettings.PNG)
+![屏幕截图显示了多 VM 一致性设置。](./media/site-recovery-replicate-azure-to-azure/multivmsettings.PNG)
 
 5. 单击“创建目标资源” > “启用复制”。 
 6. 为 VM 启用复制后，可以在“复制的项”下检查 VM 的运行状况

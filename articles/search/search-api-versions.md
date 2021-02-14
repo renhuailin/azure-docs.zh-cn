@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/05/2020
-ms.openlocfilehash: 489c6be7bf977d01207fee4d1bd1fda13dc12025
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: d2308d065755df834a224ef3b1df202d7b7dc5ae
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820511"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100518940"
 ---
 # <a name="api-versions-in-azure-cognitive-search"></a>Azure 认知搜索中的 API 版本
 
@@ -96,19 +96,19 @@ Azure 认知搜索服务实例支持几个 REST API 版本，包括最新版本�
 
 | SDK 版本 | 状态 | 描述  |
 |-------------|--------|------------------------------|
-| [Java azure-search-documents 11](https://newreleases.io/project/github/Azure/azure-sdk-for-java/release/azure-search-documents_11.1.0) | Stable | Azure .NET SDK 中的新客户端库，2020 年 7 月发布。 面向搜索 REST api-version=2019-05-06。 |
+| [Java azure-search-documents 11](https://newreleases.io/project/github/Azure/azure-sdk-for-java/release/azure-search-documents_11.1.0) | Stable | Azure Java SDK 中的新客户端库，发布时间为2020年7月。 面向搜索 REST api-version=2019-05-06。 |
 | [Java 管理客户端 1.35.0](/java/api/overview/azure/search/management) | Stable | 针对管理 REST api-version=2015-08-19。 |
 
 ## <a name="azure-sdk-for-javascript"></a>用于 JavaScript 的 Azure SDK
 
-| SDK 版本 | 状态 | 描述  |
+| SDK 版本 | 状态 | 说明  |
 |-------------|--------|------------------------------|
-| [JavaScript azure-search 11.0](https://azure.github.io/azure-sdk-for-node/azure-search/latest/) | Stable | Azure .NET SDK 中的新客户端库，2020 年 7 月发布。 面向搜索 REST api-version=2016-09-01。 |
-| [JavaScript azure-arm-search](https://azure.github.io/azure-sdk-for-node/azure-arm-search/latest/) | Stable | 针对管理 REST api-version=2015-08-19。 |
+| [JavaScript @azure/search-documents 11。0](https://www.npmjs.com/package/@azure/search-documents) | Stable | 来自 Azure JavaScript & TypesScript SDK 的新客户端库，发布时间为2020年7月。 面向搜索 REST api-version=2016-09-01。 |
+| [JavaScript @azure/arm-search](https://www.npmjs.com/package/@azure/arm-search) | Stable | 针对管理 REST api-version=2015-08-19。 |
 
 ## <a name="azure-sdk-for-python"></a>用于 Python 的 Azure SDK
 
 | SDK 版本 | 状态 | 描述  |
 |-------------|--------|------------------------------|
-| [Python azure-search-documents 11.0](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-search-documents/11.0.0/index.html) | Stable | Azure .NET SDK 中的新客户端库，2020 年 7 月发布。 面向搜索 REST api-version=2019-05-06。 |
-| [Python azure-mgmt-search 1.0](/python/api/overview/azure/search) | Stable | 针对管理 REST api-version=2015-08-19。 |
+| [Python azure-search-documents 11.0](https://pypi.org/project/azure-search-documents/) | Stable | 从2020年7月发布的 Azure Python SDK 中的新客户端库。 面向搜索 REST api-version=2019-05-06。 |
+| [Python azure 管理-搜索8。0](https://pypi.org/project/azure-mgmt-search/) | Stable | 针对管理 REST api-version=2015-08-19。 |

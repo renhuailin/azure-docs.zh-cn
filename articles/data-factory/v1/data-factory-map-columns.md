@@ -1,28 +1,24 @@
 ---
 title: 映射 Azure 数据工厂中的数据集列
 description: 了解如何将源列映射到目标列。
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
+ms.author: jingwang
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: af7a1e40f21b6c9af490abe6f58edcaf798818b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fef2c6f120ae25e6aa1846d4971ff707da9bab92
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85318869"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100371118"
 ---
 # <a name="map-source-dataset-columns-to-destination-dataset-columns"></a>将源数据集列映射到目标数据集列
 > [!NOTE]
 > 本文适用于数据工厂版本 1。 
 
-使用列映射可以指定如何将源表“结构”中指定的列映射到接收器表“结构”中指定的列。 可以在复制活动的 **typeProperties** 节中使用 **ColumnMapping** 属性。
+列映射可用于指定如何将源表的 "结构" 中指定的列映射到接收器表 "结构" 中指定的列。 可以在复制活动的 **typeProperties** 节中使用 **ColumnMapping** 属性。
 
 列映射支持以下方案：
 
@@ -31,7 +27,7 @@ ms.locfileid: "85318869"
 
 以下是导致异常的错误条件：
 
-* 接收器表“结构”中的列数量多于或少于映射中指定的数量。
+* 接收器表的 "structure" 中的列或更多列比映射中指定的更少。
 * 重复的映射。
 * SQL 查询结果中没有映射中指定的列名。
 
@@ -140,7 +136,7 @@ ms.locfileid: "85318869"
 ![列映射流](./media/data-factory-map-columns/column-mapping-flow.png)
 
 ## <a name="sample-2--column-mapping-with-sql-query-from-azure-sql-to-azure-blob"></a>示例 2 – 使用 SQL 查询从 Azure SQL 到 Azure Blob 的列映射
-本示例使用 SQL 查询从 Azure SQL 提取数据，而不是只在“结构”部分中指定表名和列名。 
+在此示例中，使用 SQL 查询从 Azure SQL 中提取数据，而不是简单地在 "结构" 部分中指定表名和列名。 
 
 ```json
 {
@@ -172,7 +168,7 @@ ms.locfileid: "85318869"
         }
 }
 ```
-在此情况下，查询结果先映射到源“结构”所指定的列。 接下来，源“结构”中的列使用 columnMappings 中指定的规则映射到接收器“结构”中的列。  假设该查询返回 5 个列，比源的“结构”中指定的多了 2 个列。
+在这种情况下，查询结果首先映射到源的 "结构" 中指定的列。 接下来，源 "structure" 中的列映射到带有 columnMappings 中指定的规则的接收器 "structure" 中的列。  假设查询返回5列，列比源的 "结构" 中指定的列多两个。
 
 **列映射流**
 

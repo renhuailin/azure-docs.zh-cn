@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/09/2020
 ms.author: mlottner
-ms.openlocfilehash: 6c441c9f81477a586c3e153e23b1fc63f2f76344
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: 4d99cdbb2f50d04eff790cdfe675d0f8031c48a9
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99819919"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100517172"
 ---
 # <a name="deploy-a-defender-for-iot-c-based-security-agent-for-windows"></a>为 Windows 部署基于 IoT c # 的安全代理 Defender
 
@@ -73,11 +73,11 @@ ms.locfileid: "99819919"
 此脚本执行以下操作：
 
 * 安装必备组件。
-* 添加服务用户（在禁用交互式登录的情况下）。
+* 添加已禁用交互式登录) 的服务用户 (。
 * 将代理作为 **系统服务** 安装。
 * 使用提供的身份验证参数配置代理。
 
-如需其他帮助，请在 PowerShell 中使用 Get-Help 命令。
+若要获得更多帮助，请在 PowerShell 中使用 Get-Help 命令。
 
 Get-Help 示例：```Get-Help .\InstallSecurityAgent.ps1```
 

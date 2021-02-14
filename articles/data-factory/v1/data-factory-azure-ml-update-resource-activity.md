@@ -1,22 +1,18 @@
 ---
 title: 使用 Azure 数据工厂更新机器学习模型
 description: '介绍如何使用 Azure 数据工厂 v1 和 Azure 机器学习 Studio (经典创建预测管道) '
-services: data-factory
-documentationcenter: ''
 author: dcstwh
 ms.author: weetok
-manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: 556936eb6e8c1c1c2dd1fab4ce7dfc1b648710b7
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 7a27ed657ba21d9e2125df903b40d74cd81eacf6
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96496596"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100379295"
 ---
 # <a name="updating-azure-machine-learning-studio-classic-models-using-update-resource-activity"></a>使用 "更新资源" 活动更新 Azure 机器学习 Studio (经典) 模型
 

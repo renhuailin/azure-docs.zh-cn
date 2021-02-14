@@ -3,22 +3,22 @@ title: ML Studio (经典) ：重新训练 web 服务-Azure
 description: 了解如何更新 Web 服务以在 Azure 机器学习工作室（经典版）中使用新训练的机器学习模型。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: seodec18, devx-track-csharp
 ms.date: 02/14/2019
-ms.openlocfilehash: ff0378871139a038f096a44b9ee0c6af2cb67d73
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: a4fe9e54e5e03a8dbf2a727b22f784c36d6c65f9
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325819"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100517580"
 ---
 # <a name="retrain-and-deploy-a-machine-learning-model"></a>重新训练和部署机器学习模型
 
-**适用对象：** ![适用于.](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典）   ![不适用于. ](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
+**适用对象：** ![适用于.](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典）   ![不适用于.](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 
 重新训练是确保机器学习模型保持准确的一种方法，该方法基于最相关的可用数据。 本文展示了如何在工作室（经典版）中重新训练机器学习模型并将其部署为新的 Web 服务。 如果要重新训练经典 Web 服务，请参阅[此操作说明文章](retrain-classic-web-service.md)。
@@ -64,8 +64,8 @@ ms.locfileid: "93325819"
 1. 在 Visual Studio 中创建 C# 控制台应用程序：“新建” > “项目” > “Visual C#” > “Windows 经典桌面” > “控制台应用(.NET Framework)”    。
 1. 登录“机器学习 Web 服务”门户。
 1. 单击正在使用的 Web 服务。
-1. 单击“ **使用** ”。
-1. 在“ **使用** ”页底部的“ **示例代码** ”部分中，单击“ **Batch** ”。
+1. 单击“**使用**”。
+1. 在“**使用**”页底部的“**示例代码**”部分中，单击“**Batch**”。
 1. 复制 Batch 执行的示例 C# 代码，并将其粘贴到 Program.cs 文件。 请确保命名空间保持不变。
 
 按照注释中指定的方式添加 NuGet 包 Microsoft.AspNet.WebApi.Client。 要添加对 Microsoft.WindowsAzure.Storage.dll 的引用，可能需要安装 [Azure 存储服务的客户端库](https://www.nuget.org/packages/WindowsAzure.Storage)。
@@ -130,11 +130,11 @@ Outputs = new Dictionary<string, AzureBlobDataReference>() {
 
 运行应用程序时，输出包括 URL 和访问评估结果所需的共享访问签名令牌。
 
-通过组合 *output2* 的输出结果中的 *BaseLocation* 、 *RelativeLocation* 和 *SasBlobToken* 并在浏览器地址栏中粘贴完整的 URL，可以查看重新训练模型的性能结果。
+通过组合 *output2* 的输出结果中的 *BaseLocation*、*RelativeLocation* 和 *SasBlobToken* 并在浏览器地址栏中粘贴完整的 URL，可以查看重新训练模型的性能结果。
 
 检查结果以确定新训练的模型是否比现有模型的表现更好。
 
-保存输出结果中的 *BaseLocation* 、 *RelativeLocation* 和 *SasBlobToken* 。
+保存输出结果中的 *BaseLocation*、*RelativeLocation* 和 *SasBlobToken*。
 
 ## <a name="update-the-predictive-experiment"></a>更新预测实验
 

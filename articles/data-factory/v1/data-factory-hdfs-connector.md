@@ -1,23 +1,18 @@
 ---
 title: 从本地 HDFS 移动数据
 description: 了解如何使用 Azure 数据工厂从本地 HDFS 移动数据。
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: 3215b82d-291a-46db-8478-eac1a3219614
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: c4393ebeb8b1e287bd881233418a902fc523f7f5
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 52e176e0fed85b649d482614667d695db539e5d1
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97589604"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100383069"
 ---
 # <a name="move-data-from-on-premises-hdfs-using-azure-data-factory"></a>使用 Azure 数据工厂从本地 HDFS 移动数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -44,7 +39,7 @@ ms.locfileid: "97589604"
 
 虽然可在同一台本地计算机或 Azure VM 上将网关安装为 HDFS，但是我们建议在单独的计算机/Azure IaaS VM 上安装网关。 在单独的计算机上安装网关可减少资源争用和提高性能。 在单独的计算机上安装网关时，该计算机应能访问具有 HDFS 的计算机。
 
-## <a name="getting-started"></a>开始使用
+## <a name="getting-started"></a>入门
 可以使用不同的工具/API 创建包含复制活动的管道，以从 HDFS 源移动数据。
 
 创建管道的最简单方法是使用复制向导。 请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。
@@ -64,7 +59,7 @@ ms.locfileid: "97589604"
 ## <a name="linked-service-properties"></a>链接服务属性
 链接服务可将数据存储链接到数据工厂。 可创建 **Hdfs** 类型的链接服务，以便将本地 HDFS 链接到数据工厂。 下表提供 HDFS 链接服务专属 JSON 元素的描述。
 
-| properties | 说明 | 必需 |
+| properties | 说明 | 必须 |
 | --- | --- | --- |
 | type |Type 属性必须设置为： **Hdfs** |是 |
 | url |HDFS 的 URL |是 |
@@ -112,14 +107,15 @@ ms.locfileid: "97589604"
     }
 }
 ```
+
 ## <a name="dataset-properties"></a>数据集属性
 有关可用于定义数据集的节和属性的完整列表，请参阅[创建数据集](data-factory-create-datasets.md)一文。 对于所有数据集类型（Azure SQL、Azure Blob、Azure 表等），结构、可用性和数据集 JSON 的策略等部分均类似。
 
 每种数据集的 typeProperties 部分有所不同，该部分提供有关数据在数据存储区中的位置信息。 **FileShare** 类型数据集（包括 HDFS 数据集）的 typeProperties 节具有以下属性
 
-| properties | 说明 | 必需 |
+| properties | 说明 | 必须 |
 | --- | --- | --- |
-| folderPath |文件夹路径。 示例： `myfolder`<br/><br/>请对字符串中的特殊字符使用转义符“\”。 例如：对于 folder\subfolder，请指定 folder\\\\subfolder；对于 d:\samplefolder，请指定 d:\\\\samplefolder。<br/><br/>可将此属性与 **partitionBy** 相组合，基于切片开始/结束日期时间构成文件夹路径。 |是 |
+| folderPath |文件夹路径。 示例：`myfolder`<br/><br/>对于字符串中的特殊字符，请使用转义符 "\"。 例如：对于 folder\subfolder，请指定 folder\\\\subfolder；对于 d:\samplefolder，请指定 d:\\\\samplefolder。<br/><br/>可将此属性与 **partitionBy** 相组合，基于切片开始/结束日期时间构成文件夹路径。 |是 |
 | fileName |指定 **folderPath** 中的文件的名称（如果你想要引用该文件夹中的特定文件）。 如果没有为此属性指定任何值，表将指向文件夹中的所有文件。<br/><br/>如果没有为输出数据集指定 fileName，生成的文件的名称会采用以下格式： <br/><br/>`Data.<Guid>.txt` (例如：： Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |否 |
 | partitionedBy |partitionedBy 可用于指定时序数据的动态 folderPath 和 filename。 示例：folderPath 可针对每小时的数据参数化。 |否 |
 | format | 支持以下格式类型：**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat** 和 **ParquetFormat**。 请将格式中的“type”属性设置为上述值之一。 有关详细信息，请参阅[文本格式](data-factory-supported-file-and-compression-formats.md#text-format)、[Json 格式](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro 格式](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc 格式](data-factory-supported-file-and-compression-formats.md#orc-format)和 [Parquet 格式](data-factory-supported-file-and-compression-formats.md#parquet-format)部分。 <br><br> 如果想要在基于文件的存储之间按原样复制文件（二进制副本），可以在输入和输出数据集定义中跳过格式节。 |否 |
@@ -168,7 +164,7 @@ ms.locfileid: "97589604"
 
 **FileSystemSource** 支持以下属性：
 
-| properties | 说明 | 允许的值 | 必选 |
+| properties | 说明 | 允许的值 | 必须 |
 | --- | --- | --- | --- |
 | recursive |指示是要从子文件夹中以递归方式读取数据，还是只从指定的文件夹中读取数据。 |True、False（默认值） |否 |
 
@@ -226,7 +222,7 @@ ms.locfileid: "97589604"
 
 **HDFS 输入数据集：** 此数据集是指 HDFS 文件夹 DataTransfer/UnitTest/。 管道将此文件夹中的所有文件复制到目标。
 
-设置“external”: ”true”将告知数据工厂服务：数据集在数据工厂外部且不由数据工厂中的活动生成。
+设置 "external": "true" 将告知数据工厂服务：数据集位于数据工厂外且不由数据工厂中的活动生成。
 
 ```JSON
 {
@@ -363,25 +359,25 @@ ms.locfileid: "97589604"
 
 **在网关计算机上：**
 
-1.  运行 Ksetup 实用工具来配置 Kerberos KDC 服务器和领域。
+1. 运行 Ksetup 实用工具来配置 Kerberos KDC 服务器和领域。
 
-    由于 Kerberos 领域不同于 Windows 域，计算机必须配置为工作组的成员。 这可以通过按如下所示设置 Kerberos 领域和添加 KDC 服务器来实现。 根据需要，将 REALM.COM 替换为各自的领域。
+   由于 Kerberos 领域不同于 Windows 域，计算机必须配置为工作组的成员。 这可以通过按如下所示设置 Kerberos 领域和添加 KDC 服务器来实现。 根据需要，将 REALM.COM 替换为各自的领域。
 
-    ```cmd
-    C:> Ksetup /setdomain REALM.COM
-    C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
-    ```
+   ```cmd
+   Ksetup /setdomain REALM.COM
+   Ksetup /addkdc REALM.COM <your_kdc_server_address>
+   ```
 
-    执行这 2 个命令后，**重启** 计算机。
+   执行这 2 个命令后，**重启** 计算机。
 
-2.  使用 Ksetup 命令验证配置。 输出应如下所示：
+2. 使用 Ksetup 命令验证配置。 输出应如下所示：
 
-    ```cmd
-    C:> Ksetup
-    default realm = REALM.COM (external)
-    REALM.com:
-        kdc = <your_kdc_server_address>
-    ```
+   ```cmd
+   Ksetup
+   default realm = REALM.COM (external)
+   REALM.com:
+      kdc = <your_kdc_server_address>
+   ```
 
 **在 Azure 数据工厂中：**
 
@@ -390,8 +386,8 @@ ms.locfileid: "97589604"
 ### <a name="option-2-enable-mutual-trust-between-windows-domain-and-kerberos-realm"></a><a name="kerberos-mutual-trust"></a>方法 2：启用 Windows 域和 Kerberos 领域之间的相互信任
 
 #### <a name="requirement"></a>要求：
-*   网关计算机必须加入 Windows 域。
-*   需要用于更新域控制器设置的权限。
+*    网关计算机必须加入 Windows 域。
+*    需要用于更新域控制器设置的权限。
 
 #### <a name="how-to-configure"></a>配置方式：
 
@@ -450,54 +446,54 @@ ms.locfileid: "97589604"
 
 **在域控制器上：**
 
-1.  运行以下 Ksetup 命令以添加一个领域条目：
+1. 运行以下 Ksetup 命令以添加一个领域条目：
 
-    ```cmd
-    C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
-    C:> ksetup /addhosttorealmmap HDFS-service-FQDN REALM.COM
-    ```
+   ```cmd
+   Ksetup /addkdc REALM.COM <your_kdc_server_address>
+   ksetup /addhosttorealmmap HDFS-service-FQDN REALM.COM
+   ```
 
-2.  建立从 Windows 域到 Kerberos 领域的信任关系。 [password] 是主体 krbtgt/REALM.COM\@AD.COM 的密码。
+2. 建立从 Windows 域到 Kerberos 领域的信任关系。 [password] 是主体 krbtgt/REALM.COM\@AD.COM 的密码。
 
-    ```cmd
-    C:> netdom trust REALM.COM /Domain: AD.COM /add /realm /passwordt:[password]
-    ```
+   ```cmd
+   netdom trust REALM.COM /Domain: AD.COM /add /realm /passwordt:[password]
+   ```
 
-3.  选择在 Kerberos 中使用的加密算法。
+3. 选择在 Kerberos 中使用的加密算法。
 
-    1. 转到“服务器管理器”>“组策略管理”>“域”>“组策略对象”>“默认或活动的域策略”，单击“编辑”。
+   1. 转到“服务器管理器”>“组策略管理”>“域”>“组策略对象”>“默认或活动的域策略”，单击“编辑”。
 
-    2. 在“组策略管理编辑器”弹出窗口中，转到“计算机配置”>“策略”>“Windows 设置”>“安全设置”>“本地策略”>“安全选项”，配置“网络安全:配置 Kerberos 允许使用的加密类型”。
+   2. 在“组策略管理编辑器”弹出窗口中，转到“计算机配置”>“策略”>“Windows 设置”>“安全设置”>“本地策略”>“安全选项”，配置“网络安全:配置 Kerberos 允许使用的加密类型”。
 
-    3. 选择连接到 KDC 时要使用的加密算法。 通常情况下，可以简单地选择所有选项。
+   3. 选择连接到 KDC 时要使用的加密算法。 通常情况下，可以简单地选择所有选项。
 
-        ![配置 Kerberos 的加密类型](media/data-factory-hdfs-connector/config-encryption-types-for-kerberos.png)
+      ![配置 Kerberos 的加密类型](media/data-factory-hdfs-connector/config-encryption-types-for-kerberos.png)
 
-    4. 使用 **Ksetup** 命令可指定要在特定领域上使用的加密算法。
+   4. 使用 **Ksetup** 命令可指定要在特定领域上使用的加密算法。
 
-       ```cmd
-       C:> ksetup /SetEncTypeAttr REALM.COM DES-CBC-CRC DES-CBC-MD5 RC4-HMAC-MD5 AES128-CTS-HMAC-SHA1-96 AES256-CTS-HMAC-SHA1-96
-       ```
+      ```cmd
+      ksetup /SetEncTypeAttr REALM.COM DES-CBC-CRC DES-CBC-MD5 RC4-HMAC-MD5 AES128-CTS-HMAC-SHA1-96 AES256-CTS-HMAC-SHA1-96
+      ```
 
-4.  在域帐户和 Kerberos 主体之间创建映射，以便在 Windows 域中使用 Kerberos 主体。
+4. 在域帐户和 Kerberos 主体之间创建映射，以便在 Windows 域中使用 Kerberos 主体。
 
-    1. 启动管理工具 >“Active Directory 用户和计算机”。
+   1. 启动管理工具 >“Active Directory 用户和计算机”。
 
-    2. 通过单击“查看” > “高级功能”配置高级功能。
+   2. 通过单击“查看” > “高级功能”配置高级功能。
 
-    3. 找到要创建映射的帐户，并右键单击以查看“名称映射”> 单击“Kerberos 名称”选项卡。
+   3. 找到要创建映射的帐户，并右键单击以查看“名称映射”> 单击“Kerberos 名称”选项卡。
 
-    4. 从领域中添加主体。
+   4. 从领域中添加主体。
 
-        ![映射安全标识](media/data-factory-hdfs-connector/map-security-identity.png)
+      ![映射安全标识](media/data-factory-hdfs-connector/map-security-identity.png)
 
 **在网关计算机上：**
 
 * 运行以下 Ksetup 命令以添加一个领域条目。
 
    ```cmd
-   C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
-   C:> ksetup /addhosttorealmmap HDFS-service-FQDN REALM.COM
+   Ksetup /addkdc REALM.COM <your_kdc_server_address>
+   ksetup /addhosttorealmmap HDFS-service-FQDN REALM.COM
    ```
 
 **在 Azure 数据工厂中：**
@@ -506,7 +502,6 @@ ms.locfileid: "97589604"
 
 > [!NOTE]
 > 要将源数据集中的列映射到接收器数据集中的列，请参阅[映射 Azure 数据工厂中的数据集列](data-factory-map-columns.md)。
-
 
 ## <a name="performance-and-tuning"></a>性能和优化
 若要了解影响 Azure 数据工厂中数据移动（复制活动）性能的关键因素及各种优化方法，请参阅[复制活动性能和优化指南](data-factory-copy-activity-performance.md)。

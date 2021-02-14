@@ -10,12 +10,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - contperf-fy21q1
-ms.openlocfilehash: fb7cb0638ca86ea736749e6fb35e2295128162aa
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 7fc57b46055281c64b39767047f6b7cb5b748ad2
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032977"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100373821"
 ---
 # <a name="configure-an-iot-edge-device-to-communicate-through-a-proxy-server"></a>将 IoT Edge 设备配置为通过代理服务器进行通信
 
@@ -245,7 +245,7 @@ IoT Edge 代理是在任意 IoT Edge 设备上启动的第一个模块。 该代
 "edgeHub": {
     "type": "docker",
     "settings": {
-        "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
+        "image": "mcr.microsoft.com/azureiotedge-hub:1.1",
         "createOptions": ""
     },
     "env": {
@@ -273,9 +273,9 @@ IoT Edge 代理是在任意 IoT Edge 设备上启动的第一个模块。 该代
 
 ## <a name="working-with-traffic-inspecting-proxies"></a>使用流量检查代理
 
-如果你尝试使用的代理对受 TLS 保护的连接执行流量检查，请务必注意，使用 x.509 证书进行的身份验证不起作用。 IoT Edge 建立使用提供的证书和密钥以端为端加密的 TLS 通道。 如果该通道对于流量检查断开，则代理无法使用正确的凭据重新建立通道，并且 IoT 中心和 IoT 中心设备预配服务将返回 `Unauthorized` 错误。
+如果你尝试使用的代理对受 TLS 保护的连接执行流量检查，请务必注意，使用 X.509 证书的身份验证无效。 IoT Edge 建立了一个 TLS 通道，该通道使用提供的证书和密钥进行了端到端加密。 如果断开该通道以进行流量检查，则代理无法使用正确的凭据重新建立该通道，并且 IoT 中心和 IoT 中心设备预配服务会返回“`Unauthorized`”错误。
 
-若要使用执行流量检查的代理，必须使用共享访问签名身份验证，或者将 IoT 中心和 IoT 中心设备预配服务添加到允许列表，以避免检查。
+若要使用执行流量检查的代理，必须使用共享访问签名身份验证，或者将 IoT 中心和 IoT 中心设备预配服务添加到允许列表以避免检查。
 
 ## <a name="next-steps"></a>后续步骤
 

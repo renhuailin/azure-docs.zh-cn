@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/01/2021
 ms.author: panosper
-ms.openlocfilehash: 61768991fc4e72b44568bd92278427e6af398d52
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: 21924ad5da8833ca5cf8373270ed1bfd3facfdc9
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99226550"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100388611"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>语音转文本常见问题解答
 
@@ -140,7 +140,7 @@ ms.locfileid: "99226550"
 
 为了更快地获得结果，请使用其中有用于训练的专用硬件的[区域](custom-speech-overview.md#set-up-your-azure-account)之一。 通常，该服务会在具有此类硬件的区域中每天处理大约10小时的音频数据。 它在其他区域每天只能处理大约1小时的音频数据。 你可以使用 [REST API](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CopyModelToSubscription) 将已完全训练好的模型复制到另一个区域。 仅使用文本进行训练速度要快得多，通常在几分钟内就可完成。
 
-某些基础模型不能使用音频数据进行自定义。 对于这些模型，该服务会仅使用听录的文本进行训练并忽略音频数据。 然后，训练的完成速度会快得多，结果将与仅使用文本进行训练相同。
+某些基础模型不能使用音频数据进行自定义。 对于这些模型，该服务会仅使用听录的文本进行训练并忽略音频数据。 然后，训练的完成速度会快得多，结果将与仅使用文本进行训练相同。 有关支持音频数据定型的基本模型的列表，请参阅 [语言支持](language-support.md#speech-to-text) 。
 
 ## <a name="accuracy-testing"></a>精确度测试
 

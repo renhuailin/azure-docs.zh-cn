@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/08/2020
-ms.openlocfilehash: 5bd1a9111528146224561995feaecf54612a1c78
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d16eefc8dd3f693e108e457782dc9d076180ba8e
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91535655"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100520589"
 ---
 # <a name="similarity-and-scoring-in-azure-cognitive-search"></a>Azure 认知搜索中的相似性和评分
 
@@ -21,7 +21,7 @@ ms.locfileid: "91535655"
 
 默认情况下会在响应中返回前 50 个结果，但你可以使用 $top 参数返回更少或更多的项（单个响应中最多可以包含 1000 个项），并可以使用 $skip 获取下一个结果集。
 
-根据数据和查询的统计属性计算搜索分数。 Azure 认知搜索会查找与搜索词匹配的文档（与部分搜索词或全部搜索词匹配，具体取决于 [searchMode](/rest/api/searchservice/search-documents#searchmodeany--all-optional)），并优先列出包含该搜索词多个实例的文档。 如果搜索词在数据索引中很少见，但在文档中很常见，搜索分数仍升至更高。 这种计算相关性的方法的基本原理称为 TF-IDF（字词频率-逆向文档频率）。
+根据数据和查询的统计属性计算搜索分数。 Azure 认知搜索会查找与搜索词匹配的文档（与部分搜索词或全部搜索词匹配，具体取决于 [searchMode](/rest/api/searchservice/search-documents#query-parameters)），并优先列出包含该搜索词多个实例的文档。 如果搜索词在数据索引中很少见，但在文档中很常见，搜索分数仍升至更高。 这种计算相关性的方法的基本原理称为 TF-IDF（字词频率-逆向文档频率）。
 
 搜索分数值可以在整个结果集中重复。 当多个命中具有相同的搜索评分时，相同评分项的顺序就不会是明确、稳定的。 再次运行查询，你可能会看到项偏移位置，尤其是使用免费服务或包含多个副本的可计费服务时。 对于具有相同分数的两项，无法保证先显示哪一个。
 
@@ -40,7 +40,7 @@ ms.locfileid: "91535655"
 
 ## <a name="scoring-statistics-and-sticky-sessions"></a>评分统计信息和粘滞会话
 
-为了实现可伸缩性，Azure 认知搜索通过分片进程水平分布每个索引，这意味着 [索引的部分以物理方式分开](search-capacity-planning.md#concepts-search-units-replicas-partitions-shards)。
+为了实现可伸缩性，Azure 认知搜索会通过分片过程横向分布每个索引，这意味着，[索引的某些部分在物理上是独立的](search-capacity-planning.md#concepts-search-units-replicas-partitions-shards)。
 
 默认情况下，文档的评分是根据分片中数据的统计属性计算的。 此方法对于大型数据集而言通常不会造成问题，与基于所有分片中的信息计算评分相比，此方法可提供更好的性能。 也就是说，使用这种性能优化可能会导致两个非常相似的文档（甚至相同的文档）最终可能出现不同的相关性评分（如果这些文档出现在不同的分片中）。
 
@@ -107,4 +107,4 @@ Azure 认知搜索支持两种不同的相似性排名算法：经典相似性�
 
 ## <a name="see-also"></a>另请参阅
 
- [计分配置文件](index-add-scoring-profiles.md) [REST API 引用](/rest/api/searchservice/)[搜索文档 API](/rest/api/searchservice/search-documents) [Azure 认知搜索 .net SDK](/dotnet/api/overview/azure/search)
+ [计分概要文件](index-add-scoring-profiles.md) [REST API 参考](/rest/api/searchservice/) [搜索文档 API](/rest/api/searchservice/search-documents) [Azure 认知搜索 .NET SDK](/dotnet/api/overview/azure/search)

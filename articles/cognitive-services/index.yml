@@ -12,12 +12,12 @@ metadata:
   manager: nitinme
   ms.custom: custom-portals-hub
   ms.date: 08/28/2020
-  ms.openlocfilehash: 059d5545c71bef3465dc634f8fdad2396a6d9a7e
-  ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+  ms.openlocfilehash: a2329333268ca6aec0a33794a342f63aa2bda53f
+  ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 01/22/2021
-  ms.locfileid: "98681569"
+  ms.lasthandoff: 02/14/2021
+  ms.locfileid: "100379533"
 highlightedContent:
   items:
   - title: 什么是认知服务？
@@ -61,9 +61,6 @@ conceptualContent:
     - url: ./form-recognizer/index.yml
       itemType: overview
       text: 表单识别器
-    - url: ./ink-recognizer/index.yml
-      itemType: overview
-      text: 墨迹识别器（将停用）
     - url: ../media-services/video-indexer/index.yml
       itemType: overview
       text: 视频索引器
@@ -136,7 +133,7 @@ conceptualContent:
     - url: ./containers/docker-compose-recipe.md
       itemType: get-started
       text: 使用 Docker Compose 部署多个容器
-    - url: ./containers/container-faq.md
+    - url: ./containers/container-faq.yml
       itemType: reference
       text: 认知服务容器常见问题解答
   - title: 适用于大数据的认知服务
