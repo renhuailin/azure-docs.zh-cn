@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: dfd0156907f18dcb7f38246993ddc4abcd508631
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 25d9d53b9bc597b5eb51586c594dd631609f476e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99549382"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100362142"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>使用 Azure 托管和运行 SAP 工作负荷方案
 
@@ -84,6 +84,7 @@ SAP 应用程序层和 DBMS 的高可用性记录在有关[Sap NetWeaver 的 Azu
 
 ## <a name="change-log"></a>更改日志
 
+- 02/11/2021： [Red Hat Enterprise Linux Server 上的 Azure vm 上的 IBM DB2 LUW 的高可用性](./high-availability-guide-rhel-ibm-db2-luw.md) 更改，用于修改 RHEL 2.x 的 pacemaker 群集命令
 - 02/03/2021：在 [Azure 中的 RHEL 上设置 Pacemaker](./high-availability-guide-rhel-pacemaker.md) 以更新 stonith create 命令中的 pcmk_host_map
 - 02/03/2021：在 [Azure 中将 Pacemaker 设置为在 SLES 中进行设置](./high-availability-guide-suse-pacemaker.md) ，以将 pcmk_host_map 添加到 stonith create 命令中 
 - 02/03/2021：有关 SUSE in [SAP HANA Azure 虚拟机存储配置](./hana-vm-operations-storage.md)的详细信息，请详细了解 SUSE

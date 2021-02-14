@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: reference
 ms.workload: identity
-ms.date: 01/18/2021
+ms.date: 02/09/2021
 ms.author: chmutali
-ms.openlocfilehash: f260bca196839a091ae7d12be6d5f85912bf92db
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 2b1a43ee6b13d32c0eaed92538cf9c25405e061b
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99255978"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104325"
 ---
 # <a name="how-azure-active-directory-provisioning-integrates-with-workday"></a>Azure Active Directory 预配与 Workday 的集成方式
 
@@ -379,7 +379,7 @@ Azure AD 预配服务将处理每个页面，并在完全同步期间遍历所�
 | 21 | 支付组                            | 否                  | "支付 \_ 组"                                                                  |
 | 22 | Programs                             | 否                  | 程序                                                                    |
 | 23 | 程序层次结构                    | 否                  | "项目 \_ 层次结构"                                                          |
-| 24 | Region                               | 否                  | "区域 \_ 层次结构"                                                           |
+| 24 | 区域                               | 否                  | "区域 \_ 层次结构"                                                           |
 | 25 | 位置层次结构                   | 否                  | "位置 \_ 层次结构"                                                         |
 | 26 | 帐户预配数据            | 否                  | wd： Worker \_ data/wd：帐户 \_ 预配 \_ 数据                                |
 | 27 | 背景检查数据                | 否                  | wd： Worker \_ data/wd：背景 \_ 检查 \_ 数据                                    |
@@ -422,7 +422,7 @@ Azure AD 预配服务将处理每个页面，并在完全同步期间遍历所�
 1. 添加以下属性定义，并将其标记为 "必需"。 这些属性不会映射到 AD 或 Azure AD 中的任何属性。 他们只是将信号发送到连接器，以便检索成本中心、成本中心层次结构和支付组信息。 
 
      > [!div class="mx-tdCol2BreakAll"]
-     >| 属性名称 | XPATH API 表达式 |
+     >| 特性名 | XPATH API 表达式 |
      >|---|---|
      >| CostCenterHierarchyFlag  |  wd： Worker/wd： Worker_Data/wd： Organization_Data/wd： Worker_Organization_Data [wd： Organization_Data/wd： Organization_Type_Reference/wd： ID [ @wd:type = ' Organization_Type_ID '] = ' COST_CENTER_HIERARCHY ']/wd:Organization_Reference/@wd:Descriptor |
      >| CostCenterFlag  |  wd： Worker/wd： Worker_Data/wd： Organization_Data/wd： Worker_Organization_Data [wd： Organization_Data/wd： Organization_Type_Reference/wd： ID [ @wd:type = ' Organization_Type_ID "] = ' COST_CENTER ']/wd： Organization_Data/wd： Organization_Code/text ( # A1 |
@@ -431,7 +431,7 @@ Azure AD 预配服务将处理每个页面，并在完全同步期间遍历所�
 1. 在 *Get_Workers* 响应中提供 "成本中心" 和 "支付组" 数据集后，可以使用以下 XPATH 值检索成本中心名称、成本中心代码和支付组。 
 
      > [!div class="mx-tdCol2BreakAll"]
-     >| 属性名称 | XPATH API 表达式 |
+     >| 特性名 | XPATH API 表达式 |
      >|---|---|
      >| CostCenterName  | wd： Worker/wd： Worker_Data/wd： Organization_Data/wd： Worker_Organization_Data/wd： Organization_Data [ wd:Organization_Type_Reference/@wd:Descriptor = "成本中心"]/wd： Organization_Name/text ( # A1 |
      >| CostCenterCode | wd： Worker/wd： Worker_Data/wd： Organization_Data/wd： Worker_Organization_Data/wd： Organization_Data [ wd:Organization_Type_Reference/@wd:Descriptor = "成本中心"]/wd： Organization_Code/text ( # A1 |
@@ -448,6 +448,21 @@ Azure AD 预配服务将处理每个页面，并在完全同步期间遍历所�
 假设您要检索分配给某个辅助角色的 *预配组* 。 此信息作为 *帐户预配数据* 集的一部分提供。 若要将此数据集作为 *Get_Workers* 响应的一部分，请使用以下 XPATH： 
 
 `wd:Worker/wd:Worker_Data/wd:Account_Provisioning_Data/wd:Provisioning_Group_Assignment_Data[wd:Status='Assigned']/wd:Provisioning_Group/text()`
+
+## <a name="handling-different-hr-scenarios"></a>处理不同的 HR 方案
+
+### <a name="retrieving-international-job-assignments-and-secondary-job-details"></a>检索国际作业分配和辅助作业详细信息
+
+默认情况下，Workday 连接器检索与辅助角色的主作业关联的属性。 连接器还支持检索与国际作业分配或辅助作业关联的 *其他作业数据* 。 
+
+使用以下步骤检索与国际作业分配关联的属性： 
+
+1. 设置 Workday 连接 URL 使用 Workday Web Service API 版本30.0 或更高版本。 在 Workday 预配应用中相应设置 [正确的 XPATH 值](workday-attribute-reference.md#xpath-values-for-workday-web-services-wws-api-v30) 。 
+1. 使用节点上的选择器 `@wd:Primary_Job=0` `Worker_Job_Data` 检索正确的属性。 
+   * **示例1：** 若要获取 `SecondaryBusinessTitle` 使用 XPATH `wd:Worker/wd:Worker_Data/wd:Employment_Data/wd:Worker_Job_Data[@wd:Primary_Job=0]/wd:Position_Data/wd:Business_Title/text()`
+   * **示例2：** 若要获取 `SecondaryBusinessLocation` 使用 XPATH `wd:Worker/wd:Worker_Data/wd:Employment_Data/wd:Worker_Job_Data[@wd:Primary_Job=0]/wd:Position_Data/wd:Business_Site_Summary_Data/wd:Location_Reference/@wd:Descriptor`
+
+ 
 
 ## <a name="next-steps"></a>后续步骤
 

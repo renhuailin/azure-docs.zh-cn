@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: decf289614179718d5c3424f6d4482a5ce2c43e1
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: 6241f6156b01c3c90f00578ae5416e4e77270930
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97680725"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100386792"
 ---
 # <a name="tutorial-migrate-from-google-maps-to-azure-maps"></a>教程：从 Google Maps 迁移到 Azure Maps
 
@@ -48,7 +48,7 @@ Azure Maps 为所有行业的开发人员提供强大的地理空间功能。 �
 | REST 服务 API           | ✓                                      |
 | 方向（路线规划）        | ✓                                      |
 | 距离矩阵             | ✓                                      |
-| Elevation                   | 已计划                                |
+| Elevation                   | ✓（预览）                            |
 | 地理编码（正向/反向） | ✓                                      |
 | 地理位置                 | 空值                                    |
 | 最近的道路               | ✓                                      |

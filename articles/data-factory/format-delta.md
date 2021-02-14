@@ -1,51 +1,50 @@
 ---
 title: Azure 数据工厂中的增量格式
-description: 使用增量格式从增量 lake 转换和移动数据
+description: 使用增量格式转换和移动来自 delta lake 的数据
 author: djpmsft
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/07/2020
 ms.author: daperlov
-ms.openlocfilehash: 794c9a0768a7b649ce4fb123c85f6cc0120764c8
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: bb5360a678751b37cf36677fca611b39746621f4
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96854965"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100386486"
 ---
 # <a name="delta-format-in-azure-data-factory"></a>Azure 数据工厂中的增量格式
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-本文重点介绍如何使用增量格式将数据复制到 [Azure Data Lake Store Gen2](connector-azure-data-lake-storage.md) 或 [Azure Blob 存储](connector-azure-blob-storage.md) 中存储的增量 lake。 此连接器作为 [内联数据集](data-flow-source.md#inline-datasets) 提供，同时将数据流映射为源和接收器。
+本文重点介绍如何使用增量格式从/向存储在 [Azure Data Lake Store Gen2](connector-azure-data-lake-storage.md) 或 [Azure Blob 存储](connector-azure-blob-storage.md)中的 delta lake 复制数据。 该连接器作为映射数据流中的[内联数据集](data-flow-source.md#inline-datasets)提供，同时用作源和接收器。
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4ALTs]
 
 ## <a name="mapping-data-flow-properties"></a>映射数据流属性
 
-此连接器作为 [内联数据集](data-flow-source.md#inline-datasets) 提供，同时将数据流映射为源和接收器。
+该连接器作为映射数据流中的[内联数据集](data-flow-source.md#inline-datasets)提供，同时用作源和接收器。
 
 ### <a name="source-properties"></a>源属性
 
-下表列出了增量源支持的属性。 可以在 " **源选项** " 选项卡中编辑这些属性。
+下表列出了 delta 源支持的属性。 可以在“源选项”选项卡中编辑这些属性。
 
-| 名称 | 说明 | 必选 | 允许的值 | 数据流脚本属性 |
+| 名称 | 说明 | 必需 | 允许的值 | 数据流脚本属性 |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | 格式 | 格式必须为 `delta` | 是 | `delta` | format |
-| 文件系统 | Delta lake 的容器/文件系统 | 是 | 字符串 | fileSystem |
-| 文件夹路径 | 增量 lake 的直接 | 是 | 字符串 | folderPath |
-| 压缩类型 | 增量表的压缩类型 | 否 | `bzip2`<br>`gzip`<br>`deflate`<br>`ZipDeflate`<br>`snappy`<br>`lz4` | compressionType |
-| 压缩级别 | 选择压缩是否尽快完成，或者是否以最佳方式压缩生成的文件。 | 如果 `compressedType` 指定了，则为必需。 | `Optimal` 或 `Fastest` | compressionLevel |
-| 旅行时间 | 选择是否要查询增量表的旧快照 | 否 | 按时间戳查询：时间戳 <br> 按版本查询：整数 | timestampAsOf <br> versionAsOf |
-| 允许找不到文件 | 如果为 true，则在找不到文件时不会引发错误 | 否 | `true` 或 `false` | ignoreNoFilesFound |
+| 文件系统 | delta lake 的容器/文件系统 | 是 | 字符串 | fileSystem |
+| 文件夹路径 | delta lake 的直接 | 是 | 字符串 | folderPath |
+| 压缩类型 | delta 表的压缩类型 | 否 | `bzip2`<br>`gzip`<br>`deflate`<br>`ZipDeflate`<br>`snappy`<br>`lz4` | compressionType |
+| 压缩级别 | 选择压缩是否尽快完成，或者是否应该以最佳方式压缩生成的文件。 | 如果指定了 `compressedType`，则为必需项。 | `Optimal` 或 `Fastest` | compressionLevel |
+| 按时间顺序查看 | 选择是否查询 delta 表的旧快照 | 否 | 按时间戳查询：Timestamp <br> 按版本查询：Integer | timestampAsOf <br> versionAsOf |
+| 允许找不到文件 | 如果为 true，在找不到文件时不会引发错误 | 否 | `true` 或 `false` | ignoreNoFilesFound |
 
 #### <a name="import-schema"></a>导入架构
 
-Delta 仅作为内联数据集提供，默认情况下，不具有关联的架构。 若要获取列元数据，请单击 "**投影**" 选项卡中的 "**导入架构**" 按钮。这将允许你引用语料库指定的列名称和数据类型。 若要导入该架构， [数据流调试会话](concepts-data-flow-debug-mode.md) 必须处于活动状态，并且您必须具有现有的 CDM 实体定义文件以指向。
+Delta 仅作为内联数据集提供，且默认情况下没有关联架构。 若要获取列元数据，请单击“投影”选项卡中的“导入架构”按钮 。这样你可以引用语料库指定的列名称和数据类型。 若要导入架构，[数据流调试会话](concepts-data-flow-debug-mode.md)必须处于活动状态，还必须具有可以指向的现有 CDM 实体定义文件。
  
 
-### <a name="delta-source-script-example"></a>增量源脚本示例
+### <a name="delta-source-script-example"></a>Delta 源脚本示例
 
 ```
 source(output(movieId as integer,
@@ -65,19 +64,19 @@ source(output(movieId as integer,
 
 ### <a name="sink-properties"></a>接收器属性
 
-下表列出了增量接收器支持的属性。 可以在 " **设置** " 选项卡中编辑这些属性。
+下表列出了 delta 接收器支持的属性。 可以在“设置”选项卡中编辑这些属性。
 
-| 名称 | 说明 | 必选 | 允许的值 | 数据流脚本属性 |
+| 名称 | 说明 | 必需 | 允许的值 | 数据流脚本属性 |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | 格式 | 格式必须为 `delta` | 是 | `delta` | format |
-| 文件系统 | Delta lake 的容器/文件系统 | 是 | 字符串 | fileSystem |
-| 文件夹路径 | 增量 lake 的直接 | 是 | 字符串 | folderPath |
-| 压缩类型 | 增量表的压缩类型 | 否 | `bzip2`<br>`gzip`<br>`deflate`<br>`ZipDeflate`<br>`snappy`<br>`lz4` | compressionType |
-| 压缩级别 | 选择压缩是否尽快完成，或者是否以最佳方式压缩生成的文件。 | 如果 `compressedType` 指定了，则为必需。 | `Optimal` 或 `Fastest` | compressionLevel |
-| 清空 | 以小时为单位指定旧版本表的保留阈值。 值0或小于30天 | 是 | Integer | 度 |
-| Update 方法 | 指定增量 lake 允许哪些更新操作。 对于不插入的方法，需要执行前面的更改行转换才能标记行。 | 是 | `true` 或 `false` | 删除 <br> 可插入 <br> 更新 <br> merge |
+| 文件系统 | delta lake 的容器/文件系统 | 是 | 字符串 | fileSystem |
+| 文件夹路径 | delta lake 的直接 | 是 | 字符串 | folderPath |
+| 压缩类型 | delta 表的压缩类型 | 否 | `bzip2`<br>`gzip`<br>`deflate`<br>`ZipDeflate`<br>`snappy`<br>`lz4` | compressionType |
+| 压缩级别 | 选择压缩是否尽快完成，或者是否应该以最佳方式压缩生成的文件。 | 如果指定了 `compressedType`，则为必需项。 | `Optimal` 或 `Fastest` | compressionLevel |
+| 清空 | 以小时为单位指定旧版本表的保留期阈值。 小于等于 0 的值默认为 30 天 | 是 | Integer | vacuum |
+| Update 方法 | 指定在 delta lake 上允许哪些更新操作。 对于不插入的方法，需要执行前面的更改行转换才能标记行。 | 是 | `true` 或 `false` | 可删除 <br> 可插入 <br> 可更新 <br> merge |
 
-### <a name="delta-sink-script-example"></a>增量接收器脚本示例
+### <a name="delta-sink-script-example"></a>Delta 接收器脚本示例
 
 关联的数据流脚本为：
 
@@ -102,12 +101,12 @@ moviesAltered sink(
            ) ~> movieDB
 ```
 
-### <a name="known-limitations"></a>已知的限制
+### <a name="known-limitations"></a>已知限制
 
-写入到增量接收器时，存在一个已知的限制，其中写入的行数不会在监视输出中返回。
+写入 delta 接收器时，存在一个已知的限制，即不会在监视输出中返回写入的行数。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 在映射数据流中创建 [源转换](data-flow-source.md) 。
-* 在映射数据流中创建 [接收器转换](data-flow-sink.md) 。
-* 创建 [更改行转换](data-flow-alter-row.md) ，以将行标记为 insert、update、upsert 或 delete。
+* 在映射数据流中创建[源转换](data-flow-source.md)。
+* 在映射数据流中创建[接收器转换](data-flow-sink.md)。
+* 创建[更改行转换](data-flow-alter-row.md)，将行标记为插入、更新、更新插入或删除。

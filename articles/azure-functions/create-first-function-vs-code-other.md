@@ -3,12 +3,12 @@ title: 使用 Visual Studio Code 创建 Go 或 Rust 函数 - Azure Functions
 description: 了解如何创建 Go 函数作为 Azure Functions 自定义处理程序，然后使用 Visual Studio Code 中的 Azure Functions 扩展将本地项目发布到 Azure Functions 中的无服务器托管。
 ms.topic: quickstart
 ms.date: 12/4/2020
-ms.openlocfilehash: 4f2e0b30c4bf5e6c4629fc63f3125e5ddda70ad2
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: a3ef7bdd19badf7a7deaa8376440016e39e0d14b
+ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99493646"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99809554"
 ---
 # <a name="quickstart-create-a-go-or-rust-function-in-azure-using-visual-studio-code"></a>快速入门：在 Azure 中使用 Visual Studio Code 创建 Go 或 Rust 函数
 
@@ -262,7 +262,7 @@ HttpExample 文件夹中的 function.json 文件声明 HTTP 触发器函数 。 
     ```cmd
     set GOOS=linux
     set GOARCH=amd64
-    go build hello.go
+    go build handler.go
     ```
 
     将 host.json 中的 `defaultExecutablePath` 从 `handler.exe` 更改为 `handler`。 这会指示函数应用运行 Linux 二进制文件。
@@ -337,7 +337,7 @@ HttpExample 文件夹中的 function.json 文件声明 HTTP 触发器函数 。 
 
     + **选择 Application Insights 资源**：选择`+ Create Application Insights resource`。 该名称在 Azure 中必须全局唯一。 可以使用提示中推荐的名称。
 
-    + **选择新资源的位置**：为了提高性能，请选择你附近的[区域](https://azure.microsoft.com/regions/)。在 Azure 中创建单个资源时，扩展会在通知区域显示这些资源的状态。
+    + **选择新资源的位置**：为了提高性能，请选择你附近的 [区域](https://azure.microsoft.com/regions/)。在 Azure 中创建单个资源时，扩展会在通知区域显示这些资源的状态。
 
     :::image type="content" source="../../includes/media/functions-publish-project-vscode/resource-notification.png" alt-text="Azure 资源创建通知":::
 

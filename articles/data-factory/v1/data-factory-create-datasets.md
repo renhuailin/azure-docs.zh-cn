@@ -1,22 +1,18 @@
 ---
 title: 在 Azure 数据工厂中创建数据集
 description: 了解如何通过使用 offset 和 anchorDateTime 等属性的示例在 Azure 数据工厂中创建数据集。
-services: data-factory
-documentationcenter: ''
 author: dcstwh
 ms.author: weetok
-manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 9bf6ff2971de57338dc299d48e24f6ffebd4b6b5
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 4b222b387dad1c078cfe2a063ed310ef463b192e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96495933"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100376830"
 ---
 # <a name="datasets-in-azure-data-factory-version-1"></a>Azure 数据工厂中的数据集 (版本 1) 
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -32,7 +28,7 @@ ms.locfileid: "96495933"
 > 如果对数据工厂不熟悉，请参阅 [Azure 数据工厂简介](data-factory-introduction.md)了解相关概述。 如果还没有亲身体验如何创建数据工厂，可通过阅读[数据转换教程](data-factory-build-your-first-pipeline.md)和[数据移动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)加深了解。
 
 ## <a name="overview"></a>概述
-数据工厂可以包含一个或多个数据管道。 “管道”是共同执行一项任务的活动的逻辑分组。 管道中的活动定义对数据执行的操作。 例如，可以使用复制活动将数据从 SQL Server 数据库复制到 Azure Blob 存储。 然后，可使用在 Azure HDInsight 群集上运行 Hive 脚本的 Hive 活动，将 Blob 存储中的数据处理为生成输出数据。 最后，你可能会使用第二个复制活动将输出数据复制到 Azure Synapse Analytics 中，这是在生成商业智能 (BI) 报表解决方案之上的。 有关管道和活动的详细信息，请参阅 [Azure 数据工厂中的管道和活动](data-factory-create-pipelines.md)。
+数据工厂可以包含一个或多个数据管道。 “管道”是共同执行一项任务的活动的逻辑分组。 管道中的活动定义对数据执行的操作。 例如，可以使用复制活动将数据从 SQL Server 数据库复制到 Azure Blob 存储。 然后，可使用在 Azure HDInsight 群集上运行 Hive 脚本的 Hive 活动，将 Blob 存储中的数据处理为生成输出数据。 最后，可再使用一个复制活动将输出数据复制到 Azure Synapse Analytics，在此基础上构建商业智能 (BI) 报告解决方案。 有关管道和活动的详细信息，请参阅 [Azure 数据工厂中的管道和活动](data-factory-create-pipelines.md)。
 
 活动可以接受零个或多个输入 **数据集**，并生成一个或多个输出数据集。 输入数据集表示管道中活动的输入，输出数据集表示活动的输出。 数据集可识别不同数据存储（如表、文件、文件夹和文档）中的数据。 例如，Azure Blob 数据集可在 Blob 存储中指定供管道读取数据的 Blob 容器和文件夹。
 
@@ -281,7 +277,7 @@ structure:
 | 策略名称 | 说明 | 适用对象 | 必须 | 默认 |
 | --- | --- | --- | --- | --- |
 | minimumSizeMB |验证 Azure Blob 存储中的数据是否满足最小大小要求（以兆字节为单位）。 |Azure Blob 存储 |否 |NA |
-| minimumRows |验证 **Azure SQL 数据库** 中的数据或 **Azure 表** 是否包含最小行数。 |<ul><li>Azure SQL Database</li><li>Azure 表</li></ul> |否 |NA |
+| minimumRows |验证 **Azure SQL 数据库** 中的数据或 **Azure 表** 是否包含最小行数。 |<ul><li>Azure SQL 数据库</li><li>Azure 表</li></ul> |否 |NA |
 
 #### <a name="examples"></a>示例
 **minimumSizeMB:**
@@ -316,7 +312,7 @@ structure:
 
 | 名称 | 说明 | 必须 | 默认值 |
 | --- | --- | --- | --- |
-| dataDelay |延迟检查给定切片外部数据的可用性的时间。 例如，可使用此设置延迟每小时检查。<br/><br/>该设置仅适用于当前时间。 例如，如果现在是下午 1:00 且此值为 10 分钟，则从下午 1:10 开始验证。<br/><br/>请注意，此设置不影响过去的切片。 切片 **结束时间** 为 dataDelay 的切片  +  **dataDelay**  <  **现在** 无需延迟即可处理。<br/><br/>大于 23:59 小时的时间应使用 `day.hours:minutes:seconds` 格式进行指定。 例如，若要指定 24 小时，请不要使用 24:00:00。 请改用 1.00:00:00。 如果使用 24:00:00，则将它视为 24 天 (24.00:00:00)。 对于 1 天又 4 小时，请指定 1:04:00:00。 |否 |0 |
+| dataDelay |延迟检查给定切片外部数据的可用性的时间。 例如，可使用此设置延迟每小时检查。<br/><br/>该设置仅适用于当前时间。 例如，如果现在是下午 1:00 且此值为 10 分钟，则从下午 1:10 开始验证。<br/><br/>请注意，此设置不影响过去的切片。 切片 **结束时间** 为 dataDelay 的切片  +    <  **现在** 无需延迟即可处理。<br/><br/>大于 23:59 小时的时间应使用 `day.hours:minutes:seconds` 格式进行指定。 例如，若要指定 24 小时，请不要使用 24:00:00。 请改用 1.00:00:00。 如果使用 24:00:00，则将它视为 24 天 (24.00:00:00)。 对于 1 天又 4 小时，请指定 1:04:00:00。 |否 |0 |
 | retryInterval |失败与下一次尝试之间的等待时间。 此设置适用于当前时间。 如果上一次尝试失败，则在 retryInterval 时间段后进行下一次尝试。 <br/><br/>如果现在是下午 1:00，我们将开始第一次尝试。 如果完成第一次验证检查的持续时间为 1 分钟，并且操作失败，则下一次重试为 1:00 + 1 分钟（持续时间）+ 1 分钟（重试间隔）= 下午 1:02。 <br/><br/>对于过去的切片，没有任何延迟。 重试会立即发生。 |否 |00:01:00（1 分钟） |
 | retryTimeout |每次重试尝试的超时。<br/><br/>如果此属性设置为 10 分钟，则验证应在 10 分钟内完成。 如果执行验证所需的时间超过 10 分钟，则重试超时。<br/><br/>如果验证的所有尝试超时，则将切片标记为 TimedOut。 |否 |00:10:00（10 分钟） |
 | maximumRetry |检查外部数据可用性的次数。 允许的最大值为 10。 |否 |3 |

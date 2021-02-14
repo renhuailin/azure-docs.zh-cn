@@ -6,12 +6,12 @@ ms.date: 03/14/2019
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 3144633f76d1c4738f2323f1e047d6f32329909f
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: df1f58418452ecafacddd013ab815ebca5cb8a35
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98133236"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100097545"
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java-sdk"></a>用于 Java SDK 的 Application Insights 的故障排除与问答
 
@@ -170,7 +170,7 @@ java -Dapplicationinsights.logger.console.level=trace -jar MyApp.jar
 
 可以，前提是该服务器可以通过公共 Internet 将遥测数据发送到 Application Insights 门户。
 
-在防火墙中，可能需要打开 TCP 端口 80 和 443 才能将传出流量发送到 dc.services.visualstudio.com 和 f5.services.visualstudio.com。
+你可能需要 [在服务器的防火墙中打开一些传出端口](./ip-addresses.md#outgoing-ports) ，以允许 SDK 将数据发送到门户。
 
 ## <a name="data-retention"></a>数据保留
 **数据在门户中保留多长时间？是否安全？**

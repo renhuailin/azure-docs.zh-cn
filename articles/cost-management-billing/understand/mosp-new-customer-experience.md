@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 01/11/2021
 ms.author: banders
-ms.openlocfilehash: f0645115246995c9605563626d99bbf6a76784e1
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 887b7013eb3060020a39d2df0082768b8185bdde
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98133544"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575460"
 ---
 # <a name="get-started-with-your-updated-azure-billing-account"></a>开始使用更新的 Azure 计费帐户
 
@@ -42,7 +42,7 @@ ms.locfileid: "98133544"
 
 计费配置文件中的角色有权查看和管理发票和付款方式。 这些角色应分配给为发票付款的用户，例如组织中会计团队的成员。 有关详细信息，请参阅[计费配置文件角色和任务](../manage/understand-mca-roles.md#billing-profile-roles-and-tasks)。
 
-帐户更新后，对于你已授予其他人[查看发票](download-azure-invoice.md#allow-others-to-download-the-your-subscription-invoice)权限的每个订阅，具有所有者、参与者、读者或计费读者 Azure 角色的用户将在相应的计费对象信息中被赋予读者角色。
+帐户更新后，对于你已授予其他人[查看发票](download-azure-invoice.md#allow-others-to-download-your-subscription-invoice)权限的每个订阅，具有所有者、参与者、读者或计费读者 Azure 角色的用户将在相应的计费对象信息中被赋予读者角色。
 
 ## <a name="invoice-sections"></a>发票科目
 

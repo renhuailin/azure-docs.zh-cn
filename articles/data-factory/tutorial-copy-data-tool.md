@@ -1,23 +1,18 @@
 ---
 title: 使用“复制数据”工具将数据从 Azure Blob 存储复制到 SQL 数据库
 description: 创建一个 Azure 数据工厂，然后使用“复制数据”工具将数据从 Azure Blob 存储复制到 SQL 数据库。
-services: data-factory
-documentationcenter: ''
 author: linda33wj
 ms.author: jingwang
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 11/09/2020
-ms.openlocfilehash: de01a8a8522f93684ed428fd4ef19963b1af2059
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 585a325c2a5650510b2138c0d708cebdfd17d034
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96008338"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100375725"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-the-copy-data-tool"></a>使用“复制数据”工具，将数据从 Azure Blob 存储复制到 SQL 数据库
 
@@ -85,13 +80,13 @@ ms.locfileid: "96008338"
     ![新建数据工厂](./media/doc-common-process/new-azure-data-factory-menu.png)
 1. 在“新建数据工厂”页的“名称”下输入 **ADFTutorialDataFactory** 。
 
-    数据工厂的名称必须全局唯一。  可能会收到以下错误消息：
+    数据工厂的名称必须全局唯一。 可能会收到以下错误消息：
 
     ![新的数据工厂错误消息](./media/doc-common-process/name-not-available-error.png)
 
-    如果收到有关名称值的错误消息，请为数据工厂输入另一名称。 例如，使用名称 _**yourname**_ **ADFTutorialDataFactory**。 有关数据工厂项目的命名规则，请参阅[数据工厂命名规则](naming-rules.md)。
+    如果收到有关名称值的错误消息，请为数据工厂输入另一名称。 例如，使用名称 _**yourname**_**ADFTutorialDataFactory**。 有关数据工厂项目的命名规则，请参阅[数据工厂命名规则](naming-rules.md)。
 1. 选择要在其中创建新数据工厂的 Azure **订阅**。
-1. 对于“资源组”，请执行以下步骤之一： 
+1. 对于“资源组”，请执行以下步骤之一：
 
     a. 选择“使用现有资源组”，并从下拉列表选择现有的资源组。 
 
@@ -99,9 +94,9 @@ ms.locfileid: "96008338"
     
     若要了解资源组，请参阅[使用资源组管理 Azure 资源](../azure-resource-manager/management/overview.md)。
 
-1. 在“版本”下选择“V2”作为版本。  
-1. 在“位置”下选择数据工厂的位置。  下拉列表中仅显示支持的位置。 数据工厂使用的数据存储（例如，Azure 存储和 SQL 数据库）和计算资源（例如，Azure HDInsight）可以位于其他位置和区域。
-1. 选择“创建”  。
+1. 在“版本”下选择“V2”作为版本。 
+1. 在“位置”下选择数据工厂的位置。 下拉列表中仅显示支持的位置。 数据工厂使用的数据存储（例如，Azure 存储和 SQL 数据库）和计算资源（例如，Azure HDInsight）可以位于其他位置和区域。
+1. 选择“创建”。
 
 1. 创建完以后，会显示“数据工厂”主页。
 
@@ -118,7 +113,7 @@ ms.locfileid: "96008338"
 
 1. 在“源数据存储”页上，完成以下步骤：
 
-    a. 单击“+ 创建新连接”来添加连接 
+    a. 单击“+ 创建新连接”来添加连接
 
     b. 从库中选择“Azure Blob 存储” ，然后选择“继续”。
 
@@ -134,12 +129,12 @@ ms.locfileid: "96008338"
 
     b. 单击“下一步”转到下一步骤。
 
-1. 在“文件格式设置”页面上，选中“第一行作为标题”复选框。 注意，该工具会自动检测列分隔符与行分隔符。 选择“**下一步**”。 还可以在此页中预览数据，以及查看输入数据的架构。
+1. 在“文件格式设置”页面上，选中“第一行作为标题”复选框。 注意，该工具会自动检测列分隔符与行分隔符。 选择“**下一页**”。 还可以在此页中预览数据，以及查看输入数据的架构。
 
     ![文件格式设置](./media/tutorial-copy-data-tool/file-format-settings-page.png)
 1. 在“目标数据存储”页上，完成以下步骤：
 
-    a. 单击“+ 创建新连接”来添加连接 
+    a. 单击“+ 创建新连接”来添加连接
 
     b. 从库中选择“Azure SQL 数据库”，然后选择“继续” 。
 
@@ -177,7 +172,7 @@ ms.locfileid: "96008338"
     ![选择“创作”选项卡](./media/tutorial-copy-data-tool/author-tab.png)
 
 ## <a name="next-steps"></a>后续步骤
-此示例中的管道将数据从 Blob 存储复制到 SQL 数据库。 你已了解如何执行以下操作：
+此示例中的管道将数据从 Blob 存储复制到 SQL 数据库。 你已了解如何：
 
 > [!div class="checklist"]
 > * 创建数据工厂。

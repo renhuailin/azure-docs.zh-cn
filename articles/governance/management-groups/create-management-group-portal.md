@@ -1,14 +1,14 @@
 ---
 title: 使用门户创建管理组
 description: 本快速入门使用 Azure 门户创建管理组，将资源整理到资源层次结构中。
-ms.date: 08/31/2020
+ms.date: 02/05/2021
 ms.topic: quickstart
-ms.openlocfilehash: c8cb7b8bd3ad33d1f315670bfbb1782972e6e97f
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 5a336fe4caf5d2f825a93b5c7b8f8d05f6255c39
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89661732"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99592426"
 ---
 # <a name="quickstart-create-a-management-group"></a>快速入门：创建管理组
 
@@ -26,33 +26,33 @@ ms.locfileid: "89661732"
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 
-1. 选择“所有服务” > “管理组”********
+1. 选择“所有服务” > “管理组”
 
 1. 连接管理组
 
-1. 选择“添加管理组”。****
+1. 选择“添加管理组”。
 
    :::image type="content" source="./media/main.png" alt-text="显示子管理组和订阅的“管理组”页的屏幕截图。" border="false":::
 
-1. 选择“新建”，然后填写管理组 ID 字段****。
+1. 选择“新建”，然后填写管理组 ID 字段。
 
-   - ****“管理组 ID”是用来在此管理组上提交命令的目录唯一标识符。 此标识符一旦创建便无法再编辑，因为它用来在整个 Azure 系统中标识这个组。 [根管理组](./overview.md#root-management-group-for-each-directory)是自动创建的，其 ID 为 Azure Active Directory ID。 对于所有其他管理组，请分配唯一的 ID。
+   - “管理组 ID”是用来在此管理组上提交命令的目录唯一标识符。 此标识符一旦创建便无法再编辑，因为它用来在整个 Azure 系统中标识这个组。 [根管理组](./overview.md#root-management-group-for-each-directory)是自动创建的，其 ID 为 Azure Active Directory ID。 对于所有其他管理组，请分配唯一的 ID。
    - 显示名称字段是在 Azure 门户中显示的名称。 创建管理组时，单独的显示名称是一个可选字段，并且可以随时更改。
 
-   :::image type="content" source="./media/create_context_menu.png" alt-text="显示子管理组和订阅的“管理组”页的屏幕截图。":::
+   :::image type="content" source="./media/create_context_menu.png" alt-text="用于创建新管理组的“添加管理组”选项的屏幕截图。":::
 
-1. 选择“保存”。****
+1. 选择“保存”。
 
 ## <a name="clean-up-resources"></a>清理资源
 
 若要删除创建的管理组，请执行以下步骤：
 
-1. 选择“所有服务” > “管理组”********
+1. 选择“所有服务” > “管理组”
 
 1. 连接管理组
 
-1. 找到前面创建的管理组，选择它，然后选择名称旁边的“详细信息”****。
-   然后选择“删除”并确认提示****。
+1. 找到前面创建的管理组，选择它，然后选择名称旁边的“详细信息”。
+   然后选择“删除”并确认提示。
 
 ## <a name="next-steps"></a>后续步骤
 

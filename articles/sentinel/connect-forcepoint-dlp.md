@@ -12,17 +12,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/20/2020
 ms.author: yelevin
-ms.openlocfilehash: 3bdb9d2b23ce05929ba5612e0c6a03fe1aab05de
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 62ed3915dcaf596d144a2f59817626cdf8ec47e5
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77588240"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100092768"
 ---
 # <a name="connect-your-forcepoint-dlp-to-azure-sentinel"></a>将 Forcepoint DLP 连接到 Azure Sentinel
 
 > [!IMPORTANT]
-> Azure Sentinel 中的 Forcepoint 数据丢失防护 (DLP) 数据连接器目前为公共预览版。 此功能在提供时没有服务级别协议，不建议用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> Azure Sentinel 中的 Forcepoint 数据丢失防护 (DLP) 数据连接器目前为公共预览版。 此功能不附带服务级别协议，不建议将其用于生产工作负载。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 
 
@@ -38,7 +38,7 @@ Forcepoint DLP 连接器可让你将 DLP 事件数据自动导出到 Azure Senti
 
 ## <a name="find-your-data"></a>查找数据
 
-设置 Forcepoint DLP 连接器后，数据将显示在 "CustomLogs **ForcepointDLPEvents_CL**下的 Log Analytics 中。
+设置 Forcepoint DLP 连接器后，数据将显示在 "CustomLogs **ForcepointDLPEvents_CL** 下的 Log Analytics 中。
 
 
 若要在 Forcepoint DLP Log Analytics 中使用相关架构，请搜索 **ForcepointDLPEvents_CL**。

@@ -1,18 +1,17 @@
 ---
 title: 在 Azure 数据工厂中排查自承载集成运行时问题
 description: 了解如何在 Azure 数据工厂中排查自承载集成运行时问题。
-services: data-factory
 author: lrtoyou1223
 ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 01/25/2021
 ms.author: lle
-ms.openlocfilehash: 3735d7b21faf62905ed4c06dbef80c9737e7329e
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 2cb0e0870b32270340e37d54dc54a43b22ee014a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99551070"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100376456"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>排查自承载集成运行时问题
 
@@ -83,8 +82,8 @@ ms.locfileid: "99551070"
 并发作业数的限制取决于计算机的逻辑核心和内存。 尝试将值下调（如调整为 24），然后查看结果。
 
 > [!TIP] 
-> - 若要详细了解逻辑核心计数以及如何确定计算机的逻辑核心计数，请参阅[在 Windows 10 上查找 CPU 中的核心数的四种方法](https://www.top-password.com/blog/find-number-of-cores-in-your-cpu-on-windows-10/)。
-> - 要了解如何计算 math.log，请转到[对数计算器](https://www.rapidtables.com/calc/math/Log_Calculator.html)。
+> -    若要详细了解逻辑核心计数以及如何确定计算机的逻辑核心计数，请参阅[在 Windows 10 上查找 CPU 中的核心数的四种方法](https://www.top-password.com/blog/find-number-of-cores-in-your-cpu-on-windows-10/)。
+> -    要了解如何计算 math.log，请转到[对数计算器](https://www.rapidtables.com/calc/math/Log_Calculator.html)。
 
 
 ### <a name="self-hosted-ir-high-availability-ha-ssl-certificate-issue"></a>自承载 IR 高可用性 (HA) SSL 证书问题

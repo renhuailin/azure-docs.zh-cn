@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 06/08/2020
 ms.topic: quickstart
-ms.openlocfilehash: d35d6e75b45c2ea263c2e986c5fc6f414cad16e4
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: b469f0cae1e356c47bfe60af99c4fa2e73eab78d
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97724963"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594021"
 ---
 # <a name="quickstart-deploy-native-c-sample-to-hololens"></a>快速入门：将原生 C++ 示例部署到 HoloLens
 
@@ -61,26 +61,26 @@ C++ HoloLens 教程位于子目录 NativeCpp/HoloLens 中。
 
 ![Visual Studio 配置](media/vs-config-native-cpp-tutorial.png)
 
-由于帐户凭据在教程的源代码中进行了硬编码，因此请将其更改为有效凭据。 为此，请在 Visual Studio 中打开文件 `HolographicAppMain.cpp` 并更改类 `HolographicAppMain` 的构造函数中创建前端的部分：
+由于帐户凭据在教程的源代码中进行了硬编码，因此请将其更改为有效凭据。 为此，请在 Visual Studio 中打开文件 `HolographicAppMain.cpp` 并更改类 `HolographicAppMain` 的构造函数中创建客户端的部分：
 
 ```cpp
-// 2. Create front end
+// 2. Create Client
 {
     // Users need to fill out the following with their account data and model
-    RR::AzureFrontendAccountInfo init;
+    RR::SessionConfiguration init;
     init.AccountId = "00000000-0000-0000-0000-000000000000";
     init.AccountKey = "<account key>";
-    init.AccountDomain = "westus2.mixedreality.azure.com"; // <change to the region that the rendering session should be created in>
-    init.AccountAuthenticationDomain = "westus2.mixedreality.azure.com"; // <change to the region the account was created in>
+    init.RemoteRenderingDomain = "westus2.mixedreality.azure.com"; // <change to the region that the rendering session should be created in>
+    init.AccountDomain = "westus2.mixedreality.azure.com"; // <change to the region the account was created in>
     m_modelURI = "builtin://Engine";
     m_sessionOverride = ""; // If there is a valid session ID to re-use, put it here. Otherwise a new one is created
-    m_frontEnd = RR::ApiHandle(RR::AzureFrontend(init));
+    m_client = RR::ApiHandle(RR::RemoteRenderingClient(init));
 }
 ```
 
 具体而言，请更改以下值：
-* 更改 `init.AccountId``init.AccountKey` 和 `init.AccountAuthenticationDomain` 以使用帐户数据。 请参阅有关如何[检索帐户信息](../../../how-tos/create-an-account.md#retrieve-the-account-information)的段落。
-* 对于 `westus2` 以外的其他区域（例如 `"westeurope.mixedreality.azure.com"`），修改 `init.AccountDomain` 字符串的区域部分来指定在何处创建远程渲染会话。
+* 更改 `init.AccountId``init.AccountKey` 和 `init.AccountDomain` 以使用帐户数据。 请参阅有关如何[检索帐户信息](../../../how-tos/create-an-account.md#retrieve-the-account-information)的段落。
+* 对于 `westus2` 以外的其他区域（例如 `"westeurope.mixedreality.azure.com"`），修改 `init.RemoteRenderingDomain` 字符串的区域部分来指定在何处创建远程渲染会话。
 * 此外，可以将 `m_sessionOverride` 更改为现有会话 ID。 可在此示例外部创建会话，例如通过使用 [PowerShell 脚本](../../../samples/powershell-example-scripts.md#script-renderingsessionps1)或直接使用[会话 REST API](../../../how-tos/session-rest-api.md#create-a-session)。
 当示例应多次运行时，建议在示例外部创建会话。 如果未传入任何会话，则该示例将在每次启动时创建一个新会话，这可能需花费几分钟的时间。
 

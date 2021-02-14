@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: 1c1ddeb8cafd8aa7584da48a715139c5d12eeb10
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: fbfef094cd062e437f2a28369162de96631ef41b
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91874792"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99832600"
 ---
 # <a name="tutorial-monitor-and-manage-a-video-analytics---object-and-motion-detection-application"></a>教程：监视和管理视频分析 - 对象和运动检测应用程序
 
@@ -61,7 +61,7 @@ ms.locfileid: "91874792"
 
 选择 LVA Gateway 001 设备的“下游设备”选项卡，以查看刚添加的相机设备 ：
 
-:::image type="content" source="media/tutorial-video-analytics-manage/inspect-downstream.png" alt-text="添加相机":::
+:::image type="content" source="media/tutorial-video-analytics-manage/inspect-downstream.png" alt-text="检查":::
 
 应用程序的“设备”页面上的列表中也会显示相机设备。
 
@@ -98,7 +98,7 @@ ms.locfileid: "91874792"
 
 数秒钟后，你会看到每个设置的“已接受”确认消息：
 
-:::image type="content" source="media/tutorial-video-analytics-manage/object-detection.png" alt-text="添加相机":::
+:::image type="content" source="media/tutorial-video-analytics-manage/object-detection.png" alt-text="对象检测":::
 
 ## <a name="start-lva-processing"></a>启动 LVA 处理
 
@@ -108,13 +108,13 @@ ms.locfileid: "91874792"
 
 命令完成后，查看命令历史记录，确保没有错误：
 
-:::image type="content" source="media/tutorial-video-analytics-manage/start-processing.png" alt-text="添加相机":::
+:::image type="content" source="media/tutorial-video-analytics-manage/start-processing.png" alt-text="“启动 LVA 处理”命令":::
 
 ## <a name="monitor-the-cameras"></a>监视相机
 
 导航到 camera-003 设备，然后选择“面板”选项卡 ：
 
-:::image type="content" source="media/tutorial-video-analytics-manage/camera-dashboard.png" alt-text="添加相机":::
+:::image type="content" source="media/tutorial-video-analytics-manage/camera-dashboard.png" alt-text="相机面板":::
 
 “检测计数”磁贴显示在一秒钟的检测间隔内对每个所选检测类别对象的平均检测计数。
 
@@ -157,7 +157,7 @@ docker run -it --rm -e amsAadClientId="<FROM_AZURE_PORTAL>" -e amsAadSecret="<FR
 
 导航到 camera-003 设备，然后选择“仪表板”选项卡 。然后，在“推理事件视频”磁贴上单击其中一个捕获对象检测超链接。 本地视频播放器显示的页面上会出现视频：
 
-:::image type="content" source="media/tutorial-video-analytics-manage/video-snippet.png" alt-text="添加相机":::
+:::image type="content" source="media/tutorial-video-analytics-manage/video-snippet.png" alt-text="视频片段":::
 
 ## <a name="change-the-simulated-devices-in-application-dashboards"></a>在应用程序仪表板中更改模拟设备
 
@@ -182,7 +182,7 @@ docker run -it --rm -e amsAadClientId="<FROM_AZURE_PORTAL>" -e amsAadSecret="<FR
 
 “真实相机显示器”面板现在显示真实相机设备的值：
 
-:::image type="content" source="media/tutorial-video-analytics-manage/update-real-cameras.png" alt-text="添加相机":::
+:::image type="content" source="media/tutorial-video-analytics-manage/update-real-cameras.png" alt-text="真实相机应用程序面板":::
 
 ## <a name="pause-processing"></a>暂停处理
 
@@ -195,7 +195,7 @@ docker run -it --rm -e amsAadClientId="<FROM_AZURE_PORTAL>" -e amsAadSecret="<FR
     * 单击“流式处理终结点”资源。
     * 在“流式处理终结点详细信息”页上，选择“停止” 。
 
-## <a name="tidy-up"></a>整理
+## <a name="clean-up-resources"></a>清理资源
 
 如果应用程序使用完毕，可以删除创建的所有资源，如下所示：
 

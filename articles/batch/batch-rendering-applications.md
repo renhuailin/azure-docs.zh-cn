@@ -1,16 +1,16 @@
 ---
 title: 渲染应用程序
 description: 可以将任何渲染应用程序与 Azure Batch 配合使用。 不过，常见的预安装应用程序都提供了 Azure 市场 VM 映像。
-ms.date: 02/01/2021
+ms.date: 02/12/2021
 ms.topic: how-to
-ms.openlocfilehash: 4eeb87c866858f2f1733b81e3e2154f4521e94bc
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: e296ab09498b6bb7ee21e3d88c9c416c66368d69
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99430022"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100362227"
 ---
-# <a name="pre-installed-applications-on-batch-rendering-vm-images"></a>成批渲染 VM 映像上的预安装应用程序
+# <a name="pre-installed-applications-on-batch-rendering-vm-images"></a>在 Batch 渲染 VM 映像上预安装的应用程序
 
 可以将任何渲染应用程序与 Azure Batch 配合使用。 不过，常见的预安装应用程序都提供了 Azure 市场 VM 映像。
 
@@ -18,20 +18,15 @@ ms.locfileid: "99430022"
 
 某些应用程序仅支持 Windows，但大多数应用程序在 Windows 和 Linux 上都受支持。
 
-## <a name="applications-on-centos-7-rendering-image"></a>CentOS 7 呈现图像上的应用程序
+## <a name="applications-on-latest-centos-7-rendering-image"></a>最新 CentOS 7 呈现图像上的应用程序
 
-以下列表适用于 CentOS 7.6 版本 1.1.6 渲染映像。
+以下列表适用于 CentOS 渲染图像1.1.7 版本。
 
-* Autodesk Maya I/O 2017 更新 5 (cut 201708032230)
-* Autodesk Maya I/O 2018 更新 2 (cut 201711281015)
-* Autodesk Maya I/O 2019 更新 1
-* Autodesk Arnold for Maya 2017（Arnold 版本 5.3.1.1）MtoA-3.2.1.1-2017
-* Autodesk Arnold for Maya 2018（Arnold 版本 5.3.1.1）MtoA-3.2.1.1-2018
-* Autodesk Arnold for Maya 2019（Arnold 版本 5.3.1.1）MtoA-3.2.1.1-2019
-* Chaos Group V-Ray for Maya 2017（版本 3.60.04）
-* Chaos Group V-Ray for Maya 2018（版本 3.60.04）
-* Blender (2.68)
-* Blender (2.8)
+* Autodesk Maya i/o 2020 更新4。6
+* Maya 2020 (Arnold 版本 6.2.0.0 Autodesk Arnold) MtoA-2020
+* Maya 2020 (版本5.00.21 的混乱组 V-Ray) 
+* Blender (2.80)
+* AZ 10
 
 ## <a name="applications-on-latest-windows-server-rendering-image"></a>最新版 Windows Server 呈现图像上的应用程序
 
@@ -96,6 +91,21 @@ ms.locfileid: "99430022"
 
 > [!NOTE]
 > Chaos Group V-Ray for 3ds Max 2019（版本 4.10.01）引入了对 V-ray 的重大更改。 若要使用之前的版本（版本 3.60.02），请使用 Windows Server 2016 版本 1.3.2 渲染节点。
+
+## <a name="applications-on-previous-centos-rendering-images"></a>上一个 CentOS 呈现图像上的应用程序
+
+以下列表适用于 CentOS 7.6 版本 1.1.6 渲染映像。
+
+* Autodesk Maya I/O 2017 更新 5 (cut 201708032230)
+* Autodesk Maya I/O 2018 更新 2 (cut 201711281015)
+* Autodesk Maya I/O 2019 更新 1
+* Autodesk Arnold for Maya 2017（Arnold 版本 5.3.1.1）MtoA-3.2.1.1-2017
+* Autodesk Arnold for Maya 2018（Arnold 版本 5.3.1.1）MtoA-3.2.1.1-2018
+* Autodesk Arnold for Maya 2019（Arnold 版本 5.3.1.1）MtoA-3.2.1.1-2019
+* Chaos Group V-Ray for Maya 2017（版本 3.60.04）
+* Chaos Group V-Ray for Maya 2018（版本 3.60.04）
+* Blender (2.68)
+* Blender (2.8)
 
 ## <a name="next-steps"></a>后续步骤
 

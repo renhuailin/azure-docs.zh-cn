@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: vinigam
 ms.custom: mvc
-ms.openlocfilehash: 0fa5e09dbe7c0a8cd45557d535353ea4a0a00b16
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: ccc2b6baba0e97320a5352013dbecfc121188457
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99833093"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100361020"
 ---
 # <a name="network-connectivity-monitoring-with-connection-monitor"></a>使用连接监视器进行网络连接监视
 
@@ -74,11 +74,24 @@ ms.locfileid: "99833093"
 
 ### <a name="agents-for-on-premises-machines"></a>本地计算机的代理
 
-若要使连接监视器将本地计算机识别为要监视的源，请在计算机上安装 Log Analytics 代理。 然后启用网络性能监视器解决方案。 这些代理是链接到 Log Analytics 工作区的，因此，需要先设置工作区 ID 和主密钥，然后代理才能开始进行监视。
+若要使连接监视器将本地计算机识别为要监视的源，请在计算机上安装 Log Analytics 代理。  然后启用网络性能监视器解决方案。 这些代理是链接到 Log Analytics 工作区的，因此，需要先设置工作区 ID 和主密钥，然后代理才能开始进行监视。
 
 若要为 Windows 计算机安装 Log Analytics 代理，请参阅[适用于 Windows 的 Azure Monitor 虚拟机扩展](../virtual-machines/extensions/oms-windows.md)。
 
 如果路径包括防火墙或网络虚拟设备 (NVA)，请确保可访问目标。
+
+对于 Windows 计算机，若要打开端口，请使用管理员权限在 PowerShell 窗口中运行不带任何参数的 [EnableRules.ps1](https://aka.ms/npmpowershellscript) PowerShell 脚本。
+
+对于 Linux 计算机，需要手动更改要使用的 portNumbers。 
+* 导航到路径：/var/opt/microsoft/omsagent/npm_state。 
+* 打开文件：npmdregistry
+* 更改端口号 ```“PortNumber:<port of your choice>”``` 的值
+
+ 请注意，在工作区使用的所有代理中，所用的端口号都应该相同。 
+
+该脚本可创建解决方案所需的注册表项。 它还会创建 Windows 防火墙规则，允许代理创建彼此之间的 TCP 连接。 该脚本创建的注册表项指定是否记录调试日志和该日志文件的路径。 该脚本还会定义用于通信的代理 TCP 端口。 该脚本会自动设置这些注册表项的值。 请勿手动更改这些注册表项。 默认打开的端口为 8084。 通过向该脚本提供参数 portNumber 即可使用自定义端口。 在运行该脚本的所有计算机上使用相同端口。 [阅读](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#network-requirements) 有关 Log Analytics 代理网络要求的详细信息
+
+此脚本仅在本地配置 Windows 防火墙。 如果有网络防火墙，请确保该防火墙允许流量去往网络性能监视器使用的 TCP 端口。
 
 ## <a name="enable-network-watcher-on-your-subscription"></a>在订阅上启用网络观察程序
 

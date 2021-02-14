@@ -1,21 +1,18 @@
 ---
 title: 转换数据
 description: 使用 Hadoop、Azure 机器学习 Studio (经典) 或 Azure Data Lake Analytics 转换 Azure 数据工厂中的数据或处理数据。
-services: data-factory
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 author: nabhishek
 ms.author: abnarain
-manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 07/31/2018
-ms.openlocfilehash: 43a035662cc76dc6de1de3fa990e06f2e00cfd66
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 0a1eb593e9f9f15f88aefb2fe06706153a4b74a4
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98632319"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100361394"
 ---
 # <a name="transform-data-in-azure-data-factory"></a>在 Azure 数据工厂中转换数据
 
@@ -41,11 +38,11 @@ ms.locfileid: "98632319"
 
 数据工厂支持以下数据转换活动，这些活动可单独添加到[管道](concepts-pipelines-activities.md)，还可与其他活动关联在一起。
 
-## <a name="transform-natively-in-azure-data-factory-with-data-flows"></a>将 Azure 数据工厂中的本机转换为数据流
+## <a name="transform-natively-in-azure-data-factory-with-data-flows"></a>使用数据流在 Azure 数据工厂中进行本机转换
 
 ### <a name="mapping-data-flows"></a>映射数据流
 
-映射数据流是在 Azure 数据工厂中以可视方式设计的数据转换。 数据流允许数据工程师开发图形数据转换逻辑，而无需编写代码。 生成的数据流将作为使用扩展 Spark 群集的 Azure 数据工厂管道中的活动执行。 数据流活动可以通过现有的数据工厂计划、控制、流和监视功能来操作化。 有关详细信息，请参阅 [映射数据流](concepts-data-flow-overview.md)。
+映射数据流是 Azure 数据工厂中以可视方式设计的数据转换。 使用数据流，数据工程师可以开发图形化数据转换逻辑，无需编写代码。 生成的数据流将作为使用横向扩展 Spark 群集的 Azure 数据工厂管道中的活动执行。 可以通过现有的数据工厂计划、控制、流和监视功能，将数据流活动操作化。 有关详细信息，请参阅[映射数据流](concepts-data-flow-overview.md)。
 
 ### <a name="data-wrangling"></a>数据整理
 
@@ -53,7 +50,7 @@ Azure 数据工厂中的 Power Query 支持云规模的数据整理，使你能�
 
 ## <a name="external-transformations"></a>外部转换
 
-或者，您可以自行编写代码转换并管理外部计算环境。
+（可选）可以手动编写代码转换并自行管理外部计算环境。
 
 ### <a name="hdinsight-hive-activity"></a>HDInsight Hive 活动
 数据工厂管道中的 HDInsight Hive 活动会在自己的或基于 Windows/Linux 的按需 HDInsight 群集上执行 Hive 查询。 有关此活动的详细信息，请参阅 [Hive 活动](transform-data-using-hadoop-hive.md)一文。 

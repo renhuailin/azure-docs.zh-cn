@@ -1,14 +1,14 @@
 ---
 title: 了解如何审核虚拟机的内容
-description: 了解 Azure 策略如何使用来宾配置客户端审核虚拟机内的设置。
+description: 了解 Azure Policy 如何使用来宾配置客户端审核虚拟机内部的设置。
 ms.date: 01/14/2021
 ms.topic: conceptual
-ms.openlocfilehash: c141169545379f1ac0dd18a97e85652f97b90e6f
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 5d1503680ea2ca7d0ff7c8adae19c05abfe441c0
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98210114"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104801"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>了解 Azure Policy 的来宾配置
 
@@ -142,11 +142,15 @@ Azure 策略中的一个计划会按照 "基准" 审核操作系统设置。 定
 
 适用于来宾配置的审核策略定义包括 **HybridCompute/计算机** 资源类型。 将自动包括载入到策略分配范围内的 [Azure Arc for servers](../../../azure-arc/servers/overview.md) 的任何计算机。
 
+## <a name="troubleshooting-guest-configuration"></a>来宾配置疑难解答
+
+有关对来宾配置进行故障排除的详细信息，请参阅 [Azure 策略故障排除](../troubleshoot/general.md)。
+
 ### <a name="multiple-assignments"></a>多个分配
 
 来宾配置策略定义目前仅支持为每台计算机分配相同的来宾分配，即使 Policy 分配使用不同的参数，也是如此。
 
-## <a name="client-log-files"></a>客户端日志文件
+### <a name="client-log-files"></a>客户端日志文件
 
 来宾配置扩展将日志文件写入以下位置：
 
@@ -180,6 +184,15 @@ linesToIncludeAfterMatch=10
 logPath=/var/lib/GuestConfig/gc_agent_logs/gc_agent.log
 egrep -B $linesToIncludeBeforeMatch -A $linesToIncludeAfterMatch 'DSCEngine|DSCManagedEngine' $logPath | tail
 ```
+
+### <a name="client-files"></a>客户端文件
+
+来宾配置客户端会将内容包下载到计算机并提取内容。
+若要验证已下载和存储的内容，请查看下面给出的文件夹位置。
+
+Windows： `c:\programdata\guestconfig\configurations`
+
+Linux：`/var/lib/guestconfig/configurations`
 
 ## <a name="guest-configuration-samples"></a>来宾配置示例
 

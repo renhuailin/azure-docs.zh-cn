@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/03/2021
 ms.author: yelevin
-ms.openlocfilehash: 59ef34f9d6d42277d8e83bf4e0ebb8ee29096f52
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 6a1a2a2a7dac961e49e6ced38803649ebf5ad523
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99566715"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100096848"
 ---
 # <a name="connect-your-apache-http-server-to-azure-sentinel"></a>将 Apache HTTP 服务器连接到 Azure Sentinel
 
@@ -37,7 +37,7 @@ ms.locfileid: "99566715"
 
 ## <a name="configure-and-integrate-apache-http-server-logs-via-log-analytics-agent"></a>通过 Log Analytics 代理配置和集成 Apache HTTP 服务器日志
 
-配置 Apache HTTP 服务器日志文件位置，通过 Log Analytics 代理将数据转发到 Azure 工作区。
+配置 Apache HTTP 服务器，通过 Log Analytics 代理将日志文件发送到 Azure 工作区。
 配置 Log Analytics 代理以读取 Apache HTTP 服务器日志文件。
 
 1. 按照中的说明 https://httpd.apache.org/docs/2.4/logs.html 设置 APACHE HTTP 服务器中的日志文件位置。

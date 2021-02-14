@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: c2f6f386f4a8ea062980c0efc97d0cfb4f37f4f2
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: e5236bb7034ae4d5f86ab2f8f965bdbfbc3d6ccd
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92124888"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99832039"
 ---
 # <a name="tutorial-modify-and-build-the-live-video-analytics-gateway-modules"></a>教程：修改和生成实时视频分析网关模块
 
@@ -73,6 +73,13 @@ git clone https://github.com/Azure/live-video-analytics
 1. 使用 VS Code 终端运行 npm version patch 命令。 该生成脚本会将映像部署到容器注册表。 VS Code 终端窗口中的输出表明生成是否成功。
 
 1. 每一次完成生成时，LvaEdgeGatewayModule 映像的版本都会递增。 需要在部署清单文件中使用此版本。
+
+## <a name="clean-up-resources"></a>清理资源
+
+如果应用程序使用完毕，可以删除创建的所有资源，如下所示：
+
+1. 在 IoT Central 应用程序中，请导航至“管理”部分中的“你的应用程序”页面 。 然后选择“删除”。
+1. 在 Azure 门户中，删除“lva-rg”资源组。
 
 ## <a name="next-steps"></a>后续步骤
 

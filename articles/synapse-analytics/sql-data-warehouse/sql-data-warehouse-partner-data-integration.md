@@ -11,12 +11,12 @@ ms.date: 03/27/2019
 ms.author: procha
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f207509baba2499adf5d5d00df0ccd0503a25491
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 918dd929244c7177790a77bfff32589847073c70
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98665185"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104769"
 ---
 # <a name="azure-synapse-analytics-data-integration-partners"></a>Azure Synapse Analytics 数据集成合作伙伴
 
@@ -52,7 +52,8 @@ ms.locfileid: "98665185"
 | ![TimeXtender](./media/sql-data-warehouse-partner-data-integration/timextender-logo.png) |**TimeXtender**<br>TimeXtender Discovery Hub 提供一个集成的数据管理平台，将获取数据见解的时间缩短多达 10 倍，帮助公司构建新式数据空间。 除每日 ETL 和 ELT 以外，它还提供在单个平台中进行数据访问、数据建模和符合性的功能。 发现中心为云规模分析提供了一个统一的数据结构。 它允许连接和集成各种数据接收器、目录、模型、移动和文档数据以便进行分析和 AI。 | [产品页面](https://www.timextender.com/)<br> [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps?search=timextender&page=1) |
 | ![Trifacta](./media/sql-data-warehouse-partner-data-integration/trifacta_logo.png) |**Trifacta Wrangler**<br> Trifacta 可帮助个人和组织探索各种数据并将它们结合起来进行分析。 Trifacta Wrangler 旨在处理需要支持大规模数据和大量最终用户的数据整理工作负载。|[产品页面](https://www.trifacta.com/)<br> [Azure 市场](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/trifactainc1587522950142.trifactaazure?tab=Overview) |
 | ![WhereScape](./media/sql-data-warehouse-partner-data-integration/wherescape_logo.png) |**Wherescape RED**<br> WhereScape RED 是一个 IDE，它向团队提供自动化工具来简化 ETL 工作流。 IDE 提供了最佳做法，针对常用数据目录优化了原生代码。 WhereScape RED 有助于更快开发、部署和操作数据基础结构。|[产品页面](https://www.wherescape.com/)<br> [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/wherescapesoftware.wherescape-red?source=datamarket&tab=Overview) |
-| ![Xplenty](./media/sql-data-warehouse-partner-data-integration/xplenty-logo.png) |**Xplenty**<br> 借助 Xplenty ELT 平台，你可以使用简单的云服务快速轻松地准备数据以供分析和生产用例。 Xplenty 点 & 单击，拖 & drop 接口可实现数据集成、处理和准备，无需安装、部署或维护任何软件。 连接并与一组广泛的数据存储库和 SaaS 应用程序集成，包括 Azure Synapse、Azure blob 存储和 SQL Server。 Xplenty 还支持可通过 Rest API 访问的所有 Web 服务。|[产品页面](https://www.xplenty.com/integrations/azure-synapse-analytics/ )<br> |
+| ![Xpert BI](./media/sql-data-warehouse-partner-data-integration/xpertbi-logo.png) |**Xpert BI**<br> 通过基于元数据的自动化，Xpert BI 可帮助组织在 Azure 中更快地构建和维护强大且可扩展的数据平台。 它通过内置的数据管理功能，扩展了 Azure Synapse 的最佳做法和 DataOps，以实现敏捷数据开发。 使用 Xpert BI 可以在不同的 Azure 解决方案（例如 Azure Synapse、Azure Data Lake Storage 和 Azure SQL 数据库）之间快速进行测试和切换，因为你的业务和分析需要更改并发展。|[产品页面](https://www.bi-builders.com/adding-automation-and-governance-to-azure-analytics/)<br> |
+| ![Xplenty](./media/sql-data-warehouse-partner-data-integration/xplenty-logo.png) |**Xplenty**<br> 借助 Xplenty ELT 平台，你可以使用简单的云服务快速轻松地准备数据以供分析和生产用例。 Xplenty 的点 & 选择，拖 & drop 接口可实现数据集成、处理和准备，无需安装、部署或维护任何软件。 连接并与一组广泛的数据存储库和 SaaS 应用程序集成，包括 Azure Synapse、Azure blob 存储和 SQL Server。 Xplenty 还支持可通过 Rest API 访问的所有 Web 服务。|[产品页面](https://www.xplenty.com/integrations/azure-synapse-analytics/ )<br> |
 
 
 ## <a name="next-steps"></a>后续步骤

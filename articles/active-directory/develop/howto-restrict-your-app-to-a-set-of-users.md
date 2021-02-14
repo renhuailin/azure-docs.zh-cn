@@ -13,12 +13,12 @@ ms.date: 09/24/2018
 ms.author: kkrishna
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 5f6ac11fc5c7bbe7a8f81e6ea89e2c582ebcf264
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: f3eff6f5660089472ef431bad9a4f05be1fffe24
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178732"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104139"
 ---
 # <a name="how-to-restrict-your-azure-ad-app-to-a-set-of-users-in-an-azure-ad-tenant"></a>如何：将 Azure AD 应用限制为仅供 Azure AD 租户中的一组用户使用
 
@@ -47,7 +47,7 @@ ms.locfileid: "98178732"
 
 ### <a name="enterprise-applications-requires-the-global-administrator-role"></a>企业应用程序（需要全局管理员角色）
 
-1. 以 **全局管理员身份** 登录到 <a href="https://portal.azure.com/" target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> Azure 门户</a>。
+1. 以 **全局管理员** 的身份登录 <a href="https://portal.azure.com/" target="_blank">Azure 门户</a>。
 1. 如果有权访问多个租户，请使用顶部菜单中的“目录 + 订阅”筛选器:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::，选择要在其中注册应用程序的租户。
 1. 搜索并选择“Azure Active Directory”  。
 1. 在 "**管理**" 下选择 "**企业应用程序**" "  >  **所有应用程序**"。
@@ -55,19 +55,19 @@ ms.locfileid: "98178732"
     使用窗口顶部的筛选器来搜索特定的应用程序。
 1. 在应用程序的 " **概述** " 页的 " **管理**" 下，选择 " **属性**"。
 1. 找到设置“需要进行用户分配?”，将其设置为“是”。  将此选项设置为“是”时，必须先将租户中的用户分配到此应用程序，否则用户无法登录到此应用程序。
-1. 选择“保存”。
+1. 选择“保存”。 
 
 ### <a name="app-registration"></a>应用注册
 
-1. 登录到 <a href="https://portal.azure.com/" target="_blank">Azure 门户<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
+1. 登录 <a href="https://portal.azure.com/" target="_blank">Azure 门户</a>。
 1. 如果有权访问多个租户，请使用顶部菜单中的“目录 + 订阅”筛选器:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::，选择要在其中注册应用程序的租户。
 1. 搜索并选择“Azure Active Directory”  。
-1. 在“管理”下，选择“应用注册”。 
+1. 在“管理”下，选择“应用注册”。
 1. 创建或选择要管理的应用。 你需要是此应用程序的 **所有者** 。
 1. 在应用程序的 "**概述**" 页上，选择 "**概要**" 部分中的 "**本地目录中的托管应用程序**" 链接。
 1. 在“管理”下，选择“属性” 。
 1. 找到设置“需要进行用户分配?”，将其设置为“是”。  将此选项设置为“是”时，必须先将租户中的用户分配到此应用程序，否则用户无法登录到此应用程序。
-1. 选择“保存”。
+1. 选择“保存”。 
 
 ## <a name="assign-users-and-groups-to-the-app"></a>将用户和组分配到应用
 
@@ -86,7 +86,7 @@ ms.locfileid: "98178732"
 ## <a name="more-information"></a>详细信息
 
 - [如何：在应用程序中添加应用角色](./howto-add-app-roles-in-azure-ad-apps.md)
-- [将使用应用角色和角色声明的授权添加到 ASP.NET Core Web 应用](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/5-WebApp-AuthZ/5-1-Roles)
+- [使用应用角色和角色声明向 ASP.NET Core Web 应用添加授权](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/5-WebApp-AuthZ/5-1-Roles)
 - [Using Security Groups and Application Roles in your apps (Video)](https://www.youtube.com/watch?v=V8VUPixLSiM)（在应用中使用安全组和应用程序角色（视频））
 - [Azure Active Directory 现在可以与组声明和应用程序角色配合使用](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-Active-Directory-now-with-Group-Claims-and-Application/ba-p/243862)
 - [Azure Active Directory 应用清单](./reference-app-manifest.md)
