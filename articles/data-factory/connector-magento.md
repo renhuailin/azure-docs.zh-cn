@@ -1,22 +1,17 @@
 ---
 title: 使用 Azure 数据工厂（预览版）从 Magento 复制数据
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 Magento 复制到支持的接收器数据存储。
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 2e27c54b6d5a95de92f77e61f5a1e11e1fd53ee5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 534a7cd8c9a40a807d05ef40b084a7c73c0a7710
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81416906"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100378462"
 ---
 # <a name="copy-data-from-magento-using-azure-data-factory-preview"></a>使用 Azure 数据工厂（预览版）从 Magento 复制数据
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -111,7 +106,7 @@ Magento 链接的服务支持以下属性：
 
 ### <a name="magento-as-source"></a>Magento 作为源
 
-要从 Magento 复制数据，请将复制活动中的源类型设置为 MagentoSource  。 复制活动**source**部分支持以下属性：
+要从 Magento 复制数据，请将复制活动中的源类型设置为 MagentoSource  。 复制活动 **source** 部分支持以下属性：
 
 | 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |

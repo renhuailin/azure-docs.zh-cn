@@ -3,12 +3,12 @@ title: Azure 事件网格 SDK
 description: 介绍 Azure 事件网格的 SDK。 这些 SDK 提供管理、发布和使用功能。
 ms.topic: reference
 ms.date: 07/07/2019
-ms.openlocfilehash: 5e93448ef703be88583cd59ae5eee9d1993c4054
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c5b79f7cb7ae0112e2dacd077289786fc7b5c956
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91322523"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100516748"
 ---
 # <a name="event-grid-sdks-for-management-and-publishing"></a>用于管理和发布的事件网格 SDK
 
@@ -21,7 +21,7 @@ ms.locfileid: "91322523"
 * [.NET](https://www.nuget.org/packages/Microsoft.Azure.Management.EventGrid)
 * [Go](https://github.com/Azure/azure-sdk-for-go)
 * [Java](https://search.maven.org/#search%7Cga%7C1%7Cazure-mgmt-eventgrid)
-* [Node](https://www.npmjs.com/package/azure-arm-eventgrid)
+* [Node](https://www.npmjs.com/package/@azure/arm-eventgrid)
 * [Python](https://pypi.python.org/pypi/azure-mgmt-eventgrid)
 * [Ruby](https://rubygems.org/gems/azure_mgmt_event_grid)
 
@@ -31,10 +31,10 @@ ms.locfileid: "91322523"
 
 | 编程语言 | SDK 中 IsInRole 中的声明 | 
 | -------------------- | ---------- | ---------- | 
-| .NET | 稳定的 SDK： [EventGrid](https://www.nuget.org/packages/Microsoft.Azure.EventGrid)<p>预览版 SDK： [EventGrid](https://www.nuget.org/packages/Azure.Messaging.EventGrid/) |
-| Java | 稳定的 SDK： [azure-eventgrid](https://mvnrepository.com/artifact/com.microsoft.azure/azure-eventgrid)<p>预览版 SDK： [azure 消息传递-eventgrid](https://search.maven.org/artifact/com.azure/azure-messaging-eventgrid/)</p> |  
-| Python | [azure-eventgrid](https://pypi.org/project/azure-eventgrid/#history) (参阅 " **发布历史记录** " 页上的最新稳定和预发行版本)  |
-| JavaScript | [@azure/eventgrid](https://www.npmjs.com/package/@azure/eventgrid/) (切换到 " **版本** " 选项卡，以查看) 的最新稳定和 beta 版本包。 | 
+| .NET | 稳定版 SDK：[Microsoft.Azure.EventGrid](https://www.nuget.org/packages/Microsoft.Azure.EventGrid)<p>预览版 SDK：[Azure.Messaging.EventGrid](https://www.nuget.org/packages/Azure.Messaging.EventGrid/) |
+| Java | 稳定版 SDK：[azure-eventgrid](https://mvnrepository.com/artifact/com.microsoft.azure/azure-eventgrid)<p>预览版 SDK：[azure-messaging-eventgrid](https://search.maven.org/artifact/com.azure/azure-messaging-eventgrid/)</p> |  
+| Python | [azure-eventgrid](https://pypi.org/project/azure-eventgrid/#history)（在“版本历史记录”页面上查看最新稳定版和预发行版） |
+| Javascript | [@azure/eventgrid](https://www.npmjs.com/package/@azure/eventgrid/)（切换到“版本”选项卡来查看最新稳定版本和 beta 版本的包）。 | 
 | Go | [Azure SDK for Go](https://github.com/Azure/azure-sdk-for-go) | | 
 | Ruby | [azure_event_grid](https://rubygems.org/gems/azure_event_grid) | | 
 

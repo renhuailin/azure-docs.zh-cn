@@ -1,22 +1,17 @@
 ---
 title: 使用 Azure 数据工厂从 Web 表复制数据
 description: 了解 Azure 数据工厂的 Web 表连接器，可通过它将数据从 Web 表复制到数据工厂支持作为接收器的数据存储中。
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 0eb4d37342685c13027a69bb6cb85f618fa63f20
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1ab45868afd8d1b7ba1f61f5eaacca283817e6d6
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81410218"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100367004"
 ---
 # <a name="copy-data-from-web-table-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 Web 表复制数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -28,9 +23,9 @@ ms.locfileid: "81410218"
 
 此 Web 表连接器、[REST 连接器](connector-rest.md)和 [HTTP 连接器](connector-http.md)之间的区别如下：
 
-- **Web 表连接器**用于从 HTML 网页中提取表内容。
-- **REST 连接器**专门支持从 RESTful API 复制数据。
-- **HTTP 连接器**是通用的，可从任何 HTTP 终结点检索数据，以执行文件下载等操作。 
+- **Web 表连接器** 用于从 HTML 网页中提取表内容。
+- **REST 连接器** 专门支持从 RESTful API 复制数据。
+- **HTTP 连接器** 是通用的，可从任何 HTTP 终结点检索数据，以执行文件下载等操作。 
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -41,7 +36,7 @@ ms.locfileid: "81410218"
 
 可以将数据从 Web 表数据库复制到任何支持的接收器数据存储。 有关复制活动支持作为源/接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
 
-具体而言，此 Web 表连接器支持**从 HTML 页提取表内容**。
+具体而言，此 Web 表连接器支持 **从 HTML 页提取表内容**。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -167,7 +162,7 @@ Web 表链接的服务支持以下属性：
     ![“从 Web”对话框](./media/copy-data-from-web-table/FromWeb-DialogBox.png)
 
     此示例中使用的 URL： https://en.wikipedia.org/wiki/AFI%27s_100_Years...100_Movies
-4. 如果出现“访问 Web 内容”  对话框，请选择正确的 **URL** 和**身份验证**，并单击“连接”  。
+4. 如果出现“访问 Web 内容”  对话框，请选择正确的 **URL** 和 **身份验证**，并单击“连接”  。
 
    ![“访问 Web 内容”对话框](./media/copy-data-from-web-table/AccessWebContentDialog.png)
 5. 单击树视图中的“表”  项，查看表中的内容，并单击底部的“编辑”  按钮。  

@@ -3,12 +3,12 @@ title: Azure Functions 的应用设置参考
 description: 有关 Azure Functions 应用设置或环境变量的参考文档。
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: a28530fd4e4731065c4ddcc2f39e9a4660529921
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 8cb3e12c48adf1273c58f4914e34590e21b9d3cc
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881917"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100378292"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure Functions 的应用设置参考
 
@@ -19,7 +19,7 @@ ms.locfileid: "98881917"
 [host.json](functions-host-json.md) 文件和 [local.settings.json](functions-run-local.md#local-settings-file) 文件中提供了其他全局配置选项。
 
 > [!NOTE]  
-> 可以使用应用程序设置替代 host.json 设置值，而不必更改 host.json 文件本身。 这对于需要针对特定环境配置或修改特定 host.json 设置的方案很有用。 这也让你可以更改 host.json 设置，而不必重新发布项目。 若要了解详细信息，请参阅 [host.json 参考文章](functions-host-json.md#override-hostjson-values)。  
+> 可以使用应用程序设置替代 host.json 设置值，而不必更改 host.json 文件本身。 这对于需要针对特定环境配置或修改特定 host.json 设置的方案很有用。 这也让你可以更改 host.json 设置，而不必重新发布项目。 若要了解详细信息，请参阅 [host.json 参考文章](functions-host-json.md#override-hostjson-values)。 如果更改函数应用设置，则需要重启函数应用。
 
 ## <a name="appinsights_instrumentationkey"></a>APPINSIGHTS_INSTRUMENTATIONKEY
 
@@ -46,7 +46,7 @@ Application Insights 的连接字符串。 在以下情况下使用 `APPLICATION
 
 默认情况下，[Functions 代理](functions-proxies.md)使用快捷方式从代理直接将 API 调用发送到同一函数应用中的函数。 使用此快捷方式取代创建新的 HTTP 请求。 此设置让你能够禁用该快捷方式行为。
 
-|键|值|说明|
+|键|“值”|说明|
 |-|-|-|
 |AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|是|具有指向本地函数应用中函数的后端 URL 的调用不会直接发送到函数， 相反，请求会定向回函数应用的 HTTP 前端。|
 |AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|false|具有指向本地函数应用中函数的后端 URL 的调用会直接转发到函数。 这是默认值。 |
@@ -55,7 +55,7 @@ Application Insights 的连接字符串。 在以下情况下使用 `APPLICATION
 
 此设置控制字符 `%2F` 在路由参数插入后端 URL 时是否在路由参数中解码为斜杠。 
 
-|键|值|说明|
+|键|“值”|说明|
 |-|-|-|
 |AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|是|包含编码斜杠的路由参数已解码。 |
 |AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|false|所有路由参数均原样传递，这是默认行为。 |
@@ -213,7 +213,7 @@ Azure Functions 运行时使用此存储帐户连接字符串执行常规操作�
 
 若要了解详细信息，请参阅 Python 开发人员参考中的 [自定义依赖项](functions-reference-python.md#remote-build-with-extra-index-url) 。
 
-## <a name="scale_controller_logging_enable"></a>SCALE\_CONTROLLER\_LOGGING\_ENABLE
+## <a name="scale_controller_logging_enabled"></a>扩展 \_ 控制器 \_ 日志记录 \_ 已启用
 
 _此设置当前处于预览状态。_  
 
@@ -221,7 +221,7 @@ _此设置当前处于预览状态。_
 
 |键|示例值|
 |-|-|
-|SCALE_CONTROLLER_LOGGING_ENABLE|AppInsights:Verbose|
+|SCALE_CONTROLLER_LOGGING_ENABLED|AppInsights:Verbose|
 
 此键的值以 `<DESTINATION>:<VERBOSITY>` 格式提供，其定义如下：
 
@@ -229,13 +229,13 @@ _此设置当前处于预览状态。_
 
 ## <a name="website_contentazurefileconnectionstring"></a>WEBSITE\_CONTENTAZUREFILECONNECTIONSTRING
 
-存储帐户的连接字符串，在 Windows 上运行的事件驱动的缩放计划中存储函数应用代码和配置。 有关详细信息，请参阅 [创建函数应用](functions-infrastructure-as-code.md#windows)。
+存储帐户的连接字符串，该帐户的函数应用代码和配置存储在 Windows 上运行的事件驱动缩放计划中。 有关详细信息，请参阅[创建函数应用](functions-infrastructure-as-code.md#windows)。
 
 |键|示例值|
 |---|------------|
 |WEBSITE_CONTENTAZUREFILECONNECTIONSTRING|DefaultEndpointsProtocol=https;AccountName=[name];AccountKey=[key]|
 
-仅在部署到在 Windows 上运行的消耗或高级计划时使用。 Linux 不支持。 更改或删除此设置可能导致函数应用无法启动。 若要了解详细信息，请参阅 [此故障排除一文](functions-recover-storage-account.md#storage-account-application-settings-were-deleted)。 
+仅在部署到高级计划或在 Windows 上运行的消耗计划时使用。 对于运行 Linux 的使用量计划不支持。 更改或删除此设置可能会导致函数应用无法启动。 若要了解详细信息，请参阅[此故障排除文章](functions-recover-storage-account.md#storage-account-application-settings-were-deleted)。 
 
 ## <a name="website_contentovervnet"></a>WEBSITE\_CONTENTOVERVNET
 
@@ -247,15 +247,15 @@ _此设置当前处于预览状态。_
 
 ## <a name="website_contentshare"></a>WEBSITE\_CONTENTSHARE
 
-Windows 上事件驱动的缩放计划中的函数应用代码和配置的文件路径。 与 WEBSITE_CONTENTAZUREFILECONNECTIONSTRING 结合使用。 默认值是以函数应用名称开头的唯一字符串。 请参阅[创建函数应用](functions-infrastructure-as-code.md#windows)。
+Windows 上事件驱动的缩放计划中函数应用代码和配置的文件路径。 与 WEBSITE_CONTENTAZUREFILECONNECTIONSTRING 结合使用。 默认值是以函数应用名称开头的唯一字符串。 请参阅[创建函数应用](functions-infrastructure-as-code.md#windows)。
 
 |键|示例值|
 |---|------------|
 |WEBSITE_CONTENTSHARE|functionapp091999e2|
 
-仅适用于在 Windows 上运行的消耗或高级计划的函数应用。 Linux 不支持。 更改或删除此设置可能导致函数应用无法启动。 若要了解详细信息，请参阅 [此故障排除一文](functions-recover-storage-account.md#storage-account-application-settings-were-deleted)。
+仅在部署到高级计划或在 Windows 上运行的消耗计划时使用。 对于运行 Linux 的使用量计划不支持。 更改或删除此设置可能会导致函数应用无法启动。 若要了解详细信息，请参阅[此故障排除文章](functions-recover-storage-account.md#storage-account-application-settings-were-deleted)。
 
-在部署期间使用 Azure 资源管理器创建函数应用时，请不要在模板中包括 WEBSITE_CONTENTSHARE。 此应用程序设置是在部署过程中生成的。 若要了解详细信息，请参阅 [自动部署函数应用的资源](functions-infrastructure-as-code.md#windows)。   
+在部署期间使用 Azure 资源管理器创建函数应用时，请不要在模板中包括 WEBSITE_CONTENTSHARE。 此应用程序设置是在部署过程中生成的。 若要了解详细信息，请参阅[为函数应用自动执行资源部署](functions-infrastructure-as-code.md#windows)。   
 
 ## <a name="website_max_dynamic_application_scale_out"></a>WEBSITE\_MAX\_DYNAMIC\_APPLICATION\_SCALE\_OUT
 

@@ -1,23 +1,18 @@
 ---
 title: 使用 Azure 数据工厂从 DB2 移动数据
 description: 了解如何使用 Azure 数据工厂复制活动从本地 DB2 数据库移动数据
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: c1644e17-4560-46bb-bf3c-b923126671f1
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: e5d2c6b0460c3a7566adb17601aceb57e57f4d0b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: bcd1e6f9f9be1765e76399707ae36776a9f1987d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96001059"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387353"
 ---
 # <a name="move-data-from-db2-by-using-azure-data-factory-copy-activity"></a>使用 Azure 数据工厂复制活动从 DB2 移动数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -78,9 +73,9 @@ ms.locfileid: "96001059"
 ## <a name="db2-linked-service-properties"></a>DB2 链接服务的属性
 下表列出了特定于 DB2 链接服务的 JSON 属性。
 
-| 属性 | 说明 | 必须 |
+| properties | 说明 | 必须 |
 | --- | --- | --- |
-| **type** |必须将此属性设置为 **OnPremisesDb2**。 |是 |
+| type |必须将此属性设置为 **OnPremisesDb2**。 |是 |
 | 服务器 |DB2 服务器的名称。 |是 |
 | **database** |DB2 数据库的名称。 |是 |
 | **架构** |DB2 数据库中架构的名称。 此属性区分大小写。 |否 |
@@ -94,7 +89,7 @@ ms.locfileid: "96001059"
 
 每种数据集的 typeProperties 部分有所不同，该部分提供有关数据在数据存储区中的位置信息。 **RelationalTable** 类型数据集（包括 DB2 数据集）的 **typeProperties** 节具有以下属性：
 
-| 属性 | 说明 | 必需 |
+| properties | 说明 | 必须 |
 | --- | --- | --- |
 | **tableName** |链接服务引用的 DB2 数据库实例中表的名称。 此属性区分大小写。 |否（如果指定了 **RelationalSource** 类型复制活动的 **query** 属性） |
 
@@ -103,9 +98,9 @@ ms.locfileid: "96001059"
 
 对于复制活动，当源的类型为 **RelationalSource**（包括 DB2）时，以下属性在 **typeProperties** 节中可用：
 
-| 属性 | 说明 | 允许的值 | 必须 |
+| properties | 说明 | 允许的值 | 必须 |
 | --- | --- | --- | --- |
-| **query** |使用自定义查询读取数据。 |SQL 查询字符串。 例如： `"query": "select * from "MySchema"."MyTable""` |否（如果指定了数据集的 **tableName** 属性） |
+| **查询** |使用自定义查询读取数据。 |SQL 查询字符串。 例如： `"query": "select * from "MySchema"."MyTable""` |否（如果指定了数据集的 **tableName** 属性） |
 
 > [!NOTE]
 > 架构和表名称区分大小写。 在查询语句中，应使用 ""（双引号）括住属性名称。
@@ -318,7 +313,7 @@ ms.locfileid: "96001059"
 | Numeric |小数 |
 | Date |DateTime |
 | 时间 |TimeSpan |
-| Timestamp |DateTime |
+| 时间戳 |DateTime |
 | Xml |Byte[] |
 | Char |String |
 | VarChar |String |
@@ -344,7 +339,7 @@ ms.locfileid: "96001059"
 | Numeric |小数 |
 | Date |DateTime |
 | 时间 |TimeSpan |
-| Timestamp |DateTime |
+| 时间戳 |DateTime |
 | Xml |Byte[] |
 | Char |String |
 

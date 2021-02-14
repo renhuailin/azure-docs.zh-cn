@@ -9,18 +9,18 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 30852b6b3f9a4b490c4b58fe07f34ee49c60fa9f
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: 250c1ef837793c2149ff653f395f40272cf43335
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955240"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100384939"
 ---
 # <a name="create-a-postgresql-hyperscale-server-group-using-kubernetes-tools"></a>使用 Kubernetes 工具创建 PostgreSQL 超大规模服务器组
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-## <a name="prerequisites"></a>必备知识
+## <a name="prerequisites"></a>先决条件
 
 应该已经创建了一个 [Azure Arc 数据控制器](./create-data-controller.md)。
 
@@ -44,14 +44,14 @@ data:
   password: <your base64 encoded password>
 kind: Secret
 metadata:
-  name: example-login-secret
+  name: pg1-login-secret
 type: Opaque
 ---
 apiVersion: arcdata.microsoft.com/v1alpha1
 kind: postgresql-12
 metadata:
   generation: 1
-  name: example
+  name: pg1
 spec:
   engine:
     extensions:
@@ -107,7 +107,7 @@ echo '<your string to encode here>' | base64
 
 ### <a name="customizing-the-name"></a>自定义名称
 
-对于 name 属性，模板的值为 "example"。  您可以更改它，但它必须是遵循 DNS 命名标准的字符。  还必须更改要匹配的机密名称。  例如，如果将 PostgreSQL 超大规模服务器组的名称更改为 "postgres1"，则必须将机密名称从 "" 更改为 "postgres1"。
+对于 name 属性，模板的值为 "pg1"。  您可以更改它，但它必须是遵循 DNS 命名标准的字符。  还必须更改要匹配的机密名称。  例如，如果将 PostgreSQL 超大规模服务器组的名称更改为 "pg2"，则必须将机密名称从 "pg1" 更改为 "pg2"。
 
 ### <a name="customizing-the-engine-version"></a>自定义引擎版本
 
@@ -152,10 +152,10 @@ kubectl create -n <your target namespace> -f <path to your yaml file>
 创建 PostgreSQL 超大规模服务器组将需要几分钟才能完成。 可以通过以下命令在另一个终端窗口中监视进度：
 
 > [!NOTE]
->  下面的示例命令假设你创建了一个名为 "postgres1" 的 PostgreSQL 超大规模服务器组和一个名为 "arc" 的 Kubernetes 命名空间。  如果使用了其他命名空间/PostgreSQL 超大规模服务器组名称，则可以将 "arc" 和 "postgres1" 替换为你的名称。
+>  下面的示例命令假设你创建了一个名为 "pg1" 的 PostgreSQL 超大规模服务器组和一个名为 "arc" 的 Kubernetes 命名空间。  如果使用了其他命名空间/PostgreSQL 超大规模服务器组名称，则可以将 "arc" 和 "pg1" 替换为你的名称。
 
 ```console
-kubectl get postgresql-12/postgres1 --namespace arc
+kubectl get postgresql-12/pg1 --namespace arc
 ```
 
 ```console
@@ -168,7 +168,7 @@ kubectl get pods --namespace arc
 kubectl describe po/<pod name> --namespace arc
 
 #Example:
-#kubectl describe po/postgres1-0 --namespace arc
+#kubectl describe po/pg1-0 --namespace arc
 ```
 
 ## <a name="troubleshooting-creation-problems"></a>创建问题疑难解答

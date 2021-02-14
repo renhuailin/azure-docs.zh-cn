@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 7f7be27e67bfa266c368927227f1b8d1083a5124
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 96fbe676d4b929d2c1ee2efce0d10f3b5dc7c6ab
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98937874"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100103186"
 ---
 # <a name="web-app-that-signs-in-users-app-registration"></a>用于登录用户的 Web 应用：应用注册
 
@@ -42,7 +42,7 @@ ms.locfileid: "98937874"
 > 要使用的门户不同，具体取决于你的应用程序是在 Microsoft Azure 公有云还是在全国或主权云中运行。 有关详细信息，请参阅[国家云](./authentication-national-cloud.md#app-registration-endpoints)。
 
 
-1. 登录到 <a href="https://portal.azure.com/" target="_blank">Azure 门户<span class="docon docon-navigate-external x-hidden-focus"></span></a>。 
+1. 登录 <a href="https://portal.azure.com/" target="_blank">Azure 门户</a>。 
 1. 如果有权访问多个租户，请使用顶部菜单中的“目录 + 订阅”筛选器:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::，选择要在其中注册应用程序的租户。
 1. 搜索并选择“Azure Active Directory”  。
 1. 在“管理”下，选择“应用注册” > “新建注册”  。
@@ -57,7 +57,7 @@ ms.locfileid: "98937874"
 1. 在“管理”下，选择“身份验证”，然后添加以下信息：
    1. 在“Web”部分，添加 `https://localhost:44321/signin-oidc` 作为“重定向 URI” 。
    1. 在 " **前声道注销 URL**" 中，输入 `https://localhost:44321/signout-oidc` 。
-   1. 在 " **隐式授权" 和 "混合流**" 下，选择 " **ID 令牌**"。
+   1. 在“隐式授权和混合流”下，选择“ID 令牌” 。
    1. 选择“保存”。
    
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
@@ -68,7 +68,7 @@ ms.locfileid: "98937874"
    1. 在 " **重定向 uri (可选)** " 部分中，在组合框中选择 " **Web** "，然后输入的 **重定向 URI** `https://localhost:44326/` 。
    1. 选择“注册”以创建应用程序。
 1. 在“管理”下，选择“身份验证”。 
-1. 在 " **隐式授权和混合流** " 部分中，选择 " **ID 令牌**"。 本示例需要启用[隐式授权流](v2-oauth2-implicit-grant-flow.md)才能将用户登录。
+1. 在“隐式授权和混合流”部分，选择“ID 令牌” 。 本示例需要启用[隐式授权流](v2-oauth2-implicit-grant-flow.md)才能将用户登录。
 1. 选择“保存”。
 
 # <a name="java"></a>[Java](#tab/java)

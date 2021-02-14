@@ -1,22 +1,18 @@
 ---
 title: 将数据复制到 Azure Databricks Delta Lake 以及从中复制数据
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，向/从 Azure Databricks Delta Lake 复制数据。
-services: data-factory
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/24/2020
-ms.openlocfilehash: e32b93c669bffd382b1eb648111f9b8931b07eac
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: bdf71276d59dec9a19e29ae7f49cb92a0512c05a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99221136"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100364233"
 ---
 # <a name="copy-data-to-and-from-azure-databricks-delta-lake-by-using-azure-data-factory"></a>使用 Azure 数据工厂向/从Azure Databricks Delta Lake 复制数据
 
@@ -34,7 +30,7 @@ ms.locfileid: "99221136"
 通常，Azure 数据工厂支持使用具有以下功能的 Delta Lake 来满足你的各种需求。
 
 - 复制活动支持使用 Azure Databricks Delta Lake 连接器将数据从任何受支持的源数据存储复制到 Azure Databricks Delta Lake 表，以及从 Delta Lake 表复制到任何受支持的接收器数据存储。 它利用 Databricks 群集执行数据移动，详见[“先决条件”部分](#prerequisites)。
-- [映射数据流](concepts-data-flow-overview.md) 支持将 Azure 存储上的通用 [增量格式](format-delta.md) 作为源和接收器来读取和写入无代码 ETL 的增量文件，并在托管 Azure Integration Runtime 上运行。
+- [映射数据流](concepts-data-flow-overview.md)支持将 Azure 存储上的通用 [Delta 格式](format-delta.md)作为源和接收器，以便读取和写入无代码 ETL 的 Delta 文件，并在托管 Azure Integration Runtime 上运行。
 - [Databricks 活动](transform-data-databricks-notebook.md)支持在 Delta Lake 之上协调以代码为中心的 ETL 或机器学习工作负荷。
 
 ## <a name="prerequisites"></a>先决条件
@@ -79,7 +75,7 @@ Databricks 群集需要有权访问 Azure Blob 或 Azure Data Lake Storage Gen2 
 
 Azure Databricks Delta Lake 链接服务支持以下属性。
 
-| Property    | 说明                                                  | 必需 |
+| Property    | 说明                                                  | 必须 |
 | :---------- | :----------------------------------------------------------- | :------- |
 | type        | type 属性必须设置为 **AzureDatabricksDeltaLake**。 | 是      |
 | 域      | 指定 Azure Databricks 工作区 URL，例如 `https://adb-xxxxxxxxx.xx.azuredatabricks.net`。 |          |
@@ -112,7 +108,7 @@ Azure Databricks Delta Lake 链接服务支持以下属性。
 
 Azure Databricks Delta Lake 数据集支持以下属性。
 
-| Property  | 说明                                                  | 必需                    |
+| Property  | 说明                                                  | 必须                    |
 | :-------- | :----------------------------------------------------------- | :-------------------------- |
 | type      | 数据集的 type 属性必须设置为 **AzureDatabricksDeltaLakeDataset**。 | 是                         |
 | database | 数据库的名称。 |对于源为“否”，对于接收器为“是”  |
@@ -146,13 +142,13 @@ Azure Databricks Delta Lake 数据集支持以下属性。
 
 为了从 Azure Databricks Delta Lake 复制数据，复制活动的 **source** 节需要支持以下属性。
 
-| Property                     | 说明                                                  | 必需 |
+| Property                     | 说明                                                  | 必须 |
 | :--------------------------- | :----------------------------------------------------------- | :------- |
 | type                         | 复制活动源的 type 属性必须设置为 **AzureDatabricksDeltaLakeSource**。 | 是      |
 | query          | 指定用于读取数据的 SQL 查询。 对于“按时间顺序查看”控制，请遵循以下模式：<br>- `SELECT * FROM events TIMESTAMP AS OF timestamp_expression`<br>- `SELECT * FROM events VERSION AS OF version` | 否       |
 | exportSettings | 用于从增量表检索数据的高级设置。 | 否       |
-| ***在 `exportSettings` 下：** _ |  |  |
-| type | 导出命令的类型，设置为 _*AzureDatabricksDeltaLakeExportCommand**。 | 是 |
+| 在 `exportSettings` 下： |  |  |
+| type | 导出命令的类型，设置为 **AzureDatabricksDeltaLakeExportCommand**。 | 是 |
 | dateFormat | 将日期类型格式化为具有日期格式的字符串。 自定义日期格式遵循[日期/时间模式](https://spark.apache.org/docs/latest/sql-ref-datetime-pattern.html)中的格式。 如果未指定，则它使用默认值 `yyyy-MM-dd`。 | 否 |
 | timestampFormat | 将时间戳类型格式化为具有时间戳格式的字符串。 自定义日期格式遵循[日期/时间模式](https://spark.apache.org/docs/latest/sql-ref-datetime-pattern.html)中的格式。 如果未指定，则它使用默认值 `yyyy-MM-dd'T'HH:mm:ss[.SSS][XXX]`。 | 否 |
 
@@ -260,13 +256,13 @@ Azure Databricks Delta Lake 数据集支持以下属性。
 
 为了将数据复制到 Azure Databricks Delta Lake，复制活动的 **sink** 节需要支持以下属性。
 
-| Property      | 说明                                                  | 必需 |
+| Property      | 说明                                                  | 必须 |
 | :------------ | :----------------------------------------------------------- | :------- |
 | type          | 复制活动接收器的 type 属性，设置为 **AzureDatabricksDeltaLakeSink**。 | 是      |
 | preCopyScript | 指定一个 SQL 查询。每次运行时，复制活动在将数据写入到 Databricks 增量表之前都会运行该查询。 你可以使用此属性来清除预加载的数据，或添加一个 truncate table 或 Vacuum语句。 | 否       |
 | importSettings | 用于将数据写入增量表的高级设置。 | 否 |
-| **_在 `importSettings` 下：_* _ |                                                              |  |
-| type | 导入命令的类型，设置为 _*AzureDatabricksDeltaLakeImportCommand**。 | 是 |
+| 在 `importSettings` 下： |                                                              |  |
+| type | 导入命令的类型，设置为 **AzureDatabricksDeltaLakeImportCommand**。 | 是 |
 | dateFormat | 将字符串格式化为具有日期格式的日期类型。 自定义日期格式遵循[日期/时间模式](https://spark.apache.org/docs/latest/sql-ref-datetime-pattern.html)中的格式。 如果未指定，则它使用默认值 `yyyy-MM-dd`。 | 否 |
 | timestampFormat | 将字符串格式化为具有时间戳格式的时间戳类型。 自定义日期格式遵循[日期/时间模式](https://spark.apache.org/docs/latest/sql-ref-datetime-pattern.html)中的格式。 如果未指定，则它使用默认值 `yyyy-MM-dd'T'HH:mm:ss[.SSS][XXX]`。 | 否 |
 

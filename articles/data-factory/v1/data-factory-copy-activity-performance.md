@@ -1,23 +1,18 @@
 ---
 title: 复制活动性能和优化指南
 description: 了解使用复制活动时影响 Azure 数据工厂中数据移动性能的关键因素。
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: 4b9a6a4f-8cf5-4e0a-a06f-8133a2b7bc58
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/25/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 5910b94dba03f105197a94cf1ea1805f45249f3f
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 9a890719de39a71d8336d39f9932e73f7baccf87
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96451344"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100377204"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>复制活动性能和优化指南
 
@@ -28,7 +23,7 @@ ms.locfileid: "96451344"
 > [!NOTE]
 > 本文适用于数据工厂版本 1。 如果使用数据工厂服务的当前版本，请参阅[数据工厂的复制活动性能和优化指南](../copy-activity-performance.md)。
 
-Azure 数据工厂复制活动提供安全、可靠且高性能的一流数据加载解决方案。 它允许用户在各种云和本地数据存储中每天复制数十 TB 的数据。 速度超快的数据加载性能是确保用户能专注于核心“大数据”问题的关键：构建高级分析解决方案并从所有数据获得深入见解。
+Azure 数据工厂复制活动提供安全、可靠且高性能的一流数据加载解决方案。 它允许用户在各种云和本地数据存储中每天复制数十 TB 的数据。 速度快的数据加载性能是确保你可以专注于核心 "大数据" 问题的关键：构建高级分析解决方案，并深入了解所有这些数据。
 
 Azure 提供了一组企业级数据存储和数据仓库解决方案，并且复制活动提供了高度优化的数据加载体验，易于配置和设置。 使用单个复制活动，可完成：
 
@@ -202,10 +197,10 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 
 目前，不能使用暂存存储在两个本地数据存储之间复制数据。 我们预计会尽快提供此选项。
 
-### <a name="configuration"></a>配置
-在复制活动中配置 **enableStaging** 设置，指定在将数据加载到目标数据存储之前是否要在 Blob 存储中暂存。 将 **enableStaging** 设置为 TRUE 时，指定下一个表中列出的其他属性。 如果未指定，则还需要创建 Azure 存储或存储共享访问签名链接服务供暂存用。
+### <a name="configuration"></a>Configuration
+在复制活动中配置 **enableStaging** 设置，指定在将数据加载到目标数据存储之前是否要在 Blob 存储中暂存。 将 **enableStaging** 设置为 TRUE 时，指定下一个表中列出的其他属性。 如果没有，还需要创建一个 Azure 存储或存储共享访问签名链接服务进行过渡。
 
-| 属性 | 说明 | 默认值 | 必须 |
+| properties | 说明 | 默认值 | 必须 |
 | --- | --- | --- | --- |
 | **enableStaging** |指定是否要通过过渡暂存存储复制数据。 |False |否 |
 | **linkedServiceName** |指定 [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service) 或 [AzureStorageSas ](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service) 链接服务的名称，这指用作过渡暂存存储的存储实例。 <br/><br/> 不能将存储与共享访问签名一起使用，以通过 PolyBase 将数据加载到 Azure Synapse Analytics 中。 可在其他任何情况下使用它。 |空值 |将 **enableStaging** 设置为 TRUE 时，则为是 |
@@ -254,7 +249,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 
    ![活动运行详细信息](./media/data-factory-copy-activity-performance/mmapp-activity-run-details.png)
 
-   在本文之后的部分，可你将方案中的性能和配置与我们测试中复制活动的[性能参考](#performance-reference)进行比较。
+   在本文的后面部分，你可以比较方案的性能和配置，以便从我们的测试中复制活动的 [性能引用](#performance-reference) 。
 2. **诊断和优化性能**。 如果观察到的性能不符合预期，则需要识别性能瓶颈。 然后，优化性能以消除或减少瓶颈的影响。 本文不涵盖性能诊断的完整说明，但下面是一些常见的注意事项：
 
    * 性能功能：
@@ -263,7 +258,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
      * [暂存复制](#staged-copy)
      * [数据管理网关可伸缩性](data-factory-data-management-gateway-high-availability-scalability.md)
    * [数据管理网关](#considerations-for-data-management-gateway)
-   * [源](#considerations-for-the-source)
+   * [Source](#considerations-for-the-source)
    * [接收器](#considerations-for-the-sink)
    * [序列化和反序列化](#considerations-for-serialization-and-deserialization)
    * [压缩](#considerations-for-compression)
@@ -371,7 +366,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 
 **测试和分析**：复制活动的吞吐量小于 2 MBps，这比性能基准慢得多。
 
-**性能分析和优化**：为排除性能问题，可查看数据的处理和移动方式。
+**性能分析和优化**：为了排查性能问题，让我们看看如何处理和移动数据。
 
 1. **读取数据**：网关打开与 SQL Server 的连接并发送查询。 SQL Server 通过 Intranet 向网关发送数据流，以此进行响应。
 2. **序列化和压缩数据**：网关将数据流序列化为 CSV 格式，并将数据压缩为 bzip2 流。
@@ -399,19 +394,19 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 
 **分析和性能优化**：例如，如果已在四核计算机上安装了网关，数据工厂将使用 16 个并行复制将文件从文件系统并发移动到 Blob 存储。 此并行执行应会导致高吞吐量。 还可显式指定并行复制数。 复制许多小文件时，并行复制通过更有效地使用资源显著帮助提高吞吐量。
 
-![场景 1](./media/data-factory-copy-activity-performance/scenario-1.png)
+![方案 1](./media/data-factory-copy-activity-performance/scenario-1.png)
 
 **方案 II**：将 20 个 Blob（每个 500 MB）从 Blob 存储复制到 Data Lake Store Analytics，然后优化性能。
 
 **分析和性能优化**：在此方案中，数据工厂通过使用单个复制（**parallelCopies** 设置为 1）和单一云数据移动单位，将数据从 Blob 存储复制到 Data Lake Store。 观察到的吞吐量将接近[性能参考部分](#performance-reference)中描述的吞吐量。
 
-![场景 2](./media/data-factory-copy-activity-performance/scenario-2.png)
+![方案 2](./media/data-factory-copy-activity-performance/scenario-2.png)
 
 **方案 III**：个别文件大小大于几十 MB 且总量很大。
 
 **分析和优化性能**：因为单一云 DMU 的资源限制，增加 **parallelCopies** 不会产生更好的复制性能。 而应指定更多云 DMU，获取更多资源来执行数据移动。 请勿指定 **parallelCopies** 属性的值。 数据工厂处理并行度。 在此情况下，如果将 **cloudDataMovementUnits** 设置为 4，则会产生大约 4 倍的吞吐量。
 
-![场景 3](./media/data-factory-copy-activity-performance/scenario-3.png)
+![方案 3](./media/data-factory-copy-activity-performance/scenario-3.png)
 
 ## <a name="reference"></a>参考
 下面是有关一些受支持数据存储的性能监视和优化参考：

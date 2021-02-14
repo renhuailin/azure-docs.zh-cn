@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 11/16/2020
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: c3dbd76e76ad6e7bed0808278d4516992bc328f0
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 54b92c24b5a50ef1674dcb47df555b27259a350b
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99574425"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100393847"
 ---
 # <a name="troubleshoot-azure-file-shares-performance-issues"></a>排查 Azure 文件共享性能问题
 
@@ -22,7 +22,7 @@ ms.locfileid: "99574425"
 
 ### <a name="cause-1-share-was-throttled"></a>原因 1：共享受限
 
-当达到文件共享的每秒 I/O 操作数 (IOPS)、流入量或流出量限制时，将会限制请求。 若要了解标准文件共享和高级文件共享的限制，请参阅[文件共享和文件缩放目标](./storage-files-scale-targets.md#file-share-and-file-scale-targets)。
+当达到文件共享的每秒 I/O 操作数 (IOPS)、流入量或流出量限制时，将会限制请求。 若要了解标准文件共享和高级文件共享的限制，请参阅[文件共享和文件缩放目标](./storage-files-scale-targets.md#azure-file-share-scale-targets)。
 
 若要确认共享是否受到限制，可以访问并使用门户中的 Azure 指标。
 

@@ -1,23 +1,18 @@
 ---
 title: 使用 Azure 数据工厂从 MySQL 移动数据
 description: 了解如何使用 Azure 数据工厂从 MySQL 数据库移动数据。
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: 452f4fce-9eb5-40a0-92f8-1e98691bea4c
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/06/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 90fccba016a3db9ff85f8ec7c8fd426ef3c896a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 83c39435d2249981a45798ffe0717054fa7b0717
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91872096"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387319"
 ---
 # <a name="move-data-from-mysql-using-azure-data-factory"></a>使用 Azure 数据工厂从 MySQL 移动数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -49,8 +44,8 @@ ms.locfileid: "91872096"
 ## <a name="getting-started"></a>入门
 可以使用不同的工具/API 创建包含复制活动的管道，以从本地 Cassandra 数据存储移动数据。 
 
-- 创建管道的最简单方法是使用**** 复制向导。 请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。 
-- 你还可以使用以下工具创建管道： **Visual Studio**、 **Azure PowerShell**、 **AZURE 资源管理器模板**、 **.net API**和 **REST API**。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。 
+- 创建管道的最简单方法是使用复制向导。 请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。 
+- 你还可以使用以下工具创建管道： **Visual Studio**、 **Azure PowerShell**、 **AZURE 资源管理器模板**、 **.net API** 和 **REST API**。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。 
 
 无论使用工具还是 API，执行以下步骤都可创建管道，以便将数据从源数据存储移到接收器数据存储：
 
@@ -79,11 +74,11 @@ ms.locfileid: "91872096"
 ## <a name="dataset-properties"></a>数据集属性
 有关可用于定义数据集的节和属性的完整列表，请参阅[创建数据集](data-factory-create-datasets.md)一文。 对于所有数据集类型（Azure SQL、Azure Blob、Azure 表等），结构、可用性和数据集 JSON 的策略等部分均类似。
 
-每种数据集的 typeProperties 部分有所不同，该部分提供有关数据在数据存储区中的位置信息****。 **RelationalTable** 类型数据集（包括 MySQL 数据集）的 typeProperties 部分具有以下属性
+每种数据集的 typeProperties 部分有所不同，该部分提供有关数据在数据存储区中的位置信息。 **RelationalTable** 类型数据集（包括 MySQL 数据集）的 typeProperties 部分具有以下属性
 
 | properties | 说明 | 必须 |
 | --- | --- | --- |
-| tableName |链接服务引用的 MySQL 数据库实例中表的名称。 |否（如果指定了 **RelationalSource** 的**query**） |
+| tableName |链接服务引用的 MySQL 数据库实例中表的名称。 |否（如果指定了 **RelationalSource** 的 **query**） |
 
 ## <a name="copy-activity-properties"></a>复制活动属性
 有关可用于定义活动的节和属性的完整列表，请参阅[创建管道](data-factory-create-pipelines.md)一文。 名称和描述等属性、输入和输出表格以及策略可用于所有类型的活动。
@@ -94,7 +89,7 @@ ms.locfileid: "91872096"
 
 | properties | 说明 | 允许的值 | 必须 |
 | --- | --- | --- | --- |
-| 查询 |使用自定义查询读取数据。 |SQL 查询字符串。 例如：select * from MyTable。 |否（如果指定了**数据集**的 **tableName**） |
+| 查询 |使用自定义查询读取数据。 |SQL 查询字符串。 例如：select * from MyTable。 |否（如果指定了 **数据集** 的 **tableName**） |
 
 
 ## <a name="json-example-copy-data-from-mysql-to-azure-blob"></a>JSON 示例：将数据从 MySQL 复制到 Azure Blob
@@ -151,9 +146,9 @@ ms.locfileid: "91872096"
 
 **MySQL 输入数据集：**
 
-该示例假定已在 MySQL 中创建表“MyTable”，并且它包含用于时间序列数据的名为“timestampcolumn”的列。
+该示例假设已在 MySQL 中创建了表 "MyTable"，并且它包含了时序数据的名为 "timestampcolumn" 的列。
 
-设置“external”：true 将告知数据工厂服务：表在数据工厂外部且不由数据工厂中的活动生成。
+设置 "external"： "true" 将告知数据工厂服务：表在数据工厂外部且不由数据工厂中的活动生成。
 
 ```JSON
     {
@@ -300,45 +295,45 @@ ms.locfileid: "91872096"
 
 | MySQL 数据库类型 | .NET Framework 类型 |
 | --- | --- |
-| 无符号 bigint |Decimal |
+| 无符号 bigint |小数 |
 | bigint |Int64 |
-| bit |Decimal |
+| bit |小数 |
 | blob |Byte[] |
 | bool |布尔 |
-| char |字符串 |
+| char |String |
 | date |datetime |
 | datetime |Datetime |
 | Decimal |小数 |
 | 双精度 |Double |
 | double |Double |
-| enum |字符串 |
+| 枚举 |String |
 | FLOAT |Single |
 | 无符号 int |Int64 |
 | int |Int32 |
 | 无符号 integer |Int64 |
 | 整型 |Int32 |
 | 长 varbinary |Byte[] |
-| 长 varchar |字符串 |
+| 长 varchar |String |
 | longblob |Byte[] |
-| longtext |字符串 |
+| longtext |String |
 | mediumblob |Byte[] |
 | 无符号 mediumint |Int64 |
 | mediumint |Int32 |
 | mediumtext |字符串 |
-| numeric |Decimal |
+| numeric |小数 |
 | real |Double |
-| set |字符串 |
+| set |String |
 | 无符号 smallint |Int32 |
 | smallint |Int16 |
-| text |字符串 |
+| text |String |
 | time |TimeSpan |
 | timestamp |datetime |
 | tinyblob |Byte[] |
 | 无符号 tinyint |Int16 |
 | tinyint |Int16 |
-| tinytext |字符串 |
+| tinytext |String |
 | varchar |String |
-| 年份 |int |
+| year |int |
 
 ## <a name="map-source-to-sink-columns"></a>将源映射到接收器列
 要了解如何将源数据集中的列映射到接收器数据集中的列，请参阅[映射 Azure 数据工厂中的数据集列](data-factory-map-columns.md)。

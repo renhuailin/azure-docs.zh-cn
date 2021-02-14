@@ -1,22 +1,18 @@
 ---
 title: 数据管理网关的发行说明
 description: 数据管理网关发行说明
-services: data-factory
 author: nabhishek
-manager: anandsub
-ms.assetid: 14762e82-76d9-41c4-ba9f-14a54da29c36
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 0538777cadf7935a6684932a17fadc10849518d8
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b5bf0c6d6996a67e8b0fec3ec51e31fef8eedf26
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96001620"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100363910"
 ---
 # <a name="release-notes-for-data-management-gateway"></a>数据管理网关的发行说明
 > [!NOTE]
@@ -39,19 +35,19 @@ ms.locfileid: "96001620"
 ## <a name="earlier-versions"></a>早期版本
 ## <a name="21063477"></a>2.10.6347.7
 ### <a name="enhancements-"></a>增强功能
-- 如果需要，可以添加 DNS 条目以允许服务总线，而不是允许来自防火墙 (的所有 Azure IP 地址) 。 可以在 Azure 门户中找到相应的 DNS 条目（“数据工厂”->“创作和部署”->“网关”->“serviceUrls”（采用 JSON））
+- 如果需要，可以添加 DNS 条目以允许服务总线，而不是允许来自防火墙 (的所有 Azure IP 地址) 。 可以在 Azure 门户 (数据工厂 > "创作和部署" > "网关"-> "serviceUrls" (在 JSON 中查找各自的 DNS 条目
 - HDFS 连接器现在支持自签名的公共证书，方法是允许你跳过 TLS 验证。
 - 已修复：更新期间发生的网关脱机问题（由于时钟偏差）
 
 
 ## <a name="2963132"></a>2.9.6313.2
 ### <a name="enhancements-"></a>增强功能
--   如果需要，可以添加 DNS 条目以允许服务总线，而不是允许来自防火墙 (的所有 Azure IP 地址) 。 在此处了解更多详情。
--   现在可以向/从最大 4.75 TB（这是块 Blob 支持的最大大小）的单块 Blob 复制数据。 （早期的限制为 195 GB）。
--   已修复：在复制活动期间解压缩多个小文件时出现的内存不足问题。
--   已修复：从 Document DB 复制到 SQL Server 时，索引超出范围问题。
--   已修复： SQL 清理脚本不适用于从复制向导 SQL Server。
--   已修复：末尾有空格的列名称在复制活动中不起作用。
+-    如果需要，可以添加 DNS 条目以允许服务总线，而不是允许来自防火墙 (的所有 Azure IP 地址) 。 在此处了解更多详情。
+-    现在可以向/从最大 4.75 TB（这是块 Blob 支持的最大大小）的单块 Blob 复制数据。 （早期的限制为 195 GB）。
+-    已修复：在复制活动期间解压缩多个小文件时出现的内存不足问题。
+-    已修复：从 Document DB 复制到 SQL Server 时，索引超出范围问题。
+-    已修复： SQL 清理脚本不适用于从复制向导 SQL Server。
+-    已修复：末尾有空格的列名称在复制活动中不起作用。
 
 ## <a name="28662833"></a>2.8.66283.3
 ### <a name="enhancements-"></a>增强功能
@@ -160,7 +156,7 @@ ms.locfileid: "96001620"
 
 *  零触摸自动更新功能
 *  具有网关状态指示器的新托盘图标
-*  从客户端“立即更新”的功能
+*  能够从客户端 "立即更新"
 *  设置更新计划时间的功能
 *  用于切换开/关自动更新的 PowerShell 脚本
 *  支持 JSON 格式  

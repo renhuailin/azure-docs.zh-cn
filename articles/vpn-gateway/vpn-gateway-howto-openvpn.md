@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 02/05/2021
 ms.author: cherylmc
-ms.openlocfilehash: 34f24b8fbdb28e1b1f73e9db428c510d3f4661ce
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 4b48e98ab35b620030b15165d4c9341c0f11b440
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99804831"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100393269"
 ---
 # <a name="configure-openvpn-for-azure-point-to-site-vpn-gateway"></a>为 Azure 点到站点 VPN 网关配置 OpenVPN
 
@@ -31,12 +31,12 @@ ms.locfileid: "99804831"
 ## <a name="portal"></a>门户
 
 1. 在门户中，导航到 **虚拟网络网关 > 点到站点配置**。
-1. 对于 " **隧道类型**"，请从下拉列表中选择 " **OpenVPN (ssl)** " 或 " **IKEv2 和 OpenVPN (ssl)** "。
+1. 对于 " **隧道类型**"，请从下拉列表中选择 " **OpenVPN (SSL")** 。
 
    :::image type="content" source="./media/vpn-gateway-howto-openvpn/portal.png" alt-text="从下拉列表中选择 &quot;OpenVPN SSL&quot;":::
 1. 保存更改并继续 **后续步骤**。
 
-在网关上启用 OpenVPN。
+## <a name="enable-openvpn-on-your-gateway-using-powershell"></a>使用 PowerShell 在网关上启用 OpenVPN。
 
 1. 使用以下示例在网关上启用 OpenVPN：
 

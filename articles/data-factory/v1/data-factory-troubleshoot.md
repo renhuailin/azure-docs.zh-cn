@@ -1,24 +1,19 @@
 ---
 title: 排查 Azure 数据工厂问题
 description: 了解如何排查 Azure 数据工厂使用问题。
-services: data-factory
-documentationcenter: ''
-ms.assetid: 38fd14c1-5bb7-4eef-a9f5-b289ff9a6942
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 author: dcstwh
 ms.author: weetok
 ms.reviewer: maghan
-manager: anandsub
 robots: noindex
-ms.openlocfilehash: bd18a26a1c199e1ecc32cfc371d2931b1dee0c3f
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: ed831e5f07eb29110b858dfb16b73f276926424f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96494964"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100388237"
 ---
 # <a name="troubleshoot-data-factory-issues"></a>排查数据工厂问题
 > [!NOTE]
@@ -30,19 +25,20 @@ ms.locfileid: "96494964"
 
 ## <a name="troubleshooting-tips"></a>故障排除提示
 ### <a name="error-the-subscription-is-not-registered-to-use-namespace-microsoftdatafactory"></a>错误: 该订阅未注册为使用命名空间 'Microsoft.DataFactory'
-出现此错误表示未在计算机上注册 Azure 数据工厂资源提供程序。 执行以下操作：
+出现此错误表示未在计算机上注册 Azure 数据工厂资源提供程序。 请执行以下操作：
 
 1. 启动 Azure PowerShell。
 2. 使用以下命令登录到 Azure 帐户。
 
-    ```powershell
-    Connect-AzAccount
-    ```
+   ```powershell
+   Connect-AzAccount
+   ```
+
 3. 运行以下命令来注册 Azure 数据工厂提供程序。
 
-    ```powershell        
-    Register-AzResourceProvider -ProviderNamespace Microsoft.DataFactory
-    ```
+   ```powershell
+   Register-AzResourceProvider -ProviderNamespace Microsoft.DataFactory
+   ```
 
 ### <a name="problem-unauthorized-error-when-running-a-data-factory-cmdlet"></a>问题：运行数据工厂 cmdlet 时出现未授权错误
 可能未在 Azure PowerShell 中使用正确的 Azure 帐户或订阅。 使用以下 cmdlet 选择要在 Azure PowerShell 中使用的正确 Azure 帐户和订阅。
@@ -67,7 +63,7 @@ ms.locfileid: "96494964"
 ### <a name="problem-input-slices-are-in-waiting-state-forever"></a>问题：输入切片始终处于等待状态
 切片处于“等待”状态的原因有多种。 其中一个常见原因是 **external** 属性未设置为 **true**。 在 Azure 数据工厂范围外部生成的任何数据集都应标记为 **external** 属性。 此属性表示该数据是外部的，且不由数据工厂内的任何管道提供支持。 当数据出现在相应的存储中后，数据切片将标记为 **Ready**。
 
-有关 **external** 属性的用法，请参阅以下示例。 将 external 设置为 true 时，可以选择指定 **externalData** _。
+有关 **external** 属性的用法，请参阅以下示例。 将 external 设置为 true 时，可以选择指定 **externalData***。
 
 有关此属性的更多详细信息，请参阅[数据集](data-factory-create-datasets.md)一文。
 
@@ -97,7 +93,7 @@ ms.locfileid: "96494964"
 }
 ```
 
-若要解决此错误，请将 _ *external** 属性和可选的 **externalData** 节添加到输入表的 JSON 定义中，然后重新创建该表。
+要解决该错误，请将 **external** 属性和可选的 **externalData** 节添加到输入表中的 JSON 定义中，然后重新创建表。
 
 ### <a name="problem-hybrid-copy-operation-fails"></a>问题：混合复制操作失败
 有关使用数据管理网关向/从本地数据存储复制数据时的问题进行故障排除的步骤，请参阅[排查网关问题](data-factory-data-management-gateway.md#troubleshooting-gateway-issues)。

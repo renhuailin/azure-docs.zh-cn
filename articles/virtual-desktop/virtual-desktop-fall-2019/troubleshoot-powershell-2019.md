@@ -6,19 +6,19 @@ ms.topic: troubleshooting
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 23d1e4b06c9c0278742da0cec8ac565b5f80a362
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 08c9f7a6c5f8fd4a51c464018438bf6e7db119fb
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88004906"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100374892"
 ---
 # <a name="windows-virtual-desktop-classic-powershell"></a>Windows 虚拟桌面 (经典) PowerShell
 
 >[!IMPORTANT]
 >本教程的内容适用于 Windows 虚拟桌面（经典），后者不支持 Azure 资源管理器 Windows 虚拟桌面对象。 要尝试管理 Azure 资源管理器 Windows 虚拟桌面对象，请参阅[本文](../troubleshoot-powershell.md)。
 
-本文介绍了在 Windows 虚拟桌面中使用 PowerShell 时的错误和问题。 有关远程桌面服务 PowerShell 的详细信息，请参阅 [Windows 虚拟桌面 PowerShell](/powershell/module/windowsvirtualdesktop/)。
+本文介绍了在 Windows 虚拟桌面中使用 PowerShell 时的错误和问题。 有关远程桌面服务 PowerShell 的详细信息，请参阅 [Windows 虚拟桌面 PowerShell](/powershell/windows-virtual-desktop/overview)。
 
 ## <a name="provide-feedback"></a>提供反馈
 

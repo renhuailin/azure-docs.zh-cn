@@ -16,12 +16,12 @@ ms.date: 12/23/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a5812d4dbbd1a63b16d5bee77bb018ea18dd1d6
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: c8e6c13600cb5940351d31b54af403584cc68a5f
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98937677"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100515642"
 ---
 # <a name="delegation-and-roles-in-azure-ad-entitlement-management"></a>Azure AD 权利管理中的委托和角色
 
@@ -133,9 +133,6 @@ Hana 可以采用下面这种方式将访问管理委托给市场营销部、财
 | [应用程序管理员](../roles/permissions-reference.md) | 目录所有者 |  |  | :heavy_check_mark: |  |
 | [云应用程序管理员](../roles/permissions-reference.md) | 目录所有者 |  |  | :heavy_check_mark: |  |
 | 用户 | 目录所有者 | 仅限组所有者 | 仅限组所有者 | 仅限应用所有者 |  |
-
-> [!NOTE]
-> 如果用户添加安全组或 Microsoft 365 组，则该组不能是可分配角色的组。 如果用户在创建访问包时添加了可分配角色的组，则他们还必须是该可分配角色的组的所有者。 有关详细信息，请参阅 [在 Azure Active Directory 中创建可分配角色的组](../roles/groups-create-eligible.md)。
 
 若要确定任务的最小特权角色，还可以参考[按 Azure Active Directory 中的管理员任务划分的管理员角色](../roles/delegate-by-task.md#entitlement-management)。
 

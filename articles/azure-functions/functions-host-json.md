@@ -3,12 +3,12 @@ title: Azure Functions 2.x 的 host.json 参考
 description: 使用 v2 运行时的 Azure Functions host.json 文件的参考文档。
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 735c92720f4a3f871499ad3a0565446a02b438eb
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 7ab60fb364eb3268a03c04bb4950251ae030f015
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97654806"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100374042"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Azure Functions 2.x 及更高版本的 host.json 参考 
 
@@ -39,6 +39,7 @@ host.json 中与绑定相关的配置将同样地应用于函数应用中的每�
         "flushTimeout": "00:00:30"
     },
     "extensions": {
+        "blobs": {},
         "cosmosDb": {},
         "durableTask": {},
         "eventHubs": {},
@@ -216,6 +217,10 @@ Application Insights 的控制选项，包括[采样选项](./configure-monitori
 | thresholdForSnapshotting | 1 | Application Insights 请求快照之前需要查看异常的次数。 |
 | uploaderProxy | null | 替代 Snapshot Uploader 进程中使用的代理服务器。 如果应用程序通过代理服务器连接到 Internet，则可能需要使用此设置。 Snapshot Collector 在应用程序的进程内运行，并使用相同的代理设置。 但是，Snapshot Uploader 作为单独的进程运行，并且你可能需要手动配置代理服务器。 如果此值为 null，Snapshot Collector 将尝试通过检查 System.Net.WebRequest.DefaultWebProxy 并将值传递到 Snapshot Uploader 来自动检测代理的地址。 如果此值不为 null，则不会使用自动检测，并且将在 Snapshot Uploader 中使用此处指定的代理服务器。 |
 
+## <a name="blobs"></a>Blob
+
+可在 [存储 blob 触发器和绑定](functions-bindings-storage-blob.md#hostjson-settings)中找到配置设置。  
+
 ## <a name="cosmosdb"></a>CosmosDB
 
 可在 [Cosmos DB 触发器和绑定](functions-bindings-cosmosdb-v2-output.md#host-json)中查找配置设置。
@@ -235,12 +240,12 @@ Application Insights 的控制选项，包括[采样选项](./configure-monitori
 }
 ```
 
-|properties | 默认 | 说明 |
+|属性 | 默认 | 说明 |
 | --------- | --------- | --------- |
-| defaultExecutablePath | 不适用 | 要作为自定义处理程序进程启动的可执行文件。 当使用自定义处理程序，并且它的值相对于 function app root 时，它是必需的设置。 |
-| workingDirectory | *函数应用根* | 要在其中启动自定义处理程序进程的工作目录。 它是一个可选设置，它的值相对于 function app root。 |
+| defaultExecutablePath | 不适用 | 要作为自定义处理程序进程启动的可执行文件。 在使用自定义处理程序时，它是必需设置，并且其值与函数应用根有关。 |
+| workingDirectory | 函数应用根 | 要在其中启动自定义处理程序进程的工作目录。 它是一个可选设置，其值与函数应用根有关。 |
 | 参数 | 不适用 | 要传递给自定义处理程序进程的命令行参数的数组。 |
-| enableForwardingHttpRequest | false | 如果设置，则仅包含 HTTP 触发器和 HTTP 输出的所有函数都将转发原始 HTTP 请求，而不是自定义处理程序 [请求负载](functions-custom-handlers.md#request-payload)。 |
+| enableForwardingHttpRequest | false | 如果设置，则仅包含 HTTP 触发器和 HTTP 输出的所有函数都将转发原始 HTTP 请求而不是自定义处理程序[请求负载](functions-custom-handlers.md#request-payload)。 |
 
 ## <a name="durabletask"></a>durableTask
 
@@ -378,7 +383,7 @@ Application Insights 的控制选项，包括[采样选项](./configure-monitori
 
 ## <a name="queues"></a>queues
 
-可在[存储队列触发器和绑定](functions-bindings-storage-queue-output.md#host-json)中查找设置。  
+可在[存储队列触发器和绑定](functions-bindings-storage-queue.md#host-json)中查找设置。  
 
 ## <a name="retry"></a>retry
 
@@ -450,7 +455,7 @@ Application Insights 的控制选项，包括[采样选项](./configure-monitori
 
 ## <a name="watchfiles"></a>watchFiles
 
-一个或多个文件名称的数组，这些文件将监视需要重新启动应用的更改。  这可保证当这些文件中的代码更改时，这些更新会由函数选取。
+一个或多个文件名称的数组，系统会监视这些文件，查看是否存在需要重启应用的更改。  这可保证当这些文件中的代码发生更改时，函数会拾取这些更新。
 
 ```json
 {

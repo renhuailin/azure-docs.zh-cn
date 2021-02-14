@@ -1,24 +1,18 @@
 ---
 title: 利用复制向导轻松复制数据-Azure
 description: 了解如何使用数据工厂复制向导将数据从支持的数据源复制到接收器。
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: ''
-editor: ''
-ms.assetid: f904972f-cd33-48db-9755-2b3196ae4168
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 28169e43d0e6949a16cc56c7e7d5d91d6db1ef57
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: f3686a22291e8595deabe3e207ce66744c3cdd82
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96003032"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100376898"
 ---
 # <a name="copy-or-move-data-easily-with-azure-data-factory-copy-wizard"></a>使用 Azure 数据工厂复制向导轻松复制或移动数据
 > [!NOTE]
@@ -73,7 +67,7 @@ Azure 数据工厂复制向导用于简化数据引入过程，这通常是端�
 ...
 ```
 
-单击“文件或文件夹”的“浏览”按钮，找到其中一个文件夹（例如，2016-> 03-> 01-> 02），并单击“选择”。 应该会在文本框中看到 `2016/03/01/02`。 现在，将 **2016** 替换为 **{year}**，将 **03** 替换为 { **month}**，将 **01** 替换为 **{day}** **，并按** tab。 **{hour}** 应看到下拉列表，以选择这四个变量的格式：
+单击“文件或文件夹”的“浏览”按钮，找到其中一个文件夹（例如，2016-> 03-> 01-> 02），并单击“选择”。 应该会在文本框中看到 `2016/03/01/02`。 现在，将 **2016** 替换为 **{year}**，将 **03** 替换为 { **month}**，将 **01** 替换为 **{day}** **，并按** tab。 应看到下拉列表，以选择这四个变量的格式：
 
 ![使用系统变量](./media/data-factory-copy-wizard/blob-standard-variables-in-folder-path.png)   
 

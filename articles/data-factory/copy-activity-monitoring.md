@@ -1,22 +1,17 @@
 ---
 title: 监视复制活动
 description: 了解如何监视 Azure 数据工厂中的复制活动执行情况。
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: jingwang
-ms.openlocfilehash: 92119709aa260f3180c503a77064f6e80dece6e6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 58860e404dff3030e51ff2977eaee081a15247f7
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89440603"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100388288"
 ---
 # <a name="monitor-copy-activity"></a>监视复制活动
 
@@ -40,7 +35,7 @@ ms.locfileid: "89440603"
 
 在某些方案中，当你运行数据工厂中的复制活动时，会在复制活动监视视图顶部看到“性能调优提示”，如示例中所示。 这些提示告知 ADF 针对此特定复制运行确定的瓶颈，并建议如何进行更改，以便提升复制吞吐量。 详细了解[自动性能优化提示](copy-activity-performance-troubleshooting.md#performance-tuning-tips)。
 
-底部的**执行详细信息和持续时间**描述了复制活动所要经历的重要阶段，这对于排查复制性能问题特别有用。 复制运行的瓶颈就是持续时间最长的那个运行。 请参阅[排查复制活动性能问题](copy-activity-performance-troubleshooting.md)，了解每个阶段所代表的内容以及详细的故障排除指南。
+底部的 **执行详细信息和持续时间** 描述了复制活动所要经历的重要阶段，这对于排查复制性能问题特别有用。 复制运行的瓶颈就是持续时间最长的那个运行。 请参阅[排查复制活动性能问题](copy-activity-performance-troubleshooting.md)，了解每个阶段所代表的内容以及详细的故障排除指南。
 
 **示例：从 Amazon S3 复制到 Azure Data Lake Storage Gen2**
 
@@ -67,7 +62,7 @@ ms.locfileid: "89440603"
 | throughput | 数据传输速率。 | 浮点数，以 KBps 为单位 |
 | sourcePeakConnections | 复制活动运行期间与源数据存储建立的并发连接峰值数量。 | Int32 值（无单位） |
 | sinkPeakConnections| 复制活动运行期间与接收器数据存储建立的并发连接峰值数量。| Int32 值（无单位） |
-| sqlDwPolyBase | 将数据复制到 Azure Synapse Analytics（以前称为 SQL 数据仓库）时是否使用了 PolyBase。 | 布尔 |
+| sqlDwPolyBase | 将数据复制到 Azure Synapse Analytics 时是否使用了 PolyBase。 | 布尔 |
 | redshiftUnload | 从 Redshift 复制数据时是否使用了 UNLOAD。 | 布尔 |
 | hdfsDistcp | 从 HDFS 复制数据时是否使用了 DistCp。 | 布尔 |
 | effectiveIntegrationRuntime | 用来为活动运行提供支持的一个或多个集成运行时 (IR)，采用 `<IR name> (<region if it's Azure IR>)` 格式。 | 文本（字符串） |

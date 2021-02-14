@@ -1,23 +1,18 @@
 ---
 title: 复制活动性能优化功能
 description: 了解有助于优化 Azure 数据工厂中的复制活动性能的重要功能。
-services: data-factory
-documentationcenter: ''
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/24/2020
-ms.openlocfilehash: 8e46e9b323657b747fd73bad3b25ed66390f3aa9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ecb4550b218b069273cba2e3d70a9510c1cc74ca
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91324325"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387795"
 ---
 # <a name="copy-activity-performance-optimization-features"></a>复制活动性能优化功能
 
@@ -34,11 +29,11 @@ ms.locfileid: "91324325"
 | 复制方案 | 支持的 DIU 范围 | 服务决定的默认 DIU 数目 |
 |:--- |:--- |---- |
 | 文件存储之间 |- **从/向单一文件复制**：2-4 <br>- **从/向多个文件复制**：2-256 个，具体取决于文件的数量和大小 <br><br>例如，如果从包含 4 个大文件的文件夹复制数据并选择保留层次结构，则最大有效 DIU 为 16；选择合并文件时，最大有效 DIU 为 4。 |4 到 32 个，具体取决于文件的数量和大小 |
-| 从文件存储到非文件存储 |- **从单个文件复制**：2-4 <br/>- **从多个文件复制**：2-256 个，具体取决于文件的数量和大小 <br/><br/>例如，如果从包含 4 个大文件的文件夹复制数据，则最大有效 DIU 为 16。 |- **复制到 Azure SQL 数据库或 Azure Cosmos DB**：4-16 个，具体取决于接收器层 (DTU/RU) 和源文件模式<br>- 使用 PolyBase 或 COPY 语句**复制到 Azure Synapse Analytics**：2<br>- 其他方案：4 |
+| 从文件存储到非文件存储 |- **从单个文件复制**：2-4 <br/>- **从多个文件复制**：2-256 个，具体取决于文件的数量和大小 <br/><br/>例如，如果从包含 4 个大文件的文件夹复制数据，则最大有效 DIU 为 16。 |- **复制到 Azure SQL 数据库或 Azure Cosmos DB**：4-16 个，具体取决于接收器层 (DTU/RU) 和源文件模式<br>- 使用 PolyBase 或 COPY 语句 **复制到 Azure Synapse Analytics**：2<br>- 其他方案：4 |
 | 从非文件存储到文件存储 |- **从启用了分区选项的数据存储复制**（此类数据存储包括 [Azure SQL 数据库](connector-azure-sql-database.md#azure-sql-database-as-the-source)、[Azure SQL 托管实例](connector-azure-sql-managed-instance.md#sql-managed-instance-as-a-source)、[Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#azure-synapse-analytics-as-the-source)、[Oracle](connector-oracle.md#oracle-as-source)、[Netezza](connector-netezza.md#netezza-as-source)、[SQL Server](connector-sql-server.md#sql-server-as-a-source) 和 [Teradata](connector-teradata.md#teradata-as-source)）：写入文件夹时为 2-256 个，写入单个文件时为 2-4 个。 请注意，每个源数据分区最多可以使用 4 个 DIU。<br>- **其他方案**：2-4 |- **从 REST 或 HTTP 复制**：1<br/>- 使用 UNLOAD **从 Amazon Redshift 复制**：2<br>- **其他方案**：4 |
 | 非文件存储之间 |- **从启用了分区选项的数据存储复制**（此类数据存储包括 [Azure SQL 数据库](connector-azure-sql-database.md#azure-sql-database-as-the-source)、[Azure SQL 托管实例](connector-azure-sql-managed-instance.md#sql-managed-instance-as-a-source)、[Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#azure-synapse-analytics-as-the-source)、[Oracle](connector-oracle.md#oracle-as-source)、[Netezza](connector-netezza.md#netezza-as-source)、[SQL Server](connector-sql-server.md#sql-server-as-a-source) 和 [Teradata](connector-teradata.md#teradata-as-source)）：写入文件夹时为 2-256 个，写入单个文件时为 2-4 个。 请注意，每个源数据分区最多可以使用 4 个 DIU。<br/>- **其他方案**：2-4 |- **从 REST 或 HTTP 复制**：1<br>- **其他方案**：4 |
 
-可以在复制活动监视视图或活动输出中查看用于每个复制运行的 DIU。 有关详细信息，请参阅[复制活动监视](copy-activity-monitoring.md)。 若要替代此默认值，请按如下所示指定 `dataIntegrationUnits` 属性的值。 复制操作在运行时使用的*实际 DIU 数*等于或小于配置的值，具体取决于数据模式。
+可以在复制活动监视视图或活动输出中查看用于每个复制运行的 DIU。 有关详细信息，请参阅[复制活动监视](copy-activity-monitoring.md)。 若要替代此默认值，请按如下所示指定 `dataIntegrationUnits` 属性的值。 复制操作在运行时使用的 *实际 DIU 数* 等于或小于配置的值，具体取决于数据模式。
 
 计费公式为 (已用 DIU 数) \* (复制持续时间) \* (单价/DIU 小时数)。 [此网页](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/)上提供了当前价格。 可能会按订阅类型应用本地货币和不同的折扣。
 
@@ -124,35 +119,35 @@ ms.locfileid: "91324325"
 
 ## <a name="staged-copy"></a>暂存复制
 
-将数据从源数据存储复制到接收器数据存储时，可以选择使用 Azure Blob 存储或 Azure Data Lake Storage Gen2 作为临时过渡存储。 暂存在以下情况下特别有用：
+将数据从源数据存储复制到接收器数据存储时，可能会选择使用 Azure Blob 存储或 Azure Data Lake Storage Gen2 作为过渡暂存存储。 暂存在以下情况下特别有用：
 
-- **你希望通过 PolyBase 将数据从各种数据存储引入 Azure Synapse Analytics (以前的 SQL 数据仓库) ，从/向雪花复制数据，或从 Amazon Redshift/HDFS 之前引入数据。** 了解更多详细信息：
-  - [使用 PolyBase 将数据加载到 Azure Synapse Analytics 中](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-synapse-analytics)。
-  - [雪花型连接器](connector-snowflake.md)
+- 想通过 PolyBase 将各种数据存储中的数据引入到 Azure Synapse Analytics 中，或从/向 Snowflake 复制数据，或高效地从 Amazon Redshift/HDFS 引入数据。 从以下位置了解更多详细信息：
+  - [使用 PolyBase 将数据加载到 Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-synapse-analytics)。
+  - [Snowflake 连接器](connector-snowflake.md)
   - [Amazon Redshift 连接器](connector-amazon-redshift.md)
   - [HDFS 连接器](connector-hdfs.md)
-- **由于企业 IT 策略，不希望在防火墙中打开除端口 80 和端口 443 以外的端口。** 例如，将数据从本地数据存储复制到 Azure SQL 数据库或 Azure Synapse Analytics 时，需要为 Windows 防火墙和企业防火墙激活端口1433上的出站 TCP 通信。 在这种情况下，暂存复制可以利用自承载集成运行时，先在端口443上通过 HTTP 或 HTTPS 将数据复制到暂存存储，然后将数据从过渡加载到 SQL 数据库或 Azure Synapse Analytics 中。 在此流中，不需要启用端口 1433。
+- **由于企业 IT 策略，不希望在防火墙中打开除端口 80 和端口 443 以外的端口。** 例如，将数据从本地数据存储复制到 Azure SQL 数据库或 Azure Synapse Analytics 时，需要为 Windows 防火墙和公司防火墙激活端口 1433 上的出站 TCP 通信。 在这种情况下，暂存复制可以利用自承载集成运行时，先在端口 443 上通过 HTTP 或 HTTPS 将数据复制到暂存存储，然后将数据从暂存加载到 SQL 数据库或 Azure Synapse Analytics 中。 在此流中，不需要启用端口 1433。
 - **有时，通过速度慢的网络连接执行混合数据移动（即从本地数据存储复制到云数据存储）需要一段时间。** 为了提高性能，可以使用暂存复制来压缩本地数据，缩短将数据移动到云中的暂存数据存储的时间。 然后，可先在暂存存储中解压缩数据，再将它们加载到目标数据存储。
 
 ### <a name="how-staged-copy-works"></a>暂存复制的工作原理
 
-激活暂存功能时，首先将数据从源数据存储复制到过渡存储 (自带 Azure Blob 或 Azure Data Lake Storage Gen2) 。 接下来，将数据从过渡复制到接收器数据存储。 Azure 数据工厂复制活动会自动管理两阶段流，还会在数据移动完成后从临时存储中清除临时数据。
+激活暂存功能时，首先将数据从源数据存储复制到暂存存储（自带 Azure Blob 或 Azure Data Lake Storage Gen2）。 然后，将数据从暂存复制到接收器数据存储。 Azure 数据工厂复制活动会自动管理两阶段流，还会在数据移动完成后从暂存存储中清除临时数据。
 
 ![暂存复制](media/copy-activity-performance/staged-copy.png)
 
-使用临时存储激活数据移动时，可以指定是否要在将数据从源数据存储移至过渡存储之前压缩数据，然后在将数据从临时或暂存数据存储移到接收器数据存储之前解压缩数据。
+使用暂存存储激活数据移动时，可指定是否要先压缩数据，再将数据从源数据存储移动到暂存存储，然后先解压缩数据，再将数据从过渡数据存储或暂存数据移动到接收器数据存储。
 
 目前，无论是否使用暂存复制，都无法在通过不同自承载 IR 连接的两个数据存储之间复制数据。 对于这种情况，可以配置两个显式链接的复制活动，将数据从源复制到暂存存储，然后从暂存存储复制到接收器。
 
 ### <a name="configuration"></a>配置
 
-在复制活动中配置 **enableStaging** 设置，以指定是否在将数据加载到目标数据存储之前，将数据暂存到存储中。 将 **enableStaging** 设置为 `TRUE` 时，请指定下表中列出的其他属性。 
+在复制活动中配置“enableStaging”设置，以指定在将数据加载到目标数据存储之前，是否要将数据暂存到存储中。 将 **enableStaging** 设置为 `TRUE` 时，请指定下表中列出的其他属性。 
 
 | 属性 | 说明 | 默认值 | 必须 |
 | --- | --- | --- | --- |
 | enableStaging |指定是否要通过过渡暂存存储复制数据。 |False |否 |
-| linkedServiceName |指定 [Azure Blob 存储](connector-azure-blob-storage.md#linked-service-properties) 或 [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties) 链接服务的名称，这指用作过渡暂存存储的存储实例。 |空值 |将 **enableStaging** 设置为 TRUE 时，则为是 |
-| path |指定要包含暂存数据的路径。 如果不提供路径，该服务将创建容器以存储临时数据。 |空值 |否 |
+| linkedServiceName |指定 [Azure Blob 存储](connector-azure-blob-storage.md#linked-service-properties)或 [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties) 链接服务的名称，以指代用作过渡暂存存储的存储实例。 |空值 |将 **enableStaging** 设置为 TRUE 时，则为是 |
+| path |指定要包含此暂存数据的路径。 如果不提供路径，该服务将创建容器以存储临时数据。 |空值 |否 |
 | enableCompression |指定是否应先压缩数据，再将数据复制到目标。 此设置可减少传输的数据量。 |False |否 |
 
 >[!NOTE]

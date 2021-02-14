@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: pafarley
-ms.openlocfilehash: a8eecabe71cb439949f7e0638c7339eb31b08500
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: c7b6586f02d14d4e49ce9a5024b19ea15c8d2267
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99581255"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100364676"
 ---
 # <a name="whats-new-in-form-recognizer"></a>表单识别器的新增功能
 
@@ -148,7 +148,7 @@ GitHub 上提供了 **新的示例**。
   下图是如何识别和提取表的示例：
 
   > [!div class="mx-imgBorder"]
-  > ![使用示例标签工具的表可视化效果](./media/whats-new/formre-table-viz.png)
+  > ![使用示例标签工具的表可视化效果](./media/whats-new/table-viz.png)
 
     提取的表在下的 JSON 输出中可用 `"pageResults"` 。
 
@@ -209,7 +209,7 @@ GitHub 上提供了 **新的示例**。
 
 ## <a name="next-steps"></a>后续步骤
 
-完成 [快速入门](quickstarts/client-library.md) ，开始使用所选的开发语言编写窗体识别器来编写窗体处理应用。
+完成[快速入门](quickstarts/client-library.md)，开始使用表单识别器以你选择的开发语言编写表单处理应用。
 
 ## <a name="see-also"></a>请参阅
 

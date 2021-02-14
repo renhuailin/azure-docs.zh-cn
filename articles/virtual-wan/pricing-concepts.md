@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 12/08/2020
 ms.author: reyandap
 ms.custom: references_pricing
-ms.openlocfilehash: 8ced9bb33be341d35904967092414676a6ffe3ac
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 13451291544f704000ab61d41ed5014fa69298e4
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905530"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100517682"
 ---
 # <a name="about-virtual-wan-pricing"></a>关于虚拟 WAN 定价
 
@@ -23,8 +23,7 @@ Azure 虚拟 WAN 在统一框架中提供多个网络和安全服务。 它基�
 虚拟 WAN 中的每个服务都是定价。 因此，建议单个价格不适用于虚拟 WAN。 [Azure 定价计算器](https://azure.microsoft.com/pricing/calculator/)提供一种机制，用于根据虚拟 WAN 中预配的服务来派生成本。 本文介绍有关虚拟 WAN 定价的常见问题。
 
 >[!NOTE]
->有关最新定价信息，请参阅 [虚拟 WAN 定价](https://azure.microsoft.com/pricing/details/virtual-wan/)。
->
+>有关最新定价信息，请参阅 [虚拟 WAN 定价](https://azure.microsoft.com/pricing/details/virtual-wan/)。 集线器 (集线器到中心) 费用不会显示在 "虚拟 WAN 定价" 页中，因为它服从于 Inter-Region 于) 大陆的 (在 [Azure 数据传输费用](https://azure.microsoft.com/pricing/details/bandwidth/)的内部工作。
 
 ## <a name="common-pricing-questions"></a><a name="questions"></a>常见定价问题
 

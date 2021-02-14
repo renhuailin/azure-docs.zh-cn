@@ -1,22 +1,18 @@
 ---
 title: 从 ServiceNow 复制数据
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 ServiceNow 复制到支持的接收器数据存储。
-services: data-factory
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/01/2019
-ms.openlocfilehash: bc48f651a1adb099017e8f47d9fa6bcfa8078fa1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4e7ebc422a9fd8503c5a3b004e1d06cb5ebfb987
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81415354"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100378445"
 ---
 # <a name="copy-data-from-servicenow-using-azure-data-factory"></a>使用 Azure 数据工厂从 ServiceNow 复制数据
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -111,7 +107,7 @@ ServiceNow 链接服务支持以下属性：
 
 ### <a name="servicenow-as-source"></a>以 ServiceNow 作为源
 
-要从 ServiceNow 复制数据，请将复制活动中的源类型设置为“ServiceNowSource”  。 复制活动**source**部分支持以下属性：
+要从 ServiceNow 复制数据，请将复制活动中的源类型设置为“ServiceNowSource”  。 复制活动 **source** 部分支持以下属性：
 
 | 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
@@ -120,12 +116,11 @@ ServiceNow 链接服务支持以下属性：
 
 在查询中指定 ServiceNow 的架构和列时注意以下内容，并且参阅有关复制性能隐含的[性能提示](#performance-tips)  。
 
-- **架构：** 在 ServiceNow 查询中将架构指定为 `Actual` 或 `Display`，从而在调用 [ServiceNow restful API](https://developer.servicenow.com/app.do#!/rest_api_doc?v=jakarta&id=r_AggregateAPI-GET) 时可以将其视为参数 `sysparm_display_value`，其值为 true 或 false。 
+- **架构：** 在 ServiceNow 查询中将架构指定为 `Actual` 或 `Display`，从而在调用 [ServiceNow restful API](https://developer.servicenow.com/app.do#!/rest_api_doc?v=jakarta&id=r_AggregateAPI-GET) 时可以将其视为参数 `sysparm_display_value`，其值为 true 或 false。 
 - **列：** `Actual` 架构下实际值的列名是 `[column name]_value`，而 `Display` 架构下显示值的列名为 `[column name]_display_value`。 请注意，列名需要映射到查询中所使用的架构。
 
 **示例查询：** 
-`SELECT col_value FROM Actual.alm_asset`或  
-`SELECT col_display_value FROM Display.alm_asset`
+ `SELECT col_value FROM Actual.alm_asset`或`SELECT col_display_value FROM Display.alm_asset`
 
 **示例：**
 
