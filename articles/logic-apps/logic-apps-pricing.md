@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: conceptual
 ms.date: 01/29/2021
-ms.openlocfilehash: 0de0c5d53bd3195a24f75f4a2e65c19602e2a2b3
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 103855748c4b5d998dfc81eeb4044f5f53dae9e5
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99088915"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100372002"
 ---
 # <a name="pricing-and-billing-models-for-azure-logic-apps"></a>适用于 Azure 逻辑应用的定价和计费模型
 
@@ -72,8 +72,8 @@ ms.locfileid: "99088915"
 
 | ISE SKU | 说明 |
 |---------|-------------|
-| **高级** | 基本单位具有固定容量，并 [按每小时费率收费，适用于高级 SKU](https://azure.microsoft.com/pricing/details/logic-apps)。 如果需要更多的吞吐量，则可以在创建 ISE 或之后 [添加更多缩放单位](../logic-apps/ise-manage-integration-service-environment.md#add-capacity) 。 每个缩放单位按 [小时费率计费，该费率大致为基本单位费率的一半](https://azure.microsoft.com/pricing/details/logic-apps)。 <p><p>有关限制信息，请参阅 [Azure 逻辑应用中的 ISE 限制](logic-apps-limits-and-config.md#integration-service-environment-ise)。 |
-| **开发人员** | 基本单位具有固定容量，并 [按开发人员 SKU 的每小时费率计费](https://azure.microsoft.com/pricing/details/logic-apps)。 此 SKU 没有扩展功能、服务级别协议 (SLA) 或已发布的限制。 仅将此 SKU 用于勘探、试验、开发和测试，而不是生产或性能测试。 |
+| **高级** | 基本单位具有 [固定容量](logic-apps-limits-and-config.md#integration-service-environment-ise) ，并 [按每小时费率收费，适用于高级 SKU](https://azure.microsoft.com/pricing/details/logic-apps)。 如果需要更多的吞吐量，则可以在创建 ISE 或之后 [添加更多缩放单位](../logic-apps/ise-manage-integration-service-environment.md#add-capacity) 。 每个缩放单位按 [小时费率计费，该费率大致为基本单位费率的一半](https://azure.microsoft.com/pricing/details/logic-apps)。 <p><p>有关容量和限制信息，请参阅 [Azure 逻辑应用中的 ISE 限制](logic-apps-limits-and-config.md#integration-service-environment-ise)。 |
+| **开发人员** | 基本单位具有 [固定容量](logic-apps-limits-and-config.md#integration-service-environment-ise) ，并 [按开发人员 SKU 的每小时费率计费](https://azure.microsoft.com/pricing/details/logic-apps)。 但是，在回收期间，此 SKU 没有服务级别协议 (SLA) 、扩展功能或冗余，这意味着你可能会遇到延迟或停机时间。 后端更新可能会中断服务。 <p><p>**重要说明**：请确保将此 SKU 仅用于勘探、试验、开发和测试，而不能用于生产或性能测试。 <p><p>有关容量和限制信息，请参阅 [Azure 逻辑应用中的 ISE 限制](logic-apps-limits-and-config.md#integration-service-environment-ise)。 |
 |||
 
 ### <a name="included-at-no-extra-cost"></a>无需额外付费

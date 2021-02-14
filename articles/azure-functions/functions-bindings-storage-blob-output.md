@@ -1,17 +1,17 @@
 ---
 title: Azure Functions 的 Azure Blob 存储输出绑定
-description: 了解如何向 Azure 函数提供 Azure Blob 存储输出绑定数据。
+description: 了解如何向某个 Azure 函数提供 Azure Blob 存储输出绑定数据。
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 953a958d2a21dd9ffda07b208916a5ee01aa505f
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: eaa8a4c600864f636d49813d415621d46130fff7
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97881049"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100381643"
 ---
 # <a name="azure-blob-storage-output-binding-for-azure-functions"></a>Azure Functions 的 Azure Blob 存储输出绑定
 
@@ -241,12 +241,12 @@ module.exports = function(context) {
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-下面的示例演示如何创建传入 blob 的副本作为 [PowerShell 函数](functions-reference-powershell.md)的输出。
+下面的示例演示如何创建传入 Blob 的副本作为 [PowerShell 函数](functions-reference-powershell.md)的输出。
 
-在函数的配置文件中 (*function.js) 上* ， `trigger` metadata 属性用于指定属性中的输出 blob 名称 `path` 。
+在函数的配置文件 (function.json) 中，`trigger` 元数据属性用于指定 `path` 属性中的输出 Blob 名称。
 
 > [!NOTE]
-> 若要避免无限循环，请确保输入和输出路径不同。
+> 为了避免无限循环，请确保输入和输出路径不同。
 
 ```json
 {
@@ -396,11 +396,11 @@ Python 不支持特性。
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|type | 不适用 | 必须设置为 `blob`。 |
+|type  | 不适用 | 必须设置为 `blob`。 |
 |**direction** | 不适用 | 对于输出绑定，必须设置为 `out`。 [用法](#usage)部分中已阐述异常。 |
-|**name** | 不适用 | 表示函数代码中的 Blob 的变量的名称。  设置为 `$return` 可引用函数返回值。|
+|name  | 不适用 | 表示函数代码中的 Blob 的变量的名称。  设置为 `$return` 可引用函数返回值。|
 |**路径** |**BlobPath** | Blob 容器的路径。 |
-|连接 |**Connection**| 包含要用于此绑定的存储连接字符串的应用设置的名称。 如果应用设置名称以“AzureWebJobs”开始，则只能在此处指定该名称的余下部分。 例如，如果将 `connection` 设置为“MyStorage”，函数运行时将会查找名为“AzureWebJobsMyStorage”的应用设置。 如果将 `connection` 留空，函数运行时将使用名为 `AzureWebJobsStorage` 的应用设置中的默认存储连接字符串。<br><br>连接字符串必须属于某个常规用途存储帐户，而不能属于[仅限 Blob 的存储帐户](../storage/common/storage-account-overview.md#types-of-storage-accounts)。|
+|连接 |**Connection**| 包含要用于此绑定的存储连接字符串的应用设置的名称。 如果应用设置名称以“AzureWebJobs”开始，则只能在此处指定该名称的余下部分。 例如，如果将 `connection` 设置为“MyStorage”，函数运行时将会查找名为“AzureWebJobsMyStorage”的应用设置。 如果将 `connection` 留空，函数运行时将使用名为 `AzureWebJobsStorage` 的应用设置中的默认存储连接字符串。<br><br>连接字符串必须属于某个常规用途存储帐户，而不能属于[仅限 Blob 的存储帐户](../storage/common/storage-account-overview.md#types-of-storage-accounts)。<br><br>如果你使用的是 [版本 5. x 或更高版本](./functions-bindings-storage-blob.md#storage-extension-5x-and-higher)，而不是连接字符串，则可以提供对定义该连接的配置节的引用。 请参阅 [连接](./functions-reference.md#connections)。|
 |不适用 | **访问** | 表示是要读取还是写入。 |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
@@ -421,11 +421,11 @@ Python 不支持特性。
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-使用在 `context.bindings.<BINDING_NAME>` 文件中的 _function.js上_ 定义绑定名称的访问 blob 数据。
+使用 `context.bindings.<BINDING_NAME>` 访问 Blob 数据，其中绑定名称在 function.json 文件中定义。
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-通过与 _function.js文件上_ 的绑定的 name 参数指定的名称相匹配的参数访问 blob 数据。
+通过与 function.json 文件中绑定名称参数指定的名称匹配的字符串参数访问 Blob 数据。
 
 # <a name="python"></a>[Python](#tab/python)
 

@@ -3,12 +3,12 @@ title: Azure Site Recovery 中的 VMware/物理灾难恢复支持列表
 description: 汇总了使用 Azure Site Recovery 将 VMware VM 和物理服务器灾难恢复到 Azure 的支持。
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: 0b829955d931bd26b7d38c8cb282f55a6043562e
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: f684f57ed1acb5c48694196b4e19de809c98dc9f
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99550838"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100102251"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>将 VMware VM 和物理服务器灾难恢复到 Azure 时的支持矩阵
 
@@ -180,7 +180,7 @@ BTRFS | 从[更新汇总 34](https://support.microsoft.com/help/4490016)（移�
 在复制的 VM 上添加磁盘 | 不支持。<br/> 为 VM 禁用复制，添加磁盘，然后重新启用复制。
 
 > [!NOTE]
-> 不支持对磁盘标识进行任何更改。 例如，如果磁盘分区已从 GPT 更改为 MBR（或反过来），就会更改磁盘标识。 在这种情况下，复制将中断，并且需要全新的设置。 
+> 不支持对磁盘标识进行任何更改。 例如，如果磁盘分区已从 GPT 更改为 MBR（或反过来），就会更改磁盘标识。 在这种情况下，复制将中断，并且需要全新的设置。 对于 Linux 计算机，不支持设备名称更改，因为它会影响磁盘标识。
 
 ## <a name="network"></a>网络
 

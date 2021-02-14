@@ -6,17 +6,17 @@ author: tamram
 services: storage
 ms.author: tamram
 ms.reviewer: ozgun
-ms.date: 11/13/2020
+ms.date: 02/10/2021
 ms.topic: how-to
 ms.service: storage
 ms.subservice: common
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 01b78fa3250f371cfc4d713668531664ef8c139e
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 2f7092d8ce184d7021774814e96935e46d1ffb56
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97587598"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100363162"
 ---
 # <a name="choose-how-to-authorize-access-to-queue-data-with-azure-cli"></a>选择如何使用 Azure CLI 授予对队列数据的访问权限
 
@@ -32,7 +32,10 @@ Azure 存储提供适用于 Azure CLI 的扩展，使你能够指定如何根据
 - 将 `--auth-mode` 参数设置为 `login` 可以使用 Azure AD 安全主体登录（建议）。
 - 将 `--auth-mode` 参数设置为传统 `key` 值可以尝试检索用于授权的帐户访问密钥。 如果省略 `--auth-mode` 参数，则 Azure CLI 也会尝试检索访问密钥。
 
-要使用 `--auth-mode` 参数，请确保已安装 Azure CLI v 2.0.46 或更高版本。 运行 `az --version` 以查看已安装版本。
+若要使用 `--auth-mode` 参数，请确保已安装 Azure CLI v2.0.46 或更高版本。 运行 `az --version` 以查看已安装版本。
+
+> [!NOTE]
+> 当使用 Azure 资源管理器 **ReadOnly** 锁锁定存储帐户时，不允许该存储帐户执行 [列表键](/rest/api/storagerp/storageaccounts/listkeys) 操作。 **列出密钥** 是一项 POST 操作，并且为该帐户配置了 **ReadOnly** 锁后，将阻止所有 POST 操作。 出于此原因，当使用 **ReadOnly** 锁锁定帐户时，还没有帐户密钥的用户用户必须使用 Azure AD 凭据来访问队列数据。
 
 > [!IMPORTANT]
 > 如果省略 `--auth-mode` 参数或将其设置为 `key`，则 Azure CLI 会尝试使用帐户访问密钥进行授权。 在这种情况下，Microsoft 建议您在命令或环境变量中提供访问密钥 `AZURE_STORAGE_KEY` 。 有关环境变量的详细信息，请参阅标题为[为授权参数设置环境变量](#set-environment-variables-for-authorization-parameters)的部分。
@@ -41,13 +44,13 @@ Azure 存储提供适用于 Azure CLI 的扩展，使你能够指定如何根据
 
 ## <a name="authorize-with-azure-ad-credentials"></a>使用 Azure AD 凭据授权
 
-使用 Azure AD 凭据登录 Azure CLI 时，会返回 OAuth 2.0 访问令牌。 Azure CLI 将自动使用该令牌对 Blob 存储或队列存储的后续数据操作授权。 对于支持的操作，无需再通过命令传递帐户密钥或 SAS 令牌。
+使用 Azure AD 凭据登录 Azure CLI 时，会返回 OAuth 2.0 访问令牌。 Azure CLI 将自动使用该令牌向队列存储授权后续数据操作。 对于支持的操作，无需再通过命令传递帐户密钥或 SAS 令牌。
 
 可通过 Azure 基于角色的访问控制 (Azure RBAC) 向 Azure AD 安全主体分配对队列数据的权限。 有关 Azure 存储中 Azure 角色的详细信息，请参阅[通过 Azure RBAC 管理 Azure 存储数据访问权限](../common/storage-auth-aad-rbac-portal.md)。
 
 ### <a name="permissions-for-calling-data-operations"></a>用于调用数据操作的权限
 
-Azure 存储扩展支持针对队列数据的操作。 可调用的操作取决于向 Azure AD 安全主体授予的权限，此安全主体用于登录 Azure CLI。 通过 Azure RBAC 分配对队列的权限。 例如，如果为你分配了“存储队列数据读取者”角色，你可以运行从队列读取数据的脚本命令。 如果为你分配了“存储队列数据参与者”角色，你可以运行脚本命令来读取、写入或删除队列或其中所含数据。
+Azure 存储扩展支持针对队列数据的操作。 可调用的操作取决于向 Azure AD 安全主体授予的权限，此安全主体用于登录 Azure CLI。 对队列的权限通过 Azure RBAC 进行分配。 例如，如果为你分配了“存储队列数据读取者”角色，你可以运行从队列读取数据的脚本命令。 如果为你分配了“存储队列数据参与者”角色，你可以运行脚本命令来读取、写入或删除队列或其中所含数据。
 
 若要详细了解针对队列的每个 Azure 存储操作所需的权限，请参阅[使用 OAuth 令牌调用存储操作](/rest/api/storageservices/authorize-with-azure-active-directory#call-storage-operations-with-oauth-tokens)。  
 
@@ -55,10 +58,10 @@ Azure 存储扩展支持针对队列数据的操作。 可调用的操作取决�
 
 以下示例演示如何在 Azure CLI 中使用 Azure AD 凭据创建队列。 若要创建队列，需要登录到 Azure CLI，并需要资源组和存储帐户。
 
-1. 创建队列之前，请为自己分配[存储 Blob 数据参与者](../../role-based-access-control/built-in-roles.md#storage-queue-data-contributor)角色。 即使你是帐户所有者，也需要显式权限才能针对存储帐户执行数据操作。 有关分配 Azure 角色的详细信息，请参阅[使用 Azure 门户分配用于访问 blob 和队列数据的 Azure 角色](../common/storage-auth-aad-rbac-portal.md)。
+1. 创建队列之前，请为自己分配[存储队列数据参与者](../../role-based-access-control/built-in-roles.md#storage-queue-data-contributor)角色。 即使你是帐户所有者，也需要显式权限才能针对存储帐户执行数据操作。 有关分配 Azure 角色的详细信息，请参阅[使用 Azure 门户分配用于访问 blob 和队列数据的 Azure 角色](../common/storage-auth-aad-rbac-portal.md)。
 
     > [!IMPORTANT]
-    > 传播 Azure 角色分配可能需要几分钟的时间。
+    > 传播 Azure 角色分配可能需要花费几分钟时间。
 
 1. 调用 [`az storage queue create`](/cli/azure/storage/queue#az-storage-queue-create) 命令并 `--auth-mode` 将参数设置为 `login` ，以使用 Azure AD 凭据创建队列。 请务必将尖括号中的占位符值替换为你自己的值：
 
@@ -100,7 +103,7 @@ az storage queue create \
 
 | 环境变量 | 说明 |
 |--|--|
-| **AZURE_STORAGE_ACCOUNT** | 存储帐户名称。 此变量应与存储帐户密钥或 SAS 令牌结合使用。 如果该密钥和令牌都不存在，则 Azure CLI 会尝试使用经过身份验证的 Azure AD 帐户检索存储帐户访问密钥。 如果一次运行大量命令，可能达到 Azure 存储资源提供程序限制。 有关资源提供程序限制的详细信息，请参阅 [Azure 存储资源提供程序的可伸缩性和性能目标](../common/scalability-targets-resource-provider.md)。 |
+| **AZURE_STORAGE_ACCOUNT** | 存储帐户名称。 此变量应与存储帐户密钥或 SAS 令牌结合使用。 如果该密钥和令牌都不存在，则 Azure CLI 会尝试使用经过身份验证的 Azure AD 帐户检索存储帐户访问密钥。 如果一次性运行大量的命令，可能会达到 Azure 存储资源提供程序的限制。 有关资源提供程序限制的详细信息，请参阅 [Azure 存储资源提供程序的可伸缩性和性能目标](../common/scalability-targets-resource-provider.md)。 |
 | **AZURE_STORAGE_KEY** | 存储帐户密钥。 此变量必须与存储帐户名称结合使用。 |
 | **AZURE_STORAGE_CONNECTION_STRING** | 一个包含存储帐户密钥或 SAS 令牌的连接字符串。 此变量必须与存储帐户名称结合使用。 |
 | **AZURE_STORAGE_SAS_TOKEN** | 共享访问签名 (SAS) 令牌。 此变量必须与存储帐户名称结合使用。 |

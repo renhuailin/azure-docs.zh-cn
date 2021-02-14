@@ -11,12 +11,12 @@ ms.date: 09/17/2020
 ms.author: gopalv
 ms.reviewer: larryfr
 ms.custom: deploy
-ms.openlocfilehash: 73211790557665ddb4cc4d28322a1ff14bc4c76a
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: de0a62ead6e1f40755daa068bf779b5391cf66a0
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97630711"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100371968"
 ---
 # <a name="advanced-entry-script-authoring"></a>高级入口脚本创作
 
@@ -40,10 +40,10 @@ ms.locfileid: "97630711"
 * `pyspark`
 * 标准 Python 对象
 
-若要使用架构生成，请在依赖项文件中包括开源 `inference-schema` 包 1.1.0 或更高版本。 若要详细了解此包，请参阅 [https://github.com/Azure/InferenceSchema](https://github.com/Azure/InferenceSchema)。 为了为自动 web 服务使用生成符合 swagger，计分脚本运行 ( # A1 函数必须具有 API 形状：
-* 名为 "StandardPythonParameterType"、名为 " **输入** " 和 "嵌套" 的第一个参数。
-* 名为 **GlobalParameters** 的可选的第二个名为 "StandardPythonParameterType" 的参数。
-* 返回 **一个名为** "StandardPythonParameterType"、名为 "" 的字典和嵌套的。
+若要使用架构生成，请在依赖项文件中包括开源 `inference-schema` 包 1.1.0 或更高版本。 若要详细了解此包，请参阅 [https://github.com/Azure/InferenceSchema](https://github.com/Azure/InferenceSchema)。 若要生成符合条件的 swagger 以自动使用 Web 服务，评分脚本 run() 函数的 API 形状必须为：
+* 第一个参数名为“Inputs”，类型为“StandardPythonParameterType”并处于嵌套状态。
+* 第二个参数为可选，名为“GlobalParameters”，类型为“StandardPythonParameterType”。
+* 返回名称为“Results”并处于嵌套状态的类型为“StandardPythonParameterType”的字典。
 
 定义 `input_sample` 和 `output_sample` 变量中的输入和输出示例格式，它们表示 Web 服务的请求和响应格式。 在 `run()` 函数的输入和输出函数修饰器中使用这些示例。 以下 scikit-learn 示例使用架构生成功能。
 
@@ -301,7 +301,7 @@ second_model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), second_model_na
 
 * [PyTorch](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/pytorch)
 * [TensorFlow](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/tensorflow)
-* [Keras](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks/keras/train-hyperparameter-tune-deploy-with-keras/train-hyperparameter-tune-deploy-with-keras.yml)
+* [Keras](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks/keras/train-hyperparameter-tune-deploy-with-keras/train-hyperparameter-tune-deploy-with-keras.ipynb)
 * [AutoML](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features)
 * [ONNX](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/onnx/)
 

@@ -1,22 +1,17 @@
 ---
 title: 将本地 SQL Server Integration Services (SSIS) 工作负荷迁移到 Azure 数据工厂 (ADF) 中的 SSIS
 description: 将本地 SSIS 工作负荷迁移到 ADF 中的 SSIS。
-services: data-factory
-documentationcenter: ''
 author: chugugrace
 ms.author: chugu
-ms.reviewer: ''
-manager: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 9/3/2019
-ms.openlocfilehash: ef4b01e38a60d6770ba476988fab934ada0bc631
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 78c488302a874319f79a143e4657d161fe849855
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92635688"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100373600"
 ---
 # <a name="migrate-on-premises-ssis-workloads-to-ssis-in-adf"></a>将本地 SSIS 工作负荷迁移到 ADF 中的 SSIS
 
@@ -28,7 +23,7 @@ ms.locfileid: "92635688"
 
 Azure 数据工厂 (ADF) 中 Azure-SSIS Integration Runtime (IR) 支持运行 SSIS 包。 预配 Azure-SSIS IR 后，可以使用熟悉的工具（例如 SQL Server Data Tools (SSDT)/SQL Server Management Studio (SSMS)，以及 dtinstall/dtutil/dtexec 等命令行实用工具）在 Azure 中部署和运行包。 有关详细信息，请参阅 [Azure SSIS 直接迁移概述](/sql/integration-services/lift-shift/ssis-azure-lift-shift-ssis-packages-overview)。
 
-本文重点介绍将 ETL 工作负荷从本地 SSIS 迁移到 ADF 中的 SSIS 的过程。 迁移过程包括两个阶段： **评估** 和 **迁移** 。
+本文重点介绍将 ETL 工作负荷从本地 SSIS 迁移到 ADF 中的 SSIS 的过程。 迁移过程包括两个阶段：**评估** 和 **迁移**。
 
 ## <a name="assessment"></a>评估
 
@@ -49,7 +44,7 @@ Azure 数据工厂 (ADF) 中 Azure-SSIS Integration Runtime (IR) 支持运行 SS
   - MSDB：SQL Server 中用于存储 SSIS 包的系统数据库。
   - 托管文件系统：SQL Server 安装路径中用于存储 SSIS 包的特定文件夹。
 
-DMA 当前支持对自 **DMA 版本 5.0** 以来存储在 **文件系统** 、 **包存储** 和 **SSIS 目录** 中的包进行批量评估。
+DMA 当前支持对自 **DMA 版本 5.0** 以来存储在 **文件系统**、**包存储** 和 **SSIS 目录** 中的包进行批量评估。
 
 获取 [DMA](/sql/dma/dma-overview)，并[使用它来执行包评估](/sql/dma/dma-assess-ssis)。
 

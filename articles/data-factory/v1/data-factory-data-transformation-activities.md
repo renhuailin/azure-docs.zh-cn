@@ -1,22 +1,18 @@
 ---
 title: '数据转换：处理 & 转换数据 '
 description: 了解如何在 Azure 数据工厂中使用 Hadoop、Azure 机器学习 Studio (经典) 或 Azure Data Lake Analytics 来转换数据或处理数据。
-services: data-factory
-documentationcenter: ''
 author: dcstwh
 ms.author: weetok
-manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 587e8eaf36a8e9d0be86237e2db72f952853a0ff
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: c9818bfd2a9519cd14d34ecc810179d66aa57e52
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96495678"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100363978"
 ---
 # <a name="transform-data-in-azure-data-factory-version-1"></a>转换 Azure 数据工厂版本1中的数据
 > [!div class="op_single_selector"]
@@ -65,7 +61,7 @@ ms.locfileid: "96495678"
 有关这些 Studio (经典) 活动的详细信息，请参阅 [使用 Azure 机器学习 studio (经典) 活动](data-factory-azure-ml-batch-execution-activity.md) 。 
 
 ## <a name="stored-procedure-activity"></a>存储过程活动
-可以使用数据工厂管道中的 SQL Server 存储过程活动调用以下数据存储中的一个存储过程： Azure SQL 数据库、Azure Synapse Analytics、企业中 SQL Server 数据库或 Azure VM。 有关详细信息，请参阅 [存储过程活动](data-factory-stored-proc-activity.md) 一文。  
+可使用数据工厂管道中的 SQL Server 存储过程活动调用以下数据存储之一中的存储过程：你的企业或 Azure VM 中的 Azure SQL 数据库、Azure Synapse Analytics、SQL Server 数据库。 有关详细信息，请参阅 [存储过程活动](data-factory-stored-proc-activity.md) 一文。  
 
 ## <a name="data-lake-analytics-u-sql-activity"></a>Data Lake Analytics U-SQL 活动
 Data Lake Analytics U-SQL 活动在 Azure Data Lake Analytics 群集上运行 U-SQL 脚本。 有关详细信息，请参阅 [数据分析 U-SQL 活动](data-factory-usql-activity.md) 。 

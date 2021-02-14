@@ -4,12 +4,12 @@ description: 了解如何使用群集自动缩放程序自动缩放群集以满�
 services: container-service
 ms.topic: article
 ms.date: 07/18/2019
-ms.openlocfilehash: 5f0754638be1aa29672b6a59218a6c9d695261a5
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: c0564dc3b394b4a65e70a487b6f6989cb306bdda
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98223136"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100373243"
 ---
 # <a name="automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>自动缩放群集以满足 Azure Kubernetes 服务 (AKS) 中的应用程序需求
 
@@ -130,15 +130,15 @@ az aks update \
 | scale-down-unneeded-time         | 在节点符合纵向缩减的条件之前应有多长时间不需要它                  | 10 分钟    |
 | scale-down-unready-time          | 在未准备就绪的节点符合纵向缩减的条件之前应有多长时间不需要它         | 20 分钟    |
 | scale-down-utilization-threshold | 节点利用率级别，定义为所请求资源的总和除以容量，低于计算结果的节点可被视为符合纵向缩减的条件 | 0.5 |
-| max-graceful-termination-sec     | 群集自动缩放程序尝试缩小节点时等待 pod 终止的最大秒数 | 600 秒   |
+| max-graceful-termination-sec     | 群集自动缩放程序在尝试纵向缩减节点时等待 Pod 终止的最大秒数 | 600 秒   |
 | balance-similar-node-groups      | 检测类似节点池并在各池之间均衡节点数                 | false         |
-| 扩展器                         | 要在纵向扩展中使用的节点池[扩展器](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-are-expanders)的类型。 可能的值： `most-pods` 、 `random` 、 `least-waste` 、 `priority` | random | 
+| 扩展器                         | 要在纵向扩展中使用的节点池[扩展器](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-are-expanders)的类型。 可能的值：`most-pods`、`random`、`least-waste`、`priority` | random | 
 | skip-nodes-with-local-storage    | 如果为 true，则群集自动缩放程序将永远不会删除具有包含本地存储的 Pod 的节点，例如 EmptyDir 或 HostPath | true |
 | skip-nodes-with-system-pods      | 如果为 true，则群集自动缩放程序将永远不会从 kube-system 中删除具有 Pod 的节点（DaemonSet 或 mirror Pod 除外） | true | 
 | max-empty-bulk-delete            | 可同时删除的空节点的最大数目                       | 10 个节点      |
-| new-pod-scale-up-delay           | 对于不希望 CA 在 kubernetes 计划程序可以安排所有 pod 之前进行操作的突发/批处理的情况，可以告诉 CA 在特定期限之前忽略计划外的 pod。                                                                                                                | 0 秒    |
+| new-pod-scale-up-delay           | 对于突发/批量缩放场景，如果你希望 CA 在 kubernetes 计划程序计划所有 Pod 之后再进行操作，可以指示 CA 忽略未达到一定存在时间的计划外 Pod。                                                                                                                | 0 秒    |
 | max-total-unready-percentage     | 群集中未就绪节点的最大百分比。 超过此百分比后，CA 将暂停操作 | 45% |
-| 最大节点预配时间          | 自动缩放程序等待节点预配的最长时间                           | 15 分钟    |   
+| max-node-provision-time          | 自动缩放程序等待节点预配的最长时间                           | 15 分钟    |   
 | ok-total-unready-count           | 允许的未就绪节点数，与 max-total-unready-percentage 无关            | 3 个节点       |
 
 > [!IMPORTANT]
@@ -273,6 +273,9 @@ az aks nodepool update \
 ```
 
 若要对现有的群集重新启用群集自动缩放程序，可以使用 [az aks nodepool update][az-aks-nodepool-update] 命令并指定 `--enable-cluster-autoscaler`、 `--min-count` 和 `--max-count` 参数。
+
+> [!NOTE]
+> 如果你计划对跨多个区域的 nodepools 使用群集自动缩放程序，并利用与区域拓扑拓扑计划相关的计划功能，则建议每个区域都有一个 nodepool，并 `--balance-similar-node-groups` 通过自动缩放程序配置文件启用。 这将确保自动缩放程序升级成功，并尝试将 nodepools 的大小保持平衡。
 
 ## <a name="next-steps"></a>后续步骤
 

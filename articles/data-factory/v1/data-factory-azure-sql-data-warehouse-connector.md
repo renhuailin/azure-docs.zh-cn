@@ -1,23 +1,18 @@
 ---
 title: 向/从 Azure Synapse Analytics 复制数据
 description: 了解如何使用 Azure 数据工厂将数据复制到 Azure Synapse 分析，以及如何从 Azure 数据工厂复制数据
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: d90fa9bd-4b79-458a-8d40-e896835cfd4a
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 0d071599b72f6a71bdff815f514311fb87f53d5b
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: aa364ec434db980bf226008537ca928628fcac1b
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452354"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100392079"
 ---
 # <a name="copy-data-to-and-from-azure-synapse-analytics-using-azure-data-factory"></a>使用 Azure 数据工厂将数据复制到 Azure Synapse 分析
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -68,7 +63,7 @@ Azure Synapse Analytics 连接器支持基本身份验证。
 ## <a name="linked-service-properties"></a>链接服务属性
 下表提供了特定于 Azure Synapse Analytics 链接服务的 JSON 元素的说明。
 
-| 属性 | 说明 | 必须 |
+| properties | 说明 | 必须 |
 | --- | --- | --- |
 | type |Type 属性必须设置为： **AzureSqlDW** |是 |
 | connectionString |为 connectionString 属性指定连接到 Azure Synapse Analytics 实例所需的信息。 仅支持基本身份验证。 |是 |
@@ -81,7 +76,7 @@ Azure Synapse Analytics 连接器支持基本身份验证。
 
 每种数据集的 typeProperties 节有所不同，该部分提供有关数据在数据存储区中的位置信息。 **AzureSqlDWTable** 类型数据集的 **typeProperties** 节具有以下属性：
 
-| 属性 | 说明 | 必须 |
+| properties | 说明 | 必须 |
 | --- | --- | --- |
 | tableName |链接服务引用的 Azure Synapse 分析数据库中的表或视图的名称。 |是 |
 
@@ -96,7 +91,7 @@ Azure Synapse Analytics 连接器支持基本身份验证。
 ### <a name="sqldwsource"></a>SqlDWSource
 源为 **SqlDWSource** 类型时，可在 **typeProperties** 节中使用以下属性：
 
-| 属性 | 说明 | 允许的值 | 必须 |
+| properties | 说明 | 允许的值 | 必须 |
 | --- | --- | --- | --- |
 | sqlReaderQuery |使用自定义查询读取数据。 |SQL 查询字符串。 例如：select * from MyTable。 |否 |
 | sqlReaderStoredProcedureName |从源表读取数据的存储过程的名称。 |存储过程的名称。 最后一个 SQL 语句必须是存储过程中的 SELECT 语句。 |否 |
@@ -142,7 +137,7 @@ GO
 ### <a name="sqldwsink"></a>SqlDWSink
 **SqlDWSink** 支持以下属性：
 
-| 属性 | 说明 | 允许的值 | 必须 |
+| properties | 说明 | 允许的值 | 必须 |
 | --- | --- | --- | --- |
 | sqlWriterCleanupScript |指定复制活动要执行的查询，以便清除特定切片的数据。 有关详细信息，请参阅[可重复性部分](#repeatability-during-copy)。 |查询语句。 |否 |
 | allowPolyBase |指示是否使用 PolyBase（如果适用）而不是 BULKINSERT 机制。 <br/><br/> **使用 PolyBase 是将数据加载到 Azure Synapse Analytics 的建议方法。** 有关约束和详细信息，请参阅[使用 PolyBase 将数据加载到 Azure Synapse Analytics](#use-polybase-to-load-data-into-azure-synapse-analytics) 部分。 |True <br/>False（默认值） |否 |
@@ -305,7 +300,7 @@ NULL 值是特殊形式的默认值。 如果列可为 null，则该列的输入
 | BigInt | BigInt |
 | SmallInt | SmallInt |
 | TinyInt | TinyInt |
-| 位 | 位 |
+| bit | bit |
 | 小数 | Decimal |
 | Numeric | 小数 |
 | Float | Float |
@@ -314,7 +309,7 @@ NULL 值是特殊形式的默认值。 如果列可为 null，则该列的输入
 | SmallMoney | SmallMoney |
 | 二进制 | 二进制 |
 | Varbinary | Varbinary（最多 8000） |
-| 日期 | Date |
+| Date | Date |
 | DateTime | DateTime |
 | DateTime2 | DateTime2 |
 | 时间 | 时间 |
@@ -322,7 +317,7 @@ NULL 值是特殊形式的默认值。 如果列可为 null，则该列的输入
 | SmallDateTime | SmallDateTime |
 | 文本 | Varchar（最多 8000） |
 | NText | NVarChar（最多 4000） |
-| 映像 | VarBinary（最多 8000） |
+| 图像 | VarBinary（最多 8000） |
 | UniqueIdentifier | UniqueIdentifier |
 | Char | Char |
 | NChar | NChar |
@@ -346,7 +341,7 @@ NULL 值是特殊形式的默认值。 如果列可为 null，则该列的输入
 | --- | --- |
 | bigint |Int64 |
 | binary |Byte[] |
-| bit |布尔 |
+| bit |Boolean |
 | char |String, Char[] |
 | date |DateTime |
 | datetime |DateTime |

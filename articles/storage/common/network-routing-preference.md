@@ -11,18 +11,21 @@ ms.author: santoshc
 ms.reviewer: tamram
 ms.subservice: common
 ms.custom: references_regions
-ms.openlocfilehash: 9afe58434d60280f635deab75b763077bc76b93c
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: 601c8dfb4b4e2f16da5c560f67e2d251a5d3072a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98797635"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100362737"
 ---
 # <a name="configure-network-routing-preference-for-azure-storage-preview"></a>为 Azure 存储配置网络路由首选项（预览）
 
 可以为 Azure 存储帐户配置网络[路由首选项](../../virtual-network/routing-preference-overview.md)（预览），以指定网络流量如何通过 Internet 从客户端路由到你的帐户。 默认情况下，来自 Internet 的流量通过 [Microsoft 全球网络](../../networking/microsoft-global-network.md)路由到存储帐户的公共终结点。 Azure 存储提供额外的选项，用于配置将流量路由到存储帐户的方式。
 
 配置路由首选项使你可以灵活地优化流量，既可以优化网络性能，又可以降低成本。 配置路由首选项时，请指定默认情况下流量如何定向到存储帐户的公共终结点。 还可以为存储帐户发布特定于路由的终结点。
+
+> [!NOTE]
+> 在配置为使用高级性能层或区域冗余存储 (ZRS) 的存储帐户中，不支持此功能。
 
 ## <a name="microsoft-global-network-versus-internet-routing"></a>Microsoft 全球网络与 Internet 路由
 

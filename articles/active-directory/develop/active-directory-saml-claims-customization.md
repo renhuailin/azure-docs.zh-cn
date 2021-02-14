@@ -13,12 +13,12 @@ ms.date: 12/09/2020
 ms.author: kenwith
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 0ded249a55e5a59bdcad7407694cbd5ed4cf2352
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 05447f41ca891adfe14533a74dfedf153e3c5773
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756063"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100102693"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>如何：为企业应用程序自定义 SAML 令牌中颁发的声明
 
@@ -81,10 +81,8 @@ ms.locfileid: "98756063"
 
 还可以将任何常量（静态）值分配给在 Azure AD 中定义的任何声明。 请按照以下步骤分配常量值：
 
-1. 在 <a href="https://portal.azure.com/" target="_blank">Azure 门户 <span class="docon docon-navigate-external x-hidden-focus"></span></a>的 "**用户属性 & 声明**" 部分中，单击 "**编辑**" 图标以编辑声明。
-
+1. 在 <a href="https://portal.azure.com/" target="_blank">Azure 门户</a>中，在“用户属性和声明”部分，单击“编辑”图标以编辑声明。 
 1. 单击要修改的必选声明。
-
 1. 在“源属性”中按组织输入不带引号的常量值，并单击“保存”。 
 
     ![Azure 门户中 & 声明部分的组织属性](./media/active-directory-saml-claims-customization/organization-attribute.png)

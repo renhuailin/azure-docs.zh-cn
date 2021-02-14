@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: end-user-help
-ms.date: 03/21/2019
+ms.date: 01/19/2021
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: 5ae946f82590f2270719570e4b589d49542ffec8
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 4377ed76de971f78336ea9024b59dafc5d513487
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94833973"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100094961"
 ---
 # <a name="troubleshoot-problems-with-the-my-apps-portal"></a>排查“我的应用”门户的相关问题
 
@@ -31,9 +31,9 @@ ms.locfileid: "94833973"
 
     - Microsoft Edge： 在 Windows 10 周年纪念版或更高版本上运行。
 
-    - Google Chrome： 在 Windows 7 或更高版本，以及 Mac OS X 或更高版本上运行。
+    - Google Chrome： 在 Windows 7 或更高版本以及 macOS X 或更高版本上运行。
 
-    - Mozilla Firefox 26.0 或更高版本： 在 Windows XP SP2 或更高版本，以及 Mac OS X 10.6 或更高版本上运行。
+    - Mozilla Firefox 26.0 或更高版本： 在 Windows XP SP2 或更高版本以及 macOS X 10.6 或更高版本上运行。
 
     - Internet Explorer 11： 在 Windows 7 或更高版本（支持受限）上运行。
 
@@ -46,6 +46,11 @@ ms.locfileid: "94833973"
 ## <a name="i-cant-sign-in-to-the-my-apps-portal"></a>我无法登录到“我的应用”门户
 
 如果在登录“我的应用”门户时遇到问题，可以尝试以下操作：
+
+- 如果在使用个人 Microsoft 帐户登录时出现错误，你仍可以使用组织的域名 (例如，你可以通过以下 Url 之一中的管理员使用你的组织的域名例如 contoso.com) 或你的组织的 **租户 ID** ：
+
+   - https://myapplications.microsoft.com?tenantId=*your_domain_name*
+   - https://myapplications.microsoft.com?tenant=*your_tenant_ID*
 
 - 确保使用正确的 URL。 它应该为 https://myapps.microsoft.com 或组织的自定义页面，如 https://myapps.microsoft.com/contoso.com 。
 

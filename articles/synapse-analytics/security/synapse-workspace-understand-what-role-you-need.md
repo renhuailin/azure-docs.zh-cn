@@ -1,19 +1,19 @@
 ---
 title: 了解在 Synapse 中执行常见任务所需的角色
 description: 本文介绍了哪些内置 Synapse RBAC 角色 (需要) 完成特定任务
-author: billgib
+author: RonyMSFT
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: security
 ms.date: 12/1/2020
-ms.author: billgib
+ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9735293c182e7fe67a498529425459c13a199101
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: ba00e6f4fe97b0614483fd04ddee9fc768558db5
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109787"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100102098"
 ---
 # <a name="understand-the-roles-required-to-perform-common-tasks-in-synapse"></a>了解在 Synapse 中执行常见任务所需的角色
 

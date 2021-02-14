@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/23/2020
-ms.openlocfilehash: c8d52609043f173e896668eadeb8c59493739859
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: c58b267874f013a4660428e23abd41810a0fbf34
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95521132"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100093159"
 ---
 # <a name="azure-red-hat-openshift-support-policy"></a>Azure Red Hat OpenShift 支持策略
 
@@ -26,6 +26,7 @@ Azure Red Hat OpenShift 4 群集的某些配置可能会影响群集的可支持
 * 群集必须至少有两个工作节点。 不要将群集辅助角色缩放为零，或尝试正常的群集关闭。
 * 请勿删除或修改群集 Prometheus 和 Alertmanager 服务。
 * 请勿删除“服务 Alertmanager”规则。
+* 请勿删除或修改网络安全组。
 * 请勿删除或修改 Azure Red Hat OpenShift 服务日志记录 (mdsd pod)。
 * 请勿删除或修改“arosvc.azurecr.io”群集拉取机密。
 * 所有群集虚拟机须至少具有对 Azure 资源管理器 (ARM) 和服务日志记录 (Geneva) 终结点的直接出站 internet 访问权限。  不支持任何形式的 HTTPS 代理。

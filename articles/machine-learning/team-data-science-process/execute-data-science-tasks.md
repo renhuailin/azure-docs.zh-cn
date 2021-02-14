@@ -10,16 +10,16 @@ ms.topic: article
 ms.date: 11/17/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: e47dad8498c48a5da5307517efe493fa5c1aa590
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: e180ecbf5c68dbd9c179244083a641ac6ed42de0
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94748057"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100371951"
 ---
 # <a name="execute-data-science-tasks-exploration-modeling-and-deployment"></a>执行数据科学任务：探索、建模和部署
 
-典型的数据科学任务包括数据探索、建模和部署。 本文概述了完成几个常见数据科学任务的任务，例如交互式数据探索、数据分析、报告和模型创建。 若要将模型部署到生产环境，可使用以下方法：
+典型的数据科学任务包括数据探索、建模和部署。 本文概述了如何完成一些常见的数据科学任务，例如交互式数据探索、数据分析、报告和建模。 若要将模型部署到生产环境，可使用以下方法：
 
 - [Azure 机器学习](../index.yml)
 - [包含机器学习服务的 SQL-Server](/sql/advanced-analytics/r/r-services)
@@ -42,7 +42,7 @@ Azure 机器学习等产品还提供了[高级数据准备](../how-to-create-reg
 生成多个模型后，往往需要配置一个系统来注册和管理这些模型。 通常，需要创建脚本或 API 的组合，以及后端数据库或版本控制系统。 可考虑用于这些管理任务的几个选项包括：
 
 1. [Azure 机器学习 - 模型管理服务](../index.yml)
-2. [MIT 提供的 ModelDB](http://modeldb.csail.mit.edu:3000/projects) 
+2. [MIT 提供的 ModelDB](https://people.csail.mit.edu/mvartak/papers/modeldb-hilda.pdf) 
 3. [用作模型管理系统的 SQL-Server](https://blogs.technet.microsoft.com/dataplatforminsider/2016/10/17/sql-server-as-a-machine-learning-model-management-system/)
 4. [Microsoft Machine Learning Server](/sql/advanced-analytics/r/r-server-standalone)
 

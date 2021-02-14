@@ -17,12 +17,12 @@ ms.topic: how-to
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 57362aa84886d7b7d764617ce5a43ca2393bed52
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 0e644b7937f6ccb23b4833405b8f4ed3119879a5
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98018235"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100362278"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Azure AD Connect Health 代理安装
 
@@ -34,7 +34,7 @@ ms.locfileid: "98018235"
 
 | 要求 | 说明 |
 | --- | --- |
-| 已安装 Azure AD Premium。 |Azure AD Connect Health 是 Azure AD Premium 的一项功能。 有关详细信息，请参阅 [注册 Azure AD Premium](../fundamentals/active-directory-get-started-premium.md)。 <br /><br />若要开始30天免费试用，请参阅 [开始试用](https://azure.microsoft.com/trial/get-started-active-directory/)。 |
+|  (P1 或 P2) 订阅有 Azure AD Premium。  |Azure AD Connect Health 是 Azure AD Premium (P1 或 P2) 的一项功能。 有关详细信息，请参阅 [注册 Azure AD Premium](../fundamentals/active-directory-get-started-premium.md)。 <br /><br />若要开始30天免费试用，请参阅 [开始试用](https://azure.microsoft.com/trial/get-started-active-directory/)。 |
 | 你是 Azure AD 中的全局管理员。 |默认情况下，只有全局管理员才能安装和配置运行状况代理，访问门户，并在 Azure AD Connect Health 中执行任何操作。 有关详细信息，请参阅 [Administering your Azure AD directory](../fundamentals/active-directory-whatis.md)（管理 Azure AD 目录）。 <br /><br /> 通过使用 azure RBAC)  (基于角色的访问控制，你可以允许组织中的其他用户访问 Azure AD Connect Health。 有关详细信息，请参阅 [适用于 Azure AD Connect Health 的 AZURE RBAC](how-to-connect-health-operations.md#manage-access-with-azure-rbac)。 <br /><br />**重要提示**：使用工作或学校帐户安装代理。 不能使用 Microsoft 帐户。 有关详细信息，请参阅以 [组织身份注册 Azure](../fundamentals/sign-up-organization.md)。 |
 | 每个目标服务器上都安装了 Azure AD Connect Health 代理。 | 必须在目标服务器上安装和配置运行状况代理，以便它们可以接收数据并提供监视和分析功能。 <br /><br />例如，若要从你的 Active Directory 联合身份验证服务 (AD FS) 基础结构获取数据，必须在 AD FS 服务器和 Web 应用程序代理服务器上安装代理。 同样，若要从本地 Azure AD 域服务 (Azure AD DS) 基础结构获取数据，必须在域控制器上安装代理。  |
 | Azure 服务终结点具有出站连接。 | 在安装期间和运行时，代理需要连接到 Azure AD Connect Health 服务终结点。 如果防火墙阻止出站连接，请将 [出站连接终结点](how-to-connect-health-agent-install.md#outbound-connectivity-to-the-azure-service-endpoints) 添加到允许列表中。 |
@@ -130,7 +130,7 @@ ms.locfileid: "98018235"
 
 1. 在 "开始" 屏幕上，打开 **服务器管理器**，然后打开 " **本地安全策略**"。 或在任务栏上，打开 **服务器管理器**，然后选择 " **工具/本地安全策略**"。
 2. 请参阅 *安全 \ 本地策略 \ 安全策略分配* 文件夹。 然后双击 " **生成安全审核**"。
-3. 在 **“本地安全设置”** 选项卡上，验证是否列出了 AD FS 服务帐户。 如果未列出，请选择 " **添加用户或组**"，并将其添加到列表。 然后选择“确定”  。
+3. 在 **“本地安全设置”** 选项卡上，验证是否列出了 AD FS 服务帐户。 如果未列出，请选择 " **添加用户或组**"，并将其添加到列表。 然后选择“确定”。
 4. 若要启用审核，请使用提升的权限打开命令提示符窗口。 然后，运行以下命令： 
     
     `auditpol.exe /set /subcategory:{0CCE9222-69AE-11D9-BED3-505054503030} /failure:enable /success:enable`
@@ -149,7 +149,7 @@ ms.locfileid: "98018235"
 
 1. 在 "开始" 屏幕上，打开 **服务器管理器**，然后打开 " **本地安全策略**"。 或在任务栏上，打开 **服务器管理器**，然后选择 " **工具/本地安全策略**"。
 2. 中转到 " *安全 \ 本地策略 \ 安全策略分配* " 文件夹，然后双击 " **生成安全审核**"。
-3. 在 **“本地安全设置”** 选项卡上，验证是否列出了 AD FS 服务帐户。 如果未列出，请选择 " **添加用户或组**"，并将 AD FS 服务帐户添加到列表。 然后选择“确定”  。
+3. 在 **“本地安全设置”** 选项卡上，验证是否列出了 AD FS 服务帐户。 如果未列出，请选择 " **添加用户或组**"，并将 AD FS 服务帐户添加到列表。 然后选择“确定”。
 4. 若要启用审核，请使用提升的权限打开命令提示符窗口。 然后，运行以下命令： 
 
     `auditpol.exe /set /subcategory:{0CCE9222-69AE-11D9-BED3-505054503030} /failure:enable /success:enable`
@@ -195,7 +195,7 @@ ms.locfileid: "98018235"
 ![显示服务器上的同步服务的正在运行的 Azure AD Connect Health 屏幕截图。](./media/how-to-connect-health-agent-install/services.png)
 
 > [!NOTE]
-> 请记住，必须有 Azure AD Premium 才能使用 Azure AD Connect Health。 如果没有 Azure AD Premium，则无法在 Azure 门户中完成配置。 有关详细信息，请参阅 [要求](how-to-connect-health-agent-install.md#requirements)。
+> 请记住，必须 (P1 或 P2) Azure AD Premium 才能使用 Azure AD Connect Health。 如果没有 Azure AD Premium，则无法在 Azure 门户中完成配置。 有关详细信息，请参阅 [要求](how-to-connect-health-agent-install.md#requirements)。
 >
 >
 
@@ -351,7 +351,7 @@ Set-AzureAdConnectHealthProxySettings -ImportFromWinHttp
 Set-AzureAdConnectHealthProxySettings -HttpsProxyAddress address:port
 ```
 
-下面的示例说明： 
+下面是一个示例： 
 
 `Set-AzureAdConnectHealthProxySettings -HttpsProxyAddress myproxyserver: 443`
 

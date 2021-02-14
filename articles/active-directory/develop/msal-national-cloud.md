@@ -13,12 +13,12 @@ ms.date: 11/22/2019
 ms.author: negoe
 ms.reviewer: marsma, nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 01a69dbf9230154b74145f932b678d6bbebbde08
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 09c4dadd7a6560bd5163d623dd8a7f247b57860e
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99583953"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100102489"
 ---
 # <a name="use-msal-in-a-national-cloud-environment"></a>在国家/地区云环境中使用 MSAL
 
@@ -70,7 +70,7 @@ ms.locfileid: "99583953"
 
 ### <a name="step-1-register-your-application"></a>步骤 1：注册应用程序
 
-1. 登录到 <a href="https://portal.azure.us/" target="_blank">Azure 门户<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
+1. 登录 <a href="https://portal.azure.us/" target="_blank">Azure 门户</a>。
 
    若要查找其他国家云 Azure 门户终结点，请参阅 [应用注册终结点](authentication-national-cloud.md#app-registration-endpoints)。
 
@@ -85,7 +85,7 @@ ms.locfileid: "99583953"
     本教程要求你启用 [隐式授权流](v2-oauth2-implicit-grant-flow.md)。 
 1. 在“管理”下，选择“身份验证”。 
 1. 在 " **隐式授权" 和 "混合流**" 下，选择 " **ID 令牌** 和 **访问令牌**"。 ID 令牌和访问令牌是必需的，因为此应用需要登录用户并调用 API。
-1. 选择“保存”。
+1. 选择“保存”。 
 
 ### <a name="step-2--set-up-your-web-server-or-project"></a>步骤2：设置 web 服务器或项目
 

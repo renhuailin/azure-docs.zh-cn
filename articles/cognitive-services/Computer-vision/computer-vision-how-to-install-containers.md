@@ -12,12 +12,12 @@ ms.date: 11/23/2020
 ms.author: aahi
 ms.custom: seodec18, cog-serv-seo-aug-2020
 keywords: 本地、OCR、Docker、容器
-ms.openlocfilehash: fc5d281a6c0c9dd9620109de9d8deea27462ad0e
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: 843000963bc05cab5415c9bb1db32b3272c8dc9f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100008581"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100391758"
 ---
 # <a name="install-read-ocr-docker-containers-preview"></a> (预览中安装读取 OCR Docker 容器)  
 
@@ -41,7 +41,7 @@ Read 3.2-preview OCR 容器提供：
 * 置信度分数。
 * 支持同时包含打印文本和手写文本的文档。
 * 只能从文档中)  (的选定页面提取文本。
-* 选择 "文本行输出顺序"，默认为更自然的读取顺序。
+* 选择 "默认文本行输出顺序"，将其从默认设置为更自然的语言阅读顺序。
 * 文本行分类为手写样式，而不是仅适用于拉丁语言。
 
 如果目前使用的是读取2.0 容器，请参阅 [迁移指南](read-container-migration-guide.md) ，了解有关新版本中的更改的信息。
