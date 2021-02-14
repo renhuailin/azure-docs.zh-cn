@@ -30,6 +30,9 @@
     - name: 版本控制策略
       href: concepts-version-policy.md
       displayName: 'version, postgresql'
+    - name: 已知问题和限制
+      href: concepts-known-issues-limitations.md
+      displayName: 'issues, limitations, postgresql'
 - name: 单台服务器
   expanded: true
   items:

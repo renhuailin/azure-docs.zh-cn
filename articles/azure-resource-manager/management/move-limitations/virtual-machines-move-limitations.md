@@ -3,12 +3,12 @@ title: 将 Azure VM 移到新的订阅或资源组
 description: 使用 Azure 资源管理器将虚拟机移到新的资源组或订阅。
 ms.topic: conceptual
 ms.date: 12/01/2020
-ms.openlocfilehash: b1032b5a632bcac82cb9ae1f1b3df7b49f5463f5
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: ad7023f309f1ca948711eaa9bdf3867d2ef7a6f8
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96456321"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104903"
 ---
 # <a name="move-guidance-for-virtual-machines"></a>针对虚拟机的移动指南
 
@@ -36,29 +36,29 @@ az vm encryption disable --resource-group demoRG --name myVm1
 Disable-AzVMDiskEncryption -ResourceGroupName demoRG -VMName myVm1
 ```
 
-## <a name="virtual-machines-with-marketplace-plans"></a>具有 Marketplace 计划的虚拟机
+## <a name="virtual-machines-with-marketplace-plans"></a>具有 Azure 市场计划的虚拟机
 
-无法跨订阅移动基于附加了计划的市场资源创建的虚拟机。 若要解决此限制，你可以取消设置当前订阅中的虚拟机，并在新订阅中再次部署该虚拟机。 以下步骤可帮助你在新订阅中重新创建虚拟机。 但是，它们可能不适用于所有方案。 如果该计划在 Marketplace 中不再可用，则这些步骤将不起作用。
+无法跨订阅移动基于附加了计划的市场资源创建的虚拟机。 若要解决此限制问题，可以取消预配当前订阅中的虚拟机，并在新订阅中再次部署该虚拟机。 通过以下步骤可在新订阅中重新创建虚拟机。 但不一定适用于所有方案。 如果该计划在 Azure 市场中不再可用，这些步骤将不起作用。
 
 1. 复制有关计划的信息。
 
-1. 请将 OS 磁盘克隆到目标订阅，或者在从源订阅中删除虚拟机后移动原始磁盘。
+1. 将 OS 磁盘克隆到目标订阅，或在源订阅中删除虚拟机后移动原始磁盘。
 
-1. 在目标订阅中，接受计划的 Marketplace 条款。 可以通过运行以下 PowerShell 命令来接受这些条款：
+1. 在目标订阅中，接受相关计划的 Azure 市场条款。 可以通过运行以下 PowerShell 命令来接受这些条款：
 
    ```azurepowershell
    Get-AzMarketplaceTerms -Publisher {publisher} -Product {product/offer} -Name {name/SKU} | Set-AzMarketplaceTerms -Accept
    ```
 
-   或者，你可以通过门户创建具有计划的虚拟机的新实例。 可以在接受新订阅中的条款后删除虚拟机。
+   或可以通过门户使用相关计划创建虚拟机的新实例。 在接受新订阅中的条款后可以删除虚拟机。
 
-1. 在目标订阅中，使用 PowerShell、CLI 或 Azure 资源管理器模板重新创建克隆的 OS 磁盘中的虚拟机。 包括附加到磁盘的 marketplace 计划。 有关计划的信息应该与你在新订阅中购买的计划匹配。
+1. 在目标订阅中，使用 PowerShell、CLI 或 Azure 资源管理器模板从克隆的 OS 磁盘中重新创建该虚拟机。 包含附加到磁盘的市场计划。 有关计划的信息应与在新订阅中购买的计划匹配。
 
 ## <a name="virtual-machines-with-azure-backup"></a>使用 Azure 备份的虚拟机
 
 若要移动配置了 Azure 备份的虚拟机，必须从保管库中删除还原点。
 
-如果为虚拟机启用了[软删除](../../../backup/backup-azure-security-feature-cloud.md)，则在保留这些还原点的情况下，你将无法移动虚拟机。 请[禁用软删除](../../../backup/backup-azure-security-feature-cloud.md#enabling-and-disabling-soft-delete)，或在删除还原点后等待 14 天。
+如果为虚拟机启用了[软删除](../../../backup/soft-delete-virtual-machines.md)，则在保留这些还原点的情况下，你将无法移动虚拟机。 请[禁用软删除](../../../backup/backup-azure-security-feature-cloud.md#enabling-and-disabling-soft-delete)，或在删除还原点后等待 14 天。
 
 ### <a name="portal"></a>门户
 

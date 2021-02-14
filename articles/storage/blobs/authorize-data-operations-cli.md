@@ -1,38 +1,41 @@
 ---
-title: 选择如何使用 Azure CLI 授权访问 blob 数据
+title: 选择如何使用 Azure CLI 授权 Blob 数据访问
 titleSuffix: Azure Storage
-description: 指定如何对 Azure CLI 的 blob 数据进行数据操作授权。 可以使用 Azure AD 凭据、帐户访问密钥或共享访问签名 (SAS) 令牌授权数据操作。
+description: 指定如何使用 Azure CLI 授权针对 Blob 数据的数据操作。 可以使用 Azure AD 凭据、帐户访问密钥或共享访问签名 (SAS) 令牌授权数据操作。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 11/13/2020
+ms.date: 02/10/2021
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 060bfb6c88bbed8ba12c5b5ebfd2e9617f5abfb2
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: 06b37e8b25d932115384124a45156c801fb9708f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94637321"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100361666"
 ---
-# <a name="choose-how-to-authorize-access-to-blob-data-with-azure-cli"></a>选择如何使用 Azure CLI 授权访问 blob 数据
+# <a name="choose-how-to-authorize-access-to-blob-data-with-azure-cli"></a>选择如何使用 Azure CLI 授权 Blob 数据访问
 
-Azure 存储为 Azure CLI 提供扩展，使你能够指定你希望如何对 blob 数据进行操作。 可通过以下方式授权数据操作：
+Azure 存储提供适用于 Azure CLI 的扩展，使你能够指定如何授权针对 Blob 数据的操作。 可通过以下方式授权数据操作：
 
 - 使用 Azure Active Directory (Azure AD) 安全主体。 Microsoft 建议使用 Azure AD 凭据以获得高级安全和易用性。
 - 使用帐户访问密钥或共享访问签名 (SAS) 令牌。
 
 ## <a name="specify-how-data-operations-are-authorized"></a>指定数据操作的授权方式
 
-用于读取和写入 blob 数据 Azure CLI 命令包括可选 `--auth-mode` 参数。 指定此参数可以指示数据操作的授权方式：
+用于读取和写入 Blob 数据的 Azure CLI 命令包括可选的 `--auth-mode` 参数。 指定此参数可以指示数据操作的授权方式：
 
 - 将 `--auth-mode` 参数设置为 `login` 可以使用 Azure AD 安全主体登录（建议）。
 - 将 `--auth-mode` 参数设置为传统 `key` 值可以尝试检索用于授权的帐户访问密钥。 如果省略 `--auth-mode` 参数，则 Azure CLI 也会尝试检索访问密钥。
 
 若要使用 `--auth-mode` 参数，请确保已安装 Azure CLI 2.0.46 或更高版本。 运行 `az --version` 以查看已安装版本。
+
+> [!NOTE]
+> 当使用 Azure 资源管理器 **ReadOnly** 锁锁定存储帐户时，不允许该存储帐户执行 [列表键](/rest/api/storagerp/storageaccounts/listkeys) 操作。 **列出密钥** 是一项 POST 操作，并且为该帐户配置了 **ReadOnly** 锁后，将阻止所有 POST 操作。 出于此原因，当使用 **ReadOnly** 锁锁定帐户时，还没有帐户密钥的用户用户必须使用 Azure AD 凭据来访问 blob 数据。
 
 > [!IMPORTANT]
 > 如果省略 `--auth-mode` 参数或将其设置为 `key`，则 Azure CLI 会尝试使用帐户访问密钥进行授权。 在这种情况下，Microsoft 建议你在命令或 **AZURE_STORAGE_KEY** 环境变量中提供访问密钥。 有关环境变量的详细信息，请参阅标题为[为授权参数设置环境变量](#set-environment-variables-for-authorization-parameters)的部分。
@@ -43,19 +46,19 @@ Azure 存储为 Azure CLI 提供扩展，使你能够指定你希望如何对 bl
 
 使用 Azure AD 凭据登录 Azure CLI 时，会返回 OAuth 2.0 访问令牌。 Azure CLI 自动使用该令牌针对 Blob 或队列存储进行后续数据操作授权。 对于支持的操作，无需再通过命令传递帐户密钥或 SAS 令牌。
 
-可以通过 Azure RBAC)  (Azure 基于角色的访问控制，将 blob 数据的权限分配给 Azure AD 安全主体。 有关 azure 存储空间中的 Azure 角色的详细信息，请参阅 [使用 AZURE RBAC 管理对 Azure 存储数据的访问权限](../common/storage-auth-aad-rbac-portal.md)。
+可通过 Azure 基于角色的访问控制 (Azure RBAC) 向 Azure AD 安全主体分配对 blob 数据的权限。 有关 Azure 存储中 Azure 角色的详细信息，请参阅[通过 Azure RBAC 管理 Azure 存储数据访问权限](../common/storage-auth-aad-rbac-portal.md)。
 
 ### <a name="permissions-for-calling-data-operations"></a>用于调用数据操作的权限
 
-对 blob 数据的操作支持 Azure 存储扩展。 可调用的操作取决于向 Azure AD 安全主体授予的权限，此安全主体用于登录 Azure CLI。 通过 Azure RBAC 分配对 Azure 存储容器的权限。 例如，如果分配了 " **存储 Blob 数据读取** 者" 角色，则可以运行从容器中读取数据的脚本命令。 如果分配了 " **存储 Blob 数据参与者** " 角色，则可以运行脚本命令来读取、写入或删除容器或其包含的数据。
+Azure 存储扩展支持针对 blob 数据的操作。 可调用的操作取决于向 Azure AD 安全主体授予的权限，此安全主体用于登录 Azure CLI。 对 Azure 存储容器的权限通过 Azure RBAC 进行分配。 例如，如果为你分配了“存储 Blob 数据读取者”角色，你可以运行从容器读取数据的脚本命令。 如果为你分配了“存储 Blob 数据参与者”角色，你可以运行脚本命令来读取、写入或删除容器或其所包含的数据。
 
-有关容器上的每个 Azure 存储操作所需的权限的详细信息，请参阅 [使用 OAuth 令牌调用存储操作](/rest/api/storageservices/authorize-with-azure-active-directory#call-storage-operations-with-oauth-tokens)。  
+若要详细了解针对容器的每个 Azure 存储操作所需的权限，请参阅[使用 OAuth 令牌调用存储操作](/rest/api/storageservices/authorize-with-azure-active-directory#call-storage-operations-with-oauth-tokens)。  
 
 ### <a name="example-authorize-an-operation-to-create-a-container-with-azure-ad-credentials"></a>示例：授权操作使用 Azure AD 凭据创建容器
 
 以下示例演示如何在 Azure CLI 中使用 Azure AD 凭据创建容器。 若要创建容器，需要登录到 Azure CLI，并需要一个资源组和存储帐户。 若要了解如何创建这些资源，请参阅[快速入门：使用 Azure CLI 创建、下载和列出 Blob](../blobs/storage-quickstart-blobs-cli.md)。
 
-1. 创建容器之前，请向自己分配[存储 Blob 数据参与者](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)角色。 即使你是帐户所有者，也需要显式权限才能针对存储帐户执行数据操作。 有关分配 Azure 角色的详细信息，请参阅 [使用 Azure 门户分配 azure 角色以访问 blob 和队列数据](../common/storage-auth-aad-rbac-portal.md)。
+1. 创建容器之前，请向自己分配[存储 Blob 数据参与者](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)角色。 即使你是帐户所有者，也需要显式权限才能针对存储帐户执行数据操作。 有关分配 Azure 角色的详细信息，请参阅[使用 Azure 门户分配用于访问 blob 和队列数据的 Azure 角色](../common/storage-auth-aad-rbac-portal.md)。
 
     > [!IMPORTANT]
     > 传播 Azure 角色分配可能需要几分钟的时间。
@@ -82,6 +85,9 @@ az storage container create \
     --account-key <key>
     --auth-mode key
 ```
+
+> [!IMPORTANT]
+> 当使用 Azure 资源管理器 **ReadOnly** 锁锁定存储帐户时，不允许该存储帐户执行 [列表键](/rest/api/storagerp/storageaccounts/listkeys) 操作。 **列出密钥** 是一项 POST 操作，并且为该帐户配置了 **ReadOnly** 锁后，将阻止所有 POST 操作。 出于此原因，当使用 **ReadOnly** 锁锁定帐户时，用户必须使用 Azure AD 凭据访问数据。
 
 ## <a name="authorize-with-a-sas-token"></a>使用 SAS 令牌授权
 

@@ -252,6 +252,8 @@
           href: automation-solution-vm-management-config.md
         - name: 从“在空闲时间启动/停止 VM”查询日志
           href: automation-solution-vm-management-logs.md
+        - name: 删除“在空闲时间启动/停止 VM”
+          href: automation-solution-vm-management-remove.md
         - name: 排查“在空闲时间启动/停止 VM”问题
           href: troubleshoot/start-stop-vm.md
     - name: 更新管理

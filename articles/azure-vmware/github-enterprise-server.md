@@ -2,19 +2,19 @@
 title: 在 Azure VMware 解决方案私有云上设置 GitHub Enterprise Server
 description: 了解如何在 Azure VMware 解决方案私有云上设置 GitHub 企业服务器。
 ms.topic: how-to
-ms.date: 02/03/2021
-ms.openlocfilehash: 2b05e352fd8a81d6d180d4c60e67ab48465b284f
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.date: 02/11/2021
+ms.openlocfilehash: 59a76c3976f6fcda88423b7b78344f2abed1ea84
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99549096"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100382015"
 ---
 # <a name="set-up-github-enterprise-server-on-your-azure-vmware-solution-private-cloud"></a>在 Azure VMware 解决方案私有云上设置 GitHub Enterprise Server
 
-本文逐步介绍如何在 Azure VMware 解决方案私有云上设置 GitHub Enterprise Server （即 "本地" 版本的 [GitHub.com](https://github.com/)）。 本演练中所述的方案适用于 GitHub 企业服务器实例，该实例可以为3000的开发人员提供最多每分钟在 GitHub 操作上运行最多25个作业的开发人员。 它包括编写) *预览版* 功能（如 GitHub 操作）时 (的设置。 若要根据特定需求自定义安装程序，请查看在 [VMware 上安装 GitHub 企业服务器](https://docs.github.com/en/enterprise/admin/installation/installing-github-enterprise-server-on-vmware#hardware-considerations)中列出的要求。
+本文逐步介绍如何在 Azure VMware 解决方案私有云上设置 GitHub Enterprise Server （即 "本地" 版本的 [GitHub.com](https://github.com/)）。 我们要介绍的是 GitHub 企业服务器实例，最多可为3000个开发人员提供每分钟在 GitHub 操作上运行最多25个作业的开发人员。 它包括编写) *预览版* 功能（如 GitHub 操作）时 (的设置。 若要根据特定需求自定义安装程序，请查看在 [VMware 上安装 GitHub 企业服务器](https://docs.github.com/en/enterprise/admin/installation/installing-github-enterprise-server-on-vmware#hardware-considerations)中列出的要求。
 
-## <a name="before-you-begin"></a>在开始之前
+## <a name="before-you-begin"></a>准备阶段
 
 GitHub Enterprise Server 需要有效的许可证密钥。 你可以注册 [试用版许可证](https://enterprise.github.com/trial)。 如果希望通过集成扩展 GitHub 企业服务器的功能，则可以使用免费的五位开发人员许可证。 通过 [GitHub 的合作伙伴计划](https://partner.github.com/)申请此许可证。
 
@@ -30,7 +30,7 @@ GitHub Enterprise Server 需要有效的许可证密钥。 你可以注册 [试�
 
 导入后，根据需要 [调整硬件配置](https://docs.github.com/en/enterprise/admin/installation/installing-github-enterprise-server-on-vmware#creating-the-github-enterprise-server-instance) 。 在我们的示例方案中，我们将需要以下配置。
 
-| 资源 | 标准设置 | 标准设置 + "测试版功能" (操作)  |
+| 资源 | 标准设置 | 标准设置 + "Beta 功能" (操作)  |
 | --- | --- | --- |
 | vCPU | 4 | 8 |
 | 内存 | 32 GB | 61 GB |
@@ -51,7 +51,7 @@ GitHub Enterprise Server 需要有效的许可证密钥。 你可以注册 [试�
 
 1. 将公共 SSH 密钥上载到管理控制台，以便可以 [通过 SSH 访问命令行管理](https://docs.github.com/en/enterprise/admin/configuration/accessing-the-administrative-shell-ssh)程序。 
 
-2. [在您的实例上配置 TLS](https://docs.github.com/en/enterprise/admin/configuration/configuring-tls) ，以便您可以使用由受信任的证书颁发机构签名的证书。
+2. [在您的实例上配置 TLS](https://docs.github.com/en/enterprise/admin/configuration/configuring-tls) ，以便您可以使用受信任的证书颁发机构签名的证书。
 
 :::image type="content" source="media/github-enterprise-server/configuring-your-instance.png" alt-text="配置实例。":::
 
@@ -59,7 +59,7 @@ GitHub Enterprise Server 需要有效的许可证密钥。 你可以注册 [试�
 
 :::image type="content" source="media/github-enterprise-server/create-admin-account.png" alt-text="创建管理员帐户。":::
 
-实例重新启动后，在该实例上创建一个新的管理员帐户。 请务必记下此用户的密码。
+实例重新启动后，可以在实例上创建新的管理员帐户。 请务必记下此用户的密码。
 
 ### <a name="other-configuration-steps"></a>其他配置步骤
 
@@ -178,7 +178,7 @@ GitHub Enterprise Server 需要有效的许可证密钥。 你可以注册 [试�
 
 :::image type="content" source="media/github-enterprise-server/edit-runner-access.png" alt-text="编辑运行程序访问。":::
 
-在这里，我们将其提供给所有组织，但你也可以将访问权限限制为组织的子集，甚至限制为特定的存储库。
+这里，我们将其提供给所有组织，但你可以将访问权限限制为组织的子集，甚至限制为特定的存储库。
 
 ## <a name="optional-configuring-github-connect"></a> (可选) 配置 GitHub Connect
 
@@ -221,7 +221,7 @@ GitHub Enterprise Server 需要有效的许可证密钥。 你可以注册 [试�
 
 :::image type="content" source="media/github-enterprise-server/example-in-repo.png" alt-text="存储库中的示例。":::
 
-恭喜！ 你刚完成了 GitHub 企业服务器上的第一个操作工作流，该工作流在 Azure VMware 解决方案私有云上运行。
+祝贺你！ 你刚完成了 GitHub 企业服务器上的第一个操作工作流，该工作流在 Azure VMware 解决方案私有云上运行。
 
 在本文中，我们将在 Azure VMware 解决方案私有云的基础上设置 GitHub Enterprise Server 的一个新实例，该实例与 GitHub.com 的自承载等效。 此实例包括对 GitHub 操作的支持，并使用 Azure Blob 存储来保存日志和项目。 但我们只是外在优势您可以对 GitHub 操作执行的操作。 查看 [GitHub Marketplace](https://github.com/marketplace)上的操作列表，或 [创建自己](https://docs.github.com/en/actions/creating-actions)的操作列表。
 

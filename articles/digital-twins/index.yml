@@ -10,12 +10,12 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 02/12/2020
-  ms.openlocfilehash: bcba2b48fdecda311ce349f90ba43023b906bd44
-  ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+  ms.openlocfilehash: 29f3b0bf0a00c9e4e238e8bb514f80e7451d30a6
+  ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 11/26/2020
-  ms.locfileid: "96186399"
+  ms.lasthandoff: 02/09/2021
+  ms.locfileid: "100007748"
 landingContent:
 - title: 关于 Azure 数字孪生
   linkLists:
@@ -23,6 +23,14 @@ landingContent:
     links:
     - text: Azure 数字孪生是什么？
       url: overview.md
+  - linkListType: concept
+    links:
+    - text: 自定义模式
+      url: concepts-models.md
+    - text: 数字孪生和孪生图
+      url: concepts-twins-graph.md
+    - text: 查询语言
+      url: concepts-query-language.md
 - title: 首先查看快速入门
   linkLists:
   - linkListType: quickstart
@@ -43,20 +51,6 @@ landingContent:
     links:
     - text: 连接端到端解决方案
       url: tutorial-end-to-end.md
-- title: 了解
-  linkLists:
-  - linkListType: concept
-    links:
-    - text: 自定义模式
-      url: concepts-models.md
-  - linkListType: concept
-    links:
-    - text: 数字孪生和孪生图
-      url: concepts-twins-graph.md
-  - linkListType: concept
-    links:
-    - text: 查询语言
-      url: concepts-query-language.md
 - title: 开发
   linkLists:
   - linkListType: how-to-guide
@@ -115,3 +109,19 @@ landingContent:
     links:
     - text: 逻辑应用连接器的自定义 Swagger
       url: /samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/
+- title: 通过 Microsoft Learn 进行基于方案的学习
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: 学习路径：使用 Azure 数字孪生进行开发
+      url: /learn/paths/develop-azure-digital-twins/
+  - linkListType: learn
+    links:
+    - text: Learn 模块：Azure 数字孪生简介
+      url: /learn/modules/develop-with-azure-digital-twins/introduction-to-azure-digital-twins/
+    - text: Learn 模块：为巧克力工厂生产线构建 Azure 数字孪生图
+      url: /learn/modules/develop-with-azure-digital-twins/build-azure-digital-twins-graph-for-chocolate-factory/
+    - text: Learn 模块：将数据引入到 Azure 数字孪生
+      url: /learn/modules/develop-with-azure-digital-twins/ingest-data-into-azure-digital-twins/
+    - text: Learn 模块：从 Azure 数字孪生输出到下游服务
+      url: /learn/modules/develop-with-azure-digital-twins/route-output-from-azure-digital-twins-to-downstream-services/

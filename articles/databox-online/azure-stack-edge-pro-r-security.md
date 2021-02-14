@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 10/14/2020
 ms.author: alkohli
-ms.openlocfilehash: f7d81d14ca561e6d4d897994088b2fc01b2c7701
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 891885dce52ee57fa163bb71b427591156091651
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96466380"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100362841"
 ---
 # <a name="security-and-data-protection-for-azure-stack-edge-pro-r-and-azure-stack-edge-mini-r"></a>Azure Stack Edge Pro R 和 Azure Stack 边缘迷你 R 的安全性和数据保护
 
-[!INCLUDE [applies-to-r-skus](../../includes/azure-stack-edge-applies-to-r-sku.md)]
+[!INCLUDE [applies-to-pro-r-and-mini-r--skus](../../includes/azure-stack-edge-applies-to-pro-r-mini-r-sku.md)]
 
 在采用新技术时，安全性是一个主要考虑因素，尤其是在该技术用于机密或专有数据时。 Azure Stack Edge Pro R 和 Azure Stack 边缘迷你 R 可帮助确保只有授权的实体可以查看、修改或删除数据。
 
@@ -66,7 +66,7 @@ Azure Stack Edge 服务是 Azure 中托管的一项管理服务。 服务用于�
 
 密码确保只有经过授权的用户才能访问数据。 Azure Stack 边缘 Pro R 设备在锁定状态启动。
 
-可以：
+方法：
 
 - 通过浏览器连接到设备的本地 web UI，然后提供用于登录设备的密码。
 - 通过 HTTP 远程连接到设备 PowerShell 接口。 默认情况下启用远程管理。 远程管理还配置为使用足够的管理 (JEA) ，以限制用户可执行的操作。 然后，你可以提供用于登录设备的设备密码。 有关详细信息，请参阅 [远程连接到你的设备](azure-stack-edge-gpu-connect-powershell-interface.md)。
@@ -85,7 +85,7 @@ Azure Stack 边缘坚固的设备使你可以自带证书，并将其安装到�
 
 本节介绍保护传输中数据和存储数据的安全功能。
 
-### <a name="protect-data-at-rest"></a>保护静态数据
+### <a name="protect-data-at-rest"></a>保护静止的数据
 
 设备上的所有静态数据都是双加密的，对数据的访问受到控制，设备停用后，数据将安全地从数据磁盘中删除。
 

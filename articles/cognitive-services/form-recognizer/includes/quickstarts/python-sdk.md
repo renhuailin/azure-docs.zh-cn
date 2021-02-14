@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 10/26/2020
 ms.author: pafarley
-ms.openlocfilehash: e578cd08177eb9db03e5e4af4a134473a8484a41
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: d0c26a4b0cc860b959afc6703ee3e709c606f209
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98947762"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584583"
 ---
 > [!IMPORTANT]
 > * 为了简单起见，本文中的代码使用了同步方法和不受保护的凭据存储。 请参阅下面的参考文档。 
@@ -78,15 +78,15 @@ pip install azure-ai-formrecognizer --pre
 ### <a name="formrecognizerclient"></a>FormRecognizerClient
 `form_recognizer_client` 提供操作以实现以下目的：
 
- * 使用经过训练的自定义模型识别表单域和内容，以识别自定义表单。 
+ * 使用为了分析自定义表单而训练的自定义模型，来识别表单字段和内容。 
  * 无需训练模型即可识别表单内容，包括表格、行和单词。 
  * 使用表单识别器服务上预先训练的回执模型，识别回执中的常见字段。
 
 ### <a name="formtrainingclient"></a>FormTrainingClient
 `form_training_client` 提供操作以实现以下目的：
 
-* 训练自定义模型以识别在自定义表单中找到的所有字段和值。 有关创建定型数据集的更详细说明，请参阅[关于无标签模型训练的服务文档](#train-a-model-without-labels)。
-* 训练自定义模型，以识别通过标记自定义表单指定的特定字段和值。 有关将标签应用于定型数据集的更详细说明，请参阅[关于带标签的模型训练的服务文档](#train-a-model-with-labels)。
+* 训练自定义模型，以分析在自定义表单中找到的所有字段和值。 有关创建定型数据集的更详细说明，请参阅[关于无标签模型训练的服务文档](#train-a-model-without-labels)。
+* 训练自定义模型，以分析通过标记自定义表单指定的特定字段和值。 有关将标签应用于定型数据集的更详细说明，请参阅[关于带标签的模型训练的服务文档](#train-a-model-with-labels)。
 * 管理在帐户中创建的模型。
 * 将自定义模型从一个表单识别器资源复制到另一个资源。
 
@@ -139,9 +139,9 @@ pip install azure-ai-formrecognizer --pre
 
 ## <a name="analyze-layout"></a>分析布局
 
-可以使用表单识别器识别文档中的表格、线条和单词，而无需训练模型。
+可以使用表单识别器分析文档中的表格、线条和单词，而无需训练模型。 有关布局提取的详细信息，请参阅[布局概念指南](../../concept-layout.md)。
 
-若要识别位于给定 URL 的文件的内容，请使用 `begin_recognize_content_from_url` 方法。 返回的值是 `FormPage` 对象的集合：提交的文档中的每一页对应一个对象。 下面的代码循环访问这些对象，并输出提取的键/值对和表数据。
+若要分析位于给定 URL 的文件的内容，请使用 `begin_recognize_content_from_url` 方法。 返回的值是 `FormPage` 对象的集合：提交的文档中的每一页对应一个对象。 下面的代码循环访问这些对象，并输出提取的键/值对和表数据。
 
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_getcontent)]
 
@@ -171,55 +171,6 @@ Confidence score: 1.0
 
 ```
 
-## <a name="analyze-receipts"></a>分析回执
-
-本部分演示如何使用预先训练的回执模型识别和提取美国回执中的常见字段。 若要从 URL 识别回执，请使用 `begin_recognize_receipts_from_url` 方法。 
-
-[!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_receipts)]
-
-> [!TIP]
-> 还可识别本地回执图像。 请参阅 [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient) 方法，例如 `begin_recognize_receipts`。 或者，请参阅 [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) 上的示例代码，了解涉及本地图像的方案。
-
-### <a name="output"></a>输出
-
-```console
-ReceiptType: Itemized has confidence 0.659
-MerchantName: Contoso Contoso has confidence 0.516
-MerchantAddress: 123 Main Street Redmond, WA 98052 has confidence 0.986
-MerchantPhoneNumber: None has confidence 0.99
-TransactionDate: 2019-06-10 has confidence 0.985
-TransactionTime: 13:59:00 has confidence 0.968
-Receipt Items:
-...Item #1
-......Name: 8GB RAM (Black) has confidence 0.916
-......TotalPrice: 999.0 has confidence 0.559
-...Item #2
-......Quantity: None has confidence 0.858
-......Name: SurfacePen has confidence 0.858
-......TotalPrice: 99.99 has confidence 0.386
-Subtotal: 1098.99 has confidence 0.964
-Tax: 104.4 has confidence 0.713
-Total: 1203.39 has confidence 0.774
-```
-
-
-## <a name="analyze-business-cards"></a>分析名片
-
-#### <a name="version-20"></a>[版本 2.0](#tab/ga)
-
-> [!IMPORTANT]
-> 此功能在所选的 API 版本中不可用。
-
-#### <a name="version-21-preview"></a>[版本 2.1 预览](#tab/preview)
-
-本部分演示如何使用预先训练的模型识别和提取英文名片中的常见字段。 若要从 URL 识别名片，请使用 `begin_recognize_business_cards_from_url` 方法。 
-
-[!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart-preview.py?name=snippet_bc)]
-
-> [!TIP]
-> 还可识别本地名片图像。 请参阅 [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient) 方法，例如 `begin_recognize_business_cards`。 或者，请参阅 [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) 上的示例代码，了解涉及本地图像的方案。
-
----
 
 ## <a name="analyze-invoices"></a>分析发票
 
@@ -230,12 +181,12 @@ Total: 1203.39 has confidence 0.774
 
 #### <a name="version-21-preview"></a>[版本 2.1 预览](#tab/preview)
 
-本部分演示如何使用预先训练的模型识别和提取销售发票中的常见字段。 若要从 URL 识别发票，请使用 `begin_recognize_invoices_from_url` 方法。 
+本部分演示如何使用预先训练的模型分析和提取销售发票中的常见字段。 有关发票分析的详细信息，请参阅[发票概念指南](../../concept-invoices.md)。 若要分析位于某个 URL 的发票，请使用 `begin_recognize_invoices_from_url` 方法。 
 
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart-preview.py?name=snippet_invoice)]
 
 > [!TIP]
-> 还可识别本地发票图像。 请参阅 [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient) 方法，例如 `begin_recognize_invoices`。 或者，请参阅 [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) 上的示例代码，了解涉及本地图像的方案。
+> 你还可以分析本地发票图像。 请参阅 [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python) 方法，例如 `begin_recognize_invoices`。 或者，请参阅 [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) 上的示例代码，了解涉及本地图像的方案。
 
 ---
 
@@ -248,9 +199,9 @@ Total: 1203.39 has confidence 0.774
 
 ### <a name="train-a-model-without-labels"></a>不使用标签训练模型
 
-训练自定义模型可以识别在自定义表单中找到的所有字段和值，而无需手动标记训练文档。
+训练自定义模型可分析在自定义表单中找到的所有字段和值，无需手动标记训练文档。
 
-下面的代码借助训练客户端和 `begin_training` 函数，使用给定文档集训练模型。 返回的 `CustomFormModel` 对象包含该模型可以识别的表单类型以及它可以从每种表单类型中提取的字段的相关信息。 下面的代码块将此信息输出到控制台。
+下面的代码借助训练客户端和 `begin_training` 函数，使用给定文档集训练模型。 返回的 `CustomFormModel` 对象包含该模型可以分析的表单类型以及它可以从每种表单类型中提取的字段的相关信息。 下面的代码块将此信息输出到控制台。
 
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_train)]
 
@@ -370,6 +321,56 @@ Field 'Subtotal' has label 'Subtotal' with value 'None' and a confidence score o
 Field 'Tax' has label 'Tax' with value 'None' and a confidence score of None
 Field 'Total' has label 'Total' with value 'None' and a confidence score of None
 ```
+
+## <a name="analyze-receipts"></a>分析回执
+
+本部分演示如何使用预先训练的收据模型分析和提取美国收据中的常见字段。 有关收据分析的详细信息，请参阅[收据概念指南](../../concept-receipts.md)。 若要分析位于某个 URL 的收据，请使用 `begin_recognize_receipts_from_url` 方法。 
+
+[!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_receipts)]
+
+> [!TIP]
+> 你还可以分析本地收据图像。 请参阅 [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python) 方法，例如 `begin_recognize_receipts`。 或者，请参阅 [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) 上的示例代码，了解涉及本地图像的方案。
+
+### <a name="output"></a>输出
+
+```console
+ReceiptType: Itemized has confidence 0.659
+MerchantName: Contoso Contoso has confidence 0.516
+MerchantAddress: 123 Main Street Redmond, WA 98052 has confidence 0.986
+MerchantPhoneNumber: None has confidence 0.99
+TransactionDate: 2019-06-10 has confidence 0.985
+TransactionTime: 13:59:00 has confidence 0.968
+Receipt Items:
+...Item #1
+......Name: 8GB RAM (Black) has confidence 0.916
+......TotalPrice: 999.0 has confidence 0.559
+...Item #2
+......Quantity: None has confidence 0.858
+......Name: SurfacePen has confidence 0.858
+......TotalPrice: 99.99 has confidence 0.386
+Subtotal: 1098.99 has confidence 0.964
+Tax: 104.4 has confidence 0.713
+Total: 1203.39 has confidence 0.774
+```
+
+
+## <a name="analyze-business-cards"></a>分析名片
+
+#### <a name="version-20"></a>[版本 2.0](#tab/ga)
+
+> [!IMPORTANT]
+> 此功能在所选的 API 版本中不可用。
+
+#### <a name="version-21-preview"></a>[版本 2.1 预览](#tab/preview)
+
+本部分演示如何使用预先训练的模型分析和提取英文名片中的常见字段。 有关名片分析的详细信息，请参阅[名片概念指南](../../concept-business-cards.md)。 若要分析位于某个 URL 的名片，请使用 `begin_recognize_business_cards_from_url` 方法。 
+
+[!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart-preview.py?name=snippet_bc)]
+
+> [!TIP]
+> 你还可以分析本地名片图像。 请参阅 [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python) 方法，例如 `begin_recognize_business_cards`。 或者，请参阅 [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) 上的示例代码，了解涉及本地图像的方案。
+
+---
 
 ## <a name="manage-your-custom-models"></a>管理自定义模型
 

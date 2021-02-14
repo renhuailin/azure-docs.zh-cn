@@ -1,22 +1,17 @@
 ---
 title: 使用 Azure 数据工厂从 Phoenix 复制数据
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 Phoenix 复制到支持的接收器数据存储。
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: d236b9f8800b644a0aa51597d01df1c1442475ac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b0919e1da93f0cf0a5d27e541493b724d2fa5f0a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81416776"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100374314"
 ---
 # <a name="copy-data-from-phoenix-using-azure-data-factory"></a>使用 Azure 数据工厂从 Phoenix 复制数据 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -125,7 +120,7 @@ Phoenix 链接服务支持以下属性：
 
 ### <a name="phoenix-as-source"></a>Phoenix 作为源
 
-要从 Phoenix 复制数据，请将复制活动中的源类型设置为“PhoenixSource”  。 复制活动**source**部分支持以下属性：
+要从 Phoenix 复制数据，请将复制活动中的源类型设置为“PhoenixSource”  。 复制活动 **source** 部分支持以下属性：
 
 | 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |

@@ -1,23 +1,18 @@
 ---
 title: 使用 Azure 数据工厂从 Web 表移动数据
 description: 了解如何使用 Azure 数据工厂从网页中的表移动数据。
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: f54a26a4-baa4-4255-9791-5a8f935898e2
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: d2ea038c7d7212529185d77a6ba9e64deacb1c9e
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 7663848bd06244de7efb169a576e11a5c78204c1
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96012844"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100392895"
 ---
 # <a name="move-data-from-a-web-table-source-using-azure-data-factory"></a>使用 Azure 数据工厂从 Web 表源移动数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -70,7 +65,7 @@ ms.locfileid: "96012844"
 ## <a name="linked-service-properties"></a>链接服务属性
 下表提供 Web 链接服务专属 JSON 元素的描述。
 
-| 属性 | 说明 | 必需 |
+| properties | 说明 | 必须 |
 | --- | --- | --- |
 | type |type 属性必须设置为：**Web** |是 |
 | URL |Web 源的 URL |是 |
@@ -98,7 +93,7 @@ ms.locfileid: "96012844"
 
 每种数据集的 typeProperties 部分有所不同，该部分提供有关数据在数据存储区中的位置信息。 **WebTable** 类型的数据集的 typeProperties 部分具有以下属性
 
-| 属性 | 说明 | 必需 |
+| properties | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type |数据集类型。 必须设置为 **WebTable** |是 |
 | path |包含表的资源的相对 URL。 |否。 未指定路径时，仅使用链接服务定义中指定的 URL。 |

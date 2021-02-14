@@ -2,51 +2,67 @@
 title: 在已启用 Arc 的 Kubernetes 群集上使用 GitOps 部署配置（预览版）
 services: azure-arc
 ms.service: azure-arc
-ms.date: 05/19/2020
+ms.date: 02/09/2021
 ms.topic: article
 author: mlearned
 ms.author: mlearned
 description: '使用 GitOps 配置启用了 Azure Arc 的 Kubernetes 群集 (预览) '
 keywords: GitOps、Kubernetes、K8s、Azure、Arc、Azure Kubernetes 服务、AKS、容器
-ms.openlocfilehash: 72dc42fffb3653de81477fa504c11b9b0328d2eb
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: 072bfc8c243eb9b69e06366961019b88b67e0941
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99988703"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100392232"
 ---
 # <a name="deploy-configurations-using-gitops-on-arc-enabled-kubernetes-cluster-preview"></a>在已启用 Arc 的 Kubernetes 群集上使用 GitOps 部署配置（预览版）
 
-GitOps，与 Kubernetes 相关，是指在 Git 存储库中声明 Kubernetes 配置的所需状态 (部署、命名空间等 ) ，然后使用运算符将这些配置的轮询和基于请求的部署部署到群集。 本文档介绍如何在启用了 Azure Arc 的 Kubernetes 群集上设置此类工作流。
+相对于 Kubernetes，GitOps 是在 Git 存储库中声明 Kubernetes 群集配置 (部署、命名空间等 ) 的所需状态的做法。 此声明后跟使用运算符的这些群集配置的轮询和基于请求的部署。 
 
-在 Azure 资源管理器中，将在 Azure 中创建群集和 Git 存储库之间的连接作为 `Microsoft.KubernetesConfiguration/sourceControlConfigurations` 扩展资源。 `sourceControlConfiguration` 资源属性表示 Kubernetes 资源应从 Git 流向群集的位置和方式。 `sourceControlConfiguration`数据以加密的静态存储在 Azure Cosmos DB 数据库中，以确保数据的保密性。
+本文介绍如何在启用 Kubernetes 群集的 Azure Arc 上设置 GitOps 工作流。
 
-`config-agent`群集中运行的负责在启用了 Azure Arc 的 Kubernetes 资源上监视新的或已更新的 `sourceControlConfiguration` 扩展资源，以便部署 Flux 运算符来监视每个资源的 Git 存储库 `sourceControlConfiguration` ，并应用对任何内容所做的任何更新 `sourceControlConfiguration` 。 可以 `sourceControlConfiguration` 在启用了同一个 Azure Arc Kubernetes 群集上创建多个资源，以实现多租户。 你可以 `sourceControlConfiguration` 使用不同的作用域来创建每个， `namespace` 以将部署限制在各自的命名空间内。
+群集和 Git 存储库之间的连接在 `Microsoft.KubernetesConfiguration/sourceControlConfigurations` Azure 资源管理器中创建为扩展资源。 `sourceControlConfiguration` 资源属性表示 Kubernetes 资源应从 Git 流向群集的位置和方式。 `sourceControlConfiguration`数据以加密存储，存放在 Azure Cosmos DB 数据库中，以确保数据的保密性。
 
-Git 存储库可以包含 YAML 格式的清单，它们描述了任何有效的 Kubernetes 资源，包括命名空间、ConfigMaps、部署、Daemonset，等等。 它还可能包含用于部署应用程序的 Helm 图表。 一组常见的方案包括为你的组织定义基线配置，其中可能包括常见的 Azure 角色和绑定、监视或日志记录代理或群集范围内的服务。
+`config-agent`群集中运行的负责：
+* `sourceControlConfiguration`在启用了 Azure Arc 的 Kubernetes 资源上跟踪新的或更新的扩展资源。
+* 部署 Flux 运算符来监视每个的 Git 存储库 `sourceControlConfiguration` 。
+* 应用对任何内容所做 `sourceControlConfiguration` 的任何更新。 
 
-可以使用相同的模式来管理更大的群集集合，这些群集可能会在异类环境中进行部署。 例如，你可能具有一个存储库，该存储库为组织定义基线配置，并一次性将其应用于数十个 Kubernetes 群集。 [Azure 策略可以](use-azure-policy.md) 在 `sourceControlConfiguration` (订阅或资源组) 的作用域下，使用一组特定的参数在所有启用了 Azure Arc 的 Kubernetes 资源上自动创建。
+可以 `sourceControlConfiguration` 在启用了同一 Azure Arc Kubernetes 群集的多个资源上创建多个资源。 通过 `sourceControlConfiguration` 使用不同的作用域创建每个部署，将部署限制在各自的命名空间内 `namespace` 。
 
-本入门指南将指导你应用一组具有群集管理作用域的配置。
+Git 存储库可包含：
+* 描述任何有效 Kubernetes 资源的 YAML 格式清单，包括命名空间、ConfigMaps、部署、Daemonset 等。 
+* 用于部署应用程序的 Helm 图表。 
 
-## <a name="before-you-begin"></a>开始之前
+一组常见的方案包括为你的组织定义基线配置，例如常见的 Azure 角色和绑定、监视或日志记录代理或群集范围内的服务。
 
-本文假设你已有一个启用了 Azure Arc 的 Kubernetes 已连接群集。 如果你需要一个已连接的群集，请参阅[连接群集快速入门](./connect-cluster.md)。
+可以使用相同的模式来管理更大的群集集合，这些群集可能会在异类环境中进行部署。 例如，你有一个用于定义你的组织的基线配置的存储库，此配置可同时应用于多个 Kubernetes 群集。 [Azure 策略可以](use-azure-policy.md) 在 `sourceControlConfiguration` Kubernetes 订阅或资源组)  (范围内的所有启用了 Azure Arc 的资源的情况中自动创建具有一组特定参数的。
+
+演练以下步骤，了解如何将一组配置应用于 `cluster-admin` 作用域。
+
+## <a name="before-you-begin"></a>准备阶段
+
+验证是否已启用现有的 Azure Arc Kubernetes 连接群集。 如果需要连接的群集，请参阅 [连接启用 Azure Arc Kubernetes 群集快速入门](./connect-cluster.md)。
 
 ## <a name="create-a-configuration"></a>创建配置
 
-本文档中使用的 [示例存储库](https://github.com/Azure/arc-k8s-demo) 是围绕群集操作员的角色构建的，该操作员要预配几个命名空间，部署一个常见的工作负荷，并提供一些特定于团队的配置。 使用此存储库将在群集上创建以下资源：
+本文中使用的 [示例存储库](https://github.com/Azure/arc-k8s-demo) 是围绕群集操作员的角色构建的，该操作员要预配几个命名空间，部署一个常见的工作负荷，并提供一些特定于团队的配置。 使用此存储库将在群集上创建以下资源：
 
-命名空间：`cluster-config`、`team-a`、`team-b`
-部署： `cluster-config/azure-vote`
-ConfigMap：`team-a/endpoints`
 
-`config-agent` `sourceControlConfiguration` 每30秒轮询一次 Azure，这是 `config-agent` 选取新的或更新的配置所需的最长时间。
-如果要将专用存储库与相关联 `sourceControlConfiguration` ，请确保还完成了 [从私有 Git 存储库应用配置](#apply-configuration-from-a-private-git-repository)中的步骤。
+* **命名空间：** `cluster-config` 、 `team-a` 、 `team-b`
+* **部署：**`cluster-config/azure-vote`
+* **ConfigMap：**`team-a/endpoints`
+
+`config-agent`针对新的或已更新的轮询 Azure `sourceControlConfiguration` 。 此任务最多需要30秒。
+
+如果要将专用存储库与相关联 `sourceControlConfiguration` ，请完成 [从私有 Git 存储库应用配置](#apply-configuration-from-a-private-git-repository)中的步骤。
 
 ### <a name="using-azure-cli"></a>使用 Azure CLI
 
-使用的 Azure CLI 扩展将 `k8sconfiguration` 连接的群集链接到 [示例 Git 存储库](https://github.com/Azure/arc-k8s-demo)。 将此配置命名为 `cluster-config`，指示代理在 `cluster-config` 命名空间中部署运算符，并授予运算符 `cluster-admin` 权限。
+使用的 Azure CLI 扩展将 `k8sconfiguration` 连接的群集链接到 [示例 Git 存储库](https://github.com/Azure/arc-k8s-demo)。 
+1. 命名此配置 `cluster-config` 。
+1. 指示代理在命名空间中部署运算符 `cluster-config` 。
+1. 向操作员授予 `cluster-admin` 权限。
 
 ```azurecli
 az k8sconfiguration create --name cluster-config --cluster-name AzureArcTest1 --resource-group AzureArcTest --operator-instance-name cluster-config --operator-namespace cluster-config --repository-url https://github.com/Azure/arc-k8s-demo --scope cluster --cluster-type connectedClusters
@@ -93,97 +109,94 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 
 | 参数 | 格式 |
 | ------------- | ------------- |
-| --存储库-url | http [s]：//server/repo [. git] 或 git：//server/repo [git]
+| `--repository-url` | http [s]：//server/repo [. git] 或 git：//server/repo [git]
 
 #### <a name="use-a-private-git-repo-with-ssh-and-flux-created-keys"></a>使用带有 SSH 和 Flux 密钥的专用 Git 存储库
 
-| 参数 | 格式 | 注释
+| 参数 | 格式 | 说明
 | ------------- | ------------- | ------------- |
-| --存储库-url | ssh://user@server/repo[git] 或 user@server:repo [git] | `git@` 可能替换为 `user@`
+| `--repository-url` | ssh://user@server/repo[git] 或 user@server:repo [git] | `git@` 可以替换 `user@`
 
 > [!NOTE]
-> 必须将 Flux 生成的公钥添加到 Git 服务提供程序中的用户帐户。 如果向存储库添加密钥，而不是 > 用户帐户，请使用 `git@` 代替 `user@` URL 中的。 [查看更多详细信息](#apply-configuration-from-a-private-git-repository)
+> 必须将 Flux 生成的公钥添加到 Git 服务提供程序中的用户帐户。 如果向存储库而不是用户帐户添加密钥，请 `git@` 在 URL 中使用替代 `user@` 。 有关更多详细信息，请跳转到 [从私有 Git 存储库应用配置](#apply-configuration-from-a-private-git-repository) 部分。
 
 #### <a name="use-a-private-git-repo-with-ssh-and-user-provided-keys"></a>使用带有 SSH 和用户提供的密钥的专用 Git 存储库
 
-| 参数 | 格式 | 注释 |
+| 参数 | 格式 | 说明 |
 | ------------- | ------------- | ------------- |
-| --存储库-url  | ssh://user@server/repo[git] 或 user@server:repo [git] | `git@` 可能替换为 `user@` |
-| --ssh-私钥 | [PEM 格式](https://aka.ms/PEMformat)的 base64 编码的密钥 | 直接提供密钥 |
-| --ssh-私钥-文件 | 本地文件的完整路径 | 提供本地文件的完整路径，该文件包含 PEM 格式的密钥
+| `--repository-url`  | ssh://user@server/repo[git] 或 user@server:repo [git] | `git@` 可以替换 `user@` |
+| `--ssh-private-key` | [PEM 格式](https://aka.ms/PEMformat)的 base64 编码的密钥 | 直接提供密钥 |
+| `--ssh-private-key-file` | 本地文件的完整路径 | 提供本地文件的完整路径，该文件包含 PEM 格式的密钥
 
 > [!NOTE]
-> 直接或在文件中提供自己的私钥。 此密钥必须采用 [PEM 格式](https://aka.ms/PEMformat) ，并以换行 ( \n) 结束。  必须将关联的公钥添加到 Git 服务提供程序中的用户帐户。 如果将密钥添加到存储库而不是用户帐户，请使用 `git@` 代替 `user@` 。 [查看更多详细信息](#apply-configuration-from-a-private-git-repository)
+> 直接或在文件中提供自己的私钥。 此密钥必须采用 [PEM 格式](https://aka.ms/PEMformat) ，并以换行 ( \n) 结束。  必须将关联的公钥添加到 Git 服务提供程序中的用户帐户。 如果将密钥添加到存储库而不是用户帐户，请使用 `git@` 代替 `user@` 。 有关更多详细信息，请跳转到 [从私有 Git 存储库应用配置](#apply-configuration-from-a-private-git-repository) 部分。
 
 #### <a name="use-a-private-git-host-with-ssh-and-user-provided-known-hosts"></a>使用带有 SSH 和用户提供的已知主机的专用 Git 主机
 
-| 参数 | 格式 | 注释 |
+| 参数 | 格式 | 说明 |
 | ------------- | ------------- | ------------- |
-| --存储库-url  | ssh://user@server/repo[git] 或 user@server:repo [git] | `git@` 可能替换为 `user@` |
-| --基于 ssh 的主机 | base64 编码 | 直接提供的已知主机内容 |
-| --基于 ssh 的主机-文件 | 本地文件的完整路径 | 本地文件中提供的已知主机内容
+| `--repository-url`  | ssh://user@server/repo[git] 或 user@server:repo [git] | `git@` 可以替换 `user@` |
+| `--ssh-known-hosts` | base64 编码 | 直接提供已知的主机内容 |
+| `--ssh-known-hosts-file` | 本地文件的完整路径 | 在本地文件中提供已知的主机内容 |
 
 > [!NOTE]
-> Flux 运算符在其已知的主机文件中维护公用 Git 主机的列表，以便在建立 SSH 连接之前对 Git 存储库进行身份验证。 如果你使用的是不常见的 Git 存储库或你自己的 Git 主机，则可能需要提供主机密钥以确保 Flux 可以识别你的存储库。 可以直接或在文件中提供已知的主机内容。 [查看已知主机内容格式规范](https://aka.ms/KnownHostsFormat)。
-> 你可以将此与上述 SSH 密钥方案一起使用。
+> 为了在建立 SSH 连接之前对 Git 存储库进行身份验证，Flux 运算符在其已知的 hosts 文件中维护公用 Git 主机的列表。 如果你使用的是不常见的 Git 存储库或你自己的 Git 主机，则可能需要提供主机密钥以确保 Flux 可以识别你的存储库。 可以直接或在文件中提供 known_hosts 内容。 提供自己的内容时，请结合上述 SSH 密钥方案使用 [known_hosts 内容格式规范](https://aka.ms/KnownHostsFormat) 。
 
 #### <a name="use-a-private-git-repo-with-https"></a>使用具有 HTTPS 的专用 Git 存储库
 
-| 参数 | 格式 | 注释 |
+| 参数 | 格式 | 说明 |
 | ------------- | ------------- | ------------- |
-| --存储库-url | https://server/repo[git] | HTTPS 与基本身份验证 |
-| --https-用户 | raw 或 base64 编码 | HTTPS 用户名 |
-| --https-密钥 | raw 或 base64 编码 | HTTPS 个人访问令牌或密码
+| `--repository-url` | https://server/repo[git] | HTTPS 与基本身份验证 |
+| `--https-user` | raw 或 base64 编码 | HTTPS 用户名 |
+| `--https-key` | raw 或 base64 编码 | HTTPS 个人访问令牌或密码
 
 > [!NOTE]
-> HTTPS Helm release 专用身份验证仅支持 Helm 运算符图表版本 >= 1.2.0。  默认情况下使用版本1.2.0。
-> 目前，Azure Kubernetes Services 托管群集不支持 HTTPS Helm release 专用身份验证。
-> 如果需要 Flux 通过代理访问 Git 存储库，则需要使用代理设置更新 Azure Arc 代理。 [详细信息](./connect-cluster.md#connect-using-an-outbound-proxy-server)
+> HTTPS Helm release 专用身份验证仅支持 Helm 运算符图表版本 1.2.0 + (默认) 。
+> 目前，Azure Kubernetes Services 托管的群集不支持 HTTPS Helm release 专用身份验证。
+> 如果需要 Flux 通过代理访问 Git 存储库，则需要使用代理设置更新 Azure Arc 代理。 有关详细信息，请参阅 [使用出站代理服务器连接](./connect-cluster.md#connect-using-an-outbound-proxy-server)。
 
 #### <a name="additional-parameters"></a>附加参数
 
-若要自定义配置，可以使用以下更多参数：
+用以下可选参数自定义配置：
 
-`--enable-helm-operator`：可选开关，用于启用对 Helm 图表部署的支持。
+| 参数 | 说明 |
+| ------------- | ------------- |
+| `--enable-helm-operator`| 切换为启用对 Helm 图表部署的支持。 |
+| `--helm-operator-params` | Helm 运算符的图表值 (如果启用) 。 例如，`--set helm.versions=v3`。 |
+| `--helm-operator-version` |  (如果启用) ，则为 Helm 运算符的图表版本。 使用版本 1.2.0 +。 默认值： "1.2.0"。 |
+| `--operator-namespace` | 操作员命名空间的名称。 默认值： "default"。 最大值：23个字符。 |
+| `--operator-params` | 运算符的参数。 必须用单引号括起来。 例如： ```--operator-params='--git-readonly --sync-garbage-collection --git-branch=main' ``` 
 
-`--helm-operator-params`：Helm 运算符（若已启用）的可选图表值。  例如“--set helm.versions=v3”。
-
-`--helm-operator-version`：Helm 运算符（若已启用）的可选图表版本。 使用 "1.2.0" 或更高版本。 默认值： "1.2.0"。
-
-`--operator-namespace`：运算符命名空间的可选名称。 默认值： "default"。 最多23个字符。
-
-`--operator-params`：运算符的可选参数。 必须用单引号括起来。 例如： ```--operator-params='--git-readonly --sync-garbage-collection --git-branch=main' ```
-
---operator-params 中支持的选项
+##### <a name="options-supported-in----operator-params"></a>支持的选项  `--operator-params` ：
 
 | 选项 | 说明 |
 | ------------- | ------------- |
-| --git-branch  | 用于 Kubernetes 清单的 Git 存储库的分支。 默认为“master”。 较新的存储库具有名为 "main" 的根分支，在这种情况下，需要设置--git-branch = main。 |
-| --git-path  | Git 存储库中供 Flux 查找 Kubernetes 清单的相对路径。 |
-| --git-readonly | Git 存储库将被视为只读；Flux 不会尝试向其写入。 |
-| --manifest-generation  | 如果启用，Flux 将查找 .flux.yaml 并运行 Kustomize 或其他清单生成器。 |
-| --git-poll-interval  | 轮询 Git 存储库以获取新提交的周期。 默认值为“5m”（5 分钟）。 |
-| --sync-garbage-collection  | 如果启用，Flux 将删除由它创建但在 Git 中已不再存在的资源。 |
-| --git-label  | 用于跟踪同步进度和标记 Git 分支的标签。  默认值为“flux-sync”。 |
-| --git-user  | 用于 Git 提交的用户名。 |
-| --git-email  | 用于 Git 提交的电子邮件。 |
+| `--git-branch`  | 用于 Kubernetes 清单的 Git 存储库的分支。 默认为“master”。 较新的存储库具有名为的根分支 `main` ，在这种情况下，你需要设置 `--git-branch=main` 。 |
+| `--git-path`  | Git 存储库中供 Flux 查找 Kubernetes 清单的相对路径。 |
+| `--git-readonly` | Git 存储库将被视为只读；Flux 不会尝试向其写入。 |
+| `--manifest-generation`  | 如果启用，Flux 将查找 .flux.yaml 并运行 Kustomize 或其他清单生成器。 |
+| `--git-poll-interval`  | 轮询 Git 存储库以获取新提交的周期。 默认值为 `5m` (5 分钟) 。 |
+| `--sync-garbage-collection`  | 如果启用，Flux 将删除由它创建但在 Git 中已不再存在的资源。 |
+| `--git-label`  | 用于跟踪同步进度的标签。 用于标记 Git 分支。  默认值为 `flux-sync`。 |
+| `--git-user`  | 用于 Git 提交的用户名。 |
+| `--git-email`  | 用于 Git 提交的电子邮件。 
 
-* 如果未设置“--git-user”或“--git-email”（这意味着你不希望 Flux 向存储库进行写入），则将自动设置 --git-readonly（如果尚未设置）。
+如果你不希望 Flux 写入存储库， `--git-user` 或 `--git-email` 未设置，则 `--git-readonly` 将自动设置。
 
 有关详细信息，请参阅 [Flux 文档](https://aka.ms/FluxcdReadme)。
 
 > [!TIP]
-> 可以在启用了 Azure Arc Kubernetes 资源的 " **GitOps** " 选项卡的 Azure 门户中创建 sourceControlConfiguration。
+> 可以在 `sourceControlConfiguration` Azure Arc Enabled Kubernetes 资源的 " **GitOps** " 选项卡的 "Azure 门户中创建。
 
 ## <a name="validate-the-sourcecontrolconfiguration"></a>验证 sourceControlConfiguration
 
-使用 Azure CLI 验证是否已成功创建 `sourceControlConfiguration`。
+使用 Azure CLI 验证 `sourceControlConfiguration` 是否已成功创建。
 
 ```azurecli
 az k8sconfiguration show --name cluster-config --cluster-name AzureArcTest1 --resource-group AzureArcTest --cluster-type connectedClusters
 ```
 
-请注意，将使用合规状态、消息和调试信息更新 `sourceControlConfiguration` 资源。
+`sourceControlConfiguration`将用符合性状态、消息和调试信息更新资源。
 
 **输出：**
 
@@ -228,7 +241,7 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 
 当 `sourceControlConfiguration` 创建或更新时，可能会出现以下情况：
 
-1. Azure Arc `config-agent` 监视 azure 资源管理器 () 的新的或更新的配置 `Microsoft.KubernetesConfiguration/sourceControlConfigurations` ，并通知新的 `Pending` 配置。
+1. Azure Arc `config-agent` 监视 Azure 资源管理器 () 的新的或更新的配置 `Microsoft.KubernetesConfiguration/sourceControlConfigurations` ，并通知新的 `Pending` 配置。
 1. `config-agent`读取配置属性并创建目标命名空间。
 1. Azure Arc `controller-manager` 准备 Kubernetes 服务帐户，该帐户具有相应的权限 (`cluster` 或 `namespace` 范围) ，然后部署的实例 `flux` 。
 1. 如果将 SSH 选项与 Flux 生成的密钥一起使用，将 `flux` 生成 ssh 密钥并记录公钥。
@@ -236,19 +249,23 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 
 在预配过程中，`sourceControlConfiguration` 会经历几次状态更改。 使用上面的 `az k8sconfiguration show ...` 命令监视进度：
 
-1. `complianceStatus` -> `Pending`：表示初始状态和正在进行的状态
-1. `complianceStatus` -> `Installed`：`config-agent` 能够成功配置群集并部署 `flux` 且不会出错
-1. `complianceStatus` -> `Failed`：`config-agent` 在部署 `flux` 时遇到错误，`complianceStatus.message` 响应正文中应具有详细信息
+| 阶段更改 | 说明 |
+| ------------- | ------------- |
+| `complianceStatus`-> `Pending` | 表示初始状态和正在进行的状态。 |
+| `complianceStatus` -> `Installed`  | `config-agent` 能够成功配置群集并部署 `flux` 而不出现错误。 |
+| `complianceStatus` -> `Failed` | `config-agent` 部署时遇到错误 `flux` ，详细信息应在 `complianceStatus.message` 响应正文中可用。 |
 
 ## <a name="apply-configuration-from-a-private-git-repository"></a>应用私有 Git 存储库中的配置
 
-如果你使用的是私有 Git 存储库，则需要配置存储库中的 SSH 公钥。 您可以在特定的 Git 存储库或有权访问存储库的 Git 用户上配置公钥。 SSH 公钥将是您提供的公钥，或者是 Flux 生成的公钥。
+如果你使用的是私有 Git 存储库，则需要配置存储库中的 SSH 公钥。 SSH 公钥可以是 Flux 生成的公钥，也可以是您提供的公钥。 您可以在特定的 Git 存储库或有权访问存储库的 Git 用户上配置公钥。 
 
-**获取自己的公钥**
+### <a name="get-your-own-public-key"></a>获取自己的公钥
 
 如果生成了自己的 SSH 密钥，则已经有了私钥和公钥。
 
-**如果 Flux 生成密钥，请使用 Azure CLI 获取公钥 (有用)**
+#### <a name="get-the-public-key-using-azure-cli"></a>使用 Azure CLI 获取公钥 
+
+如果 Flux 生成密钥，则以下方法非常有用。
 
 ```console
 $ az k8sconfiguration show --resource-group <resource group name> --cluster-name <connected cluster name> --name <configuration name> --cluster-type connectedClusters --query 'repositoryPublicKey' 
@@ -256,45 +273,51 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAREDACTED"
 ```
 
-**如果 Flux 生成密钥，则从 Azure 门户获取公钥 (有用)**
+#### <a name="get-the-public-key-from-the-azure-portal"></a>从 Azure 门户中获取公钥
+
+如果 Flux 生成密钥，则以下方法非常有用。
 
 1. 在 Azure 门户中，导航到已连接的群集资源。
 2. 在 "资源" 页上，选择 "GitOps"，并查看此群集的配置列表。
 3. 选择使用专用 Git 存储库的配置。
 4. 在打开的上下文窗口中，在窗口底部复制“存储库公钥”。
 
-如果使用的是 GitHub，请使用以下2个选项之一：
+#### <a name="add-public-key-using-github"></a>使用 GitHub 添加公钥
 
-**选项1：将公钥添加到用户帐户 (适用于帐户中的所有存储库)**
+使用以下选项之一：
 
-1. 打开 GitHub，单击页面右上角的 "配置文件" 图标。
-2. 单击 "**设置**"
-3. 单击 **SSH 和 GPG 密钥**
-4. 单击 "**新建 SSH 密钥**"
-5. 提供标题
-6. 粘贴公钥（删除任何周围的引号）
-7. 单击 "**添加 SSH 密钥**"
+* 选项1：将公钥添加到用户帐户 (适用于帐户中的所有存储库) ：  
+    1. 打开 GitHub，并单击页面右上角的 "配置文件" 图标。
+    2. 单击“设置”  。
+    3. 单击 " **SSH 和 GPG 密钥**"。
+    4. 单击 " **新建 SSH 密钥**"。
+    5. 提供标题。
+    6. 粘贴公钥，而不包含任何周围的引号。
+    7. 单击 " **添加 SSH 密钥**"。
 
-**选项2：将公钥作为部署密钥添加到 Git 存储库， (仅适用于此存储库)**
+* 选项2：将公钥作为部署密钥添加到 Git 存储库， (仅适用于此存储库) ：  
+    1. 打开 GitHub 并导航到你的存储库。
+    1. 单击“设置”  。
+    1. 单击 " **部署密钥**"。
+    1. 单击 " **添加部署密钥**"。
+    1. 提供标题。
+    1. 选中 " **允许写访问**"。
+    1. 粘贴公钥，而不包含任何周围的引号。
+    1. 单击 " **添加密钥**"。
 
-1. 打开 GitHub，导航到你的存储库，转到 " **设置**"，然后 **部署密钥**
-2. 单击 "**添加部署密钥**"
-3. 提供标题
-4. 选中“允许写访问”
-5. 粘贴公钥（删除任何周围的引号）
-6. 单击 "**添加密钥**"
+#### <a name="add-public-key-using-an-azure-devops-repository"></a>使用 Azure DevOps 存储库添加公钥
 
-如果使用 Azure DevOps 存储库，请将密钥添加到 SSH 密钥
+使用以下步骤将密钥添加到 SSH 密钥：
 
-1. 在右上方的“用户设置”下（配置文件映像旁），单击“SSH 公钥” 
-1. 选择“+ 新建密钥”
-1. 提供名称
-1. 粘贴不带任何引号的公钥
-1. 单击“添加”
+1. 在右上方的 " **用户设置** " 下 (配置文件图像) 旁边的 " **SSH 公钥**"。
+1. 选择 "  **+ 新项**"。
+1. 提供一个名称。
+1. 粘贴公钥，而不包含任何周围的引号。
+1. 单击 **添加**。
 
 ## <a name="validate-the-kubernetes-configuration"></a>验证 Kubernetes 配置
 
-`config-agent`安装 `flux` 实例后，Git 存储库中保存的资源应该开始流向群集。 检查是否已创建命名空间、部署和资源：
+`config-agent`安装 `flux` 实例后，Git 存储库中保存的资源应该开始流向群集。 检查是否已使用以下命令创建命名空间、部署和资源：
 
 ```console
 kubectl get ns --show-labels
@@ -333,7 +356,7 @@ memcached        1/1     1            1           3h    memcached    memcached:1
 
 ## <a name="further-exploration"></a>深入了解
 
-可以了解作为配置存储库的一部分部署的其他资源：
+你可以使用以下方式浏览作为配置存储库的一部分部署的其他资源：
 
 ```console
 kubectl -n team-a get cm -o yaml
@@ -342,10 +365,10 @@ kubectl -n itops get all
 
 ## <a name="delete-a-configuration"></a>删除配置
 
-`sourceControlConfiguration`使用 Azure CLI 或 Azure 门户删除。  启动删除命令后， `sourceControlConfiguration` 会立即在 Azure 中删除资源，并从群集中完全删除关联的对象。  如果 `sourceControlConfiguration` 在删除时处于 "失败" 状态，则关联对象的完全删除最多可能需要一小时。
+`sourceControlConfiguration`使用 Azure CLI 或 Azure 门户删除。  启动删除命令后， `sourceControlConfiguration` 会立即在 Azure 中删除该资源。 从群集中完全删除关联的对象应在10分钟内发生。 如果 `sourceControlConfiguration` 在删除时处于 "失败" 状态，则关联对象的完全删除最多可能需要一小时。
 
 > [!NOTE]
-> 创建具有命名空间作用域的 sourceControlConfiguration 后，在命名空间上具有角色绑定的用户可以在 `edit` 此命名空间上部署工作负荷。 `sourceControlConfiguration`删除具有命名空间作用域的这一命名空间时，命名空间保持不变且不会被删除，以避免破坏这些其他工作负荷。  如果需要，可以通过 kubectl 手动删除该命名空间。
+> `sourceControlConfiguration` `namespace` 创建作用域后，具有 `edit` 命名空间上的角色绑定的用户可以在此命名空间上部署工作负荷。 `sourceControlConfiguration`删除具有命名空间作用域的这一命名空间时，命名空间保持不变且不会被删除，以避免破坏这些其他工作负荷。 如果需要，可以通过手动删除此命名空间 `kubectl` 。  
 > 删除后，不会删除对由跟踪的 Git 存储库中的部署所做的任何更改 `sourceControlConfiguration` 。
 
 ```azurecli

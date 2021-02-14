@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 48c6e1141a00635dd1fd82ef9053b2e77168e5e8
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 374a7dd37c23cdc8391485ec8f87f3427fc61ef1
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98956237"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99569508"
 ---
 ### <a name="examine-and-edit-the-sample-files"></a>检查和编辑示例文件
 
@@ -15,11 +15,11 @@ ms.locfileid: "98956237"
     部署模板是指边缘设备的部署清单。 它包含一些占位符值。 该 .env 文件包含这些变量的值。
 1. 转到 src/cloud-to-device-console-app 文件夹。 你可在此处看到 appsettings.json 文件和一些其他文件：
 
-    * c2d-console-app.csproj - Visual Studio Code 的项目文件*_。
-    _ operations.json - 希望程序运行的操作的列表。*_
-    _ Program.cs - 示例程序代码*_。 此代码：
+    * c2d-console-app.csproj - Visual Studio Code 的项目文件。
+    * operations.json - 希望程序运行的操作的列表。
+    * Program.cs - 示例程序代码。 此代码：
 
-        _ 加载应用设置。
+        * 加载应用设置。
         * 调用 IoT Edge 模块上的实时视频分析公开的直接方法。 可以通过调用模块的[直接方法](../../../direct-methods.md)来使用该模块分析实时视频流。
         * 暂停以检查“终端”窗口中程序的输出，并检查“输出”窗口中模块生成的事件 。
         * 调用直接方法以清理资源。
@@ -49,11 +49,11 @@ ms.locfileid: "98956237"
     
     ![设置 IoT 中心连接字符串](../../../media/quickstarts/set-iotconnection-string.png)
 
-> [!NOTE]
-> 系统可能会要求你提供 IoT 中心的内置终结点信息。 若要获取此信息，请在 Azure 门户中导航到 IoT 中心，然后在左侧导航窗格中查找“内置终结点”选项。 单击此处，在“与事件中心兼容的终结点”部分下查找“与事件中心兼容的终结点” 。 复制并使用框中的文本。 终结点将如下所示：  
-    ```
-    Endpoint=sb://iothub-ns-xxx.servicebus.windows.net/;SharedAccessKeyName=iothubowner;SharedAccessKey=XXX;EntityPath=<IoT Hub name>
-    ```
+    > [!NOTE]
+    > 系统可能会要求你提供 IoT 中心的内置终结点信息。 若要获取此信息，请在 Azure 门户中导航到 IoT 中心，然后在左侧导航窗格中查找“内置终结点”选项。 单击此处，在“与事件中心兼容的终结点”部分下查找“与事件中心兼容的终结点” 。 复制并使用框中的文本。 终结点将如下所示：  
+        ```
+        Endpoint=sb://iothub-ns-xxx.servicebus.windows.net/;SharedAccessKeyName=iothubowner;SharedAccessKey=XXX;EntityPath=<IoT Hub name>
+        ```
 
 1. 右键单击“src/edge/config/ deployment.yolov3.amd64.json”，并选择“为单个设备创建部署”。 
 
@@ -92,6 +92,11 @@ ms.locfileid: "98956237"
 
    ![开始监视](../../../media/quickstarts/start-monitoring-iothub-events.png) 
 
+> [!NOTE]
+> 系统可能会要求你提供 IoT 中心的内置终结点信息。 若要获取此信息，请在 Azure 门户中导航到 IoT 中心，然后在左侧导航窗格中查找“内置终结点”选项。 单击此处，在“与事件中心兼容的终结点”部分下查找“与事件中心兼容的终结点” 。 复制并使用框中的文本。 终结点将如下所示：  
+    ```
+    Endpoint=sb://iothub-ns-xxx.servicebus.windows.net/;SharedAccessKeyName=iothubowner;SharedAccessKey=XXX;EntityPath=<IoT Hub name>
+    ```
 ### <a name="run-the-sample-program"></a>运行示例程序
 
 1. 若要启动调试会话，请选择 F5 键。 你可在“终端”窗口中看到打印的消息。

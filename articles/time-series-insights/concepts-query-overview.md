@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 01/22/2021
 ms.custom: seodec18
-ms.openlocfilehash: bf743bf1997a339664a6da2e5c02f1bcc1deea26
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: b1b055fa7f083bd8bccda16498e2894d5d67eace
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736745"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100374127"
 ---
 # <a name="querying-data-from-azure-time-series-insights-gen2"></a>查询来自 Azure 时序见解第 2 代的数据
 
@@ -54,13 +54,12 @@ Azure 时序见解第 2 代使用丰富的基于字符串的表达式语言[时�
 
 ## <a name="time-series-query-tsq-apis"></a>时序查询 (TSQ) API
 
-这些 API 对多层存储解决方案中的两种存储（暖存储和冷存储）都可用。 查询 URL 参数用于指定查询应该在其上执行的[存储类型](/rest/api/time-series-insights/dataaccessgen2/query/execute#uri-parameters)：
+这些 API 对多层存储解决方案中的两种存储（暖存储和冷存储）都可用。 
 
 * [获取事件 API](/rest/api/time-series-insights/dataaccessgen2/query/execute#getevents)：用于查询和检索原始事件和关联的事件时间戳（当它们从源提供程序记录在 Azure 时序见解第 2 代中时）。 此 API 可用于从给定时序 ID 和搜索范围中检索原始事件。 此 API 支持分页，可以检索选定输入的完整响应数据集。
 
   > [!IMPORTANT]
-
-  > * 根据 [JSON 平展和转义规则即将发生的变化](./ingestion-rules-update.md)中的说明，数组将会被存储为动态类型。 若要访问存储为这种类型的有效负载属性，只能通过获取事件 API。
+  > 根据 [JSON 平展和转义规则即将发生的变化](./ingestion-rules-update.md)中的说明，数组将会被存储为动态类型。 若要访问存储为这种类型的有效负载属性，只能通过获取事件 API。
 
 * [获取时序 API](/rest/api/time-series-insights/dataaccessgen2/query/execute#getseries)：此 API 对原始事件应用变量定义的计算，可用于查询和检索计算值与关联的事件时间戳。 这些变量可以在时序模型中定义，或者在查询中以内联方式提供。 此 API 支持分页，可以检索选定输入的完整响应数据集。
 
@@ -69,6 +68,16 @@ Azure 时序见解第 2 代使用丰富的基于字符串的表达式语言[时�
   对于指定的搜索范围和间隔，此 API 将根据每个间隔和变量返回时序 ID 的聚合响应。 响应数据集中的间隔数的计算方式是，统计纪元计时周期数（自 Unix 纪元 1970 年 1 月 1 日开始消逝的毫秒数），然后将计时周期数除以查询中指定的间隔跨度大小。
 
   响应集中返回的时间戳与左间隔边界相关，而与间隔中的采样事件无关。
+
+
+### <a name="selecting-store-type"></a>选择商店类型
+
+上述 Api 只能针对两种存储类型之一执行， (冷或温) 一次调用。 查询 URL 参数用于指定应在其上执行查询的 [存储类型](/rest/api/time-series-insights/dataaccessgen2/query/execute#uri-parameters) 。 
+
+如果未指定任何参数，则默认情况下将在冷存储上执行查询。 如果查询跨越与冷存储和热存储重叠的时间范围，则建议将查询路由到冷存储，以获得最佳体验，因为温存储只包含部分数据。 
+
+[Azure 时序见解资源管理器](./concepts-ux-panels.md)和[Power BI 连接器](./how-to-connect-power-bi.md)调用上述 api，并将自动选择正确的 storeType 参数（如果相关）。 
+
 
 ## <a name="next-steps"></a>后续步骤
 

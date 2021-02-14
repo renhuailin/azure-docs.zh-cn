@@ -1,22 +1,18 @@
 ---
 title: 使用 Azure 数据工厂从 SFTP 服务器移动数据
 description: 了解如何使用 Azure 数据工厂从本地或云 SFTP 服务器移动数据。
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
+ms.author: jingwang
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/12/2018
-ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 3f78934fb11dd4f9e34bf27d565d471d47f250b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b40e9dc83629362da899d2b5ff29ad42e21c4e32
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85847679"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100382644"
 ---
 # <a name="move-data-from-an-sftp-server-using-azure-data-factory"></a>使用 Azure 数据工厂从 SFTP 服务器移动数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -34,21 +30,21 @@ ms.locfileid: "85847679"
 > 复制活动在将源文件成功复制到目标后不会删除该文件。 如果需要在成功复制后删除源文件，请创建一个自定义活动，以便删除该文件并在管道中使用复制活动。
 
 ## <a name="supported-scenarios-and-authentication-types"></a>支持的方案和身份验证类型
-可以使用此 SFTP 连接器从**云 SFTP 服务器和本地 SFTP 服务器**复制数据。 连接到 SFTP 服务器时，支持**基本**和 **SshPublicKey** 身份验证类型。
+可以使用此 SFTP 连接器从 **云 SFTP 服务器和本地 SFTP 服务器** 复制数据。 连接到 SFTP 服务器时，支持 **基本** 和 **SshPublicKey** 身份验证类型。
 
 从本地 SFTP 服务器复制数据时，需要在本地环境/Azure VM 中安装数据管理网关。 请参阅[数据管理网关](data-factory-data-management-gateway.md)，了解有关网关的详细信息。 请参阅[在本地位置和云之间移动数据](data-factory-move-data-between-onprem-and-cloud.md)一文，了解设置和使用网关的分步说明。
 
 ## <a name="getting-started"></a>入门
 可以使用不同的工具/API 创建包含复制活动的管道，以从 SFTP 源移动数据。
 
-- 创建管道的最简单方法是使用**** 复制向导。 请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。
+- 创建管道的最简单方法是使用复制向导。 请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。
 
-- 你还可以使用以下工具创建管道： **Visual Studio**、 **Azure PowerShell**、 **AZURE 资源管理器模板**、 **.net API**和 **REST API**。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。 有关将数据从 SFTP 服务器复制到 Azure Blob 存储的 JSON 示例，请参阅本文的 [JSON 示例：将数据从 SFTP 服务器复制到 Azure Blob](#json-example-copy-data-from-sftp-server-to-azure-blob) 部分。
+- 你还可以使用以下工具创建管道： **Visual Studio**、 **Azure PowerShell**、 **AZURE 资源管理器模板**、 **.net API** 和 **REST API**。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。 有关将数据从 SFTP 服务器复制到 Azure Blob 存储的 JSON 示例，请参阅本文的 [JSON 示例：将数据从 SFTP 服务器复制到 Azure Blob](#json-example-copy-data-from-sftp-server-to-azure-blob) 部分。
 
 ## <a name="linked-service-properties"></a>链接服务属性
 下表提供 FTP 链接服务专属的 JSON 元素描述。
 
-| 属性 | 说明 | 必须 |
+| properties | 说明 | 必须 |
 | --- | --- | --- |
 | type | type 属性必须设置为 `Sftp`。 |是 |
 | host | SFTP 服务器的名称或 IP 地址。 |是 |
@@ -63,7 +59,7 @@ ms.locfileid: "85847679"
 
 要使用基本身份验证，请将 `authenticationType` 设置为 `Basic`，并指定除上一部分所述 SFTP 连接器泛型属性以外的下列属性：
 
-| 属性 | 说明 | 必须 |
+| properties | 说明 | 必须 |
 | --- | --- | --- |
 | username | 有权访问 SFTP 服务器的用户。 |是 |
 | password | 用户 (username) 的密码。 | 是 |
@@ -113,7 +109,7 @@ ms.locfileid: "85847679"
 
 若要使用 SSH 公钥身份验证，请将 `authenticationType` 设置为`SshPublicKey`，并且除上一部分所述 SFTP 连接器泛型属性外，还需指定下列属性：
 
-| 属性 | 说明 | 必须 |
+| properties | 说明 | 必须 |
 | --- | --- | --- |
 | username |有权访问 SFTP 服务器的用户 |是 |
 | privateKeyPath | 指定网关可以访问的私钥文件的绝对路径。 | 指定 `privateKeyPath` 或 `privateKeyContent`。 <br><br> 仅当从本地 SFTP 服务器复制数据时才适用。 |
@@ -169,9 +165,9 @@ ms.locfileid: "85847679"
 
 每个数据集类型的 **typeProperties** 节都不同。 它提供特定于数据集类型的信息。 **FileShare** 数据集类型的 typeProperties 节具有以下属性：
 
-| 属性 | 说明 | 必须 |
+| properties | 说明 | 必须 |
 | --- | --- | --- |
-| folderPath |文件夹的子路径。 请对字符串中的特殊字符使用转义符“\”。 有关示例，请参阅“链接服务和数据集定义示例”。<br/><br/>可将此属性与 **partitionBy** 相组合，基于切片开始/结束日期时间构成文件夹路径。 |是 |
+| folderPath |文件夹的子路径。 对于字符串中的特殊字符，请使用转义符 "\"。 有关示例，请参阅“链接服务和数据集定义示例”。<br/><br/>可将此属性与 **partitionBy** 相组合，基于切片开始/结束日期时间构成文件夹路径。 |是 |
 | fileName |指定 **folderPath** 中的文件的名称（如果你想要引用该文件夹中的特定文件）。 如果没有为此属性指定任何值，表将指向文件夹中的所有文件。<br/><br/>如果没有为输出数据集指定 fileName，生成的文件的名称会采用以下格式： <br/><br/>`Data.<Guid>.txt` (示例： Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |否 |
 | fileFilter |指定在 folderPath 中选择一部分文件而不是所有文件时要使用的筛选器。<br/><br/>允许的值为：`*`（多个字符）和 `?`（单个字符）。<br/><br/>示例 1：`"fileFilter": "*.log"`<br/>示例 2：`"fileFilter": 2014-1-?.txt"`<br/><br/> fileFilter 适用于 FileShare 输入数据集。 HDFS 不支持此属性。 |否 |
 | partitionedBy |partitionedBy 可用于指定时序数据的动态 folderPath 和 filename。 例如，folderPath 可针对每小时的数据参数化。 |否 |
@@ -224,7 +220,7 @@ ms.locfileid: "85847679"
 请参阅 [Azure 数据工厂中的文件和压缩格式](data-factory-supported-file-and-compression-formats.md)一文了解详细信息。
 
 ## <a name="json-example-copy-data-from-sftp-server-to-azure-blob"></a>JSON 示例：将数据从 SFTP 服务器复制到 Azure Blob
-下面的示例提供示例 JSON 定义，可用于通过使用 [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) 或 [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)创建管道。 它们演示了如何将数据从 SFTP 源复制到 Azure Blob 存储。 但是，可使用 Azure 数据工厂中的复制活动将数据**直接**从任何源复制到[此处](data-factory-data-movement-activities.md#supported-data-stores-and-formats)所述的任何接收器。
+下面的示例提供示例 JSON 定义，可用于通过使用 [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) 或 [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)创建管道。 它们演示了如何将数据从 SFTP 源复制到 Azure Blob 存储。 但是，可使用 Azure 数据工厂中的复制活动将数据 **直接** 从任何源复制到 [此处](data-factory-data-movement-activities.md#supported-data-stores-and-formats)所述的任何接收器。
 
 > [!IMPORTANT]
 > 此示例提供 JSON 代码段。 它不包括创建数据工厂的分步说明。 请参阅文章[在本地位置和云之间移动数据](data-factory-move-data-between-onprem-and-cloud.md)以获取分步说明。
@@ -411,6 +407,6 @@ ms.locfileid: "85847679"
 若要了解影响 Azure 数据工厂中数据移动（复制活动）性能的关键因素及各种优化方法，请参阅[复制活动性能和优化指南](data-factory-copy-activity-performance.md)。
 
 ## <a name="next-steps"></a>后续步骤
-请参阅下列文章：
+请参阅以下文章：
 
 * [复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)，了解创建包含复制活动的管道的分步说明。

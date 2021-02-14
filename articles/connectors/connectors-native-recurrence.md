@@ -6,16 +6,16 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: conceptual
 ms.date: 12/18/2020
-ms.openlocfilehash: 9565ad1efc5ae3dc03b94c78ce8ce52e8dd48c65
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 3749a7080bf17c020b48ae3ebc3cff3aa998eeef
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98019187"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100382287"
 ---
 # <a name="create-schedule-and-run-recurring-tasks-and-workflows-with-the-recurrence-trigger-in-azure-logic-apps"></a>使用 Azure 逻辑应用中的定期触发器创建、计划和运行重复任务和工作流
 
-若要根据特定计划定期运行任务、进程或作业，可以在 Azure 逻辑应用中以本机方式运行的内置 **定期** 触发器启动逻辑应用工作流。 可以设置启动工作流的日期、时间和时区，以及设置设置重复该工作流的定期计划。 如果触发器由于某种原因（例如，由于中断或禁用的工作流）而发生了重复，则此触发器不会处理丢失的重复，但会在下一个计划间隔后重启。 有关内置计划触发器和操作的详细信息，请参阅[使用 Azure 逻辑应用计划和运行定期自动执行的任务和工作流](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md)。
+若要按特定的计划定期运行任务、进程或作业，可以使用内置的“定期”触发器（在 Azure 逻辑应用中以本机方式运行）来启动逻辑应用工作流。 可以设置启动工作流的日期、时间和时区，以及设置设置重复该工作流的定期计划。 如果触发器由于某种原因错过了重复周期（例如，由于中断或工作流禁用而错过），则此触发器不会处理错过的重复周期，但会按下一个计划的时间间隔重启重复周期。 有关内置计划触发器和操作的详细信息，请参阅[使用 Azure 逻辑应用计划和运行定期自动执行的任务和工作流](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md)。
 
 下面是此触发器支持的一些模式，以及更高级的定期计划和复杂计划：
 
@@ -59,12 +59,12 @@ ms.locfileid: "98019187"
    ||||||
 
    > [!IMPORTANT]
-   > 如果重复周期未指定高级计划选项，则将来的重复周期将基于上次运行时间。
-   > 这些重复周期的开始时间可能会因存储调用期间的延迟等因素而发生偏移。 为了确保逻辑应用不会错过重复周期，特别是当频率为几天或更长的时间时，请使用以下选项之一：
+   > 如果某个定期触发未指定具体的[开始日期和时间](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#start-time)，则在保存或部署逻辑应用时，会立即运行第一次定期触发，而不管触发器的定期设置如何。 若要避免此行为，请提供你希望运行第一次定期触发的开始日期和时间。
+   >
+   > 如果某个定期触发未指定任何其他高级计划选项（例如具体时间）来运行将来的定期触发，则这些将来的定期触发会以上一次运行时间为基础。 因此，这些定期触发的开始时间可能会因存储调用期间的延迟等因素而发生偏移。 
+   > 为了确保逻辑应用不会错过定期触发（特别是在频率为几天（或更长时间）一次的情况下），请尝试以下选项：
    > 
-   > * 提供重复周期的开始时间。
-   > 
-   > * 使用 **在这两个小时内** 命名的属性，指定在何时运行定期的小时和分钟 **数。**
+   > * 提供定期触发的开始日期和时间，以及运行后续定期触发的具体时间，这可以通过“在这些小时”和“在这些分钟”属性来进行，仅适用于“天”和“周”频率。
    > 
    > * 使用[滑动窗口触发器](../connectors/connectors-native-sliding-window.md)，而不是使用重复触发器。
 
@@ -77,7 +77,7 @@ ms.locfileid: "98019187"
    | **时区** | `timeZone` | 否 | String | 仅当指定启动时间时才适用，因为此触发器不接受 [UTC 时差](https://en.wikipedia.org/wiki/UTC_offset)。 选择要应用的时区。 |
    | **开始时间** | `startTime` | 否 | String | 提供一个开始日期和时间，该日期和时间最长为49年，并且必须遵循[utc 日期时间格式](https://en.wikipedia.org/wiki/Coordinated_Universal_Time)的[ISO 8601 日期时间规范](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)，但没有[utc 时差](https://en.wikipedia.org/wiki/UTC_offset)： <p><p>如果选择了时区，则格式为 YYYY-MM-DDThh:mm:ss <p>-或- <p>如果未选择时区，则格式为 YYYY-MM-DDThh:mm:ssZ <p>例如，如果需要 2020 年 9 月 18 日下午 2 点，则指定“2020-09-18T14:00:00”并选择时区（如“太平洋标准时间”）。 或者，指定“2020-09-18T14:00:00Z”且不选择时区。 <p><p>**重要提示：** 如果未选择时区，必须在末尾添加字母“Z”（无空格）。 这个“Z”指等效的[航海时间](https://en.wikipedia.org/wiki/Nautical_time)。 如果选择时区值，则无需在“开始时间”值的末尾添加“Z”。 如果这样做，则逻辑应用会忽略时区值，因为“Z”表示 UTC 时间格式。 <p><p>对于简单计划，开始时间指首次运行时间；对于复杂计划，触发器的激发时间不会早于开始时间。 [*可通过哪些方式使用开始日期和时间？*](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#start-time) |
    | **在这些日期** | `weekDays` | 否 | 字符串或字符串数组 | 如果选择“周”，则可以选择要运行工作流的一天或多天：“星期一”、“星期二”、“星期三”、“星期四”、“星期五”、“星期六”和“星期日”       |
-   | **在这些小时** | `hours` | 否 | 整数或整数数组 | 如果选择了“天”或“周”，则可以从 0 到 23 的范围内选择一个或多个整数，作为当天要运行工作流的小时时间。 <p><p>例如，如果指定“10”、“12”和“14”，则会将上午 10 点、中午 12 点和下午 2 点作为当天的小时，但当天的分钟则根据定期启动的时间计算。 若要设置一天中的特定分钟数，例如 10:00 AM、12:00 PM 和 2:00 PM，请使用 **在此分钟** 名为的属性指定这些值。 |
+   | **在这些小时** | `hours` | 否 | 整数或整数数组 | 如果选择了“天”或“周”，则可以从 0 到 23 的范围内选择一个或多个整数，作为当天要运行工作流的小时时间。 <p><p>例如，如果指定“10”、“12”和“14”，则会将上午 10 点、中午 12 点和下午 2 点作为当天的小时，但当天的分钟则根据定期启动的时间计算。 若要设置一天中的特定分钟，例如上午 10 点、中午 12 点和下午 2 点，请使用“在这些分钟”属性指定这些值。 |
    | **在这些分钟** | `minutes` | 否 | 整数或整数数组 | 如果选择了“天”或“周”，则可以从 0 到 59 的范围内选择一个或多个整数，作为要运行工作流的小时时间的分钟时间。 <p>例如，可以指定“30”作为分钟标记并使用前面示例中的当天小时时间，这样，便可以指定10:30 AM、12:30 PM 和 2:30 PM 作为开始时间。 <p>**注意**：有时，已触发运行的时间戳可能与计划时间相差最多 1 分钟。 如果需要将时间戳完全按计划传递给后续操作，则可以使用模板表达式来相应地更改时间戳。 有关详细信息，请参阅[表达式的日期和时间函数](../logic-apps/workflow-definition-language-functions-reference.md#date-time-functions)。 |
    |||||
 
@@ -129,7 +129,7 @@ ms.locfileid: "98019187"
 
 ## <a name="trigger-recurrence-shift-between-daylight-saving-time-and-standard-time"></a>在夏时制和标准时间之间触发重复转换
 
-定期内置触发器遵循您设置的计划，包括您指定的任何时区。 如果未选择时区，则夏令时 (DST) 可能会影响触发器运行的时间，例如，在 DST 开始时，将开始时间前移一小时，在 DST 结束时将开始时间向后移动一小时。
+定期内置触发器遵循你设置的计划，包括你指定的任何时区。 如果未选择时区，则夏令时 (DST) 可能会影响触发器运行的时间，例如，在 DST 开始时，将开始时间前移一小时，在 DST 结束时将开始时间向后移动一小时。
 
 若要避免此变化，以便在指定的开始时间运行逻辑应用，请确保选择时区。 这样一来，逻辑应用的 UTC 时间也会随季节时间的变化而变化。 但是，当时间发生变化时，windows 可能会导致问题。 有关详细信息和示例，请参阅 [夏令时和标准时间定期](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#daylight-saving-standard-time)。
 

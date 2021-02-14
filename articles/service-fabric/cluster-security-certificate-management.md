@@ -4,12 +4,12 @@ description: 了解如何在使用 X.509 证书保护的 Service Fabric 群集�
 ms.topic: conceptual
 ms.date: 04/10/2020
 ms.custom: sfrev
-ms.openlocfilehash: 722c84c25cb5188e45dd96363bab9af6ff93f6dc
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: a8a7e8954f3c9d5b54c2e1ed9caa330ef92d4512
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97901260"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100099500"
 ---
 # <a name="certificate-management-in-service-fabric-clusters"></a>Service Fabric 群集中的证书管理
 
@@ -109,12 +109,12 @@ Service Fabric 自身将承担以下职责：
 
 之前我们曾见到 Azure Key Vault 支持自动证书轮换：关联的证书策略定义在保管库中轮换证书的时间点，不管在表示时采用的是过期前的天数还是总生存期的百分比。 必须在此时间点之后（现在的旧证书过期之前）调用预配代理，然后才能将此新证书分发到群集的所有节点。 如果证书的到期日期（当前在群集中使用）早于预先确定的时间间隔，Service Fabric 会协助发出运行状况警告。 配置为观察保管库证书的自动预配代理（即 KeyVault VM 扩展）会定期轮询保管库、检测轮换情况，以及检索并安装新证书。 通过 VM/VMSS 的“机密”功能进行预配时，需要一位经授权的操作员使用与新证书相对应的进行了版本控制的 KeyVault URI 来更新 VM/VMSS。
 
-在这两种情况下，旋转的证书现已预配到所有节点，并且我们介绍了用于检测循环 Service Fabric 采用的机制。接下来，让我们看看会发生什么情况-假设应用到使用者公用名声明的群集证书
-  - 对于内部和群集中的新连接，Service Fabric 运行时将查找并选择最近颁发的匹配证书 ("NotBefore" 属性) 的最大值。 请注意，这是以前版本的 Service Fabric 运行时的更改。
+不管什么情况，轮换的证书现在都已预配到了所有节点，而我们也介绍了 Service Fabric 采用的用于检测轮换情况的机制；接下来，让我们看看会发生什么 - 假设轮换适用于通过使用者公用名称声明的群集证书
+  - 对于群集内部以及与群集之间的新连接，Service Fabric 运行时将查找并选择最近颁发的匹配证书（“NotBefore”属性的最大值）。 请注意，这是对以前版本的 Service Fabric 运行时的更改。
   - 现有连接将保持活动状态，或者获允以自然方式过期或终止；系统会通知内部处理程序：存在新的匹配项
 
 > [!NOTE] 
-> 在版本 7.2.445 (7.2 CU4) 之前，Service Fabric 选择最早过期证书 (最远的 "NotAfter" 属性的证书) 
+> 在版本 7.2.445 (7.2 CU4) 之前，Service Fabric 选择了最远的即将到期的证书（具有最远“NotAfter”属性的证书）
 
 这将转换为以下重要观察结果：
   - 如果续订证书的到期日期早于当前使用的证书的到期日期，系统会忽略续订证书。
@@ -427,6 +427,7 @@ Service Fabric 自身将承担以下职责：
 你可能已注意到 KVVM 扩展的“linkOnRenewal”标志，以及它已设置为 false 这一事实。 在这里，我们将深入探讨此标志控制的行为及其对群集功能的影响。 请注意，此行为特定于 Windows。
 
 根据其[定义](../virtual-machines/extensions/key-vault-windows.md#extension-schema)：
+
 ```json
 "linkOnRenewal": <Only Windows. This feature enables auto-rotation of SSL certificates, without necessitating a re-deployment or binding.  e.g.: false>,
 ```
@@ -456,7 +457,7 @@ A 的 SAN 列表已完全包含在 C 的中，因此续订 = c. 指纹;B 的 SAN
 
 若要释放托管标识的创建操作或将其分配给其他资源，部署操作员必须具有订阅或资源组中的必需角色 (ManagedIdentityOperator)，以及管理模板中引用的其他资源所需的角色。 
 
-请回想一下，从安全角度来看，可以将虚拟机（规模集）视为与其 Azure 标识相关的安全边界。 这意味着，在 VM 上托管的任何应用程序原则上都可以获取一个表示 VM 的访问令牌 - 托管标识访问令牌是从未经身份验证的 IMDS 终结点获取的。 如果将 VM 视为共享的或多租户的环境，则可能不会指示此检索群集证书的方法。 不过，它是适用于证书自动滚动更新的唯一预配机制。
+从安全角度来看，请记住， (规模集) 的虚拟机被视为与其 Azure 标识有关的安全边界。 这意味着，在 VM 上托管的任何应用程序原则上都可以获取一个表示 VM 的访问令牌 - 托管标识访问令牌是从未经身份验证的 IMDS 终结点获取的。 如果将 VM 视为共享的或多租户的环境，则可能不会指示此检索群集证书的方法。 不过，它是适用于证书自动滚动更新的唯一预配机制。
 
 ## <a name="troubleshooting-and-frequently-asked-questions"></a>故障排除和常见问题解答
 

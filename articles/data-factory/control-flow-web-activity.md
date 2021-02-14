@@ -1,22 +1,17 @@
 ---
 title: Azure 数据工厂中的 Web 活动
 description: 了解如何使用 Web 活动（数据工厂支持的控制流活动之一）从管道调用 REST 终结点。
-services: data-factory
-documentationcenter: ''
 author: dcstwh
 ms.author: weetok
-manager: jroth
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/19/2018
-ms.openlocfilehash: fbe37152f4ff1ce24754bc2d7b968c8e1c76ca10
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.openlocfilehash: e4578b41e5cbb62c8a1bfa0c48d4fd60d042a506
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97387711"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100361513"
 ---
 # <a name="web-activity-in-azure-data-factory"></a>Azure 数据工厂中的 Web 活动
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -73,7 +68,7 @@ Web 活动可用于从数据工厂管道调用自定义的 REST 终结点。 可
 
 ## <a name="type-properties"></a>Type 属性
 
-properties | 说明 | 允许的值 | 必须
+属性 | 说明 | 允许的值 | 必须
 -------- | ----------- | -------------- | --------
 name | Web 活动的名称 | String | 是
 type | 必须设置为 **WebActivity**。 | String | 是

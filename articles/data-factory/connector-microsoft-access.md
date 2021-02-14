@@ -1,22 +1,18 @@
 ---
 title: 从/向 Microsoft Access 复制数据
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动从/向 Microsoft Access 复制数据。
-services: data-factory
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/28/2020
-ms.openlocfilehash: 00966af4e0fc83015726d86a4c7cb5724ad38633
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a17876385e3a48543c8185a0f48a3e4016afa1a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85513359"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100374382"
 ---
 # <a name="copy-data-from-and-to-microsoft-access-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 Microsoft Access 复制数据
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -55,7 +51,7 @@ Microsoft Access 链接服务支持以下属性：
 | 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**MicrosoftAccess** | 是 |
-| connectionString | 不包括凭据部分的 ODBC 连接字符串。 可以指定连接字符串，也可以利用在 Integration Runtime 计算机上设置的系统 DSN（数据源名称）（仍需要相应地指定链接服务中的凭据部分）。<br> 还可以将密码放在 Azure 密钥保管库中，并从连接字符串中拉取  `password`  配置。 有关更多详细信息，请参阅 [在 Azure 密钥保管库中存储凭据](store-credentials-in-key-vault.md) 。| 是 |
+| connectionString | 不包括凭据部分的 ODBC 连接字符串。 可以指定连接字符串，也可以利用在 Integration Runtime 计算机上设置的系统 DSN（数据源名称）（仍需要相应地指定链接服务中的凭据部分）。<br> 还可以将密码放在 Azure 密钥保管库中，并从连接字符串中拉取 `password` 配置。 有关更多详细信息，请参阅[在 Azure Key Vault 中存储凭据](store-credentials-in-key-vault.md)。| 是 |
 | authenticationType | 用于连接 Microsoft Access 数据存储的身份验证类型。<br/>允许值包括：**Basic** 和 **Anonymous**。 | 是 |
 | userName | 如果使用基本身份验证，请指定用户名。 | 否 |
 | password | 指定为 userName 指定的用户帐户的密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 否 |

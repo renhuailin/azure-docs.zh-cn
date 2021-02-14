@@ -11,12 +11,12 @@ ms.custom:
 - mqtt
 - device-developer
 zone_pivot_groups: programming-languages-set-twenty-six
-ms.openlocfilehash: 2757d696f5922263abf87399d6491e46b5e5513c
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 8f1b5eabe235d107b48dc7b2db5b6d4b1188a3fa
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033819"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99833960"
 ---
 # <a name="tutorial-create-and-connect-a-client-application-to-your-azure-iot-central-application"></a>教程：创建客户端应用程序并将其连接到 Azure IoT Central 应用程序
 
@@ -71,6 +71,10 @@ ms.locfileid: "97033819"
 :::image type="content" source="media/tutorial-connect-device/raw-data.png" alt-text="原始数据视图":::
 
 在此视图中，你可以选择要显示的列，并设置要查看的时间范围。 “未建模数据”列显示设备中与设备模板中的任何属性或遥测定义不匹配的数据。
+
+## <a name="clean-up-resources"></a>清理资源
+
+[!INCLUDE [iot-central-clean-up-resources](../../../includes/iot-central-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

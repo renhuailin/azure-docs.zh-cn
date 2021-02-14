@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d8a7bb620b7fcc9c878986d3575e22bb6f0f77bc
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: b1bcba264589d6cbe9b4f671e1e4f2c9b1dbf2c5
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97724100"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594242"
 ---
 # <a name="tutorial-securing-azure-remote-rendering-and-model-storage"></a>教程：保护 Azure 远程渲染和模型存储
 
@@ -41,16 +41,16 @@ ms.locfileid: "97724100"
 
 使用链接的 blob 存储时，可以使用略微不同的方法来加载模型：
 
-```csharp
-var loadModelParams = new LoadModelFromSASParams(modelPath, modelEntity);
-var loadModelAsync = ARRSessionService.CurrentActiveSession.Actions.LoadModelFromSASAsync(loadModelParams);
+```cs
+var loadModelParams = new LoadModelFromSasOptions(modelPath, modelEntity);
+var task = ARRSessionService.CurrentActiveSession.Connection.LoadModelFromSasAsync(loadModelParams);
 ```
 
-上述行使用 `FromSAS` 版本的参数和会话操作。 必须将它们转换为非 SAS 版本：
+上述行使用 `FromSas` 版本的参数和会话操作。 必须将它们转换为非 SAS 版本：
 
-```csharp
-var loadModelParams = new LoadModelParams(storageAccountPath, blobContainerName, modelPath, modelEntity);
-var loadModelAsync = ARRSessionService.CurrentActiveSession.Actions.LoadModelAsync(loadModelParams);
+```cs
+var loadModelParams = new LoadModelOptions(storageAccountPath, blobContainerName, modelPath, modelEntity);
+var task = ARRSessionService.CurrentActiveSession.Connection.LoadModelAsync(loadModelParams);
 ```
 
 让我们修改 RemoteRenderingCoordinator 以从链接的 blob 存储帐户加载自定义模型。
@@ -58,7 +58,7 @@ var loadModelAsync = ARRSessionService.CurrentActiveSession.Actions.LoadModelAsy
 1. 如果尚未执行此操作，请完成[操作说明：链接存储帐户](../../../how-tos/create-an-account.md#link-storage-accounts)，向 ARR 实例授予访问 Blob 存储实例的权限。
 1. 将以下已修改的 LoadModel 方法添加到当前 LoadModel 方法正下方的 RemoteRenderingCoordinator 中  ：
 
-    ```csharp
+    ```cs
     /// <summary>
     /// Loads a model from blob storage that has been linked to the ARR instance
     /// </summary>
@@ -68,10 +68,10 @@ var loadModelAsync = ARRSessionService.CurrentActiveSession.Actions.LoadModelAsy
     /// <param name="parent">The parent Transform for this remote entity</param>
     /// <param name="progress">A call back method that accepts a float progress value [0->1]</param>
     /// <returns></returns>
-    public async Task<Entity> LoadModel(string storageAccountName, string blobContainerName, string modelPath, Transform parent = null, ProgressHandler progress = null)
+    public async Task<Entity> LoadModel(string storageAccountName, string blobContainerName, string modelPath, Transform parent = null, Action<float> progress = null)
     {
         //Create a root object to parent a loaded model to
-        var modelEntity = ARRSessionService.CurrentActiveSession.Actions.CreateEntity();
+        var modelEntity = ARRSessionService.CurrentActiveSession.Connection.CreateEntity();
 
         //Get the game object representation of this entity
         var modelGameObject = modelEntity.GetOrCreateGameObject(UnityCreationMode.DoNotCreateUnityComponents);
@@ -100,11 +100,9 @@ var loadModelAsync = ARRSessionService.CurrentActiveSession.Actions.LoadModelAsy
     #endif
 
         //Load a model that will be parented to the entity
-        var loadModelParams = new LoadModelParams($"{storageAccountName}.blob.core.windows.net", blobContainerName, modelPath, modelEntity);
-        var loadModelAsync = ARRSessionService.CurrentActiveSession.Actions.LoadModelAsync(loadModelParams);
-        if (progress != null)
-            loadModelAsync.ProgressUpdated += progress;
-        var result = await loadModelAsync.AsTask();
+        var loadModelParams = new LoadModelOptions($"{storageAccountName}.blob.core.windows.net", blobContainerName, modelPath, modelEntity);
+        var loadModelAsync = ARRSessionService.CurrentActiveSession.Connection.LoadModelAsync(loadModelParams, progress);
+        var result = await loadModelAsync;
         return modelEntity;
     }
     ```
@@ -115,7 +113,7 @@ var loadModelAsync = ARRSessionService.CurrentActiveSession.Actions.LoadModelAsy
 
 1. 将以下方法添加到 LoadTestModel 正后方的 RemoteRenderingCoordinator 
 
-    ```csharp
+    ```cs
     private bool loadingLinkedCustomModel = false;
 
     [SerializeField]
@@ -190,7 +188,7 @@ var loadModelAsync = ARRSessionService.CurrentActiveSession.Actions.LoadModelAsy
 
 使用 AAD 身份验证，可以通过更可控的方式确定使用 ARR 的个人或组。 ARR 内置了对接受[访问令牌](../../../../active-directory/develop/access-tokens.md)的支持，而不是对使用帐户密钥的支持。 可以将访问令牌看作是一个有时间限制的、特定于用户的密钥，它只解锁所请求的特定资源的某些部分。
 
-RemoteRenderingCoordinator 脚本有一个名为 ARRCredentialGetter 的委托，该委托包含一个返回 AzureFrontendAccountInfo 对象的方法，该对象用于配置远程会话管理  。 可以为 ARRCredentialGetter 分配不同的方法，以便能够使用 Azure 登录流，从而生成包含 Azure 访问令牌的 AzureFrontendAccountInfo 对象 。 此访问令牌特定于正在登录的用户。
+RemoteRenderingCoordinator 脚本具有一个名为 ARRCredentialGetter 的委托，该委托包含一个返回 SessionConfiguration 对象的方法，此方法用于配置远程会话管理。 我们可以将一个不同的方法分配给 ARRCredentialGetter，这使我们可以使用 Azure 登录流，生成包含 Azure 访问令牌的 SessionConfiguration 对象。 此访问令牌特定于正在登录的用户。
 
 1. 请按照[如何：配置身份验证 - 已部署的应用程序的身份验证](../../../how-tos/authentication.md#authentication-for-deployed-applications)进行操作，具体来说，需要遵循 Azure 空间定位点文档 [Azure AD 用户身份验证](../../../../spatial-anchors/concepts/authentication.md?tabs=csharp#azure-ad-user-authentication)中列出的说明。 这涉及到注册新的 Azure Active Directory 应用程序并配置对 ARR 实例的访问。
 1. 配置新的 AAD 应用程序后，请检查你的 AAD 应用程序是否如下图所示：
@@ -206,11 +204,11 @@ RemoteRenderingCoordinator 脚本有一个名为 ARRCredentialGetter 的委托�
     >[!NOTE]
     > 所有者角色的权限不足以通过客户端应用程序管理会话。 对于要授予会话管理权限的每个用户，你需要向他们提供远程渲染客户端角色。 对于要管理会话和转换模型的每个用户，必须为其提供远程渲染管理员角色。
 
-在 Azure 端的各方面准备就绪后，现在需要修改代码连接到 AAR 服务的方式。 为此，我们将实现 BaseARRAuthentication 的实例，该实例将返回一个新的 AzureFrontendAccountInfo 对象 。 在这种情况下，将使用 Azure 访问令牌配置帐户信息。
+在 Azure 端的各方面准备就绪后，现在需要修改代码连接到 AAR 服务的方式。 为此，我们实现 BaseARRAuthentication 的实例，该实例将返回一个新的 SessionConfiguration 对象。 在这种情况下，将使用 Azure 访问令牌配置帐户信息。
 
 1. 创建一个名为 AADAuthentication 的新脚本，并将其代码替换为以下内容：
 
-    ```csharp
+    ```cs
     // Copyright (c) Microsoft Corporation. All rights reserved.
     // Licensed under the MIT License. See LICENSE in the project root for license information.
 
@@ -278,7 +276,7 @@ RemoteRenderingCoordinator 脚本有一个名为 ARRCredentialGetter 的委托�
             this.gameObject.AddComponent<ExecuteOnUnityThread>();
         }
 
-        public async override Task<AzureFrontendAccountInfo> GetAARCredentials()
+        public async override Task<SessionConfiguration> GetAARCredentials()
         {
             var result = await TryLogin();
             if (result != null)
@@ -287,7 +285,7 @@ RemoteRenderingCoordinator 脚本有一个名为 ARRCredentialGetter 的委托�
 
                 var AD_Token = result.AccessToken;
 
-                return await Task.FromResult(new AzureFrontendAccountInfo(AzureRemoteRenderingAccountAuthenticationDomain, AccountDomain, AzureRemoteRenderingAccountID, "", AD_Token, ""));
+                return await Task.FromResult(new SessionConfiguration(AzureRemoteRenderingAccountAuthenticationDomain, AccountDomain, AzureRemoteRenderingAccountID, "", AD_Token, ""));
             }
             else
             {
@@ -373,11 +371,11 @@ RemoteRenderingCoordinator 脚本有一个名为 ARRCredentialGetter 的委托�
 
 从 ARR 的角度来看，此类最重要的部分是这一行：
 
-```csharp
-return await Task.FromResult(new AzureFrontendAccountInfo(AccountDomain, AzureRemoteRenderingAccountID, "", AD_Token, ""));
+```cs
+return await Task.FromResult(new SessionConfiguration(AccountDomain, AzureRemoteRenderingAccountID, "", AD_Token, ""));
 ```
 
-在这里，我们使用帐户域、帐户 ID、帐户身份验证域和访问令牌创建新的“AzureFrontendAccountInfo”对象。 只要基于先前配置的基于角色的权限向用户授予了所需权限，ARR 服务便可以使用此令牌来查询、创建和加入远程渲染会话。
+在这里，我们使用帐户域、帐户 ID、帐户身份验证域和访问令牌创建新的 SessionConfiguration 对象。 只要基于先前配置的基于角色的权限向用户授予了所需权限，ARR 服务便可以使用此令牌来查询、创建和加入远程渲染会话。
 
 进行此更改后，应用程序的当前状态及其对 Azure 资源的访问权限如下所示：
 

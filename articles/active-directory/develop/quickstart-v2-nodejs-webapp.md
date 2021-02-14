@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, devx-track-js
-ms.openlocfilehash: fec130ff02d9796fb9a6cea7a831bbdcb25cb1ed
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: f7f14b91dc69eeba4ac06f6608f6151634dc38d3
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99225624"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100103492"
 ---
 # <a name="quickstart-add-sign-in-using-openid-connect-to-a-nodejs-web-app"></a>快速入门：向 Node.js Web 应用添加使用 OpenID Connect 登录功能
 
@@ -30,7 +30,7 @@ ms.locfileid: "99225624"
 
 ## <a name="register-your-application"></a>注册应用程序
 
-1. 登录到 <a href="https://portal.azure.com/" target="_blank">Azure 门户<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
+1. 登录 <a href="https://portal.azure.com/" target="_blank">Azure 门户</a>。
 1. 如果有权访问多个租户，请使用顶部菜单中的“目录 + 订阅”筛选器:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::，选择要在其中注册应用程序的租户。
 1. 搜索并选择“Azure Active Directory”  。
 1. 在“管理”下，选择“应用注册” > “新建注册”  。

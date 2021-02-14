@@ -8,12 +8,12 @@ ms.topic: tutorial
 author: KishorIoT
 ms.author: nandab
 ms.date: 10/06/2020
-ms.openlocfilehash: fbe1e84525eed47127a08abc9fb7ec5d1144d02f
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.openlocfilehash: a201a0300cb4ae0fba1a41b5f64838c17904fa83
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96763599"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99832090"
 ---
 # <a name="tutorial-create-a-video-analytics---object-and-motion-detection-application-in-azure-iot-central-openvinotrade"></a>教程：在 Azure IoT Central 中创建视频分析 - 对象和运动检测应用程序 (OpenVINO&trade;)
 
@@ -125,3 +125,25 @@ ms.locfileid: "96763599"
 导航到 lva-configuration 文件夹，然后选择之前编辑的 deployment.openvino.amd64.json 清单文件 。 选择“上传”。 验证完成后，选择“替换”。
 
 [!INCLUDE [iot-central-video-analytics-part4](../../../includes/iot-central-video-analytics-part4.md)]
+
+## <a name="clean-up-resources"></a>清理资源
+
+如果应用程序使用完毕，可以删除创建的所有资源，如下所示：
+
+1. 在 IoT Central 应用程序中，请导航至“管理”部分中的“你的应用程序”页面 。 然后选择“删除”。
+1. 在 Azure 门户中，删除“lva-rg”资源组。
+1. 在本地计算机上，停止“amp-viewer”Docker 容器。
+
+## <a name="next-steps"></a>后续步骤
+
+现在你已使用“视频分析 - 对象和运动检测”应用程序模板创建了一个 IoT Central 应用程序，为网关设备创建了一个设备模板，并向应用程序中添加了一个网关设备。
+
+如果要使用运行云 VM 的 IoT Edge 模块和模拟视频流试用视频分析 - 对象和运动检测应用程序，请：
+
+> [!div class="nextstepaction"]
+> [创建用于视频分析的 IoT Edge 实例 (Linux VM)](tutorial-video-analytics-iot-edge-vm.md)
+
+如果要使用运行真实设备的 IoT Edge 模块和真实 ONVIF 相机试用视频分析 - 对象和运动检测应用程序，请：
+
+> [!div class="nextstepaction"]
+> [创建用于视频分析的 IoT Edge 实例 (Intel NUC)](tutorial-video-analytics-iot-edge-nuc.md)
