@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/23/2020
-ms.openlocfilehash: 8be5def6d4780fd8b2ab65c5c9e1104a869f6d5a
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: db3954b0368392d63680a8d92f13d6a0423e8ef5
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100391586"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100526848"
 ---
 # <a name="troubleshoot-your-connections-in-azure-purview"></a>Azure 监控范围中的连接疑难解答
 
@@ -53,7 +53,10 @@ ms.locfileid: "100391586"
 若要验证这一点，请执行以下步骤：
 
 1. 导航到密钥保管库，然后转到 " **访问策略** " 部分
-1. 验证你的监控范围托管标识是否显示在 " *当前访问策略* " 部分下，其中至少包含对机密的 **get** 和 **list** 权限
+
+1. 验证你的监控范围托管标识是否显示在 " *当前访问策略* " 部分下，其中至少包含 " **获取** " 和 " **列出** 机密" 权限
+
+   :::image type="content" source="./media/troubleshoot-connections/verify-minimum-permissions.png" alt-text="显示对 Get 和 List 权限选项的下拉列表选择的图像":::
 
 如果看不到列出的监控范围托管标识，请按照 [创建和管理用于扫描的凭据](manage-credentials.md) 中的步骤添加。 
 

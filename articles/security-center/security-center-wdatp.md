@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/20/2020
+ms.date: 02/15/2021
 ms.author: memildin
-ms.openlocfilehash: 519285f2bad352aa16bdc8d9a1db7a63c2eb04e5
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 5a0fefd91e0aa60f6a3813513aa82a75b3557c7c
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98876387"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100526963"
 ---
 # <a name="protect-your-endpoints-with-security-centers-integrated-edr-solution-microsoft-defender-for-endpoint"></a>利用安全中心的集成 EDR 解决方案保护终结点： Microsoft Defender for Endpoint
 
@@ -43,12 +43,11 @@ Microsoft Defender for Endpoint 是提供的一个全面的云终结点安全解
 | 发布状态：                  | 正式发布 (GA)                                                                                                                                                                                                                                                                                      |
 | 定价：                        | 需要[用于服务器的 Azure Defender](security-center-pricing.md)                                                                                                                                                                                                                                             |
 | 支持的平台：            | 运行 Windows 的 Azure 计算机<br>运行 Windows 的 Azure Arc 计算机|
-| 受支持的 Windows 版本：  |  •安全中心支持在 Windows Server 2016、2012 R2 和 2008 R2 SP1 上检测<br> •使用此集成的服务器终结点监视已为 Office 365 GCC 客户禁用|
-| 不受支持的操作系统：  |  • Windows Server 2019<br> • Windows 10<br> • Linux|
+| 受支持的 Windows 版本：  |  •安全中心支持在 Windows Server 2019、2016、2012 R2 和 2008 R2 SP1 上检测<br> •使用此集成的服务器终结点监视已为 Office 365 GCC 客户禁用<br> • [Windows 10 企业多会话](../virtual-desktop/windows-10-multisession-faq.md) (以前面向虚拟桌面的企业 (EVD) <br> •  [Windows 虚拟桌面 (WVD) ](../virtual-desktop/overview.md)|
+| 不受支持的操作系统：  |  • Windows 10 (，而不是 EVD 或 WVD) <br> • Linux|
 | 所需角色和权限： | 启用/禁用集成： **安全管理员** 或 **所有者**<br>在安全中心内查看 MDATP 警报： **安全读者**、 **读者**、 **资源组参与者**、 **资源组所有者**、 **安全管理员**、 **订阅所有者** 或 **订阅参与者**|
 | 云：                         | ![是](./media/icons/yes-icon.png) 商业云<br>![是](./media/icons/yes-icon.png) US Gov<br>![否](./media/icons/no-icon.png) China Gov，其他 Gov<br>![否](./media/icons/no-icon.png) 在全球 Azure 云中运行工作负荷的 GCC 客户                                                        |
 |                                 |                                                                                                                                                                                                                                                                                                               |
-
 
 ## <a name="microsoft-defender-for-endpoint-features-in-security-center"></a>安全中心的 Microsoft Defender for Endpoint 功能
 
@@ -62,7 +61,7 @@ Microsoft Defender for Endpoint 提供：
 
 通过将 Defender for Endpoint 与安全中心集成，你将受益于以下附加功能：
 
-- **自动载入**。 安全中心会自动为安全中心监视的所有 Windows 服务器启用 Microsoft Defender for Endpoint 传感器。 除了运行 Windows Server 2019 的那些服务器（必须通过本地脚本进行载入），组策略对象 (GPO) 或 [Microsoft 终结点 Configuration Manager](/mem/configmgr/) (以前的 SCCM) 。
+- **自动载入**。 安全中心会自动为安全中心监视的所有 Windows 服务器启用 Microsoft Defender for Endpoint 传感器。
 
 - **单一的玻璃窗格**。 安全中心控制台显示 Microsoft Defender for Endpoint 警报。 若要进一步调查，请使用 Microsoft Defender 作为终结点的门户页面，你可以在其中看到其他信息，如警报流程树和事件图。 此外，还可以看到详细的机器时间线，其中显示了最长六个月的历史时段的每种行为。
 

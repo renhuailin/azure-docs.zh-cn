@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 11/03/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: bc548d4cc728611387b36451d563be6ca0e21530
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: e5009e59477e6862c4441090a6480075c9e22385
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100388186"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100526777"
 ---
 # <a name="manage-a-graph-of-digital-twins-using-relationships"></a>使用关系管理数字孪生图
 
@@ -53,7 +53,7 @@ Azure 数字孪生的核心是代表您的整个环境的克隆 [图](concepts-t
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="CreateRelationshipMethod":::
 
-在 main 方法中，你现在可以调用 `CreateRelationship()` 函数来创建 _包含_ 如下的关系： 
+在 main 方法中，现在可以调用自定义函数来创建 _contains_ 关系，如下所示： 
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="UseCreateRelationship":::
 
@@ -86,7 +86,7 @@ Azure 数字孪生的核心是代表您的整个环境的克隆 [图](concepts-t
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="FindOutgoingRelationshipsMethod":::
 
-你现在可以调用此方法来查看孪生的传出关系，如下所示：
+你现在可以调用此自定义方法来查看孪生的传出关系，如下所示：
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="UseFindOutgoingRelationships":::
 
@@ -102,17 +102,17 @@ Azure 数字孪生还提供了一个 API，用于查找到给定克隆的所有 
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="FindIncomingRelationshipsMethod":::
 
-你现在可以调用此方法来查看孪生的传入关系，如下所示：
+你现在可以调用此自定义方法来查看孪生的传入关系，如下所示：
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="UseFindIncomingRelationships":::
 
 ### <a name="list-all-twin-properties-and-relationships"></a>列出所有克隆的属性和关系
 
-使用上述方法列出与克隆的传出和传入关系，你可以创建一种方法来打印完全不完整的信息，包括克隆的属性以及这两种类型的关系。 下面是一个名为的示例方法 `FetchAndPrintTwinAsync()` ，其中演示了如何执行此操作。
+使用上述方法列出与克隆的传出和传入关系，你可以创建一种方法来打印完全不完整的信息，包括克隆的属性以及这两种类型的关系。 下面是演示如何执行此操作的示例自定义方法。
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="FetchAndPrintMethod":::
 
-你现在可以在 main 方法中调用此函数，如下所示： 
+你现在可以在 main 方法中调用此自定义函数，如下所示： 
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="UseFetchAndPrint":::
 
@@ -127,7 +127,7 @@ Azure 数字孪生还提供了一个 API，用于查找到给定克隆的所有 
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="UpdateRelationshipMethod":::
 
-下面是调用此方法的一个示例，其中传递了包含用于更新属性的信息的 JSON 修补文档。
+下面的示例说明了如何调用此自定义方法，并传入 JSON 修补程序文档，其中包含用于更新属性的信息。
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="UseUpdateRelationship":::
 
@@ -137,7 +137,7 @@ Azure 数字孪生还提供了一个 API，用于查找到给定克隆的所有 
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="DeleteRelationshipMethod":::
 
-你现在可以调用此方法删除关系，如下所示：
+你现在可以调用此自定义方法以删除类似于下面的关系：
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="UseDeleteRelationship":::
 

@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 02/11/2021
-ms.openlocfilehash: 091f4d7a4acdcc5d1a2b89a5121ee0cff3ee1f55
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 9ffc450294f186b77cc7a6c44c10eecf266161d3
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100381182"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100526677"
 ---
 # <a name="credentials-for-source-authentication-in-azure-purview"></a>用于 Azure 监控范围中的源身份验证的凭据
 
@@ -67,7 +67,7 @@ ms.locfileid: "100381182"
 
 4. 在 " **机密权限** " 下拉列表中，选择 " **获取** 和 **列出** 权限"。
 
-5. 对于 " **选择主体**"，请选择监控范围托管标识。
+5. 对于 " **选择主体**"，请选择监控范围托管标识。 可以使用监控范围实例名称 **或** 托管标识应用程序 ID 搜索监控范围 MSI。 目前 (托管标识名称 + 应用程序 ID) 不支持复合标识。
 
    :::image type="content" source="media/manage-credentials/add-access-policy.png" alt-text="添加访问策略":::
 

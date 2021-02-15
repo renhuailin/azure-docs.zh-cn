@@ -6,14 +6,16 @@ author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.date: 02/05/2021
-ms.openlocfilehash: 86ebbb46e8f3b5bb34dfe5789a17a2d63526f65c
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: d41646ef1ef964db38245009717554eaeb783824
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99808136"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100526300"
 ---
 # <a name="save-costs-for-resources-with-reserved-capacity---azure-data-factory-data-flows"></a>节省预留容量的资源成本-Azure 数据工厂数据流
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 与即用即付价格相比，通过提交到计算资源的预留来节省 Azure 数据工厂的数据流成本。 利用预留容量，你可以在一年或三年的时间内对 ADF 数据流使用作出承诺，以获得有关计算成本的重要折扣。 若要购买保留容量，需要指定 Azure 区域、计算类型、核心计数数量和期限。
 

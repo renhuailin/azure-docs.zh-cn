@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/28/2021
 ms.author: Zhchia
-ms.openlocfilehash: eb3df574029a7c13488830e01354e738930fcd7f
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 55da26296f0545c8e2c0008185de14230cfee304
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/15/2021
-ms.locfileid: "100523424"
+ms.locfileid: "100526606"
 ---
 # <a name="tutorial-configure-hoxhunt-for-automatic-user-provisioning"></a>教程：为 Hoxhunt 配置自动用户预配
 
@@ -42,16 +42,13 @@ ms.locfileid: "100523424"
 * Azure AD 中[有权](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)配置预配的用户帐户（例如应用管理员、云应用管理员、应用所有者或全局管理员）。 
 * Hoxhunt 租户。
 *  (通过 Hoxhunt 支持) 配置的组织的 SCIM API 密钥和 SCIM 终结点 URL。
-?
 ## <a name="step-1-plan-your-provisioning-deployment"></a>步骤 1。 计划预配部署
 1. 了解[预配服务的工作原理](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)。
 2. 确定谁在[预配范围](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)中。
 3. 确定要 [在 Azure AD 与 Hoxhunt 之间映射](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)的数据。 
 
 ## <a name="step-2-configure-hoxhunt-to-support-provisioning-with-azure-ad"></a>步骤 2. 配置 Hoxhunt 以支持 Azure AD 的预配
-?
 若要配置 Hoxhunt 以支持 Azure AD 的预配，请联系 [Hoxhunt 支持](mailto:support@hoxhunt.com) 以接收 SCIM API 密钥和 SCIM 终结点 URL。
-?
 ## <a name="step-3-add-hoxhunt-from-the-azure-ad-application-gallery"></a>步骤 3. 从 Azure AD 应用程序库添加 Hoxhunt
 
 从 Azure AD 应用程序库中添加 Hoxhunt，开始管理预配到 Hoxhunt。 如果以前为 SSO 设置了 Hoxhunt，则可以使用相同的应用程序。 不过，建议在最初测试集成时单独创建一个应用。 若要详细了解如何从库中添加应用，可以单击[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)。 

@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 01/03/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 3d5a29ed26d58f0cbaa57768d4b8ad236283deb9
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 4ceedf4d05c6f92e5c32da95f8b54fc6c95de01c
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/15/2021
-ms.locfileid: "100523849"
+ms.locfileid: "100526504"
 ---
 # <a name="about-azure-defender-for-iot-network-setup"></a>关于 Azure Defender for IoT 网络设置
 
@@ -94,7 +94,7 @@ Azure Defender for IoT 提供持续的 ICS 威胁监视和设备发现。 此平
 
 验证你的组织安全策略是否允许访问以下内容：
 
-| 协议 | Transport | 输入/输出 | 端口 | 已使用 | 目的 | 源 | 目标 |
+| 协议 | Transport | 输入/输出 | Port | 已使用 | 目的 | 源 | 目标 |
 |--|--|--|--|--|--|--|--|
 | HTTPS | TCP | IN/OUT | 443 | 传感器和本地管理控制台 Web 控制台 | 访问 Web 控制台 | 客户端 | 传感器和本地管理控制台 |
 | SSH | TCP | IN/OUT | 22 | CLI | 访问 CLI | 客户端 | 传感器和本地管理控制台 |
@@ -633,7 +633,7 @@ RSPAN：基于 Cisco catalyst 2960 (24 端口) 。
 
 提供将在企业网络中连接的传感器 NIC 的地址详细信息： 
 
-|  Item               | 设备1 | 设备2 | 设备3 |
+|  项               | 设备1 | 设备2 | 设备3 |
 | --------------- | ------------- | ------------- | ------------- |
 | 设备 IP 地址    |               |               |               |
 | 子网          |               |               |               |
@@ -643,7 +643,7 @@ RSPAN：基于 Cisco catalyst 2960 (24 端口) 。
 
 #### <a name="idraciloserver-management"></a>iDRAC/iLO/服务器管理
 
-|       Item          | 设备1 | 设备2 | 设备3 |
+|       项          | 设备1 | 设备2 | 设备3 |
 | --------------- | ------------- | ------------- | ------------- |
 | 设备 IP 地址     |               |               |               |
 | 子网          |               |               |               |
@@ -652,7 +652,7 @@ RSPAN：基于 Cisco catalyst 2960 (24 端口) 。
 
 #### <a name="on-premises-management-console"></a>本地管理控制台  
 
-|       Item          | 可用 | 使用 HA) 时的被动 ( |
+|       项          | 可用 | 使用 HA) 时的被动 ( |
 | --------------- | ------ | ----------------------- |
 | IP 地址             |        |                         |
 | 子网          |        |                         |
@@ -661,7 +661,7 @@ RSPAN：基于 Cisco catalyst 2960 (24 端口) 。
 
 #### <a name="snmp"></a>SNMP  
 
-|   Item              | 详细信息 |
+|   项              | 详细信息 |
 | --------------- | ------ |
 | IP              |        |
 | IP 地址 | |
@@ -695,6 +695,6 @@ RSPAN：基于 Cisco catalyst 2960 (24 端口) 。
 | 照相机 | |
 | X 射线计算机 | |
 
-## <a name="next-steps"></a>后续步骤
+## <a name="see-also"></a>请参阅
 
 [关于用于 IoT 安装的 Defender](how-to-install-software.md)

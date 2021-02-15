@@ -7,18 +7,18 @@ ms.author: shhazam
 ms.date: 12/07/2020
 ms.service: azure
 ms.topic: how-to
-ms.openlocfilehash: 6a1a4d13ee9f9032c739773b678600d52dec82b8
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 866ff4cad74b7092dda11a20f8f7bcadf91233ae
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/15/2021
-ms.locfileid: "100523917"
+ms.locfileid: "100526895"
 ---
 # <a name="manage-alert-events"></a>管理警报事件
 
 以下选项可用于管理警报事件：
 
- | 操作 | 说明 |
+ | 操作 | 描述 |
  |--|--|
  | **Learn** | 授权检测到的事件。 有关详细信息，请参阅 [关于学习和 unlearning 事件](#about-learning-and-unlearning-events)。 |
  | **认可** | 针对检测到的事件隐藏一次警报。 如果再次检测到该事件，将再次触发此警报。 有关详细信息，请参阅 [关于确认和 unacknowledging 事件](#about-acknowledging-and-unacknowledging-events)。 |
@@ -126,6 +126,6 @@ ms.locfileid: "100523917"
 1. 选择“导出”  。
 1. 选择 "导出扩展警报" 可在单独的行中为涵盖多个设备的每个警报导出警报信息。 如果选择了 "导出扩展警报"，则 .csv 文件将创建警报事件的重复行，其中每行包含唯一项。 使用此选项可以更方便地调查导出的警报事件。
 
-## <a name="next-steps"></a>后续步骤
+## <a name="see-also"></a>请参阅
 
 [控制要监视的流量](how-to-control-what-traffic-is-monitored.md)

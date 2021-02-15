@@ -4,12 +4,12 @@ description: 了解 Azure 容器注册表的静态加密，以及如何使用 Az
 ms.topic: article
 ms.date: 12/03/2020
 ms.custom: ''
-ms.openlocfilehash: fb30610457e539250c33d7d9726fe10f9c0f8c5a
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: bc692dc8df133aa5fae352a7667062f81ceed350
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99062722"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100526436"
 ---
 # <a name="encrypt-registry-using-a-customer-managed-key"></a>使用客户管理的密钥加密注册表
 
@@ -127,11 +127,11 @@ az keyvault set-policy \
   --key-permissions get unwrapKey wrapKey
 ```
 
-或者，使用[用于密钥保管库的 Azure RBAC](../key-vault/general/rbac-guide.md)（预览版）为标识分配访问密钥保管库的权限。 例如，使用 [az role assignment create](/cli/azure/role/assignment#az-role-assignment-create) 命令将密钥保管库加密服务加密角色分配给标识：
+或者，使用 [AZURE RBAC Key Vault](../key-vault/general/rbac-guide.md) 向标识授予访问密钥保管库的权限。 例如，使用 [az role assignment create](/cli/azure/role/assignment#az-role-assignment-create) 命令将密钥保管库加密服务加密角色分配给标识：
 
 ```azurecli 
 az role assignment create --assignee $identityPrincipalID \
-  --role "Key Vault Crypto Service Encryption (preview)" \
+  --role "Key Vault Crypto Service Encryption User" \
   --scope $keyvaultID
 ```
 
@@ -267,12 +267,12 @@ az acr encryption show --name <registry-name>
 
 :::image type="content" source="media/container-registry-customer-managed-keys/add-key-vault-access-policy.png" alt-text="创建密钥保管库访问策略":::
 
-或者，使用[用于密钥保管库的 Azure RBAC](../key-vault/general/rbac-guide.md)（预览版）为标识分配访问密钥保管库的权限。 例如，将密钥保管库加密服务加密角色分配给标识。
+或者，使用 [AZURE RBAC Key Vault](../key-vault/general/rbac-guide.md) 向标识授予访问密钥保管库的权限。 例如，将密钥保管库加密服务加密角色分配给标识。
 
 1. 导航到你的密钥保管库。
 1. 选择“访问控制(IAM)” > “+添加” > “添加角色分配”。
 1. 在“添加角色分配”窗口中：
-    1. 选择“密钥保管库加密服务加密(预览版)”角色。 
+    1. 选择 " **Key Vault 加密服务加密用户** 角色"。 
     1. 将访问权限分配给“用户分配的托管标识”。
     1. 选择用户分配的托管标识的资源名称，然后选择“保存”。
 
@@ -534,7 +534,7 @@ az keyvault delete-policy \
 
 1. 在门户中导航到你的注册表。
 1. 选择“设置” >  “标识”。
-1. 在“系统分配”下，将“状态”设置为“开”。 选择“保存”。
+1. 在“系统分配”下，将“状态”设置为“开”。 选择“保存” 。
 1. 复制标识的“对象 ID”。
 
 若要授予标识对密钥保管库的访问权限，请执行以下操作：

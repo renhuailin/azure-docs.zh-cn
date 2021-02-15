@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 02/02/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: ba98eb7e87ba277dcd5279ecf17373a8276b1cb1
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: c8bb44d323574f6815aa570b271ed4c0df1fc6be
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/15/2021
-ms.locfileid: "100523968"
+ms.locfileid: "100526912"
 ---
 # <a name="manage-individual-sensors"></a>管理单个传感器
 
@@ -282,7 +282,7 @@ Windows 会将这些文件识别为证书文件。 默认情况下，Windows 会
 
 通过以下命令管理证书：
 
-| 说明 | CLI 命令 |
+| 描述 | CLI 命令 |
 |--|--|
 | 生成新的私钥和证书签名请求 | `openssl req -out CSR.csr -new -newkey rsa:2048 -nodes -keyout privateKey.key` |
 | 生成自签名证书 | `openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout privateKey.key -out certificate.crt` |
@@ -292,7 +292,7 @@ Windows 会将这些文件识别为证书文件。 默认情况下，Windows 会
 
 如果需要检查证书、CSR 或私钥中的信息，请使用以下命令：
 
-| 说明 | CLI 命令 |
+| 描述 | CLI 命令 |
 |--|--|
 |  (CSR 检查证书签名请求)  | `openssl req -text -noout -verify -in CSR.csr` |
 | 检查私钥 | `openssl rsa -in privateKey.key -check` |
@@ -300,13 +300,13 @@ Windows 会将这些文件识别为证书文件。 默认情况下，Windows 会
 
 如果收到一条错误消息，指出私钥与证书不符，或者你安装到站点的证书不受信任，请使用以下命令来修复此错误：
 
-| 说明 | CLI 命令 |
+| 描述 | CLI 命令 |
 |--|--|
 | 检查公钥的 MD5 哈希，以确保它与 CSR 或私钥中的内容相匹配 | 2. `openssl x509 -noout -modulus -in certificate.crt | openssl md5` <br /> pps-2. `openssl rsa -noout -modulus -in privateKey.key | openssl md5` <br /> 3. `openssl req -noout -modulus -in CSR.csr | openssl md5 ` |
 
 若要将证书和密钥转换为不同的格式，以使它们与特定类型的服务器（或软件）兼容，请使用以下命令：
 
-| 说明 | CLI 命令 |
+| 描述 | CLI 命令 |
 |--|--|
 | 将 DER 文件 () 转换为 PEM  | `openssl x509 -inform der -in certificate.cer -out certificate.pem`  |
 | 将 PEM 文件转换为 DER | `openssl x509 -outform der -in certificate.pem -out certificate.der`  |
@@ -397,7 +397,7 @@ Windows 会将这些文件识别为证书文件。 默认情况下，Windows 会
 
 3. 设置参数：
 
-    | 参数 | 说明 |
+    | 参数 | 描述 |
     |--|--|
     | IP 地址 | 传感器 IP 地址 |
     | 子网掩码 | 掩码地址 |
@@ -414,7 +414,7 @@ Windows 会将这些文件识别为证书文件。 默认情况下，Windows 会
 
 :::image type="content" source="media/how-to-manage-individual-sensors/time-and-region.png" alt-text="配置时间和区域。":::
 
-| 参数 | 说明 |
+| 参数 | 描述 |
 |--|--|
 | 时区 | 的时区定义：<br />-警报<br />-趋势和统计小组件<br />-数据挖掘报表<br />   -风险评估报表<br />-攻击向量 |
 | 日期格式 | 选择以下格式选项之一：<br />-dd/MM/yyyy HH： MM： ss<br />-MM/dd/yyyy HH： MM： ss<br />-yyyy/MM/dd HH： MM： ss |
@@ -570,7 +570,7 @@ Windows 会将这些文件识别为证书文件。 默认情况下，Windows 会
 
 3. 从 "**常规**" 部分中选择 "**系统属性**"。
 
-## <a name="next-steps"></a>后续步骤
+## <a name="see-also"></a>请参阅
 
 [威胁情报研究和包](how-to-work-with-threat-intelligence-packages.md)
 

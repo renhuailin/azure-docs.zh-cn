@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: sudbalas
-ms.openlocfilehash: ee1c59c71834ab9d80f1ed66a002e211bdcacbbf
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: f82c7060f703aff6c19f0082454779b8fea1ba76
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97796493"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100526249"
 ---
 # <a name="secure-access-to-a-key-vault"></a>保护对密钥保管库的访问
 
@@ -26,7 +26,7 @@ Azure 密钥保管库是一种云服务，用于保护加密密钥和机密（�
 
 可通过以下两个接口来控制对密钥保管库的访问：**管理平面** 和 **数据平面**。 管理平面用于管理密钥保管库本身。 此平面中的操作包括创建和删除密钥保管库、检索密钥保管库属性以及更新访问策略。 数据平面用于处理密钥保管库中存储的数据。 可以添加、删除和修改密钥、机密及证书。
 
-这两个平面都使用 [Azure Active Directory (Azure AD)](../../active-directory/fundamentals/active-directory-whatis.md) 来进行身份验证。 对于授权，管理平面使用 [Azure 基于角色的访问控制 (Azure RBAC)](../../role-based-access-control/overview.md)，而数据平面则使用 [Key Vault 访问策略](./assign-access-policy-portal.md)和[适用于 Key Vault 数据平面操作的 Azure RBAC（预览版）](./rbac-guide.md)。
+这两个平面都使用 [Azure Active Directory (Azure AD)](../../active-directory/fundamentals/active-directory-whatis.md) 来进行身份验证。 对于授权，管理平面使用 [AZURE rbac)  (azure 基于角色的访问控制 ](../../role-based-access-control/overview.md) ，而数据平面使用 [Key Vault 访问策略](./assign-access-policy-portal.md) 和 [Azure RBAC 进行 Key Vault 数据平面操作](./rbac-guide.md)。
 
 若要在任一平面中访问密钥保管库，所有调用方（用户或应用程序）都必须进行适当的身份验证并拥有适当的授权。 身份验证可确定调用方的身份。 授权可确定调用方能够执行的操作。 使用密钥保管库进行的身份验证可与 [Azure Active Directory (Azure AD)](../../active-directory/fundamentals/active-directory-whatis.md) 结合使用，后者负责对任何给定安全主体的标识进行身份验证。
 
@@ -65,7 +65,7 @@ Azure 密钥保管库是一种云服务，用于保护加密密钥和机密（�
 | 访问&nbsp;平面 | 访问终结点 | 操作 | 访问&nbsp;控制机制 |
 | --- | --- | --- | --- |
 | 管理平面 | **全球：**<br> management.azure.com:443<br><br> **Azure 中国世纪互联：**<br> management.chinacloudapi.cn:443<br><br> **Azure US Government：**<br> management.usgovcloudapi.net:443<br><br> **Azure Germany：**<br> management.microsoftazure.de:443 | 创建、读取、更新和删除密钥保管库<br><br>设置密钥保管库访问策略<br><br>设置密钥保管库标记 | Azure RBAC |
-| 数据平面 | **全球：**<br> &lt;vault-name&gt;.vault.azure.net:443<br><br> **Azure 中国世纪互联：**<br> &lt;vault-name&gt;.vault.azure.cn:443<br><br> **Azure US Government：**<br> &lt;vault-name&gt;.vault.usgovcloudapi.net:443<br><br> **Azure Germany：**<br> &lt;vault-name&gt;.vault.microsoftazure.de:443 | 密钥：加密、解密、wrapKey、unwrapKey、签名、验证、获取、列出、创建、更新、导入、删除、恢复、备份、还原、清除<br><br> 证书： managecontacts、getissuers、listissuers、setissuers、deleteissuers、manageissuers、get、list、create、import、update、delete、recover、backup、restore、delete<br><br>  机密：获取、列出、设置、删除、恢复、备份、还原、清除 | Key Vault 访问策略或 Azure RBAC (预览版) |
+| 数据平面 | **全球：**<br> &lt;vault-name&gt;.vault.azure.net:443<br><br> **Azure 中国世纪互联：**<br> &lt;vault-name&gt;.vault.azure.cn:443<br><br> **Azure US Government：**<br> &lt;vault-name&gt;.vault.usgovcloudapi.net:443<br><br> **Azure Germany：**<br> &lt;vault-name&gt;.vault.microsoftazure.de:443 | 密钥：加密、解密、包装密钥、解包密钥、签名、验证、获取、列出、创建、更新、导入、删除、恢复、备份、还原、清除<br><br> 证书：管理联系人、获取颁发者、列出颁发者、设置颁发者、删除颁发者、管理颁发者、获取、列出、创建、导入、更新、删除、恢复、备份、还原、清除<br><br>  机密：获取、列出、设置、删除、恢复、备份、还原、清除 | Key Vault 访问策略或 Azure RBAC（预览版）|
 
 ## <a name="management-plane-and-azure-rbac"></a>管理平面和 Azure RBAC
 
@@ -94,7 +94,7 @@ Azure 密钥保管库是一种云服务，用于保护加密密钥和机密（�
 
 可在此处查看保管库和机密操作的完整列表：[Key Vault 操作参考](/rest/api/keyvault/#vault-operations)
 
-<a id="key-vault-access-policies"></a> Key Vault 访问策略分别向密钥、机密和证书授予权限。  密钥、机密或证书的访问权限是保管库级别的。 
+<a id="key-vault-access-policies"></a> 密钥保管库访问策略单独授予对密钥、机密和证书的权限。  密钥、机密或证书的访问权限是保管库级别的。 
 
 若要详细了解如何使用密钥保管库访问策略，请参阅[分配 Key Vault 访问策略](assign-access-policy-portal.md)
 
@@ -111,7 +111,7 @@ Azure 基于角色的访问控制是另一种用于控制对 Azure Key Vault 数
 
 相对于使用保管库访问策略，使用 Azure RBAC 权限的主要优点在于，可以集中进行访问控制管理，并且它与 [Privileged Identity Management (PIM)](../../active-directory/privileged-identity-management/pim-configure.md) 集成。 Privileged Identity Management 提供基于时间和基于审批的角色激活，用于缓解所关注资源上出现的访问权限过度、不必要或滥用的风险。
 
-有关使用 Azure RBAC 提供对 Key Vault 数据平面的访问的详细信息，请参阅[使用 Azure 基于角色的访问控制提供对 Key Vault 密钥、证书和机密的访问（预览版）](rbac-guide.md)
+有关使用 Azure RBAC Key Vault 数据平面的详细信息，请参阅 [使用 azure 基于角色的访问控制 Key Vault 密钥、证书和机密](rbac-guide.md)
 
 ## <a name="firewalls-and-virtual-networks"></a>防火墙和虚拟网络
 
@@ -187,7 +187,7 @@ Azure 基于角色的访问控制是另一种用于控制对 Azure Key Vault 数
 | 安全团队 | [密钥保管库参与者](../../role-based-access-control/built-in-roles.md#key-vault-contributor) | 证书：所有操作 <br> 密钥：所有操作 <br> 机密：所有操作 | [密钥保管库管理员（预览版）](../../role-based-access-control/built-in-roles.md#key-vault-administrator-preview) |
 | 开发人员和&nbsp;操作人员 | 密钥保管库部署权限<br><br> **注意**：此权限允许已部署的 VM 从密钥保管库提取机密。 | 无 | 无 |
 | 审核人员 | 无 | 证书：list <br> 密钥：列出<br>机密：列出<br><br> **注意**：此权限让审核员能够检查日志中未发出的密钥和机密的属性（标记、激活日期、到期日期）。 | [密钥保管库读取者（预览版）](../../role-based-access-control/built-in-roles.md#key-vault-reader-preview) |
-| Azure 存储帐户 | None | 密钥：get、list、wrapKey、unwrapKey <br> | [Key Vault 加密服务加密用户](../../role-based-access-control/built-in-roles.md#key-vault-crypto-service-encryption-user-preview) |
+| Azure 存储帐户 | None | 密钥：get、list、wrapKey、unwrapKey <br> | [密钥保管库加密服务加密用户](../../role-based-access-control/built-in-roles.md#key-vault-crypto-service-encryption-user-preview) |
 | 应用程序 | 无 | 机密：get、list <br> 证书：get、list | [密钥保管库读取者（预览版）](../../role-based-access-control/built-in-roles.md#key-vault-reader-preview)、[密钥保管库机密用户（预览版）](../../role-based-access-control/built-in-roles.md#key-vault-secrets-user-preview) |
 
 三个团队角色需要访问其他资源的权限以及密钥保管库权限。 若要部署 VM（或 Azure 应用服务的 Web 应用功能），开发人员和操作人员需要部署访问权限。 审核员需要具有对存储密钥保管库日志的存储帐户的“读取”访问权限。

@@ -7,17 +7,20 @@ ms.topic: conceptual
 author: ShaneBala-keyvault
 ms.author: sudbalas
 ms.date: 12/15/2020
-ms.openlocfilehash: 68c690b9cbd2028f73492550adbe86111f9ec3a7
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: e06a388f2391f4ed94370dd072a66a162ba5240f
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99257940"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100526657"
 ---
 # <a name="azure-key-vault-soft-delete-overview"></a>Azure Key Vault 软删除概述
 
 > [!IMPORTANT]
-> 必须立即对密钥保管库启用软删除。 即将弃用禁用软删除功能的功能即将弃用。 请参阅[此处](soft-delete-change.md)的完整详细信息。
+> 必须立即对密钥保管库启用软删除。 即将弃用选择退出软删除的功能。 请参阅[此处](soft-delete-change.md)的完整详细信息。
+
+> [!IMPORTANT]
+> 软删除的保管库触发删除与 Key Vault 服务集成的设置，即 Azure RBAC 角色分配、事件网格订阅、Azure Monitor 诊断设置。 恢复已软删除的集成服务 Key Vault 设置后，需要手动重新创建。 
 
 Key Vault 的软删除功能可用于恢复已删除的保管库和已删除的密钥保管库对象（例如，密钥、机密、证书），因而被称为软删除。 本文将具体探讨以下方案：这项保护措施提供以下保护：
 
@@ -27,7 +30,7 @@ Key Vault 的软删除功能可用于恢复已删除的保管库和已删除的�
 
 ## <a name="supporting-interfaces"></a>支持接口
 
-软删除功能通过 [REST API](/rest/api/keyvault/)、 [Azure CLI](./key-vault-recovery.md)、 [Azure PowerShell](./key-vault-recovery.md)和 [.net/c #](/dotnet/api/microsoft.azure.keyvault?view=azure-dotnet) 接口以及 [ARM 模板](/azure/templates/microsoft.keyvault/2019-09-01/vaults)提供。
+软删除功能是通过 [REST API](/rest/api/keyvault/)、[Azure CLI](./key-vault-recovery.md)、[Azure PowerShell](./key-vault-recovery.md) 和 [.NET/C#](/dotnet/api/microsoft.azure.keyvault?view=azure-dotnet&preserve-view=true) 接口以及 [ARM 模板](/azure/templates/microsoft.keyvault/2019-09-01/vaults)提供的。
 
 ## <a name="scenarios"></a>方案
 
@@ -63,7 +66,7 @@ Azure Key Vault 是由 Azure Resource Manager 管理的跟踪资源。 Azure Res
 - Azure 订阅已被标记为“不可删除”。 在这种情况下，只有服务可以执行实际删除，并且将作为计划的进程执行此操作。 
 - 在保管库本身上启用 `--enable-purge-protection flag` 时。 在这种情况下，Key Vault 将自原始机密对象标记为删除以永久删除该对象起等待 90 天。
 
-有关步骤，请参阅 [如何在 CLI 中使用 Key Vault 软删除：使用 PowerShell 清除密钥保管库](./key-vault-recovery.md?tabs=azure-cli#key-vault-cli) 或 [如何使用 Key Vault 软删除：清除密钥保管库](./key-vault-recovery.md?tabs=azure-powershell#key-vault-powershell)。
+有关步骤，请参阅[如何将 Key Vault 软删除与 CLI 配合使用：清除密钥保管库](./key-vault-recovery.md?tabs=azure-cli#key-vault-cli)或[如何通过 PowerShell 使用 Key Vault 软删除：清除密钥保管库](./key-vault-recovery.md?tabs=azure-powershell#key-vault-powershell)。
 
 ### <a name="key-vault-recovery"></a>Key Vault 恢复
 
@@ -81,7 +84,7 @@ Azure Key Vault 是由 Azure Resource Manager 管理的跟踪资源。 Azure Res
 
 - 可以列出订阅中处于软删除状态的所有 Key Vault 和 Key Vault 对象，并可访问与这些对象有关的删除和恢复信息。
   - 只有具有特殊权限的用户才能列出已删除的保管库。 我们建议用户创建一个具有这些特殊权限的自定义角色来处理已删除的保管库。
-- 无法在同一位置创建具有相同名称的 key vault;相应地，如果 key vault 中包含具有相同名称且处于已删除状态的对象，则无法在该保管库中创建密钥保管库对象。
+- 无法在同一位置创建具有相同名称的 Key Vault；相应地，在创建 Key Vault 对象时，如果 Key Vault 中包含具有相同名称且处于已删除状态的对象，则无法在其中创建该对象
 - 只有特权用户可以还原 Key Vault 或 Key Vault 对象，方法是对相应的代理资源发出恢复命令。
   - 有权在资源组下创建 key vault 的用户（自定义角色的成员）可以还原该保管库。
 - 只有特权用户可以强制删除 Key Vault 或 Key Vault 对象，方法是对相应的代理资源发出删除命令。

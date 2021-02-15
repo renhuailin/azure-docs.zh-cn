@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/27/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 459bac2ef01e69b9316af7e8374e7416ab51d915
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 7cc4fe4e2b675fb1b46bb4404d892c02a1f00553
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/15/2021
-ms.locfileid: "100523900"
+ms.locfileid: "100526846"
 ---
 # <a name="onboard-and-manage-sensors-in-the-defender-for-iot-portal"></a>在用于 IoT 的 Defender 门户中载入和管理传感器
 
@@ -123,6 +123,6 @@ ms.locfileid: "100523900"
 
 9. 选择“激活”  。
 
-## <a name="next-steps"></a>后续步骤
+## <a name="see-also"></a>请参阅
 
 [激活和设置传感器](how-to-activate-and-set-up-your-sensor.md)
