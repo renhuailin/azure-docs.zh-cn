@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/02/2020
 ms.service: azure
 ms.topic: how-to
-ms.openlocfilehash: 14d7a0de1cd29b8c07f90c759a4d423d7186fdb9
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 64e81e246ec62c8995d0e31629b4f21a2c1096b0
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97838127"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100522540"
 ---
 # <a name="accelerate-alert-workflows"></a>加速警报工作流
 
@@ -48,7 +48,7 @@ ms.locfileid: "97838127"
 
 3. 在 " **添加注释** " 框中，输入注释文本。 使用最多50个字符。 不允许逗点。
 
-4. 选择 **添加** 。
+4. 选择“添加”。
 
 ## <a name="accelerate-incident-workflows-by-using-alert-groups"></a>使用警报组加速事件工作流
 
@@ -70,11 +70,11 @@ ms.locfileid: "97838127"
 
 警报组将显示在支持的合作伙伴解决方案中，前缀如下：
 
-  - QRadar、ArcSight、Syslog CEF、Syslog LEEF 的 **猫**
+- QRadar、ArcSight、Syslog CEF、Syslog LEEF 的 **猫**
 
-  - Syslog 文本消息的 **警报组**
+- Syslog 文本消息的 **警报组**
 
-  - Syslog 对象的 **alert_group**
+- Syslog 对象的 **alert_group**
 
 应在合作伙伴解决方案中配置这些字段，以显示警报组名称。 如果没有与警报组相关联的警报，则合作伙伴解决方案中的字段将显示 **NA**。
 
@@ -87,16 +87,34 @@ ms.locfileid: "97838127"
 | 异常 HTTP 通信行为 | 发现 | 重新启动和停止命令 |
 | 身份验证 | 固件更改 | 扫描 |
 | 未经授权的通信行为 | 非法命令 | 传感器流量 |
-| 带宽异常 | Internet 访问权限 | 可疑的恶意软件 |
+| 带宽异常 | Internet 访问 | 可疑的恶意软件 |
 | 缓冲区溢出 | 操作失败 | 可疑的恶意活动 |
 | 命令失败 | 操作问题 |  |
 | 配置更改 | 编程 |  |
 
-警报组是预定义的。 有关与警报组关联的警报的详细信息以及创建自定义警报组的详细信息，请联系 [Microsoft 支持部门](https://support.microsoft.com/supportforbusiness/productselection?sapId=82c88f35-1b8e-f274-ec11-c6efdd6dd099)。
+警报组是预定义的。 有关与警报组关联的警报的详细信息以及创建自定义警报组的详细信息，请联系 [Microsoft 支持部门](https://support.microsoft.com/supportforbusiness/productselection?sapId=82c8f35-1b8e-f274-ec11-c6efdd6dd099)。
 
 ## <a name="customize-alert-rules"></a>自定义警报规则
 
-你可以基于单个传感器检测到的信息添加自定义警报规则。 例如，定义一个规则，该规则指示传感器根据协议) 中的源 IP、目标 IP 或命令 (触发警报。 当传感器检测到规则中定义的流量时，将生成警报或事件。
+使用自定义警报规则更明确地查明你感兴趣的活动。 
+
+你可以基于以下内容添加自定义警报规则：
+
+- 类别，例如协议、端口或文件。
+- 源和目标地址
+- 基于所选类别的条件，例如，与协议关联的函数、文件名、端口号或传输号。
+- 基于日期和时间引用的条件，例如，如果在特定的日期或当天的某部分进行检测。
+
+如果传感器检测到规则中描述的活动，则发送警报。
+单个传感器检测的信息。 例如，定义一个规则，该规则指示传感器根据协议) 中的源 IP、目标 IP 或命令 (触发警报。 当传感器检测到规则中定义的流量时，将生成警报或事件。
+
+你还可以使用警报规则操作来指示用于 IoT 的 Defender：
+
+- 允许用户访问警报中的 PCAP 文件。
+- 分配警报严重性。
+- 生成事件而不是警报。 检测到的信息将显示在事件时间线中。
+
+:::image type="content" source="media/how-to-work-with-alerts-sensor/user-defined-rule.png" alt-text="显示用户定义规则的屏幕截图。":::
 
 警报消息指示用户定义的规则触发了警报。
 
@@ -106,23 +124,23 @@ ms.locfileid: "97838127"
 
 1. 从传感器的侧菜单中选择 " **自定义警报** "。
 1. 选择加号 (**+**) 以创建规则。
-
-   :::image type="content" source="media/how-to-work-with-alerts-sensor/user-defined-rule.png" alt-text="显示用户定义规则的屏幕截图。":::
-
 1. 定义规则名称。
 1. 从 " **类别** " 窗格中选择类别或协议。
 1. 定义特定的源和目标 IP 或 MAC 地址，或选择任何地址。
-1. 添加条件。 条件列表及其属性对于每个类别都是唯一的。 可以为每个警报选择多个条件。
-1. 指示规则是否触发 **警报** 或 **事件**。
-1. 指定警报的严重性级别。
-1. 指示警报是否包含 PCAP 文件。
-1. 选择“保存”。
+1. 定义一个或多个规则条件。 可以创建两类条件：
+    - 基于与所选类别关联的唯一值的条件。 选择 "添加" 并定义值。
+    - 基于检测到活动的时间的条件。 在 "检测" 部分中，选择在一段时间内进行检测，以便发送警报。 如果在工作时间或工作时间内随时检测到活动，则可以选择发送警报。 使用 "定义工作时间" 选项来指示你的组织的 IoT 工作时间为 Defender。
+1. 定义规则操作： 
+    - 指示规则是否触发 **警报** 或 **事件**。
+    - 指定警报的严重性级别。
+    - 指示警报是否包含 PCAP 文件。
+1. 选择“保存” 。
 
 规则将添加到 " **自定义警报规则** " 列表中，您可以在其中查看基本规则参数、上次触发规则的时间，等等。 还可以从列表中启用和禁用规则。
 
 :::image type="content" source="media/how-to-work-with-alerts-sensor/customized-alerts-screen.png" alt-text="用户添加的自定义规则的屏幕截图。":::
 
-### <a name="see-also"></a>另请参阅
+## <a name="next-steps"></a>后续步骤
 
 [查看警报中提供的信息](how-to-view-information-provided-in-alerts.md)
 

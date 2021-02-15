@@ -1,22 +1,17 @@
 ---
 title: 使用 Azure 数据工厂（预览版）从 Couchbase 复制数据
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 Couchbase 复制到支持的接收器数据存储。
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: d78d533bc4a863a0a70b1dbb47bdfa85d539884f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e8de7982e99e258f0a72bd507ac0d8de16a7227a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81417443"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100383647"
 ---
 # <a name="copy-data-from-couchbase-using-azure-data-factory-preview"></a>使用 Azure 数据工厂（预览版）从 Couchbase 复制数据
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -83,13 +78,13 @@ Couchbase 链接服务支持以下属性：
         "type": "Couchbase",
         "typeProperties": {
             "connectionString": "Server=<server>; Port=<port>;AuthMech=1;",
-            "credString": { 
-                "type": "AzureKeyVaultSecret", 
-                "store": { 
-                    "referenceName": "<Azure Key Vault linked service name>", 
-                    "type": "LinkedServiceReference" 
-                }, 
-                "secretName": "<secretName>" 
+            "credString": { 
+                "type": "AzureKeyVaultSecret", 
+                "store": { 
+                    "referenceName": "<Azure Key Vault linked service name>", 
+                    "type": "LinkedServiceReference" 
+                }, 
+                "secretName": "<secretName>" 
             }
         },
         "connectVia": {
@@ -135,7 +130,7 @@ Couchbase 链接服务支持以下属性：
 
 ### <a name="couchbasesource-as-source"></a>以 CouchbaseSource 作为源
 
-要从 Couchbase 复制数据，请将复制活动中的源类型设置为“CouchbaseSource”  。 复制活动**source**部分支持以下属性：
+要从 Couchbase 复制数据，请将复制活动中的源类型设置为“CouchbaseSource”  。 复制活动 **source** 部分支持以下属性：
 
 | 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |

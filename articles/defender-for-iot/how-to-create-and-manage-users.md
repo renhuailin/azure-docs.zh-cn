@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 1/3/2021
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: c33b3e5fee19edc5d4ac85284e507b53e96234a0
-ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
+ms.openlocfilehash: fd0c7b74bea979737644824f93b4dce7a2364b99
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97977007"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100522336"
 ---
 # <a name="about-defender-for-iot-console-users"></a>关于用于 IoT 控制台用户的 Defender
 
@@ -193,7 +193,7 @@ ms.locfileid: "97977007"
    | Active Directory 组 | 输入在 LDAP 服务器上的 Active Directory 配置中定义的组名。 |
    | 受信任域 | 若要添加受信任的域，请添加域名称和受信任域的连接类型。 <br />只能为在 "用户" 下定义的用户配置受信任的域。 |
 
-1. 选择“保存”。
+1. 选择“保存” 。
 
 1. 若要添加受信任的服务器，请选择 " **添加服务器** " 并配置其他服务器。
 
@@ -265,7 +265,7 @@ ms.locfileid: "97977007"
 
 1. 选择“更新”。
 
-## <a name="see-also"></a>请参阅
+## <a name="next-steps"></a>后续步骤
 
 [激活并设置传感器](how-to-activate-and-set-up-your-sensor.md) 
 [激活并设置本地管理控制台](how-to-activate-and-set-up-your-on-premises-management-console.md) 

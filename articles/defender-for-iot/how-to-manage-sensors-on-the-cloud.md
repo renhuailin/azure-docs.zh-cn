@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/27/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 427ea3884a3db6ba33405014435cf1f962670064
-ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
+ms.openlocfilehash: 459bac2ef01e69b9316af7e8374e7416ab51d915
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98562703"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100523900"
 ---
 # <a name="onboard-and-manage-sensors-in-the-defender-for-iot-portal"></a>在用于 IoT 的 Defender 门户中载入和管理传感器
 
@@ -52,12 +52,10 @@ ms.locfileid: "98562703"
 
 ## <a name="view-onboarded-sensors"></a>查看载入传感器
 
-在 [IoT 门户](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started)上，可以查看有关载入传感器的基本信息。 
+在 [IoT 门户](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started)上，可以查看有关载入传感器的基本信息。
 
 1. 选择 **站点和传感器**。
-1. 在 " **站点和传感器** " 页上，使用筛选器和搜索工具查找所需的传感器信息。
-
-可用信息包括：
+1. 使用筛选器和搜索工具查找所需的传感器和威胁智能信息。
 
 - 载入了多少传感器
 - 云连接和本地管理的传感器的数目
@@ -68,32 +66,40 @@ ms.locfileid: "98562703"
 
 将 [Defender 用于 IoT 门户](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started) ，用于管理与传感器相关的任务。
 
-### <a name="export"></a>导出
+可以在 " **站点和传感器** " 页上查看载入传感器。 你还可以在此页中编辑传感器信息。
+
+### <a name="export-sensor-details"></a>导出传感器详细信息
 
 若要导出载入传感器信息，请选择 "**站点和传感器**" 页顶部的 "**导出**" 图标。
 
-### <a name="edit"></a>编辑
+### <a name="edit-sensor-zone-details"></a>编辑传感器区域详细信息
 
-使用 **站点和传感器** 编辑工具添加和编辑站点名称、区域和标记。
+使用 " **站点和传感器** " 编辑选项可以编辑传感器名称和区域。
 
-### <a name="delete"></a>删除
+编辑：
+
+1. 右键单击要编辑的传感器的 **省略号 (") "。**
+1. 选择“编辑”。
+1. 更新传感器区域或创建新区域。
+
+### <a name="delete-a-sensor"></a>删除传感器
 
 如果删除云连接的传感器，则不会将信息发送到 IoT 中心。 如果不再使用本地连接的传感器，请将其删除。
 
 删除传感器：
 
-1. 选择要删除的传感器的 **省略号 (") "。** 
+1. 选择要删除的传感器的 **省略号 (") "。**
 1. 确认删除。
 
-### <a name="reactivate"></a>重新激活
+### <a name="reactivate-a-sensor"></a>重新激活传感器 
 
-你可能想要更新传感器的管理模式。 例如：
+可能需要重新激活传感器，因为需要：
 
-- **在云连接模式下工作，而不是本地托管模式**：若要执行此操作，请使用云连接传感器的激活文件更新本地连接的传感器的激活文件。 重新激活后，传感器检测会同时显示在传感器和 [Defender 的 IoT 门户](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started)中。 成功上传重新激活文件后，会将新检测到的警报信息发送到 Azure。
+- **在云连接模式下工作，而不是在本地托管模式**：重新激活后，传感器检测在传感器中显示，新检测到的警报信息通过 IoT 中心传送。 此信息可与其他 Azure 服务（如 Azure Sentinel）共享。
 
-- **在本地连接模式下工作，而不是以云连接模式工作**：若要执行此操作，请使用本地托管传感器的激活文件更新与云连接的传感器的激活文件。 重新激活后，传感器检测信息只显示在传感器中。
+- **在本地托管模式下工作，而不是云连接模式**：重新激活后，传感器检测信息只显示在传感器中。
 
-- **将传感器关联到新的 IoT 中心**：若要执行此操作，请重新注册传感器，并上传新的激活文件。
+- **将传感器关联到新的 IoT 中心**：若要执行此操作，请使用新的集线器重新注册传感器，然后下载新的激活文件。
 
 重新激活传感器：
 
@@ -103,20 +109,20 @@ ms.locfileid: "98562703"
 
 3. 删除传感器。
 
-4. 请在新模式下，或使用新的 IoT 中心再次在 **载入** 页面上装入传感器。
+4. 通过从 "入门" 页中选择 "载入 **传感器** "，在新模式下或通过新的 IoT 中心再次载入传感器。
 
-5. 从 **下载激活文件** 页下载激活文件。
+5. 下载激活文件。
 
-6. 登录到 "用于 IoT 的 Defender 传感器" 控制台。
+1. 登录到 "用于 IoT 的 Defender 传感器" 控制台。
 
 7. 在传感器控制台中，选择“系统设置”，然后选择“重新激活”。
 
    :::image type="content" source="media/how-to-manage-sensors-on-the-cloud/reactivate.png" alt-text="上传激活文件以重新激活传感器。":::
 
-8. 选择“上传”并选择已保存的文件。
+8. 选择 " **上传** "，然后从 "板载传感器" 页中选择保存的文件。
 
-9. 选择“激活”  。 
+9. 选择“激活”  。
 
-## <a name="see-also"></a>另请参阅
+## <a name="next-steps"></a>后续步骤
 
 [激活和设置传感器](how-to-activate-and-set-up-your-sensor.md)

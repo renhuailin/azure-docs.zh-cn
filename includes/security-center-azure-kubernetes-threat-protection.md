@@ -4,12 +4,12 @@ ms.author: memildin
 manager: rkarlin
 ms.date: 06/30/2020
 ms.topic: include
-ms.openlocfilehash: 051cd8646718c17c288b06a535d35e1eed5e9259
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 4c09057f606423dc92b3364e502e632a385bf83f
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95557514"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100007800"
 ---
 安全中心为容器化环境提供实时威胁防护，并针对可疑活动生成警报。 可以使用此信息快速补救安全问题，并提高容器的安全性。
 
@@ -17,8 +17,10 @@ ms.locfileid: "95557514"
 
 * **主机级别（由适用于服务器的 Azure Defender 提供）** - Azure Defender 利用安全中心在其他 VM 上使用的同一 Log Analytics 代理监视你的 Linux AKS 节点中是否存在可疑活动，例如 web shell 检测和与已知的可疑 IP 地址进行连接。 该代理还会监视特定于容器的分析，例如创建特权容器、以可疑方式访问 API 服务器以及在 Docker 容器内部运行安全外壳 (SSH) 服务器。
 
+    如果你选择不在主机上安装代理，则只能收到一部分威胁防护权益和安全警报。 你仍会收到与网络分析以及与恶意服务器通信相关的警报。
+
     >[!IMPORTANT]
-    > 如果你选择不在主机上安装代理，则只能收到一部分威胁防护权益和安全警报。 你仍会收到与网络分析以及与恶意服务器通信相关的警报。
+    > 目前，我们不支持在虚拟机规模集上运行的 Azure Kubernetes 服务群集上安装 Log Analytics 代理。
 
     有关 AKS 主机级别的警报列表，请参阅[警报参考表](../articles/security-center/alerts-reference.md#alerts-containerhost)。
 

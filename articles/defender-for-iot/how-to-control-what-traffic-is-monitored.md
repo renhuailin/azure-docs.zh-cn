@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/07/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: bfe3e00c4930ba57c930eb1bc2f2dd4ed11886e0
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: a7af817074400bedd8f07adaefc35309566dc931
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624678"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100522387"
 ---
 # <a name="control-what-traffic-is-monitored"></a>控制要监视的流量
 
@@ -90,7 +90,7 @@ ms.locfileid: "98624678"
 
 10. 若要导出配置的子网，请选择 " **导出**"。 子网表将下载到工作站。
 
-11. 选择“保存”。
+11. 选择“保存” 。
 
 ### <a name="importing-information"></a>导入信息 
 
@@ -182,7 +182,7 @@ ms.locfileid: "98624678"
     > [!NOTE]
     > 从 CSV 文件导入的范围将覆盖现有范围设置。
 
-6. 选择“保存”。
+6. 选择“保存” 。
 
 ## <a name="configure-dns-servers-for-reverse-lookup-resolution"></a>为反向查找解析配置 DNS 服务器
 
@@ -277,7 +277,7 @@ ms.locfileid: "98624678"
 
 7. 若要删除范围，请选择 :::image type="icon" source="media/how-to-control-what-traffic-is-monitored/remove-scan-icon.png" border="false"::: 该范围旁的。
 
-8. 选择“保存”。 " **编辑扫描范围配置** " 对话框将关闭，范围数将显示在 " **扫描范围** " 窗格中。
+8. 选择“保存” 。 " **编辑扫描范围配置** " 对话框将关闭，范围数将显示在 " **扫描范围** " 窗格中。
 
 执行手动扫描：
 
@@ -295,7 +295,7 @@ ms.locfileid: "98624678"
 
 1. 扫描完成后，在 " **操作** " 窗格中选择 " **查看扫描结果**"。 带有扫描结果的 CSV 文件将下载到您的计算机。
 
-## <a name="see-also"></a>另请参阅
+## <a name="next-steps"></a>后续步骤
 
 [调查设备清单](how-to-investigate-sensor-detections-in-a-device-inventory.md) 
  中的传感器检测[在设备映射中调查传感器检测](how-to-work-with-the-sensor-device-map.md)

@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/14/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: e0ae029323d5b64288c5e61ea28a494c1106a53f
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 051ce1be66f91d60f719ca3695f15e6c8001b20f
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97838188"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100523815"
 ---
 # <a name="set-up-snmp-mib-monitoring"></a>设置 SNMP MIB 监视
 
@@ -58,7 +58,7 @@ SNMP 支持的版本为 SNMP v2 或 SNMP v3。 SNMP 将 UDP 用作其使用端�
 
 4. 在 " **身份验证** " 部分的 " **SNMP v2 团体字符串** " 框中，输入字符串。 SNMP 团体字符串最多可包含32个字符，并包含字母数字字符的任意组合 (大写字母、小写字母和数字) 。 不允许空格。
 
-5. 选择“保存”。
+5. 选择“保存” 。
 
 定义 SNMP v3 运行状况监视：
 
@@ -82,8 +82,8 @@ SNMP 支持的版本为 SNMP v2 或 SNMP v3。 SNMP 将 UDP 用作其使用端�
     | **加密** | 选择 "DES 或 AES"。 |
     | **密钥** | 此密钥必须包含8个字符，并包含字母数字字符的任意组合 (大写字母、小写字母和数字) 。 |
 
-5. 选择“保存”。
+5. 选择“保存” 。
 
-## <a name="see-also"></a>另请参阅
+## <a name="next-steps"></a>后续步骤
 
 [导出疑难解答日志](how-to-troubleshoot-the-sensor-and-on-premises-management-console.md)

@@ -4,15 +4,15 @@ description: 了解如何管理单个传感器，包括管理激活文件、执�
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 1/12/2021
+ms.date: 02/02/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: b35851bae8db39392d10a302d5f1059ba3ace696
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: ba98eb7e87ba277dcd5279ecf17373a8276b1cb1
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99508754"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100523968"
 ---
 # <a name="manage-individual-sensors"></a>管理单个传感器
 
@@ -86,7 +86,7 @@ ms.locfileid: "99508754"
 
 - **对于已连接到云的传感器**：传感器无法连接到 internet。 查看传感器的网络配置。 如果你的传感器需要通过 web 代理进行连接以访问 internet，请验证是否已在 **传感器网络配置** 屏幕上正确配置代理服务器。 验证是否 \* 允许在防火墙和/或代理中使用 azure-devices.net:443。 如果不支持通配符，或者需要更多控制，则应在防火墙和/或代理中打开用于 IoT 中心的特定 Defender 的 FQDN。 有关详细信息，请参阅 [Reference-IoT 中心终结点](../iot-hub/iot-hub-devguide-endpoints.md)。  
 
-- **对于连接了云的传感器**：激活文件有效，但 IoT 拒绝了该激活。 如果你无法解决此问题，你可以从 IoT 门户的 Defender 的 " **传感器管理** " 页下载另一激活。 如果这不起作用，请联系 Microsoft 支持部门。
+- **对于连接了云的传感器**：激活文件有效，但 IoT 拒绝了该激活。 如果你无法解决此问题，你可以从 IoT 门户的 Defender 的 "站点和传感器" 页下载另一激活。 如果这不起作用，请联系 Microsoft 支持部门。
 
 ## <a name="manage-certificates"></a>管理证书
 
@@ -114,7 +114,7 @@ Azure Defender for IoT 使用 SSL/TLS 证书来执行以下操作：
  
  - 保护传感器与本地管理控制台之间的通信。 
 
-安装完成后，设备会生成一个本地自签名证书，以允许对 web 控制台进行初步访问。 可以使用命令行工具安装 Enterprise SSL 和 TLS 证书 [`cyberx-xsense-certificate-import`](#cli-commands) 。 
+安装完成后，设备会生成一个本地自签名证书，以允许对 web 控制台进行初步访问。 可以使用命令行工具安装 Enterprise SSL 和 TLS 证书 [`cyberx-xsense-certificate-import`](#cli-commands) 。
 
  > [!NOTE]
  > 对于集成和转发规则（其中设备是会话的客户端和发起方），会使用特定证书，并且与系统证书无关。  
@@ -147,7 +147,7 @@ Azure Defender for IoT 使用 SSL/TLS 证书来执行以下操作：
 
 1. 启用或禁用 " **启用证书验证** " 切换。
 
-1. 选择“保存”。
+1. 选择“保存” 。
 
 如果启用了该选项并且验证失败，则会停止管理控制台和传感器之间的通信，并在控制台中显示验证错误。
 
@@ -355,7 +355,7 @@ Windows 会将这些文件识别为证书文件。 默认情况下，Windows 会
 
 1. 在 " **编辑传感器名称** " 对话框中，输入名称。
 
-1. 选择“保存”。 新名称将被应用。
+1. 选择“保存” 。 新名称将被应用。
 
 ### <a name="change-the-name-of-a-cloud-connected-sensor"></a>更改已连接到云的传感器的名称
 
@@ -363,15 +363,23 @@ Windows 会将这些文件识别为证书文件。 默认情况下，Windows 会
 
 若要更改名称：
 
-1. 在 Azure Defender for IoT 门户中，请参阅 **传感器管理** 页面。
+1. 在 Azure Defender for IoT 门户中，请参阅站点和传感器页面。
 
-1. 从 " **传感器管理** " 窗口中删除该传感器。
+1. 从 "站点和传感器" 页中删除该传感器。
 
-1. 用新名称重新注册。
+1. 通过从 "入门" 页中选择 " **板载传感器** "，以新名称注册。
 
 1. 下载新的激活文件。
 
-1. 登录到传感器，并上传新的激活文件。
+1. 登录到 "用于 IoT 的 Defender 传感器" 控制台。
+
+1. 在传感器控制台中，选择“系统设置”，然后选择“重新激活”。
+
+   :::image type="content" source="media/how-to-manage-sensors-on-the-cloud/reactivate.png" alt-text="上传激活文件以重新激活传感器。":::
+
+1. 选择“上传”并选择已保存的文件。
+
+1. 选择“激活”  。
 
 ## <a name="update-the-sensor-network-configuration"></a>更新传感器网络配置
 
@@ -387,7 +395,7 @@ Windows 会将这些文件识别为证书文件。 默认情况下，Windows 会
 
     :::image type="content" source="media/how-to-manage-individual-sensors/edit-network-configuration-screen.png" alt-text="配置网络设置。":::
 
-3. 按如下所示设置参数：
+3. 设置参数：
 
     | 参数 | 说明 |
     |--|--|
@@ -398,7 +406,7 @@ Windows 会将这些文件识别为证书文件。 默认情况下，Windows 会
     | 主机名 | 传感器主机名 |
     | 代理 | 代理主机和端口名称 |
 
-4. 选择“保存”。
+4. 选择“保存” 。
 
 ## <a name="synchronize-time-zones-on-the-sensor"></a>同步传感器上的时区
 
@@ -436,7 +444,7 @@ Windows 会将这些文件识别为证书文件。 默认情况下，Windows 会
 
 **不备份的内容：** PCAP 文件和日志。 可以手动备份和还原 PCAPs 和日志。
 
-传感器备份文件通过以下格式自动命名： `<sensor name>-backup-version-<version>-<date>.tar` 。 示例为 `Sensor_1-backup-version-2.6.0.102-2019-06-24_09:24:55.tar`。
+传感器备份文件通过以下格式自动命名： `<sensor name>-backup-version-<version>-<date>.tar` 。 例如 `Sensor_1-backup-version-2.6.0.102-2019-06-24_09:24:55.tar`。
 
 配置备份：
 
@@ -458,7 +466,7 @@ Windows 会将这些文件识别为证书文件。 默认情况下，Windows 会
 
     - `sudo chmod 777 /<backup_folder_name_on_cyberx_server>/`
 
-3. 编辑 `fstab`： 
+3. 编辑 `fstab`：
 
     - `sudo nano /etc/fstab`
 
@@ -526,7 +534,7 @@ Windows 会将这些文件识别为证书文件。 默认情况下，Windows 会
 
     :::image type="content" source="media/how-to-manage-individual-sensors/defender-for-iot-version.png" alt-text="登录后显示的升级版本的屏幕截图。":::
 
-## <a name="forward-sensor-failure-alerts"></a>转发传感器故障警报 
+## <a name="forward-sensor-failure-alerts"></a>转发传感器故障警报
 
 你可以将警报转发给第三方，以提供有关以下方面的详细信息：
 
@@ -562,7 +570,7 @@ Windows 会将这些文件识别为证书文件。 默认情况下，Windows 会
 
 3. 从 "**常规**" 部分中选择 "**系统属性**"。
 
-## <a name="see-also"></a>另请参阅
+## <a name="next-steps"></a>后续步骤
 
 [威胁情报研究和包](how-to-work-with-threat-intelligence-packages.md)
 

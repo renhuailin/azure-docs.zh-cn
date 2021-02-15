@@ -8,12 +8,12 @@ ms.author: shhazam
 ms.date: 1/13/2021
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: 53aafc4146680c89dd01174ec5fde765f1cc0c01
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.openlocfilehash: 06663e12bbcaee2243be75d6aa9ea9cf4fd125bf
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2021
-ms.locfileid: "98746013"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100523356"
 ---
 # <a name="horizon-proprietary-protocol-dissector"></a>地平线专用协议 dissector
 
@@ -103,7 +103,7 @@ SDK 支持各种自定义选项，包括：
 
 - 用于 IoT 版本3.0 及更高版本的 Defender。
 
-### <a name="process"></a>进程
+### <a name="process"></a>过程
 
 1. [下载](https://www.eclipse.org/) 适用于 c/c + + 开发人员的 Eclipse IDE。 你可以使用任何其他所需的 IDE。 本文档将指导你使用 Eclipse IDE 完成配置。
 
@@ -315,10 +315,10 @@ JSON 配置文件必须另存为 `config.json` 。
 
 | 参数标签 | 说明 | 类型 |
 |--|--|--|
-| **ID** | 协议的名称。 删除默认值，并在显示的同时添加协议名称。 | 字符串 |
-| **endianess** | 定义如何对多字节数据进行编码。 请仅使用 "小" 或 "大" 这一术语。 取自协议规范或流量记录 | 字符串 |
-| **sanity_failure_codes** | 当存在与代码标识有关的稳定冲突时，从分析器返回这些代码。 请参阅 c + + 部分中的幻数验证。 | 字符串 |
-| **malformed_codes** | 这些是已正确标识但检测到错误的代码。 例如，如果字段长度太短或太长，或值无效。 | 字符串 |
+| **ID** | 协议的名称。 删除默认值，并在显示的同时添加协议名称。 | String |
+| **endianess** | 定义如何对多字节数据进行编码。 请仅使用 "小" 或 "大" 这一术语。 取自协议规范或流量记录 | String |
+| **sanity_failure_codes** | 当存在与代码标识有关的稳定冲突时，从分析器返回这些代码。 请参阅 c + + 部分中的幻数验证。 | String |
+| **malformed_codes** | 这些是已正确标识但检测到错误的代码。 例如，如果字段长度太短或太长，或值无效。 | String |
 | **dissect_as** | 定义特定协议流量应到达的位置的数组。 | TCP/UDP、端口等。 |
 | **字段** | 将从流量中提取的字段的声明。 每个字段都有自己的 ID (名称) ，类型 (numeric、string、raw、array、复杂) 。 例如，在实现分析器文件中提取的字段 [函数](https://docs.google.com/document/d/14nm8cyoGiaE0ODOYQd_xjULxVz9U_bjfPKkcDhOFr5Q/edit#bookmark=id.6s1zcxa9184k) 。 在配置文件中写入的字段是可以添加到层中的字段。 |  |
 
@@ -970,7 +970,7 @@ extern "C" {
 ```
 ## <a name="extract-firmware-data"></a>提取固件数据
 
-可以提取固件信息、定义索引值，并触发插件协议的固件警报。 例如，应用于对象的
+可以提取固件信息、定义索引值，并触发插件协议的固件警报。 例如，
 
 - 提取固件型号或版本。 可以进一步利用此信息来识别标识符。
 
@@ -1149,7 +1149,7 @@ JSON 中的每个密钥定义了从数据包提取此密钥时应执行的一组
 | 字段 | 描述 |
 |--|--|
 | key | 指示键。 |
-| 值 | 指示用于提供数据的实现字段。 |
+| value | 指示用于提供数据的实现字段。 |
 | is_static_key | 指示 `key` 字段是派生自数据包中的值还是预定义的值。 |
 
 ### <a name="working-with-static-keys-only"></a>仅使用静态密钥
@@ -1640,6 +1640,6 @@ dependency": { "field": "CyberXHorizonProtocol.function"  }}]
 
 从 "概述" 中选择插件的 "监视" 按钮。
 
-后续步骤
+## <a name="next-steps"></a>后续步骤
 
 设置你的 [水平 API](references-horizon-api.md)

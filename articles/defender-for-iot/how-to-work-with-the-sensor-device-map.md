@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 1/7/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: edd1438a665e4917d5dd4cdcfba08d9cee01d3bb
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: 5b7059129c45149c64bc7fc145c68d9e09a7c046
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99509042"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100523832"
 ---
 # <a name="investigate-sensor-detections-in-the-device-map"></a>在设备映射中调查传感器检测
 
@@ -309,13 +309,13 @@ ms.locfileid: "99509042"
 
   - 类型
 
-  - 操作系统
+  - OS
 
   - Purdue 层
 
   - 说明
 
-| 项目 | 说明 |
+| Item | 说明 |
 |--|--|
 | 基本信息 | 所需的基本信息。 |
 | 名称 | 设备名称。 <br /> 默认情况下，传感器会发现网络中定义的设备名称。 例如，在 DNS 服务器中定义的名称。 <br /> 如果未定义此类名称，则设备 IP 地址将显示在此字段中。 <br /> 你可以手动更改设备名称。 为设备指定有意义的名称，这些名称反映了其功能。 |
@@ -362,7 +362,7 @@ ms.locfileid: "99509042"
 | 保证 | 工程工作站 <br /> 股票 <br />Historian <br />HMI <br />I <br />DCS 控制器 <br />RTU <br />工业打包系统 <br />工业规模 <br />工业机器人 <br />槽位 <br />计量 <br />可变频率驱动器  <br />机器人控制器 <br />伺服驱动器 <br />气压设备 <br />Marquee |
 | IT | 域控制器 <br />DB 服务器 <br />工作站 <br />服务器 <br />终端工作站 <br />存储 <br />智慧型手機 <br />平板电脑 <br />备份服务器 |
 | IoT | IP 照相机 <br />打印机  <br />冲孔打卡 <br />ATM <br />智能电视 <br />游戏控制台 <br />DVR <br />门控制面板 <br />HVAC <br />恒温调节器 <br />触发警报 <br />智能光线 <br />智能交换机 <br />触发探测器 <br />IP 电话 <br />警报系统 <br />警报警笛 <br />动作检测器 <br />升降机 <br />湿度传感器 <br />条形码扫描仪 <br />不间断电源 <br />人员计数器系统 <br />Intercom <br />转 |
-| 网络 | 无线接入点 <br />路由器 <br />交换机 <br />防火墙 <br />VPN 网关 <br />NTP 服务器 <br />Wifi Pineapple <br />物理位置 <br />I/o 适配器 <br /> 协议转换器 |
+| 网络 | 无线接入点 <br />路由器 <br />开关 <br />防火墙 <br />VPN 网关 <br />NTP 服务器 <br />Wifi Pineapple <br />物理位置 <br />I/o 适配器 <br /> 协议转换器 |
 
 查看设备信息：
 
@@ -483,7 +483,7 @@ ms.locfileid: "99509042"
 
 本部分介绍如何查看编程文件和比较版本。 搜索发送到程控设备的特定文件。 基于以下内容搜索文件：
 
-  - 日期
+  - Date
 
   - 文件类型
 
@@ -607,7 +607,7 @@ ms.locfileid: "99509042"
 
    :::image type="content" source="media/how-to-work-with-maps/name-the-device-v2.png" alt-text="&quot;属性&quot; 对话框":::
 
-4. 选择“保存”。
+4. 选择“保存” 。
 
 ### <a name="authorize-and-unauthorize-devices"></a>授权和 unauthorize 设备
 
@@ -709,6 +709,6 @@ ms.locfileid: "99509042"
 
 1. 选择导出选项。
 
-## <a name="see-also"></a>另请参阅
+## <a name="next-steps"></a>后续步骤
 
 [调查设备清单中的传感器检测](how-to-investigate-sensor-detections-in-a-device-inventory.md)

@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 01/24/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 20b47204ea8f64bc430f436a9bcf1b2311409aa6
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: c28e2f1c24d39ceb915be9f4f6f222d70de9ee73
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99509480"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100522217"
 ---
 # <a name="sensor-trends-and-statistics-reports"></a>传感器趋势和统计信息报告
 
@@ -93,7 +93,7 @@ ms.locfileid: "99509480"
 
 默认情况下，在过去7天内显示检测结果。 您可以使用筛选器工具更改此范围。 例如，自由文本搜索。
 
-## <a name="see-also"></a>另请参阅
+## <a name="next-steps"></a>后续步骤
 
 [风险评估报告](how-to-create-risk-assessment-reports.md) 
 [传感器数据挖掘查询](how-to-create-data-mining-queries.md) 

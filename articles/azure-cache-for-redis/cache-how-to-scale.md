@@ -1,21 +1,20 @@
 ---
-title: 如何缩放 Azure Redis 缓存
-description: 了解如何使用 Azure 门户以及 Azure PowerShell 和 Azure CLI 等工具缩放 Azure Cache for Redis 实例。
+title: 为 Redis 实例缩放 Azure 缓存
+description: 了解如何使用 Azure 门户和工具（如 Azure PowerShell 和 Azure CLI）缩放 Azure Cache for Redis 实例
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
-ms.custom: devx-track-csharp
-ms.date: 04/11/2017
-ms.openlocfilehash: 332233873bfbcb2ae77f5a70b4aaa5a6102cecec
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.date: 02/08/2021
+ms.openlocfilehash: 2913869067ff138922ebb7ea1483a1132e360d29
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92537841"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100382389"
 ---
-# <a name="how-to-scale-azure-cache-for-redis"></a>如何缩放 Azure Redis 缓存
-Azure Redis 缓存具有不同的缓存产品/服务，使缓存大小和功能的选择更加灵活。 如果创建缓存后，应用程序的要求发生更改，可以更改缓存的大小和定价层。 本文演示如何使用 Azure 门户以及 Azure PowerShell 和 Azure CLI 等工具来缩放缓存。
+# <a name="scale-an-azure-cache-for-redis-instance"></a>为 Redis 实例缩放 Azure 缓存
+Azure Redis 缓存具有不同的缓存产品/服务，使缓存大小和功能的选择更加灵活。 对于基本、标准或高级缓存，可以在创建后更改其大小和级别，以满足应用程序的需求。 本文演示如何使用 Azure 门户以及 Azure PowerShell 和 Azure CLI 等工具来缩放缓存。
 
 ## <a name="when-to-scale"></a>何时缩放
 可以使用 Azure Redis 缓存的[监视](cache-how-to-monitor.md)功能来监视缓存的运行状况和性能，并帮助确定何时缩放缓存。 
@@ -45,14 +44,14 @@ Azure Redis 缓存具有不同的缓存产品/服务，使缓存大小和功能�
   * 不能从 **高级** 缓存向下缩放到 **标准** 或 **基本** 缓存。
   * 不能从 **标准** 缓存向下缩放到 **基本** 缓存。
 * 可从 **基本** 缓存缩放到 **标准** 缓存，但不能同时更改大小。 如果需要不同大小，则可以执行后续缩放操作以缩放为所需大小。
-* 不能从 **基本** 缓存直接缩放到 **高级** 缓存。 首先在一个缩放操作中从 **基本** 缩放到 **标准** ，然后在后续的缩放操作中从 **标准** 缩放到 **高级** 。
+* 不能从 **基本** 缓存直接缩放到 **高级** 缓存。 首先在一个缩放操作中从 **基本** 缩放到 **标准**，然后在后续的缩放操作中从 **标准** 缩放到 **高级**。
 * 不能从较大的大小减小为 **C0 (250 MB)** 。
  
 当缓存缩放到新的定价层，会在“Azure Redis 缓存”边栏选项卡中显示 **缩放** 状态。
 
 ![扩展][redis-cache-scaling]
 
-缩放完成后，状态将从 **正在缩放** 更改为 **正在运行** 。
+缩放完成后，状态将从 **正在缩放** 更改为 **正在运行**。
 
 ## <a name="how-to-automate-a-scaling-operation"></a>如何自动执行缩放操作
 除了在 Azure 门户中缩放缓存实例以外，还可以使用 PowerShell cmdlet、Azure CLI 和 Microsoft Azure 管理库 (MAML) 进行缩放。 
@@ -120,7 +119,7 @@ Azure Redis 缓存具有不同的缓存产品/服务，使缓存大小和功能�
 ### <a name="can-i-scale-to-from-or-within-a-premium-cache"></a>可以向上缩放到高级缓存，或在其中向下缩放吗？
 * 不能从 **高级** 缓存向下缩放到 **基本** 或 **标准** 定价层。
 * 可以从一个 **高级** 缓存定价层缩放到另一个高级缓存定价层。
-* 不能从 **基本** 缓存直接缩放到 **高级** 缓存。 首先在一个缩放操作中从 **基本** 缩放到 **标准** ，然后在后续的缩放操作中从 **标准** 缩放到 **高级** 。
+* 不能从 **基本** 缓存直接缩放到 **高级** 缓存。 首先在一个缩放操作中从 **基本** 缩放到 **标准**，然后在后续的缩放操作中从 **标准** 缩放到 **高级**。
 * 如果在创建 **高级** 缓存时启用了群集，则可以 [更改群集大小](cache-how-to-premium-clustering.md#cluster-size)。 如果创建缓存时未启用群集功能，可以稍后进行配置。
   
   有关详细信息，请参阅[如何为高级 Azure Redis 缓存配置群集功能](cache-how-to-premium-clustering.md)。
@@ -164,7 +163,7 @@ Azure Redis 缓存具有不同的缓存产品/服务，使缓存大小和功能�
   * 不能从 **高级** 缓存向下缩放到 **标准** 或 **基本** 缓存。
   * 不能从 **标准** 缓存向下缩放到 **基本** 缓存。
 * 可从 **基本** 缓存缩放到 **标准** 缓存，但不能同时更改大小。 如果需要不同大小，则可以执行后续缩放操作以缩放为所需大小。
-* 不能从 **基本** 缓存直接缩放到 **高级** 缓存。 首先在一个缩放操作中从 **基本** 缩放到 **标准** ，然后在后续操作中从 **标准** 缩放到 **高级** 。
+* 不能从 **基本** 缓存直接缩放到 **高级** 缓存。 首先在一个缩放操作中从 **基本** 缩放到 **标准**，然后在后续操作中从 **标准** 缩放到 **高级**。
 * 不能从较大的大小减小为 **C0 (250 MB)** 。
 
 如果缩放操作失败，该服务将尝试还原操作并且缓存将还原为原始大小。
@@ -174,7 +173,7 @@ Azure Redis 缓存具有不同的缓存产品/服务，使缓存大小和功能�
 缩放时间取决于缓存中的数据量，数据量越大，完成缩放所需的时间就越长。 缩放大约需要 20 分钟。 对于群集缓存，每个分片缩放大约需要 20 分钟。
 
 ### <a name="how-can-i-tell-when-scaling-is-complete"></a>如何判断缩放何时完成？
-在 Azure 门户中可以看到进行中的缩放操作。 缩放完成后，缓存状态将更改为 **正在运行** 。
+在 Azure 门户中可以看到进行中的缩放操作。 缩放完成后，缓存状态将更改为 **正在运行**。
 
 <!-- IMAGES -->
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: damendo
-ms.openlocfilehash: 2222c6b020f712282a78ac5f82a87015d4cd86a5
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: bc085163b4f738d022ab9771794ec85293de5ed8
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100368194"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100521673"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>针对网络安全组进行流日志记录简介
 
@@ -356,7 +356,7 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 - 性能层：当前仅支持标准层存储帐户。
 - 自行管理密钥轮换：如果你更改/轮换存储帐户的访问密钥，则 NSG 流日志将停止工作。 若要解决此问题，必须禁用并重新启用 NSG 流日志。
 
-**流日志记录成本**：NSG 流日志记录按生成的日志量计费。 流量较高时，流日志的量和相关成本可能会增大。 NSG 流日志定价不包括基本的存储成本。 将保留策略功能与 NSG 流日志记录配合使用意味着在较长时间内会产生单独的存储成本。 如果不需要使用保留策略功能，我们建议将此值设置为 0。 有关详细信息，请参阅[网络观察程序定价](https://azure.microsoft.com/pricing/details/network-watcher/)和 [Azure 存储定价](https://azure.microsoft.com/pricing/details/storage/)。
+**流日志记录成本**：NSG 流日志记录按生成的日志量计费。 流量较高时，流日志的量和相关成本可能会增大。 NSG 流日志定价不包括基本的存储成本。 将保留策略功能与 NSG 流日志记录配合使用意味着在较长时间内会产生单独的存储成本。 如果要永久保留数据，并且不想应用任何保留策略，请将保留期 (天) 设置为0。 有关详细信息，请参阅[网络观察程序定价](https://azure.microsoft.com/pricing/details/network-watcher/)和 [Azure 存储定价](https://azure.microsoft.com/pricing/details/storage/)。
 
 **用户定义的入站 TCP 规则的问题**： [ (nsg) 的网络安全组](../virtual-network/network-security-groups-overview.md) 作为有 [状态防火墙](https://en.wikipedia.org/wiki/Stateful_firewall?oldformat=true)实现。 但是，由于当前平台限制，影响入站 TCP 流的用户定义的规则将以无状态方式实现。 因此，被用户定义的入站规则影响的流将变为非终止类型。 不会为这些流记录额外的字节和数据包计数。 因此，NSG 流日志（和流量分析）中报告的字节数和数据包数可能与实际数字不同。 计划在2021年3月最新可用的选择加入标志。 在此期间，由于此行为导致的严重问题，客户可以通过支持请求选择加入，请 > NSG Flow 日志下的 "网络观察程序" 下提出支持请求。  
 

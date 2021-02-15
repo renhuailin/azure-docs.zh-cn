@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 01/20/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: edeb383317d4bdc0e7beef1f8390ddabd350f002
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: 0738dc7f2b7012002fc6ddf5cc68dd0c8e42b04d
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99507564"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100522473"
 ---
 # <a name="sensor-data-mining-queries"></a>传感器数据挖掘查询
 
@@ -130,7 +130,7 @@ ms.locfileid: "99507564"
 
    - 指定 MAC 地址。
 
-4. 选择“保存”。 报表结果在 " **数据挖掘** " 页上打开。
+4. 选择“保存” 。 报表结果在 " **数据挖掘** " 页上打开。
 
 :::image type="content" source="media/how-to-generate-reports/data-mining-page.png" alt-text="报告在数据挖掘页上显示的结果。":::
 
@@ -285,3 +285,7 @@ ms.locfileid: "99507564"
 3. 从右侧下拉列表中，选择要生成的报表。
 
 4. 若要创建报表结果的 PDF，请选择 :::image type="icon" source="media/how-to-generate-reports/pdf-report-icon.png" border="false"::: 。
+
+## <a name="next-steps"></a>后续步骤
+
+[传感器趋势和统计信息报告](how-to-create-trends-and-statistics-reports.md)。

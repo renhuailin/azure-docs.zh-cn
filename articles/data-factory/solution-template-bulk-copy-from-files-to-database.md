@@ -1,19 +1,17 @@
 ---
 title: 从文件向数据库进行批量复制
 description: 了解如何使用解决方案模板将数据从 Azure Data Lake Storage Gen2 批量复制到 Azure Synapse Analytics/Azure SQL 数据库。
-services: data-factory
 author: linda33wj
 ms.author: jingwang
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/09/2020
-ms.openlocfilehash: e1bd5852ca12ca03e7202cf9cfb89372d076bad9
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 5f68c7b33a26bc8c01f3f413943351ff8d61b380
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920435"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100376115"
 ---
 # <a name="bulk-copy-from-files-to-database"></a>从文件向数据库进行批量复制
 
@@ -55,7 +53,7 @@ ms.locfileid: "96920435"
     ![查看管道](media/solution-template-bulk-copy-from-files-to-database/new-pipeline.png)
 
     > [!NOTE]
-    > 如果在上述 **步骤 2** 中选择 " **Azure Synapse Analytics** " 作为数据目标，则必须根据 azure Synapse Analytics Polybase 的要求，为过渡输入连接到 azure Blob 存储的连接。 如以下屏幕截图所示，模板会自动为 Blob 存储生成存储路径。 检查是否在管道运行后创建了容器。
+    > 如果选择 Azure Synapse Analytics 作为上述步骤 2 中的数据目标，必须按 Azure Synapse Analytics Polybase 的要求输入用于暂存的 Azure Blob 存储的连接 。 如以下屏幕截图所示，模板会自动为 Blob 存储生成存储路径。 检查是否在管道运行后创建了容器。
         
     ![Polybase 设置](media/solution-template-bulk-copy-from-files-to-database/staging-account.png)
 

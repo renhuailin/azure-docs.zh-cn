@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/07/2020
 ms.service: azure
 ms.topic: how-to
-ms.openlocfilehash: c0670f37da0cead5e3bd05a1d69e17191e8c0ccf
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: 6a1a4d13ee9f9032c739773b678600d52dec82b8
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99508737"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100523917"
 ---
 # <a name="manage-alert-events"></a>管理警报事件
 
@@ -23,7 +23,8 @@ ms.locfileid: "99508737"
  | **Learn** | 授权检测到的事件。 有关详细信息，请参阅 [关于学习和 unlearning 事件](#about-learning-and-unlearning-events)。 |
  | **认可** | 针对检测到的事件隐藏一次警报。 如果再次检测到该事件，将再次触发此警报。 有关详细信息，请参阅 [关于确认和 unacknowledging 事件](#about-acknowledging-and-unacknowledging-events)。 |
  | **静音** | 连续忽略具有相同设备和流量的活动。 有关详细信息，请参阅 [关于静音和将事件](#about-muting-and-unmuting-events)。 |
-
+ 
+您还可以导出警报信息。
 ## <a name="about-learning-and-unlearning-events"></a>关于学习和 unlearning 事件
 
 指示网络的偏差的事件可能反映出有效的网络更改。 示例可能包括一个已加入网络的新授权设备或授权的固件更新。
@@ -68,9 +69,9 @@ ms.locfileid: "99508737"
 > [!NOTE] 
 > 无法将 internet 设备定义为源或目标的事件静音。
 
-### <a name="what-traffic-is-muted"></a>什么是静音的流量？
+### <a name="what-alert-activity-is-muted"></a>什么是静音活动？
 
-一种静音的方案包括网络设备和检测到事件的流量。 警报标题描述要静音的流量。
+一个静音的方案包括为事件检测到的网络设备和流量。 警报标题描述正在静音的流量。
 
 要静音的设备将显示为警报中的图像。 如果显示两个设备，则会将其之间的特定警报流量静音。
 
@@ -88,7 +89,7 @@ ms.locfileid: "99508737"
 
 **在事件静音后：**
 
-- 在 unmuted 之前，可以在 **确认** 的警报视图中访问该警报。
+- 在已 **确认** 的警报视图中，将可以访问该警报，直到它 unmuted。
 
 - "静音" 操作将显示在 **事件时间线** 中。
 
@@ -106,6 +107,25 @@ ms.locfileid: "99508737"
 
 2. 将鼠标悬停在警报上方，查看其是否已静音。  
 
-## <a name="see-also"></a>另请参阅
+## <a name="export-alert-information"></a>导出警报信息
+
+将警报信息导出到 .csv 文件。 您可以导出检测到的所有警报的信息，或基于筛选视图导出信息。导出以下信息：
+
+- 源地址
+- 目标地址
+- 警报标题
+- 警报严重性
+- 警报消息
+- 其他信息
+- 确认状态
+- PCAP 可用性
+
+导出：
+
+1. 从侧菜单中选择 "警报"。
+1. 选择“导出”  。
+1. 选择 "导出扩展警报" 可在单独的行中为涵盖多个设备的每个警报导出警报信息。 如果选择了 "导出扩展警报"，则 .csv 文件将创建警报事件的重复行，其中每行包含唯一项。 使用此选项可以更方便地调查导出的警报事件。
+
+## <a name="next-steps"></a>后续步骤
 
 [控制要监视的流量](how-to-control-what-traffic-is-monitored.md)

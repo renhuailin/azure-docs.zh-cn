@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 1/12/2021
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: 80dbad919e9446100bdeebb7cde71c147abfc8bc
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: d76db6830839902a46aaf6515f816fdcc36d0df5
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539353"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100523934"
 ---
 # <a name="manage-the-on-premises-management-console"></a>管理本地管理控制台
 
@@ -90,7 +90,7 @@ Azure Defender for IoT 使用 SSL 和 TLS 证书来执行以下操作：
 
 1. 打开或关闭 " **启用证书验证** " 切换。
 
-1. 选择“保存”。
+1. 选择“保存” 。
 
 如果启用了该选项并且验证失败，则会停止管理控制台和传感器之间的通信，并在控制台中显示验证错误。
 
@@ -322,7 +322,7 @@ Windows 会将这些文件识别为证书文件。 默认情况下，Windows 会
 
 3. 输入在组织 DNS 服务器中配置的主机名。 
 
-4. 选择“保存”。
+4. 选择“保存” 。
 
 ## <a name="define-vlan-names"></a>定义 VLAN 名称
 
@@ -372,7 +372,7 @@ VLAN 名称在传感器和管理控制台之间不同步。 应在组件上定�
 
    :::image type="content" source="media/how-to-change-the-name-of-your-azure-consoles/edit-management-console-configuration.png" alt-text="编辑用于 IoT 平台配置的 Defender 的屏幕截图。":::
 
-3. 选择“保存”。 新名称将被应用。
+3. 选择“保存” 。 新名称将被应用。
 
    :::image type="content" source="media/how-to-change-the-name-of-your-azure-consoles/name-changed.png" alt-text="显示控制台更改名称的屏幕截图。":::
 
@@ -388,7 +388,7 @@ VLAN 名称在传感器和管理控制台之间不同步。 应在组件上定�
 1. 在 "用于 IoT **网站和传感器** 的 Defender" 页上，选择 " **恢复我的密码** " 选项卡。
 1. 输入唯一标识符，然后选择 " **恢复**"。 下载激活文件。
 1. 请在 " **密码恢复** " 页上，上载激活文件。
-1. 选择“下一步”  。
+1. 选择“下一步”。
  
    现在提供了用户名和系统生成的新密码。
 
@@ -415,7 +415,7 @@ VLAN 名称在传感器和管理控制台之间不同步。 应在组件上定�
 
 1. 选择从 "用于 IoT **更新** 的 Defender" 页面下载的文件。
 
-## <a name="see-also"></a>另请参阅
+## <a name="next-steps"></a>后续步骤
 
 [通过管理控制台管理传感器](how-to-manage-sensors-from-the-on-premises-management-console.md)
 

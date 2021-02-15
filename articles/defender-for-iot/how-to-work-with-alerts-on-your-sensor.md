@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 11/30/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 00207ffb8480ae99c2f1aad74183fca9ea45ee17
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 3ae17ebce564de465a91739a210ae7f18f86a3b9
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97838351"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100523543"
 ---
 # <a name="work-with-alerts-on-your-sensor"></a>处理传感器的警报
 
@@ -68,9 +68,9 @@ ms.locfileid: "97838351"
 
   - 在风险评估报表中报告网络设备上检测到的恶意软件事件。 如果 *静音* 了有关恶意软件事件的警报，则不会在风险评估报表中计算受影响的设备。
 
-## <a name="see-also"></a>另请参阅
+## <a name="next-steps"></a>后续步骤
 
-- [学习和智能 IT 学习模式](how-to-control-what-traffic-is-monitored.md#learning-and-smart-it-learning-modes)
-- [查看警报中提供的信息](how-to-view-information-provided-in-alerts.md)
-- [管理警报事件](how-to-manage-the-alert-event.md)
-- [加速警报工作流](how-to-accelerate-alert-incident-response.md)
+[学习和智能 IT 学习模式](how-to-control-what-traffic-is-monitored.md#learning-and-smart-it-learning-modes) 
+[查看警报](how-to-view-information-provided-in-alerts.md) 
+ 中提供的信息[管理警报事件](how-to-manage-the-alert-event.md) 
+[加速警报工作流](how-to-accelerate-alert-incident-response.md)

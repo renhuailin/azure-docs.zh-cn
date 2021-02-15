@@ -1,19 +1,19 @@
 ---
 title: 如何在 Synapse Studio 中管理 Synapse RBAC 分配
 description: 本文介绍了如何将 Synapse RBAC 角色分配和吊销到 AAD 安全主体
-author: billgib
+author: RonyMSFT
 ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: security
 ms.date: 12/1/2020
-ms.author: billgib
+ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: c88371eb450d5b0e2e8b821cdec0e87190e291f8
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: bed0c00b8cb5718456302dff06e98ff2f7f2b4e8
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98218189"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100102183"
 ---
 # <a name="how-to-manage-synapse-rbac-role-assignments-in-synapse-studio"></a>如何在 Synapse Studio 中管理 Synapse RBAC 角色分配
 

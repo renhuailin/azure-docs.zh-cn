@@ -7,24 +7,24 @@ ms.author: shhazam
 ms.date: 12/02/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: bce83e11a0d4567d37e78388445c108385ca9a61
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: 6dc2a9683a48f20816adc8ce0ee0c1e8dc57b287
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99509059"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100523662"
 ---
 # <a name="view-alerts"></a>查看警报
 
 本文介绍如何查看传感器触发的警报并使用警报工具对其进行管理。
 
-你可以根据各种类别查看警报，例如已存档或固定的警报。 或者，你可以搜索感兴趣的警报，例如基于 IP 或 MAC 地址的警报。  
+你可以根据各种类别查看警报，例如已存档或固定的警报。 还可以搜索感兴趣的警报，例如基于 IP 或 MAC 地址的警报。  
 
 你还可以从传感器仪表板中查看警报。
 
 查看警报：
 
-- 从侧菜单中选择 " **警报** "。 " **警报** " 窗口显示传感器检测到的警报。
+- 从侧菜单中选择 " **警报** "。 "警报" 窗口显示传感器检测到的警报。
 
   :::image type="content" source="media/how-to-work-with-alerts-sensor/alerts-screen.png" alt-text="&quot;警报&quot; 屏幕的视图。":::
 
@@ -42,21 +42,21 @@ ms.locfileid: "99509059"
 
 ## <a name="search-for-alerts-of-interest"></a>搜索感兴趣的警报
 
-" **警报** " 主视图提供各种搜索功能，可帮助你查找感兴趣的警报。
+"警报" 主视图提供各种搜索功能，可帮助你查找感兴趣的警报。
 
 :::image type="content" source="media/how-to-work-with-alerts-sensor/main-alerts-view.png" alt-text="警报学习屏幕截图。":::
 
-### <a name="text-search"></a>文本搜索 
+### <a name="text-search"></a>文本搜索
 
-使用 " **免费搜索** " 选项，按文本、数字或字符搜索警报。
+使用 "免费搜索" 选项，按文本、数字或字符搜索警报。
 
 搜索：
 
-- 在 " **免费搜索** " 字段中键入所需的文本，然后在键盘上按 enter。
+- 在 "免费搜索" 字段中键入所需的文本，然后在键盘上按 Enter。
 
 清除搜索：
 
-- 删除 " **免费搜索** " 字段中的文本，然后在键盘上按 enter。
+- 删除 "免费搜索" 字段中的文本，然后在键盘上按 Enter。
 
 ### <a name="device-group-or-device-ip-address-search"></a>设备组或设备 IP 地址搜索
 
@@ -100,7 +100,7 @@ ms.locfileid: "99509059"
 
 - 选择 :::image type="icon" source="media/how-to-work-with-alerts-sensor/learn-and-acknowledge-all-alerts.png" border="false"::: 以了解并确认所有警报。
 
-- 选择此 :::image type="icon" source="media/how-to-work-with-alerts-sensor/export-to-csv.png" border="false"::: 选项可将警报列表导出到 CSV 文件，并选择 "导出" 选项。 选择常规的 "导出到 CSV" 选项的 **警报导出** 。 或者选择 **扩展警报导出** ，以便添加单独的行，以获取有关 CSV 文件中的警报的其他信息。
+- 选择此 :::image type="icon" source="media/how-to-work-with-alerts-sensor/export-to-csv.png" border="false"::: 可将警报信息导出为 .csv 文件。 对于涵盖多个设备的每个警报，使用 **扩展警报导出** 选项将警报信息导出到单独的行中。
 
 ## <a name="alert-pop-up-window-options"></a>警报弹出窗口选项
 

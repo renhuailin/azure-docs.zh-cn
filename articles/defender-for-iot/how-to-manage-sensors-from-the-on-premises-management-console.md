@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/07/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 73eb693ab9f06535fd523eb386969e2cce961eef
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 10051bfdf7a93a8d6c83d649a7b0ad008b5e2caf
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624585"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100523951"
 ---
 # <a name="manage-sensors-from-the-management-console"></a>通过管理控制台管理传感器
 
@@ -64,7 +64,7 @@ ms.locfileid: "98624585"
 
 6. 在传感器树中，选择要对其应用配置的项目。
 
-7. 选择“保存”。
+7. 选择“保存” 。
 
 ## <a name="update-versions"></a>更新版本
 
@@ -235,7 +235,7 @@ ms.locfileid: "98624585"
 
    - 若要备份到外部服务器，请启用 " **自定义路径** " 切换，然后输入位置。 支持以下数字和字符： `/, a-z, A-Z, 0-9, and, _` 。 
 
-7. 选择“保存”。 
+7. 选择“保存” 。 
 
 立即备份： 
 
@@ -315,6 +315,6 @@ ms.locfileid: "98624585"
 
 9. 将 `Backup.shared_location` 设置为 `<backup_folder_name_on_cyberx_server>`。
 
-## <a name="see-also"></a>另请参阅
+## <a name="next-steps"></a>后续步骤
 
 [管理单个传感器](how-to-manage-individual-sensors.md)

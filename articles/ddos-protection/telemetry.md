@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/28/2020
 ms.author: yitoh
-ms.openlocfilehash: b34fcd66f0b64e2522da69bcfc7d119628b9d9d9
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: 0a8c30076231aecb17505dd0d7a2fe4e7be485a3
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100516696"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100522659"
 ---
 # <a name="view-and-configure-ddos-protection-telemetry"></a>查看和配置 DDoS 防护遥测
 
@@ -70,7 +70,7 @@ Azure DDoS 防护标准通过 DDoS 攻击分析提供详细的攻击见解和可
 
 ## <a name="view-ddos-protection-telemetry"></a>查看 DDoS 保护遥测
 
-对攻击的遥测是通过 Azure Monitor 实时提供的。 遥测仅在公共 IP 地址处于风险缓解期间可用。 在攻击缓解之前或之后，都不会看到遥测。
+对攻击的遥测是通过 Azure Monitor 实时提供的。 遥测仅在公共 IP 地址被缓解时可用。 
 
 1. 登录到 [Azure 门户](https://portal.azure.com/) 并浏览到 DDoS 保护计划。
 2. 在“监视”下，选择“指标”。

@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 1/12/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 5d2d923fc448beeff8fa165226890d88d97d01ad
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 56f6c9d3ff3093c3acd28b670e37f823ad5e9f9a
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99805659"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100522506"
 ---
 # <a name="activate-and-set-up-your-sensor"></a>激活和设置传感器
 
@@ -96,9 +96,9 @@ ms.locfileid: "99805659"
 1. 定义证书名称。
 1. 上传 CRT 和密钥文件。
 1. 如果需要，请输入通行短语并上传 PEM 文件。
-1. 选择“**下一页**”。 验证屏幕将打开。 默认情况下，会在管理控制台和连接的传感器之间启用验证。
+1. 选择“下一步”。 验证屏幕将打开。 默认情况下，会在管理控制台和连接的传感器之间启用验证。
 1. 关闭 " **启用系统范围的验证** 切换" 以禁用验证。 建议启用验证。
-1. 选择“保存”。  
+1. 选择“保存” 。  
 
 上载 CA 签名的证书后，你可能需要刷新屏幕。
 
@@ -214,7 +214,7 @@ ms.locfileid: "99805659"
 |----|---|---|
 | 支持 | :::image type="icon" source="media/concept-sensor-console-overview/support-icon-azure.png" border="false"::: | 联系 [Microsoft 支持部门](https://support.microsoft.com/) 获取帮助。 |
 
-### <a name="see-also"></a>请参阅
+## <a name="next-steps"></a>后续步骤
 
 [加入传感器](getting-started.md#4-onboard-a-sensor)
 

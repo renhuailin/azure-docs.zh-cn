@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/12/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: cac8d609272be1d9f34b7e0d6404e0a0ea524df7
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: 2083da329c41afbe95ff570194a1c3ad5c2661be
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99509025"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100523560"
 ---
 # <a name="work-with-device-notifications"></a>处理设备通知
 
@@ -98,6 +98,6 @@ ms.locfileid: "99509025"
 
 当你接受建议时，将在传感器中更新 OS 类型信息。
 
-## <a name="see-also"></a>另请参阅
+## <a name="next-steps"></a>后续步骤
 
 [查看警报](how-to-view-alerts.md)

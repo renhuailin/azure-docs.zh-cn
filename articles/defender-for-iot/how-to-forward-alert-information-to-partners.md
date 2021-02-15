@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/02/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 0b71f7ca3f812de1514612f8b0dd5915f3f81bc4
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 528ea5a6b05dea59cb397bf32297f05b6cdc9be2
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97838494"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100522727"
 ---
 # <a name="forward-alert-information"></a>转发警报信息
 
@@ -84,7 +84,7 @@ ms.locfileid: "97838494"
 
 2. 在 SIEM 上输入警报检测的时间戳的时区。
 
-3. 选择“提交”。 
+3. 选择“提交”。
 
 #### <a name="syslog-server-actions"></a>Syslog 服务器操作
 
@@ -118,7 +118,7 @@ ms.locfileid: "97838494"
 | 优先级 | User. 警报 |
 | 主机名 | 传感器 IP 地址 |
 | 协议 | TCP 或 UDP |
-| 消息 | 传感器：传感器名称。<br /> 警报：警报的标题。<br /> 类型：警报的类型。 可能 **违反协议**、 **策略冲突**、 **恶意软件**、 **异常** 或 **操作**。<br /> 严重性：警报的严重性。 可以是 " **警告**"、" **次要**"、" **主要**" 或 " **严重**"。<br /> 源：源设备名称。<br /> 源 IP：源设备 IP 地址。<br /> Destination：目标设备名称。<br /> 目标 IP：目标设备的 IP 地址。<br /> 消息：警报的消息。<br /> 警报组：与警报关联的警报组。 |
+| Message | 传感器：传感器名称。<br /> 警报：警报的标题。<br /> 类型：警报的类型。 可能 **违反协议**、 **策略冲突**、 **恶意软件**、 **异常** 或 **操作**。<br /> 严重性：警报的严重性。 可以是 " **警告**"、" **次要**"、" **主要**" 或 " **严重**"。<br /> 源：源设备名称。<br /> 源 IP：源设备 IP 地址。<br /> Destination：目标设备名称。<br /> 目标 IP：目标设备的 IP 地址。<br /> 消息：警报的消息。<br /> 警报组：与警报关联的警报组。 |
 
 
 | Syslog 对象输出 | 说明 |
@@ -126,7 +126,7 @@ ms.locfileid: "97838494"
 | 日期和时间 |   Syslog 服务器计算机接收信息的日期和时间。 |  
 | 优先级 |    User. 警报 | 
 | 主机名 |    传感器 IP | 
-| 消息 | 传感器名称：设备的名称。 <br /> 警报时间：检测到警报的时间：可能与 syslog 服务器计算机的时间不同，具体取决于转发规则的时区配置。 <br /> 警报标题：警报的标题。 <br /> 警报消息：警报的消息。 <br /> 警报严重性：警报的严重性： **Warning**、 **小调**、 **主编** 或 **严重**。 <br /> 警报类型： **协议冲突**、 **策略冲突**、 **恶意软件**、 **异常** 或 **操作**。 <br /> 协议：警报的协议。  <br /> **Source_MAC**：源设备的 IP 地址、名称、供应商或操作系统。 <br /> Destination_MAC：目标的 IP 地址、名称、供应商或 OS。 如果缺少数据，则该值将为 **N/A**。 <br /> alert_group：与警报关联的警报组。 |
+| Message | 传感器名称：设备的名称。 <br /> 警报时间：检测到警报的时间：可能与 syslog 服务器计算机的时间不同，具体取决于转发规则的时区配置。 <br /> 警报标题：警报的标题。 <br /> 警报消息：警报的消息。 <br /> 警报严重性：警报的严重性： **Warning**、 **小调**、 **主编** 或 **严重**。 <br /> 警报类型： **协议冲突**、 **策略冲突**、 **恶意软件**、 **异常** 或 **操作**。 <br /> 协议：警报的协议。  <br /> **Source_MAC**：源设备的 IP 地址、名称、供应商或操作系统。 <br /> Destination_MAC：目标的 IP 地址、名称、供应商或 OS。 如果缺少数据，则该值将为 **N/A**。 <br /> alert_group：与警报关联的警报组。 |
 
 
 | Syslog CEF 输出格式 | 说明 |
@@ -134,14 +134,14 @@ ms.locfileid: "97838494"
 | 日期和时间 | Syslog 服务器计算机接收信息的日期和时间。 |
 | 优先级 | User. 警报 | 
 | 主机名 | 传感器 IP 地址 |
-| 消息 | CEF：0 <br />适用于 IoT 的 Azure Defender <br />传感器名称：传感器设备的名称。 <br />传感器版本 <br />警报标题：警报的标题。 <br />消息：警报的消息。 <br />协议：警报的协议。 <br />严重性： **Warning**、 **小调**、 **主编** 或 **严重**。 <br />类型： **协议冲突**、 **策略冲突**、 **恶意软件**、 **异常** 或 **操作**。 <br /> 开始时间：检测到警报的时间。 <br />可能不同于 syslog 服务器计算机的时间，具体取决于转发规则的时区配置。 <br />src_ip：源设备的 IP 地址。  <br />dst_ip：目标设备的 IP 地址。<br />cat：与警报关联的警报组。  |
+| Message | CEF：0 <br />适用于 IoT 的 Azure Defender <br />传感器名称：传感器设备的名称。 <br />传感器版本 <br />警报标题：警报的标题。 <br />消息：警报的消息。 <br />协议：警报的协议。 <br />严重性： **Warning**、 **小调**、 **主编** 或 **严重**。 <br />类型： **协议冲突**、 **策略冲突**、 **恶意软件**、 **异常** 或 **操作**。 <br /> 开始时间：检测到警报的时间。 <br />可能不同于 syslog 服务器计算机的时间，具体取决于转发规则的时区配置。 <br />src_ip：源设备的 IP 地址。  <br />dst_ip：目标设备的 IP 地址。<br />cat：与警报关联的警报组。  |
 
 | Syslog LEEF 输出格式 | 说明 |
 |--|--|
 | 日期和时间 |   Syslog 服务器计算机接收信息的日期和时间。 |  
 | 优先级 |    User. 警报 | 
 | 主机名 |    传感器 IP |
-| 消息 | 传感器名称： Azure Defender for IoT 设备的名称。 <br />LEEF：1。0 <br />适用于 IoT 的 Azure Defender <br />传感器  <br />传感器版本 <br />Azure Defender IoT 警报 <br />title：警报的标题。 <br />消息：警报的消息。 <br />协议：警报的协议。<br />严重性： **Warning**、 **小调**、 **主编** 或 **严重**。 <br />类型：警报的类型： **协议冲突**、 **策略冲突**、 **恶意软件**、 **异常** 或 **操作**。 <br />start：警报的时间。请注意，它可能不同于 syslog 服务器计算机的时间。  (这取决于时区配置。 )  <br />src_ip：源设备的 IP 地址。<br />dst_ip：目标设备的 IP 地址。 <br />cat：与警报关联的警报组。 |
+| Message | 传感器名称： Azure Defender for IoT 设备的名称。 <br />LEEF：1。0 <br />适用于 IoT 的 Azure Defender <br />传感器  <br />传感器版本 <br />Azure Defender IoT 警报 <br />title：警报的标题。 <br />消息：警报的消息。 <br />协议：警报的协议。<br />严重性： **Warning**、 **小调**、 **主编** 或 **严重**。 <br />类型：警报的类型： **协议冲突**、 **策略冲突**、 **恶意软件**、 **异常** 或 **操作**。 <br />start：警报的时间。请注意，它可能不同于 syslog 服务器计算机的时间。  (这取决于时区配置。 )  <br />src_ip：源设备的 IP 地址。<br />dst_ip：目标设备的 IP 地址。 <br />cat：与警报关联的警报组。 |
 
 输入所有信息后，选择 " **提交**"。
 
@@ -157,7 +157,7 @@ ms.locfileid: "97838494"
 
    :::image type="content" source="media/how-to-work-with-alerts-sensor/add-timezone.png" alt-text="将时区添加到转发规则。":::
 
-3. 选择“提交”。 
+3. 选择“提交”。
 
 #### <a name="integrated-vendor-actions"></a>集成供应商操作
 
@@ -203,6 +203,6 @@ ms.locfileid: "97838494"
 
 这意味着，根据管理员创建的排除规则，可能会忽略您定义的转发规则。 在本地管理控制台中定义了排除规则。
 
-## <a name="see-also"></a>另请参阅
+## <a name="next-steps"></a>后续步骤
 
 [加速警报工作流](how-to-accelerate-alert-incident-response.md)

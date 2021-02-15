@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 1/3/2021
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: b91827fc0a6fb8380c9f8aa87a3def3bc1819523
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: 624f60441f56646c3633a2afa79d326c92ba1a37
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955427"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100523713"
 ---
 # <a name="troubleshoot-the-sensor-and-on-premises-management-console"></a>排查传感器和本地管理控制台问题
 
@@ -283,7 +283,7 @@ ms.locfileid: "97955427"
 
 存档日志列表最多可以包含五个项目。 如果列表中项目的数量超出该数字，则会删除最早的项目。
 
-## <a name="see-also"></a>另请参阅
+## <a name="next-steps"></a>后续步骤
 
 - [查看警报](how-to-view-alerts.md)
 

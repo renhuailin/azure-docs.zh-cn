@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/09/2020
-ms.openlocfilehash: 5b4ab207462955be3876dc1a25fae491e48a9cd2
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: de8638cbb4e39ccf6013e5a8d596417401700c8d
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98621704"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100521588"
 ---
 # <a name="welcome-to-azure-defender-for-iot"></a>欢迎使用 Azure Defender for IoT
 
@@ -81,6 +81,6 @@ Azure Defender for IoT 微代理提供对安全状态管理、威胁检测以及
 
 Azure Defender for IoT 微代理包括源代码，因此你可以将微代理并入固件，或对其进行自定义以仅包含你需要的内容。 它还可作为二进制包提供，也可直接集成到其他 Azure IoT 解决方案。 
 
-## <a name="see-also"></a>另请参阅
+## <a name="next-steps"></a>后续步骤
 
 [Azure Defender for IoT 体系结构](architecture.md)

@@ -4,12 +4,12 @@ description: 了解 Azure 监视器的合作伙伴，以及如何访问相关文
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: 6e707e77f4618d71cb2fa3f32b05895b97658f76
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: bfec05935b4cbe5c3c4495f7c261bd34bc0a0032
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500234"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100522151"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure 监视器合作伙伴集成
 
@@ -51,11 +51,11 @@ AppDynamics Application Performance Management (APM) 可让应用程序所有者
 
 ![BMC Helix 徽标](./media/partners/BMCHelix.png)
 
-BMC Helix 是一种自治企业服务和运营 SaaS 平台。 它集成了360度智能，使企业能够主动和预先地发现、监视、服务、修正、优化和交付面向 IT 和业务线的全渠道体验。
-此外，通过将 ITSM 和 IT 运营管理无缝集成 (ITOM) ，BMC Helix 允许 IT 和业务用户消除 IT 小仓库、做出数据驱动的业务决策，并提供业界领先的客户体验。
-客户可以部署 BMC Helix 平台及其选择的云部署–公共、专用或混合。 此外，客户还可以选择 AI/ML 解决方案来利用行业领先的提供商。
+BMC Helix 是一种自主的企业服务和运营 SaaS 平台。 它集成了 360 度智能，使企业能够主动和预先地发现、监视、服务、修正、优化并为 IT 和业务线提供全渠道体验。
+此外，通过与 ITSM 和 IT 运营管理 (ITOM) 顺利集成，BMC Helix 允许 IT 和业务用户消除 IT 孤岛，做出数据驱动的业务决策，并提供行业领先的客户体验。
+客户可以部署 BMC Helix 平台及其选择的云部署–公共、专用或混合。 此外，客户还可以选择利用行业领先提供商的 AI/ML 解决方案。
 
-[了解有关 BMC Helix 的详细信息](https://www.bmc.com/it-solutions/bmc-helix.html?vu=helix)
+[了解更多关于 BMC Helix 的信息](https://www.bmc.com/it-solutions/bmc-helix.html?vu=helix)
 
 ## <a name="botmetric"></a>Botmetric
 
@@ -275,6 +275,24 @@ SignalFx 是领先的面向数据驱动型 DevOps 的实时操作智能服务。
 
 [SIGNL4 文档](https://www.signl4.com/blog/mobile-alert-notifications-azure-monitor/)
 
+## <a name="site24x7"></a>Site24x7
+
+![Site24x7 徽标](./media/partners/site24-7.png)
+
+Site24x7 提供高级和完整堆栈 Azure 监视解决方案，提供应用程序的可见性和见解，使应用程序所有者能够快速检测性能瓶颈，实现故障排除，并优化性能。
+借助 Site24x7 Azure Monitoring，你将能够：
+
+* 监视超过100个 Azure IaaS 和 PaaS 服务。
+* 直接从 Azure Marketplace 获取具有独有 Azure 扩展的 Windows 和 Linux Vm 的深入监视。
+* 通过深入了解 Azure 中的日志来对应用程序进行故障排除。 将日志发送到 Site24x7，保存搜索查询，设置基于查询的警报，以及通过单个仪表板管理 Azure 日志。
+* 检测任何服务运行状况问题，并通过 Azure Deployment Manager (ADM) 运行状况检查确保可靠的部署。
+* 使用一组 IT 自动化工具自动解决故障。
+* 监视完整的 Microsoft ecosphere，包括 SQL、Exchange、Active Directory、Office 365、IIS 和 Hyper-v 应用程序。
+* 与 Microsoft 团队、PagerDuty、Zapier 等第三方服务无缝集成。
+
+[站点24X7 文档](https://www.site24x7.com/)
+
+
 ## <a name="solarwinds"></a>SolarWinds
 
 [SolarWinds 文档](https://www.solarwinds.com/topics/azure-monitoring)
@@ -311,9 +329,9 @@ Turbonomic 为混合云提供工作负荷自动化解决方案，同时实时优
 
 [Turbonomic 简介](https://turbonomic.com/)
 
-## <a name="partner-tools-with-event-hub-integration"></a>带事件中心集成的合作伙伴工具
+## <a name="partner-tools-with-event-hub-integration"></a>具有事件中心集成的合作伙伴工具
 
-使用 Azure Monitor 将监视数据路由到 Azure 事件中心，可以轻松地与某些外部 SIEM 和监视工具集成。 已知以下合作伙伴通过事件中心进行集成。 
+使用 Azure Monitor 将监视数据路由到 Azure 事件中心，使你可以轻松地与某些外部 SIEM 和监视工具集成。 已知以下合作伙伴已通过事件中心进行了集成。 
 
 | 工具 | 在 Azure 中托管 | 说明 |
 |:---|:---| :---|

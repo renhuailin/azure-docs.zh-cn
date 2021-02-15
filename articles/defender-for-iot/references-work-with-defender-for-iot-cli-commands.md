@@ -1,5 +1,5 @@
 ---
-title: 使用用于 IoT CLI 命令的 Defender
+title: 使用 Defender for IoT CLI 命令
 description: 本文介绍适用于传感器和本地管理控制台的 IoT CLI 命令的 Defender。
 author: shhazam-ms
 manager: rkarlin
@@ -7,14 +7,14 @@ ms.author: shhazam
 ms.date: 12/12/2020
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: 48c525004b095c1e0f498f86a5395d0002be26f1
-ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
+ms.openlocfilehash: 2ec682bf76e35b54f58acc1956972c57128edd75
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/01/2021
-ms.locfileid: "97845258"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100523135"
 ---
-# <a name="work-with-defender-for-iot-cli-commands"></a>使用用于 IoT CLI 命令的 Defender
+# <a name="work-with-defender-for-iot-cli-commands"></a>使用 Defender for IoT CLI 命令
 
 本文介绍适用于传感器和本地管理控制台的 CLI 命令。 管理员、cyberx 用户和支持用户可以访问这些命令。
 
@@ -31,7 +31,7 @@ alerts exclusion-rule-create [-h] -n NAME [-ts TIMES] [-dir DIRECTION]
 
 可以在警报排除规则中定义的属性如下所示：
 
-| 属性 | 说明 |
+| 特性 | 说明 |
 |--|--|
 | [-h] | 打印命令的帮助信息。 |
 | -n 名称 | 正在创建的规则的名称。 |
@@ -71,7 +71,7 @@ alerts exclusion-rule-remove [-h] -n NAME [-ts TIMES] [-dir DIRECTION]
 
 可以将以下属性与警报排除规则结合使用：
 
-| 属性 | 说明|
+| 特性 | 说明|
 | --------- | ---------------------------------- |
 | -n 名称 | 要删除的规则的名称。 |
 
@@ -103,7 +103,7 @@ ntp disable IP
 
 下表描述了可用于配置用于 IoT 的 Azure Defender 网络选项的命令：
 
-|名称|Command|说明|
+|名称|命令|说明|
 |-----------|-------|-----------|
 |Ping|`ping IP `| Ping 用于 IoT 平台的 Defender。|
 |Blink|`network blink`|允许更改网络配置参数。|
@@ -127,7 +127,7 @@ network capture-filter
 
 选择此项 `Y` 可打开 nano 文件，在其中可以根据以下语法添加设备、通道、端口和子集：
 
-| 属性 | 说明 |
+| 特性 | 说明 |
 |--|--|
 | 1.1.1.1 | 包含此设备的所有流量。 |
 | 1.1.1.1、2.2.2。2 | 包括此通道的所有流量。 |
@@ -143,7 +143,7 @@ network capture-filter
 
 选择此项 `Y` 可打开 nano 文件，在其中可以根据以下语法添加设备、通道、端口和子集：
 
-| 属性 | 说明 |
+| 特性 | 说明 |
 |--|--|
 | 1.1.1.1 | 排除此设备的所有流量。 |
 | 1.1.1.1、2.2.2。2 | 排除此通道的所有流量，这意味着两个设备之间的所有流量。 |
@@ -241,7 +241,7 @@ directions [-h] [--identifier IDENTIFIER] [--port PORT] [--remove] [--add]
 
 可以在命令中使用以下属性 `directions` ：
 
-| 属性 | 说明 |
+| 特性 | 说明 |
 |--|--|
 | [-h] | 打印命令的帮助信息。 |
 | [--标识符标识符] | 服务器标识符。 |
@@ -290,6 +290,6 @@ cyberx-xsense-certificate-import
 
 - 确认设备域 (与你的 DNS 服务器的证书) 和相应的 IP 地址显示在一起。 
     
-## <a name="see-also"></a>另请参阅
+## <a name="next-steps"></a>后续步骤
 
 [用于 IoT API 传感器和管理控制台 Api 的 Defender](references-work-with-defender-for-iot-apis.md)

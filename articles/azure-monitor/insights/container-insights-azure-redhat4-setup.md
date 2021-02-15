@@ -3,12 +3,12 @@ title: 为容器 Azure Monitor 配置 Azure Red Hat OpenShift v4 |Microsoft Docs
 description: 本文介绍如何使用 Azure Red Hat OpenShift 版本4或更高版本上托管 Azure Monitor 来配置 Kubernetes 群集的监视。
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 8cd551a028f2fc67c26f8e32d59c0e0650aa1e54
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: e6668ac22c6c0f53c7511cfb76bf50c5474f3a76
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98944529"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100521622"
 ---
 # <a name="configure-azure-red-hat-openshift-v4x-with-azure-monitor-for-containers"></a>为容器配置 Azure Red Hat OpenShift v4. x Azure Monitor
 
@@ -29,7 +29,7 @@ ms.locfileid: "98944529"
 - 实时数据 (预览) 
 - 从群集节点和 pod[收集指标](container-insights-update-metrics.md)并将其存储在 Azure Monitor 度量值数据库中
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - Azure CLI 版本2.0.72 或更高版本  
 
@@ -121,7 +121,7 @@ ms.locfileid: "98944529"
     export kubeContext="<kubeContext name of your ARO v4 cluster>"  
     ```
 
-    示例：
+    下面是使用导出命令填充3个变量后必须运行的命令：
 
     `bash enable-monitoring.sh --resource-id $azureAroV4ClusterResourceId --kube-context $kubeContext --workspace-id $logAnalyticsWorkspaceResourceId`
 
@@ -152,7 +152,7 @@ export kubeContext="<kubeContext name of your ARO v4 cluster>"
 
 容器 Azure Monitor 中的多群集视图突出显示 Azure Red Hat OpenShift 群集，这些群集未在 "未监视的 **群集** " 选项卡下启用监视功能。群集旁边的 " **启用** " 选项不会从门户中启动监视的载入。 你将重定向到本文，以按照本文前面所述的步骤手动启用监视。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 
 1. 在左窗格或从主页中，选择 " **Azure Monitor**"。
 

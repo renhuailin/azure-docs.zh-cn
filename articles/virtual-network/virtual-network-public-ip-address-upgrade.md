@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 12/08/2020
 ms.author: blehr
 ms.custom: references_regions
-ms.openlocfilehash: 93d5d422709fad3d4f732b3b232f67d60d79b507
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 33c767d847d9e70e95b3ee1648be7852aa5cec98
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99493713"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100522880"
 ---
 # <a name="upgrade-public-ip-addresses"></a>升级公共 IP 地址
 
@@ -36,7 +36,7 @@ ms.locfileid: "99493713"
 若要升级公共 IP，则它不得与任何资源相关联（有关如何将公共 IP 解除关联的详细信息，请查看[此页](./virtual-network-public-ip-address.md#view-modify-settings-for-or-delete-a-public-ip-address)）。
 
 >[!IMPORTANT]
->从基本到标准 SKU 升级的公共 Ip 将继续没有 [可用性区域](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#availability-zones)。  这意味着，不能将它们与区域冗余的 Azure 资源关联，也不能与提供此项的区域中的预指定区域关联。
+>从基本 SKU 升级到标准 SKU 的公共 Ip 将继续没有保证的 [可用性区域](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#availability-zones)。  选择要将 IP 地址关联到的资源时，请确保这一点。
 
 ---
 # <a name="basic-to-standard---powershell"></a>[**从基本 SKU 升级到标准 SKU - PowerShell**](#tab/option-upgrade-powershell)

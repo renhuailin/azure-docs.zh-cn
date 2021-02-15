@@ -1,22 +1,18 @@
 ---
 title: Azure 数据工厂版本1支持的计算环境
 description: 了解可在 Azure 数据工厂管道（例如 Azure HDInsight）中用于转换或处理数据的计算环境。
-services: data-factory
-documentationcenter: ''
 author: dcstwh
 ms.author: weetok
-manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 9f970b66bd30ef2faf705d2fb41825bb81bbb8c9
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 07e13036a427ff7ff4f0cbbd2dfd6fbe272bf915
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96496086"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100377187"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory-version-1"></a>Azure 数据工厂版本1支持的计算环境
 > [!NOTE]
@@ -32,7 +28,7 @@ ms.locfileid: "96496086"
 | [Azure Batch](#azure-batch-linked-service) | [DotNet](data-factory-use-custom-activities.md) |
 | [Azure 机器学习工作室（经典）](#azure-machine-learning-studio-classic-linked-service) | [Studio (经典) 活动：批处理执行和更新资源](data-factory-azure-ml-batch-execution-activity.md) |
 | [Azure Data Lake Analytics](#azure-data-lake-analytics-linked-service) | [Data Lake Analytics U-SQL](data-factory-usql-activity.md) |
-| [AZURE SQL](#azure-sql-linked-service)、 [azure Synapse Analytics](#azure-synapse-analytics-linked-service) [SQL Server](#sql-server-linked-service) | [存储过程活动](data-factory-stored-proc-activity.md) |
+| [Azure SQL](#azure-sql-linked-service)、[Azure Synapse Analytics](#azure-synapse-analytics-linked-service)、[SQL Server](#sql-server-linked-service) | [存储过程活动](data-factory-stored-proc-activity.md) |
 
 ## <a name="hdinsight-versions-supported-in-data-factory"></a><a name="supported-hdinsight-versions-in-azure-data-factory"></a>数据工厂支持的 HDInsight 版本
 Azure HDInsight 支持多个可随时部署的 Hadoop 群集版本。 每个支持的版本创建 Hortonworks 数据平台 (HDP) 分发版的特定版本，以及该分发版中的一组组件。 

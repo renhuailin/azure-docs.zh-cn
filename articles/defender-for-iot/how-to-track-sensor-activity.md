@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/10/2020
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: 6dbe15da85a85303742ef28c7ca609755193f25e
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: b8a7679521096cf3d98e8f55748eb0398fdc4ab8
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99509093"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100523594"
 ---
 # <a name="track-sensor-activity"></a>跟踪传感器活动
 
@@ -89,6 +89,6 @@ ms.locfileid: "99509093"
     
       PCAP 文件包含有助于网络工程师确定事件确切参数的技术信息。 可以使用网络协议分析器（如 Wireshark，即开源应用程序）分析 PCAP 文件。
 
-## <a name="see-also"></a>另请参阅
+## <a name="next-steps"></a>后续步骤
 
 [查看警报](how-to-view-alerts.md)

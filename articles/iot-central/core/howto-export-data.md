@@ -8,12 +8,12 @@ ms.date: 01/27/2021
 ms.topic: how-to
 ms.service: iot-central
 ms.custom: contperf-fy21q1, contperf-fy21q3
-ms.openlocfilehash: d31673b8d789cff5de3ddce63b67a98854b7aabc
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: 7152012c7c4a342c7491e5f8b835eaede4269c4c
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100515897"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100522608"
 ---
 # <a name="export-iot-data-to-cloud-destinations-using-data-export"></a>使用数据导出将 IoT 数据导出到云目标
 
@@ -96,9 +96,9 @@ ms.locfileid: "100515897"
 
     |性能层|帐户类型|
     |-|-|
-    |标准|常规用途 V2|
-    |标准|常规用途 V1|
-    |标准|Blob 存储|
+    |Standard|常规用途 V2|
+    |Standard|常规用途 V1|
+    |Standard|Blob 存储|
     |高级|块 Blob 存储|
 
 1. 若要在存储帐户中创建容器，请使用存储帐户。 在“Blob 服务”下选择“浏览 Blob”。 选择顶部的“+ 容器”以创建新容器。
@@ -168,14 +168,14 @@ ms.locfileid: "100515897"
 
 ## <a name="monitor-your-export"></a>监视导出
 
-除了在 IoT Central 中查看导出状态外，还可以监视通过导出传输的数据量，并观察 Azure Monitor 数据平台中的导出错误。 可以在 PowerShell 或 Azure CLI 的 Azure 门户、REST API 或查询中访问有关导出和设备运行状况的指标。 目前，可以在 Azure Monitor 中监视这些数据导出指标：
+除了在 IoT Central 中查看导出的状态之外，还可以使用 [Azure Monitor](../../azure-monitor/overview.md) 来查看要导出的数据量以及任何导出错误。 可以在 Azure 门户中的图表中，使用 REST API 或在 PowerShell 中使用查询或 Azure CLI 来访问导出和设备运行状况度量。 目前，可以在 Azure Monitor 中监视以下数据导出指标：
 
-1. 应用筛选器之前传入要导出的消息数
-2. 通过筛选器传递的消息数
-3. 已成功导出到目标的消息数
-4. 遇到的错误数
- 
-[了解有关如何访问 IoT Central 度量值的详细信息。](howto-monitor-application-health.md)
+- 应用筛选器之前传入要导出的消息数。
+- 通过筛选器传递的消息数。
+- 已成功导出到目标的消息数。
+- 遇到的错误数。
+
+若要了解详细信息，请参阅 [监视 IoT Central 应用程序的总体运行状况](howto-monitor-application-health.md)。
 
 ## <a name="destinations"></a>Destinations
 

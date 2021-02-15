@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/06/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: c15dc62cad796f5f74f2316d148e217052dc9678
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: 9dc6849c1b2ad5daa6142e894e36f351663ff9bd
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99508856"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100523985"
 ---
 # <a name="investigate-sensor-detections-in-a-device-inventory"></a>调查设备清单中的传感器检测
 
@@ -65,7 +65,7 @@ ms.locfileid: "99508856"
 
 3. 使用箭头更改表中各列的位置。
 
-4. 选择“保存”。 " **设备清单设置** " 窗口将关闭，并在表中显示新的设置。
+4. 选择“保存” 。 " **设备清单设置** " 窗口将关闭，并在表中显示新的设置。
 
 ### <a name="create-temporary-device-inventory-filters"></a>创建临时设备清单筛选器
 
@@ -147,7 +147,7 @@ ms.locfileid: "99508856"
 
 - Windows Server 2003/2008/2012/2016
 
-### <a name="before-you-begin"></a>在开始之前
+### <a name="before-you-begin"></a>准备阶段
 
 若要使用该脚本，需要满足以下要求：
 
@@ -223,7 +223,7 @@ ms.locfileid: "99508856"
 
 - 在设备清单的右上方菜单中，选择 :::image type="icon" source="media/how-to-work-with-asset-inventory-information/csv-excel-export-icon.png" border="false"::: 。 将生成并下载 CSV 报表。
 
-## <a name="see-also"></a>另请参阅
+## <a name="next-steps"></a>后续步骤
 
 [调查设备清单中的所有企业传感器检测](how-to-investigate-all-enterprise-sensor-detections-in-a-device-inventory.md)
 
