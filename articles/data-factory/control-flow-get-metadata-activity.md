@@ -1,23 +1,17 @@
 ---
 title: Azure 数据工厂中的“获取元数据”活动
 description: 了解如何在数据工厂管道中使用“获取元数据”活动。
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: ''
-ms.assetid: 1c46ed69-4049-44ec-9b46-e90e964a4a8e
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.author: jingwang
-ms.openlocfilehash: e32115c590d73f5c93f322d3bd542096f2964a4c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f860225862dcbfb79535acfbd6eeb89a217e7ae9
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91297600"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100385483"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Azure 数据工厂中的“获取元数据”活动
 
@@ -35,7 +29,7 @@ ms.locfileid: "91297600"
 
 ## <a name="capabilities"></a>功能
 
-“获取元数据”活动采用数据集作为输入，并返回元数据信息作为输出。 目前支持以下连接器以及对应的可检索元数据。 返回的元数据的最大大小为 4 MB。
+“获取元数据”活动采用数据集作为输入，并返回元数据信息作为输出。 目前支持以下连接器以及对应的可检索元数据。 返回的元数据的最大大小约为 4 MB。
 
 >[!NOTE]
 >如果在自承载集成运行时中运行“获取元数据”活动，3.6 或更高版本将支持最新的功能。
@@ -87,7 +81,7 @@ ms.locfileid: "91297600"
 | contentMD5 | 文件的 MD5。 仅适用于文件。 |
 | structure | 文件或关系数据库表的数据结构。 返回的值为列名称和列类型列表。 |
 | columnCount | 文件或关系表中的列数。 |
-| exists| 是否存在某个文件、文件夹或表。 如果 `exists` 在 "获取元数据字段" 列表中指定了，即使文件、文件夹或表不存在，活动也不会失败。 而是在输出中返回 `exists: false`。 |
+| exists| 是否存在某个文件、文件夹或表。 如果在“获取元数据”字段列表中指定了 `exists`，那么，即使不存在该文件、文件夹或表，该活动也不会失败， 而是在输出中返回 `exists: false`。 |
 
 >[!TIP]
 >若要验证是否存在某个文件、文件夹或表，请在“获取元数据”活动字段列表中指定 `exists`。 然后可以检查活动输出中的 `exists: true/false` 结果。 如果未在该字段列表中指定 `exists`，那么，在找不到对象时，“获取元数据”活动将会失败。

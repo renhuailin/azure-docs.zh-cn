@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: conceptual
 ms.date: 01/11/2021
-ms.openlocfilehash: 7bb9c8552f673587891fde12e25d4fb899726c22
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
+ms.openlocfilehash: 4d83609eea57c2350881360ef757b1a291627c23
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98108562"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100374722"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>使用集成服务环境 (ISE) 从 Azure 逻辑应用访问 Azure 虚拟网络资源
 
@@ -93,20 +93,22 @@ ms.locfileid: "98108562"
 
 ## <a name="ise-skus"></a>ISE Sku
 
-创建 ISE 时，可以选择开发人员 SKU 或高级 SKU。 下面是这些 Sku 之间的差异：
+创建 ISE 时，可以选择开发人员 SKU 或高级 SKU。 此 SKU 选项仅在创建 ISE 时可用，不能在以后更改。 下面是这些 Sku 之间的差异：
 
 * **开发人员**
 
-  提供了可用于试验、开发和测试，但不能用于生产或性能测试的低成本 ISE。 开发人员 SKU 包括内置的触发器和操作、标准连接器、企业连接器，以及每月固定价格的单个 [免费层](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits) 集成帐户。 但是，此 SKU 不包括任何服务级别协议 (SLA) 、用于扩展容量的选项或回收期间的冗余性，这意味着你可能会遇到延迟或停机时间。
+  提供了可用于探索、试验、开发和测试，但不能用于生产或性能测试的低成本 ISE。 开发人员 SKU 包括内置的触发器和操作、标准连接器、企业连接器，以及[每月固定价格](https://azure.microsoft.com/pricing/details/logic-apps)的单个[免费层](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits)集成帐户。 
+
+  > [!IMPORTANT]
+  > 此 SKU 在回收期间没有服务级别协议 (SLA) 、扩展功能或冗余，这意味着你可能会遇到延迟或停机时间。 后端更新可能会中断服务。
+
+  有关容量和限制信息，请参阅 [Azure 逻辑应用中的 ISE 限制](logic-apps-limits-and-config.md#integration-service-environment-ise)。 若要了解 ISEs 的计费方式，请参阅 [逻辑应用定价模型](../logic-apps/logic-apps-pricing.md#fixed-pricing)。
 
 * **高级**
 
-  提供了一种可用于生产的 ISE，并包括 SLA 支持、内置触发器和操作、标准连接器、企业连接器、单个 [标准层](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits) 集成帐户、用于扩展容量的选项，以及回收期间的冗余（固定的每月价格）。
+  提供可用于生产和性能测试的 ISE。 高级 SKU 包括 SLA 支持、内置的触发器和操作、标准连接器、企业连接器、单个 [标准层](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits) 集成帐户、扩展功能和回收期间的冗余，以实现 [固定的每月价格](https://azure.microsoft.com/pricing/details/logic-apps)。
 
-> [!IMPORTANT]
-> SKU 选项仅在创建 ISE 时可用，不能在以后更改。
-
-有关定价费率，请参阅[逻辑应用定价](https://azure.microsoft.com/pricing/details/logic-apps/)。 要了解 ISE 的定价和计费原理，请参阅[逻辑应用定价模型](../logic-apps/logic-apps-pricing.md#fixed-pricing)。
+  有关容量和限制信息，请参阅 [Azure 逻辑应用中的 ISE 限制](logic-apps-limits-and-config.md#integration-service-environment-ise)。 若要了解 ISEs 的计费方式，请参阅 [逻辑应用定价模型](../logic-apps/logic-apps-pricing.md#fixed-pricing)。
 
 <a name="endpoint-access"></a>
 

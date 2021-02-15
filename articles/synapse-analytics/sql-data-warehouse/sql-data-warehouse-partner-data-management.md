@@ -11,12 +11,12 @@ ms.date: 04/17/2018
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: da6387c55200bad3458705cf570f60ca40db1be0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 3c194b06b340d085fc3428acaad67e210aca58ca
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95900596"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100105192"
 ---
 # <a name="azure-synapse-analytics-data-management-partners"></a>Azure Synapse Analytics 数据管理合作伙伴
 
@@ -25,7 +25,7 @@ ms.locfileid: "95900596"
 ## <a name="data-management-partners"></a>数据管理合作伙伴
 | Partner | 说明 | 网站/产品链接 |
 | ------- | ----------- | -------------------- |
-| ![Aginity](./media/sql-data-warehouse-partner-data-management/aginity-logo.png) |**Aginity**<br>Aginity 是一个分析开发工具，它将 Microsoft 的 Synapse 平台的全部功能放入分析师和工程师。 丰富而直观的 SQL 开发环境允许团队成员通过多个行业领先的分析平台连接到，引入各种格式的数据，并快速构建复杂的业务计算，以便将结果提供给商业智能和机器学习用例。 整个应用程序都围绕一个中央目录构建而成，这使得跨分析团队的协作成为现实，而复杂的管理功能和精细的安全性使调控成为一种非常简单的管理。 |[产品页面](https://www.aginity.com/databases/microsoft/)<br> |
+| ![Aginity](./media/sql-data-warehouse-partner-data-management/aginity-logo.png) |**Aginity**<br>Aginity 是一种分析开发工具。 它将 Microsoft 的 Synapse 平台的全部功能放入分析师和工程师。 丰富而直观的 SQL 开发环境允许团队成员通过许多业界领先的分析平台连接到。 它允许用户以各种格式引入数据，并快速生成复杂的业务计算，以便将结果提供给商业智能和机器学习用例。 整个应用程序都围绕一个中央目录构建而成，这使得跨分析团队的协作成为现实，而复杂的管理功能和精细的安全性使调控成为一种非常简单的管理。 |[产品页面](https://www.aginity.com/databases/microsoft/)<br> |
 | ![Alation](./media/sql-data-warehouse-partner-data-management/alation-logo.png) |**Alation**<br>Alation 的数据目录极大地提高了工作效率，增加了准确性，并推动了对分析师进行的数据驱动型决策。 Alation 的数据目录可让组织中的每个人都能查找、了解和管理数据。 |[产品页面](https://www.alation.com/product/data-catalog/)<br> |
 | ![Coffing Data Warehousing](./media/sql-data-warehouse-partner-data-management/coffing-data-warehousing-logo.png) |**Coffing Data Warehousing**<br>Coffing Data Warehousing 提供 Nexus Chameleon（专门用于查询系统的工具），已有 10 多年的历史。 可以在 Azure Synapse 分析中将结点作为专用 SQL 池的查询工具。 使用 Nexus 可以查询本地和云计算机，并联接不同平台的数据。 点击式报告！ |[产品页面](https://www.coffingdw.com/software/nexus/)<br> |
 | ![Inbrein](./media/sql-data-warehouse-partner-data-management/inbrein-logo.png) |Inbrein MicroERD<br>Inbrein MicroERD 提供创建准确的数据模型、减少数据冗余、提升产能及遵守标准所必需的工具。 根据广泛的用户体验所开发的 UI，可让模型塑造者轻松又方便地处理 DB 模型。 通过及时的功能改进和更新，可以持续享有 MicroERD 最新改善的功能。 |[产品页面](http://microerd.com/)<br> |
@@ -34,8 +34,9 @@ ms.locfileid: "95900596"
 | ![Redpoint Global](./media/sql-data-warehouse-partner-data-management/redpoint-global-logo.png) |**RedPoint Data Management**<br>使用 RedPoint 数据管理，市场营销人员可以在进行结构化和非结构化数据管理的同时，应用其所有数据来推动跨渠道客户的参与。 借助 RedPoint，你可以最大程度地提高结构化数据和非结构化数据的价值，提供所需的超个性化、上下文交互，以便与今天的全渠道客户交流。 拖放式界面使设计和运行数据管理过程变得轻松。 |[产品页面](https://www.redpointglobal.com/customer-data-management)<br> [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/redpoint-global.redpoint-rpdm)<br> |
 | ![Sentry One](./media/sql-data-warehouse-partner-data-management/sql-sentry-logo.png) |SentryOne (DW Sentry)<br>借助智能数据移动仪表板和事件日历，可以始终知道什么在影响工作负荷。 旨在让你深入了解运行的查询和作业，以便加载、备份或还原数据，无需担心充分利用你的 Azure 资源。 |[产品页面](https://sentryone.com/platform/azure-sql-dw-performance-monitoring/)<br>[Azure 市场](https://sentryone.com/platform/azure-sql-dw-performance-monitoring/)<br> |
 | ![SqlDBM](./media/sql-data-warehouse-partner-data-management/sqldbm-logo.png) |SqlDBM<br>SqlDBM 是一个基于云的数据建模工具，可让你随时随地轻松、方便地在任何浏览器中开发数据库。 该工具整合了所需的任何数据库规则和对象，例如数据库键、架构、索引、列约束和关系。 |[产品页面](http://sqldbm.com/)<br> [Azure 市场](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/sqldbm1583438206845.sqldbm-data-modeling-tool?tab=Overview)<br>|
-| ![Tamr](./media/sql-data-warehouse-partner-data-management/tamr-logo.png) |**Tamr**<br>借助 Tamr，组织可以向 Azure Synapse 提供各种数据，从而使其充分利用 Azure Synapse 的分析功能。 Tamr 的云本机数据控制解决方案使用机器学习执行繁重的操作，以合并、清理和分类数据，并使用直观的人工反馈工作流来弥补数据与业务结果之间的差距。 Tamr 集成了 Azure 的数据服务，包括 Azure Synapse Analytics、Azure Databricks、Azure HDInsight、Azure 数据目录、Azure Data Lake Storage 和 Azure 数据工厂。 它允许使用 Azure 的灵活性和规模，以较低的总拥有成本来控制数据。 |[产品页面](https://www.tamr.com/tamr-partners/microsoft-azure/)<br> [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/tamrinc.unify_v_2019?tab=Overview) |
+| ![Tamr](./media/sql-data-warehouse-partner-data-management/tamr-logo.png) |**Tamr**<br>借助 Tamr，组织可以向 Azure Synapse 提供各种数据，从而使其充分利用 Azure Synapse 的分析功能。 Tamr 的云本机数据控制解决方案使用机器学习执行繁重的操作，以合并、清理和分类数据，并使用直观的人工反馈工作流来弥补数据与业务结果之间的差距。 Tamr 集成了 Azure 的数据服务，包括 Azure Synapse Analytics、Azure Databricks、Azure HDInsight、Azure 数据目录、Azure Data Lake Storage 和 Azure 数据工厂。 它通过利用 Azure 的灵活性和规模，实现大规模的数据的扩展，降低总拥有成本。 |[产品页面](https://www.tamr.com/tamr-partners/microsoft-azure/)<br> [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/tamrinc.unify_v_2019?tab=Overview) |
 | ![Teleran](./media/sql-data-warehouse-partner-data-management/teleran-logo.jpg) |**Teleran**<br>Teleran 的查询控制可防止不适当且格式不良的查询进入 Synapse 并浪费计算资源。 它向分析用户发送智能消息，指导他们更有效地与数据进行交互。 目标是确保良好的业务成果，而不会产生 Azure 成本。 Teleran 使用率分析提供用户、应用程序、查询和数据使用活动的分析。 它使您始终可以了解所发生的事情。 它使你能够提高服务、提高企业生产力并优化 Synapse 消耗成本。 |[产品页面](https://teleran.com/azure-synapse-optimization-cost-control/)<br>|
+| ![Xpert BI](./media/sql-data-warehouse-partner-data-integration/xpertbi-logo.png) |**Xpert BI**<br> Xpert BI 为业务线用户提供了一个直观且可搜索的目录，可用于查找、信任和理解数据和报表。 此解决方案涵盖了整个数据平台，包括 Azure Synapse Analytics、ADLS 第2代、Azure SQL 数据库、Analysis Services 和 Power BI，以及端到端数据流和数据移动。 数据专员可以根据法规要求更新说明和标记数据。 可以通过 Api 将 Xpert BI 集成到其他目录，例如 Azure 监控范围。 它通过业务用户角度补充传统的数据目录。|[产品页面](https://www.bi-builders.com/adding-automation-and-governance-to-azure-analytics/)<br> |
 
 ## <a name="next-steps"></a>后续步骤
 若要详细了解其他合作伙伴，请参阅 [商业智能合作伙伴](sql-data-warehouse-partner-business-intelligence.md)、 [数据集成合作伙伴](sql-data-warehouse-partner-data-integration.md)以及 [机器学习和 AI 合作伙伴](sql-data-warehouse-partner-machine-learning-ai.md)。

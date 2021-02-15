@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 02/03/2021
-ms.openlocfilehash: e4b48729f13ec0234a7a711032a2db34e55a8bd1
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 39a1400bfe642672ba276686851d4f0edebbeb00
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99539461"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387846"
 ---
 # <a name="understanding-resource-sets"></a>了解资源集
 
@@ -67,7 +67,7 @@ Azure 监控范围支持以下资源集模式。 这些模式可以作为名称�
 | 模式名称 | 显示名称 | 说明 |
 |--------------|--------------|-------------|
 | Guid         | GUID.EMPTY       | [RFC 4122](https://tools.ietf.org/html/rfc4122)中定义的全局唯一标识符 |
-| 数字       | 北          | 一个或多个数字 |
+| Number       | 北          | 一个或多个数字 |
 | 日期/时间格式 | 年月底那北     | 我们支持各种日期/时间格式，但所有数据都用 {Year} [分隔符] {Month} [分隔符] {Day} 或序列 {N} 秒表示。 |
 | 4ByteHex     | 表示        | 四位十六进制数。 |
 | 本地化 | LOC        | 支持在 [BCP 47](https://tools.ietf.org/html/bcp47)中定义的语言标记， (例如 en_ca 和 en-ca，)  |
@@ -86,19 +86,19 @@ Azure 监控范围支持以下资源集模式。 这些模式可以作为名称�
 
 ### <a name="example-1"></a>示例 1
 
-限定名： https://myblob.blob.core.windows.net/sample-data/name-of-spark-output/{SparkPartitions}
+限定名： `https://myblob.blob.core.windows.net/sample-data/name-of-spark-output/{SparkPartitions}`
 
 显示名称： "spark output name"
 
 ### <a name="example-2"></a>示例 2
 
-限定名： https://myblob.blob.core.windows.net/my-partitioned-data/{Year}-{Month}-{Day}/{N}-{N}-{N}-{N}/{GUID}
+限定名： `https://myblob.blob.core.windows.net/my-partitioned-data/{Year}-{Month}-{Day}/{N}-{N}-{N}-{N}/{GUID}`
 
 显示名称： "我的已分区数据"
 
 ### <a name="example-3"></a>示例 3
 
-限定名： https://myblob.blob.core.windows.net/sample-data/data{N}.csv
+限定名： `https://myblob.blob.core.windows.net/sample-data/data{N}.csv`
 
 显示名称： "数据"
 

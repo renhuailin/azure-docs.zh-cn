@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: caa0390dfd3a98e6537a7a60a2895461e2efd52a
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 0dd011d6c1ff631d537dbcadf9a77bbe6d89aa45
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879858"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100518793"
 ---
 # <a name="azure-services-that-support-azure-data-lake-storage-gen2"></a>支持 Azure Data Lake Storage Gen2 的 Azure 服务
 
@@ -29,7 +29,7 @@ ms.locfileid: "98879858"
 |Azure 服务 |支持级别 |Azure AD |共享密钥| 相关文章 |
 |---------------|-------------------|---|---|---|
 |Azure 数据工厂|正式发布|是|是|[使用 Azure 数据工厂将数据加载到 Azure Data Lake Storage Gen2 中](../../data-factory/load-azure-data-lake-storage-gen2.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
-|Azure Databricks|正式发布|是|是|[与 Azure Databricks 配合使用](https://docs.azuredatabricks.net/data/data-sources/azure/azure-datalake-gen2.html) <br> [快速入门：使用 Azure Databricks 分析 Azure Data Lake Storage Gen2 中的数据](data-lake-storage-quickstart-create-databricks-account.md) <br>[教程：使用 Azure Databricks 提取、转换和加载数据](/azure/databricks/scenarios/databricks-extract-load-sql-data-warehouse) <br>[教程：使用 Spark 通过 Azure Databricks 访问 Data Lake Storage Gen2 数据](data-lake-storage-use-databricks-spark.md)|
+|Azure Databricks|正式发布|是|是|[与 Azure Databricks 配合使用](/azure/databricks/data/data-sources/azure/azure-datalake-gen2) <br> [快速入门：使用 Azure Databricks 分析 Azure Data Lake Storage Gen2 中的数据](data-lake-storage-quickstart-create-databricks-account.md) <br>[教程：使用 Azure Databricks 提取、转换和加载数据](/azure/databricks/scenarios/databricks-extract-load-sql-data-warehouse) <br>[教程：使用 Spark 通过 Azure Databricks 访问 Data Lake Storage Gen2 数据](data-lake-storage-use-databricks-spark.md)|
 |Azure 事件中心|正式发布|否|是|[通过 Azure Blob 存储或 Azure Data Lake Storage 中的 Azure 事件中心来捕获事件](../../event-hubs/event-hubs-capture-overview.md)|
 |Azure 事件网格|正式发布|是|是|[教程：实现数据湖捕获模式以更新 Databricks Delta 表](data-lake-storage-events.md)|
 |Azure 逻辑应用|正式发布|否|是|[概述 - 什么是 Azure 逻辑应用？](../../logic-apps/logic-apps-overview.md)|

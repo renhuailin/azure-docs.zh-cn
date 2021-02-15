@@ -1,19 +1,19 @@
 ---
-title: 如何监视用于 Redis 的 Azure 缓存
+title: 监视 Azure Cache for Redis
 description: 了解如何监视用于 Redis 的 Azure 缓存实例的运行状况和性能
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
-ms.date: 07/13/2017
-ms.openlocfilehash: 3d19d8f1b6a44f32e92f82e861471ca9b5c8fa41
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.date: 02/08/2021
+ms.openlocfilehash: ea99c34f03cd74185840767605c17ee6c65eb701
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96327332"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100389699"
 ---
-# <a name="how-to-monitor-azure-cache-for-redis"></a>如何监视用于 Redis 的 Azure 缓存
+# <a name="monitor-azure-cache-for-redis"></a>监视 Azure Cache for Redis
 
 用于 Redis 的 Azure 缓存使用 [Azure Monitor](../azure-monitor/index.yml) 提供用于监视缓存实例的几个选项。 可以查看度量值、将度量值图表固定到启动板、自定义监视图表的日期和时间范围、在图表中添加和删除度量值，以及设置符合特定条件时发出的警报。 借助这些工具，可以监视 Azure Redis 缓存实例的运行状况，以及管理缓存应用程序。
 
@@ -23,7 +23,7 @@ ms.locfileid: "96327332"
 
 若要查看缓存指标，请[浏览](cache-configure.md#configure-azure-cache-for-redis-settings)到 [Azure 门户](https://portal.azure.com)中的缓存实例。  用于 Redis 的 Azure 缓存在“概述”  边栏选项卡和“Redis 指标”  边栏选项卡上提供了一些内置图表。 通过添加或删除指标以及更改报告间隔可以自定义每个图表。
 
-![显示了六个图形。 其中之一是缓存命中数和缓存未命中数。](./media/cache-how-to-monitor/redis-cache-redis-metrics-blade.png)
+![显示了六个图形。 其中一个是过去一小时的缓存命中数和缓存未命中数。](./media/cache-how-to-monitor/redis-cache-redis-metrics-blade.png)
 
 ## <a name="view-pre-configured-metrics-charts"></a>查看预配置的指标图表
 
@@ -50,7 +50,7 @@ ms.locfileid: "96327332"
 
 若要使用 Azure Monitor 查看 Redis 指标和创建自定义图表，从“资源菜单”  单击“指标”  ，并使用所需的指标、报告间隔、图表类型等对图表进行自定义。
 
-![在 contoso55 的左侧导航窗格中，"指标" 是 "监视" 下的选项，突出显示。 指标的指标列表。 选择缓存命中数和缓存未命中数。](./media/cache-how-to-monitor/redis-cache-monitor.png)
+![在 contoso55 的左侧导航窗格中，“指标”是“监视”下的一个选项，并突出显示。 “指标”上有一个指标列表。 已选择缓存命中数和缓存未命中数。](./media/cache-how-to-monitor/redis-cache-monitor.png)
 
 有关使用 Azure Monitor 处理指标的详细信息，请参阅 [Microsoft Azure 中的指标概述](../azure-monitor/platform/data-platform.md)。
 

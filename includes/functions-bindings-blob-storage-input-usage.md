@@ -9,13 +9,15 @@ ms.topic: include
 ms.date: 08/02/2019
 ms.author: cshoe
 ms.custom: include file
-ms.openlocfilehash: 512d05b245f1279a977ba61d5b4c4904fc0f6bf2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 938f55ae0ba911ea3a97cd49e6424bf8aaefdc76
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77202120"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100381676"
 ---
+### <a name="default"></a>默认
+
 可以将以下参数类型用于 blob 输入绑定：
 
 * `Stream`
@@ -34,3 +36,18 @@ ms.locfileid: "77202120"
 如果尝试绑定到某个存储 SDK 类型并收到错误消息，请确保已引用[正确的存储 SDK 版本](../articles/azure-functions/functions-bindings-storage-blob.md#azure-storage-sdk-version-in-functions-1x)。
 
 由于整个 Blob 内容都会加载到内存中，因此，只有当 Blob 较小时才建议绑定到 `string` 或 `Byte[]`。 平时，最好使用 `Stream` 或 `CloudBlockBlob` 类型。 有关详细信息，请参阅本文前文中的[并发和内存使用情况](../articles/azure-functions/functions-bindings-storage-blob-trigger.md#concurrency-and-memory-usage)。
+
+### <a name="additional-types"></a>其他类型
+
+使用 [存储扩展插件的5.0.0 或更高版本](../articles/azure-functions/functions-bindings-storage-blob.md#storage-extension-5x-and-higher) 的应用程序也可以使用 [Azure SDK for .net](/dotnet/api/overview/azure/storage.blobs-readme)中的类型。 此版本支持旧的 `CloudBlobContainer` 、、、 `CloudBlobDirectory` 、 `ICloudBlob` `CloudBlockBlob` `CloudPageBlob` 和 `CloudAppendBlob` 类型，以支持以下类型：
+
+- [BlobContainerClient](/dotnet/api/azure.storage.blobs.blobcontainerclient)
+- [BlobClient](/dotnet/api/azure.storage.blobs.blobclient)<sup>1</sup>
+- [BlockBlobClient](/dotnet/api/azure.storage.blobs.specialized.blockblobclient)<sup>1</sup>
+- [PageBlobClient](/dotnet/api/azure.storage.blobs.specialized.pageblobclient)<sup>1</sup>
+- [AppendBlobClient](/dotnet/api/azure.storage.blobs.specialized.appendblobclient)<sup>1</sup>
+- [BlobBaseClient](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient)<sup>1</sup>
+
+<sup>1</sup> function.json 中需有 "inout" 绑定 `direction` 或 C# 类库中需有 `FileAccess.ReadWrite`。
+
+有关使用这些类型的示例，请参阅 [GitHub 存储库](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Microsoft.Azure.WebJobs.Extensions.Storage.Blobs#examples)中的扩展。

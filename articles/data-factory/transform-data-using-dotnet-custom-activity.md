@@ -1,21 +1,18 @@
 ---
 title: 在管道中使用自定义活动
 description: 了解如何使用 .NET 创建自定义活动，然后在 Azure 数据工厂管道中使用这些活动。
-services: data-factory
 ms.service: data-factory
 author: nabhishek
 ms.author: abnarain
-manager: anandsub
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/26/2018
-ms.openlocfilehash: e84f7a2ee8c2f7a57ce1734ad3392a217d6de5fe
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: ec1e7c77c44cf1969e472a6e7288d1af5d6640e1
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92632101"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100374790"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>在 Azure 数据工厂管道中使用自定义活动
 
@@ -29,7 +26,7 @@ ms.locfileid: "92632101"
 - [数据移动活动](copy-activity-overview.md)：在[支持的源与接收器数据存储](copy-activity-overview.md#supported-data-stores-and-formats)之间移动数据。
 - [数据转换活动](transform-data.md)：使用 Azure HDInsight、Azure Batch 和 Azure 机器学习等计算服务转换数据。
 
-若要将数据移入/移出数据工厂不支持的数据存储，或者要以数据工厂不支持的方式转换/处理数据，可以使用你自己的数据移动或转换逻辑创建 **自定义活动** ，并在管道中使用该活动。 自定义活动在虚拟机的 **Azure Batch** 池上运行自定义代码逻辑。
+若要将数据移入/移出数据工厂不支持的数据存储，或者要以数据工厂不支持的方式转换/处理数据，可以使用你自己的数据移动或转换逻辑创建 **自定义活动**，并在管道中使用该活动。 自定义活动在虚拟机的 **Azure Batch** 池上运行自定义代码逻辑。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -100,11 +97,11 @@ ms.locfileid: "92632101"
 
 下表描述了此活动特有的属性的名称和描述。
 
-| properties              | 说明                              | 必选 |
+| properties              | 说明                              | 必须 |
 | :-------------------- | :--------------------------------------- | :------- |
 | name                  | 管道中活动的名称     | 是      |
 | description           | 描述活动用途的文本。  | 否       |
-| type                  | 对于自定义活动，活动类型为 **Custom** 。 | 是      |
+| type                  | 对于自定义活动，活动类型为 **Custom**。 | 是      |
 | linkedServiceName     | Azure Batch 的链接服务。 若要了解此链接服务，请参阅[计算链接服务](compute-linked-services.md)一文。  | 是      |
 | command               | 要执行的自定义应用程序的命令。 如果应用程序在 Azure Batch 池节点上已可用，可以跳过 resourceLinkedService 和 folderPath。 例如，可以将命令指定为 `cmd /c dir`，Windows Batch 池节点针对该命令提供了本机支持。 | 是      |
 | resourceLinkedService | 存储着自定义应用程序的存储帐户的 Azure 存储链接服务 | 否 &#42;       |
@@ -310,7 +307,7 @@ Activity Error section:
 
 ## <a name="retrieve-securestring-outputs"></a>检索 SecureString 输出
 
-指定为 *SecureString* 类型的敏感属性值（如本文中的某些示例所示）在数据工厂用户界面的“监视”选项卡中被屏蔽。  但是，在实际的管道执行中， *SecureString* 属性在 `activity.json` 文件中以纯文本形式序列化为 JSON。 例如：
+指定为 *SecureString* 类型的敏感属性值（如本文中的某些示例所示）在数据工厂用户界面的“监视”选项卡中被屏蔽。  但是，在实际的管道执行中，*SecureString* 属性在 `activity.json` 文件中以纯文本形式序列化为 JSON。 例如：
 
 ```json
 "extendedProperties": {

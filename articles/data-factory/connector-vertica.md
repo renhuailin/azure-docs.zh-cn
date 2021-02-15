@@ -1,22 +1,17 @@
 ---
 title: 使用 Azure 数据工厂从 Vertica 复制数据
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 Vertica 复制到支持的接收器数据存储。
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: f9b743d768aabbd7949094ae4b7366c46eabf4c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a95cbc459da3935a39d2830a074f4e5d8e72e617
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81410070"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100384038"
 ---
 # <a name="copy-data-from-vertica-using-azure-data-factory"></a>使用 Azure 数据工厂从 Vertica 复制数据 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -81,13 +76,13 @@ Vertica 链接服务支持以下属性：
         "type": "Vertica",
         "typeProperties": {
             "connectionString": "Server=<server>;Port=<port>;Database=<database>;UID=<user name>;",
-            "pwd": { 
-                "type": "AzureKeyVaultSecret", 
-                "store": { 
-                    "referenceName": "<Azure Key Vault linked service name>", 
-                    "type": "LinkedServiceReference" 
-                }, 
-                "secretName": "<secretName>" 
+            "pwd": { 
+                "type": "AzureKeyVaultSecret", 
+                "store": { 
+                    "referenceName": "<Azure Key Vault linked service name>", 
+                    "type": "LinkedServiceReference" 
+                }, 
+                "secretName": "<secretName>" 
             }
         },
         "connectVia": {
@@ -134,7 +129,7 @@ Vertica 链接服务支持以下属性：
 
 ### <a name="vertica-as-source"></a>以 Vertica 作为源
 
-要从 Vertica 复制数据，请将复制活动中的源类型设置为“VerticaSource”  。 复制活动**source**部分支持以下属性：
+要从 Vertica 复制数据，请将复制活动中的源类型设置为“VerticaSource”  。 复制活动 **source** 部分支持以下属性：
 
 | 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |

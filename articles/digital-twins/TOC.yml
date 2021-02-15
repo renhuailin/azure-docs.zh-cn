@@ -52,7 +52,11 @@
             - name: 脚本版本
               href: how-to-set-up-instance-scripted.md
         - name: 通过专用链接启用私密访问
-          href: how-to-enable-private-link.md
+          items:
+            - name: 门户版本
+              href: how-to-enable-private-link-portal.md
+            - name: CLI 版本
+              href: how-to-enable-private-link-cli.md
         - name: 编写应用身份验证码
           href: how-to-authenticate-client.md
         - name: 创建应用注册
@@ -108,7 +112,11 @@
             - name: API 和 CLI 版本
               href: how-to-manage-routes-apis-cli.md
         - name: 为路由事件启用托管标识
-          href: how-to-enable-managed-identities.md
+          items:
+            - name: 门户版本
+              href: how-to-enable-managed-identities-portal.md
+            - name: CLI 版本
+              href: how-to-enable-managed-identities-cli.md
         - name: 与 Azure Maps 集成
           href: how-to-integrate-maps.md
         - name: 与 Azure 时序见解集成

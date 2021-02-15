@@ -1,22 +1,18 @@
 ---
 title: 从 Google AdWords 复制数据
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 Google AdWords 复制到支持的接收器数据存储。
-services: data-factory
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/25/2019
-ms.openlocfilehash: 79e277cb3d512ee17da866a61e9d6d66a50cd902
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8b3036f09e41b20bc3c190f06842acd817fcece6
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81415025"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100380944"
 ---
 # <a name="copy-data-from-google-adwords-using-azure-data-factory"></a>使用 Azure 数据工厂从 Google AdWords 复制数据
 
@@ -132,7 +128,7 @@ Google AdWords 链接服务支持以下属性：
 
 ### <a name="google-adwords-as-source"></a>充当源的 Google AdWords
 
-若要从 Google AdWords 复制数据，请将复制活动中的源类型设置为“GoogleAdWordsSource”  。 复制活动**source**部分支持以下属性：
+若要从 Google AdWords 复制数据，请将复制活动中的源类型设置为“GoogleAdWordsSource”  。 复制活动 **source** 部分支持以下属性：
 
 | 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |

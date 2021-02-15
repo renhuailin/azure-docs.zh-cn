@@ -1,21 +1,18 @@
 ---
 title: 使用 PowerShell 复制云端数据
 description: 此 PowerShell 脚本将数据从 Azure Blob 存储中的一个位置复制到同一 Blob 存储中的另一个位置。
-services: data-factory
 ms.author: jingwang
 author: linda33wj
-manager: shwang
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: article
 ms.custom: seo-lt-2019
 ms.date: 03/12/2020
-ms.openlocfilehash: 9550556aa022a9211072fd4c5fb18acb4ee7882e
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 169420aee32a49549a71746708bd8377a4c63b5d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637983"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100370285"
 ---
 # <a name="use-powershell-to-create-a-data-factory-pipeline-to-copy-data-in-the-cloud"></a>使用 PowerShell 创建用于复制云端数据的数据工厂管道
 
@@ -26,8 +23,8 @@ ms.locfileid: "92637983"
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh-az.md)]
 
 ## <a name="prerequisites"></a>先决条件
-* **Azure 存储帐户** 。 可以将 blob 存储同时用作 **源** 和 **接收器** 数据存储。 如果没有 Azure 存储帐户，请参阅[创建存储帐户](../../storage/common/storage-account-create.md)创建一个。 
-* 在 Blob 存储中创建一个 **blob 容器** ，在该容器中创建一个输入 **文件夹** ，并向该文件夹上传一些文件。 可以使用 [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)等工具连接到 Azure Blob 存储、创建 Blob 容器、上传输入文件，以及验证输出文件。
+* **Azure 存储帐户**。 可以将 blob 存储同时用作 **源** 和 **接收器** 数据存储。 如果没有 Azure 存储帐户，请参阅[创建存储帐户](../../storage/common/storage-account-create.md)创建一个。 
+* 在 Blob 存储中创建一个 **blob 容器**，在该容器中创建一个输入 **文件夹**，并向该文件夹上传一些文件。 可以使用 [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)等工具连接到 Azure Blob 存储、创建 Blob 容器、上传输入文件，以及验证输出文件。
 
 ## <a name="sample-script"></a>示例脚本
 

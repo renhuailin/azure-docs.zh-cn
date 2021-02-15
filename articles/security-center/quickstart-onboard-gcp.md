@@ -3,16 +3,16 @@ title: 将 GCP 帐户连接到 Azure 安全中心
 description: 通过 Azure 安全中心监视 GCP 资源
 author: memildin
 ms.author: memildin
-ms.date: 02/07/2021
+ms.date: 02/08/2021
 ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 8ee7b37861be299dd36a596ae1cd4899b0ebffab
-ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
+ms.openlocfilehash: 94c7a800fc551faf6650b8e30fe7c2188f7d2dbb
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99809399"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100008377"
 ---
 #  <a name="connect-your-gcp-accounts-to-azure-security-center"></a>将 GCP 帐户连接到 Azure 安全中心
 
@@ -44,10 +44,16 @@ Azure 安全中心可保护 Azure、Amazon Web Services (AWS) 和 Google Cloud P
 
 ## <a name="connect-your-gcp-account"></a>连接到你的 GCP 帐户
 
-按照以下步骤，创建 GCP 云连接器来连接组织级别或项目级别的 Google Cloud 资源。 
+为要通过安全中心监视的每个组织创建一个连接器。
 
-> [!TIP]
-> 有关 Google Cloud 资源层次结构，请在[此处](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy)查看其联机文档。
+将 GCP 帐户连接到特定的 Azure 订阅时，请考虑 [Google Cloud 资源层次结构](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy#resource-hierarchy-detail)和以下指南：
+
+- 可以在组织级别将 GCP 帐户连接到 ASC
+- 可以将多个组织连接到一个 Azure 订阅
+- 可以将多个组织连接到多个 Azure 订阅
+- 连接组织时，该组织中的所有项目都将添加到安全中心
+
+按照以下步骤创建 GCP 云连接器。 
 
 ### <a name="step-1-set-up-gcp-security-command-center-with-security-health-analytics"></a>步骤 1。 使用“安全运行状况分析”设置 GCP 安全和命令中心
 
@@ -64,7 +70,7 @@ Azure 安全中心可保护 Azure、Amazon Web Services (AWS) 和 Google Cloud P
 
 ### <a name="step-2-enable-gcp-security-command-center-api"></a>步骤 2. 启用 GCP 安全命令中心 API
 
-1. 从 Google 的“云控制台 API 库”中，选择要连接到 Azure 安全中心的项目。
+1. 从 Google 的 Cloud Console API 库中，选择组织中要连接到 Azure 安全中心的每个项目。
 1. 在该 API 库中，查找并选择“安全命令中心 API”。
 1. 在 API 的页面上，选择“启用”。
 
@@ -73,7 +79,11 @@ Azure 安全中心可保护 Azure、Amazon Web Services (AWS) 和 Google Cloud P
 
 ### <a name="step-3-create-a-dedicated-service-account-for-the-security-configuration-integration"></a>步骤 3. 创建一个专用于安全配置集成的服务帐户
 
-1. 在“GCP 控制台”中，选择要连接到安全中心的项目。
+1. 在 GCP Console 中，从要在其中创建所需服务帐户的组织中选择一个项目。 
+
+    > [!NOTE]
+    > 在组织级别添加此服务帐户后，该服务帐户将用于访问安全命令中心从组织中所有其他已启用项目中收集的数据。 
+
 1. 在“导航菜单”上的“IAM 和管理”选项下，选择“服务帐户”。
 1. 选择“创建服务帐户”。
 1. 输入帐户名称，并选择“创建”。
@@ -84,7 +94,7 @@ Azure 安全中心可保护 Azure、Amazon Web Services (AWS) 和 Google Cloud P
     1. 切换到组织级别。
     1. 选择“添加”。
     1. 在“新成员”字段中，粘贴之前复制的电子邮件值。
-    1. 将“角色”指定为“安全中心管理员查看器”，然后选择“保存”。
+    1. 将“角色”指定为“安全中心管理员查看器”，然后选择“保存” 。
         :::image type="content" source="./media/quickstart-onboard-gcp/iam-settings-gcp-permissions-admin-viewer.png" alt-text="设置相关的 GCP 权限":::
 
 
@@ -97,7 +107,7 @@ Azure 安全中心可保护 Azure、Amazon Web Services (AWS) 和 Google Cloud P
 1. 保存此 JSON 文件待稍后使用。
 
 
-### <a name="step-5-connect-gcp-to-security-center"></a>步骤 5。 将 GCP 连接到安全中心 
+### <a name="step-5-connect-gcp-to-security-center"></a>步骤 5。 将 GCP 连接到安全中心
 1. 从安全中心的菜单中，选择“云连接器”。
 1. 选择“添加 GCP 帐户”。
 1. 在“加入”页中，执行以下操作，然后选择“下一步”。
@@ -126,8 +136,12 @@ Azure 安全中心可保护 Azure、Amazon Web Services (AWS) 和 Google Cloud P
 
 ## <a name="faq-for-connecting-gcp-accounts-to-azure-security-center"></a>有关将 GCP 帐户连接到 Azure 安全中心的常见问题解答
 
-### <a name="can-i-connect-multiple-gcp-accounts-to-security-center"></a>是否可将多个 GCP 帐户连接到安全中心？
-是的。 如上所述，可连接组织级别或项目级别的 Google Cloud 资源。 有关 Google Cloud 资源层次结构，请在[此处](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy)查看其联机文档。
+### <a name="can-i-connect-multiple-gcp-organizations-to-security-center"></a>是否可将多个 GCP 组织连接到安全中心？
+是的。 安全中心的 GCP 连接器在组织级别连接 Google Cloud 资源。 
+
+为要通过安全中心监视的每个 GCP 组织创建一个连接器。 连接某一个组织时，该组织中的所有项目都将添加到安全中心。
+
+通过 [Google 的联机文档](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy)了解 Google Cloud 资源层次结构。
 
 
 ### <a name="is-there-an-api-for-connecting-my-gcp-resources-to-security-center"></a>是否有 API 可用于将我的 GCP 资源连接到安全中心？
@@ -138,3 +152,4 @@ Azure 安全中心可保护 Azure、Amazon Web Services (AWS) 和 Google Cloud P
 连接 GCP 帐户是 Azure 安全中心提供的多云体验的一部分。 有关相关信息，请参阅以下页面：
 
 - [将 AWS 帐户连接到 Azure 安全中心](quickstart-onboard-aws.md)
+- [Google Cloud 资源层次结构](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy) - 通过 Google 的联机文档了解 Google Cloud 资源层次结构

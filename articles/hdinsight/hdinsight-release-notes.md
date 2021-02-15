@@ -5,12 +5,12 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/08/2021
-ms.openlocfilehash: f6b7000812f1adfe6ff7bd93711c9b8fe4ff9adc
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: 1a0b1a0400ae3d43817921e8a336421aee35ccd6
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99988365"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100378139"
 ---
 # <a name="azure-hdinsight-release-notes"></a>Azure HDInsight 发行说明
 
@@ -49,7 +49,8 @@ HDInsight 将逐步迁移到 Azure 虚拟机规模集。 适用于使用 Azure �
 
 
 ### <a name="breaking-change-for-net-for-apache-spark-100"></a>Apache Spark 1.0.0 的 .NET 的重大更改
-HDInsight 在下一个版本中引入了 .NET for Apache Spark 的第一个主要版本。 它提供 Spark 2.4. x 和 Spark 3.0. x 与其他功能的数据帧 API 完整性。 此主要版本有重大更改，请参阅 [此迁移指南](https://github.com/dotnet/spark/blob/master/docs/migration-guide.md#upgrading-from-microsoftspark-0x-to-10) ，了解更新代码和管道所需的步骤。 在[此处](https://docs.microsoft.com/azure/hdinsight/spark/spark-dotnet-version-update#using-net-for-apache-spark-v10-in-hdinsight)了解更多信息。
+在最新版本中，HDInsight 介绍了 [".net for Apache Spark"](https://github.com/dotnet/spark) 库的第一个官方版本1.0.0。 它为 Spark 2.4. x 和 Spark 3.0. x 以及 [其他功能](https://github.com/dotnet/spark/blob/master/docs/release-notes/1.0.0/release-1.0.0.md)的主机提供数据帧 API 完整性。 此主要版本有重大更改，请参阅 [.net for Apache Spark 迁移指南](https://github.com/dotnet/spark/blob/master/docs/migration-guide.md#upgrading-from-microsoftspark-0x-to-10) ，了解更新代码和管道所需的步骤。 若要了解详细信息，请参阅 [Azure HDInsight 上的 Apache Spark v1.0 1.0 版 .net](https://docs.microsoft.com/azure/hdinsight/spark/spark-dotnet-version-update#using-net-for-apache-spark-v10-in-hdinsight)。
+
 
 ## <a name="upcoming-changes"></a>即将推出的更改
 即将发布的版本中将推出以下变更。
@@ -68,4 +69,3 @@ HDInsight 会持续改善群集的可靠性和性能。
 
 ## <a name="component-version-change"></a>组件版本更改
 此发行版未发生组件版本更改。 可以在[此文档](./hdinsight-component-versioning.md)中查找 HDInsight 4.0 和 HDInsight 3.6 的当前组件版本。
-

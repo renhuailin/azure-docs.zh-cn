@@ -1,23 +1,18 @@
 ---
 title: 使用 Azure-SSIS Integration Runtime 包存储来管理包
 description: 了解如何使用 Azure-SSIS Integration Runtime 包存储来管理包。
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 author: swinarko
 ms.author: sawinark
-ms.reviewer: douglasl
-manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 09/29/2020
-ms.openlocfilehash: c7fc1a6c6aa29bfbc074bfa797f31ca8ee4e8fec
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: 66fdd20e66360be7cdaa6d918e18ca09c413da07
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98556394"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100393830"
 ---
 # <a name="manage-packages-with-azure-ssis-integration-runtime-package-store"></a>使用 Azure-SSIS Integration Runtime 包存储来管理包
 

@@ -7,34 +7,34 @@ ms.subservice: azure-arc-data
 author: TheJY
 ms.author: jeanyd
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 02/11/2021
 ms.topic: how-to
-ms.openlocfilehash: ecc2e98d4c6c58e11b2bdc86b623f31d828cabc0
-ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
+ms.openlocfilehash: b88b36ba8ec1d2d612adbbf19a6cf1e91fbb2cfd
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98985914"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100377748"
 ---
 # <a name="azure-arc-enabled-postgresql-hyperscale-server-group-placement"></a>启用 Azure Arc PostgreSQL 超大规模服务器组放置
 
-在本文中，我们将演示如何将 Azure Arc 启用 PostgreSQL 超大规模服务器组的 PostgreSQL 实例放置在托管它们的 Kubernetes 群集的物理节点上的示例。 
+本文介绍如何将 Azure Arc enabled PostgreSQL 超大规模服务器组的 PostgreSQL 实例放置在托管它们的 Kubernetes 群集的物理节点上的示例。 
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-## <a name="configuration"></a>配置
+## <a name="configuration"></a>Configuration
 
 在此示例中，我们使用的是具有四个物理节点 (AKS) 群集的 Azure Kubernetes 服务。 
 
 :::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/1_cluster_portal.png" alt-text="Azure 门户中的4节点 AKS 群集":::
 
-通过运行以下命令列出 Kubernetes 群集的物理节点：
+列出 Kubernetes 群集的物理节点。 运行以下命令：
 
 ```console
 kubectl get nodes
 ```
 
-其中显示了 Kubernetes 群集中的四个物理节点：
+`kubectl` 返回 Kubernetes 群集中的四个物理节点：
 
 ```output
 NAME                                STATUS   ROLES   AGE   VERSION
@@ -55,7 +55,7 @@ Kubernetes 群集托管一个 Azure Arc 数据控制器和一个已启用的 Azu
 ```console
 kubectl get pods -n arc3
 ```
-这会生成以下输出：
+`kubectl` 返回：
 
 ```output
 NAME                 READY   STATUS    RESTARTS   AGE
@@ -64,7 +64,7 @@ postgres01c-0         3/3     Running   0          9h
 postgres01w-0         3/3     Running   0          9h
 postgres01w-1         3/3     Running   0          9h
 ```
-其中每个盒都托管一个 PostgreSQL 实例。 它们共同构成了已启用 Azure Arc PostgreSQL 超大规模服务器组：
+其中每个盒都托管一个 PostgreSQL 实例。 Pod 一起形成启用了 Azure Arc 的 PostgreSQL 超大规模服务器组：
 
 ```output
 Pod name        Role in the server group
@@ -80,7 +80,7 @@ postgres01w-1   Worker
 kubectl describe pod postgres01c-0 -n arc3
 ```
 
-这会生成以下输出：
+`kubectl` 返回：
 
 ```output
 Name:         postgres01c-0
@@ -104,7 +104,7 @@ Start Time:   Thu, 17 Sep 2020 00:40:33 -0700
 kubectl describe pod postgres01w-1 -n arc3
 ```
 
-这会生成以下输出：
+`kubectl` 返回：
 
 ```output
 …
@@ -131,7 +131,7 @@ Containers:
 
 :::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/3_pod_placement.png" alt-text="3个每个箱放置在单独的节点上":::
 
-这意味着，此时，每个 PostgreSQL 实例构成启用了 Azure Arc 的 PostgreSQL 超大规模服务器组将托管在 Kubernetes 容器中的特定物理主机上。 这是帮助在启用了 Azure Arc 的 PostgreSQL 超大规模服务器组的情况下获得最佳性能的最佳配置，因为每个角色 (协调器和工作人员) 使用每个物理节点的资源。 这些资源不会在多个 PostgreSQL 角色之间共享。
+这意味着，此时，每个 PostgreSQL 实例构成启用了 Azure Arc 的 PostgreSQL 超大规模服务器组将托管在 Kubernetes 容器中的特定物理主机上。 此配置可提供 Azure Arc enabled PostgreSQL 超大规模服务器组的最佳性能，因为每个角色 (协调器和辅助角色) 使用每个物理节点的资源。 这些资源不会在多个 PostgreSQL 角色之间共享。
 
 ## <a name="scale-out-azure-arc-enabled-postgresql-hyperscale"></a>已启用 Scale out Azure Arc PostgreSQL 超大规模
 
@@ -217,19 +217,19 @@ Node:         aks-agentpool-42715708-vmss000000
 
 |其他 pod 名称\* |使用情况|托管 pod 的 Kubernetes 物理节点
 |----|----|----
-|引导程序-jh48b|这是一种服务，用于处理用于创建、编辑和删除自定义资源（例如 SQL 托管实例、PostgreSQL 超大规模服务器组和数据控制器）的传入请求|aks-agentpool-42715708-vmss000003
+|引导程序-jh48b|一种服务，该服务处理用于创建、编辑和删除自定义资源（例如 SQL 托管实例、PostgreSQL 超大规模服务器组和数据控制器）的传入请求|aks-agentpool-42715708-vmss000003
 |gwmbs||aks-agentpool-42715708-vmss000002
-|controldb-0|这是用于存储数据控制器的配置和状态的控制器数据存储区。|aks-agentpool-42715708-vmss000001
-|controlwd-zzjp7|这是控制器 "监视狗" 服务，可让你密切关注数据控制器的可用性。|aks-agentpool-42715708-vmss000000
-|logsdb-0|这是一种弹性搜索实例，用于存储所有 Arc 数据服务箱中收集的所有日志。 Elasticsearch，从 `Fluentbit` 每个 pod 的容器接收数据|aks-agentpool-42715708-vmss000003
-|logsui-5fzv5|这是一个 Kibana 实例，它位于弹性搜索数据库的顶部，用于显示 log analytics GUI。|aks-agentpool-42715708-vmss000003
-|metricsdb-0|这是一个 InfluxDB 实例，用于存储跨所有 Arc 数据服务箱收集的所有指标。 InfluxDB，从 `Telegraf` 每个 pod 的容器接收数据|aks-agentpool-42715708-vmss000000
-|metricsdc-47d47|这是部署在群集中所有 Kubernetes 节点上的 daemonset，用于收集节点的节点级指标。|aks-agentpool-42715708-vmss000002
-|metricsdc-864kj|这是部署在群集中所有 Kubernetes 节点上的 daemonset，用于收集节点的节点级指标。|aks-agentpool-42715708-vmss000001
-|metricsdc-l8jkf|这是部署在群集中所有 Kubernetes 节点上的 daemonset，用于收集节点的节点级指标。|aks-agentpool-42715708-vmss000003
-|metricsdc-nxm4l|这是部署在群集中所有 Kubernetes 节点上的 daemonset，用于收集节点的节点级指标。|aks-agentpool-42715708-vmss000000
-|metricsui-4fb7l|这是一个 Grafana 实例，它位于 InfluxDB 数据库的顶部，用于显示监视仪表板 GUI。|aks-agentpool-42715708-vmss000003
-|mgmtproxy-4qppp|这是一个 web 应用程序代理层，位于 Grafana 和 Kibana 实例之前。|aks-agentpool-42715708-vmss000002
+|controldb-0|用于存储数据控制器的配置和状态的控制器数据存储区。|aks-agentpool-42715708-vmss000001
+|controlwd-zzjp7|控制器 "监视狗" 服务，用于监视数据控制器的可用性。|aks-agentpool-42715708-vmss000000
+|logsdb-0|弹性搜索实例，用于存储所有 Arc 数据服务箱中收集的所有日志。 Elasticsearch，从 `Fluentbit` 每个 pod 的容器接收数据|aks-agentpool-42715708-vmss000003
+|logsui-5fzv5|位于弹性搜索数据库之上的 Kibana 实例，用于显示 log analytics GUI。|aks-agentpool-42715708-vmss000003
+|metricsdb-0|用于存储所有 Arc 数据服务箱中收集的所有指标的 InfluxDB 实例。 InfluxDB，从 `Telegraf` 每个 pod 的容器接收数据|aks-agentpool-42715708-vmss000000
+|metricsdc-47d47|部署在群集中所有 Kubernetes 节点上的守护程序集，用于收集节点的节点级指标。|aks-agentpool-42715708-vmss000002
+|metricsdc-864kj|部署在群集中所有 Kubernetes 节点上的守护程序集，用于收集节点的节点级指标。|aks-agentpool-42715708-vmss000001
+|metricsdc-l8jkf|部署在群集中所有 Kubernetes 节点上的守护程序集，用于收集节点的节点级指标。|aks-agentpool-42715708-vmss000003
+|metricsdc-nxm4l|部署在群集中所有 Kubernetes 节点上的守护程序集，用于收集节点的节点级指标。|aks-agentpool-42715708-vmss000000
+|metricsui-4fb7l|位于 InfluxDB 数据库之上的 Grafana 实例，用于显示监视仪表板 GUI。|aks-agentpool-42715708-vmss000003
+|mgmtproxy-4qppp|位于 Grafana 和 Kibana 实例前面的 web 应用程序代理层。|aks-agentpool-42715708-vmss000002
 
 > \* Pod 名称上的后缀将因其他部署而异。 此外，我们仅在此处列出 Azure Arc 数据控制器的 Kubernetes 命名空间中托管的 pod。
 
@@ -237,7 +237,7 @@ Node:         aks-agentpool-42715708-vmss000000
 
 :::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/5_full_list_of_pods.png" alt-text="各个节点的命名空间中的所有 pod":::
 
-这意味着启用了 Azure Arc Postgres 超大规模服务器组的协调器节点 (Pod 1) 与服务器组的第三个辅助角色节点 (Pod 4) 共享相同的物理资源。 这是可接受的，因为协调器节点通常使用非常少的资源来与辅助角色节点所使用的资源进行比较。 从这种情况中，你可能会推断到你应仔细选择：
+如上所述，启用了 Azure Arc Postgres 超大规模服务器组的协调器节点 (Pod 1) 与服务器组的第三个辅助角色节点 (Pod 4) 共享相同的物理资源。 这是可接受的，因为协调器节点通常使用非常少的资源来与辅助角色节点所使用的资源进行比较。 出于此原因，请仔细选择：
 - Kubernetes 群集的大小以及其每个物理节点 (内存、vCore) 的特征
 - Kubernetes 群集内的物理节点数
 - 在 Kubernetes 群集上托管的应用程序或工作负荷。
@@ -251,7 +251,7 @@ Node:         aks-agentpool-42715708-vmss000000
 
 :::row:::
     :::column:::
-        之前
+        以前
     :::column-end:::
     :::column:::
         之后

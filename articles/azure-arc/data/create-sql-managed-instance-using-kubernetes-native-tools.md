@@ -7,20 +7,20 @@ ms.subservice: azure-arc-data
 author: vin-yu
 ms.author: vinsonyu
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 02/11/2021
 ms.topic: how-to
-ms.openlocfilehash: dde2794e459e9375a231b7792bc1bd5ab21561bf
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: cade888d951c2071f8f40c145e28eed3c3a5d27c
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955223"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100384242"
 ---
 # <a name="create-azure-sql-managed-instance-using-kubernetes-tools"></a>使用 Kubernetes 工具创建 Azure SQL 托管实例
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-## <a name="prerequisites"></a>必备知识
+## <a name="prerequisites"></a>先决条件
 
 应该已经创建了一个 [Azure Arc 数据控制器](./create-data-controller.md)。
 
@@ -45,13 +45,13 @@ data:
   username: <your base64 encoded user name. 'sa' is not allowed>
 kind: Secret
 metadata:
-  name: example-login-secret
+  name: sql1-login-secret
 type: Opaque
 ---
 apiVersion: sql.arcdata.microsoft.com/v1alpha1
 kind: sqlmanagedinstance
 metadata:
-  name: example
+  name: sql1
 spec:
   limits:
     memory: 4Gi
@@ -62,13 +62,7 @@ spec:
   service:
     type: LoadBalancer
   storage:
-    backups:
-      className: default
-      size: 5Gi
     data:
-      className: default
-      size: 5Gi
-    datalogs:
       className: default
       size: 5Gi
     logs:
@@ -107,7 +101,7 @@ echo '<your string to encode here>' | base64
 
 ### <a name="customizing-the-name"></a>自定义名称
 
-对于 name 属性，模板的值为 "example"。  您可以更改它，但它必须是遵循 DNS 命名标准的字符。  还必须更改要匹配的机密名称。  例如，如果将 SQL 托管实例的名称更改为 "sql1"，则必须将机密名称从 "" 更改为 "sql1"。
+对于 name 属性，模板的值为 "sql1"。  您可以更改它，但它必须是遵循 DNS 命名标准的字符。  还必须更改要匹配的机密名称。  例如，如果将 SQL 托管实例的名称更改为 "sql2"，则必须将机密名称从 "sql1" 更改为 "sql2"。
 
 ### <a name="customizing-the-resource-requirements"></a>自定义资源要求
 

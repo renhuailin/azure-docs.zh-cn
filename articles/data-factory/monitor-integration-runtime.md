@@ -1,21 +1,17 @@
 ---
 title: 在 Azure 数据工厂中监视集成运行时
 description: 了解如何在 Azure 数据工厂中监视不同类型的集成运行时。
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/11/2020
 author: dcstwh
 ms.author: weetok
-manager: anandsub
-ms.openlocfilehash: fa71dc1e6b3a09827f2ad3d9f714622da5a36222
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: a52fad39e19bdf2edf110990c8f0e392ec5803ce
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96862439"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100377493"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>在 Azure 数据工厂中监视集成运行时
 
@@ -104,7 +100,7 @@ Azure 集成运行时的计算资源在 Azure 中以弹性方式受到完全管�
 | 联机 | 节点已连接到数据工厂服务。 |
 | Offline | 节点处于脱机状态。 |
 | 正在升级 | 节点正在进行自动更新。 |
-| 受限制 | 由于连接问题而受限。 可能是由于 HTTP 端口8060问题、服务总线连接问题或凭据同步问题导致的。 |
+| 受限制 | 由于连接问题而受限。 可能的原因包括 HTTP 端口 8060 问题、服务总线连接问题或凭据同步问题。 |
 | 非活动 | 节点的配置与其他多数节点的配置不同。 |
 
 节点在无法与其他节点连接时可能处于非活动状态。

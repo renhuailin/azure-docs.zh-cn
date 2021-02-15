@@ -7,14 +7,14 @@ author: vladvino
 ms.assetid: 034febe3-465f-4840-9fc6-c448ef520b0f
 ms.service: api-management
 ms.topic: article
-ms.date: 11/23/2020
+ms.date: 02/09/2021
 ms.author: apimpm
-ms.openlocfilehash: e38dcf1e12629405ae5f28a987ba20557037ee67
-ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
+ms.openlocfilehash: 0b18a73d0357b5dd90b329ba55c6601e60df5bbc
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97683431"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100367565"
 ---
 # <a name="api-management-access-restriction-policies"></a>API 管理访问限制策略
 
@@ -22,7 +22,7 @@ ms.locfileid: "97683431"
 
 ## <a name="access-restriction-policies"></a><a name="AccessRestrictionPolicies"></a>访问限制策略
 
--   [检查 HTTP 标头](#CheckHTTPHeader) - 强制必须存在 HTTP 标头和/或强制采用 HTTP 标头的值。
+-   [检查 http 标头](#CheckHTTPHeader) -强制实施 http 标头的存在性和/或值。
 -   [按订阅限制调用速率](#LimitCallRate) - 根据订阅限制调用速率，避免 API 使用量暴增。
 -   [按密钥限制调用速率](#LimitCallRateByKey) - 根据密钥限制调用速率，避免 API 使用量暴增。
 -   [限制调用方 IP](#RestrictCallerIPs) - 筛选（允许/拒绝）来自特定 IP 地址和/或地址范围的调用。
@@ -80,7 +80,7 @@ ms.locfileid: "97683431"
 
 ## <a name="limit-call-rate-by-subscription"></a><a name="LimitCallRate"></a>按订阅限制调用速率
 
-`rate-limit` 策略可以对调用速率进行限制，使每个指定时段的调用不超出指定的数目，避免单个订阅的 API 使用量暴增。 触发此策略时，调用方会收到 `429 Too Many Requests` 响应状态代码。
+`rate-limit` 策略可以对调用速率进行限制，使每个指定时段的调用不超出指定的数目，避免单个订阅的 API 使用量暴增。 超过调用速率时，调用方会收到 `429 Too Many Requests` 响应状态代码。
 
 > [!IMPORTANT]
 > 每个策略文档只能使用此策略一次。
@@ -98,18 +98,25 @@ ms.locfileid: "97683431"
 ```xml
 <rate-limit calls="number" renewal-period="seconds">
     <api name="API name" id="API id" calls="number" renewal-period="seconds" />
-        <operation name="operation name" id="operation id" calls="number" renewal-period="seconds" />
+        <operation name="operation name" id="operation id" calls="number" renewal-period="seconds" 
+        retry-after-header-name="header name" 
+        retry-after-variable-name="policy expression variable name"
+        remaining-calls-header-name="header name"  
+        remaining-calls-variable-name="policy expression variable name"
+        total-calls-header-name="header name"/>
     </api>
 </rate-limit>
 ```
 
 ### <a name="example"></a>示例
 
+在下面的示例中，每个订阅的速率限制为每90秒20个调用。 每次执行策略后，在该时间段内允许的剩余调用存储在变量中 `remainingCallsPerSubscription` 。
+
 ```xml
 <policies>
     <inbound>
         <base />
-        <rate-limit calls="20" renewal-period="90" />
+        <rate-limit calls="20" renewal-period="90" remaining-calls-variable-name="remainingCallsPerSubscription"/>
     </inbound>
     <outbound>
         <base />
@@ -131,7 +138,12 @@ ms.locfileid: "97683431"
 | -------------- | ----------------------------------------------------------------------------------------------------- | -------- | ------- |
 | name           | 要对其应用速率限制的 API 的名称。                                                | 是      | 空值     |
 | calls          | 在 `renewal-period` 所指定的时间间隔内允许的最大总调用数。 | 是      | 空值     |
-| renewal-period | 在重置配额之前等待的时间长度，以秒为单位。                                              | 是      | 空值     |
+| renewal-period | 秒数，超过该时间段后，速率将重置。                                              | 是      | 空值     |
+| 后重试-标头名称    | 此响应标头的名称，其值为超过指定调用率后的建议重试间隔（秒）。 |  否 | 空值  |
+| 重试-变量名称    | 策略表达式变量的名称，该变量在超过指定的调用率后，以秒为单位存储建议的重试间隔。 |  否 | 空值  |
+| 剩余-标头名称    | 每个策略执行后其值为的响应标头的名称是在中指定的时间间隔内允许的剩余调用数 `renewal-period` 。 |  否 | 空值  |
+| 保留的调用-变量名称    | 策略表达式变量的名称，该变量在每个策略执行后存储中指定的时间间隔内允许的剩余调用数 `renewal-period` 。 |  否 | 空值  |
+| 总调用-标头-名称    | 其值为中指定的值的响应标头的名称 `calls` 。 |  否 | 空值  |
 
 ### <a name="usage"></a>使用情况
 
@@ -146,7 +158,7 @@ ms.locfileid: "97683431"
 > [!IMPORTANT]
 > 此功能在 API 管理的“消耗”层中不可用。
 
-`rate-limit-by-key` 策略可以对调用速率进行限制，使指定时段的调用不超出指定的数目，避免单个密钥的 API 使用量暴增。 密钥的值可以是任意字符串，通常使用策略表达式来提供密钥。 可以添加可选增量条件，指定在决定是否到达限制值时应该进行计数的请求。 触发此策略时，调用方会收到`429 Too Many Requests`响应状态代码。
+`rate-limit-by-key` 策略可以对调用速率进行限制，使指定时段的调用不超出指定的数目，避免单个密钥的 API 使用量暴增。 密钥的值可以是任意字符串，通常使用策略表达式来提供密钥。 可以添加可选增量条件，指定在决定是否到达限制值时应该进行计数的请求。 超过此调用速率时，调用方会收到 `429 Too Many Requests` 响应状态代码。
 
 有关此策略的详细信息和示例，请参阅[使用 Azure API 管理进行高级请求限制](./api-management-sample-flexible-throttling.md)。
 
@@ -162,13 +174,16 @@ ms.locfileid: "97683431"
 <rate-limit-by-key calls="number"
                    renewal-period="seconds"
                    increment-condition="condition"
-                   counter-key="key value" />
+                   counter-key="key value" 
+                   retry-after-header-name="header name" retry-after-variable-name="policy expression variable name"
+                   remaining-calls-header-name="header name"  remaining-calls-variable-name="policy expression variable name"
+                   total-calls-header-name="header name"/> 
 
 ```
 
 ### <a name="example"></a>示例
 
-在下面的示例中，可通过调用方 IP 地址对速率限制进行键控。
+在下面的示例中，每60秒10次调用的速率限制为调用方 IP 地址。 每次执行策略后，在该时间段内允许的剩余调用存储在变量中 `remainingCallsPerIP` 。
 
 ```xml
 <policies>
@@ -177,7 +192,8 @@ ms.locfileid: "97683431"
         <rate-limit-by-key  calls="10"
               renewal-period="60"
               increment-condition="@(context.Response.StatusCode == 200)"
-              counter-key="@(context.Request.IpAddress)"/>
+              counter-key="@(context.Request.IpAddress)"
+              remaining-calls-variable-name="remainingCallsPerIP"/>
     </inbound>
     <outbound>
         <base />
@@ -197,8 +213,13 @@ ms.locfileid: "97683431"
 | ------------------- | ----------------------------------------------------------------------------------------------------- | -------- | ------- |
 | calls               | 在 `renewal-period` 所指定的时间间隔内允许的最大总调用数。 | 是      | 空值     |
 | counter-key         | 用于速率限制策略的密钥。                                                             | 是      | 空值     |
-| increment-condition | 一个布尔表达式，指定是否应将请求计入配额 (`true`)。        | 否       | 空值     |
-| renewal-period      | 在重置配额之前等待的时间长度，以秒为单位。                                              | 是      | 空值     |
+| increment-condition | 指定是否应将请求计入 () 速率的布尔表达式 `true` 。        | 否       | 空值     |
+| renewal-period      | 秒数，超过该时间段后，速率将重置。                                              | 是      | 空值     |
+| 后重试-标头名称    | 此响应标头的名称，其值为超过指定调用率后的建议重试间隔（秒）。 |  否 | 空值  |
+| 重试-变量名称    | 策略表达式变量的名称，该变量在超过指定的调用率后，以秒为单位存储建议的重试间隔。 |  否 | 空值  |
+| 剩余-标头名称    | 每个策略执行后其值为的响应标头的名称是在中指定的时间间隔内允许的剩余调用数 `renewal-period` 。 |  否 | 空值  |
+| 保留的调用-变量名称    | 策略表达式变量的名称，该变量在每个策略执行后存储中指定的时间间隔内允许的剩余调用数 `renewal-period` 。 |  否 | 空值  |
+| 总调用-标头-名称    | 其值为中指定的值的响应标头的名称 `calls` 。 |  否 | 空值  |
 
 ### <a name="usage"></a>使用情况
 
@@ -319,7 +340,7 @@ ms.locfileid: "97683431"
 > [!IMPORTANT]
 > 此功能在 API 管理的“消耗”层中不可用。
 
-`quota-by-key` 策略允许根据密钥强制实施可续订或有生存期的调用量和/或带宽配额。 密钥的值可以是任意字符串，通常使用策略表达式来提供密钥。 可以添加可选增量条件，指定应在配额范围内的请求。 如果多个策略增加相同的键值，则每个请求的键值仅增加一次。 达到调用限制时，调用方会收到 `403 Forbidden` 响应状态代码。
+`quota-by-key` 策略允许根据密钥强制实施可续订或有生存期的调用量和/或带宽配额。 密钥的值可以是任意字符串，通常使用策略表达式来提供密钥。 可以添加可选增量条件，指定应在配额范围内的请求。 如果多个策略增加相同的键值，则每个请求的键值仅增加一次。 超过调用速率时，调用方会收到 `403 Forbidden` 响应状态代码。
 
 有关此策略的详细信息和示例，请参阅[使用 Azure API 管理进行高级请求限制](./api-management-sample-flexible-throttling.md)。
 
@@ -365,10 +386,10 @@ ms.locfileid: "97683431"
 
 | 名称                | 说明                                                                                               | 必须                                                         | 默认 |
 | ------------------- | --------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- | ------- |
-| bandwidth           | 在 `renewal-period` 所指定的时间间隔内允许的最大总字节数（千字节）。 | 必须指定 `calls` 和/或 `bandwidth`。 | 不适用     |
-| calls               | 在 `renewal-period` 所指定的时间间隔内允许的最大总调用数。     | 必须指定 `calls` 和/或 `bandwidth`。 | 不适用     |
+| bandwidth           | 在 `renewal-period` 所指定的时间间隔内允许的最大总字节数（千字节）。 | 必须指定 `calls` 和/或 `bandwidth`。 | 空值     |
+| calls               | 在 `renewal-period` 所指定的时间间隔内允许的最大总调用数。     | 必须指定 `calls` 和/或 `bandwidth`。 | 空值     |
 | counter-key         | 用于配额策略的密钥。                                                                      | 是                                                              | 空值     |
-| increment-condition | 一个布尔表达式，指定是否应将请求计入配额 (`true`)             | 否                                                               | 不适用     |
+| increment-condition | 一个布尔表达式，指定是否应将请求计入配额 (`true`)             | 否                                                               | 空值     |
 | renewal-period      | 在重置配额之前等待的时间长度，以秒为单位。                                                  | 是                                                              | 空值     |
 
 ### <a name="usage"></a>使用情况
@@ -550,7 +571,7 @@ ms.locfileid: "97683431"
 | id                              | 使用 `key` 元素的 `id` 属性可以指定一个字符串，该字符串将与令牌中的 `kid` 声明（如果存在）进行比较，以便找出进行签名验证时需要使用的适当密钥。                                                                                                                                                                                                                                           | 否                                                                               | 空值                                                                               |
 | match                           | `claim` 元素的 `match` 属性用于指定：是否策略中的每个声明值都必须存在于令牌中验证才会成功。 可能的值为：<br /><br /> - `all` - 策略中的每个声明值都必须存在于令牌中验证才会成功。<br /><br /> - `any` - 至少一个声明值必须存在于令牌中验证才会成功。                                                       | 否                                                                               | all                                                                               |
 | require-expiration-time         | 布尔值。 指定令牌中是否需要到期声明。                                                                                                                                                                                                                                                                                                                                                                               | 否                                                                               | 是                                                                              |
-| require-scheme                  | 令牌方案的名称，例如“Bearer”。 设置了此属性时，策略将确保 Authorization 标头值中存在指定的方案。                                                                                                                                                                                                                                                                                    | 否                                                                               | 不适用                                                                               |
+| require-scheme                  | 令牌方案的名称，例如“Bearer”。 设置了此属性时，策略将确保 Authorization 标头值中存在指定的方案。                                                                                                                                                                                                                                                                                    | 否                                                                               | 空值                                                                               |
 | require-signed-tokens           | 布尔值。 指定令牌是否需要签名。                                                                                                                                                                                                                                                                                                                                                                                           | 否                                                                               | 是                                                                              |
 | separator                       | 字符串。 指定要用于从多值声明中提取一组值的分隔符（例如 ","）。                                                                                                                                                                                                                                                                                                                                          | 否                                                                               | 空值                                                                               |
 | url                             | Open ID 配置终结点 URL，可以从其获取 Open ID 配置元数据。 响应应符合以下 URL 中定义的规范：`https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata`。 对于 Azure Active Directory，请使用以下 URL：`https://login.microsoftonline.com/{tenant-name}/.well-known/openid-configuration`，代之以目录租户名称，例如 `contoso.onmicrosoft.com`。 | 是                                                                              | 空值                                                                               |

@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/14/2020
 ms.topic: reference
 ms.service: azure
-ms.openlocfilehash: 73c5d1f31d9e0651ee710593aa4e1b68fe972560
-ms.sourcegitcommit: 983eb1131d59664c594dcb2829eb6d49c4af1560
+ms.openlocfilehash: ae7965dd319f2ff885f4329262ae4772452afd62
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99222081"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100523237"
 ---
 # <a name="defender-for-iot-sensor-and-management-console-apis"></a>用于 IoT 传感器和管理控制台 Api 的 Defender
 
@@ -112,14 +112,14 @@ ms.locfileid: "99222081"
 |--|--|--|--|
 | **id** | 数字 | 否 | - |
 | **ipAddresses** | JSON 数组 | 是 | IP 地址 (可以为 internet 地址或具有双 Nic 的设备使用多个地址)  |
-| name  | 字符串 | 否 | - |
-| type  | 字符串 | 否 | 未知、工程工作站、PLC、HMI、Historian、域控制器、数据库服务器、无线访问点、路由器、交换机、服务器、工作站、IP 照相机、打印机、防火墙、终端工作站、VPN 网关、Internet 或多播和广播 |
+| name  | String | 否 | - |
+| type  | String | 否 | 未知、工程工作站、PLC、HMI、Historian、域控制器、数据库服务器、无线访问点、路由器、交换机、服务器、工作站、IP 照相机、打印机、防火墙、终端工作站、VPN 网关、Internet 或多播和广播 |
 | **macAddresses** | JSON 数组 | 是 | 对于具有双 Nic 的设备，MAC 地址 (可以是多个地址)  |
-| **operatingSystem** | 字符串 | 是 | - |
+| **operatingSystem** | String | 是 | - |
 | **engineeringStation** | 布尔 | 否 | True 或 False |
 | **瞄** | 布尔 | 否 | True 或 False |
 | **已授权** | 布尔 | 否 | True 或 False |
-| **采购** | 字符串 | 是 | - |
+| **采购** | String | 是 | - |
 | **通讯** | JSON 数组 | 是 | Protocol 对象 |
 | **固件** | JSON 数组 | 是 | 固件对象 |
 
@@ -127,21 +127,21 @@ ms.locfileid: "99222081"
 
 | 名称 | 类型 | Nullable | 值列表 |
 |--|--|--|--|
-| **名称** | 字符串 | 否 |  |
+| **名称** | String | 否 |  |
 | **地址** | JSON 数组 | 是 | Master 或数值 |
 
 #### <a name="firmware-fields"></a>固件字段
 
 | 名称 | 类型 | Nullable | 值列表 |
 |--|--|--|--|
-| **串行** | 字符串 | 否 | 不适用，或实际值 |
-| **model** | 字符串 | 否 | 不适用，或实际值 |
+| **串行** | String | 否 | 不适用，或实际值 |
+| **model** | String | 否 | 不适用，或实际值 |
 | **firmwareVersion** | Double | 否 | 不适用，或实际值 |
-| **additionalData** | 字符串 | 否 | 不适用，或实际值 |
-| **moduleAddress** | 字符串 | 否 | 不适用，或实际值 |
-| **支架** | 字符串 | 否 | 不适用，或实际值 |
-| **插槽** | 字符串 | 否 | 不适用，或实际值 |
-| **address** | 字符串 | 否 | 不适用，或实际值 |
+| **additionalData** | String | 否 | 不适用，或实际值 |
+| **moduleAddress** | String | 否 | 不适用，或实际值 |
+| **支架** | String | 否 | 不适用，或实际值 |
+| **插槽** | String | 否 | 不适用，或实际值 |
+| **address** | String | 否 | 不适用，或实际值 |
 
 #### <a name="response-example"></a>响应示例
 
@@ -346,7 +346,7 @@ ms.locfileid: "99222081"
 
 | 名称 | 类型 | Nullable | 值列表 |
 |--|--|--|--|
-| name  | 字符串 | 否 | - |
+| name  | String | 否 | - |
 | **命令** | 字符串数组 | 否 | - |
 
 #### <a name="response-example"></a>响应示例
@@ -499,11 +499,11 @@ JSON 对象的数组，这些对象表示在 IP 地址上标识的标识符。
 
 | 名称 | 类型 | Nullable | 值列表 |
 |--|--|--|--|
-| **cveId** | 字符串 | 否 | - |
-| **地址** | 字符串 | 否 | IP 地址 |
-| **分值** | 字符串 | 否 | 0.0-10。0 |
-| **attackVector** | 字符串 | 否 | 网络、相邻网络、本地或物理 |
-| description | 字符串 | 否 | - |
+| **cveId** | String | 否 | - |
+| **地址** | String | 否 | IP 地址 |
+| **分值** | String | 否 | 0.0-10。0 |
+| **attackVector** | String | 否 | 网络、相邻网络、本地或物理 |
+| description | String | 否 | - |
 
 #### <a name="response-example"></a>响应示例
 
@@ -620,10 +620,10 @@ JSON 对象的数组，这些对象表示在 IP 地址上标识的标识符。
 |--|--|--|--|
 | **ID** | 数字 | 否 | - |
 | **time** | 数字 | 否 | Epoch (UTC)  |
-| **title** | 字符串 | 否 | - |
+| **title** | String | 否 | - |
 | **message** | String | 否 | - |
-| severity  | 字符串 | 否 | 警告、次要、主要或严重 |
-| **搜索引擎优化** | 字符串 | 否 | 协议冲突、策略冲突、恶意软件、异常或操作 |
+| severity  | String | 否 | 警告、次要、主要或严重 |
+| **搜索引擎优化** | String | 否 | 协议冲突、策略冲突、恶意软件、异常或操作 |
 | **sourceDevice** | 数字 | 是 | 设备 ID |
 | **destinationDevice** | 数字 | 是 | 设备 ID |
 | **additionalInformation** | 附加信息对象 | 是 | - |
@@ -632,8 +632,8 @@ JSON 对象的数组，这些对象表示在 IP 地址上标识的标识符。
 
 | 名称 | 类型 | Nullable | 值列表 |
 |--|--|--|--|
-| description | 字符串 | 否 | - |
-| **信息** | JSON 数组 | 否 | 字符串 |
+| description | String | 否 | - |
+| **信息** | JSON 数组 | 否 | String |
 
 #### <a name="response-example"></a>响应示例
 
@@ -742,10 +742,10 @@ JSON 对象的数组，这些对象表示在 IP 地址上标识的标识符。
 | 名称 | 类型 | Nullable | 值列表 |
 |--|--|--|--|--|
 | **timestamp** | 数字 | 否 | Epoch (UTC)  |
-| **title** | 字符串 | 否 | - |
-| severity  | 字符串 | 否 | 信息、通知或警报 |
-| **owner** | 字符串 | 是 | 如果手动创建了事件，则此字段将包含创建该事件的用户名。 |
-| **content** | 字符串 | 否 | - |
+| **title** | String | 否 | - |
+| severity  | String | 否 | 信息、通知或警报 |
+| **owner** | String | 是 | 如果手动创建了事件，则此字段将包含创建该事件的用户名。 |
+| **content** | String | 否 | - |
 
 #### <a name="response-example"></a>响应示例
 
@@ -854,12 +854,12 @@ JSON 对象的数组，这些对象表示在 IP 地址上标识的标识符。
 
 | 名称 | 类型 | Nullable | 值列表 |
 |--|--|--|--|
-| name  | 字符串 | 否 | - |
+| name  | String | 否 | - |
 | **ipAddresses** | JSON 数组 | 否 | - |
 | **securityScore** | 数字 | 否 | - |
-| **采购** | 字符串 | 是 |  |
-| **firmwareVersion** | 字符串 | 是 | - |
-| **model** | 字符串 | 是 | - |
+| **采购** | String | 是 |  |
+| **firmwareVersion** | String | 是 | - |
+| **model** | String | 是 | - |
 | **isWirelessAccessPoint** | 布尔 | 否 | True 或 False |
 | **operatingSystem** | 操作系统对象 | 是 | - |
 | **一些** | 漏洞对象 | 是 | - |
@@ -868,10 +868,10 @@ JSON 对象的数组，这些对象表示在 IP 地址上标识的标识符。
 
 | 名称 | 类型 | Nullable | 值列表 |
 |--|--|--|--|
-| **名称** | 字符串 | 是 | - |
-| **类型** | 字符串 | 是 | - |
-| **版本** | 字符串 | 是 | - |
-| **latestVersion** | 字符串 | 是 | - |
+| **名称** | String | 是 | - |
+| **类型** | String | 是 | - |
+| **版本** | String | 是 | - |
+| **latestVersion** | String | 是 | - |
 
 #### <a name="vulnerabilities-fields"></a>漏洞字段
  
@@ -893,35 +893,35 @@ JSON 对象的数组，这些对象表示在 IP 地址上标识的标识符。
 
 | 名称 | 类型 | Nullable | 值列表 |
 |--|--|--|--|
-| **password** | 字符串 | 否 | - |
-| **protocol** | 字符串 | 否 | - |
-| **程度** | 字符串 | 否 | 非常弱、弱、中等或强 |
+| **password** | String | 否 | - |
+| **protocol** | String | 否 | - |
+| **程度** | String | 否 | 非常弱、弱、中等或强 |
 
 #### <a name="remote-access-fields"></a>远程访问字段
 
 | 名称 | 类型 | Nullable | 值列表 |
 |--|--|--|--|
 | **port** | 数字 | 否 | - |
-| **transport** | 字符串 | 否 | TCP 或 UDP |
-| **机** | 字符串 | 否 | IP 地址 |
-| **clientSoftware** | 字符串 | 否 | SSH、VNC、远程桌面或团队查看器 |
+| **transport** | String | 否 | TCP 或 UDP |
+| **机** | String | 否 | IP 地址 |
+| **clientSoftware** | String | 否 | SSH、VNC、远程桌面或团队查看器 |
 
 #### <a name="open-port-fields"></a>打开端口字段
 
 | 名称 | 类型 | Nullable | 值列表 |
 |--|--|--|--|
 | **port** | 数字 | 否 | - |
-| **transport** | 字符串 | 否 | TCP 或 UDP |
-| **protocol** | 字符串 | 是 | - |
+| **transport** | String | 否 | TCP 或 UDP |
+| **protocol** | String | 是 | - |
 | **isConflictingWithFirewall** | 布尔 | 否 | True 或 False |
 
 #### <a name="cve-fields"></a>CVE 字段
 
 | 名称 | 类型 | Nullable | 值列表 |
 |--|--|--|--|
-| **ID** | 字符串 | 否 | - |
+| **ID** | String | 否 | - |
 | **分值** | 数字 | 否 | Double |
-| description | 字符串 | 否 | - |
+| description | String | 否 | - |
 
 #### <a name="response-example"></a>响应示例
 
@@ -1106,8 +1106,8 @@ JSON 对象的数组，这些对象表示在 IP 地址上标识的标识符。
 
 | 字段名称 | 类型 | 值列表 |
 | ---------- | ---- | -------------- |
-| **address** | 字符串 | IP 地址 |
-| name  | 字符串 | - |
+| **address** | String | IP 地址 |
+| name  | String | - |
 | **firstDetectionTime** | 数字 | Epoch (UTC)  |
 | lastSeen | 数字 | Epoch (UTC)  |
 
@@ -1115,10 +1115,10 @@ JSON 对象的数组，这些对象表示在 IP 地址上标识的标识符。
 
 | 字段名称 | 类型 | 值列表 |
 | ---------- | ---- | -------------- |
-| 服务器 | 字符串 | IP 地址 |
-| **机** | 字符串 | IP 地址 |
+| 服务器  | String | IP 地址 |
+| **机** | String | IP 地址 |
 | **port** | 数字 | - |
-| **transport** | 字符串 | TCP、UDP 或 ICMP |
+| **transport** | String | TCP、UDP 或 ICMP |
 
 **weakFirewallRules**
 
@@ -1132,34 +1132,34 @@ JSON 对象的数组，这些对象表示在 IP 地址上标识的标识符。
 
 | 字段名称 | 类型 | 值列表 |
 | ---------- | ---- | -------------- |
-| **macAddress** | 字符串 | MAC 地址 |
-| **采购** | 字符串 | 供应商名称 |
-| **地址** | 字符串 | IP 地址或 N/A |
-| name  | 字符串 | 设备名称或 N/A |
-| **无线** | 字符串 | 不，怀疑或是 |
+| **macAddress** | String | MAC 地址 |
+| **采购** | String | 供应商名称 |
+| **地址** | String | IP 地址或 N/A |
+| name  | String | 设备名称或 N/A |
+| **无线** | String | 不，怀疑或是 |
 
 **connectionsBetweenSubnets**
 
 | 字段名称 | 类型 | 值列表 |
 | ---------- | ---- | -------------- |
-| 服务器 | 字符串 | IP 地址 |
-| **机** | 字符串 | IP 地址 |
+| 服务器  | String | IP 地址 |
+| **机** | String | IP 地址 |
 
 **industrialMalwareIndicators**
 
 | 字段名称 | 类型 | 值列表 |
 | ---------- | ---- | -------------- |
 | **detectionTime** | 数字 | Epoch (UTC)  |
-| **alertMessage** | 字符串 | - |
-| description | 字符串 | - |
+| **alertMessage** | String | - |
+| description | String | - |
 | **装置** | JSON 数组 | 设备名称 | 
 
 **internetConnections**
 
 | 字段名称 | 类型 | 值列表 |
 | ---------- | ---- | -------------- |
-| **internalAddress** | 字符串 | IP 地址 |
-| **已授权** | 布尔值 | 是或否 | 
+| **internalAddress** | String | IP 地址 |
+| **已授权** | Boolean | 是或否 | 
 | **externalAddresses** | JSON 数组 | IP 地址 |
 
 #### <a name="response-example"></a>响应示例
@@ -1351,11 +1351,11 @@ JSON 对象的数组，这些对象表示在 IP 地址上标识的标识符。
 
 | 字段名称 | 类型 | 值列表 |
 |--|--|--|
-| **source** | 字符串 | IP 地址 |
-| **destination** | 字符串 | IP 地址 |
+| **source** | String | IP 地址 |
+| **destination** | String | IP 地址 |
 | **port** | 数字 | - |
-| **transport** | 字符串 | TCP 或 UDP |
-| **backupMaximalInterval** | 字符串 | - |
+| **transport** | String | TCP 或 UDP |
+| **backupMaximalInterval** | String | - |
 | **lastSeenBackup** | 数字 | Epoch (UTC)  |
 
 **ipNetworks**
@@ -1363,31 +1363,31 @@ JSON 对象的数组，这些对象表示在 IP 地址上标识的标识符。
 | 字段名称 | 类型 | 值列表 |
 |--|--|--|
 | **addresse** s | 数字 | - |
-| **网桥** | 字符串 | IP 地址 |
-| **掩盖** | 字符串 | 子网掩码 |
+| **网桥** | String | IP 地址 |
+| **掩盖** | String | 子网掩码 |
 
 **protocolProblems**
 
 | 字段名称 | 类型 | 值列表 |
 |--|--|--|
-| **protocol** | 字符串 | - |
+| **protocol** | String | - |
 | **地址** | JSON 数组 | IP 地址 |
-| **发出** | 字符串 | - |
+| **发出** | String | - |
 | **reportTime** | 数字 | Epoch (UTC)  |
 
 **protocolDataVolumes**
 
 | 字段名称 | 类型 | 值列表 |
 |--|--|--|
-| protocol | 字符串 | - |
-| 卷 | 字符串 | "卷号 MB" |
+| protocol | String | - |
+| 卷 | String | "卷号 MB" |
 
 **断开**
 
 | 字段名称 | 类型 | 值列表 |
 |--|--|--|
-| **assetAddress** | 字符串 | IP 地址 |
-| **assetName** | 字符串 | - |
+| **assetAddress** | String | IP 地址 |
+| **assetName** | String | - |
 | **lastDetectionTime** | 数字 | Epoch (UTC)  |
 | **backToNormalTime** | 数字 | Epoch (UTC)  |     
 
@@ -1540,10 +1540,10 @@ JSON 对象的数组，这些对象表示在 IP 地址上标识的标识符。
 
 #### <a name="query-parameters"></a>查询参数
 
-| **名称** | **类型** | **可以为 Null** |
+| **名称** | 类型 | **可以为 Null** |
 |--|--|--|
-| **username** | 字符串 | 否 |
-| **password** | 字符串 | 否 |
+| **username** | String | 否 |
+| **password** | String | 否 |
 
 #### <a name="request-example"></a>请求示例
 
@@ -1653,11 +1653,11 @@ response:
 
 #### <a name="device-fields"></a>设备字段
 
-| **名称** | **类型** | **可以为 Null** |
+| **名称** | 类型 | **可以为 Null** |
 |--|--|--|
-| **username** | 字符串 | 否 |
-| **password** | 字符串 | 否 |
-| **new_password** | 字符串 | 否 |
+| **username** | String | 否 |
+| **password** | String | 否 |
+| **new_password** | String | 否 |
 
 #### <a name="curl-command"></a>Curl 命令
 
@@ -1732,12 +1732,12 @@ response:
 
 #### <a name="device-fields"></a>设备字段
 
-| **名称** | **类型** | **可以为 Null** |
+| **名称** | 类型 | **可以为 Null** |
 |--|--|--|
-| **admin_username** | 字符串 | 否 |
-| **admin_password** | 字符串 | 否 |
-| **username** | 字符串 | 否 |
-| **new_password** | 字符串 | 否 |
+| **admin_username** | String | 否 |
+| **admin_password** | String | 否 |
+| **username** | String | 否 |
+| **new_password** | String | 否 |
 
 #### <a name="curl-command"></a>Curl 命令
 
@@ -1831,14 +1831,14 @@ response:
 | **zoneId** | 数字 | 是 | - |
 | **siteId** | 数字 | 是 | - |
 | **ipAddresses** | JSON 数组 | 是 | IP 地址 (可以为 internet 地址或具有双 Nic 的设备使用多个地址)  |
-| name  | 字符串 | 否 | - |
-| type  | 字符串 | 否 | 未知、工程工作站、PLC、HMI、Historian、域控制器、数据库服务器、无线访问点、路由器、交换机、服务器、工作站、IP 照相机、打印机、防火墙、终端工作站、VPN 网关、Internet 或多播和广播 |
+| name  | String | 否 | - |
+| type  | String | 否 | 未知、工程工作站、PLC、HMI、Historian、域控制器、数据库服务器、无线访问点、路由器、交换机、服务器、工作站、IP 照相机、打印机、防火墙、终端工作站、VPN 网关、Internet 或多播和广播 |
 | **macAddresses** | JSON 数组 | 是 | 对于具有双 Nic 的设备，MAC 地址 (可以是多个地址)  |
-| **operatingSystem** | 字符串 | 是 | - |
+| **operatingSystem** | String | 是 | - |
 | **engineeringStation** | 布尔 | 否 | True 或 False |
 | **瞄** | 布尔 | 否 | True 或 False |
 | **已授权** | 布尔 | 否 | True 或 False |
-| **采购** | 字符串 | 是 | - |
+| **采购** | String | 是 | - |
 | **协议** | JSON 数组 | 是 | Protocol 对象 |
 | **固件** | JSON 数组 | 是 | 固件对象 |
 
@@ -1853,14 +1853,14 @@ response:
 
 | 名称 | 类型 | Nullable | 值列表 |
 |--|--|--|--|
-| **串行** | 字符串 | 否 | 不适用，或实际值 |
-| **model** | 字符串 | 否 | 不适用，或实际值 |
+| **串行** | String | 否 | 不适用，或实际值 |
+| **model** | String | 否 | 不适用，或实际值 |
 | **firmwareVersion** | Double | 否 | 不适用，或实际值 |
-| **additionalData** | 字符串 | 否 | 不适用，或实际值 |
-| **moduleAddress** | 字符串 | 否 | 不适用，或实际值 |
-| **支架** | 字符串 | 否 | 不适用，或实际值 |
-| **插槽** | 字符串 | 否 | 不适用，或实际值 |
-| **address** | 字符串 | 否 | 不适用，或实际值 |
+| **additionalData** | String | 否 | 不适用，或实际值 |
+| **moduleAddress** | String | 否 | 不适用，或实际值 |
+| **支架** | String | 否 | 不适用，或实际值 |
+| **插槽** | String | 否 | 不适用，或实际值 |
+| **address** | String | 否 | 不适用，或实际值 |
 
 #### <a name="response-example"></a>响应示例
 
@@ -2050,10 +2050,10 @@ response:
 |--|--|--|--|
 | **ID** | 数字 | 否 | - |
 | **time** | 数字 | 否 | Epoch (UTC)  |
-| **title** | 字符串 | 否 | - |
+| **title** | String | 否 | - |
 | **message** | String | 否 | - |
-| severity  | 字符串 | 否 | 警告、次要、主要或严重 |
-| **搜索引擎优化** | 字符串 | 否 | 协议冲突、策略冲突、恶意软件、异常或操作 |
+| severity  | String | 否 | 警告、次要、主要或严重 |
+| **搜索引擎优化** | String | 否 | 协议冲突、策略冲突、恶意软件、异常或操作 |
 | **sourceDevice** | 数字 | 是 | 设备 ID |
 | **destinationDevice** | 数字 | 是 | 设备 ID |
 | **additionalInformation** | 附加信息对象 | 是 | - |
@@ -2062,8 +2062,8 @@ response:
 
 | 名称 | 类型 | Nullable | 值列表 |
 |--|--|--|--|
-| description | 字符串 | 否 | - |
-| **信息** | JSON 数组 | 否 | 字符串 |
+| description | String | 否 | - |
+| **信息** | JSON 数组 | 否 | String |
 
 #### <a name="response-example"></a>响应示例
 
@@ -2210,7 +2210,7 @@ JSON 对象，该对象表示要对包含 UUID 的警报执行的操作。
 
 | 名称 | 类型 | Nullable | 值列表 |
 |--|--|--|--|
-| **action** | 字符串 | 否 | handle 或 handleAndLearn |
+| **action** | String | 否 | handle 或 handleAndLearn |
 
 #### <a name="request-example"></a>请求示例
 
@@ -2234,7 +2234,7 @@ JSON 对象，该对象表示要对包含 UUID 的警报执行的操作。
 
 | 名称 | 类型 | Nullable | 说明 |
 |--|--|--|--|
-| **内容/错误** | 字符串 | 否 | 如果请求成功，则显示内容属性。 否则，将显示错误属性。 |
+| **内容/错误** | String | 否 | 如果请求成功，则显示内容属性。 否则，将显示错误属性。 |
 
 #### <a name="possible-content-values"></a>可能的内容值
 
@@ -2414,16 +2414,16 @@ JSON 对象，该对象表示要对包含 UUID 的警报执行的操作。
 
 #### <a name="response-structure"></a>响应结构
 
-| 名称 | 类型 | 评论 | Nullable |
+| 名称 | 类型 | 注释 | Nullable |
 |--|--|--|--|
-| **dateTime** | 字符串 | 示例： "2012-04-23T18：25： 43.511 Z" | 否 |
-| **ticketId** | 字符串 | 例如： "9a5fe99c-d914-4bda-9332-307384fe40bf" | 否 |
+| **dateTime** | String | 示例： "2012-04-23T18：25： 43.511 Z" | 否 |
+| **ticketId** | String | 例如： "9a5fe99c-d914-4bda-9332-307384fe40bf" | 否 |
 | **tokenName** | String | - | 否 |
 | **增多** | 字符串数组 | - | 是 |
 | **sensorIds** | 字符串数组 | - | 是 |
 | **网上** | 字符串数组 | - | 是 |
 | **ttl** | 数字 | - | 是 |
-| **operationType** | 字符串 | 值为 "OPEN"、"UPDATE" 和 "CLOSE" | 否 |
+| **operationType** | String | 值为 "OPEN"、"UPDATE" 和 "CLOSE" | 否 |
 
 #### <a name="curl-command"></a>Curl 命令
 
@@ -2431,7 +2431,7 @@ JSON 对象，该对象表示要对包含 UUID 的警报执行的操作。
 |--|--|--|
 | POST | 卷曲-k X 后 d "{" ticketId "：" <TICKET_ID> "、ttl"： <TIME_TO_LIVE> "引擎"： [<ENGINE1，ENGINE2 .。。ENGINEn>]，"sensorIds"： [<SENSOR_ID1，SENSOR_ID2 .。。SENSOR_IDn>]，"子网"： [<SUBNET1，SUBNET2 .。。SUBNETn>]} "-H" Authorization： <AUTH_TOKEN> "https：/ <span> /127.0.0.1/external/v1/maintenanceWindow | 卷曲-k X 后 d "{" ticketId "：" a5fe99c-d914-4bda-9332-307384fe40bf "，" ttl "：" 20 "，" 引擎 "： [" 异常 "]，" sensorIds "： [" 5 "，" 3 "]，" 子网 "： [" 10.0.0.3 "]}"-H "Authorization： 1234b734a9244d54ab8d40aedddcabcd" https：/ <span> /127.0.0.1/external/v1/maintenanceWindow |
 | PUT | 卷 k-X ticketId "{" "：" <TICKET_ID> "、ttl"： "<TIME_TO_LIVE>"} "-H" Authorization： <AUTH_TOKEN> "https：/ <span> /127.0.0.1/external/v1/maintenanceWindow | 卷曲-k-X 中置 d "{" ticketId "：" a5fe99c-d914-4bda-9332-307384fe40bf "，" ttl "：" 20 "}"-H "Authorization： 1234b734a9244d54ab8d40aedddcabcd" https：/ <span> /127.0.0.1/external/v1/maintenanceWindow |
-| 删除 | 卷 k-X DELETE-d "{" ticketId "：" <TICKET_ID> "}"-H "Authorization： <AUTH_TOKEN>" https：/ <span> /127.0.0.1/external/v1/maintenanceWindow | 卷 k-X DELETE-d "{" ticketId "：" a5fe99c-d914-4bda-9332-307384fe40bf "}"-H "Authorization： 1234b734a9244d54ab8d40aedddcabcd" https：/ <span> /127.0.0.1/external/v1/maintenanceWindow |
+| DELETE | 卷 k-X DELETE-d "{" ticketId "：" <TICKET_ID> "}"-H "Authorization： <AUTH_TOKEN>" https：/ <span> /127.0.0.1/external/v1/maintenanceWindow | 卷 k-X DELETE-d "{" ticketId "：" a5fe99c-d914-4bda-9332-307384fe40bf "}"-H "Authorization： 1234b734a9244d54ab8d40aedddcabcd" https：/ <span> /127.0.0.1/external/v1/maintenanceWindow |
 | GET | 卷 k-H "Authorization： <AUTH_TOKEN>" "https://<IP_ADDRESS>/external/v1/maintenanceWindow？ fromDate =&toDate =&ticketId =&tokenName =" | 卷 k-H "Authorization： 1234b734a9244d54ab8d40aedddcabcd" ' https：/ <span> /127.0.0.1/external/v1/maintenanceWindow？ fromDate = 2020-01-01&toDate = 2020-07-14&ticketId = a5fe99c-d914-4bda-9332&307384fe40bf = a ' |
 
 ### <a name="authenticate-user-credentials---externalauthenticationvalidation"></a>验证用户凭据-/external/authentication/validation
@@ -2474,10 +2474,10 @@ request:
 
 #### <a name="device-fields"></a>设备字段
 
-| **名称** | **类型** | **可以为 Null** |
+| **名称** | 类型 | **可以为 Null** |
 |--|--|--|
-| **username** | 字符串 | 否 |
-| **password** | 字符串 | 否 |
+| **username** | String | 否 |
+| **password** | String | 否 |
 
 #### <a name="response-example"></a>响应示例
 
@@ -2559,11 +2559,11 @@ response:
 
 #### <a name="device-fields"></a>设备字段
 
-| **名称** | **类型** | **可以为 Null** |
+| **名称** | 类型 | **可以为 Null** |
 |--|--|--|
-| **username** | 字符串 | 否 |
-| **password** | 字符串 | 否 |
-| **new_password** | 字符串 | 否 |
+| **username** | String | 否 |
+| **password** | String | 否 |
+| **new_password** | String | 否 |
 
 #### <a name="curl-command"></a>Curl 命令
 
@@ -2638,12 +2638,12 @@ response:
 
 #### <a name="device-fields"></a>设备字段
 
-| **名称** | **类型** | **可以为 Null** |
+| **名称** | 类型 | **可以为 Null** |
 |--|--|--|
-| **admin_username** | 字符串 | 否 |
-| **admin_password** | 字符串 | 否 |
-| **username** | 字符串 | 否 |
-| **new_password** | 字符串 | 否 |
+| **admin_username** | String | 否 |
+| **admin_password** | String | 否 |
+| **username** | String | 否 |
+| **new_password** | String | 否 |
 
 #### <a name="curl-command"></a>Curl 命令
 
@@ -2654,6 +2654,6 @@ response:
 
 ## <a name="next-steps"></a>后续步骤
 
-- [调查设备清单中的传感器检测](how-to-investigate-sensor-detections-in-a-device-inventory.md)
+[调查设备清单中的传感器检测](how-to-investigate-sensor-detections-in-a-device-inventory.md)
 
-- [调查设备清单中的所有企业传感器检测](how-to-investigate-all-enterprise-sensor-detections-in-a-device-inventory.md)
+[调查设备清单中的所有企业传感器检测](how-to-investigate-all-enterprise-sensor-detections-in-a-device-inventory.md)

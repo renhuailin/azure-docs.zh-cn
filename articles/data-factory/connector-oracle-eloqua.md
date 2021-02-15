@@ -1,22 +1,18 @@
 ---
 title: 从 Oracle Eloqua 复制数据（预览版）
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 Oracle Eloqua 复制到支持的接收器数据存储。
-services: data-factory
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/01/2019
-ms.openlocfilehash: 3ea9d7baf427e70df349c926a0b6b8b72ba82293
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e4bb392b05fb54f22720202b83f1af707e381251
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81416857"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100372223"
 ---
 # <a name="copy-data-from-oracle-eloqua-using-azure-data-factory-preview"></a>使用 Azure 数据工厂从 Oracle Eloqua 复制数据（预览版）
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -110,7 +106,7 @@ Oracle Eloqua 链接服务支持以下属性：
 
 ### <a name="eloqua-as-source"></a>以 Eloqua 作为源
 
-要从 Oracle Eloqua 复制数据，请将复制活动中的源类型设置为“EloquaSource”  。 复制活动**source**部分支持以下属性：
+要从 Oracle Eloqua 复制数据，请将复制活动中的源类型设置为“EloquaSource”  。 复制活动 **source** 部分支持以下属性：
 
 | 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |

@@ -1,22 +1,17 @@
 ---
 title: 使用 Azure 数据工厂从 Jira 复制数据
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 Jira 复制到支持的接收器数据存储。
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: jingwang
-ms.openlocfilehash: ddf752fc78c8c6bb2d7e7a57178b9cf2d719b810
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 16ab0ab0e4c4d647f62b38d71acde69df0ae0d42
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81418195"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100378479"
 ---
 # <a name="copy-data-from-jira-using-azure-data-factory"></a>使用 Azure 数据工厂从 Jira 复制数据
 
@@ -110,7 +105,7 @@ Jira 链接服务支持以下属性：
 
 ### <a name="jirasource-as-source"></a>以 JiraSource 作为源
 
-要从 Jira 复制数据，请将复制活动中的源类型设置为“JiraSource”  。 复制活动**source**部分支持以下属性：
+要从 Jira 复制数据，请将复制活动中的源类型设置为“JiraSource”  。 复制活动 **source** 部分支持以下属性：
 
 | 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |

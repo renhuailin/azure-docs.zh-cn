@@ -1,22 +1,18 @@
 ---
 title: 从 Oracle Responsys 复制数据（预览版）
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 Oracle Responsys 复制到支持的接收器数据存储。
-services: data-factory
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/01/2019
-ms.openlocfilehash: cde0e2d118490801aeee3874e220d298fea24598
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 334af18b068f247d9566d6be926632b9f9670e6e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81416842"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100368415"
 ---
 # <a name="copy-data-from-oracle-responsys-using-azure-data-factory-preview"></a>使用 Azure 数据工厂从 Oracle Responsys 复制数据（预览版）
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -115,7 +111,7 @@ Oracle Responsys 链接服务支持以下属性：
 
 ### <a name="oracle-responsys-as-source"></a>Oracle Responsys 作为源
 
-要从 Oracle Responsys 复制数据，请将复制活动中的源类型设置为“ResponsysSource”  。 复制活动**source**部分支持以下属性：
+要从 Oracle Responsys 复制数据，请将复制活动中的源类型设置为“ResponsysSource”  。 复制活动 **source** 部分支持以下属性：
 
 | 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |

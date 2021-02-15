@@ -1,22 +1,18 @@
 ---
 title: 使用本地 PowerShell 脚本自动安装自承载集成运行时
 description: 在本地计算机上自动安装自承载集成运行时。
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 author: nabhishek
 ms.author: abnarain
-manager: anandsub
 ms.custom: seo-lt-2019
 ms.date: 05/09/2020
-ms.openlocfilehash: 36414c975e97dbaa7d8747da98c31eeb12fbc206
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 8cbe54a23cb1c8b55afd86a18b51c0e392c3f78a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636963"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100376201"
 ---
 # <a name="automating-self-hosted-integration-runtime-installation-using-local-powershell-scripts"></a>使用本地 PowerShell 脚本自动安装自承载集成运行时
 若要在本地计算机（而不是在可以通过资源管理器模板实现自动安装的 Azure VM 上）上自动安装自承载集成运行时，可以使用本地 PowerShell 脚本。 本文将介绍两个可用于实现自动安装的脚本。

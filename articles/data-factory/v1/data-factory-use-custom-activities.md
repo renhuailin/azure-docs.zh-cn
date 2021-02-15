@@ -1,24 +1,19 @@
 ---
 title: 在 Azure 数据工厂管道中使用自定义活动
 description: 了解如何创建自定义活动并在 Azure 数据工厂管道中使用。
-services: data-factory
-documentationcenter: ''
-ms.assetid: 8dd7ba14-15d2-4fd9-9ada-0b2c684327e9
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 author: nabhishek
 ms.author: abnarain
 ms.custom: devx-track-csharp
-manager: anandsub
 robots: noindex
-ms.openlocfilehash: 0ef6c97f7924c890bb6665100259970372f1cd26
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 3832175910f3a6d3e6a7de8da932b32436cc2452
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97606940"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100393014"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-version-1-pipeline"></a>在 Azure 数据工厂第1版管道中使用自定义活动
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -50,7 +45,7 @@ ms.locfileid: "97606940"
 ### <a name="azure-batch-prerequisites"></a>Azure Batch 先决条件
 在本演练中，将 Azure Batch 用作计算资源运行自定义 .NET 活动。 **Azure Batch** 是一种平台服务，用于在云中高效运行大规模并行和高性能计算 (HPC) 应用程序。 Azure Batch 计划要在托管 **的虚拟机集合** 上运行的计算密集型工作，并且可以自动缩放计算资源以符合作业的需求。 有关 Azure Batch 服务的详细概述，请参阅 [Azure Batch 基础知识][batch-technical-overview]一文。
 
-本教程会创建一个包含 VM 池的 Azure Batch 帐户。 步骤如下：
+本教程会创建一个包含 VM 池的 Azure Batch 帐户。 下面是相关步骤：
 
 1. 使用 [Azure 门户](https://portal.azure.com)创建 **Azure Batch 帐户**。 有关说明，请参阅[创建和管理 Azure Batch 帐户][batch-create-account]一文。
 2. 记下 Azure Batch 帐户名称、帐户密钥、URI 和池名称。 随后需要使用这些信息来创建 Azure Batch 链接服务。
@@ -167,7 +162,7 @@ public IDictionary<string, string> Execute(
 
 8. 将 **IDotNetActivity** 接口的 **执行** 方法实现（添加）到 **MyDotNetActivity** 类并将以下示例代码复制到该方法。
 
-    以下示例计算与数据切片关联的每个 blob 中搜索词（“Microsoft”）的出现次数。
+    下面的示例对每个与数据切片关联的 blob 中的搜索词 ( "Microsoft" ) 的出现次数进行计数。
 
     ```csharp
     /// <summary>
@@ -247,7 +242,7 @@ public IDictionary<string, string> Execute(
                                      null);
 
             // Calculate method returns the number of occurrences of
-            // the search term (“Microsoft”) in each blob associated
+            // the search term ("Microsoft") in each blob associated
             // with the data slice. definition of the method is shown in the next step.
 
             output = Calculate(blobList, logger, folderPath, ref continuationToken, "Microsoft");
@@ -373,7 +368,7 @@ public IDictionary<string, string> Execute(
             "folderPath": "adftutorial/inputfolder/",
     ```
 
-    Calculate 方法计算输入文件（文件夹中的 blob ）中关键字 Microsoft 的实例数。 搜索词（“Microsoft”）在代码中是硬编码。
+    Calculate 方法计算输入文件（文件夹中的 blob ）中关键字 Microsoft 的实例数。 搜索词 ( "Microsoft" ) 在代码中硬编码。
 
 10. 编译该项目。 在菜单中单击“生成”，并单击“生成解决方案”。
 
@@ -434,7 +429,7 @@ test custom activity Microsoft test custom activity Microsoft
    3. 单击“数据分析”边栏选项卡中的“数据工厂”。
 
       ![“新建 Azure 数据工厂”菜单](media/data-factory-use-custom-activities/new-azure-data-factory-menu.png)
-2. 在“新建数据工厂”边栏选项卡中，输入 **CustomActivityFactory** 作为“名称”。 Azure 数据工厂的名称必须全局唯一。 如果收到错误：**数据工厂名称“CustomActivityFactory”不可用**，请更改数据工厂名称（例如改为 **yournameCustomActivityFactory**），并再次尝试创建。
+2. 在“新建数据工厂”边栏选项卡中，输入 **CustomActivityFactory** 作为“名称”。 Azure 数据工厂的名称必须全局唯一。 如果收到错误： **数据工厂名称 "CustomActivityFactory" 不可用**，请更改数据工厂的名称， (例如， **改为 yournamecustomactivityfactory**) 并再次尝试创建。
 
     ![“新建 Azure 数据工厂”边栏选项卡](media/data-factory-use-custom-activities/new-azure-data-factory-blade.png)
 3. 单击“资源组名称”，并选择现有资源组或创建资源组。
@@ -568,7 +563,7 @@ test custom activity Microsoft test custom activity Microsoft
    | 4 |2016-11-16T03:00:00 |2016-11-16-03.txt |
    | 5 |2016-11-16T04:00:00 |2016-11-16-04.txt |
 
-    请记住，输入文件夹中的所有文件都是具有上述开始时间的切片的一部分。 处理此切片时，自定义活动将扫描每个文件，并在输出文件中生成具有搜索词（“Microsoft”）出现次数的行。 如果输入文件夹中有三个文件，则每小时切片的输出文件中有三行： 2016-11-16-00.txt、2016-11-16:01:00:00.txt 等。
+    请记住，输入文件夹中的所有文件都是具有上述开始时间的切片的一部分。 处理此切片时，自定义活动将扫描每个文件，并在输出文件中生成一行，其中包含搜索词 ( "Microsoft" ) 出现的次数。 如果输入文件夹中有三个文件，则每小时切片的输出文件中有三行： 2016-11-16-00.txt、2016-11-16:01:00:00.txt 等。
 3. 若要部署 **OutputDataset**，请在命令栏上单击“部署”。
 
 ### <a name="create-and-run-a-pipeline-that-uses-the-custom-activity"></a>创建并运行使用自定义活动的管道

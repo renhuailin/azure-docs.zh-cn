@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 11/03/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 037e7fd13f55a0f5de939197f71324221392bd55
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: bc548d4cc728611387b36451d563be6ca0e21530
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98601072"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100388186"
 ---
 # <a name="manage-a-graph-of-digital-twins-using-relationships"></a>使用关系管理数字孪生图
 
@@ -116,6 +116,21 @@ Azure 数字孪生还提供了一个 API，用于查找到给定克隆的所有 
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="UseFetchAndPrint":::
 
+## <a name="update-relationships"></a>更新关系
+
+使用方法更新关系 `UpdateRelationship` 。 
+
+>[!NOTE]
+>此方法用于更新关系的 **属性** 。 如果需要更改关系的源克隆或目标克隆，则需要 [删除该关系](#delete-relationships) ，并使用新的孪生 [重新创建它](#create-relationships) 。
+
+客户端调用所需的参数是 (源的源的 ID) ，要更新的关系的 ID 和包含要更新的属性和新值的 [JSON 修补](http://jsonpatch.com/) 文档。
+
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="UpdateRelationshipMethod":::
+
+下面是调用此方法的一个示例，其中传递了包含用于更新属性的信息的 JSON 修补文档。
+
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="UseUpdateRelationship":::
+
 ## <a name="delete-relationships"></a>删除关系
 
 第一个参数指定源的源位置 (关系源自的位置) 。 另一个参数是关系 ID。 由于关系 Id 只在克隆的作用域内是唯一的，因此您需要同时使用的 ID 和关系 ID。
@@ -137,7 +152,7 @@ Azure 数字孪生还提供了一个 API，用于查找到给定克隆的所有 
 在运行该示例之前，请执行以下操作：
 1. 下载模型文件，将其放在您的项目中，并替换 `<path-to>` 以下代码中的占位符，告诉您的程序在何处查找它们。
 2. 将占位符替换 `<your-instance-hostname>` 为你的 Azure 数字孪生实例的主机名。
-3. 向项目添加两个依赖于 Azure 数字孪生所需的依赖项。 第一个是适用于 .NET 的 [Azure 数字孪生 SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)的包，第二个包提供的工具可帮助进行 azure 身份验证。
+3. 向项目添加两个依赖于 Azure 数字孪生所需的依赖项。 第一个是[适用于 .NET 的 Azure 数字孪生 SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) 的包，第二个提供工具来帮助向 Azure 进行身份验证。
 
       ```cmd/sh
       dotnet add package Azure.DigitalTwins.Core
@@ -168,8 +183,8 @@ Azure 数字孪生还提供了一个 API，用于查找到给定克隆的所有 
 
 |  模型 ID    | 克隆 ID (必须唯一)  | 关系名  | 目标克隆 ID  | 克隆初始化数据 |
 | --- | --- | --- | --- | --- |
-| dtmi：示例：楼层; 1    | 楼层 1 | contains | Room1 | |
-| dtmi：示例：楼层; 1    | 楼层 0 | contains | Room0 | |
+| dtmi：示例：楼层; 1    | 楼层 1 | 包含 | Room1 | |
+| dtmi：示例：楼层; 1    | 楼层 0 | 包含 | Room0 | |
 | dtmi：示例：房间; 1    | Room1 | | | {"温度"： 80} |
 | dtmi：示例：房间; 1    | Room0 | | | {"温度"： 70} |
 

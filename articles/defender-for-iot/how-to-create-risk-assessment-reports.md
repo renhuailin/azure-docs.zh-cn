@@ -1,5 +1,5 @@
 ---
-title: 创建风险评估报表
+title: 创建风险评估报告
 description: 深入了解单个传感器检测到的网络风险或所有传感器检测到的风险的聚合视图。
 author: shhazam-ms
 manager: rkarlin
@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/17/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 367974e214892d4dfefeb138ae5bfa516f49882a
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: d13520a6b2f5e473942d7d0221a4e6f0708b6411
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98811610"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100522251"
 ---
 # <a name="risk-assessment-reporting"></a>风险评估报告
 
@@ -62,7 +62,7 @@ ms.locfileid: "98811610"
 
 **易受攻击的设备** 是安全性评分低于70% 的设备。
 
-## <a name="create-risk-assessment-reports"></a>创建风险评估报表
+## <a name="create-risk-assessment-reports"></a>创建风险评估报告
 
 创建 PDF 风险评估报告。 报表名称将自动生成为 risk-assessment-report-1.pdf。 将为您创建的每个新报表更新该编号。  此时将显示创建时间和日期。
 
@@ -103,7 +103,7 @@ ms.locfileid: "98811610"
 
 :::image type="content" source="media/how-to-generate-reports/import-logo-screenshot.png" alt-text="通过风险评估视图导入徽标。":::
 
-## <a name="see-also"></a>另请参阅
+## <a name="next-steps"></a>后续步骤
 
 [攻击向量报告](how-to-create-attack-vector-reports.md)
 

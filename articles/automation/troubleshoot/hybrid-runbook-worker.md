@@ -3,14 +3,16 @@ title: 排查 Azure 自动化混合 Runbook 辅助角色问题
 description: 本文介绍如何排查和解决 Azure 自动化混合 Runbook 辅助角色出现的问题。
 services: automation
 ms.subservice: ''
-ms.date: 11/25/2019
+author: mgoedtel
+ms.author: magoedte
+ms.date: 02/11/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: 7f034f5043c3cb88ec705b42b06887c5ba56bd6d
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: af432d9c6323bd2328eb8dd84d8572a8a5ae05a7
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99055325"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387999"
 ---
 # <a name="troubleshoot-hybrid-runbook-worker-issues"></a>排查混合 Runbook 辅助角色问题
 
@@ -26,9 +28,7 @@ ms.locfileid: "99055325"
 
 Runbook 执行失败并出现以下错误消息：
 
-```error
-"The job action 'Activate' cannot be run, because the process stopped unexpectedly. The job action was attempted three times."
-```
+`The job action 'Activate' cannot be run, because the process stopped unexpectedly. The job action was attempted three times.`
 
 Runbook 在尝试执行三次后很快暂停。 在某些情况下，Runbook 可能会中断，无法正常完成。 相关错误消息可能不包括任何附加信息。
 
@@ -56,13 +56,12 @@ Runbook 在尝试执行三次后很快暂停。 在某些情况下，Runbook 可
 
 混合 Runbook 辅助角色收到表示查询结果无效的事件 15011。 当辅助角色尝试与 [SignalR 服务器](/aspnet/core/signalr/introduction)建立连接时出现以下错误。
 
-```error
-[AccountId={c7d22bd3-47b2-4144-bf88-97940102f6ca}]
+`[AccountId={c7d22bd3-47b2-4144-bf88-97940102f6ca}]
 [Uri=https://cc-jobruntimedata-prod-su1.azure-automation.net/notifications/hub][Exception=System.TimeoutException: Transport timed out trying to connect
    at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
    at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
    at JobRuntimeData.NotificationsClient.JobRuntimeDataServiceSignalRClient.<Start>d__45.MoveNext()
-```
+`
 
 #### <a name="cause"></a>原因
 
@@ -96,14 +95,13 @@ Runbook 在尝试执行三次后很快暂停。 在某些情况下，Runbook 可
 
 混合 Runbook 辅助角色上运行的 runbook 失败并显示以下错误消息：
 
-```error
-Connect-AzAccount : No certificate was found in the certificate store with thumbprint 0000000000000000000000000000000000000000
-At line:3 char:1
-+ Connect-AzAccount -ServicePrincipal -Tenant $Conn.TenantID -Appl ...
-+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : CloseError: (:) [Connect-AzAccount], ArgumentException
-    + FullyQualifiedErrorId : Microsoft.Azure.Commands.Profile.ConnectAzAccountCommand
-```
+`Connect-AzAccount : No certificate was found in the certificate store with thumbprint 0000000000000000000000000000000000000000`  
+`At line:3 char:1`  
+`+ Connect-AzAccount -ServicePrincipal -Tenant $Conn.TenantID -Appl ...`  
+`+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~`  
+`    + CategoryInfo          : CloseError: (:) [Connect-AzAccount],ArgumentException`  
+`    + FullyQualifiedErrorId : Microsoft.Azure.Commands.Profile.ConnectAzAccountCommand`
+
 #### <a name="cause"></a>原因
 
 尝试在混合 Runbook 辅助角色上运行的 Runbook 中使用[运行方式帐户](../automation-security-overview.md#run-as-accounts)时，如果运行方式帐户证书不存在，则会发生此错误。 默认情况下，混合 Runbook 辅助角色在本地没有证书资产。 运行方式帐户需要此资产才能正常运行。
@@ -118,9 +116,7 @@ At line:3 char:1
 
 辅助角色的初始注册阶段失败并出现以下错误 (403)：
 
-```error
-"Forbidden: You don't have permission to access / on this server."
-```
+`Forbidden: You don't have permission to access / on this server.`
 
 #### <a name="cause"></a>原因
 
@@ -139,6 +135,37 @@ At line:3 char:1
 Log Analytics 工作区和自动化帐户必须位于链接的区域中。 有关支持的区域列表，请参阅 [Azure 自动化和 Log Analytics 工作区映射](../how-to/region-mappings.md)。
 
 可能还需要更新计算机的日期或时区。 如果选择自定义时间范围，请确保该范围采用 UTC，它可能与你的本地时区不同。
+
+### <a name="scenario-set-azstorageblobcontent-fails-on-a-hybrid-runbook-worker"></a><a name="set-azstorageblobcontent-execution-fails"></a>方案：混合 Runbook 辅助角色上的 Set-AzStorageBlobContent 失败 
+
+#### <a name="issue"></a>问题
+
+Runbook 在尝试执行时失败 `Set-AzStorageBlobContent` ，并且你收到以下错误消息：
+
+`Set-AzStorageBlobContent : Failed to open file xxxxxxxxxxxxxxxx: Illegal characters in path`
+
+#### <a name="cause"></a>原因
+
+ 此错误是由调用的长文件名行为引起的， `[System.IO.Path]::GetFullPath()` 后者将添加 UNC 路径。
+
+#### <a name="resolution"></a>解决方法
+
+作为一种解决方法，你可以使用以下内容创建一个名为的配置文件 `OrchestratorSandbox.exe.config` ：
+
+```azurecli
+<configuration>
+  <runtime>
+    <AppContextSwitchOverrides value="Switch.System.IO.UseLegacyPathHandling=false" />
+  </runtime>
+</configuration>
+```
+
+将此文件放在与可执行文件相同的文件夹中 `OrchestratorSandbox.exe` 。 例如，
+
+`%ProgramFiles%\Microsoft Monitoring Agent\Agent\AzureAutomation\7.3.702.0\HybridAgent`
+
+>[!Note]
+> 如果升级代理，此配置文件将被删除，并需要重新创建。
 
 ## <a name="linux"></a>Linux
 
@@ -192,7 +219,7 @@ nxautom+   8595      1  0 14:45 ?        00:00:02 python /opt/microsoft/omsconfi
 
 如果在 **/var/opt/microsoft/omsconfig/omsconfig.log** 中看到错误消息 `The specified class does not exist..`，则需要更新适用于 Linux 的 Log Analytics 代理。 运行以下命令以重新安装该代理。
 
-```bash
+```Bash
 wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w <WorkspaceID> -s <WorkspaceKey>
 ```
 
@@ -267,8 +294,7 @@ Invoke-Command -ComputerName $env:COMPUTERNAME -Credential $Credential
 
 以下示例查询显示了工作区中的计算机及其上次检测信号：
 
-```loganalytics
-// Last heartbeat of each computer
+```kusto
 Heartbeat
 | summarize arg_max(TimeGenerated, *) by Computer
 ```
@@ -295,9 +321,7 @@ Start-Service -Name HealthService
 
 尝试使用 `Add-HybridRunbookWorker` cmdlet 添加混合 Runbook 辅助角色时收到以下消息：
 
-```error
-Machine is already registered
-```
+`Machine is already registered`
 
 #### <a name="cause"></a>原因
 
@@ -315,15 +339,11 @@ Machine is already registered
 
 尝试使用 `sudo python /opt/microsoft/omsconfig/.../onboarding.py --register` python 脚本添加混合 Runbook 辅助角色时收到以下消息：
 
-```error
-Unable to register, an existing worker was found. Please deregister any existing worker and try again.
-```
+`Unable to register, an existing worker was found. Please deregister any existing worker and try again.`
 
 此外，尝试使用 `sudo python /opt/microsoft/omsconfig/.../onboarding.py --deregister` python 脚本取消注册混合 Runbook 辅助角色：
 
-```error
-Failed to deregister worker. [response_status=404]
-```
+`Failed to deregister worker. [response_status=404]`
 
 #### <a name="cause"></a>原因
 
