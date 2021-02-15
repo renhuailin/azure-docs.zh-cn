@@ -1,22 +1,17 @@
 ---
 title: Azure 数据工厂中的复制活动
 description: 了解 Azure 数据工厂中的复制活动。 可以使用复制活动将数据从支持的源数据存储复制到支持的接收器数据存储。
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/12/2020
 ms.author: jingwang
-ms.openlocfilehash: 0b10a4de78c44e4c0a113a1f1a46c316b13a1f78
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: d52a0bba5fddaa865b8fad74b778ba7a3838b2a4
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96902148"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387897"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Azure 数据工厂中的复制活动
 
@@ -127,7 +122,7 @@ ms.locfileid: "96902148"
 
 #### <a name="syntax-details"></a>语法详细信息
 
-| 属性 | 说明 | 必需？ |
+| properties | 说明 | 必需？ |
 |:--- |:--- |:--- |
 | type | 对于复制活动，请设置为 `Copy` | 是 |
 | inputs | 指定创建的指向源数据的数据集。 复制活动仅支持单个输入。 | 是 |
@@ -199,7 +194,7 @@ ms.locfileid: "96902148"
 
 若要以编程方式对其进行配置，请在复制活动源中添加 `additionalColumns` 属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 | --- | --- | --- |
 | additionalColumns | 添加要复制到接收器的其他数据列。<br><br>`additionalColumns` 数组下的每个对象都表示一个额外的列。 `name` 定义列名称，`value` 表示该列的数据值。<br><br>允许的数据值为：<br>-  **`$$FILEPATH`** - 一个保留变量，指示将源文件的相对路径存储在数据集中指定的文件夹路径。 应用于基于文件的源。<br>-  **`$$COLUMN:<source_column_name>`** - 保留变量模式指示将指定的源列复制为另一个列<br>- **表达式**<br>- **静态值** | 否 |
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: f51b46efcaf9be4f51e96b038b93562d0e3eae0b
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 6321b96cb3db570102f138dcfd949d9c32daedbc
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98601151"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100384463"
 ---
 # <a name="web-sdk-supported-browsers"></a>Web SDK 支持的浏览器
 
@@ -40,7 +40,7 @@ Azure Maps Web SDK 支持以下桌面浏览器：
 
 另请参阅本文后面的 [面向旧版浏览器](#Target-Legacy-Browsers) 。
 
-## <a name="mobile"></a>移动
+## <a name="mobile"></a>移动型
 
 Azure Maps Web SDK 支持以下移动浏览器：
 
@@ -72,6 +72,8 @@ Node.js 中还支持以下 Web SDK 模块：
 </iframe>
 
 可在 [此处](https://azuremapscodesamples.azurewebsites.net/?search=leaflet)找到使用 Leaflet 中 Azure Maps 的其他代码示例。
+
+[下面](open-source-projects.md#third-part-map-control-plugins) 是 Azure Maps 团队为其创建了插件的一些热门开源地图控件。
 
 ## <a name="next-steps"></a>后续步骤
 

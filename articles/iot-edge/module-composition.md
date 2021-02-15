@@ -8,12 +8,12 @@ ms.date: 10/08/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 3f6c12b892e01aafd5beecdff14751481cf7fc96
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 406420fcd517ceda8ea6eedfc955f54b15541f74
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91963391"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100366596"
 ---
 # <a name="learn-how-to-deploy-modules-and-establish-routes-in-iot-edge"></a>了解如何在 IoT Edge 中部署模块和建立路由
 
@@ -21,11 +21,11 @@ ms.locfileid: "91963391"
 
 部署清单是一个 JSON 文档，用于描述以下内容：
 
-* **IoT Edge 代理**模块孪生，其中包括三个组件：
+* **IoT Edge 代理** 模块孪生，其中包括三个组件：
   * 在设备上运行的每个模块的容器映像。
   * 用于访问包含模块映像的专用容器注册表的凭据。
   * 有关如何创建和管理每个模块的说明。
-* **IoT Edge 中心**模块孪生：描述消息如何在模块之间流动，并最终传送到 IoT 中心。
+* **IoT Edge 中心** 模块孪生：描述消息如何在模块之间流动，并最终传送到 IoT 中心。
 * 任何附加模块孪生的所需属性（可选）。
 
 必须使用部署清单配置所有 IoT Edge 设备。 在使用有效清单进行配置前，新安装的 IoT Edge 运行时会报告错误代码。
@@ -38,7 +38,7 @@ ms.locfileid: "91963391"
 
 每个部署清单中需要两个模块：`$edgeAgent` 和 `$edgeHub`。 这些模块属于管理 IoT Edge 设备及其上运行的模块的 IoT Edge 运行时。 有关这些模块的详细信息，请参阅[了解 IoT Edge 运行时及其体系结构](iot-edge-runtime.md)。
 
-除了这两个运行时模块外，还可以添加多达50个要在 IoT Edge 设备上运行的模块。
+除了两个运行时模块以外，还可以添加最多 50 个你自己的要在 IoT Edge 设备上运行的模块。
 
 仅包含 IoT Edge 运行时（edgeAgent 和 edgeHub）的部署清单是有效的。
 
@@ -118,13 +118,13 @@ $edgeAgent 属性遵循此结构：
 }
 ```
 
-IoT Edge 代理架构版本1.1 随 IoT Edge 版本1.0.10 一起发布，并启用模块启动顺序。 对于运行1.0.10 或更高版本的任何 IoT Edge 部署，建议使用架构1.1 版。
+IoT Edge 代理架构版本 1.1 随 IoT Edge 版本 1.0.10 一起发布，并启用了模块启动顺序。 对于运行版本 1.0.10 或更高版本的 IoT Edge 部署，建议使用架构版本 1.1。
 
 ### <a name="module-configuration-and-management"></a>模块配置和管理
 
-IoT Edge 代理所需的属性列表可用于定义要部署到 IoT Edge 设备的模块以及应如何配置和管理它们。
+在 IoT Edge 代理所需的属性列表中，你定义要将哪些模块部署到 IoT Edge 设备以及如何配置和管理它们。
 
-有关可以或必须包含的所需属性的完整列表，请参阅 [IoT Edge agent 和 IoT Edge 中心的属性](module-edgeagent-edgehub.md)。
+有关可以或必须包含的所需属性的完整列表，请参阅 [IoT Edge 代理和 IoT Edge 中心的属性](module-edgeagent-edgehub.md)。
 
 例如：
 
@@ -162,17 +162,17 @@ IoT Edge 代理所需的属性列表可用于定义要部署到 IoT Edge 设备�
 }
 ```
 
-每个模块都有一个 **设置** 属性，其中包含模块 **映像**、容器注册表中容器映像的地址，以及用于在启动时配置映像的任何 **createOptions** 。 有关详细信息，请参阅 [如何为 IoT Edge 模块配置容器 create 选项](how-to-use-create-options.md)。
+每个模块都具有 settings 属性，其中包含模块 image、容器注册表中容器映像的地址，以及任何用于在启动时配置映像的 createOptions  。 若要了解详细信息，请参阅[如何配置 IoT Edge 模块的容器创建选项](how-to-use-create-options.md)。
 
-EdgeHub 模块和自定义模块还具有三个属性，这些属性告诉 IoT Edge agent 如何管理它们：
+EdgeHub 模块和自定义模块还具有三个属性，这些属性告诉 IoT Edge 代理如何管理它们：
 
-* **状态**：在第一次部署时，模块是应运行还是已停止。 必需。
-* **RestartPolicy**：当和如果 IoT Edge 代理停止时应重新启动该模块。 必需。
-* **StartupOrder**： *在版本1.0.10 中引入 IoT Edge。* 第一次部署时，IoT Edge 代理应启动模块的顺序。 此顺序是使用整数进行声明的，其中，将首先启动给定了启动值0的模块，然后再执行此操作。 EdgeAgent 模块没有启动值，因为它始终首先启动。 可选。
+* **状态**：首次部署后，模块是应该运行还是停止。 必需。
+* **RestartPolicy**:如果 IoT Edge 代理停止，则何时以及是否应重新启动该模块。 必需。
+* **StartupOrder**:*在 IoT Edge 版本 1.0.10 中引入。* 首次部署时，IoT Edge 代理应按哪个顺序启动模块。 此顺序是使用整数进行声明的，其中先启动给定启动值为 0 的模块，然后再启动更高值的模块。 EdgeAgent 模块没有启动值，因为它始终先启动。 可选。
 
-  IoT Edge 代理按启动值顺序启动模块，但不会等待每个模块完成启动，然后再转到下一个模块。
+  IoT Edge 代理按启动值的顺序启动模块，但不会等待每个模块完成启动才转到下一个模块。
 
-  如果某些模块依赖于其他模块，则启动顺序很有用。 例如，你可能想要先启动 edgeHub 模块，使其可以在其他模块启动时路由消息。 或者，您可能想要在将数据发送到的模块之前启动存储模块。 但是，您始终应设计模块来处理其他模块的故障。 它们是容器的性质，它们可能会随时停止和重新启动，以及任意数量的时间。
+  如果某些模块依赖于其他模块，启动顺序会很有用。 例如，你可能希望 edgeHub 模块先启动，以便在其他模块启动时准备好路由消息。 或者，你可能想先启动某个存储模块，然后再启动向其发送数据的模块。 但是，你应该始终将模块设计为处理其他模块的故障。 容器的性质使其可能在任何时间停止并重新启动任何次数。
 
 ## <a name="declare-routes"></a>声明路由
 
@@ -206,11 +206,11 @@ IoT Edge 中心管理模块、IoT 中心与所有叶设备之间的通信。 因
 }
 ```
 
-IoT Edge 中心架构版本1.1 随 IoT Edge 版本1.0.10 一起发布，并启用路由优先级和生存时间。 对于运行1.0.10 或更高版本的任何 IoT Edge 部署，建议使用架构1.1 版。
+IoT Edge 中心架构版本 1.1 随 IoT Edge 版本 1.0.10 一起发布，并启用了路由优先级和生存时间。 对于运行版本 1.0.10 或更高版本的 IoT Edge 部署，建议使用架构版本 1.1。
 
-每个路由都需要一个 *源* ，其中的消息来源于消息的 *接收* 位置。 *条件*是可选的，可以用来筛选消息。
+每一个路由都需要一个消息源和一个消息去往的接收器 。 条件是可用于筛选消息的可选片断。
 
-你可以将 *优先级* 分配给你想要确保其消息先处理的路由。 此功能在以下情况下非常有用：上游连接较弱或受限，且你的关键数据应优先于标准遥测消息。
+你可以将优先级分配给要确保优先处理消息的路由。 在上游连接较弱或受限且有需要优先于标准遥测消息进行处理的关键数据的情况下，此功能很有用。
 
 ### <a name="source"></a>源
 
@@ -267,7 +267,7 @@ IoT Edge 中心会一直存储消息，直到达到在 [IoT Edge 中心所需属
 
 ### <a name="priority-and-time-to-live"></a>优先级和生存时间
 
-可以只使用定义路由的字符串或使用路由字符串、优先级整数和生存时间整数的对象来声明路由的情况。
+可以使用仅定义路由的字符串或使用路由字符串、优先级整数和生存时间整数的对象声明路由。
 
 选项 1：
 
@@ -275,7 +275,7 @@ IoT Edge 中心会一直存储消息，直到达到在 [IoT Edge 中心所需属
    "route1": "FROM <source> WHERE <condition> INTO <sink>",
    ```
 
-选项2，在 IoT Edge 版本1.0.10 中引入 IoT Edge 中心架构版本1.1：
+带有 IoT Edge 中心架构版本 1.1 的 IoT Edge 版本 1.0.10 中引入的选项 2：
 
    ```json
    "route2": {
@@ -285,11 +285,11 @@ IoT Edge 中心会一直存储消息，直到达到在 [IoT Edge 中心所需属
    }
    ```
 
-**优先级** 值可以是0-9 （含），其中0是最高优先级。 消息根据其终结点排队。 针对特定终结点的所有优先级为0的消息将在处理针对同一终结点的任何优先级为1的消息之前进行处理，并向下处理。 如果同一终结点的多个路由具有相同的优先级，则其消息将按首先提供的方式进行处理。 如果未指定优先级，则会将路由分配给最低优先级。
+**优先级** 值可以是 0-9，其中 0 是最高优先级。 消息的排队基于其终结点。 在处理任何针对同一终结点的优先级 1 消息之前，将先处理针对特定终结点的所有优先级 0 消息。 如果同一终结点的多个路由具有相同优先级，则将以先到先得的方式处理它们的消息。 如果未指定优先级，则将路由分配给最低优先级。
 
-除非显式设置，否则 **timeToLiveSecs** 属性将从 IoT Edge 集线器的 **storeAndForwardConfiguration** 继承其值。 该值可以是任何正整数。
+除非显式设置，否则 timeToLiveSecs 属性将从 IoT Edge 中心的 storeAndForwardConfiguration 继承其值 。 该值可以是任何正整数。
 
-有关如何管理优先级队列的详细信息，请参阅 [路由优先级和生存时间](https://github.com/Azure/iotedge/blob/master/doc/Route_priority_and_TTL.md)的参考页。
+有关如何管理优先级队列的详细信息，请参阅参考页面以了解[路由优先级和生存时间](https://github.com/Azure/iotedge/blob/master/doc/Route_priority_and_TTL.md)。
 
 ## <a name="define-or-update-desired-properties"></a>定义或更新所需属性
 
@@ -327,7 +327,7 @@ IoT Edge 中心会一直存储消息，直到达到在 [IoT Edge 中心所需属
           "edgeAgent": {
             "type": "docker",
             "settings": {
-              "image": "mcr.microsoft.com/azureiotedge-agent:1.0",
+              "image": "mcr.microsoft.com/azureiotedge-agent:1.1",
               "createOptions": ""
             }
           },
@@ -337,7 +337,7 @@ IoT Edge 中心会一直存储消息，直到达到在 [IoT Edge 中心所需属
             "restartPolicy": "always",
             "startupOrder": 0,
             "settings": {
-              "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
+              "image": "mcr.microsoft.com/azureiotedge-hub:1.1",
               "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"443/tcp\":[{\"HostPort\":\"443\"}],\"5671/tcp\":[{\"HostPort\":\"5671\"}],\"8883/tcp\":[{\"HostPort\":\"8883\"}]}}}"
             }
           }

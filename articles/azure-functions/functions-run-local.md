@@ -1,16 +1,16 @@
 ---
 title: 使用 Azure Functions Core Tools
-description: 了解如何在本地计算机上的命令提示符或终端中对 Azure Functions 进行编码和测试，然后在 Azure Functions 上运行它们。
+description: 了解如何通过本地计算机上的命令提示符或终端编写和测试 Azure 函数，然后在 Azure Functions 中运行这些函数。
 ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: devx-track-csharp, 80e4ff38-5174-43
-ms.openlocfilehash: efb91c7b26c67a3672abb3f9cc8992fd45971a25
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 3ddd84f2f73546b42a3925802b3357df16485488
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96932449"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100521435"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>使用 Azure Functions Core Tools
 
@@ -41,7 +41,7 @@ Azure Functions Core Tools 有三个版本。 使用的版本取决于本地开�
 
 ## <a name="prerequisites"></a>先决条件
 
-Azure Functions Core Tools 当前依赖于 Azure CLI 通过 Azure 帐户进行身份验证。 这意味着必须[在本地安装 Azure CLI](/cli/azure/install-azure-cli)，才能从 Azure Functions Core Tools [发布到 Azure](#publish)。 
+Azure Functions Core Tools 当前依赖于 [Azure CLI](/cli/azure/install-azure-cli) 或 [Azure PowerShell](/powershell/azure/install-az-ps) ，以便通过 Azure 帐户进行身份验证。 这意味着，你必须安装其中一个工具才能从 Azure Functions Core Tools [发布到 Azure](#publish) 。 
 
 ## <a name="install-the-azure-functions-core-tools"></a>安装 Azure Functions Core Tools
 
@@ -155,7 +155,7 @@ Azure Functions Core Tools 当前依赖于 Azure CLI 通过 Azure 帐户进行�
 
 ## <a name="create-a-local-functions-project"></a>创建本地 Functions 项目
 
-函数项目目录包含 [host.js打开](functions-host-json.md) 和 [local.settings.js上](#local-settings-file)的文件，以及包含各个函数的代码的子文件夹。 此目录相当于 Azure 中的一个函数应用。 若要详细了解 Functions 文件夹的结构，请参阅 [Azure Functions 开发人员指南](functions-reference.md#folder-structure)。
+Functions 项目目录包含文件 [host.json](functions-host-json.md) 和 [local.settings.json](#local-settings-file) 以及若干个子文件夹，这些子文件夹包含各个函数的代码。 此目录相当于 Azure 中的一个函数应用。 若要详细了解 Functions 文件夹的结构，请参阅 [Azure Functions 开发人员指南](functions-reference.md#folder-structure)。
 
 版本 3.x/2.x 要求在初始化项目时为项目选择默认语言。 在版本 3.x/2.x 中，添加的所有函数均使用默认语言模板。 在版本 1.x 中，每次创建函数时都要指定语言。
 
@@ -505,7 +505,7 @@ func run MyHttpTrigger -c '{\"name\": \"Azure\"}'
 Azure Functions Core Tools 支持两种类型的部署：通过 [Zip Deploy](functions-deployment-technologies.md#zip-deploy) 将函数项目文件直接部署到函数应用，以及[部署自定义 Docker 容器](functions-deployment-technologies.md#docker-container)。 必须已[在 Azure 订阅中创建了一个函数应用](functions-cli-samples.md#create)，你将向其部署代码。 应该生成需要编译的项目，以便部署二进制文件。
 
 >[!IMPORTANT]
->必须在本地安装 [Azure CLI](/cli/azure/install-azure-cli)，才能从 Core Tools 发布到 Azure。  
+>必须本地安装 [Azure CLI](/cli/azure/install-azure-cli) 或 [Azure PowerShell](/powershell/azure/install-az-ps) 才能从核心工具发布到 Azure。  
 
 项目文件夹可能包含不应该发布的特定于语言的文件和目录。 排除的项在根项目文件夹的 .funcignore 文件中列出。     
 
@@ -520,7 +520,7 @@ func azure functionapp publish <FunctionAppName>
 >[!IMPORTANT]
 > Java 使用 Maven 将本地项目发布到 Azure。 使用以下命令发布到 Azure：`mvn azure-functions:deploy`。 Azure 资源是在初始部署期间创建的。
 
-此命令发布到 Azure 中的现有函数应用。 如果尝试发布到订阅中不存在的 `<FunctionAppName>`，则会收到错误。 若要了解如何使用 Azure CLI 从命令提示符或终端窗口创建函数应用，请参阅[为无服务器执行创建函数应用](./scripts/functions-cli-create-serverless.md)。 默认情况下，此命令使用[远程生成](functions-deployment-technologies.md#remote-build)并将应用部署为[从部署包运行](run-functions-from-deployment-package.md)。 若要禁用此建议的部署模式，请使用 `--nozip` 选项。
+此命令发布到 Azure 中的现有函数应用。 如果尝试发布到订阅中不存在的 `<FunctionAppName>`，则会收到错误。 若要了解如何使用 Azure CLI 或 Azure PowerShell 从命令提示符或终端窗口创建函数应用，请参阅 [创建无服务器执行的 Function App](./scripts/functions-cli-create-serverless.md)。 默认情况下，此命令使用[远程生成](functions-deployment-technologies.md#remote-build)并将应用部署为[从部署包运行](run-functions-from-deployment-package.md)。 若要禁用此建议的部署模式，请使用 `--nozip` 选项。
 
 >[!IMPORTANT]
 > 在 Azure 门户中创建函数应用时，该应用默认使用 3.x 版函数运行时。 若要让函数应用使用 1.x 版运行时，请遵照[在版本 1.x 上运行](functions-versions.md#creating-1x-apps)中的说明操作。

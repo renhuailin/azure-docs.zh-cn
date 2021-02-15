@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 02/05/2021
-ms.openlocfilehash: 6c064acc44e180d3e99bdcf68d2e1e129d52fd5d
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 19c7d37d62ec54e57127f5993e8bae4d4e9a2908
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99805928"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100388526"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure 逻辑应用的限制和配置信息
 
@@ -193,19 +193,20 @@ ms.locfileid: "99805928"
 
 ### <a name="integration-service-environment-ise"></a>集成服务环境 (ISE)
 
-下面是[高级 ISE SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) 的吞吐量限制：
+* [开发人员 ISE SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)：每分钟最多提供500执行，但请注意以下事项：
 
-| 名称 | 限制 | 说明 |
-|------|-------|-------|
-| 基础单位执行限制 | 当基础结构容量达到 80% 时，系统受到限制 | 每分钟提供约 4,000 次操作执行，每月大约 1.6 亿次操作执行 | |
-| 缩放单元执行限制 | 当基础结构容量达到 80% 时，系统受到限制 | 每个缩放单元每分钟可提供约 2,000 次额外的操作执行，每月约 8000 万次额外的操作执行 | |
-| 可添加的缩放单元数上限 | 10 | |
-||||
+  * 请确保将此 SKU 仅用于勘探、试验、开发或测试，不用于生产或性能测试。 此 SKU 在回收期间没有服务级别协议 (SLA) 、扩展功能或冗余，这意味着你可能会遇到延迟或停机时间。
 
-若要在正常处理中超过这些限制，或要运行可能超过这些限制的负载测试，请[与逻辑应用团队联系](mailto://logicappsemail@microsoft.com)，获取满足要求的帮助。
+  * 后端更新可能会中断服务。
 
-> [!NOTE]
-> 尚未发布对[开发人员 ISE SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) 的限制，它没有任何纵向扩展功能，也没有服务级别协议 (SLA)。 此 SKU 仅可用于试验、开发和测试，不可用于生产和性能测试。
+* [高级 ISE SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)：下表描述了此 SKU 的吞吐量限制，但要在正常处理中超过这些限制，或运行可能超过这些限制的负载测试，请 [与逻辑应用团队联系](mailto://logicappsemail@microsoft.com) ，以帮助满足你的要求。
+
+  | 名称 | 限制 | 说明 |
+  |------|-------|-------|
+  | 基础单位执行限制 | 当基础结构容量达到 80% 时，系统受到限制 | 每分钟提供约 4,000 次操作执行，每月大约 1.6 亿次操作执行 | |
+  | 缩放单元执行限制 | 当基础结构容量达到 80% 时，系统受到限制 | 每个缩放单元每分钟可提供约 2,000 次额外的操作执行，每月约 8000 万次额外的操作执行 | |
+  | 可添加的缩放单元数上限 | 10 | |
+  ||||
 
 <a name="gateway-limits"></a>
 
@@ -324,7 +325,7 @@ Azure 逻辑应用支持通过网关执行写入操作（包括插入和更新�
 > [!NOTE]
 > 免费层仅用于探索场景，不用于生产场景。 此层限制吞吐量和使用情况，并且不具有服务级别协议 (SLA)。
 
-| 项目 | 免费 | 基本 | 标准 |
+| 项目 | 免费 | 基本 | Standard |
 |----------|------|-------|----------|
 | EDI 贸易协议 | 10 | 1 | 1,000 |
 | EDI 参与方 | 25 | 2 | 1,000 |
@@ -350,7 +351,7 @@ Azure 逻辑应用支持通过网关执行写入操作（包括插入和更新�
 
 ### <a name="throughput-limits"></a>吞吐量限制
 
-| 运行时终结点 | 免费 | 基本 | 标准 | 说明 |
+| 运行时终结点 | 免费 | 基本 | Standard | 说明 |
 |------------------|------|-------|----------|-------|
 | 每 5 分钟读取调用 | 3,000 | 30,000 | 60,000 | 此限制适用于从逻辑应用的运行历史记录获取原始输入和输出的调用。 你可根据需要在多个帐户之间分配工作负荷。 |
 | 每 5 分钟调用调用 | 3,000 | 30,000 | 45,000 | 你可根据需要在多个帐户之间分配工作负荷。 |
@@ -388,7 +389,7 @@ Azure 逻辑应用支持通过网关执行写入操作（包括插入和更新�
 
 例如，若要支持在美国西部区域中的逻辑应用通过内置触发器和操作（如 [HTTP 触发器或操作](../connectors/connectors-native-http.md)）发送或接收的调用，你的防火墙需要允许访问在美国西部区域中存在的 *所有* 逻辑应用服务的入站 ip 地址 *和* 出站 ip 地址。
 
-如果逻辑应用还使用 [托管连接器](../connectors/apis-list.md#managed-api-connectors)（如 Office 365 Outlook CONNECTOR 或 SQL connector）或使用 [自定义连接器](/connectors/custom-connectors/)，则防火墙还需要允许对逻辑应用的 Azure 区域中的 *所有*[托管连接器出站 IP 地址](#outbound)进行访问。 此外，如果你使用通过 [Azure 中的本地数据网关资源](logic-apps-gateway-connection.md)访问本地资源的自定义连接器，则需要设置网关安装，以允许访问相应的 *托管连接器 [出站 IP 地址](#outbound)*。
+如果逻辑应用还使用[托管连接器](../connectors/apis-list.md#managed-api-connectors)（如 Office 365 Outlook 连接器或 SQL 连接器），或使用[自定义连接器](/connectors/custom-connectors/)，则防火墙还需要允许访问逻辑应用的 Azure 区域中的所有[托管连接器出站 IP 地址](#outbound)。 此外，如果你使用通过 [Azure 中的本地数据网关资源](logic-apps-gateway-connection.md)访问本地资源的自定义连接器，则需要设置网关安装，以允许访问相应的 *托管连接器 [出站 IP 地址](#outbound)*。
 
 有关设置网关的通信设置的详细信息，请参阅以下主题：
 

@@ -9,12 +9,12 @@ ms.subservice: security
 ms.date: 12/03/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: c6ec84d41d113a38e78ab13404ef19faf625530b
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: 513d23de3d7f823ec934af32e5f3776e876f02d8
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100102166"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100368993"
 ---
 # <a name="how-to-set-up-access-control-for-your-synapse-workspace"></a>如何为 Synapse 工作区设置访问控制 
 
@@ -132,7 +132,7 @@ Synapse 工作区使用的默认存储容器：
 
 ## <a name="step-6-assign-sql-active-directory-admin-role"></a>步骤6：分配 SQL Active Directory 管理员角色
 
-工作站创建者会自动设置为工作区的 SQL Active Directory 管理员。  只能为单个用户或组授予此角色。 在此步骤中，将工作区中的 SQL Active Directory 管理员分配给 `workspace1_SQLAdmins` 安全组。  分配此角色向此组授予了对工作区中所有 SQL 池和数据库的特权管理权限。   
+工作区创建者会自动设置为工作区的 SQL Active Directory 管理员。  只能为单个用户或组授予此角色。 在此步骤中，将工作区中的 SQL Active Directory 管理员分配给 `workspace1_SQLAdmins` 安全组。  分配此角色向此组授予了对工作区中所有 SQL 池和数据库的特权管理权限。   
 
 - 打开 Azure 门户
 - 导航到 `workspace1`

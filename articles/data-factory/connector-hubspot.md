@@ -1,22 +1,17 @@
 ---
 title: 使用 Azure 数据工厂从 HubSpot 复制数据
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 HubSpot 复制到支持的接收器数据存储。
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/18/2020
 ms.author: jingwang
-ms.openlocfilehash: 151f156439a40b2e5515886849635f00b2fcc1e7
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: 7f2ab069be7985376c44f2cd2ae3ccdd728d4e2a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97680909"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100385653"
 ---
 # <a name="copy-data-from-hubspot-using-azure-data-factory"></a>使用 Azure 数据工厂从 HubSpot 复制数据
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -88,7 +83,7 @@ HubSpot 链接服务支持以下属性：
 
 要从 HubSpot 复制数据，请将数据集的 type 属性设置为“HubspotObject”  。 支持以下属性：
 
-| 属性 | 说明 | 必须 |
+| properties | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：HubspotObject  | 是 |
 | tableName | 表的名称。 | 否（如果指定了活动源中的“query”） |
@@ -118,7 +113,7 @@ HubSpot 链接服务支持以下属性：
 
 要从 HubSpot 复制数据，请将复制活动中的源类型设置为“HubspotSource”  。 复制活动 **source** 部分支持以下属性：
 
-| 属性 | 说明 | 必须 |
+| properties | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 复制活动 source 的 type 属性必须设置为：HubspotSource  | 是 |
 | query | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM Companies where Company_Id = xxx"`。 | 否（如果指定了数据集中的“tableName”） |
@@ -155,7 +150,7 @@ HubSpot 链接服务支持以下属性：
 ]
 ```
 
-## <a name="lookup-activity-properties"></a>Lookup 活动属性
+## <a name="lookup-activity-properties"></a>查找活动属性
 
 若要了解有关属性的详细信息，请查看 [Lookup 活动](control-flow-lookup-activity.md)。
 

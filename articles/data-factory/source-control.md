@@ -1,22 +1,18 @@
 ---
 title: 源代码管理
 description: 了解如何在 Azure 数据工厂中配置源代码管理
-services: data-factory
 ms.service: data-factory
-ms.workload: data-services
 author: dcstwh
 ms.author: weetok
-manager: anandsub
-ms.reviewer: ''
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/02/2020
-ms.openlocfilehash: 27f14834e45dd32bdf3a26d22d38ab250aa1bcbe
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: 5bf1877edaa6c13cb0c645eb2d1c7ec2dc53ad00
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98127730"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100392436"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Azure 数据工厂中的源代码管理
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
@@ -30,7 +26,7 @@ ms.locfileid: "98127730"
 为了提供更好的创作体验，Azure 数据工厂支持使用 Azure Repos 或 GitHub 配置 Git 存储库。 Git 是一个支持简化变更跟踪和协作的版本控制系统。 本文概述了如何在 git 存储库中配置和工作，并突出显示了最佳实践和故障排除指南。
 
 > [!NOTE]
-> Azure 数据工厂 git 集成仅适用于 Azure 政府云中的 GitHub 企业。
+> 对于 Azure 政府版云，仅 GitHub 企业版可用。
 
 若要了解有关 Azure 数据工厂如何与 Git 集成的详细信息，请查看下面的15分钟教程视频：
 
@@ -97,7 +93,7 @@ ms.locfileid: "98127730"
 
 配置窗格将显示以下 Azure Repos 代码存储库设置：
 
-| 设置 | 描述 | 值 |
+| 设置 | 说明 | 值 |
 |:--- |:--- |:--- |
 | **存储库类型** | Azure Repos 代码存储库的类型。<br/> | Azure DevOps Git 或 GitHub |
 | **Azure Active Directory** | Azure AD 租户的名称。 | `<your tenant name>` |

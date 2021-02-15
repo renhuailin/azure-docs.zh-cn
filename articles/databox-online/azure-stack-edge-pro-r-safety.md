@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 02/04/2021
+ms.date: 02/12/2021
 ms.author: alkohli
-ms.openlocfilehash: cc24839396116a5b581758b29b087c237a6f902b
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: dacc9ecc28ffa482b60d1e48735fe3620b5b7558
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99981334"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100363060"
 ---
 # <a name="azure-stack-edge-pro-r-safety-instructions"></a>Azure Stack Edge Pro R 安全性说明
 
@@ -134,6 +134,7 @@ ms.locfileid: "99981334"
 
 * 对于没有无间断电源的系统 (UPS) ，请拔下所有交流电源线 () ，以完全拔下设备的交流电源。
 * 对于带有 UPS 的系统，请拔下所有交流电源线 () 并使用 UPS 电源开关来消除系统的动力。 UPS 包含有害的交流和直流电压。
+* 如果系统包含 UPS，则使用受防护的输入电源线提供 UPS。 必须使用受防护的输入电源线，不要更换或修改电缆。
 
 ![警告图标 ](./media/azure-stack-edge-pro-r-safety/icon-safety-warning.png)
  ![ 电击图标 ](./media/azure-stack-edge-pro-r-safety/icon-safety-electric-shock.png) **警告：**
@@ -160,7 +161,7 @@ Azure Stack 边缘 Pro R 边缘设备设计为与 (UL、CSA、ETL 等 ) ，以�
 
 设备设计为在以下环境中运行：
 
-| 环境 | 规格 |
+| 环境 | 规范 |
 |:--- |:--- |
 |温度规格 | <ul><li>存储温度：– 33 &deg; C – 63 &deg; C ( – 28 &deg; f-145 &deg; f)  </li><li>连续操作： 5 &deg; c – 43 &deg; C (41 &deg; f – 110 &deg; F) </li><li>操作和存储) 的最大温度渐变 (： 20 &deg; C/h (68 &deg; F/h) </li></ul> |
 |相对湿度规范 | <ul><li>存储：5% 至 95% RH 33 &deg; C (91 &deg; F) 最大 dew 点。 大气始终必须为非冷凝状态。</li><li>操作：5% 至85% 相对湿度，含29个 &deg; (84.2 &deg; F) 最大 dew 点</li></ul> |
@@ -210,21 +211,22 @@ A device that has a UPS installed is designed to operate in the following enviro
 
 > ![注意图标-2 ](./media/azure-stack-edge-pro-r-safety/icon-safety-notice.png) **通知：** 对 &nbsp; Microsoft 未明确批准的设备所做的更改或修改可能会使用户无权操作设备。
 
-加拿大和美国：
+#### <a name="canada-and-usa"></a>加拿大和美国：
 
-请注意：根据 FCC 规则的第15部分，已测试并发现此设备符合类的数字设备限制。 这些限制旨在为商业环境中运行的设备提供合理的抗有害干扰保护。 本设备产生、使用并可能发射射频能量，如果不根据说明书安装和使用，可能会给无线电通信造成有害干扰。 在居民区操作本设备可能会造成有害干扰，在这种情况下，用户需要自费纠正干扰。
+> ![注意图标-2 ](./media/azure-stack-edge-pro-r-safety/icon-safety-notice.png) **通知：** &nbsp; 此设备已测试并发现符合 FCC 规则第15部分的数字设备限制。 这些限制旨在为商业环境中运行的设备提供合理的抗有害干扰保护。 本设备产生、使用并可能发射射频能量，如果不根据说明书安装和使用，可能会给无线电通信造成有害干扰。 在居民区操作本设备可能会造成有害干扰，在这种情况下，用户需要自费纠正干扰。
 
 本设备符合 FCC 规则第 15 部分，以及加拿大工业部许可证豁免 RSS 标准。 操作时需满足以下两个条件：(1) 本设备不会造成有害干扰；(2) 本设备必须接受任何干扰，包括可能导致设备意外运行的干扰。
 
 ![规章信息警告1](./media/azure-stack-edge-mini-r-safety/regulatory-information-1.png)
 
 
-CAN ICES-3(A)/NMB-3(A) Microsoft Corporation, One Microsoft Way, Redmond, WA 98052, USA.
-美国： (800) 426-9400 加拿大： (800) 933-4750
+可以 () /NMB-3 () Microsoft 公司，一种 Microsoft 方法，Redmond，WA 98052，美国美国： (800) 426-9400 加拿大： (800) 933-4750
 
-欧盟：请求欧盟符合性声明的副本。 
+#### <a name="european-union"></a>欧盟：
 
-![“警告”图标](./media/azure-stack-edge-pro-r-safety/icon-safety-warning.png)
+请求欧盟符合性声明的副本。 将电子邮件发送到 [CSI_Compliance@microsoft.com](mailto:CSI_Compliance@microsoft.com)。
+
+![警告图标](./media/azure-stack-edge-pro-r-safety/icon-safety-warning.png) **WARNING!**
 
 本设备属于 A 类产品。 在室内环境中，本产品可能导致无线电干扰，在这种情况下，用户可能需要采取充分的措施。
 
@@ -237,7 +239,6 @@ CAN ICES-3(A)/NMB-3(A) Microsoft Corporation, One Microsoft Way, Redmond, WA 980
 本产品包含钮扣电池。
 
 Microsoft 爱尔兰 Sandyford Ind Est 都柏林 D18 KX32 IRL 电话号码： + 353 1 295 3826 传真号码： + 353 1 706 4110
-
 
 
 ## <a name="next-steps"></a>后续步骤

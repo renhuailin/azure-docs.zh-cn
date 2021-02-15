@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 01/19/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 7214a1eb41e4434818123ee26765ceb10ad551a5
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 598673bca5b893236cfd38a7fa220ff25ee9dd7e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99094903"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100388509"
 ---
 # <a name="azure-storage-redundancy"></a>Azure 存储冗余
 
@@ -35,7 +35,7 @@ Azure 存储帐户中的数据在主要区域中始终复制三次。 Azure 存�
 
 ### <a name="locally-redundant-storage"></a>本地冗余存储
 
-本地冗余存储 (LRS) 在主要区域中的单个数据中心内将数据复制三次。 LRS 可在一年中提供至少 99.999999999%（11 个 9）的对象持久性。
+本地冗余存储 (LRS) 在主要区域中的单个数据中心内复制数据三次。 LRS 可在一年中提供至少 99.999999999%（11 个 9）的对象持久性。
 
 与其他选项相比，LRS 是成本最低的冗余选项，但提供的持久性也最低。 LRS 可以保护数据，使其不受服务器机架和驱动器故障影响。 但是，如果数据中心内发生火灾或洪水等灾难，使用 LRS 的存储帐户的所有副本可能会丢失或无法恢复。 若要缓解此风险，Microsoft 建议使用[区域冗余存储](#zone-redundant-storage) (ZRS)、[异地冗余存储](#geo-redundant-storage) (GRS) 或[异地区域冗余存储](#geo-zone-redundant-storage) (GZRS)。
 
@@ -171,7 +171,7 @@ GRS 和 GZRS 之间的主要区别是在主要区域中复制数据的方式。 
 | 给定一年内的对象持久性百分比 | 至少 99.999999999%（11 个 9） | 至少为 99.9999999999% (12 9's) | 至少为 99.99999999999999% (16 9's) | 至少 99.99999999999999%（16 个 9） |
 | 读取请求的可用性 | 至少为 99.9%（冷访问层为 99%） | 至少为 99.9%（冷访问层为 99%） | GRS 至少为 99.9%（冷访问层为 99%）<br /><br />对于 RA-GRS，至少为 99.99%（冷访问层为 99.9%） | 对于 GZRS，至少为 99.9%（冷访问层为 99%）<br /><br />对于 RA-GZRS，至少为 99.99%（冷访问层为 99.9%） |
 | 写入请求的可用性 | 至少为 99.9%（冷访问层为 99%） | 至少为 99.9%（冷访问层为 99%） | 至少为 99.9%（冷访问层为 99%） | 至少为 99.9%（冷访问层为 99%） |
-| 在单独的节点上维护的数据副本数 | 单个区域内的三个副本 | 在单个区域内跨不同的可用性区域的三个副本 | 共六个副本，包括主要区域的三个副本和第三个副本 | 六个副本总数，其中包括主要区域的三个不同的可用性区域和次要区域中的三个本地冗余副本 |
+| 在单独的节点上维护的数据副本数 | 单个区域内的三个副本 | 在单个区域内跨不同的可用性区域的三个副本 | 共六个副本，包括主要区域中的三个副本和次要区域中的三个副本 | 六个副本总数，其中包括主要区域的三个不同的可用性区域和次要区域中的三个本地冗余副本 |
 
 ### <a name="durability-and-availability-by-outage-scenario"></a>持久性和可用性（按中断方案）
 
@@ -185,6 +185,14 @@ GRS 和 GZRS 之间的主要区别是在主要区域中复制数据的方式。 
 | 如果主区域变得不可用，可对次要区域进行读取访问 | 否 | 否 | 是（通过 RA-GRS） | 是（通过 RA-GZRS） |
 
 <sup>1</sup> 如果主要区域变为不可用，则需要执行帐户故障转移来恢复写入可用性。 有关详细信息，请参阅[灾难恢复和存储帐户故障转移](storage-disaster-recovery-guidance.md)。
+
+### <a name="supported-azure-storage-services"></a>支持的 Azure 存储服务
+
+下表显示了每个 Azure 存储服务支持的冗余选项。
+
+| LRS | ZRS | GRS/RA-GRS | GZRS/RA-GZRS |
+|:-|:-|:-|:-|
+| Blob 存储<br />队列存储<br />表存储<br />Azure 文件<br />Azure 托管磁盘 | Blob 存储<br />队列存储<br />表存储<br />Azure 文件 | Blob 存储<br />队列存储<br />表存储<br />Azure 文件<br /> | Blob 存储<br />队列存储<br />表存储<br />Azure 文件<br /> |
 
 ### <a name="supported-storage-account-types"></a>支持的存储帐户类型
 

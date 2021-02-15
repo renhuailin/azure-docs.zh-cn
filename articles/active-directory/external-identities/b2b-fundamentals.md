@@ -5,25 +5,25 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 11/30/2020
+ms.date: 02/12/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: elisol
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f9ea8b1c1346deee9fed591493607270f18ad5b
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 94fd488ceb7ddb3724dd576c97c9070481e95147
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96547757"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100365627"
 ---
 # <a name="azure-active-directory-b2b-best-practices"></a>Azure Active Directory B2B 最佳做法
 本文包含有关 Azure Active Directory (Azure AD) 中企业到企业 (B2B) 协作的建议和最佳做法。
 
    > [!IMPORTANT]
-   > **从2021年3月开始**，Microsoft 将不再支持通过创建非托管 ( "病毒" 或 "实时" ) AZURE AD 用于 B2B 协作方案的帐户和租户来兑换邀请。 此时，将为所有现有租户启用电子邮件一次性密码功能，并在默认情况下为新租户启用此功能。 我们正在启用电子邮件一次性密码功能，因为它为你的来宾用户提供了无缝的回退身份验证方法。 但是，如果您选择不使用此功能，则可以禁用此功能。 有关详细信息，请参阅 [电子邮件一次性密码身份验证](one-time-passcode.md)
+   > **从2021年10月开始**，Microsoft 将不再支持通过创建非托管 ( "病毒" 或 "实时" ) AZURE AD 用于 B2B 协作方案的帐户和租户来兑换邀请。 此时，将为所有现有租户启用电子邮件一次性密码功能，并在默认情况下为新租户启用此功能。 我们正在启用电子邮件一次性密码功能，因为它为你的来宾用户提供了无缝的回退身份验证方法。 但是，如果您选择不使用此功能，则可以禁用此功能。 有关详细信息，请参阅 [电子邮件一次性密码身份验证](one-time-passcode.md)
 
 
 ## <a name="b2b-recommendations"></a>B2B 建议

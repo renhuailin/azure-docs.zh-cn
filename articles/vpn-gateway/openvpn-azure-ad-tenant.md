@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 10/27/2020
 ms.author: cherylmc
-ms.openlocfilehash: 3055c9dd1294af81c6c52603dd60bb5aa6075abd
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: bff1eec0152ab0f57edd212adf6b14f7b588fb51
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92777864"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390158"
 ---
 # <a name="create-an-azure-active-directory-tenant-for-p2s-openvpn-protocol-connections"></a>为 P2S OpenVPN 协议连接创建 Azure Active Directory 租户
 
@@ -33,16 +33,16 @@ ms.locfileid: "92777864"
 
 Azure AD 租户需要以下帐户：全局管理员帐户和主用户帐户。 主要用户帐户用作主要嵌入帐户（服务帐户）。 创建 Azure AD 租户用户帐户时，可以根据要创建的用户类型调整目录角色。
 
-使用 " [添加或删除用户-Azure Active Directory](../active-directory/fundamentals/add-users-azure-active-directory.md) 中的步骤为你的 Azure AD 租户至少创建两个用户。 若要创建帐户类型，请务必更改“目录角色”：
+使用[添加或删除用户 - Azure Active Directory](../active-directory/fundamentals/add-users-azure-active-directory.md) 中的步骤为 Azure AD 租户创建至少两个用户。 若要创建帐户类型，请务必更改“目录角色”：
 
 * 全局管理员
 * User
 
 ## <a name="3-enable-azure-ad-authentication-on-the-vpn-gateway"></a><a name="enable-authentication"></a>3.在 VPN 网关上启用 Azure AD 身份验证
 
-1. 找到要用于身份验证的目录的目录 ID。 它在 "Active Directory" 页的 "属性" 部分中列出。
+1. 找到要用于身份验证的目录的目录 ID。 此 ID 在“Active Directory”页的“属性”部分中列出。
 
-   :::image type="content" source="./media/openvpn-create-azure-ad-tenant/directory-id.png" alt-text="显示目录属性的屏幕截图" lightbox="./media/openvpn-create-azure-ad-tenant/directory-id.png":::
+   :::image type="content" source="./media/openvpn-create-azure-ad-tenant/directory-id.png" alt-text="屏幕截图中显示目录属性" lightbox="./media/openvpn-create-azure-ad-tenant/directory-id.png":::
 
 1. 复制“目录 ID”。
 
@@ -83,25 +83,25 @@ Azure AD 租户需要以下帐户：全局管理员帐户和主用户帐户。 �
    :::image type="content" source="./media/openvpn-create-azure-ad-tenant/pick.png" alt-text="选取帐户" border="false":::
 1. 出现提示时选择“接受”。
 
-   :::image type="content" source="./media/openvpn-create-azure-ad-tenant/accept.jpg" alt-text="屏幕截图显示请求你的组织接受的消息权限，其中包含详细信息和接受选项。" border="false":::
+   :::image type="content" source="./media/openvpn-create-azure-ad-tenant/accept.jpg" alt-text="屏幕截图显示“为你的组织请求接受的权限”的消息，其中包含详细信息和接受的选项。" border="false":::
 1. 在 Azure AD 下的“企业应用程序”中，将会发现已列出“Azure VPN”。
 
-   :::image type="content" source="./media/openvpn-create-azure-ad-tenant/azurevpn.png" alt-text="显示 &quot;所有应用程序&quot; 页的屏幕截图。" lightbox="./media/openvpn-create-azure-ad-tenant/azurevpn.png" :::
+   :::image type="content" source="./media/openvpn-create-azure-ad-tenant/azurevpn.png" alt-text="屏幕截图中显示“所有应用程序”页。" lightbox="./media/openvpn-create-azure-ad-tenant/azurevpn.png" :::
 1. 如果还没有正常运行的“点到站点”环境，请按照说明创建一个。 请参阅[创建点到站点 VPN](vpn-gateway-howto-point-to-site-resource-manager-portal.md)，以创建和配置点到站点 VPN 网关。
 
     > [!IMPORTANT]
     > OpenVPN 不支持基本 SKU。
 
-1. 通过导航到“点到站点配置”并选取“OpenVPN (SSL)”作为“隧道类型”，在 VPN 网关上启用 Azure AD 身份验证。 选择 " **Azure Active Directory** " 作为 " **身份验证类型** "，然后填写 **Azure Active Directory** 部分下的信息。
+1. 通过导航到“点到站点配置”并选取“OpenVPN (SSL)”作为“隧道类型”，在 VPN 网关上启用 Azure AD 身份验证。 选择“Azure Active Directory”作为“身份验证类型”，然后在“Azure Active Directory”部分填写信息  。
 
-   * **租户：** Azure AD 租户的 TenantID ```https://login.microsoftonline.com/{AzureAD TenantID}/```
+   * **租户:** Azure AD 租户的 TenantID ```https://login.microsoftonline.com/{AzureAD TenantID}/```
 
-   * **受众：** "Azure VPN" Azure AD 企业应用的 ApplicationID ```{AppID of the "Azure VPN" AD Enterprise app}```
+   * **受众:** “Azure VPN”Azure AD 企业应用的 ApplicationID ```{AppID of the "Azure VPN" AD Enterprise app}```
 
-   * **颁发者** ：安全令牌服务的 URL ```https://sts.windows.net/{AzureAD TenantID}/```
+   * **颁发者**：安全令牌服务的 URL ```https://sts.windows.net/{AzureAD TenantID}/```
 
 
-   :::image type="content" source="./media/openvpn-create-azure-ad-tenant/azure-ad-auth-portal.png" alt-text="SAzure VPN" border="false":::
+   :::image type="content" source="./media/openvpn-create-azure-ad-tenant/azure-ad-auth-portal.png" alt-text="Azure VPN" border="false":::
 
    > [!NOTE]
    > 请确保在 `AadIssuerUri` 值的末尾包含尾随斜杠。 否则，连接可能会失败。
@@ -117,4 +117,4 @@ Azure AD 租户需要以下帐户：全局管理员帐户和主用户帐户。 �
 
 ## <a name="next-steps"></a>后续步骤
 
-对于虚拟网络，必须创建并配置 VPN 客户端配置文件。 请参阅[配置 VPN 客户端以建立 P2S VPN 连接](openvpn-azure-ad-client.md)。
+创建和配置 VPN 客户端配置文件。 请参阅[配置 VPN 客户端以建立 P2S VPN 连接](openvpn-azure-ad-client.md)。

@@ -4,38 +4,38 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/06/2019
 ms.author: wolfma
-ms.openlocfilehash: df6f7311613057c445ae714b8b11240d0d5be14b
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 6b16dea3c4f9241133b91b092c90c9056da57de0
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99569486"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100515036"
 ---
 ### <a name="standard-and-neural-voices"></a>标准语音和神经语音
 
 使用下表按区域/终结点确定标准语音和神经语音的可用性：
 
-| 区域 | 端点 | 标准语音 | 神经语音 |
+| 区域 | 端点 | 神经语音 | 标准语音 |
 |--------|----------|-----------------|---------------|
 | 澳大利亚东部 | `https://australiaeast.tts.speech.microsoft.com/cognitiveservices/v1` | 是 | 是 |
-| Brazil South | `https://brazilsouth.tts.speech.microsoft.com/cognitiveservices/v1` | 是 | 否 |
+| Brazil South | `https://brazilsouth.tts.speech.microsoft.com/cognitiveservices/v1` | 否 | 是 |
 | 加拿大中部 | `https://canadacentral.tts.speech.microsoft.com/cognitiveservices/v1` | 是 | 是 |
-| Central US | `https://centralus.tts.speech.microsoft.com/cognitiveservices/v1` | 是 | 否 |
-| 东亚 | `https://eastasia.tts.speech.microsoft.com/cognitiveservices/v1` | 是 | 否 |
+| Central US | `https://centralus.tts.speech.microsoft.com/cognitiveservices/v1` | 否 | 是 |
+| 东亚 | `https://eastasia.tts.speech.microsoft.com/cognitiveservices/v1` | 否 | 是 |
 | 美国东部 | `https://eastus.tts.speech.microsoft.com/cognitiveservices/v1` | 是 | 是 |
-| 美国东部 2 | `https://eastus2.tts.speech.microsoft.com/cognitiveservices/v1` | 是 | 否 |
-| 法国中部 | `https://francecentral.tts.speech.microsoft.com/cognitiveservices/v1` | 是 | 否 |
+| 美国东部 2 | `https://eastus2.tts.speech.microsoft.com/cognitiveservices/v1` | 否 | 是 |
+| 法国中部 | `https://francecentral.tts.speech.microsoft.com/cognitiveservices/v1` | 否 | 是 |
 | 印度中部 | `https://centralindia.tts.speech.microsoft.com/cognitiveservices/v1` | 是 | 是 |
-| Japan East | `https://japaneast.tts.speech.microsoft.com/cognitiveservices/v1` | 是 | 否 |
-| 日本西部 | `https://japanwest.tts.speech.microsoft.com/cognitiveservices/v1` | 是 | 否 |
-| 韩国中部 | `https://koreacentral.tts.speech.microsoft.com/cognitiveservices/v1` | 是 | 否 |
-| 美国中北部 | `https://northcentralus.tts.speech.microsoft.com/cognitiveservices/v1` | 是 | 否 |
-| 北欧 | `https://northeurope.tts.speech.microsoft.com/cognitiveservices/v1` | 是 | 否 |
+| Japan East | `https://japaneast.tts.speech.microsoft.com/cognitiveservices/v1` | 否 | 是 |
+| 日本西部 | `https://japanwest.tts.speech.microsoft.com/cognitiveservices/v1` | 否 | 是 |
+| 韩国中部 | `https://koreacentral.tts.speech.microsoft.com/cognitiveservices/v1` | 否 | 是 |
+| 美国中北部 | `https://northcentralus.tts.speech.microsoft.com/cognitiveservices/v1` | 否 | 是 |
+| 北欧 | `https://northeurope.tts.speech.microsoft.com/cognitiveservices/v1` | 否 | 是 |
 | 美国中南部 | `https://southcentralus.tts.speech.microsoft.com/cognitiveservices/v1` | 是 | 是 |
 | Southeast Asia | `https://southeastasia.tts.speech.microsoft.com/cognitiveservices/v1` | 是 | 是 |
 | 英国南部 | `https://uksouth.tts.speech.microsoft.com/cognitiveservices/v1` | 是 | 是 |
 | 西欧 | `https://westeurope.tts.speech.microsoft.com/cognitiveservices/v1` | 是 | 是 |
-| 美国西部 | `https://westus.tts.speech.microsoft.com/cognitiveservices/v1` | 是 | 否 |
+| 美国西部 | `https://westus.tts.speech.microsoft.com/cognitiveservices/v1` | 否 | 是 |
 | 美国西部 2 | `https://westus2.tts.speech.microsoft.com/cognitiveservices/v1` | 是 | 是 |
 
 > [!TIP]
@@ -68,13 +68,25 @@ ms.locfileid: "99569486"
 | 美国西部 | `https://westus.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId}` |
 | 美国西部 2 | `https://westus2.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId}` |
 
-### <a name="custom-neural-voice"></a>自定义的神经声音
+### <a name="custom-neural-voice"></a>自定义神经语音
 
 下表详细说明了对自定义神经语音功能的区域支持。
 
-| 功能 | 支持的区域 |
+| Feature | 支持的区域 |
 |---|---|
 | 语音模型托管 | 美国东部、美国西部2、美国中南部、东南亚、英国南部、西欧、澳大利亚东部 |
 | 实时字符 | 美国东部、美国西部2、美国中南部、东南亚、英国南部、西欧、澳大利亚东部 |
 | 长音频字符 | 美国东部、西欧、英国南部、东南亚、印度中部 |
 | 自定义神经定型 | 美国东部，英国南部 |
+
+### <a name="long-audio-api"></a>长音频 API
+
+长音频 API 可用于具有单独终结点的多个区域。
+
+| 区域 | 端点 |
+|--------|----------|
+| 美国东部 | `https://eastus.customvoice.api.speech.microsoft.com` |
+| 印度中部 | `https://centralindia.customvoice.api.speech.microsoft.com` |
+| 东南亚 | `https://southeastasia.customvoice.api.speech.microsoft.com` |
+| 英国南部 | `https://uksouth.customvoice.api.speech.microsoft.com` |
+| 西欧 | `https://westeurope.customvoice.api.speech.microsoft.com` |

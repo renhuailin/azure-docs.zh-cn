@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 9d4eb90d49e8cc671156833f22a85e7c2b4dd15b
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: 24671a34214864e253d96c356dc8b2853bf6d560
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99626654"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100519790"
 ---
 # <a name="scenario-route-traffic-through-an-nva"></a>场景：通过 NVA 路由流量
 
@@ -30,9 +30,9 @@ ms.locfileid: "99626654"
 
 在此方案中，我们将使用命名约定：
 
-* 对于用户已部署 NVA 并已将其他虚拟网络作为辐射 (VNet 2 和 VNet 4 的虚拟网络 **，请在) 下面的 "** NVA vnet"。
-* 连接到 NVA VNet 的虚拟网络的 "NVA 轮辐" (VNet 5、VNet 6、VNet 7 和中的 VNet 8 **，如下所)** 示。
-* 对于连接到未使用 NVA 或其他 Vnet 对等互连的虚拟 WAN 的虚拟网络，"NVA Vnet" 在 **连接矩阵** 中 (VNet 1 和 vnet 3，请在下面) 。
+* 对于用户已部署 NVA 并已将其他虚拟网络作为轮辐 (VNet 2 和 VNet 4 的虚拟网络的 "NVA Vnet" 在本文) 的文章 **2** 中进一步细分。
+* 用于连接到 NVA VNet 的虚拟网络的 "NVA 轮辐" (VNet 5、VNet 6、VNet 7 和 VNet 8，请查看本文) 中的 **第 2** 步。
+* 对于连接到未使用 NVA 或其他 Vnet 对等互连的虚拟 WAN 的虚拟网络，"NVA Vnet" 将 (VNet 1 和 VNet 3，这篇文章)  。
 * 适用于 Microsoft 托管的虚拟 WAN 中心的 "中心"，其中 NVA Vnet 连接到。 NVA 轮辐 Vnet 无需连接到虚拟 WAN 中心，只能连接到 NVA Vnet。
 
 下面的连接矩阵汇总了此方案中支持的流：
@@ -49,7 +49,7 @@ ms.locfileid: "99626654"
 连接矩阵中的每个单元都说明了 VNet 或分支 (流的 "From" 端，表中的行标题) 与流的 "To" 端 (目标 VNet 或分支，表) 中的列标题以斜体形式进行通信。 "直接" 表示虚拟 WAN 在本机提供连接，"对等互连" 表示 VNet 中的 User-Defined 路由提供连接，"Over NVA VNet" 表示连接遍历 NVA VNet 中部署的 NVA。 考虑以下情况：
 
 * NVA 轮辐不受虚拟 WAN 的管理。 因此，用户将维护与其他 Vnet 或分支通信的机制。 与 NVA VNet 的连接是由 VNet 对等互连提供的，默认路由到 0.0.0.0/0，并将其作为下一个跃点指向 NVA
-* NVA Vnet 将知道自己的 NVA 轮辐，但不能了解连接到其他 NVA Vnet 的 NVA 轮辐。 例如，在表1中，VNet 2 知道 VNet 5 和 VNet 6，而不是关于 VNet 7 和 VNet 8 的其他分支。 需要使用静态路由将其他轮辐前缀注入到 NVA Vnet 中。
+* NVA Vnet 将知道自己的 NVA 轮辐，但不能了解连接到其他 NVA Vnet 的 NVA 轮辐。 例如，在本文的第2图中，VNet 2 知道 VNet 5 和 VNet 6，而不是关于 VNet 7 和 VNet 8 的其他分支。 需要使用静态路由将其他轮辐前缀注入到 NVA Vnet 中。
 * 同样，分支和非 NVA Vnet 将不知道任何 NVA 轮辐，因为 NVA 轮辐未连接到虚拟 WAN hub。 因此，此处还需要静态路由。
 
 考虑到 NVA 轮辐不受虚拟 WAN 管理，所有其他行都显示相同的连接模式。 因此，单个路由表 (默认) 会执行以下操作：

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/25/2021
 ms.author: shhazam
-ms.openlocfilehash: d11154e26e2ffe97a1ea102a11dddb746db9433a
-ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
+ms.openlocfilehash: 10246277715d23f42eb0bd17d19794b8d4503f3f
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99809263"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100521860"
 ---
 # <a name="security-recommendations"></a>安全建议
 
@@ -60,7 +60,6 @@ Defender for IoT 会扫描你的 Azure 资源和 IoT 设备，并提供安全建
 | 中 | 默认 IP 筛选策略应为“拒绝” | IoT 中心 | “IP 筛选配置”应为允许的流量定义了规则，并应默认拒绝其他所有流量。 |
 | 中 | IP 筛选规则包括很大的 IP 范围 | IoT 中心 | “允许”IP 筛选规则源 IP 范围太大。 过度宽松的规则可能会将 IoT 中心暴露给恶意行动者。 |
 | 低 | 在 IoT 中心启用诊断日志 | IoT 中心 | 启用日志并将其保留长达一年的时间。 通过保留日志，可以在发生安全事件或网络遭到入侵时重新创建活动线索，以用于调查目的。 |
-
 
 ## <a name="next-steps"></a>后续步骤
 

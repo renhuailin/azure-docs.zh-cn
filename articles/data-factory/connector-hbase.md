@@ -1,22 +1,17 @@
 ---
 title: 使用 Azure 数据工厂从 HBase 复制数据
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 HBase 复制到支持的接收器数据存储。
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: f2d10a6150a6e6957b303ca391c97e166342111c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 02f4b88b1dab99b3b052f59f91f7869d8aedc77f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81417251"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100388356"
 ---
 # <a name="copy-data-from-hbase-using-azure-data-factory"></a>使用 Azure 数据工厂从 HBase 复制数据 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -157,7 +152,7 @@ HBase 链接服务支持以下属性：
 
 ### <a name="hbasesource-as-source"></a>以 HBaseSource 作为源
 
-要从 HBase 复制数据，请将复制活动中的源类型设置为“HBaseSource”  。 复制活动**source**部分支持以下属性：
+要从 HBase 复制数据，请将复制活动中的源类型设置为“HBaseSource”  。 复制活动 **source** 部分支持以下属性：
 
 | 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |

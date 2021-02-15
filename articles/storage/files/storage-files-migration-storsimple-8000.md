@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 76a244810042adf3cec64b15fe847c5b684527c2
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 502776e85eaafa46fb2b5ce45ca3bd937e303566
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98631178"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100366204"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>StorSimple 8100 和8600迁移到 Azure 文件同步
 
@@ -33,12 +33,12 @@ StorSimple 8000 系列将在2022年12月 [结束](https://support.microsoft.com/
 
 ### <a name="migration-cost-summary"></a>迁移成本摘要
 
-通过 StorSimple 数据管理器资源中的数据转换服务作业从 StorSimple 卷迁移到 Azure 文件共享是免费的。 迁移期间和之后可能会产生其他成本：
+通过 StorSimple 数据管理器资源中的迁移作业从 StorSimple 卷迁移到 Azure 文件共享是免费的。 迁移期间和之后可能会产生其他成本：
 
 * **网络出口：** StorSimple 文件位于特定 Azure 区域内的存储帐户中。 如果预配的 Azure 文件共享将迁移到位于同一 Azure 区域的存储帐户中，则不会发生出口费用。 在此迁移过程中，你可以将文件移动到其他区域中的存储帐户。 在这种情况下，出口费用将适用于你。
 * **Azure 文件共享事务：** 如果将文件复制到 Azure 文件共享中 (作为迁移的一部分，或者在一个) 之外，将应用事务成本作为文件和元数据。 作为最佳方案，请在迁移过程中在事务优化层上启动 Azure 文件共享。 迁移完成后，切换到所需的层。 以下阶段将在适当的时间点调用此。
 * **更改 Azure 文件共享层：** 更改 Azure 文件共享的层成本事务。 在大多数情况下，遵循上一要点的建议会更经济高效。
-* **存储成本：** 此迁移开始将文件复制到 Azure 文件共享时，会消耗和计费 Azure 文件存储。
+* **存储成本：** 此迁移开始将文件复制到 Azure 文件共享时，会消耗和计费 Azure 文件存储。 迁移的备份将成为 [Azure 文件共享快照](storage-snapshots-files.md)。 文件共享快照仅对它们所包含的差异使用存储容量。
 * **StorSimple：** 在有机会取消预配 StorSimple 设备和存储帐户之前，将继续进行存储、备份和设备的 StorSimple 成本。
 
 ### <a name="direct-share-access-vs-azure-file-sync"></a>直接共享访问与 Azure 文件同步
@@ -49,7 +49,7 @@ Azure 文件共享公开了一系列全新的机会来构建文件服务部署�
 
 Azure 文件同步是一种 Microsoft 云服务，基于两个主要组件：
 
-* 文件同步和云分层。
+* 用于在任何 Windows Server 上创建性能访问缓存的文件同步和云分层。
 * 作为 Azure 中的本机存储的文件共享，可通过多个协议（如 SMB 和文件 REST）进行访问。
 
 Azure 文件共享在存储的文件（如属性、权限和时间戳）上保留重要的文件保真度。 使用 Azure 文件共享时，应用程序或服务不再需要解释存储在云中的文件和文件夹。 你可以通过熟悉的协议和客户端（如 Windows 文件资源管理器）以本机方式访问它们。 Azure 文件共享允许你将常规用途的文件服务器数据和应用程序数据存储在云中。 Azure 文件共享的备份是一种内置功能，可以通过 Azure 备份进行进一步增强。
@@ -61,14 +61,14 @@ Azure 文件共享在存储的文件（如属性、权限和时间戳）上保�
 
 ### <a name="storsimple-service-data-encryption-key"></a>StorSimple 服务数据加密密钥
 
-首次设置 StorSimple 设备时，它会生成服务数据加密密钥，并指示你安全地存储密钥。 此密钥用于对关联的 Azure 存储帐户中的所有数据进行加密，StorSimple 设备在该帐户中存储文件。
+首次设置 StorSimple 设备时，会生成 "服务数据加密密钥"，并指示你安全地存储密钥。 此密钥用于对关联的 Azure 存储帐户中的所有数据进行加密，StorSimple 设备在该帐户中存储文件。
 
-若要成功迁移，服务数据加密密钥是必需的。 现在是从记录中为库存中的每个设备检索此密钥的好时机。
+成功迁移需要 "服务数据加密密钥"。 现在是从记录中检索此密钥的好时机，其中每个设备对应于库存。
 
 如果在记录中找不到密钥，则可以从设备检索密钥。 每个设备都有一个唯一的加密密钥。 检索密钥：
 
-* 通过 Azure 门户 Microsoft Azure 提供支持请求。 请求的内容应具有 StorSimple 设备序列号和检索 "服务数据加密密钥" 的请求。
-* StorSimple 支持工程师将与你联系，请求提供屏幕共享会议。
+* 通过 Azure 门户 Microsoft Azure 提供支持请求。 请求应包含 StorSimple 设备序列号 (s) 和检索 "服务数据加密密钥" 的请求。
+* StorSimple 支持工程师将与你联系，请求虚拟会议。
 * 确保在会议开始之前， [通过串行控制台](../../storsimple/storsimple-8000-windows-powershell-administration.md#connect-to-windows-powershell-for-storsimple-via-the-device-serial-console) 或通过 [远程 PowerShell 会话](../../storsimple/storsimple-8000-windows-powershell-administration.md#connect-remotely-to-storsimple-using-windows-powershell-for-storsimple)连接到 StorSimple 设备。
 
 > [!CAUTION]
@@ -81,15 +81,21 @@ Azure 文件共享在存储的文件（如属性、权限和时间戳）上保�
 ### <a name="storsimple-volume-backups"></a>StorSimple 卷备份
 
 StorSimple 在卷级别上提供差异备份。 Azure 文件共享还具有这种功能，称为共享快照。
+迁移作业只能移动备份，而不能移动实时卷中的数据。 因此，最新的备份应始终位于迁移中移动的备份列表上。
 
-决定是否作为迁移的一部分，还会有移动任何备份的义务。
+决定是否需要在迁移期间移动任何旧备份。
+最佳做法是使此列表尽可能小，使迁移作业的完成速度更快。
+
+若要标识必须迁移的关键备份，请创建备份策略的清单。 例如：
+* 最新备份。  (注意：最新备份应始终属于此列表。 ) 
+* 一个月备份，每月12个月。
+* 每年备份一次，三年。 
+
+稍后，在创建迁移作业时，可以使用此列表来确定必须迁移的具体 StorSimple 卷备份，以满足列表中的要求。
 
 > [!CAUTION]
-> 如果必须从 StorSimple 卷迁移备份，请停止。
->
-> 当前只能迁移最近的卷备份。 备份迁移支持将于2020年底送达。 如果你现在开始，你稍后不能 "启用螺栓"。 在即将推出的版本中，必须将备份从最旧到最新的 Azure 文件共享 "播放"，并在两者之间进行 Azure 文件共享快照。
-
-如果要仅迁移实时数据且不需要备份，则可以继续执行本指南。 如果有一个月或两个短期的备份保留要求，则可以决定立即继续迁移，并在该时间段后取消预配 StorSimple 资源。 此方法允许你根据需要在 Azure 文件共享端创建尽可能多的备份历史记录。 如果你将两个系统都保持运行状态，则会产生额外的费用，这使得如果你需要的备份保留期超过短期，则不应考虑这种方法。
+> 不支持选择超过 **50** StorSimple 卷备份。
+> 迁移作业只能移动备份，而不能从实时卷中移动数据。 因此，最新备份与实时数据最接近，因此应始终是要在迁移中移动的备份列表的一部分。
 
 ### <a name="map-your-existing-storsimple-volumes-to-azure-file-shares"></a>将现有 StorSimple 卷映射到 Azure 文件共享
 
@@ -103,27 +109,22 @@ StorSimple 在卷级别上提供差异备份。 Azure 文件共享还具有这�
 
 最佳做法是部署具有一个文件共享的存储帐户。 如果有存档共享，则可以将多个 Azure 文件共享加入同一存储帐户。
 
-这些注意事项更适用于通过 Azure VM 或服务) 将 [云访问权限定向](#direct-share-access-vs-azure-file-sync) 到 Azure 文件同步 (。如果你计划仅在这些共享上使用 Azure 文件同步，则可以将多个组分组到单个 Azure 存储帐户中。 另外，请考虑将应用程序直接转移到云中，然后再直接访问文件共享。 或者，你可以开始使用 Azure 中的服务，这些服务还会受益于提供更高的 IOPS 和吞吐量。
+这些注意事项更适用于通过 Azure VM 或服务) 将 [云访问权限定向](#direct-share-access-vs-azure-file-sync) 到 Azure 文件同步 (。如果计划在这些共享上以独占方式使用 Azure 文件同步，则可以将多个组分组到单个 Azure 存储帐户中。 将来，你可能希望将应用程序直接转移到云中，然后将直接访问文件共享，这种情况将从具有更高的 IOPS 和吞吐量中获益。 或者，你可以开始使用 Azure 中的服务，这些服务还会受益于具有更高的 IOPS 和吞吐量。
 
 如果已创建共享列表，请将每个共享映射到它将驻留的存储帐户。
 
 > [!IMPORTANT]
 > 确定 Azure 区域，并确保每个存储帐户和 Azure 文件同步资源与所选的区域匹配。
+> 请勿立即配置存储帐户的网络和防火墙设置。 此时进行这些配置将无法进行迁移。 完成迁移后，请配置这些 Azure 存储设置。
 
 ### <a name="phase-1-summary"></a>阶段1摘要
 
 阶段 1 末尾：
 
 * 你可以很好地了解 StorSimple 设备和卷。
-* 由于已为每个 StorSimple 设备检索服务数据加密密钥，数据转换服务已准备好访问云中的 StorSimple 卷。
-* 你计划了需要迁移的卷，以及如何将你的卷映射到相应数量的 Azure 文件共享和存储帐户。
-
-> [!CAUTION]
-> 如果必须从 StorSimple 卷迁移备份，请 **在此处停止**。
->
-> 此迁移方法依赖于当前无法迁移备份的新数据转换服务功能。 备份迁移支持将于2020年底送达。 当前只能迁移实时数据。 如果你现在开始，你稍后不能 "启用螺栓"。 必须将备份 "播放" 从最旧到最新的 Azure 文件共享备份到实时数据，并在两者之间进行 Azure 文件共享快照。
-
-如果要仅迁移实时数据且不需要备份，则可以继续执行本指南。
+* 数据管理器服务已准备好访问云中的 StorSimple 卷，因为你已为每个 StorSimple 设备检索了 "服务数据加密密钥"。
+* 如果需要迁移的卷和 (备份超出了需要迁移的最新) ，则可以使用该计划。
+* 知道如何将卷映射到相应数量的 Azure 文件共享和存储帐户。
 
 ## <a name="phase-2-deploy-azure-storage-and-migration-resources"></a>阶段2：部署 Azure 存储和迁移资源
 
@@ -133,9 +134,12 @@ StorSimple 在卷级别上提供差异备份。 Azure 文件共享还具有这�
 
 你可能需要部署多个 Azure 存储帐户。 根据你的部署计划，每个 Azure 文件共享都将保留较少数量的 Azure 文件共享，这将在本文前面的部分中完成。 请参阅 Azure 门户 [部署计划的存储帐户](../common/storage-account-create.md#create-a-storage-account)。 对于任何新的存储帐户，请考虑遵循以下基本设置。
 
+> [!IMPORTANT]
+> 不要现在为你的存储帐户配置网络和防火墙设置。 此时进行这些配置将无法进行迁移。 完成迁移后，请配置这些 Azure 存储设置。
+
 #### <a name="subscription"></a>订阅
 
-你可以使用与你的 StorSimple 部署相同的订阅，也可以使用其他订阅。 唯一的限制是，你的订阅必须与 StorSimple 订阅位于同一个 Azure Active Directory 租户中。 在开始迁移之前，请考虑将 StorSimple 订阅移动到正确的租户。 只能移动整个订阅。 单个 StorSimple 资源不能移到不同的租户或订阅。
+你可以使用与你的 StorSimple 部署相同的订阅，也可以使用其他订阅。 唯一的限制是，你的订阅必须与 StorSimple 订阅位于同一个 Azure Active Directory 租户中。 在开始迁移之前，请考虑将 StorSimple 订阅移动到相应的租户。 只能移动整个订阅，不能将单个 StorSimple 资源移到不同的租户或订阅。
 
 #### <a name="resource-group"></a>资源组
 
@@ -163,7 +167,7 @@ StorSimple 在卷级别上提供差异备份。 Azure 文件共享还具有这�
 * 如果需要 [高级 Azure 文件共享的性能](understanding-billing.md#provisioned-model)，请选择 "高级存储"。
 * 为常规用途文件服务器工作负荷（包括热数据和存档数据）选择 "标准存储"。 如果在云中共享中的唯一工作负荷将 Azure 文件同步，请选择 "标准存储"。
 
-#### <a name="account-kind"></a>帐户种类
+#### <a name="account-kind"></a>帐户类型
 
 * 对于标准存储，请选择 *StorageV2 (常规用途 v2)*。
 * 对于高级文件共享，请选择 " *FileStorage*"。
@@ -197,7 +201,7 @@ StorSimple 在卷级别上提供差异备份。 Azure 文件共享还具有这�
 
 * 与较小的 5 TiB 文件共享相比，性能会大大增加 (例如，IOPS) 的10倍。
 * 迁移的速度要快得多。
-* 确保文件共享的容量足以容纳要迁移到其中的所有数据。
+* 确保文件共享的容量足以容纳要迁移到其中的所有数据，包括存储容量差异备份所需的所有数据。
 * 覆盖未来的增长。
 
 ### <a name="azure-file-shares"></a>Azure 文件共享
@@ -232,24 +236,57 @@ StorSimple 在卷级别上提供差异备份。 Azure 文件共享还具有这�
 
 ## <a name="phase-3-create-and-run-a-migration-job"></a>阶段3：创建和运行迁移作业
 
-本部分介绍如何设置迁移作业，并仔细地将 StorSimple 卷上的目录映射到所选的目标 Azure 文件共享。 若要开始，请转到 StorSimple 数据管理器，查找菜单上的 " **作业定义** "，然后选择 " **+ 作业定义**"。 目标存储类型为默认的 **Azure 文件共享**。
+本部分介绍如何设置迁移作业，并仔细地将 StorSimple 卷上的目录映射到所选的目标 Azure 文件共享。 若要开始，请转到 StorSimple 数据管理器，查找菜单上的 " **作业定义** "，然后选择 " **+ 作业定义**"。 正确的目标存储类型为默认值： **Azure 文件共享**。
 
 ![StorSimple 8000 系列迁移作业类型。](media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-new-job-type.png "作业定义 Azure 门户的屏幕截图，其中打开了新的 "作业定义" 对话框，该对话框要求提供作业类型： "复制到文件共享" 或 "blob 容器"。")
 
-> [!IMPORTANT]
-> 在运行任何迁移作业之前，请停止 StorSimple 卷的任何自动计划的备份。
-
 :::row:::
     :::column:::
-        ![StorSimple 8000 系列迁移作业。](media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-new-job.png "数据转换服务作业的新作业创建窗体的屏幕截图。")
+        ![StorSimple 8000 系列迁移作业。](media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-new-job.png "迁移作业的新作业创建窗体的屏幕截图。")
     :::column-end:::
     :::column:::
-        **作业定义名称**</br>此名称应指示你要移动的文件集。 为其提供类似于 Azure 文件共享的名称是一种很好的做法。 </br></br>**作业运行的位置**</br>选择区域时，必须选择与 StorSimple 存储帐户相同的区域，如果该帐户不可用，则必须选择该区域。 </br></br><h3>源</h3>**源订阅**</br>选择要在其中存储 StorSimple Device Manager 资源的订阅。 </br></br>**StorSimple 资源**</br>选择你的 StorSimple Device Manager 你的设备已注册到。 </br></br>**服务数据加密密钥**</br>请查看 [本文前面的部分](#storsimple-service-data-encryption-key) ，以防找不到记录中的密钥。 </br></br>**设备**</br>选择包含要迁移的卷的 StorSimple 设备。 </br></br>**数据量(Volume)**</br>选择源卷。 稍后你将决定是否要将整个卷或子目录迁移到目标 Azure 文件共享中。 </br></br><h3>目标</h3>选择 "订阅"、"存储帐户" 和 "Azure 文件共享" 作为此迁移作业的目标。
+        **作业定义名称**</br>此名称应指示你要移动的文件集。 为其提供类似于 Azure 文件共享的名称是一种很好的做法。 </br></br>**作业运行的位置**</br>选择区域时，必须选择与 StorSimple 存储帐户相同的区域，如果该帐户不可用，则必须选择该区域。 </br></br><h3>源</h3>**源订阅**</br>选择要在其中存储 StorSimple Device Manager 资源的订阅。 </br></br>**StorSimple 资源**</br>选择你的 StorSimple Device Manager 你的设备已注册到。 </br></br>**服务数据加密密钥**</br>请查看 [本文前面的部分](#storsimple-service-data-encryption-key) ，以防找不到记录中的密钥。 </br></br>**设备**</br>选择包含要迁移的卷的 StorSimple 设备。 </br></br>**Volume**</br>选择源卷。 稍后你将决定是否要将整个卷或子目录迁移到目标 Azure 文件共享中。</br></br> **卷备份**</br>你可以选择 " *选择卷备份* "，选择要作为此作业的一部分移动的特定备份。 本文中即将发布的 [专用部分](#selecting-volume-backups-to-migrate) 详细介绍了该过程。</br></br><h3>目标</h3>选择 "订阅"、"存储帐户" 和 "Azure 文件共享" 作为此迁移作业的目标。</br></br><h3>目录映射</h3>[本文中的专用部分](#directory-mapping)讨论了所有相关的详细信息。
     :::column-end:::
 :::row-end:::
 
-> [!IMPORTANT]
-> 将使用最新的卷备份来执行迁移。 请确保至少存在一个卷备份，否则作业将失败。 还要确保最新的备份是最新的，以便尽可能小地使实时共享保持增量。 在运行刚刚创建的作业 *之前* ，可以手动触发并完成其他卷备份。
+### <a name="selecting-volume-backups-to-migrate"></a>选择要迁移的卷备份
+
+选择需要迁移的备份有一些重要方面：
+
+- 迁移作业只能移动备份，而不能移动实时卷中的数据。 因此，最新的备份与实时数据最接近，应始终位于迁移中移动的备份列表上。
+- 请确保最新的备份是最新的，以便尽可能小地将差异保存到实时共享。 在创建迁移作业之前，有必要手动触发并完成其他卷备份。 实时共享的小增量将改善迁移体验。 如果此增量可以为零，则不会对 StorSimple 卷进行更多更改，因为在列表中创建了最新的备份，然后阶段5：用户的 "剪切" 将大大简化和加速。
+- 必须 **从最旧到最新** 的备份将备份播放到 Azure 文件共享。 在迁移作业运行后，不能将较旧的备份 "分类到" Azure 文件共享上的备份列表。 因此，在创建作业 *之前* ，必须确保备份列表已完成。 
+- 创建作业后，不能修改作业中的备份列表，即使作业从未运行也是如此。 
+
+:::row:::
+    :::column:::        
+        :::image type="content" source="media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-job-select-backups.png" alt-text="新作业创建窗体的屏幕截图，详细介绍了为迁移选择了 StorSimple 备份的部分。" lightbox="media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-job-select-backups-expanded.png":::
+    :::column-end:::
+    :::column:::
+        若要为迁移作业选择 StorSimple 卷的备份，请在 "作业创建" 窗体上选择 " *选择卷备份* "。
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        :::image type="content" source="media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-job-select-backups-annotated.png" alt-text="显示用于选择备份的边栏选项卡上半部分的图像列出了所有可用的备份。选定的备份将在此列表中灰显，并添加到边栏选项卡下半部分的第二个列表中。还可再次将其删除。" lightbox="media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-job-select-backups-annotated.png":::
+    :::column-end:::
+    :::column:::
+        当 "备份选择" 边栏选项卡打开时，它将分为两个列表。 在第一个列表中，将显示所有可用备份。 您可以通过筛选特定时间范围来展开和缩小结果集。  (参阅下一节)  </br></br>选定的备份将显示为灰显，并将其添加到边栏选项卡下半部分的第二个列表中。 第二个列表显示选定要迁移的所有备份。 还可以再次删除在错误中选择的备份。
+        > [!CAUTION]
+        > 你必须选择要迁移的 **所有** 备份。 以后不能再添加旧备份。 创建作业后，你无法修改作业来更改你的选择。
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        :::image type="content" source="media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-job-select-backups-time.png" alt-text="显示 &quot;备份选择&quot; 边栏选项卡的时间范围选择的屏幕截图。" lightbox="media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-job-select-backups-time-expanded.png":::
+    :::column-end:::
+    :::column:::
+        默认情况下，该列表被筛选为在过去7天内显示 StorSimple 卷备份，以便轻松选择最新的备份。 对于之前的备份，请使用边栏选项卡顶部的时间范围筛选器。 你可以从现有筛选器中进行选择，也可以设置自定义时间范围以便仅筛选在此期间所进行的备份。
+    :::column-end:::
+:::row-end:::
+
+> [!CAUTION]
+> 不支持选择超过 50 StorSimple 卷备份。 具有大量备份的作业可能会失败。
 
 ### <a name="directory-mapping"></a>目录映射
 
@@ -310,11 +347,30 @@ StorSimple 在卷级别上提供差异备份。 Azure 文件共享还具有这�
 * 与 Windows 一样，文件夹名称不区分大小写，但保留大小写。
 
 > [!NOTE]
-> 转换作业不会复制 *\System Volume Information* 文件夹和 StorSimple 卷上的 *$Recycle* 的内容。
+> 迁移作业不会复制 *\System Volume Information* 文件夹和 StorSimple 卷上的 *$Recycle* 的内容。
+
+### <a name="run-a-migration-job"></a>运行迁移作业
+
+在部署到资源组的数据管理器资源中的 " *作业定义* " 下列出了迁移作业。
+从作业定义列表中，选择要运行的作业。
+
+在打开的 "作业" 边栏选项卡中，你可以在下面的列表中看到你的作业运行。 最初，此列表将为空。 在边栏选项卡顶部，有一个名为 " *运行作业*" 的命令。 此命令不会立即运行作业，它将打开 " **作业** " "运行" 边栏选项卡：
+
+:::row:::
+    :::column:::
+        :::image type="content" source="media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-run-job.png" alt-text="显示 &quot;作业运行&quot; 边栏选项卡，其中打开了下拉控件的图像，其中显示了要迁移的选定备份。最早的备份已突出显示，需要首先选择它。" lightbox="media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-run-job-expanded.png":::
+    :::column-end:::
+    :::column:::
+        在此版本中，每个作业必须运行多次。 </br></br>**必须从要迁移的备份列表中以最早的备份开始。** 图像中突出显示 () </br></br>每次选择备份时，您都要再次运行该作业，每次进行一次更新的备份。
+        </br></br>
+        > [!CAUTION]
+        > 必须首先选择最早选择的备份，然后每次使用递增的备份运行迁移作业。 始终必须手动维护备份顺序-从最旧到最新。
+    :::column-end:::
+:::row-end:::
 
 ### <a name="phase-3-summary"></a>阶段3摘要
 
-在第3阶段结束时，你将从 StorSimple 卷运行数据转换服务作业到 Azure 文件共享。 现在，你可以专注于在共享的迁移作业完成) 或将信息工作者和应用的共享访问权限定向到 Azure 文件共享后，为共享 (设置 Azure 文件同步。
+在第3阶段结束时，你将至少运行一个从 StorSimple 卷到 Azure 文件共享的迁移作业 () 。 你将从最早到最新的备份，多次运行相同的迁移作业。 你现在可以重点关注为共享 (设置 Azure 文件同步，一旦共享的迁移作业已完成) 或将信息工作者和应用的共享访问权限定向到 Azure 文件共享。
 
 ## <a name="phase-4-access-your-azure-file-shares"></a>阶段4：访问 Azure 文件共享
 
@@ -371,7 +427,7 @@ StorSimple 在卷级别上提供差异备份。 Azure 文件共享还具有这�
 
 :::row:::
     :::column:::
-        [![有关如何安全地将 Azure 文件共享直接公开给信息工作者和应用程序的分步指南和演示-单击播放！](./media/storage-files-migration-storsimple-8000/azure-files-direct-access-video-placeholder.png)](https://youtu.be/KG0OX0RgytI)
+        [![有关如何安全地将 Azure 文件共享直接公开给信息工作者和应用程序的分步指南和演示-单击播放！](./media/storage-files-migration-storsimple-8000/azure-files-direct-access-video-placeholder.png)](https://youtu.be/a-Twfus0HWE)
     :::column-end:::
     :::column:::
         此视频介绍了如何通过五个简单的步骤将 Azure 文件共享直接安全地公开给信息工作者和应用。</br>
@@ -391,21 +447,21 @@ StorSimple 在卷级别上提供差异备份。 Azure 文件共享还具有这�
 
 ### <a name="phase-4-summary"></a>阶段4摘要
 
-在此阶段中，你已在 StorSimple 数据管理器中创建并运行多个数据转换服务作业。 这些作业已将文件和文件夹迁移到 Azure 文件共享。 你还 Azure 文件同步或准备好了网络和存储帐户，以便进行直接共享访问。
+在此阶段中，你已在 StorSimple 数据管理器中创建并运行了多个迁移作业。 这些作业已将文件和文件夹迁移到 Azure 文件共享。 你还 Azure 文件同步或准备好了网络和存储帐户，以便进行直接共享访问。
 
 ## <a name="phase-5-user-cut-over"></a>阶段5：用户剪切
 
 此阶段就是对迁移进行汇总：
 
 * 规划停机时间。
-* 当阶段3中的数据转换作业正在运行时，请及时了解你的用户和应用在 StorSimple 端产生的任何更改。
+* 在阶段3中的迁移作业运行时，了解你的用户和应用在 StorSimple 端产生的任何更改。
 * 通过直接共享访问 Azure 文件同步或 Azure 文件共享将用户转移到新的 Windows Server 实例。
 
 ### <a name="plan-your-downtime"></a>计划停机时间
 
 此迁移方法对于用户和应用需要一定的停机时间。 目标是将停机时间保持在最低限度。 以下注意事项可能会有所帮助：
 
-* 在运行数据转换作业时，保留 StorSimple 卷可用。
+* 在运行迁移作业时，保留 StorSimple 卷可用。
 * 为共享运行完数据迁移作业后，就可以从 StorSimple 卷或共享中删除用户访问权限， (至少) 写入访问权限。 最终 RoboCopy 将捕获 Azure 文件共享。 然后，您可以对用户进行剪切。 运行 RoboCopy 的位置取决于您选择使用 Azure 文件同步还是直接共享访问。 关于 RoboCopy 的即将发布的部分介绍了该主题。
 * 完成 RoboCopy 追赶后，便可以通过 Azure 文件共享直接向用户公开新位置，也可以使用 Azure 文件同步将 Windows Server 实例上的 SMB 共享公开给用户。通常，使用 DFS N 部署可快速高效地完成剪切。 它会使现有共享地址保持一致，并 repoint 到包含已迁移文件和文件夹的新位置。
 
@@ -438,7 +494,7 @@ StorSimple 在卷级别上提供差异备份。 Azure 文件共享还具有这�
 
 1. 在迁移过程中，需要与在 StorSimple 端产生的用户或应用所做的更改保持同步。
 1. 在使用 Azure 文件同步的情况下： StorSimple 设备具有填充的缓存和 Windows Server 实例，其中只包含一个命名空间，此时不会在本地存储任何文件内容。 最终 RoboCopy 可以通过在本地缓存的文件内容中提取尽可能多的内容来快速开始本地 Azure 文件同步缓存，并且可以在 Azure 文件同步服务器上使用。
-1. 由于无效字符，数据转换作业可能会遗留某些文件。 如果是这样，请将它们复制到已启用 Azure 文件同步的 Windows Server 实例。 稍后，你可以对其进行调整以使其同步。如果不将 Azure 文件同步用于特定共享，则可以更好地使用 StorSimple 卷上的无效字符来重命名文件。 然后直接对 Azure 文件共享运行 RoboCopy。
+1. 由于无效的字符，迁移作业可能会遗留某些文件。 如果是这样，请将它们复制到已启用 Azure 文件同步的 Windows Server 实例。 稍后，你可以对其进行调整以使其同步。如果不将 Azure 文件同步用于特定共享，则可以更好地使用 StorSimple 卷上的无效字符来重命名文件。 然后直接对 Azure 文件共享运行 RoboCopy。
 
 > [!WARNING]
 > Windows Server 2019 中的 Robocopy 目前遇到一个问题，该问题会导致在目标服务器上 Azure 文件同步的文件分层，使其在使用 robocopy 的/MIR 函数时重新复制从源服务器上并重新上传到 Azure。 在2019以外的 Windows Server 上，必须使用 Robocopy。 首选为 Windows Server 2016。 如果通过 Windows 更新解决该问题，则将更新此注释。

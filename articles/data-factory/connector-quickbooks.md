@@ -1,23 +1,18 @@
 ---
 title: 使用 Azure 数据工厂（预览版）从 QuickBooks Online 复制数据
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 QuickBooks Online 复制到受支持的接收器数据存储。
-services: data-factory
-documentationcenter: ''
 author: linda33wj
 ms.author: jingwang
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/15/2021
-ms.openlocfilehash: ecdb0e55aa7127a373e63612908ed58109c1f8e2
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: eecbcb817ad31480f8f6c3c7272328d06b17c081
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98233160"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100384055"
 ---
 # <a name="copy-data-from-quickbooks-online-using-azure-data-factory-preview"></a>使用 Azure 数据工厂（预览版）从 QuickBooks Online 复制数据
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -52,7 +47,7 @@ QuickBooks 链接的服务支持以下属性：
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**QuickBooks** | 是 |
 | connectionProperties | 一组属性，定义如何连接到 QuickBooks。 | 是 |
-| _在 `connectionProperties` 下：_ _* | | |
+| 在 `connectionProperties` 下： | | |
 | endpoint | QuickBooks Online 服务器的终结点。 （即 quickbooks.api.intuit.com）  | 是 |
 | companyId | QuickBooks 公司授权的公司 ID。 有关如何查找公司 ID 的信息，请参阅[如何查找我的公司 ID](https://quickbooks.intuit.com/community/Getting-Started/How-do-I-find-my-Company-ID/m-p/185551)。 | 是 |
 | consumerKey | 用于 OAuth 2.0 身份验证的 QuickBooks Online 应用程序的客户端 ID。 可从[此处](https://developer.intuit.com/app/developer/qbo/docs/develop/authentication-and-authorization/oauth-2.0#obtain-oauth2-credentials-for-your-app)了解详细信息。 | 是 |
@@ -60,7 +55,7 @@ QuickBooks 链接的服务支持以下属性：
 | refreshToken | 与 QuickBooks 应用程序关联的 OAuth 2.0 刷新令牌。 可从[此处](https://developer.intuit.com/app/developer/qbo/docs/develop/authentication-and-authorization/oauth-2.0#obtain-oauth2-credentials-for-your-app)了解详细信息。 请注意，刷新令牌将在 180 天后到期。 客户需要定期更新刷新令牌。 <br/>将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。| 是 |
 | useEncryptedEndpoints | 指定是否使用 HTTPS 加密数据源终结点。 默认值为 true。  | 否 |
 
-_ *示例：* *
+**示例：**
 
 ```json
 {
@@ -93,7 +88,7 @@ _ *示例：* *
 
 若要从 QuickBooks Online 复制数据，请将数据集的 type 属性设置为 **QuickBooksObject**。 支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| properties | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：**QuickBooksObject** | 是 |
 | tableName | 表的名称。 | 否（如果指定了活动源中的“query”） |
@@ -123,10 +118,10 @@ _ *示例：* *
 
 要从 QuickBooks Online 复制数据，请将复制活动中的源类型设置为 **QuickBooksSource**。 复制活动 **source** 部分支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| properties | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动 source 的 type 属性必须设置为：**QuickBooksSource** | 是 |
-| 查询 | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM "Bill" WHERE Id = '123'"`。 | 否（如果指定了数据集中的“tableName”） |
+| query | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM "Bill" WHERE Id = '123'"`。 | 否（如果指定了数据集中的“tableName”） |
 
 **示例：**
 
