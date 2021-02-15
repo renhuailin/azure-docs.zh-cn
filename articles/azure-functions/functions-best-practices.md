@@ -5,35 +5,32 @@ ms.assetid: 9058fb2f-8a93-4036-a921-97a0772f503c
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 89ff49b3ea5abae7ced046f714d34943a58c64a6
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 5783f8092a6435b43ab8720df18cc5200e390d46
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99428294"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100378241"
 ---
-# <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>优化 Azure Functions 的性能和可靠性
+# <a name="best-practices-for-performance-and-reliability-of-azure-functions"></a>Azure Functions 性能和可靠性的最佳实践
 
 本文为提高[无服务器](https://azure.microsoft.com/solutions/serverless/)函数应用的性能和可靠性提供了指南。  
 
-## <a name="general-best-practices"></a>常规最佳做法
-
 下面是有关如何使用 Azure Functions 生成和构建无服务器解决方案的最佳做法。
 
-### <a name="avoid-long-running-functions"></a>避免使用长时间运行的函数
+## <a name="avoid-long-running-functions"></a>避免使用长时间运行的函数
 
-长时间运行的大型函数可能会引起意外超时问题。 若要详细了解给定托管计划的超时，请参阅[函数应用超时持续时间](functions-scale.md#timeout)。 
+长时间运行的大型函数可能会引起意外超时问题。 若要详细了解给定托管计划的超时，请参阅[函数应用超时持续时间](functions-scale.md#timeout)。
 
-由于含有许多 Node.js 依赖项，函数规模可能会变得很大。 导入依赖项也会导致加载时间增加，引起意外的超时问题。 显式和隐式加载依赖项。 由代码加载的单个模块可能会加载自己的附加模块。 
+由于含有许多 Node.js 依赖项，函数规模可能会变得很大。 导入依赖项也会导致加载时间增加，引起意外的超时问题。 显式和隐式加载依赖项。 由代码加载的单个模块可能会加载自己的附加模块。
 
 尽可能将大型函数重构为可协同工作且快速返回响应的较小函数集。 例如，webhook 或 HTTP 触发器函数可能需要在特定时间限制内确认响应；webhook 需要快速响应，这很常见。 可将 HTTP 触发器有效负载传递到由队列触发器函数处理的队列。 此方法允许延迟实际工作并返回即时响应。
 
-
-### <a name="cross-function-communication"></a>跨函数通信
+## <a name="cross-function-communication"></a>跨函数通信
 
 [Durable Functions](durable/durable-functions-overview.md) 和 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)用于管理状态转换以及多个函数之间的通信。
 
-如果不使用 Durable Functions 或逻辑应用来集成多个函数，则最好是将存储队列用于跨函数通信。 主要原因是与其他存储选项相比，存储队列成本更低且更易预配。 
+如果不使用 Durable Functions 或逻辑应用来集成多个函数，则最好是将存储队列用于跨函数通信。 主要原因是与其他存储选项相比，存储队列成本更低且更易预配。
 
 存储队列中各消息的大小限制为 64 KB。 如果需要在函数之间传递更大的消息，可使用 Azure 服务总线队列，以在标准层中支持最大为 256 KB 的消息大小，在高级层中最大为 1 MB 的消息大小。
 
@@ -41,28 +38,26 @@ ms.locfileid: "99428294"
 
 对于支持大容量通信，事件中心十分有用。
 
+## <a name="write-functions-to-be-stateless"></a>将函数编写为无状态
 
-### <a name="write-functions-to-be-stateless"></a>将函数编写为无状态 
-
-如有可能，函数应为无状态和幂等。 将任何所需的状态信息与用户的数据相关联。 例如，正在处理的排序可能具有关联的 `state` 成员。 函数本身保持无状态时，该函数可根据该状态处理排序。 
+如有可能，函数应为无状态和幂等。 将任意所需状态信息与数据关联。 例如，正在处理的排序可能具有关联的 `state` 成员。 函数本身保持无状态时，该函数可根据该状态处理排序。
 
 对于计时器触发器，特别建议采用幂等函数。 例如，如果有必须每天运行一次的内容，则编写它，使它可在一天内的任何时间运行，并生成相同的结果。 某天没有任何工作时，可退出该函数。 此外，如果未能完成以前的运行，则下次运行应从中断的位置继续运行。
 
-
-### <a name="write-defensive-functions"></a>编写防御函数
+## <a name="write-defensive-functions"></a>编写防御函数
 
 假定任何时候函数都可能会遇到异常。 设计函数，使其具有在下次执行期间从上一失败点继续执行的能力。 请考虑需执行以下操作的方案：
 
 1. 在数据库中进行 10,000 行的查询。
 2. 为每行创建队列消息，从而处理下一行。
- 
-根据系统复杂程度，可能有：行为有误的相关下游服务，网络故障或已达配额限制等等。所有这些可在任何时间影响用户的函数。 需设计函数，使其做好该准备。
+
+根据系统的复杂程度，你可能会遇到以下情况：所涉及的下游服务的行为错误、网络中断或达到了配额限制等。所有这些都可能会影响你的函数。 需设计函数，使其做好该准备。
 
 如果将 5,000 个那些项插入到队列中进行处理，然后发生故障，代码将如何响应？ 跟踪已完成的一组中的项。 否则，下次可能再次插入它们。 这种双插入可能会严重影响工作流，因此请[将函数设置为幂等](functions-idempotent.md)。 
 
 如果已处理队列项，则允许函数不执行任何操作。
 
-利用已为 Azure Functions 平台中使用的组件提供的防御措施。 有关示例，请参阅 [Azure 存储队列触发器和绑定](functions-bindings-storage-queue-trigger.md#poison-messages)文档中的 **处理有害队列消息**。 
+利用已为 Azure Functions 平台中使用的组件提供的防御措施。 有关示例，请参阅 [Azure 存储队列触发器和绑定](functions-bindings-storage-queue-trigger.md#poison-messages)文档中的 **处理有害队列消息**。
 
 ## <a name="function-organization-best-practices"></a>函数组织最佳实践
 
@@ -85,7 +80,7 @@ ms.locfileid: "99428294"
 
 本地项目中的所有函数作为一组文件一起部署到 Azure 中的函数应用。 你可能需要单独部署单独的功能，或使用 [部署槽](./functions-deployment-slots.md) 等功能来实现某些功能，而不是其他功能。 在这种情况下，应将这些函数 (部署在单独的代码项目中，) 到不同的函数应用。
 
-### <a name="organize-functions-by-privilege"></a>按权限组织函数 
+### <a name="organize-functions-by-privilege"></a>按权限组织函数
 
 应用程序设置中存储的连接字符串和其他凭据为函数应用中的所有函数提供了关联资源中相同的权限集。 请考虑将具有特定凭据访问权限的函数数量降至最少，具体方法是将不使用这些凭据的函数移动到单独的函数应用中。 你始终可以使用诸如[函数链](/learn/modules/chain-azure-functions-data-using-bindings/)之类的技术在不同函数应用中的函数之间传递数据。  
 
@@ -99,7 +94,7 @@ ms.locfileid: "99428294"
 
 ### <a name="avoid-sharing-storage-accounts"></a>避免共享存储帐户
 
-创建函数应用时，必须将其与存储帐户相关联。 存储帐户连接在 [AzureWebJobsStorage 应用程序设置](./functions-app-settings.md#azurewebjobsstorage)中进行维护。 
+创建函数应用时，必须将其与存储帐户相关联。 存储帐户连接在 [AzureWebJobsStorage 应用程序设置](./functions-app-settings.md#azurewebjobsstorage)中进行维护。
 
 [!INCLUDE [functions-shared-storage](../../includes/functions-shared-storage.md)]
 
@@ -123,9 +118,9 @@ Function App 中的各函数共享资源。 例如，共享内存。 如果生�
 
 ### <a name="use-multiple-worker-processes"></a>使用多个工作进程
 
-默认情况下，Functions 的任何主机实例均使用单个工作进程。 若要提高性能，尤其是在单线程运行时（如 Python），请使用 [FUNCTIONS_WORKER_PROCESS_COUNT](functions-app-settings.md#functions_worker_process_count) 将每个主机的工作进程数增加 (多达10个) 。 然后，Azure Functions 会尝试在这些工作进程之间平均分配同步函数调用。 
+默认情况下，Functions 的任何主机实例均使用单个工作进程。 若要提高性能，尤其是在单线程运行时（如 Python），请使用 [FUNCTIONS_WORKER_PROCESS_COUNT](functions-app-settings.md#functions_worker_process_count) 将每个主机的工作进程数增加 (多达10个) 。 然后，Azure Functions 会尝试在这些工作进程之间平均分配同步函数调用。
 
-FUNCTIONS_WORKER_PROCESS_COUNT 适用于 Functions 在横向扩展应用程序以满足需求时创建的每个主机。 
+FUNCTIONS_WORKER_PROCESS_COUNT 适用于 Functions 在横向扩展应用程序以满足需求时创建的每个主机。
 
 ### <a name="receive-messages-in-batch-whenever-possible"></a>尽量批量接收消息
 

@@ -4,12 +4,12 @@ description: 了解如何创建专用 Azure Kubernetes 服务 (AKS) 群集
 services: container-service
 ms.topic: article
 ms.date: 7/17/2020
-ms.openlocfilehash: 2749e66375fbd808a9e87f252a813f1054ceff21
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: d3b53c860c150b5b67d38cf5d11db9f070ffb81d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99525562"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100392793"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>创建专用 Azure Kubernetes 服务群集
 
@@ -66,20 +66,20 @@ az aks create \
 > [!NOTE]
 > 如果 Docker 桥地址 CIDR (172.17.0.1/16) 与子网 CIDR 冲突，请相应地更改 Docker 桥地址。
 
-## <a name="configure-private-dns-zone"></a>配置专用 DNS 区域
+## <a name="configure-private-dns-zone"></a>配置专用 DNS 区域 
 
-可以利用以下参数配置专用 DNS 区域。
+可以利用以下参数来配置专用 DNS 区域。
 
-1. "系统" 是默认值。 如果省略了--AKS 参数，则会在节点资源组中创建专用 DNS 区域。
-2. "无" 表示 AKS 不会创建专用 DNS 区域。  这要求你引入自己的 DNS 服务器，并为专用 FQDN 配置 DNS 解析。  如果未配置 DNS 解析，则仅可在代理节点内解析 DNS，并在部署后导致群集问题。
-3. Azure global cloud 的 "自定义专用 dns 区域名称" 格式应为： `privatelink.<region>.azmk8s.io` 。 需要专用 DNS 区域的资源 Id。  此外，你将需要一个用户至少 `private dns zone contributor` 向自定义专用 dns 区域分配了角色的标识或服务主体。
+1. “System”是默认值。 如果省略 --private-dns-zone argument，AKS 将在节点资源组中创建专用 DNS 区域。
+2. “None”意味着 AKS 将不会创建专用 DNS 区域。  此操作要求你自带 DNS 服务器和配置专用 FQDN 的 DNS 解析。  如果未配置 DNS 解析，则 DNS 只能在代理节点内进行解析，并且会导致群集在部署之后出现问题。
+3. “自定义专用 dns 区域名称”应采用此 azure 全球云格式：`privatelink.<region>.azmk8s.io`。 你将需要该专用 DNS 区域的资源 ID。  此外，你将需要一个用户分配的标识或服务主体，其中至少有自定义专用 dns 区域的 `private dns zone contributor` 角色。
 
-### <a name="prerequisites"></a>必备条件
+### <a name="prerequisites"></a>先决条件
 
-* AKS 预览版0.4.71 或更高版本
+* AKS 预览版 0.4.71 或更高版本
 * API 2020-11-01 或更高版本
 
-### <a name="create-a-private-aks-cluster-with-private-dns-zone"></a>创建具有专用 DNS 区域的专用 AKS 群集
+### <a name="create-a-private-aks-cluster-with-private-dns-zone-preview"></a>使用专用 DNS 区域 (预览创建专用 AKS 群集) 
 
 ```azurecli-interactive
 az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --load-balancer-sku standard --enable-private-cluster --enable-managed-identity --assign-identity <ResourceId> --private-dns-zone [none|system|custom private dns zone ResourceId]

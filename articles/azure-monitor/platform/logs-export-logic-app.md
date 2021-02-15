@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/02/2020
-ms.openlocfilehash: 04f1eb0d9db00a2be1a4619cafe38aa18145fc78
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 21b9d73da0df5ada626500a706a19d1025de1dcc
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185991"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100391960"
 ---
 # <a name="archive-data-from-log-analytics-workspace-to-azure-storage-using-logic-app"></a>使用逻辑应用将数据从 Log Analytics 工作区存档到 Azure 存储
 本文介绍一种使用 [Azure 逻辑应用](../../logic-apps/index.yml)从 Azure Monitor 中的 Log Analytics 工作区查询数据并将其发送到 Azure 存储的方法。 如果需要导出 Azure Monitor 日志数据用于审核和符合性场景或允许其他服务检索此数据，请使用此过程。  
@@ -69,7 +69,7 @@ Azure Monitor 中的 Log Analytics 工作区和日志查询是多租户服务，
 单击“查看 + 创建”，然后选择“创建” 。 部署完成后，单击“转到资源”打开“逻辑应用设计器”。 
 
 ## <a name="create-a-trigger-for-the-logic-app"></a>为逻辑应用创建触发器
-在“从通用触发器开始”下，选择“重复”。  这会创建一个按固定间隔自动运行的逻辑应用。 在操作的“频率”框中选择“小时”，然后在“间隔”框中输入“1”以每日运行工作流一次   。
+在“从通用触发器开始”下，选择“重复”。  这会创建一个按固定间隔自动运行的逻辑应用。 在操作的“频率”框中选择“天”，然后在“间隔”框中输入 **1** 以每日运行工作流一次。  
 
 ![重复操作](media/logs-export-logicapp/recurrence-action.png)
 

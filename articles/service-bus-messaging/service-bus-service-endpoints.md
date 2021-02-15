@@ -2,14 +2,14 @@
 title: 为 Azure 服务总线配置虚拟网络服务终结点
 description: 本文提供了有关如何向虚拟网络中添加 Microsoft.ServiceBus 服务终结点的信息。
 ms.topic: article
-ms.date: 06/23/2020
+ms.date: 02/12/2021
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 8005a2c43d42908a9ad6ebea10b6a13ef381084c
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 6b168bbdc69f2d18a724084d9de694fa83d23dda
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427643"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100516135"
 ---
 # <a name="allow-access-to-azure-service-bus-namespace-from-specific-virtual-networks"></a>允许从特定虚拟网络访问 Azure 服务总线命名空间
 通过将服务总线与[虚拟网络 (VNet) 服务终结点][vnet-sep]集成可从绑定到虚拟网络的工作负荷（如虚拟机）安全地访问消息传递功能，同时在两端保护网络流量路径。
@@ -19,14 +19,14 @@ ms.locfileid: "94427643"
 然后，绑定到子网的工作负荷与相应的服务总线命名空间之间将存在专用和独立的关系，消息传递服务终结点的可观察网络地址位于公共 IP 范围内对此没有影响。
 
 >[!WARNING]
-> 实现虚拟网络集成可以防止其他 Azure 服务与服务总线交互。 例外情况是，即使在启用了网络服务终结点的情况下，也可以允许从某些受信任的服务访问服务总线资源。 有关受信任服务的列表，请参阅 [受信任服务](#trusted-microsoft-services)。
+> 实现虚拟网络集成可以防止其他 Azure 服务与服务总线交互。 例外情况是，即使启用了网络服务终结点，也可以允许从某些受信任的服务访问服务总线资源。 有关受信任服务的列表，请参阅[受信任服务](#trusted-microsoft-services)。
 >
 > 以下 Microsoft 服务必须在虚拟网络中
 > - Azure 应用服务
 > - Azure Functions
 
 > [!IMPORTANT]
-> 虚拟网络仅在[高级层](service-bus-premium-messaging.md)服务总线命名空间中受支持。 将 VNet 服务终结点与 Service Bus 一起使用时，不应在混合标准层和高级层服务总线命名空间的应用程序中启用这些终结点。 因为标准层不支持 Vnet。 此终结点仅限于高级层命名空间。
+> 虚拟网络仅在[高级层](service-bus-premium-messaging.md)服务总线命名空间中受支持。 将 VNet 服务终结点用于服务总线时，不应在混合使用标准层和高级层服务总线命名空间的应用程序中启用这些终结点。 原因是标准层不支持 VNet。 此终结点仅限于高级层命名空间。
 
 ## <a name="advanced-security-scenarios-enabled-by-vnet-integration"></a>通过 VNet 集成启用的高级安全方案 
 
@@ -45,7 +45,7 @@ ms.locfileid: "94427643"
 虚拟网络规则是服务总线命名空间与虚拟网络子网的关联。 存在此规则时，绑定到子网的所有工作负荷都有权访问服务总线命名空间。 服务总线本身永远不会建立出站连接，不需要获得访问权限，因此永远不会通过启用此规则来授予对子网的访问权限。
 
 > [!NOTE]
-> 请记住，网络服务终结点向虚拟网络中运行的应用程序提供对服务总线命名空间的访问权限。 虚拟网络控制终结点的可访问性，但不能对服务总线实体 (队列、主题或订阅) 执行哪些操作。 使用 Azure Active Directory (Azure AD) 来授权应用程序可以对命名空间及其实体执行的操作。 有关详细信息，请参阅 [使用 Azure AD 对应用程序进行身份验证和授权，以访问服务总线实体](authenticate-application.md)。
+> 请记住，网络服务终结点为在虚拟网络中运行的应用程序提供对服务总线命名空间的访问权限。 虚拟网络控制终结点的可访问性，但不能控制对服务总线实体（队列、主题或订阅）可以执行的操作。 使用 Azure Active Directory (Azure AD) 授权应用程序可以在命名空间及其实体上执行的操作。 若要详细了解，请参阅[使用 Azure AD 对应用程序进行身份验证和授权，使之能够访问服务总线实体](authenticate-application.md)。
 
 
 ## <a name="use-azure-portal"></a>使用 Azure 门户
@@ -57,7 +57,8 @@ ms.locfileid: "94427643"
     > [!NOTE]
     > 只会为“高级”命名空间显示“网络”选项卡 。  
     
-    默认情况下，“选定网络”选项处于选中状态。 如果未在此页上添加至少一个 IP 防火墙规则或虚拟网络，则可以通过公共 Internet（使用访问密钥）访问该命名空间。
+    >[!WARNING]
+    > 如果选择 " **所选网络** " 选项，并且在此页上未添加至少一个 IP 防火墙规则或虚拟网络，则可以使用访问密钥) 通过公共 internet (访问该命名空间。
 
     :::image type="content" source="./media/service-bus-ip-filtering/default-networking-page.png" alt-text="网络页面 - 默认" lightbox="./media/service-bus-ip-filtering/default-networking-page.png":::
     
@@ -88,26 +89,11 @@ ms.locfileid: "94427643"
 [!INCLUDE [service-bus-trusted-services](../../includes/service-bus-trusted-services.md)]
 
 ## <a name="use-resource-manager-template"></a>使用 Resource Manager 模板
-以下资源管理器模板支持向现有服务总线命名空间添加虚拟网络规则。
+以下示例资源管理器模板将虚拟网络规则添加到现有的服务总线命名空间。 对于网络规则，它指定虚拟网络中子网的 ID。 
 
-模板参数：
+ID 是虚拟网络子网的完全限定的资源管理器路径。 例如， `/subscriptions/{id}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnet}/subnets/default` 对于虚拟网络的默认子网。
 
-* **namespaceName** ：服务总线命名空间。
-* **virtualNetworkingSubnetId** ：虚拟网络子网的完全限定的资源管理器路径；例如，虚拟网络默认子网的 `/subscriptions/{id}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnet}/subnets/default`。
-
-> [!NOTE]
-> 虽然不可能具有拒绝规则，但 Azure 资源管理器模板的默认操作设置为“允许”，不限制连接。
-> 制定虚拟网络或防火墙规则时，必须更改“defaultAction”
-> 
-> from
-> ```json
-> "defaultAction": "Allow"
-> ```
-> to
-> ```json
-> "defaultAction": "Deny"
-> ```
->
+添加虚拟网络或防火墙规则时，将的值设置 `defaultAction` 为 `Deny` 。
 
 模板：
 
@@ -211,6 +197,9 @@ ms.locfileid: "94427643"
 ```
 
 若要部署模板，请按照 [Azure 资源管理器][lnk-deploy]的说明进行操作。
+
+> [!IMPORTANT]
+> 如果没有 IP 和虚拟网络规则，则所有流量都将流向命名空间，即使你将设置 `defaultAction` 为 `deny` 。  可以使用访问密钥) 通过公共 internet (访问命名空间。 为命名空间指定至少一个 IP 规则或虚拟网络规则，以便仅允许来自虚拟网络的指定 IP 地址或子网的流量。  
 
 ## <a name="next-steps"></a>后续步骤
 

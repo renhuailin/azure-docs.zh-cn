@@ -1,28 +1,24 @@
 ---
 title: 复制和转换 Azure Database for PostgreSQL 中的数据
 description: 了解如何使用 Azure 数据工厂复制和转换 Azure Database for PostgreSQL 中的数据。
-services: data-factory
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/01/2021
-ms.openlocfilehash: 8b1177278583bdb46f17119eb59235e70c58e806
-ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
+ms.openlocfilehash: 32c65a3e1063b29ab6458151aec42e4415a73b62
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99223079"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100381318"
 ---
 # <a name="copy-and-transform-data-in-azure-database-for-postgresql-by-using-azure-data-factory"></a>使用 Azure 数据工厂复制和转换 Azure Database for PostgreSQL 中的数据
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-本文概述如何使用 Azure 数据工厂中的复制活动将数据从和复制到 Azure Database for PostgreSQL，并使用数据流转换 Azure Database for PostgreSQL 中的数据。 若要了解 Azure 数据工厂，请阅读[介绍性文章](introduction.md)。
+本文概述了如何使用 Azure 数据工厂中的复制活动从/向 Azure Database for PostgreSQL 复制数据，以及如何使用数据流转换 Azure Database for PostgreSQL 中的数据。 若要了解 Azure 数据工厂，请阅读[介绍性文章](introduction.md)。
 
 此连接器专用于 [Azure Database for PostgreSQL 服务](../postgresql/overview.md)。 若要从位于本地或云中的通用 PostgreSQL 数据库复制数据，请使用 [PostgreSQL 连接器](connector-postgresql.md)。
 
@@ -73,7 +69,7 @@ Azure Database for PostgreSQL 链接服务支持以下属性：
 
 **示例**：
 
-**_在 Azure 密钥保管库中存储密码_* _
+***在 Azure Key Vault 中存储密码***
 
 ```json
 {
@@ -99,9 +95,9 @@ Azure Database for PostgreSQL 链接服务支持以下属性：
 
 有关可用于定义数据集的各个部分和属性的完整列表，请参阅 [Azure 数据工厂中的数据集](concepts-datasets-linked-services.md)。 本部分提供数据集中 Azure Database for PostgreSQL 支持的属性列表。
 
-要从 Azure Database for PostgreSQL 复制数据，请将数据集的 type 属性设置为 _*AzurePostgreSqlTable**。 支持以下属性：
+若要从 Azure Database for PostgreSQL 复制数据，请将数据集的 type 属性设置为 " **AzurePostgreSqlTable**"。 支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| properties | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为 AzurePostgreSqlTable  | 是 |
 | tableName | 表名称 | 否（如果指定了活动源中的“query”） |
@@ -130,7 +126,7 @@ Azure Database for PostgreSQL 链接服务支持以下属性：
 
 要从 Azure Database for PostgreSQL 复制数据，请将复制活动中的源类型设置为 **AzurePostgreSqlSource**。 复制活动 **source** 部分支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| properties | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为 **AzurePostgreSqlSource** | 是 |
 | query | 使用自定义 SQL 查询读取数据。 例如 `SELECT * FROM mytable` 或 `SELECT * FROM "MyTable"`。 请注意，在 PostgreSQL 中，如果未加引号，则实体名称不区分大小写。 | 否（如果指定了数据集中的 tableName 属性） |
@@ -215,18 +211,18 @@ Azure Database for PostgreSQL 链接服务支持以下属性：
 
 ## <a name="mapping-data-flow-properties"></a>映射数据流属性
 
-在映射数据流中转换数据时，可以从 Azure Database for PostgreSQL 读取和写入表。 有关详细信息，请参阅映射数据流中的[源转换](data-flow-source.md)和[接收器转换](data-flow-sink.md)。 您可以选择使用 Azure Database for PostgreSQL 数据集或 [内联数据集](data-flow-source.md#inline-datasets) 作为源和接收器类型。
+在映射数据流中转换数据时，可以从 Azure Database for PostgreSQL 读取表以及将数据写入表。 有关详细信息，请参阅映射数据流中的[源转换](data-flow-source.md)和[接收器转换](data-flow-sink.md)。 你可以选择使用 Azure Database for PostgreSQL 数据集或[内联数据集](data-flow-source.md#inline-datasets)作为源和接收器类型。
 
 ### <a name="source-transformation"></a>源转换
 
-下表列出了 Azure Database for PostgreSQL 源支持的属性。 可以在 " **源选项** " 选项卡中编辑这些属性。
+下表列出了 Azure Database for PostgreSQL 源支持的属性。 你可以在“源选项”选项卡中编辑这些属性。
 
 | 名称 | 说明 | 必需 | 允许的值 | 数据流脚本属性 |
 | ---- | ----------- | -------- | -------------- | ---------------- |
-| 表 | 如果选择 "表" 作为输入，数据流将从数据集中指定的表中获取所有数据。 | 否 | - |*仅限内联数据集的 ()*<br>tableName |
-| 查询 | 如果选择 "查询作为输入"，请指定一个 SQL 查询，以便从源中提取数据，这将覆盖在 dataset 中指定的任何表。 使用查询是减少测试或查找行的好办法。<br><br>不支持 **Order by** 子句，但可以设置完整的 SELECT FROM 语句。 还可以使用用户定义的表函数。 **select * From udfGetData ( # B1** 是 SQL 中的一个 UDF，它返回可以在数据流中使用的表。<br>查询示例： `select * from mytable where customerId > 1000 and customerId < 2000` 或 `select * from "MyTable"` 。 请注意，在 PostgreSQL 中，如果未加引号，则实体名称不区分大小写。| 否 | 字符串 | query |
-| 批大小 | 指定批大小，将大数据拆分为批处理。 | 否 | Integer | batchSize |
-| 隔离级别 | 选择以下隔离级别之一：<br>-已提交读<br>-未提交 (默认) <br>-可重复读<br>-可序列化<br>-None (忽略隔离级别)  | 否 | <small>READ_COMMITTED<br/>READ_UNCOMMITTED<br/>REPEATABLE_READ<br/>SERIALIZABLE<br/>内容</small> |isolationLevel |
+| 表 | 如果你选择“表”作为输入，则数据流会从数据集中指定的表提取所有数据。 | 否 | - |（仅适用于内联数据集）<br>tableName |
+| 查询 | 如果你选择“查询”作为输入，请指定一个用来从源提取数据的 SQL 查询，这将替代在数据集中指定的任何表。 使用查询是一个好方法，它可以减少用于测试或查找的行数。<br><br>不支持 Order By 子句，但你可以设置完整的 SELECT FROM 语句。 还可以使用用户定义的表函数。 select * from udfGetData() 是 SQL 中的一个 UDF，它返回你可以在数据流中使用的表。<br>查询示例：`select * from mytable where customerId > 1000 and customerId < 2000` 或 `select * from "MyTable"`。 请注意，在 PostgreSQL 中，如果未加引号，则实体名称不区分大小写。| 否 | 字符串 | query |
+| 批大小 | 指定批大小，以将大型数据分成多个批。 | 否 | Integer | batchSize |
+| 隔离级别 | 选择下列隔离级别之一：<br>- 读取已提交的内容<br>- 读取未提交的内容（默认）<br>- 可重复的读取<br>- 可序列化<br>- 无（忽略隔离级别） | 否 | <small>READ_COMMITTED<br/>READ_UNCOMMITTED<br/>REPEATABLE_READ<br/>SERIALIZABLE<br/>NONE</small> |isolationLevel |
 
 #### <a name="azure-database-for-postgresql-source-script-example"></a>Azure Database for PostgreSQL 源脚本示例
 
@@ -242,20 +238,20 @@ source(allowSchemaDrift: true,
 
 ### <a name="sink-transformation"></a>接收器转换
 
-下表列出 Azure Database for PostgreSQL 接收器支持的属性。 可以在 " **接收器选项** " 选项卡中编辑这些属性。
+下表列出了 Azure Database for PostgreSQL 接收器支持的属性。 可以在“接收器选项”选项卡中编辑这些属性。
 
 | 名称 | 说明 | 必需 | 允许的值 | 数据流脚本属性 |
 | ---- | ----------- | -------- | -------------- | ---------------- |
-| Update 方法 | 指定对数据库目标允许哪些操作。 默认设置为仅允许插入。<br>若要更新、upsert 或删除行，需要 [更改行转换](data-flow-alter-row.md) 以标记这些操作的行。 | 是 | `true` 或 `false` | 删除 <br/>可插入 <br/>更新 <br/>upsertable |
-| 键列 | 对于更新，upsert 和 delete，键列 (s) 必须设置为确定要更改的行。<br>选取为密钥的列名称将用作后续更新 upsert （删除）的一部分。 因此，你必须选择存在于接收器映射中的列。 | 否 | Array | 密钥 |
-| 跳过写入键列 | 如果您不希望将该值写入键列，请选择 "跳过写入键列"。 | 否 | `true` 或 `false` | skipKeyWrites |
-| 表操作 |确定在写入之前是否在目标表中重新创建或删除所有行。<br>- **None**：不会对表执行任何操作。<br>- **重新创建**：该表将被删除并重新创建。 如果以动态方式创建表，则是必需的。<br>- **截断**：目标表中的所有行都将被删除。 | 否 | `true` 或 `false` | 重新创建<br/>truncate |
-| 批大小 | 指定每个批次中写入的行数。 较大的批大小可提高压缩比并改进内存优化，但在缓存数据时可能会导致内存不足异常。 | 否 | Integer | batchSize |
-| Pre 和 Post SQL 脚本 | 指定将在 (预处理) 之前和 (在将后处理) 数据写入接收器数据库之前执行的多行 SQL 脚本。 | 否 | 字符串 | preSQLs<br>postSQLs |
+| Update 方法 | 指定数据库目标上允许哪些操作。 默认设置为仅允许插入。<br>若要更新、更新插入或删除行，需要进行[“更改行”转换](data-flow-alter-row.md)才能标记这些操作的行。 | 是 | `true` 或 `false` | deletable <br/>insertable <br/>updateable <br/>upsertable |
+| 键列 | 对于更新、更新插入和删除操作，必须设置键列来确定要更改的行。<br>后续的更新、更新插入和删除将使用你选取为密钥的列名称。 因此，你必须选取存在于接收器映射中的列。 | 否 | Array | 密钥 |
+| 跳过写入键列 | 如果你不希望将值写入到键列，请选择“跳过写入键列”。 | 否 | `true` 或 `false` | skipKeyWrites |
+| 表操作 |确定在写入之前是否从目标表重新创建或删除所有行。<br>- **无**：不会对表进行任何操作。<br>- 重新创建：将删除表并重新创建表。 如果以动态方式创建表，则是必需的。<br>- 截断：将删除目标表中的所有行。 | 否 | `true` 或 `false` | recreate<br/>truncate |
+| 批大小 | 指定每批中写入的行数。 较大的批大小可提高压缩比并改进内存优化，但在缓存数据时可能会导致内存不足异常。 | 否 | Integer | batchSize |
+| 预处理和后处理 SQL 脚本 | 指定在将数据写入接收器数据库之前（预处理）和之后（后处理）会执行的多行 SQL 脚本。 | 否 | 字符串 | preSQLs<br>postSQLs |
 
 #### <a name="azure-database-for-postgresql-sink-script-example"></a>Azure Database for PostgreSQL 接收器脚本示例
 
-将 Azure Database for PostgreSQL 用作接收器类型时，关联的数据流脚本为：
+使用 Azure Database for PostgreSQL 作为接收器类型时，关联的数据流脚本为：
 
 ```
 IncomingStream sink(allowSchemaDrift: true,

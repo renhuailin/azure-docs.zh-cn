@@ -1,23 +1,18 @@
 ---
 title: 从 SAP BW 复制数据
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 SAP Business Warehouse 复制到支持的接收器数据存储。
-services: data-factory
-documentationcenter: ''
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/04/2019
-ms.openlocfilehash: 86d4f82b70a6b6b3ceed262cf96fa291e26dd53c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4a5eb7c8d729fc0c3b95a61a4b8dbc8266d1eec3
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87534373"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100386656"
 ---
 # <a name="copy-data-from-sap-business-warehouse-using-azure-data-factory"></a>使用 Azure 数据工厂从 SAP Business Warehouse 复制数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -28,7 +23,7 @@ ms.locfileid: "87534373"
 本文概述了如何使用 Azure 数据工厂中的复制活动从 SAP Business Warehouse (BW) 复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
 >[!TIP]
->若要了解 ADF 对 SAP 数据集成方案的总体支持，请参阅[关于使用 Azure 数据工厂进行 SAP 数据集成的白皮书](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf)，其中包含每个 SAP 连接器的详细介绍、比较和指导。
+>若要了解 ADF 对 SAP 数据集成方案的总体支持，请参阅[使用 Azure 数据工厂进行 SAP 数据集成白皮书](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf)，其中包含每个 SAP 连接器的详细介绍、比较和指导。
 
 ## <a name="supported-capabilities"></a>支持的功能
 

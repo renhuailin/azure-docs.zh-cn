@@ -3,17 +3,17 @@ title: 询问问题数据能否应答 ML Studio (经典) -Azure
 description: 通过学习“适合初学者的数据科学”视频 3，了解如何将棘手的数据科学问题公式化。 包括分类和回归问题的比较。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: conceptual
 author: sdgilley
 ms.author: sgilley
 ms.date: 03/22/2019
-ms.openlocfilehash: dbac7c8818300ffb09959969e6b79f949177f457
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 2ff440801db7ba8c5bfc1785fc7a399a1d773b73
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93307667"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100517019"
 ---
 # <a name="ask-a-question-you-can-answer-with-data"></a>提出数据方面的可解答问题
 ## <a name="video-3-data-science-for-beginners-series"></a>视频 3：适合初学者的数据科学系列

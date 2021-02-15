@@ -4,22 +4,21 @@ description: 了解如何为机器学习工作室（经典版）Web 服务启用
 services: machine-learning
 author: likebupt
 ms.author: keli19
-editor: cgronlun
 ms.assetid: c54d41e1-0300-46ef-bbfc-d6f7dca85086
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: how-to
 ms.date: 06/15/2017
-ms.openlocfilehash: 154479be1eae01bcc533b556b751ed24aee3da2b
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: c9ce9b7b0d739301e76abd43b265fe28195ed302
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93308577"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100518277"
 ---
 # <a name="enable-logging-for-azure-machine-learning-studio-classic-web-services"></a>为 Azure 机器学习工作室（经典版）Web 服务启用日志记录
 
-**适用对象：** ![适用于.](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典）   ![不适用于. ](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
+**适用对象：** ![适用于.](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典）   ![不适用于.](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 
 本文档提供有关机器学习工作室（经典版）Web 服务的日志记录功能的信息。 日志记录可提供错误编号和消息以外的其他信息，这些信息有助于对调用机器学习工作室（经典版）API 进行故障排除。  
@@ -44,7 +43,7 @@ ms.locfileid: "93308577"
 
    ![选择日志记录级别](./media/web-services-logging/enable-logging.png)
 
-6. 单击“ **保存** ”。
+6. 单击“ **保存**”。
 
 7. 对于经典 Web 服务，创建“ml-diagnostics”容器。
 

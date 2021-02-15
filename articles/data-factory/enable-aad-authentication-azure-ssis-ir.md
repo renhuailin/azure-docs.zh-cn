@@ -1,22 +1,19 @@
 ---
 title: 为 Azure-SSIS Integration Runtime 启用 AAD
 description: 本文介绍如何使用 Azure 数据工厂的托管标识启用 Azure Active Directory 身份验证，以创建 Azure-SSIS 集成运行时。
-services: data-factory
 ms.service: data-factory
-ms.workload: data-services
 ms.devlang: powershell
 ms.topic: conceptual
 author: swinarko
 ms.author: sawinark
-manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 07/09/2020
-ms.openlocfilehash: 30f5b5990e189cb6942c15b65b6a417ce49f0c2b
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: cd3f590e1869b28f0ac08ce98da32a98160e4e86
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637796"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100392725"
 ---
 # <a name="enable-azure-active-directory-authentication-for-azure-ssis-integration-runtime"></a>为 Azure-SSIS 集成运行时启用 Azure Active Directory 身份验证
 
@@ -47,7 +44,7 @@ SQL 数据库支持使用 Azure AD 用户创建数据库。 首先，需要创�
 
 1.  安装 [Azure AD PowerShell](/powershell/azure/active-directory/install-adv2) 模块。
 
-2.  使用登录 `Connect-AzureAD` ，运行以下 cmdlet 以创建组，并将其保存在变量中：
+2.  使用 `Connect-AzureAD` 登录，运行以下 cmdlet 来创建组，并将该组保存在变量中：
 
     ```powershell
     $Group = New-AzureADGroup -DisplayName "SSISIrGroup" `
@@ -80,7 +77,7 @@ SQL 数据库支持使用 Azure AD 用户创建数据库。 首先，需要创�
 
 ### <a name="configure-azure-ad-authentication-for-sql-database"></a>为 SQL 数据库配置 Azure AD 身份验证
 
-你可以使用以下步骤 [配置和管理使用 SQL 进行 Azure AD 身份验证](../azure-sql/database/authentication-aad-configure.md) ：
+可使用以下步骤[通过 SQL 配置和管理 Azure AD 身份验证](../azure-sql/database/authentication-aad-configure.md)：
 
 1.  在 Azure 门户中，从左侧导航栏中选择“所有服务” -> “SQL 服务器” 。
 

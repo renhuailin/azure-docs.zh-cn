@@ -1,22 +1,17 @@
 ---
 title: Azure 数据工厂中的“复制数据”工具
 description: 提供有关 Azure 数据工厂 UI 中“复制数据”工具的信息
-services: data-factory
-documentationcenter: ''
 author: dearandyxu
-manager: anandsub
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: yexu
-ms.openlocfilehash: b0ba14a05ac42e9fccc1a146ad5943716652104d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 18d61c7f51547a524e64fc44c98e70e0f5bc2752
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89434191"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100372988"
 ---
 # <a name="copy-data-tool-in-azure-data-factory"></a>Azure 数据工厂中的“复制数据”工具
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -69,7 +64,7 @@ Azure 数据工厂“复制数据”工具可简化并优化将数据引入 Data
 “复制数据”工具可监视并学习用户在源和目标存储之间映射列时的行为。 从源数据存储中选择一个或几个列并将其映射到目标架构之后，“复制数据”工具开始分析从两侧选取的列对的模式。 然后，它将相同的模式应用到其余的列。 因此，只需单击几次，即可看到所有列已经按所需方式映射到目标。  如果对“复制数据”工具提供的列映射选项不满意，可以忽略该选项并继续手动映射列。 同时，“复制数据”工具不断学习和更新相关模式，最终达到所需的正确列映射模式。 
 
 > [!NOTE]
-> 将数据从 SQL Server 或 Azure SQL 数据库复制到 Azure Synapse Analytics（以前称为 SQL 数据仓库）时，如果目标存储中不存在表，复制数据工具支持使用源架构自动创建表。 
+> 将数据从 SQL Server 或 Azure SQL 数据库复制到 Azure Synapse Analytics 时，如果目标存储中不存在表，“复制数据”工具支持使用源架构自动创建表。 
 
 ## <a name="filter-data"></a>筛选数据
 可筛选源数据，仅选择需要复制到接收器数据存储的数据。 筛选能够减少复制到接收器数据存储的数据量，从而增强复制操作的吞吐量。 使用“复制数据”工具，可使用 SQL 查询语言灵活筛选关系数据库中的数据，也可灵活筛选 Azure Blob 文件夹中的文件。 

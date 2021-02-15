@@ -8,12 +8,12 @@ ms.date: 11/12/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 035cf5be4471cad7ac11eb8ce9a8a0ecb13a68da
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: c5f28e2c2d370329dbee0fb76284a4b76b2b945e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462375"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100376503"
 ---
 # <a name="troubleshoot-your-iot-edge-device"></a>排除 IoT Edge 设备故障
 
@@ -46,7 +46,7 @@ iotedge check
 * “连接性检查”将验证 IoT Edge 运行时能否访问主机设备上的端口，以及所有 IoT Edge 组件能否连接到 IoT 中心。 如果 IoT Edge 设备位于代理后面，则这组检查将返回错误。
 * “生产准备情况检查”将寻找建议的生产最佳做法，例如设备证书颁发机构 (CA) 颁发证书的状态以及模块日志文件配置。
 
-IoT Edge 检查工具使用容器来运行其诊断。 容器映像 `mcr.microsoft.com/azureiotedge-diagnostics:latest` 是通过 [Microsoft 容器注册表](https://github.com/microsoft/containerregistry)提供的。 如果需要在不直接访问 internet 的情况下运行对设备的检查，你的设备将需要访问容器映像。
+IoT Edge 检查工具使用容器运行其诊断。 容器映像 (`mcr.microsoft.com/azureiotedge-diagnostics:latest`)，可通过 [Microsoft 容器注册表](https://github.com/microsoft/containerregistry)获取。 如果需要在不直接访问 Internet 的情况下运行对设备的检查，你的设备需要具有对容器映像的访问权限。
 
 有关此工具运行的每个诊断检查的信息，包括可在出现错误或警告时执行的操作，请参阅 [IoT Edge 排除故障检查](https://github.com/Azure/iotedge/blob/master/doc/troubleshoot-checks.md)。
 
@@ -68,7 +68,7 @@ sudo iotedge support-bundle --since 6h
 iotedge support-bundle --since 6h
 ```
 
-你还可以使用对设备的 [直接方法](how-to-retrieve-iot-edge-logs.md#upload-support-bundle-diagnostics) 调用，将支持包命令的输出上传到 Azure Blob 存储。
+还可以对设备使用[直接方法](how-to-retrieve-iot-edge-logs.md#upload-support-bundle-diagnostics)调用，将 support-bundle 命令的输出上传到 Azure Blob 存储。
 
 > [!WARNING]
 > `support-bundle` 命令的输出可能包含主机、设备和模块名称、模块记录的信息，等等。如果在公共论坛中共享输出，请注意这一点。
@@ -79,9 +79,9 @@ iotedge support-bundle --since 6h
 
 有关如何升级设备的说明，请参阅[更新 IoT Edge 安全守护程序和运行时](how-to-update-iot-edge.md)。
 
-## <a name="verify-the-installation-of-iot-edge-on-your-devices"></a>验证是否在设备上安装了 IoT Edge
+## <a name="verify-the-installation-of-iot-edge-on-your-devices"></a>验证设备上是否安装了 IoT Edge
 
-可以通过 [监视 edgeAgent 模块](./how-to-monitor-module-twins.md)克隆来验证设备上的 IoT Edge 安装。
+可通过[监视 edgeAgent 模块孪生](./how-to-monitor-module-twins.md)验证设备上是否安装了 IoT Edge。
 
 若要获取最新的 edgeAgent 模块，请从 [Azure Cloud Shell](https://shell.azure.com/)运行以下命令：
 
@@ -89,7 +89,7 @@ iotedge support-bundle --since 6h
    az iot hub module-twin show --device-id <edge_device_id> --module-id $edgeAgent --hub-name <iot_hub_name>
    ```
 
-此命令将输出所有 edgeAgent [报告属性](./module-edgeagent-edgehub.md)。 下面是一些有用的监视设备状态：
+此命令将输出所有 edgeAgent [报告属性](./module-edgeagent-edgehub.md)。 以下是一些有用的监视设备状态的信息：
 
 * 运行时状态
 * 运行时开始时间
@@ -214,7 +214,7 @@ IoT Edge 安全守护程序运行后，请查看容器日志以检测问题。 �
 iotedge logs <container name>
 ```
 
-你还可以使用对设备上的模块的 [直接方法](how-to-retrieve-iot-edge-logs.md#upload-module-logs) 调用，将该模块的日志上载到 Azure Blob 存储。
+还可以对设备上的模块使用[直接方法](how-to-retrieve-iot-edge-logs.md#upload-module-logs)调用，将该模块的日志上传到 Azure Blob 存储。
 
 ## <a name="view-the-messages-going-through-the-iot-edge-hub"></a>查看通过 IoT Edge 中心的消息
 
@@ -240,7 +240,7 @@ iotedge logs <container name>
      type: docker
      env: {}
      config:
-       image: mcr.microsoft.com/azureiotedge-agent:1.0
+       image: mcr.microsoft.com/azureiotedge-agent:1.1
        auth: {}
    ```
 

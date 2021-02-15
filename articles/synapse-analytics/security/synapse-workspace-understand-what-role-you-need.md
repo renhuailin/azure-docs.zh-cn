@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 12/1/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: ba00e6f4fe97b0614483fd04ddee9fc768558db5
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: 950a786b29a8144c4bb192fa6078e8c88d67481d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100102098"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100384446"
 ---
 # <a name="understand-the-roles-required-to-perform-common-tasks-in-synapse"></a>了解在 Synapse 中执行常见任务所需的角色
 
@@ -87,7 +87,7 @@ APACHE SPARK 池|
 取消 Apache Spark 池上运行的任何笔记本或 Spark 作业|Apache Spark 池上的 Synapse 计算运算符。|bigDataPools/useCompute
 创建笔记本或作业定义|Synapse 用户或 </br>工作区上的 Azure 所有者、参与者或读者</br> *要运行、发布或提交更改，需要其他权限*|读取</br></br></br></br></br> 
 列出并打开已发布的笔记本或作业定义，包括查看保存的输出|工作区上的 Synapse 项目用户、Synapse 项目发布者、Synapse 参与者|项目/读取
-运行笔记本并查看其输出|所选 Apache Spark 池上的 Synapse Apache Spark Administrator、Synapse 计算运算符|bigDataPools/useCompute 
+运行笔记本并查看其输出，或提交 Spark 作业|所选 Apache Spark 池上的 Synapse Apache Spark Administrator、Synapse 计算运算符|bigDataPools/useCompute 
 发布或删除笔记本或作业定义 (包括服务的输出) |工作区中的项目发布者，Synapse Apache Spark 管理员|笔记本/写入、删除
 将对笔记本或作业定义的更改提交到 Git 存储库|Git 权限|无
 管道、集成运行时、数据流、数据集 & 触发器|

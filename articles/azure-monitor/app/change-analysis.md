@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: cawams
 ms.author: cawa
 ms.date: 05/04/2020
-ms.openlocfilehash: 133a7d9b3fa04797648fa253825505d29e37ca98
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: e59d4ecd238879eddb9d842245395d58aff28385
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99576377"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100519416"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>使用 Azure Monitor 中的应用程序更改分析（预览版）
 
@@ -38,11 +38,11 @@ ms.locfileid: "99576377"
 - Azure Kubernetes 服务
 - Azure 函数
 - 网络资源：网络安全组、虚拟网络、应用程序网关等。
-- 数据服务：即存储、SQL、Redis 缓存、Cosmos DB 等。
+- 数据服务：存储、SQL、Redis 缓存、Cosmos DB 等。
 
 ## <a name="data-sources"></a>数据源
 
-适用于 Azure 资源管理器跟踪的属性的应用程序更改分析查询，代理配置和来宾内的 web 应用更改。 此外，该服务会跟踪资源依赖项更改，以对应用程序进行端到端的诊断和监视。
+适用于 Azure 的应用程序更改分析查询，适用于 Azure 资源管理器跟踪的属性、代理的配置和来宾内的 web 应用更改。 此外，该服务会跟踪资源依赖项更改，以对应用程序进行端到端的诊断和监视。
 
 ### <a name="azure-resource-manager-tracked-properties-changes"></a>Azure 资源管理器跟踪的属性更改
 
@@ -60,106 +60,33 @@ ms.locfileid: "99576377"
 
 ### <a name="dependency-changes"></a>依赖项更改
 
-对资源依赖项所做的更改也可能会导致资源问题。 例如，如果某个 Web 应用调用 Redis 缓存，Redis 缓存 SKU 可能会影响该 Web 应用的性能。 另一个示例是，如果端口22在虚拟机的网络安全组中关闭，则会导致连接错误。 
+对资源依赖项所做的更改也可能会导致资源问题。 例如，如果某个 Web 应用调用 Redis 缓存，Redis 缓存 SKU 可能会影响该 Web 应用的性能。 另一个示例是，如果端口22在虚拟机的网络安全组中关闭，则会导致连接错误。
 
 #### <a name="web-app-diagnose-and-solve-problems-navigator-preview"></a>Web 应用诊断和解决问题导航器 (预览) 
+
 若要检测依赖项的更改，更改分析将检查 Web 应用的 DNS 记录。 它通过这种方式识别所有应用组件中可能导致出现问题的更改。
 目前， **Web 应用诊断和解决问题中支持以下依赖项 |导航器 (预览)**：
+
 - Web 应用
 - Azure 存储
 - Azure SQL
 
 #### <a name="related-resources"></a>相关资源
-应用程序更改分析检测相关资源。 常见示例包括与虚拟机相关的网络安全组、虚拟网络、应用程序网关和负载均衡器。 通常，网络资源是在使用资源的资源组中自动预配的，因此按资源组筛选更改将显示虚拟机和相关网络资源的所有更改。
+
+应用程序更改分析检测相关资源。 常见示例包括与虚拟机相关的网络安全组、虚拟网络、应用程序网关和负载均衡器。
+通常，网络资源是在使用资源的资源组中自动预配的，因此按资源组筛选更改将显示虚拟机和相关网络资源的所有更改。
 
 ![网络更改屏幕截图](./media/change-analysis/network-changes.png)
 
 ## <a name="application-change-analysis-service-enablement"></a>应用程序更改分析服务支持
 
 应用程序更改分析服务计算并聚合上述数据源中的更改数据。 它提供一组分析，使用户能够轻松地浏览所有资源更改，并识别故障排除或监视上下文中的相关更改。
-需将“Microsoft.ChangeAnalysis”资源提供程序注册到某个订阅，然后才可使用 Azure 资源管理器的跟踪属性和代理设置更改数据。 当你输入 Web 应用 "诊断和解决问题" 工具或显示 "更改分析独立" 选项卡时，将自动注册此资源提供程序。 对于 Web 应用的来宾中更改，需要单独的支持才能在 Web 应用中扫描代码文件。 有关详细信息，请参阅本文后面 [的诊断和解决问题工具](#application-change-analysis-in-the-diagnose-and-solve-problems-tool) 一节中的更改分析。
+需将“Microsoft.ChangeAnalysis”资源提供程序注册到某个订阅，然后才可使用 Azure 资源管理器的跟踪属性和代理设置更改数据。 当你输入 Web 应用 "诊断和解决问题" 工具或显示 "更改分析独立" 选项卡时，将自动注册此资源提供程序。
+对于 Web 应用的来宾中更改，需要单独的支持才能在 Web 应用中扫描代码文件。 有关详细信息，请参阅本文后面 [的诊断和解决问题工具](change-analysis-visualizations.md#application-change-analysis-in-the-diagnose-and-solve-problems-tool) 一节中的更改分析。
 
 ## <a name="cost"></a>Cost
+
 应用程序更改分析是一项免费服务，它不会对启用它的订阅产生任何计费费用。 对于扫描 Azure 资源属性更改，服务也不会产生任何性能影响。 当你为 web 应用中的 "来宾文件更改" 启用更改分析 (或启用) 的 "诊断和解决问题" 工具时，它将对 web 应用造成性能影响，无需支付费用。
-
-## <a name="visualizations-for-application-change-analysis"></a>应用程序更改分析的可视化效果
-
-### <a name="standalone-ui"></a>独立 UI
-
-在 Azure Monitor 中，有一个独立的窗格可供更改分析查看对应用程序依赖项和资源的见解的所有更改。
-
-在 Azure 门户上的搜索栏中搜索 "更改分析" 以启动体验。
-
-![在 Azure 门户中搜索“更改分析”的屏幕截图](./media/change-analysis/search-change-analysis.png)
-
-所选订阅下的所有资源都显示在过去24小时内的更改中。 若要优化页面负载性能，服务一次显示10个资源。 单击 "下一页" 以查看更多资源。 我们正在努力消除此限制。
-
-![Azure 门户中“更改分析”边栏选项卡的屏幕截图](./media/change-analysis/change-analysis-standalone-blade.png)
-
-单击资源即可查看其所有更改。 如果需要，请向下钻取以查看 json 格式的更改详细信息和见解。
-
-![更改详细信息的屏幕截图](./media/change-analysis/change-details.png)
-
-有关任何反馈，请使用边栏选项卡或电子邮件中的 "发送反馈" 按钮 changeanalysisteam@microsoft.com 。
-
-![“更改分析”边栏选项卡中反馈按钮的屏幕截图](./media/change-analysis/change-analysis-feedback.png)
-
-#### <a name="multiple-subscription-support"></a>支持多个订阅
-UI 支持选择多个订阅以查看资源更改。 使用订阅筛选器：
-
-![支持选择多个订阅的订阅筛选器的屏幕截图](./media/change-analysis/multiple-subscriptions-support.png)
-
-### <a name="web-app-diagnose-and-solve-problems"></a>Web 应用诊断和解决问题
-
-在 Azure Monitor 中，更改分析也已内置到自助式“诊断并解决问题”体验中。 可以从应用服务应用程序的“概述”页访问此体验。
-
-![“概述”按钮和“诊断并解决问题”按钮的屏幕截图](./media/change-analysis/change-analysis.png)
-
-### <a name="application-change-analysis-in-the-diagnose-and-solve-problems-tool"></a>诊断和解决问题工具中的应用程序更改分析
-
-应用程序更改分析是 Web 应用程序中的独立检测器，诊断并解决问题工具。 它还在 **应用程序崩溃** 和 **Web 应用关闭检测程序** 中进行聚合。 输入 "诊断并解决问题" 工具时，将自动注册 **ChangeAnalysis** 资源提供程序。 按照以下说明启用 web 应用来宾内更改跟踪。
-
-1. 选择 " **可用性和性能**"。
-
-    ![“可用性和性能”故障排除选项的屏幕截图](./media/change-analysis/availability-and-performance.png)
-
-2. 选择“应用程序更改”。 此功能在 **应用程序崩溃** 中也可用。
-
-   ![“应用程序崩溃”按钮的屏幕截图](./media/change-analysis/application-changes.png)
-
-3. 链接导致应用程序更改 Aalysis UI 范围限定于 web 应用。 如果未启用 "来宾内的 web 应用" 更改跟踪，请单击标题以获取文件和应用设置更改。
-
-   ![“应用程序崩溃”选项的屏幕截图](./media/change-analysis/enable-changeanalysis.png)
-
-4. 启用“更改分析”并选择“保存”。 该工具显示应用服务计划下的所有 web 应用。 可以使用计划级别开关，为某个计划下的所有 Web 应用启用更改分析。
-
-    ![“启用更改分析”用户界面的屏幕截图](./media/change-analysis/change-analysis-on.png)
-
-5. 更改数据还可在选择 **Web 应用关闭** 和 **应用程序崩溃** 检测程序中使用。 此时会显示一个图形，其中汇总了在不同时间发生的更改类型，以及有关这些更改的详细信息。 默认情况下会显示过去 24 小时的更改，方便你解决即时问题。
-
-     ![更改差异视图的屏幕截图](./media/change-analysis/change-view.png)
-
-
-
-### <a name="virtual-machine-diagnose-and-solve-problems"></a>虚拟机诊断和解决问题
-
-请参阅诊断并解决虚拟机的问题工具。  转到 **故障排除工具**，浏览页面，并选择 " **分析最近的更改** " 以查看虚拟机上的更改。
-
-![VM 的屏幕截图诊断和解决问题](./media/change-analysis/vm-dnsp-troubleshootingtools.png)
-
-![故障排除工具中的更改分析器](./media/change-analysis/analyze-recent-changes.png)
-
-### <a name="activity-log-change-history"></a>活动日志更改历史记录
-活动日志中的 " [查看更改历史记录](../platform/activity-log.md#view-change-history) " 功能将调用应用程序更改分析服务后端，以获取与操作关联的更改。 用于直接调用 [Azure 资源关系图](../../governance/resource-graph/overview.md)的 **更改历史记录**，但已通过交换后端来调用应用程序更改分析，因此，返回的更改将包括来自 [azure 资源关系图](../../governance/resource-graph/overview.md)的资源级别更改、 [azure 资源管理器](../../azure-resource-manager/management/overview.md)的资源属性以及 PaaS 服务（如应用服务 web 应用）的来宾内更改。 为了使应用程序更改分析服务能够扫描用户订阅中的更改，需要注册资源提供程序。 第一次输入 " **更改历史记录** " 选项卡时，该工具将自动开始注册 **ChangeAnalysis** 资源提供程序。 注册后，将立即提供 **Azure 资源关系图** 的更改，并涵盖过去14天的时间。 在订阅完成后大约4小时后，其他源的更改将可用。
-
-![活动日志更改历史记录集成](./media/change-analysis/activity-log-change-history.png)
-
-### <a name="vm-insights-integration"></a>VM Insights 集成
-已启用 [VM Insights](../insights/vminsights-overview.md) 的用户可以查看其虚拟机中的更改，这些更改可能会导致度量值图表（如 CPU 或内存）中出现任何峰值，并清楚地引发了原因。 更改数据集成在 VM Insights 导航栏中。 用户可以查看 VM 中是否发生了任何更改，并单击 " **调查更改** " 以在应用程序更改分析独立 UI 中查看更改详细信息。
-
-[![VM insights 集成](./media/change-analysis/vm-insights.png)](./media/change-analysis/vm-insights.png#lightbox)
-
-
 
 ## <a name="enable-change-analysis-at-scale"></a>大规模启用更改分析
 
@@ -195,57 +122,9 @@ foreach ($webapp in $webapp_list)
 
 ```
 
-## <a name="troubleshoot"></a>故障排除
-
-### <a name="having-trouble-registering-microsoftchange-analysis-resource-provider-from-change-history-tab"></a>注册 Microsoft 时遇到问题。请从 "更改历史记录" 选项卡更改分析资源提供程序
-如果是第一次在其与应用程序更改分析集成后查看更改历史记录，则会看到它会自动注册资源提供程序 **ChangeAnalysis**。 在极少数情况下，可能会由于以下原因而失败：
-
-- **你的权限不足，无法注册 ChangeAnalysis 资源提供程序**。 此错误消息表示当前订阅中的角色不具有与之关联的 **Microsoft. 支持/注册/操作** 范围。 如果你不是订阅的所有者，并且通过同事获取共享访问权限，则可能会发生这种情况。 即，查看对资源组的访问权限。 若要解决此问题，可以联系订阅所有者来注册 **ChangeAnalysis** 资源提供程序。 这可以通过订阅 Azure 门户来完成 **|资源提供程序** ，并 ```Microsoft.ChangeAnalysis``` 在 UI 中搜索和注册，或通过 Azure PowerShell 或 Azure CLI。
-
-    通过 PowerShell 注册资源提供程序： 
-    ```PowerShell
-    # Register resource provider
-    Register-AzResourceProvider -ProviderNamespace "Microsoft.ChangeAnalysis"
-    ```
-
-- **注册 ChangeAnalysis 资源提供程序失败**。 此消息意味着 UI 发送请求以注册资源提供程序时，会立即失败，这与权限问题无关。 可能是暂时性的 internet 连接问题。 请尝试刷新页面并检查你的 internet 连接。 如果错误仍然存在，请联系 changeanalysishelp@microsoft.com
-
-- **此时间比预期时间长**。 此消息表示注册花费的时间超过2分钟。 这种情况很罕见，但并不一定表示出现了问题。 可以中转到 " **订阅" |** 用于检查 **ChangeAnalysis** 资源提供程序注册状态的资源提供程序。 可以尝试使用 UI 注销、重新注册或刷新，以查看是否有帮助。 如果问题仍然存在，请联系 changeanalysishelp@microsoft.com 以获得支持。
-    ![排除 RP 注册花费的时间过长](./media/change-analysis/troubleshoot-registration-taking-too-long.png)
-
-![选择了疑难解答工具的虚拟机的 "诊断和解决问题" 工具的屏幕截图。](./media/change-analysis/vm-dnsp-troubleshootingtools.png)
-
-![用于分析虚拟机的最新更改故障排除工具的磁贴的屏幕截图。](./media/change-analysis/analyze-recent-changes.png)
-
-### <a name="azure-lighthouse-subscription-is-not-supported"></a>不支持 Azure Lighthouse 订阅
-
-- **无法查询 ChangeAnalysis 资源提供程序** *，因为不支持消息 Azure lighthouse 订阅，只能在订阅的 home 租户中使用这些更改*。 现在，对于不在 home 租户中的用户，将通过 Azure Lighthouse 订阅注册更改分析资源提供程序存在限制。 在不久的将来，我们预计会解决此限制。 如果这是你的阻塞问题，则有一种解决方法，涉及到创建服务主体，并显式分配角色以允许访问。  请联系 changeanalysishelp@microsoft.com 以了解更多相关信息。
-
-### <a name="an-error-occurred-while-getting-changes-please-refresh-this-page-or-come-back-later-to-view-changes"></a>获取更改时出错。 请刷新此页或稍后返回以查看更改
-
-这是应用程序更改分析服务在无法加载更改时显示的一般错误消息。 一些已知的原因是：
-- 来自客户端设备的 Internet 连接错误
-- 如果更改分析服务暂时不可用，则在几分钟后刷新页面通常会解决此问题。 如果错误仍然存在，请联系 changeanalysishelp@micorosoft.com
-
-### <a name="you-dont-have-enough-permissions-to-view-some-changes-contact-your-azure-subscription-administrator"></a>你的权限不足，无法查看某些更改。 联系你的 Azure 订阅管理员
-
-这是一般性的未授权错误消息，说明当前用户的权限不足，无法查看更改。 至少需要对资源具有读取者访问权限，才能查看 Azure 资源图和 Azure 资源管理器返回的基础结构更改。 对于 web 应用中的来宾文件更改和配置更改，必须至少具有 "参与者" 角色。
-
-### <a name="failed-to-register-microsoftchangeanalysis-resource-provider"></a>未能注册 ChangeAnalysis 资源提供程序
-此消息意味着 UI 发送请求以注册资源提供程序时，会立即失败，这与权限问题无关。 可能是暂时性的 internet 连接问题。 请尝试刷新页面并检查你的 internet 连接。 如果错误仍然存在，请联系 changeanalysishelp@microsoft.com
- 
-### <a name="you-dont-have-enough-permissions-to-register-microsoftchangeanalysis-resource-provider-contact-your-azure-subscription-administrator"></a>你的权限不足，无法注册 ChangeAnalysis 资源提供程序。 请联系你的 Azure 订阅管理员。
-此错误消息表示当前订阅中的角色不具有与之关联的 **Microsoft. 支持/注册/操作** 范围。 如果你不是订阅的所有者，并且通过同事获取共享访问权限，则可能会发生这种情况。 即，查看对资源组的访问权限。 若要解决此问题，可以联系订阅所有者来注册 **ChangeAnalysis** 资源提供程序。 这可以通过订阅 Azure 门户来完成 **|资源提供程序** ，并 ```Microsoft.ChangeAnalysis``` 在 UI 中搜索和注册，或通过 Azure PowerShell 或 Azure CLI。
-
-通过 PowerShell 注册资源提供程序： 
-
-```PowerShell
-# Register resource provider
-Register-AzResourceProvider -ProviderNamespace "Microsoft.ChangeAnalysis"
-```
-
 ## <a name="next-steps"></a>后续步骤
 
+- 了解 [更改分析中的可视化效果](change-analysis-visualizations.md)
+- 了解如何 [解决更改分析中的问题](change-analysis-troubleshoot.md)
 - 为 [Azure 应用服务应用](azure-web-apps.md)启用 Application Insights。
 - 为 [Azure VM 和 Azure 虚拟机规模集的 IIS 托管应用](azure-vm-vmss-apps.md)启用 Application Insights。
-- 详细了解有助于增强更改分析功能的 [Azure Resource Graph](../../governance/resource-graph/overview.md)。

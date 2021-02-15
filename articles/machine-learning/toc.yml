@@ -278,8 +278,16 @@
         - name: 设置开发环境
           displayName: 'local, remote, azure notebooks, notebook, Jupyter, dsvm, Databricks, ADB'
           href: how-to-configure-environment.md
-        - name: 运行 Jupyter Notebook
-          href: how-to-run-jupyter-notebooks.md
+        - name: 设置工作室环境
+          items:
+            - name: 创建和管理文件
+              href: how-to-manage-files.md
+              displayName: 'Jupyter, notebooks, clone, samples'
+            - name: 运行 Jupyter Notebook
+              href: how-to-run-jupyter-notebooks.md
+            - name: 使用终端
+              href: how-to-access-terminal.md
+              displayName: 'git, github, clone, kernel, package'
         - name: 设置软件环境
           displayName: 'pip, Conda, anaconda'
           href: how-to-use-environments.md

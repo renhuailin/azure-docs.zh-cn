@@ -9,12 +9,12 @@ ms.subservice: extensions
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: e1a9f5d08168841d7651a17e2de4995b7a7cf38b
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: f7c8a7eb06490a46e1c5b633944dcd596fa08515
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820715"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100093618"
 ---
 # <a name="key-vault-virtual-machine-extension-for-windows"></a>适用于 Windows 的 Key Vault 虚拟机扩展
 
@@ -35,25 +35,31 @@ ms.locfileid: "99820715"
 - PKCS #12
 - PEM
 
-## <a name="prerequisities"></a>先决条件
+## <a name="prerequisites"></a>先决条件
+
   - 具有证书的 Key Vault 实例。 请参阅[创建 Key Vault](../../key-vault/general/quick-create-portal.md)
   - VM 必须已分配[托管标识](../../active-directory/managed-identities-azure-resources/overview.md)
   - 必须使用机密 `get` 和 `list` 权限为 VM/VMSS 托管标识设置 Key Vault 访问策略，以检索证书的机密部分。 请参阅[如何向 Key Vault 进行身份验证](../../key-vault/general/authentication.md)和[分配 Key Vault 访问策略](../../key-vault/general/assign-access-policy-cli.md)。
-  -  VMSS 应具有以下标识设置： ` 
+  -  虚拟机规模集应具有以下标识设置：
+
+  ``` 
   "identity": {
-  "type": "UserAssigned",
-  "userAssignedIdentities": {
-  "[parameters('userAssignedIdentityResourceId')]": {}
+    "type": "UserAssigned",
+    "userAssignedIdentities": {
+      "[parameters('userAssignedIdentityResourceId')]": {}
+    }
   }
-  }
-  `
+  ```
   
-- AKV 扩展应具有此设置： `
-                  "authenticationSettings": {
-                    "msiEndpoint": "[parameters('userAssignedIdentityEndpoint')]",
-                    "msiClientId": "[reference(parameters('userAssignedIdentityResourceId'), variables('msiApiVersion')).clientId]"
-                  }
-   `
+  - AKV 扩展应具有以下设置：
+
+  ```
+  "authenticationSettings": {
+    "msiEndpoint": "[parameters('userAssignedIdentityEndpoint')]",
+    "msiClientId": "[reference(parameters('userAssignedIdentityResourceId'), variables('msiApiVersion')).clientId]"
+  }
+  ```
+
 ## <a name="extension-schema"></a>扩展架构
 
 以下 JSON 显示 Key Vault VM 代理扩展的架构。 该扩展不需要受保护的设置 - 其所有设置都被视为公共信息。 该扩展需要受监视的证书列表、轮询频率和目标证书存储。 具体而言：  
@@ -164,7 +170,9 @@ Key Vault VM 扩展支持扩展排序（如果已配置）。 默认情况下，
     ...
 }
 ```
-> 纪录使用此功能与创建系统分配的标识并使用该标识更新 Key Vault 访问策略的 ARM 模板不兼容。 这样做将导致死锁，因为在所有扩展启动之前，无法更新保管库访问策略。 应改为在部署之前使用单个用户分配的 MSI 标识，并使用该标识对你的保管库进行预 ACL 操作。
+
+> [!Note] 
+> 使用此功能与 ARM 模板不兼容（该模板会创建系统分配的标识并使用该标识更新 Key Vault 访问策略）。 这样做将导致死锁，因为在所有扩展启动之前，无法更新保管库访问策略。 应改为在部署之前使用单个用户分配的 MSI 标识，并使用该标识对你的保管库进行预 ACL 操作。
 
 ## <a name="azure-powershell-deployment"></a>Azure PowerShell 部署
 > [!WARNING]
@@ -222,9 +230,9 @@ Key Vault VM 扩展支持扩展排序（如果已配置）。 默认情况下，
     
     ```azurecli
        # Start the deployment
-         az vm extension set --name "KeyVaultForWindows" `
+         az vm extension set -name "KeyVaultForWindows" `
          --publisher Microsoft.Azure.KeyVault `
-         --resource-group "<resourcegroup>" `
+         -resource-group "<resourcegroup>" `
          --vm-name "<vmName>" `
          --settings '{\"secretsManagementSettings\": { \"pollingIntervalInS\": \"<pollingInterval>\", \"certificateStoreName\": \"<certStoreName>\", \"certificateStoreLocation\": \"<certStoreLoc>\", \"observedCertificates\": [\" <observedCert1> \", \" <observedCert2> \"] }}'
     ```
@@ -233,9 +241,9 @@ Key Vault VM 扩展支持扩展排序（如果已配置）。 默认情况下，
 
    ```azurecli
         # Start the deployment
-        az vmss extension set --name "KeyVaultForWindows" `
+        az vmss extension set -name "KeyVaultForWindows" `
          --publisher Microsoft.Azure.KeyVault `
-         --resource-group "<resourcegroup>" `
+         -resource-group "<resourcegroup>" `
          --vmss-name "<vmName>" `
          --settings '{\"secretsManagementSettings\": { \"pollingIntervalInS\": \"<pollingInterval>\", \"certificateStoreName\": \"<certStoreName>\", \"certificateStoreLocation\": \"<certStoreLoc>\", \"observedCertificates\": [\" <observedCert1> \", \" <observedCert2> \"] }}'
     ```

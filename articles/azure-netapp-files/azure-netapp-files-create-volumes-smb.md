@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 12/01/2020
 ms.author: b-juche
-ms.openlocfilehash: 48ee05eebd91c60fa2cfecc80898d3be54367269
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 7c5f18d33efa1838fccab3935054ea19227bc06c
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98762682"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100102846"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>创建用于 Azure NetApp 文件的 SMB 卷
 
@@ -326,5 +326,6 @@ Azure NetApp 文件支持用于 AD 连接的 [Active Directory 域服务](/windo
 * [为 Windows 或 Linux 虚拟机装载或卸载卷](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
 * [Azure NetApp 文件的资源限制](azure-netapp-files-resource-limits.md)
 * [SMB 常见问题解答](./azure-netapp-files-faqs.md#smb-faqs)
+* [SMB 或双重协议卷故障排除](troubleshoot-dual-protocol-volumes.md)
 * [了解 Azure 服务的虚拟网络集成](../virtual-network/virtual-network-for-azure-services.md)
 * [使用 Azure CLI 安装新的 Active Directory 林](/windows-server/identity/ad-ds/deploy/virtual-dc/adds-on-azure-vm)

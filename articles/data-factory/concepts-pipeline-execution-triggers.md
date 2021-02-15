@@ -1,22 +1,18 @@
 ---
 title: Azure 数据工厂中的管道执行和触发器
 description: 本文介绍了如何在 Azure 数据工厂中按需执行管道，或者通过创建触发器来执行管道。
-services: data-factory
-documentationcenter: ''
 author: dcstwh
 ms.author: weetok
-manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/05/2018
-ms.openlocfilehash: e46b08e31725765d700bf41649d997d7b20e5f95
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: bd36b589424a0d890fc5e1bbab3f234e9b3264c6
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98065484"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100374773"
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Azure 数据工厂中的管道执行和触发器
 

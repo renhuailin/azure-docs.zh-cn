@@ -1,20 +1,20 @@
 ---
 title: 模板中的用户定义函数
-description: 介绍如何在 Azure 资源管理器模板中定义和使用用户定义的函数 (ARM 模板) 。
+description: 介绍如何在 Azure 资源管理器模板（ARM 模板）中定义和使用用户定义函数。
 ms.topic: conceptual
-ms.date: 03/09/2020
-ms.openlocfilehash: f428fa3bc827af3820ad9f928f4f92b881c9c84c
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.date: 02/11/2021
+ms.openlocfilehash: 9c7480958e6315c8aea1fd8d12613bcf9d606723
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97934673"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100379618"
 ---
-# <a name="user-defined-functions-in-arm-template"></a>ARM 模板中的用户定义函数
+# <a name="user-defined-functions-in-arm-template"></a>ARM 模板中用户定义的函数
 
 在模板中，可以创建自己的函数。 这些函数可在模板中使用。 用户定义函数不同于模板中自动可用的[标准模板函数](template-functions.md)。 当有复杂的表达式在模板中重复使用时，请创建自己的函数。
 
-本文介绍如何在 Azure 资源管理器模板 (ARM 模板) 中添加用户定义的函数。
+本文介绍如何在 Azure 资源管理器模板（ARM 模板）中添加用户定义的函数。
 
 ## <a name="define-the-function"></a>定义函数
 
@@ -44,7 +44,7 @@ ms.locfileid: "97934673"
 
 ## <a name="use-the-function"></a>使用函数
 
-下面的示例演示一个包含用户定义函数的模板。 它使用该函数获取存储帐户的唯一名称。 该模板具有一个名为的参数，该参数将 `storageNamePrefix` 作为参数传递给函数。
+下面的示例演示一个模板，该模板包含用于获取存储帐户的唯一名称的用户定义函数。 该模板具有一个名为 `storageNamePrefix` 的参数，该参数作为参数传递给函数。
 
 ```json
 {
@@ -93,6 +93,12 @@ ms.locfileid: "97934673"
 }
 ```
 
+在部署期间， `storageNamePrefix` 会将参数传递给函数：
+
+* 此模板定义一个名为的参数 `storageNamePrefix` 。
+* 函数使用 `namePrefix` ，因为您只能使用在函数中定义的参数。 有关详细信息，请参阅 [限制](#limitations)。
+* 在模板的 `resources` 部分中， `name` 元素使用函数并将值传递 `storageNamePrefix` 给函数的 `namePrefix` 。
+
 ## <a name="limitations"></a>限制
 
 定义用户函数时，存在一些限制：
@@ -105,5 +111,5 @@ ms.locfileid: "97934673"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要了解有关用户定义函数的可用属性，请参阅 [了解 ARM 模板的结构和语法](template-syntax.md)。
+* 若要了解用户定义的函数的可用属性，请参阅[了解 ARM 模板的结构和语法](template-syntax.md)。
 * 有关可用模板函数的列表，请参阅 [ARM 模板函数](template-functions.md)。

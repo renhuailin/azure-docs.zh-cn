@@ -2,13 +2,13 @@
 title: 使 Azure 服务总线应用程序免受服务中断和灾难影响
 description: 本文提供了用于保护应用程序免受潜在的 Azure 服务总线中断影响的技术。
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 4f3ff89e3ec59ad4445ab0b7ee7eeb45d18fa3b8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 02/10/2021
+ms.openlocfilehash: b9090a54cd58788dbd13f528af4dda4aa96005b7
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88065618"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100374586"
 ---
 # <a name="best-practices-for-insulating-applications-against-service-bus-outages-and-disasters"></a>使应用程序免受服务总线中断和灾难影响的最佳实践
 
@@ -23,11 +23,13 @@ ms.locfileid: "88065618"
 
 ### <a name="geo-disaster-recovery"></a>异地灾难恢复
 
-服务总线高级版支持命名空间级别的异地灾难恢复。 有关详细信息，请参阅 [Azure 服务总线异地灾难恢复](service-bus-geo-dr.md)。 灾难恢复功能仅适用于[高级 SKU](service-bus-premium-messaging.md)，可实现元数据灾难恢复，并且依赖于主要和辅助灾难恢复命名空间。
+服务总线高级版支持命名空间级别的异地灾难恢复。 有关详细信息，请参阅 [Azure 服务总线异地灾难恢复](service-bus-geo-dr.md)。 灾难恢复功能仅适用于[高级 SKU](service-bus-premium-messaging.md)，可实现元数据灾难恢复，并且依赖于主要和辅助灾难恢复命名空间。 在 Geo-Disaster 恢复的情况下，仅在主命名空间和辅助命名空间之间复制实体的元数据。  
 
 ### <a name="availability-zones"></a>可用性区域
 
 服务总线高级 SKU 支持[可用性区域](../availability-zones/az-overview.md)，在同一 Azure 区域内提供故障隔离位置。 服务总线管理消息存储的三个副本 (1 个主) 和2个辅助。 服务总线为数据和管理操作保留同步的所有三个副本。 如果主要副本发生故障，则会将其中一个辅助副本提升为主要副本，无需停机。 如果应用程序看到暂时性中断了服务总线，SDK 中的重试逻辑将自动重新连接到服务总线。 
+
+使用可用性区域时，将在可用性区域中的数据中心之间复制元数据和数据 (消息) 。 
 
 > [!NOTE]
 > Azure 服务总线高级版的可用性区域支持仅适用于存在可用性区域的 [Azure 区域](../availability-zones/az-region.md)。
@@ -41,7 +43,7 @@ ms.locfileid: "88065618"
 为了在使用标准消息传送定价层时实现针对数据中心中断的恢复，服务总线支持两种方法：主动和被动复制。 对于每一种方法，如果必须在数据中心中断的情况下仍可访问给定的队列或主题，可以在两个命名空间中创建。 两个实体可以具有相同的名称。 例如，主队列可以在 **contosoPrimary.servicebus.windows.net/myQueue** 下进行访问，而其辅助副本则可以在 **contosoSecondary.servicebus.windows.net/myQueue** 下进行访问。
 
 >[!NOTE]
-> **主动复制**和**被动复制**设置是常规用途解决方案，不是服务总线的特定功能。 复制逻辑（发送到 2 个不同的命名空间）存在于发送方应用程序上，而接收方必须具有用于检测重复项的自定义逻辑。
+> **主动复制** 和 **被动复制** 设置是常规用途解决方案，不是服务总线的特定功能。 复制逻辑（发送到 2 个不同的命名空间）存在于发送方应用程序上，而接收方必须具有用于检测重复项的自定义逻辑。
 
 如果应用程序不需要发送方到接收方的持续通信，则该应用程序可实施一个用于防止消息丢失的持久客户端队列，从而保护发送方免受任何暂时性服务总线故障的影响。
 

@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: 0295f1687a328980ccf8ceeb6d6a1f1cbd2b4bad
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 1488aa6f48c05a8c2dfa2c6162c1bd1df35d4f58
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878064"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100380472"
 ---
 # <a name="create-a-vnet-with-a-site-to-site-vpn-connection-using-powershell"></a>使用 PowerShell 创建具有站点到站点 VPN 连接的 VNet
 
@@ -242,7 +242,7 @@ VPN 连接有几种不同的验证方式。
 
 ## <a name="to-modify-ip-address-prefixes-for-a-local-network-gateway"></a><a name="modify"></a>修改本地网关的 IP 地址前缀
 
-如果需要路由到本地位置的 IP 地址前缀更改，则可修改本地网关。 提供了两套说明。 要选择哪套说明取决于是否创建了网关连接。 使用这些示例时，修改这些值以匹配你的环境。
+如果需要路由到本地位置的 IP 地址前缀更改，则可修改本地网关。 使用这些示例时，修改这些值以匹配你的环境。
 
 [!INCLUDE [Modify prefixes](../../includes/vpn-gateway-modify-ip-prefix-rm-include.md)]
 

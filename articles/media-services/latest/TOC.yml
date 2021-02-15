@@ -13,6 +13,8 @@
   items:
     - name: 设置你的环境
       items:
+        - name: 查找租户 ID
+          href: how-to-set-azure-tenant.md
         - name: 查找你的 Azure 订阅
           href: how-to-set-azure-subscription.md
         - name: 创建媒体服务帐户
@@ -70,6 +72,8 @@
           displayName: 'AAD, Active Directory'
     - name: REST
       items:
+        - name: 启用受信任的存储
+          href: tutorial-trusted-storage-rest.md
         - name: 对远程文件 REST 进行编码和流式传输
           href: stream-files-tutorial-with-rest.md
         - name: REST API 的客户管理的密钥
@@ -305,6 +309,12 @@
           displayName: 'migration, samples'
 - name: 操作指南
   items:
+    - name: 查找租户和订阅
+      items:
+        - name: 查找租户 ID
+          href: how-to-set-azure-tenant.md
+        - name: 查找你的订阅 ID
+          href: how-to-set-azure-subscription.md
     - name: 创建资产并上传媒体
       items:
         - name: 创建资产

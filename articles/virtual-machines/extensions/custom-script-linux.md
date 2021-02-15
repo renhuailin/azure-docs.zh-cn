@@ -3,7 +3,7 @@ title: 在 Azure 中的 Linux VM 上运行自定义脚本扩展
 description: 使用自定义脚本扩展 v2 自动化 Linux VM 配置任务
 services: virtual-machines-linux
 documentationcenter: ''
-author: mimckitt
+author: amjads1
 manager: gwallace
 editor: ''
 tags: azure-resource-manager
@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/25/2018
-ms.author: mimckitt
-ms.openlocfilehash: 94506c4107a157c2b3265a28ffdf5d1eedddd256
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.author: amjads
+ms.openlocfilehash: 5ab312dc6da57279ce5cbd4d8efd7912b8a36503
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954760"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390107"
 ---
 # <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>在 Linux 虚拟机上使用 Azure 自定义脚本扩展版本 2
 自定义脚本扩展版本 2 在 Azure 虚拟机上下载和运行脚本。 此扩展适用于部署后配置、软件安装或其他任何配置/管理任务。 可以从 Azure 存储或其他可访问的 Internet 位置下载脚本，或者将脚本提供给扩展运行时。 

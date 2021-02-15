@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, sneshaf, pinath, logicappspm
 ms.topic: conceptual
 ms.date: 01/20/2021
-ms.openlocfilehash: 2192ae5f3de551cb8ff2b6c36e233804c3c56bf1
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: a90f75db6961ea06b1cf9c2958556c1c2ef24805
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98633241"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100380128"
 ---
 # <a name="export-flows-from-power-automate-and-deploy-to-azure-logic-apps"></a>从 Power Automate 导出流并将其部署到 Azure 逻辑应用
 
@@ -24,9 +24,9 @@ ms.locfileid: "98633241"
 >
 > * 若要找出哪些电源自动连接器没有逻辑应用等效项，请参阅 [电源自动连接器](/connectors/connector-reference/connector-reference-powerautomate-connectors)。
 >
-> * 若要找出哪些逻辑应用连接器没有电源自动执行等效功能，请参阅 [逻辑应用连接器](/connectors/connector-reference/connector-reference-powerautomate-connectors)。
+> * 若要找出哪些逻辑应用连接器没有电源自动执行等效功能，请参阅 [逻辑应用连接器](/connectors/connector-reference/connector-reference-logicapps-connectors)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。
 
@@ -68,7 +68,7 @@ ms.locfileid: "98633241"
 
    1. 选择或指定模板的输入参数值。
 
-      | 属性 | 说明 |
+      | properties | 说明 |
       |----------|-------------|
       | **订阅** | 用于计费的 Azure 订阅 |
       | **资源组** | 要用于逻辑应用的 Azure 资源组。 您可以使用现有组或创建新组。 |

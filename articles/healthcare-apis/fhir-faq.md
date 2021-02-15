@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 1/21/2021
 ms.author: cavoeg
-ms.openlocfilehash: 4d071af6f72bfe6136296185e65007d2413ed2c4
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.openlocfilehash: d83bc653ae8c3ff5a9553de568bc6f2355f18760
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2021
-ms.locfileid: "98746707"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104614"
 ---
 # <a name="frequently-asked-questions-about-the-azure-api-for-fhir"></a>有关 Azure API for FHIR 的常见问题解答
 
@@ -108,13 +108,16 @@ _Count 的当前限制为100。 如果将 _count 设置为超过100，则在捆�
 
 ### <a name="does-the-azure-api-for-fhir-support-everything"></a>Azure API for FHIR 是否支持 $everything？ 
 
-不能。 目前，我们不支持 $everything。 不过，可以通过两个 API 调用来实现此目的。 例如，若要获取患者 $ 一切，你可以先使用/Patient/[ID] 抓取患者记录，然后使用/Patient/[ID]/* 再次调用来检索所有患者数据。
+不是。 目前，我们不支持 $everything。 不过，可以通过两个 API 调用来实现此目的。 例如，若要获取患者 $ 一切，你可以先使用/Patient/[ID] 抓取患者记录，然后使用/Patient/[ID]/* 再次调用来检索所有患者数据。
 
 可以在此 [社区文章](https://chat.fhir.org/#narrow/stream/179166-implementers/topic/.24everything.20with.20_type)中查看更多详细信息。 
 
 ### <a name="how-does-export-work"></a>$Export 是如何工作的？
 
 $export 是 FHIR 规范的一部分： https://hl7.org/fhir/uv/bulkdata/export/index.html 。 如果使用托管标识和存储帐户配置了 FHIR 服务，并且托管标识有权访问该存储帐户，则只需在 FHIR API 上调用 $export，并将所有 FHIR 资源导出到存储帐户。 有关详细信息，请查看 [$export 上的文章](./export-data.md)。
+
+### <a name="is-de-identified-export-available-at-patient-and-group-level-as-well"></a>是否也可以从患者和组级别取消识别的导出？
+目前仅支持匿名导出 (/$export) ，不适用于患者导出 (/Patient/$export) 。 我们正在努力使其在患者级别可用。
 
 ## <a name="using-azure-api-for-fhir"></a>使用用于 FHIR 的 Azure API
 

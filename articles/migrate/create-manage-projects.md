@@ -6,12 +6,12 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 11/23/2020
-ms.openlocfilehash: 0d4ccc1a60f9ac3c2183023d3d3772da6a1e307b
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: f66aef64d68bd5d99d7a27d1382306d9202bd350
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99830747"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100388050"
 ---
 # <a name="create-and-manage-azure-migrate-projects"></a>创建和管理 Azure Migrate 项目
 
@@ -48,7 +48,7 @@ Azure Migrate 项目用于存储从正在评估或迁移的环境中收集的发
     - 地理位置仅用于存储从本地计算机收集的元数据。 你可以选择任何要迁移的目标区域。 
     - 查看[公有云](migrate-support-matrix.md#supported-geographies-public-cloud)和[政府云](migrate-support-matrix.md#supported-geographies-azure-government)支持的地理位置。
 
-8. 选择“创建”  。
+8. 选择“创建”。
 
    ![页面到输入项目设置](./media/create-manage-projects/project-details.png)
 
@@ -87,7 +87,7 @@ PUT /subscriptions/<subid>/resourceGroups/<rg>/providers/Microsoft.Migrate/Migra
 3. 选择相应的订阅并 Azure Migrate 项目。
 
 
-### <a name="find-a-legacy-project"></a>查找旧项目
+### <a name="find-a-classic-azure-migrate-project"></a>查找经典 Azure Migrate 项目
 
 如果在 Azure Migrate 的 [以前版本](migrate-services-overview.md#azure-migrate-versions) 中创建项目，请按如下所示进行查找：
 

@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: f95df6fb74071dc16814f11fb48521f984c89778
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: e42e1791693342592e391a14422b1441c9cbbd31
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95995516"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99832379"
 ---
 # <a name="tutorial---define-a-new-iot-gateway-device-type-in-your-azure-iot-central-application"></a>教程 - 在 Azure IoT Central 应用程序中定义新的 IoT 网关设备类型
 
@@ -51,11 +51,11 @@ ms.locfileid: "95995516"
 
 1. 在“复查”页上，选择“创建”将该设备模板添加到应用程序。   
 
-若要创建“RS40 占位传感器”设备的设备模板：
+若要创建“RS40 占位传感器”设备的设备模板： 
 
 1. 在左窗格中选择“设备模板”  。 然后选择 **+** 开始添加模板。
 
-1. 向下滚动，直到看到“RS40 占位传感器”设备的磁贴。 选择该磁贴，然后选择“下一步:  自定义”。
+1. 向下滚动，直到看到“RS40 占位传感器”设备的磁贴。  选择该磁贴，然后选择“下一步:  自定义”。
 
 1. 在“复查”页上，选择“创建”将该设备模板添加到应用程序。   
 
@@ -198,6 +198,10 @@ ms.locfileid: "95995516"
 
 选择网关设备模板和网关设备实例，然后选择“联接”  。
 
+## <a name="clean-up-resources"></a>清理资源
+
+[!INCLUDE [iot-central-clean-up-resources](../../../includes/iot-central-clean-up-resources.md)]
+
 ## <a name="next-steps"></a>后续步骤
 
 在本教程中，你了解了如何执行以下操作：
@@ -208,9 +212,6 @@ ms.locfileid: "95995516"
 * 定义设备遥测的可视化效果。
 * 添加关系。
 * 发布设备模板。
-
-> [!NOTE]
-> 在 IoT Central 中建模的网关设备目前不支持基于 VS Code 的代码生成。
 
 接下来，设备开发人员可以了解如何：
 

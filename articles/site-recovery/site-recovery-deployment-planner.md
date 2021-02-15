@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: mayg
-ms.openlocfilehash: 9a78b0ec53dfce0a1c1478790f404adb78a8c6b9
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 4291e8438f70e2e7190cd4dc6c890b5b325f2324
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92359843"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100360901"
 ---
 # <a name="about-the-azure-site-recovery-deployment-planner-for-vmware-to-azure"></a>关于用于 VMware 到 Azure 部署的 Azure Site Recovery 部署规划器
 本文为适用于 VMware 到 Azure 生产部署的 Azure Site Recovery 部署规划器用户指南。
@@ -65,7 +65,7 @@ ms.locfileid: "92359843"
 | **类别** | **VMware 到 Azure** |**Hyper-V 到 Azure**|**Azure 到 Azure**|**Hyper-V 到辅助站点**|**VMware 到辅助站点**
 --|--|--|--|--|--
 支持的方案 |是|是|否|是*|否
-支持的版本 | vCenter 6.7、6.5、6.0 或 5.5| Windows Server 2016、Windows Server 2012 R2 | 不可用 |Windows Server 2016、Windows Server 2012 R2|不可用
+支持的版本 | vCenter 7.0、6.7、6.5、6.0 或5。5| Windows Server 2016、Windows Server 2012 R2 | 不可用 |Windows Server 2016、Windows Server 2012 R2|不可用
 支持的配置|vCenter、ESXi| Hyper-V 群集、Hyper-V 主机|不可用|Hyper-V 群集、Hyper-V 主机|不可用|
 可以按 Site Recovery 部署规划器的运行实例进行分析的服务器数 |单个（一次只能分析属于一个 vCenter Server 或一个 ESXi 服务器的 VM）|多个（一次可以分析多个主机或主机群集的 VM）| 不可用 |多个（一次可以分析多个主机或主机群集的 VM）| 不可用
 

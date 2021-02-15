@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 01/11/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 5012e90aae316897454ffc7933efc88d83afdf6e
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: a1ee632e3aaae7b858ab43b45f6e72aff8d1fb77
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98893367"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100361752"
 ---
 # <a name="azure-active-directory-b2c-isv-partners"></a>Azure Active Directory B2C ISV 合作伙伴
 
@@ -74,6 +74,7 @@ Microsoft 合作伙伴，其中包含以下用于 MFA 和无密码 authenticatio
 | ISV 合作伙伴 | 说明和集成演练 |
 |:-------------------------|:--------------|
 | ![Arkose 实验室徽标的屏幕截图](./media/partner-gallery/arkose-logo.png) | [Arkose 实验室](./partner-arkose-labs.md) 是一种欺诈防御解决方案提供商，可帮助组织防范机器人攻击、帐户接管攻击和欺诈性帐户。 |
+| ![Microsoft Dynamics 365 徽标的屏幕截图](./media/partner-gallery/microsoft-dynamics365-logo.png) | [Microsoft Dynamics 365 欺诈防护](./partner-dynamics-365-fraud-protection.md) 是一种解决方案，可帮助组织防范通过设备指纹的欺诈性帐户。 |
 | ![Ping 徽标的屏幕截图](./media/partner-gallery/ping-logo.png) | [Ping 标识](./partner-ping-identity.md) 允许跨多个云对本地旧应用程序进行安全的混合访问。 |
 | ![阶层徽标的屏幕截图](./media/partner-gallery/strata-logo.png) | [阶层](./partner-strata.md) 提供对本地应用程序的安全混合访问，方法是强制使用一致的访问策略，使身份保持同步，并简化将应用程序从旧的标识系统转换到 Azure AD B2C 提供的基于标准的身份验证和访问控制。 |
 | ![Zscaler 徽标的屏幕截图](./media/partner-gallery/zscaler-logo.png) | [Zscaler](./partner-zscaler.md) 提供对专用应用程序和资产的基于策略、安全的访问，而不会带来 VPN 的成本、麻烦或安全风险。 |
