@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: ea274914ac70540d5763884bbd01e41e349a530d
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 5813331d5eafd953d776dd19d9cc885ff71b8be0
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879824"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100361547"
 ---
 # <a name="change-the-license-model-for-a-sql-virtual-machine-in-azure"></a>在 Azure 中更改 SQL 虚拟机的许可模式
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -119,7 +119,6 @@ Update-AzSqlVM -ResourceGroupName <resource_group_name> -Name <VM_name> -License
    - 仅支持 SQL Server 的 Standard 版和 Enterprise 版。 不支持更改 Express、Web 和 Developer 版本的许可。 
    - 仅支持通过 Azure 资源管理器模型部署的虚拟机。 不支持通过经典模型部署的虚拟机。 
    - 仅适用于公共云或 Azure 政府云。 
-   - 仅支持具有单个网络接口 (NIC) 的虚拟机。 
 
 > [!Note]
 > 只有具有软件保障或订阅许可证 SQL Server 基于内核的许可才有资格处理 Azure 混合权益。 如果你使用的是服务器 + CAL 许可 SQL Server 并且具有软件保障，则可以使用 Azure SQL Server 虚拟机映像的自带许可证来利用这些服务器的许可移动性，但你无法利用 Azure 混合权益的其他功能。 
@@ -136,10 +135,6 @@ Update-AzSqlVM -ResourceGroupName <resource_group_name> -Name <VM_name> -License
 
 需要向资源提供程序注册订阅，然后将 [SQL Server VM 注册到 SQL IaaS 代理扩展](sql-agent-extension-manually-register-single-vm.md)。 
 
-
-**虚拟机 " \<vmname\> " 具有多个关联的 NIC**
-
-此错误发生在具有多个 NIC 的虚拟机上。 请先删除其中一个 NIC，再更改许可模式。 虽然可以在更改许可模式后将该 NIC 再添加回 VM，但将不再支持 Azure 门户中的操作（如自动备份和修补）。 
 
 
 ## <a name="next-steps"></a>后续步骤

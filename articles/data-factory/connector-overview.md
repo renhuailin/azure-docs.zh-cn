@@ -1,26 +1,23 @@
 ---
 title: Azure 数据工厂连接器概述
 description: 了解数据工厂中支持的连接器。
-services: data-factory
 author: linda33wj
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/28/2020
 ms.author: jingwang
-ms.reviewer: craigg
-ms.openlocfilehash: 9b346c24b6a363e66e56f6c16b70058df3864c88
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 9dff36704fc0e3163da0439d55452fa82cb40e55
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91945816"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100381301"
 ---
 # <a name="azure-data-factory-connector-overview"></a>Azure 数据工厂连接器概述
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Azure 数据工厂支持以下数据存储和格式： "复制"、"数据流"、"查找"、"获取元数据" 和 "删除活动"。 单击每个数据存储以了解详细信息中支持的功能和相应的配置。
+Azure 数据工厂通过复制、数据流、查找、获取元数据和删除活动支持以下数据存储和格式。 单击每个数据存储以了解详细信息中支持的功能和相应的配置。
 
 ## <a name="supported-data-stores"></a>支持的数据存储
 

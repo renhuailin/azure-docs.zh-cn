@@ -3,18 +3,18 @@ title: 'ML Studio (经典) ： Net # 自定义神经网络-Azure'
 description: Net# 神经网络规范语言的语法指南。 了解如何在 Azure 机器学习工作室（经典）中创建自定义神经网络模型。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2018
-ms.openlocfilehash: a36eb21f681aec1cfc52a000b60bdbc30cab0633
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: 5137b633f66088efbee41b96ba715eb3b18961dc
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96302799"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100519246"
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-machine-learning-studio-classic"></a>有关机器学习工作室（经典）的 Net# 神经网络规范语言的指南
 
@@ -214,7 +214,7 @@ hidden ByCol[5, 20] from Pixels where (s,d) => abs(s[1] - d[1]) <= 1;
 
     如果维度值为 False，则将定义内核，使留出的每个端上的节点数都相同（最大差值为 1）。 此属性的默认值为一个元组，其所有组件都等于 False。
 
-+ **UpperPad** 和 **LowerPad**：（可选）对大量要使用的填充提供更好的控制。 **重要提示：** 当且仅当以上 **边距** 属性 **_未_ 定义为 _ 时，才能定义这些属性 *。值应为整数值元组，其长度为捆绑的实参数量。指定这些属性后，"虚拟" 节点将添加到输入层的每个维度的下限和上限。添加到每个维度中的下端和上端的节点数* 分别由 _ LowerPad**[i] 和 **UpperPad**[i] 确定。
++ **UpperPad** 和 **LowerPad**：（可选）对大量要使用的填充提供更好的控制。 **重要提示：** 当且仅当没有定义上述 Padding 属性时，才能定义这些属性 ***。值必须是正整数值的元组，其长度为绑定的实参数量。指定这些属性后，“虚拟”节点将添加到输入层的每个维度的上下两端。每个维度的上下两端添加的节点数分别由 LowerPad***[i] 和 UpperPad[i] 确定。
 
     若要确保内核只对应“真实”节点而不是“虚拟”节点，则必须符合以下条件：
   - **LowerPad** 的每个组件必须严格小于 `KernelShape[d]/2`。
@@ -266,9 +266,9 @@ hidden P1 [5, 12, 12]
 
 响应规范化捆绑支持所有卷积属性，除了 **Sharing**、**MapCount** 和 **Weights**。
 
-+ 如果内核包含与 x _ 相同的映射 **_x_*，则规范化方案称为 _ 相同的* 映射规范化**。 若要定义相同映射规范化，那么 **InputShape** 中的第一个坐标必须具有值 1.
++ 如果内核包含与 ***x** _ 相同的映射，则规范化方案称为 _ * 同一映射规范化 * *。 若要定义相同映射规范化，那么 **InputShape** 中的第一个坐标必须具有值 1.
 
-+ 如果内核包含与 x _ 相同的空间位置中的神经元 **_x_*，但神经元在其他映射中，则标准化方案将* 在 maps 标准化中调用**。 这种类型的响应规范化可实现一种横向抑制，其灵感来源于从真实神经元中发现的类型，可创建不同映射上计算的神经元输出之间的大激活级别的竞争。 若要定义跨映射规范化，第一个坐标必须是大于 1 且不大于映射数的正整数，其他坐标则必须具有值 1.
++ 如果内核包含与 ***x** _ 相同的空间位置中的神经元，但神经元在其他映射中，则规范化方案称为 _ * 跨映射规范化 * *。 这种类型的响应规范化可实现一种横向抑制，其灵感来源于从真实神经元中发现的类型，可创建不同映射上计算的神经元输出之间的大激活级别的竞争。 若要定义跨映射规范化，第一个坐标必须是大于 1 且不大于映射数的正整数，其他坐标则必须具有值 1.
 
 因为响应规范化捆绑应用源节点值的预定义函数以确定目标节点值，所以它们不具有可训练状态（权重或偏差）。
 

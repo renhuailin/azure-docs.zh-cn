@@ -16,12 +16,12 @@ ms.date: 11/05/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73376994e01ed89891726a8f6e1b727f89dab2fb
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 1957adc0effd5b37d7aff3f813267da6ca065e0a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201716"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100368959"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Azure AD Connect 的先决条件
 本文介绍 Azure Active Directory (Azure AD) Connect 的先决条件和硬件要求。
@@ -73,6 +73,7 @@ Azure AD Connect 服务器包含关键标识数据。 确保对此服务器的�
     - 必须配置 TLS/SSL 证书。 有关详细信息，请参阅[管理 AD FS 的 SSL/TLS 协议和密码套件](/windows-server/identity/ad-fs/operations/manage-ssl-protocols-in-ad-fs)和[管理 AD FS 中的 SSL 证书](/windows-server/identity/ad-fs/operations/manage-ssl-certificates-ad-fs-wap)。
     - 必须配置名称解析。 
 - 如果全局管理员已启用 MFA，URL https://secure.aadcdn.microsoftonline-p.com 必须在受信任的站点列表中。 在显示 MFA 质询提示之前，系统会先提示将此 URL 添加到受信任的站点列表中（如果尚未添加）。 可以使用 Internet Explorer 将它添加到受信任站点。
+- 如果计划使用 Azure AD Connect Health 进行同步，请确保还满足 Azure AD Connect Health 的先决条件。 有关详细信息，请参阅 [Azure AD Connect Health 代理安装](how-to-connect-health-agent-install.md)。
 
 #### <a name="harden-your-azure-ad-connect-server"></a>强化 Azure AD Connect 服务器 
 建议强化 Azure AD Connect 服务器来减小 IT 环境中的此关键组件的安全攻击面。 遵循这些建议有助于降低组织的部分安全风险。

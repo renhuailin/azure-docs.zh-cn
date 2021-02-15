@@ -1,23 +1,18 @@
 ---
 title: 从 Azure 数据工厂复制活动调用存储过程
 description: 了解如何从 Azure 数据工厂复制活动调用 Azure SQL 数据库或 SQL Server 中的存储过程。
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-editor: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: d2b10744222da8e5d85b19e1ded5aa24cf9c9706
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 6f06b84ac0807a37c7adc603a557894be85a4cea
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637847"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100374960"
 ---
 # <a name="invoke-stored-procedure-from-copy-activity-in-azure-data-factory"></a>从 Azure 数据工厂中的复制活动调用存储过程
 > [!NOTE]
@@ -29,7 +24,7 @@ ms.locfileid: "92637847"
 以下示例演示如何从数据工厂管道（复制活动）调用 SQL Server 数据库中的存储过程：  
 
 ## <a name="output-dataset-json"></a>输出数据集 JSON
-在输出数据集 JSON 中，将 **type** 设置为： **SqlServerTable** 。 将其设置为 **AzureSqlTable** 可用于 Azure SQL 数据库。 **tableName** 属性的值必须与存储过程的第一个参数的名称匹配。  
+在输出数据集 JSON 中，将 **type** 设置为：**SqlServerTable**。 将其设置为 **AzureSqlTable** 可用于 Azure SQL 数据库。 **tableName** 属性的值必须与存储过程的第一个参数的名称匹配。  
 
 ```json
 {

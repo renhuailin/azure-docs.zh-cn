@@ -7,18 +7,45 @@ ms.reviewer: mikeray
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
-ms.date: 12/09/2020
+ms.date: 02/11/2021
 ms.topic: conceptual
-ms.openlocfilehash: 2c9b239269aa00255aa08d6c233cd7978b253d94
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: f303ddb4d32da4c4cb6609f3ceec34e5c83529a8
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97653565"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100391450"
 ---
 # <a name="release-notes---azure-arc-enabled-data-services-preview"></a>发行说明-启用了 Azure Arc 的数据服务 (预览) 
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
+
+## <a name="january-2021"></a>2021 年 1 月
+
+### <a name="new-capabilities-and-features"></a>新功能和功能
+
+Azure 数据 CLI (`azdata`) 版本号：20.3.0。 下载位置 [https://aka.ms/azdata](https://aka.ms/azdata) 。 你可以 `azdata` 从 [安装 AZURE 数据 CLI (`azdata`) ](/sql/azdata/install/deploy-install-azdata)进行安装。
+
+
+其他更新包括：
+- 适用于17种新语言的本地化门户
+- 对 Kube 的细微更改-yaml 文件
+- 新版本的 Grafana 和 Kibana
+- 在 Azure Data Studio 中使用笔记本中的 azdata 时，Python 环境出现问题
+- Pg_audit 扩展现可用于 PostgreSQL 超大规模
+- 在对 PostgreSQL 超大规模数据库执行完整还原时，不再需要备份 ID
+- 为组成服务器组的每个 PostgreSQL 实例报告状态 (健康状况) 
+
+   在早期版本中，状态在服务器组级别进行聚合，而不是在 PostgreSQL 节点级别进行详细介绍。
+
+- PostgreSQL 部署现在服从 create 命令中指定的卷大小参数
+- 在编辑服务器组时，引擎版本参数现已生效
+- 启用了 Azure Arc PostgreSQL 超大规模的 pod 的命名约定已更改
+
+    它现在采用以下格式： `ServergroupName{c, w}-n` 。 例如，具有三个节点的服务器组、一个协调器节点和两个工作节点均表示为：
+   - `Postgres01c-0` (协调器 "节点) 
+   - `Postgres01w-0` (辅助节点) 
+   - `Postgres01w-1` (辅助节点) 
 
 ## <a name="december-2020"></a>2020 年 12 月
 
@@ -41,14 +68,14 @@ Azure 数据 CLI (`azdata`) 版本号：20.2.5。 下载位置 [https://aka.ms/a
 
 #### <a name="new-resource-provider"></a>新资源提供程序
 
-此版本引入了一个已更新的 [资源提供程序](../../azure-resource-manager/management/azure-services-resource-providers.md) （名为） `Microsoft.AzureArcData` 。 你需要注册此资源提供程序，然后才能使用此功能。 
+此版本引入了一个称为 `Microsoft.AzureArcData` 的更新的[资源提供程序](../../azure-resource-manager/management/azure-services-resource-providers.md)。 你需要注册此资源提供程序，然后才能使用此功能。 
 
 注册此资源提供程序： 
 
 1. 在 Azure 门户中，选择 "**订阅**" 
 2. 选择自己的订阅
-3. 在 " **设置**" 下，选择 **资源提供程序** 
-4. 搜索 `Microsoft.AzureArcData` 并选择 "**注册**" 
+3. 在“设置”下，选择“资源提供程序”  
+4. 搜索 `Microsoft.AzureArcData`，并选择“注册” 
 
 可以在 [Azure 资源提供程序和类型](../../azure-resource-manager/management/resource-providers-and-types.md)上查看详细步骤。 此更改还会删除已上载到 Azure 门户的所有现有 Azure 资源。 若要使用资源提供程序，需要更新数据控制器并使用最新的 `azdata` CLI。  
 

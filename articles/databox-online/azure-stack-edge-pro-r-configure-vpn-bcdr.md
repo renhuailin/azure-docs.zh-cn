@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 04/17/2020
 ms.author: alkohli
-ms.openlocfilehash: 4d735c623a6dffe24108d06d00caa7fba987c7df
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: a35a7e5e5c7eccf006f18badad88656e8bc73453
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96466091"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100367684"
 ---
 # <a name="configure-business-continuity-and-disaster-recovery-for-azure-stack-edge-vpn"></a>为 Azure Stack Edge VPN 配置业务连续性和灾难恢复
 
-[!INCLUDE [applies-to-r-skus](../../includes/azure-stack-edge-applies-to-r-sku.md)]
+[!INCLUDE [applies-to-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-pro-r-mini-r-sku.md)]
 
 本文介绍如何在 Azure Stack 边缘设备上配置的虚拟专用网络 (VPN) 上配置业务连续性和灾难恢复 (BCDR) 。
 

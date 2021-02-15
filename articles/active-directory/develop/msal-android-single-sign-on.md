@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 10/15/2020
 ms.author: hahamil
 ms.reviewer: marsma
-ms.openlocfilehash: c4c98ad377100c35b0c364607bfd3803d07a95a7
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: f3d4ec8db89e9bebfdcd594e842a6c19d3d66d54
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98015923"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104087"
 ---
 # <a name="how-to-enable-cross-app-sso-on-android-using-msal"></a>如何：使用 MSAL 在 Android 上启用跨应用 SSO
 
@@ -119,7 +119,7 @@ keytool -exportcert -alias androiddebugkey -keystore %HOMEPATH%\.android\debug.k
 
 使用 keytool 生成签名哈希后，请使用 Azure 门户生成重定向 URI：
 
-1. 登录到 <a href="https://portal.azure.com/" target="_blank">Azure 门户 <span class="docon docon-navigate-external x-hidden-focus"></span></a>并选择 **应用注册** 中的 Android 应用。
+1. 登录到 <a href="https://portal.azure.com/" target="_blank">Azure 门户</a>，并选择“应用注册”中的 Android 应用。
 1. 选择“身份验证” > “添加平台” > “Android”  。
 1. 在“配置 Android 应用”窗格打开时，输入你之前生成的“签名哈希”，然后输入“包名称”  。
 1. 选择“配置”按钮。

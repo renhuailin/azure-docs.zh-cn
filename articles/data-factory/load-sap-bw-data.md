@@ -1,22 +1,18 @@
 ---
 title: 从 SAP Business Warehouse 加载数据
 description: 使用 Azure 数据工厂从 SAP Business Warehouse (BW) 复制数据
-services: data-factory
 author: linda33wj
 ms.author: jingwang
-manager: shwang
-ms.reviewer: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/22/2019
-ms.openlocfilehash: bad9a706c5289966334af26eacbfa41c418b7ab5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3dabb6d5df0a74cc7ae2fb8b381ad9e0dfe04e63
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91360797"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100370693"
 ---
 # <a name="copy-data-from-sap-business-warehouse-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 SAP Business Warehouse 复制数据
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -28,7 +24,7 @@ ms.locfileid: "91360797"
 
 ## <a name="prerequisites"></a>先决条件
 
-- **Azure 数据工厂**：如果你没有数据工厂，请遵循相应的步骤[创建数据工厂](quickstart-create-data-factory-portal.md#create-a-data-factory)。
+- **Azure 数据工厂**：如果你没有数据工厂，请遵循相应的步骤 [创建数据工厂](quickstart-create-data-factory-portal.md#create-a-data-factory)。
 
 - **目标类型为“数据库表”的 SAP BW Open Hub 目标 (OHD)** ：若要创建 OHD 或检查你的 OHD 是否已针对数据工厂集成正确进行配置，请参阅本文的 [SAP BW Open Hub 目标配置](#sap-bw-open-hub-destination-configurations)部分。
 
@@ -37,7 +33,7 @@ ms.locfileid: "91360797"
   - 远程函数调用 (RFC) 和 SAP BW 的授权。
   - 对 **S_SDSAUTH** 授权对象拥有“执行”活动权限。
 
-- **一个[自承载集成运行时 (IR)](concepts-integration-runtime.md#self-hosted-integration-runtime) 和 SAP .NET 连接器 3.0**。 遵循以下安装步骤：
+- **一个 [自承载集成运行时 (IR)](concepts-integration-runtime.md#self-hosted-integration-runtime) 和 SAP .NET 连接器 3.0**。 遵循以下安装步骤：
 
   1. 安装并注册自承载集成运行时 3.13 或更高版本。 （本文稍后会介绍此过程。）
 
@@ -51,7 +47,7 @@ ms.locfileid: "91360797"
 
 1. 在“开始”页上选择“复制数据”，打开“复制数据”工具。  
 
-2. 在“属性”页上指定一个**任务名称**，然后选择“下一步”。  
+2. 在“属性”页上指定一个 **任务名称**，然后选择“下一步”。  
 
 3. 在“源数据存储”页上，单击“+创建新连接”。   从连接器库中选择“SAP BW Open Hub”，然后选择“继续”。   若要筛选连接器，可在搜索框中键入 **SAP**。
 
@@ -61,7 +57,7 @@ ms.locfileid: "91360797"
 
    1. 在“通过集成运行时进行连接”列表中，选择一个现有的自承载 IR。  如果你没有自承载 IR，请创建一个。
 
-      若要创建新的自承载 IR，请依次选择“+新建”、“自承载”。   输入**名称**，然后选择“下一步”。  选择“快速安装”以在当前计算机上安装，或遵循提供的“手动设置”步骤。  
+      若要创建新的自承载 IR，请依次选择“+新建”、“自承载”。   输入 **名称**，然后选择“下一步”。  选择“快速安装”以在当前计算机上安装，或遵循提供的“手动设置”步骤。  
 
       如[先决条件](#prerequisites)中所述，请确保在运行自承载 IR 的同一台计算机上安装 SAP Connector for Microsoft .NET 3.0。
 
@@ -133,7 +129,7 @@ ms.locfileid: "91360797"
 
 现在，让我们继续配置从 SAP BW Open Hub 执行的增量复制。
 
-增量复制使用基于**请求 ID** 的“高水印”机制。 该 ID 是由 DTP 在 SAP BW Open Hub 目标中自动生成的。 下图演示了此工作流：
+增量复制使用基于 **请求 ID** 的“高水印”机制。 该 ID 是由 DTP 在 SAP BW Open Hub 目标中自动生成的。 下图演示了此工作流：
 
 ![增量复制工作流程图](media/load-sap-bw-data/incremental-copy-workflow.png)
 
@@ -217,7 +213,7 @@ ms.locfileid: "91360797"
 
    可能提高 DTP 的并行运行 SAP 工作进程数：
 
-   ![屏幕截图显示并行处理的设置，您可以在其中为 D P P 选择并行进程数。](media/load-sap-bw-data/create-sap-bw-ohd-delta3.png)
+   ![屏幕截图显示了“并行处理的设置”，你可以在其中选择 DTP 的并行进程数。](media/load-sap-bw-data/create-sap-bw-ohd-delta3.png)
 
 2. 在进程链中计划 DTP。
 

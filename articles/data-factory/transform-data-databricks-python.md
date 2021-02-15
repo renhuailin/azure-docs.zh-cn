@@ -1,27 +1,21 @@
 ---
 title: 使用 Databricks Python 转换数据
-description: 了解如何通过运行 Databricks Python 处理或转换数据。
-services: data-factory
-documentationcenter: ''
+description: 了解如何通过在 Azure 数据工厂管道中运行 Databricks Python 活动来处理或转换数据。
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/15/2018
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
-manager: anandsub
 ms.custom: devx-track-python
-ms.openlocfilehash: 7e80fad02a186173868a6aa78aedeac0801f199a
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 49dfe11ceb01471e3b5afadd30259dcd63e7b82a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96496868"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100373940"
 ---
 # <a name="transform-data-by-running-a-python-activity-in-azure-databricks"></a>通过运行 Azure Databricks 中的 Python 活动转换数据
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
-
 
 [数据工厂管道](concepts-pipelines-activities.md)中的 Azure Databricks Python 活动在 Azure Databricks 群集中运行 Python 文件。 本文基于[数据转换活动](transform-data.md)一文，它概述了数据转换和受支持的转换活动。 Azure Databricks 是一个用于运行 Apache Spark 的托管平台。
 
@@ -110,18 +104,22 @@ ms.locfileid: "96496868"
 
 ```
 
-有关详细信息，请参阅库类型的 [Databricks 文档](https://docs.azuredatabricks.net/api/latest/libraries.html#managedlibrarieslibrary)。
+有关详细信息，请参阅库类型的 [Databricks 文档](/azure/databricks/dev-tools/api/latest/libraries#managedlibrarieslibrary)。
 
 ## <a name="how-to-upload-a-library-in-databricks"></a>如何上传 Databricks 中的库
 
-#### <a name="using-databricks-workspace-ui"></a>[使用 Databricks 工作区 UI](https://docs.azuredatabricks.net/user-guide/libraries.html#create-a-library)
+### <a name="you-can-use-the-workspace-ui"></a>您可以使用工作区 UI：
 
-若要获取使用 UI 添加的库的 dbfs 路径，可以使用 [Databricks CLI（安装）](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#install-the-cli)。 
+1. [使用 Databricks 工作区 UI](/azure/databricks/libraries/#create-a-library)
 
-使用 UI 时，Jar 库通常存储在 dbfs:/FileStore/jars 下。 可以通过 CLI 来列出所有内容： *databricks fs ls dbfs：//jar* 
+2. 若要获取使用 UI 添加的库的 dbfs 路径，可以使用 [DATABRICKS CLI](/azure/databricks/dev-tools/cli/#install-the-cli)。
 
+   使用 UI 时，Jar 库通常存储在 dbfs:/FileStore/jars 下。 可以通过 CLI 列出所有库：databricks fs ls dbfs:/FileStore/job-jars
 
+### <a name="or-you-can-use-the-databricks-cli"></a>或者，可以使用 Databricks CLI：
 
-#### <a name="copy-library-using-databricks-cli"></a>[使用 Databricks CLI 复制库](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#copy-a-file-to-dbfs)
+1. 跟踪 [使用 DATABRICKS CLI 复制库](/azure/databricks/dev-tools/cli/#copy-a-file-to-dbfs)
 
-示例：databricks fs cp SparkPi-assembly-0.1.jar dbfs:/FileStore/jars
+2. 使用 Databricks CLI [ (安装步骤) ](/azure/databricks/dev-tools/cli/#install-the-cli)
+
+   例如，要将 JAR 复制到 dbfs： `dbfs cp SparkPi-assembly-0.1.jar dbfs:/docs/sparkpi.jar`

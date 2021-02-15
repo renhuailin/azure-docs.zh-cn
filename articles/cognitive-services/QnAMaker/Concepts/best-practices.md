@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 8a6189a613c9a6768428a13e35e0e009894b8b3f
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: 77d4a1cad4843578419be54465a06e87834dd186
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99988037"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104512"
 ---
 # <a name="best-practices-of-a-qna-maker-knowledge-base"></a>QnA Maker 知识库的最佳做法
 
@@ -147,7 +147,7 @@ QnA Maker 让用户可以在知识库上进行协作。 用户需要具备对 Az
 
 ## <a name="active-learning"></a>主动学习
 
-[主动学习](../How-to/use-active-learning.md)在提供大量基于用户的高质量和高数量的查询时，可以最好地建议备选问题。 重要的是允许客户端应用程序的用户查询在没有审查的情况下参与主动学习反馈循环。 在 QnA Maker 门户中建议问题后，可以 **[按建议进行筛选](../How-To/improve-knowledge-base.md#accept-an-active-learning-suggestion-in-the-knowledge-base)** ，查看并接受或拒绝这些建议。
+[主动学习](../How-to/use-active-learning.md)在提供大量基于用户的高质量和高数量的查询时，可以最好地建议备选问题。 重要的是允许客户端应用程序的用户查询在没有审查的情况下参与主动学习反馈循环。 在 QnA Maker 门户中建议问题后，可以 **[按建议进行筛选](../How-To/improve-knowledge-base.md)** ，查看并接受或拒绝这些建议。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/28/2021
-ms.openlocfilehash: 5fc47599d09e5be60311dbda15868d87de4d91d2
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: 5381c12253f3f301099d469639cc75e390ebceff
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99509378"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100360952"
 ---
 # <a name="creating-indexers-in-azure-cognitive-search"></a>在 Azure 中创建索引器认知搜索
 
@@ -142,6 +142,20 @@ AI 扩充超出了本文的范围。 有关详细信息，请从以下文章开�
 + [Azure Data Lake Storage Gen2](search-howto-index-azure-data-lake-storage.md)
 + [Azure 表存储](search-howto-indexing-azure-tables.md)
 + [Azure Cosmos DB](search-howto-index-cosmosdb.md)
+
+## <a name="change-detection-and-indexer-state"></a>更改检测和索引器状态
+
+索引器可检测基础数据中的更改，并且仅处理每个索引器运行时的新文档或更新文档。 例如，如果索引器状态指出运行已成功 `0/0` 处理文档，则意味着索引器在基础数据源中找不到任何新的或已更改的行或 blob。
+
+索引器支持更改检测的方式因数据源而异：
+
++ Azure Blob 存储、Azure 表存储和 Azure Data Lake Storage Gen2 将每个 Blob 或行更新标记为日期和时间。 各种索引器使用此信息确定要在索引中更新的文档。 内置的更改检测是指索引器可以识别新的和更新的文档，而不需要在您的部分进行任何其他配置。
+
++ Azure SQL 和 Cosmos DB 提供其平台中的更改检测功能。 您可以在数据源定义中指定更改检测策略。
+
+对于大型索引加载，索引器还会跟踪通过内部 "高水位线" 处理的最后一篇文档。 标记决不会在 API 中公开，但在内部，索引器将跟踪它停止的位置。 当索引通过计划运行或按需调用进行恢复时，索引器将引用高水位线，以便它可以从中断的位置继续。
+
+如果需要清除高水位线以使其完全重新编制索引，则可以使用 " [重置索引器](https://docs.microsoft.com/rest/api/searchservice/reset-indexer)"。 为了更好地重新编制索引，请使用 [重置技能](https://docs.microsoft.com/rest/api/searchservice/preview-api/reset-skills) 或 [重置文档](https://docs.microsoft.com/rest/api/searchservice/preview-api/reset-documents)。 如果启用了 [增量扩充](search-howto-incremental-index.md)，则可以通过重置 api 清除内部状态并刷新缓存。 有关每个重置选项的更多背景和比较，请参阅 [运行或重置索引器、技能和文档](search-howto-run-reset-indexers.md)。
 
 ## <a name="know-your-data"></a>了解你的数据
 

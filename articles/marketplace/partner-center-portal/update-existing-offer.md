@@ -8,12 +8,12 @@ author: trkeya
 ms.author: trkeya
 ms.date: 10/27/2020
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 26ceee828bae7ea3fe2d78ec1393f308556b8401
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: c28ab557f6aac94fa9acde78c7433b850ecba0be
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033351"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100097241"
 ---
 # <a name="update-existing-offers-in-the-commercial-marketplace"></a>更新商业应用商店中的现有产品/服务
 
@@ -31,6 +31,10 @@ ms.locfileid: "97033351"
     - **未发布的更改**：节已更新并已完成。 提供所有所需的数据，更新中没有引入任何错误。
     - **不完整**：对分区所做的更新引入了需要修复的错误或需要提供更多信息。
 2. 选择 " **发布** " 以提交更新的产品/服务进行发布。 你的产品/服务将经历标准 [验证和发布步骤](../review-publish-offer.md#validation-and-publishing-steps)。
+
+## <a name="changing-offer-type"></a>更改产品/服务类型
+
+[!INCLUDE [change-offer-type](../includes/change-offer-type.md)]
 
 > [!IMPORTANT]
 > 你必须在产品/服务预览版可用后查看它，然后选择 " **上线** " 以将更新的产品/服务发布给目标受众 (公有或私有) 。

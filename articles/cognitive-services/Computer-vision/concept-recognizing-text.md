@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/11/2020
 ms.author: pafarley
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 1d633b1a9f5fee0a5cceb48f2b37aaec2092069f
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: 2833fd44b75f4bebf41b5100eb2350ca69436520
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99979517"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100362788"
 ---
 # <a name="optical-character-recognition-ocr"></a>光学字符识别 (OCR)
 
@@ -64,7 +64,7 @@ Azure 的计算机视觉 API 包含光学字符识别 (OCR) 功能，这些功�
 
 |字段| 类型 | 可能值 |
 |:-----|:----:|:----|
-|状态 | string | notStarted：操作尚未开始。 |
+|状态 | 字符串 | notStarted：操作尚未开始。 |
 | |  | 正在运行：正在处理操作。 |
 | |  | failed：操作失败。 |
 | |  | succeeded：操作成功。 |
@@ -132,8 +132,8 @@ Azure 的计算机视觉 API 包含光学字符识别 (OCR) 功能，这些功�
 }
 ```
 
-## <a name="natural-reading-order-output"></a>自然读取顺序输出
-对于 [读取3.2 预览 API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-2/operations/5d986960601faab4bf452005)，请指定文本行与查询参数的输出顺序 `readingOrder` 。 使用 `natural` 更友好的读取顺序输出，如以下示例中所示。
+## <a name="natural-reading-order-output-latin-only"></a>自然读取顺序输出 (仅限拉丁) 
+对于 [读取3.2 预览 API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-2/operations/5d986960601faab4bf452005)，请指定文本行与查询参数的输出顺序 `readingOrder` 。 使用 `natural` 更友好的读取顺序输出，如以下示例中所示。 此功能仅支持拉丁语。
 
 :::image border type="content" source="./Images/ocr-reading-order-example.png" alt-text="OCR 阅读顺序示例":::
 

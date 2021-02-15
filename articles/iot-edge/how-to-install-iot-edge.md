@@ -9,45 +9,39 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 01/20/2021
 ms.author: kgremban
-ms.openlocfilehash: ab783d6cb20f1c2fe31e8556dc57999df20d5637
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: efbae71162bdd0c126287191f7ad35cf903db138
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98629804"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100378071"
 ---
-# <a name="install-or-uninstall-azure-iot-edge-for-linux"></a>安装或卸载适用于 Linux 的 Azure IoT Edge
+# <a name="install-or-uninstall-azure-iot-edge-for-linux"></a>安装或卸载 Azure IoT Edge for Linux
 
 使用 Azure IoT Edge 运行时可将设备转变为 IoT Edge 设备。 该运行时可以部署在像 Raspberry Pi 一样小的设备上，也可以部署在像工业服务器一样大的设备上。 使用 IoT Edge 运行时配置设备后，即可开始从云中部署业务逻辑。 若要了解详细信息，请参阅[了解 Azure IoT Edge 运行时及其体系结构](iot-edge-runtime.md)。
 
 本文列出了在 Linux 设备上安装 Azure IoT Edge 运行时的步骤。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * [已注册的设备 ID](how-to-register-device.md)
 
-  如果已将设备注册为对称密钥身份验证，请将设备连接字符串准备就绪。
+  如果你已为设备注册了对称密钥身份验证，请准备好设备连接字符串。
 
-  如果已使用 x.509 自签名证书身份验证向设备注册，则至少要有一个用于注册设备的标识证书及其在设备上的匹配私钥。
+  如果你已为设备注册了 X.509 自签名证书身份验证，则至少需要有一个用来注册设备的标识证书及其可在设备上使用的匹配私钥。
 
 * Linux 设备
 
-  具有 X64、ARM32 或 ARM64 Linux 设备。 Microsoft 提供适用于 Ubuntu Server 16.04、Ubuntu Server 18.04 和 Raspberry Pi OS Stretch 操作系统的安装包。
+  具有 X64、ARM32 或 ARM64 Linux 设备。 Microsoft 提供适用于 Ubuntu Server 18.04 和 Raspberry Pi OS Stretch 操作系统的安装包。
 
   有关生产方案目前支持哪些操作系统的最新信息，请参阅 [Azure IoT Edge 支持的系统](support.md#operating-systems)
 
   >[!NOTE]
-  >ARM64 设备支持 [公共预览版](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+  >对 ARM64 设备的支持为[公共预览版](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 * 准备设备以访问 Microsoft 安装包。
 
   安装与设备操作系统匹配的存储库配置。
-
-  * **Ubuntu Server 16.04**：
-
-    ```bash
-    curl https://packages.microsoft.com/config/ubuntu/16.04/multiarch/prod.list > ./microsoft-prod.list
-    ```
 
   * **Ubuntu Server 18.04**：
 
@@ -78,7 +72,7 @@ Azure IoT Edge 软件包受制于每个包（`usr/share/doc/{package-name}` 或 
 
 ## <a name="install-a-container-engine"></a>安装容器引擎
 
-Azure IoT Edge 依赖于 OCI 兼容的容器运行时。 对于生产方案，建议使用小鲸鱼引擎。 Moby 引擎是官方唯一支持用于 Azure IoT Edge 的容器引擎。 Docker CE/EE 容器映像与 Moby 运行时兼容。
+Azure IoT Edge 依赖于 OCI 兼容的容器运行时。 对于生产方案，建议使用 Moby 引擎。 Moby 引擎是官方唯一支持用于 Azure IoT Edge 的容器引擎。 Docker CE/EE 容器映像与 Moby 运行时兼容。
 
 更新设备上的包列表。
 
@@ -106,7 +100,7 @@ Azure IoT Edge 依赖于 OCI 兼容的容器运行时。 对于生产方案，�
 
 IoT Edge 安全守护程序提供和维护 IoT Edge 设备上的安全标准。 守护程序在每次开机时启动，并通过启动 IoT Edge 运行时的其余部分来启动设备。
 
-本节中的步骤表示在具有 internet 连接的设备上安装最新版本的典型过程。 如果需要安装特定版本（如预发行版）或需要在脱机状态下安装，请按照下一部分中的[脱机或特定版本安装](#offline-or-specific-version-installation-optional)步骤进行操作。
+本部分中的步骤表示在具有 Internet 连接的设备上安装最新版本的典型过程。 如果需要安装特定版本（如预发行版）或需要在脱机状态下安装，请按照下一部分中的[脱机或特定版本安装](#offline-or-specific-version-installation-optional)步骤进行操作。
 
 更新设备上的包列表。
 
@@ -126,28 +120,28 @@ IoT Edge 安全守护程序提供和维护 IoT Edge 设备上的安全标准。 
    sudo apt-get install iotedge
    ```
 
-或者，如果要安装安全守护程序的特定版本，请从 apt 列表输出中指定版本。 还要为 libiothsm-std 包指定同一版本，否则将安装其最新版本。 例如，以下命令将安装最新版本的1.0.10 版本：
+或者，如果要安装特定版本的安全守护程序，请从 apt 列表输出中指定该版本。 还要为 libiothsm-std 包指定同一版本，否则将安装其最新版本。 例如，以下命令将安装最新的 1.0.10 发行版：
 
    ```bash
    sudo apt-get install iotedge=1.0.10* libiothsm-std=1.0.10*
    ```
 
-如果未列出你要安装的版本，请遵循本文后面的 [脱机或特定版本安装](#offline-or-specific-version-installation-optional) 步骤。 此部分说明了如何将 IoT Edge 安全守护程序的任何之前版本或候选发布版本作为目标。
+如果你要安装的版本未列出，请按照本文后面的[脱机或特定版本安装](#offline-or-specific-version-installation-optional)步骤进行操作。 此部分说明了如何将 IoT Edge 安全守护程序的任何之前版本或候选发布版本作为目标。
 
-## <a name="provision-the-device-with-its-cloud-identity"></a>用云标识预配设备
+## <a name="provision-the-device-with-its-cloud-identity"></a>为设备预配其云标识
 
-由于容器引擎和 IoT Edge 运行时已安装在你的设备上，你可以开始下一步，即用其云标识和身份验证信息设置设备。
+现在容器引擎和 IoT Edge 运行时已安装在设备上，你可以开始下一步操作，即，使用设备的云标识和身份验证信息来设置设备。
 
 根据要使用的身份验证类型，选择下一部分：
 
-* [选项1：通过对称密钥进行身份验证](#option-1-authenticate-with-symmetric-keys)
-* [选项2：用 x.509 证书进行身份验证](#option-2-authenticate-with-x509-certificates)
+* [选项 1：使用对称密钥进行身份验证](#option-1-authenticate-with-symmetric-keys)
+* [选项 2：使用 X.509 证书进行身份验证](#option-2-authenticate-with-x509-certificates)
 
-### <a name="option-1-authenticate-with-symmetric-keys"></a>选项1：通过对称密钥进行身份验证
+### <a name="option-1-authenticate-with-symmetric-keys"></a>选项 1：使用对称密钥进行身份验证
 
-此时，IoT Edge 运行时安装在 Linux 设备上，并且需要将设备设置为其云标识和身份验证信息。
+此时，IoT Edge 运行时安装在 Linux 设备上，你需要使用设备的云标识和身份验证信息来预配设备。
 
-本部分逐步讲解如何设置具有对称密钥身份验证的设备。 应已在 IoT 中心内注册设备，并从设备信息中检索连接字符串。 否则，请按照在 [IoT 中心注册 IoT Edge 设备](how-to-register-device.md)中的步骤操作。
+本部分逐步讲解了如何为设备预配对称密钥身份验证。 你应当已在 IoT 中心注册了设备，并从设备信息中检索了连接字符串。 如果没有，请按照[在 IoT 中心注册 IoT Edge 设备](how-to-register-device.md)中的步骤进行操作。
 
 在 IoT Edge 设备上，打开配置文件。
 
@@ -165,7 +159,7 @@ IoT Edge 安全守护程序提供和维护 IoT Edge 设备上的安全标准。 
      dynamic_reprovisioning: false
    ```
 
-使用 IoT Edge 设备的连接字符串更新 **device_connection_string** 的值。 请确保注释掉其他任何设置部分。请确保 **预配：** 行没有前面的空格，并且嵌套项按两个空格缩进。
+使用 IoT Edge 设备的连接字符串更新 **device_connection_string** 的值。 请确保注释掉任何其他预配部分。请确保 **provisioning:** 行前面没有空格，并且嵌套项缩进了两个空格。
 
 将剪贴板内容粘贴到 Nano `Shift+Right Click` 或按 `Shift+Insert`。
 
@@ -179,11 +173,11 @@ IoT Edge 安全守护程序提供和维护 IoT Edge 设备上的安全标准。 
    sudo systemctl restart iotedge
    ```
 
-### <a name="option-2-authenticate-with-x509-certificates"></a>选项2：用 x.509 证书进行身份验证
+### <a name="option-2-authenticate-with-x509-certificates"></a>选项 2：使用 X.509 证书进行身份验证
 
-此时，IoT Edge 运行时安装在 Linux 设备上，并且需要将设备设置为其云标识和身份验证信息。
+此时，IoT Edge 运行时安装在 Linux 设备上，你需要使用设备的云标识和身份验证信息来预配设备。
 
-本部分逐步讲解使用 x.509 证书身份验证设置设备的步骤。 应已在 IoT 中心内注册设备，提供与 IoT Edge 设备上的证书和私钥相匹配的指纹。 否则，请按照在 [IoT 中心注册 IoT Edge 设备](how-to-register-device.md)中的步骤操作。
+本部分逐步讲解了如何为设备预配 X.509 证书身份验证。 你应当已在 IoT 中心注册了设备，并提供了与 IoT Edge 设备上的证书和私钥相匹配的指纹。 如果没有，请按照[在 IoT 中心注册 IoT Edge 设备](how-to-register-device.md)中的步骤进行操作。
 
 在 IoT Edge 设备上，打开配置文件。
 
@@ -191,7 +185,7 @@ IoT Edge 安全守护程序提供和维护 IoT Edge 设备上的安全标准。 
    sudo nano /etc/iotedge/config.yaml
    ```
 
-查找文件的 "预配配置" 部分，并 **使用 x.509 标识证书部分取消注释手动设置配置** 。 请确保注释掉其他任何设置部分。请确保 **预配：** 行没有前面的空格，并且嵌套项按两个空格缩进。
+找到文件的预配配置部分，并取消注释 **Manual provisioning configuration using an X.509 identity certificate** 部分。 请确保注释掉任何其他预配部分。请确保 **provisioning:** 行前面没有空格，并且嵌套项缩进了两个空格。
 
    ```yml
    # Manual provisioning configuration using a connection string
@@ -223,7 +217,7 @@ IoT Edge 安全守护程序提供和维护 IoT Edge 设备上的安全标准。 
    sudo systemctl restart iotedge
    ```
 
-## <a name="verify-successful-configuration"></a>验证配置是否成功
+## <a name="verify-successful-configuration"></a>验证成功的配置
 
 验证是否已在 IoT Edge 设备上成功安装并配置运行时。
 
@@ -249,15 +243,15 @@ IoT Edge 安全守护程序提供和维护 IoT Edge 设备上的安全标准。 
    ```
 
    >[!TIP]
-   >始终使用 `sudo` 运行检查工具，即使在更新了权限后也是如此。 该工具需要提升的权限才能访问 **yaml** 文件以验证配置状态。
+   >请始终使用 `sudo` 来运行检查工具，即使权限已更新。 该工具需要提升的权限才能访问 **config.yaml** 文件来验证配置状态。
 
-4. 查看在 IoT Edge 设备上运行的所有模块。 首次启动该服务时，应只会看到运行的 **edgeAgent** 模块。 edgeAgent 模块会默认运行，用于安装并启动部署到设备的任何其他模块。
+4. 查看在 IoT Edge 设备上运行的所有模块。 当服务首次启动时，你应当只会看到 edgeAgent 模块正在运行。 edgeAgent 模块会默认运行，用于安装并启动部署到设备的任何其他模块。
 
    ```bash
    sudo iotedge list
    ```
 
-## <a name="offline-or-specific-version-installation-optional"></a>脱机或特定版本安装 (可选) 
+## <a name="offline-or-specific-version-installation-optional"></a>脱机或特定版本安装（可选）
 
 本部分中的步骤适用于标准安装步骤未涵盖的方案。 这可能包括：
 
@@ -290,7 +284,7 @@ IoT Edge 安全守护程序提供和维护 IoT Edge 设备上的安全标准。 
       curl -L <iotedge link> -o iotedge.deb && sudo dpkg -i ./iotedge.deb
       ```
 
-由于容器引擎和 IoT Edge 运行时已安装在你的设备上，因此你已准备好进行下一步，即将 [设备设置为云标识](#provision-the-device-with-its-cloud-identity)。
+现在容器引擎和 IoT Edge 运行时已安装在设备上，你可以开始下一步操作，即，[使用设备的云标识来预配设备](#provision-the-device-with-its-cloud-identity)。
 
 ## <a name="uninstall-iot-edge"></a>卸载 IoT Edge
 
