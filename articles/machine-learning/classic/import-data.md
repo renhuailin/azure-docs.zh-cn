@@ -3,18 +3,18 @@ title: ML Studio (经典) ：导入定型数据-Azure
 description: 如何将数据从各种数据源导入 Azure 机器学习工作室（经典）。 了解受支持的数据类型和数据格式。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 02/01/2019
-ms.openlocfilehash: c69ed7b9e2aaa7113637868e1c1329ed2962b931
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: db5f3cc4b9530c4aeac40786756b36cc0ac98728
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96302778"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100520368"
 ---
 # <a name="import-your-training-data-into-azure-machine-learning-studio-classic-from-various-data-sources"></a>将训练数据从各种数据源导入 Azure 机器学习工作室（经典）
 
@@ -73,12 +73,12 @@ ms.locfileid: "96302778"
 * DateTime
 * TimeSpan
 
-Studio 使用称为 ***数据表** _ 的内部数据类型在模块之间传递数据。 可使用[转换为数据集][convert-to-dataset]模块，将数据显式转换为数据表格式。
+工作室使用名为“数据表”的内部数据类型在模块间传递数据。 可使用[转换为数据集][convert-to-dataset]模块，将数据显式转换为数据表格式。
 
 任何接受格式而不是数据表的模块都会在不提示的情况将数据转换为数据表，然后再将其传递到下一个模块。
 
 如有必要，可使用其他转换模块，将数据表格式转换回 CSV、TSV、ARFF 或 SVMLight 格式。
-在模块调色板的 "_ *数据格式转换*" 部分中查找执行这些功能的模块。
+请查看模块控制板的“数据格式转换”部分，了解执行这些函数的模块。
 
 ## <a name="data-capacities"></a>数据容量
 

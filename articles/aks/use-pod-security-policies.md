@@ -3,18 +3,18 @@ title: 在 Azure Kubernetes 服务 (AKS) 中使用 Pod 安全策略
 description: 了解如何在 Azure Kubernetes 服务 (AKS) 中使用 PodSecurityPolicy 控制 Pod 许可
 services: container-service
 ms.topic: article
-ms.date: 07/21/2020
-ms.openlocfilehash: 77c618429503caf9aa7bb6abda109504bbf68d71
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.date: 02/12/2021
+ms.openlocfilehash: 23c436cb3ddf970939ab9d7b936a4e03e1fbb7ff
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94695990"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100371220"
 ---
 # <a name="preview---secure-your-cluster-using-pod-security-policies-in-azure-kubernetes-service-aks"></a>预览 - 在 Azure Kubernetes 服务 (AKS) 中使用 Pod 安全策略保护群集
 
 > [!WARNING]
-> **本文档中所述的功能 "pod 安全策略 (预览") 设置为 "弃用"，在5月31日之后将不再提供 2021** ，以支持 [AKS 的 Azure 策略](use-pod-security-on-azure-policy.md)。 弃用日期已从2020年10月15日之前的日期扩展。
+> **本文档中所述的功能，pod 安全策略 (预览) ，已设置为弃用，并且将不再在2021年6月30日之后提供** ，以支持 [AKS 的 Azure 策略](use-pod-security-on-azure-policy.md)。 弃用日期已在原来日期（2020 年 10 月 15 日）的基础上延长。
 >
 > 弃用 Pod 安全策略（预览版）之后，必须在使用已弃用功能的任何现有群集上禁用该功能，以执行将来的群集升级并保留在 Azure 支持范围内。
 >
@@ -24,7 +24,7 @@ ms.locfileid: "94695990"
 
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 
 本文假定你拥有现有的 AKS 群集。 如果需要 AKS 群集，请参阅 AKS 快速入门[使用 Azure CLI][aks-quickstart-cli] 或[使用 Azure 门户][aks-quickstart-portal]。
 

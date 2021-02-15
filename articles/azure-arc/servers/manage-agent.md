@@ -1,14 +1,14 @@
 ---
 title: 管理启用了 Azure Arc 的服务器代理
 description: 本文介绍了在支持 Azure Arc 的服务器连接的计算机代理的生命周期中通常会执行的不同管理任务。
-ms.date: 01/21/2021
+ms.date: 02/10/2021
 ms.topic: conceptual
-ms.openlocfilehash: 27712dcd30857ca8c677de4f99dc4ed7e2e7b292
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: cc42830fc73612e744942bdd8b353832e0ccbf2a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98662120"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100368449"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>管理并维护 Connected Machine 代理
 
@@ -48,60 +48,17 @@ ms.locfileid: "98662120"
 > [!WARNING]
 > 建议你避免重命名计算机的计算机名称，并且仅在绝对必要时才执行此过程。
 
-以下步骤总结了计算机重命名过程。
-
 1. 审核计算机上安装的 VM 扩展，并使用 [Azure CLI](manage-vm-extensions-cli.md#list-extensions-installed) 或使用 [Azure PowerShell](manage-vm-extensions-powershell.md#list-extensions-installed)来记录其配置。
 
-2. 使用 PowerShell、Azure CLI 或从 Azure 门户中删除 VM 扩展。
+2. 使用[Azure CLI](manage-vm-extensions-cli.md#remove-an-installed-extension)或[Azure PowerShell](manage-vm-extensions-powershell.md#remove-an-installed-extension)删除从[Azure 门户](manage-vm-extensions-portal.md#uninstall-extension)安装的 VM 扩展。
 
-    > [!NOTE]
-    > 如果使用 Azure 策略来宾配置策略部署了用于 VM 的 Azure Monitor (insights) 代理或 Log Analytics 代理，则在下一个 [评估周期](../../governance/policy/how-to/get-compliance-data.md#evaluation-triggers) 之后以及在已启用 Arc 的服务器上注册重命名的计算机后，将重新部署代理。
+3. 使用带有 [disconnect](manage-agent.md#disconnect)参数的 **Azcmagent** 工具从 azure Arc 断开计算机的连接，并从 azure 中删除计算机资源。 断开计算机与启用了 Arc 的服务器的连接不会删除已连接的计算机代理，因此不需要在此过程中删除代理。 可以通过交互方式登录，也可以使用用于集成多个代理的相同服务主体或使用 Microsoft 标识平台 [访问令牌](../../active-directory/develop/access-tokens.md)自动运行。 如果未使用服务主体向启用了 Azure Arc 的服务器注册计算机，请参阅以下 [文章](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) 创建服务主体。
 
-3. 使用 PowerShell、Azure CLI 或从门户断开计算机与启用了 Arc 的服务器的连接。
+4. 重命名计算机的计算机名称。
 
-4. 重命名计算机。
+5. 向启用了 Arc 的服务器重新注册已连接的计算机代理。 运行 `azcmagent` 带有 [Connect](manage-agent.md#connect) 参数的工具完成此步骤。
 
-5. 使用工具将计算机连接到启用了 Arc 的服务器， `Azcmagent` 以便在 Azure 中注册和创建新资源。
-
-6. 在目标计算机上部署以前安装的 VM 扩展。
-
-使用以下步骤来完成此任务。
-
-1. 使用[Azure CLI](manage-vm-extensions-cli.md#remove-an-installed-extension)或[Azure PowerShell](manage-vm-extensions-powershell.md#remove-an-installed-extension)删除从[Azure 门户](manage-vm-extensions-portal.md#uninstall-extension)安装的 VM 扩展。
-
-2. 使用以下方法之一将计算机与 Azure Arc 断开连接。断开计算机与启用了 Arc 的服务器的连接不会删除已连接的计算机代理，因此不需要在此过程中删除代理。 在此过程中，部署到计算机的任何 VM 扩展都将继续工作。
-
-    # <a name="azure-portal"></a>[Azure 门户](#tab/azure-portal)
-
-    1. 在浏览器中转到 [Azure 门户](https://portal.azure.com)。
-    1. 在门户中，浏览到 " **服务器-Azure Arc** "，然后从列表中选择你的混合计算机。
-    1. 从所选已启用 Arc 的服务器中，从顶部栏中选择 " **删除** " 以删除 Azure 中的资源。
-
-    # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-    
-    ```azurecli
-    az resource delete \
-      --resource-group ExampleResourceGroup \
-      --name ExampleArcMachine \
-      --resource-type "Microsoft.HybridCompute/machines"
-    ```
-
-    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
-
-    ```powershell
-    Remove-AzResource `
-     -ResourceGroupName ExampleResourceGroup `
-     -ResourceName ExampleArcMachine `
-     -ResourceType Microsoft.HybridCompute/machines
-    ```
-
-3. 重命名计算机的计算机名称。
-
-### <a name="after-renaming-operation"></a>重命名操作之后
-
-重命名计算机后，需要使用启用了 Arc 的服务器重新注册连接的计算机代理。 运行 `azcmagent` 带有 [Connect](#connect) 参数的工具完成此步骤。
-
-重新部署最初部署到启用了 Arc 的服务器上的虚拟机的 VM 扩展。 如果使用 Azure 策略来宾配置策略部署了用于 VM 的 Azure Monitor (insights) 代理或 Log Analytics 代理，则在下一个 [评估周期](../../governance/policy/how-to/get-compliance-data.md#evaluation-triggers)后重新部署代理。
+6. 重新部署最初部署到启用了 Arc 的服务器上的虚拟机的 VM 扩展。 如果使用 Azure 策略将用于 VM 的 Azure Monitor (insights) 代理或 Log Analytics 代理部署，则在下一个 [评估周期](../../governance/policy/how-to/get-compliance-data.md#evaluation-triggers)后重新部署代理。
 
 ## <a name="upgrading-agent"></a>升级代理
 
@@ -213,7 +170,7 @@ Azure 连接的计算机代理会定期更新，以解决 bug 修复、稳定性
 
 ## <a name="about-the-azcmagent-tool"></a>关于 Azcmagent 工具
 
-Azcmagent 工具 ( # A0) 用于在安装期间配置启用了 Azure Arc 的服务器连接的计算机代理，或在安装之后修改代理的初始配置。 Azcmagent.exe 提供了用于自定义代理及查看其状态的命令行参数：
+Azcmagent 工具 (Azcmagent.exe) 用于在安装期间配置启用了 Azure Arc 的服务器连接的计算机代理，或在安装之后修改代理的初始配置。 Azcmagent.exe 提供了用于自定义代理及查看其状态的命令行参数：
 
 * **Connect** - 将计算机连接到 Azure Arc
 

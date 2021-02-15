@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 08/07/2020
+ms.date: 02/10/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 96d1eaff4d1b93ad3bb489f177020c351fe4d13d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: fecf3f1a302a6734d92335bc15722df4d5288a56
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95904029"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100362414"
 ---
 # <a name="conditional-access-conditions"></a>条件访问：Conditions
 
@@ -34,7 +34,7 @@ ms.locfileid: "95904029"
 
 ## <a name="user-risk"></a>用户风险 
 
-对于有权访问 [Identity Protection](../identity-protection/overview-identity-protection.md)的客户，可将用户风险评估为条件访问策略的一部分。 用户风险表示给定给定标识或帐户被泄露的概率。 有关用户风险的详细信息，请参阅文章： [风险](../identity-protection/concept-identity-protection-risks.md#user-risk) 和 [如何：配置和启用风险策略](../identity-protection/howto-identity-protection-configure-risk-policies.md)。
+对于有权访问 [Identity Protection](../identity-protection/overview-identity-protection.md)的客户，可将用户风险评估为条件访问策略的一部分。 用户风险表示给定标识或帐户被泄露的概率。 有关用户风险的详细信息，请参阅文章： [风险](../identity-protection/concept-identity-protection-risks.md#user-risk) 和 [如何：配置和启用风险策略](../identity-protection/howto-identity-protection-configure-risk-policies.md)。
 
 ## <a name="device-platforms"></a>设备平台
 
@@ -128,7 +128,7 @@ Azure AD 条件访问支持以下设备平台：
 
 #### <a name="chrome-support"></a>Chrome 支持
 
-对于 **windows 10 创意者更新 (版本 1703)** 或更高版本中的 Chrome 支持，请安装 [Windows 10 帐户扩展](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji)。 如果条件访问策略需要特定于设备的详细信息，则需要此扩展。
+对于 **windows 10 创意者更新 (版本 1703)** 或更高版本中的 Chrome 支持，请安装 [Windows 10 帐户扩展](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji)。 当条件访问策略需要特定于设备的详细信息时，此扩展是必需的。
 
 若要自动将此扩展部署到 Chrome 浏览器，请创建以下注册表项：
 

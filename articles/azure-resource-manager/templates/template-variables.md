@@ -1,28 +1,82 @@
 ---
 title: 模板中的变量
-description: 介绍如何在 Azure 资源管理器模板 (ARM 模板) 中定义变量。
+description: 介绍如何在 Azure 资源管理器模板中定义变量 (ARM 模板) 和 Bicep 文件。
 ms.topic: conceptual
-ms.date: 01/26/2021
-ms.openlocfilehash: feecc4b5df77e6a3bf51294cb12aabf44899dde5
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.date: 02/12/2021
+ms.openlocfilehash: cafd42112e5d296cb73f88e292a66ca2203f3810
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98874428"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100364454"
 ---
-# <a name="variables-in-arm-template"></a>ARM 模板中的变量
+# <a name="variables-in-arm-templates"></a>ARM 模板中的变量
 
-本文介绍如何在 Azure 资源管理器模板（ARM 模板）中定义和使用变量。 可以使用变量来简化模板。 可以定义一个包含复杂表达式的变量，而不必在整个模板中重复使用复杂表达式。 然后，可以在整个模板中根据需要引用该变量。
+本文介绍如何在 Azure 资源管理器模板 (ARM 模板) 或 Bicep 文件中定义和使用变量。 可以使用变量来简化模板。 可以定义一个包含复杂表达式的变量，而不必在整个模板中重复使用复杂表达式。 然后，在模板中使用该变量。
 
 资源管理器会在启动部署操作之前解析变量。 只要在模板中使用变量，资源管理器就会将其替换为解析的值。
 
+[!INCLUDE [Bicep preview](../../../includes/resource-manager-bicep-preview.md)]
+
 ## <a name="define-variable"></a>定义变量
 
-定义变量时，请提供可解析为 [数据类型](template-syntax.md#data-types)的值或模板表达式。 构造变量时，可以使用参数或其他变量中的值。
+定义变量时，不会为变量指定 [数据类型](template-syntax.md#data-types) 。 而是提供一个值或模板表达式。 变量类型是从解析的值推断出来的。 下面的示例将一个变量设置为一个字符串。
 
-您可以在变量声明中使用 [模板函数](template-functions.md) ，但不能使用 [reference](template-functions-resource.md#reference) 函数或任何 [列表](template-functions-resource.md#list) 函数。 在解析变量时，这些函数获取资源的运行时状态，不能在部署之前执行。
+# <a name="json"></a>[JSON](#tab/json)
 
-以下示例介绍了变量定义。 它为存储帐户名称创建字符串值。 它使用多个模板函数来获取参数值，并将其连接到唯一字符串。
+```json
+"variables": {
+  "stringVar": "example value"
+},
+```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+var stringVar = 'example value'
+```
+
+---
+
+构造变量时，可以使用参数或其他变量中的值。
+
+# <a name="json"></a>[JSON](#tab/json)
+
+```json
+"parameters": {
+  "inputValue": {
+    "defaultValue": "deployment parameter",
+    "type": "string"
+  }
+},
+"variables": {
+  "stringVar": "myVariable",
+  "concatToVar": "[concat(variables('stringVar'), '-addtovar') ]",
+  "concatToParam": "[concat(parameters('inputValue'), '-addtoparam')]"
+}
+```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+param inputValue string = 'deployment parameter'
+
+var stringVar = 'myVariable'
+var concatToVar =  '${stringVar}-addtovar'
+var concatToParam = '${inputValue}-addtoparam'
+```
+
+---
+
+您可以使用 [模板函数](template-functions.md) 来构造变量值。
+
+在 JSON 模板中，不能使用 [reference](template-functions-resource.md#reference) 函数或变量声明中的任何 [列表](template-functions-resource.md#list) 函数。 在解析变量时，这些函数获取资源的运行时状态，不能在部署之前执行。
+
+在 Bicep 文件中声明变量时，引用和列表函数是有效的。
+
+下面的示例为存储帐户名称创建一个字符串值。 它使用多个模板函数来获取参数值，并将其连接到唯一字符串。
+
+# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 "variables": {
@@ -30,9 +84,21 @@ ms.locfileid: "98874428"
 },
 ```
 
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+var storageName = '${toLower(storageNamePrefix)}${uniqueString(resourceGroup().id)}'
+```
+
+---
+
 ## <a name="use-variable"></a>使用变量
 
-在模板中，可以使用 [variables](template-functions-deployment.md#variables) 函数引用参数值。 以下示例演示如何使用资源属性的变量。
+以下示例演示如何使用资源属性的变量。
+
+# <a name="json"></a>[JSON](#tab/json)
+
+在 JSON 模板中，使用 [variables](template-functions-deployment.md#variables) 函数引用变量的值。
 
 ```json
 "resources": [
@@ -44,17 +110,46 @@ ms.locfileid: "98874428"
 ]
 ```
 
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+在 Bicep 文件中，通过提供变量名称来引用变量的值。
+
+```bicep
+resource demoAccount 'Microsoft.Storage/storageAccounts@2019-06-01' = {
+  name: storageName
+```
+
+---
+
 ## <a name="example-template"></a>示例模板
 
-以下模板不部署任何资源。 它只是演示声明变量的一些方法。
+以下模板不部署任何资源。 其中显示了声明不同类型的变量的一些方法。
+
+# <a name="json"></a>[JSON](#tab/json)
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/variables.json":::
 
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+Bicep 当前不支持循环。
+
+:::code language="bicep" source="~/resourcemanager-templates/azure-resource-manager/variables.bicep":::
+
+---
+
 ## <a name="configuration-variables"></a>配置变量
 
-可以定义变量来保存配置环境所需的相关值。 可以将变量定义为一个包含值的对象。 下面的示例演示了一个对象，该对象包含两个环境的值： " **测试** " 和 " **生产**"。在部署过程中，您可以传入其中一个值。
+可以定义变量来保存配置环境所需的相关值。 可以将变量定义为一个包含值的对象。 下面的示例演示了一个对象，该对象包含两个环境的值： " **测试** " 和 " **生产**"。在部署过程中传入其中一个值。
+
+# <a name="json"></a>[JSON](#tab/json)
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/variablesconfigurations.json":::
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/variablesconfigurations.bicep":::
+
+---
 
 ## <a name="next-steps"></a>后续步骤
 

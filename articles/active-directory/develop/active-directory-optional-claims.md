@@ -12,12 +12,12 @@ ms.date: 1/06/2021
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: 6855e8f550c14574795ec00f4fed36762944dca1
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 7c0394e765923c027cc15a6278ee451fb13ed1b2
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756042"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104274"
 ---
 # <a name="how-to-provide-optional-claims-to-your-app"></a>如何：向应用提供可选声明
 
@@ -49,7 +49,7 @@ ms.locfileid: "98756042"
 
 **表 2：v1.0 和 v2.0 可选声明集**
 
-| 名称                       |  说明   | 令牌类型 | 用户类型 | 注释  |
+| 名称                       |  说明   | 令牌类型 | 用户类型 | 说明  |
 |----------------------------|----------------|------------|-----------|--------|
 | `auth_time`                | 用户上次进行身份验证的时间。 请参阅 OpenID Connect 规范。| JWT        |           |  |
 | `tenant_region_scope`      | 资源租户的区域 | JWT        |           | |
@@ -76,7 +76,7 @@ ms.locfileid: "98756042"
 
 **表 3：仅限 v2.0 的可选声明**
 
-| JWT 声明     | 名称                            | 说明                                | 注释 |
+| JWT 声明     | 名称                            | 说明                                | 说明 |
 |---------------|---------------------------------|-------------|-------|
 | `ipaddr`      | IP 地址                      | 客户端从中登录的 IP 地址。   |       |
 | `onprem_sid`  | 本地安全标识符 |                                             |       |
@@ -138,8 +138,8 @@ v2 令牌格式的一些改进供使用 v1 令牌格式的应用使用，因为�
 
 可以通过 UI 或应用程序清单来配置应用程序的可选声明。
 
-1. 转到 <a href="https://portal.azure.com/" target="_blank">Azure 门户<span class="docon docon-navigate-external x-hidden-focus"></span></a>。 
-1. 搜索并选择“Azure Active Directory”  。
+1. 转到 <a href="https://portal.azure.com/" target="_blank">Azure 门户</a>。 
+1. 搜索并选择“Azure Active Directory”。
 1. 在“管理”下，选择“应用注册”。 
 1. 在列表中选择要为其配置可选声明的应用程序。
 
@@ -246,7 +246,7 @@ v2 令牌格式的一些改进供使用 v1 令牌格式的应用使用，因为�
 
 **通过 UI 配置组可选声明：**
 
-1. 登录到 <a href="https://portal.azure.com/" target="_blank">Azure 门户<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
+1. 登录 <a href="https://portal.azure.com/" target="_blank">Azure 门户</a>。
 1. 通过身份验证后，在页面右上角选择 Azure AD 租户。
 1. 搜索并选择“Azure Active Directory”  。
 1. 在“管理”下，选择“应用注册”。 
@@ -259,7 +259,7 @@ v2 令牌格式的一些改进供使用 v1 令牌格式的应用使用，因为�
 
 **通过应用程序清单配置组可选声明：**
 
-1. 登录到 <a href="https://portal.azure.com/" target="_blank">Azure 门户<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
+1. 登录 <a href="https://portal.azure.com/" target="_blank">Azure 门户</a>。
 1. 通过身份验证后，在页面右上角选择 Azure AD 租户。
 1. 搜索并选择“Azure Active Directory”  。
 1. 在列表中选择要为其配置可选声明的应用程序。
@@ -302,7 +302,7 @@ v2 令牌格式的一些改进供使用 v1 令牌格式的应用使用，因为�
     }
     ```
 
-   | 可选声明架构 | Value |
+   | 可选声明架构 | 值 |
    |----------|-------------|
    | **name：** | 必须是“groups” |
    | **source：** | 未使用。 省略或指定 null |
@@ -388,7 +388,7 @@ v2 令牌格式的一些改进供使用 v1 令牌格式的应用使用，因为�
 
 **UI 配置：**
 
-1. 登录到 <a href="https://portal.azure.com/" target="_blank">Azure 门户<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
+1. 登录 <a href="https://portal.azure.com/" target="_blank">Azure 门户</a>。
 1. 通过身份验证后，在页面右上角选择 Azure AD 租户。
 
 1. 搜索并选择“Azure Active Directory”  。
@@ -411,7 +411,7 @@ v2 令牌格式的一些改进供使用 v1 令牌格式的应用使用，因为�
 
 **清单配置：**
 
-1. 登录到 <a href="https://portal.azure.com/" target="_blank">Azure 门户<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
+1. 登录 <a href="https://portal.azure.com/" target="_blank">Azure 门户</a>。
 1. 通过身份验证后，在页面右上角选择 Azure AD 租户。
 1. 搜索并选择“Azure Active Directory”  。
 1. 在列表中找到要为其配置可选声明的应用程序并选择它。

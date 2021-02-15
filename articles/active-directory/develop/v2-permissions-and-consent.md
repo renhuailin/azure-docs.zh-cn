@@ -12,12 +12,12 @@ ms.date: 09/23/2020
 ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur, marsma
 ms.custom: aaddev, fasttrack-edit, contperf-fy21q1, identityplatformtop40
-ms.openlocfilehash: 570314bcaedb86cc593846ffc1d6846d1d2fe335
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 2658c088304eba457b25bb3dc421b356ba70b57f
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99090181"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100102472"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform"></a>Microsoft 标识平台中的权限和许可
 
@@ -181,7 +181,7 @@ Microsoft 资源中的某些高特权权限可设置为 *受管理员限制*。 
 
 配置应用程序的静态请求权限列表：
 
-1. 请在<a href="https://go.microsoft.com/fwlink/?linkid=2083908" target="_blank">Azure 门户应用注册 <span class="docon docon-navigate-external x-hidden-focus"></span> </a>快速入门教程中转到你的应用程序。
+1. 请在 <a href="https://go.microsoft.com/fwlink/?linkid=2083908" target="_blank">Azure 门户应用注册</a> 快速入门教程中转到你的应用程序。
 1. 选择一个应用程序，或 [创建一个应用](quickstart-register-app.md) （如果尚未这样做）。
 1. 在应用程序的 "**概述**" 页的 "**管理**" 下，选择 " **API 权限**" "  >  **添加权限**"。
 1. 从可用 Api 列表中选择 " **Microsoft Graph** "。 然后添加应用所需的权限。

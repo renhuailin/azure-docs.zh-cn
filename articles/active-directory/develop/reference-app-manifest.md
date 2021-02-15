@@ -13,12 +13,12 @@ ms.date: 02/02/2021
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
-ms.openlocfilehash: 0291d2e6f0cee07bd7164b63dfd4ac8b02c42a01
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 47215070893c6fefd42554fdf4514e4aa8b45047
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99583037"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100103339"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Azure Active Directory 应用清单
 
@@ -33,7 +33,7 @@ ms.locfileid: "99583037"
 
 若要配置应用程序清单，请执行以下操作：
 
-1. 转到 <a href="https://portal.azure.com/" target="_blank">Azure 门户<span class="docon docon-navigate-external x-hidden-focus"></span></a>。 搜索并选择 **Azure Active Directory** 服务。
+1. 转到 <a href="https://portal.azure.com/" target="_blank">Azure 门户</a>。 搜索并选择 **Azure Active Directory** 服务。
 1. 选择“应用注册” 。
 1. 选择要配置的应用。
 1. 在应用的“概览”页中，选择“清单”部分。  此时会打开一个基于 Web 的清单编辑器，可在其中编辑门户中的清单。 （可选）可以选择“下载”以在本地编辑清单，然后使用“上传”将清单重新应用于应用程序。 
@@ -105,7 +105,7 @@ ms.locfileid: "99583037"
 
 | 密钥 | 值类型 |
 | :--- | :--- |
-| allowPublicClient | 布尔 |
+| allowPublicClient | Boolean |
 
 指定回退应用程序类型。 默认情况下，Azure AD 基于 replyUrlsWithType 推断应用程序类型。 某些情况下，Azure AD 无法确定客户端应用类型。 例如，这样的一种情况是 [ROPC](https://tools.ietf.org/html/rfc6749#section-4.3) 流，其中发生了没有 URL 重定向的 HTTP 请求。 在这种情况下，Azure AD 将基于此属性的值解释应用程序类型。 如果此值设置为 true，则回退应用程序类型设置为公共客户端，例如在移动设备上运行的已安装应用。 默认值为 false，这意味着，回退应用程序类型为机密，例如 Web 应用。
 
@@ -119,7 +119,7 @@ ms.locfileid: "99583037"
 
 | 密钥 | 值类型 |
 | :--- | :--- |
-| appId | 字符串 |
+| appId | String |
 
 指定由 Azure AD 分配给应用的应用唯一标识符。
 
@@ -158,7 +158,7 @@ ms.locfileid: "99583037"
 
 | 密钥 | 值类型 |
 | :--- | :--- |
-| errorUrl | 字符串 |
+| errorUrl | String |
 
 不受支持。
 
@@ -186,7 +186,7 @@ ms.locfileid: "99583037"
 
 | 密钥 | 值类型 |
 | :--- | :--- |
-| optionalClaims | 字符串 |
+| optionalClaims | String |
 
 此特定应用的安全令牌服务在令牌中返回的可选声明。
 
@@ -217,7 +217,7 @@ ms.locfileid: "99583037"
 
 | 密钥 | 值类型 |
 | :--- | :--- |
-| informationalUrls | 字符串 |
+| informationalUrls | String |
 
 指定应用服务条款和隐私声明的链接。 服务条款和隐私声明通过用户同意体验展示给用户。 有关详细信息，请参阅[如何：为已注册的 Azure AD 应用添加服务条款和隐私声明](howto-add-terms-of-service-privacy-statement.md)。
 
@@ -274,7 +274,7 @@ ms.locfileid: "99583037"
 
 | 密钥 | 值类型 |
 | :--- | :--- |
-| logoUrl | 字符串 |
+| logoUrl | String |
 
 只读值，指向已在门户中上传的徽标的 CDN URL。
 
@@ -288,7 +288,7 @@ ms.locfileid: "99583037"
 
 | 密钥 | 值类型 |
 | :--- | :--- |
-| logoutUrl | 字符串 |
+| logoutUrl | String |
 
 用于注销应用的 URL。
 
@@ -302,7 +302,7 @@ ms.locfileid: "99583037"
 
 | 密钥 | 值类型 |
 | :--- | :--- |
-| name | 字符串 |
+| name | String |
 
 应用的显示名称。
 
@@ -316,7 +316,7 @@ ms.locfileid: "99583037"
 
 | 密钥 | 值类型 |
 | :--- | :--- |
-| oauth2AllowImplicitFlow | 布尔 |
+| oauth2AllowImplicitFlow | Boolean |
 
 指定此 Web 应用是否可以请求 OAuth2.0 隐式流访问令牌。 默认值为 false。 此标志用于基于浏览器的应用，例如 JavaScript 单页应用。 若要了解详细信息，请在目录中输入 `OAuth 2.0 implicit grant flow`，并查看有关隐式流的主题。
 
@@ -330,7 +330,7 @@ ms.locfileid: "99583037"
 
 | 密钥 | 值类型 |
 | :--- | :--- |
-| oauth2AllowIdTokenImplicitFlow | 布尔 |
+| oauth2AllowIdTokenImplicitFlow | Boolean |
 
 指定此 Web 应用是否可以请求 OAuth2.0 隐式流 ID 令牌。 默认值为 false。 此标志用于基于浏览器的应用，例如 JavaScript 单页应用。
 
@@ -369,7 +369,7 @@ ms.locfileid: "99583037"
 
 | 密钥 | 值类型 |
 | :--- | :--- |
-| oauth2RequiredPostResponse | 布尔 |
+| oauth2RequiredPostResponse | Boolean |
 
 指定在 OAuth 2.0 令牌请求过程中，Azure AD 是否允许与 GET 请求相反的 POST 请求。 默认值为 false，即指定只允许 GET 请求。
 
@@ -383,7 +383,7 @@ ms.locfileid: "99583037"
 
 | 密钥 | 值类型 |
 | :--- | :--- |
-| parentalControlSettings | 字符串 |
+| parentalControlSettings | String |
 
 - `countriesBlockedForMinors` 指定禁止未成年人使用该应用的国家/地区。
 - `legalAgeGroupRule` 指定适用于应用用户的法定年龄组规则。 可设置为 `Allow`、`RequireConsentForPrivacyServices`、`RequireConsentForMinors`、`RequireConsentForKids` 或 `BlockMinors`。
@@ -444,7 +444,7 @@ ms.locfileid: "99583037"
 
 | 密钥 | 值类型 |
 | :--- | :--- |
-| publisherDomain | 字符串 |
+| publisherDomain | String |
 
 应用程序的已验证发布者域。 只读。
 
@@ -510,7 +510,7 @@ ms.locfileid: "99583037"
 
 | 密钥 | 值类型 |
 | :--- | :--- |
-| samlMetadataUrl | 字符串 |
+| samlMetadataUrl | String |
 
 应用的 SAML 元数据 URL。
 
@@ -538,7 +538,7 @@ ms.locfileid: "99583037"
 
 | 密钥 | 值类型 |
 | :--- | :--- |
-| signInAudience | 字符串 |
+| signInAudience | String |
 
 指定当前应用程序支持哪些 Microsoft 帐户。 支持的值是：
 - `AzureADMyOrg` - 在我组织的 Azure AD 租户（例如单租户）中具有 Microsoft 工作或学校帐户的用户
@@ -556,7 +556,7 @@ ms.locfileid: "99583037"
 
 | 密钥 | 值类型 |
 | :--- | :--- |
-| 标记 | String Array  |
+| tags | String Array  |
 
 可用来对应用程序进行分类和标识的自定义字符串。
 

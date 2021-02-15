@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 1e5a04d385ba6c6dda5b52b23fd4793860f991dc
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 33661eafee6b180819b18d9a9a980eff1e2aeceb
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737195"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100371543"
 ---
 # <a name="azure-app-configuration-best-practices"></a>Azure 应用程序配置最佳做法
 
@@ -92,7 +92,7 @@ configBuilder.AddAzureAppConfiguration(options => {
 
 ## <a name="client-applications-in-app-configuration"></a>应用配置中的客户端应用程序 
 
-对应用程序配置的请求过多可能会导致限制或超额费用。 应用程序利用当前可用的缓存和智能刷新来优化其发送的请求数。 通过避免直接连接到配置存储，可以在大量客户端应用程序中对此过程进行镜像。 相反，客户端应用程序连接到自定义服务，此服务与配置存储区进行通信。 此代理解决方案可以确保客户端应用程序不会对配置存储区进行限制。 有关限制的详细信息，请参阅 [常见问题解答](./faq.md#are-there-any-limits-on-the-number-of-requests-made-to-app-configuration)。  
+对应用程序配置的请求过多可能会导致限制或超额费用。 应用程序利用当前可用的高速缓存和智能刷新来优化其发送的请求数。 通过避免直接连接到配置存储，可以在大量客户端应用程序中镜像此进程。 但是，客户端应用程序会连接到一个自定义服务，该服务与配置存储进行通信。 此代理解决方案可以确保客户端应用程序不会接近配置存储上的限制。 有关限制的详细信息，请参阅[常见问题解答](./faq.yml#are-there-any-limits-on-the-number-of-requests-made-to-app-configuration)。  
 
 ## <a name="next-steps"></a>后续步骤
 

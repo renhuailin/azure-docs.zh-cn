@@ -7,12 +7,12 @@ ms.date: 05/13/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 6852b0532b23e46c7b986926b21cd0b7e9f9736d
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 429400bb6cb41ede89597dc739a612d1bf9893f2
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93421373"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99831257"
 ---
 # <a name="tutorial---use-mqtt-to-develop-an-iot-plug-and-play-device-client"></a>教程 - 使用 MQTT 开发 IoT 即插即用设备客户端
 
@@ -137,15 +137,14 @@ IoT 即插即用设备必须遵循一组简单约定。 如果设备在连接时
 * `DEVICE_TELEMETRY_MESSAGE` 定义设备用于向 IoT 中心发送遥测的主题。
 
 有关 MQTT 的详细信息，请访问[适用于 Azure IoT 的 MQTT 示例](https://github.com/Azure-Samples/IoTMQTTSample/) GitHub 存储库。
-  
+
+## <a name="clean-up-resources"></a>清理资源
+
+[!INCLUDE [iot-pnp-clean-resources](../../includes/iot-pnp-clean-resources.md)]
+
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，学习了如何修改 MQTT 设备客户端，以遵循 IoT 即插即用约定。 若要详细了解 IoT 即插即用，请参阅：
-
-> [!div class="nextstepaction"]
-> [体系结构](concepts-architecture.md)
-
-若要详细了解 IoT 中心对 MQTT 协议的支持，请参阅：
+在本教程中，学习了如何修改 MQTT 设备客户端，以遵循 IoT 即插即用约定。 若要详细了解 IoT 中心对 MQTT 协议的支持，请参阅：
 
 > [!div class="nextstepaction"]
 > [使用 MQTT 协议与 IoT 中心通信](../iot-hub/iot-hub-mqtt-support.md)

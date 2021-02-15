@@ -1,20 +1,17 @@
 ---
 title: 'Azure 数据工厂：常见问题 '
 description: 获取有关 Azure 数据工厂的常见问题的解答。
-services: data-factory
-documentationcenter: ''
 author: dcstwh
 ms.author: weetok
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: c5214c5ea9856212ef788c14e3a3705e2b664689
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: a3b892b5d92feb743d9a538c4e418b1f47e39b03
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99805600"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100386299"
 ---
 # <a name="azure-data-factory-faq"></a>Azure 数据工厂常见问题解答
 
@@ -26,7 +23,7 @@ ms.locfileid: "99805600"
 
 数据工厂是一项完全托管的、基于云的数据集成 ETL 服务，可以自动移动和转换数据。 如同工厂运转设备将原材料转换为成品一样，Azure 数据工厂可协调现有的服务，收集原始数据并将其转换为随时可用的信息。 
 
-使用 Azure 数据工厂可以创建数据驱动的工作流，用于在本地与云数据存储之间移动数据。 您可以处理数据并将数据转换为数据流。 ADF 还支持使用计算服务（例如 Azure HDInsight、Azure Databricks 和 SQL Server Integration Services (SSIS) 集成运行时）进行手动编码转换的外部计算引擎。
+使用 Azure 数据工厂可以创建数据驱动的工作流，用于在本地与云数据存储之间移动数据。 你可以使用数据流处理和转换数据。 ADF 还通过计算服务（例如 Azure HDInsight、Azure Databricks 和 SQL Server Integration Services (SSIS) 集成运行时）支持用于手动编码转换的外部计算引擎。
 
 使用数据工厂，可在基于 Azure 的云服务或自己的自承载计算环境（例如 SSIS、SQL Server 或 Oracle）中执行数据处理。 创建用于执行所需操作的管道后，可将它计划为定期运行（例如每小时、每天或每周）、按时间范围运行或者在发生某个事件时触发。 有关详细信息，请参阅 [Azure 数据工厂简介](introduction.md)。
 
@@ -131,7 +128,7 @@ Azure 数据工厂经过一系列符合性认证（包括 _SOC 1、2、3_、 _HI
 
 ### <a name="data-flows"></a>数据流
 
-数据流是在数据工厂中直观地生成的对象，可在后端 Spark 服务大规模转换数据。 不需要了解编程或 Spark 内部机制。 只需使用图形 (映射) 或电子表格 (整理) 设计数据转换意向。
+数据流是你在数据工厂中直观生成的对象，可在后端 Spark 服务中大规模转换数据。 你不需要了解编程或 Spark 内部机制。 只需使用图形（映射）或电子表格（整理）设计你的数据转换意向。
 
 ### <a name="activities"></a>活动
 
@@ -217,23 +214,23 @@ Azure 数据工厂经过一系列符合性认证（包括 _SOC 1、2、3_、 _HI
 
 ## <a name="mapping-data-flows"></a>映射数据流
 
-### <a name="i-need-help-troubleshooting-my-data-flow-logic-what-info-do-i-need-to-provide-to-get-help"></a>我需要帮助排查我的数据流逻辑问题。 若要获取帮助，需要提供哪些信息？
+### <a name="i-need-help-troubleshooting-my-data-flow-logic-what-info-do-i-need-to-provide-to-get-help"></a>我在排查数据流逻辑问题时需要帮助。 若要获取帮助，需要提供哪些信息？
 
-当 Microsoft 为数据流提供帮助或故障排除时，请提供数据流脚本。 这是来自数据流图形的代码隐藏脚本。 在 ADF UI 中，打开数据流，然后单击右上角的 "脚本" 按钮。 复制并粘贴此脚本或将其保存在文本文件中。
+当 Microsoft 为你提供数据流帮助或进行故障排除时，请提供数据流脚本。 这是来自数据流图的代码隐藏脚本。 在 ADF UI 中，打开你的数据流，然后单击右上角的“脚本”按钮。 复制并粘贴此脚本，或将其保存在一个文本文件中。
 
-### <a name="how-do-i-access-data-by-using-the-other-90-dataset-types-in-data-factory"></a>使用数据工厂中的其他90数据集类型如何实现访问数据？
+### <a name="how-do-i-access-data-by-using-the-other-90-dataset-types-in-data-factory"></a>如何使用数据工厂中的其他 90 个数据集类型来访问数据？
 
-映射数据流功能目前允许 Azure SQL 数据库、Azure Synapse Analytics、来自 Azure Blob 存储的带分隔符的文本文件，Azure Data Lake Storage Gen2 或从 Blob 存储中的 Parquet 文件或本机为源和接收器 Data Lake Storage Gen2 的文件。 
+映射数据流功能目前以原生方式允许使用 Azure SQL 数据库、Azure Synapse Analytics、来自 Azure Blob 存储或 Azure Data Lake Storage Gen2 的带分隔符的文本文件，以及来自 Blob 存储或 Data Lake Storage Gen2 的 Parquet 文件作为源和接收器。 
 
-使用复制活动可从任何其他连接器暂存数据，然后执行数据流活动，在暂存数据后对其进行转换。 例如，管道将首先复制到 Blob 存储，然后数据流活动将使用源中的数据集来转换该数据。
+可以使用复制活动从任何其他连接器暂存数据，然后执行数据流活动在暂存数据后对其进行转换。 例如，你的管道会首先将数据复制到 Blob 存储，然后数据流活动会使用源中的数据集来转换该数据。
 
-### <a name="is-the-self-hosted-integration-runtime-available-for-data-flows"></a>是否可用于数据流的自承载集成运行时？
+### <a name="is-the-self-hosted-integration-runtime-available-for-data-flows"></a>自承载集成运行时是否可用于数据流？
 
-自承载 IR 是一种 ADF 管道构造，可与复制活动一起使用，以便在本地或基于 VM 的数据源和接收器之间获取或移动数据。 首先使用副本来暂存数据，然后使用数据流进行转换，然后将转换后的数据移回本地存储。
+自承载 IR 是一种 ADF 管道构造，可与复制活动一起使用，以便在本地或基于 VM 的数据源和接收器中获取或移动数据。 首先使用复制来暂存数据，接着使用数据流进行转换，然后进行后续的复制（如果需要将转换后的数据移回本地存储）。
 
 ### <a name="does-the-data-flow-compute-engine-serve-multiple-tenants"></a>数据流计算引擎是否为多个租户提供服务？
 
-不共享群集。 我们保证在生产运行中运行的每个作业的隔离。 在调试方案中，一个人获取一个群集，并且所有调试都将发送到该用户启动的群集。
+群集从不会共享。 我们保证在生产运行中为每个作业运行提供隔离。 在调试场景中，一个人获取一个群集，所有调试都会转到该用户启动的该群集。
 
 ## <a name="wrangling-data-flows"></a>整理数据流
 
@@ -286,12 +283,12 @@ Azure 数据工厂 (ADF) 是一种托管的数据集成服务，它允许数据�
 * short
 * Double
 * real
-* float
+* FLOAT
 * char
 * nchar
 * varchar
 * nvarchar
-* integer
+* 整型
 * int
 * bit
 * boolean

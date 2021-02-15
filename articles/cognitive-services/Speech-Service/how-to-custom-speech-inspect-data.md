@@ -8,21 +8,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 09/23/2020
+ms.date: 02/12/2021
 ms.author: erhopf
-ms.openlocfilehash: 87bc411903604a7068f346604853a2a61c9a6f1c
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 9ce0d3a06846cbc3aa37ab836564150e6f2c34ee
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499180"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100362805"
 ---
 # <a name="inspect-custom-speech-data"></a>检查自定义语音识别数据
 
 > [!NOTE]
 > 此页假定你已阅读[准备自定义语音识别的测试数据](./how-to-custom-speech-test-and-train.md)，并已上传用于检查的数据集。
 
-自定义语音识别提供的工具可以将音频数据与相应的识别结果进行比较，因此可以通过视觉方式检查模型的质量。 在[自定义语音识别门户](https://speech.microsoft.com/customspeech)中，你可以播放上传的音频，确定提供的识别结果是否正确。 此工具可帮助检查 Microsoft 的基线语音转文本模型的质量，检查经过训练的自定义模型，或者比较两个模型的听录内容。
+自定义语音识别提供的工具可以将音频数据与相应的识别结果进行比较，因此可以通过视觉方式检查模型的质量。 从 [Speech Studio](https://speech.microsoft.com/customspeech)中，可以播放上传的音频，并确定提供的识别结果是否正确。 此工具可帮助检查 Microsoft 的基线语音转文本模型的质量，检查经过训练的自定义模型，或者比较两个模型的听录内容。
 
 本文介绍了如何直观地检查 Microsoft 的基线语音转文本模型和/或经过训练的自定义模型的质量。 另外还介绍了如何使用联机听录内容编辑器来创建和优化经过标记的音频数据集。
 
@@ -30,7 +30,7 @@ ms.locfileid: "96499180"
 
 按这些说明创建测试：
 
-1. 登录到[自定义语音识别门户](https://speech.microsoft.com/customspeech)。
+1. 登录到 [Speech Studio](https://speech.microsoft.com/customspeech)。
 2. 导航到“语音转文本”>“自定义语音识别”> [项目名称] >“测试”。
 3. 单击“添加测试”。
 4. 选择“检查质量(仅音频数据)”。 为测试提供名称和说明，然后选择你的音频数据集。

@@ -3,21 +3,21 @@ title: ML Studio (经典) 教程支持 & 培训-Azure
 description: 获取 Azure 机器学习工作室（经典）的支持和培训并为其提供反馈
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: troubleshooting
 author: peterclu
 ms.author: peterlu
 ms.date: 01/18/2019
-ms.openlocfilehash: c49437db6bc3651d27181ef8e8f5248b5785e089
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 606229f8baf1016938ed531682d11297d14145fd
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325664"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100517461"
 ---
 # <a name="get-support-and-training-for-azure-machine-learning-studio-classic"></a>获取 Azure 机器学习工作室（经典）的支持和培训
 
-**适用于：** ![绿色复选标记。 ](../../../includes/media/aml-applies-to-skus/yes.png)机器学习 Studio (经典) ![ X，指示没有。 ](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
+**适用对象：** ![绿色的选中标记。](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典版）![X 指示否。](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 
 
@@ -38,10 +38,10 @@ ms.locfileid: "93325664"
 
 请查看这些支持资源：
 
-+ **面向 Azure 客户的技术支持** ：通过 Azure 门户 [提交和管理支持请求](../../azure-portal/supportability/how-to-create-azure-support-request.md)。
++ **面向 Azure 客户的技术支持**：通过 Azure 门户 [提交和管理支持请求](../../azure-portal/supportability/how-to-create-azure-support-request.md)。
 
-+ **用户论坛** ：在 [Azure 机器学习工作室（经典）支持论坛](/answers/topics/azure-machine-learning.html)中提出问题、回答问题并与其他用户交流。
++ **用户论坛**：在 [Azure 机器学习工作室（经典）支持论坛](/answers/topics/azure-machine-learning.html)中提出问题、回答问题并与其他用户交流。
 
-+ **Stack Overflow** ：访问 [StackOverflow](https://stackoverflow.com/questions/tagged/azure-machine-learning) 上标记为“Azure-Machine-Learning”的 Azure 机器学习社区。
++ **Stack Overflow**：访问 [StackOverflow](https://stackoverflow.com/questions/tagged/azure-machine-learning) 上标记为“Azure-Machine-Learning”的 Azure 机器学习社区。
 
 + 在我们的 [Azure 机器学习反馈通道](https://feedback.azure.com/forums/257792-machine-learning)中 **分享产品建议** 和功能请求。 若要分享建议，请选择每篇文章末尾的“产品反馈”按钮。

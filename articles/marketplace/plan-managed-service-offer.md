@@ -8,22 +8,22 @@ author: Microsoft-BradleyWright
 ms.author: brwrigh
 ms.reviewer: anbene
 ms.date: 12/23/2020
-ms.openlocfilehash: 57a6883a2c4fff14507df27b55ac0f6621306bf5
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: f096e53f8054039f361bde1c5f2adffac615c53d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879269"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100371934"
 ---
 # <a name="how-to-plan-a-managed-service-offer-for-the-microsoft-commercial-marketplace"></a>如何为 Microsoft 商用 marketplace 规划托管服务产品/服务
 
 本文介绍了通过合作伙伴中心向 Microsoft 商业应用商店发布托管服务产品/服务的要求。
 
-托管服务是 Azure Marketplace 产品/服务，可通过 Azure Lighthouse 实现跨租户和多租户管理。 若要了解详细信息，请参阅 [什么是 Azure Lighthouse？](../lighthouse/overview.md) 当客户购买托管服务产品/服务时，他们可以委派一个或多个订阅或资源组
+托管服务是 Azure Marketplace 产品/服务，可通过 Azure Lighthouse 实现跨租户和多租户管理。 若要了解详细信息，请参阅 [什么是 Azure Lighthouse？](../lighthouse/overview.md) 当客户购买托管服务产品/服务时，他们可以委派一个或多个订阅或资源组。 然后，可以使用 Azure Lighthouse 的 [azure 委托资源管理](../lighthouse/concepts/azure-delegated-resource-management.md) 功能来处理这些资源。
 
 ## <a name="eligibility-requirements"></a>资格要求
 
-若要发布托管服务，你必须在云平台中获得金牌或银 Microsoft 资格。 此资格认证向客户展示你的专业技能。 有关详细信息，请参阅 [Microsoft 合作伙伴网络胜任度](https://partner.microsoft.com/membership/competencies)。
+若要发布托管服务产品/服务，你必须在云平台中获得金牌或银 Microsoft 资格。 此资格认证向客户展示你的专业技能。 有关详细信息，请参阅 [Microsoft 合作伙伴网络胜任度](https://partner.microsoft.com/membership/competencies)。
 
 产品/服务必须满足在 Azure Marketplace 上发布的所有适用的 [商业市场认证策略](/legal/marketplace/certification-policies) 。
 

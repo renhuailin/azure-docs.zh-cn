@@ -1,23 +1,18 @@
 ---
 title: 从 Azure 数据工厂调用 MapReduce 程序
 description: 了解如何通过从 Azure 数据工厂在 Azure HDInsight 群集上运行 MapReduce 程序来处理数据。
-services: data-factory
-documentationcenter: ''
 author: dcstwh
 ms.author: weetok
-manager: jroth
 ms.reviewer: maghan
-ms.assetid: c34db93f-570a-44f1-a7d6-00390f4dc0fa
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 8bdcaf20330a3700681fd96f858370dd7dcdf4c7
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: f5ad917609d6f9ea401abc898f80631474a44475
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96495423"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100371067"
 ---
 # <a name="invoke-mapreduce-programs-from-data-factory"></a>从数据工厂调用 MapReduce 程序
 > [!div class="op_single_selector" title1="转换活动"]
@@ -41,7 +36,7 @@ ms.locfileid: "96495423"
 > [!NOTE] 
 > 如果是刚开始接触 Azure 数据工厂，请仔细阅读 [Azure 数据工厂简介](data-factory-introduction.md)，并学习[教程：生成首个数据管道](data-factory-build-your-first-pipeline.md)，然后再阅读本文。  
 
-## <a name="introduction"></a>介绍
+## <a name="introduction"></a>简介
 Azure 数据工厂中的管道通过使用链接计算服务来处理链接存储服务中的数据。 它包含一系列活动，其中每个活动执行特定的处理操作。 本文介绍如何使用 HDInsight MapReduce 活动。
 
 请参阅 [Pig](data-factory-pig-activity.md) 和 [Hive](data-factory-hive-activity.md)，深入了解如何通过使用 HDInsight Pig 和 Hive 活动在管道中基于 Windows/Linux 的 HDInsight 群集上运行 Pig/Hive 脚本。 
@@ -183,7 +178,7 @@ Azure 数据工厂中的管道通过使用链接计算服务来处理链接存�
 
 | 属性 | 注释 |
 |:--- |:--- |
-| type |类型必须设置为 **HDInsightMapReduce**。 |
+| 类型 |类型必须设置为 **HDInsightMapReduce**。 |
 | className |类名为：**wordcount** |
 | jarFilePath |包含该类的 jar 文件的路径。 如果要复制/粘贴下面的代码，请不要忘记更改群集的名称。 |
 | jarLinkedService |包含 jar 文件的 Azure 存储链接服务。 此链接服务指与 HDInsight 群集关联的存储。 |

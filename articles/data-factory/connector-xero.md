@@ -1,22 +1,17 @@
 ---
 title: 使用 Azure 数据工厂从 Xero 复制数据
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 Xero 复制到支持的接收器数据存储。
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/26/2021
 ms.author: jingwang
-ms.openlocfilehash: 3f8c74f36c1c441e00b808954ce7f7710d3fbd52
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: d795f8355943032751b911423b8aaa93b2df3206
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879959"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100366902"
 ---
 # <a name="copy-data-from-xero-using-azure-data-factory"></a>使用 Azure 数据工厂从 Xero 复制数据
 
@@ -52,10 +47,10 @@ Xero 链接服务支持以下属性：
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**Xero** | 是 |
 | connectionProperties | 定义如何连接到 Xero 的一组属性。 | 是 |
-| _在 `connectionProperties` 下：_ _* | | |
+| 在 `connectionProperties` 下： | | |
 | host | Xero 服务器的终结点 (`api.xero.com`)。  | 是 |
 | authenticationType | 允许的值为 `OAuth_2.0` 和 `OAuth_1.0`。 | 是 |
-| consumerKey | 对于 OAuth 2.0，请为 Xero 应用程序指定 _ *CLIENT ID**。<br>对于 OAuth 1.0，请指定与 Xero 应用程序关联的使用者密钥。<br>将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
+| consumerKey | 对于 OAuth 2.0，请指定 Xero 应用程序的 **客户端 ID** 。<br>对于 OAuth 1.0，请指定与 Xero 应用程序关联的使用者密钥。<br>将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
 | privateKey | 对于 OAuth 2.0，请指定 Xero 应用程序的 **客户端密码** 。<br>对于 OAuth 1.0，请从为 Xero 私有应用程序生成的 pem 文件中指定私钥，请参阅 [创建公钥/私钥对](https://developer.xero.com/documentation/auth-and-limits/create-publicprivate-key)。 注意：使用 `openssl genrsa -out privatekey.pem 512` 可生成数位为 512 的 privatekey.pem，不支持生成 1024 数位。 包括 .pem 文件中的所有文本，包括 Unix 行尾(\n)，请参见下面的示例。<br/><br>将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
 | tenantId | 与 Xero 应用程序关联的租户 ID。 适用于 OAuth 2.0 身份验证。<br>请参阅[查看你有权访问的租户](https://developer.xero.com/documentation/oauth2/auth-flow)部分，了解如何获取租户 ID。 | 是，适用于 OAuth 2.0 身份验证 |
 | refreshToken | 适用于 OAuth 2.0 身份验证。<br/>OAuth 2.0 刷新令牌与  Xero 应用程序关联，用于刷新访问令牌；访问令牌在 30 分钟后过期。 了解 Xero 授权流的工作原理，并了解如何从[此文](https://developer.xero.com/documentation/oauth2/auth-flow)获取刷新令牌。 若要获取刷新令牌，必须请求 [offline_access 范围](https://developer.xero.com/documentation/oauth2/scopes)。 <br/>**已知限制**：请注意，在将刷新令牌用于访问令牌刷新后，Xero 会将其重置。 对于操作化工作负荷，在每个复制活动运行之前，需要设置有效的刷新令牌供 ADF 使用。<br/>将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是，适用于 OAuth 2.0 身份验证 |

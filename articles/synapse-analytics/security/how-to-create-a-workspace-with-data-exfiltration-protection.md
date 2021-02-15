@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 12/01/2020
 ms.author: NanditaV
 ms.reviewer: jrasnick
-ms.openlocfilehash: f8ebbdf70836f3f2613183268f03dc43da1f0671
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 12d858488c4530e4b0d949cd36ed9ad2f7df4c59
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97590554"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100384480"
 ---
 # <a name="create-a-workspace-with-data-exfiltration-protection-enabled"></a>创建启用了数据渗透保护的工作区
 本文介绍如何创建启用了 data 渗透 protection 的工作区，以及如何为此工作区管理已批准的 Azure AD 租户。
@@ -49,6 +49,9 @@ ms.locfileid: "97590554"
 >[!IMPORTANT]
 >除了工作区租户之外的租户中的资源不能有阻止防火墙规则来连接到它们。 工作区托管的虚拟网络中的资源（如 Spark 群集）可通过托管的专用链接连接到受防火墙保护的资源。
 
+## <a name="known-limitations"></a>已知的限制
+用户可以提供环境配置文件以从公共存储库（如 PyPI）安装 Python 包。 在数据渗透保护的工作区中，会阻止与出站存储库的连接。 因此，不支持从公共存储库（如 PyPI）安装 Python 库。 
+  
 ## <a name="next-steps"></a>后续步骤
 
 [在 Synapse 工作区中了解有关 data 渗透 protection 的](./workspace-data-exfiltration-protection.md)详细信息
