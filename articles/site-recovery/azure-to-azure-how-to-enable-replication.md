@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 04/29/2018
-ms.openlocfilehash: 49929cfe0abc634dc4b704aba1c7b11a5d7dd777
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 427b471158e89b2b3ae4ea6477133f1e69247078
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/14/2021
-ms.locfileid: "100383579"
+ms.locfileid: "100518838"
 ---
 # <a name="replicate-azure-vms-to-another-azure-region"></a>将 Azure VM 复制到另一个 Azure 区域
 
@@ -54,7 +54,7 @@ ms.locfileid: "100383579"
    - **目标存储帐户（源 VM 不使用托管磁盘）** ：默认情况下，Site Recovery 会创建模拟源 VM 存储配置的新目标存储帐户。 如果存储帐户已存在，则重复使用。
    - **副本托管磁盘（源 VM 使用托管磁盘）** ：Site Recovery 在目标区域新建托管磁盘副本，以生成和源 VM 的托管磁盘存储类型一致（标准或高级）的镜像磁盘。
    - **缓存存储帐户**：Site Recovery 需要源区域中称为“缓存存储”的额外存储帐户。 在复制到目标位置之前，会跟踪源 Vm 上发生的所有更改并将其发送到缓存存储帐户。 此存储帐户应是标准存储帐户。
-   - **目标可用性集**：默认情况下，Site Recovery 在目标区域中创建一个新可用性集，该可用性集的名称中包含 "Azure Site Recovery" 后缀，适用于属于源区域中可用性集的虚拟机。 如果 Site recovery 创建的可用性集已存在，则重复使用它。
+   - **目标可用性集**：默认情况下，Site Recovery 会在目标区域中创建一个名称带“asr”后缀（针对源区域中属于可用性集的 VM）的新可用性集。 如果 Site recovery 创建的可用性集已存在，则重复使用它。
      >[!NOTE]
      >配置目标可用性集时，请为不同大小的 Vm 配置不同的可用性集。 
      >

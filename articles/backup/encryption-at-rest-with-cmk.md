@@ -3,12 +3,12 @@ title: 使用客户托管密钥加密备份数据
 description: 了解 Azure 备份如何允许使用客户管理的密钥加密备份数据， (CMK) 。
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: d5daa88475e3becde6e513391c555471f80396c5
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 230669e0a3543a0709dda3f7fee35a0cae300d5a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98735854"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100369452"
 ---
 # <a name="encryption-of-backup-data-using-customer-managed-keys"></a>使用客户托管密钥加密备份数据
 
@@ -36,6 +36,7 @@ Azure 备份允许使用客户管理的密钥加密备份数据， (CMK) ，而�
 - 只能使用存储在位于 **同一区域** 中的 Azure Key Vault 中的密钥来加密恢复服务保管库。 而且，密钥必须仅为 **RSA 2048 密钥** ，并且应处于 **启用** 状态。
 
 - 当前不支持跨资源组和订阅移动 CMK 加密恢复服务保管库。
+- 将已使用客户管理的密钥加密的恢复服务保管库移动到新租户时，你将需要更新恢复服务保管库，以重新创建并重新配置保管库的托管标识和 CMK (，该保管库应在新租户) 中。 如果未执行此操作，备份和还原操作将开始失败。 此外，在订阅中设置的任何基于角色的访问控制 (RBAC) 权限都需要重新配置。
 
 - 此功能可通过 Azure 门户和 PowerShell 进行配置。
 
@@ -119,32 +120,6 @@ Type        : SystemAssigned
 
 1. 选择 " **保存** " 以保存对 Azure Key Vault 的访问策略所做的更改。
 
-**对于 PowerShell**：
-
-使用 [AzRecoveryServicesVaultProperty](/powershell/module/az.recoveryservices/set-azrecoveryservicesvaultproperty) 命令启用使用客户托管密钥的加密，并分配或更新要使用的加密密钥。
-
-示例：
-
-```azurepowershell
-$keyVault = Get-AzKeyVault -VaultName "testkeyvault" -ResourceGroupName "testrg" 
-$key = Get-AzKeyVaultKey -VaultName $keyVault -Name "testkey" 
-Set-AzRecoveryServicesVaultProperty -EncryptionKeyId $key.ID -KeyVaultSubscriptionId "xxxx-yyyy-zzzz"  -VaultId $vault.ID
-
-
-$enc=Get-AzRecoveryServicesVaultProperty -VaultId $vault.ID
-$enc.encryptionProperties | fl
-```
-
-输出：
-
-```output
-EncryptionAtRestType          : CustomerManaged
-KeyUri                        : testkey
-SubscriptionId                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx 
-LastUpdateStatus              : Succeeded
-InfrastructureEncryptionState : Disabled
-```
-
 ### <a name="enable-soft-delete-and-purge-protection-on-the-azure-key-vault"></a>启用软删除和清除保护 Azure Key Vault
 
 需要在存储加密密钥的 Azure Key Vault 上 **启用软删除和清除保护** 。 可以从 Azure Key Vault UI 执行此操作，如下所示。  (或者，在创建 Key Vault) 时可以设置这些属性。 [在此处](../key-vault/general/soft-delete-overview.md)了解有关这些 Key Vault 属性的详细信息。
@@ -197,7 +172,7 @@ InfrastructureEncryptionState : Disabled
 
 确保了上述各项后，请继续选择保管库的加密密钥。
 
-分配密钥：
+#### <a name="to-assign-the-key-in-the-portal"></a>在门户中分配密钥
 
 1. 请参阅恢复服务保管库-> **属性**
 
@@ -221,7 +196,7 @@ InfrastructureEncryptionState : Disabled
 
         ![从密钥保管库中选择密钥](./media/encryption-at-rest-with-cmk/key-vault.png)
 
-1. 选择“保存” 。
+1. 选择“保存”。
 
 1. **跟踪加密密钥更新的进度和状态**：可以使用左侧导航栏上的 " **备份作业** " 视图跟踪加密密钥分配的进度和状态。 状态应更改为 " **已完成**"。 现在，保管库会将具有指定密钥的所有数据加密为 KEK。
 
@@ -230,6 +205,32 @@ InfrastructureEncryptionState : Disabled
     加密密钥更新也记录在保管库的活动日志中。
 
     ![活动日志](./media/encryption-at-rest-with-cmk/activity-log.png)
+
+#### <a name="to-assign-the-key-with-powershell"></a>用 PowerShell 分配密钥
+
+使用 [AzRecoveryServicesVaultProperty](/powershell/module/az.recoveryservices/set-azrecoveryservicesvaultproperty) 命令启用使用客户托管密钥的加密，并分配或更新要使用的加密密钥。
+
+示例：
+
+```azurepowershell
+$keyVault = Get-AzKeyVault -VaultName "testkeyvault" -ResourceGroupName "testrg" 
+$key = Get-AzKeyVaultKey -VaultName $keyVault -Name "testkey" 
+Set-AzRecoveryServicesVaultProperty -EncryptionKeyId $key.ID -KeyVaultSubscriptionId "xxxx-yyyy-zzzz"  -VaultId $vault.ID
+
+
+$enc=Get-AzRecoveryServicesVaultProperty -VaultId $vault.ID
+$enc.encryptionProperties | fl
+```
+
+输出：
+
+```output
+EncryptionAtRestType          : CustomerManaged
+KeyUri                        : testkey
+SubscriptionId                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx 
+LastUpdateStatus              : Succeeded
+InfrastructureEncryptionState : Disabled
+```
 
 >[!NOTE]
 > 当你希望更新或更改加密密钥时，此过程保持不变。 如果要从其他 Key Vault 中更新和使用某个密钥 (不同于当前所用) 的密钥，请确保：
@@ -311,7 +312,7 @@ $restorejob = Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -Storag
 
 从在 Azure VM 中运行的备份 SAP HANA/SQL 数据库还原时，还原的数据将使用目标存储位置中使用的加密密钥进行加密。 它可以是客户托管的密钥或用于加密 VM 磁盘的平台托管密钥。
 
-## <a name="frequently-asked-questions"></a>常见问题解答
+## <a name="frequently-asked-questions"></a>常见问题
 
 ### <a name="can-i-encrypt-an-existing-backup-vault-with-customer-managed-keys"></a>是否可以使用客户管理的密钥加密现有的备份保管库？
 

@@ -6,13 +6,13 @@ ms.author: jlian
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 07/01/2020
-ms.openlocfilehash: c82f98df8fb79fa10f2e30b219c1a02bb646e2de
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 02/12/2021
+ms.openlocfilehash: 27552b2c39f2d1e5d9cc1719a9cc2944e088773a
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85937489"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100517121"
 ---
 # <a name="managing-public-network-access-for-your-iot-hub"></a>管理 IoT 中心的公用网络访问
 
@@ -28,7 +28,13 @@ ms.locfileid: "85937489"
 
 :::image type="content" source="media/iot-hub-publicnetworkaccess/turn-off-public-network-access.png" alt-text="显示在 Azure 门户中的何处禁用公用网络访问的图像" lightbox="media/iot-hub-publicnetworkaccess/turn-off-public-network-access.png":::
 
-若要启用公用网络访问，请选择“已启用”，然后选择“保存”。
+若要启用公共网络访问权限，请选择 " **所有网络**"，然后选择 " **保存**"。
+
+## <a name="iot-hub-endpoint-ip-address-and-ports-after-disabling-public-network-access"></a>禁用公共网络访问后的 IoT 中心终结点、IP 地址和端口
+
+IoT 中心是一种多租户的平台即服务 (PaaS) ，因此不同的客户共用相同的计算、网络和存储硬件资源池。 IoT 中心的主机名映射到一个公共终结点，该终结点具有通过 internet 通过公共方式路由的 IP 地址。 不同的客户将共享此 IoT 中心公共终结点，广域网和本地网络中的 IoT 设备均可对其进行访问。 
+
+对特定 IoT 中心资源强制禁用公共网络访问可确保隔离。 为了使服务对使用公用路径的其他客户资源保持活动状态，其公共终结点仍可解析，IP 地址可发现，端口仍保持打开状态。 这不是导致问题的原因，因为 Microsoft 集成了多个安全层以确保租户之间完全隔离。 若要了解详细信息，请参阅 [Azure 公有云中的隔离](../security/fundamentals/isolation-choices.md#tenant-level-isolation)。
 
 ## <a name="ip-filter"></a>筛选器 
 

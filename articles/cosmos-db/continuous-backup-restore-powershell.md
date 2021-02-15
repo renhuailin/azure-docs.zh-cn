@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 02/01/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 73652f821abfa4a092e4a61ffe2be9e7262a2f10
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 5261075a82eaefd91cbedd2dd2fe08cb1e0a20b4
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99538538"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100381828"
 ---
 # <a name="configure-and-manage-continuous-backup-and-point-in-time-restore-preview---using-azure-powershell"></a>配置和管理连续备份和时间点还原 (预览) -使用 Azure PowerShell
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -50,7 +50,7 @@ Azure Cosmos DB 的时间点还原功能 (预览版) 可帮助你从容器内的
 
 若要设置具有连续备份的帐户，请添加参数 `-BackupPolicyType Continuous` 以及常规设置命令。
 
-以下 cmdlet 是一个区域写入帐户的示例 `pitracct2` ，其中包含在 "myrg" 资源组下的 "美国西部" 区域创建的连续备份策略：
+以下 cmdlet 是一个区域写入帐户示例， `pitracct2` 其中包含在 " *myrg* " 资源组下的 "*美国西部*" 区域中创建的连续备份策略：
 
 ```azurepowershell
 
@@ -65,7 +65,7 @@ New-AzCosmosDBAccount `
 
 ## <a name="provision-a-mongodb-api-account-with-continuous-backup"></a><a id="provision-mongodb-api"></a>预配包含连续备份的 MongoDB API 帐户
 
-以下 cmdlet 是在 "myrg" 资源组下的 "美国西部" 区域中创建的连续备份帐户 "pitracct2" 的示例：
+以下 cmdlet 是在 *美国西部* 区域的 *myrg* 资源组下创建的连续备份帐户 *pitracct2* 的示例：
 
 ```azurepowershell
 
@@ -162,13 +162,13 @@ Restore-AzCosmosDBAccount `
   },
 ```
 
-与帐户的 "CreationTime" 或 "DeletionTime" 一样，该区域也存在 "CreationTime" 或 "DeletionTime"。 利用这些时间，你可以选择正确的区域和要还原到该区域的有效时间范围。
+与帐户的 `CreationTime` 或类似 `DeletionTime` ，该区域也有一个 `CreationTime` 或 `DeletionTime` 。 利用这些时间，你可以选择正确的区域和要还原到该区域的有效时间范围。
 
 **列出实时数据库帐户中的所有 SQL 数据库版本**
 
 列出数据库的所有版本可在数据库存在的实际时间未知的情况下选择适当的数据库。
 
-运行以下 PowerShell 命令以列出数据库的所有版本。 此命令仅适用于 live 帐户。 "DatabaseAccountInstanceId" 和 "LocationName" 参数是从 cmdlet 的响应中的 "name" 和 "location" 属性获取的 `Get-AzCosmosDBRestorableDatabaseAccount` 。 "DatabaseAccountInstanceId" 属性引用正在还原的源数据库帐户的 "instanceId" 属性：
+运行以下 PowerShell 命令以列出数据库的所有版本。 此命令仅适用于 live 帐户。 `DatabaseAccountInstanceId`和 `LocationName` 参数是从 cmdlet 的响应中获取的和 `name` `location` 属性 `Get-AzCosmosDBRestorableDatabaseAccount` 。 该 `DatabaseAccountInstanceId` 属性引用要 `instanceId` 还原的源数据库帐户的属性：
 
 
 ```azurepowershell
@@ -181,7 +181,7 @@ Get-AzCosmosdbSqlRestorableDatabase `
 
 **列出实时数据库帐户中数据库的所有 SQL 容器版本。**
 
-使用以下命令可列出 SQL 容器的所有版本。 此命令仅适用于 live 帐户。 "DatabaseRid" 参数是要还原的数据库的 "ResourceId"。 它是在 cmdlet 的响应中发现的 "ownerResourceid" 属性的值 `Get-AzCosmosdbSqlRestorableDatabase` 。 响应还包括对此数据库中的所有容器执行的操作的列表。
+使用以下命令可列出 SQL 容器的所有版本。 此命令仅适用于 live 帐户。 `DatabaseRid`参数是 `ResourceId` 要还原的数据库的。 它是 `ownerResourceid` 在 cmdlet 响应中找到的属性的值 `Get-AzCosmosdbSqlRestorableDatabase` 。 响应还包括对此数据库中的所有容器执行的操作的列表。
 
 ```azurepowershell
 
@@ -208,7 +208,7 @@ Get-AzCosmosdbSqlRestorableResource `
 
 ## <a name="enumerate-restorable-resources-for-mongodb"></a><a id="enumerate-mongodb-api"></a>枚举 MongoDB 的可恢复资源
 
-下面描述的枚举命令可帮助你发现可在各种时间戳上还原的资源。 此外，它们还提供可恢复帐户、数据库和容器资源上的密钥事件的源。 这些命令仅适用于实时帐户，并与 SQL API 命令类似，但命令名称中包含 "MongoDB"，而不是 "SQL"。
+下面描述的枚举命令可帮助你发现可在各种时间戳上还原的资源。 此外，它们还提供可恢复帐户、数据库和容器资源上的密钥事件的源。 这些命令仅适用于 live 帐户，并与 SQL API 命令类似，但使用 `MongoDB` 命令名称而不是 `sql` 。
 
 **列出实时数据库帐户中 MongoDB 数据库的所有版本**
 

@@ -1,24 +1,24 @@
 ---
-title: Azure 应用配置的 Azure 安全基线
-description: Azure 应用配置安全基线为实现 Azure 安全基准中指定的安全建议提供过程指南和资源。
+title: Azure 应用程序配置的 Azure 安全基线
+description: Azure 应用程序配置安全基线为实现 Azure 安全基准中指定的安全建议提供过程指南和资源。
 author: msmbaldwin
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 4af00b2e0e5445ecc904f603d813d843a9c54b93
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: b160f6641cced1e4ea6af1eac225d92abe26a631
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98735010"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100380264"
 ---
-# <a name="azure-security-baseline-for-azure-app-configuration"></a>Azure 应用配置的 Azure 安全基线
+# <a name="azure-security-baseline-for-azure-app-configuration"></a>Azure 应用程序配置的 Azure 安全基线
 
-此安全基线将 [Azure 安全基准版本 2.0](../security/benchmarks/overview.md) 中的指南应用到 Azure 应用配置。 Azure 安全基准提供有关如何在 Azure 上保护云解决方案的建议。 内容由 Azure 安全基准定义的 **安全控制** 和适用于 Azure 应用配置的相关指南进行分组。 排除了不适用于 Azure 应用配置的 **控件**。
+此安全基线将 [Azure 安全基准版本 2.0](../security/benchmarks/overview.md) 中的指南应用于 Azure 应用程序配置。 Azure 安全基准提供有关如何在 Azure 上保护云解决方案的建议。 内容按“安全控制”分组，这些控制根据适用于 Azure 应用程序配置的 Azure 安全基准和相关指南定义。 排除了不适用于 Azure 应用程序配置的“控制”。
 
-若要查看 Azure 应用配置如何完全映射到 Azure 安全基准，请参阅 [完整的 Azure 应用配置安全基线映射文件](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)。
+若要查看 Azure 应用程序配置如何完全映射到 Azure 安全基准，请参阅[完整的 Azure 应用程序配置安全基线映射文件](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)。
 
 ## <a name="network-security"></a>网络安全
 
@@ -26,9 +26,9 @@ ms.locfileid: "98735010"
 
 ### <a name="ns-1-implement-security-for-internal-traffic"></a>NS-1：实现内部流量的安全性
 
-**指南**： Azure 应用配置不会直接将任何资源部署到虚拟网络。 由于服务未部署到虚拟网络中，因此无法利用某些网络功能来保护服务的内部流量，例如：网络安全组、路由表或其他网络设备，如 Azure 防火墙。 但是，应用配置允许你使用专用终结点安全地连接到虚拟网络中的 Azure 应用配置。
+**指导**：Azure 应用程序配置不会将任何资源直接部署到虚拟网络。 由于服务未部署到虚拟网络中，因此无法利用某些网络功能来保护服务的内部流量，例如：网络安全组、路由表或其他网络设备（如 Azure 防火墙）。 但是，应用程序配置允许你使用专用终结点从虚拟网络安全地连接到 Azure 应用程序配置。
 
-使用 Azure Sentinel 发现旧的不安全协议，如 SSL/TLSv1、SMBv1、LM/NTLMv1、wDigest、未签名的 LDAP 绑定和 Kerberos 中的弱密码。
+使用 Azure Sentinel 发现旧的不安全协议的使用，如 SSL/TLSv1、SMBv1、LM/NTLMv1、wDigest、未签名的 LDAP 绑定和 Kerberos 中的弱密码。
 
 - [为 Azure 应用配置使用专用终结点](concept-private-endpoint.md)
 
@@ -40,7 +40,7 @@ ms.locfileid: "98735010"
 
 ### <a name="ns-2-connect-private-networks-together"></a>NS-2：将专用网络连接在一起
 
-**指南**： Azure 应用配置支持使用专用终结点通过专用链接安全发送数据。 使用 Azure ExpressRoute 或 Azure 虚拟专用网络 (VPN) 在归置环境中的 Azure 数据中心和本地基础结构之间创建专用连接。 ExpressRoute 连接并不通过公共 Internet，与典型的 Internet 连接相比，它们的可靠性更高、速度更快且延迟时间更短。 对于点到站点 VPN 和站点到站点 VPN，可使用这些 VPN 选项的任意组合以及 Azure ExpressRoute 将本地设备或网络连接到虚拟网络。
+**指导**：Azure 应用程序配置支持使用专用终结点通过专用链接安全地发送数据。 在共置环境中，使用 Azure ExpressRoute 或 Azure 虚拟专用网 (VPN) 在 Azure 数据中心与本地基础结构之间创建专用连接。 ExpressRoute 连接并不通过公共 Internet，与典型的 Internet 连接相比，它们的可靠性更高、速度更快且延迟时间更短。 对于点到站点 VPN 和站点到站点 VPN，可使用这些 VPN 选项的任意组合以及 Azure ExpressRoute 将本地设备或网络连接到虚拟网络。
 
 若要将 Azure 中的两个或更多虚拟网络连接在一起，请使用虚拟网络对等互连。 对等互连虚拟网络之间的网络流量是专用的，且保留在 Azure 主干网络上。
 
@@ -56,13 +56,13 @@ ms.locfileid: "98735010"
 
 ### <a name="ns-3-establish-private-network-access-to-azure-services"></a>NS-3：建立对 Azure 服务的专用网络访问
 
-**指南**：使用 Azure 专用链接可以在不通过 internet 连接的情况下从虚拟网络启用对 Azure 应用配置的专用访问。
+**指导**：使用 Azure 专用链接，无需通过 Internet 即可从虚拟网络对 Azure 应用程序配置进行专用访问。
 
-除了 Azure 服务提供的身份验证和流量安全性外，专用访问还提供额外的深层防御措施。
+专用访问是除 Azure 服务提供的身份验证和流量安全性之外的另一项深度防护措施。
 
 - [了解 Azure 专用链接](../private-link/private-link-overview.md)
 
-- [如何在 Azure 应用配置中设置专用链接](concept-private-endpoint.md)
+- [如何在 Azure 应用程序配置中设置专用链接](concept-private-endpoint.md)
 
 **Azure 安全中心监视**：是
 
@@ -70,9 +70,9 @@ ms.locfileid: "98735010"
 
 ### <a name="ns-4-protect-applications-and-services-from-external-network-attacks"></a>NS-4：保护应用程序和服务不受外部网络攻击
 
-**指南**：通过虚拟网络访问配置值时，针对外部网络的攻击保护你的资源，包括分布式拒绝服务 (DDoS) 攻击、特定于应用程序的攻击，以及未经请求和潜在恶意的 internet 流量。 使用 Azure 防火墙保护应用程序和服务免受来自 Internet 和其他外部位置的潜在恶意流量的侵害。 通过在 Azure 虚拟网络上启用 DDoS 标准保护，保护资产免受 DDoS 攻击。 使用 Azure 安全中心来检测与网络相关资源相关的错误配置风险。
+**指导**：通过虚拟网络访问配置值时，请保护资源免受外部网络的攻击，包括分布式拒绝服务 (DDoS) 攻击、特定于应用程序的攻击，以及未经请求和可能存在恶意的 Internet 流量。 使用 Azure 防火墙保护应用程序和服务免受来自 Internet 和其他外部位置的潜在恶意流量的侵害。 通过在 Azure 虚拟网络上启用 DDoS 标准保护，保护资产免受 DDoS 攻击。 使用 Azure 安全中心来检测网络相关资源的配置错误风险。
 
-Azure 应用配置不用于运行 web 应用程序，它提供了这些 web 应用程序的配置。 不需要配置任何其他设置，也不需要部署任何额外的网络服务来保护其免受针对 web 应用程序的外部网络攻击。
+Azure 应用程序配置不用于运行 Web 应用程序，它提供了这些 Web 应用程序的配置。 不需要配置任何其他设置或部署任何额外的网络服务来保护其免受针对 Web 应用程序的外部网络攻击。
 
 - [Azure 防火墙文档](../firewall/index.yml)
 
@@ -86,13 +86,13 @@ Azure 应用配置不用于运行 web 应用程序，它提供了这些 web 应�
 
 ### <a name="ns-5-deploy-intrusion-detectionintrusion-prevention-systems-idsips"></a>NS-5：部署入侵检测/入侵防护系统 (IDS/IPS)
 
-**指南**：结合使用 Azure 防火墙和基于威胁智能的筛选，可以发出警报，并/或阻止来自已知恶意 IP 地址和域的流量。 IP 地址和域源自 Microsoft 威胁智能源。 需要进行负载检查时，可以使用负载检查功能从 Azure Marketplace 部署第三方 ID/IPS 解决方案。 或者，你可以选择使用基于主机的 ID/IP 或基于主机的终结点检测和响应 (EDR) 解决方案与或而不是基于网络的 ID/IP 结合使用。
+**指导**：结合使用 Azure 防火墙和基于威胁情报的筛选功能，针对进出已知恶意 IP 地址和域的流量发出警报并/或阻止该流量。 IP 地址和域源自 Microsoft 威胁智能源。 需要进行有效负载检查时，可使用有效负载检查功能从 Azure 市场部署第三方 IDS/IPS 解决方案。 另外，还可选择将基于主机的 ID/IPS 或基于主机的终结点检测和响应 (EDR) 解决方案与基于网络的 ID/IPS 结合使用，或者替代基于网络的 ID/IPS。
 
-注意：如果你对 IDS/IP 使用有法规或其他要求，请确保始终对其进行优化，以便为你的 SIEM 解决方案提供高质量的警报。
+注意：如果在 IDS/IPS 的使用方面存在法规或其他要求，请确保始终对其进行优化，以便为 SIEM 解决方案提供高质量的警报。
 
 - [如何部署 Azure 防火墙](../firewall/tutorial-firewall-deploy-portal.md)
 
-- [Azure Marketplace 包含第三方 ID 功能](https://azuremarketplace.microsoft.com/marketplace?search=IDS)
+- [Azure 市场包含第三方 IDS 功能](https://azuremarketplace.microsoft.com/marketplace?search=IDS)
 
 - [Microsoft Defender ATP EDR 功能](/windows/security/threat-protection/microsoft-defender-atp/overview-endpoint-detection-response)
 
@@ -102,7 +102,7 @@ Azure 应用配置不用于运行 web 应用程序，它提供了这些 web 应�
 
 ### <a name="ns-6-simplify-network-security-rules"></a>NS-6：简化网络安全规则
 
-**指南**：使用 Azure 虚拟网络服务标记定义为应用配置资源配置的网络安全组或 Azure 防火墙上的网络访问控制。 在应用程序网络中创建出站流量的安全规则时，可以使用服务标记 "AppConfiguration" 代替特定的 IP 地址。 通过在规则的相应“源”或“目标”字段中指定服务标记名称，可允许或拒绝相应服务的流量。 Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更改时自动更新服务标记。
+**指导**：使用 Azure 虚拟网络服务标记，在为 Azure 应用程序配置资源配置的网络安全组或 Azure 防火墙上定义网络访问控制。 在应用程序网络中创建出站流量的安全规则时，可以使用服务标记“AppConfiguration”代替特定的 IP 地址。 通过在规则的相应“源”或“目标”字段中指定服务标记名称，可允许或拒绝相应服务的流量。 Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更改时自动更新服务标记。
 
 - [了解并使用服务标记](../virtual-network/service-tags-overview.md)
 
@@ -116,7 +116,7 @@ Azure 应用配置不用于运行 web 应用程序，它提供了这些 web 应�
 
 ### <a name="im-1-standardize-azure-active-directory-as-the-central-identity-and-authentication-system"></a>IM-1：将 Azure Active Directory 标准化为中央标识和身份验证系统
 
-**指南**： Azure 应用配置与 Azure 默认标识和访问管理服务 Azure Active Directory (Azure AD) 集成。 你应该使 Azure AD 标准化，以便控制组织在以下资源中的标识和访问管理：
+**指导**：Azure 应用程序配置与 Azure 的默认标识和访问管理服务 Azure Active Directory (Azure AD) 集成。 你应该使 Azure AD 标准化，以便控制组织在以下资源中的标识和访问管理：
 - Microsoft 云资源，如 Azure 门户、Azure 存储、Azure 虚拟机（Linux 和 Windows）、Azure Key Vault、PaaS 和 SaaS 应用程序。
 - 你的组织的资源，例如 Azure 上的应用程序，或公司网络资源。
 
@@ -138,7 +138,7 @@ Azure 提供下列 Azure 内置角色，用于使用 Azure AD 和 OAuth 授予�
 
 - [Azure Active Directory 中的标识安全分数是什么](../active-directory/fundamentals/identity-secure-score.md)
 
-- [使用 Azure AD 授予对 Azure 应用配置的访问权限](concept-enable-rbac.md)
+- [使用 Azure AD 授予对 Azure 应用程序配置的访问权限](concept-enable-rbac.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -146,13 +146,13 @@ Azure 提供下列 Azure 内置角色，用于使用 Azure AD 和 OAuth 授予�
 
 ### <a name="im-2-manage-application-identities-securely-and-automatically"></a>IM-2：安全且自动地管理应用程序标识
 
-**指南**：使用 azure 托管标识从非人工帐户（如其他 Azure 服务）访问 Azure 应用配置。 建议使用 Azure 托管标识功能（而不是创建功能更强大的人工帐户来访问或执行资源），以限制管理其他凭据的需求。 还可以向 Azure 应用配置分配托管标识本身，以对支持 Azure AD 身份验证的其他 Azure 服务/资源进行本机身份验证。 这可用于在检索机密时启用从应用配置到 Azure Key Vault 的轻松访问。 使用托管标识时，该标识由 Azure 平台托管，不需要你预配或轮换任何机密。
+**指导**：使用 Azure 托管标识从非人工帐户（如其他 Azure 服务）访问 Azure 应用程序配置。 建议使用 Azure 托管标识功能（而不是创建功能更强大的人工帐户来访问或执行资源），以限制管理其他凭据的需求。 还可以向 Azure 应用程序配置本身分配托管标识，以对支持 Azure AD 身份验证的其他 Azure 服务/资源进行原生身份验证。 这对于检索机密时从应用程序配置轻松访问 Azure Key Vault 非常有用。 使用托管标识时，该标识由 Azure 平台托管，不需要你预配或轮换任何机密。
 
-Azure 应用配置支持应用程序被授予两种类型的标识：
+Azure 应用程序配置支持向应用程序授予两种类型的标识：
 - 配置资源绑定了一个系统分配的标识。 如果删除配置资源，则标识将一并删除。 一个配置资源只能有一个系统分配的标识。
 - 用户分配的标识是可以分配给配置资源的独立 Azure 资源。 一个配置资源可以有多个用户分配的标识。
 
-如果无法利用托管标识，请在 Azure 应用配置资源级别创建具有受限权限的服务主体。 使用证书凭据配置这些服务主体，并仅回退到客户端机密。 在这两种情况下，都可以将 Azure Key Vault 与 Azure 托管标识结合使用，以便运行时环境（例如 Azure 函数）可以从密钥保管库中检索凭据。
+无法利用托管标识时，可以在 Azure 应用程序配置资源级别创建具有受限权限的服务主体。 使用证书凭据配置这些服务主体，并仅回退到客户端机密。 在这两种情况下，都可以将 Azure Key Vault 与 Azure 托管标识结合使用，以便运行时环境（例如 Azure 函数）可以从密钥保管库中检索凭据。
 
 - [如何将托管标识用于 Azure 应用程序配置](overview-managed-identity.md)
 
@@ -174,7 +174,7 @@ Azure 应用配置支持应用程序被授予两种类型的标识：
 
 ### <a name="im-3-use-azure-ad-single-sign-on-sso-for-application-access"></a>IM-3：使用 Azure AD 单一登录 (SSO) 进行应用程序访问
 
-**指南**： Azure 应用配置使用 Azure Active Directory (Azure AD) 提供对 Azure 资源、云应用程序和本地应用程序的标识和访问管理。 此内容包括企业标识（例如员工）以及外部标识（如合作伙伴和供应商）。 Azure AD 通过使用任何同步的企业 Active Directory 标识，启用单一登录 (SSO) 通过 Azure 门户来管理应用配置服务。 将所有用户、应用程序和设备连接到 Azure AD，实现无缝的安全访问和更好的可见性和控制。
+**指导**：Azure 应用程序配置使用 Azure Active Directory (Azure AD) 来提供对 Azure 资源、云应用程序和本地应用程序的标识和访问管理。 此内容包括企业标识（例如员工）以及外部标识（如合作伙伴和供应商）。 Azure AD 允许单一登录 (SSO) 使用任何同步的公司 Active Directory 标识通过 Azure 门户管理应用程序配置服务。 将所有用户、应用程序和设备连接到 Azure AD，实现无缝的安全访问和更好的可见性和控制。
 
 - [了解 Azure AD 的应用程序 SSO](../active-directory/manage-apps/what-is-single-sign-on.md)
 
@@ -184,13 +184,13 @@ Azure 应用配置支持应用程序被授予两种类型的标识：
 
 ### <a name="im-4-use-strong-authentication-controls-for-all-azure-active-directory-based-access"></a>IM-4：对所有基于 Azure Active Directory 的访问使用强身份验证控制
 
-**指南**： Azure 应用配置使用 Azure Active Directory，通过多重身份验证 (MFA) 和强无密码方法支持强身份验证控制。
+**指导**：Azure 应用程序配置使用 Azure Active Directory，后者支持通过多重身份验证 (MFA) 进行的强身份验证控制，并且支持强无密码方法。
 - 多重身份验证 - 启用 Azure AD MFA，并遵循 Azure 安全中心标识和访问管理建议，以获得 MFA 设置中的一些最佳做法。 可基于登录条件和风险因素，对所有用户、精选用户或在每用户级别强制执行 MFA。
 - 无密码身份验证 - 提供三个无密码身份验证选项：Windows Hello 企业版、Microsoft Authenticator 应用和本地身份验证方法（如智能卡）。
 
-对于管理员和特权用户，请确保使用的是最高级别的强身份验证方法，然后将相应的强身份验证策略推出给其他用户。
+对于管理员和特权用户，请确保使用最高级别的强身份验证方法，然后将相应的强身份验证策略推广到其他用户。
 
-注意：可以对访问和管理应用配置的用户帐户强制实施 MFA，而不是在编程服务帐户上执行。 尽可能使用无密码 authentication （如托管标识），并对任何用户帐户强制执行 MFA。
+注意：可以对访问和管理应用程序配置的用户帐户强制执行 MFA，但不能对编程服务帐户强制执行 MFA。 尽可能使用无密码身份验证（如托管标识），并对任何用户帐户强制执行 MFA。
 
 - [如何在 Azure 中启用 MFA](../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -202,7 +202,7 @@ Azure 应用配置支持应用程序被授予两种类型的标识：
 
 ### <a name="im-5-monitor-and-alert-on-account-anomalies"></a>IM-5：监视并提醒帐户异常
 
-**指南**： Azure 应用配置与 Azure Active Directory 集成，提供以下数据源：
+**指导**：Azure 应用程序配置与提供以下数据源的 Azure Active Directory 集成：
 
 -   登录 - 登录报告提供有关托管应用程序的使用情况和用户登录活动的信息。
 
@@ -240,7 +240,7 @@ Azure 高级威胁防护 (ATP) 是一种安全解决方案，可使用本地 Act
 
 ### <a name="im-6-restrict-azure-resource-access-based-on-conditions"></a>IM-6：基于条件限制 Azure 资源访问
 
-**指南**： Azure 应用配置支持 Azure Active Directory () Azure AD 基于用户定义的条件进行更精细的访问控制的条件性访问，如来自某些 IP 范围的用户登录需要使用 MFA 进行登录。 精细身份验证会话管理策略还可用于不同的用例。 这些条件访问策略仅适用于对 Azure AD 进行身份验证的用户帐户访问和管理应用配置服务，但不会应用于服务主体或连接到配置资源的连接字符串。
+**指导**：Azure 应用程序配置支持 Azure Active Directory (Azure AD) 条件访问，以实现基于用户定义的条件进行更精细的访问控制，例如，从特定 IP 范围登录的用户将需要使用 MFA 进行登录。 精细身份验证会话管理策略还可用于不同的用例。 这些条件访问策略仅适用于对 Azure AD 进行身份验证以访问和管理应用程序配置服务的用户帐户，但不适用于连接到配置资源的服务主体或连接字符串。
 
 - [Azure 条件访问概述](../active-directory/conditional-access/overview.md)
 
@@ -254,13 +254,13 @@ Azure 高级威胁防护 (ATP) 是一种安全解决方案，可使用本地 Act
 
 ### <a name="im-7-eliminate-unintended-credential-exposure"></a>IM-7：消除意外的凭据透露
 
-**指南**： Azure 应用配置允许客户存储可能包含标识或机密的配置。 建议实施凭据扫描器来识别配置中的凭据。 凭据扫描程序还会建议将发现的凭据转移到更安全的位置，例如 Azure Key Vault。
+**指导**：Azure 应用程序配置允许客户存储可能包含标识或机密的配置。 建议实现凭据扫描程序来识别配置中的凭据。 凭据扫描程序还会建议将发现的凭据转移到更安全的位置，例如 Azure Key Vault。
 
-将 Azure 应用配置服务与 Azure Key Vault 一起使用。 在 Key Vault 中存储任何凭据，并通过在应用配置资源中创建 Key Vault 引用来链接到这些凭据。 当应用配置创建这些引用时，它将存储 Key Vault 值的 Uri，而不是值本身。 应用程序可以连接到应用配置，以从 Key Vault 检索任何凭据。
+将 Azure 应用程序配置服务与 Azure Key Vault 配合使用。 在 Key Vault 中存储任何凭据，并通过在应用程序配置资源中创建 Key Vault 引用来链接到这些凭据。 当应用程序配置创建这些引用时，它会存储 Key Vault 值的 URI，而不是值本身。 应用程序可以连接到应用程序配置，从 Key Vault 检索任何凭据。
 
 对于 GitHub，你可以使用原生的机密扫描功能来识别代码中的凭据或其他形式的机密。
 
-- [在 ASP.NET Core 应用程序中使用 Key Vault 引用的教程](use-key-vault-references-dotnet-core.md)
+- [在 ASP.NET Core 应用中使用 Key Vault 引用的教程](use-key-vault-references-dotnet-core.md)
 
 - [如何设置凭据扫描程序](https://secdevtools.azurewebsites.net/helpcredscan.html)
 
@@ -276,13 +276,13 @@ Azure 高级威胁防护 (ATP) 是一种安全解决方案，可使用本地 Act
 
 ### <a name="pa-1-protect-and-limit-highly-privileged-users"></a>PA-1：保护和限制具有较高权限的用户
 
-**指南**：限制高特权帐户或角色的数量并在提升的级别保护这些帐户，因为具有此权限的用户可以直接或间接地读取和修改 Azure 环境中的每个资源。
+**指导**：请限制高特权帐户或角色的数量并在提升的级别保护这些帐户，因为具有此特权的用户可以直接或间接地读取和修改 Azure 环境中的每个资源。
 
 你可使用Azure AD Privileged Identity Management (PIM) 提供对 Azure 资源和 Azure AD 的实时 (JIT) 特权访问权限。 JIT 仅在用户需要执行特权任务时授予临时权限。 当 Azure AD 组织中存在可疑或不安全的活动时，PIM 还会生成安全警报。
 
-访问密钥具有很高的特权，应定期进行轮替，作为最佳安全方案。 访问密钥包含连接字符串，其中包含凭据信息，并被视为机密信息。 这些机密需要存储在 Azure Key Vault 中，你的代码必须向 Key Vault 进行身份验证才能检索这些机密。 访问密钥可授予对应用程序的读写或只读访问权限。 确保颁发了正确类型的访问密钥，以防止未经授权的访问。 若要提高安全性，请使用 Azure AD 中的托管标识功能。 这只要求应用程序具有访问配置值的配置终结点 URL。
+访问密钥具有很高的特权，作为一种安全最佳做法，应定期进行轮换。 访问密钥包含连接字符串，其中包含凭据信息，该信息被视为机密信息。 这些机密需要存储在 Azure Key Vault 中，你的代码必须向 Key Vault 进行身份验证才能检索这些机密。 访问密钥可授予对应用程序的读写或只读访问权限。 确保颁发正确类型的访问密钥，以防止未经授权的访问。 若要提高安全性，请使用 Azure AD 中的托管标识功能。 这只要求应用程序具有配置终结点 URL 来访问配置值。
 
-- [应用配置最佳实践](howto-best-practices.md#app-configuration-bootstrap)
+- [应用程序配置最佳做法](howto-best-practices.md#app-configuration-bootstrap)
 
 - [使用托管标识来访问应用程序配置](howto-integrate-azure-managed-service-identity.md)
 - [Azure AD 中的管理角色权限](../active-directory/roles/permissions-reference.md)
@@ -297,7 +297,7 @@ Azure 高级威胁防护 (ATP) 是一种安全解决方案，可使用本地 Act
 
 ### <a name="pa-2-restrict-administrative-access-to-business-critical-systems"></a>PA-2：限制对关键业务型系统的管理访问权限
 
-**指南**： Azure 应用配置使用 Azure RBAC 通过限制授予了特权访问权限的帐户来隔离对关键系统的访问。 资源级别的应用配置支持 Azure RBAC。 若要安全地将此信息存储在其自己的应用配置资源中，请将此信息存储在其自身的 在资源中，也可以通过只读访问帐户或密钥，以及标记和标记来使用粒度访问。
+**指导**：Azure 应用程序配置使用 Azure RBAC 通过限制向哪些帐户授予特权访问权限来隔离对业务关键型系统的访问。 Azure RBAC 在资源级别受应用程序配置支持。 若要安全地隔离业务关键型配置，请将此信息存储在其自身的应用程序配置资源中。 在资源中，也可以通过只读访问帐户或密钥以及标签和标记来进行精细访问。
 
 所有类型的访问控制都应符合企业分段策略，确保访问控制保持一致。
 
@@ -305,7 +305,7 @@ Azure 高级威胁防护 (ATP) 是一种安全解决方案，可使用本地 Act
 
 - [Azure 订阅管理员](../cost-management-billing/manage/add-change-subscription-administrator.md)
 
-- [使用 Azure AD 与应用配置集成 RBAC](concept-enable-rbac.md)
+- [使用 Azure AD 将 RBAC 与应用程序配置集成](concept-enable-rbac.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -313,23 +313,23 @@ Azure 高级威胁防护 (ATP) 是一种安全解决方案，可使用本地 Act
 
 ### <a name="pa-3-review-and-reconcile-user-access-regularly"></a>PA-3：定期审查和协调用户访问权限
 
-**指南**： Azure 应用配置使用 Azure Active Directory (Azure AD) 帐户来管理其资源、定期查看用户帐户和访问分配，以确保帐户及其访问有效。 
+**指导**：Azure 应用程序配置使用 Azure Active Directory (Azure AD) 帐户来定期管理其资源、审阅用户帐户和访问权限分配，以确保帐户及其访问权限有效。 
 
 Azure 提供下列 Azure 内置角色，用于使用 Azure AD 和 OAuth 授予对应用程序配置数据的访问权限：
 
 - 应用程序配置数据所有者：使用此角色授予对应用程序配置数据的读取/写入/删除访问权限。 这不会授予对应用程序配置资源的访问权限。
 
-- 应用程序配置数据读取者：使用此角色授予对应用程序配置数据的读取访问权限。 这不会授予对应用配置资源的访问权限
+- 应用程序配置数据读取者：使用此角色授予对应用程序配置数据的读取访问权限。 这不会授予对应用程序配置资源的访问权限
 
-你可以使用 Azure AD 访问评审来查看组成员身份、对企业应用程序的访问权限和角色分配，如上述应用配置角色。 Azure AD 报告提供日志来帮助发现过时的帐户。 你还可使用 Azure AD Privileged Identity Management 来创建访问评审报表工作流以便于执行评审。
+可使用 Azure AD 访问评审来审查组成员身份、对企业应用程序的访问权限和角色分配，如上述应用程序配置角色。 Azure AD 报告提供日志来帮助发现过时的帐户。 你还可使用 Azure AD Privileged Identity Management 来创建访问评审报表工作流以便于执行评审。
 
-注意：建议在可能的情况下，从其他服务或应用程序对应用配置进行身份验证。 使用时，你将需要管理配置有权访问应用配置的任何服务主体或连接字符串。
+注意：如果可能，建议使用托管标识从其他服务或应用程序对应用程序配置进行身份验证。 使用时，你将需要分别管理配置有应用程序配置访问权限的任何服务主体或连接字符串。
 
 - [在 Privileged Identity Management (PIM) 中创建对 Azure 资源角色的访问评审](../active-directory/privileged-identity-management/pim-resource-roles-start-access-review.md) 
 
 - [如何使用 Azure AD 标识和访问评审](../active-directory/governance/access-reviews-overview.md)
 
-- [使用 Azure AD 授予对 Azure 应用配置的访问权限](concept-enable-rbac.md)
+- [使用 Azure AD 授予对 Azure 应用程序配置的访问权限](concept-enable-rbac.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -337,7 +337,7 @@ Azure 提供下列 Azure 内置角色，用于使用 Azure AD 和 OAuth 授予�
 
 ### <a name="pa-4-set-up-emergency-access-in-azure-ad"></a>PA-4：在 Azure AD 中设置紧急访问
 
-**指南**： Azure 应用配置与 Azure Active Directory 集成，以管理其资源。 为了防止意外退出 Azure AD 组织，请设置一个紧急访问帐户，以便在正常管理帐户无法使用时进行访问。 紧急访问帐户通常拥有较高的权限，因此请不要将其分配给特定的个人。 紧急访问帐户只能用于“不受限”紧急情况，即不能使用正常管理帐户的情况。
+**指导**：Azure 应用程序配置已与 Azure Active Directory 集成，以管理其资源。 为了防止意外退出 Azure AD 组织，请设置一个紧急访问帐户，以便在正常管理帐户无法使用时进行访问。 紧急访问帐户通常拥有较高的权限，因此请不要将其分配给特定的个人。 紧急访问帐户只能用于“不受限”紧急情况，即不能使用正常管理帐户的情况。
 
 应确保妥善保管紧急访问帐户的凭据（例如密码、证书或智能卡），仅将其告诉只能在紧急情况下有权使用它们的个人。
 
@@ -349,7 +349,7 @@ Azure 提供下列 Azure 内置角色，用于使用 Azure AD 和 OAuth 授予�
 
 ### <a name="pa-5-automate-entitlement-management"></a>PA-5：将权利管理自动化 
 
-**指南**： Azure 应用配置与 Azure Active Directory 集成，以管理其资源。 使用 Azure AD 的权利管理功能可自动执行访问请求工作流，包括访问权限分配、审查和过期。 还支持两阶段或多阶段审批。
+**指导**：Azure 应用程序配置已与 Azure Active Directory 集成，以管理其资源。 使用 Azure AD 的权利管理功能可自动执行访问请求工作流，包括访问权限分配、审查和过期。 还支持两阶段或多阶段审批。
 
 - [什么是 Azure AD 访问评审](../active-directory/governance/access-reviews-overview.md)
 
@@ -361,7 +361,7 @@ Azure 提供下列 Azure 内置角色，用于使用 Azure AD 和 OAuth 授予�
 
 ### <a name="pa-6-use-privileged-access-workstations"></a>PA-6：使用特权访问工作站
 
-**指导**：安全的独立工作站对于确保敏感角色（如管理员、开发人员和关键服务操作员）的安全至关重要。 对于与应用程序配置相关的管理任务，使用高度安全的用户工作站和/或 Azure 堡垒。 使用 Azure Active Directory、Microsoft Defender 高级威胁防护 (ATP) 和/或 Microsoft Intune 部署安全的托管用户工作站，用于执行管理任务。 可通过集中管理安全的工作站来强制实施安全配置，包括强身份验证、软件和硬件基线、受限的逻辑和网络访问。
+**指导**：安全的独立工作站对于确保敏感角色（如管理员、开发人员和关键服务操作员）的安全至关重要。 使用高度安全的用户工作站和/或 Azure Bastion 执行与应用程序配置相关的管理任务。 使用 Azure Active Directory、Microsoft Defender 高级威胁防护 (ATP) 和/或 Microsoft Intune 部署安全的托管用户工作站，用于执行管理任务。 可通过集中管理安全的工作站来强制实施安全配置，包括强身份验证、软件和硬件基线、受限的逻辑和网络访问。
 
 - [了解特权访问工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/) 
 
@@ -373,7 +373,7 @@ Azure 提供下列 Azure 内置角色，用于使用 Azure AD 和 OAuth 授予�
 
 ### <a name="pa-7-follow-just-enough-administration-least-privilege-principle"></a>PA-7：遵循 Just Enough Administration（最小特权原则） 
 
-**指南**： Azure 应用配置与 Azure 基于角色的访问控制集成 (RBAC) 管理其资源。 使用 Azure RBAC，可通过角色分配来管理 Azure 资源访问。 可以将这些角色分配给用户、组服务主体和托管标识。 Azure 应用配置有预定义的内置角色，可以通过 Azure CLI、Azure PowerShell 或 Azure 门户等工具来清点或查询这些角色。 通过 Azure RBAC 分配给资源的特权应始终限制为角色所需的特权。 这是对 Azure AD Privileged Identity Management (PIM) 的实时 (JIT) 方法的补充，应定期进行审查。
+**指导**：Azure 应用程序配置已与 Azure 基于角色的访问控制 (RBAC) 集成，以管理其资源。 使用 Azure RBAC，可通过角色分配来管理 Azure 资源访问。 可以将这些角色分配给用户、组服务主体和托管标识。 Azure 应用程序配置具有预定义的内置角色，可以通过工具（例如 Azure CLI、Azure PowerShell 或 Azure 门户）来清点或查询这些角色。 通过 Azure RBAC 分配给资源的特权应始终限制为角色所需的特权。 这是对 Azure AD Privileged Identity Management (PIM) 的实时 (JIT) 方法的补充，应定期进行审查。
 
 Azure 提供下列 Azure 内置角色，用于使用 Azure AD 和 OAuth 授予对应用程序配置数据的访问权限：
 - 应用程序配置数据所有者：使用此角色授予对应用程序配置数据的读取/写入/删除访问权限。 这不会授予对应用程序配置资源的访问权限。
@@ -381,7 +381,7 @@ Azure 提供下列 Azure 内置角色，用于使用 Azure AD 和 OAuth 授予�
 
 请使用内置角色来分配权限，仅在必要时创建自定义角色。 
 
-应用配置支持在一个应用配置资源中存储多个应用程序的配置。 若要限制应用程序之间的信息访问，请为每个应用程序创建一个应用配置资源，并相应地设置 Azure RBAC。
+应用程序配置支持在一个应用程序配置资源中存储多个应用程序的配置。 若要限制应用程序之间的信息访问，请为每个应用程序创建一个应用程序配置资源，并相应地设置 Azure RBAC。
 
 - [什么是 Azure 基于角色的访问控制 (Azure RBAC)](../role-based-access-control/overview.md)
 
@@ -389,7 +389,7 @@ Azure 提供下列 Azure 内置角色，用于使用 Azure AD 和 OAuth 授予�
 
 - [如何使用 Azure AD 标识和访问评审](../active-directory/governance/access-reviews-overview.md)
 
-- [使用 Azure AD 授予对 Azure 应用配置的访问权限](concept-enable-rbac.md)
+- [使用 Azure AD 授予对 Azure 应用程序配置的访问权限](concept-enable-rbac.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -397,7 +397,7 @@ Azure 提供下列 Azure 内置角色，用于使用 Azure AD 和 OAuth 授予�
 
 ### <a name="pa-8-choose-approval-process-for-microsoft-support"></a>PA-8：选择 Microsoft 支持的批准流程  
 
-**指南**：对 Microsoft 可能需要访问应用配置数据的支持方案实施组织审批流程。 客户密码箱当前不适用于应用配置支持方案。
+**指南**：对 Microsoft 可能需要访问应用配置数据的支持方案实施组织审批流程。 客户密码箱当前不适用于应用程序配置支持场景。
 
 **Azure 安全中心监视**：不适用
 
@@ -421,15 +421,15 @@ Azure 提供下列 Azure 内置角色，用于使用 Azure AD 和 OAuth 授予�
 
 ### <a name="dp-2-protect-sensitive-data"></a>DP-2：保护敏感数据
 
-**指南**：对于由 microsoft 管理的底层平台，microsoft 将所有客户内容视为敏感数据，并防范客户数据丢失和公开。 为了确保 Azure 中的客户数据始终安全，Microsoft 实施了一些默认的数据保护控制机制和功能。 确保定期将访问密钥轮换到应用配置资源。 连接字符串中的凭据信息可以存储在 Azure Key Vault 中，你的代码必须通过身份验证才能 Key Vault 检索它们。 访问密钥可授予对应用程序的读写或只读访问权限。 确保颁发了正确类型的访问密钥，以防止未经授权的访问。 若要提高安全性，请使用 Azure AD 中的托管标识功能。 这只要求应用程序具有访问配置值的配置终结点 URL。
+**指南**：对于由 microsoft 管理的底层平台，microsoft 将所有客户内容视为敏感数据，并防范客户数据丢失和公开。 为了确保 Azure 中的客户数据始终安全，Microsoft 实施了一些默认的数据保护控制机制和功能。 确保定期将访问密钥轮换到应用程序配置资源。 连接字符串中的凭据信息可以存储在 Azure Key Vault 中，你的代码必须向 Key Vault 进行身份验证才能检索这些机密。 访问密钥可授予对应用程序的读写或只读访问权限。 确保颁发正确类型的访问密钥，以防止未经授权的访问。 若要提高安全性，请使用 Azure AD 中的托管标识功能。 这只要求应用程序具有配置终结点 URL 来访问配置值。
 
-使用 azure RBAC)  (基于角色的访问控制来限制访问权限：
+使用 Azure 基于角色的访问控制 (Azure RBAC) 限制访问：
 
-- 将敏感数据分隔到其自己的应用配置资源中，并相应地分配 RBAC 策略，以便仅启用授权的访问 
+- 将敏感数据分隔到其本身的应用程序配置资源中，并相应地分配 RBAC 策略，以便仅启用授权的访问 
 
 - 使用基于网络的访问控制
 
-- Azure 服务中的特定控件 (例如 SQL 中的加密和其他数据库) 并确保一致的访问控制，所有类型的访问控制都应该与企业分段策略一致。
+- Azure 服务中的特定控件（例如 SQL 和其他数据库中的加密）并确保一致的访问控制，所有类型的访问控制都应与企业分段策略保持一致。
 
 - 企业分段策略还应根据敏感的或业务关键型的数据和系统的位置来确定。
 
@@ -437,7 +437,7 @@ Azure 提供下列 Azure 内置角色，用于使用 Azure AD 和 OAuth 授予�
 
 - [使用 Azure Active Directory 授予对 Azure 应用程序配置的访问权限](concept-enable-rbac.md)
 
-- [应用配置数据加密](faq.md#does-app-configuration-encrypt-my-data)
+- [应用程序配置数据加密](faq.yml#does-app-configuration-encrypt-my-data)
 
 - [Azure 基于角色的访问控制 (RBAC)](../role-based-access-control/overview.md) 
 
@@ -449,9 +449,9 @@ Azure 提供下列 Azure 内置角色，用于使用 Azure AD 和 OAuth 授予�
 
 ### <a name="dp-4-encrypt-sensitive-information-in-transit"></a>DP-4：加密传输中的敏感信息
 
-**指南**：若要补充访问控制，应使用加密对传输中的数据进行防止 "带外" 攻击。 这有助于确保攻击者无法轻松读取或修改数据。
+**指导**：为了对访问控制进行补充，应使用加密保护传输中的数据，以免遭受“带外”攻击。 这有助于确保攻击者无法轻松读取或修改数据。
 
-Azure 应用配置对所有 HTTP 请求使用 TLS 加密。 Azure 基础结构为 Azure 数据中心之间的所有请求提供了额外的网络级别的加密层。 确保连接到应用配置资源的任何客户端都可以协商 TLS 1.2 或更高版本的 HTTP 流量。
+Azure 应用程序配置对所有 HTTP 请求使用 TLS 加密。 Azure 基础结构为 Azure 数据中心之间的所有请求提供额外的网络级加密层。 对于 HTTP 流量，请确保连接到应用程序配置资源的任何客户端都能协商 TLS v1.2 或更高版本。
 
 **Azure 安全中心监视**：不适用
 
@@ -459,11 +459,11 @@ Azure 应用配置对所有 HTTP 请求使用 TLS 加密。 Azure 基础结构�
 
 ### <a name="dp-5-encrypt-sensitive-data-at-rest"></a>DP-5：加密静态敏感数据
 
-**指南**：若要补充访问控制，应防止静态数据受到 "带外" 的攻击， (例如使用加密访问基础存储) 。 这有助于确保攻击者无法轻松读取或修改数据。
+**指导**：为了对访问控制进行补充，应使用加密保护静态数据，以免遭受“带外”攻击（例如访问底层存储）。 这有助于确保攻击者无法轻松读取或修改数据。
 
-默认情况下，Azure 提供静态数据加密。 对于高度敏感的数据，你可以选择在所有可用的 Azure 资源上进行额外的静态加密。 默认情况下，azure 会管理你的加密密钥，但 Azure 提供选项来管理你自己的密钥 (客户管理的密钥) 用于 Azure 应用配置。
+默认情况下，Azure 提供静态数据加密。 对于高度敏感的数据，你可以选择在所有可用的 Azure 资源上进行额外的静态加密。 默认情况下，Azure 管理你的加密密钥，但是 Azure 为 Azure 应用程序配置提供了管理你自己的密钥（客户管理的密钥）的选项。
 
-- [使用客户托管密钥在 Azure 应用配置中加密数据](concept-customer-managed-keys.md)
+- [使用客户管理的密钥在 Azure 应用程序配置中加密数据](concept-customer-managed-keys.md)
 
 - [了解 Azure 中的静态加密](../security/fundamentals/encryption-atrest.md#encryption-at-rest-in-microsoft-cloud-services) 
 
@@ -499,9 +499,9 @@ Azure 应用配置对所有 HTTP 请求使用 TLS 加密。 Azure 基础结构�
 
 ### <a name="am-2-ensure-security-team-has-access-to-asset-inventory-and-metadata"></a>AM-2：确保安全团队有权访问资产清单和元数据
 
-**指南**：确保安全团队有权访问 Azure 上不断更新的资产清单，如 Azure 应用配置。 安全团队通常需要此清单，以评估其组织遭遇新兴风险的可能性，并根据它不断提高安全性。 创建一个 Azure Active Directory 组，使其包含组织的授权安全团队，并向他们分配对所有 Azure 应用配置资源的读取访问权限，可以通过订阅中的单个高级角色分配简化。
+**指导**：确保安全团队有权访问 Azure 上持续更新的资产清单，如 Azure 应用程序配置。 安全团队通常需要此清单，以评估其组织遭遇新兴风险的可能性，并根据它不断提高安全性。 创建一个 Azure Active Directory 组以包含组织的授权安全团队，并向他们分配对所有 Azure 应用程序配置资源的读取访问权限，这可以通过在订阅中分配单个高级角色来简化。
 
-Azure 安全中心清单功能和 Azure 资源图可查询和发现订阅中的所有资源，包括 Azure 服务、应用程序和网络资源。
+Azure 安全中心清单功能和 Azure Resource Graph 可以查询和发现订阅中的所有资源，包括 Azure 服务、应用程序和网络资源。
 
 将标记应用到 Azure 资源、资源组和订阅，以便有条理地将它们组织成分类。 每个标记均由名称和值对组成。 例如，可以对生产中的所有资源应用名称“Environment”和值“Production”。
 
@@ -517,7 +517,7 @@ Azure 安全中心清单功能和 Azure 资源图可查询和发现订阅中的�
 
 ### <a name="am-3-use-only-approved-azure-services"></a>AM-3：仅使用已批准的 Azure 服务
 
-**指南**： Azure 应用配置使用 azure 策略支持基于 azure 资源管理器的部署和配置强制。 请使用 Azure Policy 来审核和限制用户可以在你的环境中预配哪些服务。 使用 Azure Resource Graph 查询和发现订阅中的资源。 你也可以使用 Azure Monitor 来创建规则，以便在检测到未经批准的服务时触发警报。
+**指导**：Azure 应用程序配置使用 Azure Policy 支持基于 Azure 资源管理器的部署和配置强制执行。 请使用 Azure Policy 来审核和限制用户可以在你的环境中预配哪些服务。 使用 Azure Resource Graph 查询和发现订阅中的资源。 你也可以使用 Azure Monitor 来创建规则，以便在检测到未经批准的服务时触发警报。
 
 - [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
@@ -535,7 +535,7 @@ Azure 安全中心清单功能和 Azure 资源图可查询和发现订阅中的�
 
 如果不再需要 Azure 资源，请将其删除。 确保管理员定期轮换访问密钥，以确保只有经过身份验证的用户才能访问其配置资源。
 
-- [旋转用于应用程序配置的加密密钥](concept-customer-managed-keys.md)
+- [轮换用于应用程序配置的加密密钥](concept-customer-managed-keys.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -557,25 +557,25 @@ Azure 安全中心清单功能和 Azure 资源图可查询和发现订阅中的�
 
 ### <a name="lt-2-enable-threat-detection-for-azure-identity-and-access-management"></a>LT-2：启用 Azure 标识和访问管理的威胁检测
 
-**指南**：应用配置与 Azure Active Directory (Azure AD) 集成。 这提供了以下用户日志，可以在 Azure AD reporting 中查看或与 Azure Monitor、Azure Sentinel 或其他 SIEM/监视工具进行集成，以实现更复杂的监视和分析用例：
+**指导**：应用程序配置与 Azure Active Directory (Azure AD) 集成。 这提供以下用户日志，可在 Azure AD 报表中进行查看，也可将这些日志与 Azure Monitor、Azure Sentinel 或其他 SIEM/监视工具集成，以用于更复杂的监视和分析用例：
 - 登录 - 登录报告提供有关托管应用程序的使用情况和用户登录活动的信息。
 - 审核日志 - 通过日志为 Azure AD 中的各种功能所做的所有更改提供可跟踪性。 审核日志的示例包括对 Azure AD 中的任何资源（例如添加或删除用户、应用、组、角色和策略）所做的更改。
 - 风险登录 - 风险登录是指可能由非用户帐户合法拥有者进行的登录尝试。
 - 已标记为存在风险的用户 - 风险用户是指可能已泄露的用户帐户。
 
-Azure 安全中心还可针对某些可疑活动发出警报，例如，失败的身份验证尝试次数过多，使用了订阅中的已弃用帐户。 除了基本的安全卫生监视，Azure 安全中心的威胁防护模块还可以收集 Azure 服务层的更深入安全警报。 可通过此功能查看各个资源内的帐户异常情况。
+Azure 安全中心还可针对某些可疑活动发出警报，例如，失败的身份验证尝试次数过多，使用了订阅中的已弃用帐户。 除了基本的安全机制监视，Azure 安全中心的威胁防护模块还可以收集 Azure 服务层的更深入安全警报。 可通过此功能查看各个资源内的帐户异常情况。
 
-获取对应用配置配置资源的访问权限的另一种方法是使用访问密钥。 需要定期轮替这些要求，以确保未授权的代理获得配置资源的访问权限。 可以在门户中的 "访问密钥" 下直接进行轮换。
+获取对应用程序配置配置资源的访问权限的另一种方法是使用访问密钥。 需要定期轮换这些密钥，以确保未授权的代理获得对配置资源的访问权限。 可以在门户中的“访问密钥”下直接进行轮换。
 
-- [允许 Azure 应用配置使用托管标识访问其他 Azure AD 受保护的资源](overview-managed-identity.md)
+- [允许 Azure 应用程序配置使用托管标识访问其他 Azure AD 受保护的资源](overview-managed-identity.md)
 
-- [将托管标识用于 Azure 应用配置](howto-integrate-azure-managed-service-identity.md)
+- [将托管标识用于 Azure 应用程序配置](howto-integrate-azure-managed-service-identity.md)
 
 - [Azure Active Directory 中的“审核活动”报表](../active-directory/reports-monitoring/concept-audit-logs.md)
 
 - [启用 Azure 标识保护](../active-directory/identity-protection/overview-identity-protection.md)
 
-- [使用 Azure AD 授权对 Azure 应用配置的访问](concept-enable-rbac.md)
+- [使用 Azure AD 授予对 Azure 应用程序配置的访问权限](concept-enable-rbac.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -583,9 +583,9 @@ Azure 安全中心还可针对某些可疑活动发出警报，例如，失败�
 
 ### <a name="lt-3-enable-logging-for-azure-network-activities"></a>LT-3：为 Azure 网络活动启用日志记录
 
-**指南**： Azure 应用配置不会直接将任何资源部署到虚拟网络。 但是，应用配置允许你使用专用终结点安全地连接到虚拟网络中的 Azure 应用配置。 Azure 应用配置也不会生成或处理需要启用的 DNS 查询日志。
+**指导**：Azure 应用程序配置不会将任何资源直接部署到虚拟网络。 但是，应用程序配置允许你使用专用终结点从虚拟网络安全地连接到 Azure 应用程序配置。 Azure 应用程序配置也不会生成或处理那些需要启用的 DNS 查询日志。
 
-在配置的应用配置专用终结点上启用日志记录，以捕获：
+在配置的应用程序配置专用终结点上启用日志记录，以捕获：
 - 专用终结点处理的数据（传入/传出）
 - 专用链接服务处理的数据（传入/传出）
 - NAT 端口可用性
@@ -600,7 +600,7 @@ Azure 安全中心还可针对某些可疑活动发出警报，例如，失败�
 
 ### <a name="lt-4-enable-logging-for-azure-resources"></a>LT-4：为 Azure 资源启用日志记录
 
-**指南**：自动可用的活动日志包含对应用配置资源 (PUT、POST、DELETE) 的所有写入操作，但读取操作 (获取) 。 活动日志可用于在进行故障排除时查找错误，或监视组织中的用户如何对资源进行修改。 对于应用配置，活动日志仅在控制平面上可用，并由 Azure 资源管理器 (ARM) 出现。 目前不支持面向客户的应用配置日志记录。 还不能配置 Azure 资源日志。
+**指导**：自动可用的活动日志包含针对应用程序配置资源的所有写入操作（PUT、POST、DELETE），但读取操作 (GET) 除外。 活动日志可用于在进行故障排除时查找错误，或监视组织中的用户如何对资源进行修改。 对于应用程序配置，活动日志仅可用于控制平面，并由 Azure 资源管理器 (ARM) 显示。 目前不支持面向客户的应用程序配置的数据平面日志记录。 也不能配置 Azure 资源日志。
 
 - [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/platform/diagnostic-settings.md)
 
@@ -628,7 +628,7 @@ Azure 安全中心还可针对某些可疑活动发出警报，例如，失败�
 
 ### <a name="lt-6-configure-log-storage-retention"></a>LT-6：配置日志存储保留期
 
-**指南**：确保用于存储应用配置日志的任何存储帐户或 Log Analytics 工作区的日志保留期都已根据组织的符合性规定进行了设置。 将 Azure 存储、Data Lake 或 Log Analytics 工作区帐户用于长期存储和存档存储。
+**指导**：确保用于存储应用程序配置日志的所有存储帐户或 Log Analytics 工作区都根据组织的合规性规定设置了日志保留期。 将 Azure 存储、Data Lake 或 Log Analytics 工作区帐户用于长期存储和存档存储。
 
 在 Azure Monitor 中，可根据组织的合规性规则设置 Log Analytics 工作区保持期。
 
@@ -750,11 +750,11 @@ Azure 安全中心为每条警报分配严重性，方便你根据优先级来�
 
 ### <a name="pv-1-establish-secure-configurations-for-azure-services"></a>PV-1：为所有 Azure 服务建立安全配置 
 
-**指南**： Azure 应用配置支持 Azure 安全中心提供的以下特定于服务的策略，用于审核和强制执行 azure 资源的配置。 这可以在 Azure 安全中心或 Azure 策略计划中进行配置。
-- 应用配置应使用客户管理的密钥：通过允许管理加密密钥，客户管理的密钥提供增强的数据保护。 这通常是满足合规性要求所必需的。
-- 应用配置应使用专用链接：专用终结点连接允许虚拟网络上的客户端通过专用链接安全访问 Azure 应用配置。
+**指导**：Azure 应用程序配置支持 Azure 安全中心提供的以下特定于服务的策略，用于审核和强制执行 Azure 资源的配置。 这可以在 Azure 安全中心或 Azure Policy 计划中进行配置。
+- 应用程序配置应使用客户管理的密钥：客户管理的密钥可便于管理加密密钥，从而提供增强的数据保护。 这通常是满足合规性要求所必需的。
+- 应用程序配置应使用专用链接：借助专用终结点连接，虚拟网络上的客户端可以通过专用链接安全地访问 Azure 应用程序配置。
 
-可以在单个蓝图定义中使用 Azure 蓝图自动部署和配置服务和应用程序环境，包括 Azure 资源管理器模板、Azure RBAC 控件和策略。
+你可以使用 Azure 蓝图，在单个蓝图定义中自动部署和配置服务和应用程序环境，包括 Azure 资源管理器模板、Azure RBAC 控制措施和策略。
 
 - [有关应用配置策略的详细信息](../governance/policy/samples/built-in-policies.md#app-configuration)
 
@@ -772,9 +772,9 @@ Azure 安全中心为每条警报分配严重性，方便你根据优先级来�
 
 ### <a name="pv-2-sustain-secure-configurations-for-azure-services"></a>PV-2：为所有 Azure 服务维护安全配置
 
-**指南**：使用 Azure 安全中心监视配置基线，并强制使用 Azure 策略。 适用于应用配置的 Azure 策略包括： 
-- 应用配置应使用客户管理的密钥：通过允许管理加密密钥，客户管理的密钥提供增强的数据保护。 这通常是满足合规性要求所必需的。
-- 应用配置应使用专用链接：专用终结点连接允许虚拟网络上的客户端通过专用链接安全访问 Azure 应用配置。
+**指导**：使用 Azure 安全中心监视配置基线，并强制使用 Azure Policy。 适用于应用程序配置的 Azure Policy 包括： 
+- 应用程序配置应使用客户管理的密钥：客户管理的密钥可便于管理加密密钥，从而提供增强的数据保护。 这通常是满足合规性要求所必需的。
+- 应用程序配置应使用专用链接：借助专用终结点连接，虚拟网络上的客户端可以通过专用链接安全地访问 Azure 应用程序配置。
 
 - [了解 Azure Policy 效果](../governance/policy/concepts/effects.md) 
 

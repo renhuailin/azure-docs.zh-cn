@@ -1,14 +1,14 @@
 ---
 title: 大规模监视委托的资源
 description: 了解如何在你管理的客户租户之间以可伸缩方式有效地使用 Azure Monitor 日志。
-ms.date: 02/02/2021
+ms.date: 02/11/2021
 ms.topic: how-to
-ms.openlocfilehash: 8847c2e5ee4986d35ad676440720b150794003e8
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: f3a789c855f7b05d24cdacd0fb31ee7d6d3e188b
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99575900"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100379227"
 ---
 # <a name="monitor-delegated-resources-at-scale"></a>大规模监视委托的资源
 
@@ -65,7 +65,6 @@ alertsmanagementresources
 
 ## <a name="next-steps"></a>后续步骤
 
+- 尝试使用 GitHub 上的域工作簿的 [活动日志](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/workbook-activitylogs-by-domain) 。
 - 探索这 [一通过 MVP 构建的示例工作簿](https://github.com/scautomation/Azure-Automation-Update-Management-Workbooks)，通过在多个 Log Analytics 工作区中 [查询更新管理日志](../../automation/update-management/query-logs.md) 来跟踪修补程序相容性报告。 
-- 了解有关 [Azure Monitor](../../azure-monitor/index.yml) 的信息。
-- 了解 [Azure Monitor 日志](../../azure-monitor/platform/data-platform-logs.md)。
-- 了解[跨租户管理体验](../concepts/cross-tenant-management-experience.md)。
+- 了解其他 [跨租户管理体验](../concepts/cross-tenant-management-experience.md)。

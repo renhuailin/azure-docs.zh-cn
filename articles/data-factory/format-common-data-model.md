@@ -1,59 +1,58 @@
 ---
 title: Common Data Model 格式
-description: 使用通用数据模型元数据系统转换数据
+description: 使用 Common Data Model 元数据系统转换数据
 author: kromerm
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/04/2021
 ms.author: makromer
-ms.openlocfilehash: a08457ba041fa39fda367976498a4a89930c56e3
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 45f5334ebee3365c17bfa52c8d47ed75b82bdfa1
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99585154"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387693"
 ---
-# <a name="common-data-model-format-in-azure-data-factory"></a>Azure 数据工厂中的通用数据模型格式
+# <a name="common-data-model-format-in-azure-data-factory"></a>Azure 数据工厂中的 Common Data Model 格式
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-通用数据模型 (CDM) 元数据系统使数据及其含义能够在应用程序和业务流程之间轻松共享。 若要了解详细信息，请参阅 [通用数据模型](/common-data-model/) 概述。
+Common Data Model (CDM) 元数据系统可以轻松地在应用程序和业务流程之间共享数据及其含义。 若要了解详细信息，请参阅 [Common Data Model](/common-data-model/) 概述。
 
-在 Azure 数据工厂中，用户可以使用映射数据流从存储在 [Azure Data Lake Store Gen2](connector-azure-data-lake-storage.md) (ADLS Gen2) 中的 model.js和清单窗体上转换 CDM 实体中的数据。 你还可以使用 CDM 实体引用来传入 CDM 格式的数据，这些实体引用将以 CSV 或 Parquet 格式将数据置于分区文件夹中。 
+在 Azure 数据工厂中，用户可以使用映射数据流，转换 [Azure Data Lake Store Gen2](connector-azure-data-lake-storage.md) (ADLS Gen2) 中存储的 model.json 和清单格式的 CDM 实体数据。 还可以使用 CDM 实体引用接收 CDM 格式数据，这些引用会以 CSV 或 Parquet 格式将数据保存在分区文件夹中。 
 
 ## <a name="mapping-data-flow-properties"></a>映射数据流属性
 
-通用数据模型作为 [内联数据集](data-flow-source.md#inline-datasets) 提供，同时将数据流映射为源和接收器。
+Common Data Model 作为映射数据流中的[内联数据集](data-flow-source.md#inline-datasets)提供，同时用作源和接收器。
 
 > [!NOTE]
-> 在编写 CDM 的实体时，必须已将) 定义为用作参考的现有 CDM 实体定义 (元数据架构。 ADF 数据流接收器将读取该 CDM 实体文件，并将该架构导入到接收器中以便进行字段映射。
+> 在编写 CDM 实体时，必须有一个已定义的现有 CDM 实体定义（元数据架构）作为参考。 ADF 数据流接收器将读取该 CDM 实体文件，并将架构导入到接收器中进行字段映射。
 
 ### <a name="source-properties"></a>源属性
 
-下表列出了 CDM 源支持的属性。 可以在 " **源选项** " 选项卡中编辑这些属性。
+下表列出了 CDM 源支持的属性。 你可以在“源选项”选项卡中编辑这些属性。
 
-| 名称 | 说明 | 必须 | 允许的值 | 数据流脚本属性 |
+| 名称 | 说明 | 必需 | 允许的值 | 数据流脚本属性 |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | 格式 | 格式必须为 `cdm` | 是 | `cdm` | format |
-| 元数据格式 | 数据实体引用所在的位置。 如果使用 CDM 版本1.0，则选择 "清单"。 如果使用1.0 之前的 CDM 版本，请选择 "model.js打开"。 | 是 | `'manifest'` 或 `'model'` | manifestType |
+| 元数据格式 | 对数据的实体引用所在的位置。 如果使用的是 CDM 版本 1.0，请选择清单。 如果使用的是 1.0 之前的 CDM 版本，请选择 model.json。 | 是 | `'manifest'` 或 `'model'` | manifestType |
 | 根位置：容器 | CDM 文件夹的容器名称 | 是 | 字符串 | fileSystem |
 | 根位置：文件夹路径 | CDM 文件夹的根文件夹位置 | 是 | 字符串 | folderPath |
 | 清单文件：实体路径 | 根文件夹中实体的文件夹路径 | 否 | 字符串 | entityPath |
-| 清单文件：清单名称 | 清单文件的名称。 默认值为 "default"  | 否 | 字符串 | manifestName |
-| 按上次修改时间筛选 | 选择根据文件上次更改时间筛选文件 | 否 | 时间戳 | ModifiedAfter <br> modifiedBefore | 
-| 架构链接的服务 | 语料库所在的链接服务 | 是，如果使用清单 | `'adlsgen2'` 或 `'github'` | corpusStore | 
-| 实体引用容器 | 容器语料库处于 | 是，如果在 ADLS Gen2 中使用清单和语料库 | 字符串 | adlsgen2_fileSystem |
-| 实体引用存储库 | GitHub 存储库名称 | 是，如果使用 GitHub 中的清单和语料库 | 字符串 | github_repository |
-| 实体引用分支 | GitHub 存储库分支 | 是，如果使用 GitHub 中的清单和语料库 | 字符串 |  github_branch |
-| 语料库文件夹 | 语料库的根位置 | 是，如果使用清单 | 字符串 | corpusPath |
+| 清单文件：清单名称 | 清单文件名称。 默认值为“default”  | 否 | 字符串 | manifestName |
+| 按上次修改时间筛选 | 选择根据文件上次更改的时间筛选文件 | 否 | 时间戳 | ModifiedAfter <br> modifiedBefore | 
+| 架构链接服务 | 语料库所在的链接服务 | 是（如果使用清单） | `'adlsgen2'` 或 `'github'` | corpusStore | 
+| 实体引用容器 | 容器语料库位于其中 | 是（如果使用 ADLS Gen2 中的清单和语料库） | 字符串 | adlsgen2_fileSystem |
+| 实体引用存储库 | GitHub 存储库名称 | 是（如果使用 GitHub 中的清单和语料库） | 字符串 | github_repository |
+| 实体引用分支 | GitHub 存储库分支 | 是（如果使用 GitHub 中的清单和语料库） | 字符串 |  github_branch |
+| 语料库文件夹 | 语料库的根位置 | 是（如果使用清单） | 字符串 | corpusPath |
 | 语料库实体 | 实体引用的路径 | 是 | 字符串 | 实体 |
 | 允许找不到文件 | 如果为 true，则在找不到文件时不会引发错误 | 否 | `true` 或 `false` | ignoreNoFilesFound |
 
-在源和接收器转换中选择 "实体引用" 时，可以从以下三个选项中选择实体引用的位置：
+在源和接收器转换过程中选择“实体引用”时，可从以下三个选项中选择实体引用的位置：
 
-* Local 使用 ADF 中已使用的清单文件中定义的实体
-* "自定义" 将要求你指向不同于清单文件 ADF 使用的实体清单文件
-* 标准版将使用中维护的 CDM 实体的标准库中的实体引用 ```Github``` 。
+* “本地”使用 ADF 已在使用的清单文件中定义的实体
+* “自定义”要求指向的实体清单文件应与清单文件 ADF 所用的文件不同
+* “标准”将使用 ```Github``` 中维护的 CDM 实体标准库中的实体引用。
 
 ### <a name="sink-settings"></a>接收器设置
 
@@ -61,30 +60,30 @@ ms.locfileid: "99585154"
 
 ![实体设置](media/data-flow/common-data-model-111.png "实体引用")
 
-* 定义要 ADF 用于写入实体的输出文件的分区路径和格式。
+* 定义要让 ADF 用于写入实体的输出文件的分区路径和格式。
 
 ![实体格式](media/data-flow/common-data-model-222.png "实体格式")
 
-* 设置清单文件的输出文件位置、位置和名称。
+* 设置输出文件位置以及清单文件的位置和名称。
 
 ![cdm 位置](media/data-flow/common-data-model-333.png "CDM 位置")
 
 
 #### <a name="import-schema"></a>导入架构
 
-CDM 仅可用作内联数据集，并且默认情况下不具有关联的架构。 若要获取列元数据，请单击 "**投影**" 选项卡中的 "**导入架构**" 按钮。这将允许你引用语料库指定的列名称和数据类型。 若要导入该架构， [数据流调试会话](concepts-data-flow-debug-mode.md) 必须处于活动状态，并且您必须具有现有的 CDM 实体定义文件以指向。
+CDM 仅作为内联数据集提供，且默认情况下没有关联架构。 若要获取列元数据，请单击“投影”选项卡中的“导入架构”按钮 。这样你可以引用语料库指定的列名称和数据类型。 若要导入架构，[数据流调试会话](concepts-data-flow-debug-mode.md)必须处于活动状态，还必须具有可以指向的现有 CDM 实体定义文件。
 
-将数据流列映射到接收器转换中的实体属性时，请单击 "映射" 选项卡，然后选择 "导入架构"。 ADF 将读取你在接收器选项中所指向的实体引用，使你能够映射到目标 CDM 架构。
+在接收器转换过程中将数据流列映射到实体属性时，请单击“映射”选项卡，然后选择“导入架构”。 ADF 将读取接收器选项中所指向的实体引用，使你能够映射到目标 CDM 架构。
 
 ![CDM 接收器设置](media/data-flow/common-data-model-444.png "CDM 映射")
 
 > [!NOTE]
->  当对源自 Power BI 或 Power Platform 数据流的源类型使用 model.js时，可能会遇到源转换中的 "语料库路径为 null 或空" 错误。 这可能是由于文件 model.js上的分区位置路径存在格式问题。 若要解决此问题，请执行以下步骤： 
+>  使用来自 Power BI 或 Power Platform 数据流的 model.json 源类型时，可能会遇到源转换过程中的“语料库路径为 NULL 或空”错误。 这很可能是因 model.json 文件中分区位置路径的格式问题所致。 若要解决此问题，请执行以下步骤： 
 
-1. 在文本编辑器中打开文件中的 model.js
-2. 查找分区。Location 属性 
+1. 在文本编辑器中打开 model.json 文件
+2. 查找 partitions.Location 属性 
 3. 将 "blob.core.windows.net" 更改为 "dfs.core.windows.net"
-4. 将 URL 中的任何 "% 2F" 编码修复为 "/"
+4. 将 URL 中的任何“% 2F”编码修正为“/”
 5. 如果使用 ADF 数据流，则必须将分区文件路径中的特殊字符替换为字母数字值，或切换到 Synapse 数据流
 
 ### <a name="cdm-source-data-flow-script-example"></a>CDM 源数据流脚本示例
@@ -113,28 +112,28 @@ source(output(
 
 ### <a name="sink-properties"></a>接收器属性
 
-下表列出了 CDM 接收器支持的属性。 可以在 " **设置** " 选项卡中编辑这些属性。
+下表列出了 CDM 接收器支持的属性。 可以在“设置”选项卡中编辑这些属性。
 
-| 名称 | 说明 | 必须 | 允许的值 | 数据流脚本属性 |
+| 名称 | 说明 | 必需 | 允许的值 | 数据流脚本属性 |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | 格式 | 格式必须为 `cdm` | 是 | `cdm` | format |
 | 根位置：容器 | CDM 文件夹的容器名称 | 是 | 字符串 | fileSystem |
 | 根位置：文件夹路径 | CDM 文件夹的根文件夹位置 | 是 | 字符串 | folderPath |
 | 清单文件：实体路径 | 根文件夹中实体的文件夹路径 | 否 | 字符串 | entityPath |
-| 清单文件：清单名称 | 清单文件的名称。 默认值为 "default" | 否 | 字符串 | manifestName |
-| 架构链接的服务 | 语料库所在的链接服务 | 是 | `'adlsgen2'` 或 `'github'` | corpusStore | 
-| 实体引用容器 | 容器语料库处于 | 是，如果 ADLS Gen2 中的语料库 | 字符串 | adlsgen2_fileSystem |
-| 实体引用存储库 | GitHub 存储库名称 | 是，如果语料库在 GitHub 中 | 字符串 | github_repository |
-| 实体引用分支 | GitHub 存储库分支 | 是，如果语料库在 GitHub 中 | 字符串 |  github_branch |
+| 清单文件：清单名称 | 清单文件名称。 默认值为“default” | 否 | 字符串 | manifestName |
+| 架构链接服务 | 语料库所在的链接服务 | 是 | `'adlsgen2'` 或 `'github'` | corpusStore | 
+| 实体引用容器 | 容器语料库位于其中 | 是（如果语料库位于 ADLS Gen2） | 字符串 | adlsgen2_fileSystem |
+| 实体引用存储库 | GitHub 存储库名称 | 是（如果语料库位于 GitHub） | 字符串 | github_repository |
+| 实体引用分支 | GitHub 存储库分支 | 是（如果语料库位于 GitHub） | 字符串 |  github_branch |
 | 语料库文件夹 | 语料库的根位置 | 是 | 字符串 | corpusPath |
 | 语料库实体 | 实体引用的路径 | 是 | 字符串 | 实体 |
-| 分区路径 | 将写入分区的位置 | 否 | 字符串 | partitionPath |
-| 清除文件夹 | 如果在写入前清除目标文件夹 | 否 | `true` 或 `false` | truncate |
-| 格式类型 | 选择指定 parquet 格式 | 否 | `parquet` 如果指定 | subformat |
-| 列分隔符 | 如果写入 DelimitedText，如何分隔列 | 是，如果写入 DelimitedText | 字符串 | columnDelimiter |
-| 第一行作为标题 | 如果使用 DelimitedText，则列名称是否添加为标头 | 否 | `true` 或 `false` | columnNamesAsHeader |
+| 分区路径 | 分区的写入位置 | 否 | 字符串 | partitionPath |
+| 清除文件夹 | 如果在写入前目标文件夹已被清除 | 否 | `true` 或 `false` | truncate |
+| 格式类型 | 选择指定 parquet 格式 | 否 | `parquet`（如果指定） | subformat |
+| 列分隔符 | 如果写入 DelimitedText，如何分隔列 | 是（如果写入 DelimitedText） | 字符串 | columnDelimiter |
+| 将第一行用作标头 | 如果使用 DelimitedText，是否将列名称添加为标头 | 否 | `true` 或 `false` | columnNamesAsHeader |
 
-### <a name="cdm-sink-data-flow-script-example"></a>CDM sink 数据流脚本示例
+### <a name="cdm-sink-data-flow-script-example"></a>CDM 接收器数据流脚本示例
 
 关联的数据流脚本为：
 
@@ -160,4 +159,4 @@ CDMSource sink(allowSchemaDrift: true,
 
 ## <a name="next-steps"></a>后续步骤
 
-在映射数据流中创建 [源转换](data-flow-source.md) 。
+在映射数据流中创建[源转换](data-flow-source.md)。

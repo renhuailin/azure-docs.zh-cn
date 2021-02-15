@@ -1,18 +1,18 @@
 ---
 title: Azure SignalR 的 Azure Policy 法规合规性控制措施
 description: 列出可用于 Azure SignalR 的 Azure Policy 法规合规性控制措施。 这些内置的策略定义提供了管理 Azure 资源符合性的常用方法。
-ms.date: 01/29/2021
+ms.date: 02/09/2021
 ms.topic: sample
 author: sffamily
 ms.author: zhshang
 ms.service: signalr
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 02af9a2c1da6cac27a896d9600dc755d17e883e1
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: c77aaffa2607d5096f46cafd50c54bdc7a80219f
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99179386"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100096611"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-signalr"></a>Azure SignalR 的 Azure Policy 法规合规性控制措施
 

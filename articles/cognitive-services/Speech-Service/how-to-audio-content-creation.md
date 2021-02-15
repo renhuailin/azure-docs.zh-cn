@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/31/2020
 ms.author: trbye
-ms.openlocfilehash: 7d4d1acac591bfe6ce40efcf6166357d43718363
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: eb8d2d956eac23c02201f7fd855dcae71e960e8d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024953"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100388577"
 ---
 # <a name="improve-synthesis-with-the-audio-content-creation-tool"></a>使用音频内容创建工具改进合成
 
@@ -125,7 +125,7 @@ Welcome to use Audio Content Creation to customize audio output for your product
 
 ## <a name="how-to-addremove-audio-content-creation-users"></a>如何添加/删除音频内容创建用户？
 
-如果有多个用户要使用音频内容创建，则可以与用户共享你的 Azure 帐户和密码，或向用户授予对 Azure 订阅和语音资源的访问权限。 如果将用户添加到 Azure 订阅，则该用户可以访问 Azure 订阅下的所有资源。 但如果仅将用户添加到语音资源，则该用户将只能访问语音资源，并且不能访问此 Azure 订阅下的其他资源。 有权访问语音资源的用户可以使用音频内容创建。
+如果有多个用户要使用音频内容创建，则可以授予用户对 Azure 订阅和语音资源的访问权限。 如果将用户添加到 Azure 订阅，则该用户可以访问 Azure 订阅下的所有资源。 但如果仅将用户添加到语音资源，则该用户将只能访问语音资源，并且不能访问此 Azure 订阅下的其他资源。 有权访问语音资源的用户可以使用音频内容创建。
 
 ### <a name="add-users-to-a-speech-resource"></a>将用户添加到语音资源
 

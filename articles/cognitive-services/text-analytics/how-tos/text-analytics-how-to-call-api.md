@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/17/2020
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: 57fda08a996b7d46da74c0ce35bff0df20821b31
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 708c70a5144e4e38dd5de9524711c80ef28cd839
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97654823"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100092122"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>如何调用文本分析 REST API
 
@@ -35,6 +35,16 @@ ms.locfileid: "97654823"
 
 3.  创建文本分析资源，并前往页面左侧的 "密钥和终结点" 边栏选项卡。 复制稍后在调用 Api 时使用的密钥。 稍后会将此添加为标头的值 `Ocp-Apim-Subscription-Key` 。
 
+## <a name="change-your-pricing-tier"></a>更改定价层 
+
+如果现有文本分析资源使用 S0 到 S4 定价层，则可以将其更新为使用标准 (S) [定价层](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/)：
+
+1. 导航到 [Azure 门户](https://portal.azure.com/)中的文本分析资源。
+2. 选择左侧导航菜单中的 " **定价层** "。 它将低于 " **资源管理**"。 
+3. 选择标准 () 定价层。 然后单击“选择”。
+
+你还可以使用标准 (S) 定价层创建新的文本分析资源，并迁移你的应用程序以使用新资源的凭据。 
+
 ## <a name="using-the-api-synchronously"></a>同步使用 API
 
 你可以) 文本分析同步调用 (低延迟方案。 使用同步 API 时，必须单独调用每个 API (功能) 。 如果需要调用多个功能，请查看以下部分，了解如何以异步方式调用文本分析。 
@@ -49,7 +59,7 @@ ms.locfileid: "97654823"
 
 请参阅下表，了解可以异步使用哪些功能。 请注意，只能从终结点调用几个功能 `/analyze` 。 
 
-| Feature | Synchronous | 异步 |
+| 功能 | 同步 | 异步 |
 |--|--|--|
 | 语言检测 | ✔ |  |
 | 情绪分析 | ✔ |  |
@@ -70,13 +80,13 @@ ms.locfileid: "97654823"
 
 可以同时将同步调用和异步调用发送到文本分析 API。
 
-#### <a name="synchronous"></a>[Synchronous](#tab/synchronous)
+#### <a name="synchronous"></a>[同步](#tab/synchronous)
 
 ### <a name="synchronous-requests"></a>同步请求
 
 对于所有同步操作，API 请求的格式都是相同的。 文档作为原始非结构化文本提交到 JSON 对象。 不支持 XML。 JSON 架构由以下描述的元素组成。
 
-| 元素 | 有效值 | 是否必需？ | 使用情况 |
+| 元素 | 有效值 | 必需？ | 使用情况 |
 |---------|--------------|-----------|-------|
 |`id` |数据类型为字符串，但实际上文档 ID 往往是整数。 | 必需 | 系统使用你提供的 ID 来构建输出。 为请求中的每个 ID 生成语言代码、关键短语和情绪分数。|
 |`text` | 非结构化原始文本，最多 5,120 个字符。 | 必需 | 对于语言检测，可以使用任何语言来表示文本。 对于情绪分析、关键短语提取和实体标识，此文本必须使用[支持的语言](../language-support.md)。 |
@@ -111,9 +121,9 @@ ms.locfileid: "97654823"
 * 关键短语提取 
 * 命名实体识别 (包括 PII 和 PHI) 
 
-| 元素 | 有效值 | 是否必需？ | 使用情况 |
+| 元素 | 有效值 | 必需？ | 使用情况 |
 |---------|--------------|-----------|-------|
-|`displayName` | 字符串 | 可选 | 用作作业的唯一标识符的显示名称。|
+|`displayName` | String | 可选 | 用作作业的唯一标识符的显示名称。|
 |`analysisInput` | 包括 `documents` 以下字段 | 必需 | 包含要发送的文档的信息。 |
 |`documents` | 包括 `id` 以下和 `text` 字段 | 必需 | 包含要发送的每个文档的信息以及文档的原始文本。 |
 |`id` | String | 必须 | 提供的 Id 用于构建输出的结构。 |
@@ -122,7 +132,7 @@ ms.locfileid: "97654823"
 |`parameters` | 包括 `model-version` 以下和 `stringIndexType` 字段 | 必需 | 此字段包含在所选的上述功能任务中。 它们包含有关要使用的模型版本的信息和索引类型。 |
 |`model-version` | String | 必须 | 指定要使用的模型的版本。  |
 |`stringIndexType` | String | 必须 | 指定与编程环境匹配的文本解码器。  支持的类型 `textElement_v8` (默认值) 、 `unicodeCodePoint` 、 `utf16CodeUnit` 。 有关详细信息，请参阅 [文本偏移文章](../concepts/text-offsets.md#offsets-in-api-version-31-preview) 。  |
-|`domain` | 字符串 | 可选 | 仅适用于任务的参数 `entityRecognitionPiiTasks` ，可以设置为 `pii` 或 `phi` 。 如果未指定，则默认为 `pii` 。  |
+|`domain` | String | 可选 | 仅适用于任务的参数 `entityRecognitionPiiTasks` ，可以设置为 `pii` 或 `phi` 。 如果未指定，则默认为 `pii` 。  |
 
 ```json
 {
@@ -167,7 +177,7 @@ ms.locfileid: "97654823"
 
 针对运行状况托管 API 的文本分析的 API 请求的格式与它的容器的格式相同。 文档作为原始非结构化文本提交到 JSON 对象。 不支持 XML。 JSON 架构由以下描述的元素组成。  请填写并提交 [认知服务请求表单](https://aka.ms/csgate) ，请求访问运行状况公共预览版文本分析。 不会向你收取文本分析的健康状况。 
 
-| 元素 | 有效值 | 是否必需？ | 使用情况 |
+| 元素 | 有效值 | 必需？ | 使用情况 |
 |---------|--------------|-----------|-------|
 |`id` |数据类型为字符串，但实际上文档 ID 往往是整数。 | 必需 | 系统使用你提供的 ID 来构建输出。 |
 |`text` | 非结构化原始文本，最多 5,120 个字符。 | 必需 | 请注意，目前仅支持英文文本。 |
@@ -201,11 +211,11 @@ example.json
 
 `https://my-resource.cognitiveservices.azure.com/text/analytics/v3.0/languages`
 
-#### <a name="synchronous"></a>[Synchronous](#tab/synchronous)
+#### <a name="synchronous"></a>[同步](#tab/synchronous)
 
 ### <a name="endpoints-for-sending-synchronous-requests"></a>用于发送同步请求的终结点
 
-| Feature | 请求类型 | 资源终结点 |
+| 功能 | 请求类型 | 资源终结点 |
 |--|--|--|
 | 语言检测 | POST | `<your-text-analytics-resource>/text/analytics/v3.0/languages` |
 | 情绪分析 | POST | `<your-text-analytics-resource>/text/analytics/v3.0/sentiment` |
@@ -219,18 +229,18 @@ example.json
 
 ### <a name="endpoints-for-sending-asynchronous-requests-to-the-analyze-endpoint"></a>用于将异步请求发送到终结点的终结点 `/analyze`
 
-| Feature | 请求类型 | 资源终结点 |
+| 功能 | 请求类型 | 资源终结点 |
 |--|--|--|
 | 提交分析作业 | POST | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.3/analyze` |
 | 获取分析状态和结果 | GET | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.3/analyze/jobs/<Operation-Location>` |
 
 ### <a name="endpoints-for-sending-asynchronous-requests-to-the-health-endpoint"></a>用于将异步请求发送到终结点的终结点 `/health`
 
-| Feature | 请求类型 | 资源终结点 |
+| 功能 | 请求类型 | 资源终结点 |
 |--|--|--|
 | 提交运行状况作业文本分析  | POST | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.3/entities/health/jobs` |
 | 获取作业状态和结果 | GET | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.3/entities/health/jobs/<Operation-Location>` |
-| 取消作业 | DELETE | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.3/entities/health/jobs/<Operation-Location>` |
+| 取消作业 | 删除 | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.3/entities/health/jobs/<Operation-Location>` |
 
 --- 
 
@@ -278,7 +288,7 @@ example.json
 
 ## <a name="example-api-responses"></a>示例 API 响应
  
-# <a name="synchronous"></a>[Synchronous](#tab/synchronous)
+# <a name="synchronous"></a>[同步](#tab/synchronous)
 
 ### <a name="example-responses-for-synchronous-operation"></a>同步操作的示例响应
 

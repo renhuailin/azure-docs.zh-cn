@@ -1,22 +1,18 @@
 ---
 title: 从/向 Salesforce Service Cloud 复制数据
 description: 了解如何通过在数据工厂管道中使用复制活动，将数据从 Salesforce Service Cloud 复制到支持的接收器数据存储，或者从支持的源数据存储复制到 Salesforce Service Cloud。
-services: data-factory
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/02/2021
-ms.openlocfilehash: 91ab6ca1350a1c6964daeae401bf7b08c6b1cd91
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 4075552e2070eba653fba54c7db1d021016644c7
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99430758"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100369758"
 ---
 # <a name="copy-data-from-and-to-salesforce-service-cloud-by-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 Salesforce Service Cloud 复制数据
 
@@ -38,7 +34,7 @@ ms.locfileid: "99430758"
 - Salesforce 开发人员版、专业版、企业版或不受限制版。
 - 从/向 Salesforce 生产、沙盒和自定义域复制数据。
 
-Salesforce 连接器在 Salesforce REST/Bulk API 之上构建。 默认情况下，当从 Salesforce 复制数据时，连接器将使用 [v45](https://developer.salesforce.com/docs/atlas.en-us.218.0.api_rest.meta/api_rest/dome_versions.htm) ，并根据数据大小自动选择 REST 和大容量 api –如果结果集很大，则使用大容量 api 以获得更好的性能;向 Salesforce 写入数据时，连接器使用大容量 API 的 [v40](https://developer.salesforce.com/docs/atlas.en-us.208.0.api_asynch.meta/api_asynch/asynch_api_intro.htm) 。 还可通过链接服务中的 [`apiVersion` 属性](#linked-service-properties)显式设置用于读取/写入数据的 API 版本。
+Salesforce 连接器在 Salesforce REST/Bulk API 之上构建。 默认情况下，从 Salesforce 复制数据时，连接器使用 [v45](https://developer.salesforce.com/docs/atlas.en-us.218.0.api_rest.meta/api_rest/dome_versions.htm) 并根据数据大小自动在 REST 和 Bulk API 之间进行选择 – 结果集较大时，使用 Bulk API 可获得更好的性能；在将数据写入 Salesforce 时，连接器使用 Bulk API [v40](https://developer.salesforce.com/docs/atlas.en-us.208.0.api_asynch.meta/api_asynch/asynch_api_intro.htm)。 还可通过链接服务中的 [`apiVersion` 属性](#linked-service-properties)显式设置用于读取/写入数据的 API 版本。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -139,7 +135,7 @@ Salesforce 链接服务支持以下属性。
 
 支持使用以下属性从/向 Salesforce Service Cloud 复制数据。
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为 **SalesforceServiceCloudObject**。  | 是 |
 | objectApiName | 要从中检索数据的 Salesforce 对象名称。 | 对于源为“No”，对于接收器为“Yes” |
@@ -168,7 +164,7 @@ Salesforce 链接服务支持以下属性。
 }
 ```
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为 **RelationalTable**。 | 是 |
 | tableName | Salesforce Service Cloud 中的表名称。 | 否（如果指定了活动源中的“query”） |
@@ -181,7 +177,7 @@ Salesforce 链接服务支持以下属性。
 
 从 Salesforce Service Cloud 复制数据时，复制活动的 **source** 节支持以下属性。
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为 **SalesforceServiceCloudSource**。 | 是 |
 | 查询 |使用自定义查询读取数据。 可以使用 [Salesforce 对象查询语言 (SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) 查询或 SQL-92 查询。 请在[查询提示](#query-tips)部分中查看更多提示。 如果未指定查询，将检索在数据集的“objectApiName”中指定的 Salesforce Service Cloud 对象的所有数据。 | 否（如果指定了数据集中的“objectApiName”） |
@@ -228,7 +224,7 @@ Salesforce 链接服务支持以下属性。
 
 向 Salesforce Service Cloud 复制数据时，复制活动的 **sink** 节支持以下属性。
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 复制活动接收器的 type 属性必须设置为 **SalesforceServiceCloudSink**。 | 是 |
 | writeBehavior | 操作写入行为。<br/>允许的值为 **Insert** 和 **Upsert**。 | 否（默认值为 Insert） |

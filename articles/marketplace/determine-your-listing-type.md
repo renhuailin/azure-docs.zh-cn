@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
 ms.date: 01/14/2021
-ms.openlocfilehash: 89cd9f46474e8e311f003f317b90bdb21eae55fe
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.openlocfilehash: 2433e62fd1dbf35748483b40958fc3367532102a
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98247535"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100099228"
 ---
 # <a name="introduction-to-listing-options"></a>列表选项简介
 
@@ -38,7 +38,11 @@ ms.locfileid: "98247535"
 
 &#42; 立即获取列表 "选项包括" 立即获取 " (免费) ，自带许可证 (BYOL) 、订阅和基于使用情况的定价。 有关详细信息，请参阅 [立即获取](#get-it-now)。
 
-### <a name="free-trial"></a>免费试用版
+## <a name="changing-offer-type"></a>更改产品/服务类型
+
+[!INCLUDE [change-offer-type](./includes/change-offer-type.md)]
+
+## <a name="free-trial"></a>免费试用版
 
 使用商业市场增强解决方案的试用体验的可发现性和自动预配。 这样，潜在客户就可以使用您的软件即服务 (SaaS) 、IaaS 或 Microsoft 应用内体验，免费时间为30天至六个月，具体取决于产品/服务类型。
 
@@ -46,18 +50,18 @@ ms.locfileid: "98247535"
 
 对于虚拟机产品/服务，客户需要支付 Azure 基础结构成本，以便在试用期期间使用产品/服务。 试用期到期后，将根据标准费率自动向客户收取最近一次的计划，除非在试用期结束之前取消。
 
-### <a name="test-drive"></a>体验版
+## <a name="test-drive"></a>体验版
 
 客户使用产品/服务的列表页上的 " _测试驱动器_ " 按钮，以在固定的小时数内访问预配置环境。 若要了解有关测试驱动器的详细信息，请参阅 [什么是测试驱动器？](what-is-test-drive.md)
 
 > [!TIP]
 > 测试驱动器与免费试用版不同。 你可以提供一个测试驱动器和/或免费试用版。 它们都为你的客户提供了一个固定时间段的解决方案。 但在实际实施方案中，一个测试驱动器还包括一项针对您的产品关键功能的动手自学教程。
 
-### <a name="contact-me"></a>与我联系
+## <a name="contact-me"></a>与我联系
 
 应用程序或服务的简单列表。 客户使用产品/服务的列表页上的 " _联系我_ " 按钮，请求你与产品/服务联系。
 
-### <a name="get-it-now"></a>立即获取
+## <a name="get-it-now"></a>立即获取
 
 此列表选项包括事务产品/服务 (订阅和基于用户的定价) ，自带许可证产品/服务，并立即 (免费) 。 事务产品/服务通过商业市场进行销售。 Microsoft 负责计费和收费。 客户使用 " _立即获取" 按钮_ 获取该产品/服务。
 
@@ -92,28 +96,28 @@ ms.locfileid: "98247535"
 
 每小时定价<sup>2</sup>个，每月按月计费。
 
-#### <a name="get-it-now-free"></a>立即获取 (免费) 
+### <a name="get-it-now-free"></a>立即获取 (免费) 
 
 使用此列表选项免费提供您的应用程序。 客户使用 " _立即获取_ " 按钮获取免费产品/服务。
 
 > [!NOTE]
 > 立即获取 (免费) 产品/服务不符合事务产品/服务的 Marketplace 奖励权益。 由于没有通过店面的交易，因此它们归类为 "试用"。 请参阅下面的 [Marketplace 奖励](#marketplace-rewards) 。
 
-#### <a name="bring-your-own-license-byol"></a>自带许可 (BYOL)
+### <a name="bring-your-own-license-byol"></a>自带许可 (BYOL)
 
 使用此列表选项可让客户使用在商业市场外购买的许可证来部署你的产品/服务。 此选项非常适合用于本地到云的迁移。 客户使用 " _立即获取_ " 按钮来购买你的产品/服务，并使用预先购买的许可证。
 
 > [!NOTE]
 > BYOL 产品/服务不适用于事务产品/服务的 Marketplace 奖励权益。 由于这些要求客户需要获得合作伙伴提供的许可证，并且没有通过商业 marketplace 店面的交易，因此它们归类为 "列表"。 请参阅下面的 [Marketplace 奖励](#marketplace-rewards) 。
 
-#### <a name="subscription"></a>订阅
+### <a name="subscription"></a>订阅
 
 你可以对这些产品/服务类型收取固定费用：
 
 - Azure 应用程序 (托管应用) 提供每月订阅支持。
 - SaaS 支持每月和每年订阅。
 
-#### <a name="usage-based-pricing"></a>基于使用情况的定价
+### <a name="usage-based-pricing"></a>基于使用情况的定价
 
 以下产品/服务类型支持基于使用情况的定价：
 

@@ -3,12 +3,12 @@ title: 创建用于在 Azure VMware 解决方案中部署 Vm 的内容库
 description: 在 Azure VMware 解决方案私有云中创建用于部署 VM 的内容库。
 ms.topic: how-to
 ms.date: 02/03/2021
-ms.openlocfilehash: 9e27529ee355ece62f12cc2e6de491dddb5d3f28
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: a50b12ef8e139bf7de171398fd28f74fc3f310c9
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99550532"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100381998"
 ---
 # <a name="create-a-content-library-to-deploy-vms-in-azure-vmware-solution"></a>创建用于在 Azure VMware 解决方案中部署 Vm 的内容库
 
@@ -18,7 +18,7 @@ ms.locfileid: "99550532"
 
 ## <a name="prerequisites"></a>先决条件
 
-学习本教程需要具备 NSX-T 逻辑交换机段和托管式 DHCP 服务。  有关详细信息，请参阅 [如何管理 Azure VMware 解决方案](manage-dhcp.md) 一文中的 DHCP。
+使用逻辑交换机) 的 NSX-T 段 (，需要使用托管 DHCP 服务才能完成本教程。  有关详细信息，请参阅 [如何管理 Azure VMware 解决方案](manage-dhcp.md) 一文中的 DHCP。
 
 ## <a name="create-a-content-library"></a>创建内容库
 

@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 05/15/2020
-ms.openlocfilehash: f43fa06cf93d383efcb0fe746de28ab143280e50
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: 1d434697802596a0200dc0cb5f1afe5bc67afef5
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99988022"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100379703"
 ---
 # <a name="collaborate-with-other-authors-and-editors"></a>与其他作者和编辑人员协作
 
@@ -24,6 +24,9 @@ ms.locfileid: "99988022"
 * Azure Active Directory (AAD) 为100% 向后兼容所有者和参与者的基于密钥的身份验证。 客户可在其请求中使用基于密钥的身份验证或基于密钥的 Azure 身份验证。
 * 快速将作者和编辑器添加到资源中的所有知识库，因为控件位于资源级别，而不是在知识库级别。
 
+> [!NOTE]
+> Ar 确保为资源添加自定义子域。 默认情况下应存在[自定义子域](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains)，但如果不存在，请添加它
+
 ## <a name="access-is-provided-by-a-defined-role"></a>访问由定义的角色提供
 
 [!INCLUDE [Azure RBAC permissions table](../includes/role-based-access-control.md)]
@@ -35,7 +38,7 @@ ms.locfileid: "99988022"
 > [!div class="mx-imgBorder"]
 > ![下图显示了从作者的角度来登录到 QnA Maker 门户并使用创作 Api 的流。](../media/qnamaker-how-to-collaborate-knowledge-base/rbac-flow-from-portal-to-service.png)
 
-|步骤|描述|
+|步骤|说明|
 |--|--|
 |1|门户获取 QnA Maker 资源的标记。|
 |2|门户会调用适当的 QnA Maker 创作 API (APIM) 传递令牌，而不是密钥。|

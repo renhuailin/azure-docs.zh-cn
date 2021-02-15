@@ -9,12 +9,12 @@ ms.date: 01/20/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 9a739736182713b35c3a5e9e25742aa39c5d1122
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 0adcbf49ff2128fdbe623121838058c5ed89dce2
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98633131"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100378020"
 ---
 # <a name="update-the-iot-edge-security-daemon-and-runtime"></a>更新 IoT Edge 安全守护程序和运行时
 
@@ -30,17 +30,11 @@ IoT Edge 安全守护程序是一个本机组件，需要使用 IoT Edge 设备�
 
 使用命令 `iotedge version` 检查设备上运行的安全守护程序的版本。
 
-# <a name="linux"></a>Linux
+# <a name="linux"></a>[Linux](#tab/linux)
 
 在 Linux x64 设备上，请使用 apt-get 或相应的包管理器将安全守护程序更新到最新版本。
 
 从 Microsoft 获取最新的存储库配置：
-
-* **Ubuntu Server 16.04**：
-
-   ```bash
-   curl https://packages.microsoft.com/config/ubuntu/16.04/multiarch/prod.list > ./microsoft-prod.list
-   ```
 
 * **Ubuntu Server 18.04**：
 
@@ -100,14 +94,14 @@ curl -L <iotedge link> -o iotedge.deb && sudo dpkg -i ./iotedge.deb
 
 # <a name="windows"></a>[Windows](#tab/windows)
 
-<!-- 1.0.10 -->
+<!-- 1.1 -->
 ::: moniker range="iotedge-2018-06"
 
-对于 Windows 上的 Linux IoT Edge，IoT Edge 在 Windows 设备上托管的 Linux 虚拟机中运行。 此虚拟机与 IoT Edge 预安装，并通过 Microsoft 更新进行管理，使组件保持最新状态。 目前没有可用的更新。
+借助 IoT Edge for Linux on Windows，IoT Edge 可以在 Windows 设备上托管的 Linux 虚拟机中运行。 此虚拟机已预安装 IoT Edge，并通过 Microsoft 更新进行管理，以使组件保持最新。 目前没有可用的更新。
 
 ::: moniker-end
 
-对于 Windows IoT Edge，IoT Edge 直接在 Windows 设备上运行。 有关使用 PowerShell 脚本的更新说明，请参阅 [安装和管理适用于 Windows 的 Azure IoT Edge](how-to-install-iot-edge-windows-on-windows.md)。
+借助适用于 Windows 的 IoT Edge，IoT Edge 可直接在 Windows 设备上运行。 有关使用 PowerShell 脚本的更新说明，请参阅[安装和管理适用于 Windows 的 Azure IoT Edge](how-to-install-iot-edge-windows-on-windows.md)。
 
 ---
 

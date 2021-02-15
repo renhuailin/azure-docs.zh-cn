@@ -3,33 +3,33 @@ title: ML Studio (经典) ：模型如何成为 web 服务-Azure
 description: 关于 Azure 机器学习工作室（经典）模型从开发试验逐步演变为 Web 服务的机制的概述。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: conceptual
 author: likebupt
 ms.author: keli19
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 03/20/2017
-ms.openlocfilehash: c92f8c74da76b2ac938892e27f3d6be9c70c3238
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 4e0f5786047977a319825aae9f3c7b89c0aa118b
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95507253"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100518617"
 ---
 # <a name="how-a-machine-learning-studio-classic-model-progresses-from-an-experiment-to-a-web-service"></a>机器学习工作室（经典）模型如何从试验逐步演变为 Web 服务
 
-**适用于：** ![这是一个复选标记，这意味着本文适用于 (经典) 机器学习 Studio。 ](../../../includes/media/aml-applies-to-skus/yes.png)机器学习 Studio (经典) ![ 这是一个 X，这意味着本文适用于 Azure 机器学习。](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
+**适用对象：** ![这是复选标记，意味着本文适用于机器学习工作室（经典版）。](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典版）   ![这是 X，意味着本文适用于 Azure 机器学习。](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
-Azure 机器学习 Studio (经典) 提供了一个交互式画布，可用于开发、运行、测试和循环使用 **_试验_* 表示预测分析模型。 有大量各种不同的模块可用于：
+Azure 机器学习工作室（经典）提供交互式画布，使你能开发、运行、测试和迭代表示预测分析模型的试验。 有大量各种不同的模块可用于：
 
-_ 将数据输入实验
+* 将数据输入到实验
 * 操作该数据
 * 使用机器学习算法训练模型
 * 为模型评分
 * 评估结果
 * 输出最终值
 
-如果你对实验感到满意，则可以将其部署为 ***经典 Azure 机器学习 web 服务** _ 或新的 _*_Azure 机器学习 web 服务_*_ ，以便用户可以向其发送新数据并接收回结果。
+如果你对实验感到满意，则可以将其部署为 ***经典 Azure 机器学习 web 服务** _ 或 _ 新的 *_Azure 机器学习 web 服务_**，使用户能够向其发送新数据并接收返回的结果。
 
 在本文中，我们提供了有关机器学习模型如何从开发实验逐步进展为运营 Web 服务的机制概述。
 
@@ -38,7 +38,7 @@ _ 将数据输入实验
 >
 >
 
-尽管 Azure 机器学习 Studio (经典) 旨在帮助你开发和部署 _predictive 分析模型 *，但也可以使用 Studio (经典) 来开发不包含预测分析模型的实验。 例如，实验可能只是输入数据，对其进行操作，并输出结果。 就像预测分析试验一样，可以将此非预测试验部署为 Web 服务，但它是一个更简单的过程，因为试验不会对机器学习模型进行训练或评分。 尽管这不是使用工作室（经典）的典型方法，但我们会在讨论中探讨它，以便可以提供有关工作室（经典）工作原理的完整说明。
+虽然 Azure 机器学习工作室（经典）主要是用于帮助你开发和部署预测分析模型，但也可以使用它来开发不包括预测分析模型的试验。 例如，实验可能只是输入数据，对其进行操作，并输出结果。 就像预测分析试验一样，可以将此非预测试验部署为 Web 服务，但它是一个更简单的过程，因为试验不会对机器学习模型进行训练或评分。 尽管这不是使用工作室（经典）的典型方法，但我们会在讨论中探讨它，以便可以提供有关工作室（经典）工作原理的完整说明。
 
 ## <a name="developing-and-deploying-a-predictive-web-service"></a>开发和部署预测性 Web 服务
 以下是在使用机器学习工作室（经典）进行开发和部署时典型解决方案所遵循的各个阶段：
@@ -48,14 +48,14 @@ _ 将数据输入实验
 *图 1 - 典型预测分析模型的各个阶段*
 
 ### <a name="the-training-experiment"></a>训练实验
-***训练试验** _ 是在机器学习 Studio (经典) 中开发 Web 服务的初始阶段。 训练实验的目的是提供一个开发、测试、循环访问和最终定型机器学习模型的环境。 在寻找最佳解决方案时，甚至可以同时训练多个模型，但完成实验后，你将选择一个已训练的模型，并去除实验中的其余部分。 有关开发预测分析实验的示例，请参阅[在 Azure 机器学习工作室（经典）中为信用风险评估开发预测分析解决方案](tutorial-part1-credit-risk.md)。
+训练实验是在机器学习工作室（经典）中开发 Web 服务的初始阶段。 训练实验的目的是提供一个开发、测试、循环访问和最终定型机器学习模型的环境。 在寻找最佳解决方案时，甚至可以同时训练多个模型，但完成实验后，你将选择一个已训练的模型，并去除实验中的其余部分。 有关开发预测分析实验的示例，请参阅[在 Azure 机器学习工作室（经典）中为信用风险评估开发预测分析解决方案](tutorial-part1-credit-risk.md)。
 
 ### <a name="the-predictive-experiment"></a>预测性实验
-在训练实验中具有定型模型后，单击 " _*设置 Web 服务*"，并在机器学习 Studio 中选择 "**预测 web 服务**" (经典) ，以启动将训练实验转换为 **_预测实验_* 的过程_。 预测性实验旨在使用定型模型对新数据进行评分，目的是为了最终变得如 Azure Web 服务一样具备可操作性。
+在训练实验中具有定型模型后，单击 " **设置 Web 服务** "，并选择 "机器学习 Studio 中的 **预测性 Web 服务** (经典) " 以启动将训练实验转换为 **_预测实验_** 的过程。 预测性实验旨在使用定型模型对新数据进行评分，目的是为了最终变得如 Azure Web 服务一样具备可操作性。
 
 会通过以下步骤完成该转换：
 
-_ 将用于定型的模块集转换为单个模块，并将其另存为定型模型
+* 将用于训练的模块集转换为单个模块，并将其另存为定型模型
 * 去除任何与评分不相关的多余模块
 * 添加最终 Web 服务将使用的输入和输出端口
 
@@ -97,7 +97,7 @@ Web 服务现已部署，并且可以像预测的 Web 服务一样对其进行�
 
 如果要保留机器学习模型，但希望使用新数据对其进行重新训练，有两个选择：
 
-1. 在 **Web 服务运行时** 重新训练模型-如果要在预测 Web 服务正在运行时重新训练模型，可以通过对训练实验进行一些修改以使其成为重新训练 **_实验_*_，然后将其部署为 _* 重新训练 _Web_ 服务**。 有关如何执行此操作的说明，请参阅[以编程方式重新训练机器学习模型](./retrain-machine-learning-model.md)。
+1. **Web 服务运行时重新训练模型** - 如果要在预测 Web 服务运行时重新训练模型，可以通过对训练实验进行一些修改，以使其成为“重新训练实验”_ 来完成此操作，然后可以将其部署为 _“重新训练 Web 服务”。 有关如何执行此操作的说明，请参阅[以编程方式重新训练机器学习模型](./retrain-machine-learning-model.md)。
 2. **返回原始训练实验并使用不同的训练数据来开发模型** - 预测实验链接到 Web 服务，但训练实验不是以此方式直接链接。 如果修改原始训练实验并单击“**设置 Web 服务**”，它将创建一个 *新的* 预测实验，在其部署时会创建一项 *新的* Web 服务。 它不只是更新原始 Web 服务。
 
    如果需要修改训练实验，请打开它并单击“**另存为**”以制作副本。 这会使原始训练实验、预测实验和 Web 服务保持不变。 现在可以使用更改来创建新的 Web 服务。 部署了新的 Web 服务后，可以决定是否要停止以前的 Web 服务，或使其与新的服务一起运行。

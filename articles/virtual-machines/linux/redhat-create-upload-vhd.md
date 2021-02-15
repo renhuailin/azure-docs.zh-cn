@@ -8,19 +8,20 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: how-to
 ms.date: 12/01/2020
 ms.author: danis
-ms.openlocfilehash: c6a3385b4347f76d83963ca33fa8485974d3c62a
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 28f82b641216dcd77b650b066c72bef4c4470dd2
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881276"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100098956"
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure"></a>为 Azure 准备基于 Red Hat 的虚拟机
+
 在本文中，将了解如何准备 Red Hat Enterprise Linux (RHEL) 虚拟机，以供在 Azure 中使用。 本文介绍的 RHEL 版本为 6.7+ 和 7.1+。 本文所述的用于准备工作的虚拟机监控程序为 Hyper-V、基于内核的虚拟机 (KVM) 和 VMware。 有关参与 Red Hat 云访问计划的资格要求的详细信息，请参阅 [Red Hat 的云访问网站](https://www.redhat.com/en/technologies/cloud-computing/cloud-access)和[在 Azure 上运行 RHEL](https://access.redhat.com/ecosystem/ccsp/microsoft-azure)。 有关自动构建 RHEL 映像的方法，请参阅 [Azure 映像生成器](../image-builder-overview.md)。
 
 ## <a name="hyper-v-manager"></a>Hyper-V 管理器
 
-本部分介绍如何使用 Hyper-v 管理器准备 [rhel 6](#rhel-6-using-hyper-v-manager) 或 [rhel 7](#rhel-7-using-hyper-v-manager) 虚拟机。
+本部分介绍如何使用 Hyper-v 管理器准备 [rhel 6](#rhel-6-using-hyper-v-manager)、 [Rhel 7](#rhel-7-using-hyper-v-manager)或 [rhel 8](#rhel-8-using-hyper-v-manager) 虚拟机。
 
 ### <a name="prerequisites"></a>先决条件
 本部分假定你已经从 Red Hat 网站获取 ISO 文件并将 RHEL 映像安装到虚拟硬盘 (VHD)。 有关如何使用 Hyper-V 管理器来安装操作系统映像的更多详细信息，请参阅[安装 Hyper-V 角色和配置虚拟机](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh846766(v=ws.11))。
@@ -31,12 +32,12 @@ ms.locfileid: "98881276"
 * Azure 支持 Gen1（BIOS 引导）和Gen2（UEFI 引导）虚拟机。
 * VHD 允许的最大大小为 1,023 GB。
 * 支持逻辑卷管理器 (LVM)，该管理器可以在 Azure 虚拟机中的 OS 磁盘或数据磁盘上使用。 但是，通常建议在 OS 磁盘上使用标准分区而不是 LVM。 这种做法可以避免 LVM 名称与克隆的虚拟机冲突，尤其是当需要将操作系统磁盘附加到另一台相同的虚拟机进行故障排除时。 另请参阅 [LVM](/previous-versions/azure/virtual-machines/linux/configure-lvm) 和 [RAID](/previous-versions/azure/virtual-machines/linux/configure-raid) 文档。
-* **需要 (UDF) 文件系统中安装通用磁盘格式的内核支持**。 在 Azure 上首次启动时，附加到来宾的 UDF 格式媒体会将预配配置传递到 Linux 虚拟机。 Azure Linux 代理必须能够装载 UDF 文件系统才能读取其配置和预配虚拟机，而不会发生这种情况。
+* 对装载通用磁盘格式 (UDF) 文件系统的内核支持是必需的。 在 Azure 上首次启动时，附加到来宾的 UDF 格式媒体会将预配配置传递到 Linux 虚拟机。 Azure Linux 代理必须能够装载 UDF 文件系统以读取其配置并预配虚拟机，如果没有此支持，预配将失败！
 * 不要在操作系统磁盘上配置交换分区。 可以在以下步骤中找到有关此内容的详细信息。
 
 * Azure 上的所有 VHD 必须已将虚拟大小调整为 1MB。 从原始磁盘转换为 VHD 时，必须确保在转换前原始磁盘大小是 1MB 的倍数。 可以在以下步骤中找到更多详细信息。 有关详细信息，另请参阅 [Linux 安装说明](create-upload-generic.md#general-linux-installation-notes)。
 
-### <a name="rhel-6-using-hyper-v-manager"></a>RHEL 6 使用 Hyper-v 管理器
+### <a name="rhel-6-using-hyper-v-manager"></a>RHEL 6（使用 Hyper-V 管理器）
 
 1. 在 Hyper-V 管理器中，选择虚拟机。
 
@@ -159,7 +160,7 @@ ms.locfileid: "98881276"
 1. 在 Hyper-V 管理器中单击“操作” > “关闭”。 现在，准备将 Linux VHD 上传到 Azure。
 
 
-### <a name="rhel-7-using-hyper-v-manager"></a>RHEL 7 使用 Hyper-v 管理器
+### <a name="rhel-7-using-hyper-v-manager"></a>RHEL 7（使用 Hyper-V 管理器）
 
 1. 在 Hyper-V 管理器中，选择虚拟机。
 
@@ -207,7 +208,7 @@ ms.locfileid: "98881276"
     GRUB_SERIAL_COMMAND="serial --speed=115200 --unit=0 --word=8 --parity=no --stop=1
     ```
    
-    这还将确保所有控制台消息都发送到第一个串行端口并启用与串行控制台的交互，从而有助于 Azure 支持人员调试问题。 此配置还会关闭 NIC 的新 RHEL 7 命名约定。
+    这还可确保所有控制台消息都发送到第一个串行端口并启用与串行控制台的交互，从而可以协助 Azure 支持人员针对问题进行调试。 此配置还会关闭 NIC 的新 RHEL 7 命名约定。
 
     ```config
     rhgb quiet crashkernel=auto
@@ -221,7 +222,7 @@ ms.locfileid: "98881276"
     # sudo grub2-mkconfig -o /boot/grub2/grub.cfg
     ```
     > [!NOTE]
-    > 如果上传已启用 UEFI 的 VM，则用于更新 grub 的命令为 `grub2-mkconfig -o /boot/efi/EFI/redhat/grub.cfg` 。
+    > 如果要上传已启用 UEFI 的 VM，则用于更新 grub 的命令会是 `grub2-mkconfig -o /boot/efi/EFI/redhat/grub.cfg`。
 
 1. 请确保 SSH 服务器已安装且已配置为在引导时启动（默认采用此配置）。 修改 `/etc/ssh/sshd_config` 以包含以下行：
 
@@ -235,7 +236,7 @@ ms.locfileid: "98881276"
     # subscription-manager repos --enable=rhel-7-server-extras-rpms
     ```
 
-1. 通过运行以下命令安装 Azure Linux 代理、云初始化和其他必需的实用程序：
+1. 通过运行以下命令安装 Azure Linux 代理、cloud-init 和其他必需的实用程序：
 
     ```console
     # sudo yum install -y WALinuxAgent cloud-init cloud-utils-growpart gdisk hyperv-daemons
@@ -244,9 +245,9 @@ ms.locfileid: "98881276"
     # sudo systemctl enable cloud-init.service
     ```
 
-1. 配置 cloud init 来处理预配：
+1. 配置 cloud-init 来处理预配：
 
-    1. 配置 waagent 以进行云初始化：
+    1. 为 cloud-init 配置 waagent：
 
     ```console
     sed -i 's/Provisioning.Agent=auto/Provisioning.Agent=cloud-init/g' /etc/waagent.conf
@@ -254,7 +255,7 @@ ms.locfileid: "98881276"
     sed -i 's/ResourceDisk.EnableSwap=y/ResourceDisk.EnableSwap=n/g' /etc/waagent.conf
     ```
     > [!NOTE]
-    > 如果要迁移特定虚拟机，并且不希望创建通用化映像，请 `Provisioning.Agent=disabled` 在配置上设置 `/etc/waagent.conf` 。
+    > 如果要迁移特定的虚拟机，但不希望创建通用化映像，请在 `/etc/waagent.conf` config 上设置 `Provisioning.Agent=disabled`。
     
     1. 配置装载：
 
@@ -287,7 +288,7 @@ ms.locfileid: "98881276"
     rm /mnt/resource/swapfile -f
     fi
     ```
-    1. 配置云初始化日志记录：
+    1. 配置 cloud-init 日志记录：
     ```console
     echo "Add console log file"
     cat >> /etc/cloud/cloud.cfg.d/05_logging.cfg <<EOF
@@ -300,18 +301,18 @@ ms.locfileid: "98881276"
 
     ```
 
-1. 交换配置不在操作系统磁盘上创建交换空间。
+1. 交换配置  不要在操作系统磁盘上创建交换空间。
 
-    以前，在 Azure 上预配虚拟机后，Azure Linux 代理使用连接到虚拟机的本地资源磁盘自动配置交换空间。 但是，这现在由云初始化来处理，你 **不能** 使用 Linux 代理来格式化资源磁盘创建交换文件，相应地修改以下参数 `/etc/waagent.conf` ：
+    以前，Azure Linux 代理用于使用在 Azure 上预配虚拟机后附加到虚拟机的本地资源磁盘自动配置交换空间。 但是，现在这由 cloud-init 处理，你不能使用 Linux 代理来格式化资源磁盘以创建交换文件，请在 `/etc/waagent.conf` 中相应地修改以下参数：
 
     ```console
     ResourceDisk.Format=n
     ResourceDisk.EnableSwap=n
     ```
 
-    如果需要装载、格式化和创建交换，可以执行以下任一操作：
-    * 每次创建 VM 时，将此作为云初始化配置传入
-    * 在每次创建 VM 时，使用融入中的映像执行此操作：
+    如果需要装载、格式化和创建交换文件，可以使用以下任一方法：
+    * 每次创建 VM 时，将此代码作为 cloud-init 配置传入
+    * 使用融入到映像的 cloud-init 指令，从而在每次创建 VM 时执行此操作：
 
         ```console
         cat > /etc/cloud/cloud.cfg.d/00-azure-swap.cfg << EOF
@@ -343,7 +344,7 @@ ms.locfileid: "98881276"
     运行以下命令可取消对虚拟机的预配并且对其进行准备以便在 Azure 上进行预配：
 
     > [!CAUTION]
-    > 如果要迁移特定的虚拟机，但不希望创建通用化映像，请跳过 "取消设置" 步骤。 运行命令 `waagent -force -deprovision` 将导致源计算机无法使用，此步骤仅用于创建通用化映像。
+    > 如果要迁移特定的虚拟机，但不希望创建通用化映像，请跳过“取消预配”步骤。 运行命令 `waagent -force -deprovision` 将导致源计算机无法使用，此步骤仅用于创建通用化映像。
     ```console
     # sudo waagent -force -deprovision
 
@@ -355,13 +356,13 @@ ms.locfileid: "98881276"
 
 1. 在 Hyper-V 管理器中单击“操作” > “关闭”。 现在，准备将 Linux VHD 上传到 Azure。
 
-### <a name="rhel-8-using-hyper-v-manager"></a>RHEL 8，使用 Hyper-v 管理器
+### <a name="rhel-8-using-hyper-v-manager"></a>RHEL 8（使用 Hyper-V 管理器）
 
 1. 在 Hyper-V 管理器中，选择虚拟机。
 
-1. 单击“连接”打开该虚拟机的控制台窗口。 
+1. 单击“连接”  以打开该虚拟机的控制台窗口。
 
-1. 通过运行以下命令，确保网络管理器服务将在引导时启动：
+1. 通过运行以下命令，确保网络管理器服务会在引导时启动：
 
     ```console
     # sudo systemctl enable NetworkManager.service
@@ -380,14 +381,14 @@ ms.locfileid: "98881276"
     # sudo subscription-manager register --auto-attach --username=XXX --password=XXX
     ```
 
-1. 在 grub 配置中修改内核引导行，以包含 Azure 的其他内核参数并启用串行控制台。 
+1. 在 grub 配置中修改内核引导行，使其包含 Azure 的其他内核参数并启用串行控制台。 
 
     1. 删除当前的 GRUB 参数：
     ```console
     # grub2-editenv - unset kernelopts
     ```
 
-    1. `/etc/default/grub`在文本编辑器中编辑，并添加以下参数：
+    1. 在文本编辑器中编辑 `/etc/default/grub`，并添加以下参数：
 
     ```config-grub
     GRUB_CMDLINE_LINUX="rootdelay=300 console=tty1 console=ttyS0,115200n8 earlyprintk=ttyS0,115200 earlyprintk=ttyS0 net.ifnames=0"
@@ -395,9 +396,9 @@ ms.locfileid: "98881276"
     GRUB_SERIAL_COMMAND="serial --speed=115200 --unit=0 --word=8 --parity=no --stop=1"
     ```
    
-   这还将确保所有控制台消息都发送到第一个串行端口并启用与串行控制台的交互，从而有助于 Azure 支持人员调试问题。 此配置还会关闭 Nic 的新命名约定。
+   这还可确保所有控制台消息都发送到第一个串行端口并启用与串行控制台的交互，从而可以协助 Azure 支持人员针对问题进行调试。 此配置还会关闭 Nic 的新命名约定。
    
-   1. 此外，建议删除以下参数：
+   1. 另外，还建议删除以下参数：
 
     ```config
     rhgb quiet crashkernel=auto
@@ -422,7 +423,7 @@ ms.locfileid: "98881276"
     ClientAliveInterval 180
     ```
 
-1. 通过运行以下命令安装 Azure Linux 代理、云初始化和其他必需的实用程序：
+1. 通过运行以下命令安装 Azure Linux 代理、cloud-init 和其他必需的实用程序：
 
     ```console
     # sudo yum install -y WALinuxAgent cloud-init cloud-utils-growpart gdisk hyperv-daemons
@@ -431,9 +432,9 @@ ms.locfileid: "98881276"
     # sudo systemctl enable cloud-init.service
     ```
 
-1. 配置 cloud init 来处理预配：
+1. 配置 cloud-init 来处理预配：
 
-    1. 配置 waagent 以进行云初始化：
+    1. 为 cloud-init 配置 waagent：
 
     ```console
     sed -i 's/Provisioning.Agent=auto/Provisioning.Agent=cloud-init/g' /etc/waagent.conf
@@ -441,7 +442,7 @@ ms.locfileid: "98881276"
     sed -i 's/ResourceDisk.EnableSwap=y/ResourceDisk.EnableSwap=n/g' /etc/waagent.conf
     ```
     > [!NOTE]
-    > 如果要迁移特定虚拟机，并且不希望创建通用化映像，请 `Provisioning.Agent=disabled` 在配置上设置 `/etc/waagent.conf` 。
+    > 如果要迁移特定的虚拟机，但不希望创建通用化映像，请在 `/etc/waagent.conf` config 上设置 `Provisioning.Agent=disabled`。
     
     1. 配置装载：
 
@@ -474,7 +475,7 @@ ms.locfileid: "98881276"
     rm /mnt/resource/swapfile -f
     fi
     ```
-    1. 配置云初始化日志记录：
+    1. 配置 cloud-init 日志记录：
     ```console
     echo "Add console log file"
     cat >> /etc/cloud/cloud.cfg.d/05_logging.cfg <<EOF
@@ -487,18 +488,18 @@ ms.locfileid: "98881276"
 
     ```
 
-1. 交换配置不在操作系统磁盘上创建交换空间。
+1. 交换配置  不要在操作系统磁盘上创建交换空间。
 
-    以前，在 Azure 上预配虚拟机后，Azure Linux 代理使用连接到虚拟机的本地资源磁盘自动配置交换空间。 但是，这现在由云初始化来处理，你 **不能** 使用 Linux 代理来格式化资源磁盘创建交换文件，相应地修改以下参数 `/etc/waagent.conf` ：
+    以前，Azure Linux 代理用于使用在 Azure 上预配虚拟机后附加到虚拟机的本地资源磁盘自动配置交换空间。 但是，现在这由 cloud-init 处理，你不能使用 Linux 代理来格式化资源磁盘以创建交换文件，请在 `/etc/waagent.conf` 中相应地修改以下参数：
 
     ```console
     ResourceDisk.Format=n
     ResourceDisk.EnableSwap=n
     ```
 
-    如果需要装载、格式化和创建交换，可以执行以下任一操作：
-    * 每次创建 VM 时，将此作为云初始化配置传入
-    * 在每次创建 VM 时，使用融入中的映像执行此操作：
+    如果需要装载、格式化和创建交换文件，可以使用以下任一方法：
+    * 每次创建 VM 时，将此代码作为 cloud-init 配置传入
+    * 使用融入到映像的 cloud-init 指令，从而在每次创建 VM 时执行此操作：
 
         ```console
         cat > /etc/cloud/cloud.cfg.d/00-azure-swap.cfg << EOF
@@ -537,7 +538,7 @@ ms.locfileid: "98881276"
     # logout
     ```
     > [!CAUTION]
-    > 如果要迁移特定的虚拟机，但不希望创建通用化映像，请跳过 "取消设置" 步骤。 运行命令 `waagent -force -deprovision` 将导致源计算机无法使用，此步骤仅用于创建通用化映像。
+    > 如果要迁移特定的虚拟机，但不希望创建通用化映像，请跳过“取消预配”步骤。 运行命令 `waagent -force -deprovision` 将导致源计算机无法使用，此步骤仅用于创建通用化映像。
 
 
 1. 在 Hyper-V 管理器中单击“操作” > “关闭”。 现在，准备将 Linux VHD 上传到 Azure。
@@ -545,9 +546,9 @@ ms.locfileid: "98881276"
 
 ## <a name="kvm"></a>KVM
 
-本部分介绍如何使用 KVM 来准备 [rhel 6](#rhel-6-using-kvm) 或 [rhel 7](#rhel-7-using-kvm) 发行版上传到 Azure。 
+本部分介绍如何使用 KVM 准备要上传到 Azure 的 [RHEL 6](#rhel-6-using-kvm) 或 [RHEL 7](#rhel-7-using-kvm) 发行版。 
 
-### <a name="rhel-6-using-kvm"></a>RHEL 6 使用 KVM
+### <a name="rhel-6-using-kvm"></a>RHEL 6（使用 KVM）
 
 1. 从 Red Hat 网站上下载 RHEL 6 的 KVM 映像。
 
@@ -748,7 +749,7 @@ ms.locfileid: "98881276"
     ```
 
         
-### <a name="rhel-7-using-kvm"></a>RHEL 7 使用 KVM
+### <a name="rhel-7-using-kvm"></a>RHEL 7（使用 KVM）
 
 1. 从 Red Hat 网站上下载 RHEL 7 的 KVM 映像。 此过程以 RHEL 7 为例。
 
@@ -879,12 +880,12 @@ ms.locfileid: "98881276"
     # systemctl enable waagent.service
     ```
 
-1. 安装 cloud init 按照 "通过 Hyper-v 管理器准备 RHEL 7 虚拟机" 中的步骤，步骤 12 "安装 cloud-init 以处理设置"。
+1. 安装 cloud-init。请执行“从 Hyper-V 管理器准备 RHEL 7 虚拟机”中的步骤 12“安装 cloud-init 来处理预配”。
 
 1. 交换配置 
 
     不要在操作系统磁盘上创建交换空间。
-    按照 "通过 Hyper-v 管理器准备 RHEL 7 虚拟机" 中的步骤，步骤 13 "交换配置"
+    执行“从 Hyper-V 管理器准备 RHEL 7 虚拟机”中的步骤 13“交换配置”
 
 
 1. 通过运行以下命令取消注册订阅（如有必要）：
@@ -896,7 +897,7 @@ ms.locfileid: "98881276"
 
 1. 预配
 
-    按照 "通过 Hyper-v 管理器准备 RHEL 7 虚拟机" 中的步骤，步骤15，"取消设置"
+    执行“从 Hyper-V 管理器准备 RHEL 7 虚拟机”中的步骤 15“取消预配”
 
 1. 关闭 KVM 中的虚拟机。
 
@@ -937,7 +938,7 @@ ms.locfileid: "98881276"
 
 ## <a name="vmware"></a>VMware
 
-本部分介绍如何从 VMware 准备 [rhel 6](#rhel-6-using-vmware) 或 [rhel 7](#rhel-6-using-vmware)  发行版。
+本部分介绍如何从 VMware 准备 [RHEL 6](#rhel-6-using-vmware) 或 [RHEL 7](#rhel-6-using-vmware) 发行版。
 
 ### <a name="prerequisites"></a>先决条件
 本部分假设已在 VMware 中安装了 RHEL 虚拟机。 有关如何在 VMware 中安装操作系统的详细信息，请参阅 [VMware 来宾操作系统安装指南](https://partnerweb.vmware.com/GOSIG/home.html)。
@@ -946,7 +947,7 @@ ms.locfileid: "98881276"
 * 不要在操作系统磁盘上配置交换分区。 可将 Linux 代理配置为在临时资源磁盘上创建交换文件。 可以在下面的步骤中找到有关此操作的详细信息。
 * 创建虚拟硬盘时，选择“将虚拟磁盘存储为单个文件”。
 
-### <a name="rhel-6-using-vmware"></a>RHEL 6 使用 VMware
+### <a name="rhel-6-using-vmware"></a>RHEL 6（使用 VMware）
 1. 在 RHEL 6 中，NetworkManager 可能会干扰 Azure Linux 代理。 请运行以下命令来卸载该包：
 
     ```console
@@ -1110,7 +1111,7 @@ ms.locfileid: "98881276"
     # qemu-img convert -f raw -o subformat=fixed,force_size -O vpc rhel-6.9.raw rhel-6.9.vhd
     ```
 
-### <a name="rhel-7-using-vmware"></a>RHEL 7 使用 VMware
+### <a name="rhel-7-using-vmware"></a>RHEL 7（使用 VMware）
 1. 创建或编辑 `/etc/sysconfig/network` 文件并添加以下文本：
 
     ```config
@@ -1198,14 +1199,14 @@ ms.locfileid: "98881276"
     # sudo systemctl enable waagent.service
     ```
 
-1. 安装云初始化
+1. 安装 cloud-init
 
-    按照 "通过 Hyper-v 管理器准备 RHEL 7 虚拟机" 中的步骤，步骤 12 "安装 cloud-init 以处理设置"。
+    执行“从 Hyper-V 管理器准备 RHEL 7 虚拟机”中的步骤 12“安装 cloud-init 来处理预配”。
 
 1. 交换配置
 
     不要在操作系统磁盘上创建交换空间。
-    按照 "通过 Hyper-v 管理器准备 RHEL 7 虚拟机" 中的步骤，步骤 13 "交换配置"
+    执行“从 Hyper-V 管理器准备 RHEL 7 虚拟机”中的步骤 13“交换配置”
 
 1. 如果想要取消注册订阅，运行以下命令：
 
@@ -1215,7 +1216,7 @@ ms.locfileid: "98881276"
 
 1. 预配
 
-    按照 "通过 Hyper-v 管理器准备 RHEL 7 虚拟机" 中的步骤，步骤15，"取消设置"
+    执行“从 Hyper-V 管理器准备 RHEL 7 虚拟机”中的步骤 15“取消预配”
 
 
 1. 关闭虚拟机，将 VMDK 文件转换为 VHD 格式。
@@ -1257,7 +1258,7 @@ ms.locfileid: "98881276"
 
 本部分介绍如何使用 kickstart 文件从 ISO 准备 RHEL 7 发行版。
 
-### <a name="rhel-7-from-a-kickstart-file"></a>Kickstart 文件中的 RHEL 7
+### <a name="rhel-7-from-a-kickstart-file"></a>RHEL 7（使用 kickstart 文件）
 
 1.  创建包括以下内容的 kickstart 文件，并保存该文件。 有关 kickstart 安装的详细信息，请参阅 [Kickstart 安装指南](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/Installation_Guide/chap-kickstart-installations.html)。
 

@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 08/20/2020
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: a36481b2496060cb12bd755f56680915ec1074bb
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 987b56eb1b258e1c5f2fd7d5bcfdd0e95f6c0730
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94540169"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100091663"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Azure 机器学习的工作原理：体系结构和概念
 
@@ -47,28 +47,15 @@ ms.locfileid: "94540169"
 
 可与其他人共享工作区。
 
-### <a name="create-workspace"></a>创建工作区
-
-下图显示了创建工作区工作流。
-
-* 从某个受支持的 Azure 机器学习客户端（Azure CLI、Python SDK、Azure 门户）登录到 Azure AD，并请求相应的 Azure 资源管理器令牌。
-* 调用 Azure 资源管理器来创建工作区。 
-* Azure 资源管理器联系 Azure 机器学习资源提供程序来预配工作区。
-* 如果未指定现有资源，将在订阅中创建其他所需的资源。
-
-还可以根据需要预配附加到工作区 (如 Azure Kubernetes 服务或 Vm) 的其他计算目标。
-
-[![创建工作区工作流](media/concept-azure-machine-learning-architecture/create-workspace.png)](media/concept-azure-machine-learning-architecture/create-workspace.png#lightbox)
-
 ## <a name="computes"></a>计算
 
 <a name="compute-targets"></a>[计算目标](concept-compute-target.md)是用于运行训练脚本或承载服务部署的任何计算机或计算机集。 你可以使用本地计算机或远程计算资源作为计算目标。  使用计算目标，你可以在本地计算机上开始训练，然后在不更改训练脚本的情况下横向扩展到云。
 
 Azure 机器学习引入了为机器学习任务配置的两个完全托管的基于云的虚拟机 (VM)：
 
-* <a name="compute-instance"></a> **计算实例** ：计算实例是一个 VM，其中包含为机器学习安装的多个工具和环境。 计算实例的主要用途是用于你的开发工作站。  你可以开始运行示例笔记本，无需进行任何设置。 还可将计算实例用作训练和推理作业的计算目标。
+* <a name="compute-instance"></a> **计算实例**：计算实例是一个 VM，其中包含为机器学习安装的多个工具和环境。 计算实例的主要用途是用于你的开发工作站。  你可以开始运行示例笔记本，无需进行任何设置。 还可将计算实例用作训练和推理作业的计算目标。
 
-* **计算群集** ：计算群集是包含多节点缩放功能的 VM 群集。 计算群集更适合用于大型作业和生产的计算目标。  提交作业时，群集会自动纵向扩展。  用作训练计算目标，或用于开发/测试部署。
+* **计算群集**：计算群集是包含多节点缩放功能的 VM 群集。 计算群集更适合用于大型作业和生产的计算目标。  提交作业时，群集会自动纵向扩展。  用作训练计算目标，或用于开发/测试部署。
 
 若要详细了解如何训练计算目标，请参阅[训练计算目标](concept-compute-target.md#train)。  有关部署计算目标的详细信息，请参阅[部署目标](concept-compute-target.md#deploy)。
 
@@ -127,10 +114,6 @@ Azure 机器学习在试验中记录所有运行并存储以下信息：
 
 提交运行时，Azure 机器学习会将包含该脚本的目录压缩为 zip 文件并将其发送到计算目标。 然后解压缩 zip 文件并运行脚本。 Azure 机器学习还将该 zip 文件存储为快照，作为运行记录的一部分。 有权限访问工作区的任何用户都可以浏览运行记录并下载快照。
 
-下图显示了代码快照工作流。
-
-[![代码快照工作流](media/concept-azure-machine-learning-architecture/code-snapshot.png)](media/concept-azure-machine-learning-architecture/code-snapshot.png#lightbox)
-
 ### <a name="logging"></a>日志记录
 
 Azure 机器学习会自动为你记录标准运行指标。 不过，你也可以[使用 Python SDK 记录任意指标](how-to-track-experiments.md)。
@@ -149,7 +132,7 @@ Azure 机器学习会自动为你记录标准运行指标。 不过，你也可�
 
 ### <a name="training-workflow"></a>训练工作流
 
-运行试验来训练模型时，会执行以下步骤。 下面的训练工作流关系图对此进行了说明：
+运行试验来训练模型时，需执行以下步骤。 下面的训练工作流关系图对此进行了说明：
 
 * 使用在上一部分保存的代码快照的快照 ID 调用 Azure 机器学习。
 * Azure 机器学习会创建一个运行 ID （可选）和一个机器学习服务令牌，计算目标（例如机器学习计算/VM）稍后会使用该令牌来与机器学习服务通信。
@@ -168,7 +151,7 @@ Azure 机器学习会自动为你记录标准运行指标。 不过，你也可�
    1. 管理代码将写入用户的 Azure 文件共享。
    1. 使用初始命令启动容器。 即，使用上一步骤中所述的管理代码。
 
-* 运行完成后，可以查询运行和指标。 在以下流示意图中，当训练计算目标将运行指标从 Cosmos DB 数据库中的存储写回到 Azure 机器学习时，将执行此步骤。 客户端可以调用 Azure 机器学习。 而机器学习又会从 Cosmos DB 数据库提取指标，然后将指标返回给客户端。
+* 运行完成后，可查询运行和指标。 在以下流示意图中，当训练计算目标将运行指标从 Cosmos DB 数据库中的存储写回到 Azure 机器学习时，将执行此步骤。 客户端可以调用 Azure 机器学习。 而机器学习又会从 Cosmos DB 数据库提取指标，然后将指标返回给客户端。
 
 [![训练工作流](media/concept-azure-machine-learning-architecture/training-and-metrics.png)](media/concept-azure-machine-learning-architecture/training-and-metrics.png#lightbox)
 
@@ -204,9 +187,9 @@ Azure 机器学习与框架无关。 创建模型时，可以使用任何流行�
 
 将[已注册的模型](#register-model)部署为服务终结点。 你需要下列组件：
 
-* **环境** 。 此环境封装运行模型进行推理所需的依赖项。
-* **评分代码** 。 此脚本接受请求、使用模型为请求评分并返回结果。
-* **推理配置** 。 推理配置指定以服务形式运行模型所需的环境、入口脚本和其他组件。
+* **环境**。 此环境封装运行模型进行推理所需的依赖项。
+* **评分代码**。 此脚本接受请求、使用模型为请求评分并返回结果。
+* **推理配置**。 推理配置指定以服务形式运行模型所需的环境、入口脚本和其他组件。
 
 有关这些组件的详细信息，请参阅[使用 Azure 机器学习部署模型](how-to-deploy-and-where.md)。
 
@@ -222,7 +205,7 @@ Azure 机器学习与框架无关。 创建模型时，可以使用任何流行�
 
 可以启用 Application Insights 遥测或模型遥测来监视 Web 服务。 遥测数据仅可供你访问。  它存储在你的 Application Insights 和存储帐户实例中。 如果已启用自动缩放，Azure 将自动缩放部署。
 
-下图显示了部署为 web 服务终结点的模型的推理工作流：
+下图显示了部署为 Web 服务终结点的模型的推理工作流：
 
 以下是详细信息：
 
@@ -272,13 +255,13 @@ Azure IoT Edge 将确保模块正在运行并且监视托管它的设备。
 
 Azure 机器学习提供以下监视和日志记录功能：
 
-* 对于 __数据科学家__ ，你可以监视你的实验和记录来自定型运行的信息。 有关详细信息，请参阅以下文章：
+* 对于数据科学家，可监视实验并记录来自训练运行的信息。 有关详细信息，请参阅以下文章：
    * [启动、监视和取消训练运行](how-to-manage-runs.md)
    * [记录训练运行的指标](how-to-track-experiments.md)
-   * [使用 MLflow 对试验进行跟踪](how-to-use-mlflow.md)
+   * [使用 MLflow 跟踪试验](how-to-use-mlflow.md)
    * [使用 TensorBoard 将运行可视化](how-to-monitor-tensorboard.md)
-* 对于 __管理员__ ，你可以使用 Azure Monitor 来监视有关工作区、相关 Azure 资源以及事件（例如资源创建和删除）的信息。 有关详细信息，请参阅 [如何监视 Azure 机器学习](monitor-azure-machine-learning.md)。
-* 对于 __DevOps__ 或 __MLOps__ ，你可以监视部署为 web 服务或 IoT Edge 模块的模型生成的信息，以确定部署的问题并收集提交给该服务的数据。 有关详细信息，请参阅 [收集模型数据](how-to-enable-data-collection.md) 和 [监视器 Application Insights](how-to-enable-app-insights.md)。
+* 对于管理员，可使用 Azure Monitor 监视工作区、相关 Azure 资源及事件（例如资源创建和删除）的相关信息。 有关详细信息，请参阅[如何监视 Azure 机器学习](monitor-azure-machine-learning.md)。
+* 对于 DevOps 或 MLOps，可监视部署为 Web 服务的模型或 IoT Edge 模块生成的信息，以确定部署问题并收集提交给该服务的数据 。 有关详细信息，请参阅[收集模型数据](how-to-enable-data-collection.md)和[使用 Application Insights 进行监视](how-to-enable-app-insights.md)。
 
 ## <a name="interacting-with-your-workspace"></a>与工作区交互
 

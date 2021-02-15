@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: e2ab39f090124aaf590798795f446bda5b0fe48a
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 6faec27bf368b3eb45e05a91307df6027bda93b1
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97008548"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100093992"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Linux 上的 Azure 应用服务常见问题解答
 
@@ -110,7 +110,7 @@ const io = require('socket.io')(server,{
 
 **我使用的是自己的自定义容器。我希望平台将 SMB 共享装载到 `/home/` 目录。**
 
-如果 `WEBSITES_ENABLE_APP_SERVICE_STORAGE` 设置未指定，或者设为 true，则 `/home/` 目录会在缩放实例之间共享，且写入的文件会在重启后保留 。 将 `WEBSITES_ENABLE_APP_SERVICE_STORAGE` 显式设置为 false 会禁用装载。
+如果未 `WEBSITES_ENABLE_APP_SERVICE_STORAGE` **指定** 设置或将其设置为 *false*，则 `/home/` 不会跨缩放实例 **共享** 该目录，并且 **不** 会在重新启动后保留写入的文件。 `WEBSITES_ENABLE_APP_SERVICE_STORAGE`如果将设置为 *true* ，则将启用装入。
 
 **自定义容器需要很长时间才能启动，并且平台在它完成启动之前便重启了容器。**
 
