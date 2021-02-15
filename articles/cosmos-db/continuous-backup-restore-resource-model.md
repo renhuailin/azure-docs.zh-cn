@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/01/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 91421b66af441ed2c7e9c8b66c16ee83f489b03e
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: d838425583638aef5199b52df4869923c826553d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99538488"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100369962"
 ---
 # <a name="resource-model-for-the-azure-cosmos-db-point-in-time-restore-feature-preview"></a>Azure Cosmos DB 时间点还原功能的资源模型 (预览版) 
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -30,14 +30,14 @@ ms.locfileid: "99538488"
 
 ### <a name="backuppolicy"></a>BackupPolicy
 
-"Backuppolicy" 参数下名为 "Type" 的帐户级别备份策略中的新属性启用连续备份和时间点还原功能。 此模式称为 **连续备份**。 在公共预览版中，仅可在创建帐户时设置此模式。 启用后，在此帐户中创建的所有容器和数据库都将具有默认启用的连续备份和时间点还原功能。
+帐户级别备份策略中名为 `Type` "参数" 的新属性 `backuppolicy` 启用连续备份和时间点还原功能。 此模式称为 **连续备份**。 在公共预览版中，仅可在创建帐户时设置此模式。 启用后，在此帐户中创建的所有容器和数据库都将具有默认启用的连续备份和时间点还原功能。
 
 > [!NOTE]
 > 目前，时间点还原功能处于公共预览阶段，适用于 MongoDB Azure Cosmos DB API 和 SQL 帐户。 使用连续模式创建帐户后，不能将其切换为定期模式。
 
 ### <a name="createmode"></a>CreateMode
 
-此属性指示如何创建帐户。 可能的值为 "默认" 和 "还原"。 若要执行还原，请将此值设置为 "Restore"，并在属性中提供相应的值 `RestoreParameters` 。
+此属性指示如何创建帐户。 可能的值为 *Default* 和 *Restore*。 若要执行还原，请将此值设置为 *restore* ，并在属性中提供相应的值 `RestoreParameters` 。
 
 ### <a name="restoreparameters"></a>RestoreParameters
 
@@ -45,7 +45,7 @@ ms.locfileid: "99538488"
 
 |属性名称 |说明  |
 |---------|---------|
-|restoreMode  | 还原模式应为 "PointInTime" |
+|restoreMode  | 还原模式应为 *PointInTime* |
 |restoreSource   |  从中启动还原的源帐户的 instanceId。       |
 |restoreTimestampInUtc  | 应将帐户还原到的时间点（UTC）。 |
 |databasesToRestore   | 对象的列表 `DatabaseRestoreSource` ，用于指定应还原的数据库和容器。 如果此值为空，则还原整个帐户。   |

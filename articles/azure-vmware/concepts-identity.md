@@ -3,12 +3,12 @@ title: 概念-标识和访问
 description: 了解 Azure VMware 解决方案的标识和访问概念
 ms.topic: conceptual
 ms.date: 02/02/2021
-ms.openlocfilehash: 0f58cbdaa641af24cef53c3cfd9604cf1b0c1c3b
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 68f4ce9136cca1cf9bf0824395e31704d8ed1a17
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99538935"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100364879"
 ---
 # <a name="azure-vmware-solution-identity-concepts"></a>Azure VMware 解决方案标识概念
 
@@ -32,7 +32,7 @@ CloudAdmin 组在 vCenter 中提供权限。 你可以在 vCenter 本地管理�
 |  数据存储               | AllocateSpace、Datastore.Config、DeleteFile、FileManagement、、、UpdateVirtualMachineMetadata     |    --    |   -- |
 |  ESX 代理程序管理器       |  --  |         --       |  Microsoft 执行所有操作。  |
 |  文件夹                  |  CloudAdmin 用户具有所有文件夹特权。     |  --  |  --  |
-|  Global                  |  CancelTask、GlobalTag、global. LogEvent、global. ManageCustomFields、ServiceManagers、SetCustomField、temTag、Global.Sys         |                  |    |
+|  全球                  |  CancelTask、GlobalTag、global. LogEvent、global. ManageCustomFields、ServiceManagers、SetCustomField、temTag、Global.Sys         |                  |    |
 |  主机                    |  Cdb-ik-hbr. HbrManagement      |        --          |  Microsoft 执行所有其他主机操作。  |
 |  InventoryService        |  InventoryService 标记      |        --          |  --  |
 |  网络                 |  Network.Assign    |                  |  Microsoft 执行所有其他网络操作。  |
@@ -49,7 +49,7 @@ CloudAdmin 组在 vCenter 中提供权限。 你可以在 vCenter 本地管理�
 
 ## <a name="nsx-t-manager-access-and-identity"></a>NSX-T 管理器访问和标识
 
-使用 "管理员" 帐户访问 NSX-T 管理器。 它具有完全权限，可让你创建和管理 T1 路由器、逻辑交换机和所有服务。 权限使你可以访问 NSX-T T0 路由器。 更改 T0 路由器可能导致网络性能下降或没有私有云访问。 在 Azure 门户中打开支持请求，请求对 NSX-T T0 路由器进行任何更改。
+使用 *管理员* 帐户访问 NSX-T 管理器。 它具有完全权限，可让你创建和管理第1层 (T1) 网关、段 (逻辑交换机) 和所有服务）。 权限使你可以访问 (T0) 网关的 NSX T 层级。 更改 T0 网关可能导致网络性能下降或没有私有云访问。 在 Azure 门户中打开支持请求，请求对你的 NSX-T T0 网关进行任何更改。
   
 ## <a name="next-steps"></a>后续步骤
 

@@ -5,12 +5,12 @@ author: nicolela
 ms.topic: article
 ms.date: 02/04/2021
 ms.author: nicolela
-ms.openlocfilehash: dbe4191b64773b71bc1ae04842d824fbfead8e55
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: 8d5356f7fd2661d9743d1058a147a0b20f62850e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99628140"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100373702"
 ---
 # <a name="set-up-a-lab-for-arcmaparcgis-desktop"></a>设置 ArcMap\ArcGIS Desktop 的实验室
 
@@ -55,7 +55,7 @@ ArcGIS 桌面产品/服务的一种许可类型是 [并发使用许可证](https
 1.  启动模板 VM，并使用 RDP 连接到计算机。
 
 2.  按照 ESRI 中的说明下载并安装 ArcGIS 桌面组件。  这些步骤包括为 "并发使用许可" 分配许可证管理员： 
-    - [安装和配置 ArcGIS Desktop 简介](https://desktop.arcgis.com/arcmap/latest/get-started/installation-guide/introduction.htm)
+    - [安装和配置 ArcGIS Desktop 简介](https://desktop.arcgis.com/en/arcmap/latest/get-started/installation-guide/introduction.htm)
 
 3.  为学生设置外部备份存储。  学生可以将文件直接保存到其分配的 VM，因为它们所做的所有更改都保存在不同的会话中。  但是，我们建议学生将其工作备份到其 VM 外部的存储中，原因如下：
     - 允许学生在类和实验室结束后访问其工作。  
@@ -81,7 +81,7 @@ ArcGIS 桌面产品/服务的一种许可类型是 [并发使用许可证](https
 - 用户断开连接时关闭虚拟机
     - 用户断开连接后15分钟
 
-## <a name="cost"></a>节约成本
+## <a name="cost"></a>Cost
 
 我们来介绍此类的可能的成本估算。 此估计不包括运行许可证服务器的成本。 我们将使用一类25名学生。 计划的类时间有20小时。 此外，每个学生在计划的类时间之外为家庭作业或分配获取10小时配额。 选择的虚拟机大小为 " **中**"，即 "42 实验室单位"。
 

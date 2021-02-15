@@ -1,23 +1,18 @@
 ---
 title: 从 Square 复制数据（预览版）
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 Square 复制到支持的接收器数据存储。
-services: data-factory
-documentationcenter: ''
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/03/2020
-ms.openlocfilehash: 2bfe9115f38c79618924379837dda8014ee31ed5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ac10e42d338e0ddd44cb3c07709645a69653808d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87529358"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100384786"
 ---
 # <a name="copy-data-from-square-using-azure-data-factory-preview"></a>使用 Azure 数据工厂（预览版）从 Square 复制数据
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -135,7 +130,7 @@ Square 支持两种类型的访问令牌：个人和 OAuth 。
 
 ### <a name="square-as-source"></a>Square 作为源
 
-要从 Square 复制数据，请将复制活动中的源类型设置为“SquareSource”  。 复制活动**source**部分支持以下属性：
+要从 Square 复制数据，请将复制活动中的源类型设置为“SquareSource”  。 复制活动 **source** 部分支持以下属性：
 
 | properties | 说明 | 必需 |
 |:--- |:--- |:--- |

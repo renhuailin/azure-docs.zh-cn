@@ -51,7 +51,7 @@
     - name: 容器映像标记和发行说明
       href: ./containers/container-image-tags.md
     - name: 容器常见问题解答
-      href: ./containers/container-faq.md
+      href: ./containers/container-faq.yml
     - name: 容器方案
       items:
         - name: 容器重复使用

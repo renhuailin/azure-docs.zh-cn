@@ -1,23 +1,18 @@
 ---
 title: 使用 Azure 数据工厂从 Sybase 移动数据
 description: 了解如何使用 Azure 数据工厂从 Sybase 数据库移动数据。
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: b379ee10-0ff5-4974-8c87-c95f82f1c5c6
+ms.author: jingwang
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/02/2018
-ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: cefa0c15dd50f95780034dcb63f888a2e1c6b65e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8142ec51f93a066faafa1f3e44d0f87517187425
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84707355"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387234"
 ---
 # <a name="move-data-from-sybase-using-azure-data-factory"></a>使用 Azure 数据工厂从 Sybase 移动数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -47,8 +42,8 @@ SAP Sybase SQL 随处 (ASA) 版本 16 和更高版本；不支持智能和 ASE�
 ## <a name="getting-started"></a>入门
 可以使用不同的工具/API 创建包含复制活动的管道，以从本地 Cassandra 数据存储移动数据。 
 
-- 创建管道的最简单方法是使用**** 复制向导。 请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。 
-- 你还可以使用以下工具创建管道： **Visual Studio**、 **Azure PowerShell**、 **AZURE 资源管理器模板**、 **.net API**和 **REST API**。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。 
+- 创建管道的最简单方法是使用复制向导。 请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。 
+- 你还可以使用以下工具创建管道： **Visual Studio**、 **Azure PowerShell**、 **AZURE 资源管理器模板**、 **.net API** 和 **REST API**。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。 
 
 无论使用工具还是 API，执行以下步骤都可创建管道，以便将数据从源数据存储移到接收器数据存储：
 
@@ -63,7 +58,7 @@ SAP Sybase SQL 随处 (ASA) 版本 16 和更高版本；不支持智能和 ASE�
 ## <a name="linked-service-properties"></a>链接服务属性
 下表提供了有关 Sybase 链接服务专属 JSON 元素的描述。
 
-| 属性 | 说明 | 必须 |
+| properties | 说明 | 必须 |
 | --- | --- | --- |
 | type |“type”属性必须设置为：**OnPremisesSybase** |是 |
 | server |Sybase 服务器的名称。 |是 |
@@ -77,11 +72,11 @@ SAP Sybase SQL 随处 (ASA) 版本 16 和更高版本；不支持智能和 ASE�
 ## <a name="dataset-properties"></a>数据集属性
 有关可用于定义数据集的节和属性的完整列表，请参阅[创建数据集](data-factory-create-datasets.md)一文。 对于所有数据集类型（Azure SQL、Azure Blob、Azure 表等），结构、可用性和数据集 JSON 的策略等部分均类似。
 
-每种数据集的 typeProperties 节有所不同，该部分提供有关数据在数据存储区中的位置信息。 **RelationalTable**类型数据集（包括 Sybase 数据集）的 **typeProperties** 部分具有以下属性：
+每种数据集的 typeProperties 节有所不同，该部分提供有关数据在数据存储区中的位置信息。 **RelationalTable** 类型数据集（包括 Sybase 数据集）的 **typeProperties** 部分具有以下属性：
 
-| 属性 | 说明 | 必须 |
+| properties | 说明 | 必须 |
 | --- | --- | --- |
-| tableName |链接服务指代的 Sybase 数据库实例中表的名称。 |否（如果指定了 **RelationalSource** 的**query**） |
+| tableName |链接服务指代的 Sybase 数据库实例中表的名称。 |否（如果指定了 **RelationalSource** 的 **query**） |
 
 ## <a name="copy-activity-properties"></a>复制活动属性
 有关可用于定义活动的节和属性的完整列表，请参阅[创建管道](data-factory-create-pipelines.md)一文。 名称、说明、输入和输出表格等属性和策略可用于所有类型的活动。
@@ -90,9 +85,9 @@ SAP Sybase SQL 随处 (ASA) 版本 16 和更高版本；不支持智能和 ASE�
 
 当源属于 **RelationalSource** 类型（包括 Sybase）时，以下属性可在 **typeProperties** 节中使用：
 
-| 属性 | 说明 | 允许的值 | 必须 |
+| properties | 说明 | 允许的值 | 必须 |
 | --- | --- | --- | --- |
-| 查询 |使用自定义查询读取数据。 |SQL 查询字符串。 例如：select * from MyTable。 |否（如果指定了**数据集**的 **tableName**） |
+| 查询 |使用自定义查询读取数据。 |SQL 查询字符串。 例如：select * from MyTable。 |否（如果指定了 **数据集** 的 **tableName**） |
 
 
 ## <a name="json-example-copy-data-from-sybase-to-azure-blob"></a>JSON 示例：将数据从 Sybase 复制到 Azure Blob
@@ -146,9 +141,9 @@ SAP Sybase SQL 随处 (ASA) 版本 16 和更高版本；不支持智能和 ASE�
 
 **Sybase 输入数据集：**
 
-该示例假定已在 Sybase 中创建表“MyTable”，并且它包含用于时间序列数据的名为“timestamp”的列。
+该示例假设已在 Sybase 中创建了表 "MyTable"，并且它包含了时序数据的名为 "timestamp" 的列。
 
-“external”: “true” 设置将告知数据工厂服务：此数据集在数据工厂外部，且不由数据工厂中的活动生成。 请注意，链接服务的**类型**设置为：**RelationalTable**。
+设置 "external"： true 将告知数据工厂服务：此数据集在数据工厂外部，且不由数据工厂中的活动生成。 请注意，链接服务的 **类型** 设置为：**RelationalTable**。
 
 ```JSON
 {
@@ -235,7 +230,7 @@ SAP Sybase SQL 随处 (ASA) 版本 16 和更高版本；不支持智能和 ASE�
 
 **复制活动的管道：**
 
-管道包含配置为使用输入和输出数据集，且计划每小时运行一次的复制活动。 在管道 JSON 定义中，将 **source** 类型设置为 **RelationalSource**，将 **sink** 类型设置为 **BlobSink**。 为**查询**属性指定的 SQL 查询从数据库中 DBA.Orders 表中选择数据。
+管道包含配置为使用输入和输出数据集，且计划每小时运行一次的复制活动。 在管道 JSON 定义中，将 **source** 类型设置为 **RelationalSource**，将 **sink** 类型设置为 **BlobSink**。 为 **查询** 属性指定的 SQL 查询从数据库中 DBA.Orders 表中选择数据。
 
 ```JSON
 {

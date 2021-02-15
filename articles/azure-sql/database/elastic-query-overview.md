@@ -11,12 +11,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 12/05/2019
-ms.openlocfilehash: c8f0bb6e0e58d672faa0929d6266e5e2c5a4f1f1
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: cac17bbac96d44d8d9bfce2e168de4ea6d4c5c08
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92781050"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100364947"
 ---
 # <a name="azure-sql-database-elastic-query-overview-preview"></a>Azure SQL 数据库弹性查询概述（预览版）
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -56,8 +56,8 @@ ms.locfileid: "92781050"
 
 弹性查询的客户方案的特征包括以下拓扑：
 
-* **垂直分区 - 跨数据库查询** （拓扑 1）：数据在数据层中的多个数据库之间垂直分区。 通常，不同的表集驻留在不同的数据库上。 这意味着不同数据库上的架构是不同的。 例如，清单的所有表都位于一个数据库上，而与会计相关的所有表都位于第二个数据库上。 采用此拓扑的常见使用案例需要使用一个查询跨多个数据库中的表进行查询或编译报表。
-* **水平分区 - 分片** （拓扑 2）：将数据进行水平分区以将行分布到扩大的数据层上。 使用此方法时，所有参与数据库中的架构是相同的。 此方法也称为“分片”。 可以使用 (1) 弹性数据库客户端库或 (2) 自我分片来执行和管理分片。 可使用弹性查询跨多个分片查询或编译报表。 分片通常是弹性池中的数据库。 可将弹性查询视为一次性查询弹性池的所有数据库的高效方式，前提是数据库共享通用架构。
+* **垂直分区 - 跨数据库查询**（拓扑 1）：数据在数据层中的多个数据库之间垂直分区。 通常，不同的表集驻留在不同的数据库上。 这意味着不同数据库上的架构是不同的。 例如，清单的所有表都位于一个数据库上，而与会计相关的所有表都位于第二个数据库上。 采用此拓扑的常见使用案例需要使用一个查询跨多个数据库中的表进行查询或编译报表。
+* **水平分区 - 分片**（拓扑 2）：将数据进行水平分区以将行分布到扩大的数据层上。 使用此方法时，所有参与数据库中的架构是相同的。 此方法也称为“分片”。 可以使用 (1) 弹性数据库客户端库或 (2) 自我分片来执行和管理分片。 可使用弹性查询跨多个分片查询或编译报表。 分片通常是弹性池中的数据库。 可将弹性查询视为一次性查询弹性池的所有数据库的高效方式，前提是数据库共享通用架构。
 
 > [!NOTE]
 > 弹性查询最适用于可以在外部源端执行大多数处理（筛选、聚合）的报告方案。 它不适用于从远程数据库传输大量数据的 ETL 操作。 对于使用更复杂查询的大量报表工作负荷或数据仓库方案，还可以考虑使用 [Azure Synapse Analytics](https://azure.microsoft.com/services/synapse-analytics)。
@@ -73,13 +73,13 @@ ms.locfileid: "92781050"
 > 必须拥有 ALTER ANY EXTERNAL DATA SOURCE 权限。 此权限包含在 ALTER DATABASE 权限中。 引用基础数据源需要 ALTER ANY EXTERNAL DATA SOURCE 权限。
 >
 
-**引用数据** ：拓扑用于引用数据管理。 在下图中，包含引用数据的两个表（T1 和 T2）保存在专用数据库中。 使用弹性查询，现在可以从其他数据库远程访问表 T1 和 T2，如图中所示。 如果引用表较小或对引用表的远程查询包含选择性谓词，请使用拓扑 1。
+**引用数据**：拓扑用于引用数据管理。 在下图中，包含引用数据的两个表（T1 和 T2）保存在专用数据库中。 使用弹性查询，现在可以从其他数据库远程访问表 T1 和 T2，如图中所示。 如果引用表较小或对引用表的远程查询包含选择性谓词，请使用拓扑 1。
 
 **图 2** 垂直分区 - 使用弹性查询来查询引用数据
 
 ![垂直分区 - 使用弹性查询来查询引用数据][3]
 
-**跨数据库查询** ：弹性查询支持需要在 SQL 数据库中跨多个数据库进行查询的用例。 图 3 显示了四个不同的数据库：CRM、库存、人力资源和产品。 在其中一个数据库中执行的查询还需要访问一个或所有其他数据库。 使用弹性查询时，可以通过在这四个数据库的每个数据库上运行几个简单的 DDL 语句来为此案例配置数据库。 经过此一次性配置后，对远程表的访问就像从 T-SQL 查询或 BI 工具引用本地表一样简单。 如果远程查询不返回大型结果，建议使用此方法。
+**跨数据库查询**：弹性查询支持需要在 SQL 数据库中跨多个数据库进行查询的用例。 图 3 显示了四个不同的数据库：CRM、库存、人力资源和产品。 在其中一个数据库中执行的查询还需要访问一个或所有其他数据库。 使用弹性查询时，可以通过在这四个数据库的每个数据库上运行几个简单的 DDL 语句来为此案例配置数据库。 经过此一次性配置后，对远程表的访问就像从 T-SQL 查询或 BI 工具引用本地表一样简单。 如果远程查询不返回大型结果，建议使用此方法。
 
 **图 3** 垂直分区 - 使用弹性查询来跨多个数据库查询
 
@@ -92,7 +92,7 @@ ms.locfileid: "92781050"
 * **RDBMS** 类型的 [CREATE/DROP EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql) mydatasource
 * [CREATE/DROP EXTERNAL TABLE](/sql/t-sql/statements/create-external-table-transact-sql) mytable
 
-运行 DDL 语句后，可以访问远程表“mytable”就像它是本地表一样。 Azure SQL 数据库会自动打开与远程数据库的连接，处理远程数据库上的请求并返回结果。
+运行 DDL 语句后，可以访问远程表“mytable”，就像它是本地表一样。 Azure SQL 数据库会自动打开与远程数据库的连接，处理远程数据库上的请求并返回结果。
 
 ## <a name="horizontal-partitioning---sharding"></a>水平分区 - 分片
 
@@ -114,13 +114,13 @@ ms.locfileid: "92781050"
 * **SHARD_MAP_MANAGER** 类型的 [CREATE/DROP EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql) mydatasource
 * [CREATE/DROP EXTERNAL TABLE](/sql/t-sql/statements/create-external-table-transact-sql) mytable
 
-执行这些步骤后，便可以访问水平分区的表“mytable”就像它是本地表一样。 Azure SQL 数据库自动打开与远程数据库（在其中表以物理方式存储）的多个并行连接，处理远程数据库上的请求并返回结果。
+执行这些步骤后，便可以访问水平分区的表“mytable”，就像它是本地表一样。 Azure SQL 数据库自动打开与远程数据库（在其中表以物理方式存储）的多个并行连接，处理远程数据库上的请求并返回结果。
 有关水平分区方案所需的步骤的详细信息，可以在[水平分区的弹性查询](elastic-query-horizontal-partitioning.md)中找到。
 
 若要开始编写代码，请参阅[弹性查询入门 - 水平分区（分片）](elastic-query-getting-started.md)。
 
 > [!IMPORTANT]
-> 能否对大量的数据库成功执行弹性查询，在很大程度上取决于执行查询期间每个数据库的可用性。 如果其中的某个数据库不可用，整个查询将会失败。 如果你打算一次性查询数百甚至数千个数据库，请确保客户端应用程序中嵌入了重试逻辑，或者考虑利用[弹性数据库作业](./job-automation-overview.md#elastic-database-jobs-preview)（预览版）并查询一小部分数据库，然后将每个查询的结果合并到一个目标中。
+> 能否对大量的数据库成功执行弹性查询，在很大程度上取决于执行查询期间每个数据库的可用性。 如果其中的某个数据库不可用，整个查询将会失败。 如果你打算一次性查询数百甚至数千个数据库，请确保客户端应用程序中嵌入了重试逻辑，或者考虑利用[弹性数据库作业](./job-automation-overview.md)（预览版）并查询一小部分数据库，然后将每个查询的结果合并到一个目标中。
 
 ## <a name="t-sql-querying"></a>T-SQL 查询
 

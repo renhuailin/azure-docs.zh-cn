@@ -1,22 +1,18 @@
 ---
 title: 将数据从 Amazon S3 迁移到 Azure 存储
 description: 使用 Azure 数据工厂将数据从 Amazon S3 迁移到 Azure 存储。
-services: data-factory
 ms.author: yexu
 author: dearandyxu
-ms.reviewer: ''
-manager: shwang
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 8/04/2019
-ms.openlocfilehash: be1cb7abbc243e3f79e183223fbbb32380f5d02d
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 2be8a9c7476bda6952ed1eaa15d29fe9c01b59a5
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92638034"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100371305"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-amazon-s3-to-azure-storage"></a>使用 Azure 数据工厂将数据从 Amazon S3 迁移到 Azure 存储 
 
@@ -74,7 +70,7 @@ ADF 默认通过 HTTPS 协议使用加密的连接将数据从 Amazon S3 传输�
 
 - 在此体系结构中，数据迁移是通过 AWS Direct Connect 与 Azure Express Route 之间的专用对等互连链路完成的，因此，数据永远不会遍历公共 Internet。  它需要使用 AWS VPC 和 Azure 虚拟网络。 
 - 需要在 Azure 虚拟网络中的 Windows VM 上安装 ADF 自承载集成运行时才能实现此体系结构。  可以手动纵向扩展自承载 IR VM 或横向扩展为多个 VM（最多 4 个节点），以充分利用网络和存储 IOPS/带宽。 
-- 如果可以接受通过 HTTPS 传输数据，但你希望将对源 S3 的网络访问锁定在特定的 IP 范围内，则可以采用此体系结构的一种变体：删除 AWS VPC 并使用 HTTPS 替换专用链路。  你需要在 Azure VM 中保留 Azure 虚拟和自承载 IR，以便可以使用静态的可路由 IP 来实现筛选目的。 
+- 如果可以接受通过 HTTPS 传输数据，但你希望将对源 S3 的网络访问锁定在特定的 IP 范围内，则可以采用此体系结构的一种变体：删除 AWS VPC 并使用 HTTPS 替换专用链路。  你需要在 Azure VM 上保留 Azure Virtual 和自承载 IR，以便使用可公开路由的静态 IP 进行筛选。 
 - 可以使用此体系结构实现初始快照数据迁移和增量数据迁移。 
 
 ## <a name="implementation-best-practices"></a>有关实现的最佳做法 

@@ -1,21 +1,18 @@
 ---
 title: 使用 PowerShell 将数据从本地复制到 Azure
 description: 此 PowerShell 脚本将数据从 SQL Server 数据库复制到其他 Azure Blob 存储。
-services: data-factory
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: article
 ms.author: jingwang
 author: linda33wj
-manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 10/31/2017
-ms.openlocfilehash: bc10017da8561cda09658ec9380cc82095f3ef94
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 34c5497a8b059260dfe60e8015e62c0f1511f021
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92632226"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100373379"
 ---
 # <a name="use-powershell-to-create-a-data-factory-pipeline-to-copy-data-from-sql-server-to-azure"></a>使用 PowerShell 创建用于将数据从 SQL Server 复制到 Azure 的数据工厂管道
 
@@ -27,8 +24,8 @@ ms.locfileid: "92632226"
 
 ## <a name="prerequisites"></a>先决条件
 
-- **SQL Server** 。 在本示例中，需将 SQL Server 数据库用作“源”数据存储。
-- **Azure 存储帐户** 。 本示例使用 Azure Blob 存储作为“目标/接收器”数据存储。 如果没有 Azure 存储帐户，请参阅[创建存储帐户](../../storage/common/storage-account-create.md)一文获取创建步骤。
+- **SQL Server**。 在本示例中，需将 SQL Server 数据库用作“源”数据存储。
+- **Azure 存储帐户**。 本示例使用 Azure Blob 存储作为“目标/接收器”数据存储。 如果没有 Azure 存储帐户，请参阅[创建存储帐户](../../storage/common/storage-account-create.md)一文获取创建步骤。
 - 自承载集成运行时。 从[下载中心](https://www.microsoft.com/download/details.aspx?id=39717)下载并运行 MSI 文件，在计算机上安装自承载集成运行时。  
 
 ### <a name="create-sample-database-in-sql-server"></a>在 SQL Server 中创建示例数据库

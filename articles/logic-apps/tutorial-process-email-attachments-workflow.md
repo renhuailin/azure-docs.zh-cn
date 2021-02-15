@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: tutorial
 ms.custom: mvc, devx-track-csharp
 ms.date: 02/27/2020
-ms.openlocfilehash: 95cc13a79f39888a5be10e423bda4c7cd7c84cb3
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: bd1715dc0a3767bc5826154616bbdc97c7b61dd3
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99054782"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576357"
 ---
 # <a name="tutorial-automate-tasks-to-process-emails-by-using-azure-logic-apps-azure-functions-and-azure-storage"></a>教程：使用 Azure 逻辑应用、Azure Functions 和 Azure 存储来自动执行处理电子邮件的任务
 
@@ -88,7 +88,7 @@ Azure 逻辑应用有助于跨 Azure 服务、Microsoft 服务、其他软件即
 
       ![复制并保存存储帐户名称和密钥](./media/tutorial-process-email-attachments-workflow/copy-save-storage-name-key.png)
 
-   若要获取存储帐户的访问密钥，也可以使用 [Azure PowerShell](/powershell/module/az.storage/get-azstorageaccountkey) 或 [Azure CLI](/cli/azure/storage/account/keys.md#az-storage-account-keys-list)。
+   若要获取存储帐户的访问密钥，也可以使用 [Azure PowerShell](/powershell/module/az.storage/get-azstorageaccountkey) 或 [Azure CLI](/cli/azure/storage/account/keys)。
 
 1. 为电子邮件附件创建 Blob 存储容器。
 

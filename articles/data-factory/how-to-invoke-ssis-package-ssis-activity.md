@@ -1,25 +1,19 @@
 ---
 title: 使用“执行 SSIS 包”活动运行 SSIS 包
 description: 本文介绍如何使用“执行 SSIS 包”活动在 Azure 数据工厂管道中运行 SQL Server Integration Services (SSIS) 包。
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
-ms.workload: data-services
-ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: conceptual
 ms.author: sawinark
 author: swinarko
-ms.reviewer: douglasl
-manager: mflasko
 ms.custom: seo-lt-2019, devx-track-azurepowershell
 ms.date: 07/20/2020
-ms.openlocfilehash: de9cd7e77e558c4d1a0aa62af17bc612eee5ec56
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: 40e7d5c11a2ebc62e59c3d5d20dfefe18a33f9a7
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98555825"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100391603"
 ---
 # <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用“执行 SSIS 包”活动运行 SSIS 包
 
@@ -249,7 +243,7 @@ ms.locfileid: "98555825"
 
       ![从 SSDT 获取连接管理器属性](media/how-to-invoke-ssis-package-ssis-activity/ssdt-connection-manager-properties.png)
 
-      例如，如果不在 SSDT 上修改原始包，可以通过在运行时覆盖现有连接管理器中的 **ConnectByProxy**、 **ConnectionString** 和 **ConnectUsingManagedIdentity** 属性的值，将 SQL Server 上运行的本地数据流数据流转换为在 ADF 中运行的本地到云的数据流。
+      例如，在不修改 SSDT 上的原始包的情况下，可以通过在运行时覆盖现有连接管理器中的 ConnectByProxy、ConnectionString 和 ConnectUsingManagedIdentity 属性的值，将其在 SQL Server 上运行的本地到本地数据流转换为在 ADF 中的 SSIS IR 上运行的本地到云数据流  。
       
       这些运行时重写可以在本地访问数据时启用自承载 IR (SHIR) 作为 SSIS IR 的代理（请参阅[将 SHIR 配置为 SSIS IR 的代理](./self-hosted-integration-runtime-proxy-ssis.md)），以及启用使用最新 MSOLEDBSQL 驱动程序、进而允许使用 ADF 托管标识进行 Azure Active Directory (AAD) 身份验证的 Azure SQL 数据库/托管实例连接（请参阅[为 OLEDB 连接配置使用 ADF 托管标识的 AAD 身份验证](/sql/integration-services/connection-manager/ole-db-connection-manager#managed-identities-for-azure-resources-authentication)）。
 

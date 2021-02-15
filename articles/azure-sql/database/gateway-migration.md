@@ -10,12 +10,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: 01e5095e5ff5c65bff508f4bd526ee5f85e3dc56
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 8fa61855b5647c1caefd939af17b70c9d08c2f8f
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99575154"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100517818"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>将 Azure SQL 数据库流量迁移到更新的网关
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -29,6 +29,22 @@ Azure 基础结构改进后，Microsoft 会定期刷新硬件，以确保提供�
 ## <a name="status-updates"></a>状态更新
 
 # <a name="in-progress"></a>[正在学习](#tab/in-progress-ip)
+## <a name="march-2021"></a>2021 年 3 月
+多个区域中的以下 SQL 网关正在停用：
+
+- 巴西南部：104.41.11。5
+- 东亚：191.234.2.139
+- 美国东部：191.238.6.43
+- 日本东部：191.237.240.43
+- 日本西部：191.238.68.11
+- 北欧：191.235.193.75
+- 美国中南部：23.98.162.75
+- 东南亚：23.100.117.95
+- 西欧：191.237.232.75
+- 美国西部：23.99.34.75
+
+不会对客户造成任何影响，因为这些网关 (在旧版硬件上运行) 不会路由任何客户流量。 这些网关的 IP 地址应在2021年3月15日停用。
+
 ## <a name="february-2021"></a>2021 年 2 月
 正在向以下区域添加新的 SQL 网关：
 

@@ -1,20 +1,17 @@
 ---
 title: 从 MongoDB 移动数据
 description: 了解如何使用 Azure 数据工厂从 MongoDB 数据库移动数据。
-services: data-factory
 author: linda33wj
 ms.author: jingwang
-manager: shwang
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/13/2018
-ms.openlocfilehash: edddd100bddab1d642a8169353298a2d20620274
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cedb0b99f04df00763a3ee83287eec90bd5fb45d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79281335"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387506"
 ---
 # <a name="move-data-from-mongodb-using-azure-data-factory"></a>使用 Azure 数据工厂从 MongoDB 移动数据
 
@@ -44,9 +41,9 @@ ms.locfileid: "79281335"
 ## <a name="getting-started"></a>入门
 可以使用不同的工具/API 创建包含复制活动的管道，以从本地 MongoDB 数据存储移动数据。
 
-创建管道的最简单方法是使用**** 复制向导。 请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。
+创建管道的最简单方法是使用复制向导。 请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。
 
-你还可以使用以下工具创建管道： **Visual Studio**、 **Azure PowerShell**、 **AZURE 资源管理器模板**、 **.net API**和 **REST API**。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
+你还可以使用以下工具创建管道： **Visual Studio**、 **Azure PowerShell**、 **AZURE 资源管理器模板**、 **.net API** 和 **REST API**。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 
 无论使用工具还是 API，执行以下步骤都可创建管道，以便将数据从源数据存储移到接收器数据存储：
 
@@ -77,7 +74,7 @@ ms.locfileid: "79281335"
 ## <a name="dataset-properties"></a>数据集属性
 有关可用于定义数据集的节和属性的完整列表，请参阅[创建数据集](data-factory-create-datasets.md)一文。 对于所有数据集类型（Azure SQL、Azure Blob、Azure 表等），结构、可用性和数据集 JSON 的策略等部分均类似。
 
-每种数据集的 typeProperties 部分有所不同，该部分提供有关数据在数据存储区中的位置信息****。 **MongoDbCollection** 数据集类型的 typeProperties 节具有以下属性：
+每种数据集的 typeProperties 部分有所不同，该部分提供有关数据在数据存储区中的位置信息。 **MongoDbCollection** 数据集类型的 typeProperties 节具有以下属性：
 
 | properties | 说明 | 必须 |
 | --- | --- | --- |
@@ -92,7 +89,7 @@ ms.locfileid: "79281335"
 
 | properties | 说明 | 允许的值 | 必须 |
 | --- | --- | --- | --- |
-| 查询 |使用自定义查询读取数据。 |SQL-92 查询字符串。 例如：select * from MyTable。 |否（如果指定了**数据集**的 **collectionName**） |
+| 查询 |使用自定义查询读取数据。 |SQL-92 查询字符串。 例如：select * from MyTable。 |否（如果指定了 **数据集** 的 **collectionName**） |
 
 
 
@@ -230,7 +227,7 @@ ms.locfileid: "79281335"
 
 **管道中使用 MongoDB 源和 Blob 接收器的复制活动：**
 
-管道包含配置为使用上述输入和输出数据集、且计划每小时运行一次的复制活动。 在管道 JSON 定义中，**源**类型设置为 **MongoDbSource**，**接收器**类型设置为 **BlobSink**。 为 **query** 属性指定的 SQL 查询选择复制过去一小时的数据。
+管道包含配置为使用上述输入和输出数据集、且计划每小时运行一次的复制活动。 在管道 JSON 定义中，**源** 类型设置为 **MongoDbSource**，**接收器** 类型设置为 **BlobSink**。 为 **query** 属性指定的 SQL 查询选择复制过去一小时的数据。
 
 ```json
 {
@@ -312,7 +309,7 @@ Azure 数据工厂服务通过使用 MongoDB 集合中最新的 100 个文档来
 Azure 数据工厂使用内置的 ODBC 驱动程序连接到 MongoDB 数据库，并从中复制数据。 对于数组或文档间不同类型的对象等复杂类型，该驱动程序会将数据重新标准化到相应虚拟表中。 具体而言，如果表中包含此类列，该驱动程序会生成以下虚拟表：
 
 * **基表**，其中包含与实际表相同的数据（复杂类型列除外）。 基表使用与其所表示的实际表相同的名称。
-* 对于每个复杂类型列生成一个**虚拟表**，这会扩展嵌套数据。 使用实际表名称、分隔符“_”和数组或对象的名称，对虚拟表命名。
+* 对于每个复杂类型列生成一个 **虚拟表**，这会扩展嵌套数据。 使用实际表名称、分隔符“_”和数组或对象的名称，对虚拟表命名。
 
 虚拟表引用实际表中的数据，以使驱动程序能访问非规范化的数据。 有关详细信息，请参阅下方“示例”部分。 通过查询和联接虚拟表，可访问 MongoDB 数组的内容。
 

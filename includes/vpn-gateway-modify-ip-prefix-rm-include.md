@@ -5,18 +5,16 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 02/14/2019
+ms.date: 02/10/2021
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 76a602ae722bd975e634631819ebc703e8896c98
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 7dd255e9767309c7b273dccfa0ee5675eed18568
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96026937"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100380470"
 ---
-### <a name="to-modify-local-network-gateway-ip-address-prefixes---no-gateway-connection"></a><a name="noconnection"></a>修改本地网关 IP 地址前缀 - 无网关连接
-
 添加其他地址前缀：
 
 1. 设置 LocalNetworkGateway 的变量。
@@ -24,7 +22,7 @@ ms.locfileid: "96026937"
    ```azurepowershell-interactive
    $local = Get-AzLocalNetworkGateway -Name Site1 -ResourceGroupName TestRG1
    ```
-2. 修改前缀。
+1. 修改前缀。
 
    ```azurepowershell-interactive
    Set-AzLocalNetworkGateway -LocalNetworkGateway $local `
@@ -40,50 +38,9 @@ ms.locfileid: "96026937"
    ```azurepowershell-interactive
    $local = Get-AzLocalNetworkGateway -Name Site1 -ResourceGroupName TestRG1
    ```
-2. 使用更新的前缀设置网关。
+1. 使用更新的前缀设置网关。
 
    ```azurepowershell-interactive
    Set-AzLocalNetworkGateway -LocalNetworkGateway $local `
    -AddressPrefix @('10.101.0.0/24','10.101.1.0/24')
-   ```
-
-### <a name="to-modify-local-network-gateway-ip-address-prefixes---existing-gateway-connection"></a><a name="withconnection"></a>修改本地网关 IP 地址前缀 - 存在网关连接
-
-如果有一个网关连接并且想要添加或删除包含在本地网关中的 IP 地址前缀，将需要按顺序执行以下步骤。 这会导致 VPN 连接中断一段时间。 修改 IP 地址前缀时，不需删除 VPN 网关。 只需删除连接。
-
-1. 删除连接。
-
-   ```azurepowershell-interactive
-   Remove-AzVirtualNetworkGatewayConnection -Name VNet1toSite1 -ResourceGroupName TestRG1
-   ```
-2. 使用修改的地址前缀设置本地网络网关。
-   
-   设置 LocalNetworkGateway 的变量。
-
-   ```azurepowershell-interactive
-   $local = Get-AzLocalNetworkGateway -Name Site1 -ResourceGroupName TestRG1
-   ```
-   
-   修改前缀。
-   
-   ```azurepowershell-interactive
-   Set-AzLocalNetworkGateway -LocalNetworkGateway $local `
-   -AddressPrefix @('10.101.0.0/24','10.101.1.0/24')
-   ```
-3. 创建连接。 在此示例中，我们配置 IPsec 连接类型。 重新创建连接时，请使用针对配置指定的连接类型。 有关其他连接类型，请参阅 [PowerShell cmdlet](/powershell/module/Azurerm.Network/New-AzureRmVirtualNetworkGatewayConnection) 页面。
-   
-   设置 VirtualNetworkGateway 的变量。
-
-   ```azurepowershell-interactive
-   $gateway1 = Get-AzVirtualNetworkGateway -Name VNet1GW  -ResourceGroupName TestRG1
-   ```
-   
-   创建连接。 此示例使用在步骤 2 中设置的变量 $local。
-
-   ```azurepowershell-interactive
-   New-AzVirtualNetworkGatewayConnection -Name VNet1toSite1 `
-   -ResourceGroupName TestRG1 -Location 'East US' `
-   -VirtualNetworkGateway1 $gateway1 -LocalNetworkGateway2 $local `
-   -ConnectionType IPsec `
-   -RoutingWeight 10 -SharedKey 'abc123'
    ```

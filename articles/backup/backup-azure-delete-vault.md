@@ -3,12 +3,12 @@ title: 删除 Microsoft Azure 恢复服务保管库
 description: 本文介绍了如何先删除依赖项，然后删除 Azure 备份恢复服务保管库。
 ms.topic: conceptual
 ms.date: 06/04/2020
-ms.openlocfilehash: fd941db933d243b83c1c19c7ae0fdfc2d7869b8a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 28a0c4d5f643b980d93df2592da38f5da12dd01a
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91293061"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100520453"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>删除 Azure 备份恢复服务保管库
 
@@ -59,11 +59,11 @@ ms.locfileid: "91293061"
 
 若要停止保护并删除备份数据，请执行以下操作：
 
-1. 在门户中依次转到“恢复服务保管库”、“备份项”。  然后，选择云中的受保护项（例如，Azure 虚拟机、Azure 存储 [Azure 文件服务] 或 Azure 虚拟机上的 SQL Server）。
+1. 在门户中依次转到“恢复服务保管库”、“备份项”。  然后，在 " **备份管理类型** " 列表中，选择 "azure 虚拟机"、"azure 存储"、"azure 文件服务" SQL Server 或 Azure 虚拟机) 上的 "azure 虚拟机" 中的受保护项 (。
 
     ![选择备份类型。](./media/backup-azure-delete-vault/azure-storage-selected.png)
 
-2. 右键单击并选择备份项。 根据该备份项是否受保护，菜单将显示“停止备份”窗格或“删除备份数据”窗格。 
+2. 你将看到该类别的所有项的列表。 右键单击并选择备份项。 根据该备份项是否受保护，菜单将显示“停止备份”窗格或“删除备份数据”窗格。 
 
     - 如果显示了“停止备份”窗格，请从下拉菜单中选择“删除备份数据”。  输入备份项的名称（此字段区分大小写），然后从下拉菜单中选择原因。 输入备注（如果有）。 然后选择“停止备份”。
 
@@ -123,7 +123,7 @@ ms.locfileid: "91293061"
 >如果在不停止备份的情况下删除或丢失了源计算机，则下一个计划的备份将失败。 旧恢复点将根据策略过期，但始终会保留最后一个恢复点，直至你停止备份并删除数据。 为此，可以按照[本部分](#delete-protected-items-on-premises)的这些步骤操作。
 
 1. 打开 MARS 管理控制台，转到“操作”窗格并选择“计划备份”。 
-2. 在“修改或停止计划的备份”页中选择“停止使用此备份计划并删除所有存储的备份”选项。  然后，选择“下一步”****。
+2. 在“修改或停止计划的备份”页中选择“停止使用此备份计划并删除所有存储的备份”选项。  然后，选择“下一步”。
 
     ![修改或停止计划的备份。](./media/backup-azure-delete-vault/modify-schedule-backup.png)
 

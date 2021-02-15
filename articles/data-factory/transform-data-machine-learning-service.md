@@ -1,21 +1,17 @@
 ---
 title: 执行 Azure 机器学习管道
 description: 了解如何在 Azure 数据工厂管道中运行 Azure 机器学习管道。
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.author: daperlov
 author: djpmsft
-manager: anandsub
 ms.date: 07/16/2020
-ms.openlocfilehash: 7239c1516c4a04b57249ea4f39bff4aec9156d72
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: db1816baf0ebc476a132b344d8db3cdbdd170e50
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87337681"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100373923"
 ---
 # <a name="execute-azure-machine-learning-pipelines-in-azure-data-factory"></a>在 Azure 数据工厂中执行 Azure 机器学习管道
 
@@ -50,10 +46,10 @@ ms.locfileid: "87337681"
 
 ## <a name="type-properties"></a>Type 属性
 
-属性 | 说明 | 允许的值 | 必须
+properties | 说明 | 允许的值 | 必须
 -------- | ----------- | -------------- | --------
 name | 管道中活动的名称 | String | 是
-type | Activity 的类型为 "AzureMLExecutePipeline" | 字符串 | 是
+type | Activity 的类型为 "AzureMLExecutePipeline" | String | 是
 linkedServiceName | Azure 机器学习链接服务 | 链接服务引用 | 是
 mlPipelineId | 已发布 Azure 机器学习管道的 ID | 字符串（或带有 resultType 字符串的表达式） | 是
 experimentName | 机器学习管道运行的运行历史记录试验名称 | 字符串（或带有 resultType 字符串的表达式） | 否

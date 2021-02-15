@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy21q1, automl
 ms.date: 08/20/2020
-ms.openlocfilehash: 2b24b6480e4331f3a9470dcbb49e7ad221809187
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 6e686c7b22eb834a096cdd7a67beb6d8d291ef20
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98132076"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100392317"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>自动训练时序预测模型
 
@@ -146,7 +146,7 @@ ForecastTCN（预览版）| ForecastTCN 是一种神经网络模型，旨在处�
 |`forecast_horizon`|定义要预测的未来的时段数。 范围以时序频率为单位。 单位基于预测器应预测出的训练数据的时间间隔，例如每月、每周。|✓|
 |`enable_dnn`|[启用预测 DNN]()。||
 |`time_series_id_column_names`|列名，用于唯一标识多行数据中具有相同时间戳的时序。 如果未定义时序标识符，则假定该数据集为一个时序。 要详细了解单个时序，请查看 [energy_demand_notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand)。||
-|`freq`| 时序数据集频率。 此参数表示预计事件发生的时间段，例如每日、每周、每年等。频率必须为 [pandas 偏移量别名](https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#dateoffset-objects)。||
+|`freq`| 时序数据集频率。 此参数表示事件预计发生的时间段，例如每日、每周、每年等。频率必须是 [pandas 偏移别名](https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#dateoffset-objects)。||
 |`target_lags`|要根据数据频率滞后目标值的行数。 此滞后表示为一个列表或整数。 默认情况下，在独立变量和依赖变量之间的关系不匹配或关联时，应使用滞后。 ||
 |`feature_lags`| 当设置了 `target_lags` 并且 `feature_lags` 设置为 `auto` 时，要滞后的功能将由自动化 ML 自动确定。 启用功能滞后有助于提高准确性。 默认情况下会禁用功能滞后。 ||
 |`target_rolling_window_size`|要用于生成预测值的 *n* 个历史时间段，该值小于或等于训练集大小。 如果省略，则 *n* 为完整训练集大小。 如果训练模型时只想考虑一定量的历史记录，请指定此参数。 详细了解[目标滚动窗口聚合](#target-rolling-window-aggregation)。||
@@ -194,6 +194,14 @@ automl_config = AutoMLConfig(task='forecasting',
                              **forecasting_parameters)
 ```
 
+使用自动 ML 成功训练预测模型所需的数据量受在 `forecast_horizon` `n_cross_validations` `target_lags` `target_rolling_window_size` 配置时指定的、、和值的影响 `AutoMLConfig` 。 
+
+下面的公式计算构建时序功能所需的历史数据量。
+
+所需的最小历史数据： (2 `forecast_horizon`) + # `n_cross_validations` + 最大 (max (`target_lags`) ) `target_rolling_window_size`
+
+对于数据集中任何不满足指定相关设置的所需历史数据量的序列，都将引发错误异常。 
+
 ### <a name="featurization-steps"></a>特征化步骤
 
 在每一个自动化机器学习试验中，默认情况下都会将自动缩放和规范化技术应用于数据。 这些技术是特征化的类型，用于帮助对不同规模数据的特征敏感的某些算法。 在 [AutoML 中的特征化](how-to-configure-auto-features.md#automatic-featurization)中详细了解默认特征化步骤
@@ -226,7 +234,7 @@ automl_config = AutoMLConfig(task='forecasting',
 若要使用 SDK 来自定义特征化，请在 `AutoMLConfig` 对象中指定 `"featurization": FeaturizationConfig`。 详细了解[自定义特征化](how-to-configure-auto-features.md#customize-featurization)。
 
 >[!NOTE]
-> 由于 SDK 版本1.19， **删除列** 功能已弃用。 在自动 ML 试验中使用数据集之前，请将列从数据集中的列中删除。 
+> 从 SDK 版本1.19 开始，“删除列”功能已弃用。 在自动化 ML 试验中使用数据集之前，作为数据清理过程的一部分，请将数据集中的列删除。 
 
 ```python
 featurization_config = FeaturizationConfig()
@@ -290,11 +298,11 @@ automl_config = AutoMLConfig(task='forecasting',
 
 ### <a name="short-series-handling"></a>短时序处理
 
-如果没有足够的数据点来执行模型开发的训练和验证阶段，自动化 ML 就会将一个时序视为短时序。 数据点的数量因各个试验而异，并且依赖于 max_horizon、交叉验证拆分数以及模型回看的长度，该长度是构建时序功能所需的最长历史记录。 有关准确的计算，请参阅 [short_series_handling_configuration 参考文档](/python/api/azureml-automl-core/azureml.automl.core.forecasting_parameters.forecastingparameters?preserve-view=true&view=azure-ml-py#short-series-handling-configuration)。
+如果没有足够的数据点来执行模型开发的训练和验证阶段，自动化 ML 就会将一个时序视为短时序。 数据点的数量因各个试验而异，并且依赖于 max_horizon、交叉验证拆分数以及模型回看的长度，该长度是构建时序功能所需的最长历史记录。 有关精确的计算，请参阅 [short_series_handling_configuration 参考文档](/python/api/azureml-automl-core/azureml.automl.core.forecasting_parameters.forecastingparameters?preserve-view=true&view=azure-ml-py#short-series-handling-configuration)。
 
 默认情况下，自动化 ML 通过在 `ForecastingParameters` 对象中使用 `short_series_handling_configuration` 参数来提供“短时序处理”。 
 
-若要启用“短序列处理”，还必须定义 `freq` 参数。 为了定义每小时频率，我们将设置 `freq='H'` 。 在 [此处](https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#dateoffset-objects)查看 frequency 字符串选项。 若要更改默认行为 `short_series_handling_configuration = 'auto'`，请更新 `ForecastingParameter` 对象中的 `short_series_handling_configuration` 参数。  
+若要启用“短序列处理”，还必须定义 `freq` 参数。 为了定义每小时频率，我们将设置 `freq='H'`。 查看[此处](https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#dateoffset-objects)的频率字符串选项。 若要更改默认行为 `short_series_handling_configuration = 'auto'`，请更新 `ForecastingParameter` 对象中的 `short_series_handling_configuration` 参数。  
 
 ```python
 from azureml.automl.core.forecasting_parameters import ForecastingParameters
@@ -310,7 +318,7 @@ forecast_parameters = ForecastingParameters(time_column_name='day_datetime',
 |设置|说明
 |---|---
 |`auto`| 下面是“短时序处理”的默认行为 <li> 如果所有时序都短，则填充数据。 <br> <li> 如果并非所有时序都短，则删除短时序。 
-|`pad`| 如果 `short_series_handling_config = pad` 为，则自动 ML 会为找到的每个短序列添加随机值。 下面列出了列类型以及用于填充这些列的内容： <li>对象列，其中包含 NAN <li> 数值列，其中包含 0 <li> 布尔/逻辑列，其中包含 False <li> 目标列填充平均值为零且标准偏差为 1 的随机值。 
+|`pad`| 如果 `short_series_handling_config = pad`，则自动化 ML 会为找到的每个短时序添加随机值。 下面列出了列类型以及用于填充这些列的内容： <li>对象列，其中包含 NAN <li> 数值列，其中包含 0 <li> 布尔/逻辑列，其中包含 False <li> 目标列填充平均值为零且标准偏差为 1 的随机值。 
 |`drop`| 如果 `short_series_handling_config = drop`，则自动化 ML 会删除短时序，并且该短时序不会用于训练或预测。 对这些时序的预测将会返回 NAN。
 |`None`| 不会填充或删除任何时序
 
@@ -368,7 +376,7 @@ day_datetime,store,week_of_year
 重复执行必要的步骤，将此未来数据加载到数据帧，然后运行 `best_run.predict(test_data)` 以预测未来值。
 
 > [!NOTE]
-> 不能预测大于 `forecast_horizon` 的时间段数的值。 必须使用更大的时间范围对模型进行重新训练，才能预测当前时间范围之外的未来值。
+> 启用了和/或后，不支持预测与自动 ML 的预测 `target_lags` `target_rolling_window_size` 。
 
 
 ## <a name="example-notebooks"></a>示例笔记本

@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: pim
-ms.date: 12/08/2020
+ms.date: 02/11/2021
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2a618da7c9a66b8f687c1b75914530080ed56bea
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: b8f05ca02068c82a3839b22b698e49a7be818a56
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905819"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100370540"
 ---
 # <a name="create-an-access-review-of-azure-resource-roles-in-privileged-identity-management"></a>在 Privileged Identity Management 中创建对 Azure 资源角色的访问评审
 
@@ -30,7 +30,7 @@ ms.locfileid: "96905819"
 
 ## <a name="prerequisites"></a>必备条件
 
-[特权角色管理员](../roles/permissions-reference.md#privileged-role-administrator)
+ 若要创建访问评审，你必须被分配到资源的 " [所有者](../../role-based-access-control/built-in-roles.md#owner) " 或 " [用户访问管理员](../../role-based-access-control/built-in-roles.md#user-access-administrator) " Azure 角色。
 
 ## <a name="open-access-reviews"></a>打开访问评审
 

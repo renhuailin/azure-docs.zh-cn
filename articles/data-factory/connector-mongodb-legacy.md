@@ -1,22 +1,18 @@
 ---
 title: 使用旧版从 MongoDB 复制数据
 description: 了解如何在旧的 Azure 数据工厂管道中使用复制活动，将数据从 Mongo DB 复制到支持的接收器数据存储。
-services: data-factory
 author: linda33wj
 ms.author: jingwang
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 08/12/2019
-ms.openlocfilehash: 7cf4be078a7bee0bedbeac4326acb9ca290cde88
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e13a1a5a939d314bdf4500c0827fa13201505016
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91331975"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100368840"
 ---
 # <a name="copy-data-from-mongodb-using-azure-data-factory-legacy"></a>使用 Azure 数据工厂（旧版）从 MongoDB 复制数据
 
@@ -127,9 +123,9 @@ MongoDB 链接的服务支持以下属性：
 
 ### <a name="mongodb-as-source"></a>以 MongoDB 作为源
 
-复制活动**source**部分支持以下属性：
+复制活动 **source** 部分支持以下属性：
 
-| 属性 | 说明 | 必须 |
+| properties | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 复制活动 source 的 type 属性必须设置为：**MongoDbSource** | 是 |
 | 查询 |使用自定义 SQL-92 查询读取数据。 例如：select * from MyTable。 |否（如果指定了数据集中的“collectionName”） |
@@ -171,7 +167,7 @@ MongoDB 链接的服务支持以下属性：
 
 ## <a name="schema-by-data-factory"></a>数据工厂的构架
 
-Azure 数据工厂服务通过使用 MongoDB 集合中**最新的 100 个文档**来推断该集合的架构。 如果这 100 个文档不包含完整架构，则在复制操作期间可能忽略某些列。
+Azure 数据工厂服务通过使用 MongoDB 集合中 **最新的 100 个文档** 来推断该集合的架构。 如果这 100 个文档不包含完整架构，则在复制操作期间可能忽略某些列。
 
 ## <a name="data-type-mapping-for-mongodb"></a>MongoDB 的数据类型映射
 
@@ -186,7 +182,7 @@ Azure 数据工厂服务通过使用 MongoDB 集合中**最新的 100 个文档*
 | NumberInt |Int32 |
 | NumberLong |Int64 |
 | ObjectID |String |
-| 字符串 |String |
+| String |String |
 | UUID |Guid |
 | Object |重新标准化为平展列，以“_”作为嵌套分隔符 |
 
@@ -200,7 +196,7 @@ Azure 数据工厂服务通过使用 MongoDB 集合中**最新的 100 个文档*
 Azure 数据工厂使用内置的 ODBC 驱动程序连接到 MongoDB 数据库，并从中复制数据。 对于数组或文档间不同类型的对象等复杂类型，该驱动程序会将数据重新标准化到相应虚拟表中。 具体而言，如果表中包含此类列，该驱动程序会生成以下虚拟表：
 
 * **基表**，其中包含与实际表相同的数据（复杂类型列除外）。 基表使用与其所表示的实际表相同的名称。
-* 对于每个复杂类型列生成一个**虚拟表**，这会扩展嵌套数据。 使用实际表名称、分隔符“_”和数组或对象的名称，对虚拟表命名。
+* 对于每个复杂类型列生成一个 **虚拟表**，这会扩展嵌套数据。 使用实际表名称、分隔符“_”和数组或对象的名称，对虚拟表命名。
 
 虚拟表引用实际表中的数据，以使驱动程序能访问非规范化的数据。 通过查询和联接虚拟表，可访问 MongoDB 数组的内容。
 

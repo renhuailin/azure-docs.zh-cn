@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/19/2021
-ms.openlocfilehash: 7013a4ab1becd6108d30d8369f1f72bcb3e55c37
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: d48d72a0ccbec67c6700af9120e0dd914db11f32
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98611060"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100374909"
 ---
 # <a name="data-collection-rules-in-azure-monitor-preview"></a>Azure Monitor (预览版中的数据收集规则) 
 数据收集规则 (DCR) 定义传入 Azure Monitor 的数据，并指定应发送或存储数据的位置。 本文概述了数据收集规则，其中包括内容和结构，以及如何创建和使用它们。
@@ -30,7 +30,7 @@ ms.locfileid: "98611060"
 |:---|:---|
 | 数据源 | 监视数据的唯一源，其自身的格式和公开其数据的方法。 数据源的示例包括 Windows 事件日志、性能计数器和 syslog。 每个数据源都与特定数据源类型匹配，如下所述。 |
 | 流 | 唯一的句柄，描述将被转换并架构化为一种类型的一组数据源。 每个数据源都需要一个或多个流，多个数据源可以使用一个流。 流中的所有数据源共享公用架构。 例如，当您想要将特定数据源发送到同一 Log Analytics 工作区中的多个表时，请使用多个流。 |
-| 目标 | 应将数据发送到的目标集。 示例包括 Log Analytics 工作区、Azure Monitor 指标和 Azure 事件中心。 | 
+| Destinations | 应将数据发送到的目标集。 示例包括 Log Analytics 工作区、Azure Monitor 指标和 Azure 事件中心。 | 
 | 数据流 | 应将哪些流发送到哪些目标的定义。 | 
 
 下图显示了数据收集规则的组件及其关系
@@ -80,7 +80,7 @@ ms.locfileid: "98611060"
 - Syslog
   - 从 cron 设施收集调试、关键和紧急事件。
   - 收集 syslog 设备发出的警报、严重事件和紧急事件。
-- 目标
+- Destinations
   - 将所有数据发送到名为 centralWorkspace 的 Log Analytics 工作区。
 
 ```json
@@ -119,7 +119,7 @@ ms.locfileid: "98611060"
           {
             "name": "cloudSecurityTeamEvents",
             "streams": [
-              "Microsoft-WindowsEvent"
+              "Microsoft-Event"
             ],
             "scheduledTransferPeriod": "PT1M",
             "xPathQueries": [
@@ -129,7 +129,7 @@ ms.locfileid: "98611060"
           {
             "name": "appTeam1AppEvents",
             "streams": [
-              "Microsoft-WindowsEvent"
+              "Microsoft-Event"
             ],
             "scheduledTransferPeriod": "PT5M",
             "xPathQueries": [
@@ -182,7 +182,7 @@ ms.locfileid: "98611060"
           "streams": [
             "Microsoft-Perf",
             "Microsoft-Syslog",
-            "Microsoft-WindowsEvent"
+            "Microsoft-Event"
           ],
           "destinations": [
             "centralWorkspace"

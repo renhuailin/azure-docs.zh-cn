@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: yelevin
-ms.openlocfilehash: 66c315132ef0ef4d320e9edd8e9bcc28b2240924
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 3d9e436d636fbd5414367efb0e122748a8e9e2cb
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99805084"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390804"
 ---
 # <a name="normalization-in-azure-sentinel"></a>Azure Sentinel 中的规范化
 
@@ -70,6 +70,9 @@ Azure Sentinel 与 [开源安全事件元数据 (OSSEM) ](https://ossemproject.c
 
 ## <a name="parsers"></a>解析
 
+- [分析内容](#what-is-parsing)
+- [使用查询时间分析器](#using-query-time-parsers)
+
 ### <a name="what-is-parsing"></a>分析内容
 
 使用可用的已定义规范化表的基本集，您将需要 (分析/映射) 数据转换为这些表。 也就是说，您可以将特定数据从其原始格式提取到规范化架构中的已知列。 在 Azure Sentinel 中进行分析时，将在 **查询时** 进行分析：使用 Kusto 查询语言-KQL) 将数据分析构建为 Log Analytics 用户函数 (将现有 (表中的数据（如 CommonSecurityLog、自定义日志表、syslog) ）转换为规范化的表架构。
@@ -77,6 +80,10 @@ Azure Sentinel 与 [开源安全事件元数据 (OSSEM) ](https://ossemproject.c
 另一种分析（在 Azure Sentinel 中尚不受支持）是在 **引入时** ，允许直接将数据收集到规范化表中， () ，因为它引入数据源。 引入时间分析提高了性能，因为直接查询数据模型时无需使用函数。
 
 ### <a name="using-query-time-parsers"></a>使用查询时间分析器
+
+- [安装分析器](#installing-a-parser)
+- [使用分析器](#using-the-parsers)
+- [自定义分析器](#customizing-parsers)
 
 #### <a name="installing-a-parser"></a>安装分析器
 
@@ -119,6 +126,12 @@ Azure Sentinel [官方 GitHub 存储库](https://github.com/Azure/Azure-Sentinel
 
 你可以单击每个单独的分析器并查看其使用的基础函数，并 (或通过其别名直接访问它，如上文) 所述。 请注意，某些分析器可以为方便起见，将原始字段并行保留到规范化字段。 可以在分析程序的查询中轻松编辑此项。
 
+> [!TIP]
+> 可以在任何查询中使用保存的函数，而不是 Azure Sentinel 表，包括搜寻和检测查询。 有关详细信息，请参阅：
+>
+> - [Azure Sentinel 中的数据规范化](normalization.md#parsers)
+> - [分析 Azure Monitor 日志中的文本](/azure/azure-monitor/log-query/parse-text)
+>
 #### <a name="customizing-parsers"></a>自定义分析器
 
 您可以重复以上步骤 (在查询资源管理器中查找分析器) ，单击相关的分析器并查看其函数实现。
@@ -131,6 +144,8 @@ Azure Sentinel [官方 GitHub 存储库](https://github.com/Azure/Azure-Sentinel
 :::image type="content" source="./media/normalization/are-you-sure.png" alt-text="是否确定":::
 
 #### <a name="additional-information"></a>其他信息
+
+JSON、XML 和 CSV 特别适用于在查询时进行分析。 Azure Sentinel 包含用于 JSON、XML 和 CSV 的内置分析函数，以及 JSON 分析工具。  有关详细信息，请参阅 [在 Azure Sentinel 中使用 JSON 字段](https://techcommunity.microsoft.com/t5/azure-sentinel/tip-easily-use-json-fields-in-sentinel/ba-p/768747) (博客) 。 
 
 详细了解 (查询时间分析实现) 在 Log Analytics 中所 [保存的查询](../azure-monitor/log-query/example-queries.md) 。
 

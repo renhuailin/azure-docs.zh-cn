@@ -59,10 +59,8 @@
       href: ./update-application-to-3.0-sdk.md
 - name: 参考
   items:
-    - name: 自定义视觉训练 API
-      href: 'https://go.microsoft.com/fwlink/?linkid=865446'
-    - name: 自定义视觉预测 API
-      href: 'https://go.microsoft.com/fwlink/?linkid=865445'
+    - name: REST API
+      href: 'https://docs.microsoft.com/rest/api/custom-vision/'
     - name: SDK
       items:
         - name: .NET

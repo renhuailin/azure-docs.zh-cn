@@ -1,22 +1,18 @@
 ---
 title: Azure Integration Runtime IP 地址
 description: 了解必须允许来自哪些 IP 地址的入站流量，以便正确配置防火墙来保护对数据存储的网络访问。
-services: data-factory
 ms.author: abnarain
 author: nabhishek
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/06/2020
-ms.openlocfilehash: fb83be59a3ccb11ea8bbd88307596937caa2b354
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 7b663c8d6e5849d39bb8366c82f45e0fd66d77dd
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92638289"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100371390"
 ---
 # <a name="azure-integration-runtime-ip-addresses"></a>Azure Integration Runtime IP 地址
 
@@ -27,11 +23,11 @@ Azure 集成运行时使用的 IP 地址取决于 Azure 集成运行时所在的
 > [!IMPORTANT]  
 > 启用托管虚拟网络的数据流和 Azure Integration Runtime 不支持使用固定 IP 范围。
 >
-> 可以将这些 IP 范围用于数据移动、管道和外部活动执行。 这些 IP 范围可用于在数据存储/网络安全组 (NSG) /防火墙中进行筛选，以便从 Azure 集成运行时进行入站访问。 
+> 可以将这些 IP 范围用于数据移动、管道和外部活动执行。 这些 IP 范围可用于数据存储/网络安全组 (NSG)/防火墙中的筛选，以便通过 Azure 集成运行时进行入站访问。 
 
 ## <a name="azure-integration-runtime-ip-addresses-specific-regions"></a>Azure 集成运行时 IP 地址：特定的区域
 
-对于资源所在的特定 Azure 区域中的 Azure Integration Runtime ，允许来自为其列出的 IP 地址的流量。 可以从[服务标记 IP 范围下载链接](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)中获取服务标记的 IP 范围列表。 例如，如果 Azure 区域为 **AustraliaEast** ，则可以从 DATAFACTORY 获取 IP 范围列表 **。**
+对于资源所在的特定 Azure 区域中的 Azure Integration Runtime ，允许来自为其列出的 IP 地址的流量。 可以从[服务标记 IP 范围下载链接](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)中获取服务标记的 IP 范围列表。 例如，如果 Azure 区域为 **AustraliaEast**，则可以从 DATAFACTORY 获取 IP 范围列表 **。**
 
 
 ## <a name="known-issue-with-azure-storage"></a>Azure 存储的已知问题

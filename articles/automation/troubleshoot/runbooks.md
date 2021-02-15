@@ -2,16 +2,15 @@
 title: 排查 Azure 自动化 Runbook 问题
 description: 本文介绍如何排查和解决 Azure 自动化 Runbook 的问题。
 services: automation
-ms.subservice: ''
-ms.date: 11/03/2020
+ms.date: 02/11/2021
 ms.topic: troubleshooting
 ms.custom: has-adal-ref
-ms.openlocfilehash: e154284df8eaad798c5cfaf4de69c40601863cf4
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 0ae7af848fd3ceb1d5b186a5a326c8fa43a69d24
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99053663"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100388016"
 ---
 # <a name="troubleshoot-runbook-issues"></a>排查 Runbook 问题
 
@@ -224,37 +223,46 @@ The subscription named <subscription name> cannot be found.
 
 ### <a name="cause"></a>原因
 
-Runbook 在运行时没有使用正确的上下文。
+Runbook 在运行时没有使用正确的上下文。 这可能是因为 runbook 无意中尝试访问不正确的订阅。
+
+你可能会看到如下错误：
+
+```error
+Get-AzVM : The client '<automation-runas-account-guid>' with object id '<automation-runas-account-guid>' does not have authorization to perform action 'Microsoft.Compute/virtualMachines/read' over scope '/subscriptions/<subcriptionIdOfSubscriptionWichDoesntContainTheVM>/resourceGroups/REsourceGroupName/providers/Microsoft.Compute/virtualMachines/VMName '.
+   ErrorCode: AuthorizationFailed
+   StatusCode: 403
+   ReasonPhrase: Forbidden Operation
+   ID : <AGuidRepresentingTheOperation> At line:51 char:7 + $vm = Get-AzVM -ResourceGroupName $ResourceGroupName -Name $UNBV... +
+```
 
 ### <a name="resolution"></a>解决方法
 
-当某个 Runbook 调用多个 Runbook 时，订阅上下文可能会丢失。 为确保将订阅上下文传递给 Runbook，请让客户端 Runbook 在 `AzureRmContext` 参数中向 `Start-AzureRmAutomationRunbook` cmdlet 传递上下文。 在将 `Scope` 参数设置为 `Process` 的情况下使用 `Disable-AzureRmContextAutosave` cmdlet 可确保指定的凭据仅用于当前 Runbook。 有关详细信息，请参阅[订阅](../automation-runbook-execution.md#subscriptions)。
+当某个 Runbook 调用多个 Runbook 时，订阅上下文可能会丢失。 若要避免意外尝试访问不正确的订阅，应遵循以下指导。
 
-```azurepowershell-interactive
-# Ensures that any credentials apply only to the execution of this runbook
-Disable-AzContextAutosave –Scope Process
+* 若要避免引用错误的订阅，请在每个 runbook 开始时使用以下代码禁用自动化 runbook 中的上下文保存。
 
-# Connect to Azure with Run As account
-$ServicePrincipalConnection = Get-AutomationConnection -Name 'AzureRunAsConnection'
+   ```azurepowershell-interactive
+   Disable-AzContextAutosave –Scope Process
+   ```
 
-Connect-AzAccount `
-    -ServicePrincipal `
-    -Tenant $ServicePrincipalConnection.TenantId `
-    -ApplicationId $ServicePrincipalConnection.ApplicationId `
-    -CertificateThumbprint $ServicePrincipalConnection.CertificateThumbprint
+* Azure PowerShell cmdlet 支持 `-DefaultProfile` 参数。 此操作已添加到所有 Az 和 AzureRm cmdlet 以支持在同一进程中运行多个 PowerShell 脚本，从而使你可以指定上下文和要用于每个 cmdlet 的订阅。 使用 runbook 时，应在创建 runbook 时将上下文对象保存在 runbook 中 (即，当帐户登录) 时和每次更改时，并在指定 Az cmdlet 时引用上下文。
 
-$AzContext = Select-AzSubscription -SubscriptionId $ServicePrincipalConnection.SubscriptionID
+   > [!NOTE]
+   > 即使使用 [AzContext](/powershell/module/az.accounts/Set-AzContext) 或 [AzSubscription](/powershell/module/servicemanagement/azure.service/set-azuresubscription)等 cmdlet 直接操作上下文，也应该传入上下文对象。
 
-$params = @{"VMName"="MyVM";"RepeatCount"=2;"Restart"=$true}
-
-Start-AzAutomationRunbook `
-    –AutomationAccountName 'MyAutomationAccount' `
-    –Name 'Test-ChildRunbook' `
-    -ResourceGroupName 'LabRG' `
-    -AzContext $AzContext `
-    –Parameters $params –wait
-```
-
+   ```azurepowershell-interactive
+   $servicePrincipalConnection=Get-AutomationConnection -Name $connectionName 
+   $context = Add-AzAccount `
+             -ServicePrincipal `
+             -TenantId $servicePrincipalConnection.TenantId `
+             -ApplicationId $servicePrincipalConnection.ApplicationId `
+             -Subscription 'cd4dxxxx-xxxx-xxxx-xxxx-xxxxxxxx9749' `
+             -CertificateThumbprint $servicePrincipalConnection.CertificateThumbprint 
+   $context = Set-AzContext -SubscriptionName $subscription `
+       -DefaultProfile $context
+   Get-AzVm -DefaultProfile $context
+   ```
+  
 ## <a name="scenario-authentication-to-azure-fails-because-multifactor-authentication-is-enabled"></a><a name="auth-failed-mfa"></a>场景：无法在 Azure 中进行身份验证，因为已启用多重身份验证
 
 ### <a name="issue"></a>问题
