@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/29/2021
-ms.openlocfilehash: df393f54e7dfa83c8fc0feab3dbf42a156b296b7
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: a274e96defa8b6b74c046923d87f198029399dd4
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99430456"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100098089"
 ---
 # <a name="indexers-in-azure-cognitive-search"></a>Azure 认知搜索中的索引器
 
@@ -27,7 +27,7 @@ Azure 认知搜索中的 *索引器* 是一种爬网程序，它从外部 Azure 
 
 您可以使用索引器作为数据引入的唯一方法，也可以将其作为加载和选择性地转换或丰富内容的技术组合的一部分。 下表汇总了主要方案。
 
-| 方案 |策略 |
+| 场景 |策略 |
 |----------|---------|
 | 单个数据源 | 此模式是最简单的模式：一个数据源是搜索索引的唯一内容提供程序。 在源中，您将标识一个字段，其中包含用于在搜索索引中充当文档键的唯一值。 将使用唯一值作为标识符。 所有其他源字段将隐式或显式映射到索引中的相应字段。 </br></br>一个重要的要点在于是，文档键的值源自源数据。 搜索服务不生成键值。 在后续运行中，将添加包含新密钥的传入文档，而包含现有密钥的传入文档会合并或覆盖，具体取决于索引字段是 null 还是填充。 |
 | 多个数据源 | 索引可以接受来自多个源的内容，其中每个源都从不同的源中引入了新的内容。 </br></br>其中一项结果可能是在每个索引器运行后获得文档的索引，其中的整个文档完全由每个源创建。 例如，文档1-100 来自 Blob 存储，文档101-200 来自 Azure SQL 等。 此方案的难题在于设计适用于所有传入数据的索引架构，以及在搜索索引中统一的文档键结构。 在本机中，唯一标识文档的值在 blob 容器中 metadata_storage_path，在 SQL 表中是主键。 您可以想象，无论内容来源如何，都必须修改一个或两个源来提供公共格式的键值。 对于这种情况，应执行一定程度的预处理来 homogenize 数据，以便将数据提取到单个索引中。 </br></br>另一种结果可能是搜索在第一次运行时部分填充的文档，然后后续运行会进一步填充这些文档以引入来自其他源的值。 例如，1-10 域是从 Blob 存储、11-20 到 Azure SQL 等。 此模式的难题是确保每个索引运行都面向相同的文档。 若要将字段合并到现有文档中，则需要对文档键进行匹配。 有关此方案的演示，请参阅 [教程：来自多个数据源的索引](tutorial-multiple-data-sources.md)。 |
@@ -118,6 +118,7 @@ Azure 认知搜索中的 *索引器* 是一种爬网程序，它从外部 Azure 
 现在，您已介绍了，下一步是查看索引器属性和参数、计划和索引器监视。 或者，您可以返回到 [支持的数据源](#supported-data-sources) 列表，以获取有关特定源的详细信息。
 
 + [创建索引器](search-howto-create-indexers.md)
++ [重置并运行索引器](search-howto-run-reset-indexers.md)
 + [计划索引器](search-howto-schedule-indexers.md)
 + [定义字段映射](search-indexer-field-mappings.md)
 + [监视器索引器状态](search-howto-monitor-indexers.md)

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/27/2021
 ms.author: yelevin
-ms.openlocfilehash: 11c5c77623fcc693210d5a42bf94c968e884fec3
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 2a6e31115fb2548f8248f741213970605f230036
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98920014"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390719"
 ---
 # <a name="useful-resources-for-working-with-azure-sentinel"></a>使用 Azure Sentinel 的有用资源
 
@@ -75,15 +75,6 @@ Azure Sentinel 的审核日志保留在 [Azure 活动日志](../azure-monitor/pl
     ```
 
 
-
-## <a name="vendor-documentation"></a>供应商文档
-
-| **供应商**  | **在 Azure Sentinel 中使用事件** | **链接**|
-|----|----|----|
-| GitHub| 用于访问社区页面| <https://github.com/Azure/Azure-Sentinel> |
-| PaloAlto| 配置 CEF| <https://www.paloaltonetworks.com/documentation/misc/cef.html>|
-| PluralSight | Kusto 查询语言课程| [https://www.pluralsight.com/courses/kusto-query-language-kql-from-scratch](https://www.pluralsight.com/courses/kusto-query-language-kql-from-scratch)|
-
 ## <a name="blogs-and-forums"></a>博客和论坛
 
 我们非常乐意听取用户的意见！
@@ -96,8 +87,6 @@ Azure Sentinel 的审核日志保留在 [Azure 活动日志](../azure-monitor/pl
 
     - [TechCommunity](https://techcommunity.microsoft.com/t5/Azure-Sentinel/bg-p/AzureSentinelBlog) 
     - [Microsoft Azure](https://azure.microsoft.com/blog/tag/azure-sentinel/)
-
-有关 Azure 安全性和符合性的详细信息，请参阅 [Microsoft Azure 安全与合规性博客](https://techcommunity.microsoft.com/t5/microsoft-security-and/bg-p/MicrosoftSecurityandCompliance)。
 
 
 ## <a name="next-steps"></a>后续步骤

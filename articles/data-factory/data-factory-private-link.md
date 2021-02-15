@@ -1,22 +1,18 @@
 ---
 title: 用于 Azure 数据工厂的 Azure 专用链接
 description: 了解 azure 专用链接在 Azure 数据工厂中的工作原理。
-services: data-factory
 ms.author: abnarain
 author: nabhishek
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/01/2020
-ms.openlocfilehash: a1b5ba56d30124bea7a814c2ffcf0cfff28903aa
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: 9e4d686f582a202dbc543620c7bf73dc4e7adb22
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99062182"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100389172"
 ---
 # <a name="azure-private-link-for-azure-data-factory"></a>用于 Azure 数据工厂的 Azure 专用链接
 
@@ -80,14 +76,14 @@ Azure 数据工厂与客户虚拟网络之间需要几个信道，如下表所�
 | ---------- | -------- | --------------- |
 | DataFactoryA.{region}. datafactory | CNAME   | DataFactoryA.{region}. privatelink. datafactory |
 | DataFactoryA.{region}. privatelink. datafactory | CNAME   | < 数据工厂服务公共终结点 > |
-| < 数据工厂服务公共终结点 >  | A | < 数据工厂服务公共 IP 地址 > |
+| < 数据工厂服务公共终结点 >  | 包含当前请求的 URL 的 | < 数据工厂服务公共 IP 地址 > |
 
 当在承载专用终结点的 VNet 中解析时，DataFactoryA 的 DNS 资源记录将为：
 
 | 名称 | 类型 | 值 |
 | ---------- | -------- | --------------- |
 | DataFactoryA.{region}. datafactory | CNAME   | DataFactoryA.{region}. privatelink. datafactory |
-| DataFactoryA.{region}. privatelink. datafactory   | A | < 专用终结点 IP 地址 > |
+| DataFactoryA.{region}. privatelink. datafactory   | 包含当前请求的 URL 的 | < 专用终结点 IP 地址 > |
 
 如果在网络上使用自定义 DNS 服务器，则客户端必须能够将数据工厂端点的 FQDN 解析到专用终结点 IP 地址。 应将 DNS 服务器配置为将专用链接子域委托给 VNet 的专用 DNS 区域，或为 "DataFactoryA" 配置 A 记录。具有专用终结点 IP 地址的 {region}. privatelink. datafactory。
 

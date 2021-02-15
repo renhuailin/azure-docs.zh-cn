@@ -5,7 +5,7 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: troubleshooting
-ms.date: 12/11/2020
+ms.date: 02/12/2021
 tags: active-directory
 ms.author: mimart
 author: msmimart
@@ -14,12 +14,12 @@ ms.custom:
 - it-pro
 - seo-update-azuread-jan"
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa0d0d032c2ab6ae1d6c5e6b1c8b1793a6b3bd7c
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 60cd944ecb144a30e872259f6e959a11c3ea6319
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99090631"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100365423"
 ---
 # <a name="troubleshooting-azure-active-directory-b2b-collaboration"></a>Azure Active Directory B2B 协作故障排除
 
@@ -27,7 +27,7 @@ ms.locfileid: "99090631"
 
    > [!IMPORTANT]
    > - 从 2021 年 1 月 4 日开始，Google 将[弃用 WebView 登录支持](https://developers.googleblog.com/2020/08/guidance-for-our-effort-to-block-less-secure-browser-and-apps.html)。 如果要通过 Gmail 使用 Google 联合身份验证或自助服务注册，则应[测试业务线本机应用程序的兼容性](google-federation.md#deprecation-of-webview-sign-in-support)。
-   > - **从 2021 年 3 月 31 日起**，Microsoft 将不再支持通过创建用于 B2B 协作方案的非托管 Azure AD 帐户和租户进行邀请兑换。 在准备期间，我们鼓励客户选择参与[电子邮件一次性密码身份验证](one-time-passcode.md)。 我们欢迎你提供有关此公共预览版功能的反馈，并且很乐意创建更多的协作方式。
+   > - **从2021年10月开始**，Microsoft 将不再支持通过创建非托管 Azure AD 帐户和用于 B2B 协作方案的租户来兑换邀请。 在准备期间，我们鼓励客户选择参与[电子邮件一次性密码身份验证](one-time-passcode.md)。 我们欢迎你提供有关此公共预览版功能的反馈，并且很乐意创建更多的协作方式。
 
 ## <a name="ive-added-an-external-user-but-do-not-see-them-in-my-global-address-book-or-in-the-people-picker"></a>我已添加外部用户，但在全局通讯簿或人员选取器中看不到这些用户
 
@@ -112,7 +112,7 @@ ms.locfileid: "99090631"
 
 使用自助服务注册功能（如自定义用户属性或用户流）时， `aad-extensions-app. Do not modify. Used by AAD for storing user data.` 会自动创建一个名为的应用。 Azure AD 外部标识使用它来存储有关注册和收集的自定义属性的用户的信息。
 
-如果意外删除了 `aad-extensions-app` ，则可以在30天内恢复。 你可以使用 Azure AD PowerShell 模块还原应用。
+如果将 `aad-extensions-app` 意外删除，则你有 30 天的时间可以恢复它。 你可以使用 Azure AD PowerShell 模块还原应用。
 
 1. 启动 Azure AD PowerShell 模块并运行 `Connect-AzureAD` 。
 1. 以全局管理员身份登录要恢复已删除应用的 Azure AD 租户。

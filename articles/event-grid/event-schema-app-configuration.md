@@ -2,20 +2,18 @@
 title: 作为事件网格源 Azure 应用配置
 description: 本文介绍如何使用 Azure 应用配置作为事件网格事件源。 其中提供了架构，以及教程和操作指南文章的链接。
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: d305236e8408052be4be28ec003f4e545119fc59
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.date: 02/11/2021
+ms.openlocfilehash: a64c6fead5e6d95ba11bc98d7e9a52e3021c3be2
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99550668"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100366766"
 ---
 # <a name="azure-app-configuration-as-an-event-grid-source"></a>将配置作为事件网格源 Azure 应用
 本文提供 Azure 应用程序配置事件的属性和架构。 有关事件架构的简介，请参阅 [Azure 事件网格事件架构](event-schema.md)。 它还提供了一个快速入门和教程列表，以将 Azure 应用配置作为事件来源。
 
-## <a name="event-grid-event-schema"></a>事件网格事件架构
-
-### <a name="available-event-types"></a>可用事件类型
+## <a name="available-event-types"></a>可用事件类型
 
 Azure 应用程序配置会发出以下事件类型：
 
@@ -24,8 +22,9 @@ Azure 应用程序配置会发出以下事件类型：
 | Microsoft.AppConfiguration.KeyValueModified | 创建或替换键/值时引发。 |
 | Microsoft.AppConfiguration.KeyValueDeleted | 删除键/值时引发。 |
 
-### <a name="example-event"></a>示例事件
+## <a name="example-event"></a>示例事件
 
+# <a name="event-grid-event-schema"></a>[事件网格事件架构](#tab/event-grid-event-schema)
 以下示例显示键/值修改事件的架构： 
 
 ```json
@@ -63,29 +62,87 @@ Azure 应用程序配置会发出以下事件类型：
   "metadataVersion": "1"
 }]
 ```
- 
-### <a name="event-properties"></a>事件属性
+# <a name="cloud-event-schema"></a>[云事件架构](#tab/cloud-event-schema)
+
+以下示例显示键/值修改事件的架构： 
+
+```json
+[{
+  "id": "84e17ea4-66db-4b54-8050-df8f7763f87b",
+  "source": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testrg/providers/microsoft.appconfiguration/configurationstores/contoso",
+  "subject": "https://contoso.azconfig.io/kv/Foo?label=FizzBuzz",
+  "data": {
+    "key": "Foo",
+    "label": "FizzBuzz",
+    "etag": "FnUExLaj2moIi4tJX9AXn9sakm0"
+  },
+  "type": "Microsoft.AppConfiguration.KeyValueModified",
+  "time": "2019-05-31T20:05:03Z",
+  "specversion": "1.0"
+}]
+```
+
+键/值删除事件的架构与此类似： 
+
+```json
+[{
+  "id": "84e17ea4-66db-4b54-8050-df8f7763f87b",
+  "source": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testrg/providers/microsoft.appconfiguration/configurationstores/contoso",
+  "subject": "https://contoso.azconfig.io/kv/Foo?label=FizzBuzz",
+  "data": {
+    "key": "Foo",
+    "label": "FizzBuzz",
+    "etag": "FnUExLaj2moIi4tJX9AXn9sakm0"
+  },
+  "type": "Microsoft.AppConfiguration.KeyValueDeleted",
+  "time": "2019-05-31T20:05:03Z",
+  "specversion": "1.0"
+}]
+```
+
+---
+
+## <a name="event-properties"></a>事件属性
+
+# <a name="event-grid-event-schema"></a>[事件网格事件架构](#tab/event-grid-event-schema)
+事件具有以下顶级数据：
+
+| 属性 | 类型 | 说明 |
+| -------- | ---- | ----------- |
+| `topic` | 字符串 | 事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。 |
+| `subject` | string | 事件主题的发布者定义路径。 |
+| `eventType` | 字符串 | 此事件源的一个注册事件类型。 |
+| `eventTime` | string | 基于提供程序 UTC 时间的事件生成时间。 |
+| `id` | 字符串 | 事件的唯一标识符。 |
+| `data` | 对象 (object) | 应用配置事件数据。 |
+| `dataVersion` | string | 数据对象的架构版本。 发布者定义架构版本。 |
+| `metadataVersion` | string | 事件元数据的架构版本。 事件网格定义顶级属性的架构。 事件网格提供此值。 |
+
+
+# <a name="cloud-event-schema"></a>[云事件架构](#tab/cloud-event-schema)
 
 事件具有以下顶级数据：
 
 | 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
-| 主题 | string | 事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。 |
-| subject | string | 事件主题的发布者定义路径。 |
-| eventType | string | 此事件源的一个注册事件类型。 |
-| EventTime | string | 基于提供程序 UTC 时间的事件生成时间。 |
-| ID | 字符串 | 事件的唯一标识符。 |
-| data | object | 应用配置事件数据。 |
-| dataVersion | string | 数据对象的架构版本。 发布者定义架构版本。 |
-| metadataVersion | string | 事件元数据的架构版本。 事件网格定义顶级属性的架构。 事件网格提供此值。 |
+| `source` | string | 事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。 |
+| `subject` | string | 事件主题的发布者定义路径。 |
+| `type` | string | 此事件源的一个注册事件类型。 |
+| `time` | 字符串 | 基于提供程序 UTC 时间的事件生成时间。 |
+| `id` | 字符串 | 事件的唯一标识符。 |
+| `data` | 对象 (object) | 应用配置事件数据。 |
+| `specversion` | 字符串 | CloudEvents 架构规范版本。 |
+
+---
 
 数据对象具有以下属性：
 
-| 属性 | 类型 | 描述 |
+| properties | 类型 | 说明 |
 | -------- | ---- | ----------- |
-| key | 字符串 | 已修改或已删除的键/值的键。 |
-| label | 字符串 | 已修改或已删除的键/值的标签（如果有）。 |
-| etag | 字符串 | 对于 `KeyValueModified`，为新键/值的 etag。 对于 `KeyValueDeleted`，为已删除的键/值的 etag。 |
+| `key` | 字符串 | 已修改或已删除的键/值的键。 |
+| `label` | 字符串 | 已修改或已删除的键/值的标签（如果有）。 |
+| `etag` | 字符串 | 对于 `KeyValueModified`，为新键/值的 etag。 对于 `KeyValueDeleted`，为已删除的键/值的 etag。 |
+
 
 ## <a name="tutorials-and-how-tos"></a>教程和操作指南
 

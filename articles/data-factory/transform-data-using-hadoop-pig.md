@@ -1,22 +1,18 @@
 ---
 title: 使用 Hadoop Pig 活动转换数据
 description: 了解如何使用 Azure 数据工厂中的 Pig 活动在按需或自己的 HDInsight 群集上运行 Pig 脚本。
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 author: nabhishek
 ms.author: abnarain
-manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 05/08/2020
-ms.openlocfilehash: 5bdb1c7f0158b0e45145b41d9960c7c55a0d8ead
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 1d0f5ce9dfbf09023b57accb761b5dd85b0f3599
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92631863"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100375708"
 ---
 # <a name="transform-data-using-hadoop-pig-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用 Hadoop Pig 活动转换数据
 
@@ -59,7 +55,7 @@ ms.locfileid: "92631863"
 ```
 ## <a name="syntax-details"></a>语法详细信息
 
-| properties            | 说明                              | 必选 |
+| properties            | 说明                              | 必须 |
 | ------------------- | ---------------------------------------- | -------- |
 | name                | 活动名称                     | 是      |
 | description         | 描述活动用途的文本 | 否       |

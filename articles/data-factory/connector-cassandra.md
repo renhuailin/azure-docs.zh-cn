@@ -1,22 +1,17 @@
 ---
 title: 使用 Azure 数据工厂从 Cassandra 复制数据
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 Cassandra 复制到支持的接收器数据存储。
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: 4b7fd2de0762de147ad3ceae0d562a1c78b33dc2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a3cd3c3ae28ae302e9469a71d00054152a9b5fb5
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81417471"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100383698"
 ---
 # <a name="copy-data-from-cassandra-using-azure-data-factory"></a>使用 Azure 数据工厂从 Cassandra 复制数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -136,7 +131,7 @@ Cassandra 链接的服务支持以下属性：
 
 ### <a name="cassandra-as-source"></a>以 Cassandra 作为源
 
-要从 Cassandra 复制数据，请将复制活动中的源类型设置为“CassandraSource”  。 复制活动**source**部分支持以下属性：
+要从 Cassandra 复制数据，请将复制活动中的源类型设置为“CassandraSource”  。 复制活动 **source** 部分支持以下属性：
 
 | properties | 说明 | 必须 |
 |:--- |:--- |:--- |
@@ -261,7 +256,7 @@ Azure 数据工厂使用内置的 ODBC 驱动程序连接到 Cassandra 数据库
 
 | pk_int | StringSet_value |
 | --- | --- |
-| 1 |A |
+| 1 |包含当前请求的 URL 的 |
 | 1 |B |
 | 1 |C |
 | 3 |A |

@@ -1,23 +1,18 @@
 ---
 title: 移动数据数据管理的网关
 description: 设置数据网关，在本地和云之间移动数据。 使用 Azure 数据工厂中的数据管理网关移动数据。
-services: data-factory
-documentationcenter: ''
 author: nabhishek
-manager: anandsub
-ms.assetid: 7bf6d8fd-04b5-499d-bd19-eff217aa4a9c
+ms.author: abnarain
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 7f07f08cd320d94495403b0f5ae65d60d8dc93b5
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 53fce1744ccbf4289b2415e926e084c90d708a13
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96019678"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100380281"
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>使用数据管理网关在本地源与云之间移动数据
 > [!NOTE]
@@ -61,7 +56,7 @@ ms.locfileid: "96019678"
     ![添加到开始板](./media/data-factory-move-data-between-onprem-and-cloud/OnPremNewDataFactoryAddToStartboard.png)
 
    > [!IMPORTANT]
-   > Azure 数据工厂的名称必须全局唯一。 如果收到错误：**数据工厂名称“ADFTutorialOnPremDF”不可用**，请更改该数据工厂名称（例如改为“yournameADFTutorialOnPremDF”），并尝试再次创建。 执行本教程中的剩余步骤时，请使用此名称取代 ADFTutorialOnPremDF。
+   > Azure 数据工厂的名称必须全局唯一。 如果收到错误： **数据工厂名称 "ADFTutorialOnPremDF" 不可用**，请更改数据工厂的名称， (例如，yournameADFTutorialOnPremDF) 并再次尝试创建。 执行本教程中的剩余步骤时，请使用此名称取代 ADFTutorialOnPremDF。
    >
    > 数据工厂名称可能在将来被注册为 **DNS** 名称，因此将公开可见。
    >
@@ -236,7 +231,7 @@ ms.locfileid: "96019678"
             }
         }
     }     
-    ```     
+    ```       
    请注意以下几点：
 
    * **type** 设置为 **SqlServerTable**。
@@ -384,7 +379,7 @@ ms.locfileid: "96019678"
     可以将管道和数据集放大、缩小、还原、缩放到适当比例和自动定位，以及显示沿袭信息（突出显示所选项的上游和下游项）。  可以双击对象（输入/输出数据集或管道）查看其属性。
 
 ## <a name="monitor-pipeline"></a>监视管道
-本步骤使用 Azure 门户监视 Azure 数据工厂的运行情形。 还可以使用 PowerShell cmdlet 来监视数据集和管道。 有关监视的详细信息，请参阅[监视和管理管道](data-factory-monitor-manage-pipelines.md)。
+在此步骤中，你将使用 Azure 门户来监视 Azure 数据工厂中发生的情况。 还可以使用 PowerShell cmdlet 来监视数据集和管道。 有关监视的详细信息，请参阅[监视和管理管道](data-factory-monitor-manage-pipelines.md)。
 
 1. 在关系图中，双击 **EmpOnPremSQLTable**。  
 

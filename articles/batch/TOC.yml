@@ -3,36 +3,48 @@
 - name: 概述
   items:
     - name: 什么是 Azure Batch？
+      displayName: overview
       href: batch-technical-overview.md
 - name: 快速入门
   expanded: true
   items:
     - name: 运行 Batch 作业 - CLI
+      displayName: 'quickstart, first, create'
       href: quick-create-cli.md
     - name: 运行 Batch 作业 - 门户
+      displayName: 'quickstart, first, create'
       href: quick-create-portal.md
     - name: 运行 Batch 作业 - .NET
+      displayName: 'quickstart, first, create, c#, csharp'
       href: quick-run-dotnet.md
     - name: 运行 Batch 作业 - Python
+      displayName: 'quickstart, first, create'
       href: quick-run-python.md
     - name: 创建 Batch 帐户 - ARM 模板
       href: quick-create-template.md
-      displayName: Resource Manager
+      displayName: 'Resource Manager, quickstart, first, create'
 - name: 教程
   items:
     - name: 并行文件处理 - .NET
+      displayName: 'tutorial, hpc, high-performance, large, c#, csharp'
       href: tutorial-parallel-dotnet.md
     - name: 并行文件处理 - Python
+      displayName: 'tutorial, hpc, high-performance, large'
       href: tutorial-parallel-python.md
     - name: 使用 Arnold 进行场景呈现
+      displayName: tutorial
       href: tutorial-rendering-cli.md
     - name: 使用 Batch Explorer 进行渲染
+      displayName: tutorial
       href: tutorial-rendering-batchexplorer-blender.md
     - name: 并行 R 模拟
+      displayName: 'tutorial, doAzureParallel, rstudio'
       href: tutorial-r-doazureparallel.md
     - name: 将 OCR 与 Batch 和 Functions 配合使用
+      displayName: 'trigger, optical'
       href: tutorial-batch-functions.md
     - name: 将 Python 脚本与数据工厂配合使用
+      displayName: tutorial
       href: tutorial-run-python-batch-azure-data-factory.md
 - name: 示例
   items:
@@ -68,20 +80,20 @@
         - name: 安全最佳做法
           href: security-best-practices.md
     - name: Batch 服务工作流和资源
-      displayName: developer features
+      displayName: 'developer features, core, component, overview'
       href: batch-service-workflow-features.md
       items:
         - name: 批处理帐户
           displayName: storage account
           href: accounts.md
         - name: 节点和池
-          displayName: 'compute node, application package, scaling, schedule, os'
+          displayName: 'compute node, application package, scaling, schedule, os, configuration'
           href: nodes-and-pools.md
         - name: 作业和任务
-          displayName: Batch job
+          displayName: 'Batch job, start task, environment'
           href: jobs-and-tasks.md
         - name: 文件和目录
-          displayName: Batch file
+          displayName: 'Batch file, working directory'
           href: files-and-directories.md
     - name: API 和工具
       href: batch-apis-tools.md
@@ -131,26 +143,34 @@
     - name: 创建和管理池
       items:
         - name: 自动缩放计算机节点
+          displayName: 'scaling, dynamic, formula'
           href: batch-automatic-scaling.md
         - name: 选择计算节点的 VM 大小
           href: batch-pool-vm-sizes.md
         - name: 从云服务迁移到虚拟机池
+          displayName: migrate
           href: batch-pool-cloud-service-to-virtual-machine-configuration.md
         - name: 配置对计算节点的访问权限
+          displayName: 'rdp, ssh, network, remote'
           href: pool-endpoint-configuration.md
         - name: 使用共享映像库创建池
+          displayName: 'managed image, sig'
           href: batch-sig-images.md
         - name: 使用托管映像资源创建池
           href: batch-custom-images.md
         - name: 跨可用性区域创建池
+          displayName: 'region, zonal policy'
           href: create-pool-availability-zones.md
         - name: 在启用磁盘加密的情况下创建池
           href: disk-encryption.md
         - name: 在虚拟网络中创建池
+          displayName: vNet
           href: batch-virtual-network.md
         - name: 创建具有公共 IP 地址的池
+          displayName: static
           href: create-pool-public-ip.md
         - name: 创建不具有公共 IP 地址的池
+          displayName: private
           href: batch-pool-no-public-ip-address.md
         - name: 装载虚拟文件系统
           href: virtual-file-mount.md
@@ -161,17 +181,21 @@
         - name: 使用 Linux 计算节点
           href: batch-linux-nodes.md
         - name: 使用低优先级 VM
+          displayName: 'preempted, surplus, capacity'
           href: batch-low-pri-vms.md
         - name: 检查池和节点错误
+          displayName: 'troubleshoot, failure'
           href: batch-pool-node-error-checking.md
     - name: 为 Batch 创建 CI/CD 管道
+      displayName: 'Azure DevOps, devops, continuous'
       href: batch-ci-cd.md
     - name: 管理作业和任务
       items:
         - name: 作业准备与作业完成任务
+          displayName: 'release, job release'
           href: batch-job-prep-release.md
         - name: 并发节点任务
-          displayName: concurrent
+          displayName: 'variable, maximize'
           href: batch-parallel-node-tasks.md
         - name: 任务依赖项
           href: batch-task-dependencies.md
@@ -182,6 +206,7 @@
         - name: 计划作业以提高效率
           href: batch-job-schedule.md
         - name: 检查作业和任务错误
+          displayName: 'failure, troubleshoot'
           href: batch-job-task-error-checking.md
     - name: 持久性作业和任务输出
       href: batch-task-output.md
@@ -194,29 +219,37 @@
       href: monitoring-overview.md
       items:
         - name: 使用指标和诊断日志
+          displayName: 'alert, monitor'
           href: batch-diagnostics.md
         - name: 使用 Application Insights 进行监视
+          displayName: debug
           href: monitor-application-insights.md
         - name: 按状态对资源计数
           href: batch-get-resource-counts.md
         - name: 有效查询资源
+          displayName: 'monitor, queries'
           href: batch-efficient-list-queries.md
     - name: 使用脚本工具
       items:
         - name: 使用 Azure PowerShell
+          displayName: 'ps, scripting, cmdlet'
           href: batch-powershell-cmdlets-get-started.md
         - name: 使用 Azure CLI
+          displayName: command line
           href: batch-cli-get-started.md
-          items:
-            - name: 使用 Batch CLI 模板
-              href: batch-cli-templates.md
+        - name: 使用 Batch CLI 模板
+          diplayName: extension
+          href: batch-cli-templates.md
     - name: 使用 Batch Node.js SDK
+      displayName: json
       href: batch-nodejs-get-started.md
     - name: 运行工作负荷
       items:
-        - name: MPI 作业
+        - name: MPI
+          displayName: 'multi-instance, message passing interface'
           href: batch-mpi.md
         - name: 容器工作负荷
+          displayName: docker
           href: batch-docker-container-workloads.md
         - name: 渲染
           items:
@@ -231,6 +264,7 @@
             - name: 渲染应用程序参考
               href: batch-rendering-application-reference.md
             - name: 存储和数据移动
+              displayName: 'rendering, assets'
               href: batch-rendering-storage-data-movement.md
             - name: 渲染体系结构
               href: batch-rendering-architectures.md

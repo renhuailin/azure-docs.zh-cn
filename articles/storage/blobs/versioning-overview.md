@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 02/02/2021
+ms.date: 02/09/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 267fd57b2fd359a73d5c1e01568aba14594e9290
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: 692a820bea69071485a973a988ae91bd70b74f35
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99980159"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100380808"
 ---
 # <a name="blob-versioning"></a>Blob 版本控制
 
@@ -28,7 +28,7 @@ Microsoft 建议使用 blob 版本控制来维护以前版本的 blob，以实�
 若要了解如何启用 blob 版本控制，请参阅 [启用和管理 blob 版本控制](versioning-enable.md)。
 
 > [!IMPORTANT]
-> Blob 版本控制无法帮助你从意外删除存储帐户或容器中恢复。 若要防止意外删除存储帐户，请在存储帐户资源上配置 **CannotDelete** 锁。 有关锁定 Azure 资源的详细信息，请参阅 [锁定资源以防止意外更改](../../azure-resource-manager/management/lock-resources.md)。
+> Blob 版本控制无法帮助你从意外删除存储帐户或容器中恢复。 若要防止意外删除存储帐户，请在存储帐户资源上配置一个锁定。 有关锁定 Azure 资源的详细信息，请参阅 [锁定资源以防止意外更改](../../azure-resource-manager/management/lock-resources.md)。 若要防止容器被意外删除，请为存储帐户配置容器软删除。 有关详细信息，请参阅 [容器 (预览) 的软删除 ](soft-delete-container-overview.md)。
 
 [!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
@@ -297,7 +297,7 @@ Blob 存储无法确定两个块是否包含相同的数据。 每个上传和�
 | 如果 blob 软删除和版本控制均已启用 | 完全内容长度的所有现有版本，与层无关。 |
 | 如果启用了 blob 软删除但禁用了版本控制 | 所有现有软删除快照（按完整内容长度），不考虑层级。 |
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 - [启用和管理 blob 版本控制](versioning-enable.md)
 - [创建 blob 的快照](/rest/api/storageservices/creating-a-snapshot-of-a-blob)

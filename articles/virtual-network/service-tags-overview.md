@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 10/30/2020
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: 506e568f44d8dd5354ed7bd3ec20d0c71d484b85
-ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
+ms.openlocfilehash: 41db671e4ab76dc56dc2c01f4852640acfe3fd83
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99475178"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100389733"
 ---
 # <a name="virtual-network-service-tags"></a>虚拟网络服务标记
 <a name="network-service-tags"></a>
@@ -153,6 +153,7 @@ ms.locfileid: "99475178"
 ### <a name="tips"></a>提示 
 - 可记下 JSON 文件中变大的 changeNumber 值，检测相邻两次发布中的更新内容。 每个子部分（例如 Storage.WestUS）都有自己的 changeNumber，该值在出现更改时递增。 任何子部分更改时，文件的 changeNumber 的顶层都将递增。
 - 要通过示例了解如何分析服务标记信息（例如获取美国西部区域存储的所有地址范围），请参阅[服务标记发现 API PowerShell](/powershell/module/az.network/Get-AzNetworkServiceTag?viewFallbackFrom=azps-2.3.2) 文档。
+- 将新的 IP 地址添加到服务标记时，它们将不会在 Azure 中至少使用一周。 这为你提供了更新可能需要跟踪与服务标记相关联的 IP 地址的任何系统的时间。
 
 ## <a name="next-steps"></a>后续步骤
 - 了解如何[创建网络安全组](tutorial-filter-network-traffic.md)。

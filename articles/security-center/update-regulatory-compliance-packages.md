@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/04/2021
 ms.author: memildin
-ms.openlocfilehash: 3fca96c6cf11e0b35cd830fe4c0d8ccac8e66bd2
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 768f686889663d9b1af4b88d84b361ac9460a5a0
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99548858"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100381726"
 ---
-# <a name="customize-the-set-of-standards-in-your-regulatory-compliance-dashboard"></a>自定义合规性仪表板中的标准集
+# <a name="customize-the-set-of-standards-in-your-regulatory-compliance-dashboard"></a>在监管合规仪表板中自定义标准集
 
 Azure 安全中心会不断地将资源的配置与行业标准、法规和基准中的要求进行比较。 **规章相容性仪表板** 根据你满足特定合规性要求的方式，深入了解你的符合性状态。
 
@@ -92,7 +92,7 @@ Microsoft 会自行跟踪法规标准，并随着时间的推移，自动改进�
 
     :::image type="content" source="./media/security-center-compliance-dashboard/compliance-dashboard.png" alt-text="法规符合性仪表板" lightbox="./media/security-center-compliance-dashboard/compliance-dashboard.png":::
 
-## <a name="removing-a-standard-from-your-dashboard"></a>从仪表板中删除标准
+## <a name="remove-a-standard-from-your-dashboard"></a>从仪表板中删除标准
 
 如果任何提供的法规标准与您的组织不相关，则将其从 UI 中删除是一个简单的过程。 这样，你便可以进一步自定义合规性仪表板，仅关注适用于你的标准。
 
@@ -113,7 +113,7 @@ Microsoft 会自行跟踪法规标准，并随着时间的推移，自动改进�
 
     :::image type="content" source="./media/update-regulatory-compliance-packages/remove-standard-confirm.png" alt-text="确认确实要删除所选的规章标准":::
 
-1. 请选择“是”。 将删除此标准。 
+1. 选择 **“是”** 。 将删除此标准。 
 
 
 ## <a name="next-steps"></a>后续步骤

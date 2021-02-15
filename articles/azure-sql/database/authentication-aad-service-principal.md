@@ -8,19 +8,19 @@ ms.topic: conceptual
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
-ms.date: 10/21/2020
-ms.openlocfilehash: 6e397242bd699adcba4737014ebbce72aadc8ec2
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.date: 02/11/2021
+ms.openlocfilehash: 4012cd83cf2e6fe438792a503731729b57a1425c
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92669821"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100380587"
 ---
 # <a name="azure-active-directory-service-principal-with-azure-sql"></a>使用 Azure SQL 的 Azure Active Directory 服务主体
 
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-支持以 Azure AD 应用程序（服务主体）身份在 Azure SQL 数据库 (SQL DB) 和 [Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) 中创建 Azure Active Directory (Azure AD) 用户的功能当前为 **公共预览版** 。
+支持以 Azure AD 应用程序（服务主体）身份在 Azure SQL 数据库 (SQL DB) 和 [Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) 中创建 Azure Active Directory (Azure AD) 用户的功能当前为 **公共预览版**。
 
 > [!NOTE]
 > SQL 托管实例已支持此功能。
@@ -52,7 +52,7 @@ SQL 数据库和 Azure Synapse 现在支持以 Azure AD 应用程序身份运行
 
 为了能够以 Azure AD 应用程序身份在 SQL 数据库和 Azure Synapse 中创建 Azure AD 对象，需要进行以下设置：
 
-1. 分配服务器标识
+1. 分配服务器标识。 分配的服务器标识表示 (MSI) 的托管系统标识。 目前，Azure SQL 的服务器标识不支持 (UMI) 的用户托管标识。
     - 对于新的 Azure SQL 逻辑服务器，请执行以下 PowerShell 命令：
     
     ```powershell
@@ -81,7 +81,7 @@ SQL 数据库和 Azure Synapse 现在支持以 Azure AD 应用程序身份运行
 > [!IMPORTANT]
 > 必须按上述顺序执行步骤 1 和步骤 2。 首先，创建或分配服务器标识，然后授予 [**目录读取者**](../../active-directory/roles/permissions-reference.md#directory-readers)权限。 省略这两个步骤中的一个或同时忽略这两个都会导致以 Azure AD 应用程序身份在 Azure SQL 中创建 Azure AD 对象时发生执行错误。
 >
-> 如果使用服务主体来设置或取消设置 Azure AD 管理员，则该应用程序还必须具有 Azure AD 中的 " [所有](/graph/permissions-reference#application-permissions-18) 应用程序 API" 权限。 若要详细了解 [设置 Azure AD 管理员所需的权限](authentication-aad-service-principal-tutorial.md#permissions-required-to-set-or-unset-the-azure-ad-admin)以及代表 Azure AD 应用程序创建 Azure AD 用户的分步说明，请参阅 [教程：使用 Azure AD 应用程序创建 Azure AD 用户](authentication-aad-service-principal-tutorial.md)。
+> 如果使用服务主体设置或取消设置 Azure AD 管理员，则应用程序还必须具有 Azure AD 中的 [Directory.Read.All](/graph/permissions-reference#application-permissions-18) 应用程序 API 权限。 有关[设置 Azure AD 管理员所需的权限](authentication-aad-service-principal-tutorial.md#permissions-required-to-set-or-unset-the-azure-ad-admin)以及代表 Azure AD 应用程序创建 Azure AD 用户所需的分步说明的信息，请参阅[教程：使用 Azure AD 应用程序创建 Azure AD 用户](authentication-aad-service-principal-tutorial.md)。
 >
 > 在 **公共预览版** 中，你可以将 **目录读取** 者角色分配到 Azure AD 中的组。 然后，组所有者可以将托管标识添加为此组的成员，这样就不需要 **全局管理员** 或 **特权角色管理员** 授予 **目录读者** 角色。 有关此功能的详细信息，请参阅 [Azure SQL 的 Azure Active Directory 中的目录读取者角色](authentication-aad-directory-readers-role.md)。
 

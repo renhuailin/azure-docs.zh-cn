@@ -1,20 +1,18 @@
 ---
 title: 排查 Azure 数据工厂连接器问题
 description: 了解如何排查 Azure 数据工厂中的连接器问题。
-services: data-factory
 author: linda33wj
 ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 02/08/2021
 ms.author: jingwang
-ms.reviewer: craigg
 ms.custom: has-adal-ref
-ms.openlocfilehash: 2395e8e0027755357e65aab247185c02f7b1723d
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: 63a690ffaaefc506de296d43e7de13020fbd584a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99980705"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100366919"
 ---
 # <a name="troubleshoot-azure-data-factory-connectors"></a>排查 Azure 数据工厂连接器问题
 
@@ -757,7 +755,7 @@ ms.locfileid: "99980705"
 
 - **原因**： 
 
-    此问题可能是由空格或不受支持的特殊字符引起的，如 (， {} 列名称中 ( # A2\n\t =) ，因为 Parquet 不支持此类格式。 
+    此问题可能是由空格或不受支持的特殊字符引起的，如 (， {} () \n\t = 列名称中) ，因为 Parquet 不支持此类格式。 
 
     例如，诸如 *contoso (测试)* 的列名称将从 [代码](https://github.com/apache/parquet-mr/blob/master/parquet-column/src/main/java/org/apache/parquet/schema/MessageTypeParser.java)中的括号内分析该类型 `Tokenizer st = new Tokenizer(schemaString, " ;{}()\n\t");` 。 由于没有这样的 "测试" 类型，因此会引发错误。
 

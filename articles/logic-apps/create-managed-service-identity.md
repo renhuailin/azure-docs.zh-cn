@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: article
-ms.date: 01/15/2021
-ms.openlocfilehash: 9ac8a23569d9a85787768419a0377967026e9bd9
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.date: 02/12/2021
+ms.openlocfilehash: 9a3a511a287f093b4fc317213afedd5fdc3c21be
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251555"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100520657"
 ---
 # <a name="authenticate-access-to-azure-resources-by-using-managed-identities-in-azure-logic-apps"></a>使用 Azure 逻辑应用中的托管标识对 Azure 资源的访问进行身份验证
 
@@ -31,7 +31,10 @@ Azure 逻辑应用支持[系统分配的](../active-directory/managed-identities
 * HTTP
 * HTTP + Webhook
 
-**托管连接器**
+> [!NOTE]
+> 尽管 HTTP 触发器和操作可以使用系统分配的托管标识对 Azure 防火墙后面的 Azure 存储帐户的连接进行身份验证，但它们不能使用用户分配的托管标识对相同的连接进行身份验证。
+
+**托管的连接器**
 
 * Azure 自动化
 * Azure 事件网格
@@ -91,7 +94,7 @@ Azure 逻辑应用支持[系统分配的](../active-directory/managed-identities
 
    ![系统分配的标识的对象 ID](./media/create-managed-service-identity/object-id-system-assigned-identity.png)
 
-   | properties | “值” | 说明 |
+   | properties | 值 | 说明 |
    |----------|-------|-------------|
    | **对象 ID** | <*identity-resource-ID*> | 全局唯一标识符 (GUID)，表示 Azure AD 租户中逻辑应用的系统分配的标识 |
    ||||
@@ -177,7 +180,7 @@ Azure 逻辑应用支持[系统分配的](../active-directory/managed-identities
 
    ![创建用户分配的托管标识](./media/create-managed-service-identity/create-user-assigned-identity.png)
 
-   | properties | 必须 | Value | 说明 |
+   | properties | 必须 | 值 | 说明 |
    |----------|----------|-------|-------------|
    | **订阅** | 是 | <*Azure-subscription-name*> | 要使用的 Azure 订阅的名称 |
    | **资源组** | 是 | <*Azure-resource-group-name*> | 要使用的资源组的名称。 创建新组或选择现有组。 此示例将创建一个名为的新组 `fabrikam-managed-identities-RG` 。 |

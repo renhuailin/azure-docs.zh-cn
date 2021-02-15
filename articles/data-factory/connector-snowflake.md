@@ -1,28 +1,24 @@
 ---
 title: 在 Snowflake 中复制和转换数据
 description: 了解如何使用数据工厂在 Snowflake 中复制和转换数据。
-services: data-factory
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/08/2020
-ms.openlocfilehash: 49e4a6f7f8c268669a94796257d5740ec6f4e6ff
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 816c9ae25034382763e18ea61055a2a18ccc03d6
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96902079"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100388832"
 ---
 # <a name="copy-and-transform-data-in-snowflake-by-using-azure-data-factory"></a>使用 Azure 数据工厂在 Snowflake 中复制和转换数据
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-本文概述了如何使用 Azure 数据工厂中的复制活动将数据从和复制到雪花，并使用数据流转换雪花中的数据。 有关数据工厂的详细信息，请参阅[介绍性文章](introduction.md)。
+本文概述了如何使用 Azure 数据工厂中的复制活动从/向 Snowflake 复制数据，并使用数据流转换 Snowflake 中的数据。 有关数据工厂的详细信息，请参阅[介绍性文章](introduction.md)。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -150,8 +146,8 @@ Snowflake 连接器利用 Snowflake 的 [COPY into [location]](https://docs.snow
 | type                         | 复制活动源的类型属性必须设置为 SnowflakeSource。 | 是      |
 | 查询          | 指定要从 Snowflake 读取数据的 SQL 查询。 如果架构、表和列的名称包含小写字母，请在查询中引用对象标识符，例如 `select * from "schema"."myTable"`。<br>不支持执行存储过程。 | 否       |
 | exportSettings | 用于从 Snowflake 检索数据的高级设置。 可以配置 COPY into 命令支持的此类设置。在调用相关语句时，数据工厂会传递此类设置。 | 否       |
-| ***在 `exportSettings` 下：** _ |  |  |
-| type | 导出命令的类型，设置为“SnowflakeExportCopyCommand”。 | 是 |
+| 在 `exportSettings` 下： |  |  |
+| type | 导出命令的类型，设置为 **SnowflakeExportCopyCommand**。 | 是 |
 | additionalCopyOptions | 其他复制选项，作为键值对的字典提供。 示例:MAX_FILE_SIZE、OVERWRITE。 有关详细信息，请参阅 [Snowflake 复制选项](https://docs.snowflake.com/en/sql-reference/sql/copy-into-location.html#copy-options-copyoptions)。 | 否 |
 | additionalFormatOptions | 作为键值对的字典提供给 COPY 命令的其他文件格式选项。 示例:DATE_FORMAT、TIME_FORMAT、TIMESTAMP_FORMAT。 有关详细信息，请参阅 [Snowflake 格式类型选项](https://docs.snowflake.com/en/sql-reference/sql/copy-into-location.html#format-type-options-formattypeoptions)。 | 否 |
 
@@ -159,7 +155,7 @@ Snowflake 连接器利用 Snowflake 的 [COPY into [location]](https://docs.snow
 
 如果接收器数据存储和格式符合此部分所述条件，则可使用复制活动将数据从 Snowflake 直接复制到接收器。 数据工厂将检查设置，如果不符合以下条件，复制活动运行将会失败：
 
-- “接收器链接服务”是使用“共享访问签名”身份验证的 [Azure Blob 存储](connector-azure-blob-storage.md)  。 如果要以以下受支持的格式将数据直接复制到 Azure Data Lake Storage Gen2，则可以使用针对 ADLS Gen2 帐户的 SAS 身份验证创建 Azure Blob 链接服务，以避免使用 [来自雪花的暂存副本](#staged-copy-from-snowflake)。
+- “接收器链接服务”是使用“共享访问签名”身份验证的 [Azure Blob 存储](connector-azure-blob-storage.md)  。 若要采用下面受支持的格式将数据直接复制到 Azure Data Lake Storage Gen2，可以创建带有针对 ADLS Gen2 帐户的 SAS 身份验证功能的 Azure Blob 链接服务，从而避免使用[从 Snowflake 进行的分阶段复制](#staged-copy-from-snowflake)。
 
 - 接收器数据格式为“Parquet”、“带分隔符的文本”或“JSON”，其配置如下   ：
 
@@ -280,8 +276,8 @@ Snowflake 连接器利用 Snowflake 的 [COPY into [table]](https://docs.snowfla
 | type              | 复制活动接收器的类型属性设置为 SnowflakeSink。 | 是                                           |
 | preCopyScript     | 指定在每次运行中将数据写入到 Snowflake 之前要由复制活动运行的 SQL 查询。 使用此属性清理预加载的数据。 | 否                                            |
 | importSettings | 用于将数据写入 Snowflake 的高级设置。 可以配置 COPY into 命令支持的此类设置。在调用相关语句时，数据工厂会传递此类设置。 | 否 |
-| **_在 `importSettings` 下：_* _ |                                                              |  |
-| type | 导入命令的类型，设置为“SnowflakeImportCopyCommand”。 | 是 |
+| 在 `importSettings` 下： |                                                              |  |
+| type | 导入命令的类型，设置为 **SnowflakeImportCopyCommand**。 | 是 |
 | additionalCopyOptions | 其他复制选项，作为键值对的字典提供。 示例:ON_ERROR、FORCE、LOAD_UNCERTAIN_FILES。 有关详细信息，请参阅 [Snowflake 复制选项](https://docs.snowflake.com/en/sql-reference/sql/copy-into-table.html#copy-options-copyoptions)。 | 否 |
 | additionalFormatOptions | 提供给 COPY 命令的其他文件格式选项，作为键值对的字典提供。 示例:DATE_FORMAT、TIME_FORMAT、TIMESTAMP_FORMAT。 有关详细信息，请参阅 [Snowflake 格式类型选项](https://docs.snowflake.com/en/sql-reference/sql/copy-into-table.html#format-type-options-formattypeoptions)。 | 否 |
 
@@ -289,7 +285,7 @@ Snowflake 连接器利用 Snowflake 的 [COPY into [table]](https://docs.snowfla
 
 如果源数据存储和格式符合此部分所述条件，则可使用复制活动将数据从源直接复制到 Snowflake。 Azure 数据工厂将检查设置，如果不符合以下条件，复制活动运行将会失败：
 
-- “源链接服务”是使用“共享访问签名”身份验证的 [Azure Blob 存储](connector-azure-blob-storage.md)  。 如果要以以下受支持的格式直接复制 Azure Data Lake Storage Gen2 的数据，则可以使用针对 ADLS Gen2 帐户的 SAS 身份验证创建 Azure Blob 链接服务，以避免使用  [暂存复制到雪花](#staged-copy-to-snowflake)。
+- “源链接服务”是使用“共享访问签名”身份验证的 [Azure Blob 存储](connector-azure-blob-storage.md)  。 若要采用下面受支持的格式从 Azure Data Lake Storage Gen2 直接复制数据，可以创建带有针对 ADLS Gen2 帐户的 SAS 身份验证功能的 Azure Blob 链接服务，从而避免使用[到 Snowflake 的分阶段复制](#staged-copy-to-snowflake)。
 
 - “源数据格式”为“Parquet”、“带分隔符的文本”或“JSON”，其配置如下   ：
 
@@ -402,20 +398,20 @@ Snowflake 连接器利用 Snowflake 的 [COPY into [table]](https://docs.snowfla
 
 ## <a name="mapping-data-flow-properties"></a>映射数据流属性
 
-在映射数据流中转换数据时，可以在雪花中对表进行读取和写入。 有关详细信息，请参阅映射数据流中的[源转换](data-flow-source.md)和[接收器转换](data-flow-sink.md)。 您可以选择将雪花型数据集或 [内联数据集](data-flow-source.md#inline-datasets) 用作源和接收器类型。
+在映射数据流中转换数据时，可以从 Snowflake 中的表读取数据以及将数据写入表中。 有关详细信息，请参阅映射数据流中的[源转换](data-flow-source.md)和[接收器转换](data-flow-sink.md)。 可以选择使用 Snowflake 数据集或[内联数据集](data-flow-source.md#inline-datasets)作为源和接收器类型。
 
 ### <a name="source-transformation"></a>源转换
 
-下表列出了雪花型源支持的属性。 可以在 " **源选项** " 选项卡中编辑这些属性。连接器利用雪花 [内部数据传输](https://docs.snowflake.com/en/user-guide/spark-connector-overview.html#internal-data-transfer)。
+下表列出了 Snowflake 源支持的属性。 你可以在“源选项”选项卡中编辑这些属性。该连接器利用 Snowflake [内部数据传输](https://docs.snowflake.com/en/user-guide/spark-connector-overview.html#internal-data-transfer)。
 
 | 名称 | 说明 | 必需 | 允许的值 | 数据流脚本属性 |
 | ---- | ----------- | -------- | -------------- | ---------------- |
-| 表 | 如果选择 "表" 作为输入，则在使用内联数据集时，数据流将从雪花数据集或源选项中指定的表中获取所有数据。 | 否 | 字符串 | *仅限内联数据集的 ()*<br>tableName<br>schemaName |
-| 查询 | 如果选择 "查询" 作为输入，请输入查询以从雪花中提取数据。 此设置将重写您在数据集中选择的任何表。<br>如果架构、表和列的名称包含小写字母，请在查询中引用对象标识符，例如 `select * from "schema"."myTable"`。 | 否 | 字符串 | query |
+| 表 | 如果选择“表”作为输入，则在使用内联数据集时，数据流会从在 Snowflake 数据集或源选项中指定的表中获取所有数据。 | 否 | 字符串 | （仅适用于内联数据集）<br>tableName<br>schemaName |
+| 查询 | 如果选择“查询”作为输入，请输入用于从 Snowflake 中提取数据的查询。 此设置会替代在数据集中选择的任何表。<br>如果架构、表和列的名称包含小写字母，请在查询中引用对象标识符，例如 `select * from "schema"."myTable"`。 | 否 | 字符串 | query |
 
-#### <a name="snowflake-source-script-examples"></a>雪花源脚本示例
+#### <a name="snowflake-source-script-examples"></a>Snowflake 源脚本示例
 
-使用雪花数据集作为源类型时，关联的数据流脚本为：
+使用 Snowflake 数据集作为源类型时，关联的数据流脚本为：
 
 ```
 source(allowSchemaDrift: true,
@@ -436,17 +432,17 @@ source(allowSchemaDrift: true,
 
 ### <a name="sink-transformation"></a>接收器转换
 
-下表列出了雪花接收器支持的属性。 可以在 " **设置** " 选项卡中编辑这些属性。使用内联数据集时，你将看到与 " [数据集属性](#dataset-properties) " 一节中所述的属性相同的其他设置。 连接器利用雪花 [内部数据传输](https://docs.snowflake.com/en/user-guide/spark-connector-overview.html#internal-data-transfer)。
+下表列出了 Snowflake 接收器支持的属性。 可以在“设置”选项卡中编辑这些属性。使用内联数据集时，你会看到其他设置，这些设置与[数据集属性](#dataset-properties)部分描述的属性相同。 该连接器利用 Snowflake [内部数据传输](https://docs.snowflake.com/en/user-guide/spark-connector-overview.html#internal-data-transfer)。
 
 | 名称 | 说明 | 必需 | 允许的值 | 数据流脚本属性 |
 | ---- | ----------- | -------- | -------------- | ---------------- |
-| Update 方法 | 指定允许对雪花目标执行哪些操作。<br>若要更新、upsert 或删除行，需要 [更改行转换](data-flow-alter-row.md) 以标记这些操作的行。 | 是 | `true` 或 `false` | 删除 <br/>可插入 <br/>更新 <br/>upsertable |
+| Update 方法 | 指定 Snowflake 目标上允许哪些操作。<br>若要更新、更新插入或删除行，需要进行[“更改行”转换](data-flow-alter-row.md)才能标记这些操作的行。 | 是 | `true` 或 `false` | deletable <br/>insertable <br/>updateable <br/>upsertable |
 | 键列 | 对于更新、更新插入和删除操作，必须设置一个或多个键列，以确定要更改的行。 | 否 | Array | 密钥 |
-| 表操作 | 确定在写入之前是否在目标表中重新创建或删除所有行。<br>- **None**：不会对表执行任何操作。<br>- **重新创建**：该表将被删除并重新创建。 如果以动态方式创建表，则是必需的。<br>- **截断**：目标表中的所有行都将被删除。 | 否 | `true` 或 `false` | 重新创建<br/>truncate |
+| 表操作 | 确定在写入之前是否从目标表重新创建或删除所有行。<br>- **无**：不会对表进行任何操作。<br>- 重新创建：将删除表并重新创建表。 如果以动态方式创建表，则是必需的。<br>- 截断：将删除目标表中的所有行。 | 否 | `true` 或 `false` | recreate<br/>truncate |
 
-#### <a name="snowflake-sink-script-examples"></a>雪花接收器脚本示例
+#### <a name="snowflake-sink-script-examples"></a>Snowflake 接收器脚本示例
 
-将雪花数据集用作接收器类型时，关联的数据流脚本为：
+使用 Snowflake 数据集作为接收器类型时，关联的数据流脚本为：
 
 ```
 IncomingStream sink(allowSchemaDrift: true,

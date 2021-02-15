@@ -9,24 +9,33 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 10/28/2019
+ms.date: 01/19/2021
 ms.author: curtand
-ms.openlocfilehash: 5104783aff5684471819ecf04e965670fff2798b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5d17c6cb038bf5550f76a8aef7ac2d41244cfda1
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88798136"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100096559"
 ---
 # <a name="view-how-your-organization-uses-your-privacy-related-data"></a>查看组织如何使用与隐私相关的数据
 
 可以在 "**我的帐户**" 门户的 "**设置" & "隐私**" 页中查看组织如何使用数据。
 
+>[!Note]
+> 如果你在使用个人 Microsoft 帐户登录时遇到错误，你仍可以使用组织的域名 (例如，你可以通过以下 Url 之一中的管理员使用你的组织的域名例如 contoso.com) 或你的组织的 **租户 ID** ：
+>
+>   - https://myaccount.microsoft.com?tenantId=*your_domain_name*
+>   - https://myaccount.microsoft.com?tenant=*your_tenant_ID*
+
 ## <a name="view-your-privacy-related-info"></a>查看与隐私相关的信息
 
-1. 登录到工作或学校帐户，然后转到 https://myaccount.microsoft.com/ 页。
+1. 登录到工作或学校帐户，然后转到 https://myaccount.microsoft.com/ 页。 如果你使用个人 Microsoft 帐户登录，则仍可以使用组织的域名 (例如，你可以通过以下 Url 之一在管理员中使用组织的域名例如 contoso.com) 或你的组织的 **租户 ID** ：
 
-2. 从左侧导航窗格中选择 "**设置" & "隐私**"，或从 "设置" **& "隐私**块" 中选择 "**查看设置和隐私**" 链接。
+   - https://myaccount.microsoft.com?tenantId=*your_domain_name*
+   - https://myaccount.microsoft.com?tenant=*your_tenant_ID*
+
+2. 从左侧导航窗格中选择 "**设置" & "隐私**"，或从 "设置" **& "隐私** 块" 中选择 "**查看设置和隐私**" 链接。
 
     !["我的帐户" 页，& 隐私链接显示突出显示的设置](media/my-account-portal/my-account-portal-privacy.png)
 

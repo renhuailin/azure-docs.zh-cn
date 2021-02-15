@@ -4,16 +4,19 @@ description: 汇总了备份 Azure 文件共享时的支持设置和限制。
 ms.topic: conceptual
 ms.date: 5/07/2020
 ms.custom: references_regions
-ms.openlocfilehash: 999cb4c764e9960c509d19faa61016b2522259ac
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: 38c066c20399b39d676fb0c25aa158993258b979
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99819854"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100370982"
 ---
 # <a name="support-matrix-for-azure-file-share-backup"></a>Azure 文件共享备份的支持矩阵
 
 可以使用 [Azure 备份服务](./backup-overview.md)来备份 Azure 文件共享。 本文汇总了通过 Azure 备份来备份 Azure 文件共享时的支持设置。
+
+> [!NOTE]
+> Azure 备份当前不支持 NFS 共享。
 
 ## <a name="supported-regions"></a>支持的区域
 

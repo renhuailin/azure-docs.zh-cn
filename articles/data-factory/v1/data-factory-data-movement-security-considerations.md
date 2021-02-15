@@ -1,22 +1,18 @@
 ---
 title: Azure 数据工厂中数据移动的安全注意事项
 description: 了解如何为 Azure 数据工厂中的数据移动提供保护。
-services: data-factory
-documentationcenter: ''
 author: nabhishek
-manager: anandsub
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: c694cf58f4c6b613cbc183753785a34bc15063bd
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 33b1ad381b3f7865768f9e39295a2985f8aa5234
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97093588"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100375096"
 ---
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Azure 数据工厂 - 数据移动的安全注意事项
 
@@ -33,10 +29,10 @@ ms.locfileid: "97093588"
 除使用证书加密的云数据存储的链接服务凭据外，Azure 数据工厂本身不存储任何其他数据。 利用此功能，你可以创建数据驱动的工作流，以便在 [支持的数据存储](data-factory-data-movement-activities.md#supported-data-stores-and-formats) 之间安排数据移动，并在其他区域或本地环境中使用 [计算服务](data-factory-compute-linked-services.md) 处理数据。 它还允许使用编程方式及 UI 机制来 [监视和管理工作流](data-factory-monitor-manage-pipelines.md) 。
 
 使用 Azure 数据工厂的数据移动已获得以下认证：
--   [HIPAA/HITECH](/compliance/regulatory/offering-hipaa-hitech)  
--   [ISO/IEC 27001](https://www.microsoft.com/en-us/trustcenter/Compliance/ISO-IEC-27001)  
--   [ISO/IEC 27018](https://www.microsoft.com/en-us/trustcenter/Compliance/ISO-IEC-27018) 
--   [CSA STAR](https://www.microsoft.com/en-us/trustcenter/Compliance/CSA-STAR-Certification)
+-    [HIPAA/HITECH](/compliance/regulatory/offering-hipaa-hitech)  
+-    [ISO/IEC 27001](https://www.microsoft.com/en-us/trustcenter/Compliance/ISO-IEC-27001)  
+-    [ISO/IEC 27018](https://www.microsoft.com/en-us/trustcenter/Compliance/ISO-IEC-27018) 
+-    [CSA STAR](https://www.microsoft.com/en-us/trustcenter/Compliance/CSA-STAR-Certification)
      
 如果对 Azure 合规性以及 Azure 如何保护其专属基础结构感兴趣，请访问 [Microsoft 信任中心](https://microsoft.com/en-us/trustcenter/default.aspx)。 
 
@@ -122,11 +118,11 @@ Salesforce 支持防火墙平台加密，它允许加密所有文件、附件、
  
 还可以使用 [IPSec VPN](../../vpn-gateway/vpn-gateway-about-vpn-devices.md) 或 [快速路由](../../expressroute/expressroute-introduction.md) 进一步保护本地网络和 Azure 之间的通信信道。
 
-虚拟网络是网络在云中的逻辑表示形式。 可以通过设置 IPSec VPN（站点到站点）或快速路由（私有对等互连）将本地网络连接到 Azure 虚拟网络 (VNet)     
+虚拟网络是网络在云中的逻辑表示形式。 可以通过设置 IPSec VPN（站点到站点）或快速路由（私有对等互连）将本地网络连接到 Azure 虚拟网络 (VNet)        
 
 下表基于混合数据移动的源和目标位置的不同组合，总结了相关的网络和网关配置建议。
 
-| Source | 目标 | 网络配置 | 网关设置 |
+| 源 | 目标 | 网络配置 | 网关设置 |
 | ------ | ----------- | --------------------- | ------------- | 
 | 本地 | 虚拟网络中部署的虚拟机和云服务 | IPSec VPN（点到站点或站点到站点） | 网关可以安装在本地或 VNet 中的 Azure 虚拟机 (VM) 上 | 
 | 本地 | 虚拟网络中部署的虚拟机和云服务 | ExpressRoute（私有对等互连） | 网关可以安装在本地或 VNet 中的 Azure VM 上 | 
@@ -144,7 +140,7 @@ Salesforce 支持防火墙平台加密，它允许加密所有文件、附件、
 
 ### <a name="firewall-configurations-and-filtering-ip-address-of-gateway"></a>防火墙配置和筛选网关的 IP 地址
 
-#### <a name="firewall-requirements-for-on-premisesprivate-network"></a>本地/专用网络的防火墙要求  
+#### <a name="firewall-requirements-for-on-premisesprivate-network"></a>本地/专用网络的防火墙要求    
 在企业中，企业 **防火墙** 在组织的中央路由器上运行。 并且，Windows 防火墙在安装网关的本地计算机上作为守护程序运行。 
 
 下表提供了企业防火墙的出站端口和域要求。
@@ -154,7 +150,7 @@ Salesforce 支持防火墙平台加密，它允许加密所有文件、附件、
 | `*.servicebus.windows.net` | 443, 80 | 用于将网关连接到数据工厂中的数据移动服务 |
 | `*.core.windows.net` | 443 | 使用[暂存复制](data-factory-copy-activity-performance.md#staged-copy)功能时，由网关用于连接到 Azure 存储帐户。 | 
 | `*.frontend.clouddatahub.net` | 443 | 用于将网关连接到 Azure 数据工厂服务。 | 
-| `*.database.windows.net` | 1433   | 当目标为 Azure SQL Database/Azure Synapse Analytics 时，需要 (可选) 。 使用分阶段复制功能，将数据复制到 Azure SQL 数据库/Azure Synapse Analytics，而无需打开端口1433。 | 
+| `*.database.windows.net` | 1433    | 当目标为 Azure SQL Database/Azure Synapse Analytics 时，需要 (可选) 。 使用分阶段复制功能，将数据复制到 Azure SQL 数据库/Azure Synapse Analytics，而无需打开端口1433。 | 
 | `*.azuredatalakestore.net` | 443 | （可选）目标为 Azure Data Lake Store 时需要 | 
 
 > [!NOTE] 

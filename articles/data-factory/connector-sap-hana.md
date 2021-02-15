@@ -1,22 +1,18 @@
 ---
 title: 从 SAP HANA 复制数据
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 SAP HANA 复制到支持的接收器数据存储。
-services: data-factory
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/22/2020
-ms.openlocfilehash: 92cc94170a01aceaa3e6bd058f4ae6628db04f18
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ce3c1e22dd030c0730bf4d9859591c00860908a7
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87529579"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100382270"
 ---
 # <a name="copy-data-from-sap-hana-using-azure-data-factory"></a>使用 Azure 数据工厂从 SAP HANA 复制数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -27,7 +23,7 @@ ms.locfileid: "87529579"
 本文概述了如何使用 Azure 数据工厂中的复制活动从 SAP HANA 数据库复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
 >[!TIP]
->若要了解 ADF 对 SAP 数据集成方案的总体支持，请参阅[关于使用 Azure 数据工厂进行 SAP 数据集成的白皮书](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf)，其中包含每个 SAP 连接器的详细介绍、比较和指导。
+>若要了解 ADF 对 SAP 数据集成方案的总体支持，请参阅[使用 Azure 数据工厂进行 SAP 数据集成白皮书](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf)，其中包含每个 SAP 连接器的详细介绍、比较和指导。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -41,12 +37,12 @@ ms.locfileid: "87529579"
 具体而言，此 SAP HANA 连接器支持：
 
 - 从任何版本的 SAP HANA 数据库复制数据。
-- 从 **HANA 信息模型**（如分析和计算视图）和**行/列表**中复制数据。
-- 使用**基本**或 **Windows** 身份验证复制数据。
+- 从 **HANA 信息模型**（如分析和计算视图）和 **行/列表** 中复制数据。
+- 使用 **基本** 或 **Windows** 身份验证复制数据。
 - 从 SAP HANA 源进行并行复制。 有关详细信息，请参阅[从 SAP HANA 进行并行复制](#parallel-copy-from-sap-hana)部分。
 
 > [!TIP]
-> 要将数据复制到**** SAP HANA 数据存储，请使用泛型 ODBC 连接器。 有关详细信息，请参阅 [SAP HANA 接收器](#sap-hana-sink)部分。 注意：适用于 SAP HANA 连接器和 ODBC 连接器的链接服务采用不同的类型，因此不能重用。
+> 要将数据复制到 SAP HANA 数据存储，请使用泛型 ODBC 连接器。 有关详细信息，请参阅 [SAP HANA 接收器](#sap-hana-sink)部分。 注意：适用于 SAP HANA 连接器和 ODBC 连接器的链接服务采用不同的类型，因此不能重用。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -68,7 +64,7 @@ SAP HANA 链接的服务支持以下属性：
 | 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**SapHana** | 是 |
-| connectionString | 指定使用**基本身份验证**或 **Windows 身份验证**连接到 SAP HANA 时所需的信息。 请参阅以下示例。<br>在连接字符串中，服务器/端口是必需的（默认端口为 30015）。在使用基本身份验证时，用户名和密码是必需的。 有关其他高级设置，请参阅 [SAP HANA ODBC 连接属性](<https://help.sap.com/viewer/0eec0d68141541d1b07893a39944924e/2.0.02/en-US/7cab593774474f2f8db335710b2f5c50.html>)<br/>还可以将密码放在 Azure 密钥保管库中，并从连接字符串中拉取密码配置。 有关更多详细信息，请参阅[在 Azure Key Vault 中存储凭据](store-credentials-in-key-vault.md)一文。 | 是 |
+| connectionString | 指定使用 **基本身份验证** 或 **Windows 身份验证** 连接到 SAP HANA 时所需的信息。 请参阅以下示例。<br>在连接字符串中，服务器/端口是必需的（默认端口为 30015）。在使用基本身份验证时，用户名和密码是必需的。 有关其他高级设置，请参阅 [SAP HANA ODBC 连接属性](<https://help.sap.com/viewer/0eec0d68141541d1b07893a39944924e/2.0.02/en-US/7cab593774474f2f8db335710b2f5c50.html>)<br/>还可以将密码放在 Azure 密钥保管库中，并从连接字符串中拉取密码配置。 有关更多详细信息，请参阅[在 Azure Key Vault 中存储凭据](store-credentials-in-key-vault.md)一文。 | 是 |
 | userName | 使用 Windows 身份验证时，请指定用户名。 示例： `user@domain.com` | 否 |
 | password | 指定用户帐户的密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 否 |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如[先决条件](#prerequisites)中所述，需要自承载集成运行时。 |是 |
@@ -230,7 +226,7 @@ SAP HANA 链接的服务支持以下属性：
 
 ## <a name="parallel-copy-from-sap-hana"></a>从 SAP HANA 进行并行复制
 
-数据工厂 SAP HANA 连接器提供内置的数据分区，用于从 SAP HANA 并行复制数据。 可以在复制活动的“源”表中找到数据分区选项。****
+数据工厂 SAP HANA 连接器提供内置的数据分区，用于从 SAP HANA 并行复制数据。 可以在复制活动的“源”表中找到数据分区选项。
 
 ![分区选项的屏幕截图](./media/connector-sap-hana/connector-sap-hana-partition-options.png)
 
@@ -240,7 +236,7 @@ SAP HANA 链接的服务支持以下属性：
 
 | 方案                                           | 建议的设置                                           |
 | -------------------------------------------------- | ------------------------------------------------------------ |
-| 从大型表进行完整加载。                        | **分区选项**：表的物理分区。 <br><br/>在执行期间，数据工厂会自动检测指定 SAP HANA 表的物理分区类型，并选择相应的分区策略：<br>- **范围分区**：获取为表定义的分区列和分区范围，然后按范围复制数据。 <br>- **哈希分区**：使用哈希分区键作为分区列，然后基于 ADF 计算范围对数据进行分区和复制。 <br>- **轮循机制分区**或**没有分区**：使用主键作为分区列，然后基于 ADF 计算范围对数据进行分区和复制。 |
+| 从大型表进行完整加载。                        | **分区选项**：表的物理分区。 <br><br/>在执行期间，数据工厂会自动检测指定 SAP HANA 表的物理分区类型，并选择相应的分区策略：<br>- **范围分区**：获取为表定义的分区列和分区范围，然后按范围复制数据。 <br>- **哈希分区**：使用哈希分区键作为分区列，然后基于 ADF 计算范围对数据进行分区和复制。 <br>- **轮循机制分区** 或 **没有分区**：使用主键作为分区列，然后基于 ADF 计算范围对数据进行分区和复制。 |
 | 使用自定义查询加载大量数据。 | **分区选项**：动态范围分区。<br>**查询**：`SELECT * FROM <TABLENAME> WHERE ?AdfHanaDynamicRangePartitionCondition AND <your_additional_where_clause>`。<br>**分区列**：指定用于应用动态范围分区的列。 <br><br>在执行期间，数据工厂首先计算指定分区列的值范围，方法是：根据非重复分区列值和 ADF 并行复制设置的数量将行均匀分布到多个 Bucket 中，接着将 `?AdfHanaDynamicRangePartitionCondition` 替换为筛选每个分区的分区列值范围的操作，然后将其发送到 SAP HANA。<br><br>如果要使用多个列作为分区列，可以在查询中将每列的值连接为一个列，并将其指定为 ADF 中的分区列，例如 `SELECT * FROM (SELECT *, CONCAT(<KeyColumn1>, <KeyColumn2>) AS PARTITIONCOLUMN FROM <TABLENAME>) WHERE ?AdfHanaDynamicRangePartitionCondition`。 |
 
 **示例：使用表的物理分区进行查询**

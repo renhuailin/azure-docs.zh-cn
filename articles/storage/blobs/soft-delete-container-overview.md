@@ -10,12 +10,12 @@ ms.date: 02/08/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: references_regions
-ms.openlocfilehash: 0c15be86c282451440f9b81d57f17e835559b5ae
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: 674a336e79f118d543590fb7514b6bebef72cf47
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99979091"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390175"
 ---
 # <a name="soft-delete-for-containers-preview"></a>容器的软删除 (预览) 
 
@@ -28,11 +28,11 @@ ms.locfileid: "99979091"
 - Blob 软删除，用于还原已删除的 blob 或版本。 若要了解如何启用 blob 软删除，请参阅 [为 Blob 启用和管理软删除](soft-delete-blob-enable.md)。
 
 > [!WARNING]
-> 无法撤消删除存储帐户。 软删除无法防止删除存储帐户，而只会防止删除该帐户中的数据对象。 若要防止存储帐户被删除，请在存储帐户资源上配置 **CannotDelete** 锁。 有关锁定 Azure 资源管理器资源的详细信息，请参阅 [锁定资源以防止意外更改](../../azure-resource-manager/management/lock-resources.md)。
+> 无法撤消删除存储帐户。 容器软删除无法防止删除存储帐户，而只会删除该帐户中的容器。 若要防止存储帐户被删除，请在存储帐户资源上配置一个锁定。 有关锁定 Azure 资源管理器资源的详细信息，请参阅 [锁定资源以防止意外更改](../../azure-resource-manager/management/lock-resources.md)。
 
 ## <a name="how-container-soft-delete-works"></a>容器软删除的工作原理
 
-启用容器软删除时，可以为已删除的容器指定介于1到365天之间的保留期。 默认保持期为 7 天。 在保留期内，可以通过调用 " **撤消删除容器** " 操作来恢复已删除的容器。
+启用容器软删除时，可以为已删除的容器指定介于1到365天之间的保留期。 默认保持期为 7 天。 在保留期内，可以通过调用 **还原容器** 操作来恢复已删除的容器。
 
 还原容器时，还会还原容器的 blob 和任何 blob 版本。 但是，如果已删除容器本身，则只能使用容器软删除来还原 blob。 若要在未删除其父容器时还原已删除的 blob，必须使用 blob 软删除或 blob 版本控制。
 

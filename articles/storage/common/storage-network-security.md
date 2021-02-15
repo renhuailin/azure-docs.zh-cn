@@ -9,18 +9,18 @@ ms.date: 01/27/2021
 ms.author: normesta
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 8172abb5e220f28061c7826af24a5d9a2043f4ad
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 5e08af509487188245b0fad9ba2d0f490944868f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99219887"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100371781"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>配置 Azure 存储防火墙和虚拟网络
 
 Azure 存储提供分层安全模型。 利用此模型，你可以根据所用的网络或资源的类型和子集来保护和控制对你的应用程序和企业环境所需的存储帐户的访问级别。 配置网络规则时，只有通过指定网络集请求数据的应用程序，或者通过指定的一组 Azure 资源来访问存储帐户。 你可以将对存储帐户的访问限制为源自特定 IP 地址、IP 范围、Azure 虚拟网络中的子网 (VNet) 或某些 Azure 服务的资源实例的请求。
 
-存储帐户具有可通过 internet 访问的公共终结点。 还可以为[存储帐户创建专用终结点](storage-private-endpoints.md)，该终结点将从 VNet 向存储帐户分配专用 IP 地址，并通过专用链接保护 VNet 和存储帐户之间往来的所有流量。 Azure 存储防火墙为你的存储帐户的公共终结点提供访问控制。 使用专用终结点时，还可以使用防火墙阻止通过公用终结点进行的所有访问。 通过存储防火墙配置，还可以选择受信任的 Azure 平台服务安全地访问存储帐户。
+存储帐户具有可通过 internet 访问的公共终结点。 还可以为[存储帐户创建专用终结点](storage-private-endpoints.md)，该终结点将从 VNet 向存储帐户分配专用 IP 地址，并通过专用链接保护 VNet 和存储帐户之间往来的所有流量。 Azure 存储防火墙为存储帐户的公共终结点提供访问控制。 使用专用终结点时，还可以使用防火墙阻止通过公用终结点进行的所有访问。 通过存储防火墙配置，还可以选择受信任的 Azure 平台服务安全地访问存储帐户。
 
 在网络规则生效后访问存储帐户的应用程序仍需要在请求中提供适当的授权。 支持适用于 Blob 和队列的 Azure Active Directory (Azure AD) 凭据、有效帐户访问密钥或 SAS 令牌提供授权。
 
@@ -33,13 +33,13 @@ Azure 存储提供分层安全模型。 利用此模型，你可以根据所用�
 
 ## <a name="scenarios"></a>方案
 
-若要保护存储帐户，应该先配置一个规则，以便在公共终结点上默认拒绝来自所有网络的流量（包括 Internet 流量）进行访问。 然后，应配置允许访问特定 vnet 流量的规则。 你还可以配置规则，以便从所选的公共 internet IP 地址范围授予访问流量的权限，从而启用来自特定 internet 或本地客户端的连接。 借助此配置，可为应用程序生成安全网络边界。
+若要保护存储帐户，应该先配置一个规则，以便在公共终结点上默认拒绝来自所有网络的流量（包括 Internet 流量）进行访问。 然后，应配置允许访问特定 vnet 流量的规则。 此外，还可以配置规则为来自所选公共 Internet IP 地址范围的流量授予访问权限，以便能够从特定的 Internet 或本地客户端建立连接。 借助此配置，可为应用程序生成安全网络边界。
 
 可在同一存储帐户中，将允许从特定虚拟网络以及从公共 IP 地址范围进行访问的防火墙规则组合到一起。 可对现有的存储帐户应用存储防火墙规则，或者在创建新存储帐户时应用这些规则。
 
 存储防火墙规则适用于存储帐户的公共终结点。 不需要配置任何防火墙访问规则来允许存储帐户的专用终结点的流量。 通过批准专用终结点的创建，可授予对来自托管该专用终结点的子网的流量的隐式访问权限。
 
-对 Azure 存储的所有网络协议（包括 REST 和 SMB）强制实施网络规则。 若要使用 Azure 门户、存储资源管理器和 AZCopy 等工具访问数据，必须配置显式网络规则。
+对于面向 Azure 存储的所有网络协议（包括 REST 和 SMB），将强制实施网络规则。 若要使用 Azure 门户、存储资源管理器和 AZCopy 等工具访问数据，必须配置显式网络规则。
 
 一旦应用网络规则，就会对所有请求强制实施这些规则。 用于向特定 IP 地址授予访问权限的 SAS 令牌可限制令牌持有者的访问权限，但不会越过已配置的网络规则授予新的访问权限。
 
@@ -371,10 +371,12 @@ IP 网络规则仅适用于 **公共 Internet** IP 地址。 IP 规则不允许�
 
 资源实例可以对存储帐户数据执行的操作类型由资源实例的 [Azure 角色分配](storage-auth-aad.md#assign-azure-roles-for-access-rights) 确定。 资源实例必须来自与你的存储帐户相同的租户，但它们可以属于租户中的任何订阅。
 
-受支持的 Azure 服务列表显示在本文的 " [基于系统分配的托管标识的受信任访问](#trusted-access-system-assigned-managed-identity) " 部分中。
+> [!NOTE]
+> 此功能在公共预览版中提供，并在所有公有云区域中提供。
 
 > [!NOTE]
-> 此功能在公共预览版中提供，并在所有公有云区域中提供。 
+> 目前仅支持 Azure Synapse 的资源实例规则。 在接下来的几周内将提供对本文中 " [基于系统分配的托管标识受信任的访问](#trusted-access-system-assigned-managed-identity) " 一节中列出的其他 Azure 服务的支持。
+
 
 ### <a name="portal"></a>[门户](#tab/azure-portal)
 
@@ -390,7 +392,7 @@ IP 网络规则仅适用于 **公共 Internet** IP 地址。 IP 规则不允许�
 
 5. 在 " **实例名称** " 下拉列表中，选择资源实例。 还可以选择在活动租户、订阅或资源组中包含所有资源实例。
 
-6. 选择“保存”应用所做的更改。 资源实例将出现在 "网络设置" 页的 " **资源实例** " 部分。 
+6. 单击“保存”应用所做的更改。 资源实例将出现在 "网络设置" 页的 " **资源实例** " 部分。 
 
 若要删除资源实例，请选择 "删除" 图标 (:::image type="icon" source="media/storage-network-security/delete-icon.png"::: 资源实例旁) 。
 

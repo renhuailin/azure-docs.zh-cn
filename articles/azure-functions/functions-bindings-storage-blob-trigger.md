@@ -6,18 +6,18 @@ ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 6735b3377650c900a7b7d18933180991a6a2c9fd
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 1ee4e19a3e76a001a66f6498530fab4f4703fa85
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97930882"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100381591"
 ---
 # <a name="azure-blob-storage-trigger-for-azure-functions"></a>适用于 Azure Functions 的 Azure Blob 存储触发器
 
 检测到新的或更新的 Blob 时，Blob 存储触发器会启动某个函数。 Blob 内容以[函数输入](./functions-bindings-storage-blob-input.md)的形式提供。
 
-Azure Blob 存储触发器需要使用常规用途存储帐户。 还支持具有 [分层命名空间](../storage/blobs/data-lake-storage-namespace.md) 的存储 V2 帐户。 若要使用仅限 Blob 的帐户，或者，如果应用程序有特殊需求，请查看使用此触发器的替代方法。
+Azure Blob 存储触发器需要使用常规用途存储帐户。 还支持具有[分层命名空间](../storage/blobs/data-lake-storage-namespace.md)的存储 V2 帐户。 若要使用仅限 Blob 的帐户，或者，如果应用程序有特殊需求，请查看使用此触发器的替代方法。
 
 若要了解设置和配置详细信息，请参阅[概述](./functions-bindings-storage-blob.md)。
 
@@ -168,9 +168,9 @@ module.exports = function(context) {
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-下面的示例演示如何创建在将文件添加到 blob 存储容器时运行的函数 `source` 。
+下面的示例演示如何创建在将文件添加到 `source` blob 存储容器时运行的函数。
 
-) 上的函数配置文件 (_function.js_ 包含的绑定， `type` `blobTrigger` 并 `direction` 将设置为 `in` 。
+函数配置文件 (_function.json_) 包含一个绑定，其 `type` 为 `blobTrigger` 且 `direction` 设置为 `in`。
 
 ```json
 {
@@ -186,7 +186,7 @@ module.exports = function(context) {
 }
 ```
 
-下面是 _run.ps1_ 文件的关联代码。
+下面是 run.ps1 文件的关联代码。
 
 ```powershell
 param([byte[]] $InputBlob, $TriggerMetadata)
@@ -319,11 +319,11 @@ Python 不支持特性。
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|type | 不适用 | 必须设置为 `blobTrigger`。 在 Azure 门户中创建触发器时，会自动设置此属性。|
+|type  | 不适用 | 必须设置为 `blobTrigger`。 在 Azure 门户中创建触发器时，会自动设置此属性。|
 |**direction** | 不适用 | 必须设置为 `in`。 在 Azure 门户中创建触发器时，会自动设置此属性。 [用法](#usage)部分中已阐述异常。 |
-|**name** | 不适用 | 表示函数代码中的 Blob 的变量的名称。 |
+|name  | 不适用 | 表示函数代码中的 Blob 的变量的名称。 |
 |**路径** | **BlobPath** |要监视的[容器](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources)。  可以是某种 [Blob 名称模式](#blob-name-patterns)。 |
-|连接 | **Connection** | 包含要用于此绑定的存储连接字符串的应用设置的名称。 如果应用设置名称以“AzureWebJobs”开始，则只能在此处指定该名称的余下部分。 例如，如果将 `connection` 设置为“MyStorage”，函数运行时将会查找名为“AzureWebJobsMyStorage”的应用设置。 如果将 `connection` 留空，函数运行时将使用名为 `AzureWebJobsStorage` 的应用设置中的默认存储连接字符串。<br><br>连接字符串必须属于某个常规用途存储帐户，而不能属于[Blob 存储帐户](../storage/common/storage-account-overview.md#types-of-storage-accounts)。|
+|连接 | **Connection** | 包含要用于此绑定的存储连接字符串的应用设置的名称。 如果应用设置名称以“AzureWebJobs”开始，则只能在此处指定该名称的余下部分。 例如，如果将 `connection` 设置为“MyStorage”，函数运行时将会查找名为“AzureWebJobsMyStorage”的应用设置。 如果将 `connection` 留空，函数运行时将使用名为 `AzureWebJobsStorage` 的应用设置中的默认存储连接字符串。<br><br>连接字符串必须属于某个常规用途存储帐户，而不能属于[Blob 存储帐户](../storage/common/storage-account-overview.md#types-of-storage-accounts)。<br><br>如果你使用的是 [版本 5. x 或更高版本](./functions-bindings-storage-blob.md#storage-extension-5x-and-higher)，而不是连接字符串，则可以提供对定义该连接的配置节的引用。 请参阅 [连接](./functions-reference.md#connections)。|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -347,7 +347,7 @@ Python 不支持特性。
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-通过与 _function.js文件上_ 的绑定的 name 参数指定的名称相匹配的参数访问 blob 数据。
+通过与 function.json 文件中绑定名称参数指定的名称匹配的字符串参数访问 Blob 数据。
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -360,7 +360,7 @@ Python 不支持特性。
 可以在 *function.json* 的 `path` 属性中或者在 `BlobTrigger` 特性构造函数中指定 Blob 名称模式。 名称模式可以是[筛选器或绑定表达式](./functions-bindings-expressions-patterns.md)。 以下部分提供了有关示例。
 
 > [!TIP]
-> 容器名称不能包含名称模式中的解析程序。
+> 容器名称不能在名称模式中包含解析程序。
 
 ### <a name="get-file-name-and-extension"></a>获取文件名和扩展名
 
@@ -425,7 +425,7 @@ module.exports = function (context, myBlob) {
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-元数据可通过 `$TriggerMetadata` 参数获得。
+可以通过 `$TriggerMetadata` 参数获取元数据。
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -439,11 +439,11 @@ Azure Functions 运行时确保没有为相同的新 blob 或更新 blob 多次�
 
 Azure Functions 将 Blob 回执存储在函数应用的 Azure 存储帐户中名为 azure-webjobs-hosts 的容器中（由 `AzureWebJobsStorage` 应用设置定义）。 Blob 回执包含以下信息：
 
-* 触发的函数 (`<FUNCTION_APP_NAME>.Functions.<FUNCTION_NAME>` ，例如： `MyFunctionApp.Functions.CopyBlob`) 
+* 触发的函数（`<FUNCTION_APP_NAME>.Functions.<FUNCTION_NAME>`，例如：`MyFunctionApp.Functions.CopyBlob`）
 * 容器名称
-* Blob 类型 (`BlockBlob` 或 `PageBlob`) 
+* Blob 类型（`BlockBlob` 或 `PageBlob`）
 * Blob 名称
-* ETag (blob 版本标识符，例如： `0x8D1DC6E70A277EF`) 
+* ETag（blob 版本标识符，例如：`0x8D1DC6E70A277EF`）
 
 若要强制重新处理某个 blob，可从 azure-webjobs-hosts 容器中手动删除该 blob 的 blob 回执。 虽然重新处理可能不会立即发生，但它肯定会在稍后的时间点发生。 若要立即重新处理，可以更新 azure-webjobs-hosts/blobscaninfo 中的 scaninfo Blob 。 将再次扫描 `LatestScan` 属性后具有上次修改时间戳的任何 Blob。
 
@@ -453,19 +453,26 @@ Azure Functions 将 Blob 回执存储在函数应用的 Azure 存储帐户中名
 
 如果 5 次尝试全部失败，Azure Functions 会将消息添加到名为 webjobs-blobtrigger-poison 的存储队列。 最大尝试次数可配置。 使用相同的 MaxDequeueCount 设置处理有害 Blob 和有害队列消息。 有害 Blob 的队列消息是包含以下属性的 JSON 对象：
 
-* 格式 (的 FunctionId `<FUNCTION_APP_NAME>.Functions.<FUNCTION_NAME>`) 
-* BlobType (`BlockBlob` 或 `PageBlob`) 
+* FunctionId（格式为 `<FUNCTION_APP_NAME>.Functions.<FUNCTION_NAME>`）
+* BlobType（`BlockBlob` 或 `PageBlob`）
 * ContainerName
 * BlobName
-* ETag (blob 版本标识符，例如： `0x8D1DC6E70A277EF`) 
+* ETag（blob 版本标识符，例如：`0x8D1DC6E70A277EF`）
 
 ## <a name="concurrency-and-memory-usage"></a>并发和内存使用情况
 
 Blob 触发器可在内部使用队列，因此并发函数调用的最大数量受 [host.json 中的队列配置](functions-host-json.md#queues)控制。 默认设置会将并发限制到 24 个调用。 此限制分别应用于使用 blob 触发器的函数。
 
+> [!NOTE]
+> 对于使用 [存储扩展插件的5.0.0 或更高版本](functions-bindings-storage-blob.md#storage-extension-5x-and-higher)的应用，host.js中的队列配置仅适用于队列触发器。 Blob 触发器并发由 [中 host.js上的 blob 配置](functions-host-json.md#blobs)来控制。
+
 [消耗计划](event-driven-scaling.md)将虚拟机 (VM) 上的函数应用限制为 1.5 GB 内存。 内存由每个并发执行函数实例和函数运行时本身使用。 如果 blob 触发的函数将整个 blob 加载到内存中，该函数使用的仅用于 blob 的最大内存为 24 * 最大 blob 大小。 例如，包含 3 个由 blob 触发的函数的函数应用和默认设置，其每 VM 最大并发为 3*24 = 72 个函数调用。
 
 JavaScript 和 Java 函数会将整个 blob 加载到内存中，并且如果绑定到 `string` 或 `Byte[]`，则 C# 函数也会如此。
+
+## <a name="hostjson-properties"></a>host.json 属性
+
+文件 [ 上的host.js](functions-host-json.md#blobs) 包含控制 blob 触发器行为的设置。 有关可用设置的详细信息，请参阅 [host.json 设置](functions-bindings-storage-blob.md#hostjson-settings)部分。
 
 ## <a name="next-steps"></a>后续步骤
 

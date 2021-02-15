@@ -8,12 +8,10 @@
       href: whats-new.md
 - name: 快速入门
   items:
-    - name: 使用 QnA Maker 门户
-      items:
-        - name: 创建知识库
-          href: Quickstarts/create-publish-knowledge-base.md
-        - name: 查询知识库
-          href: Quickstarts/get-answer-from-knowledge-base-using-url-tool.md
+    - name: 在 QnA Maker 门户上创建知识库
+      href: Quickstarts/create-publish-knowledge-base.md
+    - name: 使用 REST API 查询知识库
+      href: Quickstarts/get-answer-from-knowledge-base-using-url-tool.md
     - name: 使用客户端库或 REST API
       href: Quickstarts/quickstart-sdk.md
 - name: 教程
@@ -38,6 +36,8 @@
     - name: 开发生命周期
       href: Concepts/development-lifecycle-knowledge-base.md
       displayName: 'version control, test, index, publish, monitor usage, create'
+    - name: 精确应答
+      href: reference-precise-answering.md
     - name: 最佳做法
       href: Concepts/best-practices.md
       displayName: 'tag, rank, score, threshold, question, alternate, filter, synonym, answer, active learning, collaborate, alteration, metadata, bot, personality, extraction, chit-chat'
@@ -50,6 +50,13 @@
       displayName: 'azure, resource, key, upgrade, pricing, tier,'
     - name: 管理 QnA Maker 资源访问
       href: How-To/manage-qna-maker-app.md
+    - name: 设置主动学习以改进知识库
+      items:
+        - name: 启用主动学习
+          href: How-To/use-active-learning.md
+        - name: 获取建议的替代问题
+          href: How-to/improve-knowledge-base.md
+          displayName: 'active learning, suggestion, dialog prompt, train api, feedback loop, autolearn, auto-learn, user setting, service setting, services setting, accept, reject, filter by suggestion, filter active learning, clusterHead, totalAutoSuggestedCount, totalUserSuggestedCount, autoSuggestedCount, userSuggestedCount'
     - name: 启用主动学习
       href: How-To/use-active-learning.md
     - name: 管理知识库
@@ -86,16 +93,10 @@
       href: Overview/language-support.md
     - name: 限制
       href: limits.md
-    - name: Azure 基于角色的访问控制 (Azure RBAC)
-      href: Concepts/role-based-access-control.md
-    - name: 主动学习
-      href: Concepts/active-learning-suggestions.md
     - name: 置信度分数
       href: Concepts/confidence-score.md
     - name: 疑难解答
       href: troubleshooting.md
-    - name: 精确应答
-      href: reference-precise-answering.md
     - name: 添加受保护的 SharePoint 文件
       href: How-To/add-sharepoint-datasources.md
       displayName: 'Sharepoint, secure, AAD, azure directory, admin, permission, authorization, file, authentication'

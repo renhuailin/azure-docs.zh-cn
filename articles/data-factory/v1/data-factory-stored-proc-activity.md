@@ -1,23 +1,18 @@
 ---
 title: SQL Server 存储过程活动
 description: 了解如何使用 SQL Server 存储过程活动从数据工厂管道调用 Azure SQL 数据库或 Azure Synapse Analytics 中的存储过程。
-services: data-factory
-documentationcenter: ''
-ms.assetid: 1c46ed69-4049-44ec-9b46-e90e964a4a8e
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 author: nabhishek
 ms.author: abnarain
-manager: anandsub
 robots: noindex
-ms.openlocfilehash: f702633f6311d4ae4a79452e9b1c9176125c56f9
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 05717352936bed888e108277d0163e43bc5a37af
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97508390"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100368755"
 ---
 # <a name="sql-server-stored-procedure-activity"></a>SQL Server 存储过程活动
 > [!div class="op_single_selector" title1="转换活动"]
@@ -308,13 +303,13 @@ ms.locfileid: "97508390"
 | name | 活动名称 |是 |
 | description |描述活动用途的文本 |否 |
 | type | 必须设置为：**SqlServerStoredProcedure** | 是 |
-| inputs | 可选。 如果指定了输入数据集，则它必须可供使用（“就绪”状态），存储过程才能运行。 该输入数据集无法在存储过程中用作参数。 它仅用于在开始存储过程活动前检查依赖项。 |否 |
+| inputs | 可选。 如果指定了输入数据集，则必须将其 (为 "就绪" 状态) 才能运行存储过程活动。 该输入数据集无法在存储过程中用作参数。 它仅用于在开始存储过程活动前检查依赖项。 |否 |
 | outputs | 必须指定存储过程活动的输出数据集。 输出数据集为存储过程活动指定 **计划**（每小时、每周、每月等）。 <br/><br/>输出数据集必须使用 **链接服务，该链接服务** 引用 Azure SQL 数据库或 Azure Synapse Analytics，或者使用要在其中运行存储过程的 SQL Server 数据库。 <br/><br/>输出数据集可用于传递存储过程的结果，以供管道中另一活动（[链接活动](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)）进行后续处理。 但是，数据工厂不会自动将存储过程的输出写入此数据集。 它是写入输出数据集指向的 SQL 表的存储过程。 <br/><br/>在某些情况下，输出数据集可以是 **虚拟数据集**，它仅用于指定运行存储过程活动的计划。 |是 |
 | storedProcedureName |指定 Azure SQL 数据库中的存储过程的名称、Azure Synapse Analytics 或由输出表使用的链接服务所表示的 SQL Server。 |是 |
 | storedProcedureParameters |指定存储过程的参数值。 如果需要为参数传递 null，请使用语法："param1": null（全部小写）。 请参阅以下示例了解如何使用此属性。 |否 |
 
 ## <a name="passing-a-static-value"></a>传递静态值
-现在，我们可以考虑在包含静态值“Document sample”的表中添加名为“Scenario”的另一个列。
+现在，让我们考虑在包含名为 "Document sample" 的静态值的表中添加另一个名为 "方案" 的列。
 
 ![示例数据 2](./media/data-factory-stored-proc-activity/sample-data-2.png)
 

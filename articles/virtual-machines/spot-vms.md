@@ -1,19 +1,19 @@
 ---
 title: 使用 Azure 点 Vm
 description: 了解如何使用 Azure 点 Vm 节省成本。
-author: cynthn
+author: JagVeerappan
+ms.author: jagaveer
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 10/05/2020
-ms.author: cynthn
-ms.reviewer: jagaveer
-ms.openlocfilehash: 1e3934a8ff91d764a5148b3d490b44f30983a284
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.reviewer: cynthn
+ms.openlocfilehash: 1e82da3bc45bc8fb88b3955bd59091372f56d292
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202124"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100375453"
 ---
 # <a name="use-spot-vms-in-azure"></a>使用 Azure 中的专色 Vm
 
@@ -58,7 +58,7 @@ Vm 可根据容量或设置的最大价格进行逐出。 创建点 VM 时，可
 目前支持以下 [产品/服务类型](https://azure.microsoft.com/support/legal/offer-details/) ：
 
 -   企业协议
--   即用即付
+-   即用即付产品/服务代码003P
 -   赞助
 - 对于云服务提供商 (CSP) ，请联系你的合作伙伴
 

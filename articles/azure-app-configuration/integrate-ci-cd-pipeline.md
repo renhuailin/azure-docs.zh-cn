@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.custom: devx-track-csharp
 ms.date: 04/19/2020
 ms.author: alkemper
-ms.openlocfilehash: d076bdf09626ec9ed08fcf43b95fc63d2f4a7dd7
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 3a4d171f0e3225db195c5c2b71ca99a3386e3a36
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96928443"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979838"
 ---
 # <a name="integrate-with-a-cicd-pipeline"></a>与 CI/CD 管道集成
 
@@ -35,9 +35,9 @@ ms.locfileid: "96928443"
 
 ### <a name="prerequisites"></a>先决条件
 
-如果在本地生成，请下载并安装 [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)（如果尚未安装）。
+如果在本地生成，请下载并安装 [Azure CLI](/cli/azure/install-azure-cli)（如果尚未安装）。
 
-要进行云生成，例如使用 Azure DevOps，请确保在生成系统中安装了 [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。
+要进行云生成，例如使用 Azure DevOps，请确保在生成系统中安装了 [Azure CLI](/cli/azure/install-azure-cli)。
 
 ### <a name="export-an-app-configuration-store"></a>导出应用程序配置存储区
 
@@ -107,4 +107,4 @@ ms.locfileid: "96928443"
 在本教程中，导出了要在部署管道中使用的 Azure 应用程序配置数据。 若要了解有关如何使用应用程序配置的更多信息，请继续阅读 Azure CLI 示例。
 
 > [!div class="nextstepaction"]
-> [Azure CLI](/cli/azure/appconfig?view=azure-cli-latest)
+> [Azure CLI](/cli/azure/appconfig)

@@ -3,22 +3,22 @@ title: ML Studio (经典) ：部署 web 服务-Azure
 description: 如何将训练试验转换为预测试验、准备进行部署，然后将其部署为 Azure 机器学习工作室（经典）Web 服务。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 01/06/2017
-ms.openlocfilehash: f77c0fb09dddd884335d31d630904ea6aeafeaf5
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 018e292abc7050f5d71c6bf9065618fecf8b5668
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95495196"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100520436"
 ---
 # <a name="deploy-an-azure-machine-learning-studio-classic-web-service"></a>部署 Azure 机器学习工作室（经典）Web 服务
 
-**适用于：** ![这是一个复选标记，这意味着本文适用于 (经典) 机器学习 Studio。 ](../../../includes/media/aml-applies-to-skus/yes.png)机器学习 Studio (经典) ![ 这是一个 X，这意味着本文适用于 Azure 机器学习。](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
+**适用对象：** ![这是复选标记，意味着本文适用于机器学习工作室（经典版）。](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典版）   ![这是 X，意味着本文适用于 Azure 机器学习。](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 
 可以使用 Azure 机器学习工作室（经典）构建和测试预测分析解决方案。 然后，可以将该解决方案部署为 Web 服务。

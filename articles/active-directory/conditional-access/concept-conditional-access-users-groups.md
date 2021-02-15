@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d14c9330977296630ee58bc2b508f4304472044c
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: c4c654f70af2188264465d97abded9cae95e9275
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92366354"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100364573"
 ---
 # <a name="conditional-access-users-and-groups"></a>条件访问：用户和组
 
-条件访问策略必须包括用户分配，作为决策过程中的信号之一。 可以在条件访问策略中包括或排除用户。 Azure Active Directory 评估所有策略，并确保在授予用户访问权限之前满足所有要求。
+条件访问策略必须包括用户分配，作为决策过程中的信号之一。 可以在条件访问策略中包括或排除用户。 Azure Active Directory 会评估所有策略，确保只有满足所有要求才向用户授予访问权限。
 
 ![用户作为条件访问所做决策中的信号](./media/concept-conditional-access-users-groups/conditional-access-users-and-groups.png)
 
@@ -41,6 +41,9 @@ ms.locfileid: "92366354"
       - 允许管理员选择用于确定分配的特定 Azure AD 目录角色。 例如，组织可以对分配有全局管理员角色的用户创建更严格的策略。
    - 用户和组
       - 允许以特定用户集为目标。 例如，将某个人力资源应用选作云应用时，组织可以选择包含人力资源部所有成员的组。 某个组可以是 Azure AD 中任何类型的组，包括动态组，或分配的安全组和通讯组。 策略将应用于嵌套的用户和组。
+
+> [!IMPORTANT]
+> 选择条件性访问策略中包含的用户和组时，可直接添加到条件访问策略中的单个用户的数量有限制。 如果需要将大量单独的用户直接添加到条件访问策略，则建议将用户放在组中，并改为将该组分配到条件访问策略。
 
 > [!WARNING]
 > 如果用户或组是 2048 个以上的组的成员，则其访问可能会被阻止。 此限制适用于直接组和嵌套组成员身份。
@@ -74,7 +77,7 @@ ms.locfileid: "92366354"
 
 ![警告：别把自己锁在外面！](./media/concept-conditional-access-users-groups/conditional-access-users-and-groups-lockout-warning.png)
 
-[如果已 Azure 门户锁定，该怎么办？](troubleshoot-conditional-access.md#what-to-do-if-you-are-locked-out-of-the-azure-portal)
+[如果你被锁定在 Azure 门户之外，该怎么办？](troubleshoot-conditional-access.md#what-to-do-if-you-are-locked-out-of-the-azure-portal)
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,27 +1,23 @@
 ---
 title: 用例 - 客户分析
 description: 了解如何使用 Azure 数据工厂来创建数据驱动的工作流（管道），以分析游戏客户。
-services: data-factory
-documentationcenter: ''
 author: dcstwh
 ms.author: weetok
-manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 313050035694eaeabaefc8e09383ec3a887eb32b
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: bb7f0fb6184a813dd9fd3c193bc5e3bda5628f2d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96495916"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100376711"
 ---
 # <a name="use-case---customer-profiling"></a>用例 - 客户分析
 Azure 数据工厂是用于实现解决方案加速器的 Cortana Intelligence 套件的许多服务之一。  有关 Cortana Intelligence 的详细信息，请访问 [Cortana Intelligence Suite](https://www.microsoft.com/cortanaanalytics)（Cortana Intelligence 套件）。 此文档介绍一个简单的用例，帮助你了解 Azure 数据工厂解决常见分析问题的方法。
 
-## <a name="scenario"></a>方案
+## <a name="scenario"></a>场景
 Contoso 是为多个平台（游戏控制台、手持设备和个人计算机 (PC)）创建游戏的游戏公司。 玩家玩这些游戏的过程中将生成大量日志数据，这些日志数据可跟踪使用模式、游戏风格和用户首选项。  与人口、区域和产品数据相结合后，Contoso 可执行分析，以便指导如何改善玩家的体验，以及升级和游戏内购买。 
 
 Contoso 的目标是基于其玩家的游戏历史记录确定向上销售/交叉销售机会，添加极具吸引力的功能以促进企业发展，以及为客户提供更好的体验。 有关此用例，我们将使用游戏公司作为企业的示例。 该公司希望基于玩家的行为优化其游戏。 这些原则适用于想要使用其产品和服务吸引客户并增强其客户体验的任何企业。

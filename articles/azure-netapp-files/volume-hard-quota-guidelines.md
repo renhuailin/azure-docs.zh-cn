@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/05/2021
 ms.author: b-juche
-ms.openlocfilehash: 69a970b7b088795602dfb842b20ad6457d5f27c4
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: b173342c1c384213e88f216334b5e03cd8b7bea7
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99808114"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100374484"
 ---
 # <a name="what-changing-to-volume-hard-quota-means-for-your-azure-netapp-files-service"></a>对于 Azure NetApp 文件服务，对批量硬配额的更改
 
 从服务的开始，Azure NetApp 文件使用了容量池预配和自动增长机制。 Azure NetApp 文件卷是在所选层和大小的 underlaying 的、客户预配的容量池上精简预配的。 卷大小 (配额) 用于提供性能和容量，并且可随时随时调整配额。 此行为意味着，当前卷配额是用于控制卷带宽的性能杠杆。 目前，当容量填满时，underlaying 容量池会自动增长。   
 
 > [!IMPORTANT] 
-> 卷和容量池预配的 Azure NetApp 文件行为将更改为 *手动* 且 *可控* 的机制。 **从2021年3月15日开始，卷大小 (配额) 会管理带宽性能以及预配的容量，基础容量池将不再自动增长。** 
+> 卷和容量池预配的 Azure NetApp 文件行为将更改为 *手动* 且 *可控* 的机制。 **从2021年4月1日开始，卷大小 (配额) 会管理带宽性能以及预配的容量，基础容量池将不再自动增长。** 
 
 ## <a name="reasons-for-the-change-to-volume-hard-quota"></a>更改卷硬配额的原因
 
@@ -237,7 +237,7 @@ ANFCapacityManager 是一个 Azure 逻辑应用，用于管理基于容量的警
 
     ![显示 "设置音量自动增长百分比" 窗口的屏幕截图。](../media/azure-netapp-files/hard-quota-volume-anfcapacitymanager-auto-grow-percent.png) 
 
-## <a name="faq"></a>常见问题解答 
+## <a name="faq"></a>常见问题 
 
 本部分回答了有关批量硬配额更改的一些问题。 
 
@@ -266,7 +266,7 @@ ANFCapacityManager 是一个 Azure 逻辑应用，用于管理基于容量的警
 
 ### <a name="is-there-an-example-anfcapacitymanager-workflow"></a>是否有示例 ANFCapacityManager 工作流？  
 
-是的。 请参阅 [Volume 自动增长工作流示例 GitHub 页面](https://github.com/ANFTechTeam/ANFCapacityManager/blob/master/ResizeWorkflow.md)。
+是。 请参阅 [Volume 自动增长工作流示例 GitHub 页面](https://github.com/ANFTechTeam/ANFCapacityManager/blob/master/ResizeWorkflow.md)。
 
 ### <a name="is-anfcapacitymanager-microsoft-supported"></a>Microsoft 是否支持 ANFCapacityManager？  
 
