@@ -1,23 +1,18 @@
 ---
 title: Azure 数据工厂中的数据冗余 | Microsoft Docs
 description: 了解 Azure 数据工厂中的元数据冗余机制
-services: data-factory
-documentationcenter: ''
 author: nabhishek
-manager: weehyongtok
 ms.reviewer: abnarain
 ms.service: data-factory
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/05/2020
 ms.author: abnarain
-ms.openlocfilehash: 7f95adc264ed91e75eef668b43f674ddeb7d9e89
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 9d1c22b9ac6912f99838733a4326cb4082f49a6c
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350018"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100369690"
 ---
 # <a name="azure-data-factory-data-redundancy"></a>**Azure 数据工厂数据冗余**
 

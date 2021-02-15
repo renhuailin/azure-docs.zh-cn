@@ -1,22 +1,18 @@
 ---
 title: 使用 PowerShell 创建共享自承载集成运行时
 description: 了解如何在 Azure 数据工厂中创建共享自承载集成运行时，从而允许多个数据工厂访问集成运行时。
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.author: abnarain
 author: nabhishek
-manager: anansub
 ms.custom: seo-lt-2019
 ms.date: 06/10/2020
-ms.openlocfilehash: 3f0cf3de4c2cffca6540fcd727872372103ac98f
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 16feeb124859fa6199303d9d590fa0a286033ef9
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98118228"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100389427"
 ---
 # <a name="create-a-shared-self-hosted-integration-runtime-in-azure-data-factory"></a>在 Azure 数据工厂中创建共享自承载集成运行时
 
@@ -252,7 +248,7 @@ Remove-AzDataFactoryV2IntegrationRuntime `
 
 * 共享功能仅适用于同一 Azure AD 租户中的数据工厂。
 
-* 对于 Azure AD [guest 用户](../active-directory/governance/manage-guest-access-with-access-reviews.md)，UI 中的搜索功能（使用搜索关键字列出所有数据工厂）不起作用。 但只要来宾用户是数据工厂的所有者，你就可以在不使用搜索功能的情况下共享 IR。 对于需要共享 IR 的数据工厂的托管标识，请在“分配权限”框中输入该托管标识，然后在数据工厂 UI 中选择“添加”。
+* 对于 Azure AD [来宾用户](../active-directory/governance/manage-guest-access-with-access-reviews.md)，UI 中的搜索功能（通过使用搜索关键字列出所有数据工厂）将不起作用。 但只要来宾用户是数据工厂的所有者，你就可以在不使用搜索功能的情况下共享 IR。 对于需要共享 IR 的数据工厂的托管标识，请在“分配权限”框中输入该托管标识，然后在数据工厂 UI 中选择“添加”。
 
   > [!NOTE]
   > 此功能只能在数据工厂 V2 中使用。

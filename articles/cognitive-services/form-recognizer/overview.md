@@ -11,12 +11,12 @@ ms.date: 11/23/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: 自动化数据处理, 文档处理, 自动化数据输入, 表单处理
-ms.openlocfilehash: e1e5a4abf8eab96af62b160e28f98d95cf527eaf
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 2d3a37165994a8c7ff9d46ac24e63b7f58404ce3
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98044758"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584560"
 ---
 # <a name="what-is-form-recognizer"></a>什么是表单识别器？
 
@@ -87,13 +87,13 @@ Azure 表单识别器是一种认知服务，可让你使用机器学习技术�
 表单识别器还包括用于对独特表单类型进行自动化数据处理的预生成模型。
 
 ### <a name="prebuilt-invoice-model"></a>预生成的发票模型
-预生成的发票模型从各种格式的发票中提取数据，并返回结构化数据。 此模型提取的关键信息包括发票 ID、客户详细信息、供应商详细信息、收货地址、帐单邮寄地址、总额、税款、小计等。 此外，预生成的发票模型经过训练，可识别和返回发票上的所有文本和表。 有关详细信息，请参阅[发票](./concept-invoices.md)概念指南。
+预生成的发票模型从各种格式的发票中提取数据，并返回结构化数据。 此模型提取的关键信息包括发票 ID、客户详细信息、供应商详细信息、收货地址、帐单邮寄地址、总额、税款、小计等。 此外，预生成的发票模型经过训练，可分析和返回发票上的所有文本和表格。 有关详细信息，请参阅[发票](./concept-invoices.md)概念指南。
 
 :::image type="content" source="./media/overview-invoices.jpg" alt-text="发票示例" lightbox="./media/overview-invoices.jpg":::
 
 ### <a name="prebuilt-receipt-model"></a>预生成的收据模型
 
-预生成的收据模型用于读取澳大利亚、加拿大、英国、印度和美国的英语销售收据 &mdash; 由餐馆、油站、零售店等使用的类型。 此模型可提取关键信息，如交易的时间和日期、商家信息、税额、明细项目和总计等。 此外，预生成的回执模型经过训练，可识别和返回回执中的所有文本。 有关详细信息，请参阅[收据](./concept-receipts.md)概念指南。
+预生成的收据模型用于读取澳大利亚、加拿大、英国、印度和美国的英语销售收据 &mdash; 由餐馆、油站、零售店等使用的类型。 此模型可提取关键信息，如交易的时间和日期、商家信息、税额、明细项目和总计等。 此外，预生成的收据模型经过训练，可分析和返回收据中的所有文本。 有关详细信息，请参阅[收据](./concept-receipts.md)概念指南。
 
 :::image type="content" source="./media/overview-receipt.jpg" alt-text="收据示例" lightbox="./media/overview-receipt.jpg":::
 
@@ -171,4 +171,4 @@ Azure 表单识别器是一种认知服务，可让你使用机器学习技术�
 
 ## <a name="next-steps"></a>后续步骤
 
-完成[快速入门](quickstarts/client-library.md)，开始使用表单识别器以你选择的语言编写表单处理应用。
+完成[快速入门](quickstarts/client-library.md)，开始使用表单识别器以你选择的开发语言编写表单处理应用。

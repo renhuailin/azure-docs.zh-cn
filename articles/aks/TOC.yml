@@ -338,7 +338,7 @@
         - name: 使用 MySQL 生成应用
           href: ../mysql/flexible-server/tutorial-deploy-wordpress-on-aks.md
           maintainContext: true
-        - name: 部署 Open Liberty 或 WebSphere Liberty 应用
+        - name: 使用 Open Liberty 或 WebSphere Liberty 生成应用
           href: howto-deploy-java-liberty-app.md
         - name: 使用 Azure API 管理
           href: ../api-management/api-management-kubernetes.md

@@ -1,22 +1,17 @@
 ---
 title: 复制活动中的架构和数据类型映射
 description: 了解 Azure 数据工厂中的复制活动如何将架构和数据类型从源数据映射到接收器数据。
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: craigg
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: jingwang
-ms.openlocfilehash: afcc7ad34807b74fa0b1ddaaa29223d8a6e25584
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 0aee6030e5608b5413864d6a32dc8442dd346f42
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98702213"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100392776"
 ---
 # <a name="schema-and-data-type-mapping-in-copy-activity"></a>复制活动中的架构和数据类型映射
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -66,7 +61,7 @@ ms.locfileid: "98702213"
 
 例如，若要将数据从 Salesforce 复制到 Azure SQL 数据库并显式映射三列，请执行以下操作：
 
-1. 在 "复制活动-> 映射" 选项卡上，单击 " **导入架构** " 按钮以导入源和接收器架构。
+1. 在“复制活动”->“映射”选项卡上，单击“导入架构”按钮以导入源架构和接收器架构。
 
 2. 映射所需字段并排除/删除其余字段。
 
@@ -141,7 +136,7 @@ ms.locfileid: "98702213"
 - 从对象和数组中提取数据。
 - 从数组中交叉应用具有相同模式的多个对象，在这种情况下，可以将一个 JSON 对象转换为表格结果中的多个记录。
 
-对于更高级的分层到表格转换，可以使用 [数据流](concepts-data-flow-overview.md)。 
+对于更高级的分层式到表格式的转换，可以使用[数据流](concepts-data-flow-overview.md)。 
 
 例如，如果源 MongoDB 文档的内容如下：
 
@@ -180,7 +175,7 @@ ms.locfileid: "98702213"
 
 可在数据工厂创作 UI 上定义此类映射：
 
-1. 在 "复制活动-> 映射" 选项卡上，单击 " **导入架构** " 按钮以导入源和接收器架构。 由于数据工厂在导入架构时会对前几个对象采样，因此如果没有显示任何字段，你可以将其添加到层次结构中的正确层上：将鼠标指针悬停在现有字段名称上，然后选择添加节点、对象或数组。
+1. 在“复制活动”->“映射”选项卡上，单击“导入架构”按钮以导入源架构和接收器架构。 由于数据工厂在导入架构时会对前几个对象采样，因此如果没有显示任何字段，你可以将其添加到层次结构中的正确层上：将鼠标指针悬停在现有字段名称上，然后选择添加节点、对象或数组。
 
 2. 选择要从中遍历和提取数据的数组。 它将自动填充为“集合引用”。 请注意，此类操作只支持单个数组。
 
@@ -244,7 +239,7 @@ ms.locfileid: "98702213"
 
 将数据从分层源复制到分层接收器时，还可以通过选择对象/数组并映射到接收器而不触及内部字段，来保留整个层的分层结构。
 
-对于更高级的数据重整形转换，您可以使用 [数据流](concepts-data-flow-overview.md)。 
+对于更高级的数据重塑转换，可以使用[数据流](concepts-data-flow-overview.md)。 
 
 ### <a name="parameterize-mapping"></a>参数化映射
 

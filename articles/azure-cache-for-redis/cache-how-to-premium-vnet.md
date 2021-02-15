@@ -1,32 +1,27 @@
 ---
 title: 配置虚拟网络 - 高级层 Azure Cache for Redis 实例
-description: 了解如何为高级层 Azure Cache for Redis 实例创建和管理虚拟网络支持。
+description: 了解如何为 Redis 实例的高级层 Azure 缓存创建和管理虚拟网络支持
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
-ms.custom: devx-track-csharp
 ms.topic: conceptual
-ms.date: 10/09/2020
-ms.openlocfilehash: 908254fec0d9e92b0e30c2e4968c3c505bbbdbf8
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.date: 02/08/2021
+ms.openlocfilehash: 94bbb9bb683f40d44d6649802b66bda6feeee218
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99833824"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100375266"
 ---
-# <a name="configure-virtual-network-support-for-a-premium-tier-azure-cache-for-redis-instance"></a>如何为高级层 Azure Cache for Redis 实例配置虚拟网络支持
+# <a name="configure-virtual-network-support-for-a-premium-azure-cache-for-redis-instance"></a>为 Redis 实例的高级 Azure 缓存配置虚拟网络支持
 
-Azure Redis 缓存具有不同的缓存产品/服务，使缓存大小和功能的选择更加灵活。 高级层功能包括群集、持久性和虚拟网络支持。 虚拟网络是云中的专用网络。 为 Azure Cache for Redis 实例配置虚拟网络后，该实例不可公开寻址，而只能从虚拟网络中的虚拟机和应用程序进行访问。 本文说明如何为高级层 Azure Cache for Redis 实例配置虚拟网络支持。
+[Azure 虚拟网络](https://azure.microsoft.com/services/virtual-network/) 部署提供了增强的安全性和隔离以及子网、访问控制策略和其他功能，以进一步限制访问。 为 Azure Cache for Redis 实例配置虚拟网络后，该实例不可公开寻址，而只能从虚拟网络中的虚拟机和应用程序进行访问。 本文说明如何为高级层 Azure Cache for Redis 实例配置虚拟网络支持。
 
 > [!NOTE]
 > Azure Cache for Redis 同时支持经典部署模型和 Azure 资源管理器虚拟网络。
 > 
 
-## <a name="why-virtual-network"></a>为何采用虚拟网络？
-
-[Azure 虚拟网络](https://azure.microsoft.com/services/virtual-network/)部署为 Azure Cache for Redis 实例提供增强的安全性和隔离性，并提供子网、访问控制策略以及其他用来进一步限制访问的功能。
-
-## <a name="virtual-network-support"></a>虚拟网络支持
+## <a name="set-up-virtual-network-support"></a>设置虚拟网络支持
 
 在创建缓存期间，可在“新建 Azure Cache for Redis”窗格中配置虚拟网络支持。
 

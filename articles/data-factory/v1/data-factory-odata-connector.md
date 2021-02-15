@@ -1,23 +1,18 @@
 ---
 title: 从 OData 源移动数据
 description: 了解如何使用 Azure 数据工厂从 OData 源移动数据。
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: de28fa56-3204-4546-a4df-21a21de43ed7
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 95f92d4e5616d7754c355610685701a8e089b84e
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: fae78459a752d78fe47f189bca67667e917ba561
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96019644"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100380060"
 ---
 # <a name="move-data-from-an-odata-source-using-azure-data-factory"></a>使用 Azure 数据工厂从 OData 源移动数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -60,7 +55,7 @@ ms.locfileid: "96019644"
 ## <a name="linked-service-properties"></a>链接服务属性
 下表提供 OData 链接服务专属 JSON 元素的说明。
 
-| 属性 | 说明 | 必需 |
+| properties | 说明 | 必须 |
 | --- | --- | --- |
 | type |Type 属性必须设置为： **OData** |是 |
 | url |OData 服务的 URL。 |是 |
@@ -145,7 +140,7 @@ ms.locfileid: "96019644"
 
 每种数据集的 typeProperties 部分有所不同，该部分提供有关数据在数据存储区中的位置信息。 **ODataResource** 类型数据集（包括 OData 数据集）的 typeProperties 节具有以下属性
 
-| 属性 | 说明 | 必需 |
+| properties | 说明 | 必须 |
 | --- | --- | --- |
 | path |OData 资源路径 |否 |
 
@@ -156,7 +151,7 @@ ms.locfileid: "96019644"
 
 源属于 **RelationalSource** 类型（包括 OData）时，以下属性在 typeProperties 节可用：
 
-| 属性 | 说明 | 示例 | 必需 |
+| properties | 说明 | 示例 | 必须 |
 | --- | --- | --- | --- |
 | 查询 |使用自定义查询读取数据。 |"?$select=Name, Description&$top=5" |否 |
 
@@ -233,7 +228,7 @@ ms.locfileid: "96019644"
 
 **OData 输入数据集：**
 
-设置“external”: ”true”将告知数据工厂服务：数据集在数据工厂外部且不由数据工厂中的活动生成。
+设置 "external": "true" 将告知数据工厂服务：数据集位于数据工厂外且不由数据工厂中的活动生成。
 
 ```json
 {

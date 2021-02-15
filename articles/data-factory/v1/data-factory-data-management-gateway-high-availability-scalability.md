@@ -1,23 +1,18 @@
 ---
 title: Azure 数据工厂中的数据管理网关的高可用性
 description: 本文介绍如何通过添加更多节点向外扩展数据管理网关，以及如何通过增加可在节点上运行的并发作业数纵向扩展数据管理网关。
-services: data-factory
-documentationcenter: ''
 author: nabhishek
-manager: anandsub
-editor: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: b8d05293359cff16bb6d8c9a629a1fbf68104365
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: ad34ed14682d729157f45e67eb3e0d3bb3eb39b7
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96003610"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100391722"
 ---
 # <a name="data-management-gateway---high-availability-and-scalability-preview"></a>数据管理网关 - 高可用性和可伸缩性（预览）
 > [!NOTE]
@@ -98,7 +93,7 @@ ms.locfileid: "96003610"
         > 关于使用 TLS/SSL 证书的要求的列表，请参阅 [TLS/SSL 证书要求](#tlsssl-certificate-requirements)。 
     5. 网关安装成功后，单击“启动配置管理器”：
     
-        ![手动安装 - 启动配置管理器](media/data-factory-data-management-gateway-high-availability-scalability/manual-setup-launch-configuration-manager.png)   
+        ![手动安装 - 启动配置管理器](media/data-factory-data-management-gateway-high-availability-scalability/manual-setup-launch-configuration-manager.png)     
     6. 将在节点（本地 Windows 计算机）中看到数据管理网关配置管理器，它显示连接状态、网关名称和节点名称。  
 
         ![数据管理网关 - 安装成功](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-installation-success.png)
@@ -187,7 +182,7 @@ ms.locfileid: "96003610"
 :------------------ | :---------- 
 名称 | 逻辑网关和与网关关联的节点的名称。  
 状态 | 逻辑网关和网关节点的状态。 示例：联机/脱机/受限/等。有关这些状态的信息，请参阅 [网关状态](#gateway-status) 部分。 
-版本 | 显示逻辑网关和每个网关节点的版本。 逻辑网关的版本根据组中多数节点的版本而决定。 如果逻辑网关安装程序中的节点版本不同，只有与逻辑网关的版本号相同的节点能正常运行。 其他节点将处于受限模式，需要手动进行更新（仅当自动更新失败时）。 
+Version | 显示逻辑网关和每个网关节点的版本。 逻辑网关的版本根据组中多数节点的版本而决定。 如果逻辑网关安装程序中的节点版本不同，只有与逻辑网关的版本号相同的节点能正常运行。 其他节点将处于受限模式，需要手动进行更新（仅当自动更新失败时）。 
 可用内存 | 网关节点上的可用内存。 此值为近实时快照。 
 CPU 使用率 | 网关节点的 CPU 使用率。 此值为近实时快照。 
 网络（进/出） | 网关节点的网络利用率。 此值为近实时快照。 
@@ -200,7 +195,7 @@ CPU 使用率 | 网关节点的 CPU 使用率。 此值为近实时快照。
 
 下表提供网关节点可能的状态： 
 
-状态  | 注释/方案
+状态    | 注释/方案
 :------- | :------------------
 联机 | 节点连接到数据工厂服务。
 Offline | 节点处于脱机状态。
@@ -246,11 +241,11 @@ Azure 门户提供具有粒度节点级别详情的管道监视体验。 例如�
 - 如果节点版本低于逻辑网关版本，则不能向逻辑网关注册网关节点。 从门户中删除逻辑网关的所有节点，以便可以注册较低版本节点（降级）。 如果删除逻辑网关的所有节点，请向该逻辑网关手动安装并注册新节点。 在这种情况下，不支持快速安装。
 - 快速安装不能用于向现有逻辑网关安装节点，该网关仍使用云凭据。 可在“设置”选项卡上查看网关配置管理器中存储凭据的位置。
 - 快速安装不能用于向现有逻辑网关安装节点，该网关已启用节点到节点加密。 由于设置加密模式涉及手动添加证书，因此不能选择快速安装。 
-- 对于本地环境中的文件副本，不得再使用 \\localhost 或 C:\files，因为 localhost 或本地驱动器可能无法通过所有节点进行访问。 请改用 \\ServerName\files 指定文件的位置。
+- 对于本地环境中的文件副本，不得再使用 \\localhost 或 C:\files，因为 localhost 或本地驱动器可能无法通过所有节点进行访问。 相反，请使用 \\ ServerName\files 来指定文件的位置。
 
 
 ## <a name="rolling-back-from-the-preview"></a>从预览版回退 
-若要从预览版回退，请保留一个节点、删除所有其他节点。 删除哪个节点并不重要，但需确保逻辑网关中至少有一个节点。 可通过在计算机上卸载网关或使用 Azure 门户来删除节点。 在 Azure 门户中的“数据工厂”页，单击“链接的服务”以启动“链接的服务”页。 选择网关以启动“网关”页。 在“网关”页中，可以查看与网关关联的节点。 该页面将允许从网关删除节点。
+若要从预览版回退，请保留一个节点、删除所有其他节点。 删除的节点并不重要，但请确保逻辑网关中至少有一个节点。 可通过在计算机上卸载网关或使用 Azure 门户来删除节点。 在 Azure 门户中的“数据工厂”页，单击“链接的服务”以启动“链接的服务”页。 选择网关以启动“网关”页。 在“网关”页中，可以查看与网关关联的节点。 该页面将允许从网关删除节点。
  
 删除后，在相同的 Azure 门户页中单击“预览版功能”，然后禁用预览版功能。 已将网关重置为 GA（正式发布）单节点网关。
 

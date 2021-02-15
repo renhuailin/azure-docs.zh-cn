@@ -8,12 +8,12 @@ ms.date: 10/15/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 3876b44bc6bb1ddbc5398126421fb9651003838f
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 13ac18abd0a557d02435c3805e1ab86bcbf1ff84
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98678817"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100391977"
 ---
 # <a name="authenticate-a-downstream-device-to-azure-iot-hub"></a>通过 Azure IoT 中心对下游设备进行身份验证
 
@@ -68,6 +68,11 @@ ms.locfileid: "98678817"
 * 选择“设置父设备”，然后选择此下游设备将通过其连接的 IoT Edge 网关设备。 之后可以随时更改父设备。
 
    ![在门户中使用对称密钥身份验证创建设备 ID](./media/how-to-authenticate-downstream-device/symmetric-key-portal.png)
+
+   >[!NOTE]
+   >将父设备设置为使用对称密钥身份验证的下游设备的可选步骤。 但是，从 IoT Edge 版本开始，每个下游设备都必须分配给父设备1.1.0。
+   >
+   >可以通过将环境变量 **AuthenticationMode** 设置为值 **CloudAndScope**，将 IoT Edge 集线器配置为返回到以前的行为。
 
 还可以使用[适用于 Azure CLI 的 IoT 扩展](https://github.com/Azure/azure-iot-cli-extension)来完成相同的操作。 以下示例使用 [az iot hub device-identity](/cli/azure/ext/azure-iot/iot/hub/device-identity) 命令创建具有对称密钥身份验证的新 IoT 设备，并分配父设备：
 

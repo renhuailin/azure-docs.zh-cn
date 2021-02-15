@@ -1,23 +1,18 @@
 ---
 title: 将数据加载到 Azure Data Lake Storage Gen2 中
 description: 使用 Azure 数据工厂将数据复制到 Azure Data Lake Storage Gen2 中
-services: data-factory
-documentationcenter: ''
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/09/2020
-ms.openlocfilehash: ca9ca495f2b3449b5aeb933bbd8d312fc9341fd9
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 61e34d41d9f7a60b6ad74e12331864e6ba08e4f5
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94554111"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100370795"
 ---
 # <a name="load-data-into-azure-data-lake-storage-gen2-with-azure-data-factory"></a>使用 Azure 数据工厂将数据加载到 Azure Data Lake Storage Gen2 中
 
@@ -42,17 +37,17 @@ Azure 数据工厂提供可横向扩展的托管数据移动解决方案。 得�
 
 ## <a name="create-a-data-factory"></a>创建数据工厂
 
-1. 在左侧菜单中，选择 " **创建资源**  >  **集成**  >  **数据工厂** "：
+1. 在左侧菜单中，选择“创建资源” > “集成” > “数据工厂”  ：
    
    ![在“新建”窗格中选择“数据工厂”](./media/doc-common-process/new-azure-data-factory-menu.png)
 
 2. 在“新建数据工厂”页中，为以下字段提供值：
  
-    * **名称** ：输入 Azure 数据工厂的全局唯一名称。 如果收到错误“数据工厂名称 YourDataFactoryName 不可用”，请为数据工厂输入其他名称。 例如，可以使用名称 _**yourname**_**ADFTutorialDataFactory** 。 请重试创建数据工厂。 有关数据工厂项目的命名规则，请参阅[数据工厂命名规则](naming-rules.md)。
-    * **订阅** ：选择要在其中创建数据工厂的 Azure 订阅。 
-    * **资源组** ：从下拉列表中选择现有资源组，或选择“新建”选项并输入资源组的名称。 若要了解有关资源组的详细信息，请参阅 [使用资源组管理 Azure 资源](../azure-resource-manager/management/overview.md)。  
-    * **版本** ：选择“V2”。
-    * **位置** ：选择数据工厂的位置。 下拉列表中仅显示支持的位置。 数据工厂使用的数据存储可以在其他位置和区域中。 
+    * **名称**：输入 Azure 数据工厂的全局唯一名称。 如果收到错误“数据工厂名称 YourDataFactoryName 不可用”，请为数据工厂输入其他名称。 例如，可以使用名称 _**yourname**_**ADFTutorialDataFactory**。 请重试创建数据工厂。 有关数据工厂项目的命名规则，请参阅[数据工厂命名规则](naming-rules.md)。
+    * **订阅**：选择要在其中创建数据工厂的 Azure 订阅。 
+    * **资源组**：从下拉列表中选择现有资源组，或选择“新建”选项并输入资源组的名称。 若要了解有关资源组的详细信息，请参阅 [使用资源组管理 Azure 资源](../azure-resource-manager/management/overview.md)。  
+    * **版本**：选择“V2”。
+    * **位置**：选择数据工厂的位置。 下拉列表中仅显示支持的位置。 数据工厂使用的数据存储可以在其他位置和区域中。 
 
 3. 选择“创建” 。
 
@@ -80,15 +75,15 @@ Azure 数据工厂提供可横向扩展的托管数据移动解决方案。 得�
    3. 单击“测试连接”以验证设置，然后选择“创建” 。
 
       ![指定 Amazon S3 帐户](./media/load-azure-data-lake-storage-gen2/specify-amazon-s3-account.png)
-   4. 随即会显示新创建的 AmazonS3 连接。 选择“ **下一步** ”。 
+   4. 随即会显示新创建的 AmazonS3 连接。 选择“**下一步**”。 
 
 5. 在“选择输入文件或文件夹”页上，浏览到要复制的文件夹和文件。 选中文件夹/文件，然后选择“选择”。
 
     ![选择输入文件或文件夹](./media/load-azure-data-lake-storage-gen2/choose-input-folder.png)
 
-6. 通过选中“以递归方式”和“以二进制方式复制”选项，指定复制行为 。 选择“ **下一步** ”。
+6. 通过选中“以递归方式”和“以二进制方式复制”选项，指定复制行为 。 选择“**下一步**”。
 
-    ![屏幕截图显示选择输入文件或文件夹，您可以在其中选择二进制复制和递归。](./media/load-azure-data-lake-storage-gen2/specify-binary-copy.png)
+    ![屏幕截图显示了“选择输入文件或文件夹”，你可以在其中选择“以二进制方式复制”和“以递归方式”。](./media/load-azure-data-lake-storage-gen2/specify-binary-copy.png)
     
 7. 在“目标数据存储”页中，单击“+ 新建连接”，接着选择“Azure Data Lake Storage Gen2”，然后选择“继续”   。
 
@@ -103,7 +98,7 @@ Azure 数据工厂提供可横向扩展的托管数据移动解决方案。 得�
 
 9. 在“选择输出文件或文件夹”页中，输入 **copyfroms3** 作为输出文件夹名称，然后选择“下一步”。 ADF 将在复制过程中创建相应的 ADLS Gen2 文件系统和子文件夹（如果不存在）。
 
-    ![屏幕截图显示您输入的文件夹路径。](./media/load-azure-data-lake-storage-gen2/specify-adls-path.png)
+    ![屏幕截图显示了所输入的文件夹路径。](./media/load-azure-data-lake-storage-gen2/specify-adls-path.png)
 
 10. 在“设置”页中选择“下一步”，以便使用默认设置 。
 

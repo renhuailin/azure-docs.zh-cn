@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 11/18/2020
+ms.date: 02/10/2021
 ms.author: b-juche
-ms.openlocfilehash: 35fce3723e92a3a7c68aaa62b28b756432182a8c
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 4d992bcc202dc8bdacdda6426371df1adb1ec3e6
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97629657"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100379108"
 ---
 # <a name="manage-snapshots-by-using-azure-netapp-files"></a>使用 Azure NetApp 文件管理快照
 
@@ -44,7 +44,7 @@ Azure NetApp 文件支持创建按需快照，并使用快照策略来计划自�
 
     ![新建快照](../media/azure-netapp-files/azure-netapp-files-new-snapshot.png)
 
-4. 单击“确定”  。 
+4. 单击“确定”。  
 
 ## <a name="manage-snapshot-policies"></a>管理快照策略
 
@@ -100,7 +100,7 @@ Azure NetApp 文件支持创建按需快照，并使用快照策略来计划自�
 
     ![每月快照策略](../media/azure-netapp-files/snapshot-policy-monthly.png) 
 
-4.  单击“ **保存**”。  
+4.  单击“保存”。  
 
 如果需要创建其他快照策略，请重复步骤3。
 创建的策略将显示在 "快照策略" 页中。
@@ -187,7 +187,9 @@ Azure NetApp 文件支持创建按需快照，并使用快照策略来计划自�
 
 装载的卷包含 NFS 客户端中名为 (的快照目录  `.snapshot`) 或 `~snapshot` 客户端可以访问的 SMB 客户端) 中的 (。 快照目录包含对应于卷快照的子目录。 每个子目录都包含快照文件。 如果意外删除或覆盖了某个文件，则可以通过将该文件从快照子目录复制到读写目录，将该文件还原到父读写目录。 
 
-如果看不到快照目录，则可能是由于当前启用了 "隐藏快照路径" 选项而隐藏。 可以 [编辑 "隐藏快照路径" 选项](#edit-the-hide-snapshot-path-option) 以禁用它。  
+可以通过使用 " [隐藏快照路径" 选项](#edit-the-hide-snapshot-path-option)来控制对快照目录的访问。 此选项控制是否应在客户端中隐藏目录。 因此，它还控制对快照中的文件和文件夹的访问。  
+
+NFSv 4.1 不显示 `.snapshot` 目录 (`ls -la`) 。 但是，如果未设置 "隐藏快照路径" 选项，则仍可 `.snapshot` 使用 `cd <snapshot-path>` 客户端命令行中的命令通过 nfsv 4.1 访问目录。 
 
 ### <a name="restore-a-file-by-using-a-linux-nfs-client"></a>使用 Linux NFS 客户端还原文件 
 

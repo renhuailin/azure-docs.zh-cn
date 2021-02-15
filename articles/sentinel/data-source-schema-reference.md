@@ -10,12 +10,12 @@ ms.subservice: azure-sentinel
 ms.topic: reference
 ms.custom: ''
 ms.date: 01/14/2021
-ms.openlocfilehash: 32ec711309190d4bb7c6c98a05b6a75cf88a8f5c
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: b5d53ec6c6a8002c72a53d6928d56e55d520ef38
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98920497"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390821"
 ---
 # <a name="data-source-schema-reference"></a>数据源架构引用
 
@@ -37,11 +37,14 @@ ms.locfileid: "98920497"
 | **Network**                          | NSG 流日志          | AzureNetworkAnalytics  | [流量分析中的架构和数据聚合](/azure/network-watcher/traffic-analytics-schema) |
 | | | | |
 
+> [!NOTE]
+> 有关详细信息，请参阅整个 [Azure Monitor 数据参考](/azure/azure-monitor/reference/)。
+>
 ## <a name="3rd-party-vendor-data-sources"></a>第三方供应商数据源
 
 下表列出了支持的第三方供应商及其 Syslog 或常见事件格式 (CEF 的各种受支持的日志类型的文档) ，其中包含每个类别类型的 CEF 字段映射和示例日志。
 
-| 类型 |    Vendor |    Product | Log Analytics tablename | CEF 字段映射引用  |
+| 类型 |    Vendor |    产品 | Log Analytics tablename | CEF 字段映射引用  |
 | ----- | ----- | ----- | ----- |----- |
 | **Network** | 帕洛阿尔托   | 平移 OS    | CommonSecurityLog |   [平移操作系统9.0 常见事件格式集成指南](https://docs.paloaltonetworks.com/content/dam/techdocs/en_US/pdf/cef/pan-os-90-cef-configuration-guide.pdf) (搜索 *CEF 样式日志格式*)  |
 | **Network** | 检查点  |ALL   | CommonSecurityLog | [日志字段说明](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk109795)       |

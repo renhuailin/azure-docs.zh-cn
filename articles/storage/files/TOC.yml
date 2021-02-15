@@ -93,8 +93,6 @@
           href: storage-how-to-create-file-share.md
         - name: 部署 Azure 文件同步
           href: storage-sync-files-deployment-guide.md
-        - name: 创建高级文件共享
-          href: storage-how-to-create-premium-fileshare.md
         - name: 创建 NFS 共享
           href: storage-files-how-to-create-nfs-shares.md
         - name: 具有高级文件共享的 SQL Server FCI

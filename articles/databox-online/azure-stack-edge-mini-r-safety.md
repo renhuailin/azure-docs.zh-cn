@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 02/08/2021
+ms.date: 02/12/2021
 ms.author: alkohli
-ms.openlocfilehash: aa363b1eeddff6c3b10d8e36371becb8b690697c
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: eb42a9a77927d8577dfec3c9167294eb8f809fec
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99980998"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100382612"
 ---
 # <a name="azure-stack-edge-mini-r-safety-instructions"></a>Azure Stack 边缘迷你 R 安全性说明
 
@@ -137,7 +137,7 @@ Azure Stack Edge 迷你 R 设备设计用于 (UL、CSA、ETL 等 ) 和 IEC/EN 60
 
 设备设计为在以下环境中运行：
 
-| 环境 | 规格 |
+| 环境 | 规范 |
 |:---  |:--- |
 | 系统温度规范 | <ul><li>存储温度：– 20 &deg; c – 50 &deg; c ( – 4 &deg; f-122 &deg; f) </li><li>连续操作： 0 &deg; c – 40 &deg; c (32 &deg; f – 104 &deg; F) </li></ul> |
 | 相对湿度 (RH) 规格 | <ul><li>存储：5% 至95% 相对湿度</li><li>操作：10% 至90% 相对湿度</li></ul>|
@@ -160,7 +160,6 @@ Netgear A6150 WiFi USB 适配器仅适用于经过批准的天线。 此设备�
 波段5150– 5250 MHz 中的操作仅用于室内使用，以减少与移动渠道移动卫星系统的有害干扰。
 
 ![规章信息警告-室内使用](./media/azure-stack-edge-mini-r-safety/regulatory-information-indoor-use-only.png)
-
 
 建议用户将高功率 radars 分配为主要用户 (优先级用户) 带区5250– 5350 MHz 和5650– 5850 MHz 的用户，并且这些 radars 可能会导致对 LE LAN 设备造成干扰和/或损坏。
 
@@ -205,11 +204,13 @@ Netgear A6150 WiFi USB 适配器符合为不受控制环境规定的加拿大可
 
 #### <a name="european-union"></a>欧盟：
 
-为此设备请求欧盟声明的副本。
+为此设备请求欧盟声明的副本。 将电子邮件发送到 [CSI_Compliance@microsoft.com](mailto:CSI_Compliance@microsoft.com)。
 
 随本设备一起提供的 Netgear A6150 WiFi USB 适配器符合指令 2014/53/EU 的要求，也可按请求提供。
 
-> ![警告图标 13 ](./media/azure-stack-edge-mini-r-safety/icon-safety-warning.png) 这是一个类产品。 在室内环境中，本产品可能导致无线电干扰，在这种情况下，用户可能需要采取充分的措施。
+![警告图标 13 ](./media/azure-stack-edge-mini-r-safety/icon-safety-warning.png) **警告：**  
+
+本设备属于 A 类产品。 在室内环境中，本产品可能导致无线电干扰，在这种情况下，用户可能需要采取充分的措施。
 
 处置废旧电池以及电力和电子设备：
 

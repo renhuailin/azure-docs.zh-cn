@@ -1,23 +1,18 @@
 ---
 title: 使用控制表从数据库执行增量复制
 description: 了解如何使用解决方案模板通过 Azure 数据工厂仅从数据库中逐步复制新行或更新后的行。
-services: data-factory
-documentationcenter: ''
 author: dearandyxu
 ms.author: yexu
-ms.reviewer: douglasl
-manager: anandsub
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/09/2020
-ms.openlocfilehash: 3f15ffd6f7ed784cce398d419e013a69c60289d8
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: b3b5679b254a07b275cc7fd1295ba4ca5b405fbc
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96921813"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100362006"
 ---
 # <a name="delta-copy-from-a-database-with-a-control-table"></a>使用控制表从数据库执行增量复制
 
@@ -45,7 +40,7 @@ ms.locfileid: "96921813"
 - *Data_Source_WaterMarkColumn* 是源表中的用于识别新行或已更新行的列名。 此列的类型通常为 *datetime*、*INT* 等。
 - *Data_Destination_Container* 是在目标存储中将数据复制到的位置的根路径。
 - *Data_Destination_Directory* 是在目标存储中将数据复制到的位置的根下的目录路径。
-- *Data_Destination_Table_Name* 是将数据复制到目标存储中的位置 (适用于选择 "Azure Synapse Analytics" 作为数据目标) 时。
+- Data_Destination_Table_Name 是目标存储中要将数据复制到的位置（在选择“Azure Synapse Analytics”作为“数据目标”时适用）。
 - *Data_Destination_Folder_Path* 是将数据复制到目标存储中的位置 (适用于选择 "文件系统" 或 "Azure Data Lake Storage Gen1" 作为数据目标) 的情况。
 - *Control_Table_Table_Name* 是用于存储高水印值的外部控制表。
 - *Control_Table_Table_Name* 是外部控制表中要将高水印值存储到的列。
@@ -140,7 +135,7 @@ ms.locfileid: "96921813"
 
     你会看到，只有新行已复制到目标。
 
-15.  (可选： ) 如果选择 Azure Synapse Analytics 作为数据目标，则还必须提供与 azure Blob 存储的连接以进行过渡，这是 Azure Synapse Analytics Polybase 所必需的。 模板会为你生成容器路径。 管道运行后，检查是否已在 Blob 存储中创建容器。
+15. （可选：）如果选择“Azure Synapse Analytics”作为数据目标，则还需按 Azure Synapse Analytics Polybase 的要求，提供与用于暂存的 Azure Blob 存储的连接。 模板会为你生成容器路径。 管道运行后，检查是否已在 Blob 存储中创建容器。
     
     ![配置 PolyBase](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable15.png)
     

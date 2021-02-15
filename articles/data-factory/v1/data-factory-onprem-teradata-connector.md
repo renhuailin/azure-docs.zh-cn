@@ -1,23 +1,18 @@
 ---
 title: 使用 Azure 数据工厂从 Teradata 移动数据
 description: 了解 Teradata 连接器，获取允许从 Teradata 数据库移动数据的数据工厂服务的信息
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: 98eb76d8-5f3d-4667-b76e-e59ed3eea3ae
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: ecde5784e759ef5259b8c67ed574cef6cae98f30
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: ef992ed907bc070643f290e7fd536de05ebf9242
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96019593"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387200"
 ---
 # <a name="move-data-from-teradata-using-azure-data-factory"></a>使用 Azure 数据工厂从 Teradata 移动数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -61,7 +56,7 @@ ms.locfileid: "96019593"
 ## <a name="linked-service-properties"></a>链接服务属性
 下表提供 Teradata 链接服务专属 JSON 元素的描述。
 
-| 属性 | 说明 | 必需 |
+| properties | 说明 | 必须 |
 | --- | --- | --- |
 | type |type 属性必须设置为：**OnPremisesTeradata** |是 |
 | server |Teradata 服务器的名称。 |是 |
@@ -82,7 +77,7 @@ ms.locfileid: "96019593"
 
 当源属于 **RelationalSource** 类型（包括 Teradata）时，以下属性可在 **typeProperties** 节中使用：
 
-| 属性 | 说明 | 允许的值 | 必须 |
+| properties | 说明 | 允许的值 | 必须 |
 | --- | --- | --- | --- |
 | 查询 |使用自定义查询读取数据。 |SQL 查询字符串。 例如：select * from MyTable。 |是 |
 
@@ -135,9 +130,9 @@ ms.locfileid: "96019593"
 
 **Teradata 输入数据集：**
 
-该示例假定已在 Teradata 中创建表“MyTable”，并且它包含名为“timestamp”的时间序列数据列。
+本示例假定已在 Teradata 中创建了表 "MyTable"，并且它包含了时序数据中名为 "timestamp" 的列。
 
-设置 &quot;external&quot;: true 将告知数据工厂服务：表位于数据工厂外且不由数据工厂中的活动生成。
+设置 "external"： true 将告知数据工厂服务：表在数据工厂外部且不由数据工厂中的活动生成。
 
 ```json
 {
@@ -302,7 +297,7 @@ ms.locfileid: "96019593"
 | Date |DateTime |
 | 时间 |TimeSpan |
 | Time With Time Zone |String |
-| Timestamp |DateTime |
+| 时间戳 |DateTime |
 | Timestamp With Time Zone |DateTimeOffset |
 | Interval Day |TimeSpan |
 | Interval Day To Hour |TimeSpan |

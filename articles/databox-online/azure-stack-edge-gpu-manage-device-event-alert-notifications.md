@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 02/02/2021
 ms.author: alkohli
-ms.openlocfilehash: a18937d84b05159626708d577982405d79161a1a
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 0ab7cdfb3d699a8415739565aae5d4326002bc43
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99500794"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100389138"
 ---
 # <a name="manage-device-event-alert-notifications-on-azure-stack-edge-pro-resources"></a>管理 Azure Stack Edge Pro 资源上的设备事件警报通知
 
@@ -23,7 +23,7 @@ ms.locfileid: "99500794"
 
 操作规则可以触发或禁止显示警报通知。 操作规则将添加到 *操作组* -一组通知首选项，用于通知需要对资源或资源集的不同上下文中触发的警报进行操作的用户。
 
-有关操作规则的详细信息，请参阅 [配置操作规则](/azure/azure-monitor/platform/alerts-action-rules?tabs=portal#configuring-an-action-rule)。 有关操作组的详细信息，请参阅 [在 Azure 门户中创建和管理操作组](/blob/master/articles/azure-monitor/platform/action-groups)。
+有关操作规则的详细信息，请参阅 [配置操作规则](/azure/azure-monitor/platform/alerts-action-rules?tabs=portal#configuring-an-action-rule)。 有关操作组的详细信息，请参阅 [在 Azure 门户中创建和管理操作组](/azure/azure-monitor/platform/action-groups)。
 
 > [!NOTE]
 > 操作规则功能处于预览阶段。 当改进进程时，某些屏幕和步骤可能会更改。
@@ -123,8 +123,8 @@ ms.locfileid: "99500794"
 
 ## <a name="next-steps"></a>后续步骤
 
-<!-- - See [Create and manage action groups in the Azure portal](/blob/master/articles/azure-monitor/platform/action-groups) for guidance on creating a new action group.
+<!-- - See [Create and manage action groups in the Azure portal](/azure/azure-monitor/platform/action-groups) for guidance on creating a new action group.
 - See [Configure an action rule](/azure/azure-monitor/platform/alerts-action-rules?tabs=portal#configuring-an-action-rule) for more info about creating action rules that send or suppress alert notifications. -2 bullets referenced above. Making room for local tasks in "Next Steps." --> 
 - 有关查看设备事件、硬件状态和指标图表的信息，请参阅 [监视 Azure Stack Edge Pro](azure-stack-edge-monitor.md) 。 
 - 请参阅 [使用 Azure Monitor](azure-stack-edge-gpu-enable-azure-monitor.md) 获取有关优化 Azure Stack EDGE Pro GPU 设备的 Azure Monitor 的信息。
-- 有关管理单个警报的信息，请参阅 [使用 Azure Monitor 链接目标创建、查看和管理指标警报](/../azure-monitor/platform/alerts-metric.md) 。
+- 有关管理单个警报的信息，请参阅 [使用 Azure Monitor 链接目标创建、查看和管理指标警报](/azure/azure-monitor/platform/alerts-metric) 。

@@ -1,19 +1,17 @@
 ---
 title: 排查 Azure 数据工厂问题 | Microsoft Docs
 description: 了解如何排查 Azure 数据工厂中的外部控制活动问题。
-services: data-factory
 author: nabhishek
 ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 12/30/2020
 ms.author: abnarain
-ms.reviewer: craigg
-ms.openlocfilehash: 922ec6c4b579a657e7ee5e872148f8126ce175e2
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: 101e55188b8021040e2fd6bd573c1c6330241e72
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97822278"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100382797"
 ---
 # <a name="troubleshoot-azure-data-factory"></a>排查 Azure 数据工厂问题
 
@@ -499,7 +497,7 @@ ms.locfileid: "97822278"
 
 - **消息**：`There are duplicate files in the resource folder.`
 
-- **原因**：具有相同名称的多个文件位于 folderPath 的不同子文件夹中。
+- **原因：** folderPath 的不同子文件夹中存在多个同名的文件。
 
 - **建议**：自定义活动在 folderPath 下平展文件夹结构。 如果需要保留文件夹结构，请压缩文件，并使用一个解压缩命令将其解压缩到 Azure Batch 中。
    
@@ -952,15 +950,15 @@ ms.locfileid: "97822278"
 
 - **建议**：提供 Azure Blob 存储帐户作为 HDInsight 按需链接服务的附加存储。
 
-### <a name="ssl-error-when-adf-linked-service-using-hdinsight-esp-cluster"></a>使用 HDInsight ESP 群集的 ADF 链接服务时出现 SSL 错误
+### <a name="ssl-error-when-adf-linked-service-using-hdinsight-esp-cluster"></a>ADF 链接服务使用 HDInsight ESP 群集时出现 SSL 错误
 
 - 消息：`Failed to connect to HDInsight cluster: 'ERROR [HY000] [Microsoft][DriverSupport] (1100) SSL certificate verification failed because the certificate is missing or incorrect.`
 
-- **原因**：问题最可能与系统信任存储区相关。
+- **原因：** 此问题很可能与系统信任存储相关。
 
-- **解决方法**：可以导航到 **Microsoft Integration RUNTIME\4.0\SHARED\ODBC Drivers\Microsoft Hive ODBC Driver\lib** 路径，并打开 DriverConfiguration64.exe 更改设置。
+- **解决方法**：你可以导航到 Microsoft Integration Runtime\4.0\Shared\ODBC Drivers\Microsoft Hive ODBC Driver\lib 路径，并打开 DriverConfiguration64.exe 以更改设置。
 
-    ![取消选中 "使用系统信任存储区"](./media/connector-troubleshoot-guide/system-trust-store-setting.png)
+    ![取消选中“使用系统信任存储”](./media/connector-troubleshoot-guide/system-trust-store-setting.png)
 
 ## <a name="web-activity"></a>Web 活动
 
@@ -1025,9 +1023,9 @@ ms.locfileid: "97822278"
 
 **错误消息：** `The payload including configurations on activity/dataSet/linked service is too large. Please check if you have settings with very large value and try to reduce its size.`
 
-**原因：** 每个活动运行的有效负载包括活动配置、关联的数据集 (s) 以及链接服务 (s) 配置（如果有），以及根据活动类型生成的一小部分系统属性。 此类负载大小的限制为 896 KB，如 " [数据工厂限制](../azure-resource-manager/management/azure-subscription-service-limits.md#data-factory-limits) " 部分中所述。
+**原因：** 每个活动运行的有效负载包括活动配置、关联的数据集和链接服务配置（如果有），以及为每个活动类型生成的系统属性的一小部分。 此类负载大小限制为 896 KB，如[数据工厂限制](../azure-resource-manager/management/azure-subscription-service-limits.md#data-factory-limits)部分所述。
 
-**建议：** 达到此限制，很可能是因为从上游活动输出或外部传入了一个或多个大参数值，尤其是在控制流中跨活动传递实际数据时。 检查是否可以减小大参数值的大小，或调整管道逻辑以避免跨活动传递此类值，而应在活动中处理此类值。
+**建议：** 达到此限制，很可能是因为从上游活动输出或外部传入了一个或多个大参数值，尤其是在控制流中跨活动传递实际数据时。 请检查是否可以减小大参数值，或调整管道逻辑以避免跨活动传递此类值，而改为在活动内处理此类值。
 
 ## <a name="next-steps"></a>后续步骤
 

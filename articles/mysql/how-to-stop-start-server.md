@@ -6,17 +6,17 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 09/21/2020
-ms.openlocfilehash: 047a24133dfdf68e2176b20cf31a871d11f0d4f9
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: d297d215d4b0edfdd67b603ba4707bf02057ad78
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93241151"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100516866"
 ---
 # <a name="stopstart-an-azure-database-for-mysql"></a>停止/启动 Azure Database for MySQL
 
 > [!IMPORTANT]
-> Azure Database for MySQL 的停止/启动功能当前为公共预览版。
+>  当你停止服务器时，它将在接下来的 7 天中一直保持该状态。 如果在此期间未手动启动服务器，则服务器将在 7 天结束时自动启动。 如果不使用服务器，可以选择将其 **停止** 。
 
 本文提供了执行停止和启动单一服务器的分步过程。
 
@@ -48,7 +48,7 @@ ms.locfileid: "93241151"
 
 2.  从 " **概述** " 页上，单击工具栏中的 " **开始** " 按钮。
 
-    :::image type="content" source="./media/howto-stop-start-server/mysql-start-server.png" alt-text="Azure Database for MySQL 停止服务器":::
+    :::image type="content" source="./media/howto-stop-start-server/mysql-start-server.png" alt-text="Azure Database for MySQL 启动服务器":::
 
     > [!NOTE]
     > 服务器启动后，所有管理操作现在都可用于单一服务器。

@@ -1,22 +1,17 @@
 ---
 title: 使用 Azure 数据工厂（预览版）从 PayPal 复制数据
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 PayPal 复制到支持的接收器数据存储。
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: c93425fe2e5210a3a8cc577b6e74e281c88121c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6753159acbc4a2da20695d61c6e7c31f4ac0a7c3
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81416790"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100381284"
 ---
 # <a name="copy-data-from-paypal-using-azure-data-factory-preview"></a>使用 Azure 数据工厂（预览版）从 PayPal 复制数据
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -110,7 +105,7 @@ PayPal 链接服务支持以下属性：
 
 ### <a name="paypal-as-source"></a>以 PayPal 作为源
 
-要从 PayPal 复制数据，请将复制活动中的源类型设置为“PayPalSource”  。 复制活动**source**部分支持以下属性：
+要从 PayPal 复制数据，请将复制活动中的源类型设置为“PayPalSource”  。 复制活动 **source** 部分支持以下属性：
 
 | 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |

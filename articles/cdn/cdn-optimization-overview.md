@@ -4,22 +4,16 @@ description: 了解 Azure 内容交付网络如何根据内容类型优化传递
 services: cdn
 documentationcenter: ''
 author: asudbring
-manager: danielgi
-editor: ''
-ms.assetid: ''
 ms.service: azure-cdn
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: how-to
 ms.date: 03/25/2019
 ms.author: allensu
-ms.openlocfilehash: 7c7e4ff05307452da67c37b23bf492db8855e2ef
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 3d207ee09a76509a65a2645515b182f8d92753b0
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96004494"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387914"
 ---
 # <a name="optimize-azure-cdn-for-the-type-of-content-delivery"></a>针对内容分发类型优化 Azure CDN
 
@@ -64,7 +58,11 @@ Microsoft 建议测试不同提供程序的性能差异，以选择最适合分�
 
 ## <a name="select-and-configure-optimization-types"></a>选择并配置优化类型
 
-创建 CDN 终结点时，请选择与方案和要通过终结点传送的内容类型最匹配的优化类型。 系统默认选择“常规 Web 传送”。 只有对于现有的 **来自 Akamai 的标准 Azure CDN** 终结点，你可以随时更新优化选项。 此更改不会中断 Azure CDN 内容分发。 
+创建 CDN 终结点时，请选择与方案和要通过终结点传送的内容类型最匹配的优化类型。 
+
+系统默认选择“常规 Web 传送”。 你只能随时 **从 Akamai 端点优化 Azure CDN 标准** 更新。 
+
+对于 **来自 Microsoft 的 Azure CDN 标准**，从 **Verizon Azure CDN 标准** ，并 **从 Verizon 中 Azure CDN 高级版**。
 
 1. 在 **来自 Akamai 的标准 Azure CDN** 配置文件中，选择一个终结点。
 

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/28/2020
 ms.author: yitoh
-ms.openlocfilehash: a3f6c14b7ed2686a262f28510efb37068cfb9cb3
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: b34fcd66f0b64e2522da69bcfc7d119628b9d9d9
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98787292"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100516696"
 ---
 # <a name="view-and-configure-ddos-protection-telemetry"></a>查看和配置 DDoS 防护遥测
 
@@ -39,7 +39,6 @@ Azure DDoS 防护标准通过 DDoS 攻击分析提供详细的攻击见解和可
 
 | 指标 | 指标显示名称 | 计价单位 | 聚合类型 | 说明 |
 | --- | --- | --- | --- | --- |
-| ByteCount | 字节计数 | 计数 | 总计 | 时间段内传输的字节总数 |
 | BytesDroppedDDoS | 丢弃的入站字节 DDoS | 每秒字节数 | 最大值 | 丢弃的入站字节 DDoS| 
 | BytesForwardedDDoS | 转发的入站字节 DDoS | 每秒字节数 | 最大值 | 转发的入站字节 DDoS |
 | BytesInDDoS | 入站字节 DDoS | 每秒字节数 | 最大值 | 入站字节 DDoS |
@@ -47,11 +46,9 @@ Azure DDoS 防护标准通过 DDoS 攻击分析提供详细的攻击见解和可
 | DDoSTriggerTCPPackets | 触发 DDoS 缓解的入站 TCP 数据包 | 每秒计数 | 最大值 | 触发 DDoS 缓解的入站 TCP 数据包 |
 | DDoSTriggerUDPPackets | 触发 DDoS 缓解的入站 UDP 数据包 | 每秒计数 | 最大值 | 触发 DDoS 缓解的入站 UDP 数据包 |
 | IfUnderDDoSAttack | 是否遭到 DDoS 攻击 | 计数 | 最大值 | 是否遭到 DDoS 攻击 |
-| PacketCount | 数据包计数 | 计数 | 总计 | 时间段内传输的数据包总数 |
 | PacketsDroppedDDoS | 丢弃的入站数据包 DDoS | 每秒计数 | 最大值 | 丢弃的入站数据包 DDoS |
 | PacketsForwardedDDoS | 转发的入站数据包 DDoS | 每秒计数 | 最大值 | 转发的入站数据包 DDoS |
 | PacketsInDDoS | 入站数据包 DDoS | 每秒计数 | 最大值 | 入站数据包 DDoS |
-| SynCount | SYN 计数 | 计数 | 总计 | 时间段内传输的 SYN 数据包总数 |
 | TCPBytesDroppedDDoS | 丢弃的入站 TCP 字节 DDoS | 每秒字节数 | 最大值 | 丢弃的入站 TCP 字节 DDoS |
 | TCPBytesForwardedDDoS | 转发的入站 TCP 字节 DDoS | 每秒字节数 | 最大值 | 转发的入站 TCP 字节 DDoS |
 | TCPBytesInDDoS | 入站 TCP 字节 DDoS | 每秒字节数 | 最大值 | 入站 TCP 字节 DDoS |
@@ -64,7 +61,6 @@ Azure DDoS 防护标准通过 DDoS 攻击分析提供详细的攻击见解和可
 | UDPPacketsDroppedDDoS | 丢弃的入站 UDP 数据包 DDoS | 每秒计数 | 最大值 | 丢弃的入站 UDP 数据包 DDoS |
 | UDPPacketsForwardedDDoS | 转发的入站 UDP 数据包 DDoS | 每秒计数 | 最大值 | 转发的入站 UDP 数据包 DDoS |
 | UDPPacketsInDDoS | 入站 UDP 数据包 DDoS | 每秒计数 | 最大值 | 入站 UDP 数据包 DDoS |
-| VipAvailability | 数据路径可用性 | 计数 | 平均值 | 每个持续时间的 IP 地址的平均可用性 |
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -95,7 +91,7 @@ Azure DDoS 防护标准通过 DDoS 攻击分析提供详细的攻击见解和可
 
 策略阈值是通过基于 Azure 机器学习的网络流量探查自动配置的。 仅当超过策略阈值时，才会对受攻击的 IP 地址进行 DDoS 缓解。
 
-## <a name="validate-and-test"></a>验证和测试
+## <a name="validate-and-test"></a>验证并测试
 
 若要模拟 DDoS 攻击来验证 DDoS 保护遥测，请参阅 [验证 ddos 检测](test-through-simulations.md)。
 

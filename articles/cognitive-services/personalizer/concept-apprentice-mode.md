@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: f2b9f6dfe60aa50eb4ec6da76fe8781ecd8a1f13
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 531917d9c48915f71354b4cd35747ecd9d33a6f8
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98951321"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100385024"
 ---
 # <a name="use-apprentice-mode-to-train-personalizer-without-affecting-your-existing-application"></a>使用 Apprentice 模式训练 Personalizer，而不影响现有应用程序
 
@@ -63,7 +63,7 @@ Apprentice 模式适用于开发人员、数据科学家和业务决策者：
 |--|--|--|
 |对用户体验的影响|你可以使用现有的用户行为来定型 Personalizer，方法是让其观察 (不会影响 **默认操作** 的) 以及获得的奖励。 这意味着用户的体验和业务结果不受影响。|显示从排名调用返回的顶部操作以影响用户行为。|
 |学习速度|在 Apprentice 模式下，Personalizer 的学习速度会比在联机模式下学习时更慢。 Apprentice 模式只能通过观察你的 **默认操作** 获得的奖励来了解，这会限制学习速度，因为无法执行任何浏览。|更快地学习，因为它可以利用当前模型并探索新的趋势。|
-|学习有效性 "上限"|Personalizer 可以大致接近、极少匹配，并且永远不会超过基础业务逻辑的性能 (通过每个排名调用) 的 **默认操作** 实现的回报总量。|Personalizer 应超过应用程序基准，一段时间后，您应该执行脱机计算和功能评估，以继续对模型进行改进。 |
+|学习有效性 "上限"|Personalizer 可以大致接近、极少匹配，并且永远不会超过基础业务逻辑的性能 (通过每个排名调用) 的 **默认操作** 实现的回报总量。 此近似天花板通过浏览减少。 例如，在20% 的浏览中，apprentice 模式的性能将超过80%，而60% 是一个合理的目标，将毕业到联机模式。|Personalizer 应超过应用程序基准，一段时间后，您应该执行脱机计算和功能评估，以继续对模型进行改进。 |
 |RewardActionId 的排名 API 值|用户的体验不受影响，因为 _rewardActionId_ 始终是在排名请求中发送的第一个操作。 换句话说，排名 API 在 Apprentice 模式下不会对应用程序显示任何内容。 在应用程序中奖励 Api 不应更改它在一种模式和另一种模式之间使用奖励 API 的方式。|Personalizer 为应用程序选择的 _rewardActionId_ 将更改用户的体验。 |
 |评估|Personalizer 比较了默认业务逻辑获得的奖励总数，并且在该时间点处于联机模式时，将获得奖励合计 Personalizer。 此资源的 Azure 门户中提供了比较|通过运行 [脱机评估](concepts-offline-evaluation.md)来评估 Personalizer 的有效性，这使你可以将 Personalizer 的总回报与应用程序基准的潜在回报进行比较。|
 

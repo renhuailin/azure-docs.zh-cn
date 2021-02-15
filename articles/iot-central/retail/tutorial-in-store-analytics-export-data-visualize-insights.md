@@ -11,12 +11,12 @@ ms.custom:
 ms.author: dobett
 author: dominicbetts
 ms.date: 11/12/2019
-ms.openlocfilehash: fca9a72fa237a11a02b6d4fbe30ebba5857384cf
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 2695b34745ff02d55f18cebbe87a468f807ca77a
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97346361"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99831682"
 ---
 # <a name="tutorial-export-data-from-azure-iot-central-and-visualize-insights-in-power-bi"></a>教程：从 Azure IoT Central 导出数据，并在 Power BI 中可视化见解
 
@@ -504,6 +504,4 @@ Power BI 仪表板将显示零售监视应用程序中的数据。 在此解决�
 这三个教程已向你展示了一个端到端解决方案，该解决方案使用“店内分析 - 结帐”  IoT Central 应用程序模板。 已将设备连接到应用程序，已使用 IoT Central 监视设备，并已使用 Power BI 生成仪表板，以便从设备遥测数据查看见解。 建议下一步是浏览其他 IoT Central 应用程序模板之一：
 
 > [!div class="nextstepaction"]
-> * [使用 IoT Central 生成能源用解决方案](../energy/overview-iot-central-energy.md)
-> * [使用 IoT Central 生成政府解决方案](../government/overview-iot-central-government.md)
-> * [使用 IoT Central 生成医疗保健解决方案](../healthcare/overview-iot-central-healthcare.md)
+> [使用 IoT Central 生成能源用解决方案](../energy/overview-iot-central-energy.md)

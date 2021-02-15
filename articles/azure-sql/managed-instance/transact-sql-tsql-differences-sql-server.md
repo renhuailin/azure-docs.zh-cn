@@ -9,14 +9,14 @@ ms.topic: reference
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, bonova, danil
-ms.date: 11/10/2020
+ms.date: 1/12/2021
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: cc31ad851441c980365841b1131405339a1092fa
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: d43f794d6d73e26d791c5a11961470d2131b8951
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99626268"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100378615"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>SQL Server 与 Azure SQL 托管实例之间的 T-SQL 差异
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -284,6 +284,7 @@ WITH PRIVATE KEY (<private_key_options>)
 ### <a name="sql-server-agent"></a>SQL Server 代理
 
 - 目前，SQL 托管实例不支持启用和禁用 SQL Server 代理。 SQL 代理始终运行。
+- 不支持基于空闲 CPU 的作业计划触发器。
 - SQL Server 代理设置为只读。 SQL 托管实例不支持过程 `sp_set_agent_properties`。 
 - 作业
   - 支持 T-SQL 作业步骤。
@@ -305,14 +306,8 @@ WITH PRIVATE KEY (<private_key_options>)
   - 尚不支持警报。
   - 不支持代理。
 - 不支持 EventLog。
-- 用户必须直接映射到 Azure AD 服务器主体（登录名），才能创建、修改或执行 SQL 代理作业。 未直接映射的用户（例如，属于有权创建、修改或执行 SQL 代理作业的 Azure AD 组的用户）将无法有效地执行这些操作。 这是由于托管实例模拟和 [EXECUTE AS 限制](#logins-and-users)的缘故。
-
-目前不支持以下 SQL 代理功能：
-
-- 代理
-- 针对空闲 CPU 计划作业
-- 启用或禁用代理
-- 警报
+- 用户必须直接映射到 Azure AD 服务器主体（登录名），才能创建、修改或执行 SQL 代理作业。 如果用户不是直接映射的，例如，属于具有创建、修改或执行 SQL 代理作业权限的 Azure AD 组的用户，将无法有效地执行这些操作。 这是由于托管实例模拟和 [EXECUTE AS 限制](#logins-and-users)的缘故。
+- 不支持 master/target (MSX/TSX) 作业的多服务器管理功能。
 
 有关 SQL Server 代理的信息，请参阅 [SQL Server 代理](/sql/ssms/agent/sql-server-agent)。
 
