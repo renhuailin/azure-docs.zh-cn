@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/06/2020
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 0b3ccc31c9159b5d7b1615add89e8fdc308bf8df
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.openlocfilehash: d9c2aea284a2ab84b5d45fe35a35785adfc88123
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96763387"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99832057"
 ---
 ### <a name="publish-the-device-template"></a>发布设备模板
 
@@ -61,16 +61,3 @@ LVA Edge 网关 v2 现在可作为设备类型在应用程序的“设备”页�
 
 1. 选择“关闭”。
 
-## <a name="next-steps"></a>后续步骤
-
-现在你已使用“视频分析 - 对象和运动检测”应用程序模板创建了一个 IoT Central 应用程序，为网关设备创建了一个设备模板，并向应用程序中添加了一个网关设备。
-
-如果要使用运行云 VM 的 IoT Edge 模块和模拟视频流试用视频分析 - 对象和运动检测应用程序，请：
-
-> [!div class="nextstepaction"]
-> [创建用于视频分析的 IoT Edge 实例 (Linux VM)](../articles/iot-central/retail/tutorial-video-analytics-iot-edge-vm.md)
-
-如果要使用运行真实设备的 IoT Edge 模块和真实 ONVIF 相机试用视频分析 - 对象和运动检测应用程序，请：
-
-> [!div class="nextstepaction"]
-> [创建用于视频分析的 IoT Edge 实例 (Intel NUC)](../articles/iot-central/retail/tutorial-video-analytics-iot-edge-nuc.md)

@@ -1,22 +1,22 @@
 ---
-title: 连接已启用 Azure Arc 的 Kubernetes 群集（预览版）
+title: '将启用了 Azure Arc 的 Kubernetes 群集连接 (预览版) '
 services: azure-arc
 ms.service: azure-arc
-ms.date: 05/19/2020
+ms.date: 02/09/2021
 ms.topic: article
 author: mlearned
 ms.author: mlearned
-description: 使用 Azure Arc 连接已启用 Azure Arc 的 Kubernetes 群集
+description: 使用 Azure Arc 连接启用了 Azure Arc 的 Kubernetes 群集
 keywords: Kubernetes, Arc, Azure, K8s, 容器
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: b4ab84153eaaf81c668d8589fec7516853aca5f9
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: e68eccf998592aa7d1ebfea51e4ca66d577b3c7f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100008105"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390549"
 ---
-# <a name="connect-an-azure-arc-enabled-kubernetes-cluster-preview"></a>连接已启用 Azure Arc 的 Kubernetes 群集（预览版）
+# <a name="connect-an-azure-arc-enabled-kubernetes-cluster-preview"></a>将启用了 Azure Arc 的 Kubernetes 群集连接 (预览版) 
 
 本文介绍了如何将任何云本机计算基础 (CNCF) 认证 Kubernetes 群集（例如，Azure 上的 AKS 引擎、Azure Stack 集线器上的 AKS 引擎、GKE、EKS 和 VMware vSphere 群集）连接到 Azure Arc。
 
@@ -30,8 +30,8 @@ ms.locfileid: "100008105"
 * 用于在群集上访问群集和群集管理角色的 kubeconfig 文件，用于部署启用了 Arc 的 Kubernetes 代理。
 * 使用 `az login` 和 `az connectedk8s connect` 命令的用户或服务主体必须具有对“Microsoft.Kubernetes/connectedclusters”资源类型的“读取”和“写入”权限。 "Kubernetes Cluster-Azure Arc 加入" 角色具有这些权限，可用于用户或服务主体上的角色分配。
 * Helm 3：使用 connectedk8s 扩展加入群集。 [安装最新版本的 Helm 3](https://helm.sh/docs/intro/install) 以满足此要求。
-* Azure CLI 版本 2.15 +，用于安装支持 Azure Arc 的 Kubernetes CLI 扩展。 [安装 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) 或更新到最新版本。
-* 安装启用了 Arc 的 Kubernetes CLI 扩展：
+* Azure CLI 版本 2.15 +，用于安装启用了 Azure Arc 的 Kubernetes CLI 扩展。 [安装 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) 或更新到最新版本。
+* 安装启用 Arc 的 Kubernetes CLI 扩展：
   
   * 安装 `connectedk8s` 扩展，该扩展可帮助你将 Kubernetes 群集连接到 Azure：
   
@@ -72,7 +72,7 @@ Azure Arc 代理需要以下协议/端口/出站 Url 才能工作：
 | `https://mcr.microsoft.com`                                                                            | 需要请求 Azure Arc 代理的容器映像。                                                                  |
 | `https://eus.his.arc.azure.com`, `https://weu.his.arc.azure.com`                                                                            |  需要请求系统分配的托管标识证书。                                                                  |
 
-## <a name="register-the-two-providers-for-azure-arc-enabled-kubernetes"></a>为启用了 Kubernetes 的 Azure 注册两个提供程序：
+## <a name="register-the-two-providers-for-azure-arc-enabled-kubernetes"></a>为已启用 Azure Arc 的 Kubernetes 注册两个提供程序：
 
 ```console
 az provider register --namespace Microsoft.Kubernetes
@@ -113,14 +113,14 @@ eastus      AzureArcTest
 接下来，我们将使用以下内容将 Kubernetes 群集连接到 Azure `az connectedk8s connect` ：
 
 1. 通过以下方式之一验证到 Kubernetes 群集的连接：
-   1. `KUBECONFIG`
-   1. `~/.kube/config`
-   1. `--kube-config`
+   * `KUBECONFIG`
+   * `~/.kube/config`
+   * `--kube-config`
 1. 使用 Helm 3 将适用于 Kubernetes 的 Azure Arc 代理部署到 `azure-arc` 命名空间：
 
-```console
-az connectedk8s connect --name AzureArcTest1 --resource-group AzureArcTest
-```
+    ```console
+    az connectedk8s connect --name AzureArcTest1 --resource-group AzureArcTest
+    ```
 
 **输出：**
 
@@ -169,14 +169,13 @@ Name           Location    ResourceGroup
 AzureArcTest1  eastus      AzureArcTest
 ```
 
-你还可以在 [Azure 门户](https://portal.azure.com/)上查看此资源。 在浏览器中打开门户，并根据前面在命令中使用的资源名称和资源组名称输入，导航到资源组和启用了 Azure Arc 的 Kubernetes 资源 `az connectedk8s connect` 。
-
+你还可以在 [Azure 门户](https://portal.azure.com/)上查看此资源。 在浏览器中打开门户，并根据前面在命令中使用的资源名称和资源组名称输入，导航到 "资源组" 和 "启用了 Azure Arc 的 Kubernetes" 资源 `az connectedk8s connect` 。  
 > [!NOTE]
-> 载入群集后，在 Azure 门户中启用了 Azure Arc 的 Kubernetes 资源的 "概述" 页上，大约需要5到10分钟的群集元数据 (群集版本、代理版本、节点数等 ) 。
+> 载入群集后，在 Azure 门户中启用了 Azure Arc Kubernetes 资源的 "概述" 页上，大约需要5到10分钟的群集元数据 (群集版本、代理版本、节点数等 ) 。
 
 ## <a name="connect-using-an-outbound-proxy-server"></a>使用出站代理服务器进行连接
 
-如果群集位于出站代理服务器后面，则 Azure CLI 和启用了 Arc 的 Kubernetes 代理需要通过出站代理服务器路由其请求：
+如果群集位于出站代理服务器后面，Azure CLI 和启用了 Arc 的 Kubernetes 代理需要通过出站代理服务器路由其请求：
 
 1. 检查 `connectedk8s` 计算机上安装的扩展的版本：
 
@@ -211,13 +210,13 @@ AzureArcTest1  eastus      AzureArcTest
     ```
 
 > [!NOTE]
-> 1. 指定 `excludedCIDR` 下的很 `--proxy-skip-range` 重要的一点是，确保代理的群集内通信不会中断。
-> 2. 尽管 `--proxy-http` 、 `--proxy-https` 和 `--proxy-skip-range` 对于大多数出站代理环境都是预期的，但 `--proxy-cert` 仅当需要将来自代理的可信证书注入到代理 pod 的受信任的证书存储中时，才需要。
-> 3. 上述代理规范当前仅适用于 Arc 代理，不适用于 sourceControlConfiguration 中使用的 flux pod。 启用了 Arc 的 Kubernetes 团队正在积极地处理此功能，它将很快可用。
+> * 指定 `excludedCIDR` 下的很 `--proxy-skip-range` 重要的一点是，确保代理的群集内通信不会中断。
+> * 尽管 `--proxy-http` 、 `--proxy-https` 和 `--proxy-skip-range` 对于大多数出站代理环境都是预期的，但 `--proxy-cert` 仅当需要将来自代理的可信证书注入到代理 pod 的受信任的证书存储中时，才需要。
+> * 上述代理规范当前仅适用于 Arc 代理，不适用于 sourceControlConfiguration 中使用的 flux pod。 启用 Arc 的 Kubernetes 团队正在积极地处理此功能，不久将会提供该功能。
 
 ## <a name="azure-arc-agents-for-kubernetes"></a>适用于 Kubernetes 的 Azure Arc 代理
 
-启用了 Azure Arc 的 Kubernetes 将几个运算符部署到 `azure-arc` 命名空间中。 你可以使用查看以下部署和 pod：
+已启用 Azure Arc 的 Kubernetes 会将几个运算符部署到 `azure-arc` 命名空间中。 你可以使用查看以下部署和 pod：
 
 ```console
 kubectl -n azure-arc get deployments,pods
@@ -245,7 +244,7 @@ pod/metrics-agent-58b765c8db-n5l7k              2/2     Running  0       16h
 pod/resource-sync-agent-5cf85976c7-522p5        3/3     Running  0       16h
 ```
 
-启用了 Azure Arc 的 Kubernetes 包括在部署到命名空间的群集中运行的几个 (操作员) 代理 `azure-arc` 。
+启用了 Azure Arc 的 Kubernetes 由几个在部署到 `azure-arc` 命名空间的群集中运行的代理（运算符）组成。
 
 | 代理 (操作员)                                                                                                | 说明                                                                                                                 |
 | ------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------- |
@@ -254,7 +253,7 @@ pod/resource-sync-agent-5cf85976c7-522p5        3/3     Running  0       16h
 | `deployment.apps/metrics-agent`                                                                            | 收集其他 Arc 代理的性能指标。                                                                                    |
 | `deployment.apps/cluster-metadata-operator`                                                                            | 收集分类元数据，例如群集版本、节点计数和 Azure Arc 代理版本。                                                                  |
 | `deployment.apps/resource-sync-agent`                                                                            |  将上面提到的群集元数据同步到 Azure。                                                                  |
-| `deployment.apps/clusteridentityoperator`                                                                            |  支持 Azure Arc 的 Kubernetes 目前支持系统分配的标识。 `clusteridentityoperator` 维护其他代理用于与 Azure 进行通信的托管服务标识 (MSI) 证书。                                                                  |
+| `deployment.apps/clusteridentityoperator`                                                                            |  启用 Azure Arc 的 Kubernetes 目前支持系统分配的标识。 `clusteridentityoperator` 维护其他代理用于与 Azure 进行通信的托管服务标识 (MSI) 证书。                                                                  |
 | `deployment.apps/flux-logs-agent`                                                                            |  从部署为源代码管理配置一部分的 flux 操作员收集日志。                                                                  |
 
 ## <a name="delete-a-connected-cluster"></a>删除已连接的群集
@@ -262,13 +261,13 @@ pod/resource-sync-agent-5cf85976c7-522p5        3/3     Running  0       16h
 可以使用 Azure CLI 或 Azure 门户删除 `Microsoft.Kubernetes/connectedcluster` 资源。
 
 
-* **使用 Azure CLI 进行删除**：使用以下 Azure CLI 命令启动删除启用了支持 Arc 的 Kubernetes 资源。
+* **使用 Azure CLI 删除**：使用以下 Azure CLI 命令启动删除启用了 Azure Arc 的 Kubernetes 资源。
   ```console
   az connectedk8s delete --name AzureArcTest1 --resource-group AzureArcTest
   ```
   此命令删除 `Microsoft.Kubernetes/connectedCluster` Azure 中的资源和任何关联的 `sourcecontrolconfiguration` 资源。 Azure CLI 使用 `helm uninstall` 删除群集上运行的代理。
 
-* **删除 Azure 门户**：删除 Azure 门户上启用了 azure Arc 的 Kubernetes 资源 `Microsoft.Kubernetes/connectedcluster` 会删除 azure 中的资源和任何关联 `sourcecontrolconfiguration` 的资源，但不 *会* 删除群集上运行的代理。 
+* **删除 Azure 门户**：在 Azure 门户上删除启用了 azure Arc 的 Kubernetes 资源会删除 `Microsoft.Kubernetes/connectedcluster` azure 中的资源和任何相关 `sourcecontrolconfiguration` 资源，但不 *会* 删除群集上运行的代理。 
 
   若要删除群集上运行的代理，请运行以下命令：
 

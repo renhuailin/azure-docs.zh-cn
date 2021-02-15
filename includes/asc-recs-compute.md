@@ -2,15 +2,15 @@
 author: memildin
 ms.service: security-center
 ms.topic: include
-ms.date: 01-26-2021
+ms.date: 02/09/2021
 ms.author: memildin
 ms.custom: generated
-ms.openlocfilehash: 15eef1a9c39a652b40dbb5a53ad1721495646be2
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: 39d0009edf1cff3184fbdc7c3c5913f9d4c94248
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98797203"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100007584"
 ---
 这一类别有 99 条相关建议。
 
@@ -35,13 +35,13 @@ ms.locfileid: "98797203"
 |CORS 不应允许所有资源访问 API 应用 |跨源资源共享 (CORS) 不应允许所有域都能访问你的 API 应用。 仅允许所需的域与 API 应用交互。<br />（相关策略：[CORS 不应允许所有资源都能访问 API 应用](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fmicrosoft.authorization%2fpolicydefinitions%2f358c20a6-3f9e-4f0e-97ff-c6ce485e2aac)） |低 |
 |CORS 不应允许所有资源都能访问函数应用 |跨源资源共享 (CORS) 不应允许所有域都能访问你的函数应用。 仅允许所需的域与函数应用交互。<br />（相关策略：[CORS 不应允许所有资源都能访问函数应用](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fmicrosoft.authorization%2fpolicydefinitions%2f0820b7b9-23aa-4725-a1ce-ae4558f718e5)） |低 |
 |CORS 不应允许所有资源访问 Web 应用程序 |跨源资源共享 (CORS) 不应允许所有域都能访问你的 Web 应用程序。 仅允许所需的域与 Web 应用交互。<br />（相关策略：[CORS 不应允许所有资源都能访问你的 Web 应用程序](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fmicrosoft.authorization%2fpolicydefinitions%2f5744710e-cc2f-4ee8-8809-3b11e89f4bc9)） |低 |
-|应该在 Azure 流分析中启用诊断日志 |启用日志并将其保留长达一年。 这样便可以在发生安全事件或网络遭泄露时，重新创建活动线索用于调查目的。<br />（相关策略：[应启用 Azure 流分析的诊断日志](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2ff9be5368-9bf5-4b84-9e0a-7850da98bb46)） |低 |
-|应启用 Batch 帐户中的诊断日志 |启用日志并将其保留长达一年。 这样便可以在发生安全事件或网络遭泄露时，重新创建活动线索用于调查目的。<br />（相关策略：[应启用 Batch 帐户的诊断日志](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f428256e6-1fac-4f48-a757-df34c2b3336d)） |低 |
-|应启用事件中心内的诊断日志 |启用日志并将其保留长达一年。 这样便可以在发生安全事件或网络遭泄露时，重新创建活动线索用于调查目的。<br />（相关策略：[应启用事件中心的诊断日志](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f83a214f7-d01a-484b-91a9-ed54470c9a6a)） |低 |
-|应启用逻辑应用的诊断日志 |启用日志并将其保留长达一年。 这样便可以在发生安全事件或网络遭泄露时，重新创建活动线索用于调查目的。<br />（相关策略：[应启用逻辑应用的诊断日志](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f34f95f76-5386-4de7-b824-0d8478470c9d)） |低 |
-|应启用搜索服务的诊断日志 |启用日志并将其保留长达一年。 这样便可以在发生安全事件或网络遭泄露时，重新创建活动线索用于调查目的。<br />（相关策略：[应启用搜索服务的诊断日志](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fb4330a05-a843-4bc8-bf9a-cacce50c67f4)） |低 |
-|应启用服务总线中的诊断日志 |启用日志并将其保留长达一年。 这样便可以在发生安全事件或网络遭泄露时，重新创建活动线索用于调查目的。<br />（相关策略：[应启用服务总线的诊断日志](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2ff8d36e2f-389b-4ee4-898d-21aeb69a0f45)） |低 |
-|应启用虚拟机规模集中的诊断日志 |启用日志并将其保留长达一年。 这样便可以在发生安全事件或网络遭泄露时，重新创建活动线索用于调查目的。<br />（相关策略：[应当启用虚拟机规模集中的诊断日志](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f7c1b1214-f927-48bf-8882-84f0af6588b1)） |低 |
+|应该在 Azure 流分析中启用诊断日志 |启用日志并将其保留长达一年。 这样便可以在发生安全事件或网络遭泄露时，重新创建活动线索用于调查目的。<br />（相关策略：[应启用 Azure 流分析中的资源日志](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2ff9be5368-9bf5-4b84-9e0a-7850da98bb46)） |低 |
+|应启用 Batch 帐户中的诊断日志 |启用日志并将其保留长达一年。 这样便可以在发生安全事件或网络遭泄露时，重新创建活动线索用于调查目的。<br />（相关策略：[应启用批处理帐户中的资源日志](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f428256e6-1fac-4f48-a757-df34c2b3336d)） |低 |
+|应启用事件中心内的诊断日志 |启用日志并将其保留长达一年。 这样便可以在发生安全事件或网络遭泄露时，重新创建活动线索用于调查目的。<br />（相关策略：[应启用事件中心内的资源日志](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f83a214f7-d01a-484b-91a9-ed54470c9a6a)） |低 |
+|应启用逻辑应用的诊断日志 |启用日志并将其保留长达一年。 这样便可以在发生安全事件或网络遭泄露时，重新创建活动线索用于调查目的。<br />（相关策略：[应启用逻辑应用中的资源日志](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f34f95f76-5386-4de7-b824-0d8478470c9d)） |低 |
+|应启用搜索服务的诊断日志 |启用日志并将其保留长达一年。 这样便可以在发生安全事件或网络遭泄露时，重新创建活动线索用于调查目的。<br />（相关策略：[应启用搜索服务中的资源日志](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fb4330a05-a843-4bc8-bf9a-cacce50c67f4)） |低 |
+|应启用服务总线中的诊断日志 |启用日志并将其保留长达一年。 这样便可以在发生安全事件或网络遭泄露时，重新创建活动线索用于调查目的。<br />（相关策略：[应启用服务总线中的资源日志](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2ff8d36e2f-389b-4ee4-898d-21aeb69a0f45)） |低 |
+|应启用虚拟机规模集中的诊断日志 |启用日志并将其保留长达一年。 这样便可以在发生安全事件或网络遭泄露时，重新创建活动线索用于调查目的。<br />（相关策略：[应启用虚拟机规模集中的资源日志](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f7c1b1214-f927-48bf-8882-84f0af6588b1)） |低 |
 |应在应用服务中启用诊断日志 |审核确认已在应用上启用诊断日志。<br>如果发生安全事件或网络遭泄露，这样便可以重新创建活动线索用于调查目的。<br />（相关策略：[应启用应用程序服务中的诊断日志](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fb607c5de-e7d9-4eee-9e5c-83f1bcee4fa0)） |中型 |
 |应在虚拟机上启用磁盘加密 |使用适用于 Windows 和 Linux 虚拟机的 Azure 磁盘加密来加密虚拟机磁盘。  Azure 磁盘加密 (ADE) 利用行业标准 Windows 的 BitLocker 功能和 Linux 的 DM-Crypt 功能提供 OS 磁盘和数据磁盘加密，以帮助保护数据，并实现组织在客户 Azure Key Vault 方面作出的安全性与合规性承诺。 当合规性与安全性政策要求使用加密密钥对数据进行端到端加密（包括加密临时磁盘，即本地附加的临时磁盘）时，请使用 Azure 磁盘加密。 或者，系统默认会使用 Azure 存储服务加密对托管磁盘进行静态加密，其中，加密密钥是 Azure 中的 Microsoft 托管密钥。 如果这符合你的合规性与安全性要求，则可以利用默认托管磁盘加密来满足要求。<br />（相关策略：[应在虚拟机上应用磁盘加密](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f0961003e-5a0a-4549-abde-af6a37f2724d)） |高 |
 |在虚拟机上启用内置漏洞评估解决方案 |安装 Qualys 扩展（内置到 Azure 安全中心标准层中），以在虚拟机上启用业界领先的漏洞评估解决方案。<br />（相关策略：[应在虚拟机上启用漏洞评估解决方案](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f501541f7-f7e7-4cd6-868c-4190fdad3ac9)） |中型 |
@@ -110,8 +110,8 @@ ms.locfileid: "98797203"
 |应该修复计算机上安全配置中的漏洞 |修复计算机上安全配置的漏洞，以保护其免受攻击。<br />（相关策略：[应修复计算机上安全配置中的漏洞](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fe1e5fd5d-3e4c-4ce1-8661-7d1873ae6b15)） |低 |
 |应该修复虚拟机规模集上安全配置中的漏洞 |修复虚拟机规模集上安全配置中的漏洞，使其免受攻击。<br />（相关策略：[应修复虚拟机规模集上安全配置中的漏洞](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f3c735d8a-a4ba-4a3a-b7cf-db7754cf57f4)） |高 |
 |应修正虚拟机中的漏洞 |监视由 Azure 安全中心的内置漏洞评估解决方案(由 Qualys 提供支持)所发现的虚拟机上的漏洞发现。<br />（相关策略：[应在虚拟机上启用漏洞评估解决方案](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f501541f7-f7e7-4cd6-868c-4190fdad3ac9)） |低 |
-|应该通过漏洞评估解决方案修复漏洞 |会持续评估为其部署了漏洞评估第三方解决方案的虚拟机的应用程序和 OS 漏洞。 只要发现此类漏洞，就会在建议中提供详细信息。<br />（相关策略：[应通过漏洞评估解决方案修复漏洞](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f760a85ff-6162-42b3-8d70-698e268f648c)） |高 |
-|应在虚拟机上安装漏洞评估解决方案 |在虚拟机上安装漏洞评估解决方案<br />（相关策略：[应通过漏洞评估解决方案修复漏洞](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f760a85ff-6162-42b3-8d70-698e268f648c)） |中型 |
+|应该通过漏洞评估解决方案修复漏洞 |会持续评估为其部署了漏洞评估第三方解决方案的虚拟机的应用程序和 OS 漏洞。 只要发现此类漏洞，就会在建议中提供详细信息。<br />（无相关策略） |高 |
+|应在虚拟机上安装漏洞评估解决方案 |在虚拟机上安装漏洞评估解决方案<br />（无相关策略） |中型 |
 |只能通过 HTTPS 访问 Web 应用程序 |使用 HTTPS 可确保执行服务器/服务身份验证服务，并保护传输中的数据不受网络层窃听攻击威胁。<br />（相关策略：[只能通过 HTTPS 访问 Web 应用程序](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fa4af4a39-4135-47fb-b175-47fbdf85311d)） |中型 |
 |Web 应用应请求一个用于所有传入请求的 SSL 证书 |客户端证书允许应用请求传入请求的证书。<br>只有具有有效证书的客户端才能访问该应用。<br />（相关策略：[确保 WEB 应用的“客户端证书(传入客户端证书)”设置为“打开”](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f5bb220d9-2698-4ee4-8404-b9c30c9df609)） |中型 |
 |应重启计算机来应用系统更新 |重启计算机以应用系统更新并保护计算机免受漏洞攻击。<br />（相关策略：[应在计算机上安装系统更新](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f86b3d65f-7626-441e-b690-81a8b71cff60)） |中型 |

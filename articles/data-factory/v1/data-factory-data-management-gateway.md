@@ -1,23 +1,18 @@
 ---
 title: 数据管理用于数据工厂的网关
 description: 使用 Azure 数据工厂中的数据管理网关移动数据。
-services: data-factory
-documentationcenter: ''
 author: nabhishek
-manager: anandsub
-ms.assetid: b9084537-2e1c-4e96-b5bc-0e2044388ffd
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 94c1bed8d94f73bc7794037b307618f4c36c4518
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 708d84bdb3ebe8fbba6939aa771a9120868d5d1b
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96450605"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100375198"
 ---
 # <a name="data-management-gateway"></a>数据管理网关
 > [!NOTE]
@@ -307,7 +302,7 @@ msiexec /q /i DataManagementGateway.msi NOFIREWALL=1
     .\IntegrationRuntimeAutoUpdateToggle.ps1 -on -AuthKey <your auth key>
     ```
 
-## <a name="configuration-manager"></a>Configuration Manager
+## <a name="configuration-manager"></a>配置管理器
 安装网关后，可以通过以下方式之一来启动数据管理网关配置管理器：
 
 1. 在“搜索”窗口中，键入“数据管理网关”，以访问此实用程序。
@@ -322,7 +317,7 @@ msiexec /q /i DataManagementGateway.msi NOFIREWALL=1
 * **计划更新** 发生在一天中的某个特定时间。
 * 查看网关的 **上次更新日期**。
 
-### <a name="settings-page"></a>“设置”页
+### <a name="settings-page"></a>“设置”页面
 在“设置”页中可执行以下操作：
 
 * 查看、更改和导出网关所用的 **证书**。 此证书用于加密数据源凭据。
@@ -368,7 +363,7 @@ msiexec /q /i DataManagementGateway.msi NOFIREWALL=1
 :------------------ | :----------
 名称 | 逻辑网关和与网关关联的节点的名称。 节点是已在其上安装网关的本地 Windows 计算机。 有关在单个逻辑网关中采用多个节点（最多 4 个）的信息，请参阅[数据管理网关 - 高可用性和可伸缩性](data-factory-data-management-gateway-high-availability-scalability.md)。
 状态 | 逻辑网关和网关节点的状态。 示例：联机/脱机/受限/等。有关这些状态的信息，请参阅 [网关状态](#gateway-status) 部分。
-版本 | 显示逻辑网关和每个网关节点的版本。 逻辑网关的版本根据组中多数节点的版本而决定。 如果逻辑网关安装程序中的节点版本不同，只有与逻辑网关的版本号相同的节点能正常运行。 其他节点将处于受限模式，需要手动进行更新（仅当自动更新失败时）。
+Version | 显示逻辑网关和每个网关节点的版本。 逻辑网关的版本根据组中多数节点的版本而决定。 如果逻辑网关安装程序中的节点版本不同，只有与逻辑网关的版本号相同的节点能正常运行。 其他节点将处于受限模式，需要手动进行更新（仅当自动更新失败时）。
 可用内存 | 网关节点上的可用内存。 此值为近实时快照。
 CPU 使用率 | 网关节点的 CPU 使用率。 此值为近实时快照。
 网络（进/出） | 网关节点的网络利用率。 此值为近实时快照。
@@ -380,7 +375,7 @@ CPU 使用率 | 网关节点的 CPU 使用率。 此值为近实时快照。
 ### <a name="gateway-status"></a>网关状态
 下表提供网关节点可能的状态：
 
-状态  | 注释/方案
+状态    | 注释/方案
 :------- | :------------------
 联机 | 节点连接到数据工厂服务。
 Offline | 节点处于脱机状态。
@@ -390,7 +385,7 @@ Offline | 节点处于脱机状态。
 
 下表提供逻辑网关可能的状态。 网关状态取决于网关节点的状态。
 
-状态 | 说明
+状态 | 注释
 :----- | :-------
 需注册 | 尚未向此逻辑网关注册任何节点
 联机 | 网关节点处于联机状态
@@ -422,7 +417,7 @@ Offline | 没有节点处于联机状态。
     ![“配置”页](./media/data-factory-data-management-gateway/ConfigureBlade.png)
 5. 将“Microsoft 数据管理网关配置管理器”保持为打开状态。
 
-    ![Configuration Manager](./media/data-factory-data-management-gateway/ConfigurationManager.png)
+    ![配置管理器](./media/data-factory-data-management-gateway/ConfigurationManager.png)
 6. 在门户中的“配置”页中，单击命令栏上的“重新创建密钥”，并对警告消息单击“是”。 单击密钥文本旁边的“复制”按钮，将密钥复制到剪贴板。 重新创建密钥后，旧计算机上的网关立即停止工作。
 
     ![重新创建密钥2](./media/data-factory-data-management-gateway/RecreateKey.png)

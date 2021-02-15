@@ -2,19 +2,16 @@
 title: Azure 数据工厂中的 Avro 格式
 description: 本主题介绍了如何处理 Azure 数据工厂中的 Avro 格式。
 author: linda33wj
-manager: shwang
-ms.reviewer: craigg
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/15/2020
 ms.author: jingwang
-ms.openlocfilehash: 7d61121b4c80b7b89ec29ade4ab1bfab91a660d9
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4be499e8e304f34b1cab10aed41b5b98a5f24e9b
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96010548"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100392589"
 ---
 # <a name="avro-format-in-azure-data-factory"></a>Azure 数据工厂中的 Avro 格式
 
@@ -67,7 +64,7 @@ ms.locfileid: "96010548"
 
 ### <a name="avro-as-source"></a>Avro 作为源
 
-复制活动的 **_\_source\*** * 节支持以下属性。
+复制活动的 ***\*source\**** 节支持以下属性。
 
 | 属性      | 说明                                                  | 必须 |
 | ------------- | ------------------------------------------------------------ | -------- |
@@ -76,7 +73,7 @@ ms.locfileid: "96010548"
 
 ### <a name="avro-as-sink"></a>Avro 作为接收器
 
-复制活动的 **\_sink\*** 节支持以下属性。
+复制活动的 ***\*sink\**** 节支持以下属性。
 
 | 属性      | 说明                                                  | 必须 |
 | ------------- | ------------------------------------------------------------ | -------- |
@@ -86,7 +83,7 @@ ms.locfileid: "96010548"
 
 `formatSettings` 下支持的“Avro 写入设置”：
 
-| 属性      | 说明                                                  | 必须                                              |
+| 属性      | 说明                                                  | 必需                                              |
 | ------------- | ------------------------------------------------------------ | ----------------------------------------------------- |
 | type          | formatSettings 的类型必须设置为 AvroWriteSettings。 | 是                                                   |
 | maxRowsPerFile | 在将数据写入到文件夹时，可选择写入多个文件，并指定每个文件的最大行数。  | 否 |
@@ -98,26 +95,26 @@ ms.locfileid: "96010548"
 
 ### <a name="source-properties"></a>源属性
 
-下表列出了 avro 源支持的属性。 可以在 " **源选项** " 选项卡中编辑这些属性。
+下表列出了 avro 源支持的属性。 可以在“源选项”选项卡中编辑这些属性。
 
 | 名称 | 说明 | 必需 | 允许的值 | 数据流脚本属性 |
 | ---- | ----------- | -------- | -------------- | ---------------- |
-| 通配符路径 | 将处理所有匹配通配符路径的文件。 重写在数据集中设置的文件夹和文件路径。 | 否 | string[] | wildcardPaths |
-| 分区根路径 | 对于已分区的文件数据，可以输入分区根路径以便将分区文件夹读取为列 | 否 | String | partitionRootPath |
-| 文件列表 | 你的源是否指向列出要处理的文件的文本文件 | 否 | `true` 或 `false` | fileList |
-| 要存储文件名的列 | 使用源文件名称和路径创建新列 | 否 | String | rowUrlColumn |
-| 完成后 | 在处理后删除或移动文件。 文件路径从容器根开始 | 否 | 删除： `true` 或 `false` <br> 移动 `['<from>', '<to>']` | purgeFiles <br> moveFiles |
-| 按上次修改时间筛选 | 选择根据文件上次更改时间筛选文件 | 否 | Timestamp | ModifiedAfter <br> modifiedBefore |
-| 允许找不到文件 | 如果为 true，则在找不到文件时不会引发错误 | 否 | `true` 或 `false` | ignoreNoFilesFound |
+| 通配符路径 | 所有匹配通配符路径的文件都会得到处理。 重写数据集中设置的文件夹和文件路径。 | 否 | String[] | wildcardPaths |
+| 分区根路径 | 对于已分区的文件数据，可以输入分区根路径，以便将已分区的文件夹读取为列 | 否 | 字符串 | partitionRootPath |
+| 文件列表 | 源是否指向某个列出待处理文件的文本文件 | 否 | `true` 或 `false` | fileList |
+| 用于存储文件名的列 | 使用源文件名称和路径创建新列 | 否 | 字符串 | rowUrlColumn |
+| 完成后 | 在处理后删除或移动文件。 文件路径从容器根开始 | 否 | 删除：`true` 或 `false` <br> 移动：`['<from>', '<to>']` | purgeFiles <br> moveFiles |
+| 按上次修改时间筛选 | 选择根据上次更改文件的时间筛选文件 | 否 | 时间戳 | ModifiedAfter <br> modifiedBefore |
+| 允许找不到文件 | 如果为 true，在找不到文件时不会引发错误 | 否 | `true` 或 `false` | ignoreNoFilesFound |
 
 ### <a name="sink-properties"></a>接收器属性
 
-下表列出了 avro 接收器支持的属性。 可以在 " **设置** " 选项卡中编辑这些属性。
+下表列出了 avro 接收器支持的属性。 你可以在“设置”选项卡中编辑这些属性。
 
 | 名称 | 说明 | 必需 | 允许的值 | 数据流脚本属性 |
 | ---- | ----------- | -------- | -------------- | ---------------- |
-| 清除文件夹 | 如果在写入前清除目标文件夹 | 否 | `true` 或 `false` | truncate |
-| 文件名选项 | 写入的数据的命名格式。 默认情况下，每个分区的一个文件的格式为 `part-#####-tid-<guid>` | 否 | 模式：字符串 <br> 每个分区： String [] <br> As 列中的数据：字符串 <br> 输出到单个文件： `['<fileName>']`  | filePattern <br> partitionFileNames <br> rowUrlColumn <br> partitionFileNames |
+| 清除文件夹 | 如果在写入前目标文件夹已被清除 | 否 | `true` 或 `false` | truncate |
+| 文件名选项 | 写入的数据的命名格式。 默认情况下，每个分区有一个 `part-#####-tid-<guid>` 格式的文件 | 否 | 模式：String <br> 按分区：String[] <br> 作为列中的数据：String <br> 输出到单个文件：`['<fileName>']`  | filePattern <br> partitionFileNames <br> rowUrlColumn <br> partitionFileNames |
 | 全部引用 | 将所有值括在引号中 | 否 | `true` 或 `false` | quoteAll |
 
 ## <a name="data-type-support"></a>数据类型支持
@@ -126,7 +123,7 @@ ms.locfileid: "96010548"
 复制活动不支持 Avro [复杂数据类型](https://avro.apache.org/docs/current/spec.html#schema_complex)（记录、枚举、数组、映射、联合与固定值）。
 
 ### <a name="data-flows"></a>数据流
-处理数据流中的 Avro 文件时，可以读取和写入复杂的数据类型，但请务必先从数据集中清除物理架构。 在数据流中，可以设置逻辑投影，并派生作为复杂结构的列，然后将这些字段自动映射到 Avro 文件。
+处理数据流中的 Avro 文件时，可以读取和写入复杂的数据类型，但请务必先从数据集中清除物理架构。 在数据流中，可以设置逻辑投影并派生作为复杂结构的列，然后将这些字段自动映射到 Avro 文件。
 
 ## <a name="next-steps"></a>后续步骤
 

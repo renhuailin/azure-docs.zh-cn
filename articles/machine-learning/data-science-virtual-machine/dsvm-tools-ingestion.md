@@ -4,18 +4,17 @@ titleSuffix: Azure Data Science Virtual Machine
 description: 了解 Data Science Virtual Machine 中预装的数据引入工具和实用工具。
 keywords: 数据科学工具, 数据科学虚拟机, 数据科学工具, Linux 数据科学
 services: machine-learning
-ms.service: machine-learning
-ms.subservice: data-science-vm
+ms.service: data-science-vm
 author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: 89cf81f8d0a66c29a345f56676fbb97601743710
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 21a6efa8108bfd0a317eb955e8b3ffcfba0862a2
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93308980"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100519365"
 ---
 # <a name="data-science-virtual-machine-data-ingestion-tools"></a>数据科学虚拟机数据引入工具
 
@@ -98,6 +97,6 @@ ms.locfileid: "93308980"
 | 它是什么？   | 用于在 Linux 文件系统中装载 Azure Blob 存储容器的工具。      |
 | 支持的 DSVM 版本      | Linux      |
 | 典型用途      | 读取和写入到容器中的 Blob。      |
-|  如何使用和运行它？    |   在终端中运行 _blobfuse_ 。    |
+|  如何使用和运行它？    |   在终端中运行 _blobfuse_。    |
 | 指向示例的链接      | [GitHub 上的 blobfuse](https://github.com/Azure/azure-storage-fuse)      |
 | DSVM 上的相关工具      | Azure CLI      |

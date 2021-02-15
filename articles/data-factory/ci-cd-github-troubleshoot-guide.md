@@ -5,15 +5,14 @@ author: ssabat
 ms.author: susabat
 ms.reviewer: susabat
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: troubleshooting
 ms.date: 12/03/2020
-ms.openlocfilehash: e5e1a4ff676a6677357638dc4b67dc94926adbd2
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: 091c0cb20877090453f38ab922cc2bd277e90093
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98556301"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100393745"
 ---
 # <a name="troubleshoot-ci-cd-azure-devops-and-github-issues-in-adf"></a>在 ADF 中排查 CI CD、Azure DevOps 和 GitHub 问题 
 
@@ -78,14 +77,14 @@ CI/CD 发布管道失败，出现以下错误：
 
 #### <a name="cause"></a>原因
 
-这是因为目标工厂中具有相同名称但具有不同类型的 Integration Runtime。 部署时，Integration Runtime 需要具有相同的类型。
+这是因为目标工厂中具有相同名称但具有不同类型的集成运行时。 部署时，Integration Runtime 需要具有相同的类型。
 
 #### <a name="recommendation"></a>建议
 
 - 请参阅下面的 CI/CD 最佳方案：
 
     https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment#best-practices-for-cicd 
-- 集成运行时不经常更改，并且在 CI/CD 中的所有阶段都是类似的，因此，数据工厂要求在 CI/CD 的所有阶段都具有相同的集成运行时类型。 如果名称和类型 & 属性不同，请确保匹配源和目标 IR 配置，然后部署发布管道。
+- 集成运行时不经常更改，并且在 CI/CD 中的所有阶段都是类似的，因此，数据工厂要求在 CI/CD 的所有阶段都具有相同的集成运行时类型。 如果名称和类型 & 属性不同，请确保匹配源和目标集成运行时配置，然后部署发布管道。
 - 若要在所有阶段中共享集成运行时，请考虑使用三元工厂，这只是为了包含共享的集成运行时。 可以在所有环境中将此共享工厂用作链接的集成运行时类型。
 
 ### <a name="document-creation-or-update-failed-because-of-invalid-reference"></a>由于无效引用，文档创建或更新失败
@@ -133,7 +132,7 @@ CI/CD 发布管道失败，出现以下错误：
 
 #### <a name="resolution"></a>解决方法
 
-需要删除 SSIS-IR 和 Shared IRs 才能允许移动操作。 如果不想删除 IRs，最佳方法是遵循复制和克隆文档来完成复制，完成后，删除旧的数据工厂。
+需要删除 SSIS-IR 和 Shared IRs 才能允许移动操作。 如果不想删除集成运行时，最好的方法是遵循复制和克隆文档来完成复制，完成后，删除旧的数据工厂。
 
 ###  <a name="unable-to-export-and-import-arm-template"></a>无法导出和导入 ARM 模板
 
@@ -150,6 +149,34 @@ CI/CD 发布管道失败，出现以下错误：
 #### <a name="resolution"></a>解决方法
 
 为了解决此问题，你需要将以下权限添加到你的角色： *DataFactory/工厂/queryFeaturesValue/action*。 默认情况下，此权限应包含在 "数据工厂参与者" 角色中。
+
+###  <a name="automatic-publishing-for-cicd-without-clicking-publish-button"></a>不单击 "发布" 按钮自动发布 CI/CD  
+
+#### <a name="issue"></a>问题
+
+在 ADF 门户中单击 "手动发布" 按钮时，不会启用自动 CI/CD 操作。
+
+#### <a name="cause"></a>原因
+
+直到最近，只为部署发布 ADF 管道的方法是使用 ADF 门户按钮单击。 现在，您可以自动执行此过程。 
+
+#### <a name="resolution"></a>解决方法
+
+CI/CD 进程已增强。 **自动发布** 功能从 ADF UX 中验证和导出所有 Azure 资源管理器 (ARM) 模板功能。 它通过公开提供的 npm 包实现逻辑 [@microsoft/azure-data-factory-utilities](https://www.npmjs.com/package/@microsoft/azure-data-factory-utilities) 。 这允许你以编程方式触发这些操作，而无需转到 ADF UI 并单击按钮。 这为 CI/CD 管道提供了 **真正** 的持续集成体验。 有关详细信息，请遵循 [ADF CI/CD 发布改进](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment-improvements) 。 
+
+###  <a name="cannot-publish-because-of-4mb-arm-template-limit"></a>无法发布，因为有4mb 个 ARM 模板限制  
+
+#### <a name="issue"></a>问题
+
+你无法部署，因为你已达到 Azure 资源管理器大小为4mb 的总模板大小限制。 你需要在超过限制后部署解决方案。 
+
+#### <a name="cause"></a>原因
+
+Azure 资源管理器将模板大小限制为4mb。 将模板大小限制为 4 MB 以内，每个参数文件大小限制为 64 KB 以内。 4-MB 限制适用于模板使用迭代资源定义以及变量和参数值进行扩展后的最终状态。 不过，您已经超出了限制。 
+
+#### <a name="resolution"></a>解决方法
+
+对于中小型解决方案，单个模板更易于理解和维护。 可以查看单个文件中的所有资源和值。 对于高级方案，使用链接模板可将解决方案分解为目标组件。 请遵循 [使用链接模板和嵌套模板](https://docs.microsoft.com/azure/azure-resource-manager/templates/linked-templates?tabs=azure-powershell)的最佳做法。
 
 ## <a name="next-steps"></a>后续步骤
 

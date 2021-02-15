@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 02/01/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 9d30f5325162b9ea447d54aadc092dbd9aa29132
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 82af70547d20509c48f1e07bbc7610fc666a6da1
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99538675"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100393048"
 ---
 # <a name="manage-permissions-to-restore-an-azure-cosmos-db-account"></a>管理用于还原 Azure Cosmos DB 帐户的权限
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -30,7 +30,7 @@ Azure Cosmos DB 允许你隔离和限制 (预览版) 帐户对特定角色或主
 
 ## <a name="assign-roles-for-restore-using-the-azure-portal"></a>使用 Azure 门户分配用于还原的角色
 
-若要执行还原操作，用户或主体需要具有还原 "还原/操作" 权限)  (，以及预配 (为 "写入" 权限) 的新帐户的权限。  若要授予这些权限，所有者可以将 "CosmosRestoreOperator" 和 "Cosmos DB 运算符" 内置角色分配给主体。
+若要执行还原，用户或主体需要具有还原 (还原 */操作* 权限) 的权限，以及预配 (为 *写入* 权限) 的新帐户的权限。  若要授予这些权限，所有者可以 `CosmosRestoreOperator` `Cosmos DB Operator` 向主体分配和内置角色。
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)
 
@@ -40,7 +40,7 @@ Azure Cosmos DB 允许你隔离和限制 (预览版) 帐户对特定角色或主
 
    :::image type="content" source="./media/continuous-backup-restore-permissions/assign-restore-operator-roles.png" alt-text="分配 CosmosRestoreOperator 和 Cosmos DB 运算符角色。" border="true":::
 
-1. 选择 " **保存** " 以授予 "还原/操作" 权限。
+1. 选择 " **保存** " 以授予 " *还原/操作* " 权限。
 
 1. 重复步骤3，将 **Cosmos DB 操作员** 角色授予写入权限。 从 Azure 门户分配此角色时，它会向整个订阅授予还原权限。
 
@@ -52,7 +52,7 @@ Azure Cosmos DB 允许你隔离和限制 (预览版) 帐户对特定角色或主
 |资源组 | /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/Example-cosmosdb-rg |
 |CosmosDB 可还原帐户资源 | /subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.DocumentDB/restorableDatabaseAccounts/23e99a35-cd36-4df4-9614-f767a03b9995|
 
-可还原的帐户资源可从 PowerShell 中命令的输出 `az cosmosdb restorable-database-account list --name <accountname>` 或 `Get-AzCosmosDBRestorableDatabaseAccount -DatabaseAccountName <accountname>` PowerShell 中的 cmdlet 提取。 输出中的 name 属性表示可恢复帐户的 "instanceID"。 若要了解详细信息，请参阅 [PowerShell](continuous-backup-restore-powershell.md) 或 [CLI](continuous-backup-restore-command-line.md) 一文。
+可还原的帐户资源可从 PowerShell 中命令的输出 `az cosmosdb restorable-database-account list --name <accountname>` 或 `Get-AzCosmosDBRestorableDatabaseAccount -DatabaseAccountName <accountname>` PowerShell 中的 cmdlet 提取。 输出中的 name 属性表示可 `instanceID` 还原帐户的。 若要了解详细信息，请参阅 [PowerShell](continuous-backup-restore-powershell.md) 或 [CLI](continuous-backup-restore-command-line.md) 一文。
 
 ## <a name="permissions"></a>权限
 
@@ -60,11 +60,11 @@ Azure Cosmos DB 允许你隔离和限制 (预览版) 帐户对特定角色或主
 
 |权限  |影响  |最小范围  |最大范围  |
 |---------|---------|---------|---------|
-|Microsoft. 资源/部署/验证/操作，Microsoft. 资源/部署/写入 | ARM 模板部署需要这些权限来创建还原的帐户。 请参阅下面的示例权限 [RestorableAction]() ，了解如何设置此角色。 | 不适用 | 不适用  |
+|`Microsoft.Resources/deployments/validate/action`, `Microsoft.Resources/deployments/write` | ARM 模板部署需要这些权限来创建还原的帐户。 请参阅下面的示例权限 [RestorableAction](#custom-restorable-action) ，了解如何设置此角色。 | 不适用 | 不适用  |
 |Microsoft.DocumentDB/databaseAccounts/write | 将帐户还原到资源组需要此权限 | 用于创建已还原帐户的资源组。 | 用于创建已还原帐户的订阅 |
-|Microsoft.DocumentDB/locations/restorableDatabaseAccounts/restore/action |在源可还原数据库帐户范围内需要此权限，以允许对其执行还原操作。  | 属于正在还原的源帐户的 "RestorableDatabaseAccount" 资源。 此值还由可还原数据库帐户资源的 "ID" 属性提供。 可还原帐户的示例为 `/subscriptions/subscriptionId/providers/Microsoft.DocumentDB/locations/regionName/restorableDatabaseAccounts/<guid-instanceid>` | 包含可还原数据库帐户的订阅。 无法将资源组选作作用域。  |
-|Microsoft.DocumentDB/locations/restorableDatabaseAccounts/read |在源可还原数据库帐户范围内需要此权限，以列出可还原的数据库帐户。  | 属于正在还原的源帐户的 "RestorableDatabaseAccount" 资源。 此值还由可还原数据库帐户资源的 "ID" 属性提供。 可还原帐户的示例为 `/subscriptions/subscriptionId/providers/Microsoft.DocumentDB/locations/regionName/restorableDatabaseAccounts/<guid-instanceid>`| 包含可还原数据库帐户的订阅。 无法将资源组选作作用域。  |
-|Microsoft.DocumentDB/位置/restorableDatabaseAccounts/*/read | 在源可恢复帐户范围内需要此权限，以允许读取可恢复的资源，例如可还原帐户的数据库和容器的列表。  | 属于正在还原的源帐户的 "RestorableDatabaseAccount" 资源。 此值还由可还原数据库帐户资源的 "ID" 属性提供。 可还原帐户的示例为 `/subscriptions/subscriptionId/providers/Microsoft.DocumentDB/locations/regionName/restorableDatabaseAccounts/<guid-instanceid>`| 包含可还原数据库帐户的订阅。 无法将资源组选作作用域。 |
+|`Microsoft.DocumentDB/locations/restorableDatabaseAccounts/restore/action` |在源可还原数据库帐户范围内需要此权限，以允许对其执行还原操作。  | 属于正在还原的源帐户的 *RestorableDatabaseAccount* 资源。 此值还由可 `ID` 还原数据库帐户资源的属性提供。 可还原帐户的示例是 */subscriptions/subscriptionId/providers/Microsoft.DocumentDB/位置/regionName/restorableDatabaseAccounts/<guid-instanceid>* | 包含可还原数据库帐户的订阅。 无法将资源组选作作用域。  |
+|`Microsoft.DocumentDB/locations/restorableDatabaseAccounts/read` |在源可还原数据库帐户范围内需要此权限，以列出可还原的数据库帐户。  | 属于正在还原的源帐户的 *RestorableDatabaseAccount* 资源。 此值还由可 `ID` 还原数据库帐户资源的属性提供。 可还原帐户的示例是 */subscriptions/subscriptionId/providers/Microsoft.DocumentDB/位置/regionName/restorableDatabaseAccounts/<guid-instanceid>*| 包含可还原数据库帐户的订阅。 无法将资源组选作作用域。  |
+|`Microsoft.DocumentDB/locations/restorableDatabaseAccounts/*/read` | 在源可恢复帐户范围内需要此权限，以允许读取可恢复的资源，例如可还原帐户的数据库和容器的列表。  | 属于正在还原的源帐户的 *RestorableDatabaseAccount* 资源。 此值还由可 `ID` 还原数据库帐户资源的属性提供。 可还原帐户的示例是 */subscriptions/subscriptionId/providers/Microsoft.DocumentDB/位置/regionName/restorableDatabaseAccounts/<guid-instanceid>*| 包含可还原数据库帐户的订阅。 无法将资源组选作作用域。 |
 
 ## <a name="azure-cli-role-assignment-scenarios-to-restore-at-different-scopes"></a>Azure CLI 要在不同范围中还原的角色分配方案
 
@@ -82,7 +82,7 @@ az role assignment create --role "CosmosRestoreOperator" --assignee <email> –s
 
 * 对特定资源组分配用户写入操作。 若要在资源组中创建新帐户，必须执行此操作。
 
-* 向需要还原的特定可恢复数据库帐户分配 "CosmosRestoreOperator" 内置角色。 在下面的命令中，如果使用 CLI) ，则从 (的输出中的 "ID" 属性检索 "RestorableDatabaseAccount" 的作用域 `az cosmosdb restorable-database-account` ;  `Get-AzCosmosDBRestorableDatabaseAccount` 如果使用 PowerShell) ，则从 (中检索。
+* 将 *CosmosRestoreOperator* 内置角色分配到需要还原的特定可还原数据库帐户。 在下面的命令中，如果使用 `ID` `az cosmosdb restorable-database-account` CLI) 或 (（ `Get-AzCosmosDBRestorableDatabaseAccount` 如果使用 PowerShell) ），则从 (的输出中的属性检索 RestorableDatabaseAccount 的作用域。
 
   ```azurecli-interactive
    az role assignment create --role "CosmosRestoreOperator" --assignee <email> –scope <RestorableDatabaseAccount>
@@ -91,11 +91,11 @@ az role assignment create --role "CosmosRestoreOperator" --assignee <email> –s
 ### <a name="assign-capability-to-restore-from-any-source-account-in-a-resource-group"></a>分配功能以便从资源组中的任何源帐户还原。
 当前不支持此操作。
 
-## <a name="custom-role-creation-for-restore-action-with-cli"></a>用于通过 CLI 执行还原操作的自定义角色创建
+## <a name="custom-role-creation-for-restore-action-with-cli"></a><a id="custom-restorable-action"></a>用于通过 CLI 执行还原操作的自定义角色创建
 
-订阅所有者可以提供还原到任何其他 Azure AD 标识的权限。 还原权限基于操作： "Microsoft.DocumentDB/位置/restorableDatabaseAccounts/restore/action"，它应包括在其还原权限中。 有一个名为 "CosmosRestoreOperator" 的内置角色，其中包含此角色。 您可以使用此内置角色或创建自定义角色来分配权限。
+订阅所有者可以提供还原到任何其他 Azure AD 标识的权限。 还原权限基于操作： `Microsoft.DocumentDB/locations/restorableDatabaseAccounts/restore/action` ，并且应包括在其还原权限中。 有一个名为 *CosmosRestoreOperator* 的内置角色，其中包含此角色。 您可以使用此内置角色或创建自定义角色来分配权限。
 
-下面的 RestorableAction 表示自定义角色。 必须显式创建此角色。 以下 JSON 模板创建具有 restore 权限的自定义角色 "RestorableAction"：
+下面的 RestorableAction 表示自定义角色。 必须显式创建此角色。 以下 JSON 模板创建具有 restore 权限的自定义角色 *RestorableAction* ：
 
 ```json
 {

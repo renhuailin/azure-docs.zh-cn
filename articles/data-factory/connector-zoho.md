@@ -1,22 +1,17 @@
 ---
 title: 使用 Azure 数据工厂（预览版）从 Zoho 复制数据
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 Zoho 复制到支持的接收器数据存储。
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/03/2020
 ms.author: jingwang
-ms.openlocfilehash: 78e7fc6b2a4c9804fbba60aa9946cc612b494461
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e42638d484d2a71052c3a9410f73cbca9e038682
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87531279"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100366885"
 ---
 # <a name="copy-data-from-zoho-using-azure-data-factory-preview"></a>使用 Azure 数据工厂（预览版）从 Zoho 复制数据
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -156,7 +151,7 @@ Zoho 链接服务支持以下属性：
 
 ### <a name="zoho-as-source"></a>Zoho 作为源
 
-要从 Zoho 复制数据，请将复制活动中的源类型设置为“ZohoSource”  。 复制活动**source**部分支持以下属性：
+要从 Zoho 复制数据，请将复制活动中的源类型设置为“ZohoSource”  。 复制活动 **source** 部分支持以下属性：
 
 | properties | 说明 | 必需 |
 |:--- |:--- |:--- |

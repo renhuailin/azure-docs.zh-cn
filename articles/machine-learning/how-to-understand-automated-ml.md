@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 12/09/2020
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy21q2, automl
-ms.openlocfilehash: d5556ffb18a7a67e9415310f221e470761bf8cb8
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: c95a75ef48aa9e3db070c6c237f913fabbe893fa
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100098633"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100388203"
 ---
 # <a name="evaluate-automated-machine-learning-experiment-results"></a>评估自动化机器学习试验结果
 
@@ -234,10 +234,7 @@ spearman_correlation| 斯皮尔曼相关是两个数据集之间的关系单一�
 
 虽然模型评估指标和图表有助于衡量模型的总体质量，但在实践负责任的 AI 时，检查用于进行预测的模型的数据集特征是至关重要的。 这就是自动化 ML 提供模型可解释性仪表板来测量和报告数据集特征的相对贡献的原因。
 
-![特征重要性](./media/how-to-understand-automated-ml/how-to-feature-importance.gif)
-
 若要查看工作室中的可解释性仪表板，请执行以下操作：
-
 1. [登录到工作室](https://ml.azure.com/)并导航到你的工作区
 2. 在左侧菜单中选择“试验”
 3. 从试验列表中选择你的试验
@@ -246,10 +243,11 @@ spearman_correlation| 斯皮尔曼相关是两个数据集之间的关系单一�
 6. 在“说明”选项卡中，如果模型是最佳的，你可能会看到已创建的说明
 7. 若要创建新的说明，请选择“说明模型”，然后选择要用来计算说明的远程计算
 
+[详细了解自动 ML 中的模型说明](how-to-machine-learning-interpretability-automl.md)。
+
 > [!NOTE]
 > ForecastCN 模型目前不受自动化 ML 说明的支持，其他预测模型对可解释性工具的访问可能有限。
 
 ## <a name="next-steps"></a>后续步骤
 * 请参阅[自动化机器学习模型解释](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model)示例笔记本。
-* 了解有关[自动化 ML 中负责任的 AI 产品/服务](how-to-machine-learning-interpretability-automl.md)的更多信息。
 * 对于自动化 ML 特定问题，请联系 askautomatedml@microsoft.com。

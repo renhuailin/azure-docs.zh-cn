@@ -4,16 +4,16 @@ description: 如何使用新的数据导出将 IoT 数据导出到 Azure 和自�
 services: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 11/05/2020
+ms.date: 01/27/2021
 ms.topic: how-to
 ms.service: iot-central
 ms.custom: contperf-fy21q1, contperf-fy21q3
-ms.openlocfilehash: 350cd7c14a4f1ee5058a60ccf60c1205ce97916a
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: d31673b8d789cff5de3ddce63b67a98854b7aabc
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99226053"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100515897"
 ---
 # <a name="export-iot-data-to-cloud-destinations-using-data-export"></a>使用数据导出将 IoT 数据导出到云目标
 
@@ -22,7 +22,7 @@ ms.locfileid: "99226053"
 
 本文介绍如何使用 Azure 中的新数据导出功能 IoT Central。 使用此功能可以从您的 IoT Central 应用程序持续导出已筛选和增加的 IoT 数据。 数据导出会将接近实时的更改推送到云解决方案的其他部分，以获取热路径见解、分析和存储。
 
-例如，你可以：
+例如，可以：
 
 - 以近乎实时的顺序连续导出 JSON 格式的遥测数据和属性更改。
 - 筛选数据流以导出与自定义条件匹配的数据。
@@ -96,9 +96,9 @@ ms.locfileid: "99226053"
 
     |性能层|帐户类型|
     |-|-|
-    |Standard|常规用途 V2|
-    |Standard|常规用途 V1|
-    |Standard|Blob 存储|
+    |标准|常规用途 V2|
+    |标准|常规用途 V1|
+    |标准|Blob 存储|
     |高级|块 Blob 存储|
 
 1. 若要在存储帐户中创建容器，请使用存储帐户。 在“Blob 服务”下选择“浏览 Blob”。 选择顶部的“+ 容器”以创建新容器。
@@ -131,7 +131,7 @@ ms.locfileid: "99226053"
 
     | 数据类型 | 说明 | 数据格式 |
     | :------------- | :---------- | :----------- |
-    |  遥测技术 | 以近乎实时的速度从设备导出遥测消息。 每个导出的消息都包含原始设备消息的已规范化内容。   |  [遥测消息格式](#telemetry-format)   |
+    |  遥测 | 以近乎实时的速度从设备导出遥测消息。 每个导出的消息都包含原始设备消息的已规范化内容。   |  [遥测消息格式](#telemetry-format)   |
     | 属性更改 | 以近乎实时的速度将更改导出到设备和云属性。 对于只读设备属性，将导出对报告值所做的更改。 对于读写属性，将导出报告的值和所需的值。 | [属性更改消息格式](#property-changes-format) |
 
 <a name="DataExportFilters"></a>
@@ -160,11 +160,22 @@ ms.locfileid: "99226053"
     - 对于 Webhook，请粘贴 webhook 终结点的回调 URL。 你可以选择配置 webhook 授权 (OAuth 2.0 和授权令牌) 并添加自定义标头。 
         - 对于 OAuth 2.0，仅支持客户端凭据流。 保存目标后，IoT Central 将与 OAuth 提供程序进行通信以检索授权令牌。 对于发送到此目标的每个消息，此标记将附加到 "Authorization" 标头。
         - 对于 "授权令牌"，可以为发送到此目标的每个消息指定将直接附加到 "Authorization" 标头的令牌值。
-    - 选择“创建”  。
+    - 选择“创建”。
 
 1. 选择 " **+ 目标** "，然后从下拉列表中选择一个目标。 最多可以向单个导出添加5个目标。
 
 1. 完成导出设置后，请选择 " **保存**"。 几分钟后，你的数据将显示在目标中。
+
+## <a name="monitor-your-export"></a>监视导出
+
+除了在 IoT Central 中查看导出状态外，还可以监视通过导出传输的数据量，并观察 Azure Monitor 数据平台中的导出错误。 可以在 PowerShell 或 Azure CLI 的 Azure 门户、REST API 或查询中访问有关导出和设备运行状况的指标。 目前，可以在 Azure Monitor 中监视这些数据导出指标：
+
+1. 应用筛选器之前传入要导出的消息数
+2. 通过筛选器传递的消息数
+3. 已成功导出到目标的消息数
+4. 遇到的错误数
+ 
+[了解有关如何访问 IoT Central 度量值的详细信息。](howto-monitor-application-health.md)
 
 ## <a name="destinations"></a>Destinations
 
@@ -233,7 +244,6 @@ ms.locfileid: "99226053"
     }
 }
 ```
-
 ### <a name="message-properties"></a>消息属性
 
 遥测消息除了包含遥测有效负载之外，还具有元数据的属性。 上一个代码段显示了系统消息的示例 `deviceId` ，例如和 `enqueuedTime` 。 若要了解有关系统消息属性的详细信息，请参阅 [D2C IoT 中心消息的系统属性](../../iot-hub/iot-hub-devguide-messages-construct.md#system-properties-of-d2c-iot-hub-messages)。

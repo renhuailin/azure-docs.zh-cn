@@ -1,23 +1,18 @@
 ---
 title: 从 Dynamics AX 复制数据
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 Dynamics AX 复制到受支持的接收器数据存储。
-services: data-factory
-documentationcenter: ''
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/12/2020
-ms.openlocfilehash: b4dbedc0a30c80748ffc27bb7e17c86067ca0238
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 38ff77ad56f16fbd33b77021b18be77f6a153b3f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92638153"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100380978"
 ---
 # <a name="copy-data-from-dynamics-ax-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 Dynamics AX 中复制数据
 
@@ -63,7 +58,7 @@ Dynamics AX 链接的服务支持以下属性：
 
 | properties | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | **type** 属性必须设置为 **DynamicsAX** 。 |是 |
+| type | **type** 属性必须设置为 **DynamicsAX**。 |是 |
 | url | Dynamics AX（或 Dynamics 365 Finance and Operations）实例 OData 终结点。 |是 |
 | servicePrincipalId | 指定应用程序的客户端 ID。 | 是 |
 | servicePrincipalKey | 指定应用程序的密钥。 将此字段标记为 **SecureString** 以安全地将其存储在数据工厂中或 [引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
@@ -103,11 +98,11 @@ Dynamics AX 链接的服务支持以下属性：
 
 有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集和链接服务](concepts-datasets-linked-services.md)。 
 
-要从 Dynamics AX 复制数据，请将数据集的 **type** 属性设置为 **DynamicsAXResource** 。 支持以下属性：
+要从 Dynamics AX 复制数据，请将数据集的 **type** 属性设置为 **DynamicsAXResource**。 支持以下属性：
 
 | properties | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 数据集的 **type** 属性必须设置为 **DynamicsAXResource** 。 | 是 |
+| type | 数据集的 **type** 属性必须设置为 **DynamicsAXResource**。 | 是 |
 | 路径 | Dynamics AX OData 实体的路径。 | 是 |
 
 **示例**
@@ -137,12 +132,12 @@ Dynamics AX 链接的服务支持以下属性：
 
 ### <a name="dynamics-ax-as-source"></a>作为源的 Dynamics AX
 
-若要从 Dynamics AX 复制数据，请将复制活动中的 **source** 类型设置为 **DynamicsAXSource** 。 复制活动 **source** 节支持以下属性：
+若要从 Dynamics AX 复制数据，请将复制活动中的 **source** 类型设置为 **DynamicsAXSource**。 复制活动 **source** 节支持以下属性：
 
 | properties | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 复制活动源的 **type** 属性必须设置为 **DynamicsAXSource** 。 | 是 |
-| query | 用于筛选数据的 OData 查询选项。 示例：`"?$select=Name,Description&$top=5"`。<br/><br/>**注意** ：连接器会从以下组合 URL 复制数据：`[URL specified in linked service]/[path specified in dataset][query specified in copy activity source]`。 有关详细信息，请参阅 [OData URL 组件](https://www.odata.org/documentation/odata-version-3-0/url-conventions/)。 | 否 |
+| type | 复制活动源的 **type** 属性必须设置为 **DynamicsAXSource**。 | 是 |
+| query | 用于筛选数据的 OData 查询选项。 示例：`"?$select=Name,Description&$top=5"`。<br/><br/>**注意**：连接器会从以下组合 URL 复制数据：`[URL specified in linked service]/[path specified in dataset][query specified in copy activity source]`。 有关详细信息，请参阅 [OData URL 组件](https://www.odata.org/documentation/odata-version-3-0/url-conventions/)。 | 否 |
 | httpRequestTimeout | 用于获取响应的 HTTP 请求的超时 （TimeSpan 值）  。 该值是获取响应而不是读取响应数据的超时。 如果未指定，默认值为“00:30:00”（30 分钟）。 | 否 |
 
 **示例**

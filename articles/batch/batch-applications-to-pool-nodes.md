@@ -2,46 +2,69 @@
 title: 将应用程序和数据复制到池节点
 description: 了解如何将应用程序和数据复制到池节点。
 ms.topic: how-to
-ms.date: 02/17/2020
-ms.openlocfilehash: e21b8551fb62c4335910fd05bb9590eaf6f7e35a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 02/10/2021
+ms.openlocfilehash: a5933a1c52e2848b6b414f1750bb24515fb9f28a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85954887"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100378496"
 ---
 # <a name="copy-applications-and-data-to-pool-nodes"></a>将应用程序和数据复制到池节点
 
-Azure Batch 支持用多种方式来将数据和应用程序提取到计算节点中，使这些数据和应用程序可供任务使用。 运行整个作业可能需要数据和应用程序，因此需要在每个节点上安装它们。 一些可能只是特定任务需要，或者需要针对作业进行安装，而不需要在每个节点上安装。 Batch 为上述每种场景都提供了相关工具。
+Azure Batch 支持多种方法，用于将数据和应用程序获取到计算节点，以便任务可以使用它们。
 
-- **池启动任务资源文件**：针对需要在池中每个节点上安装的应用程序或数据。 将此方法与应用程序包或启动任务的资源文件集合一起使用来执行安装命令。  
-
-示例： 
-- 使用启动任务命令行来移动或安装应用程序
-
-- 在 Azure 存储帐户中指定特定文件或容器的列表。 有关详细信息，请参阅 [REST 文档中的 add#resourcefile](/rest/api/batchservice/pool/add#resourcefile)
-
-- 池中运行的每个作业都会运行 MyApplication.exe，后者必须先使用 MyApplication.msi 进行安装。 如果使用此机制，需要将启动任务的“等待成功”属性设置为 true 。 有关详细信息，请参阅 [REST 文档中的 add#starttask](/rest/api/batchservice/pool/add#starttask)。
-
-- **池中的应用程序包引用**：针对需要在池中每个节点上安装的应用程序或数据。 没有与应用程序包关联的安装命令，但你可使用启动任务来运行任何安装命令。 如果应用程序无需安装或者包含大量文件，则可使用此方法。 应用程序包非常适合大量文件，这是因为它们会将大量文件引用组合到一个小的有效负载中。 如果尝试将 100 个以上单独的资源文件包含到一个任务中，Batch 服务可能会遇到单任务内部系统限制。 此外，如果你有严格的版本控制需求，你可能有同一应用程序的多个不同版本，且需要在这些版本之间进行选择，那么请使用应用程序包。 有关详细信息，请参阅[使用 Batch 应用程序包将应用程序部署到计算节点](./batch-application-packages.md)。
-
-- **作业准备任务资源文件**：针对为使作业运行而必须安装，但无需在整个池中安装的应用程序或数据。 例如，如果你的池有多个不同类型的作业，但只有一个作业类型需要 MyApplication.msi 才能运行，则在作业准备任务中进行安装很合理。 有关作业准备任务的详细信息，请参阅[在 Batch 计算节点上运行作业准备和作业发布任务](./batch-job-prep-release.md)。
-
-- **任务资源文件**：适合应用程序或数据仅与单个任务相关的情况。 例如：你有 5 项任务，每一项处理一个不同的文件，然后将输出写入 Blob 存储。  在这种情况下，应在任务资源文件上指定输入文件，因为每项任务都有自己的输入文件。
+您选择的方法可能取决于您的文件或应用程序的范围。 可能需要数据和应用程序运行整个作业，因此需要在每个节点上安装数据和应用程序。 某些文件或应用程序可能仅对特定任务是必需的。 可能需要为作业安装其他程序，但不需要在每个节点上安装。 Batch 为上述每种场景都提供了相关工具。
 
 ## <a name="determine-the-scope-required-of-a-file"></a>确定文件所需的范围
 
 需要确定文件的范围，即需要文件的是池、作业还是任务。 范围设为池的文件应使用池应用程序包或启动任务。 范围设为作业的文件应使用作业准备任务。 范围设在池或作业级别的文件的一个很好的例子就是应用程序。 范围设为任务的文件应使用任务资源文件。
 
-### <a name="other-ways-to-get-data-onto-batch-compute-nodes"></a>将数据提取到 Batch 计算节点的其他方式
+## <a name="pool-start-task-resource-files"></a>池启动任务资源文件
 
-还有其他方法可将数据提取到未正式集成到 Batch REST API 的 Batch 计算节点。 你可控制 Azure Batch 节点且可运行自定义可执行文件，因此你能够从任意数量的自定义源中拉取数据，前提是 Batch 节点与目标相连，并且你在 Azure Batch 节点上具有该源的凭据。 一些常见示例包括：
+对于需要在池中的每个节点上安装的应用程序或数据，请使用池启动任务资源文件。 将此方法与 [应用程序包](batch-application-packages.md) 或启动任务的资源文件集合一起使用，以便执行安装命令。  
+
+例如，你可以使用 "启动任务" 命令行来移动或安装应用程序。 还可以指定 Azure 存储帐户中的文件或容器的列表。 有关详细信息，请参阅 [Add # ResourceFile IN REST 文档](/rest/api/batchservice/pool/add#resourcefile)。
+
+如果在池上运行的每个作业运行的应用程序 ( 必须首先使用 .msi 文件安装) ，则需要将启动任务的 " **等待成功** " 属性设置为 " **true**"。 有关详细信息，请参阅 [Add # StartTask IN REST 文档](/rest/api/batchservice/pool/add#starttask)。
+
+## <a name="application-package-references"></a>应用程序包引用
+
+对于需要在池中的每个节点上安装的应用程序或数据，请考虑使用 [应用程序包](batch-application-packages.md)。 没有与应用程序包关联的安装命令，但你可使用启动任务来运行任何安装命令。 如果应用程序无需安装或者包含大量文件，则可使用此方法。
+
+当你有大量文件时，应用程序包非常有用，因为它们可以将许多文件引用组合到小型有效负载中。 如果尝试将 100 个以上单独的资源文件包含到一个任务中，Batch 服务可能会遇到单任务内部系统限制。 当你有多个不同版本的相同应用程序，并且需要在它们之间进行选择时，应用程序包也很有用。
+
+## <a name="extensions"></a>扩展
+
+[扩展](create-pool-extensions.md) 是一种小型应用程序，用于简化批处理计算节点上的预配配置和设置。 创建池时，可以选择在预配计算节点时安装支持的扩展。 之后，扩展可以执行其预期操作。
+
+## <a name="job-preparation-task-resource-files"></a>作业准备任务资源文件
+
+对于必须安装的应用程序或数据才能运行，但不需要将其安装在整个池上，请考虑使用 [作业准备任务资源文件](./batch-job-prep-release.md)。
+
+例如，如果你的池有许多不同类型的作业，并且只有一种作业类型需要 .msi 文件才能运行，则有必要将安装步骤放入作业准备任务。
+
+## <a name="task-resource-files"></a>任务资源文件
+
+当你的应用程序或数据只与单个任务相关时，会使用任务资源文件。
+
+例如，你可能有五个任务，每个任务处理不同文件，然后在这种情况下将输出写入到 blob 存储，因为每个任务都有其自己的输入文件。
+
+## <a name="additional-ways-to-get-data-onto-nodes"></a>将数据获取到节点的其他方法
+
+由于可以控制 Azure Batch 节点，并且可以运行自定义可执行文件，因此可以从任意数量的自定义源中拉取数据。 请确保该批节点已连接到目标，并且该节点上有该源的凭据。
+
+以下是将数据传输到 Batch 节点的几个示例：
 
 - 从 SQL 下载数据
 - 从其他 Web 服务/自定义位置下载数据
 - 映射网络共享
 
-### <a name="azure-storage"></a>Azure 存储
+## <a name="azure-storage"></a>Azure 存储
 
-Blob 存储具有下载可伸缩性目标。 对单个 Blob 来说，Azure 存储文件共享可伸缩性目标是相同的。 大小将影响你所需的节点数和池数。
+请记住，blob 存储具有下载可伸缩性目标。 对单个 Blob 来说，Azure 存储文件共享可伸缩性目标是相同的。 大小会影响所需的节点和池的数量。
 
+## <a name="next-steps"></a>后续步骤
+
+- 了解如何 [在批处理中使用应用程序包](batch-application-packages.md)。
+- 了解有关使用 [节点和池的](nodes-and-pools.md)详细信息。

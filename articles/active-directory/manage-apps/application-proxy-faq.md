@@ -12,12 +12,12 @@ ms.date: 07/23/2020
 ms.author: kenwith
 ms.reviewer: japere
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 121dcdf51374f625ad7393bb181b1be215775a0b
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 19a5d223b587e47c562977cc9fea34f990eb0e46
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99257771"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100370812"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Active Directory (Azure AD) 应用程序代理常见问题
 
@@ -58,7 +58,7 @@ ms.locfileid: "99257771"
 应用程序代理连接器对 Azure 执行基于证书的身份验证。 TLS 终止 (TLS/HTTPS 检查或加速) 中断此身份验证方法，并且不受支持。 从连接器到 Azure 的流量必须绕过任何正在执行 TLS 终止的设备。  
 
 ### <a name="is-tls-12-required-for-all-connections"></a>是否所有连接都需要 TLS 1.2？
-可以。 为了向我们的客户提供一流的加密，应用程序代理服务将访问限制为仅允许使用 TLS 1.2 协议。 这些更改已自 2019 年 8 月 31 日起逐步推出并生效。 请确保将所有客户端-服务器和浏览器-服务器组合更新为使用 TLS 1.2，以便保持连接到应用程序代理服务。 这包括用户用来访问那些通过应用程序代理发布的应用程序的客户端。 请查看如何为 [Office 365 中的 TLS 1.2](/microsoft-365/compliance/prepare-tls-1.2-in-office-365) 做准备，了解有用的参考和资源。
+是。 为了向我们的客户提供一流的加密，应用程序代理服务将访问限制为仅允许使用 TLS 1.2 协议。 这些更改已自 2019 年 8 月 31 日起逐步推出并生效。 请确保将所有客户端-服务器和浏览器-服务器组合更新为使用 TLS 1.2，以便保持连接到应用程序代理服务。 这包括用户用来访问那些通过应用程序代理发布的应用程序的客户端。 请查看如何为 [Office 365 中的 TLS 1.2](/microsoft-365/compliance/prepare-tls-1.2-in-office-365) 做准备，了解有用的参考和资源。
 
 ### <a name="can-i-place-a-forward-proxy-device-between-the-connector-servers-and-the-back-end-application-server"></a>是否可以在连接器服务器 (s) 和后端应用程序服务器之间放置转发代理设备？
 是的，从连接器版本1.5.1526.0 开始支持此方案。 请参阅 [使用现有的本地代理服务器](application-proxy-configure-connectors-with-proxy-servers.md)。
@@ -105,6 +105,15 @@ HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\W
 ### <a name="can-a-service-principal-manage-application-proxy-using-powershell-or-microsoft-graph-apis"></a>服务主体是否可以使用 Powershell 或 Microsoft Graph Api 管理应用程序代理？
 
 不能，目前不支持。
+
+### <a name="what-happens-if-i-delete-cwap_authsecret-the-client-secret-in-the-app-registration"></a>如果在应用注册) CWAP_AuthSecret (客户端密钥，会发生什么情况？
+
+创建 Azure AD 应用程序代理应用时，客户端密码（也称为 *CWAP_AuthSecret*）会自动添加到应用程序对象 (应用注册) 。
+
+客户端密码的有效期为一年。 在当前的有效客户端密钥过期之前，会自动创建新的一年的客户端密码。 三个 CWAP_AuthSecret 客户端密码始终保留在应用程序对象中。 
+
+> [!IMPORTANT]
+> 删除 CWAP_AuthSecret 会断开 Azure AD 应用程序代理的预身份验证。 请勿删除 CWAP_AuthSecret。
 
 ### <a name="how-do-i-change-the-landing-page-my-application-loads"></a>如何实现更改应用程序加载的登录页？
 
@@ -183,21 +192,21 @@ NTLM 身份验证不能用作预身份验证或单一登录方法。 仅当可�
 
 ### <a name="can-i-use-azure-ad-application-proxy-as-ad-fs-proxy-like-web-application-proxy"></a>是否可以使用 Azure AD 应用程序代理作为 AD FS 代理 (，例如 Web 应用程序代理) ？
 
-否。 Azure AD 应用程序代理用于处理 Azure AD，并且不满足充当 AD FS 代理的要求。
+不是。 Azure AD 应用程序代理用于处理 Azure AD，并且不满足充当 AD FS 代理的要求。
 
 ## <a name="websocket"></a>WebSocket
 
-### <a name="does-websocket-support-work-for-applications-other-than-qliksense"></a>WebSocket 是否支持 QlikSense 以外的应用程序？
+### <a name="does-websocket-support-work-for-applications-other-than-qliksense-and-remote-desktop-web-client-html5"></a>WebSocket 是否支持 QlikSense 和远程桌面 Web 客户端 (HTML5) 以外的应用程序？
 
 目前，WebSocket 协议支持仍以公共预览版提供，可能不适用于其他应用程序。 一些客户使用 WebSocket 协议与其他应用程序的混合成功。 如果测试这种情况，我们很乐意听到您的结果。 请向我们发送你的反馈 aadapfeedback@microsoft.com 。
 
-Windows 管理中心中 (事件日志、PowerShell 和远程桌面服务) 的功能 (WAC) 或远程桌面 Web 客户端 (HTML5) 现在不能通过 Azure AD 应用程序代理。
+Windows 管理中心的事件日志、PowerShell 和远程桌面服务)  (功能 (WAC) 目前不能通过 Azure AD 应用程序代理。
 
 ## <a name="link-translation"></a>链接转换
 
 ### <a name="does-using-link-translation-affect-performance"></a>使用链接转换是否会影响性能？
 
-可以。 链接转换会影响性能。 应用程序代理服务会扫描应用程序以查找硬编码的链接，并将其替换为其相应的已发布外部 Url，然后将其呈现给用户。 
+是。 链接转换会影响性能。 应用程序代理服务会扫描应用程序以查找硬编码的链接，并将其替换为其相应的已发布外部 Url，然后将其呈现给用户。 
 
 为了获得最佳性能，我们建议通过配置 [自定义域](./application-proxy-configure-custom-domain.md)来使用相同的内部和外部 url。 如果无法使用自定义域，则可以使用移动设备上的 "我的应用安全登录扩展" 或 "Microsoft Edge 浏览器" 改进链接转换性能。 [有关 Azure AD 应用程序代理发布的应用，请参阅重定向硬编码的链接](application-proxy-configure-hard-coded-link-translation.md)。
 

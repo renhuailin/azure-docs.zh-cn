@@ -1,14 +1,14 @@
 ---
 title: 将客户加入 Azure Lighthouse
 description: 了解如何将客户加入 Azure Lighthouse，从而允许使用 Azure 委派的资源管理通过自己的租户访问和管理其资源。
-ms.date: 01/14/2021
+ms.date: 02/08/2021
 ms.topic: how-to
-ms.openlocfilehash: 1a7c8fc85819b2c34b5c64dc83cb908b7bee3c41
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: c0a886b692b99156cbd53e5f0f5953047560c5b9
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98232669"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100372138"
 ---
 # <a name="onboard-a-customer-to-azure-lighthouse"></a>将客户加入 Azure Lighthouse
 
@@ -306,17 +306,18 @@ az account list
 
 如果在载入客户后需要进行更改，则可以 [更新委派](update-delegation.md)。 你还可以完全 [删除对委派的访问权限](remove-delegation.md) 。
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 
 如果无法成功加入你的客户，或者如果你的用户访问委派的资源时遇到问题，请查看以下提示和要求，然后重试。
 
 - `managedbyTenantId`该值不能与正在载入的订阅的租户 ID 相同。
-- 在同一范围内，不能具有相同的多个分配 `mspOfferName` 。 
+- 在同一范围内，不能具有相同的多个分配 `mspOfferName` 。
 - 必须为委派的订阅注册 **ManagedServices** 资源提供程序。 这应该在部署期间自动发生，但如果不是，则可以 [手动注册](../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider)。
 - 授权不得包含具有 [所有者](../../role-based-access-control/built-in-roles.md#owner) 内置角色的任何用户或具有 [DataActions](../../role-based-access-control/role-definitions.md#dataactions)的任何内置角色。
 - 必须创建组，将 [**组类型**](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md#group-types) 设置为 **安全** 组，而不是 **Microsoft 365**。
 - 在对 [嵌套组](../..//active-directory/fundamentals/active-directory-groups-membership-azure-portal.md)启用访问权限之前，可能会有额外的延迟。
 - 需要在 Azure 门户中查看资源的用户必须具有 (的 " [读取](../../role-based-access-control/built-in-roles.md#reader) 者" 角色或其他包含读者访问) 的内置角色。
+- 在授权中包含的 [Azure 内置角色](../../role-based-access-control/built-in-roles.md) 不得包含任何弃用的角色。 如果已弃用 Azure 内置角色，则任何与该角色载入的用户将失去访问权限，并且你将无法加入其他委派。 若要解决此问题，请将模板更新为仅使用受支持的内置角色，然后执行新的部署。
 
 ## <a name="next-steps"></a>后续步骤
 

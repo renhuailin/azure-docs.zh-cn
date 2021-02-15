@@ -4,23 +4,22 @@ description: 在 Web 服务受访问时，如何使用 Azure 机器学习 Web �
 services: machine-learning
 author: likebupt
 ms.author: keli19
-editor: cgronlun
 ms.assetid: c49187db-b976-4731-89d6-11a0bf653db1
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.workload: data-services
 ms.topic: how-to
 ms.date: 01/12/2017
-ms.openlocfilehash: 4a5857e44623f545f2807592c0f6f7b6dae366f1
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 49814d01209b58666c011a6bbd7fe6c328d460f8
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93308622"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100518328"
 ---
 # <a name="use-azure-machine-learning-studio-classic-web-service-parameters"></a>使用 Azure 机器学习工作室（经典）Web 服务参数
 
-**适用对象：** ![适用于.](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典）   ![不适用于. ](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
+**适用对象：** ![适用于.](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典）   ![不适用于.](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 
 发布包含可配置参数的模块的实验，创建 Azure 机器学习 Web 服务。 在某些情况下，当 Web 服务在运行时，可能会要更改模块行为。 *Web 服务参数* 允许执行此任务。 
@@ -55,7 +54,7 @@ Web 服务的 API 文档包括向 Web 服务用户提供的有关访问 Web 服�
    * 在“请指定身份验证类型”下，选择“帐户”。
    * 输入 Azure Blob 存储的帐户信息。 
 
-3.  单击 **指向以容器参数开头的 blob 的路径 右侧的图标** 。 如下所示：
+3.  单击 **指向以容器参数开头的 blob 的路径 右侧的图标**。 如下所示：
    
    ![Web 服务参数图标](./media/web-service-parameters/icon.png)
    
@@ -74,7 +73,7 @@ Web 服务的 API 文档包括向 Web 服务用户提供的有关访问 Web 服�
 
 访问 Web 服务时，Web 服务的用户现在可为[导出数据][writer]模块指定新目标。
 
-## <a name="more-information"></a>更多信息
+## <a name="more-information"></a>详细信息
 有关更详细的示例，请参阅 [机器学习博客](/archive/blogs/machinelearning/azureml-web-service-parameters) 中的 [Web 服务参数](/archive/blogs/machinelearning/azureml-web-service-parameters) 条目。
 
 有关访问机器学习 Web 服务的详细信息，请参阅[如何使用 Azure 机器学习 Web 服务](consume-web-services.md)。

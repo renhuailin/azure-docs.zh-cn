@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 10/25/2020
 ms.author: xujiang1
 ms.reviewer: jrasnick
-ms.openlocfilehash: 41403a59be0395a6d9874c7369bfe59c22f5ac17
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: de7c5dba5a4868b7a8fdb390f974134cfaef7395
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98218359"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100384514"
 ---
 # <a name="connect-to-workspace-resources-from-a-restricted-network"></a>从受限网络连接到工作区资源
 
@@ -74,7 +74,7 @@ ms.locfileid: "98218359"
 
 若要访问 Azure Synapse Analytics Studio 工作区资源中的资源，需要创建以下内容：
 
-- 至少一个具有 **目标子资源****开发** 类型的专用链接端点。
+- 至少一个 **目标子资源** 类型为 **Dev** 的专用链接端点。
 - 使用 **Sql** 或 **SqlOnDemand** 类型的两个其他可选专用链接终结点，具体取决于要访问的工作区中的资源。
 
 创建这些方法类似于在上一步中创建终结点的方式。  
@@ -146,7 +146,8 @@ ms.locfileid: "98218359"
 
 * 对于 " **名称**"，请输入不同专用终结点的专用名称字符串： 
   * **web** 适用于访问 Azure Synapse Analytics Studio 的专用终结点。
-  * "***YourWorkSpaceName * * _" 适用于 sql 池中 sql 查询执行的专用终结点，还用于访问 Azure Synapse Analytics Studio 工作区中的其他所有内容的专用终结点。 _ "*** YourWorkSpaceName *-ondemand * *" 用于内置池中的 sql 查询的专用终结点。
+  * "***YourWorkSpaceName***" 适用于 sql 池中 sql 查询执行的专用终结点，还用于访问 Azure Synapse Analytics Studio 工作区中的其他所有项的专用终结点。
+  * "***YourWorkSpaceName *-ondemand**" 用于内置池中的 sql 查询的专用终结点。
 * 对于 " **类型**"，请选择 **"仅 DNS** 记录类型"。 
 * 对于 " **IP 地址**"，请输入每个专用终结点对应的 IP 地址。 可以从专用终结点概述获取 **网络接口** 中的 IP 地址。
 

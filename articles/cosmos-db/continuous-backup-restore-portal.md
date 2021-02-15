@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 02/01/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: e0fb337defc69354aa625fe63bef9768dbc4cf1f
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: ee6eedbc078e1b9c07ed00922ce1c37b38410128
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99538762"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100381862"
 ---
 # <a name="configure-and-manage-continuous-backup-and-point-in-time-restore-preview---using-azure-portal"></a>配置和管理连续备份和时间点还原 (预览) -使用 Azure 门户
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -74,7 +74,7 @@ Azure Cosmos DB 的时间点还原功能 (预览版) 可帮助你从容器内的
 你可以使用 Azure 门户在删除帐户的30天内完全还原该帐户。 使用以下步骤还原已删除的帐户：
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)
-1. 在全局搜索栏中搜索 "Azure Cosmos DB" 资源。 其中列出了所有现有帐户。
+1. 在全局搜索栏中搜索 *Azure Cosmos DB* 的资源。 其中列出了所有现有帐户。
 1. 接下来，选择 " **还原** " 按钮。 "还原" 窗格显示可在保持期内还原的已删除帐户的列表，该列表是从删除时间开始的30天。
 1. 选择要还原的帐户。
 
@@ -95,7 +95,7 @@ Azure Cosmos DB 的时间点还原功能 (预览版) 可帮助你从容器内的
 
 ## <a name="track-the-status-of-restore-operation"></a><a id="track-restore-status"></a>跟踪还原操作的状态
 
-启动还原操作后，选择门户右上角的 " **通知** " 图标。 它提供显示正在还原的帐户状态的链接。 当还原正在进行时，帐户的状态将为 "正在创建"，还原操作完成后，帐户状态将更改为 "联机"。
+启动还原操作后，选择门户右上角的 " **通知** " 图标。 它提供显示正在还原的帐户状态的链接。 当还原正在进行时，将 *创建* 帐户的状态，还原操作完成后，帐户状态将更改为 " *联机*"。
 
 :::image type="content" source="./media/continuous-backup-restore-portal/track-restore-operation-status.png" alt-text="当操作完成时，已还原帐户的状态从 &quot;正在创建&quot; 更改为 &quot;联机&quot;。" border="true":::
 

@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/22/2020
+ms.date: 02/07/2021
 ms.author: memildin
-ms.openlocfilehash: ea66bb5bcdd6132809804632919a120f5c93353f
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: eb70a31d0fa5f231bd0db8ca27517ce43fe1db28
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98132710"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100007801"
 ---
 # <a name="container-security-in-security-center"></a>安全中心的容器安全性
 
@@ -70,11 +70,25 @@ Azure 安全中心会识别在 IaaS Linux VM 上或其他运行 Docker 容器的
 ### <a name="continuous-monitoring-of-your-kubernetes-clusters"></a>持续监视 Kubernetes 群集
 安全中心可以与 Azure Kubernetes 服务 (AKS) 协同工作，后者是 Microsoft 的托管容器业务流程服务，用于开发、部署和管理容器化应用程序。
 
-AKS 提供安全控制，并且可用于了解群集的安全状况。 安全中心使用这些功能来完成以下任务：
-* 持续监视 AKS 群集的配置
-* 生成符合行业标准的安全建议
+AKS 提供安全控制，并且可用于了解群集的安全状况。 安全中心使用这些功能来持续监视 AKS 群集的配置，并生成符合行业标准的安全建议。
+
+下面是有关 Azure 安全中心、Azure Kubernetes 服务和 Azure Policy 之间的交互的高级关系图：
+
+:::image type="content" source="./media/defender-for-kubernetes-intro/kubernetes-service-security-center-integration-detailed.png" alt-text="有关 Azure 安全中心、Azure Kubernetes 服务和 Azure Policy 之间的交互的高级关系图" lightbox="./media/defender-for-kubernetes-intro/kubernetes-service-security-center-integration-detailed.png":::
+
+你可以看到安全中心接收和分析的项包括：
+
+- 来自 API 服务器的审核日志
+- Log Analytics 代理中的原始安全事件
+
+    > [!NOTE]
+    > 目前，我们不支持在虚拟机规模集上运行的 Azure Kubernetes 服务群集上安装 Log Analytics 代理。
+
+- 来自 AKS 群集的群集配置信息
+- Azure Policy 中的工作负载配置（通过适用于 Kubernetes 的 Azure Policy 加载项）
 
 若要详细了解针对此功能可能出现的相关安全中心建议，请参阅建议参考表的[计算部分](recommendations-reference.md#recs-compute)。
+
 
 ###  <a name="workload-protection-best-practices-using-kubernetes-admission-control"></a>使用 Kubernetes 准入控制实现工作负载保护最佳做法
 

@@ -1,22 +1,17 @@
 ---
 title: 创建自承载 Integration Runtime
 description: 了解如何在 Azure 数据工厂中创建自承载集成运行时，使数据工厂能够访问专用网络中存储的数据。
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 author: lrtoyou1223
 ms.author: lle
-manager: shwang
-ms.custom: seo-lt-2019
-ms.date: 12/25/2020
-ms.openlocfilehash: fd56ef74a7641a01eae2354f149f45e84ff56833
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.date: 02/10/2021
+ms.openlocfilehash: 3e61b6a0f17d2d21aaaebc5ff42b0221cf851a4b
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98217407"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100389482"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>创建和配置自承载集成运行时
 
@@ -30,7 +25,6 @@ ms.locfileid: "98217407"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-
 ## <a name="considerations-for-using-a-self-hosted-ir"></a>使用自承载 IR 的注意事项
 
 - 可将单个自承载集成运行时用于多个本地数据源。 还可以在同一 Azure Active Directory (Azure AD) 租户中将此集成运行时与另一个数据工厂共享。 有关详细信息，请参阅[共享自承载集成运行时](./create-shared-self-hosted-integration-runtime-powershell.md)。
@@ -42,7 +36,6 @@ ms.locfileid: "98217407"
 - 即使数据存储位于云中的 Azure 基础结构即服务 (IaaS) 虚拟机上，也应该使用自承载集成运行时。
 - 在启用了符合 FIPS 标准的加密的 Windows 服务器上安装的自承载集成运行时中的任务可能会失败。 若要解决此问题，你有两个选择：将“凭据/机密”值存储在 Azure Key Vault 中，或在服务器上禁用符合 FIPS 规范的加密。 若要禁用符合 FIPS 标准的加密，请将以下注册表子项的值从 1（启用）更改为 0（禁用）：`HKLM\System\CurrentControlSet\Control\Lsa\FIPSAlgorithmPolicy\Enabled`。 如果使用[自承载集成运行时作为 SSIS 集成运行时的代理](./self-hosted-integration-runtime-proxy-ssis.md)，则可以启用符合 FIPS 标准的加密，并在将数据从本地移动到 Azure Blob 存储作为暂存区时使用加密。
 
-
 ## <a name="command-flow-and-data-flow"></a>命令流和数据流
 
 在本地与云之间移动数据时，该活动使用自承载集成运行时在本地数据源与云之间传输数据。
@@ -51,32 +44,36 @@ ms.locfileid: "98217407"
 
 ![数据流概要](media/create-self-hosted-integration-runtime/high-level-overview.png)
 
-1. 数据开发人员使用 PowerShell cmdlet 在 Azure 数据工厂中创建自承载集成运行时。 目前，Azure 门户不支持此功能。
-2. 数据开发人员为本地数据存储创建一个链接服务。 为此，开发人员可以指定服务用来连接数据存储的自承载集成运行时实例。
-3. 自承载集成运行时节点使用 Windows 数据保护应用程序编程接口 (DPAPI) 加密凭据，并将凭据保存在本地。 如果设置多个节点以实现高可用性，则凭据将跨其他节点进一步同步。 每个节点使用 DPAPI 加密凭据并将其存储在本地。 凭据同步对数据开发者透明并由自承载 IR 处理。
-4. Azure 数据工厂与自承载集成运行时通信，以计划和管理作业。 通过使用共享 [Azure 中继](../azure-relay/relay-what-is-it.md#wcf-relay) 连接的控制通道进行通信。 需要运行某个活动作业时，数据工厂会将请求以及任何凭据信息排队。 如果凭据尚未存储在自承载集成运行时中，则它就会执行此操作。 自承载集成运行时在轮询队列后启动作业。
-5. 自承载集成运行时在本地存储与云存储之间复制数据。 复制方向取决于复制活动在数据管道中的配置方式。 对于此步骤，自承载集成运行时直接通过安全 HTTPS 通道与基于云的存储服务（如 Azure Blob 存储）通信。
+1. 数据开发人员使用 Azure 门户或 PowerShell cmdlet 在 Azure 数据工厂中创建自承载集成运行时。
 
+2. 数据开发人员为本地数据存储创建一个链接服务。 为此，开发人员可以指定服务用来连接数据存储的自承载集成运行时实例。
+
+3. 自承载集成运行时节点使用 Windows 数据保护应用程序编程接口 (DPAPI) 加密凭据，并将凭据保存在本地。 如果设置多个节点以实现高可用性，则凭据将跨其他节点进一步同步。 每个节点使用 DPAPI 加密凭据并将其存储在本地。 凭据同步对数据开发者透明并由自承载 IR 处理。
+
+4. Azure 数据工厂与自承载集成运行时通信，以计划和管理作业。 通信是通过一个使用共享 [Azure 中继](../azure-relay/relay-what-is-it.md#wcf-relay)连接的控制通道进行的。 需要运行某个活动作业时，数据工厂会将请求以及任何凭据信息排队。 如果凭据尚未存储在自承载集成运行时中，则它就会执行此操作。 自承载集成运行时在轮询队列后启动作业。
+
+5. 自承载集成运行时在本地存储与云存储之间复制数据。 复制方向取决于复制活动在数据管道中的配置方式。 对于此步骤，自承载集成运行时直接通过安全 HTTPS 通道与基于云的存储服务（如 Azure Blob 存储）通信。
 
 ## <a name="prerequisites"></a>先决条件
 
 - 支持的 Windows 版本为：
-  + Windows 8.1
-  + Windows 10
-  + Windows Server 2012
-  + Windows Server 2012 R2
-  + Windows Server 2016
-  + Windows Server 2019
-   
+  - Windows 8.1
+  - Windows 10
+  - Windows Server 2012
+  - Windows Server 2012 R2
+  - Windows Server 2016
+  - Windows Server 2019
+
 不支持在域控制器上安装自承载集成运行时。
-- 自承载集成运行时需要具有 .NET Framework 4.7.2 或更高版本的64位操作系统的详细信息，请参阅 [.NET Framework 系统要求](/dotnet/framework/get-started/system-requirements) 。
-- 对于自承载集成运行时计算机，建议的最低配置为 4 核 2 GHz 处理器，8 GB RAM，80 GB 可用硬盘空间。 有关系统要求的详细信息，请参阅 [下载](https://www.microsoft.com/download/details.aspx?id=39717)。
+
+- 自承载集成运行时需要带有 .NET Framework 4.7.2 或更高版本的 64 位操作系统。 有关详细信息，请参阅 [.NET Framework 系统需求](/dotnet/framework/get-started/system-requirements)。
+- 对于自承载集成运行时计算机，建议的最低配置为 4 核 2 GHz 处理器，8 GB RAM，80 GB 可用硬盘空间。 有关系统要求的详细信息，请参阅[下载](https://www.microsoft.com/download/details.aspx?id=39717)。
 - 如果主机计算机进入休眠状态，则自承载集成运行时不会响应数据请求。 安装自承载集成运行时之前，请在计算机上配置相应的电源计划。 如果计算机配置为休眠，则自承载集成运行时安装程序会通过消息发出提示。
 - 只有计算机管理员才能成功安装和配置自承载集成运行时。
 - 复制活动按特定的频率运行。 计算机上的处理器和 RAM 使用率遵循相同的高峰期和空闲期模式。 此外，资源使用率在很大程度上取决于移动的数据量。 进行多个复制作业时，会看到资源使用率在高峰期上升。
 - 在提取 Parquet、ORC 或 Avro 格式的数据时，任务可能会失败。 有关 Parquet 的详细信息，请参阅 [Azure 数据工厂中的 Parquet 格式](./format-parquet.md#using-self-hosted-integration-runtime)。 文件创建活动在自承载集成计算机上运行。 必须满足以下先决条件才能按预期方式运行文件创建活动：
-    - [Visual C++ 2010 Redistributable](https://download.microsoft.com/download/3/2/2/3224B87F-CFA0-4E70-BDA3-3DE650EFEBA5/vcredist_x64.exe) 包 (x64)
-    - [Adopt OpenJDK](https://adoptopenjdk.net/) 等 JRE 提供商提供的 Java Runtime (JRE) 版本 8。 确保已设置 `JAVA_HOME` 环境变量。
+  - [Visual C++ 2010 Redistributable](https://download.microsoft.com/download/3/2/2/3224B87F-CFA0-4E70-BDA3-3DE650EFEBA5/vcredist_x64.exe) 包 (x64)
+  - [Adopt OpenJDK](https://adoptopenjdk.net/) 等 JRE 提供商提供的 Java Runtime (JRE) 版本 8。 确保 `JAVA_HOME` 将环境变量设置为 JRE 文件夹 (而不只是 JDK 文件夹) 。
 
 ## <a name="setting-up-a-self-hosted-integration-runtime"></a>设置自承载集成运行时
 
@@ -112,7 +109,7 @@ ms.locfileid: "98217407"
 
    ![创建集成运行时](media/doc-common-process/manage-new-integration-runtime.png)
 
-1. 在“集成运行时安装”页面上，选择“Azure，自承载”，然后选择“继续”。  
+1. 在“集成运行时安装”页面上，选择“Azure，自承载”，然后选择“继续”。 
 
 1. 在下一页上选择“自承载”以创建自承载 IR，然后选择“继续”。
    ![创建自承载 IR](media/create-self-hosted-integration-runtime/new-selfhosted-integration-runtime.png)
@@ -128,7 +125,7 @@ ms.locfileid: "98217407"
     1. 将自承载集成运行时下载到本地 Windows 计算机上。 运行安装程序。
 
     1. 在“注册集成运行时(自承载)”页上粘贴前面保存的密钥，然后选择“注册”。 
-    
+
        ![注册 Integration Runtime](media/create-self-hosted-integration-runtime/register-integration-runtime.png)
 
     1. 在“新建 Integration Runtime (自承载)节点”页上，选择“完成”。 
@@ -173,7 +170,6 @@ dmgcmd ACTION args...
 |`-toffau`,<br/>`-TurnOffAutoUpdate`||禁用自承载集成运行时自动更新。|
 |`-ssa`,<br/>`-SwitchServiceAccount`|"`<domain\user>`" ["`<password>`"]|将 DIAHostService 设置为以新帐户的形式运行。 对系统帐户和虚拟帐户使用空密码 ""。|
 
-
 ## <a name="install-and-register-a-self-hosted-ir-from-microsoft-download-center"></a>从 Microsoft 下载中心安装并注册自承载 IR
 
 1. 转到 [Microsoft 集成运行时下载页](https://www.microsoft.com/download/details.aspx?id=39717)。
@@ -196,19 +192,19 @@ dmgcmd ACTION args...
 
     2. 或者选择“显示身份验证密钥”，以查看密钥文本。
 
-    3. 选择“注册”。
+    3. 选择“注册”  。
 
 ## <a name="service-account-for-self-hosted-integration-runtime"></a>自承载集成运行时的服务帐户
-自承载集成运行时的默认登录服务帐户为 **NT SERVICE\DIAHostService**。 你可以在 **"服务-> Integration Runtime 服务-> 属性-> 登录"** 中查看它。
+
+自承载集成运行时的默认登录服务帐户为 NT SERVICE\DIAHostService。 你可以在“服务”->“Integration Runtime 服务”->“属性”->“登录”上查看它。
 
 ![自承载集成运行时的服务帐户](media/create-self-hosted-integration-runtime/shir-service-account.png)
 
-确保该帐户具有作为服务登录的权限。 否则，自承载集成运行时无法成功启动。 你可以在 **本地安全策略中检查权限-> 安全设置-> 本地策略-> 用户权限分配-> 作为服务登录**
+确保该帐户具有作为服务登录的权限。 否则，自承载集成运行时无法成功启动。 你可以在“本地安全策略”->“安全设置”->“本地策略”->“用户权限分配”->“作为服务登录”中检查权限。
 
-![本地安全策略的屏幕截图-用户权限分配](media/create-self-hosted-integration-runtime/shir-service-account-permission.png)
+![“本地安全策略”-“用户权限分配”的屏幕截图](media/create-self-hosted-integration-runtime/shir-service-account-permission.png)
 
-![作为服务登录用户权限分配的屏幕截图](media/create-self-hosted-integration-runtime/shir-service-account-permission-2.png)
-
+![“作为服务登录”用户权限分配的屏幕截图](media/create-self-hosted-integration-runtime/shir-service-account-permission-2.png)
 
 ## <a name="notification-area-icons-and-notifications"></a>通知区域图标和通知
 
@@ -216,14 +212,12 @@ dmgcmd ACTION args...
 
 ![通知区域中的通知](media/create-self-hosted-integration-runtime/system-tray-notifications.png)
 
-
-
 ## <a name="high-availability-and-scalability"></a>高可用性和可伸缩性
 
 可将一个自承载集成运行时关联到 Azure 中的多个本地计算机或虚拟机。 这些计算机称为节点。 最多可将 4 个节点与一个自承载集成运行时相关联。 在安装了某个网关作为逻辑网关的本地计算机上配置多个节点的好处如下：
 
-* 更高的自承载集成运行时可用性，使其不再是大数据解决方案或与数据工厂集成的云数据中的单一故障点。 这种可用性有助于确保使用最多 4 个节点来实现连续性。
-* 在本地和云数据存储之间移动数据期间提高了性能和吞吐量。 获取有关[性能比较](copy-activity-performance.md)的更多信息。
+- 更高的自承载集成运行时可用性，使其不再是大数据解决方案或与数据工厂集成的云数据中的单一故障点。 这种可用性有助于确保使用最多 4 个节点来实现连续性。
+- 在本地和云数据存储之间移动数据期间提高了性能和吞吐量。 获取有关[性能比较](copy-activity-performance.md)的更多信息。
 
 可以通过从[下载中心](https://www.microsoft.com/download/details.aspx?id=39717)安装自承载集成运行时来关联多个节点。 然后，根据 [此教程](tutorial-hybrid-copy-powershell.md)中所述，使用通过 **New-AzDataFactoryV2IntegrationRuntimeKey** cmdlet 获取的任一身份验证密钥来注册自承载集成运行时。
 
@@ -265,7 +259,6 @@ dmgcmd ACTION args...
 > 如果你的专用网络环境不安全或者你要确保专用网络内部节点间通信的安全性，则我们建议使用此证书。
 >
 > 无论是否设置此证书，从自承载 IR 到其他数据存储的数据移动始终在加密的通道中发生。
-
 
 ## <a name="proxy-server-considerations"></a>代理服务器注意事项
 
@@ -313,6 +306,7 @@ dmgcmd ACTION args...
         <defaultProxy useDefaultCredentials="true" />
     </system.net>
     ```
+
     然后可以添加代理服务器的详细信息，如以下示例所示：
 
     ```xml
@@ -328,6 +322,7 @@ dmgcmd ACTION args...
     ```xml
     <proxy autoDetect="true|false|unspecified" bypassonlocal="true|false|unspecified" proxyaddress="uriString" scriptLocation="uriString" usesystemdefault="true|false|unspecified "/>
     ```
+
 1. 将配置文件保存到其原始位置。 然后重启自承载集成运行时主机服务，以拾取更改。
 
    若要重启服务，请从控制面板使用“服务”小程序。 或在“Integration Runtime Configuration Manager”中依次选择“停止服务”按钮和“启动服务”。 
@@ -343,13 +338,13 @@ dmgcmd ACTION args...
 
 如果出现如下所示的错误消息，原因可能是防火墙或代理服务器的配置不当。 此类配置会阻止自承载集成运行时连接到数据工厂对自身进行身份验证。 若要确保正确配置防火墙和代理服务器，请参阅上一部分。
 
-* 尝试注册自承载集成运行时时收到以下错误消息：“无法注册此 Integration Runtime 节点！ 请确认身份验证密钥有效，且集成服务主机服务在此计算机上运行。”
-* 打开 Integration Runtime Configuration Manager 时，将看到状态为“已断开连接”或“正在连接”。 查看 Windows 事件日志时，在“事件查看器” > “应用程序和服务日志” > “Microsoft Integration Runtime”下看到如下所示的错误消息：  
+- 尝试注册自承载集成运行时时收到以下错误消息：“无法注册此 Integration Runtime 节点！ 请确认身份验证密钥有效，且集成服务主机服务在此计算机上运行。”
+- 打开 Integration Runtime Configuration Manager 时，将看到状态为“已断开连接”或“正在连接”。 查看 Windows 事件日志时，在“事件查看器” > “应用程序和服务日志” > “Microsoft Integration Runtime”下看到如下所示的错误消息：  
 
-    ```
-    Unable to connect to the remote server
-    A component of Integration Runtime has become unresponsive and restarts automatically. Component name: Integration Runtime (Self-hosted).
-    ```
+  ```output
+  Unable to connect to the remote server
+  A component of Integration Runtime has become unresponsive and restarts automatically. Component name: Integration Runtime (Self-hosted).
+  ```
 
 ### <a name="enable-remote-access-from-an-intranet"></a>启用“从 Intranet 进行远程访问”
 
@@ -361,12 +356,11 @@ dmgcmd ACTION args...
 
 使用合作伙伴的防火墙或其他防火墙时，可以手动打开端口 8060 或用户配置的端口。 如果在安装自承载集成运行时期间防火墙出现问题，请使用以下命令在不配置防火墙的情况下安装自承载集成运行时。
 
-```
+```cmd
 msiexec /q /i IntegrationRuntime.msi NOFIREWALL=1
 ```
 
 如果选择不打开自承载集成运行时计算机上的端口 8060，请使用除“设置凭据”应用程序以外的机制来配置数据存储凭据。 例如，可以使用 **New-AzDataFactoryV2LinkedServiceEncryptCredential** PowerShell cmdlet。
-
 
 ## <a name="ports-and-firewalls"></a>端口和防火墙
 
@@ -381,12 +375,11 @@ msiexec /q /i IntegrationRuntime.msi NOFIREWALL=1
 
 [!INCLUDE [domain-and-outbound-port-requirements](./includes/domain-and-outbound-port-requirements-internal.md)]
 
-
 在 Windows 防火墙级别或计算机级别，通常已启用这些出站端口。 如果未启用，可以在自承载集成运行时计算机上配置域和端口。
 
 > [!NOTE]
-> 由于当前的 Azure 中继不支持服务标记，因此必须在 NSG 规则中使用服务标记 **AzureCloud** 或 **Internet** ，以便与 Azure 中继通信。
-> 对于到 Azure 数据工厂的通信，你可以在 NSG 规则设置中使用服务标记 **DataFactoryManagement** 。
+> 由于 Azure 中继当前不支持服务标记，因此，若要与 Azure 中继进行通信，你必须在 NSG 规则中使用服务标记 AzureCloud  或 Internet。
+> 若要与 Azure 数据工厂进行通信，你可以在 NSG 规则设置中使用服务标记 DataFactoryManagement。
 
 根据源和接收器，可能需要在企业防火墙或 Windows 防火墙中允许其他域和出站端口。
 
@@ -395,14 +388,16 @@ msiexec /q /i IntegrationRuntime.msi NOFIREWALL=1
 对于某些云数据库（例如 Azure SQL 数据库和 Azure Data Lake），可能需要在其防火墙配置中允许自承载集成运行时计算机的 IP 地址。
 
 ### <a name="get-url-of-azure-relay"></a>获取 Azure 中继的 URL
-需要将一个必需的域和端口放入防火墙的允许列表中，以便与 Azure 中继通信。 自承载集成运行时将其用于交互式创作，如测试连接、浏览文件夹列表和表列表、获取架构和预览数据。 如果不想要允许 **servicebus.windows.net** ，并且想要具有更具体的 url，可以从 ADF 门户获取自承载集成运行时所需的所有 fqdn。
-1. 中转到 ADF 门户，选择你的自承载集成运行时。
-2. 在 "编辑" 页中选择 " **节点**"。
-3. 单击 " **查看服务 url** " 以获取所有 fqdn。
 
-![Azure 中继 Url](media/create-self-hosted-integration-runtime/Azure-relay-url.png)
+需要放在防火墙允许列表中的一个必需域和端口用于与 Azure 中继进行通信。 自承载集成运行时将其用于交互式创作，如测试连接、浏览文件夹列表和表列表、获取架构和预览数据。 如果你不想要允许 **servicebus.windows.net** ，并且想要具有更具体的 url，则可从 ADF 门户中查看自承载集成运行时所需的所有 fqdn。 请执行下列步骤：
 
-4. 可以在防火墙规则的允许列表中添加这些 Fqdn。
+1. 转到 ADF 门户并选择你的自承载集成运行时。
+2. 在“编辑”页面中，选择“节点”。
+3. 选择 " **查看服务 url** " 以获取所有 fqdn。
+
+   ![Azure 中继 URL](media/create-self-hosted-integration-runtime/Azure-relay-url.png)
+
+4. 可以在防火墙规则的允许列表中添加这些 FQDN。
 
 ### <a name="copy-data-from-a-source-to-a-sink"></a>将数据从源复制到接收器
 
@@ -416,16 +411,13 @@ msiexec /q /i IntegrationRuntime.msi NOFIREWALL=1
 > [!NOTE]
 > 如果防火墙不允许出站端口 1433，则自承载集成运行时无法直接访问 SQL 数据库。 在这种情况下，可对 SQL 数据库和 Azure Synapse Analytics 使用[分阶段复制](copy-activity-performance.md)。 对于此方案，只需将 HTTPS（端口 443）用于数据移动。
 
-
 ## <a name="installation-best-practices"></a>安装最佳做法
 
 可以通过从 [Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=39717)下载托管标识安装包来安装自承载集成运行时。 有关分步说明，请参阅[在本地与云之间移动数据](tutorial-hybrid-copy-powershell.md)一文。
 
 - 在主机上为自承载集成运行时配置电源计划，使计算机不会休眠。 如果主机进入休眠状态，则自承载集成运行时将会脱机。
 - 定期备份与自承载集成运行时相关的凭据。
-- 若要自动完成自承载 IR 安装操作，请参阅[通过 PowerShell 安装现有的自承载 IR](#setting-up-a-self-hosted-integration-runtime)。  
-
-
+- 若要自动执行自承载 IR 设置操作，请参阅 [通过 PowerShell 设置现有的自承载 ir](#setting-up-a-self-hosted-integration-runtime)。
 
 ## <a name="next-steps"></a>后续步骤
 

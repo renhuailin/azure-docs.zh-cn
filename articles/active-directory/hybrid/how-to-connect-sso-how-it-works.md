@@ -16,12 +16,12 @@ ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bde937adba8d2469390a6cf404f6cce8c5008e87
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: addb90ed3929847612fd423e3af01c1b3982c2d6
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86144705"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100369639"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-technical-deep-dive"></a>Azure Active Directory 无缝单一登录：深入技术探究
 
@@ -67,6 +67,10 @@ ms.locfileid: "86144705"
 6. Active Directory 查找计算机帐户，然后将使用计算机帐户机密加密的 Kerberos 票证返回给浏览器。
 7. 浏览器将其从 Active Directory 获取的 Kerberos 票证转发给 Azure AD。
 8. Azure AD 使用以前共享的密钥对 Kerberos 票证进行解密，其中包括登录到企业设备的用户的标识。
+
+   >[!NOTE]
+   >Azure AD 将尝试将用户的 UPN 从 Kerberos 票证匹配到在 userPrincipalName 特性中具有对应值的 Azure AD 用户对象。 如果这不成功，Azure AD 将回退到将 samAccountName 从 Kerberos 票证匹配到在 User.onpremisessamaccountname 属性中具有对应值的 Azure AD 用户对象。
+   
 9. 在评估之后，Azure AD 会将一个令牌返回给应用程序，或者要求用户执行其他验证，例如多重身份验证。
 10. 如果用户登录成功，则该用户可以访问应用程序。
 

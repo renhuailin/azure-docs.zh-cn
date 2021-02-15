@@ -4,23 +4,22 @@ description: 了解如何使用导入数据和导出数据模块从 Web 服务�
 services: machine-learning
 author: likebupt
 ms.author: keli19
-editor: cgronlun
 ms.assetid: 3a7ac351-ebd3-43a1-8c5d-18223903d08e
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: how-to
 ms.date: 03/28/2017
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5dc348318401c9362636893d70294496c7012408
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 4824b7a4233bc65d521e1c6ded7d1ea276b2a929
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93308478"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100520555"
 ---
 # <a name="deploy-azure-machine-learning-studio-classic-web-services-that-use-data-import-and-data-export-modules"></a>部署使用数据导入和数据导出模块的 Azure 机器学习工作室（经典）Web 服务
 
-**适用对象：** ![适用于.](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典）   ![不适用于. ](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
+**适用对象：** ![适用于.](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典）   ![不适用于.](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 
 创建预测性实验时，通常添加 Web 服务输入和输出。 部署实验时，使用者可通过输入和输出从 Web 服务发送和接收数据。 对于某些应用程序，使用者的数据可能从数据源提供或已经驻留在外部数据源（如 Azure Blob 存储）中。 在这些情况下，它们不需要使用 Web 服务输入和输出读取和写入数据。 它们可以改为使用批处理执行服务 (BES)，使用导入数据模块从数据源读取数据，使用导出数据模块将评分结果写入不同的数据位置。
@@ -62,13 +61,13 @@ ms.locfileid: "93308478"
         [income]
      from dbo.censusdata;
     ```
-8. 在实验画布的底部，单击“ **运行** ”。
+8. 在实验画布的底部，单击“**运行**”。
 
 ## <a name="create-the-predictive-experiment"></a>创建预测性实验
 接下来，设置从中部署 Web 服务的预测性实验。
 
 1. 在实验画布的底部，单击“设置 Web 服务”，并选择“预测 Web 服务 [推荐]”。
-2. 从预测性实验中删除 *Web 服务输入* 和 *Web 服务输出模块* 。
+2. 从预测性实验中删除 *Web 服务输入* 和 *Web 服务输出模块*。
 3. 在组件搜索框中，键入导出。
 4. 从结果列表中，将 *导出数据* 模块添加到实验画布。
 5. 将 *评分模型* 模块的输出连接到 *导出数据* 模块的输入。
@@ -129,7 +128,7 @@ ms.locfileid: "93308478"
 
 若要部署为新的 Web 服务并创建一个应用程序来使用它：
 
-1. 在实验画布的底部，单击“ **运行** ”。
+1. 在实验画布的底部，单击“**运行**”。
 2. 当运行已完成时，单击“部署 Web 服务”，并选择“部署 Web 服务 [新]”。
 3. 在“部署实验”页上，输入 Web 服务的名称并选择定价计划，并单击“部署”。
 4. 在“快速启动”页上，单击“使用”。

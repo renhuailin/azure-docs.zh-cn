@@ -4,15 +4,15 @@ description: Azure Bastion 安全基线为实现 Azure 安全基准中指定的�
 author: msmbaldwin
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 11/20/2020
+ms.date: 02/12/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 92c57c863cf09fee500b3ea7392757a4f729e4a5
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: d20a646eb7675efdab4cbdc5f13e929544dceaa3
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98723925"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100392368"
 ---
 # <a name="azure-security-baseline-for-azure-bastion"></a>适用于 Azure Bastion 的 Azure 安全基线
 
@@ -69,7 +69,11 @@ Azure Bastion 服务需要打开以下端口才能正常运行：
 
 **指导**：Azure Bastion 与 Azure 的默认标识和访问管理服务 Azure Active Directory (Azure AD) 集成。 用户可以使用 Azure AD 身份验证来访问 Azure 门户，在门户中管理 Azure Bastion 服务（创建、更新和删除 Bastion 资源）。
 
-使用 Azure Bastion 连接到虚拟机需要 SSH 密钥或用户名/密码，当前不支持使用 Azure AD 凭据。
+使用 Azure Bastion 连接到虚拟机需要 SSH 密钥或用户名/密码，当前不支持使用 Azure AD 凭据。 
+
+你可以将 SSH 密钥存储为 Azure Key Vault 机密，并使用这些机密通过 Azure 堡垒连接到你的虚拟机。 可以通过在单个用户或 Azure AD 组上 [分配 Key Vault 访问策略](../key-vault/general/assign-access-policy-portal.md) 来控制用户对这些机密的访问权限。 用户需要以下权限才能使用此方法来连接到虚拟机：
+- **获取** 对所选 Azure Key Vault 中存储的密钥的访问权限
+- **列出** 对存储在所选 Azure Key Vault 中的机密的访问权限
 
 除 SSH 密钥或用户名/密码外，使用 Azure Bastion 连接到虚拟机时，用户还需要以下角色分配：
 - 目标虚拟机上的读者角色
@@ -106,7 +110,8 @@ Azure Bastion 服务需要打开以下端口才能正常运行：
 
 ### <a name="im-4-use-strong-authentication-controls-for-all-azure-active-directory-based-access"></a>IM-4：对所有基于 Azure Active Directory 的访问使用强身份验证控制
 
-**指导**：Azure Bastion 通过与 Azure Active Directory (Azure AD) 集成来实现服务的访问和管理。 为 Azure AD 租户配置 Azure 多重身份验证。 Azure AD 支持通过多重身份验证 (MFA) 和强无密码方法进行强身份验证控制。  
+**指导**：Azure Bastion 通过与 Azure Active Directory (Azure AD) 集成来实现服务的访问和管理。 为 Azure AD 租户配置 Azure Active Directory 多重身份验证。 Azure AD 支持通过多重身份验证 (MFA) 和强无密码方法进行强身份验证控制。
+  
 - 多重身份验证：启用 Azure AD MFA，并遵循 Azure 安全中心标识和访问管理建议来设置你的 MFA。 可以基于登录条件和风险因素，对所有用户、特选用户或单个用户强制执行 MFA。 
 
 - 无密码身份验证：有三个无密码身份验证选项可用：Windows Hello for Business、Microsoft Authenticator 应用和本地身份验证方法（例如智能卡）。 
@@ -213,7 +218,7 @@ Azure Bastion 服务需要打开以下端口才能正常运行：
 
 ### <a name="pa-6-use-privileged-access-workstations"></a>PA-6：使用特权访问工作站
 
-**指导**：安全的独立工作站对于确保敏感角色（如管理员、开发人员和关键服务操作员）的安全至关重要。 根据你的要求，你可以使用高度安全的用户工作站在生产环境中执行 Azure 堡垒资源的管理管理任务。 使用 Azure Active Directory、Microsoft Defender 高级威胁防护 (ATP) 和/或 Microsoft Intune 部署安全的托管用户工作站，用于执行管理任务。 可集中管理安全工作站，强制实施安全配置，包括强身份验证、软件和硬件基线，以及受限制的逻辑和网络访问。 
+**指导**：安全的独立工作站对于确保敏感角色（如管理员、开发人员和关键服务操作员）的安全至关重要。 根据要求，可在生产环境中使用高度安全的用户工作站执行对 Azure Bastion 资源的管理任务。 使用 Azure Active Directory、Microsoft Defender 高级威胁防护 (ATP) 和/或 Microsoft Intune 部署安全的托管用户工作站，用于执行管理任务。 可集中管理安全工作站，强制实施安全配置，包括强身份验证、软件和硬件基线，以及受限制的逻辑和网络访问。 
 
 - [了解特权访问工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
@@ -375,7 +380,7 @@ Azure 安全中心还可针对某些可疑活动发出警报，这些活动包�
 
 - [了解 Azure 中的日志记录和不同的日志类型](../azure-monitor/platform/platform-logs-overview.md)
 
-- [启用 Azure 堡垒的 Azure 资源日志 ](diagnostic-logs.md)
+- [启用 Azure 堡垒的 Azure 资源日志](diagnostic-logs.md)
 
 **Azure 安全中心监视**：不适用
 

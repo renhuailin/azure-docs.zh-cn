@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/01/2020
+ms.date: 02/09/2021
 ms.author: memildin
-ms.openlocfilehash: 72ded01b141aafb7fd3e4d761882a10eaf0c4b33
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 4dc9855afe7ed53db120f4dbc6c09ac4db0f58d9
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98920403"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988573"
 ---
 # <a name="configure-email-notifications-for-security-alerts"></a>针对安全警报配置电子邮件通知 
 
@@ -48,8 +48,7 @@ ms.locfileid: "98920403"
 |||
 
 
-## <a name="customize-the-security-alerts-email-notifications"></a>自定义安全警报电子邮件通知<a name="email"></a>
-
+## <a name="customize-the-security-alerts-email-notifications-via-the-portal"></a>通过门户自定义安全警报电子邮件通知<a name="email"></a>
 可以将电子邮件通知发送给具有特定 Azure 角色的个人或所有用户。
 
 1. 从安全中心的“定价和设置”区域中选择相关订阅，然后选择“电子邮件通知” 。
@@ -60,6 +59,28 @@ ms.locfileid: "98920403"
     - 输入用逗号分隔的特定电子邮件地址。 输入的电子邮件地址数量无限制。
 
 1. 若要将安全联系人信息应用到订阅，请选择“保存”。
+
+## <a name="customize-the-alerts-email-notifications-through-the-api"></a>通过 API 自定义安全警报电子邮件通知
+还可以通过提供的 REST API 来管理电子邮件通知。 有关完整详细信息，请参阅 [SecurityContacts API 文档](https://docs.microsoft.com/rest/api/securitycenter/securitycontacts)。
+
+这是创建安全联系人配置时 PUT 请求的请求正文示例：
+
+```json
+{
+    "properties": {
+        "emails": admin@contoso.com;admin2@contoso.com,
+        "notificationsByRole": {
+            "state": "On",
+            "roles": ["AccountAdmin", "Owner"]
+        },
+        "alertNotifications": {
+            "state": "On",
+            "minimalSeverity": "High"
+        },
+        "phone": ""
+    }
+}
+```
 
 
 ## <a name="see-also"></a>另请参阅

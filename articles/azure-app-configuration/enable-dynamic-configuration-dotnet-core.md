@@ -15,16 +15,16 @@ ms.custom: devx-track-csharp
 ms.topic: tutorial
 ms.date: 07/01/2019
 ms.author: abarora
-ms.openlocfilehash: aebe7772c673162d60f35d6a81725ba1452d16a8
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 95c48bded224a40879328dba5861b3564f0ebcf8
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96012350"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979855"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-a-net-core-app"></a>教程：在 .NET Core 应用中使用动态配置
 
-应用配置 .NET Core 客户端库支持按需更新一组配置设置，不需让应用程序重启。 可以这样实现这一点：首先从配置提供程序的选项中获取 `IConfigurationRefresher` 的实例，然后在代码中的任何位置调用该实例上的 `TryRefreshAsync`。
+应用程序配置 .NET Core 客户端库支持按需更新配置，不需让应用程序重启。 可以这样实现这一点：首先从配置提供程序的选项中获取 `IConfigurationRefresher` 的实例，然后在代码中的任何位置调用该实例上的 `TryRefreshAsync`。
 
 为了使设置保持更新并避免对配置存储区进行太多的调用，对每个设置使用了一个缓存。 在设置的缓存值过期前，刷新操作不会更新该值，即使该值在配置存储区中已发生更改。 每个请求的默认过期时间为 30 秒，但是，如果需要，可以重写该过期时间。
 

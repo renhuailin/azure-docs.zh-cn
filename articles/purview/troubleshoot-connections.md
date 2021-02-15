@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/23/2020
-ms.openlocfilehash: f76a05757f86308785d4ca678675b87b3fa9d63e
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 8be5def6d4780fd8b2ab65c5c9e1104a869f6d5a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96551769"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100391586"
 ---
 # <a name="troubleshoot-your-connections-in-azure-purview"></a>Azure 监控范围中的连接疑难解答
 
@@ -53,11 +53,11 @@ ms.locfileid: "96551769"
 若要验证这一点，请执行以下步骤：
 
 1. 导航到密钥保管库，然后转到 " **访问策略** " 部分
-1. 验证你的监控范围托管标识是否显示在 " *当前访问策略* " 部分下，并提供对机密的 "至少 **获取** " 权限
+1. 验证你的监控范围托管标识是否显示在 " *当前访问策略* " 部分下，其中至少包含对机密的 **get** 和 **list** 权限
 
 如果看不到列出的监控范围托管标识，请按照 [创建和管理用于扫描的凭据](manage-credentials.md) 中的步骤添加。 
 
 ## <a name="next-steps"></a>后续步骤
 
-- [浏览 Azure 监控范围数据目录](how-to-browse-catalog.md)
-- [搜索 Azure 监控范围数据目录](how-to-search-catalog.md)
+- [浏览 Azure Purview 数据目录](how-to-browse-catalog.md)
+- [搜索 Azure Purview 数据目录](how-to-search-catalog.md)

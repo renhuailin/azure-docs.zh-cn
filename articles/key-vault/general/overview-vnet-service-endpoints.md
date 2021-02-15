@@ -9,12 +9,12 @@ ms.date: 01/02/2019
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: 4a817f386d68c144968540dd05f3fa6859bb0acc
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 42d388aed618a5a92212152166573719c9e973c6
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98704163"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100371016"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Azure Key Vault 的虚拟网络服务终结点
 
@@ -49,14 +49,15 @@ ms.locfileid: "98704163"
 |Exchange Online 和 SharePoint Online|允许使用[客户密钥](/microsoft-365/compliance/customer-key-overview)访问 Azure 存储服务加密的客户密钥。|
 |Azure 信息保护|允许访问 [Azure 信息保护](/azure/information-protection/what-is-information-protection)的租户密钥。|
 |Azure 应用服务|[通过 Key Vault 部署 Azure Web 应用证书](https://azure.github.io/AppService/2016/05/24/Deploying-Azure-Web-App-Certificate-through-Key-Vault.html)。|
-|Azure SQL 数据库|[透明数据加密 AZURE SQL 数据库和 Azure Synapse Analytics 的创建自己的密钥支持](../../azure-sql/database/transparent-data-encryption-byok-overview.md?view=sql-server-2017&preserve-view=true&viewFallbackFrom=azuresqldb-current)。|
+|Azure SQL 数据库|[使用 Azure SQL 数据库和 Azure Synapse Analytics 的“创建自己的密钥”支持进行透明数据加密](../../azure-sql/database/transparent-data-encryption-byok-overview.md?view=sql-server-2017&preserve-view=true&viewFallbackFrom=azuresqldb-current)。|
 |Azure 存储|[在 Azure Key Vault 中使用客户托管密钥进行存储服务加密](../../storage/common/customer-managed-keys-configure-key-vault.md)。|
-|Azure Data Lake Store|[在 Azure Data Lake Store 中使用客户托管密钥进行数据加密](../../data-lake-store/data-lake-store-encryption.md)。|
+|Azure Data Lake Store|使用客户管理的密钥[加密 Azure Data Lake Store 中的数据](../../data-lake-store/data-lake-store-encryption.md)。|
+|Azure Synapse Analytics|[在 Azure Key Vault 中使用客户管理的密钥加密数据](../../synapse-analytics/security/workspaces-encryption.md)|
 |Azure Databricks|[基于 Apache Spark 的快速、简单、协作分析服务](/azure/databricks/scenarios/what-is-azure-databricks)|
 |Azure API 管理|[使用 MSI 从 Key Vault 部署自定义域证书](../../api-management/api-management-howto-use-managed-service-identity.md#use-ssl-tls-certificate-from-azure-key-vault)|
-|Azure 数据工厂|[从数据工厂获取 Key Vault 中的数据存储凭据](https://go.microsoft.com/fwlink/?linkid=2109491)|
-|Azure 事件中心|[允许访问客户托管密钥方案的密钥保管库](../../event-hubs/configure-customer-managed-key.md)|
-|Azure 服务总线|[允许访问客户托管密钥方案的密钥保管库](../../service-bus-messaging/configure-customer-managed-key.md)|
+|Azure 数据工厂|[从数据工厂提取 Key Vault 中的数据存储凭据](https://go.microsoft.com/fwlink/?linkid=2109491)|
+|Azure 事件中心|[允许访问客户管理的密钥方案的密钥保管库](../../event-hubs/configure-customer-managed-key.md)|
+|Azure 服务总线|[允许访问客户管理的密钥方案的密钥保管库](../../service-bus-messaging/configure-customer-managed-key.md)|
 |Azure 导入/导出| [将 Azure Key Vault 中的客户管理的密钥用于导入/导出服务](../../import-export/storage-import-export-encryption-key-portal.md)
 |Azure 容器注册表|[使用客户管理的密钥进行注册表加密](../../container-registry/container-registry-customer-managed-keys.md)
 
@@ -65,5 +66,5 @@ ms.locfileid: "98704163"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关分步说明，请参阅 [配置 Azure Key Vault 防火墙和虚拟网络](network-security.md)
-- 请参阅 [Azure Key Vault 安全概述](security-overview.md)
+- 有关分步说明，请参阅[配置 Azure Key Vault 防火墙和虚拟网络](network-security.md)
+- 请参阅 [Azure Key Vault 安全性概述](security-overview.md)

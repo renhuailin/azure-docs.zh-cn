@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/05/2020
 ms.author: sttsinar
 ms.custom: include file
-ms.openlocfilehash: bd31152c6742271658cf4fd7ac2a5e2957651c84
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: e22c2b7cb561e30e84ea5ede5481fbdc35be8cdf
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96478183"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100515001"
 ---
 Azure 计算提供独立于特定硬件类型并专用于单个客户的虚拟机大小。 独立大小在特定的硬件生成上有效并运行，当硬件生成失效时，将弃用。
 
@@ -23,14 +23,14 @@ Azure 计算提供独立于特定硬件类型并专用于单个客户的虚拟�
 另外，由于独立大小的 VM 很大，客户可以选择使用 [对嵌套虚拟机的 Azure 支持](https://azure.microsoft.com/blog/nested-virtualization-in-azure/)来细分这些 VM 的资源。
 
 当前的独立虚拟机产品/服务包括：
-* Standard_E64is_v3
-* Standard_E64i_v3
 * Standard_E80ids_v4
 * Standard_E80is_v4
+* Standard_F72s_v2
+* Standard_E64is_v3
+* Standard_E64i_v3
 * Standard_M128ms
 * Standard_GS5
 * Standard_G5
-* Standard_F72s_v2
 
 
 > [!NOTE]
@@ -38,7 +38,7 @@ Azure 计算提供独立于特定硬件类型并专用于单个客户的虚拟�
 
 ## <a name="deprecation-of-isolated-vm-sizes"></a>弃用独立的 VM 大小
 
-由于独立的 VM 大小是硬件绑定的大小，Azure 将在正式弃用这些大小之前 12 个月提供提醒。  Azure 还将为我们的下一个硬件版本提供已更新的独立大小，客户可以考虑将其工作负载转移到该版本上。
+独立 VM 大小具有硬件有限生命周期。 Azure 将在官方弃用日期之前的12个月内发出提醒，并提供更新的隔离产品以供你考虑。
 
 | 大小 | 隔离停用日期 | 
 | --- | --- |
@@ -49,7 +49,7 @@ Azure 计算提供独立于特定硬件类型并专用于单个客户的虚拟�
 
 
 ## <a name="faq"></a>常见问题解答
-### <a name="q-is-the-size-going-to-get-retired-or-only-isolation-feature-is"></a>问：是要停用大小还是只停用“隔离”功能？
+### <a name="q-is-the-size-going-to-get-retired-or-only-its-isolation-feature"></a>问：是要停用还是只为其 "隔离" 功能？
 **答**：如果虚拟机大小没有“i”下标，则只有“隔离”功能将失效。 如果不需要隔离，则不需要执行任何操作，VM 将继续按预期工作。 例如 Standard_DS15_v2、Standard_D15_v2、Standard_M128ms 等。如果虚拟机大小包括“i”下标，那么该大小将被停用。
 
 ### <a name="q-is-there-a-downtime-when-my-vm-lands-on-a-non-isolated-hardware"></a>问：当我的虚拟机落脚于非隔离的硬件上时，是否会出现停机？
@@ -67,7 +67,7 @@ Azure 计算提供独立于特定硬件类型并专用于单个客户的虚拟�
 ### <a name="q-what-are-the-milestones-for-d15_v2-or-ds15_v2-isolation-retirement"></a>问： D15_v2 或 DS15_v2 隔离停用的里程碑有哪些？ 
 **A**： 
  
-| 日期 | 操作 |
+| Date | 操作 |
 |---|---| 
 | 2019 年 11 月 18 日 |  (PAYG，1年 RI 的 DS15i_v2 可用性)  | 
 | 5月14日2020 | 第一天购买 D/DS15i_v2 1 年 RI | 

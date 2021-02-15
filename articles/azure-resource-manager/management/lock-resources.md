@@ -4,12 +4,12 @@ description: 通过对所有用户和角色应用锁，来防止用户更新或�
 ms.topic: conceptual
 ms.date: 02/01/2021
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 912c7e86d253aa18b9a6c60717ceaa70e32fcf0e
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 6df6aec06fadaacc6b1d08ed9ee33b72c5971359
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99428311"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100369469"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>锁定资源，以防止意外更改
 
@@ -30,9 +30,9 @@ Resource Manager 锁仅适用于管理平面内发生的操作，包括发送到
 
 ## <a name="considerations-before-applying-locks"></a>应用锁之前的注意事项
 
-应用锁可能会导致意外结果，因为某些操作看似不会修改资源，但实际上需要执行被锁阻止的操作。 锁定会阻止需要向 Azure 资源管理器 API 发出 POST 请求的任何操作。 被锁阻止的一些常见操作的示例包括：
+应用锁可能会导致意外结果，因为某些操作看似不会修改资源，但实际上需要执行被锁阻止的操作。 锁会阻止需要向 Azure 资源管理器 API 发出 POST 请求的任何操作。 被锁阻止的一些常见操作的示例包括：
 
-* **存储帐户** 上的只读锁将阻止所有用户列出密钥。 列出密钥操作通过 POST 请求进行处理，因为返回的密钥可用于写入操作。
+* **存储帐户** 的只读锁定会阻止用户列出帐户密钥。 Azure 存储 [列表密钥](/rest/api/storagerp/storageaccounts/listkeys) 操作通过 POST 请求进行处理，以保护对帐户密钥的访问，从而提供对存储帐户中数据的完全访问权限。 如果为存储帐户配置了只读锁定，则没有帐户密钥的用户必须使用 Azure AD 凭据来访问 blob 或队列数据。 只读锁定还会阻止分配作用域为存储帐户或 (blob 容器或队列) 的数据容器的 Azure RBAC 角色。
 
 * **应用服务** 资源上的只读锁将阻止 Visual Studio 服务器资源管理器显示资源的文件，因为该交互需要写入访问权限。
 
@@ -263,7 +263,7 @@ $lockId = (Get-AzResourceLock -ResourceGroupName exampleresourcegroup -ResourceN
 Remove-AzResourceLock -LockId $lockId
 ```
 
-若要删除资源组的锁定，请使用：
+若要删除某个资源组的锁，请使用：
 
 ```azurepowershell-interactive
 $lockId = (Get-AzResourceLock -ResourceGroupName exampleresourcegroup).LockId
@@ -311,7 +311,7 @@ lockid=$(az lock show --name LockSite --resource-group exampleresourcegroup --re
 az lock delete --ids $lockid
 ```
 
-若要删除资源组的锁定，请使用：
+若要删除某个资源组的锁，请使用：
 
 ```azurecli
 lockid=$(az lock show --name LockSite --resource-group exampleresourcegroup  --output tsv --query id)

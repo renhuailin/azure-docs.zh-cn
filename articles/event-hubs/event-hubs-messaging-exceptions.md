@@ -2,13 +2,13 @@
 title: Azure 事件中心 - 异常（旧版）
 description: 本文提供 Azure 事件中心消息传送异常和建议的操作列表。
 ms.topic: article
-ms.date: 11/02/2020
-ms.openlocfilehash: 357a87c53023962dd9195a616bd9ce9e01c55bf9
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.date: 02/10/2021
+ms.openlocfilehash: a76c98ec7d6d1f3370ed8787bf10d1d16a7baaa5
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96340961"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390889"
 ---
 # <a name="event-hubs-messaging-exceptions---net-legacy"></a>事件中心消息传送异常 - .NET（旧版）
 本部分列出了 .NET Framework API 生成的 .NET 异常。 
@@ -113,26 +113,26 @@ ms.locfileid: "96340961"
 
     **解决方法**：增加命名空间上的吞吐量单位可有所帮助。 
 
-    你可以在 Azure 门户的 **事件中心命名空间** 页面的 "**缩放** 页面" 或 "**概述**" 页上配置吞吐量单位。 或者，可以使用 [自动](event-hubs-auto-inflate.md)扩展，它会通过增加吞吐量单位数来自动扩展，以满足使用量需求。
+    可以在 Azure 门户中的“事件中心命名空间”页的“缩放”页或“概述”页上配置吞吐量单位。   或者，可以使用“自动扩充”功能满足使用量需求，[“自动扩充”](event-hubs-auto-inflate.md)功能可通过增加吞吐量单位的数量自动进行纵向扩展。
 
-     (Tu) 的吞吐量单位适用于事件中心命名空间中的所有事件中心。 这意味着，TU 是在命名空间级别购买的，并在该命名空间下的事件中心之间共享。 每个 TU 为命名空间赋予以下功能：
+    吞吐量单位 (TU) 适用于事件中心命名空间中的所有事件中心。 这意味着，TU 是在命名空间级别购买的，并在该命名空间下的事件中心之间共享。 每个 TU 为命名空间赋予以下功能：
 
     - 入口事件（发送到事件中心的事件）最多为每秒 1 MB，但每秒不超过 1000 个入口事件、管理操作或控制 API 调用。
     - 出口事件（从事件中心使用的事件）最多达每秒 2 MB，但不超过 4096 个。
     - 事件存储空间最多为 84 GB（对于默认的 24 小时保留期而言已足够）。
     
-    在 " **概述** " 页上的 " **显示度量值** " 部分中，切换到 " **吞吐量** " 选项卡。选择图表以在 x 轴上以1分钟为间隔在较大窗口中打开它。 查看高峰值并将其除以60，以获取传入字节/秒或传出字节数/秒。 在 " **请求** " 选项卡上，使用类似的方法计算每秒的请求数。 
+    在“概述”页上的“显示指标”部分，切换到“吞吐量”选项卡。选择图表以在在较大窗口中打开它，图表中的 x 轴上以 1 分钟为间隔。 查看高峰值并将其除以 60，以获得传入字节数/秒或传出字节数/秒。 在“请求”选项卡上，使用类似的方法计算高峰时每秒的请求数。 
 
-    如果你看到的值大于 Tu * 限制 (每秒 1 MB/秒的入口或1000请求，则出口) 为每秒 2 MB，通过使用事件中心命名空间的左侧菜单) 页面上的 " **缩放** " (，增加 tu 的数量，以手动扩展或使用事件中心的 [自动](event-hubs-auto-inflate.md) 扩展功能。 请注意，自动陀螺只能增加到20个 TU。 若要将 TU 提升到正好 40 个，请提交一个支持请求。
+    如果你看到的值大于 TU 的数量 * 限制（每秒 1 MB 的流入量或 1000 个流入量请求/秒、每秒 2 MB 的流出量），请使用事件中心命名空间的“缩放”（在左侧菜单上）页进行手动扩展或使用事件中心的[自动扩充](event-hubs-auto-inflate.md)功能来增加 TU 的数量。 请注意，自动扩充最多只能增加到 20 个 TU。 若要将 TU 提升到正好 40 个，请提交一个支持请求。
 
-### <a name="error-code-50001"></a>错误代码 50001
+### <a name="error-code-50008"></a>错误代码50008
 
 此错误很少发生。 但如果为命名空间运行代码的容器的 CPU 比较低时（在事件中心负载均衡器开始之前不超过几秒钟），则可能发生此错误。
 
-**解决方法**：限制对 GetRuntimeInformation 方法的调用。 Azure 事件中心每秒最多支持 50 次对 GetRuntimeInfo 的调用。 达到限制后，你可能会收到类似于以下内容的异常：
+**解决** 方法：限制对 GetRuntimeInformation 方法的调用。 Azure 事件中心每个使用者组最多支持每秒50个调用 GetRuntimeInfo。 达到限制后，你可能会收到类似于以下内容的异常：
 
 ```
-ExceptionId: 00000000000-00000-0000-a48a-9c908fbe84f6-ServerBusyException: The request was terminated because the namespace 75248:aaa-default-eventhub-ns-prodb2b is being throttled. Error code : 50001. Please wait 10 seconds and try again.
+ExceptionId: 00000000000-00000-0000-a48a-9c908fbe84f6-ServerBusyException: The request was terminated because the namespace 75248:aaa-default-eventhub-ns-prodb2b is being throttled. Error code : 50008. Please wait 10 seconds and try again.
 ```
 
 
@@ -142,4 +142,4 @@ ExceptionId: 00000000000-00000-0000-a48a-9c908fbe84f6-ServerBusyException: The r
 
 * [事件中心概述](./event-hubs-about.md)
 * [创建事件中心](event-hubs-create.md)
-* [事件中心常见问题解答](event-hubs-faq.md)
+* [事件中心常见问题](event-hubs-faq.md)
