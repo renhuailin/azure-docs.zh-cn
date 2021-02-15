@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 8de95a56f3da928997a97ff216b13d522c82afca
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: 8e860bf47420f2b58c44df695da7761bcc2aa0ce
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97814187"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100521775"
 ---
 # <a name="azure-ddos-rapid-response"></a>Azure DDoS 快速响应
 
@@ -30,7 +30,7 @@ ms.locfileid: "97814187"
 
 仅当以下情况时才应参与 DRR： 
 
-- 在 DDoS 攻击期间，如果发现受保护资源的性能严重降级，或者资源不可用。 在配置监视器以检测资源可用性和性能问题时，查看上面的步骤2。
+- 在 DDoS 攻击期间，如果发现受保护资源的性能严重降级，或者资源不可用。 
 - 假设资源受到 DDoS 攻击，但 DDoS 防护服务不能有效地缓解攻击。
 - 规划的某个病毒事件导致网络流量显著增加。
 - 针对具有关键业务影响的攻击。

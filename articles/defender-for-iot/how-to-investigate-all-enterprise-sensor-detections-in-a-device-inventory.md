@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/02/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 9da5c8c89ee124e527584164b21b096ac815e5ca
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: b4d824386a7c14165697f4b93f2e93cf0182a855
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98625458"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100524019"
 ---
 # <a name="investigate-all-enterprise-sensor-detections-in-the-device-inventory"></a>调查设备清单中的所有企业传感器检测
 
@@ -31,7 +31,7 @@ ms.locfileid: "98625458"
 | **区域** | 包含此设备的区域。 |
 | **设备** | 保护此设备的 Azure Defender for IoT 传感器。 |
 | **名称** | 此设备的名称，因为 IoT 已发现它。 |
-| **类型** | 设备的类型，例如 PLC 或 HMI。 |
+| 类型 | 设备的类型，例如 PLC 或 HMI。 |
 | **供应商** | 在 MAC 地址中定义的设备供应商的名称。 |
 | **操作系统** | 设备的操作系统。 |
 | **固件** | 设备的固件。 |
@@ -225,6 +225,6 @@ ms.locfileid: "98625458"
 
 - **更新进度**：如果正在升级连接的传感器，将出现升级状态。 在升级过程中，本地管理控制台不会从传感器接收设备信息。
 
-## <a name="see-also"></a>另请参阅
+## <a name="next-steps"></a>后续步骤
 
 [调查设备清单中的传感器检测](how-to-investigate-sensor-detections-in-a-device-inventory.md)

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/08/2021
 ms.author: memildin
-ms.openlocfilehash: e827178d8ccb0f7de8d32433d03502a7412d1139
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: 7034d1b5f06fcbcead79d85df10042eee3581b0b
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99834042"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100369350"
 ---
 # <a name="feature-coverage-for-machines"></a>适用于计算机的功能覆盖范围
 
@@ -96,10 +96,8 @@ ms.locfileid: "99834042"
 | Trend Micro – Deep Security | Windows Server 系列  | 否 | 是 |
 | Symantec v12.1.1100+| Windows Server 系列  | 否 | 是 |
 | McAfee v10+ | Windows Server 系列  | 否 | 是 |
-| McAfee v10+ | Linux 服务器系列  | 否 | 是 **\*** |
-| Sophos V9+| Linux 服务器系列  | 否 | 是  **\***  |
-
- **\*** 覆盖状态和支持数据目前仅在与受保护订阅关联的 Log Analytics 工作区中提供。 这些数据不会在 Azure 安全中心门户中反映。
+| McAfee v10+ | Linux 服务器系列  | 否 | 是 |
+| Sophos V9+| Linux 服务器系列  | 否 | 是 |
 
 > [!NOTE]
 > 在 Windows Server 2008 R2 虚拟机上检测 System Center Endpoint Protection (SCEP) 需要在 PowerShell（v3.0 或更高版本）之后安装 SCEP。

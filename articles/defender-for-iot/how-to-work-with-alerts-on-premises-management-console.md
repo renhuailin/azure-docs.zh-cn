@@ -1,5 +1,5 @@
 ---
-title: 使用本地管理控制台上的警报
+title: 处理本地管理控制台上的警报
 description: 使用本地管理控制台获得网络中最近威胁的企业视图，并更好地了解传感器用户如何处理它们。
 author: shhazam-ms
 manager: rkarlin
@@ -7,14 +7,14 @@ ms.author: shhazam
 ms.date: 12/06/2020
 ms.service: azure
 ms.topic: how-to
-ms.openlocfilehash: f52e308199ddb8bc21809009ad71918d077ac5b2
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: ebd5a0c14b6f9e3a57e3a7df888b5f9d24f9a2df
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97838352"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100523611"
 ---
-# <a name="work-with-alerts-on-the-on-premises-management-console"></a>使用本地管理控制台上的警报 
+# <a name="work-with-alerts-on-the-on-premises-management-console"></a>处理本地管理控制台上的警报 
 
 你可以从管理控制台的 " **警报** " 窗口中执行以下操作：
 
@@ -119,13 +119,34 @@ ms.locfileid: "97838352"
 
 ## <a name="manage-alert-events"></a>管理警报事件
 
-可以按如下所示管理组织传感器检测到的警报事件：
+有多个选项可用于管理本地管理控制台的警报事件。
 
 - 了解或确认警报事件。 选择 " **了解 &** " "了解" 以了解可以获得授权的所有警报事件，并确认当前未确认的所有警报事件。
 
   :::image type="content" source="media/how-to-work-with-alerts-on-premises-management-console/learn-and-acknowledge.png" alt-text="选择 &quot;了解 & 确认&quot; 了解所有。":::
 
 - 静音和取消静音警报事件。
+
+若要了解有关学习、确认和静音警报事件的详细信息，请参阅传感器 [管理警报事件](how-to-manage-the-alert-event.md) 一文。
+
+## <a name="export-alert-information"></a>导出警报信息
+
+将警报信息导出到 .csv 文件。 您可以导出检测到的所有警报的信息，或基于筛选视图导出信息。导出以下信息：
+
+- 源地址
+- 目标地址
+- 警报标题
+- 警报严重性
+- 警报消息
+- 其他信息
+- 确认状态
+- PCAP 可用性
+
+导出：
+
+1. 从侧菜单中选择 "警报"。
+1. 选择“导出”  。
+1. 选择 "导出扩展警报" 可在单独的行中为涵盖多个设备的每个警报导出警报信息。 如果选择了 "导出扩展警报"，则 .csv 文件将创建警报的重复行，其中每行包含唯一项。 使用此选项可以更方便地调查导出的警报事件。  
 
 ## <a name="create-alert-exclusion-rules"></a>创建警报排除规则
 
@@ -225,6 +246,6 @@ ms.locfileid: "97838352"
 
 :::image type="content" source="media/how-to-work-with-alerts-on-premises-management-console/edit-exclusion-rule-screen.png" alt-text="编辑排除规则视图的屏幕截图。":::
 
-## <a name="see-also"></a>另请参阅
+## <a name="next-steps"></a>后续步骤
 
 [处理传感器的警报](how-to-work-with-alerts-on-your-sensor.md)

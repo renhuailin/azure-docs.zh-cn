@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 01/03/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: a71ea75eb603b141c4b28cff5f2b4aa957583bcd
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 3d5a29ed26d58f0cbaa57768d4b8ad236283deb9
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98621306"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100523849"
 ---
 # <a name="about-azure-defender-for-iot-network-setup"></a>关于 Azure Defender for IoT 网络设置
 
@@ -94,7 +94,7 @@ Azure Defender for IoT 提供持续的 ICS 威胁监视和设备发现。 此平
 
 验证你的组织安全策略是否允许访问以下内容：
 
-| 协议 | Transport | 输入/输出 | Port | 已使用 | 目标 | 源 | 目标 |
+| 协议 | Transport | 输入/输出 | 端口 | 已使用 | 目的 | 源 | 目标 |
 |--|--|--|--|--|--|--|--|
 | HTTPS | TCP | IN/OUT | 443 | 传感器和本地管理控制台 Web 控制台 | 访问 Web 控制台 | 客户端 | 传感器和本地管理控制台 |
 | SSH | TCP | IN/OUT | 22 | CLI | 访问 CLI | 客户端 | 传感器和本地管理控制台 |
@@ -365,7 +365,7 @@ RSPAN：基于 Cisco catalyst 2960 (24 端口) 。
 
 这些模型已测试兼容性。 其他供应商和型号也可能兼容。
 
-| 映像 | 建模 |
+| 图像 | 建模 |
 |--|--|
 | :::image type="content" source="media/how-to-set-up-your-network/garland-p1gccas-v2.png" alt-text="Garland P1GCCAS 的屏幕截图。"::: | Garland P1GCCAS |
 | :::image type="content" source="media/how-to-set-up-your-network/ixia-tpa2-cu3-v2.png" alt-text="IXIA TPA2-CU3 的屏幕截图。"::: | IXIA TPA2-CU3 |
@@ -532,26 +532,25 @@ RSPAN：基于 Cisco catalyst 2960 (24 端口) 。
 
 在站点部署之前查看此列表：
 
-| **#** | **任务或活动** | **状态** | **注释** |
+| **#** | **任务或活动** | **Status** | **注释** |
 |--|--|--|--|
-| 1 | 提供 global。 | ☐ |  |
-| 3 | 订购设备。 | ☐ |  |
-| 4 | 准备网络中子网的列表。 | ☐ |  |
-| 5 | 提供生产网络的 VLAN 列表。 | ☐ |  |
-| 6 | 提供网络中的交换机型号列表。 | ☐ |  |
-| 7 | 提供工业设备的供应商和协议列表。 | ☐ |  |
-| 8 | 为传感器 (IP 地址、子网、D-GW、DNS) 提供网络详细信息。 | ☐ |  |
-| 9 | 创建必要的防火墙规则和访问列表。 | ☐ |  |
-| 10 | 为端口监视在交换机上创建跨越端口，或根据需要配置网络分流。 | ☐ |  |
-| 11 | 准备传感器设备的机架空间。 | ☐ |  |
-| 12 | 为人员准备工作站。 | ☐ |  |
-| 13 | 为 IoT 货架设备的 Defender 提供键盘、监视器和鼠标。 | ☐ |  |
-| 14 | 将设备放在机架上并连接电缆。 | ☐ |  |
-| 15 | 分配站点资源以支持部署。 | ☐ |  |
-| 16 | 创建 Active Directory 组或本地用户。 | ☐ |  |
-| 17 | 设置培训 (自学) 。 | ☐ |  |
-| 18 | 开始或不执行。 | ☐ |  |
-| 19 | 计划部署日期。 | ☐ |  |
+| 1 | 订购设备。 | ☐ |  |
+| 2 | 准备网络中子网的列表。 | ☐ |  |
+| 3 | 提供生产网络的 VLAN 列表。 | ☐ |  |
+| 4 | 提供网络中的交换机型号列表。 | ☐ |  |
+| 5 | 提供工业设备的供应商和协议列表。 | ☐ |  |
+| 6 | 为传感器 (IP 地址、子网、D-GW、DNS) 提供网络详细信息。 | ☐ |  |
+| 7 | 创建必要的防火墙规则和访问列表。 | ☐ |  |
+| 8 | 为端口监视在交换机上创建跨越端口，或根据需要配置网络分流。 | ☐ |  |
+| 9 | 准备传感器设备的机架空间。 | ☐ |  |
+| 10 | 为人员准备工作站。 | ☐ |  |
+| 11 | 为 IoT 货架设备的 Defender 提供键盘、监视器和鼠标。 | ☐ |  |
+| 12 | 将设备放在机架上并连接电缆。 | ☐ |  |
+| 13 | 分配站点资源以支持部署。 | ☐ |  |
+| 14 | 创建 Active Directory 组或本地用户。 | ☐ |  |
+| 15 | 设置培训 (自学) 。 | ☐ |  |
+| 16 | 开始或不执行。 | ☐ |  |
+| 17 | 计划部署日期。 | ☐ |  |
 
 
 | **日期** | **注意** | **部署日期** | **注意** |
@@ -634,7 +633,7 @@ RSPAN：基于 Cisco catalyst 2960 (24 端口) 。
 
 提供将在企业网络中连接的传感器 NIC 的地址详细信息： 
 
-|  项               | 设备1 | 设备2 | 设备3 |
+|  Item               | 设备1 | 设备2 | 设备3 |
 | --------------- | ------------- | ------------- | ------------- |
 | 设备 IP 地址    |               |               |               |
 | 子网          |               |               |               |
@@ -644,7 +643,7 @@ RSPAN：基于 Cisco catalyst 2960 (24 端口) 。
 
 #### <a name="idraciloserver-management"></a>iDRAC/iLO/服务器管理
 
-|       项          | 设备1 | 设备2 | 设备3 |
+|       Item          | 设备1 | 设备2 | 设备3 |
 | --------------- | ------------- | ------------- | ------------- |
 | 设备 IP 地址     |               |               |               |
 | 子网          |               |               |               |
@@ -653,7 +652,7 @@ RSPAN：基于 Cisco catalyst 2960 (24 端口) 。
 
 #### <a name="on-premises-management-console"></a>本地管理控制台  
 
-|       项          | 可用 | 使用 HA) 时的被动 ( |
+|       Item          | 可用 | 使用 HA) 时的被动 ( |
 | --------------- | ------ | ----------------------- |
 | IP 地址             |        |                         |
 | 子网          |        |                         |
@@ -662,7 +661,7 @@ RSPAN：基于 Cisco catalyst 2960 (24 端口) 。
 
 #### <a name="snmp"></a>SNMP  
 
-|   项              | 详细信息 |
+|   Item              | 详细信息 |
 | --------------- | ------ |
 | IP              |        |
 | IP 地址 | |
@@ -696,6 +695,6 @@ RSPAN：基于 Cisco catalyst 2960 (24 端口) 。
 | 照相机 | |
 | X 射线计算机 | |
 
-## <a name="see-also"></a>另请参阅
+## <a name="next-steps"></a>后续步骤
 
 [关于用于 IoT 安装的 Defender](how-to-install-software.md)
