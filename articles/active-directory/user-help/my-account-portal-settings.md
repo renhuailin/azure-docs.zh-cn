@@ -9,32 +9,41 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 07/29/2020
+ms.date: 01/19/2021
 ms.author: curtand
-ms.openlocfilehash: 7dcaae80842f06714759cb5c933a62ccd85aac63
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 249b013a35df8978a7296086b4e5ada3b78b2c52
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88798085"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100093822"
 ---
 # <a name="view-or-change-your-settings-in-the-my-account-portal"></a>在我的帐户门户中查看或更改设置
 
 可以通过 **"我的帐户" 门户的**"**设置" & "隐私**" 页，在 "我的帐户" 门户中查看或更改帐户设置，如语言或时区。
 
+>[!Note]
+> 如果你在使用个人 Microsoft 帐户登录时遇到错误，你仍可以使用组织的域名 (例如，你可以通过以下 Url 之一中的管理员使用你的组织的域名例如 contoso.com) 或你的组织的 **租户 ID** ：
+>
+>   - https://myaccount.microsoft.com?tenantId=*your_domain_name*
+>   - https://myaccount.microsoft.com?tenant=*your_tenant_ID*
+
 ## <a name="view-and-manage-your-language-and-regional-settings"></a>查看并管理你的语言和区域设置
 
-1. 登录到工作或学校帐户，然后转到 https://myaccount.microsoft.com/ 页。
+1. 登录到工作或学校帐户，然后转到 https://myaccount.microsoft.com/ 页。 如果你使用个人 Microsoft 帐户登录，则仍可以使用组织的域名 (例如，你可以通过以下 Url 之一在管理员中使用组织的域名例如 contoso.com) 或你的组织的 **租户 ID** ：
 
-1. 从左侧导航窗格中选择 "**设置" & "隐私**"，或从 "设置" **& "隐私**块" 中选择 "**查看设置和隐私**" 链接。
+   - https://myaccount.microsoft.com?tenantId=*your_domain_name*
+   - https://myaccount.microsoft.com?tenant=*your_tenant_ID*
+
+1. 从左侧导航窗格中选择 "**设置" & "隐私**"，或从 "设置" **& "隐私** 块" 中选择 "**查看设置和隐私**" 链接。
 
     !["我的帐户" 页，显示突出显示的设置和隐私链接](media/my-account-portal/my-account-portal-privacy.png)
 
-1. 在 " *语言 & 区域 (预览") *，查看或更改以下设置：
+1. 在 " *语言 & 区域 (预览")*，查看或更改以下设置：
     * *显示语言*：用于按钮、菜单和 Microsoft 网站中的某些内容的语言。
     * *首选语言*：你理解并用于创建或使用内容的语言。
     * *区域格式*： Microsoft 网站使用此设置可以设置日期和时间的格式。
-    * *时区：用于*有效地在 Microsoft 日历中计划会议。
+    * *时区：用于* 有效地在 Microsoft 日历中计划会议。
 
 更改显示语言后，建议注销并登录到你的工作或学校帐户，以确保刷新显示语言。
 

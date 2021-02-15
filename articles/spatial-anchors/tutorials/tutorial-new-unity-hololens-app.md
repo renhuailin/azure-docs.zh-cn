@@ -5,15 +5,15 @@ author: msftradford
 manager: MehranAzimi-msft
 services: azure-spatial-anchors
 ms.author: parkerra
-ms.date: 11/20/2020
+ms.date: 2/3/2021
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: ee0bf9b4ce009f37dd1931d4ed030defa24e7d38
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 0233e58a404721586af0ae2fbdf78dbab6d424ed
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95996248"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550366"
 ---
 # <a name="tutorial-step-by-step-instructions-to-create-a-new-hololens-unity-app-using-azure-spatial-anchors"></a>教程：有关使用 Azure 空间定位点创建新 HoloLens Unity 应用的分步说明
 
@@ -140,36 +140,13 @@ ms.locfileid: "95996248"
 
 ## <a name="get-the-azure-spatial-anchors-sdk"></a>获取 Azure 空间定位点
 
-## <a name="via-unity-package-manager-upm-package"></a>[通过 Unity 包管理器 (UPM) 包](#tab/UPMPackage)
+### <a name="download-packages"></a>下载包
+[!INCLUDE [Download Unity Packages](../../../includes/spatial-anchors-unity-download-packages.md)]
 
-此方法与 Unity 版本 2019.1+ 兼容。
+### <a name="import-packages"></a>导入程序包
+[!INCLUDE [Import Unity Packages](../../../includes/spatial-anchors-unity-import-packages.md)]
 
-### <a name="add-the-registry-to-your-unity-project"></a>将注册表添加到 Unity 项目
-
-1. 在文件资源管理器中，导航到 Unity 项目的 `Packages` 文件夹。 在文本编辑器中，打开项目清单文件 `manifest.json`。
-2. 在文件顶部，在与 `dependencies` 部分相同的级别添加以下项，以将 Azure 空间定位点注册表包含到项目中。 `scopedRegistries` 项告诉 Unity 在什么位置查找 Azure 空间定位点 SDK 包。
-
-    [!code-json[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-unity-scoped-registry-setup.md?range=9-19&highlight=2-10)]
-
-### <a name="add-the-sdk-package-to-your-unity-project"></a>将 SDK 包添加到 Unity 项目
-
-1. 将具有 Azure 空间定位点 Windows SDK 包名称 (`com.microsoft.azure.spatial-anchors-sdk.windows`) 和包版本的项添加到项目清单中的 `dependencies` 部分。 请参阅下面的示例。
-
-    [!code-json[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-unity-scoped-registry-setup.md?range=9-20&highlight=12)]
-
-2. 保存并关闭 `manifest.json` 文件。 当你返回到 Unity 时，Unity 应自动检测项目清单更改并检索指定的包。 可以在“项目”视图中展开 `Packages` 文件夹，以验证是否已导入正确的包。
-
-## <a name="via-unity-asset-package"></a>[通过 Unity 资产包](#tab/UnityAssetPackage)
-
-> [!WARNING]
-> Azure 空间定位点 SDK 的 Unity 资产包分发将在 SDK 版本 2.5.0 之后弃用。
-
-让我们下载 Azure 空间定位点 SDK。 转到 [Azure 空间定位点 GitHub 发布页面](https://github.com/Azure/azure-spatial-anchors-samples/releases)。 在“资产”下，下载“AzureSpatialAnchors.unitypackage” 。 在 Unity 中，转到“资产”，选择“导入包” > “自定义包...”  。导航到包并选择“打开”。
-
-在弹出的新“导入 Unity 包”窗口中，取消选择“插件”，然后选择右下角的“导入”  。
-
----
-
+### <a name="prepare-code"></a>准备代码
 在“Visual Studio”解决方案中，将以下导入添加到 `<ProjectName>\Assets\Scripts\AzureSpatialAnchorsScript.cs` 中：
 
 [!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=18-21&highlight=1)]

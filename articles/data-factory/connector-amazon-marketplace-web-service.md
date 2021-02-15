@@ -1,22 +1,18 @@
 ---
 title: 从 AWS Marketplace 复制数据
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 Amazon Marketplace Web 服务复制到支持的接收器数据存储。
-services: data-factory
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 ms.date: 08/01/2018
-ms.openlocfilehash: 4620ef5b6a72afbe86b0ace33328a769eab31e5e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c25bdac0b52af425557464f17350fb8a46244f2f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81418263"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100364335"
 ---
 # <a name="copy-data-from-amazon-marketplace-web-service-using-azure-data-factory"></a>使用 Azure 数据工厂从 Amazon Marketplace Web 服务复制数据
 
@@ -118,7 +114,7 @@ Amazon Marketplace Web 服务链接服务支持以下属性：
 
 ### <a name="amazon-mws-as-source"></a>Amazon MWS 作为源
 
-要从 Amazon Marketplace Web 服务复制数据，请将复制活动中的源类型设置为“AmazonMWSSource”  。 复制活动**source**部分支持以下属性：
+要从 Amazon Marketplace Web 服务复制数据，请将复制活动中的源类型设置为“AmazonMWSSource”  。 复制活动 **source** 部分支持以下属性：
 
 | 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |

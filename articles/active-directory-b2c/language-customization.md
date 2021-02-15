@@ -12,12 +12,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 1012dad1b7e0a314687a38e420ff9ad4780051da
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: e2aab537c2235fe3e008fa619c96a3098cfa7a27
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97111130"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100361207"
 ---
 # <a name="language-customization-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的语言自定义
 
@@ -48,7 +48,7 @@ ms.locfileid: "97111130"
 
 ::: zone-end 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
@@ -181,7 +181,7 @@ https://wingtiptoysb2c.blob.core.windows.net/fr/wingtip/unified.html
 
 ## <a name="add-custom-languages"></a>添加自定义语言
 
-还可以添加 Microsoft 目前未为其提供翻译的语言。 需要为用户流中的所有字符串提供翻译。 语言和区域设置代码仅限于 ISO 639-1 标准中的代码。
+还可以添加 Microsoft 目前未为其提供翻译的语言。 需要为用户流中的所有字符串提供翻译。 语言和区域设置代码仅限于 ISO 639-1 标准中的代码。 区域设置代码格式应为 "ISO_639-1_code"-"CountryCode"，例如： en。 有关区域设置 ID 格式的详细信息，请参阅 https://docs.microsoft.com/openspecs/office_standards/ms-oe376/6c085406-a698-4e12-9d4d-c3b0ee3dbc4a
 
 1. 在 Azure AD B2C 租户中，选择“用户流”  。
 2. 单击想要添加自定义语言的用户流，然后单击“语言”  。
@@ -466,7 +466,7 @@ Chrome 和 Firefox 都会请求其设置的语言。 如果支持该语言，将
 
 ## <a name="supported-languages"></a>支持的语言
 
-Azure AD B2C 包括对以下语言的支持。 用户流语言由 Azure AD B2C 提供。 多重身份验证 (MFA) 通知语言由 [AZURE AD MFA](../active-directory/authentication/concept-mfa-howitworks.md)提供。
+Azure AD B2C 包括对以下语言的支持。 用户流语言由 Azure AD B2C 提供。 多重身份验证 (MFA) 通知语言由 [Azure AD MFA](../active-directory/authentication/concept-mfa-howitworks.md) 提供。
 
 | 语言              | 语言代码 | 用户流         | MFA 通知  |
 |-----------------------| :-----------: | :----------------: | :----------------: |

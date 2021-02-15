@@ -3,12 +3,12 @@ title: 教程 - 在 Azure 中部署 vSphere 群集
 description: 了解如何使用 Azure VMware 解决方案在 Azure 中部署 vSphere 群集
 ms.topic: tutorial
 ms.date: 11/19/2020
-ms.openlocfilehash: 93937f8ca0918494810885f5cb45de571a6e1529
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 3c8ae3673ad049153c2b9700bd7efae6c4c286ed
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94966303"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100093941"
 ---
 # <a name="tutorial-deploy-an-azure-vmware-solution-private-cloud-in-azure"></a>教程：在 Azure 中部署 Azure VMware 解决方案私有云
 
@@ -74,25 +74,6 @@ az group create --name myResourceGroup --location eastus
 ```azurecli-interactive
 az vmware private-cloud create -g myResourceGroup -n myPrivateCloudName --location eastus --cluster-size 3 --network-block xx.xx.xx.xx/22 --sku AV36
 ```
-
-## <a name="delete-an-azure-vmware-solution-private-cloud"></a>删除 Azure VMware 解决方案私有云
-
-如果你不再需要某个 Azure VMware 解决方案私有云，可将其删除。 Azure VMware 解决方案私有云包括隔离网络域、在专用服务器主机上预配的一个或多个 vSphere 群集和多个虚拟机。 删除私有云时，将删除所有虚拟机、其数据和群集。 专用裸机主机会被安全地擦除并返回到可用池。 为客户预配的网域会被删除。  
-
-> [!CAUTION]
-> 删除私有云是不可逆的操作。 删除私有云后，数据将无法恢复，因为此操作会终止所有正在运行的工作负载和组件，并销毁所有私有云数据和配置设置（包括公共 IP 地址）。
-
-### <a name="prerequisites"></a>必备知识
-
-删除私有云后，将无法恢复虚拟机及其数据。 如果之后需要虚拟机数据，管理员必须先备份所有数据，然后再删除私有云。
-
-### <a name="steps-to-delete-an-azure-vmware-solution-private-cloud"></a>删除 Azure VMware 解决方案私有云的步骤
-
-1. 访问 Azure 门户中的“Azure VMware 解决方案”页。
-
-2. 选择要删除的私有云。
- 
-3. 输入私有云的名称，并选择“是”。 几小时后，删除过程完成。  
 
 ## <a name="azure-vmware-commands"></a>Azure VMware 命令
 

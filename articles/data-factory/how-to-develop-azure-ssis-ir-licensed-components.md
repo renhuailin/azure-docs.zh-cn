@@ -1,22 +1,18 @@
 ---
 title: 为 Azure-SSIS 集成运行时安装许可的组件
 description: 了解 ISV 如何为 Azure-SSIS 集成运行时开发和安装付费或许可的自定义组件
-services: data-factory
 ms.service: data-factory
-ms.workload: data-services
 author: swinarko
 ms.author: sawinark
-manager: mflasko
-ms.reviewer: douglasl
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/09/2020
-ms.openlocfilehash: 77eedbfc65b54ce128e1adbd93375bc624ef38cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fd62822e111346ee9a81a5d1bcce55191b19da02
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86187603"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100386282"
 ---
 # <a name="install-paid-or-licensed-custom-components-for-the-azure-ssis-integration-runtime"></a>为 Azure-SSIS 集成运行时安装付费或许可的自定义组件
 
@@ -34,7 +30,7 @@ Azure-SSIS 集成运行时的性质带来了多种挑战，使得在本地安装
 
 ## <a name="the-solution"></a>解决方案
 
-由于上一部分中介绍的传统许可方法的局限性，Azure-SSIS IR 提供了一种新的解决方案。 此解决方案使用 Windows 环境变量和 SSIS 系统变量来绑定许可证和验证第三方组件。 ISV 可以使用这些变量来获取 Azure-SSIS IR 的唯一和持久信息，例如群集 ID 和群集节点计数。 有了此信息，ISV 就可以将其组件的许可证*作为群集*绑定到 Azure-SSIS IR。 此绑定使用的 ID 不会在客户启动或停止、纵向扩展或缩减、横向缩减或扩展，或者以任何方式重新配置 Azure-SSIS IR 时发生变化。
+由于上一部分中介绍的传统许可方法的局限性，Azure-SSIS IR 提供了一种新的解决方案。 此解决方案使用 Windows 环境变量和 SSIS 系统变量来绑定许可证和验证第三方组件。 ISV 可以使用这些变量来获取 Azure-SSIS IR 的唯一和持久信息，例如群集 ID 和群集节点计数。 有了此信息，ISV 就可以将其组件的许可证 *作为群集* 绑定到 Azure-SSIS IR。 此绑定使用的 ID 不会在客户启动或停止、纵向扩展或缩减、横向缩减或扩展，或者以任何方式重新配置 Azure-SSIS IR 时发生变化。
 
 下图显示了使用这些新变量对第三方组件执行的典型安装、激活和许可证绑定以及验证流：
 

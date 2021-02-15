@@ -1,7 +1,7 @@
 ---
 title: 创建和管理计算实例
 titleSuffix: Azure Machine Learning
-description: 了解如何创建和管理 Azure 机器学习计算实例。 使用作为开发环境，或用作开发/测试用途的计算目标。
+description: 了解如何创建和管理 Azure 机器学习计算实例。 用作开发环境，或用作其用途为开发/测试的计算目标。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: 40882f2a0c1a65650d633d0784214afbeef9ae63
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 5fc5b52cb8fb4d654bef136f44d8579036921364
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842883"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100097188"
 ---
 # <a name="create-and-manage-an-azure-machine-learning-compute-instance"></a>创建和管理 Azure 机器学习计算实例
 
@@ -44,9 +44,9 @@ ms.locfileid: "94842883"
 
 **时间估计**：大约 5 分钟。
 
-对于工作区而言，创建计算实例是一次性过程。 可将此计算重复用作开发工作站，或者用作训练的计算目标。 可将多个计算实例附加到工作区。
+对于工作区而言，创建计算实例是一次性过程。 你可以使用计算作为开发工作站或计算目标来进行定型。 可将多个计算实例附加到工作区。
 
-对于每个区域每个虚拟机 (VM) 系列配额和创建计算实例时应用的区域总配额，专用内核数一致，且该数量与 Azure 机器学习训练计算群集配额共享。 停止计算实例不会释放配额，因此无法确保你能够重启计算实例。 请注意，创建计算实例后，不能更改其虚拟机大小。
+对于每个区域每个虚拟机 (VM) 系列配额和创建计算实例时应用的区域总配额，专用内核数一致，且该数量与 Azure 机器学习训练计算群集配额共享。 停止计算实例不会释放配额，因此无法确保你能够重启计算实例。 注意创建计算实例后，不能更改其虚拟机大小。
 
 以下示例演示如何创建计算实例：
 
@@ -111,7 +111,7 @@ az ml computetarget create computeinstance  -n instance -s "STANDARD_D3_V2" -v
 * [Azure 资源管理器模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-compute-create-computeinstance)。  若要详细了解如何查找此模板中所需的 TenantID 和 ObjectID，请参阅[查找身份验证配置的标识对象 ID](../healthcare-apis/find-identity-object-ids.md)。  也可在 Azure Active Directory 门户中找到这些值。
 * REST API
 
-你为其创建计算实例的数据科研人员需要以下 azure [RBAC) 权限的基于角色的访问控制 (](../role-based-access-control/overview.md) ： 
+你为其创建计算实例的数据科学家需要拥有针对以下项的 [Azure 基于角色的访问控制 (Azure RBAC)](../role-based-access-control/overview.md) 权限： 
 * *Microsoft.MachineLearningServices/workspaces/computes/start/action*
 * *Microsoft.MachineLearningServices/workspaces/computes/stop/action*
 * *Microsoft.MachineLearningServices/workspaces/computes/restart/action*
@@ -125,7 +125,7 @@ az ml computetarget create computeinstance  -n instance -s "STANDARD_D3_V2" -v
 
 ## <a name="manage"></a>管理
 
-启动、停止、重启和删除计算实例。 计算实例不会自动纵向缩减，因此请确保停止该资源以免产生费用。
+启动、停止、重新启动和删除计算实例。 计算实例不会自动纵向缩减，因此请确保停止该资源以免产生费用。
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -226,9 +226,9 @@ az ml computetarget create computeinstance  -n instance -s "STANDARD_D3_V2" -v
 
 ---
 
-使用[AZURE RBAC](../role-based-access-control/overview.md) ，可以控制工作区中的哪些用户可以创建、删除、启动、停止和重启计算实例。 充当工作区参与者和所有者角色的所有用户可以在整个工作区中创建、删除、启动、停止和重启计算实例。 但是，只有特定计算实例的创建者或分配的用户（如果该计算实例是以其名义创建的）可在该计算实例上访问 Jupyter、JupyterLab 和 RStudio。 计算实例专用于具有 root 用户访问权限的单个用户，并且可通过 Jupyter/JupyterLab/RStudio 进行终端访问。 计算实例将具有单用户登录，并且所有操作都将使用该用户在 Azure RBAC 中的标识和试验运行的归属。 SSH 访问是通过公钥/私钥机制控制的。
+使用 [Azure RBAC](../role-based-access-control/overview.md) 可以对工作区中的哪些用户能够创建、删除、启动、停止、重启计算实例进行控制。 充当工作区参与者和所有者角色的所有用户可以在整个工作区中创建、删除、启动、停止和重启计算实例。 但是，只有特定计算实例的创建者或分配的用户（如果该计算实例是以其名义创建的）可在该计算实例上访问 Jupyter、JupyterLab 和 RStudio。 计算实例专用于具有 root 用户访问权限的单个用户，并且可通过 Jupyter/JupyterLab/RStudio 进行终端访问。 计算实例将具有单用户登录，并且所有操作都将使用该用户在 Azure RBAC 中的标识和试验运行的归属。 SSH 访问是通过公钥/私钥机制控制的。
 
-Azure RBAC 可控制以下操作：
+可以通过 Azure RBAC 来控制这些操作：
 * *Microsoft.MachineLearningServices/workspaces/computes/read*
 * *Microsoft.MachineLearningServices/workspaces/computes/write*
 * *Microsoft.MachineLearningServices/workspaces/computes/delete*
@@ -236,62 +236,8 @@ Azure RBAC 可控制以下操作：
 * *Microsoft.MachineLearningServices/workspaces/computes/stop/action*
 * *Microsoft.MachineLearningServices/workspaces/computes/restart/action*
 
-
-## <a name="access-the-terminal-window"></a>访问终端窗口
-
-通过以下任一方式打开计算实例的终端窗口：
-
-* RStudio：选择左上的“终端”选项卡。
-* Jupyter 实验室：选择“启动器”选项卡中“其他”标题下的“终端”磁贴。
-* Jupyter：在“文件”选项卡的右上方选择“新建>“终端”。
-* 如果在创建计算实例时启用了 SSH 访问，则使用 SSH 连接到计算机。
-
-使用终端窗口来安装包并创建更多内核。
-
-## <a name="install-packages"></a>安装包
-
-可以直接在 Jupyter Notebook 或 RStudio 中安装包：
-
-* RStudio 使用右下的“包”选项卡或左上的“控制台”选项卡。  
-* Python:添加安装代码并在 Jupyter Notebook 单元中执行该代码。
-
-也可从终端窗口进行安装。 将 Python 包安装到“Python 3.6 - AzureML”环境中。  将 R 包安装到 **R** 环境中。
-
-> [!NOTE]
-> 对于笔记本内的包管理，使用 **% pip** 或 **% conda** 幻函数将包自动安装到 **当前正在运行的内核** 中，而不是引用所有 **(包（** 包括当前正在运行的内核之外的包） **，而不** 是引用所有包) 
-
-## <a name="add-new-kernels"></a>添加新内核
-
-> [!WARNING]
->  自定义计算实例时，请确保未删除 Conda 环境“azureml_py36”或“Python 3.6 - AzureML”内核 。 必须具备它们才能使用 Jupyter/JupyterLab 功能
-
-若要向计算实例添加新 Jupyter 内核，请执行以下步骤：
-
-1. 从 Jupyter、JupyterLab 或笔记本窗格创建新终端，或者通过 SSH 登录到计算实例
-2. 使用终端窗口创建新环境。  例如，以下代码会创建 `newenv`：
-
-    ```shell
-    conda create --name newenv
-    ```
-
-3. 激活该环境。  例如，创建 `newenv` 的结果如下：
-
-    ```shell
-    conda activate newenv
-    ```
-
-4. 在新环境中安装 pip 和 ipykernel 包，并为该 conda 环境创建内核
-
-    ```shell
-    conda install pip
-    conda install ipykernel
-    python -m ipykernel install --user --name newenv --display-name "Python (newenv)"
-    ```
-
-可以安装任何[可用的 Jupyter 内核](https://github.com/jupyter/jupyter/wiki/Jupyter-kernels)。
-
-
-
 ## <a name="next-steps"></a>后续步骤
 
+* [访问计算实例终端](how-to-access-terminal.md)
+* [创建和管理文件](how-to-manage-files.md)
 * [提交训练运行](how-to-set-up-training-targets.md)

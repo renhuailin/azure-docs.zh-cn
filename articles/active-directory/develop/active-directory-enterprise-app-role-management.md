@@ -12,12 +12,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 12/07/2020
 ms.author: jeedes
-ms.openlocfilehash: 076054b7240712fec57d0908615ce7abbfb62013
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 38673df29dd50e77acc4b4d106d69a82cad9c040
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99582224"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104342"
 ---
 # <a name="how-to-configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications"></a>如何：为企业应用程序配置 SAML 令牌中颁发的角色声明
 
@@ -34,7 +34,7 @@ ms.locfileid: "99582224"
 
 ## <a name="create-roles-for-an-application"></a>为应用程序创建角色
 
-1. 在 <a href="https://portal.azure.com/" target="_blank">Azure 门户 <span class="docon docon-navigate-external x-hidden-focus"></span></a>的左窗格中，选择 " **Azure Active Directory** " 图标。
+1. 在 <a href="https://portal.azure.com/" target="_blank">Azure 门户</a>的左窗格中，选择“Azure Active Directory”  图标。
 
     ![Azure Active Directory 图标][1]
 
@@ -167,7 +167,7 @@ ms.locfileid: "99582224"
 
     1. 在“源属性”  列表中，键入为该行显示的属性值。
 
-    1. 选择“保存”。
+    1. 选择“保存”。 
 
 10. 若要在标识提供者启动的单一登录中测试应用程序，请登录到[访问面板](https://myapps.microsoft.com)，然后选择应用程序磁贴。 在 SAML 令牌中，应该会看到具有所提供的声明名称的用户的所有已分配角色。
 

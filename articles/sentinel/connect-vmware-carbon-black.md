@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
-ms.openlocfilehash: e13b251c9bd95a5b52d63d8ea1bbf265c9c46fd8
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 2c26931db617109c36c19b73bd3ec9263f4b40cc
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96023868"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100096440"
 ---
 # <a name="connect-your-vmware-carbon-black-cloud-endpoint-standard-to-azure-sentinel-with-azure-function"></a>通过 Azure Function 将 VMware 碳黑色云终结点标准连接到 Azure Sentinel
 
 > [!IMPORTANT]
 > Azure Sentinel 中的 VMware 碳黑色云终结点标准数据连接器目前为公共预览版。
-> 此功能在提供时没有服务级别协议，不建议用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> 此功能不附带服务级别协议，不建议将其用于生产工作负载。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 VMware 碳黑色云终结点标准连接器可让你轻松地将所有 [VMware 碳黑色端点标准](https://www.carbonblack.com/products/endpoint-standard/) 安全解决方案日志连接到 Azure Sentinel，以查看仪表板、创建自定义警报和改进调查。 VMware 碳黑色与 Azure Sentinel 之间的集成利用 Azure Functions 使用 REST API 请求日志数据。
 

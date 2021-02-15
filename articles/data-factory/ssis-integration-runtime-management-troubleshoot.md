@@ -1,22 +1,19 @@
 ---
 title: 排查 SSIS Integration Runtime 管理问题
 description: 本文提供有关排查 SSIS Integration Runtime (SSIS IR) 管理问题的指导
-services: data-factory
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 author: chinadragon0515
 ms.author: dashe
 ms.reviewer: sawinark
-manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 07/08/2019
-ms.openlocfilehash: 34fd595a03f67201b303c94764668bf86a6c244b
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: 917bcce641cfd5178f868e4338354edb78062ab8
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98796893"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100361836"
 ---
 # <a name="troubleshoot-ssis-integration-runtime-management-in-azure-data-factory"></a>在 Azure 数据工厂中排查 SSIS Integration Runtime 管理问题
 

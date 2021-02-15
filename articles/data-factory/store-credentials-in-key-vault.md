@@ -1,21 +1,17 @@
 ---
 title: 在 Azure Key Vault 中存储凭据
 description: 了解如何在 Azure Key Vault 中存储所使用的数据存储的凭据，以便在运行时 Azure 数据工厂可以自动检索这些凭据。
-services: data-factory
 author: linda33wj
-manager: shwang
-editor: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/13/2020
 ms.author: jingwang
-ms.openlocfilehash: 22ab4433d84db926733fd0b18035875e63322dda
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 828794715af1e7676253714da6fdc1a487c7c107
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81451680"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100361887"
 ---
 # <a name="store-credential-in-azure-key-vault"></a>在 Azure Key Vault 中存储凭据
 
@@ -33,7 +29,7 @@ ms.locfileid: "81451680"
 
 若要引用 Azure Key Vault 中存储的凭据，需要：
 
-1. 通过复制与工厂一起生成的“托管标识对象 ID”的值来**检索数据工厂托管标识**。 如果使用 ADF 创作 UI，则托管标识对象 ID 将显示在 Azure Key Vault 链接服务创建窗口上；也可从 Azure 门户检索该 ID，详情请参阅[检索数据工厂托管标识](data-factory-service-identity.md#retrieve-managed-identity)。
+1. 通过复制与工厂一起生成的“托管标识对象 ID”的值来 **检索数据工厂托管标识**。 如果使用 ADF 创作 UI，则托管标识对象 ID 将显示在 Azure Key Vault 链接服务创建窗口上；也可从 Azure 门户检索该 ID，详情请参阅[检索数据工厂托管标识](data-factory-service-identity.md#retrieve-managed-identity)。
 2. **向托管标识授予对 Azure Key Vault 的访问权限。** 在密钥保管库 ->“访问策略”->“添加访问策略”中，搜索此托管标识，以在“机密权限”下拉列表中授予“获取”  权限。 它允许此指定的工厂访问密钥保管库中的机密。
 3. **创建指向 Azure Key Vault 的链接服务**。 请参阅 [Azure Key Vault 链接服务](#azure-key-vault-linked-service)。
 4. **创建数据存储链接服务，该服务中引用密钥保管库中存储的相应机密**。 请参阅[引用密钥保管库中存储的机密](#reference-secret-stored-in-key-vault)。

@@ -125,7 +125,7 @@
           href: troubleshoot-capacity-pools.md
         - name: 跨区域复制故障排除
           href: troubleshoot-cross-region-replication.md
-        - name: 双重协议卷故障排除
+        - name: SMB 或双重协议卷故障排除
           href: troubleshoot-dual-protocol-volumes.md
         - name: 排查 NFSv4.1 Kerberos 卷问题
           href: troubleshoot-nfsv41-kerberos-volumes.md

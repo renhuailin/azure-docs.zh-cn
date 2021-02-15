@@ -8,12 +8,12 @@ ms.author: helohr
 ms.reviewer: thhickli; darank
 manager: lizross
 ms.custom: references_regions
-ms.openlocfilehash: f34a5b957f64558b468c456686f0f86172630135
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 1deec49cfeca65628485ed105e0919f2c2b18b17
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99258789"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575307"
 ---
 # <a name="whats-new-in-windows-virtual-desktop"></a>Windows 虚拟桌面中有哪些新增功能？
 
@@ -56,7 +56,7 @@ Windows 虚拟桌面会定期更新。 本文介绍了以下内容：
 
 我们发布了版本 2009 HF_01 (2.9.7654.46150) 的 FSLogix，用于解决上一版本 (2.9.7621.30127) 中的问题。 建议你尽快停止使用上一版本并更新 FSLogix。
 
-有关详细信息，请查看 [FSLogix 中的新增功能](/fslogix/whats-new.md#fslogix-apps-2009-hf_01-29765446150)中的发行说明。
+有关详细信息，请查看 [FSLogix 中的新增功能](/fslogix/whats-new#fslogix-apps-2009-hf_01-29765446150)中的发行说明。
 
 ### <a name="azure-portal-experience-improvements"></a>Azure 门户体验改进
 

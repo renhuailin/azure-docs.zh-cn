@@ -1,23 +1,18 @@
 ---
 title: 使用 Azure 数据工厂从 PostgreSQL 移动数据
 description: 了解如何使用 Azure 数据工厂从 PostgreSQL 移动数据。
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: 888d9ebc-2500-4071-b6d1-0f6bd1b5997c
+ms.author: jingwang
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 37c83e77cadae002ff701a08c4b36a86f7cab9a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8ca8770944a12c6e0dd3e4f95d286758ebee5f9e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87082828"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387268"
 ---
 # <a name="move-data-from-postgresql-using-azure-data-factory"></a>使用 Azure 数据工厂从 PostgreSQL 移动数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -32,7 +27,7 @@ ms.locfileid: "87082828"
 
 可以将数据从本地 PostgreSQL 数据存储复制到任何支持的接收器数据存储。 有关复制活动支持用作接收器的数据存储列表，请参阅[支持的数据存储](data-factory-data-movement-activities.md#supported-data-stores-and-formats)。 数据工厂当前支持将数据从 PostgreSQL 数据库移至其他数据存储，而不支持将数据从其他数据存储移至 PostgreSQL 数据库。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 数据工厂服务支持使用数据管理网关连接到本地 PostgreSQL 源。 请参阅[在本地位置和云之间移动数据](data-factory-move-data-between-onprem-and-cloud.md)一文，了解数据管理网关和设置网关的分步说明。
 
@@ -47,7 +42,7 @@ ms.locfileid: "87082828"
 ## <a name="getting-started"></a>入门
 可以使用不同的工具/API 创建包含复制活动的管道，以从本地 PostgreSQL 数据存储移动数据。
 
-- 创建管道的最简单方法是使用**** 复制向导。 请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。
+- 创建管道的最简单方法是使用复制向导。 请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。
 - 还可以使用以下工具来创建管道：
   - Visual Studio
   - Azure PowerShell
@@ -70,7 +65,7 @@ ms.locfileid: "87082828"
 ## <a name="linked-service-properties"></a>链接服务属性
 下表提供 PostgreSQL 链接服务专属 JSON 元素的说明。
 
-| 属性 | 说明 | 必须 |
+| properties | 说明 | 必须 |
 | --- | --- | --- |
 | type |type 属性必须设置为：**OnPremisesPostgreSql** |是 |
 | server |PostgreSQL 服务器的名称。 |是 |
@@ -86,9 +81,9 @@ ms.locfileid: "87082828"
 
 每种数据集的 typeProperties 节有所不同，该部分提供有关数据在数据存储区中的位置信息。 **RelationalTable** 类型的数据集的 typeProperties 部分（包括 PostgreSQL 数据集）具有以下属性：
 
-| 属性 | 说明 | 必须 |
+| properties | 说明 | 必须 |
 | --- | --- | --- |
-| tableName |链接服务引用的 PostgreSQL 数据库实例中表的名称。 TableName 区分大小写。 |否（如果指定了 **RelationalSource** 的**query**） |
+| tableName |链接服务引用的 PostgreSQL 数据库实例中表的名称。 TableName 区分大小写。 |否（如果指定了 **RelationalSource** 的 **query**） |
 
 ## <a name="copy-activity-properties"></a>复制活动属性
 有关可用于定义活动的节和属性的完整列表，请参阅[创建管道](data-factory-create-pipelines.md)一文。 名称、说明、输入和输出表格等属性和策略可用于所有类型的活动。
@@ -97,9 +92,9 @@ ms.locfileid: "87082828"
 
 当 source 的类型为 **RelationalSource** (包含 PostgreSQL) 时，typeProperties 节中提供以下属性：
 
-| 属性 | 说明 | 允许的值 | 必须 |
+| properties | 说明 | 允许的值 | 必须 |
 | --- | --- | --- | --- |
-| 查询 |使用自定义查询读取数据。 |SQL 查询字符串。 例如： `"query": "select * from \"MySchema\".\"MyTable\""`。 |否（如果指定了**数据集**的 **tableName**） |
+| 查询 |使用自定义查询读取数据。 |SQL 查询字符串。 例如：`"query": "select * from \"MySchema\".\"MyTable\""`。 |否（如果指定了 **数据集** 的 **tableName**） |
 
 > [!NOTE]
 > 架构和表名称区分大小写。 在查询中将名称括在 `""`（双引号）中。
@@ -160,7 +155,7 @@ ms.locfileid: "87082828"
 ```
 **PostgreSQL 输入数据集：**
 
-该示例假定已在 PostgreSQL 中创建表“MyTable”，并且它包含用于时间序列数据的“timestamp”列。
+本示例假定已在 PostgreSQL 中创建了表 "MyTable"，并且它包含了时序数据中名为 "timestamp" 的列。
 
 设置 `"external": true` 将告知数据工厂服务：数据集在数据工厂外部且不是由数据工厂中的活动生成的。
 
@@ -312,28 +307,28 @@ ms.locfileid: "87082828"
 | boolean |bool |布尔 |
 | box | |Byte[], String |
 | bytea | |Byte[], String |
-| character [(n)] |char [(n)] |字符串 |
-| character varying [(n)] |varchar [(n)] |字符串 |
-| cid | |字符串 |
-| cidr | |字符串 |
+| character [(n)] |char [(n)] |String |
+| character varying [(n)] |varchar [(n)] |String |
+| cid | |String |
+| cidr | |String |
 | circle | |Byte[], String |
-| date | |datetime |
-| daterange | |字符串 |
+| 日期 | |datetime |
+| daterange | |String |
 | 双精度 |float8 |Double |
 | inet | |Byte[], String |
-| intarry | |字符串 |
-| int4range | |字符串 |
-| int8range | |字符串 |
+| intarry | |String |
+| int4range | |String |
+| int8range | |String |
 | 整型 |int, int4 |Int32 |
 | interval [fields] [(p)] | |Timespan |
-| json | |字符串 |
+| json | |String |
 | jsonb | |Byte[] |
 | line | |Byte[], String |
 | lseg | |Byte[], String |
 | macaddr | |Byte[], String |
 | money | |小数 |
 | numeric [(p, s)] |decimal [(p, s)] |小数 |
-| numrange | |字符串 |
+| numrange | |String |
 | oid | |Int32 |
 | path | |Byte[], String |
 | pg_lsn | |Int64 |
@@ -343,7 +338,7 @@ ms.locfileid: "87082828"
 | smallint |int2 |Int16 |
 | smallserial |serial2 |Int16 |
 | serial |serial4 |Int32 |
-| text | |字符串 |
+| text | |String |
 
 ## <a name="map-source-to-sink-columns"></a>将源映射到接收器列
 要了解如何将源数据集中的列映射到接收器数据集中的列，请参阅[映射 Azure 数据工厂中的数据集列](data-factory-map-columns.md)。

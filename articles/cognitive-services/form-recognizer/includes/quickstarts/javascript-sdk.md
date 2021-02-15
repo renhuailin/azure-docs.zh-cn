@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 10/26/2020
 ms.author: pafarley
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: a4d29dfb2a57dde2bb21244b2e5335f1a8ea1fcf
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: e5a131753829edddbb4f385766a2d8697ebd0106
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98948404"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584586"
 ---
 > [!IMPORTANT]
 > * 为了简单起见，本文中的代码使用了同步方法和不受保护的凭据存储。 请参阅下面的参考文档。 
@@ -81,15 +81,15 @@ npm install @azure/ai-form-recognizer
 ### <a name="formrecognizerclient"></a>FormRecognizerClient
 `FormRecognizerClient` 提供操作以实现以下目的：
 
- * 使用经过训练的自定义模型识别表单域和内容，以识别自定义表单。 这些值在 `RecognizedForm` 对象的集合中返回。
+ * 使用为了分析自定义表单而训练的自定义模型，来识别表单字段和内容。 这些值在 `RecognizedForm` 对象的集合中返回。
  * 无需训练模型即可识别表单内容，包括表格、行和单词。 表单内容在 `FormPage` 对象的集合中返回。
  * 使用表单识别器服务上预先训练的回执模型，识别回执中的常见字段。 这些字段和元数据在 `RecognizedReceipt` 的集合中返回。
 
 ### <a name="formtrainingclient"></a>FormTrainingClient
 `FormTrainingClient` 提供操作以实现以下目的：
 
-* 训练自定义模型以识别在自定义表单中找到的所有字段和值。 返回一个 `CustomFormModel`，它指示模型将识别的表单类型，以及将为每种表单类型提取的字段。 有关创建定型数据集的更详细说明，请参阅[关于无标签模型训练的服务文档](#train-a-model-without-labels)。
-* 训练自定义模型，以识别通过标记自定义表单指定的特定字段和值。 返回一个 `CustomFormModel`，它指示模型将提取的字段以，及每个字段的估计准确度。 有关将标签应用于定型数据集的更详细说明，请参阅[关于带标签的模型训练的服务文档](#train-a-model-with-labels)。
+* 训练自定义模型，以分析在自定义表单中找到的所有字段和值。 将会返回一个 `CustomFormModel`，它指示模型将分析的表单类型，以及将为每种表单类型提取的字段。 有关创建定型数据集的更详细说明，请参阅[关于无标签模型训练的服务文档](#train-a-model-without-labels)。
+* 训练自定义模型，以分析通过标记自定义表单指定的特定字段和值。 返回一个 `CustomFormModel`，它指示模型将提取的字段以，及每个字段的估计准确度。 有关将标签应用于定型数据集的更详细说明，请参阅[关于带标签的模型训练的服务文档](#train-a-model-with-labels)。
 * 管理在帐户中创建的模型。
 * 将自定义模型从一个表单识别器资源复制到另一个资源。
 
@@ -128,7 +128,7 @@ npm install @azure/ai-form-recognizer
 
 ## <a name="analyze-layout"></a>分析布局
 
-可以使用表单识别器识别文档中的表格、线条和单词，而无需训练模型。 若要识别位于给定 URI 的文件的内容，请使用 `beginRecognizeContentFromUrl` 方法。
+可以使用表单识别器分析文档中的表格、线条和单词，而无需训练模型。 有关布局提取的详细信息，请参阅[布局概念指南](../../concept-layout.md)。 若要分析位于给定 URI 的文件的内容，请使用 `beginRecognizeContentFromUrl` 方法。
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/FormRecognizer/FormRecognizerQuickstart.js?name=snippet_getcontent)]
 
@@ -152,31 +152,7 @@ cell [1,3] has text $56,651.49
 cell [1,5] has text PT
 ```
 
-## <a name="analyze-receipts"></a>分析回执
 
-本部分演示如何使用预先训练的回执模型识别和提取美国回执中的常见字段。
-
-若要从 URI 识别回执，请使用 `beginRecognizeReceiptsFromUrl` 方法。 下面的代码处理给定 URI 的回执，并将主字段和值输出到控制台。
-
-[!code-javascript[](~/cognitive-services-quickstart-code/javascript/FormRecognizer/FormRecognizerQuickstart.js?name=snippet_receipts)]
-
-> [!TIP]
-> 还可识别本地回执图像。 请参阅 [FormRecognizerClient](/javascript/api/@azure/ai-form-recognizer/formrecognizerclient) 方法，例如 beginRecognizeReceipts。 或者，请参阅 [GitHub](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples) 上的示例代码，了解涉及本地图像的方案。
-
-### <a name="output"></a>输出
-
-```console
-status: notStarted
-status: running
-status: succeeded
-First receipt:
-  Receipt Type: 'Itemized', with confidence of 0.659
-  Merchant Name: 'Contoso Contoso', with confidence of 0.516
-  Transaction Date: 'Sun Jun 09 2019 17:00:00 GMT-0700 (Pacific Daylight Time)', with confidence of 0.985
-    Item Name: '8GB RAM (Black)', with confidence of 0.916
-    Item Name: 'SurfacePen', with confidence of 0.858
-  Total: '1203.39', with confidence of 0.774
-```
 
 ## <a name="train-a-custom-model"></a>训练自定义模型
 
@@ -187,7 +163,7 @@ First receipt:
 
 ### <a name="train-a-model-without-labels"></a>不使用标签训练模型
 
-训练自定义模型可以识别在自定义表单中找到的所有字段和值，而无需手动标记训练文档。
+训练自定义模型可分析在自定义表单中找到的所有字段和值，无需手动标记训练文档。
 
 下面的函数使用给定文档集训练模型，并将该模型的状态输出到控制台。 
 
@@ -322,6 +298,32 @@ Field Tax has value 'undefined' with a confidence score of undefined
 Field Total has value 'undefined' with a confidence score of undefined
 ```
 
+## <a name="analyze-receipts"></a>分析回执
+
+本部分演示如何使用预先训练的收据模型分析和提取美国收据中的常见字段。 有关收据分析的详细信息，请参阅[收据概念指南](../../concept-receipts.md)。
+
+若要分析位于某个 URI 的收据，请使用 `beginRecognizeReceiptsFromUrl` 方法。 下面的代码处理给定 URI 的回执，并将主字段和值输出到控制台。
+
+[!code-javascript[](~/cognitive-services-quickstart-code/javascript/FormRecognizer/FormRecognizerQuickstart.js?name=snippet_receipts)]
+
+> [!TIP]
+> 你还可以分析本地收据图像。 请参阅 [FormRecognizerClient](/javascript/api/@azure/ai-form-recognizer/formrecognizerclient?view=azure-node-latest) 方法，例如 beginRecognizeReceipts。 或者，请参阅 [GitHub](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples) 上的示例代码，了解涉及本地图像的方案。
+
+### <a name="output"></a>输出
+
+```console
+status: notStarted
+status: running
+status: succeeded
+First receipt:
+  Receipt Type: 'Itemized', with confidence of 0.659
+  Merchant Name: 'Contoso Contoso', with confidence of 0.516
+  Transaction Date: 'Sun Jun 09 2019 17:00:00 GMT-0700 (Pacific Daylight Time)', with confidence of 0.985
+    Item Name: '8GB RAM (Black)', with confidence of 0.916
+    Item Name: 'SurfacePen', with confidence of 0.858
+  Total: '1203.39', with confidence of 0.774
+```
+
 ## <a name="manage-your-custom-models"></a>管理自定义模型
 
 本部分演示如何管理帐户中存储的自定义模型。 例如，下面的代码在单个函数中执行所有模型管理任务。 
@@ -420,7 +422,7 @@ node index.js
 
 如果想要清理并删除认知服务订阅，可以删除资源或资源组。 删除资源组同时也会删除与之相关联的任何其他资源。
 
-* [Portal](../../../cognitive-services-apis-create-account.md#clean-up-resources)
+* [门户](../../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 ## <a name="troubleshooting"></a>疑难解答

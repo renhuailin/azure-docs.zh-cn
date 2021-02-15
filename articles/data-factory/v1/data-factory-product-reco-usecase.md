@@ -1,28 +1,23 @@
 ---
 title: 数据工厂使用案例 - 产品建议
 description: 了解通过 Azure 数据工厂以及其他服务实现的使用案例。
-services: data-factory
-documentationcenter: ''
 author: dcstwh
 ms.author: weetok
-manager: jroth
 ms.reviewer: maghan
-ms.assetid: 6f1523c7-46c3-4b8d-9ed6-b847ae5ec4ae
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: fc1e0398f98dc72d57039530dce9751af012f154
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: b20eef90cebab59f823e1766d28eb355f317463d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96495287"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387183"
 ---
 # <a name="use-case---product-recommendations"></a>使用案例 - 产品建议
 Azure 数据工厂是用于实现解决方案加速器的 Cortana Intelligence 套件的许多服务之一。  有关此套件的详细信息，请参阅 [Cortana Intelligence 套件](https://www.microsoft.com/cortanaanalytics) 页面。 在本文档中，我们介绍了 Azure 用户通过使用 Azure 数据工厂和其他 Cortana Intelligence 组件服务已解决和实现的常见用例。
 
-## <a name="scenario"></a>方案
+## <a name="scenario"></a>场景
 为了吸引客户购买产品，在线零售商通常会向客户推介他们最有可能感兴趣的产品，从而大大提高购买几率。 为实现此目的，在线零售商需要针对特定用户使用个性化产品建议来自定义用户的在线体验。 这些个性化建议均基于其当前和以往购物行为数据、产品信息、新引入的品牌以及产品和客户分段数据。  另外，他们还可分析所有用户的整体使用行为，并以此为基础提供用户产品建议。
 
 这些零售商的目的是优化用户“单击-销售”转换并获得更高的销售收入。  他们通过根据客户兴趣和行动提供基于行为的全背景式产品建议来实现此转化。 在此使用案例中，我们以希望优化客户购买行为的在线零售商为例。 但这些原则适用于想要通过个性化产品建议吸引客户关注其产品和服务并增强客户购买体验的任何企业。
