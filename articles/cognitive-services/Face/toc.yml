@@ -101,4 +101,4 @@
     - name: 合规性
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: 加密
-      href: face-encryption-of-data-at-rest.md
+      href: encrypt-data-at-rest.md
