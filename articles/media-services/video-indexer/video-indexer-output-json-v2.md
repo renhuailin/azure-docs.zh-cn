@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 11/16/2020
 ms.author: juliako
-ms.openlocfilehash: bf48f873127a12c3cabb28da33d34cedcda2793b
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 2ac7c3c2149ce43c860c7726381733ef377de8d3
+ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94831560"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100530733"
 ---
 # <a name="examine-the-video-indexer-output"></a>检查视频索引器输出
 
@@ -53,7 +53,7 @@ ms.locfileid: "94831560"
 
 ## <a name="root-elements-of-the-insights"></a>见解的根元素
 
-|名称|说明|
+|“属性”|描述|
 |---|---|
 |accountId|播放列表的 VI 帐户 ID。|
 |id|播放列表的 ID。|
@@ -93,7 +93,7 @@ ms.locfileid: "94831560"
 
 本部分介绍见解的摘要。
 
-|属性 | 说明|
+|Attribute | 说明|
 |---|---|
 |name|视频的名称。 例如 Azure Monitor。|
 |id|视频的 ID。 例如 63c6d532ff。|
@@ -104,7 +104,7 @@ ms.locfileid: "94831560"
 |面部/animatedCharacters|可以包含零个或多个人脸。 有关更多详细信息，请参阅 [面部/animatedCharacters](#facesanimatedcharacters)。|
 |关键字|可以包含零个或多个关键字。 有关更详细的信息，请参阅 [keywords](#keywords)。|
 |情绪|可以包含零个或多个情绪。 有关更详细的信息，请参阅 [sentiments](#sentiments)。|
-|audioEffects| 可以包含零个或多个音效。 有关更详细的信息，请参阅 [audioEffects](#audioeffects)。|
+|audioEffects| 可以包含零个或多个音效。 有关更详细的信息，请参阅 [audioEffects](#audioeffects-public-preview)。|
 |标签| 可以包含零个或多个标签。 有关更详细的信息，请参阅 [labels](#labels)。|
 |brands| 可以包含零个或多个品牌。 有关更详细的信息，请参阅 [brands](#brands)。|
 |statistics | 有关更详细的信息，请参阅 [statistics](#statistics)。|
@@ -113,7 +113,7 @@ ms.locfileid: "94831560"
 
 ## <a name="videos"></a>videos
 
-|名称|说明|
+|“属性”|描述|
 |---|---|
 |accountId|视频的 VI 帐户 ID。|
 |id|视频的 ID。|
@@ -181,7 +181,7 @@ ms.locfileid: "94831560"
 |标签|[标签](#labels)见解。|
 |截图|[照片](#shots)见解。|
 |brands|[品牌](#brands)见解。|
-|audioEffects|[AudioEffects](#audioeffects)见解。|
+|audioEffects|[AudioEffects](#audioeffects-public-preview)见解。|
 |情绪|[情绪](#sentiments)见解。|
 |visualContentModeration|[VisualContentModeration](#visualcontentmoderation)见解。|
 |textualContentModeration|[TextualContentModeration](#textualcontentmoderation)见解。|
@@ -189,7 +189,7 @@ ms.locfileid: "94831560"
 |topics|[主题](#topics)见解。|
 |扬声器|[演讲](#speakers)者见解。|
 
-例如：
+示例：
 
 ```json
 {
@@ -212,7 +212,7 @@ ms.locfileid: "94831560"
 
 #### <a name="blocks"></a>blocks
 
-属性 | 说明
+Attribute | 说明
 ---|---
 id|块的 ID。|
 instances|此块的时间范围列表。|
@@ -336,7 +336,7 @@ instances|此块的时间范围列表。|
 
 如果面部 (没有经过动画处理的字符) 出现，视频索引器将使用所有视频帧上的人脸 API 来检测人脸和名人。
 
-|名称|说明|
+|“属性”|说明|
 |---|---|
 |id|人脸 ID。|
 |name|人脸名称。 可以为“Unknown #0”、公认的名人或经过客户培训的人员。|
@@ -440,7 +440,7 @@ instances|此块的时间范围列表。|
 
 #### <a name="scenes"></a>scenes
 
-|名称|说明|
+|“属性”|说明|
 |---|---|
 |id|场景 ID。|
 |instances|此场景 (的时间范围列表中，场景只能有1个实例) 。|
@@ -523,14 +523,14 @@ instances|此块的时间范围列表。|
 
 在语音转文本脚本和/或视频 OCR 中检测到的企业和产品品牌名称。 这不包括品牌或徽标检测内容的视觉辨识形式。
 
-|名称|说明|
+|“属性”|说明|
 |---|---|
 |id|品牌 ID。|
 |name|品牌名称。|
 |referenceId | 品牌维基百科 URL 的后缀。 例如，"Target_Corporation" 是的后缀 [https://en.wikipedia.org/wiki/Target_Corporation](https://en.wikipedia.org/wiki/Target_Corporation) 。
 |referenceUrl | 品牌的维基百科 URL（如果存在）。 例如， [https://en.wikipedia.org/wiki/Target_Corporation](https://en.wikipedia.org/wiki/Target_Corporation) 。
 |description|品牌说明。|
-|标记|与此品牌关联的预定义标记的列表。|
+|tags|与此品牌关联的预定义标记的列表。|
 |confidence|视频索引器品牌检测器的置信度值 (0-1)。|
 |instances|此品牌的时间范围列表。 每个实例有一个 brandType，表示此品牌是出现在脚本还是 OCR 中。|
 
@@ -590,26 +590,28 @@ instances|此块的时间范围列表。|
 |SpeakerLongestMonolog|发言人的最长独白。 如果发言人在独白中有沉默，则会将沉默期包含在内。 删除独白开头和结尾的沉默期。| 
 |SpeakerTalkToListenRatio|计算方式为将发言人的独白时间（开头和结尾之间没有沉默期）除以视频总时间。 时间将四舍五入为三位小数。|
 
-#### <a name="audioeffects"></a>audioEffects
+#### <a name="audioeffects-public-preview"></a>audioEffects (公共预览版) 
 
-|名称|说明|
+|“属性”|说明
 |---|---|
-|id|音频效果 ID。|
-|类型|音频效果类型（例如鼓掌、语音、静音）。|
-|instances|出现此音频效果的时间范围列表。|
+|id|音频效果 ID|
+|类型|音频效果类型|
+|instances|出现此音频效果的时间范围列表。 每个实例都有置信度字段。|
 
 ```json
 "audioEffects": [
 {
     "id": 0,
-    "type": "Clapping",
+    "type": "Siren",
     "instances": [
     {
+       "confidence": 0.87,
         "start": "00:00:00",
         "end": "00:00:03"
     },
     {
-        "start": "00:01:13",
+       "confidence": 0.87,
+       "start": "00:01:13",
         "end": "00:01:21"
     }
     ]
@@ -660,7 +662,7 @@ visualContentModeration 块包含视频索引器找到的、可能具有成人�
 
 被确定包含成人或不雅内容的视频可能仅可供私人观看。 用户可以选择请求人工审查内容，在这种情况下，IsAdult 属性将包含人工审查的结果。
 
-|名称|说明|
+|“属性”|说明|
 |---|---|
 |id|视觉内容审核 ID。|
 |adultScore|成人内容评分（由内容审核员提供）。|
@@ -696,7 +698,7 @@ visualContentModeration 块包含视频索引器找到的、可能具有成人�
 
 #### <a name="textualcontentmoderation"></a>textualContentModeration 
 
-|名称|说明|
+|“属性”|说明|
 |---|---|
 |id|文本内容审核 ID。|
 |bannedWordsCount |受禁单词的数目。|
@@ -706,7 +708,7 @@ visualContentModeration 块包含视频索引器找到的、可能具有成人�
 
 视频索引器根据语音和音频提示识别情感。确定的情感可能是：乐趣、悲伤、愤怒或恐惧。
 
-|名称|说明|
+|“属性”|说明|
 |---|---|
 |id|情感 ID。|
 |类型|根据语音和音频提示识别的情感时刻。情感可能是：乐趣、悲伤、愤怒或恐惧。|
@@ -796,7 +798,7 @@ visualContentModeration 块包含视频索引器找到的、可能具有成人�
 
 视频索引器从脚本中推理主要主题。 在可能的情况下，将包括第2级 [IPTC](https://iptc.org/standards/media-topics/) 分类。 
 
-|名称|说明|
+|“属性”|说明|
 |---|---|
 |id|主题 ID。|
 |name|主题名称，例如：“Pharmaceuticals”。|
@@ -839,7 +841,7 @@ visualContentModeration 块包含视频索引器找到的、可能具有成人�
 
 #### <a name="speakers"></a>扬声器
 
-|名称|说明|
+|“属性”|说明|
 |---|---|
 |id|发言人 ID。|
 |name|扬声器名称，格式为 "发言人 # *<number>* "，例如： "发言人 #1"。|

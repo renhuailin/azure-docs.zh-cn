@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 09/11/2020
+ms.date: 02/05/2021
 ms.author: juliako
-ms.openlocfilehash: 06f5e19718445f44dd2302faf280f083cce0774f
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 12d23ec471329bd4e0ecb502750198e946e58872
+ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98783795"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100530223"
 ---
 # <a name="what-is-azure-media-services-video-indexer"></a>什么是 Azure 媒体服务视频索引器？
 
@@ -84,7 +84,7 @@ ms.locfileid: "98783795"
 * **说话人枚举**：映射和了解哪个说话人在何时说了哪些话。 可以在单个音频文件中检测十六个扬声器。
 * **说话人统计信息**：提供说话人发言比率的统计数据。
 * **文本内容审核**：检测音频脚本中的显式文本。
-* **音效**：识别击掌、讲话和静音等音效。
+* **音频效果** (公共预览版) ：检测内容的非语音部分中的以下音频效果： Gunshot、玻璃破裂、警报、警笛、爆炸、犬吠、尖叫、大笑、反应 (喝彩、拍手和 booing) 和静默。 注意：仅当在 "上传预设" 中选择 "高级音频分析" 时，完整的事件集才可用，否则仅会提供 "无声" 和 "响应反应"。
 * **情感检测**：基于语音（所说的内容）和语调（说话的方式）识别情感。 情感可能是：快乐、悲伤、愤怒或恐惧。
 * **翻译**：将音频脚本翻译成 54 种不同的语言。
 

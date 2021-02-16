@@ -6,12 +6,12 @@ ms.author: jakras
 ms.date: 02/21/2020
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 321d73c78d0192dcb7a303f4aa70a4ff0f18ecea
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: 79f3f93338d15562dcc37857d63bc8b2d7e96b05
+ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99593699"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100530546"
 ---
 # <a name="remote-rendering-sessions"></a>远程渲染会话
 
@@ -39,9 +39,9 @@ Azure 远程渲染的工作原理是，将复杂的渲染任务卸载到云中�
 
 ### <a name="session-startup"></a>会话启动
 
-当请求 ARR [创建新会话](../how-tos/session-rest-api.md#create-a-session)时，第一步是返回会话 [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier)。 此 UUID 允许你查询有关会话的信息。 UUID 以及有关会话的一些基本信息将保留 30 天，因此即使在会话停止后，也可以查询这些信息。 此时，“会话状态”将报告为“开始”。
+当请求 ARR [创建新会话](../how-tos/session-rest-api.md)时，第一步是返回会话 [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier)。 此 UUID 允许你查询有关会话的信息。 UUID 以及有关会话的一些基本信息将保留 30 天，因此即使在会话停止后，也可以查询这些信息。 此时，“会话状态”将报告为“开始”。
 
-接下来，Azure 远程渲染将尝试查找可托管会话的服务器。 此搜索有两个参数。 首先，它将仅保留你所在[区域](../reference/regions.md)中的服务器。 这是因为跨区域的网络延迟可能太高，因而无法保证良好的体验。 第二个因素是指定的所需大小。 在每个区域中，有有限数量的服务器可满足 [*标准*](../reference/vm-sizes.md) 或 [*高级*](../reference/vm-sizes.md) 大小请求。 因此，如果所请求大小的所有服务器当前在你的区域中都处于使用中，则会话创建会失败。 [可以查询](../how-tos/session-rest-api.md#get-sessions-properties)失败的原因。
+接下来，Azure 远程渲染将尝试查找可托管会话的服务器。 此搜索有两个参数。 首先，它将仅保留你所在[区域](../reference/regions.md)中的服务器。 这是因为跨区域的网络延迟可能太高，因而无法保证良好的体验。 第二个因素是指定的所需大小。 在每个区域中，有有限数量的服务器可满足 [*标准*](../reference/vm-sizes.md) 或 [*高级*](../reference/vm-sizes.md) 大小请求。 因此，如果所请求大小的所有服务器当前在你的区域中都处于使用中，则会话创建会失败。 [可以查询](../how-tos/session-rest-api.md)失败的原因。
 
 > [!IMPORTANT]
 > 如果请求的是 *标准* 服务器大小并且请求由于高需求而失败，则不意味着请求 *高级* 服务器也会失败。 如果是这样的选项，可以尝试恢复为 *高级* 服务器大小。
@@ -77,7 +77,7 @@ Azure 远程渲染的工作原理是，将复杂的渲染任务卸载到云中�
 
 #### <a name="extend-a-sessions-lease-time"></a>延长会话的租用时间
 
-如果需要使用更长时间，可以[延长活动会话的租用时间](../how-tos/session-rest-api.md#modify-and-query-session-properties)。
+如果需要使用更长时间，可以[延长活动会话的租用时间](../how-tos/session-rest-api.md)。
 
 ## <a name="example-code"></a>示例代码
 
@@ -152,8 +152,8 @@ RemoteManagerStatic.ShutdownRemoteRendering();
 ## <a name="api-documentation"></a>API 文档
 
 * [C # RenderingSession 类](/dotnet/api/microsoft.azure.remoterendering.renderingsession)
-* [C # RemoteRenderingClient CreateNewRenderingSessionAsync ( # B1 ](/dotnet/api/microsoft.azure.remoterendering.remoterenderingclient.createnewrenderingsessionasync)
-* [C # RemoteRenderingClient OpenRenderingSessionAsync ( # B1 ](/dotnet/api/microsoft.azure.remoterendering.remoterenderingclient.openrenderingsessionasync)
+* [C # RemoteRenderingClient CreateNewRenderingSessionAsync () ](/dotnet/api/microsoft.azure.remoterendering.remoterenderingclient.createnewrenderingsessionasync)
+* [C # RemoteRenderingClient OpenRenderingSessionAsync () ](/dotnet/api/microsoft.azure.remoterendering.remoterenderingclient.openrenderingsessionasync)
 * [C + + RenderingSession 类](/cpp/api/remote-rendering/renderingsession)
 * [C + + RemoteRenderingClient：： CreateNewRenderingSessionAsync](/cpp/api/remote-rendering/remoterenderingclient#createnewrenderingsessionasync)
 * [C + + RemoteRenderingClient：： OpenRenderingSession](/cpp/api/remote-rendering/remoterenderingclient#openrenderingsession)

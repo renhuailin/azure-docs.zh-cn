@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/17/2021
 ms.author: yelevin
-ms.openlocfilehash: 0583846fcd847e92a6f001dae828d31d9d11cb00
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.openlocfilehash: b10c47a31bf1be10c278d4d9e0dce633bc7bff6c
+ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98567862"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100530631"
 ---
 # <a name="connect-your-juniper-srx-firewall-to-azure-sentinel"></a>将你的 SRX 防火墙连接到 Azure Sentinel
 
@@ -53,7 +53,7 @@ ms.locfileid: "98567862"
 
     1. 配置要收集的日志
 
-        - 选择工作区高级设置配置中的功能和严重性
+        - 选择工作区代理配置中的功能和严重性。
 
     1. 配置并连接刺柏 SRX
 

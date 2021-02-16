@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 11/03/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: e5009e59477e6862c4441090a6480075c9e22385
-ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
+ms.openlocfilehash: b713a19cbe572998bb6e5050ab2d7721a844f07a
+ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100526777"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100530444"
 ---
 # <a name="manage-a-graph-of-digital-twins-using-relationships"></a>使用关系管理数字孪生图
 
@@ -49,11 +49,11 @@ Azure 数字孪生的核心是代表您的整个环境的克隆 [图](concepts-t
 关系 ID 在给定的源克隆中必须是唯一的。 它不需要是全局唯一的。
 例如，对于双子 *foo*，每个特定的关系 ID 都必须是唯一的。 但是，另一个克隆 *栏* 可以具有与 *foo* 关系的相同 ID 匹配的传出关系。
 
-下面的代码示例演示如何在 Azure 数字孪生实例中创建关系。
+下面的代码示例演示如何在 Azure 数字孪生实例中创建关系。 它使用 SDK 调用 (突出显示在可能出现在较大程序上下文中的自定义方法中) 。
 
-:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="CreateRelationshipMethod":::
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="CreateRelationshipMethod" highlight="13":::
 
-在 main 方法中，现在可以调用自定义函数来创建 _contains_ 关系，如下所示： 
+现在可以调用此自定义函数来创建 _contains_ 关系，如下所示： 
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="UseCreateRelationship":::
 
@@ -82,9 +82,9 @@ Azure 数字孪生的核心是代表您的整个环境的克隆 [图](concepts-t
 
 这会返回 `Azure.Pageable<T>` 或 `Azure.AsyncPageable<T>` ，具体取决于你使用的是调用的同步还是异步版本。
 
-下面是一个检索关系列表的示例：
+下面是一个检索关系列表的示例。 它使用 SDK 调用 (突出显示在可能出现在较大程序上下文中的自定义方法中) 。
 
-:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="FindOutgoingRelationshipsMethod":::
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="FindOutgoingRelationshipsMethod" highlight="8":::
 
 你现在可以调用此自定义方法来查看孪生的传出关系，如下所示：
 
@@ -96,11 +96,12 @@ Azure 数字孪生的核心是代表您的整个环境的克隆 [图](concepts-t
 
 Azure 数字孪生还提供了一个 API，用于查找到给定克隆的所有 **传入** 关系。 这通常适用于反向导航或删除克隆。
 
-前面的代码示例重点介绍了从一次克隆查找传出关系的情况。 下面的示例在结构上类似，但却找到了到双子的 *传入* 关系。
+>[!NOTE]
+> `IncomingRelationship` 调用不返回关系的完整正文。 有关类的详细信息 `IncomingRelationship` ，请参阅 [参考文档](/dotnet/api/azure.digitaltwins.core.incomingrelationship?view=azure-dotnet&preserve-view=true)。
 
-请注意， `IncomingRelationship` 调用不返回关系的完整正文。
+上一部分中的代码示例重点介绍了如何从克隆中查找传出关系。 下面的示例在结构上类似，但却找到了到双子的 *传入* 关系。 此示例还使用 SDK 调用 (突出显示的) 在较大程序的上下文中可能出现的自定义方法内部。
 
-:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="FindIncomingRelationshipsMethod":::
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="FindIncomingRelationshipsMethod" highlight="8":::
 
 你现在可以调用此自定义方法来查看孪生的传入关系，如下所示：
 
@@ -108,11 +109,11 @@ Azure 数字孪生还提供了一个 API，用于查找到给定克隆的所有 
 
 ### <a name="list-all-twin-properties-and-relationships"></a>列出所有克隆的属性和关系
 
-使用上述方法列出与克隆的传出和传入关系，你可以创建一种方法来打印完全不完整的信息，包括克隆的属性以及这两种类型的关系。 下面是演示如何执行此操作的示例自定义方法。
+使用上述方法列出与克隆的传出和传入关系，你可以创建一种方法来打印完全不完整的信息，包括克隆的属性以及这两种类型的关系。 下面是一个示例自定义方法，演示如何组合以上自定义方法以实现此目的。
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="FetchAndPrintMethod":::
 
-你现在可以在 main 方法中调用此自定义函数，如下所示： 
+你现在可以调用此自定义函数，如下所示： 
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="UseFetchAndPrint":::
 
@@ -125,7 +126,9 @@ Azure 数字孪生还提供了一个 API，用于查找到给定克隆的所有 
 
 客户端调用所需的参数是 (源的源的 ID) ，要更新的关系的 ID 和包含要更新的属性和新值的 [JSON 修补](http://jsonpatch.com/) 文档。
 
-:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="UpdateRelationshipMethod":::
+下面是演示如何使用此方法的示例代码。 此示例使用 (突出显示的 SDK 调用) 可能出现在较大程序上下文中的自定义方法。
+
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="UpdateRelationshipMethod" highlight="6":::
 
 下面的示例说明了如何调用此自定义方法，并传入 JSON 修补程序文档，其中包含用于更新属性的信息。
 
@@ -135,7 +138,9 @@ Azure 数字孪生还提供了一个 API，用于查找到给定克隆的所有 
 
 第一个参数指定源的源位置 (关系源自的位置) 。 另一个参数是关系 ID。 由于关系 Id 只在克隆的作用域内是唯一的，因此您需要同时使用的 ID 和关系 ID。
 
-:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="DeleteRelationshipMethod":::
+下面是演示如何使用此方法的示例代码。 此示例使用 (突出显示的 SDK 调用) 可能出现在较大程序上下文中的自定义方法。
+
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="DeleteRelationshipMethod" highlight="5":::
 
 你现在可以调用此自定义方法以删除类似于下面的关系：
 

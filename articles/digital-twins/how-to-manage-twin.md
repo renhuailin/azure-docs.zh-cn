@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 4e8ba291f32456bf2b8432620d1f9ea313629c9d
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 46c41a4868c80bf9ba1c2c6d4a8286c3a8f47c3d
+ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98600509"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100530427"
 ---
 # <a name="manage-digital-twins"></a>管理数字孪生
 
@@ -86,7 +86,7 @@ ms.locfileid: "98600509"
 
 此调用返回作为强类型对象类型（如）的非整型数据 `BasicDigitalTwin` 。 `BasicDigitalTwin` 是 SDK 中包含的序列化帮助器类，它将返回以预分析形式返回的核心数据和属性。 下面的示例演示如何使用此方法来查看克隆的详细信息：
 
-:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_sample.cs" id="GetTwin":::
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_sample.cs" id="GetTwin" highlight="2":::
 
 使用方法检索次克隆时，仅返回至少已设置一次的属性 `GetDigitalTwin()` 。
 
@@ -130,7 +130,7 @@ ms.locfileid: "98600509"
 数字克隆的已定义属性在数字克隆上作为顶级属性返回。 不属于 DTDL 定义的元数据或系统信息将以 `$` 前缀返回。 元数据属性包括：
 * 此 Azure 数字孪生实例中数字输出的 ID，如 `$dtId` 。
 * `$etag`，由 web 服务器分配的标准 HTTP 字段。
-* 节中的其他属性 `$metadata` 。 其中包括：
+* 节中的其他属性 `$metadata` 。 这些方法包括：
     - 数字克隆的模型的 DTMI。
     - 每个可写属性的同步状态。 这对于设备最为有用，在这种情况下，在设备处于) 脱机状态时，服务和设备可能会 (分叉状态。 目前，此属性仅适用于连接到 IoT 中心的物理设备。 使用元数据部分中的数据，可以了解属性的完整状态以及上次修改的时间戳。 有关同步状态的详细信息，请参阅有关同步设备状态的 [此 IoT 中心教程](../iot-hub/tutorial-device-twins.md) 。
     - 服务特定的元数据，如 IoT 中心或 Azure 数字孪生。 
@@ -208,9 +208,9 @@ Azure 数字孪生确保所有传入的请求经过一次处理。 这意味着�
 
 可以使用方法删除孪生 `DeleteDigitalTwin()` 。 但是，如果没有更多的关系，则只能删除一个克隆。 因此，请先删除克隆的传入和传出关系。
 
-下面是用于删除孪生及其关系的代码示例：
+下面是用于删除孪生及其关系的代码示例。 `DeleteDigitalTwin`SDK 调用将突出显示，以明确其在更广泛的示例上下文中的位置。
 
-:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_sample.cs" id="DeleteTwin":::
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_sample.cs" id="DeleteTwin" highlight="7":::
 
 ### <a name="delete-all-digital-twins"></a>删除所有数字孪生
 
@@ -227,7 +227,7 @@ Azure 数字孪生确保所有传入的请求经过一次处理。 这意味着�
 在运行该示例之前，请执行以下操作：
 1. 下载模型文件，将其放在您的项目中，并替换 `<path-to>` 以下代码中的占位符，告诉您的程序在何处找到该文件。
 2. 将占位符替换 `<your-instance-hostname>` 为你的 Azure 数字孪生实例的主机名。
-3. 向项目添加两个依赖于 Azure 数字孪生所需的依赖项。 第一个是适用于 .NET 的 [Azure 数字孪生 SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)的包，第二个包提供的工具可帮助进行 azure 身份验证。
+3. 向项目添加两个依赖于 Azure 数字孪生所需的依赖项。 第一个是[适用于 .NET 的 Azure 数字孪生 SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) 的包，第二个提供工具来帮助向 Azure 进行身份验证。
 
       ```cmd/sh
       dotnet add package Azure.DigitalTwins.Core

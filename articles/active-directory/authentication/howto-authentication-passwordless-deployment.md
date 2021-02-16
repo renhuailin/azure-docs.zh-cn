@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a786907c5c954aa45de266b6d92dd47867a8445d
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 24d04c148e8a96e3b1d72c5301f6226df6d9a569
+ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96743609"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100530342"
 ---
 # <a name="plan-a-passwordless-authentication-deployment-in-azure-active-directory"></a>在 Azure Active Directory 中规划无密码 authentication 部署
 
@@ -150,7 +150,7 @@ Microsoft Authenticator 应用可从 Google Play 或 Apple App Store 免费下�
 -    在支持的浏览器上 Azure Active Directory web 应用
 -    加入 Windows 10 设备 Azure Active Directory
 -    混合 Azure Active Directory 加入 Windows 10 设备 (预览版) 
-     -    提供对基于云的资源和本地资源的访问权限。 有关访问本地资源的详细信息，请参阅 [使用 FIDOP2 密钥的 SSO 到本地资源](./howto-authentication-passwordless-security-key-on-premises.md)
+     -    提供对基于云的资源和本地资源的访问权限。 有关访问本地资源的详细信息，请参阅 [使用 FIDO2 密钥的 SSO 到本地资源](./howto-authentication-passwordless-security-key-on-premises.md)
 
 必须启用 **兼容的 FIDO2 安全密钥**。 Microsoft [与 FIDO2 重要供应商宣布了重要的合作关系](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Microsoft-passwordless-partnership-leads-to-innovation-and-great/ba-p/566493)。
 
@@ -294,7 +294,7 @@ Azure AD 将条目添加到审核日志中：
 
 | Azure AD 角色 | 描述 |
 | --- | --- |
-| 全局管理员角色|可实现组合注册体验的最小特权角色。 |
+| 全局管理员|可实现组合注册体验的最小特权角色。 |
 | 身份验证管理员 | 最小特权角色可以实现和管理身份验证方法。 |
 | 用户 | 用于在设备上配置验证器应用的最小特权角色，或用于注册 web 或 Windows 10 登录的安全密钥设备。 |
 

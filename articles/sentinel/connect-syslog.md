@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
-ms.openlocfilehash: 35c8c2aa31887feb294b04b8a88bbe5478659e5e
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: f249a95551916311fab51ebef72b55d9a4343c0b
+ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807897"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100530512"
 ---
 # <a name="collect-data-from-linux-based-sources-using-syslog"></a>使用 Syslog 从基于 Linux 的源收集数据
 
@@ -67,17 +67,17 @@ ms.locfileid: "99807897"
 
 ### <a name="configure-the-log-analytics-agent"></a>配置 Log Analytics 代理
 
-1. 在 Syslog 连接器边栏选项卡底部，单击 " **打开工作区高级设置配置 >** " 链接。
+1. 在 Syslog 连接器边栏选项卡底部，单击 " **打开工作区代理配置" >** 链接。
 
-1. 在 "**高级设置**" 边栏选项卡中，选择 "**数据**  >  **系统日志**"。 然后，添加要收集的连接器的功能。
+1. 在 " **代理配置** " 边栏选项卡中，选择 " **Syslog** " 选项卡。然后，添加要收集的连接器的功能。 选择 "添加设备"，然后从 "工具" 下拉列表中选择 " **添加设备** "。
     
     - 添加 syslog 设备在其日志标头中包含的工具。 
     
     - 如果要将异常 SSH 登录检测与收集的数据一起使用，请添加 **auth** 和 **authpriv**。 有关更多详细信息，请参阅 [以下部分](#configure-the-syslog-connector-for-anomalous-ssh-login-detection) 。
 
-1. 如果已添加要监视的所有设备，并调整每个设备的任何严重性选项，请选中 " **将下面的配置应用到我的计算机**" 复选框。
+1. 如果已添加要监视的所有设备，请验证是否已标记所有所需严重级别的复选框。
 
-1. 选择“保存”。 
+1. 选择“应用”。 
 
 1. 在 VM 或设备上，请确保正在发送指定的设施。
 
@@ -88,7 +88,6 @@ ms.locfileid: "99807897"
 > [!NOTE]
 > **使用同一台计算机转发普通 Syslog *和* CEF 消息**
 >
->
 > 你可以使用现有的 [CEF 日志转发器计算机](connect-cef-agent.md) 从普通 Syslog 源收集和转发日志。 但是，您必须执行以下步骤以避免以这两种格式将事件发送到 Azure Sentinel，因为这将导致事件重复。
 >
 >    已根据 [CEF 源设置了数据收集](connect-common-event-format.md)，并按上述方式配置 Log Analytics 代理：
@@ -97,7 +96,6 @@ ms.locfileid: "99807897"
 >
 > 1. 必须在这些计算机上运行以下命令，才能在 Azure Sentinel 中通过 Syslog 配置禁用代理的同步。 这可以确保在上一步中所做的配置更改不会被覆盖。<br>
 > `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/OMS_MetaConfigHelper.py --disable'`
-
 
 ### <a name="configure-the-syslog-connector-for-anomalous-ssh-login-detection"></a>为异常 SSH 登录检测配置 Syslog 连接器
 
@@ -113,10 +111,7 @@ Azure Sentinel 可以将机器学习 (ML) 应用到 syslog 数据，以确定安
  
 此检测需要 Syslog 数据连接器的特定配置： 
 
-1. 对于前一过程中的步骤5，请确保选择 " **身份验证** " 和 " **authpriv** " 作为要监视的设施。 保留 "严重性" 选项的默认设置，以便所有这些选项都处于选中状态。 例如：
-    
-    > [!div class="mx-imgBorder"]
-    > ![异常 SSH 登录检测所需的设施](./media/connect-syslog/facilities-ssh-detection.png)
+1. 对于 "配置上述 [Log Analytics 代理](#configure-the-log-analytics-agent) " 下的步骤2，请确保选择 " **身份验证** " 和 " **authpriv** " 作为要监视的设施，并选择所有严重性。 
 
 2. 留出足够的时间来收集 syslog 信息。 然后，导航到 " **Azure Sentinel 日志**"，复制并粘贴以下查询：
     

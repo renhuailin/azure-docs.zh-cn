@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/25/2021
 ms.author: yelevin
-ms.openlocfilehash: 0dccd8ac4f852688bf7e59e7ed96c4458c08d18b
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 3f3e945a00ec7bba75deebb56118d45aa7ff571d
+ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98784722"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100530716"
 ---
 # <a name="enable-user-and-entity-behavior-analytics-ueba-in-azure-sentinel"></a>在 Azure Sentinel 中 (UEBA) 启用用户和实体行为分析 
 
 > [!IMPORTANT]
 >
-> - "UEBA" 和 "实体" 页功能现已 **公开上市** ，其中包括：*_所有_* _ Azure Sentinel 地域和区域。
+> - UEBA 和实体页功能现已在 **_所有_** Azure Sentinel 地理位置和区域 **公开上市**。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -33,13 +33,16 @@ ms.locfileid: "98784722"
 
 - 你的用户必须是你组织的 Azure Active Directory 的成员，而不是来宾用户。
 
-- 必须为用户分配 Azure AD 中的 "*全局管理员*" 或 " **安全管理员** " 角色。
+- 你的用户必须被分配到 Azure AD 中的 " **全局管理员** " 或 " **安全管理员** " 角色。
 
 - 你的用户必须至少分配以下 **azure 角色** 之一 ([详细了解 Azure RBAC](roles.md)) ：
     - 工作区或资源组级别的 **Azure Sentinel 参与者**。
     - 在资源组或订阅级别 **Log Analytics 参与者**。
 
 - 你的工作区不得应用任何 Azure 资源锁。 [了解有关 Azure 资源锁定的详细信息](../azure-resource-manager/management/lock-resources.md)。
+
+> [!NOTE]
+> 向 Azure Sentinel 添加 UEBA 功能不需要任何特殊许可证，但可能会收取 **额外的费用** 。
 
 ## <a name="how-to-enable-user-and-entity-behavior-analytics"></a>如何启用用户和实体行为分析
 
