@@ -131,8 +131,8 @@
               displayName: 'Active Directory, roles, permissions'
               href: how-to-create-and-manage-users.md
             - name: 定义全局用户访问控制
-              displayName: 'business unit, site, region'
               href: how-to-define-global-user-access-control.md
+              displayName: 'business unit, site, region, user'
         - name: 控制要监视的流量
           displayName: 'Windows, Learning, Smart IT Learning, DNS, DHCP, engines, subnets'
           href: how-to-control-what-traffic-is-monitored.md
@@ -140,8 +140,8 @@
           displayName: 'disconnect, connect, activation file, sensor backup'
           href: how-to-manage-sensors-from-the-on-premises-management-console.md
         - name: 管理单个传感器
-          displayName: 'activation, certificate, connect, timezone time zone, backup, restore, software update, failure'
           href: how-to-manage-individual-sensors.md
+          displayName: 'activation, certificate, SSL, TLS, connect, timezone time zone, backup, restore, software update, failure'
         - name: 管理云中的传感器
           href: how-to-manage-sensors-on-the-cloud.md
         - name: 管理本地管理控制台
@@ -153,10 +153,13 @@
           items:
             - name: 调查设备清单中的所有企业传感器检测
               href: how-to-investigate-all-enterprise-sensor-detections-in-a-device-inventory.md
+              displayName: classification
             - name: 调查设备清单中的传感器检测
               href: how-to-investigate-sensor-detections-in-a-device-inventory.md
+              displayName: 'classification, Windows registry'
         - name: 使用传感器设备映射
           href: how-to-work-with-the-sensor-device-map.md
+          displayName: 'connections, Purdue, zoom'
         - name: 处理传感器检测到的警报
           items:
             - name: 处理传感器上的警报
@@ -165,8 +168,10 @@
               href: how-to-view-alerts.md
             - name: 查看警报中提供的信息
               href: how-to-view-information-provided-in-alerts.md
+              displayName: PCAP
             - name: 管理警报事件
               href: how-to-manage-the-alert-event.md
+              displayName: 'PCAP, acknowledge, learn, mute, policy'
             - name: 加快警报事件响应速度
               href: how-to-accelerate-alert-incident-response.md
               displayName: 'custom, alerts, comments, groups'
@@ -175,18 +180,21 @@
               displayName: 'integration, partners, vendor, Syslog server, NetWitness,CEF, LEEF, email'
         - name: 深入了解全球、区域和本地威胁
           href: how-to-gain-insight-into-global-regional-and-local-threats.md
+          displayName: 'site, business unit, region, map'
         - name: 处理本地管理控制台上的警报
           href: how-to-work-with-alerts-on-premises-management-console.md
         - name: 创建报表
           items:
             - name: 创建风险评估报告
               href: how-to-create-risk-assessment-reports.md
+              displayName: 'vulnerability, security score, score'
             - name: 创建攻击途径报告
               href: how-to-create-attack-vector-reports.md
             - name: 创建数据挖掘报告
               href: how-to-create-data-mining-queries.md
             - name: 创建趋势和统计信息报告
-              href: how-to-create-data-mining-queries.md
+              href: how-to-create-trends-and-statistics-reports.md
+              displayName: 'widgets, charts'
         - name: 丰富设备信息
           items:
             - name: 处理设备通知
