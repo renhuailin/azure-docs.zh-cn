@@ -3,12 +3,12 @@ title: 教程 - 备份 Azure VM 中的 SAP HANA 数据库
 description: 在本教程中，了解如何将 Azure VM 上运行的 SAP HANA 数据库备份到 Azure 备份恢复服务保管库。
 ms.topic: tutorial
 ms.date: 02/24/2020
-ms.openlocfilehash: 31a0a773096ec0f69e87bfd4a05f8ba98185e6cf
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: ede8ebab205e814de3988a2b5c432a21f965eb55
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94695208"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99987781"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm"></a>教程：备份 Azure VM 中的 SAP HANA 数据库
 
@@ -98,6 +98,46 @@ ms.locfileid: "94695208"
 ### <a name="use-an-http-proxy-server-to-route-traffic"></a>使用 HTTP 代理服务器路由流量
 
 备份在 Azure VM 上运行的 SAP HANA 数据库时，该 VM 上的备份扩展将使用 HTTPS API 将管理命令发送到 Azure 备份，并将数据发送到 Azure 存储。 备份扩展还使用 Azure AD 进行身份验证。 通过 HTTP 代理路由这三个服务的备份扩展流量。 使用上面提到的 IP 和 FQDN 列表，以允许访问所需的服务。 不支持已经过身份验证的代理服务器。
+
+## <a name="understanding-backup-and-restore-throughput-performance"></a>了解备份和还原吞吐量性能
+
+SAP HANA Azure VM 中通过 Backint 提供的备份（日志和非日志）将流式传输到 Azure 恢复服务保管库，因此，了解此流式传输方法非常重要。
+
+HANA 的 Backint 组件提供了连接到数据库文件所在底层磁盘的“管道”（要读取的管道，以及要写入到的管道），这些数据库文件将由 Azure 备份服务读取并传输到 Azure 恢复服务保管库。 除了 backint 本机验证检查以外，Azure 备份服务还会执行校验和来验证流。 这些验证将确保 Azure 恢复服务保管库中存在的数据确实可靠且可恢复。
+
+由于流主要处理磁盘，因此你需要了解磁盘性能以衡量备份和还原性能。 请参阅[此文](https://docs.microsoft.com/azure/virtual-machines/disks-performance)，深入了解 Azure VM 中的磁盘吞吐量和性能。 这些也适用于备份和还原性能。
+
+对于 HANA 的非日志备份（例如完整备份、差异备份和增量备份），Azure 备份服务会尝试实现最大大约为 420 MBps 的吞吐量，对于 HANA 的日志备份，则会尝试实现最大大约为 100 MBps 的吞吐量。 如上所述，这些并非保证的速度，并且它们取决于以下因素：
+
+* VM 的最大非缓存磁盘吞吐量
+* 底层磁盘类型及其吞吐量
+* 同时尝试读取和写入同一磁盘的进程的数目。
+
+> [!IMPORTANT]
+> 在较小的 VM 中，如果非缓存的磁盘吞吐量非常接近或小于 400 MBps，那么你可能会担心整个磁盘 IOPS 都将由备份服务使用，而这可能会影响与磁盘上的读取/写入相关的 SAP HANA 操作。 在这种情况下，如果希望将备份服务使用量限制为最大限值，则可以参阅下一部分。
+
+### <a name="limiting-backup-throughput-performance"></a>限制备份吞吐量性能
+
+如果要将备份服务磁盘 IOPS 使用量限制为最大值，请执行以下步骤。
+
+1. 转到“opt/msawb/bin”文件夹
+2. 创建名为“ExtensionSettingOverrides”的新 JSON 文件
+3. 将键值对添加到 JSON 文件，如下所示：
+
+    ```json
+    {
+    "MaxUsableVMThroughputInMBPS": 200
+    }
+    ```
+
+4. 更改文件的权限和所有权，如下所示：
+    
+    ```bash
+    chmod 750 ExtensionSettingsOverrides.json
+    chown root:msawb ExtensionSettingsOverrides.json
+    ```
+
+5. 不需要重新启动任何服务。 Azure 备份服务将尝试限制此文件中提到的吞吐量性能。
 
 ## <a name="what-the-pre-registration-script-does"></a>注册前脚本的功能
 
