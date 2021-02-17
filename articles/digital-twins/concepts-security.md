@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: bf92765431ea6b0f80b96ab7d61e8e830220dc82
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: b589f98ee78d0709b2a74ba4e364cec0e486e968
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98934545"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100547156"
 ---
 # <a name="secure-azure-digital-twins"></a>保护 Azure 数字孪生
 
@@ -53,11 +53,6 @@ Azure 提供了 **两个 azure 内置角色** ，用于授权对 Azure 数字孪
 | --- | --- | --- |
 | Azure 数字孪生数据所有者 | 通过 Azure 数字孪生资源提供完全访问权限 | bcd981a7-7f74-457b-83e1-cceb9e632ffe |
 | Azure 数字孪生数据读者 | 提供对 Azure 数字孪生资源的只读访问权限 | d57506d4-4c8d-48b1-8587-93c323f6a5a3 |
-
->[!NOTE]
-> 最近在预览版中将这些角色重命名为其以前的名称：
-> * *Azure 数字孪生数据所有者* 以前是 *Azure 数字孪生所有者 (预览)*。
-> * *Azure 数字孪生数据读取器* 是以前的 *Azure 数字孪生读卡器 (预览)*。
 
 可以通过两种方式分配角色：
 * 通过访问控制 (的 IAM) 窗格中的 Azure 数字孪生在 Azure 门户中 (参阅 [*使用 Azure 门户添加或删除 azure 角色分配*](../role-based-access-control/role-assignments-portal.md)) 

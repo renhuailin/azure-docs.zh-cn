@@ -4,12 +4,12 @@ description: 本文提供了有关如何向虚拟网络中添加 Microsoft.Servi
 ms.topic: article
 ms.date: 02/12/2021
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 6b168bbdc69f2d18a724084d9de694fa83d23dda
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: 2e00c9429ab3e39f95bc5ce6df072a99e4f02b86
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100516135"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100559566"
 ---
 # <a name="allow-access-to-azure-service-bus-namespace-from-specific-virtual-networks"></a>允许从特定虚拟网络访问 Azure 服务总线命名空间
 通过将服务总线与[虚拟网络 (VNet) 服务终结点][vnet-sep]集成可从绑定到虚拟网络的工作负荷（如虚拟机）安全地访问消息传递功能，同时在两端保护网络流量路径。
@@ -18,15 +18,16 @@ ms.locfileid: "100516135"
 
 然后，绑定到子网的工作负荷与相应的服务总线命名空间之间将存在专用和独立的关系，消息传递服务终结点的可观察网络地址位于公共 IP 范围内对此没有影响。
 
->[!WARNING]
-> 实现虚拟网络集成可以防止其他 Azure 服务与服务总线交互。 例外情况是，即使启用了网络服务终结点，也可以允许从某些受信任的服务访问服务总线资源。 有关受信任服务的列表，请参阅[受信任服务](#trusted-microsoft-services)。
->
-> 以下 Microsoft 服务必须在虚拟网络中
-> - Azure 应用服务
-> - Azure Functions
+实现虚拟网络集成可以防止其他 Azure 服务与服务总线交互。 例外情况是，即使启用了网络服务终结点，也可以允许从某些受信任的服务访问服务总线资源。 有关受信任服务的列表，请参阅[受信任服务](#trusted-microsoft-services)。
+
+以下 Microsoft 服务必须在虚拟网络中
+- Azure 应用服务
+- Azure Functions
+
+虚拟网络仅在[高级层](service-bus-premium-messaging.md)服务总线命名空间中受支持。 将 VNet 服务终结点用于服务总线时，不应在混合使用标准层和高级层服务总线命名空间的应用程序中启用这些终结点。 原因是标准层不支持 VNet。 此终结点仅限于高级层命名空间。
 
 > [!IMPORTANT]
-> 虚拟网络仅在[高级层](service-bus-premium-messaging.md)服务总线命名空间中受支持。 将 VNet 服务终结点用于服务总线时，不应在混合使用标准层和高级层服务总线命名空间的应用程序中启用这些终结点。 原因是标准层不支持 VNet。 此终结点仅限于高级层命名空间。
+> 为命名空间指定至少一个 IP 规则或虚拟网络规则，以便仅允许来自虚拟网络的指定 IP 地址或子网的流量。 如果没有 IP 和虚拟网络规则，则可以使用访问密钥) 通过公共 internet (访问该命名空间。  
 
 ## <a name="advanced-security-scenarios-enabled-by-vnet-integration"></a>通过 VNet 集成启用的高级安全方案 
 
@@ -57,9 +58,6 @@ ms.locfileid: "100516135"
     > [!NOTE]
     > 只会为“高级”命名空间显示“网络”选项卡 。  
     
-    >[!WARNING]
-    > 如果选择 " **所选网络** " 选项，并且在此页上未添加至少一个 IP 防火墙规则或虚拟网络，则可以使用访问密钥) 通过公共 internet (访问该命名空间。
-
     :::image type="content" source="./media/service-bus-ip-filtering/default-networking-page.png" alt-text="网络页面 - 默认" lightbox="./media/service-bus-ip-filtering/default-networking-page.png":::
     
     如果你选择“所有网络”选项，你的服务总线命名空间将接受来自 IP 地址的连接。 此默认设置等效于接受 0.0.0.0/0 IP 地址范围的规则。 
@@ -69,6 +67,9 @@ ms.locfileid: "100516135"
 1. 在页面的“虚拟网络”部分，选择“+添加现有虚拟网络” 。 
 
     ![添加现有虚拟网络](./media/service-endpoints/add-vnet-menu.png)
+
+    >[!WARNING]
+    > 如果选择 " **所选网络** " 选项，并且在此页上未添加至少一个 IP 防火墙规则或虚拟网络，则可以使用访问密钥) 通过公共 internet (访问该命名空间。
 3. 从虚拟网络列表中选择虚拟网络，然后选择“子网”。 将虚拟网络添加到列表之前，必须启用服务终结点。 如果未启用服务终结点，门户将提示启用。
    
    ![选择子网](./media/service-endpoints/select-subnet.png)

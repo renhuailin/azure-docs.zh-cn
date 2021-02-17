@@ -5,12 +5,12 @@ services: container-service
 ms.custom: fasttrack-edit, references_regions, devx-track-azurecli
 ms.topic: article
 ms.date: 09/04/2020
-ms.openlocfilehash: 319e56f5cec6df07230ded22277bc74c2a430133
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 481dc112b36e1f9fba3739f5b88e34d15d538e47
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99561984"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100558958"
 ---
 # <a name="create-an-azure-kubernetes-service-aks-cluster-that-uses-availability-zones"></a>创建使用可用性区域的 Azure Kubernetes 服务 (AKS) 群集
 
@@ -40,6 +40,7 @@ Azure Kubernetes 服务 (AKS) 群集跨基础 Azure 基础结构的逻辑部分�
 * 东南亚
 * 美国中南部
 * 英国南部
+* US Gov 弗吉尼亚州
 * 西欧
 * 美国西部 2
 

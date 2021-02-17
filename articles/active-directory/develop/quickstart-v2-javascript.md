@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: b2ae48c76ccba80d274e7463b31782b4fbc6a976
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: 60eed96e20ffcebc3ddefccffa2761017e28e0d2
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99225708"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100103611"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>快速入门：在 JavaScript SPA 中登录用户并获得访问令牌
 
@@ -37,7 +37,7 @@ ms.locfileid: "99225708"
 >
 > ### <a name="option-1-express-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>选项 1（快速）：注册并自动配置应用，然后下载代码示例
 >
-> 1. 转到 <a href="https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs" target="_blank">Azure 门户 - 应用注册<span class="docon docon-navigate-external x-hidden-focus"></span></a>快速入门体验。
+> 1. 转到 <a href="https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs" target="_blank">Azure 门户 - 应用注册</a>快速入门体验。
 > 1. 输入应用程序的名称。
 > 1. 在“支持的帐户类型”下，选择“任何组织目录中的帐户和个人 Microsoft 帐户”。 
 > 1. 选择“注册”  。
@@ -47,7 +47,7 @@ ms.locfileid: "99225708"
 >
 > #### <a name="step-1-register-your-application"></a>步骤 1：注册应用程序
 >
-> 1. 登录到 <a href="https://portal.azure.com/" target="_blank">Azure 门户<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
+> 1. 登录 <a href="https://portal.azure.com/" target="_blank">Azure 门户</a>。
 > 1. 如果有权访问多个租户，请使用顶部菜单中的“目录 + 订阅”筛选器:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::，选择要在其中注册应用程序的租户。
 > 1. 搜索并选择“Azure Active Directory”  。
 > 1. 在“管理”下，选择“应用注册” > “新建注册”  。
@@ -62,7 +62,7 @@ ms.locfileid: "99225708"
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>步骤 1：在 Azure 门户中配置应用程序
-> 本快速入门的示例代码要求使用重定向 URI `http://localhost:3000/` 并启用“隐式授权” 。
+> 为使本快速入门的代码示例正常运行，请添加重定向 URI `http://localhost:3000/` 并启用“隐式授权” 。
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [为我进行这些更改]()
 >
@@ -267,7 +267,7 @@ myMSALObj.acquireTokenSilent(tokenRequest)
 
 #### <a name="get-a-user-token-interactively"></a>以交互方式获取用户令牌
 
-在某些情况下，需要强制用户与 Microsoft 标识平台交互。 例如：
+在某些情况下，你要强制用户与 Microsoft 标识平台进行交互。 例如：
 * 由于密码已过期，用户可能需要重新输入凭据。
 * 应用程序正在请求访问用户需要许可的其他资源范围。
 * 需要双重身份验证。

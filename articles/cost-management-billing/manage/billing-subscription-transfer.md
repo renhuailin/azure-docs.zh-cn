@@ -8,15 +8,15 @@ tags: billing,top-support-issue
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 01/06/2021
+ms.date: 02/05/2021
 ms.author: banders
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: ae588708a41c1259628b726a3a471034dba7d131
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 87f29395e716ad3f06a99d6243b080acf86e4310
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98601529"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979415"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>将 Azure 订阅的计费所有权转移到另一帐户
 
@@ -80,7 +80,7 @@ Visual Studio 和 Microsoft 合作伙伴网络订阅具有关联的每月定期 
 取消转移请求：
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-1. 导航到“订阅”> 选择你为其发送了转移请求的订阅 > 选择“转移计费所有权” 。
+1. 导航到“订阅”，选择你为其发送了转移请求的订阅，然后选择“转移计费所有权” 。
 1. 在页面底部，选择“取消转移请求”。
 
 :::image type="content" source="./media/billing-subscription-transfer/transfer-billing-owership-cancel-request.png" alt-text="示例显示具有“取消转移请求”选项的“转移计费所有权”窗口" lightbox="./media/billing-subscription-transfer/transfer-billing-owership-cancel-request.png" :::
@@ -88,6 +88,20 @@ Visual Studio 和 Microsoft 合作伙伴网络订阅具有关联的每月定期 
 ## <a name="troubleshooting"></a>疑难解答
 
 如果在转移订阅时遇到问题，请使用以下故障排除信息。
+
+### <a name="original-azure-subscription-billing-owner-leaves-your-organization"></a>Azure 订阅的原始账单所有者离开了你的组织
+
+原因可能是创建 Azure 帐户和 Azure 订阅的原始账单所有者离开了你的组织。 如果出现此情况，那么组织的 Azure Active Directory 中将不再包含这些人员的用户标识。 随后会出现 Azure 订阅没有账单所有者的情况。 这会阻止任何人对帐户执行计费操作，包括查看账单和支付账单费用。 该订阅会进入过期状态。 最终由于未付费，订阅会被禁用。 而最后，订阅会被删除，这会影响在该订阅上运行的每项服务。
+
+当某订阅不再具备有效的账单所有者时，Azure 会向其他账单所有者、服务管理员、共同管理员和订阅所有者发送电子邮件，将此情况告知他们并提供链接供他们接受订阅的计费所有权。 任何用户都可选择该链接来接受计费所有权。 若要详细了解计费角色，请查看[计费角色](understand-mca-roles.md)以及[经典角色和 Azure RBAC 角色](../../role-based-access-control/rbac-and-directory-admin-roles.md)。
+
+下例展示了电子邮件的显示效果。
+
+:::image type="content" source="./media/billing-subscription-transfer/orphaned-subscription-email.png" alt-text="显示可在其中接受计费所有权的示例电子邮件的屏幕截图。" lightbox="./media/billing-subscription-transfer/orphaned-subscription-email.png" :::
+
+此外，Azure 还会在 Azure 门户中订阅的详细信息窗口中显示一个横幅，供账单所有者、服务管理员、共同管理员和订阅所有者查看。 选择横幅中的链接可接受计费所有权。
+
+:::image type="content" source="./media/billing-subscription-transfer/orphaned-subscription-example.png" alt-text="显示没有有效账单所有者的订阅示例的屏幕截图。" lightbox="./media/billing-subscription-transfer/orphaned-subscription-example.png" :::
 
 ### <a name="the-transfer-subscription-option-is-unavailable"></a>“转移订阅”选项不可用
 

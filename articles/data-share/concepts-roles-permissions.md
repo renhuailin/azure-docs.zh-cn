@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: ed4b4d9c1de1e9024e8ea86d4661b42d6c68b0ae
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: f5c5d6da239d302b57bdb37e9d49116a29c1ccb4
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96460996"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100558121"
 ---
 # <a name="roles-and-requirements-for-azure-data-share"></a>Azure Data Share 的角色和要求 
 
@@ -42,7 +42,7 @@ ms.locfileid: "96460996"
 
 |**SQL 数据库类型**|**数据访问接口 SQL 用户权限**|**数据使用者 SQL 用户权限**|
 |---|---|---|
-|Azure SQL Database | db_datareader | db_datareader、db_datawriter db_ddladmin
+|Azure SQL 数据库 | db_datareader | db_datareader、db_datawriter db_ddladmin
 |Azure Synapse Analytics | db_datareader | db_datareader、db_datawriter db_ddladmin
 |
 
@@ -61,9 +61,9 @@ ms.locfileid: "96460996"
 1. 选择 " **添加角色分配**"。
 1. 在 " *角色*" 下，选择上述角色分配表中的角色 (例如，对于 "存储帐户"，选择 " *存储 Blob 数据读取器* ") 。
 1. 在 " *选择*" 下，键入 Azure 数据共享资源的名称。
-1. 单击“保存”  。
+1. 单击“ *保存*”。
 
-若要了解有关角色分配的详细信息，请参阅 [使用 Azure 门户添加或删除 Azure 角色分配](../role-based-access-control/role-assignments-portal.md#add-a-role-assignment)。 如果你使用 REST Api 共享数据，则可以通过使用 [REST API 引用添加或删除 Azure 角色分配](../role-based-access-control/role-assignments-rest.md)来使用 API 创建角色分配。 
+若要了解有关角色分配的详细信息，请参阅 [使用 Azure 门户分配 Azure 角色](../role-based-access-control/role-assignments-portal.md)。 如果你使用 REST Api 共享数据，则可以通过使用 [REST API 引用分配 Azure 角色](../role-based-access-control/role-assignments-rest.md)来使用 API 创建角色分配。 
 
 对于基于 SQL 的源，需要在使用 Azure Active Directory 身份验证连接到 SQL 数据库时，通过与 Azure 数据共享资源同名的 SQL 数据库中的外部提供程序创建 SQL 用户。 需要授予此用户 *db_datareader* 权限。 可以在 [AZURE SQL 数据库或 Azure Synapse Analytics](how-to-share-from-sql.md) 的 "共享" 教程中找到与基于 SQL 的共享一起使用的示例脚本和其他先决条件。 
 
@@ -81,9 +81,9 @@ ms.locfileid: "96460996"
 1. 选择 " **添加角色分配**"。
 1. 在 " *角色*" 下，选择上述角色分配表中的角色 (例如，对于 "存储帐户"，选择 " *存储 Blob 数据读取器* ") 。
 1. 在 " *选择*" 下，键入 Azure 数据共享资源的名称。
-1. 单击“保存”  。
+1. 单击“ *保存*”。
 
-若要了解有关角色分配的详细信息，请参阅 [使用 Azure 门户添加或删除 Azure 角色分配](../role-based-access-control/role-assignments-portal.md#add-a-role-assignment)。 如果使用 REST Api 接收数据，则可以通过使用 [REST API 引用添加或删除 Azure 角色分配](../role-based-access-control/role-assignments-rest.md)来使用 API 创建角色分配。 
+若要了解有关角色分配的详细信息，请参阅 [使用 Azure 门户分配 Azure 角色](../role-based-access-control/role-assignments-portal.md)。 如果使用 REST Api 接收数据，则可以通过使用 [REST API 引用分配的 Azure 角色](../role-based-access-control/role-assignments-rest.md)来使用 API 创建角色分配。 
 
 对于基于 SQL 的目标，需要在使用 Azure Active Directory authentication 连接到 SQL 数据库时，通过与 Azure 数据共享资源相同的名称，从 SQL 数据库中的外部提供程序创建 SQL 用户。 此用户需要被授予 *db_datareader、db_datawriter db_ddladmin* 权限。 可以在 [AZURE SQL 数据库或 Azure Synapse Analytics](how-to-share-from-sql.md) 的 "共享" 教程中找到与基于 SQL 的共享一起使用的示例脚本和其他先决条件。 
 
@@ -107,4 +107,4 @@ ms.locfileid: "96460996"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 详细了解 Azure 中的角色 - [了解角色定义](../role-based-access-control/role-definitions.md)
+- 了解有关 Azure 中的角色的详细信息- [了解 azure 角色定义](../role-based-access-control/role-definitions.md)

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/27/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 1178b0ab5af3642026fe78c7de788f354691b13a
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: ecbf07c1a85c708d4117c83bca546cd8bd6ccd2b
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98701148"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546068"
 ---
 # <a name="connect-function-apps-in-azure-for-processing-data"></a>连接 Azure 中的函数应用以处理数据
 
@@ -36,7 +36,7 @@ ms.locfileid: "98701148"
 
 ## <a name="create-a-function-app-in-visual-studio"></a>在 Visual Studio 中创建函数应用
 
-在 Visual Studio 2019 中，选择 " _文件" > 新建 > 项目_ "，然后搜索 _Azure Functions_ 模板。 选择“_下一页_”。
+在 Visual Studio 2019 中，选择 " _文件" > 新建 > 项目_ "，然后搜索 _Azure Functions_ 模板。 选择“下一步”。
 
 :::image type="content" source="media/how-to-create-azure-function/create-azure-function-project.png" alt-text="显示 &quot;新建项目&quot; 对话框的 Visual Studio 屏幕截图。将突出显示 &quot;Azure Functions 项目&quot; 模板。":::
 
@@ -121,8 +121,6 @@ dotnet add package Azure.Core
 前面示例中的函数主干要求向其传递持有者令牌，以便能够通过 Azure 数字孪生进行身份验证。 若要确保传递此持有者令牌，需要为 function app 设置 [托管服务标识 (MSI) ](../active-directory/managed-identities-azure-resources/overview.md) 。 只需对每个 function app 执行一次此操作。
 
 你可以创建系统管理的标识，并将 function app 的标识分配给 Azure 数字孪生实例的 _**Azure 数字孪生数据所有者**_ 角色。 这将为实例中的 function app 权限指定执行数据平面活动。 然后，通过设置环境变量，使 Azure 数字孪生实例的 URL 可供函数访问。
-
-[!INCLUDE [digital-twins-role-rename-note.md](../../includes/digital-twins-role-rename-note.md)]
 
 使用 [Azure Cloud Shell](https://shell.azure.com) 运行命令。
 

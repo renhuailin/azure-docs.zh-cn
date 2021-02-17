@@ -4,16 +4,16 @@ description: 了解如何识别、诊断和排查 Azure Cosmos DB SQL 查询问�
 author: timsander1
 ms.service: cosmos-db
 ms.topic: troubleshooting
-ms.date: 02/02/2021
+ms.date: 02/16/2021
 ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: 6875fc53a651b89fcfe88d3217ff86bd21204f6c
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 6701a580cbe7790dcce2cbbcc46889f9dff00107
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99524277"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100559988"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>排查使用 Azure Cosmos DB 时遇到的查询问题
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -213,6 +213,12 @@ RU 费用：2.98 RU
 | 上限/下限                         | 不要使用系统函数来规范化数据以进行比较，而是在插入时规范化大小写。 诸如 ```SELECT * FROM c WHERE UPPER(c.name) = 'BOB'``` 的查询将变成 ```SELECT * FROM c WHERE c.name = 'BOB'```。 |
 | GetCurrentDateTime/GetCurrentTimestamp/GetCurrentTicks | 计算查询执行前的当前时间并在子句中使用该字符串值 `WHERE` 。 |
 | 数学函数（非聚合） | 如果需要频繁计算查询中的某个值，请考虑在 JSON 文档中将此值存储为属性。 |
+
+这些系统函数可以使用索引，但在包含聚合的查询中使用时除外：
+
+| 系统函数                     | 优化意见             |
+| --------------------------------------- |------------------------------------------------------------ |
+| 空间系统函数                        | 将查询结果存储在实时具体化视图中 |
 
 在子句中使用时 `SELECT` ，低效的系统函数不会影响查询使用索引的方式。
 

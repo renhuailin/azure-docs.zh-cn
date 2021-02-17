@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
 ms.custom: aaddev, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: 98110723063ee2a2c9deb75fc931655e18e5bc95
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 1af1c990c284c91d8bb8344834991c69ed6f00c5
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98938060"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100103628"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa-using-the-auth-code-flow"></a>快速入门：使用授权代码流在 JavaScript SPA 中登录用户并获取访问令牌
 
@@ -39,7 +39,7 @@ ms.locfileid: "98938060"
 >
 > ### <a name="option-1-express-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>选项 1（快速）：注册并自动配置应用，然后下载代码示例
 >
-> 1. 访问 <a href="https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs" target="_blank">Azure 门户 - 应用注册<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
+> 1. 访问 <a href="https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs" target="_blank">Azure 门户 - 应用注册</a>。
 > 1. 输入应用程序的名称。
 > 1. 在“支持的帐户类型”下，选择“任何组织目录中的帐户和个人 Microsoft 帐户”。 
 > 1. 选择“注册”。
@@ -49,7 +49,7 @@ ms.locfileid: "98938060"
 >
 > #### <a name="step-1-register-your-application"></a>步骤 1：注册应用程序
 >
-> 1. 登录到 <a href="https://portal.azure.com/" target="_blank">Azure 门户<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
+> 1. 登录 <a href="https://portal.azure.com/" target="_blank">Azure 门户</a>。
 > 1. 如果有权访问多个租户，请使用顶部菜单中的“目录 + 订阅”筛选器:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::，选择要在其中注册应用程序的租户。
 > 1. 搜索并选择“Azure Active Directory”  。
 > 1. 在“管理”下，选择“应用注册” > “新建注册”  。
@@ -63,7 +63,7 @@ ms.locfileid: "98938060"
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>步骤 1：在 Azure 门户中配置应用程序
-> 本快速入门的示例代码要求使用重定向 URI `http://localhost:3000/`。
+> 为使此快速入门中的代码示例正常运行，请添加重定向 URI `http://localhost:3000/`。
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [为我进行这些更改]()
 >

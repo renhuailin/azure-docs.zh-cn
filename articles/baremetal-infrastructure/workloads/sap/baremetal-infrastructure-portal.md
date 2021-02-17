@@ -2,13 +2,13 @@
 title: Azure 中的 BareMetal 实例单元
 description: 了解如何通过 Azure 门户确定 BareMetal 实例单位并与其交互。
 ms.topic: how-to
-ms.date: 1/4/2021
-ms.openlocfilehash: b089b45c35ff05f10ae59f8ce793645361be1e9b
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.date: 02/17/2021
+ms.openlocfilehash: 076e84473a7d067712625dd12a2d5cae42bfa91a
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98733257"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100548159"
 ---
 # <a name="manage-baremetal-instances-through-the-azure-portal"></a>通过 Azure 门户管理 BareMetal 实例
  
@@ -17,29 +17,13 @@ ms.locfileid: "98733257"
 ## <a name="register-the-resource-provider"></a>注册资源提供程序
 用于 BareMetal 实例的 Azure 资源提供程序提供了 Azure 门户中的实例的可见性，当前为公共预览版。 默认情况下，用于 BareMetal 实例部署的 Azure 订阅将注册 *BareMetalInfrastructure* 资源提供程序。 如果看不到部署的 BareMetal 实例单位，则必须将资源提供程序注册到订阅。 
 
-注册 BareMetal 实例资源提供程序有两种方法：
- 
-* [Azure CLI](#azure-cli)
- 
-* [Azure 门户](#azure-portal)
- 
-### <a name="azure-cli"></a>Azure CLI
- 
-通过 Azure CLI 登录到用于 BareMetal 实例部署的 Azure 订阅。 可以向注册 BareMetalInfrastructure 资源提供程序：
+可以通过使用 Azure 门户或 Azure CLI 来注册 BareMetal 实例资源提供程序。
 
-```azurecli-interactive
-az provider register --namespace Microsoft.BareMetalInfrastructure
-```
- 
-有关详细信息，请参阅 [Azure 资源提供程序和类型](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-powershell)一文。
- 
-### <a name="azure-portal"></a>Azure 门户
- 
-可以通过 Azure 门户注册 BareMetalInfrastructure 资源提供程序。
+### <a name="portal"></a>[Portal](#tab/azure-portal)
  
 你需要在 Azure 门户中列出你的订阅，然后双击用于部署 BareMetal 实例单位的订阅。
  
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 
 1. 在 Azure 门户菜单上，选择“所有服务”。
 
@@ -53,12 +37,32 @@ az provider register --namespace Microsoft.BareMetalInfrastructure
 >如果未注册资源提供程序，请选择“注册”。
  
 :::image type="content" source="media/baremetal-infrastructure-portal/register-resource-provider-azure-portal.png" alt-text="显示已注册的 BareMetal 实例单元的屏幕截图":::
- 
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+开始使用 Azure CLI：
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+通过 Azure CLI 登录到用于 BareMetal 实例部署的 Azure 订阅。 向 `BareMetalInfrastructure` [az provider register](/cli/azure/provider#az_provider_register) 命令注册资源提供程序：
+
+```azurecli
+az provider register --namespace Microsoft.BareMetalInfrastructure
+```
+
+您可以使用 [az provider list](/cli/azure/provider#az_provider_list) 命令查看所有可用的提供程序。
+
+---
+
+有关资源提供程序的详细信息，请参阅 [Azure 资源提供程序和类型](../../../azure-resource-manager/management/resource-providers-and-types.md)。
+
 ## <a name="baremetal-instance-units-in-the-azure-portal"></a>Azure 门户中的 BareMetal 实例单位
  
 提交 BareMetal 实例部署请求时，需要指定要连接到 BareMetal 实例的 Azure 订阅。 使用用于部署适用于 BareMetal 实例单位的应用程序层的订阅。
  
 在 BareMetal 实例的部署过程中，将在部署请求中使用的 Azure 订阅中创建新的 [azure 资源组](../../../azure-resource-manager/management/manage-resources-portal.md) 。 此新资源组列出你在特定订阅中部署的所有 BareMetal 实例单元。
+
+### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. 在 BareMetal 订阅的 Azure 门户中，选择 " **资源组**"。
  
@@ -75,10 +79,27 @@ az provider register --namespace Microsoft.BareMetalInfrastructure
    
    >[!NOTE]
    >如果在同一 Azure 订阅下部署了多个 BareMetal 实例租户，则会看到多个 Azure 资源组。
- 
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+若要查看所有 BareMetal 实例，请运行资源组的 [az baremetalinstance list](/cli/azure/ext/baremetal-infrastructure/baremetalinstance#ext_baremetal_infrastructure_az_baremetalinstance_list) 命令：
+
+```azurecli
+az baremetalinstance list --resource-group DSM05A-T550 –output table
+```
+
+> [!TIP]
+> `--output` 参数是全局参数，适用于所有命令。 table 值以友好格式显示输出。 有关详细信息，请参阅 [Azure CLI 命令的输出格式](/cli/azure/format-output-azure-cli)。
+
+---
+
 ## <a name="view-the-attributes-of-a-single-instance"></a>查看单个实例的属性
- 
-可以查看单个单元的详细信息。 在 BareMetal 实例的列表中，选择要查看的单个实例。
+
+可以查看单个单元的详细信息。
+
+### <a name="portal"></a>[Portal](#tab/azure-portal)
+
+在 BareMetal 实例的列表中，选择要查看的单个实例。
  
 :::image type="content" source="media/baremetal-infrastructure-portal/view-attributes-single-baremetal-instance.png" alt-text="显示单个实例的 BareMetal 实例单元属性的屏幕截图" lightbox="media/baremetal-infrastructure-portal/view-attributes-single-baremetal-instance.png":::
  
@@ -101,6 +122,18 @@ az provider register --namespace Microsoft.BareMetalInfrastructure
  
 >[!TIP]
 >若要在与修订版4.x 相同的 Azure 数据中心中查找应用程序层，请参阅 [azure 邻近性放置组以获得最佳网络延迟](../../../virtual-machines/workloads/sap/sap-proximity-placement-scenarios.md)。
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+若要查看 BareMetal 实例的详细信息，请运行 [az baremetalinstance show](/cli/azure/ext/baremetal-infrastructure/baremetalinstance#ext_baremetal_infrastructure_az_baremetalinstance_show) 命令：
+
+```azurecli
+az baremetalinstance show --resource-group DSM05A-T550 --instance-name orcllabdsm01
+```
+
+如果你不确定实例名称，请运行 `az baremetalinstance list` 上述命令（如上所述）。
+
+---
  
 ## <a name="check-activities-of-a-single-instance"></a>检查单个实例的活动
  
@@ -113,11 +146,31 @@ az provider register --namespace Microsoft.BareMetalInfrastructure
 记录的另一个活动是向实例添加标记或删除 [标记](../../../azure-resource-manager/management/tag-resources.md) 。
  
 ## <a name="add-and-delete-an-azure-tag-to-an-instance"></a>向实例添加和删除 Azure 标记
+
+### <a name="portal"></a>[Portal](#tab/azure-portal)
  
 可以将 Azure 标记添加到 BareMetal 实例单元，也可以将其删除。 分配标记的方式与将标记分配给 Vm 的方式不同。 与 Vm 一样，标记存在于 Azure 元数据中，对于 BareMetal 实例，它们与 Vm 的标记具有相同的限制。
  
 删除标记的工作方式与使用 Vm 的方式相同。 应用和删除标记在 BareMetal 实例单元的活动日志中列出。
- 
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+将标记分配到 BareMetal 实例与虚拟机的工作原理相同。 标记存在于 Azure 元数据中，对于 BareMetal 实例，它们与 Vm 的标记具有相同的限制。
+
+若要将标记添加到 BareMetal 实例单元，请运行 [az baremetalinstance update](/cli/azure/ext/baremetal-infrastructure/baremetalinstance#ext_baremetal_infrastructure_az_baremetalinstance_update) 命令：
+
+```azurecli
+az baremetalinstance update --resource-group DSM05a-T550 --instance-name orcllabdsm01 --set tags.Dept=Finance tags.Status=Normal
+```
+
+使用相同的命令删除标记：
+
+```azurecli
+az baremetalinstance update --resource-group DSM05a-T550 --instance-name orcllabdsm01 --remove tags.Dept
+```
+
+---
+
 ## <a name="check-properties-of-an-instance"></a>检查实例的属性
  
 获取实例时，可以通过 "属性" 部分查看收集的有关实例的数据。 收集的数据包括 Azure 连接、存储后端、ExpressRoute 线路 ID、唯一的资源 ID 和订阅 ID。 你将在支持请求或设置存储快照配置时使用此信息。
@@ -127,15 +180,29 @@ az provider register --namespace Microsoft.BareMetalInfrastructure
 :::image type="content" source="media/baremetal-infrastructure-portal/baremetal-instance-properties.png" alt-text="显示 BareMetal 实例属性设置的屏幕截图" lightbox="media/baremetal-infrastructure-portal/baremetal-instance-properties.png":::
  
 ## <a name="restart-a-unit-through-the-azure-portal"></a>通过 Azure 门户重启单元
- 
-在各种情况下，操作系统无法完成重新启动，这需要重新启动 BareMetal 实例单元。 你可以从 Azure 门户中直接执行设备的电源重新启动：
+
+在各种情况下，操作系统无法完成重新启动，这需要重新启动 BareMetal 实例单元。
+
+### <a name="portal"></a>[Portal](#tab/azure-portal)
+
+你可以从 Azure 门户中直接执行设备的电源重新启动：
  
 选择 " **重新启动** "，然后选择 **"是"** 以确认重新启动设备。
  
 :::image type="content" source="media/baremetal-infrastructure-portal/baremetal-instance-restart.png" alt-text="显示如何重新启动 BareMetal 实例单元的屏幕截图":::
  
 重新启动 BareMetal 实例单元时，将会出现延迟。 在此延迟期间，电源状态将从 **开始** 变为 **已启动**，这意味着操作系统已完全启动。 因此，在重新启动后，一旦状态切换为 " **已启动**"，就不能登录到该设备。
- 
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+若要重新启动 BareMetal 实例单元，请使用 [az baremetalinstance restart](/cli/azure/ext/baremetal-infrastructure/baremetalinstance#ext_baremetal_infrastructure_az_baremetalinstance_restart) 命令：
+
+```azurecli
+az baremetalinstance restart --resource-group DSM05a-T550 --instance-name orcllabdsm01
+```
+
+---
+
 >[!IMPORTANT]
 >根据 BareMetal 实例单位中的内存量，重新启动和重新启动硬件和操作系统最多可能需要一小时。
  

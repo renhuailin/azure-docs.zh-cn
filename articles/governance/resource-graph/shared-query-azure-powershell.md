@@ -4,12 +4,12 @@ description: 本快速入门介绍如何使用 Azure PowerShell 创建 Resource 
 ms.date: 01/11/2021
 ms.topic: quickstart
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d7efc02cad3aaa67c639a319f1a7bb455d6e04b0
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: 2b771253b1dea4bd1d2913bf7c48062112019a19
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98128071"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99981538"
 ---
 # <a name="quickstart-create-a-resource-graph-shared-query-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建 Resource Graph 共享查询
 
@@ -36,7 +36,7 @@ ms.locfileid: "98128071"
 
 ## <a name="create-a-resource-graph-shared-query"></a>创建 Resource Graph 共享查询
 
-将 `Az.ResourceGraph` PowerShell 模块添加到所选环境中后，即可创建一个 Resource Graph 共享查询。 共享查询是一个 Azure 资源管理器对象，你可授予该对象权限或在 Azure Resource Graph Explorer 中运行该对象。 该查询汇总了按“位置”分组的所有资源。
+将 Az.ResourceGraph PowerShell 模块添加到所选环境中后，即可创建一个 Resource Graph 共享查询。 共享查询是一个 Azure 资源管理器对象，你可授予该对象权限或在 Azure Resource Graph Explorer 中运行该对象。 该查询汇总了按“位置”分组的所有资源。
 
 1. 使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 创建资源组，以存储 Azure Resource Graph 共享查询。 此资源组名为 `resource-graph-queries`，并位于 `westus2`。
 
@@ -47,7 +47,7 @@ ms.locfileid: "98128071"
    New-AzResourceGroup -Name resource-graph-queries -Location westus2
    ```
 
-1. 使用 `Az.ResourceGraph` PowerShell 模块和 [New-AzResourceGraphQuery](/powershell/module/az.resourcegraph/new-azresourcegraphquery) cmdlet 创建 Azure Resource Graph 共享查询：
+1. 使用 Az.ResourceGraph PowerShell 模块和 [New-AzResourceGraphQuery](/powershell/module/az.resourcegraph/new-azresourcegraphquery) cmdlet 创建 Azure Resource Graph 共享查询：
 
    ```azurepowershell-interactive
    # Create the Azure Resource Graph shared query
@@ -80,7 +80,7 @@ ms.locfileid: "98128071"
 如果要从 Azure 环境中删除 Resource Graph 共享查询和资源组，可以使用以下命令执行此操作：
 
 - [Remove-AzResourceGraphQuery](/powershell/module/az.resourcegraph/remove-azresourcegraphquery)
-- [Remove-AzResourceGroup](/cli/azure/group#az_group_delete)
+- [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup)
 
 ```azurepowershell-interactive
 # Delete the Azure Resource Graph shared query
