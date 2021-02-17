@@ -1,6 +1,6 @@
 ---
-title: 单击 "分析自动收集插件" Application Insights JavaScript SDK
-description: 如何安装和使用适用于 Application Insights JavaScript SDK 的 Click Analytics 自动收集插件。
+title: 适用于 Application Insights JavaScript SDK 的“单击分析自动收集”插件
+description: 如何安装和使用适用于 Application Insights JavaScript SDK 的“单击分析自动收集”插件。
 services: azure-monitor
 author: lgayhardt
 ms.workload: tbd
@@ -8,22 +8,22 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 01/14/2021
 ms.author: lagayhar
-ms.openlocfilehash: b2e9c267b0a3723c9ac7b3edd49e23b95741962f
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 5ad3e1a5a4ff47fe3d5fee8b8bc79235838995b8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98660447"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593621"
 ---
-# <a name="click-analytics-auto-collection-plugin-for-application-insights-javascript-sdk"></a>单击 "分析自动收集插件" Application Insights JavaScript SDK
+# <a name="click-analytics-auto-collection-plugin-for-application-insights-javascript-sdk"></a>适用于 Application Insights JavaScript SDK 的“单击分析自动收集”插件
 
-此插件在网页上自动跟踪单击事件，并使用 HTML 元素上的 data-* 特性来填充事件遥测。
+此插件可自动跟踪网页上的单击事件，并使用 HTML 元素上的 data-* 属性来填充事件遥测数据。
 
 ## <a name="getting-started"></a>入门
 
-用户可以通过 npm 设置 Click Analytics 自动收集插件。
+用户可通过 npm 设置“单击分析自动收集”插件。
 
-### <a name="npm-setup"></a>npm 安装程序
+### <a name="npm-setup"></a>npm 设置
 
 安装 npm 包：
 
@@ -54,27 +54,27 @@ const appInsights = new ApplicationInsights({ config: configObj });
 appInsights.loadAppInsights();
 ```
 
-## <a name="how-to-effectively-use-the-plugin"></a>如何有效使用插件
+## <a name="how-to-effectively-use-the-plugin"></a>如何有效使用此插件
 
-1. 从 click 事件生成的遥测数据将存储为 `customEvents` Azure 门户的 Application Insights 部分。
-2. `name`根据以下规则填充 customEvent 的：
-    1.  `id`中提供的 `data-*-id` 将用作 customEvent 名称。 例如，如果单击的 HTML 元素具有属性 "数据示例 id" = "button1"，则 "button1" 将为 customEvent 名称。
-    2. 如果不存在这样的属性，并且 `useDefaultContentNameOrId` `true` 在配置中将设置为，则元素的 HTML 特性 `id` 或内容名称将用作 customEvent 名称。
-    3. 如果 `useDefaultContentNameOrId` 为 false，则 customEvent 名称将为 "not_specified"。
+1. 从单击事件生成的遥测数据将作为 `customEvents` 存储在 Azure 门户的 Application Insights 部分。
+2. 系统根据以下规则填充 customEvent 的 `name`：
+    1.  `data-*-id` 中提供的 `id` 将用作 customEvent 名称。 例如，如果单击的 HTML 元素的“data-sample-id”=“button1”，则“button1”将为 customEvent 名称。
+    2. 如果不存在这样的属性，并且配置中的 `useDefaultContentNameOrId` 设置为 `true`，则所选元素的 HTML 属性 `id` 或元素的内容名称将用作 customEvent 名称。
+    3. 如果 `useDefaultContentNameOrId` 为 false，则 customEvent 名称将为“not_specified”。
 
     > [!TIP]
-    > 建议将设置 `useDefaultContentNameOrId` 为 true，以生成有意义的数据。  
+    > 建议将 `useDefaultContentNameOrId` 设置为 true，以生成有意义的数据。  
 3. `parentDataTag` 执行两项操作：
-    1. 如果此标记存在，插件将 `data-*` 从已单击元素的所有父 HTML 元素中提取属性和值。
-    2. 为了提高效率，该插件会将此标记用作标志，当遇到此标记时，它会阻止自身进一步处理 DOM (文档对象模型) 向上处理。
+    1. 如果此标记存在，此插件将从单击的元素的所有 HTML 父元素中提取 `data-*` 属性和值。
+    2. 为提升效率，该插件会将此标记用作标志，遇到此标记时，它将阻止自己向上处理 DOM（文档对象模型）。
     
     > [!CAUTION]
-    > 一旦 `parentDataTag` 使用，SDK 就会开始在整个应用程序中查找父标记，而不只是使用该应用程序的 HTML 元素。
-4. `customDataPrefix` 例如，用户提供的应始终以开头 `data-` `data-sample-` 。 在 HTML 中， `data-*` 全局特性构成了一类称为 "自定义数据属性" 的特性，这些特性允许通过脚本在 HTML 及其 DOM 表示形式之间交换专有信息。 旧版浏览器 (Internet Explorer，Safari) 会丢弃它不理解的属性，除非它们以开头 `data-` 。
+    > 使用 `parentDataTag` 后，SDK 将开始在整个应用程序中查找父标记，而不只是在使用它的 HTML 元素中查找。
+4. 用户提供的 `customDataPrefix` 应始终以 `data-` 开头，例如 `data-sample-`。 在 HTML 中，`data-*` 全局属性构成一类允许通过脚本在 HTML 及其 DOM 表示形式之间交换专有信息的属性，称为“自定义数据属性”。 旧版浏览器（Internet Explorer、Safari）会删除它不理解的属性，除非属性以 `data-` 开头。
 
-    `*`在 `data-*` [XML 名称的生产规则](https://www.w3.org/TR/REC-xml/#NT-Name)之后，中的可能会被替换为任何名称，但有以下限制：
-    - 名称不能以 "xml" 开头，无论使用哪种大小写，都可使用这些字母。
-    - 名称不能包含任何分号 (U + 003A) 。
+    `data-*` 中的 `*` 可能会被遵循 [XML 名称生成规则](https://www.w3.org/TR/REC-xml/#NT-Name)的任意名称替换，但有以下限制：
+    - 名称不能以“xml”开头，无论这些字母是使用大写还是小写都是如此。
+    - 名称不能包含任何分号 (U+003A)。
     - 名称不能包含大写字母。
 
 ## <a name="configuration"></a>配置
@@ -82,38 +82,38 @@ appInsights.loadAppInsights();
 | 名称                  | 类型                               | 默认 | 说明                                                                                                                              |
 | --------------------- | -----------------------------------| --------| ---------------------------------------------------------------------------------------------------------------------------------------- |
 | autoCapture           | boolean                            | 是    | 自动捕获配置。                                                                                                         |
-| 回调 (callback)              | [IValueCallback](#ivaluecallback)  | Null    | 回拨配置。                                                                                                                 |
-| pageTags              | string                             | Null    | 页面标记。                                                                                                                               |
-| dataTags              | [ICustomDataTags](#icustomdatatags)| Null    | 提供的自定义数据标记用于覆盖用于捕获单击数据的默认标记。                                                           |
-| urlCollectHash        | boolean                            | false   | 启用 URL 的 "#" 字符后的值的日志记录。                                                                          |
+| 回调 (callback)              | [IValueCallback](#ivaluecallback)  | NULL    | 回调配置。                                                                                                                 |
+| pageTags              | string                             | NULL    | 页标记。                                                                                                                               |
+| dataTags              | [ICustomDataTags](#icustomdatatags)| NULL    | 提供的自定义数据标记用于替代捕获单击数据的默认标记。                                                           |
+| urlCollectHash        | boolean                            | false   | 启用 URL中“#”字符后的值的日志记录。                                                                          |
 | urlCollectQuery       | boolean                            | false   | 启用 URL 查询字符串的日志记录。                                                                                      |
-| behaviorValidator     | 函数                           | Null  | 用于值验证的回调函数 `data-*-bhvr` 。 有关详细信息，请参阅 [behaviorValidator 部分](#behaviorvalidator)。|
-| defaultRightClickBhvr | string (或) 号                 | ''      | 发生右键单击事件时的默认行为值。 如果元素具有属性，则此值将被重写 `data-*-bhvr` 。 |
-| dropInvalidEvents     | boolean                            | false   | 用于删除没有有用的单击数据的事件的标志。                                                                                   |
+| behaviorValidator     | 功能                           | NULL  | 用于验证 `data-*-bhvr` 值的回调函数。 有关详细信息，请参阅 [behaviorValidator 部分](#behaviorvalidator)。|
+| defaultRightClickBhvr | 字符串（或）数字                 | ''      | 发生“右键单击”事件时的默认行为值。 如果元素具有 `data-*-bhvr` 属性，则将替代此值。 |
+| dropInvalidEvents     | boolean                            | false   | 用于删除无有用单击数据的事件的标志。                                                                                   |
 
 ### <a name="ivaluecallback"></a>IValueCallback
 
 | 名称               | 类型     | 默认 | 说明                                                                             |
 | ------------------ | -------- | ------- | --------------------------------------------------------------------------------------- |
-| pageName           | 函数 | Null    | 用于重写默认 pageName 捕获行为的函数。                           |
-| pageActionPageTags | 函数 | Null    | 用于增加在 pageAction 事件期间收集的默认 pageTags 的回调函数。  |
-| contentName        | 函数 | Null    | 用于填充自定义 contentName 的回调函数。                                 |
+| pageName           | 功能 | NULL    | 用于替代默认 pageName 捕获行为的函数。                           |
+| pageActionPageTags | 功能 | NULL    | 用于增加在 pageAction 事件期间收集的默认 pageTags 的回调函数。  |
+| contentName        | 功能 | NULL    | 用于填充自定义 contentName 的回调函数。                                 |
 
 ### <a name="icustomdatatags"></a>ICustomDataTags
 
 | 名称                      | 类型    | 默认   | 要在 HTML 中使用的默认标记 |   说明                                                                                |
 |---------------------------|---------|-----------|-------------|----------------------------------------------------------------------------------------------|
-| useDefaultContentNameOrId | boolean | false     | 不适用         |当特定元素未标记为默认的 customDataPrefix 时，或用户未提供 customDataPrefix 时，收集 contentName 的标准 HTML 属性。 |
-| customDataPrefix          | string  | `data-`   | `data-*`| 自动捕获用提供的前缀标记的元素的内容名称和值。 例如， `data-*-id` `data-<yourcustomattribute>` 可以在 HTML 标记中使用。   |
-| aiBlobAttributeTag        | string  | `ai-blob` |  `data-ai-blob`| 插件支持 JSON blob 属性而不是单个 `data-*` 属性。 |
-| metaDataPrefix            | string  | Null      | N/A  | 捕获时，自动捕获 HTML Head 的元元素名称和内容并提供前缀。 例如， `custom-` 可以在 HTML meta 标记中使用。 |
-| captureAllMetaDataContent | boolean | false     | 不适用   | 自动捕获所有 HTML 标头的元元素名称和内容。 默认值为 false。 如果启用此参数，则将重写提供的 metaDataPrefix。 |
-| parentDataTag             | string  | Null      |  N/A  | 当遇到此标记时，停止遍历 DOM 以捕获元素的内容名称和值。 例如， `data-<yourparentDataTag>` 可以在 HTML 标记中使用。|
-| dntDataTag                | string  | `ai-dnt`  |  `data-ai-dnt`| 用于捕获遥测数据的插件将忽略具有此属性的 HTML 元素。|
+| useDefaultContentNameOrId | boolean | false     | 不适用         |当特定元素未使用默认的 customDataPrefix 进行标记或用户未提供 customDataPrefix 时，收集 contentName 的标准 HTML 属性。 |
+| customDataPrefix          | string  | `data-`   | `data-*`| 自动捕获使用所提供的前缀标记的元素的内容名称和值。 例如，可以在 HTML 标记中使用 `data-*-id`、`data-<yourcustomattribute>`。   |
+| aiBlobAttributeTag        | string  | `ai-blob` |  `data-ai-blob`| 插件支持 JSON blob 属性，而不支持单个 `data-*` 属性。 |
+| metaDataPrefix            | string  | NULL      | 不适用  | 捕获时，自动捕获 HTML 标头的 meta 元素名称和带有所提供的前缀的内容。 例如，可以在 HTML meta 标记中使用 `custom-`。 |
+| captureAllMetaDataContent | boolean | false     | 不适用   | 自动捕获所有 HTML 标头的 meta 元素名称和内容。 默认值为 false。 如果启用此参数，则将替代所提供的 metaDataPrefix。 |
+| parentDataTag             | string  | NULL      |  不适用  | 遇到此标记时，将停止遍历 DOM，不再捕获元素的内容名称和值。 例如，可以在 HTML 标记中使用 `data-<yourparentDataTag>`。|
+| dntDataTag                | string  | `ai-dnt`  |  `data-ai-dnt`| 捕获遥测数据的插件将忽略具有此属性的 HTML 元素。|
 
 ### <a name="behaviorvalidator"></a>behaviorValidator
 
-BehaviorValidator 函数会自动检查代码中标记的行为是否符合预定义的列表。 这可确保标记的行为与企业建立的分类一致。 这不是必需的，也不是预计大多数 Azure Monitor 客户将使用此功能，但它可用于高级方案。 有三个不同的 behaviorValidator 回调函数作为此扩展的一部分公开。 但是，如果公开的函数不能满足您的要求，则用户可以使用其自己的回调函数。 目的是引入自己的行为数据结构，该插件会在从数据标记提取行为时使用此验证程序函数。
+BehaviorValidator 函数会自动检查代码中标记的行为是否符合预定义的列表。 这样可以确保标记的行为与企业建立的分类一致。 大多数 Azure Monitor 客户不需要使用，预计也不会使用该函数，但它可以用于高级场景。 有三个不同的 behaviorValidator 回调函数作为此扩展的一部分公开。 但如果公开的函数不能满足需求，用户可以使用自己的回调函数。 这样做的目的是引入你自己的行为数据结构，当从数据标签中提取行为时，插件将使用此验证程序函数。
 
 | 名称                   | 说明                                                                        |
 | ---------------------- | -----------------------------------------------------------------------------------|
@@ -121,7 +121,7 @@ BehaviorValidator 函数会自动检查代码中标记的行为是否符合预�
 | BehaviorMapValidator   | 如果行为数据结构为字典，则使用此回调函数。       |
 | BehaviorEnumValidator  | 如果行为数据结构是一个枚举，则使用此回调函数。            |
 
-#### <a name="sample-usage-with-behaviorvalidator"></a>使用 behaviorValidator 的示例用法
+#### <a name="sample-usage-with-behaviorvalidator"></a>behaviorValidator 的示例用法
 
 ```js
 var clickPlugin = Microsoft.ApplicationInsights.ClickAnalyticsPlugin;
@@ -308,11 +308,11 @@ appInsights.loadAppInsights();
 
 ## <a name="sample-app"></a>示例应用
 
-[启用了 Click Analytics 自动收集插件的简单 web 应用](https://go.microsoft.com/fwlink/?linkid=2152871)。
+[启用了“单击分析自动收集”插件的简单 Web 应用](https://go.microsoft.com/fwlink/?linkid=2152871)。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 查看适用于单击分析自动收集插件的 [GitHub 存储库](https://github.com/microsoft/ApplicationInsights-JS/tree/master/extensions/applicationinsights-clickanalytics-js) 和 [NPM 包](https://www.npmjs.com/package/@microsoft/applicationinsights-clickanalytics-js) 。
-- 使用使用 [体验中的事件分析](usage-segmentation.md) ，按可用维度分析顶部单击和切片。
-- 在 [Log Analytics](../log-query/log-analytics-tutorial.md#write-a-query)中，在 CustomEvents 表中的 "内容" 字段下查找 "内容" 字段下的数据。 有关其他指南，请参阅 [示例应用](https://go.microsoft.com/fwlink/?linkid=2152871) 。
-- 构建 [工作簿](../platform/workbooks-overview.md) 以创建单击数据的自定义可视化效果。
+- 查看“单击分析自动收集”插件的 [GitHub 存储库](https://github.com/microsoft/ApplicationInsights-JS/tree/master/extensions/applicationinsights-clickanalytics-js)和 [NPM 包](https://www.npmjs.com/package/@microsoft/applicationinsights-clickanalytics-js)。
+- 利用[使用体验中的事件分析](usage-segmentation.md)，按可用维度分析热门单击和切片。
+- 在 [Log Analytics](../logs/log-analytics-tutorial.md#write-a-query) CustomEvents 表的 customDimensions 中，查找内容字段下的单击数据。 如需查看其他指南，请参阅[示例应用](https://go.microsoft.com/fwlink/?linkid=2152871)。
+- 构建一个[工作簿](../visualize/workbooks-overview.md)，以创建单击数据的自定义可视化效果。

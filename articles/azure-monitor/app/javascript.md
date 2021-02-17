@@ -4,12 +4,12 @@ description: 获取页面视图和会话计数、Web 客户端数据、单页应
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 60b3e9229adb93ce32c97c2822a465f7f629d47d
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 317050abd0aa77649800493c36b03b298f256096
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98234352"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573800"
 ---
 # <a name="application-insights-for-web-pages"></a>适用于网页的 Application Insights
 
@@ -20,10 +20,10 @@ ms.locfileid: "98234352"
 ## <a name="adding-the-javascript-sdk"></a>添加 JavaScript SDK
 
 > [!IMPORTANT]
-> 新的 Azure 区域 **要求** 使用连接字符串而不是检测密钥。 [连接字符串](./sdk-connection-string.md?tabs=js) 标识您要与遥测数据关联的资源。 它还允许你修改可供你的资源将其用作遥测目标的终结点。 你需要复制连接字符串，并将其添加到应用程序的代码或环境变量中。
+> 新的 Azure 区域要求使用连接字符串而不是检测密钥。 [连接字符串](./sdk-connection-string.md?tabs=js)用于标识要与遥测数据关联的资源。 它还允许你修改可供你的资源将其用作遥测目标的终结点。 你需要复制连接字符串，并将其添加到应用程序的代码或环境变量中。
 
 1. 首先需要一个 Application Insights 资源。 如果你尚未获得资源和检测密钥，请遵照[有关创建新资源的说明](create-new-resource.md)。
-2. 在步骤1中，将 _检测密钥_ （ (也称为 "iKey" ) 或用于要向其 (发送 JavaScript 遥测的资源的 [连接字符串](#connection-string-setup) 复制到该资源。 ) ，需将其添加到 `instrumentationKey` `connectionString` Application Insights JavaScript SDK 的或设置。
+2. 复制你要将 JavaScript 遥测数据发送到的资源（从步骤 1）的检测密钥（也称为“iKey”）或[连接字符串](#connection-string-setup)。你需要将该密钥添加到 Application Insights JavaScript SDK 的 `instrumentationKey` 或 `connectionString` 设置。
 3. 通过以下两个选项之一，将 Application Insights JavaScript SDK 添加到网页或应用：
     * [npm 设置](#npm-based-setup)
     * [JavaScript 代码片段](#snippet-based-setup)
@@ -118,7 +118,7 @@ IE 8（或更低版本）尤其不支持报告 SDK 加载失败。 假设大多�
 
 ### <a name="connection-string-setup"></a>连接字符串设置
 
-对于 NPM 或片段设置，还可以使用连接字符串配置 Application Insights 的实例。 只需 `instrumentationKey` 将字段替换为 `connectionString` 字段。
+对于 NPM 或代码片段设置，还可以使用连接字符串配置 Application Insights 的实例。 只需将 `instrumentationKey` 字段替换为 `connectionString` 字段。
 ```js
 import { ApplicationInsights } from '@microsoft/applicationinsights-web'
 
@@ -178,10 +178,10 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 | sessionExpirationMs | 86400000 | 如果会话持续了这么长的时间（以毫秒为单位），则会记录会话。 默认值为 24 小时 |
 | maxBatchSizeInBytes | 10000 | 遥测批的最大大小。 如果某个批超过此限制，则立即发送此批，并启动新批 |
 | maxBatchInterval | 15000 | 发送前要批处理遥测数据的时间长短（毫秒） |
-| disableExceptionTracking | false | 如果为 true，则不 autocollected 异常。 默认值为 false。 |
+| disableExceptionTracking | false | 如果为 true，则不自动收集异常。 默认值为 false。 |
 | disableTelemetry | false | 如果为 true，则不收集或发送遥测数据。 默认值为 false。 |
-| enableDebug | false | 如果为 true，则不管 SDK 日志记录设置如何，**内部** 调试数据都将引发为异常，**而不是** 记录这些数据。 默认值为 false。 <br>*注意：如果启用此设置，每当发生内部错误时，都会导致丢弃遥测数据。 这可能有利于快速识别 SDK 的配置或用法问题。 如果你不希望在调试时丢失遥测数据，请考虑使用 `consoleLoggingLevel` 或 `telemetryLoggingLevel`，而不是 `enableDebug`。 |
-| loggingLevelConsole | 0 | 将内部 Application Insights 错误记录到控制台。 <br>0：关闭， <br>1:仅限严重错误， <br>2:所有内容（错误和警告） |
+| enableDebug | false | 如果为 true，则不管 SDK 日志记录设置如何，**内部** 调试数据都将引发为异常，**而不是** 记录这些数据。 默认值为 false。 <br>**_注意：_** 如果启用此设置，则在发生内部错误时，将导致丢弃遥测数据。 这可能有利于快速识别 SDK 的配置或用法问题。 如果你不希望在调试时丢失遥测数据，请考虑使用 `consoleLoggingLevel` 或 `telemetryLoggingLevel`，而不是 `enableDebug`。 |
+| loggingLevelConsole | 0 | 将 **内部** Application Insights 错误记录到控制台。 <br>0：关闭， <br>1:仅限严重错误， <br>2:所有内容（错误和警告） |
 | loggingLevelTelemetry | 1 | 将 **内部** Application Insights 错误作为遥测数据发送。 <br>0：关闭， <br>1:仅限严重错误， <br>2:所有内容（错误和警告） |
 | diagnosticLogInterval | 10000 | 内部日志记录队列的（内部）轮询间隔（以毫秒为单位） |
 | samplingPercentage | 100 | 要发送的事件百分比。 默认值为 100，表示发送所有事件。 如果你希望避免大型应用程序达到数据上限，请设置此项。 |
@@ -196,7 +196,7 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 | correlationHeaderDomains |  | 启用特定域的关联标头 |
 | disableFlushOnBeforeUnload | false | 默认值为 false。 如果为 true，则触发 onBeforeUnload 事件时不会调用 flush 方法 |
 | enableSessionStorageBuffer | 是 | 默认值为 true。 如果为 true，则会将包含所有未发送的遥测数据的缓冲区存储在会话存储中。 加载页面时会还原该缓冲区 |
-| isCookieUseDisabled | false | 默认值为 false。 如果为 true，则 SDK 不会存储或读取 Cookie 中的任何数据。 请注意，这将禁用用户和会话 cookie，并呈现使用情况边栏选项卡和体验。 |
+| isCookieUseDisabled | false | 默认值为 false。 如果为 true，则 SDK 不会存储或读取 Cookie 中的任何数据。 请注意，这会禁用用户和会话 Cookie，令使用情况边栏选项卡和体验无效。 |
 | cookieDomain | Null | 自定义 Cookie 域。 若要跨子域共享 Application Insights Cookie，此字段会有帮助。 |
 | isRetryDisabled | false | 默认值为 false。 如果为 false，则出现代码 206（部分成功）、408（超时）、429（请求过多）、500（内部服务器错误）、503（服务不可用）和 0（脱机，仅当已检测到此状态时）时会重试 |
 | isStorageUseDisabled | false | 如果为 true，则 SDK 不会存储或读取本地和会话存储中的任何数据。 默认值为 false。 |
@@ -219,7 +219,7 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 
 ## <a name="enable-time-on-page-tracking"></a>启用“页面访问时间”跟踪
 
-通过设置 `autoTrackPageVisitTime: true`，跟踪用户在每个页面上花费的时间。 在每个新 PageView 上，用户在上一页花费的时间将作为名为 `PageVisitTime` 的[自定义指标](../platform/metrics-custom-overview.md)发送。 此自定义指标可在[指标资源管理器](../platform/metrics-getting-started.md)中作为“基于日志的指标”查看。
+通过设置 `autoTrackPageVisitTime: true`，跟踪用户在每个页面上花费的时间。 在每个新 PageView 上，用户在上一页花费的时间将作为名为 `PageVisitTime` 的[自定义指标](../essentials/metrics-custom-overview.md)发送。 此自定义指标可在[指标资源管理器](../essentials/metrics-getting-started.md)中作为“基于日志的指标”查看。
 
 ## <a name="enable-correlation"></a>启用关联
 
@@ -267,7 +267,7 @@ Access-Control-Allow-Headers：`Request-Id`、`Request-Context`、`<your header>
 | [React](javascript-react-plugin.md)|
 | [React Native](javascript-react-native-plugin.md)|
 | [Angular](javascript-angular-plugin.md)|
-| [单击 "分析自动收集"](javascript-click-analytics-plugin.md)|
+| [单击“分析自动收集”](javascript-click-analytics-plugin.md)|
 
 ## <a name="explore-browserclient-side-data"></a>浏览浏览器/客户端数据
 

@@ -16,12 +16,12 @@ ms.date: 12/23/2020
 ms.author: barclayn
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: af9921510ba11ab1bd7d0664b2c4c19e042864d3
-ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
+ms.openlocfilehash: 1a7f0d937d41ee42bf0fe678eb2f49e78882f881
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97746637"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577858"
 ---
 # <a name="archive-logs-and-reporting-on-azure-ad-entitlement-management-in-azure-monitor"></a>在 Azure AD 权利管理中使用 Azure Monitor 存档日志和进行报告
 
@@ -59,7 +59,7 @@ Azure AD 在审核日志中将审核事件存储最长 30 天。 但是，可以
 
 ## <a name="view-events-for-an-access-package"></a>查看访问包的事件  
 
-若要查看访问包的事件，必须有权访问基础 Azure Monitor 工作区（有关信息，请参阅[在 Azure Monitor 中管理对日志数据和工作区的访问](../../azure-monitor/platform/manage-access.md#manage-access-using-azure-permissions)）并充当以下角色之一： 
+若要查看访问包的事件，必须有权访问基础 Azure Monitor 工作区（有关信息，请参阅[在 Azure Monitor 中管理对日志数据和工作区的访问](../../azure-monitor/logs/manage-access.md#manage-access-using-azure-permissions)）并充当以下角色之一： 
 
 - 全局管理员  
 - 安全管理员  
@@ -189,4 +189,4 @@ $bResponse.Results |ft
 ```
 
 ## <a name="next-steps"></a>后续步骤：
-- [使用 Azure Monitor 工作簿创建交互式报表](../../azure-monitor/platform/workbooks-overview.md)
+- [使用 Azure Monitor 工作簿创建交互式报表](../../azure-monitor/visualize/workbooks-overview.md)

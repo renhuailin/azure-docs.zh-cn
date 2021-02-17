@@ -4,18 +4,18 @@ description: 了解如何使用已启用 Azure Arc 的服务器像管理 Azure �
 keywords: azure automation, DSC, powershell, desired state configuration, update management, change tracking, inventory, runbooks, python, graphical, hybrid
 ms.date: 11/12/2020
 ms.topic: overview
-ms.openlocfilehash: 8368f89b8e471698ede3e9e8eb691e69f494b6e2
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: be5955e9bf02e591fdbba3f080d034c126379c2f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183390"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100584790"
 ---
 # <a name="what-is-azure-arc-enabled-servers"></a>什么是已启用 Azure Arc 的服务器？
 
 使用已启用 Azure Arc 的服务器，你可以按照管理本地 Azure 虚拟机的方式，管理在 Azure 外部、在企业网络上或其他云提供商中托管的 Windows 和 Linux 计算机。 当混合计算机连接到 Azure 时，它将成为一台联网计算机，被视为 Azure 中的资源。 每台联网计算机都有一个资源 ID，包含在一个资源组中，可受益于标准的 Azure 构造，例如 Azure Policy 和应用标记。 为客户管理本地基础结构的服务提供商可以通过结合使用 Azure Arc 和 [Azure Lighthouse](../../lighthouse/how-to/manage-hybrid-infrastructure-arc.md) 来管理其混合计算机，与当前跨多个客户环境管理本机 Azure 资源一样。
 
-若要为托管在 Azure 外部的混合计算机提供此体验，需要在打算连接到 Azure 的每台计算机上安装 Azure Connected Machine 代理。 此代理不提供任何其他功能，而且不会取代 Azure [Log Analytics 代理](../../azure-monitor/platform/log-analytics-agent.md)。 若要主动监视计算机上运行的 OS 和工作负荷、使用自动化 Runbook 或更新管理等解决方案对其进行管理，或使用其他 Azure 服务（例如 [Azure 安全中心](../../security-center/security-center-introduction.md)），需要安装适用于 Windows 和 Linux 的 Log Analytics 代理。
+若要为托管在 Azure 外部的混合计算机提供此体验，需要在打算连接到 Azure 的每台计算机上安装 Azure Connected Machine 代理。 此代理不提供任何其他功能，而且不会取代 Azure [Log Analytics 代理](../../azure-monitor/agents/log-analytics-agent.md)。 若要主动监视计算机上运行的 OS 和工作负荷、使用自动化 Runbook 或更新管理等解决方案对其进行管理，或使用其他 Azure 服务（例如 [Azure 安全中心](../../security-center/security-center-introduction.md)），需要安装适用于 Windows 和 Linux 的 Log Analytics 代理。
 
 ## <a name="supported-scenarios"></a>支持的方案
 
@@ -25,7 +25,7 @@ ms.locfileid: "96183390"
 
 - 使用 Azure 自动化的“[更改跟踪和库存](../../automation/change-tracking/overview.md)”功能，报告有关在受监视的服务器上安装的软件、Microsoft 服务、Windows 注册表和文件以及 Linux 守护程序的配置更改。
 
-- 监视已连接的计算机来宾操作系统性能，并发现应用程序组件，以使用[用于 VM 的 Azure Monitor](../../azure-monitor/insights/vminsights-overview.md) 来监视其进程以及与应用程序通信的其他资源的依赖项。
+- 监视已连接的计算机来宾操作系统性能，并发现应用程序组件，以使用[用于 VM 的 Azure Monitor](../../azure-monitor/vm/vminsights-overview.md) 来监视其进程以及与应用程序通信的其他资源的依赖项。
 
 - 使用其他 Azure 服务（如使用受支持的 [Azure VM 扩展](manage-vm-extensions.md)的 Azure 自动化[状态配置](../../automation/automation-dsc-overview.md)和 Azure Monitor Log Analytics 工作区）为非 Azure Windows 或 Linux 计算机简化部署。 这包括使用自定义脚本扩展执行部署后配置或软件安装。
 
@@ -36,7 +36,7 @@ ms.locfileid: "96183390"
 
 - 使用 [Azure 安全中心](../../security-center/security-center-introduction.md)将用于检测威胁的非 Azure 服务器包含在内，并主动监视潜在的安全威胁。
 
-从混合计算机收集并存储在 Log Analytics 工作区中的日志数据现在包含特定于计算机的属性，例如资源 ID。 这可用于支持[资源上下文](../../azure-monitor/platform/design-logs-deployment.md#access-mode)日志访问。
+从混合计算机收集并存储在 Log Analytics 工作区中的日志数据现在包含特定于计算机的属性，例如资源 ID。 这可用于支持[资源上下文](../../azure-monitor/logs/design-logs-deployment.md#access-mode)日志访问。
 
 [!INCLUDE [azure-lighthouse-supported-service](../../../includes/azure-lighthouse-supported-service.md)]
 

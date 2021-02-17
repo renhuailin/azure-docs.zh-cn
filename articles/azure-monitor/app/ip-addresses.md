@@ -3,12 +3,12 @@ title: Azure Monitor 使用的 IP 地址
 description: Application Insights 所需的服务器防火墙例外
 ms.topic: conceptual
 ms.date: 01/27/2020
-ms.openlocfilehash: 0e7028c59b4588ac23424a63f4e3ce240391dfb8
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 72f825630ec94b5c32a949a4395c431318afa87f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99220796"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100584108"
 ---
 # <a name="ip-addresses-used-by-azure-monitor"></a>Azure Monitor 使用的 IP 地址
 [Azure Monitor](../overview.md) 使用多个 IP 地址。 Azure Monitor 除了包含 Log Analytics 和 Application Insights，还由核心平台指标和日志组成。 如果所监视的应用或基础结构位于防火墙后面，则你可能需要知道这些地址。
@@ -254,21 +254,21 @@ USDoD East
    1. 添加资源组名称，然后输入“实例详细信息”。
    1. 依次单击“查看 + 创建”、“创建”。
    
-   :::image type="content" source="../platform/media/action-groups/action-group-create-security-group.png" alt-text="有关如何创建网络安全组的示例。"border="true":::
+   :::image type="content" source="../alerts/media/action-groups/action-group-create-security-group.png" alt-text="有关如何创建网络安全组的示例。"border="true":::
 
 3. 转到“资源组”，然后单击你创建的网络安全组。
 
     1. 选择“入站安全规则”。
     1. 单击“添加”。
     
-    :::image type="content" source="../platform/media/action-groups/action-group-add-service-tag.png" alt-text="有关如何添加服务标记的示例。"border="true":::
+    :::image type="content" source="../alerts/media/action-groups/action-group-add-service-tag.png" alt-text="有关如何添加服务标记的示例。"border="true":::
 
 4. 此时将在右侧窗格中打开一个新窗口。
     1.  选择“源”：**服务标记**
     1.  源服务标记：**ActionGroup**
     1.  单击 **添加**。
     
-    :::image type="content" source="../platform/media/action-groups/action-group-service-tag.png" alt-text="有关如何添加服务标记的示例。"border="true":::
+    :::image type="content" source="../alerts/media/action-groups/action-group-service-tag.png" alt-text="有关如何添加服务标记的示例。"border="true":::
 
 
 ## <a name="profiler"></a>探查器

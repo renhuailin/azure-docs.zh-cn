@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: b4b2a3bf8c9a3a2e2ec7f1b22785a037f8dedc60
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 21ae8986761483658f5ac4254e4bb378e0bc4ba9
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98873954"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575059"
 ---
 # <a name="azure-security-baseline-for-azure-ddos-protection-standard"></a>Azure DDoS 保护标准的 azure 安全基线
 
@@ -26,7 +26,7 @@ ms.locfileid: "98873954"
 
 **指南**：启用 Azure 活动日志诊断设置，并将日志发送到 Log Aalytics 工作区、Azure 事件中心或 Azure 存储帐户进行存档。 活动日志可让你深入了解在控制平面级别对 Azure DDoS 保护计划执行的操作。 使用 Azure 活动日志数据，可以确定任何写入操作的 "内容、人员和时间"，)  (在 Azure DDoS 保护实例的控制平面级别执行任何写入操作。
 
-- [如何启用 Azure 活动日志的诊断设置](../../azure-monitor/platform/activity-log.md)
+- [如何启用 Azure 活动日志的诊断设置](../../azure-monitor/essentials/activity-log.md)
 
 **Azure 安全中心监视**：是
 
@@ -40,7 +40,7 @@ ms.locfileid: "98873954"
 
 - [查看和配置 DDoS 诊断日志记录](../../ddos-protection/diagnostic-logging.md)
 
-- [如何启用 Azure 活动日志的诊断设置](../../azure-monitor/platform/activity-log.md)
+- [如何启用 Azure 活动日志的诊断设置](../../azure-monitor/essentials/activity-log.md)
 
 **Azure 安全中心监视**：是
 
@@ -50,7 +50,7 @@ ms.locfileid: "98873954"
 
 **指南**：在 Azure Monitor 中，根据组织的符合性规定，设置与 Azure DDoS 保护计划关联的 Log Analytics 工作区的日志保持期。
 
-- [如何设置日志保留参数](../../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [如何设置日志保留参数](../../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure 安全中心监视**：不适用
 
@@ -62,9 +62,9 @@ ms.locfileid: "98873954"
 
 - [有关如何访问针对 DDoS 保护标准服务的遥测、日志和攻击分析的信息](../../ddos-protection/telemetry.md)
 
-- [如何启用 Azure 活动日志的诊断设置](../../azure-monitor/platform/activity-log.md)
+- [如何启用 Azure 活动日志的诊断设置](../../azure-monitor/essentials/activity-log.md)
 
-- [如何收集和分析 Azure Monitor 的 Log Analytics 工作区中的 Azure 活动日志](../../azure-monitor/platform/activity-log.md)
+- [如何收集和分析 Azure Monitor 的 Log Analytics 工作区中的 Azure 活动日志](../../azure-monitor/essentials/activity-log.md)
 
 **Azure 安全中心监视**：是
 
@@ -80,7 +80,7 @@ ms.locfileid: "98873954"
 
 - [如何加入 Azure Sentinel](../../sentinel/quickstart-onboard.md)
 
-- [使用 Azure Monitor 创建、查看和管理日志警报](../../azure-monitor/platform/alerts-log.md)
+- [使用 Azure Monitor 创建、查看和管理日志警报](../../azure-monitor/alerts/alerts-log.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -276,7 +276,7 @@ ms.locfileid: "98873954"
 
 **指南**：将 Azure Monitor 与 Azure 活动日志结合使用，以创建有关 Azure DDoS 保护计划以及其他关键或相关资源发生更改的警报。
 
-- [如何针对 Azure 活动日志事件创建警报](../../azure-monitor/platform/alerts-activity-log.md)
+- [如何针对 Azure 活动日志事件创建警报](../../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure 安全中心监视**：是
 

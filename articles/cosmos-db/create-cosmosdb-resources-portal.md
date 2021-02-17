@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 11/10/2020
-ms.openlocfilehash: 731a1fdf9520efc43c954cba79602ed84f983b3d
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.openlocfilehash: 041b930a0c2fa82727216b4ca0c8367387d0d801
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98247244"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100367243"
 ---
 # <a name="quickstart-create-an-azure-cosmos-account-database-container-and-items-from-the-azure-portal"></a>快速入门：从 Azure 门户创建 Azure Cosmos 帐户、数据库、容器和项
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -71,7 +71,7 @@ Azure 订阅，或免费的 Azure Cosmos DB 试用帐户
 > - 异地冗余
 > - 多区域写入
    
-   :::image type="content" source="./media/create-cosmosdb-resources-portal/azure-cosmos-db-create-new-account-detail.png" alt-text="Azure Cosmos DB 的“新建帐户”页面":::
+   :::image type="content" source="./media/create-cosmosdb-resources-portal/azure-cosmos-db-create-new-account-detail-2.png" alt-text="Azure Cosmos DB 的“新建帐户”页面":::
 
 1. 选择“查看 + 创建”。 可以跳过“网络”和“标记”部分 。
 

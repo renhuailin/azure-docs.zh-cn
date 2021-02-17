@@ -3,16 +3,16 @@ title: 使用 PowerShell 在 Azure 中设置 Application Insights | Microsoft Do
 description: 自动配置 Azure 诊断，通过管道将数据发送到 Application Insights。
 ms.topic: conceptual
 ms.date: 08/06/2019
-ms.openlocfilehash: 0fd69b90ce6329041f96b8e3173f1f17270f68ee
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: c7c385888d7322b212cdd62497c9bbbabb970d65
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94699723"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100583833"
 ---
 # <a name="using-powershell-to-set-up-application-insights-for-azure-cloud-services"></a>使用 PowerShell 为 Azure 云服务设置 Application Insights
 
-可以将 [Microsoft Azure](https://azure.com) 配置为向 [Azure Application Insights](./app-insights-overview.md)[发送 Azure 诊断](../platform/diagnostics-extension-to-application-insights.md)。 该诊断与 Azure Cloud Service 和 Azure VM 有关。 它们是对使用 Application Insights SDK 从应用内发送的遥测的补充。 作为在 Azure 中自动处理新建资源过程的一部分，可以使用 PowerShell 配置诊断。
+可以将 [Microsoft Azure](https://azure.com) 配置为向 [Azure Application Insights](./app-insights-overview.md)[发送 Azure 诊断](../agents/diagnostics-extension-to-application-insights.md)。 该诊断与 Azure Cloud Service 和 Azure VM 有关。 它们是对使用 Application Insights SDK 从应用内发送的遥测的补充。 作为在 Azure 中自动处理新建资源过程的一部分，可以使用 PowerShell 配置诊断。
 
 ## <a name="azure-template"></a>Azure 模板
 如果 Web 应用在 Azure 中，并且使用 Azure 资源管理器模板创建资源，可以通过将以下内容添加到资源节点来配置 Application Insights：
@@ -125,6 +125,6 @@ Remove-AzureServiceDiagnosticsExtension -ServiceName "MyService" -Role "WebRole"
 
 ## <a name="see-also"></a>另请参阅
 * [使用 Application Insights 监视 Azure Cloud Service 应用](./cloudservices.md)
-* [将 Azure 诊断发送到 Application Insights](../platform/diagnostics-extension-to-application-insights.md)
+* [将 Azure 诊断发送到 Application Insights](../agents/diagnostics-extension-to-application-insights.md)
 
 

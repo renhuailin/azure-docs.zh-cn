@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/25/2019
 ms.author: duau
-ms.openlocfilehash: f24a4a0d982ff78ca4d6726e950825ed2c784e67
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 0c1273f4a2025658520118ed843d90b3378a129f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98184534"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577875"
 ---
 # <a name="enable-resource-logging-in-azure-traffic-manager"></a>启用 Azure 流量管理器中的资源日志记录
 
@@ -54,7 +54,7 @@ ms.locfileid: "98184534"
       请确保与流量管理器配置文件资源关联的所有日志类别都显示为已启用。 另外，请验证存储帐户是否已正确设置。
 
 ## <a name="access-log-files"></a>访问日志文件
-1. 登录到 [Azure 门户](https://portal.azure.com)。 
+1. 登录 [Azure 门户](https://portal.azure.com)。 
 1. 在门户中导航到你的 Azure 存储帐户。
 2. 在你的 Azure 存储帐户的“概述”页面上，在“服务”下选择“Blob”。
 3. 对于“容器”，选择“insights-logs-probehealthstatusevents”，向下导航到 PT1H.json 文件并单击“下载”以下载并保存此日志文件的副本。
@@ -64,7 +64,7 @@ ms.locfileid: "98184534"
 
 ## <a name="traffic-manager-log-schema"></a>流量管理器日志架构
 
-通过 Azure Monitor 提供的所有资源日志共享公共顶级架构，且每个服务都能灵活地为其事件发出唯一属性。 有关顶级资源日志架构，请参阅 [Azure 资源日志支持的服务、架构和类别](../azure-monitor/platform/resource-logs-schema.md)。
+通过 Azure Monitor 提供的所有资源日志共享公共顶级架构，且每个服务都能灵活地为其事件发出唯一属性。 有关顶级资源日志架构，请参阅 [Azure 资源日志支持的服务、架构和类别](../azure-monitor/essentials/resource-logs-schema.md)。
 
 下表包含特定于 Azure 流量管理器配置文件资源的日志架构。
 

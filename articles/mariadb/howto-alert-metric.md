@@ -3,15 +3,15 @@ title: 配置指标警报 - Azure 门户 - Azure Database for MariaDB
 description: 本文介绍了如何通过 Azure 门户配置和访问针对 Azure Database for MariaDB 的指标警报。
 author: savjani
 ms.author: pariks
-ms.service: jroth
+ms.service: mariadb
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: 1e7dafaba6b6792afdec1f1866629fac9ba5a577
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 689e830d2486420be8d551d1f88dccba8d982428
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98664412"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593072"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-mariadb"></a>使用 Azure 门户设置针对 Azure Database for MariaDB 指标的警报
 
@@ -25,8 +25,8 @@ ms.locfileid: "98664412"
 * 调用 Webhook
 
 可使用以下项配置并获取预警规则相关信息：
-* [Azure 门户](../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
-* [Azure CLI](../azure-monitor/platform/alerts-metric.md#with-azure-cli)
+* [Azure 门户](../azure-monitor/alerts/alerts-metric.md#create-with-azure-portal)
+* [Azure CLI](../azure-monitor/alerts/alerts-metric.md#with-azure-cli)
 * [Azure 监视器 REST API](/rest/api/monitor/metricalerts)
 
 ## <a name="create-an-alert-rule-on-a-metric"></a>在指标上创建警报规则
@@ -85,5 +85,5 @@ ms.locfileid: "98664412"
 
 
 ## <a name="next-steps"></a>后续步骤
-* 了解[在警报中配置 Webhook](../azure-monitor/platform/alerts-webhooks.md)的详细信息。
-* 获取[指标集合概述](../azure-monitor/platform/data-platform.md)以确保服务可用且响应迅速。
+* 了解[在警报中配置 Webhook](../azure-monitor/alerts/alerts-webhooks.md)的详细信息。
+* 获取[指标集合概述](../azure-monitor/data-platform.md)以确保服务可用且响应迅速。

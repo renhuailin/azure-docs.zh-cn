@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.author: mimart
 ms.subservice: B2C
 ms.date: 01/29/2021
-ms.openlocfilehash: e44a029c61db5a22513387772c2b0d7a3e4d1a40
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 712a933276393890bf017a2517196031306233ad
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99219224"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573003"
 ---
 # <a name="monitor-azure-ad-b2c-with-azure-monitor"></a>使用 Azure Monitor 监视 Azure AD B2C
 
@@ -25,7 +25,7 @@ ms.locfileid: "99219224"
 可将日志事件路由到：
 
 * Azure [存储帐户](../storage/blobs/storage-blobs-introduction.md)。
-* [Log Analytics 工作区](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace)（以分析数据、创建仪表板以及针对特定事件发出警报）。
+* [Log Analytics 工作区](../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace)（以分析数据、创建仪表板以及针对特定事件发出警报）。
 * Azure [事件中心](../event-hubs/event-hubs-about.md)（并与 Splunk 和 Sumo Logic 实例集成）。
 
 ![Azure Monitor](./media/azure-monitor/azure-monitor-flow.png)
@@ -38,7 +38,7 @@ ms.locfileid: "99219224"
 
 ## <a name="deployment-overview"></a>部署概述
 
-Azure AD B2C 使用 [Azure Active Directory 监视](../active-directory/reports-monitoring/overview-monitoring.md)。 若要在 Azure AD B2C 租户的 Azure Active Directory 中启用 *诊断设置* ，请使用 [Azure Lighthouse](../lighthouse/concepts/azure-delegated-resource-management.md) [委托资源](../lighthouse/concepts/azure-delegated-resource-management.md)，这允许 Azure AD B2C (**服务提供商**) 管理 Azure AD () **资源的** 。 完成本文中的步骤后，你将可以访问包含 **Azure AD B2C** 门户中的 " [Log Analytics" 工作区](../azure-monitor/learn/quick-create-workspace.md)的 *azure ad b2c 监视* 资源组。 你还可以将日志从 Azure AD B2C 传输到 Log Analytics 工作区。
+Azure AD B2C 使用 [Azure Active Directory 监视](../active-directory/reports-monitoring/overview-monitoring.md)。 若要在 Azure AD B2C 租户的 Azure Active Directory 中启用 *诊断设置* ，请使用 [Azure Lighthouse](../lighthouse/concepts/azure-delegated-resource-management.md) [委托资源](../lighthouse/concepts/azure-delegated-resource-management.md)，这允许 Azure AD B2C (**服务提供商**) 管理 Azure AD () **资源的** 。 完成本文中的步骤后，你将可以访问包含 **Azure AD B2C** 门户中的 " [Log Analytics" 工作区](../azure-monitor/logs/quick-create-workspace.md)的 *azure ad b2c 监视* 资源组。 你还可以将日志从 Azure AD B2C 传输到 Log Analytics 工作区。
 
 在此部署过程中，你将在 Azure AD B2C 目录中授权用户或组，以配置包含你的 Azure 订阅的租户内的 Log Analytics 工作区实例。 若要创建授权，请将 [Azure 资源管理器](../azure-resource-manager/index.yml)模板部署到包含该订阅的 Azure AD 租户。
 
@@ -62,7 +62,7 @@ Azure AD B2C 使用 [Azure Active Directory 监视](../active-directory/reports-
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 在门户工具栏中选择 " **目录 + 订阅** " 图标，然后选择包含 **Azure AD 租户** 的目录。
-1. [创建 Log Analytics 工作区](../azure-monitor/learn/quick-create-workspace.md)。 此示例在名为 "AzureAdB2C" 的资源组中使用 Log Analytics 一个名为 "  *" 的工作区。*
+1. [创建 Log Analytics 工作区](../azure-monitor/logs/quick-create-workspace.md)。 此示例在名为 "AzureAdB2C" 的资源组中使用 Log Analytics 一个名为 "  *" 的工作区。*
 
 ## <a name="3-delegate-resource-management"></a>3. 委派资源管理
 
@@ -97,7 +97,7 @@ Azure AD B2C 使用 [Azure Active Directory 监视](../active-directory/reports-
 2. 在门户工具栏中选择 " **目录 + 订阅** " 图标，然后选择包含 **Azure AD** 租户的目录。
 3. 使用 " **部署到 Azure** " 按钮打开 Azure 门户并直接在门户中部署模板。 有关详细信息，请参阅 [创建 Azure 资源管理器模板](../lighthouse/how-to/onboard-customer.md#create-an-azure-resource-manager-template)。
 
-   [![“部署到 Azure”](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Lighthouse-samples%2Fmaster%2Ftemplates%2Frg-delegated-resource-management%2FrgDelegatedResourceManagement.json)
+   [![部署到 Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Lighthouse-samples%2Fmaster%2Ftemplates%2Frg-delegated-resource-management%2FrgDelegatedResourceManagement.json)
 
 5. 在 " **自定义部署** " 页上，输入以下信息：
 
@@ -144,9 +144,9 @@ Azure AD B2C 使用 [Azure Active Directory 监视](../active-directory/reports-
 
 诊断设置定义要将资源的日志和指标发送到的位置。 可能的目标为：
 
-- [Azure 存储帐户](../azure-monitor/platform/resource-logs.md#send-to-azure-storage)
-- [事件中心](../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs) 解决方案
-- [Log Analytics 工作区](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace)
+- [Azure 存储帐户](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)
+- [事件中心](../azure-monitor/essentials/resource-logs.md#send-to-azure-event-hubs) 解决方案
+- [Log Analytics 工作区](../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace)
 
 在此示例中，我们使用 "Log Analytics" 工作区来创建仪表板。
 
@@ -171,7 +171,7 @@ Azure AD B2C 使用 [Azure Active Directory 监视](../active-directory/reports-
 1. 选择“保存” 。
 
 > [!NOTE]
-> 发出事件后，最多可能需要15分钟才能 [显示在 Log Analytics 工作区中](../azure-monitor/platform/data-ingestion-time.md)。 此外，详细了解 [Active Directory 报告延迟](../active-directory/reports-monitoring/reference-reports-latencies.md)，这可能会影响数据的过期，并在报告中扮演重要角色。
+> 发出事件后，最多可能需要15分钟才能 [显示在 Log Analytics 工作区中](../azure-monitor/logs/data-ingestion-time.md)。 此外，详细了解 [Active Directory 报告延迟](../active-directory/reports-monitoring/reference-reports-latencies.md)，这可能会影响数据的过期，并在报告中扮演重要角色。
 
 如果你看到错误消息 "若要为你的 Azure AD B2C 目录设置诊断设置以使用 Azure Monitor，则需要设置委派的资源管理"，请确保使用 [安全组](#32-select-a-security-group) 成员的用户登录，并 [选择订阅](#4-select-your-subscription)。
 
@@ -181,7 +181,7 @@ Azure AD B2C 使用 [Azure Active Directory 监视](../active-directory/reports-
 
 ### <a name="61-create-a-query"></a>6.1 创建查询
 
-日志查询可帮助你充分利用 Azure Monitor 日志中收集的数据的价值。 使用功能强大的查询语言，只需编写极少量的代码即可联接多个表中的数据、聚合大型数据集，以及执行复杂的操作。 只要收集了支持数据，并且你了解如何构造适当的查询，就几乎能够解答任何问题和执行分析。 有关详细信息，请参阅 [Azure Monitor 中的日志查询入门](../azure-monitor/log-query/get-started-queries.md)。
+日志查询可帮助你充分利用 Azure Monitor 日志中收集的数据的价值。 使用功能强大的查询语言，只需编写极少量的代码即可联接多个表中的数据、聚合大型数据集，以及执行复杂的操作。 只要收集了支持数据，并且你了解如何构造适当的查询，就几乎能够解答任何问题和执行分析。 有关详细信息，请参阅 [Azure Monitor 中的日志查询入门](../azure-monitor/logs/get-started-queries.md)。
 
 1. 从 **Log Analytics 工作区** 中，选择 "**日志**"
 1. 在查询编辑器中，粘贴以下 [Kusto 查询语言](/azure/data-explorer/kusto/query/) 查询。 此查询显示过去 x 天内按操作列出的策略使用情况。 默认持续时间设置为90天 (90d) 。 请注意，查询仅集中于由策略颁发的令牌/代码的操作。
@@ -228,7 +228,7 @@ AuditLogs
 
 ### <a name="62-create-a-workbook"></a>6.2 创建工作簿
 
-工作簿提供了一块灵活的画布，以用于分析数据以及在 Azure 门户中创建丰富的视觉报告。 使用工作簿可以在整个 Azure 中接入多个数据源，并将其组合成统一的交互式体验。 有关详细信息，请参阅 [Azure Monitor 工作簿](../azure-monitor/platform/workbooks-overview.md)。
+工作簿提供了一块灵活的画布，以用于分析数据以及在 Azure 门户中创建丰富的视觉报告。 使用工作簿可以在整个 Azure 中接入多个数据源，并将其组合成统一的交互式体验。 有关详细信息，请参阅 [Azure Monitor 工作簿](../azure-monitor/visualize/workbooks-overview.md)。
 
 按照以下说明使用 JSON 库模板创建新的工作簿。 此工作簿为 Azure AD B2C 租户提供 **用户见解** 和 **身份验证** 仪表板。
 
@@ -259,10 +259,10 @@ AuditLogs
 
 ## <a name="create-alerts"></a>创建警报
 
-警报通过警报规则在 Azure Monitor 中创建，可以按固定的时间间隔自动运行保存的查询或自定义日志搜索。 可按以下条件创建警报：基于特定性能指标、在创建某些事件时、缺少某事件时，或者在特定时间范围内创建大量事件时。 例如，当登录平均数超过特定阈值时，可以使用警报通知您。 有关详细信息，请参阅[创建警报](../azure-monitor/learn/tutorial-response.md)。
+警报通过警报规则在 Azure Monitor 中创建，可以按固定的时间间隔自动运行保存的查询或自定义日志搜索。 可按以下条件创建警报：基于特定性能指标、在创建某些事件时、缺少某事件时，或者在特定时间范围内创建大量事件时。 例如，当登录平均数超过特定阈值时，可以使用警报通知您。 有关详细信息，请参阅[创建警报](../azure-monitor/alerts/tutorial-response.md)。
 
 
-使用以下说明创建新的 Azure 警报，该警报将在 **请求总数** 与上一期间的总时间百分比下降时发送 [电子邮件通知](../azure-monitor/platform/action-groups.md#configure-notifications)。 警报将每隔5分钟运行一次，并在过去24小时内查找删除时间范围。 使用 Kusto 查询语言创建警报。
+使用以下说明创建新的 Azure 警报，该警报将在 **请求总数** 与上一期间的总时间百分比下降时发送 [电子邮件通知](../azure-monitor/alerts/action-groups.md#configure-notifications)。 警报将每隔5分钟运行一次，并在过去24小时内查找删除时间范围。 使用 Kusto 查询语言创建警报。
 
 
 1. 从 **Log Analytics 工作区** 中，选择 " **日志**"。 
@@ -296,7 +296,7 @@ AuditLogs
 
 ### <a name="configure-action-groups"></a>配置操作组
 
-Azure Monitor 和服务运行状况警报使用操作组来通知用户某个警报已触发。 你可以包括发送语音呼叫、短信、电子邮件;或触发各种类型的自动操作。 按照 " [创建和管理" 中的指导操作组 Azure 门户](../azure-monitor/platform/action-groups.md)
+Azure Monitor 和服务运行状况警报使用操作组来通知用户某个警报已触发。 你可以包括发送语音呼叫、短信、电子邮件;或触发各种类型的自动操作。 按照 " [创建和管理" 中的指导操作组 Azure 门户](../azure-monitor/alerts/action-groups.md)
 
 下面是警报通知电子邮件的示例。 
 
@@ -306,7 +306,7 @@ Azure Monitor 和服务运行状况警报使用操作组来通知用户某个警
 
 若要将多个 Azure AD B2C 租户日志集成到同一个 Log Analytics 工作区 (或 Azure 存储帐户或事件中心) ，需要单独部署具有不同的 **Msp 产品名称** 值。 请确保 Log Analytics 工作区与你在 " [创建或选择资源组](#1-create-or-choose-resource-group)" 中配置的工作区位于同一资源组中。
 
-处理多个 Log Analytics 工作区时，请使用 [跨工作区查询](../azure-monitor/log-query/cross-workspace-query.md) 来创建跨多个工作区的查询。 例如，下面的查询从基于同一类别的不同租户执行两个审核日志的联接 (例如，Authentication) ：
+处理多个 Log Analytics 工作区时，请使用 [跨工作区查询](../azure-monitor/logs/cross-workspace-query.md) 来创建跨多个工作区的查询。 例如，下面的查询从基于同一类别的不同租户执行两个审核日志的联接 (例如，Authentication) ：
 
 ```kusto
 workspace("AD-B2C-TENANT1").AuditLogs
@@ -316,12 +316,12 @@ workspace("AD-B2C-TENANT1").AuditLogs
 
 ## <a name="change-the-data-retention-period"></a>更改数据保留期
 
-Azure Monitor 日志旨在根据企业中的任何源或在 Azure 中部署的情况，扩展和支持每天收集、索引和存储大量数据。 默认情况下，日志保留30天，但保持期可以增加到最多两年。 了解如何 [使用 Azure Monitor 日志管理使用情况和成本](../azure-monitor/platform/manage-cost-storage.md)。 选择定价层后，可以 [更改数据保持期](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)。
+Azure Monitor 日志旨在根据企业中的任何源或在 Azure 中部署的情况，扩展和支持每天收集、索引和存储大量数据。 默认情况下，日志保留30天，但保持期可以增加到最多两年。 了解如何 [使用 Azure Monitor 日志管理使用情况和成本](../azure-monitor/logs/manage-cost-storage.md)。 选择定价层后，可以 [更改数据保持期](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)。
 
 ## <a name="next-steps"></a>后续步骤
 
 * 在 Azure AD B2C [SIEM 库](https://aka.ms/b2csiem)中查找更多示例。 
 
-* 有关在 Azure Monitor 中添加和配置诊断设置的详细信息，请参阅[教程：从 Azure 资源收集和分析资源日志](../azure-monitor/insights/monitor-azure-resource.md)。
+* 有关在 Azure Monitor 中添加和配置诊断设置的详细信息，请参阅[教程：从 Azure 资源收集和分析资源日志](../azure-monitor/essentials/monitor-azure-resource.md)。
 
 * 有关将 Azure AD 日志流式传输到事件中心的信息，请参阅[教程：将 Azure Active Directory 日志流式传输到 Azure 事件中心](../active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md)。

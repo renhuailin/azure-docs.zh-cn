@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/25/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 3e123ab6d5b9d801908112239cf3e9cb72b4abbb
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 4716679de08bbae137e42f91db5b6f93c0c96e22
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99093957"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593381"
 ---
 # <a name="azure-security-baseline-for-azure-signalr-service"></a>适用于 Azure SignalR 服务的 Azure 安全基线
 
@@ -481,9 +481,9 @@ Azure 安全中心还可针对某些可疑活动发出警报，例如，失败�
 
 请为 Azure SignalR 服务启用 Azure 资源日志。 可以使用 Azure 安全中心和 Azure Policy 来启用资源日志和日志数据收集。 这些日志可能对日后调查安全事件和执行取证演练至关重要。
 
-- [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/platform/diagnostic-settings.md)
+- [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/essentials/diagnostic-settings.md)
 
-- [了解 Azure 中的日志记录和不同的日志类型](../azure-monitor/platform/platform-logs-overview.md)
+- [了解 Azure 中的日志记录和不同的日志类型](../azure-monitor/essentials/platform-logs-overview.md)
 
 - [Azure SignalR 服务的资源日志](signalr-howto-diagnostic-logs.md)
 
@@ -503,7 +503,7 @@ Azure 安全中心还可针对某些可疑活动发出警报，例如，失败�
 
 许多组织选择将 Azure Sentinel 用于频繁使用的“热”数据，并将 Azure 存储用于不太频繁使用的“冷”数据。
 
-- [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/platform/diagnostic-settings.md)
+- [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/essentials/diagnostic-settings.md)
 
 - [如何加入 Azure Sentinel](../sentinel/quickstart-onboard.md)
 

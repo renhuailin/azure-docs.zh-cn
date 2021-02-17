@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/08/2020
-ms.openlocfilehash: f2f2272363cbc26895b061fe7b6263ed2a29fbab
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: f06ed85e362f15e36e030cd11639d9d17348e938
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91993258"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573613"
 ---
 # <a name="deploy-azure-monitor-at-scale-using-azure-policy"></a>使用 Azure Policy 大规模部署 Azure Monitor
 虽然某些 Azure Monitor 功能仅配置一次或有限的几次，但另一些功能必须针对要监视的每个资源重复配置。 本文介绍了如何使用 Azure Policy 大规模实施 Azure Monitor 以确保为所有 Azure 资源一致且准确地配置监视功能。
@@ -33,7 +33,7 @@ Azure Policy 由下表中的对象构成。 有关每个对象的更详细的说
 | 分配 | 策略定义或计划在分配到作用域之前不会生效。 例如，将策略分配给某个资源组以将其应用于在该资源中创建的所有资源，或将其应用于某个订阅以将其应用于该订阅中的所有资源。  有关更多详细信息，请参阅 [Azure Policy 分配结构](../governance/policy/concepts/assignment-structure.md)。 |
 
 ## <a name="built-in-policy-definitions-for-azure-monitor"></a>Azure Monitor 的内置策略定义
-Azure Policy 包括多个与 Azure Monitor 相关的预生成定义。 你可以将这些策略定义分配给现有订阅，也可以将它们作为基础来创建你自己的自定义定义。 有关“监视”类别中的内置策略的完整列表，请参阅 [Azure Monitor的 Azure Policy 内置策略定义](./samples/policy-reference.md)。
+Azure Policy 包括多个与 Azure Monitor 相关的预生成定义。 你可以将这些策略定义分配给现有订阅，也可以将它们作为基础来创建你自己的自定义定义。 有关“监视”类别中的内置策略的完整列表，请参阅 [Azure Monitor的 Azure Policy 内置策略定义](.//policy-reference.md)。
 
 若要查看与监视相关的内置策略定义，请执行以下操作：
 
@@ -41,11 +41,11 @@ Azure Policy 包括多个与 Azure Monitor 相关的预生成定义。 你可以
 2. 选择“定义”。
 3. 对于“类型”，请选择“内置”；对于“类别”，请选择“监视”。
 
-  ![Azure 门户中的 "Azure 策略定义" 页的屏幕截图，其中显示了监视类别和内置类型的策略定义的列表。](media/deploy-scale/builtin-policies.png)
+  ![Azure 门户中“Azure Policy 定义”页的屏幕截图，其中显示了用于监视类别和内置类型的策略定义的列表。](media/deploy-scale/builtin-policies.png)
 
 
 ## <a name="diagnostic-settings"></a>诊断设置
-[诊断设置](platform/diagnostic-settings.md)将资源日志和指标从 Azure 资源收集到多个位置，通常是收集到 Log Analytics 工作区，该工作区允许使用[日志查询](log-query/log-query-overview.md)和[日志警报](platform/alerts-log.md)来分析数据。 使用 Policy 可在每次创建资源时自动创建诊断设置。
+[诊断设置](essentials/diagnostic-settings.md)将资源日志和指标从 Azure 资源收集到多个位置，通常是收集到 Log Analytics 工作区，该工作区允许使用[日志查询](logs/log-query-overview.md)和[日志警报](alerts/alerts-log.md)来分析数据。 使用 Policy 可在每次创建资源时自动创建诊断设置。
 
 每个 Azure 资源类型都有需要在诊断设置中列出的一组唯一的类别。 因此，每个资源类型都需要一个单独的策略定义。 某些资源类型具有无需修改便可分配的内置策略定义。 对于其他资源类型，你需要创建自定义定义。
 
@@ -54,7 +54,7 @@ Azure Policy 包括多个与 Azure Monitor 相关的预生成定义。 你可以
 
 例如，下图显示了 Data Lake Analytics 的内置诊断设置策略定义。
 
-  !["Azure 策略定义" 页中的部分屏幕截图显示了 Data Lake Analytics 的两个内置诊断设置策略定义。](media/deploy-scale/builtin-diagnostic-settings.png)
+  ![“Azure Policy 定义”页中的部分屏幕截图，显示了 Data Lake Analytics 的两个内置诊断设置策略定义。](media/deploy-scale/builtin-diagnostic-settings.png)
 
 ### <a name="custom-policy-definitions"></a>自定义策略定义
 对于没有内置策略的资源类型，你需要创建自定义策略定义。 可以在 Azure 门户中通过以下方式手动执行此操作：复制某个现有的内置策略，然后针对你的资源类型修改该策略。 不过，使用 PowerShell 库中的脚本以编程方式创建策略更高效。
@@ -109,7 +109,7 @@ Azure Policy 包括多个与 Azure Monitor 相关的预生成定义。 你可以
 ### <a name="assignment"></a>分配 
 根据要监视的资源的范围，将计划分配给 Azure 管理组、订阅或资源组。 [管理组](../governance/management-groups/overview.md)特别适用于限定策略作用域，尤其是当你的组织有多个订阅时。
 
-!["诊断设置" 的 "分配计划" 部分中的 "基本信息" 选项卡的屏幕截图，在 Azure 门户中 Log Analytics "工作区"。](media/deploy-scale/initiative-assignment.png)
+![屏幕截图，显示了 Azure 门户中 Log Analytics 工作区诊断设置的“分配计划”部分中的“基本信息”选项卡设置。](media/deploy-scale/initiative-assignment.png)
 
 通过使用计划参数，你可以同时为计划中的所有策略定义指定工作区或任何其他详细信息。 
 
@@ -122,7 +122,7 @@ Azure Policy 包括多个与 Azure Monitor 相关的预生成定义。 你可以
 
 
 ## <a name="azure-monitor-for-vms"></a>用于 VM 的 Azure Monitor
-[用于 VM 的 Azure Monitor](insights/vminsights-overview.md) 是 Azure Monitor 用于监视虚拟机的主要工具。 启用用于 VM 的 Azure Monitor 将同时安装 Log Analytics 代理和依赖项代理。 使用 Azure 策略可以确保在创建每个虚拟机时配置每个虚拟机，而不是手动执行这些任务。
+[用于 VM 的 Azure Monitor](vm/vminsights-overview.md) 是 Azure Monitor 用于监视虚拟机的主要工具。 启用用于 VM 的 Azure Monitor 将同时安装 Log Analytics 代理和依赖项代理。 使用 Azure 策略可以确保在创建每个虚拟机时配置每个虚拟机，而不是手动执行这些任务。
 
 > [!NOTE]
 > 用于 VM 的 Azure Monitor 包括一项称为 **用于 VM 的 Azure Monitor 策略覆盖** 区的功能，可让你在你的环境中发现并修正不符合的虚拟机。 你可以使用此功能，而不是直接使用 azure Vm 的 azure 策略以及使用 Azure Arc 连接的混合虚拟机。对于 Azure 虚拟机规模集，必须使用 Azure 策略创建分配。
@@ -139,7 +139,7 @@ Azure Policy 包括多个与 Azure Monitor 相关的预生成定义。 你可以
 ### <a name="virtual-machines"></a>虚拟机
 用于 VM 的 Azure Monitor 包括一项功能，可用于检查每个范围中的虚拟机数，以确定是否已应用该计划，而不是使用 Azure 策略界面为这些计划创建分配。 然后，你可以配置工作区，并使用该接口创建任何所需的分配。
 
-有关此过程的详细信息，请参阅 [使用 Azure 策略启用用于 VM 的 Azure Monitor](./insights/vminsights-enable-policy.md)。
+有关此过程的详细信息，请参阅 [使用 Azure 策略启用用于 VM 的 Azure Monitor](./vm/vminsights-enable-policy.md)。
 
 ![用于 VM 的 Azure Monitor 策略](media/deploy-scale/vminsights-policy.png)
 
@@ -148,7 +148,7 @@ Azure Policy 包括多个与 Azure Monitor 相关的预生成定义。 你可以
 
 ![Azure 门户中的 "分配计划" 页的屏幕截图。 计划定义已设置为虚拟机规模集启用 Azure Monitor。](media/deploy-scale/virtual-machine-scale-set-assign-initiative.png)
 
-选择要将数据发送到的工作区。 此工作区必须安装了 *VMInsights* 解决方案，如中所述 []() 。
+选择要将数据发送到的工作区。 此工作区必须安装了 *VMInsights* 解决方案，如 [用于 VM 的 Azure Monitor 配置 Log Analytics 工作区](vm/vminsights-configure-workspace.md)中所述。
 
 ![选择工作区](media/deploy-scale/virtual-machine-scale-set-workspace.png)
 
@@ -181,4 +181,4 @@ Azure Policy 包括多个与 Azure Monitor 相关的预生成定义。 你可以
 ## <a name="next-steps"></a>后续步骤
 
 - 阅读有关 [Azure Policy](../governance/policy/overview.md) 的更多内容。
-- 阅读有关[诊断设置](platform/diagnostic-settings.md)的更多内容。
+- 阅读有关[诊断设置](essentials/diagnostic-settings.md)的更多内容。

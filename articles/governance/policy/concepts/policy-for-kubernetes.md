@@ -3,12 +3,12 @@ title: 了解适用于 Kubernetes 的 Azure 策略
 description: 了解 Azure Policy 如何使用 Rego 和 Open Policy Agent 来管理在 Azure 或本地运行 Kubernetes 的群集。
 ms.date: 12/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: f25b64bc28535d125c7883f16c9e747d6250ca96
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 0aaf610cd5712ee195ed2a4108cf9e5ca9c65183
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98789732"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577096"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters"></a>了解用于 Kubernetes 群集的 Azure Policy
 
@@ -447,7 +447,7 @@ kubectl get pods -n gatekeeper-system
 ## <a name="logging"></a>日志记录
 
 作为 Kubernetes 控制器/容器，azure-policy 和 gatekeeper pod 在 Kubernetes 群集中保留日志。 日志可以在 Kubernetes 群集的“见解”页中公开。
-有关详细信息，请参阅[使用适用于容器的 Azure Monitor 监视 Kubernetes 群集性能](../../../azure-monitor/insights/container-insights-analyze.md)。
+有关详细信息，请参阅[使用适用于容器的 Azure Monitor 监视 Kubernetes 群集性能](../../../azure-monitor/containers/container-insights-analyze.md)。
 
 若要查看加载项日志，请使用 `kubectl`：
 

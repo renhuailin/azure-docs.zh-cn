@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c4fde22b1b8d72ae8ae775c090e0da25ce0665f
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 905261058c2de0afae18cbc5572c64962bef8834
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96181163"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100580020"
 ---
 # <a name="analyze-azure-ad-activity-logs-with-azure-monitor-logs"></a>使用 Azure Monitor 日志分析 Azure AD 活动日志
 
@@ -36,9 +36,9 @@ ms.locfileid: "96181163"
 
 若要按照文中内容操作，需要：
 
-* 在 Azure 订阅中创建 Log Analytics 工作区。 了解如何[创建 Log Analytics 工作区](../../azure-monitor/learn/quick-create-workspace.md)。
+* 在 Azure 订阅中创建 Log Analytics 工作区。 了解如何[创建 Log Analytics 工作区](../../azure-monitor/logs/quick-create-workspace.md)。
 * 首先，完成[将 Azure AD 活动日志路由到 Log Analytics 工作区](howto-integrate-activity-logs-with-log-analytics.md)的相关步骤。
-*  [访问](../../azure-monitor/platform/manage-access.md#manage-access-using-workspace-permissions) Log Analytics 工作区
+*  [访问](../../azure-monitor/logs/manage-access.md#manage-access-using-workspace-permissions) Log Analytics 工作区
 * Azure Active Directory 中的以下角色（如果要通过 Azure Active Directory 门户访问 Log Analytics）
     - 安全管理员
     - 安全读取者
@@ -96,7 +96,7 @@ AuditLogs
 
 3. 为警报输入名称和描述，然后选择严重级别。 示例中可将其设置为“信息性”。
 
-4. 选择“操作组”，信号发生时将向其发出警报。 可以选择通过电子邮件或短信来通知团队，或使用 webhook、Azure functions 或逻辑应用来自动执行此操作。 详细了解如何[在 Azure 门户中创建和管理警报组](../../azure-monitor/platform/action-groups.md)。
+4. 选择“操作组”，信号发生时将向其发出警报。 可以选择通过电子邮件或短信来通知团队，或使用 webhook、Azure functions 或逻辑应用来自动执行此操作。 详细了解如何[在 Azure 门户中创建和管理警报组](../../azure-monitor/alerts/action-groups.md)。
 
 5. 配置警报后，选择“创建警报”来启用它。 
 
@@ -110,6 +110,6 @@ AuditLogs
 
 ## <a name="next-steps"></a>后续步骤
 
-* [Azure Monitor 日志查询入门](../../azure-monitor/log-query/get-started-queries.md)
-* [在 Azure 门户中创建和管理器警报组](../../azure-monitor/platform/action-groups.md)
+* [Azure Monitor 日志查询入门](../../azure-monitor/logs/get-started-queries.md)
+* [在 Azure 门户中创建和管理器警报组](../../azure-monitor/alerts/action-groups.md)
 * [安装和使用用于 Azure Active Directory 的日志分析视图](howto-install-use-log-analytics-views.md)

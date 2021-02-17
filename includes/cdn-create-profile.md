@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/30/2020
 ms.author: cfowler
 ms.custom: include file
-ms.openlocfilehash: c6352ee9d29e4e45aa4be449046a0715fee06047
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.openlocfilehash: 9a003b5c42a6ef4c699a3768d15ae08f86d56e52
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98165903"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100367278"
 ---
 ## <a name="create-a-new-cdn-profile"></a>创建新的 CDN 配置文件
 
@@ -31,7 +31,7 @@ CDN 配置文件是适用于 CDN 终结点的容器，用于指定定价层。
    
     | 设置  | 值 |
     | -------- | ----- |
-    | **名称** | 输入“cdn-profile-123”作为配置文件名称。 此名称必须全局独一无二；如果此名称已在使用，请输入其他名称。 |
+    | **名称** | 输入“cdn-profile-123”作为配置文件名称。 |
     | **订阅** | 从下拉列表中选择一个 Azure 订阅。 |
     | **资源组** | 选择“新建”并输入“CDNQuickstart-rg”作为资源组名，或者选择“使用现有”并选择“CDNQuickstart-rg”（如果已有该组）。 | 
     | **资源组位置** | 从下拉列表中选择你附近的位置。 |

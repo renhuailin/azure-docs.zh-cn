@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: akjosh
-ms.openlocfilehash: f75ad90a562a39f940e1006a2e4d9123eff2b47c
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 202cdc341ce31c2347552e6fbc430c679ef28d7f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202175"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100580098"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-linux"></a>适用于 Linux 的 Log Analytics 虚拟机扩展
 
@@ -37,7 +37,7 @@ Azure Monitor 日志提供跨云和本地资产的监视、警报和警报修正
 
 ### <a name="operating-system"></a>操作系统
 
-有关支持的 Linux 发行版的详细信息，请参阅 [Azure Monitor 代理的概述](../../azure-monitor/platform/agents-overview.md#supported-operating-systems)一文。
+有关支持的 Linux 发行版的详细信息，请参阅 [Azure Monitor 代理的概述](../../azure-monitor/agents/agents-overview.md#supported-operating-systems)一文。
 
 ### <a name="agent-and-vm-extension-version"></a>代理和 VM 扩展版本
 下表提供每次发布的 Log Analytics VM 扩展和 Log Analytics 代理捆绑包的版本映射。 并附有 Log Analytics 代理捆绑包版本的发行说明链接。 发行说明包括有关可用于给定代理版本的 bug 修补程序和新功能的详细信息。  
@@ -76,7 +76,7 @@ Azure 安全中心自动预配 Log Analytics 代理并将其连接到 Azure 订�
 
 ## <a name="extension-schema"></a>扩展架构
 
-以下 JSON 显示 Log Analytics 代理扩展的架构。 此扩展需要目标 Log Analytics 工作区的工作区 ID 和工作区密钥，这些值可在 Azure 门户中的 [Log Analytics](../../azure-monitor/learn/quick-collect-linux-computer.md#obtain-workspace-id-and-key) 工作区中找到。 由于工作区密钥应视为敏感数据，因此将它存储在受保护的设置配置中。 Azure VM 扩展的受保护设置数据已加密，并且只能在目标虚拟机上解密。 请注意，**workspaceId** 和 **workspaceKey** 区分大小写。
+以下 JSON 显示 Log Analytics 代理扩展的架构。 此扩展需要目标 Log Analytics 工作区的工作区 ID 和工作区密钥，这些值可在 Azure 门户中的 [Log Analytics](../../azure-monitor/vm/quick-collect-linux-computer.md#obtain-workspace-id-and-key) 工作区中找到。 由于工作区密钥应视为敏感数据，因此将它存储在受保护的设置配置中。 Azure VM 扩展的受保护设置数据已加密，并且只能在目标虚拟机上解密。 请注意，**workspaceId** 和 **workspaceKey** 区分大小写。
 
 ```json
 {
@@ -221,7 +221,7 @@ az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 | 53 | 由于配置参数缺失或错误，此扩展失败 | 若要详细了解错误原因，请查看输出和日志。 此外，检查工作区 ID 的正确性，并验证计算机是否连接到 Internet。 |
 | 55 | 无法连接到 Azure Monitor 服务或缺少所需的包或 dpkg 包管理器已锁定| 确保系统具有 Internet 访问权限，或已提供有效 HTTP 代理。 此外，检查工作区 ID 的正确性，并验证是否已安装 curl 和 tar 实用程序。 |
 
-有关其他故障排除信息，可查看 [Log Analytics-Agent-for-Linux 故障排除指南](../../azure-monitor/platform/vmext-troubleshoot.md)。
+有关其他故障排除信息，可查看 [Log Analytics-Agent-for-Linux 故障排除指南](../../azure-monitor/visualize/vmext-troubleshoot.md)。
 
 ### <a name="support"></a>支持
 

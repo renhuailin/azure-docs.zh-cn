@@ -1,24 +1,18 @@
 ---
 title: 使用 .NET SDK 创建 Azure 数据工厂
 description: 使用 .NET SDK 创建 Azure 数据工厂和管道，以便将数据从 Azure Blob 存储中的一个位置复制到另一个位置。
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
-ms.tgt_pltfrm: ''
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 12/18/2020
 ms.author: jingwang
-ms.openlocfilehash: c5e35fb8ab6a782ec79f10b1099f6781062c1d7c
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: 821f64c46e0ae813e7dcd437bb0d4af848647185
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97678868"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100372682"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-net-sdk"></a>快速入门：使用 .NET SDK 创建数据工厂和管道
 

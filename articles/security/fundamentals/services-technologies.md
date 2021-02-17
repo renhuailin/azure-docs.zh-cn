@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/29/2019
 ms.author: terrylan
-ms.openlocfilehash: 8a33e9d462f3105bfee295ac82384a38325f7c7c
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 27443eb9c04c69567b3a1374f11e8b53837040f2
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498789"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585419"
 ---
 # <a name="security-services-and-technologies-available-on-azure"></a>Azure 上可用的安全服务和技术
 
@@ -33,9 +33,9 @@ ms.locfileid: "96498789"
 ## <a name="general-azure-security"></a>Azure 常规安全性
 |服务|说明|
 |--------|--------|
-|[Azure &nbsp; 安全 &nbsp; 中心](../../security-center/security-center-introduction.md)| 一个云工作负荷保护解决方案，可跨混合云工作负荷提供安全性管理和高级威胁防护。|
+|[Azure&nbsp;安全&nbsp;Center](../../security-center/security-center-introduction.md)| 一个云工作负荷保护解决方案，可跨混合云工作负荷提供安全性管理和高级威胁防护。|
 |[Azure 密钥保管库](../../key-vault/general/overview.md)| 一个安全的机密存储空间，用于存储密码、连接字符串和维持应用正常工作所需的其他信息。 |
-|[Azure Monitor 日志](../../azure-monitor/log-query/log-query-overview.md)|一项监视服务，它收集遥测和其他数据，并且提供查询语言和分析引擎，以传递应用和资源操作见解。 可单独使用或与其他服务一同使用（例如安全中心）。 |
+|[Azure Monitor 日志](../../azure-monitor/logs/log-query-overview.md)|一项监视服务，它收集遥测和其他数据，并且提供查询语言和分析引擎，以传递应用和资源操作见解。 可单独使用或与其他服务一同使用（例如安全中心）。 |
 |[Azure 开发/测试实验室](../../devtest-labs/devtest-lab-overview.md)|一项可帮助开发人员和测试人员在 Azure 中快速创建环境，同时尽量减少浪费并控制成本的服务。  |
 
 <!---|[Azure&nbsp;Disk&nbsp;Encryption](/azure/azure-security-disk-encryption-overview)| THIS WILL GO TO THE NEW OVERVIEW TOPIC MEGHAN STEWART IS WRITING|--->
@@ -67,7 +67,7 @@ ms.locfileid: "96498789"
 ## <a name="identity-and-access-management"></a>标识和访问管理
 |服务|说明|
 |------|--------|
-| [Azure &nbsp; 基于角色的 &nbsp; 访问控制](../../role-based-access-control/role-assignments-portal.md)|一项访问控制功能，它基于用户在组织内的角色，仅允许用户访问其必须访问的内容。  |
+| [Azure 基于角色的访问控制](../../role-based-access-control/role-assignments-portal.md)|一项访问控制功能，它基于用户在组织内的角色，仅允许用户访问其必须访问的内容。  |
 | [Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md)|一个基于云的身份验证存储库，它支持基于云的多租户目录和 Azure 中的多标识管理服务。  |
 | [Azure Active Directory B2C](../../active-directory-b2c/overview.md)|一项标识管理服务，帮助控制客户使用基于 Azure 的应用程序时如何注册、登录和管理其配置文件。   |
 | [Azure Active Directory 域服务](../../active-directory-domain-services/overview.md)| Active Directory 域服务基于云的托管版本。 |

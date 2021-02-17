@@ -3,15 +3,15 @@ title: 慢查询日志 - Azure Database for MariaDB
 description: 介绍了 Azure Database for MariaDB 中提供的日志，以及用于启用不同日志记录级别的可用参数。
 author: savjani
 ms.author: pariks
-ms.service: jroth
+ms.service: mariadb
 ms.topic: conceptual
 ms.date: 11/6/2020
-ms.openlocfilehash: 2d3c3c92cc4d0da38f18c7895f4f7f3f3385c653
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 2e7e56616300566839fadef762c2165c8d989e6e
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98664157"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570812"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mariadb"></a>Azure Database for MariaDB 中的慢查询日志
 在 Azure Database for MariaDB 中，慢查询日志可供用户使用。 不支持访问事务日志。 可以使用慢查询日志来查明性能瓶颈以进行故障排除。
@@ -53,7 +53,7 @@ ms.locfileid: "98664157"
 > 上述日志保留期不适用于使用 Azure Monitor 诊断日志通过管道传输的日志。 可以更改日志所发送到的数据接收器（例如 Azure 存储）的保留期。
 
 ## <a name="diagnostic-logs"></a>诊断日志
-Azure Database for MariaDB 集成了 Azure Monitor 诊断日志。 在 MariaDB 服务器上启用慢查询日志后，可以选择将它们发送到 Azure Monitor 日志、事件中心或 Azure 存储。 若要详细了解如何启用诊断日志，请参阅[诊断日志文档](../azure-monitor/platform/platform-logs-overview.md)中的操作说明部分。
+Azure Database for MariaDB 集成了 Azure Monitor 诊断日志。 在 MariaDB 服务器上启用慢查询日志后，可以选择将它们发送到 Azure Monitor 日志、事件中心或 Azure 存储。 若要详细了解如何启用诊断日志，请参阅[诊断日志文档](../azure-monitor/essentials/platform-logs-overview.md)中的操作说明部分。
 
 下表介绍了每个日志中的内容。 根据输出方法，包含的字段以及这些字段出现的顺序可能会有所不同。
 

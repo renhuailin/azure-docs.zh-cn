@@ -7,12 +7,12 @@ ms.date: 01/27/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 1c16da10a8a7853b1392383855aba0ff24424f33
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: d0e59f73dd9b62b528c3d86d315b613312df7773
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100515863"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577047"
 ---
 # <a name="monitor-the-overall-health-of-an-iot-central-application"></a>监视 IoT Central 应用程序的总体运行状况
 
@@ -23,7 +23,7 @@ ms.locfileid: "100515863"
 
 本文介绍如何使用 IoT Central 提供的指标集来评估连接到 IoT Central 应用程序的设备的运行状况，以及正在运行的数据导出的运行状况。
 
-默认情况下，对 IoT Central 应用程序启用指标，并从 [Azure 门户](https://portal.azure.com/)访问它们。 [Azure Monitor 的数据平台公开了这些指标](../../azure-monitor/platform/data-platform-metrics.md)，并提供了几种方式来与它们进行交互。 例如，你可以在 Azure 门户中使用图表，或在 PowerShell 中使用 REST API 或查询，或者 Azure CLI。
+默认情况下，对 IoT Central 应用程序启用指标，并从 [Azure 门户](https://portal.azure.com/)访问它们。 [Azure Monitor 的数据平台公开了这些指标](../../azure-monitor/essentials/data-platform-metrics.md)，并提供了几种方式来与它们进行交互。 例如，你可以在 Azure 门户中使用图表，或在 PowerShell 中使用 REST API 或查询，或者 Azure CLI。
 
 ### <a name="trial-applications"></a>试用应用程序
 
@@ -46,7 +46,7 @@ ms.locfileid: "100515863"
 
 ## <a name="iot-central-metrics"></a>IoT Central 度量值
 
-有关 IoT Central 当前可用指标的列表，请参阅 [支持的指标和 Azure Monitor](../../azure-monitor/platform/metrics-supported.md#microsoftiotcentraliotapps)。
+有关 IoT Central 当前可用指标的列表，请参阅 [支持的指标和 Azure Monitor](../../azure-monitor/essentials/metrics-supported.md#microsoftiotcentraliotapps)。
 
 ### <a name="metrics-and-invoices"></a>指标和发票
 

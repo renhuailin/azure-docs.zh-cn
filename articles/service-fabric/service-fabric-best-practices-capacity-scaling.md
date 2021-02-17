@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d7d9ed8fa695c636e7aaf36fd034babb4de012d9
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 32a9c26bb9e89cf4057cc753b02ad3c006d0bae6
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98784674"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595080"
 ---
 # <a name="capacity-planning-and-scaling-for-azure-service-fabric"></a>Azure Service Fabric 的容量规划和缩放
 
@@ -26,7 +26,7 @@ ms.locfileid: "98784674"
 
 * 使用相应的声明容量部署资源管理器模板无法为用例提供支持。
      
-   除了手动缩放以外，还可以[使用 Azure 资源组部署项目在 Azure DevOps 服务中配置持续集成和交付管道](../azure-resource-manager/templates/add-template-to-azure-pipelines.md)。 此管道通常由某个逻辑应用触发，而该应用利用从 [Azure Monitor REST API](../azure-monitor/platform/rest-api-walkthrough.md) 查询的虚拟机性能指标。 该管道基于所需的任意指标进行有效自动缩放，同时针对 Azure 资源管理器进行优化可以增大价值。
+   除了手动缩放以外，还可以[使用 Azure 资源组部署项目在 Azure DevOps 服务中配置持续集成和交付管道](../azure-resource-manager/templates/add-template-to-azure-pipelines.md)。 此管道通常由某个逻辑应用触发，而该应用利用从 [Azure Monitor REST API](../azure-monitor/essentials/rest-api-walkthrough.md) 查询的虚拟机性能指标。 该管道基于所需的任意指标进行有效自动缩放，同时针对 Azure 资源管理器进行优化可以增大价值。
 * 每次只需水平缩放一个虚拟机规模集节点。
    
    若要一次性横向扩展三个或更多个节点，应该[通过添加虚拟机规模集来横向扩展 Service Fabric 群集](virtual-machine-scale-set-scale-node-type-scale-out.md)。 最安全的做法是每次横向扩展或缩减虚拟机规模集的一个节点。

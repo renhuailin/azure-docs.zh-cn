@@ -8,12 +8,12 @@ ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 16b54e8a59eb42c6e2351d37ec0a29d775161493
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: fa5dd61c0764be45cdba68b73a4f55745ee5e55a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98739830"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585506"
 ---
 # <a name="collect-performance-counters-for-your-azure-cloud-service-classic"></a> (经典) 收集 Azure 云服务的性能计数器
 
@@ -124,7 +124,7 @@ Application Insights 会自动收集以下性能计数器：
 
 要收集的性能计数器在 **diagnostics.wadcfgx** 文件中定义。 请在 Visual Studio 中打开此文件（为每个角色定义了此文件），并找到 **DiagnosticsConfiguration** > **PublicConfig** > **WadCfg** > **DiagnosticMonitorConfiguration** > **PerformanceCounters** 元素。 将新的 **PerformanceCounterConfiguration** 元素添加为子级。 此元素有两个属性：`counterSpecifier` 和 `sampleRate`。 `counterSpecifier` 属性定义要收集的系统性能计数器集（请参阅上一部分）。 `sampleRate` 值指示轮询值的频率。 将会根据父 `PerformanceCounters` 元素的 `scheduledTransferPeriod` 属性值，将所有性能计数器作为一个整体传输到 Azure。
 
-有关 `PerformanceCounters` 架构元素的详细信息，请参阅 [Azure 诊断架构](../azure-monitor/platform/diagnostics-extension-schema-windows.md#performancecounters-element)。
+有关 `PerformanceCounters` 架构元素的详细信息，请参阅 [Azure 诊断架构](../azure-monitor/agents/diagnostics-extension-schema-windows.md#performancecounters-element)。
 
 `sampleRate` 属性定义的时间段使用 XML 持续时间数据类型来指示轮询性能计数器的频率。 在以下示例中，频率设置为 `PT3M`，表示 `[P]eriod[T]ime[3][M]inutes`：每隔 3 分钟。
 
@@ -294,4 +294,4 @@ counterServiceUsed.Increment();
 - [适用于 Azure 云服务的 Application Insights](../azure-monitor/app/cloudservices.md#performance-counters)
 - [Application Insights 中的系统性能计数器](../azure-monitor/app/performance-counters.md)
 - [指定计数器路径](/windows/win32/perfctrs/specifying-a-counter-path)
-- [Azure 诊断架构 - 性能计数器](../azure-monitor/platform/diagnostics-extension-schema-windows.md#performancecounters-element)
+- [Azure 诊断架构 - 性能计数器](../azure-monitor/agents/diagnostics-extension-schema-windows.md#performancecounters-element)

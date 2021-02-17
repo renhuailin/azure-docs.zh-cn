@@ -8,12 +8,12 @@ ms.author: chpalm
 ms.date: 10/03/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 7c522abd04f4a3e480bb5c3e14e78cc03dbd5d86
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: a047761669920d6460c3d6fb6d74b970effa7846
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888634"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572038"
 ---
 # <a name="region-availability-and-data-residency"></a>区域可用性和数据驻留
 
@@ -73,7 +73,7 @@ Azure 通信服务维护与通信服务资源关联的电话号码目录。 使�
 
 ## <a name="azure-monitor-and-log-analytics"></a>Azure Monitor 和 Log Analytics
 
-Azure 通信服务将向 Azure Monitor 提供日志记录数据，目的是了解该服务的运行状况和使用情况。 其中一些日志包含字段数据形式的通信服务标识和电话号码。 若要删除任何潜在的个人数据，[请对 Azure Monitor 使用这些过程](../../azure-monitor/platform/personal-data-mgmt.md)。 可能还需配置 [Azure Monitor 的默认保留期](../../azure-monitor/platform/manage-cost-storage.md)。
+Azure 通信服务将向 Azure Monitor 提供日志记录数据，目的是了解该服务的运行状况和使用情况。 其中一些日志包含字段数据形式的通信服务标识和电话号码。 若要删除任何潜在的个人数据，[请对 Azure Monitor 使用这些过程](../../azure-monitor/logs/personal-data-mgmt.md)。 可能还需配置 [Azure Monitor 的默认保留期](../../azure-monitor/logs/manage-cost-storage.md)。
 
 ## <a name="additional-resources"></a>其他资源
 

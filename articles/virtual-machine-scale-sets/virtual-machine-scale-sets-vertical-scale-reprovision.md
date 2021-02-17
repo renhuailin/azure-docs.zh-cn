@@ -9,18 +9,18 @@ ms.subservice: autoscale
 ms.date: 04/18/2019
 ms.reviewer: avverma
 ms.custom: avverma
-ms.openlocfilehash: 37602f7b9a8669ce0e8db984f7f7617cffdd431c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b172f1f7137b53e98384d92c9c709694eaf0b7e9
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87029274"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594492"
 ---
 # <a name="vertical-autoscale-with-virtual-machine-scale-sets"></a>使用虚拟机规模集垂直自动缩放
 
 本文介绍如何使用或不使用重新设置对 Azure [虚拟机规模集](https://azure.microsoft.com/services/virtual-machine-scale-sets/)进行垂直缩放。 
 
-垂直缩放，也称为*纵向扩展*和*纵向缩减*，即增大或减小虚拟机 (VM) 大小，以响应工作负荷。 将此行为与[水平缩放](virtual-machine-scale-sets-autoscale-overview.md)（也称为横向扩展和横向缩减，其中 VM 数目的更改取决于工作负荷）进行比较。
+垂直缩放，也称为 *纵向扩展* 和 *纵向缩减*，即增大或减小虚拟机 (VM) 大小，以响应工作负荷。 将此行为与[水平缩放](virtual-machine-scale-sets-autoscale-overview.md)（也称为横向扩展和横向缩减，其中 VM 数目的更改取决于工作负荷）进行比较。
 
 重新设置意味着删除现有 VM 并将其替换为新的 VM。 增加或减少虚拟机规模集中 VM 的大小时，某些情况下需要调整现有 VM 的大小并保留数据，而在其他情况下则需要部署新大小的新 VM。 本文档介绍这两种情况。
 
@@ -118,7 +118,7 @@ ms.locfileid: "87029274"
 
 ## <a name="add-an-alert-to-your-virtual-machine-scale-set"></a>将警报添加到虚拟机规模集
 
-下面是 PowerShell 脚本，演示如何将警报添加到虚拟机规模集。 请参阅以下文章以获取可触发警报的指标名称：[Azure Monitor 自动缩放常用指标](../azure-monitor/platform/autoscale-common-metrics.md)。
+下面是 PowerShell 脚本，演示如何将警报添加到虚拟机规模集。 请参阅以下文章以获取可触发警报的指标名称：[Azure Monitor 自动缩放常用指标](../azure-monitor/autoscale/autoscale-common-metrics.md)。
 
 ```powershell
 $actionEmail = New-AzAlertRuleEmail -CustomEmail user@contoso.com
@@ -153,8 +153,8 @@ Add-AzMetricAlertRule  -Name  $alertName `
 
 有关如何创建警报的详细信息，请参阅以下文章：
 
-* [Azure Monitor PowerShell 示例](../azure-monitor/samples/powershell-samples.md)
-* [Azure Monitor 跨平台 CLI 示例](../azure-monitor/samples/cli-samples.md)
+* [Azure Monitor PowerShell 示例](../azure-monitor/powershell-samples.md)
+* [Azure Monitor 跨平台 CLI 示例](../azure-monitor/cli-samples.md)
 
 ## <a name="summary"></a>总结
 

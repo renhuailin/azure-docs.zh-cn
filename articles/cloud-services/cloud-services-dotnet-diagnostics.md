@@ -1,5 +1,5 @@
 ---
-title: 如何将 Azure 诊断 ( .NET) 与云服务 (经典) |Microsoft Docs
+title: 如何将 Azure 诊断 (.NET) 与云服务（经典）配合使用 | Microsoft Docs
 description: 使用 Azure 诊断从 Azure 云服务收集数据，以用于调试、衡量性能、监视和流量分析等目的。
 ms.topic: article
 ms.service: cloud-services
@@ -8,14 +8,14 @@ ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 89ba50b91e8ff2e2d7a05d59f2b738a1f87a5fd2
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: e4b5372a2b6e9b833f3a0213d69649b75ae2589b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98742142"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100578190"
 ---
-# <a name="enabling-azure-diagnostics-in-azure-cloud-services-classic"></a>在 Azure 云服务中启用 Azure 诊断 (经典) 
+# <a name="enabling-azure-diagnostics-in-azure-cloud-services-classic"></a>在 Azure 云服务（经典）中启用 Azure 诊断
 
 > [!IMPORTANT]
 > [Azure 云服务 (扩展支持) ](../cloud-services-extended-support/overview.md) 是适用于 Azure 云服务产品的新的基于 azure 资源管理器的部署模型。进行此更改后，基于 Azure Service Manager 的部署模型运行的 Azure 云服务已重命名为云服务 (经典) ，所有新部署应使用 [云服务 (扩展支持) ](../cloud-services-extended-support/overview.md)。
@@ -189,13 +189,13 @@ Set-AzureServiceDiagnosticsExtension -StorageContext $storageContext -Diagnostic
 ![CloudServices_diag_tables](./media/cloud-services-dotnet-diagnostics/WadExampleTables.png)
 
 ## <a name="configuration-file-schema"></a>配置文件架构
-诊断配置文件定义启动诊断代理时用于初始化诊断配置设置的值。 有关有效值和示例，请参阅 [最新架构参考](../azure-monitor/platform/diagnostics-extension-versions.md) 。
+诊断配置文件定义启动诊断代理时用于初始化诊断配置设置的值。 有关有效值和示例，请参阅 [最新架构参考](../azure-monitor/agents/diagnostics-extension-versions.md) 。
 
 ## <a name="troubleshooting"></a>故障排除
-如果遇到问题，请参阅 [Azure 诊断疑难解答](../azure-monitor/platform/diagnostics-extension-troubleshooting.md)，获取有关常见问题的帮助。
+如果遇到问题，请参阅 [Azure 诊断疑难解答](../azure-monitor/agents/diagnostics-extension-troubleshooting.md)，获取有关常见问题的帮助。
 
 ## <a name="next-steps"></a>后续步骤
-若要更改你收集的数据、排查问题或者了解有关诊断的一般信息，请参阅[有关 Azure 虚拟机的诊断文章列表](../azure-monitor/platform/diagnostics-extension-overview.md)。
+若要更改你收集的数据、排查问题或者了解有关诊断的一般信息，请参阅[有关 Azure 虚拟机的诊断文章列表](../azure-monitor/agents/diagnostics-extension-overview.md)。
 
 [EventSource Class]: /dotnet/api/system.diagnostics.tracing.eventsource
 

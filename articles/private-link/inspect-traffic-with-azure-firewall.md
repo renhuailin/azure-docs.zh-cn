@@ -8,12 +8,12 @@ ms.service: private-link
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: allensu
-ms.openlocfilehash: 7812d0f2e42dfed6cdd661244b77969297093a5d
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 3ed349616ae6456913c19bb073f6e9ea28e7d549
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879167"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575124"
 ---
 # <a name="use-azure-firewall-to-inspect-traffic-destined-to-a-private-endpoint"></a>使用 Azure 防火墙检查发往专用终结点的流量
 
@@ -106,7 +106,7 @@ Azure 防火墙使用以下方法之一筛选流量：
 * Azure 订阅。
 * Log Analytics 工作区。  
 
-请参阅 [在 Azure 门户中创建 Log Analytics 工作区](../azure-monitor/learn/quick-create-workspace.md) ，以便在你的订阅中没有工作区时创建一个工作区。
+请参阅 [在 Azure 门户中创建 Log Analytics 工作区](../azure-monitor/logs/quick-create-workspace.md) ，以便在你的订阅中没有工作区时创建一个工作区。
 
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
@@ -202,7 +202,7 @@ Azure 防火墙使用以下方法之一筛选流量：
     | 选择入站端口 | 选择 " **SSH**"。|
     ||
 
-6. 选择“查看 + 创建”  。 随后你会转到“查看 + 创建”页，Azure 将在此页面验证配置。
+6. 选择“查看 + 创建”。 随后你会转到“查看 + 创建”页，Azure 将在此页面验证配置。
 
 7. 看到“验证通过”消息时，选择“创建” 。
 
@@ -230,7 +230,7 @@ Azure 防火墙使用以下方法之一筛选流量：
     | 公共 IP 地址    |    选择 " **添加新** 项"，然后在 "名称" 中输入 **myFirewall**。    |
     | 强制隧道    | 保留默认设置 " **已禁用**"。    |
     |||
-5. 选择“查看 + 创建”  。 随后你会转到“查看 + 创建”页，Azure 将在此页面验证配置。
+5. 选择“查看 + 创建”。 随后你会转到“查看 + 创建”页，Azure 将在此页面验证配置。
 
 6. 看到“验证通过”消息时，选择“创建” 。
 
@@ -257,7 +257,7 @@ Azure 防火墙使用以下方法之一筛选流量：
     | 订阅 | 选择订阅。 |
     | Log Analytics 工作区 | 选择 Log Analytics 工作区。 |
 
-6. 选择“保存”。 
+6. 选择“保存”。
 
 ## <a name="create-azure-sql-database"></a>创建 Azure SQL 数据库
 
@@ -284,7 +284,7 @@ Azure 防火墙使用以下方法之一筛选流量：
     | 计算 + 存储 | 保留默认 **常规用途 Gen5，2 vcore，32 GB 存储空间**。 |
     |||
 
-3. 选择“查看 + 创建”  。 随后你会转到“查看 + 创建”页，Azure 将在此页面验证配置。
+3. 选择“查看 + 创建”。 随后你会转到“查看 + 创建”页，Azure 将在此页面验证配置。
 
 4. 看到“验证通过”消息时，选择“创建” 。
 
@@ -345,7 +345,7 @@ Azure 防火墙使用以下方法之一筛选流量：
 
 13. 在 " **防火墙和虚拟网络**" 中，选择 "下一步 **"** 以 **允许 Azure 服务和资源访问此服务器**。
 
-14. 选择“保存”。 
+14. 选择“保存”。
 
 ## <a name="connect-the-virtual-networks-using-virtual-network-peering"></a>使用虚拟网络对等互连连接虚拟网络
 
@@ -379,7 +379,7 @@ Azure 防火墙使用以下方法之一筛选流量：
 
 4. 选择“确定”。
 
-5. 选择“+添加”。
+5. 选择“+ 添加”。
 
 6. 在 " **添加对等互连** " 中输入或选择以下信息：
 
@@ -463,12 +463,12 @@ VM 和防火墙需要此链接，以将数据库的 FQDN 解析为其专用终�
     | **FQDN 标记** | |
     | 名称  | 留空。  |
     | 源类型 | 保留默认的 **IP 地址**。    |
-    | Source | 留空。 |
+    | 源 | 留空。 |
     | FQDN 标记 | 保留默认值 **0**。 |
-    | **目标 FQDN** | |
+    | **目标 Fqdn** | |
     | 名称 | 输入 **SQLPrivateEndpoint**。    |
     | 源类型 | 保留默认的 **IP 地址**。 |
-    | Source | 输入 10.1.0.0/16。 |
+    | 源 | 输入 10.1.0.0/16。 |
     | 协议：端口 | 输入 **mssql： 1433**。 |
     | 目标 FQDN | 输入 **mydbserver.database.windows.net**。 |
     |||
@@ -501,7 +501,7 @@ VM 和防火墙需要此链接，以将数据库的 FQDN 解析为其专用终�
     | 名称 | 输入 " **AzureFirewall**"。 |
     | 传播网关路由 | 请选择“否”。 |
 
-5. 选择“查看 + 创建”  。 随后你会转到“查看 + 创建”页，Azure 将在此页面验证配置。
+5. 选择“查看 + 创建”。 随后你会转到“查看 + 创建”页，Azure 将在此页面验证配置。
 
 6. 看到“验证通过”消息时，选择“创建” 。
 
@@ -509,7 +509,7 @@ VM 和防火墙需要此链接，以将数据库的 FQDN 解析为其专用终�
 
 8. 在“设置”下选择“路由”。 
 
-9. 选择“+添加”。
+9. 选择“+ 添加”。
 
 10. 在 " **添加路由** " 页上，输入或选择以下信息：
 

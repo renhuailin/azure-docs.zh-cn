@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 12/01/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 1818dc558ba45e318b71e1443556cc48feaede8b
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 1453d43707a3680380e553fe69d738b27fe5ae3a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100367667"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571356"
 ---
 # <a name="troubleshoot-azure-monitor-for-windows-virtual-desktop-preview"></a>Windows 虚拟桌面 (预览的 Azure Monitor 疑难解答) 
 
@@ -26,9 +26,9 @@ ms.locfileid: "100367667"
 
 - 若要手动启用诊断或访问 Log Analytics 工作区，请参阅 [将 Windows 虚拟桌面诊断发送到 Log Analytics](diagnostics-log-analytics.md)。
 - 若要在主机上手动安装 Log Analytics 扩展，请参阅 [Log Analytics 适用于 Windows 的虚拟机扩展](../virtual-machines/extensions/oms-windows.md)。
-- 若要设置新的 Log Analytics 工作区，请参阅 [在 Azure 门户中创建 Log Analytics 工作区](../azure-monitor/learn/quick-create-workspace.md)。
-- 若要添加或删除性能计数器，请参阅 [配置性能计数器](../azure-monitor/platform/data-sources-performance-counters.md)。
-- 若要为 Log Analytics 工作区配置事件，请参阅 [使用 Log Analytics 代理收集 Windows 事件日志数据源](../azure-monitor/platform/data-sources-windows-events.md)。
+- 若要设置新的 Log Analytics 工作区，请参阅 [在 Azure 门户中创建 Log Analytics 工作区](../azure-monitor/logs/quick-create-workspace.md)。
+- 若要添加或删除性能计数器，请参阅 [配置性能计数器](../azure-monitor/agents/data-sources-performance-counters.md)。
+- 若要为 Log Analytics 工作区配置事件，请参阅 [使用 Log Analytics 代理收集 Windows 事件日志数据源](../azure-monitor/agents/data-sources-windows-events.md)。
 
 ## <a name="my-data-isnt-displaying-properly"></a>我的数据显示不正确
 
@@ -44,7 +44,7 @@ ms.locfileid: "100367667"
 
 - 你可能需要在服务器的防火墙中打开传出端口，以允许 Azure Monitor 向门户发送数据，请参阅 [传出端口](https://docs.microsoft.com/azure/azure-monitor/app/ip-addresses)。 
 
-- 看不到最近活动的数据？ 你可能需要等待15分钟，然后刷新该源。 Azure Monitor 在填充日志数据时的延迟时间为15分钟。 若要了解详细信息，请参阅 [Azure Monitor 中的日志数据引入时间](../azure-monitor/platform/data-ingestion-time.md)。
+- 看不到最近活动的数据？ 你可能需要等待15分钟，然后刷新该源。 Azure Monitor 在填充日志数据时的延迟时间为15分钟。 若要了解详细信息，请参阅 [Azure Monitor 中的日志数据引入时间](../azure-monitor/logs/data-ingestion-time.md)。
 
 如果没有任何信息，但数据仍未正确显示，则可能是查询或数据源出现问题。 查看我们的已知问题和限制。 
 
@@ -52,7 +52,7 @@ ms.locfileid: "100367667"
 
 Windows 虚拟桌面 Azure Monitor 使用 Azure Monitor 工作簿。 使用工作簿可以保存 Windows 虚拟桌面工作簿模板的副本，并创建自己的自定义项。
 
-按照设计，自定义工作簿模板不会自动采用 products 组中的更新。 有关详细信息，请参阅 [基于工作簿的见解疑难解答](../azure-monitor/insights/troubleshoot-workbooks.md) 和 [工作簿概述](../azure-monitor/platform/workbooks-overview.md)。
+按照设计，自定义工作簿模板不会自动采用 products 组中的更新。 有关详细信息，请参阅 [基于工作簿的见解疑难解答](../azure-monitor/insights/troubleshoot-workbooks.md) 和 [工作簿概述](../azure-monitor/visualize/workbooks-overview.md)。
 
 ## <a name="i-cant-interpret-the-data"></a>我无法解释数据
 

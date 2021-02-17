@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/08/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 3d1386ea3d7096e0926825c9b53cf62466c09cc3
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 002c6762c71d5ffb45e56f3bc74d911570bca8bd
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98789830"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571955"
 ---
 # <a name="azure-security-baseline-for-azure-database-migration-service"></a>适用于 Azure 数据库迁移服务的 Azure 安全基线
 
@@ -30,7 +30,7 @@ ms.locfileid: "98789830"
 
 默认情况下，Azure 数据库迁移服务使用 TLS 1.2。 可以在 Azure 数据库迁移服务的服务配置边栏选项卡中启用对 TLS 1.0 或 TLS 1.1 的支持（如果这是要迁移的数据源实现后向兼容性所需的）。
 
-使用 Azure Sentinel 发现旧的不安全协议，如 SSL/TLSv1、SMBv1、LM/NTLMv1、wDigest、未签名的 LDAP 绑定和 Kerberos 中的弱密码。
+使用 Azure Sentinel 发现旧的不安全协议的使用，如 SSL/TLSv1、SMBv1、LM/NTLMv1、wDigest、未签名的 LDAP 绑定和 Kerberos 中的弱密码。
 
 - [如何创建包含安全规则的网络安全组](../virtual-network/tutorial-filter-network-traffic.md)
 
@@ -422,7 +422,7 @@ Azure 数据库迁移服务不会生成或处理那些需要启用的 DNS 查询
 
 许多组织选择将 Azure Sentinel 用于频繁使用的“热”数据，并将 Azure 存储用于不太频繁使用的“冷”数据。
 
-- [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/platform/diagnostic-settings.md) 
+- [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/essentials/diagnostic-settings.md) 
 
 - [如何加入 Azure Sentinel](../sentinel/quickstart-onboard.md)
 

@@ -6,20 +6,20 @@ ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 01/30/2020
-ms.openlocfilehash: d1f575d9d588ccd99523c6b6d5d2ceba6369dc3d
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 5de795811923c965a1473f8d91e3fd654aeef266
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92309916"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574541"
 ---
 # <a name="view-and-create-queries-for-monitoring-and-tracking-in-azure-monitor-logs-for-azure-logic-apps"></a>查看并创建用于在 Azure 逻辑应用 Azure Monitor 日志中监视和跟踪的查询
 
-您可以查看从 [Azure Monitor 日志](../azure-monitor/log-query/log-query-overview.md) 生成结果的基础查询，并创建根据特定条件筛选结果的查询。 例如，你可以根据特定的交换控制编号查找消息。 查询使用 [Kusto 查询语言](/azure/data-explorer/kusto/query/)，如果想要查看不同的结果，可以对其进行编辑。 有关详细信息，请参阅 [Azure Monitor 日志查询](/azure/data-explorer/kusto/query/)。
+您可以查看从 [Azure Monitor 日志](../azure-monitor/logs/log-query-overview.md) 生成结果的基础查询，并创建根据特定条件筛选结果的查询。 例如，你可以根据特定的交换控制编号查找消息。 查询使用 [Kusto 查询语言](/azure/data-explorer/kusto/query/)，如果想要查看不同的结果，可以对其进行编辑。 有关详细信息，请参阅 [Azure Monitor 日志查询](/azure/data-explorer/kusto/query/)。
 
 ## <a name="prerequisites"></a>先决条件
 
-* Log Analytics 工作区。 如果没有 Log Analytics 工作区，请了解[如何创建 Log Analytics 工作区](../azure-monitor/learn/quick-create-workspace.md)。
+* Log Analytics 工作区。 如果没有 Log Analytics 工作区，请了解[如何创建 Log Analytics 工作区](../azure-monitor/logs/quick-create-workspace.md)。
 
 * 使用 Azure Monitor 日志记录设置的逻辑应用，并将该信息发送到 Log Analytics 工作区。 了解 [如何为逻辑应用设置 Azure Monitor 日志](../logic-apps/monitor-logic-apps.md)。
 
@@ -45,7 +45,7 @@ ms.locfileid: "92309916"
 
 ## <a name="create-your-own-query"></a>创建自己的查询
 
-若要基于特定属性或值查找或筛选结果，可以通过从空查询开始或使用现有查询来创建自己的查询。 有关详细信息，请参阅 [Azure Monitor 中的日志查询入门](../azure-monitor/log-query/get-started-queries.md)。
+若要基于特定属性或值查找或筛选结果，可以通过从空查询开始或使用现有查询来创建自己的查询。 有关详细信息，请参阅 [Azure Monitor 中的日志查询入门](../azure-monitor/logs/get-started-queries.md)。
 
 1. 在 [Azure 门户](https://portal.azure.com)中，查找并选择 Log Analytics 工作区。
 
@@ -53,7 +53,7 @@ ms.locfileid: "92309916"
 
 1. 从空查询或任何可用的现有查询开始。
 
-   * 若要检查是否存在可用的现有查询，请在 "查询" 工具栏上，选择 "**示例查询**  >  **历史记录**"，其中显示了先前查询运行的查询，或选择**查询资源管理器**，其中显示预生成的查询。
+   * 若要检查是否存在可用的现有查询，请在 "查询" 工具栏上，选择 "**示例查询**  >  **历史记录**"，其中显示了先前查询运行的查询，或选择 **查询资源管理器**，其中显示预生成的查询。
 
      例如，逻辑应用 B2B 解决方案提供以下预生成的查询：
 
