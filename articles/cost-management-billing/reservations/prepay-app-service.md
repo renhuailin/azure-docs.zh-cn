@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 02/01/2021
 ms.author: banders
 ms.custom: references_regions
-ms.openlocfilehash: 89e0c62b580c0c354fc7277e61b452005a86e3d9
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 92a315121ad8ae6fadcadbf6d531eb3e99ae69a9
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99577390"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100374535"
 ---
 # <a name="save-costs-with-azure-app-service-reserved-instances"></a>节省 Azure 应用服务预留实例的费用
 
@@ -37,24 +37,12 @@ ms.locfileid: "99577390"
 - 可使用 API 来获取有关共享范围和单个订阅范围的购买建议。 有关详细信息，请查看[适用于企业客户的预留实例购买建议 API](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation)。
 - 对于企业协议 (EA) 和 Microsoft 客户协议 (MCA) 客户，可通过 [Azure Consumption Insights Power BI 内容包](/power-bi/service-connect-to-azure-consumption-insights)获取共享范围和单个订阅范围的购买建议。
 
-#### <a name="instance-size-flexibility-setting"></a>实例大小灵活性设置
-
-实例大小灵活性设置确定哪些服务可获得预留实例折扣。
-
-无论该设置是打开还是关闭，预留折扣都会自动应用于任何匹配的 Premium v3 预留实例使用量。
-
 ### <a name="analyze-your-usage-information"></a>分析使用信息
 
 分析你的使用信息，帮助确定应购买哪一种预留。 可在使用情况文件和 API 中获取使用数据。 可结合这两者来确定要购买哪一种预留。 查看每日使用量较高的 Premium v3 实例，确定要购买的预留数量。
 
 使用情况文件按计费周期和每日使用情况显示费用信息。 若要了解如何下载使用情况文件，请参阅[查看和下载 Azure 使用情况信息和费用](../understand/download-azure-daily-usage.md)。 然后，借助使用情况文件信息，可[确定要购买的具体预留](determine-reservation-purchase.md)。
 
-### <a name="purchase-restriction-considerations"></a>购买限制注意事项
-
-预留折扣不适用于以下 Premium v3 实例：
-
-- **预览实例或促销实例** - 处于预览版状态或使用促销计量的任何 Premium v3 预留实例系列或大小。
-- **云** - 不能在德国或中国区域中购买预留。
 
 ## <a name="buy-a-premium-v3-reserved-instance"></a>购买 Premium v3 预留实例
 
@@ -79,7 +67,6 @@ ms.locfileid: "99577390"
 | 范围 | 预订的范围可以包含一个订阅或多个订阅（共享范围）。 如果选择： <ul><li>**单个资源组范围** - 仅将预留折扣应用到所选资源组中匹配的资源。 </li><li>**单个订阅范围** - 将预留折扣应用到所选订阅中匹配的资源。</li><li>**共享范围** - 将预留折扣应用到计费上下文中符合条件的订阅中的匹配资源。 对于 EA 客户，计费上下文是“注册”。 对于采用即用即付费率的单个订阅，计费范围是由帐户管理员创建的所有符合条件的订阅。</li></ul> |
 | 区域 | 预订涵盖的 Azure 区域。 |
 | Premium v3 预留实例大小 | Premium v3 预留实例的大小。 |
-| 优化对象 | 默认选择 Premium v3 预留实例大小灵活性。 单击“高级设置”可更改实例大小的灵活性值，将预留折扣应用于同一 [Premium v3 预留实例大小组](../../virtual-machines/reserved-vm-instance-size-flexibility.md)中的其他 Premium v3 预留实例。 容量优先级可以对部署优先使用数据中心容量。 它让你更坚信自己能在需要 Premium v3 预留实例时启动这些实例。 仅当预留范围为单个订阅时，容量优先级才可用。 |
 | 术语 | 一年或三年。 还有一个 5 年期，它仅适用于 HBv2 Premium v3 预留实例。 |
 | 数量 | 预订中购买的实例数。 数量是正在运行且可享受计费折扣的 Premium v3 预留实例数量。 例如，如果你正在美国东部运行 10 个 Standard\_D2 Premium v3 预留实例，则将数量指定为 10，以使所有正在运行的 Premium v3 预留实例尽可能获得最大优势。 |
 

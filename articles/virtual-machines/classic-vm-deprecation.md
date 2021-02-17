@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: tagore
-ms.openlocfilehash: 7ed2a672f0f7149240e799b5529a7a3a6836a702
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 004a84cd98381af027c554a7ef40e27e69ec6dbc
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499299"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587918"
 ---
 # <a name="migrate-your-iaas-resources-to-azure-resource-manager-by-march-1-2023"></a>请于 2023 年 3 月 1 日之前将 IaaS 资源迁移到 Azure 资源管理器 
 
@@ -30,7 +30,7 @@ ms.locfileid: "96499299"
 - 在 2023 年 3 月 1 日，尚未迁移到 Azure 资源管理器的订阅将收到通知，其中附有关于删除所有剩余 VM（经典）的时间安排。  
 
 本次停用不影响下列 Azure 服务和功能： 
-- Azure 云服务 
+- [Azure 云服务 (经典) ](https://docs.microsoft.com/azure/cloud-services/cloud-services-choose-me)
 - VM（经典）未使用的存储帐户 
 - VM（经典）未使用的虚拟网络 
 - 其他经典资源
@@ -49,9 +49,9 @@ ms.locfileid: "96499299"
 
 1. 建议使用[平台支持迁移工具](./migration-classic-resource-manager-overview.md)开始规划，按照验证、准备和提交这三个简单步骤迁移现有 VM。 此工具旨在迁移 VM 的同时确保不停机或停机时间最少。 
 
-   1. 第一步是验证，这不影响现有部署，并提供列表可查看所有不受支持的迁移方案。 
-   1. 请浏览[暂时解决方法列表](./migration-classic-resource-manager-overview.md#unsupported-features-and-configurations)来修复部署，使其做好迁移准备。 
-   1. 理想情况下，解决所有验证错误后，在准备和提交步骤中不会遇到任何问题。 提交成功后，部署将实时迁移到 Azure 资源管理器，然后可通过 Azure 资源管理器公开的新的 API 进行管理。 
+   - 第一步是验证，这不影响现有部署，并提供列表可查看所有不受支持的迁移方案。 
+   - 请浏览[暂时解决方法列表](./migration-classic-resource-manager-overview.md#unsupported-features-and-configurations)来修复部署，使其做好迁移准备。 
+   - 理想情况下，解决所有验证错误后，在准备和提交步骤中不会遇到任何问题。 提交成功后，部署将实时迁移到 Azure 资源管理器，然后可通过 Azure 资源管理器公开的新的 API 进行管理。 
 
    如果迁移工具不适合迁移，可探索[其他计算服务/产品](/azure/architecture/guide/technology-choices/compute-decision-tree)来进行迁移。 有许多 Azure 计算服务/产品，而且它们各不相同，因此我们无法为其提供平台支持的迁移路径。  
 
@@ -61,10 +61,10 @@ ms.locfileid: "96499299"
 
 ## <a name="what-resources-are-available-for-this-migration"></a>哪些资源可用于此迁移？
 
-- [Microsoft Q&](/answers/topics/azure-virtual-machines-migration.html)：用于迁移的 microsoft 和社区支持。
+- [Microsoft Q&A](/answers/topics/azure-virtual-machines-migration.html)：Microsoft 和社区对迁移的支持。
 
 - [Azure 迁移支持](https://ms.portal.azure.com/#create/Microsoft.Support/Parameters/{"pesId":"6f16735c-b0ae-b275-ad3a-03479cfa1396","supportTopicId":"1135e3d0-20e2-aec5-4ef0-55fd3dae2d58"})：在迁移过程中为技术协助提供专用支持团队。
 
-- [Microsoft 快速跟踪](https://www.microsoft.com/fasttrack)：快速跟踪可以通过计划 & 执行此迁移来帮助符合条件的客户。 [您自己](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fprograms%2Fazure-fasttrack%2F%23nomination&data=02%7C01%7CTanmay.Gore%40microsoft.com%7C3e75bbf3617944ec663a08d85c058340%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637360526032558561&sdata=CxWTVQQPVWNwEqDZKktXzNV74pX91uyJ8dY8YecIgGc%3D&reserved=0)。  
+- [Microsoft 快速跟踪](https://www.microsoft.com/fasttrack)：快速跟踪可以通过计划 & 执行此迁移来帮助符合条件的客户。 为[您](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fprograms%2Fazure-fasttrack%2F%23nomination&data=02%7C01%7CTanmay.Gore%40microsoft.com%7C3e75bbf3617944ec663a08d85c058340%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637360526032558561&sdata=CxWTVQQPVWNwEqDZKktXzNV74pX91uyJ8dY8YecIgGc%3D&reserved=0)提供 DC 迁移计划。  
 
-- 如果你的公司/组织已与 Microsoft 合作，或与 Microsoft 代表 (如云解决方案架构师 (Csa) 或技术客户经理 (Tam) #
+- 如果你的公司/组织已与 Microsoft 合作，或与 Microsoft 代表 (如云解决方案架构师 (Csa) 或技术客户经理 (Tam) ) ，请与他们合作以获取迁移的其他资源。

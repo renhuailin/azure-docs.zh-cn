@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: ead666cecbc3208fe103aa740578ca36339c3e30
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 19935037e98bbc7ce9c4152b034b664d802a8f3a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99804965"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100588271"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-postgresql---hyperscale-citus"></a>适用于 Azure Database for PostgreSQL 的 Azure 安全基线-超大规模 (Citus) 
 
@@ -60,7 +60,7 @@ ms.locfileid: "99804965"
 
 此外，通过 Azure Monitor 引入日志来聚合由超大规模 (Citus) 生成的安全数据。 在 Azure Monitor 中，使用 Log Analytics 工作区来查询和执行分析，并使用存储帐户进行长期/存档存储。 或者，可以启用数据并将其加入 Azure Sentinel 或第三方安全事件和事件管理 (SIEM)。 
 
-- [如何启用 Azure 活动日志的诊断设置](../azure-monitor/platform/activity-log.md)
+- [如何启用 Azure 活动日志的诊断设置](../azure-monitor/essentials/activity-log.md)
 
 - [超大规模中的指标 (Citus) ](./concepts-hyperscale-monitoring.md)
 
@@ -80,7 +80,7 @@ ms.locfileid: "99804965"
 
 - [超大规模中的指标 (Citus) ](./concepts-hyperscale-monitoring.md)
 
-- [如何启用 Azure 活动日志的诊断设置](../azure-monitor/platform/activity-log.md)
+- [如何启用 Azure 活动日志的诊断设置](../azure-monitor/essentials/activity-log.md)
 
 - [如何加入 Azure Sentinel](../sentinel/quickstart-onboard.md)
 
@@ -92,9 +92,9 @@ ms.locfileid: "99804965"
 
 **指南**：在 Azure Monitor 中，对于用于保存超大规模 (Citus) 日志的 Log Analytics 工作区，请根据组织的符合性法规设置保留期。 使用 Azure 存储帐户进行长期/存档存储。
 
-- [如何为 Log Analytics 工作区设置日志保留参数](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [如何为 Log Analytics 工作区设置日志保留参数](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
-- [在 Azure 存储帐户中存储资源日志](../azure-monitor/platform/resource-logs.md#send-to-azure-storage)
+- [在 Azure 存储帐户中存储资源日志](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)
 
 **Azure 安全中心监视**：不适用
 
@@ -106,9 +106,9 @@ ms.locfileid: "99804965"
 
 - [如何加入 Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-- [有关 Log Analytics 的详细信息](../azure-monitor/log-query/log-analytics-tutorial.md)
+- [有关 Log Analytics 的详细信息](../azure-monitor/logs/log-analytics-tutorial.md)
 
-- [如何在 Azure Monitor 中执行自定义查询](../azure-monitor/log-query/get-started-queries.md)
+- [如何在 Azure Monitor 中执行自定义查询](../azure-monitor/logs/get-started-queries.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -122,7 +122,7 @@ ms.locfileid: "99804965"
 
 - [超大规模中的指标 (Citus) ](./howto-hyperscale-alert-on-metric.md)
 
-- [如何配置 Azure 活动日志的诊断设置](../azure-monitor/platform/activity-log.md)
+- [如何配置 Azure 活动日志的诊断设置](../azure-monitor/essentials/activity-log.md)
 
 - [如何加入 Azure Sentinel](../sentinel/quickstart-onboard.md)
 
@@ -379,7 +379,7 @@ ms.locfileid: "99804965"
 
 **指南**：将 Azure Monitor 与 Azure 活动日志结合使用，以便为超大规模 (Citus) 和其他关键或相关资源的生产实例进行更改时创建警报。
 
-- [如何针对 Azure 活动日志事件创建警报](../azure-monitor/platform/alerts-activity-log.md)
+- [如何针对 Azure 活动日志事件创建警报](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure 安全中心监视**：是
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: e47dfeab7466faf9a60b161b05d8b3bf39ebdb6a
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: cf4e02f925e0c8c4024137589c0c9c4074c0aa11
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98203297"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596759"
 ---
 # <a name="azure-security-baseline-for-logic-apps"></a>逻辑应用的 Azure 安全基线
 
@@ -216,9 +216,9 @@ ms.locfileid: "98203297"
 
 **指导**：使用 Azure 活动日志监视网络资源配置，并检测与 Azure 逻辑应用实例相关的网络资源的更改。 在 Azure Monitor 中创建当关键网络资源发生更改时触发的警报。
 
-- [如何查看和检索 Azure 活动日志事件](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [如何查看和检索 Azure 活动日志事件](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [如何在 Azure Monitor 中创建警报](../azure-monitor/platform/alerts-activity-log.md)
+- [如何在 Azure Monitor 中创建警报](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -242,7 +242,7 @@ ms.locfileid: "98203297"
 
 或者，可以启用将数据加入 Azure Sentinel 或第三方 SIEM 的功能。 
 
-- [如何启用 Azure 活动日志的诊断设置](../azure-monitor/platform/activity-log.md)
+- [如何启用 Azure 活动日志的诊断设置](../azure-monitor/essentials/activity-log.md)
 
 - [如何为 Azure 逻辑应用设置 Azure Monitor 日志并收集诊断数据](monitor-logic-apps-log-analytics.md)
 
@@ -258,7 +258,7 @@ ms.locfileid: "98203297"
 
 或者，可以启用将数据加入 Azure Sentinel 或第三方 SIEM 的功能。 
 
-- [如何启用 Azure 活动日志的诊断设置](../azure-monitor/platform/activity-log.md)
+- [如何启用 Azure 活动日志的诊断设置](../azure-monitor/essentials/activity-log.md)
 
 - [如何为 Azure 逻辑应用设置 Azure Monitor 日志并收集诊断数据](monitor-logic-apps-log-analytics.md)
 
@@ -284,7 +284,7 @@ ms.locfileid: "98203297"
 
 - [如何监视 Azure 逻辑应用的运行状态、查看其触发历史记录并为其设置警报](monitor-logic-apps.md)
 
-- [如何设置日志保留参数](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [如何设置日志保留参数](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure 安全中心监视**：是
 
@@ -300,9 +300,9 @@ ms.locfileid: "98203297"
 
 - [如何为 Azure 逻辑应用设置 Azure Monitor 日志并收集诊断数据](monitor-logic-apps-log-analytics.md)
 
-- [如何启用 Azure 活动日志的诊断设置](../azure-monitor/platform/activity-log.md)
+- [如何启用 Azure 活动日志的诊断设置](../azure-monitor/essentials/activity-log.md)
 
-- [如何在 Azure Monitor 中的 Log Analytics 中收集和分析 Azure 活动日志](../azure-monitor/platform/activity-log.md)
+- [如何在 Azure Monitor 中的 Log Analytics 中收集和分析 Azure 活动日志](../azure-monitor/essentials/activity-log.md)
 
 - [如何加入 Azure Sentinel](../sentinel/quickstart-onboard.md) 
 
@@ -320,7 +320,7 @@ ms.locfileid: "98203297"
 
 - [如何在 Azure 安全中心管理警报](../security-center/security-center-managing-and-responding-alerts.md)
 
-- [如何针对 Log Analytics 日志数据发出警报](../azure-monitor/learn/tutorial-response.md)
+- [如何针对 Log Analytics 日志数据发出警报](../azure-monitor/alerts/tutorial-response.md)
 
 **Azure 安全中心监视**：是
 
@@ -685,7 +685,7 @@ Microsoft 管理 Azure 逻辑应用的底层基础结构，并实施了严格控
 
 **指导**：将 Azure Monitor 与 Azure 活动日志结合使用，当 Azure 逻辑应用中以及其他关键或相关资源中发生更改时创建警报。
 
-- [如何针对 Azure 活动日志事件创建警报](../azure-monitor/platform/alerts-activity-log.md)
+- [如何针对 Azure 活动日志事件创建警报](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure 安全中心监视**：是
 
@@ -804,7 +804,7 @@ Microsoft 管理 Azure 逻辑应用的底层基础结构，并实施了严格控
 
 **指导**：使用 Azure Policy 对可以在订阅中创建的资源类型施加限制。 
 
-使用 Azure Resource Graph 查询/发现订阅中的资源。  确保环境中的所有 Azure 资源均已获得批准。
+使用 Azure Resource Graph 查询/发现订阅中的资源。  确保环境中存在的所有 Azure 资源已获得批准。
 
 - [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
@@ -1102,7 +1102,7 @@ Microsoft 管理 Azure 逻辑应用的底层基础结构，并实施了严格控
 
 **责任**：客户
 
-### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8.2：预扫描要上传到非计算 Azure 资源的文件
+### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8.2：预先扫描要上传到非计算 Azure 资源的文件
 
 **指南**：在支持 azure 服务的底层主机上启用了 Microsoft 反恶意软件 (例如，azure 备份) ，但是不会在内容上运行。 
 
@@ -1224,7 +1224,7 @@ Microsoft 管理 Azure 逻辑应用的底层基础结构，并实施了严格控
 
 **指导**：安全中心为每条警报分配严重性，以帮助你优先处理应该最先调查的警报。 严重性取决于安全中心在发出警报时所依据的检测结果和分析结果的置信度，以及导致发出警报的活动的恶意企图的置信度。 
 
-此外，请用标记明确标记订阅（例如 生产、非生产）并创建命名系统来对 Azure 资源进行明确标识和分类，特别是处理敏感数据的资源。  你的责任是根据发生事件的 Azure 资源和环境的关键性确定修正警报的优先级。
+此外，请明确标记订阅（例如 生产、非生产）并创建命名系统来对 Azure 资源进行明确标识和分类，特别是处理敏感数据的资源。  你的责任是根据发生事件的 Azure 资源和环境的关键性确定修正警报的优先级。
 
 - [Azure 安全中心中的安全警报](../security-center/security-center-alerts-overview.md)
 

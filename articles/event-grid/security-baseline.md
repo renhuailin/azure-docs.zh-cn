@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/21/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: e085c5c2dbb608692ff7e766744743d3f640387b
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: ef0f308c3ea2986301b0247111ef96bb133b57f4
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98633199"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571939"
 ---
 # <a name="azure-security-baseline-for-event-grid"></a>事件网格的 Azure 安全基线
 
@@ -163,9 +163,9 @@ Microsoft Azure 事件网格的 Azure 安全基线包含的建议可帮助你提
 
 **指导**：使用 Azure 活动日志监视网络资源配置，并检测与 Azure 事件网格相关的网络资源的更改。 在 Azure Monitor 中创建当关键网络资源发生更改时触发的警报。
 
-- [如何查看和检索 Azure 活动日志事件](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [如何查看和检索 Azure 活动日志事件](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [如何在 Azure Monitor 中创建警报](../azure-monitor/platform/alerts-activity-log.md)
+- [如何在 Azure Monitor 中创建警报](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -209,7 +209,7 @@ Microsoft Azure 事件网格的 Azure 安全基线包含的建议可帮助你提
 
 **指导**：在 Azure Monitor 中，根据组织的合规性规定，为与 Azure 事件网格资源关联的 Log Analytics 工作区设置日志保留期。
 
-- [如何设置日志保留参数](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [如何设置日志保留参数](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure 安全中心监视**：不适用
 
@@ -227,9 +227,9 @@ Microsoft Azure 事件网格的 Azure 安全基线包含的建议可帮助你提
 
 - [如何加入 Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-- [Log Analytics 查询入门](../azure-monitor/log-query/log-analytics-tutorial.md)
+- [Log Analytics 查询入门](../azure-monitor/logs/log-analytics-tutorial.md)
 
-- [如何在 Azure Monitor 中执行自定义查询](../azure-monitor/log-query/get-started-queries.md)
+- [如何在 Azure Monitor 中执行自定义查询](../azure-monitor/logs/get-started-queries.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -249,7 +249,7 @@ Microsoft Azure 事件网格的 Azure 安全基线包含的建议可帮助你提
 
 - [事件网格诊断日志架构的详细信息](diagnostic-logs.md)
 
-- [使用 Azure Monitor 创建、查看和管理日志警报](../azure-monitor/platform/alerts-log.md)
+- [使用 Azure Monitor 创建、查看和管理日志警报](../azure-monitor/alerts/alerts-log.md)
 
 - [如何加入 Azure Sentinel](../sentinel/quickstart-onboard.md)
 
@@ -513,7 +513,7 @@ Microsoft Azure 事件网格的 Azure 安全基线包含的建议可帮助你提
 
 **指导**：将 Azure Monitor 与 Azure 活动日志结合使用，以创建在 Azure 事件网格资源的生产实例和其他关键资源或相关资源发生更改时发出的警报。
 
-- [如何针对 Azure 活动日志事件创建警报](../azure-monitor/platform/alerts-activity-log.md)
+- [如何针对 Azure 活动日志事件创建警报](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure 安全中心监视**：不适用
 

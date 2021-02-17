@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 56a04a7f689846fc8688d9a3144882fff3a809ad
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 48df40d6f1e3030435a7ac1236d3dcda298920ba
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201308"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596914"
 ---
 # <a name="azure-security-baseline-for-data-lake-analytics"></a>适用于 Data Lake Analytics 的 Azure 安全基线
 
@@ -144,9 +144,9 @@ ms.locfileid: "98201308"
 
 * [如何加入 Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-* [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/platform/diagnostic-settings.md)
+* [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/essentials/diagnostic-settings.md)
 
-* [如何使用 Azure Monitor 收集 Azure 虚拟机内部主机日志](../azure-monitor/learn/quick-collect-azurevm.md)
+* [如何使用 Azure Monitor 收集 Azure 虚拟机内部主机日志](../azure-monitor/vm/quick-collect-azurevm.md)
 
 * [如何开始使用 Azure Monitor 和第三方 SIEM 集成](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
 
@@ -158,9 +158,9 @@ ms.locfileid: "98201308"
 
 **指南**：启用 Data Lake Analytics 的诊断设置以访问审核和请求日志。 其中包括事件源、日期、用户、时间戳和其他有用元素等数据。
 
-* [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/platform/diagnostic-settings.md)
+* [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/essentials/diagnostic-settings.md)
 
-* [了解 Azure 中的日志记录和不同的日志类型](../azure-monitor/platform/platform-logs-overview.md)
+* [了解 Azure 中的日志记录和不同的日志类型](../azure-monitor/essentials/platform-logs-overview.md)
 
 **Azure 安全中心监视**：是
 
@@ -178,7 +178,7 @@ ms.locfileid: "98201308"
 
 **指南**：在 Azure Monitor 中，根据组织的合规性规则设置 Log Analytics 工作区保持期。 将 Azure 存储帐户用于长期存储和存档存储。
 
-* [更改 Log Analytics 中的数据保留期](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+* [更改 Log Analytics 中的数据保留期](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 * [如何为 Azure 存储帐户日志配置保留策略](../storage/common/storage-monitor-storage-account.md#configure-logging)
 
@@ -188,13 +188,13 @@ ms.locfileid: "98201308"
 
 ### <a name="26-monitor-and-review-logs"></a>2.6：监视和查看日志
 
-**指南**：分析和监视日志中的异常行为，并定期查看 Data Lake Analytics 资源的结果。 使用 Azure Monitor 的 Log Analytics 工作区查看日志并对日志数据执行查询。 或者，可以启用数据并将其加入 Azure Sentinel 或第三方 SIEM。
+**指南**：分析和监视日志中的异常行为，并定期查看 Data Lake Analytics 资源的结果。 使用 Azure Monitor 的 Log Analytics 工作区来查看日志并执行针对日志数据的查询。 或者，可以启用数据并将其加入 Azure Sentinel 或第三方 SIEM。
 
 * [如何加入 Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-* [有关 Log Analytics 工作区的详细信息](../azure-monitor/log-query/log-analytics-tutorial.md)
+* [有关 Log Analytics 工作区的详细信息](../azure-monitor/logs/log-analytics-tutorial.md)
 
-* [如何在 Azure Monitor 中执行自定义查询](../azure-monitor/log-query/get-started-queries.md)
+* [如何在 Azure Monitor 中执行自定义查询](../azure-monitor/logs/get-started-queries.md)
 
 **Azure 安全中心监视**：是
 
@@ -206,7 +206,7 @@ ms.locfileid: "98201308"
 
 * [如何加入 Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-* [如何针对 Log Analytics 日志数据发出警报](../azure-monitor/learn/tutorial-response.md)
+* [如何针对 Log Analytics 日志数据发出警报](../azure-monitor/alerts/tutorial-response.md)
 
 * [访问 Azure Data Lake Analytics 的诊断日志](./data-lake-analytics-diagnostic-logs.md)
 
@@ -488,7 +488,7 @@ ms.locfileid: "98201308"
 
 **指南**：使用 Azure Monitor 与 Azure 活动日志来创建 Azure Data Lake Analytics 资源的生产实例发生更改时发出的警报。
 
-* [如何针对 Azure 活动日志事件创建警报](../azure-monitor/platform/alerts-activity-log.md)
+* [如何针对 Azure 活动日志事件创建警报](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -915,7 +915,7 @@ Microsoft 对支持 Azure Data Lake Analytics 的基础系统执行漏洞管理�
 
 **指导**：安全中心为每条警报分配严重性，以帮助你优先处理应该最先调查的警报。 严重性取决于安全中心在发出警报时所依据的检测结果和分析结果的置信度，以及导致发出警报的活动的恶意企图的置信度。
 
-此外，请用标记明确标记订阅（例如 生产、非生产）并创建命名系统来对 Azure 资源进行明确标识和分类，特别是处理敏感数据的资源。 你的责任是根据发生事件的 Azure 资源和环境的关键性确定修正警报的优先级。
+此外，请明确标记订阅（例如 生产、非生产）并创建命名系统来对 Azure 资源进行明确标识和分类，特别是处理敏感数据的资源。 你的责任是根据发生事件的 Azure 资源和环境的关键性确定修正警报的优先级。
 
 * [Azure 安全中心中的安全警报](../security-center/security-center-alerts-overview.md)
 

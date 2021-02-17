@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/13/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: b50ab8cae91aab56be287f517fa6e6a0b25db8e1
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: d1f0b0b36c8f0ed5ede7b5c3113207ae3cce10fd
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807863"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581251"
 ---
 # <a name="azure-security-baseline-for-azure-web-application-firewall"></a>Azure Web 应用程序防火墙的 azure 安全基线
 
@@ -111,9 +111,9 @@ ms.locfileid: "99807863"
 
 **指南**：使用 Azure 活动日志监视网络资源配置，并检测与 Azure Web 应用程序防火墙 (WAF) 部署有关的网络设置和资源的更改。 在 Azure Monitor 中创建警报，这些警报将在对关键网络设置或资源进行更改时触发。
 
-- [如何查看和检索 Azure 活动日志事件](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [如何查看和检索 Azure 活动日志事件](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [如何在 Azure Monitor 中创建警报](../azure-monitor/platform/alerts-activity-log.md)
+- [如何在 Azure Monitor 中创建警报](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -153,9 +153,9 @@ Azure Sentinel 包含一个内置的 Azure WAF 工作簿，该工作簿提供 Az
 
 - [日志记录概述](ag/ag-overview.md#logging)
 
-- [Azure Monitor 日志查询概述](../azure-monitor/log-query/log-query-overview.md)
+- [Azure Monitor 日志查询概述](../azure-monitor/logs/log-query-overview.md)
 
-- [Azure 平台日志概述](../azure-monitor/platform/platform-logs-overview.md)
+- [Azure 平台日志概述](../azure-monitor/essentials/platform-logs-overview.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -192,9 +192,9 @@ Azure Sentinel 包含一个内置的 WAF 事件工作簿，该工作簿概述了
 
 **指南**：启用 Azure 活动日志诊断设置和 azure WAF 的诊断设置，并将日志发送到 Log Analytics 工作区。 在 Log Analytics 中执行查询，以搜索字词、识别趋势、分析模式，并根据收集的数据提供许多其他见解。 基于 WAF 指标为异常活动创建警报。 例如，如果阻止的请求数超过 "X"，则 "do"。
 
-- [如何启用 Azure 活动日志的诊断设置](../azure-monitor/platform/activity-log.md)
+- [如何启用 Azure 活动日志的诊断设置](../azure-monitor/essentials/activity-log.md)
 
-- [如何在 Azure 中创建警报](../azure-monitor/learn/tutorial-response.md)
+- [如何在 Azure 中创建警报](../azure-monitor/alerts/tutorial-response.md)
 
 **Azure 安全中心监视**：不适用
 

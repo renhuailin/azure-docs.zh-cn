@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/27/2017
-ms.openlocfilehash: 5cecf24f4ba086feba5ab87b5752fd665c540dff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 338dc22c7a4f9fbca9f007ae76c092a3fe5f6762
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86498672"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587229"
 ---
 # <a name="targeting-monitoring-solutions-in-azure-monitor-preview"></a>在 Azure Monitor 中设定监视解决方案的目标（预览版）
 向订阅添加监视解决方案时，默认情况下会自动将它部署到连接到 Log Analytics 工作区的所有 Windows 和 Linux 代理。  你可能希望管理成本，并通过将解决方案的应用范围限制为特定的一组代理来限制为解决方案收集的数据量。  本文介绍了如何使用“解决方案目标”  ，这是一种允许向解决方案界定一个范围的功能。
@@ -23,20 +23,20 @@ ms.locfileid: "86498672"
 
 
 ### <a name="1-create-a-computer-group"></a>1.创建计算机组
-通过在 Azure Monitor 中创建[计算机组](../platform/computer-groups.md)指定要在范围中包括的计算机。  计算机组可以基于日志查询，也可以从其他来源（例如 Active Directory 或 WSUS 组）导入。 如[下文所述](#solutions-and-agents-that-cant-be-targeted)，只有直接连接到 Azure Monitor 的计算机才会包括在范围中。
+通过在 Azure Monitor 中创建[计算机组](../logs/computer-groups.md)指定要在范围中包括的计算机。  计算机组可以基于日志查询，也可以从其他来源（例如 Active Directory 或 WSUS 组）导入。 如[下文所述](#solutions-and-agents-that-cant-be-targeted)，只有直接连接到 Azure Monitor 的计算机才会包括在范围中。
 
 在工作区中创建计算机组后，将该组包括在范围配置中，然后可以将范围配置应用于一个或多个解决方案。
  
  
 ### <a name="2-create-a-scope-configuration"></a>2.创建范围配置
- **范围配置**包括一个或多个计算机组并且可以应用于一个或多个解决方案。 
+ **范围配置** 包括一个或多个计算机组并且可以应用于一个或多个解决方案。 
  
  使用以下过程创建范围配置。  
 
- 1. 在 Azure 门户中，导航到 **Log Analytics 工作区**并选择你的工作区。
+ 1. 在 Azure 门户中，导航到 **Log Analytics 工作区** 并选择你的工作区。
  2. 在工作区的属性中，在“工作区数据源”下选择“范围配置”。  
  3. 单击“添加”以创建新的范围配置。 
- 4. 为范围配置键入**名称**。
+ 4. 为范围配置键入 **名称**。
  5. 单击“选择计算机组”。 
  6. 选择创建的计算机组，并视需要选择要添加到配置的其他任何组。  单击“选择”。   
  6. 单击“确定”以创建范围配置。  
@@ -47,7 +47,7 @@ ms.locfileid: "86498672"
 
 使用以下过程应用范围配置。  
 
- 1. 在 Azure 门户中，导航到 **Log Analytics 工作区**并选择你的工作区。
+ 1. 在 Azure 门户中，导航到 **Log Analytics 工作区** 并选择你的工作区。
  2. 在工作区的属性中，选择“解决方案”。 
  3. 单击要为其设置应用范围的解决方案。
  4. 在解决方案的属性中，在“工作区数据源”下选择“解决方案目标”。    如果此选项不可用，则说明[无法为此解决方案设定目标](#solutions-and-agents-that-cant-be-targeted)。
@@ -69,4 +69,4 @@ ms.locfileid: "86498672"
 
 ## <a name="next-steps"></a>后续步骤
 - 参阅[将 Azure Log Analytics 监视解决方案添加到工作区](solutions.md)，了解有关监视解决方案的详细信息，包括可以在环境中安装的解决方案。
-- 参阅 [Azure Monitor 日志查询中的计算机组](../platform/computer-groups.md)，了解有关创建计算机组的详细信息。
+- 参阅 [Azure Monitor 日志查询中的计算机组](../logs/computer-groups.md)，了解有关创建计算机组的详细信息。

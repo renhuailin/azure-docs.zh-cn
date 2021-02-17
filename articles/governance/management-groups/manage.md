@@ -3,12 +3,12 @@ title: 如何使用管理组 - Azure 治理
 description: 了解如何查看、维护、更新和删除管理组层次结构。
 ms.date: 01/15/2021
 ms.topic: conceptual
-ms.openlocfilehash: 33c7da1d7484056eb1bb2fd4b00d892137ed2b64
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 05e78d66c29e500842d14a6eeb563c4569ecf0bd
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98787362"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596484"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>使用管理组管理资源
 
@@ -357,7 +357,7 @@ az account management-group update --name 'Contoso' --parent ContosoIT
 
 ## <a name="audit-management-groups-using-activity-logs"></a>使用活动日志审核管理组
 
-[Azure 活动日志](../../azure-monitor/platform/platform-logs-overview.md)支持管理组。 可查询发生在与其他 Azure 资源位于相同中心位置的管理组上的所有事件。 例如，可以看到对特定管理组所做的所有角色分配或策略分配更改。
+[Azure 活动日志](../../azure-monitor/essentials/platform-logs-overview.md)支持管理组。 可查询发生在与其他 Azure 资源位于相同中心位置的管理组上的所有事件。 例如，可以看到对特定管理组所做的所有角色分配或策略分配更改。
 
 :::image type="content" source="./media/al-mg.png" alt-text="与所选管理组相关的活动日志和操作的屏幕截图。" border="false":::
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: cba362004e764ffbbc734fb06c8898f380ffdf88
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: b26a020b9b4b1641d67a4f5ca55908b8d37f31e4
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99806912"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596506"
 ---
 # <a name="azure-security-baseline-for-azure-public-ip"></a>适用于 Azure 公共 IP 的 Azure 安全基线
 
@@ -52,7 +52,7 @@ ms.locfileid: "99806912"
 
 而是可以启用数据并将其加入 Azure Sentinel 或第三方 SIEM。
 
-- [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/platform/diagnostic-settings.md)
+- [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/essentials/diagnostic-settings.md)
 
 - [如何加入 Azure Sentinel](../sentinel/quickstart-onboard.md)
 
@@ -64,7 +64,7 @@ ms.locfileid: "99806912"
 
 **指导**：使用 Azure 活动日志监视配置，并检测公共 IP 实例的更改。 除了在控制平面（例如 Azure 门户）中以外，公共 IP 本身不会生成审核日志。 公共 IP 提供所需的工具来监视、诊断 Azure 虚拟网络中的资源并查看其指标，以及为其启用或禁用日志。
 
-- [如何查看和检索 Azure 活动日志事件](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [如何查看和检索 Azure 活动日志事件](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
 **Azure 安全中心监视**：是
 
@@ -74,7 +74,7 @@ ms.locfileid: "99806912"
 
 **指导**：使用 Azure Monitor 可根据组织的合规性义务，为与公共 IP 实例关联的 Log Analytics 工作区设置日志保留期。
 
-- [如何设置日志保留参数](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [如何设置日志保留参数](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure 安全中心监视**：不适用
 
@@ -88,7 +88,7 @@ ms.locfileid: "99806912"
 
 除了在控制平面（例如 Azure 门户）中以外，公共 IP 本身不会生成与网络流量相关的日志。
 
-- [如何查看和检索 Azure 活动日志事件](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [如何查看和检索 Azure 活动日志事件](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
 **Azure 安全中心监视**：不适用
 

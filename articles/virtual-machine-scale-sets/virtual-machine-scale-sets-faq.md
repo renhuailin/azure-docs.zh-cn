@@ -9,12 +9,12 @@ ms.subservice: faq
 ms.date: 06/30/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 8170cfcbbf200c6ba5030aff5716f46b537d8c97
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 3bc259f9ee6cb1e6fd927af82a1740403d3ae7d8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96016703"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587949"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure 虚拟机规模集常见问题解答
 
@@ -71,15 +71,15 @@ ms.locfileid: "96016703"
 
 ### <a name="what-are-best-practices-for-azure-autoscale"></a>Azure 自动缩放的最佳做法是什么？
 
-有关自动缩放的最佳做法，请参阅[自动缩放虚拟机的最佳做法](../azure-monitor/platform/autoscale-best-practices.md)。
+有关自动缩放的最佳做法，请参阅[自动缩放虚拟机的最佳做法](../azure-monitor/autoscale/autoscale-best-practices.md)。
 
 ### <a name="where-do-i-find-metric-names-for-autoscaling-that-uses-host-based-metrics"></a>在哪里可以找到使用基于主机的指标执行自动缩放时的相关指标名称？
 
-有关使用基于主机的指标执行自动缩放时的相关指标名称，请参阅 [Azure Monitor 支持的指标](../azure-monitor/platform/metrics-supported.md)。
+有关使用基于主机的指标执行自动缩放时的相关指标名称，请参阅 [Azure Monitor 支持的指标](../azure-monitor/essentials/metrics-supported.md)。
 
 ### <a name="are-there-any-examples-of-autoscaling-based-on-an-azure-service-bus-topic-and-queue-length"></a>基于 Azure 服务总线主题和队列长度的自动缩放是否有任何示例可供参考？
 
-是的。 有关基于 Azure 服务总线主题和队列长度的自动缩放示例，请参阅 [Azure Monitor 自动缩放常用指标](../azure-monitor/platform/autoscale-common-metrics.md)。
+是的。 有关基于 Azure 服务总线主题和队列长度的自动缩放示例，请参阅 [Azure Monitor 自动缩放常用指标](../azure-monitor/autoscale/autoscale-common-metrics.md)。
 
 对于服务总线队列，请使用以下 JSON：
 
@@ -104,9 +104,9 @@ ms.locfileid: "96016703"
 
 可以在 VM 上创建自动缩放设置，以使用主机级指标或基于来宾 OS 的指标。
 
-关于受支持的指标列表，请参阅 [Azure Monitor 自动缩放常用指标](../azure-monitor/platform/autoscale-common-metrics.md)。
+关于受支持的指标列表，请参阅 [Azure Monitor 自动缩放常用指标](../azure-monitor/autoscale/autoscale-common-metrics.md)。
 
-关于虚拟机规模集的完整示例，请参阅[使用虚拟机规模集的 Resource Manager 模板的高级自动缩放配置](../azure-monitor/platform/autoscale-virtual-machine-scale-sets.md)。
+关于虚拟机规模集的完整示例，请参阅[使用虚拟机规模集的 Resource Manager 模板的高级自动缩放配置](../azure-monitor/autoscale/autoscale-virtual-machine-scale-sets.md)。
 
 此示例使用主机级 CPU 指标和消息计数指标。
 
@@ -114,13 +114,13 @@ ms.locfileid: "96016703"
 
 ### <a name="how-do-i-set-alert-rules-on-a-virtual-machine-scale-set"></a>如何对虚拟机规模集设置警报规则？
 
-通过 PowerShell 或 Azure CLI，可以为虚拟机规模集创建指标警报。 有关详细信息，请参阅 [Azure Monitor PowerShell 快速入门示例](../azure-monitor/samples/powershell-samples.md#create-metric-alerts)和 [Azure Monitor 跨平台 CLI 快速入门示例](../azure-monitor/samples/cli-samples.md#work-with-alerts)。
+通过 PowerShell 或 Azure CLI，可以为虚拟机规模集创建指标警报。 有关详细信息，请参阅 [Azure Monitor PowerShell 快速入门示例](../azure-monitor/powershell-samples.md#create-metric-alerts)和 [Azure Monitor 跨平台 CLI 快速入门示例](../azure-monitor/cli-samples.md#work-with-alerts)。
 
 虚拟机规模集的 TargetResourceId 如下所示：
 
 /subscriptions/yoursubscriptionid/resourceGroups/yourresourcegroup/providers/Microsoft.Compute/virtualMachineScaleSets/yourvmssname
 
-可以选择任何 VM 性能计数器作为要对其设置警报的指标。 有关详细信息，请参阅 [Azure Monitor 自动缩放常用指标](../azure-monitor/platform/autoscale-common-metrics.md)中的[基于 Resource Manager 的 Windows VM 的来宾 OS 指标](../azure-monitor/platform/autoscale-common-metrics.md#guest-os-metrics-for-resource-manager-based-windows-vms)和 [Linux VM 的来宾 OS 指标](../azure-monitor/platform/autoscale-common-metrics.md#guest-os-metrics-linux-vms)。
+可以选择任何 VM 性能计数器作为要对其设置警报的指标。 有关详细信息，请参阅 [Azure Monitor 自动缩放常用指标](../azure-monitor/autoscale/autoscale-common-metrics.md)中的[基于 Resource Manager 的 Windows VM 的来宾 OS 指标](../azure-monitor/autoscale/autoscale-common-metrics.md#guest-os-metrics-for-resource-manager-based-windows-vms)和 [Linux VM 的来宾 OS 指标](../azure-monitor/autoscale/autoscale-common-metrics.md#guest-os-metrics-linux-vms)。
 
 ### <a name="how-do-i-set-up-autoscale-on-a-virtual-machine-scale-set-by-using-powershell"></a>如何使用 PowerShell 对虚拟机规模集设置自动缩放？
 

@@ -6,12 +6,12 @@ author: MS-jgol
 ms.author: jgol
 ms.date: 05/31/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: fe57174f1b090cbaa2196930f5ddd252074f1978
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 0dda015d820d81fdd13eced384f97362e2ee3339
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99526443"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587567"
 ---
 # <a name="what-is-auto-instrumentation-or-codeless-attach---azure-monitor-application-insights"></a>什么是自动检测或无代码附加 - Azure Monitor Application Insights？
 
@@ -89,5 +89,5 @@ Windows 上的 Azure App Service 上的应用程序监视适用于 [.net 应用�
 
 * [Application Insights 概述](./app-insights-overview.md)
 * [应用程序映射](./app-map.md)
-* [端到端性能监视](../learn/tutorial-performance.md)
+* [端到端性能监视](../app/tutorial-performance.md)
 

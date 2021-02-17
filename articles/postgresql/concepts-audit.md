@@ -6,12 +6,12 @@ ms.author: nlarin
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/28/2020
-ms.openlocfilehash: 615297a4bf47d80c9313f011b90d343b7ae680e3
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 33fa6420f52cae9c869cc75a04ea82de0ec48262
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488038"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596293"
 ---
 # <a name="audit-logging-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL（单一服务器）中的审核日志记录
 
@@ -21,7 +21,7 @@ Azure Database for PostgreSQL（单一服务器）中数据库活动的审核日
 > 在 Azure Database for PostgreSQL 上，pgAudit 为预览版。
 > 此扩展只能在“常规用途”和“内存优化”服务器上启用。
 
-如果需要对计算和存储缩放之类的操作进行 Azure 资源级别的日志记录，请参阅 [Azure 活动日志](../azure-monitor/platform/platform-logs-overview.md)。
+如果需要对计算和存储缩放之类的操作进行 Azure 资源级别的日志记录，请参阅 [Azure 活动日志](../azure-monitor/essentials/platform-logs-overview.md)。
 
 ## <a name="usage-considerations"></a>使用注意事项
 默认情况下，使用 Postgres 的标准日志记录设备将 pgAudit 日志语句与常规日志语句一起发出。 在 Azure Database for PostgreSQL 中，这些 .log 文件可以通过 Azure 门户或 CLI 下载。 文件集合的最大存储为 1 GB，每个文件的可用时间最长为七天（默认为三天）。 此服务是一个短期存储选项。
@@ -42,7 +42,7 @@ Azure Database for PostgreSQL（单一服务器）中数据库活动的审核日
 使用 [Azure 门户](https://portal.azure.com)：
 
    1. 选择你的 Azure Database for PostgreSQL 服务器。
-   2. 在侧栏中选择“服务器参数”。
+   2. 在侧栏中选择“服务器参数”。 
    3. 搜索 `shared_preload_libraries` 参数。
    4. 选择 **pgaudit**。
    5. 重启服务器以应用更改。
@@ -88,9 +88,9 @@ t=%m u=%u db=%d pid=[%p]:
 ## <a name="viewing-audit-logs"></a>查看审核日志
 如果使用的是 .log 文件，则审核日志将与 PostgreSQL 错误日志包含在同一文件中。 可以从 Azure [门户](howto-configure-server-logs-in-portal.md)或 [CLI](howto-configure-server-logs-using-cli.md) 下载日志文件。 
 
-如果使用的是 Azure 资源日志记录，则访问日志的方式取决于所选的终结点。 有关 Azure 存储，请参阅[日志存储帐户](../azure-monitor/platform/resource-logs.md#send-to-azure-storage)一文。 有关事件中心，请参阅[流式传输 Azure 日志](../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs)一文。
+如果使用的是 Azure 资源日志记录，则访问日志的方式取决于所选的终结点。 有关 Azure 存储，请参阅[日志存储帐户](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)一文。 有关事件中心，请参阅[流式传输 Azure 日志](../azure-monitor/essentials/resource-logs.md#send-to-azure-event-hubs)一文。
 
-Azure Monitor 日志将发送到所选的工作区。 Postgres 日志使用 **AzureDiagnostics** 收集模式，因此可以从 AzureDiagnostics 表查询它们。 下面描述了该表中的字段。 在 [Azure Monitor 日志查询](../azure-monitor/log-query/log-query-overview.md)概述中详细了解查询和警报。
+Azure Monitor 日志将发送到所选的工作区。 Postgres 日志使用 **AzureDiagnostics** 收集模式，因此可以从 AzureDiagnostics 表查询它们。 下面描述了该表中的字段。 在 [Azure Monitor 日志查询](../azure-monitor/logs/log-query-overview.md)概述中详细了解查询和警报。
 
 可以通过此查询开始使用。 可以基于查询配置警报。
 

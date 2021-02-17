@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 01/22/2021
 ms.topic: conceptual
-ms.openlocfilehash: 6e312d354a25113a764bca5e9492909d22af9873
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: 8c25e54143f0a0815a523bb923b7a7442de2a3d2
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100007731"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587857"
 ---
 # <a name="update-management-overview"></a>更新管理概述
 
@@ -30,7 +30,7 @@ ms.locfileid: "100007731"
 
 通过更新管理进行管理的计算机依赖于以下项进行评估和更新部署：
 
-* 用于 Windows 或 Linux 的 [Log Analytics 代理](../../azure-monitor/platform/log-analytics-agent.md)
+* 用于 Windows 或 Linux 的 [Log Analytics 代理](../../azure-monitor/agents/log-analytics-agent.md)
 * 用于 Linux 的 PowerShell 所需状态配置 (DSC)
 * 自动化混合 Runbook 辅助角色（在计算机上启用更新管理时自动安装）
 * 适用于 Windows 计算机的 Microsoft 更新或 [Windows Server Update Services](/windows-server/administration/windows-server-update-services/get-started/windows-server-update-services-wsus) (WSUS)
@@ -53,7 +53,7 @@ ms.locfileid: "100007731"
 
 可以创建计划的部署，在需要更新的计算机上部署和安装软件更新。 归类为“可选”的更新不包括在 Windows 计算机的部署范围内。 只有必需的更新会包括在部署范围内。
 
-计划的部署定义哪些目标计算机接收适用的更新。 它通过以下某种方式来实现此目的：显式指定特定的计算机，或选择基于特定计算机集的日志搜索（或基于根据指定条件动态选择 Azure VM 的 [Azure 查询](query-logs.md)）的[计算机组](../../azure-monitor/platform/computer-groups.md)。 这些组与[范围配置](../../azure-monitor/insights/solution-targeting.md)不同，后者用于控制接收配置以启用更新管理的目标计算机。 这会阻止它们执行和报告更新符合性，并安装已批准的所需更新。
+计划的部署定义哪些目标计算机接收适用的更新。 它通过以下某种方式来实现此目的：显式指定特定的计算机，或选择基于特定计算机集的日志搜索（或基于根据指定条件动态选择 Azure VM 的 [Azure 查询](query-logs.md)）的[计算机组](../../azure-monitor/logs/computer-groups.md)。 这些组与[范围配置](../../azure-monitor/insights/solution-targeting.md)不同，后者用于控制接收配置以启用更新管理的目标计算机。 这会阻止它们执行和报告更新符合性，并安装已批准的所需更新。
 
 定义部署时，还可以指定要批准的计划，并设置可以安装更新的一个时段。 此时段称为维护时段。 假设需要重启，并选择了相应的重启选项，则会预留 20 分钟的维护时段进行重启。 如果修补时间比预期时间长且维护时段少于 20 分钟，则不会进行重启。
 
@@ -82,7 +82,7 @@ ms.locfileid: "100007731"
 |Ubuntu 14.04 LTS、16.04 LTS 和 18.04 LTS (x64)      |Linux 代理需要具有访问更新存储库的权限。         |
 
 > [!NOTE]
-> Azure 虚拟机规模集可通过更新管理进行管理。 更新管理适用于实例本身，而非基础映像。 需要以增量方式计划更新，以便不会同时更新所有 VM 实例。 可以按照[添加要启用更改跟踪和库存的非 Azure 计算机](../automation-tutorial-installed-software.md#add-a-non-azure-machine-to-change-tracking-and-inventory)下的步骤，为虚拟机规模集添加节点。
+> 更新管理不支持对 Azure 虚拟机规模集中的所有实例安全地自动执行更新管理。 建议使用[自动 os 映像升级](../../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md)来管理规模集的 os 映像升级。
 
 ### <a name="unsupported-operating-systems"></a>不支持的操作系统
 
@@ -107,7 +107,7 @@ ms.locfileid: "100007731"
 
 Windows 代理必须配置为与 WSUS 服务器通信或需要有权访问 Microsoft 更新。 对于混合计算机，我们建议通过首先将计算机连接到 [启用了 Azure arc 的服务器](../../azure-arc/servers/overview.md)来安装适用于 windows 的 Log Analytics 代理，然后使用 Azure 策略将 [部署 Log Analytics 代理分配到 Windows Azure arc 计算机](../../governance/policy/samples/built-in-policies.md#monitoring) 内置策略。 或者，如果你计划使用用于 VM 的 Azure Monitor 来监视计算机，请改用 [启用用于 VM 的 Azure Monitor](../../governance/policy/samples/built-in-initiatives.md#monitoring) 计划。
 
-可以将更新管理与 Microsoft Endpoint Configuration Manager 配合使用。 若要了解有关集成方案的详细信息，请参阅[将更新管理与 Microsoft Endpoint Configuration Manager](mecmintegration.md)。 对于由 Configuration Manager 环境中的站点托管的 Windows 服务器，需要[适用于 Windows 的 Log Analytics 代理](../../azure-monitor/platform/agent-windows.md)。
+可以将更新管理与 Microsoft Endpoint Configuration Manager 配合使用。 若要了解有关集成方案的详细信息，请参阅[将更新管理与 Microsoft Endpoint Configuration Manager](mecmintegration.md)。 对于由 Configuration Manager 环境中的站点托管的 Windows 服务器，需要[适用于 Windows 的 Log Analytics 代理](../../azure-monitor/agents/agent-windows.md)。
 
 默认情况下，从 Azure 市场部署的 Windows VM 设置为从 Windows 更新服务接收自动更新。 将 Windows VM 添加到工作区时，此行为不会更改。 如果不主动使用更新管理来管理更新，则会应用默认行为（即自动应用更新）。
 
@@ -147,7 +147,7 @@ Windows 代理必须配置为与 WSUS 服务器通信或需要有权访问 Micro
 
 ### <a name="management-packs"></a>管理包
 
-如果 Operations Manager 管理组[已连接到 Log Analytics 工作区](../../azure-monitor/platform/om-agents.md)，则会在 Operations Manager 中安装以下管理包。 对于直接连接的 Windows 计算机上的更新管理，也会安装这些管理包。 你不需要对这些管理包进行配置或管理。
+如果 Operations Manager 管理组[已连接到 Log Analytics 工作区](../../azure-monitor/agents/om-agents.md)，则会在 Operations Manager 中安装以下管理包。 对于直接连接的 Windows 计算机上的更新管理，也会安装这些管理包。 你不需要对这些管理包进行配置或管理。
 
 * Microsoft System Center Advisor Update Assessment Intelligence Pack (Microsoft.IntelligencePacks.UpdateAssessment)
 * Microsoft.IntelligencePack.UpdateAssessment.Configuration (Microsoft.IntelligencePack.UpdateAssessment.Configuration)
@@ -156,7 +156,7 @@ Windows 代理必须配置为与 WSUS 服务器通信或需要有权访问 Micro
 > [!NOTE]
 > 如果已将 Operations Manager 1807 或 2019 管理组连接到 Log Analytics 工作区并且在管理组中将代理配置为收集日志数据，则需要重写参数 `IsAutoRegistrationEnabled` 并在 Microsoft.IntelligencePacks.AzureAutomation.HybridAgent.Init 规则中将其设置为 True。
 
-有关管理包更新内容的详细信息，请参阅[将 Operations Manager 连接到 Azure Monitor 日志](../../azure-monitor/platform/om-agents.md)。
+有关管理包更新内容的详细信息，请参阅[将 Operations Manager 连接到 Azure Monitor 日志](../../azure-monitor/agents/om-agents.md)。
 
 > [!NOTE]
 > 若要更新管理通过 Log Analytics 代理完全管理计算机，必须更新为适用于 Windows 的 Log Analytics 代理或适用于 Linux 的 Log Analytics 代理。 若要了解如何更新代理，请参阅[如何升级 Operations Manager 代理](/system-center/scom/deploy-upgrade-agents)。 在使用 Operations Manager 的环境中，必须运行 System Center Operations Manager 2012 R2 UR 14 或更高版本。
@@ -181,7 +181,7 @@ Windows 代理必须配置为与 WSUS 服务器通信或需要有权访问 Micro
 
 * 每个 Linux 计算机 - 更新管理每小时执行一次扫描。
 
-使用更新管理的计算机的每月平均 Azure Monitor 日志数据使用情况大约为 25 MB。 此值仅为近似值，且随时可能基于环境而更改。 建议监视环境，以跟踪实际使用情况。 有关分析 Azure Monitor 日志数据使用情况的详细信息，请参阅[管理使用情况和成本](../../azure-monitor/platform/manage-cost-storage.md)。
+使用更新管理的计算机的每月平均 Azure Monitor 日志数据使用情况大约为 25 MB。 此值仅为近似值，且随时可能基于环境而更改。 建议监视环境，以跟踪实际使用情况。 有关分析 Azure Monitor 日志数据使用情况的详细信息，请参阅[管理使用情况和成本](../../azure-monitor/logs/manage-cost-storage.md)。
 
 ## <a name="network-planning"></a><a name="ports"></a>网络规划
 
@@ -193,7 +193,7 @@ Windows 代理必须配置为与 WSUS 服务器通信或需要有权访问 Micro
 
 若要详细了解混合 Runbook 辅助角色所需的端口，请参阅[混合 Runbook 辅助角色的更新管理地址](../automation-hybrid-runbook-worker.md#update-management-addresses-for-hybrid-runbook-worker)。
 
-如果 IT 安全策略不允许网络上的计算机连接到 Internet，则可以设置 [Log Analytics 网关](../../azure-monitor/platform/gateway.md)，然后将计算机配置为通过该网关连接到 Azure 自动化和 Azure Monitor。
+如果 IT 安全策略不允许网络上的计算机连接到 Internet，则可以设置 [Log Analytics 网关](../../azure-monitor/agents/gateway.md)，然后将计算机配置为通过该网关连接到 Azure 自动化和 Azure Monitor。
 
 ## <a name="update-classifications"></a>更新分类
 

@@ -3,16 +3,16 @@ title: 使用 Azure 门户查看服务运行状况通知
 description: 在 Azure 门户中查看服务运行状况通知。 服务运行状况通知由 Azure 基础结构发布到 Azure 活动日志中。
 ms.topic: conceptual
 ms.date: 6/27/2019
-ms.openlocfilehash: 615d08b6a04aef9e8ef2033154da8ff8caeebe04
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9f9f3e7b10d9aa0014e4e00e7bfa72c9dc66e142
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90967777"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100588006"
 ---
 # <a name="view-service-health-notifications-by-using-the-azure-portal"></a>使用 Azure 门户查看服务运行状况通知
 
-服务运行状况通知由 Azure 基础结构发布到 [Azure 活动日志](../azure-monitor/platform/platform-logs-overview.md)中。  这些通知包含有关订阅下的资源的信息。 鉴于活动日志中存储的信息量可能很大，因此有一个单独的用户界面，以便更轻松地查看和设置有关服务运行状况通知的警报。 
+服务运行状况通知由 Azure 基础结构发布到 [Azure 活动日志](../azure-monitor/essentials/platform-logs-overview.md)中。  这些通知包含有关订阅下的资源的信息。 鉴于活动日志中存储的信息量可能很大，因此有一个单独的用户界面，以便更轻松地查看和设置有关服务运行状况通知的警报。 
 
 服务运行状况通知可能仅提供信息，也可能提示执行某个操作，具体取决于类别。
 
@@ -34,4 +34,4 @@ ms.locfileid: "90967777"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 详细了解[活动日志警报](../azure-monitor/platform/activity-log-alerts.md)。
+* 详细了解[活动日志警报](../azure-monitor/alerts/activity-log-alerts.md)。

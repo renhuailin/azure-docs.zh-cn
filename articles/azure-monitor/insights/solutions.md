@@ -7,12 +7,12 @@ author: bwren
 ms.author: bwren
 ms.date: 10/16/2020
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: f9ced3dfeccdbac5f0eb220cf0e104679f263aac
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: d2e898c6401ff9959298e5e435d68b4c4a452c4c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186858"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587282"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>Azure Monitor 中的监视解决方案
 
@@ -29,7 +29,7 @@ Azure Monitor 的解决方案“概述”页针对 Log Analytics 工作区中安
 
 [![屏幕截图显示 Azure 门户菜单，其中已选择“解决方案”，并且“解决方案”窗格显示了多个解决方案。](media/solutions/overview.png)](media/solutions/overview.png#lightbox)
 
-监视解决方案可以包含多种类型的 Azure 资源。可以像查看其他任何资源一样查看解决方案包含的任何资源。 例如，解决方案中包含的所有日志查询都列在 [查询资源管理器](../log-query/log-analytics-tutorial.md)中的 "**解决方案查询**" 下。 使用 [日志查询](../log-query/log-query-overview.md)执行即席分析时，可以使用这些查询。
+监视解决方案可以包含多种类型的 Azure 资源。可以像查看其他任何资源一样查看解决方案包含的任何资源。 例如，解决方案中包含的所有日志查询都列在[查询资源管理器](../logs/log-analytics-tutorial.md)中的“解决方案查询”下。 使用[日志查询](../logs/log-query-overview.md)执行临时分析时可以使用这些查询。
 
 ## <a name="list-installed-monitoring-solutions"></a>列出已安装的监视解决方案
 
@@ -83,7 +83,7 @@ Get-AzMonitorLogAnalyticsSolution -ResourceGroupName MyResourceGroup
 
 ### <a name="portal"></a>[Portal](#tab/portal)
 
-[Azure 市场](https://azuremarketplace.microsoft.com)中提供了 Microsoft 和合作伙伴提供的监视解决方案。 可以搜索可用的解决方案，并使用以下过程进行安装。 安装解决方案时，必须选择要在其中安装该解决方案的 [Log Analytics 工作区](../platform/manage-access.md)，以及要将解决方案数据收集到的位置。
+[Azure 市场](https://azuremarketplace.microsoft.com)中提供了 Microsoft 和合作伙伴提供的监视解决方案。 可以搜索可用的解决方案，并使用以下过程进行安装。 安装解决方案时，必须选择要在其中安装该解决方案的 [Log Analytics 工作区](../logs/manage-access.md)，以及要将解决方案数据收集到的位置。
 
 1. 在[订阅的解决方案列表](#list-installed-monitoring-solutions)中，单击“添加”。
 1. 浏览或搜索解决方案。 也可以通过[此搜索链接](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/category/management-tools?page=1&subcategories=management-solutions)来浏览解决方案。
@@ -141,7 +141,7 @@ Get-AzMonitorLogAnalyticsSolution -ResourceGroupName MyResourceGroup
 
 ### <a name="install-a-solution-with-the-azure-cli"></a>通过 Azure CLI 安装解决方案
 
-安装解决方案时，必须选择要在其中安装该解决方案的 [Log Analytics 工作区](../platform/manage-access.md)，以及要将解决方案数据收集到的位置。  使用 Azure CLI，你可以通过 [az monitor log-analytics workspace](/cli/azure/monitor/log-analytics/workspace) 引用命令来管理工作区。  请遵循 [Log Analytics 工作区和自动化帐户](#log-analytics-workspace-and-automation-account)中所述的过程来链接工作区和帐户。
+安装解决方案时，必须选择要在其中安装该解决方案的 [Log Analytics 工作区](../logs/manage-access.md)，以及要将解决方案数据收集到的位置。  使用 Azure CLI，你可以通过 [az monitor log-analytics workspace](/cli/azure/monitor/log-analytics/workspace) 引用命令来管理工作区。  请遵循 [Log Analytics 工作区和自动化帐户](#log-analytics-workspace-and-automation-account)中所述的过程来链接工作区和帐户。
 
 使用 [az monitor log-analytics solution create](/cli/azure/ext/log-analytics-solution/monitor/log-analytics/solution) 安装监视解决方案。  方括号中的参数是可选的。
 
@@ -196,7 +196,7 @@ az monitor log-analytics solution create --resource-group MyResourceGroup \
 
 ### <a name="install-a-solution-with-azure-powershell"></a>通过 Azure PowerShell 安装解决方案
 
-安装解决方案时，必须选择要在其中安装该解决方案的 [Log Analytics 工作区](../platform/manage-access.md)，以及要将解决方案数据收集到的位置。 借助 Azure PowerShell，可使用 [Az.MonitoringSolutions](/powershell/module/az.monitoringsolutions) PowerShell 模块中的 cmdlet 管理工作区。 请遵循 [Log Analytics 工作区和自动化帐户](#log-analytics-workspace-and-automation-account)中所述的过程来链接工作区和帐户。
+安装解决方案时，必须选择要在其中安装该解决方案的 [Log Analytics 工作区](../logs/manage-access.md)，以及要将解决方案数据收集到的位置。 借助 Azure PowerShell，可使用 [Az.MonitoringSolutions](/powershell/module/az.monitoringsolutions) PowerShell 模块中的 cmdlet 管理工作区。 请遵循 [Log Analytics 工作区和自动化帐户](#log-analytics-workspace-and-automation-account)中所述的过程来链接工作区和帐户。
 
 使用 [New-AzMonitorLogAnalyticsSolution](/powershell/module/az.monitoringsolutions/new-azmonitorloganalyticssolution) cmdlet 安装监视解决方案。 方括号中的参数是可选的。
 
@@ -219,7 +219,7 @@ New-AzMonitorLogAnalyticsSolution -Type Containers -ResourceGroupName MyResource
 
 ## <a name="log-analytics-workspace-and-automation-account"></a>Log Analytics 工作区和自动化帐户
 
-所有监视解决方案都需要使用一个 [Log Analytics 工作区](../platform/manage-access.md)来存储解决方案收集的数据，以及托管其日志搜索和视图。 某些解决方案还需要使用一个[自动化帐户](../../automation/automation-security-overview.md)来包含 Runbook 和相关资源。 工作区和帐户必须满足以下要求。
+所有监视解决方案都需要使用一个 [Log Analytics 工作区](../logs/manage-access.md)来存储解决方案收集的数据，以及托管其日志搜索和视图。 某些解决方案还需要使用一个[自动化帐户](../../automation/automation-security-overview.md)来包含 Runbook 和相关资源。 工作区和帐户必须满足以下要求。
 
 * 解决方案的每项安装只能使用一个 Log Analytics 工作区和一个自动化帐户。 可将解决方案单独安装到多个工作区。
 * 如果解决方案需要自动化帐户，则必须将 Log Analytics 工作区和自动化帐户相互链接。 一个 Log Analytics 工作区只能链接到一个自动化帐户，而一个自动化帐户也只能链接到一个 Log Analytics 工作区。
@@ -264,5 +264,5 @@ Remove-AzMonitorLogAnalyticsSolution  -ResourceGroupName MyResourceGroup -Name W
 ## <a name="next-steps"></a>后续步骤
 
 * 获取 [Microsoft 提供的监视解决方案的列表](../monitor-reference.md)。
-* 了解如何[创建查询](../log-query/log-query-overview.md)来分析监视解决方案收集的数据。
+* 了解如何[创建查询](../logs/log-query-overview.md)来分析监视解决方案收集的数据。
 * 查看所有[适用于 Azure Monitor 的 Azure CLI 命令](/cli/azure/azure-cli-reference-for-monitor)。

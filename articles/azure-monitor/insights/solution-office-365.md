@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2020
-ms.openlocfilehash: bde1c503d0aaaff1afcee67a26245d5021c43bb4
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: d031b64b36bd7ff91c64960642cfbf00fb1682ab
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807744"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587300"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Azure 中的 Office 365 管理解决方案（预览版）
 
@@ -118,7 +118,7 @@ ms.locfileid: "99807744"
 - 监视管理员活动，以跟踪配置更改或高特权操作。
 - 检测并调查多余的用户行为，此操作可根据组织需求进行自定义。
 - 演示审核和符合性。 例如，可监视对机密文件的文件访问操作，这对审核和符合性进程有所帮助。
-- 通过对组织的 Office 365 活动数据使用[日志查询](../log-query/log-query-overview.md)，执行操作故障排除。
+- 通过对组织的 Office 365 活动数据使用[日志查询](../logs/log-query-overview.md)，执行操作故障排除。
 
 
 ## <a name="uninstall"></a>“卸载”
@@ -218,7 +218,7 @@ ms.locfileid: "99807744"
     .\office365_unsubscribe.ps1 -WorkspaceName <Log Analytics workspace name> -ResourceGroupName <Resource Group name> -SubscriptionId <Subscription ID> -OfficeTennantID <Tenant ID> 
     ```
 
-    例如：
+    示例：
 
     ```powershell
     .\office365_unsubscribe.ps1 -WorkspaceName MyWorkspace -ResourceGroupName MyResourceGroup -SubscriptionId '60b79d74-f4e4-4867-b631-yyyyyyyyyyyy' -OfficeTennantID 'ce4464f8-a172-4dcf-b675-xxxxxxxxxxxx'
@@ -266,7 +266,7 @@ ms.locfileid: "99807744"
 | 类型 | *OfficeActivity* |
 | ClientIP | 记录活动时使用的设备的 IP 地址。 IP 地址以 IPv4 或 IPv6 地址格式显示。 |
 | OfficeWorkload | 记录所指的 Office 365 服务。<br><br>AzureActiveDirectory<br>Exchange<br>SharePoint|
-| 操作 | 用户或管理员活动的名称。  |
+| Operation | 用户或管理员活动的名称。  |
 | OrganizationId | 组织的 Office 365 租户的 GUID。 无论发生在哪种 Office 365 服务中，组织中的此值均保持不变。 |
 | RecordType | 所执行操作的类型。 |
 | ResultStatus | 指示操作（在 Operation 属性中指定）是成功还是失败。 可能的值有 Succeeded、PartiallySucceeded 或 Failed。 对于 Exchange 管理员活动，值为 True 或 False。 |
@@ -466,13 +466,13 @@ Active Directory 用户尝试登录时，将创建这些记录。
 | --- | --- |
 |Office 365 订阅上所有操作的计数 |OfficeActivity &#124; summarize count() by Operation |
 |SharePoint 网站的使用情况|OfficeActivity &#124; where OfficeWorkload =~ "sharepoint" &#124; summarize count() by SiteUrl \| sort by Count asc|
-|文件访问操作数（按用户类型） | OfficeActivity &#124; 汇总计数 ( # A1 by UserType |
+|文件访问操作数（按用户类型） | OfficeActivity &#124; 按 UserType 汇总计数 ()  |
 |监视 Exchange 上的外部操作|OfficeActivity &#124; where OfficeWorkload =~ "exchange" and ExternalAccess == true|
 
 
 
 ## <a name="next-steps"></a>后续步骤
 
-* 使用 [Azure Monitor 中的日志查询](../log-query/log-query-overview.md)查看详细的更新数据。
-* [创建自己的仪表板](../learn/tutorial-logs-dashboards.md)，显示最喜欢的 Office 365 搜索查询。
-* [创建警报](../platform/alerts-overview.md)，主动接收重要的 Office 365 活动通知。  
+* 使用 [Azure Monitor 中的日志查询](../logs/log-query-overview.md)查看详细的更新数据。
+* [创建自己的仪表板](../visualize/tutorial-logs-dashboards.md)，显示最喜欢的 Office 365 搜索查询。
+* [创建警报](../alerts/alerts-overview.md)，主动接收重要的 Office 365 活动通知。  

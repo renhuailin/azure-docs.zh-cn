@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/05/2020
 ms.author: allensu
-ms.openlocfilehash: 59359cdd3e3c035d4cb6789295d41bb3908019bb
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 7a456057bc088264cefb91be9f3e5069b29474a1
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98785814"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596806"
 ---
 # <a name="azure-monitor-logs-for-azure-standard-load-balancer"></a>Azure 标准负载均衡器的 Azure Monitor 日志
 
@@ -63,7 +63,7 @@ ms.locfileid: "98785814"
      5. 在“选择事件中心策略名称”下拉列表中，选择名称。
      6. 选择“确定”  。
 
-   * **发送到 Log Analytics**。 此进程需要已创建并配置好的 Log Analytics 工作区。 若要创建 Log Analytics 工作区，请参阅[在 Azure 门户中创建 Log Analytics 工作区](../azure-monitor/learn/quick-create-workspace.md)。
+   * **发送到 Log Analytics**。 此进程需要已创建并配置好的 Log Analytics 工作区。 若要创建 Log Analytics 工作区，请参阅[在 Azure 门户中创建 Log Analytics 工作区](../azure-monitor/logs/quick-create-workspace.md)。
      1. 选中“发送到 Log Analytics”复选框。
      2. 在“订阅”下拉列表中，选择你的 Log Analytics 工作区所在的订阅。
      3. 在“Log Analytics 工作区”下拉列表中，选择工作区。
@@ -100,10 +100,10 @@ ms.locfileid: "98785814"
 > 如果你熟悉 Visual Studio 和更改 C# 中的常量和变量值的基本概念，则可以使用 GitHub 提供的[日志转换器工具](https://github.com/Azure-Samples/networking-dotnet-log-converter)。
 
 ## <a name="stream-to-an-event-hub"></a>流式传输到事件中心
-将诊断信息流式传输到事件中心后，可以使用该信息在集成了 Azure Monitor 的合作伙伴 SIEM 工具中进行集中的日志分析。 有关详细信息，请参阅[将 Azure 监视数据流式传输到事件中心](../azure-monitor/platform/stream-monitoring-data-event-hubs.md#partner-tools-with-azure-monitor-integration)。
+将诊断信息流式传输到事件中心后，可以使用该信息在集成了 Azure Monitor 的合作伙伴 SIEM 工具中进行集中的日志分析。 有关详细信息，请参阅[将 Azure 监视数据流式传输到事件中心](../azure-monitor/essentials/stream-monitoring-data-event-hubs.md#partner-tools-with-azure-monitor-integration)。
 
 ## <a name="send-to-log-analytics"></a>发送到 Log Analytics
-可以将 Azure 中资源的诊断信息直接发送到 Log Analytics 工作区。 在该工作区中，可以对信息运行复杂的查询，以便进行故障排除和分析。 有关详细信息，请参阅[在 Azure Monitor 的 Log Analytics 工作区中收集 Azure 资源日志](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace)。
+可以将 Azure 中资源的诊断信息直接发送到 Log Analytics 工作区。 在该工作区中，可以对信息运行复杂的查询，以便进行故障排除和分析。 有关详细信息，请参阅[在 Azure Monitor 的 Log Analytics 工作区中收集 Azure 资源日志](../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace)。
 
 ## <a name="limitations"></a>限制
 Azure 负载均衡器的指标转日志导出功能具有以下限制：

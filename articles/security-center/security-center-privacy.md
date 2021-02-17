@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/23/2018
 ms.author: memildin
-ms.openlocfilehash: 4e270185550fac5a06d800d74d5fcd751aceb25d
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 5b5c78ffec736f29a481aa95426ff663199613b3
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92342223"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595647"
 ---
 # <a name="manage-user-data-in-azure-security-center"></a>在 Azure 安全中心内管理用户数据
 本文提供了有关如何在 Azure 安全中心内管理用户数据的信息。 管理用户数据包括访问、删除或导出数据的能力。
@@ -97,4 +97,4 @@ ms.locfileid: "92342223"
 [警报数据](security-center-managing-and-responding-alerts.md)被视为安全数据，并且保留两年。
 
 ## <a name="auditing-and-reporting"></a>审核和报告
-安全联系人、实时数据和警报更新的审核日志保留在 [Azure 活动日志](../azure-monitor/platform/platform-logs-overview.md)中。
+安全联系人、实时数据和警报更新的审核日志保留在 [Azure 活动日志](../azure-monitor/essentials/platform-logs-overview.md)中。

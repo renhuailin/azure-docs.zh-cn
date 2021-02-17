@@ -3,12 +3,12 @@ title: Connected Machine Windows 代理概述
 description: 本文详细概述了可用的支持 Azure Arc 的服务器代理，它支持监视混合环境中托管的虚拟机。
 ms.date: 02/16/2021
 ms.topic: conceptual
-ms.openlocfilehash: 82562bf3b1f8392e56a53ba0f968a76b050e7b13
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 8c06989d726a30e95f0b9c4dcc15a967d498f92a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/17/2021
-ms.locfileid: "100558510"
+ms.locfileid: "100580868"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>支持 Azure Arc 的服务器代理概述
 
@@ -52,7 +52,7 @@ Azure 发出的代理请求以下元数据信息：
 
 * 资源位置 (区域) 
 * 虚拟机 ID
-* Tags
+* 标记
 * Azure Active Directory 托管标识证书
 * 来宾配置策略分配
 * 扩展请求-安装、更新和删除。
@@ -110,7 +110,7 @@ Azure Connected Machine 代理正式支持以下版本的 Windows 和 Linux 操�
 适用于 Linux 和 Windows 的 Connected Machine 代理通过 TCP 端口 443 安全地与 Azure Arc 进行出站通信。 如果计算机通过防火墙或代理服务器进行连接以通过 Internet 进行通信，则请查看以下各项以了解网络配置要求。
 
 > [!NOTE]
-> 启用 Arc 的服务器不支持使用 [Log Analytics 网关](../../azure-monitor/platform/gateway.md) 作为已连接计算机代理的代理。
+> 启用 Arc 的服务器不支持使用 [Log Analytics 网关](../../azure-monitor/agents/gateway.md) 作为已连接计算机代理的代理。
 >
 
 如果防火墙或代理服务器限制了出站连接，请确保不要阻止下面列出的 URL。 如果只允许代理与服务进行通信所需的 IP 范围或域名，则需要允许访问以下服务标记和 Url。
