@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/10/2019
-ms.openlocfilehash: 3c86b21c5e0533ab6a1a3c64dc601eb8bb573547
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 069f70d27bd7e721be2bf82f6ef64ce9c531ab8e
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87318090"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577554"
 ---
 # <a name="optimize-your-active-directory-environment-with-the-active-directory-health-check-solution-in-azure-monitor"></a>使用 Azure Monitor 中的 Active Directory 运行状况检查解决方案优化 Active Directory 环境
 
@@ -46,9 +46,9 @@ ms.locfileid: "87318090"
 
 若要对属于待评估域的域控制器执行运行状况检查，该域中的每个域控制器都需要一个代理，并使用以下受支持的方法之一与 Azure Monitor 建立连接：
 
-1. 如果域控制器尚不受 System Center 2016 - Operations Manager 或 Operations Manager 2012 R2 的监视，请安装 [适用于 Windows 的 Log Analytics 代理](../platform/agent-windows.md)。
+1. 如果域控制器尚不受 System Center 2016 - Operations Manager 或 Operations Manager 2012 R2 的监视，请安装 [适用于 Windows 的 Log Analytics 代理](../agents/agent-windows.md)。
 2. 如果域控制器受 System Center 2016 - Operations Manager 或 Operations Manager 2012 R2 的监视并且管理组未与 Azure Monitor 集成，则它可与 Azure Monitor 共用多个宿主，以收集数据并将其转发到服务，同时仍可由 Operations Manager 监视。  
-3. 否则，如果 Operations Manager 管理组已与服务集成，则在工作区中启用解决方案后，需要遵循[添加代理管理的计算机](../platform/om-agents.md#connecting-operations-manager-to-azure-monitor)中的步骤，为数据收集服务添加域控制器。  
+3. 否则，如果 Operations Manager 管理组已与服务集成，则在工作区中启用解决方案后，需要遵循[添加代理管理的计算机](../agents/om-agents.md#connecting-operations-manager-to-azure-monitor)中的步骤，为数据收集服务添加域控制器。  
 
 域控制器上的代理向 Operations Manager 管理组报告、收集数据、将数据转发到为其分配的管理服务器，然后将数据从管理服务器直接发送到 Azure Monitor。  数据不会写入 Operations Manager 数据库。  
 
@@ -79,8 +79,8 @@ Active Directory 运行状况检查使用已启用的代理收集以下来源的
 权重是基于三个关键因素的聚合值：
 
 * 所发现的问题会导致不良后果的概率。 概率较高相当于建议的总体分数较高。
-* 问题对组织的*影响*（如果它确实会导致不良后果）。 影响较大相当于建议的总体分数更高。
-* 实施建议所需的*工作*。 工作量较大相当于建议的总体分数较低。
+* 问题对组织的 *影响*（如果它确实会导致不良后果）。 影响较大相当于建议的总体分数更高。
+* 实施建议所需的 *工作*。 工作量较大相当于建议的总体分数较低。
 
 每一项建议的权重表示为可用于每个重点区域的总分百分比。 例如，如果安全性和合规性重点区域中建议的分数为 5%，则实施该建议将使总体安全性和合规性的分数增加 5%。
 
@@ -215,5 +215,5 @@ ADAssessmentRecommendation
 
 ## <a name="next-steps"></a>后续步骤
 
-使用 [Azure Monitor 日志查询](../log-query/log-query-overview.md)来了解如何分析详细的 AD 运行状况检查数据和建议。
+使用 [Azure Monitor 日志查询](../logs/log-query-overview.md)来了解如何分析详细的 AD 运行状况检查数据和建议。
 

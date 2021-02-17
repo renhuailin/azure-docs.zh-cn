@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 11/25/2020
 ms.topic: conceptual
-ms.openlocfilehash: b4b8f48afc75c0a96937575bdad5bb884d0cb4d8
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 8630afa7410aad81a7a3c61540fc74702fc6481c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183713"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575991"
 ---
 # <a name="dns-records-for-azure-regions-used-by-azure-automation"></a>Azure Automation 使用的 Azure 区域的 DNS 记录
 
@@ -21,7 +21,7 @@ ms.locfileid: "96183713"
 * Webhook
 
 >[!NOTE]
->Linux 混合 Runbook 辅助角色注册将失败，并出现新记录，除非它是版本1.6.10.2 或更高版本。 为了使计算机接收辅助角色的更新版本并使用这些新记录，您必须升级到适用于 [Linux 的 Log Analytics 版代理](../../azure-monitor/platform/agent-linux.md) 。 现有计算机将继续工作，而不会出现任何问题。  
+>Linux 混合 Runbook 辅助角色注册将失败，并出现新记录，除非它是版本1.6.10.2 或更高版本。 为了使计算机接收辅助角色的更新版本并使用这些新记录，您必须升级到适用于 [Linux 的 Log Analytics 版代理](../../azure-monitor/agents/agent-linux.md) 。 现有计算机将继续工作，而不会出现任何问题。  
 
 ## <a name="dns-records-per-region"></a>每个区域的 DNS 记录数
 

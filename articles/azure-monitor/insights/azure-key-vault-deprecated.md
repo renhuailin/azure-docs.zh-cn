@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/27/2019
-ms.openlocfilehash: 71eb49c84b8ab92c9ba2ad8e05e8d74054bd4ee7
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: f9b265ba8970d9f065cc13cff1e5faeb466ac570
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91938825"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577495"
 ---
 # <a name="azure-key-vault-analytics-solution-in-azure-monitor"></a>Azure Monitor 中的 Azure Key Vault 分析解决方案
 
@@ -149,5 +149,5 @@ Azure 密钥保管库解决方案可分析从 Azure 诊断中的 [AuditEvent 日
 [!INCLUDE [log-analytics-troubleshoot-azure-diagnostics](../../../includes/log-analytics-troubleshoot-azure-diagnostics.md)]
 
 ## <a name="next-steps"></a>后续步骤
-* 使用 [Azure Monitor 中的日志查询](../log-query/log-query-overview.md)查看详细的 Azure Key Vault 数据。
+* 使用 [Azure Monitor 中的日志查询](../logs/log-query-overview.md)查看详细的 Azure Key Vault 数据。
 

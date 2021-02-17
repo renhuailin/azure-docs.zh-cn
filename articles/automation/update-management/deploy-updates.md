@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 12/09/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1b5ced7038f692046d1ce4ba2f4599cae3962510
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: fb81d38b066e1abb54664225daa6840d895e9ace
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98632455"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575891"
 ---
 # <a name="how-to-deploy-updates-and-review-results"></a>如何部署更新和查看结果
 
@@ -59,7 +59,7 @@ ms.locfileid: "98632455"
     > [!NOTE]
     > 如果选择了 Azure VM 或启用了 Arc 的服务器，则此选项不可用。 计算机会自动成为已计划部署的目标。
 
-6. 在“要更新的计算机”区域，选择已保存的搜索、已导入的组或者从下拉菜单中选择“计算机”并选择各个计算机 。 通过此选项可以查看每台计算机的 Log Analytics 代理的准备情况。 若要了解在 Azure Monitor 日志中创建计算机组的不同方法，请参阅 [Azure Monitor 日志中的计算机组](../../azure-monitor/platform/computer-groups.md)。 最多可以在计划的更新部署中包括 1000 台计算机。
+6. 在“要更新的计算机”区域，选择已保存的搜索、已导入的组或者从下拉菜单中选择“计算机”并选择各个计算机 。 通过此选项可以查看每台计算机的 Log Analytics 代理的准备情况。 若要了解在 Azure Monitor 日志中创建计算机组的不同方法，请参阅 [Azure Monitor 日志中的计算机组](../../azure-monitor/logs/computer-groups.md)。 最多可以在计划的更新部署中包括 1000 台计算机。
 
     > [!NOTE]
     > 如果选择了 Azure VM 或启用了 Arc 的服务器，则此选项不可用。 计算机会自动成为已计划部署的目标。

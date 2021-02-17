@@ -3,18 +3,18 @@ title: 在 Azure Application Insights 中使用搜索 | Microsoft Docs
 description: 搜索和筛选由 Web 应用发送的原始遥测数据。
 ms.topic: conceptual
 ms.date: 07/30/2019
-ms.openlocfilehash: f87a972b417bf6074de1c10b7a54bd2416f88daa
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: f7c2229a2e497fb052db79d61fcfeff140897798
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187011"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579549"
 ---
 # <a name="using-search-in-application-insights"></a>使用 Application Insights 中的搜索
 
 搜索是 [Application Insights](./app-insights-overview.md) 中的一项功能，可用于查找和浏览单个遥测项，例如页面视图、异常或 Web 请求。 此外，可以查看编写的日志跟踪和事件。
 
-（若要对数据进行更复杂的查询，请使用 [Analytics](../log-query/log-analytics-tutorial.md)。）
+（若要对数据进行更复杂的查询，请使用 [Analytics](../logs/log-analytics-tutorial.md)。）
 
 ## <a name="where-do-you-see-search"></a>哪里可以看到“搜索”？
 
@@ -81,7 +81,7 @@ ms.locfileid: "96187011"
 ## <a name="search-the-data"></a>搜索数据
 
 > [!NOTE]
-> 若要编写更复杂的查询，请在“搜索”边栏选项卡的顶部打开 [**日志（分析）**](../log-query/log-analytics-tutorial.md)。
+> 若要编写更复杂的查询，请在“搜索”边栏选项卡的顶部打开 [**日志（分析）**](../logs/log-analytics-tutorial.md)。
 >
 
 可以搜索任何属性值中的关键词。 如果已编写包含属性值的[自定义事件](./api-custom-events-metrics.md)，可使用此功能。
@@ -145,7 +145,7 @@ ms.locfileid: "96187011"
 
 ## <a name="next-steps"></a><a name="add"></a>后续步骤
 
-* [在 Analytics 中编写复杂查询](../log-query/log-analytics-tutorial.md)
+* [在 Analytics 中编写复杂查询](../logs/log-analytics-tutorial.md)
 * [向 Application Insights 发送日志和自定义的遥测数据](./asp-net-trace-logs.md)
 * [设置可用性和响应能力测试](./monitor-web-app-availability.md)
 * [故障排除](../faq.md)

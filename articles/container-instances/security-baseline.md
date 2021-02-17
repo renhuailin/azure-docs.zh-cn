@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/27/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 3f4e855c52488652b88a3b14e9817f1755167b67
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 107380dabc9c163aab6d0347f6e6cc2c1a718c0b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99806115"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576373"
 ---
 # <a name="azure-security-baseline-for-container-instances"></a>容器实例的 Azure 安全基线
 
@@ -192,9 +192,9 @@ ms.locfileid: "99806115"
 
 **指导**：使用 Azure 活动日志监视网络资源配置，并检测与容器实例相关的网络资源的更改。 在 Azure Monitor 中创建当关键网络资源发生更改时触发的警报。
 
-* [如何查看和检索 Azure 活动日志事件](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [如何查看和检索 Azure 活动日志事件](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-* [如何在 Azure Monitor 中创建警报](../azure-monitor/platform/alerts-activity-log.md)
+* [如何在 Azure Monitor 中创建警报](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -251,7 +251,7 @@ ms.locfileid: "99806115"
 
 **指导**：在 Azure Monitor 中，根据组织的合规性规章设置 Log Analytics 工作区保留期。 使用 Azure 存储帐户进行长期/存档存储。
 
-* [如何为 Log Analytics 工作区设置日志保留参数](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+* [如何为 Log Analytics 工作区设置日志保留参数](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure 安全中心监视**：不适用
 
@@ -263,9 +263,9 @@ ms.locfileid: "99806115"
 
 * [使用 Azure Monitor 日志进行容器组和实例日志记录](./container-instances-log-analytics.md)
 
-* [了解 Log Analytics 工作区](../azure-monitor/log-query/log-analytics-tutorial.md)
+* [了解 Log Analytics 工作区](../azure-monitor/logs/log-analytics-tutorial.md)
 
-* [如何在 Azure Monitor 中执行自定义查询](../azure-monitor/log-query/get-started-queries.md)
+* [如何在 Azure Monitor 中执行自定义查询](../azure-monitor/logs/get-started-queries.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -277,7 +277,7 @@ ms.locfileid: "99806115"
 
 * [使用 Azure Monitor 日志进行容器组和实例日志记录](./container-instances-log-analytics.md)
 
-* [如何针对 Log Analytics 日志数据发出警报](../azure-monitor/learn/tutorial-response.md)
+* [如何针对 Log Analytics 日志数据发出警报](../azure-monitor/alerts/tutorial-response.md)
 
 **Azure 安全中心监视**：当前不可用
 
@@ -535,7 +535,7 @@ ms.locfileid: "99806115"
 
 **指导**：确保连接到 Azure 容器组的任何客户端能够协商 TLS 1.2 或更高版本。 默认情况下，Microsoft Azure 资源会协商 TLS 1.2。
 
-请按照 Azure 安全中心的建议，了解静态加密和传输中的加密（如果适用）。
+请按照 Azure 安全中心的建议，了解静态加密和传输中加密（如果适用）。
 
 * [了解 Azure 传输中的加密](../security/fundamentals/encryption-overview.md#encryption-of-data-in-transit)
 
@@ -596,7 +596,7 @@ ms.locfileid: "99806115"
 
 **指导**：将 Azure Monitor 与 Azure 活动日志结合使用，可创建在容器组和容器实例发生更改时发出的警报。 
 
-* [如何针对 Azure 活动日志事件创建警报](../azure-monitor/platform/alerts-activity-log.md)
+* [如何针对 Azure 活动日志事件创建警报](../azure-monitor/alerts/alerts-activity-log.md)
 
 
 **Azure 安全中心监视**：不适用
@@ -750,9 +750,9 @@ ms.locfileid: "99806115"
 
 * [使用 Azure Monitor 日志进行容器组和实例日志记录](./container-instances-log-analytics.md)
 
-* [了解 Log Analytics 工作区](../azure-monitor/log-query/log-analytics-tutorial.md)
+* [了解 Log Analytics 工作区](../azure-monitor/logs/log-analytics-tutorial.md)
 
-* [如何在 Azure Monitor 中执行自定义查询](../azure-monitor/log-query/get-started-queries.md)
+* [如何在 Azure Monitor 中执行自定义查询](../azure-monitor/logs/get-started-queries.md)
 
 * [Azure 容器实例的安全注意事项](./container-instances-image-security.md)
 * [Azure 容器注册表与安全中心的集成](../security-center/defender-for-container-registries-introduction.md)

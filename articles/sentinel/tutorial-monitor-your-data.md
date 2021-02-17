@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/04/2020
 ms.author: yelevin
-ms.openlocfilehash: 63a9a6dc9f052c01a7440f616f0baeaab083ad73
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3a07670e3348f74fb5c6eaec57f5e9da627e8c09
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91843067"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100586718"
 ---
 # <a name="tutorial-visualize-and-monitor-your-data"></a>教程：可视化和监视数据
 
 
 
-[将数据源连接](quickstart-onboard.md) 到 Azure Sentinel 后，可以使用采用 Azure Sentinel 的 Azure Monitor 工作簿来可视化和监视数据，这在创建自定义仪表板方面提供了多样性。 虽然工作簿在 Azure Sentinel 中的显示方式有所不同，但有助于你了解如何[使用 Azure Monitor 工作簿创建交互式报表](../azure-monitor/platform/workbooks-overview.md)。 Azure Sentinel 可让你跨数据创建自定义工作簿，并且还附带了内置的工作簿模板，使你可以在连接数据源后快速获得对数据的见解。
+将 [数据源连接](quickstart-onboard.md) 到 azure sentinel 后，可以使用 Azure sentinel 采用 Azure Monitor 工作簿来可视化和监视数据，这在创建自定义仪表板中提供了丰富的用途。 虽然工作簿在 Azure Sentinel 中的显示方式有所不同，但有助于你了解如何[使用 Azure Monitor 工作簿创建交互式报表](../azure-monitor/visualize/workbooks-overview.md)。 Azure Sentinel 可让你跨数据创建自定义工作簿，并且还附带了内置的工作簿模板，使你可以在连接数据源后快速获得对数据的见解。
 
 
 本教程可帮助你在 Azure Sentinel 中可视化数据。
@@ -52,7 +52,7 @@ ms.locfileid: "91843067"
    > 这会基于相关模板创建 Azure 资源，并保存工作簿的 JSON 文件，而不是数据。
 
 
-1. 选择 " **查看保存的工作簿**"。 然后单击顶部的“编辑”按钮。 你现在可以编辑工作簿，并根据需要对其进行自定义。 有关如何自定义工作簿的详细信息，请参阅如何[使用 Azure Monitor 工作簿创建交互式报表](../azure-monitor/platform/workbooks-overview.md)。
+1. 选择 " **查看保存的工作簿**"。 然后单击顶部的“编辑”按钮。 你现在可以编辑工作簿，并根据需要对其进行自定义。 有关如何自定义工作簿的详细信息，请参阅如何[使用 Azure Monitor 工作簿创建交互式报表](../azure-monitor/visualize/workbooks-overview.md)。
 ![查看工作簿](./media/tutorial-monitor-data/workbook-graph.png)
 1. 进行更改后，可以保存工作簿。 
 
@@ -64,7 +64,7 @@ ms.locfileid: "91843067"
 1. 若要从头开始创建新工作簿，请选择“工作簿”，然后选择“添加工作簿”。 
   ![显示新工作簿屏幕的屏幕截图。](./media/tutorial-monitor-data/create-workbook.png)
 
-1. 若要编辑工作簿，请选择“编辑”，然后根据需要添加文本、查询和参数。 有关如何自定义工作簿的详细信息，请参阅如何[使用 Azure Monitor 工作簿创建交互式报表](../azure-monitor/platform/workbooks-overview.md)。 
+1. 若要编辑工作簿，请选择“编辑”，然后根据需要添加文本、查询和参数。 有关如何自定义工作簿的详细信息，请参阅如何[使用 Azure Monitor 工作簿创建交互式报表](../azure-monitor/visualize/workbooks-overview.md)。 
 
 1. 生成查询时，请确保将 " **数据源** " 设置为 " **日志** "，将 " **资源类型** " 设置为 " **Log Analytics**"，然后选择 "相关工作区" (s) 。 
 

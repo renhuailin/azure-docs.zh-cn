@@ -3,16 +3,16 @@ title: 基于工作区的 Azure Monitor Application Insights 资源架构
 description: 了解适用于 Azure Monitor Application Insights 基于工作区的资源的新表结构和架构。
 ms.topic: conceptual
 ms.date: 05/09/2020
-ms.openlocfilehash: e63d4a680ad76ccd6895aed53f3276a5775b1226
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: ef9d22cd2b45679928ee54778b2a521ea9ecab03
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100385959"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575608"
 ---
 # <a name="workspace-based-resource-changes"></a>基于工作区的资源更改
 
-在引入[基于工作区的 Application Insights 资源](create-workspace-resource.md)之前，Application Insights 数据与 Azure Monitor 中的其他日志数据是分开存储的。 这两者都基于 Azure 数据资源管理器并使用相同的 Kusto 查询语言 (KQL)。 [Azure Monitor 中的日志](../platform/data-platform-logs.md)中对此进行了介绍。
+在引入[基于工作区的 Application Insights 资源](create-workspace-resource.md)之前，Application Insights 数据与 Azure Monitor 中的其他日志数据是分开存储的。 这两者都基于 Azure 数据资源管理器并使用相同的 Kusto 查询语言 (KQL)。 [Azure Monitor 中的日志](../logs/data-platform-logs.md)中对此进行了介绍。
 
 引入基于工作区的 Application Insights 资源后，相关数据与其他监视数据和应用程序数据一并存储在 Log Analytics 工作区中。 这使你能够更轻松地跨多个解决方案分析数据并利用工作区的功能，从而简化配置。
 
@@ -464,6 +464,6 @@ Legacy table: traces
 
 ## <a name="next-steps"></a>后续步骤
 
-* [探索指标](../platform/metrics-charts.md)
-* [编写分析查询](../log-query/log-query-overview.md)
+* [探索指标](../essentials/metrics-charts.md)
+* [编写分析查询](../logs/log-query-overview.md)
 

@@ -11,12 +11,12 @@ author: aamalvea
 ms.author: aamalvea
 ms.reviewer: wiassaf, sstein
 ms.date: 05/04/2020
-ms.openlocfilehash: 86ac0f64a6a797b1bc702597ed30e6417f2efe14
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: c7f72a9b140c68320e221a4cfb20cbf107a5f531
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500965"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572269"
 ---
 # <a name="create-alerts-for-azure-sql-database-and-azure-synapse-analytics-using-the-azure-portal"></a>使用 Azure 门户为 Azure SQL 数据库和 Azure Synapse Analytics 创建警报
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -24,7 +24,7 @@ ms.locfileid: "96500965"
 
 ## <a name="overview"></a>概述
 
-本文介绍如何使用 Azure 门户为 Azure SQL 数据库中的数据库和 Azure Synapse Analytics 中的数据库设置警报。 当某些指标（例如数据库大小或 CPU 使用率）达到阈值时，警报可以向你发送电子邮件或调用 Webhook。
+本文介绍如何使用 Azure 门户为 Azure SQL 数据库和 Azure Synapse Analytics 中的数据库设置警报。 当某些指标（例如数据库大小或 CPU 使用率）达到阈值时，警报可以向你发送电子邮件或调用 Webhook。
 
 > [!NOTE]
 > 有关 Azure SQL 托管实例的具体说明，请参阅[为 Azure SQL 托管实例创建警报](../managed-instance/alerts-create.md)。
@@ -42,9 +42,9 @@ ms.locfileid: "96500965"
 
 可以使用以下工具配置和获取关于警报的信息：
 
-* [Azure 门户](../../azure-monitor/platform/alerts-classic-portal.md)
-* [PowerShell](../../azure-monitor/platform/alerts-classic-portal.md)
-* [命令行接口 (CLI)](../../azure-monitor/platform/alerts-classic-portal.md)
+* [Azure 门户](../../azure-monitor/alerts/alerts-classic-portal.md)
+* [PowerShell](../../azure-monitor/alerts/alerts-classic-portal.md)
+* [命令行接口 (CLI)](../../azure-monitor/alerts/alerts-classic-portal.md)
 * [Azure 监视器 REST API](/rest/api/monitor/alertrules)
 
 ## <a name="create-an-alert-rule-on-a-metric-with-the-azure-portal"></a>使用 Azure 门户创建指标的警报规则
@@ -73,4 +73,4 @@ ms.locfileid: "96500965"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解[在警报中配置 Webhook](../../azure-monitor/platform/alerts-webhooks.md)的详细信息。
+* 了解[在警报中配置 Webhook](../../azure-monitor/alerts/alerts-webhooks.md)的详细信息。

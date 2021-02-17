@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: wanl
-ms.openlocfilehash: 5ad40ca051677ced0c6d8b5c35e8563272ff598f
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 5650ff0e039d1e9211b8d0013726e101efdfab78
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183968"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572257"
 ---
 # <a name="resource-logs-for-azure-signalr-service"></a>Azure SignalR 服务的资源日志
 
@@ -20,8 +20,8 @@ ms.locfileid: "96183968"
 ## <a name="prerequisites"></a>先决条件
 若要启用资源日志，需要指定某个位置用于存储日志数据。 本教程使用 Azure 存储和 Log Analytics。
 
-* [Azure 存储](../azure-monitor/platform/resource-logs.md#send-to-azure-storage) - 保留策略审核、静态分析或备份的资源日志。
-* [Log Analytics](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace) - 灵活的日志搜索和分析工具，可用于分析 Azure 资源生成的原始日志。
+* [Azure 存储](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage) - 保留策略审核、静态分析或备份的资源日志。
+* [Log Analytics](../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace) - 灵活的日志搜索和分析工具，可用于分析 Azure 资源生成的原始日志。
 
 ## <a name="set-up-resource-logs-for-an-azure-signalr-service"></a>设置 Azure SignalR 服务的资源日志
 
@@ -50,7 +50,7 @@ ms.locfileid: "96183968"
 
 新设置在大约 10 分钟后生效。 在此之后，日志将出现在“诊断日志”窗格上配置的存档目标中。
 
-有关配置诊断的详细信息，请参阅 [Azure 资源日志概述](../azure-monitor/platform/platform-logs-overview.md)。
+有关配置诊断的详细信息，请参阅 [Azure 资源日志概述](../azure-monitor/essentials/platform-logs-overview.md)。
 
 ### <a name="resource-logs-categories"></a>资源日志类别
 
@@ -122,7 +122,7 @@ message | 日志事件的详细消息
 
     ![Log Analytics 菜单项](./media/signalr-tutorial-diagnostic-logs/log-analytics-menu-item.png)
 
-2. 输入 `SignalRServiceDiagnosticLogs`，并选择资源日志的查询时间范围。 若要进行高级查询，请参阅 [Azure Monitor 中的 Log Analytics 入门](../azure-monitor/log-query/log-analytics-tutorial.md)
+2. 输入 `SignalRServiceDiagnosticLogs`，并选择资源日志的查询时间范围。 若要进行高级查询，请参阅 [Azure Monitor 中的 Log Analytics 入门](../azure-monitor/logs/log-analytics-tutorial.md)
 
     ![在 Log Analytics 中查询日志](./media/signalr-tutorial-diagnostic-logs/query-log-in-log-analytics.png)
 

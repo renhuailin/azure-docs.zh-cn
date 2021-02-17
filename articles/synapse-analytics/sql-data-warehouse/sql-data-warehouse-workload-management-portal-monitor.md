@@ -11,17 +11,17 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 04a3fa79a6940a5b7a4bb98d08aa8be48a442903
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: eb7dcb9a384360d698c49a97f649bf75588d94f7
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98728594"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574225"
 ---
 # <a name="azure-synapse-analytics--workload-management-portal-monitoring"></a>Azure Synapse Analytics – 工作负荷管理门户监视
 
 本文介绍了如何监视[工作负荷组](sql-data-warehouse-workload-isolation.md#workload-groups)资源利用率和查询活动。
-有关如何配置 Azure 指标资源管理器的详细信息，请参阅 [Azure 指标资源管理器入门](../../azure-monitor/platform/metrics-getting-started.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)一文。  有关如何监视系统资源使用情况的详细信息，请参阅 Azure Synapse Analytics 监视文档中的[资源利用率](sql-data-warehouse-concept-resource-utilization-query-activity.md#resource-utilization)部分。
+有关如何配置 Azure 指标资源管理器的详细信息，请参阅 [Azure 指标资源管理器入门](../../azure-monitor/essentials/metrics-getting-started.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)一文。  有关如何监视系统资源使用情况的详细信息，请参阅 Azure Synapse Analytics 监视文档中的[资源利用率](sql-data-warehouse-concept-resource-utilization-query-activity.md#resource-utilization)部分。
 有两种不同类别的工作负荷组指标用于监视工作负荷管理：资源分配和查询活动。  可以按工作负荷组拆分和筛选这些指标。  根据指标是系统定义的（资源类工作负荷组）还是用户定义的（由用户通过 [CREATE WORKLOAD GROUP](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 语法创建），可以对其进行拆分和筛选。
 
 ## <a name="workload-management-metric-definitions"></a>工作负荷管理指标定义

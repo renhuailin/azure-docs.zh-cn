@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 537847d84b417814bddb16cf5b961bdb221af488
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 44faaa6f05a325c2c64040938a1c9d0eb3e864e7
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98740442"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574156"
 ---
 # <a name="manage-administrative-units-in-azure-active-directory"></a>在 Azure Active Directory 中管理管理单元
 
@@ -38,7 +38,7 @@ ms.locfileid: "98740442"
     ![显示“为 Graph 浏览器授予管理员同意”链接的屏幕截图。](./media/admin-units-manage/select-graph-explorer.png)
 
 
-1. 使用 Azure AD Powershell 的预览版本。
+1. 使用 [Azure AD PowerShell](https://www.powershellgallery.com/packages/AzureAD/)。
 
 ## <a name="add-an-administrative-unit"></a>添加管理单元
 
@@ -58,7 +58,7 @@ ms.locfileid: "98740442"
 
 ### <a name="use-powershell"></a>使用 PowerShell
 
-在尝试运行以下命令之前，请安装 Azure AD PowerShell（预览版）：
+尝试运行以下命令之前，请安装 [Azure AD PowerShell](https://www.powershellgallery.com/packages/AzureAD/) ：
 
 ```powershell
 Connect-AzureAD

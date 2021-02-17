@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 07/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: 5bfa4bf8a9d20cc1a7baf1b5432e68501d65a509
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: a848c7c15bf786ba26b8a1fdb1dab41b9aa20b8d
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92222139"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575776"
 ---
 # <a name="integrate-update-management-with-microsoft-endpoint-configuration-manager"></a>将更新管理与 Microsoft Endpoint Configuration Manager 集成
 
@@ -25,7 +25,7 @@ ms.locfileid: "92222139"
 
 * 必须将 [Azure 自动化更新管理](overview.md)添加到自动化帐户。
 * 当前由 Microsoft Endpoint Configuration Manager 环境管理的 Windows 服务器还需要向也启用了更新管理的 Log Analytics 工作区进行报告。
-* Microsoft Endpoint Configuration Manager 的当前分支版本 1606 和更高版本中启用了此功能。 若要将 Microsoft Endpoint Configuration Manager 中心管理站点或独立主站点与 Azure Monitor 日志和重要集合进行集成，请查看[将 Configuration Manager 连接到 Azure Monitor 日志](../../azure-monitor/platform/collect-sccm.md)。  
+* Microsoft Endpoint Configuration Manager 的当前分支版本 1606 和更高版本中启用了此功能。 若要将 Microsoft Endpoint Configuration Manager 中心管理站点或独立主站点与 Azure Monitor 日志和重要集合进行集成，请查看[将 Configuration Manager 连接到 Azure Monitor 日志](../../azure-monitor/logs/collect-sccm.md)。  
 * 如果 Windows 代理不从 Microsoft Endpoint Configuration Manager 接收安全更新，则必须将它们配置为与 Windows Server Update Services (WSUS) 服务器进行通信或有权访问 Microsoft 更新。
 
 如何使用现有 Microsoft Endpoint Configuration Manager 环境管理 Azure IaaS 中托管的客户端主要取决于已在 Azure 数据中心与基础结构之间建立的连接。 此连接会影响你可能需要对 Microsoft Endpoint Configuration Manager 基础结构做的任何设计更改，还会影响与支持这些必要更改相关的成本。 若要了解在继续操作之前需要评估哪些规划注意事项，请查看 [Azure 上的 Configuration Manager - 常见问题解答](/configmgr/core/understand/configuration-manager-on-azure#networking)。

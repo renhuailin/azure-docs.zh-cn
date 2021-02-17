@@ -6,12 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 05/03/2017
 ms.reviewer: mbullwin
-ms.openlocfilehash: f7f6155d3230d234e1163ee12cd7685817331b93
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 37de27e8dc707133595b71b39e45bdec554289e5
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87323530"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100583377"
 ---
 # <a name="user-retention-analysis-for-web-applications-with-application-insights"></a>使用 Azure Application Insights 为 Web 应用程序进行用户留存情况分析
 
@@ -63,6 +63,6 @@ ms.locfileid: "87323530"
     - [用户、会话、事件](usage-segmentation.md)
     - [漏斗图](usage-funnels.md)
     - [用户流](usage-flows.md)
-    - [工作簿](../platform/workbooks-overview.md)
+    - [工作簿](../visualize/workbooks-overview.md)
     - [添加用户上下文](usage-send-user-context.md)
 

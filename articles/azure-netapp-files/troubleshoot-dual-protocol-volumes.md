@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 02/02/2021
 ms.author: b-juche
-ms.openlocfilehash: 237fb514229f370fcba79133232e80a6a655048f
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: dbc9f466437a575866c33219ff11af2d85d9a58b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100104410"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571078"
 ---
 # <a name="troubleshoot-smb-or-dual-protocol-volumes"></a>SMB 或双重协议卷故障排除
 
@@ -39,7 +39,7 @@ ms.locfileid: "100104410"
 
 |     错误条件    |     解决方法    |
 |-|-|
-| SMB 或双重协议卷创建失败，出现以下错误： <br> `{"code":"DeploymentFailed","message":"At least one resource deployment operation failed. Please list deployment operations for details. Please see https://aka.ms/DeployOperations for usage details.","details":[{"code":"InternalServerError", "message":"Error when creating - Could not query DNS server. Verify that the network configuration is correct and that DNS servers are available."}]}` | 此错误表示 DNS 不可访问。 <br> 请考虑以下解决方案： <ul><li>如果 "添加"，则检查是否正在同一区域部署卷。</li> <li>检查是否添加了，并使用了同一 VNet。 如果它们使用的是不同的 Vnet，请确保 Vnet 彼此对等互连。 请参阅 [Azure NetApp 文件网络规划指南](azure-netapp-files-network-topologies.md)。 </li> <li>DNS 服务器可能 (Nsg) 应用了网络安全组。  因此，它不允许流量流动。 在这种情况下，请打开 DNS 或 AD 的 Nsg，以连接到各种端口。 有关端口要求，请参阅 [Active Directory 连接的要求](azure-netapp-files-create-volumes-smb.md#requirements-for-active-directory-connections)。 </li></ul> <br>适用于 Azure 的相同解决方案添加了。 Azure 添加应该部署在同一区域中。 VNet 应与卷使用的 VNet 位于同一区域或对等互连中。 | 
+| SMB 或双重协议卷创建失败，出现以下错误： <br> `{"code":"DeploymentFailed","message":"At least one resource deployment operation failed. Please list deployment operations for details. Please see https://aka.ms/DeployOperations for usage details.","details":[{"code":"InternalServerError", "message":"Error when creating - Could not query DNS server. Verify that the network configuration is correct and that DNS servers are available."}]}` | 此错误表示 DNS 不可访问。 <br> 请考虑以下解决方案： <ul><li>如果 "添加"，则检查是否正在同一区域部署卷。</li> <li>检查是否添加了，并使用了同一 VNet。 如果它们使用的是不同的 Vnet，请确保 Vnet 彼此对等互连。 请参阅 [Azure NetApp 文件网络规划指南](azure-netapp-files-network-topologies.md)。 </li> <li>DNS 服务器可能 (Nsg) 应用了网络安全组。  因此，它不允许流量流动。 在这种情况下，请打开 DNS 或 AD 的 Nsg，以连接到各种端口。 有关端口要求，请参阅 [Active Directory 连接的要求](create-active-directory-connections.md#requirements-for-active-directory-connections)。 </li></ul> <br>适用于 Azure 的相同解决方案添加了。 Azure 添加应该部署在同一区域中。 VNet 应与卷使用的 VNet 位于同一区域或对等互连中。 | 
 | SMB 或双重协议卷创建失败，出现以下错误： <br> `{"code":"DeploymentFailed","message":"At least one resource deployment operation failed. Please list deployment operations for details. Please see https://aka.ms/DeployOperations for usage details.","details":[{"code":"InternalServerError", "message":"Error when creating - Failed to create the Active Directory machine account \"SMBTESTAD-C1C8\". Reason: Kerberos Error: Invalid credentials were given Details: Error: Machine account creation procedure failed\n [ 563] Loaded the preliminary configuration.\n**[ 670] FAILURE: Could not authenticate as 'test@contoso.com':\n** Unknown user (KRB5KDC_ERR_C_PRINCIPAL_UNKNOWN)\n. "}]}`  |  <ul><li>请确保输入的用户名正确。 </li> <li>确保该用户是有权创建计算机帐户的管理员组的成员。 </li> <li> 如果使用 Azure 添加，请确保该用户是 Azure AD 组的一部分 `Azure AD DC Administrators` 。 </li></ul> | 
 | SMB 或双重协议卷创建失败，出现以下错误： <br> `{"code":"DeploymentFailed","message":"At least one resource deployment operation failed. Please list deployment operations for details. Please see https://aka.ms/DeployOperations for usage details.","details":[{"code":"InternalServerError", "message":"Error when creating - Failed to create the Active Directory machine account \"SMBTESTAD-A452\". Reason: Kerberos Error: Pre-authentication information was invalid Details: Error: Machine account creation procedure failed\n [ 567] Loaded the preliminary configuration.\n [ 671] Successfully connected to ip 10.X.X.X, port 88 using TCP\n**[ 1099] FAILURE: Could not authenticate as\n** 'user@contoso.com': CIFS server account password does\n** not match password stored in Active Directory\n** (KRB5KDC_ERR_PREAUTH_FAILED)\n. "}]}` | 请确保为加入 AD 连接输入的密码正确无误。 |
 | SMB 或双重协议卷创建失败，出现以下错误： `{"code":"DeploymentFailed","message":"At least one resource deployment operation failed. Please list deployment operations for details. Please see https://aka.ms/DeployOperations for usage details.","details":[{"code":"InternalServerError","message":"Error when creating - Failed to create the Active Directory machine account \"SMBTESTAD-D9A2\". Reason: SecD Error: ou not found Details: Error: Machine account creation procedure failed\n [ 561] Loaded the preliminary configuration.\n [ 665] Successfully connected to ip 10.X.X.X, port 88 using TCP\n [ 1039] Successfully connected to ip 10.x.x.x, port 389 using TCP\n**[ 1147] FAILURE: Specifed OU 'OU=AADDC Com' does not exist in\n** contoso.com\n. "}]}` | 请确保指定用于联接 AD 连接的 OU 路径正确。 如果使用 Azure 添加，请确保组织单位路径为 `OU=AADDC Computers` 。 |

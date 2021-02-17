@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
 ms.date: 08/25/2020
-ms.openlocfilehash: 71b9c96c1855180106f7dfa9a31f0ee8b06ceb67
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 3c8b9444344e5bae414145e2b3367c265114a423
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97347857"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100586849"
 ---
 # <a name="use-azure-table-storage-to-manage-commercial-marketplace-leads"></a>使用 Azure 表存储管理商业市场潜在顾客
 
@@ -203,3 +203,7 @@ ms.locfileid: "97347857"
 >必须先完成产品/服务的其余内容的配置并进行发布，然后才能接收产品/服务的潜在顾客。
 
 生成潜在顾客时，Microsoft 会将潜在顾客发送到 Azure 表中。 如果你配置了流，则还会向配置的电子邮件地址发送电子邮件。
+
+## <a name="next-steps"></a>后续步骤
+
+- [潜在客户管理常见问题和故障排除](../lead-management-faq.md)

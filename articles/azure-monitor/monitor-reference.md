@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 08/15/2020
-ms.openlocfilehash: 08d30fb72398c4b43422eb21f132d5fddd5502b7
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 153b153399bd430b4688d4790a3dd5785c545012
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96853131"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579386"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Azure Monitor 监视哪些内容？
 本文介绍了由 Azure Monitor 监视的不同应用程序和服务。 
@@ -26,12 +26,12 @@ ms.locfileid: "96853131"
 | 见解 | 说明 |
 |:---|:---|
 | [Application Insights](app/app-insights-overview.md) | 可扩展应用程序性能管理 (APM) 服务，用于监视任何平台上的实时 web 应用程序。 |
-| [用于容器的 Azure Monitor](insights/container-insights-overview.md) | 监视部署到 Azure 容器实例或 Azure Kubernetes 服务 (AKS) 上托管的托管 Kubernetes 群集的容器工作负荷的性能。 |
+| [用于容器的 Azure Monitor](containers/container-insights-overview.md) | 监视部署到 Azure 容器实例或 Azure Kubernetes 服务 (AKS) 上托管的托管 Kubernetes 群集的容器工作负荷的性能。 |
 | [用于 Cosmos DB 的 Azure Monitor](insights/cosmosdb-insights-overview.md) | 提供了关于所有 Azure Cosmos DB 资源的整体性能、故障、容量和运行状况的统一交互式体验视图。 |
 | [用于网络的 Azure Monitor（预览版）](insights/network-insights-overview.md) | 提供所有网络资源的运行状况和指标的综合视图。 高级搜索功能通过便捷搜索网站名称，帮助你识别资源依赖关系，从而能够支持多种方案，比如识别用于托管网站的资源等。 |
 [用于资源组的 Azure Monitor（预览版）](insights/resource-group-insights.md) |  分类和诊断各资源出现的任何问题，同时提供有关资源组的运行状况和性能的整体上下文。 |
 | [用于存储的 Azure Monitor](insights/storage-insights-overview.md) | 通过提供 Azure 存储服务性能、容量和可用性的统一视图，提供对 Azure 存储帐户的全面监视。 |
-| [用于 VM 的 Azure Monitor](insights/vminsights-overview.md) | 可以大规模监视 Azure 虚拟机 (VM) 和虚拟机规模集。 它分析 Windows 和 Linux VM 的性能和运行状况，并监视它们的进程及其对其他资源和外部进程的依赖关系。 |
+| [用于 VM 的 Azure Monitor](vm/vminsights-overview.md) | 可以大规模监视 Azure 虚拟机 (VM) 和虚拟机规模集。 它分析 Windows 和 Linux VM 的性能和运行状况，并监视它们的进程及其对其他资源和外部进程的依赖关系。 |
 | [Key Vault 的 Azure Monitor（预览版）](./insights/key-vault-insights-overview.md) | 提供 Key Vault 请求、性能、失败和延迟的统一视图，在其中可以全面监视密钥保管库。 |
 | [适用于 Azure Cache for Redis 的 Azure Monitor（预览版）](insights/redis-cache-insights-overview.md) |  提供有关整体性能、故障、容量和运行状况的统一交互式视图。 |
 
@@ -43,8 +43,8 @@ ms.locfileid: "96853131"
 | 解决方案 | 说明 |
 |:---|:---|
 | [代理运行状况](insights/solution-agenthealth.md) | 分析 Log Analytics 代理的运行状况和配置。 |
-| [警报管理](platform/alert-management-solution.md) | 分析从 System Center Operations Manager、Nagios 或 Zabbix 收集的警报。 |
-| [服务地图](insights/service-map.md) | 自动发现 Windows 和 Linux 系统上的应用程序组件，并映射服务之间的通信。 |
+| [警报管理](insights/alert-management-solution.md) | 分析从 System Center Operations Manager、Nagios 或 Zabbix 收集的警报。 |
+| [服务地图](vm/service-map.md) | 自动发现 Windows 和 Linux 系统上的应用程序组件，并映射服务之间的通信。 |
 
 
 
@@ -119,7 +119,7 @@ ms.locfileid: "96853131"
 |IoT Central | 否 | 否 | 否 |  |
 |IoT 中心 | 是 | 是 | 否 |  |
 |Key Vault | 是 | 是 | [是](./insights/key-vault-insights-overview.md) |  |
-|Kubernetes 服务 (AKS) | 否 | 否 | [是](insights/container-insights-overview.md)  |  |
+|Kubernetes 服务 (AKS) | 否 | 否 | [是](containers/container-insights-overview.md)  |  |
 |负载均衡器 | 是 | 否 | 否 |  |
 |逻辑应用 | 是 | 是 | 否 |  |
 |机器学习服务 | 否 | 否 | 否 |  |
@@ -163,8 +163,8 @@ ms.locfileid: "96853131"
 |TINA | 否 | 否 | 否 |  |
 |流量管理器 | 是 | 是 | 否 |  |
 |通用打印 | 否 | 否 | 否 |  |
-|虚拟机规模集 | 否 | 是 | [是](insights/vminsights-overview.md) | 监视来宾操作系统和工作流时所需的代理。 |
-|虚拟机 | 是 | 是 | [是](insights/vminsights-overview.md) | 监视来宾操作系统和工作流时所需的代理。 |
+|虚拟机规模集 | 否 | 是 | [是](vm/vminsights-overview.md) | 监视来宾操作系统和工作流时所需的代理。 |
+|虚拟机 | 是 | 是 | [是](vm/vminsights-overview.md) | 监视来宾操作系统和工作流时所需的代理。 |
 |虚拟网络 | 是 | 是 | [是](insights/network-insights-overview.md) |  |
 |虚拟网络 - NSG 流日志 | 否 | 是 | 否 |  |
 |VPN 网关 | 是 | 是 | 否 |  |
@@ -173,15 +173,15 @@ ms.locfileid: "96853131"
 ## <a name="virtual-machine-agents"></a>虚拟机代理
 下表列出了可以从虚拟机的来宾操作系统收集数据并将数据发送到监视器的代理。 每个代理都可以收集不同的数据，并将其发送到 Azure Monitor 中的指标或日志。 
 
-有关每个代理可以收集的数据的详细信息，请参阅 [Azure Monitor 代理概述](platform/agents-overview.md) 。
+有关每个代理可以收集的数据的详细信息，请参阅 [Azure Monitor 代理概述](agents/agents-overview.md) 。
 
 | Agent |  指标 | 日志 |
 |:---|:---|:---|:---|
-| [Azure Monitor 代理（预览版）](platform/azure-monitor-agent-overview.md) | 是 | 是 |
-| [Log Analytics 代理](platform/log-analytics-agent.md) | 否 | 是|
-| [诊断扩展](platform/diagnostics-extension-overview.md) | 是 | 否 |
-| [Telegraf 代理](platform/collect-custom-metrics-linux-telegraf.md) | 是 | 否 |
-| [依赖关系代理](insights/vminsights-enable-overview.md) | 否 | 是 |
+| [Azure Monitor 代理（预览版）](agents/azure-monitor-agent-overview.md) | 是 | 是 |
+| [Log Analytics 代理](agents/log-analytics-agent.md) | 否 | 是|
+| [诊断扩展](agents/diagnostics-extension-overview.md) | 是 | 否 |
+| [Telegraf 代理](essentials/collect-custom-metrics-linux-telegraf.md) | 是 | 否 |
+| [依赖关系代理](vm/vminsights-enable-overview.md) | 否 | 是 |
 
 
 ## <a name="product-integrations"></a>产品集成
@@ -198,9 +198,9 @@ ms.locfileid: "96853131"
 | [Office 365](insights/solution-office-365.md) | 监视 Office 365 环境。 使用通过 Azure Sentinel 提供改进的载入来更新版本。 |
 | [SQL Analytics](insights/azure-sql.md) | 大规模或跨多个订阅监视 Azure SQL 数据库和 SQL 托管实例的性能。 |
 | [Surface Hub](insights/surface-hubs.md) | 跟踪 Surface Hub 设备的运行状况和使用情况。 |
-| [System Center Operations Manager](/system-center/scom) | 通过将 Operations Manager 代理的管理组连接到 Azure Monitor，从代理收集数据。 请参阅[将 Operations Manager 连接到 Azure Monitor](platform/om-agents.md)<br> 使用 [Operations Manager 评估](insights/scom-assessment.md)解决方案评估 System Center Operations Manager 管理组的风险和运行状况。 |
+| [System Center Operations Manager](/system-center/scom) | 通过将 Operations Manager 代理的管理组连接到 Azure Monitor，从代理收集数据。 请参阅[将 Operations Manager 连接到 Azure Monitor](agents/om-agents.md)<br> 使用 [Operations Manager 评估](insights/scom-assessment.md)解决方案评估 System Center Operations Manager 管理组的风险和运行状况。 |
 | [Microsoft 团队聊天室](/microsoftteams/room-systems/azure-monitor-deploy) | Microsoft 团队聊天室设备的集成、端到端管理。 |
-| [Visual Studio App Center](/appcenter/) | 构建、测试和分发应用程序，然后监视它们的状态和使用情况。 请参阅[开始使用 App Center 和 Application Insights 分析移动应用](learn/mobile-center-quickstart.md)。 |
+| [Visual Studio App Center](/appcenter/) | 构建、测试和分发应用程序，然后监视它们的状态和使用情况。 请参阅[开始使用 App Center 和 Application Insights 分析移动应用](app/mobile-center-quickstart.md)。 |
 | Windows | [Windows 更新符合性](/windows/deployment/update/update-compliance-get-started) - 评估 Windows 桌面升级。<br>[桌面分析](/configmgr/desktop-analytics/overview) - 与配置管理器集成，提供见解和情报，帮助你制定关于 Windows 客户端更新就绪性的更明智决策。 |
 
 
@@ -212,10 +212,10 @@ ms.locfileid: "96853131"
 |:---|:---|
 | [Active Directory 运行状况检查](insights/ad-assessment.md) | 评估 Active Directory 环境的风险和运行状况。 |
 | [Active Directory 复制状态](insights/ad-replication-status.md) | 定期监视 Active Directory 环境中是否有任何复制失败。 |
-| [活动日志分析](platform/activity-log.md#activity-log-analytics-monitoring-solution) | 查看活动日志条目。 |
+| [活动日志分析](essentials/activity-log.md#activity-log-analytics-monitoring-solution) | 查看活动日志条目。 |
 | [DNS Analytics（预览版）](insights/dns-analytics.md) | 收集、分析和关联 Windows DNS 分析和审核日志，以及 DNS 服务器的其他相关数据。 |
 | [Cloud Foundry](../cloudfoundry/cloudfoundry-oms-nozzle.md) | 跨多个部署收集、查看和分析 Cloud Foundry 系统的运行状况和性能指标。 |
-| [容器](insights/containers.md) | 查看和管理 Docker 和 Windows 容器主机。 |
+| [容器](containers/containers.md) | 查看和管理 Docker 和 Windows 容器主机。 |
 | [按需评估](/services-hub/health/getting_started_with_on_demand_assessments) | 评估和优化本地、混合和云 Microsoft 技术环境的可用性、安全性和性能。 |
 | [SQL 运行状况检查](insights/sql-assessment.md) | 评估 SQL Server 环境的风险和运行状况。  |
 | [传输数据](insights/wire-data.md) | 通过 Log Analytics 代理从与 Windows 和 Linux 相连的计算机中收集的网络与性能整合数据。 |
@@ -224,7 +224,7 @@ ms.locfileid: "96853131"
 
 | 解决方案 | 说明 |
 |:---|:---|
-| [ITSM](platform/itsmc-overview.md) | 使用 IT 服务管理连接器 (ITSMC) 可以连接 Azure 和支持的 IT 服务管理 (ITSM) 产品/服务。  |
+| [ITSM](alerts/itsmc-overview.md) | 使用 IT 服务管理连接器 (ITSMC) 可以连接 Azure 和支持的 IT 服务管理 (ITSM) 产品/服务。  |
 
 
 ## <a name="resources-outside-of-azure"></a>Azure 以外的资源
@@ -233,15 +233,15 @@ Azure Monitor 可以使用下表中列出的方法从 Azure 以外的资源收�
 | 资源 | 方法 |
 |:---|:---|
 | 应用程序 | 使用 Application Insights 监视 Azure 以外的 web 应用程序。 请参阅[什么是 Application Insights？](./app/app-insights-overview.md)。 |
-| 虚拟机 | 使用代理从其他云环境中的或本地的虚拟机的来宾操作系统收集数据。 请参阅 [Azure Monitor 代理概述](platform/agents-overview.md)。 |
-| REST API 客户端 | 可使用单独的 API 将数据从任何 REST API 客户端写入 Azure Monitor 日志和指标。 请参阅[使用 HTTP 数据收集器 API 将日志数据发送到 Azure Monitor](platform/data-collector-api.md)，以及[使用 REST API 将 Azure 资源的自定义指标发送到 Azure Monitor 指标存储](platform/metrics-store-custom-rest-api.md)。 |
+| 虚拟机 | 使用代理从其他云环境中的或本地的虚拟机的来宾操作系统收集数据。 请参阅 [Azure Monitor 代理概述](agents/agents-overview.md)。 |
+| REST API 客户端 | 可使用单独的 API 将数据从任何 REST API 客户端写入 Azure Monitor 日志和指标。 请参阅[使用 HTTP 数据收集器 API 将日志数据发送到 Azure Monitor](logs/data-collector-api.md)，以及[使用 REST API 将 Azure 资源的自定义指标发送到 Azure Monitor 指标存储](essentials/metrics-store-custom-rest-api.md)。 |
 
 
 
 ## <a name="next-steps"></a>后续步骤
 
-- 阅读和深入了解[存储由见解和解决方案收集的日志和指标的 Azure Monitor数据平台](platform/data-platform.md)。
-- 完成[有关监视 Azure 资源的教程](learn/tutorial-resource-logs.md)。
-- 完成[编写日志查询以分析 Azure Monitor 日志中的数据的相关教程](learn/tutorial-resource-logs.md)。
-- 完成[创建指标图表以分析 Azure Monitor 指标中的数据的相关教程](learn/tutorial-metrics-explorer.md)。
+- 阅读和深入了解[存储由见解和解决方案收集的日志和指标的 Azure Monitor数据平台](/data-platform.md)。
+- 完成[有关监视 Azure 资源的教程](essentials/tutorial-resource-logs.md)。
+- 完成[编写日志查询以分析 Azure Monitor 日志中的数据的相关教程](essentials/tutorial-resource-logs.md)。
+- 完成[创建指标图表以分析 Azure Monitor 指标中的数据的相关教程](essentials/tutorial-metrics-explorer.md)。
 

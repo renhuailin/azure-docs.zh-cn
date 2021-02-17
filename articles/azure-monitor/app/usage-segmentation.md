@@ -6,12 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 01/24/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: d11b12ba37d543ec21985c52c4ffb3399bfc56d1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5d1076239938988119d8a9838d0e060d70a22082
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87323513"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100583359"
 ---
 # <a name="users-sessions-and-events-analysis-in-application-insights"></a>在 Application Insights 中进行用户、会话和事件分析
 
@@ -41,10 +41,10 @@ ms.locfileid: "87323513"
 * 使用者：选择自定义事件和页面视图。
 * 期间：选择一个时间范围。
 * 依据：选择如何划分数据的存储段，可以按时间段或按其他属性（例如浏览器或城市）。
-* 拆分依据：选择对数据进行拆分或分段时要依据的属性。 
-* 添加筛选器：将查询限制到特定的用户、会话或事件（根据其属性，例如浏览器或城市）。 
- 
-## <a name="saving-and-sharing-reports"></a>保存和共享报表 
+* 拆分依据：选择对数据进行拆分或分段时要依据的属性。 
+* 添加筛选器：将查询限制到特定的用户、会话或事件（根据其属性，例如浏览器或城市）。 
+ 
+## <a name="saving-and-sharing-reports"></a>保存和共享报表 
 可以将用户报表保存为在“我的报表”部分中专供你使用的报表，或者将其保存为在“共享报表”部分中可供对此 Application Insights 资源具有访问权限的其他所有人访问的共享报表。
 
 若要共享“用户”、“会话”或“事件”报表的链接，请单击工具栏中的“共享”  ，然后复制该链接。
@@ -62,6 +62,6 @@ ms.locfileid: "87323513"
     - [漏斗图](usage-funnels.md)
     - [保留](usage-retention.md)
     - [用户流](usage-flows.md)
-    - [工作簿](../platform/workbooks-overview.md)
+    - [工作簿](../visualize/workbooks-overview.md)
     - [添加用户上下文](usage-send-user-context.md)
 

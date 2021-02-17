@@ -7,12 +7,12 @@ author: danimir
 ms.author: danil
 ms.date: 09/19/2020
 ms.reviewer: carlrab
-ms.openlocfilehash: 0015138f4da9f66e2f9148e468dd1b5543ae0c4b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fbe506dc3f5738f0ef639695ded980a24536993e
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91397073"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577471"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>使用 Azure SQL Analytics（预览版）监视 Azure SQL 数据库
 
@@ -33,11 +33,11 @@ Azure SQL Analytics 是一种仅限云的监视解决方案，支持所有 Azure
 
 | 连接的源 | 支持 | 说明 |
 | --- | --- | --- |
-| [诊断设置](../platform/diagnostic-settings.md) | **是** | Azure 指标和日志数据将由 Azure 直接发送到 Azure Monitor 日志。 |
-| [Azure 存储帐户](../platform/resource-logs.md#send-to-log-analytics-workspace) | 否 | Azure Monitor 不从存储帐户中读取数据。 |
-| [Windows 代理](../platform/agent-windows.md) | 否 | Azure SQL Analytics 不使用直接 Windows 代理。 |
-| [Linux 代理](../learn/quick-collect-linux-computer.md) | 否 | Azure SQL Analytics 不使用直接 Linux 代理。 |
-| [System Center Operations Manager 管理组](../platform/om-agents.md) | 否 | Azure SQL Analytics 不使用从 Operations Manager 代理到 Azure Monitor 的直接连接。 |
+| [诊断设置](../essentials/diagnostic-settings.md) | **是** | Azure 指标和日志数据将由 Azure 直接发送到 Azure Monitor 日志。 |
+| [Azure 存储帐户](../essentials/resource-logs.md#send-to-log-analytics-workspace) | 否 | Azure Monitor 不从存储帐户中读取数据。 |
+| [Windows 代理](../agents/agent-windows.md) | 否 | Azure SQL Analytics 不使用直接 Windows 代理。 |
+| [Linux 代理](../vm/quick-collect-linux-computer.md) | 否 | Azure SQL Analytics 不使用直接 Linux 代理。 |
+| [System Center Operations Manager 管理组](../agents/om-agents.md) | 否 | Azure SQL Analytics 不使用从 Operations Manager 代理到 Azure Monitor 的直接连接。 |
 
 ## <a name="azure-sql-analytics-options"></a>Azure SQL Analytics 选项
 
@@ -54,7 +54,7 @@ Azure SQL Analytics 是一种仅限云的监视解决方案，支持所有 Azure
 | 查询持续时间 | 提供对查询执行统计信息的分层向下钻取，例如查询持续时间、CPU 使用情况、数据 IO 使用情况和日志 IO 使用情况。 | 是 | 是 |
 | 查询等待 | 按等待类型提供对查询等待统计信息的分层向下钻取。 | 是 | 是 |
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>配置
 
 使用 [从解决方案库中添加 Azure Monitor 解决方案](./solutions.md) 中所述的过程，将 Azure SQL Analytics (预览) 添加到 Log Analytics 工作区。
 
@@ -170,13 +170,13 @@ Azure SQL Analytics 提供了两个单独的视图，一个用于监视 SQL 数�
 
 ## <a name="analyze-data-and-create-alerts"></a>分析数据和创建警报
 
-Azure SQL Analytics 中的数据分析基于自定义查询和报告的 [Log Analytics 语言](../log-query/get-started-queries.md)。 在[可用的指标和日志](../../azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md#metrics-and-logs-available)中查看从数据库资源收集的、用于自定义查询的数据的说明。
+Azure SQL Analytics 中的数据分析基于自定义查询和报告的 [Log Analytics 语言](../logs/get-started-queries.md)。 在[可用的指标和日志](../../azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md#metrics-and-logs-available)中查看从数据库资源收集的、用于自定义查询的数据的说明。
 
 Azure SQL Analytics 中的自动警报基于编写一个 Log Analytics 查询，该查询在满足条件时触发警报。 在下面的几个示例中查找 Log Analytics 查询，可以在 Azure SQL Analytics 中设置警报。
 
 ### <a name="creating-alerts-for-azure-sql-database"></a>针对 Azure SQL 数据库创建警报
 
-可以使用来自 Azure SQL 数据库资源的数据轻松[创建警报](../platform/alerts-metric.md)。 以下是部分有用的可用于日志警报的[日志查询](../log-query/log-query-overview.md)：
+可以使用来自 Azure SQL 数据库资源的数据轻松[创建警报](../alerts/alerts-metric.md)。 以下是部分有用的可用于日志警报的[日志查询](../logs/log-query-overview.md)：
 
 #### <a name="high-cpu"></a>CPU 使用率过高
 
@@ -273,7 +273,7 @@ AzureDiagnostics
 > [!NOTE]
 >
 > - 设置此警报的先决条件是监视的托管实例已启用 ResourceUsageStats 日志流式处理，以 Azure SQL Analytics。
-> - 此查询需要设置警报规则，以便在存在结果 ( # A0 0 results) 从查询中发出警报时发出警报，表示该条件存在于托管实例上。 输出是托管实例上的存储占用百分比。
+> - 此查询需要设置一个警报规则，以便在存在 (> 0 个结果) 来自查询的结果时发出警报，表示该托管实例上存在该条件。 输出是托管实例上的存储占用百分比。
 
 #### <a name="cpu-average-consumption-is-above-95-in-the-last-1-hr"></a>CPU 平均消耗在过去1小时内超过95%
 
@@ -289,7 +289,7 @@ AzureDiagnostics
 > [!NOTE]
 >
 > - 设置此警报的先决条件是监视的托管实例已启用 ResourceUsageStats 日志流式处理，以 Azure SQL Analytics。
-> - 此查询需要设置警报规则，以便在存在结果 ( # A0 0 results) 从查询中发出警报时发出警报，表示该条件存在于托管实例上。 输出是托管实例上已定义期间内的平均 CPU 使用率百分比消耗。
+> - 此查询需要设置一个警报规则，以便在存在 (> 0 个结果) 来自查询的结果时发出警报，表示该托管实例上存在该条件。 输出是托管实例上已定义期间内的平均 CPU 使用率百分比消耗。
 
 ### <a name="pricing"></a>定价
 
@@ -297,7 +297,7 @@ AzureDiagnostics
 
 ## <a name="next-steps"></a>后续步骤
 
-- 使用 [Azure Monitor 中的日志查询](../log-query/log-query-overview.md)查看详细的 Azure SQL 数据。
-- [创建自己的仪表板](../learn/tutorial-logs-dashboards.md)，显示 Azure SQL 数据。
-- 发生特定 Azure SQL 事件时[创建警报](../platform/alerts-overview.md)。
+- 使用 [Azure Monitor 中的日志查询](../logs/log-query-overview.md)查看详细的 Azure SQL 数据。
+- [创建自己的仪表板](../visualize/tutorial-logs-dashboards.md)，显示 Azure SQL 数据。
+- 发生特定 Azure SQL 事件时[创建警报](../alerts/alerts-overview.md)。
 

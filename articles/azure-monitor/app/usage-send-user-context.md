@@ -6,12 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 01/03/2019
 ms.reviewer: abgreg;mbullwin
-ms.openlocfilehash: 46b7479df6d087915cfe81895a786a528da6b9bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 021c76bcd03bbe35eabec5611fe0cc1e2c7c4427
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87327899"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100583340"
 ---
 # <a name="send-user-context-ids-to-enable-usage-experiences-in-azure-application-insights"></a>发送用户上下文 ID 以启用 Azure Application Insights 中的使用体验
 
@@ -22,7 +22,7 @@ Application Insights 通过一套产品使用工具监视并跟踪用户：
 - [用户、会话、事件](./usage-segmentation.md)
 - [漏斗图](./usage-funnels.md)
 - [保留](./usage-retention.md)队列
-- [工作簿](../platform/workbooks-overview.md)
+- [工作簿](../visualize/workbooks-overview.md)
 
 为了跟踪用户在各个时间进行的操作，Application Insights 需要每个用户或会话的 ID。 在每个自定义事件或页面视图中包含以下 ID。
 
@@ -30,7 +30,7 @@ Application Insights 通过一套产品使用工具监视并跟踪用户：
 - 会话：包括会话 ID。
 
 > [!NOTE]
-> 这是一篇高级文章，概述了使用 Application Insights 跟踪用户活动的手动步骤。 对于许多 Web 应用程序，**可能不需要这些步骤**，因为默认的服务器端 SDK 与[客户端/浏览器端 JavaScript SDK](./website-monitoring.md) 结合使用，通常足以自动跟踪用户活动。 如果除了服务器端 SDK 之外还没有配置[客户端监视](./website-monitoring.md)，请先执行该操作并测试用户行为分析工具是否按预期执行。
+> 这是一篇高级文章，概述了使用 Application Insights 跟踪用户活动的手动步骤。 对于许多 Web 应用程序，**可能不需要这些步骤**，因为默认的服务器端 SDK 与 [客户端/浏览器端 JavaScript SDK](./website-monitoring.md) 结合使用，通常足以自动跟踪用户活动。 如果除了服务器端 SDK 之外还没有配置[客户端监视](./website-monitoring.md)，请先执行该操作并测试用户行为分析工具是否按预期执行。
 
 ## <a name="choosing-user-ids"></a>选择用户 ID
 
@@ -134,5 +134,5 @@ namespace MvcWebRole.Telemetry
     - [用户、会话和事件](usage-segmentation.md)
     - [漏斗图](usage-funnels.md)
     - [保留](usage-retention.md)
-    - [工作簿](../platform/workbooks-overview.md)
+    - [工作簿](../visualize/workbooks-overview.md)
 

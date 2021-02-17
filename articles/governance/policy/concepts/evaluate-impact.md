@@ -3,16 +3,16 @@ title: 评估新 Azure Policy 定义的影响
 description: 了解将新策略定义引入 Azure 环境时要遵循的过程。
 ms.date: 10/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9d73d703c38dce1335a471bfad9171d8b30a83c5
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: cf52d25aa846388bc387430913a733d5206df82e
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91873861"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590802"
 ---
 # <a name="evaluate-the-impact-of-a-new-azure-policy-definition"></a>评估新 Azure Policy 定义的影响
 
-Azure Policy 是一种功能强大的工具，用于管理 Azure 资源以符合业务标准并满足合规性需求。 当用户、过程或管道创建或更新资源时，Azure Policy 会评审请求。 当策略定义效果为 [Modify](./effects.md#modify)、 [Append](./effects.md#deny) 或 [DeployIfNotExists](./effects.md#deployifnotexists)时，策略将更改请求或将其添加到其中。 当策略定义效果为 [Audit](./effects.md#audit) 或 [AuditIfNotExists](./effects.md#auditifnotexists)时，策略将导致为新资源和更新的资源创建活动日志项。 当策略定义效果是 [Deny](./effects.md#deny) 时，Policy 会停止创建或更改请求。
+Azure Policy 是一种功能强大的工具，用于管理 Azure 资源以符合业务标准并满足合规性需求。 当用户、过程或管道创建或更新资源时，Azure Policy 会评审请求。 当策略定义效果为 [Modify](./effects.md#modify)、[Append](./effects.md#deny) 或 [DeployIfNotExists](./effects.md#deployifnotexists) 时，Policy 会更改请求或对其进行补充。 当策略定义效果为 [Audit](./effects.md#audit) 或 [AuditIfNotExists](./effects.md#auditifnotexists) 时，Policy 会导致创建活动日志项，用于全新和更新的资源。 当策略定义效果是 [Deny](./effects.md#deny) 时，Policy 会停止创建或更改请求。
 
 如果你知道已正确定义了策略，则这些结果将完全符合预期。 不过，需要先验证新策略按预期方式工作，然后才允许它更改或阻止工作，这十分重要。 验证必须确保仅将预期资源确定为不合规，并且不会在结果中错误地包含任何合规资源（称为假正）。
 
@@ -63,7 +63,7 @@ Azure Policy 是一种功能强大的工具，用于管理 Azure 资源以符合
 
 ## <a name="monitor-your-policy-and-compliance"></a>监视策略和合规性
 
-实现并分配策略定义并不是最后一步。 持续监视资源对新策略定义的[合规性](../how-to/get-compliance-data.md)级别，并设置适当的 [Azure Monitor 警报和通知](../../../azure-monitor/platform/alerts-overview.md)以用于识别出不合规设备的情况。 还建议按计划评估策略定义和相关分配，以验证策略定义是否满足业务策略和合规性需求。 如果不再需要，则应该删除策略。 随着底层 Azure 资源发展，以及添加新属性和功能，策略也需要时常更新。
+实现并分配策略定义并不是最后一步。 持续监视资源对新策略定义的[合规性](../how-to/get-compliance-data.md)级别，并设置适当的 [Azure Monitor 警报和通知](../../../azure-monitor/alerts/alerts-overview.md)以用于识别出不合规设备的情况。 还建议按计划评估策略定义和相关分配，以验证策略定义是否满足业务策略和合规性需求。 如果不再需要，则应该删除策略。 随着底层 Azure 资源发展，以及添加新属性和功能，策略也需要时常更新。
 
 ## <a name="next-steps"></a>后续步骤
 

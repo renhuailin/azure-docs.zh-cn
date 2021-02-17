@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/24/2018
-ms.openlocfilehash: c33e9105be1eb080025922ff9e612771a4f021cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 01d641801b1b9a0cfaa4fd7ee11e3c55314dc53c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87318073"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577532"
 ---
 # <a name="monitor-active-directory-replication-status-with-azure-monitor"></a>使用 Azure Monitor 监视 Active Directory 复制状态
 
@@ -34,19 +34,19 @@ AD 复制状态解决方案定期监视 Active Directory 环境中是否有任�
 
 
 ### <a name="install-agents-on-domain-controllers"></a>在域控制器上安装代理
-你必须将代理安装在属于要评估的域成员的域控制器上。 或者，你必须在成员服务器上安装代理，并配置代理以将 AD 复制数据发送到 Azure Monitor。 若要了解如何将 Windows 计算机连接到 Azure Monitor，请参阅[将 Windows 计算机连接到 Azure Monitor](../platform/agent-windows.md)。 如果域控制器已经是你要连接到 Azure Monitor 的现有 System Center Operations Manager 环境的一部分，请参阅[将 Operations Manager 连接到 Azure Monitor](../platform/om-agents.md)。
+你必须将代理安装在属于要评估的域成员的域控制器上。 或者，你必须在成员服务器上安装代理，并配置代理以将 AD 复制数据发送到 Azure Monitor。 若要了解如何将 Windows 计算机连接到 Azure Monitor，请参阅[将 Windows 计算机连接到 Azure Monitor](../agents/agent-windows.md)。 如果域控制器已经是你要连接到 Azure Monitor 的现有 System Center Operations Manager 环境的一部分，请参阅[将 Operations Manager 连接到 Azure Monitor](../agents/om-agents.md)。
 
 ### <a name="enable-non-domain-controller"></a>启用非域控制器
 如果不需要将任何域控制器直接连接到 Azure Monitor，则可以使用域中任何其他与 Azure Monitor 连接的计算机来收集 AD 复制状态解决方案包的数据，并让它发送数据。
 
 1. 确认计算机是你要使用 AD 复制状态解决方案监视的域成员。
-2. 如果该计算机尚未连接，请[将 Windows 计算机连接到 Azure Monitor](../platform/om-agents.md) 或[使用现有 Operations Manager 环境将它连接到 Azure Monitor](../platform/om-agents.md)。
+2. 如果该计算机尚未连接，请[将 Windows 计算机连接到 Azure Monitor](../agents/om-agents.md) 或[使用现有 Operations Manager 环境将它连接到 Azure Monitor](../agents/om-agents.md)。
 3. 在该计算机上，设置以下注册表项：<br>注册表项：HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HealthService\Parameters\Management Groups\<ManagementGroupName>\Solutions\ADReplication<br>值：IsTarget<br>值数据：**true**
 
    > [!NOTE]
-   > 在重新启动 Microsoft Monitoring Agent 服务 ( # A0) 之前，这些更改不会生效。
+   > 在您重新启动 Microsoft Monitoring Agent 服务 (HealthService.exe) 之前，这些更改不会生效。
    > ### <a name="install-solution"></a>安装解决方案
-   > 按照[安装监视解决方案](solutions.md#install-a-monitoring-solution)中描述的过程，将 **Active Directory 复制状态**解决方案添加到 Log Analytics 工作区。 无需进一步的配置。
+   > 按照 [安装监视解决方案](solutions.md#install-a-monitoring-solution)中描述的过程，将 **Active Directory 复制状态** 解决方案添加到 Log Analytics 工作区。 无需进一步的配置。
 
 
 ## <a name="ad-replication-status-data-collection-details"></a>AD 复制状态数据收集详细信息
@@ -96,7 +96,7 @@ AD 复制状态解决方案定期监视 Active Directory 环境中是否有任�
 
 除了识别保留时间超过逻辑删除生存期的任何复制错误，还需要留意任何落入 50-75% TSL 或 75-100% TSL 类别的错误。
 
-这些是明显延迟（不是暂时的）的错误，因此，它们可能需要干预才能解决。 值得庆幸的是，它们尚未到达逻辑删除生存期。 如果立即和在达到逻辑删除生存期*之前*解决这些问题，则可以最少的手动干预来重新启动复制。
+这些是明显延迟（不是暂时的）的错误，因此，它们可能需要干预才能解决。 值得庆幸的是，它们尚未到达逻辑删除生存期。 如果立即和在达到逻辑删除生存期 *之前* 解决这些问题，则可以最少的手动干预来重新启动复制。
 
 如上所述，AD 复制状态解决方案的仪表板磁贴显示你环境中的严重复制错误数，其定义为超过 75% 的逻辑删除生存期的错误（包括超过 100% TSL 的错误）。 请尽可能将此数字保持为 0。
 
@@ -110,7 +110,7 @@ AD 复制状态解决方案定期监视 Active Directory 环境中是否有任�
 
 ![查询结果中的 AD 复制状态错误](./media/ad-replication-status/oms-ad-replication-search-details.png)
 
-从这里，可以进一步筛选，修改日志查询，等等。 若要详细了解如何在 Azure Monitor 中使用日志查询，请参阅[在 Azure Monitor 中分析日志数据](../log-query/log-query-overview.md)。
+从这里，可以进一步筛选，修改日志查询，等等。 若要详细了解如何在 Azure Monitor 中使用日志查询，请参阅[在 Azure Monitor 中分析日志数据](../logs/log-query-overview.md)。
 
 “**HelpLink**”字段显示了包含该特定错误的其他详细信息的 TechNet 页的 URL。 可以将此链接复制并粘贴到浏览器窗口，以查看有关故障排除和修复该错误的信息。
 
@@ -150,10 +150,10 @@ AD 复制状态解决方案定期监视 Active Directory 环境中是否有任�
 ## <a name="troubleshoot-data-collection-problems"></a>数据收集问题疑难解答
 为了收集数据，AD 复制状态解决方案包需要至少一个域控制器以连接到 Log Analytics 工作区。 直到你连接域控制器，出现一条消息，指示“仍在收集数据”。
 
-如果在连接某个域控制器时需要帮助，可以查看[将 Windows 计算机连接到 Azure Monitor](../platform/om-agents.md) 文档。 或者，如果域控制器已连接到现有 System Center Operations Manager 环境，则可以查看[将 System Center Operations Manager 连接到 Azure Monitor](../platform/om-agents.md) 文档。
+如果在连接某个域控制器时需要帮助，可以查看[将 Windows 计算机连接到 Azure Monitor](../agents/om-agents.md) 文档。 或者，如果域控制器已连接到现有 System Center Operations Manager 环境，则可以查看[将 System Center Operations Manager 连接到 Azure Monitor](../agents/om-agents.md) 文档。
 
 如果不希望将任何域控制器直接连接到 Azure Monitor 或 System Center Operations Manager，请参阅[启用非域控制器](#enable-non-domain-controller)。
 
 ## <a name="next-steps"></a>后续步骤
-* 使用 [Azure Monitor 中的日志查询](../log-query/log-query-overview.md)查看详细的 Active Directory 复制状态数据。
+* 使用 [Azure Monitor 中的日志查询](../logs/log-query-overview.md)查看详细的 Active Directory 复制状态数据。
 

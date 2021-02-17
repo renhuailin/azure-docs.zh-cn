@@ -7,12 +7,12 @@ ms.author: abnarain
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/26/2018
-ms.openlocfilehash: ec1e7c77c44cf1969e472a6e7288d1af5d6640e1
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: ab49c294fb8923c9a1a47af016e5224a8bba846c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100374790"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576356"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>在 Azure 数据工厂管道中使用自定义活动
 
@@ -35,6 +35,9 @@ ms.locfileid: "100374790"
 * [Azure Batch 基础知识](../batch/batch-technical-overview.md) - Azure Batch 服务的概述。
 * [New-AzBatchAccount](/powershell/module/az.batch/New-azBatchAccount) cmdlet 以创建 Azure Batch 帐户（或）[Azure 门户](../batch/batch-account-create-portal.md)以使用 Azure 门户创建 Azure Batch 帐户。 请参阅 [Using PowerShell to manage Azure Batch Account](/archive/blogs/windowshpc/using-azure-powershell-to-manage-azure-batch-account)（使用 Azure PowerShell 管理 Azure Batch 帐户）一文，了解有关使用此 cmdlet 的详细说明。
 * [New-AzBatchPool](/powershell/module/az.batch/New-AzBatchPool) cmdlet 以创建 Azure Batch 池。
+
+> [!IMPORTANT]
+> 创建新的 Azure Batch 池时，必须使用 "VirtualMachineConfiguration" 而不是 "CloudServiceConfiguration"。 有关更多详细信息，请参阅 [Azure Batch 池迁移指南](https://docs.microsoft.com/azure/batch/batch-pool-cloud-service-to-virtual-machine-configuration)。 
 
 ## <a name="azure-batch-linked-service"></a>Azure Batch 链接服务
 
@@ -97,7 +100,7 @@ ms.locfileid: "100374790"
 
 下表描述了此活动特有的属性的名称和描述。
 
-| properties              | 说明                              | 必须 |
+| 属性              | 说明                              | 必需 |
 | :-------------------- | :--------------------------------------- | :------- |
 | name                  | 管道中活动的名称     | 是      |
 | description           | 描述活动用途的文本。  | 否       |

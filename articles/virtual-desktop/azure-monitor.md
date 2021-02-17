@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 12/01/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e0be6decf28fcbb2edacd5019f567d26403b1f31
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: e9da1071686dafa003a5a49d0864b77644493344
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96466356"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594456"
 ---
 # <a name="use-azure-monitor-for-windows-virtual-desktop-to-monitor-your-deployment-preview"></a>使用 Windows 虚拟桌面 Azure Monitor 来监视部署 (预览版) 
 
@@ -98,7 +98,7 @@ Windows 虚拟桌面 (预览版) 的 Azure Monitor 是一种基于 Azure Monitor
 
 ## <a name="configure-log-analytics"></a>配置 Log Analytics
 
-若要开始使用适用于 Windows 虚拟桌面的 Azure Monitor，你还需要至少一个 Log Analytics 工作区来从你计划监视的环境中收集数据并将其提供给工作簿。 如果已设置了一个，请直接跳到 [设置性能计数器](#set-up-performance-counters)。 若要为包含 Windows 虚拟桌面环境的 Azure 订阅设置新的 Log Analytics 工作区，请参阅 [在 Azure 门户中创建 Log Analytics 工作区](../azure-monitor/learn/quick-create-workspace.md)。
+若要开始使用适用于 Windows 虚拟桌面的 Azure Monitor，你还需要至少一个 Log Analytics 工作区来从你计划监视的环境中收集数据并将其提供给工作簿。 如果已设置了一个，请直接跳到 [设置性能计数器](#set-up-performance-counters)。 若要为包含 Windows 虚拟桌面环境的 Azure 订阅设置新的 Log Analytics 工作区，请参阅 [在 Azure 门户中创建 Log Analytics 工作区](../azure-monitor/logs/quick-create-workspace.md)。
 
 >[!NOTE]
 >适用于 Log Analytics 的标准数据存储费用。 若要开始，我们建议选择 "即用即付" 模型，并在缩放部署时进行调整并拍摄更多数据。 若要了解详细信息，请参阅 [Azure Monitor 定价](https://azure.microsoft.com/pricing/details/monitor/)。
@@ -107,7 +107,7 @@ Windows 虚拟桌面 (预览版) 的 Azure Monitor 是一种基于 Azure Monitor
 
 需要在 Log Analytics 工作区中的相应采样间隔内启用特定于集合的特定性能计数器。 这些性能计数器是监视 Windows 虚拟桌面所需的唯一计数器。 您可以禁用所有其他人来节约成本。
 
-如果已启用性能计数器并且要删除它们，请按照 [配置性能计数器](../azure-monitor/platform/data-sources-performance-counters.md) 中的说明重新配置性能计数器。 尽管本文介绍如何添加计数器，但也可以在同一位置删除它们。
+如果已启用性能计数器并且要删除它们，请按照 [配置性能计数器](../azure-monitor/agents/data-sources-performance-counters.md) 中的说明重新配置性能计数器。 尽管本文介绍如何添加计数器，但也可以在同一位置删除它们。
 
 如果尚未设置性能计数器，请参阅以下内容，了解如何为 Windows 虚拟桌面 Azure Monitor 配置它们：
 
@@ -128,7 +128,7 @@ Windows 虚拟桌面 (预览版) 的 Azure Monitor 是一种基于 Azure Monitor
 >[!NOTE]
 >输入延迟性能计数器仅与 Windows 10 RS5 和更高版本或 Windows Server 2019 及更高版本兼容。
 
-若要了解有关如何手动添加尚未为收集启用的性能计数器的详细信息，请参阅 [配置性能计数器](../azure-monitor/platform/data-sources-performance-counters.md)。
+若要了解有关如何手动添加尚未为收集启用的性能计数器的详细信息，请参阅 [配置性能计数器](../azure-monitor/agents/data-sources-performance-counters.md)。
 
 ### <a name="set-up-windows-events"></a>设置 Windows 事件
 
@@ -171,7 +171,7 @@ Windows 虚拟桌面 (预览版) 的 Azure Monitor 是一种基于 Azure Monitor
 
 ## <a name="optional-configure-alerts"></a>可选：配置警报
 
-你可以将 Windows 虚拟桌面 Azure Monitor 配置为在所选订阅中出现任何严重 Azure Monitor 警报时通知你。 为此，请按照 " [响应事件" Azure Monitor 警报](../azure-monitor/learn/tutorial-response.md)中的说明进行操作。
+你可以将 Windows 虚拟桌面 Azure Monitor 配置为在所选订阅中出现任何严重 Azure Monitor 警报时通知你。 为此，请按照 " [响应事件" Azure Monitor 警报](../azure-monitor/alerts/tutorial-response.md)中的说明进行操作。
 
 ## <a name="diagnostic-and-usage-data"></a>诊断和使用情况数据
 

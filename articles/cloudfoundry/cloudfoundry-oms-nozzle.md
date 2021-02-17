@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/22/2017
 ms.author: ningk
-ms.openlocfilehash: fde0afcd37cd464b0b87e5ccd257d4a7a684eeb0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 9fafa9bd014a44fdd0098ef2364375c3f9672bea
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96021582"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571064"
 ---
 # <a name="deploy-azure-log-analytics-nozzle-for-cloud-foundry-system-monitoring"></a>部署 Azure Log Analytics Nozzle 以监视 Cloud Foundry 系统
 
@@ -100,7 +100,7 @@ Nozzle 还需要对 Loggregator Firehose 和云控制器拥有访问权限。 �
 
 #### <a name="sign-in-to-your-cf-deployment-as-an-admin-through-cf-cli"></a>通过 CF CLI 以管理员身份登录到 CF 部署
 
-运行下面的命令：
+运行以下命令：
 ```
 cf login -a https://api.${SYSTEM_DOMAIN} -u ${CF_USER} --skip-ssl-validation
 ```
@@ -124,13 +124,13 @@ uaac member add doppler.firehose ${FIREHOSE_USER}
 
 #### <a name="download-the-latest-log-analytics-nozzle-release"></a>下载最新的 Log Analytics Nozzle 版本
 
-运行下面的命令：
+运行以下命令：
 ```
 git clone https://github.com/Azure/oms-log-analytics-firehose-nozzle.git
 cd oms-log-analytics-firehose-nozzle
 ```
 
-#### <a name="set-environment-variables"></a>设置环境变量。
+#### <a name="set-environment-variables"></a>设置环境变量
 
 现在，可在当前目录中的 manifest.yml 文件内设置环境变量。 下面显示了 Nozzle 的应用清单。 请将值替换为特定的 Log Analytics 工作区信息。
 
@@ -155,7 +155,7 @@ LOG_EVENT_COUNT_INTERVAL  : The time interval of the logging event count to Azur
 
 ### <a name="push-the-application-from-your-development-computer"></a>从开发计算机推送应用程序
 
-请务必在 oms-log-analytics-firehose-nozzle 文件夹下操作。 运行下面的命令：
+请务必在 oms-log-analytics-firehose-nozzle 文件夹下操作。 运行以下命令：
 ```
 cf push
 ```
@@ -191,7 +191,7 @@ cf apps
 
 ### <a name="2-create-alert-rules"></a>2. 创建警报规则
 
-可以[创建警报](../azure-monitor/platform/alerts-overview.md)，并视需要自定义查询和阈值。 下面是建议的警报：
+可以[创建警报](../azure-monitor/alerts/alerts-overview.md)，并视需要自定义查询和阈值。 下面是建议的警报：
 
 | 搜索查询                                                                  | 基于以下项生成警报 | 说明                                                                       |
 | ----------------------------------------------------------------------------- | ----------------------- | --------------------------------------------------------------------------------- |
@@ -242,7 +242,7 @@ cf delete <App Name> -r
 
 Azure Log Analytics Nozzle 是开放源代码。 若有问题和反馈，请发送到 [GitHub 部分](https://github.com/Azure/oms-log-analytics-firehose-nozzle/issues)。 若要提出 Azure 支持请求，请选择“运行 Cloud Foundry 的虚拟机”作为服务类别。 
 
-## <a name="next-step"></a>后续步骤
+## <a name="next-step"></a>下一步
 
 从 PCF 2.0 中，VM 性能指标会按系统指标转发器传输到 Azure Log Analytics 喷嘴，并集成到 Log Analytics 工作区中。 不再需要 Log Analytics 代理来获取 VM 性能指标。 但仍然可以使用 Log Analytics 代理来收集 Syslog 信息。 Log Analytics 代理可作为 Bosh 加载项安装到 CF VM 中。 
 

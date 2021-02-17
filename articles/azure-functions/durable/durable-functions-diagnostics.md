@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: azfuncdf
-ms.openlocfilehash: 4714b9330c4a9d9cd390a58f814e3cdb4b591038
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 62cc5e1762a2a54b26cbebae5aa7cfbf64204ba5
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168135"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100584613"
 ---
 # <a name="diagnostics-in-durable-functions-in-azure"></a>Azure Durable Functions 中的诊断
 
@@ -20,17 +20,17 @@ ms.locfileid: "92168135"
 
 使用 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 是在 Azure Functions 中执行诊断和监视的建议方法。 这同样适用于 Durable Functions。 有关如何在函数应用中利用 Application Insights 的概述，请参阅[监视 Azure Functions](../functions-monitoring.md)。
 
-Azure Functions Durable 扩展还会发出跟踪事件，用于跟踪业务流程的端到端执行。** 可在 Azure 门户中使用 [Application Insights Analytics](../../azure-monitor/log-query/log-query-overview.md) 工具来查找和查询这些跟踪事件。
+Azure Functions Durable 扩展还会发出跟踪事件，用于跟踪业务流程的端到端执行。 可在 Azure 门户中使用 [Application Insights Analytics](../../azure-monitor/logs/log-query-overview.md) 工具来查找和查询这些跟踪事件。
 
 ### <a name="tracking-data"></a>跟踪数据
 
-业务流程实例的每个生命周期事件会导致将一个跟踪事件写入 Application Insights 中的**跟踪**集合。 此事件包含带有多个字段的 **customDimensions** 有效负载。  字段名称的前面都附有 `prop__`。
+业务流程实例的每个生命周期事件会导致将一个跟踪事件写入 Application Insights 中的 **跟踪** 集合。 此事件包含带有多个字段的 **customDimensions** 有效负载。  字段名称的前面都附有 `prop__`。
 
 * **hubName**：运行业务流程的任务中心的名称。
 * **appName**：函数应用的名称。 当有多个函数应用共享同一个 Application Insights 实例时，此字段非常有用。
-* **slotName**：运行当前函数应用的[部署槽位](../functions-deployment-slots.md)。 使用部署槽位控制业务流程的版本时，此字段非常有用。
+* **slotName**：运行当前函数应用的 [部署槽位](../functions-deployment-slots.md)。 使用部署槽位控制业务流程的版本时，此字段非常有用。
 * **functionName**：业务流程协调程序或活动函数的名称。
-* **functionType**：函数的类型，例如“业务流程协调程序”或“活动”。********
+* **functionType**：函数的类型，例如“业务流程协调程序”或“活动”。
 * **instanceId**：业务流程实例的唯一 ID。
 * **state**：实例的生命周期执行状态。 有效值包括：
   * **Scheduled**：函数已计划执行，但尚未开始运行。
@@ -103,7 +103,7 @@ Azure Functions Durable 扩展还会发出跟踪事件，用于跟踪业务流�
 
 ### <a name="single-instance-query"></a>单实例查询
 
-以下查询显示 [Hello Sequence](durable-functions-sequence.md) 函数业务流程的单个实例的历史跟踪数据。 它是使用 [Kusto 查询语言](/azure/data-explorer/kusto/query/)编写的。 它会筛选出重播执行，以便仅显示逻辑执行路径。** 可以通过按 `timestamp` 和 `sequenceNumber` 排序来安排事件顺序，如以下查询中所示：
+以下查询显示 [Hello Sequence](durable-functions-sequence.md) 函数业务流程的单个实例的历史跟踪数据。 它是使用 [Kusto 查询语言](/azure/data-explorer/kusto/query/)编写的。 它会筛选出重播执行，以便仅显示逻辑执行路径。 可以通过按 `timestamp` 和 `sequenceNumber` 排序来安排事件顺序，如以下查询中所示：
 
 ```kusto
 let targetInstanceId = "ddd1aaa685034059b545eb004b15d4eb";
@@ -272,7 +272,7 @@ Done!
 ```
 
 > [!NOTE]
-> 请记住，尽管日志声明要调用 F1、F2 和 F3，但实际上仅在首次遇到这些函数时才调用这些函数。** 在重播期间发生的后续调用将被跳过，输出将重播到业务流程协调程序逻辑。
+> 请记住，尽管日志声明要调用 F1、F2 和 F3，但实际上仅在首次遇到这些函数时才调用这些函数。 在重播期间发生的后续调用将被跳过，输出将重播到业务流程协调程序逻辑。
 
 如果只想针对非重播执行编写日志，可以编写一个条件表达式，规定仅当“is replaying”标志为 `false` 时才记录日志。 沿用上面的示例，不过这一次要执行重播检查。
 
@@ -453,7 +453,7 @@ GET /runtime/webhooks/durabletask/instances/instance123?code=XYZ
 
 Azure Functions 支持直接调试函数代码，Durable Functions 承袭了这项支持，不管它是在 Azure 中还是在本地运行。 但是，调试时需注意几种行为：
 
-* **重播**：收到新输入时，业务流程协调程序函数会定期[重播](durable-functions-orchestrations.md#reliability)。 此行为意味着，业务流程协调程序函数的单次逻辑执行可能导致多次命中同一断点，尤其是事先已在函数代码中设置了该断点时。
+* **重播**：收到新输入时，业务流程协调程序函数会定期 [重播](durable-functions-orchestrations.md#reliability)。 此行为意味着，业务流程协调程序函数的单次逻辑执行可能导致多次命中同一断点，尤其是事先已在函数代码中设置了该断点时。
 * **等待**：每当在业务流程协调程序函数中遇到 `await`，该函数就会将控制权出让回到 Durable Task Framework 调度程序。 如果这是首次遇到特定的 `await`，则关联的任务永远不可恢复。 因为任务永远不可恢复，所以无法单步跳过等待（在 Visual Studio 中按 F10）。 仅当任务正在重播时，才能跳过。
 * **消息超时**：Durable Functions 在内部使用队列消息来驱动业务流程协调程序函数、活动函数和实体函数的执行。 在多 VM 环境中，长时间中断调试可能会使另一个 VM 拾取消息，从而导致重复执行。 正则队列触发器函数也存在此行为，但必须在此上下文中指出，因为队列属于实现细节。
 * **停止和启动**：Durable Functions 中的消息在调试会话之间保持不变。 如果在执行持久函数时停止调试并终止本地主机进程，则该函数可能会在将来的调试会话中自动重新执行。 如果不需要，则此行为可能会造成混淆。 清除调试会话之间的[内部存储队列](durable-functions-perf-and-scale.md#internal-queue-triggers)中的所有消息可避免此行为。

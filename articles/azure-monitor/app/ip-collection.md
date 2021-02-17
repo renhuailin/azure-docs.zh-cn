@@ -4,12 +4,12 @@ description: 了解如何使用 Azure Application Insights 处理 IP 地址和�
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 3a8969d5d0df2fdacf78815c6f47c7c6bfa73a37
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 91b3aa07720e39aa8aeeceb9c35e38205e7d7c76
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100521911"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100584068"
 ---
 # <a name="geolocation-and-ip-address-handling"></a>地理位置和 IP 地址处理
 
@@ -30,7 +30,7 @@ ms.locfileid: "100521911"
 
 而默认设置是不收集 IP 地址。 我们仍提供灵活选择来替代此行为。 但是，建议验证集合是否违反任何合规性要求或当地法规。 
 
-若要详细了解 Application Insights 中的个人数据处理，请参阅[个人数据指南](../platform/personal-data-mgmt.md)。
+若要详细了解 Application Insights 中的个人数据处理，请参阅[个人数据指南](../logs/personal-data-mgmt.md)。
 
 ## <a name="storing-ip-address-data"></a>存储 IP 地址数据
 
@@ -245,6 +245,6 @@ requests
 
 ## <a name="next-steps"></a>后续步骤
 
-* 详细了解 Application Insights 中的[个人数据收集](../platform/personal-data-mgmt.md)。
+* 详细了解 Application Insights 中的[个人数据收集](../logs/personal-data-mgmt.md)。
 
 * 详细了解 Application Insights 中 [IP 地址收集](https://apmtips.com/posts/2016-07-05-client-ip-address/)的工作原理。 （本文是由我们的某位工程师早前撰写的一篇外部博客文章。 其中所述的机制不同当前的默认行为，现在，IP 地址将记录为 `0.0.0.0`，不过此文更深入地描述了内置 `ClientIpHeaderTelemetryInitializer` 的机制。）

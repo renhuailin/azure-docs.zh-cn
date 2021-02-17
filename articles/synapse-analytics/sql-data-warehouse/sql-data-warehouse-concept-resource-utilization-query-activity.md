@@ -11,12 +11,12 @@ ms.date: 04/09/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 75c0058f2d4878016281656935cbd82f79b859fd
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 96a076ef144af1d32e9ef3ec2903557b8edff006
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98119996"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100586710"
 ---
 # <a name="monitoring-resource-utilization-and-query-activity-in-azure-synapse-analytics"></a>监视 Azure Synapse Analytics 中的资源利用率和查询活动
 
@@ -24,7 +24,7 @@ Azure Synapse Analytics 在 Azure 门户中提供了丰富的监视体验，可�
 
 ## <a name="resource-utilization"></a>资源利用率
 
-Azure 门户中提供了以下可用于 Synapse SQL 的指标。 这些指标通过 [Azure Monitor](../../azure-monitor/platform/data-platform.md?bc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2ftoc.json#metrics) 显示。
+Azure 门户中提供了以下可用于 Synapse SQL 的指标。 这些指标通过 [Azure Monitor](../../azure-monitor/data-platform.md?bc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2ftoc.json#metrics) 显示。
 
 | 指标名称             | 说明                                                  | 聚合类型 |
 | ----------------------- | ------------------------------------------------------------ | ---------------- |
@@ -57,7 +57,7 @@ Azure 门户中提供了以下可用于 Synapse SQL 的指标。 这些指标通
 
 ## <a name="metrics-and-diagnostics-logging"></a>指标和诊断日志记录 
 
-指标和日志都可导出到 Azure Monitor（确切地说，是 [Azure Monitor 日志](../../azure-monitor/log-query/log-query-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)组件），并可通过[日志查询](../../azure-monitor/log-query/log-analytics-tutorial.md?bc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2ftoc.json)以编程方式进行访问。 Synapse SQL 的日志延迟约为 10-15 分钟。 有关影响延迟的各种因素的详细信息，请访问以下文档。
+指标和日志都可导出到 Azure Monitor（确切地说，是 [Azure Monitor 日志](../../azure-monitor/logs/log-query-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)组件），并可通过[日志查询](../../azure-monitor/logs/log-analytics-tutorial.md?bc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2ftoc.json)以编程方式进行访问。 Synapse SQL 的日志延迟约为 10-15 分钟。 有关影响延迟的各种因素的详细信息，请访问以下文档。
 
 ## <a name="next-steps"></a>后续步骤
 

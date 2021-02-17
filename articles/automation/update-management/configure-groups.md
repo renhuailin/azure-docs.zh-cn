@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 07/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: a2df2489e4b216b4b33524e35691bf93468edda0
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 318b5498c826b1e29baa35850594cebca72c4f3f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92221961"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575925"
 ---
 # <a name="use-dynamic-groups-with-update-management"></a>将动态组与更新管理配合使用
 
@@ -43,7 +43,7 @@ ms.locfileid: "92221961"
 
 ## <a name="define-dynamic-groups-for-non-azure-machines"></a>为非 Azure 计算机定义动态组
 
-非 Azure 计算机的动态组使用保存的搜索，也称为计算机组。 若要了解如何创建保存的搜索，请参阅[创建计算机组](../../azure-monitor/platform/computer-groups.md#creating-a-computer-group)。 创建保存的搜索后，可以从 Azure 门户“更新管理”中的保存的搜索列表中选择它。 单击“预览”，可预览保存的搜索中的计算机。
+非 Azure 计算机的动态组使用保存的搜索，也称为计算机组。 若要了解如何创建保存的搜索，请参阅[创建计算机组](../../azure-monitor/logs/computer-groups.md#creating-a-computer-group)。 创建保存的搜索后，可以从 Azure 门户“更新管理”中的保存的搜索列表中选择它。 单击“预览”，可预览保存的搜索中的计算机。
 
 ![屏幕截图显示了非 Azure（预览版）的“选择组”页和右侧的“预览”窗格。](./media/configure-groups/select-groups-2.png)
 

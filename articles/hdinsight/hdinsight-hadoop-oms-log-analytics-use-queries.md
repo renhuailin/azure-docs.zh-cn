@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/02/2019
-ms.openlocfilehash: f9213f36ec33939c3df3b56d21822aa3b6a17c03
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 360a9730025dc24eda93868903fcd356c37d06ef
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98945612"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576330"
 ---
 # <a name="query-azure-monitor-logs-to-monitor-hdinsight-clusters"></a> Azure Monitor 日志以监视 HDInsight 群集
 
@@ -21,7 +21,7 @@ ms.locfileid: "98945612"
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 必须将 HDInsight 群集配置为使用 Azure Monitor 日志，并将特定于 HDInsight 群集的 Azure Monitor 日志监视解决方案添加到工作区。 有关说明，请参阅 [将 Azure Monitor 日志与 HDInsight 群集配合使用](hdinsight-hadoop-oms-log-analytics-tutorial.md)。
 
@@ -122,9 +122,9 @@ search in (metrics_resourcemanager_queue_root_default_CL) *
 
     ![HDInsight Azure Monitor 日志警报删除编辑](media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-edit-alert.png)
 
-有关详细信息，请参阅[使用 Azure Monitor 创建、查看和管理指标警报](../azure-monitor/platform/alerts-metric.md)。
+有关详细信息，请参阅[使用 Azure Monitor 创建、查看和管理指标警报](../azure-monitor/alerts/alerts-metric.md)。
 
 ## <a name="see-also"></a>另请参阅
 
-* [Azure Monitor 中的日志查询入门](../azure-monitor/log-query/get-started-queries.md)
-* [在 Azure Monitor 中使用视图设计器创建自定义视图](../azure-monitor/platform/view-designer.md)
+* [Azure Monitor 中的日志查询入门](../azure-monitor/logs/get-started-queries.md)
+* [在 Azure Monitor 中使用视图设计器创建自定义视图](../azure-monitor/visualize/view-designer.md)

@@ -7,18 +7,18 @@ ms.service: mysql
 ms.topic: conceptual
 ms.custom: references_regions
 ms.date: 10/21/2020
-ms.openlocfilehash: 5b818068c2aab045b46b34d408a93b7cb3df15c7
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 8d6aa4de7c3b75747c6e2f103e66e39dfa288ba7
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94537690"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576256"
 ---
 # <a name="monitoring-in-azure-database-for-mysql"></a>在 Azure Database for MySQL 中进行监视
 监视服务器的相关数据有助于排查工作负荷故障及优化工作负荷。 Azure Database for MySQL 提供了各种指标来帮助用户深入了解服务器的行为。
 
 ## <a name="metrics"></a>指标
-所有 Azure 指标的频率都是一分钟，每个指标提供 30 天的历史记录。 可针对指标配置警报。 有关分步指南，请参阅[如何设置警报](howto-alert-on-metric.md)。 其他任务包括设置自动操作、执行高级分析和存档历史记录。 有关详细信息，请参阅 [Azure 指标概述](../azure-monitor/platform/data-platform.md)。
+所有 Azure 指标的频率都是一分钟，每个指标提供 30 天的历史记录。 可针对指标配置警报。 有关分步指南，请参阅[如何设置警报](howto-alert-on-metric.md)。 其他任务包括设置自动操作、执行高级分析和存档历史记录。 有关详细信息，请参阅 [Azure 指标概述](../azure-monitor/data-platform.md)。
 
 ### <a name="list-of-metrics"></a>指标列表
 这些指标适用于 Azure Database for MySQL：
@@ -57,10 +57,10 @@ ms.locfileid: "94537690"
 
 “计划内维护通知”允许你接收有关 Azure Database for MySQL 即将进行的计划内维护的警报。 这些通知与[服务运行状况](../service-health/overview.md)计划内维护集成，允许你在同一位置查看你的订阅的所有计划内维护。 它还有助于将通知扩展到不同资源组的适当受众，因为你可能有不同的联系人负责不同的资源。 你将在事件发生前的 72 小时收到有关即将进行的维护的通知。
 
-详细了解如何设置 [计划内维护通知](./concepts-planned-maintenance-notification.md) 文档中的通知。
+在[计划内维护通知](./concepts-planned-maintenance-notification.md)文档中详细了解如何设置通知。
 
 ## <a name="next-steps"></a>后续步骤
 - 有关如何基于指标创建警报的指南，请参阅[如何设置警报](howto-alert-on-metric.md)。
-- 若要深入了解如何使用 Azure 门户、REST API 或 CLI 访问和导出指标，请参阅 [Azure 指标概述](../azure-monitor/platform/data-platform.md)。
+- 若要深入了解如何使用 Azure 门户、REST API 或 CLI 访问和导出指标，请参阅 [Azure 指标概述](../azure-monitor/data-platform.md)。
 - 阅读我们的博客，了解[监控服务器的最佳做法](https://azure.microsoft.com/blog/best-practices-for-alerting-on-metrics-with-azure-database-for-mysql-monitoring/)。
-- 详细了解 Azure Database for MySQL-单服务器中的[计划内维护通知](./concepts-planned-maintenance-notification.md)
+- 详细了解 Azure Database for MySQL（单一服务器）中的[计划内维护通知](./concepts-planned-maintenance-notification.md)

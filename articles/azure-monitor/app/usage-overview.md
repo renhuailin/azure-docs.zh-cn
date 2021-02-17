@@ -3,12 +3,12 @@ title: 使用 Azure Application Insights 进行使用情况分析 | Microsoft do
 description: 了解用户，以及他们将应用用于哪些目的。
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.openlocfilehash: 633d35ec16f5eb9de664421c38cd4c824dc240cf
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 0888b6743a10c9934ab85a6f2b3b637b857f643a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98233842"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100583407"
 ---
 # <a name="usage-analysis-with-application-insights"></a>Application Insights 使用分析
 
@@ -38,7 +38,7 @@ Web 或移动应用有哪些最热门的功能？ 用户是否使用应用实现
 
     若要了解更多用于监视网站的高级配置，请查看 [JavaScript SDK 参考](./javascript.md)一文。
 
-3. **移动应用代码：** 通过 [按照此指南操作](../learn/mobile-center-quickstart.md)，使用 App Center SDK 收集应用中的事件，然后将这些事件的副本发送到 Application Insights 进行分析。
+3. **移动应用代码：** 通过 [按照此指南操作](../app/mobile-center-quickstart.md)，使用 App Center SDK 收集应用中的事件，然后将这些事件的副本发送到 Application Insights 进行分析。
 
 4. **获取遥测：** 在调试模式下运行项目几分钟，并在“Application Insights”中的“概述”边栏选项卡中查找结果。
 
@@ -81,7 +81,7 @@ Web 或移动应用有哪些最热门的功能？ 用户是否使用应用实现
 
 要明确了解用户将应用用于什么目的，可以插入代码行来记录自定义事件。 这些事件可以跟踪任何活动，包括详细的用户操作（例如单击特定的按钮），以及更重要的业务活动（例如购买活动或游戏获胜）。
 
-你还可以使用 [单击分析自动收集插件](javascript-click-analytics-plugin.md) 来收集自定义事件。
+你还可以使用[单击分析自动收集插件](javascript-click-analytics-plugin.md)来收集自定义事件。
 
 尽管在某些情况下页面视图可呈现有用的事件，但一般情况下这些事件并不真实。 用户无需购买产品即可打开产品页面。 
 
@@ -179,6 +179,6 @@ ASP.NET Core 应用
    - [漏斗图](usage-funnels.md)
    - [保留](usage-retention.md)
    - [用户流](usage-flows.md)
-   - [工作簿](../platform/workbooks-overview.md)
+   - [工作簿](../visualize/workbooks-overview.md)
    - [添加用户上下文](usage-send-user-context.md)
 

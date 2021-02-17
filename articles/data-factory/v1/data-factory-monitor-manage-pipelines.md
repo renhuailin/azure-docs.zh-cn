@@ -7,12 +7,12 @@ ms.reviewer: maghan
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 04/30/2018
-ms.openlocfilehash: 486f12c29c473d46e3aff73abe747f8aa5a2ef8d
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: c728654e868bcb8213e6a4039fa1e2e169b0078c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100380400"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576387"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-azure-portal-and-powershell"></a>使用 Azure 门户和 PowerShell 监视和管理 Azure 数据工厂管道
 > [!div class="op_single_selector"]
@@ -28,7 +28,7 @@ ms.locfileid: "100380400"
 > 通过监视和管理应用程序，可更好地监视和管理数据管道并解决出现的任何问题。 有关使用此应用的详细信息，请参阅[使用“监视和管理”应用监视和管理数据工厂管道](data-factory-monitor-manage-app.md)。 
 
 > [!IMPORTANT]
-> Azure 数据工厂版本 1 现在使用新的 [Azure Monitor 警报基础结构](../../azure-monitor/platform/alerts-metric.md)。 旧警报基础结构已弃用。 因此，为版本 1 数据工厂配置的现有警报不再有效。 v1 数据工厂的现有警报不会自动迁移。 你必须在新的警报基础结构上重新创建这些警报。 登录到 Azure门户并选择“监视器”，针对指标（如失败的运行或成功的运行）为版本 1 数据工厂创建新的警报。
+> Azure 数据工厂版本 1 现在使用新的 [Azure Monitor 警报基础结构](../../azure-monitor/alerts/alerts-metric.md)。 旧警报基础结构已弃用。 因此，为版本 1 数据工厂配置的现有警报不再有效。 v1 数据工厂的现有警报不会自动迁移。 你必须在新的警报基础结构上重新创建这些警报。 登录到 Azure门户并选择“监视器”，针对指标（如失败的运行或成功的运行）为版本 1 数据工厂创建新的警报。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 

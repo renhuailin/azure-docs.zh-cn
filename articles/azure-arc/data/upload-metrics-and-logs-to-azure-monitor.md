@@ -10,12 +10,12 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 zone_pivot_groups: client-operating-system-macos-and-linux-windows-powershell
-ms.openlocfilehash: 66b10efb6ca93bc6b4dd67d700daaf1f9049de68
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: ac9c8efbe29bf1420a94d486b650758cc22bec2f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183424"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575758"
 ---
 # <a name="upload-usage-data-metrics-and-logs-to-azure-monitor"></a>将使用情况数据、指标和日志上传到 Azure Monitor
 
@@ -42,18 +42,18 @@ ms.locfileid: "96183424"
 
 ## <a name="register-the-resource-provider"></a>注册资源提供程序
 
-在将指标或用户数据上传到 Azure 之前，需要确保 Azure 订阅已 `Microsoft.AzureData` 注册了资源提供程序。
+在将指标或用户数据上传到 Azure 之前，需要确保 Azure 订阅已 `Microsoft.AzureArcData` 注册了资源提供程序。
 
 若要验证资源提供程序，请运行以下命令：
 
 ```azurecli
-az provider show -n Microsoft.AzureData -o table
+az provider show -n Microsoft.AzureArcData -o table
 ```
 
 如果你的订阅中当前未注册资源提供程序，则可以注册它。 若要注册，请运行以下命令。  完成此命令可能需要一到两分钟的时间。
 
 ```azurecli
-az provider register -n Microsoft.AzureData --wait
+az provider register -n Microsoft.AzureArcData --wait
 ```
 
 ## <a name="create-service-principal"></a>创建服务主体
@@ -193,7 +193,7 @@ az role assignment create --assignee <appId> --role 'Contributor' --scope subscr
 
 在预览期间，此过程在夜间发生。 一般原则是每天仅上载一次使用。 当在同一个24小时内将使用情况信息导出并上传多次时，只 Azure 门户中的资源清单进行更新，而不会更新资源使用情况。
 
-对于上传指标，Azure monitor 只接受过去30分钟的数据 ([了解更多](../../azure-monitor/platform/metrics-store-custom-rest-api.md#troubleshooting)) 。 上传指标的指导是在创建导出文件后立即上载指标，以便查看 Azure 门户中的整个数据集。 例如，如果在 2:00 PM 导出指标，并在 2:50 PM 运行上传命令。 由于 Azure Monitor 仅接受过去30分钟的数据，因此你可能在门户中看不到任何数据。 
+对于上传指标，Azure monitor 只接受过去30分钟的数据 ([了解更多](../../azure-monitor/essentials/metrics-store-custom-rest-api.md#troubleshooting)) 。 上传指标的指导是在创建导出文件后立即上载指标，以便查看 Azure 门户中的整个数据集。 例如，如果在 2:00 PM 导出指标，并在 2:50 PM 运行上传命令。 由于 Azure Monitor 仅接受过去30分钟的数据，因此你可能在门户中看不到任何数据。 
 
 ## <a name="next-steps"></a>后续步骤
 

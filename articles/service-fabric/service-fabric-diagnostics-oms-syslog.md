@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: srrengar
-ms.openlocfilehash: fe31c6fdca3651bfe56e798b30d50c9f047c680b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6a98a833baefa9b1c2d1ebd9ff8147206c2106bf
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86258631"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570199"
 ---
 # <a name="service-fabric-linux-cluster-events-in-syslog"></a>Syslog 中的 Service Fabric Linux 群集事件
 
@@ -75,7 +75,7 @@ SyslogConsumer 使用 `Local0` 设施写入所有平台事件。 更改 config �
 ```
 
 下面是需要说明的更改
-1. 在 Common 部分中，有一个名为 `LinuxStructuredTracesEnabled` 的新参数。 这就要求在将 Linux 事件发送到 Syslog 时，将它们组织起来并串行化。****
+1. 在 Common 部分中，有一个名为 `LinuxStructuredTracesEnabled` 的新参数。 这就要求在将 Linux 事件发送到 Syslog 时，将它们组织起来并串行化。
 2. 在 Diagnostics 部分中，添加了一个新的 ConsumerInstance：SyslogConsumer。 这就告诉平台还有另一个事件使用者。 
 3. 新部分 SyslogConsumer 需要将 `IsEnabled` 设为 `true`。 它已配置为自动使用 Local0 设施。 你可以添加另一个参数来替代该设置。
 
@@ -87,7 +87,7 @@ SyslogConsumer 使用 `Local0` 设施写入所有平台事件。 更改 config �
 ```
 
 ## <a name="azure-monitor-logs-integration"></a>Azure Monitor 日志集成
-可以使用 Azure Monitor 日志等监视工具来读取这些 Syslog 事件。 你可以按照[说明].(../azure-monitor/learn/quick-create-workspace.md)，使用 Azure 市场创建一个 Log Analytics 工作区。还需向群集添加 Log Analytics 代理，以向该工作区收集和发送该数据。 这正是用于收集性能计数器的同一个代理。 
+可以使用 Azure Monitor 日志等监视工具来读取这些 Syslog 事件。 可以通过使用以下 [说明]，使用 Azure Marketplace 创建 Log Analytics 工作区。 (。/azure-monitor/logs/quick-create-workspace.md) 还需要将 Log Analytics 代理添加到群集，以便收集此数据并将其发送到工作区。 这正是用于收集性能计数器的同一个代理。 
 
 1. 导航到`Advanced Settings`边栏选项卡
 
@@ -113,6 +113,6 @@ SyslogConsumer 使用 `Local0` 设施写入所有平台事件。 更改 config �
 
 ## <a name="next-steps"></a>后续步骤
 * [将 Log Analytics 代理部署到节点上](service-fabric-diagnostics-oms-agent.md)，以收集性能计数器、docker 统计信息和容器日志
-* 掌握 Azure Monitor 日志中提供的[日志搜索和查询](../azure-monitor/log-query/log-query-overview.md)功能
-* [使用视图设计器在 Azure Monitor 日志中创建自定义视图](../azure-monitor/platform/view-designer.md)
-* 参考如何[将 Syslog 与 Azure Monitor 日志集成](../azure-monitor/platform/data-sources-syslog.md)。
+* 掌握 Azure Monitor 日志中提供的[日志搜索和查询](../azure-monitor/logs/log-query-overview.md)功能
+* [使用视图设计器在 Azure Monitor 日志中创建自定义视图](../azure-monitor/visualize/view-designer.md)
+* 参考如何[将 Syslog 与 Azure Monitor 日志集成](../azure-monitor/agents/data-sources-syslog.md)。

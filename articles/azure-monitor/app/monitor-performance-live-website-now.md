@@ -4,12 +4,12 @@ description: 在不重新部署网站的情况下监视网站性能。 使用托
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 53dbcc341fdd4bc194d34d40cdd2a975df496376
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 79e14c171adde89c43c5ea82a60db39133157293
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186297"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576438"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-codeless-attach"></a>在运行时使用 Application Insights 无代码附加检测 Web 应用
 
@@ -93,7 +93,7 @@ ms.locfileid: "96186297"
 
 - 确认 applicationInsights.config 文件在目标应用目录中并且包含 ikey。
 
-- 如果怀疑缺失数据，可在 [Analytics](../log-query/log-analytics-tutorial.md) 中运行查询，列出目前正在发送遥测数据的所有云角色。
+- 如果怀疑缺失数据，可在 [Analytics](../logs/log-analytics-tutorial.md) 中运行查询，列出目前正在发送遥测数据的所有云角色。
   ```Kusto
   union * | summarize count() by cloud_RoleName, cloud_RoleInstance
   ```
@@ -320,9 +320,9 @@ Application Insights SDK 版本 2.4 是[支持 .NET 4.0 的最新版本](https:/
 
 查看遥测：
 
-* [浏览指标](../platform/metrics-charts.md)，以便监视性能和使用情况
+* [浏览指标](../essentials/metrics-charts.md)，以便监视性能和使用情况
 * [搜索事件和日志][diagnostic]以诊断问题
-* [分析](../log-query/log-query-overview.md)，以便进行更高级的查询
+* [分析](../logs/log-query-overview.md)，以便进行更高级的查询
 
 添加更多遥测：
 

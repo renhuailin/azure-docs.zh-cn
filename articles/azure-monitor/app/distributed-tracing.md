@@ -7,12 +7,12 @@ author: nikmd23
 ms.author: nimolnar
 ms.date: 09/17/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 2ee41fc9066aa4cf4775d4998b7e809e45519512
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: a47b41a8b7f4e18be58c32c97cf279b9229f26da
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96904306"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579510"
 ---
 # <a name="what-is-distributed-tracing"></a>什么是分布式跟踪？
 
@@ -37,7 +37,7 @@ Azure Monitor 还提供[应用程序映射](./app-map.md)视图，该视图聚�
 * [.NET](asp-net.md)
 * [.NET Core](asp-net-core.md)
 * [Java](./java-in-process-agent.md)
-* [Node.js](../learn/nodejs-quick-start.md)
+* [Node.js](../app/nodejs-quick-start.md)
 * [JavaScript](./javascript.md)
 * [Python](opencensus-python.md)
 
@@ -57,5 +57,5 @@ OpenCensus 网站保留了 [Python](https://opencensus.io/api/python/trace/usage
 
 * [OpenCensus Python 使用指南](https://opencensus.io/api/python/trace/usage.html)
 * [应用程序映射](./app-map.md)
-* [端到端性能监视](../learn/tutorial-performance.md)
+* [端到端性能监视](../app/tutorial-performance.md)
 

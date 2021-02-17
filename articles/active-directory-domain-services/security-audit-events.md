@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
 ms.author: justinha
-ms.openlocfilehash: 13bdc8797af8facaa73d3e43ecfbe504a6bd1dc2
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: caf46850b3d8d6946225575b8a9a732a90847482
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96618869"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574133"
 ---
 # <a name="enable-security-audits-for-azure-active-directory-domain-services"></a>为 Azure Active Directory 域服务启用安全审核
 
@@ -40,7 +40,7 @@ Azure Active Directory 域服务 (Azure AD DS) 安全审核允许 Azure 将安�
 |:---|:---|
 |Azure 存储| 如果你的主要需求是出于存档目的存储安全审核事件，则应使用此目标。 其他目标可用于存档目的，但是这些目标提供的功能超出了存档的主要需求。 <br /><br />在启用 Azure AD DS 安全审核事件之前，首先[创建 Azure 存储帐户](../storage/common/storage-account-create.md)。|
 |Azure 事件中心| 当主要需求是与其他软件（如数据分析软件或安全信息和事件管理 (SIEM) 软件）共享安全审核事件时，应使用此目标。<br /><br />在启用 Azure AD DS 安全审核事件之前，[使用 Azure 门户创建事件中心](../event-hubs/event-hubs-create.md)|
-|Azure Log Analytics 工作区| 当你的主要需求是直接从 Azure 门户分析和查看安全审核时，应使用此目标。<br /><br />在启用 Azure AD DS 安全审核事件之前，[在 Azure 门户中创建 Log Analytics 工作区](../azure-monitor/learn/quick-create-workspace.md)。|
+|Azure Log Analytics 工作区| 当你的主要需求是直接从 Azure 门户分析和查看安全审核时，应使用此目标。<br /><br />在启用 Azure AD DS 安全审核事件之前，[在 Azure 门户中创建 Log Analytics 工作区](../azure-monitor/logs/quick-create-workspace.md)。|
 
 ## <a name="enable-security-audit-events-using-the-azure-portal"></a>使用 Azure 门户启用安全审核事件
 
@@ -100,7 +100,7 @@ Azure Active Directory 域服务 (Azure AD DS) 安全审核允许 Azure 将安�
         > [!IMPORTANT]
         > 请确保对事件中心命名空间而不是对事件中心本身设置授权规则。
 
-    * **Azure Log Analytics 工作区** - [使用 Azure PowerShell 创建 Log Analytics 工作区](../azure-monitor/platform/powershell-workspace-configuration.md)。
+    * **Azure Log Analytics 工作区** - [使用 Azure PowerShell 创建 Log Analytics 工作区](../azure-monitor/logs/powershell-workspace-configuration.md)。
 
 1. 使用 [Get-AzResource](/powershell/module/Az.Resources/Get-AzResource) cmdlet 获取 Azure AD DS 托管域的资源 ID。 创建名为 $aadds.ResourceId 的变量来保存值：
 
@@ -141,9 +141,9 @@ Azure Active Directory 域服务 (Azure AD DS) 安全审核允许 Azure 将安�
 Log Analytic 工作区使你可以使用 Azure Monitor 和 Kusto 查询语言来查看和分析安全审核事件。 此查询语言专为只读使用而设计，它具有强大的分析功能和易于阅读的语法。 有关 Kusto 查询语言入门的详细信息，请参阅以下文章：
 
 * [Azure Monitor 文档](../azure-monitor/index.yml)
-* [Azure Monitor 中的 Log Analytics 入门](../azure-monitor/log-query/log-analytics-tutorial.md)
-* [Azure Monitor 中的日志查询入门](../azure-monitor/log-query/get-started-queries.md)
-* [创建和共享 Log Analytics 数据的仪表板](../azure-monitor/learn/tutorial-logs-dashboards.md)
+* [Azure Monitor 中的 Log Analytics 入门](../azure-monitor/logs/log-analytics-tutorial.md)
+* [Azure Monitor 中的日志查询入门](../azure-monitor/logs/get-started-queries.md)
+* [创建和共享 Log Analytics 数据的仪表板](../azure-monitor/visualize/tutorial-logs-dashboards.md)
 
 下面的示例查询可用于从 Azure AD DS 开始分析安全审核事件。
 

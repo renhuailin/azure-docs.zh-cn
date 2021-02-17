@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: 81003be986524b94e9c4487cd0d8606540445d16
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 5b9e7938f404a37672fe8d13725b1e64d665bf18
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94542076"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576273"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-mysql"></a>使用 Azure 门户设置针对 Azure Database for MySQL 指标的警报 
 
@@ -25,8 +25,8 @@ ms.locfileid: "94542076"
 * 调用 Webhook
 
 可使用以下项配置并获取预警规则相关信息：
-* [Azure 门户](../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
-* [Azure CLI](../azure-monitor/platform/alerts-metric.md#with-azure-cli)
+* [Azure 门户](../azure-monitor/alerts/alerts-metric.md#create-with-azure-portal)
+* [Azure CLI](../azure-monitor/alerts/alerts-metric.md#with-azure-cli)
 * [Azure 监视器 REST API](/rest/api/monitor/metricalerts)
 
 ## <a name="create-an-alert-rule-on-a-metric-from-the-azure-portal"></a>通过 Azure 门户针对指标创建警报规则
@@ -48,7 +48,7 @@ ms.locfileid: "94542076"
    
    :::image type="content" source="./media/howto-alert-on-metric/6-configure-signal-logic.png" alt-text="选择指标":::
 
-7. 配置警报逻辑，包括“条件”（例如，  “大于”）、“阈值”（例如，  85%）、“时间聚合”、触发警报前必须满足指标规则的“时间段”。（例如，   "过去30分钟" ) 和 **频率** 。
+7. 配置警报逻辑，包括“条件”（例如，  “大于”）、“阈值”（例如，  85%）、“时间聚合”、触发警报前必须满足指标规则的“时间段”。（例如，   “过去的 30 分钟”）、以及“频率”。
    
    完成后选择“完成”  。
 
@@ -85,5 +85,5 @@ ms.locfileid: "94542076"
 
 
 ## <a name="next-steps"></a>后续步骤
-* 了解[在警报中配置 Webhook](../azure-monitor/platform/alerts-webhooks.md)的详细信息。
-* 获取[指标集合概述](../azure-monitor/platform/data-platform.md)以确保服务可用且响应迅速。
+* 了解[在警报中配置 Webhook](../azure-monitor/alerts/alerts-webhooks.md)的详细信息。
+* 获取[指标集合概述](../azure-monitor/data-platform.md)以确保服务可用且响应迅速。

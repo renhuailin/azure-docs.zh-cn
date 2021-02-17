@@ -7,12 +7,12 @@ ms.subservice: monitoring
 ms.date: 08/20/2019
 ms.author: sarn
 ms.topic: how-to
-ms.openlocfilehash: e3e44019d09927ff700e74b713a1b02136fedbc1
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: a5e280fb562bf9bb36d0d729e5f494bd23776ec7
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98702264"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570126"
 ---
 # <a name="monitor-scheduled-events-for-your-azure-vms"></a>监视 Azure Vm 的计划事件
 
@@ -25,7 +25,7 @@ ms.locfileid: "98702264"
 
 计划事件作为 [Azure 实例元数据服务](instance-metadata-service.md)的一部分提供，该服务已在每个 Azure 虚拟机上提供。 客户可以编写自动化代码来查询其虚拟机的终结点，以查找计划性维护通知并执行缓解措施，例如，保存状态，并从轮换列表中删除其虚拟机。 我们建议生成自动化代码来记录计划事件，以便可以获取 Azure 维护事件的审核日志。 
 
-本文逐步介绍如何将维护计划事件捕获到 Log Analytics。 然后，将触发一些基本的通知操作，例如，将电子邮件发送给团队，并获取对虚拟机造成了影响的所有事件的历史视图。 对于事件聚合与自动化，我们将使用 [Log Analytics](../../azure-monitor/learn/quick-create-workspace.md)，但你可以使用任何监视解决方案来收集这些日志并触发自动化。
+本文逐步介绍如何将维护计划事件捕获到 Log Analytics。 然后，将触发一些基本的通知操作，例如，将电子邮件发送给团队，并获取对虚拟机造成了影响的所有事件的历史视图。 对于事件聚合与自动化，我们将使用 [Log Analytics](../../azure-monitor/logs/quick-create-workspace.md)，但你可以使用任何监视解决方案来收集这些日志并触发自动化。
 
 ![显示事件生命周期的示意图](./media/notifications/events.png)
 
@@ -35,7 +35,7 @@ ms.locfileid: "98702264"
 
 在本教程结束时，请不要删除组资源组。
 
-还需要[创建一个 Log Analytics 工作区](../../azure-monitor/learn/quick-create-workspace.md)，用于从可用性集中的 VM 聚合信息。
+还需要[创建一个 Log Analytics 工作区](../../azure-monitor/logs/quick-create-workspace.md)，用于从可用性集中的 VM 聚合信息。
 
 ## <a name="set-up-the-environment"></a>设置环境
 
@@ -132,7 +132,7 @@ New-AzVm `
 ## <a name="creating-an-alert-rule-with-azure-monitor"></a>使用 Azure Monitor 创建警报规则 
 
 
-将事件推送到 Log Analytics 后，可运行以下[查询](../../azure-monitor/log-query/log-analytics-tutorial.md)来查找计划事件。
+将事件推送到 Log Analytics 后，可运行以下[查询](../../azure-monitor/logs/log-analytics-tutorial.md)来查找计划事件。
 
 1. 在页面顶部选择“日志”，将以下内容粘贴到文本框中：
 

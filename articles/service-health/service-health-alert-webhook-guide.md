@@ -4,12 +4,12 @@ description: 将有关服务运行状况事件的个性化通知发送到现有�
 ms.topic: conceptual
 ms.service: service-health
 ms.date: 3/27/2018
-ms.openlocfilehash: 05b0572c89a29fddc881f9977ee437d1319e6254
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a70c4fcd01a1a95c598d980004ee60292a6cf24b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86518922"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594618"
 ---
 # <a name="use-a-webhook-to-configure-health-notifications-for-problem-management-systems"></a>使用 Webhook 为问题管理系统配置运行状况通知
 
@@ -31,7 +31,7 @@ ms.locfileid: "86518922"
 ## <a name="configure-a-custom-notification-by-using-the-service-health-webhook-payload"></a>使用服务运行状况 Webhook 有效负载配置自定义通知
 若要设置自己的自定义 Webhook 集成，需分析通过服务运行状况通知发送的 JSON 有效负载。
 
-请参阅[示例](../azure-monitor/platform/activity-log-alerts-webhook.md) `ServiceHealth` Webhook 有效负载。
+请参阅[示例](../azure-monitor/alerts/activity-log-alerts-webhook.md) `ServiceHealth` Webhook 有效负载。
 
 可以通过查看 `context.eventSource == "ServiceHealth"` 来确认它是否为服务运行状况警报。 以下属性是最相关的属性：
 - **data.context.activityLog.status**
@@ -46,7 +46,7 @@ ms.locfileid: "86518922"
 ## <a name="create-a-link-to-the-service-health-dashboard-for-an-incident"></a>针对事件创建服务运行状况仪表板的链接
 通过生成专用 URL，可在桌面或移动设备上创建服务运行状况仪表板的直接链接。 使用 *trackingId* 以及采用以下格式的 *subscriptionId* 的前三个和最后三个数字：
 
-https<i></i>://app.azure.com/h/ *&lt;trackingId&gt;* / *&lt;subscriptionId 的前三个和最后三个数字&gt;*
+https <i></i>://app.azure.com/h/ *&lt;trackingId&gt;* / *&lt;subscriptionId 的前三个和最后三个数字&gt;*
 
 例如，如果 *subscriptionId* 为 bba14129-e895-429b-8809-278e836ecdb3，*trackingId* 为 0DET-URB，则服务运行状况 URL 为：
 
@@ -98,7 +98,7 @@ https<i></i>://app.azure.com/h/0DET-URB/bbadb3
 
 执行以下步骤:
 
-1. 创建要发送的服务运行状况有效负载。 查看 [Azure 活动日志警报的 Webhook](../azure-monitor/platform/activity-log-alerts-webhook.md) 中的示例服务运行状况 Webhook 有效负载。
+1. 创建要发送的服务运行状况有效负载。 查看 [Azure 活动日志警报的 Webhook](../azure-monitor/alerts/activity-log-alerts-webhook.md) 中的示例服务运行状况 Webhook 有效负载。
 
 1. 按如下所示创建 HTTP POST 请求：
 
@@ -114,6 +114,6 @@ https<i></i>://app.azure.com/h/0DET-URB/bbadb3
 1. 转到 [PagerDuty](https://www.pagerduty.com/)，确认集成已设置成功。
 
 ## <a name="next-steps"></a>后续步骤
-- 查看[活动日志警报 webhook 架构](../azure-monitor/platform/activity-log-alerts-webhook.md)。 
+- 查看[活动日志警报 webhook 架构](../azure-monitor/alerts/activity-log-alerts-webhook.md)。 
 - 了解[服务运行状况通知](./service-notifications.md)。
-- 详细了解[操作组](../azure-monitor/platform/action-groups.md)。
+- 详细了解[操作组](../azure-monitor/alerts/action-groups.md)。

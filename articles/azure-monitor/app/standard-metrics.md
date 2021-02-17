@@ -1,20 +1,20 @@
 ---
-title: Azure 应用程序 Insights 标准指标 |Microsoft Docs
+title: Azure Application Insights 标准指标 | Microsoft Docs
 description: 本文列出了 Azure Application Insights 指标以及支持的聚合与维度。
 services: azure-monitor
 ms.topic: reference
 ms.date: 07/03/2019
 ms.subservice: application-insights
-ms.openlocfilehash: 8da719f399c0c49efd478f05a0114d85233c880f
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 0a18088fa434efa76007607c067feec107bdae57
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98732622"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572348"
 ---
 # <a name="application-insights-standard-metrics"></a>Application Insights 标准指标
 
-标准指标是在收集过程中预聚合的，它们在查询时具有更好的性能。 这使它们成为仪表板和实时警报的最佳选择。
+标准指标在收集期间会预先聚合，它们在查询时具有更好的性能。 因此它们成为仪表板和实时警报的最佳选择。
 
 ## <a name="availability-metrics"></a>可用性指标
 
@@ -137,33 +137,33 @@ ms.locfileid: "98732622"
 
 |度量单位|支持的聚合 | 支持的维度 |
 |---|---|---|---|
-|相关数据： Mb，Gb|Average、Max、Min|`Cloud role instance`|
+|依赖于数据：MB、GB|平均值、最大值、最小值|`Cloud role instance`|
 
 
 ### <a name="exception-rate-performancecountersexceptionrate"></a>异常率 (performanceCounters/exceptionRate)
 
 |度量单位|支持的聚合 | 支持的维度 |
 |---|---|---|---|
-| 计数 | Average、Max、Min | `Cloud role instance` |
+| 计数 | 平均值、最大值、最小值 | `Cloud role instance` |
 
 
 ### <a name="http-request-execution-time-performancecountersrequestexecutiontime"></a>HTTP 请求执行时间 (performanceCounters/requestExecutionTime)
 
 |度量单位|支持的聚合 | 支持的维度 |
 |---|---|---|---|
-| 毫秒 | Average、Max、Min | `Cloud role instance` |
+| 毫秒 | 平均值、最大值、最小值 | `Cloud role instance` |
 
 ### <a name="http-request-rate-performancecountersrequestspersecond"></a>HTTP 请求速率 (performanceCounters/requestsPerSecond)
 
 |度量单位|支持的聚合 | 支持的维度 |
 |---|---|---|---|
-| 每秒请求数 | Average、Max、Min | `Cloud role instance` |
+| 每秒请求数 | 平均值、最大值、最小值 | `Cloud role instance` |
 
 ### <a name="http-requests-in-application-queue-performancecountersrequestsinqueue"></a>应用程序队列中的 HTTP 请求数 (performanceCounters/requestsInQueue)
 
 |度量单位|支持的聚合 | 支持的维度 |
 |---|---|---|---|
-| 计数 | Average、Max、Min | `Cloud role instance` |
+| 计数 | 平均值、最大值、最小值 | `Cloud role instance` |
 
 
 ### <a name="process-cpu-performancecountersprocesscpupercentage"></a>进程 CPU (performanceCounters/processCpuPercentage)
@@ -172,7 +172,7 @@ ms.locfileid: "98732622"
 
 |度量单位|支持的聚合|支持的维度|
 |---|---|---|
-|百分比|Average、Max、Min| `Cloud role instance` |
+|百分比|平均值、最大值、最小值| `Cloud role instance` |
 
 
 ### <a name="process-io-rate-performancecountersprocessiobytespersecond"></a>进程 IO 速率 (performanceCounters/processIOBytesPerSecond)
@@ -221,7 +221,7 @@ ms.locfileid: "98732622"
 | 时间 | Average、Min、Max | `Cloud role instance`, `Cloud role name`, `Dependency performance`, `Dependency type`, `Is traffic synthetic`, `Result code`, `Successful call`, `Target of a dependency call` |
 
 
-### <a name="server-request-rate-requestscount"></a>请求/计数 (服务器请求速率) 
+### <a name="server-request-rate-requestscount"></a>服务器请求速率（请求数/计数）
 
 此指标反映 Web 应用程序收到的传入服务器请求数。
 
@@ -272,5 +272,5 @@ ms.locfileid: "98732622"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解 [基于日志和预先聚合的度量值](./pre-aggregated-metrics-log-metrics.md)。
-* [基于日志的指标查询和定义](../platform/app-insights-metrics.md)。
+* 了解[基于日志的指标和预聚合的指标](./pre-aggregated-metrics-log-metrics.md)。
+* [基于日志的指标查询和定义](../essentials/app-insights-metrics.md)。

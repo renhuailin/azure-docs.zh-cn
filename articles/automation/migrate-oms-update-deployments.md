@@ -5,16 +5,16 @@ services: automation
 ms.subservice: update-management
 ms.date: 07/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: a2226f55c829afa4316a92888d16f6dc68e1f931
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 2e94191e80d39e28d7ff0ffc9aa22b522fda68c1
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183594"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576025"
 ---
 # <a name="migrate-azure-monitor-logs-update-deployments-to-azure-portal"></a>将 Azure Monitor 日志更新部署迁移到 Azure 门户
 
-Operations Management Suite (OMS) 门户已被[弃用](../azure-monitor/platform/oms-portal-transition.md)。 以前在 OMS 门户中提供的用于更新管理的所有功能目前在 Azure 门户中通过 Azure Monitor 日志来提供。 本文提供了迁移到 Azure 门户所需的信息。
+Operations Management Suite (OMS) 门户已被[弃用](../azure-monitor/logs/oms-portal-transition.md)。 以前在 OMS 门户中提供的用于更新管理的所有功能目前在 Azure 门户中通过 Azure Monitor 日志来提供。 本文提供了迁移到 Azure 门户所需的信息。
 
 ## <a name="key-information"></a>重要信息
 
@@ -41,7 +41,7 @@ Operations Management Suite (OMS) 门户已被[弃用](../azure-monitor/platform
 
 ## <a name="recreate-existing-deployments"></a>重新创建现有部署
 
-在 OMS 门户中创建的所有更新部署有一个[保存的搜索结果](../azure-monitor/platform/computer-groups.md)，也称为计算机组，其名称与现有更新部署的名称相同。 保存的搜索结果包含在更新部署中计划的计算机列表。
+在 OMS 门户中创建的所有更新部署有一个[保存的搜索结果](../azure-monitor/logs/computer-groups.md)，也称为计算机组，其名称与现有更新部署的名称相同。 保存的搜索结果包含在更新部署中计划的计算机列表。
 
 :::image type="content" source="media/migrate-oms-update-deployments/oms-deployment.png" alt-text="突出显示 &quot;名称和服务器&quot; 字段的 &quot;更新部署&quot; 页的屏幕截图。":::
 
@@ -59,7 +59,7 @@ Operations Management Suite (OMS) 门户已被[弃用](../azure-monitor/platform
     | --- | --- |
     |名称 |用于标识更新部署的唯一名称。 |
     |操作系统| 选择 **Linux** 或 **Windows**。|
-    |要更新的计算机 |选择一个已保存的搜索、已导入的组或者从下拉列表中选择“计算机”并选择各个计算机。 如果选择“计算机”，则计算机的就绪状态将在“更新代理商准备情况”列中显示 。</br> 要了解在 Azure Monitor 日志中创建计算机组的不同方法，请参阅 [Azure Monitor 日志中的计算机组](../azure-monitor/platform/computer-groups.md) |
+    |要更新的计算机 |选择一个已保存的搜索、已导入的组或者从下拉列表中选择“计算机”并选择各个计算机。 如果选择“计算机”，则计算机的就绪状态将在“更新代理商准备情况”列中显示 。</br> 要了解在 Azure Monitor 日志中创建计算机组的不同方法，请参阅 [Azure Monitor 日志中的计算机组](../azure-monitor/logs/computer-groups.md) |
     |更新分类|选择所需的所有更新分类。 CentOS 不能现成地支持此功能。|
     |要排除的更新|输入要排除的更新。 对于 Windows，输入不带 **KB** 前缀的知识库文章。 对于 Linux，输入包名称或使用通配符。  |
     |计划设置|选择启动时间，对于“定期”，然后“一次”或“重复”。  | 

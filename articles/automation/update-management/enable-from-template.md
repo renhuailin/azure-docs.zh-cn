@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.topic: conceptual
 ms.date: 09/18/2020
-ms.openlocfilehash: 47c982bff45838617b9a55f9129d4dc55d58b0d2
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 95ef52acedc9171ba86110a665d08ea97c59bfbb
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99050325"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575816"
 ---
 # <a name="enable-update-management-using-azure-resource-manager-template"></a>使用 Azure 资源管理器模板启用“更新管理”
 
@@ -27,7 +27,7 @@ ms.locfileid: "99050325"
 如果已在订阅支持的区域中部署了 Log Analytics 工作区和自动化帐户，不会链接该工作区和帐户。 使用此模板可以成功创建链接并部署更新管理。
 
 >[!NOTE]
->使用 ARM 模板时，不支持创建自动化运行方式帐户。 若要从门户或 PowerShell 手动创建运行方式帐户，请参阅 [创建运行方式帐户](../create-run-as-account.md)。
+>使用 ARM 模板时，不支持创建自动化运行方式帐户。 若要从门户或使用 PowerShell 手动创建运行方式帐户，请参阅[创建运行方式帐户](../create-run-as-account.md)。
 
 完成这些步骤后，你需要为自动化帐户[配置诊断设置](../automation-manage-send-joblogs-log-analytics.md)，以将 runbook 作业状态和作业流发送到链接的 Log Analytics 工作区。
 
@@ -64,11 +64,11 @@ JSON 模板为其他参数指定默认值，这些参数将会用作环境中的
 
 如果你不熟悉 Azure 自动化和 Azure Monitor，请务必了解以下配置详细信息。 当你尝试创建、配置和使用链接到新自动化帐户的 Log Analytics 工作区时，这些信息有助于避免出错。
 
-* 查看[其他详细信息](../../azure-monitor/samples/resource-manager-workspace.md#create-a-log-analytics-workspace)以充分了解工作区配置选项，如访问控制模式、定价层、保留期和产能预留级别。
+* 查看[其他详细信息](../../azure-monitor/logs/resource-manager-workspace.md#create-a-log-analytics-workspace)以充分了解工作区配置选项，如访问控制模式、定价层、保留期和产能预留级别。
 
 * 查看[工作区映射](../how-to/region-mappings.md)，以内联方式或在参数文件中指定支持的区域。 只有某些区域支持链接订阅中的 Log Analytics 工作区和自动化帐户。
 
-* 如果刚开始使用 Azure Monitor 日志，并且尚未部署工作区，则应查看[工作区设计指南](../../azure-monitor/platform/design-logs-deployment.md)。 它将有助于了解访问控制以及建议组织采用的设计实现策略。
+* 如果刚开始使用 Azure Monitor 日志，并且尚未部署工作区，则应查看[工作区设计指南](../../azure-monitor/logs/design-logs-deployment.md)。 它将有助于了解访问控制以及建议组织采用的设计实现策略。
 
 ## <a name="deploy-template"></a>部署模板
 

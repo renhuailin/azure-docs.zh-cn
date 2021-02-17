@@ -10,12 +10,12 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 zone_pivot_groups: client-operating-system-macos-and-linux-windows-powershell
-ms.openlocfilehash: f319f912520a69a0c68f89a3d4178f63cc45ca1f
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: d7c611f1cdb5e3294e38f87c0534003813e50388
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97356542"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575687"
 ---
 # <a name="upload-metrics-to-azure-monitor"></a>将指标上载到 Azure Monitor
 
@@ -126,7 +126,7 @@ echo %SPN_AUTHORITY%
    >[!NOTE]
    >为第一次上载创建 Azure Arc 启用的数据实例后，请等待至少30分钟。
    >
-   >请确保 `upload` 此后的指标 `export` Azure Monitor 仅接受过去30分钟的指标。 [了解详细信息](../../azure-monitor/platform/metrics-store-custom-rest-api.md#troubleshooting)。
+   >请确保 `upload` 此后的指标 `export` Azure Monitor 仅接受过去30分钟的指标。 [了解详细信息](../../azure-monitor/essentials/metrics-store-custom-rest-api.md#troubleshooting)。
 
 
 如果在导出过程中看到指示 "无法获取指标" 的任何错误，请 `true` 通过运行以下命令来检查数据收集是否设置为：
@@ -199,7 +199,7 @@ watch -n 1200 ./myuploadscript.sh
 
 在预览期间，此过程在夜间发生。 一般原则是每天仅上载一次使用。 当在同一个24小时内将使用情况信息导出并上传多次时，只 Azure 门户中的资源清单进行更新，而不会更新资源使用情况。
 
-对于上传指标，Azure monitor 只接受过去30分钟的数据 ([了解更多](../../azure-monitor/platform/metrics-store-custom-rest-api.md#troubleshooting)) 。 上传指标的指导是在创建导出文件后立即上载指标，以便查看 Azure 门户中的整个数据集。 例如，如果在 2:00 PM 导出指标，并在 2:50 PM 运行上传命令。 由于 Azure Monitor 仅接受过去30分钟的数据，因此你可能在门户中看不到任何数据。 
+对于上传指标，Azure monitor 只接受过去30分钟的数据 ([了解更多](../../azure-monitor/essentials/metrics-store-custom-rest-api.md#troubleshooting)) 。 上传指标的指导是在创建导出文件后立即上载指标，以便查看 Azure 门户中的整个数据集。 例如，如果在 2:00 PM 导出指标，并在 2:50 PM 运行上传命令。 由于 Azure Monitor 仅接受过去30分钟的数据，因此你可能在门户中看不到任何数据。 
 
 ## <a name="next-steps"></a>后续步骤
 

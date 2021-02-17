@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: v-erkel
-ms.openlocfilehash: 067b12d4dcfd5ba2b730204ef680b900d79f1b72
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 40d091782f37a32b75659cd274e49798dbe527cb
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94648066"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590794"
 ---
 # <a name="manage-your-cache"></a>管理缓存
 
@@ -253,7 +253,7 @@ $
 
 ![显示上述示例缓存的统计信息的三个折线图的屏幕截图](media/hpc-cache-overview-stats.png)
 
-这些图表是 Azure 内置监视和分析工具的一部分。 可以从门户侧栏中 " **监视** " 标题下的页面获得其他工具和警报。 有关详细信息，请 [参阅 Azure 监视文档](../azure-monitor/insights/monitor-azure-resource.md#monitoring-in-the-azure-portal)的门户部分。
+这些图表是 Azure 内置监视和分析工具的一部分。 可以从门户侧栏中 " **监视** " 标题下的页面获得其他工具和警报。 有关详细信息，请 [参阅 Azure 监视文档](../azure-monitor/essentials/monitor-azure-resource.md#monitoring-in-the-azure-portal)的门户部分。
 
 ## <a name="next-steps"></a>后续步骤
 

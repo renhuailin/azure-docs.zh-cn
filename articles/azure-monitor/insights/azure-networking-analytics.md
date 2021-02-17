@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/21/2018
-ms.openlocfilehash: 19370eee9d9fa524de9beeaa85a15521580bd8e6
-ms.sourcegitcommit: 17e9cb8d05edaac9addcd6e0f2c230f71573422c
+ms.openlocfilehash: cdb43bd8b91881905b1734d0c0b36c33fb27d232
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2020
-ms.locfileid: "97707684"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577513"
 ---
 # <a name="azure-networking-monitoring-solutions-in-azure-monitor"></a>Azure Monitor 中的 Azure 网络监视解决方案
 
@@ -113,11 +113,11 @@ Set-AzDiagnosticSetting -ResourceId $gateway.ResourceId  -WorkspaceId $workspace
 
 * 集中式控制台，用于监视和故障排除 [指标](../insights/network-insights-overview.md#resource-health-and-metrics) 和日志数据。
 
-* 用于支持创建自定义丰富 [可视化效果](../platform/workbooks-overview.md#visualizations)的灵活画布。
+* 用于支持创建自定义丰富 [可视化效果](../visualize/workbooks-overview.md#visualizations)的灵活画布。
 
-* 能够通过更广泛的社区使用和 [共享工作簿模板](../platform/workbooks-overview.md#workbooks-versus-workbook-templates) 。
+* 能够通过更广泛的社区使用和 [共享工作簿模板](../visualize/workbooks-overview.md#workbooks-versus-workbook-templates) 。
 
-若要了解有关新工作簿解决方案的功能的详细信息，请参阅 [工作簿-概述](../platform/workbooks-overview.md)
+若要了解有关新工作簿解决方案的功能的详细信息，请参阅 [工作簿-概述](../visualize/workbooks-overview.md)
 
 ## <a name="migrating-from-azure-gateway-analytics-solution-to-azure-monitor-workbooks"></a>从 Azure 网关分析解决方案迁移到 Azure Monitor 工作簿
 
@@ -129,7 +129,7 @@ Set-AzDiagnosticSetting -ResourceId $gateway.ResourceId  -WorkspaceId $workspace
 > [!NOTE]
 > 所有过去的数据都已在工作簿中从初始启用点诊断设置中可用。 不需要数据传输。
 
-2. 访问应用程序网关资源的 [默认见解工作簿](#accessing-azure-application-gateway-analytics-via-azure-monitor-network-insights) 。 应用程序网关分析解决方案支持的所有现有见解都将存在于工作簿中。 可以通过添加基于指标 & 日志数据的自定义 [可视化效果](../platform/workbooks-overview.md#visualizations) 来扩展此功能。
+2. 访问应用程序网关资源的 [默认见解工作簿](#accessing-azure-application-gateway-analytics-via-azure-monitor-network-insights) 。 应用程序网关分析解决方案支持的所有现有见解都将存在于工作簿中。 可以通过添加基于指标 & 日志数据的自定义 [可视化效果](../visualize/workbooks-overview.md#visualizations) 来扩展此功能。
 
 3. 查看所有指标和日志见解后，若要从工作区清理 Azure 网关分析解决方案，可以从解决方案资源页中删除解决方案。
 
@@ -232,5 +232,5 @@ Set-AzDiagnosticSetting -ResourceId $nsg.ResourceId  -WorkspaceId $workspaceId -
 [!INCLUDE [log-analytics-troubleshoot-azure-diagnostics](../../../includes/log-analytics-troubleshoot-azure-diagnostics.md)]
 
 ## <a name="next-steps"></a>后续步骤
-* 使用 [Azure Monitor 中的日志查询](../log-query/log-query-overview.md)查看详细的 Azure 诊断数据。
+* 使用 [Azure Monitor 中的日志查询](../logs/log-query-overview.md)查看详细的 Azure 诊断数据。
 

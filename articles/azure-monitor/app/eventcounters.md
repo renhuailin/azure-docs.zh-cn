@@ -4,28 +4,28 @@ description: 监视 Application Insights 中的系统和自定义的 .NET/.NET C
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a9af36f3c81ee52b41a8eed875c1a286b95bf838
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d1ae0937c25a68798acd87fe8b2a0a54aa765b35
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91803637"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579522"
 ---
 # <a name="eventcounters-introduction"></a>EventCounters 简介
 
 [`EventCounter`](/dotnet/core/diagnostics/event-counters) 用于发布和使用计数器或统计信息的 .NET/.NET Core 机制。 所有 OS 平台（Windows、Linux 和 macOS）都支持 EventCounters。 可以将其视为仅在 Windows 系统中受支持的 [PerformanceCounters](/dotnet/api/system.diagnostics.performancecounter) 的等效跨平台。
 
-尽管用户可以发布任何自定义 `EventCounters` 以满足其需求，但 .Net Core 3.0 和更高版本的运行时默认情况下会发布一组这些计数器。 本文档将指导你完成 `EventCounters` 在 Azure 应用程序 Insights 中收集和查看 (系统定义的或用户定义的) 所需的步骤。
+尽管用户可以根据需要发布任何自定义 `EventCounters`，但 .NET Core 3.0 运行时及更高版本默认会发布一组此类计数器。 该文档将指导你完成在 Azure Application Insights 中收集和查看 `EventCounters`（系统定义的或用户定义的）所需的步骤。
 
 ## <a name="using-application-insights-to-collect-eventcounters"></a>使用 Application Insights 收集 EventCounters
 
-Application Insights 支持 `EventCounters` 通过其 `EventCounterCollectionModule` （新发布的 NuGet 包 [EventCounterCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EventCounterCollector)的一部分）进行收集。 使用 [AspNetCore](asp-net-core.md) 或 [WorkerService](worker-service.md) 时，将自动启用 `EventCounterCollectionModule`。 `EventCounterCollectionModule` 会以不可配置的收集频率（60 秒）收集计数器。 收集 EventCounters 时，不需要具备特殊的权限。
+Application Insights 支持使用 `EventCounterCollectionModule` 来收集 `EventCounters`，新发布的 NuGet 包 [Microsoft.ApplicationInsights.EventCounterCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EventCounterCollector) 中包含该模块。 使用 [AspNetCore](asp-net-core.md) 或 [WorkerService](worker-service.md) 时，将自动启用 `EventCounterCollectionModule`。 `EventCounterCollectionModule` 会以不可配置的收集频率（60 秒）收集计数器。 收集 EventCounters 时，不需要具备特殊的权限。
 
 ## <a name="default-counters-collected"></a>已收集默认计数器
 
-从2.15.0 版本的 [ASPNETCORE sdk](asp-net-core.md) 或 [WorkerService sdk](worker-service.md)开始，默认情况下不收集任何计数器。 模块本身已启用，因此用户只需添加所需的计数器即可收集这些计数器。
+从 [AspNetCore SDK](asp-net-core.md) 或 [WorkerService SDK](worker-service.md) 的 2.15.0 版本开始，默认情况下不收集任何计数器。 模块本身已被启用，因此用户只需想向其添加所需的计数器即可收集它们。
 
-若要获取由 .NET 运行时发布的已知计数器列表，请参阅 [可用计数器](/dotnet/core/diagnostics/event-counters#available-counters) 文档。
+若要获取由 .NET 运行时发布的常用计数器列表，请参阅[可用计数器](/dotnet/core/diagnostics/event-counters#available-counters)文档。
 
 ## <a name="customizing-counters-to-be-collected"></a>自定义要收集的计数器
 
@@ -59,7 +59,7 @@ Application Insights 支持 `EventCounters` 通过其 `EventCounterCollectionMod
 
 ## <a name="disabling-eventcounter-collection-module"></a>禁用 EventCounter 收集模块
 
-`EventCounterCollectionModule` 可以使用禁用 `ApplicationInsightsServiceOptions` 。 下面显示了使用 ASP.NET Core SDK 的示例。
+可以使用 `ApplicationInsightsServiceOptions` 禁用 `EventCounterCollectionModule`。 下面显示了使用 ASP.NET Core SDK 时的示例。
 
 ```csharp
     using Microsoft.ApplicationInsights.AspNetCore.Extensions;
@@ -88,14 +88,14 @@ Application Insights 支持 `EventCounters` 通过其 `EventCounterCollectionMod
 
 ## <a name="event-counters-in-metric-explorer"></a>Metric Explorer 中的事件计数器
 
-若要在 [Metric Explorer](../platform/metrics-charts.md) 中查看 EventCounter 指标，请选择 Application Insights 资源，然后选择基于日志的指标作为指标命名空间。 EventCounter 指标随即显示在“自定义”类别下。
+若要在 [Metric Explorer](../essentials/metrics-charts.md) 中查看 EventCounter 指标，请选择 Application Insights 资源，然后选择基于日志的指标作为指标命名空间。 EventCounter 指标随即显示在“自定义”类别下。
 
 > [!div class="mx-imgBorder"]
 > ![Application Insights 指标资源管理器中报告的事件计数器](./media/event-counters/metrics-explorer-counter-list.png)
 
 ## <a name="event-counters-in-analytics"></a>Analytics 中的事件计数器
 
-还可以在 [Analytics](../log-query/log-query-overview.md) 的“customMetrics”表中搜索和显示事件计数器报表。
+还可以在 [Analytics](../logs/log-query-overview.md) 的“customMetrics”表中搜索和显示事件计数器报表。
 
 例如，运行以下查询，以查看收集了哪些计数器并可用于查询：
 
@@ -121,7 +121,7 @@ customMetrics
 与其他遥测一样，customMetrics 同样也具有列 `cloud_RoleInstance`，指示正在其上运行应用的主机服务器实例的标识。 上述查询显示每个实例的计数器值，并可用于比较不同服务器实例的性能。
 
 ## <a name="alerts"></a>警报
-与其他指标一样，可以[设置警报](../platform/alerts-log.md)以便在事件计数器超出指定的限制时收到警报。 打开“警报”窗格，并单击“添加警报”。
+与其他指标一样，可以[设置警报](../alerts/alerts-log.md)以便在事件计数器超出指定的限制时收到警报。 打开“警报”窗格，并单击“添加警报”。
 
 ## <a name="frequently-asked-questions"></a>常见问题
 

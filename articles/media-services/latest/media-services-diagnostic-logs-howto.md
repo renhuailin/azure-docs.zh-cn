@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 1d9252a5fdf7b1c68c1bb64bd22ede8640184a0c
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 3093d20fbe0a1ded68e34e816b7fc865a237ad92
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98953948"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576322"
 ---
 # <a name="monitor-media-services-diagnostic-logs"></a>监视媒体服务诊断日志
 
@@ -183,9 +183,9 @@ az monitor diagnostic-settings create --name amsv3diagnostic \
 
 ## <a name="see-also"></a>另请参阅
 
-* [Azure Monitor 指标](../../azure-monitor/platform/data-platform.md)
-* [Azure Monitor 诊断日志](../../azure-monitor/platform/platform-logs-overview.md)
-* [如何从 Azure 资源收集和使用日志数据](../../azure-monitor/platform/platform-logs-overview.md)
+* [Azure Monitor 指标](../../azure-monitor/data-platform.md)
+* [Azure Monitor 诊断日志](../../azure-monitor/essentials/platform-logs-overview.md)
+* [如何从 Azure 资源收集和使用日志数据](../../azure-monitor/essentials/platform-logs-overview.md)
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c2364eae0d04da8f8e6fe38ae80db7adb8666ce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ae802038626a1fbf8d533800a0b8eb43c4565e8c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89049411"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574178"
 ---
 # <a name="conditional-access-insights-and-reporting"></a>条件访问见解和报告
 
@@ -43,7 +43,7 @@ ms.locfileid: "89049411"
 
 如果还没有将 Azure AD 日志与 Azure Monitor 日志集成，则需要在加载工作簿之前按照以下步骤操作：  
 
-1. [在 Azure Monitor 中创建 Log Analytics 工作区](../../azure-monitor/learn/quick-create-workspace.md)。
+1. [在 Azure Monitor 中创建 Log Analytics 工作区](../../azure-monitor/logs/quick-create-workspace.md)。
 1. [将 Azure AD 日志与 Azure Monitor 日志集成](../reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)。
 
 ## <a name="how-it-works"></a>工作原理 

@@ -5,18 +5,18 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020, devx-track-azurecli, devx-track-azurepowershell
 ms.date: 05/13/2020
-ms.openlocfilehash: 5f849248021de3c17b69517d214f6f3fd6e4ee3a
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: b81a2021cabefd9587d448aa236e7e87bc254741
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98945634"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590823"
 ---
 # <a name="use-azure-monitor-logs-to-monitor-hdinsight-clusters"></a>使用 Azure Monitor 日志监视 HDInsight 群集
 
 了解如何启用 Azure Monitor 日志监视 HDInsight 中的 Hadoop 群集操作。 以及如何添加 HDInsight 监视解决方案。
 
-[Azure Monitor 日志](../azure-monitor/log-query/log-query-overview.md) 是用来监视云和本地环境的 Azure Monitor 服务。 该监视服务用于维持上述环境的可用性和性能。 它将收集云、本地环境和其他监视工具中由资源生成的数据。 而数据用于提供跨多个源的分析。
+[Azure Monitor 日志](../azure-monitor/logs/log-query-overview.md) 是用来监视云和本地环境的 Azure Monitor 服务。 该监视服务用于维持上述环境的可用性和性能。 它将收集云、本地环境和其他监视工具中由资源生成的数据。 而数据用于提供跨多个源的分析。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -24,7 +24,7 @@ ms.locfileid: "98945634"
 
 ## <a name="prerequisites"></a>先决条件
 
-* Log Analytics 工作区。 可将此工作区视为独特的 Azure Monitor 日志环境，包含自身的数据存储库、数据源和解决方案。 有关说明，请参阅[创建 Log Analytics 工作区](../azure-monitor/learn/quick-collect-azurevm.md#create-a-workspace)。
+* Log Analytics 工作区。 可将此工作区视为独特的 Azure Monitor 日志环境，包含自身的数据存储库、数据源和解决方案。 有关说明，请参阅[创建 Log Analytics 工作区](../azure-monitor/vm/quick-collect-azurevm.md#create-a-workspace)。
 
 * 一个 Azure HDInsight 群集。 当前，可以将 Azure Monitor 日志与以下 HDInsight 群集类型配合使用：
 
@@ -144,7 +144,7 @@ HDInsight 提供特定于群集的管理解决方案，可为 Azure Monitor 日�
 
 ## <a name="configuring-performance-counters"></a>配置性能计数器
 
-Azure monitor 支持收集并分析群集中节点的性能指标。 有关详细信息，请参阅 [Azure Monitor 中的 Linux 性能数据源](../azure-monitor/platform/data-sources-performance-counters.md#linux-performance-counters)。
+Azure monitor 支持收集并分析群集中节点的性能指标。 有关详细信息，请参阅 [Azure Monitor 中的 Linux 性能数据源](../azure-monitor/agents/data-sources-performance-counters.md#linux-performance-counters)。
 
 ## <a name="cluster-auditing"></a>群集审核
 

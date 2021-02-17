@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/19/2020
 ms.author: kumud
-ms.openlocfilehash: a8c38f4e84a6a653c3a4d887c82340409fc363af
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 642a9a9f798492d85ee2a9784a1fe5ad4f854d58
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98220586"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574130"
 ---
 # <a name="create-change-or-delete-a-route-table"></a>创建、更改或删除路由表
 
@@ -52,7 +52,7 @@ Azure 自动在 Azure 子网、虚拟网络与本地网络之间路由流量。 
     1. 输入路由表的名称。
     1. 选择“订阅”。
     1. 选择现有的资源组，或选择“新建”以创建新的资源组。 
-    1. 选择“位置”。
+    1. 选择“位置”  。
     1. 如果你计划将路由表与通过 VPN 网关连接到本地网络的虚拟网络中的子网相关联，并且不希望将本地路由传播到子网中的网络接口，请将“虚拟网络网关路由传播”设置为“已禁用” 。
 
 1. 选择“创建”以创建新的路由表。
@@ -85,7 +85,7 @@ Azure 自动在 Azure 子网、虚拟网络与本地网络之间路由流量。 
 
 若要详细了解常见的 Azure 设置，请参阅以下信息：
 
-- [活动日志](../azure-monitor/platform/platform-logs-overview.md)
+- [活动日志](../azure-monitor/essentials/platform-logs-overview.md)
 - [访问控制 (IAM)](../role-based-access-control/overview.md)
 - [标记](../azure-resource-manager/management/tag-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - [锁](../azure-resource-manager/management/lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
