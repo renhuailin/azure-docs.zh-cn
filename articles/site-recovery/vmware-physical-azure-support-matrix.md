@@ -3,12 +3,12 @@ title: Azure Site Recovery 中的 VMware/物理灾难恢复支持列表
 description: 汇总了使用 Azure Site Recovery 将 VMware VM 和物理服务器灾难恢复到 Azure 的支持。
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: f684f57ed1acb5c48694196b4e19de809c98dc9f
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: aecc7ccb6e633fc9c27b254f98931d682fa3d21b
+ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100102251"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100534663"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>将 VMware VM 和物理服务器灾难恢复到 Azure 时的支持矩阵
 
@@ -59,7 +59,7 @@ IP 地址类型 | 静态
 端口 | 443，用于控制通道协调<br/>9443，用于数据传输
 
 > [!NOTE]
-操作系统必须安装有英语区域设置。 区域设置安装后的转换可能会导致潜在的问题。
+在安装操作系统时必须使用英语区域设置。 在安装后转换区域设置可能会导致潜在问题。
 
 ## <a name="replicated-machines"></a>复制的计算机
 
@@ -133,7 +133,7 @@ Debian 7 | [9.36](https://support.microsoft.com/help/4578241/)、 [9.37](https:/
 Debian 8 | [9.36](https://support.microsoft.com/help/4578241/)、 [9.37](https://support.microsoft.com/help/4582666/)、 [9.38](https://support.microsoft.com/help/4590304/)、 [9.39](https://support.microsoft.com/help/4597409/)、 [9.40](https://support.microsoft.com/en-us/topic/update-rollup-53-for-azure-site-recovery-060268ef-5835-bb49-7cbc-e8c1e6c6e12a)  | 3.16.0-4-amd64 到 3.16.0-11-amd64、4.9.0-0.bpo.4-amd64 到 4.9.0-0.bpo.11-amd64 |
 |||
 Debian 9.1 | [9.40](https://support.microsoft.com/en-us/topic/update-rollup-53-for-azure-site-recovery-060268ef-5835-bb49-7cbc-e8c1e6c6e12a) | 4.9.0-1-amd64 到 4.9.0-14-amd64 </br> 4.19.0 旁 1/-0-amd64 到4.19.0 旁 1/-0. bpo </br> 4.19.0 旁 1/-0. bpo-amd64 到4.19.0 旁 1/-0. bpo-amd64 </br>
-Debian 9.1 | [9.39](https://support.microsoft.com/help/4597409/) | 4.9.0-1-amd64 到 4.9.0-14-amd64 </br> 4.19.0 旁 1/-0-amd64 到4.19.0 旁 1/-0. bpo </br> 4.19.0 旁 1/-0. bpo-amd64 到4.19.0 旁 1/-0. bpo-amd64 </br> 
+Debian 9.1 | [9.39](https://support.microsoft.com/help/4597409/) | 4.9.0-1-amd64 到 4.9.0-14-amd64 </br> 4.19.0-0.bpo.1-amd64 到 4.19.0-0.bpo.12-amd64 </br> 4.19.0-0.bpo.1-cloud-amd64 到 4.19.0-0.bpo.12-cloud-amd64 </br> 
 Debian 9.1 | [9.38](https://support.microsoft.com/help/4590304/) | 4.9.0-1-amd64 到 4.9.0-13-amd64 </br> 4.19.0-0.bpo.1-amd64 到 4.19.0-0.bpo.11-amd64 </br> 4.19.0-0.bpo.1-cloud-amd64 到 4.19.0-0.bpo.11-cloud-amd64 </br> 
 Debian 9.1 | [9.37](https://support.microsoft.com/help/4582666/) | 4.9.0-3-amd64 到 4.9.0-13-amd64、4.19.0-0.bpo.6-amd64 到 4.19.0-0.bpo.10-amd64、4.19.0-0.bpo.6-cloud-amd64 到 4.19.0-0.bpo.10-cloud-amd64
 
@@ -237,7 +237,7 @@ Docker 磁盘配置 | 否
 包含 > 4 TB 的条带化磁盘的来宾/服务器卷 | 是
 逻辑卷管理 (LVM)| 复杂预配 - 是 <br></br> 精简预配 - 否
 来宾/服务器 - 存储空间 | 否
-来宾/服务器-NVMe 接口 | 否
+来宾/服务器 - NVMe 接口 | 否
 来宾/服务器热添加/删除磁盘 | 否
 来宾/服务器 - 排除磁盘 | 是
 来宾/服务器多路径 (MPIO) | 否
@@ -328,6 +328,17 @@ VM 上所有磁盘的峰值数据变动量 | 54 MB/秒
 - 这是在假设存在 30% 的 I/O 重叠的情况下给出的平均数。
 - Site Recovery 能够根据重叠率、较大的写入大小和实际工作负荷 I/O 行为处理更高的吞吐量。
 - 这些数字假设通常情况下存在大约 5 分钟的积压工作。 也就是说，数据在上传后会在 5 分钟内进行处理并创建恢复点。
+
+## <a name="storage-account-limits"></a>存储帐户限制
+
+由于磁盘上的平均变动增加，存储帐户可支持的磁盘数会减少。 下表可以用作有关需要预配的存储帐户数量做出决策的指南。
+ 
+**存储帐户类型**    |    **改动 = 每个磁盘 4 MBps**    |    **改动 = 每个磁盘 8 MBps**
+---    |    ---    |    ---
+V1 存储帐户    |    600磁盘    |    300磁盘
+V2 存储帐户    |    1500磁盘    |    750磁盘
+
+请注意，上述限制仅适用于混合灾难恢复方案。
 
 ## <a name="vault-tasks"></a>保管库任务
 

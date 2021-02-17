@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 1/21/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 1d54ecdac739bbc5a072426f5bf73f71ab394159
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 5c216661e45e5ed34a95e8a56002f3ad175b089a
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100417102"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100545899"
 ---
 # <a name="enable-a-managed-identity-for-routing-azure-digital-twins-events-preview-azure-portal"></a>启用托管标识，以将 Azure 数字孪生事件路由 (预览) ： Azure 门户
 
@@ -101,9 +101,10 @@ ms.locfileid: "100417102"
     :::image type="content" source="media/how-to-enable-managed-identities/add-role-assignment-1.png" alt-text="显示事件中心的访问控制 (IAM) 页的 Azure 门户屏幕截图。&quot;+ 添加&quot; 按钮将突出显示。" lightbox="media/how-to-enable-managed-identities/add-role-assignment-1.png":::
 
 1. 在 " **添加角色分配** " 页上，填写以下值：
-    * **角色**：从下拉菜单中选择所需的角色
-    * **分配对的访问权限**：选择 **用户、组或服务主体**
-    * **选择**：在此处选择要为其分配角色的 Azure 数字孪生实例的托管标识。 托管标识的名称与实例的名称匹配，因此搜索 Azure 数字孪生实例的名称。 选择结果时，实例的标识将显示在 " **所选成员** " 部分中。
+    * **角色**：从下拉菜单中选择所需的角色。
+    * **分配访问权限**：在 " **系统分配的托管标识**" 下，选择 " **数字孪生**"。
+    * **订阅**：选择订阅。 这将显示所选订阅中的所有 Azure 数字孪生管理标识。
+    * **选择**：在此处选择要为其分配角色的 Azure 数字孪生实例的托管标识。 托管标识的名称与实例的名称相匹配，因此请选择 Azure 数字孪生实例的名称。 选择它时，实例的标识将显示在窗格底部的 " **选定成员** " 部分中。
 
     :::row:::
         :::column:::

@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.service: digital-twins
 ms.date: 07/14/2020
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 118b869cb97a7dd3ce65566a994a27d2a65a7402
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 49c790ae92537ab72fb9848ed4e57e222ef11d79
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98184928"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100545677"
 ---
 # <a name="known-issues-in-azure-digital-twins"></a>Azure 数字孪生中的已知问题
 
@@ -30,8 +30,6 @@ ms.locfileid: "98184928"
 ## <a name="missing-role-assignment-after-scripted-setup"></a>编写脚本后缺少角色分配
 
 **问题说明：** 在 [*操作方法：设置实例和身份验证 (脚本)*](how-to-set-up-instance-scripted.md)时，某些用户可能会遇到有关角色分配部分的问题。 此脚本不表示失败，但 *Azure 数字孪生数据所有者* 角色未成功分配给用户，此问题将影响在路上创建其他资源的能力。
-
-[!INCLUDE [digital-twins-role-rename-note.md](../../includes/digital-twins-role-rename-note.md)]
 
 | 这是否会影响我？ | 原因 | 解决方法 |
 | --- | --- | --- |

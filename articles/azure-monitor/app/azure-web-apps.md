@@ -4,12 +4,12 @@ description: Azure 应用服务的应用程序性能监视。 对加载和响应
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js, devx-track-dotnet
-ms.openlocfilehash: cd203c64695a9a61a93409a96f6a92b9acf9fe70
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 55682215a990643111d5813db437b1f1e4612868
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100365219"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100547224"
 ---
 # <a name="monitor-azure-app-service-performance"></a>监视 Azure 应用服务性能
 
@@ -76,7 +76,7 @@ ms.locfileid: "100365219"
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/netcore)
 
 > [!IMPORTANT]
-> 支持以下版本的 ASP.NET Core： ASP.NET Core 2.1、3.1 和5.0。 版本2.0、2.2 和3.0 已经停用，不再受支持。 请升级到 [受支持](https://dotnet.microsoft.com/platform/support/policy/dotnet-core) 的 .net Core 版本，使自动检测能够正常工作。
+> 支持以下版本的 ASP.NET Core： ASP.NET Core 2.1 和3.1。 版本2.0、2.2 和3.0 已经停用，不再受支持。 请升级到 [受支持](https://dotnet.microsoft.com/platform/support/policy/dotnet-core) 的 .net Core 版本，使自动检测能够正常工作。
 
 基于代理/扩展的监视目前不支持将 ASP.NET Core 提供的完整框架、独立部署和基于 Linux 的应用程序作为目标。 （在上述所有方案中，都可通过代码进行[手动检测](./asp-net-core.md)。）
 

@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: sudbalas
-ms.openlocfilehash: f82c7060f703aff6c19f0082454779b8fea1ba76
-ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
+ms.openlocfilehash: 552aad3e3b41bcfd55d1b57a53d8dff2080a6210
+ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100526249"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100534696"
 ---
 # <a name="secure-access-to-a-key-vault"></a>保护对密钥保管库的访问
 
@@ -182,13 +182,13 @@ Azure 基于角色的访问控制是另一种用于控制对 Azure Key Vault 数
 
 下表总结了我们的角色和应用程序的访问权限。
 
-| 角色 | 管理平面权限 | 数据平面权限 - 保管库访问策略 | 数据平面权限 - Azure RBAC（预览版）  |
+| 角色 | 管理平面权限 | 数据平面权限 - 保管库访问策略 | 数据平面权限-Azure RBAC  |
 | --- | --- | --- | --- |
-| 安全团队 | [密钥保管库参与者](../../role-based-access-control/built-in-roles.md#key-vault-contributor) | 证书：所有操作 <br> 密钥：所有操作 <br> 机密：所有操作 | [密钥保管库管理员（预览版）](../../role-based-access-control/built-in-roles.md#key-vault-administrator-preview) |
+| 安全团队 | [密钥保管库参与者](../../role-based-access-control/built-in-roles.md#key-vault-contributor) | 证书：所有操作 <br> 密钥：所有操作 <br> 机密：所有操作 | [Key Vault 管理员](../../role-based-access-control/built-in-roles.md#key-vault-administrator) |
 | 开发人员和&nbsp;操作人员 | 密钥保管库部署权限<br><br> **注意**：此权限允许已部署的 VM 从密钥保管库提取机密。 | 无 | 无 |
-| 审核人员 | 无 | 证书：list <br> 密钥：列出<br>机密：列出<br><br> **注意**：此权限让审核员能够检查日志中未发出的密钥和机密的属性（标记、激活日期、到期日期）。 | [密钥保管库读取者（预览版）](../../role-based-access-control/built-in-roles.md#key-vault-reader-preview) |
-| Azure 存储帐户 | None | 密钥：get、list、wrapKey、unwrapKey <br> | [密钥保管库加密服务加密用户](../../role-based-access-control/built-in-roles.md#key-vault-crypto-service-encryption-user-preview) |
-| 应用程序 | 无 | 机密：get、list <br> 证书：get、list | [密钥保管库读取者（预览版）](../../role-based-access-control/built-in-roles.md#key-vault-reader-preview)、[密钥保管库机密用户（预览版）](../../role-based-access-control/built-in-roles.md#key-vault-secrets-user-preview) |
+| 审核人员 | 无 | 证书：list <br> 密钥：列出<br>机密：列出<br><br> **注意**：此权限让审核员能够检查日志中未发出的密钥和机密的属性（标记、激活日期、到期日期）。 | [Key Vault 读取器](../../role-based-access-control/built-in-roles.md#key-vault-reader) |
+| Azure 存储帐户 | None | 密钥：get、list、wrapKey、unwrapKey <br> | [密钥保管库加密服务加密用户](../../role-based-access-control/built-in-roles.md#key-vault-crypto-service-encryption-user) |
+| 应用程序 | 无 | 机密：get、list <br> 证书：get、list | [Key Vault 读取器](../../role-based-access-control/built-in-roles.md#key-vault-reader)， [Key Vault 机密用户](../../role-based-access-control/built-in-roles.md#key-vault-secrets-user) |
 
 三个团队角色需要访问其他资源的权限以及密钥保管库权限。 若要部署 VM（或 Azure 应用服务的 Web 应用功能），开发人员和操作人员需要部署访问权限。 审核员需要具有对存储密钥保管库日志的存储帐户的“读取”访问权限。
 

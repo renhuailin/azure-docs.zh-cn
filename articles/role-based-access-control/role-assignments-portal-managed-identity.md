@@ -1,27 +1,27 @@
 ---
-title: 为托管标识添加角色分配 (预览) -Azure RBAC
-description: 了解如何添加角色分配，方法是从托管标识开始，然后使用 Azure 门户和 Azure 基于角色的访问控制 (Azure RBAC) 中选择作用域和角色。
+title: 将 Azure 角色分配给托管标识 (预览版) -Azure RBAC
+description: 了解如何分配 Azure 角色，方法是从托管标识开始，然后使用 Azure 门户和 Azure 基于角色的访问控制 (Azure RBAC) 中选择作用域和角色。
 services: active-directory
 author: rolyon
 manager: mtillman
 ms.service: role-based-access-control
 ms.topic: how-to
 ms.workload: identity
-ms.date: 01/11/2021
+ms.date: 02/15/2021
 ms.author: rolyon
-ms.openlocfilehash: a01246c0cf35653f4d13262183cf9df28b056c69
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 57c8c00a64996bc6223fbe7e514db9db38ccdcc2
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98122020"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100556851"
 ---
-# <a name="add-a-role-assignment-for-a-managed-identity-preview"></a>为托管标识添加角色分配（预览版）
+# <a name="assign-azure-roles-to-a-managed-identity-preview"></a> (预览将 Azure 角色分配给托管标识) 
 
-可以按照使用 [Azure 门户添加或删除 Azure 角色分配](role-assignments-portal.md)中所述，使用 "**访问控制 (IAM")** 页添加托管标识的角色分配。 在使用访问控制 (IAM) 页时，先从范围开始，然后选择托管标识和角色。 本文介绍了一种添加托管标识的角色分配的替代方法。 使用这些步骤时，先从托管标识开始，然后选择范围和角色。
+可以按照 [使用 Azure 门户分配 Azure 角色](role-assignments-portal.md)中所述，使用 "**访问控制 (IAM)** " 页将角色分配给托管标识。 在使用访问控制 (IAM) 页时，先从范围开始，然后选择托管标识和角色。 本文介绍一种为托管标识分配角色的替代方法。 使用这些步骤时，先从托管标识开始，然后选择范围和角色。
 
 > [!IMPORTANT]
-> 使用这些替代步骤为托管标识添加角色分配的功能目前以预览版提供。
+> 使用这些备用步骤将角色分配给托管标识目前为预览版。
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
 > 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
@@ -92,5 +92,5 @@ ms.locfileid: "98122020"
 ## <a name="next-steps"></a>后续步骤
 
 - [什么是 Azure 资源的托管标识？](../active-directory/managed-identities-azure-resources/overview.md)
-- [使用 Azure 门户添加或删除 Azure 角色分配](role-assignments-portal.md)
+- [使用 Azure 门户分配 Azure 角色](role-assignments-portal.md)
 - [使用 Azure 门户列出 Azure 角色分配](role-assignments-list-portal.md)

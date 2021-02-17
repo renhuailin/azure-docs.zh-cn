@@ -7,14 +7,14 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 02/01/2021
+ms.date: 02/15/2021
 ms.custom: generated
-ms.openlocfilehash: 384d00ee41f2b6bfc2e91815bfcf54819c7d9ab2
-ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
+ms.openlocfilehash: d9a2667907108cfb4c8d7a2a2c9b1558e02a9110
+ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99809366"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100535121"
 ---
 # <a name="azure-built-in-roles"></a>Azure 内置角色
 
@@ -121,9 +121,9 @@ ms.locfileid: "99809366"
 > | [HDInsight 域服务参与者](#hdinsight-domain-services-contributor) | 可以读取、创建、修改和删除 HDInsight 企业安全性套餐所需的域服务相关操作 | 8d8d5a11-05d3-4bda-a417-a08778121c7c |
 > | [Log Analytics 参与者](#log-analytics-contributor) | Log Analytics 参与者可以读取所有监视数据并编辑监视设置。 编辑监视设置包括向 VM 添加 VM 扩展、读取存储帐户密钥以便能够从 Azure 存储配置日志收集、创建和配置自动化帐户、添加解决方案以及配置所有 Azure 资源上的 Azure 诊断。 | 92aaf0da-9dab-42b6-94a3-d43ce8d16293 |
 > | [Log Analytics 读者](#log-analytics-reader) | Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置，其中包括查看所有 Azure 资源上的 Azure 诊断的配置。 | 73c42c96-874c-492b-b04d-ab87d138a893 |
-> | [监控范围 Data 陈列](#purview-data-curator) | 监控范围数据陈列可以创建、读取、修改和删除目录数据对象，并建立对象之间的关系。 此角色处于预览阶段，可能会发生更改。 | 8a3c2885-9b38-4fd2-9d99-91af537c1347 |
-> | [监控范围数据读取器](#purview-data-reader) | 监控范围数据读取器可以读取目录数据对象。 此角色处于预览阶段，可能会发生更改。 | ff100721-1b9d-43d8-af52-42b69c1272db |
-> | [监控范围数据源管理器](#purview-data-source-administrator) | 监控范围数据源管理员可以管理数据源和数据扫描。 此角色处于预览阶段，可能会发生更改。 | 200bba9e-f0c8-430f-892b-6f0794863803 |
+> | [Purview 数据管护者](#purview-data-curator) | Microsoft.Purview 数据管护者可以创建、读取、修改和删除目录数据对象，并可以建立对象之间的关系。 此角色处于预览状态，可能会发生更改。 | 8a3c2885-9b38-4fd2-9d99-91af537c1347 |
+> | [Purview 数据读取者](#purview-data-reader) | Microsoft.Purview 数据读取者可以读取目录数据对象。 此角色处于预览状态，可能会发生更改。 | ff100721-1b9d-43d8-af52-42b69c1272db |
+> | [Purview 数据源管理员](#purview-data-source-administrator) | Microsoft.Purview 数据源管理员可以管理数据源和数据扫描。 此角色处于预览状态，可能会发生更改。 | 200bba9e-f0c8-430f-892b-6f0794863803 |
 > | [架构注册表参与者（预览）](#schema-registry-contributor-preview) | 读取、写入和删除架构注册表组和架构。 | 5dffeca3-4936-4216-b2bc-10343a5abb25 |
 > | [架构注册表读取器（预览版）](#schema-registry-reader-preview) | 读取和列出架构注册表组和架构。 | 2c56ea50-c6b3-40a6-83c0-9d98858bc7d2 |
 > | 区块链 |  |  |
@@ -176,15 +176,15 @@ ms.locfileid: "99809366"
 > | [Azure Sentinel 参与者](#azure-sentinel-contributor) | Azure Sentinel 参与者 | ab8e14d6-4a74-4a29-9ba8-549422addade |
 > | [Azure Sentinel 读取者](#azure-sentinel-reader) | Azure Sentinel 读取者 | 8d289c81-5878-46d4-8554-54e1e3d8b5cb |
 > | [Azure Sentinel 响应方](#azure-sentinel-responder) | Azure Sentinel 响应方 | 3e150937-b8fe-4cfb-8069-0eaf05ecd056 |
-> | [密钥保管库管理员（预览版）](#key-vault-administrator-preview) | 对密钥保管库以及其中的所有对象（包括证书、密钥和机密）执行所有数据平面操作。 无法管理密钥保管库资源或管理角色分配。 仅适用于使用“Azure 基于角色的访问控制”权限模型的密钥保管库。 | 00482a5a-887f-4fb3-b363-3b7fe8e74483 |
-> | [密钥保管库证书管理人员（预览版）](#key-vault-certificates-officer-preview) | 对密钥保管库的证书执行任何操作（管理权限除外）。 仅适用于使用“Azure 基于角色的访问控制”权限模型的密钥保管库。 | a4417e6f-fecd-4de8-b567-7b0420556985 |
+> | [Key Vault 管理员](#key-vault-administrator) | 对密钥保管库以及其中的所有对象（包括证书、密钥和机密）执行所有数据平面操作。 无法管理密钥保管库资源或管理角色分配。 仅适用于使用“Azure 基于角色的访问控制”权限模型的密钥保管库。 | 00482a5a-887f-4fb3-b363-3b7fe8e74483 |
+> | [Key Vault 证书官员](#key-vault-certificates-officer) | 对密钥保管库的证书执行任何操作（管理权限除外）。 仅适用于使用“Azure 基于角色的访问控制”权限模型的密钥保管库。 | a4417e6f-fecd-4de8-b567-7b0420556985 |
 > | [密钥保管库参与者](#key-vault-contributor) | 管理密钥保管库，但不允许在 Azure RBAC 中分配角色，也不允许访问机密、密钥或证书。 | f25e0fa2-a7c8-4377-a976-54943a77a395 |
-> | [密钥保管库加密管理人员（预览版）](#key-vault-crypto-officer-preview) | 对密钥保管库的密钥执行任何操作（管理权限除外）。 仅适用于使用“Azure 基于角色的访问控制”权限模型的密钥保管库。 | 14b46e9e-c2b7-41b4-b07b-48a6ebf60603 |
-> | [密钥保管库加密服务加密用户（预览版）](#key-vault-crypto-service-encryption-user-preview) | 读取密钥的元数据并执行包装/解包操作。 仅适用于使用“Azure 基于角色的访问控制”权限模型的密钥保管库。 | e147488a-f6f5-4113-8e2d-b22465e65bf6 |
-> | [密钥保管库加密用户（预览版）](#key-vault-crypto-user-preview) | 使用密钥执行加密操作。 仅适用于使用“Azure 基于角色的访问控制”权限模型的密钥保管库。 | 12338af0-0e69-4776-bea7-57ae8d297424 |
-> | [密钥保管库读取者（预览版）](#key-vault-reader-preview) | 读取密钥保管库及其证书、密钥和机密的元数据。 无法读取机密内容或密钥材料等敏感值。 仅适用于使用“Azure 基于角色的访问控制”权限模型的密钥保管库。 | 21090545-7ca7-4776-b22c-e363652d74d2 |
-> | [密钥保管库机密管理人员（预览版）](#key-vault-secrets-officer-preview) | 对密钥保管库的机密执行任何操作（管理权限除外）。 仅适用于使用“Azure 基于角色的访问控制”权限模型的密钥保管库。 | b86a8fe4-44ce-4948-aee5-eccb2c155cd7 |
-> | [密钥保管库机密用户（预览版）](#key-vault-secrets-user-preview) | 读取机密内容。 仅适用于使用“Azure 基于角色的访问控制”权限模型的密钥保管库。 | 4633458b-17de-408a-b874-0445c86b69e6 |
+> | [Key Vault 加密官](#key-vault-crypto-officer) | 对密钥保管库的密钥执行任何操作（管理权限除外）。 仅适用于使用“Azure 基于角色的访问控制”权限模型的密钥保管库。 | 14b46e9e-c2b7-41b4-b07b-48a6ebf60603 |
+> | [密钥保管库加密服务加密用户](#key-vault-crypto-service-encryption-user) | 读取密钥的元数据并执行包装/展开操作。 仅适用于使用“Azure 基于角色的访问控制”权限模型的密钥保管库。 | e147488a-f6f5-4113-8e2d-b22465e65bf6 |
+> | [Key Vault 加密用户](#key-vault-crypto-user) | 使用密钥执行加密操作。 仅适用于使用“Azure 基于角色的访问控制”权限模型的密钥保管库。 | 12338af0-0e69-4776-bea7-57ae8d297424 |
+> | [Key Vault 读取器](#key-vault-reader) | 读取密钥保管库及其证书、密钥和机密的元数据。 无法读取机密内容或密钥材料等敏感值。 仅适用于使用“Azure 基于角色的访问控制”权限模型的密钥保管库。 | 21090545-7ca7-4776-b22c-e363652d74d2 |
+> | [Key Vault 秘密官员](#key-vault-secrets-officer) | 对密钥保管库的机密执行任何操作（管理权限除外）。 仅适用于使用“Azure 基于角色的访问控制”权限模型的密钥保管库。 | b86a8fe4-44ce-4948-aee5-eccb2c155cd7 |
+> | [Key Vault 机密用户](#key-vault-secrets-user) | 读取机密内容。 仅适用于使用“Azure 基于角色的访问控制”权限模型的密钥保管库。 | 4633458b-17de-408a-b874-0445c86b69e6 |
 > | [托管 HSM 参与者](#managed-hsm-contributor) | 允许管理托管的 HSM 池，但不允许对其进行访问。 | 18500a29-7fe2-46b2-a342-b16a415e101d |
 > | [安全管理员](#security-admin) | 查看和更新安全中心的权限。 与安全读取者角色具有相同的权限，还可以更新安全策略并关闭警报和建议。 | fb1c8493-542b-48eb-b624-b4c8fea62acd |
 > | [安全评估参与者](#security-assessment-contributor) | 允许你将评估推送到安全中心 | 612c2aa1-cb24-443b-ac28-3ab7272de6f5 |
@@ -502,7 +502,7 @@ ms.locfileid: "99809366"
 
 ### <a name="virtual-machine-administrator-login"></a>虚拟机管理员登录
 
-查看门户中的虚拟机，并以管理员身份登录 [了解详细信息](../active-directory/devices/howto-vm-sign-in-azure-ad-windows.md)
+在门户中查看虚拟机并以管理员身份登录 [了解详细信息](../active-directory/devices/howto-vm-sign-in-azure-ad-windows.md)
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 描述 |
@@ -2175,8 +2175,9 @@ ms.locfileid: "99809366"
 > | **DataActions** |  |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/containers/blobs/delete | 删除 Blob。 |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/containers/blobs/read | 返回 Blob 或 Blob 列表。 |
-> | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/containers/blobs/move/action | 将 Blob 从一个路径移到另一个路径 |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/containers/blobs/write | 写入到 Blob。 |
+> | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/containers/blobs/move/action | 将 Blob 从一个路径移到另一个路径 |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/containers/blobs/add/action | 返回添加 blob 内容的结果 |
 > | **NotDataActions** |  |
 > | *无* |  |
 
@@ -2200,8 +2201,9 @@ ms.locfileid: "99809366"
       "dataActions": [
         "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete",
         "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read",
+        "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write",
         "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/move/action",
-        "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write"
+        "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/add/action"
       ],
       "notDataActions": []
     }
@@ -4399,6 +4401,8 @@ ACR 隔离数据编写器
 > | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/managedInstances/read | 返回托管实例的列表，或获取指定托管实例的属性。 |
 > | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/managedInstances/azureADOnlyAuthentications/* |  |
 > | [Microsoft.Security](resource-provider-operations.md#microsoftsecurity)/sqlVulnerabilityAssessments/* |  |
+> | [/ManagedInstances/administrators/read](resource-provider-operations.md#microsoftsql) | 获取托管实例管理员的列表。 |
+> | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/servers/administrators/read | 获取特定的 Azure Active Directory 管理员对象 |
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
@@ -4461,7 +4465,9 @@ ACR 隔离数据编写器
         "Microsoft.Sql/servers/azureADOnlyAuthentications/*",
         "Microsoft.Sql/managedInstances/read",
         "Microsoft.Sql/managedInstances/azureADOnlyAuthentications/*",
-        "Microsoft.Security/sqlVulnerabilityAssessments/*"
+        "Microsoft.Security/sqlVulnerabilityAssessments/*",
+        "Microsoft.Sql/managedInstances/administrators/read",
+        "Microsoft.Sql/servers/administrators/read"
       ],
       "notActions": [],
       "dataActions": [],
@@ -4585,7 +4591,7 @@ ACR 隔离数据编写器
 }
 ```
 
-## <a name="analytics"></a>分析
+## <a name="analytics"></a>Analytics
 
 
 ### <a name="azure-event-hubs-data-owner"></a>Azure 事件中心数据所有者
@@ -5021,19 +5027,19 @@ Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置
 }
 ```
 
-### <a name="purview-data-curator"></a>监控范围 Data 陈列
+### <a name="purview-data-curator"></a>Purview 数据管护者
 
-监控范围数据陈列可以创建、读取、修改和删除目录数据对象，并建立对象之间的关系。 此角色处于预览阶段，可能会发生更改。
+Microsoft.Purview 数据管护者可以创建、读取、修改和删除目录数据对象，并可以建立对象之间的关系。 此角色处于预览状态，可能会发生更改。
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 说明 |
 > | --- | --- |
-> | [监控范围](resource-provider-operations.md#microsoftpurview)/accounts/read | 读取 Microsoft 监控范围提供程序的帐户资源。 |
+> | [Microsoft.Purview](resource-provider-operations.md#microsoftpurview)/accounts/read | 读取 Microsoft Purview 提供商的帐户资源。 |
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
-> | [监控范围](resource-provider-operations.md#microsoftpurview)/accounts/data/read | 读取数据对象。 |
-> | [监控范围](resource-provider-operations.md#microsoftpurview)/accounts/data/write | 创建、更新和删除数据对象。 |
+> | [Microsoft.Purview](resource-provider-operations.md#microsoftpurview)/accounts/data/read | 读取数据对象。 |
+> | [Microsoft.Purview](resource-provider-operations.md#microsoftpurview)/accounts/data/write | 创建、更新和删除数据对象。 |
 > | **NotDataActions** |  |
 > | *无* |  |
 
@@ -5064,18 +5070,18 @@ Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置
 }
 ```
 
-### <a name="purview-data-reader"></a>监控范围数据读取器
+### <a name="purview-data-reader"></a>Purview 数据读取者
 
-监控范围数据读取器可以读取目录数据对象。 此角色处于预览阶段，可能会发生更改。
+Microsoft.Purview 数据读取者可以读取目录数据对象。 此角色处于预览状态，可能会发生更改。
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 说明 |
 > | --- | --- |
-> | [监控范围](resource-provider-operations.md#microsoftpurview)/accounts/read | 读取 Microsoft 监控范围提供程序的帐户资源。 |
+> | [Microsoft.Purview](resource-provider-operations.md#microsoftpurview)/accounts/read | 读取 Microsoft Purview 提供商的帐户资源。 |
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
-> | [监控范围](resource-provider-operations.md#microsoftpurview)/accounts/data/read | 读取数据对象。 |
+> | [Microsoft.Purview](resource-provider-operations.md#microsoftpurview)/accounts/data/read | 读取数据对象。 |
 > | **NotDataActions** |  |
 > | *无* |  |
 
@@ -5105,19 +5111,19 @@ Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置
 }
 ```
 
-### <a name="purview-data-source-administrator"></a>监控范围数据源管理器
+### <a name="purview-data-source-administrator"></a>Purview 数据源管理员
 
-监控范围数据源管理员可以管理数据源和数据扫描。 此角色处于预览阶段，可能会发生更改。
+Microsoft.Purview 数据源管理员可以管理数据源和数据扫描。 此角色处于预览状态，可能会发生更改。
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 说明 |
 > | --- | --- |
-> | [监控范围](resource-provider-operations.md#microsoftpurview)/accounts/read | 读取 Microsoft 监控范围提供程序的帐户资源。 |
+> | [Microsoft.Purview](resource-provider-operations.md#microsoftpurview)/accounts/read | 读取 Microsoft Purview 提供商的帐户资源。 |
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
-> | [监控范围](resource-provider-operations.md#microsoftpurview)/accounts/scan/read | 读取数据源和扫描。 |
-> | [监控范围](resource-provider-operations.md#microsoftpurview)/accounts/scan/write | 创建、更新和删除数据源以及管理扫描。 |
+> | [Microsoft.Purview](resource-provider-operations.md#microsoftpurview)/accounts/scan/read | 读取数据源和扫描。 |
+> | [Microsoft.Purview](resource-provider-operations.md#microsoftpurview)/accounts/scan/write | 创建、更新和删除数据源以及管理扫描。 |
 > | **NotDataActions** |  |
 > | *无* |  |
 
@@ -7250,7 +7256,7 @@ Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置
 可以阅读写入或删除证明提供者实例 [了解详细信息](../attestation/quickstart-powershell.md)
 
 > [!div class="mx-tableFixed"]
-> | 操作 | 描述 |
+> | 操作 | 说明 |
 > | --- | --- |
 > | Microsoft.Attestation/attestationProviders/attestation/read |  |
 > | Microsoft.Attestation/attestationProviders/attestation/write |  |
@@ -7293,7 +7299,7 @@ Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置
 可以阅读证明提供者属性 [了解详细信息](../attestation/troubleshoot-guide.md)
 
 > [!div class="mx-tableFixed"]
-> | 操作 | 描述 |
+> | 操作 | 说明 |
 > | --- | --- |
 > | Microsoft.Attestation/attestationProviders/attestation/read |  |
 > | **不操作** |  |
@@ -7562,7 +7568,7 @@ Azure Sentinel 响应程序 [了解详细信息](../sentinel/roles.md)
 }
 ```
 
-### <a name="key-vault-administrator-preview"></a>密钥保管库管理员（预览版）
+### <a name="key-vault-administrator"></a>Key Vault 管理员
 
 对密钥保管库以及其中的所有对象（包括证书、密钥和机密）执行所有数据平面操作。 无法管理密钥保管库资源或管理角色分配。 仅适用于使用“Azure 基于角色的访问控制”权限模型的密钥保管库。
 
@@ -7615,13 +7621,13 @@ Azure Sentinel 响应程序 [了解详细信息](../sentinel/roles.md)
       "notDataActions": []
     }
   ],
-  "roleName": "Key Vault Administrator (preview)",
+  "roleName": "Key Vault Administrator",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }
 ```
 
-### <a name="key-vault-certificates-officer-preview"></a>密钥保管库证书管理人员（预览版）
+### <a name="key-vault-certificates-officer"></a>Key Vault 证书官员
 
 对密钥保管库的证书执行任何操作（管理权限除外）。 仅适用于使用“Azure 基于角色的访问控制”权限模型的密钥保管库。
 
@@ -7676,7 +7682,7 @@ Azure Sentinel 响应程序 [了解详细信息](../sentinel/roles.md)
       "notDataActions": []
     }
   ],
-  "roleName": "Key Vault Certificates Officer (preview)",
+  "roleName": "Key Vault Certificates Officer",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }
@@ -7737,7 +7743,7 @@ Azure Sentinel 响应程序 [了解详细信息](../sentinel/roles.md)
 }
 ```
 
-### <a name="key-vault-crypto-officer-preview"></a>密钥保管库加密管理人员（预览版）
+### <a name="key-vault-crypto-officer"></a>Key Vault 加密官
 
 对密钥保管库的密钥执行任何操作（管理权限除外）。 仅适用于使用“Azure 基于角色的访问控制”权限模型的密钥保管库。
 
@@ -7790,13 +7796,13 @@ Azure Sentinel 响应程序 [了解详细信息](../sentinel/roles.md)
       "notDataActions": []
     }
   ],
-  "roleName": "Key Vault Crypto Officer (preview)",
+  "roleName": "Key Vault Crypto Officer",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }
 ```
 
-### <a name="key-vault-crypto-service-encryption-user-preview"></a>密钥保管库加密服务加密用户（预览版）
+### <a name="key-vault-crypto-service-encryption-user"></a>密钥保管库加密服务加密用户
 
 读取密钥的元数据并执行包装/展开操作。 仅适用于使用“Azure 基于角色的访问控制”权限模型的密钥保管库。
 
@@ -7805,7 +7811,7 @@ Azure Sentinel 响应程序 [了解详细信息](../sentinel/roles.md)
 > | --- | --- |
 > | [Microsoft.EventGrid](resource-provider-operations.md#microsofteventgrid)/eventSubscriptions/write | 创建或更新事件订阅 |
 > | [Microsoft.EventGrid](resource-provider-operations.md#microsofteventgrid)/eventSubscriptions/read | 读取事件订阅 |
-> | [EventGrid](resource-provider-operations.md#microsofteventgrid)/eventSubscriptions/delete | 删除事件订阅 |
+> | [Microsoft.EventGrid](resource-provider-operations.md#microsofteventgrid)/eventSubscriptions/delete | 删除事件订阅 |
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
@@ -7839,13 +7845,13 @@ Azure Sentinel 响应程序 [了解详细信息](../sentinel/roles.md)
       "notDataActions": []
     }
   ],
-  "roleName": "Key Vault Crypto Service Encryption User (preview)",
+  "roleName": "Key Vault Crypto Service Encryption User",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }
 ```
 
-### <a name="key-vault-crypto-user-preview"></a>密钥保管库加密用户（预览版）
+### <a name="key-vault-crypto-user"></a>Key Vault 加密用户
 
 使用密钥执行加密操作。 仅适用于使用“Azure 基于角色的访问控制”权限模型的密钥保管库。
 
@@ -7894,13 +7900,13 @@ Azure Sentinel 响应程序 [了解详细信息](../sentinel/roles.md)
       "notDataActions": []
     }
   ],
-  "roleName": "Key Vault Crypto User (preview)",
+  "roleName": "Key Vault Crypto User",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }
 ```
 
-### <a name="key-vault-reader-preview"></a>密钥保管库读取者（预览版）
+### <a name="key-vault-reader"></a>Key Vault 读取器
 
 读取密钥保管库及其证书、密钥和机密的元数据。 无法读取机密内容或密钥材料等敏感值。 仅适用于使用“Azure 基于角色的访问控制”权限模型的密钥保管库。
 
@@ -7955,13 +7961,13 @@ Azure Sentinel 响应程序 [了解详细信息](../sentinel/roles.md)
       "notDataActions": []
     }
   ],
-  "roleName": "Key Vault Reader (preview)",
+  "roleName": "Key Vault Reader",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }
 ```
 
-### <a name="key-vault-secrets-officer-preview"></a>密钥保管库机密管理人员（预览版）
+### <a name="key-vault-secrets-officer"></a>Key Vault 秘密官员
 
 对密钥保管库的机密执行任何操作（管理权限除外）。 仅适用于使用“Azure 基于角色的访问控制”权限模型的密钥保管库。
 
@@ -8014,13 +8020,13 @@ Azure Sentinel 响应程序 [了解详细信息](../sentinel/roles.md)
       "notDataActions": []
     }
   ],
-  "roleName": "Key Vault Secrets Officer (preview)",
+  "roleName": "Key Vault Secrets Officer",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }
 ```
 
-### <a name="key-vault-secrets-user-preview"></a>密钥保管库机密用户（预览版）
+### <a name="key-vault-secrets-user"></a>Key Vault 机密用户
 
 读取机密内容。 仅适用于使用“Azure 基于角色的访问控制”权限模型的密钥保管库。
 
@@ -8055,7 +8061,7 @@ Azure Sentinel 响应程序 [了解详细信息](../sentinel/roles.md)
       "notDataActions": []
     }
   ],
-  "roleName": "Key Vault Secrets User (preview)",
+  "roleName": "Key Vault Secrets User",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }
@@ -8110,7 +8116,7 @@ Azure Sentinel 响应程序 [了解详细信息](../sentinel/roles.md)
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/policyAssignments/* | 创建和管理策略分配 |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/policyDefinitions/* | 创建和管理策略定义 |
-> | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/policyExemptions/* | 创建和管理策略例外 |
+> | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/policyExemptions/* | 创建和管理策略豁免 |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/policySetDefinitions/* | 创建和管理策略集 |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 创建和管理经典指标警报 |
 > | [Microsoft.Management](resource-provider-operations.md#microsoftmanagement)/managementGroups/read | 列出已通过身份验证的用户的管理组。 |
@@ -8271,9 +8277,9 @@ Azure Sentinel 响应程序 [了解详细信息](../sentinel/roles.md)
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 获取或列出资源组。 |
 > | [Microsoft.Security](resource-provider-operations.md#microsoftsecurity)/*/read | 读取安全组件和策略 |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/*/read |  |
-> | [Microsoft. Security](resource-provider-operations.md#microsoftsecurity)/iotDefenderSettings/packageDownloads/action | 获取可下载的 IoT Defender 包信息 |
-> | [Microsoft. Security](resource-provider-operations.md#microsoftsecurity)/iotDefenderSettings/downloadManagerActivation/action | 下载包含订阅配额数据的管理器激活文件 |
-> | [Microsoft. Security](resource-provider-operations.md#microsoftsecurity)/iotSensors/downloadResetPassword/action | 下载 IoT 传感器的重置密码文件 |
+> | [Microsoft.Security](resource-provider-operations.md#microsoftsecurity)/iotDefenderSettings/packageDownloads/action | 获取可下载的 IoT Defender 包信息 |
+> | [Microsoft.Security](resource-provider-operations.md#microsoftsecurity)/iotDefenderSettings/downloadManagerActivation/action | 下载包含订阅配额数据的管理器激活文件 |
+> | [Microsoft.Security](resource-provider-operations.md#microsoftsecurity)/iotSensors/downloadResetPassword/action | 下载 IoT 传感器的重置密码文件 |
 > | [Microsoft.Management](resource-provider-operations.md#microsoftmanagement)/managementGroups/read | 列出已通过身份验证的用户的管理组。 |
 > | **不操作** |  |
 > | *无* |  |
@@ -9933,7 +9939,7 @@ Azure Sentinel 响应程序 [了解详细信息](../sentinel/roles.md)
 > | */read | 读取除密码外的所有类型的资源。 |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/policyassignments/* | 创建和管理策略分配 |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/policydefinitions/* | 创建和管理策略定义 |
-> | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/policyexemptions/* | 创建和管理策略例外 |
+> | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/policyexemptions/* | 创建和管理策略豁免 |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/policysetdefinitions/* | 创建和管理策略集 |
 > | [Microsoft.PolicyInsights](resource-provider-operations.md#microsoftpolicyinsights)/* |  |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | 创建和更新支持票证 |

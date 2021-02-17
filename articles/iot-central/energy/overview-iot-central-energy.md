@@ -1,5 +1,5 @@
 ---
-title: 使用 IoT Central 构建能源解决方案 | Microsoft Docs
+title: 什么是 Azure IoT Central 能源解决方案 | Microsoft Docs
 description: 了解如何使用 Azure IoT Central 应用程序模板构建能源解决方案。
 author: op-ravi
 ms.author: omravi
@@ -8,14 +8,14 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: ff7b98908296714a59aa9a24767e80e212e00e68
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: 9adf9822bb63be6372de140c775370010614b6e4
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97516648"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99832464"
 ---
-# <a name="build-energy-solutions-with-iot-central"></a>使用 IoT Central 生成能源用解决方案 
+# <a name="what-are-the-iot-central-energy-solutions"></a>什么是 IoT Central 能源解决方案？
 
 智能仪表和太阳能电池板在能源行业转型中发挥着重要作用。 智能仪表可提供更多控制功能，让你能够实时了解能耗；太阳能电池板的增长推动着可再生能源生成领域的突破性进展。 智能仪表和太阳能电池板监视应用是用于显示各种功能的示例模板。 合作伙伴可以通过 IoT Central 利用这些模板构建能源解决方案，以满足其特定需求。 部署和使用这些应用程序不需要任何新的编码，也无需支付额外的费用。 了解有关能源应用模板及其功能的详细信息。
 
@@ -61,8 +61,9 @@ ms.locfileid: "97516648"
 > ![太阳能电池板应用仪表板](media/overview-iot-central-energy/solar-panel-app-dashboard.png)
 
 ## <a name="next-steps"></a>后续步骤
+
 开始构建能源解决方案：
+
 * 免费创建应用程序模板：[智能仪表应用](https://apps.azureiotcentral.com/build/new/smart-meter-monitoring)、[太阳能电池板应用](https://apps.azureiotcentral.com/build/new/solar-panel-monitoring)
 * 了解[智能仪表监视应用的概念](./concept-iot-central-smart-meter-app.md)
 * 了解[太阳能电池板监视应用的概念](./concept-iot-central-solar-panel-app.md)
-* 了解 [IoT Central 平台](../index.yml)

@@ -22,7 +22,7 @@
           href: character-counts.md
     - name: 操作指南
       items:
-        - name: 注册到翻译器
+        - name: 创建“翻译”资源
           href: ./translator-how-to-signup.md
         - name: 迁移到 V3 文本 API
           href: migrate-to-v3.md

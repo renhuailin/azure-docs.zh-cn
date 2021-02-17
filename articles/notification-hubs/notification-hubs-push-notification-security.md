@@ -14,14 +14,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 09/23/2019
 ms.author: sethm
-ms.reviewer: jowargo
+ms.reviewer: thsomasu
 ms.lastreviewed: 09/23/2019
-ms.openlocfilehash: b871775bc7a6d795e86147ae9cffa27bdd2f3348
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 07600b1fe0cb7420989fbbfbe55c2f1a4197d2fc
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76263755"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100548244"
 ---
 # <a name="notification-hubs-security"></a>通知中心安全性
 
@@ -33,20 +33,20 @@ ms.locfileid: "76263755"
 
 通知中心实现称为共享访问签名 (SAS) 的实体级安全方案。  每个规则包含一个名称、一个密钥值（共享机密）和一组权限，如后面的[安全声明](#security-claims)中所述。 
 
-在创建中心时，将自动创建两个规则：一个具有**侦听**权限（由客户端应用使用），一个具有**所有**权限（由应用后端使用）：
+在创建中心时，将自动创建两个规则：一个具有 **侦听** 权限（由客户端应用使用），一个具有 **所有** 权限（由应用后端使用）：
 
-- **DefaultListenSharedAccessSignature**：仅授予**侦听**权限。
-- **DefaultFullSharedAccessSignature**：授予**侦听**、**管理**和**发送**权限。 此策略将只用在应用后端中。 请勿将它用在客户端应用程序中；请使用只有“侦听”访问权限的策略。  若要使用新的 SAS 令牌创建新的自定义访问策略，请参阅本文后面的[用于访问策略的 SAS 令牌](#sas-tokens-for-access-policies)。
+- **DefaultListenSharedAccessSignature**：仅授予 **侦听** 权限。
+- **DefaultFullSharedAccessSignature**：授予 **侦听**、**管理** 和 **发送** 权限。 此策略将只用在应用后端中。 请勿将它用在客户端应用程序中；请使用只有“侦听”访问权限的策略。  若要使用新的 SAS 令牌创建新的自定义访问策略，请参阅本文后面的[用于访问策略的 SAS 令牌](#sas-tokens-for-access-policies)。
 
 通过客户端应用执行注册管理时，如果通过通知发送的信息不敏感（例如，天气更新），则访问通知中心的常用方法是，向客户端应用提供规则仅限侦听访问权限的密钥值，并向应用后端提供规则完全访问权限的密钥值。
 
 应用不应将密钥值嵌入 Windows Store 客户端应用中，而应让客户端应用在启动时从应用后端检索该值。
 
-具有**侦听**访问权限的密钥允许客户端应用注册任何标记。 如果应用必须将特定标记的注册限制到特定的客户端（例如，当标记表示用户 ID 时），则应用后端必须执行注册。 有关详细信息，请参阅[注册管理](notification-hubs-push-notification-registration-management.md)。 请注意，采用这种方式时，客户端应用将无权直接访问通知中心。
+具有 **侦听** 访问权限的密钥允许客户端应用注册任何标记。 如果应用必须将特定标记的注册限制到特定的客户端（例如，当标记表示用户 ID 时），则应用后端必须执行注册。 有关详细信息，请参阅[注册管理](notification-hubs-push-notification-registration-management.md)。 请注意，采用这种方式时，客户端应用将无权直接访问通知中心。
 
 ## <a name="security-claims"></a>安全声明
 
-与其他实体类似，可以针对以下三种安全声明执行通知中心操作：**侦听**、**发送**和**管理**。
+与其他实体类似，可以针对以下三种安全声明执行通知中心操作：**侦听**、**发送** 和 **管理**。
 
 | 声明   | 说明                                          | 允许的操作 |
 | ------- | ---------------------------------------------------- | ------------------ |
