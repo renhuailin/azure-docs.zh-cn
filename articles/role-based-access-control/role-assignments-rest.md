@@ -1,40 +1,35 @@
 ---
-title: 使用 REST API 添加或删除 Azure 角色分配 - Azure RBAC
+title: 使用 REST API 分配 Azure 角色-Azure RBAC
 description: 了解如何使用 REST API 和 Azure 基于角色的访问控制 (Azure RBAC) 为用户、组、服务主体或托管标识授予对 Azure 资源的访问权限。
 services: active-directory
 documentationcenter: na
 author: rolyon
 manager: mtillman
-editor: ''
-ms.assetid: 1f90228a-7aac-4ea7-ad82-b57d222ab128
 ms.service: role-based-access-control
 ms.workload: multiple
 ms.tgt_pltfrm: rest-api
 ms.devlang: na
 ms.topic: how-to
-ms.date: 05/06/2020
+ms.date: 02/15/2021
 ms.author: rolyon
-ms.reviewer: bagovind
-ms.openlocfilehash: e4f230663e0eeddcf874c24e5041653f241f481c
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: d012173adb5e238282e107b832ed9c6895237e48
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97964263"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100556071"
 ---
-# <a name="add-or-remove-azure-role-assignments-using-the-rest-api"></a>使用 REST API 添加或删除 Azure 角色分配
+# <a name="assign-azure-roles-using-the-rest-api"></a>使用 REST API 分配 Azure 角色
 
 [!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control/definition-grant.md)] 本文介绍如何使用 REST API 分配角色。
 
 ## <a name="prerequisites"></a>先决条件
 
-若要添加或删除角色分配，必须拥有以下权限：
+[!INCLUDE [Azure role assignment prerequisites](../../includes/role-based-access-control/prerequisites-role-assignments.md)]
 
-- `Microsoft.Authorization/roleAssignments/write` 和 `Microsoft.Authorization/roleAssignments/delete` 权限，例如[用户访问管理员](built-in-roles.md#user-access-administrator)或[所有者](built-in-roles.md#owner)
+## <a name="assign-an-azure-role"></a>分配 Azure 角色
 
-## <a name="add-a-role-assignment"></a>添加角色分配
-
-在 Azure RBAC 中，要授予访问权限，请添加角色分配。 若要添加角色分配，请使用[角色分配 - Create](/rest/api/authorization/roleassignments/create) REST API 并指定安全主体、角色定义和范围。 若要调用此 API，必须具有对 `Microsoft.Authorization/roleAssignments/write` 操作的访问权限。 在内置角色中，只有[所有者](built-in-roles.md#owner)和[用户访问管理员](built-in-roles.md#user-access-administrator)具有对此操作的访问权限。
+若要分配角色，请使用 [角色分配-创建](/rest/api/authorization/roleassignments/create) REST API，并指定安全主体、角色定义和作用域。 若要调用此 API，必须具有对 `Microsoft.Authorization/roleAssignments/write` 操作的访问权限。 在内置角色中，只有[所有者](built-in-roles.md#owner)和[用户访问管理员](built-in-roles.md#user-access-administrator)具有对此操作的访问权限。
 
 1. 使用[角色定义 - List](/rest/api/authorization/roledefinitions/list) REST API 或参阅[内置角色](built-in-roles.md)，获取你想要分配的角色定义的标识符。
 
@@ -65,7 +60,7 @@ ms.locfileid: "97964263"
     > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1` | 资源组 |
     > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1/providers/microsoft.web/sites/mysite1` | 资源 |
 
-    在前面的示例中，microsoft.web 是引用应用服务实例的资源提供程序。 同样，可以使用任何其他资源提供程序并指定范围。 有关详细信息，请参阅 [Azure 资源提供程序和类型](../azure-resource-manager/management/resource-providers-and-types.md) 以及受支持的 [azure 资源提供程序操作](resource-provider-operations.md)。  
+    在前面的示例中，microsoft.web 是引用应用服务实例的资源提供程序。 同样，可以使用任何其他资源提供程序并指定范围。 有关详细信息，请参阅 [Azure 资源提供程序和类型](../azure-resource-manager/management/resource-providers-and-types.md)和支持的 [Azure 资源提供程序操作](resource-provider-operations.md)。  
 
 1. 将“{roleAssignmentId}”替换为角色分配的 GUID 标识符。
 
@@ -109,55 +104,6 @@ PUT https://management.azure.com/subscriptions/{subscriptionId1}/providers/micro
         "createdOn": "2020-05-06T23:55:23.7679147Z",
         "updatedOn": "2020-05-06T23:55:23.7679147Z",
         "createdBy": null,
-        "updatedBy": "{updatedByObjectId1}"
-    },
-    "id": "/subscriptions/{subscriptionId1}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentId1}",
-    "type": "Microsoft.Authorization/roleAssignments",
-    "name": "{roleAssignmentId1}"
-}
-```
-
-## <a name="remove-a-role-assignment"></a>删除角色分配
-
-在 Azure RBAC 中，若要删除访问权限，请删除角色分配。 若要删除角色分配，请使用[角色分配 - Delete](/rest/api/authorization/roleassignments/delete) REST API。 若要调用此 API，必须具有对 `Microsoft.Authorization/roleAssignments/delete` 操作的访问权限。 在内置角色中，只有[所有者](built-in-roles.md#owner)和[用户访问管理员](built-in-roles.md#user-access-administrator)具有对此操作的访问权限。
-
-1. 获取角色分配标识符 (GUID)。 首次创建角色分配时将返回此标识符，也可以通过列出角色分配来获取它。
-
-1. 从下面的请求开始：
-
-    ```http
-    DELETE https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentId}?api-version=2015-07-01
-    ```
-
-1. 在 URI 内，将“{scope}”替换为删除角色分配的范围。
-
-    > [!div class="mx-tableFixed"]
-    > | 作用域 | 类型 |
-    > | --- | --- |
-    > | `providers/Microsoft.Management/managementGroups/{groupId1}` | 管理组 |
-    > | `subscriptions/{subscriptionId1}` | 订阅 |
-    > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1` | 资源组 |
-    > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1/providers/microsoft.web/sites/mysite1` | 资源 |
-
-1. 将“{roleAssignmentId}”替换为角色分配的 GUID 标识符。
-
-以下请求在订阅范围内删除指定的角色分配：
-
-```http
-DELETE https://management.azure.com/subscriptions/{subscriptionId1}/providers/microsoft.authorization/roleassignments/{roleAssignmentId1}?api-version=2015-07-01
-```
-
-下面显示了输出示例：
-
-```json
-{
-    "properties": {
-        "roleDefinitionId": "/subscriptions/{subscriptionId1}/providers/Microsoft.Authorization/roleDefinitions/a795c7a0-d4a2-40c1-ae25-d81f01202912",
-        "principalId": "{objectId1}",
-        "scope": "/subscriptions/{subscriptionId1}",
-        "createdOn": "2020-05-06T23:55:24.5379478Z",
-        "updatedOn": "2020-05-06T23:55:24.5379478Z",
-        "createdBy": "{createdByObjectId1}",
         "updatedBy": "{updatedByObjectId1}"
     },
     "id": "/subscriptions/{subscriptionId1}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentId1}",

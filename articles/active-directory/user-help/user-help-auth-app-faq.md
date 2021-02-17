@@ -12,12 +12,12 @@ ms.topic: end-user-help
 ms.date: 01/28/2021
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: f4640bbd445b27942d757cc4e09aa7e673550ebc
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: 84dde96276414e98cbde05d6e046dce03227f60d
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99226516"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100547853"
 ---
 # <a name="frequently-asked-questions-faq-about-the-microsoft-authenticator-app"></a>常见问题 (常见问题解答) Microsoft Authenticator 应用
 
@@ -94,6 +94,7 @@ Microsoft Authenticator 应用取代了 Azure Authenticator 应用，在使用 A
 ### <a name="device-registration"></a>设备注册
 
 **问**：什么是设备注册？
+
 **答**：你的组织可能要求你注册设备以跟踪对受保护资源（如文件和应用）的访问。 他们还可能会启用条件访问，以减少对这些资源进行不必要的访问。 可以在“设置”中取消注册设备，但这可能会失去 Outlook 中电子邮件、OneDrive 中文件的访问权限，同时，可能无法使用手机登录。
 
 ### <a name="verification-codes-when-connected"></a>连接时的验证码

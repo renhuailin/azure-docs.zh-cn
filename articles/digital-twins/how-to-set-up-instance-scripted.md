@@ -7,12 +7,13 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 1552401953a8cba9dda787a0f0e461adb7972920
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.custom: contperf-fy21q3
+ms.openlocfilehash: 5ac41ecc068238cbb20c05b253dc071dfc4a8138
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98664446"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100560804"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-scripted"></a>设置 Azure 数字孪生实例和身份验证 (脚本) 
 
@@ -29,11 +30,11 @@ ms.locfileid: "98664446"
 
 ## <a name="prerequisites-download-the-script"></a>必备组件：下载脚本
 
-示例脚本用 PowerShell 编写。 这是 [**Azure 数字孪生端到端示例**](/samples/azure-samples/digital-twins-samples/digital-twins-samples/)的一部分，可通过导航到此示例链接并选择标题下面的 " *浏览代码* " 按钮，将其下载到计算机。 这会将你转到适用于示例的 GitHub 存储库，你可以下载这些示例 *。ZIP* ，方法是选择 " *代码* " 按钮并 *下载 zip*。
+示例脚本用 PowerShell 编写。 这是 [**Azure 数字孪生端到端示例**](/samples/azure-samples/digital-twins-samples/digital-twins-samples/)的一部分，可通过导航到此示例链接并选择标题下面的 " *浏览代码* " 按钮，将其下载到计算机。 这会将你转到这些示例的 GitHub 存储库，可以通过选择“代码”按钮和“下载 ZIP”将其下载为 .ZIP  。
 
-:::image type="content" source="media/includes/download-repo-zip.png" alt-text="GitHub 上的孪生存储库的查看。选择 &quot;代码&quot; 按钮，生成一个小对话框，其中突出显示了 &quot;下载 ZIP&quot; 按钮。" lightbox="media/includes/download-repo-zip.png":::
+:::image type="content" source="media/includes/download-repo-zip.png" alt-text="GitHub 上 digital-twins-samples 存储库的视图。选中了“代码”按钮，生成了一个小对话框，其中突出显示了“下载 ZIP”按钮。" lightbox="media/includes/download-repo-zip.png":::
 
-这将下载 *。* 作为 **digital-twins-samples-master.zip** 的计算机的 ZIP 文件夹。 导航到计算机上的文件夹并将其解压缩以提取文件。
+这会将 .ZIP 文件夹以 digital-twins-samples-master.zip 的形式下载到计算机上。 导航到计算机上的文件夹并将其解压缩以提取文件。
 
 在解压缩文件夹中，部署脚本位于 _数字孪生-> 脚本 > **deploy.ps1**_。
 

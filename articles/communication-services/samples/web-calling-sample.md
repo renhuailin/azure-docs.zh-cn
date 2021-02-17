@@ -9,42 +9,34 @@ ms.author: mariusu
 ms.date: 10/15/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: a00f319c55665695879aac3c8ba711ce13fd5d4e
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: fbd5d3c4489d124014e0d956359f64a8ec9c568a
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98763044"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99592783"
 ---
 # <a name="get-started-with-the-web-calling-sample"></a>开始了解 Web 呼叫示例
+
+Web 呼叫示例是一个 Web 应用程序，可分步演练由通信服务 Web 呼叫客户端库提供的各种功能。 
+
+此示例是为开发人员构建的，可让你轻松开始使用通信服务。 它的用户界面分为多个部分，每个部分都带有一个“显示代码”按钮，可用于将代码直接从浏览器复制到你自己的通信服务应用程序。
+
+## <a name="get-started-with-the-web-calling-sample"></a>开始了解 Web 呼叫示例
 
 [!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
 > [!IMPORTANT]
 > [Github 上提供了此示例。](https://github.com/Azure-Samples/communication-services-web-calling-tutorial/)
 
-Azure 通信服务 Web 呼叫示例演示了如何使用通信服务呼叫客户端库和 JavaScript 来构建呼叫体验。
-
-在本地计算机上运行该示例之前，我们将通过本示例快速入门了解其工作原理。 然后，使用你自己的 Azure 通信服务资源将此示例部署到 Azure。
-
-## <a name="overview"></a>概述
-
-Web 呼叫示例是一个 Web 应用程序，可分步演练由通信服务 Web 呼叫客户端库提供的各种功能。 
-
-此示例是为开发人员构建的，可让你轻松开始使用通信服务。 它的用户界面分为多个部分，每个部分都带有一个“显示代码”按钮，可用于将代码直接从浏览器复制到你自己的通信服务应用程序。
-
-当 [Web 呼叫示例](https://github.com/Azure-Samples/communication-services-web-calling-tutorial)在计算机上运行时，将看到以下登陆页面：
+按照 /Project/readme.md 设置项目，并在计算机上本地运行它。
+当 [Web 呼叫示例](https://github.com/Azure-Samples/communication-services-web-calling-tutorial)在计算机上运行时，你将看到以下登陆页面：
 
 :::image type="content" source="./media/web-calling-tutorial-page-1.png" alt-text="Web 呼叫教程 1" lightbox="./media/web-calling-tutorial-page-1.png":::
 
 :::image type="content" source="./media/web-calling-tutorial-page-2.png" alt-text="Web 呼叫教程 2" lightbox="./media/web-calling-tutorial-page-2.png":::
 
-
 ## <a name="user-provisioning-and-sdk-initialization"></a>用户预配和 SDK 初始化 
-
-若要开始使用演示，请将[通信服务资源](../quickstarts/create-communication-resource.md)中的连接字符串输入到 `config.json` 中。 这将用于预配[用户访问令牌](../concepts/authentication.md)，以便可以初始化你的呼叫 SDK。
-
-在“用户标识”输入中输入你自己的个人标识符。 如果此处未提供任何内容，则将生成一个随机的用户标识。 
 
 单击“预配用户并初始化 SDK”，通过后端令牌预配服务预配的令牌初始化 SDK。 此后端服务位于 `/project/webpack.config.js` 中。
 

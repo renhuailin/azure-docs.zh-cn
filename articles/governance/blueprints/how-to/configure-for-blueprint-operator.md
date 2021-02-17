@@ -3,12 +3,12 @@ title: 设置蓝图操作员的环境
 description: 了解如何配置 Azure 环境以与蓝图操作员 Azure 内置角色一起使用。
 ms.date: 02/05/2021
 ms.topic: how-to
-ms.openlocfilehash: 0e0f6680ab39481a480919af10fadc0f7103a1fb
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: b43a33f4bac92903bd07454041d11850f217d480
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99591595"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100558723"
 ---
 # <a name="configure-your-environment-for-a-blueprint-operator"></a>为蓝图操作员配置环境
 
@@ -22,7 +22,7 @@ ms.locfileid: "99591595"
 
 1.  (建议) [创建安全组并添加成员](../../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)
 
-1. 向帐户或安全组添加 **蓝图操作员**[角色分配](../../../role-based-access-control/role-assignments-portal.md#add-a-role-assignment)
+1. 将 **蓝图操作员** 的 [Azure 角色分配](../../../role-based-access-control/role-assignments-portal.md)给帐户或安全组
 
 ## <a name="user-assign-managed-identity"></a>用户-分配托管标识
 
@@ -32,7 +32,7 @@ ms.locfileid: "99591595"
 
 1. 向用户分配的托管标识授予指定范围的蓝图定义所需的任何角色或权限。
 
-1. 向帐户或安全组添加 **托管标识操作员** 的 [角色分配](../../../role-based-access-control/role-assignments-portal.md#add-a-role-assignment)。 将角色分配的范围限定为新的用户分配的托管标识。
+1. 将 **托管标识操作员** 的 [Azure 角色分配](../../../role-based-access-control/role-assignments-portal.md)给帐户或安全组。 将角色分配的范围限定为新的用户分配的托管标识。
 
 1. 作为 **蓝图运算符**， [分配一个](../create-blueprint-portal.md#assign-a-blueprint) 使用新的用户分配的托管标识的蓝图。
 

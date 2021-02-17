@@ -4,14 +4,14 @@ description: 介绍了如何添加、修改、监视和删除 StorSimple 卷，�
 author: alkohli
 ms.service: storsimple
 ms.topic: how-to
-ms.date: 12/08/2017
+ms.date: 12/09/2017
 ms.author: alkohli
-ms.openlocfilehash: a8fcadb8bdd4862dd95625228e3c190e5fe19a9a
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 3d649b54b544c120198963f8094764e9590e20b2
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91961674"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100547496"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-volumes-update-3-or-later"></a>使用 StorSimple 设备管理器服务管理卷（Update 3 或更高版本）
 
@@ -44,7 +44,7 @@ StorSimple 卷可以是：
 
 分层卷是精简预配的卷，其中经常访问的数据保留在设备本地，较少使用的数据自动分层到云中。 精简设置是一项虚拟化技术，可使可用存储看起来超过物理资源。 StorSimple 使用精简设置分配恰好满足当前需求的足够空间，而不是提前保留充足的存储。 云存储的弹性性质促进了这一方法的实施，因为 StorSimple 能够增加或减少云存储以满足不断变化的需求。
 
-如果针对存档数据使用分层卷，请选中“将此卷用于不常访问的存档数据”复选框将卷的重复数据删除区块大小更改为 512 KB。**** 如果不选择此选项，相应的分层卷将使用 64 KB 区块大小。 重复数据删除区块越大，设备将大型存档数据传输到云端的速度就越快。
+如果针对存档数据使用分层卷，请选中“将此卷用于不常访问的存档数据”复选框将卷的重复数据删除区块大小更改为 512 KB。 如果不选择此选项，相应的分层卷将使用 64 KB 区块大小。 重复数据删除区块越大，设备将大型存档数据传输到云端的速度就越快。
 
 
 ### <a name="provisioned-capacity"></a>预配的容量
@@ -62,16 +62,16 @@ StorSimple 卷可以是：
 
 ## <a name="the-volumes-blade"></a>“卷”边栏选项卡
 
-在“卷”边栏选项卡中，可以管理在 Microsoft Azure StorSimple 设备上为发起程序（服务器）预配的存储卷。**** 该边栏选项卡显示已连接到服务的 StorSimple 设备上的卷列表。
+在“卷”边栏选项卡中，可以管理在 Microsoft Azure StorSimple 设备上为发起程序（服务器）预配的存储卷。 该边栏选项卡显示已连接到服务的 StorSimple 设备上的卷列表。
 
- ![“卷”页](./media/storsimple-8000-manage-volumes-u2/volumeslist.png)
+ ![“卷”页](./media/storsimple-8000-manage-volumes-u2/volumes-list.png)
 
 卷包括一系列属性：
 
 * **卷名称** – 必须保持唯一且有助于识别卷的描述性名称。 筛选特定的卷时，还可以使用此名称来监视报告。 创建卷后，无法将其重命名。
 * **状态** – 可以是联机或脱机。 如果某个卷已脱机，允许访问该卷的发起程序（服务器）将看不到该卷。
 * **容量** – 指定发起程序（服务器）可以存储的数据总量。 本地固定卷是完整预配的卷，位于 StorSimple 设备上。 分层卷是精简预配的卷，可删除重复数据。 使用精简预配的卷时，设备不会根据配置的卷容量在内部或者在云中预先分配物理存储容量。 卷容量是按需要分配和使用的。
-* **类型** – 指示卷是**分层**卷（默认设置）还是**本地固定**卷。
+* **类型** – 指示卷是 **分层** 卷（默认设置）还是 **本地固定** 卷。
 
 使用本教程中的说明执行以下任务：
 
@@ -88,21 +88,21 @@ StorSimple 卷可以是：
 
 #### <a name="to-add-a-volume"></a>添加卷
 
-1. 从“设备”边栏选项卡中的设备列表中，选择设备。**** 单击“+ 添加卷”。 
+1. 从“设备”边栏选项卡中的设备列表中，选择设备。 单击“+ 添加卷”。 
 
-    ![添加新版本](./media/storsimple-8000-manage-volumes-u2/step5createvol1.png)
+    ![添加新版本](./media/storsimple-8000-manage-volumes-u2/add-volume-01.png)
 
-2. 在“添加卷”**** 边栏选项卡中：
+2. 在“添加卷”边栏选项卡中：
    
-    1. “选择设备”**** 字段中会自动填充你当前的设备。
+    1. “选择设备”字段中会自动填充你当前的设备。
 
     2. 从下拉列表中，选择要在其中添加卷的卷容器。
 
     3.  键入卷的 **“名称”**。 创建卷后，无法重命名卷。
 
-    4. 在下拉列表中，选择卷的“类型”****。 对于需要本地保证、低延迟和高性能的工作负荷，请选择“本地固定” **** 卷。 对于所有其他数据，请选择“分层” **** 卷。 如果将此卷用于存档数据，请选中“将此卷用于不常访问的存档数据”****。
+    4. 在下拉列表中，选择卷的“类型”。 对于需要本地保证、低延迟和高性能的工作负荷，请选择“本地固定”  卷。 对于所有其他数据，请选择“分层”  卷。 如果将此卷用于存档数据，请选中“将此卷用于不常访问的存档数据”。
       
-       分层卷精简预配，可快速创建。 为用于存档数据的分层卷选中“将此卷用于不常访问的存档数据”****，会将卷的重复数据删除区块大小更改为 512 KB。 如果未选中此字段，则相应的分层卷使用的区块大小为 64 KB。 重复数据删除区块越大，设备将大型存档数据传输到云端的速度就越快。
+       分层卷精简预配，可快速创建。 为用于存档数据的分层卷选中“将此卷用于不常访问的存档数据”，会将卷的重复数据删除区块大小更改为 512 KB。 如果未选中此字段，则相应的分层卷使用的区块大小为 64 KB。 重复数据删除区块越大，设备将大型存档数据传输到云端的速度就越快。
        
        本地固定卷充分预配，可确保卷上的主数据保留在设备本地，未溢出到云端。  如果创建一个本地固定卷，设备会检查本地层上的可用空间，预配所请求大小的卷。 创建本地固定卷的过程中，设备中的现有数据可能会溢出到云端，因此创建该卷所花的时间可能会很长。 总时间取决于预配卷的大小、可用的网络带宽以及设备中的数据。
 
@@ -112,11 +112,13 @@ StorSimple 卷可以是：
       
        如果在 8100 设备预配 8.5 TB（允许的最大大小）的本地固定卷，则已用尽设备上的所有可用本地空间。 由于设备上没有本地空间可用于托管分层卷的工作集，因此从这一刻起无法再创建任何分层卷。 现有分层卷也会影响可用的空间。 例如，如果 8100 设备上的分层卷已占用大约 106 TB 的空间，那么本地固定卷只有 4 TB 的空间可用。
 
-    6. 在“连接的主机”字段中，单击箭头。**** 在“连接的主机”**** 边栏选项卡中，选择现有的 ACR 或添加新的 ACR。 如果选择新 ACR，请提供 ACR 的**名称**，提供 Windows 主机的 **iSCSI 限定名称** (IQN)。 如果没有 IQN，请转到获取 Windows Server 主机的 IQN。 单击“创建”。 使用指定的设置创建卷。
+    6. 在 " **连接的主机** " 字段中，单击箭头，然后选择要连接的每个 ACR。 在“连接的主机”边栏选项卡中，选择现有的 ACR 或添加新的 ACR。 如果选择新 ACR，请提供 ACR 的 **名称**，提供 Windows 主机的 **iSCSI 限定名称** (IQN)。 如果没有 IQN，请转到获取 Windows Server 主机的 IQN。<!--Please verify: Is new ACR capability still available? Are the labels and controls the same?--> 
 
-        ![单击“法律条款” ](./media/storsimple-8000-manage-volumes-u2/step5createvol3.png)
+        ![添加已连接的主机](./media/storsimple-8000-manage-volumes-u2/add-volume-02.png)<!--New graphic. Source: add-volume-connected host-->
 
-新卷现在已可供使用。
+   7. 完成设置后，单击 " **创建**"。 
+
+      使用指定的设置创建卷。 新卷已准备就绪，可供使用。
 
 > [!NOTE]
 > 如果创建了一个本地固定卷，随即又创建另一个本地固定卷，卷创建作业将按顺序运行。 必须先完成第一个卷创建作业，才能开始下一个卷创建作业。
@@ -131,41 +133,41 @@ StorSimple 卷可以是：
 
 #### <a name="to-modify-a-volume"></a>修改卷
 
-1. 转到 StorSimple Device Manager 服务，并单击“设备”。**** 从设备的表格列表中，选择包含所要修改的卷的设备。 单击“设置”>“卷”。****
+1. 转到 StorSimple Device Manager 服务，并单击“设备”。 从设备的表格列表中，选择包含所要修改的卷的设备。 单击“设置”>“卷”。
 
-    ![转到“卷”边栏选项卡](./media/storsimple-8000-manage-volumes-u2/modifyvol2.png)
+    ![转到“卷”边栏选项卡](./media/storsimple-8000-manage-volumes-u2/modify-volume-02.png)
 
-2. 从卷的表格列表中选择该卷，单击右键调用上下文菜单。 选择“脱机”，使要修改的卷脱机。****
+2. 从卷的表格列表中选择该卷，单击右键调用上下文菜单。 选择“脱机”，使要修改的卷脱机。
 
-    ![选择卷并使卷脱机](./media/storsimple-8000-manage-volumes-u2/modifyvol4.png)
+    ![选择卷并使卷脱机](./media/storsimple-8000-manage-volumes-u2/modify-volume-04.png)
 
-3. 在“脱机”边栏选项卡中，查看使卷脱机所造成的影响，选择相应的复选框。**** 确保先将主机上的相应卷脱机。 有关如何在连接到 StorSimple 的主机服务器上使卷脱机的信息，请参阅特定于操作系统的说明。 单击“脱机”****。
+3. 在“脱机”边栏选项卡中，查看使卷脱机所造成的影响，选择相应的复选框。 确保先将主机上的相应卷脱机。 有关如何在连接到 StorSimple 的主机服务器上使卷脱机的信息，请参阅特定于操作系统的说明。 单击“脱机”。
 
-    ![查看使卷脱机所造成的影响](./media/storsimple-8000-manage-volumes-u2/modifyvol5.png)
+    ![查看使卷脱机所造成的影响](./media/storsimple-8000-manage-volumes-u2/modify-volume-05.png)
 
 4. 使卷脱机后（根据卷状态判断），请选择该卷，单击右键调用上下文菜单。 选择 " **修改卷**"。
 
-    ![选择“修改卷”](./media/storsimple-8000-manage-volumes-u2/modifyvol9.png)
+    ![选择“修改卷”](./media/storsimple-8000-manage-volumes-u2/modify-volume-09.png)
 
 
-5. 在“修改卷”边栏选项卡中，可以进行以下更改：****
+5. 在“修改卷”边栏选项卡中，可以进行以下更改：
    
-   1. 无法编辑卷的**名称**。
-   2. 将“类型”从“本地固定”转换为“分层”，或者从“分层”转换为“本地固定”（有关详细信息，请参阅[更改卷类型](#change-the-volume-type)）。****
+   1. 无法编辑卷的 **名称**。
+   2. 将“类型”从“本地固定”转换为“分层”，或者从“分层”转换为“本地固定”（有关详细信息，请参阅[更改卷类型](#change-the-volume-type)）。
    3. 增加 **“设置的容量”**。 **“设置的容量”** 只能增加。 创建卷后无法缩小卷。
-   4. 在“连接的主机”下面，可以修改 ACR。**** 若要修改 ACR，卷必须处于脱机状态。
+   4. 在“连接的主机”下面，可以修改 ACR。 若要修改 ACR，卷必须处于脱机状态。
 
-       ![查看使卷脱机所造成的影响2](./media/storsimple-8000-manage-volumes-u2/modifyvol11.png)
+       ![查看使卷脱机所造成的影响2](./media/storsimple-8000-manage-volumes-u2/modify-volume-11.png)<!--Legacy screen doesn't match step. New graphic needed?-->
 
-5. 单击“保存”以保存更改。 当系统提示你进行确认时，单击 **“是”**。 Azure 门户会显示更新卷消息。 成功更新卷后，它会显示一条成功消息。
+6.  以保存更改。 当系统提示你进行确认时，单击 **“是”**。 Azure 门户会显示更新卷消息。 成功更新卷后，它会显示一条成功消息。
 
-    ![查看使卷脱机的影响3](./media/storsimple-8000-manage-volumes-u2/modifyvol5.png)
+    ![查看使卷脱机的影响3](./media/storsimple-8000-manage-volumes-u2/modify-volume-05.png)<!--Updated graphic. Source: modify-volume-save-->
 
 7. 如果要扩展卷，请在 Windows 主机计算机上完成以下步骤：
    
    1. 请参阅 "**计算机管理**" "  -> **磁盘管理**"。
-   2. 右键单击“磁盘管理”，并选择“重新扫描磁盘”。********
-   3. 在磁盘列表中选择已更新的卷，单击右键，并选择“扩展卷”。**** 此时会启动“扩展卷向导”。 单击“下一步”。
+   2. 右键单击“磁盘管理”，并选择“重新扫描磁盘”。
+   3. 在磁盘列表中选择已更新的卷，单击右键，并选择“扩展卷”。 此时会启动“扩展卷向导”。 单击“下一步”  。
    4. 完成向导并接受默认值。 完成向导后，卷应该显示增加的大小。
       
       > [!NOTE]
@@ -213,29 +215,29 @@ StorSimple 卷可以是：
 
 #### <a name="to-change-the-volume-type"></a>更改卷类型
 
-1. 转到 StorSimple Device Manager 服务，并单击“设备”。**** 从设备的表格列表中，选择包含所要修改的卷的设备。 单击“设置”>“卷”。****
+1. 转到 StorSimple Device Manager 服务，并单击“设备”。 从设备的表格列表中，选择包含所要修改的卷的设备。 单击“设置”>“卷”。
 
-    ![中转到卷边栏选项卡](./media/storsimple-8000-manage-volumes-u2/modifyvol2.png)
+    ![中转到卷边栏选项卡](./media/storsimple-8000-manage-volumes-u2/modify-volume-02.png)
 
-3. 从卷的表格列表中选择该卷，单击右键调用上下文菜单。 选择“修改”。
+3. 从卷的表格列表中选择该卷，单击右键调用上下文菜单。 选择“修改”  。
 
-    ![从上下文菜单中选择“修改”](./media/storsimple-8000-manage-volumes-u2/changevoltype2.png)
+    ![从上下文菜单中选择“修改”](./media/storsimple-8000-manage-volumes-u2/change-volume-type-02.png)
 
-4. 在“修改卷”边栏选项卡上，从“类型”下拉列表中选择新类型，以更改卷类型。********
+4. 在“修改卷”边栏选项卡上，从“类型”下拉列表中选择新类型，以更改卷类型。
    
-   * 如果将类型更改为“本地固定”，StorSimple 会检查是否有足够的容量。****
-   * 如果将类型更改为“分层”，且此卷用于存档数据，请选中“将此卷用于不常访问的存档数据”复选框。********
-   * 将本地固定卷配置为分层卷时（反之亦然），会显示以下消息。__
+   * 如果将类型更改为“本地固定”，StorSimple 会检查是否有足够的容量。
+   * 如果将类型更改为“分层”，且此卷用于存档数据，请选中“将此卷用于不常访问的存档数据”复选框。
+   * 将本地固定卷配置为分层卷时（反之亦然），会显示以下消息。
    
-     ![更改卷类型消息](./media/storsimple-8000-manage-volumes-u2/changevoltype3.png)
+     ![更改卷类型消息](./media/storsimple-8000-manage-volumes-u2/change-volume-type-03.png)
 
-7. 单击“保存”以保存更改。 系统提示确认时，请单击“是”开始转换过程。**** 
+7. 单击“保存”以保存更改。 系统提示确认时，请单击“是”开始转换过程。 
 
-    ![保存并确认](./media/storsimple-8000-manage-volumes-u2/modifyvol11.png)
+    ![保存并确认](./media/storsimple-8000-manage-volumes-u2/modify-volume-11.png)
 
 8. Azure 门户会显示创建作业的通知，指出这会更新卷。 单击该通知可监视卷转换作业的状态。
 
-    ![卷转换作业](./media/storsimple-8000-manage-volumes-u2/changevoltype5.png)
+    ![卷转换作业](./media/storsimple-8000-manage-volumes-u2/change-volume-type-05.png)
 
 ## <a name="take-a-volume-offline"></a>使卷脱机
 
@@ -247,24 +249,24 @@ StorSimple 卷可以是：
 2. 先在主机上使卷脱机。 这样可以消除任何造成卷上数据损坏的潜在风险。 有关具体的步骤，请参阅适用于主机操作系统的说明。
 3. 在主机上脱机后，执行以下步骤在设备上使卷脱机：
    
-    1. 转到 StorSimple Device Manager 服务，并单击“设备”。**** 从设备的表格列表中，选择包含所要修改的卷的设备。 单击“设置”>“卷”。****
+    1. 转到 StorSimple Device Manager 服务，并单击“设备”。 从设备的表格列表中，选择包含所要修改的卷的设备。 单击“设置”>“卷”。
 
-        ![中转到卷边栏选项卡](./media/storsimple-8000-manage-volumes-u2/modifyvol2.png)
+        ![中转到卷边栏选项卡](./media/storsimple-8000-manage-volumes-u2/modify-volume-02.png)
 
-    2. 从卷的表格列表中选择该卷，单击右键调用上下文菜单。 选择“脱机”，使要修改的卷脱机。****
+    2. 从卷的表格列表中选择该卷，单击右键调用上下文菜单。 选择“脱机”，使要修改的卷脱机。
 
-        ![选择卷并使卷脱机](./media/storsimple-8000-manage-volumes-u2/modifyvol4.png)
+        ![选择卷并使卷脱机](./media/storsimple-8000-manage-volumes-u2/modify-volume-04.png)
 
-3. 在“脱机”边栏选项卡中，查看使卷脱机所造成的影响，选择相应的复选框。**** 单击“脱机”****。 
+3. 在“脱机”边栏选项卡中，查看使卷脱机所造成的影响，选择相应的复选框。 单击“脱机”。 
 
-    ![查看使卷脱机所造成的影响4](./media/storsimple-8000-manage-volumes-u2/modifyvol5.png)
+    ![查看使卷脱机所造成的影响4](./media/storsimple-8000-manage-volumes-u2/modify-volume-05.png)
       
       卷脱机后，系统会发出通知。 卷的状态也会更新为“脱机”。
       
-4. 卷脱机后，如果选择该卷并单击右键，上下文菜单中的“联机”选项将会激活。****
+4. 卷脱机后，如果选择该卷并单击右键，上下文菜单中的“联机”选项将会激活。
 
 > [!NOTE]
-> “脱机”命令向设备发送请求来使卷脱机。**** 如果主机仍在使用该卷，则会导致连接断开，但是使卷脱机的命令不会失败。
+> “脱机”命令向设备发送请求来使卷脱机。 如果主机仍在使用该卷，则会导致连接断开，但是使卷脱机的命令不会失败。
 
 ## <a name="delete-a-volume"></a>删除卷
 
@@ -275,22 +277,22 @@ StorSimple 卷可以是：
 
 #### <a name="to-delete-a-volume"></a>删除卷
 
-1. 转到 StorSimple Device Manager 服务，并单击“设备”。**** 从设备的表格列表中，选择包含所要修改的卷的设备。 单击“设置”>“卷”。****
+1. 转到 StorSimple Device Manager 服务，并单击“设备”。 从设备的表格列表中，选择包含所要修改的卷的设备。 单击“设置”>“卷”。
 
-    ![中转到卷边栏选项卡4](./media/storsimple-8000-manage-volumes-u2/modifyvol2.png)
+    ![中转到卷边栏选项卡4](./media/storsimple-8000-manage-volumes-u2/modify-volume-02.png)
 
 3. 检查要删除的卷的状态。 如果要删除的卷不处于脱机状态，请先使其脱机。 请按照[使卷脱机](#take-a-volume-offline)中的步骤操作。
-4. 卷脱机后，请选择该卷，单击右键调用上下文菜单，选择“删除”。****
+4. 卷脱机后，请选择该卷，单击右键调用上下文菜单，选择“删除”。
 
-    ![从上下文菜单中选择“删除”](./media/storsimple-8000-manage-volumes-u2/deletevol1.png)
+    ![从上下文菜单中选择“删除”](./media/storsimple-8000-manage-volumes-u2/delete-volume-01.png)
 
-5. 在“删除”边栏选项卡中，请查看信息，选中删除卷所造成的影响对应的复选框。**** 删除某个卷时，该卷中的所有数据都会丢失。 
+5. 在“删除”边栏选项卡中，请查看信息，选中删除卷所造成的影响对应的复选框。 删除某个卷时，该卷中的所有数据都会丢失。 
 
-    ![保存并确认更改](./media/storsimple-8000-manage-volumes-u2/deletevol2.png)
+    ![保存并确认更改](./media/storsimple-8000-manage-volumes-u2/delete-volume-02.png)
 
 6. 删除卷后，卷的表格列表会更新以指示该卷被删除。
 
-    ![更新的卷列表](./media/storsimple-8000-manage-volumes-u2/deletevol3.png)
+    ![更新的卷列表](./media/storsimple-8000-manage-volumes-u2/delete-volume-03.png)
    
    > [!NOTE]
    > 如果删除本地固定卷，可能不会立即更新新卷的可用空间。 StorSimple 设备管理器服务会定期更新本地可用空间。 建议等待几分钟后再尝试创建新卷。
@@ -309,13 +311,13 @@ StorSimple 卷可以是：
 
 #### <a name="to-enable-or-disable-volume-monitoring"></a>启用或禁用卷监视
 
-1. 转到 StorSimple Device Manager 服务，并单击“设备”。**** 从设备的表格列表中，选择包含所要修改的卷的设备。 单击“设置”>“卷”。****
-2. 从卷的表格列表中选择该卷，单击右键调用上下文菜单。 选择“修改”。
-3. 在“修改卷”边栏选项卡中，为“监视”选择“启用”或“禁用”，以启用或禁用监视。****************
+1. 转到 StorSimple Device Manager 服务，并单击“设备”。 从设备的表格列表中，选择包含所要修改的卷的设备。 单击“设置”>“卷”。
+2. 从卷的表格列表中选择该卷，单击右键调用上下文菜单。 选择“修改”  。
+3. 在“修改卷”边栏选项卡中，为“监视”选择“启用”或“禁用”，以启用或禁用监视。
 
-    ![禁用监视](./media/storsimple-8000-manage-volumes-u2/monitorvol1.png) 
+    ![禁用监视] ( 1.png)  
 
-4. 单击“保存”，出现确认提示时，单击“是”。******** Azure 门户会显示正在更新卷的通知；成功更新卷后，会显示成功消息。
+4. 单击“保存”，出现确认提示时，单击“是”。 Azure 门户会显示正在更新卷的通知；成功更新卷后，会显示成功消息。
 
 ## <a name="next-steps"></a>后续步骤
 

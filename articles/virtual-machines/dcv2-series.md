@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: jushiman
-ms.openlocfilehash: fecd707d96b03eef4f093c0b256e32f11bb8a3f7
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 84987b12657a37264d3a1ca67fdc423ed8085662
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99095850"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100557915"
 ---
 # <a name="dcsv2-series"></a>DCsv2 系列
 
@@ -21,15 +21,15 @@ DCsv2 系列可以在公有云中处理数据和代码时帮助保护数据和�
 
 示例用例包括：多方机密数据共享、欺诈检测、反洗钱、区块链、机密使用情况分析、情报分析和机密机器学习。
 
-[高级存储](premium-storage-performance.md)：支持 *<br>
-[高级存储缓存](premium-storage-performance.md)：支持<br>
-[实时迁移](maintenance-and-updates.md)：不支持<br>
-[内存保留更新](maintenance-and-updates.md)：不支持<br>
-[VM 生成支持](generation-2.md)：第2代<br>
-[加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：支持<br>
+[高级存储](premium-storage-performance.md)：支持的 *<br> 
+ [高级存储缓存](premium-storage-performance.md)：支持的 <br> 
+ [实时迁移](maintenance-and-updates.md)：不支持的 <br> 
+ [内存保留更新](maintenance-and-updates.md)：不支持的 <br> 
+ [VM 生成支持](generation-2.md)：第2代 <br> 
+ [加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：支持的 (* 至少需要 4 vCPU * )  <br>
 [临时 OS 磁盘](ephemeral-os-disks.md)：受支持 <br>
 
-*Standard_DC8_v2 除外
+*Standard_DC8_v2 除外 <br>
 
 | 大小             | vCPU | 内存:GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 最大缓存吞吐量和临时存储吞吐量：IOPS/MBps（以 GiB 为单位的缓存大小） | 最大 NIC 数/预期网络带宽 (MBps) | EPC 内存 (MiB) |
 |------------------|------|-------------|------------------------|----------------|-------------------------------------------------------------------------|----------------------------------------------|---------------------|
@@ -60,4 +60,4 @@ DCsv2 系列可以在公有云中处理数据和代码时帮助保护数据和�
 
 ## <a name="next-steps"></a>后续步骤
 
-了解有关 [Azure 计算单元 (ACU)](acu.md) 如何帮助跨 Azure SKU 比较计算性能的详细信息。
+了解有关 [Azure 计算单元 (ACU)](acu.md) 如何帮助你跨 Azure SKU 比较计算性能的详细信息。

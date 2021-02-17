@@ -2,52 +2,32 @@
 title: 在已启用 Arc 的 Kubernetes 群集上使用 GitOps 部署配置（预览版）
 services: azure-arc
 ms.service: azure-arc
-ms.date: 02/09/2021
+ms.date: 02/15/2021
 ms.topic: article
 author: mlearned
 ms.author: mlearned
 description: '使用 GitOps 配置启用了 Azure Arc 的 Kubernetes 群集 (预览) '
 keywords: GitOps、Kubernetes、K8s、Azure、Arc、Azure Kubernetes 服务、AKS、容器
-ms.openlocfilehash: 072bfc8c243eb9b69e06366961019b88b67e0941
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 3cadcdf80abd997ec10aeb9521680944d455898f
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100392232"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100560161"
 ---
-# <a name="deploy-configurations-using-gitops-on-arc-enabled-kubernetes-cluster-preview"></a>在已启用 Arc 的 Kubernetes 群集上使用 GitOps 部署配置（预览版）
+# <a name="deploy-configurations-using-gitops-on-an-arc-enabled-kubernetes-cluster-preview"></a>在启用了 Arc 的 Kubernetes 群集上使用 GitOps 部署配置 (预览) 
 
-相对于 Kubernetes，GitOps 是在 Git 存储库中声明 Kubernetes 群集配置 (部署、命名空间等 ) 的所需状态的做法。 此声明后跟使用运算符的这些群集配置的轮询和基于请求的部署。 
+本文演示如何在启用了 Azure Arc 的 Kubernetes 群集上应用配置。 可在 [此处](./conceptual-configurations.md)找到相同的概念概述。
 
-本文介绍如何在启用 Kubernetes 群集的 Azure Arc 上设置 GitOps 工作流。
+## <a name="before-you-begin"></a>在开始之前
 
-群集和 Git 存储库之间的连接在 `Microsoft.KubernetesConfiguration/sourceControlConfigurations` Azure 资源管理器中创建为扩展资源。 `sourceControlConfiguration` 资源属性表示 Kubernetes 资源应从 Git 流向群集的位置和方式。 `sourceControlConfiguration`数据以加密存储，存放在 Azure Cosmos DB 数据库中，以确保数据的保密性。
+* 验证是否已启用现有的 Azure Arc Kubernetes 连接群集。 如果需要连接的群集，请参阅 [连接启用 Azure Arc Kubernetes 群集快速入门](./connect-cluster.md)。
 
-`config-agent`群集中运行的负责：
-* `sourceControlConfiguration`在启用了 Azure Arc 的 Kubernetes 资源上跟踪新的或更新的扩展资源。
-* 部署 Flux 运算符来监视每个的 Git 存储库 `sourceControlConfiguration` 。
-* 应用对任何内容所做 `sourceControlConfiguration` 的任何更新。 
-
-可以 `sourceControlConfiguration` 在启用了同一 Azure Arc Kubernetes 群集的多个资源上创建多个资源。 通过 `sourceControlConfiguration` 使用不同的作用域创建每个部署，将部署限制在各自的命名空间内 `namespace` 。
-
-Git 存储库可包含：
-* 描述任何有效 Kubernetes 资源的 YAML 格式清单，包括命名空间、ConfigMaps、部署、Daemonset 等。 
-* 用于部署应用程序的 Helm 图表。 
-
-一组常见的方案包括为你的组织定义基线配置，例如常见的 Azure 角色和绑定、监视或日志记录代理或群集范围内的服务。
-
-可以使用相同的模式来管理更大的群集集合，这些群集可能会在异类环境中进行部署。 例如，你有一个用于定义你的组织的基线配置的存储库，此配置可同时应用于多个 Kubernetes 群集。 [Azure 策略可以](use-azure-policy.md) 在 `sourceControlConfiguration` Kubernetes 订阅或资源组)  (范围内的所有启用了 Azure Arc 的资源的情况中自动创建具有一组特定参数的。
-
-演练以下步骤，了解如何将一组配置应用于 `cluster-admin` 作用域。
-
-## <a name="before-you-begin"></a>准备阶段
-
-验证是否已启用现有的 Azure Arc Kubernetes 连接群集。 如果需要连接的群集，请参阅 [连接启用 Azure Arc Kubernetes 群集快速入门](./connect-cluster.md)。
+* 若要了解此功能的优点和体系结构，请参阅 [Kubernetes 文章的配置和 GitOps](./conceptual-configurations.md) 。
 
 ## <a name="create-a-configuration"></a>创建配置
 
 本文中使用的 [示例存储库](https://github.com/Azure/arc-k8s-demo) 是围绕群集操作员的角色构建的，该操作员要预配几个命名空间，部署一个常见的工作负荷，并提供一些特定于团队的配置。 使用此存储库将在群集上创建以下资源：
-
 
 * **命名空间：** `cluster-config` 、 `team-a` 、 `team-b`
 * **部署：**`cluster-config/azure-vote`

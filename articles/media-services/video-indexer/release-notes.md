@@ -12,12 +12,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 02/01/2021
 ms.author: juliako
-ms.openlocfilehash: c0d332c00635444ab4d694e46486a498b43137f2
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: a6b1fc5adba166aa15a786d3440be1eca7f0a260
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99427646"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100560515"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure 媒体服务视频索引器发行说明
 
@@ -67,7 +67,7 @@ ms.locfileid: "99427646"
 > [!NOTE]
 > 在3月 1 2021 日之后，将无法访问连接到 LinkedIn 和 Facebook 的视频索引器帐户。 
 > 
-> 你应 [邀请](invite-users.md) 你拥有的 Azure AD、Microsoft 或 Google 电子邮件发送到视频索引器帐户，以便你仍可访问。<br/>
+> 你应 [邀请](invite-users.md) 你拥有的 Azure AD、Microsoft 或 Google 电子邮件发送到视频索引器帐户，以便你仍可访问。 可以添加受支持的提供程序的其他所有者，如 [邀请](invite-users.md)中所述。 <br/>
 > 或者，你可以创建付费帐户并迁移数据。
 
 ## <a name="august-2020"></a>2020 年 8 月

@@ -27,8 +27,10 @@
     - name: 1 - 导入第一个 API
       href: import-and-publish.md
     - name: 2 - 创建和发布产品
+      displayName: 'Azure CLI, az apim product'
       href: api-management-howto-add-products.md
     - name: 3 - 模拟 API 响应
+      displayName: 'Azure CLI, az apim api operation'
       href: mock-api-responses.md
     - name: 4 - 保护 API
       href: transform-api.md
@@ -37,8 +39,10 @@
     - name: 6 - 调试 API
       href: api-management-howto-api-inspector.md
     - name: 7 - 添加修订
+      displayName: 'Azure CLI, az apim api release'
       href: api-management-get-started-revise-api.md
     - name: 8 - 添加多个版本
+      displayName: 'Azure CLI, az apim api versionset'
       href: api-management-get-started-publish-versions.md
     - name: 9 - 自定义开发人员门户
       href: api-management-howto-developer-portal-customize.md
@@ -225,6 +229,7 @@
         - name: 使用外部服务
           href: api-management-sample-send-request.md
         - name: 使用命名值管理机密
+          displayName: 'Azure CLI, az apim nv'
           href: api-management-howto-properties.md
         - name: 访问限制策略
           href: api-management-access-restriction-policies.md

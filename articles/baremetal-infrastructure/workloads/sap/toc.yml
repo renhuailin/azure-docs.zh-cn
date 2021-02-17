@@ -9,6 +9,7 @@
 - name: 操作指南
   items:
     - name: 管理 Azure 中的 BareMetal 实例单元
+      displayName: 'Azure CLI, az baremetalinstance, az baremetalinstance restart'
       href: baremetal-infrastructure-portal.md
 - name: 参考
   items:

@@ -1,14 +1,14 @@
 ---
 title: 更新委派
 description: 了解如何为以前载入到 Azure Lighthouse 的客户更新委派。
-ms.date: 12/03/2020
+ms.date: 02/16/2021
 ms.topic: how-to
-ms.openlocfilehash: eec5d1f2d34e8e3c9e0ded59cb111624b1981873
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: f0ed5222cdbac3d0e4d193941c2a6f233d15938c
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98791333"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555758"
 ---
 # <a name="update-a-delegation"></a>更新委派
 
@@ -48,7 +48,7 @@ ms.locfileid: "98791333"
 如果管理租户中的任何用户已向其授予 [托管服务注册分配 "删除" 角色](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role) ，则可以对该委托执行删除访问权限。 如果管理租户中的任何用户都没有此角色，你可以要求客户 [删除 Azure 门户中的产品/服务的访问权限](view-manage-service-providers.md#add-or-remove-service-provider-offers)。
 
 > [!TIP]
-> 如果已按照上述步骤删除了之前的委派，但仍无法部署新的 ARM 模板，则可能需要 [完全删除注册定义](/powershell/module/az.managedservices/remove-azmanagedservicesdefinition)。 此操作可由客户租户中拥有 "所有者" 角色的任何用户执行。  
+> 如果已按照上述步骤删除了之前的委派，但仍无法部署新的 ARM 模板，则可能需要 [完全删除注册定义](/powershell/module/az.managedservices/remove-azmanagedservicesdefinition)。 此操作可由具有 `Microsoft.Authorization/roleAssignments/write` 在客户租户中具有权限的角色（如 " [所有者](../../role-based-access-control/built-in-roles.md#owner)"）的任何用户来完成。  
 
 ## <a name="deploy-the-arm-template"></a>部署 ARM 模板
 
