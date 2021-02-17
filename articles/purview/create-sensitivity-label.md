@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 01/19/2021
-ms.openlocfilehash: b376883ab7d8ef0ffd57a271e74862b684788ebd
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 70aaa528fc86c9e543267b68b5b4cf157ec2dc65
+ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98630270"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100535257"
 ---
 # <a name="automatically-label-your-data-in-azure-purview"></a>在 Azure 监控范围中自动标记数据
 
@@ -41,17 +41,17 @@ ms.locfileid: "98630270"
 有关详细信息，请参阅：
 
 - 了解 Microsoft 365 文档中的[敏感度标签](/microsoft-365/compliance/sensitivity-labels)
-- [什么是 autolabeling 规则？](#what-are-autolabeling-rules)
+- [什么是自动标记规则？](#what-are-auto-labeling-rules)
 - [Azure 监控范围中的敏感标签支持的数据类型](#supported-data-types-for-sensitivity-labels-in-azure-purview)
 - [SQL 数据库列的标签](#labeling-for-sql-database-columns)
 
-#### <a name="what-are-autolabeling-rules"></a>什么是 autolabeling 规则？
+#### <a name="what-are-auto-labeling-rules"></a>什么是自动标记规则？
 
 你的数据不断增长和变化。 跟踪当前未标记的数据，并采取措施手动应用标签并不麻烦，但也是一种不必要的麻烦。 
 
-Autolabeling 规则是你指定的条件，用于说明何时应应用特定标签。 满足这些条件时，会自动将标签分配给数据，并按比例保留数据中一致的敏感度标签。
+自动标记规则是你指定的条件，指出应何时应用特定标签。 满足这些条件时，会自动将标签分配给数据，并按比例保留数据中一致的敏感度标签。
 
-创建标签时，请确保为 " [文件](#define-autolabeling-rules-for-files) " 和 " [数据库" 列](#define-autolabeling-rules-for-database-columns) 都定义 autolabeling 规则，以便在每次数据扫描时自动应用标签。 
+创建标签时，请确保为 [文件](#define-auto-labeling-rules-for-files) 和 [数据库列](#define-auto-labeling-rules-for-database-columns) 定义自动标记规则，以便在每次数据扫描时自动应用标签。 
 
 在监控范围中扫描数据后，可以在 "监控范围目录" 和 "见解报表" 中查看自动应用的标签。
 #### <a name="supported-data-types-for-sensitivity-labels-in-azure-purview"></a>Azure 监控范围中的敏感标签支持的数据类型
@@ -123,10 +123,10 @@ Autolabeling 规则是你指定的条件，用于说明何时应应用特定标�
 
 1. 按照向导中的其余提示设置标签设置。 
 
-    具体而言，为文件和数据库列定义 autolabeling 规则：
+    具体而言，为文件和数据库列定义自动标记规则：
 
-    - [定义文件的 autolabeling 规则](#define-autolabeling-rules-for-files)
-    - [定义数据库列的 autolabeling 规则](#define-autolabeling-rules-for-database-columns)
+    - [定义文件的自动标记规则](#define-auto-labeling-rules-for-files)
+    - [为数据库列定义自动标记规则](#define-auto-labeling-rules-for-database-columns)
 
     有关向导选项的详细信息，请参阅 Microsoft 365 文档中的 [敏感度标签](/microsoft-365/compliance/sensitivity-labels#what-sensitivity-labels-can-do) 。
 
@@ -156,21 +156,21 @@ Autolabeling 规则是你指定的条件，用于说明何时应应用特定标�
 - [查看资产上的标签](#view-labels-on-assets)
 - [查看分类和敏感度标签的见解报告](#view-insight-reports-for-the-classifications-and-sensitivity-labels)
 
-#### <a name="define-autolabeling-rules-for-files"></a>定义文件的 autolabeling 规则
+#### <a name="define-auto-labeling-rules-for-files"></a>定义文件的自动标记规则
 
-创建或编辑标签时，为向导中的文件定义 autolabeling 规则。 
+创建或编辑标签时，为向导中的文件定义自动标记规则。 
 
 在 " **office 应用程序的自动标记** " 页上， **为 Office 应用启用自动标记，** 然后定义你希望标签自动应用于数据的条件。
 
 例如：
 
-:::image type="content" source="media/create-sensitivity-label/create-auto-labeling-rules-files-small.png" alt-text="在 Microsoft 365 安全性和符合性中心定义文件的 autolabeling 规则" lightbox="media/create-sensitivity-label/create-auto-labeling-rules-files.png":::
+:::image type="content" source="media/create-sensitivity-label/create-auto-labeling-rules-files-small.png" alt-text="为 Microsoft 365 安全性和符合性中心中的文件定义自动标记规则" lightbox="media/create-sensitivity-label/create-auto-labeling-rules-files.png":::
  
 有关详细信息，请参阅 Microsoft 365 文档中的 [自动应用敏感标签到数据](/microsoft-365/compliance/apply-sensitivity-label-automatically#how-to-configure-auto-labeling-for-office-apps) 。 
 
-#### <a name="define-autolabeling-rules-for-database-columns"></a>定义数据库列的 autolabeling 规则
+#### <a name="define-auto-labeling-rules-for-database-columns"></a>为数据库列定义自动标记规则
 
-创建或编辑标签时，在向导中为数据库列定义 autolabeling 规则。 
+创建或编辑标签时，在向导中为数据库列定义自动标记规则。 
 
 在 **Azure 监控范围资产 (预览版)** 选项：
 
@@ -180,15 +180,15 @@ Autolabeling 规则是你指定的条件，用于说明何时应应用特定标�
 
 例如：
         
-:::image type="content" source="media/create-sensitivity-label/create-auto-labeling-rules-db-columns-small.png" alt-text="在 Microsoft 365 安全性和符合性中心定义 SQL 列的 autolabeling 规则" lightbox="media/create-sensitivity-label/create-auto-labeling-rules-db-columns.png":::
+:::image type="content" source="media/create-sensitivity-label/create-auto-labeling-rules-db-columns-small.png" alt-text="在 Microsoft 365 安全性和符合性中心为 SQL 列定义自动标记规则" lightbox="media/create-sensitivity-label/create-auto-labeling-rules-db-columns.png":::
 
 ## <a name="scan-your-data-to-apply-labels-automatically"></a>扫描数据以自动应用标签
 
-扫描 Azure 监控范围中的数据，根据定义的 autolabeling 规则自动应用已创建的标签。 
+扫描 Azure 监控范围中的数据，根据定义的自动标记规则自动应用已创建的标签。 
 
 有关如何在 Azure 监控范围中的各种资产上设置扫描的详细信息，请参阅：
 
-|源  |引用  |
+|源  |参考  |
 |---------|---------|
 |**Azure Blob 存储**     |[注册并扫描 Azure Blob 存储](register-scan-azure-blob-storage-source.md)         |
 |**Azure Data Lake 存储**     |[注册和扫描 Azure Data Lake Storage Gen1](register-scan-adls-gen1.md) </br>[注册和扫描 Azure Data Lake Storage Gen2](register-scan-adls-gen2.md)         |
@@ -197,7 +197,7 @@ Autolabeling 规则是你指定的条件，用于说明何时应应用特定标�
 
 ## <a name="view-labels-on-assets"></a>查看资产上的标签
 
-为 Microsoft 365 中的标签定义了 autolabeling 规则并将数据扫描到 Azure 监控范围后，会自动将标签应用到资产。 
+在 Microsoft 365 中的标签定义自动标记规则并在 Azure 监控范围中扫描数据后，标签将自动应用于你的资产。 
 
 **查看 Azure 监控范围目录中应用于资产的标签：**
 

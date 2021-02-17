@@ -3,17 +3,17 @@ title: 诊断多区域环境中 Azure Cosmos SDK 的可用性并对其进行故�
 description: 了解有关在多区域环境中运行时 Azure Cosmos SDK 可用性行为的所有信息。
 author: ealsur
 ms.service: cosmos-db
-ms.date: 10/20/2020
+ms.date: 02/16/2021
 ms.author: maquaran
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: b1c2377ba26b4ca64f5028fb1a51ca4e64f6a67c
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 34c6e7ad8473f02f2772c84ea63aee2a41b97306
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097883"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100559696"
 ---
 # <a name="diagnose-and-troubleshoot-the-availability-of-azure-cosmos-sdks-in-multiregional-environments"></a>诊断多区域环境中 Azure Cosmos SDK 的可用性并对其进行故障排除
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -35,7 +35,7 @@ ms.locfileid: "93097883"
 | 单个写入区域 | 首选区域 | 主要区域  |
 | 多个写入区域 | 首选区域 | 首选区域  |
 
-如果 **未设置首选区域** ，SDK 客户端默认为主要区域：
+如果不设置首选区域，则 SDK 客户端将默认为主要区域：
 
 |帐户类型 |读取 |写入 |
 |------------------------|--|--|
@@ -45,15 +45,15 @@ ms.locfileid: "93097883"
 > [!NOTE]
 > 主要区域是指 [Azure Cosmos 帐户区域列表](distribute-data-globally.md)中的第一个区域
 
-在正常情况下，SDK 客户端将连接到首选区域 (如果将区域首选项设置) 或主要区域 (如果未) 首选项设置，则操作将限制为该区域，除非发生以下任何情况。
+通常情况下，SDK 客户端将连接到首选区域（如果设置了区域首选项）或主要区域（如果未设置首选项），并且操作将限于该区域，除非出现以下任何情况。
 
-在这些情况下，使用 Azure Cosmos SDK 的客户端将公开日志，并在 **操作诊断信息** 中包含重试信息：
+在这些情况下，使用 Azure Cosmos SDK 的客户端都会公开日志，并会将重试信息作为操作诊断信息的一部分包括在内：
 
 * .NET V2 SDK 中有关响应的 RequestDiagnosticsString 属性。
 * .NET V3 SDK 中有关响应和异常的 Diagnostics 属性。
 * Java V4 SDK 中有关响应和异常的 getDiagnostics() 方法。
 
-在按优先顺序确定下一个区域时，SDK 客户端将使用帐户区域列表，并确定首选区域的优先级 (如果有任何) 。
+按优先级顺序确定下一个区域时，SDK 客户端将使用帐户区域列表，对首选区域（如果有）进行优先级排序。
 
 有关这些事件中的 SLA 保证的详细信息，请参阅[可用性 SLA](high-availability.md#slas-for-availability)。
 
@@ -69,7 +69,7 @@ Azure Cosmos SDK 客户端每隔 5 分钟读取一次帐户配置，并刷新其
 
 如果将客户端配置为最好连接到 Azure Cosmos 帐户没有的区域，则将忽略首选区域。 如果以后添加该区域，则客户端会检测到该区域，并永久切换到该区域。
 
-## <a name="fail-over-the-write-region-in-a-single-write-region-account"></a><a id="manual-failover-single-region"></a>在单个写入区域帐户中将写入区域故障转移
+## <a name="fail-over-the-write-region-in-a-single-write-region-account"></a><a id="manual-failover-single-region"></a>对单写入区域帐户中的写入区域进行故障转移
 
 如果启动当前写入区域的故障转移，则下一个写入请求将失败，并返回一个已知的后端响应。 检测到此响应时，客户端将查询帐户以了解新的写入区域，然后继续重试当前操作，并将所有未来的写入操作永久路由到新区域。
 
@@ -79,13 +79,13 @@ Azure Cosmos SDK 客户端每隔 5 分钟读取一次帐户配置，并刷新其
 
 ## <a name="session-consistency-guarantees"></a>会话一致性保证
 
-使用[会话一致性](consistency-levels.md#guarantees-associated-with-consistency-levels)时，客户端需要保证其自身可以读取自己的写入内容。 在读取区域首选项与写入区域不同的单个写入区域帐户中，可能会出现以下情况：用户发出写入，当从本地区域进行读取时，本地区域尚未接收到数据复制（光速约束）。 在这种情况下，SDK 会检测读取操作的特定故障，并在主要区域重试读取操作，以确保会话一致性。
+使用[会话一致性](consistency-levels.md#guarantees-associated-with-consistency-levels)时，客户端需要保证其自身可以读取自己的写入内容。 在读取区域首选项与写入区域不同的单个写入区域帐户中，可能会出现以下情况：用户发出写入，当从本地区域进行读取时，本地区域尚未接收到数据复制（光速约束）。 在这种情况下，SDK 会检测到读取操作中的特定故障，并在主要区域重试读取操作，以确保会话一致性。
 
 ## <a name="transient-connectivity-issues-on-tcp-protocol"></a>TCP 协议上的暂时性连接问题
 
-在 Azure Cosmos SDK 客户端配置为使用 TCP 协议的情况下，对于给定的请求，可能会出现网络状况暂时影响与特定终结点之间的通信的情况。 这些暂时的网络状况可能会显示为 TCP 超时。 在几秒钟内，客户端将在同一终结点上本地重试请求。
+在 Azure Cosmos SDK 客户端配置为使用 TCP 协议的情况下，对于给定的请求，可能会出现网络状况暂时影响与特定终结点之间的通信的情况。 这些临时网络条件可能会显示为 TCP 超时和服务不可用， (HTTP 503) 错误。 在呈现错误之前，客户端会在同一终结点上以本地方式重试请求一秒钟。
 
-如果用户配置了具有多个区域的首选区域列表，Azure Cosmos 帐户是多个写入区域或单个写入区域，并且操作是一个读取请求，则客户端将在首选项列表的下一个区域中重试该单个操作。
+如果用户已配置了具有多个区域的首选区域列表，而 Azure Cosmos 帐户是多个写入区域或单个写入区域，并且操作是一个读取请求，则该客户端将检测本地故障，然后从首选项列表中的下一个区域重试单一操作。
 
 ## <a name="next-steps"></a>后续步骤
 

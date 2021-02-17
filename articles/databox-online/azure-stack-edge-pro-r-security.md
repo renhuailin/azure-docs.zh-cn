@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 10/14/2020
 ms.author: alkohli
-ms.openlocfilehash: 891885dce52ee57fa163bb71b427591156091651
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 922ef24bff7d6e60a3ba3b91113003f8206b8177
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100362841"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100548635"
 ---
 # <a name="security-and-data-protection-for-azure-stack-edge-pro-r-and-azure-stack-edge-mini-r"></a>Azure Stack Edge Pro R 和 Azure Stack 边缘迷你 R 的安全性和数据保护
 
@@ -77,7 +77,7 @@ Azure Stack Edge 服务是 Azure 中托管的一项管理服务。 服务用于�
 
 ### <a name="establish-trust-with-the-device-via-certificates"></a>通过证书建立与设备的信任
 
-Azure Stack 边缘坚固的设备使你可以自带证书，并将其安装到用于所有公共终结点。 有关详细信息，请参阅 " [上传证书](azure-stack-edge-j-series-manage-certificates.md#upload-certificates)"。 若要获取可在设备上安装的所有证书的列表，请参阅 [管理设备上的证书](azure-stack-edge-j-series-manage-certificates.md)。
+Azure Stack 边缘坚固的设备使你可以自带证书，并将其安装到用于所有公共终结点。 有关详细信息，请参阅 " [上传证书](azure-stack-edge-gpu-manage-certificates.md#upload-certificates)"。 若要获取可在设备上安装的所有证书的列表，请参阅 [管理设备上的证书](azure-stack-edge-gpu-manage-certificates.md)。
 
 - 在设备上配置计算时，会创建 IoT 设备和 IoT Edge 设备。 系统会自动为这些设备分配对称访问密钥。 最佳安全做法是通过 IoT 中心服务定期轮换这些密钥。
 

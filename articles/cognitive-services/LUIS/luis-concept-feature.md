@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 08ab71375171d4bb4167c725bc7118bec2e1ebfa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: da85abdff3d1022659f2d4e83fd14c5ae6003fc9
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91371981"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546051"
 ---
 # <a name="machine-learning-features"></a>机器学习特征
 
@@ -22,7 +22,7 @@ ms.locfileid: "91371981"
 
 ## <a name="types-of-features"></a>特征类型
 
-功能是架构设计的必需部分。 LUIS 支持同时使用短语列表和模型作为特征：
+特征是架构设计的必要组成部分。 LUIS 支持同时使用短语列表和模型作为特征：
 
 * 短语列表特征
 * 以模型（意向或实体）作为特征
@@ -160,11 +160,9 @@ ms.locfileid: "91371981"
 
 ### <a name="required-feature-using-prebuilt-entities"></a>使用预生成实体的所需特征
 
-城市、省/市/自治区和国家/地区通常是一组封闭列表，这意味着它们不会随着时间的推移而变化。 这些实体可能具有相关的建议特征，可以将这些特征标记为“所需”。 这意味着，如果找不到具有所需特征的实体，则不会返回整个邮寄地址。
+预先生成的实体（如 city、省/市/自治区和国家/地区）通常是一组封闭的列表，这意味着它们不会随着时间的推移而变化。 这些实体可能具有相关的建议特征，可以将这些特征标记为“所需”。 但是， `isRequired` 标志仅与分配给它的实体相关，不会影响层次结构。 如果未找到预生成的子实体功能，这将不会影响父实体的检测和返回。
 
-如果言语中有城市、省/市/自治区或国家/地区信息，但它们的所在位置不在 LUIS 的预期范畴内，或是一些不在该范畴内的俚语，该怎么办？ 如果要提供一些后期处理来帮助解析该实体，由于该实体在 LUIS 中的置信度评分较低，请勿将该特征标记为“所需”。
-
-邮寄地址的所需特征的另一示例是，将街道编号设置为所需的[预生成](luis-reference-prebuilt-entities.md)编号。 这允许用户输入“1 Microsoft Way”或“One Microsoft Way”。 对于街道编号子实体，两者都解析为数字“1”。
+作为必需功能的一个示例，请考虑要检测地址。 您可以考虑使街道号成为要求。 这将允许用户输入 "1 Microsoft 方式" 或 "一种 Microsoft 方式"，并将这两种方法都解析为街道号子实体的数字 "1"。 有关详细信息，请参阅预生成的 [实体 ](luis-reference-prebuilt-entities.md) 一文。
 
 ### <a name="required-feature-using-list-entities"></a>使用列表实体的所需特征
 
@@ -192,57 +190,57 @@ ms.locfileid: "91371981"
 
 由于用户希望跨任何意向或实体使用辅助语言，因此请将辅助语言中的单词添加到短语列表。 将短语列表配置为全局特征。
 
-## <a name="combine-features-for-added-benefit"></a>合并功能以增加权益
+## <a name="combine-features-for-added-benefit"></a>组合特征以增加效益
 
-可使用多个特征来描述特征或概念。 常见的配对使用：
+可使用多个特征来描述特征或概念。 常见的配对是使用：
 
-* 短语列表功能：可以使用多个短语列表作为同一模型的功能。
-* 作为功能的模型： [预生成实体](luis-reference-prebuilt-entities.md)、 [正则表达式实体](reference-entity-regular-expression.md)、 [列表实体](reference-entity-list.md)。 
+* 短语列表特征：可以使用多个短语列表作为同一模型的特征。
+* 作为特征的模型：[预生成实体](luis-reference-prebuilt-entities.md)、[正则表达式实体](reference-entity-regular-expression.md)、[列表实体](reference-entity-list.md)。 
 
-### <a name="example-ticket-booking-entity-features-for-a-travel-app"></a>示例：旅游应用的票据预订实体功能  
+### <a name="example-ticket-booking-entity-features-for-a-travel-app"></a>示例：旅游应用的订票实体特征  
 
-作为基本示例，请考虑使用航班预订 _意向_ 和票据预订 _实体_来预订航班的应用。 票据预订实体将捕获信息以在预订系统中预订飞机票据。 
+作为基本示例，请考虑这样一个应用：该应用通过一个“航班预订”意向和一个订票实体来预订航班 。 订票实体将捕获信息以在预订系统中预订机票。 
 
-票据书籍的机器学习实体提供两个子实体来捕获源和目标。 需要将这些功能添加到每个子实体，而不是顶级实体。
+用于订票的机器学习实体提供两个子实体来捕获源和目标。 需要将这些特征添加到每个子实体，而不是顶级实体。
 
-:::image type="content" source="media/luis-concept-features/ticket-booking-entity.png" alt-text="Ticketbooking 实体架构":::
+:::image type="content" source="media/luis-concept-features/ticket-booking-entity.png" alt-text="订票实体架构":::
 
-票据预订实体是一种机器学习实体，其中包括 _源_ 和 _目标_子实体。 这些子实体都表示地理位置。 为了帮助提取位置，并区分 _源_ 和 _目标_，每个子实体都应有功能。
+该订票实体是一个机器学习实体，其子实体包括“源”和“目标”。 这些子实体都表示地理位置。 为了帮助提取位置并在“源”和“目标”之间进行区分，每个子实体都应具有特征。
 
-|类型|源子实体 |目标子实体|
+|类型|“源”子实体 |“目标”子实体|
 |--|--|--|
 |作为特征的模型|[geographyV2](luis-reference-prebuilt-geographyv2.md?tabs=V3) 预生成实体|[geographyV2](luis-reference-prebuilt-geographyv2.md?tabs=V3) 预生成实体|
-|短语列表|**原词**： `start at` 、 `begin from` 、 `leave`|**目标关键字**： `to` 、 `arrive` 、 `land at` 、 `go` 、 `going` 、 `stay` 、 `heading`|
-|短语列表|机场代码-源和目标的相同列表|机场代码-源和目标的相同列表|
-|短语列表|机场名称-与源和目标相同的列表|机场代码-源和目标的相同列表|
+|短语列表|“源”字词：`start at`、`begin from`、`leave`|“目标”字词：`to`、`arrive`、`land at`、`go`、`going`、`stay`、`heading`|
+|短语列表|机场代码 - 对源和目标而言均相同的列表|机场代码 - 对源和目标而言均相同的列表|
+|短语列表|机场名称 - 对源和目标而言均相同的列表|机场代码 - 对源和目标而言均相同的列表|
 
-如果预计用户使用机场代码和机场名称，则 LUIS 应包含使用这两种类型短语的短语列表。 使用在聊天机器人中输入的文本，机场代码可能更常见，而机场名称可能更常见，如启用语音的聊天机器人。
+如果预计用户使用机场代码和机场名称，则 LUIS 应包含使用这两种类型的短语的短语列表。 机场代码可能在输入到聊天机器人的文本中更常见，而机场名称可能在语音对话（如启用语音的聊天机器人）中更常见。
 
-仅为模型而不是短语列表返回这些功能的匹配详细信息，因为在预测 JSON 中仅返回模型。
+只会为模型（而不会为短语列表）返回特征的匹配详细信息，因为在预测 JSON 中仅返回模型。
 
-#### <a name="ticket-booking-labeling-in-the-intent"></a>票证预订标签意向
+#### <a name="ticket-booking-labeling-in-the-intent"></a>意向中的订票标记
 
-创建机器学习实体后，需要将最谈话示例添加到意向，并为父实体和所有子实体添加标签。
+创建机器学习实体后，需要将示例言语添加到意向，并标记父实体和所有子实体。
 
-对于票证预订示例，请将最谈话中的示例与 `TicketBooking` 实体和文本中的任何子实体一起标记。
+对于订票示例，使用 `TicketBooking` 实体及其任何子实体在文本中标记意向中的示例言语。
 
-:::image type="content" source="media/luis-concept-features/intent-example-utterances-machine-learning-entity.png" alt-text="Ticketbooking 实体架构":::
+:::image type="content" source="media/luis-concept-features/intent-example-utterances-machine-learning-entity.png" alt-text="标签示例言语":::
 
-### <a name="example-pizza-ordering-app"></a>示例：比萨饼定购应用
+### <a name="example-pizza-ordering-app"></a>示例：比萨饼订购应用
 
-对于第二个示例，请考虑一个适用于比萨饼餐馆的应用，该餐厅接收比萨饼订单，包括某人所订购的比萨饼类型的详细信息。 应尽可能提取每个比萨饼的详细信息，以便完成订单处理。
+对于第二个示例，请考虑一个适用于比萨饼餐馆的应用，该餐馆接收比萨饼订单，包括顾客所订购的比萨饼类型的详细信息。 如果可能，应提取比萨饼的全部详细信息，以便完成订单处理。
 
-本示例中的机器学习实体更复杂，其中包含嵌套的子实体、短语列表、预生成的实体和自定义实体。
+本示例中的机器学习实体更复杂，其中包含嵌套的子实体、短语列表、预生成实体和自定义实体。
 
-:::image type="content" source="media/luis-concept-features/pizza-order-entity.png" alt-text="Ticketbooking 实体架构":::
+:::image type="content" source="media/luis-concept-features/pizza-order-entity.png" alt-text="比萨饼订单实体架构":::
 
-此示例在子实体级别使用功能，并使用子实体级别的子项。 功能的哪种类型的短语列表或模型是实体设计的重要组成部分。
+此示例使用子实体级别的特征，并使用子实体的子级级别的特征。 哪一级别获取哪种类型的短语列表或作为特征的模型，是实体设计的重要部分。
 
-尽管子实体可以有多个短语列表作为有助于检测实体的功能，但每个子实体都只有一个模型作为功能。 在此 [比萨饼应用](https://github.com/Azure/pizza_luis_bot/blob/master/CognitiveModels/MicrosoftPizza.json)中，这些模型主要是列表。
+尽管子实体可以将许多短语列表作为特征以便帮助检测实体，但每个子实体都只有一个作为特征的模型。 在此[比萨饼应用](https://github.com/Azure/pizza_luis_bot/blob/master/CognitiveModels/MicrosoftPizza.json)中，这些模型主要是列表。
 
-:::image type="content" source="media/luis-concept-features/intent-example-utterances-machine-learning-entity-pizza.png" alt-text="Ticketbooking 实体架构":::
+:::image type="content" source="media/luis-concept-features/intent-example-utterances-machine-learning-entity-pizza.png" alt-text="带有已标记的示例言语的比萨饼订单意向":::
 
-标记正确的示例最谈话以显示实体嵌套方式的方式显示。 
+上面显示了已正确标记的示例言语，采用这种显示方式是为了说明实体如何嵌套。 
 
 
 ## <a name="best-practices"></a>最佳实践

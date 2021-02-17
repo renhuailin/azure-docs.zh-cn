@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/25/2019
 ms.author: abpati
 ms.custom: aaddev, devx-track-python, scenarios:getting-started, languages:Python
-ms.openlocfilehash: 3c3eaddf1767a3fa4a2ba73ae7a27f1f7df13990
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: fb38140f09fc7c1eb2c40fc02e8c113cbc6f94a0
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178190"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100103509"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-python-web-app"></a>快速入门：向 Python Web 应用添加 Microsoft 登录功能
 
@@ -40,7 +40,7 @@ ms.locfileid: "98178190"
 >
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>选项 1：注册并自动配置应用，然后下载代码示例
 >
-> 1. 转到 <a href="https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/PythonQuickstartPage/sourceType/docs" target="_blank">Azure 门户 - 应用注册<span class="docon docon-navigate-external x-hidden-focus"></span></a>快速入门体验。
+> 1. 转到 <a href="https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/PythonQuickstartPage/sourceType/docs" target="_blank">Azure 门户 - 应用注册</a>快速入门体验。
 > 1. 输入应用程序的名称并选择“注册”。
 > 1. 遵照说明下载内容，系统会自动配置新应用程序。
 >
@@ -50,7 +50,7 @@ ms.locfileid: "98178190"
 >
 > 若要手动注册应用程序并将应用的注册信息添加到解决方案，请执行以下步骤：
 >
-> 1. 登录到 <a href="https://portal.azure.com/" target="_blank">Azure 门户<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
+> 1. 登录 <a href="https://portal.azure.com/" target="_blank">Azure 门户</a>。
 > 1. 如果有权访问多个租户，请使用顶部菜单中的“目录 + 订阅”筛选器:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::，选择要在其中注册应用程序的租户。
 > 1. 在“管理”下，选择“应用注册” > “新建注册”  。
 > 1. 输入应用程序的名称（例如 `python-webapp`）。 应用的用户可能会看到此名称，你稍后可对其进行更改。
@@ -65,7 +65,7 @@ ms.locfileid: "98178190"
 > 1. 键入密钥说明（例如应用机密），保留默认的到期日期，然后选择“添加”。
 > 1. 记下“客户端密码”的值以供稍后使用 。
 > 1. 在“管理”下，选择“API 权限” > “添加权限”  。
->1.  确保已选择“Microsoft API”选项卡。
+> 1. 确保已选择“Microsoft API”选项卡。
 > 1. 在“常用 Microsoft API”部分，选择“Microsoft Graph”。
 > 1. 在“委托的权限”部分中，确保已勾选正确的权限：**User.ReadBasic.All**。 如有必要，请使用搜索框。
 > 1. 选择“添加权限”按钮。
@@ -74,7 +74,7 @@ ms.locfileid: "98178190"
 >
 > #### <a name="step-1-configure-your-application-in-azure-portal"></a>步骤 1：在 Azure 门户中配置应用程序
 >
-> 若要正常运行本快速入门中的代码示例，需要：
+> 为使此快速入门中的代码示例正常运行：
 >
 > 1. 将答复 URL 添加为 `http://localhost:5000/getAToken`。
 > 1. 创建客户端机密。

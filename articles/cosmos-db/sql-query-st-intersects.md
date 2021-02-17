@@ -5,20 +5,20 @@ author: ginamr
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 11/23/2020
+ms.date: 02/17/2021
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 2fca6e94f61ff4d21886bf81a56afa032c8773c1
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: c123446c7d7f654f0e3ace6c9d92983558509c75
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96004443"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100559955"
 ---
 # <a name="st_intersects-azure-cosmos-db"></a>ST_INTERSECTS (Azure Cosmos DB)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
- 返回一个布尔表达式，该表达式指示第一个参数中指定的 GeoJSON 对象 (点、多边形、MultiPolygon 或 LineString) 是否与第二个参数中的 GeoJSON (点、多边形、MultiPolygon 或 LineString) 相交。  
+ 返回一个布尔表达式，指示在第一个参数中指定的 GeoJSON 对象（Point、Polygon、MultiPolygon 或 LineString）是否与第二个参数中的 GeoJSON（Point、Polygon、MultiPolygon 或 LineString）相交。  
   
 ## <a name="syntax"></a>语法
   
@@ -56,7 +56,7 @@ WHERE ST_INTERSECTS(a.location, {
 
 ## <a name="remarks"></a>备注
 
-此系统函数将从[地理空间索引](index-policy.md#spatial-indexes)中获益。
+此系统函数将从 [地理空间索引](index-policy.md#spatial-indexes) 中受益，但包含聚合的查询除外。
 
 ## <a name="next-steps"></a>后续步骤
 

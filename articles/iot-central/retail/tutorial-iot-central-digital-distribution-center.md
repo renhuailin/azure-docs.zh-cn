@@ -7,22 +7,21 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: tutorial
 ms.date: 10/20/2019
-ms.openlocfilehash: 59b688803260220866fc331506429a5990c8760a
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 9d7c4d2afa8eaf197ec05bcb0aed654153fb8f0d
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97346191"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99831291"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-digital-distribution-center-application-template"></a>教程：部署并演练数字分发中心应用程序模板
-
-
 
 本教程介绍如何开始部署 IoT Central 数字分发中心应用程序模板  。 你将了解如何部署模板、有哪些现成的内容以及接下来要执行哪些操作。
 
 本教程介绍如何执行下列操作： 
-* 创建数字分发中心应用程序 
-* 演练应用程序 
+
+> [!div class="checklist"]
+> 创建数字分发中心应用程序并进行演练 
 
 ## <a name="prerequisites"></a>先决条件
 * 无需满足特定的先决条件，就可以部署此应用
@@ -110,8 +109,8 @@ ms.locfileid: "97346191"
 > ![显示如何在使用应用程序后将其删除的屏幕截图](./media/tutorial-iot-central-ddc/ddc-cleanup.png)
 
 ## <a name="next-steps"></a>后续步骤
-* 详细了解数字分发中心解决方案体系结构 
+
+详细了解数字分发中心解决方案体系结构：
+
 > [!div class="nextstepaction"]
 > [数字分发中心概念](./architecture-digital-distribution-center.md)
-* 详细了解其他 [IoT Central 零售模板](./overview-iot-central-retail.md)
-* 请参阅 [IoT Central 概述](../core/overview-iot-central.md)，详细了解 IoT Central

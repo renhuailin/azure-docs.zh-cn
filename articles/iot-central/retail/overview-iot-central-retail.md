@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure IoT Central 生成零售解决方案 | Microsoft Docs
+title: 什么是 Azure IoT Central 零售解决方案 | Microsoft Docs
 description: 了解如何使用 Azure IoT Central 应用程序模板构建联接的物流、数字分发中心、店内分析环境监视、结帐、智能库存管理以及零售解决方案。
 author: avneet723
 ms.author: avneets
@@ -8,14 +8,14 @@ ms.topic: overview
 ms.service: iot-central
 ms.subservice: iot-central-retail
 services: iot-central
-ms.openlocfilehash: 43bf91c83f66b05c448e52286b34c51a9fd30a2b
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 56198cf661001bcfcec45d483d0f691234851894
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92124956"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99832277"
 ---
-# <a name="building-retail-solutions-with-azure-iot-central"></a>使用 Azure IoT Central 生成零售解决方案
+# <a name="what-are-the-iot-central-retail-solutions"></a>什么是 IoT Central 零售解决方案？
 
 Azure IoT Central 是一个 IoT 应用平台，可减轻与开发、管理和维护企业级 IoT 解决方案相关联的负担和成本。 选择使用 Azure IoT Central 进行构建可将时间、金钱和精力集中于使用 IoT 数据转换业务，而不仅仅是维护和更新复杂且不断发展的 IoT 基础结构。
 
@@ -41,9 +41,9 @@ Azure IoT Central 是一个 IoT 应用平台，可减轻与开发、管理和维
 
 以下屏幕截图显示了应用程序模板中的现成仪表板。 该仪表板可完全自定义，以满足你的特定解决方案要求：
 
-:::image type="content" source="media/overview-iot-central-retail/connected-logistics-dashboard1.png" alt-text="Azure IoT 零售概述":::
+:::image type="content" source="media/overview-iot-central-retail/connected-logistics-dashboard1.png" alt-text="显示互联物流操作仪表板的上半部分的屏幕截图。":::
 
-:::image type="content" source="media/overview-iot-central-retail/connected-logistics-dashboard2.png" alt-text="Azure IoT 零售概述":::
+:::image type="content" source="media/overview-iot-central-retail/connected-logistics-dashboard2.png" alt-text="显示互联物流操作仪表板的下半部分的屏幕截图。":::
 
 若要了解详细信息，请参阅[部署并演练互联物流应用程序模板](./tutorial-iot-central-connected-logistics.md)教程。
 
@@ -64,7 +64,7 @@ Azure IoT Central 是一个 IoT 应用平台，可减轻与开发、管理和维
 
 以下屏幕截图显示了应用程序模板中的现成仪表板。 该仪表板可完全自定义，以满足你的特定解决方案要求： 
 
-:::image type="content" source="media/overview-iot-central-retail/digital-distribution-center-dashboard.png" alt-text="Azure IoT 零售概述":::
+:::image type="content" source="media/overview-iot-central-retail/digital-distribution-center-dashboard.png" alt-text="数字分发中心仪表板":::
 
 若要了解详细信息，请参阅[部署并演练数字分发中心应用程序模板](./tutorial-iot-central-digital-distribution-center.md)教程。
 
@@ -86,7 +86,7 @@ Azure IoT Central 是一个 IoT 应用平台，可减轻与开发、管理和维
 
 以下屏幕截图显示了应用程序模板中的现成仪表板。 该仪表板可完全自定义，以满足你的特定解决方案要求： 
 
-:::image type="content" source="media/overview-iot-central-retail/in-store-analytics-condition-dashboard.png" alt-text="Azure IoT 零售概述":::
+:::image type="content" source="media/overview-iot-central-retail/in-store-analytics-condition-dashboard.png" alt-text="店内分析环境监视":::
 
 若要了解详细信息，请参阅[在 Azure IoT Central 中创建店内分析应用程序](./tutorial-in-store-analytics-create-app.md)教程。
 
@@ -108,7 +108,7 @@ Azure IoT Central 是一个 IoT 应用平台，可减轻与开发、管理和维
 
 以下屏幕截图显示了应用程序模板中的现成仪表板。 该仪表板可完全自定义，以满足你的特定解决方案要求： 
 
-:::image type="content" source="media/overview-iot-central-retail/In-Store-Analytics-Checkout-Dashboard.png" alt-text="Azure IoT 零售概述":::
+:::image type="content" source="media/overview-iot-central-retail/In-Store-Analytics-Checkout-Dashboard.png" alt-text="店内分析结帐":::
 
 若要了解详细信息，请参阅[在 Azure IoT Central 中创建店内分析应用程序](./tutorial-in-store-analytics-create-app.md)教程。
 
@@ -128,7 +128,7 @@ Azure IoT Central 是一个 IoT 应用平台，可减轻与开发、管理和维
 
 以下屏幕截图显示了应用程序模板中的现成仪表板。 该仪表板可完全自定义，以满足你的特定解决方案要求：
 
-:::image type="content" source="media/overview-iot-central-retail/smart-inventory-management-dashboard.png" alt-text="Azure IoT 零售概述":::
+:::image type="content" source="media/overview-iot-central-retail/smart-inventory-management-dashboard.png" alt-text="智能库存管理仪表板":::
 
 若要了解详细信息，请参阅[部署和演练智能库存管理应用程序模板](./tutorial-iot-central-smart-inventory-management.md)教程。
 
@@ -148,7 +148,7 @@ Azure IoT Central 是一个 IoT 应用平台，可减轻与开发、管理和维
 
 以下屏幕截图显示了应用程序模板中的现成仪表板。 该仪表板可完全自定义，以满足你的特定解决方案要求：
 
-:::image type="content" source="media/overview-iot-central-retail/MFC-Dashboard.png" alt-text="Azure IoT 零售概述":::
+:::image type="content" source="media/overview-iot-central-retail/MFC-Dashboard.png" alt-text="微履行中心":::
 
 若要了解详细信息，请参阅[部署并演练微履行中心应用程序模板](./tutorial-micro-fulfillment-center.md)教程。
 
@@ -165,7 +165,7 @@ Azure IoT Central 是一个 IoT 应用平台，可减轻与开发、管理和维
 * “(示例)真实相机管理”使用模拟相机展示如何在应用程序中管理相机。
 * “(示例)真实相机监视器”使用模拟相机展示如何在应用程序中监视相机。
 
-:::image type="content" source="media/overview-iot-central-retail/live-video-analytics.png" alt-text="Azure IoT 零售概述":::
+:::image type="content" source="media/overview-iot-central-retail/live-video-analytics.png" alt-text="视频分析 - 对象和运动检测":::
 
 若要详细了解该解决方案的体系结构，请参阅[视频分析应用程序体系结构](architecture-video-analytics.md)。
 
@@ -180,9 +180,5 @@ Azure IoT Central 是一个 IoT 应用平台，可减轻与开发、管理和维
 开始生成零售解决方案：
 
 * 请从[在 Azure IoT Central 中创建店内分析应用程序](./tutorial-in-store-analytics-create-app.md)入手，它分步介绍了如何利用某个店内分析应用程序模板来构建解决方案。
-* [部署并演练互联物流应用程序模板](./tutorial-iot-central-connected-logistics.md)。
-* [部署并演练数字分发中心应用程序模板](./tutorial-iot-central-digital-distribution-center.md)。
-* [部署并演练智能库存管理应用程序模板](./tutorial-iot-central-smart-inventory-management.md)。
-* [部署并演练微履行中心应用程序模板](./tutorial-micro-fulfillment-center.md)。
 * [部署并演练视频分析应用程序模板](./tutorial-video-analytics-deploy.md)。
-* 若要详细了解 IoT Central，请参阅 [IoT Central 概述](../core/overview-iot-central.md)。
+* [部署并演练互联物流应用程序模板](./tutorial-iot-central-connected-logistics.md)。

@@ -12,23 +12,23 @@ ms.date: 09/03/2020
 ms.author: marsma
 ms.custom: aaddev, identityplatformtop40, contperf-fy21q1, contperf-fy21q2
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: 6052e2243f8b31aa57d4abf27c24a4b045c9eae2
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 430ab980f51ff06ad5e39d6402abf5f649cc6d39
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98754635"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99593089"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>快速入门：将应用程序注册到 Microsoft 标识平台
 
 在本快速入门中，你将在 Azure 门户中注册一个应用，以便 Microsoft 标识平台可为该应用程序及其用户提供身份验证和授权服务。
 
-希望 Microsoft 标识平台执行标识和访问管理 (IAM) 的每个应用程序都需要注册。 无论是类似于 Web 应用或移动应用的客户端应用程序是，还是支持客户端应用的 Web API，注册它都会在应用程序与标识提供程序（Microsoft 标识平台）之间建立信任关系。
+Microsoft 标识平台仅对已注册的应用程序执行标识和访问管理 (IAM)。 无论是类似于 Web 应用或移动应用的客户端应用程序是，还是支持客户端应用的 Web API，注册它都会在应用程序与标识提供程序（Microsoft 标识平台）之间建立信任关系。
 
 ## <a name="prerequisites"></a>先决条件
 
-* 具备有效订阅的 Azure 帐户 - [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-* 完成[快速入门：设置租户](quickstart-create-new-tenant.md)
+* 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+* 完成[设置租户](quickstart-create-new-tenant.md)快速入门。
 
 ## <a name="register-an-application"></a>注册应用程序
 
@@ -37,33 +37,33 @@ ms.locfileid: "98754635"
 按照以下步骤创建应用注册：
 
 1. 登录到 <a href="https://portal.azure.com/" target="_blank">Azure 门户<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
-1. 如果有权访问多个租户，请使用顶部菜单中的“目录 + 订阅”筛选器:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::，选择要在其中注册应用程序的租户。
+1. 如果你有权访问多个租户，请在顶部菜单中，使用“目录 + 订阅”筛选器 :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: 选择要在其中注册应用程序的租户。
 1. 搜索并选择“Azure Active Directory”  。
 1. 在“管理”下，选择“应用注册” > “新建注册”  。
-1. 输入应用程序的 **名称**。 应用的用户可能会看到此名称，你稍后可对其进行更改。
+1. 输入应用程序的 **名称**。 应用的用户可能会看到此名称。 稍后可对其进行更改。
 1. 指定可使用该应用程序的人员，这有时称为“登录访问者”。
 
     | 支持的帐户类型 | 说明 |
     |-------------------------|-------------|
-    | **仅此组织目录中的帐户** | 如果要生成仅供租户中的用户（或来宾）使用的应用程序，请选择此选项。<br><br>通常称为业务线 (LOB) 应用程序，这是 Microsoft 标识平台中的单租户应用程序。 |
-    | **任何组织目录中的帐户** | 如果希望任何 Azure AD 租户中的用户都能够使用你的应用程序，请选择此选项。 例如，如果要构建打算向多个组织提供的软件即服务 (SaaS) 应用程序，则适合使用此选项。<br><br>这在 Microsoft 标识平台中被称为多租户应用程序。 |
-    | **任何组织目录中的帐户和个人 Microsoft 帐户** | 若要面向最广泛的客户，请选择此选项。<br><br>通过选择此选项，将注册一个多租户应用程序，该应用还可支持使用 Microsoft 个人帐户 (MSA) 的用户 。 |
+    | **仅此组织目录中的帐户** | 如果要生成仅供租户中的用户（或来宾）使用的应用程序，请选择此选项。<br><br>通常称为业务线 (LOB) 应用程序，这是 Microsoft 标识平台中的单租户应用程序 。 |
+    | **任何组织目录中的帐户** | 如果希望任何 Azure Active Directory (Azure AD) 租户中的用户都能够使用你的应用程序，请选择此选项。 例如，如果要构建打算向多个组织提供的软件即服务 (SaaS) 应用程序，则适合使用此选项。<br><br>这类应用在 Microsoft 标识平台中被称为多租户应用程序。 |
+    | **任何组织目录中的帐户和个人 Microsoft 帐户** | 若要面向最广泛的客户，请选择此选项。<br><br>通过选择此选项，将注册一个多租户应用程序，该应用还可支持拥有 Microsoft 个人帐户的用户 。 |
     | **Microsoft 个人帐户** | 如果要构建仅供具有 Microsoft 个人帐户的用户使用的应用程序，请选择此选项。 Microsoft 个人帐户包括 Skype、Xbox、Live 和 Hotmail 帐户。 |
 
-1. 请勿对“重定向 URI (可选)”输入任何内容，你将在下一部分中进行配置。
+1. 请勿对“重定向 URI (可选)”输入任何内容。 你将在下一部分配置重定向 URI。
 1. 选择“注册”，完成初始应用注册。
 
     :::image type="content" source="media/quickstart-register-app/portal-02-app-reg-01.png" alt-text="Web 浏览器中 Azure 门户的屏幕截图，其中显示了“注册应用程序”窗格。":::
 
-注册完成后，Azure 门户会显示应用注册的“概述”窗格，其中包括其应用程序（客户端）ID 。 此值也被称为客户端 ID，它可唯一地标识 Microsoft 标识平台中的应用程序。
+注册完成后，Azure 门户会显示应用注册的“概述”窗格。 你会看到应用程序（客户端）ID。 此值也被称为客户端 ID，它可唯一地标识 Microsoft 标识平台中的应用程序。
 
-应用程序的代码（或者更通常是应用程序中使用的身份验证库）也将使用客户端 ID 来验证从标识平台接收的安全令牌。
+应用程序的代码（更多情况下通常是应用程序中使用的身份验证库）也会使用客户端 ID。 在验证它从标识平台中接收的安全令牌时，会使用此 ID。
 
 :::image type="content" source="media/quickstart-register-app/portal-03-app-reg-02.png" alt-text="Web 浏览器中 Azure 门户的屏幕截图，其中显示了应用注册的“概述”窗格。":::
 
 ## <a name="add-a-redirect-uri"></a>添加重定向 URI
 
-重定向 URI 是 Microsoft 标识平台重定向用户客户端并在身份验证后发送安全令牌的位置。
+Microsoft 标识平台在重定向 URI 处重定向用户客户端并在身份验证后发送安全令牌。
 
 例如，在生产 Web 应用程序中，重定向 URI 通常是运行应用的公共终结点，比如 `https://contoso.com/auth-response`。 在开发过程中，通常还会添加在本地运行应用的终结点，例如 `https://127.0.0.1/auth-response` 或 `http://localhost/auth-response`。
 
@@ -75,25 +75,25 @@ ms.locfileid: "98754635"
 
 若要根据面向的平台或设备配置应用程序设置：
 
-1. 在 Azure 门户中的“应用注册”中选择你的应用程序。
+1. 在 Azure 门户中的“应用注册”中，选择你的应用程序。
 1. 在“管理”下，选择“身份验证”。 
 1. 在“平台配置”下，选择“添加平台” 。
-1. 在“配置平台”中，为应用程序类型（平台）选择磁贴，以配置其设置。
+1. 在“配置平台”下，选择应用程序类型（平台）的磁贴来配置其设置。
 
-    :::image type="content" source="media/quickstart-register-app/portal-04-app-reg-03-platform-config.png" alt-text="Azure 门户中的“平台配置”窗格的屏幕截图" border="false":::
+    :::image type="content" source="media/quickstart-register-app/portal-04-app-reg-03-platform-config.png" alt-text="Azure 门户中的“平台配置”窗格的屏幕截图。" border="false":::
 
     | 平台 | 配置设置 |
     | -------- | ---------------------- |
-    | **Web** | 输入应用的重定向 URI，即 Microsoft 标识平台重定向用户客户端并在身份验证后发送安全令牌的位置。<br/><br/>为服务器上运行的标准 Web 应用程序选择此平台。 |
-    | **单页应用程序** | 输入应用的重定向 URI，即 Microsoft 标识平台重定向用户客户端并在身份验证后发送安全令牌的位置。<br/><br/>如果要在 JavaScript 中或使用 Angular、Vue.js、React.js 或 Blazor WebAssembly 等框架构建客户端 Web 应用，请选择此平台。 |
-    | **iOS/macOS** | 输入应用捆绑 ID，可在 info.plist 中的 XCode 或生成设置中找到。<br/><br/>如果指定捆绑 ID，将生成重定向 URI。 |
-    | **Android** | 输入应用包名称（可在 AndroidManifest.xml 文件中找到），然后生成并输入签名哈希。<br/><br/>如果指定这些设置，将生成重定向 URI。 |
-    | **移动和桌面应用程序** | 选择建议的重定向 URI 之一，或指定自定义重定向 URI 。<br/>对于桌面应用程序，建议：<br/>`https://login.microsoftonline.com/common/oauth2/nativeclient`<br/><br/>对于不使用最新 Microsoft 身份验证库 (MSAL) 或不使用代理的移动应用程序，请选择此平台。 同时也为桌面应用程序选择此平台。 |
+    | **Web** | 输入应用的重定向 URI。 Microsoft 标识平台在此 URI 处重定向用户客户端并在身份验证后发送安全令牌。<br/><br/>为服务器上运行的标准 Web 应用程序选择此平台。 |
+    | **单页应用程序** | 输入应用的重定向 URI。 Microsoft 标识平台在此 URI 处重定向用户客户端并在身份验证后发送安全令牌。<br/><br/>如果要在 JavaScript 中或使用 Angular、Vue.js、React.js 或 Blazor WebAssembly 等框架构建客户端 Web 应用，请选择此平台。 |
+    | **iOS/macOS** | 输入应用捆绑 ID。 可在“生成设置”或 Xcode 中的 Info.plist 内找到此信息。<br/><br/>指定捆绑 ID 时，系统会为你生成重定向 URI。 |
+    | **Android** | 输入应用的包名称。 可在 AndroidManifest.xml 文件中找到它。 也请生成签名哈希并输入它。<br/><br/>如果指定这些设置，将生成重定向 URI。 |
+    | **移动和桌面应用程序** | 选择其中一个建议的重定向 URI。 或者指定自定义重定向 URI。<br/><br/>对于桌面应用程序，我们建议<br/>`https://login.microsoftonline.com/common/oauth2/nativeclient`<br/><br/>对于不使用最新的 Microsoft 身份验证库 (MSAL) 或未在使用代理的移动应用程序，请选择此平台。 同时也为桌面应用程序选择此平台。 |
 1. 选择“配置”以完成平台配置。
 
 ### <a name="redirect-uri-restrictions"></a>重定向 URI 限制
 
-对于添加到应用注册的重定向 URI 的格式，存在某些限制。 有关这些限制的详细信息，请参阅[重定向 URI（回复 URL）的限制和局限](reply-url.md)。
+对于添加到应用注册的重定向 URI，其格式方面存在某些限制。 有关这些限制的详细信息，请参阅[重定向 URI（回复 URL）的限制和局限](reply-url.md)。
 
 ## <a name="add-credentials"></a>添加凭据
 
@@ -101,35 +101,36 @@ ms.locfileid: "98754635"
 
 可将证书和客户端密码（字符串）作为凭据添加到机密客户端应用注册。
 
-:::image type="content" source="media/quickstart-register-app/portal-05-app-reg-04-credentials.png" alt-text="Azure 门户的屏幕截图，其中显示了应用注册中的“证书和密码”窗格":::
+:::image type="content" source="media/quickstart-register-app/portal-05-app-reg-04-credentials.png" alt-text="Azure 门户的屏幕截图，其中显示了应用注册中的“证书和密码”窗格。":::
 
 ### <a name="add-a-certificate"></a>添加证书
 
-证书有时被称为公钥，它们是推荐的凭据类型，因为它们提供的保证级别比客户端密码高。 有关在应用程序中使用证书作为身份验证方法的详细信息，请参阅 [Microsoft 标识平台应用程序身份验证证书凭据](active-directory-certificate-credentials.md)
+证书有时也被称为公钥，它是推荐的凭据类型。 它比客户端密码提供更多的保障。 若要详细了解如何在应用程序中使用证书作为身份验证方法，请参阅 [Microsoft 标识平台应用程序身份验证证书凭据](active-directory-certificate-credentials.md)。
 
-1. 在 Azure 门户中的“应用注册”中选择你的应用程序。
+1. 在 Azure 门户中的“应用注册”中，选择你的应用程序。
 1. 选择“证书和密码” > “上传证书” 。
-1. 选择要上传的文件。 它必须是以下文件类型之一：.cer、.pem、.crt。
+1. 选择你想要上传的文件。 它必须是以下文件类型之一：.cer、.pem、.crt  。
 1. 选择 **添加** 。
 
 ### <a name="add-a-client-secret"></a>添加客户端密码
 
-客户端密码（也称为应用程序密码）是应用可用于代替证书来标识自身的字符串。 这是两种凭证类型中更容易使用的一种，而且通常在开发过程中使用，但它不如证书安全。 应在生产环境中运行的应用程序中使用证书。 有关应用程序安全建议的详细信息，请参阅 [Microsoft 标识平台最佳做法和建议](identity-platform-integration-checklist.md#security)
+客户端密码也称为应用程序密码。 它是一个字符串值，应用可用它取代证书来标识自身。 客户端密码是两种凭据类型中更易使用的一种。 它常常在开发过程中使用，但它的安全性不如证书。 请在生产环境中运行的应用程序中使用证书。 
 
-1. 在 Azure 门户中的“应用注册”中选择你的应用程序。
+若要详细了解应用程序安全建议，请参阅 [Microsoft 标识平台最佳做法和建议](identity-platform-integration-checklist.md#security)。
+
+1. 在 Azure 门户中的“应用注册”中，选择你的应用程序。
 1. 选择“证书和密码” >  “新建客户端密码” 。
 1. 添加客户端机密的说明。
 1. 选择持续时间。
 1. 选择 **添加** 。
-1. “记录密码的值”，以便在客户端应用程序中使用 - 离开此页面后，它将不再显示。
+1. 记录机密的值，以便在客户端应用程序代码中使用。 退出此页面后，此机密值永不再显示。
 
-**注意：** 连同机密值一起生成的 ID 是机密的 ID，该 ID 不同于应用程序 ID。
 
 ## <a name="next-steps"></a>后续步骤
 
-客户端应用程序通常需要访问 Web API 中的资源。 除了使用 Microsoft 标识平台保护客户端应用程序以外，还可使用平台对 Web API 进行范围内基于权限的访问。
+客户端应用程序通常需要访问 Web API 中的资源。 可使用 Microsoft 标识平台来保护客户端应用程序。 还可使用该平台授予对 Web API 的设有范围且基于权限的访问。
 
-请转到本系列的下一篇快速入门，为 Web API 创建另一个应用注册并公开其范围。
+转到本系列的下一篇快速入门，为 Web API 再创建一个应用注册并公开其范围。
 
 > [!div class="nextstepaction"]
 > [配置应用程序以公开 Web API](quickstart-configure-app-expose-web-apis.md)

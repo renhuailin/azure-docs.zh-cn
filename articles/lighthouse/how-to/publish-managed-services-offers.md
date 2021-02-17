@@ -1,14 +1,14 @@
 ---
 title: 将托管服务产品/服务发布到 Azure Marketplace
 description: 了解如何发布加入客户到 Azure Lighthouse 的托管服务产品/服务。
-ms.date: 02/10/2021
+ms.date: 02/16/2021
 ms.topic: how-to
-ms.openlocfilehash: 9abac28d982e5b33bc4952f73336810abcb44e45
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 3af460f17533d70b24f76ab40460a5fa920cdece
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100372054"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555807"
 ---
 # <a name="publish-a-managed-service-offer-to-azure-marketplace"></a>将托管服务产品/服务发布到 Azure Marketplace
 
@@ -56,7 +56,7 @@ ms.locfileid: "100372054"
 客户添加你的产品/服务后，他们将能够 [委托一个或多个特定订阅或资源组，这些订阅或资源组](view-manage-service-providers.md#delegate-resources)将载入到 Azure Lighthouse。 如果客户已接受产品/服务但尚未委托任何资源，则他们会在 Azure 门户[“服务提供商”](view-manage-service-providers.md)页中“提供商产品/服务”部分的顶部看到备注。
 
 > [!IMPORTANT]
-> 委托必须由客户租户中的非来宾帐户完成，此帐户具有 (载入订阅的 [所有者内置角色](../../role-based-access-control/built-in-roles.md#owner) ，或包含正在载入的资源组) 。 若要查看所有可以委托订阅的用户，客户租户中的用户可以在 Azure 门户中选择订阅，打开“访问控制(IAM)”，然后[查看具有“所有者”角色的所有用户](../../role-based-access-control/role-assignments-list-portal.md#list-owners-of-a-subscription)。
+> 委托必须由客户租户中具有权限的非来宾帐户（如所有者、拥有权限的角色， `Microsoft.Authorization/roleAssignments/write` 如载入 (或[](../../role-based-access-control/built-in-roles.md#owner)包含正在载入的资源组) 。 若要查找可委派订阅的用户，客户租户中的用户可以在 "Azure 门户中选择订阅，打开" **访问控制 ("IAM)**，然后 [查看具有" 所有者 "角色的所有用户](../../role-based-access-control/role-assignments-list-portal.md#list-owners-of-a-subscription)。
 
 在客户将订阅委托 (或订阅中的一个或多个资源组后) ，将为该订阅注册 **ManagedServices** 资源提供程序，租户中的用户将能够根据你的产品/服务中的授权访问委派的资源。
 

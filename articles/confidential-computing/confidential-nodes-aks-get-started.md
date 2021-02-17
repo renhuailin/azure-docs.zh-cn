@@ -4,14 +4,14 @@ description: 了解如何使用机密节点创建 AKS 群集，以及如何使�
 author: agowdamsft
 ms.service: container-service
 ms.topic: quickstart
-ms.date: 12/11/2020
+ms.date: 2/5/2020
 ms.author: amgowda
-ms.openlocfilehash: 92b4cd58b496602b479a24bab81a1d9322e732b0
-ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
+ms.openlocfilehash: b6fe8f4fe34799a71d59b7487d96217b4ac6a429
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97760633"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99833197"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-with-confidential-computing-nodes-dcsv2-using-azure-cli-preview"></a>快速入门：使用 Azure CLI 通过机密计算节点 (DCsv2) 部署 Azure Kubernetes 服务 (AKS) 群集（预览）
 
@@ -75,7 +75,7 @@ az provider register --namespace Microsoft.ContainerService
 ```
 
 ### <a name="azure-confidential-computing-feature-registration-on-azure-optional-but-recommended"></a>Azure 上的 Azure 机密计算功能注册（可选，但建议使用）
-在 Azure 订阅中注册 AKS-ConfidentialComputinAddon。 此功能将添加两个守护程序，如[此处](./confidential-nodes-aks-overview.md#aks-provided-daemon-sets-addon)详述：
+在 Azure 订阅中注册 AKS-ConfidentialComputingAddon。 此功能将添加两个守护程序，如[此处](./confidential-nodes-aks-overview.md#aks-provided-daemon-sets-addon)详述：
 1. SGX 设备驱动程序插件
 2. SGX 证明引用帮助程序
 
@@ -85,7 +85,7 @@ az feature register --name AKS-ConfidentialComputingAddon --namespace Microsoft.
 状态可能需要几分钟才显示为“已注册”。 可使用“az feature list”命令来检查注册状态。 此功能注册只对每个订阅执行一次。 如果以前注册过，则可以跳过上述步骤：
 
 ```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKS-ConfidentialComputinAddon')].{Name:name,State:properties.state}"
+az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKS-ConfidentialComputingAddon')].{Name:name,State:properties.state}"
 ```
 当状态显示为“已注册”时，使用“az provider register”命令刷新 Microsoft.ContainerService 资源提供程序的注册：
 
@@ -143,12 +143,12 @@ kube-system     sgx-quote-helper-xxxx      1/1     Running
 首先，我们将功能添加到 Azure 订阅
 
 ```azurecli-interactive
-az feature register --name AKS-ConfidentialComputinAddon --namespace Microsoft.ContainerService
+az feature register --name AKS-ConfidentialComputingAddon --namespace Microsoft.ContainerService
 ```
 状态可能需要几分钟才显示为“已注册”。 可使用“az feature list”命令来检查注册状态。 此功能注册只对每个订阅执行一次。 如果以前注册过，则可以跳过上述步骤：
 
 ```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKS-ConfidentialComputinAddon')].{Name:name,State:properties.state}"
+az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKS-ConfidentialComputingAddon')].{Name:name,State:properties.state}"
 ```
 当状态显示为“已注册”时，使用“az provider register”命令刷新 Microsoft.ContainerService 资源提供程序的注册：
 

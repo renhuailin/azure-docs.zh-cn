@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: c1ae52b2b92c5c8d5a1a98632e19d3140672d6ea
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 565ba3f7cd02a5ca8a3a858dc29a8fa6c7df16c1
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99585035"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546000"
 ---
 # <a name="form-recognizer-prebuilt-receipt-model"></a>窗体识别器预生成接收模型
 
@@ -40,11 +40,11 @@ Azure 窗体识别器可以使用其预生成的接收模型分析和提取销�
 
 |名称| 类型 | 说明 | 文本 | 值 (标准化输出)  |
 |:-----|:----|:----|:----| :----|
-| ReceiptType | string | 销售收据类型 | 经费 |  |
-| MerchantName | string | 发出收据的商家的名称 | Contoso |  |
+| ReceiptType | 字符串 | 销售收据类型 | 经费 |  |
+| MerchantName | 字符串 | 发出收据的商家的名称 | Contoso |  |
 | MerchantPhoneNumber | phoneNumber | 商家列出的电话号码 | 987-654-3210 | + 19876543210 |
-| MerchantAddress | string | 商家的已列出地址 | 123主要 St Redmond WA 98052 |  |
-| TransactionDate | date | 发出回执的日期 | 6月6日，2019 | 2019-06-26  |
+| MerchantAddress | 字符串 | 商家的已列出地址 | 123主要 St Redmond WA 98052 |  |
+| TransactionDate | 日期 | 发出回执的日期 | 6月6日，2019 | 2019-06-26  |
 | TransactionTime | time | 发出回执的时间 | 4:49 PM | 16:49:00  |
 | 总计 | number | 全部交易总计（接收） | $14.34 | 14.34 |
 | 小计 | number | 收据小计，通常在应用税款之前 | $12.34 | 12.34 |
@@ -104,7 +104,7 @@ Azure 窗体识别器可以使用其预生成的接收模型分析和提取销�
 
 |字段| 类型 | 可能值 |
 |:-----|:----:|:----|
-|status | string | notStarted：分析操作尚未开始。 |
+|status | 字符串 | notStarted：分析操作尚未开始。 |
 | |  | 正在运行：分析操作正在进行。 |
 | |  | 失败：分析操作失败。 |
 | |  | succeeded：分析操作成功。 |
@@ -115,7 +115,12 @@ Azure 窗体识别器可以使用其预生成的接收模型分析和提取销�
 
 ### <a name="sample-json-output"></a>示例 JSON 输出
 
-请参阅以下成功的 JSON 响应示例： "readResults" 节点包含所有已识别的文本。 文本按页，然后按行，然后按单个单词进行组织。 "DocumentResults" 节点包含模型发现的特定于业务的值。 在这里，你将找到有用的键/值对，如名字、姓氏、公司名称等。
+
+对 Get 分析接收结果操作的响应将是已提取所有信息的收据的结构化表示形式。  请参阅此处查看 [示例回执文件](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/contoso-allinone.jpg) 及其结构化输出 [示例回执输出](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/receipt-result.json)。
+
+请参阅以下成功的 JSON 响应示例：
+* `"readResults"` 节点包含所有已识别的文本。 文本按页，然后按行，然后按单个单词进行组织。 
+* `"documentResults"` 节点包含模型发现的特定于名片的值。 在这里，你将找到有用的键/值对，如名字、姓氏、公司名称等。
 
 ```json
 { 

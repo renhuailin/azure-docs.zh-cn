@@ -5,14 +5,19 @@ author: georgewallace
 ms.author: gwallace
 ms.date: 11/27/2018
 ms.topic: quickstart
-ms.openlocfilehash: c81b53b68c689f4b890d2ff628f38b734aea63dc
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: f34034394d2492dba64214c612a239b92f4b9c46
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499877"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99625712"
 ---
 # <a name="quickstart-deploy-hello-world-to-service-fabric-mesh"></a>快速入门：将 Hello World 部署到 Service Fabric 网格
+
+> [!IMPORTANT]
+> Azure Service Fabric 网格的预览版已停用。 不允许再通过 Service Fabric 网格 API 进行新的部署。 对现有部署的支持将会持续到 2021 年 4 月 28 日。
+> 
+> 有关详细信息，请参阅 [Azure Service Fabric 网格预览版停用](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/)。
 
 使用 [Service Fabric 网格](service-fabric-mesh-overview.md)，可以轻松在 Azure 中创建和管理微服务应用程序，不需要预配虚拟机。 在本快速入门中，你将在 Azure 中创建一个 Hello World 应用程序并将其公开到 Internet。 此操作通过单个命令完成。 只需要几分钟时间，便可以在浏览器中看到此视图：
 

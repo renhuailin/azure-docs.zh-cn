@@ -8,12 +8,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 5e9d9e762568c01d31f0c3a29be809a5f90b6b44
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 7b6669ca55dc9b94dc5d702e54b42011120b8812
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93421645"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99831869"
 ---
 # <a name="what-is-in-the-current-iot-plug-and-play-release"></a>IoT 即插即用当前版本中包含哪些内容？
 
@@ -77,3 +77,7 @@ REST API [2020-09-30](/rest/api/iothub)。
 - [准备并验证设备以进行 IoT 即插即用（发布于 2020 年 8 月 26 日）](https://azure.microsoft.com/blog/prepare-and-certify-your-devices-for-iot-plug-and-play/)
 - [IoT 即插即用现已提供预览版（发布于 2019 年 8 月 22 日）](https://azure.microsoft.com/blog/iot-plug-and-play-is-now-available-in-preview/)
 - [使用 Azure IoT Central 和 IoT 即插即用进行生成（发布于 2019 年 5 月 7 日）](https://azure.microsoft.com/blog/build-with-azure-iot-central-and-iot-plug-and-play/)
+
+## <a name="next-steps"></a>后续步骤
+
+建议接下来查看[什么是 IoT 即插即用？](overview-iot-plug-and-play.md)。

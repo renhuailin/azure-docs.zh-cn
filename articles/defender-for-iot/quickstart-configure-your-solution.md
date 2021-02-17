@@ -1,24 +1,24 @@
 ---
-title: 快速入门：配置解决方案
+title: 将 Azure 资源添加到 IoT 解决方案
 description: 在本快速入门中，了解如何使用 Azure Defender for IoT 配置端到端 IoT 解决方案。
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
-author: mlottner
+author: Shhazam-ms
 manager: rkarlin
 editor: ''
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/06/2020
-ms.author: mlottner
-ms.openlocfilehash: f949d52d4ba461da94153cbbd17ca5fb3eb214d7
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.date: 01/25/2021
+ms.author: shhazam
+ms.openlocfilehash: 8912e8d66ae0cc1b5dba80ee9aabb0fbd288e3c6
+ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92092080"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99809010"
 ---
 # <a name="quickstart-configure-your-azure-defender-for-iot-solution"></a>快速入门：配置你的 Azure Defender for IoT 解决方案
 
@@ -28,7 +28,7 @@ ms.locfileid: "92092080"
 
 Defender for IoT 为基于 Azure 的 IoT 解决方案提供全面的端到端安全性。
 
-使用 Defender for IoT 时，可在一个仪表板中监视整个 IoT 解决方案，并显示 Azure 中你的所有 IoT 设备、IoT 平台和后端资源。
+借助 Defender for IoT，可在一个仪表板中监视整个 IoT 解决方案，显示 Azure 中你的所有 IoT 设备、IoT 平台和后端资源。
 
 在 IoT 中心启用后，Defender for IoT 会自动识别也已连接到你的 IoT 中心的，以及与你的 IoT 解决方案相关的其他 Azure 服务。
 
@@ -36,16 +36,19 @@ Defender for IoT 为基于 Azure 的 IoT 解决方案提供全面的端到端安
 
 做出选择后，可以添加整个订阅、资源组或单个资源。
 
-定义所有资源关系后，Defender for IoT 将利用 Defender 来提供安全建议，并针对这些资源发出警报。
+定义所有资源关系后，Defender for IoT 会使用 Defender 向你提供安全建议，并针对这些资源发出警报。
 
 ## <a name="add-azure-resources-to-your-iot-solution"></a>将 Azure 资源添加到 IoT 解决方案
 
-若要将新资源添加到 IoT 解决方案，请执行以下操作：
+若要将新资源添加到 IoT 解决方案：
 
-1. 在 Azure 门户中打开你的 **IoT 中心** 。
+1. 在 Azure 门户中打开你的 **IoT 中心**。
+
 1. 在“安全性”下，选择“概述”，然后依次选择“设置”和“监视的资源”   。
+
 1. 选择“编辑”并选择属于 IoT 解决方案的受监视资源。
-1. 单击“添加”  。
+
+1. 选择 **添加** 。
 
 祝贺你！ 现已将新资源组添加到 IoT 解决方案。
 

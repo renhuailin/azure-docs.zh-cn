@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 12/09/2020
 ms.author: rolyon
-ms.openlocfilehash: adb3691625d6cdde03c803480ae948bb1911cc7d
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: 7d53df4159c071c17657e8a8367da605b6a5dc9e
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97964365"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100556177"
 ---
 # <a name="list-azure-role-assignments-using-the-azure-portal"></a>使用 Azure 门户列出 Azure 角色分配
 
@@ -25,7 +25,7 @@ ms.locfileid: "97964365"
 
 ## <a name="list-role-assignments-for-a-user-or-group"></a>列出用户或组的角色分配
 
-若要查看分配给订阅中的用户或组的角色，一种快捷方法是使用 " **Azure 角色分配** " 窗格。
+若要查看分配给订阅中用户或组的角色，一种快速方法是使用“Azure 角色分配”窗格。
 
 1. 在 Azure 门户的“Azure 门户”菜单中，选择“所有服务”。
 
@@ -85,7 +85,7 @@ ms.locfileid: "97964365"
 
     ![资源组访问控制 - “检查访问权限”选项卡](./media/role-assignments-list-portal/rg-access-control-check-access.png)
 
-1. 在 " **查找** " 列表中，选择要检查其访问权限的用户、组、服务主体或托管标识。
+1. 在“查找”列表中，选择要检查其访问权限的用户、组、服务主体或托管标识。
 
 1. 在搜索框中，输入字符串以在目录中搜索显示名称、电子邮件地址或对象标识符。
 
@@ -185,5 +185,5 @@ ms.locfileid: "97964365"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [使用 Azure 门户添加或删除 Azure 角色分配](role-assignments-portal.md)
+- [使用 Azure 门户分配 Azure 角色](role-assignments-portal.md)
 - [排查 Azure RBAC 问题](troubleshooting.md)

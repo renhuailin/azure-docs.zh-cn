@@ -11,12 +11,12 @@ ms.subservice: anomaly-detector
 ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: mbullwin
-ms.openlocfilehash: 0982f89d59f2ef9a282a46a93b98801b9df00a40
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: f42d294dec4dd2c92fe08498a7bce3c1eabae4b3
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94368706"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100519127"
 ---
 # <a name="tutorial-anomaly-detection-on-streaming-data-using-azure-databricks"></a>教程：使用 Azure Databricks 针对流数据进行异常情况检测
 
@@ -298,7 +298,7 @@ eventHubClient.get().close()
 pool.shutdown()
 ```
 
-若要运行该 Notebook，请按 **SHIFT + ENTER** 。 会显示一个输出，如以下代码片段所示。 输出中的每个事件是已引入事件中心的“赞”的时间戳和数目的组合。
+若要运行该 Notebook，请按 **SHIFT + ENTER**。 会显示一个输出，如以下代码片段所示。 输出中的每个事件是已引入事件中心的“赞”的时间戳和数目的组合。
 
 ```output
     Sent event: {"timestamp":"2019-04-24T09:39:40.000Z","favorite":0}
@@ -423,7 +423,7 @@ object AnomalyDetector extends Serializable {
 }
 ```
 
-若要运行该 Notebook，请按 **SHIFT + ENTER** 。 会显示一个输出，如以下代码片段所示。
+若要运行该 Notebook，请按 **SHIFT + ENTER**。 会显示一个输出，如以下代码片段所示。
 
 ```scala
 import java.io.{BufferedReader, DataOutputStream, InputStreamReader}
@@ -497,7 +497,7 @@ class AnomalyDetectorAggregationFunction extends UserDefinedAggregateFunction {
 
 ```
 
-若要运行该 Notebook，请按 **SHIFT + ENTER** 。 会显示一个输出，如以下代码片段所示。
+若要运行该 Notebook，请按 **SHIFT + ENTER**。 会显示一个输出，如以下代码片段所示。
 
 ```scala
 import org.apache.spark.sql.Row
@@ -586,7 +586,7 @@ groupTime                       average
 
 然后，获取 Delta 的聚合输出结果。 由于异常检测需要较长的历史记录窗口，我们将使用 Delta 来保留需检测的时间点的历史记录数据。
 将“[占位符: 表名]”替换为要创建的限定 Delta 表名（例如“tweets”）。 将“[占位符: 检查点的文件夹名称]”替换为一个字符串值，每次运行此代码时，该字符串值都是独一无二的（例如“etl-from-eventhub-20190605”）。
-若要详细了解 Azure Databricks 上的 Delta Lake，请参阅 [Delta Lake Guide](https://docs.azuredatabricks.net/delta/index.html)（Delta Lake 指南）
+若要详细了解 Azure Databricks 上的 Delta Lake，请参阅 [Delta Lake Guide](/databricks/delta/)（Delta Lake 指南）
 
 
 ```scala
