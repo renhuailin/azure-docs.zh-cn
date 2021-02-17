@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 12/16/2020
 ms.author: rolyon
-ms.openlocfilehash: 1444ee3643222ceebc67298bdb580955b1432104
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: d58398c42cdc6faed758e5dba3431e0841fc0b03
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99526409"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555568"
 ---
 # <a name="best-practices-for-azure-rbac"></a>Azure RBAC 最佳做法
 
@@ -30,7 +30,7 @@ ms.locfileid: "99526409"
 
 ![Azure RBAC 和最低权限](./media/best-practices/rbac-least-privilege.png)
 
-有关如何添加角色分配的信息，请参阅[使用 Azure 门户添加或删除 Azure 角色分配](role-assignments-portal.md)。
+有关如何分配角色的信息，请参阅 [使用 Azure 门户分配 Azure 角色](role-assignments-portal.md)。
 
 ## <a name="limit-the-number-of-subscription-owners"></a>限制订阅所有者的数量
 

@@ -5,41 +5,42 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 10/08/2020
+ms.date: 02/16/2021
 ms.author: victorh
-ms.openlocfilehash: 69eaf3ca60378afd810d712d85ea7ef732e41e3e
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 9f89d84fc7033645b2b094e9f40a1d85b076623b
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98788224"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100544827"
 ---
 # <a name="azure-firewall-features"></a>Azure 防火墙功能
 
-[Azure 防火墙](overview.md)是一种基于云的托管网络安全服务，可保护 Azure 虚拟网络资源。
+[Azure 防火墙](overview.md) 是一种托管的基于云的网络安全服务，可保护 Azure 虚拟网络资源。
 
 ![防火墙概述](media/overview/firewall-threat.png)
 
 Azure 防火墙包括以下功能：
 
-- [内置高可用性](#built-in-high-availability)
-- [可用性区域](#availability-zones)
-- [不受限制的云可伸缩性](#unrestricted-cloud-scalability)
-- [应用程序 FQDN 筛选规则](#application-fqdn-filtering-rules)
-- [网络流量筛选规则](#network-traffic-filtering-rules)
-- [FQDN 标记](#fqdn-tags)
-- [服务标记](#service-tags)
-- [威胁情报](#threat-intelligence)
-- [出站 SNAT 支持](#outbound-snat-support)
-- [入站 DNAT 支持](#inbound-dnat-support)
-- [多个公共 IP 地址](#multiple-public-ip-addresses)
-- [Azure Monitor 日志记录](#azure-monitor-logging)
-- [强制隧道](#forced-tunneling)
-- [认证](#certifications)
+- 内置的高可用性
+- 可用性区域
+- 不受限制的云可伸缩性
+- 应用程序 FQDN 筛选规则
+- 网络流量筛选规则
+- FQDN 标记
+- 服务标记
+- 威胁情报
+- 出站 SNAT 支持
+- 入站 DNAT 支持
+- 多个公共 IP 地址
+- Azure Monitor 日志记录
+- 强制隧道
+- Web 类别 (预览) 
+- 认证
 
 ## <a name="built-in-high-availability"></a>内置的高可用性
 
-内置高可用性，因此不需要部署额外的负载均衡器，也不需要进行任何配置。
+高可用性是内置的，因此无需额外的负载均衡器，并且无需进行任何配置。
 
 ## <a name="availability-zones"></a>可用性区域
 
@@ -47,7 +48,7 @@ Azure 防火墙包括以下功能：
 
 还可以仅仅出于相互更靠近的原因，将 Azure 防火墙关联到特定的区域，并享用服务标准 99.95% SLA。
 
-在可用性区域中部署的防火墙不会产生额外的费用。 但是，与可用性区域关联的入站和出站数据传输会产生额外的费用。 有关详细信息，请参阅[带宽定价详细信息](https://azure.microsoft.com/pricing/details/bandwidth/)。
+在可用性区域中部署的防火墙不会产生额外的费用。 但是，与可用性区域相关联的入站和出站数据传输费用会增加。 有关详细信息，请参阅[带宽定价详细信息](https://azure.microsoft.com/pricing/details/bandwidth/)。
 
 在支持可用性区域的区域中可以使用 Azure 防火墙可用性区域。 有关详细信息，请参阅[在 Azure 中支持可用性区域的区域](../availability-zones/az-region.md)。
 
@@ -97,7 +98,7 @@ Azure 防火墙包括以下功能：
 这样可以实现以下方案：
 
 - **DNAT** - 可将多个标准端口实例转换为后端服务器。 例如，如果你有两个公共 IP 地址，可以转换这两个 IP 地址的 TCP 端口 3389 (RDP)。
-- **SNAT** - 其他端口可用于出站 SNAT 连接，以减少 SNAT 端口耗尽的可能性。 目前，Azure 防火墙会随机选择用于建立连接的源公共 IP 地址。 如果你在网络中进行任何下游筛选，则需要允许与防火墙关联的所有公共 IP 地址。 请考虑使用[公共 IP 地址前缀](../virtual-network/public-ip-address-prefix.md)来简化此配置。
+- **SNAT** -对于出站 SNAT 连接提供了更多端口，从而降低了 snat 端口耗尽的可能性。 目前，Azure 防火墙会随机选择用于建立连接的源公共 IP 地址。 如果你在网络中进行任何下游筛选，则需要允许与防火墙关联的所有公共 IP 地址。 请考虑使用[公共 IP 地址前缀](../virtual-network/public-ip-address-prefix.md)来简化此配置。
 
 ## <a name="azure-monitor-logging"></a>Azure Monitor 日志记录
 
@@ -110,6 +111,24 @@ Azure 防火墙工作簿为 Azure 防火墙数据分析提供了一个灵活的�
 ## <a name="forced-tunneling"></a>强制隧道
 
 你可以对 Azure 防火墙进行配置，使其将所有 Internet 绑定的流量路由到指定的下一跃点，而不是直接前往 Internet。 例如，你可能有一个本地边缘防火墙或其他网络虚拟设备 (NVA)，用于对网络流量进行处理，然后再将其传递到 Internet。 有关详细信息，请参阅 [Azure 防火墙强制隧道](forced-tunneling.md)。
+
+## <a name="web-categories-preview"></a>Web 类别 (预览) 
+
+通过 web 类别，管理员可以允许或拒绝用户访问网站类别，如赌博网站、社交媒体网站等。 Web 类别包含在 Azure 防火墙标准版中，但在 Azure 防火墙高级预览版中可更精细地进行优化。 与基于 FQDN 的类别匹配的标准 SKU 中的 Web 类别功能不同，高级 SKU 根据 HTTP 和 HTTPS 流量的整个 URL 来匹配类别。 有关 Azure 防火墙高级预览版的详细信息，请参阅 [Azure 防火墙高级版预览版功能](premium-features.md)。
+
+例如，如果 Azure 防火墙截获 HTTPS 请求 `www.google.com/news` ，则需要以下分类： 
+
+- 防火墙标准–只会检查 FQDN 部分，因此会 `www.google.com` 分类为 *搜索引擎*。 
+
+- 防火墙高级–将检查完整的 URL， `www.google.com/news` 并将其分类为 *新闻*。
+
+根据 **责任** 严重性、 **高带宽**、 **业务使用** 情况、 **生产率损失**、 **常规冲浪** 和未 **分类** 来组织类别。
+
+### <a name="category-exceptions"></a>类别异常
+
+您可以为 web 类别规则创建例外。 在规则集合组中创建一个具有较高优先级的单独的允许或拒绝规则集合。 例如，你可以配置允许 `www.linkedin.com` 优先级为100的规则集合，并使用拒绝优先级为200的 **社交网络** 的规则集合。 这会为预定义的 **社交网络** web 类别创建例外。
+
+
 
 ## <a name="certifications"></a>认证
 

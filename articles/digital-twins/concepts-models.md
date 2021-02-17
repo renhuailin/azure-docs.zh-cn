@@ -1,22 +1,22 @@
 ---
-title: 自定义模式
+title: DTDL 模型
 titleSuffix: Azure Digital Twins
-description: 了解 Azure 数字孪生如何使用用户定义的模型来描述您的环境中的实体。
+description: 了解 Azure 数字孪生如何使用自定义模型来描述环境中的实体。
 author: baanders
 ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 599bb93e747acf504a4ebf43aaea771ed5064886
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 9abf389eb7f8862440f860c53a0dbd8b10315c67
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131383"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100558153"
 ---
-# <a name="understand-twin-models-in-azure-digital-twins"></a>了解 Azure 数字孪生中的克隆模型
+# <a name="understand-twin-models-in-azure-digital-twins"></a>了解 Azure 数字孪生中的孪生模型
 
-Azure 数字孪生的一项重要特征是能够定义自己的词汇，并以业务的自定义条款构建克隆图形。 此功能是通过用户定义 **模型** 提供的。 您可以将模型视为您的全球说明中的名词。 
+Azure 数字孪生的一项重要特征是能够定义自己的词汇，并以业务的自定义条款构建克隆图形。 此功能通过用户提供的 **模型** 提供。 您可以将模型视为您的全球说明中的名词。 
 
 模型类似于面向对象的编程语言中的 **类** ，它定义了真实工作环境中一个特定概念的数据形状。 模型具有 (（如 *房间* 或 *温度传感器*) ）的名称，并且包含属性、遥测/事件和命令等元素，这些元素描述了环境中此类型实体的作用。 稍后，您将使用这些模型创建代表满足此类型说明的特定实体的 [**数字孪生**](concepts-twins-graph.md) 。
 
@@ -24,7 +24,7 @@ Azure 数字孪生模型以基于 JSON LD 的 **数字克隆定义语言表示�
 
 ## <a name="digital-twin-definition-language-dtdl-for-models"></a>用于模型的数字克隆定义语言 (DTDL) 
 
-Azure 数字孪生的模型是使用数字孪生定义语言 (DTDL) 定义的。 DTDL 基于 JSON-LD，是独立于编程语言的。 DTDL 不是 Azure 数字孪生独有的，但也用于表示 [iot 即插即用](../iot-pnp/overview-iot-plug-and-play.md)等其他 IoT 服务中的设备数据。 
+Azure 数字孪生的模型是使用数字孪生定义语言 (DTDL) 定义的。 DTDL 基于 JSON-LD，独立于编程语言。 DTDL 不是 Azure 数字孪生独有的，但也用于表示 [iot 即插即用](../iot-pnp/overview-iot-plug-and-play.md)等其他 IoT 服务中的设备数据。 
 
 Azure 数字孪生使用 **DTDL _版本 2_**。 有关此版本的 DTDL 的详细信息，请参阅 GitHub 中的规范文档： [*数字孪生定义语言 (DTDL) 版本 2*](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)。 在 Azure 数字孪生中使用 DTDL _版本 1_ 现已弃用。
 
@@ -92,7 +92,7 @@ Azure 数字孪生也不会 `writable` 对属性或关系观察属性。 尽管�
 
 模型的字段为：
 
-| 字段 | 描述 |
+| 字段 | 说明 |
 | --- | --- |
 | `@id` | 模型的标识符。 必须采用格式 `dtmi:<domain>:<unique model identifier>;<model version number>` 。 |
 | `@type` | 标识所描述的信息的类型。 对于接口，类型为 *interface*。 |
@@ -136,23 +136,31 @@ Azure 数字孪生也不会 `writable` 对属性或关系观察属性。 尽管�
 
 [!INCLUDE [Azure Digital Twins: validate models info](../../includes/digital-twins-validate.md)]
 
-## <a name="integrating-with-industry-standard-models"></a>与行业标准模型集成
+## <a name="tools-for-models"></a>用于模型的工具 
 
-在设计 Azure 数字孪生模型时，使用基于行业标准或使用标准 ontology 表示形式（如 RDF 或 OWL）的模型可提供丰富的起点。 使用行业模型还有助于标准化和信息共享。
+有多个示例可让你更轻松地处理模型和本体论。 它们位于以下存储库中： [用于数字孪生定义语言的工具 (DTDL) ](https://github.com/Azure/opendigitaltwins-tools)。
 
-要与 Azure 数字孪生一起使用，必须使用基于 JSON LD 的 [**数字孪生定义语言 (DTDL)**](concepts-models.md)来表示模型。 因此，若要使用行业标准模型，必须首先将其转换为 DTDL，以便 Azure 数字孪生可以使用它。 然后，DTDL 模型充当 Azure 数字孪生中模型的真实来源。
+本节更详细地介绍了当前的示例集。
 
-有两个主要路径可用于将行业标准模型与 DTDL 集成，具体取决于你的情况：
-* 如果你尚未创建模型，则可以在包含特定于你的行业的语言的 **现有 STARTER DTDL 本体论** 上对其进行设计。
-* 如果已有基于行业标准的现有模型，则需要 **将其转换为 DTDL** ，以便将其引入 Azure 数字孪生。
+### <a name="model-uploader"></a>模型上载者 
 
-有关这两个过程的详细信息，请参阅 [*如何：集成行业标准模型*](how-to-integrate-models.md)。
+_**用于将模型上载到 Azure 数字孪生**_
+
+完成创建、扩展或选择模型后，可以将其上传到 Azure 数字孪生实例，使其可在解决方案中使用。 这可以使用 [Azure 数字孪生 api](how-to-use-apis-sdks.md)完成，如 [*操作方法：管理 DTDL 模型*](how-to-manage-model.md#upload-models)中所述。
+
+但是，如果您有多个要上传的模型，或者它们有很多相互依赖关系，这些依赖关系会对单个上载进行复杂的排序，则可以使用此示例一次上载许多模型： [**Azure 数字孪生模型**](https://github.com/Azure/opendigitaltwins-building-tools/tree/master/ModelUploader)上载程序。 按照示例提供的说明进行操作，以配置和使用此项目将模型上载到你自己的实例中。
+
+### <a name="model-visualizer"></a>模型可视化工具 
+
+_**用于可视化模型**_
+
+将模型上传到 Azure 数字孪生实例后，即可使用 [**ADT 模型可视化工具**](https://github.com/Azure/opendigitaltwins-building-tools/tree/master/AdtModelVisualizer)查看 Azure 数字孪生实例中的模型，包括任何继承和模型关系。 此示例当前处于草稿状态。 我们鼓励数字孪生开发社区扩展并参与该示例。 
 
 ## <a name="next-steps"></a>后续步骤
 
-请参阅如何通过 DigitalTwinModels Api 管理模型：
-* [*操作说明：管理自定义模型*](how-to-manage-model.md)
+* 了解如何基于行业标准本体论创建模型： [*概念：什么是 ontology？*](concepts-ontologies.md)
 
-或者，了解如何基于模型创建数字孪生：
-* [*概念：数字孪生和双子图形*](concepts-twins-graph.md)
+* 深入了解如何通过 API 操作管理模型：操作 [*方法：管理 DTDL 模型*](how-to-manage-model.md)
+
+* 了解如何使用模型来创建数字孪生： [*概念：数字孪生和克隆图形*](concepts-twins-graph.md)
 

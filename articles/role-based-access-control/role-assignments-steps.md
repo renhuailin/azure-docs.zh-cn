@@ -1,5 +1,5 @@
 ---
-title: 添加角色分配的步骤 - Azure RBAC
+title: 分配 Azure 角色的步骤-Azure RBAC
 description: 了解使用 Azure 基于角色的访问控制 (Azure RBAC) 将 Azure 角色分配给用户、组、服务主体或托管标识的步骤。
 services: active-directory
 author: rolyon
@@ -7,18 +7,18 @@ manager: mtillman
 ms.service: role-based-access-control
 ms.topic: how-to
 ms.workload: identity
-ms.date: 09/30/2020
+ms.date: 02/15/2021
 ms.author: rolyon
-ms.openlocfilehash: e746c7d09bb568d457ab1037b56c7c2973b29ad7
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 081335779ffc4b3a6ddf09e56b773c6d34b210be
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98117242"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100556040"
 ---
-# <a name="steps-to-add-a-role-assignment"></a>角色分配的添加步骤
+# <a name="steps-to-assign-an-azure-role"></a>分配 Azure 角色的步骤
 
-[!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control/definition-grant.md)] 本文介绍使用 [Azure 门户](role-assignments-portal.md)、[Azure PowerShell](role-assignments-powershell.md)、[Azure CLI](role-assignments-cli.md) 或 [REST API](role-assignments-rest.md) 添加角色分配的概略性步骤。
+[!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control/definition-grant.md)] 本文介绍使用 [Azure 门户](role-assignments-portal.md)、 [Azure PowerShell](role-assignments-powershell.md)、 [Azure CLI](role-assignments-cli.md)或 [REST API](role-assignments-rest.md)分配 Azure 角色的高级步骤。
 
 ## <a name="step-1-determine-who-needs-access"></a>步骤 1：确定哪一用户需要访问权限
 
@@ -31,7 +31,7 @@ ms.locfileid: "98117242"
 - 服务主体 - 应用程序或服务用来访问特定 Azure 资源的安全标识。 可将服务主体视为应用程序的用户标识（用户名和密码或证书）。
 - 托管标识 - Azure Active Directory 中由 Azure 自动托管的标识。 在开发云应用程序时，通常使用[托管标识](../active-directory/managed-identities-azure-resources/overview.md)来管理用于向 Azure 服务进行身份验证的凭据。
 
-## <a name="step-2-select-the-appropriate-role"></a>步骤2：选择适当的角色
+## <a name="step-2-select-the-appropriate-role"></a>步骤 2：选择合适的角色
 
 权限将组合到角色定义中。 它通常直接称为“角色”。 可以从多个内置角色的列表中选择。 如果内置角色不能满足组织的特定需求，则可自行创建自定义角色。
 
@@ -79,16 +79,16 @@ ms.locfileid: "98117242"
 
 如果用户帐户无权在订阅内分配角色，则将显示错误消息“你的帐户无权执行操作 'Microsoft.Authorization/roleAssignments/write'”。在这种情况下，请与你的订阅管理员联系，因为他们可以代表你分配权限。
 
-## <a name="step-5-add-role-assignment"></a>步骤 5。 添加角色分配
+## <a name="step-5-assign-role"></a>步骤 5。 分配角色
 
-了解安全主体、角色和范围后，便可以分配角色了。 可以使用 Azure 门户、Azure PowerShell、Azure CLI、Azure SDK 或 REST API 添加角色分配。 每个订阅中最多可以包含 **2000** 个角色分配。 此限制包括订阅、资源组和资源范围内的角色分配。 每个管理组中最多可以有 500 个角色分配。
+了解安全主体、角色和范围后，便可以分配角色了。 可以使用 Azure 门户、Azure PowerShell、Azure CLI、Azure Sdk 或 REST Api 来分配角色。 每个订阅中最多可以包含 **2000** 个角色分配。 此限制包括订阅、资源组和资源范围内的角色分配。 每个管理组中最多可以有 500 个角色分配。
 
-请参阅以下文章，了解添加角色分配的详细步骤。
+有关如何分配角色的详细步骤，请参阅以下文章。
 
-- [使用 Azure 门户添加或删除 Azure 角色分配](role-assignments-portal.md)
-- [使用 Azure PowerShell 添加或删除 Azure 角色分配](role-assignments-powershell.md)
-- [使用 Azure CLI 添加或删除 Azure 角色分配](role-assignments-cli.md)
-- [使用 REST API 添加或删除 Azure 角色分配](role-assignments-rest.md)
+- [使用 Azure 门户分配 Azure 角色](role-assignments-portal.md)
+- [使用 Azure PowerShell 分配 Azure 角色](role-assignments-powershell.md)
+- [使用 Azure CLI 分配 Azure 角色](role-assignments-cli.md)
+- [使用 REST API 分配 Azure 角色](role-assignments-rest.md)
 
 ## <a name="next-steps"></a>后续步骤
 

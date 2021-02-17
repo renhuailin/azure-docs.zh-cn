@@ -13,12 +13,12 @@ ms.date: 09/24/2019
 ms.author: marsma
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:iOS
-ms.openlocfilehash: ef2ab6511d80f7f1f836805055e7cc7f48a488e7
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: d2c5af6aeccfbae0851513ff575bde3c39e3ca5f
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98754294"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100103781"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-or-macos-app"></a>快速入门：从 iOS 或 macOS 应用将用户登录并调用 Microsoft Graph API
 
@@ -46,7 +46,7 @@ ms.locfileid: "98754294"
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-the-code-sample"></a>选项 1：注册并自动配置应用，然后下载代码示例
 > #### <a name="step-1-register-your-application"></a>步骤 1：注册应用程序
 > 若要注册应用，请执行以下操作：
-> 1. 转到 <a href="https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/IosQuickstartPage/sourceType/docs" target="_blank">Azure 门户 - 应用注册<span class="docon docon-navigate-external x-hidden-focus"></span></a>快速入门体验。
+> 1. 转到 <a href="https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/IosQuickstartPage/sourceType/docs" target="_blank">Azure 门户 - 应用注册</a>快速入门体验。
 > 1. 输入应用程序的名称并选择“注册”。
 > 1. 遵照说明下载内容，并只需单击一下自动配置新应用程序。
 >
@@ -55,7 +55,7 @@ ms.locfileid: "98754294"
 > #### <a name="step-1-register-your-application"></a>步骤 1：注册应用程序
 > 若要手动注册应用程序并将应用的注册信息添加到解决方案，请执行以下步骤：
 >
-> 1. 登录到 <a href="https://portal.azure.com/" target="_blank">Azure 门户<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
+> 1. 登录 <a href="https://portal.azure.com/" target="_blank">Azure 门户</a>。
 > 1. 如果有权访问多个租户，请使用顶部菜单中的“目录 + 订阅”筛选器:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::，选择要在其中注册应用程序的租户。
 > 1. 搜索并选择“Azure Active Directory”  。    
 > 1. 在“管理”下，选择“应用注册” > “新建注册”  。
@@ -69,7 +69,7 @@ ms.locfileid: "98754294"
 > [!div renderon="portal" class="sxs-lookup"]
 >
 > #### <a name="step-1-configure-your-application"></a>步骤 1：配置应用程序
-> 为使此快速入门中的代码示例正常运行，需要添加与身份验证代理兼容的重定向 URI。
+> 为使此快速入门的代码示例正常运行，请添加与身份验证代理兼容的重定向 URI。
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [执行此更改]()
 >
@@ -118,7 +118,7 @@ ms.locfileid: "98754294"
 >     ```
 > 1. 打开项目设置。 在“标识”部分，输入以前在门户中输入的 **捆绑标识符**。
 > 1. 右键单击“Info.plist”，然后选择“打开为” > “源代码”。
-> 1. 在 dict 根节点下，将 `Enter_the_bundle_Id_Here` 替换为你在门户中使用的“捆绑 ID”。
+> 1. 在 dict 根节点下，将 `Enter_the_bundle_Id_Here` 替换为你在门户中使用的 ***捆绑 ID***。
 >
 >    ```xml
 >    <key>CFBundleURLTypes</key>
@@ -180,7 +180,7 @@ self.applicationContext = try MSALPublicClientApplication(configuration: msalCon
 
 > |其中： | 说明 |
 > |---------|---------|
-> | `clientId` | 在 portal.azure.com 中注册的应用程序的应用程序 ID |
+> | `clientId` | 在 *portal.azure.com* 中注册的应用程序的应用程序 ID |
 > | `authority` | Microsoft 标识平台。 在大多数情况下，这是 `https://login.microsoftonline.com/common` |
 > | `redirectUri` | 应用程序的重定向 URI。 可以传递“nil”以使用默认值，也可以使用自定义重定向 URI。 |
 
@@ -214,7 +214,7 @@ self.applicationContext = try MSALPublicClientApplication(configuration: msalCon
     }
  ```
 
-最后，应用必须在 Info.plist 中有一个与 `CFBundleURLTypes` 一起的 `LSApplicationQueriesSchemes` 条目。 示例包含此条目。
+最后，应用必须在 ***Info.plist*** 中有一个与 `CFBundleURLTypes` 一起的 `LSApplicationQueriesSchemes` 条目。 示例包含此条目。
 
    ```xml
    <key>LSApplicationQueriesSchemes</key>
@@ -232,7 +232,7 @@ MSAL 有两种用来获取令牌的方法：`acquireToken` 和 `acquireTokenSile
 
 有些情况下，需要用户与 Microsoft 标识平台交互。 在这些情况下，最终用户可能需要选择其帐户、输入其凭据，或者同意应用的权限。 例如，
 
-用户首次登录应用程序
+* 用户首次登录应用程序
 * 用户在重置其密码时需输入其凭据。
 * 应用程序首次请求访问资源时
 * 需要 MFA 或其他条件访问策略时

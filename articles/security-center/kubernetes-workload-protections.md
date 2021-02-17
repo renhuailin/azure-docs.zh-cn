@@ -6,14 +6,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 09/12/2020
+ms.date: 02/16/2021
 ms.author: memildin
-ms.openlocfilehash: 99e217c6d8065d19f7b03419306f4992735cb587
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: f024457ed9f20e6bab0852a53ab6a60ac85ed25a
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99526716"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546255"
 ---
 # <a name="protect-your-kubernetes-workloads"></a>保护 Kubernetes 工作负载
 
@@ -21,7 +21,7 @@ ms.locfileid: "99526716"
 
 在工作负荷保护中了解有关这些功能的详细信息 [使用 Kubernetes 许可控制的最佳做法](container-security.md#workload-protection-best-practices-using-kubernetes-admission-control)
 
-如果启用 Azure Defender，安全中心会提供更多的容器安全功能。 尤其是在下列情况下：
+如果启用 Azure Defender，安全中心会提供更多的容器安全功能。 具体来说：
 
 - 针对[容器注册表的 Azure Defender](defender-for-container-registries-introduction.md) ，扫描容器注册表中的漏洞
 - 获取 K8s 群集的实时威胁检测警报 [Azure Defender For Kubernetes](defender-for-kubernetes-introduction.md)
@@ -39,7 +39,7 @@ ms.locfileid: "99526716"
 |定价：|免费|
 |所需角色和权限：|用于编辑分配的 **所有者** 或 **安全管理员**<br>查看建议的 **读者**|
 |环境要求：|需要 Kubernetes v 1.14 (或更高版本) <br>群集上没有 PodSecurityPolicy 资源 (旧的 PSP 模型) <br>不支持 Windows 节点|
-|云：|![是](./media/icons/yes-icon.png) 商业云<br>![否](./media/icons/no-icon.png) 国家/主权（US Gov、中国 Gov、其他 Gov）|
+|云：|![是](./media/icons/yes-icon.png) 商业云<br>![是](./media/icons/yes-icon.png) 国家/主权（US Gov、中国 Gov、其他 Gov）|
 |||
 
 
