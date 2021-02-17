@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: d14ae86d41caec3c1bd897c2c81bee748dcc312c
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 6ead00a0979d81ef11ac81fb13a1abe31317691d
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98050878"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571322"
 ---
 # <a name="azure-monitor-insights-for-virtual-wan"></a>虚拟 WAN 的 Azure Monitor 见解
 
@@ -21,7 +21,7 @@ ms.locfileid: "98050878"
 虚拟 WAN 资源级指标通过预打包的虚拟 WAN 指标工作簿进行收集和显示。 工作簿显示了虚拟 WAN、中心、网关和连接级别的指标。 本文将指导你完成使用用于虚拟 WAN 的 Azure Monitor 见解集中在一个位置查看虚拟 WAN 拓扑和指标的步骤。
 
 > [!NOTE]
-> " **见解** " 菜单选项位于 " **监视**" 下的 "虚拟 WAN 门户" 中。 你还可以使用网络 Azure Monitor 访问虚拟 WAN 拓扑和指标工作簿。 有关详细信息，请参阅[用于网络的 Azure Monitor](../azure-monitor/insights/network-insights-overview.md)。 
+> “见解”菜单选项位于虚拟 WAN 门户的“监视”下。 可以使用用于网络的 Azure Monitor 访问虚拟 WAN 拓扑和指标工作簿。 有关详细信息，请参阅[用于网络的 Azure Monitor](../azure-monitor/insights/network-insights-overview.md)。 
 >
 
 ## <a name="before-you-begin"></a>准备阶段
@@ -87,5 +87,5 @@ ms.locfileid: "98050878"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要了解详细信息，请参阅 [Azure Monitor 中的指标](../azure-monitor/platform/data-platform-metrics.md)。
+* 若要了解详细信息，请参阅 [Azure Monitor 中的指标](../azure-monitor/essentials/data-platform-metrics.md)。
 * 有关所有虚拟 WAN 指标的完整说明，请参阅[虚拟 WAN 日志和指标](logs-metrics.md)。

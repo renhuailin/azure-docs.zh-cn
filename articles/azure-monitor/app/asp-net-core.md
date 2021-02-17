@@ -4,12 +4,12 @@ description: 监视 ASP.NET Core Web 应用程序的可用性、性能和使用�
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 04/30/2020
-ms.openlocfilehash: 2f17f4fbed196932ad7a5680338c459740e4d3bd
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 93f72b7e2f709f32942564dc7322a4c5d1064cfc
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98249102"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589910"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>适用于 ASP.NET Core 应用程序的 Application Insights
 
@@ -29,7 +29,10 @@ ms.locfileid: "98249102"
 * **IDE**：Visual Studio、VS Code 或命令行。
 
 > [!NOTE]
-> ASP.NET Core 3.X 需要 [Application Insights 2.8.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.8.0) 或更高版本。
+> ASP.NET Core 3.1 需要 [Application Insights 2.8.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.8.0) 或更高版本。
+
+> [!IMPORTANT]
+> 支持以下版本的 ASP.NET Core： ASP.NET Core 2.1 和3.1。 版本2.0、2.2 和3.0 已经停用，不再受支持。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -37,7 +40,7 @@ ms.locfileid: "98249102"
 - 有效的 Application Insights 检测密钥。 将任何遥测数据发送到 Application Insights 都需要使用此密钥。 如果需要创建新的 Application Insights 资源来获取检测密钥，请参阅[创建 Application Insights 资源](./create-new-resource.md)。
 
 > [!IMPORTANT]
-> 新的 Azure 区域 **要求** 使用连接字符串而不是检测密钥。 [连接字符串](./sdk-connection-string.md?tabs=net) 标识您要与遥测数据关联的资源。 它还允许你修改可供你的资源将其用作遥测目标的终结点。 你需要复制连接字符串，并将其添加到应用程序的代码或环境变量中。
+> 新的 Azure 区域要求使用连接字符串而不是检测密钥。 [连接字符串](./sdk-connection-string.md?tabs=net)用于标识要与遥测数据关联的资源。 它还允许你修改可供你的资源将其用作遥测目标的终结点。 你需要复制连接字符串，并将其添加到应用程序的代码或环境变量中。
 
 
 ## <a name="enable-application-insights-server-side-telemetry-visual-studio"></a>启用 Application Insights 服务器端遥测 (Visual Studio)
@@ -232,7 +235,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ### <a name="configuration-recommendation-for-microsoftapplicationinsightsaspnetcore-sdk-2150--above"></a>针对 Microsoft.ApplicationInsights.AspNetCore SDK 2.15.0 及更高版本的配置建议
 
-从 Applicationinsights.config AspNetCore SDK 版本 [2.15.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.15.0)开始，建议使用配置中提供的每个设置 `ApplicationInsightsServiceOptions` ，包括使用应用程序实例的 instrumentationkey `IConfiguration` 。 设置必须位于 "Applicationinsights.config" 部分下，如以下示例中所示。 appsettings.json 的以下部分配置检测密钥，并禁用自适应采样和性能计数器收集。
+从 Microsoft.ApplicationInsights.AspNetCore SDK 版本 [2.15.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.15.0) 开始，建议配置 `ApplicationInsightsServiceOptions` 中可用的每个设置，包括使用应用程序 `IConfiguration` 实例的 Instrumentationkey。 设置必须位于“ApplicationInsights”部分下，如以下示例中所示。 appsettings.json 的以下部分配置检测密钥，并禁用自适应采样和性能计数器收集。
 
 ```json
 {
@@ -266,7 +269,7 @@ public void ConfigureServices(IServiceCollection services)
 ```
 
 > [!NOTE]
-> `services.AddSingleton<ITelemetryInitializer, MyCustomTelemetryInitializer>();` 适用于简单初始值设定项。 对于其他人，需要满足以下要求： `services.AddSingleton(new MyCustomTelemetryInitializer() { fieldName = "myfieldName" });`
+> `services.AddSingleton<ITelemetryInitializer, MyCustomTelemetryInitializer>();` 适用于简单的初始化程序。 对于其他程序，则需要以下内容：`services.AddSingleton(new MyCustomTelemetryInitializer() { fieldName = "myfieldName" });`
     
 ### <a name="removing-telemetryinitializers"></a>删除 TelemetryInitializer
 

@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 05/27/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 5d8b696b175c4ef841eef1a51f1d357d1781cba7
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 37990cc4322717f090c7a35c62512ba0e1a04293
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95018284"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576143"
 ---
 # <a name="use-log-analytics-for-the-diagnostics-feature"></a>使用诊断功能 Log Analytics
 
@@ -39,23 +39,23 @@ Windows 虚拟桌面使用 [Azure Monitor](../azure-monitor/overview.md) 来监�
 Azure Monitor 使你能够分析 Windows 虚拟桌面数据，并查看虚拟机 (VM) 性能计数器，一切都在同一工具内。 本文将介绍如何为 Windows 虚拟桌面环境启用诊断。
 
 >[!NOTE]
->若要了解如何在 Azure 中监视 Vm，请参阅 [利用 Azure Monitor 监视 azure 虚拟机](../azure-monitor/insights/monitor-vm-azure.md)。 此外，请确保 [查看性能计数器阈值](../virtual-desktop/virtual-desktop-fall-2019/deploy-diagnostics.md#windows-performance-counter-thresholds) ，以便更好地了解你在会话主机上的用户体验。
+>若要了解如何在 Azure 中监视 Vm，请参阅 [利用 Azure Monitor 监视 azure 虚拟机](../azure-monitor/vm/monitor-vm-azure.md)。 此外，请确保 [查看性能计数器阈值](../virtual-desktop/virtual-desktop-fall-2019/deploy-diagnostics.md#windows-performance-counter-thresholds) ，以便更好地了解你在会话主机上的用户体验。
 
 ## <a name="before-you-get-started"></a>准备工作
 
 你需要创建工作区，然后才能使用 Log Analytics。 为此，请按照以下两篇文章之一中的说明进行操作：
 
-- 如果你更喜欢使用 Azure 门户，请参阅 [在 Azure 门户中创建 Log Analytics 工作区](../azure-monitor/learn/quick-create-workspace.md)。
-- 如果喜欢 PowerShell，请参阅 [使用 Powershell 创建 Log Analytics 工作区](../azure-monitor/platform/powershell-workspace-configuration.md)。
+- 如果你更喜欢使用 Azure 门户，请参阅 [在 Azure 门户中创建 Log Analytics 工作区](../azure-monitor/logs/quick-create-workspace.md)。
+- 如果喜欢 PowerShell，请参阅 [使用 Powershell 创建 Log Analytics 工作区](../azure-monitor/logs/powershell-workspace-configuration.md)。
 
-创建工作区后，请按照 [将 Windows 计算机连接到 Azure Monitor](../azure-monitor/platform/log-analytics-agent.md#workspace-id-and-key) 中的说明获取以下信息：
+创建工作区后，请按照 [将 Windows 计算机连接到 Azure Monitor](../azure-monitor/agents/log-analytics-agent.md#workspace-id-and-key) 中的说明获取以下信息：
 
 - 工作区 ID
 - 工作区的主密钥
 
 稍后将在安装过程中需要此信息。
 
-请确保查看 Azure Monitor 的权限管理，为监视和维护你的 Windows 虚拟桌面环境的用户启用数据访问。 有关详细信息，请参阅 [Azure Monitor 的角色、权限和安全入门](../azure-monitor/platform/roles-permissions-security.md)。
+请确保查看 Azure Monitor 的权限管理，为监视和维护你的 Windows 虚拟桌面环境的用户启用数据访问。 有关详细信息，请参阅 [Azure Monitor 的角色、权限和安全入门](../azure-monitor/roles-permissions-security.md)。
 
 ## <a name="push-diagnostics-data-to-your-workspace"></a>将诊断数据推送到你的工作区
 
@@ -73,7 +73,7 @@ Azure Monitor 使你能够分析 Windows 虚拟桌面数据，并查看虚拟机
 
     "诊断设置" 页中显示的选项会因所编辑的对象类型而异。
 
-    例如，在为应用组启用诊断时，将看到用于配置检查点、错误和管理的选项。 对于工作区，这些类别将配置源以跟踪用户订阅应用列表的时间。 若要了解有关诊断设置的详细信息，请参阅 [创建诊断设置以收集 Azure 中的资源日志和指标](../azure-monitor/platform/diagnostic-settings.md)。
+    例如，在为应用组启用诊断时，将看到用于配置检查点、错误和管理的选项。 对于工作区，这些类别将配置源以跟踪用户订阅应用列表的时间。 若要了解有关诊断设置的详细信息，请参阅 [创建诊断设置以收集 Azure 中的资源日志和指标](../azure-monitor/essentials/diagnostic-settings.md)。
 
      >[!IMPORTANT]
      >请记得为要监视的每个 Azure 资源管理器对象启用诊断。 启用诊断后，数据将可用于活动。 首次设置后可能需要几个小时。
@@ -83,7 +83,7 @@ Azure Monitor 使你能够分析 Windows 虚拟桌面数据，并查看虚拟机
 6. 选择“保存”。
 
 >[!NOTE]
->Log Analytics 提供将数据流式传输到 [事件中心](../event-hubs/event-hubs-about.md) 或将其存档在存储帐户中的选项。 若要了解有关此功能的详细信息，请参阅将 [azure 监视数据流式传输到事件中心](../azure-monitor/platform/stream-monitoring-data-event-hubs.md) 和 [将 Azure 资源日志存档到存储帐户](../azure-monitor/platform/resource-logs.md#send-to-azure-storage)。
+>Log Analytics 提供将数据流式传输到 [事件中心](../event-hubs/event-hubs-about.md) 或将其存档在存储帐户中的选项。 若要了解有关此功能的详细信息，请参阅将 [azure 监视数据流式传输到事件中心](../azure-monitor/essentials/stream-monitoring-data-event-hubs.md) 和 [将 Azure 资源日志存档到存储帐户](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)。
 
 ## <a name="how-to-access-log-analytics"></a>如何访问 Log Analytics
 
@@ -107,7 +107,7 @@ Azure Monitor 使你能够分析 Windows 虚拟桌面数据，并查看虚拟机
 
 2. 搜索并选择“Monitor”。
 
-3. 选择“日志”。
+3. 选择“日志”。 
 
 4. 按照 "日志记录" 页中的说明设置查询的作用域。
 
@@ -134,9 +134,9 @@ Azure Monitor 使你能够分析 Windows 虚拟桌面数据，并查看虚拟机
 1. 选择 **Windows 虚拟桌面** 查看可用查询。
 1. 选择 " **运行** " 以运行所选查询。
 
-请在 Azure Monitor Log Analytics 中详细了解 [已保存查询](../azure-monitor/log-query/example-queries.md)中的示例查询接口。
+请在 Azure Monitor Log Analytics 中详细了解 [已保存查询](../azure-monitor/logs/example-queries.md)中的示例查询接口。
 
-下面的查询列表允许您查看单个用户的连接信息或问题。 可以在 [Log Analytics 查询编辑器](../azure-monitor/log-query/log-analytics-tutorial.md#write-a-query)中运行这些查询。 对于每个查询， `userupn` 将替换为要查找的用户的 UPN。
+下面的查询列表允许您查看单个用户的连接信息或问题。 可以在 [Log Analytics 查询编辑器](../azure-monitor/logs/log-analytics-tutorial.md#write-a-query)中运行这些查询。 对于每个查询， `userupn` 将替换为要查找的用户的 UPN。
 
 
 查找单个用户的所有连接：

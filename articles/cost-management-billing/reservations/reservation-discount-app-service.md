@@ -6,14 +6,14 @@ ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: conceptual
-ms.date: 02/01/2021
+ms.date: 02/12/2021
 ms.author: banders
-ms.openlocfilehash: debe02a89e10712ad8a0b8d61b0fdc3f8a4bd7b2
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: c599c64ce4b22bbf7bece77602b22fef6629d07c
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99577386"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100369724"
 ---
 # <a name="how-reservation-discounts-apply-to-azure-app-service-premium-v3-instances-and-isolated-stamps"></a>预留折扣如何应用于 Azure 应用服务 Premium v3 实例和独立印花
 
@@ -40,10 +40,6 @@ Azure 预留折扣应用于正在运行的 Premium v3 实例（按小时计费�
 4.  在第 4 个小时内，实例 1 运行了 0.5 小时，实例 2 运行了 1 小时。 预订费用完全涵盖了实例 1 的费用，并涵盖了实例 2 的 0.5 小时费用。 将按即用即付费率收取剩余 0.5 小时的费用。
 
 要了解 Azure 预留应用情况并在计费使用情况报告中查看该信息，请参阅[了解预留使用情况](understand-reserved-instance-usage-ea.md)。
-
-### <a name="discount-can-apply-to-different-sizes"></a>折扣适用于不同大小
-
-购买预留的 Premium v3 实例并选择“针对实例大小令活动进行优化”后，折扣覆盖范围会应用于你选择的 Premium v3 实例大小。 它还可应用于同一系列实例大小灵活性组中的其他实例大小。
 
 ## <a name="how-reservation-discounts-apply-to-isolated-stamps"></a>预留折扣如何应用于独立印花
 

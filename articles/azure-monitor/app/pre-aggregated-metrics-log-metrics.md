@@ -6,20 +6,20 @@ author: vgorbenko
 ms.author: vitalyg
 ms.date: 09/18/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 9b93ac774dffb837d93853353e83b8da4ab4d8d4
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: c419411b0956cdc42055f0e97a47fc8e4ddb38c9
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93027153"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589728"
 ---
 # <a name="log-based-and-pre-aggregated-metrics-in-application-insights"></a>Application Insights 中基于日志的指标和预先聚合的指标
 
-本文介绍了 "传统" Application Insights 基于日志的度量值和预先聚合的度量值之间的差异。 这两种类型的指标都可供 Application Insights 用户使用，每种指标在监视应用程序运行状况、诊断和分析方面发挥了独特的作用。 检测应用程序的开发人员可以根据应用程序的大小、预期遥测量以及指标精度和警报方面的业务要求，确定哪种类型的指标最适合特定的方案。
+本文介绍基于日志的“传统”Application Insights 指标与预聚合指标之间的差别。 这两种类型的指标都可供 Application Insights 用户使用，每种指标在监视应用程序运行状况、诊断和分析方面发挥了独特的作用。 检测应用程序的开发人员可以根据应用程序的大小、预期遥测量以及指标精度和警报方面的业务要求，确定哪种类型的指标最适合特定的方案。
 
 ## <a name="log-based-metrics"></a>基于日志的指标
 
-过去，Application Insights 中的应用程序监视遥测数据模型仅基于少量的预定义类型的事件，例如请求、异常、依赖项调用、页面视图等。开发人员可以使用 SDK 手动发出这些事件 (通过编写显式调用 SDK) 的代码，也可以依赖自动检测的事件的自动收集。 在任一情况下，Application Insights 后端都会将所有收集的事件存储为日志。可以使用 Azure 门户中的 Application Insights 边栏选项卡作为分析和诊断工具来可视化日志中基于事件的数据。
+过去，Application Insights 中的应用程序监视遥测数据模型只是基于少量的预定义类型的事件，例如请求、异常、依赖项调用、页面视图等等。开发人员可以使用 SDK 手动发出这些事件（编写显式调用该 SDK 的代码），或者依赖于自动检测产品中的自动事件收集功能。 在任一情况下，Application Insights 后端都会将所有收集的事件存储为日志。可以使用 Azure 门户中的 Application Insights 边栏选项卡作为分析和诊断工具来可视化日志中基于事件的数据。
 
 使用日志保留完整事件集能够为分析和诊断带来很大的帮助。 例如，可以获取对特定 URL 发出的确切请求计数，以及发出这些调用的非重复用户数。 或者，可以获取详细的诊断跟踪，包括任何用户会话的异常和依赖项调用。 获取此类信息能够明显提高应用程序运行状况和使用情况的可见性，从而可以缩短诊断应用问题所需的时间。
 
@@ -30,38 +30,38 @@ ms.locfileid: "93027153"
 
 ## <a name="pre-aggregated-metrics"></a>预先聚合的指标
 
-除了基于日志的指标以外，在 2018 年年底，Application Insights 团队交付了存储在专用存储库（已针对时序进行优化）中的指标的公共预览版。 新指标不再作为包含大量属性的单个事件进行保存。 它们存储为预先聚合的时序，并且仅包含键维度。 这使得新指标在查询时间方面非常出色：检索数据的速度要快得多，而且所需的计算能力更低。 因此，可以实现[针对指标维度发出近实时警报](../platform/alerts-metric-near-real-time.md)、响应能力更强的[仪表板](./overview-dashboard.md)等方案。
+除了基于日志的指标以外，在 2018 年年底，Application Insights 团队交付了存储在专用存储库（已针对时序进行优化）中的指标的公共预览版。 新指标不再作为包含大量属性的单个事件进行保存。 它们存储为预先聚合的时序，并且仅包含键维度。 这使得新指标在查询时间方面非常出色：检索数据的速度要快得多，而且所需的计算能力更低。 因此，可以实现[针对指标维度发出近实时警报](../alerts/alerts-metric-near-real-time.md)、响应能力更强的[仪表板](./overview-dashboard.md)等方案。
 
 > [!IMPORTANT]
 > 基于日志的指标和预先聚合的指标可在 Application Insights 中共存。 为了区分两者，在 Application Insights UX 中，预先聚合的指标现在称为“标准指标(预览版)”，而事件中的传统指标已重命名为“基于日志的指标”。
 
-较新的 Sdk ([Application Insights 2.7](https://www.nuget.org/packages/Microsoft.ApplicationInsights/2.7.2) SDK 或更高版本，适用于 .net) 集合期间预先聚合的度量值。 这适用于  [默认情况下发送的标准指标](../platform/metrics-supported.md#microsoftinsightscomponents) ，因此准确性不受采样或筛选影响。 它也适用于使用 [GetMetric](./api-custom-events-metrics.md#getmetric) 发送的自定义指标，从而减少数据引入量，降低成本。
+较新的 SDK（适用于 .NET 的 [Application Insights 2.7](https://www.nuget.org/packages/Microsoft.ApplicationInsights/2.7.2) SDK 或更高版本）会在收集期间预聚合指标。 这适用于[默认发送的标准指标](../essentials/metrics-supported.md#microsoftinsightscomponents)，因此准确度不受采样或筛选的影响。 它也适用于使用 [GetMetric](./api-custom-events-metrics.md#getmetric) 发送的自定义指标，从而减少数据引入并降低成本。
 
 对于不实施预先聚合的 SDK（即，早期版本的 Application Insights SDK 或用于浏览器检测的 SDK），Application Insights 后端仍会通过聚合 Application Insights 事件收集终结点收到的事件来填充新指标。 这意味着，尽管不能减少通过网络传输的数据量，但仍可以使用预先聚合的指标并改善性能，同时，在收集期间，可以使用不预先聚合指标的 SDK 来支持近实时维度警报。
 
 值得一提的是，收集终结点会在引入采样之前预先聚合事件，这意味着，[引入采样](./sampling.md)永远不会影响预先聚合的指标，不管对应用程序使用哪个 SDK 版本。  
 
-### <a name="sdk-supported-pre-aggregated-metrics-table"></a>SDK 支持的预聚合度量值表
+### <a name="sdk-supported-pre-aggregated-metrics-table"></a>支持 SDK 的预聚合指标表
 
-| 当前生产 Sdk | 标准指标 (SDK 预聚合)  | 无 SDK 预聚合) 的自定义指标 ( | 自定义指标 (与 SDK 预聚合) |
+| 当前生产 SDK | 标准指标（SDK 预聚合） | 自定义指标（不含 SDK 预聚合） | 自定义指标（含 SDK 预聚合）|
 |------------------------------|-----------------------------------|----------------------------------------------|---------------------------------------|
-| .NET Core 和 .NET Framework | 支持的 (V 2.13.1 +) | 通过[TrackMetric](api-custom-events-metrics.md#trackmetric)支持| 支持的 (V 2.7.2 +) via [GetMetric](get-metric.md) |
-| Java                         | 不支持       | 通过[TrackMetric](api-custom-events-metrics.md#trackmetric)支持| 不支持                           |
-| Node.js                      | 不支持       | 通过[TrackMetric](api-custom-events-metrics.md#trackmetric)支持| 不支持                           |
-| Python                       | 不支持       | 支持                                 | 通过[OpenCensus](opencensus-python.md#metrics)支持 |  
+| .NET Core 和 .NET Framework | 支持 (V2.13.1+)| 通过 [TrackMetric](api-custom-events-metrics.md#trackmetric) 支持| 通过 [GetMetric](get-metric.md) 支持 (V2.7.2+) |
+| Java                         | 不支持       | 通过 [TrackMetric](api-custom-events-metrics.md#trackmetric) 支持| 不支持                           |
+| Node.js                      | 不支持       | 通过 [TrackMetric](api-custom-events-metrics.md#trackmetric) 支持| 不支持                           |
+| Python                       | 不支持       | 支持                                 | 通过 [OpenCensus.stats](opencensus-python.md#metrics) 支持 |  
 
 
-### <a name="codeless-supported-pre-aggregated-metrics-table"></a>无代码置备支持的预聚合度量值表
+### <a name="codeless-supported-pre-aggregated-metrics-table"></a>支持无代码的预聚合指标表
 
-| 当前生产 Sdk | 标准指标 (SDK 预聚合)  | 无 SDK 预聚合) 的自定义指标 ( | 自定义指标 (与 SDK 预聚合) |
+| 当前生产 SDK | 标准指标（SDK 预聚合） | 自定义指标（不含 SDK 预聚合） | 自定义指标（含 SDK 预聚合）|
 |-------------------------|--------------------------|-------------------------------------------|-----------------------------------------|
-| ASP.NET                 | 支持 <sup> 1<sup>    | 不支持                             | 不支持                           |
-| ASP.NET Core            | 支持 <sup> 2<sup>    | 不支持                             | 不支持                           |
+| ASP.NET                 | 支持 <sup>1<sup>    | 不支持                             | 不支持                           |
+| ASP.NET Core            | 支持 <sup>2<sup>    | 不支持                             | 不支持                           |
 | Java                    | 不支持            | 不支持                             | [支持](java-in-process-agent.md#metrics) |
 | Node.js                 | 不支持            | 不支持                             | 不支持                           |
 
-1. 应用服务上的 ASP.NET 无代码置备附加仅在 "完整" 监视模式下发出指标。 ASP.NET 无代码置备附加应用服务、VM/VMSS 和本地发出无维度的标准指标。 SDK 对于所有维度都是必需的。
-2. 应用服务上 ASP.NET Core 无代码置备附加无维度的情况下发出标准指标。 SDK 对于所有维度都是必需的。
+1. 应用服务上的 ASP.NET 无代码附加仅在“完全”监视模式下发出指标。 应用服务、VM/VMSS 和本地上的 ASP.NET 无代码附加会发出无维度的标准指标。 SDK 对于所有维度都是必需的。
+2. 应用服务上的 ASP.NET Core 无代码附加会发出无维度的标准指标。 SDK 对于所有维度都是必需的。
 
 ## <a name="using-pre-aggregation-with-application-insights-custom-metrics"></a>对 Application Insights 自定义指标使用预先聚合
 
@@ -71,7 +71,7 @@ ms.locfileid: "93027153"
 
 ## <a name="custom-metrics-dimensions-and-pre-aggregation"></a>自定义指标维度和预先聚合
 
-使用 [trackMetric](./api-custom-events-metrics.md#trackmetric) 或 [GetMetric 和 TrackValue](./api-custom-events-metrics.md#getmetric) API 调用发送的所有指标将自动存储在日志和指标存储中。 但是，自定义指标的基于日志的版本始终保留所有维度，而指标的预先聚合版本在存储时默认不包含任何维度。 通过选中 "对自定义指标维度启用警报"，可以在 " [使用情况和估计成本](./pricing.md) " 选项卡上启用自定义度量值的维度收集： 
+使用 [trackMetric](./api-custom-events-metrics.md#trackmetric) 或 [GetMetric 和 TrackValue](./api-custom-events-metrics.md#getmetric) API 调用发送的所有指标将自动存储在日志和指标存储中。 但是，自定义指标的基于日志的版本始终保留所有维度，而指标的预先聚合版本在存储时默认不包含任何维度。 可以在[用量和预估成本](./pricing.md)选项卡上选中“在自定义指标维度上启用警报”，来启用自定义指标维度的收集： 
 
 ![用量和预估成本](./media/pre-aggregated-metrics-log-metrics/001-cost.png)
 
@@ -81,7 +81,7 @@ ms.locfileid: "93027153"
 
 ## <a name="creating-charts-and-exploring-log-based-and-standard-pre-aggregated-metrics"></a>创建图表和浏览基于日志的指标与预先聚合的标准指标
 
-使用 [Azure Monitor 指标资源管理器](../platform/metrics-getting-started.md)可以绘制预先聚合的指标和基于日志的指标的图表，以及创作包含图表的仪表板。 选择所需的 Application Insights 资源后，使用命名空间选取器在标准指标（预览版）和基于日志的指标之间切换，或选择自定义指标命名空间：
+使用 [Azure Monitor 指标资源管理器](../essentials/metrics-getting-started.md)可以绘制预先聚合的指标和基于日志的指标的图表，以及创作包含图表的仪表板。 选择所需的 Application Insights 资源后，使用命名空间选取器在标准指标（预览版）和基于日志的指标之间切换，或选择自定义指标命名空间：
 
 ![指标命名空间](./media/pre-aggregated-metrics-log-metrics/002-metric-namespace.png)
 
@@ -93,5 +93,5 @@ ms.locfileid: "93027153"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [近实时警报](../platform/alerts-metric-near-real-time.md)
+* [近实时警报](../alerts/alerts-metric-near-real-time.md)
 * [GetMetric 和 TrackValue](./api-custom-events-metrics.md#getmetric)

@@ -12,12 +12,12 @@ ms.date: 11/13/2018
 ms.author: baselden
 ms.reviewer: plenzke
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 094ecd88c8b493d44b756d03d700b43cbcba1ee9
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 683367251c220abe36660d61463bce9e5a0c52f9
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92362393"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577758"
 ---
 # <a name="plan-an-azure-active-directory-reporting-and-monitoring-deployment"></a>规划 Azure Active Directory 报告和监视部署
 
@@ -47,23 +47,23 @@ Azure AD 报表提供环境中 Azure AD 活动的综合视图和日志，包括�
 * 一个 Azure 事件中心，你可以在其中与现有的 SIEM 工具（如 Splunk、Sumologic 或 QRadar）集成。
 
 > [!NOTE]
-最近开始使用术语 Azure Monitor 日志，而不是 Log Analytics。 日志数据仍然存储在 Log Analytics 工作区中，并仍然由同一 Log Analytics 服务收集并分析。 我们正在更新术语，以便更好地反映 [Azure Monitor 中的日志](../../azure-monitor/platform/data-platform.md)的角色。 有关详细信息，请参阅 [Azure Monitor 术语更改](../../azure-monitor/terminology.md)。
+最近开始使用术语 Azure Monitor 日志，而不是 Log Analytics。 日志数据仍然存储在 Log Analytics 工作区中，并仍然由同一 Log Analytics 服务收集并分析。 我们正在更新术语，以便更好地反映 [Azure Monitor 中的日志](../../azure-monitor/data-platform.md)的角色。 有关详细信息，请参阅 [Azure Monitor 术语更改](../../azure-monitor/terminology.md)。
 
 [详细了解报告保留策略](./reference-reports-data-retention.md)。
 
 ### <a name="licensing-and-prerequisites-for-azure-ad-reporting-and-monitoring"></a>Azure AD 报告和监视的许可和先决条件
 
-需要 Azure AD premium 许可证才能访问 Azure AD 登录日志。
+需要 Azure AD Premium 许可证才能访问 Azure AD 登录日志。
 
-[Azure Active Directory 定价指南](https://azure.microsoft.com/pricing/details/active-directory/)中的详细功能和许可信息。
+[Azure Active Directory 定价指南](https://azure.microsoft.com/pricing/details/active-directory/)中介绍了详细功能和许可信息。
 
-若要部署 Azure AD 监视和报告，你将需要成为 Azure AD 租户的全局管理员或安全管理员的用户。
+若要部署Azure AD 监视和报告，需要一个用户身份，该用户需要是 Azure AD 租户的全局管理员或安全管理员。
 
-根据日志数据的最终目标，需要以下内容之一：
+根据日志数据的最终目标，你将需要以下某个帐户：
 
 * 你对其拥有 ListKeys 权限的 Azure 存储帐户。 建议使用常规存储帐户而非 Blob 存储帐户。 有关存储定价信息，请参阅 [Azure 存储定价计算器](https://azure.microsoft.com/pricing/calculator/?service=storage)。
 
-* 与第三方 SIEM 解决方案集成的 Azure 事件中心命名空间。
+* 用于与第三方 SIEM 解决方案集成的 Azure 事件中心命名空间。
 
 * 用于将日志发送到 Azure Monitor 日志的 Azure Log Analytics 工作区。
 
@@ -97,7 +97,7 @@ Azure AD 报表提供环境中 Azure AD 活动的综合视图和日志，包括�
 
 * 满足业务需求的解决方案需要
 * 需要满足业务需求
-* 不适用
+* “不适用”
 
 |区域 |说明 |
 |-|-|
@@ -121,7 +121,7 @@ Azure AD 报表提供环境中 Azure AD 活动的综合视图和日志，包括�
 
 #### <a name="send-logs-to-azure-monitor-logs"></a>将日志发送到 Azure Monitor 日志
 
-[Azure Monitor 日志](../../azure-monitor/log-query/log-query-overview.md) 合并了不同源中的监视数据。 它还提供了查询语言和分析引擎，可让你深入了解应用程序的操作和资源的使用情况。 通过将 Azure AD 活动日志发送到 Azure Monitor 日志，可以快速检索、监视和警报收集的数据。 如果没有要直接将数据发送到的现有 SIEM 解决方案，但又想要查询和分析，请使用此方法。 数据 Azure Monitor 日志中后，可以将其发送到事件中心，并将其发送到 SIEM （如果需要）。
+[Azure Monitor 日志](../../azure-monitor/logs/log-query-overview.md) 合并了不同源中的监视数据。 它还提供了查询语言和分析引擎，可让你深入了解应用程序的操作和资源的使用情况。 通过将 Azure AD 活动日志发送到 Azure Monitor 日志，可以快速检索、监视和警报收集的数据。 如果没有要直接将数据发送到的现有 SIEM 解决方案，但又想要查询和分析，请使用此方法。 数据 Azure Monitor 日志中后，可以将其发送到事件中心，并将其发送到 SIEM （如果需要）。
 
 了解如何[将数据发送到 Azure Monitor 日志](./howto-integrate-activity-logs-with-log-analytics.md)。
 

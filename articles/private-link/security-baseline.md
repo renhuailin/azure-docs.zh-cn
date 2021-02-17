@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: b38d86402f418e5c2b484bb9101e2b4cc3575d6e
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 692b52e8ea6a88a119ca98985864cb9e1daa14c3
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98196616"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595757"
 ---
 # <a name="azure-security-baseline-for-azure-private-link"></a>Azure 专用链接的 azure 安全基线
 
@@ -28,9 +28,9 @@ ms.locfileid: "98196616"
 
 在 Azure Monitor 中创建当关键资源发生更改时触发的警报。
 
-- [如何查看和检索 Azure 活动日志事件](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [如何查看和检索 Azure 活动日志事件](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [如何在 Azure Monitor 中创建警报](../azure-monitor/platform/alerts-activity-log.md)
+- [如何在 Azure Monitor 中创建警报](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -50,7 +50,7 @@ ms.locfileid: "98196616"
 
 - [如何加入 Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-- [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/platform/diagnostic-settings.md)
+- [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/essentials/diagnostic-settings.md)
 
 - [专用链接的日志记录和监视](private-link-overview.md#logging-and-monitoring)
 
@@ -66,9 +66,9 @@ ms.locfileid: "98196616"
 
 **指南**：启用 Azure Monitor 活动日志，该日志记录对专用链接资源执行的操作，例如，执行操作的人员、操作发生的时间、操作状态和其他有用的审核信息。 
 
-- [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/platform/diagnostic-settings.md)
+- [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/essentials/diagnostic-settings.md)
 
-- [查看和检索 Azure 活动日志事件](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [查看和检索 Azure 活动日志事件](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
 - [专用链接的日志记录和监视](private-link-overview.md#logging-and-monitoring)
 
@@ -80,7 +80,7 @@ ms.locfileid: "98196616"
 
 **指南**：对于与专用链接相关的日志，根据组织在 Azure Monitor 内的符合性法规设置 Log Analytics 工作区保持期。 使用 Azure 存储帐户进行日志的任何长期/存档存储。
 
-- [更改 Log Analytics 中的数据保留期](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [更改 Log Analytics 中的数据保留期](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 - [如何为 Azure 存储帐户日志配置保留策略](../storage/common/storage-monitor-storage-account.md#configure-logging)
 
@@ -96,9 +96,9 @@ ms.locfileid: "98196616"
 
 - [如何加入 Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-- [了解 Log Analytics 工作区](../azure-monitor/log-query/log-analytics-tutorial.md)
+- [了解 Log Analytics 工作区](../azure-monitor/logs/log-analytics-tutorial.md)
 
-- [如何在 Azure Monitor 中执行自定义查询](../azure-monitor/log-query/get-started-queries.md)
+- [如何在 Azure Monitor 中执行自定义查询](../azure-monitor/logs/get-started-queries.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -114,7 +114,7 @@ ms.locfileid: "98196616"
 
 - [如何在 Azure 安全中心管理警报](../security-center/security-center-managing-and-responding-alerts.md)
 
-- [如何针对 Log Analytics 日志数据发出警报](../azure-monitor/learn/tutorial-response.md)
+- [如何针对 Log Analytics 日志数据发出警报](../azure-monitor/alerts/tutorial-response.md)
 
 **Azure 安全中心监视**：是
 
@@ -192,7 +192,7 @@ ms.locfileid: "98196616"
 
 - [如何将 Azure 活动日志集成到 Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
-- [如何为自定义警报和通知配置操作组](../azure-monitor/platform/action-groups.md)
+- [如何为自定义警报和通知配置操作组](../azure-monitor/alerts/action-groups.md)
 
 **Azure 安全中心监视**：是
 
@@ -318,7 +318,7 @@ ms.locfileid: "98196616"
 
 - [网络安全组的诊断日志记录](private-link-overview.md#logging-and-monitoring)
 
-- [如何针对 Azure 活动日志事件创建警报](../azure-monitor/platform/alerts-activity-log.md)
+- [如何针对 Azure 活动日志事件创建警报](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure 安全中心监视**：目前不可用
 

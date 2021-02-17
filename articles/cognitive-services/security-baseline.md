@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 97bcf0bedb3ed175f8fdb5d4dc361c069ae0327d
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: c0b773a728fed456a34d0db3a00b353147432012
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99805203"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589264"
 ---
 # <a name="azure-security-baseline-for-cognitive-services"></a>认知服务的 Azure 安全基线
 
@@ -175,9 +175,9 @@ ms.locfileid: "99805203"
 
 **指导**：使用 Azure 活动日志监视网络资源配置，并检测与 Azure 认知服务容器相关的网络资源的更改。 在 Azure Monitor 中创建当关键网络资源发生更改时触发的警报。
 
-* [如何查看和检索 Azure 活动日志事件](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [如何查看和检索 Azure 活动日志事件](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-* [如何在 Azure Monitor 中创建警报](../azure-monitor/platform/alerts-activity-log.md)
+* [如何在 Azure Monitor 中创建警报](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -199,7 +199,7 @@ ms.locfileid: "99805203"
 
 **指南**：启用 Azure 活动日志诊断设置，并将日志发送到 Log Aalytics 工作区、Azure 事件中心或 Azure 存储帐户进行存档。 活动日志提供有关在控制平面级别对 Azure 认知服务容器执行的操作的见解。 通过 Azure 活动日志数据，可确定在控制平面级别针对 Azure Cache for Redis 实例执行的任何写入操作（PUT、POST、DELETE）的“操作内容、操作人员和操作时间”。
 
-* [如何启用 Azure 活动日志的诊断设置](../azure-monitor/platform/activity-log.md)
+* [如何启用 Azure 活动日志的诊断设置](../azure-monitor/essentials/activity-log.md)
 
 **Azure 安全中心监视**：是
 
@@ -211,7 +211,7 @@ ms.locfileid: "99805203"
 
 此外，Azure 认知服务还发送诊断事件，可收集这些事件并使用它们来实现分析、警报和报告目的。 可通过 Azure 门户配置认知服务容器的诊断设置。 可将一个或多个诊断事件发送到存储帐户、事件中心或 Log Analytics 工作区。
 
-* [如何启用 Azure 活动日志的诊断设置](../azure-monitor/platform/activity-log.md)
+* [如何启用 Azure 活动日志的诊断设置](../azure-monitor/essentials/activity-log.md)
 
 * [使用 Azure 认知服务的诊断设置](./diagnostic-logging.md)
 
@@ -231,7 +231,7 @@ ms.locfileid: "99805203"
 
 **指导**：在 Azure Monitor 中，根据组织的合规性规章设置 Log Analytics 工作区保留期。 使用 Azure 存储帐户进行长期/存档存储。
 
-* [如何为 Log Analytics 工作区设置日志保留参数](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+* [如何为 Log Analytics 工作区设置日志保留参数](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure 安全中心监视**：不适用
 
@@ -241,9 +241,9 @@ ms.locfileid: "99805203"
 
 **指导**：启用 Azure 活动日志诊断设置，并将日志发送到 Log Analytics 工作区。 这些日志提供频繁生成的有关资源操作的丰富数据用于识别问题和调试。 在 Log Analytics 中执行查询以搜索字词、识别趋势和分析模式，并根据可能已为 Azure 认知服务收集的活动日志数据提供许多其他见解。
 
-* [如何启用 Azure 活动日志的诊断设置](../azure-monitor/platform/activity-log.md)
+* [如何启用 Azure 活动日志的诊断设置](../azure-monitor/essentials/activity-log.md)
 
-* [如何收集和分析 Azure Monitor 的 Log Analytics 工作区中的 Azure 活动日志](../azure-monitor/platform/activity-log.md)
+* [如何收集和分析 Azure Monitor 的 Log Analytics 工作区中的 Azure 活动日志](../azure-monitor/essentials/activity-log.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -257,7 +257,7 @@ ms.locfileid: "99805203"
 
 * [如何加入 Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-* [使用 Azure Monitor 创建、查看和管理日志警报](../azure-monitor/platform/alerts-log.md)
+* [使用 Azure Monitor 创建、查看和管理日志警报](../azure-monitor/alerts/alerts-log.md)
 
 **Azure 安全中心监视**：是
 
@@ -570,7 +570,7 @@ Microsoft 会管理 Azure 认知服务的底层基础结构，并实施严格的
 
 **指导**：将 Azure Monitor 与 Azure 活动日志结合使用，以创建在 Azure 认知服务的生产实例和其他关键资源或相关资源发生更改时发出的警报。
 
-* [如何针对 Azure 活动日志事件创建警报](../azure-monitor/platform/alerts-activity-log.md)
+* [如何针对 Azure 活动日志事件创建警报](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure 安全中心监视**：是
 

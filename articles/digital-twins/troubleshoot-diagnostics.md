@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 11/9/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: d988617fcaf7479c7bb3356e6ef6f87824ed23a7
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.openlocfilehash: c600ced8896a3847b80d854c9e230310cca4c98d
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94616648"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100588594"
 ---
 # <a name="troubleshooting-azure-digital-twins-diagnostics-logging"></a>Azure 数字孪生故障排除：诊断日志记录
 
@@ -30,13 +30,13 @@ Azure 数字孪生可以收集服务实例的日志来监视其性能、访问�
 
 1. 登录到 [Azure 门户](https://portal.azure.com) 并导航到 Azure 数字孪生实例。 可以通过在门户搜索栏中键入其名称来找到它。 
 
-2. 从菜单中选择 " **诊断设置** "，然后单击 " **添加诊断设置** "。
+2. 从菜单中选择 " **诊断设置** "，然后单击 " **添加诊断设置**"。
 
     :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings.png" alt-text="显示 &quot;诊断设置&quot; 页和要添加的按钮的屏幕截图" lightbox="media/troubleshoot-diagnostics/diagnostic-settings.png":::
 
 3. 在下面的页面上，填写以下值：
-     * **诊断设置名称** ：为诊断设置指定一个名称。
-     * **类别详细信息** ：选择要监视的操作，并选中相应的复选框以对这些操作启用诊断。 诊断设置可以报告的操作如下：
+     * **诊断设置名称**：为诊断设置指定一个名称。
+     * **类别详细信息**：选择要监视的操作，并选中相应的复选框以对这些操作启用诊断。 诊断设置可以报告的操作如下：
         - DigitalTwinsOperation
         - EventRoutesOperation
         - ModelsOperation
@@ -44,7 +44,7 @@ Azure 数字孪生可以收集服务实例的日志来监视其性能、访问�
         - AllMetrics
         
         有关这些类别及其包含的信息的详细信息，请参阅下面的 " [*日志类别*](#log-categories) " 一节。
-     * **目标详细信息** ：选择要将日志发送到的位置。 可选择以下三个选项的任意组合：
+     * **目标详细信息**：选择要将日志发送到的位置。 可选择以下三个选项的任意组合：
         - 发送到 Log Analytics
         - 存档到存储帐户
         - 流式传输到事件中心
@@ -57,7 +57,7 @@ Azure 数字孪生可以收集服务实例的日志来监视其性能、访问�
 
 新设置在大约 10 分钟后生效。 之后，日志会在实例的 " **诊断设置** " 页上显示在配置的目标中。 
 
-有关诊断设置及其设置选项的更多详细信息，可以访问 [*创建诊断设置，将平台日志和指标发送到不同的目标*](../azure-monitor/platform/diagnostic-settings.md)。
+有关诊断设置及其设置选项的更多详细信息，可以访问 [*创建诊断设置，将平台日志和指标发送到不同的目标*](../azure-monitor/essentials/diagnostic-settings.md)。
 
 ## <a name="log-categories"></a>日志类别
 
@@ -84,20 +84,20 @@ Azure 数字孪生可以收集服务实例的日志来监视其性能、访问�
 >[!NOTE]
 > 每个日志类别包含若干个操作/REST API 调用。 在下表中，每个日志类别映射到其下的所有操作/REST API 调用，直到列出下一个日志类别。 
 
-| 日志类别 | 操作 | REST API 调用和其他事件 |
+| 日志类别 | Operation | REST API 调用和其他事件 |
 | --- | --- | --- |
-| ADTModelsOperation | DigitalTwins/模型/写入 | 数字克隆模型更新 API |
-|  | DigitalTwins/模型/读取 | 数字克隆模型按 ID 和列表 Api 获取 |
-|  | DigitalTwins/模型/删除 | 数字克隆模型删除 API |
+| ADTModelsOperation | Microsoft.DigitalTwins/models/write | 数字克隆模型更新 API |
+|  | Microsoft.DigitalTwins/models/read | 数字克隆模型按 ID 和列表 Api 获取 |
+|  | Microsoft.DigitalTwins/models/delete | 数字克隆模型删除 API |
 |  | DigitalTwins/模型/操作 | 数字克隆模型添加 API |
-| ADTQueryOperation | DigitalTwins/查询/操作 | 查询孪生 API |
-| ADTEventRoutesOperation | DigitalTwins/eventroutes/write | 事件路由添加 API |
-|  | DigitalTwins/eventroutes/read | 事件路由由 ID 和列表 Api 获取 |
-|  | DigitalTwins/eventroutes/delete | 事件路由删除 API |
+| ADTQueryOperation | Microsoft.DigitalTwins/query/action | 查询孪生 API |
+| ADTEventRoutesOperation | Microsoft.DigitalTwins/eventroutes/write | 事件路由添加 API |
+|  | Microsoft.DigitalTwins/eventroutes/read | 事件路由由 ID 和列表 Api 获取 |
+|  | Microsoft.DigitalTwins/eventroutes/delete | 事件路由删除 API |
 |  | DigitalTwins/eventroutes/action | 尝试将事件发布到终结点服务时失败， (不是 API 调用)  |
-| ADTDigitalTwinsOperation | DigitalTwins/DigitalTwins/write | 数字孪生添加、添加关系、更新、更新组件 |
-|  | DigitalTwins/DigitalTwins/read | 数字孪生按 ID、获取组件、按 ID 获取关系、列出传入关系、列表关系 |
-|  | DigitalTwins/DigitalTwins/delete | 数字孪生删除，删除关系 |
+| ADTDigitalTwinsOperation | Microsoft.DigitalTwins/digitaltwins/write | 数字孪生添加、添加关系、更新、更新组件 |
+|  | Microsoft.DigitalTwins/digitaltwins/read | 数字孪生按 ID、获取组件、按 ID 获取关系、列出传入关系、列表关系 |
+|  | Microsoft.DigitalTwins/digitaltwins/delete | 数字孪生删除，删除关系 |
 |  | DigitalTwins/DigitalTwins/action | 数字孪生发送组件遥测数据，发送遥测数据 |
 
 ## <a name="log-schemas"></a>日志架构 
@@ -115,18 +115,18 @@ Azure 数字孪生可以收集服务实例的日志来监视其性能、访问�
 | 字段名称 | 数据类型 | 说明 |
 |-----|------|-------------|
 | `Time` | DateTime | 此事件发生的日期和时间（UTC） |
-| `ResourceID` | String | 发生事件的资源的 Azure 资源管理器资源 ID |
-| `OperationName` | String  | 事件期间执行的操作类型 |
-| `OperationVersion` | String | 事件期间使用的 API 版本 |
-| `Category` | String | 正在发出的资源的类型 |
-| `ResultType` | String | 事件的结果 |
-| `ResultSignature` | String | 事件的 Http 状态代码 |
-| `ResultDescription` | String | 有关事件的其他详细信息 |
-| `DurationMs` | String | 执行事件所花的时间（以毫秒为单位） |
-| `CallerIpAddress` | String | 事件的掩码源 IP 地址 |
-| `CorrelationId` | GUID | 客户提供的事件的唯一标识符 |
-| `Level` | String | 事件的日志记录严重性 |
-| `Location` | String | 发生事件的区域 |
+| `ResourceID` | 字符串 | 发生事件的资源的 Azure 资源管理器资源 ID |
+| `OperationName` | 字符串  | 事件期间执行的操作类型 |
+| `OperationVersion` | 字符串 | 事件期间使用的 API 版本 |
+| `Category` | 字符串 | 正在发出的资源的类型 |
+| `ResultType` | 字符串 | 事件的结果 |
+| `ResultSignature` | 字符串 | 事件的 Http 状态代码 |
+| `ResultDescription` | 字符串 | 有关事件的其他详细信息 |
+| `DurationMs` | 字符串 | 执行事件所花的时间（以毫秒为单位） |
+| `CallerIpAddress` | 字符串 | 事件的掩码源 IP 地址 |
+| `CorrelationId` | Guid | 客户提供的事件的唯一标识符 |
+| `Level` | 字符串 | 事件的日志记录严重性 |
+| `Location` | 字符串 | 发生事件的区域 |
 | `RequestUri` | Uri | 事件发生时使用的终结点 |
 
 下面是这些日志类型的示例 JSON 正文。
@@ -201,13 +201,13 @@ Azure 数字孪生可以收集服务实例的日志来监视其性能、访问�
 |字段名称 | 数据类型 | 说明 |
 |-----|------|-------------|
 | `Time` | DateTime | 此事件发生的日期和时间（UTC） |
-| `ResourceId` | String | 发生事件的资源的 Azure 资源管理器资源 ID |
-| `OperationName` | String  | 事件期间执行的操作类型 |
-| `Category` | String | 正在发出的资源的类型 |
-| `ResultDescription` | String | 有关事件的其他详细信息 |
-| `Level` | String | 事件的日志记录严重性 |
-| `Location` | String | 发生事件的区域 |
-| `EndpointName` | String | 在 Azure 数字孪生中创建的出口终结点的名称 |
+| `ResourceId` | 字符串 | 发生事件的资源的 Azure 资源管理器资源 ID |
+| `OperationName` | 字符串  | 事件期间执行的操作类型 |
+| `Category` | 字符串 | 正在发出的资源的类型 |
+| `ResultDescription` | 字符串 | 有关事件的其他详细信息 |
+| `Level` | 字符串 | 事件的日志记录严重性 |
+| `Location` | 字符串 | 发生事件的区域 |
+| `EndpointName` | 字符串 | 在 Azure 数字孪生中创建的出口终结点的名称 |
 
 下面是这些日志类型的示例 JSON 正文。
 
@@ -233,13 +233,13 @@ Azure 数字孪生可以收集服务实例的日志来监视其性能、访问�
 
 本文前面介绍了如何配置要存储的日志类型，以及如何指定其存储位置。
 
-若要解决此类日志的问题并生成见解，可以生成 **自定义查询** 。 若要开始，你还可以利用服务为你提供的几个示例查询，以解决客户可能遇到的有关其实例的常见问题。
+若要解决此类日志的问题并生成见解，可以生成 **自定义查询**。 若要开始，你还可以利用服务为你提供的几个示例查询，以解决客户可能遇到的有关其实例的常见问题。
 
 下面介绍如何查询实例的日志。
 
 1. 登录到 [Azure 门户](https://portal.azure.com) 并导航到 Azure 数字孪生实例。 可以通过在门户搜索栏中键入其名称来找到它。 
 
-2. 从菜单中选择 " **日志** "，打开 "日志查询" 页。 页面将打开一个名为 " *查询* " 的窗口。
+2. 从菜单中选择 " **日志** "，打开 "日志查询" 页。 页面将打开一个名为 " *查询*" 的窗口。
 
     :::image type="content" source="media/troubleshoot-diagnostics/logs.png" alt-text="显示 Azure 数字孪生实例的日志页的屏幕截图。它与 &quot;查询&quot; 窗口重叠，其中显示了在不同日志选项后命名的预生成查询，如 DigitalTwin API 滞后时间和模型 API 滞后时间。" lightbox="media/troubleshoot-diagnostics/logs.png":::
 
@@ -255,10 +255,10 @@ Azure 数字孪生可以收集服务实例的日志来监视其性能、访问�
     - " *查询* " 选项卡包含可加载到编辑器中的示例查询。
     - 利用 " *筛选器* " 选项卡，您可以自定义查询返回的数据的筛选视图。
 
-有关日志查询以及如何编写日志查询的更多详细信息，可以访问 [*Azure Monitor 中日志查询的概述*](../azure-monitor/log-query/log-query-overview.md)。
+有关日志查询以及如何编写日志查询的更多详细信息，可以访问 [*Azure Monitor 中日志查询的概述*](../azure-monitor/logs/log-query-overview.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关配置诊断的详细信息，请参阅 [*从 Azure 资源收集和使用日志数据*](../azure-monitor/platform/platform-logs-overview.md)。
+* 有关配置诊断的详细信息，请参阅 [*从 Azure 资源收集和使用日志数据*](../azure-monitor/essentials/platform-logs-overview.md)。
 * 有关 Azure 数字孪生指标的信息，请参阅 [*故障排除：查看包含 Azure Monitor 的指标*](troubleshoot-metrics.md)。
 * 若要了解如何启用指标警报，请参阅 [*故障排除：设置警报*](troubleshoot-alerts.md)。

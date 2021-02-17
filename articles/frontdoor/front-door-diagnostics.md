@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/23/2020
 ms.author: yuajia
-ms.openlocfilehash: cd99be40700ab1c34176f2bf7497e4debf5cd424
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: d1f3e59cc88ea9cb30e7eacbd26591e08d71be61
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96483791"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575252"
 ---
 # <a name="monitoring-metrics-and-logs-in-azure-front-door"></a>在 Azure 前门中监视指标和日志
 
@@ -59,7 +59,7 @@ ms.locfileid: "96483791"
 ## <a name="diagnostic-logs"></a><a name="diagnostic-logging"></a>诊断日志
 诊断日志提供了有关操作和错误的丰富信息，这些信息对审核和故障排除非常重要。 诊断日志不同于活动日志。
 
-活动日志可深入了解对 Azure 资源所做的操作。 诊断日志提供资源已完成的操作的见解。 有关详细信息，请参阅 [Azure Monitor 诊断日志](../azure-monitor/platform/platform-logs-overview.md)。
+活动日志可深入了解对 Azure 资源所做的操作。 诊断日志提供资源已完成的操作的见解。 有关详细信息，请参阅 [Azure Monitor 诊断日志](../azure-monitor/essentials/platform-logs-overview.md)。
 
 :::image type="content" source="./media/front-door-diagnostics/diagnostic-log.png" alt-text="诊断日志":::
 
@@ -73,7 +73,7 @@ ms.locfileid: "96483791"
 
 前门目前提供的诊断日志 (按小时批处理) 。 诊断日志提供单个 API 请求，其中每个条目具有以下架构：
 
-| properties  | 说明 |
+| 属性  | 说明 |
 | ------------- | ------------- |
 | BackendHostname | 如果将请求转发到后端，此字段表示后端的主机名。 如果在为路由规则) 启用缓存时，请求将被重定向或转发到区域 (缓存，则此字段将为空。 |
 | CacheStatus | 对于缓存方案，此字段定义了弹出窗口中的缓存命中/未命中 |
@@ -121,8 +121,8 @@ ms.locfileid: "96483791"
 
 | 方案 | 日志条目计数 | POP | BackendHostname | isReceivedFromClient | CacheStatus |
 | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
-| 未启用缓存的路由规则 | 1 | 边缘 POP 代码 | 转发请求的后端 | True | CONFIG_NOCACHE |
-| 启用了缓存的路由规则。 在边缘 POP 处命中缓存 | 1 | 边缘 POP 代码 | 空 | True | 命中 |
+| 未启用缓存的路由规则 | 1 | 边缘 POP 代码 | 转发请求的后端 | 正确 | CONFIG_NOCACHE |
+| 启用了缓存的路由规则。 在边缘 POP 处命中缓存 | 1 | 边缘 POP 代码 | 空 | 正确 | 命中 |
 | 启用了缓存的路由规则。 在边缘 POP 缓存未命中，但在父缓存弹出时命中缓存 | 2 | 1. 边缘 POP 代码</br>2. 父缓存 POP 代码 | 1. 父缓存 POP 主机名</br>2。空 | 1. True</br>2. False | 1. 未命中</br>2. 命中 |
 | 启用了缓存的路由规则。 缓存未命中边缘 POP，但父缓存弹出时出现部分缓存命中 | 2 | 1. 边缘 POP 代码</br>2. 父缓存 POP 代码 | 1. 父缓存 POP 主机名</br>2. 帮助填充缓存的后端 | 1. True</br>2. False | 1. 未命中</br>2. PARTIAL_HIT |
 | 启用了缓存的路由规则。 在边缘 POP PARTIAL_HIT 缓存，但在父缓存中命中缓存 | 2 | 1. 边缘 POP 代码</br>2. 父缓存 POP 代码 | 1. 边缘 POP 代码</br>2. 父缓存 POP 代码 | 1. True</br>2. False | 1. PARTIAL_HIT</br>2. 命中 |

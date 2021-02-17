@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: da3386692d2d02015c0d3f59c88ae78a6c84b9ab
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: d6ffeeb1470fbe51885c81f30ab8b96c4e27d707
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98203093"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100586977"
 ---
 # <a name="azure-security-baseline-for-azure-monitor"></a>适用于 Azure Monitor 的 Azure 安全基线
 
@@ -34,9 +34,9 @@ Azure Monitor 属于 Azure 核心服务，并且 Azure Monitor 服务不能单�
 
 使用 Log Analytics 网关，可代表无法直接连接到 Internet 的计算机向 Azure Monitor 中的 Log Analytics 工作区发送数据，而无需将计算机连接到 Internet。 
 
-- [如何为 Azure Monitor 设置专用链接](platform/private-link-security.md)
+- [如何为 Azure Monitor 设置专用链接](logs/private-link-security.md)
 
-- [在 Azure Monitor 中使用 Log Analytics 网关连接无法访问 Internet 的计算机](platform/gateway.md)
+- [在 Azure Monitor 中使用 Log Analytics 网关连接无法访问 Internet 的计算机](agents/gateway.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -48,9 +48,9 @@ Azure Monitor 属于 Azure 核心服务，并且 Azure Monitor 服务不能单�
 
 将 Azure Monitor 与专用链接结合使用时，可访问网络日志记录，如“专用终结点处理的数据(入站/出站)”。
 
-- [针对 Azure Monitor 代理的网络要求](platform/log-analytics-agent.md#network-requirements)
+- [针对 Azure Monitor 代理的网络要求](agents/log-analytics-agent.md#network-requirements)
 
-- [在 Azure Monitor 中使用 Log Analytics 网关连接无法访问 Internet 的计算机](platform/gateway.md)
+- [在 Azure Monitor 中使用 Log Analytics 网关连接无法访问 Internet 的计算机](agents/gateway.md)
 
 - [如何启用网络安全组流日志](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
@@ -76,9 +76,9 @@ Azure Monitor 属于 Azure 核心服务，并且 Azure Monitor 服务不能单�
 
 **指导**：Azure Monitor 属于 Azure 核心服务，并且不能单独作为一项服务进行部署。 Azure Monitor 组件（包括 Azure Monitor 代理）和 Application Insights SDK 可能会随资源一起部署，这可能会影响这些资源的安全状况。
 
-- [针对 Azure Monitor 代理的网络要求](platform/log-analytics-agent.md#network-requirements)
+- [针对 Azure Monitor 代理的网络要求](agents/log-analytics-agent.md#network-requirements)
 
-- [在 Azure Monitor 中使用 Log Analytics 网关连接无法访问 Internet 的计算机](platform/gateway.md) 
+- [在 Azure Monitor 中使用 Log Analytics 网关连接无法访问 Internet 的计算机](agents/gateway.md) 
 
 - [请参阅 Application Insights 入门](./app/app-insights-overview.md#get-started)
 
@@ -92,9 +92,9 @@ Azure Monitor 属于 Azure 核心服务，并且 Azure Monitor 服务不能单�
 
 **指导**：使用 Azure 活动日志监视资源配置，并检测与 Azure Monitor 相关的网络资源的更改。 在 Azure Monitor 中创建警报，使其在关键网络资源发生更改时触发。
 
-- [如何查看和检索 Azure 活动日志事件](./platform/activity-log.md#view-the-activity-log)
+- [如何查看和检索 Azure 活动日志事件](./essentials/activity-log.md#view-the-activity-log)
 
-- [如何在 Azure Monitor 中创建警报](platform/alerts-activity-log.md)
+- [如何在 Azure Monitor 中创建警报](alerts/alerts-activity-log.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -110,9 +110,9 @@ Azure Monitor 属于 Azure 核心服务，并且 Azure Monitor 服务不能单�
 
 或者，可以启用将数据加入 Azure Sentinel 或第三方 SIEM 的功能。
 
-- [如何使用 Azure Monitor 收集平台日志和指标](platform/diagnostic-settings.md)
+- [如何使用 Azure Monitor 收集平台日志和指标](essentials/diagnostic-settings.md)
 
-- [如何使用 Azure Monitor 收集 Azure 虚拟机内部主机日志](learn/quick-collect-azurevm.md)
+- [如何使用 Azure Monitor 收集 Azure 虚拟机内部主机日志](vm/quick-collect-azurevm.md)
 
 - [如何加入 Azure Sentinel](../sentinel/quickstart-onboard.md)
 
@@ -126,9 +126,9 @@ Azure Monitor 属于 Azure 核心服务，并且 Azure Monitor 服务不能单�
 
 **指导**：Azure Monitor 使用活动日志，活动日志会自动启用，并记录对 Azure Monitor 资源执行的操作，例如：谁启动了操作、操作发生的时间、操作状态以及其他有用的审核信息。 
 
-- [如何使用 Azure Monitor 收集平台日志和指标](platform/diagnostic-settings.md)
+- [如何使用 Azure Monitor 收集平台日志和指标](essentials/diagnostic-settings.md)
 
-- [了解 Azure 中的日志记录和不同的日志类型](platform/platform-logs-overview.md)
+- [了解 Azure 中的日志记录和不同的日志类型](essentials/platform-logs-overview.md)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -138,7 +138,7 @@ Azure Monitor 属于 Azure 核心服务，并且 Azure Monitor 服务不能单�
 
 **指南**：在 Azure Monitor 中，根据组织的合规性规则设置 Log Analytics 工作区保持期。 使用 Azure 存储帐户对日志进行任何长期/存档存储。
 
-- [更改 Log Analytics 中的数据保留期](platform/manage-cost-storage.md#change-the-data-retention-period)
+- [更改 Log Analytics 中的数据保留期](logs/manage-cost-storage.md#change-the-data-retention-period)
 
 - [如何为 Azure 存储帐户日志配置保留策略](../storage/common/storage-monitor-storage-account.md#configure-logging)
 
@@ -154,9 +154,9 @@ Azure Monitor 属于 Azure 核心服务，并且 Azure Monitor 服务不能单�
 
 - [如何加入 Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-- [Log Analytics 查询入门](./log-query/log-analytics-tutorial.md)
+- [Log Analytics 查询入门](./logs/log-analytics-tutorial.md)
 
-- [如何在 Azure Monitor 中执行自定义查询](log-query/get-started-queries.md)
+- [如何在 Azure Monitor 中执行自定义查询](logs/get-started-queries.md)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -170,7 +170,7 @@ Azure Monitor 属于 Azure 核心服务，并且 Azure Monitor 服务不能单�
 
 - [如何在 Azure 安全中心管理警报](../security-center/security-center-managing-and-responding-alerts.md)
 
-- [如何针对 Log Analytics 日志数据发出警报](learn/tutorial-response.md)
+- [如何针对 Log Analytics 日志数据发出警报](alerts/tutorial-response.md)
 
 **Azure 安全中心监视**：当前不可用
 
@@ -316,7 +316,7 @@ Azure Monitor 属于 Azure 核心服务，并且 Azure Monitor 服务不能单�
 
 - [如何创建和使用标记](../azure-resource-manager/management/tag-resources.md)
 
-- [在 Azure Monitor 中管理对日志数据和工作区的访问](platform/manage-access.md)
+- [在 Azure Monitor 中管理对日志数据和工作区的访问](logs/manage-access.md)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -342,7 +342,7 @@ Azure Monitor 属于 Azure 核心服务，并且 Azure Monitor 服务不能单�
 
 Application Insights 和 Log Analytics 仍将允许引入 TLS 1.1 和 TLS 1.0 数据。 通过在客户端配置，可以将数据限制为 TLS 1.2。
 
-- [如何使用 TLS 1.2 安全地发送数据](platform/data-security.md#sending-data-securely-using-tls-12)
+- [如何使用 TLS 1.2 安全地发送数据](logs/data-security.md#sending-data-securely-using-tls-12)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -363,7 +363,7 @@ Application Insights 和 Log Analytics 仍将允许引入 TLS 1.1 和 TLS 1.0 �
 
 **指导**：使用 Azure 基于角色的访问控制 (Azure RBAC) 来管理对 Azure Monitor 的访问。
 
-- [Azure Monitor 中的角色、权限和安全性](platform/roles-permissions-security.md)
+- [Azure Monitor 中的角色、权限和安全性](/roles-permissions-security.md)
 
 - [如何配置 Azure RBAC](../role-based-access-control/role-assignments-portal.md)
 
@@ -375,9 +375,9 @@ Application Insights 和 Log Analytics 仍将允许引入 TLS 1.1 和 TLS 1.0 �
 
 **指导**：Azure Monitor 确保使用 Microsoft 管理的密钥 (MMK) 静态加密所有数据和保存的查询。 Azure Monitor 还可以使用你自己的密钥进行加密，该密钥存储在 Azure Key Vault 中，并且存储可通过系统分配的托管标识身份验证对其进行访问。 此客户管理的密钥 (CMK) 可通过软件或硬件 HSM 保护。
 
-- [Azure Monitor 客户管理的密钥](platform/customer-managed-keys.md)
+- [Azure Monitor 客户管理的密钥](logs/customer-managed-keys.md)
 
-- [Log Analytics 数据安全性](platform/data-security.md)
+- [Log Analytics 数据安全性](logs/data-security.md)
 
 - [Application Insights 中的数据收集、保留和存储](app/data-retention-privacy.md)
 
@@ -391,7 +391,7 @@ Application Insights 和 Log Analytics 仍将允许引入 TLS 1.1 和 TLS 1.0 �
 
 **指导**：将 Azure Monitor 与 Azure 活动日志配合使用，以创建在 Azure Monitor 和相关资源发生更改时发出的警报。
 
-- [如何针对 Azure 活动日志事件创建警报](platform/alerts-activity-log.md)
+- [如何针对 Azure 活动日志事件创建警报](alerts/alerts-activity-log.md)
 
 **Azure 安全中心监视**：是
 
@@ -423,7 +423,7 @@ Application Insights 和 Log Analytics 仍将允许引入 TLS 1.1 和 TLS 1.0 �
 
 - [了解 Azure RBAC](../role-based-access-control/overview.md)
 
-- [Azure Monitor 中的角色、权限和安全性](platform/roles-permissions-security.md)
+- [Azure Monitor 中的角色、权限和安全性](/roles-permissions-security.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -479,7 +479,7 @@ Application Insights 和 Log Analytics 仍将允许引入 TLS 1.1 和 TLS 1.0 �
 
 **指导**：定期核对清单，确保及时地从订阅中删除未经授权的 Azure Monitor 相关资源。  
 
-- [删除 Azure Log Analytics 工作区](platform/delete-workspace.md)
+- [删除 Azure Log Analytics 工作区](logs/delete-workspace.md)
 
 **Azure 安全中心监视**：是
 
@@ -647,7 +647,7 @@ Application Insights 和 Log Analytics 仍将允许引入 TLS 1.1 和 TLS 1.0 �
 
 **指导**：使用 Azure 资源管理器导出 JavaScript 对象表示法 (JSON) 模板中的 Azure Monitor 和相关资源，该模板可用作 Azure Monitor 和相关配置的备份。  使用 Azure 自动化自动运行备份脚本。 
 
-- [使用 Azure 资源管理器模板管理 Log Analytics 工作区](./samples/resource-manager-workspace.md)
+- [使用 Azure 资源管理器模板管理 Log Analytics 工作区](./logs/resource-manager-workspace.md)
 
 - [在 Azure 门户中将单资源和多资源导出到模板](../azure-resource-manager/templates/export-template-portal.md)
 
@@ -661,7 +661,7 @@ Application Insights 和 Log Analytics 仍将允许引入 TLS 1.1 和 TLS 1.0 �
 
 **指导**：使用 Azure 资源管理器导出 JavaScript 对象表示法 (JSON) 模板中的 Azure Monitor 和相关资源，该模板可用作 Azure Monitor 和相关配置的备份。  如果 Azure Monitor 相关资源使用客户管理的密钥，请在 Azure Key Vault 中备份客户管理的密钥。 
 
-- [使用 Azure 资源管理器模板管理 Log Analytics 工作区](./samples/resource-manager-workspace.md)
+- [使用 Azure 资源管理器模板管理 Log Analytics 工作区](./logs/resource-manager-workspace.md)
 
 - [在 Azure 门户中将单资源和多资源导出到模板](../azure-resource-manager/templates/export-template-portal.md)
 
@@ -675,7 +675,7 @@ Application Insights 和 Log Analytics 仍将允许引入 TLS 1.1 和 TLS 1.0 �
 
 **指南**：确保能够使用 Azure 资源管理器支持的模板文件定期执行还原操作。  测试对备份的客户管理的密钥进行还原。
 
-- [使用 Azure 资源管理器模板管理 Log Analytics 工作区](./samples/resource-manager-workspace.md)
+- [使用 Azure 资源管理器模板管理 Log Analytics 工作区](./logs/resource-manager-workspace.md)
 
 - [如何在 Azure 中还原密钥保管库密钥](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
 
@@ -723,7 +723,7 @@ Application Insights 和 Log Analytics 仍将允许引入 TLS 1.1 和 TLS 1.0 �
 
 **指导**：安全中心为每条警报分配严重性，以帮助你优先处理应该最先调查的警报。 严重性取决于安全中心在发出警报时所依据的检测结果和分析结果的置信度，以及导致发出警报的活动的恶意企图的置信度。
 
-此外，请用标记明确标记订阅（例如 生产、非生产）并创建命名系统来对 Azure 资源进行明确标识和分类，特别是处理敏感数据的资源。  你的责任是根据发生事件的 Azure 资源和环境的关键性确定修正警报的优先级。
+此外，请明确标记订阅（例如 生产、非生产）并创建命名系统来对 Azure 资源进行明确标识和分类，特别是处理敏感数据的资源。  你的责任是根据发生事件的 Azure 资源和环境的关键性确定修正警报的优先级。
 
 - [Azure 安全中心中的安全警报](../security-center/security-center-alerts-overview.md)
 

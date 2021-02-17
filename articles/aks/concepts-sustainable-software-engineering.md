@@ -4,18 +4,18 @@ description: 了解 Azure Kubernetes 服务 (AKS) 中的可持续软件工程。
 services: container-service
 ms.topic: conceptual
 ms.date: 08/26/2020
-ms.openlocfilehash: 700723041855fdae4f994480d180292fdfd12e15
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: e179b49879b78b2bab738407984c0f50d161114b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97346888"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572673"
 ---
 # <a name="sustainable-software-engineering-principles-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中的可持续软件工程原则
 
-可持续软件工程原则是一组可帮助你定义、构建和运行可持续应用程序的能力。 总体目标是降低应用程序每个方面的碳足迹。 [可持续软件工程的原则][principles-sse] 概括介绍了可持续软件工程的原则。
+可持续软件工程原则是一组可帮助你定义、构建和运行可持续应用程序的能力。 总体目标是降低应用程序每个方面的碳足迹。 [可持续软件工程的原则][principles-sse]概述了可持续软件工程的原则。
 
-关于可持续软件工程，需要了解的一个重要理念是：它是优先事项和重点的转移。 在许多情况下，软件的设计和运行方式侧重于快速性能和低延迟。 可持续软件工程侧重于尽可能多地降低碳排放量。 在某些情况下，应用可持续的软件工程原则可以提高性能或降低延迟，例如降低总网络行程。 在其他情况下，减少碳排放可能会导致性能降低或延迟增加，如延迟低优先级工作负荷。 考虑将可持续的软件工程原则应用于应用程序之前，请查看应用程序的优先级、需求和利弊。
+关于可持续软件工程，需要了解的一个重要理念是：它是优先事项和重点的转移。 在许多情况下，软件的设计和运行方式侧重于快速性能和低延迟。 可持续软件工程侧重于尽可能多地降低碳排放量。 在某些情况下，应用可持续软件工程原则可以提高性能或降低延迟，例如，降低总体网络行程就可以实现该目标。 在其他情况下，减少碳排放可能会导致性能降低或延迟增加，如延迟低优先级工作负荷。 考虑将可持续软件工程原则应用到应用程序之前，请查看应用程序的优先级、需求和利弊。
 
 ## <a name="measure-and-optimize"></a>度量和优化
 
@@ -36,7 +36,7 @@ ms.locfileid: "97346888"
 
 ## <a name="reduce-network-travel"></a>减少网络行程
 
-减少往返群集的请求和响应的距离通常可以减少联网设备的电力消耗并减少碳排放。 查看网络流量后，请考虑在更靠近你的网络流量来源的[区域中][regions]创建群集。 你还可以使用 [Azure 流量管理器][azure-traffic-manager] 帮助将流量路由到最近的群集和 [邻近位置组][proiximity-placement-groups] ，以帮助减少 Azure 资源之间的距离。
+减少往返群集的请求和响应的距离通常可以减少联网设备的电力消耗并减少碳排放。 查看网络流量后，请考虑在更靠近你的网络流量来源的[区域中][regions]创建群集。 你还可以使用 [Azure 流量管理器][azure-traffic-manager]来帮助你将流量路由到最近的群集和[邻近放置组][proiximity-placement-groups]，以便缩短 Azure 资源之间的距离。
 
 > [!IMPORTANT]
 > 考虑对群集的网络进行更改时，切勿以必须满足的工作负荷要求为代价来减少网络行程。 例如，使用 [可用性区域][availability-zones] 会导致群集上的网络旅行越多，但可能需要使用该功能来处理工作负荷要求。
@@ -57,11 +57,11 @@ ms.locfileid: "97346888"
 * [污点池][spot-pools]
 * [系统池][system-pools]
 * [资源预留][resource-reservations]
-* [邻近位置组][proiximity-placement-groups]
+* [邻近放置组][proiximity-placement-groups]
 * [可用性区域][availability-zones]
 
 [availability-zones]: availability-zones.md
-[azure-monitor]: ../azure-monitor/insights/container-insights-overview.md
+[azure-monitor]: ../azure-monitor/containers/container-insights-overview.md
 [azure-traffic-manager]: ../traffic-manager/traffic-manager-overview.md
 [proiximity-placement-groups]: reduce-latency-ppg.md
 [regions]: faq.md#which-azure-regions-currently-provide-aks

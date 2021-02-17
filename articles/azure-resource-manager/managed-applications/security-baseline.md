@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: c1bcde3f2b1f61fd241143e308a508d5f19e7b0c
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 2a5c31270f18c2e6149d93fa522818704b9747d8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99090564"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100588613"
 ---
 # <a name="azure-security-baseline-for-azure-managed-applications"></a>适用于 Azure 托管应用程序的 Azure 安全基线
 
@@ -415,9 +415,9 @@ Azure 安全中心还可针对某些可疑活动发出警报，例如，失败�
 
 **指导**：自动可用的活动日志包含针对托管应用程序资源的所有写入操作（PUT、POST、DELETE），但读取操作 (GET) 除外。 活动日志可用于在进行故障排除时查找错误，或监视组织中的用户如何对资源进行修改。
 
-- [如何使用 Azure Monitor 收集平台日志和指标](../../azure-monitor/platform/diagnostic-settings.md) 
+- [如何使用 Azure Monitor 收集平台日志和指标](../../azure-monitor/essentials/diagnostic-settings.md) 
 
-- [了解 Azure 中的日志记录和不同的日志类型](../../azure-monitor/platform/platform-logs-overview.md)
+- [了解 Azure 中的日志记录和不同的日志类型](../../azure-monitor/essentials/platform-logs-overview.md)
 
 **Azure 安全中心监视**：是
 
@@ -432,7 +432,7 @@ Azure 安全中心还可针对某些可疑活动发出警报，例如，失败�
 
 许多组织选择将 Azure Sentinel 用于频繁使用的“热”数据，并将 Azure 存储用于不太频繁使用的“冷”数据。
 
-- [如何使用 Azure Monitor 收集平台日志和指标](../../azure-monitor/platform/diagnostic-settings.md)
+- [如何使用 Azure Monitor 收集平台日志和指标](../../azure-monitor/essentials/diagnostic-settings.md)
 
 - [如何加入 Azure Sentinel](../../sentinel/quickstart-onboard.md)
 
@@ -445,7 +445,7 @@ Azure 安全中心还可针对某些可疑活动发出警报，例如，失败�
 **指导**：确保用于存储托管应用程序资源所创建的日志的所有存储帐户或 Log Analytics 工作区都根据组织的合规性规定设置了日志保留期。
 在 Azure Monitor 中，可根据组织的合规性规则设置 Log Analytics 工作区保持期。 将 Azure 存储、Data Lake 或 Log Analytics 工作区帐户用于长期存储和存档存储。
 
-- [如何配置 Log Analytics 工作区保留期](../../azure-monitor/platform/manage-cost-storage.md)
+- [如何配置 Log Analytics 工作区保留期](../../azure-monitor/logs/manage-cost-storage.md)
 
 - [在 Azure 存储帐户中存储资源日志](../../azure-monitor/platform/resource-logs.md#send-to-azure-storage)
 

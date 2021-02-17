@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/29/2018
 ms.author: terrylan
-ms.openlocfilehash: 17d48b6093d88a926569d5cfe84475fc0c306a0d
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 4fb4981925593a22ed65df9d3ed0da5f45062f23
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98874377"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100578941"
 ---
 # <a name="azure-network-security-overview"></a>Azure 网络安全概述
 
@@ -193,7 +193,7 @@ Azure 网络支持以下安全远程访问方案：
 了解详细信息：
 
 * [ExpressRoute 技术概述](../../expressroute/expressroute-introduction.md)
-* [ExpressRoute 直接](../../expressroute/expressroute-erdirect-about.md)
+* [ExpressRoute Direct](../../expressroute/expressroute-erdirect-about.md)
 * [Express Route Global Reach](../../expressroute/expressroute-global-reach.md)
 
 ### <a name="connect-virtual-networks-to-each-other"></a>将虚拟网络相互连接
@@ -389,13 +389,13 @@ Azure 安全中心帮助你预防、检测和响应威胁，同时提高 Azure �
 
 了解详细信息：
 
-* [虚拟网络 TAP](../../virtual-network/virtual-network-tap-overview.md)
+* [虚拟网络点击](../../virtual-network/virtual-network-tap-overview.md)
 
 ### <a name="logging"></a>日志记录
 
 网络级别的日志记录是任何网络安全方案的重要功能。 在 Azure 中，可以记录针对 NSG 获得的信息，以获取网络级别的日志记录信息。 使用 NSG 日志记录可从以下来源获取信息：
 
-* [活动日志](../../azure-monitor/platform/platform-logs-overview.md)。 使用这些日志查看提交到 Azure 订阅的所有操作。 默认情况下，这些日志已启用并可在 Azure 门户中使用。 这些日志以前称为审核或操作日志。
+* [活动日志](../../azure-monitor/essentials/platform-logs-overview.md)。 使用这些日志查看提交到 Azure 订阅的所有操作。 默认情况下，这些日志已启用并可在 Azure 门户中使用。 这些日志以前称为审核或操作日志。
 * 事件日志。 这些日志提供有关应用了哪些 NSG 规则的信息。
 * 计数器日志。 通过这些日志，可知道所应用每个 NSG 规则拒绝或允许流量的次数。
 

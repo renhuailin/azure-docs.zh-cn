@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/02/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: e6a42a39e55e379865332fce8a9aed8dfe78f57b
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 28be34e9323697759b2492d86b968f8e3d47a28e
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201325"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572047"
 ---
 # <a name="azure-security-baseline-for-azure-cloud-services"></a>适用于 Azure 云服务的 Azure 安全基线
 
@@ -58,7 +58,7 @@ Microsoft Azure 云服务 (经典) 不能放置在 Azure 资源管理器虚拟�
 
 - [云服务配置文件](schema-cscfg-file.md)
 
-- [Azure 策略支持的服务列表](/cli/azure/azure-services-the-azure-cli-can-manage?preserve-view=)
+- [Azure Policy 支持的服务列表](/cli/azure/azure-services-the-azure-cli-can-manage?preserve-view=)
 
 **Azure 安全中心监视**：不适用
 
@@ -107,7 +107,7 @@ Microsoft Azure 云服务 (经典) 不能放置在 Azure 资源管理器虚拟�
 
 - [在网络安全组上配置流日志记录](../virtual-machines/extensions/network-watcher-linux.md)
 
-- [有关配置流日志的详细信息，请访问](/cli/azure/azure-services-the-azure-cli-can-manage?preserve-view=)
+- [有关配置流日志的详细信息，请访问此文](/cli/azure/azure-services-the-azure-cli-can-manage?preserve-view=)
 
 **Azure 安全中心监视**：不适用
 
@@ -175,9 +175,9 @@ Microsoft Azure 云服务 (经典) 不能放置在 Azure 资源管理器虚拟�
 
 创建诊断设置，以便将活动日志发送到 Azure Monitor，也可将其发送到 Azure 事件中心以转发到 Azure 外部，或发送到 Azure 存储进行存档。 配置 Azure Monitor，以便在 Azure 云服务中的关键资源发生更改时获得通知警报。 
 
-- [Azure 活动日志](../azure-monitor/platform/activity-log.md)
+- [Azure 活动日志](../azure-monitor/essentials/activity-log.md)
 
-- [使用 Azure Monitor 创建、查看和管理活动日志警报](../azure-monitor/platform/alerts-activity-log.md)
+- [使用 Azure Monitor 创建、查看和管理活动日志警报](../azure-monitor/alerts/alerts-activity-log.md)
 
 - [流量管理器监视](../traffic-manager/traffic-manager-monitoring.md)
 
@@ -233,7 +233,7 @@ Application Insights 可以监视 Azure 云服务的可用性、性能、故障�
 
 - [部署前在 Visual Studio 中启用诊断](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines?preserve-view=true#to-turn-on-diagnostics-in-visual-studio-before-deployment)
 
-- [查看更改历史记录](../azure-monitor/platform/activity-log.md#view-change-history)
+- [查看更改历史记录](../azure-monitor/essentials/activity-log.md#view-change-history)
 
 - [适用于 Azure 云服务（经典）的 Application Insights](../azure-monitor/app/cloudservices.md)
 
@@ -465,9 +465,9 @@ Azure 服务管理 API 允许以编程方式访问通过 Azure 门户提供的�
 
 另外，Application Insights 可以监视 Azure 云服务应用的可用性、性能、故障和使用情况。 这将结合使用来自 Application Insights SDK 的数据与来自 Azure 云服务的 Azure 诊断数据。
 
-- [使用 Azure Monitor 创建、查看和管理经典指标警报](../azure-monitor/platform/alerts-classic-portal.md)
+- [使用 Azure Monitor 创建、查看和管理经典指标警报](../azure-monitor/alerts/alerts-classic-portal.md)
 
-- [指标警报概述](../azure-monitor/platform/alerts-metric-overview.md) 
+- [指标警报概述](../azure-monitor/alerts/alerts-metric-overview.md) 
 
 - [适用于 Azure 云服务（经典）的 Application Insights](../azure-monitor/app/cloudservices.md)
 

@@ -3,12 +3,12 @@ title: Azure 开发测试实验室的 azure 安全基准
 description: Azure 开发测试实验室的 azure 安全基准
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: 09b4e28437c79961d53cf07b068e3169d20fe0c4
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: c192f881dd4a8544b9c833eece56fb3765cd07f8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98789898"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100582031"
 ---
 # <a name="azure-security-baseline-for-azure-devtest-labs"></a>Azure 开发测试实验室的 azure 安全基准
 
@@ -34,7 +34,7 @@ Azure 开发测试实验室的 Azure 安全基准包含的建议可帮助你提�
 ### <a name="22-configure-central-security-log-management"></a>2.2：配置中心安全日志管理
 **指南：** 启用 Azure 活动日志诊断设置，并将日志发送到 Log Analytics 工作区、Azure 事件中心或 Azure 存储帐户以进行存档。 活动日志可让你深入了解在 Azure 开发测试实验室实例的管理平面上完成的操作。 使用 Azure 活动日志数据，您可以确定任何写入操作的 "内容、人员和时间" (PUT、POST、DELETE) 在开发测试实验室实例的管理平面级别完成。
 
-有关详细信息，请参阅[创建诊断设置以将平台日志和指标发送到不同的目标](../azure-monitor/platform/diagnostic-settings.md)。
+有关详细信息，请参阅[创建诊断设置以将平台日志和指标发送到不同的目标](../azure-monitor/essentials/diagnostic-settings.md)。
 
 **Azure 安全中心监视：** 当前不可用
 
@@ -43,7 +43,7 @@ Azure 开发测试实验室的 Azure 安全基准包含的建议可帮助你提�
 ### <a name="23-enable-audit-logging-for-azure-resources"></a>2.3：为 Azure 资源启用审核日志记录
 **指南：** 启用 Azure 活动日志诊断设置，并将日志发送到 Log Analytics 工作区、Azure 事件中心或 Azure 存储帐户以进行存档。 活动日志可让你深入了解在 Azure 开发测试实验室实例的管理平面上完成的操作。 使用 Azure 活动日志数据，可以确定任何写入操作的 "操作内容、人员和时间" (PUT、POST、DELETE) 在开发测试实验室实例的管理平面级别完成。
 
-有关详细信息，请参阅[创建诊断设置以将平台日志和指标发送到不同的目标](../azure-monitor/platform/diagnostic-settings.md)。
+有关详细信息，请参阅[创建诊断设置以将平台日志和指标发送到不同的目标](../azure-monitor/essentials/diagnostic-settings.md)。
 
 **Azure 安全中心监视：** 当前不可用
 
@@ -54,7 +54,7 @@ Azure 开发测试实验室的 Azure 安全基准包含的建议可帮助你提�
 
 有关详细信息，请参阅以下文章： 
 
-- [如何使用 Azure Monitor 收集 Azure 虚拟机内部主机日志](../azure-monitor/learn/quick-collect-azurevm.md)
+- [如何使用 Azure Monitor 收集 Azure 虚拟机内部主机日志](../azure-monitor/vm/quick-collect-azurevm.md)
 - [了解 Azure 安全中心数据收集](../security-center/security-center-enable-data-collection.md)
 
 **Azure 安全中心监视：** 是的
@@ -62,9 +62,9 @@ Azure 开发测试实验室的 Azure 安全基准包含的建议可帮助你提�
 **责任：** 面向
 
 ### <a name="25-configure-security-log-storage-retention"></a>2.5：配置安全日志存储保留期
-**_指南：_* 在 Azure Monitor 中，根据组织的符合性规定，设置与 Azure 开发测试实验室实例关联的 Log Analytics 工作区的日志保持期。
+***指南：** 在 Azure Monitor 中，根据组织的符合性规定，设置与 Azure 开发测试实验室实例关联的 Log Analytics 工作区的日志保持期。
 
-有关详细信息，请参阅以下文章： [如何设置日志保持参数](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+有关详细信息，请参阅以下文章： [如何设置日志保持参数](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure 安全中心监视：** 不适用
 
@@ -75,8 +75,8 @@ Azure 开发测试实验室的 Azure 安全基准包含的建议可帮助你提�
 
 有关详细信息，请参阅以下文章：
 
-- [如何启用 Azure 活动日志的诊断设置](../azure-monitor/platform/diagnostic-settings.md)
-- [如何收集和分析 Azure Monitor 的 Log Analytics 工作区中的 Azure 活动日志](../azure-monitor/platform/activity-log.md)
+- [如何启用 Azure 活动日志的诊断设置](../azure-monitor/essentials/diagnostic-settings.md)
+- [如何收集和分析 Azure Monitor 的 Log Analytics 工作区中的 Azure 活动日志](../azure-monitor/essentials/activity-log.md)
 
 **Azure 安全中心监视：** 不适用
 
@@ -85,7 +85,7 @@ Azure 开发测试实验室的 Azure 安全基准包含的建议可帮助你提�
 ### <a name="27-enable-alerts-for-anomalous-activity"></a>2.7：针对异常活动启用警报
 **指南：** 使用 Azure Log Analytics 工作区监视和警报与 Azure 开发测试实验室相关的安全日志和事件中的异常活动。
 
-有关详细信息，请参阅以下文章： [如何在 log analytics 日志数据上发出警报](../azure-monitor/learn/tutorial-response.md)
+有关详细信息，请参阅以下文章： [如何在 log analytics 日志数据上发出警报](../azure-monitor/alerts/tutorial-response.md)
 
 **Azure 安全中心监视：** 当前不可用
 
@@ -109,8 +109,8 @@ Azure 开发测试实验室的 Azure 安全基准包含的建议可帮助你提�
 **指南：** Azure 开发测试实验室创建由客户拥有和管理的 Azure 计算计算机。 使用所有受支持的 Azure Windows Vm 上的 Microsoft Monitoring Agent，记录进程创建事件和 `CommandLine` 字段。 对于支持的 Azure Linux Vm，你可以基于每个节点手动配置控制台日志记录，并使用 Syslog 来存储数据。 同时，使用 Azure Monitor 的 Log Analytics 工作区查看日志，并对来自 Azure Vm 的已记录数据运行查询。
 
 - [Azure 安全中心中的数据收集](../security-center/security-center-enable-data-collection.md#data-collection-tier)
-- [如何在 Azure Monitor 中运行自定义查询](../azure-monitor/log-query/get-started-queries.md)
-- [Azure Monitor 中的 Syslog 数据源](../azure-monitor/platform/data-sources-syslog.md)
+- [如何在 Azure Monitor 中运行自定义查询](../azure-monitor/logs/get-started-queries.md)
+- [Azure Monitor 中的 Syslog 数据源](../azure-monitor/agents/data-sources-syslog.md)
 
 **Azure 安全中心监视：** 是的
 
@@ -175,9 +175,9 @@ Azure 开发测试实验室的 Azure 安全基准包含的建议可帮助你提�
 - [如何在 Azure 中启用 MFA](../active-directory/authentication/howto-mfa-getstarted.md)  
 - [如何在 Azure 安全中心监视标识和访问](../security-center/security-center-identity-access.md)
 
-**Azure 安全中心监视：** _ 是
+**Azure 安全中心监视：*** 是
 
-_ *责任：** Customer
+**责任：** 面向
 
 
 ### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3.6：对所有管理任务使用专用计算机（特权访问工作站）
@@ -353,7 +353,7 @@ Microsoft 管理 Azure 开发测试实验室的底层基础结构，并实施了
 ### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4.9：记录对关键 Azure 资源的更改并对此类更改发出警报
 **指南：** 将 Azure Monitor 与 Azure 活动日志结合使用，以便为开发测试实验室实例和其他关键或相关资源的发生更改创建警报。
 
-- [如何为 Azure 活动日志事件创建警报](../azure-monitor/platform/alerts-activity-log.md)
+- [如何为 Azure 活动日志事件创建警报](../azure-monitor/alerts/alerts-activity-log.md)
 - [如何创建开发测试 Labs 活动日志事件的警报](create-alerts.md)
 
 **Azure 安全中心监视：** 不适用
@@ -387,7 +387,7 @@ Microsoft 对支持 Azure 开发测试实验室的底层资源执行漏洞管理
 **责任：** 面向
 
 ### <a name="53-deploy-automated-third-party-software-patch-management-solution"></a>5.3：部署第三方自动软件修补管理解决方案
-**_指南：_* _ 作为实验室管理员，你可以使用 [开发测试实验室项目](add-artifact-vm.md) 自动更新到实验室自定义映像，包括安全修补程序和其他更新。 
+***指南：*** 作为实验室管理员，你可以使用 [开发测试实验室项目](add-artifact-vm.md) 自动更新对实验室自定义映像的更新，包括安全修补程序和其他更新。 
 
 了解有关 [开发测试实验室映像工厂](image-factory-create.md)的详细信息，它是一种配置为代码的解决方案，可定期自动构建和分发映像以及所有需要的配置。 
 
@@ -396,7 +396,7 @@ Microsoft 对支持 Azure 开发测试实验室的底层资源执行漏洞管理
 - [Azure 中的更新管理解决方案](../automation/update-management/overview.md)
 - [管理 VM 的更新和修补程序](../automation/update-management/overview.md)
 
-_ *Azure 安全中心监视：** 不适用
+**Azure 安全中心监视：** 不适用
 
 **责任：** 面向
 
@@ -701,7 +701,7 @@ _ *Azure 安全中心监视：** 不适用
 **责任：** 面向
 
 ### <a name="712-manage-identities-securely-and-automatically"></a>7.12：安全自动管理标识
-**指南：** 使用托管标识在 Azure AD 中通过自动管理的标识来提供 Azure 服务。 使用托管标识可以向支持 Azure AD 身份验证的任何服务（包括 Key Vault）进行身份验证，无需在代码中放入任何凭据。
+**指南：** 使用托管标识在 Azure AD 中通过自动管理的标识来提供 Azure 服务。 通过托管标识可向支持 Azure AD 身份验证的任何服务（包括 Key Vault）证明身份，无需在代码中放入任何凭据。
 
 - [在开发测试实验室中配置托管标识以部署 Azure 资源管理器环境](use-managed-identities-environments.md)
 - [在开发测试实验室中配置托管标识以部署虚拟机](enable-managed-identities-lab-vms.md)
@@ -713,7 +713,7 @@ _ *Azure 安全中心监视：** 不适用
 ### <a name="713-eliminate-unintended-credential-exposure"></a>7.13：消除意外的凭据透露
 **指南：** 实现凭据扫描器来识别代码中的凭据。 凭据扫描程序还会建议将发现的凭据转移到更安全的位置，例如 Azure Key Vault。
 
-- 如何设置凭据扫描程序
+- 如何设置凭据扫描器
 
 **Azure 安全中心监视：** 不适用
 

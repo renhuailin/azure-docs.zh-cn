@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - fasttrack-edit
 - iot
-ms.openlocfilehash: f8d37cf8f23de1d0535c7a9ff4a95ac217eddf74
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: adcbf4efc4dfaa7701c18440531327949640cb53
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452399"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581993"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>使用分布式跟踪（预览版）跟踪 Azure IoT 设备到云的消息
 
@@ -169,7 +169,7 @@ IoT 中心是用于支持分布式跟踪的第一批 Azure 服务之一。 随�
     cmake --build . --target iothub_ll_telemetry_sample --config Debug
     ```
 
-1. 运行该应用程序。 设备将发送支持分布式跟踪的遥测数据。
+1. 运行应用程序。 设备将发送支持分布式跟踪的遥测数据。
 
     ```cmd
     Debug/iothub_ll_telemetry_sample.exe
@@ -206,7 +206,7 @@ IoT 中心是用于支持分布式跟踪的第一批 Azure 服务之一。 随�
 
 1. 选择介于 0% 与 100% 之间的 **采样率**。
 
-1. 单击“保存”  。
+1. 单击“ **保存**”。
 
 1. 等待几秒钟，然后点击“刷新”，如果设备已成功确认，则会显示一个带有勾选标记的同步图标。
 
@@ -260,7 +260,7 @@ IoT 中心是用于支持分布式跟踪的第一批 Azure 服务之一。 随�
 
 ### <a name="query-using-log-analytics"></a>使用 Log Analytics 进行查询
 
-如果已设置 [了包含资源日志的 Log Analytics](../azure-monitor/platform/resource-logs.md#send-to-azure-storage)，请通过查找类别中的日志进行查询 `DistributedTracing` 。 例如，以下查询显示记录所有的跟踪：
+如果已设置 [了包含资源日志的 Log Analytics](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)，请通过查找类别中的日志进行查询 `DistributedTracing` 。 例如，以下查询显示记录所有的跟踪：
 
 ```Kusto
 // All distributed traces 
