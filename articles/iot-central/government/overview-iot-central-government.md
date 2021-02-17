@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure IoT Central 生成政府解决方案
+title: 什么是 Azure IoT Central 政府解决方案
 description: 了解如何使用 Azure IoT Central 应用程序模板构建智能城市解决方案。
 author: miriambrus
 ms.author: miriamb
@@ -7,14 +7,14 @@ ms.date: 12/11/2020
 ms.topic: overview
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 72b0e3c3cee0ed9131fe6ee1f50cee10ec03a7b7
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: a903622f698107f7f1a593946f083fca1573d53e
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97590811"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99834334"
 ---
-# <a name="building-government-solutions-with-azure-iot-central"></a>使用 Azure IoT Central 生成政府解决方案
+# <a name="what-are-the-iot-central-government-solutions"></a>什么是 IoT Central 政府解决方案？
 
 使用 Azure IoT Central 应用程序模板开始构建智能城市解决方案。 立即开始体验 **水质监测**、**用水量监测** 和 **联网废弃物管理** 解决方案。
 
@@ -71,8 +71,6 @@ ms.locfileid: "97590811"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 免费试用 IoT Central 中的任意政府应用程序模板来[创建应用](https://apps.azureiotcentral.com/build/government)
 * 了解[水质监测的概念](./concepts-waterqualitymonitoring-architecture.md)
 * 了解[用水量监测的概念](./concepts-waterconsumptionmonitoring-architecture.md)
 * 了解[联网废弃物管理的概念](./concepts-connectedwastemanagement-architecture.md)  
-* 在 [IoT Central 概述](../core/overview-iot-central.md)中了解 IoT Central

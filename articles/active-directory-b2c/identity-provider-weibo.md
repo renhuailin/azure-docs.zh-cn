@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 26c4e154deec02b0642e6c131ced50acb02f9899
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: d69675d7ab07e4097556d269c97c3ecb66dc2fc6
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98951509"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100545828"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-weibo-account-using-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 设置通过微博帐户注册与登录
 
@@ -26,25 +26,25 @@ ms.locfileid: "98951509"
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
 ## <a name="create-a-weibo-application"></a>创建 Weibo 应用程序
 
-若要在 Azure Active Directory B2C (Azure AD B2C) 中为具有 Weibo 帐户的用户登录，需要在 [Weibo 开发人员门户](https://open.weibo.com/)中创建应用程序。 如果还没有 Weibo 帐户，可以在注册 [https://weibo.com](https://weibo.com/signup/signup.php?lang=en-us) 。
+若要在 Azure Active Directory B2C (Azure AD B2C) 中为具有 Weibo 帐户的用户登录，需要在 Weibo 开发人员门户中创建应用程序。 如果还没有 Weibo 帐户，可以在注册 [https://weibo.com](https://weibo.com/signup/signup.php?lang=en-us) 。
 
-1. 使用微博帐户凭据登录[微博开发人员门户](https://open.weibo.com/)。
+1. 使用微博帐户凭据登录微博开发人员门户。
 1. 登录后，选择右上角的显示名称。
 1. 在下拉列表中，选择“编辑开发者信息”(edit developer information)。
 1. 输入所需的信息，并选择“提交” (submit)。
 1. 完成电子邮件验证过程。
-1. 转到[“身份验证”页](https://open.weibo.com/developers/identity/edit)。
+1. 转到“身份验证”页。
 1. 输入所需的信息，并选择“提交” (submit)。
 
 ### <a name="register-a-weibo-application"></a>注册 Weibo 应用程序
 
-1. 转到[“新 Weibo 应用注册”页](https://open.weibo.com/apps/new)。
+1. 转到“新 Weibo 应用注册”页。
 1. 输入所需的应用程序信息。
 1. 选择“创建”(create)。
 1. 复制 **应用密钥** 和 **应用机密** 的值。 将标识提供者添加到租户时需要这两项。

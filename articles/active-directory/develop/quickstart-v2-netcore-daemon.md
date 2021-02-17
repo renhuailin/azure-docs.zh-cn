@@ -13,12 +13,12 @@ ms.date: 10/05/2020
 ms.author: jmprieur
 ms.reviewer: marsma
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: c5c89b285e8ef98f83d0bfa923aaca402491315d
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 99dcd81cd24f762a5c2b55f5f2977aaf61bc26e8
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98754219"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100103530"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-using-console-apps-identity"></a>快速入门：使用控制台应用的标识获取令牌并调用 Microsoft Graph API
 
@@ -39,7 +39,7 @@ ms.locfileid: "98754219"
 >
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>选项 1：注册并自动配置应用，然后下载代码示例
 >
-> 1. 转到 <a href="https://portal.azure.com/?Microsoft_AAD_RegisteredApps=true#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/DotNetCoreDaemonQuickstartPage/sourceType/docs" target="_blank">Azure 门户 - 应用注册<span class="docon docon-navigate-external x-hidden-focus"></span></a>快速入门体验。
+> 1. 转到 <a href="https://portal.azure.com/?Microsoft_AAD_RegisteredApps=true#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/DotNetCoreDaemonQuickstartPage/sourceType/docs" target="_blank">Azure 门户 - 应用注册</a>快速入门体验。
 > 1. 输入应用程序的名称并选择“注册”。
 > 1. 遵照说明下载内容，并只需单击一下自动配置新应用程序。
 >
@@ -49,7 +49,7 @@ ms.locfileid: "98754219"
 > #### <a name="step-1-register-your-application"></a>步骤 1：注册应用程序
 > 若要手动注册应用程序并将应用的注册信息添加到解决方案，请执行以下步骤：
 >
-> 1. 登录到 <a href="https://portal.azure.com/" target="_blank">Azure 门户<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
+> 1. 登录到 <a href="https://portal.azure.com/" target="_blank">Azure 门户</span></a>。
 > 1. 如果有权访问多个租户，请使用顶部菜单中的“目录 + 订阅”筛选器:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::，选择要在其中注册应用程序的租户。
 > 1. 搜索并选择“Azure Active Directory”  。
 > 1. 在“管理”下，选择“应用注册” > “新建注册”  。
@@ -65,7 +65,7 @@ ms.locfileid: "98754219"
 > ### <a name="download-and-configure-your-quickstart-app"></a>下载并配置快速入门应用
 >
 > #### <a name="step-1-configure-your-application-in-azure-portal"></a>步骤 1：在 Azure 门户中配置应用程序
-> 为使本快速入门的代码示例正常运行，需创建客户端机密，并添加 Graph API 的 **User.Read.All** 应用程序权限。
+> 为使本快速入门的代码示例正常运行，请创建客户端机密，并添加图形 API 的 User.Read.All 应用程序权限。
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [为我进行这些更改]()
 >
@@ -130,7 +130,7 @@ ms.locfileid: "98754219"
 
 ##### <a name="standard-user"></a>标准用户
 
-如果你是租户的标准用户，则需请求全局管理员为你的应用程序授予管理员许可。 为此，请将以下 URL 提供给管理员：
+如果你是租户的标准用户，则请求全局管理员为你的应用程序授予管理员许可。 为此，请将以下 URL 提供给管理员：
 
 ```url
 https://login.microsoftonline.com/Enter_the_Tenant_Id_Here/adminconsent?client_id=Enter_the_Application_Id_Here

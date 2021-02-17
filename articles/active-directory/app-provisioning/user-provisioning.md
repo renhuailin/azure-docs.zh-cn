@@ -8,19 +8,21 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: overview
 ms.workload: identity
-ms.date: 01/11/2021
+ms.date: 02/08/2021
 ms.author: kenwith
-ms.reviewer: arvinh, celested
-ms.openlocfilehash: cb2c168786ee4cb14f93544d4cd9632b86ba5156
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.reviewer: arvinh
+ms.openlocfilehash: f899c4d67321482dab62729632fe031bb23f71ea
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99255519"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99830662"
 ---
 # <a name="what-is-automated-saas-app-user-provisioning-in-azure-ad"></a>什么是 Azure AD 中的自动 SaaS 应用用户预配？
 
 在 Azure Active Directory (Azure AD) 中，术语应用预配是指在用户需要访问的云 ([SaaS](https://azure.microsoft.com/overview/what-is-saas/)) 应用程序中自动创建用户标识和角色。 除了创建用户标识外，自动预配还包括在状态或角色发生更改时维护和删除用户标识。 常见方案包括将 Azure AD 用户预配到 [Dropbox](../saas-apps/dropboxforbusiness-provisioning-tutorial.md)、[Salesforce](../saas-apps/salesforce-provisioning-tutorial.md)、[ServiceNow](../saas-apps/servicenow-provisioning-tutorial.md) 等应用程序中。
+
+刚刚开始在 Azure AD 中使用应用管理和单一登录 (SSO)？ 请查看[快速入门系列](../manage-apps/view-applications-portal.md)。
 
 若要了解有关 SCIM 的详细信息并加入技术社区对话，请参阅[通过 SCIM 技术社区进行预配](https://aka.ms/scimoverview)。
 

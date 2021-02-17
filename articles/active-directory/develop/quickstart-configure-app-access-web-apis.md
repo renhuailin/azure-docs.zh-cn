@@ -13,12 +13,12 @@ ms.date: 09/03/2020
 ms.author: marsma
 ms.custom: aaddev, contperf-fy21q1
 ms.reviewer: lenalepa, aragra, sureshja
-ms.openlocfilehash: fdaaf935dc458a6a5b2a87a81bb98a1392f1034a
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: bd6acc5d3b7cd6e88b56e4a922e777adca031538
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98012115"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100102557"
 ---
 # <a name="quickstart-configure-a-client-application-to-access-a-web-api"></a>快速入门：配置客户端应用程序以访问 Web API
 
@@ -42,7 +42,7 @@ ms.locfileid: "98012115"
 
 注册客户端应用和 Web API，并通过创建范围公开 API 后，可按照以下步骤来配置客户端对 API 的权限：
 
-1. 登录到 <a href="https://portal.azure.com/" target="_blank">Azure 门户<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
+1. 登录 <a href="https://portal.azure.com/" target="_blank">Azure 门户</a>。
 1. 如果有权访问多个租户，请使用顶部菜单中的“目录 + 订阅”筛选器 :::image type="icon" source="./media/quickstart-configure-app-access-web-apis/portal-01-directory-subscription-filter.png" border="false":::，以选择包含客户端应用的注册的租户。
 1. 选择“Azure Active Directory” > “应用注册”，然后选择客户端应用程序（而不是 Web API） 。
 1. 选择“API 权限” > “添加权限” > “我的 API”。  
@@ -71,7 +71,7 @@ ms.locfileid: "98012115"
 
 配置 Microsoft Graph 的委派权限，使客户端应用程序可代表已登录用户执行操作，例如读取其电子邮件或修改其个人资料。 默认情况下，在客户端应用的用户登录时，会询问他们是否同意你为其配置的委派权限。
 
-1. 登录到 <a href="https://portal.azure.com/" target="_blank">Azure 门户<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
+1. 登录 <a href="https://portal.azure.com/" target="_blank">Azure 门户</a>。
 1. 如果有权访问多个租户，请使用顶部菜单中的“目录 + 订阅”筛选器 :::image type="icon" source="./media/quickstart-configure-app-access-web-apis/portal-01-directory-subscription-filter.png" border="false":::，以选择包含客户端应用的注册的租户。
 1. 选择“Azure Active Directory” > “应用注册”，然后选择客户端应用程序 。
 1. 选择“API 权限” > “添加权限” > “Microsoft Graph”  
@@ -96,7 +96,7 @@ ms.locfileid: "98012115"
 
 在以下步骤中，例如将授予 Microsoft Graph 的 Files.Read.All 权限。
 
-1. 登录到 <a href="https://portal.azure.com/" target="_blank">Azure 门户<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
+1. 登录 <a href="https://portal.azure.com/" target="_blank">Azure 门户</a>。
 1. 如果有权访问多个租户，请使用顶部菜单中的“目录 + 订阅”筛选器 :::image type="icon" source="./media/quickstart-configure-app-access-web-apis/portal-01-directory-subscription-filter.png" border="false":::，以选择包含客户端应用的注册的租户。
 1. 选择“Azure Active Directory” > “应用注册”，然后选择客户端应用程序 。
 1. 选择“API 权限” > “添加权限” > “Microsoft Graph” > “应用程序权限”   。
@@ -110,7 +110,7 @@ ms.locfileid: "98012115"
 
 ### <a name="configure-client-credentials"></a>配置客户端凭据
 
-使用应用程序权限的应用通过使用自己的凭据自行进行身份验证，无需任何用户交互。 在应用程序（或 API）可通过使用应用程序权限访问 Microsoft Graph、你自己的 Web API 或其他任何 API 之前，需要配置该客户端应用的凭据。
+使用应用程序权限的应用通过使用自己的凭据自行进行身份验证，无需任何用户交互。 你必须先配置该客户端应用的凭据，然后应用程序（或 API）才能使用应用程序权限访问 Microsoft Graph、你自己的 Web API 或其他任何 API。
 
 若要详细了解如何配置应用的凭据，请参阅[添加凭据](quickstart-register-app.md#add-credentials)部分 - [快速入门：将应用程序注册到 Microsoft 标识平台](quickstart-register-app.md)。
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/25/2021
 ms.author: memildin
-ms.openlocfilehash: d5de16c8156762a229d6c707080bc197dc206a7c
-ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
+ms.openlocfilehash: a2c29049decc056f0d3c8083d21574456610c124
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99475584"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99555136"
 ---
 # <a name="important-upcoming-changes-to-azure-security-center"></a>即将推出的对 Azure 安全中心的重要更改
 
@@ -31,39 +31,9 @@ ms.locfileid: "99475584"
 
 ## <a name="planned-changes"></a>计划的更改
 
-- [Kubernetes 工作负载保护建议即将发布正式版 (GA)](#kubernetes-workload-protection-recommendations-will-soon-be-released-for-general-availability-ga)
 - [“应用系统更新”安全控制中的两项建议将被弃用](#two-recommendations-from-apply-system-updates-security-control-being-deprecated)
 - [SQL 数据分类建议的增强](#enhancements-to-sql-data-classification-recommendation)
-
-
-### <a name="kubernetes-workload-protection-recommendations-will-soon-be-released-for-general-availability-ga"></a>Kubernetes 工作负载保护建议即将发布正式版 (GA)
-
-**预计更改日期：** 2021 年 2 月
-
-[保护 Kubernetes 工作负载](kubernetes-workload-protections.md)中介绍的 Kubernetes 工作负载保护建议当前为预览版。 虽然建议目前为预览版，但它不会导致资源运行不正常，在计算安全功能分数时也不会包含这些建议。
-
-这些建议即将发布正式版 (GA)，因此将会包含在分数计算中。 如果尚未对其进行修正，则可能会对安全功能分数造成轻微影响。
-
-请尽量进行修正（请参阅[修正 Azure 安全中心内的建议](security-center-remediate-recommendations.md)了解具体操作）。
-
-Kubernetes 工作负载保护建议如下：
-
-- 应在群集上安装并启用适用于 Kubernetes 的 Azure Policy 加载项
-- 应强制执行容器 CPU 和内存限制
-- 应避免特权容器
-- 应强制对容器使用不可变（只读）根文件系统
-- 应避免使用特权提升的容器
-- 应避免以根用户身份运行容器
-- 应避免使用共享敏感主机命名空间的容器
-- 应强制对容器使用最低权限 Linux 功能
-- Pod HostPath 卷装载的使用应仅限于已知列表
-- 容器应只侦听允许的端口
-- 服务应只侦听允许的端口
-- 应限制对主机网络和端口的使用
-- 应限制替代或禁用容器 AppArmor 配置文件
-- 应只从受信任的注册表部署容器映像             
-
-若要详细了解这些建议，请参阅[保护 Kubernetes 工作负载](kubernetes-workload-protections.md)。
+- [弃用 11 种 Azure Defender 警报](#deprecation-of-11-azure-defender-alerts)
 
 ### <a name="two-recommendations-from-apply-system-updates-security-control-being-deprecated"></a>“应用系统更新”安全控制中的两项建议将被弃用 
 
@@ -83,11 +53,38 @@ Kubernetes 工作负载保护建议如下：
 
 **预计更改日期：** 2021 年第 2 季度
 
-“应用数据分类”安全控制中“应对 SQL 数据库中的敏感数据进行分类”建议的当前版本将替换为更符合 Microsoft 的数据分类策略的新版本 。 因此：
+“应用数据分类”安全控制中的“应对 SQL 数据库中的敏感数据进行分类”建议将替换为更符合 Microsoft 的数据分类策略的新版本 。 因此，建议的 ID 也会更改（当前为 b0df6f56-862d-4730-8597-38c0fd4ebd59）。
 
-- 该建议将不再影响安全功能分数
-- 安全控制（“应用数据分类”）将不再影响安全功能分数
-- 建议的 ID 也将更改（当前为 b0df6f56-862d-4730-8597-38c0fd4ebd59）
+
+### <a name="deprecation-of-11-azure-defender-alerts"></a>弃用 11 种 Azure Defender 警报
+
+**预计更改日期：** 2021 年 3 月
+
+在下个月，我们将弃用下列 11 种 Azure Defender 警报。
+
+- 新警报将取代下面两种警报并扩大覆盖范围：
+
+    | AlertType                | AlertDisplayName                                                         |
+    |--------------------------|--------------------------------------------------------------------------|
+    | ARM_MicroBurstDomainInfo | 预览版 - 检测到 MicroBurst 工具包“Get-AzureDomainInfo”函数运行 |
+    | ARM_MicroBurstRunbook    | 预览版 - 检测到 MicroBurst 工具包“Get-AzurePasswords”函数运行  |
+    |                          |                                                                          |
+
+- 下面 9 种警报与已弃用的 Azure Active Directory 标识保护连接器相关：
+
+    | AlertType           | AlertDisplayName              |
+    |---------------------|-------------------------------|
+    | UnfamiliarLocation  | 不熟悉的登录属性 |
+    | AnonymousLogin      | 匿名 IP 地址          |
+    | InfectedDeviceLogin | 受恶意软件感染的 IP 地址     |
+    | ImpossibleTravel    | 异常位置登录               |
+    | MaliciousIP         | 恶意 IP 地址          |
+    | LeakedCredentials   | 凭据泄露            |
+    | PasswordSpray       | 密码喷射                |
+    | LeakedCredentials   | Azure AD 威胁智能  |
+    | AADAI               | Azure AD AI                   |
+    |                     |                               |
+ 
 
 
 

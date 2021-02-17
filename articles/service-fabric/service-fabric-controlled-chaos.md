@@ -1,17 +1,17 @@
 ---
 title: 在 Service Fabric 群集中引入混沌测试
 description: 使用故障注入和群集分析服务 API 管理群集中的混沌测试。
-author: motanv
+author: georgewallace
 ms.topic: conceptual
 ms.date: 02/05/2018
-ms.author: motanv
+ms.author: gwallace
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 34ec43593d50e359f09059cd3d51522df62cf567
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 727e0c8a738258434036652dd3df1f686f7433bb
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98789645"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546374"
 ---
 # <a name="induce-controlled-chaos-in-service-fabric-clusters"></a>在 Service Fabric 群集中引入受控的混沌测试
 大规模分布式系统，例如云基础结构，在本质上都是不可靠的。 Azure Service Fabric 可让开发人员在不可靠的基础结构之上编写可靠的分布式服务。 若要在不可靠的基础结构之上编写可靠的分布式服务，开发人员应能够在不可靠的底层基础结构因故障而进行复杂的状态转换时，测试其服务的稳定性。

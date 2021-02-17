@@ -1,7 +1,7 @@
 ---
 title: 配置 Azure SQL 逻辑服务器的 Azure 证明
 description: 在 Azure SQL 数据库中配置具有 secure enclaves 的 Azure 证明 for Always Encrypted。
-keywords: 加密数据，sql 加密，数据库加密，敏感数据，Always Encrypted，安全 enclaves，SGX，证明
+keywords: 加密数据, sql 加密, 数据库加密, 敏感数据, 始终加密, 安全 enclave, SGX, 证明
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -11,19 +11,19 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviwer: vanto
 ms.date: 01/15/2021
-ms.openlocfilehash: 51431bf0da9145e1b61da708942b675e4c3eea78
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 664733f3d4c4e4bf17440db0323580c5d2c8c2ce
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98733805"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555660"
 ---
 # <a name="configure-azure-attestation-for-your-azure-sql-logical-server"></a>配置 Azure SQL 逻辑服务器的 Azure 证明
 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 > [!NOTE]
-> 对于 Azure SQL 数据库，具有 secure enclaves 的 Always Encrypted 当前提供 **公共预览版**。
+> Azure SQL 数据库的具有安全 Enclave 的 Always Encrypted 目前提供公共预览版。
 
 [Microsoft Azure 认证](../../attestation/overview.md) 是一种解决方案，适用于证明受信任的执行环境 (TEEs) ，包括 intel SGX) Enclaves (Intel 软件防护扩展。 
 
@@ -31,7 +31,7 @@ ms.locfileid: "98733805"
 
 1. 创建一个 [证明提供者](../../attestation/basic-concepts.md#attestation-provider) ，并使用建议的证明策略进行配置。
 
-2. 向 Azure SQL 逻辑服务器授予对证明提供者的访问权限。
+2. 授予 Azure SQL 逻辑服务器对证明提供程序的访问权限。
 
 > [!NOTE]
 > 配置证明是证明管理员的责任。 请参阅 [配置 SGX enclaves 和证明时的角色和职责](always-encrypted-enclaves-plan.md#roles-and-responsibilities-when-configuring-sgx-enclaves-and-attestation)。
@@ -76,7 +76,7 @@ authorizationrules
 
 有关如何使用认证策略创建证明提供者和配置的说明，请使用：
 
-- [快速入门：通过 Azure 门户设置 Azure 证明](../../attestation/quickstart-portal.md)
+- [快速入门：使用 Azure 门户设置 Azure 证明](../../attestation/quickstart-portal.md)
     > [!IMPORTANT]
     > 在将证明策略配置 Azure 门户时，请将 "证明类型" 设置为 `SGX-IntelSDK` 。
 - [快速入门：使用 Azure PowerShell 设置 Azure 证明](../../attestation/quickstart-powershell.md)
@@ -114,7 +114,7 @@ Write-Host "Your attestation URL is: " $attestationUrl
 
 ### <a name="use-azure-portal-to-assign-permission"></a>使用 Azure 门户分配权限
 
-若要将 Azure SQL server 的标识分配给证明提供者的证明读者角色，请遵循 [使用 Azure 门户添加或删除 Azure 角色分配](../../role-based-access-control/role-assignments-portal.md)中的常规说明。 在 " **添加角色分配** " 窗格中：
+若要将 Azure SQL server 的标识分配给证明提供者的证明读者角色，请遵循 [使用 Azure 门户分配 azure 角色](../../role-based-access-control/role-assignments-portal.md)中的常规说明。 在 " **添加角色分配** " 窗格中：
 
 1. 在 " **角色** " 下拉端中，选择 " **证明读者** " 角色。
 1. 在 " **选择** " 字段中，输入要搜索的 Azure SQL server 的名称。
@@ -143,7 +143,7 @@ $attestationResourceGroupName = "<attestation provider resource group name>"
 New-AzRoleAssignment -ObjectId $server.Identity.PrincipalId -RoleDefinitionName "Attestation Reader" -ResourceGroupName $attestationResourceGroupName
 ```
 
-有关详细信息，请参阅[使用 Azure PowerShell 添加或删除 Azure 角色分配](../../role-based-access-control/role-assignments-powershell.md#add-role-assignment-examples)。
+有关详细信息，请参阅 [使用 Azure PowerShell 分配 Azure 角色](../../role-based-access-control/role-assignments-powershell.md#assign-role-examples)。
 
 ## <a name="next-steps"></a>后续步骤
 

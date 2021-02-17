@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: 5a9f6fa79da59425e4972dddd21ffdea15af73e7
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: f027b2d41f63b5aa7ea3df87e06224abd629799b
+ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98127900"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100535308"
 ---
 # <a name="telemetry-property-and-command-payloads"></a>遥测、属性和命令有效负载
 
@@ -50,7 +50,7 @@ IoT Central 允许查看设备发送到应用程序的原始数据。 此视图�
 
     在此视图中，你可以选择要显示的列，并设置要查看的时间范围。 “未建模数据”列显示设备中与设备模板中的任何属性或遥测定义不匹配的数据。
 
-## <a name="telemetry"></a>遥测技术
+## <a name="telemetry"></a>遥测
 
 ### <a name="primitive-types"></a>基元类型
 
@@ -1068,7 +1068,7 @@ IoT Central 需要从设备到可写属性更新的响应。 响应消息应包�
                 "displayName": {
                   "en": "Bank3"
                 },
-                "enumValue": 2,
+                "enumValue": 3,
                 "name": "Bank3"
               }
             ],

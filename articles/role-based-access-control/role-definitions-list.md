@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 06/17/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 9dad8ffc9971894a2777e8bda9bcf6d78eee00a9
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: 3c9018322c9e5075ff59024f9d791e7431035e3d
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97369270"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555948"
 ---
 # <a name="list-azure-role-definitions"></a>列出 Azure 角色定义
 
@@ -351,7 +351,7 @@ az role definition list --name "Virtual Machine Contributor" --output json --que
     > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1` | 资源组 |
     > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1` | 资源 |
 
-    在前面的示例中，microsoft.web 是引用应用服务实例的资源提供程序。 同样，可以使用任何其他资源提供程序并指定范围。 有关详细信息，请参阅 [Azure 资源提供程序和类型](../azure-resource-manager/management/resource-providers-and-types.md) 以及受支持的 [azure 资源提供程序操作](resource-provider-operations.md)。  
+    在前面的示例中，microsoft.web 是引用应用服务实例的资源提供程序。 同样，可以使用任何其他资源提供程序并指定范围。 有关详细信息，请参阅 [Azure 资源提供程序和类型](../azure-resource-manager/management/resource-providers-and-types.md)和支持的 [Azure 资源提供程序操作](resource-provider-operations.md)。  
      
 1. 将 *{filter}* 替换为筛选角色定义列表时要应用的条件。
 
@@ -479,4 +479,4 @@ GET https://management.azure.com/providers/Microsoft.Authorization/roleDefinitio
 - [Azure 内置角色](built-in-roles.md)
 - [Azure 自定义角色](custom-roles.md)
 - [使用 Azure 门户列出 Azure 角色分配](role-assignments-list-portal.md)
-- [使用 Azure 门户添加或删除 Azure 角色分配](role-assignments-portal.md)
+- [使用 Azure 门户分配 Azure 角色](role-assignments-portal.md)

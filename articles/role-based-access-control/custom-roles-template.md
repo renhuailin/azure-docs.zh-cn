@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure 资源管理器模板创建或更新 Azure 自定义角色-Azure RBAC
-description: 了解如何使用 Azure 资源管理器模板 (ARM 模板创建或更新 Azure 自定义角色) 和 Azure RBAC)  (基于角色的访问控制。
+title: 使用 Azure 资源管理器模板创建或更新 Azure 自定义角色 - Azure RBAC
+description: 了解如何使用 Azure 资源管理器模板（ARM 模板）和 Azure 基于角色的访问控制 (Azure RBAC) 来创建或更新 Azure 自定义角色。
 services: role-based-access-control,azure-resource-manager
 author: rolyon
 manager: mtillman
@@ -10,16 +10,16 @@ ms.custom: subject-armqs
 ms.workload: identity
 ms.date: 12/16/2020
 ms.author: rolyon
-ms.openlocfilehash: beea0c5cecd7bb99973a4692a4cce17e7a69d708
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 96915fe5cc7bc7b2f88e0cbd8619c10a6433dd71
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97631306"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100557480"
 ---
 # <a name="create-or-update-azure-custom-roles-using-an-arm-template"></a>使用 ARM 模板创建或更新 Azure 自定义角色
 
-如果 [Azure 内置角色](built-in-roles.md)不满足组织的特定需求，你可以创建自己的[自定义角色](custom-roles.md)。 本文介绍如何使用 Azure 资源管理器模板 (ARM 模板) 创建或更新自定义角色。
+如果 [Azure 内置角色](built-in-roles.md)不满足组织的特定需求，你可以创建自己的[自定义角色](custom-roles.md)。 本文介绍如何使用 Azure 资源管理器模板（ARM 模板）来创建或更新自定义角色。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -72,7 +72,7 @@ ms.locfileid: "97631306"
 
 1. 输入部署的位置，例如 `centralus` 。
 
-1. 以逗号分隔的列表（例如）输入自定义角色的操作列表 `Microsoft.Resources/resources/read,Microsoft.Resources/subscriptions/resourceGroups/read` 。
+1. 以逗号分隔的列表（如 `Microsoft.Resources/resources/read,Microsoft.Resources/subscriptions/resourceGroups/read`）形式输入自定义角色的操作列表。
 
 1. 如有必要，请按 Enter 运行 `New-AzDeployment` 命令。
 
@@ -153,9 +153,9 @@ ms.locfileid: "97631306"
 
 ## <a name="update-a-custom-role"></a>更新自定义角色
 
-与创建自定义角色类似，可以使用模板更新现有的自定义角色。 若要更新自定义角色，必须指定要更新的角色。
+与创建自定义角色类似，可以通过使用模板来更新现有的自定义角色。 若要更新自定义角色，必须指定需要更新的角色。
 
-下面是需要对上一个快速入门模板进行的更改以更新自定义角色。
+下面是为了更新自定义角色而需要对上一个快速入门模板做出的更改。
 
 - 将角色 ID 作为参数包括在内。
     ```json
@@ -168,7 +168,7 @@ ms.locfileid: "97631306"
         ...
     ```
 
-- 在角色定义中包含 role ID 参数。
+- 在角色定义中包括角色 ID 参数。
 
     ```json
       ...
@@ -181,7 +181,7 @@ ms.locfileid: "97631306"
             ...
     ```
 
-下面是有关如何部署模板的示例。
+以下示例演示如何部署该模板。
 
 ```azurepowershell
 $location = Read-Host -Prompt "Enter a location (i.e. centralus)"
@@ -207,5 +207,5 @@ New-AzDeployment -Location $location -TemplateFile $templateFile -actions $actio
 ## <a name="next-steps"></a>后续步骤
 
 - [了解 Azure 角色定义](role-definitions.md)
-- [快速入门：使用 Azure 资源管理器模板添加 Azure 角色分配](quickstart-role-assignments-template.md)
+- [快速入门：使用 Azure 资源管理器模板分配 Azure 角色](quickstart-role-assignments-template.md)
 - [ARM 模板文档](../azure-resource-manager/templates/index.yml)

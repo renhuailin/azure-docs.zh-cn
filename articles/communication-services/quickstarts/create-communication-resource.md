@@ -10,15 +10,15 @@ ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
 zone_pivot_groups: acs-plat-azp-net
-ms.openlocfilehash: a93ac3b5d988be33c0f27726a75b1006f990d1da
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: d861f6bfbe38ad73715ef521a36cc097b8538c9b
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94886087"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99819992"
 ---
 # <a name="quickstart-create-and-manage-communication-services-resources"></a>快速入门：创建和管理通信服务资源
-
+ 
 [!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
 通过预配第一个通信服务资源来开始使用 Azure 通信服务。 可以通过 Azure 门户或使用 .NET 管理客户端库预配通信服务资源。 管理客户端库使你可以通过 [Azure 资源管理器](../../azure-resource-manager/management/overview.md)（Azure 的部署和管理服务）创建、配置、更新和删除资源和接口。 客户端库中提供的所有功能都可在 Azure 门户中使用。 
@@ -28,6 +28,10 @@ ms.locfileid: "94886087"
 
 ::: zone pivot="platform-azp"
 [!INCLUDE [Azure portal](./includes/create-resource-azp.md)]
+::: zone-end
+
+::: zone pivot="platform-azcli"
+[!INCLUDE [Azure CLI](./includes/create-resource-azcli.md)]
 ::: zone-end
 
 ::: zone pivot="platform-net"
@@ -41,6 +45,14 @@ ms.locfileid: "94886087"
 导航到通信服务资源之后，从导航菜单中选择“密钥”并复制“连接字符串”或“终结点”值以供通信服务客户端库使用  。 请注意，你可以访问主密钥和辅助密钥。 在你希望向第三方或过渡环境提供对通信服务资源的临时访问权限的方案中，这可能会十分有用。
 
 :::image type="content" source="./media/key.png" alt-text="通信服务密钥页的屏幕截图。":::
+
+还可以使用 Azure CLI 访问密钥信息：
+
+```azurecli
+az communication list --resource-group "<resourceGroup>"    
+
+az communication list-key --name "<communicationName>" --resource-group "<resourceGroup>"
+```
 
 ## <a name="store-your-connection-string"></a>存储连接字符串
 

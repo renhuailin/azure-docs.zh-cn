@@ -7,22 +7,21 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: tutorial
 ms.date: 10/20/2019
-ms.openlocfilehash: b1b7069cb723bffd758c3603cc957329dd6d2a9b
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 4bade4cfe5bf82aefcc967d86362e27605a005f3
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96463263"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99832175"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-smart-inventory-management-application-template"></a>教程：部署和演练智能库存管理应用程序模板
 
-
-
 本教程介绍如何开始部署 IoT Central“智能库存管理”应用程序模板  。 你将了解如何部署模板、有哪些现成的内容以及接下来要执行哪些操作。
 
-本教程介绍如何执行下列操作： 
-* 创建智能库存管理应用程序 
-* 演练应用程序 
+本教程介绍如何执行下列操作：
+
+> [!div class="checklist"]
+> 创建智能库存管理应用程序并进行演练 
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -110,8 +109,8 @@ ms.locfileid: "96463263"
 > ![显示如何在使用应用程序后将其删除的屏幕截图](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_cleanup.png)
 
 ## <a name="next-steps"></a>后续步骤
-* 详细了解智能库存管理 
+
+详细了解智能库存管理：
+
 > [!div class="nextstepaction"]
 > [智能库存管理概念](./architecture-smart-inventory-management.md)
-* 详细了解其他 [IoT Central 零售模板](./overview-iot-central-retail.md)
-* 请参阅 [IoT Central 概述](../core/overview-iot-central.md)，详细了解 IoT Central

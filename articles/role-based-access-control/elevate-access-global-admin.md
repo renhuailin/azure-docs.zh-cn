@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 06/09/2020
 ms.author: rolyon
-ms.openlocfilehash: 850d50bc9e427ff559782d587d74b33089332a8d
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 30c7e6b1412373cf3bfe1c511206aa4b916bf1ee
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99091656"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100557504"
 ---
 # <a name="elevate-access-to-manage-all-azure-subscriptions-and-management-groups"></a>提升访问权限以管理所有 Azure 订阅和管理组
 
@@ -80,7 +80,7 @@ Azure AD 和 Azure 资源彼此独立保护。 也就是说，Azure AD 角色分
 
 1. 以提升的访问权限做出所需的更改。
 
-    有关角色分配的信息，请参阅[使用 Azure 门户添加或删除 Azure 角色分配](role-assignments-portal.md)。 如果使用 Privileged Identity Management，请参阅[发现要管理的 Azure 资源](../active-directory/privileged-identity-management/pim-resource-roles-discover-resources.md)或[分配 Azure 资源角色](../active-directory/privileged-identity-management/pim-resource-roles-assign-roles.md)。
+    有关分配角色的信息，请参阅 [使用 Azure 门户分配 Azure 角色](role-assignments-portal.md)。 如果使用 Privileged Identity Management，请参阅[发现要管理的 Azure 资源](../active-directory/privileged-identity-management/pim-resource-roles-discover-resources.md)或[分配 Azure 资源角色](../active-directory/privileged-identity-management/pim-resource-roles-assign-roles.md)。
 
 1. 执行以下部分中的步骤以删除提升的访问权限。
 
@@ -149,7 +149,7 @@ CanDelegate        : False
 
 使用以下基本步骤，通过 Azure CLI 为全局管理员提升访问权限。
 
-1. 使用 [az rest](/cli/azure/reference-index?view=azure-cli-latest#az-rest) 命令调用 `elevateAccess` 终结点，这将授予你根范围 (`/`) 内的“用户访问管理员”角色。
+1. 使用 [az rest](/cli/azure/reference-index#az_rest) 命令调用 `elevateAccess` 终结点，这将授予你根范围 (`/`) 内的“用户访问管理员”角色。
 
     ```azurecli
     az rest --method post --url "/providers/Microsoft.Authorization/elevateAccess?api-version=2016-07-01"
@@ -157,7 +157,7 @@ CanDelegate        : False
 
 1. 以提升的访问权限做出所需的更改。
 
-    有关角色分配的信息，请参阅[使用 Azure CLI 添加或删除 Azure 角色分配](role-assignments-cli.md)。
+    有关分配角色的信息，请参阅 [使用 Azure CLI 分配 Azure 角色](role-assignments-cli.md)。
 
 1. 执行后续部分中的步骤以删除提升的访问权限。
 
@@ -213,7 +213,7 @@ az role assignment list --role "User Access Administrator" --scope "/"
 
 1. 以提升的访问权限做出所需的更改。
 
-    有关角色分配的信息，请参阅[使用 REST API 添加或删除 Azure 角色分配](role-assignments-rest.md)。
+    有关分配角色的信息，请参阅 [使用 REST API 分配 Azure 角色](role-assignments-rest.md)。
 
 1. 执行后续部分中的步骤以删除提升的访问权限。
 
@@ -330,4 +330,4 @@ az role assignment list --role "User Access Administrator" --scope "/"
 ## <a name="next-steps"></a>后续步骤
 
 - [了解不同角色](rbac-and-directory-admin-roles.md)
-- [使用 REST API 添加或删除 Azure 角色分配](role-assignments-rest.md)
+- [使用 REST API 分配 Azure 角色](role-assignments-rest.md)

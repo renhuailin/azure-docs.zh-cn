@@ -6,12 +6,12 @@ author: baanders
 ms.author: baanders
 ms.topic: troubleshooting
 ms.date: 7/20/2020
-ms.openlocfilehash: 1517c066fe20d478094f57d85d6e27f355a93601
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: ad28b3300e9107c7f6d4b1987205583ef60ed658
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98049807"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100545694"
 ---
 # <a name="service-request-failed-status-403-forbidden"></a>服务请求失败。 状态： 403 (禁止访问) 
 
@@ -26,8 +26,6 @@ ms.locfileid: "98049807"
 ### <a name="cause-1"></a>原因 #1
 
 最常见的情况是，此错误表明你的 Azure 基于角色的访问控制 (没有正确设置服务的 Azure RBAC) 权限。 Azure 数字孪生实例的许多操作要求你在 **尝试管理的实例上** 拥有 *Azure 数字孪生数据所有者* 角色。 
-
-[!INCLUDE [digital-twins-role-rename-note.md](../../includes/digital-twins-role-rename-note.md)]
 
 ### <a name="cause-2"></a>原因 #2
 

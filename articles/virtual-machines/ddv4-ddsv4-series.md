@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.openlocfilehash: 1606315b6b6cb4cff787a67e97e64baedc6c508e
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: b68ba21e7a676dda46527313f2fceece0fcba578
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99097094"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100557917"
 ---
 # <a name="ddv4-and-ddsv4-series"></a>Ddv4 和 Ddsv4 系列
 
@@ -34,7 +34,7 @@ Ddv4 系列大小采用英特尔&reg; 至强&reg; 铂金 8272CL (Cascade Lake) �
 [实时迁移](maintenance-and-updates.md)：支持<br>
 [内存保留更新](maintenance-and-updates.md)：支持<br>
 [VM 代系支持](generation-2.md)：第 1 代和第 2 代<br>
-[加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：支持<br>
+[加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：支持的 (至少 *需要4个 vCPU*) <br>
 [临时 OS 磁盘](ephemeral-os-disks.md)：受支持 <br>
 <br> 
 
@@ -65,7 +65,7 @@ Ddsv4 系列采用英特尔&reg; 至强&reg; 铂金 8272CL (Cascade Lake) 处理
 [实时迁移](maintenance-and-updates.md)：支持<br>
 [内存保留更新](maintenance-and-updates.md)：支持<br>
 [VM 代系支持](generation-2.md)：第 1 代和第 2 代<br>
-[加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：支持<br>
+[加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：支持的 (至少 *需要4个 vCPU*) <br>
 [临时 OS 磁盘](ephemeral-os-disks.md)：受支持 <br>
 <br> 
 

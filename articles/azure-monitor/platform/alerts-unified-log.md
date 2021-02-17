@@ -4,14 +4,14 @@ description: 满足指定的日志查询条件时，触发电子邮件、通知�
 author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
-ms.date: 5/31/2019
+ms.date: 09/22/2020
 ms.subservice: alerts
-ms.openlocfilehash: a913bc0ae01507cb26c1650d63918a8319eeacf4
-ms.sourcegitcommit: 697638c20ceaf51ec4ebd8f929c719c1e630f06f
+ms.openlocfilehash: 0f81dd14988b069931bddf5f5636cb1bab426641
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97857420"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100544861"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Azure Monitor 中的日志警报
 
@@ -90,7 +90,7 @@ requests
 | where resultCode == "500"
 ```
 
-- **时间段/聚合粒度：** 15 分钟
+- **时间范围/聚合粒度：** 15 分钟
 - **警报频率：** 15 分钟
 - **阈值：** 大于 0
 
@@ -121,7 +121,7 @@ requests
 
 通过将警报分组为唯一的组合，按数字或字符串列将警报拆分为单独的警报。 当大规模（在订阅或资源组范围内）创建以资源为中心的警报时，可以按 Azure 资源 ID 列进行拆分。 按 Azure 资源 ID 列进行拆分会将警报的目标更改为指定的资源。
 
-如果要在多个 Azure 资源上监视相同的条件，建议使用 "按 Azure 资源 ID 进行拆分" 列。 例如，监视超过80% 的 CPU 使用率的所有虚拟机。 如果要在范围中使用多个资源的条件，则可以决定不进行拆分，如监视资源组范围中至少有5台计算机的 CPU 使用率超过80%。
+如果想要在多个 Azure 资源上监视相同的条件，建议按 Azure 资源 ID 列进行拆分。 例如，监视所有虚拟机的 CPU 使用率超过 80%。 如果希望对范围中的多个资源设置条件，例如监视资源组范围中至少有 5 台计算机的 CPU 使用率超过 80%，也可决定不拆分。
 
 在工作区和 Application Insights 中，它仅在“指标度量”度量值类型中受支持。 此字段称为“聚合依据”。 它限制为三个列。 查询中的分组依据列超过三个可能会导致意外的结果。 在所有其他资源类型中，它是在条件的“拆分依据维度”部分中配置的（限制为六个拆分）。
 
@@ -147,7 +147,7 @@ requests
 - **资源 ID 列：** _ResourceId（目前，按警报规则中的资源 ID 列拆分这一做法仅适用于订阅和资源组）
 - **维度/聚合依据：**
   - Computer = VM1、VM2（在警报规则定义中筛选值这一做法目前不适用于工作区和 Application Insights。 请在查询文本中筛选。）
-- **时间段/聚合粒度：** 15 分钟
+- **时间范围/聚合粒度：** 15 分钟
 - **警报频率：** 15 分钟
 - **阈值：** 大于 0
 

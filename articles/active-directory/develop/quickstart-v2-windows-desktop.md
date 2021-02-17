@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: b54438441b0e34cccda7fbec37dc1d1740101e9e
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 81a5f28f0bf2f7f7ea005a4d9fe8d42337f6d0b9
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98754005"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100103390"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-windows-desktop-app"></a>快速入门：获取令牌并从 Windows 桌面应用中调用 Microsoft Graph API
 
@@ -36,7 +36,7 @@ ms.locfileid: "98754005"
 >
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>选项 1：注册并自动配置应用，然后下载代码示例
 >
-> 1. 转到 <a href="https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/WinDesktopQuickstartPage/sourceType/docs" target="_blank">Azure 门户 - 应用注册<span class="docon docon-navigate-external x-hidden-focus"></span></a>快速入门体验。
+> 1. 转到 <a href="https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/WinDesktopQuickstartPage/sourceType/docs" target="_blank">Azure 门户 - 应用注册</a>快速入门体验。
 > 1. 输入应用程序的名称并选择“注册”。
 > 1. 遵照说明下载内容，并只需单击一下自动配置新应用程序。
 >
@@ -45,7 +45,7 @@ ms.locfileid: "98754005"
 > #### <a name="step-1-register-your-application"></a>步骤 1：注册应用程序
 > 若要手动注册应用程序并将应用的注册信息添加到解决方案，请执行以下步骤：
 >
-> 1. 登录到 <a href="https://portal.azure.com/" target="_blank">Azure 门户<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
+> 1. 登录 <a href="https://portal.azure.com/" target="_blank">Azure 门户</a>。
 > 1. 如果有权访问多个租户，请使用顶部菜单中的“目录 + 订阅”筛选器:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::，选择要在其中注册应用程序的租户。
 > 1. 搜索并选择“Azure Active Directory”  。
 > 1. 在“管理”下，选择“应用注册” > “新建注册”  。
@@ -59,7 +59,7 @@ ms.locfileid: "98754005"
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-azure-portal"></a>步骤 1：在 Azure 门户中配置应用程序
-> 要使此快速入门的代码示例正常运行，需要将答复 URL 添加为 **https://login.microsoftonline.com/common/oauth2/nativeclient** 。
+> 为使此快速入门中的代码示例正常运行，请添加重定向 URI `https://login.microsoftonline.com/common/oauth2/nativeclient`。
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [执行此更改]()
 >

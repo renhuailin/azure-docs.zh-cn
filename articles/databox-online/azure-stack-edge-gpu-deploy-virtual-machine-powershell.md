@@ -1,6 +1,6 @@
 ---
-title: 通过 Azure PowerShell 在 Azure Stack Edge Pro GPU 设备上部署 Vm
-description: 介绍如何使用 Azure PowerShell 在 Azure Stack Edge Pro GPU 设备上创建和管理 (Vm) 的虚拟机。
+title: 通过 Azure PowerShell 在 Azure Stack Edge 设备上部署 Vm
+description: 描述如何使用 Azure PowerShell 在 Azure Stack Edge 设备上创建和管理虚拟机。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,22 +8,22 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 01/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 1d286e7661fa14dd63bd55b133c39414e04decc6
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: d4a4a2e6e04f8f6247df663aba033d387e66c437
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98802992"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546884"
 ---
-# <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-azure-powershell"></a>通过 Azure PowerShell 在 Azure Stack Edge Pro GPU 设备上部署 Vm
+# <a name="deploy-vms-on-your-azure-stack-edge-device-via-azure-powershell"></a>通过 Azure PowerShell 在 Azure Stack Edge 设备上部署 Vm
 
-本文介绍如何使用 Azure PowerShell 在 Azure Stack Edge Pro 设备上创建和管理 VM。 本文适用于 Azure Stack Edge Pro GPU、Azure Stack Edge Pro R 和 Azure Stack 边缘迷你 R 设备。
+本文介绍如何使用 Azure PowerShell 在 Azure Stack Edge 设备上创建和管理 VM。 本文适用于 Azure Stack Edge Pro GPU、Azure Stack Edge Pro R 和 Azure Stack 边缘迷你 R 设备。
 
 ## <a name="vm-deployment-workflow"></a>VM 部署工作流
 
-下图演示了此部署工作流。
+部署工作流如下所示：
 
-![VM 部署工作流](media/azure-stack-edge-gpu-deploy-virtual-machine-powershell/vm-workflow-r.svg)
+![VM 部署工作流关系图。](media/azure-stack-edge-gpu-deploy-virtual-machine-powershell/vm-workflow-r.svg)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -32,7 +32,7 @@ ms.locfileid: "98802992"
 
 ## <a name="query-for-built-in-subscription-on-the-device"></a>在设备上查询内置订阅
 
-对于 Azure 资源管理器，仅支持单个用户可见的固定订阅。 此订阅对于每个设备都是唯一的，因此无法更改订阅名称或订阅 ID。
+对于 Azure 资源管理器，仅支持用户可见的单个固定订阅。 此订阅对于每个设备都是唯一的，且无法更改订阅名称或订阅 ID。
 
 此订阅包含创建 VM 所需的所有资源。 
 
@@ -41,13 +41,13 @@ ms.locfileid: "98802992"
 
 此订阅用于部署 Vm。
 
-1.  若要列出此订阅，请键入：
+1.  若要列出此订阅，请输入：
 
     ```powershell
     Get-AzureRmSubscription
     ```
     
-    下面显示了示例输出。
+    下面是一个示例输出：
 
     ```powershell
     PS C:\windows\system32> Get-AzureRmSubscription
@@ -59,16 +59,16 @@ ms.locfileid: "98802992"
     PS C:\windows\system32>
     ```
         
-3.  获取在设备上运行的已注册资源提供程序的列表。 此列表通常包括计算、网络和存储。
+1. 获取在设备上运行的已注册资源提供程序的列表。 此列表通常包括计算、网络和存储。
 
     ```powershell
     Get-AzureRMResourceProvider
     ```
 
     > [!NOTE]
-    > 资源提供程序是预先注册的，不能修改或更改。
+    > 资源提供程序是预注册的，不能修改或更改。
     
-    下面显示了示例输出：
+    下面是一个示例输出：
 
     ```powershell
     Get-AzureRmResourceProvider
@@ -100,16 +100,16 @@ ms.locfileid: "98802992"
     
 ## <a name="create-a-resource-group"></a>创建资源组
 
-使用 [New-AzureRmResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 创建 Azure 资源组。 资源组是在其中部署和管理 Azure 资源（例如存储帐户、磁盘、托管磁盘）的逻辑容器。
+使用 [New-AzureRmResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 创建 Azure 资源组。 资源组是在其中部署和管理 Azure 资源（例如存储帐户、磁盘和托管磁盘）的逻辑容器。
 
 > [!IMPORTANT]
-> 所有资源都在与设备相同的位置创建，并且位置设置为 **DBELocal**。
+> 所有资源都是在与设备相同的位置创建的，并且位置设置为 **DBELocal**。
 
 ```powershell
 New-AzureRmResourceGroup -Name <Resource group name> -Location DBELocal
 ```
 
-下面显示了示例输出。
+下面是一个示例输出：
 
 ```powershell
 New-AzureRmResourceGroup -Name rg191113014333 -Location DBELocal 
@@ -118,16 +118,16 @@ Successfully created Resource Group:rg191113014333
 
 ## <a name="create-a-storage-account"></a>创建存储帐户
 
-使用在上一步中创建的资源组创建新的存储帐户。 此帐户是一个 **本地存储帐户** ，将用于上载 VM 的虚拟磁盘映像。
+使用在上一步中创建的资源组创建新的存储帐户。 这是一个本地存储帐户，用于上传 VM 的虚拟磁盘映像。
 
 ```powershell
 New-AzureRmStorageAccount -Name <Storage account name> -ResourceGroupName <Resource group name> -Location DBELocal -SkuName Standard_LRS
 ```
 
 > [!NOTE]
-> 只能通过 Azure 资源管理器创建本地存储帐户，如本地冗余存储 (Standard_LRS 或 Premium_LRS) 。 若要创建分层存储帐户，请参阅 [添加、连接到 Azure Stack Edge Pro 上的存储帐户](azure-stack-edge-j-series-deploy-add-storage-accounts.md)中的步骤。
+> 使用 Azure 资源管理器，只能创建本地存储帐户，如 (标准版或高级版) 本地冗余存储。 若要创建分层存储帐户，请参阅 [教程：通过包含 Azure Stack Edge PRO GPU 的存储帐户传输数据](azure-stack-edge-j-series-deploy-add-storage-accounts.md)。
 
-下面显示了示例输出。
+下面是一个示例输出：
 
 ```powershell
 New-AzureRmStorageAccount -Name sa191113014333  -ResourceGroupName rg191113014333 -SkuName Standard_LRS -Location DBELocal
@@ -158,7 +158,7 @@ Context                : Microsoft.WindowsAzure.Commands.Common.Storage.LazyAzur
 ExtendedProperties     : {}
 ```
 
-若要获取存储帐户密钥，请运行 `Get-AzureRmStorageAccountKey` 命令。 此处显示了此命令的示例输出。
+若要获取存储帐户密钥，请运行 `Get-AzureRmStorageAccountKey` 命令。 下面是此命令的示例输出：
 
 ```powershell
 PS C:\Users\Administrator> Get-AzureRmStorageAccountKey
@@ -175,20 +175,19 @@ key1 /IjVJN+sSf7FMKiiPLlDm8mc9P4wtcmhhbnCa7...
 key2 gd34TcaDzDgsY9JtDNMUgLDOItUU0Qur3CBo6Q...
 ```
 
-## <a name="add-blob-uri-to-hosts-file"></a>将 blob URI 添加到 hosts 文件
+## <a name="add-the-blob-uri-to-the-host-file"></a>将 blob URI 添加到主机文件
 
-已在用于连接到 Blob 存储的客户端的 hosts 文件中添加了 blob URI，该客户端用于 [终结点名称解析的 "修改主机文件](azure-stack-edge-j-series-connect-resource-manager.md#step-5-modify-host-file-for-endpoint-name-resolution)" 部分。 此条目用于添加 blob URI：
+已在用于连接到 Azure Blob 存储的客户端的 hosts 文件中添加了 blob URI，此部分中的 " [修改主机文件以进行终结点名称解析](azure-stack-edge-j-series-connect-resource-manager.md#step-5-modify-host-file-for-endpoint-name-resolution)" 部分中。 此条目用于添加 blob URI：
 
 \<Azure consistent network services VIP \>\<storage name\>blob。 \<appliance name\>\<dnsdomain\>
 
-
 ## <a name="install-certificates"></a>安装证书
 
-如果使用的是 *https*，则需要在设备上安装适当的证书。 在这种情况下，请安装 blob 端点证书。 有关详细信息，请参阅如何在 " [管理证书](azure-stack-edge-j-series-manage-certificates.md)" 中创建和上载证书。
+如果使用的是 *https*，则需要在设备上安装适当的证书。 在这种情况下，请安装 blob 端点证书。 有关详细信息，请参阅如何在 [将证书与 Azure Stack Edge PRO GPU 设备一起使用](azure-stack-edge-gpu-manage-certificates.md)中创建和上载证书。
 
 ## <a name="upload-a-vhd"></a>上传 VHD
 
-将所有要使用的磁盘映像复制到在前面步骤中创建的本地存储帐户中的页 blob 中。 可以使用 [AzCopy](../storage/common/storage-use-azcopy-v10.md) 等工具将 VHD 上传到在前面步骤中创建的存储帐户。 
+将所有要使用的磁盘映像复制到在前面步骤中创建的本地存储帐户中的页 blob 中。 可以使用 [AzCopy](../storage/common/storage-use-azcopy-v10.md) 等工具将 VHD 上传到存储帐户。 
 
 <!--Before you use AzCopy, make sure that the [AzCopy is configured correctly](#configure-azcopy) for use with the blob storage REST API version that you are using with your Azure Stack Edge Pro device.
 
@@ -197,11 +196,11 @@ AzCopy /Source:<sourceDirectoryForVHD> /Dest:<blobContainerUri> /DestKey:<storag
 ```
 
 > [!NOTE]
-> Set `BlobType` to page for creating a managed disk out of VHD. Set `BlobType` to block when writing to tiered storage accounts using AzCopy.
+> Set `BlobType` to `page` for creating a managed disk out of VHD. Set `BlobType` to `block` when you're writing to tiered storage accounts by using AzCopy.
 
-You can download the disk images from the marketplace. For detailed steps, go to [Get the virtual disk image from Azure marketplace](azure-stack-edge-j-series-create-virtual-machine-image.md).
+You can download the disk images from Azure Marketplace. For detailed steps, see [Get the virtual disk image from Azure Marketplace](azure-stack-edge-j-series-create-virtual-machine-image.md).
 
-A sample output using AzCopy 7.3 is shown below. For more information on this command, go to [Upload VHD file to storage account using AzCopy](../devtest-labs/devtest-lab-upload-vhd-using-azcopy.md).
+Here's a sample output using AzCopy 7.3. For more information on this command, see [Upload VHD file to storage account using AzCopy](../devtest-labs/devtest-lab-upload-vhd-using-azcopy.md).
 
 
 ```powershell
@@ -221,7 +220,7 @@ $StorageAccountSAS = New-AzureStorageAccountSASToken -Service Blob,File,Queue,Ta
 <AzCopy exe path> cp "Full VHD path" "<BlobEndPoint>/<ContainerName><StorageAccountSAS>"
 ```
 
-下面是示例输出： 
+下面是一个示例输出： 
 
 ```powershell
 $ContainerName = <ContainerName>
@@ -248,7 +247,8 @@ C:\AzCopy.exe  cp "$VHDPath\$VHDFile" "$endPoint$ContainerName$StorageAccountSAS
 ```powershell
 $DiskConfig = New-AzureRmDiskConfig -Location DBELocal -CreateOption Import -SourceUri "Source URL for your VHD"
 ```
-下面显示了示例输出： 
+下面是一个示例输出： 
+
 <code>
 $DiskConfig = New-AzureRmDiskConfig -Location DBELocal -CreateOption Import –SourceUri http://</code><code>sa191113014333.blob.dbe-1dcmhq2.microsoftdatabox.com/vmimages/ubuntu13.vhd</code> 
 
@@ -256,7 +256,7 @@ $DiskConfig = New-AzureRmDiskConfig -Location DBELocal -CreateOption Import –S
 New-AzureRMDisk -ResourceGroupName <Resource group name> -DiskName <Disk name> -Disk $DiskConfig
 ```
 
-下面显示了示例输出。 有关此 cmdlet 的详细信息，请参阅 [get-azurermdisk](/powershell/module/azurerm.compute/new-azurermdisk?view=azurermps-6.13.0&preserve-view=true)。
+下面是一个示例输出。 有关此 cmdlet 的详细信息，请参阅 [get-azurermdisk](/powershell/module/azurerm.compute/new-azurermdisk?view=azurermps-6.13.0&preserve-view=true)。
 
 ```powershell
 Tags               :
@@ -296,7 +296,7 @@ Set-AzureRmImageOsDisk -Image $imageConfig -OsType 'Linux' -OsState 'Generalized
 New-AzureRmImage -Image $imageConfig -ImageName <Image name>  -ResourceGroupName <Resource group name>
 ```
 
-下面显示了示例输出。 有关此 cmdlet 的详细信息，请参阅 [get-azurermimage](/powershell/module/azurerm.compute/new-azurermimage?view=azurermps-6.13.0&preserve-view=true)。
+下面是一个示例输出。 有关此 cmdlet 的详细信息，请参阅 [get-azurermimage](/powershell/module/azurerm.compute/new-azurermimage?view=azurermps-6.13.0&preserve-view=true)。
 
 ```powershell
 New-AzureRmImage -Image Microsoft.Azure.Commands.Compute.Automation.Models.PSImage -ImageName ig191113014333  -ResourceGroupName rg191113014333
@@ -317,15 +317,14 @@ Tags                 : {}
 创建和部署 VM 之前，必须创建一个虚拟网络并关联一个虚拟网络接口。
 
 > [!IMPORTANT]
-> 创建虚拟网络和虚拟网络接口时，以下规则适用：
-> - 即使) 资源组，也只能创建一个 Vnet (，它必须与该地址空间中的逻辑网络完全匹配。
-> - Vnet 中只允许有一个子网。 子网必须与 Vnet 完全相同的地址空间。
-> - 在创建 Vnic 的过程中，只允许使用静态分配方法，且用户需要提供专用 IP 地址。
+> 下列规则适用：
+> - 甚至可以在资源组中创建一个虚拟网络。 虚拟网络必须与逻辑网络的地址空间完全相同。
+> - 虚拟网络只能有一个子网。 子网必须与虚拟网络的地址空间完全相同。
+> - 创建虚拟网络接口卡时，只能使用静态分配方法。 用户需要提供专用 IP 地址。
 
- 
-**查询自动创建的 Vnet**
+### <a name="query-the-automatically-created-virtual-network"></a>查询自动创建的虚拟网络
 
-如果从设备的本地 UI 启用计算，则 `ASEVNET` 会在 "资源组" 下自动创建一个 Vnet `ASERG` 。 使用以下命令查询现有 Vnet：
+如果从设备的本地 UI 启用计算，则 `ASEVNET` 会自动在资源组下创建一个名为的虚拟网络 `ASERG` 。 使用以下命令查询现有虚拟网络：
 
 ```powershell
 $aRmVN = Get-AzureRMVirtualNetwork -Name ASEVNET -ResourceGroupName ASERG 
@@ -336,14 +335,16 @@ $subNetId=New-AzureRmVirtualNetworkSubnetConfig -Name <Subnet name> -AddressPref
 $aRmVN = New-AzureRmVirtualNetwork -ResourceGroupName <Resource group name> -Name <Vnet name> -Location DBELocal -AddressPrefix <Address prefix> -Subnet $subNetId
 ```-->
 
-**使用 Vnet 子网 ID 创建 Vnic**
+### <a name="create-a-virtual-network-interface-card"></a>创建虚拟网络接口卡
+
+以下命令使用虚拟网络子网 ID 创建虚拟网络接口卡：
 
 ```powershell
 $ipConfig = New-AzureRmNetworkInterfaceIpConfig -Name <IP config Name> -SubnetId $aRmVN.Subnets[0].Id -PrivateIpAddress <Private IP>
 $Nic = New-AzureRmNetworkInterface -Name <Nic name> -ResourceGroupName <Resource group name> -Location DBELocal -IpConfiguration $ipConfig
 ```
 
-这些命令的示例输出如下所示：
+以下是这些命令的示例输出：
 
 ```powershell
 PS C:\Users\Administrator> $subNetId=New-AzureRmVirtualNetworkSubnetConfig -Name my-ase-subnet -AddressPrefix "5.5.0.0/16"
@@ -405,7 +406,7 @@ Primary                     : True
 MacAddress                  : 00155D18E432                :
 ```
 
-为 VM 创建 Vnic 时，可以选择传递公共 IP。 在此实例中，公共 IP 将返回专用 IP。 
+为 VM 创建虚拟网络接口卡时，可以选择传递公共 IP。 在此实例中，公共 IP 返回专用 IP。 
 
 ```powershell
 New-AzureRmPublicIPAddress -Name <Public IP> -ResourceGroupName <ResourceGroupName> -AllocationMethod Static -Location DBELocal
@@ -413,8 +414,7 @@ $publicIP = (Get-AzureRmPublicIPAddress -Name <Public IP> -ResourceGroupName <Re
 $ipConfig = New-AzureRmNetworkInterfaceIpConfig -Name <ConfigName> -PublicIpAddressId $publicIP -SubnetId $subNetId
 ```
 
-
-**创建 VM**
+### <a name="create-a-vm"></a>创建 VM
 
 你现在可以使用 VM 映像创建 VM，并将其附加到之前创建的虚拟网络。
 
@@ -458,15 +458,15 @@ New-AzureRmVM -ResourceGroupName <Resource Group Name> -Location DBELocal -VM $V
 [!INCLUDE [azure-stack-edge-gateway-connect-vm](../../includes/azure-stack-edge-gateway-connect-virtual-machine-windows.md)]
 
 
-<!--Connect to the VM using the private IP that you passed during the VM creation.
+<!--Connect to the VM by using the private IP that you passed during the VM creation.
 
 Open an SSH session to connect with the IP address.
 
 `ssh -l <username> <ip address>`
 
-When prompted, provide the password that you used when creating the VM.
+When you're prompted, provide the password that you used when creating the VM.
 
-If you need to provide the SSH key, use this command.
+If you need to provide the SSH key, use this command:
 
 ssh -i c:/users/Administrator/.ssh/id_rsa Administrator@5.5.41.236
 
@@ -475,16 +475,16 @@ If you used a public IP address during VM creation, you can use that IP to conne
 ```powershell
 $publicIp = Get-AzureRmPublicIpAddress -Name <Public IP> -ResourceGroupName <Resource group name>
 ```
-The public IP in this case will be the same as the private IP that you passed during virtual network interface creation.-->
+The public IP in this case is the same as the private IP that you passed during the virtual network interface creation.-->
 
 
-## <a name="manage-vm"></a>管理 VM
+## <a name="manage-the-vm"></a>管理 VM
 
-以下部分介绍了将在 Azure Stack Edge Pro 设备上创建的 VM 的一些常见操作。
+以下部分介绍了可以在 Azure Stack Edge Pro 设备上创建的一些常见操作。
 
 ### <a name="list-vms-running-on-the-device"></a>列出在设备上运行的 Vm
 
-若要返回 Azure Stack Edge Pro 设备上运行的所有 Vm 的列表，请运行以下命令。
+若要返回 Azure Stack Edge 设备上运行的所有 Vm 的列表，请运行以下命令：
 
 
 `Get-AzureRmVM -ResourceGroupName <String> -Name <String>`
@@ -497,18 +497,16 @@ The public IP in this case will be the same as the private IP that you passed du
 
 `Start-AzureRmVM [-Name] <String> [-ResourceGroupName] <String>`
 
-
 有关此 cmdlet 的详细信息，请参阅 [get-azurermvm](/powershell/module/azurerm.compute/start-azurermvm?view=azurermps-6.13.0&preserve-view=true)。
 
 ### <a name="suspend-or-shut-down-the-vm"></a>挂起或关闭 VM
 
-运行以下 cmdlet 以停止或关闭设备上运行的虚拟机：
+运行以下 cmdlet，停止或关闭在你的设备上运行的虚拟机：
 
 
 ```powershell
 Stop-AzureRmVM [-Name] <String> [-StayProvisioned] [-ResourceGroupName] <String>
 ```
-
 
 有关此 cmdlet 的详细信息，请参阅 [get-azurermvm cmdlet](/powershell/module/azurerm.compute/stop-azurermvm?view=azurermps-6.13.0&preserve-view=true)。
 
@@ -531,8 +529,6 @@ Remove-AzureRmVM [-Name] <String> [-ResourceGroupName] <String>
 ```
 
 有关此 cmdlet 的详细信息，请参阅 [get-azurermvm cmdlet](/powershell/module/azurerm.compute/remove-azurermvm?view=azurermps-6.13.0&preserve-view=true)。
-
-
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/7/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: eba3958ae5dd307b80b04371d3659a129d5acf89
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: 5a7cfec6acb4cd8735c039f5eab30bac4ccf55b0
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98797866"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100556139"
 ---
 # <a name="write-client-app-authentication-code"></a>编写客户端应用身份验证代码
 
@@ -117,5 +117,5 @@ Azure 数字孪生使用 [基于 OAUTH 2.0 Azure AD 安全令牌](../active-dire
 详细了解如何在 Azure 数字孪生中运行安全性：
 * [*概念： Azure 数字孪生解决方案的安全性*](concepts-security.md)
 
-或者，现在已经设置了身份验证，请转到在实例中创建模型：
-* [*操作说明：管理自定义模型*](how-to-manage-model.md)
+或者，现在已经设置了身份验证，接下来请在实例中创建和管理模型：
+* [*操作说明：管理 DTDL 模型*](how-to-manage-model.md)

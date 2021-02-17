@@ -12,12 +12,12 @@ ms.date: 01/19/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: e6b520a32755379fce5326e25b90f135b0d67755
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: b2baff33d9e91e1b5259d79eca0a22535c00f419
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98574298"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555239"
 ---
 # <a name="set-up-the-local-account-identity-provider"></a>设置本地帐户标识提供者
 
@@ -51,19 +51,19 @@ Azure AD B2C 提供了不同的方式来验证用户的身份。 用户可以使
 
 无密码 authentication 是一种身份验证类型，用户无需使用其密码进行登录。 通过电话注册和登录，用户可以使用电话号码作为主要登录标识符来注册应用。 用户在注册和登录过程中将具有以下体验：
 
-- **登录**：如果用户有一个使用电话号码作为标识符的现有帐户，则用户将输入其电话号码，然后选择 *"登录*"。 它们通过选择 " *继续*" 确认国家/地区和电话号码，并将一次性验证代码发送到其手机。 用户输入验证码，并选择 " *继续* " 以登录。
+- **登录**：如果用户有一个使用电话号码作为标识符的现有帐户，则用户将输入其电话号码，然后选择 *"登录*"。 通过选择“继续”，用户可确认国家/地区和电话号码，随即会向其手机发送一次性验证码。 用户输入验证码，然后选择“继续”以登录。
 - **注册**：如果用户还没有应用程序的帐户，则可以通过单击 " *立即注册* " 链接创建一个帐户。 
-    1. 此时将显示注册页面，用户可在其中选择 *国家/地区*，输入电话号码，然后选择 " *发送代码*"。 
-    1. 一次性验证码会发送到用户的电话号码。 用户在注册页上输入 *验证代码* ，然后选择 " *验证代码*"。  (如果用户无法检索代码，则他们可以选择 " *发送新代码* ") 。 
-    1. 用户输入注册页上请求的任何其他信息，例如显示名称、名字和姓氏。 然后选择“继续”。 
-    1. 接下来，要求用户提供一个 **恢复电子邮件**。 用户输入其电子邮件地址，然后选择 " *发送验证码*"。 代码将发送到用户的电子邮件收件箱，用户可以在 "验证码" 框中检索并输入该收件箱。 然后，用户选择 "验证代码"。
-    1. 验证代码后，用户可以选择 " *创建* " 来创建帐户。 
+    1. 此时将显示注册页面，用户可在其中选择其“国家/地区”，输入其电话号码，并选择“发送代码” 。 
+    1. 一次性验证码会发送到用户的电话号码。 用户在注册页面上输入验证码，然后选择“验证代码” 。  (如果用户无法检索代码，则他们可以选择 " *发送新代码* ") 。 
+    1. 用户输入注册页上请求的任何其他信息，例如显示名称、名字和姓氏。 然后，选择“继续”。
+    1. 接下来，要求用户提供一个 **恢复电子邮件**。 用户输入其电子邮件地址，然后选择“发送验证码”。 代码将发送到用户的电子邮件收件箱，用户可以检索该代码并在“验证码”中输入它。 然后，用户选择“验证代码”。
+    1. 验证代码后，用户选择“创建”以创建帐户。 
 
 ![电话注册或登录体验](./media/identity-provider-local/local-account-phone-experience.png)
 
 ### <a name="pricing"></a>定价
 
-使用短信将一次性密码发送到用户。 根据你的移动网络操作员，你可能需要为发送的每条消息付费。 有关定价信息，请参阅 [Azure Active Directory B2C 定价](https://azure.microsoft.com/pricing/details/active-directory-b2c/)的 **单独费用** 部分。
+使用短信将一次性密码发送到用户。 根据你的移动网络操作员，你可能需要为发送的每条消息付费。 有关定价信息，请参阅 [Azure Active Directory B2C 定价](https://azure.microsoft.com/pricing/details/active-directory-b2c/) 的“单独费用”部分。
 
 > [!NOTE]
 > 多重身份验证 (MFA) 默认情况下在使用电话注册配置用户流时禁用。 你可以通过电话注册在用户流中启用 MFA，但由于使用电话号码作为主标识符，因此第二个身份验证因素只提供电子邮件一次性密码。
@@ -95,13 +95,13 @@ Azure AD B2C 提供了不同的方式来验证用户的身份。 用户可以使
 
 一次只能将一个用户流配置为使用其中一个本地帐户标识提供者。 如果在租户级别启用了多个用户，则每个用户流都可以具有不同的本地帐户标识提供程序集。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 在顶部菜单中选择 " **目录 + 订阅** " 筛选器并选择包含 Azure AD 租户的目录，确保使用的是包含 Azure AD B2C 租户的目录。
 1. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C” 。
 1. 在“管理”下，选择“标识提供者” 。
 1. 在标识提供者列表中，选择“本地帐户”。
 1. 在 " **配置本地 IDP** " 页中，选择了至少一个允许使用的标识类型，使用者可以在 Azure AD B2C 租户中创建其本地帐户。
-1. 选择“保存”。 
+1. 选择“保存”。
 
 ## <a name="configure-your-user-flow"></a>配置用户流
 
@@ -115,16 +115,16 @@ Azure AD B2C 提供了不同的方式来验证用户的身份。 用户可以使
 
 如果选择 " **电话注册**"、" **电话/电子邮件注册** " 选项，请启用 "恢复电子邮件" 提示。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
-1. 在门户工具栏中选择“目录 + 订阅”图标，然后选择包含 Azure AD B2C 租户的目录。
-1. 在 Azure 门户中，搜索并选择“Azure AD B2C”  。
+1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 在门户工具栏中选择“目录 + 订阅”，然后选择包含 Azure AD B2C 租户的目录。
+1. 在 Azure 门户中，搜索并选择“Azure AD B2C”。
 1. 在 Azure AD B2C 的 " **策略**" 下，选择 " **用户流**"。
 1. 从列表中选择用户流。
 1. 在“设置”下，选择“属性”   。
 1. 在 " **为电话号码注册启用恢复电子邮件提示" 和 "登录 (预览")** 中，选择：
    - 如果为，则 **在** 注册和登录过程中显示恢复电子邮件提示。
    - **关闭** 以隐藏恢复电子邮件提示。
-1. 选择“保存”。 
+1. 选择“保存”。
 
 ::: zone-end
 
@@ -141,14 +141,14 @@ Azure AD B2C 提供了不同的方式来验证用户的身份。 用户可以使
 
 下载 starter pack 后。
 
-1. 在每个文件中，将字符串替换 `yourtenant` 为 Azure AD B2C 租户的名称。 例如，如果 B2C 租户的名称为 *contosob2c*，则的所有实例都将 `yourtenant.onmicrosoft.com` 变为 `contosob2c.onmicrosoft.com` 。
+1. 在每个文件中，将字符串 `yourtenant` 替换为 Azure AD B2C 租户的名称。 例如，如果 B2C 租户的名称为 contosob2c，则 `yourtenant.onmicrosoft.com` 的所有实例都将变为 `contosob2c.onmicrosoft.com`。
 
-1. 完成[Azure Active Directory B2C 中的自定义策略入门](custom-policy-get-started.md)中的[将应用程序 id 添加到自定义策略](custom-policy-get-started.md#add-application-ids-to-the-custom-policy)部分中的步骤。 例如，在 `/phone-number-passwordless/` **`Phone_Email_Base.xml`** 完成必备组件 *IdentityExperienceFramework* 和 *ProxyIdentityExperienceFramework* 时，通过 **应用程序 (客户端) id** 注册两个应用程序。
+1. 完成 [Azure Active Directory B2C 中的自定义策略入门](custom-policy-get-started.md)的[将应用程序 ID 添加到自定义策略](custom-policy-get-started.md#add-application-ids-to-the-custom-policy)部分中的步骤。 例如，在 `/phone-number-passwordless/` **`Phone_Email_Base.xml`** 完成必备组件 *IdentityExperienceFramework* 和 *ProxyIdentityExperienceFramework* 时，通过 **应用程序 (客户端) id** 注册两个应用程序。
 1. 上传策略文件
 
 ::: zone-end
 
 ## <a name="next-steps"></a>后续步骤
 
-- [添加外部标识提供者](tutorial-add-identity-providers.md)
+- [添加外部标识提供者](add-identity-provider.md)
 - [创建用户流](tutorial-create-user-flows.md)

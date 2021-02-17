@@ -1,14 +1,14 @@
 ---
 title: 使用 Azure 资源管理器模板启用 VM 扩展
 description: 本文介绍如何使用 Azure 资源管理器模板将虚拟机扩展部署到在混合云环境中运行的支持 Azure Arc 的服务器。
-ms.date: 02/03/2021
+ms.date: 02/10/2021
 ms.topic: conceptual
-ms.openlocfilehash: cfba14ac30553178bd509d0b0e7ba9c60332d299
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 0115bda614133891275daff96c94dc4b1a680ccf
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99493322"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555105"
 ---
 # <a name="enable-azure-vm-extensions-by-using-arm-template"></a>使用 ARM 模板启用 Azure VM 扩展
 
@@ -631,13 +631,43 @@ New-AzResourceGroupDeployment -ResourceGroupName "ContosoEngineering" -TemplateF
 
 ```json
 {
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "vmName": {
+            "type": "string"
+        },
+        "location": {
+            "type": "string"
+        },
+        "autoUpgradeMinorVersion":{
+            "type": "bool"
+        },
+        "pollingIntervalInS":{
+          "type": "int"
+        },
+        "certificateStoreName":{
+          "type": "string"
+        },
+        "certificateStoreLocation":{
+          "type": "string"
+        },
+        "observedCertificates":{
+          "type": "string"
+        },
+        "msiEndpoint":{
+          "type": "string"
+        },
+        "msiClientId":{
+          "type": "string"
+        }
+},
+"resources": [
+   {
       "type": "Microsoft.HybridCompute/machines/extensions",
-      "name": "KeyVaultForLinux",
-      "apiVersion": "2019-07-01",
-      "location": "<location>",
-      "dependsOn": [
-          "[concat('Microsoft.HybridCompute/machines/extensions/', <machineName>)]"
-      ],
+      "name": "[concat(parameters('vmName'),'/KVVMExtensionForLinux')]",
+      "apiVersion": "2019-12-12",
+      "location": "[parameters('location')]",
       "properties": {
       "publisher": "Microsoft.Azure.KeyVault",
       "type": "KeyVaultForLinux",
@@ -646,12 +676,18 @@ New-AzResourceGroupDeployment -ResourceGroupName "ContosoEngineering" -TemplateF
       "settings": {
           "secretsManagementSettings": {
           "pollingIntervalInS": <polling interval in seconds, e.g. "3600">,
-          "certificateStoreName": <ingnored on linux>,
+          "certificateStoreName": <ignored on linux>,
           "certificateStoreLocation": <disk path where certificate is stored, default: "/var/lib/waagent/Microsoft.Azure.KeyVault">,
           "observedCertificates": <list of KeyVault URIs representing monitored certificates, e.g.: "https://myvault.vault.azure.net/secrets/mycertificate"
-          }
+          },
+          "authenticationSettings": {
+                "msiEndpoint":  <MSI endpoint e.g.: "http://localhost:40342/metadata/identity">,
+                "msiClientId":  <MSI identity e.g.: "c7373ae5-91c2-4165-8ab6-7381d6e75619">
+        }
       }
-     }
+    }
+  }
+ ]
 }
 ```
 
@@ -659,13 +695,49 @@ New-AzResourceGroupDeployment -ResourceGroupName "ContosoEngineering" -TemplateF
 
 ```json
 {
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "vmName": {
+            "type": "string"
+        },
+        "location": {
+            "type": "string"
+        },
+        "autoUpgradeMinorVersion":{
+            "type": "bool"
+        },
+        "pollingIntervalInS":{
+          "type": "int"
+        },
+        "certificateStoreName":{
+          "type": "string"
+        },
+        "linkOnRenewal":{
+          "type": "bool"
+        },
+        "certificateStoreLocation":{
+          "type": "string"
+        },
+        "requireInitialSync":{
+          "type": "bool"
+        },
+        "observedCertificates":{
+          "type": "string"
+        },
+        "msiEndpoint":{
+          "type": "string"
+        },
+        "msiClientId":{
+          "type": "string"
+        }
+},
+"resources": [
+   {
       "type": "Microsoft.HybridCompute/machines/extensions",
-      "name": "KVVMExtensionForWindows",
-      "apiVersion": "2019-07-01",
-      "location": "<location>",
-      "dependsOn": [
-          "[concat('Microsoft.HybridCompute/machines/extensions/', <machineName>)]"
-      ],
+      "name": "[concat(parameters('vmName'),'/KVVMExtensionForWindows')]",
+      "apiVersion": "2019-12-12",
+      "location": "[parameters('location')]",
       "properties": {
       "publisher": "Microsoft.Azure.KeyVault",
       "type": "KeyVaultForWindows",
@@ -673,28 +745,35 @@ New-AzResourceGroupDeployment -ResourceGroupName "ContosoEngineering" -TemplateF
       "autoUpgradeMinorVersion": true,
       "settings": {
         "secretsManagementSettings": {
-          "pollingIntervalInS": <polling interval in seconds, e.g: "3600">,
+          "pollingIntervalInS": "3600",
           "certificateStoreName": <certificate store name, e.g.: "MY">,
           "linkOnRenewal": <Only Windows. This feature ensures s-channel binding when certificate renews, without necessitating a re-deployment.  e.g.: false>,
           "certificateStoreLocation": <certificate store location, currently it works locally only e.g.: "LocalMachine">,
           "requireInitialSync": <initial synchronization of certificates e..g: true>,
-          "observedCertificates": <list of KeyVault URIs representing monitored certificates, e.g.: "https://myvault.vault.azure.net/secrets/mycertificate"
+          "observedCertificates": <list of KeyVault URIs representing monitored certificates, e.g.: "https://myvault.vault.azure.net"
         },
         "authenticationSettings": {
-                "msiEndpoint":  <Optional MSI endpoint e.g.: "http://169.254.169.254/metadata/identity">,
-                "msiClientId":  <Optional MSI identity e.g.: "c7373ae5-91c2-4165-8ab6-7381d6e75619">
+                "msiEndpoint": <MSI endpoint e.g.: "http://localhost:40342/metadata/identity">,
+                "msiClientId": <MSI identity e.g.: "c7373ae5-91c2-4165-8ab6-7381d6e75619">
         }
       }
-     }
+    }
+  }
+ ]
 }
 ```
 
 > [!NOTE]
 > 观察到的证书 URL 的格式应为 `https://myVaultName.vault.azure.net/secrets/myCertName`。
-> 
+>
 > 这是因为 `/secrets` 路径将返回包含私钥的完整证书，而 `/certificates` 路径不会。 有关证书的详细信息可在此处找到：[密钥保管库证书](../../key-vault/general/about-keys-secrets-certificates.md)
 
-将模板文件保存到磁盘。 然后，可以使用以下命令在资源组中的所有连接的计算机上安装该扩展。
+### <a name="template-deployment"></a>模板部署
+
+将模板文件保存到磁盘。 然后，可以通过以下命令将扩展部署到连接的计算机。
+
+> [!NOTE]
+> VM 扩展需要分配系统分配的标识才能向密钥保管库进行身份验证。 请参阅如何使用 Windows 和 Linux Arc 启用服务器的 [托管标识对 Key Vault 进行身份验证](managed-identity-authentication.md) 。
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName "ContosoEngineering" -TemplateFile "D:\Azure\Templates\KeyVaultExtension.json"
@@ -778,7 +857,9 @@ New-AzResourceGroupDeployment -ResourceGroupName "ContosoEngineering" -TemplateF
 }
 ```
 
-将模板文件保存到磁盘。 然后，可以使用以下命令在资源组中的所有连接的计算机上安装该扩展。
+### <a name="template-deployment"></a>模板部署
+
+将模板文件保存到磁盘。 然后，可以通过以下命令将扩展部署到连接的计算机。
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName "ContosoEngineering" -TemplateFile "D:\Azure\Templates\AzureDefenderScanner.json"

@@ -1,79 +1,72 @@
 ---
-title: 快速入门：启用服务
+title: 载入 Defender for IoT 基于代理的解决方案
 description: 了解如何在 Azure IoT 中心加入和启用 Defender for IoT 安全服务。
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
-author: mlottner
+author: shhazam-ms
 manager: rkarlin
 editor: ''
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/06/2020
-ms.author: mlottner
-ms.openlocfilehash: e3768ef233c60f1687bc804778c3dabf32666e1d
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.date: 1/20/2021
+ms.author: shhazam
+ms.openlocfilehash: 127e439a7740cb97cbe126071aaaa5245cd85782
+ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97835153"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99809113"
 ---
-# <a name="quickstart-onboard-azure-defender-for-iot-service-in-iot-hub"></a>快速入门：将 Azure Defender for IoT 服务加入 IoT 中心
+# <a name="onboard-to-defender-for-iot-agent-based-solution"></a>载入 Defender for IoT 基于代理的解决方案
 
 本文介绍如何在现有 IoT 中心启用 Defender for IoT 服务。 如果当前没有 IoT 中心，请参阅[使用 Azure 门户创建 IoT 中心](../iot-hub/iot-hub-create-through-portal.md)以开始操作。
+
+可在 Defender for IoT 通过 IoT 中心管理 IoT 安全性。 通过 IoT 中心内的管理门户，可执行以下操作： 
+
+- 管理 IoT 中心安全性。
+
+- 对 IoT 设备安全性的基本管理，无需基于 IoT 中心遥测安装代理。 
+
+- 基于微代理对 IoT 设备安全性进行高级管理。
 
 > [!NOTE]
 > Defender for IoT 目前仅支持标准层 IoT 中心。
 
-## <a name="prerequisites-for-enabling-the-service"></a>启用服务的先决条件
+## <a name="onboard-to-defender-for-iot-in-iot-hub"></a>在 IoT 中心加入 Defender for IoT
 
-- Log Analytics 工作区
-  - 默认情况下，Defender for IoT 会在 Log Analytics 工作区中存储两类信息：“安全警报”和“建议” 。
-  - 可以选择添加另一信息类型（**原始事件**）的存储。 请注意，在 Log Analytics 中存储 **原始事件** 会带来额外的存储成本。
-- IoT 中心（标准层）
-- 满足所有[系统先决条件](quickstart-system-prerequisites.md)。
+对于所有新的 IoT 中心，Defender for IoT 都默认设置为“开”。 可在 IoT 中心创建过程中验证 Defender for IoT 是否已切换为“开”。
 
-## <a name="enable-defender-for-iot-on-your-iot-hub"></a>在 IoT 中心启用 Defender for IoT
+若要验证开关是否设置为“开”：
 
-若要在 IoT 中心启用安全性，请执行以下操作：
+1. 导航到 Azure 门户。
 
-1. 在 Azure 门户中打开你的 **IoT 中心**。
-1. 在“安全性”  菜单下，单击“保护 IoT 解决方案”  。
+1. 从 Azure 服务列表中选择“IoT 中心”。
 
-祝贺你！ 你已完成在 IoT 中心启用 Defender for IoT 的操作。
+1. 选择“创建”。
 
-### <a name="geolocation-and-ip-address-handling"></a>地理位置和 IP 地址处理
+    :::image type="content" source="media/quickstart-onboard-iot-hub/create-iot-hub.png" alt-text="选择顶部工具栏中的“创建”按钮。" lightbox="media/quickstart-onboard-iot-hub/create-iot-hub-expanded.png":::
 
-为了确保 IoT 解决方案的安全，系统会默认收集并存储 IoT 设备、IoT Edge 和 IoT 中心的传入和传出连接的 IP 地址。 该信息对于检测来自可疑 IP 源的异常连接很重要。 例如，尝试从已知僵尸网络的 IP 源或所在地理位置外部的 IP 源建立连接时，就是这种情况。 Defender for IoT 服务允许用户灵活地随时启用和禁用对 IP 地址数据的收集。
+1. 选择“管理”选项卡，然后验证“Defender for IoT”开关是否设置为“开”  。
 
-若要启用或禁用对 IP 地址数据的收集，请执行以下操作：
+    :::image type="content" source="media/quickstart-onboard-iot-hub/management-tab.png" alt-text="确保 Defender for IoT 开关是否已设置为“开”。":::
 
-1. 打开 IoT 中心，然后从“安全性”菜单中选择“设置” 。
-1. 选择“数据收集”屏幕，根据需要修改地理位置和/或 IP 处理设置。
+## <a name="onboard-defender-for-iot-to-an-existing-iot-hub"></a>将 Defender for IoT 加入现有 IoT 中心
 
-### <a name="log-analytics-creation"></a>创建 Log Analytics
+可监视设备标识管理、设备到云的模式、云到设备的模式，还可执行以下步骤来启动服务： 
 
-启用 Defender for IoT 以后，将会创建默认的 Azure Log Analytics 工作区，用于存储 IoT 设置、IoT Edge 和 IoT 中心的原始安全事件、警报和建议。 每个客户每月引入 Azure Log Analytics 服务的前五 (5) GB 数据免费。 引入 Azure Log Analytics 工作区的每 GB 数据均可免费保存 31 天。 了解有关 [Log Analytics](https://azure.microsoft.com/pricing/details/monitor/) 定价的详细信息。
+1. 导航到 IoT 中心。 
 
-若要更改 Log Analytics 的工作区配置，请执行以下操作：
+1. 选择“安全概述”菜单。 ****   
 
-1. 打开 IoT 中心，然后从“安全性”菜单中选择“设置” 。
-1. 选择“数据收集”屏幕，根据需要修改 Log Analytics 设置的工作区配置。
+1. 单击“保护 IoT 解决方案”，然后填写加入窗体。 
 
-### <a name="customize-your-iot-security-solution"></a>自定义 IoT 安全解决方案
-
-默认情况下，启用 Defender for IoT 解决方案时，会自动保护 Azure 订阅下的所有 IoT 中心。
-
-若要在特定 IoT 中心启用或禁用 Defender for IoT 服务，请执行以下操作：
-
-1. 打开 IoT 中心，然后从“安全性”菜单中选择“设置” 。
-1. 选择“数据收集”屏幕，根据需要修改 Azure 订阅中任何 IoT 中心的安全设置。
 
 ## <a name="next-steps"></a>后续步骤
 
 转到下一篇文章，了解如何配置解决方案...
 
 > [!div class="nextstepaction"]
-> [配置解决方案](quickstart-configure-your-solution.md)
+> [创建 Defender IoT 微代理模块孪生（预览）](quickstart-create-micro-agent-module-twin.md)

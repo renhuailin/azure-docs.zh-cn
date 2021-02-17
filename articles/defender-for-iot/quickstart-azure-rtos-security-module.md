@@ -4,28 +4,25 @@ description: 了解如何在 Azure IoT 中心为 Azure RTOS 服务加入和启�
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
-author: rkarlin
+author: shhazam-ms
 manager: rkarlin
 editor: ''
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/24/2020
-ms.author: rkarlin
-ms.openlocfilehash: 321c8d2b9e58aba943c5bf19adf54d6359c5be96
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.date: 01/24/2021
+ms.author: shhazam
+ms.openlocfilehash: 3054981bbbff45666297399033663d1830ad9e4e
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96351770"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820426"
 ---
 # <a name="quickstart-security-module-for-azure-rtos-preview"></a>快速入门：Azure RTOS 安全模块（预览版）
 
 本文介绍了入门的先决条件，并说明了如何在 IoT 中心为 Azure RTOS 服务启用安全模块。 如果当前没有 IoT 中心，请参阅[使用 Azure 门户创建 IoT 中心](../iot-hub/iot-hub-create-through-portal.md)以开始操作。
-
-> [!NOTE]
-> 仅标准层 IoT 中心支持 Azure RTOS 安全模块。
 
 ## <a name="prerequisites"></a>先决条件 
 
@@ -46,27 +43,16 @@ ms.locfileid: "96351770"
 需要使用 IoT 中心连接才能开始使用。 
 
 1. 在 Azure 门户中打开你的 **IoT 中心**。
+
+1. 导航到“IoT 设备”。
+
+1. 选择“创建”。
+
 1. 将 IoT 连接字符串复制到[配置文件](how-to-azure-rtos-security-module.md)中。
 
-
-连接凭据采用用户应用程序配置 HOST_NAME、DEVICE_ID 和 DEVICE_SYMMETRIC_KEY  。
+连接凭据来自用户应用程序配置 HOST_NAME、DEVICE_ID 和 DEVICE_SYMMETRIC_KEY  。
 
 Azure RTOS 安全模块根据 MQTT 协议使用 Azure IoT 中间件连接。
-
-
-### <a name="log-analytics-workspace"></a>Log Analytics 工作区
-
-由于默认的适用于 IoT 的 Defender 解决方案，IoT 中心的 Log Analytics 引入处于关闭状态。 若要启用它以使用 Azure RTOS 安全模块，请执行以下操作： 
-1. 在 Azure 门户中，转到 IoT 中心。
-1. 选择“安全性”菜单下的“设置” 。
-   :::image type="content" source="media/quickstart/azure-rtos-hub-settings.png" alt-text="访问 Azure RTOS 的数据收集选项"::: 
-1. 选择“数据收集”。 
-1. 在“工作区配置”选项中，将开关切换为“开” 。 
-1. 创建新的或附加现有的 Log Analytics 工作区。 请确保已选中“访问原始安全数据”选项。 
- :::image type="content" source="media/quickstart/azure-rtos-data-collection-on.png" alt-text="显示数据收集选项和原始安全数据选项均已选中的 Azure RTOS 配置":::
-1. 选择“保存”
-1. 返回到 Azure 资源列表并确认你创建或附加的 Log Analytics 工作区已对 IoT 中心启用。
-    :::image type="content" source="media/quickstart/verify-azure-resource-list.png" alt-text="检查 Azure 资源列表以确认是否存在为 IoT 中心添加的正确 Log Analytics 工作区"::: 
 
 ## <a name="next-steps"></a>后续步骤
 

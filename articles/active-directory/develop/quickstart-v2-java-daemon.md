@@ -12,26 +12,26 @@ ms.workload: identity
 ms.date: 01/22/2021
 ms.author: nacanuma
 ms.custom: aaddev, scenarios:getting-started, languages:Java, devx-track-java
-ms.openlocfilehash: 9c6571793d2317097574d0afdc7137b3a3d5ad6d
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: 196b80a704b8a270a4cbb7d3505d5f9be1e23479
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99064506"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820308"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-java-console-app-using-apps-identity"></a>快速入门：使用应用的标识获取令牌并从 Java 控制台应用中调用 Microsoft Graph API
 
 在本快速入门中，你将下载并运行一个代码示例，该示例演示 Java 应用程序如何使用应用的标识获取访问令牌来调用 Microsoft Graph API 并在目录中显示[用户列表](/graph/api/user-list)。 代码示例演示无人参与的作业或 Windows 服务如何使用应用程序标识而不是用户标识运行。 
 
 > [!div renderon="docs"]
-> ![显示本快速入门生成的示例应用的工作原理](media/quickstart-v2-netcore-daemon/netcore-daemon-intro.svg)
+> ![显示本快速入门生成的示例应用的工作原理](media/quickstart-v2-java-daemon/java-console-daemon.svg)
 
 ## <a name="prerequisites"></a>先决条件
 
 若要运行此示例，需要：
 
 - [Java 开发工具包 (JDK)](https://openjdk.java.net/) 8 或更高版本
-- [Maven](https://maven.apache.org/)。
+- [Maven](https://maven.apache.org/)
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>注册并下载快速入门应用
@@ -42,7 +42,7 @@ ms.locfileid: "99064506"
 >
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>选项 1：注册并自动配置应用，然后下载代码示例
 >
-> 1. 转到新的 [Azure 门户 - 应用注册](https://portal.azure.com/?Microsoft_AAD_RegisteredApps=true#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/JavaDaemonQuickstartPage/sourceType/docs)窗格。
+> 1. 转到 <a href="https://portal.azure.com/?Microsoft_AAD_RegisteredApps=true#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/JavaDaemonQuickstartPage/sourceType/docs" target="_blank">Azure 门户 - 应用注册</a>快速入门体验。
 > 1. 输入应用程序的名称并选择“注册”。
 > 1. 遵照说明下载内容，并只需单击一下自动配置新应用程序。
 >
@@ -52,22 +52,22 @@ ms.locfileid: "99064506"
 > #### <a name="step-1-register-your-application"></a>步骤 1：注册应用程序
 > 若要手动注册应用程序并将应用的注册信息添加到解决方案，请执行以下步骤：
 >
-> 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
-> 1. 如果你的帐户有权访问多个租户，请在右上角选择该帐户，并将门户会话设置为所需的 Azure AD 租户。
-> 1. 导航到面向开发人员的 Microsoft 标识平台的[应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)页。
-> 1. 选择“新注册”。
-> 1. 出现“注册应用程序”页后，请输入应用程序的注册信息。
-> 1. 在“名称”部分输入一个会显示给应用用户的有意义的应用程序名称，例如 `Daemon-console`，然后选择“注册”以创建应用程序。
-> 1. 注册以后，选择“证书和机密”菜单。
-> 1. 在“客户端机密”下，选择“+ 新建客户端机密”。  为它提供一个名称，然后选择“添加”。 将机密复制到安全位置。 稍后需要在代码中使用它。
-> 1. 现在请依次选择“API 权限”菜单、“+ 添加权限”按钮、“Microsoft Graph”。  
+> 1. 登录 <a href="https://portal.azure.com/" target="_blank">Azure 门户</a>。
+> 1. 如果有权访问多个租户，请使用顶部菜单中的“目录 + 订阅”筛选器:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::，选择要在其中注册应用程序的租户。
+> 1. 搜索并选择“Azure Active Directory”  。
+> 1. 在“管理”下，选择“应用注册” > “新建注册”  。
+> 1. 输入应用程序的名称（例如 `Daemon-console`）。 应用的用户可能会看到此名称，你稍后可对其进行更改。
+> 1. 选择“注册”  。
+> 1. 在“管理”下，选择“证书和机密” 。
+> 1. 在“客户端机密”下，选择“新建客户端机密”，输入名称，然后选择“添加”  。 将机密值记录在安全的位置，以供在后面的步骤中使用。
+> 1. 在“管理”下，选择“API 权限” > “添加权限”  。 选择“Microsoft Graph”。
 > 1. 选择“应用程序权限”。
-> 1. 在“用户”节点下选择“User.Read.All”，然后选择“添加权限”。  
+> 1. 在“用户”节点下选择“User.Read.All”，然后选择“添加权限”  。
 
 > [!div class="sxs-lookup" renderon="portal"]
-> ### <a name="download-and-configure-your-quickstart-app"></a>下载并配置快速入门应用
+> ### <a name="download-and-configure-the-quickstart-app"></a>下载并配置快速入门应用
 >
-> #### <a name="step-1-configure-your-application-in-azure-portal"></a>步骤 1：在 Azure 门户中配置应用程序
+> #### <a name="step-1-configure-the-application-in-azure-portal"></a>步骤 1：在 Azure 门户中配置应用程序
 > 为使本快速入门的代码示例正常运行，需创建客户端机密，并添加 Graph API 的 **User.Read.All** 应用程序权限。
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [为我进行这些更改]()
@@ -75,7 +75,7 @@ ms.locfileid: "99064506"
 > > [!div id="appconfigured" class="alert alert-info"]
 > > ![已配置](media/quickstart-v2-netcore-daemon/green-check.png) 应用程序已使用这些属性进行配置。
 
-#### <a name="step-2-download-your-java-project"></a>步骤 2：下载 Java 项目
+#### <a name="step-2-download-the-java-project"></a>步骤 2：下载 Java 项目
 
 > [!div renderon="docs"]
 > [下载 Java 守护程序项目](https://github.com/Azure-Samples/ms-identity-java-daemon/archive/master.zip)
@@ -89,9 +89,9 @@ ms.locfileid: "99064506"
 
 
 > [!div renderon="docs"]
-> #### <a name="step-3-configure-your-java-project"></a>步骤 3：配置 Java 项目
+> #### <a name="step-3-configure-the-java-project"></a>步骤 3：配置 Java 项目
 >
-> 1. 将 zip 文件提取到靠近磁盘根目录的本地文件夹，例如 **C:\Azure-Samples**。
+> 1. 将 zip 文件提取到靠近磁盘根目录的本地文件夹，例如 *C:\Azure-Samples*。
 > 1. 导航到子文件夹 msal-client-credential-secret。
 > 1. 编辑 src\main\resources\application.properties，并将字段 `AUTHORITY`、`CLIENT_ID` 和 `SECRET` 的值替换为以下代码片段：
 >
@@ -102,7 +102,7 @@ ms.locfileid: "99064506"
 >    ```
 >    其中：
 >    - `Enter_the_Application_Id_Here` - 是已注册应用程序的 **应用程序（客户端）ID**。
->    - `Enter_the_Tenant_Id_Here` - 将此值替换为 **租户 ID** 或 **租户名称**（例如 contoso.microsoft.com）
+>    - `Enter_the_Tenant_Id_Here` - 将此值替换为租户 ID 或租户名称（例如 contoso.microsoft.com） 。
 >    - `Enter_the_Client_Secret_Here` - 将此值替换为在步骤 1 中创建的客户端机密。
 >
 > > [!TIP]
@@ -119,10 +119,10 @@ ms.locfileid: "99064506"
 ##### <a name="global-tenant-administrator"></a>全局租户管理员
 
 > [!div renderon="docs"]
-> 如果你是全局租户管理员，请转到 Azure 门户的应用程序注册（预览版）中的“API 权限”页，选择“为 {租户名称} 授予管理员许可”（其中，{租户名称} 是目录的名称）。
+> 如果你是全局租户管理员，请在 Azure 门户中转到“应用注册”中的“API 权限”页面，选择“为 {租户名称} 授予管理员许可”（其中，{租户名称} 是目录的名称）  。
 
 > [!div renderon="portal" class="sxs-lookup"]
-> 如果你是全局管理员，请转到“API 权限”页，选择“为 Enter_the_Tenant_Name_Here 授予管理员许可”
+> 如果你是全局管理员，请转到“API 权限”页面，选择“为 Enter_the_Tenant_Name_Here 授予管理员许可” 。
 > > [!div id="apipermissionspage"]
 > > [转到“API 权限”页]()
 
@@ -163,7 +163,7 @@ $ java -jar msal-client-credential-secret-1.0.0.jar
 
 
 > [!IMPORTANT]
-> 本快速入门应用程序使用客户端机密将自己标识为机密客户端。 由于客户端机密是以纯文本形式添加到项目文件的，因此为了安全起见，建议在考虑将应用程序用作生产应用程序之前，使用证书来代替客户端机密。 若要详细了解如何使用证书，请查看有关此示例的[这些说明](https://github.com/Azure-Samples/ms-identity-java-daemon/tree/master/msal-client-credential-certificate)，它们位于同一 GitHub 存储库中，但在另一个文件夹“msal-client-credential-certificate”中
+> 本快速入门应用程序使用客户端机密将自己标识为机密客户端。 由于客户端机密是以纯文本形式添加到项目文件的，因此为了安全起见，建议在考虑将应用程序用作生产应用程序之前，使用证书来代替客户端机密。 若要详细了解如何使用证书，请查看有关此示例的[这些说明](https://github.com/Azure-Samples/ms-identity-java-daemon/tree/master/msal-client-credential-certificate)，它们位于同一 GitHub 存储库中，但在另一个文件夹“msal-client-credential-certificate”中。
 
 ## <a name="more-information"></a>详细信息
 
@@ -251,13 +251,13 @@ IAuthenticationResult result;
 
 > |其中：| 说明 |
 > |---------|---------|
-> | `SCOPE` | 包含请求的范围。 对于机密客户端，这应该使用与 `{Application ID URI}/.default` 类似的格式，指示所请求的范围是在 Azure 门户的应用对象集中静态定义的范围（就 Microsoft Graph 来说，`{Application ID URI}` 指向 `https://graph.microsoft.com`）。 对于自定义 Web API，`{Application ID URI}` 是在 Azure 门户的应用程序注册（预览版）的“公开 API”部分中定义的。 |
+> | `SCOPE` | 包含请求的范围。 对于机密客户端，这应该使用与 `{Application ID URI}/.default` 类似的格式，指示所请求的范围是在 Azure 门户的应用对象集中静态定义的范围（就 Microsoft Graph 来说，`{Application ID URI}` 指向 `https://graph.microsoft.com`）。 对于自定义 Web API，`{Application ID URI}` 是在 Azure 门户的“应用注册”的“公开 API”部分中定义的 。|
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
 ## <a name="next-steps"></a>后续步骤
 
-若要详细了解守护程序应用程序，请参阅方案登陆页
+若要详细了解守护程序应用程序，请参阅方案登陆页面。
 
 > [!div class="nextstepaction"]
 > [调用 Web API 的守护程序应用程序](scenario-daemon-overview.md)
