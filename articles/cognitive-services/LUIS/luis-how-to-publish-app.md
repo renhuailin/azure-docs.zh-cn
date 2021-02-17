@@ -11,12 +11,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 01/12/2021
-ms.openlocfilehash: 8db0f5fa39c7f489db0e30e98ee2684c74eee7e8
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 8e78fc5bd49aaf2b31fdc83ced132e2a39ca83d5
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98180024"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100558926"
 ---
 # <a name="publish-your-active-trained-app-to-a-staging-or-production-endpoint"></a>将活动的已训练应用发布到过渡或生产终结点
 
@@ -57,7 +57,6 @@ ms.locfileid: "98180024"
 在选择槽后，为以下项配置发布设置：
 
 * 情绪分析
-* [拼写更正](luis-tutorial-bing-spellcheck.md)
 * 语音启动
 
 发布以后，即可在“发布设置”页的“管理”部分查看这些设置。  可以在每次发布时更改设置。 如果取消发布，则在发布过程中所做的任何更改也会被取消。
@@ -79,37 +78,6 @@ ms.locfileid: "98180024"
 情绪数据是一个介于 0 到 1 之间的分数，指示数据的正面情绪（分数接近 1）或负面情绪（分数接近 0）。 `positive`、`neutral` 和 `negative` 的情绪标签针对每个支持的区域性。 目前，仅英语支持情绪标签。
 
 若要详细了解使用情绪分析时的 JSON 终结点响应，请参阅[情绪分析](luis-reference-prebuilt-sentiment.md)
-
-## <a name="spelling-correction"></a>拼写更正
-
-V3 预测 API 现在支持必应拼写检查 API。 可以通过在请求的标头中包含必应搜索资源的键，向应用程序添加拼写检查。 如果已拥有必应资源，可以使用现有 Bing 资源，或 [创建新](https://portal.azure.com/#create/Microsoft.BingSearch) 资源来使用此功能。 
-
-|标头键|标头值|
-|--|--|
-|`mkt-bing-spell-check-key`|在资源的 " **密钥" 和 "终结点** " 边栏选项卡中找到密钥|
-
-拼写错误的查询的预测输出示例：
-
-```json
-{
-  "query": "bouk me a fliht to kayro",
-  "prediction": {
-    "alteredQuery": "book me a flight to cairo",
-    "topIntent": "book a flight",
-    "intents": {
-      "book a flight": {
-        "score": 0.9480589
-      }
-      "None": {
-        "score": 0.0332136229
-      }
-    },
-    "entities": {}
-  }
-}
-```
-
-在 LUIS 用户话语预测之前纠正拼写错误。 可以在响应中查看对原始话语所做的任何更改，包括拼写方面的更改。
 
 ## <a name="speech-priming"></a>语音启动
 

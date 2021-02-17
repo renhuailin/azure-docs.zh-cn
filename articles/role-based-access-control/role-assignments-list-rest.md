@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 05/06/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 7d00c40a021bbe087d906fd6d9b767188a7b169a
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: 1d90e83405cf9c560f644277a04012571e1a5a9d
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97964316"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100556901"
 ---
 # <a name="list-azure-role-assignments-using-the-rest-api"></a>使用 REST API 列出 Azure 角色分配
 
@@ -49,7 +49,7 @@ ms.locfileid: "97964316"
     > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1` | 资源组 |
     > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1` | 资源 |
 
-    在前面的示例中，microsoft.web 是引用应用服务实例的资源提供程序。 同样，可以使用任何其他资源提供程序并指定范围。 有关详细信息，请参阅 [Azure 资源提供程序和类型](../azure-resource-manager/management/resource-providers-and-types.md) 以及受支持的 [azure 资源提供程序操作](resource-provider-operations.md)。  
+    在前面的示例中，microsoft.web 是引用应用服务实例的资源提供程序。 同样，可以使用任何其他资源提供程序并指定范围。 有关详细信息，请参阅 [Azure 资源提供程序和类型](../azure-resource-manager/management/resource-providers-and-types.md)和支持的 [Azure 资源提供程序操作](resource-provider-operations.md)。  
      
 1. 将“{filter}”替换为筛选角色分配列表时要应用的条件。
 
@@ -92,5 +92,5 @@ GET https://management.azure.com/subscriptions/{subscriptionId1}/providers/Micro
 
 ## <a name="next-steps"></a>后续步骤
 
-- [使用 REST API 添加或删除 Azure 角色分配](role-assignments-rest.md)
+- [使用 REST API 分配 Azure 角色](role-assignments-rest.md)
 - [Azure REST API 参考](/rest/api/azure/)

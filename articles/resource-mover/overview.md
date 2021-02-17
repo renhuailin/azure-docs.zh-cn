@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 09/09/2020
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 621c5e7b0061ccd76fd0109552107915b943511f
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 06d6352f018238318c3bb4625ae86a2974f14569
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89653263"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820157"
 ---
 # <a name="what-is-azure-resource-mover"></a>什么是 Azure 资源转移器？
 
@@ -29,8 +29,6 @@ ms.locfileid: "89653263"
 - **应对部署要求**：移动出错的已部署资源，或者通过移动来应对容量需求。
 - **应对停止使用**：因为某个区域已停止使用而移动资源。
 
-> [!IMPORTANT]
-> Azure 资源转移器目前提供公共预览版。
 
 ## <a name="why-use-resource-mover"></a>为何使用资源转移器？
 
@@ -41,7 +39,7 @@ ms.locfileid: "89653263"
 - 移动不同类型的 Azure 资源的简单、一致的体验。
 - 标识要移动的资源之间的依赖项的一种简单方法。 这有助于将相关资源移动到一起，以便在移动后，所有资源在目标区域中都按预期方式工作。
 - 如果要在移动后删除源区域中的资源，请在源区域中自动清除它们。
-- 测试： 如果不想进行完整移动，可以尝试移动，然后将其丢弃。
+- 测试。 如果不想进行完整移动，可以尝试移动，然后将其丢弃。
 
 ## <a name="move-across-regions"></a>跨区域移动
 
@@ -62,6 +60,7 @@ ms.locfileid: "89653263"
 使用资源转移器，当前可以在区域之间移动以下资源：
 
 - Azure VM 和关联的磁盘
+- 已加密的 Azure VM 及关联磁盘。 这包括启用了 Azure 磁盘加密的 VM 和使用默认服务器端加密的 VM（这两者都使用平台管理的密钥和客户管理的密钥）
 - NIC
 - 可用性集 
 - Azure 虚拟网络 

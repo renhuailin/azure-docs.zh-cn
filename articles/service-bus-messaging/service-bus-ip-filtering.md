@@ -3,12 +3,12 @@ title: 配置 Azure 服务总线的 IP 防火墙规则
 description: 如何使用防火墙规则允许从特定 IP 地址连接到 Azure 服务总线。
 ms.topic: article
 ms.date: 02/12/2021
-ms.openlocfilehash: 11a17575e65bc8878819767804d7f69f3d590ad3
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: e73f566533cb2357653f7f584ec9ca77333c0a63
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100516543"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100560874"
 ---
 # <a name="allow-access-to-azure-service-bus-namespace-from-specific-ip-addresses-or-ranges"></a>允许从特定 IP 地址或范围访问 Azure 服务总线命名空间
 默认情况下，只要请求附带有效的身份验证和授权，就可以从 Internet 访问服务总线命名空间。 有了 IP 防火墙，就可以使用 [CIDR（无类别域间路由）](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)表示法将其进一步限制为仅一组 IPv4 地址或 IPv4 地址范围。
@@ -16,17 +16,17 @@ ms.locfileid: "100516543"
 在仅应从某些知名站点访问 Azure 服务总线的情况下，此功能很有用。 可以通过防火墙规则来配置规则，以便接受来自特定 IPv4 地址的流量。 例如，如果将服务总线与 [Azure Express Route][express-route] 配合使用，则可创建 **防火墙规则**，以便仅允许来自本地基础结构 IP 地址或企业 NAT 网关地址的流量。 
 
 > [!IMPORTANT]
-> 防火墙和虚拟网络仅在服务总线的 **高级** 层中受支持。 如果无法升级到 **高级** 层，我们建议保护共享访问签名 (SAS) 令牌的安全，只与已获授权的用户共享。 有关 SAS 身份验证的信息，请参阅[身份验证和授权](service-bus-authentication-and-authorization.md#shared-access-signature)。
+> - 防火墙和虚拟网络仅在服务总线的 **高级** 层中受支持。 如果无法升级到 **高级** 层，我们建议保护共享访问签名 (SAS) 令牌的安全，只与已获授权的用户共享。 有关 SAS 身份验证的信息，请参阅[身份验证和授权](service-bus-authentication-and-authorization.md#shared-access-signature)。
+> - 为命名空间指定至少一个 IP 规则或虚拟网络规则，以便仅允许来自虚拟网络的指定 IP 地址或子网的流量。 如果没有 IP 和虚拟网络规则，则可以使用访问密钥) 通过公共 internet (访问该命名空间。  
 
 ## <a name="ip-firewall-rules"></a>IP 防火墙规则
 IP 防火墙规则在服务总线命名空间级别应用。 因此，这些规则适用于通过任何受支持协议从客户端发出的所有连接。 如果某 IP 地址与服务总线命名空间上的允许 IP 规则不匹配，则将拒绝来自该地址的任何连接尝试并将其标记为“未经授权”。 响应不会提及 IP 规则。 IP 筛选器规则将按顺序应用，与 IP 地址匹配的第一个规则决定了将执行接受操作还是执行拒绝操作。
 
->[!WARNING]
-> 实施防火墙规则可以组织其他 Azure 服务与服务总线进行交互。 例外情况是，可以允许从某些受信任的服务访问服务总线资源，即使在启用了 IP 筛选功能时也是如此。 有关受信任服务的列表，请参阅[受信任服务](#trusted-microsoft-services)。 
->
-> 以下 Microsoft 服务必须在虚拟网络中
-> - Azure 应用服务
-> - Azure Functions
+实施防火墙规则可以组织其他 Azure 服务与服务总线进行交互。 例外情况是，可以允许从某些受信任的服务访问服务总线资源，即使在启用了 IP 筛选功能时也是如此。 有关受信任服务的列表，请参阅[受信任服务](#trusted-microsoft-services)。 
+
+以下 Microsoft 服务必须在虚拟网络中
+- Azure 应用服务
+- Azure Functions
 
 ## <a name="use-azure-portal"></a>使用 Azure 门户
 本部分介绍了如何使用 Azure 门户为服务总线命名空间创建 IP 防火墙规则。 
@@ -37,9 +37,6 @@ IP 防火墙规则在服务总线命名空间级别应用。 因此，这些规�
     > [!NOTE]
     > 只会为“高级”命名空间显示“网络”选项卡 。  
     
-    >[!WARNING]
-    > 如果选择 " **所选网络** " 选项，并且在此页上未添加至少一个 IP 防火墙规则或虚拟网络，则可以使用访问密钥) 通过公共 internet (访问该命名空间。
-
     :::image type="content" source="./media/service-bus-ip-filtering/default-networking-page.png" alt-text="网络页面 - 默认" lightbox="./media/service-bus-ip-filtering/default-networking-page.png":::
     
     如果你选择“所有网络”选项，你的服务总线命名空间将接受来自 IP 地址的连接。 此默认设置等效于接受 0.0.0.0/0 IP 地址范围的规则。 
@@ -50,8 +47,8 @@ IP 防火墙规则在服务总线命名空间级别应用。 因此，这些规�
     2. 对于“地址范围”，请输入某个特定的 IPv4 地址或以 CIDR 表示法表示的 IPv4 地址范围。 
     3. 指定是否要“允许受信任的 Microsoft 服务绕过此防火墙”。 
 
-        > [!WARNING]
-        > 如果选择“选定的网络”选项但未指定 IP 地址或地址范围，则服务将允许来自所有网络的流量。 
+        >[!WARNING]
+        > 如果选择 " **所选网络** " 选项，并且在此页上未添加至少一个 IP 防火墙规则或虚拟网络，则可以使用访问密钥) 通过公共 internet (访问该命名空间。    
 
         ![Azure 门户网络页的屏幕截图。 选择 "允许从所选网络进行访问" 选项，并突出显示 "防火墙" 部分。](./media/service-bus-ip-filtering/firewall-selected-networks-trusted-access-disabled.png)
 3. 在工具栏上选择“保存”，保存这些设置。 请等待几分钟，直到门户通知中显示确认消息。

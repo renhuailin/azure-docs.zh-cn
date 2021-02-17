@@ -1,6 +1,6 @@
 ---
-title: 快速入门：创建自定义警报
-description: 了解、创建和分配针对用于 IoT 安全服务的 Azure Defender 的自定义设备警报。
+title: 创建自定义警报
+description: 了解、创建和分配针对 Azure Defender for IoT 安全服务的自定义设备警报。
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/04/2020
 ms.author: mlottner
-ms.openlocfilehash: 48682e465374c1a0e1fb74fc6627016696ff6d2c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e59bcca9561c33610170f4bc3674eef307cf0de9
+ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90944073"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99809025"
 ---
-# <a name="quickstart-create-custom-alerts"></a>快速入门：创建自定义警报
+# <a name="create-custom-alerts"></a>创建自定义警报
 
 使用自定义安全组和警报，可以充分利用端到端的安全信息和分类设备知识来确保提高整个 IoT 解决方案的安全性。
 
@@ -65,17 +65,23 @@ ms.locfileid: "90944073"
 
 ## <a name="customize-an-alert"></a>自定义警报
 
-1. 打开 IoT 中心，然后从“安全性”菜单中选择“设置” 。 
-1. 单击“自定义警报”。
+1. 打开 IoT 中心，然后从“安全性”菜单中选择“设置” 。
+
+1. 选择“自定义警报”。
+
 1. 选择要将自定义设置应用于的安全组。
-1. 单击“添加自定义警报”。 
+
+1. 选择“添加自定义警报”。
+
 1. 从下拉列表中选择自定义警报。
-1. 编辑所需的属性，然后单击“确定”。 
-1. 请务必单击“保存”。  如果不保存新警报，下一次关闭 IoT 中心时会删除该警报。
+
+1. 编辑所需的属性，然后选择“确定”。
+
+1. 请务必选择“保存”。 如果不保存新警报，下一次关闭 IoT 中心时会删除该警报。
 
 ## <a name="alerts-available-for-customization"></a>可自定义的警报
 
-Defender for IoT 提供大量的警报，这些警报可根据特定需求进行自定义。 查看[可自定义警报表](concept-customizable-security-alerts.md)可了解警报严重性、数据源、说明以及我们在你收到每个警报时建议的补救步骤。
+Defender for IoT 提供大量的警报，可根据特定需求对这些警报进行自定义。 若要了解警报严重性、数据源和说明，以及我们在你收到每个警报时建议的补救步骤，请查看[可自定义警报表](concept-customizable-security-alerts.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

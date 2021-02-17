@@ -7,20 +7,19 @@ author: mrcarter8
 ms.author: mcarter
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 05/11/2020
-ms.openlocfilehash: 67fa53e565de70d3da0b90e36a968b68d54d667f
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.date: 02/16/2021
+ms.openlocfilehash: 98a516e76d5e4f5c225873b934949759d7fcba8d
+ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99573239"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100535325"
 ---
 # <a name="configure-ip-firewall-for-azure-cognitive-search"></a>为 Azure 认知搜索配置 IP 防火墙
 
 Azure 认知搜索支持“入站防火墙支持”的 IP 规则。 此模型为搜索服务提供了额外的安全层，类似于 Azure 虚拟网络安全组中的 IP 规则。 利用这些 IP 规则，可以配置为仅允许从一组已批准的计算机和/或云服务访问搜索服务。 从这些已批准的计算机和服务访问搜索服务中存储的数据仍需调用方提供有效的授权令牌。
 
-> [!Important]
-> 可以使用 Azure 门户或[管理 REST API 版本 2020-03-13](/rest/api/searchmanagement/) 来配置 Azure 认知搜索服务上的 IP 规则。
+如本文中所述，可以在 Azure 门户中设置 IP 规则。 或者，你可以使用 [管理 REST API 版本 2020-03-13](/rest/api/searchmanagement/)、 [Azure PowerShell](/powershell/module/az.search)或 [Azure CLI](/cli/azure/search)。
 
 ## <a name="configure-an-ip-firewall-using-the-azure-portal"></a><a id="configure-ip-policy"></a> 使用 Azure 门户配置 IP 防火墙
 

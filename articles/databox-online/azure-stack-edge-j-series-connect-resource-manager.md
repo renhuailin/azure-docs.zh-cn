@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 01/25/2021
 ms.author: alkohli
-ms.openlocfilehash: 54aad90cf86f1a20d76f04f3a829f29c47023558
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: ebadfc889eb648b734747e5a2a45662e82aab643
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98805799"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546799"
 ---
 # <a name="connect-to-azure-resource-manager-on-your-azure-stack-edge-pro-device"></a>连接到 Azure Stack Edge Pro 设备上的 Azure 资源管理器
 
@@ -34,7 +34,7 @@ Azure 资源管理器提供一致的管理层来调用 Azure Stack Edge Pro 设�
 
 下表总结了设备上公开的各种终结点、支持的协议以及用于访问这些终结点的端口。 在本文中，你将找到对这些终结点的引用。
 
-| # | 终结点 | 支持的协议 | 使用的端口 | 用于 |
+| # | 终结点 | 支持的协议 | 使用的端口 | 用途 |
 | --- | --- | --- | --- | --- |
 | 1. | Azure 资源管理器 | https | 443 | 连接到 Azure 资源管理器以实现自动化 |
 | 2. | 安全令牌服务 | https | 443 | 通过访问和刷新令牌进行身份验证 |
@@ -93,9 +93,9 @@ Azure 资源管理器提供一致的管理层来调用 Azure Stack Edge Pro 设�
 
 仅适用于测试和开发，你可以使用 Windows PowerShell 在你的本地系统上创建证书。 为客户端创建证书时，请遵循以下准则：
 
-1. 首先需要为签名链创建根证书。 有关详细信息，请参阅 [创建签名链证书](azure-stack-edge-j-series-manage-certificates.md#create-signing-chain-certificate)的步骤。
+1. 首先需要为签名链创建根证书。 有关详细信息，请参阅 [创建签名链证书](azure-stack-edge-gpu-manage-certificates.md#create-signing-chain-certificate)的步骤。
 
-2. 接下来，可以为 blob 和 Azure 资源管理器创建终结点证书。 可以从本地 web UI 中的 " **设备** " 页获取这些终结点。 请参阅 [创建终结点证书](azure-stack-edge-j-series-manage-certificates.md#create-signed-endpoint-certificates)的步骤。
+2. 接下来，可以为 blob 和 Azure 资源管理器创建终结点证书。 可以从本地 web UI 中的 " **设备** " 页获取这些终结点。 请参阅 [创建终结点证书](azure-stack-edge-gpu-manage-certificates.md#create-signed-endpoint-certificates)的步骤。
 
 3. 对于所有这些证书，请确保 "使用者名称" 和 "使用者备用名称" 符合以下准则：
 
@@ -105,26 +105,26 @@ Azure 资源管理器提供一致的管理层来调用 Azure Stack Edge Pro 设�
     |Blob 存储|`*.blob.<Device name>.<Dns Domain>`|`*.blob.< Device name>.<Dns Domain>`|`*.blob.mydevice1.microsoftdatabox.com` |
     |两个终结点的多 SAN 单一证书|`<Device name>.<dnsdomain>`|`login.<Device name>.<Dns Domain>`<br>`management.<Device name>.<Dns Domain>`<br>`*.blob.<Device name>.<Dns Domain>`|`mydevice1.microsoftdatabox.com` |
 
-有关证书的详细信息，请参阅如何 [管理证书](azure-stack-edge-j-series-manage-certificates.md)。
+有关证书的详细信息，请参阅如何 [管理证书](azure-stack-edge-gpu-manage-certificates.md)。
 
 ### <a name="upload-certificates-on-the-device"></a>在设备上上传证书
 
 你在上一步中创建的证书将位于客户端上的 "个人" 存储中。 需要将这些证书导出到你的客户端，然后才能将其上传到你的设备。
 
-1. 根证书必须导出为带有 *.cer* 文件扩展名的 DER 格式文件。 有关详细步骤，请参阅 [将证书导出为 .cer 格式文件](azure-stack-edge-j-series-manage-certificates.md#export-certificates-as-der-format)。
+1. 根证书必须导出为带有 *.cer* 文件扩展名的 DER 格式文件。 有关详细步骤，请参阅 [将证书导出为 .cer 格式文件](azure-stack-edge-gpu-manage-certificates.md#export-certificates-as-der-format)。
 
-2. 终结点证书必须导出为包含私钥的 *.pfx* 文件。 有关详细步骤，请参阅将 [证书导出为带有私钥的 .pfx 文件](azure-stack-edge-j-series-manage-certificates.md#export-certificates-as-pfx-format-with-private-key)。
+2. 终结点证书必须导出为包含私钥的 *.pfx* 文件。 有关详细步骤，请参阅将 [证书导出为带有私钥的 .pfx 文件](azure-stack-edge-gpu-manage-certificates.md#export-certificates-as-pfx-format-with-private-key)。
 
-3. 然后，在本地 web UI 中使用 "**证书**" 页上的 " **+ 添加证书**" 选项，在设备上上传根证书和终结点证书。 若要上载证书，请按照 [上载证书](azure-stack-edge-j-series-manage-certificates.md#upload-certificates)中的步骤进行操作。
+3. 然后，在本地 web UI 中使用 "**证书**" 页上的 " **+ 添加证书**" 选项，在设备上上传根证书和终结点证书。 若要上载证书，请按照 [上载证书](azure-stack-edge-gpu-manage-certificates.md#upload-certificates)中的步骤进行操作。
 
 
 ### <a name="import-certificates-on-the-client-running-azure-powershell"></a>在运行 Azure PowerShell 的客户端上导入证书
 
 你将在其中调用 Azure 资源管理器 Api 的 Windows 客户端需要建立与设备的信任。 为此，必须将在上一步中创建的证书导入到相应的证书存储中。
 
-1. 现在应在客户端系统上的 "受信任的根证书颁发机构" 中导入作为带有 *.cer* 扩展名的 DER 格式导出的根证书。 有关详细步骤，请参阅 [将证书导入到受信任的根证书颁发机构存储。](azure-stack-edge-j-series-manage-certificates.md#import-certificates-as-der-format)
+1. 现在应在客户端系统上的 "受信任的根证书颁发机构" 中导入作为带有 *.cer* 扩展名的 DER 格式导出的根证书。 有关详细步骤，请参阅 [将证书导入到受信任的根证书颁发机构存储。](azure-stack-edge-gpu-manage-certificates.md#import-certificates-as-der-format)
 
-2. 作为 *.pfx* 导出的终结点证书必须导出为 *.cer*。 然后，此 *.cer* 将导入到系统上的 " **个人** " 证书存储中。 有关详细步骤，请参阅将 [证书导入到个人存储](azure-stack-edge-j-series-manage-certificates.md#import-certificates-as-der-format)中。
+2. 作为 *.pfx* 导出的终结点证书必须导出为 *.cer*。 然后，此 *.cer* 将导入到系统上的 " **个人** " 证书存储中。 有关详细步骤，请参阅将 [证书导入到个人存储](azure-stack-edge-gpu-manage-certificates.md#import-certificates-as-der-format)中。
 
 ## <a name="step-3-install-powershell-on-the-client"></a>步骤3：在客户端上安装 PowerShell 
 

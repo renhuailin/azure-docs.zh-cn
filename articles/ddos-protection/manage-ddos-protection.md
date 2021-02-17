@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/17/2019
 ms.author: kumud
-ms.openlocfilehash: f4ce830c889feaeda05745eeb02b72f55ad9314a
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: 336eeee7d522647d11f55a65dc9dc4e65e8b7d47
+ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99819837"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100535224"
 ---
 # <a name="quickstart-create-and-configure-azure-ddos-protection-standard"></a>快速入门：创建和配置 Azure DDoS 保护标准
 
@@ -39,7 +39,7 @@ DDoS 防护计划在订阅中定义一组已启用 DDoS 防护标准的虚拟网
 
 1. 在 Azure 门户的左上角选择 " **创建资源** "。
 2. 搜索术语 " *DDoS*"。 当 " **DDoS 防护计划** " 出现在搜索结果中时，请选择它。
-3. 选择“创建”  。
+3. 选择“创建”。
 4. 输入或选择以下值，然后选择 " **创建**"：
 
     |设置        |值                                              |
@@ -88,6 +88,11 @@ DDoS 防护计划在订阅中定义一组已启用 DDoS 防护标准的虚拟网
 3. 从列表中选择 DDoS 保护计划。
 
 应列出 _MyVnet_ 虚拟网络。 
+
+### <a name="view-protected-resources"></a>查看受保护的资源
+在 " **受保护的资源**" 下，可以查看受保护的虚拟网络和公共 IP 地址，或将更多虚拟网络添加到 DDoS 保护计划：
+
+![查看受保护的资源](./media/manage-ddos-protection/ddos-protected-resources.png)
 
 ## <a name="clean-up-resources"></a>清理资源
 

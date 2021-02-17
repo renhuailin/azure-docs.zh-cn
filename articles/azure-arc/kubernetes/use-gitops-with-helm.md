@@ -2,18 +2,18 @@
 title: '使用启用了 GitOps on Arc 的 Kubernetes 群集 (预览部署 Helm 图表) '
 services: azure-arc
 ms.service: azure-arc
-ms.date: 02/09/2021
+ms.date: 02/15/2021
 ms.topic: article
 author: mlearned
 ms.author: mlearned
 description: '将 GitOps 与 Helm 配合使用，以启用启用了 Azure Arc 的群集配置 (预览) '
 keywords: GitOps, Kubernetes, K8s, Azure, Helm, Arc, AKS, Azure Kubernetes 服务, 容器
-ms.openlocfilehash: 883eb9c152bdc8a7c0e60e999cf9decf47fb80ec
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 2dfb516487d1064f29b4018cc8b322e8db44e53a
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100377918"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100558520"
 ---
 # <a name="deploy-helm-charts-using-gitops-on-arc-enabled-kubernetes-cluster-preview"></a>使用启用了 GitOps on Arc 的 Kubernetes 群集 (预览部署 Helm 图表) 
 
@@ -81,7 +81,7 @@ Helm 发布配置包含以下字段：
 使用的 Azure CLI 扩展将 `k8sconfiguration` 连接的群集链接到示例 Git 存储库。 为此配置指定名称 `azure-arc-sample` 并在命名空间中部署 Flux 运算符 `arc-k8s-demo` 。
 
 ```console
-az k8sconfiguration create --name azure-arc-sample --cluster-name AzureArcTest1 --resource-group AzureArcTest --operator-instance-name flux --operator-namespace arc-k8s-demo --operator-params='--git-readonly --git-path=releases' --enable-helm-operator --helm-operator-version='0.6.0' --helm-operator-params='--set helm.versions=v3' --repository-url https://github.com/Azure/arc-helm-demo.git --scope namespace --cluster-type connectedClusters
+az k8sconfiguration create --name azure-arc-sample --cluster-name AzureArcTest1 --resource-group AzureArcTest --operator-instance-name flux --operator-namespace arc-k8s-demo --operator-params='--git-readonly --git-path=releases' --enable-helm-operator --helm-operator-version='1.2.0' --helm-operator-params='--set helm.versions=v3' --repository-url https://github.com/Azure/arc-helm-demo.git --scope namespace --cluster-type connectedClusters
 ```
 
 ### <a name="configuration-parameters"></a>配置参数
@@ -112,7 +112,7 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
   "enableHelmOperator": "True",
   "helmOperatorProperties": {
     "chartValues": "--set helm.versions=v3",
-    "chartVersion": "0.6.0"
+    "chartVersion": "1.2.0"
   },
   "id": "/subscriptions/57ac26cf-a9f0-4908-b300-9a4e9a0fb205/resourceGroups/AzureArcTest/providers/Microsoft.Kubernetes/connectedClusters/AzureArcTest1/providers/Microsoft.KubernetesConfiguration/sourceControlConfigurations/azure-arc-sample",
   "name": "azure-arc-sample",

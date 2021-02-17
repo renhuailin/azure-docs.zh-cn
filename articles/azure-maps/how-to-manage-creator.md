@@ -3,22 +3,22 @@ title: '管理 Microsoft Azure Map Creator (Preview) '
 description: 在本文中，你将了解如何管理 Microsoft Azure Map Creator)  (预览版。
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 12/07/2020
+ms.date: 02/16/2021
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 1ed3a9033f9be39774e1c52982f63259cc477d29
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: d26df4287032bc59cc58dd1d832d9d5a9c40afcd
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96906091"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100559213"
 ---
 # <a name="manage-azure-maps-creator-preview"></a>管理 Azure Maps Creator (预览版)  
 
 > [!IMPORTANT]
-> Azure Maps Creator 服务目前为公共预览版。
+> Azure Maps Creator 服务目前处于公共预览状态。
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 Azure Maps Creator 允许你创建专用室内定位数据。 使用 Azure Maps API 和室内定位模块，可开发动态交互式室内定位 Web 应用程序。 目前，Creator 只在使用 S1 定价层的美国提供。
@@ -33,15 +33,15 @@ Azure Maps Creator 允许你创建专用室内定位数据。 使用 Azure Maps 
 
     ![Azure Maps 门户主页](./media/how-to-manage-creator/select-maps-account.png)
 
-3. 在“Azure Maps 帐户”页上，导航到“Creator”下的“概述”选项。 单击“创建”以创建 Azure Maps Creator 资源。
+3. 在“Azure Maps 帐户”页上，导航到“Creator”下的“概述”选项。 选择 "  **创建**  "，创建 Azure Maps 创建者资源。
 
     ![创建 Azure Maps Creator 页](./media/how-to-manage-creator/creator-blade-settings.png)
 
-4. 输入 Creator 资源的“名称”和“位置”。 目前，仅在美国支持 Creator。 单击“查看 + 创建”。
+4. 输入 Creator 资源的“名称”和“位置”。 目前，仅在美国支持 Creator。 选择“查看 + 创建”。
 
    ![输入 Creator 帐户信息页](./media/how-to-manage-creator/creator-creation-dialog.png)
 
-5. 检查设置并单击“创建”。
+5. 查看设置，然后选择 " **创建**"。
 
     ![确认 Creator 帐户设置页](./media/how-to-manage-creator/creator-create-dialog.png)
 
@@ -49,25 +49,25 @@ Azure Maps Creator 允许你创建专用室内定位数据。 使用 Azure Maps 
 
    ![资源部署状态页](./media/how-to-manage-creator/creator-resource-created.png)
 
-7. 单击“转到资源”。 Creator 资源视图页将显示 Creator 资源和所选人口统计区域的状态。
+7. 选择“转到资源”。 Creator 资源视图页将显示 Creator 资源和所选人口统计区域的状态。
 
     ![Creator 状态页](./media/how-to-manage-creator/creator-resource-view.png)
 
    >[!NOTE]
-   >在 Creator 资源页上，可以通过单击 Azure Maps 帐户向后导航到它所属的 Azure Maps 帐户。
+   >在 "创建者资源" 页上，可以通过选择 Azure Maps 帐户，导航回其所属的 Azure Maps 帐户。
 
 ## <a name="delete-creator-preview-resource"></a>删除 Creator (预览) 资源
 
-若要删除 Creator 资源，请导航到 Azure Maps 帐户。 选择“Creator”下的“概述”。 单击“删除” 按钮。
+若要删除 Creator 资源，请导航到 Azure Maps 帐户。 选择“Creator”下的“概述”。 选择“删除”按钮。
 
 >[!WARNING]
 >删除 Azure Maps 帐户的 Creator 资源后，还会删除使用 Creator 服务创建的数据集、图块集和功能状态集。
 
 ![带“删除”按钮的 Creator 页](./media/how-to-manage-creator/creator-delete.png)
 
-单击“删除”按钮，然后键入 Creator 名称以确认删除。 删除资源后，会看到一个确认页，如下图所示：
+选择 " **删除** " 按钮，然后键入 Creator 名称以确认删除。 删除资源后，会看到一个确认页，如下图所示：
 
-![带删除确认的 Creator 页](./media/how-to-manage-creator/creator-confirmdelete.png)
+![带删除确认的 Creator 页](./media/how-to-manage-creator/creator-confirm-delete.png)
 
 ## <a name="authentication"></a>身份验证
 
@@ -77,7 +77,7 @@ Creator 使用情况数据合并到 Azure Maps 使用情况图表和活动日志
 
 ## <a name="access-to-creator-services"></a>访问 Creator 服务
 
-只能从在创建过程中选择的位置内访问 (预览) 的创建者服务。 如果从所选位置外部对 Creator 服务进行调用，则会返回用户错误消息。 若要从所选位置外部进行调用，服务 URL 必须包含所选位置的地理前缀。 例如，如果 Creator 是在美国创建的，则必须将对转换服务的所有调用提交到 `us.atlas.microsoft.com/conversion/convert`。
+创建者服务 (预览) 和使用在创建者 (中托管的数据的服务（例如，Render service) ）可在地理位置 URL 访问。 地理 URL 由创建时选择的位置确定。 例如，如果创建者是在美国地理位置创建的，则必须将对转换服务的所有调用提交给 `us.atlas.microsoft.com/conversion/convert` 。
 
 此外，导入到 Creator 的所有数据都应上传到与 Creator 资源相同的地理位置。 例如，如果在美国预配了 Creator，则所有原始数据都应通过 `us.atlas.microsoft.com/mapData/upload` 上传。
 

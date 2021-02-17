@@ -3,12 +3,12 @@ title: 使用专用链接服务传递事件
 description: 本文介绍如何解决不能使用专用链接服务传递事件的限制。
 ms.topic: how-to
 ms.date: 02/12/2021
-ms.openlocfilehash: ad6f500830383f60e0350a297d2650bfbeae2f6f
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 4343740ea6c34c9ae282723b79007f7035785b04
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100417080"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100548602"
 ---
 # <a name="deliver-events-using-private-link-service"></a>使用专用链接服务传递事件
 目前不能使用 [专用终结点](../private-link/private-endpoint-overview.md)传递事件。 也就是说，如果你的已交付事件流量不得离开专用 IP 空间，则不支持严格的网络隔离要求。 
@@ -19,7 +19,7 @@ ms.locfileid: "100417080"
 然后，可以使用在虚拟网络上部署的 Azure Functions 或 webhook 中配置的私有链接来请求事件。 请参阅示例： [连接到专用终结点，Azure Functions](/samples/azure-samples/azure-functions-private-endpoints/connect-to-private-endpoints-with-azure-functions/)。
 
 
-:::image type="content" source="./media/consume-private-endpoints/deliver-private-link-service.png" alt-text="通过专用链接服务交付":::
+:::image type="content" source="./media/consume-private-endpoints/deliver-private-link-service.svg" alt-text="通过专用链接服务交付":::
 
 
 在此配置下，流量通过从事件网格到事件中心、服务总线或 Azure 存储的公共 IP/internet 进入，但可以对通道进行加密，并使用事件网格的托管标识。 如果将部署到虚拟网络的 Azure Functions 或 webhook 配置为通过专用链接使用事件中心、服务总线或 Azure 存储，则流量的该部分将显然在 Azure 中。

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 01/19/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 598673bca5b893236cfd38a7fa220ff25ee9dd7e
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 78958dc0f95d2bc7a9e393ac2e769a97f7e92efa
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100388509"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100556452"
 ---
 # <a name="azure-storage-redundancy"></a>Azure 存储冗余
 
@@ -200,7 +200,7 @@ GRS 和 GZRS 之间的主要区别是在主要区域中复制数据的方式。 
 
 | LRS | ZRS | GRS/RA-GRS | GZRS/RA-GZRS |
 |:-|:-|:-|:-|
-| 常规用途 v2<br /> 常规用途 v1<br /> 块 Blob 存储<br /> Blob 存储<br /> 文件存储 | 常规用途 v2<br /> 块 Blob 存储<br /> 文件存储 | 常规用途 v2<br /> 常规用途 v1<br /> Blob 存储 | 常规用途 v2 |
+| 常规用途 v2<br /> 常规用途 v1<br /> BlockBlobStorage<br /> BlobStorage<br /> FileStorage | 常规用途 v2<br /> BlockBlobStorage<br /> FileStorage | 常规用途 v2<br /> 常规用途 v1<br /> BlobStorage | 常规用途 v2 |
 
 所有存储帐户的所有数据的复制均基于存储帐户的冗余选项。 复制的对象包括块 Blob、追加 Blob、页 Blob、队列、表和文件。 将复制所有层（包括存档层）中的数据。 有关 blob 层的详细信息，请参阅 [Azure Blob 存储：热、冷和存档访问层](../blobs/storage-blob-storage-tiers.md)。
 

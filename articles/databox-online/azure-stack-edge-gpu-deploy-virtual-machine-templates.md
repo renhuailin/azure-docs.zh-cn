@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 01/25/2021
 ms.author: alkohli
-ms.openlocfilehash: 66d537b79819aecab4ce88a56ed465679363f421
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 9a347d57de540ed31c862f618be7c8a98b685348
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98805206"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546918"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-templates"></a>通过模板在 Azure Stack Edge Pro GPU 设备上部署 Vm
 
@@ -149,7 +149,7 @@ key2 7vnVMJUwJXlxkXXOyVO4NfqbW5e/5hZ+VOs+C/h/ReeoszeV+qoyuBitgnWjiDPNdH4+lSm1/Zj
 
 ### <a name="optional-install-certificates"></a> (可选) 安装证书
 
-如果你将通过存储资源管理器使用 *http* 进行连接，请跳过此步骤。 如果使用的是 *https*，则需要在存储资源管理器中安装适当的证书。 在这种情况下，请安装 blob 端点证书。 有关详细信息，请参阅如何在 " [管理证书](azure-stack-edge-j-series-manage-certificates.md)" 中创建和上载证书。 
+如果你将通过存储资源管理器使用 *http* 进行连接，请跳过此步骤。 如果使用的是 *https*，则需要在存储资源管理器中安装适当的证书。 在这种情况下，请安装 blob 端点证书。 有关详细信息，请参阅如何在 " [管理证书](azure-stack-edge-gpu-manage-certificates.md)" 中创建和上载证书。 
 
 ### <a name="create-and-upload-a-vhd"></a>创建并上传 VHD
 
@@ -185,11 +185,11 @@ key2 7vnVMJUwJXlxkXXOyVO4NfqbW5e/5hZ+VOs+C/h/ReeoszeV+qoyuBitgnWjiDPNdH4+lSm1/Zj
 
     ![连接到 Azure 存储1](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/connect-azure-storage-1.png)
 
-5. 选择“使用存储帐户名称和密钥”。 选择“下一步”  。
+5. 选择“使用存储帐户名称和密钥”。 选择“下一步”。
 
     ![连接到 Azure 存储2](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/connect-azure-storage-2.png)
 
-6. 在 " **连接方式" 和 "名称" 和 "密钥**" 中，提供 **显示名称**、 **存储帐户名称** 和 Azure 存储 **帐户密钥**。 选择 " **其他** 存储域"，然后提供 `<device name>.<DNS domain>` 连接字符串。 如果未在存储资源管理器中安装证书，请选中 " **使用 HTTP** " 选项。 选择“下一步”  。
+6. 在 " **连接方式" 和 "名称" 和 "密钥**" 中，提供 **显示名称**、 **存储帐户名称** 和 Azure 存储 **帐户密钥**。 选择 " **其他** 存储域"，然后提供 `<device name>.<DNS domain>` 连接字符串。 如果未在存储资源管理器中安装证书，请选中 " **使用 HTTP** " 选项。 选择“下一步”。
 
     ![用名称和密钥连接](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/connect-name-key-1.png)
 

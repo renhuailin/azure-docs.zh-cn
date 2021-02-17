@@ -1,14 +1,14 @@
 ---
 title: 将客户加入 Azure Lighthouse
 description: 了解如何将客户加入 Azure Lighthouse，从而允许使用 Azure 委派的资源管理通过自己的租户访问和管理其资源。
-ms.date: 02/08/2021
+ms.date: 02/16/2021
 ms.topic: how-to
-ms.openlocfilehash: c0a886b692b99156cbd53e5f0f5953047560c5b9
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 4487dd82b30e14f9db2001dc10f7437a53e745f3
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100372138"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100556102"
 ---
 # <a name="onboard-a-customer-to-azure-lighthouse"></a>将客户加入 Azure Lighthouse
 
@@ -205,7 +205,7 @@ az role definition list --name "<roleName>" | grep name
 更新参数文件后，客户租户中的用户必须在其租户中部署 Azure 资源管理器模板。 需要为每个要加入 (的订阅或包含要在其中进行登记) 资源组的每个订阅执行单独的部署。
 
 > [!IMPORTANT]
-> 此部署必须由客户租户中的非来宾帐户完成，该帐户具有 (载入订阅的 [所有者内置角色](../../role-based-access-control/built-in-roles.md#owner) ，或者包含正在载入的资源组) 。 若要查看所有可以委托订阅的用户，客户租户中的用户可以在 Azure 门户中选择订阅，打开“访问控制(IAM)”，然后[查看具有“所有者”角色的所有用户](../../role-based-access-control/role-assignments-list-portal.md#list-owners-of-a-subscription)。 
+> 此部署必须由客户租户中具有权限的非来宾帐户（如所有者、拥有权限的角色， `Microsoft.Authorization/roleAssignments/write` 如载入 (或[](../../role-based-access-control/built-in-roles.md#owner)包含正在载入的资源组) 的用户）执行。 若要查找可委派订阅的用户，客户租户中的用户可以在 "Azure 门户中选择订阅，打开" **访问控制 ("IAM)**，然后 [查看具有" 所有者 "角色的所有用户](../../role-based-access-control/role-assignments-list-portal.md#list-owners-of-a-subscription)。 
 >
 > 如果订阅是通过[云解决方案提供商 (CSP) 计划](../concepts/cloud-solution-provider.md)创建的，则在服务提供商租户中具有[管理员代理](/partner-center/permissions-overview#manage-commercial-transactions-in-partner-center-azure-ad-and-csp-roles)角色的任何用户都可以执行部署。
 

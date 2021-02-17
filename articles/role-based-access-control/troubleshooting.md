@@ -15,12 +15,12 @@ ms.date: 11/10/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1, devx-track-azurecli
-ms.openlocfilehash: e30af9522d7c8fa81c4d93e11d252aefc4426586
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: d77468619fcd67887273b2fbd452b37add1e19b0
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96184257"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555886"
 ---
 # <a name="troubleshoot-azure-rbac"></a>排查 Azure RBAC 的问题
 
@@ -51,7 +51,7 @@ $ras.Count
 
 ## <a name="problems-with-azure-role-assignments"></a>Azure 角色分配问题
 
-- 如果你因为“添加” > “添加角色分配”选项被禁用或者因为收到权限错误“具有此对象 id 的客户端无权执行操作”而无法在 Azure 门户中的“访问控制(IAM)”上添加角色分配，请检查你当前登录时使用的用户是否为在你尝试分配角色的范围中具有 `Microsoft.Authorization/roleAssignments/write` 权限的角色，例如[所有者](built-in-roles.md#owner)或[用户访问管理员](built-in-roles.md#user-access-administrator)。
+- 如果无法在 **访问控制 (IAM)** 上分配 Azure 门户角色，因为 "**添加**  >  **添加角色分配**" 选项已禁用，或者你获取权限错误 "具有对象 id 的客户端无权执行操作"。检查你当前是否已使用分配了角色的用户登录，该用户 `Microsoft.Authorization/roleAssignments/write` 在尝试分配角色的范围内拥有权限，如 [所有者](built-in-roles.md#owner)或 [用户访问管理员](built-in-roles.md#user-access-administrator)。
 - 如果使用服务主体来分配角色，可能会收到错误信息：“权限不足，无法完成操作”。 例如，假设你有一个服务主体，并对其分配了“所有者”角色，并且你尝试使用 Azure CLI 创建以下角色分配作为服务主体：
 
     ```azurecli
@@ -59,16 +59,16 @@ $ras.Count
     az role assignment create --assignee "userupn" --role "Contributor"  --scope "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}"
     ```
 
-    如果出现错误 "权限不足，无法完成操作"，则很可能是因为 Azure CLI 正在尝试查找 Azure AD 中的工作负责人标识，并且服务主体在默认情况下无法读取 Azure AD。
+    如果收到“权限不足，无法完成操作”错误，则很可能是因为 Azure CLI 尝试在 Azure AD 中查找被分配者标识，但服务主体在默认情况下无法读取 Azure AD。
 
     可通过两种方式解决此错误。 第一种方法是将[目录读取器](../active-directory/roles/permissions-reference.md#directory-readers)角色分配给服务主体，以便它能够读取目录中的数据。
 
-    第二种方法是使用 `--assignee-object-id` 参数而不是 `--assignee` 来创建角色分配。 通过使用 `--assignee-object-id`，Azure CLI 将跳过 Azure AD 查找。 你需要获取要为其分配角色的用户、组或应用程序的对象 ID。 有关详细信息，请参阅[使用 Azure CLI 添加或删除 Azure 角色分配](role-assignments-cli.md#add-role-assignment-for-a-new-service-principal-at-a-resource-group-scope)。
+    第二种方法是使用 `--assignee-object-id` 参数而不是 `--assignee` 来创建角色分配。 通过使用 `--assignee-object-id`，Azure CLI 将跳过 Azure AD 查找。 你需要获取要为其分配角色的用户、组或应用程序的对象 ID。 有关详细信息，请参阅 [使用 Azure CLI 分配 Azure 角色](role-assignments-cli.md#assign-a-role-for-a-new-service-principal-at-a-resource-group-scope)。
 
     ```azurecli
     az role assignment create --assignee-object-id 11111111-1111-1111-1111-111111111111  --role "Contributor" --scope "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}"
     ```
-- 如果尝试删除订阅的最后一个所有者角色分配，则可能会看到错误 "无法删除最后一个 RBAC 管理员分配"。 不支持删除订阅的最后一个所有者角色分配，以避免 orphaning 订阅。 如果要取消订阅，请参阅 [取消 Azure 订阅](../cost-management-billing/manage/cancel-azure-subscription.md)。
+- 如果尝试删除订阅的上一个“所有者”角色分配，则可能会看到“无法删除上一个 RBAC 管理员分配”错误。 不支持删除订阅的上一个“所有者”角色分配，这样是为了避免孤立订阅。 如果要取消订阅，请参阅 [取消 Azure 订阅](../cost-management-billing/manage/cancel-azure-subscription.md)。
 
 ## <a name="problems-with-custom-roles"></a>自定义角色出现问题
 
@@ -151,7 +151,7 @@ CanDelegate        : False
 }
 ```
 
-在删除安全主体的情况下，保留这些角色分配没有问题。 如果需要，可以使用与其他角色分配相似的步骤删除这些角色分配。 有关如何删除角色分配的信息，请参阅 [Azure 门户](role-assignments-portal.md#remove-a-role-assignment)、[Azure PowerShell](role-assignments-powershell.md#remove-a-role-assignment) 或 [Azure CLI](role-assignments-cli.md#remove-a-role-assignment)
+在删除安全主体的情况下，保留这些角色分配没有问题。 如果需要，可以使用与其他角色分配相似的步骤删除这些角色分配。 有关如何删除角色分配的信息，请参阅 [删除 Azure 角色分配](role-assignments-remove.md)。
 
 在 PowerShell 中，如果尝试通过对象 ID 和角色定义名称来删除角色分配，而多个角色分配与参数相匹配，则会出现错误消息：“提供的信息未映射到角色分配”。 以下输出显示了错误消息示例：
 
@@ -174,7 +174,7 @@ PS C:\> Remove-AzRoleAssignment -ObjectId 33333333-3333-3333-3333-333333333333 -
 
 ## <a name="role-assignment-changes-are-not-being-detected"></a>未检测到角色分配更改
 
-Azure 资源管理器有时会缓存配置和数据以提高性能。 添加或删除角色分配时，更改最多可能需要 30 分钟才能生效。 如果使用的是 Azure 门户、Azure PowerShell 或 Azure CLI，则可以通过注销和登录来强制刷新角色分配更改。 如果使用 REST API 调用进行角色分配更改，则可以通过刷新访问令牌来强制刷新。
+Azure 资源管理器有时会缓存配置和数据以提高性能。 分配角色或删除角色分配时，所做的更改可能需要长达30分钟的时间才能生效。 如果使用的是 Azure 门户、Azure PowerShell 或 Azure CLI，则可以通过注销和登录来强制刷新角色分配更改。 如果使用 REST API 调用进行角色分配更改，则可以通过刷新访问令牌来强制刷新。
 
 如果在管理组范围添加或删除某个角色分配，并且该角色具有 `DataActions`，对数据平面的访问权限在几个小时内可能不会更新。 这仅适用于管理组范围和数据平面。
 
@@ -249,5 +249,5 @@ Azure 资源管理器有时会缓存配置和数据以提高性能。 添加或�
 ## <a name="next-steps"></a>后续步骤
 
 - [来宾用户疑难解答](role-assignments-external-users.md#troubleshoot)
-- [使用 Azure 门户添加或删除 Azure 角色分配](role-assignments-portal.md)
+- [使用 Azure 门户分配 Azure 角色](role-assignments-portal.md)
 - [查看 Azure RBAC 更改的活动日志](change-history-report.md)

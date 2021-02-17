@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/15/2020
 ms.author: gelecaro
-ms.openlocfilehash: f674edd15b86f49d60450a53f5df5852b32f95a4
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: cf765145cafa2eb06d77ea2e153e45c296281b71
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96906416"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100551380"
 ---
 本指南介绍如何安装用于 Linux 的[语音 SDK](~/articles/cognitive-services/speech-service/speech-sdk.md)
 
@@ -23,6 +23,7 @@ Linux：请参阅[受支持的 Linux 分发和目标体系结构](~/articles/cog
 
 若要完成本快速入门，你需要：
 
+* 在 Windows 上，需要安装适用于平台的 [Microsoft Visual C++ Redistributable for Visual Studio 2019](https://support.microsoft.com/en-us/topic/the-latest-supported-visual-c-downloads-2647da03-1eea-4433-9aff-95f26a218cc0)。 首次安装时，可能需要重启。
 * gcc
 * [Go 二进制文件（1.13 或更高版本）](https://golang.org/dl/)
 

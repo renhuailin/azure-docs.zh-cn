@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: daberry
-ms.openlocfilehash: 537a301ef2c3ba1bb5ed34d92c8784655c79d97f
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 9d2c245cdc8b1aba644171089ed95bad2ab730a4
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99097466"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100558598"
 ---
 # <a name="ev3-and-esv3-series"></a>Ev3 和 Esv3 系列
 
@@ -32,7 +32,7 @@ Ev3 系列 VM 的 Intel® Hyper-Threading 技术。
 [实时迁移](maintenance-and-updates.md)：支持<br>
 [内存保留更新](maintenance-and-updates.md)：支持<br>
 [VM 代系支持](generation-2.md)：第 1 代<br>
-[加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：支持<br>
+[加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：支持的 (至少 *需要4个 vCPU*) <br>
 [临时 OS 磁盘](ephemeral-os-disks.md)：不支持 <br>
 <br>
 
@@ -64,7 +64,7 @@ Esv3 系列 VM 的 Intel® Hyper-Threading 技术。
 [实时迁移](maintenance-and-updates.md)：支持<br>
 [内存保留更新](maintenance-and-updates.md)：支持<br>
 [VM 代系支持](generation-2.md)：第 1 代和第 2 代<br>
-[加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：支持<br>
+[加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：支持的 (至少 *需要4个 vCPU*) <br>
 [临时 OS 磁盘](ephemeral-os-disks.md)：受支持 <br>
 <br>
 

@@ -13,12 +13,12 @@ ms.date: 11/15/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: marsma, aragra, lenalepa, sureshja
-ms.openlocfilehash: 8953f9ca174414c55e6e06774167d3951d0bbd41
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 4afffb558b9cbf53a762b1b2bb1ce544e554feaf
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99090232"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100103883"
 ---
 # <a name="how-to-remove-an-application-registered-with-the-microsoft-identity-platform"></a>如何删除注册到 Microsoft 标识平台的应用程序
 
@@ -39,9 +39,10 @@ ms.locfileid: "99090232"
 
 若要删除应用程序，你需被列为应用程序的所有者或者具有管理员权限。
 
-1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 <a href="https://portal.azure.com/" target="_blank">Azure 门户<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
-1. 如果你的帐户有权访问多个租户，请在右上角选择该帐户，并将门户会话设置为所需的 Azure AD 租户。
-1. 在左侧导航窗格中，选择“Azure Active Directory”服务  ，然后选择“应用注册”。  找到并选择要配置的应用程序。 选择应用以后，会看到应用程序的“概览”页。 
+1. 登录 <a href="https://portal.azure.com/" target="_blank">Azure 门户</a>。
+1. 如果有权访问多个租户，请使用顶部菜单中的“目录 + 订阅”筛选器 :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::，选择在其中注册应用的租户。
+1. 搜索并选择“Azure Active Directory”。 
+1. 在“管理”下，选择“应用注册”，然后选择要配置的应用程序 。 选择应用以后，会看到应用程序的“概览”页。 
 1. 在“概览”  页中，选择“删除”  。
 1. 选择“是”  以确认要删除该应用。
 

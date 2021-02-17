@@ -6,14 +6,19 @@ ms.topic: quickstart
 ms.date: 07/17/2018
 ms.author: gwallace
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 15e0c3bcbc19eae344ca3965b2b866ca9a15f28d
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.openlocfilehash: 665988f37d0afdb91bb074d8653cc3c24155966e
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91840313"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99627005"
 ---
 # <a name="quickstart-create-and-deploy-a-web-app-to-azure-service-fabric-mesh"></a>快速入门：创建 Web 应用并将其部署到 Azure Service Fabric 网格
+
+> [!IMPORTANT]
+> Azure Service Fabric 网格的预览版已停用。 不允许再通过 Service Fabric 网格 API 进行新的部署。 对现有部署的支持将会持续到 2021 年 4 月 28 日。
+> 
+> 有关详细信息，请参阅 [Azure Service Fabric 网格预览版停用](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/)。
 
 Azure Service Fabric 网格是一个完全托管的服务，由此开发者可部署微服务应用程序，而无需管理虚拟机、存储或网络。
 

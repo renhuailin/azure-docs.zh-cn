@@ -1,25 +1,29 @@
 ---
-title: 使用 Azure 资源管理器模板添加 Azure 角色分配 - Azure RBAC
+title: 使用 Azure 资源管理器模板分配 Azure 角色-Azure RBAC
 description: 了解如何使用 Azure 资源管理器模板和 Azure 基于角色的访问控制 (Azure RBAC) 授予用户、组、服务主体或托管标识对 Azure 资源的访问权限。
 services: active-directory
 documentationcenter: ''
 author: rolyon
-manager: mtillman
+manager: daveba
 ms.service: role-based-access-control
 ms.topic: how-to
 ms.workload: identity
 ms.date: 01/21/2021
 ms.author: rolyon
-ms.openlocfilehash: 023aa086cdafc3ab1459c2f748b2181575c14191
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 65b4ec369085e44cdffb0550e9eeaef0196cd35a
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98675330"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100556026"
 ---
-# <a name="add-azure-role-assignments-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板添加 Azure 角色分配
+# <a name="assign-azure-roles-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板分配 Azure 角色
 
 [!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control/definition-grant.md)] 除了使用 Azure PowerShell 或 Azure CLI 之外，还可以使用 [Azure 资源管理器模板](../azure-resource-manager/templates/template-syntax.md)分配角色。 如果需要一致且重复地部署资源，模板会很有用。 本文介绍如何使用模板分配角色。
+
+## <a name="prerequisites"></a>先决条件
+
+[!INCLUDE [Azure role assignment prerequisites](../../includes/role-based-access-control/prerequisites-role-assignments.md)]
 
 ## <a name="get-object-ids"></a>获取对象 ID
 
@@ -73,13 +77,13 @@ $objectid = (Get-AzADServicePrincipal -DisplayName "{name}").id
 objectid=$(az ad sp list --display-name "{name}" --query [].objectId --output tsv)
 ```
 
-## <a name="add-a-role-assignment"></a>添加角色分配
+## <a name="assign-an-azure-role"></a>分配 Azure 角色
 
-在 Azure RBAC 中，若要授予访问权限，请添加角色分配。
+在 Azure RBAC 中，若要授予访问权限，需分配一个角色。
 
 ### <a name="resource-group-scope-without-parameters"></a>资源组范围（不包含参数）
 
-以下模板演示了添加角色分配的基本方法。 某些值在模板中指定。 以下模板演示：
+以下模板显示了分配角色的基本方法。 某些值在模板中指定。 以下模板演示：
 
 -  如何将[读者](built-in-roles.md#reader)角色分配给资源组范围内的用户、组或应用程序
 
@@ -206,7 +210,7 @@ az deployment sub create --location centralus --template-file rbac-test.json --p
 
 ### <a name="resource-scope"></a>资源范围
 
-如果需要在资源级别添加角色分配，请将角色分配的 `scope` 属性设置为资源的名称。
+如果需要在资源级别分配角色，请将 `scope` 角色分配上的属性设置为资源的名称。
 
 以下模板演示：
 
@@ -368,16 +372,7 @@ az deployment group create --resource-group ExampleGroup2 --template-file rbac-t
 
 下面显示了在部署模板后向新的托管标识服务主体分配“参与者”角色的示例。
 
-![新的托管标识服务主体的角色分配](./media/role-assignments-template/role-assignment-template-msi.png)
-
-## <a name="remove-a-role-assignment"></a>删除角色分配
-
-在 Azure RBAC 中，若要删除对 Azure 资源的访问权限，则删除该角色分配。 无法使用模板删除角色分配。 若要删除角色分配，必须使用其他工具，例如：
-
-- [Azure 门户](role-assignments-portal.md#remove-a-role-assignment)
-- [Azure PowerShell](role-assignments-powershell.md#remove-a-role-assignment)
-- [Azure CLI](role-assignments-cli.md#remove-a-role-assignment)
-- [REST API](role-assignments-rest.md#remove-a-role-assignment)
+![为新的托管标识服务主体分配角色](./media/role-assignments-template/role-assignment-template-msi.png)
 
 ## <a name="next-steps"></a>后续步骤
 

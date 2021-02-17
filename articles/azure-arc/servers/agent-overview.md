@@ -1,14 +1,14 @@
 ---
 title: Connected Machine Windows 代理概述
 description: 本文详细概述了可用的支持 Azure Arc 的服务器代理，它支持监视混合环境中托管的虚拟机。
-ms.date: 02/03/2021
+ms.date: 02/16/2021
 ms.topic: conceptual
-ms.openlocfilehash: ed77ee00510fedaf42226081fcf11c4753b8a63a
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: 82562bf3b1f8392e56a53ba0f968a76b050e7b13
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99626302"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100558510"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>支持 Azure Arc 的服务器代理概述
 
@@ -32,6 +32,30 @@ Azure 连接的计算机代理包包含多个逻辑组件，这些组件捆绑�
     * 分配将在14天后删除，14天后不会重新分配到计算机。
 
 * 扩展代理管理 VM 扩展，包括安装、卸载和升级。 将从 Azure 下载扩展并将其复制到 `%SystemDrive%\%ProgramFiles%\AzureConnectedMachineAgent\ExtensionService\downloads` Windows 上的文件夹，并将其复制到 `/opt/GC_Ext/downloads` 。 在 Windows 上，扩展安装到以下路径 `%SystemDrive%\Packages\Plugins\<extension>` ，在 Linux 上安装了扩展 `/var/lib/waagent/<extension>` 。
+
+## <a name="instance-metadata"></a>实例元数据
+
+在连接的计算机代理注册启用了 Arc 的服务器后，将收集有关已连接计算机的元数据信息。 具体来说：
+
+* 操作系统名称、类型和版本
+* 计算机名称
+* 计算机完全限定域名 (FQDN)
+* Connected Machine 代理版本
+*  (FQDN Active Directory 和 DNS 完全限定的域名) 
+* UUID (BIOS ID) 
+* 连接的计算机代理检测信号
+* Connected Machine 代理版本
+* 托管标识的公钥
+* 策略符合性状态和详细信息 (如果使用 Azure 策略来宾配置策略) 
+
+Azure 发出的代理请求以下元数据信息：
+
+* 资源位置 (区域) 
+* 虚拟机 ID
+* Tags
+* Azure Active Directory 托管标识证书
+* 来宾配置策略分配
+* 扩展请求-安装、更新和删除。
 
 ## <a name="download-agents"></a>下载代理
 

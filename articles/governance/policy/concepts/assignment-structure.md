@@ -3,12 +3,12 @@ title: 策略分配结构的详细信息
 description: 介绍策略分配定义，Azure Policy 使用该定义将策略定义和参数关联到资源，以进行评估。
 ms.date: 01/29/2021
 ms.topic: conceptual
-ms.openlocfilehash: 12acbe368c9ccd6fa5654d3394e0fecb286984bf
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 1151c931863e1139b76c34ced12c4e2842f83cc6
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99219560"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100558450"
 ---
 # <a name="azure-policy-assignment-structure"></a>Azure Policy 分配结构
 
@@ -98,7 +98,7 @@ Azure Policy 使用策略分配来定义为哪些资源分配了哪些策略或�
 ]
 ```
 
-如果分配用于某个计划，则可以为该计划中的每个策略定义配置不同的消息。 消息使用 `policyDefinitionReferenceId` 计划定义中配置的值。 有关详细信息，请参阅 [属性定义属性](./initiative-definition-structure.md#policy-definition-properties)。
+如果分配用于某个计划，则可以为该计划中的每个策略定义配置不同的消息。 消息使用 `policyDefinitionReferenceId` 计划定义中配置的值。 有关详细信息，请参阅 [策略定义属性](./initiative-definition-structure.md#policy-definition-properties)。
 
 ```json
 "nonComplianceMessages": [

@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 09/10/2020
+ms.date: 02/16/2021
 ms.author: victorh
-ms.openlocfilehash: 69890e2d846a63a70c1b7459b1df13ce5e891289
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 637ef56ca79dd333a587d38ed6a685664c7566ca
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94659465"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100547037"
 ---
 # <a name="azure-firewall-logs-and-metrics"></a>Azure 防火墙日志和指标
 
@@ -49,6 +49,18 @@ ms.locfileid: "94659465"
    }
    ```
 
+   ```json
+   {
+     "category": "AzureFirewallApplicationRule",
+     "time": "2018-04-16T23:45:04.8295030Z",
+     "resourceId": "/SUBSCRIPTIONS/{subscriptionId}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/AZUREFIREWALLS/{resourceName}",
+     "operationName": "AzureFirewallApplicationRuleLog",
+     "properties": {
+         "msg": "HTTPS request from 10.11.2.4:53344 to www.bing.com:443. Action: Allow. Rule Collection: ExampleRuleCollection. Rule: ExampleRule. Web Category: SearchEnginesAndPortals"
+     }
+   }
+   ```
+
 * **网络规则日志**
 
    仅当为每个 Azure 防火墙启用了网络规则日志时，才会将此日志保存到存储帐户、流式传输到事件中心和/或发送到 Azure Monitor 日志。 每当建立与某个配置的网络规则匹配的新连接，就会为接受/拒绝的连接生成一条日志。 如以下示例中所示，数据以 JSON 格式记录：
@@ -75,7 +87,7 @@ ms.locfileid: "94659465"
 
 * **DNS 代理日志**
 
-   DNS 代理日志将保存到存储帐户，并传输到事件中心，并/或仅在为每个 Azure 防火墙启用了日志后，才能将其发送到 Azure Monitor 日志。 此日志跟踪 dns 消息到使用 DNS 代理配置的 DNS 服务器。 数据采用 JSON 格式记录，如以下示例中所示：
+   DNS 代理日志将保存到存储帐户，并传输到事件中心，并/或仅在为每个 Azure 防火墙启用了日志后，才能将其发送到 Azure Monitor 日志。 此日志跟踪发送到使用 DNS 代理配置的 DNS 服务器的 DNS 消息。 如以下示例中所示，数据以 JSON 格式记录：
 
 
    ```
