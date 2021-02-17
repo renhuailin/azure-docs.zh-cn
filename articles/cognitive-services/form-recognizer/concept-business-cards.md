@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 4cd762d6c264d95ecb1bd0f3f4c3a4d96eb5a57d
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: c2543f74b90205a36d3f5b4481beca35c779f77e
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99585086"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546017"
 ---
 # <a name="form-recognizer-prebuilt-business-cards-model"></a>表单识别器预生成的名片模型 
 
@@ -34,8 +34,8 @@ Azure 窗体识别器可以使用其预建的名片模型来分析和提取名�
 |名称| 类型 | 说明 | 文本 | 
 |:-----|:----|:----|:----|
 | ContactNames | 对象数组 | 从名片提取的联系人姓名 | [{"FirstName"： "John"，"LastName"： "Doe"}] |
-| FirstName | string | 第一个 (给定) 联系人姓名 | "John" | 
-| LastName | string | 上次 (家庭) 联系人姓名 |     "Doe" | 
+| FirstName | 字符串 | 第一个 (给定) 联系人姓名 | "John" | 
+| LastName | 字符串 | 上次 (家庭) 联系人姓名 |     "Doe" | 
 | CompanyNames | 字符串数组 | 从名片提取的公司名称 | ["Contoso"] | 
 | Departments | 字符串数组 | 联系人的部门或组织 | ["R&D"] | 
 | JobTitles | 字符串数组 | 联系人职务 | ["软件工程师"] | 
@@ -68,7 +68,7 @@ Azure 窗体识别器可以使用其预建的名片模型来分析和提取名�
 
 |字段| 类型 | 可能值 |
 |:-----|:----:|:----|
-|status | string | notStarted：分析操作尚未开始。<br /><br />正在运行：分析操作正在进行。<br /><br />失败：分析操作失败。<br /><br />succeeded：分析操作成功。|
+|status | 字符串 | notStarted：分析操作尚未开始。<br /><br />正在运行：分析操作正在进行。<br /><br />失败：分析操作失败。<br /><br />succeeded：分析操作成功。|
 
 当 " **状态** " 字段的值为 " **成功** " 时，如果请求，JSON 响应将包括业务卡理解和可选的文本识别结果。 业务卡理解结果被组织为命名字段值的字典，其中每个值都包含提取的文本、规范化值、边界框、置信度和对应的单词元素。 文本识别结果组织为带有文本、边界框和置信度信息的线条和单词的层次结构。
 
@@ -76,7 +76,11 @@ Azure 窗体识别器可以使用其预建的名片模型来分析和提取名�
 
 ### <a name="sample-json-output"></a>示例 JSON 输出
 
-请参阅以下成功的 JSON 响应示例： "readResults" 节点包含所有已识别的文本。 文本按页，然后按行，然后按单个单词进行组织。 "DocumentResults" 节点包含模型发现的特定于业务的值。 在这里，你将找到有用的联系人信息，如名字、姓氏、公司名称等。
+对 "获取分析业务智能卡" 结果操作的响应将是已提取所有信息的业务卡的结构化表示形式。  请参阅此处查看一个 [示例业务卡文件](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/business-card-english.jpg) 及其结构化输出 [示例名片输出](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/business-card-result.json)。
+
+请参阅以下成功的 JSON 响应示例：
+* `"readResults"` 节点包含所有已识别的文本。 文本按页，然后按行，然后按单个单词进行组织。 
+* `"documentResults"` 节点包含模型发现的特定于名片的值。 在这里，你将找到有用的联系人信息，如名字、姓氏、公司名称等。
 
 ```json
 {

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/22/2018
 ms.author: genli
-ms.openlocfilehash: d4736515d8e011ce1e72c51ecb3ce1cfd2e1e1cd
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 5c8bd335832a950385f88f13dc31eb7f6159f831
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978520"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100548125"
 ---
 #  <a name="an-internal-error-occurs-when-you-try-to-connect-to-an-azure-vm-through-remote-desktop"></a>尝试通过远程桌面连接到 Azure VM 时发生内部错误
 
@@ -26,7 +26,7 @@ ms.locfileid: "91978520"
 
 ## <a name="symptoms"></a>症状
 
-无法使用远程桌面协议 (RDP) 连接到 Azure VM。 连接停滞在 " **配置远程** " 部分，或者您收到以下错误消息：
+无法使用远程桌面协议 (RDP) 连接到 Azure VM。 连接过程停滞在“正在配置远程连接”阶段，或收到以下错误消息：
 
 - RDP 内部错误
 - 发生了内部错误
@@ -35,10 +35,10 @@ ms.locfileid: "91978520"
 
 ## <a name="cause"></a>原因
 
-此问题可能是由以下原因引起的：
+此问题可能是以下原因造成的：
 
 - 虚拟机可能已遭到攻击。
-- 不能访问本地 RSA 加密密钥。
+- 无法访问本地 RSA 加密密钥。
 - 已禁用 TLS 协议。
 - 证书已损坏或过期。
 
@@ -119,10 +119,10 @@ ms.locfileid: "91978520"
 
 2. 如果无法使用此方法续订证书，请尝试远程续订 RDP 自签名证书：
 
-    1. 在已连接到有问题 VM 的正常 VM 上，在“运行”框中键入 **mmc** 打开 Microsoft 管理控制台。****
-    2. 在“文件”菜单中，依次选择“添加/删除管理单元”、“证书”、“添加”。****************
-    3. 依次选择“计算机帐户”、“另一台计算机”，然后添加有问题 VM 的 IP 地址。********
-    4. 转到“远程桌面\证书”文件夹，右键单击证书，然后选择“删除”********。
+    1. 在已连接到有问题 VM 的正常 VM 上，在“运行”框中键入 **mmc** 打开 Microsoft 管理控制台。
+    2. 在“文件”菜单中，依次选择“添加/删除管理单元”、“证书”、“添加”。
+    3. 依次选择“计算机帐户”、“另一台计算机”，然后添加有问题 VM 的 IP 地址。
+    4. 转到“远程桌面\证书”文件夹，右键单击证书，然后选择“删除”。
     5. 在串行控制台上的 PowerShell 实例中，重启“远程桌面配置”服务：
 
         ```powershell
@@ -134,7 +134,7 @@ ms.locfileid: "91978520"
 3. 重置 MachineKeys 文件夹的权限。
 
     ```powershell
-    remove-module psreadline icacls
+    remove-module psreadline 
 
     md c:\temp
 

@@ -11,12 +11,12 @@ ms.date: 01/29/2021
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: 文档处理
-ms.openlocfilehash: 0405ea116a1867ec75beff21637f18fb37565627
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 9642f9ce51cd3eb90344f96bc099da7adea93022
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99584713"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100364779"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>使用示例标记工具通过标签来训练表单识别器模型
 
@@ -228,7 +228,7 @@ ms.locfileid: "99584713"
 （可选）你可以为每个标记设置所需的数据类型。 打开标记右侧的上下文菜单，然后从菜单中选择一个类型。 此功能可让检测算法做出某些假设，从而提高文本检测准确性。 它还确保在最终 JSON 输出中以标准格式返回检测到的值。 值类型信息保存在与标签文件位于相同路径的 fields.json 文件中。
 
 > [!div class="mx-imgBorder"]
-> ![使用示例标记工具选择值类型](../media/whats-new/formre-value-type.png)
+> ![使用示例标记工具选择值类型](../media/whats-new/value-type.png)
 
 目前支持以下值类型和变体：
 * `string`

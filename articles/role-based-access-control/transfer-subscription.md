@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 12/10/2020
 ms.author: rolyon
-ms.openlocfilehash: 81224b5e16f3bca5da641bbb2e9c82dd59000e79
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 5a4be6052e72c27ad83b5af64f1acb3ad8d4e3be
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98185880"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555901"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory"></a>将 Azure 订阅转移到其他 Azure AD 目录
 
@@ -208,7 +208,7 @@ ms.locfileid: "98185880"
     | `alternativeNames` 属性不包括 `isExplicit` | 系统分配 |
     | `alternativeNames` 属性包括 `isExplicit=True` | 用户分配 |
 
-    还可以使用 [az identity list](/cli/azure/identity#az_identity_list) 命令仅列出用户分配的托管标识。 有关详细信息，请参阅 [使用 Azure CLI 创建、列出或删除用户分配的托管标识](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md)。
+    还可以使用 [az identity list](/cli/azure/identity#az_identity_list) 命令仅列出用户分配的托管标识。 有关详细信息，请参阅[使用 Azure CLI 创建、列出或删除用户分配的托管标识](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md)。
 
     ```azurecli
     az identity list
@@ -307,9 +307,9 @@ ms.locfileid: "98185880"
     az role definition create --role-definition <role_definition>
     ```
 
-### <a name="create-role-assignments"></a>创建角色分配
+### <a name="assign-roles"></a>分配角色
 
-- 使用 [az role assignment create](/cli/azure/role/assignment#az_role_assignment_create) 为用户、组和服务主体创建角色分配。 有关详细信息，请参阅[使用 Azure RBAC 和 Azure CLI 添加或删除角色分配](role-assignments-cli.md)。
+- 使用 [az role 分配 create](/cli/azure/role/assignment#az_role_assignment_create) 将角色分配给用户、组和服务主体。 有关详细信息，请参阅 [使用 Azure CLI 分配 Azure 角色](role-assignments-cli.md)。
 
     ```azurecli
     az role assignment create --role <role_name_or_id> --assignee <assignee> --resource-group <resource_group>
@@ -325,7 +325,7 @@ ms.locfileid: "98185880"
     | 虚拟机规模集 | [使用 Azure CLI 在虚拟机规模集上配置 Azure 资源托管标识](../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vmss.md#system-assigned-managed-identity) |
     | 其他服务 | [支持 Azure 资源托管标识的服务](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md) |
 
-1. 使用 [az role assignment create](/cli/azure/role/assignment#az_role_assignment_create) 为系统分配的托管标识创建角色分配。 有关详细信息，请参阅[使用 Azure CLI 为托管标识分配对资源的访问权限](../active-directory/managed-identities-azure-resources/howto-assign-access-cli.md)。
+1. 使用 [az role 赋值 create](/cli/azure/role/assignment#az_role_assignment_create) 将角色分配给系统分配的托管标识。 有关详细信息，请参阅[使用 Azure CLI 为托管标识分配对资源的访问权限](../active-directory/managed-identities-azure-resources/howto-assign-access-cli.md)。
 
     ```azurecli
     az role assignment create --assignee <objectid> --role '<role_name_or_id>' --scope <scope>
@@ -341,7 +341,7 @@ ms.locfileid: "98185880"
     | 虚拟机规模集 | [使用 Azure CLI 在虚拟机规模集上配置 Azure 资源托管标识](../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vmss.md#user-assigned-managed-identity) |
     | 其他服务 | [支持 Azure 资源托管标识的服务](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)<br/>[使用 Azure CLI 创建、列出或删除用户分配的托管标识](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md) |
 
-1. 使用 [az role assignment create](/cli/azure/role/assignment#az_role_assignment_create) 为用户分配的托管标识创建角色分配。 有关详细信息，请参阅[使用 Azure CLI 为托管标识分配对资源的访问权限](../active-directory/managed-identities-azure-resources/howto-assign-access-cli.md)。
+1. 使用 [az role 赋值 create](/cli/azure/role/assignment#az_role_assignment_create) 将角色分配给用户分配的托管标识。 有关详细信息，请参阅[使用 Azure CLI 为托管标识分配对资源的访问权限](../active-directory/managed-identities-azure-resources/howto-assign-access-cli.md)。
 
     ```azurecli
     az role assignment create --assignee <objectid> --role '<role_name_or_id>' --scope <scope>

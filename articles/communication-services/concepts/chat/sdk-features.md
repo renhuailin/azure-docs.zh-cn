@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: b239cf6d253c1c2d2e36d213e92e0b218add3f8c
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: dcd8222b46262f6ec70459ec670789ae4a433c1d
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94885982"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99625258"
 ---
 # <a name="chat-client-library-overview"></a>聊天客户端库概述
 
@@ -53,6 +53,17 @@ Azure 通信服务聊天客户端库可用于向应用程序添加丰富的实�
 | 监视        | 监视与发送的消息有关的使用情况                                                                               | ✔️   | ✔️  | ✔️    | ✔️  |
 |                    | 监视应用发出的 API 请求的质量和状态，并通过门户配置警报                                                          | ✔️   | ✔️  | ✔️    | ✔️  |
 |其他功能 | 使用[认知服务 API](../../../cognitive-services/index.yml) 和聊天客户端库启用智能功能 - 对客户端上的传入消息进行语言翻译和情绪分析，在成员讲话时将语音转换为文本以撰写消息等。                                                                                         | ✔️   | ✔️  | ✔️    | ✔️  |
+
+## <a name="javascript-chat-client-library-support-by-os-and-browser"></a>OS 和浏览器对 JavaScript 聊天客户端库的支持
+
+下表显示了当前可用的一组受支持的浏览器和版本。
+
+|                                  | Windows          | macOS          | Ubuntu | Linux  | Android | iOS    | iPad OS|
+| -------------------------------- | ---------------- | -------------- | ------- | ------ | ------ | ------ | -------|
+| **聊天客户端库** | Firefox *、Chrome*、新版 Microsoft Edge | Firefox *、Chrome*、Safari* | Chrome*  | Chrome* | Chrome* | Safari* | Safari* |
+
+
+*请注意，除前两个版本外，还支持最新版本。<br/>
 
 ## <a name="next-steps"></a>后续步骤
 

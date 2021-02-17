@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure IoT Central 生成医疗保健解决方案 | Microsoft Docs
+title: 什么是 Azure IoT Central 医疗保健解决方案 | Microsoft Docs
 description: 了解如何使用 Azure IoT Central 应用程序模板生成医疗保健解决方案。
 author: philmea
 ms.author: philmea
@@ -8,16 +8,14 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: 2aee5c56b267f9243b69a48dfd0f5f64196c5f23
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e8a72195f0fcacce2c994e8770157b05b65d70ee
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "77021478"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99833144"
 ---
-# <a name="building-healthcare-solutions-with-azure-iot-central"></a>使用 Azure IoT Central 生成医疗保健解决方案 
-
-
+# <a name="what-are-the-iot-central-healthcare-solutions"></a>什么是 IoT Central 医疗保健解决方案？
 
 了解如何使用具有应用程序模板的 Azure IoT Central 生成医疗保健解决方案。
 

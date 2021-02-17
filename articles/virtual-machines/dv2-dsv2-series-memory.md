@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: b6f99f1f58faece3ab286b2bc3cb571cdcba87de
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 8450a4bf172abcc57f93ccd20bc84642946e7ba9
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99088898"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555072"
 ---
 # <a name="memory-optimized-dv2-and-dsv2-series"></a>内存优化的 Dv2 和 Dsv2 系列
 
@@ -28,7 +28,7 @@ Dv2 系列大小在 Intel® Xeon® Platinum 8272CL (Cascade Lake)、Intel® Xeon
 [实时迁移](maintenance-and-updates.md)：支持<br>
 [内存保留更新](maintenance-and-updates.md)：支持<br>
 [VM 代系支持](generation-2.md)：第 1 代<br>
-[加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：支持<br>
+[加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：支持的 (至少 *需要4个 vCPU*) <br>
 [临时 OS 磁盘](ephemeral-os-disks.md)：不支持 <br>
 <br> 
 
@@ -53,7 +53,7 @@ DSv2 系列大小在 Intel® Xeon® Platinum 8272CL (Cascade Lake)、Intel® Xeo
 [实时迁移](maintenance-and-updates.md)：支持<br>
 [内存保留更新](maintenance-and-updates.md)：支持<br>
 [VM 代系支持](generation-2.md)：第 1 代和第 2 代<br>
-[加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：支持<br>
+[加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：支持的 (至少 *需要4个 vCPU*) <br>
 [临时 OS 磁盘](ephemeral-os-disks.md)：受支持 <br>
 <br> 
 

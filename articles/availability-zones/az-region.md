@@ -8,12 +8,12 @@ ms.date: 01/26/2021
 ms.author: prsandhu
 ms.reviewer: cynthn
 ms.custom: fasttrack-edit, mvc, references_regions
-ms.openlocfilehash: 3916cd43a42ef273a45a9992b45d8b9f043c9364
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: 16bb173bdbe390da46f2dc105baa9bc73d25a3dc
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99226618"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100557026"
 ---
 # <a name="azure-services-that-support-availability-zones"></a>支持可用性区域的 Azure 服务
 
@@ -51,11 +51,11 @@ ms.locfileid: "99226618"
 |--------------------|----------------------|---------------------|----------------|
 |                    |                      |                     |                |
 | 加拿大中部     | 法国中部       | 南非北部 * | Japan East     |
-| 美国中部         | 德国中西部 |                     | Southeast Asia |
+| Central US         | 德国中西部 |                     | Southeast Asia |
 | 美国东部            | 北欧         |                     | 澳大利亚东部 |
 | 美国东部 2          | 英国南部             |                     |                |
 | 美国中南部 | 西欧          |                     |                |
-| US Gov 弗吉尼亚州 * |                      |                     |                |
+| US Gov 弗吉尼亚州    |                      |                     |                |
 | 美国西部2        |                      |                     |                |
 
 
@@ -90,7 +90,7 @@ ms.locfileid: "99226618"
 |     Azure SQL Database (高级 & 业务关键层)      | ： large_blue_diamond：  |
 |     磁盘存储                                                | ： large_blue_diamond：  |
 |     事件中心                                                  | ： large_blue_diamond：  |
-|     Key Vault                                                   | ： large_blue_diamond：  |
+|     密钥保管库                                                   | ： large_blue_diamond：  |
 |     负载均衡器                                               | ： large_blue_diamond：  |
 |     服务总线                                                 | ： large_blue_diamond：  |
 |     Service Fabric                                            | ： large_blue_diamond：  |
@@ -117,7 +117,7 @@ ms.locfileid: "99226618"
 | 应用服务环境                        |      ： large_blue_diamond：  |
 | Azure Active Directory 域服务          |      ： large_blue_diamond：  |
 | Azure Bastion                                   |      ： large_blue_diamond：  |
-| Azure Redis 缓存                           |      ： large_blue_diamond：  |
+| 用于 Redis 的 Azure 缓存                           |      ： large_blue_diamond：  |
 | Azure 认知服务：文本分析        |      ： large_blue_diamond：  |
 | Azure 数据资源管理器                             |      ： large_blue_diamond：  |
 | Azure Database for MySQL –灵活的服务器      |      ： large_blue_diamond：  |
