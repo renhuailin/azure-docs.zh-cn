@@ -3,12 +3,12 @@ title: 使用 PowerShell 将混合计算机连接到 Azure
 description: 本文介绍如何使用启用了 Azure Arc 的服务器安装代理并将计算机连接到 Azure。 可以使用 PowerShell 执行此操作。
 ms.date: 10/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0218235179e1a8a883360d0061e685c04079cbf4
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 07a00de9077378ce3e3f7a7578b66e93d1b04f2b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95492935"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100584936"
 ---
 # <a name="connect-hybrid-machines-to-azure-by-using-powershell"></a>使用 PowerShell 将混合计算机连接到 Azure
 
@@ -20,7 +20,7 @@ ms.locfileid: "95492935"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - 具有 Azure PowerShell 的计算机。 有关说明，请参阅[安装和配置 Azure PowerShell](/powershell/azure/)。
 
@@ -103,6 +103,6 @@ Install-Module -Name Az.ConnectedMachine
 
 * 如有必要，请参阅有关 [连接的计算机代理的疑难解答指南](troubleshoot-agent-onboard.md)。
 
-* 了解如何使用 [Azure 策略](../../governance/policy/overview.md)管理计算机。 你可以使用 VM [来宾配置](../../governance/policy/concepts/guest-configuration.md)，验证计算机是否已向预期的 Log Analytics 工作区进行报告，并使用 [vm Azure Monitor](../../azure-monitor/insights/vminsights-enable-policy.md)启用监视。
+* 了解如何使用 [Azure 策略](../../governance/policy/overview.md)管理计算机。 你可以使用 VM [来宾配置](../../governance/policy/concepts/guest-configuration.md)，验证计算机是否已向预期的 Log Analytics 工作区进行报告，并使用 [vm Azure Monitor](../../azure-monitor/vm/vminsights-enable-policy.md)启用监视。
 
-* 详细了解 [Log Analytics 代理](../../azure-monitor/platform/log-analytics-agent.md)。 需要收集操作系统和工作负荷监视数据，或使用 Azure 自动化 runbook 或更新管理等功能来管理数据时，需要使用适用于 Windows 和 Linux 的 Log Analytics 代理。 使用其他 Azure 服务（例如 [Azure 安全中心](../../security-center/security-center-introduction.md)）时，也需要使用此代理。
+* 详细了解 [Log Analytics 代理](../../azure-monitor/agents/log-analytics-agent.md)。 需要收集操作系统和工作负荷监视数据，或使用 Azure 自动化 runbook 或更新管理等功能来管理数据时，需要使用适用于 Windows 和 Linux 的 Log Analytics 代理。 使用其他 Azure 服务（例如 [Azure 安全中心](../../security-center/security-center-introduction.md)）时，也需要使用此代理。

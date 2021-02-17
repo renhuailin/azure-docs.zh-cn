@@ -6,12 +6,12 @@ author: eternovsky
 ms.author: evternov
 ms.date: 08/08/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 17de697686485d695586ffa798196efb4a34c251
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 933280b5d3b81098f18f22a72bd2c7f942869e6a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87092909"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100578327"
 ---
 # <a name="correlating-application-insights-data-with-custom-data-sources"></a>将 Application Insights 数据与自定义数据源相关联
 
@@ -31,19 +31,19 @@ Application Insights 收集多种不同的数据类型：异常、跟踪、页�
 
 在此部分，我们会讨论如何将数据引入 Azure Monitor 日志中。
 
-如果还没有 Log Analytics 工作区，请预配一个新的，只需按照[这些说明](../learn/quick-collect-azurevm.md)操作并包括“创建工作区”步骤即可。
+如果还没有 Log Analytics 工作区，请预配一个新的，只需按照[这些说明](../vm/quick-collect-azurevm.md)操作并包括“创建工作区”步骤即可。
 
 开始将日志数据发送到 Azure Monitor。 存在多个选项：
 
-- 对于同步机制，可以直接调用 [数据收集器 API](../platform/data-collector-api.md) ，也可以使用我们的逻辑应用连接器–只需查找 "Azure Log Analytics" 并选择 "发送数据" 选项：
+- 对于同步机制，可以直接调用 [数据收集器 API](../logs/data-collector-api.md) ，也可以使用我们的逻辑应用连接器–只需查找 "Azure Log Analytics" 并选择 "发送数据" 选项：
 
   ![“选择操作”的屏幕截图](./media/custom-data-correlation/01-logic-app-connector.png)  
 
-- 对于异步选项，请使用数据收集器 API 来生成处理管道。 有关详细信息，请参阅[此文](../platform/create-pipeline-datacollector-api.md)。
+- 对于异步选项，请使用数据收集器 API 来生成处理管道。 有关详细信息，请参阅[此文](../logs/create-pipeline-datacollector-api.md)。
 
 ## <a name="correlating-data"></a>关联数据
 
-Application Insights 基于 Azure Monitor 日志平台。 因此，我们可以使用[跨资源联接](../log-query/cross-workspace-query.md)将已引入到 Azure Monitor 中的任何数据与 Application Insights 数据相关联。
+Application Insights 基于 Azure Monitor 日志平台。 因此，我们可以使用[跨资源联接](../logs/cross-workspace-query.md)将已引入到 Azure Monitor 中的任何数据与 Application Insights 数据相关联。
 
 例如，可以将实验室清单和位置引入名为“myLA”的 Log Analytics 工作区的名为“LabLocations_CL”的表中。 然后，如果我们需要查看在名为“myAI”的 Application Insights 应用中跟踪的请求，并将处理请求的计算机名称与前述自定义表中存储的这些计算机位置相关联，则可在 Application Insights 或 Azure Monitor 上下文中运行以下查询：
 
@@ -57,5 +57,5 @@ app('myAI').requests
 
 ## <a name="next-steps"></a>后续步骤
 
-- 查看[数据收集器 API](../platform/data-collector-api.md) 参考。
-- 有关[跨资源联接](../log-query/cross-workspace-query.md)的详细信息。
+- 查看[数据收集器 API](../logs/data-collector-api.md) 参考。
+- 有关[跨资源联接](../logs/cross-workspace-query.md)的详细信息。

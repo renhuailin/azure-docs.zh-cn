@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 10/19/2020
 ms.author: maquaran
-ms.openlocfilehash: f753010eb994c9f3c286ad6eca6392ca7b643075
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 30328db465e0d9bf8c1ce67d92e48c688c51e043
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97932905"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574612"
 ---
 # <a name="how-to-configure-logging-and-connectivity-with-the-azure-functions-trigger-for-cosmos-db"></a>如何配置适用于 Cosmos DB 的 Azure Functions 触发器的日志记录和连接
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -44,7 +44,7 @@ ms.locfileid: "97932905"
 
 ### <a name="query-the-logs"></a>查询日志
 
-在 [Azure Application Insights Analytics](../azure-monitor/log-query/log-query-overview.md) 中运行以下查询，以查询适用于 Cosmos DB 的 Azure Functions 触发器生成的日志：
+在 [Azure Application Insights Analytics](../azure-monitor/logs/log-query-overview.md) 中运行以下查询，以查询适用于 Cosmos DB 的 Azure Functions 触发器生成的日志：
 
 ```sql
 traces
@@ -82,7 +82,7 @@ traces
 ```
 
 > [!NOTE]
-> 在消耗计划中托管函数应用时，每个实例都有其可维护的套接字连接量的限制。 使用直接/TCP 模式时，会创建更多的连接并达到 [消耗计划限制](../azure-functions/manage-connections.md#connection-limit)，在这种情况下，可以使用网关模式，或在 [高级计划](../azure-functions/functions-premium-plan.md) 或 [专用 (应用服务) 计划](../azure-functions/dedicated-plan.md)中托管函数应用。
+> 在消耗计划中托管函数应用时，每个实例可以维护的套接字连接数量都有限制。 使用直接/TCP 模式时，会创建更多的连接并达到 [消耗计划限制](../azure-functions/manage-connections.md#connection-limit)，在这种情况下，可以使用网关模式，或在 [高级计划](../azure-functions/functions-premium-plan.md) 或 [专用 (应用服务) 计划](../azure-functions/dedicated-plan.md)中托管函数应用。
 
 ## <a name="next-steps"></a>后续步骤
 

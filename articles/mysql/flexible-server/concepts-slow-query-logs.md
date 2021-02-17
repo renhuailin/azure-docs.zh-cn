@@ -1,47 +1,47 @@
 ---
-title: 慢查询日志-Azure Database for MySQL-灵活服务器
-description: 介绍 Azure Database for MySQL 灵活的服务器中可用的慢速查询日志。
+title: 慢查询日志 - Azure Database for MySQL - 灵活服务器
+description: 描述 Azure Database for MySQL 灵活服务器中提供的慢查询日志。
 author: savjani
 ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/21/2020
-ms.openlocfilehash: dde9575a70ea80ad262bc01bb9d5d0015c803427
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: d311ea3158e1f9d53c51fe239103039849597d11
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94543011"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579187"
 ---
-# <a name="slow-query-logs-in-azure-database-for-mysql-flexible-server-preview"></a>Azure Database for MySQL 灵活的服务器 (预览版中的查询日志速度缓慢) 
+# <a name="slow-query-logs-in-azure-database-for-mysql-flexible-server-preview"></a>Azure Database for MySQL 灵活服务器中的慢查询日志（预览版）
 
 > [!IMPORTANT] 
 > Azure Database for MySQL 灵活服务器当前以公共预览版提供。
 
-在 Azure Database for MySQL 灵活的服务器中，用户可以配置和访问慢速查询日志。 慢速查询日志默认情况下处于禁用状态，并且可以启用以帮助在故障排除期间识别性能瓶颈。
+在 Azure Database for MySQL 灵活服务器中，用户可配置和访问慢查询日志。 慢查询日志默认禁用，你可启用它来在故障排除期间帮助识别性能性能瓶颈。
 
-有关 MySQL 慢速查询日志的详细信息，请参阅 MySQL 引擎文档中的 [慢速查询日志部分](https://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html) 。
+有关 MySQL 慢查询日志的详细信息，请参阅 MySQL 引擎文档中的[“慢查询日志”部分](https://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html)。
 
 ## <a name="configure-slow-query-logging"></a>配置慢查询日志记录 
-默认情况下，慢速查询日志处于禁用状态。 若要启用日志，请将 `slow_query_log` 服务器参数设置为 *ON* 。 这可以使用 Azure 门户或 Azure CLI 进行配置。 <!-- add link to server parameter-->. 
+慢查询日志默认禁用。 若要启用这些日志，请将 `slow_query_log` 服务器参数设置为 ON。 可使用 Azure 门户或 Azure CLI 配置此功能 <!-- add link to server parameter-->. 
 
-可以调整以控制慢速查询日志记录行为的其他参数包括：
+可调整来控制慢查询日志记录行为的其他参数包括：
 
-- **long_query_time** ：记录查询是否需要超过 `long_query_time` (秒的时间才能完成) 。 默认值为 10 秒。
-- **log_slow_admin_statements** ：确定管理语句是否 (例如。 `ALTER_TABLE``ANALYZE_TABLE`记录) 。
-- **log_queries_not_using_indexes** ：确定是否记录不使用索引的查询。
-- **log_throttle_queries_not_using_indexes** ：限制可以写入慢查询日志的非索引查询数。 当 `log_queries_not_using_indexes` 设置为 *ON* 时，此参数生效
+- **long_query_time**：如果查询超过 `long_query_time`（秒）才完成，则记录该查询。 默认为 10 秒。
+- **log_slow_admin_statements**：确定是否记录管理语句（例如 `ALTER_TABLE`、`ANALYZE_TABLE`）。
+- **log_queries_not_using_indexes**：确定是否记录没有使用索引的查询。
+- **log_throttle_queries_not_using_indexes**：限制可写入慢查询日志的非索引查询的数目。 当 `log_queries_not_using_indexes` 设置为 ON 时，此参数生效
 
 > [!IMPORTANT]
-> 如果表未编制索引，则将 `log_queries_not_using_indexes` 和 `log_throttle_queries_not_using_indexes` 参数设置为 **ON** 可能会影响 MySQL 性能，因为对这些非索引表运行的所有查询都将写入慢查询日志。
+> 如果表未编制索引，则将 `log_queries_not_using_indexes` 和 `log_throttle_queries_not_using_indexes` 参数设置为 ON 可能会影响 MySQL 性能，因为对这些非索引表运行的所有查询都将写入到慢查询日志。
 
 有关慢查询日志参数的完整说明，请参阅 MySQL [慢查询日志文档](https://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html)。
 
 ## <a name="access-slow-query-logs"></a>访问慢查询日志
 
-慢速查询日志与 Azure Monitor 诊断设置集成在一起。 在 MySQL 灵活的服务器上启用慢查询日志后，可以将其发送到 Azure Monitor 日志、事件中心或 Azure 存储。 若要了解有关诊断设置的详细信息，请参阅 [诊断日志文档](../../azure-monitor/platform/platform-logs-overview.md)。 若要详细了解如何在 Azure 门户中启用诊断设置，请参阅 [慢速查询日志门户](how-to-configure-slow-query-logs-portal.md#set-up-diagnostics)。
+慢查询日志与 Azure Monitor 诊断设置相集成。 在 MySQL 灵活服务器上启用慢查询日志后，可将它们发送到 Azure Monitor 日志、事件中心或 Azure 存储。 若要详细了解诊断设置，请参阅[诊断日志文档](../../azure-monitor/essentials/platform-logs-overview.md)。 若要详细了解如何在 Azure 门户启用诊断设置，请参阅[慢查询日志门户文章](how-to-configure-slow-query-logs-portal.md#set-up-diagnostics)。
 
-下表介绍慢速查询日志的输出。 根据输出方法，包含的字段以及这些字段出现的顺序可能会有所不同。
+下表描述了慢查询日志的输出。 根据输出方法，包含的字段以及这些字段出现的顺序可能会有所不同。
 
 | **属性** | **说明** |
 |---|---|
@@ -131,5 +131,5 @@ ms.locfileid: "94543011"
     
 ## <a name="next-steps"></a>后续步骤
 - 详细了解[审核日志](concepts-audit-logs.md)
-- 从[Azure 门户](how-to-configure-slow-query-logs-portal.md)配置慢查询日志
+- 通过 [Azure 门户](how-to-configure-slow-query-logs-portal.md)配置慢查询日志
 <!-- - [How to configure slow query logs from the Azure CLI](howto-configure-server-logs-in-cli.md). -->

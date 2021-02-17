@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 01/08/2021
 ms.topic: conceptual
-ms.openlocfilehash: 40405607e7f7198f190f621121022537ac3b3171
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: f2ce8d482231b4a95c322e9d495a75f89953c32a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98046033"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581110"
 ---
 # <a name="management-of-azure-automation-data"></a>管理 Azure 自动化数据
 
@@ -28,7 +28,7 @@ ms.locfileid: "98046033"
 
 我们发现旧版 TLS/安全套接字层 (SSL) 容易受到攻击，尽管目前出于向后兼容，这些协议仍可正常工作，但我们 **不建议使用**。 除非绝对必要，否则我们不建议将代理显式设置为仅使用 TLS 1.2，因为这可能会破坏平台级安全功能，导致无法自动检测并利用推出的更新且更安全的协议，例如 TLS 1.3。
 
-有关适用于 Windows 和 Linux 的 Log Analytics 代理（混合 Runbook 辅助角色的依赖项）的 TLS 1.2 支持的信息，请参阅 [Log Analytics 代理概述 - TLS 1.2](..//azure-monitor/platform/log-analytics-agent.md#tls-12-protocol)。
+有关适用于 Windows 和 Linux 的 Log Analytics 代理（混合 Runbook 辅助角色的依赖项）的 TLS 1.2 支持的信息，请参阅 [Log Analytics 代理概述 - TLS 1.2](..//azure-monitor/agents/log-analytics-agent.md#tls-12-protocol)。
 
 ### <a name="platform-specific-guidance"></a>特定于平台的指南
 

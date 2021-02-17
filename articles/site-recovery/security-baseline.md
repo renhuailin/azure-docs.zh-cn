@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/26/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: c3e2245ae47504e058921c532ed40a220e95423d
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: bf91c0a6e533acb326fe815c3e3c1088c959a603
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98197568"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576733"
 ---
 # <a name="azure-security-baseline-for-site-recovery"></a>Site Recovery 的 Azure 安全基线
 
@@ -66,9 +66,9 @@ ms.locfileid: "98197568"
 
 **指导**：使用 Azure 活动日志监视与 Site Recovery 服务相关的网络资源配置的任何更改。 在 Azure Monitor 中创建警报，以便系统在关键 Site Recovery 网络资源发生更改时通知你。
 
-- [查看和检索 Azure 活动日志事件](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [查看和检索 Azure 活动日志事件](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [使用 Azure Monitor 创建、查看和管理活动日志警报](../azure-monitor/platform/alerts-activity-log.md)
+- [使用 Azure Monitor 创建、查看和管理活动日志警报](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -86,7 +86,7 @@ ms.locfileid: "98197568"
 
 在 Azure Monitor 中引入 Site Recovery 日志以聚合生成的安全数据。 在 Azure Monitor 中，使用 Log Analytics 工作区来查询和执行分析，并使用存储帐户进行长期存储或存档存储。 另外，你可以启用 Azure Sentinel 或第三方安全信息和事件管理 (SIEM) 解决方案并将数据载入其中。
 
-- [如何启用 Azure 活动日志的诊断设置](../azure-monitor/platform/activity-log.md)
+- [如何启用 Azure 活动日志的诊断设置](../azure-monitor/essentials/activity-log.md)
 
 - [使用 Azure Monitor 日志监视 Site Recovery](monitor-log-analytics.md)
 
@@ -104,7 +104,7 @@ ms.locfileid: "98197568"
 
 通过 Azure Monitor 引入 Site Recovery 日志以聚合生成的安全数据。 在 Azure Monitor 中，使用 Log Analytics 工作区来查询和执行分析，并使用存储帐户进行长期/存档存储。 启用 Azure Sentinel 或第三方安全信息和事件管理 (SIEM) 解决方案并将数据载入其中。
 
-- [如何启用 Azure 活动日志的诊断设置](../azure-monitor/platform/activity-log.md)
+- [如何启用 Azure 活动日志的诊断设置](../azure-monitor/essentials/activity-log.md)
 
 - [使用 Azure Monitor 日志监视 Site Recovery](monitor-log-analytics.md)
 
@@ -118,7 +118,7 @@ ms.locfileid: "98197568"
 
 **指导**：使用 Azure Monitor，根据组织的合规性规定，为与 Azure 恢复服务保管库关联的 Log Analytics 工作区设置日志保留期。 
 
-- [如何设置日志保留参数](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [如何设置日志保留参数](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure 安全中心监视**：不适用
 
@@ -132,9 +132,9 @@ ms.locfileid: "98197568"
 
 - [监视 Site Recovery](site-recovery-monitor-and-troubleshoot.md)
 
-- [如何启用 Azure 活动日志的诊断设置](../azure-monitor/platform/activity-log.md)
+- [如何启用 Azure 活动日志的诊断设置](../azure-monitor/essentials/activity-log.md)
 
-- [如何收集和分析 Azure Monitor 的 Log Analytics 工作区中的 Azure 活动日志](../azure-monitor/platform/activity-log.md)
+- [如何收集和分析 Azure Monitor 的 Log Analytics 工作区中的 Azure 活动日志](../azure-monitor/essentials/activity-log.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -150,7 +150,7 @@ ms.locfileid: "98197568"
 
 - [如何加入 Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-- [使用 Azure Monitor 创建、查看和管理日志警报](../azure-monitor/platform/alerts-log.md)
+- [使用 Azure Monitor 创建、查看和管理日志警报](../azure-monitor/alerts/alerts-log.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -413,7 +413,7 @@ Site Recovery 支持数据的静态加密。 对于 Azure IaaS 工作负荷，�
 ### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4.9：记录对关键 Azure 资源的更改并对此类更改发出警报
 
 **指导**：将 Azure Monitor 与 Azure 活动日志结合使用，以创建在关键资源发生更改时发出的警报。 这些资源可能包括恢复服务保管库的生产实例、Site Recovery 服务的资源和相关资源。
-- [如何针对 Azure 活动日志事件创建警报](../azure-monitor/platform/alerts-activity-log.md)
+- [如何针对 Azure 活动日志事件创建警报](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure 安全中心监视**：不适用
 

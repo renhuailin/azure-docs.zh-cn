@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: damendo
-ms.openlocfilehash: a5fdde954d2826f34c671552a88365f9276b89a0
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: f4d97b81bf8f11b8380f04dcbfdb72bd658805ab
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97895217"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579236"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>流量分析常见问题解答
 
@@ -126,7 +126,7 @@ Log Analytics 工作区必须存在于以下区域中：
 
 ## <a name="can-i-use-an-existing-workspace"></a>是否可以使用现有的的工作区？
 
-是的。 如果选择现有的工作区，请确保已将此工作区迁移到新的查询语言。 如果不想要升级该工作区，则需要创建新的工作区。 有关新查询语言的详细信息，请参阅[将 Azure Monitor 日志升级到新的日志搜索](../azure-monitor/log-query/log-query-overview.md)。
+是的。 如果选择现有的工作区，请确保已将此工作区迁移到新的查询语言。 如果不想要升级该工作区，则需要创建新的工作区。 有关新查询语言的详细信息，请参阅[将 Azure Monitor 日志升级到新的日志搜索](../azure-monitor/logs/log-query-overview.md)。
 
 ## <a name="can-my-azure-storage-account-be-in-one-subscription-and-my-log-analytics-workspace-be-in-a-different-subscription"></a>是否可将 Azure 存储帐户放在一个订阅中，并将 Log Analytics 工作区放在另一个订阅中？
 
@@ -262,7 +262,7 @@ armclient post "https://management.azure.com/subscriptions/<NSG subscription id>
 - 可以在流量分析中使 Log Analytics 的短链接。 
 - 使用[此处记录的架构](traffic-analytics-schema.md)编写查询 
 - 单击“新建警报规则”以创建警报
-- 请参阅[日志警报文档](../azure-monitor/platform/alerts-log.md)以创建警报
+- 请参阅[日志警报文档](../azure-monitor/alerts/alerts-log.md)以创建警报
 
 ## <a name="how-do-i-check-which-vms-are-receiving-most-on-premises-traffic"></a>如何检查哪些 VM 接收的本地流量最多？
 
@@ -402,5 +402,5 @@ destIPs = iif(isempty(DestIP_s), split(DestPublicIPs_s," ") , pack_array(DestIP_
 - 在突出显示的节点上，焦点会移至节点的“信息工具框”。 默认情况下，焦点会移至“信息工具框”中的“更多详细信息”按钮 。 若要进一步在“框”视图中移动，可分别使用 `Right arrow` 和 `Left arrow` 键向前和向后移动。 按 `Enter` 的效果与在“信息工具框”中选择聚焦的按钮相同。
 - 选择任何此类节点时，可通过按 `Shift+Left arrow` 键逐个访问其所有连接。 焦点将移至该连接的“信息工具框”。 在任何时候，都可通过再次按 `Shift+Right arrow`，将焦点移回该节点。
 
-## <a name="are-classic-nsgs-supported"></a>是否支持经典 Nsg？
-不，流量分析不支持经典 NSG。 建议将 IaaS 资源从经典部署模型迁移到 Azure 资源管理器因为将不 [推荐使用](https://docs.microsoft.com/azure/virtual-machines/classic-vm-deprecation)经典资源。 请参阅本文，了解 [如何迁移](https://docs.microsoft.com/azure/virtual-machines/migration-classic-resource-manager-overview)。
+## <a name="are-classic-nsgs-supported"></a>是否支持经典 NSG？
+否，流量分析不支持经典 NSG。 建议将 IaaS 资源从经典部署模型迁移到 Azure 资源管理器，因为经典资源将[弃用](../virtual-machines/classic-vm-deprecation.md)。 请参阅本文了解[如何迁移](../virtual-machines/migration-classic-resource-manager-overview.md)。

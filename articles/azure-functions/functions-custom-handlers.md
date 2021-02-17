@@ -5,12 +5,12 @@ author: anthonychu
 ms.author: antchu
 ms.date: 12/1/2020
 ms.topic: article
-ms.openlocfilehash: f527b387afc01eb60bd582adc13a4ad3d516055b
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: dd112c74ea9f013a0e14bddd735060ddbf73c14e
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936985"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100578522"
 ---
 # <a name="azure-functions-custom-handlers"></a>Azure Functions 自定义处理程序
 
@@ -20,12 +20,12 @@ ms.locfileid: "97936985"
 
 自定义处理程序最适合用于以下场合：
 
-- 使用目前不受支持的语言（如中转或 Rust）来实现函数应用。
+- 使用当前不受支持的语言（如 Go 或 Rust）实现函数应用。
 - 使用当前不受支持的运行时（如 Deno）实现函数应用。
 
 对于自定义处理程序，可以通过[扩展绑定](./functions-bindings-register.md)来使用[触发器以及输入和输出绑定](./functions-triggers-bindings.md)。
 
-开始处理 Azure Functions 自定义处理程序 [和 Rust 中的快速入门](create-first-function-vs-code-other.md)。
+通过 [Go 和 Rust 中的快速入门](create-first-function-vs-code-other.md)开始使用 Azure Functions 自定义处理程序。
 
 ## <a name="overview"></a>概述
 
@@ -121,9 +121,6 @@ local.settings.json 定义在本地运行函数应用时使用的应用程序设
   }
 }
 ```
-
-> [!NOTE]
-> 在 Linux Premium 上或应用服务计划中，`Custom` 可能不会被识别为有效的运行时。 如果这是你的部署目标，则将 `FUNCTIONS_WORKER_RUNTIME` 设置为空字符串。
 
 ### <a name="function-metadata"></a>函数元数据
 
@@ -588,4 +585,4 @@ Functions 主机输出额外的日志消息，包括与自定义处理程序进�
 
 ## <a name="next-steps"></a>后续步骤
 
-开始使用 [自定义处理程序快速入门](create-first-function-vs-code-other.md)或 Rust 中的自定义处理程序构建 Azure Functions 应用。
+通过[自定义处理程序快速入门](create-first-function-vs-code-other.md)，开始使用 Go 或 Rust 构建 Azure 函数应用。

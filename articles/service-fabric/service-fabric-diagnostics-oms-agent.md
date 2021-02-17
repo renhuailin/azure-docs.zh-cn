@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 04/16/2018
 ms.author: srrengar
-ms.openlocfilehash: b91a8a8742a5bdc9454ebcbd8894889084a12a79
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 47017fdb5f1fbaba800e71dea21afe2c39bd91e7
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86258691"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570150"
 ---
 # <a name="performance-monitoring-with-azure-monitor-logs"></a>使用 Azure Monitor 日志进行性能监视
 
@@ -91,6 +91,6 @@ ms.locfileid: "86258691"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 收集相关[性能计数器](service-fabric-diagnostics-event-generation-perf.md)。 若要配置 Log Analytics 代理以收集特定性能计数器，请查看[配置数据源](../azure-monitor/platform/agent-data-sources.md#configuring-data-sources)。
-* 配置 Azure Monitor 日志，以便设置有助于检测和诊断的[自动警报](../azure-monitor/platform/alerts-overview.md)
+* 收集相关[性能计数器](service-fabric-diagnostics-event-generation-perf.md)。 若要配置 Log Analytics 代理以收集特定性能计数器，请查看[配置数据源](../azure-monitor/agents/agent-data-sources.md#configuring-data-sources)。
+* 配置 Azure Monitor 日志，以便设置有助于检测和诊断的[自动警报](../azure-monitor/alerts/alerts-overview.md)
 * 作为替代方法，可以通过 [Azure 诊断扩展收集性能计数器并将其发送到 Application Insights](service-fabric-diagnostics-event-aggregation-wad.md#add-the-application-insights-sink-to-the-resource-manager-template)

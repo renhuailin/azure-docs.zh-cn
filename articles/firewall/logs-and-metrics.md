@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: article
 ms.date: 02/16/2021
 ms.author: victorh
-ms.openlocfilehash: 637ef56ca79dd333a587d38ed6a685664c7566ca
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: 8922e6e0d5137a3a900e0f57f685d449c08b3f47
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100547037"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596956"
 ---
 # <a name="azure-firewall-logs-and-metrics"></a>Azure 防火墙日志和指标
 
@@ -187,4 +187,4 @@ Azure Monitor 中的指标是数字值，用于描述系统某些方面在特定
 
 - 若要了解如何监视 Azure 防火墙日志和指标，请参阅[教程：监视 Azure 防火墙日志](./firewall-diagnostics.md)。
 
-- 若要详细了解 Azure Monitor 中的指标，请参阅 [Azure Monitor 中的指标](../azure-monitor/platform/data-platform-metrics.md)。
+- 若要详细了解 Azure Monitor 中的指标，请参阅 [Azure Monitor 中的指标](../azure-monitor/essentials/data-platform-metrics.md)。

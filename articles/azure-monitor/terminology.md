@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2019
-ms.openlocfilehash: 819ef7e61045c0ed4205eeaf0094fec706b0b9da
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 99592544d97793f82db36e1d2cb33ba8c6af1c9c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86498604"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100586971"
 ---
 # <a name="azure-monitor-naming-and-terminology-changes"></a>Azure Monitor 命名和术语更改
 最近对 Azure Monitor 进行了重要更改，整合了不同的服务，目的是为 Azure 客户简化监视过程。 本文介绍最近在 Azure Monitor 文档中所做的名称和术语更改。
@@ -23,15 +23,15 @@ ms.locfileid: "86498604"
 将不同的服务合并到 Azure Monitor 下以后，我们将执行下一步，修改文档中的术语，以便更好地描述 Azure Monitor 服务及其不同的组件。 
 
 ### <a name="log-analytics"></a>Log Analytics
-Azure Monitor 日志数据仍然存储在 Log Analytics 工作区中，并仍然由同一 Log Analytics 服务收集并分析，但我们会在许多位置将术语 _Log Analytics_ 更改为“Azure Monitor 日志”__。 此术语更好地反映了它在 Azure Monitor 中的角色，并提供了与 [Azure Monitor 中的指标](platform/data-platform-metrics.md)更好的一致性。
+Azure Monitor 日志数据仍然存储在 Log Analytics 工作区中，并仍然由同一 Log Analytics 服务收集并分析，但我们会在许多位置将术语 _Log Analytics_ 更改为“Azure Monitor 日志”。 此术语更好地反映了它在 Azure Monitor 中的角色，并提供了与 [Azure Monitor 中的指标](essentials/data-platform-metrics.md)更好的一致性。
 
-术语 _Log Analytics_ 现在主要应用于 Azure 门户中的页面，用于编写和运行查询以及分析日志数据。 它在功能上相当于[指标资源管理器](platform/metrics-charts.md)，后者是 Azure 门户中的页面，用于分析指标数据。
+术语 _Log Analytics_ 现在主要应用于 Azure 门户中的页面，用于编写和运行查询以及分析日志数据。 它在功能上相当于[指标资源管理器](essentials/metrics-charts.md)，后者是 Azure 门户中的页面，用于分析指标数据。
 
 ### <a name="log-analytics-workspaces"></a>Log Analytics 工作区
-在 Azure Monitor 中保存日志数据的[工作区](platform/manage-access.md)仍然称为 Log Analytics 工作区。 Azure 门户中的“Log Analytics”菜单已重命名为“Log Analytics 工作区”，是[创建新工作区](learn/quick-create-workspace.md)和配置数据源的地方********。 在 **Azure Monitor** 中分析日志和其他监视数据，在 **Log Analytics 工作区**中配置工作区。
+在 Azure Monitor 中保存日志数据的[工作区](logs/manage-access.md)仍然称为 Log Analytics 工作区。 Azure 门户中的“Log Analytics”菜单已重命名为“Log Analytics 工作区”，是[创建新工作区](logs/quick-create-workspace.md)和配置数据源的地方。 在 **Azure Monitor** 中分析日志和其他监视数据，在 **Log Analytics 工作区** 中配置工作区。
 
 ### <a name="management-solutions"></a>管理解决方案
-[管理解决方案](insights/solutions.md)已重命名为“监视解决方案”__，以便更好地描述其功能。
+[管理解决方案](insights/solutions.md)已重命名为“监视解决方案”，以便更好地描述其功能。
 
 
 ## <a name="august-2018---consolidation-of-monitoring-services-into-azure-monitor"></a>2018 年 8 月 - 将监视服务合并到了 Azure Monitor 中
@@ -59,4 +59,4 @@ Operations Management Suite (OMS) 之前捆绑到以下 Azure 管理服务，用
 ## <a name="next-steps"></a>后续步骤
 
 - 阅读 [Azure Monitor 概述](overview.md)，其中介绍了它的各种组件和功能。
-- 了解 [OMS 门户的转换](./platform/oms-portal-transition.md)。
+- 了解 [OMS 门户的转换](./logs/oms-portal-transition.md)。

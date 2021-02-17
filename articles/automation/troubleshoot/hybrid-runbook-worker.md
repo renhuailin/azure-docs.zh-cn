@@ -7,12 +7,12 @@ author: mgoedtel
 ms.author: magoedte
 ms.date: 02/11/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: af432d9c6323bd2328eb8dd84d8572a8a5ae05a7
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 15a18cbfc3a80bbfea0b92e5b616104dc0f593af
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100387999"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100580998"
 ---
 # <a name="troubleshoot-hybrid-runbook-worker-issues"></a>排查混合 Runbook 辅助角色问题
 
@@ -128,7 +128,7 @@ Runbook 在尝试执行三次后很快暂停。 在某些情况下，Runbook 可
 #### <a name="resolution"></a>解决方法
 
 ##### <a name="mistyped-workspace-id-or-key"></a>错误键入了工作区 ID 或密钥
-若要验证是否错误键入了代理的工作区 ID 或工作区密钥，请参阅[添加或删除工作区 – Windows 代理](../../azure-monitor/platform/agent-manage.md#windows-agent)（适用于 Windows 代理）或者[添加或删除工作区 – Linux 代理](../../azure-monitor/platform/agent-manage.md#linux-agent)（适用于 Linux 代理）。 确保从 Azure 门户中选择完整字符串，然后小心复制并粘贴该字符串。
+若要验证是否错误键入了代理的工作区 ID 或工作区密钥，请参阅[添加或删除工作区 – Windows 代理](../../azure-monitor/agents/agent-manage.md#windows-agent)（适用于 Windows 代理）或者[添加或删除工作区 – Linux 代理](../../azure-monitor/agents/agent-manage.md#linux-agent)（适用于 Linux 代理）。 确保从 Azure 门户中选择完整字符串，然后小心复制并粘贴该字符串。
 
 ##### <a name="configuration-not-downloaded"></a>未下载配置
 
@@ -169,7 +169,7 @@ Runbook 在尝试执行时失败 `Set-AzStorageBlobContent` ，并且你收到�
 
 ## <a name="linux"></a>Linux
 
-Linux 混合 Runbook 辅助角色依靠[适用于 Linux 的 Log Analytics 代理](../../azure-monitor/platform/log-analytics-agent.md)与自动化帐户通信，以注册辅助角色、接收 Runbook 作业和报告状态。 如果辅助角色注册失败，以下是一些可能导致此错误的原因。
+Linux 混合 Runbook 辅助角色依靠[适用于 Linux 的 Log Analytics 代理](../../azure-monitor/agents/log-analytics-agent.md)与自动化帐户通信，以注册辅助角色、接收 Runbook 作业和报告状态。 如果辅助角色注册失败，以下是一些可能导致此错误的原因。
 
 ### <a name="scenario-linux-hybrid-runbook-worker-receives-prompt-for-a-password-when-signing-a-runbook"></a><a name="prompt-for-password"></a>场景：Linux 混合 Runbook 辅助角色在为 Runbook 签名时收到密码提示
 
@@ -225,7 +225,7 @@ wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/inst
 
 ## <a name="windows"></a>Windows
 
-Windows 混合 Runbook 辅助角色依靠[适用于 Windows 的 Log Analytics 代理](../../azure-monitor/platform/log-analytics-agent.md)与自动化帐户通信，以注册辅助角色、接收 Runbook 作业和报告状态。 如果辅助角色注册失败，请参考本部分所述的一些可能原因。
+Windows 混合 Runbook 辅助角色依靠[适用于 Windows 的 Log Analytics 代理](../../azure-monitor/agents/log-analytics-agent.md)与自动化帐户通信，以注册辅助角色、接收 Runbook 作业和报告状态。 如果辅助角色注册失败，请参考本部分所述的一些可能原因。
 
 ### <a name="scenario-the-log-analytics-agent-for-windows-isnt-running"></a><a name="mma-not-running"></a>场景：适用于 Windows 的 Log Analytics 代理未运行。
 
@@ -253,7 +253,7 @@ Windows 混合 Runbook 辅助角色依靠[适用于 Windows 的 Log Analytics �
 
 #### <a name="resolution"></a>解决方法
 
-日志存储在每个混合辅助角色本地的 C:\ProgramData\Microsoft\System Center\Orchestrator\7.2\SMA\Sandboxes 中。 可以在 **Application and Services Logs\Microsoft-SMA\Operations** 和 **Application and Services Logs\Operations Manager** 事件日志中验证是否出现了任何警告或错误事件。 这些日志会指出发生影响了在 Azure 自动化中启用角色的连接问题或其他类型的问题，或者在正常操作时遇到的问题。 在排查 Log Analytics 代理问题时如需更多帮助，请参阅[排查 Log Analytics Windows 代理的问题](../../azure-monitor/platform/agent-windows-troubleshoot.md)。
+日志存储在每个混合辅助角色本地的 C:\ProgramData\Microsoft\System Center\Orchestrator\7.2\SMA\Sandboxes 中。 可以在 **Application and Services Logs\Microsoft-SMA\Operations** 和 **Application and Services Logs\Operations Manager** 事件日志中验证是否出现了任何警告或错误事件。 这些日志会指出发生影响了在 Azure 自动化中启用角色的连接问题或其他类型的问题，或者在正常操作时遇到的问题。 在排查 Log Analytics 代理问题时如需更多帮助，请参阅[排查 Log Analytics Windows 代理的问题](../../azure-monitor/agents/agent-windows-troubleshoot.md)。
 
 混合辅助角色将 [Runbook 输出和消息](../automation-runbook-output-and-messages.md)发送到 Azure 自动化，其发送方式与云中运行的 Runbook 作业发送输出和消息的方式相同。 可以像使用 Runbook 时一样启用“详细”流和“进度”流。
 

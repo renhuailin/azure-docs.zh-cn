@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/03/2021
 ms.author: terrylan
-ms.openlocfilehash: eb8332bda2105c3f83c0c1cc28fb7db4b1ca0102
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 79262b85e9591ae4b41e8467abdcbccb3804d4ec
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99549913"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590352"
 ---
 # <a name="azure-threat-protection"></a>Azure 威胁防护
 
@@ -89,7 +89,7 @@ PIM 可帮助用户进行以下操作：
 Azure Monitor 日志有助于用户快速轻松了解任何环境中的总体安全情况，在 IT 操作的上下文中即可实现，这些操作包括软件更新评估、反恶意软件评估和配置基线。 可访问现成的安全日志数据，简化安全性和符合性审核过程。
 
 ### <a name="insight-and-analytics"></a>见解与分析
-[Azure Monitor 日志](../../azure-monitor/log-query/log-query-overview.md)的中心是由 Azure 托管的存储库。
+[Azure Monitor 日志](../../azure-monitor/logs/log-query-overview.md)的中心是由 Azure 托管的存储库。
 
 ![见解与分析关系图](./media/threat-detection/azure-threat-detection-fig4.png)
 
@@ -98,8 +98,8 @@ Azure Monitor 日志有助于用户快速轻松了解任何环境中的总体安
 数据源和解决方案分别创建具有自身属性集的单独记录类型，但是用户仍可在对存储库的查询中同时对它们进行分析。 可以使用相同的工具和方法来处理由不同的源收集的各种数据。
 
 与 Azure Monitor 日志的大部分交互都通过 Azure 门户完成，该门户可在任意浏览器中运行，并提供对配置设置和多个工具的访问权限，以对收集的数据进行分析和操作。 在门户中，可以使用：
-* [日志搜索](../../azure-monitor/log-query/log-query-overview.md)，可在其中构造查询以分析收集的数据。
-* [仪表板](../../azure-monitor/learn/tutorial-logs-dashboards.md)，可以使用最有价值搜索的图形视图对其进行自定义。
+* [日志搜索](../../azure-monitor/logs/log-query-overview.md)，可在其中构造查询以分析收集的数据。
+* [仪表板](../../azure-monitor/visualize/tutorial-logs-dashboards.md)，可以使用最有价值搜索的图形视图对其进行自定义。
 * [解决方案](../../azure-monitor/insights/solutions.md)，可提供其他功能和分析工具。
 
 解决方案向 Azure Monitor 日志添加功能。 解决方案主要在云中运行，并提供对日志分析存储库所收集数据的分析。 解决方案也可以定义要收集的新记录类型，可使用日志搜索或通过解决方案在日志分析仪表板中提供的其他用户界面对这些记录类型进行分析。
@@ -116,11 +116,11 @@ Azure 自动化通过基于 PowerShell 并在云中运行的 Runbook 自动执�
 
 ## <a name="azure-security-center"></a>Azure 安全中心
 
-Azure 安全中心可帮助保护你的混合云环境。 通过对连接的资源执行持续的安全评估，可以为发现的漏洞提供详细的安全建议。
+Azure 安全中心有助于保护混合云环境。 通过对连接的资源执行持续的安全评估，可以针对发现的漏洞提供详细的安全建议。
 
-安全中心的建议基于 [Azure 安全性基准](../benchmarks/introduction.md) ，这是针对基于公共符合性框架的安全性和符合性最佳做法的 Microsoft 创作的特定于 azure 的指导原则集。 这一广泛遵从的基准是从 [中心针对 Internet 安全 (CIS) ](https://www.cisecurity.org/benchmark/azure/) 和 [美国国家标准与技术研究院 (NIST) ](https://www.nist.gov/) ，重点介绍以云为中心的安全性。
+安全中心的建议是基于 [Azure 安全基准](../benchmarks/introduction.md)提出的，该基准是 Microsoft 创作的一组特定于 Azure 的准则，针对基于常见合规性框架的安全与合规最佳做法。 此基准受到广泛认可，以 [Internet 安全中心 (CIS)](https://www.cisecurity.org/benchmark/azure/) 和[国家标准与技术研究院 (NIST)](https://www.nist.gov/) 的控制措施为基础构建，重点关注以云为中心的安全。
 
-安全中心的集成云工作负荷保护平台 (CWPP) ， **Azure Defender**，提供 azure 和混合资源与工作负荷的高级、智能、保护。 启用 Azure Defender 会引入一系列附加安全功能 (参阅 [Azure Defender) 简介](../../security-center/azure-defender.md) 。 可在你的环境中使用安全中心的 Azure Defender 仪表板显示和控制 CWP 功能：
+Azure Defender 是安全中心集成的云工作负载保护平台 (CWPP)，可为 Azure 和混合资源及工作负载提供高级智能保护。 启用 Azure Defender 可获得一系列其他安全功能（请参阅 [Azure Defender 简介](../../security-center/azure-defender.md)）。 可在你的环境中使用安全中心的 Azure Defender 仪表板显示和控制 CWP 功能：
 
 :::image type="content" source="../../security-center/media/azure-defender/sample-defender-dashboard.png" alt-text="Azure Defender 仪表板示例" lightbox="../../security-center/media/azure-defender/sample-defender-dashboard.png":::
 
@@ -130,11 +130,11 @@ Microsoft 安全研究人员始终在不断地寻找威胁。 得益于 Microsof
 
 :::image type="content" source="../../security-center/media/security-center-managing-and-responding-alerts/alerts-page.png" alt-text="Azure 安全中心的安全警报列表":::
 
-Azure Defender 会自动从你的资源、网络和连接的合作伙伴解决方案中收集安全信息。 分析该信息（需将多个来源的信息关联起来）即可确定威胁。
+Azure Defender 自动从你的资源、网络和连接的合作伙伴解决方案中收集安全信息。 分析该信息（需将多个来源的信息关联起来）即可确定威胁。
 
-在安全中心对 Azure Defender 警报进行优先级划分，同时提供有关如何修正威胁的建议。
+安全中心会对 Azure Defender 警报进行重要性分类，并提供威胁处置建议。
 
-安全中心使用各种高级安全分析，远不止几种基于攻击特征的方法。 大数据和 [机器学习](https://azure.microsoft.com/blog/machine-learning-in-azure-security-center/) 技术的突破用于评估整个云中的事件。 高级分析可以检测不可能通过手动方法识别的威胁，并预测攻击的演变。 接下来的部分会介绍这些安全分析类型。
+安全中心使用各种高级安全分析，远不止几种基于攻击特征的方法。 使用大数据的突破性技术和[机器学习](https://azure.microsoft.com/blog/machine-learning-in-azure-security-center/)技术对整个云中的事件进行评估。 高级分析可以检测到那些通过手动方式不可能发现的威胁，并预测攻击的演变方式。 接下来的部分会介绍这些安全分析类型。
 
 ### <a name="threat-intelligence"></a>威胁情报
 

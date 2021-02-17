@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: srrengar
-ms.openlocfilehash: 691f3b7987c2591b0f6cea3f7b520c03c0ba9a9e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ba62ac80b2f8d318d0d13e81e88cc63a8d893a2b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86258660"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570350"
 ---
 # <a name="set-up-azure-monitor-logs-for-a-cluster"></a>为群集设置 Azure Monitor 日志
 
@@ -26,19 +26,19 @@ ms.locfileid: "86258660"
 
 ## <a name="deploy-a-log-analytics-workspace-by-using-azure-marketplace"></a>使用 Azure 市场部署 Log Analytics 工作区
 
-若要在部署群集之后添加 Log Analytics 工作区，请转到门户中的 Azure 市场，然后查找“Service Fabric 分析”****。 这是一个适用于 Service Fabric 部署的自定义解决方案，其数据是特定于 Service Fabric 的。 在此过程中，需创建解决方案（用于查看见解的仪表板）和工作区（聚合了基础的群集数据）。
+若要在部署群集之后添加 Log Analytics 工作区，请转到门户中的 Azure 市场，然后查找“Service Fabric 分析”。 这是一个适用于 Service Fabric 部署的自定义解决方案，其数据是特定于 Service Fabric 的。 在此过程中，需创建解决方案（用于查看见解的仪表板）和工作区（聚合了基础的群集数据）。
 
-1. 在左侧导航菜单中选择“新建”****。 
+1. 在左侧导航菜单中选择“新建”。 
 
-2. 搜索“Service Fabric 分析”。**** 选择显示的资源。
+2. 搜索“Service Fabric 分析”。 选择显示的资源。
 
-3. 选择“创建” 。
+3. 选择“创建”。
 
     ![市场中的 Service Fabric 分析](media/service-fabric-diagnostics-event-analysis-oms/service-fabric-analytics.png)
 
-4. 在 Service Fabric 分析创建窗口中，为“OMS 工作区”字段选中“选择工作区”，然后选择“创建新工作区”************。 填写所需的条目。 此处仅要求 Service Fabric 群集和工作区的订阅相同。 验证条目后，即开始部署工作区。 几分钟即可完成部署。
+4. 在 Service Fabric 分析创建窗口中，为“OMS 工作区”字段选中“选择工作区”，然后选择“创建新工作区”。 填写所需的条目。 此处仅要求 Service Fabric 群集和工作区的订阅相同。 验证条目后，即开始部署工作区。 几分钟即可完成部署。
 
-5. 完成后，在 Service Fabric 分析创建窗口底部再次选择“创建”****。 请确保新工作区显示在 OMS 工作区**** 下。 此操作会将解决方案添加到所创建的工作区中。
+5. 完成后，在 Service Fabric 分析创建窗口底部再次选择“创建”。 请确保新工作区显示在 OMS 工作区下。 此操作会将解决方案添加到所创建的工作区中。
 
 如果使用的是 Windows，请继续执行以下步骤，将 Azure Monitor 日志连接到存储群集事件的存储帐户。 
 
@@ -47,19 +47,19 @@ ms.locfileid: "86258660"
 
 ### <a name="connect-the-log-analytics-workspace-to-your-cluster"></a>将 Log Analytics 工作区连接到群集 
 
-1. 需要将工作区连接到来自群集的诊断数据。 转到在其中创建 Service Fabric 分析解决方案的资源组。 选择**ServiceFabric \<nameOfWorkspace\> **并中转到其 "概述" 页。 可在此处更改解决方案设置和工作区设置，还可访问 Log Analytics 工作区。
+1. 需要将工作区连接到来自群集的诊断数据。 转到在其中创建 Service Fabric 分析解决方案的资源组。 选择 **ServiceFabric \<nameOfWorkspace\>** 并中转到其 "概述" 页。 可在此处更改解决方案设置和工作区设置，还可访问 Log Analytics 工作区。
 
-2. 在左侧导航菜单的“工作区数据源”下，选择“存储帐户日志”********。
+2. 在左侧导航菜单的“工作区数据源”下，选择“存储帐户日志”。
 
-3. 在“存储帐户日志”页面顶部选择“添加”，将群集的日志添加到工作区********。
+3. 在“存储帐户日志”页面顶部选择“添加”，将群集的日志添加到工作区。
 
-4. 选择“存储帐户”，添加在群集中创建的相应帐户****。 如果使用了默认名称，则存储帐户为**sfdg \<resourceGroupName\> **。 还可检查 applicationDiagnosticsStorageAccountName 所使用的值，进而通过部署群集时所用的 Azure 资源管理器模板确认此名称****。 如果不显示名称，请向下滚动并选择“加载更多”****。 选择存储帐户名称。
+4. 选择“存储帐户”，添加在群集中创建的相应帐户。 如果使用了默认名称，则存储帐户为 **sfdg \<resourceGroupName\>**。 还可检查 applicationDiagnosticsStorageAccountName 所使用的值，进而通过部署群集时所用的 Azure 资源管理器模板确认此名称。 如果不显示名称，请向下滚动并选择“加载更多”。 选择存储帐户名称。
 
-5. 指定数据类型。 将其设置为“Service Fabric 事件”****。
+5. 指定数据类型。 将其设置为“Service Fabric 事件”。
 
-6. 确保源已自动设置为 WADServiceFabric\*EventTable****。
+6. 确保源已自动设置为 WADServiceFabric\*EventTable。
 
-7. 选择“确定”，将工作区连接到群集的日志****。
+7. 选择“确定”，将工作区连接到群集的日志。
 
     ![向 Azure Monitor 日志添加存储帐户日志](media/service-fabric-diagnostics-event-analysis-oms/add-storage-account.png)
 
@@ -119,9 +119,9 @@ Set-AzOperationalInsightsIntelligencePack -ResourceGroupName $ResourceGroup -Wor
 
 完成后，请按照前一部分中的步骤将 Azure Monitor 日志连接到相应的存储帐户。
 
-还可添加其他解决方案或使用 PowerShell 对 Log Analytics 工作区进行其他修改。 有关详细信息，请参阅[使用 PowerShell 管理 Azure Monitor 日志](../azure-monitor/platform/powershell-workspace-configuration.md)。
+还可添加其他解决方案或使用 PowerShell 对 Log Analytics 工作区进行其他修改。 有关详细信息，请参阅[使用 PowerShell 管理 Azure Monitor 日志](../azure-monitor/logs/powershell-workspace-configuration.md)。
 
 ## <a name="next-steps"></a>后续步骤
 * [将 Log Analytics 代理部署到节点上](service-fabric-diagnostics-oms-agent.md)，以收集性能计数器、docker 统计信息和容器日志
-* 掌握 Azure Monitor 日志中提供的[日志搜索和查询](../azure-monitor/log-query/log-query-overview.md)功能
-* [使用视图设计器在 Azure Monitor 日志中创建自定义视图](../azure-monitor/platform/view-designer.md)
+* 掌握 Azure Monitor 日志中提供的[日志搜索和查询](../azure-monitor/logs/log-query-overview.md)功能
+* [使用视图设计器在 Azure Monitor 日志中创建自定义视图](../azure-monitor/visualize/view-designer.md)

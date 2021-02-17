@@ -3,12 +3,12 @@ title: 新建基于工作区的 Azure Monitor Application Insights 资源 | Micr
 description: 了解启用基于工作区的新 Azure Monitor Application Insights 资源所需的步骤。
 ms.topic: conceptual
 ms.date: 10/06/2020
-ms.openlocfilehash: 23994190df89b47d9c7e90ed62a724545389b1fe
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: 3ec0b25a24af13b29a3568165009f8a6d66e0218
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99063360"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100578338"
 ---
 # <a name="workspace-based-application-insights-resources"></a>基于工作区的 Application Insights 资源
 
@@ -23,10 +23,10 @@ ms.locfileid: "99063360"
 
 基于工作区的 Application Insights 使得你可以利用 Azure Monitor 和 Log Analytics 的最新功能，其中包括：
 
-* [客户管理的密钥 (CMK)](../platform/customer-managed-keys.md) 为你的数据提供静态加密，并提供只有你有权访问的加密密钥。
-* 通过 [Azure 专用链接](../platform/private-link-security.md)，可使用专用终结点将 Azure PaaS 服务安全地链接到你的虚拟网络。
+* [客户管理的密钥 (CMK)](../logs/customer-managed-keys.md) 为你的数据提供静态加密，并提供只有你有权访问的加密密钥。
+* 通过 [Azure 专用链接](../logs/private-link-security.md)，可使用专用终结点将 Azure PaaS 服务安全地链接到你的虚拟网络。
 * [为探查器和 Snapshot Debugger 提供自己的存储 (BYOS) ](./profiler-bring-your-own-storage.md) ，你可以完全控制静态加密策略、生存期管理策略以及与 Application Insights Profiler 和 Snapshot Debugger 相关的所有数据的网络访问。 
-* 使用[产能预留层](../platform/manage-cost-storage.md#pricing-model)可以节省 25% 的成本（与即用即付价格相比）。 
+* 使用[产能预留层](../logs/manage-cost-storage.md#pricing-model)可以节省 25% 的成本（与即用即付价格相比）。 
 * 可以通过 Log Analytics 流引入提高数据引入速度。
 
 ## <a name="create-workspace-based-resource"></a>创建基于工作区的资源
@@ -36,7 +36,7 @@ ms.locfileid: "99063360"
 > [!div class="mx-imgBorder"]
 > ![基于工作区的 Application Insights 资源](./media/create-workspace-resource/create-workspace-based.png)
 
-如果你还没有现有的 Log Analytics 工作区，请[参阅 Log Analytics 工作区创建文档](../learn/quick-create-workspace.md)。
+如果你还没有现有的 Log Analytics 工作区，请[参阅 Log Analytics 工作区创建文档](../logs/quick-create-workspace.md)。
 
 **基于工作区的资源当前在所有商业区域和 Azure 政府版中可用**
 
@@ -212,5 +212,5 @@ PowerShell 命令 `New-AzApplicationInsights` 当前不支持创建基于工作�
 
 ## <a name="next-steps"></a>后续步骤
 
-* [探索指标](../platform/metrics-charts.md)
-* [编写分析查询](../log-query/log-query-overview.md)
+* [探索指标](../essentials/metrics-charts.md)
+* [编写分析查询](../logs/log-query-overview.md)

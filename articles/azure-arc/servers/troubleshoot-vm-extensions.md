@@ -3,12 +3,12 @@ title: 排查支持 Azure Arc 的服务器 VM 扩展问题
 description: 本文介绍如何排查和解决启用了 Azure Arc 的服务器上出现的 Azure VM 扩展的问题。
 ms.date: 09/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: ffd7db5ff7da3d7f60762117f80d7b9b5af6f646
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 799e5c8ec00a894c6a54c64494edd8f259faf2dc
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91342671"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100584676"
 ---
 # <a name="troubleshoot-arc-enabled-servers-vm-extension-issues"></a>启用 Arc 的服务器故障排除 VM 扩展问题
 
@@ -36,17 +36,17 @@ ms.locfileid: "91342671"
 
 ### <a name="log-analytics-agent-for-linux"></a>适用于 Linux 的 Log Analytics 代理
 
-- Log Analytics 代理版本 1.13.9 (对应的扩展版本为 1.13.15) 未正确将上传的数据标记为启用了 Azure Arc 的服务器的资源 ID。 尽管日志会发送到服务，但当你尝试在选择 **日志** 或 **见解**后查看选定的已启用服务器中的数据时，不会返回任何数据。 可以通过从 Azure Monitor 日志中运行查询，或从用于 VM 的 Azure Monitor （作用域为工作区）查看其数据。
+- Log Analytics 代理版本 1.13.9 (对应的扩展版本为 1.13.15) 未正确将上传的数据标记为启用了 Azure Arc 的服务器的资源 ID。 尽管日志会发送到服务，但当你尝试在选择 **日志** 或 **见解** 后查看选定的已启用服务器中的数据时，不会返回任何数据。 可以通过从 Azure Monitor 日志中运行查询，或从用于 VM 的 Azure Monitor （作用域为工作区）查看其数据。
 
-- 适用于 Linux 的 Log Analytics 代理目前不支持某些分发版。 代理需要安装其他依赖项，包括 Python 2。 在 [此处](../../azure-monitor/platform/agents-overview.md#supported-operating-systems)查看支持矩阵和先决条件。
+- 适用于 Linux 的 Log Analytics 代理目前不支持某些分发版。 代理需要安装其他依赖项，包括 Python 2。 在 [此处](../../azure-monitor/agents/agents-overview.md#supported-operating-systems)查看支持矩阵和先决条件。
 
-- 状态消息中的错误代码52指示缺少依赖项。 有关缺少的依赖项的详细信息，请查看输出和日志。
+- 状态消息中的错误代码52指示缺少依赖项。 若要详细了解缺少的依赖项，请查看输出和日志。
 
 - 如果安装失败，请查看扩展概述中的 **故障排除和支持** 部分。 在大多数情况下，状态消息中包含一个错误代码。 对于 Linux 的 Log Analytics 代理， [此处](../../virtual-machines/extensions/oms-linux.md#troubleshoot-and-support)介绍了状态消息以及此 VM 扩展的常规疑难解答信息。
 
 ## <a name="next-steps"></a>后续步骤
 
-如果未在此处看到你遇到的问题，或者无法解决你遇到的问题，请尝试以下途径之一以获取其他支持：
+如果你的问题未在本文中列出，或者无法解决问题，请尝试通过以下渠道之一获取更多支持：
 
 - 通过 [Microsoft Q&](/answers/topics/azure-arc.html)获取来自 Azure 专家的解答。
 

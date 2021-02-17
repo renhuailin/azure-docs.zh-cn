@@ -4,12 +4,12 @@ description: 了解如何使用 Azure Monitor 日志监视群集的运行状况�
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 08/12/2020
-ms.openlocfilehash: d52cb1c5f3b1dd1b23adb39f2f65d0e66968e482
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 3bc5c659d9871cb8f1d49d2a3bfde2ce03faea86
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98946954"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571903"
 ---
 # <a name="how-to-monitor-cluster-availability-with-azure-monitor-logs-in-hdinsight"></a>如何在 HDInsight 中使用 Azure Monitor 日志监视群集可用性
 
@@ -19,7 +19,7 @@ HDInsight 群集包括 Azure Monitor 日志集成，它提供可查询的指标�
 
 使用 Azure Monitor 日志可在一个位置收集与聚合多个资源（例如 HDInsight 群集）生成的数据，以实现统一监视体验。
 
-作为先决条件，需要创建一个 Log Analytics 工作区来存储收集的数据。 如果尚未创建，可按照以下说明创建：[创建 Log Analytics 工作区](../azure-monitor/learn/quick-create-workspace.md)。
+作为先决条件，需要创建一个 Log Analytics 工作区来存储收集的数据。 如果尚未创建，可按照以下说明创建：[创建 Log Analytics 工作区](../azure-monitor/logs/quick-create-workspace.md)。
 
 ## <a name="enable-hdinsight-azure-monitor-logs-integration"></a>启用 HDInsight Azure Monitor 日志集成
 
@@ -81,7 +81,7 @@ HDInsight 群集包括 Azure Monitor 日志集成，它提供可查询的指标�
 
 在“计算依据”部分设置“时段”，并根据检查不可用节点的频率设置“频率”。  
 
-对于此警报，请确保“时段”值与“频率”值相同。 可在[此处](../azure-monitor/platform/alerts-unified-log.md#alert-logic-definition)找到有关时段、频率和其他警报参数的详细信息。
+对于此警报，请确保“时段”值与“频率”值相同。 可在[此处](../azure-monitor/alerts/alerts-unified-log.md#alert-logic-definition)找到有关时段、频率和其他警报参数的详细信息。
 
 完成信号逻辑配置后，选择“完成”。
 
@@ -94,7 +94,7 @@ HDInsight 群集包括 Azure Monitor 日志集成，它提供可查询的指标�
 此时会打开“添加操作组”。 选择 **操作组名称**、**短名称**、**订阅** 和 **资源组**。 在“操作”部分下，选择一个 **操作名称**，并选择“电子邮件/短信/推送/语音”作为“操作类型”。  
 
 > [!NOTE]
-> 除了“电子邮件/短信/推送/语音”以外，警报还可以触发其他几个操作，例如 Azure 函数、逻辑应用、Webhook、ITSM 和自动化 Runbook。 [了解详细信息。](../azure-monitor/platform/action-groups.md#action-specific-information)
+> 除了“电子邮件/短信/推送/语音”以外，警报还可以触发其他几个操作，例如 Azure 函数、逻辑应用、Webhook、ITSM 和自动化 Runbook。 [了解详细信息。](../azure-monitor/alerts/action-groups.md#action-specific-information)
 
 此时会打开“电子邮件/短信/推送/语音”。 选择收件人的 **姓名**，**选中**“电子邮件”框，然后键入要将警报发送到的电子邮件地址。 在“电子邮件/短信/推送/语音”中选择“确定”，然后在“添加操作组”中完成操作组的配置。  
 

@@ -7,12 +7,12 @@ ms.date: 02/07/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 1f013f22b482c1e1d093f106bd786be870103f3d
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: 0878686e203960a0b7f33c19cc64e82319997684
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100008496"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590453"
 ---
 # <a name="introduction-to-azure-defender-for-kubernetes"></a>适用于 Kubernetes 的 Azure Defender 简介
 
@@ -71,7 +71,7 @@ AKS 是一项托管服务，由于 Log Analytics 代理是 Microsoft 托管的�
 
 如果群集已经在运行用于容器的 Azure Monitor 代理，则也可以安装 Log Analytics 代理，这两个代理可以彼此协同工作，而不会出现任何问题。
 
-[详细了解用于容器的 Azure Monitor 代理](../azure-monitor/insights/container-insights-manage-agent.md)。
+[详细了解用于容器的 Azure Monitor 代理](../azure-monitor/containers/container-insights-manage-agent.md)。
 
 
 ## <a name="next-steps"></a>后续步骤

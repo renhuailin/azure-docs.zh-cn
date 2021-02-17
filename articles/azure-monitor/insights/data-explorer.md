@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 01/05/2021
 author: lgayhardt
 ms.author: lagayhar
-ms.openlocfilehash: 11e21f376ea3b5cf580d54780509529b4536718b
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 6276527230cf889b471887fdb3da70e06a2fc8d6
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98734168"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100582347"
 ---
 # <a name="azure-monitor-for-azure-data-explorer-preview"></a>Azure 数据资源管理器 (预览版的 Azure Monitor) 
 
@@ -126,7 +126,7 @@ Azure 数据资源管理器 Azure Monitor 结合了日志和指标来提供全�
 
 ## <a name="customize-azure-monitor-for-azure-data-explorer-cluster"></a>自定义 Azure 数据资源管理器群集的 Azure Monitor
 
-本部分重点介绍编辑工作簿以自定义支持数据分析需求的常见方案：
+此部分重点介绍了编辑工作簿的常见方案，以进行自定义来满足数据分析需求：
 * 将工作簿的范围限定为始终选择特定订阅或 Azure 数据资源管理器群集 (s) 
 * 更改网格中的指标
 * 更改阈值或颜色呈现/编码
@@ -162,4 +162,4 @@ Azure 数据资源管理器 Azure Monitor 结合了日志和指标来提供全�
 
 ## <a name="next-steps"></a>后续步骤
 
-查看[使用 Azure Monitor 工作簿创建交互式报表](../platform/workbooks-overview.md)，了解工作簿旨在支持的方案、创作新报表和自定义现有报表的方式，以及更多信息。
+查看[使用 Azure Monitor 工作簿创建交互式报表](../visualize/workbooks-overview.md)，了解工作簿旨在支持的方案、创作新报表和自定义现有报表的方式，以及更多信息。

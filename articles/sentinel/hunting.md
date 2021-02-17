@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/10/2019
 ms.author: yelevin
-ms.openlocfilehash: ca483d993290e4d66ba257d4cb5de7fc3c952405
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: b88185a09e69b1c7bd6c6c58b8e22190b4a2e394
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660825"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576767"
 ---
 # <a name="hunt-for-threats-with-azure-sentinel"></a>利用 Azure Sentinel 寻找威胁
 
@@ -66,7 +66,7 @@ ms.locfileid: "94660825"
 
 ## <a name="query-language"></a>查询语言 
 
-Azure Sentinel 中的搜寻基于 Kusto 查询语言。 有关查询语言和支持的运算符的详细信息，请参阅 [查询语言参考](../azure-monitor/log-query/get-started-queries.md)。
+Azure Sentinel 中的搜寻基于 Kusto 查询语言。 有关查询语言和支持的运算符的详细信息，请参阅 [查询语言参考](../azure-monitor/logs/get-started-queries.md)。
 
 ## <a name="public-hunting-query-github-repository"></a>公共搜寻查询 GitHub 存储库
 

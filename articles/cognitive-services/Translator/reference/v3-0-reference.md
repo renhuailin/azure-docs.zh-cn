@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 8/11/2020
 ms.author: lajanuar
-ms.openlocfilehash: 021a65ba69b9d1909df4a86d92b660c0c1033a3b
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: bdfb1ac03ea6f896725d5c86cefe41021204359c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98895452"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100582204"
 ---
 # <a name="translator-v30"></a>Translator 3.0 版
 
@@ -230,7 +230,7 @@ curl -X POST "https://<your-custom-domain>.cognitiveservices.azure.com/translato
 | 503000| 服务暂时不可用。 请重试。 如果该错误持续出现，请报告发生错误的日期/时间、响应标头 X-RequestId 中的请求标识符，以及请求标头 X-ClientTraceId 中的客户端标识符。|
 
 ## <a name="metrics"></a>指标 
-利用指标，可以在 Azure 门户中的指标部分下查看翻译器的使用情况和可用性信息，如以下屏幕截图所示。 有关详细信息，请参阅[数据和平台指标](../../../azure-monitor/platform/data-platform-metrics.md)。
+利用指标，可以在 Azure 门户中的指标部分下查看翻译器的使用情况和可用性信息，如以下屏幕截图所示。 有关详细信息，请参阅[数据和平台指标](../../../azure-monitor/essentials/data-platform-metrics.md)。
 
 ![Translator 指标](../media/translatormetrics.png)
 

@@ -11,17 +11,17 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: a078ba6147d4d874a890f406563111b6fdb82ed6
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 029e3ba799e5f239bde0ef049316dd268ebe4c8f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92780897"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100588787"
 ---
 # <a name="set-up-and-use-azure-monitor-logs-with-a-multitenant-azure-sql-database-saas-app"></a>通过多租户 Azure SQL 数据库 SaaS 应用设置和使用 Azure Monitor 日志
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-在本教程中，我们设置和使用 [Azure Monitor 日志](../../azure-monitor/log-query/log-query-overview.md)来监视弹性池和数据库。 本教程基于[性能监视和管理教程](saas-dbpertenant-performance-monitoring.md)。 它演示了如何使用 Azure Monitor 日志来增强 Azure 门户中提供的监视和警报功能。 Azure Monitor 日志支持监视数千个弹性池和数十万个数据库。 Azure Monitor 日志提供单个监视解决方案，该方案可以集成跨多个 Azure 订阅监视不同应用程序和 Azure 服务的功能。
+在本教程中，我们设置和使用 [Azure Monitor 日志](../../azure-monitor/logs/log-query-overview.md)来监视弹性池和数据库。 本教程基于[性能监视和管理教程](saas-dbpertenant-performance-monitoring.md)。 它演示了如何使用 Azure Monitor 日志来增强 Azure 门户中提供的监视和警报功能。 Azure Monitor 日志支持监视数千个弹性池和数十万个数据库。 Azure Monitor 日志提供单个监视解决方案，该方案可以集成跨多个 Azure 订阅监视不同应用程序和 Azure 服务的功能。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -48,10 +48,10 @@ OMS 工作区现在称为 Log Analytics 工作区。 Log Analytics 工作区和�
 
 ### <a name="create-performance-diagnostic-data-by-simulating-a-workload-on-your-tenants"></a>通过模拟租户上的工作负荷创建性能诊断数据 
 
-1. 在 PowerShell ISE 中，打开 *..\\WingtipTicketsSaaS-MultiTenantDb-master\\Learning Modules\\Performance Monitoring and Management\\Demo-PerformanceMonitoringAndManagement.ps1* 。 请将此脚本保持打开状态，因为在此教程中可能需要运行多个负载生成方案。
+1. 在 PowerShell ISE 中，打开 *..\\WingtipTicketsSaaS-MultiTenantDb-master\\Learning Modules\\Performance Monitoring and Management\\Demo-PerformanceMonitoringAndManagement.ps1*。 请将此脚本保持打开状态，因为在此教程中可能需要运行多个负载生成方案。
 1. 如果尚未这样做，请预配一批租户，以使监视上下文更为微妙。 此过程需要花费几分钟时间。
 
-   a. 设置 **$DemoScenario = 1** ， _预配一批租户_ 。
+   a. 设置 **$DemoScenario = 1**，_预配一批租户_。
 
    b. 若要运行此脚本并再部署 17 个租户，请按 F5。
 
@@ -69,7 +69,7 @@ OMS 工作区现在称为 Log Analytics 工作区。 Log Analytics 工作区和�
 
 Azure Monitor 是一项必须配置的单独服务。 Azure Monitor 日志在 Log Analytics 工作区中收集日志数据、遥测数据和指标。 与 Azure 中的其他资源一样，必须创建一个 Log Analytics 工作区。 不要求将工作区创建在它监视的应用程序所在的同一资源组中。 但通常情况下，这样做是最合理的。 对于 Wingtip Tickets 应用，请使用单个资源组以确保将工作区与应用程序一起删除。
 
-1. 在 PowerShell ISE 中，打开 *..\\WingtipTicketsSaaS-MultiTenantDb-master\\Learning Modules\\Performance Monitoring and Management\\Log Analytics\\Demo-LogAnalytics.ps1* 。
+1. 在 PowerShell ISE 中，打开 *..\\WingtipTicketsSaaS-MultiTenantDb-master\\Learning Modules\\Performance Monitoring and Management\\Log Analytics\\Demo-LogAnalytics.ps1*。
 1. 若要运行脚本，请按 F5。
 
 现在，可以在 Azure 门户中打开 Azure Monitor 日志。 在 Log Analytics 工作区中收集遥测数据并使其可见需要花费几分钟时间。 留给系统收集诊断数据的时间越长，体验越微妙。 
@@ -102,7 +102,7 @@ Azure Monitor 是一项必须配置的单独服务。 Azure Monitor 日志在 Lo
 
     ![Log Analytics 仪表板](./media/saas-dbpertenant-log-analytics/log-analytics-overview.png)
 
-1. 更改筛选器设置来修改时间范围。 对于本教程，请选择“过去 1 小时”  。
+1. 更改筛选器设置来修改时间范围。 对于本教程，请选择“过去 1 小时”。
 
     ![时间筛选器](./media/saas-dbpertenant-log-analytics/log-analytics-time-filter.png)
 
@@ -114,7 +114,7 @@ Azure Monitor 是一项必须配置的单独服务。 Azure Monitor 日志在 Lo
  
      ![数据库指标](./media/saas-dbpertenant-log-analytics/log-analytics-database-metrics.png)
 
-1. 在分析页中向左滚动，并在“资源信息”列表中选择服务器磁贴。   
+1. 在分析页中向左滚动，并在“资源信息”列表中选择服务器磁贴。  
 
     ![“资源信息”列表](./media/saas-dbpertenant-log-analytics/log-analytics-resource-info.png)
 
@@ -127,7 +127,7 @@ Azure Monitor 是一项必须配置的单独服务。 Azure Monitor 日志在 Lo
     ![池指标](./media/saas-dbpertenant-log-analytics/log-analytics-pool-metrics.png)
 
 
-1. 返回到 Log Analytics 工作区，选择“OMS 门户”  以在那里打开工作区。
+1. 返回到 Log Analytics 工作区，选择“OMS 门户”以在那里打开工作区。
 
     ![Log Analytics 工作区](./media/saas-dbpertenant-log-analytics/log-analytics-workspace-oms-portal.png)
 
@@ -135,7 +135,7 @@ Azure Monitor 是一项必须配置的单独服务。 Azure Monitor 日志在 Lo
 
 Azure Monitor 日志中的监视和警报功能基于工作区中的数据查询，不像在 Azure 门户的每个资源上定义的警报功能。 通过让警报基于查询，可以定义一个监视所有数据库的警报，而不必每个数据库都定义一个。 查询仅限于工作区中可用的数据。
 
-若要详细了解如何使用 Azure Monitor 日志来查询和设置警报，请参阅[使用 Azure Monitor 日志中的警报规则](../../azure-monitor/platform/alerts-metric.md)。
+若要详细了解如何使用 Azure Monitor 日志来查询和设置警报，请参阅[使用 Azure Monitor 日志中的警报规则](../../azure-monitor/alerts/alerts-metric.md)。
 
 适用于 SQL 数据库的 Azure Monitor 日志按工作区中的数据量收费。 在本教程中，你创建了一个免费工作区，其限制是每天 500 MB。 达到该限制后，不会再向工作区添加数据。
 

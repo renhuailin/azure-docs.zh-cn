@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/11/2021
 ms.author: memildin
-ms.openlocfilehash: 205f92d4282f0cad00c1dd136636da319e107f3f
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 96af34b5b68fca5ab8061c8c99f03bee094dc175
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100391060"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590375"
 ---
 # <a name="azure-defender-for-sql-servers-on-machines"></a>计算机上适用于 SQL server 的 Azure Defender 
 
@@ -55,7 +55,7 @@ ms.locfileid: "100391060"
     
     - **部署 Azure Arc** -可以将任何 Windows 计算机连接到安全中心。 但是，Azure Arc 在 *所有* Azure 环境中提供更深入的集成。 如果设置了 Azure Arc，你会在门户中看到 " **SQL Server – Azure Arc** " 页，并且安全警报将显示在该页面上的 "专用 **安全** " 选项卡上。 因此，第一个和推荐的选项是 [在主机上设置 Azure arc](../azure-arc/servers/onboard-portal.md#install-and-validate-the-agent-on-windows) 并按照上面的 **azure arc 上 SQL Server** 的说明进行操作。
         
-    - **不使用 azure Arc 连接 windows 计算机** -如果你选择在不使用 azure arc 的情况下连接在 windows 计算机上运行的 SQL Server，请按照 [将 windows 计算机连接到 Azure Monitor](../azure-monitor/platform/agent-windows.md)中的说明进行操作。
+    - **不使用 azure Arc 连接 windows 计算机** -如果你选择在不使用 azure arc 的情况下连接在 windows 计算机上运行的 SQL Server，请按照 [将 windows 计算机连接到 Azure Monitor](../azure-monitor/agents/agent-windows.md)中的说明进行操作。
 
 
 ### <a name="step-2-enable-the-optional-plan-in-security-centers-pricing-and-settings-page"></a>步骤 2。 在安全中心的 "定价和设置" 页中启用可选计划：
@@ -75,7 +75,7 @@ ms.locfileid: "100391060"
     将在连接到所选工作区的所有 SQL server 上启用该计划。 第一次重新启动 SQL Server 实例后，保护将处于完全活动状态。
 
     >[!TIP] 
-    > 若要新建工作区，请按照[创建 Log Analytics 工作区](../azure-monitor/learn/quick-create-workspace.md)中的说明进行操作。
+    > 若要新建工作区，请按照[创建 Log Analytics 工作区](../azure-monitor/logs/quick-create-workspace.md)中的说明进行操作。
 
 
 1. 还可以配置安全警报的电子邮件通知。 

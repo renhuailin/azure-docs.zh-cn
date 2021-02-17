@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/25/2021
-ms.openlocfilehash: bc59c639856de6a5ce5adda1f78266eb7e4d5dd3
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: ffdafbe991d3cd78e45c4804fd6cc5377099acbc
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881225"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589419"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>可视化 Azure Monitor 中的数据
 本文概述了将 Azure Monitor 中存储的日志和指标数据可视化时可使用的方法。
@@ -19,7 +19,7 @@ ms.locfileid: "98881225"
 图表和图形等可视化效果有助于你分析监视数据，从而深入了解问题并识别模式。 根据使用的工具，你还可以选择与组织内外的其他用户共享可视化效果。
 
 ## <a name="workbooks"></a>工作簿
-[工作簿](./platform/workbooks-overview.md)是交互式文档，可以让用户深入了解团队内部的数据、调查和协作。 例如，工作簿在故障排查指南和事件分析方面非常有用。
+[工作簿](./visualize/workbooks-overview.md)是交互式文档，可以让用户深入了解团队内部的数据、调查和协作。 例如，工作簿在故障排查指南和事件分析方面非常有用。
 
 ![该图显示了工作簿中若干页面的屏幕截图，包括“页面视图分析”、“使用情况”和“在页面上所花费的时间”。](media/visualizations/workbook.png)
 
@@ -46,9 +46,9 @@ ms.locfileid: "98881225"
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4AslH]
 
 ### <a name="advantages"></a>优点
-- 深度集成到 Azure 中。 可视化效果可以从多个 Azure 页面固定到仪表板，包括 [指标资源管理器](platform/metrics-charts.md)、 [Log Analytics](log-query/log-analytics-overview.md)和 [Application Insights](app/app-insights-overview.md)。
+- 深度集成到 Azure 中。 可视化效果可以从多个 Azure 页面固定到仪表板，包括 [指标资源管理器](essentials/metrics-charts.md)、 [Log Analytics](logs/log-analytics-overview.md)和 [Application Insights](app/app-insights-overview.md)。
 - 支持指标和日志。
-- 合并来自多个源的数据，包括来自[指标资源管理器](platform/metrics-charts.md)的输出、[日志查询](log-query/log-query-overview.md)以及[Application Insights](app/app-insights-overview.md)中的[映射](app/app-map.md)和可用性。
+- 合并来自多个源的数据，包括来自[指标资源管理器](essentials/metrics-charts.md)的输出、[日志查询](logs/log-query-overview.md)以及[Application Insights](app/app-insights-overview.md)中的[映射](app/app-map.md)和可用性。
 - 包含个人或共享仪表板的选项。 与 [Azure 基于角色的访问控制 (Azure RBAC)](../role-based-access-control/overview.md) 集成。
 - 自动刷新。 指标刷新的时间范围至少为 5 分钟。 日志每小时刷新一次，同时可根据需要使用手动刷新选项，方法是单击给定可视化效果上的“刷新”图标或刷新整个仪表板。
 - 带有时间戳和自定义参数的参数化指标仪表板。
@@ -66,7 +66,7 @@ ms.locfileid: "98881225"
 
 
 ## <a name="power-bi"></a>Power BI
-[Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/) 对于创建以业务为中心的仪表板和报表，以及用于分析长期 KPI 趋势的报表特别有用。 你可以[将日志查询结果导入 Power BI 数据集](platform/powerbi.md)，以便利用其各项功能，例如合并不同来源的数据和在 Web 和移动设备上共享报表。
+[Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/) 对于创建以业务为中心的仪表板和报表，以及用于分析长期 KPI 趋势的报表特别有用。 你可以[将日志查询结果导入 Power BI 数据集](visualize/powerbi.md)，以便利用其各项功能，例如合并不同来源的数据和在 Web 和移动设备上共享报表。
 
 ![Power BI](media/visualizations/power-bi.png)
 
@@ -86,7 +86,7 @@ ms.locfileid: "98881225"
 
 
 ## <a name="grafana"></a>Grafana
-[Grafana](https://grafana.com/) 是一个适用于操作仪表板的开放平台。 它尤其适用于检测、隔离和归类操作事件。 你可以将 [Grafana Azure Monitor 数据源插件](platform/grafana-plugin.md)添加到 Azure 订阅中，使其可视化 Azure 指标数据。
+[Grafana](https://grafana.com/) 是一个适用于操作仪表板的开放平台。 它尤其适用于检测、隔离和归类操作事件。 你可以将 [Grafana Azure Monitor 数据源插件](visualize/grafana-plugin.md)添加到 Azure 订阅中，使其可视化 Azure 指标数据。
 
 ![屏幕截图显示 Grafana 的可视化效果。](media/visualizations/grafana.png)
 
@@ -115,9 +115,9 @@ ms.locfileid: "98881225"
 ## <a name="azure-monitor-views"></a>Azure Monitor 视图
 
 > [!IMPORTANT]
-> 视图即将弃用。 有关将视图转换为工作簿的指导，请参阅 [Azure Monitor 视图设计器转换为工作簿的指南](platform/view-designer-conversion-overview.md)。
+> 视图即将弃用。 有关将视图转换为工作簿的指导，请参阅 [Azure Monitor 视图设计器转换为工作簿的指南](visualize/view-designer-conversion-overview.md)。
 
-借助 [Azure Monitor 中的视图](platform/view-designer.md)，可以使用日志数据创建自定义可视化效果。 它们由[监视解决方案](insights/solutions.md)用于呈现所收集的数据。
+借助 [Azure Monitor 中的视图](visualize/view-designer.md)，可以使用日志数据创建自定义可视化效果。 它们由[监视解决方案](insights/solutions.md)用于呈现所收集的数据。
 
 
 ![屏幕截图显示了容器监视解决方案磁贴，以及在选择磁贴时打开的详细 Azure Monitor 视图。](media/visualizations/view.png)
@@ -126,7 +126,7 @@ ms.locfileid: "98881225"
 - 为日志数据提供了丰富的可视化效果。
 - 导出和导入视图可以将其传输到其他资源组和订阅。
 - 通过工作区和监视解决方案集成到 Azure Monitor 管理模型中。
-- 用于自定义参数的[筛选器](platform/view-designer-filters.md)。
+- 用于自定义参数的[筛选器](visualize/view-designer-filters.md)。
 - 具有交互性，支持多级钻取（一个视图钻取到另一个视图）
 
 ### <a name="limitations"></a>限制
@@ -138,11 +138,11 @@ ms.locfileid: "98881225"
 - 查询的响应大小限制为 8MB，查询的执行时间限制为 110 秒。
 
 ## <a name="next-steps"></a>后续步骤
-- 了解[由 Azure Monitor 收集的数据](platform/data-platform.md)。
+- 了解[由 Azure Monitor 收集的数据](/data-platform.md)。
 - 了解 [Azure 仪表板](../azure-portal/azure-portal-dashboards.md)。
-- 了解 [指标资源管理器](platform/metrics-getting-started.md)
-- 了解[工作簿](./platform/workbooks-overview.md)。
-- 了解如何[将日志数据导入 Power BI](./platform/powerbi.md)。
-- 了解 [Grafana Azure Monitor 数据源插件](./platform/grafana-plugin.md)。
-- 了解 [Azure Monitor 中的视图](platform/view-designer.md)。
+- 了解 [指标资源管理器](essentials/metrics-getting-started.md)
+- 了解[工作簿](./visualize/workbooks-overview.md)。
+- 了解如何[将日志数据导入 Power BI](./visualize/powerbi.md)。
+- 了解 [Grafana Azure Monitor 数据源插件](./visualize/grafana-plugin.md)。
+- 了解 [Azure Monitor 中的视图](visualize/view-designer.md)。
 

@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: tutorial
 ms.date: 08/24/2020
 ms.author: inhenkel
-ms.openlocfilehash: 2bfd1064a02f0fb4982c9d2747b85707e98b5bcd
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: c481daf73f916ede2e7063c75448ba4d09e553cc
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954523"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571870"
 ---
 # <a name="tutorial-store-azure-media-services-events-in-azure-log-analytics"></a>教程：将 Azure 媒体服务事件存储在 Azure Log Analytics 中
 
@@ -42,11 +42,11 @@ Azure 媒体服务 v3 在 [Azure 事件网格](media-services-event-schemas.md)�
 > * [Azure 订阅](how-to-set-azure-subscription.md)
 > * [媒体服务](create-account-howto.md)帐户和资源组。
 > * 根据 OS 安装 [FFmpeg](https://ffmpeg.org/download.html)。
-> * [Log Analytics](../../azure-monitor/learn/quick-create-workspace.md) 工作区
+> * [Log Analytics](../../azure-monitor/logs/quick-create-workspace.md) 工作区
 
 ## <a name="subscribe-to-a-media-services-event-with-logic-app"></a>使用逻辑应用订阅媒体服务事件
 
-1. 在 Azure 门户中，如果尚未执行此操作，则创建一个 [Log Analytics](../../azure-monitor/learn/quick-create-workspace.md) 工作区。 你需要工作区 ID 和其中一个密钥，因此请使该浏览器窗口保持打开状态。 然后，在另一个选项卡或窗口中打开门户。
+1. 在 Azure 门户中，如果尚未执行此操作，则创建一个 [Log Analytics](../../azure-monitor/logs/quick-create-workspace.md) 工作区。 你需要工作区 ID 和其中一个密钥，因此请使该浏览器窗口保持打开状态。 然后，在另一个选项卡或窗口中打开门户。
 
 1. 导航到 Azure 媒体服务帐户，并选择“事件”。 这将显示订阅 Azure 媒体服务事件的所有方法。
     > [!div class="mx-imgBorder"]
@@ -230,4 +230,4 @@ Azure 媒体服务 v3 在 [Azure 事件网格](media-services-event-schemas.md)�
 
 ## <a name="next-steps"></a>后续步骤
 
-可以创建不同的查询并保存它们。 可以将它们添加到 [Azure 仪表板](../../azure-monitor/learn/tutorial-logs-dashboards.md)中。
+可以创建不同的查询并保存它们。 可以将它们添加到 [Azure 仪表板](../../azure-monitor/visualize/tutorial-logs-dashboards.md)中。

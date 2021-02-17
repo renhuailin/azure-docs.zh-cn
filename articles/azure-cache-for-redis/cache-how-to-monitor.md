@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
-ms.openlocfilehash: ea99c34f03cd74185840767605c17ee6c65eb701
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 0ff11c9601fb55e27d8780185d77c177e9d9201b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100389699"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100584643"
 ---
 # <a name="monitor-azure-cache-for-redis"></a>监视 Azure Cache for Redis
 
@@ -52,13 +52,13 @@ ms.locfileid: "100389699"
 
 ![在 contoso55 的左侧导航窗格中，“指标”是“监视”下的一个选项，并突出显示。 “指标”上有一个指标列表。 已选择缓存命中数和缓存未命中数。](./media/cache-how-to-monitor/redis-cache-monitor.png)
 
-有关使用 Azure Monitor 处理指标的详细信息，请参阅 [Microsoft Azure 中的指标概述](../azure-monitor/platform/data-platform.md)。
+有关使用 Azure Monitor 处理指标的详细信息，请参阅 [Microsoft Azure 中的指标概述](../azure-monitor/data-platform.md)。
 
 <a name="how-to-view-metrics-and-customize-chart"></a>
 <a name="enable-cache-diagnostics"></a>
 ## <a name="export-cache-metrics"></a>导出缓存指标
 
-默认情况下，Azure Monitor 中的缓存指标将[存储 30 天](../azure-monitor/platform/data-platform-metrics.md)，过后被删除。 若要延长缓存指标的保存时间，使其超过 30 天，可以为缓存指标[指定存储帐户](../azure-monitor/platform/resource-logs.md#send-to-azure-storage)，并指定“保留期（天）”  策略。 
+默认情况下，Azure Monitor 中的缓存指标将[存储 30 天](../azure-monitor/essentials/data-platform-metrics.md)，过后被删除。 若要延长缓存指标的保存时间，使其超过 30 天，可以为缓存指标[指定存储帐户](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)，并指定“保留期（天）”  策略。 
 
 若要配置缓存指标的存储帐户，请执行以下操作：
 
@@ -74,10 +74,10 @@ ms.locfileid: "100389699"
 ![Redis 诊断](./media/cache-how-to-monitor/redis-cache-diagnostics.png)
 
 >[!NOTE]
->除了将缓存指标存档到存储中外，还可以[将其流式传输到事件中心或将其发送到 Azure Monitor 日志](../azure-monitor/platform/rest-api-walkthrough.md#retrieve-metric-values)。
+>除了将缓存指标存档到存储中外，还可以[将其流式传输到事件中心或将其发送到 Azure Monitor 日志](../azure-monitor/essentials/rest-api-walkthrough.md#retrieve-metric-values)。
 >
 
-若要访问指标，可按前文所述在 Azure 门户中查看它们，还可以使用 [Azure Monitor 指标 REST API](../azure-monitor/platform/stream-monitoring-data-event-hubs.md) 对其进行访问。
+若要访问指标，可按前文所述在 Azure 门户中查看它们，还可以使用 [Azure Monitor 指标 REST API](../azure-monitor/essentials/stream-monitoring-data-event-hubs.md) 对其进行访问。
 
 > [!NOTE]
 > 如果更改存储帐户，以前配置的存储帐户中的数据仍可供下载，但并不会显示在 Azure 门户中。  
@@ -129,7 +129,7 @@ ms.locfileid: "100389699"
 
 ![监视](./media/cache-how-to-monitor/redis-cache-monitoring.png)
 
-有关配置和使用警报的详细信息，请参阅[警报概述](../azure-monitor/platform/alerts-classic-portal.md)。
+有关配置和使用警报的详细信息，请参阅[警报概述](../azure-monitor/alerts/alerts-classic-portal.md)。
 
 ## <a name="activity-logs"></a>活动日志
 活动日志提供有关对 Azure Redis 缓存实例执行的操作的见解。 活动日志以前称为“审核日志”或“操作日志”。 通过活动日志，可确定对用于 Redis 的 Azure 缓存实例执行的任何写入操作 (PUT、POST、DELETE) 的“操作内容、操作人员和操作时间”。 
@@ -140,4 +140,4 @@ ms.locfileid: "100389699"
 
 若要查看缓存的活动日志，从“资源菜单”  单击“活动日志”  。
 
-有关活动日志的详细信息，请参阅 [Azure 活动日志概述](../azure-monitor/platform/platform-logs-overview.md)。
+有关活动日志的详细信息，请参阅 [Azure 活动日志概述](../azure-monitor/essentials/platform-logs-overview.md)。

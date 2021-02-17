@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/10/2019
-ms.openlocfilehash: 49a9c6663f0505d5104f54630b6925af98ec243f
-ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
+ms.openlocfilehash: 41dcd4fb342c257777d950ee5b8cacc7e8d417c0
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95318060"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100586991"
 ---
 # <a name="azure-monitor-service-limits"></a>Azure Monitor 服务限制
 
@@ -48,5 +48,5 @@ ms.locfileid: "95318060"
 ## <a name="next-steps"></a>后续步骤
 
 - [Azure Monitor 定价](https://azure.microsoft.com/pricing/details/monitor/)
-- [在 Azure Monitor 中监视使用情况和预估成本](platform/usage-estimated-costs.md)
+- [在 Azure Monitor 中监视使用情况和预估成本](/usage-estimated-costs.md)
 - [管理 Application Insights 的使用情况和成本](app/pricing.md)

@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/17/2020
-ms.openlocfilehash: 79e3349f009f71c5cd387a7c7265ad4904f2a40d
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 4761c1fb6d245071a02fc69677fc9cd50a972fdd
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98932123"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574597"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall"></a>使用防火墙配置 Azure HDInsight 群集的出站网络流量
 
@@ -66,17 +66,17 @@ HDInsight 出站流量依赖项几乎完全都是使用 FQDN 进行定义的。 
 
     **FQDN 标记部分**
 
-    | 名称 | 源地址 | FQDN 标记 | 说明 |
+    | 名称 | 源地址 | FQDN 标记 | 注释 |
     | --- | --- | --- | --- |
     | Rule_1 | * | WindowsUpdate 和 HDInsight | HDI 服务所需 |
 
     **目标 FQDN 部分**
 
-    | 名称 | 源地址 | 协议:端口 | 目标 FQDN | 说明 |
+    | 名称 | 源地址 | 协议:端口 | 目标 FQDN | 注释 |
     | --- | --- | --- | --- | --- |
     | Rule_2 | * | https:443 | login.windows.net | 允许 Windows 登录活动 |
     | Rule_3 | * | https:443 | login.microsoftonline.com | 允许 Windows 登录活动 |
-    | Rule_4 | * | https:443、http:80 | storage_account_name.blob.core.windows.net | 请将 `storage_account_name` 替换为实际的存储帐户名称。 要仅使用 https 连接，请确保在存储帐户上启用了[“需要安全传输”](../storage/common/storage-require-secure-transfer.md)。 如果使用专用终结点来访问存储帐户，则不需要此步骤，并且存储流量不会转发到防火墙。|
+    | Rule_4 | * | https:443,http:80 | storage_account_name.blob.core.windows.net | 请将 `storage_account_name` 替换为实际的存储帐户名称。 要仅使用 https 连接，请确保在存储帐户上启用了[“需要安全传输”](../storage/common/storage-require-secure-transfer.md)。 如果使用专用终结点来访问存储帐户，则不需要此步骤，并且存储流量不会转发到防火墙。|
 
    ![标题：输入应用程序规则集合详细信息](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection-details.png)
 
@@ -102,7 +102,7 @@ HDInsight 出站流量依赖项几乎完全都是使用 FQDN 进行定义的。 
 
     | 名称 | 协议 | 源地址 | 服务标记 | 目标端口 | 注释 |
     | --- | --- | --- | --- | --- | --- |
-    | Rule_5 | TCP | * | SQL | 1433 | 如果使用的是 HDInsight 提供的默认 SQL 服务，请在“服务标记”部分为 SQL 配置网络规则，以便记录和审核 SQL 通信。 除非在 HDInsight 子网中为 SQL Server 配置了服务终结点，否则它将绕过防火墙。 如果对 Ambari、Oozie、Ranger 和 Hive 元存储使用自定义 SQL server，则只需允许流量发送到自己的自定义 SQL server。|
+    | Rule_5 | TCP | * | SQL | 1433 | 如果使用的是 HDInsight 提供的默认 SQL 服务，请在“服务标记”部分为 SQL 配置网络规则，以便记录和审核 SQL 通信。 除非在 HDInsight 子网中为 SQL Server 配置了服务终结点，否则它将绕过防火墙。 如果对 Ambari、Oozie、Ranger 和 Hive 元存储使用自定义 SQL Server，则只需允许流量发送到自己的自定义 SQL Server 即可。|
     | Rule_6 | TCP | * | Azure Monitor | * | （可选）计划使用自动缩放功能的客户应添加此规则。 |
     
    ![标题：输入应用程序规则集合](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-network-rule-collection.png)
@@ -165,7 +165,7 @@ Azure 防火墙可将日志发送到一些不同的存储系统。 有关为防�
 AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
 ```
 
-首次运行应用程序时，将 Azure 防火墙与 Azure Monitor 日志集成会很有用。 尤其当你不知道所有应用程序依赖项时。 可以通过[在 Azure Monitor 中分析日志数据](../azure-monitor/log-query/log-query-overview.md)详细了解 Azure Monitor 日志
+首次运行应用程序时，将 Azure 防火墙与 Azure Monitor 日志集成会很有用。 尤其当你不知道所有应用程序依赖项时。 可以通过[在 Azure Monitor 中分析日志数据](../azure-monitor/logs/log-query-overview.md)详细了解 Azure Monitor 日志
 
 若要了解 Azure 防火墙的缩放限制以及如何提高请求，请参阅[此文档](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-firewall-limits)或参阅[常见问题解答](../firewall/firewall-faq.yml)。
 

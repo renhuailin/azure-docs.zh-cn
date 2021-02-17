@@ -3,12 +3,12 @@ title: 将启用了 Azure Arc 的服务器加入 Azure Sentinel
 description: 了解如何将启用了 Azure Arc 的服务器添加到 Azure Sentinel，并主动监视其安全状态。
 ms.date: 11/16/2020
 ms.topic: conceptual
-ms.openlocfilehash: 60018e710613a27bcb5c00f38ee90be6ff46c61d
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 2364ba72ac5b10ec4e1f433cc6d591c3ca389ecd
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94810962"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100584736"
 ---
 # <a name="onboard-azure-arc-enabled-servers-to-azure-sentinel"></a>将启用了 Azure Arc 的服务器加入 Azure Sentinel
 
@@ -18,7 +18,7 @@ ms.locfileid: "94810962"
 
 首先，请确保你已满足以下要求：
 
-- [Log Analytics 工作区](../../azure-monitor/platform/data-platform-logs.md)。 有关 Log Analytics 工作区的详细信息，请参阅[设计 Azure 监视日志部署](../../azure-monitor/platform/design-logs-deployment.md)。
+- [Log Analytics 工作区](../../azure-monitor/logs/data-platform-logs.md)。 有关 Log Analytics 工作区的详细信息，请参阅[设计 Azure 监视日志部署](../../azure-monitor/logs/design-logs-deployment.md)。
 
 - [已在订阅中启用](../../sentinel/quickstart-onboard.md)Azure Sentinel。
 

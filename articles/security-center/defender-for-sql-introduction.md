@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: security-center
 ms.custom: references_regions
 manager: rkarlin
-ms.openlocfilehash: 28ec6659430cfdbc81533f05863ccb0ddc560e32
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: 5d8c5eb385baff4aac450c470fb6103e2fb315f3
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99508026"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590413"
 ---
 # <a name="introduction-to-azure-defender-for-sql"></a>适用于 SQL 的 Azure Defender 简介
 
@@ -43,8 +43,8 @@ ms.locfileid: "99508026"
 - 适用于计算机上的 SQL Server 的 Azure Defender 会扩展对 Azure 原生 SQL Server 的保护以完全支持混合环境，并保护在 Azure、其他云环境，甚至本地计算机上托管的 SQL server（所有受支持的版本）：
     - [虚拟机上的 SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/)
     - 本地 SQL Server：
-        - [已启用 Azure Arc 的 SQL Server（预览）](/sql/sql-server/azure-arc/overview)
-        - [在不带 Azure Arc 的 Windows 计算机上运行的 SQL Server](../azure-monitor/platform/agent-windows.md)
+        - [已启用 Azure Arc 的 SQL Server（预览）](https://docs.microsoft.com/sql/sql-server/azure-arc/overview)
+        - [在不带 Azure Arc 的 Windows 计算机上运行的 SQL Server](../azure-monitor/agents/agent-windows.md)
 
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-sql"></a>适用于 SQL 的 Azure Defender 有哪些优点？

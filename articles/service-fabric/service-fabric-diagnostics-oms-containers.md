@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: srrengar
-ms.openlocfilehash: c1d118fa1fb65663f37e33f739bf4a72a14e1c52
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 6539815875b87a0d0f525d7e89464fa7d2505746
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95998205"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570190"
 ---
 # <a name="monitor-containers-with-azure-monitor-logs"></a>用 Azure Monitor 日志监视容器
  
@@ -46,7 +46,7 @@ ms.locfileid: "95998205"
 
 
 ## <a name="next-steps"></a>后续步骤
-* 了解有关 [Azure Monitor 日志容器解决方案](../azure-monitor/insights/containers.md)的详细信息。
+* 了解有关 [Azure Monitor 日志容器解决方案](../azure-monitor/containers/containers.md)的详细信息。
 * 深入了解 Service Fabric 上容器业务流程 - [Service Fabric 和容器](service-fabric-containers-overview.md)
-* 掌握 Azure Monitor 日志中提供的[日志搜索和查询](../azure-monitor/log-query/log-query-overview.md)功能
-* 配置 Azure Monitor 日志以设置 [自动警报](../azure-monitor/platform/alerts-overview.md) 规则，以帮助检测和诊断
+* 掌握 Azure Monitor 日志中提供的[日志搜索和查询](../azure-monitor/logs/log-query-overview.md)功能
+* 配置 Azure Monitor 日志以设置 [自动警报](../azure-monitor/alerts/alerts-overview.md) 规则，以帮助检测和诊断

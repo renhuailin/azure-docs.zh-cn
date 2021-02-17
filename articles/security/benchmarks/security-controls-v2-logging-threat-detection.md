@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: c5a855ffe06a17d8ec1bfe249dbe7bc41d1166af
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: 2a0ce52c094739ffbbce2f93a41b2533222066b8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97369066"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576807"
 ---
 # <a name="security-control-v2-logging-and-threat-detection"></a>安全控制 V2：日志记录和威胁检测
 
@@ -20,7 +20,7 @@ ms.locfileid: "97369066"
 
 ## <a name="lt-1-enable-threat-detection-for-azure-resources"></a>LT-1：为 Azure 资源启用威胁检测
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID (s)  |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | LT-1 | 6.7 | AU-3、AU-6、AU-12、SI-4 |
 
@@ -54,11 +54,11 @@ ms.locfileid: "97369066"
 
 ## <a name="lt-2-enable-threat-detection-for-azure-identity-and-access-management"></a>LT-2：启用 Azure 标识和访问管理的威胁检测
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID (s)  |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | LT-2 | 6.8 | AU-3、AU-6、AU-12、SI-4 |
 
-Azure AD 提供了以下用户日志，可以在报表中查看 Azure AD 报告或与 Azure Monitor、Azure Sentinel 或其他 SIEM/监视工具进行集成，以实现更复杂的监视和分析用例： 
+Azure AD 提供以下用户日志，可在 Azure AD 报表中进行查看，也可将这些日志与 Azure Monitor、Azure Sentinel 或其他 SIEM/监视工具集成，以用于更复杂的监视和分析用例： 
 -   登录 - 登录报告提供有关托管应用程序的使用情况和用户登录活动的信息。
 
 -   审核日志 - 通过日志为 Azure AD 中的各种功能所做的所有更改提供可跟踪性。 审核日志的示例包括对 Azure AD 中的任何资源（例如添加或删除用户、应用、组、角色和策略）所做的更改。
@@ -91,7 +91,7 @@ Azure 安全中心还可针对某些可疑活动发出警报，这些活动包�
 
 ## <a name="lt-3-enable-logging-for-azure-network-activities"></a>LT-3：为 Azure 网络活动启用日志记录
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID (s)  |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | LT-3 | 9.3、12.2、12.5、12.8 | AU-3、AU-6、AU-12、SI-4 |
 
@@ -125,7 +125,7 @@ Azure 安全中心还可针对某些可疑活动发出警报，这些活动包�
 
 ## <a name="lt-4-enable-logging-for-azure-resources"></a>LT-4：为 Azure 资源启用日志记录
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID (s)  |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | LT-4 | 6.2、6.3、8.8 | AU-3、AU-12 |
 
@@ -133,7 +133,7 @@ Azure 安全中心还可针对某些可疑活动发出警报，这些活动包�
 
 可使用 Azure 安全中心和 Azure Policy 在 Azure 资源上实现资源日志和日志数据收集，以访问审核、安全性和资源日志。 活动日志自动可用，包括事件源、日期、用户、时间戳、源地址、目标地址和其他有用元素。 
 
-- [了解 Azure 中的日志记录和不同的日志类型](../../azure-monitor/platform/platform-logs-overview.md)
+- [了解 Azure 中的日志记录和不同的日志类型](../../azure-monitor/essentials/platform-logs-overview.md)
 
 - [了解 Azure 安全中心数据收集](../../security-center/security-center-enable-data-collection.md)
 
@@ -151,7 +151,7 @@ Azure 安全中心还可针对某些可疑活动发出警报，这些活动包�
 
 ## <a name="lt-5-centralize-security-log-management-and-analysis"></a>LT-5：集中管理和分析安全日志
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID (s)  |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | LT-5 | 6.5、6.6 | AU-3、SI-4 |
 
@@ -159,11 +159,11 @@ Azure 安全中心还可针对某些可疑活动发出警报，这些活动包�
 
 确保正在将 Azure 活动日志集成到中央日志记录。 通过 Azure Monitor 引入日志，以聚合终结点设备、网络资源和其他安全系统生成的安全数据。 在 Azure Monitor 中，使用 Log Analytics 工作区来查询和执行分析，并使用 Azure 存储帐户进行长期存档存储。
 
-此外，启用数据并将数据集成到 Azure Sentinel 或第三方 SIEM。
+另外，请启用 Azure Sentinel 或第三方 SIEM 并将数据载入其中。
 
-许多组织选择使用 Azure Sentinel 作为 "热" 数据，这些数据经常使用，而 Azure 存储则用于不频繁使用的 "冷" 数据。 
+许多组织选择将 Azure Sentinel 用于频繁使用的“热”数据，并将 Azure 存储用于不太频繁使用的“冷”数据。 
 
-- [如何使用 Azure Monitor 收集平台日志和指标](../../azure-monitor/platform/diagnostic-settings.md)
+- [如何使用 Azure Monitor 收集平台日志和指标](../../azure-monitor/essentials/diagnostic-settings.md)
 
 - [如何加入 Azure Sentinel](../../sentinel/quickstart-onboard.md)
 
@@ -179,15 +179,15 @@ Azure 安全中心还可针对某些可疑活动发出警报，这些活动包�
 
 ## <a name="lt-6-configure-log-storage-retention"></a>LT-6：配置日志存储保留期
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID (s)  |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | LT-6 | 6.4 | AU-3、AU-11 |
 
 根据合规性、法规和业务要求配置日志保留。 
 
-在 Azure Monitor 中，可根据组织的合规性规则设置 Log Analytics 工作区保持期。 使用 Azure 存储、Data Lake 或 Log Analytics 工作区帐户用于长期和存档存储。
+在 Azure Monitor 中，可根据组织的合规性规则设置 Log Analytics 工作区保持期。 将 Azure 存储、Data Lake 或 Log Analytics 工作区帐户用于长期存储和存档存储。
 
-- [更改 Log Analytics 中的数据保留期](../../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [更改 Log Analytics 中的数据保留期](../../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 - [如何为 Azure 存储帐户日志配置保留策略](../../storage/common/storage-monitor-storage-account.md#configure-logging)
 
@@ -207,7 +207,7 @@ Azure 安全中心还可针对某些可疑活动发出警报，这些活动包�
 
 ## <a name="lt-7-use-approved-time-synchronization-sources"></a>LT-7：使用批准的时间同步源
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID (s)  |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | LT-7 | 6.1 | AU-8 |
 
