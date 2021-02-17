@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: 771cf97a5c938fb987c66555c92c23f42b302a10
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 3b2d1bbe2de0ae72087fdf3debeaf42f8745fed9
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98134222"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576475"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB Cassandra API 支持的 Apache Cassandra 功能 
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -43,7 +43,7 @@ Azure Cosmos DB Cassandra API 支持以下版本的 Cassandra 驱动程序：
 
 Azure Cosmos DB Cassandra API 支持以下 CQL 数据类型：
 
-|Command  |支持 |
+|类型  |支持 |
 |---------|---------|
 | ascii  | 是 |
 | bigint  | 是 |
@@ -82,13 +82,14 @@ Azure Cosmos DB Cassandra API 支持以下 CQL 函数：
 |Command  |支持 |
 |---------|---------|
 | 标记 * | 是 |
-| ttl | 是 |
-| writetime | 是 |
+| ttl *** | 是 |
+| writetime *** | 是 |
 | cast ** | 是 |
 
 > [!NOTE] 
 > \* Cassandra API 支持作为投影/选择器的标记，但只允许在 where 子句的左侧使用标记(pk)。 例如，支持 `WHERE token(pk) > 1024`，但不支持 `WHERE token(pk) > token(100)`。  
-> \*\* `cast()` 函数不可嵌套在 Cassandra API 中。 例如，支持 `SELECT cast(count as double) FROM myTable`，但不支持 `SELECT avg(cast(count as double)) FROM myTable`。
+> \*\* `cast()` 函数不可嵌套在 Cassandra API 中。 例如，支持 `SELECT cast(count as double) FROM myTable`，但不支持 `SELECT avg(cast(count as double)) FROM myTable`。    
+> \*\*\* 使用 `USING` 指定的自定义时间戳和 TTL 在行级别应用（而不是按每个单元格进行应用）。
 
 
 
@@ -159,7 +160,6 @@ Azure Cosmos DB 在 Cassandra API 帐户上支持以下数据库命令。
 | CREATE ROLE | 否 |
 | CREATE USER（在原生 Apache Cassandra 中已弃用） | 否 |
 | DELETE | 是 |
-| DELETE（使用 IF 条件的轻型事务）| 是 |
 | DISTINCT | 否 |
 | DROP AGGREGATE | 否 |
 | .DROP FUNCTION | 否 |
@@ -173,17 +173,25 @@ Azure Cosmos DB 在 Cassandra API 帐户上支持以下数据库命令。
 | DROP USER（在原生 Apache Cassandra 中已弃用） | 否 |
 | GRANT | 否 |
 | INSERT | 是 |
-| INSERT（使用 IF 条件的轻型事务）| 是 |
 | LIST PERMISSIONS | 否 |
 | LIST ROLES | 否 |
 | LIST USERS（在原生 Apache Cassandra 中已弃用） | 否 |
 | REVOKE | 否 |
 | SELECT | 是 |
-| SELECT（使用 IF 条件的轻型事务）| 否 |
 | UPDATE | 是 |
-| UPDATE（使用 IF 条件的轻型事务）| 否 |
 | TRUNCATE | 否 |
 | USE | 是 |
+
+## <a name="lightweight-transactions-lwt"></a>轻量级事务 (LWT)
+
+| 组件  |支持 |
+|---------|---------|
+| DELETE IF EXISTS | 是 |
+| DELETE 条件 | 否 |
+| INSERT IF NOT EXISTS | 是 |
+| UPDATE IF EXISTS | 是 |
+| UPDATE IF NOT EXISTS | 是 |
+| UPDATE 条件 | 否 |
 
 ## <a name="cql-shell-commands"></a>CQL Shell 命令
 

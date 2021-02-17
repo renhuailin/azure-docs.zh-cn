@@ -5,14 +5,14 @@ author: amberbhargava
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 12/17/2020
+ms.date: 02/05/2021
 ms.author: banders
-ms.openlocfilehash: 511c0ecdef45a882bcc3a427d5ec602b3ebabc66
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 00ac61567502984759c5db9837060c86aaee378d
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97673825"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99593580"
 ---
 # <a name="understand-microsoft-customer-agreement-administrative-roles-in-azure"></a>了解 Azure 中的 Microsoft 客户协议管理角色
 
@@ -100,6 +100,8 @@ ms.locfileid: "97673825"
 |更新计费配置文件属性 |✔|✔|✘|✘|✘|✘|✘|
 |查看对计费配置文件应用的策略，例如启用 Azure 预留项购买、启用 Azure 市场购买，等等|✔|✔|✔|✔|✔|✔|✔|
 |对计费配置文件应用策略 |✔|✔|✘|✘|✘|✘|✘|
+|管理预留订单 |✔|✔|✘|✘|✘|✘|✘|
+|查看预留订单 |✔|✔|✔|✘|✘|✘|✘|
 
 ### <a name="manage-invoices-for-billing-profile"></a>管理计费配置文件的发票
 

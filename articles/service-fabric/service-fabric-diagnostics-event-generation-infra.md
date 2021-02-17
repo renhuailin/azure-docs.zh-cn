@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: 033b4967d3da382057c2651457f7792e760d8bc3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f9db0df9370197190c11b740f1fd1af3fb69f19c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86247609"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581408"
 ---
 # <a name="monitoring-the-cluster"></a>监视群集
 
@@ -20,7 +20,7 @@ Service Fabric 通过 EventStore 和各种现成的日志通道将多个结构�
 
 在 Windows 上，Service Fabric 事件可通过使用一组相关 `logLevelKeywordFilters`（用于在操作通道与“数据和消息”通道之间进行选择）从单个 ETW 提供程序获得 - 这是我们用来分离出要根据需要筛选的传出 Service Fabric 事件的方式。
 
-* **可操作**：由 Service Fabric 和群集执行的高级操作，包括出现节点事件、部署新应用程序或升级回滚等。可在[此处](service-fabric-diagnostics-event-generation-operational.md)查看事件的完整列表。  
+* **可操作**：由 Service Fabric 和群集执行的高级操作，包括出现节点事件、部署新应用程序或升级回滚等。可在 [此处](service-fabric-diagnostics-event-generation-operational.md)查看事件的完整列表。  
 
 * **可操作 - 详细信息**  
 运行状况报告和负载均衡决策。
@@ -70,7 +70,7 @@ Service Fabric 具有自身的运行状况模型，以下文章对此做了详�
 
 ## <a name="service-fabric-support-logs"></a>Service Fabric 支持日志
 
-如需联系 Microsoft 支持部门来获取 Azure Service Fabric 群集方面的帮助，几乎始终都需要提供支持日志。 如果群集托管在 Azure 中，则会自动配置支持日志，并在创建群集的过程中收集这些日志。 日志存储在群集资源组中的专用存储帐户内。 该存储帐户没有固定的名称，但在其中可以看到以 *fabric* 开头的 Blob 容器和表。 有关为独立群集设置日志收集的信息，请参阅 [Create and manage a standalone Azure Service Fabric cluster](service-fabric-cluster-creation-for-windows-server.md)（创建和管理独立 Azure Service Fabric 群集）以及 [Configuration settings for a standalone Windows cluster](service-fabric-cluster-manifest.md)（Windows 独立群集的配置设置）。 对于独立的 Service Fabric 实例，应该将日志发送到本地文件共享。 **必须**提供这些日志才能获得支持，但是，这些日志只能由 Microsoft 客户支持团队使用。
+如需联系 Microsoft 支持部门来获取 Azure Service Fabric 群集方面的帮助，几乎始终都需要提供支持日志。 如果群集托管在 Azure 中，则会自动配置支持日志，并在创建群集的过程中收集这些日志。 日志存储在群集资源组中的专用存储帐户内。 该存储帐户没有固定的名称，但在其中可以看到以 *fabric* 开头的 Blob 容器和表。 有关为独立群集设置日志收集的信息，请参阅 [Create and manage a standalone Azure Service Fabric cluster](service-fabric-cluster-creation-for-windows-server.md)（创建和管理独立 Azure Service Fabric 群集）以及 [Configuration settings for a standalone Windows cluster](service-fabric-cluster-manifest.md)（Windows 独立群集的配置设置）。 对于独立的 Service Fabric 实例，应该将日志发送到本地文件共享。 **必须** 提供这些日志才能获得支持，但是，这些日志只能由 Microsoft 客户支持团队使用。
 
 ## <a name="measuring-performance"></a>测量性能
 
@@ -81,7 +81,7 @@ Service Fabric 具有自身的运行状况模型，以下文章对此做了详�
 以下是设置群集收集性能数据的两种常见方式：
 
 * **使用代理**  
-这是从计算机中收集性能的首选方法，因为代理通常有可以收集的可能性能指标列表，并且选择要收集或更改的指标是一个相对简单的过程。 有关 Azure Monitor 服务的详细信息，请参阅 Service Fabric 的 [Azure Monitor 日志集成](service-fabric-diagnostics-event-analysis-oms.md) 中的 Azure Monitor 日志，并 [设置 Log Analytics 代理](../azure-monitor/platform/agent-windows.md) ，以了解有关 Log Analytics 代理的详细信息，这是一个可以获取群集 vm 和部署容器的性能数据的监视代理。
+这是从计算机中收集性能的首选方法，因为代理通常有可以收集的可能性能指标列表，并且选择要收集或更改的指标是一个相对简单的过程。 有关 Azure Monitor 服务的详细信息，请参阅 Service Fabric 的 [Azure Monitor 日志集成](service-fabric-diagnostics-event-analysis-oms.md) 中的 Azure Monitor 日志，并 [设置 Log Analytics 代理](../azure-monitor/agents/agent-windows.md) ，以了解有关 Log Analytics 代理的详细信息，这是一个可以获取群集 vm 和部署容器的性能数据的监视代理。
 
 * **性能计数器到 Azure 表存储**  
 还可将性能指标发送到与事件相同的表存储。 此操作需要更改 Azure 诊断配置以从群集中的 VM 读取适当的性能计数器，如果要部署任何容器，也能使其读取 Docker 统计数据。 阅读有关在 Service Fabric 中配置 [WAD 中的性能计数器](service-fabric-diagnostics-event-aggregation-wad.md)的文章，设置性能计数器集合。

@@ -5,12 +5,12 @@ ms.assetid: 94af2caf-a2ec-4415-a097-f60694b860b3
 ms.topic: overview
 ms.date: 07/06/2020
 ms.custom: devx-track-dotnet, mvc, seodec18
-ms.openlocfilehash: d59dfe5b0fe3268dcda20fbc83aa31bba8a8713b
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 0bfacc4169de6b30272229283e9aef9a9d69fad5
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936203"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99592324"
 ---
 # <a name="app-service-overview"></a>应用服务概述
 
@@ -44,19 +44,19 @@ Azure 应用服务是一项基于 HTTP 的服务，用于托管 Web 应用程序
 
 ### <a name="built-in-languages-and-frameworks"></a>内置语言和框架
 
-Linux 上的应用服务支持许多特定于语言的内置映像。 只需部署代码。 支持的语言包括：Node.js、Java (JRE 8 & JRE 11)、PHP、Python、.NET Core 和 Ruby。 运行 [`az webapp list-runtimes --linux`](/cli/azure/webapp#az-webapp-list-runtimes) 查看最新语言和支持的版本。 如果内置映像中不支持应用程序所需的运行时，则可以使用自定义容器部署运行时。
+Linux 上的应用服务支持许多特定于语言的内置映像。 只需部署代码。 支持的语言包括：Node.js、Java（JRE 8 和 JRE 11）、PHP、Python、.NET Core 和 Ruby。 运行 [`az webapp list-runtimes --linux`](/cli/azure/webapp#az-webapp-list-runtimes) 查看最新语言和支持的版本。 如果内置映像中不支持应用程序所需的运行时，则可以使用自定义容器部署运行时。
 
 过期运行时会定期从门户的“Web 应用创建和配置”边栏选项卡中删除。 当维护组织弃用这些运行时，或发现存在重大漏洞时，这些运行时将在门户中隐藏。 隐藏这些选项可指引客户使用最新的运行时，这样他们才最能成功。 
 
 在门户中隐藏过期运行时后，任何使用该版本的现有站点都将继续运行。 如果从应用服务平台完全删除了运行时，在删除前，Azure 订阅所有者将收到电子邮件通知。
 
-如果需要使用门户上不再显示的过期运行时版本创建另一款 Web 应用，请参阅语言配置指南，获取有关如何获取站点运行时版本的说明。 可以使用 Azure CLI 创建另一个具有相同运行时的站点。 此外，还可以使用门户中的“Web 应用”边栏选项卡上的“导出模板”按钮，导出站点的 ARM 模板。 可以重复使用此模板来部署具有相同运行时和配置的新站点。
+如果需要使用门户上不再显示的过期运行时版本创建另一款 Web 应用，请参阅语言配置指南，获取有关如何获取站点运行时版本的说明。 可以使用 Azure CLI 创建另一个具有相同运行时的站点。 此外，还可以使用门户中的“Web 应用”边栏选项卡上的“导出模板”按钮，导出站点的 ARM 模板。 可重复使用此模板，向新站点部署相同的运行时和配置。
 
 ### <a name="limitations"></a>限制
 
 - [共享](https://azure.microsoft.com/pricing/details/app-service/plans/)定价层不支持 Linux 上的应用服务。 
 - 不能在同一个应用服务计划中混合使用 Windows 和 Linux 应用。  
-- 在同一资源组内，不能在同一区域中混合使用 Windows 和 Linux 应用。
+- 过去，没法在同一资源组中混用 Windows 和 Linux 应用。 不过，2021 年 1 月 21 日或之后创建的所有资源组都支持此方案。 对于 2021 年 1 月 21 日之前创建的资源组，即将在 Azure 区域（包括国家云区域）中推出用于添加混合平台部署的功能。
 - Azure 门户仅显示当前可用于 Linux 应用的功能。 功能启用后，它们在门户上被激活。
 - 部署到内置映像时，代码和内容将被分配一个 Web 内容存储卷，由 Azure 存储提供支持。 与容器文件系统的延迟相比，此卷的磁盘延迟更高，并且变化更大。 自定义容器选项将文件放在容器文件系统而非内容卷中，因此可能更适用于需要频繁以只读方式访问内容文件的应用。
 

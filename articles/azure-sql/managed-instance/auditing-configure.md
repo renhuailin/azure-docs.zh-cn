@@ -13,12 +13,12 @@ author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 05/26/2020
-ms.openlocfilehash: 31a1169ca6c2194b8d5564e5d0df50116dd25084
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: ae0d9696d869b2a260de643482a9f86c34bcc824
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94505659"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575467"
 ---
 # <a name="get-started-with-azure-sql-managed-instance-auditing"></a>Azure SQL 托管实例审核入门
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -33,7 +33,7 @@ ms.locfileid: "94505659"
 以下部分介绍了托管实例上的审核配置。
 
 1. 转到 [Azure 门户](https://portal.azure.com)。
-2. 创建一个用于存储审核日志的 Azure 存储 **容器** 。
+2. 创建一个用于存储审核日志的 Azure 存储 **容器**。
 
    1. 导航到要在其中存储审核日志的 Azure 存储帐户。
 
@@ -59,7 +59,7 @@ ms.locfileid: "94505659"
   
 3. 为审核日志创建容器后，可通过两种方式将其配置为审核日志的目标：[使用 T-SQL](#blobtsql)，或[使用 SQL Server Management Studio (SSMS) UI](#blobssms)：
 
-   - <a id="blobtsql"></a>**使用 T-sql 为审核日志配置 blob 存储：**
+   - <a id="blobtsql"></a>**使用 T-SQL 为审核日志配置 Blob 存储：**
 
      1. 在容器列表中，单击新创建的容器，然后单击“容器属性”。
 
@@ -79,11 +79,11 @@ ms.locfileid: "94505659"
 
         - 如下所述配置 SAS：
 
-          - **允许的服务** ：Blob
+          - **允许的服务**：Blob
 
-          - **开始日期** ：若要避免时区相关的问题，请使用昨天的日期
+          - **开始日期**：若要避免时区相关的问题，请使用昨天的日期
 
-          - **结束日期** ：选择此 SAS 令牌的到期日期
+          - **结束日期**：选择此 SAS 令牌的到期日期
 
             > [!NOTE]
             > 在到期时续订令牌，以避免审核失败。
@@ -120,7 +120,7 @@ ms.locfileid: "94505659"
 
      1. 继续[创建服务器审核规范或数据库审核规范](#createspec)。
 
-   - <a id="blobssms"></a>**使用 SQL Server Management Studio 18 配置用于审核日志的 blob 存储：**
+   - <a id="blobssms"></a>**使用 SQL Server Management Studio 18 为审核日志配置 Blob 存储：**
 
      1. 使用 SQL Server Management Studio UI 连接到托管实例。
 
@@ -223,7 +223,7 @@ ms.locfileid: "94505659"
 
 如果将审核日志写入到 Azure Monitor 日志，则可以在 Log Analytics 工作区中使用它们，可以在其中对审核数据运行高级搜索。 首先，导航到 Log Analytics 工作区。 在“常规”部分下，单击“日志”，然后输入一个简单的查询（例如 `search "SQLSecurityAuditEvents"`）以查看审核日志 。  
 
-有了 Azure Monitor 日志，就可以使用集成的搜索和自定义仪表板来轻松分析所有工作负荷和服务器上的数百万记录，获得实时操作见解。 有关 Azure Monitor 日志搜索语言和命令的其他有用信息，请参阅 [Azure Monitor 日志搜索参考](../../azure-monitor/log-query/log-query-overview.md)。
+有了 Azure Monitor 日志，就可以使用集成的搜索和自定义仪表板来轻松分析所有工作负荷和服务器上的数百万记录，获得实时操作见解。 有关 Azure Monitor 日志搜索语言和命令的其他有用信息，请参阅 [Azure Monitor 日志搜索参考](../../azure-monitor/logs/log-query-overview.md)。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 

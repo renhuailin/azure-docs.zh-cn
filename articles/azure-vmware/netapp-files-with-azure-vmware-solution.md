@@ -3,12 +3,12 @@ title: Azure NetApp 文件与 Azure VMware 解决方案
 description: 结合使用 Azure NetApp 文件和 Azure VMware 解决方案 Vm，在本地服务器、Azure VMware 解决方案 Vm 和云基础结构之间迁移和同步数据。
 ms.topic: how-to
 ms.date: 02/10/2021
-ms.openlocfilehash: db7d8eb05e5bd70f6a2397b3017924093218e78e
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 2f2e8fdeb777e7e4b2b4e89c1bb36b51c3083257
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100371560"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575431"
 ---
 # <a name="azure-netapp-files-with-azure-vmware-solution"></a>Azure NetApp 文件与 Azure VMware 解决方案
 
@@ -21,7 +21,7 @@ ms.locfileid: "100371560"
 ### <a name="features"></a>功能
  (使用 Azure NetApp 文件的服务。 ) 
 
-- **Active Directory 连接**： Azure NetApp 文件支持 [Active Directory 域服务和 Azure Active Directory 域服务](../azure-netapp-files/azure-netapp-files-create-volumes-smb.md#decide-which-domain-services-to-use)。
+- **Active Directory 连接**： Azure NetApp 文件支持 [Active Directory 域服务和 Azure Active Directory 域服务](../azure-netapp-files/create-active-directory-connections.md#decide-which-domain-services-to-use)。
 
 - **共享协议**： Azure NetApp 文件支持 (SMB) 和网络文件系统 (NFS) 协议的服务器消息块。 此支持意味着可以在 Linux 客户端上装载卷，并可以在 Windows 客户端上映射这些卷。
 

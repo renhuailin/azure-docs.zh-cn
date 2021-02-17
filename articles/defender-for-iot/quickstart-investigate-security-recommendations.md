@@ -1,10 +1,10 @@
 ---
-title: 快速入门：调查安全建议
+title: 调查安全建议
 description: 使用 Defender for IoT 安全服务调查安全建议。
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
-author: mlottner
+author: shhazam-ms
 manager: rkarlin
 editor: ''
 ms.devlang: na
@@ -12,13 +12,13 @@ ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/09/2020
-ms.author: mlottner
-ms.openlocfilehash: 66b5694823096f0747ea099b631a53198a819816
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.author: shhazam
+ms.openlocfilehash: 0e902db38e4145bf94ab6a235bc1210b520327a1
+ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97835034"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99809178"
 ---
 # <a name="quickstart-investigate-security-recommendations"></a>快速入门：调查安全建议
 
@@ -46,22 +46,19 @@ IoT 中心建议列表显示 IoT 中心的所有聚合安全建议。
 
 打开每个聚合建议以显示触发建议的每个设备的详细建议说明、修正步骤、设备 ID。 它还显示建议的严重性和使用 Log Analytics 的直接调查访问。
 
-1.  从“IoT 中心”\>“安全”\>“建议”列表中选择打开任何安全建议  。
+1.  从“IoT 中心” > “安全性”和 > “建议”列表中，选择任一安全建议并将其打开  。
 
 1.  查看建议“说明”、“严重性”和在聚合期间发出此建议的所有设备的“设备详细信息”  。 
 
 1.  查看建议细节后，使用“手动修正步骤”说明可帮助修正并解决导致建议的问题。 
 
-    [ :::image type="content" source="media/quickstart/remediate-security-recommendations-expanded.png#lightbox" alt-text="使用 ASC for IoT 修正安全建议](media/quickstart/remediate-security-recommendations-inline.png)":::
-
+    :::image type="content" source="media/quickstart/remediate-security-recommendations-inline.png" alt-text="使用适用于 IoT 的 ASC 修正安全建议" lightbox="media/quickstart/remediate-security-recommendations-expanded.png":::
 
 1.  通过在深入了解页面中选择所需的设备，浏览特定设备的建议详细信息。
 
-    [ :::image type="content" source="media/quickstart/explore-security-recommendation-detail-expanded.png#lightbox" alt-text="使用 ASC for IoT 调查设备的特定安全建议](media/quickstart/explore-security-recommendation-detail-inline.png)":::
-
+    :::image type="content" source="media/quickstart/explore-security-recommendation-detail-inline.png" alt-text="使用适用于 IoT 的 ASC 调查设备的特定安全建议" lightbox="media/quickstart/explore-security-recommendation-detail-expanded.png":::
 
 1.  如果需要进一步调查，请使用此链接“在 Log Analytics 中调查建议”。 
-
 
 ## <a name="next-steps"></a>后续步骤
 

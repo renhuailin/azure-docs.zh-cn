@@ -3,12 +3,12 @@ title: 新建 Azure Application Insights 资源 | Microsoft Docs
 description: 为新的实时应用程序手动设置 Application Insights 监视。
 ms.topic: conceptual
 ms.date: 02/10/2021
-ms.openlocfilehash: 3233aed895eac269bd34a961728b3302581ff360
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: 1ec5e929f591c0b7ada36f345d86c6de591892c8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100104580"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575628"
 ---
 # <a name="create-an-application-insights-resource"></a>创建 Application Insights 资源
 
@@ -35,7 +35,7 @@ Azure Application Insights 在 Microsoft Azure *资源* 中显示有关应用程
    | **资源模式** | `Classic` 或 `Workspace-based` | 基于工作区的资源当前为公共预览版，用于将 Application Insights 遥测发送到常用 Log Analytics 工作区。 有关详细信息，请参阅[有关基于工作区的资源的文章](create-workspace-resource.md)。
 
 > [!NOTE]
-> 虽然可以在不同资源组中使用相同的资源名称，但使用全局唯一名称会有好处。 如果打算[执行跨资源查询](../log-query/cross-workspace-query.md#identifying-an-application)，这将很有用，因为它可以简化所需的语法。
+> 虽然可以在不同资源组中使用相同的资源名称，但使用全局唯一名称会有好处。 如果打算[执行跨资源查询](../logs/cross-workspace-query.md#identifying-an-application)，这将很有用，因为它可以简化所需的语法。
 
 在必填字段中输入适当的值，然后选择“查看 + 创建”。
 
@@ -159,13 +159,13 @@ az monitor app-insights component create --app demoApp --location eastus --kind 
 
 ## <a name="next-steps"></a>后续步骤
 * [诊断搜索](./diagnostic-search.md)
-* [探索指标](../platform/metrics-charts.md)
-* [编写分析查询](../log-query/log-query-overview.md)
+* [探索指标](../essentials/metrics-charts.md)
+* [编写分析查询](../logs/log-query-overview.md)
 
 <!--Link references-->
 
 [api]: ./api-custom-events-metrics.md
 [diagnostic]: ./diagnostic-search.md
-[metrics]: ../platform/metrics-charts.md
+[metrics]: ../essentials/metrics-charts.md
 [start]: ./app-insights-overview.md
 

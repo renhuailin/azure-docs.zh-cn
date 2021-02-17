@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 8a572221ca8899c5e4f4cf76e4b89c995952a2f3
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 6f82114874c9e85e44df6684d0b0cf624903a50f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99258551"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100582512"
 ---
 # <a name="azure-security-baseline-for-api-management"></a>API 管理的 Azure 安全基线
 
@@ -46,7 +46,7 @@ API 管理的 Azure 安全基线包含可帮助你改善部署安全状态的建
 
 ### <a name="12-monitor-and-log-the-configuration-and-traffic-of-vnets-subnets-and-nics"></a>1.2：监视和记录 VNet、子网和 NIC 的配置与流量
 
-**指南**：可以使用网络安全组 (NSG) 控制其中部署了 API 管理的子网的入站和出站流量。 将 NSG 部署到 API 管理子网，启用 NSG 流日志，并将日志发送到 Azure 存储帐户以进行流量审核。 还可以将 NSG 流日志发送到 Log Analytics 工作区，并使用流量分析来深入了解 Azure 云中的流量流。 流量分析的优势包括能够可视化网络活动、识别热点、识别安全威胁、了解流量流模式，以及查明网络不当配置。
+**指南**：可以使用网络安全组 (NSG) 控制其中部署了 API 管理的子网的入站和出站流量。 将 NSG 部署到 API 管理子网，启用 NSG 流日志，并将日志发送到 Azure 存储帐户以进行流量审核。 还可以将 NSG 流日志发送到 Log Analytics 工作区，并使用流量分析来提供对 Azure 云中的流量流的见解。 流量分析的优势包括能够可视化网络活动、识别热点、识别安全威胁、了解流量流模式，以及查明网络不当配置。
 
 警告：在 API 管理子网上配置 NSG 时，需要打开一组端口。 如果其中的任一端口不可用，API 管理可能无法正常工作且不可访问。
 
@@ -104,7 +104,7 @@ API 管理的 Azure 安全基线包含可帮助你改善部署安全状态的建
 
 ### <a name="15-record-network-packets-and-flow-logs"></a>1.5：记录网络数据包和流日志
 
-**指南**：可以使用网络安全组 (NSG) 控制其中部署了 API 管理的子网的入站和出站流量。 将 NSG 部署到 API 管理子网，启用 NSG 流日志，并将日志发送到 Azure 存储帐户以进行流量审核。 还可以将 NSG 流日志发送到 Log Analytics 工作区，并使用流量分析来深入了解 Azure 云中的流量流。 流量分析的优势包括能够可视化网络活动、识别热点、识别安全威胁、了解流量流模式，以及查明网络不当配置。
+**指南**：可以使用网络安全组 (NSG) 控制其中部署了 API 管理的子网的入站和出站流量。 将 NSG 部署到 API 管理子网，启用 NSG 流日志，并将日志发送到 Azure 存储帐户以进行流量审核。 还可以将 NSG 流日志发送到 Log Analytics 工作区，并使用流量分析来提供对 Azure 云中的流量流的见解。 流量分析的优势包括能够可视化网络活动、识别热点、识别安全威胁、了解流量流模式，以及查明网络不当配置。
 
 警告：在 API 管理子网上配置 NSG 时，需要打开一组端口。 如果其中的任一端口不可用，API 管理可能无法正常工作且不可访问。
 
@@ -210,9 +210,9 @@ API 管理的 Azure 安全基线包含可帮助你改善部署安全状态的建
 
 **指南**：使用 Azure 活动日志监视网络资源配置，并检测与 Azure API 管理部署关联的网络资源的更改。 在 Azure Monitor 中创建当关键网络资源发生更改时触发的警报。
 
-* [如何查看和检索 Azure 活动日志事件](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [如何查看和检索 Azure 活动日志事件](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-* [如何在 Azure Monitor 中创建警报](../azure-monitor/platform/alerts-activity-log.md)
+* [如何在 Azure Monitor 中创建警报](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -238,7 +238,7 @@ API 管理的 Azure 安全基线包含可帮助你改善部署安全状态的建
 
 （可选）启用并将数据加入 Azure Sentinel 或第三方安全事件和事件管理 (SIEM)。
 
-* [如何配置诊断设置](../azure-monitor/platform/diagnostic-settings.md#create-in-azure-portal)
+* [如何配置诊断设置](../azure-monitor/essentials/diagnostic-settings.md#create-in-azure-portal)
 
 * [如何加入 Azure Sentinel](../sentinel/quickstart-onboard.md)
 
@@ -258,7 +258,7 @@ API 管理的 Azure 安全基线包含可帮助你改善部署安全状态的建
 
 对于数据平面审核日志记录，诊断日志提供大量有关操作和错误的信息，这些信息对审核和故障排除非常重要。 诊断日志不同于活动日志。 活动日志提供有关对 Azure 资源执行的操作的见解。 诊断日志提供资源执行的操作的深入信息。
 
-* [如何启用 Azure 活动日志的诊断设置](../azure-monitor/platform/activity-log.md)
+* [如何启用 Azure 活动日志的诊断设置](../azure-monitor/essentials/activity-log.md)
 
 * [如何启用 Azure API 管理的诊断设置](./api-management-howto-use-azure-monitor.md#activity-logs)
 
@@ -278,9 +278,9 @@ API 管理的 Azure 安全基线包含可帮助你改善部署安全状态的建
 
 **指导**：在 Azure Monitor 中，根据组织的合规性规章设置 Log Analytics 工作区保留期。 使用 Azure 存储帐户进行长期/存档存储。
 
-* [如何为 Log Analytics 工作区设置日志保留参数](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+* [如何为 Log Analytics 工作区设置日志保留参数](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
-* [如何将日志存档到 Azure 存储帐户](../azure-monitor/platform/resource-logs.md#send-to-azure-storage)
+* [如何将日志存档到 Azure 存储帐户](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)
 
 **Azure 安全中心监视**：不适用
 
@@ -294,9 +294,9 @@ API 管理的 Azure 安全基线包含可帮助你改善部署安全状态的建
 
 * [如何监视和审查 Azure API 管理的日志](./api-management-howto-use-azure-monitor.md)
 
-* [如何在 Azure Monitor 中执行自定义查询](../azure-monitor/log-query/get-started-queries.md)
+* [如何在 Azure Monitor 中执行自定义查询](../azure-monitor/logs/get-started-queries.md)
 
-* [了解 Log Analytics 工作区](../azure-monitor/log-query/log-analytics-tutorial.md)
+* [了解 Log Analytics 工作区](../azure-monitor/logs/log-analytics-tutorial.md)
 
 * [如何与 Azure Application Insights 集成](./api-management-howto-app-insights.md)
 
@@ -314,7 +314,7 @@ API 管理的 Azure 安全基线包含可帮助你改善部署安全状态的建
 
 （可选）可以启用将数据加入 Azure Sentinel 或第三方 SIEM 的功能。
 
-* [如何启用 Azure 活动日志的诊断设置](../azure-monitor/platform/activity-log.md)
+* [如何启用 Azure 活动日志的诊断设置](../azure-monitor/essentials/activity-log.md)
 
 * [如何启用 Azure API 管理的诊断设置](./api-management-howto-use-azure-monitor.md#activity-logs)
 
@@ -669,7 +669,7 @@ Microsoft 管理 Azure API 管理的底层基础结构，并实施了严格的�
 
 **指南**：将 Azure Monitor 与 Azure 活动日志结合使用，在生产 Azure Functions 应用以及其他关键或相关资源发生更改时，创建警报。
 
-* [如何针对 Azure 活动日志事件创建警报](../azure-monitor/platform/alerts-activity-log.md)
+* [如何针对 Azure 活动日志事件创建警报](../azure-monitor/alerts/alerts-activity-log.md)
 
 * [如何在 Azure API 管理中使用 Azure Monitor 和 Azure 活动日志](./api-management-howto-use-azure-monitor.md)
 
@@ -791,7 +791,7 @@ Microsoft 对基础平台进行了扫描和修补。 客户查看他们可用的
 - 不允许的资源类型
 - 允许的资源类型
 
-使用 Azure Resource Graph 可查询/发现订阅中的资源。 确保环境中的所有 Azure 资源均已获得批准。
+使用 Azure Resource Graph 可查询/发现订阅中的资源。 确保环境中存在的所有 Azure 资源已获得批准。
 
 * [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 

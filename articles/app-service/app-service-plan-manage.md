@@ -6,12 +6,12 @@ ms.assetid: 4859d0d5-3e3c-40cc-96eb-f318b2c51a3d
 ms.topic: article
 ms.date: 10/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: bb0765a1d7934d60f787ed277dd3bd1f9bc1359b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 58ddf60a842a9583eae25a875f55227cee772a8a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88962938"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100582542"
 ---
 # <a name="manage-an-app-service-plan-in-azure"></a>在 Azure 中管理应用服务计划
 
@@ -44,7 +44,7 @@ ms.locfileid: "88962938"
 
 ## <a name="move-an-app-to-another-app-service-plan"></a>将应用移到另一个应用服务计划
 
-只要源计划和目标计划在_同一个资源组和地理区域_中，就可将应用移到另一个应用服务计划。
+只要源计划和目标计划在 _同一个资源组和地理区域_ 中，就可将应用移到另一个应用服务计划。
 
 > [!NOTE]
 > Azure 会将每个新的应用服务计划部署到部署单元（在内部称为 Web 空间）中。 每个区域都可以有许多 Web 空间，但应用只能在相同 Web 空间中创建的计划之间移动。 应用服务环境是一个独立的 Web 空间，因此可以在相同应用服务环境中的计划之间移动应用，但无法在不同应用服务环境中的计划之间移动应用。
@@ -82,7 +82,7 @@ ms.locfileid: "88962938"
 
 若要提高应用服务计划的定价层，请参阅[在 Azure 中纵向扩展应用](manage-scale-up.md)。
 
-若要增加应用的实例计数，请参阅[手动或自动缩放实例计数](../azure-monitor/platform/autoscale-get-started.md)。
+若要增加应用的实例计数，请参阅[手动或自动缩放实例计数](../azure-monitor/autoscale/autoscale-get-started.md)。
 
 <a name="delete"></a>
 

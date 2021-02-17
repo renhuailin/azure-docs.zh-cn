@@ -1,15 +1,15 @@
 ---
 title: 快速入门：使用 JavaScript 创建管理组
 description: 在本快速入门中，你将使用 JavaScript 创建管理组，将资源整理到资源层次结构中。
-ms.date: 11/18/2020
+ms.date: 02/05/2021
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: c1b800f150cebacf8d17785feb1bded5189f1574
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 99a2ed406d4837f6fc346e68b3b400003feed38c
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94886594"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100099143"
 ---
 # <a name="quickstart-create-a-management-group-with-javascript"></a>快速入门：使用 JavaScript 创建管理组
 
@@ -29,7 +29,7 @@ ms.locfileid: "94886594"
 
 ## <a name="application-setup"></a>应用程序设置
 
-若要启用 JavaScript 以查询 Azure Resource Graph，必须设置环境。 此设置适用于可使用 JavaScript 的任何环境，包括 [Bash on Windows 10](/windows/wsl/install-win10)。
+若要启用 JavaScript 以对管理组进行管理，必须设置环境。 此设置适用于可使用 JavaScript 的任何环境，包括 [Bash on Windows 10](/windows/wsl/install-win10)。
 
 1. 运行以下命令，设置新的 Node.js 项目。
 

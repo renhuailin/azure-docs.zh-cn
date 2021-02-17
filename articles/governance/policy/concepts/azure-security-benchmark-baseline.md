@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/02/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: e8915e1c15972341befd176b412925f4e87c94f6
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: fadbed5607c7ebdd61a42ae054f431840c529d69
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201444"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573069"
 ---
 # <a name="azure-policy-security-baseline-for-azure-security-benchmark"></a>Azure 安全基准的 Azure Policy 安全基准
 
@@ -31,9 +31,9 @@ Azure Policy 使用术语“所有权”来代替“责任” 。 如需了解�
 
 **指导**：Azure Policy 使用自动启用的活动日志来包括事件源、日期、用户、时间戳、源地址、目标地址和其他有用的元素。
 
-* [如何使用 Azure Monitor 收集平台日志和指标](../../../azure-monitor/platform/diagnostic-settings.md)
+* [如何使用 Azure Monitor 收集平台日志和指标](../../../azure-monitor/essentials/diagnostic-settings.md)
 
-* [了解 Azure 中的日志记录和不同的日志类型](../../../azure-monitor/platform/platform-logs-overview.md)
+* [了解 Azure 中的日志记录和不同的日志类型](../../../azure-monitor/essentials/platform-logs-overview.md)
 
 
 **Azure 安全中心监视**：目前不可用
@@ -89,7 +89,7 @@ Azure Policy 使用术语“所有权”来代替“责任” 。 如需了解�
 
 **指导**：Azure Policy 发生更改时使用 Azure Monitor 与活动日志创建警报。
 
-* [如何针对 Azure 活动日志事件创建警报](../../../azure-monitor/platform/alerts-activity-log.md)
+* [如何针对 Azure 活动日志事件创建警报](../../../azure-monitor/alerts/alerts-activity-log.md)
 
 
 **Azure 安全中心监视**：目前不可用

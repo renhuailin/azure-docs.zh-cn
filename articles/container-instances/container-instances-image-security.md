@@ -4,20 +4,20 @@ description: 有关保护 Azure 容器实例的映像和机密的建议，以及
 ms.topic: article
 ms.date: 01/10/2020
 ms.custom: ''
-ms.openlocfilehash: 898bdf77bf4b6636e78f5d735fc8650da4fde2b8
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: cbceeea24501bc9815cb07e1b0a054914ba8e964
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148658"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579276"
 ---
 # <a name="security-considerations-for-azure-container-instances"></a>Azure 容器实例的安全注意事项
 
 本文介绍使用 Azure 容器实例运行容器应用时的安全注意事项。 主题包括：
 
 > [!div class="checklist"]
-> * 有关管理 Azure 容器实例的映像和机密的**安全建议**
-> * 任何容器平台在整个容器生命周期内的**容器生态系统注意事项**
+> * 有关管理 Azure 容器实例的映像和机密的 **安全建议**
+> * 任何容器平台在整个容器生命周期内的 **容器生态系统注意事项**
 
 有关可帮助你改善部署安全态势的综合建议，请参阅[容器实例的 Azure 安全基线](security-baseline.md)。
 
@@ -40,7 +40,7 @@ ms.locfileid: "92148658"
 
 ### <a name="protect-credentials"></a>保护凭据
 
-容器可能分散在多个群集和 Azure 区域之间。 因此，必须保护登录或 API 访问所需的凭据，例如密码或令牌。 确保只有特权用户能够在传输中和静态状态下访问这些容器。 清点所有凭据机密，并要求开发人员使用专为容器平台设计的新兴机密管理工具。  请确保解决方案包含加密数据库、传输中的机密数据的 TLS 加密，以及 azure [RBAC)  (的最低权限 azure 基于角色的访问控制 ](../role-based-access-control/overview.md)。 [Azure Key Vault](../key-vault/general/secure-your-key-vault.md) 是一种云服务，用于保护容器化应用程序的加密密钥和机密（例如证书、连接字符串和密码）。 由于这些数据极其机密且对企业至关重要，因此请保护对 Key Vault 的访问，以便只有经过授权的应用程序和用户才能访问它们。
+容器可能分散在多个群集和 Azure 区域之间。 因此，必须保护登录或 API 访问所需的凭据，例如密码或令牌。 确保只有特权用户能够在传输中和静态状态下访问这些容器。 清点所有凭据机密，并要求开发人员使用专为容器平台设计的新兴机密管理工具。  确保解决方案包含加密的数据库、针对传输中机密数据的 TLS 加密，以及最低特权的 [Azure 基于角色的访问控制 (Azure RBAC)](../role-based-access-control/overview.md)。 [Azure Key Vault](../key-vault/general/secure-your-key-vault.md) 是一种云服务，用于保护容器化应用程序的加密密钥和机密（例如证书、连接字符串和密码）。 由于这些数据极其机密且对企业至关重要，因此请保护对 Key Vault 的访问，以便只有经过授权的应用程序和用户才能访问它们。
 
 ## <a name="considerations-for-the-container-ecosystem"></a>容器生态系统的注意事项
 
@@ -115,9 +115,9 @@ ms.locfileid: "92148658"
 
 与使用任何 IT 环境时一样，应始终如一地监视容器生态系统中的活动和用户访问，以快速识别任何可疑或恶意活动。 Azure 提供容器监视解决方案，包括：
 
-* [用于容器的 Azure Monitor](../azure-monitor/insights/container-insights-overview.md) 监视托管在 Azure Kubernetes 服务 (AKS) 上的 Kubernetes 环境中部署的工作负荷的性能。 用于容器的 Azure Monitor 通过 Metrics API 从 Kubernetes 中提供的控制器、节点和容器收集内存和处理器指标，来提供性能可见性。 
+* [用于容器的 Azure Monitor](../azure-monitor/containers/container-insights-overview.md) 监视托管在 Azure Kubernetes 服务 (AKS) 上的 Kubernetes 环境中部署的工作负荷的性能。 用于容器的 Azure Monitor 通过 Metrics API 从 Kubernetes 中提供的控制器、节点和容器收集内存和处理器指标，来提供性能可见性。 
 
-* [Azure 容器监视解决方案](../azure-monitor/insights/containers.md)可帮助你在单个位置查看和管理其他 Docker 与 Windows 容器主机。 例如：
+* [Azure 容器监视解决方案](../azure-monitor/containers/containers.md)可帮助你在单个位置查看和管理其他 Docker 与 Windows 容器主机。 例如：
 
   * 查看详细审核信息，其中显示了与容器一起使用的命令。 
   * 通过查看和搜索集中式日志来排查容器问题，而无需远程查看 Docker 或 Windows 主机。  
@@ -139,8 +139,8 @@ ms.locfileid: "92148658"
 维护对容器生态系统（包括 Kubernetes 群集）、容器注册表和容器映像的管理访问的准确审核线索。 这些日志在审核时可能需要用到，在发生任何安全事件后可用作法庭证据。 Azure 解决方案包括：
 
 * [将 Azure Kubernetes 服务与 Azure 安全中心集成](../security-center/defender-for-kubernetes-introduction.md)来监视群集环境的安全配置并生成安全建议
-* [Azure 容器监视解决方案](../azure-monitor/insights/containers.md)
-* [Azure 容器实例](container-instances-log-analytics.md)和[azure 容器注册表](../container-registry/container-registry-diagnostics-audit-logs.md)的资源日志
+* [Azure 容器监视解决方案](../azure-monitor/containers/containers.md)
+* [Azure 容器实例](container-instances-log-analytics.md)和 [Azure 容器注册表](../container-registry/container-registry-diagnostics-audit-logs.md)的资源日志
 
 ## <a name="next-steps"></a>后续步骤
 

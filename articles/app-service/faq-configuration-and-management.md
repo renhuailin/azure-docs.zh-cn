@@ -8,12 +8,12 @@ ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: df4bd0ae0884feae8bd21e33f4d27b6ceb207337
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 843e11e7f2df404a6bf1866da7b383ee9d1097de
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98233978"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574784"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Azure Web 应用配置及管理常见问题解答
 
@@ -292,7 +292,7 @@ Invoke-AzResourceAction -ResourceGroupName "<App Service Certificate Resource Gr
 
 ## <a name="why-isnt-autoscale-working-as-expected"></a>为什么自动缩放不按预期方式工作？
 
-如果 Azure 自动缩放未按预期方式缩放 web 应用，可能会陷入一种困境，在这种情况下，建议主动选择不进行缩放以避免由“不稳定”引起的无限循环。 这种情况通常是因扩展阈值和缩小阈值之间的差值不足所致。 若要了解如何避免“波动”以及如何了解其他自动缩放最佳做法，请参阅[自动缩放最佳做法](../azure-monitor/platform/autoscale-best-practices.md#autoscale-best-practices)。
+如果 Azure 自动缩放未按预期方式缩放 web 应用，可能会陷入一种困境，在这种情况下，建议主动选择不进行缩放以避免由“不稳定”引起的无限循环。 这种情况通常是因扩展阈值和缩小阈值之间的差值不足所致。 若要了解如何避免“波动”以及如何了解其他自动缩放最佳做法，请参阅[自动缩放最佳做法](../azure-monitor/autoscale/autoscale-best-practices.md#autoscale-best-practices)。
 
 ## <a name="why-does-autoscale-sometimes-scale-only-partially"></a>为什么自动缩放有时仅进行部分缩放？
 

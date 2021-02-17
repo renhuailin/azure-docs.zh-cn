@@ -6,12 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 07/17/2017
 ms.reviewer: mbullwin
-ms.openlocfilehash: a81c4f32385cf06238f36ca0162923f93d682807
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d0e5cb5097a2f8833b10fec16a99b67c5c109fc8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87323717"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100583462"
 ---
 # <a name="discover-how-customers-are-using-your-application-with-application-insights-funnels"></a>使用 Application Insights 漏斗图了解客户如何使用你的应用程序
 
@@ -46,7 +46,7 @@ ms.locfileid: "87323717"
   * [使用情况概述](usage-overview.md)
   * [用户、会话和事件](usage-segmentation.md)
   * [保留](usage-retention.md)
-  * [工作簿](../platform/workbooks-overview.md)
+  * [工作簿](../visualize/workbooks-overview.md)
   * [添加用户上下文](usage-send-user-context.md)
   * [导出到 Power BI](./export-power-bi.md)
 

@@ -5,12 +5,12 @@ ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: conceptual
 ms.date: 11/17/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 3e99b156d220b4c24a368886b1c0ca0813ffdc51
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 58e31cfa42faabbfab217a451e14d33f2cf45863
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98674127"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100554819"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions JavaScript 开发人员指南
 
@@ -20,7 +20,7 @@ ms.locfileid: "98674127"
 
 | 入门 | 概念| 指导式学习 |
 | -- | -- | -- | 
-| <ul><li>[使用 Visual Studio Code 的 Node.js 函数](./create-first-function-vs-code-node.md)</li><li>[使用终端/命令提示符的 Node.js 函数](./create-first-function-cli-node.md)</li></ul> | <ul><li>[开发人员指南](functions-reference.md)</li><li>[托管选项](functions-scale.md)</li><li>[TypeScript 函数](#typescript)</li><li>[性能&nbsp;注意事项](functions-best-practices.md)</li></ul> | <ul><li>[创建无服务器应用程序](/learn/paths/create-serverless-applications/)</li><li>[将 Node.js 和 Express API 重构到无服务器 API](/learn/modules/shift-nodejs-express-apis-serverless/)</li></ul> |
+| <ul><li>[使用 Visual Studio Code 的 Node.js 函数](./create-first-function-vs-code-node.md)</li><li>[使用终端/命令提示符的 Node.js 函数](./create-first-function-cli-node.md)</li><li>[ 使用 Azure 门户Node.js 函数](functions-create-function-app-portal.md)</li></ul> | <ul><li>[开发人员指南](functions-reference.md)</li><li>[托管选项](functions-scale.md)</li><li>[TypeScript 函数](#typescript)</li><li>[性能&nbsp;注意事项](functions-best-practices.md)</li></ul> | <ul><li>[创建无服务器应用程序](/learn/paths/create-serverless-applications/)</li><li>[将 Node.js 和 Express API 重构到无服务器 API](/learn/modules/shift-nodejs-express-apis-serverless/)</li></ul> |
 
 ## <a name="javascript-function-basics"></a>JavaScript 函数基础知识
 
@@ -517,7 +517,7 @@ FUNCTIONS_WORKER_PROCESS_COUNT 适用于 Functions 在横向扩展应用程序�
 
 对于 Windows 函数应用，通过将 `WEBSITE_NODE_DEFAULT_VERSION` [应用设置](functions-how-to-use-azure-function-app-settings.md#settings)设为受支持的 LTS 版本（例如 `~12`）来针对 Azure 中的版本进行操作。
 
-对于 Linux function apps，请运行以下 Azure CLI 命令更新节点版本。
+对于 Linux 函数应用，请运行以下 Azure CLI 命令更新 Node 版本。
 
 ```bash
 az functionapp config set --linux-fx-version "node|12" --name "<MY_APP_NAME>" --resource-group "<MY_RESOURCE_GROUP_NAME>"

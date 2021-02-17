@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/16/2020
 ms.author: yelevin
-ms.openlocfilehash: 226d5a46482d6611fdecf214d040fc27af9ac586
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: bc75ee64174957ad6486146b4da6f8a66a2120e5
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98632040"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570546"
 ---
 # <a name="connect-windows-security-events"></a>连接 Windows 安全事件 
 
@@ -56,7 +56,7 @@ ms.locfileid: "98632040"
 
 1. 验证您是否具有相应的权限，如连接器页上的 " **先决条件** " 部分中所述。
 
-1. 下载并安装 [Log Analytics 代理](../azure-monitor/platform/log-analytics-agent.md) (在要将安全事件流式传输到 Azure Sentinel 的计算机上也称为 MICROSOFT MONITORING AGENT 或 MMA) 。
+1. 下载并安装 [Log Analytics 代理](../azure-monitor/agents/log-analytics-agent.md) (在要将安全事件流式传输到 Azure Sentinel 的计算机上也称为 MICROSOFT MONITORING AGENT 或 MMA) 。
 
     对于 Azure 虚拟机：
     
@@ -73,13 +73,13 @@ ms.locfileid: "98632040"
     >
     > 若要允许没有必要 internet 连接的 Windows 系统仍将事件流式传输到 Azure Sentinel，请在单独的计算机上下载并安装 **OMS 网关** ，并使用右下方的链接充当代理。  你仍需要在要收集其事件的每个 Windows 系统上安装 Log Analytics 代理。
     >
-    > 有关此方案的详细信息，请参阅 [ **Log Analytics 网关** 文档](../azure-monitor/platform/gateway.md)。
+    > 有关此方案的详细信息，请参阅 [ **Log Analytics 网关** 文档](../azure-monitor/agents/gateway.md)。
 
-    有关其他安装选项和更多详细信息，请参阅 [ **Log Analytics 代理** 文档](../azure-monitor/platform/agent-windows.md)。
+    有关其他安装选项和更多详细信息，请参阅 [ **Log Analytics 代理** 文档](../azure-monitor/agents/agent-windows.md)。
 
 1. 选择要流式传输 (["所有"、"通用" 或 "最小"](#event-sets)) 的事件集。
 
-1. 单击“更新”  。
+1. 单击“更新”。
 
 1. 若要在 Windows 安全事件 Log Analytics 中使用相关架构，请 `SecurityEvent` 在 "查询" 窗口中键入。
 

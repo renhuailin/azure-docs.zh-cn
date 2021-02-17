@@ -6,14 +6,14 @@ ms.topic: conceptual
 ms.date: 12/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a106455ea9d7b7a64fecd7c4255c294d0bd62db8
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: cfc980fdabdb9c6e7085088db12754243f133d89
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97562610"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581393"
 ---
-# <a name="security-best-practices"></a>安全最佳做法
+# <a name="security-best-practices"></a>安全最佳方案
 
 Windows 虚拟桌面是一种托管虚拟桌面服务，其中包括用于保护组织安全的许多安全功能。 在 Windows 虚拟桌面部署中，Microsoft 代表客户管理部分服务。 此服务具有许多内置的高级安全功能，如 "反向连接"，这降低了从任意位置访问远程桌面所涉及的风险。
 
@@ -72,7 +72,7 @@ Windows 虚拟桌面具有许多内置的安全控件。 在本部分中，你�
 
 对于 Windows 虚拟桌面中的所有用户和管理员都需要多重身份验证，可以提高整个部署的安全性。 若要了解详细信息，请参阅 [为 Windows 虚拟桌面启用 Azure AD 多重身份验证](set-up-mfa.md)。
 
-### <a name="enable-conditional-access"></a>启用条件性访问
+### <a name="enable-conditional-access"></a>启用条件访问
 
 启用 [条件性访问](../active-directory/conditional-access/overview.md) 可让你在向用户授予对 Windows 虚拟桌面环境的访问权限之前管理风险。 在决定要将访问权限授予哪些用户时，我们建议你还考虑用户是谁、他们登录的方式以及他们使用的设备。
 
@@ -80,10 +80,10 @@ Windows 虚拟桌面具有许多内置的安全控件。 在本部分中，你�
 
 启用审核日志收集可查看与 Windows 虚拟桌面相关的用户和管理活动。 重要审核日志的一些示例如下：
 
--   [Azure 活动日志](../azure-monitor/platform/activity-log.md)
+-   [Azure 活动日志](../azure-monitor/essentials/activity-log.md)
 -   [Azure Active Directory 活动日志](../active-directory/reports-monitoring/concept-activity-logs-azure-monitor.md)
 -   [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md)
--   [会话主机](../azure-monitor/platform/agent-windows.md)
+-   [会话主机](../azure-monitor/agents/agent-windows.md)
 -   [Windows 虚拟桌面诊断日志](../virtual-desktop/diagnostics-log-analytics.md)
 -   [Key Vault 日志](../key-vault/general/logging.md)
 

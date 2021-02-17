@@ -1,26 +1,26 @@
 ---
-title: 快速入门：创建安全模块孪生
+title: 创建安全模块孪生
 description: 在本快速入门中，了解如何创建适用于 IoT 的 Defender 模块孪生以用于 Azure Defender for IoT。
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
-author: mlottner
+author: shhazam-ms
 manager: rkarlin
 editor: ''
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/08/2019
-ms.author: mlottner
-ms.openlocfilehash: 3e48ed870bf405a82441678b5e8c01d199e7ebff
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.date: 1/21/2021
+ms.author: shhazam
+ms.openlocfilehash: 35195ea5d66bcf27764fa889e5f2e8ebb6a2bae1
+ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97835000"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99809093"
 ---
-# <a name="quickstart-create-an-azureiotsecurity-module-twin"></a>快速入门：创建 azureiotsecurity 模块孪生
+# <a name="create-an-azureiotsecurity-module-twin"></a>创建 azureiotsecurity 模块孪生
 
 本快速入门介绍如何为新设备创建单个 _azureiotsecurity_ 模块孪生，或者为 IoT 中心内的所有设备批量创建模块孪生。
 
@@ -28,7 +28,7 @@ ms.locfileid: "97835000"
 
 对于在 Azure 中生成的 IoT 解决方案，设备孪生在设备管理和流程自动化方面发挥着关键作用。
 
-适用于 IoT 的 Defender 可与现有的 IoT 设备管理平台完全集成，使你能够管理设备的安全状态，以及利用现有的设备控制功能。
+Defender for IoT 可与现有的 IoT 设备管理平台完全集成，使你能够管理设备的安全状态，并利用现有的设备控制功能。
 适用于 IoT 的 Defender 集成是使用 IoT 中心孪生机制实现的。
 
 请参阅 [IoT 中心模块孪生](../iot-hub/iot-hub-devguide-module-twins.md)详细了解 Azure IoT 中心内模块孪生的一般概念。
@@ -37,7 +37,7 @@ ms.locfileid: "97835000"
 
 该安全模块孪生保存每个设备的所有设备安全性相关信息。
 
-若要充分利用适用于 IoT 的 Defender 功能，需要对服务中的每个设备创建、配置并使用这些安全模块孪生。
+若要充分利用 Defender for IoT 功能，需要对服务中的每台设备创建、配置和使用这些安全模块孪生。
 
 ## <a name="create-azureiotsecurity-module-twin"></a>创建 azureiotsecurity 模块孪生
 
@@ -51,23 +51,30 @@ ms.locfileid: "97835000"
 
 请参阅[代理配置](how-to-agent-configuration.md)，了解如何修改或更改现有模块孪生的配置。
 
-若要手动为设备创建新的 _azureiotsecurity_ 模块孪生，请遵照以下说明操作：
+若要手动为设备创建新的 azureiotsecurity 模块孪生：
 
 1. 在 IoT 中心，找到并选择要为其创建安全模块孪生的设备。
-1. 单击设备，然后单击“添加模块标识”。 
+
+1. 选择你的设备，然后选择“添加模块标识”。
+
 1. 在“模块标识名称”字段中输入 **azureiotsecurity**。 
 
-1. 单击“ **保存**”。
+1. 选择“保存”。 
 
 ## <a name="verify-creation-of-a-module-twin"></a>验证是否要创建模块孪生
 
 验证特定的设备是否存在安全模块孪生：
 
 1. 在 Azure IoT 中心，从“资源管理器”菜单中选择“IoT 设备”。  
-1. 输入设备 ID，或者在“查询设备字段”中选择一个选项，然后单击“查询设备”。  
+
+1. 输入设备 ID，或者在“查询设备字段”中选择一个选项，然后选择“查询设备” 。
+
     :::image type="content" source="./media/quickstart/verify-security-module-twin.png" alt-text="查询设备":::
-1. 选择该设备或双击它，以打开“设备详细信息”页。
+
+1. 选择该设备或双击选中它，打开“设备详细信息”页面。
+
 1. 选择“模块标识”菜单，在与设备关联的模块标识列表中，确认是否存在 **azureiotsecurity** 模块。 
+
     :::image type="content" source="./media/quickstart/verify-security-module-twin-3.png" alt-text="与设备关联的模块":::
 
 若要详细了解如何自定义适用于 IoT 的 Defender 模块孪生的属性，请参阅[代理配置](how-to-agent-configuration.md)。
