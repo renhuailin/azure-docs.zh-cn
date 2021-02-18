@@ -4,22 +4,22 @@ description: 记录并分析 Azure Batch 帐户资源（诸如池和任务）的
 ms.topic: how-to
 ms.date: 10/08/2020
 ms.custom: seodec18
-ms.openlocfilehash: fe2697c73f2a5f3f0b33cfb598f11f39420ed723
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 83411d7018155955f5be71bd41803e510edbc9da
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95994105"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592677"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>用于诊断评估和监视的 Batch 指标、警报和日志
 
-本文介绍如何使用 [Azure Monitor](../azure-monitor/overview.md) 的功能监视 Batch 帐户。 Azure Monitor 收集 Batch 帐户中资源的[指标](../azure-monitor/platform/data-platform-metrics.md)和[诊断日志](../azure-monitor/platform/platform-logs-overview.md)。 以各种方法收集和使用此数据可以监视 Batch 帐户及诊断问题。 还可以配置[指标警报](../azure-monitor/platform/alerts-overview.md)，以便在某项指标达到指定值时收到通知。
+本文介绍如何使用 [Azure Monitor](../azure-monitor/overview.md) 的功能监视 Batch 帐户。 Azure Monitor 收集 Batch 帐户中资源的[指标](../azure-monitor/essentials/data-platform-metrics.md)和[诊断日志](../azure-monitor/essentials/platform-logs-overview.md)。 以各种方法收集和使用此数据可以监视 Batch 帐户及诊断问题。 还可以配置[指标警报](../azure-monitor/alerts/alerts-overview.md)，以便在某项指标达到指定值时收到通知。
 
 ## <a name="batch-metrics"></a>Batch 指标
 
 指标是 Azure 资源发出的并由 Azure Monitor 服务使用的 Azure 遥测数据（也称为性能计数器）。 Batch 帐户中的指标示例包括“池创建事件”、“低优先级节点计数”和“任务完成事件”。
 
-请参阅[支持的 Batch 指标列表](../azure-monitor/platform/metrics-supported.md#microsoftbatchbatchaccounts)。
+请参阅[支持的 Batch 指标列表](../azure-monitor/essentials/metrics-supported.md#microsoftbatchbatchaccounts)。
 
 指标：
 
@@ -68,9 +68,9 @@ ms.locfileid: "95994105"
 5. 在“警报规则详细信息”部分中，输入 **警报规则名称** 和 **说明** 并选择 **严重性**
 6. 选择“创建警报规则”。
 
-有关创建指标警报的详细信息，请参阅[了解指标警报在 Azure Monitor 中的工作方式](../azure-monitor/platform/alerts-metric-overview.md)和[使用 Azure Monitor 创建、查看和管理指标警报](../azure-monitor/platform/alerts-metric.md)。
+有关创建指标警报的详细信息，请参阅[了解指标警报在 Azure Monitor 中的工作方式](../azure-monitor/alerts/alerts-metric-overview.md)和[使用 Azure Monitor 创建、查看和管理指标警报](../azure-monitor/alerts/alerts-metric.md)。
 
-还可以使用 Azure Monitor [REST API](/rest/api/monitor/) 配置准实时警报。 有关详细信息，请参阅 [Microsoft Azure 中的警报概述](../azure-monitor/platform/alerts-overview.md)。 若要在警报中包含特定于作业、任务或池的信息，请参阅[借助 Azure Monitor 警报对事件做出响应](../azure-monitor/learn/tutorial-response.md)中有关搜索查询的信息。
+还可以使用 Azure Monitor [REST API](/rest/api/monitor/) 配置准实时警报。 有关详细信息，请参阅 [Microsoft Azure 中的警报概述](../azure-monitor/alerts/alerts-overview.md)。 若要在警报中包含特定于作业、任务或池的信息，请参阅[借助 Azure Monitor 警报对事件做出响应](../azure-monitor/alerts/tutorial-response.md)中有关搜索查询的信息。
 
 ## <a name="batch-diagnostics"></a>Batch 诊断
 
@@ -88,7 +88,7 @@ ms.locfileid: "95994105"
 此外，还可以：
 
 - 将 Batch 诊断日志事件流式传输到 [Azure 事件中心](../event-hubs/event-hubs-about.md)。 数据中心每秒可以接受数百万事件，用户可以使用任何实时分析提供程序转换并存储这些事件。
-- 将诊断日志发送到 [Azure Monitor 日志](../azure-monitor/log-query/log-query-overview.md)（可用于分析这些日志），或者导出诊断日志以在 Power BI 或 Excel 中进行分析。
+- 将诊断日志发送到 [Azure Monitor 日志](../azure-monitor/logs/log-query-overview.md)（可用于分析这些日志），或者导出诊断日志以在 Power BI 或 Excel 中进行分析。
 
 > [!NOTE]
 > 使用 Azure 服务存储或处理诊断日志数据可能会产生额外的费用。
@@ -105,7 +105,7 @@ ms.locfileid: "95994105"
 6. 选择“ServiceLog”和/或“AllMetrics”。
 7. 选择“保存”以创建诊断设置。
 
-还可以使用[资源管理器模板](../azure-monitor/samples/resource-manager-diagnostic-settings.md)、Azure PowerShell 或 Azure CLI [在 Azure 门户中通过 Azure Monitor 来启用收集功能](../azure-monitor/platform/diagnostic-settings.md)，以便配置诊断设置。 有关详细信息，请参阅 [Azure 平台日志概述](../azure-monitor/platform/platform-logs-overview.md)。
+还可以使用[资源管理器模板](../azure-monitor/essentials/resource-manager-diagnostic-settings.md)、Azure PowerShell 或 Azure CLI [在 Azure 门户中通过 Azure Monitor 来启用收集功能](../azure-monitor/essentials/diagnostic-settings.md)，以便配置诊断设置。 有关详细信息，请参阅 [Azure 平台日志概述](../azure-monitor/essentials/platform-logs-overview.md)。
 
 ### <a name="access-diagnostics-logs-in-storage"></a>访问存储中的诊断日志
 
@@ -135,7 +135,7 @@ BATCHACCOUNTS/MYBATCHACCOUNT/y=2018/m=03/d=05/h=22/m=00/PT1H.json
 { "Tenant": "65298bc2729a4c93b11c00ad7e660501", "time": "2019-08-22T20:59:13.5698778Z", "resourceId": "/SUBSCRIPTIONS/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/RESOURCEGROUPS/MYRESOURCEGROUP/PROVIDERS/MICROSOFT.BATCH/BATCHACCOUNTS/MYBATCHACCOUNT/", "category": "ServiceLog", "operationName": "PoolResizeCompleteEvent", "operationVersion": "2017-06-01", "properties": {"id":"MYPOOLID","nodeDeallocationOption":"Requeue","currentDedicatedNodes":10,"targetDedicatedNodes":100,"currentLowPriorityNodes":0,"targetLowPriorityNodes":0,"enableAutoScale":false,"isAutoPool":false,"startTime":"2019-08-22 20:50:59.522","endTime":"2019-08-22 20:59:12.489","resultCode":"Success","resultMessage":"The operation succeeded"}}
 ```
 
-若要详细了解存储帐户中诊断日志的架构，请参阅[将 Azure 资源日志存档到存储帐户](../azure-monitor/platform/resource-logs.md#send-to-azure-storage)。 若要以编程方式访问存储帐户中的日志，请使用存储 API。
+若要详细了解存储帐户中诊断日志的架构，请参阅[将 Azure 资源日志存档到存储帐户](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)。 若要以编程方式访问存储帐户中的日志，请使用存储 API。
 
 ### <a name="service-log-events"></a>服务日志事件
 

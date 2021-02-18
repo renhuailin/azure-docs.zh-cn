@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: dd54459cef3d6f20180b4c7c41eefbdd42c6980c
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: b58d96adba690084580fe11b42253a1e77370379
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807914"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595603"
 ---
 # <a name="azure-security-baseline-for-customer-lockbox-for-microsoft-azure"></a>适用于 Microsoft Azure 的客户密码箱的 Azure 安全基线
 
@@ -22,7 +22,7 @@ ms.locfileid: "99807914"
 
 有关详细信息，请参阅 [Azure 安全基线概述](../benchmarks/security-baselines-overview.md)。
 
-## <a name="network-security"></a>网络安全
+## <a name="network-security"></a>网络安全性
 
 有关详细信息，请参阅[安全控制：网络安全](../benchmarks/security-control-network-security.md)。
 
@@ -164,7 +164,7 @@ ms.locfileid: "99807914"
 
 **指南**：在 Azure Monitor 中，根据组织的符合性规定，设置与客户密码箱关联 Log Analytics 工作区的日志保持期。
 
-* [如何设置日志保留参数](../../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+* [如何设置日志保留参数](../../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure 安全中心监视**：不适用
 
@@ -186,7 +186,7 @@ ms.locfileid: "99807914"
 
 * [客户密码箱中的审核日志](./customer-lockbox-overview.md#auditing-logs)
 
-* [如何针对 Log Analytics 日志数据发出警报](../../azure-monitor/learn/tutorial-response.md)
+* [如何针对 Log Analytics 日志数据发出警报](../../azure-monitor/alerts/tutorial-response.md)
 
 **Azure 安全中心监视**：是
 
@@ -461,9 +461,9 @@ ms.locfileid: "99807914"
 
 * [如何在客户密码箱中启用审核](./customer-lockbox-overview.md)
 
-* [如何查看和检索 Azure 活动日志事件](../../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [如何查看和检索 Azure 活动日志事件](../../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-* [如何在 Azure Monitor 中创建警报](../../azure-monitor/platform/alerts-activity-log.md)
+* [如何在 Azure Monitor 中创建警报](../../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure 安全中心监视**：是
 
@@ -571,7 +571,7 @@ ms.locfileid: "99807914"
 
 **指导**：使用 Azure Policy 对可以在订阅中创建的资源类型施加限制。
 
-使用 Azure Resource Graph 查询/发现订阅中的资源。 确保环境中的所有 Azure 资源均已获得批准。
+使用 Azure Resource Graph 查询/发现订阅中的资源。 确保环境中存在的所有 Azure 资源已获得批准。
 
 * [如何配置和管理 Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
 

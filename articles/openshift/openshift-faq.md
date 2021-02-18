@@ -3,15 +3,15 @@ title: Azure Red Hat OpenShift 常见问题
 description: 下面是有关 Microsoft Azure Red Hat OpenShift 的常见问题的解答
 author: jimzim
 ms.author: jzim
-ms.service: container-service
+ms.service: azure-redhat-openshift
 ms.topic: conceptual
 ms.date: 07/31/2020
-ms.openlocfilehash: 69417945bcd5234a0e5e8d2d6aee42859bc95c20
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: a3721083e48774963cd761178abdb552c93b15c7
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99071046"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100634339"
 ---
 # <a name="azure-red-hat-openshift-faq"></a>Azure Red Hat OpenShift 常见问题
 
@@ -41,7 +41,7 @@ Azure Red Hat OpenShift 3.11 的每节点上限为50，每个节点限制为20�
 
 ### <a name="can-a-cluster-have-compute-nodes-across-multiple-azure-regions"></a>群集是否可以跨多个 Azure 区域具有计算节点？
 
-不能。 Azure Red Hat OpenShift 群集中的所有节点都必须源自同一 Azure 区域。
+不是。 Azure Red Hat OpenShift 群集中的所有节点都必须源自同一 Azure 区域。
 
 ### <a name="can-a-cluster-be-deployed-across-multiple-availability-zones"></a>是否可以跨多个可用性区域部署群集？
 
@@ -49,7 +49,7 @@ Azure Red Hat OpenShift 3.11 的每节点上限为50，每个节点限制为20�
 
 ### <a name="are-control-plane-nodes-abstracted-away-as-they-are-with-azure-kubernetes-service-aks"></a>控制平面节点与 Azure Kubernetes Service (AKS) 相比是否抽象？
 
-不能。 所有资源（包括群集主节点）都在您的客户订阅中运行。 这些类型的资源置于只读资源组中。
+不是。 所有资源（包括群集主节点）都在您的客户订阅中运行。 这些类型的资源置于只读资源组中。
 
 ### <a name="does-the-cluster-reside-in-a-customer-subscription"></a>群集是否位于客户订阅中？ 
 
@@ -222,4 +222,4 @@ oc adm policy \
 
 ## <a name="does-aro-store-any-customer-data-outside-of-the-clusters-region"></a>ARO 是否将任何客户数据存储在群集区域之外？
 
-不能。 在 ARO 群集中创建的所有数据都保留在群集的区域内。
+不是。 在 ARO 群集中创建的所有数据都保留在群集的区域内。

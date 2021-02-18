@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 648e7991784212e4fe781efd5d9f01cb571c5012
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: d7753de473d90c45fecb20403352a594ef52dafe
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807846"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100586299"
 ---
 # <a name="azure-security-baseline-for-app-service"></a>适用于应用服务的 Azure 安全基准
 
@@ -241,9 +241,9 @@ Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更�
 
 建议使用自动工具创建一个过程来监视网络资源配置并快速检测更改。
 
-- [如何查看和检索 Azure 活动日志事件](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [如何查看和检索 Azure 活动日志事件](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [如何在 Azure Monitor 中创建警报](../azure-monitor/platform/alerts-activity-log.md)
+- [如何在 Azure Monitor 中创建警报](../azure-monitor/alerts/alerts-activity-log.md)
 
 - [导出安全警报和建议](../security-center/continuous-export.md)
 
@@ -280,7 +280,7 @@ Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更�
 
 此外，Azure Key Vault 通过访问策略和审核历史记录提供集中式密钥管理。 
 
-- [如何启用 Azure 活动日志的诊断设置](../azure-monitor/platform/activity-log.md)
+- [如何启用 Azure 活动日志的诊断设置](../azure-monitor/essentials/activity-log.md)
 
 - [如何启用 Azure App Service 的诊断设置](troubleshoot-diagnostic-logs.md)
 
@@ -293,7 +293,7 @@ Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更�
 ### <a name="25-configure-security-log-storage-retention"></a>2.5：配置安全日志存储保留期
 
 **指南**：在 Azure Monitor 中，根据组织的符合性规定，设置与应用服务资源关联的 Log Analytics 工作区的日志保持期。
-- [如何设置日志保留参数](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [如何设置日志保留参数](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure 安全中心监视**：不适用
 
@@ -309,7 +309,7 @@ Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更�
 
 根据要求，使用 Azure Sentinel （一种可缩放的云和本机安全信息事件管理） (SIEM) ，与各种数据源和连接器集成。 在 Azure Marketplace 中，可以选择启用和将数据到第三方安全信息事件管理解决方案。
 
-- [如何启用 Azure 活动日志的诊断设置](../azure-monitor/platform/activity-log.md)
+- [如何启用 Azure 活动日志的诊断设置](../azure-monitor/essentials/activity-log.md)
 
 - [如何启用 Application Insights](../azure-monitor/app/app-insights-overview.md)
 
@@ -640,7 +640,7 @@ Microsoft 管理底层平台，并将所有客户数据视为敏感数据，并�
 
 **指南**：将 Azure Monitor 与 Azure 活动日志结合使用，以便在对生产应用服务应用和其他关键或相关资源进行任何更改时创建警报。
 
-- [如何针对 Azure 活动日志事件创建警报](../azure-monitor/platform/alerts-activity-log.md)
+- [如何针对 Azure 活动日志事件创建警报](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -737,7 +737,7 @@ Microsoft 管理底层平台，并将所有客户数据视为敏感数据，并�
 
 **指导**：使用 Azure Policy 对可以在订阅中创建的资源类型施加限制。
 
-使用 Azure 资源关系图可以在其订阅中查询或发现资源。  确保环境中的所有 Azure 资源均已获得批准。 
+使用 Azure 资源关系图可以在其订阅中查询或发现资源。  确保环境中存在的所有 Azure 资源已获得批准。 
 
 - [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md) 
 
@@ -795,7 +795,7 @@ Microsoft 管理底层平台，并将所有客户数据视为敏感数据，并�
 
 **指南**：创建一个流程以定期查看未经授权的 azure 服务，以确保仅在订阅中使用已授权的 azure 服务。
 
-使用此过程中的 Azure 资源关系图来查询或发现其订阅中的资源。 确保环境中的所有 Azure 资源均已获得批准。
+使用此过程中的 Azure 资源关系图来查询或发现其订阅中的资源。 确保环境中存在的所有 Azure 资源已获得批准。
 
 使用以下内置策略定义，将 Azure 策略配置为对可在订阅中创建的资源类型施加限制：
 

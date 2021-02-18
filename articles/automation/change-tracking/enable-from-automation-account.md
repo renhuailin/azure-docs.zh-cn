@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 10/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 64eace72b6ea203d4052c39404bcbd7ce4c4bfa0
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 32fb95c88d632cc2c51cd2390f0244e9c1927051
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99055155"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585885"
 ---
 # <a name="enable-change-tracking-and-inventory-from-an-automation-account"></a>从自动化帐户启用更改跟踪和清单
 
@@ -53,7 +53,7 @@ ms.locfileid: "99055155"
 
 1. 在你的自动化帐户中，在“配置管理”下选择“库存”或“更改跟踪”  。
 
-2. 单击“添加非 Azure 计算机”。 此操作将打开一个新的浏览器窗口，其中包含 [安装和配置适用于 Windows 的 Log Analytics 代理的说明](../../azure-monitor/platform/log-analytics-agent.md)以便计算机可以开始报告更改跟踪和库存操作。 如果你启用当前由 Operations Manager 管理的计算机，则不需要新代理，且工作区信息将输入到现有代理中。
+2. 单击“添加非 Azure 计算机”。 此操作将打开一个新的浏览器窗口，其中包含 [安装和配置适用于 Windows 的 Log Analytics 代理的说明](../../azure-monitor/agents/log-analytics-agent.md)以便计算机可以开始报告更改跟踪和库存操作。 如果你启用当前由 Operations Manager 管理的计算机，则不需要新代理，且工作区信息将输入到现有代理中。
 
 ## <a name="enable-machines-in-the-workspace"></a>在工作区中启用计算机
 

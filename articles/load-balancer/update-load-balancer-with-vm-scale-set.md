@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/30/2020
+ms.date: 12/29/2020
 ms.author: irenehua
-ms.openlocfilehash: 0c491275f793ce2cd5e830ca6a3014dc45d6d509
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: 1228462dc6437ecce7718c4747d2acb9ae7332cb
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99594529"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593034"
 ---
 # <a name="update-or-delete-a-load-balancer-used-by-virtual-machine-scale-sets"></a>更新或删除虚拟机规模集使用的负载均衡器
 
@@ -34,7 +34,7 @@ ms.locfileid: "99594529"
 
 若要检查是否正确设置了入站 NAT 池：
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 在左侧菜单上，选择“所有资源”。 然后从资源列表中选择 " **MyLoadBalancer** "。
 1. 在 " **设置**" 下，选择 " **入站 NAT 规则**"。 在右侧窗格中，如果看到为虚拟机规模集中的每个单独实例创建的规则列表，则可以随时进行扩展。
 
@@ -83,14 +83,15 @@ az network lb inbound-nat-pool update
 
 ## <a name="delete-inbound-nat-rules"></a>删除入站 NAT 规则
 
-不能删除单独的入站 NAT 规则，但可以删除一组完整的入站 NAT 规则。
+不能删除单独的入站 NAT 规则，但可以通过删除入站 NAT 池来删除整个入站 NAT 规则集。
 
-若要删除规模集使用的一组完整的入站 NAT 规则，请首先从规模集中删除 NAT 池。 下面显示了使用 CLI 的完整示例：
-    
+若要删除 NAT 池，请首先从规模集中删除它。 下面显示了使用 CLI 的完整示例：
+
 ```azurecli-interactive
     az vmss update
        --resource-group MyResourceGroup
        --name MyVMSS
+       --remove virtualMachineProfile.networkProfile.networkInterfaceConfigurations[0].ipConfigurations[0].loadBalancerInboundNatPools
      az vmss update-instances 
        --instance-ids "*" 
        --resource-group MyResourceGroup

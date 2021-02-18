@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: dde2c3e4cf496bb15ca91c72d9a41936af7051c5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 36f885416c5e9cb656d01a65b9c503f8897d2f9f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83743753"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593906"
 ---
 # <a name="enable-startstop-vms-during-off-hours"></a>启用“在空闲时间启动/停止 VM”
 
@@ -82,7 +82,7 @@ ms.locfileid: "83743753"
   
 4. 使用“计划”字段来选择按功能进行 VM 管理的计划。 为你的计划选择一个开始日期和时间，以创建从所选时间开始的每日重复计划。 无法选择其他区域。 若要在配置功能后将计划配置为特定时区，请参阅[修改启动和关闭计划](automation-solution-vm-management-config.md#modify-the-startup-and-shutdown-schedules)。
 
-5. 要从[操作组](../azure-monitor/platform/action-groups.md)接收电子邮件通知，请在“电子邮件通知”字段中接受默认值“是”，并提供有效的电子邮件地址。 。 如果你选择了“否”，但后来想要接收电子邮件通知，则可以使用有效的电子邮件地址（以逗号分隔）更新创建的操作组。 
+5. 要从[操作组](../azure-monitor/alerts/action-groups.md)接收电子邮件通知，请在“电子邮件通知”字段中接受默认值“是”，并提供有效的电子邮件地址。 。 如果你选择了“否”，但后来想要接收电子邮件通知，则可以使用有效的电子邮件地址（以逗号分隔）更新创建的操作组。 
 
 6. 启用以下警报规则：
 
@@ -92,7 +92,7 @@ ms.locfileid: "83743753"
 
 ## <a name="create-alerts"></a>创建警报
 
-“在空闲时间启动/停止 VM”不包括预定义的一组警报。 查看[通过 Azure Monitor 创建日志警报](../azure-monitor/platform/alerts-log.md)，了解如何创建作业失败警报，以支持 DevOps 或操作过程和程序。
+“在空闲时间启动/停止 VM”不包括预定义的一组警报。 查看[通过 Azure Monitor 创建日志警报](../azure-monitor/alerts/alerts-log.md)，了解如何创建作业失败警报，以支持 DevOps 或操作过程和程序。
 
 ## <a name="deploy-the-feature"></a>部署功能
 

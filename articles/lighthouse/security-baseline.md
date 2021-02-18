@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/19/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: cd43b6c7b11cde17bc9f9923374baf3416e5b370
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 449fc686fb30cde0d15759036b58fea3bcfc6723
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98791856"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596891"
 ---
 # <a name="azure-security-baseline-for-azure-lighthouse"></a>Azure Lighthouse 的 azure 安全基线
 
@@ -26,7 +26,7 @@ ms.locfileid: "98791856"
 
 ### <a name="im-1-standardize-azure-active-directory-as-the-central-identity-and-authentication-system"></a>IM-1：将 Azure Active Directory 标准化为中央标识和身份验证系统
 
-**指南**： Azure Lighthouse 使用 Azure Active Directory (Azure AD) 作为默认的标识和访问管理服务。 标准化 Azure AD 来管理组织的标识和访问管理：
+**指南**： Azure Lighthouse 使用 Azure Active Directory (Azure AD) 作为默认的标识和访问管理服务。 使 Azure AD 标准化，以便控制组织在以下资源中的标识和访问管理：
 - Microsoft 云资源，如 Azure 门户、Azure 存储、Azure 虚拟机（Linux 和 Windows）、Azure Key Vault、PaaS 和 SaaS 应用程序。
 - 你的组织的资源，例如 Azure 上的应用程序，或公司网络资源。
 
@@ -296,7 +296,7 @@ Azure Lighthouse 允许使用 Azure 内置角色访问委派的客户资源。 �
 
 ### <a name="am-5-limit-users-ability-to-interact-with-azure-resource-manager"></a>AM-5：限制用户与 Azure 资源管理器进行交互的能力
 
-**指南**： Azure Lighthouse 与 Azure Active Directory (Azure AD 的) 用于标识和身份验证。 你可以通过为“Microsoft Azure 管理”应用配置“阻止访问”，使用 Azure 条件访问来限制用户与 Azure 资源管理器交互的能力。
+**指南**： Azure Lighthouse 与 Azure Active Directory (Azure AD 的) 用于标识和身份验证。 你可以使用 Azure 条件访问来限制用户与 Azure 资源管理器交互的能力，操作方法：为“Microsoft Azure 管理”应用配置“阻止访问”。
 
 - [如何配置条件访问来阻止对 Azure 资源管理器的访问](../role-based-access-control/conditional-access-azure-management.md)
 
@@ -360,9 +360,9 @@ Azure 安全中心还可针对某些可疑活动发出警报，例如，失败�
 
 已委派 Azure Lighthouse 订阅的客户可以查看 Azure 活动日志数据，查看所执行的所有操作。 这使客户能够全面了解服务提供商正在执行的操作，以及由用户自己 Azure Active Directory 中的用户 (Azure AD) 租户中的用户完成的操作。
 
-- [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/platform/diagnostic-settings.md) 
+- [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/essentials/diagnostic-settings.md) 
 
-- [了解 Azure 中的日志记录和不同的日志类型](../azure-monitor/platform/platform-logs-overview.md)
+- [了解 Azure 中的日志记录和不同的日志类型](../azure-monitor/essentials/platform-logs-overview.md)
 
 - [大规模监视委托的资源](how-to/monitor-at-scale.md)
 
@@ -386,7 +386,7 @@ Azure 安全中心还可针对某些可疑活动发出警报，例如，失败�
 
 许多组织选择将 Azure Sentinel 用于频繁使用的“热”数据，并将 Azure 存储用于不太频繁使用的“冷”数据。
 
-- [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/platform/diagnostic-settings.md)
+- [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/essentials/diagnostic-settings.md)
 
 - [大规模监视委托的资源](how-to/monitor-at-scale.md)
 
@@ -404,7 +404,7 @@ Azure 安全中心还可针对某些可疑活动发出警报，例如，失败�
 
 在 Azure Monitor 中，可根据组织的合规性规则设置 Log Analytics 工作区保持期。 将 Azure 存储、Data Lake 或 Log Analytics 工作区帐户用于长期存储和存档存储。
 
-- [更改 Log Analytics 中的数据保留期](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [更改 Log Analytics 中的数据保留期](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 - [如何为 Azure 存储帐户日志配置保留策略](../storage/common/storage-monitor-storage-account.md#configure-logging)
 
@@ -526,7 +526,7 @@ Azure 安全中心为每条警报分配严重性，方便你根据优先级来�
 
 ### <a name="pv-1-establish-secure-configurations-for-azure-services"></a>PV-1：为所有 Azure 服务建立安全配置 
 
-**指南**： azure Lighthouse 支持 Azure 安全中心提供的以下特定于服务的策略，用于审核和强制执行 azure 资源的配置。 这可以在 Azure 安全中心或 Azure 策略计划中进行配置。
+**指南**： azure Lighthouse 支持 Azure 安全中心提供的以下特定于服务的策略，用于审核和强制执行 azure 资源的配置。 这可以在 Azure 安全中心或 Azure Policy 计划中进行配置。
 
 - 允许通过 Azure Lighthouse 管理租户 Id
 
@@ -546,7 +546,7 @@ Azure 安全中心为每条警报分配严重性，方便你根据优先级来�
 
 ### <a name="pv-2-sustain-secure-configurations-for-azure-services"></a>PV-2：为所有 Azure 服务维护安全配置
 
-**指南**： azure Lighthouse 支持 Azure 安全中心提供的以下特定于服务的策略，用于审核和强制执行 azure 资源的配置。 这可以在 Azure 安全中心或 Azure 策略计划中进行配置。
+**指南**： azure Lighthouse 支持 Azure 安全中心提供的以下特定于服务的策略，用于审核和强制执行 azure 资源的配置。 这可以在 Azure 安全中心或 Azure Policy 计划中进行配置。
 
 - [Azure Lighthouse 策略](samples/policy-reference.md)
 

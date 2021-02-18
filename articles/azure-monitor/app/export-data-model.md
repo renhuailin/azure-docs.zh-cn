@@ -3,17 +3,17 @@ title: Azure Application Insights 数据模型 | Microsoft Docs
 description: 介绍在 JSON 中通过连续导出导出的、用作筛选器的属性。
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: 29ad999c307d1c11e7a584b61d85ed73b9448cb4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b4609d54c1c3c33a654dd58a3bceaca4974fda15
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87324380"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100584217"
 ---
 # <a name="application-insights-export-data-model"></a>Application Insights 导出数据模型
 此表列出了从 [Application Insights](./app-insights-overview.md) SDK 发送到门户的遥测属性。
 [连续导出](export-telemetry.md)的数据输出中会显示这些属性。
-这些属性还显示在[指标资源管理器](../platform/metrics-charts.md)和[诊断搜索](./diagnostic-search.md)的属性筛选器中。
+这些属性还显示在[指标资源管理器](../essentials/metrics-charts.md)和[诊断搜索](./diagnostic-search.md)的属性筛选器中。
 
 需要注意的要点：
 
@@ -343,7 +343,7 @@ ms.locfileid: "87324380"
 
 其他字段的用途是便于在 SDK 中聚合指标，减少门户接收的流量。 例如，在发送每份指标报告之前，可求多个连续读数的平均值。 然后计算最小值、最大值、标准偏差和聚合值（总和或平均值），并将计数设置为报告呈现的读数数目。
 
-在上表中，我们省略了极少使用的字段计数、最小值、最大值、stdDev 和 sampledValue。
+上表中省略了一些极少用到的字段：count、min、max、stdDev 和 sampledValue。
 
 如果需要减少遥测量，可以改用[采样](./sampling.md)，而不要使用预先聚合的指标。
 

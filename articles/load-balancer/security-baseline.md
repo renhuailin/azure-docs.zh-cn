@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/28/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 07dd369ceeefee85f4d9180a0b9b33a0d4c8bbdb
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 3701d9dde569432d8bf1910f04395df0b916b75a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94698200"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575154"
 ---
 # <a name="azure-security-baseline-for-azure-load-balancer"></a>Azure 负载均衡器的 Azure 安全基线
 
@@ -170,7 +170,7 @@ Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更�
 
 ### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1.9：维护网络设备的标准安全配置
 
-**指南**：定义和实现 Azure 策略的网络资源的标准安全配置。
+**指导**：使用 Azure Policy 为网络资源定义并实施标准安全配置。
 
 使用 Azure 蓝图可以通过在单个蓝图定义中打包关键环境项目（例如 Azure 资源管理器模板、Azure RBAC 控件和策略）来简化大规模的 Azure 部署。 
 
@@ -212,9 +212,9 @@ Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更�
 
 在 Azure Monitor 中创建警报，以便在关键资源发生更改时通知你。
 
-- [如何查看和检索 Azure 活动日志事件](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [如何查看和检索 Azure 活动日志事件](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [如何在 Azure Monitor 中创建警报](../azure-monitor/platform/alerts-activity-log.md)
+- [如何在 Azure Monitor 中创建警报](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure 安全中心监视**：是
 
@@ -236,13 +236,13 @@ Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更�
 
 - [如何加入 Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-- [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/platform/diagnostic-settings.md)
+- [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/essentials/diagnostic-settings.md)
 
-- [如何使用 Azure Monitor 收集 Azure 虚拟机内部主机日志](../azure-monitor/learn/quick-collect-azurevm.md)
+- [如何使用 Azure Monitor 收集 Azure 虚拟机内部主机日志](../azure-monitor/vm/quick-collect-azurevm.md)
 
 - [如何开始使用 Azure Monitor 和第三方 SIEM 集成](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
 
-- [平台活动日志](../azure-monitor/platform/activity-log.md)
+- [平台活动日志](../azure-monitor/essentials/activity-log.md)
 
 **Azure 安全中心监视**：是
 
@@ -294,7 +294,7 @@ Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更�
 
 - [“查看活动日志以监视对资源的操作”一文](../azure-resource-manager/management/view-activity-logs.md)
 
-- [更改 Log Analytics 中的数据保留期](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [更改 Log Analytics 中的数据保留期](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 - [如何为 Azure 存储帐户日志配置保留策略](../storage/common/storage-monitor-storage-account.md#configure-logging)
 
@@ -346,7 +346,7 @@ Azure Monitor 日志不适用于内部基本负载均衡器。
 
 - [如何在 Azure 安全中心管理警报](../security-center/security-center-managing-and-responding-alerts.md)
 
-- [如何针对 Log Analytics 日志数据发出警报](../azure-monitor/learn/tutorial-response.md)
+- [如何针对 Log Analytics 日志数据发出警报](../azure-monitor/alerts/tutorial-response.md)
 
 **Azure 安全中心监视**：是
 
@@ -414,7 +414,7 @@ Azure Monitor 日志不适用于内部基本负载均衡器。
 
 Microsoft 将所有客户内容视为敏感内容，并在很大程度上防范客户数据丢失和公开。 
 
-为了确保 Azure 中的客户数据保持安全，Microsoft 实现并维护一套可靠的数据保护控件和功能。 
+为了确保 Azure 中的客户数据始终安全，Microsoft 实施并维护了一套可靠的数据保护控制机制和功能。 
 
 - [了解 Azure 中的客户数据保护](../security/fundamentals/protection-customer-data.md)
 
@@ -426,7 +426,7 @@ Microsoft 将所有客户内容视为敏感内容，并在很大程度上防范�
 
 **指导**：将 Azure Monitor 与 Azure 活动日志结合使用，以创建在关键 Azure 资源（例如，用于重要生产工作负荷的负载均衡器）发生更改时发出的警报。
 
-- [如何针对 Azure 活动日志事件创建警报](../azure-monitor/platform/alerts-activity-log.md)
+- [如何针对 Azure 活动日志事件创建警报](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure 安全中心监视**：是
 

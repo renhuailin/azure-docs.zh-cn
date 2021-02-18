@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: wiassaf, sstein
 ms.date: 09/30/2020
-ms.openlocfilehash: 3d28cf1a89ff455cfbed26aad234607ec8cd7e63
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 6b56da68b10bc40304097fbe9eeaf200d422b663
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96490561"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592690"
 ---
 # <a name="monitoring-and-performance-tuning-in-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL 数据库与 Azure SQL 托管实例中的监视和性能优化
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -99,11 +99,11 @@ Intelligent Insights 是 Azure 内置智能的一项独特功能，提供以下�
 
 ### <a name="log-analytics-workspace-in-azure-monitor"></a>Azure Monitor 中的 Log Analytics 工作区
 
-可将指标和资源日志流式传输到 [Azure Monitor 中的 Log Analytics 工作区](../../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace)。 SQL Analytics 可以使用此处流式传输的数据， [SQL Analytics](../../azure-monitor/insights/azure-sql.md)是一种仅限云的监视解决方案，它提供对数据库的智能监视，其中包括性能报告、警报和缓解建议。 流式传输到 Log Analytics 工作区的数据可以使用收集的其他监视数据进行分析，还可以利用其他 Azure Monitor 功能，如警报和可视化效果。
+可将指标和资源日志流式传输到 [Azure Monitor 中的 Log Analytics 工作区](../../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace)。 SQL Analytics 可以使用此处流式传输的数据， [SQL Analytics](../../azure-monitor/insights/azure-sql.md)是一种仅限云的监视解决方案，它提供对数据库的智能监视，其中包括性能报告、警报和缓解建议。 流式传输到 Log Analytics 工作区的数据可以使用收集的其他监视数据进行分析，还可以利用其他 Azure Monitor 功能，如警报和可视化效果。
 
 ### <a name="azure-event-hubs"></a>Azure 事件中心
 
-可将指标和资源日志流式传输到 [Azure 事件中心](../../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs)。 将诊断遥测数据流式传输到事件中心以提供以下功能：
+可将指标和资源日志流式传输到 [Azure 事件中心](../../azure-monitor/essentials/resource-logs.md#send-to-azure-event-hubs)。 将诊断遥测数据流式传输到事件中心以提供以下功能：
 
 - **将日志流式传输到第三方日志记录和遥测系统**
 
@@ -117,7 +117,7 @@ Intelligent Insights 是 Azure 内置智能的一项独特功能，提供以下�
 
 ### <a name="azure-storage"></a>Azure 存储
 
-将指标和资源日志流式传输到 [Azure 存储](../../azure-monitor/platform/resource-logs.md#send-to-azure-storage)。 使用 Azure 存储存档大量诊断遥测数据，并且成本只是前两种流式传输选项的一小部分。
+将指标和资源日志流式传输到 [Azure 存储](../../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)。 使用 Azure 存储存档大量诊断遥测数据，并且成本只是前两种流式传输选项的一小部分。
 
 ## <a name="use-extended-events"></a>使用扩展事件 
 

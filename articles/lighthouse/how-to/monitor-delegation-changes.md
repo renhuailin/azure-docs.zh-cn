@@ -3,18 +3,18 @@ title: 监视管理租户中的委派更改
 description: 了解如何监视从客户租户到管理租户的委托活动。
 ms.date: 01/27/2021
 ms.topic: how-to
-ms.openlocfilehash: 9fdf47df4ac37fec44cf53b565b7fe1411540793
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 3bf6cc044d807d0c830b15c6d9c9a6d507f1a54f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99089405"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593127"
 ---
 # <a name="monitor-delegation-changes-in-your-managing-tenant"></a>监视管理租户中的委派更改
 
 作为服务提供商，你可能想要知道客户订阅或资源组通过 [Azure Lighthouse](../overview.md)委托给你的租户，或者在删除之前委派的资源时。
 
-在管理租户中， [Azure 活动日志](../../azure-monitor/platform/platform-logs-overview.md) 在租户级别跟踪委托活动。 此记录的活动包含所有客户租户中添加或删除的委派。
+在管理租户中， [Azure 活动日志](../../azure-monitor/essentials/platform-logs-overview.md) 在租户级别跟踪委托活动。 此记录的活动包含所有客户租户中添加或删除的委派。
 
 本主题介绍在所有客户) 中监视租户 (所需的权限。 它还包含一个示例脚本，其中显示了用于查询和报告此数据的一种方法。
 
@@ -104,7 +104,7 @@ az role assignment create --assignee 00000000-0000-0000-0000-000000000000 --role
 - 如果在单个部署中委派了多个资源组，则将为每个资源组返回单独的条目。
 - 对以前的委派 (所做的更改（例如更新权限结构) 将记录为添加的委派。
 - 如上所述，帐户必须具有监视读取器 Azure 内置角色（在根范围内） (/) 才能访问此租户级别的数据。
-- 您可以在自己的工作流和报告中使用此数据。 例如，可以使用 [HTTP 数据收集器 API (公共预览版) ](../../azure-monitor/platform/data-collector-api.md) 将数据从 REST API 客户端记录到 Azure Monitor，然后使用 [操作组](../../azure-monitor/platform/action-groups.md) 创建通知或警报。
+- 您可以在自己的工作流和报告中使用此数据。 例如，可以使用 [HTTP 数据收集器 API (公共预览版) ](../../azure-monitor/logs/data-collector-api.md) 将数据从 REST API 客户端记录到 Azure Monitor，然后使用 [操作组](../../azure-monitor/alerts/action-groups.md) 创建通知或警报。
 
 ```azurepowershell-interactive
 # Log in first with Connect-AzAccount if you're not using Cloud Shell
@@ -181,5 +181,5 @@ else {
 ## <a name="next-steps"></a>后续步骤
 
 - 了解如何将客户加入 [Azure Lighthouse](../concepts/azure-delegated-resource-management.md)。
-- 了解 [Azure Monitor](../../azure-monitor/index.yml) 和 [Azure 活动日志](../../azure-monitor/platform/platform-logs-overview.md)。
+- 了解 [Azure Monitor](../../azure-monitor/index.yml) 和 [Azure 活动日志](../../azure-monitor/essentials/platform-logs-overview.md)。
 - 查看 " [按域显示的活动日志](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/workbook-activitylogs-by-domain) " 示例工作簿以了解如何在订阅中显示 Azure 活动日志，并提供按域名筛选的选项。

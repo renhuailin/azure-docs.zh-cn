@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 12/24/2020
 ms.author: memildin
-ms.openlocfilehash: 845ff6f0905b232b9ec68dbe127ef7f47a6ad898
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 226ca943554ca24f3332f24f5a9baf571b432917
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98916772"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590616"
 ---
 # <a name="continuously-export-security-center-data"></a>连续导出安全中心数据
 
@@ -81,8 +81,8 @@ Azure 安全中心会生成详细的安全警报和建议。 可以通过门户�
 
 1. 选择要导出的数据类型，并从每种类型的筛选器中进行选择（例如，仅导出严重程度高的警报）。
 1. 选择适当的导出频率：
-    - **流式处理** -将在资源的运行状况状态更新时实时发送评估 (如果没有进行更新，则不会) 发送任何数据。
-    - **快照** –所有规章符合性评估的当前状态的快照将每周发送 (这是安全分数和法规遵从性数据) 的每周快照的预览功能。
+    - **流式处理** - 更新资源的运行状况时，将实时发送评估（如果没有更新，则不发送任何数据）。
+    - **快照** - 每周将发送所有法规合规性评估的当前状态的快照（这是面向安全分数和法规合规性数据每周快照的一项预览功能）。
 
 1. （可选）如果你的选择包含这些建议中的一个，可以将漏洞评估结果与它们包括在一起：
     - 应修正关于 SQL 数据库的漏洞评估结果
@@ -185,7 +185,7 @@ API 提供了 Azure 门户中没有的其他功能，例如：
 
 ##  <a name="view-exported-alerts-and-recommendations-in-azure-monitor"></a>在 Azure Monitor 中查看导出的警报和建议
 
-还可以选择在 [Azure Monitor](../azure-monitor/platform/alerts-overview.md) 中查看导出的安全警报和/或建议。 
+还可以选择在 [Azure Monitor](../azure-monitor/alerts/alerts-overview.md) 中查看导出的安全警报和/或建议。 
 
 Azure Monitor 为各种 Azure 警报（包括诊断日志、指标警报以及基于 Log Analytics 工作区查询的自定义警报）提供统一的警报体验。
 
@@ -195,13 +195,13 @@ Azure Monitor 为各种 Azure 警报（包括诊断日志、指标警报以及�
 
     ![Azure Monitor 的“警报”页](./media/continuous-export/azure-monitor-alerts.png)
 
-1. 在“创建规则”页中，配置新规则（与[在 Azure Monitor 中配置日志警报规则](../azure-monitor/platform/alerts-unified-log.md)的方式相同）：
+1. 在“创建规则”页中，配置新规则（与[在 Azure Monitor 中配置日志警报规则](../azure-monitor/alerts/alerts-unified-log.md)的方式相同）：
 
     * 对于“资源”，请选择要向其中导出安全警报和建议的 Log Analytics 工作区。
 
     * 对于“条件”，请选择“自定义日志搜索” 。 在出现的页中，配置查询、回溯周期和频率周期。 在搜索查询中，可以键入 SecurityAlert 或 SecurityRecommendation 以查询在启用“连续导出到 Log Analytics”功能时安全中心持续导出的数据类型 。 
     
-    * （可选）配置要触发的[操作组](../azure-monitor/platform/action-groups.md)。 操作组可以触发电子邮件发送、ITSM 票证、Webhook 等。
+    * （可选）配置要触发的[操作组](../azure-monitor/alerts/action-groups.md)。 操作组可以触发电子邮件发送、ITSM 票证、Webhook 等。
     ![Azure Monitor 警报规则](./media/continuous-export/azure-monitor-alert-rule.png)
 
 现将在 Azure Monitor 警报中看到新的 Azure 安全中心警报或建议（取决于所配置的连续导出规则和在 Azure Monitor 警报规则中定义的条件），并自动触发操作组（如果已提供）。

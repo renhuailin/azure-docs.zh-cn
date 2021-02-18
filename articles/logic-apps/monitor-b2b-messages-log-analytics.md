@@ -6,23 +6,23 @@ ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 01/30/2020
-ms.openlocfilehash: 5baa4d4d968adb25b5520ca91149970f5c5578e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 765c15897bd5d435503d3bef07e76a93b148971c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86536253"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596852"
 ---
 # <a name="set-up-azure-monitor-logs-and-collect-diagnostics-data-for-b2b-messages-in-azure-logic-apps"></a>为 Azure 逻辑应用中的 B2B 消息设置 Azure Monitor 日志并收集诊断数据
 
-在集成帐户中设置贸易合作伙伴之间的 B2B 通信后，这些合作伙伴可以使用 AS2、X12 和 EDIFACT 等协议来交换消息。 若要检查此通信是否按预期方式工作，可以为集成帐户设置 [Azure Monitor 日志](../azure-monitor/platform/data-platform-logs.md) 。 [Azure Monitor](../azure-monitor/overview.md) 可帮助你监视云和本地环境，使你能够更轻松地保持其可用性和性能。 通过使用 Azure Monitor 日志，可以在 [Log Analytics 工作区](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace)中记录和存储有关运行时数据和事件的数据，例如触发器事件、运行事件和操作事件。 对于消息，日志记录还会收集以下信息：
+在集成帐户中设置贸易合作伙伴之间的 B2B 通信后，这些合作伙伴可以使用 AS2、X12 和 EDIFACT 等协议来交换消息。 若要检查此通信是否按预期方式工作，可以为集成帐户设置 [Azure Monitor 日志](../azure-monitor/logs/data-platform-logs.md) 。 [Azure Monitor](../azure-monitor/overview.md) 可帮助你监视云和本地环境，使你能够更轻松地保持其可用性和性能。 通过使用 Azure Monitor 日志，可以在 [Log Analytics 工作区](../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace)中记录和存储有关运行时数据和事件的数据，例如触发器事件、运行事件和操作事件。 对于消息，日志记录还会收集以下信息：
 
 * 消息计数和状态
 * 确认状态
 * 消息与确认之间的关联
 * 有关故障的详细错误说明
 
-Azure Monitor 允许您创建 [日志查询](../azure-monitor/log-query/log-query-overview.md) 以帮助您查找和查看此信息。 你还可以 [将此诊断数据用于其他 azure 服务](../logic-apps/monitor-logic-apps-log-analytics.md#extend-data)，例如 azure 存储和 Azure 事件中心。
+Azure Monitor 允许您创建 [日志查询](../azure-monitor/logs/log-query-overview.md) 以帮助您查找和查看此信息。 你还可以 [将此诊断数据用于其他 azure 服务](../logic-apps/monitor-logic-apps-log-analytics.md#extend-data)，例如 azure 存储和 Azure 事件中心。
 
 若要为集成帐户设置日志记录，请在 Azure 门户中 [安装逻辑应用 B2B 解决方案](#install-b2b-solution) 。 此解决方案提供了 B2B 消息事件的聚合信息。 然后，若要为此信息启用日志记录和创建查询，请设置 [Azure Monitor 日志](#set-up-resource-logs)。
 
@@ -32,7 +32,7 @@ Azure Monitor 允许您创建 [日志查询](../azure-monitor/log-query/log-quer
 
 ## <a name="prerequisites"></a>先决条件
 
-* Log Analytics 工作区。 如果没有 Log Analytics 工作区，请了解[如何创建 Log Analytics 工作区](../azure-monitor/learn/quick-create-workspace.md)。
+* Log Analytics 工作区。 如果没有 Log Analytics 工作区，请了解[如何创建 Log Analytics 工作区](../azure-monitor/logs/quick-create-workspace.md)。
 
 * 使用 Azure Monitor 日志记录设置的逻辑应用，并将该信息发送到 Log Analytics 工作区。 了解 [如何为逻辑应用设置 Azure Monitor 日志](../logic-apps/monitor-logic-apps.md)。
 
@@ -94,7 +94,7 @@ Azure Monitor 允许您创建 [日志查询](../azure-monitor/log-query/log-quer
 
    1. 提供设置的名称。
 
-   1. 选择“发送到 Log Analytics”****。
+   1. 选择“发送到 Log Analytics”。
 
    1. 对于 " **订阅**"，请选择与 Log Analytics 工作区关联的 Azure 订阅。
 
@@ -123,11 +123,11 @@ Azure Monitor 允许您创建 [日志查询](../azure-monitor/log-query/log-quer
    > [!NOTE]
    > 如果在运行后逻辑应用 B2B 磁贴不会立即显示结果，请尝试选择 **刷新** 或等待一小段时间，然后重试。
 
-   默认情况下，“逻辑应用 B2B”磁贴显示一天的数据****。 若要将数据范围更改为其他间隔，请选择页面顶部的范围控件：
+   默认情况下，“逻辑应用 B2B”磁贴显示一天的数据。 若要将数据范围更改为其他间隔，请选择页面顶部的范围控件：
 
    ![更改时间间隔](./media/monitor-b2b-messages-log-analytics/change-summary-interval.png)
 
-1. 当消息状态仪表板显示后，可以查看特定消息类型的更多详细信息（显示的也是一天数据）。 选择 **AS2**、 **X12**或 **EDIFACT**的磁贴。
+1. 当消息状态仪表板显示后，可以查看特定消息类型的更多详细信息（显示的也是一天数据）。 选择 **AS2**、 **X12** 或 **EDIFACT** 的磁贴。
 
    ![查看消息状态](./media/monitor-b2b-messages-log-analytics/workspace-summary-b2b-messages.png)
 
@@ -163,7 +163,7 @@ Azure Monitor 允许您创建 [日志查询](../azure-monitor/log-query/log-quer
 
    * To search results with prebuilt queries, select **Favorites**.
 
-   * Learn [how to build queries by adding filters](../logic-apps/create-monitoring-tracking-queries.md). Or learn more about [how to find data with log searches in Azure Monitor logs](../azure-monitor/log-query/log-query-overview.md).
+   * Learn [how to build queries by adding filters](../logic-apps/create-monitoring-tracking-queries.md). Or learn more about [how to find data with log searches in Azure Monitor logs](../azure-monitor/logs/log-query-overview.md).
 
    * To change query in the search box, update the query with the columns and values that you want to use as filters.
 -->
@@ -182,8 +182,8 @@ Azure Monitor 允许您创建 [日志查询](../azure-monitor/log-query/log-quer
 
 | 属性 | 说明 |
 |----------|-------------|
-| **发送方** | “接收设置”**** 中指定的来宾合作伙伴，或 AS2 协议的“发送设置”**** 中指定的托管合作伙伴 |
-| **端** | “接收设置”**** 中指定的托管合作伙伴，或 AS2 协议的“发送设置”**** 中指定的来宾合作伙伴 |
+| **发送方** | “接收设置”中指定的来宾合作伙伴，或 AS2 协议的“发送设置”中指定的托管合作伙伴 |
+| **端** | “接收设置”中指定的托管合作伙伴，或 AS2 协议的“发送设置”中指定的来宾合作伙伴 |
 | **逻辑应用** | 设置了 AS2 操作的逻辑应用 |
 | **Status** | AS2 消息状态 <br>成功 = 收到或发送了有效的 AS2 消息。 未设置 MDN。 <br>成功 = 收到或发送了有效的 AS2 消息。 设置并收到了 MDN，或已发送 MDN。 <br>失败 = 收到的 AS2 消息无效。 未设置 MDN。 <br>挂起 = 收到或发送了有效的 AS2 消息。 已设置 MDN，且 MDN 符合预期。 |
 | **ACK** | MDN 消息状态 <br>已接受 = 收到或发送了肯定的 MDN。 <br>挂起 = 等待接收或发送 MDN。 <br>已拒绝 = 收到或发送了否定的 MDN。 <br>不需要 = 协议中未设置 MDN。 |
@@ -215,8 +215,8 @@ Here are the name formats for each downloaded AS2 message folder and files.
 
 | 属性 | 说明 |
 |----------|-------------|
-| **发送方** | “接收设置”**** 中指定的来宾合作伙伴，或 X12 协议的“发送设置”**** 中指定的托管合作伙伴 |
-| **端** | “接收设置”**** 中指定的托管合作伙伴，或 X12 协议的“发送设置”**** 中指定的来宾合作伙伴 |
+| **发送方** | “接收设置”中指定的来宾合作伙伴，或 X12 协议的“发送设置”中指定的托管合作伙伴 |
+| **端** | “接收设置”中指定的托管合作伙伴，或 X12 协议的“发送设置”中指定的来宾合作伙伴 |
 | **逻辑应用** | 设置了 X12 操作的逻辑应用 |
 | **Status** | X12 消息状态 <br>成功 = 收到或发送了有效的 X12 消息。 未设置功能确认。 <br>成功 = 收到或发送了有效的 X12 消息。 设置并收到了功能确认，或已发送功能确认。 <br>失败 = 收到或发送的 X12 消息无效。 <br>挂起 = 收到或发送了有效的 X12 消息。 已设置功能确认，且功能确认符合预期。 |
 | **ACK** | 功能确认 (997) 状态 <br>已接受 = 收到或发送了肯定的功能确认。 <br>已拒绝 = 收到或发送了否定的功能确认。 <br>挂起 = 预计有功能确认，但未收到。 <br>挂起 = 生成了功能确认，但无法发送给合作伙伴。 <br>不需要 = 未设置功能确认。 |
@@ -250,8 +250,8 @@ Here are the name formats for each downloaded X12 message folder and files.
 
 | 属性 | 说明 |
 |----------|-------------|
-| **发送方** | “接收设置”**** 中指定的来宾合作伙伴，或 EDIFACT 协议的“发送设置”**** 中指定的托管合作伙伴 |
-| **端** | “接收设置”**** 中指定的托管合作伙伴，或 EDIFACT 协议的“发送设置”**** 中指定的来宾合作伙伴 |
+| **发送方** | “接收设置”中指定的来宾合作伙伴，或 EDIFACT 协议的“发送设置”中指定的托管合作伙伴 |
+| **端** | “接收设置”中指定的托管合作伙伴，或 EDIFACT 协议的“发送设置”中指定的来宾合作伙伴 |
 | **逻辑应用** | 设置了 EDIFACT 操作的逻辑应用 |
 | **Status** | EDIFACT 消息状态 <br>成功 = 收到或发送了有效的 EDIFACT 消息。 未设置功能确认。 <br>成功 = 收到或发送了有效的 EDIFACT 消息。 设置并收到了功能确认，或已发送功能确认。 <br>失败 = 收到或发送了的 EDIFACT 消息无效 <br>挂起 = 收到或发送了有效的 EDIFACT 消息。 已设置功能确认，且功能确认符合预期。 |
 | **ACK** | 功能确认 (CONTRL) 状态 <br>已接受 = 收到或发送了肯定的功能确认。 <br>已拒绝 = 收到或发送了否定的功能确认。 <br>挂起 = 预计有功能确认，但未收到。 <br>挂起 = 生成了功能确认，但无法发送给合作伙伴。 <br>不需要 = 未设置功能确认。 |

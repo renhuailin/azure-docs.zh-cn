@@ -13,26 +13,26 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 8cfbe26458de630aaf411aade4a31cb4e9c72b17
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8015f610dfd9404810a1fa19c951078ebb45ac4f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89295421"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100588487"
 ---
 # <a name="diagnostic-logs-schemas"></a>诊断日志架构
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-[Azure Monitor](../../azure-monitor/overview.md) 使你能够监视指标和诊断日志，以帮助你了解应用程序的执行情况。 可以监视媒体服务诊断日志，并针对收集的指标和日志创建警报与通知。 可以将日志发送到 [Azure 存储](https://azure.microsoft.com/services/storage/)，将日志流式传输到 [azure 事件中心](https://azure.microsoft.com/services/event-hubs/)，然后将其导出到 [Log Analytics](https://azure.microsoft.com/services/log-analytics/)或使用第三方服务。
+可以通过 [Azure Monitor](../../azure-monitor/overview.md) 监视指标和诊断日志，以便了解应用程序的执行情况。 可以监视媒体服务诊断日志，并针对收集的指标和日志创建警报与通知。 可以将日志发送到 [Azure 存储](https://azure.microsoft.com/services/storage/)，将日志流式传输到 [azure 事件中心](https://azure.microsoft.com/services/event-hubs/)，然后将其导出到 [Log Analytics](https://azure.microsoft.com/services/log-analytics/)或使用第三方服务。
 
-有关详细信息，请参阅 [Azure Monitor 度量值](../../azure-monitor/platform/data-platform.md) 和 [Azure Monitor 诊断日志](../../azure-monitor/platform/platform-logs-overview.md)。
+有关详细信息，请参阅 [Azure Monitor 度量值](../../azure-monitor/data-platform.md) 和 [Azure Monitor 诊断日志](../../azure-monitor/essentials/platform-logs-overview.md)。
 
 本文介绍 Media Services 诊断日志架构。
 
 ## <a name="top-level-diagnostic-logs-schema"></a>顶级诊断日志架构
 
-有关顶层诊断日志架构的详细说明，请参阅 [Azure 诊断日志支持的服务、架构和类别](../../azure-monitor/platform/resource-logs-schema.md)。
+有关顶层诊断日志架构的详细说明，请参阅 [Azure 诊断日志支持的服务、架构和类别](../../azure-monitor/essentials/resource-logs-schema.md)。
 
 ## <a name="key-delivery-log-schema"></a>密钥传送日志架构
 

@@ -1,6 +1,6 @@
 ---
 title: 读取 NSG 流日志 | Microsoft Docs
-description: 了解如何使用 Azure PowerShell 分析网络安全组流日志，该日志每小时创建一次，并在 Azure 网络观察程序中每隔几分钟更新一次。
+description: 了解如何使用 Azure PowerShell 分析网络安全组流日志，这些日志每小时创建一次，并在 Azure 网络观察程序中每几分钟更新一次。
 services: network-watcher
 documentationcenter: na
 author: damendo
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: damendo
-ms.openlocfilehash: d465106725e9b936172fb74e1cc265c14942f662
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: 27f94c43266fe324016a73e2e6d31e8488457416
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97898090"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593056"
 ---
 # <a name="read-nsg-flow-logs"></a>读取 NSG 流日志
 
@@ -189,6 +189,6 @@ A","1497646742,10.0.0.4,168.62.32.14,44942,443,T,O,A","1497646742,10.0.0.4,52.24
 
 请访问[使用弹性堆栈](network-watcher-visualize-nsg-flow-logs-open-source-tools.md)、[使用 Grafana](network-watcher-nsg-grafana.md) 和[使用 Graylog](network-watcher-analyze-nsg-flow-logs-graylog.md) 详细了解查看 NSG 流日志的方法。 可以在此处找到直接使用 Blob 并发送给各种日志分析使用者的开源 Azure 函数方法：[Azure 网络观察程序 NSG 流日志连接器](https://github.com/Microsoft/AzureNetworkWatcherNSGFlowLogsConnector)。
 
-可使用 [Azure 流量分析](./traffic-analytics.md)获取有关流量流的见解。 流量分析使用 [Log Analytics](../azure-monitor/log-query/log-analytics-tutorial.md) 来使流量流可查询。
+可使用 [Azure 流量分析](./traffic-analytics.md)获取有关流量流的见解。 流量分析使用 [Log Analytics](../azure-monitor/logs/log-analytics-tutorial.md) 来使流量流可查询。
 
 若要详细了解存储 blob，请访问：[Azure Functions Blob 存储绑定](../azure-functions/functions-bindings-storage-blob.md)

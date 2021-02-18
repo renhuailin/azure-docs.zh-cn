@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 02/10/2020
 ms.author: alsin
 ms.reviewer: cynthn
-ms.openlocfilehash: 293245d6778a40e234cdca177905c15dc88dd04f
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 0f3b36729fb07c6f5ae03a46e199e4cadb44a25e
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737755"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100635585"
 ---
 # <a name="overview-of-red-hat-enterprise-linux-images"></a>Red Hat Enterprise Linux 映像的概述
 
@@ -65,6 +65,9 @@ az vm create --name RhelVM --resource-group TestRG --image RedHat:RHEL:8-LVM:lat
 
 ## <a name="rhel-6-image-types"></a>RHEL 6 映像类型
 
+>[!NOTE]
+> 从 30 2020 年12月，RHEL 6.10 输入生命 (周期的结束时间) 。 若要继续支持，请启用 ELS 作为延长生命周期支持阶段的一部分，请参阅 [Red HAT ELS 文档](./redhat-extended-lifecycle-support.md)。
+
 对于 RHEL 1.x 映像，下表显示了映像类型。
 
 |发布者 | 产品/服务 | SKU 值 | 版本 | 详细信息
@@ -106,7 +109,15 @@ az vm create --name RhelVM --resource-group TestRG --image RedHat:RHEL:8-LVM:lat
 |RedHat | RHEL | 8 | RHEL 次要版本和发布日期的串联值 (例如 8.0.20191023)  | 这些映像是已连接到标准 Red Hat 存储库的 RHEL 8 LVM 分区映像。
 |RedHat | RHEL | 8-gen2 | RHEL 次要版本和发布日期的串联值 (例如 8.0.20191024)  | 这些映像是连接到标准 Red Hat 存储库的 Hyper-v 第 2 RHEL 8 LVM 分区映像。 有关 Azure 中第2代 Vm 的详细信息，请参阅 [azure 上的第2代 Vm 支持](../../generation-2.md)。
 
-## <a name="rhel-longer-support-add-ons"></a>RHEL 更长的支持外接程序
+## <a name="rhel-extended-support-add-ons"></a>RHEL 扩展支持外接程序
+
+### <a name="extended-life-cycle-support"></a>扩展的生命周期支持
+
+ (ELS) 外接程序的扩展生命周期支持是一个可选的订阅，它可为已达到生存期 (终止) 的版本启用关键和重要的安全修补程序。 有关 RHEL EUS 的详细信息，请 [参阅 Red Hat 的文档](https://access.redhat.com/support/policy/updates/errata#Extended_Life_Cycle_Support)。
+
+ELS 目前仅适用于 RHEL 6.10。 对于即用即付映像，可以按照 [Red HAT ELS 文档](./redhat-extended-lifecycle-support.md)中的步骤启用 ELS。
+
+如果运行的是较旧版本，则需要升级到 RHEL 6.10，然后才能启用 ELS。
 
 ### <a name="extended-update-support"></a>扩展更新支持
 
@@ -146,7 +157,7 @@ RedHat:RHEL:7.6:7.6.2019102813
 RHEL 7.4      |RedHat： RHEL：7.4：7.4.2019041718 | 默认情况下，EUS 2019 及更高版本发布的映像。|
 RHEL 7.5      |RedHat： RHEL：7.5：7.5.2019060305 | 默认情况下，EUS 2019 及更高版本发布的映像。 |
 RHEL 7.6      |RedHat： RHEL：7.6：7.6.2019052206 | 默认情况下，发布的映像可能为2019和更高版本 EUS。 |
-RHEL 8。0      |空值                            | Red Hat 中没有可用的 EUS。                               |
+RHEL 8。0      |不适用                            | Red Hat 中没有可用的 EUS。                               |
 
 ### <a name="update-services-for-sap"></a>更新 SAP 服务
 

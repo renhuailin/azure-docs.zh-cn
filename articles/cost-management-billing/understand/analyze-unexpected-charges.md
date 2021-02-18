@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: banders
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: f6df8c6ff0db74798b71d57feae91e5245f2a6c2
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 6d5198f47b6089730ff345eb12ab522fc5ce58a1
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97028712"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575374"
 ---
 # <a name="analyze-unexpected-charges"></a>分析意外费用
 
@@ -76,7 +76,7 @@ Azure 帐单按计量器聚合了每月的费用。  计量器用于跟踪某个
 
 ### <a name="analyze-the-audit-logs-for-the-resource"></a>分析资源的审核日志
 
-如果你有权查看某个资源，应该可以访问其审核日志。 请查看日志以找出最近对资源进行更改的负责用户。 有关详细信息，请参阅[查看和检索 Azure 活动日志事件](../../azure-monitor/platform/activity-log.md#view-the-activity-log)。
+如果你有权查看某个资源，应该可以访问其审核日志。 请查看日志以找出最近对资源进行更改的负责用户。 有关详细信息，请参阅[查看和检索 Azure 活动日志事件](../../azure-monitor/essentials/activity-log.md#view-the-activity-log)。
 
 ### <a name="analyze-user-permissions-to-the-resources-parent-scope"></a>分析用户在资源父范围的权限
 
