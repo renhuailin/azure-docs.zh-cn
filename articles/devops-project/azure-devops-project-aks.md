@@ -8,12 +8,12 @@ ms.technology: devops-cicd
 ms.topic: tutorial
 ms.date: 03/24/2020
 author: mlearned
-ms.openlocfilehash: af61254643e9f072995bceed1b6ecf8ecc29e5f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ccf28f5431a92f71b1c18e609639d0abf309c06
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91855446"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590864"
 ---
 # <a name="deploy-aspnet-core-apps-to-azure-kubernetes-service-with-azure-devops-starter"></a>使用 Azure DevOps Starter 将 ASP.NET Core 应用部署到 Azure Kubernetes 服务
 
@@ -24,7 +24,7 @@ DevOps Starter 还可以：
 * 自动创建 Azure 资源，例如 Azure Kubernetes 服务 (AKS)。
 * 在 Azure DevOps 中创建并配置一个发布管道，用于设置 CI/CD 的生成和发布管道。
 * 创建用于监视的 Azure Application Insights 资源。
-* 启用[用于容器的 Azure Monitor](../azure-monitor/insights/container-insights-overview.md) 以监视 AKS 群集上容器工作负载的性能
+* 启用[用于容器的 Azure Monitor](../azure-monitor/containers/container-insights-overview.md) 以监视 AKS 群集上容器工作负载的性能
 
 在本教程中，将：
 
@@ -113,7 +113,7 @@ DevOps Starter 会自动创建并配置从 Azure DevOps 组织部署到 Azure �
 
 1. 选择“生成和发布”，然后选择“发布”。   DevOps Starter 会创建一个发布管道，用于管理到 Azure 的部署。
 
-1. 选择发布管道旁边的省略号 (...)，然后选择“编辑”。 发布管道包含一个*管道*，用于定义发布过程。
+1. 选择发布管道旁边的省略号 (...)，然后选择“编辑”。 发布管道包含一个 *管道*，用于定义发布过程。
 
 1. 在“项目”下选择“删除” 。 在前述步骤中检查过的生成管道会生成用于项目的输出。 
 

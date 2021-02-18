@@ -5,15 +5,15 @@ author: memildin
 manager: rkarlin
 services: security-center
 ms.author: memildin
-ms.date: 09/10/2020
+ms.date: 02/17/2021
 ms.service: security-center
 ms.topic: how-to
-ms.openlocfilehash: 12cc2de6cd1a8e9ddf40b358c94b720b8b2cf594
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 646495597565bbb033ac3adaa15f3754f33e8fd6
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98920437"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100634153"
 ---
 # <a name="suppress-alerts-from-azure-defender"></a>禁止来自 Azure Defender 的警报
 
@@ -60,9 +60,7 @@ ms.locfileid: "98920437"
 
 1. 从安全中心的“安全警报”页：
 
-    - 找到你不想再查看的特定警报，然后从该警报的省略号菜单 (...) 中，选择“创建抑制规则”：
-
-        [![**创建抑制规则** 选项](media/alerts-suppression-rules/auto-dismiss-future-option.png)](media/alerts-suppression-rules/auto-dismiss-future-option.png#lightbox)
+    - 选择不再想要查看的特定警报，然后在详细信息窗格中，选择 " **执行操作**"。
 
     - 或者，选择页面顶部的“抑制规则”链接，然后从“抑制规则”页面中选择“创建新的抑制规则” ：
 
@@ -85,9 +83,9 @@ ms.locfileid: "98920437"
 1. 保存规则。 
 
 
-## <a name="edit-a-suppression-rules"></a>编辑抑制规则
+## <a name="edit-a-suppression-rule"></a>编辑禁止显示规则
 
-若要编辑已创建的规则，请使用“抑制规则”页。
+若要编辑已创建的规则，请使用 "抑制规则" 页。
 
 1. 从安全中心的“安全警报”页面中，选择页面顶部的“抑制规则”链接。
 1. 此时将打开“抑制规则”页，其中包含选定订阅的所有规则。
@@ -106,20 +104,6 @@ ms.locfileid: "98920437"
 1. 若要删除单个规则，请打开该规则的省略号菜单 (...)，然后选择“删除”。
 1. 若要删除多个规则，请选中要删除的规则的复选框，然后选择“删除”。
     ![删除一个或多个抑制规则](media/alerts-suppression-rules/delete-multiple-alerts.png)
-
-## <a name="view-suppressed-alerts"></a>查看抑制的警报
-
-仍将生成与你启用的抑制规则相匹配的警报，但它们的状态将设置为“已取消”。 你可在 Azure 门户中查看状态，也可在安全中心查看安全警报。 
-
-> [!TIP]
-> [Azure Sentinel](https://azure.microsoft.com/services/azure-sentinel/) 不会为已消除的警报创建事件。 对于其他 SIEM，你可以使用警报的状态（“已消除”）筛选抑制的警报。
-
-使用安全中心的筛选器查看规则已消除的警报。
-
-* 从安全中心的“安全警报”页中，打开筛选器选项并选择“关闭”。  
-
-   [![查看已消除的警报](media/alerts-suppression-rules/view-dismissed-alerts.png)](media/alerts-suppression-rules/view-dismissed-alerts.png#lightbox)
-
 
 ## <a name="create-and-manage-suppression-rules-with-the-api"></a>通过 API 创建和管理抑制规则
 

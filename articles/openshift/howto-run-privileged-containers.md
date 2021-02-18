@@ -3,16 +3,16 @@ title: 在 Azure Red Hat OpenShift 群集中运行特权容器 |Microsoft Docs
 description: 运行特权容器来监视安全性和符合性。
 author: makdaam
 ms.author: b-lejaku
-ms.service: container-service
+ms.service: azure-redhat-openshift
 ms.topic: conceptual
 ms.date: 12/05/2019
 keywords: aro、openshift、aquasec、twistlock、red hat
-ms.openlocfilehash: 914b29410a0f30e5c3d3a893c2e278ecbb83b648
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 77e75232b7f9d23f1d07931cc7dc231174e1312d
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92218861"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100633556"
 ---
 # <a name="run-privileged-containers-in-an-azure-red-hat-openshift-cluster"></a>在 Azure Red Hat OpenShift 群集中运行特权容器
 
@@ -30,7 +30,7 @@ ms.locfileid: "92218861"
 请在遵循供应商说明之前通读这些说明。
 以下特定于产品的步骤中的章节标题直接引用供应商文档中的章节标题。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>在开始之前
 
 大多数安全产品的文档假定你具有群集管理员权限。
 客户管理员不具备 Azure Red Hat OpenShift 的所有权限。 修改群集范围内的资源所需的权限受到限制。
@@ -170,7 +170,7 @@ spec:
     weight: 100
   wildcardPolicy: None
 ```
-然后运行：
+然后，运行以下命令：
 ```
 oc create -f twistlock_route.yaml
 ```

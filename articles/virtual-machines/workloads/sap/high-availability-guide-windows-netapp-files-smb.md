@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/12/2020
 ms.author: radeltch
-ms.openlocfilehash: 90b0ab4fdabd40e803d1f85a640e4cb387e40c44
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: b04dacfdedded417e2557d1568e01bc9fa8f5745
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94958942"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590125"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-windows-with-azure-netapp-filessmb-for-sap-applications"></a>适用于 Windows 上的 Azure 虚拟机上的 SAP NetWeaver 高可用性，适用于 SAP 应用程序 (SMB) 的 Azure Vm
 
@@ -81,7 +81,7 @@ ms.locfileid: "94958942"
 * [适用于 SAP NetWeaver 的 Azure 虚拟机高可用性体系结构和方案](./sap-high-availability-architecture-scenarios.md)
 * [在 ASCS 群集配置中添加探测端口](sap-high-availability-installation-wsfc-file-share.md)
 * [在故障转移群集上安装 () SCS 实例](https://www.sap.com/documents/2017/07/f453332f-c97c-0010-82c7-eda71af511fa.html)
-* [创建用于 Azure NetApp 文件的 SMB 卷](../../../azure-netapp-files/azure-netapp-files-create-volumes-smb.md#requirements-for-active-directory-connections)
+* [创建用于 Azure NetApp 文件的 SMB 卷](../../../azure-netapp-files/create-active-directory-connections.md#requirements-for-active-directory-connections)
 * [使用 Azure NetApp 文件的 Microsoft Azure 上的 NetApp SAP 应用程序][anf-sap-applications-azure]
 
 ## <a name="overview"></a>概述
@@ -114,9 +114,9 @@ SMB 文件共享的先决条件包括：
 4. Azure NetApp 文件资源必须位于委托子网中。 按照将 [子网委托给 Azure NetApp 文件](../../../azure-netapp-files/azure-netapp-files-delegate-subnet.md) 中的说明创建委托子网。  
 
    > [!IMPORTANT]
-   > 在创建 SMB 卷之前，需要创建 Active Directory 连接。 查看 [Active Directory 连接的要求](../../../azure-netapp-files/azure-netapp-files-create-volumes-smb.md#requirements-for-active-directory-connections)。  
+   > 在创建 SMB 卷之前，需要创建 Active Directory 连接。 查看 [Active Directory 连接的要求](../../../azure-netapp-files/create-active-directory-connections.md#requirements-for-active-directory-connections)。  
 
-5. 如[创建 Active Directory 连接](../../../azure-netapp-files/azure-netapp-files-create-volumes-smb.md#create-an-active-directory-connection)中所述，创建 Active Directory 连接  
+5. 如[创建 Active Directory 连接](../../../azure-netapp-files/create-active-directory-connections.md#create-an-active-directory-connection)中所述，创建 Active Directory 连接  
 6. 按照[添加 smb 卷](../../../azure-netapp-files/azure-netapp-files-create-volumes-smb.md#add-an-smb-volume)中的说明创建 Smb Azure NETAPP 文件 smb 卷  
 7. 在 Windows 虚拟机上装载 SMB 卷。
 
@@ -144,7 +144,7 @@ SMB 文件共享的先决条件包括：
 
 ### <a name="install-an-ascsscs-instance-on-the-first-ascsscs-cluster-node"></a>在第一个 ASCS/SCS 群集节点上安装 ASCS/SCS 实例
 
-1. 在第一个群集节点上安装 SAP ASCS/SCS 实例。 启动 SAP SWPM 安装工具，然后导航到： **Product**  >  (或 Java) > High-Availability System > ASCS/SCS 实例 > 第一个群集节点的产品 **DBMS** > 安装 > 的应用程序服务器。  
+1. 在第一个群集节点上安装 SAP ASCS/SCS 实例。 启动 SAP SWPM 安装工具，然后导航到：   >  (或 Java) > High-Availability System > ASCS/SCS 实例 > 第一个群集节点的产品 **DBMS** > 安装 > 的应用程序服务器。  
 
 2. 在 SWPM 中选择 " **文件共享群集** " 作为群集共享配置。  
 3. 出现步骤 **SAP 系统群集参数** 时，请输入已创建为 **文件共享主机名** 的 Azure NetApp 文件的主机名。  在此示例中，SMB 共享主机名为 **anfsmb-9562**。 
