@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: a4f3e0bbd282fb1253e206e71c2eb1667773248e
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: b734c4cdec022f2bf43ee7123b06331f67c10390
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99834079"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570840"
 ---
 # <a name="tutorial-monitor-network-communication-between-two-virtual-machines-using-the-azure-portal"></a>教程：使用 Azure 门户监视两个虚拟机之间的网络通信
 
@@ -137,7 +137,7 @@ ms.locfileid: "99834079"
 2. 单击“选择目标”  ，然后选择要作为目标的资源。 选择“订阅”，然后设置“资源类型”   ，以便筛选出要使用的连接监视器。
 
     ![目标为选中状态的警报屏幕](./media/connection-monitor/set-alert-rule.png)
-1. 选中目标资源以后，请选择“添加条件”。  网络观察程序有[创建警报时基于的指标](../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported)。 将“可用信号”  设置为指标 ProbesFailedPercent 和 AverageRoundtripMs：
+1. 选中目标资源以后，请选择“添加条件”。  网络观察程序有[创建警报时基于的指标](../azure-monitor/alerts/alerts-metric-near-real-time.md#metrics-and-dimensions-supported)。 将“可用信号”  设置为指标 ProbesFailedPercent 和 AverageRoundtripMs：
 
     ![信号处于选中状态的警报页](./media/connection-monitor/set-alert-signals.png)
 1. 填写警报详细信息，例如警报规则名称、说明和严重性。 也可向警报添加操作组，以便自动完成和自定义警报响应。
@@ -158,7 +158,7 @@ ms.locfileid: "99834079"
     | ---                     | ---            |
     | 目标端口范围 | 22             |
     | 操作                  | 拒绝           |
-    | 优先度                | 100            |
+    | 优先级                | 100            |
     | 名称                    | DenySshInbound |
 
 5. 由于连接监视器按 60 秒的时间间隔进行探测，因此请等待数分钟，然后在门户左侧选择“网络观察程序”、“连接监视器”，并再次选择“myVm1-myVm2(22)”监视器。    如下图所示，现在的结果有所不同：
