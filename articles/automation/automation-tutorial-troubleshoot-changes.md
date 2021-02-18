@@ -7,12 +7,12 @@ keywords: 更改, 跟踪, 更改跟踪, 清单, 自动化
 ms.date: 12/05/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 28c440f27dcbd4ac509adea83d5c3085488cb488
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: a223ac4296dd160bbdd904e1d3443552d4f49a23
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92204242"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587933"
 ---
 # <a name="troubleshoot-changes-on-an-azure-vm"></a>排查 Azure VM 上的更改问题
 
@@ -54,7 +54,7 @@ ms.locfileid: "92204242"
 
     ![启用更改](./media/automation-tutorial-troubleshoot-changes/enableinventory.png)
 
-3. 选择 [Log Analytics](../azure-monitor/log-query/log-query-overview.md) 工作区。 此工作区将收集由更改跟踪和清单等功能生成的数据。 工作区提供了一个位置来查看和分析来自多个数据源的数据。
+3. 选择 [Log Analytics](../azure-monitor/logs/log-query-overview.md) 工作区。 此工作区将收集由更改跟踪和清单等功能生成的数据。 工作区提供了一个位置来查看和分析来自多个数据源的数据。
 
     [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -80,7 +80,7 @@ ConfigurationChange
 | where ConfigChangeType == "WindowsServices" and SvcState == "Stopped"
 ```
 
-若要详细了解如何在 Azure Monitor 日志中运行和搜索日志文件，请参阅 [Azure Monitor 日志](../azure-monitor/log-query/log-query-overview.md)。
+若要详细了解如何在 Azure Monitor 日志中运行和搜索日志文件，请参阅 [Azure Monitor 日志](../azure-monitor/logs/log-query-overview.md)。
 
 ## <a name="configure-change-tracking"></a>配置更改跟踪
 
@@ -198,7 +198,7 @@ ConfigurationChange
 
     ![配置信号逻辑](./media/automation-tutorial-troubleshoot-changes/configure-signal-logic.png)
 
-10. 在“操作组”下，选择“新建” 。 操作组是可以在多个警报中使用的一组操作。 这些操作可能包括但不限于电子邮件通知、Runbook、Webhook 以及其他操作。 若要了解有关操作组的详细信息，请参阅[创建和管理操作组](../azure-monitor/platform/action-groups.md)。
+10. 在“操作组”下，选择“新建” 。 操作组是可以在多个警报中使用的一组操作。 这些操作可能包括但不限于电子邮件通知、Runbook、Webhook 以及其他操作。 若要了解有关操作组的详细信息，请参阅[创建和管理操作组](../azure-monitor/alerts/action-groups.md)。
 
 11. 在“警报详细信息”下，输入警报的名称和说明。 
 

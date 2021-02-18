@@ -1,5 +1,5 @@
 ---
-title: 排查 Azure Windows 虚拟机的高 CPU 问题
+title: 排查 Azure Windows 虚拟机的 CPU 占用量高的问题
 description: .
 services: virtual-machines-windows, azure-resource-manager
 documentationcenter: ''
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 9/24/2020
 ms.author: mnanda
-ms.openlocfilehash: ffac5ac4d1a8143590e1d72aaafc8a02d6ab04ca
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 124650f4570608efabba3d8002c14ad06c4782ad
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977249"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571505"
 ---
-# <a name="troubleshoot-high-cpu-issues-for-azure-windows-virtual-machines"></a>排查 Azure Windows 虚拟机的高 CPU 问题
+# <a name="troubleshoot-high-cpu-issues-for-azure-windows-virtual-machines"></a>排查 Azure Windows 虚拟机的 CPU 占用量高的问题
 
 ## <a name="summary"></a>总结
 
@@ -53,7 +53,7 @@ ms.locfileid: "91977249"
 
 本文重点介绍如何隔离有问题的过程。 进一步分析将特定于驱动高 CPU 消耗的进程。
 
-例如，如果进程 SQL Server ( # A0) ，则后续步骤将分析在特定时间段内使用最多 CPU 周期的查询。
+例如，如果进程 SQL Server (sqlservr.exe) ，则后续步骤将分析在特定时间段内使用最多 CPU 周期的查询。
 
 ### <a name="scope-the-issue"></a>确定问题范围
 
@@ -116,13 +116,13 @@ PerfInsights 适用于 [Windows](./how-to-use-perfinsights.md) 和 [Linux](./how
 
 屏幕截图中的编号选项与以下注释相关：
 
-1. 对于 **高 CPU**选项，请选择 " **性能分析** " 或 " **高级**"。
+1. 对于 **高 CPU** 选项，请选择 " **性能分析** " 或 " **高级**"。
 
 2. 当你在此处添加症状时，它们将添加到报告中，这有助于你与 Azure 支持人员共享信息。
 
 3. 选择数据收集的持续时间。 对于 "高 CPU" 选项，请选择至少15分钟或更长时间。 在 Azure 门户模式下，最多可以收集15分钟的数据。 对于较长的集合，必须在 VM 内将程序作为可执行文件运行。
 
-4. 如果 Azure 支持部门要求你收集此数据，则可以在此处添加票证编号。 此字段是可选的。
+4. 如果 Azure 支持部门要求你收集此数据，则可以在此处添加票证编号。 此字段是可选字段。
 
 5. 选择此字段以接受最终用户许可协议， (EULA) 。
 
@@ -182,7 +182,7 @@ PerfInsights 适用于 [Windows](./how-to-use-perfinsights.md) 和 [Linux](./how
 
 #### <a name="more-details"></a>更多详细信息
 
-**CPU**下有一个专用子标签，可用于详细模式分析、每个核心或每个进程。
+**CPU** 下有一个专用子标签，可用于详细模式分析、每个核心或每个进程。
 
 " **前 CPU 使用者** " 选项卡有两个独立的区域，可以在此处查看每个处理器的统计信息。 应用程序设计经常 Single-Threaded 或固定到单个处理器。 在此方案中，一个或多个内核在100% 运行，而其他内核在预期级别运行。 由于服务器上的平均 CPU 似乎按预期运行，因此这些方案更复杂，但在具有高使用率的内核上固定的进程将会比预期速度更慢。
 
@@ -192,7 +192,7 @@ PerfInsights 适用于 [Windows](./how-to-use-perfinsights.md) 和 [Linux](./how
 
   ![Tom 长时间运行的 CPU 使用者](./media/troubleshoot-high-cpu-issues-azure-windows-vm/10-top-long-running-cpu-consumers.png)
 
-这两个选项卡足以设置下一个故障排除步骤的路径。 根据驱动高 CPU 状况的过程，您必须解决之前提出的问题。 例如 SQL Server ( # A0) 或 IIS ( # A1) 的进程需要对导致此条件的查询或代码更改进行特定向下钻取。 对于诸如 WMI 或 Lsass.exe 的系统进程，必须遵循不同的路径。
+这两个选项卡足以设置下一个故障排除步骤的路径。 根据驱动高 CPU 状况的过程，您必须解决之前提出的问题。 SQL Server (sqlservr.exe) 或 IIS (w3wp.exe 的进程，) 需要对导致此情况的查询或代码更改进行特定向下钻取。 对于诸如 WMI 或 Lsass.exe 的系统进程，必须遵循不同的路径。
 
 对于 Azure VM 相关的过程（例如 RDAgent、OMS 和监视扩展可执行文件），你可能需要通过从 Azure 支持团队获取帮助来修复新的生成或版本。
 
@@ -204,7 +204,7 @@ PerfInsights 收集 Perfmon 作为 VMSlow 和高级方案的额外日志。 但�
 
 - 可以远程收集。
 
-- 可以通过 **任务**来计划。
+- 可以通过 **任务** 来计划。
 
 - 可以通过使用滚动更新功能，将其收集到更长的持续时间或连续模式。
 
@@ -237,7 +237,7 @@ Perfmon 中没有可供用户使用的默认报表。 更改图形类型的视�
 
   ![性能监视器设置](./media/troubleshoot-high-cpu-issues-azure-windows-vm/12-performance-monitor-1.png)
 
-每个计数器都有 **平均值**、 **最小**值和 **最大** 值。 专注于 **平均** 值和 **最大** 值，因为平均值可能因数据收集的持续时间而异。 如果在整个集合为40分钟时发现了高 CPU 活动10分钟，则平均值将小得多。
+每个计数器都有 **平均值**、 **最小** 值和 **最大** 值。 专注于 **平均** 值和 **最大** 值，因为平均值可能因数据收集的持续时间而异。 如果在整个集合为40分钟时发现了高 CPU 活动10分钟，则平均值将小得多。
 
 上一个趋势图显示， **处理器总数** 约为80%，大约15分钟。
 
@@ -257,7 +257,7 @@ Perfmon 中没有可供用户使用的默认报表。 更改图形类型的视�
 
 若要加快此过程，请使用 **直方图** 视图，并将视图类型从 **行** 更改为 **直方图**，这将为您显示一个条形图。 你会发现，选择在收集时遇到高 CPU 使用情况的过程会更容易。
 
-由于 **总**有一个条形，因此焦点在显示消耗率较高的条上。 您可以删除其他条形以清除视图。 现在，返回到 **行** 视图。
+由于 **总** 有一个条形，因此焦点在显示消耗率较高的条上。 您可以删除其他条形以清除视图。 现在，返回到 **行** 视图。
 
   ![性能监视器指示器](./media/troubleshoot-high-cpu-issues-azure-windows-vm/14-performance-monitor-2.png)
 
@@ -281,15 +281,15 @@ Azure Vm 具有可靠的指标，包括 CPU、网络 i/o 和 i/o 字节等基本
 
   ![诊断存储帐户](./media/troubleshoot-high-cpu-issues-azure-windows-vm/17-diagnostics-storage-account.png)
 
-**基本**计数器类别设置为**默认值**。 但是，您还可以设置 **自定义** 集合。
+**基本** 计数器类别设置为 **默认值**。 但是，您还可以设置 **自定义** 集合。
 
   ![性能计数器](./media/troubleshoot-high-cpu-issues-azure-windows-vm/18-performance-counters.png)
 
-启用这些设置后，可以在 "**指标**" 部分中查看这些**来宾**计数器。 如果度量值达到特定阈值，还可以设置 **警报** (包括电子邮件) 。
+启用这些设置后，可以在 "**指标**" 部分中查看这些 **来宾** 计数器。 如果度量值达到特定阈值，还可以设置 **警报** (包括电子邮件) 。
 
   ![度量值命名空间](./media/troubleshoot-high-cpu-issues-azure-windows-vm/19-metrics-namespace.png)
 
-有关如何使用 Azure monitor 来管理 Azure Vm 的详细信息，请参阅 [使用 Azure Monitor 监视 azure 虚拟机](../../azure-monitor/insights/monitor-vm-azure.md)。
+有关如何使用 Azure monitor 来管理 Azure Vm 的详细信息，请参阅 [使用 Azure Monitor 监视 azure 虚拟机](../../azure-monitor/vm/monitor-vm-azure.md)。
 
 ### <a name="reactive-troubleshooting"></a>反应故障排除
 
@@ -303,7 +303,7 @@ PerfInsights 尚无 **计划的运行** 功能。 但是，可以通过命令行
 
 ### <a name="logman-command"></a>Logman 命令
 
-**Logman Create Counter**命令用于通过命令行运行 Perfmon 收集、通过**任务管理器**对其进行调度或远程运行。
+**Logman Create Counter** 命令用于通过命令行运行 Perfmon 收集、通过 **任务管理器** 对其进行调度或远程运行。
 
 **示例** (包括远程收集模式) 
 

@@ -5,12 +5,12 @@ ms.assetid: e224fc4f-800d-469a-8d6a-72bcde612450
 ms.topic: article
 ms.date: 04/30/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: ef90603e8c8cdd66d43b9f88f6d128d8a472fd8a
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 1c4cff264b63506432daf350be3557bae7234584
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150335"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594241"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>设置 Azure 应用服务中的过渡环境
 <a name="Overview"></a>
@@ -222,7 +222,7 @@ ms.locfileid: "92150335"
 
 ## <a name="monitor-a-swap"></a>监视交换
 
-如果[交换操作](#AboutConfiguration)需要很长时间才能完成，则可以在[活动日志](../azure-monitor/platform/platform-logs-overview.md)中获取有关交换操作的信息。
+如果[交换操作](#AboutConfiguration)需要很长时间才能完成，则可以在[活动日志](../azure-monitor/essentials/platform-logs-overview.md)中获取有关交换操作的信息。
 
 在门户的应用资源页上的左窗格中，选择“活动日志”。
 
@@ -398,7 +398,7 @@ Remove-AzResource -ResourceGroupName [resource group name] -ResourceType Microso
 
 ## <a name="troubleshoot-swaps"></a>排查交换问题
 
-如果在[交换槽](#AboutConfiguration)的过程中出现任何错误，该错误会记录在 *D:\home\LogFiles\eventlog.xml* 中。 特定于应用程序的错误日志中也会记录该错误。
+如果在 [交换槽](#AboutConfiguration)的过程中出现任何错误，该错误会记录在 *D:\home\LogFiles\eventlog.xml* 中。 特定于应用程序的错误日志中也会记录该错误。
 
 下面是一些常见的交换错误：
 

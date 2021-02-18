@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/27/2020
 ms.author: errobin
-ms.openlocfilehash: 88c287c4aa87b4df41bfe6bbc1992262b21d07aa
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 190a9e431dedfb0f0fe6077e903174f253f5c773
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98232754"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589111"
 ---
 # <a name="using-insights-to-monitor-and-configure-your-azure-load-balancer"></a>使用见解监视和配置 Azure 负载均衡器
 
@@ -40,7 +40,7 @@ ms.locfileid: "98232754"
 
 ## <a name="metrics-dashboard"></a>指标仪表板
 
-在负载均衡器的“见解”边栏选项卡中，可以选择“更多详细指标”，查看预配置的 [Azure Monitor 工作簿](../azure-monitor/platform/workbooks-overview.md)，其中包含与负载均衡器特定方面相关的指标视觉对象。 该仪表板显示负载均衡器状态，并在页面顶部显示相关文档的链接。
+在负载均衡器的“见解”边栏选项卡中，可以选择“更多详细指标”，查看预配置的 [Azure Monitor 工作簿](../azure-monitor/visualize/workbooks-overview.md)，其中包含与负载均衡器特定方面相关的指标视觉对象。 该仪表板显示负载均衡器状态，并在页面顶部显示相关文档的链接。
 
 首先会显示“概述”选项卡。可以在可用选项卡中导航，每个选项卡均包含与负载均衡器特定方面相关的视觉对象。 每个选项卡底部的仪表板中都提供针对每个选项的明确指导。
 
@@ -80,4 +80,4 @@ ms.locfileid: "98232754"
 * 查看仪表板，如果有任何需要改进的地方，请使用下面的链接提供反馈
 * [查看指标文档，以确保你了解如何计算每个指标](./load-balancer-standard-diagnostics.md#multi-dimensional-metrics)
 * [为负载均衡器创建连接监视器](../network-watcher/connection-monitor.md)
-* [创建自己的工作簿](../azure-monitor/platform/workbooks-overview.md)，你可以通过在详细指标仪表板中单击“编辑”按钮来汲取灵感
+* [创建自己的工作簿](../azure-monitor/visualize/workbooks-overview.md)，你可以通过在详细指标仪表板中单击“编辑”按钮来汲取灵感

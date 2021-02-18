@@ -2,13 +2,13 @@
 title: Microsoft Azure 服务总线配额和限制
 description: 本文列出了 Azure 服务总线消息传送的基本配额和限制阈值。 例如，每个订阅的最大命名空间数。
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: dd7d4d5b9f9d4034b4d4524fa1e0503c0ea713d2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 02/17/2021
+ms.openlocfilehash: d84e8a297092242dc1fd648b62fabc16978a1dab
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85337094"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100651930"
 ---
 # <a name="service-bus-quotas"></a>服务总线配额
 本部分列出了 Azure 服务总线消息传送的基本配额和限制阈值。

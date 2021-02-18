@@ -5,16 +5,16 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: 03814766d7bc873855df261a50a40b8d342fa69b
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: add2bbb7b8f9eeb72c8c58b8c54b070a6b14d8e6
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99054240"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100586070"
 ---
 # <a name="use-an-alert-to-trigger-an-azure-automation-runbook"></a>使用警报触发 Azure 自动化 Runbook
 
-可以使用 [Azure Monitor](../azure-monitor/overview.md) 来监视 Azure 中大多数服务的基本级别指标和日志。 可以使用[操作组](../azure-monitor/platform/action-groups.md)或经典警报调用 Azure 自动化 Runbook，以便基于警报自动执行任务。 本文介绍如何使用警报来配置和运行 Runbook。
+可以使用 [Azure Monitor](../azure-monitor/overview.md) 来监视 Azure 中大多数服务的基本级别指标和日志。 可以使用[操作组](../azure-monitor/alerts/action-groups.md)或经典警报调用 Azure 自动化 Runbook，以便基于警报自动执行任务。 本文介绍如何使用警报来配置和运行 Runbook。
 
 ## <a name="alert-types"></a>警报类型
 
@@ -25,15 +25,15 @@ ms.locfileid: "99054240"
 * 近实时指标警报
 
 > [!NOTE]
-> 常见的警报架构会在 Azure 中标准化警报通知的使用体验。 如今，Azure 中的三种警报类型（指标、日志和活动日志）都已有自己的电子邮件模板、Webhook 架构等。若要了解详细信息，请参阅[常见警报架构](../azure-monitor/platform/alerts-common-schema.md)
+> 常见的警报架构会在 Azure 中标准化警报通知的使用体验。 如今，Azure 中的三种警报类型（指标、日志和活动日志）都已有自己的电子邮件模板、Webhook 架构等。若要了解详细信息，请参阅[常见警报架构](../azure-monitor/alerts/alerts-common-schema.md)
 
 当警报调用 Runbook 时，实际调用是对 Webhook 的 HTTP POST 请求。 该 POST 请求的正文包含一个 JSON 格式的对象，该对象包含与警报相关的有用属性。 下表列出了每种警报类型的有效负载架构的相应链接：
 
 |警报  |说明|负载架构  |
 |---------|---------|---------|
-|[常见警报](../azure-monitor/platform/alerts-common-schema.md)|常见警报架构，用于在目前的 Azure 中标准化警报通知的使用体验。|常见警报有效负载架构|
-|[活动日志警报](../azure-monitor/platform/activity-log-alerts.md)    |当 Azure 活动日志中的任何新事件符合特定条件时，就会发送通知。 例如，当 myProductionResourceGroup 中出现 `Delete VM` 操作或出现状态为 Active 的新 Azure 服务运行状况事件时。| [活动日志警报有效负载架构](../azure-monitor/platform/activity-log-alerts-webhook.md)        |
-|[准实时指标警报](../azure-monitor/platform/alerts-metric-near-real-time.md)    |当一个或多个平台级指标满足指定条件时，就会以快于指标警报的速度发送通知。 例如，当 VM 的“CPU 百分比”大于 90 并且过去 5 分钟“网络传入”大于 500 MB 时。 | [准实时指标警报有效负载架构](../azure-monitor/platform/alerts-webhooks.md#payload-schema)          |
+|[常见警报](../azure-monitor/alerts/alerts-common-schema.md)|常见警报架构，用于在目前的 Azure 中标准化警报通知的使用体验。|常见警报有效负载架构|
+|[活动日志警报](../azure-monitor/alerts/activity-log-alerts.md)    |当 Azure 活动日志中的任何新事件符合特定条件时，就会发送通知。 例如，当 myProductionResourceGroup 中出现 `Delete VM` 操作或出现状态为 Active 的新 Azure 服务运行状况事件时。| [活动日志警报有效负载架构](../azure-monitor/alerts/activity-log-alerts-webhook.md)        |
+|[准实时指标警报](../azure-monitor/alerts/alerts-metric-near-real-time.md)    |当一个或多个平台级指标满足指定条件时，就会以快于指标警报的速度发送通知。 例如，当 VM 的“CPU 百分比”大于 90 并且过去 5 分钟“网络传入”大于 500 MB 时。 | [准实时指标警报有效负载架构](../azure-monitor/alerts/alerts-webhooks.md#payload-schema)          |
 
 由于每种警报提供的数据不同，因此需要以不同的方式处理每种警报。 下一部分将介绍如何创建 Runbook 来处理不同类型的警报。
 
@@ -185,7 +185,7 @@ ms.locfileid: "99054240"
 
     ![“添加操作组”页](./media/automation-create-alert-triggered-runbook/add-action-group.png)
 
-    可以在创建的[活动日志警报](../azure-monitor/platform/activity-log-alerts.md)和[准实时警报](../azure-monitor/platform/alerts-overview.md)中使用此操作组。
+    可以在创建的[活动日志警报](../azure-monitor/alerts/activity-log-alerts.md)和[准实时警报](../azure-monitor/alerts/alerts-overview.md)中使用此操作组。
 
 1. 在“警报详细信息”下，添加警报规则名称和说明，然后单击“创建警报规则” 。
 
@@ -193,6 +193,6 @@ ms.locfileid: "99054240"
 
 * 若要使用 Webhook 启动 runbook，请参阅 [从 Webhook 启动 runbook](automation-webhooks.md)。
 * 如需了解启动 runbook 的各种方式，请参阅[启动 runbook](./start-runbooks.md)。
-* 若要创建活动日志警报，请参阅[创建活动日志警报](../azure-monitor/platform/activity-log-alerts.md)。
-* 若要了解如何创建准实时警报，请参阅[在 Azure 门户中创建警报规则](../azure-monitor/platform/alerts-metric.md?toc=/azure/azure-monitor/toc.json)。
+* 若要创建活动日志警报，请参阅[创建活动日志警报](../azure-monitor/alerts/activity-log-alerts.md)。
+* 若要了解如何创建准实时警报，请参阅[在 Azure 门户中创建警报规则](../azure-monitor/alerts/alerts-metric.md?toc=/azure/azure-monitor/toc.json)。
 * 有关 PowerShell cmdlet 参考，请参阅 [Az.Automation](/powershell/module/az.automation)。

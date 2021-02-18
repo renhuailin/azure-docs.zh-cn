@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 0cece3f531d50356fdefb81a598109d7c067c5ed
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 39950b4d62b7dbfacba94f5ba3c5de50bbb974b3
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98805951"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653667"
 ---
 # <a name="routes-in-azure-static-web-apps-preview"></a>Azure 静态 Web 应用预览中的路由
 
@@ -77,7 +77,7 @@ routes.json 文件必须存在于应用生成工件文件夹的根目录中。 �
 }
 ```
 
-- 你可以完全控制角色名称；不存在角色必须遵循的主列表。
+- 你可以完全控制角色名称;没有您的角色必须遵循的列表。
 - 单个用户通过[邀请](authentication-authorization.md)关联到角色。
 
 ## <a name="wildcards"></a>通配符

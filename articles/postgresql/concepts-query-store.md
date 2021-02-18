@@ -6,12 +6,12 @@ ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/01/2020
-ms.openlocfilehash: 5dff78989eef17f95d8b8dd108baafc53a3f761a
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 1779df1c5f9baf2aa46ff809ecae9ec5e3cd7adb
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97657016"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581569"
 ---
 # <a name="monitor-performance-with-the-query-store"></a>使用查询存储监视性能
 
@@ -149,7 +149,7 @@ SELECT * FROM query_store.pgms_wait_sampling_view;
 ### <a name="query_storequery_texts_view"></a>query_store.query_texts_view
 此视图返回查询存储中的查询文本数据。 每个不同的 query_text 都有一行。
 
-| **名称** | **类型** | **说明** |
+| **名称** | 类型 | **说明** |
 |--|--|--|
 | query_text_id | bigint | query_texts 表的 ID |
 | query_sql_text | Varchar(10000) | 代表语句的文本。 具有相同结构的不同查询聚集在一起；此文本是群集中第一个查询的文本。 |
@@ -178,7 +178,7 @@ Query_store.staging_data_reset() 返回无效值
 
 
 ## <a name="azure-monitor"></a>Azure Monitor
-Azure Database for PostgreSQL 集成了 [Azure Monitor 诊断设置](../azure-monitor/platform/diagnostic-settings.md)。 使用诊断设置可将 JSON 格式的 Postgres 日志发送到 [Azure Monitor 日志](../azure-monitor/log-query/log-query-overview.md)用于分析和警报、发送到事件中心进行流式处理，或者发送到 Azure 存储进行存档。
+Azure Database for PostgreSQL 集成了 [Azure Monitor 诊断设置](../azure-monitor/essentials/diagnostic-settings.md)。 使用诊断设置可将 JSON 格式的 Postgres 日志发送到 [Azure Monitor 日志](../azure-monitor/logs/log-query-overview.md)用于分析和警报、发送到事件中心进行流式处理，或者发送到 Azure 存储进行存档。
 
 >[!IMPORTANT]
 > 此诊断功能仅适用于“常规用途”和“内存优化”定价层。
@@ -195,7 +195,7 @@ Azure Database for PostgreSQL 集成了 [Azure Monitor 诊断设置](../azure-mo
 5. 选择日志类型“QueryStoreRuntimeStatistics”和“QueryStoreWaitStatistics”。
 6. 保存设置。
 
-若要使用 PowerShell、CLI 或 REST API 启用此设置，请访问[诊断设置](../azure-monitor/platform/diagnostic-settings.md)一文。
+若要使用 PowerShell、CLI 或 REST API 启用此设置，请访问[诊断设置](../azure-monitor/essentials/diagnostic-settings.md)一文。
 
 ### <a name="json-log-format"></a>JSON 日志格式
 下表描述了两种日志类型的字段。 包括的字段以及它们的出现顺序可能有所不同，具体取决于你选择的输出终结点。

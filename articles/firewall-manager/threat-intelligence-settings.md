@@ -1,18 +1,18 @@
 ---
 title: Azure 防火墙威胁情报配置
-description: 了解如何为 Azure 防火墙策略配置基于威胁智能的筛选，以发出警报，并拒绝从和到已知恶意 IP 地址和域的流量。
+description: 了解如何为 Azure 防火墙策略配置基于威胁情报的筛选，以针对来自和发往已知恶意 IP 地址和域的流量发出警报并将其拒绝。
 services: firewall-manager
 author: vhorne
 ms.service: firewall-manager
 ms.topic: article
 ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: a663c5f3bcf3492c4a9bc74fe93c6ed6a86137ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7ede1c917bb44dd31aa59855a0b7c83eb478700a
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90530635"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100651709"
 ---
 # <a name="azure-firewall-threat-intelligence-configuration"></a>Azure 防火墙威胁情报配置
 
@@ -22,23 +22,35 @@ ms.locfileid: "90530635"
 
 :::image type="content" source="media/threat-intelligence-settings/threat-intelligence-policy.png" alt-text="威胁情报策略":::
 
-## <a name="threat-intelligence-mode"></a>威胁情报模式
+## <a name="threat-intelligence-mode"></a>威胁智能模式
 
-可以选择在触发规则时仅记录警报，也可以选择“发出警报并拒绝”模式。
+可以在下表所述的三种模式之一中配置威胁情报。 默认情况下，基于威胁情报的筛选将在警报模式下启用。
 
-默认情况下，基于威胁情报的筛选将在警报模式下启用。
+|“模式” |说明  |
+|---------|---------|
+|`Off`     | 没有为防火墙启用威胁智能功能。 |
+|`Alert only`     | 你将收到有关通过防火墙传入或传出已知恶意 IP 地址和域的流量的高可信度警报。 |
+|`Alert and deny`     | 流量被阻止，并且在检测到试图通过防火墙进入或收到已知恶意 IP 地址和域的流量时，会收到高可信度警报。 |
 
-## <a name="allowed-list-addresses"></a>允许列表地址
+> [!NOTE]
+> 威胁智能模式从父策略继承到子策略。 子策略的配置必须与父策略的模式相同或更严格。
 
-可以配置允许的 IP 地址列表，使威胁情报不会筛选任何指定的地址、范围或子网。
+## <a name="allowlist-addresses"></a>允许列表地址
 
+威胁情报可能会触发误报，并会阻止实际有效的流量。 可以配置允许的 IP 地址列表，使威胁情报不会筛选任何指定的地址、范围或子网。  
 
+![允许列表地址](media/threat-intelligence-settings/allow-list.png)
+
+可以通过上传 CSV 文件，一次性更新包含多个条目的允许列表。 CSV 文件只能包含 IP 地址和范围。 此文件不能包含标题。
+
+> [!NOTE]
+> 威胁智能允许列表地址将从父策略继承到子策略。 添加到父策略的任何 IP 地址或范围也适用于所有子策略。
 
 ## <a name="logs"></a>日志
 
-以下日志摘录显示了一个触发的规则：
+以下日志摘录显示了一个触发的规则，该规则用于指向恶意站点的出站流量：
 
-```
+```json
 {
     "category": "AzureFirewallNetworkRule",
     "time": "2018-04-16T23:45:04.8295030Z",

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/16/2018
-ms.openlocfilehash: 7e3b0f92770b48ef5163846e67940efe80fb669a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e38214174fd4e3aa6859f05fd24737d9e9d1f963
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90085342"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587227"
 ---
 # <a name="monitor-surface-hubs-with-azure-monitor-to-track-their-health"></a>使用 Azure Monitor 监视 Surface Hub 以跟踪其运行状况
 
@@ -26,7 +26,7 @@ ms.locfileid: "90085342"
 
 * [Log Analytics 订阅](https://azure.microsoft.com/pricing/details/log-analytics/)级别，用于支持要监视的设备数。 根据注册设备的数量以及处理的数据量，Log Analytics 定价会有所不同。 在规划 Surface Hub 的部署时需要考虑这一点。
 
-添加一个现有的 Log Analytics 工作区，或新建一个工作区。 有关使用这两种方法的详细说明，请参见[在 Azure 门户中创建 Log Analytics 工作区](../learn/quick-create-workspace.md)。 Log Analytics 工作区配置完成后，可通过两种方式注册 Surface Hub 设备：
+添加一个现有的 Log Analytics 工作区，或新建一个工作区。 有关使用这两种方法的详细说明，请参见[在 Azure 门户中创建 Log Analytics 工作区](../logs/quick-create-workspace.md)。 Log Analytics 工作区配置完成后，可通过两种方式注册 Surface Hub 设备：
 
 * 通过 Intune 自动注册
 * 通过 Surface Hub 设备上的“**设置**”手动注册。
@@ -74,8 +74,8 @@ Intune 然后会在 Log Analytics 工作区中注册设备，从而将 Log Analy
 
    ![Surface Hub 仪表板](./media/surface-hubs/surface-hub-dashboard.png)
 
-可以根据现有或自定义的日志搜索创建[警报](../platform/alerts-overview.md)。 通过使用 Azure Monitor 从 Surface Hub 收集的数据，可以按照为设备定义的条件搜索问题和警报。
+可以根据现有或自定义的日志搜索创建[警报](../alerts/alerts-overview.md)。 通过使用 Azure Monitor 从 Surface Hub 收集的数据，可以按照为设备定义的条件搜索问题和警报。
 
 ## <a name="next-steps"></a>后续步骤
-* 使用 [Azure Monitor 中的日志查询](../log-query/log-query-overview.md)查看详细的 Surface Hub 数据。
-* 创建[警报](../platform/alerts-overview.md)，以便在 Surface Hub 出现问题时通知你。
+* 使用 [Azure Monitor 中的日志查询](../logs/log-query-overview.md)查看详细的 Surface Hub 数据。
+* 创建[警报](../alerts/alerts-overview.md)，以便在 Surface Hub 出现问题时通知你。

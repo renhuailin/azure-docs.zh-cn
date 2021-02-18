@@ -3,12 +3,12 @@ title: 指南和最佳做法
 description: 了解将云和本地工作负载备份到云的最佳做法和指南
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: 7b65556d8dd9b5b12e8da25055f6e39732c83afd
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 0b3f70061be4d158ae717a97779d6ab0445f5858
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99258755"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593337"
 ---
 # <a name="backup-cloud-and-on-premises-workloads-to-cloud"></a>将云和本地工作负载备份到云
 
@@ -238,9 +238,9 @@ Azure 备份服务的功能让你可以灵活地有效管理你的成本，并�
   * 确定不同粒度级别的关键趋势。
 
 * 此外，
-  * 你可以将数据（例如作业、策略等）发送到 Log Analytics 工作区。 这将启用 Azure Monitor 日志的功能以使数据可与 Azure Monitor 收集的其他监视数据进行关联、将多个 Azure 订阅和租户中的日志条目合并到一个位置以便一起分析、使用日志查询执行复杂的分析，并且获得有关日志条目的深入见解。 [在此处了解更多信息](../azure-monitor/platform/activity-log.md#send-to-log-analytics-workspace)。
-  * 可以向事件中心发送数据，以向 Azure 外部发送条目，例如，发送到第三方 SIEM（安全信息和事件管理）或其他日志分析解决方案。 [在此处了解更多信息](../azure-monitor/platform/activity-log.md#send-to-azure-event-hubs)。
-  * 如果要将日志数据保留 90 天以上以进行审核、静态分析或备份，可以将数据发送到 Azure 存储帐户。 如果只需将事件保留 90 天或更短的时间，则无需设置存档到存储帐户，因为活动日志事件保留在 Azure 平台中的时间是 90 天。 [了解详细信息](../azure-monitor/platform/activity-log.md#send-to--azure-storage)。
+  * 你可以将数据（例如作业、策略等）发送到 Log Analytics 工作区。 这将启用 Azure Monitor 日志的功能以使数据可与 Azure Monitor 收集的其他监视数据进行关联、将多个 Azure 订阅和租户中的日志条目合并到一个位置以便一起分析、使用日志查询执行复杂的分析，并且获得有关日志条目的深入见解。 [在此处了解更多信息](../azure-monitor/essentials/activity-log.md#send-to-log-analytics-workspace)。
+  * 可以向事件中心发送数据，以向 Azure 外部发送条目，例如，发送到第三方 SIEM（安全信息和事件管理）或其他日志分析解决方案。 [在此处了解更多信息](../azure-monitor/essentials/activity-log.md#send-to-azure-event-hubs)。
+  * 如果要将日志数据保留 90 天以上以进行审核、静态分析或备份，可以将数据发送到 Azure 存储帐户。 如果只需将事件保留 90 天或更短的时间，则无需设置存档到存储帐户，因为活动日志事件保留在 Azure 平台中的时间是 90 天。 [了解详细信息](../azure-monitor/essentials/activity-log.md#send-to--azure-storage)。
 
 ### <a name="alerting"></a>警报
 

@@ -3,12 +3,12 @@ title: 从 Application Insights 连续导出遥测数据 | Microsoft Docs
 description: 将诊断和使用情况数据导出到 Microsoft Azure 中的存储，然后从中下载这些数据。
 ms.topic: conceptual
 ms.date: 05/26/2020
-ms.openlocfilehash: a6f636ce9fe30c666f08935d5830eb0c12e6cb5e
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 23405faeb7d2151ce0f6492c0d522e0a7f9b84a8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97674131"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100584237"
 ---
 # <a name="export-telemetry-from-application-insights"></a>从 Application Insights 导出遥测数据
 想要将遥测数据保留超过标准保留期限？ 或者要以某种专业方式处理这些数据？ 连续导出很适合此目的。 可以使用 JSON 格式将 Application Insights 门户中显示的事件导出到 Microsoft Azure 中的存储。 可以从该存储中下载这些数据，并编写所需的代码来处理这些数据。  
@@ -21,7 +21,7 @@ ms.locfileid: "97674131"
 
 * 通过“指标”或“搜索”选项卡顶部的“导出”按钮，可将表格和图表发送到 Excel 电子表格。
 
-* [Analytics](../log-query/log-query-overview.md) 提供功能强大的遥测查询语言。 它还可以导出结果。
+* [Analytics](../logs/log-query-overview.md) 提供功能强大的遥测查询语言。 它还可以导出结果。
 * 如果想要[在 Power BI 中浏览数据](./export-power-bi.md)，无需使用连续导出也可以做到。
 * 使用[数据访问 REST API](https://dev.applicationinsights.io/) 能够以编程方式访问遥测数据。
 * 也可以访问“[通过 Powershell 连续导出](/powershell/module/az.applicationinsights/new-azapplicationinsightscontinuousexport)”设置。
@@ -39,7 +39,7 @@ ms.locfileid: "97674131"
 ## <a name="create-a-continuous-export"></a><a name="setup"></a> 创建连续导出
 
 > [!NOTE]
-> 应用程序每日导出的数据不能超过3TB。 如果导出的3TB 超过个，将禁用导出。 若要在没有限制的情况下导出，请使用 [基于诊断设置的导出](#diagnostic-settings-based-export)。
+> 应用程序每天导出的数据不能超过 3TB。 如果每天导出的数据超过 3TB，则导出将被禁用。 若要无限制地导出，请使用[基于诊断设置的导出](#diagnostic-settings-based-export)。
 
 1. 在应用左侧配置下的 Application Insights 资源中，打开“连续导出”，并选择“添加”：
 
@@ -213,16 +213,16 @@ private IEnumerable<T> DeserializeMany<T>(string folderName)
 
 ## <a name="diagnostic-settings-based-export"></a>基于诊断设置的导出
 
-基于诊断设置的导出使用的架构不同于连续导出。 它还支持连续导出的功能，但不像这样：
+基于诊断设置的导出使用与连续导出不同的架构。 它还支持连续导出不支持的功能：
 
 * 具有 vnet、防火墙和专用链接的 Azure 存储帐户。
 * 导出到事件中心。
 
-迁移到基于诊断设置的导出：
+若要迁移到基于诊断设置的导出，请执行以下操作：
 
 1. 禁用当前连续导出。
-2. [将应用程序迁移到基于工作区的](convert-classic-resource.md)。
-3. [启用诊断设置导出](create-workspace-resource.md#export-telemetry)。 选择 "诊断设置" > 从 Application Insights 资源中 **添加 "诊断设置** "。
+2. [将应用程序迁移到基于工作区](convert-classic-resource.md)。
+3. [启用诊断设置导出](create-workspace-resource.md#export-telemetry)。 从 Application Insights 资源中选择“诊断设置”>“添加诊断设置”。
 
 <!--Link references-->
 

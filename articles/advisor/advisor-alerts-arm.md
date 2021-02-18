@@ -4,12 +4,12 @@ description: 了解如何使用 Azure 资源管理器模板（ARM 模板）针�
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 06/29/2020
-ms.openlocfilehash: f03bf6eaf4f3045e00fc67efe6faa9f53d962089
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 7b10ad06e5397ab733987373a3bd18de981c8c97
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91629890"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590065"
 ---
 # <a name="quickstart-create-azure-advisor-alerts-on-new-recommendations-using-an-arm-template"></a>快速入门：使用 ARM 模板为创建针对新建议的 Azure 顾问警报
 
@@ -17,7 +17,7 @@ ms.locfileid: "91629890"
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-当 Azure 顾问检测到针对某项资源的新建议时，将在 [Azure 活动日志](../azure-monitor/platform/platform-logs-overview.md)中存储一个事件。 可以使用特定于建议的警报创建体验，为来自 Azure 顾问的这些事件设置警报。 可以选择订阅和资源组（可选）来指定想要接收其警报的资源。
+当 Azure 顾问检测到针对某项资源的新建议时，将在 [Azure 活动日志](../azure-monitor/essentials/platform-logs-overview.md)中存储一个事件。 可以使用特定于建议的警报创建体验，为来自 Azure 顾问的这些事件设置警报。 可以选择订阅和资源组（可选）来指定想要接收其警报的资源。
 
 还可以使用以下属性来确定建议类型：
 
@@ -30,7 +30,7 @@ ms.locfileid: "91629890"
 - 选择现有操作组
 - 创建新的操作组
 
-若要了解有关操作组的详细信息，请参阅[创建和管理操作组](../azure-monitor/platform/action-groups.md)。
+若要了解有关操作组的详细信息，请参阅[创建和管理操作组](../azure-monitor/alerts/action-groups.md)。
 
 > [!NOTE]
 > 顾问警报目前仅适用于高可用性、性能和成本建议。 不支持安全建议。
@@ -203,5 +203,5 @@ Remove-AzResourceGroup -Name my-resource-group
 
 ## <a name="next-steps"></a>后续步骤
 
-- 获取[活动日志警报概述](../azure-monitor/platform/alerts-overview.md)，了解如何接收警报。
-- 详细了解[操作组](../azure-monitor/platform/action-groups.md)。
+- 获取[活动日志警报概述](../azure-monitor/alerts/alerts-overview.md)，了解如何接收警报。
+- 详细了解[操作组](../azure-monitor/alerts/action-groups.md)。

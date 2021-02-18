@@ -9,16 +9,16 @@ ms.reviewer: dseven
 ms.author: cavoeg
 author: CaitlinV39
 ms.date: 02/03/2021
-ms.openlocfilehash: 8dc87ae5b296f322d9d5a4d59c0a8c9b1c50d5da
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 220618f93d23ec71ee3246e8bd68bfd724860696
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99575427"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581967"
 ---
 # <a name="enable-diagnostic-logging-in-azure-api-for-fhir"></a>在 Azure API for FHIR 中启用诊断日志记录
 
-本文介绍如何在 Azure API for FHIR 中启用诊断日志记录，以及如何查看这些日志的一些示例查询。 对于必须符合法规与管制要求的任何医疗保健服务（例如 HIPAA）而言，访问诊断日志是必不可少的。 启用诊断日志的 Azure API for FHIR 中的功能是 Azure 门户中的 [**诊断设置**](../azure-monitor/platform/diagnostic-settings.md) 。 
+本文介绍如何在 Azure API for FHIR 中启用诊断日志记录，以及如何查看这些日志的一些示例查询。 对于必须符合法规与管制要求的任何医疗保健服务（例如 HIPAA）而言，访问诊断日志是必不可少的。 启用诊断日志的 Azure API for FHIR 中的功能是 Azure 门户中的 [**诊断设置**](../azure-monitor/essentials/diagnostic-settings.md) 。 
 
 ## <a name="enable-audit-logs"></a>启用审核日志
 1. 若要在 Azure API for FHIR 中启用诊断日志记录，请在 Azure 门户中选择 Azure API for FHIR 服务 
@@ -45,12 +45,12 @@ ms.locfileid: "99575427"
 > [!Note] 
 > 最多可能需要15分钟才能在 Log Analytics 中显示第一个日志。  
  
-有关如何使用诊断日志的详细信息，请参阅 [Azure 资源日志文档](../azure-monitor/platform/platform-logs-overview.md)
+有关如何使用诊断日志的详细信息，请参阅 [Azure 资源日志文档](../azure-monitor/essentials/platform-logs-overview.md)
 
 ## <a name="audit-log-details"></a>审核日志详细信息
 目前，Azure API for FHIR 服务会在审核日志中返回以下字段： 
 
-|字段名称  |类型  |说明  |
+|字段名称  |类型  |注释  |
 |---------|---------|---------|
 |CallerIdentity|动态|包含标识信息的泛型属性包
 |CallerIdentityIssuer|字符串|颁发者 
@@ -97,7 +97,7 @@ MicrosoftHealthcareApisAuditLogs
 | where ResultType == "Failed" 
 ```
 
-## <a name="conclusion"></a>结论 
+## <a name="conclusion"></a>结束语 
 有权访问诊断日志对于监视服务和提供相容性报告非常重要。 使用用于 FHIR 的 Azure API 可以通过诊断日志执行这些操作。 
  
 FHIR 是 HL7 的注册商标，经 HL7 许可使用。
