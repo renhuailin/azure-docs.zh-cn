@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 2773a76ed1166a26ebc12b97550876eaa66bad14
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 12e942e40b7fe4df6bbe8e5b4d683111a2de2a61
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98197313"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575332"
 ---
 # <a name="azure-security-baseline-for-azure-data-box"></a>适用于 Azure Data Box 的 Azure 安全基线
 
@@ -467,7 +467,7 @@ Azure Data Box 为静态数据实现 AES 256 位加密。此外，Azure Data Box
 
 **指南**：将 Azure Monitor 与 Azure 活动日志结合使用，以创建 Azure Data Box 以及其他关键或相关资源发生更改的警报。
 
-* [如何针对 Azure 活动日志事件创建警报](../azure-monitor/platform/alerts-activity-log.md)
+* [如何针对 Azure 活动日志事件创建警报](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure 安全中心监视**：是
 
@@ -829,7 +829,7 @@ Azure Data Box 为静态数据实现 AES 256 位加密。此外，Azure Data Box
 
 **指导**：安全中心为每条警报分配严重性，以帮助你优先处理应该最先调查的警报。 严重性取决于安全中心在发出警报时所依据的检测结果和分析结果的置信度，以及导致发出警报的活动的恶意企图的置信度。
 
-此外，请用标记明确标记订阅（例如 生产、非生产）并创建命名系统来对 Azure 资源进行明确标识和分类，特别是处理敏感数据的资源。 你的责任是根据发生事件的 Azure 资源和环境的关键性确定修正警报的优先级。
+此外，请明确标记订阅（例如 生产、非生产）并创建命名系统来对 Azure 资源进行明确标识和分类，特别是处理敏感数据的资源。 你的责任是根据发生事件的 Azure 资源和环境的关键性确定修正警报的优先级。
 
 * [Azure 安全中心中的安全警报](../security-center/security-center-alerts-overview.md)
 

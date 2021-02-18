@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 10/19/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure certificates for Azure Stack Edge Pro R so I can use it to transfer data to Azure.
-ms.openlocfilehash: fad3e5dcb0ecda82f3fb35cadf1719a62c99bd97
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: abea192f209b968c6842e985620c067c93990687
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96463553"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100548142"
 ---
 # <a name="tutorial-configure-certificates-for-your-azure-stack-edge-pro-r"></a>教程：为 Azure Stack Edge Pro R 配置证书
 
@@ -37,7 +37,7 @@ ms.locfileid: "96463553"
 
 * 已按照[安装 Azure Stack Edge Pro R](azure-stack-edge-pro-r-deploy-install.md) 中详述的内容安装物理设备。
 * 如果你计划使用自己的证书：
-    - 应该使用适当的格式来准备证书，包括签名链证书。 有关证书的详细信息，请参阅[管理证书](azure-stack-edge-j-series-manage-certificates.md)
+    - 应该使用适当的格式来准备证书，包括签名链证书。 有关证书的详细信息，请参阅[管理证书](azure-stack-edge-gpu-manage-certificates.md)
 
 
 
