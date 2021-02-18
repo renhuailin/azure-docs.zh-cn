@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 02/17/2020
-ms.openlocfilehash: d577e96c3ae95103a412b96eba3e1293142f1acd
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 51301bd38bf0700ce42ef33a47b9e763da8d4ed6
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98932776"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595298"
 ---
 # <a name="analyze-logs-for-apache-kafka-on-hdinsight"></a>分析 HDInsight 上 Apache Kafka 的日志
 
@@ -34,7 +34,7 @@ ms.locfileid: "98932776"
 
 对于所有 HDInsight 群集，启用适用于 HDInsight 的 Azure Monitor 日志的步骤都是相同的。 通过访问以下链接来了解如何创建和配置所需的服务：
 
-1. 创建 Log Analytics 工作区。 有关详细信息，请参阅 [Azure Monitor 中的日志](../../azure-monitor/platform/data-platform-logs.md)文档。
+1. 创建 Log Analytics 工作区。 有关详细信息，请参阅 [Azure Monitor 中的日志](../../azure-monitor/logs/data-platform-logs.md)文档。
 
 2. 创建 Kafka on HDInsight 群集。 有关详细信息，请参阅 [Apache Kafka on HDInsight 入门](apache-kafka-get-started.md)文档。
 

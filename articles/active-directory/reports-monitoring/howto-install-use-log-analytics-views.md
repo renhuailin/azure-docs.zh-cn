@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d9fc1592681429998f5082fbadcd45fa068f130e
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 86ad698793d562f93f9972903ca21e50c209c79c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96180466"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100580004"
 ---
 # <a name="install-and-use-the-log-analytics-views-for-azure-active-directory"></a>安装和使用用于 Azure Active Directory 的日志分析视图
 
@@ -35,7 +35,7 @@ Azure Active Directory 日志分析视图可以帮助你分析和搜索 Azure AD
 
 若要使用日志分析视图，需要执行以下操作：
 
-* 在 Azure 订阅中创建 Log Analytics 工作区。 了解如何[创建 Log Analytics 工作区](../../azure-monitor/learn/quick-create-workspace.md)。
+* 在 Azure 订阅中创建 Log Analytics 工作区。 了解如何[创建 Log Analytics 工作区](../../azure-monitor/logs/quick-create-workspace.md)。
 * 首先，完成[将 Azure AD 活动日志路由到 Log Analytics 工作区](howto-integrate-activity-logs-with-log-analytics.md)的相关步骤。
 * 将视图从 [GitHub 存储库](https://aka.ms/AADLogAnalyticsviews)下载到本地计算机。
 
@@ -67,11 +67,11 @@ Azure Active Directory 日志分析视图可以帮助你分析和搜索 Azure AD
 
     ![创建规则](./media/howto-install-use-log-analytics-views/create-rule.png)
 
-6. 选择要发出警报的操作组。 一般情况下，这可能是你想要通过电子邮件或短信通知的团队，也可以是使用 webhook、runbook、函数、逻辑应用或外部 ITSM 解决方案的自动执行的任务。 了解如何[在 Azure 门户中创建和管理操作组](../../azure-monitor/platform/action-groups.md)。
+6. 选择要发出警报的操作组。 一般情况下，这可能是你想要通过电子邮件或短信通知的团队，也可以是使用 webhook、runbook、函数、逻辑应用或外部 ITSM 解决方案的自动执行的任务。 了解如何[在 Azure 门户中创建和管理操作组](../../azure-monitor/alerts/action-groups.md)。
 
 7. 选择“创建警报规则”可以创建警报。 现在，每当出现登录错误时都会发出警报。
 
 ## <a name="next-steps"></a>后续步骤
 
 * [如何使用 Azure Monitor 日志分析活动日志](howto-analyze-activity-logs-log-analytics.md)
-* [Azure 门户中的 Azure Monitor 日志入门](../../azure-monitor/log-query/log-analytics-tutorial.md)
+* [Azure 门户中的 Azure Monitor 日志入门](../../azure-monitor/logs/log-analytics-tutorial.md)

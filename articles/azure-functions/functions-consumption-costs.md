@@ -3,12 +3,12 @@ title: 估算 Azure Functions 中的消耗计划成本
 description: 了解如何更好地估算在 Azure 的消耗计划中运行函数应用时可能产生的成本。
 ms.date: 9/20/2019
 ms.topic: conceptual
-ms.openlocfilehash: 430804d478df718f51ae1da9adb6693f597157a9
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 4967e0ff79a638891da4f784cf2f5f1ca4ddfe51
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97934877"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100578560"
 ---
 # <a name="estimating-consumption-plan-costs"></a>估算消耗计划成本
 
@@ -67,11 +67,11 @@ Durable Functions 也可以在消耗计划中运行。 若要详细了解使用 
 
 ### <a name="function-app-level-metrics"></a>函数应用级指标
 
-若要更好地了解函数对成本的影响，可以使用 Azure Monitor 查看函数应用当前生成的成本相关指标。 可以使用 [Azure 门户]中的 [Azure Monitor 指标资源管理器](../azure-monitor/platform/metrics-getting-started.md)或使用 REST API 来获取此数据。
+若要更好地了解函数对成本的影响，可以使用 Azure Monitor 查看函数应用当前生成的成本相关指标。 可以使用 [Azure 门户]中的 [Azure Monitor 指标资源管理器](../azure-monitor/essentials/metrics-getting-started.md)或使用 REST API 来获取此数据。
 
 #### <a name="monitor-metrics-explorer"></a>Monitor 指标资源管理器
 
-使用 [Azure Monitor 指标资源管理器](../azure-monitor/platform/metrics-getting-started.md)可以图形格式查看消耗计划函数应用的成本相关数据。 
+使用 [Azure Monitor 指标资源管理器](../azure-monitor/essentials/metrics-getting-started.md)可以图形格式查看消耗计划函数应用的成本相关数据。 
 
 1. 在 [Azure 门户]顶部的“搜索服务、资源和文档”中搜索 `monitor`，然后选择“服务”下的“Monitor”。
 

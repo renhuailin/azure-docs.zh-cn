@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 4f28665998dcac9f641d4142a0dea60707fb02e9
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 579baa611db47215c8ada554328d254ce99f17cf
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99805354"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579754"
 ---
 # <a name="azure-security-baseline-for-azure-application-gateway"></a>适用于 Azure 应用程序网关的 Azure 安全基线
 
@@ -188,9 +188,9 @@ Azure 应用程序网关的 Azure 安全基线包含可帮助你改善部署安�
 
 **指导**：使用 Azure 活动日志监视网络资源配置，并检测与 Azure 应用程序网关部署相关的网络设置和资源的更改。 在 Azure Monitor 中创建当关键网络设置或资源发生更改时触发的警报。
 
-* [如何查看和检索 Azure 活动日志事件](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [如何查看和检索 Azure 活动日志事件](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-* [如何在 Azure Monitor 中创建警报](../azure-monitor/platform/alerts-activity-log.md)
+* [如何在 Azure Monitor 中创建警报](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -216,7 +216,7 @@ Azure 应用程序网关的 Azure 安全基线包含可帮助你改善部署安�
 
 Azure 应用程序网关还提供与 Azure Application Insights 的内置集成。 Application Insights 可收集日志、性能和错误数据。 Application Insights 可自动检测性能异常，并且包含了强大的分析工具来帮助你诊断问题并了解 Web 应用的使用情况。 可以启用连续导出，将遥测从 Application Insights 导出到一个集中位置，以使数据保留的时间长于标准保持期。
 
-* [如何启用 Azure 活动日志的诊断设置](../azure-monitor/platform/activity-log.md)
+* [如何启用 Azure 活动日志的诊断设置](../azure-monitor/essentials/activity-log.md)
 
 * [如何 Azure 应用程序网关启用诊断设置](./application-gateway-diagnostics.md)
 
@@ -236,7 +236,7 @@ Azure 应用程序网关还提供与 Azure Application Insights 的内置集成�
 
 Azure 应用程序网关还提供与 Azure Application Insights 的内置集成。 Application Insights 可收集日志、性能和错误数据。 Application Insights 可自动检测性能异常，并且包含了强大的分析工具来帮助你诊断问题并了解 Web 应用的使用情况。 可以启用连续导出，将遥测从 Application Insights 导出到一个集中位置，以使数据保留的时间长于标准保持期。
 
-* [如何启用 Azure 活动日志的诊断设置](../azure-monitor/platform/activity-log.md)
+* [如何启用 Azure 活动日志的诊断设置](../azure-monitor/essentials/activity-log.md)
 
 * [如何 Azure 应用程序网关启用诊断设置](./application-gateway-diagnostics.md)
 
@@ -260,7 +260,7 @@ Azure 应用程序网关还提供与 Azure Application Insights 的内置集成�
 
 **指导**：在 Azure Monitor 中，根据组织的合规性规章设置 Log Analytics 工作区保留期。 使用 Azure 存储帐户进行长期/存档存储。
 
-* [如何为 Log Analytics 工作区设置日志保留参数](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+* [如何为 Log Analytics 工作区设置日志保留参数](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -274,7 +274,7 @@ Azure 应用程序网关还提供与 Azure Application Insights 的内置集成�
 
 （可选）可以启用将数据加入 Azure Sentinel 或第三方 SIEM 的功能。
 
-* [如何启用 Azure 活动日志的诊断设置](../azure-monitor/platform/activity-log.md)
+* [如何启用 Azure 活动日志的诊断设置](../azure-monitor/essentials/activity-log.md)
 
 * [如何 Azure 应用程序网关启用诊断设置](./application-gateway-diagnostics.md)
 
@@ -294,13 +294,13 @@ Azure 应用程序网关还提供与 Azure Application Insights 的内置集成�
 
 * [如何部署 Azure WAF](../web-application-firewall/ag/create-waf-policy-ag.md)
 
-* [如何启用 Azure 活动日志的诊断设置](../azure-monitor/platform/activity-log.md)
+* [如何启用 Azure 活动日志的诊断设置](../azure-monitor/essentials/activity-log.md)
 
 * [如何 Azure 应用程序网关启用诊断设置](./application-gateway-diagnostics.md)
 
 * [如何使用 Azure 网络监视器](../azure-monitor/insights/network-insights-overview.md)
 
-* [如何在 Azure 中创建警报](../azure-monitor/learn/tutorial-response.md)
+* [如何在 Azure 中创建警报](../azure-monitor/alerts/tutorial-response.md)
 
 **Azure 安全中心监视**：是
 
@@ -591,7 +591,7 @@ Microsoft 会管理 Azure 应用程序网关的底层基础结构，并实现了
 
 **指导**：将 Azure Monitor 与 Azure 活动日志结合使用，以创建在生产 Azure 应用程序网关实例以及其他关键或相关资源发生更改时触发的警报。
 
-* [如何针对 Azure 活动日志事件创建警报](../azure-monitor/platform/alerts-activity-log.md)
+* [如何针对 Azure 活动日志事件创建警报](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure 安全中心监视**：是
 
@@ -713,7 +713,7 @@ Microsoft 对基础平台进行了扫描和修补。 查看 Azure 应用程序�
 
 **指导**：使用 Azure Policy 对可以在订阅中创建的资源类型施加限制。
 
-使用 Azure Resource Graph 查询/发现订阅中的资源。 确保环境中的所有 Azure 资源均已获得批准。
+使用 Azure Resource Graph 查询/发现订阅中的资源。 确保环境中存在的所有 Azure 资源已获得批准。
 
 * [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 

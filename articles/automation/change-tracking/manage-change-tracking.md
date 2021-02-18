@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 12/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: 636dbf95567f761aee19bd567b0835173ce36ccc
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: dff314f3c9fb72c565a7c2d522694d533c487895
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97093615"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572637"
 ---
 # <a name="manage-change-tracking-and-inventory"></a>管理更改跟踪和清单
 
@@ -161,13 +161,13 @@ ms.locfileid: "97093615"
 
 |查询  |说明  |
 |---------|---------|
-|`ConfigurationData`<br> &#124; `where ConfigDataType == "WindowsServices" and SvcStartupType == "Auto"`<br> &#124; `where SvcState == "Stopped"`<br> &#124; `summarize arg_max(TimeGenerated, *) by SoftwareName, Computer`         | 显示已设置为“自动”但报告为“已停止”的 Microsoft 服务的最新库存记录。 结果仅限于指定软件名称和计算机的最新记录。    |
-|`ConfigurationChange`<br> &#124; `where ConfigChangeType == "Software" and ChangeCategory == "Removed"`<br> &#124; `order by TimeGenerated desc`|显示已删除的软件的更改记录。|
+|`ConfigurationData`<br>&#124; `where ConfigDataType == "WindowsServices" and SvcStartupType == "Auto"`<br>&#124; `where SvcState == "Stopped"`<br>&#124; `summarize arg_max(TimeGenerated, *) by SoftwareName, Computer`         | 显示已设置为“自动”但报告为“已停止”的 Microsoft 服务的最新库存记录。 结果仅限于指定软件名称和计算机的最新记录。    |
+|`ConfigurationChange`<br>&#124; `where ConfigChangeType == "Software" and ChangeCategory == "Removed"`<br>&#124; `order by TimeGenerated desc`|显示已删除的软件的更改记录。|
 
 ## <a name="next-steps"></a>后续步骤
 
 * 有关作用域配置的信息，请参阅 [限制更改跟踪和清单部署范围](manage-scope-configurations.md)。
-* 如果需要搜索 Azure Monitor 日志中存储的日志，请参阅 [Azure Monitor 日志中的日志搜索](../../azure-monitor/log-query/log-query-overview.md)。
+* 如果需要搜索 Azure Monitor 日志中存储的日志，请参阅 [Azure Monitor 日志中的日志搜索](../../azure-monitor/logs/log-query-overview.md)。
 * 如果已完成部署，请参阅 [删除更改跟踪和清单](remove-feature.md)。
 * 若要从更改跟踪和清单中删除 Vm，请参阅 [从更改跟踪和清单中删除 vm](remove-vms-from-change-tracking.md)。
 * 若要排查功能错误，请参阅[排查更改跟踪和库存的问题](../troubleshoot/change-tracking.md)。

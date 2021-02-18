@@ -3,12 +3,12 @@ title: 获取策略符合性数据
 description: Azure Policy 的评估和效果确定了符合性。 了解如何获取 Azure 资源的符合性详细信息。
 ms.date: 10/05/2020
 ms.topic: how-to
-ms.openlocfilehash: 112badce00ec56df0f80c7b51bb4789a414cdcbd
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: 3c1c128b414444c6004f32f3f3173548f81a82e1
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94920230"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577117"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>获取 Azure 资源的符合性数据
 
@@ -683,7 +683,7 @@ Trent Baker
 
 ## <a name="azure-monitor-logs"></a>Azure Monitor 日志
 
-如果带有来自 [Activity Log Analytics 解决方案](../../../azure-monitor/platform/activity-log.md)的 `AzureActivity` 的 [Log Analytics 工作区](../../../azure-monitor/log-query/log-query-overview.md)已绑定到订阅，也可以使用简单的 Kusto 查询和 `AzureActivity` 表来查看对新资源和已更新资源的评估中的不符合性结果。 借助 Azure Monitor 日志中的详细信息，可对警报进行配置，以监视不符合情况。
+如果带有来自 [Activity Log Analytics 解决方案](../../../azure-monitor/essentials/activity-log.md)的 `AzureActivity` 的 [Log Analytics 工作区](../../../azure-monitor/logs/log-query-overview.md)已绑定到订阅，也可以使用简单的 Kusto 查询和 `AzureActivity` 表来查看对新资源和已更新资源的评估中的不符合性结果。 借助 Azure Monitor 日志中的详细信息，可对警报进行配置，以监视不符合情况。
 
 :::image type="content" source="../media/getting-compliance-data/compliance-loganalytics.png" alt-text="Azure Monitor 日志的屏幕截图，其中显示了 AzureActivity 表中的 Azure Policy 操作。" border="false":::
 

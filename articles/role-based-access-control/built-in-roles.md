@@ -9,12 +9,12 @@ author: rolyon
 ms.author: rolyon
 ms.date: 02/15/2021
 ms.custom: generated
-ms.openlocfilehash: d9a2667907108cfb4c8d7a2a2c9b1558e02a9110
-ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
+ms.openlocfilehash: 1cd86ac2b9500c15bc32445e1866a40ca1c6b409
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100535121"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577001"
 ---
 # <a name="azure-built-in-roles"></a>Azure 内置角色
 
@@ -196,9 +196,9 @@ ms.locfileid: "100535121"
 > | **监视** |  |  |
 > | [Application Insights 组件参与者](#application-insights-component-contributor) | 可管理 Application Insights 组件 | ae349356-3a1b-4a5e-921d-050484c6347e |
 > | [Application Insights 快照调试器](#application-insights-snapshot-debugger) | 授予用户查看和下载使用 Application Insights Snapshot Debugger 收集的调试快照的权限。 请注意，[所有者](#owner)或[参与者](#contributor)角色不包括这些权限。 在向用户授予 Application Insights Snapshot Debugger 角色时，必须将该角色直接授予用户。 将角色添加到自定义角色时，无法识别该角色。 | 08954f03-6346-4c2e-81c0-ec3a5cfae23b |
-> | [监视参与者](#monitoring-contributor) | 可以读取所有监视数据和编辑监视设置。 另请参阅 [Azure Monitor 的角色、权限和安全入门](../azure-monitor/platform/roles-permissions-security.md#built-in-monitoring-roles)。 | 749f88d5-cbae-40b8-bcfc-e573ddc772fa |
+> | [监视参与者](#monitoring-contributor) | 可以读取所有监视数据和编辑监视设置。 另请参阅 [Azure Monitor 的角色、权限和安全入门](../azure-monitor/roles-permissions-security.md#built-in-monitoring-roles)。 | 749f88d5-cbae-40b8-bcfc-e573ddc772fa |
 > | [监视指标发布者](#monitoring-metrics-publisher) | 允许针对 Azure 资源发布指标 | 3913510d-42f4-4e42-8a64-420c390055eb |
-> | [监视读取者](#monitoring-reader) | 可以读取所有监视数据（指标、日志等）。 另请参阅 [Azure Monitor 的角色、权限和安全入门](../azure-monitor/platform/roles-permissions-security.md#built-in-monitoring-roles)。 | 43d0d8ad-25c7-4714-9337-8ba259a9fe05 |
+> | [监视读取者](#monitoring-reader) | 可以读取所有监视数据（指标、日志等）。 另请参阅 [Azure Monitor 的角色、权限和安全入门](../azure-monitor/roles-permissions-security.md#built-in-monitoring-roles)。 | 43d0d8ad-25c7-4714-9337-8ba259a9fe05 |
 > | [工作簿参与者](#workbook-contributor) | 可以保存共享的工作簿。 | e8ddcd69-c73f-4f9f-9844-4100522f16ad |
 > | [工作簿读者](#workbook-reader) | 可以读取工作簿。 | b279062a-9be3-42a0-92ae-8b3cf002ec4d |
 > | 管理 + 治理 |  |  |
@@ -4774,7 +4774,7 @@ ACR 隔离数据编写器
 
 ### <a name="data-purger"></a>数据清除程序
 
-可以清除分析数据 [了解详细信息](../azure-monitor/platform/personal-data-mgmt.md)
+可以清除分析数据 [了解详细信息](../azure-monitor/logs/personal-data-mgmt.md)
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 描述 |
@@ -4917,7 +4917,7 @@ ACR 隔离数据编写器
 
 ### <a name="log-analytics-contributor"></a>Log Analytics 参与者
 
-Log Analytics 参与者可以读取所有监视数据并编辑监视设置。 编辑监视设置包括向 VM 添加 VM 扩展、读取存储帐户密钥以便能够从 Azure 存储配置日志收集、创建和配置自动化帐户、添加解决方案以及配置所有 Azure 资源上的 Azure 诊断。 [了解详细信息](../azure-monitor/platform/manage-access.md)
+Log Analytics 参与者可以读取所有监视数据并编辑监视设置。 编辑监视设置包括向 VM 添加 VM 扩展、读取存储帐户密钥以便能够从 Azure 存储配置日志收集、创建和配置自动化帐户、添加解决方案以及配置所有 Azure 资源上的 Azure 诊断。 [了解详细信息](../azure-monitor/logs/manage-access.md)
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 描述 |
@@ -4982,7 +4982,7 @@ Log Analytics 参与者可以读取所有监视数据并编辑监视设置。 �
 
 ### <a name="log-analytics-reader"></a>Log Analytics 读者
 
-Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置，其中包括查看所有 Azure 资源上的 Azure 诊断的配置。 [了解详细信息](../azure-monitor/platform/manage-access.md)
+Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置，其中包括查看所有 Azure 资源上的 Azure 诊断的配置。 [了解详细信息](../azure-monitor/logs/manage-access.md)
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 描述 |
@@ -8596,7 +8596,7 @@ Azure Sentinel 响应程序 [了解详细信息](../sentinel/roles.md)
 
 ### <a name="monitoring-contributor"></a>监视参与者
 
-可以读取所有监视数据和编辑监视设置。 另请参阅 [Azure Monitor 的角色、权限和安全入门](../azure-monitor/platform/roles-permissions-security.md#built-in-monitoring-roles)。 [了解详细信息](../azure-monitor/platform/roles-permissions-security.md)
+可以读取所有监视数据和编辑监视设置。 另请参阅 [Azure Monitor 的角色、权限和安全入门](../azure-monitor/roles-permissions-security.md#built-in-monitoring-roles)。 [了解详细信息](../azure-monitor/roles-permissions-security.md)
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 描述 |
@@ -8742,7 +8742,7 @@ Azure Sentinel 响应程序 [了解详细信息](../sentinel/roles.md)
 
 ### <a name="monitoring-reader"></a>监视查阅者
 
-可以读取所有监视数据（指标、日志等）。 另请参阅 [Azure Monitor 的角色、权限和安全入门](../azure-monitor/platform/roles-permissions-security.md#built-in-monitoring-roles)。 [了解详细信息](../azure-monitor/platform/roles-permissions-security.md)
+可以读取所有监视数据（指标、日志等）。 另请参阅 [Azure Monitor 的角色、权限和安全入门](../azure-monitor/roles-permissions-security.md#built-in-monitoring-roles)。 [了解详细信息](../azure-monitor/roles-permissions-security.md)
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 描述 |

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 01/13/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: 9ccaddec73a9c74123471c34b1b973b78eacfff8
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: c16b032502401b633532ab0fcf9518aa85a1b8d6
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98890775"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579739"
 ---
 # <a name="troubleshoot-update-management-issues"></a>排查“更新管理”问题
 
@@ -135,7 +135,7 @@ Error details: Failed to enable the Update solution
 
 1. 根据操作系统，运行适用于 [Windows](update-agent-issues.md#troubleshoot-offline) 或 [Linux](update-agent-issues-linux.md#troubleshoot-offline) 的故障排除程序。
 
-2. 请确保你的计算机向正确的工作区报告。 有关如何进行这方面验证的指导，请参阅[验证代理与 Azure Monitor 的连接](../../azure-monitor/platform/agent-windows.md#verify-agent-connectivity-to-azure-monitor)。 此外，请确保此工作区已链接到 Azure 自动化帐户。 若要进行验证，请转到自动化帐户，选择“相关资源”下的“链接的工作区” 。
+2. 请确保你的计算机向正确的工作区报告。 有关如何进行这方面验证的指导，请参阅[验证代理与 Azure Monitor 的连接](../../azure-monitor/agents/agent-windows.md#verify-agent-connectivity-to-azure-monitor)。 此外，请确保此工作区已链接到 Azure 自动化帐户。 若要进行验证，请转到自动化帐户，选择“相关资源”下的“链接的工作区” 。
 
 3. 确保链接到自动化帐户的 Log Analytics 工作区中显示计算机。 在 Log Analytics 工作区中运行以下查询。
 
@@ -144,9 +144,9 @@ Error details: Failed to enable the Update solution
    | summarize by Computer, Solutions
    ```
 
-    如果查询结果中未显示计算机，则表示该计算机最近尚未签入。 可能存在本地配置问题，因此应该[重新安装代理](../../azure-monitor/learn/quick-collect-windows-computer.md#install-the-agent-for-windows)。
+    如果查询结果中未显示计算机，则表示该计算机最近尚未签入。 可能存在本地配置问题，因此应该[重新安装代理](../../azure-monitor/vm/quick-collect-windows-computer.md#install-the-agent-for-windows)。
 
-    如果您的计算机在查询结果中列出，请在 " **解决方案** " 属性下验证是否列出了 **更新** 。 这会验证它是否已注册到更新管理。 如果不是，请检查作用域配置问题。 [作用域配置](../update-management/scope-configuration.md)决定为更新管理配置哪些计算机。 若要为计算机配置目标的作用域配置，请参阅 [在工作区中启用计算机](../update-management/enable-from-automation-account.md#enable-machines-in-the-workspace)。
+    如果你的计算机在查询结果中列出，请在“解决方案”属性下验证是否列出了“更新”。 这验证它是否已在“更新管理”中注册。 如果未注册，请检查是否存在范围配置问题。 [作用域配置](../update-management/scope-configuration.md)决定为更新管理配置哪些计算机。 若要为目标计算机配置范围，请参阅[在工作区中启用计算机](../update-management/enable-from-automation-account.md#enable-machines-in-the-workspace)。
 
 4. 在工作区中运行此查询。
 

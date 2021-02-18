@@ -1,6 +1,6 @@
 ---
-title: 监视 Azure 时序见解数据引用 |Microsoft Docs
-description: 用于监视 Azure 时序见解的参考文档。
+title: 关于监视 Azure 时序见解数据的参考 | Microsoft Docs
+description: 关于监视 Azure 时序见解的参考文档。
 author: deepakpalled
 ms.author: lyhughes
 manager: diviso
@@ -10,20 +10,20 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/10/2020
 ms.custom: lyrana
-ms.openlocfilehash: 0b564ddfdea2cf24b7f9b1bc608d47fa4cfe541b
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: bfd0d04313f0b519b4013a43e29d88400c73ea31
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97632572"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591384"
 ---
-# <a name="monitoring-azure-time-series-insights-data-reference"></a>监视 Azure 时序见解数据引用
+# <a name="monitoring-azure-time-series-insights-data-reference"></a>关于监视 Azure 时序见解数据的参考
 
-了解 Azure 时序见解环境中 Azure Monitor 收集的数据和资源。 有关收集和分析监视数据的详细信息，请参阅 [监视时序见解]( ./how-to-monitor-tsi.md) 。
+了解 Azure Monitor 从 Azure 时序见解环境收集的数据和资源。 有关收集和分析监视数据的详细信息，请参阅[监视时序见解]( ./how-to-monitor-tsi.md)。
 
 ## <a name="metrics"></a>指标
 
-本部分列出了为 Azure 时序见解收集的所有自动收集的平台指标。 有关所有 Azure Monitor 支持指标的列表 (包括 Azure 时序见解) ，请参阅 [Azure Monitor 支持的指标](../azure-monitor/platform/metrics-supported.md)。 这些指标的资源提供程序是 [timeseriesinsights-environment-with-eventhub/环境/eventsources](../azure-monitor/platform/metrics-supported.md#microsofttimeseriesinsightsenvironmentseventsources) 和 [timeseriesinsights-environment-with-eventhub/环境](../azure-monitor/platform/metrics-supported.md#microsofttimeseriesinsightsenvironments)。
+本部分列出了为 Azure 时序见解自动收集的所有平台指标。 有关所有 Azure Monitor 支持指标（包括 Azure 时序见解）的列表，请参阅 [Azure Monitor 支持的指标](../azure-monitor/essentials/metrics-supported.md)。 这些指标的资源提供程序是 [Microsoft.TimeSeriesInsights/environments/eventsources](../azure-monitor/essentials/metrics-supported.md#microsofttimeseriesinsightsenvironmentseventsources) 和 [Microsoft.TimeSeriesInsights/environments](../azure-monitor/essentials/metrics-supported.md#microsofttimeseriesinsightsenvironments)。
 
 
 ### <a name="ingress"></a>流入量
@@ -47,11 +47,11 @@ ms.locfileid: "97632572"
 
 ## <a name="resource-logs"></a>资源日志
 
-本部分列出了可为 Azure 时序见解环境收集的资源日志类型。
+本部分列出了可为 Azure 时序见解环境收集的资源日志的类型。
 
 | 类别 | 显示名称 | 说明 |
 |----- |----- |----- |
-| 流入量 | TSIIngress | 入口类别跟踪入站管道中发生的错误。 此类别包括接收事件时出现的错误，这些错误 (例如连接到事件源失败) 和处理事件， (例如分析事件负载) 时出现错误。 |
+| 流入量 | TSIIngress | 入口类别跟踪入口管道中发生的错误。 此类别包括接收事件（如连接到事件源失败）和处理事件（如分析事件负载时出现错误）时发生的错误。 |
 
 ## <a name="schemas"></a>架构
 Azure 时序见解正在使用以下架构
@@ -60,14 +60,14 @@ Azure 时序见解正在使用以下架构
 
 | 属性 | 说明 |
 |----- |----- |
-| TimeGenerated |  (UTC) 生成此事件的时间。 |
+| TimeGenerated | 生成此事件的时间 (UTC)。 |
 | 位置 | 资源的位置。 |
-| 类别 | 日志事件的类别。 |
+| Category | 日志事件的类别。 |
 | OperationName | 事件的操作名称。 |
 | CorrelationId | 请求的相关 ID。 |
 | Level | 事件的严重级别。 |
-| ResultDescription | 操作结果的说明，如 "收到禁止的错误"。 |
-| 消息 | 与错误关联的消息。 包含有关问题的详细信息以及如何缓解错误的详细信息。 |
+| ResultDescription | 操作结果的说明，如“接收到禁止访问错误”。 |
+| 消息 | 与错误关联的消息。 包含有关出现哪种错误以及如何缓解错误的详细信息。 |
 | ErrorCode | 与错误关联的代码 |
-| EventSourceType | 事件源的类型。 它可以是事件中心或 IoT 中心。 |
-| EventSourceProperties | 特定于事件源的属性的集合。 包含使用者组和访问密钥名称等详细信息。 |
+| EventSourceType | 事件源的类型。 可以是事件中心或 IoT 中心。 |
+| EventSourceProperties | 特定于事件源的属性集合。 包含使用者组和访问密钥名称等详细信息。 |

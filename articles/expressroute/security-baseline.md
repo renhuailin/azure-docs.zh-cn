@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: bbe683f1ec7dac1960395dd3d30fb36c70a1d6c9
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: a73602c565392ae050ac2a13961113b12d67abfd
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99806183"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593260"
 ---
 # <a name="azure-security-baseline-for-expressroute"></a>ExpressRoute 的 Azure 安全基线
 
@@ -128,9 +128,9 @@ ExpressRoute 的 Azure 安全基线包含将帮助你改善部署安全状况的
 
 * [如何在 Azure Sentinel 中启用审核](../sentinel/resources.md)
 
-* [如何查看和检索 Azure 活动日志事件](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [如何查看和检索 Azure 活动日志事件](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-* [如何在 Azure Monitor 中创建警报](../azure-monitor/platform/alerts-activity-log.md)
+* [如何在 Azure Monitor 中创建警报](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -152,7 +152,7 @@ ExpressRoute 的 Azure 安全基线包含将帮助你改善部署安全状况的
 
 **指南**：启用 Azure 活动日志诊断设置，并将日志发送到 Log Aalytics 工作区、Azure 事件中心或 Azure 存储帐户进行存档。 活动日志提供有关在控制平面级别对 Azure ExpressRoute 资源执行的操作的见解。 通过使用 Azure 活动日志数据，可以确定在控制平面级别针对 ExpressRoute 资源执行的任何写入操作（PUT、POST、DELETE）的“操作内容、操作人员和操作时间”。
 
-* [如何启用 Azure 活动日志的诊断设置](../azure-monitor/platform/activity-log.md)
+* [如何启用 Azure 活动日志的诊断设置](../azure-monitor/essentials/activity-log.md)
 
 **Azure 安全中心监视**：是
 
@@ -162,7 +162,7 @@ ExpressRoute 的 Azure 安全基线包含将帮助你改善部署安全状况的
 
 **指南**：启用 Azure 活动日志诊断设置，并将日志发送到 Log Aalytics 工作区、Azure 事件中心或 Azure 存储帐户进行存档。 活动日志提供有关在控制平面级别对 Azure ExpressRoute 资源执行的操作的见解。 通过使用 Azure 活动日志数据，可以确定在控制平面级别针对 ExpressRoute 资源执行的任何写入操作（PUT、POST、DELETE）的“操作内容、操作人员和操作时间”。
 
-* [如何启用 Azure 活动日志的诊断设置](../azure-monitor/platform/activity-log.md)
+* [如何启用 Azure 活动日志的诊断设置](../azure-monitor/essentials/activity-log.md)
 
 **Azure 安全中心监视**：是
 
@@ -180,7 +180,7 @@ ExpressRoute 的 Azure 安全基线包含将帮助你改善部署安全状况的
 
 **指导**：在 Azure Monitor 中，根据组织的合规性规定，为与 Azure ExpressRoute 资源关联的 Log Analytics 工作区设置日志保留期。
 
-* [如何设置日志保留参数](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+* [如何设置日志保留参数](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure 安全中心监视**：不适用
 
@@ -190,9 +190,9 @@ ExpressRoute 的 Azure 安全基线包含将帮助你改善部署安全状况的
 
 **指导**：启用 Azure 活动日志诊断设置，并将日志发送到 Log Analytics 工作区。 在 Log Analytics 中执行查询以搜索字词、识别趋势、分析模式，并根据可能已为 Azure ExpressRoute 收集的活动日志数据提供许多其他见解。
 
-* [如何启用 Azure 活动日志的诊断设置](../azure-monitor/platform/activity-log.md)
+* [如何启用 Azure 活动日志的诊断设置](../azure-monitor/essentials/activity-log.md)
 
-* [如何收集和分析 Azure Monitor 的 Log Analytics 工作区中的 Azure 活动日志](../azure-monitor/platform/activity-log.md)
+* [如何收集和分析 Azure Monitor 的 Log Analytics 工作区中的 Azure 活动日志](../azure-monitor/essentials/activity-log.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -499,7 +499,7 @@ Azure ExpressRoute 还具有线路所有者和线路用户角色。 线路用户
 
 **指导**：将 Azure Monitor 与 Azure 活动日志结合使用，以创建在 Azure ExpressRoute 的生产实例和其他关键或相关资源发生更改时发出的警报。
 
-* [如何针对 Azure 活动日志事件创建警报](../azure-monitor/platform/alerts-activity-log.md)
+* [如何针对 Azure 活动日志事件创建警报](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure 安全中心监视**：是
 
@@ -527,7 +527,7 @@ Azure ExpressRoute 还具有线路所有者和线路用户角色。 线路用户
 
 ### <a name="53-deploy-automated-patch-management-solution-for-third-party-software-titles"></a>5.3：为第三方软件部署自动修补程序管理解决方案
 
-**指南**：不适用；此建议适用于计算资源。
+**指导**：不适用；此建议适用于计算资源。
 
 **Azure 安全中心监视**：不适用
 
@@ -609,7 +609,7 @@ Azure ExpressRoute 还具有线路所有者和线路用户角色。 线路用户
 
 **指导**：使用 Azure Policy 对可以在订阅中创建的资源类型施加限制。
 
-使用 Azure Resource Graph 查询/发现订阅中的资源。 确保环境中的所有 Azure 资源均已获得批准。
+使用 Azure Resource Graph 查询/发现订阅中的资源。 确保环境中存在的所有 Azure 资源已获得批准。
 
 * [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 

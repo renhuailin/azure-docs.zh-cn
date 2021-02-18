@@ -10,12 +10,12 @@ ms.date: 12/11/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: e5ab583330b46b8f53223500076aa04780e6deac
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
+ms.openlocfilehash: 3a44466f04e598080662599e785eb71698265f87
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98108715"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592329"
 ---
 # <a name="enforce-a-minimum-required-version-of-transport-layer-security-tls-for-requests-to-a-storage-account"></a>针对发送到存储帐户的请求强制实施必需的最低版本的传输层安全性 (TLS)
 
@@ -35,22 +35,22 @@ Azure 存储当前支持 TLS 协议的三个版本：1.0、1.1 和 1.2。 Azure 
 
 若要将请求记录到 Azure 存储帐户并确定客户端使用的 TLS 版本，可以使用 Azure 存储日志记录 Azure Monitor (预览 ") "。 有关详细信息，请参阅 [监视 Azure 存储](../blobs/monitor-blob-storage.md)。
 
-Azure Monitor 中的 Azure 存储日志记录支持使用日志查询来分析日志数据。 若要查询日志，可以使用 Azure Log Analytics 工作区。 若要了解有关日志查询的详细信息，请参阅 [教程： Log Analytics 查询入门](../../azure-monitor/log-query/log-analytics-tutorial.md)。
+Azure Monitor 中的 Azure 存储日志记录支持使用日志查询来分析日志数据。 若要查询日志，可以使用 Azure Log Analytics 工作区。 若要了解有关日志查询的详细信息，请参阅 [教程： Log Analytics 查询入门](../../azure-monitor/logs/log-analytics-tutorial.md)。
 
 若要使用 Azure Monitor 记录 Azure 存储数据并使用 Azure Log Analytics 对其进行分析，必须首先创建诊断设置，以指示要为其记录数据的请求类型和存储服务。 Azure Monitor 中的 Azure 存储日志目前为公共预览版，可在所有公有云区域中进行预览测试。 此预览版为 blob 启用日志 (包括 Azure Data Lake Storage Gen2) 、文件、队列和表。 若要在 Azure 门户中创建诊断设置，请执行以下步骤：
 
-1. 在订阅中创建一个包含你的 Azure 存储帐户的新 Log Analytics 工作区。 配置存储帐户的日志记录后，日志将在 "Log Analytics" 工作区中可用。 有关详细信息，请参阅[在 Azure 门户中创建 Log Analytics 工作区](../../azure-monitor/learn/quick-create-workspace.md)。
+1. 在订阅中创建一个包含你的 Azure 存储帐户的新 Log Analytics 工作区。 配置存储帐户的日志记录后，日志将在 "Log Analytics" 工作区中可用。 有关详细信息，请参阅[在 Azure 门户中创建 Log Analytics 工作区](../../azure-monitor/logs/quick-create-workspace.md)。
 1. 导航到 Azure 门户中的存储帐户。
 1. 在 "监视" 部分，选择 " **诊断设置" (预览 ")**。
 1. 选择要为其记录请求的 Azure 存储服务。 例如，选择 " **blob** " 将请求记录到 blob 存储中。
-1. 选择“添加诊断设置”。 
+1. 选择“添加诊断设置”。
 1. 提供诊断设置的名称。
 1. 在 " **类别详细信息**" 下的 " **日志** " 部分中，选择要记录的请求的类型。 可以记录读取、写入和删除请求。 例如，选择 **StorageRead** 和 **StorageWrite** 会记录对所选服务的读取和写入请求。
 1. 在 " **目标详细信息**" 下，选择 " **发送到 Log Analytics**"。 选择之前创建的 "订阅" 和 "Log Analytics" 工作区，如下图所示。
 
     :::image type="content" source="media/transport-layer-security-configure-minimum-version/create-diagnostic-setting-logs.png" alt-text="显示如何为日志记录请求创建诊断设置的屏幕截图":::
 
-创建诊断设置后，随后会根据该设置记录对存储帐户的请求。 有关详细信息，请参阅 [创建诊断设置以收集 Azure 中的资源日志和指标](../../azure-monitor/platform/diagnostic-settings.md)。
+创建诊断设置后，随后会根据该设置记录对存储帐户的请求。 有关详细信息，请参阅 [创建诊断设置以收集 Azure 中的资源日志和指标](../../azure-monitor/essentials/diagnostic-settings.md)。
 
 有关 Azure Monitor 中的 Azure 存储日志中可用的字段的参考，请参阅 [资源日志 (预览版) ](../blobs/monitor-blob-storage-reference.md#resource-logs-preview)。
 
@@ -87,7 +87,7 @@ StorageBlobLogs
 如果你确信来自使用较旧版 TLS 的客户端的流量很小，或者允许使用较旧版 TLS 发出的请求失败，则可开始在存储帐户上实施最低版本的 TLS。 要求客户端使用最低版本的 TLS 对存储帐户发出请求是将数据的安全风险降至最低的策略的一部分。
 
 > [!IMPORTANT]
-> 如果你正在使用连接到 Azure 存储的服务，请确保在为存储帐户设置所需的最低版本之前，该服务使用适当的 TLS 版本将请求发送到 Azure 存储。
+> 如果使用连接到 Azure 存储的服务，请确保在你设置存储帐户所需的最低版本前，该服务使用相应的 TLS 版本向 Azure 存储发送请求。
 
 ### <a name="configure-the-minimum-tls-version-for-a-storage-account"></a>为存储帐户配置最低 TLS 版本
 
@@ -342,22 +342,22 @@ Azure Policy 可以确保 Azure 资源符合要求和标准，从而为云治理
 
 :::image type="content" source="media/transport-layer-security-configure-minimum-version/deny-policy-error.png" alt-text="屏幕截图显示了在违反策略的情况下创建存储帐户时出现的错误":::
 
-## <a name="permissions-necessary-to-require-a-minimum-version-of-tls"></a>需要 TLS 的最低版本所需的权限
+## <a name="permissions-necessary-to-require-a-minimum-version-of-tls"></a>需要最低版本的 TLS 所需的权限
 
-若要设置存储帐户的 **MinimumTlsVersion** 属性，用户必须有权创建和管理存储帐户。 Azure RBAC) 角色提供这些权限的基于角色的访问控制 (，其中包括 storageAccounts/ **/write** 或 **\* storageAccounts/* _ 操作。 具有此操作的内置角色包括：
+若要为存储帐户设置 MinimumTlsVersion 属性，用户必须具有创建和管理存储帐户的权限。 Azure RBAC) 角色提供这些权限的基于角色的访问控制 (，其中包括 storageAccounts/ **/write** 或 **\* storageAccounts/** action。 具有此操作的内置角色包括：
 
 - Azure 资源管理器[所有者](../../role-based-access-control/built-in-roles.md#owner)角色
 - Azure 资源管理器[参与者](../../role-based-access-control/built-in-roles.md#contributor)角色
 - [存储帐户参与者](../../role-based-access-control/built-in-roles.md#storage-account-contributor)角色
 
-这些角色不提供对存储帐户中数据的访问，Azure Active Directory (Azure AD) 。 但是，它们包括 _ * storageAccounts/listkeys/action * *，后者授予对帐户访问密钥的访问权限。 使用此权限，用户可以使用帐户访问密钥访问存储帐户中的所有数据。
+这些角色不提供通过 Azure Active Directory (Azure AD) 对存储帐户中数据的访问权限。 但是，它们包括 storageAccounts/ **listkeys/action**，后者授予对帐户访问密钥的访问权限。 借助此权限，用户可以使用帐户访问密钥访问存储帐户中的所有数据。
 
-角色分配的作用域必须为存储帐户或更高级别，以允许用户要求存储帐户使用最小版本的 TLS。 有关角色作用域的详细信息，请参阅 [了解 AZURE RBAC 的作用域](../../role-based-access-control/scope-overview.md)。
+角色分配的范围必须设定为存储帐户级别或更高级别，以允许用户为存储帐户要求最低版本的 TLS。 有关角色范围的详细信息，请参阅[了解 Azure RBAC 的范围](../../role-based-access-control/scope-overview.md)。
 
-请注意，仅将这些角色分配给需要创建存储帐户或更新其属性的用户。 使用最小特权原则确保用户拥有完成任务所需的最少权限。 有关使用 Azure RBAC 管理访问权限的详细信息，请参阅 [AZURE rbac 的最佳实践](../../role-based-access-control/best-practices.md)。
+请注意，仅向需要能够创建存储帐户或更新其属性的用户分配这些角色。 使用最小特权原则确保用户拥有完成任务所需的最少权限。 有关使用 Azure RBAC 管理访问权限的详细信息，请参阅 [Azure RBAC 最佳做法](../../role-based-access-control/best-practices.md)。
 
 > [!NOTE]
-> 经典订阅管理员角色“服务管理员”和“共同管理员”具有 Azure 资源管理器[所有者](../../role-based-access-control/built-in-roles.md#owner)角色的等效权限。 **所有者** 角色包含所有操作，因此具有以下管理角色之一的用户也可以创建和管理存储帐户。 有关详细信息，请参阅[经典订阅管理员角色、Azure 角色和 Azure AD 管理员角色](../../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles)。
+> 经典订阅管理员角色“服务管理员”和“共同管理员”具有 Azure 资源管理器[所有者](../../role-based-access-control/built-in-roles.md#owner)角色的等效权限。 所有者角色包括所有操作，因此具有这些管理角色之一的用户也可以创建和管理存储帐户。 有关详细信息，请参阅[经典订阅管理员角色、Azure 角色和 Azure AD 管理员角色](../../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles)。
 
 ## <a name="network-considerations"></a>网络注意事项
 

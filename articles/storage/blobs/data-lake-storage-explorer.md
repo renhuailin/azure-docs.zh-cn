@@ -5,19 +5,19 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: how-to
-ms.date: 02/05/2021
+ms.date: 02/17/2021
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 5ccef241a37e63467b681d5fd12c65072cb92e58
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: e6147918e7cd56aed5b5b333a8e9825a34d60fd4
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99626439"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652269"
 ---
-# <a name="use-azure-storage-explorer-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>使用 Azure 存储资源管理器管理 Azure Data Lake Storage Gen2 中的目录、文件和 ACL
+# <a name="use-azure-storage-explorer-to-manage-directories-and-files-in-azure-data-lake-storage-gen2"></a>使用 Azure 存储资源管理器管理 Azure Data Lake Storage Gen2 中的目录和文件
 
-本文介绍如何使用 [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/) 在启用了分层命名空间 (HNS) 的存储帐户中创建和管理 (acl) 的目录、文件和访问控制列表。
+本文介绍如何使用 [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/) 在启用了分层命名空间 (HNS) 的存储帐户中创建和管理目录和文件。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -26,6 +26,9 @@ ms.locfileid: "99626439"
 - 一个已启用分层命名空间 (HNS) 的存储帐户。 按[这些](../common/storage-account-create.md)说明创建一个。
 
 - 已在本地计算机上安装了 Azure 存储资源管理器。 若要安装适用于 Windows、Macintosh 或 Linux 的 Azure 存储资源管理器，请参阅 [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)。
+
+> [!NOTE]
+> 在使用 Azure Data Lake Storage Gen2 时，存储资源管理器会使用 Blob (blob) 和 Data Lake Storage Gen2 (dfs) [终结点](../common/storage-private-endpoints.md#private-endpoints-for-azure-storage)。 如果使用专用终结点配置对 Azure Data Lake Storage Gen2 的访问，请确保为存储帐户创建两个专用终结点：一个具有目标子资源 `blob`，另一个具有目标子资源 `dfs`。
 
 ## <a name="sign-in-to-storage-explorer"></a>登录到存储资源管理器
 
@@ -77,41 +80,9 @@ ms.locfileid: "99626439"
 
 若要使用 **Azure 存储资源管理器** 下载文件，请选择所需的文件，然后在功能区中选择“下载”。  此时将打开文件对话框，可在其中输入文件名。 选择“保存”，开始将文件下载到本地位置。 
 
-<a id="managing-access"></a>
-
-## <a name="manage-acls"></a>管理 Acl
-
-右键单击该容器、目录或文件，然后单击 " **管理访问控制列表**"。  下面的屏幕截图显示了右键单击目录时显示的菜单。
-
-> [!div class="mx-imgBorder"]
-> ![右键单击 Azure 存储资源管理器中的目录](./media/data-lake-storage-explorer/manage-access-control-list-option.png)
-
-使用 " **管理访问权限** " 对话框，可以管理所有者和所有者组的权限。 它还可以将新用户和组添加访问控制列表中，然后你可以管理其权限。
-
-> [!div class="mx-imgBorder"]
-> !["管理访问" 对话框](./media/data-lake-storage-explorer/manage-access-dialog-box.png)
-
-若要向访问控制列表中添加新用户或组，请选择 " **添加** " 按钮。 然后，输入要添加到列表中的相应 Azure Active Directory (AAD) 条目，然后选择 " **添加**"。  用户或组随即出现在“用户和组:”字段中，然后便可开始管理其权限  。
-
-> [!NOTE]
-> 建议的最佳做法是在 AAD 中创建安全组并维护组而不是单个用户的权限。 有关此建议和其他最佳做法的详细信息，请参阅 [Azure Data Lake Storage Gen2 中的访问控制模型](data-lake-storage-access-control-model.md)。
-
-使用复选框控件可以设置访问权限和默认 Acl。 若要详细了解这两种类型的 Acl 之间的差异，请参阅 [Acl 类型](data-lake-storage-access-control.md#types-of-acls)。
-
-<a id="apply-acls-recursively"></a>
-
-## <a name="apply-acls-recursively"></a>以递归方式应用 Acl
-
-您可以对父目录的现有子项以递归方式应用 ACL 项，而无需为每个子项目单独进行这些更改。
-
-若要以递归方式应用 ACL 项，请右键单击容器或目录，然后单击 " **传播访问控制列表**"。  下面的屏幕截图显示了右键单击目录时显示的菜单。
-
-> [!div class="mx-imgBorder"]
-> ![右键单击目录，然后选择 "传播访问控制" 设置](./media/data-lake-storage-explorer/propagate-access-control-list-option.png)
-
 ## <a name="next-steps"></a>后续步骤
 
-了解 Data Lake Storage Gen2 中的访问控制列表。
+了解如何通过设置访问控制列表 (Acl 来管理文件和目录权限) 
 
 > [!div class="nextstepaction"]
-> [Azure Data Lake Storage Gen2 中的访问控制](./data-lake-storage-access-control.md)
+> [使用 Azure 存储资源管理器管理 Azure Data Lake Storage Gen2 中的 Acl](./data-lake-storage-explorer-acl.md)

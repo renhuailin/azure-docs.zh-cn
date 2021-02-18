@@ -5,14 +5,14 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 11/10/2020
+ms.date: 02/17/2021
 ms.author: normesta
-ms.openlocfilehash: 65d1ef76ffae113a4b526eec75301abbfea751e7
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: e5f62456b85791bad5bb66f3abf67e523558d76e
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96017706"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100650382"
 ---
 # <a name="access-control-model-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 中的访问控制模型
 
@@ -35,7 +35,7 @@ Azure RBAC 和 ACL 都要求用户（或应用程序）在 Azure AD 中有标识
 
 Azure RBAC 使用角色分配向[安全主体](../../role-based-access-control/overview.md#security-principal)应用权限集。 安全主体是一个对象，表示在 Azure Active Directory (AD) 中定义的用户、组、服务主体或托管标识。 权限集可以向安全主体授予“粗粒度”级别的访问权限，例如，对存储帐户中 **所有** 数据或容器中 **所有** 数据的读取或写入访问权限。 
 
-以下角色允许安全主体访问存储帐户中的数据。 
+以下角色允许安全主体访问存储帐户中的数据。
 
 |角色|描述|
 |--|--|
@@ -53,16 +53,16 @@ Azure RBAC 使用角色分配向[安全主体](../../role-based-access-control/o
 
 在基于安全主体的授权过程中，将按以下顺序对权限进行评估。
 
-：一个： &nbsp; &nbsp; 首先评估 Azure 角色分配，并优先于任何 ACL 分配。
+:one:&nbsp;&nbsp;Azure 角色分配将首先进行评估，优先于任何 ACL 分配。
 
-：2： &nbsp; &nbsp; 如果操作是根据 Azure 角色分配完全授权的，则根本不会评估 acl。
+:two:&nbsp;&nbsp;如果根据 Azure 角色分配向操作完全授权，则根本不会评估 ACL。
 
 :three:&nbsp;&nbsp;如果操作未完全获得授权，则会评估 ACL。
 
 > [!div class="mx-imgBorder"]
 > ![Data Lake Storage 权限流](./media/control-access-permissions-data-lake-storage/data-lake-storage-permissions-flow.png)
 
-由于系统评估访问权限的方式，你 **无法** 使用 ACL 来 **限制** 已通过角色分配授予的访问权限。 这是因为系统会先评估 Azure 角色分配，如果分配授予足够的访问权限，则会忽略 Acl。 
+由于系统评估访问权限的方式，你 **无法** 使用 ACL 来 **限制** 已通过角色分配授予的访问权限。 这是因为系统会首先评估 Azure 角色分配，如果该分配授予了足够的访问权限，则会忽略 ACL。 
 
 下图显示了这三个常见操作的权限流：列出目录内容、读取文件和写入文件。
 
@@ -71,37 +71,37 @@ Azure RBAC 使用角色分配向[安全主体](../../role-based-access-control/o
 
 ## <a name="permissions-table-combining-azure-rbac-and-acl"></a>权限表：组合使用 Azure RBAC 和 ACL
 
-下表显示了如何合并 Azure 角色和 ACL 条目，以便安全主体可以执行 " **操作** " 列中列出的操作。 此表显示的列代表虚构目录层次结构的每个级别。 容器的根目录 (`/`)、名为 **Oregon** 的子目录、Oregon 目录的名为 **Portland** 的子目录以及 Portland 目录中名为 **Data.txt** 的文本文件分别对应一个列。 这些列中显示了授予权限所需的 ACL 条目的[简短形式](data-lake-storage-access-control.md#short-forms-for-permissions)的表示形式。 如果某个 ACL 条目不是执行操作所必需的，则列中将显示 **N/A**（不适用）。
+下表显示了如何组合使用 Azure 角色和 ACL 条目，以便安全主体可以执行“操作”列中列出的操作。 此表显示的列代表虚构目录层次结构的每个级别。 容器的根目录 (`/`)、名为 **Oregon** 的子目录、Oregon 目录的名为 **Portland** 的子目录以及 Portland 目录中名为 **Data.txt** 的文本文件分别对应一个列。 这些列中显示了授予权限所需的 ACL 条目的[简短形式](data-lake-storage-access-control.md#short-forms-for-permissions)的表示形式。 如果某个 ACL 条目不是执行操作所必需的，则列中将显示 **N/A**（不适用）。
 
 |    操作             | 分配的 Azure 角色               |    /        | Oregon/     | Portland/ | Data.txt |             
 |--------------------------|----------------------------------|-------------|-------------|-----------|----------|
-| Read Data.txt            |   存储 Blob 数据所有者        | 不适用      | 不适用      | 不适用       | 不适用    |  
-|                          |   存储 Blob 数据参与者  | 不适用      | 不适用      | 不适用       | 不适用    |
-|                          |   存储 Blob 数据读取者       | 不适用      | 不适用      | 不适用       | 不可用    |
+| Read Data.txt            |   存储 Blob 数据所有者        | 不适用      | 不可用      | 不可用       | 不适用    |  
+|                          |   存储 Blob 数据参与者  | 不适用      | 不可用      | 不可用       | 不适用    |
+|                          |   存储 Blob 数据读取者       | 不可用      | 不可用      | 不可用       | 不可用    |
 |                          |   None                           | `--X`    | `--X`    | `--X`     | `R--`  |
-| Append to Data.txt       |   存储 Blob 数据所有者        | 不适用      | 不适用      | 不适用       | 不适用    |
-|                          |   存储 Blob 数据参与者  | 不适用      | 不适用      | 不适用       | 不适用    |
+| Append to Data.txt       |   存储 Blob 数据所有者        | 不适用      | 不可用      | 不可用       | 不适用    |
+|                          |   存储 Blob 数据参与者  | 不适用      | 不可用      | 不可用       | 不适用    |
 |                          |   存储 Blob 数据读取者       | `--X`    | `--X`    | `--X`     | `-W-`  |
 |                          |   None                           | `--X`    | `--X`    | `--X`     | `RW-`  |
-| Delete Data.txt          |   存储 Blob 数据所有者        | 不适用      | 不适用      | 不适用       | 不适用    |
-|                          |   存储 Blob 数据参与者  | 不适用      | 不适用      | 不适用       | 不适用    |
+| Delete Data.txt          |   存储 Blob 数据所有者        | 不适用      | 不可用      | 不可用       | 不适用    |
+|                          |   存储 Blob 数据参与者  | 不适用      | 不可用      | 不可用       | 不适用    |
 |                          |   存储 Blob 数据读取者       | `--X`    | `--X`    | `-WX`     | 不可用    |
 |                          |   None                           | `--X`    | `--X`    | `-WX`     | 不适用    |
-| Create Data.txt          |   存储 Blob 数据所有者        | 不适用      | 不适用      | 不适用       | 不适用    |
-|                          |   存储 Blob 数据参与者  | 不适用      | 不适用      | 不适用       | 不适用    |
+| Create Data.txt          |   存储 Blob 数据所有者        | 不适用      | 不可用      | 不可用       | 不适用    |
+|                          |   存储 Blob 数据参与者  | 不适用      | 不可用      | 不可用       | 不适用    |
 |                          |   存储 Blob 数据读取者       | `--X`    | `--X`    | `-WX`     | 不可用    |
 |                          |   None                           | `--X`    | `--X`    | `-WX`     | 不适用    |
-| List /                   |   存储 Blob 数据所有者        | 不适用      | 不适用      | 不适用       | 不适用    |
-|                          |   存储 Blob 数据参与者  | 不适用      | 不适用      | 不适用       | 不适用    |
-|                          |   存储 Blob 数据读取者       | 不适用      | 不适用      | 不适用       | 不可用    |
-|                          |   None                           | `R-X`    | 不适用      | 不适用       | 不适用    |
-| List /Oregon/            |   存储 Blob 数据所有者        | 不适用      | 不适用      | 不适用       | 不适用    |
-|                          |   存储 Blob 数据参与者  | 不适用      | 不适用      | 不适用       | 不适用    |
-|                          |   存储 Blob 数据读取者       | 不适用      | 不适用      | 不适用       | 不可用    |
+| List /                   |   存储 Blob 数据所有者        | 不适用      | 不可用      | 不可用       | 不适用    |
+|                          |   存储 Blob 数据参与者  | 不适用      | 不可用      | 不可用       | 不适用    |
+|                          |   存储 Blob 数据读取者       | 不可用      | 不可用      | 不可用       | 不可用    |
+|                          |   None                           | `R-X`    | 不适用      | 不可用       | 不适用    |
+| List /Oregon/            |   存储 Blob 数据所有者        | 不适用      | 不可用      | 不可用       | 不适用    |
+|                          |   存储 Blob 数据参与者  | 不适用      | 不可用      | 不可用       | 不适用    |
+|                          |   存储 Blob 数据读取者       | 不可用      | 不可用      | 不可用       | 不可用    |
 |                          |   None                           | `--X`    | `R-X`    | 不适用       | 不适用    |
-| List /Oregon/Portland/   |   存储 Blob 数据所有者        | 不适用      | 不适用      | 不适用       | 不适用    |
-|                          |   存储 Blob 数据参与者  | 不适用      | 不适用      | 不适用       | 不适用    |
-|                          |   存储 Blob 数据读取者       | 不适用      | 不适用      | 不适用       | 不可用    |
+| List /Oregon/Portland/   |   存储 Blob 数据所有者        | 不适用      | 不可用      | 不可用       | 不适用    |
+|                          |   存储 Blob 数据参与者  | 不适用      | 不可用      | 不可用       | 不适用    |
+|                          |   存储 Blob 数据读取者       | 不可用      | 不可用      | 不可用       | 不可用    |
 |                          |   None                           | `--X`    | `--X`    | `R-X`     | 不适用    |
 
 
@@ -112,9 +112,9 @@ Azure RBAC 使用角色分配向[安全主体](../../role-based-access-control/o
 
 [!INCLUDE [Security groups](../../../includes/azure-storage-data-lake-groups.md)]
 
-## <a name="limits-on-azure-role-assignments-and-acl-entries"></a>Azure 角色分配和 ACL 条目的限制
+## <a name="limits-on-azure-role-assignments-and-acl-entries"></a>对 Azure 角色分配和 ACL 条目的限制
 
-通过使用组，您不太可能超过每个订阅的角色分配的最大数目，以及每个文件或目录的 ACL 条目的最大数量。 下表介绍了这些限制。
+通过使用组，你不太可能超出每个订阅的角色分配的最大数量，以及每个文件或目录的 ACL 条目的最大数量。 下表介绍了这些限制。
 
 [!INCLUDE [Security groups](../../../includes/azure-storage-data-lake-rbac-acl-limits.md)] 
 

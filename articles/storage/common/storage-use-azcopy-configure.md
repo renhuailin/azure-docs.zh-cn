@@ -8,12 +8,12 @@ ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 1a319c728b918dbad7dd5f240bc7a0bfeb0c4c09
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 244012f0945f467fe79e95d652ba22e3b62a1b7a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881038"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596939"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>对 AzCopy 进行配置、优化和故障排除
 
@@ -183,7 +183,7 @@ azcopy jobs resume <job-id> --destination-sas="<sas-token>"
 
 ## <a name="change-the-location-of-the-plan-and-log-files"></a>更改计划和日志文件的位置
 
-默认情况下，计划和日志文件位于 Windows 上的 `%USERPROFILE%\.azcopy` 目录中，或 Mac 和 Linux 上的 `$HOME$\.azcopy` 目录中。 可以更改此位置。
+默认情况下，计划和日志文件位于 Windows 上的 `%USERPROFILE%\.azcopy` 目录中，或 Mac 和 Linux 上的 `$HOME/.azcopy` 目录中。 可以更改此位置。
 
 ### <a name="change-the-location-of-plan-files"></a>更改计划文件的位置
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/07/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 79282e99894bccad4f3c265cdffe4bee2e465950
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 4be9b802f5284663c2834f9d9c59fb709269bd53
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99052747"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572594"
 ---
 # <a name="azure-security-baseline-for-automation"></a>适用于自动化的 Azure 安全基线
 
@@ -180,9 +180,9 @@ ms.locfileid: "99052747"
 
 **指导**：使用 Azure 活动日志监视资源配置，并检测网络资源的更改。 在 Azure Monitor 中创建当关键资源发生更改时触发的警报。
 
-* [如何查看和检索 Azure 活动日志事件](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [如何查看和检索 Azure 活动日志事件](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-* [如何在 Azure Monitor 中创建警报](../azure-monitor/platform/alerts-activity-log.md)
+* [如何在 Azure Monitor 中创建警报](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -210,7 +210,7 @@ ms.locfileid: "99052747"
 
 * [如何加入 Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-* [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/platform/diagnostic-settings.md)
+* [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/essentials/diagnostic-settings.md)
 
 * [如何开始使用 Azure Monitor 和第三方 SIEM 集成](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
 
@@ -230,9 +230,9 @@ ms.locfileid: "99052747"
 
 **指导**：使 Azure Monitor 可以访问审核和活动日志，其中包括事件源、日期、用户、时间戳、源地址、目标地址和其他有用元素。
 
-* [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/platform/diagnostic-settings.md)
+* [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/essentials/diagnostic-settings.md)
 
-* [查看和检索 Azure 活动日志事件](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [查看和检索 Azure 活动日志事件](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
 **Azure 安全中心监视**：是
 
@@ -254,7 +254,7 @@ ms.locfileid: "99052747"
 
 **指导**：在 Azure Monitor 中，根据组织的合规性规章设置 Log Analytics 工作区保留期。 使用 Azure 存储帐户进行长期/存档存储。
 
-* [更改 Log Analytics 中的数据保留期](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+* [更改 Log Analytics 中的数据保留期](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 * [自动化帐户的数据保留详细信息](./automation-managing-data.md#data-retention)
 
@@ -270,9 +270,9 @@ ms.locfileid: "99052747"
 
 * [如何加入 Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-* [了解 Azure Monitor 中的日志查询](../azure-monitor/log-query/log-analytics-tutorial.md)
+* [了解 Azure Monitor 中的日志查询](../azure-monitor/logs/log-analytics-tutorial.md)
 
-* [如何在 Azure Monitor 中执行自定义查询](../azure-monitor/log-query/get-started-queries.md)
+* [如何在 Azure Monitor 中执行自定义查询](../azure-monitor/logs/get-started-queries.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -288,7 +288,7 @@ ms.locfileid: "99052747"
 
 * [如何在 Azure 安全中心管理警报](../security-center/security-center-managing-and-responding-alerts.md)
 
-* [如何针对 Azure Monitor 日志数据发出警报](../azure-monitor/learn/tutorial-response.md)
+* [如何针对 Azure Monitor 日志数据发出警报](../azure-monitor/alerts/tutorial-response.md)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -418,7 +418,7 @@ ms.locfileid: "99052747"
 
 * [如何将 Azure 活动日志集成到 Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
-* [如何为自定义警报和通知配置操作组](../azure-monitor/platform/action-groups.md)
+* [如何为自定义警报和通知配置操作组](../azure-monitor/alerts/action-groups.md)
 
 **Azure 安全中心监视**：是
 
@@ -618,7 +618,7 @@ ms.locfileid: "99052747"
 
 * [网络安全组的诊断日志记录](../private-link/private-link-overview.md#logging-and-monitoring)
 
-* [如何针对 Azure 活动日志事件创建警报](../azure-monitor/platform/alerts-activity-log.md)
+* [如何针对 Azure 活动日志事件创建警报](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure 安全中心监视**：目前不可用
 

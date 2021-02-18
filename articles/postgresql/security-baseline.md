@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/02/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 89296b3d0ee4e4339553d22d2ae53ee470ecad31
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: d1ff047c44833a94ae9db0a410f501a1f23a369f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807574"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576228"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-postgresql---single-server"></a>适用于 Azure Database for PostgreSQL 单一服务器的 Azure 安全基线
 
@@ -160,9 +160,9 @@ ms.locfileid: "99807574"
 
 **指南**：使用 Azure 活动日志监视网络资源配置，并检测与 Azure Database for PostgreSQL 实例相关的网络资源的更改。 在 Azure Monitor 中创建警报，使其在关键网络资源发生更改时触发。
 
-- [如何查看和检索 Azure 活动日志事件](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [如何查看和检索 Azure 活动日志事件](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [如何在 Azure Monitor 中创建警报](../azure-monitor/platform/alerts-activity-log.md)
+- [如何在 Azure Monitor 中创建警报](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -202,7 +202,7 @@ ms.locfileid: "99807574"
 
 - [如何配置和访问 Azure Database for PostgreSQL 的审核日志](concepts-audit.md)
 
-- [如何配置 Azure 活动日志的诊断设置](../azure-monitor/platform/activity-log.md)
+- [如何配置 Azure 活动日志的诊断设置](../azure-monitor/essentials/activity-log.md)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -220,9 +220,9 @@ ms.locfileid: "99807574"
 
 **指南**：在 Azure Monitor 中，对于用于保存 Azure Database for PostgreSQL 日志的 Log Analytics 工作区，根据组织的合规性法规设置保留期。 使用 Azure 存储帐户进行长期/存档存储。
 
-- [如何为 Log Analytics 工作区设置日志保留参数](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [如何为 Log Analytics 工作区设置日志保留参数](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
-- [在 Azure 存储帐户中存储资源日志](../azure-monitor/platform/resource-logs.md#send-to-azure-storage)
+- [在 Azure 存储帐户中存储资源日志](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)
 
 **Azure 安全中心监视**：不适用
 
@@ -234,9 +234,9 @@ ms.locfileid: "99807574"
 
 - [如何加入 Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-- [有关 Log Analytics 的详细信息](../azure-monitor/log-query/log-analytics-tutorial.md)
+- [有关 Log Analytics 的详细信息](../azure-monitor/logs/log-analytics-tutorial.md)
 
-- [如何在 Azure Monitor 中执行自定义查询](../azure-monitor/log-query/get-started-queries.md)
+- [如何在 Azure Monitor 中执行自定义查询](../azure-monitor/logs/get-started-queries.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -254,7 +254,7 @@ ms.locfileid: "99807574"
 
 - [如何配置和访问 Azure Database for PostgreSQL 的审核日志](concepts-audit.md)
 
-- [如何配置 Azure 活动日志的诊断设置](../azure-monitor/platform/activity-log.md)
+- [如何配置 Azure 活动日志的诊断设置](../azure-monitor/essentials/activity-log.md)
 
 - [如何加入 Azure Sentinel](../sentinel/quickstart-onboard.md)
 
@@ -558,7 +558,7 @@ Azure Database for PostgreSQL 当前支持的 TLS 版本为 TLS 1.0、TLS 1.1、
 
 ### <a name="47-use-host-based-data-loss-prevention-to-enforce-access-control"></a>4.7：使用基于主机的数据丢失防护来强制实施访问控制
 
-**指导**：不适用；此建议适用于计算资源。
+**指南**：不适用；此建议适用于计算资源。
 
 Microsoft 会管理 Azure Database for PostgreSQL 的底层基础结构，并实施了严格控制来防止客户数据丢失或泄露。
 
@@ -588,7 +588,7 @@ AskAzureDBforPostgreSQL@service.microsoft.com.
 
 **指南**：结合使用 Azure Monitor 与 Azure 活动，以创建在 Azure Database for PostgreSQL 的生产实例和其他关键或相关资源发生更改时发出的警报。
 
-- [如何针对 Azure 活动日志事件创建警报](../azure-monitor/platform/alerts-activity-log.md)
+- [如何针对 Azure 活动日志事件创建警报](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure 安全中心监视**：不适用
 

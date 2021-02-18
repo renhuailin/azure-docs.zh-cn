@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/27/2019
 ms.author: magoedte
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 3210829b3281aa862cdf0dbdc9c915249a55e423
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: c4dc7e4d3c19a341daaf8e75844e175451a91f03
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94517999"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592980"
 ---
 # <a name="tutorial-monitor-changes-and-update-a-linux-virtual-machine-in-azure"></a>教程：监视更改并更新 Azure 中的 Linux 虚拟机
 
@@ -73,7 +73,7 @@ az vm create \
 执行验证以确定是否为该 VM 启用了更新管理。
 验证包括检查 Log Analytics 工作区和链接的自动化帐户，以及解决方案是否在工作区中。
 
-[Log Analytics](../../azure-monitor/log-query/log-query-overview.md) 工作区用于收集由功能和服务（如更新管理）生成的数据。
+[Log Analytics](../../azure-monitor/logs/log-query-overview.md) 工作区用于收集由功能和服务（如更新管理）生成的数据。
 工作区提供了一个位置来查看和分析来自多个数据源的数据。
 若要在需要更新的 VM 上执行其他操作，可使用 Azure 自动化运行针对 VM 的 Runbook，例如下载和应用更新。
 
@@ -83,7 +83,7 @@ az vm create \
 
 如果在载入过程中发现缺少下列任何先决条件，则会自动添加这些条件：
 
-* [Log Analytics](../../azure-monitor/log-query/log-query-overview.md) 工作区
+* [Log Analytics](../../azure-monitor/logs/log-query-overview.md) 工作区
 * [自动化帐户](../../automation/index.yml)
 * VM 上已启用[混合 runbook 辅助角色](../../automation/automation-hybrid-runbook-worker.md)
 
@@ -112,7 +112,7 @@ az vm create \
 | 名称 |用于标识更新部署的唯一名称。 |
 |操作系统| Linux 或 Windows|
 | 要更新的组 |对于 Azure 计算机，请定义基于一组订阅、资源组、位置和标记的查询，生成要在部署中包含的 Azure VM 动态组。 </br></br>对于非 Azure 计算机，请选择现有的已保存搜索，以选择要包含在部署中的非 Azure 计算机组。 </br></br>有关详细信息，请参阅[动态组](../../automation/update-management/configure-groups.md)|
-| 要更新的计算机 |选择已保存的搜索、已导入的组或者从下拉列表中选择“计算机”并选择单个计算机。 如果选择“计算机”，则计算机的就绪状态将在“更新代理商准备情况”列中显示 。</br> 要了解在 Azure Monitor 日志中创建计算机组的不同方法，请参阅 [Azure Monitor 日志中的计算机组](../../azure-monitor/platform/computer-groups.md) |
+| 要更新的计算机 |选择已保存的搜索、已导入的组或者从下拉列表中选择“计算机”并选择单个计算机。 如果选择“计算机”，则计算机的就绪状态将在“更新代理商准备情况”列中显示 。</br> 要了解在 Azure Monitor 日志中创建计算机组的不同方法，请参阅 [Azure Monitor 日志中的计算机组](../../azure-monitor/logs/computer-groups.md) |
 |更新分类|选择所需的所有更新分类|
 |包括/排除更新|这将打开“包括/排除”页。 要包含或排除的更新位于单独的选项卡上。 有关如何处理包含的详细信息，请参阅[计划更新部署](../../automation/update-management/deploy-updates.md#schedule-an-update-deployment) |
 |计划设置|选择启动时间，然后选择任“一次”或“重复”|
@@ -191,7 +191,7 @@ az vm create \
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你配置并查看了 VM 的更改跟踪和更新管理。 你已了解如何执行以下操作：
+在本教程中，你配置并查看了 VM 的更改跟踪和更新管理。 你已了解如何：
 
 > [!div class="checklist"]
 > * 创建资源组和 VM

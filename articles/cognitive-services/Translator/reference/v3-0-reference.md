@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 8/11/2020
 ms.author: lajanuar
-ms.openlocfilehash: bdfb1ac03ea6f896725d5c86cefe41021204359c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 567e28ee7f698565d6ad0020db7abdca0557f053
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100582204"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100650756"
 ---
 # <a name="translator-v30"></a>Translator 3.0 版
 
@@ -35,7 +35,7 @@ Microsoft Translator 位于多个数据中心位置之外。 目前它们位于 
 
 * **美洲：** 美国东部、美国中南部、美国西部和美国西部2 
 * **亚太：** 韩国南部、日本东部、东南亚和澳大利亚东部
-* **欧洲：** 北欧和西欧
+* **欧洲：** 北欧，西欧，瑞士北部 <sup>1，2</sup>，瑞士西部 <sup>1，2</sup>
 
 在大多数情况下，对 Microsoft Translator 的请求由距离请求来源最近的数据中心处理。 如果数据中心出现故障，请求可能会路由到 Azure 地理区域之外。
 
@@ -47,6 +47,17 @@ Microsoft Translator 位于多个数据中心位置之外。 目前它们位于 
 |Azure|美国|   api-nam.cognitive.microsofttranslator.com|
 |Azure|欧洲|  api-eur.cognitive.microsofttranslator.com|
 |Azure|亚太区|    api-apc.cognitive.microsofttranslator.com|
+
+<sup>1</sup> 个客户，其中的资源位于瑞士北部或瑞士西部可以确保其文本 API 请求在瑞士内提供。 若要确保在瑞士处理请求，请在 "资源区域" "瑞士北部" 或 "瑞士西部" 中创建转换器资源，然后在 API 请求中使用该资源的自定义终结点。 例如：如果你在 "资源区域" 为 "瑞士北部" 的 Azure 门户中创建转换器资源，而你的资源名称为 "my ch-n"，则你的自定义终结点为 " https://my-ch-n.cognitiveservices.azure.com "。 要转换的示例请求如下：
+```curl
+// Pass secret key and region using headers to a custom endpoint
+curl -X POST " my-ch-n.cognitiveservices.azure.com/translator/text/v3.0/translate?to=fr" \
+-H "Ocp-Apim-Subscription-Key: xxx" \
+-H "Ocp-Apim-Subscription-Region: switzerlandnorth" \
+-H "Content-Type: application/json" \
+-d "[{'Text':'Hello'}]" -v
+```
+<sup>2</sup>自定义转换器当前在瑞士不可用。
 
 ## <a name="authentication"></a>身份验证
 

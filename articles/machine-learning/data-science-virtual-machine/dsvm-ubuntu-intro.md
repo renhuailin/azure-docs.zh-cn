@@ -2,18 +2,17 @@
 title: 快速入门：创建 Ubuntu Data Science Virtual Machine
 titleSuffix: Azure Data Science Virtual Machine
 description: 配置和创建适用于 Linux (Ubuntu) 的数据科学虚拟机，进行分析和机器学习。
-ms.service: machine-learning
-ms.subservice: data-science-vm
+ms.service: data-science-vm
 author: lobrien
 ms.author: laobri
 ms.topic: quickstart
 ms.date: 03/10/2020
-ms.openlocfilehash: 4a414b706dffae76eaa9841ee7b1fe6bcc1ac0d3
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: b25d9846f3bb678c182fa22d824f7b4171d2d803
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109838"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100515625"
 ---
 # <a name="quickstart-set-up-the-data-science-virtual-machine-for-linux-ubuntu"></a>快速入门：设置适用于 Linux (Ubuntu) 的 Data Science Virtual Machine
 

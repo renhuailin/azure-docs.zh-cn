@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/02/2020
 ms.author: memildin
-ms.openlocfilehash: b7cb6edf825519bb3048de7a8c5326842f2db097
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: f24785336642570ae3f21d96462317890526a4c9
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99524287"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100578957"
 ---
 # <a name="archive-for-whats-new-in-azure-security-center"></a>Azure 安全中心的新增功能存档
 
@@ -296,7 +296,7 @@ Azure 安全中心的 SQL 计算机高级数据安全现在保护托管在 Azure
 
 ### <a name="two-new-recommendations-to-deploy-the-log-analytics-agent-to-azure-arc-machines-preview"></a>将 Log Analytics 代理部署到 Azure Arc 计算机的两条新建议（预览）
 
-添加了两条新建议，以帮助将 [Log Analytics 代理](../azure-monitor/platform/log-analytics-agent.md)部署到 Azure Arc 计算机，并确保其受 Azure 安全中心的保护：
+添加了两条新建议，以帮助将 [Log Analytics 代理](../azure-monitor/agents/log-analytics-agent.md)部署到 Azure Arc 计算机，并确保其受 Azure 安全中心的保护：
 
 - Log Analytics 代理应安装在基于 Windows 的 Azure Arc 计算机上(预览)
 - Log Analytics 代理应安装在基于 Linux 的 Azure Arc 计算机上(预览)
@@ -729,7 +729,7 @@ Kubernetes 很快就成了在云中部署和管理软件的新标准。 只有�
 此公共预览版中的新功能包括：
 
 - **发现和可见性** - 在安全中心的已注册订阅中持续发现 AKS 托管实例。
-- **安全分数建议** -可操作的项可帮助客户遵守 AKS 的安全最佳做法，并提高其安全分数。 建议包括诸如 "应使用基于角色的访问控制来限制对 Kubernetes 服务群集的访问权限之类的项目"。
+- **安全功能分数建议** - 可操作的项目，用于帮助客户遵守 AKS 的安全最佳做法，并提高其安全功能分数。 建议包括诸如“应使用基于角色的访问控制来限制对 Kubernetes 服务群集的访问”之类的项目。
 - **威胁检测** - 基于主机和群集的分析，例如“检测到特权容器”。
 
 

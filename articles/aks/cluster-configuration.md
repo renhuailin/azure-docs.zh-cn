@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 02/09/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 5519157b58268b30ecb7a1af7b86d13d587a23b8
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: eaf512915532b482c25e830cd9f2e01d61aa4524
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100519399"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572784"
 ---
 # <a name="configure-an-aks-cluster"></a>配置 AKS 群集
 
@@ -100,9 +100,9 @@ az aks nodepool add --name ubuntu1804 --cluster-name myAKSCluster --resource-gro
 * 对于 `containerd`，建议使用 [`crictl`](https://kubernetes.io/docs/tasks/debug-application-cluster/crictl) 作为替代 CLI（而不是使用 Docker CLI），以便对 Kubernetes 节点上的 Pod、容器和容器映像进行故障排除（例如 `crictl ps`）。 
    * 它不提供 Docker CLI 的完整功能。 它仅用于故障排除目的。
    * `crictl` 提供更适合 Kubernetes 的容器视图，其中存在 Pod 等概念。
-* `Containerd` 使用标准化 `cri` 日志格式 (设置日志记录格式，这不同于从 docker 的 json 驱动程序) 获取的内容。 日志记录解决方案需要支持 `cri` 日志记录格式（例如，[用于容器的 Azure Monitor](../azure-monitor/insights/container-insights-enable-new-cluster.md)）
+* `Containerd` 使用标准化 `cri` 日志格式 (设置日志记录格式，这不同于从 docker 的 json 驱动程序) 获取的内容。 日志记录解决方案需要支持 `cri` 日志记录格式（例如，[用于容器的 Azure Monitor](../azure-monitor/containers/container-insights-enable-new-cluster.md)）
 * 你不能再访问 docker 引擎 `/var/run/docker.sock` 或使用 Docker-in-Docker (DinD)。
-  * 如果目前从 Docker 引擎提取应用程序日志或监视数据，请改用其他工具，例如[用于容器的 Azure Monitor](../azure-monitor/insights/container-insights-enable-new-cluster.md)。 此外，AKS 不支持在可能导致不稳定的代理节点上运行任何带外命令。
+  * 如果目前从 Docker 引擎提取应用程序日志或监视数据，请改用其他工具，例如[用于容器的 Azure Monitor](../azure-monitor/containers/container-insights-enable-new-cluster.md)。 此外，AKS 不支持在可能导致不稳定的代理节点上运行任何带外命令。
   * 强烈建议不要通过上述方法构建映像并直接利用 docker 引擎，即使在使用 Moby/docker 的情况下也是如此。 Kubernetes 并不能完全感知这些已使用的资源，并且这些方法会导致许多问题，详见[此处](https://jpetazzo.github.io/2015/09/03/do-not-use-docker-in-docker-for-ci/)和[此处](https://securityboulevard.com/2018/05/escaping-the-whale-things-you-probably-shouldnt-do-with-docker-part-1/)的示例。
 * 生成映像-您可以继续使用当前的 docker 生成工作流，除非要在 AKS 群集中构建映像。 在这种情况下，请考虑切换到建议的方法，以便使用 [ACR 任务](../container-registry/container-registry-quickstart-task-cli.md)或更安全的群集中选项（如 [docker buildx](https://github.com/docker/buildx)）来生成映像。
 

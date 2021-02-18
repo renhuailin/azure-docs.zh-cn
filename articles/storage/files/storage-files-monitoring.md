@@ -10,12 +10,12 @@ ms.date: 10/26/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: d71f3fa27dda9edc4c88ad9ed563e5c3a95ffa4b
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: e872d28063a3e0671558ee4d388cad280b94f45b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99574527"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596925"
 ---
 # <a name="monitoring-azure-files"></a>监视 Azure 文件
 
@@ -28,7 +28,7 @@ ms.locfileid: "99574527"
 ## <a name="what-is-azure-monitor"></a>说明是 Azure Monitor？
 Azure 文件使用 [Azure Monitor](../../azure-monitor/overview.md)，这是 azure 中的一个完整的堆栈监视服务来创建监视数据。 Azure Monitor 提供了一整套用于监视 Azure 资源以及其他云和本地资源的功能。 
 
-请从 [通过 Azure Monitor 监视 Azure 资源](../../azure-monitor/insights/monitor-azure-resource.md)一文开始，其中介绍了以下内容：
+请从 [通过 Azure Monitor 监视 Azure 资源](../../azure-monitor/essentials/monitor-azure-resource.md)一文开始，其中介绍了以下内容：
 
 - 说明是 Azure Monitor？
 - 与监视相关的成本
@@ -40,7 +40,7 @@ Azure 文件使用 [Azure Monitor](../../azure-monitor/overview.md)，这是 azu
 
 ## <a name="monitoring-data"></a>监视数据
 
-Azure 文件收集与其他 Azure 资源相同的监视数据，如 [监视 Azure 资源的数据](../../azure-monitor/insights/monitor-azure-resource.md#monitoring-data)中所述。 
+Azure 文件收集与其他 Azure 资源相同的监视数据，如 [监视 Azure 资源的数据](../../azure-monitor/essentials/monitor-azure-resource.md#monitoring-data)中所述。 
 
 有关 Azure 文件创建的指标和日志指标的详细信息，请参阅 [Azure 文件监视数据参考](storage-files-monitoring-reference.md) 。
 
@@ -67,7 +67,7 @@ Azure Monitor 中的指标和日志仅支持 Azure 资源管理器存储帐户�
 > [!NOTE]
 > Azure Monitor 中的 Azure 存储日志目前为公共预览版，可在所有公有云区域中进行预览测试。 此预览版启用 blob 的日志 (包括 Azure Data Lake Storage Gen2) 、文件、队列和表。 此功能适用于使用 Azure 资源管理器部署模型创建的所有存储帐户。 请参阅 [存储帐户概述](../common/storage-account-overview.md)。
 
-有关一般指南，请参阅 [创建诊断设置以在 Azure 中收集平台日志和指标](../../azure-monitor/platform/diagnostic-settings.md)。
+有关一般指南，请参阅 [创建诊断设置以在 Azure 中收集平台日志和指标](../../azure-monitor/essentials/diagnostic-settings.md)。
 
 ### <a name="azure-portal"></a>[Azure 门户](#tab/azure-portal)
 
@@ -106,7 +106,7 @@ Azure Monitor 中的指标和日志仅支持 Azure 资源管理器存储帐户�
 2. 在 " **存储帐户** " 下拉列表中，选择要将日志存档到的存储帐户，单击 " **确定"** 按钮，然后单击 " **保存** " 按钮。
 
    > [!NOTE]
-   > 选择存储帐户作为导出目标之前，请参阅将 [Azure 资源日志存档](../../azure-monitor/platform/resource-logs.md#send-to-azure-storage) 以了解存储帐户的先决条件。
+   > 选择存储帐户作为导出目标之前，请参阅将 [Azure 资源日志存档](../../azure-monitor/essentials/resource-logs.md#send-to-azure-storage) 以了解存储帐户的先决条件。
 
 #### <a name="stream-logs-to-azure-event-hubs"></a>将日志流式传输到 Azure 事件中心
 
@@ -160,7 +160,7 @@ Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -StorageAccoun
 
 `Set-AzDiagnosticSetting -ResourceId /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/fileServices/default -StorageAccountId /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myloggingstorageaccount -Enabled $true -Category StorageWrite,StorageDelete`
 
-有关每个参数的说明，请参阅 [通过 Azure PowerShell 存档 Azure 资源日志](../../azure-monitor/platform/resource-logs.md#send-to-azure-storage)。
+有关每个参数的说明，请参阅 [通过 Azure PowerShell 存档 Azure 资源日志](../../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)。
 
 #### <a name="stream-logs-to-an-event-hub"></a>将日志流式传输到事件中心
 
@@ -176,7 +176,7 @@ Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -EventHubAutho
 
 `Set-AzDiagnosticSetting -ResourceId /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/fileServices/default -EventHubAuthorizationRuleId /subscriptions/20884142-a14v3-4234-5450-08b10c09f4/resourceGroups/myresourcegroup/providers/Microsoft.EventHub/namespaces/myeventhubnamespace/authorizationrules/RootManageSharedAccessKey -Enabled $true -Category StorageDelete`
 
-有关每个参数的说明，请参阅 [通过 PowerShell cmdlet 将数据流式传输到事件中心](../../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs)。
+有关每个参数的说明，请参阅 [通过 PowerShell cmdlet 将数据流式传输到事件中心](../../azure-monitor/essentials/resource-logs.md#send-to-azure-event-hubs)。
 
 #### <a name="send-logs-to-log-analytics"></a>将日志发送到 Log Analytics
 
@@ -190,7 +190,7 @@ Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -WorkspaceId <
 
 `Set-AzDiagnosticSetting -ResourceId /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/fileServices/default -WorkspaceId /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.OperationalInsights/workspaces/my-analytic-workspace -Enabled $true -Category StorageDelete`
 
-有关详细信息，请参阅 [在 Azure Monitor 中将 Azure 资源日志流式传输到 Log Analytics 工作区](../../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace)。
+有关详细信息，请参阅 [在 Azure Monitor 中将 Azure 资源日志流式传输到 Log Analytics 工作区](../../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace)。
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -222,7 +222,7 @@ az monitor diagnostic-settings create --name <setting-name> --storage-account <s
 
 `az monitor diagnostic-settings create --name setting1 --storage-account mystorageaccount --resource /subscriptions/938841be-a40c-4bf4-9210-08bcf06c09f9/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myloggingstorageaccount/fileServices/default --resource-group myresourcegroup --logs '[{"category": StorageWrite, "enabled": true, "retentionPolicy": {"days": 90, "enabled": true}}]'`
 
-有关每个参数的说明，请参阅 [通过 Azure CLI 存档资源日志](../../azure-monitor/platform/resource-logs.md#send-to-azure-storage)。
+有关每个参数的说明，请参阅 [通过 Azure CLI 存档资源日志](../../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)。
 
 #### <a name="stream-logs-to-an-event-hub"></a>将日志流式传输到事件中心
 
@@ -238,7 +238,7 @@ az monitor diagnostic-settings create --name <setting-name> --event-hub <event-h
 
 `az monitor diagnostic-settings create --name setting1 --event-hub myeventhub --event-hub-rule /subscriptions/938841be-a40c-4bf4-9210-08bcf06c09f9/resourceGroups/myresourcegroup/providers/Microsoft.EventHub/namespaces/myeventhubnamespace/authorizationrules/RootManageSharedAccessKey --resource /subscriptions/938841be-a40c-4bf4-9210-08bcf06c09f9/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myloggingstorageaccount/fileServices/default --logs '[{"category": StorageDelete, "enabled": true }]'`
 
-有关每个参数的说明，请参阅 [通过 Azure CLI 将数据流式传输到事件中心](../../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs)。
+有关每个参数的说明，请参阅 [通过 Azure CLI 将数据流式传输到事件中心](../../azure-monitor/essentials/resource-logs.md#send-to-azure-event-hubs)。
 
 #### <a name="send-logs-to-log-analytics"></a>将日志发送到 Log Analytics
 
@@ -252,24 +252,24 @@ az monitor diagnostic-settings create --name <setting-name> --workspace <log-ana
 
 `az monitor diagnostic-settings create --name setting1 --workspace /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.OperationalInsights/workspaces/my-analytic-workspace --resource /subscriptions/938841be-a40c-4bf4-9210-08bcf06c09f9/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myloggingstorageaccount/fileServices/default --logs '[{"category": StorageDelete, "enabled": true ]'`
 
- 有关详细信息，请参阅 [在 Azure Monitor 中将 Azure 资源日志流式传输到 Log Analytics 工作区](../../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace)。
+ 有关详细信息，请参阅 [在 Azure Monitor 中将 Azure 资源日志流式传输到 Log Analytics 工作区](../../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace)。
 
 ### <a name="template"></a>[模板](#tab/template)
 
-若要查看创建诊断设置的 Azure 资源管理器模板，请参阅 [Azure 存储的诊断设置](../../azure-monitor/samples/resource-manager-diagnostic-settings.md#diagnostic-setting-for-azure-storage)。
+若要查看创建诊断设置的 Azure 资源管理器模板，请参阅 [Azure 存储的诊断设置](../../azure-monitor/essentials/resource-manager-diagnostic-settings.md#diagnostic-setting-for-azure-storage)。
 
 ---
 
 ## <a name="analyzing-metrics"></a>分析指标
 
-你可以使用指标资源管理器通过其他 Azure 服务中的指标分析 Azure 存储的指标。 从 Azure Monitor 菜单中选择“指标”，可打开指标资源管理器 。 有关使用此工具的详细信息，请参阅 [Azure 指标资源管理器入门](../../azure-monitor/platform/metrics-getting-started.md)。 
+你可以使用指标资源管理器通过其他 Azure 服务中的指标分析 Azure 存储的指标。 从 Azure Monitor 菜单中选择“指标”，可打开指标资源管理器 。 有关使用此工具的详细信息，请参阅 [Azure 指标资源管理器入门](../../azure-monitor/essentials/metrics-getting-started.md)。 
 
 对于支持维度的指标，可使用所需的维度值筛选指标。  有关 Azure 存储支持的维度的完整列表，请参阅[指标维度](storage-files-monitoring-reference.md#metrics-dimensions)。 Azure 文件的指标位于以下命名空间中： 
 
 - Microsoft.Storage/storageAccounts
 - Microsoft.Storage/storageAccounts/fileServices
 
-有关包括 Azure 文件的所有 Azure Monitor 支持指标的列表，请参阅 [Azure Monitor 支持的指标](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountsfileservices)。
+有关包括 Azure 文件的所有 Azure Monitor 支持指标的列表，请参阅 [Azure Monitor 支持的指标](../../azure-monitor/essentials/metrics-supported.md#microsoftstoragestorageaccountsfileservices)。
 
 ### <a name="accessing-metrics"></a>访问指标
 
@@ -513,20 +513,20 @@ Azure Monitor 提供 [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.M
 
 ![审核日志](media/storage-files-monitoring/event-hub-log.png)
 
-你可以使用安全信息和事件管理以及监视工具来访问和读取发送到事件中心的日志数据。 有关详细信息，请参阅[可对发送到事件中心的监视数据执行什么操作？](../../azure-monitor/platform/stream-monitoring-data-event-hubs.md)。
+你可以使用安全信息和事件管理以及监视工具来访问和读取发送到事件中心的日志数据。 有关详细信息，请参阅[可对发送到事件中心的监视数据执行什么操作？](../../azure-monitor/essentials/stream-monitoring-data-event-hubs.md)。
 
 ### <a name="accessing-logs-in-a-log-analytics-workspace"></a>访问 Log Analytics 工作区中的日志
 
 你可以使用 Azure Monitor 日志查询来访问发送到 Log Analytics 工作区的日志。 数据存储在 **StorageFileLogs** 表中。 
 
-有关详细信息，请参阅 [Log Analytics 教程](../../azure-monitor/log-query/log-analytics-tutorial.md)。
+有关详细信息，请参阅 [Log Analytics 教程](../../azure-monitor/logs/log-analytics-tutorial.md)。
 
 #### <a name="sample-kusto-queries"></a>示例 Kusto 查询
 
-下面是一些可以在 **日志搜索** 栏中输入以帮助你监视 Azure 文件的查询。 这些查询使用[新语言](../../azure-monitor/log-query/log-query-overview.md)。
+下面是一些可以在 **日志搜索** 栏中输入以帮助你监视 Azure 文件的查询。 这些查询使用[新语言](../../azure-monitor/logs/log-query-overview.md)。
 
 > [!IMPORTANT]
-> 从存储帐户资源组菜单中选择 **日志** 时，会打开 Log Analytics 并将查询范围设置为当前资源组。 这意味着日志查询只包含来自该资源组的数据。 如果要运行的查询包含来自其他资源或来自其他 Azure 服务的数据，请从 " **Azure Monitor** " 菜单中选择 "**日志**"。 有关详细信息，请参阅 [Azure Monitor Log Analytics 中的日志查询范围和时间范围](../../azure-monitor/log-query/scope.md)。
+> 从存储帐户资源组菜单中选择 **日志** 时，会打开 Log Analytics 并将查询范围设置为当前资源组。 这意味着日志查询只包含来自该资源组的数据。 如果要运行的查询包含来自其他资源或来自其他 Azure 服务的数据，请从 " **Azure Monitor** " 菜单中选择 "**日志**"。 有关详细信息，请参阅 [Azure Monitor Log Analytics 中的日志查询范围和时间范围](../../azure-monitor/logs/scope.md)。
 
 使用以下查询来帮助你监视 Azure 文件共享：
 
@@ -567,11 +567,11 @@ StorageFileLogs
 
 若要查看 Azure 文件的列名和说明的列表，请参阅 [StorageFileLogs](/azure/azure-monitor/reference/tables/storagefilelogs)。
 
-有关如何编写查询的详细信息，请参阅 [Log Analytics 教程](../../azure-monitor/log-query/log-analytics-tutorial.md)。
+有关如何编写查询的详细信息，请参阅 [Log Analytics 教程](../../azure-monitor/logs/log-analytics-tutorial.md)。
 
 ## <a name="alerts"></a>警报
 
-在监视数据中发现重要情况时，Azure Monitor 警报会主动通知你。 有了警报，你就可以在客户注意到你的系统中的问题之前确定和解决它们。 可以在[指标](../../azure-monitor/platform/alerts-metric-overview.md)、[日志](../../azure-monitor/platform/alerts-unified-log.md)和[活动日志](../../azure-monitor/platform/activity-log-alerts.md)上设置警报。 
+在监视数据中发现重要情况时，Azure Monitor 警报会主动通知你。 有了警报，你就可以在客户注意到你的系统中的问题之前确定和解决它们。 可以在[指标](../../azure-monitor/alerts/alerts-metric-overview.md)、[日志](../../azure-monitor/alerts/alerts-unified-log.md)和[活动日志](../../azure-monitor/alerts/activity-log-alerts.md)上设置警报。 
 
 下表列出了一些要监视的示例方案和用于警报的适当指标：
 
@@ -689,7 +689,7 @@ StorageFileLogs
 ## <a name="next-steps"></a>后续步骤
 
 - [Azure 文件监视数据引用](storage-files-monitoring-reference.md)
-- [利用 Azure Monitor 监视 Azure 资源](../../azure-monitor/insights/monitor-azure-resource.md)
+- [利用 Azure Monitor 监视 Azure 资源](../../azure-monitor/essentials/monitor-azure-resource.md)
 - [Azure 存储指标迁移](../common/storage-metrics-migration.md)
 - [规划 Azure 文件存储部署](./storage-files-planning.md)
 - [如何部署 Azure 文件](./storage-how-to-create-file-share.md)
