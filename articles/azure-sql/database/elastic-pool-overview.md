@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, sstein
 ms.date: 12/9/2020
-ms.openlocfilehash: f50042caf21630c5054ead76825e49b820405c5b
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: c478edf95ae345d64da630400fbf63ac613b73a6
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98732688"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653629"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-databases-in-azure-sql-database"></a>弹性池有助于在 Azure SQL 数据库中管理和缩放多个数据库
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -90,15 +90,10 @@ SaaS 开发人员构建在由多个数据库组成的大规模数据层上的应
 以下步骤可帮助你评估池是否比单一数据库更具成本效益：
 
 1. 通过如下方式来估算池所需的 eDTU 或 vCore：
-
-对于基于 DTU 的购买模型：
-
-MAX(<数据库的总数目 X 每一数据库的平均 DTU 使用率>, <并发峰值数据库数目 X 每一数据库的峰值 DTU 使用率>)   
-
-对于基于 vCore 的购买模型：
-
-MAX(<数据库的总数目 X 每一数据库的平均 vCore 使用率>, <并发峰值数据库数目 X 每一数据库的峰值 vCore 使用率>)   
-
+   - 对于基于 DTU 的购买模型：
+     - MAX (< &times; *每个数据库每个数据库的平均 dtu 使用率*>，<*同时高峰* &times; *db 每个数据库的高峰 dtu 使用率*>) 
+   - 对于基于 vCore 的购买模型：
+     - MAX (< &times; *每个数据库每个数据库的平均 vCore 使用率*>，<*并发高峰数据库的数量* &times; *高峰 vCore 每个数据库的使用率*>) 
 2. 通过添加池中所有数据库所需的数据大小，估计池所需的总存储空间。 对于 DTU 购买模型，确定提供此存储量的 eDTU 池大小。
 3. 对于基于 DTU 的购买模型，请取步骤 1 和步骤 2 中 eDTU 估算值中较大的那个。 对于基于 vCore 的购买模型，请取步骤 1 中的 vCore 估算值。
 4. 请参阅 [SQL 数据库定价页](https://azure.microsoft.com/pricing/details/sql-database/)，找到大于步骤 3 中估算值的最小池大小。

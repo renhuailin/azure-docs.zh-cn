@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/29/2021
 ms.topic: conceptual
-ms.openlocfilehash: 8ea668ab2266a1deae108542687c89f3a221568e
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: a6827f8629423b9ed3adc362d3d05fd740e25a65
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99220967"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100633302"
 ---
 # <a name="run-runbooks-on-a-hybrid-runbook-worker"></a>在混合 Runbook 辅助角色中运行 Runbook
 
@@ -96,7 +96,7 @@ Azure 虚拟机上的混合 Runbook 辅助角色可以使用托管标识来向 A
 在 Azure 中部署资源时，可能需要在自动生成过程中访问本地系统以支持部署过程中的某个任务或某组步骤。 若要使用运行方式帐户针对 Azure 进行身份验证，必须安装运行方式帐户证书。
 
 >[!NOTE]
->此 PowerShell runbook 当前不在 LInux 计算机上运行。 它仅在 Windows 计算机上运行。
+>此 PowerShell runbook 当前不在 Linux 计算机上运行。 它仅在 Windows 计算机上运行。
 >
 
 以下 PowerShell Runbook 称为 Export-RunAsCertificateToHybridWorker，其从 Azure 自动化帐户导出运行方式证书。 Runbook 下载证书并将其导入到连接到同一帐户的混合 Runbook 辅助角色上的本地计算机证书存储中。 完成该步骤后，Runbook 会验证辅助角色能否成功地使用运行方式帐户对 Azure 进行身份验证。

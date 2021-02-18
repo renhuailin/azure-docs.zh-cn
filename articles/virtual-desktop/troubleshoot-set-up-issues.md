@@ -3,15 +3,16 @@ title: Windows 虚拟桌面环境主机池创建-Azure
 description: 如何在 Windows 虚拟桌面环境的安装过程中排除和解决租户和主机池问题。
 author: Heidilohr
 ms.topic: troubleshooting
-ms.date: 09/14/2020
+ms.custom: references_regions
+ms.date: 02/17/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 0a5439a9d1fd43154379c1dc1a95a6e98b6e877b
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: c31a32b32a685087c53198ec52af1188d0071cab
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539638"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652439"
 ---
 # <a name="host-pool-creation"></a>创建主机池
 
@@ -49,9 +50,21 @@ ms.locfileid: "98539638"
 
 ### <a name="error-cant-see-user-assignments-in-app-groups"></a>错误：无法查看应用组中的用户分配。
 
-原因：此错误通常发生在将订阅从 1 Azure Active Directory (AD) 租户移到另一台。 如果旧的分配仍与旧的 Azure AD 租户相关联，则 Azure 门户将不会对其进行跟踪。
+**原因**：此错误通常发生在将订阅从 1 AZURE ACTIVE DIRECTORY (AD) 租户移到另一台。 如果旧的分配仍与旧的 Azure AD 租户相关联，则 Azure 门户将不会对其进行跟踪。
 
-解决方法：需要将用户重新分配到应用组。
+**解决方法**：需要将用户重新分配到应用组。
+
+### <a name="i-only-see-us-when-setting-the-location-for-my-service-objects"></a>仅在设置服务对象的位置时才会看到我们
+
+**原因**： Azure 当前不支持 Windows 虚拟桌面服务的该区域。 若要了解我们支持的地理位置，请查看 [数据位置](data-locations.md)。 如果 Windows 虚拟桌面支持该位置，但在尝试选择某个位置时仍未显示，则表示资源提供程序尚未更新。
+
+**修复**：若要获取最新的区域列表，请重新注册资源提供程序：
+
+1. 中转到 " **订阅** "，然后选择相关订阅。
+2. 选择 " **资源提供程序**"。
+3. 选择 " **DesktopVirtualization**"，然后从 "操作" 菜单中选择 " **重新注册** "。
+
+重新注册资源提供程序时，将看不到任何特定的 UI 反馈或更新状态。 重新注册过程也不会影响现有环境。
 
 ## <a name="azure-resource-manager-template-errors"></a>Azure 资源管理器模板错误
 

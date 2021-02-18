@@ -4,12 +4,12 @@ description: 在 Application Insights 中设置 Web 测试。 当网站不可用
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.reviewer: sdash
-ms.openlocfilehash: b0f66608c6e0f23b861e207d0dea07a546b41c2a
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 41338760034918dce30ffb45c738588a2aa29786
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98937411"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585936"
 ---
 # <a name="monitor-the-availability-of-any-website"></a>监视任意网站的可用性
 
@@ -95,7 +95,7 @@ ms.locfileid: "98937411"
 |----------------------------------------|-------------------|
 | 澳大利亚东部                         | emea-au-syd  |
 | Brazil South                           | latam-gru-边缘 |
-| 美国中部                             | 美国 mia-边缘    |
+| Central US                             | 美国 mia-边缘    |
 | 东亚                              | apac-hkn-bc-op-nt-azr   |
 | 美国东部                                | us-va-圣 bc-op-nt-azr     |
 | 法国南部 (以前的华北)  | emea-ch-zrh  |
@@ -151,7 +151,7 @@ ms.locfileid: "98937411"
 
 ![服务器端诊断](./media/monitor-web-app-availability/open-instance-4.png)
 
-除了原始结果外，还可以在[指标资源管理器](../platform/metrics-getting-started.md)中查看两个关键的可用性指标：
+除了原始结果外，还可以在[指标资源管理器](../essentials/metrics-getting-started.md)中查看两个关键的可用性指标：
 
 1. 可用性：已成功的测试占执行的所有测试的百分比。
 2. 测试持续时间：执行的所有测试的平均测试持续时间。
@@ -159,7 +159,7 @@ ms.locfileid: "98937411"
 ## <a name="automation"></a>自动化
 
 * [使用 PowerShell 脚本自动设置可用性测试](./powershell.md#add-an-availability-test)。
-* 设置在引发警报时调用的 [webhook](../platform/alerts-webhooks.md) 。
+* 设置在引发警报时调用的 [webhook](../alerts/alerts-webhooks.md) 。
 
 ## <a name="troubleshooting"></a>故障排除
 

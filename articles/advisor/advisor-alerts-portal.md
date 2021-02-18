@@ -3,18 +3,18 @@ title: 使用 Azure 门户为新建议创建 Azure 顾问警报
 description: 为新建议创建 Azure 顾问警报
 ms.topic: article
 ms.date: 09/09/2019
-ms.openlocfilehash: 837f12a12e532902ee76e345afa430f758f79c10
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3c51479821914ef34edcd13d8708344169f17aae
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90973658"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590109"
 ---
 # <a name="create-azure-advisor-alerts-on-new-recommendations-using-the-azure-portal"></a>使用 Azure 门户创建有关新建议的 Azure 顾问警报 
 
 本文介绍如何使用 Azure 门户从 Azure Advisor 设置新建议的警报。 
 
-当 Azure 顾问检测到针对某项资源的新建议时，将在 [Azure 活动日志](../azure-monitor/platform/platform-logs-overview.md)中存储一个事件。 可以使用特定于建议的警报创建体验，为来自 Azure 顾问的这些事件设置警报。 可以选择订阅和资源组（可选）来指定想要接收其警报的资源。 
+当 Azure 顾问检测到针对某项资源的新建议时，将在 [Azure 活动日志](../azure-monitor/essentials/platform-logs-overview.md)中存储一个事件。 可以使用特定于建议的警报创建体验，为来自 Azure 顾问的这些事件设置警报。 可以选择订阅和资源组（可选）来指定想要接收其警报的资源。 
 
 还可以使用以下属性来确定建议类型：
 
@@ -27,13 +27,13 @@ ms.locfileid: "90973658"
 * 选择现有操作组
 * 创建新的操作组
 
-若要了解有关操作组的详细信息，请参阅[创建和管理操作组](../azure-monitor/platform/action-groups.md)。
+若要了解有关操作组的详细信息，请参阅[创建和管理操作组](../azure-monitor/alerts/action-groups.md)。
 
 > [!NOTE] 
 > 顾问警报目前仅适用于高可用性、性能和成本建议。 不支持安全建议。 
 
 ## <a name="create-alert-rule"></a>创建警报规则
-1. 在 **门户**中，选择 " **Azure 顾问**"。
+1. 在 **门户** 中，选择 " **Azure 顾问**"。
 
     ![门户中的 Azure 顾问](./media/advisor-alerts/create1.png)
 
@@ -57,7 +57,7 @@ ms.locfileid: "90973658"
 
     ![Advisor 警报操作组](./media/advisor-alerts/create6.png)
 
-7. 在 " **操作组** " 部分中，选择 " **添加现有** 项" 以使用已创建的操作组，或选择 " **新建** " 以设置新的 [操作组](../azure-monitor/platform/action-groups.md)。 
+7. 在 " **操作组** " 部分中，选择 " **添加现有** 项" 以使用已创建的操作组，或选择 " **新建** " 以设置新的 [操作组](../azure-monitor/alerts/action-groups.md)。 
 
     ![Advisor 警报添加现有](./media/advisor-alerts/create7.png)
 
@@ -173,7 +173,7 @@ ms.locfileid: "90973658"
 
 你可能想要使用的一些其他重要字段是： 
 
-* 通用架构) 或*resourceId* (旧架构中的*alertTargetIDs* () 
+* 通用架构) 或 *resourceId* (旧架构中的 *alertTargetIDs* () 
 * *recommendationType*
 * *recommendationName*
 * *recommendationCategory*
@@ -185,11 +185,13 @@ ms.locfileid: "90973658"
 
 在 Azure Advisor 中，可以编辑、删除或禁用和启用建议警报。 
 
-1. 在 **门户**中，选择 " **Azure 顾问**"。
+1. 在 **门户** 中，选择 " **Azure 顾问**"。
 
-    :::image type="content" source="./media/advisor-alerts/create1.png" alt-text="&quot;警报详细信息&quot; 部分的屏幕截图。" **警报**"。
+    :::image type="content" source="./media/advisor-alerts/create1.png" alt-text="显示选定的 Azure 顾问 Azure 门户菜单的屏幕截图。":::
 
-    :::image type="content" source="./media/advisor-alerts/create2.png" alt-text="&quot;警报详细信息&quot; 部分的屏幕截图。":::
+2. 在左侧菜单的 " **监视** " 部分，选择 " **警报**"。
+
+    :::image type="content" source="./media/advisor-alerts/create2.png" alt-text="显示选定警报的 &quot;Azure 门户&quot; 菜单的屏幕截图。":::
 
 3. 若要编辑警报，请单击警报名称以打开警报，然后编辑要编辑的字段。
 
@@ -197,5 +199,5 @@ ms.locfileid: "90973658"
  
 
 ## <a name="next-steps"></a>后续步骤
-- 获取[活动日志警报概述](../azure-monitor/platform/alerts-overview.md)，了解如何接收警报。
-- 详细了解[操作组](../azure-monitor/platform/action-groups.md)。
+- 获取[活动日志警报概述](../azure-monitor/alerts/alerts-overview.md)，了解如何接收警报。
+- 详细了解[操作组](../azure-monitor/alerts/action-groups.md)。

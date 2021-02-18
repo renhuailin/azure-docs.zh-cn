@@ -1,22 +1,22 @@
 ---
 title: Azure 服务总线队列入门 | Microsoft Docs
 description: 在本教程中，你将创建 .NET Core 控制台应用程序来向服务总线队列发送消息以及从中接收消息。
-ms.topic: conceptual
+ms.topic: quickstart
 ms.tgt_pltfrm: dotnet
 ms.date: 09/01/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8c862fda5ee2bb5b7418fda1b4e45cd06742cf95
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
-ms.translationtype: MT
+ms.openlocfilehash: e8e70884838d56003694e2da09668527ce5b6c7b
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95819246"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652983"
 ---
 # <a name="get-started-with-service-bus-queues"></a>服务总线队列入门
 在本教程中，你将创建 .NET Core 控制台应用程序来向服务总线队列发送消息以及从中接收消息。
 
 > [!WARNING]
-> 此快速入门使用旧的 有关使用最新的 Azure node.js 包的快速入门，请参阅 [使用 Azure 发送和接收事件](service-bus-dotnet-get-started-with-queues.md)。 
+> 本快速入门使用旧的 Microsoft.Azure.ServiceBus 包。 对于使用最新 Azure.Messaging.ServiceBus 包的快速入门，请参阅[使用 Azure.Messaging.ServiceBus 包发送和接收事件](service-bus-dotnet-get-started-with-queues.md)。 
 
 ## <a name="prerequisites"></a>先决条件
 

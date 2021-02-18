@@ -10,14 +10,14 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.workload: na
 ms.topic: article
-ms.date: 02/01/2021
+ms.date: 02/16/2021
 ms.author: juliako
-ms.openlocfilehash: a6b1fc5adba166aa15a786d3440be1eca7f0a260
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: c8fcd6e662a0beff61209de4b5c4331618b45ea1
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100560515"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653291"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure 媒体服务视频索引器发行说明
 
@@ -29,6 +29,33 @@ ms.locfileid: "100560515"
 * 已知问题
 * Bug 修复
 * 已弃用的功能
+
+## <a name="february-2021"></a>2021 年 2 月
+
+### <a name="multiple-account-owners"></a>多个帐户所有者 
+
+帐户所有者角色已添加到视频索引器。 可以添加、更改和删除用户;更改其角色。 有关如何共享帐户的详细信息，请参阅 [邀请用户](invite-users.md)。
+
+### <a name="audio-event-detection-public-preview"></a> (公开预览版的音频事件检测) 
+
+> [!NOTE]
+> 此功能仅可用于试用帐户。 
+
+现在，视频索引器在内容的非语音部分中检测到以下音频效果： gunshot、玻璃破裂、警报、警笛、爆炸、狗吠、尖叫、大笑、反应 (喝彩、拍手和 booing) 和静默。 
+
+通过选择 "   ->  视频 + 音频索引") 下的 "高级" 选项 "**高级音频** 预设" (为文件编制索引时，新添加的音频影响功能可用。 标准索引将仅包括 **无声** 和更有的 **响应**。 
+
+先前的音频效果模型中包含的 **拍手** 事件类型现在已提取为 "一类 **响应** " 事件类型。
+
+当你选择在 [视频索引器](https://www.videoindexer.ai/)网站上查看视频的 **Insites** 时，音频效果会显示在页面上。
+
+:::image type="content" source="./media/release-notes/audio-detection.png" alt-text="音频事件检测":::
+
+### <a name="named-entities-enhancement"></a>命名实体增强功能  
+
+通常，已扩展并更新了的人员和位置的提取列表。 
+
+此外，该模型现在包含上下文中不是著名的人员和位置，如视频中的 "Sam" 或 "Home"。 
 
 ## <a name="january-2021"></a>2021 年 1 月
 

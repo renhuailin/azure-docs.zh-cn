@@ -3,12 +3,12 @@ title: 管理和监视 Azure VM 备份
 description: 了解如何使用 Azure 备份服务管理和监视 Azure VM 备份。
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: a56f13afa23a81b9cd2b34d34e1ca302c0c667f0
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 51ce88bb67d64ce129a3479d38db9a66dfe65d0a
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "96002897"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100635071"
 ---
 # <a name="manage-azure-vm-backups-with-azure-backup-service"></a>使用 Azure 备份服务管理 Azure VM 备份
 
@@ -97,7 +97,7 @@ ms.locfileid: "96002897"
 * 按需备份的保留期范围是你在触发备份时指定的保留期值。
 
 > [!NOTE]
-> Azure 备份服务每天最多支持9个按需备份，但 Microsoft 建议不超过四个每日按需备份，以确保获得最佳性能。
+> Azure 备份服务每天最多支持三个按需备份，还有一个计划的备份。
 
 若要触发按需备份，请执行以下操作：
 
@@ -190,7 +190,7 @@ ms.locfileid: "96002897"
 
 * 如果为 Azure 备份配置的 Azure VM 在没有停止保护的情况下被删除或移动，则计划备份作业和按需（临时）备份作业都将失败，并显示 UserErrorVmNotFoundV2 错误。 备份预检查将仅对失败的按需备份作业显示为“严重”（不会显示失败的计划作业）。
 * 这些备份项在系统中保持活动状态，并遵守用户设置的备份和保留策略。 这些 Azure VM 的备份数据将根据保留策略保留。 过期的恢复点（最新的恢复点除外）将根据备份策略中设置的保留期范围进行清理。
-* 若要避免任何额外的成本，建议删除主数据源不再存在的备份项。 这种情况下，不再需要已删除资源的备份项/数据，因为最近的恢复点会永久保留，并且根据适用的备份定价收费。
+* 为了避免任何额外费用，建议删除其中的主要数据源不再存在的备份项。 在这种情况下，不再需要已删除资源的备份项/数据，因为系统会永久保留最新的恢复点，并根据相应的备份定价向你收费。
 
 ## <a name="next-steps"></a>后续步骤
 

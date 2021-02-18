@@ -1,21 +1,18 @@
 ---
 title: 在 Azure 虚拟网络中使用 Hive 转换数据
 description: 使用 Azure PowerShell 创建一个数据工厂管道，该管道可以使用 HDInsight 群集上的 Hive 活动转换 Azure 虚拟网络 (VNet) 中的数据。
-services: data-factory
 ms.service: data-factory
-ms.workload: data-services
 author: nabhishek
 ms.author: abnarain
-manager: anandsub
 ms.topic: tutorial
 ms.custom: seo-dt-2019
 ms.date: 01/22/2018
-ms.openlocfilehash: 57915e0b636124265adc8d5f3088cacd20d63746
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 85f51fd52ce3224b37c27cea6c49a8a386fbea2c
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92634005"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100377765"
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用 Hive 活动转换 Azure 虚拟网络中的数据
 
@@ -38,14 +35,14 @@ ms.locfileid: "92634005"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-- **Azure 存储帐户** 。 创建 Hive 脚本并将其上传到 Azure 存储。 Hive 脚本的输出存储在此存储帐户中。 在本示例中，HDInsight 群集使用此 Azure 存储帐户作为主存储。 
-- **Azure 虚拟网络** 。 如果没有 Azure 虚拟网络，请遵照[这些说明](../virtual-network/quick-create-portal.md)创建虚拟网络。 在本示例中，HDInsight 位于 Azure 虚拟网络中。 下面是 Azure 虚拟网络的示例配置。 
+- **Azure 存储帐户**。 创建 Hive 脚本并将其上传到 Azure 存储。 Hive 脚本的输出存储在此存储帐户中。 在本示例中，HDInsight 群集使用此 Azure 存储帐户作为主存储。 
+- **Azure 虚拟网络**。 如果没有 Azure 虚拟网络，请遵照[这些说明](../virtual-network/quick-create-portal.md)创建虚拟网络。 在本示例中，HDInsight 位于 Azure 虚拟网络中。 下面是 Azure 虚拟网络的示例配置。 
 
     ![创建虚拟网络](media/tutorial-transform-data-using-hive-in-vnet/create-virtual-network.png)
-- **HDInsight 群集** 。 创建一个 HDInsight 群集，并按照以下文章中所述，将该群集加入到在前一步骤中创建的虚拟网络：[使用 Azure 虚拟网络扩展 Azure HDInsight](../hdinsight/hdinsight-plan-virtual-network-deployment.md)。 下面是虚拟网络中 HDInsight 的示例配置。 
+- **HDInsight 群集**。 创建一个 HDInsight 群集，并按照以下文章中所述，将该群集加入到在前一步骤中创建的虚拟网络：[使用 Azure 虚拟网络扩展 Azure HDInsight](../hdinsight/hdinsight-plan-virtual-network-deployment.md)。 下面是虚拟网络中 HDInsight 的示例配置。 
 
     ![虚拟网络中的 HDInsight](media/tutorial-transform-data-using-hive-in-vnet/hdinsight-in-vnet-configuration.png)
-- **Azure PowerShell** 。 遵循[如何安装和配置 Azure PowerShell](/powershell/azure/install-Az-ps) 中的说明。
+- **Azure PowerShell**。 遵循[如何安装和配置 Azure PowerShell](/powershell/azure/install-Az-ps) 中的说明。
 
 ### <a name="upload-hive-script-to-your-blob-storage-account"></a>将 Hive 脚本上传到 Blob 存储帐户
 
@@ -93,7 +90,7 @@ ms.locfileid: "92634005"
     ```powershell
     $selfHostedIntegrationRuntimeName = "MySelfHostedIR09142017" 
     ```
-2. 启动 **PowerShell** 。 在完成本快速入门之前，请将 Azure PowerShell 保持打开状态。 如果将它关闭再重新打开，则需要再次运行下述命令。 若要查看目前提供数据工厂的 Azure 区域的列表，请在以下页面上选择感兴趣的区域，然后展开“分析”以找到“数据工厂”：[可用产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/)。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库，等等）和计算资源（HDInsight 等）可以位于其他区域中。
+2. 启动 **PowerShell**。 在完成本快速入门之前，请将 Azure PowerShell 保持打开状态。 如果将它关闭再重新打开，则需要再次运行下述命令。 若要查看目前提供数据工厂的 Azure 区域的列表，请在以下页面上选择感兴趣的区域，然后展开“分析”以找到“数据工厂”：[可用产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/)。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库，等等）和计算资源（HDInsight 等）可以位于其他区域中。
 
     运行以下命令并输入用于登录 Azure 门户的用户名和密码：
         
@@ -168,7 +165,7 @@ ms.locfileid: "92634005"
 
 ### <a name="azure-storage-linked-service"></a>Azure 存储链接服务
 
-使用偏好的编辑器创建一个 JSON 文件，复制 Azure 存储链接服务的以下 JSON 定义，并将该文件另存为 **MyStorageLinkedService.json** 。
+使用偏好的编辑器创建一个 JSON 文件，复制 Azure 存储链接服务的以下 JSON 定义，并将该文件另存为 **MyStorageLinkedService.json**。
 
 ```json
 {
@@ -190,7 +187,7 @@ ms.locfileid: "92634005"
 
 ### <a name="hdinsight-linked-service"></a>HDInsight 链接服务
 
-使用偏好的编辑器创建一个 JSON 文件，复制 Azure HDInsight 链接服务的以下 JSON 定义，并将该文件另存为 **MyHDInsightLinkedService.json** 。
+使用偏好的编辑器创建一个 JSON 文件，复制 Azure HDInsight 链接服务的以下 JSON 定义，并将该文件另存为 **MyHDInsightLinkedService.json**。
 
 ```
 {
@@ -219,9 +216,9 @@ ms.locfileid: "92634005"
 
 更新链接服务定义中以下属性的值：
 
-- **userName** 。 创建群集时指定的群集登录用户的名称。 
-- **password** 。 用户的密码。
-- **clusterUri** 。 使用以下格式指定 HDInsight 群集的 URL：`https://<clustername>.azurehdinsight.net`。  本文假设你有权通过 Internet 访问该群集。 例如，可以通过 `https://clustername.azurehdinsight.net` 连接到该群集。 此地址使用公共网关。如果已使用网络安全组 (NSG) 或用户定义的路由 (UDR) 限制了从 Internet 的访问，则该网关不可用。 要使数据工厂能够将作业提交到 Azure 虚拟网络中的 HDInsight 群集，需要相应地配置 Azure 虚拟网络，使 URL 可解析成 HDInsight 所用的网关的专用 IP 地址。
+- **userName**。 创建群集时指定的群集登录用户的名称。 
+- **password**。 用户的密码。
+- **clusterUri**。 使用以下格式指定 HDInsight 群集的 URL：`https://<clustername>.azurehdinsight.net`。  本文假设你有权通过 Internet 访问该群集。 例如，可以通过 `https://clustername.azurehdinsight.net` 连接到该群集。 此地址使用公共网关。如果已使用网络安全组 (NSG) 或用户定义的路由 (UDR) 限制了从 Internet 的访问，则该网关不可用。 要使数据工厂能够将作业提交到 Azure 虚拟网络中的 HDInsight 群集，需要相应地配置 Azure 虚拟网络，使 URL 可解析成 HDInsight 所用的网关的专用 IP 地址。
 
   1. 在 Azure 门户中，打开 HDInsight 所在的虚拟网络。 打开名称以 `nic-gateway-0` 开头的网络接口。 记下其专用 IP 地址。 例如 10.6.0.15。 
   2. 如果 Azure 虚拟网络包含 DNS 服务器，请更新 DNS 记录，使 HDInsight 群集 URL `https://<clustername>.azurehdinsight.net` 可解析成 `10.6.0.15`。 这是建议的做法。 如果 Azure 虚拟网络中没有 DNS 服务器，可以通过编辑已注册为自承载 Integration Runtime 节点的所有 VM 的 hosts 文件 (C:\Windows\System32\drivers\etc) 并添加如下所示的条目，来暂时解决此问题： 
@@ -244,7 +241,7 @@ ms.locfileid: "92634005"
     ```
 
 ## <a name="author-a-pipeline"></a>创作管道
-本步骤创建包含 Hive 活动的新管道。 该活动执行 Hive 脚本来返回示例表中的数据，并将其保存到定义的路径。 在偏好的编辑器中创建一个 JSON 文件，复制管道定义的以下 JSON 定义，然后将该文件另存为 **MyHivePipeline.json** 。
+本步骤创建包含 Hive 活动的新管道。 该活动执行 Hive 脚本来返回示例表中的数据，并将其保存到定义的路径。 在偏好的编辑器中创建一个 JSON 文件，复制管道定义的以下 JSON 定义，然后将该文件另存为 **MyHivePipeline.json**。
 
 
 ```json

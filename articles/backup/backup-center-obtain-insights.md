@@ -3,16 +3,16 @@ title: 使用备份中心获取见解
 description: 了解如何分析历史趋势，并通过备份中心获取有关备份的更深入见解。
 ms.topic: conceptual
 ms.date: 09/01/2020
-ms.openlocfilehash: c5f707ce3bc8d1172805ac14958a50bf59d1412d
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 3086224e4dbb1be2ccfadbfcfcb7441b68a5ff6b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98893687"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592005"
 ---
 # <a name="obtain-insights-using-backup-center-preview"></a>使用备份中心 (预览获取见解) 
 
-为了分析历史趋势并深入了解你的备份，备份中心提供了一个用于 [备份报表 (预览) ](configure-reports.md)的界面，该界面使用 [Azure Monitor 日志](../azure-monitor/platform/data-platform-logs.md) 和 [Azure 工作簿](../azure-monitor/platform/workbooks-overview.md)。 备份报表提供以下功能：
+为了分析历史趋势并深入了解你的备份，备份中心提供了一个用于 [备份报表 (预览) ](configure-reports.md)的界面，该界面使用 [Azure Monitor 日志](../azure-monitor/logs/data-platform-logs.md) 和 [Azure 工作簿](../azure-monitor/visualize/workbooks-overview.md)。 备份报表提供以下功能：
 
 - 分配和预测需使用的云存储空间。
 

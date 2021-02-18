@@ -3,16 +3,16 @@ title: 教程 - 使用用于 VM 的 Azure Monitor 来监视混合计算机
 description: 了解如何在 Azure Monitor 的混合计算机中收集和分析数据。
 ms.topic: tutorial
 ms.date: 09/23/2020
-ms.openlocfilehash: 76565e40a8d85003c5a03be5fa48f83459657f29
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 409ad0976e02e42e385e22a103cfc06af5a4f3f4
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94738078"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587696"
 ---
 # <a name="tutorial-monitor-a-hybrid-machine-with-azure-monitor-for-vms"></a>教程：使用用于 VM 的 Azure Monitor 来监视混合计算机
 
-[Azure Monitor](../overview.md) 可以直接从混合计算机将数据收集到 Log Analytics 工作区，以便进行详细分析和关联。 通常，这需要遵循配置管理标准，使用脚本、手动或自动方法在计算机上安装 [Log Analytics 代理](../../../azure-monitor/platform/agents-overview.md#log-analytics-agent)。 已启用 Arc 的服务器最近引入了支持安装用于 Windows 和 Linux 的 Log Analytics 和依赖项代理 [VM 扩展](../manage-vm-extensions.md)，从而使 Azure Monitor 能够从非 Azure VM 收集数据。
+[Azure Monitor](../overview.md) 可以直接从混合计算机将数据收集到 Log Analytics 工作区，以便进行详细分析和关联。 通常，这需要遵循配置管理标准，使用脚本、手动或自动方法在计算机上安装 [Log Analytics 代理](../../../azure-monitor/agents/agents-overview.md#log-analytics-agent)。 已启用 Arc 的服务器最近引入了支持安装用于 Windows 和 Linux 的 Log Analytics 和依赖项代理 [VM 扩展](../manage-vm-extensions.md)，从而使 Azure Monitor 能够从非 Azure VM 收集数据。
 
 本教程介绍如何通过简化的一组步骤启用用于 VM 的 Azure Monitor 来配置和收集 Linux 或 Windows 计算机中的数据，这可以简化体验并缩短时间。  
 
@@ -22,9 +22,9 @@ ms.locfileid: "94738078"
 
 * VM 扩展功能仅在[支持区域](../overview.md#supported-regions)的列表中提供。
 
-* 查看[支持的操作系统](../../../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems)，以确保用于 VM 的 Azure Monitor 支持正在启用的服务器操作系统。
+* 查看[支持的操作系统](../../../azure-monitor/vm/vminsights-enable-overview.md#supported-operating-systems)，以确保用于 VM 的 Azure Monitor 支持正在启用的服务器操作系统。
 
-* 查看 [Log Analytics 代理概述](../../../azure-monitor/platform/log-analytics-agent.md#network-requirements)中提供的 Log Analytics 代理的防火墙要求。 用于 VM 的 Azure Monitor 映射依赖项代理本身不传输任何数据，它不需要对防火墙或端口做出任何更改。
+* 查看 [Log Analytics 代理概述](../../../azure-monitor/agents/log-analytics-agent.md#network-requirements)中提供的 Log Analytics 代理的防火墙要求。 用于 VM 的 Azure Monitor 映射依赖项代理本身不传输任何数据，它不需要对防火墙或端口做出任何更改。
 
 ## <a name="sign-in-to-azure-portal"></a>登录到 Azure 门户
 

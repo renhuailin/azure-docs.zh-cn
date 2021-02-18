@@ -6,12 +6,12 @@ author: TimothyMothra
 ms.author: tilee
 ms.date: 01/22/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: f340b4fdf7fef6daecf8801d16d19aee9b89e4d5
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.openlocfilehash: 21184e1623fd47e8367d4c5dfbc2c85debe93124
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2021
-ms.locfileid: "98746452"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587392"
 ---
 # <a name="get-started-with-azure-monitor-application-insights-agent-for-on-premises-servers"></a>本地服务器的 Azure Monitor Application Insights 代理入门
 
@@ -28,9 +28,9 @@ ms.locfileid: "98746452"
 ### <a name="install-prerequisites"></a>安装先决条件
 
 > [!NOTE]
-> 从2020年4月起，PowerShell 库弃用了 TLS 1.1 和1.0。
+> 从 2020 年 4 月起，PowerShell 库已弃用了 TLS 1.1 和 TLS 1.0。
 >
-> 对于可能需要的 additionnal 必备组件，请参阅 [POWERSHELL 库 TLS 支持](https://devblogs.microsoft.com/powershell/powershell-gallery-tls-support)。
+> 有关可能需要的其他先决条件，请参阅 [PowerShell 库 TLS 支持](https://devblogs.microsoft.com/powershell/powershell-gallery-tls-support)。
 >
 
 以管理员身份运行 PowerShell。
@@ -79,9 +79,9 @@ Enable-ApplicationInsightsMonitoring -ConnectionString xxxxxxxx-xxxx-xxxx-xxxx-x
 
  查看遥测：
 
-- [浏览指标](../platform/metrics-charts.md)，以便监视性能和使用情况。
+- [浏览指标](../essentials/metrics-charts.md)，以便监视性能和使用情况。
 - [搜索事件和日志](./diagnostic-search.md)以诊断问题。
-- [使用分析](../log-query/log-query-overview.md)，以便进行更高级的查询。
+- [使用分析](../logs/log-query-overview.md)，以便进行更高级的查询。
 - [创建仪表板](./overview-dashboard.md)。
 
  添加更多遥测：

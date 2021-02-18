@@ -4,26 +4,37 @@ description: 如何将 Java 消息服务 (JMS) 与 Azure 服务总线配合使�
 ms.topic: article
 ms.date: 07/17/2020
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 8363011187a4c2ef77681ece4bb8b1de73ec7a63
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b7e4bf0ad69b6cd183296a7245ad3f720ced76c5
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87801372"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652594"
 ---
-# <a name="use-java-message-service-20-api-with-azure-service-bus-premium-preview"></a>将 Java 消息服务 2.0 API 与 Azure 服务总线高级版配合使用（预览版）
+# <a name="use-java-message-service-20-api-with-azure-service-bus-premium"></a>将 Java 消息服务 2.0 API 与 Azure 服务总线高级版配合使用
 
 本文介绍如何使用热门的 **Java 消息服务 (JMS) 2.0** API 通过高级消息队列协议 (AMQP 1.0) 协议与 Azure 服务总结交互。
 
 > [!NOTE]
-> 对 Java 消息服务 (JMS) 2.0 API 的支持只在 Azure 服务总线高级层提供，且目前是预览版 。
+> 对 Java 消息服务 (JMS) 2.0 API 的支持仅在 **Azure 服务总线高级层** 上可用。
 >
 
-## <a name="get-started-with-service-bus"></a>服务总线入门
+## <a name="pre-requisites"></a>先决条件
+
+### <a name="get-started-with-service-bus"></a>服务总线入门
 
 此指南假定已有服务总线命名空间。 如果没有，则可以使用 [Azure 经典门户](https://portal.azure.com)[创建命名空间和队列](service-bus-create-namespace-portal.md)。 
 
 若要详细了解如何创建服务总线命名空间和队列，请参阅[通过 Azure 门户开始使用服务总线队列](service-bus-quickstart-portal.md)。
+
+### <a name="set-up-a-java-development-environment"></a>设置 Java 开发环境
+
+若要开发 Java 应用程序，需要设置相应的开发环境- 
+   * 安装了 JDK (Java 开发工具包) 或 JRE (Java Runtime Environment) 。
+   * 将 JDK 或 JRE 添加到生成路径和适当的系统变量。
+   * 安装 Java IDE 以利用 JDK 或 JRE。 例如 Eclipse 或 IntelliJ。
+
+若要详细了解如何在 Azure 上为 Java 准备开发人员环境，请使用 [本指南](https://docs.microsoft.com/azure/developer/java/fundamentals/)。
 
 ## <a name="what-jms-features-are-supported"></a>支持哪些 JMS 功能？
 
@@ -72,11 +83,19 @@ ms.locfileid: "87801372"
     JMSContext jmsContext = factory.createContext();
     ```
 
+    >[!IMPORTANT]
+    > 尽管名称类似，但 JMS "会话" 和 "服务总线" 会话是完全独立的。
+    >
+    > 在 JMS 1.1 中，Session 是 API 的基本构建基块，它允许创建 MessageProducer、MessageConsumer 和消息本身。 有关更多详细信息，请查看 [JMS API 编程模型](https://docs.oracle.com/javaee/6/tutorial/doc/bnceh.html)
+    >
+    > 在服务总线中， [会话](message-sessions.md) 是服务和客户端构造，可对队列和订阅启用 FIFO 处理。
+    >
+
 ### <a name="write-the-jms-application"></a>编写 JMS 应用程序
 
 `Session` 或 `JMSContext` 经过实例化后，对于管理和数据这两方面的操作，应用程序都可以使用熟悉的 JMS API 来执行。
 
-请参阅[支持的 JMS 功能](how-to-use-java-message-service-20.md#what-jms-features-are-supported)的列表，以了解哪些 API 在此预览版中受支持。
+若要查看受支持的 Api，请参阅 [支持的 JMS 功能](how-to-use-java-message-service-20.md#what-jms-features-are-supported) 的列表。
 
 下面是一些用于开始使用 JMS 的示例代码片段 -
 
@@ -134,7 +153,7 @@ Message msg = (Message) sharedDurableConsumer.receive();
 
 若要详细了解 Azure 服务总线以及 Java 消息服务 (JMS) 实体，请查看以下链接 - 
 * [服务总线 - 队列、主题和订阅](service-bus-queues-topics-subscriptions.md)
-* [服务总线 - Java 消息服务实体](service-bus-queues-topics-subscriptions.md#java-message-service-jms-20-entities-preview)
+* [服务总线 - Java 消息服务实体](service-bus-queues-topics-subscriptions.md#java-message-service-jms-20-entities)
 * [Azure 服务总线中的 AMQP 1.0 支持](service-bus-amqp-overview.md)
 * [服务总线 AMQP 1.0 开发人员指南](service-bus-amqp-dotnet.md)
 * [服务总线队列入门](service-bus-dotnet-get-started-with-queues.md)

@@ -9,18 +9,18 @@ ms.date: 08/20/2019
 ms.author: normesta
 ms.reviewer: sumameh
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 738ed3b819a62760408341184daca8a8ba555029
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: f5fa4ad357e937fed7df5be24a1fc78409a0259b
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95913668"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100516390"
 ---
 # <a name="tutorial-implement-the-data-lake-capture-pattern-to-update-a-databricks-delta-table"></a>教程：实现数据湖捕获模式以更新 Databricks Delta 表
 
 本教程介绍如何处理使用分层命名空间的存储帐户中的事件。
 
-你将生成一个小型解决方案，它可以让用户通过上传描述销售订单的逗号分隔值 (csv) 文件，来填充 Databricks Delta 表。 为了生成此解决方案，你要将事件网格订阅、Azure 函数和 Azure Databricks 中的[作业](https://docs.azuredatabricks.net/user-guide/jobs.html)连接到一起。
+你将生成一个小型解决方案，它可以让用户通过上传描述销售订单的逗号分隔值 (csv) 文件，来填充 Databricks Delta 表。 为了生成此解决方案，你要将事件网格订阅、Azure 函数和 Azure Databricks 中的[作业](/azure/databricks/jobs)连接到一起。
 
 在本教程中，将：
 
@@ -33,7 +33,7 @@ ms.locfileid: "95913668"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+* 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 * 创建一个采用分层命名空间的存储帐户 (Azure Data Lake Storage Gen2)。 本教程使用名为 `contosoorders` 的存储帐户。 请确保你的用户帐户分配有[存储 Blob 数据参与者角色](../common/storage-auth-aad-rbac-portal.md)。
 
@@ -87,7 +87,7 @@ ms.locfileid: "95913668"
 
 在本部分，使用 Azure 门户创建 Azure Databricks 工作区。
 
-1. 在 Azure 门户中，选择“创建资源” > “分析” > “Azure Databricks”。
+1. 在 Azure 门户中，选择“创建资源”   >   “分析” >   “Azure Databricks”。
 
     ![Azure 门户上的 Databricks](./media/data-lake-storage-quickstart-create-databricks-account/azure-databricks-on-portal.png "Azure 门户上的 Databricks")
 
@@ -116,7 +116,7 @@ ms.locfileid: "95913668"
 
 4. 选择“创建群集”。  群集运行后，可将笔记本附加到该群集，并运行 Spark 作业。
 
-有关创建群集的详细信息，请参阅[在 Azure Databricks 中创建 Spark 群集](https://docs.azuredatabricks.net/user-guide/clusters/create.html)。
+有关创建群集的详细信息，请参阅[在 Azure Databricks 中创建 Spark 群集](/azure/databricks/clusters/create)。
 
 ### <a name="create-a-notebook"></a>创建笔记本
 
@@ -153,7 +153,7 @@ ms.locfileid: "95913668"
     此代码将创建名为 **source_file** 的小组件。 稍后你将创建一个 Azure 函数，用于调用此代码并将文件路径传递到该小组件。  此代码还使用存储帐户对你的服务主体进行身份验证，并创建要在其他单元中使用的一些变量。
 
     > [!NOTE]
-    > 在生产设置中，请考虑将身份验证密钥存储在 Azure Databricks 中。 然后，将查找密钥（而不是身份验证密钥）添加到代码块。 <br><br>例如，不使用这行代码：`spark.conf.set("fs.azure.account.oauth2.client.secret", "<password>")`，而是使用以下代码行：`spark.conf.set("fs.azure.account.oauth2.client.secret", dbutils.secrets.get(scope = "<scope-name>", key = "<key-name-for-service-credential>"))`。 <br><br>完成了本教程之后，请参阅 Azure Databricks 网站上的 [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) 一文以查看此方法的示例。
+    > 在生产设置中，请考虑将身份验证密钥存储在 Azure Databricks 中。 然后，将查找密钥（而不是身份验证密钥）添加到代码块。 <br><br>例如，不使用这行代码：`spark.conf.set("fs.azure.account.oauth2.client.secret", "<password>")`，而是使用以下代码行：`spark.conf.set("fs.azure.account.oauth2.client.secret", dbutils.secrets.get(scope = "<scope-name>", key = "<key-name-for-service-credential>"))`。 <br><br>完成了本教程之后，请参阅 Azure Databricks 网站上的 [Azure Data Lake Storage Gen2](/azure/databricks/data/data-sources/azure/azure-datalake-gen2) 一文以查看此方法的示例。
 
 2. 按 **SHIFT + ENTER** 键，运行此块中的代码。
 

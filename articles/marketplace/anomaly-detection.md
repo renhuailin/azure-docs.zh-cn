@@ -4,31 +4,29 @@ description: 了解计费计费的自动异常情况检测如何帮助确保客�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 1/09/2021
+ms.date: 2/17/2021
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: d4fb88854359dcd6e383b47d2a8ce4e9c91f867a
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: 7f1bcac49ccb12ea1e0517aed5a139e549451ec0
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99989309"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653000"
 ---
-# <a name="anomaly-detection-for-metered-billing"></a>按流量计费的异常情况检测
+# <a name="anomaly-detection-for-metered-billing"></a>针对按流量计费的异常情况检测
 
-本文提供了有关 marketplace 计量服务和关联的自动异常检测功能的详细信息，以帮助确保我们为客户正确开票，以按流量计费。 按流量计费选项目前可用于 [软件即服务](plan-saas-offer.md) (SaaS) 产品和使用托管应用程序计划的 [Azure 应用程序](plan-azure-application-offer.md#types-of-plans) 。 此选项允许合作伙伴在基于非标准单位收费的商业市场计划中创建产品/服务。
+自定义的按流量计费选项目前可用于 [软件即服务](plan-saas-offer.md) (SaaS) 产品和使用托管应用程序计划的 [Azure 应用程序](plan-azure-application-offer.md#types-of-plans) 。
 
-对于部署了 SaaS 和托管应用程序的自定义计量器的合作伙伴，可以查看伙伴中心中特定 _自定义计量_ 的异常 _事件_ 的偏差。 为了缓解此风险，合作伙伴中心使用异常情况检测服务，该服务应用机器学习算法来确定正常的按流量计费行为，分析按流量计费的使用情况，并使用最少的用户干预发现异常。 使用按流量计费的数据集的 _异常情况检测模型_ ，合作伙伴中心目标是在报告的使用情况超过预期使用量时通知发布者。
+如果你使用 "按流量计费" 选项在 "商业 marketplace 计划" 中创建产品/服务，以便根据非标准单位对使用情况收费，则需要了解客户在使用超过预期的服务时的情况。
 
-## <a name="usability-experience"></a>可用性体验
+## <a name="use-the-anomaly-detection-feature"></a>使用异常检测功能
 
-Microsoft 在 Microsoft 向客户开具发票之前，会依赖合作伙伴来报告其客户对其 SaaS 或 Azure 托管应用程序产品/服务的超额使用情况。 如果报告了错误的使用情况，则客户可能会收到错误的发票，从而损坏 Microsoft 和合作伙伴的信誉。
+Microsoft 在向客户开具发票之前，会向你提供合作伙伴，以报告客户对其 SaaS 或 Azure 托管应用程序的使用情况。 如果报告了错误的使用情况，则客户可能会收到错误的发票，从而损坏 Microsoft 和合作伙伴的信誉。
 
-为了帮助减轻这一点，为 SaaS 应用和 Azure 应用程序托管应用程序计划提供了自动异常检测功能。 此功能是一种机器学习模型，可主动监视使用情况以按计费计费，并预测预期范围内的预期使用值。 如果使用情况不在预期范围内，则将其视为异常，并在合作伙伴中心的商业市场计划中的产品/服务概述页面上向合作伙伴显示警报通知。
+为了帮助确保客户的计费正确，请将 **异常检测** 功能用于 SaaS 应用和 Azure 应用程序托管应用程序计划。 此功能监视按流量计费的使用情况，并预测预期范围内的预期使用值。 如果使用情况不在预期范围内，则将其视为意外， (异常情况 ) ，你将在合作伙伴中心的商业市场计划中的产品/服务概述页上收到警报通知。 对于已设置的每个自定义计量维度，你都可以跟踪客户的每日使用情况。
 
-机器学习模型每天分析超额使用情况。 发布者可以查看针对每个产品/服务的自定义计量尺寸报告的所有异常情况。
-
-### <a name="view-and-manage-metered-usage-anomalies"></a>查看和管理按流量计费的异常
+## <a name="view-and-manage-metered-usage-anomalies"></a>查看和管理按流量计费的异常
 
 1. 登录到 [合作伙伴中心](https://partner.microsoft.com/dashboard/home)。
 1. 在左侧导航菜单中，选择 "**商业市场**  >  **分析**"。

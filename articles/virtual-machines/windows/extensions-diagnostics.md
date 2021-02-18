@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.date: 04/06/2018
 ms.author: johnkem
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: c981214c69653b3a4a687a861cb348f3587def7c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 06c614d57002c7944d88df123d06ac63d04b288f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89078752"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591138"
 ---
 # <a name="azure-diagnostics-extension-for-windows-vms"></a>适用于 Windows VM 的 Azure 诊断扩展
 
@@ -34,7 +34,7 @@ Azure 诊断扩展要求目标虚拟机已连接到 Internet。
 
 ## <a name="extension-schema"></a>扩展架构
 
-[本文档介绍了 Azure 诊断扩展架构和属性值。](../../azure-monitor/platform/diagnostics-extension-schema-windows.md)
+[本文档介绍了 Azure 诊断扩展架构和属性值。](../../azure-monitor/agents/diagnostics-extension-schema-windows.md)
 
 ## <a name="template-deployment"></a>模板部署
 
@@ -81,12 +81,12 @@ Set-AzVMDiagnosticsExtension -ResourceGroupName $vm_resourcegroup `
 az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 ```
 
-有关 Azure 诊断扩展的更全面的故障排除指南，请[参阅此文章](../../azure-monitor/platform/diagnostics-extension-troubleshooting.md)。
+有关 Azure 诊断扩展的更全面的故障排除指南，请[参阅此文章](../../azure-monitor/agents/diagnostics-extension-troubleshooting.md)。
 
 ### <a name="support"></a>支持
 
 如果对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。 有关使用 Azure 支持的信息，请阅读 [Microsoft Azure 支持常见问题解答](https://azure.microsoft.com/support/faq/)。
 
 ## <a name="next-steps"></a>后续步骤
-* [详细了解 Azure 诊断扩展](../../azure-monitor/platform/diagnostics-extension-overview.md)
-* [查看扩展架构和版本](../../azure-monitor/platform/diagnostics-extension-schema-windows.md)
+* [详细了解 Azure 诊断扩展](../../azure-monitor/agents/diagnostics-extension-overview.md)
+* [查看扩展架构和版本](../../azure-monitor/agents/diagnostics-extension-schema-windows.md)

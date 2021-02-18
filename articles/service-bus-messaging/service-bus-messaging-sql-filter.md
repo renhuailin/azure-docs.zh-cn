@@ -3,16 +3,16 @@ title: Azure 服务总线订阅规则 SQL 筛选器语法 |Microsoft Docs
 description: 本文提供了有关 SQL 筛选器语法的详细信息。 SQL 筛选器支持 SQL-92 标准的子集。
 ms.topic: article
 ms.date: 11/24/2020
-ms.openlocfilehash: 810d17d458de79c851b6f1ada4556a231bfd20eb
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 022f6cb1d698a10dc216db8d41c172691f7535ab
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98742975"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652935"
 ---
 # <a name="subscription-rule-sql-filter-syntax"></a>订阅规则 SQL 筛选器语法
 
-SQL 筛选器是服务总线主题订阅的某个可用筛选器类型。 这是一种文本表达式，可倾向标准的92一部分。 筛选表达式与 [Azure 资源管理器模板](service-bus-resource-manager-namespace-topic-with-rule.md)中服务总线 `Rule` 的“sqlFilter”属性的 `sqlExpression` 元素一起使用，或者与 Azure CLI `az servicebus topic subscription rule create` 命令的 [`--filter-sql-expression`](/cli/azure/servicebus/topic/subscription/rule#az_servicebus_topic_subscription_rule_create) 参数以及几个允许管理订阅规则的 SDK 函数一起使用。
+SQL 筛选器是服务总线主题订阅的某个可用筛选器类型。 它是一个依赖于 SQL-92 标准子集的文本表达式。 筛选表达式与 [Azure 资源管理器模板](service-bus-resource-manager-namespace-topic-with-rule.md)中服务总线 `Rule` 的“sqlFilter”属性的 `sqlExpression` 元素一起使用，或者与 Azure CLI `az servicebus topic subscription rule create` 命令的 [`--filter-sql-expression`](/cli/azure/servicebus/topic/subscription/rule#az_servicebus_topic_subscription_rule_create) 参数以及几个允许管理订阅规则的 SDK 函数一起使用。
 
 服务总线高级版还通过 JMS 2.0 API 支持 [JMS SQL 消息选择器语法](https://docs.oracle.com/javaee/7/api/javax/jms/Message.html)。
 
@@ -269,8 +269,8 @@ SQL 筛选器是服务总线主题订阅的某个可用筛选器类型。 这是
   
 -   在进行数据类型提升和隐式转换时，算术运算符（例如 `+`、`-`、`*`、`/` 和 `%`）与 C# 运算符绑定遵循相同的语义。
 
-
-[!INCLUDE [service-bus-filter-examples](../../includes/service-bus-filter-examples.md)]
+## <a name="examples"></a>示例
+有关示例，请参阅 [服务总线筛选器示例](service-bus-filter-examples.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

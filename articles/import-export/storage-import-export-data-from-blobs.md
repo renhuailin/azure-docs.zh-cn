@@ -5,16 +5,16 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/14/2021
+ms.date: 02/16/2021
 ms.author: alkohli
 ms.subservice: common
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 772be332af1476975d91eb270bec24d6d241a616
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 8ccc7b641e2bfcb4ea8733b9d4f793229c430bc0
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98706265"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652851"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>使用 Azure 导入/导出服务从 Azure Blob 存储导出数据
 
@@ -43,13 +43,13 @@ ms.locfileid: "98706265"
 在 Azure 门户中执行以下步骤来创建导出作业。
 
 1. 登录到 <https://portal.azure.com/> 。
-2. 转到“所有服务”>“存储”>“导入/导出作业”。
+2. 搜索 **导入/导出作业**。
 
-    ![转到导入/导出作业](./media/storage-import-export-data-from-blobs/export-from-blob1.png)
+    ![搜索导入/导出作业](./media/storage-import-export-data-to-blobs/import-to-blob-1.png)
 
-3. 单击“创建导入/导出作业”。
+3. 选择“+ 新建”  。
 
-    ![单击导入/导出作业](./media/storage-import-export-data-from-blobs/export-from-blob2.png)
+    ![选择 "+ 新建" 以创建新的 ](./media/storage-import-export-data-to-blobs/import-to-blob-2.png)
 
 4. 在“基本信息”中：
 
@@ -60,7 +60,7 @@ ms.locfileid: "98706265"
     - 选择一个订阅。
     - 输入或选择一个资源组。
 
-        ![基础知识](./media/storage-import-export-data-from-blobs/export-from-blob3.png)
+        ![基础知识](./media/storage-import-export-data-from-blobs/export-from-blob-3.png)
 
 5. 在“作业详细信息”中：
 
@@ -69,17 +69,17 @@ ms.locfileid: "98706265"
     - 指定要从存储帐户导出到空驱动器的 blob 数据。
     - 选择“全部导出”以导出存储帐户中的所有 blob 数据。
 
-         ![全部导出](./media/storage-import-export-data-from-blobs/export-from-blob4.png)
+         ![全部导出](./media/storage-import-export-data-from-blobs/export-from-blob-4.png)
 
     - 可以指定要导出的容器和 blob。
         - **指定要导出的 blob**：使用“等于”选择器。 指定 blob 的相对路径，以容器名称开头。 使用 *$root* 指定根容器。
         - **指定以某个前缀开头的所有 blob**：使用“开头为”选择器。 指定以正斜杠“/”开头的前缀。 该前缀可以是容器名称的前缀、完整容器名称或者后跟 Blob 名称前缀的完整容器名称。 必须以有效格式提供 blob 路径，以免在处理过程中出现错误，如以下屏幕截图所示。 有关详细信息，请参阅[有效 blob 路径示例](#examples-of-valid-blob-paths)。
 
-           ![导出所选容器和 blob](./media/storage-import-export-data-from-blobs/export-from-blob5.png)
+           ![导出所选容器和 blob](./media/storage-import-export-data-from-blobs/export-from-blob-5.png)
 
     - 可以从 blob 列表文件进行导出。
 
-        ![从 blob 列表文件导出](./media/storage-import-export-data-from-blobs/export-from-blob6.png)
+        ![从 blob 列表文件导出](./media/storage-import-export-data-from-blobs/export-from-blob-6.png)
 
    > [!NOTE]
    > 如果在复制数据时，要导出的 blob 正在使用中，则 Azure 导入/导出服务将生成该 blob 的快照并复制快照。

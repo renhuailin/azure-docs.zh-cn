@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 46c41a4868c80bf9ba1c2c6d4a8286c3a8f47c3d
-ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
+ms.openlocfilehash: cbab73a2fb3aecaacdfc92950c0d0b86edf775af
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100530427"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653340"
 ---
 # <a name="manage-digital-twins"></a>管理数字孪生
 
@@ -160,7 +160,7 @@ ms.locfileid: "100530427"
 
 :::code language="json" source="~/digital-twins-docs-samples/models/patch.json":::
 
-您可以使用 SDK 中的来创建修补程序 `JsonPatchDocument` 。 [](how-to-use-apis-sdks.md) 示例如下。
+可以使用 Azure .NET SDK 的 [JsonPatchDocument](/dotnet/api/azure.jsonpatchdocument?view=azure-dotnet&preserve-view=true)创建修补程序。 示例如下。
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_other.cs" id="UpdateTwin":::
 
