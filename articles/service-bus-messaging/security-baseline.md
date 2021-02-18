@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 00d19d7b554e8a867412cfb982e1377fd90bd936
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 8b3a67fc06594a4782ba55c17ab36c0bad9cf2a0
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624517"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574924"
 ---
 # <a name="azure-security-baseline-for-service-bus"></a>服务总线的 Azure 安全基线
 
@@ -143,9 +143,9 @@ ms.locfileid: "98624517"
 
 **指导**：使用 Azure 活动日志监视网络资源配置，并检测与 Azure 服务总线相关的网络资源的更改。 在 Azure Monitor 中创建当关键网络资源发生更改时触发的警报。
 
-- [如何查看和检索 Azure 活动日志事件](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [如何查看和检索 Azure 活动日志事件](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [如何在 Azure Monitor 中创建警报](../azure-monitor/platform/alerts-activity-log.md)
+- [如何在 Azure Monitor 中创建警报](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -161,7 +161,7 @@ ms.locfileid: "98624517"
 
 - [如何配置 Azure 服务总线的诊断设置](service-bus-diagnostic-logs.md)
 
-- [了解 Azure 活动日志](../azure-monitor/platform/platform-logs-overview.md)
+- [了解 Azure 活动日志](../azure-monitor/essentials/platform-logs-overview.md)
 
 - [如何加入 Azure Sentinel](../sentinel/quickstart-onboard.md) 
 
@@ -177,7 +177,7 @@ ms.locfileid: "98624517"
 
 - [如何启用 Azure 服务总线的诊断设置](service-bus-diagnostic-logs.md)
 
-- [如何启用 Azure 活动日志的诊断设置](../azure-monitor/platform/activity-log.md)
+- [如何启用 Azure 活动日志的诊断设置](../azure-monitor/essentials/activity-log.md)
 
 **Azure 安全中心监视**：是
 
@@ -187,7 +187,7 @@ ms.locfileid: "98624517"
 
 **指导**：在 Azure Monitor 中，根据组织的合规性规定设置 Log Analytics 工作区保留期，以捕获和查看与服务总线相关的事件。
 
-- [如何为 Log Analytics 工作区设置日志保留参数](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [如何为 Log Analytics 工作区设置日志保留参数](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure 安全中心监视**：不适用
 
@@ -197,9 +197,9 @@ ms.locfileid: "98624517"
 
 **指导**：分析和监视日志中的异常行为，并定期查看与服务总线实体相关的结果。 使用 Azure Monitor 查看日志并对与服务总线相关的日志数据执行查询。
 
-- [有关 Log Analytics 工作区的详细信息](../azure-monitor/log-query/log-analytics-tutorial.md)
+- [有关 Log Analytics 工作区的详细信息](../azure-monitor/logs/log-analytics-tutorial.md)
 
-- [如何在 Azure Monitor 中执行自定义查询](../azure-monitor/log-query/get-started-queries.md)
+- [如何在 Azure Monitor 中执行自定义查询](../azure-monitor/logs/get-started-queries.md)
 
 - [如何加入 Azure Sentinel](../sentinel/quickstart-onboard.md)
 
@@ -215,7 +215,7 @@ ms.locfileid: "98624517"
 
 - [如何在 Azure 安全中心管理警报](../security-center/security-center-managing-and-responding-alerts.md)
 
-- [如何针对 Log Analytics 日志数据发出警报](../azure-monitor/learn/tutorial-response.md)
+- [如何针对 Log Analytics 日志数据发出警报](../azure-monitor/alerts/tutorial-response.md)
 
 **Azure 安全中心监视**：当前不可用
 
@@ -491,7 +491,7 @@ Microsoft 管理 Azure 服务总线的底层基础结构，并实施了严格控
 
 **指导**：将 Azure Monitor 与 Azure 活动日志结合使用，以创建在 Azure 服务总线的生产实例和其他关键资源或相关资源发生更改时发出的警报。
 
-- [如何针对 Azure 活动日志事件创建警报](../azure-monitor/platform/alerts-activity-log.md)
+- [如何针对 Azure 活动日志事件创建警报](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure 安全中心监视**：不适用
 

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: dd4078d414048d858c46f6757daa0a87a698eaab
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: ceaa16ee2a54886cde45f37ea90ed617abafffc1
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91976061"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546901"
 ---
 # <a name="tutorial-configure-the-device-settings-for-azure-stack-edge-pro-with-gpu"></a>教程：使用 GPU 配置 Azure Stack Edge Pro 的设备设置
 
@@ -82,7 +82,7 @@ ms.locfileid: "91976061"
         ![本地 Web UI“更新服务器”页 2](./media/azure-stack-edge-gpu-deploy-set-up-device-update-time/update-3.png)
 
         > [!NOTE] 
-        > 如果配置了单独的 Windows 更新服务器，并且选择通过 https（而不是 http）进行连接，则需要提供连接到更新服务器所需的签名链证书。 有关如何创建和上传证书的信息，请转到[管理证书](azure-stack-edge-j-series-manage-certificates.md)。 
+        > 如果配置了单独的 Windows 更新服务器，并且选择通过 https（而不是 http）进行连接，则需要提供连接到更新服务器所需的签名链证书。 有关如何创建和上传证书的信息，请转到[管理证书](azure-stack-edge-gpu-manage-certificates.md)。 
 
 2. 选择“应用”。 
 3. 配置更新服务器后，选择“下一步:时间”。

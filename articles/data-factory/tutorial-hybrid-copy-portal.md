@@ -1,22 +1,18 @@
 ---
 title: 使用 Azure 门户将数据从 SQL Server 复制到 Blob 存储
 description: 了解如何在 Azure 数据工厂中使用自承载 Integration Runtime 将数据从本地数据存储复制到云。
-services: data-factory
 ms.author: abnarain
 author: nabhishek
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 11/09/2020
-ms.openlocfilehash: 172ebb5f5b7896b6b642c1fe6c5d01afb1dbf479
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: c44d00a5b23bff5e00864b44a396bcedfe5ea668
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94553601"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100391195"
 ---
 # <a name="copy-data-from-a-sql-server-database-to-azure-blob-storage"></a>将数据从 SQL Server 数据库复制到 Azure Blob 存储
 
@@ -192,7 +188,7 @@ ms.locfileid: "94553601"
 
     b. 在“表名称”下，选择 **[dbo].[emp]** 。
     
-    c. 选择“确定”。
+    c. 选择“确定”  。
 
 1. 转到包含 SQLServerToBlobPipeline 的选项卡，或在树状视图中选择“SQLServerToBlobPipeline”。 
 
@@ -208,7 +204,7 @@ ms.locfileid: "94553601"
 
 1. 在“新建链接服务(Azure Blob 存储)”对话框中，输入 **AzureStorageLinkedService** 作为名称，从“存储帐户名称”列表中选择你的存储帐户。  测试连接，然后选择“创建”以部署该链接服务。
 
-1. 创建链接服务后，将返回到“设置属性”页。 选择“确定”。
+1. 创建链接服务后，将返回到“设置属性”页。 选择“确定”  。
 
 1. 打开接收器数据集。 在“连接”选项卡中执行以下步骤：
 
@@ -249,7 +245,7 @@ ms.locfileid: "94553601"
 
 
 ## <a name="next-steps"></a>后续步骤
-此示例中的管道将数据从 Blob 存储中的一个位置复制到另一个位置。 你已了解如何执行以下操作：
+此示例中的管道将数据从 Blob 存储中的一个位置复制到另一个位置。 你已了解如何：
 
 > [!div class="checklist"]
 > * 创建数据工厂。

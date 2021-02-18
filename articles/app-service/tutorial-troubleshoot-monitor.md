@@ -5,12 +5,12 @@ author: msangapu-msft
 ms.author: msangapu
 ms.topic: tutorial
 ms.date: 06/20/2020
-ms.openlocfilehash: af2711a3d219bb472334ad61bad0b87f6c691dab
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: d45a8b8f426df32b9f5ac6f64237107083e0f9ab
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98183194"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100586292"
 ---
 # <a name="tutorial-troubleshoot-an-app-service-app-with-azure-monitor"></a>教程：使用 Azure Monitor 排查应用服务应用的问题
 
@@ -78,7 +78,7 @@ az monitor log-analytics workspace create --resource-group myResourceGroup --wor
 运行以下命令创建 AppServiceConsoleLogs（标准输出/错误）和 AppServiceHTTPLogs（Web 服务器日志）的诊断设置。 将 \<app-name> 和 \<workspace-name> 替换为你的值 。 
 
 > [!NOTE]
-> 前两个命令 `resourceID` 和 `workspaceID` 是要在 `az monitor diagnostic-settings create` 命令中使用的变量。 有关此命令的详细信息，请参阅[使用 Azure CLI 创建诊断设置](../azure-monitor/platform/diagnostic-settings.md#create-using-azure-cli)。
+> 前两个命令 `resourceID` 和 `workspaceID` 是要在 `az monitor diagnostic-settings create` 命令中使用的变量。 有关此命令的详细信息，请参阅[使用 Azure CLI 创建诊断设置](../azure-monitor/essentials/diagnostic-settings.md#create-using-azure-cli)。
 >
 
 ```bash
@@ -129,7 +129,7 @@ az monitor diagnostic-settings create --resource $resourceID \
 
 ### <a name="log-queries"></a>日志查询
 
-日志查询可帮助你充分利用 Azure Monitor 日志中收集的数据的价值。 使用日志查询可以识别 AppServiceHTTPLogs 和 AppServiceConsoleLogs 中的日志。 有关日志查询的详细信息，请参阅[日志查询概述](../azure-monitor/log-query/log-query-overview.md)。
+日志查询可帮助你充分利用 Azure Monitor 日志中收集的数据的价值。 使用日志查询可以识别 AppServiceHTTPLogs 和 AppServiceConsoleLogs 中的日志。 有关日志查询的详细信息，请参阅[日志查询概述](../azure-monitor/logs/log-query-overview.md)。
 
 ### <a name="view-appservicehttplogs-with-log-query"></a>使用日志查询查看 AppServiceHTTPLogs
 
@@ -269,6 +269,6 @@ az monitor diagnostic-settings delete --resource $resourceID -n myMonitorLogs
 > * 使用日志查询来识别和排查 Web 应用错误
 
 ## <a name="next-steps"></a><a name="nextsteps"></a> 后续步骤
-* [使用 Azure Monitor 查询日志](../azure-monitor/log-query/log-query-overview.md)
+* [使用 Azure Monitor 查询日志](../azure-monitor/logs/log-query-overview.md)
 * [在 Visual Studio 中对 Azure 应用服务进行故障排除](troubleshoot-dotnet-visual-studio.md)
 * [在 HDInsight 中分析应用日志](https://gallery.technet.microsoft.com/scriptcenter/Analyses-Windows-Azure-web-0b27d413)

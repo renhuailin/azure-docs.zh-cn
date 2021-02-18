@@ -6,12 +6,12 @@ ms.author: panshar
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 10/22/2019
-ms.openlocfilehash: face3d02ee72d1e05c6c08330dae4fffc2fd0e0b
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: bfb4db5d3ebf69f9c7f552c175d33a8b817d1562
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96754243"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595140"
 ---
 # <a name="delete-an-azure-migrate-project"></a>删除 Azure Migrate 项目
 
@@ -26,8 +26,8 @@ ms.locfileid: "96754243"
 - 如果已将 Log Analytics 工作区附加到服务器评估工具进行依赖关系分析，请决定是否要删除工作区。 
     - 不会自动删除此工作区。 请手动删除它。
     - 在删除工作区之前，验证工作区的用途。 同一 Log Analytics 工作区可用于多个方案。
-    - 在删除项目之前，你可以在 OMS 工作区中的 " **Azure Migrate 服务器**  >  **Azure Migrate-服务器评估**" 中找到工作 **OMS Workspace** 区的链接。
-    - 若要在删除项目后删除工作区，请在相关资源组中找到工作区，并按照 [这些说明](../azure-monitor/platform/delete-workspace.md)进行操作。
+    - 在删除项目之前，你可以在 OMS 工作区中的 " **Azure Migrate 服务器**  >  **Azure Migrate-服务器评估**" 中找到工作区的链接。
+    - 若要在删除项目后删除工作区，请在相关资源组中找到工作区，并按照 [这些说明](../azure-monitor/logs/delete-workspace.md)进行操作。
 
 
 ## <a name="delete-a-project"></a>删除项目
@@ -51,7 +51,7 @@ ms.locfileid: "96754243"
 
 ### <a name="vmwarephysical-server"></a>VMware/物理服务器
 
-**资源** | **类型**
+**资源** | 类型
 --- | ---
 "Appliancename" kv | 密钥保管库
 "Appliancename" 站点 | OffAzure/VMwareSites
@@ -67,7 +67,7 @@ migrateapplisbns16041 | 服务总线命名空间
 
 ### <a name="hyper-v-vm"></a>Hyper-V VM 
 
-**资源** | **类型**
+**资源** | 类型
 --- | ---
 ProjectName | Microsoft. 迁移/migrateprojects
 "项目名称" 项目 | Microsoft. 迁移/assessmentProjects

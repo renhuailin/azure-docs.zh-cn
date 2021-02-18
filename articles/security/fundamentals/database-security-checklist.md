@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: e9845eaf6d84caad3ddb8c7e615cb72f71c91f3b
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 80455b442bbfb9c8a7d40799b2ddd5fc25460578
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94412827"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595588"
 ---
 # <a name="azure-database-security-checklist"></a>Azure 数据库安全性清单
 
@@ -53,7 +53,7 @@ ms.locfileid: "94412827"
 |<br> 数据库访问 | <ul><li>[身份验证](../../azure-sql/database/logins-create-manage.md)（Azure Active Directory 身份验证），AD 身份验证使用 Azure Active Directory 管理的标识。</li><li>[授权](../../azure-sql/database/logins-create-manage.md)，授予用户必需的最低权限。</li></ul> |
 |<br>应用程序访问| <ul><li>[行级别安全性](/sql/relational-databases/security/row-level-security)（使用安全策略，同时基于用户的标识、角色或执行上下文来限制行级别访问）。</li><li>[动态数据掩码](../../azure-sql/database/dynamic-data-masking-overview.md)（使用“权限和策略”，通过对非特权用户模糊化敏感数据来限制此类数据的泄露）</li></ul>|
 |**主动监视**||  
-| <br>跟踪和检测| <ul><li>[审核](../../azure-sql/database/auditing-overview.md)跟踪数据库事件，并将事件写入 [Azure 存储帐户](../../storage/common/storage-account-create.md)中的审核日志/活动日志。</li><li>使用 [Azure Monitor 活动日志](../../azure-monitor/platform/platform-logs-overview.md)跟踪 Azure 数据库运行状况。</li><li>[威胁检测](../../azure-sql/database/threat-detection-configure.md)会检测异常的数据库活动，指出数据库有潜在的安全威胁。 </li></ul> |
+| <br>跟踪和检测| <ul><li>[审核](../../azure-sql/database/auditing-overview.md)跟踪数据库事件，并将事件写入 [Azure 存储帐户](../../storage/common/storage-account-create.md)中的审核日志/活动日志。</li><li>使用 [Azure Monitor 活动日志](../../azure-monitor/essentials/platform-logs-overview.md)跟踪 Azure 数据库运行状况。</li><li>[威胁检测](../../azure-sql/database/threat-detection-configure.md)会检测异常的数据库活动，指出数据库有潜在的安全威胁。 </li></ul> |
 |<br>Azure 安全中心| <ul><li>[数据监视](../../security-center/security-center-remediate-recommendations.md)，使用 Azure 安全中心作为 SQL 和其他 Azure 服务的集中式安全监视解决方案。</li></ul>|        
 
 ## <a name="conclusion"></a>结论

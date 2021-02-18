@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/16/2021
 ms.author: b-juche
-ms.openlocfilehash: e9e7451e411ed9160eace0a60c65b5b74bf8f750
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: f36a7827b9351b5565eab19abd4bfdb3d8b4a273
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/17/2021
-ms.locfileid: "100559464"
+ms.locfileid: "100635398"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>使用 Azure NetApp 文件的解决方案体系结构
 本文介绍了可帮助你了解使用 Azure NetApp 文件的解决方案体系结构的最佳做法。  
@@ -94,8 +94,8 @@ ms.locfileid: "100559464"
 * [Azure NetApp 文件-SAP HANA 通过云同步卸载备份](https://blog.netapp.com/azure-netapp-files-sap-hana)
 * [使用 Azure NetApp 文件加快 SAP HANA 系统副本的速度](https://blog.netapp.com/sap-hana-faster-using-azure-netapp-files/)
 * [云卷 ONTAP 和 Azure NetApp 文件：简化 SAP HANA 系统迁移](https://blog.netapp.com/cloud-volumes-ontap-and-azure-netapp-files-sap-hana-system-migration-made-easy/)
-* [在 HANA N + M 中最大程度地提高和投资的体系结构决策 Scale-Out 体系结构-第1部分-Microsoft 技术社区](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/architectural-decisions-to-maximize-anf-investment-in-hana-n-m/ba-p/2078737)
-* [在 HANA N + M 中最大程度地提高和投资的体系结构决策 Scale-Out 体系结构-第2部分-Microsoft 技术社区](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/architectural-decisions-to-maximize-anf-investment-in-hana-n-m/ba-p/2117130)
+* [在 HANA N + M 中最大化和投资的体系结构决策 Scale-Out 体系结构-第1部分](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/architectural-decisions-to-maximize-anf-investment-in-hana-n-m/ba-p/2078737)
+* [在 HANA N + M 中最大程度地提高和投资的体系结构决策 Scale-Out 体系结构-第2部分](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/architectural-decisions-to-maximize-anf-investment-in-hana-n-m/ba-p/2117130)
 
 ## <a name="azure-vmware-solutions"></a>Azure VMware 解决方案
 

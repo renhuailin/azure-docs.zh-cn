@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: b28d7ee5d2eeb1015695e32e5918bd94f9051050
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: a478d9c620219a768983570897715f924565a80f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736662"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594304"
 ---
 # <a name="tutorial-monitor-changes-and-update-a-windows-virtual-machine-in-azure"></a>教程：监视更改和更新 Azure 中的 Windows 虚拟机
 
@@ -76,7 +76,7 @@ New-AzVm `
 
 执行验证以确定是否为该 VM 启用了更新管理。 验证包括检查 Log Analytics 工作区和链接的自动化帐户，以及解决方案是否在工作区中。
 
-应使用 [Log Analytics](../../azure-monitor/log-query/log-query-overview.md) 工作区收集由功能和服务（如更新管理）生成的数据。 工作区提供了一个位置来查看和分析来自多个数据源的数据。
+应使用 [Log Analytics](../../azure-monitor/logs/log-query-overview.md) 工作区收集由功能和服务（如更新管理）生成的数据。 工作区提供了一个位置来查看和分析来自多个数据源的数据。
 
 若要在需要更新的 VM 上执行其他操作，可使用 Azure 自动化针对 VM 运行 Runbook。 此类操作包括下载或应用更新。
 
@@ -86,7 +86,7 @@ New-AzVm `
 
 加入过程中缺少的下列任何先决条件会自动添加：
 
-* [Log Analytics](../../azure-monitor/log-query/log-query-overview.md) 工作区
+* [Log Analytics](../../azure-monitor/logs/log-query-overview.md) 工作区
 * [自动化](../../automation/index.yml)
 * [混合 runbook 辅助角色](../../automation/automation-hybrid-runbook-worker.md)，VM 上已启用此辅助角色
 
@@ -113,7 +113,7 @@ New-AzVm `
 | **名称** |输入用于标识更新部署的唯一名称。 |
 |**操作系统**| 选择 Linux 或 Windows 。|
 | **要更新的组** |对于在 Azure 上托管的 VM，应基于订阅、资源组、位置和标记的组合定义查询。 此查询将生成要包含在你的部署中的 Azure 托管 VM 的动态组。 </br></br>对于未托管在 Azure 上的 VM，请选择现有的已保存搜索。 使用此搜索，可以选择要包括在部署中的一组 VM。 </br></br> 有关详细信息，请参阅[动态组](../../automation/update-management/configure-groups.md)。|
-| **要更新的计算机** |请选择“已保存的搜索”、“已导入的组”或“计算机”  。<br/><br/>如果选择“计算机”，则可以从下拉列表中选择单个计算机。 每台计算机的准备情况将显示在表的“更新代理准备情况”列中。</br></br> 要了解在 Azure Monitor 日志中创建计算机组的不同方法，请参阅 [Azure Monitor 日志中的计算机组](../../azure-monitor/platform/computer-groups.md) |
+| **要更新的计算机** |请选择“已保存的搜索”、“已导入的组”或“计算机”  。<br/><br/>如果选择“计算机”，则可以从下拉列表中选择单个计算机。 每台计算机的准备情况将显示在表的“更新代理准备情况”列中。</br></br> 要了解在 Azure Monitor 日志中创建计算机组的不同方法，请参阅 [Azure Monitor 日志中的计算机组](../../azure-monitor/logs/computer-groups.md) |
 |**更新分类**|选择所有必需的更新分类。|
 |**包括/排除更新**|选择此选项可打开“包括/排除”窗格。 要包含或排除的更新位于单独的选项卡上。 有关如何处理包含的详细信息，请参阅[计划更新部署](../../automation/update-management/deploy-updates.md#schedule-an-update-deployment)。 |
 |**计划设置**|选择启动时间，然后选择“一次”或“定期” 。|

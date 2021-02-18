@@ -2,13 +2,13 @@
 title: Azure 服务总线高级层和标准层
 description: 本文介绍 Azure 服务总线的标准层和高级层。 比较这些层并提供技术差异。
 ms.topic: conceptual
-ms.date: 07/28/2020
-ms.openlocfilehash: 31c53a1375078cd5d185945cba55a6e5a6dd5ffb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 02/17/2021
+ms.openlocfilehash: 0385526560e6aafaab66d9212ff54caff2362ebd
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90966780"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100636503"
 ---
 # <a name="service-bus-premium-and-standard-messaging-tiers"></a>服务总线高级和标准消息传送层
 
@@ -26,9 +26,9 @@ ms.locfileid: "90966780"
 | 增加和减少工作负荷的能力 |空值 |
 | 消息大小最大为 1 MB。 此上限将来可能会提高。 有关服务的最新重要更新，请参阅 [Azure 上的消息传送博客](https://techcommunity.microsoft.com/t5/messaging-on-azure/bg-p/MessagingonAzureBlog)。 |消息大小最大为 256 KB |
 
-**服务总线高级消息传送**在 CPU 和内存级别提供资源隔离，以便每个客户工作负荷以隔离方式运行。 此资源容器称为 *消息传送单元*。 每个高级命名空间至少会分配一个消息传送单元。 可以为每个服务总线高级命名空间购买 1、2、4 或 8 个消息传送单元。 单一工作负荷或实体可以跨多个消息传送单元，可以随意更改消息传送单元数。 这会为基于服务总线的解决方案提供可预测和稳定的性能。
+**服务总线高级消息传送** 在 CPU 和内存级别提供资源隔离，以便每个客户工作负荷以隔离方式运行。 此资源容器称为 *消息传送单元*。 每个高级命名空间至少会分配一个消息传送单元。 可以为每个服务总线高级命名空间购买 1、2、4 或 8 个消息传送单元。 单一工作负荷或实体可以跨多个消息传送单元，可以随意更改消息传送单元数。 这会为基于服务总线的解决方案提供可预测和稳定的性能。
 
-此性能不仅更易于预测和实现，而且速度更快。 服务总线高级消息传送以在 [Azure 事件中心](https://azure.microsoft.com/services/event-hubs/)引入的存储引擎为基础。 使用高级消息传送，峰值性能比使用标准层快得多。
+此性能不仅更易于预测和实现，而且速度更快。 使用高级消息传送，峰值性能比使用标准层快得多。
 
 ## <a name="premium-messaging-technical-differences"></a>高级消息传送技术差异
 
@@ -40,9 +40,7 @@ ms.locfileid: "90966780"
 
 ### <a name="express-entities"></a>快速实体
 
-由于高级消息传送在一个隔离的运行时环境中运行，因此高级命名空间中不支持快速实体。 有关快速功能的详细信息，请参阅 [QueueDescription.EnableExpress](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enableexpress#Microsoft_ServiceBus_Messaging_QueueDescription_EnableExpress) 属性。
-
-如果有在标准传送下运行的代码并且希望将其移植到高级层，请确保将 [EnableExpress](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enableexpress#Microsoft_ServiceBus_Messaging_QueueDescription_EnableExpress) 属性设置为 **false**（默认值）。
+由于高级消息传送在一个隔离的运行时环境中运行，因此高级命名空间中不支持快速实体。 快速实体将消息暂时保存在内存中，然后将其写入永久性存储。 如果你的代码在标准消息传递下运行，并且想要将其移植到高级层，请确保已禁用 express 实体功能。
 
 ## <a name="premium-messaging-resource-usage"></a>高级消息传送资源使用情况
 通常，对实体进行的任何操作都可能导致 CPU 和内存使用率增高。 下面是一些这样的操作： 
@@ -63,19 +61,19 @@ ms.locfileid: "90966780"
 
 预配 Azure 服务总线高级命名空间时，必须指定分配的消息传送单元数。 这些消息传送单元是分配给命名空间的专用资源。
 
-分配给服务总线高级命名空间的消息传送单元数可以**动态调整**，将工作负荷的变化（增加或减少）因素考虑进去。
+分配给服务总线高级命名空间的消息传送单元数可以 **动态调整**，将工作负荷的变化（增加或减少）因素考虑进去。
 
 为体系结构确定消息传送单元数量时，需要考虑以下几个因素：
 
 - 从分配给命名空间的 1 个或 2 个消息传送单元开始。
 - 在命名空间的[资源使用情况指标](service-bus-metrics-azure-monitor.md#resource-usage-metrics)中研究 CPU 使用情况指标。
-    - 如果 CPU 使用率低于 20%，则可纵向缩减分配给命名空间的消息传送单元数。
-    - 如果 CPU 使用率超过 70%，则以纵向扩展的方式增加分配给命名空间的消息传送单元数将有益于应用程序。
+    - 如果 CPU 使用率 **低于 20% _ 以下**，则可以 *_按比例减少_** 分配给命名空间的消息传送单元数。
+    - 如果 CPU 使用率为 ***以上 70% _ 以上**，你的应用程序将受益于 _ *_向上扩展_** 分配给命名空间的消息传送单元数。
 
 若要了解如何将服务总线命名空间配置为自动缩放 (增加或减少消息传送单元) ，请参阅 [自动更新消息传送单元](automate-update-messaging-units.md)。
 
 > [!NOTE]
-> **缩放**分配给命名空间的资源的操作可以抢先进行，也可以被动进行。
+> **缩放** 分配给命名空间的资源的操作可以抢先进行，也可以被动进行。
 >
 >  * **抢先**：如果预期会有额外的工作负荷（考虑到季节性或趋势），可以在达到工作负荷限制之前向命名空间分配额外的消息传送单元。
 >

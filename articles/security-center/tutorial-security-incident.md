@@ -12,14 +12,14 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/30/2020
+ms.date: 02/17/2021
 ms.author: memildin
-ms.openlocfilehash: b9f0b3219a75900a44a73ca0fc3e453f023bddb8
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: aeabfb42d378f22ff660214517fea031d678b208
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92787153"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100635568"
 ---
 # <a name="tutorial-triage-investigate-and-respond-to-security-alerts"></a>教程：会审、调查和响应安全警报
 安全中心使用高级分析和威胁情报来持续分析混合云工作负载，在云资源中出现潜在恶意活动时发出警报。 你还可以将其他安全产品和服务中的警报集成到安全中心。 发出警报后，需采取快速行动进行调查和修正潜在安全问题。 
@@ -42,7 +42,7 @@ ms.locfileid: "92787153"
 
 从“安全警报”页中会审警报：
 
-:::image type="content" source="./media/tutorial-security-incident/alerts-list.png" alt-text="安全警报列表页面" lightbox="./media/tutorial-security-incident/alerts-list.png":::
+:::image type="content" source="media/security-center-managing-and-responding-alerts/alerts-page.png" alt-text="Azure 安全中心的安全警报列表":::
 
 使用此页面查看环境中活动的安全警报，以确定要首先调查哪个警报。
 

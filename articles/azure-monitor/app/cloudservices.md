@@ -4,15 +4,15 @@ description: 使用 Application Insights 有效监视 Web 角色和辅助角色
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 09/05/2018
-ms.openlocfilehash: ccd863db55ef0ff9f4051947321321c8b01430c4
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 1f9204534fcdfbf7c393eaafdbae62c4c4321f2f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920688"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573862"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>适用于 Azure 云服务的 Application Insights
-[Application Insights][start] 可以通过将 Application Insights SDK 提供的数据与云服务提供的 [Azure 诊断](../platform/diagnostics-extension-overview.md)数据合并，来监视 [Azure 云服务应用](https://azure.microsoft.com/services/cloud-services/)的可用性、性能、故障和使用情况。 通过收到的有关应用在现实中的性能和有效性的反馈，可以针对每个开发生命周期确定合理的设计方向。
+[Application Insights][start] 可以通过将 Application Insights SDK 提供的数据与云服务提供的 [Azure 诊断](../agents/diagnostics-extension-overview.md)数据合并，来监视 [Azure 云服务应用](https://azure.microsoft.com/services/cloud-services/)的可用性、性能、故障和使用情况。 通过收到的有关应用在现实中的性能和有效性的反馈，可以针对每个开发生命周期确定合理的设计方向。
 
 ![“概述”仪表板](./media/cloudservices/overview-graphs.png)
 
@@ -32,7 +32,7 @@ ms.locfileid: "96920688"
 
 如果只需此选项，则操作到此完成。 
 
-后续步骤是[通过应用查看指标](../platform/metrics-charts.md)、[使用 Analytics 查询数据](../log-query/log-query-overview.md)。 
+后续步骤是[通过应用查看指标](../essentials/metrics-charts.md)、[使用 Analytics 查询数据](../logs/log-query-overview.md)。 
 
 若要在浏览器中监视性能，还可能需要设置[可用性测试](./monitor-web-app-availability.md)并[将代码添加到网页](./javascript.md)。
 
@@ -95,7 +95,7 @@ ms.locfileid: "96920688"
 
 这相当于将 Application Insights 检测密钥插入到名为 *ServiceConfiguration.\*.cscfg* 的文件。 下面是[示例代码](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/AzureEmailService/ServiceConfiguration.Cloud.cscfg)。
 
-若要改变发送到 Application Insights 的诊断信息级别，可以 [直接编辑 *.cscfg* 文件](../platform/diagnostics-extension-to-application-insights.md)。
+若要改变发送到 Application Insights 的诊断信息级别，可以 [直接编辑 *.cscfg* 文件](../agents/diagnostics-extension-to-application-insights.md)。
 
 ## <a name="install-the-sdk-in-each-project"></a><a name="sdk"></a>在每个项目中安装 SDK
 使用此选项可将自定义的业务遥测添加到任何角色。 使用该选项可以更细致地分析应用的用法和性能。
@@ -167,7 +167,7 @@ ms.locfileid: "96920688"
 
 1. 打开前面创建的 Application Insights 资源。
 
-   [搜索][diagnostic]中会显示每个数据点，[指标资源管理器](../platform/metrics-charts.md)中会显示聚合数据。
+   [搜索][diagnostic]中会显示每个数据点，[指标资源管理器](../essentials/metrics-charts.md)中会显示聚合数据。
 
 1. 添加更多遥测数据（请参阅以下部分），然后发布应用以获取实时诊断和使用情况反馈。 
 
@@ -180,17 +180,17 @@ ms.locfileid: "96920688"
 有关详细信息，请参阅 [故障排除][qna]。
 
 ## <a name="view-azure-diagnostics-events"></a>查看 Azure 诊断事件
-可以在 Application Insights 中的以下位置找到 [Azure 诊断](../platform/diagnostics-extension-overview.md)信息：
+可以在 Application Insights 中的以下位置找到 [Azure 诊断](../agents/diagnostics-extension-overview.md)信息：
 
 * 性能计数器显示为自定义指标。 
 * Windows 事件日志显示为跟踪和自定义事件。
 * 应用程序日志、ETW 日志和所有诊断基础结构日志均显示为跟踪。
 
-若要查看性能计数器和事件计数，请打开[指标资源管理器](../platform/metrics-charts.md)并添加以下图表：
+若要查看性能计数器和事件计数，请打开[指标资源管理器](../essentials/metrics-charts.md)并添加以下图表：
 
 ![Azure 诊断数据](./media/cloudservices/23-wad.png)
 
-若要在 Azure 诊断发送的各种跟踪日志中进行搜索，请使用[搜索](./diagnostic-search.md)或 [Analytics 查询](../log-query/log-analytics-tutorial.md)。 例如，假设某个未经处理的异常导致角色崩溃和回收。 该信息会在应用程序通道的 Windows 事件日志中显示。 可使用搜索来查看 Windows 事件日志错误，并获取异常的完整堆栈跟踪。 这样有助于找到问题的根本原因。
+若要在 Azure 诊断发送的各种跟踪日志中进行搜索，请使用[搜索](./diagnostic-search.md)或 [Analytics 查询](../logs/log-analytics-tutorial.md)。 例如，假设某个未经处理的异常导致角色崩溃和回收。 该信息会在应用程序通道的 Windows 事件日志中显示。 可使用搜索来查看 Windows 事件日志错误，并获取异常的完整堆栈跟踪。 这样有助于找到问题的根本原因。
 
 ![Azure 诊断搜索](./media/cloudservices/25-wad.png)
 
@@ -261,7 +261,7 @@ ms.locfileid: "96920688"
 
 如果系统使用其他 Azure 服务（例如流分析），也可以包含这些服务的监视图表。 
 
-如果有客户端移动应用，请使用 [App Center](../learn/mobile-center-quickstart.md)。 在 [Analytics](../log-query/log-query-overview.md) 中创建查询来显示事件计数，并将事件固定到仪表板。
+如果有客户端移动应用，请使用 [App Center](../app/mobile-center-quickstart.md)。 在 [Analytics](../logs/log-query-overview.md) 中创建查询来显示事件计数，并将事件固定到仪表板。
 
 ## <a name="example"></a>示例
 [该示例](https://github.com/MohanGsk/ApplicationInsights-Home/tree/master/Samples/AzureEmailService)监视包含一个 Web 角色和两个辅助角色的服务。
@@ -274,7 +274,7 @@ ms.locfileid: "96920688"
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
 
 ## <a name="next-steps"></a>后续步骤
-* [将 Azure 诊断配置为向 Application Insights 发送数据](../platform/diagnostics-extension-to-application-insights.md)
+* [将 Azure 诊断配置为向 Application Insights 发送数据](../agents/diagnostics-extension-to-application-insights.md)
 * [自动创建 Application Insights 资源](./powershell.md)
 * [自动化 Azure 诊断](./powershell-azure-diagnostics.md)
 * [Azure Functions](https://github.com/christopheranderson/azure-functions-app-insights-sample)

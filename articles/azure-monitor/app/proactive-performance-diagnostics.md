@@ -4,12 +4,12 @@ description: Application Insights 执行应用遥测的智能分析，并在有�
 ms.topic: conceptual
 ms.date: 05/04/2017
 ms.reviewer: antonfr
-ms.openlocfilehash: ead71a5ac6e2cfa0df6654c7ba9aa7b5b9238d04
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.openlocfilehash: a055a323001e0291d3cb5c1716e640b3c8b21dbf
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96763768"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573733"
 ---
 # <a name="smart-detection---performance-anomalies"></a>智能检测 - 性能异常
 
@@ -70,12 +70,12 @@ Application Insights 已根据以下依据之一检测到应用程序出现性�
 * *是否可以创建自己的异常检测规则或自定义现有的规则？*
 
   * 目前不可以，但可以：
-    * [设置警报](../platform/alerts-log.md)，以便在指标超出阈值时告知用户。
+    * [设置警报](../alerts/alerts-log.md)，以便在指标超出阈值时告知用户。
     * [将遥测导出](./export-telemetry.md)到[数据库](./code-sample-export-sql-stream-analytics.md)或 [Power BI](./export-power-bi.md)，可自行在其中进行分析。
 * *执行分析的频率是多少？*
 
   * 我们每天针对前一天（UTC 时区整天）的遥测数据运行分析。
-* *那么这是否会替换 [指标警报](../platform/alerts-log.md)？*
+* *那么这是否会替换 [指标警报](../alerts/alerts-log.md)？*
   * 不是。  我们不确定检测用户视为异常的每个行为。
 
 
@@ -175,10 +175,10 @@ Application Insights 可以找到只会影响一部分用户，或者只会在�
 
 * [探查器](profiler.md) 
 * [快照调试器](./snapshot-debugger.md)
-* [分析](../log-query/log-analytics-tutorial.md)
-* [分析智能诊断](../log-query/log-query-overview.md)
+* [分析](../logs/log-analytics-tutorial.md)
+* [分析智能诊断](../logs/log-query-overview.md)
 
 智能检测是完全自动执行的。 但是或许你想要设置更多的警报？
 
-* [手动配置的指标警报](../platform/alerts-log.md)
+* [手动配置的指标警报](../alerts/alerts-log.md)
 * [可用性 Web 测试](./monitor-web-app-availability.md)

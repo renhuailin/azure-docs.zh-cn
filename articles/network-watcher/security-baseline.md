@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: b7dc7a9f93d6d70abec57632ffc95aea8a6bc699
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 82e15712fe1e7a5791b1374e4aa4cd446f8f5e90
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99804982"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574426"
 ---
 # <a name="azure-security-baseline-for-network-watcher"></a>网络观察程序的 Azure 安全基线
 
@@ -118,9 +118,9 @@ ms.locfileid: "99804982"
 
 **指导**：使用 Azure 活动日志监视对 Azure 网络观察程序所做的更改。 可以在 Azure Monitor 中创建在发生更改时会触发的警报。
 
-* [如何查看和检索 Azure 活动日志事件](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [如何查看和检索 Azure 活动日志事件](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-* [如何在 Azure Monitor 中创建警报](../azure-monitor/platform/alerts-activity-log.md)
+* [如何在 Azure Monitor 中创建警报](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -142,7 +142,7 @@ ms.locfileid: "99804982"
 
 **指导**：使用 Azure 活动日志监视 Azure 网络观察程序实例的配置并检测更改。 除了在控制平面（例如 Azure 门户）中以外，网络观察程序本身不会生成与网络流量相关的日志。 网络观察程序提供所需的工具来监视、诊断 Azure 虚拟网络中的资源并查看其指标，以及为其启用或禁用日志。
 
-* [如何查看和检索 Azure 活动日志事件](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [如何查看和检索 Azure 活动日志事件](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
 * [了解网络观察程序](./network-watcher-monitoring-overview.md)
 
@@ -154,7 +154,7 @@ ms.locfileid: "99804982"
 
 **指导**：使用 Azure 活动日志监视 Azure 网络观察程序实例的配置并检测更改。 除了在控制平面（例如 Azure 门户）以外，网络观察程序本身不会生成审核日志。 网络观察程序提供所需的工具来监视、诊断 Azure 虚拟网络中的资源并查看其指标，以及为其启用或禁用日志。
 
-* [如何查看和检索 Azure 活动日志事件](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [如何查看和检索 Azure 活动日志事件](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
 * [了解网络观察程序](./network-watcher-monitoring-overview.md)
 
@@ -174,7 +174,7 @@ ms.locfileid: "99804982"
 
 **指导**：在 Azure Monitor 中，根据组织的合规性规定，为与 Azure 网络观察程序关联的 Log Analytics 工作区设置日志保留期。
 
-* [如何设置日志保留参数](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+* [如何设置日志保留参数](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure 安全中心监视**：不适用
 
@@ -184,7 +184,7 @@ ms.locfileid: "99804982"
 
 **指导**：使用 Azure 活动日志监视 Azure 网络观察程序实例的配置并检测更改。 除了在控制平面（例如 Azure 门户）中以外，网络观察程序本身不会生成与网络流量相关的日志。 网络观察程序提供所需的工具来监视、诊断 Azure 虚拟网络中的资源并查看其指标，以及为其启用或禁用日志。
 
-* [如何查看和检索 Azure 活动日志事件](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [如何查看和检索 Azure 活动日志事件](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
 * [了解网络观察程序](./network-watcher-monitoring-overview.md)
 
@@ -479,7 +479,7 @@ ms.locfileid: "99804982"
 
 **指导**：将 Azure Monitor 与 Azure 活动日志结合使用，以便在 Azure 网络观察程序以及其他关键的或相关的资源发生更改时创建警报。
 
-* [如何针对 Azure 活动日志事件创建警报](../azure-monitor/platform/alerts-activity-log.md)
+* [如何针对 Azure 活动日志事件创建警报](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure 安全中心监视**：是
 

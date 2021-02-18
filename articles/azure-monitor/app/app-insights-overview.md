@@ -4,12 +4,12 @@ description: 应用程序性能管理和实时 Web 应用程序的使用情况�
 ms.topic: overview
 ms.date: 06/03/2019
 ms.custom: mvc
-ms.openlocfilehash: f00eea37c43fba10e0a89498dd81366630852db7
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ac6b6f2b47df0bce9ae164c83df54adfdf00b184
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91371370"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575706"
 ---
 # <a name="what-is-application-insights"></a>什么是 Application Insights？
 Application Insights 是 [Azure Monitor](../overview.md) 的一项功能，是面向开发人员和 DevOps 专业人员的可扩展应用程序性能管理 (APM) 服务。 使用它可以监视实时应用程序。 它将自动检测性能异常，并且包含了强大的分析工具来帮助诊断问题，了解用户在应用中实际执行了哪些操作。  它旨在帮助持续提高性能与可用性。 它适用于本地云、混合云或任何公有云中托管的各种平台（包括 .NET、Node.js、Java 和 Python）上的应用。 它与 DevOps 进程集成，并且具有与不同开发工具的连接点。 可以通过与 Visual Studio App Center 集成来监视和分析移动应用的遥测数据。
@@ -38,10 +38,10 @@ Application Insights 主要面向开发团队，旨在帮助用户了解应用�
 * **页面查看次数和负载性能** - 由用户的浏览器报告。
 * **AJAX 调用**（从网页） - 速率、响应时间和失败率。
 * **用户和会话计数**。
-* Windows 或 Linux 服务器计算机中的**性能计数器**，例如 CPU、内存和网络使用情况。 
-* Docker 或 Azure 中的**主机诊断**。 
-* 应用中的**诊断跟踪日志**- 可以将跟踪事件与请求相关联。
-* 在客户端或服务器代码中自行编写的**自定义事件和指标**，用于跟踪业务事件（例如销售的商品或赢得的游戏）。
+* Windows 或 Linux 服务器计算机中的 **性能计数器**，例如 CPU、内存和网络使用情况。 
+* Docker 或 Azure 中的 **主机诊断**。 
+* 应用中的 **诊断跟踪日志**- 可以将跟踪事件与请求相关联。
+* 在客户端或服务器代码中自行编写的 **自定义事件和指标**，用于跟踪业务事件（例如销售的商品或赢得的游戏）。
 
 ## <a name="where-do-i-see-my-telemetry"></a>在哪里可以查看我的遥测数据？
 
@@ -49,15 +49,15 @@ Application Insights 主要面向开发团队，旨在帮助用户了解应用�
 
 |  |  |
 | --- | --- |
-| [**智能检测和手动警报**](./proactive-diagnostics.md)<br/>设置自动警报，使其适应应用的正常遥测模式并在出现异常情况时触发。 还可以在自定义或标准指标的特定级别上[设置警报](../platform/alerts-log.md)。 |![警报示例](./media/app-insights-overview/alerts-tn.png) |
+| [**智能检测和手动警报**](./proactive-diagnostics.md)<br/>设置自动警报，使其适应应用的正常遥测模式并在出现异常情况时触发。 还可以在自定义或标准指标的特定级别上[设置警报](../alerts/alerts-log.md)。 |![警报示例](./media/app-insights-overview/alerts-tn.png) |
 | [**应用程序映射**](./app-map.md)<br/>探索应用的组件，包含关键指标和警报。 |![应用程序映射](./media/app-insights-overview/appmap-tn.png)  |
 | [**探查器**](./profiler.md)<br/>检查抽样请求的执行配置文件。 |![屏幕捕获显示抽样请求的执行配置文件。](./media/app-insights-overview/profiler.png) |
 | [**使用情况分析**](./usage-overview.md)<br/>分析用户细分和保留情况。|![留存情况工具](./media/app-insights-overview/retention.png) |
 | [**实例数据的诊断搜索**](./diagnostic-search.md)<br/>搜索和筛选事件，例如请求、异常、依赖项调用、日志跟踪和页面视图。  |![搜索遥测](./media/app-insights-overview/search-tn.png) |
-| [**聚合数据的指标资源管理器**](../platform/metrics-charts.md)<br/>浏览、筛选和细分聚合的数据，例如请求率、故障率和异常率；响应时间、页面加载时间。 |![指标](./media/app-insights-overview/metrics-tn.png) |
+| [**聚合数据的指标资源管理器**](../essentials/metrics-charts.md)<br/>浏览、筛选和细分聚合的数据，例如请求率、故障率和异常率；响应时间、页面加载时间。 |![指标](./media/app-insights-overview/metrics-tn.png) |
 | [**仪表板**](./overview-dashboard.md)<br/>混合使用来自多个资源的数据并与他人共享。 对于多组件应用程序和在团队聊天室中连续显示很有用。 |![仪表板示例](./media/app-insights-overview/dashboard-tn.png) |
 | [**实时指标流**](./live-stream.md)<br/>部署新的生成时，观看这些准实时性能指示器，确保一切按预期工作。 |![实时指标示例](./media/app-insights-overview/live-metrics-tn.png) |
-| [**分析**](../log-query/log-query-overview.md)<br/>使用此功能强大的查询语言，回答有关应用的性能和使用情况的疑难问题。 |![分析示例](./media/app-insights-overview/analytics-tn.png) |
+| [**分析**](../logs/log-query-overview.md)<br/>使用此功能强大的查询语言，回答有关应用的性能和使用情况的疑难问题。 |![分析示例](./media/app-insights-overview/analytics-tn.png) |
 | [**Visual Studio**](./visual-studio.md)<br/>查看代码中的性能数据。 从堆栈跟踪转到代码。|![屏幕截图显示 Visual Studio 中的异常详细信息，以及从堆栈跟踪转到代码的示例。](./media/app-insights-overview/visual-studio-tn.png) |
 | [**快照调试器**](./snapshot-debugger.md)<br/>使用参数值调试从实时操作采样的快照。|![Visual Studio](./media/app-insights-overview/snapshot.png) |
 | [**Power BI**](./export-power-bi.md)<br/>将使用指标与其他商业智能集成。| ![Power BI](./media/app-insights-overview/power-bi.png)|
@@ -105,7 +105,7 @@ Application Insights 是 Microsoft Azure 中托管的众多服务之一，遥测
   * [Python](./opencensus-python.md)
   * [其他平台](./platforms.md)
 * 针对页面视图、AJAX 和其他客户端遥测 **[检测网页](./javascript.md)** 。
-* 通过与 Visual Studio App Center 集成 **[分析移动应用使用情况](../learn/mobile-center-quickstart.md)** 。
+* 通过与 Visual Studio App Center 集成 **[分析移动应用使用情况](../app/mobile-center-quickstart.md)** 。
 * **[可用性测试](./monitor-web-app-availability.md)** - 从我们的服务器定期对网站执行 ping 操作。
 
 ## <a name="next-steps"></a>后续步骤
@@ -137,12 +137,12 @@ Application Insights 是 Microsoft Azure 中托管的众多服务之一，遥测
 
 <!--Link references-->
 
-[android]: ../learn/mobile-center-quickstart.md
+[android]: ../app/mobile-center-quickstart.md
 [azure]: ../../insights-perf-analytics.md
 [client]: ./javascript.md
 [desktop]: ./windows-desktop.md
 [greenbrown]: ./asp-net.md
-[ios]: ../learn/mobile-center-quickstart.md
+[ios]: ../app/mobile-center-quickstart.md
 [java]: ./java-get-started.md
 [knowUsers]: app-insights-web-track-usage.md
 [platforms]: ./platforms.md

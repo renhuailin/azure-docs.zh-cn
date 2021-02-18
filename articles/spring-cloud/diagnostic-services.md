@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 11f5fcd74b228fa2d57658f5c268e3bebc3c7e93
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 52413f36a9ba5c7b7a3c68567a65a20bc3ce4090
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499520"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585196"
 ---
 # <a name="analyze-logs-and-metrics-with-diagnostics-settings"></a>通过诊断设置分析日志和指标
 
@@ -40,7 +40,7 @@ ms.locfileid: "96499520"
 
 有关指标的完整列表，请参阅 [Spring Cloud 指标](./spring-cloud-concept-metrics.md#user-metrics-options)。
 
-若要开始，请启用其中一项服务来接收数据。 若要了解如何配置 Log Analytics，请参阅[开始在 Azure Monitor 中使用 Log Analytics](../azure-monitor/log-query/log-analytics-tutorial.md)。
+若要开始，请启用其中一项服务来接收数据。 若要了解如何配置 Log Analytics，请参阅[开始在 Azure Monitor 中使用 Log Analytics](../azure-monitor/logs/log-analytics-tutorial.md)。
 
 ## <a name="configure-diagnostics-settings"></a>配置诊断设置
 
@@ -131,11 +131,11 @@ ms.locfileid: "96499520"
 1. 若要查看应用程序日志，请搜索名为 insights-logs-applicationconsole 的事件中心。
 1. 若要查看应用程序指标，请搜索名为 insights-metrics-pt1m 的事件中心。
 
-若要了解有关将诊断信息发送到事件中心的详细信息，请参阅[使用事件中心流式处理热路径中的 Azure 诊断数据](../azure-monitor/platform/diagnostics-extension-stream-event-hubs.md)。
+若要了解有关将诊断信息发送到事件中心的详细信息，请参阅[使用事件中心流式处理热路径中的 Azure 诊断数据](../azure-monitor/agents/diagnostics-extension-stream-event-hubs.md)。
 
 ## <a name="analyze-the-logs"></a>分析日志
 
-Azure Log Analytics 与 Kusto 引擎一起运行，因此，你可以查询日志以进行分析。 有关使用 Kusto 查询日志的快速简介，请查看 [Log Analytics 教程](../azure-monitor/log-query/log-analytics-tutorial.md)。
+Azure Log Analytics 与 Kusto 引擎一起运行，因此，你可以查询日志以进行分析。 有关使用 Kusto 查询日志的快速简介，请查看 [Log Analytics 教程](../azure-monitor/logs/log-analytics-tutorial.md)。
 
 应用程序日志提供有关应用程序的运行状况、性能等的关键信息和详细日志。 下一节将介绍一些简单的查询，帮助你理解应用程序的当前和过去状态。
 
@@ -176,7 +176,7 @@ AppPlatformLogsforSpring
 
 ### <a name="learn-more-about-querying-application-logs"></a>详细了解查询应用程序日志
 
-Azure Monitor 通过使用 Log Analytics 为查询应用程序日志提供了广泛的支持。 若要了解有关此服务的详细信息，请参阅 [Azure Monitor 中的日志查询入门](../azure-monitor/log-query/get-started-queries.md)。 若要详细了解如何生成查询以分析应用程序日志，请参阅 [Azure Monitor 中的日志查询概述](../azure-monitor/log-query/log-query-overview.md)。
+Azure Monitor 通过使用 Log Analytics 为查询应用程序日志提供了广泛的支持。 若要了解有关此服务的详细信息，请参阅 [Azure Monitor 中的日志查询入门](../azure-monitor/logs/get-started-queries.md)。 若要详细了解如何生成查询以分析应用程序日志，请参阅 [Azure Monitor 中的日志查询概述](../azure-monitor/logs/log-query-overview.md)。
 
 ## <a name="frequently-asked-questions-faq"></a>常见问题 (FAQ)
 

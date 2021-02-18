@@ -14,12 +14,12 @@ ms.subservice: roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ae8dbf6ffd2d827bbcd0fd723f63255d71d47a5
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 9f2fe29ede2bf0f92049d1ae82bae87326057a63
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99090784"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594284"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>确保 Azure AD 中混合部署和云部署的特权访问安全性
 
@@ -212,7 +212,7 @@ Azure AD Identity Protection 是一种基于算法的监视和报告工具，用
 
 #### <a name="monitor-azure-activity"></a>监视 Azure 活动
 
-Azure 活动日志提供 Azure 中订阅级别事件的历史记录。 它提供的信息涉及谁创建、更新和删除了什么资源，以及这些事件的发生时间。 有关详细信息，请参阅[审核和接收关于 Azure 订阅中重要操作的通知](../../azure-monitor/platform/alerts-activity-log.md)。
+Azure 活动日志提供 Azure 中订阅级别事件的历史记录。 它提供的信息涉及谁创建、更新和删除了什么资源，以及这些事件的发生时间。 有关详细信息，请参阅[审核和接收关于 Azure 订阅中重要操作的通知](../../azure-monitor/alerts/alerts-activity-log.md)。
 
 ### <a name="additional-steps-for-organizations-managing-access-to-other-cloud-apps-via-azure-ad"></a>组织通过 Azure AD 管理其他云应用的访问权限时所需的其他步骤
 

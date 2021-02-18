@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure certificates for Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: 7854aff0b4194efae7c4df653dee18e2676fdd41
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: d8d21f9eea0258175195529c4d8b72ee9085dc77
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91446312"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546969"
 ---
 # <a name="tutorial-configure-certificates-for-your-azure-stack-edge-pro-with-gpu"></a>教程：使用 GPU 为 Azure Stack Edge Pro 配置证书
 
@@ -35,10 +35,10 @@ ms.locfileid: "91446312"
 
 * 已根据[安装 Azure Stack Edge Pro](azure-stack-edge-gpu-deploy-install.md) 中详述的内容安装了物理设备。
 * 如果你计划使用自己的证书：
-    - 应该使用适当的格式来准备证书，包括签名链证书。 有关证书的详细信息，请参阅[管理证书](azure-stack-edge-j-series-manage-certificates.md)
+    - 应该使用适当的格式来准备证书，包括签名链证书。 有关证书的详细信息，请参阅[管理证书](azure-stack-edge-gpu-manage-certificates.md)
 
 <!--    - If your device is deployed in Azure Government or Azure Government Secret or Azure Government top secret cloud and not deployed in Azure public cloud, a signing chain certificate is required before you can activate your device. 
-    For details on certificate, go to [Manage certificates](azure-stack-edge-j-series-manage-certificates.md).-->
+    For details on certificate, go to [Manage certificates](azure-stack-edge-gpu-manage-certificates.md).-->
 
 
 ## <a name="configure-certificates-for-device"></a>为设备配置证书
@@ -120,13 +120,13 @@ ms.locfileid: "91446312"
 
 需要在所用客户端系统上安装这些证书，才能在 ASE 设备上访问终结点。 这些证书在客户端和设备之间建立信任关系。
 
-若要在所用客户端上导入并安装这些证书以访问设备，请按照[在访问 Azure Stack Edge Pro 设备的客户端上导入证书](azure-stack-edge-j-series-manage-certificates.md#import-certificates-on-the-client-accessing-the-device)中的步骤操作。 
+若要在所用客户端上导入并安装这些证书以访问设备，请按照[在访问 Azure Stack Edge Pro 设备的客户端上导入证书](azure-stack-edge-gpu-manage-certificates.md#import-certificates-on-the-client-accessing-the-device)中的步骤操作。 
 
 如果使用 Azure 存储资源管理器，需要在客户端上以 PEM 格式安装证书，并且需要将设备生成的证书转换为 PEM 格式。 
 
 > [!IMPORTANT]
 > - 下载链接仅适用于设备生成的证书，并不适用于使用自己的证书。
-> - 可以决定搭配使用设备生成的证书和自己的证书，只要满足其他证书要求即可。 有关详细信息，请转到[证书要求](azure-stack-edge-j-series-certificate-requirements.md)。
+> - 可以决定搭配使用设备生成的证书和自己的证书，只要满足其他证书要求即可。 有关详细信息，请转到[证书要求](azure-stack-edge-gpu-certificate-requirements.md)。
     
 
 ### <a name="bring-your-own-certificates"></a>使用自己的证书

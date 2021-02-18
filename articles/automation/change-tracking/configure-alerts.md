@@ -5,18 +5,18 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 10/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: 275e57e5dcf173e8d5f30f262641b02698910422
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 4faa7837a75bab6dfab651862754cd92394c5137
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92209466"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585906"
 ---
 # <a name="how-to-create-alerts-for-change-tracking-and-inventory"></a>如何为更改跟踪和清单创建警报
 
 Azure 中的警报会主动通知你 runbook 作业、服务运行状况问题或与自动化帐户相关的其他情况的结果。 Azure 自动化不包括预配置的警报规则，但你可以基于其生成的数据创建自己的警报规则。 本文介绍如何根据更改跟踪和清单标识的更改创建警报规则。
 
-如果你不熟悉 Azure Monitor 警报，请在开始之前参阅 [Microsoft Azure 中的警报概述](../../azure-monitor/platform/alerts-overview.md)。 若要详细了解使用日志查询的警报，请参阅 [Azure Monitor 中的日志警报](../../azure-monitor/platform/alerts-unified-log.md)。
+如果你不熟悉 Azure Monitor 警报，请在开始之前参阅 [Microsoft Azure 中的警报概述](../../azure-monitor/alerts/alerts-overview.md)。 若要详细了解使用日志查询的警报，请参阅 [Azure Monitor 中的日志警报](../../azure-monitor/alerts/alerts-unified-log.md)。
 
 ## <a name="create-alert"></a>创建警报
 
@@ -38,11 +38,11 @@ Azure 中的警报会主动通知你 runbook 作业、服务运行状况问题�
 
 5. 设置警报逻辑后，分配操作组来执行操作以响应警报触发。 在本例中，我们将设置要发送的电子邮件，以及要创建的 IT 服务管理 (ITSM) 票证。
 
-按照以下步骤设置警报，以获取更新部署的状态。 如果不熟悉 Azure 警报，请参阅 [Azure 警报概述](../../azure-monitor/platform/alerts-overview.md)。
+按照以下步骤设置警报，以获取更新部署的状态。 如果不熟悉 Azure 警报，请参阅 [Azure 警报概述](../../azure-monitor/alerts/alerts-overview.md)。
 
 ## <a name="configure-action-groups-for-your-alerts"></a>配置警报对应的操作组
 
-配置警报后，可以设置操作组，即用于多个警报的一组操作。 这些操作可能包括电子邮件通知、Runbook、Webhook 等。 若要了解有关操作组的详细信息，请参阅[创建和管理操作组](../../azure-monitor/platform/action-groups.md)。
+配置警报后，可以设置操作组，即用于多个警报的一组操作。 这些操作可能包括电子邮件通知、Runbook、Webhook 等。 若要了解有关操作组的详细信息，请参阅[创建和管理操作组](../../azure-monitor/alerts/action-groups.md)。
 
 1. 选择警报，然后在“操作组”下选择“新建” 。
 
@@ -66,8 +66,8 @@ Azure 中的警报会主动通知你 runbook 作业、服务运行状况问题�
 
 ## <a name="next-steps"></a>后续步骤
 
-* 详细了解 [Azure Monitor 中的警报](../../azure-monitor/platform/alerts-overview.md)。
+* 详细了解 [Azure Monitor 中的警报](../../azure-monitor/alerts/alerts-overview.md)。
 
-* 了解用于从 Log Analytics 工作区检索和分析数据的 [日志查询](../../azure-monitor/log-query/log-query-overview.md) 。
+* 了解[日志查询](../../azure-monitor/logs/log-query-overview.md)，以从 Log Analytics 工作区检索和分析数据。
 
-* [使用 Azure Monitor 日志管理使用情况和成本](../../azure-monitor/platform/manage-cost-storage.md)介绍了如何通过更改数据保持期来控制成本，以及如何分析和警报数据的使用情况。
+* [使用 Azure Monitor 日志管理使用情况和成本](../../azure-monitor/logs/manage-cost-storage.md)介绍了如何通过更改数据保留期来控制成本，以及如何分析数据使用情况并对其发出警报。

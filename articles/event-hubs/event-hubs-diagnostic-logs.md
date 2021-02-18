@@ -3,21 +3,21 @@ title: 设置诊断日志 - Azure 事件中心 | Microsoft Docs
 description: 了解如何为 Azure 中的事件中心设置活动日志和诊断日志。
 ms.topic: article
 ms.date: 10/27/2020
-ms.openlocfilehash: 015814b9a56ec963f5209f971f096ac6c173d7e1
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: dc5cbea31583a4e8126897b2dcda63b216438e1b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131978"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573167"
 ---
 # <a name="set-up-diagnostic-logs-for-an-azure-event-hub"></a>设置 Azure 事件中心的诊断日志
 
 可以查看两种类型的 Azure 事件中心日志：
 
-* **[活动日志](../azure-monitor/platform/platform-logs-overview.md)** ：此类日志提供对作业执行的操作的相关信息。 这些日志始终启用。 要查看活动日志条目，可以在 Azure 门户的事件中心命名空间的左窗格中选择“活动日志”。 例如：“创建或更新命名空间”、“创建或更新事件中心”。
+* **[活动日志](../azure-monitor/essentials/platform-logs-overview.md)** ：此类日志提供对作业执行的操作的相关信息。 这些日志始终启用。 要查看活动日志条目，可以在 Azure 门户的事件中心命名空间的左窗格中选择“活动日志”。 例如：“创建或更新命名空间”、“创建或更新事件中心”。
 
     ![事件中心命名空间的活动日志](./media/event-hubs-diagnostic-logs/activity-log.png)
-* **[诊断日志](../azure-monitor/platform/platform-logs-overview.md)** ：通过使用 API 或语言 SDK 上的管理客户端，诊断日志可提供有关对命名空间所执行操作的更丰富的信息。 
+* **[诊断日志](../azure-monitor/essentials/platform-logs-overview.md)** ：通过使用 API 或语言 SDK 上的管理客户端，诊断日志可提供有关对命名空间所执行操作的更丰富的信息。 
     
     下面的部分演示如何对事件中心命名空间启用诊断日志。
 
@@ -36,7 +36,7 @@ ms.locfileid: "98131978"
 
     新设置在大约 10 分钟后生效。 在此之后，日志将出现在“诊断日志”窗格上配置的存档目标中。
 
-    有关配置诊断的详细信息，请参阅 [Azure 诊断日志概述](../azure-monitor/platform/platform-logs-overview.md)。
+    有关配置诊断的详细信息，请参阅 [Azure 诊断日志概述](../azure-monitor/essentials/platform-logs-overview.md)。
 
 ## <a name="diagnostic-logs-categories"></a>诊断日志类别
 

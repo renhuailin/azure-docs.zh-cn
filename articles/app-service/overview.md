@@ -5,12 +5,12 @@ ms.assetid: 94af2caf-a2ec-4415-a097-f60694b860b3
 ms.topic: overview
 ms.date: 07/06/2020
 ms.custom: devx-track-dotnet, mvc, seodec18
-ms.openlocfilehash: 0bfacc4169de6b30272229283e9aef9a9d69fad5
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: 668988ae34c2f97f3baca3f360c13e3ec3e30731
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99592324"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100586355"
 ---
 # <a name="app-service-overview"></a>应用服务概述
 
@@ -28,7 +28,7 @@ Azure 应用服务是一项基于 HTTP 的服务，用于托管 Web 应用程序
 * **托管生产环境** - 应用服务会自动 [修补并维护 OS 和语言框架](overview-patch-os-runtime.md)。 将时间花在编写优秀应用上，让 Azure 来考虑平台问题。
 * 容器化和 Docker - 将应用 Docker 化并在应用服务中托管自定义 Windows 或 Linux 容器。 将多容器应用与 Docker Compose 和 Kubernetes 一起运行。 直接将 Docker 技能迁移到应用服务。
 * **DevOps 优化** - 使用 Azure DevOps、GitHub、BitBucket、Docker 中心或 Azure 容器注册表设置 [持续集成和部署](deploy-continuous-deployment.md)。 通过 [测试和过渡环境](deploy-staging-slots.md)提升更新。 在应用服务中，利用 [Azure PowerShell](/powershell/azure/) 或[跨平台命令行接口 (CLI)](/cli/azure/install-azure-cli) 来管理应用。
-* **具有高可用性的全局缩放** - 以手动或自动方式进行 [增大](manage-scale-up.md)或 [扩大](../azure-monitor/platform/autoscale-get-started.md)。 在 Microsoft 全球数据中心基础结构中的任意位置托管应用，并且应用服务 [SLA](https://azure.microsoft.com/support/legal/sla/app-service/) 承诺高可用性。
+* **具有高可用性的全局缩放** - 以手动或自动方式进行 [增大](manage-scale-up.md)或 [扩大](../azure-monitor/autoscale/autoscale-get-started.md)。 在 Microsoft 全球数据中心基础结构中的任意位置托管应用，并且应用服务 [SLA](https://azure.microsoft.com/support/legal/sla/app-service/) 承诺高可用性。
 * **与 SaaS 平台和本地数据建立连接** - 从适用于企业系统（例如 SAP）的 50 多个 [连接器](../connectors/apis-list.md)、SaaS 服务（例如 Salesforce）以及 Internet 服务（例如 Facebook）中进行选择。 使用[混合连接](app-service-hybrid-connections.md)和 [Azure 虚拟网络](web-sites-integrate-with-vnet.md)访问本地数据。
 * **安全性和合规性** - 应用服务符合 [ISO、SOC 和 PCI](https://www.microsoft.com/en-us/trustcenter)的要求。 使用 [Azure Active Directory](configure-authentication-provider-aad.md)、[Google](configure-authentication-provider-google.md)、[Facebook](configure-authentication-provider-facebook.md)、[Twitter](configure-authentication-provider-twitter.md) 或 [Microsoft 帐户](configure-authentication-provider-microsoft.md)对用户进行身份验证。 创建 [IP 地址限制](app-service-ip-restrictions.md)和[管理服务标识](overview-managed-identity.md)。
 * **应用程序模板** - 从 [Azure 市场](https://azure.microsoft.com/marketplace/)的大量应用程序模板列表中进行选择，例如 WordPress、Joomla 和 Drupal。

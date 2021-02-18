@@ -1,21 +1,18 @@
 ---
 title: 通过 Azure 门户在 Azure 虚拟网络中使用 Hive 转换数据
 description: 本教程提供有关在 Azure 数据工厂中使用 Hive 活动转换数据的分步说明。
-services: data-factory
 ms.service: data-factory
-ms.workload: data-services
 author: nabhishek
 ms.author: abnarain
-manager: anandsub
 ms.topic: tutorial
 ms.custom: seo-dt-2019
 ms.date: 01/04/2018
-ms.openlocfilehash: f6e1f80ebba0aa67cf2bab4a772ebc1765cd8298
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 4c8ae67720cf6ac9d577286898b95cdd10f38152
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92634362"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100377952"
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory-using-the-azure-portal"></a>通过 Azure 门户在 Azure 数据工厂中使用 Hive 活动转换 Azure 虚拟网络中的数据
 
@@ -38,15 +35,15 @@ ms.locfileid: "92634362"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-- **Azure 存储帐户** 。 创建 Hive 脚本并将其上传到 Azure 存储。 Hive 脚本的输出存储在此存储帐户中。 在本示例中，HDInsight 群集使用此 Azure 存储帐户作为主存储。 
-- **Azure 虚拟网络** 。 如果没有 Azure 虚拟网络，请遵照[这些说明](../virtual-network/quick-create-portal.md)创建虚拟网络。 在本示例中，HDInsight 位于 Azure 虚拟网络中。 下面是 Azure 虚拟网络的示例配置。 
+- **Azure 存储帐户**。 创建 Hive 脚本并将其上传到 Azure 存储。 Hive 脚本的输出存储在此存储帐户中。 在本示例中，HDInsight 群集使用此 Azure 存储帐户作为主存储。 
+- **Azure 虚拟网络**。 如果没有 Azure 虚拟网络，请遵照[这些说明](../virtual-network/quick-create-portal.md)创建虚拟网络。 在本示例中，HDInsight 位于 Azure 虚拟网络中。 下面是 Azure 虚拟网络的示例配置。 
 
     ![创建虚拟网络](media/tutorial-transform-data-using-hive-in-vnet-portal/create-virtual-network.png)
-- **HDInsight 群集** 。 创建一个 HDInsight 群集，并按照以下文章中所述，将该群集加入到在前一步骤中创建的虚拟网络：[使用 Azure 虚拟网络扩展 Azure HDInsight](../hdinsight/hdinsight-plan-virtual-network-deployment.md)。 下面是虚拟网络中 HDInsight 的示例配置。 
+- **HDInsight 群集**。 创建一个 HDInsight 群集，并按照以下文章中所述，将该群集加入到在前一步骤中创建的虚拟网络：[使用 Azure 虚拟网络扩展 Azure HDInsight](../hdinsight/hdinsight-plan-virtual-network-deployment.md)。 下面是虚拟网络中 HDInsight 的示例配置。 
 
     ![虚拟网络中的 HDInsight](media/tutorial-transform-data-using-hive-in-vnet-portal/hdinsight-virtual-network-settings.png)
-- **Azure PowerShell** 。 遵循[如何安装和配置 Azure PowerShell](/powershell/azure/install-Az-ps) 中的说明。
-- **一个虚拟机** 。 创建一个 Azure 虚拟机 (VM)，并将其加入到 HDInsight 群集所在的同一个虚拟网络。 有关详细信息，请参阅[如何创建虚拟机](../virtual-network/quick-create-portal.md#create-virtual-machines)。 
+- **Azure PowerShell**。 遵循[如何安装和配置 Azure PowerShell](/powershell/azure/install-Az-ps) 中的说明。
+- **一个虚拟机**。 创建一个 Azure 虚拟机 (VM)，并将其加入到 HDInsight 群集所在的同一个虚拟网络。 有关详细信息，请参阅[如何创建虚拟机](../virtual-network/quick-create-portal.md#create-virtual-machines)。 
 
 ### <a name="upload-hive-script-to-your-blob-storage-account"></a>将 Hive 脚本上传到 Blob 存储帐户
 
@@ -77,22 +74,22 @@ ms.locfileid: "92634362"
 2. 在左侧菜单中单击“新建”，并依次单击“数据 + 分析”、“数据工厂”。   
    
    ![新建 -> DataFactory](./media/tutorial-transform-data-using-hive-in-vnet-portal/new-data-factory-menu.png)
-3. 在“新建数据工厂”页中，输入 **ADFTutorialHiveFactory** 作为 **名称** 。 
+3. 在“新建数据工厂”页中，输入 **ADFTutorialHiveFactory** 作为 **名称**。 
       
      ![“新建数据工厂”页](./media/tutorial-transform-data-using-hive-in-vnet-portal/new-azure-data-factory.png)
  
-   Azure 数据工厂的名称必须 **全局唯一** 。 如果收到错误，请更改数据工厂的名称（例如改为 yournameMyAzureSsisDataFactory），并重新尝试创建。 有关数据工厂项目命名规则，请参阅[数据工厂 - 命名规则](naming-rules.md)一文。
+   Azure 数据工厂的名称必须 **全局唯一**。 如果收到错误，请更改数据工厂的名称（例如改为 yournameMyAzureSsisDataFactory），并重新尝试创建。 有关数据工厂项目命名规则，请参阅[数据工厂 - 命名规则](naming-rules.md)一文。
   
     数据工厂名“MyAzureSsisDataFactory”不可用
-3. 选择要在其中创建数据工厂的 Azure **订阅** 。 
-4. 对于 **资源组** ，请执行以下步骤之一：
+3. 选择要在其中创建数据工厂的 Azure **订阅**。 
+4. 对于 **资源组**，请执行以下步骤之一：
      
    - 选择“使用现有资源组”，并从下拉列表选择现有的资源组。 
    - 选择“新建”，并输入资源组的名称。   
          
      若要了解有关资源组的详细信息，请参阅 [使用资源组管理 Azure 资源](../azure-resource-manager/management/overview.md)。  
 4. 选择“V2”作为“版本”。
-5. 选择数据工厂的 **位置** 。 列表中只会显示支持创建数据工厂的位置。
+5. 选择数据工厂的 **位置**。 列表中只会显示支持创建数据工厂的位置。
 6. 选择“固定到仪表板”。     
 7. 单击“创建”。
 8. 在仪表板上，你会看状态如下的以下磁贴：“正在部署数据工厂”。 
@@ -118,10 +115,10 @@ ms.locfileid: "92634362"
 3. 选择“专用网络”，单击“下一步”。 
     
    ![选择专用网络](./media/tutorial-transform-data-using-hive-in-vnet-portal/select-private-network.png)
-4. 在“名称”中输入 **MySelfHostedIR** ，然后单击“下一步”。  
+4. 在“名称”中输入 **MySelfHostedIR**，然后单击“下一步”。  
 
    ![指定集成运行时名称](./media/tutorial-transform-data-using-hive-in-vnet-portal/integration-runtime-name.png) 
-5. 单击复制按钮复制集成运行时的 **身份验证密钥** ，并将其保存。 使窗口保持打开。 稍后将要使用此密钥注册虚拟机中安装的 IR。 
+5. 单击复制按钮复制集成运行时的 **身份验证密钥**，并将其保存。 使窗口保持打开。 稍后将要使用此密钥注册虚拟机中安装的 IR。 
 
    ![复制身份验证密钥](./media/tutorial-transform-data-using-hive-in-vnet-portal/copy-key.png)
 
@@ -151,8 +148,8 @@ ms.locfileid: "92634362"
 ## <a name="create-linked-services"></a>创建链接服务
 
 在本部分中创作并部署两个链接服务：
-- 一个用于将 Azure 存储帐户链接到数据工厂的 **Azure 存储链接服务** 。 此存储是 HDInsight 群集使用的主存储。 在本例中，我们将使用此 Azure 存储帐户来存储 Hive 脚本以及该脚本的输出。
-- 一个 **HDInsight 链接服务** 。 Azure 数据工厂将 Hive 脚本提交到此 HDInsight 群集以供执行。
+- 一个用于将 Azure 存储帐户链接到数据工厂的 **Azure 存储链接服务**。 此存储是 HDInsight 群集使用的主存储。 在本例中，我们将使用此 Azure 存储帐户来存储 Hive 脚本以及该脚本的输出。
+- 一个 **HDInsight 链接服务**。 Azure 数据工厂将 Hive 脚本提交到此 HDInsight 群集以供执行。
 
 ### <a name="create-azure-storage-linked-service"></a>创建 Azure 存储链接服务
 
@@ -164,11 +161,11 @@ ms.locfileid: "92634362"
    ![选择“Azure Blob 存储”](./media/tutorial-transform-data-using-hive-in-vnet-portal/select-azure-storage.png)
 3. 在“新建链接服务”窗口中执行以下步骤：
 
-    1. 输入 **AzureStorageLinkedService** 作为 **名称** 。
+    1. 输入 **AzureStorageLinkedService** 作为 **名称**。
     2. 为“通过集成运行时连接”选择“MySelfHostedIR”。 
     3. 对于“存储帐户名称”，请选择自己的 Azure 存储帐户。 
     4. 若要测试与存储帐户的连接，请单击“测试连接”。
-    5. 单击“ **保存** ”。
+    5. 单击“ **保存**”。
    
         ![指定 Azure Blob 存储帐户](./media/tutorial-transform-data-using-hive-in-vnet-portal/specify-azure-storage-account.png)
 
@@ -182,11 +179,11 @@ ms.locfileid: "92634362"
     ![选择“Azure HDInsight”](./media/tutorial-transform-data-using-hive-in-vnet-portal/select-hdinsight.png)
 3. 在“新建链接服务”窗口中执行以下步骤：
 
-    1. 在“名称”中输入 **AzureHDInsightLinkedService** 。
+    1. 在“名称”中输入 **AzureHDInsightLinkedService**。
     2. 选择“自带 HDInsight”。 
     3. 对于“HDI 群集”，请选择自己的 HDInsight 群集。 
-    4. 输入 HDInsight 群集的 **用户名** 。
-    5. 输入该用户的 **密码** 。 
+    4. 输入 HDInsight 群集的 **用户名**。
+    5. 输入该用户的 **密码**。 
     
         ![Azure HDInsight 设置](./media/tutorial-transform-data-using-hive-in-vnet-portal/specify-azure-hdinsight.png)
 
@@ -220,10 +217,10 @@ ms.locfileid: "92634362"
     2. 对于“文件路径”，请单击“浏览存储”。  
  
         ![浏览存储](./media/tutorial-transform-data-using-hive-in-vnet-portal/browse-storage-hive-script.png)
-    3. 在“选择文件或文件夹”窗口中导航到 **adftutorial** 容器中的 **hivescripts** 文件夹，选择 **hivescript.hql** ，然后单击“完成”。   
+    3. 在“选择文件或文件夹”窗口中导航到 **adftutorial** 容器中的 **hivescripts** 文件夹，选择 **hivescript.hql**，然后单击“完成”。   
         
         ![选择文件或文件夹](./media/tutorial-transform-data-using-hive-in-vnet-portal/choose-file-folder.png) 
-    4. 确认“文件路径”中显示了 **adftutorial/hivescripts/hivescript.hql** 。
+    4. 确认“文件路径”中显示了 **adftutorial/hivescripts/hivescript.hql**。
 
         ![脚本设置](./media/tutorial-transform-data-using-hive-in-vnet-portal/confirm-hive-script-settings.png)
     5. 在“脚本”选项卡中，展开“高级”部分。  

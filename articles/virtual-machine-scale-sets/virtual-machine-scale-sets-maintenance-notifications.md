@@ -9,26 +9,26 @@ ms.subservice: management
 ms.date: 11/12/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: 2aa589d237a8cfeb8e0dc947896dba82e755631c
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 85e4b6a4d0ff1c3bd7e634311a36396a74408419
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94564763"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594441"
 ---
 # <a name="planned-maintenance-notifications-for-virtual-machine-scale-sets"></a>虚拟机规模集的计划内维护通知
 
 
 Azure 定期执行更新，以提高虚拟机 (VM) 的主机基础结构的可靠性、性能及安全性。 更新可能包括修补托管环境或升级以及解除硬件授权。 大多数更新不影响托管的 VM。 但是在以下情况下，更新会影响 VM：
 
-- 如果维护不需要重新启动，则 Azure 会在更新主机几秒钟后暂停 VM。 这类维护操作由容错域应用于容错域。 如果接收到任何警告健康状况信号，则进程将停止。
+- 如果维护不需要重启，Azure 会在主机更新时暂停 VM 几秒钟。 这些类型的维护操作将逐个容错域进行应用。 如果接收到任何警告健康状况信号，则进程将停止。
 
 - 如果维护需重新启动，系统会告知计划维护的时间。 在这些情况下，系统会提供一个时间窗口（通常为 35 天），方便你在适当的时间自行启动维护。
 
 
 需要重启的计划内维护是按批进行计划的。 每个批具有不同的作用域（区域）：
 
-- 一个批从向客户发送通知开始。 默认情况下，向订阅所有者和共同所有者发送通知。 可以使用 Azure [活动日志警报](../azure-monitor/platform/platform-logs-overview.md)，向通知添加收件人和消息发送选项（如电子邮件、短信和 Webhook）。  
+- 一个批从向客户发送通知开始。 默认情况下，向订阅所有者和共同所有者发送通知。 可以使用 Azure [活动日志警报](../azure-monitor/essentials/platform-logs-overview.md)，向通知添加收件人和消息发送选项（如电子邮件、短信和 Webhook）。  
 - 出现通知时会提供自助时段  。 在此窗口（通常为 35 天）内，可以发现此批中包括了哪些 VM。 可以根据自身计划需要，主动启动维护。
 - 自助时段过后，就会开始计划内维护时段。  在此时段的某个时刻，Azure 会计划所需的维护，并将其应用于 VM。 
 
@@ -89,17 +89,17 @@ Azure 定期执行更新，以提高虚拟机 (VM) 的主机基础结构的可�
 
 ## <a name="notification-and-alerts-in-the-portal"></a>门户中的通知和警报
 
-Azure 通过向订阅所有者和共有者组发送电子邮件来传达计划维护的安排。 可以通过创建活动日志警报，为此通信添加收件人和通道。 有关详细信息，请参阅[使用 Azure 活动日志监视订阅活动](../azure-monitor/platform/platform-logs-overview.md)。
+Azure 通过向订阅所有者和共有者组发送电子邮件来传达计划维护的安排。 可以通过创建活动日志警报，为此通信添加收件人和通道。 有关详细信息，请参阅[使用 Azure 活动日志监视订阅活动](../azure-monitor/essentials/platform-logs-overview.md)。
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 在左侧菜单中，选择“监视”  。 
 3. 在“监视 - 警报(经典)”窗格中，选择“+添加活动日志警报”   。
 4. 在“添加活动日志警报”页面中，选择或输入要求的信息  。 在“条件”中，确保设置以下值  ：
-   - **事件类别** ：选择“服务运行状况”  。
-   - **服务** ：选择“虚拟机规模集和虚拟机”  。
-   - **类型** ：选择“计划内维护”  。 
+   - **事件类别**：选择“服务运行状况”  。
+   - **服务**：选择“虚拟机规模集和虚拟机”  。
+   - **类型**：选择“计划内维护”  。 
     
-要详细了解如何配置活动日志警报，请参阅[创建活动日志警报](../azure-monitor/platform/activity-log-alerts.md)
+要详细了解如何配置活动日志警报，请参阅[创建活动日志警报](../azure-monitor/alerts/activity-log-alerts.md)
     
     
 ## <a name="start-maintenance-on-your-virtual-machine-scale-set-from-the-portal"></a>从门户中开始维护虚拟机规模集
@@ -185,7 +185,7 @@ az vmss perform-maintenance -g rgName -n vmssName --instance-ids id
 
 **问：如何收到有关计划内维护的通知？**
 
-**答:** 一次计划内维护是通过将计划设置到一个或多个 Azure 区域启动的。 不久之后，会向订阅管理员、共同管理员、所有者和参与者发送电子邮件通知， (每个订阅) 一封电子邮件。 可以使用活动日志警报配置此通知的其他通道和收件人。 如果将虚拟机部署到已安排计划内维护的区域，则不会收到通知。 此时而应查看 VM 的维护状态。
+**答:** 一次计划内维护是通过将计划设置到一个或多个 Azure 区域启动的。 不久之后，系统会将一个电子邮件通知发送到订阅管理员、共同管理员、所有者和参与者（每个订阅一封电子邮件）。 可以使用活动日志警报配置此通知的其他通道和收件人。 如果将虚拟机部署到已安排计划内维护的区域，你不会收到通知。 此时而应查看 VM 的维护状态。
 
 **问：我在门户、PowerShell 或 CLI 中看不到任何计划内维护的指示。这是为何？**
 
@@ -212,7 +212,7 @@ az vmss perform-maintenance -g rgName -n vmssName --instance-ids id
    - 我们已取消这次维护，并使用不同的有效负载重新启动它。 可能是我们已检测到出错的有效负载，只需部署其他有效负载。
    - 由于硬件故障，已在另一个节点上对 VM 进行服务修复。 
    - 选择了停止（解除分配）VM 并将其重启。
-   - 已经为 VM 启用了 **自动关闭** 。
+   - 已经为 VM 启用了 **自动关闭**。
 
 ## <a name="next-steps"></a>后续步骤
 

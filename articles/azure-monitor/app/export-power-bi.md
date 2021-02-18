@@ -3,12 +3,12 @@ title: 从 Azure Application Insights 导出到 Power BI | Microsoft Docs
 description: 可以在 Power BI 中显示分析查询。
 ms.topic: conceptual
 ms.date: 08/10/2018
-ms.openlocfilehash: 1e88d60cd9a9d0e6267998237b33a361b12ffd84
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 4bdae09d193d5ae9c59fe9352e07b8219a76841d
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186994"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100584307"
 ---
 # <a name="feed-power-bi-from-application-insights"></a>从 Application Insights 向 Power BI 馈送数据
 [Power BI](https://www.powerbi.com/) 是一套商业工具，可帮助分析数据及分享见解。 每个设备上都提供了丰富的仪表板。 可以结合许多源的数据，包括来自 [Azure Application Insights](./app-insights-overview.md) 的数据。
@@ -31,7 +31,7 @@ ms.locfileid: "96186994"
 安装 [Power BI Desktop](https://powerbi.microsoft.com/en-us/desktop/)。
 
 ### <a name="export-an-analytics-query"></a>导出 Analytics 查询
-1. [打开 Analytics 并编写查询](../log-query/log-analytics-tutorial.md)。
+1. [打开 Analytics 并编写查询](../logs/log-analytics-tutorial.md)。
 2. 测试并优化查询，直到对结果满意。 导出之前，请确保查询在 Analytics 中正常运行。
 3. 在“导出”菜单中，选择“Power BI (M)”。  保存文本文件。
    
@@ -146,4 +146,4 @@ ms.locfileid: "96186994"
 
 ## <a name="next-steps"></a>后续步骤
 * [Power BI - 学习](https://www.powerbi.com/learning/)
-* [Analytics 教程](../log-query/log-analytics-tutorial.md)
+* [Analytics 教程](../logs/log-analytics-tutorial.md)

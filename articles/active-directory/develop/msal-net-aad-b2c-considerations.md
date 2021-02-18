@@ -13,12 +13,12 @@ ms.date: 05/07/2020
 ms.author: jeferrie
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: b28454e9b60654541d4f62ec1d8455b30cfc2906
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: bdb9e12fdf721204ce98d23e5d5aeea535ddf23d
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99580821"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574811"
 ---
 # <a name="use-msalnet-to-sign-in-users-with-social-identities"></a>使用 MSAL.NET 通过社交标识将用户登录
 
@@ -67,31 +67,27 @@ application = PublicClientApplicationBuilder.Create(ClientID)
 为公共客户端应用程序中受 Azure AD B2C 保护的 API 获取令牌时，需要将重写与颁发机构配合使用：
 
 ```csharp
-IEnumerable<IAccount> accounts = await application.GetAccountsAsync();
-AuthenticationResult ar = await application.AcquireTokenInteractive(scopes)
-                                           .WithAccount(GetAccountByPolicy(accounts, policy))
-                                           .WithParentActivityOrWindow(ParentActivityOrWindow)
-                                           .ExecuteAsync();
+AuthenticationResult authResult = null;
+IEnumerable<IAccount> accounts = await application.GetAccountsAsync(policy);
+IAccount account = accounts.FirstOrDefault();
+try
+{
+    authResult = await application.AcquireTokenSilent(scopes, account)
+                      .ExecuteAsync();
+}
+catch (MsalUiRequiredException ex)
+{
+    authResult = await application.AcquireTokenInteractive(scopes)
+                        .WithAccount(account)
+                        .WithParentActivityOrWindow(ParentActivityOrWindow)
+                        .ExecuteAsync();
+}  
 ```
 
 在前面的代码片段中：
 
 - `policy` 是一个字符串，其中包含 Azure AD B2C 用户流或自定义策略的名称（例如 `PolicySignUpSignIn`）。
 - `ParentActivityOrWindow` 对于 Android（活动）是必需的，对于支持父 UI（如 Microsoft Windows 中的窗口和 iOS 中的 UIViewController）的其他平台则是可选的。 有关 UI 对话框的详细信息，请参阅 MSAL Wiki 上的 [WithParentActivityOrWindow](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Acquiring-tokens-interactively#withparentactivityorwindow)。
-- `GetAccountByPolicy(IEnumerable<IAccount>, string)`：用于在帐户中查找给定策略的方法。 例如：
-
-  ```csharp
-  private IAccount GetAccountByPolicy(IEnumerable<IAccount> accounts, string policy)
-  {
-      foreach (var account in accounts)
-      {
-          string userIdentifier = account.HomeAccountId.ObjectId.Split('.')[0];
-          if (userIdentifier.EndsWith(policy.ToLower()))
-              return account;
-      }
-      return null;
-  }
-  ```
 
 目前通过调用 `AcquireTokenInteractive` 来应用用户流或自定义策略（例如，让用户编辑其配置文件或重置其密码）。 对于这两个策略，不使用返回的令牌/身份验证结果。
 
@@ -104,16 +100,16 @@ AuthenticationResult ar = await application.AcquireTokenInteractive(scopes)
 ```csharp
 private async void EditProfileButton_Click(object sender, RoutedEventArgs e)
 {
-    IEnumerable<IAccount> accounts = await app.GetAccountsAsync();
+    IEnumerable<IAccount> accounts = await application.GetAccountsAsync(PolicyEditProfile);
+    IAccount account = accounts.FirstOrDefault();
     try
     {
-        var authResult = await app.AcquireToken(scopes:App.ApiScopes)
-                            .WithAccount(GetUserByPolicy(accounts, App.PolicyEditProfile)),
+        var authResult = await application.AcquireTokenInteractive(scopes)
                             .WithPrompt(Prompt.NoPrompt),
-                            .WithB2CAuthority(App.AuthorityEditProfile)
+                            .WithAccount(account)
+                            .WithB2CAuthority(AuthorityEditProfile)
                             .ExecuteAsync();
-        DisplayBasicTokenInfo(authResult);
-    }
+     }
     catch
     {
     }

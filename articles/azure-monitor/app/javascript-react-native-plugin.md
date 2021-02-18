@@ -1,33 +1,33 @@
 ---
-title: Application Insights JavaScript SDK 的本机响应插件
-description: 如何安装和使用 Application Insights JavaScript SDK 的本机响应插件。
+title: 适用于 Application Insights JavaScript SDK 的 Native React 插件
+description: 如何安装和使用适用于 Application Insights JavaScript SDK 的 Native React 插件。
 services: azure-monitor
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 08/06/2020
-ms.openlocfilehash: 3dac47aa7cf93ca882c4c1d0d191dabf0eb7178c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0c122a21fc7149e9943825cafbed77069b7919f3
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88227094"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593588"
 ---
-# <a name="native-react-plugin-for-application-insights-javascript-sdk"></a>Application Insights JavaScript SDK 的本机响应插件
+# <a name="native-react-plugin-for-application-insights-javascript-sdk"></a>适用于 Application Insights JavaScript SDK 的 Native React 插件
 
-Application Insights JavaScript SDK 的本机响应插件收集设备信息，默认情况下，此插件会自动收集：
+Application Insights JavaScript SDK 的 Native React 插件收集设备信息，默认情况下此插件会自动收集：
 
-- **唯一的设备 id** (也称为安装 ID。 ) 
-- **设备型号名称** (例如 iPhone X、Samsung Galaxy 折页、Huawei P30 Pro 等 ) 
-- **设备类型** (例如，话筒、平板电脑等 ) 
+- 唯一设备 ID（也称为安装 ID。）
+- 设备型号名称（如 iPhone X、Samsung Galaxy Fold、Huawei P30 Pro 等。）
+- 设备类型（例如手持设备、平板电脑等。）
 
 ## <a name="requirements"></a>要求
 
-必须使用版本 >= 2.0.0 `@microsoft/applicationinsights-web` 。 此插件仅适用于响应本机应用。 它不适用于 [使用展览框架的应用](https://docs.expo.io/)，因此无法使用 Create 反应本机应用。
+必须使用等于或高于 2.0.0 版本的 `@microsoft/applicationinsights-web`。 此插件将仅在 react-native 应用中工作。 它将不使用[使用 Expo 框架的应用](https://docs.expo.io/)，因此它无法与 Create React Native 应用一起使用。
 
 ## <a name="getting-started"></a>入门
 
-安装并链接 [响应本机设备信息](https://www.npmjs.com/package/react-native-device-info) 包。 使包保持最新状态 `react-native-device-info` ，以便使用您的应用程序收集最新的设备名称。
+安装并链接 [react-native-device-info](https://www.npmjs.com/package/react-native-device-info) 包。 使 `react-native-device-info` 包保持最新，以使用应用收集最新的设备名称。
 
 ```zsh
 
@@ -37,9 +37,9 @@ react-native link react-native-device-info
 
 ```
 
-## <a name="initializing-the-plugin"></a>正在初始化插件
+## <a name="initializing-the-plugin"></a>初始化插件
 
-若要使用此插件，需要构造插件，并将其作为添加 `extension` 到现有 Application Insights 实例。
+若要使用此插件，你需要构造该插件并将其作为 `extension` 添加到现有的 Application Insights 实例中。
 
 ```typescript
 import { ApplicationInsights } from '@microsoft/applicationinsights-web';
@@ -58,5 +58,5 @@ appInsights.loadAppInsights();
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要了解有关 JavaScript SDK 的详细信息，请参阅 [Application Insights JAVASCRIPT sdk 文档](javascript.md)。
-- 若要了解 Kusto 查询语言和查询 Log Analytics 中的数据，请参阅 [日志查询概述](../../azure-monitor/log-query/log-query-overview.md)。
+- 若要详细了解 JavaScript SDK，请参阅 [Application Insights JavaScript SDK 文档](javascript.md)。
+- 若要了解 Kusto 查询语言和 Log Analytics 中的查询数据，请参阅[日志查询概述](../../azure-monitor/logs/log-query-overview.md)。

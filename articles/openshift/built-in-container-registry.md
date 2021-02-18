@@ -3,15 +3,15 @@ title: 为 Azure Red Hat OpenShift 4 配置内置容器注册表
 description: 为 Azure Red Hat OpenShift 4 配置内置容器注册表
 author: jiangma
 ms.author: jiangma
-ms.service: container-service
+ms.service: azure-redhat-openshift
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: 79b74c9dccd68ac3abfd9ae6cb2d0c345e45d4bf
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: dda050b8d824f0ff0ac1c84d2f008387de55aedf
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99070604"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100636369"
 ---
 # <a name="configure-built-in-container-registry-for-azure-red-hat-openshift-4"></a>为 Azure Red Hat OpenShift 4 配置内置容器注册表
 
@@ -24,7 +24,7 @@ Azure Red Hat OpenShift 提供了一个名为 " [OpenShift 容器注册表 () OC
 > * 设置 OpenID Connect
 > * 访问内置容器映像注册表
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>在开始之前
 
 本文假定你已有一个 ARO 群集。 如果需要 ARO 群集，请参阅 ARO 教程 [创建 Azure Red Hat OpenShift 4 群集](./tutorial-create-cluster.md)。 请确保创建具有参数的群集 `--pull-secret` `az aro create` 。  这对于配置 Azure Active Directory 身份验证和内置容器注册表是必需的。
 

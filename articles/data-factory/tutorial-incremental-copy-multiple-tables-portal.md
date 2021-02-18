@@ -1,22 +1,18 @@
 ---
 title: 使用 Azure 门户以增量方式复制多个表
 description: 在本教程中，你将创建一个带管道的 Azure 数据工厂，该管道将增量数据从 SQL Server 数据库中的多个表加载到 Azure SQL 数据库中的数据库。
-services: data-factory
 ms.author: yexu
 author: dearandyxu
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 11/09/2020
-ms.openlocfilehash: f3060a7308d728b31266008d75e18470883e4480
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 10ebca487e8149b509935b5eb4c8d9f67ced8ade
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97508588"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100361122"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-a-database-in-azure-sql-database-using-the-azure-portal"></a>使用 Azure 门户以递增方式将数据从 SQL Server 中的多个表加载到 Azure SQL 数据库中的数据库
 

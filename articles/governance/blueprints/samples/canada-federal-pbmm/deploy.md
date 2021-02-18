@@ -3,12 +3,12 @@ title: 部署加拿大联邦 PBMM 蓝图示例
 description: 加拿大联邦 PBMM 蓝图示例的部署步骤，包括蓝图项目参数详细信息。
 ms.date: 02/05/2021
 ms.topic: sample
-ms.openlocfilehash: 376c6329c0c3c571364c7d5d23a21c9f8cad2e53
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: ec7b0f4bd049b8cb2ead9301ac9ddb76ae727cca
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99624989"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594792"
 ---
 # <a name="deploy-the-canada-federal-pbmm-blueprint-samples"></a>部署加拿大联邦 PBMM 蓝图示例
 
@@ -93,12 +93,12 @@ ms.locfileid: "99624989"
 
 项目名称|项目类型|参数名称|说明|
 |-|-|-|-|
-|\[预览\]：为 Linux VM 部署 Log Analytics 代理 |策略分配 |Linux VM 的 Log Analytics 工作区 |有关详细信息，请参阅[在 Azure 门户中创建 Log Analytics 工作区](../../../../azure-monitor/learn/quick-create-workspace.md)。 |
+|\[预览\]：为 Linux VM 部署 Log Analytics 代理 |策略分配 |Linux VM 的 Log Analytics 工作区 |有关详细信息，请参阅[在 Azure 门户中创建 Log Analytics 工作区](../../../../azure-monitor/logs/quick-create-workspace.md)。 |
 |\[预览\]：为 Linux VM 部署 Log Analytics 代理 |策略分配 |可选：支持将 Linux OS 添加到范围的 VM 映像列表 |可以使用空数组来表示没有可选参数：`[]` |
 |\[预览\]：为 Windows VM 部署 Log Analytics 代理 |策略分配 |可选：支持将 Windows OS 添加到范围的 VM 映像列表 |可以使用空数组来表示没有可选参数：`[]` |
-|\[预览\]：为 Windows VM 部署 Log Analytics 代理 |策略分配 |Windows VM 的 Log Analytics 工作区 |有关详细信息，请参阅[在 Azure 门户中创建 Log Analytics 工作区](../../../../azure-monitor/learn/quick-create-workspace.md)。 |
+|\[预览\]：为 Windows VM 部署 Log Analytics 代理 |策略分配 |Windows VM 的 Log Analytics 工作区 |有关详细信息，请参阅[在 Azure 门户中创建 Log Analytics 工作区](../../../../azure-monitor/logs/quick-create-workspace.md)。 |
 |\[预览\]：审核加拿大联邦 PBMM 控件，并部署特定 VM 扩展来支持审核要求 |策略分配 |应为 VM 配置的 Log Analytics 工作区 ID |这是应为 VM 配置的 Log Analytics 工作区的 ID (GUID)。 |
-|\[预览\]：审核加拿大联邦 PBMM 控件，并部署特定 VM 扩展来支持审核要求 |策略分配 |应启用诊断日志的资源类型列表 |用于审核是否未启用诊断日志设置的资源类型列表。 [Azure Monitor 诊断日志架构](../../../../azure-monitor/platform/resource-logs-schema.md#service-specific-schemas)中提供了可接受的值。 |
+|\[预览\]：审核加拿大联邦 PBMM 控件，并部署特定 VM 扩展来支持审核要求 |策略分配 |应启用诊断日志的资源类型列表 |用于审核是否未启用诊断日志设置的资源类型列表。 [Azure Monitor 诊断日志架构](../../../../azure-monitor/essentials/resource-logs-schema.md#service-specific-schemas)中提供了可接受的值。 |
 |\[预览\]：审核加拿大联邦 PBMM 控件，并部署特定 VM 扩展来支持审核要求 |策略分配 |管理员组 |组。 示例： `Administrator; myUser1; myUser2` |
 |\[预览\]：审核加拿大联邦 PBMM 控件，并部署特定 VM 扩展来支持审核要求 |策略分配 |应该包括在 Windows VM 管理员组中的用户的列表 |以分号分隔的应包括在管理员本地组中的成员列表。 示例： `Administrator; myUser1; myUser2` |
 |在存储帐户上部署高级威胁防护 |策略分配 |效果 |有关策略效果的信息，可参阅[了解 Azure Policy 效果](../../../policy/concepts/effects.md)。 |

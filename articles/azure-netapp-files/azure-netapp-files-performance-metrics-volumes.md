@@ -7,12 +7,12 @@ ms.service: azure-netapp-files
 ms.workload: storage
 ms.topic: conceptual
 ms.date: 08/07/2019
-ms.openlocfilehash: b41575208d0793a33864556ec4313ae1a71f2db5
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: f73091552a78760024189b173897913edca724bb
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96184461"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593411"
 ---
 # <a name="performance-benchmark-test-recommendations-for-azure-netapp-files"></a>Azure NetApp 文件的性能基准测试建议
 
@@ -105,7 +105,7 @@ Azure NetApp 文件性能数据可通过 Azure Monitor 计数器提供。 可以
 
 你可以从 "指标" 页按卷访问 Azure NetApp 文件计数器，如下所示：
 
-![Azure Monitor 度量值](../media/azure-netapp-files/azure-netapp-files-benchmark-monitor-metrics.png)
+![Azure Monitor 指标](../media/azure-netapp-files/azure-netapp-files-benchmark-monitor-metrics.png)
 
 你还可以通过转到 "指标" 页，筛选 NetApp 并指定感兴趣的卷计数器，在 Azure Monitor 为 Azure NetApp 文件创建仪表板： 
 
@@ -113,7 +113,7 @@ Azure NetApp 文件性能数据可通过 Azure Monitor 计数器提供。 可以
 
 ### <a name="azure-monitor-api-access"></a>Azure Monitor API 访问
 
-可以通过使用 REST API 调用来访问 Azure NetApp 文件计数器。 有关容量池和卷的计数器，请参阅 [Azure Monitor： netAppAccounts/capacityPools/卷支持的指标](../azure-monitor/platform/metrics-supported.md#microsoftnetappnetappaccountscapacitypoolsvolumes) 。
+可以通过使用 REST API 调用来访问 Azure NetApp 文件计数器。 有关容量池和卷的计数器，请参阅 [Azure Monitor： netAppAccounts/capacityPools/卷支持的指标](../azure-monitor/essentials/metrics-supported.md#microsoftnetappnetappaccountscapacitypoolsvolumes) 。
 
 以下示例显示了用于查看逻辑卷大小的 GET URL：
 

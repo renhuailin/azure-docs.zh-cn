@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/26/2020
 ms.author: yelevin
-ms.openlocfilehash: 5bf94d7c5889bb5a743655d65e48f021e91e01b7
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 0b2a6088effc735076d56ba83dd85135392147b8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807133"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574993"
 ---
 # <a name="import-threat-intelligence-into-azure-sentinel"></a>将威胁情报导入 Azure Sentinel
 
@@ -419,7 +419,7 @@ TAXII 2.x 服务器播发 API 根，它是托管威胁情报集合的 Url。 最
 
     :::image type="content" source="media/import-threat-intelligence/threat-intel-bar-chart.png" alt-text="条形图":::
 
-工作簿提供了强大的交互仪表板，可让你深入了解 Azure Sentinel 的各个方面。 你可以对工作簿执行一项全面的操作，而提供的模板非常不错，你可能想要深入研究并自定义这些模板，或者创建新的仪表板来合并多个不同的数据源，以便能够以独特方式可视化数据。 由于 Azure Sentinel 工作簿基于 Azure Monitor 工作簿，因此已提供大量的文档，还有更多模板。 这篇文章介绍了如何 [使用 Azure Monitor 工作簿创建交互式报表](../azure-monitor/platform/workbooks-overview.md)。 
+工作簿提供了强大的交互仪表板，可让你深入了解 Azure Sentinel 的各个方面。 你可以对工作簿执行一项全面的操作，而提供的模板非常不错，你可能想要深入研究并自定义这些模板，或者创建新的仪表板来合并多个不同的数据源，以便能够以独特方式可视化数据。 由于 Azure Sentinel 工作簿基于 Azure Monitor 工作簿，因此已提供大量的文档，还有更多模板。 这篇文章介绍了如何 [使用 Azure Monitor 工作簿创建交互式报表](../azure-monitor/visualize/workbooks-overview.md)。 
 
 GitHub 上还提供丰富的 [Azure Monitor 工作簿](https://github.com/microsoft/Application-Insights-Workbooks) 社区，你可以在其中下载其他模板和提供你自己的模板。
 

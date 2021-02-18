@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 025a94cf7d163d41486ef218e70d9eb48e93d31c
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 08aa69db90901447297e06cd111b6b0174e6637a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881310"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575085"
 ---
 # <a name="azure-security-baseline-for-azure-machine-learning"></a>Azure 机器学习的 Azure 安全基线
 
@@ -155,9 +155,9 @@ Azure 机器学习服务在虚拟网络中记录其计算目标的服务标记�
 
 **指导**：使用 Azure 活动日志监视网络资源配置，并检测与 Azure 机器学习相关的网络资源的更改。 在 Azure Monitor 中创建当关键网络资源发生更改时触发的警报。
 
-- [如何查看和检索 Azure 活动日志事件](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [如何查看和检索 Azure 活动日志事件](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [如何在 Azure Monitor 中创建警报](../azure-monitor/platform/alerts-activity-log.md)
+- [如何在 Azure Monitor 中创建警报](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -193,9 +193,9 @@ Azure 机器学习服务在虚拟网络中记录其计算目标的服务标记�
 
 你还可以将机器学习服务操作日志进行关联，以提高安全性与合规性。
 
-- [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/platform/diagnostic-settings.md)
+- [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/essentials/diagnostic-settings.md)
 
-- [了解 Azure 中的日志记录和不同的日志类型](../azure-monitor/platform/platform-logs-overview.md)
+- [了解 Azure 中的日志记录和不同的日志类型](../azure-monitor/essentials/platform-logs-overview.md)
 
 - [在 Azure 机器学习中启用日志记录](./how-to-track-experiments.md)
 
@@ -211,7 +211,7 @@ Azure 机器学习服务在虚拟网络中记录其计算目标的服务标记�
 
 Azure 机器学习为各种计算资源甚至为你自己的计算资源提供不同的支持。 对于你的组织拥有的任何计算资源，请使用 Azure 安全中心来监视操作系统。 
 
-- [如何使用 Azure Monitor 收集 Azure 虚拟机内部主机日志](../azure-monitor/learn/quick-collect-azurevm.md)
+- [如何使用 Azure Monitor 收集 Azure 虚拟机内部主机日志](../azure-monitor/vm/quick-collect-azurevm.md)
 
 - [了解 Azure 安全中心数据收集](../security-center/security-center-enable-data-collection.md)
 
@@ -223,7 +223,7 @@ Azure 机器学习为各种计算资源甚至为你自己的计算资源提供�
 
 **指导**：在 Azure Monitor 中，根据组织的合规性制度，为与你的 Azure 机器学习实例关联的 Log Analytics 工作区设置日志保留期。
 
-- [如何设置日志保留参数](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [如何设置日志保留参数](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure 安全中心监视**：不适用
 
@@ -241,9 +241,9 @@ Azure 机器学习为各种计算资源甚至为你自己的计算资源提供�
 
 - [如何加入 Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-- [Log Analytics 查询入门](../azure-monitor/log-query/log-analytics-tutorial.md)
+- [Log Analytics 查询入门](../azure-monitor/logs/log-analytics-tutorial.md)
 
-- [如何在 Azure Monitor 中执行自定义查询](../azure-monitor/log-query/get-started-queries.md)
+- [如何在 Azure Monitor 中执行自定义查询](../azure-monitor/logs/get-started-queries.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -257,7 +257,7 @@ Azure 机器学习为各种计算资源甚至为你自己的计算资源提供�
 
 - [详细了解 Azure 机器学习警报](monitor-azure-machine-learning.md#alerts)
 
-- [如何针对 Log Analytics 工作区日志数据发出警报](../azure-monitor/learn/tutorial-response.md)
+- [如何针对 Log Analytics 工作区日志数据发出警报](../azure-monitor/alerts/tutorial-response.md)
 
 - [如何加入 Azure Sentinel](../sentinel/quickstart-onboard.md)
 
@@ -303,9 +303,9 @@ Azure 机器学习为各种计算资源甚至为你自己的计算资源提供�
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1：维护管理帐户的清单
 
-**指南**：你可以使用 Azure 门户中的资源的 "标识和访问管理" 选项卡来配置 azure RBAC)  (基于角色的访问控制，并在 Azure 机器学习资源上维护库存。 角色将应用到 Active Directory 中的用户、组、服务主体和托管标识。 对于个人和组，可使用内置角色或自定义角色。
+**指导**：可以使用 Azure 门户中资源的“标识和访问管理”选项卡配置 Azure 基于角色的访问控制 (Azure RBAC)，并维护有关 Azure 机器学习资源的库存。 角色将应用到 Active Directory 中的用户、组、服务主体和托管标识。 对于个人和组，可使用内置角色或自定义角色。
 
-Azure 机器学习在 Azure 机器学习中为常见管理方案提供内置角色。 在 Azure Active Directory (Azure AD) 中具有配置文件的个人可以将这些角色分配给用户、组、服务主体或托管标识，以授予或拒绝对 Azure 机器学习资源的资源和操作的访问权限。
+Azure 机器学习为 Azure 机器学习中的常见管理方案提供了内置角色。 在 Azure Active Directory (Azure AD) 中创建了配置文件的个人可将这些角色分配给用户、组、服务主体或托管标识，以授予或拒绝对资源和 Azure 机器学习资源操作的访问权限。
 
 还可以使用 Azure AD PowerShell 模块执行即席查询，以发现属于管理组的成员的帐户。
 
@@ -565,7 +565,7 @@ Microsoft 会管理机器学习的底层基础结构，并实施了严格的控�
 
 **指导**：将 Azure Monitor 与 Azure 活动日志结合使用，以创建在 Azure 机器学习的生产实例和其他关键资源或相关资源发生更改时发出的警报。
 
-- [如何针对 Azure 活动日志事件创建警报](../azure-monitor/platform/alerts-activity-log.md)
+- [如何针对 Azure 活动日志事件创建警报](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure 安全中心监视**：不适用
 

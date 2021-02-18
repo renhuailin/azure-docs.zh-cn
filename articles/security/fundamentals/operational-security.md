@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: f968267d4233c765bfd107d81957cf04edace923
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 7380c0d9679fe74bc91eea269f53fea750922b79
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94408509"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575013"
 ---
 # <a name="azure-operational-security"></a>Azure 操作安全性
 ## <a name="introduction"></a>简介
@@ -81,7 +81,7 @@ Azure Monitor 日志的核心功能由在 Azure 中运行的一组服务提供�
 使用这种方法可以整合来自各种源的数据，因此可将 Azure 服务中的数据合并到现有的本地环境。 此外，它还能将数据收集与针对该数据执行的操作明确区分开来，以便能够针对所有类型的数据执行所有操作。
 
 
-![显示来自各种来源的数据合并的关系图，以便可以将 Azure 服务中的数据与现有的本地环境组合在一起。](./media/operational-security/azure-operational-security-fig2.png)
+![显示来自各种源的数据整合的图表，通过数据整合可以将 Azure 服务中的数据合并到现有的本地环境。](./media/operational-security/azure-operational-security-fig2.png)
 
 Azure Monitor 服务使用以下方法安全地管理你基于云的数据：
 -   数据隔离
@@ -108,7 +108,7 @@ Azure 备份中的受保护数据存储在位于特定地理区域的备份保�
 
 ![管理解决方案](./media/operational-security/azure-operational-security-fig4.png)
 
-[更新管理解决方案](../../automation/update-management/overview.md)就是使用多个服务提供更多功能的解决方案的一个好例子。 此解决方案使用适用于 Windows 和 Linux 的 [Azure Monitor 日志](../../azure-monitor/log-query/log-query-overview.md)代理来收集有关每个代理上所需的更新的信息。 它将这些数据写入 Azure Monitor 日志存储库，你可使用随附的仪表板来分析这些数据。
+[更新管理解决方案](../../automation/update-management/overview.md)就是使用多个服务提供更多功能的解决方案的一个好例子。 此解决方案使用适用于 Windows 和 Linux 的 [Azure Monitor 日志](../../azure-monitor/logs/log-query-overview.md)代理来收集有关每个代理上所需的更新的信息。 它将这些数据写入 Azure Monitor 日志存储库，你可使用随附的仪表板来分析这些数据。
 
 创建部署时，可以使用 [Azure 自动化](../../automation/automation-intro.md)中的 runbook 来安装所需的更新。 可在管理门户中管理整个过程，无需担心如何获取基础详细信息。
 
@@ -148,11 +148,11 @@ Azure 安全中心可帮助保护 Azure 资源。 它为 Azure 订阅提供集�
 
 为了帮助客户防止、检测和应对威胁，Azure 安全中心将收集和处理安全相关的数据，包括配置信息、元数据、事件日志、故障转储文件，等等。 从编程到服务运营，Microsoft 都严格遵守相关法规与安全准则。
 
--   **数据隔离** ：服务中每个组件的数据都保持逻辑隔离。 所有数据均按组织进行标记。 此标记方式贯穿数据的整个生命周期，在服务的每个层强制实施。
+-   **数据隔离**：服务中每个组件的数据都保持逻辑隔离。 所有数据均按组织进行标记。 此标记方式贯穿数据的整个生命周期，在服务的每个层强制实施。
 
 -   数据访问：为提供安全建议和调查潜在的安全威胁，Microsoft 人员可能访问 Azure 服务收集或分析的信息，包括故障转储文件、进程创建事件、VM 磁盘快照和项目，因此可能意外地包括了虚拟机中的客户数据或个人数据。 我们遵守 [Microsoft Online Services 条款和隐私声明](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31)，其中指出，Microsoft 不会出于广告或类似的商业目的利用客户数据，或者从客户数据衍生信息。
 
--   **数据使用** ：Microsoft 使用多个租户所使用的模式和威胁情报增强预防和检测威胁的能力；执行过程中遵循 [隐私声明](https://www.microsoft.com/en-us/privacystatement/OnlineServices/)中所述的隐私承诺。
+-   **数据使用**：Microsoft 使用多个租户所使用的模式和威胁情报增强预防和检测威胁的能力；执行过程中遵循 [隐私声明](https://www.microsoft.com/en-us/privacystatement/OnlineServices/)中所述的隐私承诺。
 
 ### <a name="data-location"></a>数据位置
 
@@ -160,7 +160,7 @@ Azure 安全中心收集故障转储文件的临时副本并对其进行分析�
 
 -   用户的存储帐户：为运行虚拟机的每个区域指定一个存储帐户。 这样即可将数据存储在一个区域，而从虚拟机收集数据时，虚拟机也位于该区域。
 
--   **Azure 安全中心存储** ：有关安全警报（包括合作伙伴警报）、建议和安全运行状况的信息将集中存储，存储位置目前位于美国。 该信息可能包括根据需要从用户虚拟机收集的相关配置信息和安全事件，目的是为用户提供安全警报、建议或安全运行状况。
+-   **Azure 安全中心存储**：有关安全警报（包括合作伙伴警报）、建议和安全运行状况的信息将集中存储，存储位置目前位于美国。 该信息可能包括根据需要从用户虚拟机收集的相关配置信息和安全事件，目的是为用户提供安全警报、建议或安全运行状况。
 
 
 ## <a name="azure-monitor"></a>Azure Monitor
@@ -195,15 +195,15 @@ Azure Monitor 提供有关特定类型资源的信息的导航。 它对来自 A
 
 例如，Windows 事件系统日志是适用于 VM 的一个诊断日志类别，而 Blob、表和队列日志是适用于存储帐户的诊断日志类别。
 
-诊断日志不同于[活动日志（以前称为“审核日志”或“操作日志”）](../../azure-monitor/platform/platform-logs-overview.md)。 活动日志提供针对订阅中的资源执行的操作的深入信息。 诊断日志提供资源本身执行的操作的深入信息。
+诊断日志不同于[活动日志（以前称为“审核日志”或“操作日志”）](../../azure-monitor/essentials/platform-logs-overview.md)。 活动日志提供针对订阅中的资源执行的操作的深入信息。 诊断日志提供资源本身执行的操作的深入信息。
 
 ### <a name="metrics"></a>指标
 
-在 Azure 监视器中可以使用遥测来查看 Azure 上的工作负荷的性能与运行状况。 最重要的 Azure 遥测数据类型是大多数 Azure 资源发出的指标（也称为性能计数器）。 Azure Monitor 提供多种方式来配置和使用这些[指标](../../azure-monitor/platform/data-platform.md)，以便进行监视与故障排除。 指标是重要的遥测来源，允许执行以下任务：
+在 Azure 监视器中可以使用遥测来查看 Azure 上的工作负荷的性能与运行状况。 最重要的 Azure 遥测数据类型是大多数 Azure 资源发出的指标（也称为性能计数器）。 Azure Monitor 提供多种方式来配置和使用这些[指标](../../azure-monitor/data-platform.md)，以便进行监视与故障排除。 指标是重要的遥测来源，允许执行以下任务：
 
--   通过在门户图表上绘制资源（例如 VM、网站或逻辑应用）的指标并将该图表固定到仪表板，来 **跟踪资源的性能** 。
+-   通过在门户图表上绘制资源（例如 VM、网站或逻辑应用）的指标并将该图表固定到仪表板，来 **跟踪资源的性能**。
 
--   当某个指标超过特定的阈值，从而影响资源的性能时，可以 **接收通知** 。
+-   当某个指标超过特定的阈值，从而影响资源的性能时，可以 **接收通知**。
 
 -   配置自动化操作，例如自动缩放资源，或者在指标超过特定的阈值时触发 runbook。
 
@@ -213,7 +213,7 @@ Azure Monitor 提供有关特定类型资源的信息的导航。 它对来自 A
 
 ### <a name="azure-diagnostics"></a>Azure 诊断
 
-这是 Azure 中可对部署的应用程序启用诊断数据收集的功能。 可以使用各种不同源的诊断扩展。 目前支持的有 [Azure 云服务 Web 和辅助角色](/visualstudio/azure/vs-azure-tools-configure-roles-for-cloud-service)、运行 Microsoft Windows 的 [Azure 虚拟机](../../virtual-machines/windows/overview.md)，以及 [Service Fabric](../../azure-monitor/platform/diagnostics-extension-overview.md)。 其他 Azure 服务都有自身不同的诊断扩展。
+这是 Azure 中可对部署的应用程序启用诊断数据收集的功能。 可以使用各种不同源的诊断扩展。 目前支持的有 [Azure 云服务 Web 和辅助角色](/visualstudio/azure/vs-azure-tools-configure-roles-for-cloud-service)、运行 Microsoft Windows 的 [Azure 虚拟机](../../virtual-machines/windows/overview.md)，以及 [Service Fabric](../../azure-monitor/agents/diagnostics-extension-overview.md)。 其他 Azure 服务都有自身不同的诊断扩展。
 
 ## <a name="azure-network-watcher"></a>Azure 网络观察程序
 

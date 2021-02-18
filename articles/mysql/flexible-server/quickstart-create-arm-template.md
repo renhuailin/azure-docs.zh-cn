@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: sumuth
 ms.date: 10/23/2020
-ms.openlocfilehash: 5be0bf21514dd92c2f980081bb57d873895bbb91
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: def9e4f1b3f1c4e8f88f77dfe6906a8c96a94744
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100099925"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100389461"
 ---
 # <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-mysql---flexible-server-preview"></a>快速入门：使用 ARM 模板创建 Azure Database for MySQL 灵活服务器（预览版）
 
@@ -204,22 +204,6 @@ read serverName &&
 echo "Enter the resource group where the Azure Database for MySQL server exists:" &&
 read resourcegroupName &&
 az resource show --resource-group $resourcegroupName --name $serverName --resource-type "Microsoft.DbForMySQL/flexibleServers"
-```
-## <a name="exporting-arm-template-from-the-portal"></a>从门户导出 ARM 模板
-可从 Azure 门户[导出 ARM 模板](../../azure-resource-manager/templates/export-template-portal.md)。 可以通过两种方式来导出模板：
-
-- [从资源组或资源导出](../../azure-resource-manager/templates/export-template-portal.md#export-template-from-a-resource)。 此选项基于现有的资源生成新模板。 导出的模板是资源组当前状态的“快照”。 可以导出整个资源组，或该资源组中的特定资源。
-- [在部署之前导出或从历史记录导出](../../azure-resource-manager/templates/export-template-portal.md#export-template-before-deployment)。 此选项检索用于部署的确切模板副本。
-
-导出模板时，你将在模板的 ```"parameters":{ }``` 部分中看到，出于安全原因，不会包含 ```administratorLogin``` 和 ```administratorLoginPassword```。 部署模板前，必须将这些参数添加到模板中，否则模板会失败。
-
-```
-"administratorLogin": {
-      "type": "String"
-    },
-"administratorLoginPassword": {
-      "type": "SecureString"
-    },
 ```
 
 ## <a name="clean-up-resources"></a>清理资源

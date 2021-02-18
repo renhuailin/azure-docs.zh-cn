@@ -2,15 +2,15 @@
 author: memildin
 ms.service: security-center
 ms.topic: include
-ms.date: 02/09/2021
+ms.date: 02/16/2021
 ms.author: memildin
 ms.custom: generated
-ms.openlocfilehash: e1d2039ba3a667e40740acd7781090c9c0cf5281
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: 8ebd7f245205844ac4b9f35d7205fc7f28502484
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100007583"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574500"
 ---
 这一类别有 21 条相关建议。
 
@@ -20,7 +20,7 @@ ms.locfileid: "100007583"
 |应启用 Azure Defender for Key Vault |Azure 安全中心包含 Azure Defender for Key Vault，它提供额外的安全情报层。<br>Azure Defender for Key Vault 会检测访问或恶意利用 Key Vault 帐户的异常和可能有害的企图。<br><br>重要说明：修正此建议将导致对密钥保管库的保护产生费用。 如果此订阅中没有任何密钥保管库，则不会产生任何费用。<br>如果将来在此订阅中创建任何密钥保管库，它将自动受到保护，届时将开始计费。<br> <a href='https://docs.microsoft.com/azure/security-center/advanced-threat-protection-key-vault'>详细了解适用于 Key Vault 的 Azure Defender。</a><br />（相关策略：[应启用适用于 Key Vault 的 Azure Defender](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fmicrosoft.authorization%2fpolicyDefinitions%2f0e6763cc-5078-4e64-889d-ff4d9a839047)） |高 |
 |应从订阅中删除弃用的帐户 |应从订阅中删除已被阻止登录的用户帐户。<br>这些帐户可能会成为攻击者的目标，攻击者会设法在不被发现的情况下访问你的数据。<br />（相关策略：[应从订阅中删除弃用的帐户](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f6b1cbf55-e8b6-442f-ba4c-7246b6381474)） |高 |
 |应从订阅中删除拥有所有者权限的已弃用帐户 |应从订阅中删除已被阻止登录的用户帐户。<br>这些帐户可能会成为攻击者的目标，攻击者会设法在不被发现的情况下访问你的数据。<br />（相关策略：[应从订阅中删除拥有所有者权限的已弃用帐户](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2febb62a0c-3560-49e1-89ed-27e074e9f8ad)） |高 |
-|应启用 Key Vault 中的诊断日志 |启用日志并将其保留长达一年。 这样便可以在发生安全事件或网络遭泄露时，重新创建活动线索用于调查目的。<br />（相关策略：[应启用 Key Vault 中的资源日志](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fcf820ca0-f99e-4f3e-84fb-66e913812d21)） |低 |
+|应启用 Key Vault 中的诊断日志 |启用日志并将其保留长达一年。 这样便可以在发生安全事件或网络遭泄露时，重新创建活动线索用于调查目的。<br />（相关策略：[应启用 Key Vault 中的诊断日志](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fcf820ca0-f99e-4f3e-84fb-66e913812d21)） |低 |
 |应从订阅中删除拥有所有者权限的外部帐户 |应从订阅中删除拥有所有者权限的具有不同域名的帐户（外部帐户）。 这可防止不受监视的访问。 这些帐户可能会成为攻击者的目标，攻击者会设法在不被发现的情况下访问你的数据。<br />（相关策略：[应从订阅中删除拥有所有者权限的外部帐户](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2ff8456c1c-aa66-4dfb-861a-25d127b775c9)） |高 |
 |应从订阅中删除拥有读取权限的外部帐户 |应从订阅中删除拥有读取权限的具有不同域名的帐户（外部账户）。 这可防止不受监视的访问。 这些帐户可能会成为攻击者的目标，攻击者会设法在不被发现的情况下访问你的数据。<br />（相关策略：[应从订阅中删除拥有读取权限的外部帐户](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f5f76cf89-fbf2-47fd-a3f4-b891fa780b60)） |高 |
 |应从订阅中删除具有写入权限的外部帐户 |应从订阅中删除拥有写入权限的具有不同域名的帐户（外部账户）。 这可防止不受监视的访问。 这些帐户可能会成为攻击者的目标，攻击者会设法在不被发现的情况下访问你的数据。<br />（相关策略：[应从订阅中删除具有写入权限的外部帐户](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f5c607a2e-c700-4744-8254-d77e7c9eb5e4)） |高 |

@@ -1,22 +1,18 @@
 ---
 title: 使用 PowerShell 使用更改跟踪以增量方式复制数据
 description: 在本教程中，你将创建一个 Azure 数据工厂管道，该管道以递增方式将增量数据从 SQL Server 数据库中的多个表复制到 Azure SQL 数据库。
-services: data-factory
 ms.author: yexu
 author: dearandyxu
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019, devx-track-azurepowershell
 ms.date: 01/22/2018
-ms.openlocfilehash: 85fabb540180adb1848285f4c40f944225db2760
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 31bb13cc083c629b7033aec80c1b96b5d688c888
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97508571"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100361312"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information-using-powershell"></a>使用 PowerShell 根据更改跟踪信息，以增量方式将 Azure SQL 数据库中的数据加载到 Azure Blob 存储
 

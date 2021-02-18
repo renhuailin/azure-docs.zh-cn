@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 6f0b5325ff95d2c2f34572239967151986621bcb
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 2448840fcbbea686972f8f948d428bda7b3c2bf2
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96937179"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100391739"
 ---
 # <a name="sms-client-library-overview"></a>短信客户端概述
 
@@ -49,4 +49,4 @@ Azure 通信服务短信客户端库可用于向应用程序添加短信。
 
 - 熟悉常规[短信概念](../telephony-sms/concepts.md)
 - 获取支持短信的[电话号码](../../quickstarts/telephony-sms/get-phone-number.md)
-- [规划短信解决方案](../telephony-sms/plan-solution.md)
+- [Azure 通信服务中的电话号码类型](../telephony-sms/plan-solution.md)

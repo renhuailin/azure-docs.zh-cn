@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 387c5e70d50e53f922530cfb1fa91494fa7cc624
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: ab4f92c9723dc98d0b6c32d3a49df8d4f724ebfa
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100376303"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585464"
 ---
 # <a name="azure-security-baseline-for-azure-data-factory"></a>适用于 Azure 数据工厂的 Azure 安全基线
 
@@ -175,9 +175,9 @@ ms.locfileid: "100376303"
 
 **指导**：使用 Azure 活动日志监视网络资源配置，并检测与 Azure 数据工厂实例相关的网络资源的更改。 在 Azure Monitor 中创建当关键网络资源发生更改时触发的警报。
 
-* [如何查看和检索 Azure 活动日志事件](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [如何查看和检索 Azure 活动日志事件](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-* [如何在 Azure Monitor 中创建警报](../azure-monitor/platform/alerts-activity-log.md)
+* [如何在 Azure Monitor 中创建警报](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -201,7 +201,7 @@ ms.locfileid: "100376303"
 
 或者，你可以将和机载数据启用到 Azure Sentinel 或第三方安全事件和事件管理 (SIEM) 。你还可以将 Azure 数据工厂与 Git 集成，以利用多种源代码管理的优点，例如跟踪/审核更改的能力，以及恢复引入 bug 的更改的能力。
 
-* [如何配置诊断设置](../azure-monitor/platform/diagnostic-settings.md)
+* [如何配置诊断设置](../azure-monitor/essentials/diagnostic-settings.md)
 
 * [如何加入 Azure Sentinel](../sentinel/quickstart-onboard.md)
 
@@ -219,7 +219,7 @@ ms.locfileid: "100376303"
 
 使用诊断设置为 Azure 数据工厂中的非计算资源配置诊断日志，例如指标和管道运行数据。 Azure 数据工厂将管道运行数据存储 45 天。 若要将此数据保留更长时间，请将诊断日志保存到存储帐户以进行审核或手动检查，并指定保留时间（以天为单位）。 还可将日志流式传输到 Azure 事件中心，或将日志发送到 Log Analytics 工作区进行分析。
 
-* [如何启用 Azure 活动日志的诊断设置](../azure-monitor/platform/activity-log.md)
+* [如何启用 Azure 活动日志的诊断设置](../azure-monitor/essentials/activity-log.md)
 
 * [了解 Azure 数据工厂诊断日志](./monitor-using-azure-monitor.md)
 
@@ -233,7 +233,7 @@ ms.locfileid: "100376303"
 
 如果你的组织想要保留安全事件日志数据，则可以将其存储在某个数据集合层中，此时可以在 Log Analytics 中对其进行查询。
 
-* [如何在 Azure Monitor 中从 Azure 虚拟机收集数据](../azure-monitor/learn/quick-collect-azurevm.md)
+* [如何在 Azure Monitor 中从 Azure 虚拟机收集数据](../azure-monitor/vm/quick-collect-azurevm.md)
 
 * [启用 Azure 安全中心中的数据收集](../security-center/security-center-enable-data-collection.md#data-collection-tier)
 
@@ -247,7 +247,7 @@ ms.locfileid: "100376303"
 
 * [如何在 Azure 数据工厂中启用诊断日志](./monitor-using-azure-monitor.md)
 
-* [如何为 Log Analytics 工作区设置日志保留参数](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+* [如何为 Log Analytics 工作区设置日志保留参数](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure 安全中心监视**：不适用
 
@@ -263,7 +263,7 @@ ms.locfileid: "100376303"
 
 * [Log Analytics 架构](./monitor-using-azure-monitor.md#schema-of-logs-and-events)
 
-* [如何使用 Azure Monitor 从 Azure 虚拟机收集数据](../azure-monitor/learn/quick-collect-azurevm.md)
+* [如何使用 Azure Monitor 从 Azure 虚拟机收集数据](../azure-monitor/vm/quick-collect-azurevm.md)
 
 * [如何加入 Azure Sentinel](../sentinel/quickstart-onboard.md)
 
@@ -281,9 +281,9 @@ ms.locfileid: "100376303"
 
 * [Azure 数据工厂中的警报](./monitor-visually.md#alerts)
 
-* [所有支持的指标页](../azure-monitor/platform/metrics-supported.md)
+* [所有支持的指标页](../azure-monitor/essentials/metrics-supported.md)
 
-* [如何在 Log Analytics 工作区中配置警报](../azure-monitor/platform/alerts-log.md)
+* [如何在 Log Analytics 工作区中配置警报](../azure-monitor/alerts/alerts-log.md)
 
 **Azure 安全中心监视**：是
 
@@ -652,9 +652,9 @@ ms.locfileid: "100376303"
 
 **指导**：将 Azure Monitor 与 Azure 活动日志配合使用，以创建要在 Azure 数据工厂和相关资源发生更改时发出的警报。
 
-* [如何针对 Azure 活动日志事件创建警报](../azure-monitor/platform/alerts-activity-log.md)
+* [如何针对 Azure 活动日志事件创建警报](../azure-monitor/alerts/alerts-activity-log.md)
 
-* [如何针对 Azure 活动日志事件创建警报](../azure-monitor/platform/alerts-activity-log.md)
+* [如何针对 Azure 活动日志事件创建警报](../azure-monitor/alerts/alerts-activity-log.md)
 
 * [Azure 存储分析日志记录](../storage/common/storage-analytics-logging.md)
 

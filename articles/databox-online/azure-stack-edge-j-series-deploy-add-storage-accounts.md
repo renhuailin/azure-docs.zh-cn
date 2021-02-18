@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/31/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to add and connect to storage accounts on Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: c24970b30e522d593a491194dbbabb0421ad7f4b
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: b346cf37a8275b1783e94e0f51859b8c87eb9b67
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185520"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546816"
 ---
 # <a name="tutorial-transfer-data-via-storage-accounts-with-azure-stack-edge-pro-gpu"></a>教程：使用 Azure Stack Edge Pro GPU 通过存储帐户传输数据 
 
@@ -137,9 +137,9 @@ key2    6VANuHzHcJV04EFeyPiWRsFWnHPkgmX1+a3bt5qOQ2qIzohyskIF/2gfNMqp9rlNC/w+mBqQ
 
 通过 HTTPS 访问 Blob 存储需要设备的 SSL 证书。 此外，还要将此证书作为 .pfx 文件（附加了私钥）上传到 Azure Stack Edge Pro 设备。 有关如何创建（仅用于测试和开发目的）这些证书并将其上传到 Azure Stack Edge Pro 设备的详细信息，请转到：
 
-- [创建 blob 终结点证书](azure-stack-edge-j-series-manage-certificates.md#create-certificates-optional)。
-- [上传 blob 终结点证书](azure-stack-edge-j-series-manage-certificates.md#upload-certificates)。
-- [在访问设备的客户端上导入证书](azure-stack-edge-j-series-manage-certificates.md#import-certificates-on-the-client-accessing-the-device)。
+- [创建 blob 终结点证书](azure-stack-edge-gpu-manage-certificates.md#create-certificates-optional)。
+- [上传 blob 终结点证书](azure-stack-edge-gpu-manage-certificates.md#upload-certificates)。
+- [在访问设备的客户端上导入证书](azure-stack-edge-gpu-manage-certificates.md#import-certificates-on-the-client-accessing-the-device)。
 
 ### <a name="import-certificate"></a>导入证书
 

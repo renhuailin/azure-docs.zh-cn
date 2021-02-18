@@ -7,12 +7,12 @@ ms.assetid: b8783c10-3a4a-4dd6-af8c-856baafbdde5
 ms.topic: article
 ms.date: 08/03/2016
 ms.custom: seodec18
-ms.openlocfilehash: cf8b0e1fda03a74d30ec77c911d705bf12cf0126
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.openlocfilehash: e048e4c17092c71a5adaf29f342546b9258837c5
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96763802"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100586240"
 ---
 # <a name="troubleshoot-slow-app-performance-issues-in-azure-app-service"></a>排查 Azure 应用服务中应用性能缓慢的问题
 本文帮助排查 [Azure 应用服务](./overview.md)中应用性能缓慢的问题。
@@ -61,7 +61,7 @@ ms.locfileid: "96763802"
 有关详细信息，请参阅：
 
 * [监视 Azure 应用服务中的应用](web-sites-monitor.md)
-* [接收警报通知](../azure-monitor/platform/alerts-overview.md)
+* [接收警报通知](../azure-monitor/alerts/alerts-overview.md)
 
 #### <a name="monitor-web-endpoint-status"></a>监视 Web 终结点状态
 如果在“标准”定价层中运行应用，应用服务允许从三个地理位置监视两个终结点。
@@ -133,7 +133,7 @@ Kudu 提供的一些信息和功能包括：
 * 应用程序的环境设置
 * 日志流
 * 诊断转储
-* 调试控制台，可在其中运行 PowerShell cmdlet 和基本 DOS 命令。
+* 调试控制台，可以在其中运行 PowerShell cmdlet 和基本 DOS 命令。
 
 Kudu 的另一项有用功能是，如果应用程序引发第一次异常，可以使用 Kudu 和 SysInternals 工具 Procdump 创建内存转储。 这些内存转储是进程的快照，通常可帮助排查较复杂的应用问题。
 
@@ -161,4 +161,4 @@ AutoHeal 会根据你选择的设置（例如配置更改、请求、基于内�
 
  ![重启应用以解决性能问题](./media/app-service-web-troubleshoot-performance-degradation/2-restart.png)
 
-你还可以使用 Azure PowerShell 来管理你的应用程序。 有关详细信息，请参阅[将 Azure PowerShell 与 Azure 资源管理器配合使用](../azure-resource-manager/management/manage-resources-powershell.md)。
+还可以使用 Azure Powershell 管理应用。 有关详细信息，请参阅[将 Azure PowerShell 与 Azure 资源管理器配合使用](../azure-resource-manager/management/manage-resources-powershell.md)。

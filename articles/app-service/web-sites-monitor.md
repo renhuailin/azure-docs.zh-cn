@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 04/23/2020
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 587ad53fa3a4875f7019a8c094db1b9a5f096519
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: bf230032afe80680dc392c2a74da2a5aef381983
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99509547"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100586102"
 ---
 # <a name="monitor-apps-in-azure-app-service"></a>监视 Azure 应用服务中的应用
 [Azure 应用服务](./overview.md)针对 [Azure 门户](https://portal.azure.com)中的 Web 应用、移动和 API 应用提供内置监视功能。
@@ -136,7 +136,7 @@ ms.locfileid: "99509547"
 **CPU 百分比**：适用于托管在“基本”、“标准”和“高级”计划中的应用，因为它们可横向扩展。CPU 百分比是所有实例中总用量的良好指标。
 
 ## <a name="metrics-granularity-and-retention-policy"></a>指标粒度和保留策略
-应用和应用服务计划的指标由服务记录并聚合，并[根据这些规则保留](../azure-monitor/platform/data-platform-metrics.md#retention-of-metrics)。
+应用和应用服务计划的指标由服务记录并聚合，并[根据这些规则保留](../azure-monitor/essentials/data-platform-metrics.md#retention-of-metrics)。
 
 ## <a name="monitoring-quotas-and-metrics-in-the-azure-portal"></a>在 Azure 门户中监视配额和指标
 若要查看影响应用的各种配额和指标的状态，请转到 [Azure 门户](https://portal.azure.com)。
@@ -153,14 +153,14 @@ ms.locfileid: "99509547"
 
 单击其中任何图表会转到指标视图，可以在该视图中创建自定义图表、查询不同的指标，等等。 
 
-若要详细了解指标，请参阅[监视服务指标](../azure-monitor/platform/data-platform.md)。
+若要详细了解指标，请参阅[监视服务指标](../azure-monitor/data-platform.md)。
 
 ## <a name="alerts-and-autoscale"></a>警报和自动缩放
-可将应用或应用服务计划的指标挂接到警报。 有关详细信息，请参阅[接收警报通知](../azure-monitor/platform/alerts-classic-portal.md)。
+可将应用或应用服务计划的指标挂接到警报。 有关详细信息，请参阅[接收警报通知](../azure-monitor/alerts/alerts-classic-portal.md)。
 
 托管在“基本”或更高级别应用服务计划中的应用服务应用支持自动缩放。 使用自动缩放可以配置用于监视应用服务计划指标的规则。 规则可以增加或减少实例计数，并根据需要提供更多的资源。 规则还有助于避免过度预配应用，从而节省资金。
 
-有关自动缩放的详细信息，请参阅[如何缩放](../azure-monitor/platform/autoscale-get-started.md)以及[有关 Azure Monitor 自动缩放的最佳做法](../azure-monitor/platform/autoscale-best-practices.md)。
+有关自动缩放的详细信息，请参阅[如何缩放](../azure-monitor/autoscale/autoscale-get-started.md)以及[有关 Azure Monitor 自动缩放的最佳做法](../azure-monitor/autoscale/autoscale-best-practices.md)。
 
 [fzilla]:https://go.microsoft.com/fwlink/?LinkId=247914
 [vmsizes]:https://go.microsoft.com/fwlink/?LinkID=309169
