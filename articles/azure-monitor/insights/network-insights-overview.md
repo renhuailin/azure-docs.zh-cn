@@ -6,16 +6,16 @@ ms.topic: conceptual
 author: KumudD
 ms.author: kumud
 ms.date: 11/25/2020
-ms.openlocfilehash: 4a273170a1f3842a9a11a61d41d4150eb98eace4
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 0616d14a890cfd5dd1a486dd21670c7c58dbeebc
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98734134"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573525"
 ---
 # <a name="azure-monitor-for-networks"></a>用于网络的 Azure Monitor
 
-Azure 网络监视器为已部署的所有网络资源提供[运行状况](../../service-health/resource-health-checks-resource-types.md)和[指标](../platform/metrics-supported.md)的全面视图，并且无需任何配置。 它还提供对网络监视功能的访问，如[连接监视器](../../network-watcher/connection-monitor-overview.md)、[网络安全组的流日志记录 (NSG)](../../network-watcher/network-watcher-nsg-flow-logging-overview.md) 和[流量分析](../../network-watcher/traffic-analytics.md)。 它还提供其他网络[诊断](../../network-watcher/network-watcher-monitoring-overview.md#diagnostics)功能。
+Azure 网络监视器为已部署的所有网络资源提供[运行状况](../../service-health/resource-health-checks-resource-types.md)和[指标](../essentials/metrics-supported.md)的全面视图，并且无需任何配置。 它还提供对网络监视功能的访问，如[连接监视器](../../network-watcher/connection-monitor-overview.md)、[网络安全组的流日志记录 (NSG)](../../network-watcher/network-watcher-nsg-flow-logging-overview.md) 和[流量分析](../../network-watcher/traffic-analytics.md)。 它还提供其他网络[诊断](../../network-watcher/network-watcher-monitoring-overview.md#diagnostics)功能。
 
 Azure 网络监视器是围绕以下关键监视组件构建的：
 - [网络运行状况和指标](#networkhealth)
@@ -27,7 +27,7 @@ Azure 网络监视器是围绕以下关键监视组件构建的：
 
 Azure 网络监视器的“概览”页面提供了一种轻松的方法来可视化网络资源的清单以及资源运行状况和警报。 它分为四个主要功能区域：搜索和筛选、资源运行状况和指标、警报以及依赖项视图。
 
-[![显示 "概述" 页的屏幕截图](media/network-insights-overview/overview.png)](media/network-insights-overview/overview.png#lightbox)
+[![显示概述页面的屏幕截图](media/network-insights-overview/overview.png)](media/network-insights-overview/overview.png#lightbox)
 
 ### <a name="search-and-filtering"></a>搜索和筛选
 可以使用“订阅”、“资源组”和“类型”等筛选器来自定义资源运行状况和警报视图  。
@@ -128,25 +128,25 @@ Azure 网络监视器的“概览”页面提供了一种轻松的方法来可�
 
 ### <a name="why-dont-i-see-the-resources-for-all-the-subscriptions-ive-selected"></a>为什么我看不到所选择的所有订阅的资源？
 
-网络 Azure Monitor 一次只能显示5个订阅的资源。 
+Azure 网络监视器一次只能显示 5 个订阅的资源。 
 
-### <a name="how-do-i-make-changes-or-add-visualizations-to-azure-monitor-for-networks"></a>如何实现对网络 Azure Monitor 进行更改或添加可视化效果？
+### <a name="how-do-i-make-changes-or-add-visualizations-to-azure-monitor-for-networks"></a>如何进行更改或将可视化效果添加到 Azure 网络监视器？
 
 若要进行更改，请选择“编辑模式”以修改工作簿。 然后，你可以将所做的更改另存为与指定的订阅和资源组相关联的新工作簿。
 
 ### <a name="whats-the-time-grain-after-i-pin-any-part-of-the-workbooks"></a>固定工作簿的任何部分后，时间粒度是多少？
 
-网络 Azure Monitor 使用 **自动** 时间粒度，因此，时间粒度基于所选时间范围。
+Azure 网络监视器使用“自动”时间粒度，因此时间粒度基于所选时间范围。
 
 ### <a name="whats-the-time-range-when-any-part-of-a-workbook-is-pinned"></a>固定工作簿的任何部分后，时间范围是多少？
 
 时间范围取决于面板设置。
 
-### <a name="what-if-i-want-to-see-other-data-or-make-my-own-visualizations-how-can-i-make-changes-to-azure-monitor-for-networks"></a>如果想要查看其他数据或生成自己的可视化效果，应该怎么做？ 如何对网络 Azure Monitor 进行更改？
+### <a name="what-if-i-want-to-see-other-data-or-make-my-own-visualizations-how-can-i-make-changes-to-azure-monitor-for-networks"></a>如果想要查看其他数据或生成自己的可视化效果，应该怎么做？ 如何更改 Azure 网络监视器？
 
 你可以通过使用编辑模式来编辑在任何边侧面板或详细指标视图中看到的工作簿。 然后，可以将所做的更改另存为新的工作簿。
 
 ## <a name="next-steps"></a>后续步骤
 
 - 详细了解网络监视：[Azure 网络观察程序是什么？](../../network-watcher/network-watcher-monitoring-overview.md)
-- 了解工作簿支持的方案、如何创建报表和自定义现有报表等：[使用 Azure Monitor 工作簿创建交互式报表](../platform/workbooks-overview.md)
+- 了解工作簿支持的方案、如何创建报表和自定义现有报表等：[使用 Azure Monitor 工作簿创建交互式报表](../visualize/workbooks-overview.md)

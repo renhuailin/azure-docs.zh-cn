@@ -4,14 +4,14 @@ titleSuffix: Azure Kubernetes Service
 description: '概述如何在 Azure Kubernetes 服务中使用虚拟节点 (AKS) '
 services: container-service
 ms.topic: conceptual
-ms.date: 09/21/2020
+ms.date: 02/17/2021
 ms.custom: references_regions
-ms.openlocfilehash: 1e5a53c80aed90e44ba594dcff3c8ca23afc2c4f
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 3bba1155ec57db67968aec95d1d3386fc6cda006
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98684768"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100634441"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes"></a>创建和配置 Azure Kubernetes Services (AKS) 群集，以使用虚拟节点
 
@@ -45,7 +45,6 @@ Azure 容器实例 (ACI) 和 AKS 群集中运行的 Pod 可以借助虚拟节点
 * [Daemonset](concepts-clusters-workloads.md#statefulsets-and-daemonsets) 不会将 pod 部署到虚拟节点
 * 虚拟节点支持计划 Linux Pod。 你可以手动安装开源 [Virtual Kubelet ACI](https://github.com/virtual-kubelet/azure-aci) 提供程序，以便将 Windows Server 容器调度到 ACI。
 * 虚拟节点需要具有 Azure CNI 网络的 AKS 群集。
-* 具有专用群集的虚拟节点。
 * 使用 api 服务器的授权 ip 范围 AKS。
 * 卷装载 Azure 文件共享支持 [常规用途 V1](../storage/common/storage-account-overview.md#types-of-storage-accounts)。 按照[使用 Azure 文件共享装入卷](azure-files-volume.md)的说明进行操作
 * 不支持使用 IPv6。

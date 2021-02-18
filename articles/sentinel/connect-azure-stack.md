@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: yelevin
-ms.openlocfilehash: 120f160e3c7bc7a9a0e81586ea4b97ee827dd33e
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 5999e8da5dffce85dd12ecd01cd5991ea4abc098
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807422"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590253"
 ---
 # <a name="connect-azure-stack-hub-virtual-machines-to-azure-sentinel"></a>将 Azure Stack 集线器虚拟机连接到 Azure Sentinel
 
@@ -50,9 +50,9 @@ ms.locfileid: "99807422"
 
 1. 扩展安装完成后，其状态将显示为 " **预配已成功**"。 虚拟机可能需要长达一小时的时间才能显示在 Azure Sentinel 门户中。
 
-有关安装和配置 Windows 代理的详细信息，请参阅 [连接 windows 计算机](../azure-monitor/platform/agent-windows.md#install-agent-using-setup-wizard)。
+有关安装和配置 Windows 代理的详细信息，请参阅 [连接 windows 计算机](../azure-monitor/agents/agent-windows.md#install-agent-using-setup-wizard)。
 
-有关如何排查 Linux 代理问题，请参阅[排查 Azure Log Analytics Linux 代理问题](../azure-monitor/platform/agent-linux-troubleshoot.md)。
+有关如何排查 Linux 代理问题，请参阅[排查 Azure Log Analytics Linux 代理问题](../azure-monitor/agents/agent-linux-troubleshoot.md)。
 
 在 Azure 上的 Azure Sentinel 门户的 " **虚拟机**" 下，你可以大致了解所有 vm 和计算机及其状态。 
 

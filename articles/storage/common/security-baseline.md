@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: f6825fee4cfb78ab54d782cd4d942bb994bedae9
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: b484873f6c118c49712cbcd66eeb6a63d8aa05f6
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98195715"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591556"
 ---
 # <a name="azure-security-baseline-for-azure-storage"></a>适用于 Azure 存储的 Azure 安全基线
 
@@ -158,7 +158,7 @@ ms.locfileid: "98195715"
 
 - [如何配置和管理 Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
 
-- [如何在 Azure Monitor 中创建警报](../../azure-monitor/platform/alerts-activity-log.md)
+- [如何在 Azure Monitor 中创建警报](../../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure 安全中心监视**：是
 
@@ -180,7 +180,7 @@ ms.locfileid: "98195715"
 
 **指导**：通过 Azure Monitor 引入日志，以聚合终结点设备、网络资源和其他安全系统生成的安全数据。 在 Azure Monitor 中，使用 Log Analytics 工作区查询和执行分析，并使用 Azure 存储帐户进行长期/存档存储（可以选择使用不可变存储和强制保留等安全功能）。
 
-- [如何使用 Azure Monitor 收集平台日志和指标](../../azure-monitor/platform/diagnostic-settings.md)
+- [如何使用 Azure Monitor 收集平台日志和指标](../../azure-monitor/essentials/diagnostic-settings.md)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -210,7 +210,7 @@ ms.locfileid: "98195715"
 
 - [如何为 Azure 存储帐户日志配置保留策略](./storage-monitor-storage-account.md#configure-logging)
 
-- [更改 Log Analytics 中的数据保留期](../../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [更改 Log Analytics 中的数据保留期](../../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -238,7 +238,7 @@ ms.locfileid: "98195715"
 
 - [如何在 Azure 安全中心管理警报](../../security-center/security-center-managing-and-responding-alerts.md)
 
-- [如何针对 Log Analytics 日志数据发出警报](../../azure-monitor/learn/tutorial-response.md)
+- [如何针对 Log Analytics 日志数据发出警报](../../azure-monitor/alerts/tutorial-response.md)
 
 - [Azure 存储分析日志记录](./storage-analytics-logging.md)
 
@@ -362,7 +362,7 @@ ms.locfileid: "98195715"
 
 - [了解 Azure AD 风险检测](../../active-directory/identity-protection/overview-identity-protection.md)
 
-- [如何为自定义警报和通知配置操作组](../../azure-monitor/platform/action-groups.md)
+- [如何为自定义警报和通知配置操作组](../../azure-monitor/alerts/action-groups.md)
 
 **Azure 安全中心监视**：是
 
@@ -572,7 +572,7 @@ ms.locfileid: "98195715"
 
 **指导**：将 Azure Monitor 与 Azure 活动日志结合使用，以创建在存储帐户资源发生更改时发出的警报。 也可启用 Azure 存储日志记录以跟踪对 Azure 存储发出的每个请求的授权方式。 日志可指示请求是匿名提出的，还是使用 OAuth 2.0 令牌、共享密钥或共享访问签名 (SAS) 提出的。 也可使用 Azure Monitor，在出现针对存储帐户进行的匿名访问时根据匿名身份验证条件发出警报。
 
-- [如何针对 Azure 活动日志事件创建警报](../../azure-monitor/platform/alerts-activity-log.md)
+- [如何针对 Azure 活动日志事件创建警报](../../azure-monitor/alerts/alerts-activity-log.md)
 
 - [Azure 存储分析日志记录](./storage-analytics-logging.md)
 
@@ -1045,7 +1045,7 @@ Restore-AzKeyVaultCertificate Restore-AzKeyVaultKey Restore-AzKeyVaultManagedSto
 
 **指导**：安全中心为每条警报分配严重性，以帮助你优先处理应该最先调查的警报。 严重性取决于安全中心在发出警报时所依据的检测结果和分析结果的置信度，以及导致发出警报的活动的恶意企图的置信度。 
 
-此外，请用标记明确标记订阅（例如 生产、非生产）并创建命名系统来对 Azure 资源进行明确标识和分类，特别是处理敏感数据的资源。 你的责任是根据发生事件的 Azure 资源和环境的关键性确定修正警报的优先级。
+此外，请明确标记订阅（例如 生产、非生产）并创建命名系统来对 Azure 资源进行明确标识和分类，特别是处理敏感数据的资源。 你的责任是根据发生事件的 Azure 资源和环境的关键性确定修正警报的优先级。
 
 - [Azure 安全中心中的安全警报](../../security-center/security-center-alerts-overview.md)
 

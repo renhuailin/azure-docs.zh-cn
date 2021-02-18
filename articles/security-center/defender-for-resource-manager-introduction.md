@@ -7,12 +7,12 @@ ms.date: 12/07/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 9591dae058a19cea73d88513b7c4ff4ab8f88045
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: 922189909da21aac65d1e2e898df58598868b929
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98797748"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590462"
 ---
 # <a name="introduction-to-azure-defender-for-resource-manager"></a>适用于资源管理器的 Azure Defender 简介
 
@@ -48,7 +48,7 @@ ms.locfileid: "98797748"
 
 来自适用于资源管理器的 Azure Defender 的安全警报基于通过监视 Azure 资源管理器操作检测到的威胁。 Azure Defender 使用 Azure 资源管理器的内部日志源以及 Azure 活动日志（Azure 中的平台日志，提供对订阅级别事件的见解）。
 
-详细了解 [Azure 活动日志](../azure-monitor/platform/activity-log.md)。
+详细了解 [Azure 活动日志](../azure-monitor/essentials/activity-log.md)。
 
 调查来自适用于资源管理器的 Azure Defender 的安全警报：
 

@@ -4,12 +4,12 @@ description: 使用 Azure Application Insights 数据自动化自定义每日/�
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.reviewer: sdash
-ms.openlocfilehash: da465fbc899cb52fc48dbde830d3db4f3b58c68b
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 39970227fc94d3073688b23cc530462f368a6ecf
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98680444"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590043"
 ---
 # <a name="automate-custom-reports-with-azure-application-insights-data"></a>使用 Azure Application Insights 数据自动化自定义报表
 
@@ -31,7 +31,7 @@ ms.locfileid: "98680444"
 
 可以[采用编程方式查询 Application Insights](https://dev.applicationinsights.io/) 数据，按计划生成自定义报表。 以下选项有助于快速开始：
 
-* [使用 Power Automate 来自动完成报表](../platform/logicapp-flow-connector.md)
+* [使用 Power Automate 来自动完成报表](../logs/logicapp-flow-connector.md)
 * [使用逻辑应用自动化报表](automate-with-logic-apps.md)
 * 在监视方案中使用“Application Insights 计划摘要”[Azure Function](../../azure-functions/functions-get-started.md) 模板。 此函数使用 SendGrid 传递电子邮件。 
 
@@ -150,7 +150,7 @@ availabilityResults
 
 ## <a name="next-steps"></a>后续步骤
 
-* 详细了解如何创建 [Analytics 查询](../log-query/get-started-queries.md)。
+* 详细了解如何创建 [Analytics 查询](../logs/get-started-queries.md)。
 * 详细了解[采用编程方式查询 Application Insights 数据](https://dev.applicationinsights.io/)
 * 了解有关[逻辑应用](../../logic-apps/logic-apps-overview.md)的详细信息。
 * 详细了解 [Microsoft Power Automate](https://ms.flow.microsoft.com)。

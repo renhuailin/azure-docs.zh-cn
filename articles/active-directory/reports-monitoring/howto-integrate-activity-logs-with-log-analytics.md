@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 85e6a66f4520f12278266203211e1d1ae224c97f
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 0f328ed44252f7fb314552d6d05df9806f59d972
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96180449"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591128"
 ---
 # <a name="integrate-azure-ad-logs-with-azure-monitor-logs"></a>将 Azure AD 日志与 Azure Monitor 日志集成
 
@@ -59,7 +59,7 @@ Ignite 会话中的以下视频通过实际用户方案演示了将 Azure Monito
 * Azure 订阅。 如果没有 Azure 订阅，可以[注册免费试用版](https://azure.microsoft.com/free/)。
 * Azure AD 租户。
 * 一个是 Azure AD 租户的全局管理员或安全管理员的用户。 
-* 在 Azure 订阅中创建 Log Analytics 工作区。 了解如何[创建 Log Analytics 工作区](../../azure-monitor/learn/quick-create-workspace.md)。
+* 在 Azure 订阅中创建 Log Analytics 工作区。 了解如何[创建 Log Analytics 工作区](../../azure-monitor/logs/quick-create-workspace.md)。
 
 ## <a name="licensing-requirements"></a>许可要求
 

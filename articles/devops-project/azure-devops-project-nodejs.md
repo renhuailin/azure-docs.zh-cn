@@ -3,22 +3,19 @@ title: 使用 GatsbyJS 和 Azure DevOps Starter 为 PWA 创建 CI/CD 管道
 description: 了解如何使用 GatsbyJS 通过简化的 Azure DevOps Starter 创建体验创建一个 NodeJS 渐进式 Web 应用 (PWA)。
 ms.prod: devops
 ms.technology: devops-cicd
-services: vsts
 documentationcenter: vs-devops-build
-author: arob98
-manager: angrobe
+author: mijacobs
+ms.author: mijacobs
 ms.workload: web
-ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 03/24/2020
-ms.author: angrobe
 ms.custom: mvc, devx-track-js
-ms.openlocfilehash: 6cffa6065f0e1cefc31223553a42a7a78c1dbea8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d6d8a10dffa3801fe343b3b479265fac5612b021
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91856205"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100556566"
 ---
 # <a name="create-a-cicd-pipeline-in-azure-pipelines-for-nodejs-with-azure-devops-starter"></a>使用 Azure DevOps Starter 在 zure Pipelines for Node.js 中创建 CI/CD 管道
 
@@ -73,7 +70,7 @@ DevOps 入门版在 Azure Pipelines 中创建 CI/CD 管道。 可以创建新的
 
     ![Azure DevOps 仪表板](_img/azure-devops-project-nodejs/devops-projects-dashboard.png) 
 
-1. 在 Azure DevOps 项目中，可以邀请团队成员进行协作，并建立一个看板以开始跟踪工作。 有关详细信息，请参阅[此文](/azure/devops/user-guide/what-is-azure-devops?view=azure-devops)。
+1. 在 Azure DevOps 项目中，可以邀请团队成员进行协作，并建立一个看板以开始跟踪工作。 有关详细信息，请参阅[此文](/azure/devops/user-guide/what-is-azure-devops)。
 
 ![Azure DevOps 概述](_img/azure-devops-project-nodejs/azure-devops-overview.png)
 
@@ -81,7 +78,7 @@ DevOps 入门版在 Azure Pipelines 中创建 CI/CD 管道。 可以创建新的
 
 DevOps Starter 将在 Azure Repos 或 GitHub 中创建一个 Git 存储库。 此示例已创建一个 Azure 存储库。 下一步是克隆该存储库并进行更改。
 
-1. 在 **DevOps 项目**中选择“存储库”，然后单击“克隆”。   可通过多种机制将 Git 存储库克隆到桌面。  请选择适合你的开发体验的机制。  
+1. 在 **DevOps 项目** 中选择“存储库”，然后单击“克隆”。   可通过多种机制将 Git 存储库克隆到桌面。  请选择适合你的开发体验的机制。  
 
     ![克隆存储库](_img/azure-devops-project-nodejs/clone-the-repo.png)
 
@@ -182,7 +179,7 @@ DevOps Starter 将在 Azure Repos 或 GitHub 中创建一个 Git 存储库。 �
     git push
     ```
     
-1. `git push` 完成后，即会启动生成。 可以在 **Azure DevOps 仪表板**中跟踪进度。
+1. `git push` 完成后，即会启动生成。 可以在 **Azure DevOps 仪表板** 中跟踪进度。
 
 3. 几分钟后，生成和发布管道应会完成，PWA 应会部署到容器中。 在上面所示的仪表板中单击“应用程序终结点”链接，此时应会看到博客的 Gatsby 初学者项目。 
 
@@ -195,4 +192,4 @@ DevOps Starter 将在 Azure Repos 或 GitHub 中创建一个 Git 存储库。 �
 在配置 CI/CD 过程时，系统自动创建了生成和发布管道。 可以根据团队的需求更改这些生成和发布管道。 若要详细了解 CI/CD 管道，请参阅：
 
 > [!div class="nextstepaction"]
-> [自定义 CD 过程](/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)
+> [自定义 CD 过程](/azure/devops/pipelines/release/define-multistage-release-process)

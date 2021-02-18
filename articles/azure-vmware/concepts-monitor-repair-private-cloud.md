@@ -3,13 +3,13 @@ title: 概念-监视和修复 Azure VMware 解决方案私有云
 description: 了解 Azure VMware 解决方案如何监视和修复 Azure VMware 解决方案私有云上的 VMware ESXi 服务器。
 ms.topic: conceptual
 ms.custom: contperf-fy21q2
-ms.date: 02/03/2021
-ms.openlocfilehash: 6174df429fd9b21c7f685c8ba14e6d5c0bba4c83
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.date: 02/16/2021
+ms.openlocfilehash: 59319b5598be9770e82b9676a28444648230a019
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99538952"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100633132"
 ---
 # <a name="monitor-and-repair-azure-vmware-solution-private-clouds"></a>监视和修复 Azure VMware 解决方案私有云
 
@@ -17,7 +17,7 @@ Azure VMware 解决方案持续监视 Azure VMware 解决方案私有云上的 V
 
 ## <a name="what-azure-vmware-solution-monitors"></a>什么是 Azure VMware 解决方案监视器
 
-Azure VMware 解决方案监视主机上的以下故障情况：  
+Azure VMware 解决方案监视主机上的以下条件：  
 
 - 处理器状态 
 - 内存状态 
@@ -37,9 +37,9 @@ Azure VMware 解决方案监视主机上的以下故障情况：
 
 ## <a name="azure-vmware-solution-host-remediation"></a>Azure VMware 解决方案主机修正  
 
-当 Azure VMware 解决方案检测到租户的私有云上的 Azure VMware 解决方案节点发生降级或失败时，将触发主机修正过程。 主机修正涉及将错误节点替换为新的正常节点。  
+当 Azure VMware 解决方案在 Azure VMware 解决方案节点上检测到性能下降或失败时，将触发主机修正过程。 主机修正涉及将错误节点替换为新的正常节点。  
 
-主机修正过程通过在群集中添加新的健康节点开始。 然后，在可能的情况下，故障主机会处于 VMware vSphere 维护模式下。 VMware vMotion 用于将 Vm 从故障主机移到群集中的其他可用服务器，这可能会导致工作负荷的实时迁移零停机。 如果无法将故障主机置于维护模式，则会从群集中删除主机。
+主机修正通过在群集中添加新的正常节点开始。 然后，在可能的情况下，故障主机会处于 VMware vSphere 维护模式下。 VMware vMotion 将虚拟机从故障主机移到群集中的其他可用服务器，这可能会导致在工作负荷的实时迁移时出现零停机时间。 如果故障主机无法处于维护模式，则会从群集中删除该主机。
 
 ## <a name="next-steps"></a>后续步骤
 

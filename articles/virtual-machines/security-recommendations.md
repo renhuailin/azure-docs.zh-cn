@@ -1,6 +1,6 @@
 ---
-title: Azure 中虚拟机的安全建议
-description: 将这些建议应用于 Azure 中的 Vm，以帮助满足共享责任模型中所述的安全义务，并提高部署的总体安全性。
+title: 针对 Azure 中虚拟机的安全建议
+description: 应用这些针对 Azure 中 VM 的建议有助于履行共担责任模型中所述的安全义务，并提高部署的整体安全性。
 author: msmbaldwin
 manager: RKarlin
 ms.service: virtual-machines
@@ -10,14 +10,14 @@ ms.date: 11/13/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
 ms.reviewer: cynthn
-ms.openlocfilehash: 95ba93c4a5d71e6813c1bee144c983e1dfd8c89d
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: afb985ecbe91835369738966e39e751f06f8d796
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500319"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571334"
 ---
-# <a name="security-recommendations-for-virtual-machines-in-azure"></a>Azure 中虚拟机的安全建议
+# <a name="security-recommendations-for-virtual-machines-in-azure"></a>针对 Azure 中虚拟机的安全建议
 
 
 本文包含适用于 Azure 虚拟机的安全建议。 请遵循这些建议来履行我们责任分担模型中所述的安全义务。 这些建议还有助于改善 Web 应用解决方案的整体安全性。 若要详细了解 Microsoft 如何满足服务提供商的责任，请参阅 [云计算的共享责任](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91)。
@@ -56,7 +56,7 @@ ms.locfileid: "96500319"
 
 | 建议 | 注释 | 安全中心 |
 |-|----|--|
-| 监视 VM。 | 你可以使用 [用于 VM 的 Azure Monitor](../azure-monitor/insights/vminsights-overview.md) 来监视 Azure vm 和虚拟机规模集的状态。 VM 性能问题可能会导致服务中断，从而违反可用性安全原则。 | - |
+| 监视 VM。 | 你可以使用 [用于 VM 的 Azure Monitor](../azure-monitor/vm/vminsights-overview.md) 来监视 Azure vm 和虚拟机规模集的状态。 VM 性能问题可能会导致服务中断，从而违反可用性安全原则。 | - |
 
 ## <a name="networking"></a>网络
 
@@ -67,4 +67,4 @@ ms.locfileid: "96500319"
 
 ## <a name="next-steps"></a>后续步骤
 
-请与应用程序提供商联系，了解其他安全要求。 有关开发安全应用程序的详细信息，请参阅 [安全开发文档](https://azure.microsoft.com/resources/develop-secure-applications-on-azure/)。
+请咨询应用程序提供商，了解是否有其他安全要求。 有关开发安全的应用程序的详细信息，请参阅[安全开发文档](https://azure.microsoft.com/resources/develop-secure-applications-on-azure/)。

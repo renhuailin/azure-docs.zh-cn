@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/10/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0170877995573bdfcb13ebc1c0387bed0893deac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a42c1d06051c283f0e911c4cd166884ddd060f45
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85201219"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100633268"
 ---
 # <a name="buildingblocks"></a>BuildingBlocks
 
@@ -78,4 +78,4 @@ BuildingBlocks  元素包含以下元素，必须按照定义的顺序指定：
 
 - [Localization](localization.md) - 使你能够支持多种语言。 策略中的本地化支持允许你在策略中设置支持语言列表并选择默认语言。 此外支持特定于语言的字符串和集合。
 
-- [DisplayControls](display-controls.md) - 定义要在页面上显示的控件。 显示控件具有特殊功能，并与后端验证技术配置文件交互。 显示控件目前处于预览阶段  。
+- [DisplayControls](display-controls.md) - 定义要在页面上显示的控件。 显示控件具有特殊功能，并与后端验证技术配置文件交互。 

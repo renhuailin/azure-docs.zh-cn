@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: wiassaf, sstein
 ms.date: 06/12/2020
-ms.openlocfilehash: 0f3dce3ca79b12b05325a1d8284dd3304653d5fa
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 61033e3eb8264c1e462faac3e4553a855a1d06c7
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96488861"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592084"
 ---
 # <a name="intelligent-insights-using-ai-to-monitor-and-troubleshoot-database-performance-preview"></a>智能见解：使用 AI 监视数据库性能并对其进行故障排除（预览）
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -107,7 +107,7 @@ Azure SQL Analytics 解决方案使用智能见解资源日志数据，为数据
 
 ### <a name="set-up-with-event-hubs"></a>通过事件中心进行设置
 
-若要将智能见解与事件中心配合使用，配置要流式传输到事件中心的智能见解日志数据，请参阅[指标和诊断日志记录](metrics-diagnostic-telemetry-logging-streaming-export-configure.md)和[将 Azure 诊断日志流式传输到事件中心](../../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs)。
+若要将智能见解与事件中心配合使用，配置要流式传输到事件中心的智能见解日志数据，请参阅[指标和诊断日志记录](metrics-diagnostic-telemetry-logging-streaming-export-configure.md)和[将 Azure 诊断日志流式传输到事件中心](../../azure-monitor/essentials/resource-logs.md#send-to-azure-event-hubs)。
 
 若要使用事件中心设置自定义监视和警报，请参阅[如何在事件中心处理指标和诊断日志](metrics-diagnostic-telemetry-logging-streaming-export-configure.md#what-to-do-with-metrics-and-resource-logs-in-event-hubs)。
 

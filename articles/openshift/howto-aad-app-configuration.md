@@ -3,15 +3,15 @@ title: Azure Active Directory Azure Red Hat OpenShift 集成
 description: 了解如何创建 Azure AD 安全组和用户，以便在 Microsoft Azure Red Hat OpenShift 群集上测试应用。
 author: jimzim
 ms.author: jzim
-ms.service: container-service
+ms.service: azure-redhat-openshift
 ms.topic: conceptual
 ms.date: 05/13/2019
-ms.openlocfilehash: ee8613d0300a941f80577c98be106173d5d3ced1
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: f0bf28d61d4c9ad95a485fb4b60e370c16ace16c
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92220697"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100633319"
 ---
 # <a name="azure-active-directory-integration-for-azure-red-hat-openshift"></a>Azure Active Directory Azure Red Hat OpenShift 集成
 
@@ -49,7 +49,7 @@ Microsoft Azure Red Hat OpenShift 需要权限来代表群集执行任务。 如
 2. 单击 " **+ 新建组**"。
 3. 提供组名称和描述。
 4. 将 **组类型** 设置为 **安全**。
-5. 设置要**分配**的**成员身份类型**。
+5. 设置要 **分配** 的 **成员身份类型**。
 
     将你在之前步骤中创建的 Azure AD 用户添加到此安全组。
 
@@ -109,12 +109,12 @@ Microsoft Azure Red Hat OpenShift 需要权限来代表群集执行任务。 如
 5. 在下面的列表中展开 " **目录** "，然后启用 **ReadAll**。
 6. 单击 " **添加权限** " 以接受更改。
 7. API 权限面板现在应显示 "ReadAll *" 和 "* *目录*"。 请注意 " *ReadAll*" 旁边的 "**管理员同意要求**" 列中的警告。
-8. 如果你是*Azure 订阅管理员*，请单击下面的 "**授予*订阅名称*管理员许可**"。 如果你不是 *Azure 订阅管理员*，请向管理员请求同意。
+8. 如果你是 *Azure 订阅管理员*，请单击下面的 "**授予 *订阅名称* 管理员许可**"。 如果你不是 *Azure 订阅管理员*，请向管理员请求同意。
 
 ![API 权限面板的屏幕截图。 添加了 ReadAll 权限，ReadAll 需要管理员许可。](./media/howto-aad-app-configuration/permissions-required.png)
 
 > [!IMPORTANT]
-> 只有在授予同意后，才可以同步群集管理员组。 你将看到一个绿色圆圈，其中包含一个复选标记和一条 "*需要管理员同意* *" 列*中的消息。
+> 只有在授予同意后，才可以同步群集管理员组。 你将看到一个绿色圆圈，其中包含一个复选标记和一条 "*需要管理员同意* *" 列* 中的消息。
 
 有关管理管理员和其他角色的详细信息，请参阅 [添加或更改 Azure 订阅管理员](../cost-management-billing/manage/add-change-subscription-administrator.md)。
 

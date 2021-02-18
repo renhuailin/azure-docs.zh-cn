@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 06/30/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: dff83159511c6e8a08e8f212c01244e923ad1f5b
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: 4f741c1317f70079755b61f7ad94a415cd039865
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94376938"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100578887"
 ---
 # <a name="what-are-virtual-machine-scale-sets"></a>什么是虚拟机规模集？
 使用 Azure 虚拟机规模集可以创建并管理一组负载均衡的 VM。 可以根据需求或定义的计划自动增减 VM 实例的数目。 规模集为应用程序提供高可用性，用于集中管理、配置和更新大量 VM。 可以使用虚拟机规模集为计算、大数据和容器工作负荷等领域构建大规模的服务。
@@ -57,7 +57,7 @@ Azure 虚拟机规模集为跨多个 VM 运行的应用程序提供管理功能�
 
 ## <a name="how-to-monitor-your-scale-sets"></a>如何监视规模集
 
-使用[用于 VM 的 Azure Monitor](../azure-monitor/insights/vminsights-overview.md)，它具有简单的载入过程，并将自动从规模集中的 VM 收集重要的 CPU、内存、磁盘和网络性能计数器。 它还包括额外的监视功能和预定义的可视化效果，这些可视化效果可以帮助你专注于规模集的可用性和性能。
+使用[用于 VM 的 Azure Monitor](../azure-monitor/vm/vminsights-overview.md)，它具有简单的载入过程，并将自动从规模集中的 VM 收集重要的 CPU、内存、磁盘和网络性能计数器。 它还包括额外的监视功能和预定义的可视化效果，这些可视化效果可以帮助你专注于规模集的可用性和性能。
 
 使用 Application Insights 启用对[虚拟机规模集应用程序](../azure-monitor/app/azure-vm-vmss-apps.md)的监视，以收集有关应用程序的详细信息，包括页面视图、应用程序请求和异常。 通过配置[可用性测试](../azure-monitor/app/monitor-web-app-availability.md)来模拟用户流量，进一步验证应用程序的可用性。
 

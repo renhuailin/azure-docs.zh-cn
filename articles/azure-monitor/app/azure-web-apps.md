@@ -4,12 +4,12 @@ description: Azure 应用服务的应用程序性能监视。 对加载和响应
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js, devx-track-dotnet
-ms.openlocfilehash: 55682215a990643111d5813db437b1f1e4612868
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: 74b39219b3b18c8de0214367d141085f6dc5f674
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100547224"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573998"
 ---
 # <a name="monitor-azure-app-service-performance"></a>监视 Azure 应用服务性能
 
@@ -434,8 +434,8 @@ Application Insights 计算的持续时间 `serverresponsetime` 不一定与 Web
 ## <a name="next-steps"></a>后续步骤
 * [在实时应用上运行探查器](./profiler.md)。
 * [Azure Functions](https://github.com/christopheranderson/azure-functions-app-insights-sample) - 使用 Application Insights 监视 Azure Functions
-* [将 Azure 诊断配置为](../platform/diagnostics-extension-to-application-insights.md)向 Application Insights 发送数据。
-* [监视服务运行状况指标](../platform/data-platform.md)以确保服务可用且做出快速响应。
-* [接收警报通知](../platform/alerts-overview.md) 。
+* [将 Azure 诊断配置为](../agents/diagnostics-extension-to-application-insights.md)向 Application Insights 发送数据。
+* [监视服务运行状况指标](../data-platform.md)以确保服务可用且做出快速响应。
+* [接收警报通知](../alerts/alerts-overview.md) 。
 * 若要从访问网页的浏览器获取客户端遥测数据，请使用[适用于 JavaScript 应用和网页的 Application Insights](javascript.md)。
 * [设置可用性 Web 测试](monitor-web-app-availability.md)，以便在站点关闭时发出警报。

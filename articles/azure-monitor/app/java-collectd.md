@@ -6,17 +6,17 @@ ms.date: 03/14/2019
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 5ec928a0dc3cbcde3c6dd50b1795a05b5e092bde
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 08d8deb4c7769c4f8a202050d7b5515439d691f4
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96601265"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573856"
 ---
-# <a name="collectd-linux-performance-metrics-in-application-insights-deprecated"></a>collectd：中的 Linux 性能指标 Application Insights [已弃用]
+# <a name="collectd-linux-performance-metrics-in-application-insights-deprecated"></a>collectd：Application Insights 中的 Linux 性能指标 [已弃用]
 
 > [!IMPORTANT]
-> 监视 Java 应用程序的 **建议方法** 是使用自动检测，无需更改代码。 请按照 **[Application Insights Java 3.0 代理](./java-in-process-agent.md)** 的指南进行操作。
+> 若要监视 Java 应用程序，建议的方法是在不更改代码的情况下使用自动检测。 请按照 [Application Insights Java 3.0 代理](./java-in-process-agent.md)指南进行操作。
 
 若要浏览 [Application Insights](./app-insights-overview.md) 中 Linux 系统性能指标，请安装 [collectd](https://collectd.org/) 及其 Application Insights 插件。 此开放源解决方案收集了各种系统和网络统计信息。
 
@@ -133,5 +133,5 @@ Application Insights 写入插件与某些读取插件不兼容。 Application I
 [eclipse]: app-insights-java-eclipse.md
 [java]: java-get-started.md
 [javalogs]: java-trace-logs.md
-[metrics]: ../platform/metrics-charts.md
+[metrics]: ../essentials/metrics-charts.md
 

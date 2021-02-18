@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 0e4c749d875ab22f8cdf26adf6050e1fa0476b28
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 195c264eca0c40712816495a09e1387fcaa2c910
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202243"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572941"
 ---
 # <a name="azure-security-baseline-for-security-center"></a>Azure 安全中心安全基线
 
@@ -30,7 +30,7 @@ ms.locfileid: "98202243"
 
 - [使用网络安全组筛选网络流量](../virtual-network/tutorial-filter-network-traffic.md)
 
-- [使用 Log Analytics 代理的防火墙要求](../azure-monitor/platform/log-analytics-agent.md#firewall-requirements)
+- [使用 Log Analytics 代理的防火墙要求](../azure-monitor/agents/log-analytics-agent.md#firewall-requirements)
 
 - [了解 Azure 专用链接](../private-link/private-link-overview.md) 
 
@@ -46,7 +46,7 @@ ms.locfileid: "98202243"
 
 - [Azure 安全中心中的数据收集](security-center-enable-data-collection.md)
 
-- [使用 Log Analytics 代理的防火墙要求](../azure-monitor/platform/log-analytics-agent.md#firewall-requirements)
+- [使用 Log Analytics 代理的防火墙要求](../azure-monitor/agents/log-analytics-agent.md#firewall-requirements)
 
 - [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md) 
 
@@ -70,7 +70,7 @@ ms.locfileid: "98202243"
 
 - [Azure 安全中心中的数据收集](security-center-enable-data-collection.md)
 
-- [使用 Log Analytics 代理的防火墙要求](../azure-monitor/platform/log-analytics-agent.md#firewall-requirements)
+- [使用 Log Analytics 代理的防火墙要求](../azure-monitor/agents/log-analytics-agent.md#firewall-requirements)
 
 - [如何创建和使用标记](../azure-resource-manager/management/tag-resources.md) 
 
@@ -86,9 +86,9 @@ ms.locfileid: "98202243"
 
 **指南**：使用 Azure 活动日志监视资源配置并检测对与 Azure 安全中心相关的网络资源所做的更改。 在 Azure Monitor 中创建警报，以便在关键资源发生更改时通知你。
 
-- [如何查看和检索 Azure 活动日志事件](../azure-monitor/platform/activity-log.md#view-the-activity-log) 
+- [如何查看和检索 Azure 活动日志事件](../azure-monitor/essentials/activity-log.md#view-the-activity-log) 
 
-- [如何在 Azure Monitor 中创建警报](../azure-monitor/platform/alerts-activity-log.md)
+- [如何在 Azure Monitor 中创建警报](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -112,9 +112,9 @@ ms.locfileid: "98202243"
 
 - [如何加入 Azure Sentinel](../sentinel/quickstart-onboard.md) 
 
-- [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/platform/diagnostic-settings.md) 
+- [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/essentials/diagnostic-settings.md) 
 
-- [如何使用 Azure Monitor 收集 Azure 虚拟机内部主机日志](../azure-monitor/learn/quick-collect-azurevm.md)
+- [如何使用 Azure Monitor 收集 Azure 虚拟机内部主机日志](../azure-monitor/vm/quick-collect-azurevm.md)
 
 - [如何开始使用 Azure Monitor 和第三方 SIEM 集成](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
 
@@ -126,11 +126,11 @@ ms.locfileid: "98202243"
 
 **指南**：Azure Monitor 活动日志会自动提供，这些日志包含针对资源（如 Azure 安全中心）的所有写入操作，包括执行的操作、启动操作的人员以及发生时间。 将 Azure 活动日志发送到 Log Analytics 工作区以合并日志并延长保留期。
 
-- [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/platform/diagnostic-settings.md) 
+- [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/essentials/diagnostic-settings.md) 
 
-- [了解 Azure 中的日志记录和不同的日志类型](../azure-monitor/platform/platform-logs-overview.md)
+- [了解 Azure 中的日志记录和不同的日志类型](../azure-monitor/essentials/platform-logs-overview.md)
 
-- [将活动日志发送到 Log Analytics 工作区](../azure-monitor/platform/activity-log.md#send-to-log-analytics-workspace)
+- [将活动日志发送到 Log Analytics 工作区](../azure-monitor/essentials/activity-log.md#send-to-log-analytics-workspace)
 
 **Azure 安全中心监视**：不适用
 
@@ -140,7 +140,7 @@ ms.locfileid: "98202243"
 
 **指南**：在 Azure Monitor 中，根据组织的合规性规则设置 Log Analytics 工作区保持期。 将 Azure 存储帐户用于长期存储和存档存储。 
 
-- [更改 Log Analytics 中的数据保留期](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period) 
+- [更改 Log Analytics 中的数据保留期](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period) 
 
 - [如何为 Azure 存储帐户日志配置保留策略](../storage/common/storage-monitor-storage-account.md#configure-logging)
 
@@ -156,9 +156,9 @@ ms.locfileid: "98202243"
 
 - [如何加入 Azure Sentinel](../sentinel/quickstart-onboard.md) 
 
-- [Log Analytics 查询入门](../azure-monitor/log-query/log-analytics-tutorial.md) 
+- [Log Analytics 查询入门](../azure-monitor/logs/log-analytics-tutorial.md) 
 
-- [如何在 Azure Monitor 中执行自定义查询](../azure-monitor/log-query/get-started-queries.md)
+- [如何在 Azure Monitor 中执行自定义查询](../azure-monitor/logs/get-started-queries.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -174,11 +174,11 @@ ms.locfileid: "98202243"
 
 - [如何在 Azure 安全中心管理警报](security-center-managing-and-responding-alerts.md) 
 
-- [如何针对 Log Analytics 日志数据发出警报](../azure-monitor/learn/tutorial-response.md)
+- [如何针对 Log Analytics 日志数据发出警报](../azure-monitor/alerts/tutorial-response.md)
 
 - [在 Azure Sentinel 中设置自动威胁响应](../sentinel/tutorial-respond-threats-playbook.md)
 
-- [Azure Monitor 中的日志警报](../azure-monitor/platform/alerts-unified-log.md)
+- [Azure Monitor 中的日志警报](../azure-monitor/alerts/alerts-unified-log.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -368,7 +368,7 @@ ms.locfileid: "98202243"
 
 请按照 Azure 安全中心的建议，了解静态加密和传输中的加密（如果适用）。 
 
-- [安全地将数据发送到 Log Analytics](../azure-monitor/platform/data-security.md#sending-data-securely-using-tls-12)
+- [安全地将数据发送到 Log Analytics](../azure-monitor/logs/data-security.md#sending-data-securely-using-tls-12)
 
 - [了解 Azure 传输中的加密](../security/fundamentals/encryption-overview.md#encryption-of-data-in-transit)
 
@@ -394,7 +394,7 @@ ms.locfileid: "98202243"
 
 **指导**：Azure 安全中心使用配置的 Log Analytics 工作区存储其生成的数据、警报和建议。 为已为安全中心数据集合配置的工作区配置客户管理的密钥 (CMK)。 CMK 支持使用由你创建和拥有的 Azure Key Vault 密钥对已保存或发送到工作区的所有数据进行加密。 
 
-- [Azure Monitor 客户管理的密钥](../azure-monitor/platform/customer-managed-keys.md)
+- [Azure Monitor 客户管理的密钥](../azure-monitor/logs/customer-managed-keys.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -404,7 +404,7 @@ ms.locfileid: "98202243"
 
 **指南**：当对与 Azure 安全中心相关的关键 Azure 资源进行更改时，可以使用 Azure Monitor 创建警报。 这些更改可能包括修改与安全中心有关的配置的任何操作，例如禁用警报或建议，或更新或删除数据存储。
 
-- [如何针对 Azure 活动日志事件创建警报](../azure-monitor/platform/alerts-activity-log.md)
+- [如何针对 Azure 活动日志事件创建警报](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -596,7 +596,7 @@ ms.locfileid: "98202243"
 
 **指导**：Azure 安全中心使用配置的 Log Analytics 工作区存储其生成的数据、警报和建议。 为已为安全中心数据集合配置的工作区配置客户管理的密钥 (CMK)。 CMK 支持使用由你创建和拥有的 Azure Key Vault 密钥对已保存或发送到工作区的所有数据进行加密。 
 
-- [Azure Monitor 客户管理的密钥](../azure-monitor/platform/customer-managed-keys.md)
+- [Azure Monitor 客户管理的密钥](../azure-monitor/logs/customer-managed-keys.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -656,7 +656,7 @@ ms.locfileid: "98202243"
 
 **指南**：确保能够使用 Azure 资源管理器支持的模板文件定期执行还原操作。 测试对备份的客户管理的密钥进行还原。
 
-- [使用 Azure 资源管理器模板管理 Log Analytics 工作区](../azure-monitor/samples/resource-manager-workspace.md)
+- [使用 Azure 资源管理器模板管理 Log Analytics 工作区](../azure-monitor/logs/resource-manager-workspace.md)
 
 - [如何在 Azure 中还原密钥保管库密钥](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
 

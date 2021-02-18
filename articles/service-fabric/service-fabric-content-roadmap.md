@@ -3,12 +3,12 @@ title: 详细了解 Azure Service Fabric
 description: 了解 Azure Service Fabric 的核心概念和主要应用领域。 扩展概述了 Service Fabric 以及如何创建微服务。
 ms.topic: conceptual
 ms.date: 12/08/2017
-ms.openlocfilehash: 011ddf5db1555e83a1a61a349cc19ed791ab900b
-ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
+ms.openlocfilehash: c709abe1087a9cc69c9e6e23cd1ff344a3dbebd2
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100526760"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589041"
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>想要了解 Service Fabric 吗？
 Service Fabric 是分布式系统平台，可借助它轻松打包、部署和管理可缩放且可靠的微服务。  不过，Service Fabric 的外围应用领域广泛，有很多东西需要学习。  本文简要说明了 Service Fabric，并介绍了核心概念、编程模型、应用程序生命周期、测试、群集和运行状况监视。 请参阅[概述](service-fabric-overview.md)和[什么是微服务？](service-fabric-overview-microservices.md)，概览相关信息，并了解如何使用 Service Fabric 创建微服务。 本文包含的内容列表虽不完整，但确实提供了 Service Fabric 每个应用领域的概述和入门文章链接。 
@@ -87,7 +87,7 @@ Service Fabric 与 [ASP.NET Core](service-fabric-reliable-services-communication
 ## <a name="application-lifecycle"></a>应用程序生命周期
 与其他平台一样，Service Fabric 上的应用程序通常会经历以下几个阶段：设计、开发、测试、部署、升级、维护和删除。 Service Fabric 为云应用程序的整个应用程序生命周期提供一流的支持：从开发到部署、到日常管理和维护，再到最终解除授权。 服务模型使多个不同角色可以独立参与到应用程序生命周期中。 [Service Fabric 应用程序生命周期](service-fabric-application-lifecycle.md)一文提供了有关 API 的概述，以及在 Service Fabric 应用程序生命周期的各个阶段，它们是如何被不同角色所使用的。 
 
-可以使用 [PowerShell cmdlet](/powershell/module/ServiceFabric/New-ServiceFabricService)、[CLI 命令](service-fabric-sfctl.md)、[C# API](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient)、[Java API](/java/api/overview/azure/servicefabric) 和 [REST API](/rest/api/servicefabric/) 管理整个应用生命周期。 还可以使用 [Azure Pipelines](./service-fabric-tutorial-deploy-app-with-cicd-vsts.md) 或 [Jenkins](/azure/developer/jenkins/deploy-to-service-fabric-cluster) 等工具来设置持续集成/持续部署管道。
+可以使用 [PowerShell cmdlet](/powershell/module/servicefabric/?view=azureservicefabricps)、[CLI 命令](service-fabric-sfctl.md)、[C# API](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient)、[Java API](/java/api/overview/azure/servicefabric) 和 [REST API](/rest/api/servicefabric/) 管理整个应用生命周期。 还可以使用 [Azure Pipelines](./service-fabric-tutorial-deploy-app-with-cicd-vsts.md) 或 [Jenkins](/azure/developer/jenkins/deploy-to-service-fabric-cluster) 等工具来设置持续集成/持续部署管道。
 
 ## <a name="test-applications-and-services"></a>测试应用程序和服务
 若要创建真正的云规模服务，请务必确保应用程序和服务能够经受住现实中发生的故障。 故障分析服务是在 Service Fabric 基础上专为测试服务构建的。 借助[故障分析服务](service-fabric-testability-overview.md)，可以引入有意义的故障，并对应用程序运行完整的测试方案。 这些故障和方案执行并验证服务在整个生命周期内要经历的大量状态和转换，所有一切都以受控、安全且一致的方式进行。
@@ -160,7 +160,7 @@ Service Fabric 组件报告包含群集中所有实体的运行状况。 [系统
 
 Service Fabric 提供了多种方式查看在运行状况存储中聚合的[运行状况报告](service-fabric-view-entities-aggregated-health.md)：
 * [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) 或其他可视化工具。
-* 运行状况查询（通过 [PowerShell](/powershell/module/ServiceFabric/New-ServiceFabricService)、[CLI](service-fabric-sfctl.md)、[C# FabricClient API](/dotnet/api/system.fabric.fabricclient.healthclient) 和 [Java FabricClient API](/java/api/system.fabric) 或 [REST API](/rest/api/servicefabric)）。
+* 运行状况查询（通过 [PowerShell](/powershell/module/servicefabric/?view=azureservicefabricps)、[CLI](service-fabric-sfctl.md)、[C# FabricClient API](/dotnet/api/system.fabric.fabricclient.healthclient) 和 [Java FabricClient API](/java/api/system.fabric) 或 [REST API](/rest/api/servicefabric)）。
 * 常规查询，返回将运行状况作为属性之一的实体的列表（通过 PowerShell、CLI、API 或 REST）。
 
 ## <a name="monitoring-and-diagnostics"></a>监视和诊断

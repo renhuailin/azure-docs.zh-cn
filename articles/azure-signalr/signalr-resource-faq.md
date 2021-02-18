@@ -7,12 +7,12 @@ ms.topic: overview
 ms.custom: devx-track-dotnet
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: 910de9efbd132fb98a0c4bd596867800f65f5ad5
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: c65bc7e92d925f819a48fd8ab9a8160bc3eb72e3
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150967"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579309"
 ---
 # <a name="azure-signalr-service-faq"></a>Azure SignalR 服务常见问题解答
 
@@ -54,7 +54,7 @@ Azure SignalR 服务将监视应用程序服务器的检测信号。
 
 可以在 [Azure SignalR 服务中的消息和连接](signalr-concept-messages-and-connections.md)中找到有关计算这些指标的详细信息。
 
-在 Azure SignalR 服务资源的概述窗格上，我们已经为你选择了合适的聚合类型。 如果转到指标窗格，你可以将该聚合类型作为引用应用到 [Azure SignalR 服务中的消息和连接](../azure-monitor/platform/metrics-supported.md#microsoftsignalrservicesignalr)。
+在 Azure SignalR 服务资源的概述窗格上，我们已经为你选择了合适的聚合类型。 如果转到指标窗格，你可以将该聚合类型作为引用应用到 [Azure SignalR 服务中的消息和连接](../azure-monitor/essentials/metrics-supported.md#microsoftsignalrservicesignalr)。
 
 ## <a name="what-is-the-meaning-of-the-default-serverless-and-classic-service-modes-how-can-i-choose"></a>`Default`、`Serverless` 和 `Classic` 服务模式的含义是什么？ 如何选择？
 

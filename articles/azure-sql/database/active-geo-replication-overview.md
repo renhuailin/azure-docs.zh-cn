@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 08/27/2020
-ms.openlocfilehash: c7a24dbe93bf0096e327804be07acc3f67d2f03b
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 3a678f6280b5f2d0fd372e75bfbeb6eb2e9b1577
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94985750"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100634288"
 ---
 # <a name="creating-and-using-active-geo-replication---azure-sql-database"></a>创建并使用活动异地复制 - Azure SQL 数据库
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -25,6 +25,9 @@ ms.locfileid: "94985750"
 
 > [!NOTE]
 > Azure SQL 托管实例不支持活动异地复制。 对于 SQL 托管实例的实例的地理故障转移，请使用[自动故障转移组](auto-failover-group-overview.md)。
+
+> [!NOTE]
+> 若要使用活动异地复制从 Azure 德国迁移 SQL 数据库，请参阅 [使用活动异地复制迁移 Sql 数据库](../../germany/germany-migration-databases.md#migrate-sql-database-using-active-geo-replication)。
 
 活动异地复制旨在充当业务连续性解决方案，允许应用程序在发生区域性灾难或大规模中断时执行各个数据库的快速灾难恢复。 如果启用了异地复制，则应用程序可以向其他 Azure 区域中的辅助数据库启动故障转移。 在相同或不同的区域中最多支持四个辅助数据库，并且辅助数据库也可以用于只读访问查询。 故障转移必须由应用程序或用户手动启动。 故障转移后，新的主数据库具有不同的连接终结点。
 
@@ -244,7 +247,7 @@ ms.locfileid: "94985750"
 
 ## <a name="programmatically-managing-active-geo-replication"></a>以编程方式管理活动异地复制
 
-如上所述，也可以使用 Azure PowerShell 和 REST API 以编程方式管理活动异地复制。 下表描述了可用的命令集。 活动异地复制包括一组用于管理的 Azure 资源管理器 API，其中包括 [Azure SQL 数据库 REST API](/rest/api/sql/) 和 [Azure PowerShell cmdlet](/powershell/azure/)。 这些 Api 需要使用资源组，并支持 azure RBAC)  (基于角色的访问控制。 有关如何实现访问角色的详细信息，请参阅 [Azure 基于角色的访问控制 (Azure RBAC)](../../role-based-access-control/overview.md)。
+如上所述，也可以使用 Azure PowerShell 和 REST API 以编程方式管理活动异地复制。 下表描述了可用的命令集。 活动异地复制包括一组用于管理的 Azure 资源管理器 API，其中包括 [Azure SQL 数据库 REST API](/rest/api/sql/) 和 [Azure PowerShell cmdlet](/powershell/azure/)。 这些 API 需要使用资源组，并支持 Azure 基于角色的访问控制 (Azure RBAC)。 有关如何实现访问角色的详细信息，请参阅 [Azure 基于角色的访问控制 (Azure RBAC)](../../role-based-access-control/overview.md)。
 
 ### <a name="t-sql-manage-failover-of-single-and-pooled-databases"></a>T-SQL：管理单一数据库和共用数据库的故障转移
 
@@ -292,6 +295,9 @@ ms.locfileid: "94985750"
 | [复制链接 - 按数据库列出](/rest/api/sql/replicationlinks/listbydatabase) | 获取异地复制合作关系中给定数据库的所有复制链接。 它检索 sys.geo_replication_links 目录视图中可见的信息。 |
 | [删除复制链接](/rest/api/sql/replicationlinks/delete) | 删除数据库复制链接。 在故障转移期间无法执行。 |
 |  | |
+
+
+
 
 ## <a name="next-steps"></a>后续步骤
 

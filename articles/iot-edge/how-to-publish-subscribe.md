@@ -10,12 +10,12 @@ ms.date: 11/09/2020
 ms.topic: conceptual
 ms.service: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: 13bfd7c602389ff286a80f625829da5924a73bdf
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: e4043fd8b7c9571b62cbf65d7398754b27375efd
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98621889"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100633965"
 ---
 # <a name="publish-and-subscribe-with-azure-iot-edge"></a>使用 Azure IoT Edge 发布和订阅
 
@@ -251,7 +251,7 @@ ms.locfileid: "98621889"
 
 ### <a name="authorize-publisher-and-subscriber-clients"></a>对发布服务器和订阅服务器客户端授权
 
-若要对发布服务器和订阅服务器授权，请通过 Azure CLI、Visual Studio 或 Visual Studio code 中的 ""、Visual Studio 或 Visual Studio code 创建 IoT Edge 部署来编辑 IoT Edge 中心克隆，以包含以下授权策略
+若要对发布服务器和订阅服务器进行授权，请通过 Azure CLI、Visual Studio 或 Visual Studio Code 创建 IoT Edge 部署来编辑 IoT Edge 中心孪生体，以包含以下授权策略：
 
 ```json
 {
@@ -366,8 +366,8 @@ mosquitto_pub \
 
 向 IoT 中心发送遥测数据类似于针对用户定义的主题进行发布，只不过使用的是特定的 IoT 中心主题：
 
-- 对于设备，遥测按主题发送：`devices/<device_name>/messages/events`
-- 对于模块，遥测按主题发送：`devices/<device_name>/<module_name>/messages/events`
+- 对于设备，遥测按主题发送：`devices/<device_name>/messages/events/`
+- 对于模块，遥测按主题发送：`devices/<device_name>/<module_name>/messages/events/`
 
 此外，创建一个诸如 `FROM /messages/* INTO $upstream` 的路由，将遥测从 IoT Edge MQTT 中转站发送到 IoT 中心。 若要了解有关路由的详细信息，请参阅[声明路由](module-composition.md#declare-routes)。
 

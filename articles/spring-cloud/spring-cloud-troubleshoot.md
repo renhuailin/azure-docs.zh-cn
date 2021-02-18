@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 9350b5dbcedd2773e94ef9d35cfe26f97fbd97bc
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 7c4dbeae0cfb76063fdca70b3ad1d264b59f9ace
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/17/2021
-ms.locfileid: "100571600"
+ms.locfileid: "100634237"
 ---
 # <a name="troubleshoot-common-azure-spring-cloud-issues"></a>排查常见的 Azure Spring Cloud 问题
 
@@ -212,7 +212,7 @@ Azure Spring Cloud 服务实例的名称将用于请求 `azureapps.io` 下的子
 
 转到“应用管理”，确保应用程序的状态为“正在运行”和“已启动” 。
 
-检查应用程序包中是否启用了 JMX。 可以使用配置属性 `spring.jmx.enabled=true` 启用此功能。  
+查看是否在应用程序包中启用了 _JMX_ 。 可以使用配置属性 `spring.jmx.enabled=true` 启用此功能。  
 
 检查应用程序包中是否启用了 `spring-boot-actuator` 依赖项，以及该项是否成功启动。
 
