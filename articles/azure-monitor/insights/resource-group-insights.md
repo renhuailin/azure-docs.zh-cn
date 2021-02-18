@@ -7,12 +7,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 09/19/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: bf8ea45f37e421d70a68c4a6e138f5203e92d78f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 620dadbaba049d6baea54b3b64c9e248fc48004a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87045774"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573449"
 ---
 # <a name="monitor-resource-groups-with-azure-monitor-preview"></a>使用 Azure Monitor（预览版）监视资源组
 
@@ -46,9 +46,9 @@ ms.locfileid: "87045774"
 
    |         |          |
    | ---------------- |:-----|
-   | [**警报**](../platform/alerts-overview.md)      |  查看、创建和管理警报。 |
-   | [**指标**](../platform/data-platform.md) | 可视化并浏览基于指标的数据。    |
-   | [**活动日志**](../platform/platform-logs-overview.md) | Azure 中已发生的订阅级别事件。  |
+   | [**警报**](../alerts/alerts-overview.md)      |  查看、创建和管理警报。 |
+   | [**指标**](../data-platform.md) | 可视化并浏览基于指标的数据。    |
+   | [**活动日志**](../essentials/platform-logs-overview.md) | Azure 中已发生的订阅级别事件。  |
    | [**应用程序映射**](../app/app-map.md) | 浏览分布式应用程序的拓扑，以识别性能瓶颈或故障作用点。 |
 
 ## <a name="failures-and-performance"></a>故障和性能
@@ -117,6 +117,6 @@ ms.locfileid: "87045774"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [Azure Monitor 工作簿](../platform/workbooks-overview.md)
+- [Azure Monitor 工作簿](../visualize/workbooks-overview.md)
 - [Azure 资源运行状况](../../service-health/resource-health-overview.md)
-- [Azure Monitor 警报](../platform/alerts-overview.md)
+- [Azure Monitor 警报](../alerts/alerts-overview.md)

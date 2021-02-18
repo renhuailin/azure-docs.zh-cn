@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: sttsinar
-ms.openlocfilehash: 833d96b8ca252cff5384cde114390aba8c2f51c3
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: e3a24e4c947afdc1970f6e624335ecc84dd8eff2
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99097684"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594394"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>B 系列可突增虚拟机大小
 
@@ -109,7 +109,7 @@ B16 特征：
 
 **答**：通过“额度”指标，用户可以查看 VM 已累积的额度，“已消耗的额度”指标将显示 VM 已从银行消耗的 CPU 额度数 。    你将能够从门户的指标窗格中查看这些指标，也可以编程方式通过 Azure Monitor API 查看这些指标。
 
-有关如何访问 Azure 指标数据的详细信息，请参阅 [Microsoft Azure 中的指标概述](../azure-monitor/platform/data-platform.md)。
+有关如何访问 Azure 指标数据的详细信息，请参阅 [Microsoft Azure 中的指标概述](../azure-monitor/data-platform.md)。
 
 ### <a name="q-how-are-credits-accumulated-and-consumed"></a>问：积分如何累积和消耗？
 

@@ -4,12 +4,12 @@ description: 获取有关发送到 ServiceNow 实例的服务运行状况事件�
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.custom: devx-track-js
-ms.openlocfilehash: f120e9d950cc349d0331a476dbfbfe9d7e599f0c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: df6596dd9853a792b5bfdb333361a2b9cd02a347
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96000634"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100588184"
 ---
 # <a name="send-azure-service-health-alerts-with-servicenow-using-webhooks"></a>使用 Webhook 通过 ServiceNow 发送 Azure 服务运行状况警报
 
@@ -178,7 +178,7 @@ ms.locfileid: "96000634"
 1. 操作组更新完成后，选择“保存”  。
 
 ## <a name="testing-your-webhook-integration-via-an-http-post-request"></a>通过 HTTP POST 请求测试 Webhook 集成
-1. 创建要发送的服务运行状况有效负载。 可以在 [Azure 活动日志警报的 Webhook](../azure-monitor/platform/activity-log-alerts-webhook.md) 中找到示例服务运行状况 Webhook 有效负载。
+1. 创建要发送的服务运行状况有效负载。 可以在 [Azure 活动日志警报的 Webhook](../azure-monitor/alerts/activity-log-alerts-webhook.md) 中找到示例服务运行状况 Webhook 有效负载。
 
 1. 按如下所示创建 HTTP POST 请求：
 
@@ -195,6 +195,6 @@ ms.locfileid: "96000634"
 
 ## <a name="next-steps"></a>后续步骤
 - 了解如何[为现有问题管理系统配置 Webhook 通知](service-health-alert-webhook-guide.md)。
-- 查看[活动日志警报 webhook 架构](../azure-monitor/platform/activity-log-alerts-webhook.md)。 
+- 查看[活动日志警报 webhook 架构](../azure-monitor/alerts/activity-log-alerts-webhook.md)。 
 - 了解[服务运行状况通知](./service-notifications.md)。
-- 详细了解[操作组](../azure-monitor/platform/action-groups.md)。
+- 详细了解[操作组](../azure-monitor/alerts/action-groups.md)。

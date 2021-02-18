@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 12/03/2020
-ms.openlocfilehash: 22c69288479e0247e499a33c2e818c19f7edb2ae
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: b13d03f05b7225a1c88f6b10b454749bd7b42477
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879942"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100588337"
 ---
 # <a name="azure-purview-metrics-in-azure-monitor"></a>Azure Monitor 中的 Azure 监控范围指标
 
@@ -24,7 +24,7 @@ Azure 监控范围管理员可以使用 Azure Monitor 来跟踪监控范围帐�
 
 ## <a name="aggregated-metrics"></a>聚合指标
 
-可以从监控范围帐户的 Azure 门户访问度量值。 对指标的访问由监控范围帐户的角色分配控制。 用户需要成为 Azure 监控范围中 "监视读取者" 角色的一部分，以查看指标。 查看 [监视读者角色权限](../azure-monitor/platform/roles-permissions-security.md#built-in-monitoring-roles) ，了解有关角色访问级别的详细信息。
+可以从监控范围帐户的 Azure 门户访问度量值。 对指标的访问由监控范围帐户的角色分配控制。 用户需要成为 Azure 监控范围中 "监视读取者" 角色的一部分，以查看指标。 查看 [监视读者角色权限](../azure-monitor/roles-permissions-security.md#built-in-monitoring-roles) ，了解有关角色访问级别的详细信息。
 
 监控范围帐户的创建者会自动获取查看指标的权限。 如果其他人想要查看指标，请按照以下步骤将其添加到 " **监视读取** 者" 角色：
 
@@ -58,7 +58,7 @@ Azure 监控范围用户还可以直接从 Azure 监控范围帐户的管理中�
 
 ### <a name="available-metrics"></a>可用度量值
 
-若要获取有关如何使用 "指标" Azure 门户部分的熟悉，请阅读以下两篇文档。 指标资源管理[器](../azure-monitor/platform/metrics-getting-started.md)和[指标资源管理器高级功能](../azure-monitor/platform/metrics-charts.md)入门。
+若要获取有关如何使用 "指标" Azure 门户部分的熟悉，请阅读以下两篇文档。 指标资源管理[器](../azure-monitor/essentials/metrics-getting-started.md)和[指标资源管理器高级功能](../azure-monitor/essentials/metrics-charts.md)入门。
 
 下表包含可用于在 Azure 门户中浏览的指标列表：
 
@@ -75,7 +75,7 @@ Azure 监控范围用户还可以直接从 Azure 监控范围帐户的管理中�
 
 按照以下步骤创建 Azure 监控范围帐户的诊断设置。
 
-1. 按照本文所述，创建新的诊断设置来收集平台日志和指标： [创建诊断设置以将平台日志和指标发送到不同的目标](../azure-monitor/platform/diagnostic-settings.md)。 仅选择 "Azure 存储帐户" 作为目标。
+1. 按照本文所述，创建新的诊断设置来收集平台日志和指标： [创建诊断设置以将平台日志和指标发送到不同的目标](../azure-monitor/essentials/diagnostic-settings.md)。 仅选择 "Azure 存储帐户" 作为目标。
 
    :::image type="content" source="./media/how-to-monitor-with-azure-monitor/step-one-diagnostic-setting.png" alt-text="显示创建诊断日志的屏幕截图。" lightbox="./media/how-to-monitor-with-azure-monitor/step-one-diagnostic-setting.png":::
 

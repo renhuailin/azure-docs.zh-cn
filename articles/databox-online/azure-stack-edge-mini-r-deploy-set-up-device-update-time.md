@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 10/14/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge Mini R  so I can use it to transfer data to Azure.
-ms.openlocfilehash: ee3805d128a7b6d122f93e692291db1a387cfcf5
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: e9f4d4f4ad27081bb105cdb1698438837fc2fe02
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96463742"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546663"
 ---
 # <a name="tutorial-configure-the-device-settings-for-azure-stack-edge-mini-r"></a>教程：为 Azure Stack Edge Mini R 配置设备设置
 
@@ -85,7 +85,7 @@ ms.locfileid: "96463742"
         ![本地 Web UI“更新服务器”页 2](./media/azure-stack-edge-mini-r-deploy-set-up-device-update-time/update-server-2.png)
 
         > [!NOTE] 
-        > 如果配置了单独的 Windows 更新服务器，并且选择通过 https（而不是 http）进行连接，则需要提供连接到更新服务器所需的签名链证书。 有关如何创建和上传证书的信息，请转到[管理证书](azure-stack-edge-j-series-manage-certificates.md)。 若要在断开连接模式下工作（例如分层到 Modular Data Center 的 Azure Stack Edge 设备），请启用 WSUS 选项。 在激活期间，设备会扫描是否存在更新。如果未设置服务器，则激活将失败。 
+        > 如果配置了单独的 Windows 更新服务器，并且选择通过 https（而不是 http）进行连接，则需要提供连接到更新服务器所需的签名链证书。 有关如何创建和上传证书的信息，请转到[管理证书](azure-stack-edge-gpu-manage-certificates.md)。 若要在断开连接模式下工作（例如分层到 Modular Data Center 的 Azure Stack Edge 设备），请启用 WSUS 选项。 在激活期间，设备会扫描是否存在更新。如果未设置服务器，则激活将失败。 
 
 2. 选择“应用”。 
 3. 配置更新服务器后，选择“下一步:时间”。

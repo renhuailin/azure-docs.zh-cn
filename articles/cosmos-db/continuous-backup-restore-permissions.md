@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 02/01/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 82af70547d20509c48f1e07bbc7610fc666a6da1
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 8b3ce2c195dc2fa3dd703306e731aa5b807b78b1
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100393048"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100648597"
 ---
 # <a name="manage-permissions-to-restore-an-azure-cosmos-db-account"></a>管理用于还原 Azure Cosmos DB 帐户的权限
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -61,7 +61,7 @@ Azure Cosmos DB 允许你隔离和限制 (预览版) 帐户对特定角色或主
 |权限  |影响  |最小范围  |最大范围  |
 |---------|---------|---------|---------|
 |`Microsoft.Resources/deployments/validate/action`, `Microsoft.Resources/deployments/write` | ARM 模板部署需要这些权限来创建还原的帐户。 请参阅下面的示例权限 [RestorableAction](#custom-restorable-action) ，了解如何设置此角色。 | 不适用 | 不适用  |
-|Microsoft.DocumentDB/databaseAccounts/write | 将帐户还原到资源组需要此权限 | 用于创建已还原帐户的资源组。 | 用于创建已还原帐户的订阅 |
+|`Microsoft.DocumentDB/databaseAccounts/write` | 将帐户还原到资源组需要此权限 | 用于创建已还原帐户的资源组。 | 用于创建已还原帐户的订阅 |
 |`Microsoft.DocumentDB/locations/restorableDatabaseAccounts/restore/action` |在源可还原数据库帐户范围内需要此权限，以允许对其执行还原操作。  | 属于正在还原的源帐户的 *RestorableDatabaseAccount* 资源。 此值还由可 `ID` 还原数据库帐户资源的属性提供。 可还原帐户的示例是 */subscriptions/subscriptionId/providers/Microsoft.DocumentDB/位置/regionName/restorableDatabaseAccounts/<guid-instanceid>* | 包含可还原数据库帐户的订阅。 无法将资源组选作作用域。  |
 |`Microsoft.DocumentDB/locations/restorableDatabaseAccounts/read` |在源可还原数据库帐户范围内需要此权限，以列出可还原的数据库帐户。  | 属于正在还原的源帐户的 *RestorableDatabaseAccount* 资源。 此值还由可 `ID` 还原数据库帐户资源的属性提供。 可还原帐户的示例是 */subscriptions/subscriptionId/providers/Microsoft.DocumentDB/位置/regionName/restorableDatabaseAccounts/<guid-instanceid>*| 包含可还原数据库帐户的订阅。 无法将资源组选作作用域。  |
 |`Microsoft.DocumentDB/locations/restorableDatabaseAccounts/*/read` | 在源可恢复帐户范围内需要此权限，以允许读取可恢复的资源，例如可还原帐户的数据库和容器的列表。  | 属于正在还原的源帐户的 *RestorableDatabaseAccount* 资源。 此值还由可 `ID` 还原数据库帐户资源的属性提供。 可还原帐户的示例是 */subscriptions/subscriptionId/providers/Microsoft.DocumentDB/位置/regionName/restorableDatabaseAccounts/<guid-instanceid>*| 包含可还原数据库帐户的订阅。 无法将资源组选作作用域。 |

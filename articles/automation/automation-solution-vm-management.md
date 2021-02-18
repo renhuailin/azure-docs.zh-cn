@@ -5,16 +5,16 @@ services: automation
 ms.subservice: process-automation
 ms.date: 02/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: 991ef6e7ffc26294f75ba5bd2f24c62ea6e0b421
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: a521ca80039b68f93bf7c9d98e51d9846e96e985
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100007000"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593829"
 ---
 # <a name="startstop-vms-during-off-hours-overview"></a>“在空闲时间启动/停止 VM”概述
 
-在空闲时间启动/停止 VM 功能启动或停止启用的 Azure Vm。 它根据用户定义的计划启动或停止计算机、通过 Azure Monitor 日志提供见解，并通过使用[操作组](../azure-monitor/platform/action-groups.md)发送可选的电子邮件。 在大多数情况下，可同时在 Azure 资源管理器和经典 VM 上启用此功能。
+在空闲时间启动/停止 VM 功能启动或停止启用的 Azure Vm。 它根据用户定义的计划启动或停止计算机、通过 Azure Monitor 日志提供见解，并通过使用[操作组](../azure-monitor/alerts/action-groups.md)发送可选的电子邮件。 在大多数情况下，可同时在 Azure 资源管理器和经典 VM 上启用此功能。 
 
 此功能使用 [new-azvm](/powershell/module/az.compute/start-azvm) cmdlet 来启动 vm。 它使用 [new-azvm](/powershell/module/az.compute/stop-azvm) 停止 vm。
 

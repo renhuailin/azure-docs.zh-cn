@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2020
 ms.author: memildin
-ms.openlocfilehash: 64fa6c72e3bc37276dd108e3981bbefb5a2021a7
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 30744ab97549d585cb6893dc2e2e12009e8cd3fb
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96444522"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595767"
 ---
 # <a name="faq---questions-about-data-collection-agents-and-workspaces"></a>常见问题解答 - 有关数据收集、代理和工作区的问题
 
@@ -43,7 +43,7 @@ ms.locfileid: "96444522"
 
 ## <a name="what-is-the-log-analytics-agent"></a>什么是 Log Analytics 代理？
 
-Azure 安全中心依赖 [Log Analytics 代理](../azure-monitor/platform/log-analytics-agent.md)来监视安全漏洞和威胁。该代理与 Azure Monitor 服务所用的代理相同， 
+Azure 安全中心依赖 [Log Analytics 代理](../azure-monitor/agents/log-analytics-agent.md)来监视安全漏洞和威胁。该代理与 Azure Monitor 服务所用的代理相同， 
 
 有时又称为 Microsoft Monitoring Agent（或“MMA”）。 
 
@@ -51,9 +51,9 @@ Azure 安全中心依赖 [Log Analytics 代理](../azure-monitor/platform/log-an
 
 请确保计算机正在运行此代理支持的操作系统之一，如以下页面所述：
 
-* [适用于 Windows 的 Log Analytics 代理支持的操作系统](../azure-monitor/platform/agents-overview.md#supported-operating-systems)
+* [适用于 Windows 的 Log Analytics 代理支持的操作系统](../azure-monitor/agents/agents-overview.md#supported-operating-systems)
 
-* [适用于 Linux 的 Log Analytics 代理支持的操作系统](../azure-monitor/platform/agents-overview.md#supported-operating-systems)
+* [适用于 Linux 的 Log Analytics 代理支持的操作系统](../azure-monitor/agents/agents-overview.md#supported-operating-systems)
 
 详细了解 [Log Analytics 代理收集的数据](security-center-enable-data-collection.md)。
 
@@ -88,7 +88,7 @@ Windows 或 Linux IaaS VM 的合格条件如下：
 
 ## <a name="what-security-events-are-collected-by-the-log-analytics-agent"></a>Log Analytics 代理收集哪些安全事件？
 
-有关代理收集的安全事件的完整列表，请参阅 [为 "常用" 和 "最小" 安全事件设置存储的事件类型](security-center-enable-data-collection.md#what-event-types-are-stored-for-common-and-minimal)。
+有关代理收集的安全事件的完整列表，请参阅[为“常用”和“最小”安全事件设置存储了哪些事件类型？](security-center-enable-data-collection.md#what-event-types-are-stored-for-common-and-minimal)。
 
 > [!IMPORTANT]
 > 请注意，对于某些服务（例如 Azure 防火墙），如果启用了日志记录并选择记录琐碎资源（例如，将日志设置为“详细”），则可能会对 Log Analytics 工作区的存储需求产生重大影响。 
@@ -111,14 +111,14 @@ Windows 或 Linux IaaS VM 的合格条件如下：
 
 1. 从安全中心的菜单中，选择“定价和设置”。
 1. 选择相关订阅。
-1. 打开 " **自动设置** " 页，
-1. 对于 Log Analytics 代理，选择 " **编辑配置**"。 
+1. 打开“自动预配”页
+1. 对于 Log Analytics 代理，选择“编辑配置”。 
 
-    :::image type="content" source="./media/security-center-enable-data-collection/edit-configuration-auto-deploy-agent.png" alt-text="要在使用自动部署时使用的 Log Analytics 代理的配置" lightbox="./media/security-center-enable-data-collection/edit-configuration-auto-deploy-agent.png":::
+    :::image type="content" source="./media/security-center-enable-data-collection/edit-configuration-auto-deploy-agent.png" alt-text="使用自动部署时要使用的 Log Analytics 代理配置" lightbox="./media/security-center-enable-data-collection/edit-configuration-auto-deploy-agent.png":::
 
-1. 选择 " **将 Azure Vm 连接到不同的工作区** "，并选择现有的工作区。
+1. 选择“将 Azure VM 连接到其他工作区”选择现有工作区。
 
-    :::image type="content" source="./media/security-center-enable-data-collection/choose-workspace.png" alt-text="选择要向其报告的 Log Analytics 代理的非默认工作区" lightbox="./media/security-center-enable-data-collection/choose-workspace.png":::
+    :::image type="content" source="./media/security-center-enable-data-collection/choose-workspace.png" alt-text="选择 Log Analytics 代理要报告给的非默认工作区" lightbox="./media/security-center-enable-data-collection/choose-workspace.png":::
 
     > [!TIP]
     > 此列表仅包含你有权访问的工作区和 Azure 订阅中的工作区。
@@ -166,11 +166,11 @@ Windows 或 Linux IaaS VM 的合格条件如下：
 
 ## <a name="how-do-i-stop-the-automatic-agent-installation-and-workspace-creation"></a>如何停止自动安装代理和创建工作区？
 
-可以在安全策略中为订阅禁用自动预配，但不建议这样做。 关闭自动设置会限制安全中心的建议和警报。 禁用自动预配的具体步骤：
+可以在安全策略中为订阅禁用自动预配，但不建议这样做。 禁用自动预配会限制安全中心的建议和警报。 禁用自动预配的具体步骤：
 
 1. 从安全中心的菜单中，选择“定价和设置”。
 1. 选择相关订阅。
-1. 如果订阅已启用 Azure Defender，请打开 **Azure defender 计划** ，并选择 " **azure defender**"。
+1. 如果订阅已启用 Azure Defender，请打开该“Azure Defender 计划”，然后选择“关闭 Azure Defender”。 
 
     :::image type="content" source="./media/security-center-platform-migration-faq/pricing-tier.png" alt-text="启用或禁用 Azure Defender":::
 
@@ -241,11 +241,11 @@ Windows 或 Linux IaaS VM 的合格条件如下：
 
 如果已启用该功能，但现在想禁用它：
 
-1. 在 [Azure 门户](https://portal.azure.com)中打开 " **安全中心** "，然后选择 " **定价和设置**"。
+1. 从 [Azure 门户](https://portal.azure.com)打开“安全中心”，然后选择“定价和设置”。 
 
 1. 选择要禁用自动预配的订阅。
 
-1. 在 " **自动预配**" 下，关闭 Log Analytics 代理的切换。
+1. 在“自动预配”下，关闭 Log Analytics 代理的开关。
 
 
 ## <a name="how-do-i-enable-data-collection"></a>如何启用数据收集？
@@ -255,7 +255,7 @@ Windows 或 Linux IaaS VM 的合格条件如下：
 
 ## <a name="what-happens-when-data-collection-is-enabled"></a>启用数据收集之后会发生什么？
 
-启用自动预配后，安全中心可在所有受支持的 Azure VM 以及任何新建的 Azure VM 中预配 Log Analytics 代理。 建议进行自动预配，但也可以手动完成代理安装。 [了解如何安装 Log Analytics 代理扩展](../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)。 
+启用自动预配后，安全中心可在所有受支持的 Azure VM 以及任何新建的 Azure VM 中预配 Log Analytics 代理。 建议进行自动预配，但也可以手动完成代理安装。 [了解如何安装 Log Analytics 代理扩展](../azure-monitor/vm/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)。 
 
 该代理可启用进程创建事件 4688 和事件 4688 内的 *CommandLine* 字段。 VM 上创建的新进程由事件日志记录，并由安全中心检测服务监视。 若要详细了解针对每个新进程记录的详细信息，请参阅 [4688 中的说明字段](https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/event.aspx?eventID=4688#fields)。 该代理还收集 VM 上创建的 4688 事件，并将这些事件存储在搜索中。
 
@@ -267,7 +267,7 @@ Windows 或 Linux IaaS VM 的合格条件如下：
 ## <a name="will-security-center-work-using-an-oms-gateway"></a>安全中心是否可以使用 OMS 网关？
 
 是的。 Azure 安全中心利用 Azure Monitor，使用 Log Analytics 代理从 Azure VM 和服务器收集数据。
-若要收集数据，每个 VM 和服务器都必须连接到使用 HTTPS 的 Internet。 可直接、通过代理或 [OMS 网关](../azure-monitor/platform/gateway.md)完成此连接。
+若要收集数据，每个 VM 和服务器都必须连接到使用 HTTPS 的 Internet。 可直接、通过代理或 [OMS 网关](../azure-monitor/agents/gateway.md)完成此连接。
 
 
 ## <a name="does-the-monitoring-agent-impact-the-performance-of-my-servers"></a>Monitoring Agent 会影响服务器性能吗？

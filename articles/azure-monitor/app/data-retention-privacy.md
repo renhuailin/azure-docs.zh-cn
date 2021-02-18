@@ -4,12 +4,12 @@ description: 保留和隐私政策声明
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 2205ab1115a66092ae6dd6d75ee7004ab281eec7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 54d3e53b71b5f63da84e41a752bbbb6fce65c045
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91263906"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579573"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Application Insights 中的数据收集、保留和存储
 
@@ -56,14 +56,14 @@ Application Insights SDK 可用于多种应用程序类型：托管在自己的 
 * [异常](./asp-net-exceptions.md)和崩溃 - **堆栈转储**、`build id`、CPU 类型。 
 * [依赖项](./asp-net-dependencies.md) - 对外部服务的调用，例如 REST、SQL、AJAX。 URI 或连接字符串、持续时间、成功结果、命令。
 * [可用性测试](./monitor-web-app-availability.md) - 测试持续时间、步骤、响应。
-* [跟踪日志](./asp-net-trace-logs.md)和[自定义遥测](./api-custom-events-metrics.md) - **在日志或遥测中编写的任何内容**。
+* [跟踪日志](./asp-net-trace-logs.md)和 [自定义遥测](./api-custom-events-metrics.md) - **在日志或遥测中编写的任何内容**。
 
 [更多详细信息](#data-sent-by-application-insights)。
 
 ## <a name="how-can-i-verify-whats-being-collected"></a>如何验证收集了哪些信息？
 如果使用 Visual Studio 开发应用，请在调试模式下运行应用 (F5)。 遥测数据会显示在“输出”窗口中。 在该窗口中，可以复制遥测数据并将其格式设置为 JSON 以便于检查。 
 
-![显示在 Visual Studio 中以调试模式运行应用程序的屏幕截图。](./media/data-retention-privacy/06-vs.png)
+![屏幕截图，显示在 Visual Studio 中的调试模式下运行应用程序。](./media/data-retention-privacy/06-vs.png)
 
 “诊断”窗口中还提供了一个可方便阅读的视图。
 
@@ -81,7 +81,7 @@ Application Insights SDK 可用于多种应用程序类型：托管在自己的 
 
 1 分钟粒度的聚合数据（即，在指标资源管理器中显示的计数、平均值和其他统计信息）可保留 90 天。
 
-[调试快照](./snapshot-debugger.md) 存储15天。 此保留策略是逐个应用程序进行设置。 如果需要，可以在 Azure 门户中打开支持案例，以请求增加此值。
+[调试快照](./snapshot-debugger.md)将存储 15 天。 此保留策略是逐个应用程序进行设置。 如果需要，可以在 Azure 门户中打开支持案例，以请求增加此值。
 
 ## <a name="who-can-access-the-data"></a>谁可以访问该数据？
 你和团队成员（如果使用组织帐户）可以看到数据。 
@@ -120,7 +120,7 @@ Microsoft 工作人员对数据的访问将受到限制。 我们只有在获得
 
 利用本地存储的遥测通道会在 TEMP 或 APPDATA 目录中创建临时文件，但仅限于运行应用程序的特定帐户。 当终结点暂时不可用或达到限制值时，可能会发生这种情况。 解决此问题后，遥测通道便会恢复发送所有新数据和暂留数据。
 
-此持久数据不会在本地加密。 如果这是一个问题，请检查数据并限制私人数据的收集。 （有关详细信息，请参阅[如何导出和删除私人数据](../platform/personal-data-mgmt.md#how-to-export-and-delete-private-data)。）
+此持久数据不会在本地加密。 如果这是一个问题，请检查数据并限制私人数据的收集。 （有关详细信息，请参阅[如何导出和删除私人数据](../logs/personal-data-mgmt.md#how-to-export-and-delete-private-data)。）
 
 如果客户需要根据特定安全要求配置此目录，可以针对每个框架进行配置。 请确保运行应用程序的进程对此目录拥有写入权限，并确保此目录受保护，以免遥测数据遭用户意外读取。
 
@@ -158,11 +158,11 @@ Microsoft 工作人员对数据的访问将受到限制。 我们只有在获得
 在 Linux 环境中，除非指定了存储文件夹，否则将禁用本地存储。
 
 > [!NOTE]
-> 由于已为 Linux、Mac 和 Windows 自动创建了 release 2.15.0-beta3 和更高版本的本地存储。 对于非 Windows 系统，SDK 会根据以下逻辑自动创建本地存储文件夹：
-> - `${TMPDIR}` -如果 `${TMPDIR}` 设置了环境变量，则使用此位置。
-> - `/var/tmp` -如果不存在以前的位置，我们尝试 `/var/tmp` 。
-> - `/tmp` -如果以前的两个位置都不存在，请尝试 `tmp` 。 
-> - 如果这些位置均不存在，则不会创建本地存储，并且仍需要手动配置。 [了解完整的实现细节](https://github.com/microsoft/ApplicationInsights-dotnet/pull/1860)。
+> 随着 2.15.0-beta3 版的推出，现可为 Linux、Mac 和 Windows 自动创建更大的本地存储。 对于非 Windows 系统，SDK 将根据以下逻辑自动创建本地存储文件夹：
+> - `${TMPDIR}` - 如果设置了 `${TMPDIR}` 环境变量，则使用此位置。
+> - `/var/tmp` - 如果前一个位置不存在，请尝试 `/var/tmp`。
+> - `/tmp` - 如果前两个位置都不存在，请尝试 `tmp`。 
+> - 如果这些位置都不存在，则不会创建本地存储，且仍然需要手动配置。 [了解有关实现的完整详细信息](https://github.com/microsoft/ApplicationInsights-dotnet/pull/1860)。
 
 下面的代码片段展示了如何在 `Startup.cs` 类的 `ConfigureServices()` 方法中设置 `ServerTelemetryChannel.StorageFolder`：
 
@@ -199,7 +199,7 @@ AzureLogHandler(
 
 ## <a name="how-do-i-send-data-to-application-insights-using-tls-12"></a>如何使用 TLS 1.2 将数据发送到 Application Insights？
 
-为了确保传输到 Application Insights 终结点的数据的安全性，我们强烈建议客户将其应用程序配置为至少使用传输层安全性 (TLS) 1.2。 我们发现旧版 TLS/安全套接字层 (SSL) 容易受到攻击，尽管出于向后兼容，这些协议仍可正常工作，但我们**不建议使用**，并且行业即将放弃对这些旧协议的支持。 
+为了确保传输到 Application Insights 终结点的数据的安全性，我们强烈建议客户将其应用程序配置为至少使用传输层安全性 (TLS) 1.2。 我们发现旧版 TLS/安全套接字层 (SSL) 容易受到攻击，尽管出于向后兼容，这些协议仍可正常工作，但我们 **不建议使用**，并且行业即将放弃对这些旧协议的支持。 
 
 [PCI 安全标准委员会](https://www.pcisecuritystandards.org/)规定 [2018 年 6 月 30 日](https://www.pcisecuritystandards.org/pdfs/PCI_SSC_Migrating_from_SSL_and_Early_TLS_Resource_Guide.pdf)是停用旧版 TLS/SSL 并升级到更安全协议的截止时间。 在 Azure 放弃旧版支持后，如果应用程序/客户端无法通过最低版本 TLS 1.2 进行通信，则你无法将数据发送到 Application Insights。 测试和验证应用程序对 TLS 的支持的方法根据操作系统/平台以及应用程序使用的语言/框架而异。
 
@@ -240,7 +240,7 @@ openssl s_client -connect bing.com:443 -tls1_2
 
 ## <a name="personal-data-stored-in-application-insights"></a>Application Insights 中存储的个人数据
 
-[Application Insights 个人数据文章](../platform/personal-data-mgmt.md)深入探讨了此问题。
+[Application Insights 个人数据文章](../logs/personal-data-mgmt.md)深入探讨了此问题。
 
 #### <a name="can-my-users-turn-off-application-insights"></a>用户是否可以关闭 Application Insights？
 无法直接配合使用。 我们未提供用户可操作的开关来关闭 Application Insights。
@@ -258,7 +258,7 @@ SDK 根据平台的不同而异，可以安装多个组件。 （请参阅 [Appl
 | [在 IIS 上安装状态监视器][redfield] |依赖项<br/>ServerContext<br/>推断<br/>性能计数器 |
 | [将 Application Insights SDK 添加到 Java Web 应用][java] |ServerContext<br/>推断<br/>请求<br/>会话<br/>users |
 | [将 JavaScript SDK 添加到网页][client] |ClientContext <br/>推断<br/>Page<br/>ClientPerf<br/>Ajax |
-| [定义默认属性][apiproperties] |所有标准事件和自定义事件的**属性** |
+| [定义默认属性][apiproperties] |所有标准事件和自定义事件的 **属性** |
 | [调用 TrackMetric][api] |数值<br/>**属性** |
 | [调用跟踪*][api] |事件名称<br/>**属性** |
 | [调用 TrackException][api] |**异常**<br/>堆栈转储<br/>**属性** |
@@ -285,7 +285,7 @@ SDK 根据平台的不同而异，可以安装多个组件。 （请参阅 [Appl
 | 依赖项 |类型（SQL、HTTP...）、连接字符串或 URI、同步/异步、持续时间、成功结果、SQL 语句（包含状态监视器） |
 | **异常** |类型、**消息**、调用堆栈、源文件、行号、`thread id` |
 | 崩溃 |`Process id`、`parent process id`、`crash thread id`、应用程序修补程序、`id`、版本；异常类型、地址、原因；模糊符号和寄存器、二进制开始和结束地址、二进制文件名和路径、CPU 类型 |
-| 跟踪 |**消息**和严重级别 |
+| 跟踪 |**消息** 和严重级别 |
 | 性能计数器 |处理器时间、可用内存、请求速率、异常率、进程专用字节、IO 速率、请求持续期间、请求队列长度 |
 | 可用性 |Web 测试响应代码、每个测试步骤的持续时间、测试名称、时间戳、成功结果、响应时间、测试位置 |
 | SDK 诊断 |跟踪消息或异常 |
@@ -293,7 +293,7 @@ SDK 根据平台的不同而异，可以安装多个组件。 （请参阅 [Appl
 可以通过[编辑 ApplicationInsights.config 来关闭某些数据][config]
 
 > [!NOTE]
-> 客户端 IP 用于推断地理位置，但默认情况下，不再存储 IP 数据且将所有的零写入关联的字段。 若要了解有关个人数据处理的详细信息，推荐参阅这一篇[文章](../platform/personal-data-mgmt.md#application-data)。 如果需要存储 IP 地址数据，我们的[“IP 地址收集”一文](./ip-collection.md)会指导你完成选择。
+> 客户端 IP 用于推断地理位置，但默认情况下，不再存储 IP 数据且将所有的零写入关联的字段。 若要了解有关个人数据处理的详细信息，推荐参阅这一篇[文章](../logs/personal-data-mgmt.md#application-data)。 如果需要存储 IP 地址数据，我们的[“IP 地址收集”一文](./ip-collection.md)会指导你完成选择。
 
 ## <a name="credits"></a>致谢
 此产品包含 MaxMind 创建的 GeoLite2 数据，可从 [https://www.maxmind.com](https://www.maxmind.com) 获取。

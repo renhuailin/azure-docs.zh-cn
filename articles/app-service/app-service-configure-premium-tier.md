@@ -6,12 +6,12 @@ ms.assetid: ff00902b-9858-4bee-ab95-d3406018c688
 ms.topic: article
 ms.date: 10/01/2020
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 7ade24b6478f78a51e0be68ae69ae0b076ecff1f
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: c187a1521762c0b69d42c81f464694729d3c02f7
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96607868"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594219"
 ---
 # <a name="configure-premiumv3-tier-for-azure-app-service"></a>为 Azure App Service 配置 PremiumV3 层
 
@@ -92,7 +92,7 @@ az appservice list-locations --sku P1V3
 
 如果你的应用使用预览版高级容器 SKU，并且想要移动到新的高级 V3 SKU，则需要重新部署应用才能利用 **PremiumV3**。 要执行此操作，请参阅[从不受支持的资源组和区域组合扩展](#scale-up-from-an-unsupported-resource-group-and-region-combination)的第一个选项
 
-## <a name="automate-with-scripts"></a>使用脚本自动化
+## <a name="automate-with-scripts"></a>使用脚本自动执行
 
 使用 [Azure CLI](/cli/azure/install-azure-cli)或 [Azure PowerShell](/powershell/azure/)，可以使用脚本在 **PremiumV3** 层中自动创建应用程序。
 
@@ -124,4 +124,4 @@ New-AzAppServicePlan -ResourceGroupName <resource_group_name> `
 ## <a name="more-resources"></a>更多资源
 
 [在 Azure](manage-scale-up.md) 
- 中纵向扩展应用[手动或自动缩放实例计数](../azure-monitor/platform/autoscale-get-started.md)
+ 中纵向扩展应用[手动或自动缩放实例计数](../azure-monitor/autoscale/autoscale-get-started.md)

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 2d72027082ed2b57b28a15a736c35801ba88188c
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: a5639d583d9b98f6527e47bf5db213cb191ebeb7
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99832515"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575293"
 ---
 # <a name="view-and-configure-ddos-protection-alerts"></a>查看和配置 DDoS 防护警报
 
@@ -72,7 +72,7 @@ Azure DDoS 防护标准通过 DDoS 攻击分析提供详细的攻击见解和可
 
 ![攻击警报](./media/manage-ddos-protection/ddos-alert.png)
 
-还可以了解有关为创建警报而[配置 webhook](../azure-monitor/platform/alerts-webhooks.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 和[逻辑应用](../logic-apps/logic-apps-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)的详细信息。
+还可以了解有关为创建警报而[配置 webhook](../azure-monitor/alerts/alerts-webhooks.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 和[逻辑应用](../logic-apps/logic-apps-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)的详细信息。
 
 ## <a name="view-alerts-in-azure-security-center"></a>查看 Azure 安全中心的警报
 

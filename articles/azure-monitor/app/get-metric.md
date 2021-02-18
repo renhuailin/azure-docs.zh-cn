@@ -5,12 +5,12 @@ ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 345d0d31528f7bdc40be4400e783ad5be45df72f
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: b4a255235b2c6d772ab9a05dffacd4574ddd3280
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91930554"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100584193"
 ---
 # <a name="custom-metric-collection-in-net-and-net-core"></a>.NET 和 .NET Core 中的自定义指标集合
 
@@ -109,7 +109,7 @@ Application Insights Telemetry: {"name":"Microsoft.ApplicationInsights.Dev.00000
 > [!NOTE]
 > 虽然原始遥测项在引入后不包含显式的总和属性/字段，但我们会为你创建一个。 在本例中，`value` 和 `valueSum` 属性都表示相同的内容。
 
-你还可以在门户的[指标](../platform/metrics-charts.md)部分访问自定义指标遥测。 同时作为[基于日志的指标和自定义指标](pre-aggregated-metrics-log-metrics.md)。 （以下屏幕截图是基于日志的指标示例。）![指标资源管理器视图](./media/get-metric/metrics-explorer.png)
+你还可以在门户的[指标](../essentials/metrics-charts.md)部分访问自定义指标遥测。 同时作为[基于日志的指标和自定义指标](pre-aggregated-metrics-log-metrics.md)。 （以下屏幕截图是基于日志的指标示例。）![指标资源管理器视图](./media/get-metric/metrics-explorer.png)
 
 ### <a name="caching-metric-reference-for-high-throughput-usage"></a>用于高吞吐量使用情况的缓存指标引用
 
@@ -302,6 +302,6 @@ SeverityLevel.Error);
 
 * [详细了解](./worker-service.md)有关监视辅助角色服务应用程序的信息。
 * 有关[基于日志的指标和预聚合指标](./pre-aggregated-metrics-log-metrics.md)的更多详细信息。
-* [指标资源管理器](../platform/metrics-getting-started.md)
+* [指标资源管理器](../essentials/metrics-getting-started.md)
 * 如何为 [ASP.NET Core 应用程序](asp-net-core.md)启用 Application Insights
 * 如何为 [ASP.NET 应用程序](asp-net.md)启用 Application Insights

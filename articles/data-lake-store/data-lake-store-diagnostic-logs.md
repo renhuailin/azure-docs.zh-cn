@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: 07bf22cfc683d8c6f2c765364334ed1594e2fdaa
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.openlocfilehash: 0b84e26962b00ee5b9d4c34cab7efbcc9aa0bf01
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2021
-ms.locfileid: "98745878"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100582797"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-storage-gen1"></a>访问 Azure Data Lake Storage Gen1 的诊断日志
 了解如何启用 Azure Data Lake Storage Gen1 帐户诊断日志记录以及如何查看为帐户收集的日志。
@@ -46,11 +46,11 @@ ms.locfileid: "98745878"
         
         * 选择选项“流式传输到事件中心”将日志数据流式传输到 Azure 事件中心。 具有下游处理管道来实时分析传入日志时最可能使用此选项。 若选择此选项，必须提供要使用的 Azure 事件中心的详细信息。
 
-        * 选择要 **发送到 Log Analytics** 的选项，以使用 Azure Monitor 服务分析生成的日志数据。 如果选择此选项，必须提供要用于执行日志分析的 Log Analytics 工作区的详细信息。 有关使用 Azure Monitor 日志的详细信息，请参阅 [查看或分析使用 Azure Monitor 日志收集的数据](../azure-monitor/log-query/log-analytics-tutorial.md) 。
+        * 选择要 **发送到 Log Analytics** 的选项，以使用 Azure Monitor 服务分析生成的日志数据。 如果选择此选项，必须提供要用于执行日志分析的 Log Analytics 工作区的详细信息。 有关使用 Azure Monitor 日志的详细信息，请参阅 [查看或分析使用 Azure Monitor 日志收集的数据](../azure-monitor/logs/log-analytics-tutorial.md) 。
      
    * 指定是要获取审核日志还是请求日志，或者两者。
    * 指定数据必须保留的天数。 保留期仅在使用 Azure 存储帐户存档日志数据时才适用。
-   * 单击“保存” 。
+   * 单击“ **保存**”。
 
 启用诊断设置后，可在“诊断日志”选项卡中查看日志。
 
@@ -185,7 +185,7 @@ ms.locfileid: "98745878"
 | StreamName |字符串 |操作执行所在的路径 |
 
 ## <a name="samples-to-process-the-log-data"></a>日志数据处理示例
-在将日志从 Azure Data Lake Storage Gen1 发送到 Azure Monitor 日志时 (参阅使用 [Azure Monitor 日志来查看或分析收集的数据](../azure-monitor/log-query/log-analytics-tutorial.md) Azure Monitor，下面的查询将返回一个表，其中包含一个用户显示名称的列表、事件的时间以及事件时间与可视化图的事件计数。 可轻松修改该查询，以显示用户 GUID 或其他属性：
+在将日志从 Azure Data Lake Storage Gen1 发送到 Azure Monitor 日志时 (参阅使用 [Azure Monitor 日志来查看或分析收集的数据](../azure-monitor/logs/log-analytics-tutorial.md) Azure Monitor，下面的查询将返回一个表，其中包含一个用户显示名称的列表、事件的时间以及事件时间与可视化图的事件计数。 可轻松修改该查询，以显示用户 GUID 或其他属性：
 
 ```
 search *

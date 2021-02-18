@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 3678ead9f3e1ba2556fde3c2fbe30df4e7dc2225
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 96d1c4c0ad210352be94255609a3a373b408ed23
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737229"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593303"
 ---
 # <a name="azure-security-baseline-for-batch"></a>Batch 的 Azure 安全基线
 
@@ -142,7 +142,7 @@ ms.locfileid: "98737229"
 
 - [如何查看和检索 Azure 活动日志事件](../azure-monitor/platform/activity-log.md#view-the-activity-log) 
 
-- [如何在 Azure Monitor 中创建警报](../azure-monitor/platform/alerts-activity-log.md)
+- [如何在 Azure Monitor 中创建警报](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure 安全中心监视**：是
 
@@ -200,7 +200,7 @@ ms.locfileid: "98737229"
 
 - [如何配置 Azure Batch 的监视和日志记录功能](monitoring-overview.md)
 
-- [如何配置 Azure Log Analytics 工作区保留期](../azure-monitor/platform/manage-cost-storage.md)
+- [如何配置 Azure Log Analytics 工作区保留期](../azure-monitor/logs/manage-cost-storage.md)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -496,7 +496,7 @@ ms.locfileid: "98737229"
 
 **指南**：对于与 Azure Batch 帐户关联的存储帐户，建议允许 Microsoft 管理加密密钥，但你可以根据需要选择管理你自己的密钥。
 
-可以使用 Azure 磁盘加密来帮助保护数据，以满足组织的安全性和符合性承诺。 写入到现有磁盘的所有托管磁盘、快照、映像和数据都将通过平台管理的密钥自动进行静态加密。
+Azure 磁盘加密可用于帮助保护数据，使组织能够信守在安全性与合规性方面作出的承诺。 所有写入现有磁盘的托管磁盘、快照、映像和数据都会自动使用平台管理的密钥进行静态加密。
 
 - [如何管理 Azure 存储帐户的加密密钥](../storage/common/customer-managed-keys-configure-key-vault.md)
 
@@ -514,7 +514,7 @@ ms.locfileid: "98737229"
 
 为关联到 Azure Batch 池的存储帐户配置诊断设置，以监视并记录针对池数据执行的所有 CRUD 操作。
 
-- [如何针对 Azure 活动日志事件创建警报](../azure-monitor/platform/alerts-activity-log.md)
+- [如何针对 Azure 活动日志事件创建警报](../azure-monitor/alerts/alerts-activity-log.md)
 
 - [如何为 Azure 存储帐户启用其他日志记录/审核](../storage/common/storage-monitor-storage-account.md)
 

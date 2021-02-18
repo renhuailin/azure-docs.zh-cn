@@ -3,12 +3,12 @@ title: 使用 Azure 资源管理器模板启用 VM 扩展
 description: 本文介绍如何使用 Azure 资源管理器模板将虚拟机扩展部署到在混合云环境中运行的支持 Azure Arc 的服务器。
 ms.date: 02/10/2021
 ms.topic: conceptual
-ms.openlocfilehash: 0115bda614133891275daff96c94dc4b1a680ccf
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: b84f9d4d13de3ce2d661e254528e1f0a304001f4
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/17/2021
-ms.locfileid: "100555105"
+ms.locfileid: "100580923"
 ---
 # <a name="enable-azure-vm-extensions-by-using-arm-template"></a>使用 ARM 模板启用 Azure VM 扩展
 
@@ -545,7 +545,7 @@ New-AzResourceGroupDeployment -ResourceGroupName "ContosoEngineering" -TemplateF
 
 ## <a name="deploy-the-dependency-agent-extension"></a>部署依赖关系代理扩展
 
-若要使用 Azure Monitor 依赖关系代理扩展，提供以下示例以在 Windows 和 Linux 上运行。 如果不熟悉依赖关系代理，请参阅 [Azure Monitor 代理概述](../../azure-monitor/platform/agents-overview.md#dependency-agent)。
+若要使用 Azure Monitor 依赖关系代理扩展，提供以下示例以在 Windows 和 Linux 上运行。 如果不熟悉依赖关系代理，请参阅 [Azure Monitor 代理概述](../../azure-monitor/agents/agents-overview.md#dependency-agent)。
 
 ### <a name="template-file-for-linux"></a>适用于 Linux 的模板文件
 

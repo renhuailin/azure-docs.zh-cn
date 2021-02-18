@@ -7,12 +7,12 @@ ms.date: 04/11/2018
 ms.topic: tutorial
 ms.subservice: change-inventory-management
 ms.custom: mvc
-ms.openlocfilehash: 0c083f4576e123ea14d837ed3915c56d18d84623
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 8451067ae86e95269c0c2f22554e1654ac64c1e4
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207557"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593778"
 ---
 # <a name="discover-what-software-is-installed-on-your-vms"></a>发现 VM 上安装的软件
 
@@ -48,7 +48,7 @@ ms.locfileid: "92207557"
 
 1. 导航到自动化帐户，在“配置管理”下选择“清单”或“更改跟踪”  。
 
-2. 选择 [Log Analytics](../azure-monitor/log-query/log-query-overview.md) 工作区。 此工作区将收集由更改跟踪和清单等功能生成的数据。 工作区提供了一个位置来查看和分析来自多个数据源的数据。
+2. 选择 [Log Analytics](../azure-monitor/logs/log-query-overview.md) 工作区。 此工作区将收集由更改跟踪和清单等功能生成的数据。 工作区提供了一个位置来查看和分析来自多个数据源的数据。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -80,7 +80,7 @@ ms.locfileid: "92207557"
 
 若要为非 Azure 计算机启用该功能，请执行以下操作：
 
-1. 根据你的操作系统安装[适用于 Windows 的 Log Analytics 代理](../azure-monitor/platform/agent-windows.md)或[适用于 Linux 的 Log Analytics 代理](automation-linux-hrw-install.md)。 
+1. 根据你的操作系统安装[适用于 Windows 的 Log Analytics 代理](../azure-monitor/agents/agent-windows.md)或[适用于 Linux 的 Log Analytics 代理](automation-linux-hrw-install.md)。 
 
 2. 导航到自动化帐户，然后转到“配置管理”下的“清单”或“更改跟踪”  。 
 
@@ -122,7 +122,7 @@ ConfigurationData
 | summarize arg_max(TimeGenerated, *) by SoftwareName, Computer
 ```
 
-若要详细了解如何在 Azure Monitor 日志中运行和搜索日志文件，请参阅 [Azure Monitor 日志](../azure-monitor/log-query/log-query-overview.md)。
+若要详细了解如何在 Azure Monitor 日志中运行和搜索日志文件，请参阅 [Azure Monitor 日志](../azure-monitor/logs/log-query-overview.md)。
 
 ## <a name="see-the-software-inventory-for-a-single-machine"></a>查看单个计算机的软件清单
 

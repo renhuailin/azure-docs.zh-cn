@@ -9,16 +9,19 @@ ms.service: media-services
 ms.topic: conceptual
 ms.date: 1/29/2020
 ms.author: inhenkel
-ms.openlocfilehash: 96031642efb1248fb3b1acabeb9d7381177a2c70
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: fd92eed127ec50a3d3a86f667d9aa764b79c190a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100098072"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585408"
 ---
 # <a name="trusted-storage-for-media-services"></a>媒体服务的受信任存储
 
 创建媒体服务帐户时，必须将其与存储帐户相关联。 媒体服务可以使用系统身份验证或托管标识身份验证访问该存储帐户。 媒体服务验证媒体服务帐户和存储帐户是否位于同一订阅中，并验证添加关联的用户是否具有使用 Azure 资源管理器 RBAC 访问存储帐户的权限。
+
+>[!NOTE]
+>受信任的存储仅在 API 中提供，并且在 Azure 门户中当前未启用。
 
 ## <a name="trusted-storage-with-a-firewall"></a>使用防火墙的受信任存储
 

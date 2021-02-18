@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 01/06/2021
 ms.author: sngun
-ms.openlocfilehash: d78ddf983f1c8f2bfeaf733c273afc1cc98b1185
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 561375eb41600ba1404bba2bcbf15b6cbfc61851
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98684852"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595343"
 ---
 # <a name="monitor-azure-cosmos-db-data-by-using-diagnostic-settings-in-azure"></a>使用 Azure 中的诊断设置监视 Azure Cosmos DB 数据
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -65,20 +65,20 @@ Azure 中的诊断设置用于收集资源日志。 Azure 资源日志由资源�
    { "time": "2020-03-30T23:55:10.9579593Z", "resourceId": "/SUBSCRIPTIONS/<your_subscription_ID>/RESOURCEGROUPS/<your_resource_group>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<your_database_account>", "category": "CassandraRequests", "operationName": "QuerySelect", "properties": {"activityId": "6b33771c-baec-408a-b305-3127c17465b6","opCode": "<empty>","errorCode": "-1","duration": "0.311900","requestCharge": "1.589237","databaseName": "system","collectionName": "local","retryCount": "<empty>","authorizationTokenType": "PrimaryMasterKey","address": "104.42.195.92","piiCommandText": "{"request":"SELECT key from system.local"}","userAgent": """"}}
    ```
    
-  使用以下查询获取对应于 Cassandra 请求的日志：
+  使用以下查询获取与 Cassandra 请求对应的日志：
   
   ```kusto
    AzureDiagnostics 
    | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="CassandraRequests"
   ```
 
-* **GremlinRequests**：选择此选项可记录前端用户启动的请求，以便为 Gremlin AZURE COSMOS DB 的 API 提供请求。 此日志类型不适用于其他 API 帐户。 要注意的关键属性为 `operationName` 和 `requestCharge` 。 在诊断日志中启用 GremlinRequests 时，请务必关闭 DataPlaneRequests。 对于在 API 上发出的每个请求，都会看到一个日志。
+* GremlinRequests：选择此选项可记录用户从前端发起的请求，这些请求的内容是要求处理发送给 Azure Cosmos DB 的 Gremlin API 的请求。 此日志类型不适用于其他 API 帐户。 要记录的关键属性是 `operationName` 和 `requestCharge`。 在诊断日志中启用 GremlinRequests 时，请务必禁用 DataPlaneRequests。 对于在 API 上发出的每个请求，都会看到一个日志。
 
   ```json
   { "time": "2021-01-06T19:36:58.2554534Z", "resourceId": "/SUBSCRIPTIONS/<your_subscription_ID>/RESOURCEGROUPS/<your_resource_group>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<your_database_account>", "category": "GremlinRequests", "operationName": "eval", "properties": {"activityId": "b16bd876-0e5c-4448-90d1-7f3134c6b5ff", "errorCode": "200", "duration": "9.6036", "requestCharge": "9.059999999999999", "databaseName": "GraphDemoDatabase", "collectionName": "GraphDemoContainer", "authorizationTokenType": "PrimaryMasterKey", "address": "98.225.2.189", "estimatedDelayFromRateLimitingInMilliseconds": "0", "retriedDueToRateLimiting": "False", "region": "Australia East", "requestLength": "266", "responseLength": "364", "userAgent": "<empty>"}}
   ```
   
-  使用以下查询获取对应于 Gremlin 请求的日志：
+  使用以下查询获取与 Gremlin 请求对应的日志：
   
   ```kusto
    AzureDiagnostics 
@@ -103,7 +103,7 @@ Azure 中的诊断设置用于收集资源日志。 Azure 资源日志由资源�
 
 * **请求**：选择此选项可将 Azure Cosmos DB 中的指标数据收集到诊断设置中的目标。 这是在 Azure 指标中自动收集的相同数据。 同时收集指标数据和资源日志可将这两种类型的数据一起分析，并在 Azure Monitor 外部发送指标数据。
 
-有关如何使用 Azure 门户、CLI 或 PowerShell 创建诊断设置的详细信息，请参阅[创建诊断设置以在 Azure 中收集平台日志和指标](../azure-monitor/platform/diagnostic-settings.md)一文。
+有关如何使用 Azure 门户、CLI 或 PowerShell 创建诊断设置的详细信息，请参阅[创建诊断设置以在 Azure 中收集平台日志和指标](../azure-monitor/essentials/diagnostic-settings.md)一文。
 
 
 ## <a name="troubleshoot-issues-with-diagnostics-queries"></a><a id="diagnostic-queries"></a> 诊断查询问题疑难解答

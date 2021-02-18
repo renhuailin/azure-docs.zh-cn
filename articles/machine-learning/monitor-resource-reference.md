@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.custom: subject-monitoring
 ms.date: 10/02/2020
-ms.openlocfilehash: 6da9c6775a6d5c96bc52183fefc3e5330272e9ff
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: f9f25ec2dd8fb8b859f7863c1e695e22cb9a9cec
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99585120"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575078"
 ---
 # <a name="monitoring-azure-machine-learning-data-reference"></a>监视 Azure 机器学习数据引用
 
@@ -23,7 +23,7 @@ ms.locfileid: "99585120"
 
 ## <a name="metrics"></a>指标
 
-本部分列出了为 Azure 机器学习自动收集的所有平台指标。 这些指标的资源提供程序是 [Microsoft.MachineLearningServices/workspaces](../azure-monitor/platform/metrics-supported.md#microsoftmachinelearningservicesworkspaces)。
+本部分列出了为 Azure 机器学习自动收集的所有平台指标。 这些指标的资源提供程序是 [Microsoft.MachineLearningServices/workspaces](../azure-monitor/essentials/metrics-supported.md#microsoftmachinelearningservicesworkspaces)。
 
 **Model**
 
@@ -74,7 +74,7 @@ ms.locfileid: "99585120"
 
 ## <a name="metric-dimensions"></a>指标维度
 
-有关指标维度定义的详细信息，请参阅[多维指标](../azure-monitor/platform/data-platform-metrics.md#multi-dimensional-metrics)。
+有关指标维度定义的详细信息，请参阅[多维指标](../azure-monitor/essentials/data-platform-metrics.md#multi-dimensional-metrics)。
 
 Azure 机器学习具有以下与指标关联的维度。
 
@@ -117,7 +117,7 @@ RunType 维度的有效值为：
 
 本部分列出了可为 Azure 机器学习工作区收集的资源日志类型。
 
-资源提供程序和类型：[Microsoft.MachineLearningServices/workspace](../azure-monitor/platform/resource-logs-categories.md#microsoftmachinelearningservicesworkspaces).
+资源提供程序和类型：[Microsoft.MachineLearningServices/workspace](../azure-monitor/essentials/resource-logs-categories.md#microsoftmachinelearningservicesworkspaces).
 
 | 类别 | 显示名称 |
 | ----- | ----- |
@@ -232,4 +232,4 @@ Azure 机器学习正在使用以下架构
 ## <a name="see-also"></a>请参阅
 
 - 有关监视 Azure 机器学习的说明，请参阅[监视 Azure 机器学习](monitor-azure-machine-learning.md)。
-- 有关监视 Azure 资源的详细信息，请参阅[通过 Azure Monitor 监视 Azure 资源](../azure-monitor/insights/monitor-azure-resource.md)。
+- 有关监视 Azure 资源的详细信息，请参阅[通过 Azure Monitor 监视 Azure 资源](../azure-monitor/essentials/monitor-azure-resource.md)。
