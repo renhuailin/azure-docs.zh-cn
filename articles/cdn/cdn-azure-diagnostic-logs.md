@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 07/15/2020
 ms.author: allensu
-ms.openlocfilehash: fdb609a243656e2c75159cd2d4e70e2f965ae896
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 96e80de5b8b5ab0a046913ce40ca2d7254dd0133
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96352110"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573220"
 ---
 # <a name="diagnostic-logs---azure-content-delivery-network"></a>诊断日志-Azure 内容分发网络
 
@@ -42,9 +42,9 @@ ms.locfileid: "96352110"
 
 按照以下步骤为你的 Azure CDN 终结点启用日志记录：
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。 
+1. 登录 [Azure 门户](https://portal.azure.com)。 
 
-2. 在 Azure 门户中，导航到 **All resources**  ->  **你的 cdn 配置文件** 中的所有资源
+2. 在 Azure 门户中，导航到  ->  **你的 cdn 配置文件** 中的所有资源
 
 2. 选择要为其启用诊断日志的 CDN 终结点：
 
@@ -78,7 +78,7 @@ ms.locfileid: "96352110"
 若要对日志使用 Log Analytics，请执行以下步骤：
 
 >[!NOTE] 
->需要使用 log analytics 工作区才能完成这些步骤。 有关详细信息，请参阅： **[在 Azure 门户中创建 Log Analytics 工作区](../azure-monitor/learn/quick-create-workspace.md)** 。
+>需要使用 log analytics 工作区才能完成这些步骤。 有关详细信息，请参阅： **[在 Azure 门户中创建 Log Analytics 工作区](../azure-monitor/logs/quick-create-workspace.md)** 。
     
 1. 对于 " **诊断设置名称**"，请输入诊断日志设置的名称。
 
@@ -210,7 +210,7 @@ ms.locfileid: "96352110"
 |资源组名称 |CDN 资源所属资源组的名称。|
 |配置文件名称 |CDN 配置文件的名称|
 |终结点名称 |CDN 终结点的名称|
-|年龄|  年份的四位数表示形式，例如 2017|
+|Year|  年份的四位数表示形式，例如 2017|
 |月份| 月份的两位数表示形式。 01 = 一月 .。。12 = 12 月|
 |天|   月份中日的两位数表示形式|
 |PT1H.json| 实际存储分析数据的 JSON 文件|
@@ -249,7 +249,7 @@ Microsoft 当前仅提供核心分析日志，其中包含一些显示 HTTP 响�
 并非所有提供商提供的所有指标都可用，尽管这种差异很小。 此表还显示了某提供商的给定指标是否可用。 这些指标仅适用于在其上拥有流量的 CDN 终结点。
 
 
-|指标                     | 描述 | Microsoft | Verizon | Akamai |
+|指标                     | 说明 | Microsoft | Verizon | Akamai |
 |---------------------------|-------------|-----------|---------|--------|
 | RequestCountTotal         | 在此期间请求命中的总次数。 | 是 | 是 |是 |
 | RequestCountHttpStatus2xx | 导致 2xx HTTP 代码（例如 200 和 202）的所有请求的计数。 | 是 | 是 |是 |
@@ -369,7 +369,7 @@ Microsoft 当前仅提供核心分析日志，其中包含一些显示 HTTP 响�
 
 ## <a name="additional-resources"></a>其他资源
 
-* [Azure 诊断日志](../azure-monitor/platform/platform-logs-overview.md)
+* [Azure 诊断日志](../azure-monitor/essentials/platform-logs-overview.md)
 * [通过 Azure CDN 补充门户进行核心分析](./cdn-analyze-usage-patterns.md)
-* [Azure Monitor 日志](../azure-monitor/log-query/log-query-overview.md)
+* [Azure Monitor 日志](../azure-monitor/logs/log-query-overview.md)
 * [Azure Log Analytics REST API](/rest/api/loganalytics)

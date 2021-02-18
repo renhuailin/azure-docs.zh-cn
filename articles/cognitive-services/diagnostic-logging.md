@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 06/14/2019
 ms.author: erhopf
-ms.openlocfilehash: e33e8fe6e626700790a3b62265c6889f06e0861b
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: a2005ca7b32136ff0032d27e04035c46b2e4e904
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94366598"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595364"
 ---
 # <a name="enable-diagnostic-logging-for-azure-cognitive-services"></a>为 Azure 认知服务启用诊断日志记录
 
@@ -24,25 +24,25 @@ ms.locfileid: "94366598"
 
 若要启用诊断日志记录，需要指定某个位置用于存储日志数据。 本教程使用 Azure 存储和 Log Analytics。
 
-* [Azure 存储](../azure-monitor/platform/resource-logs.md#send-to-azure-storage) - 保留策略审核、静态分析或备份的诊断日志。 只要配置设置的用户对两个订阅都具有适当的 Azure RBAC 访问权限，存储帐户就不必与资源发出日志位于同一订阅中。
-* [Log Analytics](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace) - 灵活的日志搜索和分析工具，可用于分析 Azure 资源生成的原始日志。
+* [Azure 存储](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage) - 保留策略审核、静态分析或备份的诊断日志。 只要配置设置的用户同时拥有两个订阅的相应 Azure RBAC 访问权限，存储帐户就不必位于发出日志的资源所在的订阅中。
+* [Log Analytics](../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace) - 灵活的日志搜索和分析工具，可用于分析 Azure 资源生成的原始日志。
 
 > [!NOTE]
-> 还有其他配置选项可供使用。 有关详细信息，请参阅[从 Azure 资源收集和使用日志数据](../azure-monitor/platform/platform-logs-overview.md)。
+> 还有其他配置选项可供使用。 有关详细信息，请参阅[从 Azure 资源收集和使用日志数据](../azure-monitor/essentials/platform-logs-overview.md)。
 
 ## <a name="enable-diagnostic-log-collection"></a>启用诊断日志收集  
 
 首先，让我们使用 Azure 门户启用诊断日志记录。
 
 > [!NOTE]
-> 若要使用 PowerShell 或 Azure CLI 启用此功能，请参考[从 Azure 资源收集和使用日志数据](../azure-monitor/platform/platform-logs-overview.md)中提供的说明。
+> 若要使用 PowerShell 或 Azure CLI 启用此功能，请参考[从 Azure 资源收集和使用日志数据](../azure-monitor/essentials/platform-logs-overview.md)中提供的说明。
 
 1. 导航到 Azure 门户。 然后找到并选择某个认知服务资源。 例如，你要必应 Web 搜索的订阅。   
 2. 接下来，在左侧导航菜单中找到“监视”，然后选择“诊断设置”。   此屏幕包含以前为此资源创建的所有诊断设置。
 3. 如果你想要使用以前创建的某个资源，现在可以选择它。 否则，请选择“+ 添加诊断设置”。 
 4. 输入设置名称。 依次选择“存档到存储帐户”、“发送到 Log Analytics”。  
-5. 出现配置提示时，请选择你要用来存储诊断日志的存储帐户和 OMS 工作区。 **注意** ：如果你没有存储帐户或 OMS 工作区，请按提示创建一个。
-6. 依次选择“审核”  、 **RequestResponse** 和 **AllMetrics** 。 然后设置诊断日志数据的保留期。 如果将保留策略设置为零，则会无限期存储该日志类别的事件。
+5. 出现配置提示时，请选择你要用来存储诊断日志的存储帐户和 OMS 工作区。 **注意**：如果你没有存储帐户或 OMS 工作区，请按提示创建一个。
+6. 依次选择“审核”  、**RequestResponse** 和 **AllMetrics**。 然后设置诊断日志数据的保留期。 如果将保留策略设置为零，则会无限期存储该日志类别的事件。
 7. 单击“保存”  。
 
 最长可能需要在两个小时之后，日志数据才可供查询和分析。 因此，如果当前未显示任何内容，请不要担心。
@@ -113,9 +113,9 @@ by bin(TimeGenerated, 10s), OperationName
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要了解如何启用日志记录，以及各种 Azure 服务支持的指标和日志类别，请参阅 Azure 诊断日志 Microsoft Azure 的 [指标概述](../azure-monitor/platform/data-platform.md) 和 [azure 诊断日志文章概述](../azure-monitor/platform/platform-logs-overview.md) 。
+* 若要了解如何启用日志记录，以及各种 Azure 服务支持的指标和日志类别，请参阅 Azure 诊断日志 Microsoft Azure 的 [指标概述](../azure-monitor/data-platform.md) 和 [azure 诊断日志文章概述](../azure-monitor/essentials/platform-logs-overview.md) 。
 * 阅读以下文章，了解事件中心：
   * [什么是 Azure 事件中心？](../event-hubs/event-hubs-about.md)
   * [事件中心入门](../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)
 * 参阅[从 Azure 存储下载指标和诊断日志](../storage/blobs/storage-quickstart-blobs-dotnet.md#download-blobs)。
-* 阅读[了解 Azure Monitor 日志中的日志搜索](../azure-monitor/log-query/log-query-overview.md)。
+* 阅读[了解 Azure Monitor 日志中的日志搜索](../azure-monitor/logs/log-query-overview.md)。

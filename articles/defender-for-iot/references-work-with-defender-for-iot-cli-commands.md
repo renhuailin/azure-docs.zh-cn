@@ -7,31 +7,35 @@ ms.author: shhazam
 ms.date: 12/12/2020
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: 2ec682bf76e35b54f58acc1956972c57128edd75
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 93efc89722d3152d92b6f8c8038deaa566741f7c
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100523135"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100636554"
 ---
 # <a name="work-with-defender-for-iot-cli-commands"></a>使用 Defender for IoT CLI 命令
 
-本文介绍适用于传感器和本地管理控制台的 CLI 命令。 管理员、cyberx 用户和支持用户可以访问这些命令。
+本文介绍适用于传感器和本地管理控制台的 CLI 命令。 以下用户可以访问这些命令：
 
-在规划维护活动或不需要警报的活动时，定义排除规则。
+- 管理员
+- CyberX 
+- 支持
+
+若要在 CLI 中开始工作，请使用终端进行连接。 例如，终端名称 `Putty` 和 `Support` 用户。 
 
 ## <a name="create-local-alert-exclusion-rules"></a>创建本地警报排除规则
 
-可以通过在 CLI 中输入以下命令来创建排除规则：
+可以通过在 CLI 中输入以下命令来创建本地警报排除规则：
 
 ```azurecli-interactive
 alerts exclusion-rule-create [-h] -n NAME [-ts TIMES] [-dir DIRECTION]  
 [-dev DEVICES] [-a ALERTS]
 ```
 
-可以在警报排除规则中定义的属性如下所示：
+以下属性可用于警报排除规则：
 
-| 特性 | 说明 |
+| Attribute | 说明 |
 |--|--|
 | [-h] | 打印命令的帮助信息。 |
 | -n 名称 | 正在创建的规则的名称。 |
@@ -42,18 +46,18 @@ alerts exclusion-rule-create [-h] -n NAME [-ts TIMES] [-dir DIRECTION]
 
 ## <a name="append-local-alert-exclusion-rules"></a>追加本地警报排除规则
 
-可以通过在 CLI 中输入以下命令，将新规则添加到当前警报排除规则：
+可以通过在 CLI 中输入以下命令，附加本地警报排除规则：
 
 ```azurecli-interactive
 alerts exclusion-rule-append [-h] -n NAME [-ts TIMES] [-dir DIRECTION]  
 [-dev DEVICES] [-a ALERTS]
 ```
 
-此处使用的属性类似于创建本地警报排除规则时所述的属性。 在此处的用法中，特性应用于现有规则。
+此处使用的属性与 "创建本地警报排除规则" 一节中所述的属性相同。 使用情况之间的区别在于，这里的属性应用于现有规则。
 
 ## <a name="show-local-alert-exclusion-rules"></a>显示本地警报排除规则
 
-输入以下命令以查看所有现有的排除规则：
+输入以下命令以显示排除规则的现有列表：
 
 ```azurecli-interactive
 alerts exclusion-rule-list [-h] -n NAME [-ts TIMES] [-dir DIRECTION]  
@@ -69,19 +73,19 @@ alerts exclusion-rule-remove [-h] -n NAME [-ts TIMES] [-dir DIRECTION]
 [-dev DEVICES] [-a ALERTS]
 ```
 
-可以将以下属性与警报排除规则结合使用：
+以下属性可用于警报排除规则：
 
-| 特性 | 说明|
+| Attribute | 说明|
 | --------- | ---------------------------------- |
 | -n 名称 | 要删除的规则的名称。 |
 
 ## <a name="sync-time-from-the-ntp-server"></a>来自 NTP 服务器的同步时间
 
-可以启用和禁用来自 NTP 服务器的时间同步。
+可以启用或禁用从指定 NTP 服务器进行的时间同步。
 
 ### <a name="enable-ntp-sync"></a>启用 NTP 同步
 
-输入以下命令将允许从指定的 NTP 服务器定期检索当前时间：
+输入以下命令以定期检索指定 NTP 服务器的时间：
 
 ```azurecli-interactive
 ntp enable IP
@@ -91,7 +95,7 @@ ntp enable IP
 
 ### <a name="disable-ntp-sync"></a>禁用 NTP 同步
 
-输入以下命令将禁用与指定 NTP 服务器的时间同步：
+输入以下命令以禁用与指定 NTP 服务器的时间同步：
 
 ```azurecli-interactive
 ntp disable IP
@@ -99,15 +103,15 @@ ntp disable IP
 
 可以在命令中定义的属性是 NTP 服务器的 IP 地址。
 
-## <a name="configure-the-network"></a>配置网络
+## <a name="network-configuration"></a>网络配置
 
 下表描述了可用于配置用于 IoT 的 Azure Defender 网络选项的命令：
 
 |名称|命令|说明|
 |-----------|-------|-----------|
-|Ping|`ping IP `| Ping 用于 IoT 平台的 Defender。|
-|Blink|`network blink`|允许更改网络配置参数。|
-|重新配置网络 |`network edit-settings`| 允许更改网络配置参数。 |
+|Ping|`ping IP`| 对 IoT 平台的 Defender 以外的地址执行 Ping 操作。|
+|Blink|`network blink`| 通过使接口灯闪烁来查找连接。 |
+|重新配置网络 |`network edit-settings`| 启用网络配置参数更改。 |
 |显示网络设置 |`network list`|显示网络适配器参数。 |
 |验证网络配置 |`network validate` |显示输出网络设置。 <br /> <br />例如： <br /> <br />当前网络设置： <br /> 接口： eth0 <br /> ip：10.100.100。1 <br />子网：255.255.255。0 <br />默认网关：10.100.100.254 <br />dns：10.100.100.254 <br />监视接口： eth1|
 |导入证书 |`certificate import FILE` |导入 HTTPS 证书。 需要指定完整路径，该路径将导致为 \* crt 文件。 |
@@ -115,7 +119,7 @@ ntp disable IP
 
 ## <a name="filter-network-configurations"></a>筛选网络配置
 
-`network capture-filter`命令允许管理员消除无需分析的网络流量。 使用包含列表或排除列表来筛选流量。
+`network capture-filter`命令允许管理员消除无需分析的网络流量。 可以使用包含列表或排除列表来筛选流量。
 
 ```azurecli-interactive
 network capture-filter
@@ -125,9 +129,9 @@ network capture-filter
 
 >`Would you like to supply devices and subnet masks you wish to include in the capture filter? [Y/N]:`
 
-选择此项 `Y` 可打开 nano 文件，在其中可以根据以下语法添加设备、通道、端口和子集：
+选择此项 `Y` 可打开 nano 文件，在其中可以根据以下语法添加设备、频道、端口和子集：
 
-| 特性 | 说明 |
+| Attribute | 说明 |
 |--|--|
 | 1.1.1.1 | 包含此设备的所有流量。 |
 | 1.1.1.1、2.2.2。2 | 包括此通道的所有流量。 |
@@ -137,13 +141,13 @@ network capture-filter
 
 如果包括设备、通道或子网，则传感器会处理该参数的所有有效流量，包括通常不处理的端口和流量。
 
-然后，系统会要求你执行以下操作：
+然后，系统会询问以下问题：
 
 >`Would you like to supply devices and subnet masks you wish to exclude from the capture filter? [Y/N]:`
 
 选择此项 `Y` 可打开 nano 文件，在其中可以根据以下语法添加设备、通道、端口和子集：
 
-| 特性 | 说明 |
+| Attribute | 说明 |
 |--|--|
 | 1.1.1.1 | 排除此设备的所有流量。 |
 | 1.1.1.1、2.2.2。2 | 排除此通道的所有流量，这意味着两个设备之间的所有流量。 |
@@ -173,7 +177,7 @@ network capture-filter
 
 ### <a name="components"></a>组件
 
-系统会要求你执行以下操作：
+系统会询问以下问题：
 
 >`In which component do you wish to apply this capture filter?`
 
@@ -232,7 +236,7 @@ sudo cyberx-xsense-capture-filter -p all -m all-connected
 
 ## <a name="define-client-and-server-hosts"></a>定义客户端和服务器主机
 
-如果用于 IoT 的 Defender 未自动检测客户端和服务器主机，则输入以下命令以设置客户端和服务器主机：
+如果用于 IoT 的 Defender 未自动检测客户端和服务器主机，则输入以下命令来设置客户端和服务器主机：
 
 ```azurecli-interactive
 directions [-h] [--identifier IDENTIFIER] [--port PORT] [--remove] [--add]  
@@ -241,7 +245,7 @@ directions [-h] [--identifier IDENTIFIER] [--port PORT] [--remove] [--add]
 
 可以在命令中使用以下属性 `directions` ：
 
-| 特性 | 说明 |
+| Attribute | 说明 |
 |--|--|
 | [-h] | 打印命令的帮助信息。 |
 | [--标识符标识符] | 服务器标识符。 |
@@ -256,6 +260,7 @@ directions [-h] [--identifier IDENTIFIER] [--port PORT] [--remove] [--add]
 
 |名称|代码|说明|
 |----|----|-----------|
+|显示日期|`date`|以 GMT 格式返回主机上的当前日期。|
 |重新启动主机|`system reboot`|重新启动主机设备。|
 |关闭主机|`system shutdown`|关闭主机。|
 |备份系统|`system backup`| (未计划的备份) 启动立即备份。|
@@ -290,6 +295,6 @@ cyberx-xsense-certificate-import
 
 - 确认设备域 (与你的 DNS 服务器的证书) 和相应的 IP 地址显示在一起。 
     
-## <a name="next-steps"></a>后续步骤
+## <a name="see-also"></a>另请参阅
 
 [用于 IoT API 传感器和管理控制台 Api 的 Defender](references-work-with-defender-for-iot-apis.md)

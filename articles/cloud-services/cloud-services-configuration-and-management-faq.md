@@ -8,14 +8,14 @@ ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: c5dd09292897d69f90606e8661b4e6cb28090612
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 04a30a2446061df75d133bdbd088b7e71c59cade
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98742584"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100578221"
 ---
-# <a name="configuration-and-management-issues-for-azure-cloud-services-classic-frequently-asked-questions-faqs"></a> (经典) 的 Azure 云服务的配置和管理问题：常见问题解答 (常见问题) 
+# <a name="configuration-and-management-issues-for-azure-cloud-services-classic-frequently-asked-questions-faqs"></a>Azure 云服务（经典）的配置和管理问题：常见问题 (FAQ)
 
 > [!IMPORTANT]
 > [Azure 云服务 (扩展支持) ](../cloud-services-extended-support/overview.md) 是适用于 Azure 云服务产品的新的基于 azure 资源管理器的部署模型。进行此更改后，基于 Azure Service Manager 的部署模型运行的 Azure 云服务已重命名为云服务 (经典) ，所有新部署应使用 [云服务 (扩展支持) ](../cloud-services-extended-support/overview.md)。
@@ -58,7 +58,7 @@ ms.locfileid: "98742584"
 
 **常规**
 
-- [如何实现添加 `nosniff` 到我的网站？](#how-do-i-add-nosniff-to-my-website)
+- [如何将 `nosniff` 添加到网站？](#how-do-i-add-nosniff-to-my-website)
 - [如何为 Web 角色自定义 IIS？](#how-do-i-customize-iis-for-a-web-role)
 - [什么是云服务配额限制？](#what-is-the-quota-limit-for-my-cloud-service)
 - [云服务 VM 上的驱动器为何显示可用磁盘空间不足？](#why-does-the-drive-on-my-cloud-service-vm-show-very-little-free-disk-space)
@@ -144,7 +144,7 @@ Export-PfxCertificate -Cert $cert -FilePath ".\my-cert-file.pfx" -Password $pass
 2. [通过 .NET 代码启用](./cloud-services-dotnet-diagnostics.md)
 3. [通过 PowerShell 启用](./cloud-services-diagnostics-powershell.md)
 
-若要获取云服务的当前 WAD 设置，可以使用 [AzureServiceDiagnosticsExtensions](./cloud-services-diagnostics-powershell.md#get-current-diagnostics-extension-configuration) PowerShell cmd，也可以通过门户中的 "云服务-> 扩展" 边栏选项卡查看。
+若要获取云服务的当前 WAD 设置，可以使用 [Get-AzureServiceDiagnosticsExtensions](./cloud-services-diagnostics-powershell.md#get-current-diagnostics-extension-configuration) PowerShell cmd，也可以通过门户从“云服务 - > 扩展”边栏选项卡查看它。
 
 
 ## <a name="network-configuration"></a>网络配置
@@ -240,9 +240,9 @@ Azure 订阅对可以使用的内核数存在限制。 如果已使用所有可�
 
 若要解决此问题，可以使用 Application Insights。 自动缩放支持将 Application Insights 作为指标源，可以基于“内存”等来宾指标缩放角色实例计数。  必须在云服务项目包文件 (*.cspkg) 中配置 Application Insights 并对该服务启用 Azure 诊断扩展，才能实现此功能。
 
-有关如何在云服务上通过 Application Insights 利用自定义指标来配置自动缩放的更多详细信息，请参阅[在 Azure 中根据自定义指标自动缩放入门](../azure-monitor/platform/autoscale-custom-metric.md)
+有关如何在云服务上通过 Application Insights 利用自定义指标来配置自动缩放的更多详细信息，请参阅[在 Azure 中根据自定义指标自动缩放入门](../azure-monitor/autoscale/autoscale-custom-metric.md)
 
-有关如何针对云服务将 Azure 诊断与 Application Insights 集成的详细信息，请参阅[将云服务、虚拟机或 Service Fabric 诊断数据发送到 Application Insights](../azure-monitor/platform/diagnostics-extension-to-application-insights.md)
+有关如何针对云服务将 Azure 诊断与 Application Insights 集成的详细信息，请参阅[将云服务、虚拟机或 Service Fabric 诊断数据发送到 Application Insights](../azure-monitor/agents/diagnostics-extension-to-application-insights.md)
 
 有关如何为云服务启用 Application Insights 的详细信息，请参阅[适用于 Azure 云服务的 Application Insights](../azure-monitor/app/cloudservices.md)
 
@@ -250,7 +250,7 @@ Azure 订阅对可以使用的内核数存在限制。 如果已使用所有可�
 
 ## <a name="generic"></a>泛型
 
-### <a name="how-do-i-add-nosniff-to-my-website"></a>如何实现添加 `nosniff` 到我的网站？
+### <a name="how-do-i-add-nosniff-to-my-website"></a>如何将 `nosniff` 添加到网站？
 若要防止客户端探查 MIME 类型，请在 *web.config* 文件中添加设置。
 
 ```xml
@@ -284,7 +284,7 @@ Azure 订阅对可以使用的内核数存在限制。 如果已使用所有可�
 
 不支持写入 %approot% 驱动器。 如果要写入 Azure VM，必须在临时 LocalStorage 资源中执行此操作（或使用其他选项，例如 Blob 存储、Azure 文件，等等）。 因此，%approot% 文件夹的可用空间量没有意义。 如果不确定应用程序是否写入 %approot% 驱动器，始终可以让服务运行数日，然后比较“之前”和“之后”的大小。 
 
-Azure 不会将任何数据写入 %approot% 驱动器。 从创建 VHD 并将其 `.cspkg` 装载到 AZURE VM 后，只需要将其写入到此驱动器。 
+Azure 不会将任何数据写入 %approot% 驱动器。 从 `.cspkg` 创建 VHD 并将其装载到 Azure VM 之后，就只有你的应用程序可能会写入此驱动器。 
 
 日记设置不可配置，因此无法将其禁用。
 

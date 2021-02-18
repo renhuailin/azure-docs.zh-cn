@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: 9f7a37fa2101e4a386c9c6f2338f185b3ecdc986
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: e5b42d6102737b778ea5d19cd7da3c2f64881b1b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99052611"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585922"
 ---
 # <a name="enable-change-tracking-and-inventory-from-a-runbook"></a>从 runbook“启用更改跟踪和清单”
 
@@ -28,7 +28,7 @@ ms.locfileid: "99052611"
 
 * Azure 订阅。 如果还没有帐户，可以[激活 MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)或注册[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * 用于管理计算机的[自动化帐户](../automation-security-overview.md)。
-* [Log Analytics 工作区](../../azure-monitor/platform/design-logs-deployment.md)
+* [Log Analytics 工作区](../../azure-monitor/logs/design-logs-deployment.md)
 * [虚拟机](../../virtual-machines/windows/quick-create-portal.md)。
 * **AutomationSolution** runbook 使用的两个自动化资产。 如果自动化帐户中尚不存在此 runbook，则此 runbook 会在其首次运行期间自动导入 **enable-multiplesolution** runbook。
     * *LASolutionSubscriptionId*： Log Analytics 工作区所在位置的订阅 ID。

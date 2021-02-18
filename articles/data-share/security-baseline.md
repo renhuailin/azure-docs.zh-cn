@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 345748380479d81f1ea0df9ecf327200482a6cd7
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 58aabd52b8c5493671e0a76d0032a6d7c3081f40
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98937173"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100582032"
 ---
 # <a name="azure-security-baseline-for-azure-data-share"></a>Azure 数据共享的 azure 安全基线
 
@@ -34,7 +34,7 @@ ms.locfileid: "98937173"
 
 - [如何加入 Azure Sentinel](../sentinel/quickstart-onboard.md) 
 
-- [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/platform/diagnostic-settings.md) 
+- [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/essentials/diagnostic-settings.md) 
 
 - [如何开始使用 Azure Monitor 和第三方 SIEM 集成](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/) 
 
@@ -48,11 +48,11 @@ ms.locfileid: "98937173"
 
 为 Azure 数据共享启用诊断日志，尤其是 MicrosoftDataShareSentShareSnapshotsLog MicrosoftDataShareReceivedShareSnapshotsLog 的诊断日志 &amp; 。 使用这些日志可以捕获关键信息，例如同步开始时间、结束时间、状态和其他详细信息。 这些日志可能对日后调查安全事件和执行取证演练至关重要。
 
-- [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/platform/diagnostic-settings.md) 
+- [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/essentials/diagnostic-settings.md) 
 
-- [了解 Azure 中的日志记录和不同的日志类型](../azure-monitor/platform/platform-logs-overview.md)
+- [了解 Azure 中的日志记录和不同的日志类型](../azure-monitor/essentials/platform-logs-overview.md)
 
-- [如何配置 Azure 活动日志的诊断设置](../azure-monitor/platform/activity-log.md)
+- [如何配置 Azure 活动日志的诊断设置](../azure-monitor/essentials/activity-log.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -62,9 +62,9 @@ ms.locfileid: "98937173"
 
 **指南**：确保用于存储 Azure 数据共享日志的任何存储帐户或 Log Analytics 工作区都已根据组织的符合性法规设置了日志保持期。
 
-- [如何配置 Log Analytics 工作区保留期](../azure-monitor/platform/manage-cost-storage.md)
+- [如何配置 Log Analytics 工作区保留期](../azure-monitor/logs/manage-cost-storage.md)
 
-- [在 Azure 存储帐户中存储资源日志](../azure-monitor/platform/resource-logs.md#send-to-azure-storage)
+- [在 Azure 存储帐户中存储资源日志](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)
 
 **Azure 安全中心监视**：不适用
 
@@ -78,9 +78,9 @@ ms.locfileid: "98937173"
 
 - [如何加入 Azure Sentinel](../sentinel/quickstart-onboard.md) 
 
-- [Log Analytics 查询入门](../azure-monitor/log-query/log-analytics-tutorial.md) 
+- [Log Analytics 查询入门](../azure-monitor/logs/log-analytics-tutorial.md) 
 
-- [如何在 Azure Monitor 中执行自定义查询](../azure-monitor/log-query/get-started-queries.md) 
+- [如何在 Azure Monitor 中执行自定义查询](../azure-monitor/logs/get-started-queries.md) 
 
 **Azure 安全中心监视**：不适用
 
@@ -94,7 +94,7 @@ ms.locfileid: "98937173"
 
 - [如何在 Azure 安全中心管理警报](../security-center/security-center-managing-and-responding-alerts.md) 
 
-- [如何针对 Log Analytics 日志数据发出警报](../azure-monitor/learn/tutorial-response.md) 
+- [如何针对 Log Analytics 日志数据发出警报](../azure-monitor/alerts/tutorial-response.md) 
 
 **Azure 安全中心监视**：不适用
 
@@ -209,7 +209,7 @@ ms.locfileid: "98937173"
 
 **指南**：将 Azure Monitor 与 Azure 活动日志结合使用，以创建 Azure Monitor 对关键 Azure 资源进行更改时发出警报。
 
-- [如何针对 Azure 活动日志事件创建警报](../azure-monitor/platform/alerts-activity-log.md) 
+- [如何针对 Azure 活动日志事件创建警报](../azure-monitor/alerts/alerts-activity-log.md) 
 
 **Azure 安全中心监视**：是
 
@@ -278,7 +278,7 @@ ms.locfileid: "98937173"
 ### <a name="65-monitor-for-unapproved-azure-resources"></a>6.5：监视未批准的 Azure 资源
 
 **指导**：使用 Azure Policy 对可以在订阅中创建的资源类型施加限制。
-使用 Azure 资源关系图查询和发现其订阅中的资源。 确保环境中的所有 Azure 资源均已获得批准。
+使用 Azure 资源关系图查询和发现其订阅中的资源。 确保环境中存在的所有 Azure 资源已获得批准。
 
 - [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md) 
 

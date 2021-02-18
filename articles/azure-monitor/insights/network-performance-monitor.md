@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 02/20/2018
-ms.openlocfilehash: 4ae0a85c8608ff96777bc6b952554f1ccd917306
-ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
+ms.openlocfilehash: 92326ea4d3de896a67b2953fb612b79948044d08
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100530597"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573426"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Azure 中的网络性能监视器解决方案
 
@@ -76,7 +76,7 @@ NPM 可从以下任一区域托管的工作区监视世界上任何地方网络�
 
 ### <a name="install-and-configure-agents"></a>安装并配置代理 
 
-使用基本过程在 " [将 Windows 计算机连接到 Azure Monitor](../platform/agent-windows.md)" 中安装代理， [将 Linux 计算机连接到 Azure Monitor (预览) ](../../virtual-machines/extensions/oms-linux.md) 并 [将 Operations Manager 连接到 Azure Monitor](../platform/om-agents.md)。
+使用基本过程在 " [将 Windows 计算机连接到 Azure Monitor](../agents/agent-windows.md)" 中安装代理， [将 Linux 计算机连接到 Azure Monitor (预览) ](../../virtual-machines/extensions/oms-linux.md) 并 [将 Operations Manager 连接到 Azure Monitor](../agents/om-agents.md)。
 
 ### <a name="where-to-install-the-agents"></a>代理安装位置 
 
@@ -266,13 +266,13 @@ NPM 可从以下任一区域托管的工作区监视世界上任何地方网络�
 
 ## <a name="log-queries-in-azure-monitor"></a>Azure Monitor 中的日志查询
 
-通过网络性能监视器仪表板和向下钻取页面以图形方式显示的所有数据也可以在[日志查询](../log-query/log-query-overview.md)中以本地方式使用。 可对存储库中的数据执行交互式分析，并关联来自不同源的数据。 还可以创建自定义警报和视图，并将数据导出到 Excel、Power BI 或可共享的链接。 仪表板的“常见查询”  区域中有一些查询非常有用，可以基于这些查询创建自己的查询和报表。 
+通过网络性能监视器仪表板和向下钻取页面以图形方式显示的所有数据也可以在[日志查询](../logs/log-query-overview.md)中以本地方式使用。 可对存储库中的数据执行交互式分析，并关联来自不同源的数据。 还可以创建自定义警报和视图，并将数据导出到 Excel、Power BI 或可共享的链接。 仪表板的“常见查询”  区域中有一些查询非常有用，可以基于这些查询创建自己的查询和报表。 
 
 ## <a name="alerts"></a>警报
 
-网络性能监视器使用 [Azure Monitor](../platform/alerts-overview.md) 的警报功能。
+网络性能监视器使用 [Azure Monitor](../alerts/alerts-overview.md) 的警报功能。
 
-这意味着使用[操作组](../platform/action-groups.md)管理所有通知。  
+这意味着使用[操作组](../alerts/action-groups.md)管理所有通知。  
 
 如果你是通过 Log Analytics 创建警报的 NPM 用户： 
 1. 你将看到一个链接，该链接可将你重定向到 Azure 门户。 单击该链接以访问门户。
@@ -282,8 +282,8 @@ NPM 可从以下任一区域托管的工作区监视世界上任何地方网络�
 
 如果你是通过 Azure 门户创建警报的 NPM 用户：  
 1. 可以选择直接输入电子邮件，也可以选择通过操作组创建警报。
-2. 如果选择直接输入电子邮件，则会创建一个名为 " **NPM Email 操作组** " 的操作组，并将电子邮件 ID 添加到该操作组。
-3. 如果选择使用操作组，则需要选择一个以前创建的操作组。 可以在[此处](../platform/action-groups.md#create-an-action-group-by-using-the-azure-portal)了解如何创建操作组。 
+2. 如果选择直接输入电子邮件，则将创建名为 **NPM Email ActionGroup** 的操作组，并将电子邮件 ID 添加到该操作组。
+3. 如果选择使用操作组，则需要选择一个以前创建的操作组。 可以在[此处](../alerts/action-groups.md#create-an-action-group-by-using-the-azure-portal)了解如何创建操作组。 
 4. 成功创建警报后，可以使用“管理警报”链接来管理警报。 
 
 每次创建警报时，NPM 会在 Azure Monitor 中创建基于查询的日志警报规则。 默认情况下，每隔 5 分钟就会触发此查询。 Azure Monitor 不会对创建的前 250 条日志警报规则收取费用，超过 250 条日志警报规则限制的任何警报规则都将按照 [Azure Monitor 定价页中的警报定价](https://azure.microsoft.com/pricing/details/monitor/)计费。

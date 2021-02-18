@@ -12,12 +12,12 @@ author: urosmil
 ms.author: urmilano
 ms.reviewer: sstein, bonova, MashaMSFT
 ms.date: 09/03/2020
-ms.openlocfilehash: 0f76d2079b7ed5aacbf835540ea92febd034e2d0
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 6cdd3137798e221974dadda78dd55b6ae944bc78
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92782444"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589336"
 ---
 # <a name="monitoring-azure-sql-managed-instance-management-operations"></a>监视 Azure SQL 托管实例管理操作
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -37,7 +37,7 @@ Azure SQL 托管实例提供对[管理操作](management-operations-overview.md)
 可以通过多种方式来监视托管实例管理操作：
 
 - [资源组部署](../../azure-resource-manager/templates/deployment-history.md)
-- [活动日志](../../azure-monitor/platform/activity-log.md)
+- [活动日志](../../azure-monitor/essentials/activity-log.md)
 - [托管实例操作 API](#managed-instance-operations-api)
 
 

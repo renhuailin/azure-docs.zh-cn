@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 552cac01cd492229a19bdbc297665eb7d3ccb401
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: b52b51133f059f028baf470515e886d17077af6a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96751285"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593937"
 ---
 # <a name="configure-startstop-vms-during-off-hours"></a>配置“在空闲时间启动/停止 VM”
 
@@ -145,7 +145,7 @@ ms.locfileid: "96751285"
 
     :::image type="content" source="media/automation-solution-vm-management/change-email.png" alt-text="显示示例电子邮件地址已更新的电子邮件/短信/推送/语音页的屏幕截图。":::
 
-    也可以向操作组添加其他操作，若要了解有关操作组的详细信息，请参阅[操作组](../azure-monitor/platform/action-groups.md)
+    也可以向操作组添加其他操作，若要了解有关操作组的详细信息，请参阅[操作组](../azure-monitor/alerts/action-groups.md)
 
 以下是该功能关闭虚拟机时发送的示例电子邮件。
 

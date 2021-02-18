@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/23/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 4388c1a43cf958133356ed9d1ac80aec3ba0ce16
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: 75882701984dfff3005aa3661274a8dc94b22a28
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100093635"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596343"
 ---
 # <a name="create--use-software-environments-in-azure-machine-learning"></a>在 Azure 机器学习中创建和使用软件环境
 
@@ -132,7 +132,7 @@ myenv.docker.base_image_registry="your_registry_location"
 
 还可以指定自定义 Dockerfile。 最简单的方法是使用 Docker ```FROM``` 命令从某个 Azure 机器学习基础映像开始，然后添加自己的自定义步骤。 如果需要安装非 Python 包作为依赖项，请使用此方法。 记住将基础映像设置为“None”。
 
-请注意，Python 是 Azure 机器学习中的隐式依赖项，因此自定义 dockerfile 必须安装 Python。
+请注意，Python 是 Azure 机器学习中的隐式依赖项，因此自定义 dockerfile 必须已安装 Python。
 
 ```python
 # Specify docker steps as a string. 
@@ -205,7 +205,8 @@ myenv = Environment.from_existing_conda_environment(name="myenv",
 环境定义可以通过 [`save_to_directory()`](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py#&preserve-view=truesave-to-directory-path--overwrite-false-) 方法以易于编辑的格式保存到目录。 进行修改后，可以通过从目录加载文件来实例化新的环境。
 
 ```python
-myenv = Environment.save_to_directory(path="path-to-destination-directory", overwrite=False)
+# save the enviroment
+myenv.save_to_directory(path="path-to-destination-directory", overwrite=False)
 # modify the environment definition
 newenv = Environment.load_from_directory(path="path-to-source-directory")
 ```

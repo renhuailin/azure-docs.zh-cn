@@ -1,28 +1,28 @@
 ---
 title: 监视 Azure Cosmos DB 数据引用 |Microsoft Docs
-description: 监视 Azure Cosmos DB 中的日志和指标时所需的重要参考资料。
+description: 监视 Azure Cosmos DB 中的日志和指标时需要的重要参考资料。
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 12/07/2020
 ms.author: sngun
 ms.custom: subject-monitoring
-ms.openlocfilehash: 04103de47e82764f7ec4effa84a9b2b7b90b9363
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: 5f542b35110a6d967640ad91faead75f6cc0e0c2
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98034622"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593287"
 ---
-# <a name="monitoring-azure-cosmos-db-data-reference"></a>监视 Azure Cosmos DB 数据引用
+# <a name="monitoring-azure-cosmos-db-data-reference"></a>监视 Azure Cosmos DB 数据参考
 
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
-本文提供了对所收集日志和指标数据的引用，用于分析 Azure Cosmos DB 的性能和可用性。 有关收集和分析 Azure Cosmos DB 的监视数据的详细信息，请参阅 [Monitor Azure Cosmos DB](monitor-cosmos-db.md) 一文。
+本文提供了对所收集日志和指标数据的引用，用于分析 Azure Cosmos DB 的性能和可用性。 请参阅[监视 Azure Cosmos DB](monitor-cosmos-db.md) 一文，详细了解如何收集和分析 Azure Cosmos DB 的监视数据。
 
 ## <a name="metrics"></a>指标
 
-与 Azure Cosmos DB 相对应的所有指标存储在命名空间 **Cosmos DB 标准指标** 中。 有关所有 Azure Monitor 支持指标（包括 Azure Cosmos DB）的列表，请参阅 [Azure Monitor 受支持指标](../azure-monitor/platform/metrics-supported.md)。 此部分列出了为 Azure Cosmos DB 收集的所有自动收集的平台指标。  
+与 Azure Cosmos DB 对应的所有指标都存储在命名空间“Cosmos DB 标准指标”中。 有关所有 Azure Monitor 支持指标（包括 Azure Cosmos DB）的列表，请参阅 [Azure Monitor 受支持指标](../azure-monitor/essentials/metrics-supported.md)。 本部分列出了为 Azure Cosmos DB 自动收集的所有平台指标。  
 
 ### <a name="request-metrics"></a>请求指标
 
@@ -71,7 +71,7 @@ ms.locfileid: "98034622"
 | CassandraRequestCharges（Cassandra 请求费用） | Count（合计、最小值、最大值、平均值） | Cassandra API 已消耗的请求单位数 | DatabaseName、CollectionName、Region、OperationType、ResourceType| 全部| 用于监视 Cassandra API 帐户每分钟使用的 RU。|
 | CassandraConnectionClosures（Cassandra 连接关闭次数） |Count（计数） |关闭的 Cassandra 连接数| ClosureReason、Region| 全部 | 用于监视客户端与 Azure Cosmos DB Cassandra API 之间的连接。|
 
-有关详细信息，请参阅 [Azure Monitor 中支持的所有平台指标](../azure-monitor/platform/metrics-supported.md)的列表。
+有关详细信息，请参阅 [Azure Monitor 支持的所有平台指标的列表](../azure-monitor/essentials/metrics-supported.md)。
 
 ## <a name="resource-logs"></a>资源日志
 
@@ -81,7 +81,7 @@ ms.locfileid: "98034622"
 | --- | --- | --- |
 | **time** | **TimeGenerated** | 操作发生时的日期和时间 (UTC)。 |
 | **resourceId** | **资源** | 为其启用日志的 Azure Cosmos DB 帐户。|
-| **category** | **类别** | 对于 Azure Cosmos DB、 **DataPlaneRequests**、 **MongoRequests**、 **QueryRuntimeStatistics**、 **PartitionKeyStatistics**、 **PartitionKeyRUConsumption**、 **ControlPlaneRequests**、 **CassandraRequests**、 **GremlinRequests** 是可用的日志类型。 |
+| **category** | **类别** |        对于 Azure Cosmos DB，DataPlaneRequests、MongoRequests、QueryRuntimeStatistics、PartitionKeyStatistics、PartitionKeyRUConsumption、ControlPlaneRequests、CassandraRequests、GremlinRequests 是可用的日志类型。 |
 | **operationName** | **OperationName** | 操作的名称。 操作名称可以是 `Create`、`Update`、`Read`、`ReadFeed`、`Delete`、`Replace`、`Execute`、`SqlQuery`、`Query`、`JSQuery`、`Head`、`HeadFeed` 或 `Upsert`。   |
 | **properties** | 不适用 | 下面的行中描述了此字段的内容。 |
 | **activityId** | **activityId_g** | 日志记录操作的唯一 GUID。 |
@@ -100,7 +100,7 @@ ms.locfileid: "98034622"
 | **resourceTokenUserRid** | **resourceTokenUserRid_s** | 将[资源令牌](./secure-access-to-data.md#resource-tokens)用于身份验证时，此值非空。 值指向用户的资源 ID。 |
 | **responseLength** | **responseLength_s** | 响应的长度（按字节计）。|
 
-如需所有 Azure Monitor 日志类别的列表和指向关联架构的链接，请参阅 [Azure Monitor 日志类别和架构](../azure-monitor/platform/resource-logs-schema.md)。 
+如需所有 Azure Monitor 日志类别的列表和指向关联架构的链接，请参阅 [Azure Monitor 日志类别和架构](../azure-monitor/essentials/resource-logs-schema.md)。 
 
 ## <a name="azure-monitor-logs-tables"></a>Azure Monitor 日志表
 
@@ -109,4 +109,4 @@ Azure Cosmos DB 使用 Azure Monitor 日志中的 Kusto 表。 可以通过 Log 
 ## <a name="see-also"></a>另请参阅
 
 - 有关如何监视 Azure Cosmos DB 的说明，请参阅[监视 Azure Cosmos DB](monitor-cosmos-db.md)。
-- 有关监视 Azure 资源的详细信息，请参阅[通过 Azure Monitor 监视 Azure 资源](../azure-monitor/insights/monitor-azure-resource.md)。
+- 有关监视 Azure 资源的详细信息，请参阅[通过 Azure Monitor 监视 Azure 资源](../azure-monitor/essentials/monitor-azure-resource.md)。

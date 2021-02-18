@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 4cf623ed960fd2efe6fdf506751858796008cef4
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 8e86679e7531bb70d6d4f1a27718c2fc8f0e8a9c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202022"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100578541"
 ---
 # <a name="azure-security-baseline-for-azure-kubernetes-service"></a>适用于 Azure Kubernetes 服务的 Azure 安全基线
 
@@ -196,9 +196,9 @@ Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更�
 
 使用 Azure Monitor 日志从 AKS 主组件、kube-apiserver 和 kube-controller-manager 启用和查询日志。 使用容器运行时创建和管理运行 kubelet 的节点，并通过托管 Kubernetes API 服务器部署其应用程序。 
 
-- [如何查看和检索 Azure 活动日志事件](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [如何查看和检索 Azure 活动日志事件](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [如何在 Azure Monitor 中创建警报](../azure-monitor/platform/alerts-activity-log.md)
+- [如何在 Azure Monitor 中创建警报](../azure-monitor/alerts/alerts-activity-log.md)
 
 - [启用和查看 Azure Kubernetes 服务 (AKS) 中 Kubernetes 主节点的日志](view-master-logs.md)
 
@@ -240,9 +240,9 @@ Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更�
 
 - [在此处查看包括日志角色的日志架构](view-master-logs.md)
 
-- [了解用于容器的 Azure Monitor](../azure-monitor/insights/container-insights-overview.md)
+- [了解用于容器的 Azure Monitor](../azure-monitor/containers/container-insights-overview.md)
 
-- [如何为容器启用 Azure Monitor](../azure-monitor/insights/container-insights-onboard.md)
+- [如何为容器启用 Azure Monitor](../azure-monitor/containers/container-insights-onboard.md)
 
 - [启用和查看 Azure Kubernetes 服务 (AKS) 中 Kubernetes 主节点的日志](view-master-logs.md)
 
@@ -294,7 +294,7 @@ Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更�
 
 **指导**：将 Azure Kubernetes 服务 (AKS) 实例载入 Azure Monitor，并根据组织的合规性要求设置相应的 Azure Log Analytics 工作区保持期。 
 
-- [如何为 Log Analytics 工作区设置日志保留参数](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [如何为 Log Analytics 工作区设置日志保留参数](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure 安全中心监视**：不适用
 
@@ -312,7 +312,7 @@ Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更�
 
 - [如何加入 Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-- [如何在 Azure Monitor 中执行自定义查询](../azure-monitor/log-query/get-started-queries.md)
+- [如何在 Azure Monitor 中执行自定义查询](../azure-monitor/logs/get-started-queries.md)
 
 **Azure 安全中心监视**：是
 
@@ -422,7 +422,7 @@ Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更�
 
 **指导**：对 AKS 群集使用带有 Azure Active Directory (Azure AD) 集成身份验证的 Azure Kubernetes 服务 (AKS) 的单一登录。
 
-- [如何实时查看 Kubernetes 日志、事件和 Pod 指标](../azure-monitor/insights/container-insights-livedata-overview.md)
+- [如何实时查看 Kubernetes 日志、事件和 Pod 指标](../azure-monitor/containers/container-insights-livedata-overview.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -489,7 +489,7 @@ Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更�
 
 - [如何将 Azure AD 与 AKS 集成](./azure-ad-integration-cli.md) 
 
-- [集成 AKS 托管 Azure AD](managed-aad.md)
+- [集成 AKS 管理的 Azure AD](managed-aad.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -518,7 +518,7 @@ Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更�
 **指导**：将 Azure Kubernetes 服务 (AKS) 的用户身份验证与 Azure Active Directory (Azure AD) 集成。 为 Azure AD 创建诊断设置，将审核和登录日志发送到 Azure Log Analytics 工作区。 在 Azure log Analytics 工作区中配置所需的警报（例如，当停用的帐户尝试登录时）。
 - [如何将 Azure 活动日志集成到 Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
-- [如何使用 Azure Monitor 创建、查看和管理日志警报](../azure-monitor/platform/alerts-log.md)
+- [如何使用 Azure Monitor 创建、查看和管理日志警报](../azure-monitor/alerts/alerts-log.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -673,11 +673,11 @@ Microsoft 管理底层平台，并将所有客户内容视为敏感内容，并�
 
 使用 Azure 活动日志在较高级别上监视 AKS 群集和相关资源。 与 Prometheus 集成，以使用查询查看从节点和 Kubernetes 收集的应用程序和工作负荷指标，以创建自定义警报、仪表板和详细的执行详细分析。
 
-- [了解用于容器的 Azure Monitor](../azure-monitor/insights/container-insights-overview.md)
+- [了解用于容器的 Azure Monitor](../azure-monitor/containers/container-insights-overview.md)
 
-- [如何为容器启用 Azure Monitor](../azure-monitor/insights/container-insights-onboard.md)
+- [如何为容器启用 Azure Monitor](../azure-monitor/containers/container-insights-onboard.md)
 
-- [如何查看和检索 Azure 活动日志事件](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [如何查看和检索 Azure 活动日志事件](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
 **Azure 安全中心监视**：是
 
@@ -1185,7 +1185,7 @@ security-hardened-vm-host-image.md
 
 ### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8.2：预先扫描要上传到非计算 Azure 资源的文件
 
-**指南**：预扫描正在上传到 AKS 资源的任何文件。 如果使用 Azure 存储帐户作为数据存储或跟踪 AKS 群集的 Terraform 状态，请使用安全中心的数据服务威胁检测来检测已上传到存储帐户的恶意软件。 
+**指导**：预先扫描要上传到 AKS 资源的任何文件。 如果使用 Azure 存储帐户作为数据存储或跟踪 AKS 群集的 Terraform 状态，请使用安全中心的数据服务威胁检测来检测已上传到存储帐户的恶意软件。 
 
 - [了解 Azure 安全中心的数据服务威胁检测](../security-center/azure-defender.md)
 

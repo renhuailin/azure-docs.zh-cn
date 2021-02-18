@@ -3,12 +3,12 @@ title: 通过 Azure 安全中心集成保护 Azure VMware 解决方案 Vm
 description: 通过 azure 安全中心仪表板中的 Azure 本机安全工具保护 Azure VMware 解决方案 Vm。
 ms.topic: how-to
 ms.date: 02/12/2021
-ms.openlocfilehash: b37d09d6e8f239586a18c0fa3b1dcd7bfee98102
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: 7292ea4486a61f5b0cfd8f656d2763a3ce655e79
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100516356"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100578252"
 ---
 # <a name="protect-your-azure-vmware-solution-vms-with-azure-security-center-integration"></a>通过 Azure 安全中心集成保护 Azure VMware 解决方案 Vm
 
@@ -50,7 +50,7 @@ Log Analytics 工作区收集日志后，可以使用 Azure 安全中心配置 L
 
 ## <a name="create-a-log-analytics-workspace"></a>创建 Log Analytics 工作区
 
-需要 Log Analytics 工作区来收集来自各种源的数据。 有关详细信息，请参阅 [从 Azure 门户创建 Log Analytics 工作区](../azure-monitor/learn/quick-create-workspace.md)。 
+需要 Log Analytics 工作区来收集来自各种源的数据。 有关详细信息，请参阅 [从 Azure 门户创建 Log Analytics 工作区](../azure-monitor/logs/quick-create-workspace.md)。 
 
 ## <a name="deploy-security-center-and-configure-azure-vmware-solution-vms"></a>部署安全中心并配置 Azure VMware 解决方案 Vm
 
@@ -160,7 +160,7 @@ Azure Sentinel 构建在 Log Analytics 工作区之上。 加入 Azure Sentinel 
 4. 在 " **常规** " 选项卡上，输入所需信息。
 
     - 名称
-    - 描述
+    - 说明
     - 策略
     - 严重性
     - 状态
@@ -231,7 +231,7 @@ Azure Sentinel 构建在 Log Analytics 工作区之上。 加入 Azure Sentinel 
 2. 填写以下信息以创建自定义查询。
 
     - 名称
-    - 描述
+    - 说明
     - 自定义查询
     - 输入映射
     - 策略
@@ -243,5 +243,5 @@ Azure Sentinel 构建在 Log Analytics 工作区之上。 加入 Azure Sentinel 
 现在，你已介绍了如何保护 Azure VMware 解决方案 Vm，你可能想要了解：
 
 - 使用 [Azure Defender 仪表板](../security-center/azure-defender-dashboard.md)。
-- [Azure Sentinel 中的高级多阶段攻击检测](../azure-monitor/learn/quick-create-workspace.md)。
+- [Azure Sentinel 中的高级多阶段攻击检测](../azure-monitor/logs/quick-create-workspace.md)。
 - [Azure VMware 解决方案 vm 的生命周期管理](lifecycle-management-of-azure-vmware-solution-vms.md)。

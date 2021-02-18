@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: d2b77708609f61eeb4ce33148f020027d646836b
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: 30cb023b8ca78f252dbf087a604a61b8aa5c6659
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97813592"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577387"
 ---
 # <a name="communication-services-notifications"></a>通信服务通知
 
@@ -91,7 +91,7 @@ armclient POST /subscriptions/<sub_id>/resourceGroups/<resource_group>/providers
 
 下面介绍了可能删除通知的第一个位置（Azure 通知中心未接受来自 Azure 通信服务的通知）。 对于其他两个位置，请参阅[在 Azure 通知中心诊断已删除的通知](../../notification-hubs/notification-hubs-push-notification-fixer.md)。
 
-若要查看通信服务资源是否将通知发送到 Azure 通知中心，一种方法是查看链接的 [Azure 通知中心指标](../../azure-monitor/platform/metrics-supported.md#microsoftnotificationhubsnamespacesnotificationhubs)中的 `incoming messages` 指标。
+若要查看通信服务资源是否将通知发送到 Azure 通知中心，一种方法是查看链接的 [Azure 通知中心指标](../../azure-monitor/essentials/metrics-supported.md#microsoftnotificationhubsnamespacesnotificationhubs)中的 `incoming messages` 指标。
 
 下面是一些常见的错误配置，它们可能是 Azure 通知中心不接受来自通信服务资源的通知的原因。
 

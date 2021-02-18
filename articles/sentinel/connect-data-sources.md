@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: c3bb05af3e0a24ebb10dc98b9174cfb235ddda13
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: aeb92dce41c12ada41175964835d9c89a634a6e3
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99555931"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590269"
 ---
 # <a name="connect-data-sources"></a>连接数据源
 
@@ -66,7 +66,7 @@ Azure Sentinel 支持以下数据连接方法：
 
 - **通过 API 连接外部解决方案**：可以使用联网数据源提供的 API 连接某些数据源。 一般情况下，大多数安全技术都会提供一组 API，通过这些 API 可以检索事件日志。这些 API 连接到 Azure Sentinel，收集特定的数据类型并将其发送到 Azure Log Analytics。 通过 API 连接的设备包括：
     
-    - [Agari 钓鱼防御和品牌保护](connect-agari-phishing-defense.md)
+    - [Agari Phishing Defense 和 Agari Brand Protection](connect-agari-phishing-defense.md)
     - [Alcide kAudit](connect-alcide-kaudit.md)
     - [Barracuda WAF](connect-barracuda.md)
     - [Barracuda CloudGen 防火墙](connect-barracuda-cloudgen-firewall.md)
@@ -117,7 +117,7 @@ Azure Sentinel 支持以下数据连接方法：
         - [Zscaler](connect-zscaler.md)
         - [其他基于 CEF 的设备](connect-common-event-format.md)
     - **防火墙、代理和终结点-Syslog：**
-        - [用于 Active Directory 的 Alsid](connect-alsid-active-directory.md)
+        - [Alsid for Active Directory](connect-alsid-active-directory.md)
         - [Cisco 统一计算系统 (UCS) ](connect-cisco-ucs.md)
         - [Infoblox NIOS](connect-infoblox.md)
         - [Juniper SRX](connect-juniper-srx.md)
@@ -151,7 +151,7 @@ Azure Sentinel 支持以下数据连接方法：
 | **Data type** | **如何连接** | **数据连接器？** | **注释** |
 |------|---------|-------------|------|
 | AWSCloudTrail | [连接 AWS](connect-aws.md) | &#10003; | |
-| AzureActivity | [连接 Azure 活动](connect-azure-activity.md)和[活动日志概述](../azure-monitor/platform/platform-logs-overview.md)| &#10003; | |
+| AzureActivity | [连接 Azure 活动](connect-azure-activity.md)和[活动日志概述](../azure-monitor/essentials/platform-logs-overview.md)| &#10003; | |
 | AuditLogs | [连接 Azure AD](connect-azure-active-directory.md)  | &#10003; | |
 | SigninLogs | [连接 Azure AD](connect-azure-active-directory.md)  | &#10003; | |
 | AzureFirewall |[Azure 诊断](../firewall/firewall-diagnostics.md) | &#10003; | |
@@ -164,9 +164,9 @@ Azure Sentinel 支持以下数据连接方法：
 | Microsoft Web 应用程序防火墙 (WAF) - (AzureDiagnostics) |[连接 Microsoft Web 应用程序防火墙](./connect-azure-waf.md) | &#10003; | |
 | SymantecICDx_CL | [连接 Symantec](connect-symantec.md) | &#10003; | |
 | ThreatIntelligenceIndicator  | [连接威胁智能](connect-threat-intelligence.md)  | &#10003; | |
-| VMConnection <br> ServiceMapComputer_CL<br> ServiceMapProcess_CL|  [Azure Monitor 服务映射](../azure-monitor/insights/service-map.md)<br>[Azure Monitor VM 见解载入](../azure-monitor/insights/vminsights-enable-overview.md) <br> [启用 Azure Monitor VM 见解](../azure-monitor/insights/vminsights-enable-overview.md) <br> [使用单一 VM 载入](../azure-monitor/insights/vminsights-enable-portal.md)<br>  [通过 Policy 使用载入](../azure-monitor/insights/vminsights-enable-policy.md)| &#10007; | VM 见解工作簿  |
+| VMConnection <br> ServiceMapComputer_CL<br> ServiceMapProcess_CL|  [Azure Monitor 服务映射](../azure-monitor/vm/service-map.md)<br>[Azure Monitor VM 见解载入](../azure-monitor/vm/vminsights-enable-overview.md) <br> [启用 Azure Monitor VM 见解](../azure-monitor/vm/vminsights-enable-overview.md) <br> [使用单一 VM 载入](../azure-monitor/vm/vminsights-enable-portal.md)<br>  [通过 Policy 使用载入](../azure-monitor/vm/vminsights-enable-policy.md)| &#10007; | VM 见解工作簿  |
 | DnsEvents | [连接 DNS](connect-dns.md) | &#10003; | |
-| W3CIISLog | [连接 IIS 日志](../azure-monitor/platform/data-sources-iis-logs.md)  | &#10007; | |
+| W3CIISLog | [连接 IIS 日志](../azure-monitor/agents/data-sources-iis-logs.md)  | &#10007; | |
 | WireData | [连接 Wire Data](../azure-monitor/insights/wire-data.md) | &#10007; | |
 | WindowsFirewall | [连接 Windows 防火墙](connect-windows-firewall.md) | &#10003; | |
 | AADIP SecurityAlert  | [连接 Azure AD 标识保护](connect-azure-ad-identity-protection.md)  | &#10003; | |
@@ -174,7 +174,7 @@ Azure Sentinel 支持以下数据连接方法：
 | ASC SecurityAlert  | 从 Azure 安全中心[连接 Azure Defender 警报](connect-azure-security-center.md)  | &#10003; | |
 | MCAS SecurityAlert  | [连接 Microsoft Cloud App Security](connect-cloud-app-security.md)  | &#10003; | |
 | SecurityAlert | | | |
-| Sysmon（事件） | [连接 Sysmon](https://azure.microsoft.com/blog/detecting-in-memory-attacks-with-sysmon-and-azure-security-center)<br> [连接 Windows 事件](../azure-monitor/platform/data-sources-windows-events.md) <br> [获取 Sysmon 分析程序](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/Sysmon/Sysmon-v10.42-Parser.txt)| &#10007; | 默认情况下，虚拟机上未安装 Sysmon 集合。 有关如何安装 Sysmon 代理的详细信息，请参阅 [Sysmon](/sysinternals/downloads/sysmon)。 |
+| Sysmon（事件） | [连接 Sysmon](https://azure.microsoft.com/blog/detecting-in-memory-attacks-with-sysmon-and-azure-security-center)<br> [连接 Windows 事件](../azure-monitor/agents/data-sources-windows-events.md) <br> [获取 Sysmon 分析程序](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/Sysmon/Sysmon-v10.42-Parser.txt)| &#10007; | 默认情况下，虚拟机上未安装 Sysmon 集合。 有关如何安装 Sysmon 代理的详细信息，请参阅 [Sysmon](/sysinternals/downloads/sysmon)。 |
 | ConfigurationData  | [自动执行 VM 清单](../automation/change-tracking/overview.md)| &#10007; | |
 | ConfigurationChange  | [自动执行 VM 跟踪](../automation/change-tracking/overview.md) | &#10007; | |
 | F5 BIG-IP | [连接 F5 BIG-IP](https://devcentral.f5.com/s/articles/Integrating-the-F5-BIGIP-with-Azure-Sentinel)  | &#10007; | |

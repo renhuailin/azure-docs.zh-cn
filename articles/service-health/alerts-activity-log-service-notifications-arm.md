@@ -4,12 +4,12 @@ description: 在 Azure 服务发生时，通过短信、电子邮件或 webhook 
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 06/29/2020
-ms.openlocfilehash: 688314a2057964c66baeacbbc49736ea436f5ec5
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 532fbae505e0bcaa6ab31a2e935362114537d134
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91630213"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594949"
 ---
 # <a name="quickstart-create-activity-log-alerts-on-service-notifications-using-an-arm-template"></a>快速入门：使用 ARM 模板创建有关服务通知的活动日志警报
 
@@ -17,7 +17,7 @@ ms.locfileid: "91630213"
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-服务运行状况通知存储在 [Azure 活动日志](../azure-monitor/platform/platform-logs-overview.md)中。 鉴于活动日志中存储的信息量可能很大，因此有一个单独的用户界面，以便更轻松地查看和设置有关服务运行状况通知的警报。
+服务运行状况通知存储在 [Azure 活动日志](../azure-monitor/essentials/platform-logs-overview.md)中。 鉴于活动日志中存储的信息量可能很大，因此有一个单独的用户界面，以便更轻松地查看和设置有关服务运行状况通知的警报。
 
 当 Azure 将服务运行状况通知发送到 Azure 订阅时，可以收到警报。 可以基于以下内容配置警报：
 
@@ -34,7 +34,7 @@ ms.locfileid: "91630213"
 - 选择现有操作组。
 - 创建新操作组（可以用于将来的警报）。
 
-若要了解有关操作组的详细信息，请参阅[创建和管理操作组](../azure-monitor/platform/action-groups.md)。
+若要了解有关操作组的详细信息，请参阅[创建和管理操作组](../azure-monitor/alerts/action-groups.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -199,7 +199,7 @@ Remove-AzResourceGroup -Name my-resource-group
 - 了解如何[为 Azure 服务运行状况设置移动推送通知](https://www.microsoft.com/en-us/videoplayer/embed/RE2OtUw)。
 - 了解如何[为现有问题管理系统配置 Webhook 通知](service-health-alert-webhook-guide.md)。
 - 了解[服务运行状况通知](service-notifications.md)。
-- 了解[通知速率限制](../azure-monitor/platform/alerts-rate-limiting.md)。
-- 查看[活动日志警报 webhook 架构](../azure-monitor/platform/activity-log-alerts-webhook.md)。
-- 获取[活动日志警报概述](../azure-monitor/platform/alerts-overview.md)，了解如何接收警报。
-- 详细了解[操作组](../azure-monitor/platform/action-groups.md)。
+- 了解[通知速率限制](../azure-monitor/alerts/alerts-rate-limiting.md)。
+- 查看[活动日志警报 webhook 架构](../azure-monitor/alerts/activity-log-alerts-webhook.md)。
+- 获取[活动日志警报概述](../azure-monitor/alerts/alerts-overview.md)，了解如何接收警报。
+- 详细了解[操作组](../azure-monitor/alerts/action-groups.md)。

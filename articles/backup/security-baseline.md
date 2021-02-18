@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 77af95f2decbfb81ed930591b03f71fb71780def
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: e71beb4e4b5d23dcd1cffa1f60462d782d37db2e
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99805241"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572181"
 ---
 # <a name="azure-security-baseline-for-backup"></a>备份的 Azure 安全基线
 
@@ -116,9 +116,9 @@ ms.locfileid: "99805241"
 
 **指导**：如果在受 NSG 或 Azure 防火墙保护的 Azure 虚拟机上使用 MARS 代理，请使用 Azure 活动日志来监视 NSG 或防火墙的配置。 可以在 Azure Monitor 中创建当这些资源发生更改时触发的警报。
 
-- [查看和检索 Azure 活动日志事件](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [查看和检索 Azure 活动日志事件](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [使用 Azure Monitor 创建、查看和管理活动日志警报](../azure-monitor/platform/alerts-activity-log.md)
+- [使用 Azure Monitor 创建、查看和管理活动日志警报](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -142,7 +142,7 @@ ms.locfileid: "99805241"
 
 此外，通过 Azure Monitor 引入日志来聚合 Azure 备份生成的安全数据。 在 Azure Monitor 中，使用 Log Analytics 工作区来查询和执行分析，并使用存储帐户进行长期/存档存储。 或者，可以启用数据并将其加入 Azure Sentinel 或第三方安全事件和事件管理 (SIEM)。
 
-- [如何启用 Azure 活动日志的诊断设置](../azure-monitor/platform/activity-log.md)
+- [如何启用 Azure 活动日志的诊断设置](../azure-monitor/essentials/activity-log.md)
 
 - [使用恢复服务保管库的诊断设置](./backup-azure-diagnostic-events.md)
 
@@ -158,7 +158,7 @@ ms.locfileid: "99805241"
 
 此外，Azure 备份还发送诊断事件，可以收集这些事件并使用它们来实现分析、警报和报告目的。 可以通过 Azure 门户配置恢复服务保管库的诊断设置。 可以将一个或多个诊断事件发送到存储帐户、事件中心或 Log Analytics 工作区。
 
-- [如何启用 Azure 活动日志的诊断设置](../azure-monitor/platform/activity-log.md)
+- [如何启用 Azure 活动日志的诊断设置](../azure-monitor/essentials/activity-log.md)
 
 - [使用恢复服务保管库的诊断设置](./backup-azure-diagnostic-events.md)
 
@@ -178,7 +178,7 @@ ms.locfileid: "99805241"
 
 **指导**：在 Azure Monitor 中，根据组织的符合性规定，为与 Azure 恢复服务保管库关联的 Log Analytics 工作区设置日志保留期。
 
-- [如何设置日志保留参数](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [如何设置日志保留参数](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure 安全中心监视**：不适用
 
@@ -192,9 +192,9 @@ ms.locfileid: "99805241"
 
 - [监视 Azure 备份工作负荷](./backup-azure-monitoring-built-in-monitor.md)
 
-- [如何启用 Azure 活动日志的诊断设置](../azure-monitor/platform/activity-log.md)
+- [如何启用 Azure 活动日志的诊断设置](../azure-monitor/essentials/activity-log.md)
 
-- [如何收集和分析 Azure Monitor 的 Log Analytics 工作区中的 Azure 活动日志](../azure-monitor/platform/activity-log.md)
+- [如何收集和分析 Azure Monitor 的 Log Analytics 工作区中的 Azure 活动日志](../azure-monitor/essentials/activity-log.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -212,7 +212,7 @@ ms.locfileid: "99805241"
 
 - [如何加入 Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-- [使用 Azure Monitor 创建、查看和管理日志警报](../azure-monitor/platform/alerts-log.md)
+- [使用 Azure Monitor 创建、查看和管理日志警报](../azure-monitor/alerts/alerts-log.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -518,7 +518,7 @@ Azure 备份提供三个用于控制备份管理操作的内置角色：备份�
 
 **指导**：将 Azure Monitor 与 Azure 活动日志结合使用，以创建当生产 Azure 恢复服务保管库以及其他关键或相关资源发生更改时触发的警报。
 
-- [如何针对 Azure 活动日志事件创建警报](../azure-monitor/platform/alerts-activity-log.md)
+- [如何针对 Azure 活动日志事件创建警报](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -632,7 +632,7 @@ Microsoft 对基础平台进行了扫描和修补。 查看 Microsoft Azure 备�
 
 **指导**：使用 Azure Policy 对可以在订阅中创建的资源类型施加限制。
 
-使用 Azure Resource Graph 查询/发现订阅中的资源。  确保环境中的所有 Azure 资源均已获得批准。
+使用 Azure Resource Graph 查询/发现订阅中的资源。  确保环境中存在的所有 Azure 资源已获得批准。
 
 - [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 

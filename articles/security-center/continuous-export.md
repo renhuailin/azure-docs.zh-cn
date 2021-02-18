@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 12/24/2020
 ms.author: memildin
-ms.openlocfilehash: 226ca943554ca24f3332f24f5a9baf571b432917
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 9b8dc635781c96dcbd7aa423c77f60ff0556bd71
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/17/2021
-ms.locfileid: "100590616"
+ms.locfileid: "100634051"
 ---
 # <a name="continuously-export-security-center-data"></a>连续导出安全中心数据
 
@@ -210,7 +210,7 @@ Azure Monitor 为各种 Azure 警报（包括诊断日志、指标警报以及�
 
 若要下载警报或建议的 CSV 报表，请打开“安全警报”或“建议”页，然后选择“下载 CSV 报表”按钮。
 
-[![将警报数据下载为 CSV 文件](media/continuous-export/download-alerts-csv.png)](media/continuous-export/download-alerts-csv.png#lightbox)
+:::image type="content" source="./media/continuous-export/download-alerts-csv.png" alt-text="将警报数据下载为 CSV 文件" lightbox="./media/continuous-export/download-alerts-csv.png":::
 
 > [!NOTE]
 > 这些报表包含当前所选订阅中的资源的警报和建议。

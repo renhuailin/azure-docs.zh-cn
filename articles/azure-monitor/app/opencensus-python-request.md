@@ -6,12 +6,12 @@ author: lzchen
 ms.author: lechen
 ms.date: 10/15/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: 4abb795335bfcb2c9b335d4fb09ddc9fdb2476b4
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.openlocfilehash: 3b029a9cb14a81c80072847dc17d6b71f480743f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2021
-ms.locfileid: "98746571"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585665"
 ---
 # <a name="track-incoming-requests-with-opencensus-python"></a>使用 OpenCensus Python 跟踪传入请求
 
@@ -177,6 +177,6 @@ OpenCensus 没有 FastAPI 的扩展。 若要编写自己的 FastAPI 中间件�
 * [应用程序映射](./app-map.md)
 * [可用性](./monitor-web-app-availability.md)
 * [搜索](./diagnostic-search.md)
-* [日志（分析）查询](../log-query/log-query-overview.md)
+* [日志（分析）查询](../logs/log-query-overview.md)
 * [事务诊断](./transaction-diagnostics.md)
 

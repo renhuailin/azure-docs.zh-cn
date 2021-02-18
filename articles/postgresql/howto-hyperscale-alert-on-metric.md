@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 3/16/2020
-ms.openlocfilehash: 73705434aef3ee438c02fbfd6502d30e7620b695
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: f5557140d77865a6d4c44316cecd512f877736e0
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95026448"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577078"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-postgresql---hyperscale-citus"></a>使用 Azure 门户设置 Azure Database for PostgreSQL 超大规模 (Citus 的指标警报) 
 
@@ -26,8 +26,8 @@ ms.locfileid: "95026448"
 * 调用 Webhook。
 
 可使用以下项配置并获取预警规则相关信息：
-* [Azure 门户](../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
-* [Azure CLI](../azure-monitor/platform/alerts-metric.md#with-azure-cli)
+* [Azure 门户](../azure-monitor/alerts/alerts-metric.md#create-with-azure-portal)
+* [Azure CLI](../azure-monitor/alerts/alerts-metric.md#with-azure-cli)
 * [Azure 监视器 REST API](/rest/api/monitor/metricalerts)
 
 ## <a name="create-an-alert-rule-on-a-metric-from-the-azure-portal"></a>通过 Azure 门户针对指标创建警报规则
@@ -109,5 +109,5 @@ ms.locfileid: "95026448"
 监视 CPU 使用率有助于建立性能基线。 例如，你可能会注意到，CPU 使用率通常约为40-60%。 如果 CPU 使用率突然开始停留在95%，则可以识别异常情况。 CPU 使用率可能反映了随机增长，但它也可能会暴露出不需要的查询。 创建 CPU 警报时，请设置一个长聚合粒度来捕获长时间的增加，并忽略暂时峰值。
 
 ## <a name="next-steps"></a>后续步骤
-* 了解[在警报中配置 Webhook](../azure-monitor/platform/alerts-webhooks.md)的详细信息。
-* 获取[指标集合概述](../azure-monitor/platform/data-platform.md)以确保服务可用且响应迅速。
+* 了解[在警报中配置 Webhook](../azure-monitor/alerts/alerts-webhooks.md)的详细信息。
+* 获取[指标集合概述](../azure-monitor/data-platform.md)以确保服务可用且响应迅速。

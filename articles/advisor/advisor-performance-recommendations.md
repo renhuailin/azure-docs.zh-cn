@@ -3,12 +3,12 @@ title: 使用顾问提高 Azure 应用的性能
 description: 使用 Azure 顾问中的性能建议可提高业务关键型应用程序的速度和响应能力。
 ms.topic: article
 ms.date: 07/29/2020
-ms.openlocfilehash: f546527011402b9ea33321d56356d8aabe2412c1
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 69fd86226375073c71903af5704ef3a635eeaffb
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98735522"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579925"
 ---
 # <a name="improve-the-performance-of-azure-applications-by-using-azure-advisor"></a>使用 Azure 顾问提高 Azure 应用程序的性能
 
@@ -88,7 +88,7 @@ Azure 顾问可检测 Azure Synapse Analytics 表是否具有较高的缓存利�
 顾问可识别使用经典部署模型的任何独立存储帐户，并建议迁移到资源管理器部署模型。
 
 > [!NOTE]
-> Azure Monitor 中的经典警报已于 2019 年 8 月停用。 建议升级经典存储帐户以使用资源管理器在新平台中保留警报功能。 有关详细信息，请参阅 [经典警报停](../azure-monitor/platform/monitoring-classic-retirement.md#retirement-of-classic-monitoring-and-alerting-platform)用。
+> Azure Monitor 中的经典警报已于 2019 年 8 月停用。 建议升级经典存储帐户以使用资源管理器在新平台中保留警报功能。 有关详细信息，请参阅 [经典警报停](../azure-monitor/alerts/monitoring-classic-retirement.md#retirement-of-classic-monitoring-and-alerting-platform)用。
 
 ## <a name="design-your-storage-accounts-to-prevent-reaching-the-maximum-subscription-limit"></a>设计存储帐户，防止达到最大订阅数限制
 
@@ -108,7 +108,7 @@ Azure 顾问可检测 Azure Synapse Analytics 表是否具有较高的缓存利�
 
 ## <a name="co-locate-the-storage-account-in-the-same-region-to-minimize-latency-when-loading"></a>将存储帐户归置到同一区域，以在加载时最大程度地减少延迟
 
-Advisor 检测是否从专用 SQL 池以外的区域加载。 考虑从与专用 SQL 池相同的区域中的存储帐户进行加载，以便在加载数据时最大程度地减少延迟。 此更改将有助于最大程度地减少延迟并提高负载性能。
+顾问会检测是否正在从专用 SQL 池以外的区域进行加载。 考虑从与专用 SQL 池位于同一区域内的存储帐户进行加载，以最大程度地减少加载数据时的延迟。 此更改将有助于最大程度地减少延迟并提高负载性能。
 
 ## <a name="use-a-supported-kubernetes-version"></a>使用受支持的 Kubernetes 版本
 

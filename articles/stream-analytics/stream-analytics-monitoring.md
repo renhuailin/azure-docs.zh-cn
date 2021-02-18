@@ -7,12 +7,12 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/21/2018
 ms.custom: seodec18
-ms.openlocfilehash: 5141c7fcfe1128574145930548f41731529c2ad8
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 484e8853d02aa68c8a8695ba7cc724adb5a8766a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98012455"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572964"
 ---
 # <a name="understand-stream-analytics-job-monitoring-and-how-to-monitor-queries"></a>了解流分析作业监视以及如何监视查询
 
@@ -48,7 +48,7 @@ Azure 门户提供了可用于监视和排查查询和作业性能问题的关�
 可以使用这些指标来[监视流分析作业的性能](./stream-analytics-set-up-alerts.md#scenarios-to-monitor)。 
 
 ## <a name="customizing-monitoring-in-the-azure-portal"></a>在 Azure 门户中自定义监视
-可以在“编辑图表”设置中调整图表类型、显示的指标和时间范围。 有关详细信息，请参阅[如何自定义监视](../azure-monitor/platform/data-platform.md)。
+可以在“编辑图表”设置中调整图表类型、显示的指标和时间范围。 有关详细信息，请参阅[如何自定义监视](../azure-monitor/data-platform.md)。
 
   ![流分析查询监视器时间图](./media/stream-analytics-monitoring/08-stream-analytics-monitoring.png)  
 

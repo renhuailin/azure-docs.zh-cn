@@ -3,12 +3,12 @@ title: 排查常见错误
 description: 了解如何排查为 Kubernetes 创建策略定义、各种 Sdk 和外接程序时遇到的问题。
 ms.date: 01/26/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: 0a64346188696cc7cc16d832474ec4ee6befdae2
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 6e0e4067f07266bae9c87fd4443d27314cc28c0b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98917737"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592611"
 ---
 # <a name="troubleshoot-errors-with-using-azure-policy"></a>使用 Azure 策略排查错误
 
@@ -87,7 +87,7 @@ ms.locfileid: "98917737"
 
 #### <a name="issue"></a>问题
 
-预期 Azure 策略要对其执行操作的资源未进行操作， [Azure 活动日志](../../../azure-monitor/platform/platform-logs-overview.md)中没有条目。
+预期 Azure 策略要对其执行操作的资源未进行操作， [Azure 活动日志](../../../azure-monitor/essentials/platform-logs-overview.md)中没有条目。
 
 #### <a name="cause"></a>原因
 
@@ -123,7 +123,7 @@ ms.locfileid: "98917737"
 
 #### <a name="resolution"></a>解决方法
 
-拒绝策略分配中的错误消息包括策略定义和策略分配 ID。 如果消息中的错误信息丢失，还可在[活动日志](../../../azure-monitor/platform/activity-log.md#view-the-activity-log)中找到。 使用此信息可获取更多详细信息，以了解资源限制和调整请求中的资源属性以使其匹配允许的值。
+拒绝策略分配中的错误消息包括策略定义和策略分配 ID。 如果消息中的错误信息丢失，还可在[活动日志](../../../azure-monitor/essentials/activity-log.md#view-the-activity-log)中找到。 使用此信息可获取更多详细信息，以了解资源限制和调整请求中的资源属性以使其匹配允许的值。
 
 ## <a name="template-errors"></a>模板错误
 

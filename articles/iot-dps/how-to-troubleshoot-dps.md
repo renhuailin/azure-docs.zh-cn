@@ -8,12 +8,12 @@ services: iot-dps
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: xujing
-ms.openlocfilehash: 2d68314aab636180ff17e330c49c9859b8851b06
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 2d27c4eb1ea4586e0f2eac48930d86217052b2d8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94950680"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585447"
 ---
 # <a name="troubleshooting-with-azure-iot-hub-device-provisioning-service"></a>使用 Azure IoT 中心设备预配服务进行故障排除
 
@@ -44,7 +44,7 @@ ms.locfileid: "94950680"
 
 7. 选择“添加条件”，  然后按照以下提示选择所需指标和阈值。
 
-有关详细信息，请参阅 [Microsoft Azure 中的经典警报是什么？](../azure-monitor/platform/alerts-overview.md)
+有关详细信息，请参阅 [Microsoft Azure 中的经典警报是什么？](../azure-monitor/alerts/alerts-overview.md)
 
 ## <a name="using-log-analytic-to-view-and-resolve-errors"></a>使用 Log Analytic 查看和解决错误
 
