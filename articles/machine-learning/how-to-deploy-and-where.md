@@ -12,12 +12,12 @@ ms.date: 01/13/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, deploy, devx-track-azurecli
 adobe-target: true
-ms.openlocfilehash: da47967b719b5ce601d8049f54597c207ea732c8
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: d8c6a9cc000d307490745b923a1f1ba6c93abf53
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100372028"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652218"
 ---
 # <a name="deploy-machine-learning-models-to-azure"></a>将机器学习模型部署到 Azure
 
@@ -325,6 +325,14 @@ print(service.state)
 
 > [!TIP]
 > 在部署时，会从 Azure 容器注册表 (ACR) 生成并加载用于计算目标的 Docker 映像。 在默认情况下，Azure 机器学习会创建一个使用“基本”服务层级的 ACR。 将工作区的 ACR 更改为“标准”或“高级”层级可能会减少生成映像并将其部署到计算目标所花费的时间。 有关详细信息，请参阅 [Azure 容器注册表服务层级](../container-registry/container-registry-skus.md)。
+
+> [!NOTE]
+> 如果要将模型部署到 Azure Kubernetes Service (AKS) ，建议为该群集启用 [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-enable-existing-clusters) 。 这将帮助你了解总体群集运行状况和资源使用情况。 你还可能会发现以下资源非常有用：
+>
+> * [检查影响 AKS 群集的资源运行状况事件](https://docs.microsoft.com/azure/aks/aks-resource-health)
+> * [Azure Kubernetes Service 诊断](https://docs.microsoft.com/azure/aks/concepts-diagnostics)
+>
+> 如果尝试将模型部署到不正常或过载的群集，则应该会遇到问题。 如果需要帮助排查 AKS 群集问题，请联系 AKS 支持。
 
 ### <a name="batch-inference"></a><a id="azuremlcompute"></a> 批量推理
 Azure 机器学习计算目标由 Azure 机器学习创建和管理。 它们可用于 Azure 机器学习管道中的批量预测。

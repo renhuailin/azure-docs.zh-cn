@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.date: 10/12/2020
 ms.author: victorh
 ms.topic: how-to
-ms.openlocfilehash: 6e1d9b8a53eaf69c2294ab42dc0718863e6c1837
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 3d905dd1e6acab8f9f6d3885c882dd9c32133cb4
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99804931"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596441"
 ---
 # <a name="using-azure-sentinel-with-azure-web-application-firewall"></a>将 Azure Sentinel 用于 Azure Web 应用程序防火墙
 
@@ -82,4 +82,4 @@ WAF 工作簿适用于所有 Azure 前门、应用程序网关和 CDN Waf。 在
 ## <a name="next-steps"></a>后续步骤
 
 - [了解有关 Azure Sentinel 的详细信息](../sentinel/overview.md)
-- [了解 Azure Monitor 工作簿的详细信息](../azure-monitor/platform/workbooks-overview.md)
+- [了解 Azure Monitor 工作簿的详细信息](../azure-monitor/visualize/workbooks-overview.md)

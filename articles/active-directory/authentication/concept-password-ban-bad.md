@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b019c12103a0324e21ef7c06b0c7a5d7fe14e6ec
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 740201b84323f5a01ab01bb21ec458a19832e499
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96743881"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652014"
 ---
 # <a name="eliminate-bad-passwords-using-azure-active-directory-password-protection"></a>使用 Azure Active Directory 密码保护消除错误密码
 
@@ -174,7 +174,7 @@ Azure AD 密码保护会有效地阻止可能在密码喷涂攻击中使用的�
 下一步在用户经过规范化的新密码中识别禁止密码的所有实例。 根据以下条件分配点：
 
 1. 在用户密码中找到的每个禁止密码都提供一个点。
-1. 为每个剩余的唯一字符提供一个分数。
+1. 不属于禁止密码一部分的每个剩余字符都提供一个点。
 1. 密码必须至少为5个 (5) 点才能接受。
 
 对于接下来的两个示例方案，Contoso 使用 Azure AD 密码保护，并在其自定义禁止密码列表中包含 "Contoso"。 同时，假设全局列表中有 "空白"。

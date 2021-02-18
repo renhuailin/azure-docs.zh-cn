@@ -4,16 +4,16 @@ description: 需要协助的客户可在 Azure 门户中查找自助服务解决
 ms.assetid: fd6841ea-c1d5-4bb7-86bd-0c708d193b89
 ms.topic: how-to
 ms.date: 06/25/2020
-ms.openlocfilehash: 11ca7925ce1664b5586ab8ec0fb523a2d562ee80
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 71aba8f2769a75805f47d90b71a8db4eeb26a97a
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96745581"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652388"
 ---
 # <a name="create-an-azure-support-request"></a>创建 Azure 支持请求
 
-通过 Azure，可创建和管理支持请求（也称为支持票证）。 可在 [Azure 门户](https://portal.azure.com)中创建和管理请求，本文将讲到这一点。 还可使用 [Azure 支持票证 REST API](/rest/api/support) 以编程方式创建和管理请求。
+通过 Azure，可创建和管理支持请求（也称为支持票证）。 可在 [Azure 门户](https://portal.azure.com)中创建和管理请求，本文将讲到这一点。 你还可以使用 [Azure 支持票证 REST API](/rest/api/support)或使用 [Azure CLI](/cli/azure/azure-cli-support-request)以编程方式创建和管理请求。
 
 > [!NOTE]
 > Azure 门户 URL 特定于 Azure 云，你的组织在云端部署。

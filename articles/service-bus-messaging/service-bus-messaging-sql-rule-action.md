@@ -1,18 +1,18 @@
 ---
 title: Azure 服务总线订阅规则 SQL 操作语法 |Microsoft Docs
-description: 本文提供了有关 SQL 规则操作语法的参考。 操作用基于 SQL 语言的语法编写，该语法针对消息执行。
+description: 本文提供了有关 SQL 规则操作语法的参考。 这些操作是以针对消息执行的基于 SQL 语言的语法编写的。
 ms.topic: article
 ms.date: 11/24/2020
-ms.openlocfilehash: f7b8cdfcccc22508b98a42391d2a0ef9955232d0
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 75ff437bace59d7f4de07342277f0760480a5b0f
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98742670"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652830"
 ---
 # <a name="subscription-rule-sql-action-syntax"></a>订阅规则 SQL 操作语法
 
-“SQL 操作”用于在订阅规则的筛选器选择消息后操作消息元数据。 这是一种文本表达式，可倾向标准的92一部分。 操作表达式与 [Azure 资源管理器模板](service-bus-resource-manager-namespace-topic-with-rule.md)中服务总线 `Rule` 的“action”属性的 `sqlExpression` 元素一起使用，或者与 Azure CLI `az servicebus topic subscription rule create` 命令的 [`--action-sql-expression`](/cli/azure/servicebus/topic/subscription/rule#az_servicebus_topic_subscription_rule_create) 参数以及几个允许管理订阅规则的 SDK 函数一起使用。
+“SQL 操作”用于在订阅规则的筛选器选择消息后操作消息元数据。 它是一个依赖于 SQL-92 标准子集的文本表达式。 操作表达式与 [Azure 资源管理器模板](service-bus-resource-manager-namespace-topic-with-rule.md)中服务总线 `Rule` 的“action”属性的 `sqlExpression` 元素一起使用，或者与 Azure CLI `az servicebus topic subscription rule create` 命令的 [`--action-sql-expression`](/cli/azure/servicebus/topic/subscription/rule#az_servicebus_topic_subscription_rule_create) 参数以及几个允许管理订阅规则的 SDK 函数一起使用。
   
   
 ```  
@@ -199,7 +199,8 @@ ms.locfileid: "98742670"
   
 `property(name)` 函数返回 `name` 所引用的属性的值。 `name` 值可以是返回字符串值的任何有效表达式。  
 
-[!INCLUDE [service-bus-filter-examples](../../includes/service-bus-filter-examples.md)]
+## <a name="examples"></a>示例
+有关示例，请参阅 [服务总线筛选器示例](service-bus-filter-examples.md)。
   
 ## <a name="considerations"></a>注意事项
 
@@ -207,7 +208,7 @@ ms.locfileid: "98742670"
 - REMOVE 用于删除属性。
 - 当表达式类型和现有的属性类型不同时，SET 会尽可能执行隐式转换。
 - 如果引用了不存在的系统属性，操作会失败。
-- 如果引用了不存在的用户属性，操作不会失败。
+- 如果引用不存在的用户属性，操作不会失败。
 - 不存在的用户属性在内部的求值为“未知”，其遵循的语义与 [SQLFilter](/dotnet/api/microsoft.servicebus.messaging.sqlfilter) 相同（在对运算符求值时）。
 
 ## <a name="next-steps"></a>后续步骤

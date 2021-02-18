@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 8b63ce25d6839e8672027240099859dc7aad96c5
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 2cc7e1d0c108d45383a68258fb6f62fcab87d1f7
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94886067"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653809"
 ---
 # <a name="client-and-server-architecture"></a>客户端和服务器体系结构
 
@@ -60,7 +60,7 @@ Azure 通信 JavaScript 客户端库可以启用具有丰富文本、语音和�
 
 :::image type="content" source="../media/scenarios/archdiagram-pstn.png" alt-text="显示通信服务 PSTN 体系结构的关系图。":::
 
-有关 PSTN 和 SMS 解决方案的详细信息，请参阅 [规划你的 pstn 和 sms 解决方案](../concepts/telephony-sms/plan-solution.md)
+有关 PSTN 电话号码的详细信息，请参阅 [电话号码类型](../concepts/telephony-sms/plan-solution.md)
 
 ## <a name="humans-communicating-with-bots-and-other-services"></a>与 bot 和其他服务进行通信的人
 
@@ -83,7 +83,7 @@ Azure 通信服务通过文本和语音频道，使用直接访问 Azure 通信�
 有关详细信息，请参阅以下文章：
 
 - 了解 [身份验证](../concepts/authentication.md)
-- 了解 [PSTN 和 SMS 解决方案](../concepts/telephony-sms/plan-solution.md)
+- 了解 [电话号码类型](../concepts/telephony-sms/plan-solution.md)
 
-- [向应用中添加聊天](../quickstarts/chat/get-started.md)
-- [在应用中添加语音呼叫](../quickstarts/voice-video-calling/getting-started-with-calling.md)
+- [向应用添加聊天](../quickstarts/chat/get-started.md)
+- [添加对应用的音频呼叫](../quickstarts/voice-video-calling/getting-started-with-calling.md)

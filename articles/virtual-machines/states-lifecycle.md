@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 08/09/2018
 ms.author: vashan
-ms.openlocfilehash: 8c9641e722cf3892450bbfbea54f169ac6dc764b
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 7f91d5eebfae990f60b47f2c98f364046bafbf04
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91963289"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594366"
 ---
 # <a name="virtual-machines-lifecycle-and-states"></a>虚拟机生命周期和状态
 
-Azure 虚拟机 (VM) 经历的不同状态可以归类为“预配”状态和“电源”状态。**** 本文旨在介绍这些状态并专门突出显示了何时会对客户收取实例使用费用。 
+Azure 虚拟机 (VM) 经历的不同状态可以归类为“预配”状态和“电源”状态。 本文旨在介绍这些状态并专门突出显示了何时会对客户收取实例使用费用。 
 
 ## <a name="power-states"></a>电源状态
 
@@ -108,7 +108,7 @@ Azure 虚拟机 (VM) 经历的不同状态可以归类为“预配”状态和�
    :::column-end:::
    :::column span="":::
 
-   这是一种过渡性状态。 完成后，会显示为“已停止”。****
+   这是一种过渡性状态。 完成后，会显示为“已停止”。
 
    ```json
    "statuses": [
@@ -164,7 +164,7 @@ Azure 虚拟机 (VM) 经历的不同状态可以归类为“预配”状态和�
    :::column-end:::
    :::column span="":::
 
-   过渡性状态。 完成后，VM 会显示为“已解除分配”。****
+   过渡性状态。 完成后，VM 会显示为“已解除分配”。
 
    ```json
    "statuses": [
@@ -365,7 +365,7 @@ Azure 虚拟机 (VM) 经历的不同状态可以归类为“预配”状态和�
    :::column-end:::
    :::column span="2":::
    
-   短时状态。 VM 会快速过渡到“成功”状态，除非需要安装扩展。**** 安装扩展可能需要一定的时间。
+   短时状态。 VM 会快速过渡到“成功”状态，除非需要安装扩展。 安装扩展可能需要一定的时间。
    
    ```json
    "statuses": [
@@ -377,7 +377,7 @@ Azure 虚拟机 (VM) 经历的不同状态可以归类为“预配”状态和�
    [
    ```
    
-   **注意**：如果存在 OS 故障或者 OS 没有及时安装，则 OS 预配可能会过渡到“失败”状态。**** 会根据部署在基础结构上的 VM 对客户收费。
+   **注意**：如果存在 OS 故障或者 OS 没有及时安装，则 OS 预配可能会过渡到“失败”状态。 会根据部署在基础结构上的 VM 对客户收费。
 
    :::column-end:::
 
@@ -428,4 +428,4 @@ Azure 资源浏览器提供一个简单的 UI，用于查看 VM 运行状态：[
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解有关监视 VM 的详细信息，请参阅 [在 Azure 中监视虚拟机](../azure-monitor/insights/monitor-vm-azure.md)。
+若要了解有关监视 VM 的详细信息，请参阅 [在 Azure 中监视虚拟机](../azure-monitor/vm/monitor-vm-azure.md)。

@@ -5,16 +5,16 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: de013b6ccd924f50ffe12fcba1285b121eece5f7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3e9e924d6626d9f0dcd2db8a5e8b8f90a0aa01ce
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83827550"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593843"
 ---
 # <a name="query-logs-from-startstop-vms-during-off-hours"></a>从“在空闲时间启动/停止 VM”查询日志
 
-Azure 自动化将两种类型的记录转发到链接的 Log Analytics 工作区：作业日志和作业流。 本文介绍了适用于 Azure Monitor 中的[查询](../azure-monitor/log-query/log-query-overview.md)的数据。
+Azure 自动化将两种类型的记录转发到链接的 Log Analytics 工作区：作业日志和作业流。 本文介绍了适用于 Azure Monitor 中的[查询](../azure-monitor/logs/log-query-overview.md)的数据。
 
 ## <a name="job-logs"></a>作业日志
 
@@ -72,5 +72,5 @@ Azure 自动化将两种类型的记录转发到链接的 Log Analytics 工作�
 ## <a name="next-steps"></a>后续步骤
 
 * 要设置该功能，请参阅[配置“在空闲时间启动/停止 VM”](automation-solution-vm-management-config.md)。
-* 有关功能部署中记录警报的信息，请参阅[通过 Azure Monitor 创建记录警报](../azure-monitor/platform/alerts-log.md)。
+* 有关功能部署中记录警报的信息，请参阅[通过 Azure Monitor 创建记录警报](../azure-monitor/alerts/alerts-log.md)。
 * 若要解决功能问题，请参阅[排除故障“在空闲时间启动/停止 VM”](troubleshoot/start-stop-vm.md)。

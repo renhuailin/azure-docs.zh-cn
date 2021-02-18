@@ -14,22 +14,21 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 02/16/2021
 ms.author: b-juche
-ms.openlocfilehash: 6bb787084d4396737d3002bb98fe50e283c5764a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 91f4f90658281282cdcb01b091bd9c9647d8d702
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/17/2021
-ms.locfileid: "100582902"
+ms.locfileid: "100635479"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>创建用于 Azure NetApp 文件的 SMB 卷
 
 Azure NetApp 文件支持使用 NFS (NFSv3 和 NFSv 4.1) 、SMB3 或双重协议 (NFSv3 和 SMB) 创建卷。 卷的容量消耗是依据其池的预配容量计数的。 本文介绍如何创建 SMB3 卷。
 
 ## <a name="before-you-begin"></a>开始之前 
-必须已设置容量池。   
-[设置容量池](azure-netapp-files-set-up-capacity-pool.md)   
-子网必须委派给 Azure NetApp 文件。  
-[将子网委派给 Azure NetApp 文件](azure-netapp-files-delegate-subnet.md)
+
+* 必须已设置容量池。 请参阅 [设置容量池](azure-netapp-files-set-up-capacity-pool.md)。     
+* 子网必须委派给 Azure NetApp 文件。 请参阅 [向 Azure NetApp 文件委托子网](azure-netapp-files-delegate-subnet.md)。
 
 ## <a name="configure-active-directory-connections"></a>配置 Active Directory 连接 
 

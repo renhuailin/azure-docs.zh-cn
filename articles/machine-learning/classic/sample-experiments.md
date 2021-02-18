@@ -3,22 +3,22 @@ title: 机器学习工作室（经典）：通过示例开始试验 - Azure
 description: 了解如何通过 Azure AI 库和 Azure 机器学习工作室（经典）使用示例机器学习试验来创建新试验。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: sample
 author: likebupt
 ms.author: keli19
 ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/05/2018
-ms.openlocfilehash: cfee8a32c54bff5aecb1e298db8b4814255418b0
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 40306973dde989862f8dfe9df5c9d873ac18fdd0
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325755"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100517495"
 ---
 # <a name="create-azure-machine-learning-studio-classic-experiments-from-working-examples-in-azure-ai-gallery"></a>根据 Azure AI 库中的工作示例创建 Azure 机器学习工作室（经典）试验
 
-**适用对象：** ![适用于.](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典）   ![不适用于. ](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
+**适用对象：** ![适用于.](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典）   ![不适用于.](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 
 
@@ -35,7 +35,7 @@ ms.locfileid: "93325755"
 要查看哪些试验可用，请转到“ [库](https://gallery.azure.ai/) ”，并单击页面顶部的“ **试验** ”。
 
 ### <a name="find-the-newest-or-most-popular-experiments"></a>查找最新或最受欢迎的试验
-在此页上，可以查看 **最近添加** 的试验，或向下滚动查看 **热门** 或最新的 **热门 Microsoft 试验** 。
+在此页上，可以查看 **最近添加** 的试验，或向下滚动查看 **热门** 或最新的 **热门 Microsoft 试验**。
 
 ### <a name="look-for-an-experiment-that-meets-specific-requirements"></a>查找满足特定要求的试验
 若要浏览所有试验︰

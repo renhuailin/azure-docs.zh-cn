@@ -5,16 +5,16 @@ tags: billing
 ms.assetid: 86697fdf-3499-4cab-ab3f-10d40d3c1f70
 ms.topic: how-to
 ms.date: 12/14/2020
-ms.openlocfilehash: 8110f87401da1352309fb55615093d49981c754d
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: d6c68dd341e0794a690b41b73ecc4be954db7359
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97504808"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653843"
 ---
 # <a name="manage-an-azure-support-request"></a>管理 Azure 支持请求
 
-[创建 Azure 支持请求](how-to-create-azure-support-request.md)后，可以在[Azure 门户](https://portal.azure.com)中对其进行管理，本文将对此进行介绍。 还可使用 [Azure 支持票证 REST API](/rest/api/support) 以编程方式创建和管理请求。
+[创建 Azure 支持请求](how-to-create-azure-support-request.md)后，可以在[Azure 门户](https://portal.azure.com)中对其进行管理，本文将对此进行介绍。 你还可以使用 [Azure 支持票证 REST API](/rest/api/support)或使用 [Azure CLI](/cli/azure/azure-cli-support-request)以编程方式创建和管理请求。
 
 ## <a name="view-support-requests"></a>查看支持请求
 

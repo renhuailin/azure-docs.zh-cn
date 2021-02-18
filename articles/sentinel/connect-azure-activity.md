@@ -15,16 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/22/2020
 ms.author: yelevin
-ms.openlocfilehash: 88f363406ec40dfa439a52ad351501d1c64dce95
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8f0bac363e020826e34df3cb0b4e3d3582990302
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85564487"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595442"
 ---
 # <a name="connect-data-from-azure-activity-log"></a>连接 Azure 活动日志中的数据
 
-只需要单击一次即可将日志从 [Azure 活动日志](../azure-monitor/platform/platform-logs-overview.md) 流式传输到 azure Sentinel。 活动日志是一种订阅日志，用于记录和显示 Azure 中的订阅级别事件，从 Azure 资源管理器操作数据到服务运行状况事件更新。 使用活动日志，可以确定任何写入操作 (PUT、POST、DELETE) 对订阅中的资源执行的任何写入操作的 "内容、操作人员和操作时间"。 你还可以了解操作和其他相关属性的状态。 活动日志不包括读取 (获取使用经典/"RDFE" 模型的资源) 操作或操作。 
+只需要单击一次即可将日志从 [Azure 活动日志](../azure-monitor/essentials/platform-logs-overview.md) 流式传输到 azure Sentinel。 活动日志是一种订阅日志，用于记录和显示 Azure 中的订阅级别事件，从 Azure 资源管理器操作数据到服务运行状况事件更新。 使用活动日志，可以确定任何写入操作 (PUT、POST、DELETE) 对订阅中的资源执行的任何写入操作的 "内容、操作人员和操作时间"。 你还可以了解操作和其他相关属性的状态。 活动日志不包括读取 (获取使用经典/"RDFE" 模型的资源) 操作或操作。 
 
 ## <a name="prerequisites"></a>先决条件
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 5e2f6d8ca1f3911959f396eb1ed77ce8377c0e3c
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 9831f70a88aba497eb7d6a759233c3d7d7be62c6
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807829"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585114"
 ---
 # <a name="azure-security-baseline-for-azure-synapse-analytics"></a>Azure Synapse Analytics 的 azure 安全基线
 
@@ -49,7 +49,7 @@ Azure Synapse Analytics 的 Azure 安全基准包含有助于改进部署安全�
 
 **指南**：连接到专用 SQL 池时，如果已启用网络安全组 (NSG) 流日志，则会将日志发送到 Azure 存储帐户以进行流量审核。
 
-还可以将 NSG 流日志发送到 Log Analytics 工作区，并使用流量分析来深入了解 Azure 云中的流量流。 流量分析的优势包括能够可视化网络活动、识别热点、识别安全威胁、了解流量流模式，以及查明网络不当配置。
+还可以将 NSG 流日志发送到 Log Analytics 工作区，并使用流量分析来提供对 Azure 云中的流量流的见解。 流量分析的优势包括能够可视化网络活动、识别热点、识别安全威胁、了解流量流模式，以及查明网络不当配置。
 
 * [如何启用 NSG 流日志](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
@@ -167,9 +167,9 @@ Azure Synapse Analytics 的 Azure 安全基准包含有助于改进部署安全�
 
 **指南**：使用 Azure 活动日志监视网络资源配置，并检测与专用 SQL 池相关的网络资源的更改。 在 Azure Monitor 中创建当关键网络资源发生更改时触发的警报。
 
-* [如何查看和检索 Azure 活动日志事件](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [如何查看和检索 Azure 活动日志事件](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-* [如何在 Azure Monitor 中创建警报](../azure-monitor/platform/alerts-activity-log.md)
+* [如何在 Azure Monitor 中创建警报](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -237,7 +237,7 @@ Azure Synapse Analytics 的 Azure 安全基准包含有助于改进部署安全�
 
 * [管理 Azure Blob 存储生命周期](../storage/blobs/storage-lifecycle-management-concepts.md?tabs=azure-portal)
 
-* [如何在 Log Analytics 工作区中设置日志保留参数](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+* [如何在 Log Analytics 工作区中设置日志保留参数](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 * [捕获事件中心中的流式处理事件](../event-hubs/event-hubs-capture-overview.md)
 
@@ -629,7 +629,7 @@ Azure Synapse Analytics 的 Azure 安全基准包含有助于改进部署安全�
 
 此外，还可以使用 Azure 门户为 SQL Synapse 池中的数据库设置警报。 当某些指标（例如数据库大小或 CPU 使用率）达到阈值时，警报可以向你发送电子邮件或调用 Webhook。
 
-* [如何针对 Azure 活动日志事件创建警报](../azure-monitor/platform/alerts-activity-log.md)
+* [如何针对 Azure 活动日志事件创建警报](../azure-monitor/alerts/alerts-activity-log.md)
 
 * [如何为 Azure SQL Synapse 创建警报](../azure-sql/database/alerts-insights-configure-portal.md)
 

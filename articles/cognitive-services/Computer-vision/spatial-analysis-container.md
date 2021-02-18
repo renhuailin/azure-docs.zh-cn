@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: db21f1170dacbfa1e4367e7f22143ec3d0b0f6e4
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: a43a27a8e880c76ba21639437c0c20f583620d50
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737330"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653612"
 ---
 # <a name="install-and-run-the-spatial-analysis-container-preview"></a> (预览中安装并运行空间分析容器) 
 
@@ -114,7 +114,7 @@ Azure Stack Edge 是一种硬件即服务解决方案，是一种支持 AI 的�
 
 在 " **配置边缘计算**"   页上，选择现有的 IoT 中心，或选择创建一个新的 IoT 中心。 默认情况下，将使用标准 (S1) 定价层创建 IoT 中心资源。 若要使用免费层 IoT 中心资源，请创建一个，然后选择它。 IoT 中心资源使用的订阅和资源组与 Azure Stack Edge 资源使用的相同 
 
-单击 **“创建”** 。 IoT 中心资源创建可能需要几分钟的时间。 创建 IoT 中心资源后，" **配置边缘计算** " 磁贴将更新以显示新的配置。 若要确认已配置边缘计算角色，请选择 " **配置计算**" 磁贴上的 " **查看配置**"   。
+单击“创建”。 IoT 中心资源创建可能需要几分钟的时间。 创建 IoT 中心资源后，" **配置边缘计算** " 磁贴将更新以显示新的配置。 若要确认已配置边缘计算角色，请选择 " **配置计算**" 磁贴上的 " **查看配置**"   。
 
 如果在 Edge 设备上设置了 Edge 计算角色，则会创建两个设备：一个 IoT 设备，一个 IoT Edge 设备。 可在 IoT 中心资源中查看这两个设备。 Azure IoT Edge 运行时将已在 IoT Edge 设备上运行。
 
@@ -181,7 +181,7 @@ sudo apt-get -y install cuda
 nvidia-smi
 ```
 
-应看到以下输出。
+你会看到以下输出。
 
 ![NVIDIA 驱动程序输出](media/spatial-analysis/nvidia-driver-output.png)
 
@@ -249,7 +249,7 @@ sudo systemctl --now enable nvidia-mps.service
 
 ## <a name="configure-azure-iot-edge-on-the-host-computer"></a>在主计算机上配置 Azure IoT Edge
 
-若要在主计算机上部署空间分析容器，请使用标准 (S1) 或免费 (F0) 定价层创建 [Azure IoT 中心](../../iot-hub/iot-hub-create-through-portal.md) 服务的实例。 如果你的主计算机是 Azure Stack 边缘，请使用 Azure Stack Edge 资源使用的同一订阅和资源组。
+若要在主计算机上部署空间分析容器，请使用标准 (S1) 或免费 (F0) 定价层创建 [Azure IoT 中心](../../iot-hub/iot-hub-create-through-portal.md) 服务的实例。 
 
 使用 Azure CLI 创建 Azure IoT 中心的实例。 将参数替换为适当的位置。 或者，你可以在 [Azure 门户](https://portal.azure.com/)上创建 Azure IoT 中心。
 
@@ -264,7 +264,7 @@ sudo az iot hub create --name "test-iot-hub-123" --sku S1 --resource-group "test
 sudo az iot hub device-identity create --hub-name "test-iot-hub-123" --device-id "my-edge-device" --edge-enabled
 ```
 
-如果主机不是 Azure Stack Edge 设备，则需要安装 [Azure IoT Edge](../../iot-edge/how-to-install-iot-edge.md) 版本1.0.9。 请按照以下步骤下载正确的版本：
+需要安装 [Azure IoT Edge](../../iot-edge/how-to-install-iot-edge.md) 版本1.0.9。 请按照以下步骤下载正确的版本：
 
 Ubuntu Server 18.04：
 ```bash
@@ -345,7 +345,7 @@ sudo systemctl restart iotedge
 nvidia-smi
 ```
 
-应看到以下输出。
+你会看到以下输出。
 
 ![NVIDIA 驱动程序输出](media/spatial-analysis/nvidia-driver-output.png)
 
@@ -396,7 +396,73 @@ sudo apt-get install -y docker-ce nvidia-docker2
 sudo systemctl restart docker
 ```
 
-设置并配置 VM 后，请按照以下步骤部署空间分析容器。 
+设置并配置 VM 后，请按照以下步骤配置 Azure IoT Edge。 
+
+## <a name="configure-azure-iot-edge-on-the-vm"></a>在 VM 上配置 Azure IoT Edge
+
+若要在 VM 上部署空间分析容器，请使用标准 (S1) 或免费 (F0) 定价层创建 [Azure IoT 中心](../../iot-hub/iot-hub-create-through-portal.md) 服务的实例。
+
+使用 Azure CLI 创建 Azure IoT 中心的实例。 将参数替换为适当的位置。 或者，你可以在 [Azure 门户](https://portal.azure.com/)上创建 Azure IoT 中心。
+
+```bash
+curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+sudo az login
+sudo az account set --subscription <name or ID of Azure Subscription>
+sudo az group create --name "test-resource-group" --location "WestUS"
+
+sudo az iot hub create --name "test-iot-hub-123" --sku S1 --resource-group "test-resource-group"
+
+sudo az iot hub device-identity create --hub-name "test-iot-hub-123" --device-id "my-edge-device" --edge-enabled
+```
+
+需要安装 [Azure IoT Edge](../../iot-edge/how-to-install-iot-edge.md) 版本1.0.9。 请按照以下步骤下载正确的版本：
+
+Ubuntu Server 18.04：
+```bash
+curl https://packages.microsoft.com/config/ubuntu/18.04/multiarch/prod.list > ./microsoft-prod.list
+```
+
+复制生成的列表。
+```bash
+sudo cp ./microsoft-prod.list /etc/apt/sources.list.d/
+```
+
+安装 Microsoft GPG 公钥。
+
+```bash
+curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+sudo cp ./microsoft.gpg /etc/apt/trusted.gpg.d/
+```
+
+更新设备上的包列表。
+
+```bash
+sudo apt-get update
+```
+
+安装1.0.9 版本：
+
+```bash
+sudo apt-get install iotedge=1.0.9* libiothsm-std=1.0.9*
+```
+
+接下来，使用 [连接字符串](../../iot-edge/how-to-manual-provision-symmetric-key.md?view=iotedge-2018-06)将 VM 注册为 IoT 中心实例中的 IoT Edge 设备。
+
+需要将 IoT Edge 设备连接到 Azure IoT 中心。 需要从前面创建的 IoT Edge 设备中复制连接字符串。 或者，你可以在 Azure CLI 中运行以下命令。
+
+```bash
+sudo az iot hub device-identity show-connection-string --device-id my-edge-device --hub-name test-iot-hub-123
+```
+
+打开  `/etc/iotedge/config.yaml` 以进行编辑。 替换 `ADD DEVICE CONNECTION STRING HERE` 为连接字符串。 保存并关闭该文件。 运行此命令以在 VM 上重新启动 IoT Edge 服务。
+
+```bash
+sudo systemctl restart iotedge
+```
+
+将空间分析容器作为虚拟机上的 IoT 模块部署 [Azure 门户](../../iot-edge/how-to-deploy-modules-portal.md) 或 [Azure CLI](../cognitive-services-apis-create-account-cli.md?tabs=windows)。 如果使用的是门户，请将映像 URI 设置为 Azure 容器注册表的位置。 
+
+使用以下步骤使用 Azure CLI 部署容器。
 
 ---
 

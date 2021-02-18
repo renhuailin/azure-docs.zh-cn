@@ -3,12 +3,12 @@ title: 部署 ISO 27001 共享服务蓝图示例
 description: ISO 27001 共享服务蓝图示例的部署步骤，包括蓝图项目参数详细信息。
 ms.date: 02/05/2021
 ms.topic: sample
-ms.openlocfilehash: 8b28954b6145a9e6c1827107cf11aa85326dcc1f
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: 2eb9ed2199b28ad7cb349e6088c3cc583d8f011d
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99627793"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577320"
 ---
 # <a name="deploy-the-iso-27001-shared-services-blueprint-sample"></a>部署 ISO 27001 共享服务蓝图示例
 
@@ -110,7 +110,7 @@ ms.locfileid: "99627793"
 |允许的资源类型|策略分配|允许的资源类型|允许部署的资源类型列表。 此列表包括共享服务中部署的所有资源类型。|
 |允许的存储帐户 SKU|策略分配|允许的存储 SKU|允许的诊断日志存储帐户 SKU 列表。 默认值为 _["Standard_LRS"]_ 。|
 |允许的虚拟机 SKU|策略分配|允许部署的虚拟机 SKU 列表。 默认值为 _["Standard_DS1_v2", "Standard_DS2_v2"]_ 。|
-|ISO 27001 的蓝图计划|策略分配|用于审核诊断日志的资源类型|用于审核是否未启用诊断日志设置的资源类型列表。 [Azure Monitor 诊断日志架构](../../../../azure-monitor/platform/resource-logs-schema.md#service-specific-schemas)中提供了可接受的值。|
+|ISO 27001 的蓝图计划|策略分配|用于审核诊断日志的资源类型|用于审核是否未启用诊断日志设置的资源类型列表。 [Azure Monitor 诊断日志架构](../../../../azure-monitor/essentials/resource-logs-schema.md#service-specific-schemas)中提供了可接受的值。|
 |Log Analytics 资源组|资源组|名称|**已锁定** - 将 **组织名称** 与 `-sharedsvsc-log-rg` 相连接可使资源组名称保持唯一。|
 |Log Analytics 资源组|资源组|位置|**已锁定** - 使用蓝图参数。|
 |Log Analytics 模板|资源管理器模板|服务层|设置 Log Analytics 工作区的层。 默认值为 _PerNode_。|

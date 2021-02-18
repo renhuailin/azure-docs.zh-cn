@@ -2,22 +2,22 @@
 title: 在已启用 Arc 的 Kubernetes 群集上使用 GitOps 部署配置（预览版）
 services: azure-arc
 ms.service: azure-arc
-ms.date: 02/15/2021
+ms.date: 02/17/2021
 ms.topic: article
 author: mlearned
 ms.author: mlearned
 description: '使用 GitOps 配置启用了 Azure Arc 的 Kubernetes 群集 (预览) '
 keywords: GitOps、Kubernetes、K8s、Azure、Arc、Azure Kubernetes 服务、AKS、容器
-ms.openlocfilehash: 3cadcdf80abd997ec10aeb9521680944d455898f
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: b30ecde0e128a955967638828dcb7bec008205ea
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100560161"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652473"
 ---
 # <a name="deploy-configurations-using-gitops-on-an-arc-enabled-kubernetes-cluster-preview"></a>在启用了 Arc 的 Kubernetes 群集上使用 GitOps 部署配置 (预览) 
 
-本文演示如何在启用了 Azure Arc 的 Kubernetes 群集上应用配置。 可在 [此处](./conceptual-configurations.md)找到相同的概念概述。
+本文演示如何在启用了 Azure Arc 的 Kubernetes 群集上应用配置。 有关此过程的概念，请参阅 [配置和 GitOps-启用 Azure Arc Kubernetes 一文](./conceptual-configurations.md)。
 
 ## <a name="before-you-begin"></a>在开始之前
 
@@ -85,24 +85,24 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
   "type": "Microsoft.KubernetesConfiguration/sourceControlConfigurations"
   ```
 
-#### <a name="use-a-public-git-repo"></a>使用公共 Git 存储库
+#### <a name="use-a-public-git-repository"></a>使用公共 Git 存储库
 
 | 参数 | 格式 |
 | ------------- | ------------- |
 | `--repository-url` | http [s]：//server/repo [. git] 或 git：//server/repo [git]
 
-#### <a name="use-a-private-git-repo-with-ssh-and-flux-created-keys"></a>使用带有 SSH 和 Flux 密钥的专用 Git 存储库
+#### <a name="use-a-private-git-repository-with-ssh-and-flux-created-keys"></a>使用带有 SSH 和 Flux 密钥的专用 Git 存储库
 
-| 参数 | 格式 | 说明
+| 参数 | 格式 | 备注
 | ------------- | ------------- | ------------- |
 | `--repository-url` | ssh://user@server/repo[git] 或 user@server:repo [git] | `git@` 可以替换 `user@`
 
 > [!NOTE]
 > 必须将 Flux 生成的公钥添加到 Git 服务提供程序中的用户帐户。 如果向存储库而不是用户帐户添加密钥，请 `git@` 在 URL 中使用替代 `user@` 。 有关更多详细信息，请跳转到 [从私有 Git 存储库应用配置](#apply-configuration-from-a-private-git-repository) 部分。
 
-#### <a name="use-a-private-git-repo-with-ssh-and-user-provided-keys"></a>使用带有 SSH 和用户提供的密钥的专用 Git 存储库
+#### <a name="use-a-private-git-repository-with-ssh-and-user-provided-keys"></a>使用带有 SSH 和用户提供的密钥的专用 Git 存储库
 
-| 参数 | 格式 | 说明 |
+| 参数 | 格式 | 备注 |
 | ------------- | ------------- | ------------- |
 | `--repository-url`  | ssh://user@server/repo[git] 或 user@server:repo [git] | `git@` 可以替换 `user@` |
 | `--ssh-private-key` | [PEM 格式](https://aka.ms/PEMformat)的 base64 编码的密钥 | 直接提供密钥 |
@@ -113,18 +113,18 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 
 #### <a name="use-a-private-git-host-with-ssh-and-user-provided-known-hosts"></a>使用带有 SSH 和用户提供的已知主机的专用 Git 主机
 
-| 参数 | 格式 | 说明 |
+| 参数 | 格式 | 备注 |
 | ------------- | ------------- | ------------- |
 | `--repository-url`  | ssh://user@server/repo[git] 或 user@server:repo [git] | `git@` 可以替换 `user@` |
 | `--ssh-known-hosts` | base64 编码 | 直接提供已知的主机内容 |
 | `--ssh-known-hosts-file` | 本地文件的完整路径 | 在本地文件中提供已知的主机内容 |
 
 > [!NOTE]
-> 为了在建立 SSH 连接之前对 Git 存储库进行身份验证，Flux 运算符在其已知的 hosts 文件中维护公用 Git 主机的列表。 如果你使用的是不常见的 Git 存储库或你自己的 Git 主机，则可能需要提供主机密钥以确保 Flux 可以识别你的存储库。 可以直接或在文件中提供 known_hosts 内容。 提供自己的内容时，请结合上述 SSH 密钥方案使用 [known_hosts 内容格式规范](https://aka.ms/KnownHostsFormat) 。
+> 若要在建立 SSH 连接之前对 Git 存储库进行身份验证，Flux 运算符会在其已知的 hosts 文件中维护公用 Git 主机的列表。 如果你使用的是不常见的 Git 存储库或你自己的 Git 主机，则可能需要提供主机密钥以确保 Flux 可以识别你的存储库。 可以直接或在文件中提供 known_hosts 内容。 提供自己的内容时，请结合上述 SSH 密钥方案使用 [known_hosts 内容格式规范](https://aka.ms/KnownHostsFormat) 。
 
-#### <a name="use-a-private-git-repo-with-https"></a>使用具有 HTTPS 的专用 Git 存储库
+#### <a name="use-a-private-git-repository-with-https"></a>使用具有 HTTPS 的专用 Git 存储库
 
-| 参数 | 格式 | 说明 |
+| 参数 | 格式 | 备注 |
 | ------------- | ------------- | ------------- |
 | `--repository-url` | https://server/repo[git] | HTTPS 与基本身份验证 |
 | `--https-user` | raw 或 base64 编码 | HTTPS 用户名 |
@@ -152,10 +152,10 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 | 选项 | 说明 |
 | ------------- | ------------- |
 | `--git-branch`  | 用于 Kubernetes 清单的 Git 存储库的分支。 默认为“master”。 较新的存储库具有名为的根分支 `main` ，在这种情况下，你需要设置 `--git-branch=main` 。 |
-| `--git-path`  | Git 存储库中供 Flux 查找 Kubernetes 清单的相对路径。 |
-| `--git-readonly` | Git 存储库将被视为只读；Flux 不会尝试向其写入。 |
+| `--git-path`  | Flux 的 Git 存储库中的相对路径，用于查找 Kubernetes 清单。 |
+| `--git-readonly` | Git 存储库将被视为只读。Flux 不会尝试向其写入。 |
 | `--manifest-generation`  | 如果启用，Flux 将查找 .flux.yaml 并运行 Kustomize 或其他清单生成器。 |
-| `--git-poll-interval`  | 轮询 Git 存储库以获取新提交的周期。 默认值为 `5m` (5 分钟) 。 |
+| `--git-poll-interval`  | 轮询新提交的 Git 存储库的期间。 默认值为 `5m` (5 分钟) 。 |
 | `--sync-garbage-collection`  | 如果启用，Flux 将删除由它创建但在 Git 中已不再存在的资源。 |
 | `--git-label`  | 用于跟踪同步进度的标签。 用于标记 Git 分支。  默认值为 `flux-sync`。 |
 | `--git-user`  | 用于 Git 提交的用户名。 |
@@ -237,7 +237,7 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 
 ## <a name="apply-configuration-from-a-private-git-repository"></a>应用私有 Git 存储库中的配置
 
-如果你使用的是私有 Git 存储库，则需要配置存储库中的 SSH 公钥。 SSH 公钥可以是 Flux 生成的公钥，也可以是您提供的公钥。 您可以在特定的 Git 存储库或有权访问存储库的 Git 用户上配置公钥。 
+如果使用的是私有 Git 存储库，则需要在存储库中配置 SSH 公钥。 SSH 公钥可以是 Flux 生成的公钥，也可以是您提供的公钥。 您可以在特定的 Git 存储库或有权访问该存储库的 Git 用户上配置公钥。 
 
 ### <a name="get-your-own-public-key"></a>获取自己的公钥
 

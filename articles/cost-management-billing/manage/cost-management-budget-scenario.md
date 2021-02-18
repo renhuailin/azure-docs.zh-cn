@@ -9,18 +9,18 @@ ms.subservice: cost-management
 ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: de0e9c631a97891e75c091c75a34b7dd94a52894
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 1706fd69f58e4dee4a7ed963fb22cb63aec026fa
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131456"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593386"
 ---
 # <a name="manage-costs-with-azure-budgets"></a>使用 Azure 预算管理成本
 
 成本控制是最大化云投资价值的关键部分。 以下几种方案中，成本可见性、报告和基于成本的业务流程对于持续的业务操作至关重要。 [Azure 成本管理 API](/rest/api/consumption/) 提供了一组 API，用于支持每种方案。 这些 API 提供使用情况详细信息，可让你查看更精确的实例级成本。
 
-成本控制中通常会用到预算。 可在 Azure 中限制预算范围。 例如，可根据订阅、资源组或资源集合缩小预算视图。 除了使用预算 API 在达到预算阈值时通过电子邮件进行通知外，还可使用 [Azure Monitor 操作组](../../azure-monitor/platform/action-groups.md)来触发由于预算事件而安排的一组操作。
+成本控制中通常会用到预算。 可在 Azure 中限制预算范围。 例如，可根据订阅、资源组或资源集合缩小预算视图。 除了使用预算 API 在达到预算阈值时通过电子邮件进行通知外，还可使用 [Azure Monitor 操作组](../../azure-monitor/alerts/action-groups.md)来触发由于预算事件而安排的一组操作。
 
 对于运行非关键工作负载的客户，如果他们想要管理预算，并在查看月度发票时预测成本，可能会使用常见的预算方案。 这种方案需要一些基于成本的资源业务流程，这些资源属于 Azure 环境。 在此方案中，每月的订阅预算设置为 1000 美元。 另外，通知阈值设置为触发几个业务流程。 此方案的成本阈值开始为 80%，这会停止“可选”资源组中的所有 VM  。 然后，达到 100% 成本阈值时，将停止所有 VM 实例。
 
@@ -44,7 +44,7 @@ ms.locfileid: "92131456"
 3. 选择“管理工具” > “自动化”   。
    > [!NOTE]
    > 如果没有 Azure 帐户，可以创建一个[免费帐户](https://azure.microsoft.com/free/)。
-4. 输入帐户信息。 对于**创建 Azure 运行方式帐户**，请选择**是**，以便自动启用可简化向 Azure 进行身份验证所需的设置。
+4. 输入帐户信息。 对于 **创建 Azure 运行方式帐户**，请选择 **是**，以便自动启用可简化向 Azure 进行身份验证所需的设置。
 5. 完成后，请选择“创建”以启动自动化帐户部署  。
 
 ### <a name="import-the-stop-azure-v2-vms-runbook"></a>导入“停止 Azure V2 VM”runbook

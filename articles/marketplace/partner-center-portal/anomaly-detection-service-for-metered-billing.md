@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: mingshen
 author: mingshen-ms
 ms.date: 06/10/2020
-ms.openlocfilehash: 909b818c60932f5b1d6071ea1ccf0ee4c76173b4
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 5ab57bcccb6f681f5c9282ef461181952ed5a679
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92280537"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653068"
 ---
 # <a name="anomaly-detection-service-for-metered-billing"></a>针对按流量计费的异常情况检测服务
 
@@ -50,32 +50,37 @@ ms.locfileid: "92280537"
 
 ## <a name="anomaly-detection-notification"></a>异常情况检测通知
 
-我们每周会对异常检测通知发送电子邮件。 它包括所有计量和客户在一周内检测到的所有异常。 此电子邮件将发送给你创建产品/服务时提供的 **工程** 和 **支持** 联系人。
+你可以评估、管理和确认合作伙伴中心的异常情况。 若要了解如何操作，请参阅 [按流量计费的异常情况检测](../anomaly-detection.md)。
 
-应调查检测到的异常是否是真正的问题，如果是，请与 Microsoft 联系以报告错误的使用 (请参阅下面的支持部分) 。
+若要确保你的客户不会额外收取按流量计费，应调查检测到的异常是否为实际问题。 如果是这样，则可以在合作伙伴中心确认错误的用法。
 
-如果确认检测到的异常正常使用，则无需执行任何其他操作。 但是，如果异常表示潜在的高财务风险，我们可能会与你联系以确认使用情况。  
+建议确认检测到的异常是否正常使用。 这样做将改进我们提供给你的异常数据。 如果异常表示潜在的高财务风险，我们可能会与你联系以确认使用情况。
 
 ## <a name="when-and-how-to-get-support"></a>何时以及如何获取支持
 
-如果你将错误的使用情况发送到 Microsoft，或将导致客户 undercharge，Microsoft 将不会在报告的使用情况下向客户发起帐单或为该使用付费。 你必须自行承担由于少报而导致的收入损失。
+如果向我们发送不正确的按流量计费，或将导致客户 undercharge，我们将不会向客户发送按报告的使用情况，也不会为该使用付费。 你必须自行承担由于少报而导致的收入损失。
 
-如果下述任一情况适用，可打开支持票证，为客户请求退款或调整帐单：
+如果出现以下情况之一，你可以调整合作伙伴中心的使用金额，这将导致客户的退款或计费调整：
 
-- 您确认我们发现的异常之一是真正的问题，不正确的用法会导致客户 **overcharge** 。
-- 你发现你向我们发送了错误的使用情况，并且错误的用法会导致客户 **overcharge** 。
-- 你需要为客户的按流量计费用量请求退款。
+- 您已确认我们发现的异常之一是真正的问题，不正确的用法会导致客户 overcharging。
+- 你发现你向我们发送了错误的使用情况，但使用不当会导致客户 overcharging。
 
-提交票证：
+提交与按流量计费异常相关的支持票证：
 
-1. 转到支持页。 在 " **告诉我们你的问题" 框**中，输入 "错误的使用情况"。
-2. 在 "支持" 主题的 "搜索结果" 下拉范围内，选择下列项之一：
-    - **商业应用商店**  > 计费**计费**  > **为 Azure 应用程序提供了错误的使用情况**，或
-    - **商业应用商店**  > 计费**计费**  > **为 SaaS 产品发送了错误的使用情况**
-3. 在 " **下一步**" 下，选择 " **检查解决方案** " 按钮，将其定向到 "合作伙伴中心" 以提交支持票证。
+1. 使用工作帐户登录到 [合作伙伴中心](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) 。
+1. 在页面右上角的菜单中，选择 " **支持** " 图标。 " **帮助和支持** " 窗格出现在页面的右侧。
+1. 若要获得商业应用商店帮助，请选择 " **商用 marketplace**"。
+   ![说明 "支持" 窗格。](../media/support/commercial-marketplace-support-pane.png)
+1. 在 " **问题摘要** " 框中，输入 **商用 marketplace > 按流量计费**。
+1. 在 " **问题类型** " 框中，选择下列项之一：
+    - **商业市场 > 为 Azure 应用程序提供的错误使用情况计费 >**
+    - **商业市场 > 针对 SaaS 产品/服务发送的错误使用情况计费 >**
+1. 在 **下一步** 中，选择 " **查看解决方案**"。
+1. 查看建议的文档（如果有），或选择 " **提供问题详细信息** " 以提交支持票证。
 
 有关发布者支持选项的详细信息，请参阅 [合作伙伴中心的商业市场计划支持](../support.md)。
 
-## <a name="next-step"></a>后续步骤
+## <a name="next-steps"></a>后续步骤
 
 - 了解 [Marketplace 计量服务 API](marketplace-metering-service-apis.md)。
+- [针对按流量计费的异常情况检测](../anomaly-detection.md)

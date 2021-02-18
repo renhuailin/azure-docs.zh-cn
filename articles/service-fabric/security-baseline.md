@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 175c00440fe9723bbd389db39616f525c2b7f436
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: b2d86083077b95312415099f64a13509ed60091b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99805472"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100582633"
 ---
 # <a name="azure-security-baseline-for-service-fabric"></a>Service Fabric 的 Azure 安全基线
 
@@ -178,9 +178,9 @@ Service Fabric 的 Azure 安全基线包含可帮助你改善部署安全状况�
 
 **指导**：使用 Azure 活动日志监视网络资源配置，并检测与 Azure Service Fabric 部署相关的网络资源的更改。 在 Azure Monitor 中创建当关键网络资源发生更改时触发的警报。
 
-* [如何查看和检索 Azure 活动日志事件](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [如何查看和检索 Azure 活动日志事件](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-* [如何在 Azure Monitor 中创建警报](../azure-monitor/platform/alerts-activity-log.md)
+* [如何在 Azure Monitor 中创建警报](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -224,7 +224,7 @@ Service Fabric 的 Azure 安全基线包含可帮助你改善部署安全状况�
 
 * [如何将 Log Analytics 代理部署到节点上](./service-fabric-diagnostics-oms-agent.md)
 
-* [Log Analytics 日志搜索](../azure-monitor/log-query/log-query-overview.md)
+* [Log Analytics 日志搜索](../azure-monitor/logs/log-query-overview.md)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -240,7 +240,7 @@ Service Fabric 的 Azure 安全基线包含可帮助你改善部署安全状况�
 
 * [如何将 Log Analytics 代理部署到节点上](./service-fabric-diagnostics-oms-agent.md)
 
-* [如何配置 Log Analytics 工作区保留期](../azure-monitor/platform/manage-cost-storage.md)
+* [如何配置 Log Analytics 工作区保留期](../azure-monitor/logs/manage-cost-storage.md)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -256,7 +256,7 @@ Service Fabric 的 Azure 安全基线包含可帮助你改善部署安全状况�
 
 * [如何将 Log Analytics 代理部署到节点上](./service-fabric-diagnostics-oms-agent.md)
 
-* [如何配置 Log Analytics 工作区保留期](../azure-monitor/platform/manage-cost-storage.md)
+* [如何配置 Log Analytics 工作区保留期](../azure-monitor/logs/manage-cost-storage.md)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -266,7 +266,7 @@ Service Fabric 的 Azure 安全基线包含可帮助你改善部署安全状况�
 
 **指导**：使用 Azure Log Analytics 工作区查询来查询 Azure Service Fabric 日志。
 
-* [Log Analytics 日志搜索](../azure-monitor/log-query/log-query-overview.md)
+* [Log Analytics 日志搜索](../azure-monitor/logs/log-query-overview.md)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -278,7 +278,7 @@ Service Fabric 的 Azure 安全基线包含可帮助你改善部署安全状况�
 
 * [如何在 Azure 安全中心管理警报](../security-center/security-center-managing-and-responding-alerts.md)
 
-* [如何针对 Log Analytics 日志数据发出警报](../azure-monitor/learn/tutorial-response.md)
+* [如何针对 Log Analytics 日志数据发出警报](../azure-monitor/alerts/tutorial-response.md)
 
 **Azure 安全中心监视**：是
 
@@ -586,7 +586,7 @@ Service Fabric 的 Azure 安全基线包含可帮助你改善部署安全状况�
 
 **指导**：将 Azure Monitor 与 Azure 活动日志结合使用，以创建在关键 Azure 资源发生更改时发出的警报。
 
-* [如何针对 Azure 活动日志事件创建警报](../azure-monitor/platform/alerts-activity-log.md)
+* [如何针对 Azure 活动日志事件创建警报](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure 安全中心监视**：目前不可用
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 119b00e67cf8337123028840ec6a7ecd29e97a05
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 5506d2da0ccf09de7db7aff744984ae93c59fd32
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99051594"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571706"
 ---
 # <a name="understand-metrics-for-azure-spring-cloud"></a>了解用于 Azure Spring Cloud 的指标
 
@@ -173,7 +173,7 @@ Azure Spring Cloud 提供以下五个图表，其中的指标每分钟更新一�
 
 * [快速入门：通过日志、指标和跟踪来监视 Azure Spring Cloud 应用](spring-cloud-quickstart-logs-metrics-tracing.md)
 
-* [Azure 指标资源管理器入门](../azure-monitor/platform/metrics-getting-started.md)
+* [Azure 指标资源管理器入门](../azure-monitor/essentials/metrics-getting-started.md)
 
 * [通过诊断设置分析日志和指标](./diagnostic-services.md)
 
