@@ -3,12 +3,12 @@ title: 将混合计算机大规模连接到 Azure
 description: 本文介绍如何使用服务主体使用启用了 Azure Arc 的服务器将计算机连接到 Azure。
 ms.date: 09/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 50c6789044f76b3eb9d8b65b62ef4d8c26006af0
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 9e0d3bd2bd5ea59e39ba2ebe33418b7d43b2de9b
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100584836"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101096491"
 ---
 # <a name="connect-hybrid-machines-to-azure-at-scale"></a>将混合计算机大规模连接到 Azure
 
@@ -18,7 +18,7 @@ ms.locfileid: "100584836"
 
 在开始之前，请务必查看[先决条件](agent-overview.md#prerequisites)，并验证你的订阅和资源是否符合要求。 有关支持的区域和其他相关注意事项的信息，请参阅 [支持的 Azure 区域](overview.md#supported-regions)。
 
-如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果没有 Azure 订阅，请在开始之前先创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 在此过程结束时，你将成功地将混合计算机连接到启用了 Azure Arc 的服务器。
 
@@ -67,7 +67,7 @@ ms.locfileid: "100584836"
 > 请确保使用服务主体 **ApplicationId** 属性，而不是 **Id** 属性。
 >
 
-“Azure Connected Machine 加入”角色只包含加入计算机时所需的权限。 可以分配服务主体权限，以允许其范围包含资源组或订阅。 若要添加角色分配，请参阅 [使用 Azure 门户添加或删除 azure 角色分配](../../role-based-access-control/role-assignments-portal.md) 或 [使用 Azure CLI 添加或删除 azure 角色分配](../../role-based-access-control/role-assignments-cli.md)。
+“Azure Connected Machine 加入”角色只包含加入计算机时所需的权限。 可以分配服务主体权限，以允许其范围包含资源组或订阅。 若要添加角色分配，请参阅 [使用 Azure 门户分配 azure 角色](../../role-based-access-control/role-assignments-portal.md) 或 [使用 Azure CLI 分配 azure 角色](../../role-based-access-control/role-assignments-cli.md)。
 
 ## <a name="install-the-agent-and-connect-to-azure"></a>安装代理并连接到 Azure
 

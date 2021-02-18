@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: f46a0938ebb8d9fe7e032162120056dca96b9567
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: f5a248b8701c71b2dcf0415c6656b9b565535232
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99979756"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101096525"
 ---
 # <a name="azure-resources-for-qna-maker"></a>适用于 QnA Maker 的 Azure 资源
 
@@ -66,7 +66,7 @@ QnA Maker 使用多个 Azure 源，每个都有不同的用途。 了解如何�
 | -------------------------- | -------------------- | ----------- | ------------ | -------------------------------- |
 | **试验**        | 免费 SKU             | 免费层   | 免费层    | 分别最多发布 2 KB、50 MB 大小  |
 | **开发/测试环境**   | 标准 SKU         | 共享      | 基本        | 分别最多发布 14 KB、2 GB 大小    |
-| **生产环境** | 标准 SKU         | 基本       | 标准     | 分别最多发布 49 KB、25 GB 大小 |
+| **生产环境** | 标准 SKU         | 基本       | Standard     | 分别最多发布 49 KB、25 GB 大小 |
 
 # <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/v2)
 
@@ -94,7 +94,7 @@ QnA Maker 使用多个 Azure 源，每个都有不同的用途。 了解如何�
 | -------------------------- |------------ | -------------------------------- |
 | **试验**        |免费层    | 分别最多发布 2 KB、50 MB 大小  |
 | **开发/测试环境**   |基本        | 分别最多发布 14 KB、2 GB 大小    |
-| **生产环境** |标准     | 分别最多发布 49 KB、25 GB 大小 |
+| **生产环境** |Standard     | 分别最多发布 49 KB、25 GB 大小 |
 
 ---
 
@@ -142,16 +142,16 @@ QnA Maker 服务处理两种类型的密钥： **创作密钥** 和用于在应�
 
 通过 Api 向服务发出请求时使用这些密钥。
 
-![密钥管理](../media/qnamaker-how-to-key-management/key-management.png)
+![密钥管理](../media/authoring-key.png)
 
 |名称|位置|目的|
 |--|--|--|
-|创作/订阅密钥|[Azure 门户](https://azure.microsoft.com/free/cognitive-services/)|这些密钥用来访问 [QnA Maker 管理服务 API](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase)。 通过这些 Api，您可以编辑知识库中的问题和解答，并发布您的知识库。 这些密钥是在创建新的 QnA Maker 服务时创建的。<br><br>在 "**密钥**" 页上的 "**认知服务**" 资源上查找这些密钥。|
+|创作/订阅密钥|[Azure 门户](https://azure.microsoft.com/free/cognitive-services/)|这些密钥用来访问 [QnA Maker 管理服务 API](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase)。 通过这些 Api，您可以编辑知识库中的问题和解答，并发布您的知识库。 这些密钥是在创建新的 QnA Maker 服务时创建的。<br><br>在 "**密钥和终结点**" 页上的 "**认知服务**" 资源上查找这些密钥。|
 |查询终结点密钥|[QnA Maker 门户](https://www.qnamaker.ai)|这些键用于查询已发布的知识库终结点，以获取用户问题的响应。 通常在聊天机器人中或连接到 QnA Maker 服务的客户端应用程序代码中使用此查询终结点。 这些密钥是在您发布 QnA Maker 知识库时创建的。<br><br>在 " **服务设置** " 页中查找这些密钥。 在下拉菜单上页面右上角的用户菜单中找到此页。|
 
 ### <a name="find-authoring-keys-in-the-azure-portal"></a>在 Azure 门户中查找创作密钥
 
-你可以从创建 QnA Maker 资源的 Azure 门户查看和重置创作密钥。 这些密钥可能称为订阅密钥。
+你可以从创建 QnA Maker 资源的 Azure 门户查看和重置创作密钥。
 
 1. 中转到 Azure 门户中的 QnA Maker 资源，并选择具有 _认知服务_ 类型的资源：
 
@@ -189,12 +189,12 @@ QnA Maker 托管 (预览版) 服务处理两种密钥： **创作密钥** 和 **
 
 |名称|位置|目的|
 |--|--|--|
-|创作/订阅密钥|[Azure 门户](https://azure.microsoft.com/free/cognitive-services/)|这些密钥用来访问 [QnA Maker 管理服务 API](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase)。 通过这些 Api，您可以编辑知识库中的问题和解答，并发布您的知识库。 这些密钥是在创建新的 QnA Maker 服务时创建的。<br><br>在 "**密钥**" 页上的 "**认知服务**" 资源上查找这些密钥。|
+|创作/订阅密钥|[Azure 门户](https://azure.microsoft.com/free/cognitive-services/)|这些密钥用来访问 [QnA Maker 管理服务 API](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase)。 通过这些 Api，您可以编辑知识库中的问题和解答，并发布您的知识库。 这些密钥是在创建新的 QnA Maker 服务时创建的。<br><br>在 "**密钥和终结点**" 页上的 "**认知服务**" 资源上查找这些密钥。|
 |Azure 认知搜索管理密钥|[Azure 门户](../../../search/search-security-api-keys.md)|这些密钥用于与在用户的 Azure 订阅中部署的 Azure 认知搜索服务通信。 将 Azure 认知搜索与 QnA Maker 托管 (预览版) 服务相关联时，管理密钥会自动传递到 QnA Maker 服务。 <br><br>可以在 "**密钥**" 页上的 " **Azure 认知搜索** 资源上找到这些密钥。|
 
 ### <a name="find-authoring-keys-in-the-azure-portal"></a>在 Azure 门户中查找创作密钥
 
-你可以从 Azure 门户中查看和重置创作密钥，你可以在其中创建 QnA Maker 托管 (预览版) 资源。 这些密钥可能称为订阅密钥。
+你可以从 Azure 门户中查看和重置创作密钥，你可以在其中创建 QnA Maker 托管 (预览版) 资源。
 
 1. 请在 Azure 门户中中转到 QnA Maker 托管 (预览版) 资源，并选择具有 *认知服务* 类型的资源：
 
@@ -365,6 +365,6 @@ QnA Maker 托管的 (预览版) 资源提供对创作和发布 Api 的访问，�
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解 QnA Maker [知识库](../index.yml)
+* 了解 QnA Maker [知识库](../How-To/manage-knowledge-bases.md)
 * 了解 [知识库生命周期](development-lifecycle-knowledge-base.md)
 * 查看服务和知识库 [限制](../limits.md)

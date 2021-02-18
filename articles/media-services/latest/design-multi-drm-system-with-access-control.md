@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: willzhan
 ms.custom: seodec18
-ms.openlocfilehash: e0104dd2761f74fbd84486aebbf8c3c4e128eb08
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: bb43396260e1b914f9f5b9e9ae489e87042a3154
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954895"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101092435"
 ---
 # <a name="design-of-a-multi-drm-content-protection-system-with-access-control"></a>设计带访问控制的多 DRM 内容保护系统
 
@@ -66,8 +66,8 @@ ms.locfileid: "98954895"
 * Widevine 原生实现在每种 Android 设备、Chrome 和部分其他设备上。 此外，通过 DASH，Widevine 也在 Firefox 和 Opera 浏览器中受支持。
 * FairPlay 适用于 iOS、macOS 和 tvOS。
 
-
 ## <a name="a-reference-design"></a>参考设计
+
 本部分探讨一种参考设计，这种设计与用于实现它的技术无关。
 
 DRM 子系统可能包含以下组件：

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 02/04/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge Mini R so I can use it to transfer data to Azure.
-ms.openlocfilehash: 1cca747003a127371db7d110500e2b4168f10219
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: a202ee1d708feebc7643fa6f20aafa9d8603fc38
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99594445"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546765"
 ---
 # <a name="tutorial-configure-network-for-azure-stack-edge-mini-r"></a>教程：配置 Azure Stack Edge Mini R 的网络
 
@@ -50,7 +50,7 @@ ms.locfileid: "99594445"
 
 2. 如果需要零时差更新，可在此处通过为数据端口配置有线连接来实现。 若要详细了解如何为此设备设置有线连接，请参阅[通过数据线连接设备](azure-stack-edge-mini-r-deploy-install.md#cable-the-device)。 更新结束后，可删除有线连接。
 
-3. 创建 Wi-Fi 证书和签名链证书。 签名链证书和 Wi-Fi 证书都必须采用带有 .cer 文件扩展名的 DER格式。 有关说明，请参阅[创建证书](azure-stack-edge-j-series-manage-certificates.md)。
+3. 创建 Wi-Fi 证书和签名链证书。 签名链证书和 Wi-Fi 证书都必须采用带有 .cer 文件扩展名的 DER格式。 有关说明，请参阅[创建证书](azure-stack-edge-gpu-manage-certificates.md)。
 
 4. 在本地 web UI 中，转到“开始使用”。 在“安全”磁贴上，依次选择“证书”和“配置”  。 
 

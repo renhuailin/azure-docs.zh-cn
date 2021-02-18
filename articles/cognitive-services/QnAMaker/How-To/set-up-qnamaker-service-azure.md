@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: beb45d0d650b07f6106a3307d2d3a955095ee8b1
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: 0f03cd536d329a94ec80ef884c380c79b5687289
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99592256"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101096625"
 ---
 # <a name="manage-qna-maker-resources"></a>管理 QnA Maker 资源
 
@@ -111,6 +111,8 @@ ms.locfileid: "99592256"
       * 下载 [所有服务标记的 IP 范围](https://www.microsoft.com/download/details.aspx?id=56519)。
       * 选择 "CognitiveServicesManagement" 的 Ip。
       * 导航到应用服务资源的 "网络" 部分，然后单击 "配置访问限制" 选项，将 Ip 添加到允许列表。
+
+    ![入站端口例外](../media/inbound-ports.png)    
 
     此外，我们还提供了一个自动化脚本，为你的应用服务执行相同的操作。 可在 GitHub 上找到 [用于配置允许列表的 PowerShell 脚本](https://github.com/pchoudhari/QnAMakerBackupRestore/blob/master/AddRestrictedIPAzureAppService.ps1) 。 需要输入订阅 id、资源组和实际应用服务名称作为脚本参数。 运行脚本会自动将 Ip 添加到应用服务允许列表中。
 
@@ -302,7 +304,7 @@ QnAMaker 运行时是在 Azure 门户中 [创建 QnAMaker 服务](./set-up-qnama
 
 若要使预测终结点应用始终加载（即使没有流量），请将 "空闲" 设置为 "始终打开"。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 搜索并选择 QnA Maker 资源的应用服务。 它将具有与 QnA Maker 资源相同的名称，但它将具有不同 **类型** 的应用服务。
 1. 找到 " **设置** "，然后选择 " **配置**"。
 1. 在 "配置" 窗格上，选择 " **常规设置**"，然后找到 " **始终打开**"，并选择 **"打开** " 作为值。
@@ -311,7 +313,7 @@ QnAMaker 运行时是在 Azure 门户中 [创建 QnAMaker 服务](./set-up-qnama
     > ![在 "配置" 窗格上，选择 "常规设置"，然后查找 * * Always on * *，然后选择 * * On * * 作为值。](../media/qnamaker-how-to-upgrade-qnamaker/configure-app-service-idle-timeout.png)
 
 1. 选择“保存”  以保存配置。
-1. 系统会询问你是否要重新启动应用程序以使用新设置。 选择“继续”。 
+1. 系统会询问你是否要重新启动应用程序以使用新设置。 选择“继续”。
 
 详细了解如何配置应用服务 [常规设置](../../../app-service/configure-common.md#configure-general-settings)。
 
@@ -350,7 +352,7 @@ QnAMaker 运行时是在 Azure 门户中 [创建 QnAMaker 服务](./set-up-qnama
 
     ![QnA Maker managed (Preview) 配置页的屏幕截图](../media/qnamaker-how-to-upgrade-qnamaker/change-search-service-configuration.png)
 
-1. 单击“保存”。
+1. 单击 **“保存”** 。
 
 > [!NOTE]
 > 如果更改与 QnA Maker 关联的 Azure 搜索服务，将无法访问其中已存在的所有知识库。 请确保在更改 Azure 搜索服务之前导出现有知识库。

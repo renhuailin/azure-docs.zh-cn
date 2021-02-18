@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 12/09/2020
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy21q2, automl
-ms.openlocfilehash: c95a75ef48aa9e3db070c6c237f913fabbe893fa
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 2a07b2fc70a21dd192f74eb5260f3444e09cdca0
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100388203"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101092904"
 ---
 # <a name="evaluate-automated-machine-learning-experiment-results"></a>评估自动化机器学习试验结果
 
@@ -192,7 +192,7 @@ explained_variance|解释的方差衡量模型对目标变量变化的解释程�
 mean_absolute_error|平均绝对误差是目标与预测之间的差的预期绝对值。<br><br> **目的：** 越接近 0 越好 <br> **范围：** [0, inf) <br><br> 类型： <br>`mean_absolute_error` <br>  `normalized_mean_absolute_error`，mean_absolute_error 除以数据范围。 | [计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_absolute_error.html)|
 mean_absolute_percentage_error|平均绝对百分比误差 (MAPE) 是预测值和实际值之间平均差值的度量值。<br><br> **目的：** 越接近 0 越好 <br> **范围：** [0, inf) ||
 median_absolute_error|平均绝对误差是目标与预测之间的所有绝对差的中间值。 此损失值可靠地反映离群值。<br><br> **目的：** 越接近 0 越好 <br> **范围：** [0, inf)<br><br>类型： <br> `median_absolute_error`<br> `normalized_median_absolute_error`median_absolute_error 除以数据范围。 |[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.median_absolute_error.html)|
-r2_score|R^2 是确定系数或平方误差与输出平均值的基线模型相比减少的百分比。 <br> <br> **目的：** 越接近 1 越好 <br> **范围：** [-1, 1] <br><br> 注意： R ^ 2 的范围通常为 (-inf，1]，但自动 ML 会将极差模型的负值固定到-1。|[计算](https://scikit-learn.org/0.16/modules/generated/sklearn.metrics.r2_score.html)|
+r2_score|R<sup>2</sup> (确定系数) 度量平均方形错误 (MSE) 相对于观察到的数据的总方差。 <br> <br> **目的：** 越接近 1 越好 <br> **范围：** [-1, 1]<br><br>注意： R<sup>2</sup> 的范围通常为 (-inf，1]。 MSE 可以大于观察方差，因此，根据数据和模型预测，R<sup>2</sup> 可以有任意大的负值。 自动 ML 剪辑报告 R<sup>2</sup> 评分为-1，因此 r<sup>2</sup> 的值-1 可能表示 true r<sup>2</sup> 评分小于-1。 在解释负 R<sup>2</sup> 评分时，请考虑其他指标值和数据的属性。|[计算](https://scikit-learn.org/0.16/modules/generated/sklearn.metrics.r2_score.html)|
 root_mean_squared_error |均方根误差 (RMSE) 是目标与预测之间的预期平方差的平方根。 对于无偏差估算器，RMSE 等于标准偏差。<br> <br> **目的：** 越接近 0 越好 <br> **范围：** [0, inf)<br><br>类型：<br> `root_mean_squared_error` <br> `normalized_root_mean_squared_error`：root_mean_squared_error 除以数据范围。 |[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html)|
 root_mean_squared_log_error|均方根对数误差是预期平方对数误差的平方根。<br><br>**目的：** 越接近 0 越好 <br> **范围：** [0, inf) <br> <br>类型： <br>`root_mean_squared_log_error` <br> `normalized_root_mean_squared_log_error`，root_mean_squared_log_error 除以数据范围。  |[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|
 spearman_correlation| 斯皮尔曼相关是两个数据集之间的关系单一性的非参数测量法。 与皮尔逊相关不同，斯皮尔曼相关不假设两个数据集呈正态分布。 与其他相关系数一样，斯皮尔曼在 -1 和 +1 之间变化，0 表示不相关。 -1 或 1 相关表示确切的单一关系。 <br><br> 斯皮尔曼是一个秩相关指标，这意味着，如果预测值或实际值的变化不改变预测值或实际值的秩序，则不会改变斯皮尔曼结果。<br> <br> **目的：** 越接近 1 越好 <br> **范围：** [-1, 1]|[计算](https://docs.scipy.org/doc/scipy-0.16.1/reference/generated/scipy.stats.spearmanr.html)|

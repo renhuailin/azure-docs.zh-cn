@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/01/2021
 ms.custom: references_regions
-ms.openlocfilehash: bbd3e5774c6effa45888f6e59874d29f3b55b45f
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: 5e8b873e0e4e89979769183cfbf0ad473069e897
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100545575"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101096429"
 ---
 # <a name="scale-for-performance-on-azure-cognitive-search"></a>Azure 认知搜索的性能缩放
 
@@ -100,6 +100,7 @@ Azure 认知搜索当前支持为标准层或更高版本的搜索服务可用�
 + 澳大利亚东部 (创建2021年1月30日，或更高版本) 
 + 加拿大中部 (创建2021年1月30日，或更高版本) 
 + 美国中部 (创建2020年12月4日或更高版本) 
++ 2021年1月27日，美国东部 (创建) 
 + 2021年1月30日，美国东部 2 (创建) 
 + 法国中部 (于10月23日（2020或更高版本）创建) 
 + 日本东部 (创建2021年1月30日，或更高版本) 

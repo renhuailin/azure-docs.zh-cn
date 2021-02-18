@@ -6,14 +6,19 @@ ms.topic: tutorial
 ms.date: 10/31/2018
 ms.author: gwallace
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 56cc8b4010dc17cf2b723a72898034de8d6a7175
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9e3dc16481340c0266cd398d0970e2147648e17f
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91843288"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99625443"
 ---
 # <a name="tutorial-debug-a-service-fabric-mesh-application-running-in-your-local-development-cluster"></a>教程：调试在本地开发群集中运行的 Service Fabric 网格应用程序
+
+> [!IMPORTANT]
+> Azure Service Fabric 网格的预览版已停用。 不允许再通过 Service Fabric 网格 API 进行新的部署。 对现有部署的支持将会持续到 2021 年 4 月 28 日。
+> 
+> 有关详细信息，请参阅 [Azure Service Fabric 网格预览版停用](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/)。
 
 本教程是系列教程的第二部分，介绍如何生成并调试本地开发群集上的 Azure Service Fabric 网格应用。
 
@@ -33,7 +38,7 @@ ms.locfileid: "91843288"
 
 [!INCLUDE [preview note](./includes/include-preview-note.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在开始学习本教程之前：
 
@@ -53,7 +58,7 @@ git clone https://github.com/azure-samples/service-fabric-mesh
 
 ## <a name="build-and-debug-on-your-local-cluster"></a>在本地群集上生成和调试
 
-加载项目时，会自动生成一个 Docker 映像并将其部署到本地群集。 此过程可能需要一段时间。 若要在 Visual Studio 的“输出”窗格中监视进度，请将“输出”窗格中的“显示以下来源的输出:”下拉列表值设置为“Service Fabric 工具”。   
+加载项目时，会自动生成一个 Docker 映像并将其部署到本地群集。 此过程可能需要一段时间。 若要在 Visual Studio 的“输出”窗格中监视进度，请将“输出”窗格中的“显示以下来源的输出:”下拉列表值设置为“Service Fabric 工具”。
 
 按 **F5** 在本地编译并运行服务。 在本地运行和调试项目后，Visual Studio 将会：
 
@@ -71,11 +76,11 @@ git clone https://github.com/azure-samples/service-fabric-mesh
 
 目前存在导致调用 `using (HttpResponseMessage response = client.GetAsync("").GetAwaiter().GetResult())` 无法连接到服务的问题。 只要主机 IP 地址发生变化，就会发生这种情况。 若要解决此问题：
 
-1. 从本地群集中删除应用（在 Visual Studio 中**生成** > **清理解决方案**）。
-2. 从 Service Fabric 本地群集管理器中，选择“停止本地群集”  ，然后选择“启动本地群集”  。
+1. 从本地群集中删除应用（在 Visual Studio 中 **生成** > **清理解决方案**）。
+2. 从 Service Fabric 本地群集管理器中，选择“停止本地群集”，然后选择“启动本地群集”。
 3. 重新部署应用（在 Visual Studio 中为 **F5**）。
 
-如果收到“未运行任何 Service Fabric 本地群集”错误，请确保 Service Fabric 本地群集管理器 (LCM) 正在运行，然后右键单击任务栏中的 LCM 图标，并单击“启动本地群集”。   启动本地群集后，返回 Visual Studio 并按 **F5**。
+如果收到“未运行任何 Service Fabric 本地群集”错误，请确保 Service Fabric 本地群集管理器 (LCM) 正在运行，然后右键单击任务栏中的 LCM 图标，并单击“启动本地群集”。 启动本地群集后，返回 Visual Studio 并按 **F5**。
 
 如果启动应用时收到 **404** 错误，可能表示 **service.yaml** 中的环境变量不正确。 请确保根据[创建环境变量](./service-fabric-mesh-tutorial-create-dotnetcore.md#create-environment-variables)中的说明正确设置 `ApiHostPort` 和 `ToDoServiceName`。
 

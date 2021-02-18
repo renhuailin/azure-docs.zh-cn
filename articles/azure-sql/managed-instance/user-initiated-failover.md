@@ -9,15 +9,16 @@ ms.topic: how-to
 author: danimir
 ms.author: danil
 ms.reviewer: douglas, sstein
-ms.date: 01/26/2021
-ms.openlocfilehash: 7588ce055ce0df89a7dca87a75a38c8acccf6d46
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.date: 02/17/2021
+ms.openlocfilehash: ecd97efbf12fb149037a94749bc899169f2c5a92
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98806091"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101096516"
 ---
 # <a name="user-initiated-manual-failover-on-sql-managed-instance"></a>SQL 托管实例上用户启动的手动故障转移
+[!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
 本文介绍如何在 SQL 托管实例常规用途 (GP) 和业务关键 (BC) 服务层级上手动对主节点进行故障转移，以及如何仅在 BC 服务层上对辅助只读副本节点进行手动故障转移。
 

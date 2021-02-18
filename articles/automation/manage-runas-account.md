@@ -5,12 +5,12 @@ services: automation
 ms.subservice: ''
 ms.date: 01/19/2021
 ms.topic: conceptual
-ms.openlocfilehash: f9e99318c526bb935d0e035fdbf59874249390da
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: f170fc948f136f4f46634e7ae2645ed2eb357afa
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99050933"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101096463"
 ---
 # <a name="manage-an-azure-automation-run-as-account"></a>管理 Azure 自动化运行方式帐户
 
@@ -64,10 +64,10 @@ Azure 自动化支持从一个订阅使用单个自动化帐户，并针对 Azur
 
 有关如何添加角色分配的详细步骤，请查看以下文章，具体取决于你想要使用的方法。
 
-* [从 Azure 门户添加 Azure 角色分配](../role-based-access-control/role-assignments-portal.md)
-* [使用 Azure PowerShell 添加 Azure 角色分配](../role-based-access-control/role-assignments-powershell.md)
-* [使用 Azure CLI 添加 Azure 角色分配](../role-based-access-control/role-assignments-cli.md)
-* [使用 REST API 添加 Azure 角色分配](..//role-based-access-control/role-assignments-rest.md)
+* [使用 Azure 门户分配 Azure 角色](../role-based-access-control/role-assignments-portal.md)
+* [使用 Azure PowerShell 分配 Azure 角色](../role-based-access-control/role-assignments-powershell.md)
+* [使用 Azure CLI 分配 Azure 角色](../role-based-access-control/role-assignments-cli.md)
+* [使用 REST API 分配 Azure 角色](..//role-based-access-control/role-assignments-rest.md)
 
 将运行方式帐户分配给角色后，请在 runbook 中指定 `Set-AzContext -SubscriptionId "xxxx-xxxx-xxxx-xxxx"` 设置要使用的订阅上下文。 有关详细信息，请参阅 [AzContext](/powershell/module/az.accounts/set-azcontext)。
 

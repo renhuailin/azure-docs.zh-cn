@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 8c32d06247516611fc79bd6f77b60fec6b73044d
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 0618e4445629893fbe623df4bc937698bd307c7c
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100591811"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101096567"
 ---
 # <a name="azure-security-baseline-for-azure-cognitive-search"></a>Azure 认知搜索的 Azure 安全基线
 
@@ -484,7 +484,7 @@ Microsoft 管理基础平台，并将所有客户内容视为敏感数据，防�
 
 **指导**：数据标识、分类和丢失防护功能尚不适用于认知搜索。 可以根据合规性需要实施第三方解决方案。 
 
-Microsoft 管理基础平台，并将所有客户内容视为敏感数据，防范客户数据丢失和泄露。 为了确保 Azure 中的客户数据保持安全，Microsoft 实施并维护了一套可靠的数据保护控制措施和功能。
+Microsoft 管理基础平台，并将所有客户内容视为敏感数据，防范客户数据丢失和泄露。 为了确保 Azure 中的客户数据保持安全，Microsoft 已实施并维护一套可靠的数据保护控制机制和功能。
 
 - [了解 Azure 中的客户数据保护](../security/fundamentals/protection-customer-data.md)
 
@@ -495,7 +495,7 @@ Microsoft 管理基础平台，并将所有客户内容视为敏感数据，防�
 ### <a name="46-use-azure-rbac-to-manage-access-to-resources"></a>4.6：使用 Azure RBAC 管理对资源的访问
 
 **指导**：对于服务管理，使用 Azure 基于角色的访问控制 (Azure RBAC) 来管理对密钥和配置的访问。 对于索引和查询等内容操作，认知搜索使用密钥，而不是基于标识的访问控制模型。 使用 Azure RBAC 控制对密钥的访问。
-- [如何在 Azure 中配置 RBAC](../role-based-access-control/role-assignments-portal.md) 
+- [如何配置 Azure RBAC](../role-based-access-control/role-assignments-portal.md) 
 
  
 - [如何使用角色控制对认知搜索的管理访问权限](./search-security-rbac.md)

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 05/05/2020
 ms.author: mbaldwin
 Customer intent: As a key vault administrator, I want to move my vault to another subscription.
-ms.openlocfilehash: 23be8e667d435c2d91d32ebeac30b1e96b45a77e
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: a84627b2b426385d21ad72b85780db86e7dd5ee3
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98790285"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101096074"
 ---
 # <a name="moving-an-azure-key-vault-to-another-subscription"></a>将 Azure Key Vault 移动到另一个订阅
 
@@ -29,7 +29,7 @@ ms.locfileid: "98790285"
 > 在决定将密钥保管库移动到新订阅之前，请确保你了解此变更的影响，并仔细遵循本文中的指导。
 > 如果使用的是托管服务标识 (MSI)，请阅读此文档末尾的移动后说明。 
 
-[Azure Key Vault](overview.md) 自动绑定到用于创建该订阅的订阅的默认 [Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md) 租户 ID。 可以按照本 [指南](../../active-directory/fundamentals/active-directory-how-to-find-tenant.md)来查找与订阅关联的租户 ID。 所有访问策略条目和角色分配还与此租户 ID 相关联。  如果将 Azure 订阅从租户 A 移到租户 B，租户 B 中的服务主体（用户和应用程序）将无法访问现有的密钥保管库。若要解决此问题，需执行以下操作：
+[Azure Key Vault](overview.md) 会自动绑定到创建它的订阅的默认 [Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md) 租户 ID。 可以按照本[指南](../../active-directory/fundamentals/active-directory-how-to-find-tenant.md)查找与订阅关联的租户 ID。 所有访问策略条目和角色分配也都绑定到此租户 ID。  如果将 Azure 订阅从租户 A 移到租户 B，租户 B 中的服务主体（用户和应用程序）将无法访问现有的密钥保管库。若要解决此问题，需执行以下操作：
 
 * 将与订阅中所有现有密钥保管库关联的租户 ID 更改到租户 B。
 * 删除所有现有的访问策略条目。
@@ -49,17 +49,17 @@ ms.locfileid: "98790285"
 
 ## <a name="prerequisites"></a>先决条件
 
-* [参与者](../../role-based-access-control/built-in-roles.md#contributor) 级别的访问权限或更高级别，用于在密钥保管库所在的当前订阅。 你可以使用 [Azure 门户](../../role-based-access-control/role-assignments-portal.md)、 [Azure CLI](../../role-based-access-control/role-assignments-cli.md)或 [PowerShell](../../role-based-access-control/role-assignments-powershell.md)分配角色。
-* [参与者](../../role-based-access-control/built-in-roles.md#contributor) 级别访问权限或更高级别，用于要移动密钥保管库的订阅。你可以使用 [Azure 门户](../../role-based-access-control/role-assignments-portal.md)、 [Azure CLI](../../role-based-access-control/role-assignments-cli.md)或 [PowerShell](../../role-based-access-control/role-assignments-powershell.md)分配角色。
-* 新订阅中有一个资源组。 可以使用 [Azure 门户](../../azure-resource-manager/management/manage-resource-groups-portal.md)、 [PowerShell](../../azure-resource-manager/management/manage-resource-groups-powershell.md)或 [Azure CLI](../../azure-resource-manager/management/manage-resource-groups-cli.md)创建一个。
+* 对密钥保管库所在的当前订阅具有[参与者](../../role-based-access-control/built-in-roles.md#contributor)级别或更高级别的访问权限。 可以使用 [Azure 门户](../../role-based-access-control/role-assignments-portal.md)、[Azure CLI](../../role-based-access-control/role-assignments-cli.md) 或 [PowerShell](../../role-based-access-control/role-assignments-powershell.md) 来分配角色。
+* 对于要将密钥保管库移动到的订阅具有[参与者](../../role-based-access-control/built-in-roles.md#contributor)级别或更高级别的访问权限。可以使用 [Azure 门户](../../role-based-access-control/role-assignments-portal.md)、[Azure CLI](../../role-based-access-control/role-assignments-cli.md) 或 [PowerShell](../../role-based-access-control/role-assignments-powershell.md) 来分配角色。
+* 新订阅中有一个资源组。 可以使用 [Azure 门户](../../azure-resource-manager/management/manage-resource-groups-portal.md)、[PowerShell](../../azure-resource-manager/management/manage-resource-groups-powershell.md) 或 [Azure CLI](../../azure-resource-manager/management/manage-resource-groups-cli.md) 来创建资源组。
 
-你可以使用 [Azure 门户](../../role-based-access-control/role-assignments-list-portal.md)、 [PowerShell](../../role-based-access-control/role-assignments-list-powershell.md)、 [Azure CLI](../../role-based-access-control/role-assignments-list-cli.md)或 [REST API](../../role-based-access-control/role-assignments-list-rest.md)检查现有角色。
+可以使用 [Azure 门户](../../role-based-access-control/role-assignments-list-portal.md)、[PowerShell](../../role-based-access-control/role-assignments-list-powershell.md)、[Azure CLI](../../role-based-access-control/role-assignments-list-cli.md) 或 [REST API](../../role-based-access-control/role-assignments-list-rest.md) 来检查现有角色。
 
 
 ## <a name="moving-a-key-vault-to-a-new-subscription"></a>将密钥保管库移动到新的订阅
 
 1. 通过 https://portal.azure.com 登录到 Azure 门户。
-2. 导航到 [密钥保管库](overview.md)
+2. 导航到[密钥保管库](overview.md)
 3. 单击“概览”选项卡
 4. 选择“移动”按钮
 5. 从下拉选项中选择“移动到另一个订阅”
@@ -69,7 +69,7 @@ ms.locfileid: "98790285"
 
 ## <a name="additional-steps-when-subscription-is-in-a-new-tenant"></a>订阅在新租户中时的其他步骤
 
-如果已将密钥保管库移动到新租户中的订阅，则需要手动更新租户 ID 并删除旧的访问策略和角色分配。 下面是通过 PowerShell 和 Azure CLI 执行这些步骤的教程。 如果你使用的是 PowerShell，你可能需要运行下面所述的 Clear-AzContext 命令，以允许你查看当前所选范围之外的资源。 
+如果将密钥保管库移到了新租户中的订阅，则需要手动更新租户 ID 并删除旧的访问策略和角色分配。 下面是通过 PowerShell 和 Azure CLI 执行这些步骤的教程。 如果使用的是 PowerShell，可能需要运行下面所述的 Clear-AzContext 命令，这样就能查看当前所选范围外的资源。 
 
 ### <a name="update-tenant-id-in-a-key-vault"></a>更新密钥保管库中的租户 ID
 
@@ -96,9 +96,9 @@ az keyvault update -n myvault --set Properties.tenantId=$tenantId          # Upd
 ### <a name="update-access-policies-and-role-assignments"></a>更新访问策略和角色分配
 
 > [!NOTE]
-> 如果 Key Vault 使用 [AZURE RBAC](../../role-based-access-control/overview.md) 权限模型。 还需要删除密钥保管库角色分配。 可以使用 [Azure 门户](../../role-based-access-control/role-assignments-portal.md)、 [Azure CLI](../../role-based-access-control/role-assignments-cli.md)或 [PowerShell](../../role-based-access-control/role-assignments-powershell.md)删除角色分配。 
+> 如果 Key Vault 使用的是 [Azure RBAC](../../role-based-access-control/overview.md) 权限模型。 还需要删除密钥保管库角色分配。 可以使用 [Azure 门户](../../role-based-access-control/role-assignments-portal.md)、[Azure CLI](../../role-based-access-control/role-assignments-cli.md) 或 [PowerShell](../../role-based-access-control/role-assignments-powershell.md) 来删除角色分配。 
 
-你的保管库已与正确的租户 ID 关联，并且已删除旧的访问策略项或角色分配，则设置新的访问策略项或角色分配。
+现在，保管库已与正确的租户 ID 关联，并且旧的访问策略条目或角色分配已删除，请设置新的访问策略条目或角色分配。
 
 有关分配策略，请参阅：
 - [使用门户分配访问策略](assign-access-policy-portal.md)
@@ -106,14 +106,14 @@ az keyvault update -n myvault --set Properties.tenantId=$tenantId          # Upd
 - [使用 PowerShell 分配访问策略](assign-access-policy-powershell.md)
 
 有关添加角色分配，请参阅：
-- [使用门户添加角色分配](../../role-based-access-control/role-assignments-portal.md)
-- [使用 Azure CLI 添加角色分配](../../role-based-access-control/role-assignments-cli.md)
-- [使用 PowerShell 添加角色分配](../../role-based-access-control/role-assignments-powershell.md)
+- [使用 Azure 门户分配 Azure 角色](../../role-based-access-control/role-assignments-portal.md)
+- [使用 Azure CLI 分配 Azure 角色](../../role-based-access-control/role-assignments-cli.md)
+- [使用 PowerShell 分配 Azure 角色](../../role-based-access-control/role-assignments-powershell.md)
 
 
 ### <a name="update-managed-identities"></a>更新托管标识
 
-如果正在传输整个订阅，并使用 Azure 资源的托管标识，还需要将其更新为新的 Azure Active Directory 租户。 有关托管标识的详细信息，请参阅[托管标识概述](../../active-directory/managed-identities-azure-resources/overview.md)。
+如果要传输整个订阅并使用 Azure 资源的托管标识，则还需要将其更新为新的 Azure Active Directory 租户。 有关托管标识的详细信息，请参阅[托管标识概述](../../active-directory/managed-identities-azure-resources/overview.md)。
 
 如果使用的是托管标识，则还必须更新标识，因为旧标识将不再位于相应的 Azure Active Directory 租户中。 参阅下述有助于解决此问题的文档。 
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/30/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 5e44515c8ca71d115ced65c9123e2b1ae3bdf23a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 1ba497094a28e056d5984f1e58e2f15c9d21eae2
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100578234"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101094448"
 ---
 # <a name="azure-security-baseline-for-azure-resource-manager"></a>适用于 Azure 资源管理器的 Azure 安全基线
 
@@ -241,7 +241,7 @@ ms.locfileid: "100578234"
 
 **指导**：请使用 Azure AD RBAC 来控制对数据和资源的访问，此外也可以使用特定于服务的访问控制方法。
 
-- [如何在 Azure 中配置 RBAC](../../role-based-access-control/role-assignments-portal.md)
+- [如何配置 Azure RBAC](../../role-based-access-control/role-assignments-portal.md)
 
 **Azure 安全中心监视**：不适用
 

@@ -6,26 +6,26 @@ services: cognitive-services
 author: laujan
 manager: nitinme
 ms.service: cognitive-services
-ms.subservice: translator-text
 ms.topic: overview
-ms.date: 09/11/2020
+ms.subservice: translator-text
+ms.date: 02/15/2021
 ms.author: lajanuar
 ms.custom: cog-serv-seo-aug-2020
 keywords: translator, 文本翻译, 机器翻译, 翻译服务
-ms.openlocfilehash: 37f0d64879493abcf3e5b9448068b86b7a36dccb
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 12f6d22f263747a8c43b2d98e6ade1de78aea1ce
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98896691"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100556252"
 ---
 # <a name="what-is-the-translator-service"></a>什么是 Translator 服务？
 
-Translator 是一种基于云的机器翻译服务，是用于构建智能应用的 [Azure 认知服务](../../index.yml?panel=ai&pivot=products)系列认知 API 的一部分。 “翻译”可以轻松地集成到应用程序、网站、工具和解决方案中。 通过它，你可以添加[超过 70 种语言](./language-support.md)的多语言用户体验，并且可以在具有任何操作系统的任何硬件平台上将其应用于文本翻译。
+Translator 是一种基于云的机器翻译服务，是用于构建智能应用的 [Azure 认知服务](../../index.yml?panel=ai&pivot=products)系列认知 API 的一部分。 “翻译”可以轻松地集成到应用程序、网站、工具和解决方案中。 通过该服务可添加[超过 70 种语言](./language-support.md)的多语言用户体验。 可以在任何操作系统的任何硬件平台上使用该服务进行文本转换。
 
 ## <a name="about-microsoft-translator"></a>关于 Microsoft Translator
 
-“翻译”为各种 Microsoft 产品和服务提供支持，并已在全球数千家企业的应用程序和工作流中使用，使其内容可传播到全球的受众。
+“翻译”为许多 Microsoft 产品和服务提供支持，并已在全球数千家企业的应用程序和工作流中使用。
 
 由 Translator 提供支持的语音翻译也可通过 [Azure 语音服务](../speech-service/index.yml)获取。 它将语音翻译 API 和自定义语音服务的功能组合成了一项统一的可完全自定义的服务。 
 
@@ -45,15 +45,15 @@ NMT 模型是该 API 的核心，对最终用户不可见。 唯一明显的区�
 
 ## <a name="improve-translations-with-custom-translator"></a>通过自定义翻译器改进翻译
 
-自定义翻译器是翻译服务的扩展，可以与“翻译”配合用于自定义神经翻译系统，并改进特定术语和样式的翻译。
+ 自定义翻译器是翻译服务的扩展，可以与“翻译”配合用于自定义神经翻译系统，并改进特定术语和样式的翻译。
 
-使用自定义翻译，可以构建翻译系统来处理自己的业务或行业中使用的术语。 然后，就可以使用类别参数通过常规的翻译将自定义翻译系统轻松集成到现有的应用程序、工作流和网站中，而且可以跨多种类型的设备。
+使用自定义翻译器，可以构建翻译系统来处理自己的业务或行业中使用的术语。 可以使用类别参数通过常规“翻译”服务将自定义翻译系统轻松集成到现有应用程序、工作流、网站和设备中。
 
 详细了解[自定义翻译器](customization.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-- [注册](./translator-how-to-signup.md)访问密钥。
+- [创建“翻译”服务](./translator-how-to-signup.md)以获取访问密钥和终结点。
 - 请试用[快速入门](quickstart-translator.md)以快速调用 Translator 服务。
 - [API 参考](./reference/v3-0-reference.md)提供了 API 的技术文档。
 - [定价详细信息](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/)
