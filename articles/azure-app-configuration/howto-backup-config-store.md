@@ -10,12 +10,12 @@ ms.custom: devx-track-dotnet, devx-track-azurecli
 ms.topic: how-to
 ms.date: 04/27/2020
 ms.author: avgupta
-ms.openlocfilehash: 04edf2eeb231ff1444c732840def2b78b1373e79
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 39c50f539c04a6c49316f4541c759859be861f9d
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94565919"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101095516"
 ---
 # <a name="back-up-app-configuration-stores-automatically"></a>自动备份应用程序配置存储区
 
@@ -39,7 +39,7 @@ ms.locfileid: "94565919"
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)].
 
-## <a name="prerequisites"></a>先决条件 
+## <a name="prerequisites"></a>必备条件 
 
 - 包含 Azure 开发工作负载的 [Visual Studio 2019](https://visualstudio.microsoft.com/vs)。
 
@@ -47,7 +47,7 @@ ms.locfileid: "94565919"
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
-- 本教程需要 Azure CLI 版或更高版本。 如果使用 Azure Cloud Shell，则最新版本已安装。
+- 本教程需要 Azure CLI 2.3.1 或更高版本。 如果使用 Azure Cloud Shell，则最新版本已安装。
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
@@ -65,7 +65,7 @@ az group create --name $resourceGroupName --location westus
 ## <a name="create-app-configuration-stores"></a>创建应用程序配置存储区
 
 在不同区域创建主应用程序配置和辅助应用程序配置存储区。
-`<primary_appconfig_name>`将和替换 `<secondary_appconfig_name>` 为配置存储区的唯一名称。 每个存储名称必须唯一，因为它将用作 DNS 名称。
+将 `<primary_appconfig_name>` 和 `<secondary_appconfig_name>` 替换为配置存储的唯一名称。 每个存储名称必须唯一，因为它将用作 DNS 名称。
 
 ```azurecli-interactive
 primaryAppConfigName="<primary_appconfig_name>"
@@ -177,7 +177,7 @@ az functionapp identity assign --name $functionAppName --resource-group $resourc
 ```
 
 > [!NOTE]
-> 要执行所需的资源创建和角色管理，帐户在相应的范围（订阅或资源组）需要 `Owner` 权限。 如果需有关要角色分配的帮助，请了解[如何使用 Azure 门户添加或删除 Azure 角色分配](../role-based-access-control/role-assignments-portal.md)。
+> 要执行所需的资源创建和角色管理，帐户在相应的范围（订阅或资源组）需要 `Owner` 权限。 如果需要有关角色分配的帮助，请参阅 [如何使用 Azure 门户分配 Azure 角色](../role-based-access-control/role-assignments-portal.md)。
 
 使用以下命令或 [Azure 门户](./howto-integrate-azure-managed-service-identity.md#grant-access-to-app-configuration)向函数应用的托管标识授予对应用程序配置存储区的访问权限。 使用以下角色：
 - 分配主应用程序配置存储区中的 `App Configuration Data Reader` 角色。

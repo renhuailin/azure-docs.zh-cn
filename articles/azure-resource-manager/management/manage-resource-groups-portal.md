@@ -5,12 +5,12 @@ author: mumian
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: jgao
-ms.openlocfilehash: 6086dffaefba003461a6edd8177afab05377103d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aabaad54dce52d57aaa4689f591351e290b0f9a3
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91371246"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101093701"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-the-azure-portal"></a>使用 Azure 门户管理 Azure 资源管理器资源组
 
@@ -27,7 +27,7 @@ ms.locfileid: "91371246"
 
 资源组是用于保存 Azure 解决方案相关资源的容器。 资源组可以包含解决方案的所有资源，也可以只包含想要作为组来管理的资源。 根据对组织有利的原则，决定如何将资源分配到资源组。 通常可将共享相同生命周期的资源添加到同一资源组，以便将其作为一个组轻松部署、更新和删除。
 
-资源组存储与资源有关的元数据。 因此，在指定资源组的位置时，是在指定元数据的存储位置。 出于合规性原因，可能需要确保数据存储在某一特定区域。
+” 资源组存储有关资源的元数据。 因此，当指定资源组的位置时，也就指定了元数据的存储位置。 出于合规性原因，可能需要确保数据存储在某一特定区域。
 
 
 ## <a name="create-resource-groups"></a>创建资源组
@@ -105,7 +105,7 @@ ms.locfileid: "91371246"
 
 ## <a name="manage-access-to-resource-groups"></a>管理对资源组的访问
 
-可以通过 [Azure 基于角色的访问控制 (Azure RBAC)](../../role-based-access-control/overview.md) 管理对 Azure 中资源的访问权限。 有关详细信息，请参阅[使用 Azure 门户添加或删除 Azure 角色分配](../../role-based-access-control/role-assignments-portal.md)。
+可以通过 [Azure 基于角色的访问控制 (Azure RBAC)](../../role-based-access-control/overview.md) 管理对 Azure 中资源的访问权限。 有关详细信息，请参阅 [使用 Azure 门户分配 Azure 角色](../../role-based-access-control/role-assignments-portal.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

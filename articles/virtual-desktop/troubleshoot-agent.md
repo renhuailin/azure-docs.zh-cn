@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 12/16/2020
 ms.author: sefriend
 manager: clarkn
-ms.openlocfilehash: 1500a635d5177ed8899cdc3f1364e57a8525892c
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: b71c5426b6fba6f232b5a7aa42347f6b25d46299
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100099942"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101094957"
 ---
 # <a name="troubleshoot-common-windows-virtual-desktop-agent-issues"></a>排查常见的 Windows 虚拟桌面代理问题
 
@@ -63,7 +63,7 @@ ms.locfileid: "100099942"
    > [!div class="mx-imgBorder"]
    > ![IsRegistered 1 的屏幕截图](media/isregistered-registry.png)
 
-## <a name="error-agent-cannot-connect-to-broker-with-invalid_form-or-not_found-url"></a>错误：代理无法连接到 INVALID_FORM 或 NOT_FOUND 的 broker。 代码
+## <a name="error-agent-cannot-connect-to-broker-with-invalid_form-or-not_found-url"></a>错误：代理无法连接到 INVALID_FORM 或 NOT_FOUND 的 broker。 URL
 
 请参阅 **事件查看器**  >  **Windows 日志**"  >  **应用程序**。 如果看到 ID 为3277的事件，则表示 **INVALID_FORM** 或 **NOT_FOUND。URL** 在说明中，代理与代理之间的通信出现问题。 代理无法连接到代理，无法访问特定的 URL。 这可能是由于防火墙或 DNS 设置导致的。
 
@@ -125,7 +125,7 @@ ms.locfileid: "100099942"
 3. 在弹出的 " **策略的结果集** " 窗口中，请参阅类别路径。
 4. 选择策略。
 5. 选择“已禁用”。 
-6. 选择“应用”。   
+6. 选择 **应用**。   
 
    > [!div class="mx-imgBorder"]
    > ![策略结果集中的 Windows Installer 策略的屏幕截图](media/gpo-policy.png)
@@ -147,7 +147,7 @@ ms.locfileid: "100099942"
 3. 在弹出的 " **策略的结果集** " 窗口中，请参阅类别路径。
 4. 选择策略。
 5. 选择“已禁用”。 
-6. 选择“应用”。   
+6. 选择 **应用**。   
 
 ## <a name="error-stack-listener-isnt-working-on-windows-10-2004-vm"></a>错误：堆栈侦听器在 Windows 10 2004 VM 上不工作
 
@@ -269,6 +269,7 @@ VM 的名称已经注册，可能是重复的。
 - "会话主机" 列表中未显示 Vm
 - 在 "服务" 窗口中看不到 **远程桌面代理加载程序**
 - 在任务管理器中看不到 **RdAgentBootLoader** 组件
+- 正在接收 **连接代理无法验证** 自定义映像 vm 上的设置错误
 - 本文中的说明未解决你的问题
 
 ### <a name="step-1-uninstall-all-agent-boot-loader-and-stack-component-programs"></a>步骤1：卸载所有代理、启动加载程序和堆栈组件程序

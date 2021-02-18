@@ -6,19 +6,19 @@ ms.topic: how-to
 ms.date: 01/19/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 33af83934e8ecc5745f2edad3a7832a870406452
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: ca92e6e888ead6bbd79c7a8d524516ee95e8c45d
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98602374"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101092927"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>准备和自定义主 VHD 映像
 
 本文介绍如何准备用于上传到 Azure 的主虚拟硬盘 (VHD) 映像，包括如何创建虚拟机 (Vm) 并在其上安装软件。 这些说明适用于可与组织的现有过程配合使用的特定于 Windows 虚拟桌面的配置。
 
 >[!IMPORTANT]
->建议使用 Azure 映像库中的映像。 但是，如果确实需要使用自定义映像，请确保设备上尚未安装 WIndows 虚拟桌面代理。 将自定义映像用于 Windows 虚拟桌面代理可能会导致映像出现问题。  
+>建议使用 Azure 映像库中的映像。 但是，如果确实需要使用自定义映像，请确保 VM 上尚未安装 Windows 虚拟桌面代理。 将自定义映像用于 Windows 虚拟桌面代理可能会导致映像出现问题，例如阻止注册和阻止用户会话连接。  
 
 ## <a name="create-a-vm"></a>创建 VM
 
@@ -216,3 +216,5 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\rdp-s
 - [使用 PowerShell 创建主机池](create-host-pools-powershell.md)
 - [使用文件共享为主机池创建配置文件容器](create-host-pools-user-profile.md)
 - [配置 Windows 虚拟桌面负载均衡方法](configure-host-pool-load-balancing.md)
+
+如果在准备或自定义 VHD 映像后遇到连接问题，请查看 [故障排除指南](troubleshoot-agent.md#your-issue-isnt-listed-here-or-wasnt-resolved) 以获取帮助。

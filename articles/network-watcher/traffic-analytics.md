@@ -13,12 +13,12 @@ ms.date: 01/04/2021
 ms.author: damendo
 ms.reviewer: vinigam
 ms.custom: references_regions
-ms.openlocfilehash: 42536480a72e8d2160064a82eee7bac11c17746c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 87dacd28223fd88866edb90266aa76fd3cdf86cf
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100585525"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101095356"
 ---
 # <a name="traffic-analytics"></a>流量分析
 
@@ -71,33 +71,34 @@ Azure 虚拟网络提供 NSG 流日志，其中提供了传入和传出与单个
       美国中部  
       中国东部 2  
       中国北部 2  
+      东亚       
    :::column-end:::
    :::column span="":::
-      东亚  
       美国东部  
       美国东部 2  
       美国东部 2 EUAP  
       法国中部  
-      日本东部  
+      德国中西部日本东部  
       日本西部  
       韩国中部  
       韩国南部  
       美国中北部  
+      北欧    
    :::column-end:::
    :::column span="":::
-      北欧  
       南非北部  
       美国中南部  
       印度南部  
       Southeast Asia  
       瑞士北部  
       瑞士西部  
+      阿拉伯联合酋长国北部  
       英国南部  
-      英国西部  
+      英国西部   
       USGov Arizona  
+      USGov Texas
    :::column-end:::
    :::column span="":::
-      USGov Texas  
       USGov Virginia  
       USNat 东部  
       USNat 西部  
@@ -143,14 +144,15 @@ Log Analytics 工作区必须存在于以下区域中：
       瑞士北部  
       瑞士西部  
       阿联酋中部  
+      阿拉伯联合酋长国北部  
       英国南部  
-      英国西部  
+      英国西部   
       USGov Arizona  
       USGov Virginia  
-      USNat 东部  
-      USNat 西部  
+      USNat 东部   
    :::column-end:::
    :::column span="":::
+      USNat 西部   
       USSec 东部  
       USSec 西  
       美国中西部  

@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: article
 ms.date: 11/13/2020
 tags: connectors
-ms.openlocfilehash: 790879894c3b268fcd55aafc96507319b29fe1e5
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 87a9c8a38ede7008d658068329c8c72e7e3c4117
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99055070"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101095467"
 ---
 # <a name="manage-email-contacts-and-calendars-in-office-365-outlook-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用管理 Office 365 Outlook 中的电子邮件、联系人和日历
 
@@ -98,7 +98,7 @@ ms.locfileid: "99055070"
 
   1. 在逻辑应用的资源组菜单中，选择“访问控制(IAM)”。 使用参与者角色设置其他帐户。 
   
-     有关详细信息，请参阅[使用 Azure 门户添加或删除 Azure 角色分配](../role-based-access-control/role-assignments-portal.md)。
+     有关详细信息，请参阅 [使用 Azure 门户分配 Azure 角色](../role-based-access-control/role-assignments-portal.md)。
 
   1. 设置此角色后，请以现在具有参与者权限的帐户登录 Azure 门户。 你现在可以使用此帐户创建到 Outlook 的连接。
 

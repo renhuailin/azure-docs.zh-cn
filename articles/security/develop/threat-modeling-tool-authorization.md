@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b2ad38e518fa4b924992355990ea3eb06a338ebe
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 38b147a85a26fd1e0be4f5dc6b63ae4c1331d348
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94693152"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101094000"
 ---
 # <a name="security-frame-authorization--mitigations"></a>安全框架：授权 | 缓解措施 
 | 产品/服务 | 文章 |
@@ -33,10 +33,10 @@ ms.locfileid: "94693152"
 | **Azure 事件中心** | <ul><li>[使用拥有仅限发送权限的 SAS 密钥来生成设备令牌](#sendonly-sas)</li><li>[不要使用可提供事件中心直接访问权限的访问令牌](#access-tokens-hub)</li><li>[使用拥有所需最低权限的 SAS 密钥连接到事件中心](#sas-minimum-permissions)</li></ul> |
 | **Azure Document DB** | <ul><li>[尽可能使用资源令牌连接到 Azure Cosmos DB](#resource-docdb)</li></ul> |
 | **Azure 信任边界** | <ul><li>[使用 Azure RBAC 启用对 Azure 订阅的精细访问管理](#grained-rbac)</li></ul> |
-| **Service Fabric 信任边界** | <ul><li>[使用 Azure RBAC 限制客户端对群集操作的访问](#cluster-rbac)</li></ul> |
+| **Service Fabric 信任边界** | <ul><li>[使用 Azure RBAC 限制客户端对群集操作的访问权限](#cluster-rbac)</li></ul> |
 | **Dynamics CRM** | <ul><li>[根据需要执行安全建模并使用字段级别安全性](#modeling-field)</li></ul> |
 | **Dynamics CRM 门户** | <ul><li>[执行门户帐户的安全建模并注意门户的安全模型不同于 CRM 的其他组件](#portal-security)</li></ul> |
-| **Azure 存储** | <ul><li>[针对 Azure 表存储中的一系列实体授予精细权限](#permission-entities)</li><li>[使用 azure 资源管理器为 azure 存储帐户启用 azure RBAC) 的基于角色的访问控制 (](#rbac-azure-manager)</li></ul> |
+| **Azure 存储** | <ul><li>[针对 Azure 表存储中的一系列实体授予精细权限](#permission-entities)</li><li>[使用 Azure 资源管理器对 Azure 存储帐户启用 Azure 基于角色的访问控制 (Azure RBAC)](#rbac-azure-manager)</li></ul> |
 | **移动客户端** | <ul><li>[实施隐式越狱或 root 检测](#rooting-detection)</li></ul> |
 | **WCF** | <ul><li>[WCF 中的弱类引用](#weak-class-wcf)</li><li>[WCF - 实施授权控制](#wcf-authz)</li></ul> |
 | **Web API** | <ul><li>[在 ASP.NET Web API 中实施适当的授权机制](#authz-aspnet)</li></ul> |
@@ -237,8 +237,8 @@ WHERE userID=:id < - session var
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 空值  |
-| **参考**              | [添加或删除 Azure 角色分配以管理对 Azure 订阅资源的访问权限](../../role-based-access-control/role-assignments-portal.md)  |
-| **步骤** | Azure 基于角色的访问控制 (Azure RBAC) 可用于对 Azure 进行细致的访问管理。 使用 Azure RBAC，只能授予用户执行其作业所需的访问权限量。|
+| **参考**              | [分配 Azure 角色以管理对 Azure 订阅资源的访问权限](../../role-based-access-control/role-assignments-portal.md)  |
+| **步骤** | Azure 基于角色的访问控制 (Azure RBAC) 可用于对 Azure 进行细致的访问管理。 使用 Azure RBAC，可以仅授予用户执行其作业所需的访问次数。|
 
 ## <a name="restrict-clients-access-to-cluster-operations-using-service-fabric-rbac"></a><a id="cluster-rbac"></a>使用 Service Fabric RBAC 限制客户端对群集操作的访问权限
 
@@ -248,7 +248,7 @@ WHERE userID=:id < - session var
 | **SDL 阶段**               | 部署 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 环境 - Azure |
-| **参考**              | [Service Fabric Service Fabric 客户端的基于角色的访问控制](../../service-fabric/service-fabric-cluster-security-roles.md) |
+| **参考**              | [适用于 Service Fabric 客户端的 Service Fabric 基于角色的访问控制](../../service-fabric/service-fabric-cluster-security-roles.md) |
 | **步骤** | <p>Azure Service Fabric 针对连接到 Service Fabric 群集的客户端支持两种不同的访问控制类型：管理员和用户。 访问控制可让群集管理员针对不同的用户组限制特定群集操作的访问权限，使群集更加安全。</p><p>管理员拥有对管理功能（包括读取/写入功能）的完全访问权限。 默认情况下，用户只有管理功能的读取访问权限（例如查询功能），以及解析应用程序和服务的能力。</p><p>可在创建群集时为每个角色提供不同的证书，以指定两个客户端角色（管理员和客户端）。</p>|
 
 ## <a name="perform-security-modeling-and-use-field-level-security-where-required"></a><a id="modeling-field"></a>根据需要执行安全建模并使用字段级别安全性
@@ -284,7 +284,7 @@ WHERE userID=:id < - session var
 | **参考**              | [如何使用 SAS 来委派对 Azure 存储帐户中对象的访问权限](../../storage/blobs/security-recommendations.md#identity-and-access-management) |
 | **步骤** | 在某些业务方案中，Azure 表存储可能需要存储面向不同当事方的敏感数据。 例如，与不同国家/地区相关的敏感数据。 在这种情况下，可以通过指定分区键和行键范围来构造 SAS 签名，使用户能够访问与特定国家/地区相关的数据。| 
 
-## <a name="enable-azure-role-based-access-control-azure-rbac-to-azure-storage-account-using-azure-resource-manager"></a><a id="rbac-azure-manager"></a>使用 azure 资源管理器为 azure 存储帐户启用 azure RBAC) 的基于角色的访问控制 (
+## <a name="enable-azure-role-based-access-control-azure-rbac-to-azure-storage-account-using-azure-resource-manager"></a><a id="rbac-azure-manager"></a>使用 Azure 资源管理器对 Azure 存储帐户启用 Azure 基于角色的访问控制 (Azure RBAC)
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
@@ -292,7 +292,7 @@ WHERE userID=:id < - session var
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 空值  |
-| **参考**              | [如何使用 Azure RBAC) 的 Azure 基于角色的访问控制来保护存储帐户 (](../../storage/blobs/security-recommendations.md) |
+| **参考**              | [如何使用 Azure 基于角色的访问控制 (Azure RBAC) 来保护存储帐户](../../storage/blobs/security-recommendations.md) |
 | **步骤** | <p>创建新的存储帐户时，可以选择经典或 Azure 资源管理器部署模型。 在 Azure 中创建资源的经典模型只允许以孤注一掷的方式访问订阅，并访问存储帐户。</p><p>通过 Azure 资源管理器模型，可将存储帐户放在资源组中，使用 Azure Active Directory 控制对该特定存储帐户的管理平面的访问。 例如，可以授权特定用户访问存储帐户密钥，而其他用户可以查看有关存储帐户的信息，但无法访问存储帐户密钥。</p>|
 
 ## <a name="implement-implicit-jailbreak-or-rooting-detection"></a><a id="rooting-detection"></a>实施“隐式越狱”或“获取 root 权限”检测

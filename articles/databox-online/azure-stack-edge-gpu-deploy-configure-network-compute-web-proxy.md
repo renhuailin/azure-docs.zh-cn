@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 01/27/2021
+ms.date: 02/04/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: ac64233467166ca6567f1601c3b90f80fdba3dcf
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 07a4c06b840d41455beea9be4ed0343b4946ddb3
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954642"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594597"
 ---
 # <a name="tutorial-configure-network-for-azure-stack-edge-pro-with-gpu"></a>教程：使用 GPU 为 Azure Stack Edge Pro 配置网络
 
@@ -56,15 +56,13 @@ ms.locfileid: "98954642"
     
     ![本地 Web UI“网络设置”页](./media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/network-2a.png)
 
-
-   
 3. 若要更改网络设置，请选择一个端口，然后在显示的右窗格中修改 IP 地址、子网、网关、主 DNS 和辅助 DNS。 
 
     - 如果选择端口 1，你可以看到它已预配置为静态。 
 
         ![本地 Web UI“端口 1 网络设置”](./media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/network-3.png)
 
-    - 如果选择端口 2、端口 3、端口 4或端口 5，默认情况下，所有这些端口都配置为 DHCP。
+    - 如果选择端口 2、端口 3、端口 4 或端口 5，默认情况下，所有这些端口都配置为 DHCP。
 
         ![本地 Web UI“端口 3 网络设置”](./media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/network-4.png)
 
@@ -74,6 +72,7 @@ ms.locfileid: "98954642"
    * 如果未启用 DHCP，则可以根据需要分配静态 IP。
    * 可以将网络接口配置为 IPv4。
    * 在 25 Gbps 接口上，可以将 RDMA（远程直接访问内存）模式设置为 iWarp 或 RoCE（通过聚合以太网的 RDMA）。 如果低延迟是主要要求，且可伸缩性不是重点，请使用 RoCE。 当延迟是关键要求，但易用性和可伸缩性也十分重要时，iWARP 是最佳备选方案。
+   * Azure Stack Edge 不支持网络接口卡 (NIC) 组合或链接聚合。 
    * 任何端口的序列号都与节点序列号相对应。
 
     配置设备网络后，页面将更新，如下所示。
@@ -81,12 +80,11 @@ ms.locfileid: "98954642"
     ![本地 Web UI“网络设置”页 2](./media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/network-2.png)
 
 
-     >[!NOTE]
-     >
-     > * 建议不要将网络接口的本地 IP 地址从静态切换到 DCHP，除非有另一个 IP 地址连接到该设备。 如果使用一个网络接口并切换到 DHCP，则无法确定 DHCP 地址。 如果要更改为 DHCP 地址，请等待设备激活服务后再更改。 然后，可以在 Azure 门户中为你的服务查看“设备属性”中所有适配器的 IP。
+     > [!NOTE]
+     > 建议不要将网络接口的本地 IP 地址从静态切换到 DCHP，除非有另一个 IP 地址连接到该设备。 如果使用一个网络接口并切换到 DHCP，则无法确定 DHCP 地址。 如果要更改为 DHCP 地址，请等待设备激活服务后再更改。 然后，可以在 Azure 门户中为你的服务查看“设备属性”中所有适配器的 IP。
 
 
-    配置并应用网络设置后，选择“下一步:计算”以配置计算网络。
+    配置和应用网络设置后，选择“下一步:计算”来配置计算网络。
 
 ## <a name="enable-compute-network"></a>启用计算网络
 

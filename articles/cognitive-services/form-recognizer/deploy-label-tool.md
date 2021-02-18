@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 02/11/2021
 ms.author: lajanuar
-ms.openlocfilehash: 9535c1aa044fdce529d83c2e46a1b585e8e5f056
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 0f5f0714235ee23624b3a199eac744155d2bbdd1
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100370000"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101093387"
 ---
 # <a name="deploy-the-sample-labeling-tool"></a>部署示例标记工具
 
@@ -69,19 +69,8 @@ ms.locfileid: "100370000"
    > ![选择 Docker](./media/quickstarts/select-docker.png)
 
 6. 现在，让我们配置 Docker 容器。 除非另有说明，否则所有字段都是必需的：
-
-    # <a name="v20"></a>[v2.0](#tab/v2-0)
-
-* 选项-选择 **单个容器**
-* 图像源-选择 **专用注册表** 
-* 服务器 URL-将此项设置为 `https://mcr.microsoft.com`
-* 用户名 (可选) -创建用户名。 
-* 密码 (可选) -创建要记住的安全密码。
-* Image 和 tag-将此项设置为 `mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest`
-* 连续部署-如果想要在开发团队对示例标签工具进行更改时接收自动更新，请将此项设置为 **On** 。
-* 启动命令-将此项设置为 `./run.sh eula=accept`
-
-    # <a name="v21-preview"></a>[v2.1 预览版](#tab/v2-1) 
+<!-- markdownlint-disable MD025 -->
+# <a name="v21-preview"></a>[v2.1 预览版](#tab/v2-1)
 
 * 选项-选择 **单个容器**
 * 图像源-选择 **专用注册表** 
@@ -92,19 +81,30 @@ ms.locfileid: "100370000"
 * 连续部署-如果想要在开发团队对示例标签工具进行更改时接收自动更新，请将此项设置为 **On** 。
 * 启动命令-将此项设置为 `./run.sh eula=accept`
 
-    ---
+# <a name="v20"></a>[v2.0](#tab/v2-0)  
+
+* 选项-选择 **单个容器**
+* 图像源-选择 **专用注册表** 
+* 服务器 URL-将此项设置为 `https://mcr.microsoft.com`
+* 用户名 (可选) -创建用户名。 
+* 密码 (可选) -创建要记住的安全密码。
+* Image 和 tag-将此项设置为 `mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest`
+* 连续部署-如果想要在开发团队对示例标签工具进行更改时接收自动更新，请将此项设置为 **On** 。
+* 启动命令-将此项设置为 `./run.sh eula=accept`
+
+ ---
 
    > [!div class="mx-imgBorder"]
    > ![配置 Docker](./media/quickstarts/configure-docker.png)
 
-7. 完成了。 接下来，依次选择 " **查看**" 和 "创建"，然后单击 " **创建** " 以部署 web 应用。 完成后，你可以在资源的 " **概述** " 中提供的 URL 访问你的 web 应用。
+7. 就这么简单。 接下来，依次选择 " **查看**" 和 "创建"，然后单击 " **创建** " 以部署 web 应用。 完成后，你可以在资源的 " **概述** " 中提供的 URL 访问你的 web 应用。
 
 > [!NOTE]
 > 创建 web 应用时，还可以配置授权/身份验证。 这并不是必需的。
 
 > [!IMPORTANT]
 > 可能需要为 web 应用启用 TLS，才能在其地址上查看 `https` 。 按照 [启用 tls 终结点](../../container-instances/container-instances-container-group-ssl.md) 中的说明设置挎斗容器，而不是为 web 应用启用 TLS/SSL。
-
+<!-- markdownlint-disable MD001 -->
 ### <a name="azure-cli"></a>Azure CLI
 
 作为使用 Azure 门户的替代方法，可以使用 Azure CLI 创建资源。 继续之前，需要安装 [Azure CLI](/cli/azure/install-azure-cli)。 如果已使用 Azure CLI，则可以跳过此步骤。 
@@ -113,12 +113,32 @@ ms.locfileid: "100370000"
 
 * `DNS_NAME_LABEL=aci-demo-$RANDOM` 生成一个随机 DNS 名称。 
 * 此示例假设您有一个可用于创建资源的资源组。 将替换为 `<resource_group_name>` 与订阅关联的有效资源组。 
-* 你需要指定要创建资源的位置。 将替换为 `<region name>` web 应用所需的区域。 
+* 你需要指定要创建资源的位置。 将替换为 `<region name>` web 应用所需的区域。
 * 此命令自动接受 EULA。
 
 在 Azure CLI 中运行以下命令，为示例标签工具创建 web 应用资源：
 
+<!-- markdownlint-disable MD024 -->
+# <a name="v21-preview"></a>[v2.1 预览版](#tab/v2-1)
+
+```azurecli
+DNS_NAME_LABEL=aci-demo-$RANDOM
+
+az container create \
+  --resource-group <resource_group_name> \
+  --name <name> \
+  --image mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest-preview \
+  --ports 3000 \
+  --dns-name-label $DNS_NAME_LABEL \
+  --location <region name> \
+  --cpu 2 \
+  --memory 8 \
+  --command-line "./run.sh eula=accept"
+
+```
+
 # <a name="v20"></a>[v2.0](#tab/v2-0)
+
 
 ```azurecli
 DNS_NAME_LABEL=aci-demo-$RANDOM
@@ -133,24 +153,8 @@ az container create \
   --cpu 2 \
   --memory 8 \
   --command-line "./run.sh eula=accept"
-`
+``` 
 
-# [v2.1 preview](#tab/v2-1) 
-   
-```azurecli
-DNS_NAME_LABEL=aci-demo-$RANDOM
-
-az container create \
-  --resource-group <resource_group_name> \
-  --name <name> \
-  --image mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest-preview \
-  --ports 3000 \
-  --dns-name-label $DNS_NAME_LABEL \
-  --location <region name> \
-  --cpu 2 \
-  --memory 8 \
-  --command-line "./run.sh eula=accept"
-```
 
 ---
 

@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 02/06/2021
 ms.author: robb
 ms.subservice: metrics
-ms.openlocfilehash: 51cd3bf3349e1880d4dc9f5d98d2d9b5dc5bb228
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 3f9ec395e8ccf6d5162717b2e38b0650ccc84812
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100607916"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101091812"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Azure 监视器支持的指标
 
@@ -154,21 +154,21 @@ Azure 监视器提供多种方式来与指标交互，包括在门户中制作�
 
 |指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
-|active-timer-count|是|System.Runtime|active-timer-count|计数|平均值|当前处于活动状态的计时器的数目|Deployment, AppName, Pod|
-|alloc-rate|是|System.Runtime|alloc-rate|字节|平均值|托管堆中分配的字节数|Deployment, AppName, Pod|
+|active-timer-count|是|active-timer-count|计数|平均值|当前处于活动状态的计时器的数目|Deployment, AppName, Pod|
+|alloc-rate|是|alloc-rate|字节|平均值|托管堆中分配的字节数|Deployment, AppName, Pod|
 |AppCpuUsage|是|应用程序 CPU 使用率 (预览) |百分比|平均值|应用的最新 CPU 使用率|Deployment, AppName, Pod|
-|assembly-count|是|System.Runtime|assembly-count|计数|平均值|加载的程序集的数目|Deployment, AppName, Pod|
-|cpu-usage|是|System.Runtime|cpu-usage|百分比|平均值|进程使用 CPU 的时间百分比|Deployment, AppName, Pod|
-|current-requests|是|Microsoft.AspNetCore.Hosting|current-requests|计数|平均值|进程生存期内正在处理的请求总数|Deployment, AppName, Pod|
-|exception-count|是|System.Runtime|exception-count|计数|总计|异常数量|Deployment, AppName, Pod|
-|failed-requests|是|Microsoft.AspNetCore.Hosting|failed-requests|计数|平均值|进程生存期内失败请求的总数|Deployment, AppName, Pod|
-|gc-heap-size|是|System.Runtime|gc-heap-size|计数|平均值|GC (MB 报告的总堆大小) |Deployment, AppName, Pod|
-|gen-0-gc-count|是|System.Runtime|gen-0-gc-count|计数|平均值|第0代 Gc 数|Deployment, AppName, Pod|
-|gen-0-size|是|System.Runtime|gen-0-size|字节|平均值|第0代堆大小|Deployment, AppName, Pod|
-|gen-1-gc-count|是|System.Runtime|gen-1-gc-count|计数|平均值|System.Runtime|第1代 Gc 数|Deployment, AppName, Pod|
-|gen-1-size|是|System.Runtime|gen-1-size|字节|平均值|第1代堆大小|Deployment, AppName, Pod|
-|gen-2-gc-count|是|System.Runtime|gen-2-gc-count|计数|平均值|第2代 Gc 数|Deployment, AppName, Pod|
-|gen-2-size|是|System.Runtime|gen-2-size|字节|平均值|第2代堆大小|Deployment, AppName, Pod|
+|assembly-count|是|assembly-count|计数|平均值|加载的程序集的数目|Deployment, AppName, Pod|
+|cpu-usage|是|cpu-usage|百分比|平均值|进程使用 CPU 的时间百分比|Deployment, AppName, Pod|
+|current-requests|是|current-requests|计数|平均值|进程生存期内正在处理的请求总数|Deployment, AppName, Pod|
+|exception-count|是|exception-count|计数|总计|异常数量|Deployment, AppName, Pod|
+|failed-requests|是|failed-requests|计数|平均值|进程生存期内失败请求的总数|Deployment, AppName, Pod|
+|gc-heap-size|是|gc-heap-size|计数|平均值|GC (MB 报告的总堆大小) |Deployment, AppName, Pod|
+|gen-0-gc-count|是|gen-0-gc-count|计数|平均值|第0代 Gc 数|Deployment, AppName, Pod|
+|gen-0-size|是|gen-0-size|字节|平均值|第0代堆大小|Deployment, AppName, Pod|
+|gen-1-gc-count|是|gen-1-gc-count|计数|平均值|第1代 Gc 数|Deployment, AppName, Pod|
+|gen-1-size|是|gen-1-size|字节|平均值|第1代堆大小|Deployment, AppName, Pod|
+|gen-2-gc-count|是|gen-2-gc-count|计数|平均值|第2代 Gc 数|Deployment, AppName, Pod|
+|gen-2-size|是|gen-2-size|字节|平均值|第2代堆大小|Deployment, AppName, Pod|
 |jvm.gc.live.data.size|是|jvm.gc.live.data.size|字节|平均值|完全 GC 后的旧代内存池大小|Deployment, AppName, Pod|
 |jvm.gc.max.data.size|是|jvm.gc.max.data.size|字节|平均值|旧代内存池的最大大小|Deployment, AppName, Pod|
 |jvm.gc.memory.allocated|是|jvm.gc.memory.allocated|字节|最大值|运行一个 GC 之后、运行下一个 GC 之前，新代内存池大小增加的递增量|Deployment, AppName, Pod|
@@ -178,15 +178,15 @@ Azure 监视器提供多种方式来与指标交互，包括在门户中制作�
 |jvm.memory.committed|是|jvm.memory.committed|字节|平均值|分配给 JVM 的内存（字节）|Deployment, AppName, Pod|
 |jvm.memory.max|是|jvm.memory.max|字节|最大值|可用于内存管理的最大内存量（以字节为单位）|Deployment, AppName, Pod|
 |jvm.memory.used|是|jvm.memory.used|字节|平均值|已使用的应用内存（字节）|Deployment, AppName, Pod|
-|loh-size|是|System.Runtime|loh-size|字节|平均值|LOH 堆大小|Deployment, AppName, Pod|
-|monitor-lock-contention-count|是|System.Runtime|monitor-lock-contention-count|计数|平均值|尝试获取监视器锁时出现争用的次数|Deployment, AppName, Pod|
+|loh-size|是|loh-size|字节|平均值|LOH 堆大小|Deployment, AppName, Pod|
+|monitor-lock-contention-count|是|monitor-lock-contention-count|计数|平均值|尝试获取监视器锁时出现争用的次数|Deployment, AppName, Pod|
 |process.cpu.usage|是|process.cpu.usage|百分比|平均值|JVM 进程的最近 CPU 使用率|Deployment, AppName, Pod|
-|requests-per-second|是|Microsoft.AspNetCore.Hosting|请求-速率|计数|平均值|请求速率|Deployment, AppName, Pod|
+|requests-per-second|是|请求-速率|计数|平均值|请求速率|Deployment, AppName, Pod|
 |system.cpu.usage|是|system.cpu.usage|百分比|平均值|整个系统的最近 CPU 使用率|Deployment, AppName, Pod|
-|threadpool-completed-items-count|是|System.Runtime|threadpool-completed-items-count|计数|平均值|ThreadPool 已完成工作项计数|Deployment, AppName, Pod|
-|threadpool-queue-length|是|System.Runtime|threadpool-queue-length|计数|平均值|ThreadPool 工作项队列长度|Deployment, AppName, Pod|
-|threadpool-thread-count|是|System.Runtime|threadpool-thread-count|计数|平均值|线程池线程数|Deployment, AppName, Pod|
-|gc 时间|是|System.Runtime|gc 时间|百分比|平均值|自上一次 GC 后 GC 中的时间百分比|Deployment, AppName, Pod|
+|threadpool-completed-items-count|是|threadpool-completed-items-count|计数|平均值|ThreadPool 已完成工作项计数|Deployment, AppName, Pod|
+|threadpool-queue-length|是|threadpool-queue-length|计数|平均值|ThreadPool 工作项队列长度|Deployment, AppName, Pod|
+|threadpool-thread-count|是|threadpool-thread-count|计数|平均值|线程池线程数|Deployment, AppName, Pod|
+|gc 时间|是|gc 时间|百分比|平均值|自上一次 GC 后 GC 中的时间百分比|Deployment, AppName, Pod|
 |tomcat.global.error|是|tomcat.global.error|计数|总计|Tomcat 全局错误|Deployment, AppName, Pod|
 |tomcat.global.received|是|tomcat.global.received|字节|总计|Tomcat 收到的总字节数|Deployment, AppName, Pod|
 |tomcat.global.request.avg.time|是|tomcat.global.request.avg.time|毫秒|平均值|Tomcat 请求平均时间|Deployment, AppName, Pod|
@@ -202,8 +202,8 @@ Azure 监视器提供多种方式来与指标交互，包括在门户中制作�
 |tomcat.sessions.rejected|是|tomcat.sessions.rejected|计数|总计|Tomcat 拒绝的会话数|Deployment, AppName, Pod|
 |tomcat.threads.config.max|是|tomcat.threads.config.max|计数|总计|Tomcat 配置最大线程计数|Deployment, AppName, Pod|
 |tomcat.threads.current|是|tomcat.threads.current|计数|总计|Tomcat 当前线程计数|Deployment, AppName, Pod|
-|total-requests|是|Microsoft.AspNetCore.Hosting|total-requests|计数|平均值|进程生存期内的请求总数|Deployment, AppName, Pod|
-|working-set|是|System.Runtime|working-set|计数|平均值|进程使用的工作集量 (MB) |Deployment, AppName, Pod|
+|total-requests|是|total-requests|计数|平均值|进程生存期内的请求总数|Deployment, AppName, Pod|
+|working-set|是|working-set|计数|平均值|进程使用的工作集量 (MB) |Deployment, AppName, Pod|
 
 
 ## <a name="microsoftautomationautomationaccounts"></a>Microsoft.Automation/automationAccounts
@@ -1723,7 +1723,7 @@ Azure 监视器提供多种方式来与指标交互，包括在门户中制作�
 
 ## <a name="microsofthybridnetworkvirtualnetworkfunctions"></a>microsoft.hybridnetwork/virtualnetworkfunctions
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |HyperVVirtualProcessorUtilization|是|CPU 平均利用率|百分比|平均值|虚拟 CPU 使用率的平均百分比，以1分钟为间隔。 虚拟 CPU 的总数基于 SKU 定义中用户配置的值。 可以基于 SKU 中定义的条件应用进一步的筛选器。|InstanceName|
 

@@ -11,12 +11,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 01/21/2021
-ms.openlocfilehash: ea95b2097c611635eb937498c6f1d87cb544bcd1
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 5ca13784fe2f9a6a5b448bc838bf508f01b0a9fe
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98681088"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101095198"
 ---
 # <a name="add-contributors-to-your-app"></a>向应用添加参与者
 
@@ -37,7 +37,7 @@ ms.locfileid: "98681088"
 
     找到用户的电子邮件以后，请选择该帐户，然后选择“保存”。
 
-    如果无法进行此角色分配，请查看“[Azure 角色分配](../../role-based-access-control/role-assignments-portal.md)”和“[Azure 访问控制故障排除](../../role-based-access-control/troubleshooting.md#problems-with-azure-role-assignments)”。
+    如果使用此角色分配时遇到问题，请查看 [分配 azure 角色](../../role-based-access-control/role-assignments-portal.md) 和 [azure 访问控制故障排除](../../role-based-access-control/troubleshooting.md#problems-with-azure-role-assignments)。
 
 ## <a name="view-the-app-as-a-contributor"></a>以参与者身份查看应用
 
@@ -68,7 +68,7 @@ LUIS 使用标准的 Azure Active Directory (Azure AD) 许可流程。
 租户管理员直接处理需要访问权限才能在 Azure AD 中使用 LUIS 的用户。
 
 * 用户首先要登录 LUIS，此时看到需要管理员批准的弹出对话框。 继续操作之前，用户需联系租户管理员。
-* 然后，租户管理员登录 LUIS，并看到一个“同意流”弹出对话框。 管理员需在此对话框中向用户授予权限。 管理员接受权限后，用户才能够继续使用 LUIS。 如果租户管理员不登录 LUIS，还可访问 LUIS 的[同意](https://account.activedirectory.windowsazure.com/r#/applications)部分。 在此页上，您可以将列表筛选为包含名称的项 `LUIS` 。
+* 然后，租户管理员登录 LUIS，并看到一个“同意流”弹出对话框。 管理员需在此对话框中向用户授予权限。 管理员接受权限后，用户才能够继续使用 LUIS。 如果租户管理员不登录 LUIS，还可访问 LUIS 的[同意](https://account.activedirectory.windowsazure.com/r#/applications)部分。 在此页上，可以将列表筛选到包含名称 `LUIS` 的项。
 
 如果租户管理员只希望某些用户使用 LUIS，则有几种可能的解决方案：
 * 给予“管理员同意”（同意 Azure AD 的所有用户），但随后在“企业应用程序属性”下将“需要进行用户分配”设置为“是”，最后仅将所需用户分配/添加到应用程序。 使用此方法，管理员仍然向应用提供“管理员同意”，但是，可以控制可以访问应用的用户。

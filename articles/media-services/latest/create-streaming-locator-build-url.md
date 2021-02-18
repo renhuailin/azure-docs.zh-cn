@@ -1,6 +1,6 @@
 ---
 title: 创建流定位器并生成 URL
-description: 本文演示如何创建流式处理定位符并生成 URL。
+description: 本文演示如何创建流式处理定位符并生成 Url。
 services: media-services
 documentationcenter: ''
 author: IngridAtMicrosoft
@@ -12,24 +12,24 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ecbc42237326cb895c47e96eda13bbddcdeb558f
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: d2ecfb5a58641938062166bcd7c61a7d91764a3f
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98956117"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101093480"
 ---
 # <a name="create-a-streaming-locator-and-build-urls"></a>创建流定位器并生成 URL
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-在 Azure 媒体服务中，若要生成流式处理 URL，首先需要创建[流式处理定位符](streaming-locators-concept.md)。 然后连接[流式处理终结点](/rest/api/media/streamingendpoints)主机名和流式处理定位符  路径。 此示例使用默认的 **流式处理终结点**  。 首次创建媒体服务帐户时，此默认的流式处理终结点  将处于停止状态，因此需要调用“Start”   来启动流式处理。
+在 Azure 媒体服务中，若要生成流式处理 URL，需要首先创建 [流式处理定位符](streaming-locators-concept.md)。 然后，将 [流式处理终结点](/rest/api/media/streamingendpoints) 主机名与 **流式处理定位符** 路径连接起来。 此示例使用默认的 **流式处理终结点**。 首次创建媒体服务帐户时，此 *默认***流式处理终结点** 将处于停止状态，因此需要调用 **start** 开始流式处理。
 
-本文演示如何使用 Java 和 .NET SDK 创建流式处理定位符并生成流式处理 URL。
+本文演示如何使用 Java 和 .NET Sdk 创建流式处理定位符并生成流 URL。
 
-## <a name="prerequisite"></a>先决条件 
+## <a name="prerequisite"></a>先决条件
 
-预览[动态打包](dynamic-packaging-overview.md)
+预览 [动态打包](dynamic-packaging-overview.md)
 
 ## <a name="java"></a>Java
 
@@ -163,7 +163,7 @@ private static async Task<IList<string>> GetStreamingUrlsAsync(
 
 请参阅完整代码示例：[EncodingWithMESPredefinedPreset](https://github.com/Azure-Samples/media-services-v3-dotnet/blob/master/VideoEncoding/EncodingWithMESPredefinedPreset/Program.cs)
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 * [使用 .NET 创建筛选器](filters-dynamic-manifest-dotnet-howto.md)
 * [使用 REST 创建筛选器](filters-dynamic-manifest-rest-howto.md)
@@ -171,4 +171,4 @@ private static async Task<IList<string>> GetStreamingUrlsAsync(
 
 ## <a name="next-steps"></a>后续步骤
 
-[使用 DRM 保护内容](protect-with-drm.md)。
+[通过 DRM 保护你的内容](protect-with-drm.md)。

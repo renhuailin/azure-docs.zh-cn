@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: c8c9f1deb1b776a818269909b3feb19f00a2c356
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: ba17346d5f064b57f98e7ad8745d9f80bdde5116
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954270"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101092305"
 ---
 # <a name="how-to-encode-with-a-custom-transform---net"></a>如何对自定义转换进行编码 - .NET
 
@@ -32,7 +32,7 @@ ms.locfileid: "98954270"
 * AVC 内容上的所有高度和宽度值必须是 4 的倍数。
 * 在 Azure 媒体服务 v3 中，所有编码比特率均以每秒比特数为单位。 这与我们的 v2 API 的预设不同，后者使用 千比特/秒作为单位。 例如，如果 v2 中的比特率指定为 128（千比特/秒），则在 v3 中它将设置为 128000（比特/秒）。
 
-## <a name="prerequisites"></a>先决条件 
+## <a name="prerequisites"></a>先决条件
 
 [创建媒体服务帐户](./create-account-howto.md)
 
@@ -46,7 +46,7 @@ ms.locfileid: "98954270"
  
 自定义预设示例位于 [EncodeCustomTransform](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/blob/master/NETCore/EncodeCustomTransform/) 文件夹中。
 
-## <a name="create-a-transform-with-a-custom-preset"></a>使用自定义预设创建转换 
+## <a name="create-a-transform-with-a-custom-preset"></a>使用自定义预设创建转换
 
 创建新的[转换](/rest/api/media/transforms)时，需要指定希望生成的输出内容。 所需参数是 [TransformOutput](/rest/api/media/transforms/createorupdate#transformoutput) 对象，如以下代码所示。 每个 TransformOutput 包含一个预设   。 **预设** 介绍了视频和/或音频处理操作的分步说明，这些操作将用于生成所需的 **TransformOutput**。 以下 **TransformOutput** 创建自定义编解码器和层输出设置。
 

@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/29/2016
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: a177b22f0f91d82013956bff36eaa57a084c27d1
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 65eb4e8fefb74219c927fe507baceca7c55462be
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99576576"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101095709"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>使用 Visual Studio 对 Azure 应用服务中的应用进行故障排除
 ## <a name="overview"></a>概述
@@ -49,7 +49,7 @@ ms.locfileid: "99576576"
    >
    >
 
-    有关从 Visual Studio 连接至 Azure 资源的详细信息，请参阅[管理帐户、订阅和管理角色](../role-based-access-control/role-assignments-portal.md)。
+    有关从 Visual Studio 连接到 Azure 资源的详细信息，请参阅 [使用 Azure 门户分配 azure 角色](../role-based-access-control/role-assignments-portal.md)。
 2. 在“服务资源管理器”中，展开“Azure”，并展开“应用服务”。
 3. 展开包含在[在 Azure 应用服务中创建 ASP.NET 应用](quickstart-dotnet-framework.md)中创建的应用的资源组，右键单击该应用节点，并单击“查看设置”。
 

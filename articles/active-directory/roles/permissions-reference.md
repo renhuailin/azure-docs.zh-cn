@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 509eae7acf0dd9f6b8ae80befb7423422f778710
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: 0211388f3b638080c79a58330ba1fff1989def7d
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100518821"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101095877"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 中的管理员角色权限
 
@@ -529,7 +529,7 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 在 Windows Defender ATP
 
 具有此角色的用户可以创建用户并管理用户的所有方面（存在一些限制，具体请参阅下表），还可以更新密码过期策略。 此外，具有此角色的用户可以创建和管理所有组。 此角色还能够创建和管理用户视图、管理支持票证和监视服务运行状况。 用户管理员无权管理充当大部分管理员角色的用户的某些用户属性。 具有此角色的用户无权管理 MFA。 下表列出了不存在这种限制的角色。
 
-| 用户管理员权限 | 说明 |
+| 用户管理员权限 | 注释 |
 | --- | --- |
 | 创建用户和组<br/>创建和管理用户视图<br/>管理 Office 支持票证<br/>更新密码过期策略 |  |
 | 管理许可证<br/>管理除用户主体名称之外的所有用户属性 | 适用于所有用户（包括所有管理员） |
@@ -2176,6 +2176,6 @@ API 名称 | Azure 门户中的名称 | 说明
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要详细了解如何将用户分配为 Azure 订阅的管理员，请参阅[添加或删除 Azure 角色分配 (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md)
+* 若要详细了解如何将用户分配为 Azure 订阅的管理员，请参阅 [将用户分配为 azure 订阅的管理员](../../role-based-access-control/role-assignments-portal-subscription-admin.md)
 * 若要详细了解如何在 Microsoft Azure 中控制资源访问，请参阅[了解不同的角色](../../role-based-access-control/rbac-and-directory-admin-roles.md)
 * 有关订阅和 Azure AD 租户之间的关系的详细信息，或者有关关联或添加订阅的说明，请参阅[将 Azure 订阅关联或添加到 Azure Active Directory 租户](../fundamentals/active-directory-how-subscriptions-associated-directory.md)

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/07/2021
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: c49ee2778d3198cc7109c34bceb1591756d82b1c
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 502f93df8d9948a6d6682b14ea13b59e324833cb
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/18/2021
-ms.locfileid: "100653442"
+ms.locfileid: "101091469"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>语音服务的语言和语音支持
 
@@ -191,6 +191,7 @@ Microsoft 语音 SDK 和 REST API 支持以下语音，其中的每种语音都�
 | 芬兰语（芬兰） | `fi-FI` | Female | `fi-FI-SelmaNeural` <sup>新建</sup> | 常规 |
 | 芬兰语（芬兰） | `fi-FI` | 男 | `fi-FI-HarriNeural` <sup>新建</sup> | 常规 |
 | 法语（加拿大） | `fr-CA` | Female | `fr-CA-SylvieNeural` | 常规 |
+| 法语（加拿大） | `fr-CA` | 男 | `fr-CA-AntoineNeural` <sup>新建</sup> | 常规 |
 | 法语（加拿大） | `fr-CA` | 男 | `fr-CA-JeanNeural` | 常规 |
 | 法语（法国） | `fr-FR` | Female | `fr-FR-DeniseNeural` | 常规 |
 | 法语（法国） | `fr-FR` | 男 | `fr-FR-HenriNeural` | 常规 |

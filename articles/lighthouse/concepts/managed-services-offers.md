@@ -1,14 +1,14 @@
 ---
 title: Azure 市场中的托管服务产品
 description: 托管服务产品/服务允许你向 Azure Marketplace 中的客户销售资源管理产品/服务。
-ms.date: 02/10/2021
+ms.date: 02/17/2021
 ms.topic: conceptual
-ms.openlocfilehash: 7f3a12f34b4cedcb12ad2786fcb687044c30c211
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: e66a87751e0375804031e777a40c5fc1d0e8a7e2
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100375538"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101093003"
 ---
 # <a name="managed-service-offers-in-azure-marketplace"></a>Azure 市场中的托管服务产品
 
@@ -19,6 +19,9 @@ ms.locfileid: "100375538"
 托管服务提供简化将客户加入 Azure Lighthouse 的过程。 客户在 Azure 市场中购买产品/服务时，他们将能够指定应加入哪些订阅和/或资源组。
 
 之后，你的组织中的用户可以根据创建产品/服务时定义的访问权限，通过 [Azure 委托资源管理](azure-delegated-resource-management.md)从管理租户中处理这些资源。 这是通过一个清单来完成的，该清单指定 Azure Active Directory (Azure AD 将有权访问客户资源的) 用户、组和服务主体，以及定义其访问级别的 [角色](tenants-users-roles.md) 。
+
+> [!NOTE]
+> 托管服务产品/服务可能在 Azure 政府版和其他国家云中不可用。
 
 ## <a name="public-and-private-offers"></a>公共和专用产品/服务
 

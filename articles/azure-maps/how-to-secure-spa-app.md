@@ -10,12 +10,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: devx-track-js
-ms.openlocfilehash: 3b647a02731a4fa404aab4bb648853eea766d92e
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 9d2af0bf731ab069a8512cb10feccf5ba18d3fa0
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98684066"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101092724"
 ---
 # <a name="how-to-secure-a-single-page-application-with-non-interactive-sign-in"></a>如何使用非交互式登录保护单页面应用程序
 
@@ -111,7 +111,7 @@ ms.locfileid: "98684066"
 
 2. 在 " **角色分配** " 选项卡上的 " **角色**" 下，选择内置 Azure Maps 角色定义，如 **Azure Maps 数据读取器** 或 **Azure Maps 数据参与者**。 在 " **分配访问权限**" 下，选择 **Function App**。 按名称选择主体。 再选择“保存”。
 
-   * 有关 [添加或删除角色分配](../role-based-access-control/role-assignments-portal.md)的详细信息，请参阅。
+   * 请参阅 [分配 Azure 角色](../role-based-access-control/role-assignments-portal.md)的详细信息。
 
 > [!WARNING]
 > Azure Maps 内置角色定义提供对许多 Azure Maps REST Api 的一种非常大的授权访问权限。 若要限制对 Api 的访问权限，请参阅 [创建自定义角色定义和将系统分配的标识分配](../role-based-access-control/custom-roles.md) 给自定义角色定义。 这将允许应用程序访问 Azure Maps 所需的最小特权。

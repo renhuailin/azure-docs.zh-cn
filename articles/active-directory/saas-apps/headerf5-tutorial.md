@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 11/19/2019
+ms.date: 02/09/2021
 ms.author: jeedes
-ms.openlocfilehash: ba58af8d3d28efcc7f97be01a96202a2203a3459
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: 1290a13f23f49a99d5b9d962d93d91bc3331356d
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98796928"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100093125"
 ---
 # <a name="tutorial-configure-single-sign-on-sso-between-azure-active-directory-and-f5"></a>教程：在 Azure Active Directory 与 F5 之间配置单一登录 (SSO)
 
@@ -26,7 +26,8 @@ ms.locfileid: "98796928"
 * 让用户使用其 Azure AD 帐户自动登录到 F5。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要详细了解 SaaS 应用与 Azure AD 单一登录的集成，请参阅[单一登录到 Azure Active Directory 中的应用程序](../manage-apps/what-is-single-sign-on.md)。
+> [!NOTE]
+> F5 BIG-IP APM [立即购买](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/f5-networks.f5-big-ip-best?tab=Overview)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -113,18 +114,18 @@ ms.locfileid: "98796928"
 
 若要配置 F5 与 Azure AD 的集成，需要从库中将 F5 添加到托管 SaaS 应用列表。
 
-1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
+1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 Azure 门户。
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
 1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
 1. 在“从库中添加”部分的搜索框中，键入 **F5**。
 1. 在结果面板中选择“F5”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-f5"></a>配置并测试 F5 的 Azure AD 单一登录
+## <a name="configure-and-test-azure-ad-sso-for-f5"></a>配置并测试 F5 的 Azure AD SSO
 
 使用名为 **B.Simon** 的测试用户配置并测试 F5 的 Azure AD SSO。 若要正常使用 SSO，需要在 Azure AD 用户与 F5 中的相关用户之间建立链接关系。
 
-若要配置并测试 F5 的 Azure AD SSO，请完成以下构建基块：
+若要配置并测试 F5 的 Azure AD SSO，请执行以下步骤：
 
 1. **[配置 Azure AD SSO](#configure-azure-ad-sso)** - 使用户能够使用此功能。
     1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 B. Simon 测试 Azure AD 单一登录。
@@ -137,7 +138,7 @@ ms.locfileid: "98796928"
 
 按照下列步骤在 Azure 门户中启用 Azure AD SSO。
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的“F5”应用程序集成页上，找到“管理”部分并选择“单一登录”。
+1. 在 Azure 门户中的“F5”应用程序集成页上，找到“管理”部分并选择“单一登录”。  
 1. 在“选择单一登录方法”页上选择“SAML”   。
 1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置   。
 
@@ -183,19 +184,10 @@ ms.locfileid: "98796928"
 1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。
 1. 在“应用程序”列表中选择“F5”。
 1. 在应用的概述页中，找到“管理”部分，选择“用户和组”   。
-
-   ![“用户和组”链接](common/users-groups-blade.png)
-
 1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
-
-    ![“添加用户”链接](common/add-assign-user.png)
-
 1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。
+1. 如果你希望将某角色分配给用户，可以从“选择角色”下拉列表中选择该角色。 如果尚未为此应用设置任何角色，你将看到选择了“默认访问权限”角色。
 1. 在“添加分配”对话框中，单击“分配”按钮。
-1. 单击“条件访问”  。
-1. 单击“新建策略”  。
-1. 现在，可将 F5 应用视为条件访问策略的资源，并应用任何条件访问，包括多重身份验证、基于设备的访问控制或标识保护策略。
 
 ## <a name="configure-f5-sso"></a>配置 F5 SSO
 
@@ -209,39 +201,39 @@ ms.locfileid: "98796928"
 
 1. 打开新的 Web 浏览器窗口，以管理员身份登录 F5 (Header Based) 公司站点，并执行以下步骤：
 
-1. 导航到“系统”>“证书管理”>“流量证书管理”>“SSL 证书列表”  。 在右下角选择“导入”  。 指定稍后会在配置中引用的“证书名称”  。 在“证书源”中，选择“上传文件”，指定在配置 SAML 单一登录时从 Azure 下载的证书  。 单击“导入”  。
+1. 导航到“系统”>“证书管理”>“流量证书管理”>“SSL 证书列表”  。 在右下角选择“导入”。 指定稍后会在配置中引用的“证书名称”。 在“证书源”中，选择“上传文件”，指定在配置 SAML 单一登录时从 Azure 下载的证书。 单击“导入”  。
 
     ![显示 SSL 证书列表的屏幕截图，可以在其中选择证书名称和证书源。](./media/headerf5-tutorial/configure12.png)
  
-1. 此外，还需要 **SSL 证书以获取应用程序主机名。导航到“系统”>“证书管理”>“流量证书管理”>“SSL 证书列表”** 。 在右下角选择“导入”  。 “导入类型”将为“PKCS 12(IIS)”   。 指定稍后会在配置中引用的“密钥名称”，并指定 PFX 文件  。 为 PFX 指定“密码”  。 单击“导入”  。
+1. 此外，还需要 **SSL 证书以获取应用程序主机名。导航到“系统”>“证书管理”>“流量证书管理”>“SSL 证书列表”** 。 在右下角选择“导入”。 “导入类型”将为“PKCS 12(IIS)” 。 指定稍后会在配置中引用的“密钥名称”，并指定 PFX 文件。 为 PFX 指定“密码”。 单击“导入”  。
 
     >[!NOTE]
     >在此示例中，我们的应用名称是 `Headerapp.superdemo.live`，我们使用通配符证书，我们的密钥名称为 `WildCard-SuperDemo.live`。
 
     ![显示“SSL 证书/密钥源”页面的屏幕截图。](./media/headerf5-tutorial/configure13.png)
 
-1. 我们将使用引导式体验来设置 Azure AD 联合身份验证和应用程序访问。 转到 F5 BIG-IP 主页，选择“访问”>“引导式配置”>“联合”>“SAML 服务提供程序”   。 单击“下一步”，然后单击“下一步”以开始配置   。
+1. 我们将使用引导式体验来设置 Azure AD 联合身份验证和应用程序访问。 转到 F5 BIG-IP 主页，选择“访问”>“引导式配置”>“联合”>“SAML 服务提供程序” 。 单击“下一步”，然后单击“下一步”以开始配置   。
 
     ![显示“引导式配置”页面的屏幕截图，其中已选择“联合”。](./media/headerf5-tutorial/configure01.png)
 
     ![显示“SAML 服务提供程序”页面的屏幕截图。](./media/headerf5-tutorial/configure02.png)
  
-1. 提供配置名称  。 指定“实体 ID”（与在 Azure AD 应用程序配置中配置的 ID 相同）  。 指定“主机名”  。 添加引用的说明  。 接受其余默认条目，选择并单击“保存并进行下一步”  。
+1. 提供配置名称  。 指定“实体 ID”（与在 Azure AD 应用程序配置中配置的 ID 相同）。 指定“主机名”。 添加引用的说明。 接受其余默认条目，选择并单击“保存并进行下一步”  。
 
     ![显示“服务提供程序属性”页面的屏幕截图。](./media/headerf5-tutorial/configure03.png) 
 
-1. 在本示例中，我们将新建一个虚拟服务，IP 为 192.168.30.20，端口 443。 在“目标地址”中指定虚拟服务器 IP 地址  。 选择客户端“SSL 配置文件”，然后选择“新建”  。 指定之前上传的应用程序证书（在本示例中为通配符证书）和关联的密钥，然后单击“保存并进行下一步”  。
+1. 在本示例中，我们将新建一个虚拟服务，IP 为 192.168.30.20，端口 443。 在“目标地址”中指定虚拟服务器 IP 地址  。 选择客户端“SSL 配置文件”，然后选择“新建”。 指定之前上传的应用程序证书（在本示例中为通配符证书）和关联的密钥，然后单击“保存并进行下一步”  。
 
     >[!NOTE]
     >在此示例中，我们的内部 Web 服务器在端口 888 上运行，我们希望使用端口 443 发布它。
 
     ![显示“虚拟服务器属性”页面的屏幕截图。](./media/headerf5-tutorial/configure04.png) 
 
-1. 在“选择配置 IdP 连接器的方法”下指定“元数据”，单击“选择文件”，然后上传之前从 Azure AD 下载的元数据 XML 文件  。 为 SAML IDP 连接器指定唯一名称  。 选择之前上传的元数据签名证书  。 单击“保存并进行下一步”  。
+1. 在“选择配置 IdP 连接器的方法”下指定“元数据”，单击“选择文件”，然后上传之前从 Azure AD 下载的元数据 XML 文件  。 为 SAML IDP 连接器指定唯一名称。 选择之前上传的元数据签名证书。 单击“保存并进行下一步”  。
 
     ![显示“外部标识提供者连接器设置”页面的屏幕截图。](./media/headerf5-tutorial/configure05.png)
  
-1. 在“选择池”下指定“新建”（或者选择已有的池）   。 其余项保持默认值。 在“池服务器”下，在“IP 地址/节点名称”下键入 IP 地址  。 指定端口  。 单击“保存并进行下一步”  。
+1. 在“选择池”下指定“新建”（或者选择已有的池）   。 其余项保持默认值。 在“池服务器”下，在“IP 地址/节点名称”下键入 IP 地址。 指定端口。 单击“保存并进行下一步”  。
 
     ![显示“池属性”页面的屏幕截图。](./media/headerf5-tutorial/configure06.png)
 
@@ -278,7 +270,7 @@ ms.locfileid: "98796928"
 
 该部分针对的是无法使用引导式配置或希望添加/修改其他参数的情况。 你将需要与应用程序主机名相匹配的 TLS/SSL 证书。
 
-1. 导航到“系统”>“证书管理”>“流量证书管理”>“SSL 证书列表”  。 在右下角选择“导入”  。 “导入类型”将为“PKCS 12(IIS)”   。 指定稍后会在配置中引用的“密钥名称”，并指定 PFX 文件  。 为 PFX 指定“密码”  。 单击“导入”  。
+1. 导航到“系统”>“证书管理”>“流量证书管理”>“SSL 证书列表”  。 在右下角选择“导入”。 “导入类型”将为“PKCS 12(IIS)” 。 指定稍后会在配置中引用的“密钥名称”，并指定 PFX 文件。 为 PFX 指定“密码”。 单击“导入”  。
 
     >[!NOTE]
     >在此示例中，我们的应用名称是 `Headerapp.superdemo.live`，我们使用通配符证书，我们的密钥名称为 `WildCard-SuperDemo.live`。
@@ -355,9 +347,9 @@ ms.locfileid: "98796928"
 
     f. 匹配源   =  %{session.server.landinguri} 
 
-    g. 匹配值     = /_
+    g. 匹配值     = /  *
 
-    h. 单击“更新”*
+    h. 单击“更新”
 
     i. 单击 **“确定”**
 
@@ -449,26 +441,24 @@ ms.locfileid: "98796928"
 
 ## <a name="test-sso"></a>测试 SSO 
 
-在本部分中，使用访问面板测试 Azure AD 单一登录配置。
+在本部分，你将使用以下选项测试 Azure AD 单一登录配置。 
 
-在访问面板中单击“F5”磁贴时，应会自动登录到设置了 SSO 的 F5。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+#### <a name="sp-initiated"></a>SP 启动的：
 
-## <a name="additional-resources"></a>其他资源
+* 在 Azure 门户中单击“测试此应用程序”。 这会重定向到 F5 登录 URL，可以从那里启动登录流。  
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
+* 直接转到 F5 登录 URL，并从那里启动登录流。
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+#### <a name="idp-initiated"></a>IDP 启动的：
 
-- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
+* 在 Azure 门户中单击“测试此应用程序”后，你应自动登录到为其设置了 SSO 的 F5 
 
-- [在 Azure AD 中试用 F5](https://aad.portal.azure.com/)
+还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击 F5 磁贴时，如果是在 SP 模式下配置的，会重定向到应用程序登录页来启动登录流；如果是在 IDP 模式下配置的，则应会自动登录到为其设置了 SSO 的 F5。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
 
-- [为 Kerberos 应用程序配置 F5 单一登录](kerbf5-tutorial.md)
+> [!NOTE]
+> F5 BIG-IP APM [立即购买](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/f5-networks.f5-big-ip-best?tab=Overview)。
 
-- [为 Advanced Kerberos 应用程序配置 F5 单一登录](advance-kerbf5-tutorial.md)
+## <a name="next-steps"></a>后续步骤
 
-- [F5 BIG-IP APM 和 Azure AD 集成以实现安全混合访问](https://docs.microsoft.com/azure/active-directory/manage-apps/f5-aad-integration)
+配置 F5 后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
 
-- [有关在 Azure IaaS 中部署 F5 BIG-IP 虚拟版 VM 来实现安全混合访问的教程](https://docs.microsoft.com/azure/active-directory/manage-apps/f5-bigip-deployment-guide)
-
-- [有关 Azure Active Directory 单一登录与 F5 BIG-IP 集成来实现无密码 VPN 的教程](https://docs.microsoft.com/azure/active-directory/manage-apps/f5-aad-password-less-vpn) 

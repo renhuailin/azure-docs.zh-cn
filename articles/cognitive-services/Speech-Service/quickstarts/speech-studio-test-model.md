@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 09/04/2020
+ms.date: 02/12/2021
 ms.author: v-demjoh
-ms.openlocfilehash: 572b3b3459e1d837130f3c987d45ee45629f37ad
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 93a0c171497faa9e87457a03da0b78003feaa533
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96485070"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100362261"
 ---
 # <a name="test-a-model-using-an-audio-file-in-speech-studio"></a>在 Speech Studio 中使用音频文件测试模型
 
@@ -23,7 +23,7 @@ ms.locfileid: "96485070"
 
 ## <a name="prerequisites"></a>先决条件
 
-使用语音门户之前，[按照以下说明创建 Azure 帐户，并订阅语音服务](../custom-speech-overview.md#set-up-your-azure-account)。 此统一订阅使你可以访问语音到文本、文本到语音、语音翻译和自定义语音门户。
+使用 Speech Studio 之前，[按照以下说明创建 Azure 帐户，并订阅语音服务](../custom-speech-overview.md#set-up-your-azure-account)。 此统一订阅使你可以访问语音到文本、文本到语音、语音翻译和 Speech Studio。
 
 ## <a name="download-an-audio-file"></a>下载音频文件
 
@@ -32,7 +32,7 @@ ms.locfileid: "96485070"
 1. 从此链接下载[示例 wav 文件](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-speech-sdk/f9807b1079f3a85f07cbb6d762c6b5449d536027/samples/cpp/windows/console/samples/whatstheweatherlike.wav)，方法是：右键单击链接，然后选择“将链接另存为”。 单击“保存”以下载 `whatstheweatherlike.wav` 文件。
 2. 使用文件资源管理器或带有 zip 工具的终端窗口，创建一个名为 `whatstheweatherlike.zip` 的 zip 文件，其中包含所下载的 `whatstheweatherlike.wav` 文件。 在 Windows 中，你可以打开 Windows 资源管理器，导航到 `Downloads` 文件夹，右键单击 `whatstheweatherliike.wav`，单击“发送到”，单击“压缩的文件夹”，然后按 Enter 以接受默认文件名。
 
-## <a name="create-a-project-in-the-custom-speech-portal"></a>在自定义语音门户中创建项目
+## <a name="create-a-project-in-the-speech-studio"></a>在 Speech Studio 中创建项目
 
 按照以下步骤创建一个项目，该项目包含一个音频文件的 zip 文件。
 

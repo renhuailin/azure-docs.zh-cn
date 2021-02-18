@@ -5,12 +5,12 @@ author: mumian
 ms.date: 10/09/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 3c7b74d31bc3c4e2276cd52c8e6450630dc99bcd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 12d246a493ff9ee9e20868da32d633d51939e66c
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86058021"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99626621"
 ---
 # <a name="tutorial-use-health-check-in-azure-deployment-manager-public-preview"></a>教程：在 Azure 部署管理器（公共预览版）中使用运行状况检查
 
@@ -19,7 +19,7 @@ ms.locfileid: "86058021"
 在[将 Azure 部署管理器与资源管理器模板配合使用](./deployment-manager-tutorial.md)教程中使用的实施模板中，你使用了一个等待步骤。 在本教程中，你要将该等待步骤替换为运行状况检查步骤。
 
 > [!IMPORTANT]
-> 如果为 Canary 标记了你的订阅来测试新的 Azure 功能，则只能使用 Azure 部署管理器来部署到 Canary 区域。 
+> 如果为 Canary 标记了你的订阅来测试新的 Azure 功能，则只能使用 Azure 部署管理器来部署到 Canary 区域。
 
 本教程涵盖以下任务：
 
@@ -35,26 +35,23 @@ ms.locfileid: "86058021"
 
 其他资源：
 
-* [Azure 部署管理器 REST API 参考](/rest/api/deploymentmanager/)。
+* [Azure Deployment Manager REST API 参考](/rest/api/deploymentmanager/)。
 * [Azure 部署管理器示例](https://github.com/Azure-Samples/adm-quickstart)。
-
-如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>先决条件
 
-若要完成本文，需要做好以下准备：
+要完成本教程，需要：
 
+* Azure 订阅。 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 * 完成[将 Azure 部署管理器与资源管理器模板配合使用](./deployment-manager-tutorial.md)教程。
 
 ## <a name="install-the-artifacts"></a>安装项目
 
-下载[模板和项目](https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-adm/ADMTutorial.zip)并在本地解压缩（如果尚未这样做）。 然后，运行在[准备项目](./deployment-manager-tutorial.md#prepare-the-artifacts)处找到的 PowerShell 脚本。 此脚本创建一个资源组，创建一个存储容器，创建一个 blob 容器，上传已下载的文件，然后创建一个 SAS 令牌。
+如果尚未下载必备教程中使用的示例，可以下载[模板和项目](https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-adm/ADMTutorial.zip)并在本地解压缩。 然后，从必备教程[准备项目](./deployment-manager-tutorial.md#prepare-the-artifacts)部分中运行 PowerShell 脚本。 此脚本创建一个资源组，创建一个存储容器，创建一个 blob 容器，上传已下载的文件，然后创建一个 SAS 令牌。
 
-使用 SAS 令牌创建 URL 的副本。 需使用此 URL 来填充两个参数文件（拓扑参数文件和实施参数文件）中的字段。
-
-打开 CreateADMServiceTopology.Parameters.json，并更新 **projectName** 和 **artifactSourceSASLocation** 的值。
-
-打开 CreateADMRollout.Parameters.json，并更新 **projectName** 和 **artifactSourceSASLocation** 的值。
+* 使用 SAS 令牌创建 URL 的副本。 需要使用此 URL 来填充两个参数文件中的字段：拓扑参数文件和推出参数文件。
+* 打开 CreateADMServiceTopology.Parameters.json，并更新 `projectName` 和 `artifactSourceSASLocation` 的值。
+* 打开 CreateADMRollout.Parameters.json，并更新 `projectName` 和 `artifactSourceSASLocation` 的值。
 
 ## <a name="create-a-health-check-service-simulator"></a>创建运行状况检查服务模拟器
 
@@ -65,29 +62,29 @@ ms.locfileid: "86058021"
 * 资源管理器模板位于 [https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-adm/deploy_hc_azure_function.json](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-adm/deploy_hc_azure_function.json)。 你将部署此模板以创建 Azure 函数。
 * Azure 函数源代码的 zip 文件 [https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-adm/ADMHCFunction0417.zip](https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-adm/ADMHCFunction0417.zip)。 资源管理器模板将调用此 zip 文件。
 
-若要部署 Azure 函数，请选择“尝试”打开 Azure Cloud shell，然后在 shell 窗口中粘贴以下脚本。   若要粘贴代码，请右键单击 shell 窗口并选择“粘贴”  。
+若要部署 Azure 函数，请选择“尝试”打开 Azure Cloud Shell，然后在 shell 窗口中粘贴以下脚本。 若要粘贴代码，请右键单击 shell 窗口并选择“粘贴”。
 
-```azurepowershell
+```azurepowershell-interactive
 New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-adm/deploy_hc_azure_function.json" -projectName $projectName
 ```
 
 若要验证和测试 Azure 函数：
 
 1. 打开 [Azure 门户](https://portal.azure.com)。
-1. 打开资源组。  默认名称是追加了 **rg** 的项目名称。
-1. 从资源组中选择应用服务。  应用服务的默认名称是追加了 **webapp** 的项目名称。
-1. 展开“函数”，然后选择“HttpTrigger1”。  
+1. 打开资源组。 默认名称是追加了 **rg** 的项目名称。
+1. 从资源组中选择应用服务。 应用服务的默认名称是追加了 **webapp** 的项目名称。
+1. 展开“函数”，然后选择“HttpTrigger1”。
 
     ![Azure 部署管理器运行状况检查 - Azure 函数](./media/deployment-manager-tutorial-health-check/azure-deployment-manager-hc-function.png)
 
-1. 选择“&lt;/> 获取函数 URL”。 
-1. 选择“复制”将 URL 复制到剪贴板。   URL 类似于：
+1. 选择“&lt;/> 获取函数 URL”。
+1. 选择“复制”将 URL 复制到剪贴板。 URL 类似于：
 
     ```url
     https://myhc0417webapp.azurewebsites.net/api/healthStatus/{healthStatus}?code=hc4Y1wY4AqsskAkVw6WLAN1A4E6aB0h3MbQ3YJRF3XtXgHvooaG0aw==
     ```
 
-    将 URL 中的 `{healthStatus}` 替换为某个状态代码。 本教程使用 **unhealthy** 测试不正常的方案，并使用 **healthy** 或 **warning** 测试正常的方案。 创建两个 URL，其中一个包含不正常状态，另一个包含正常状态。 例如：
+    将 URL 中的 `{healthStatus}` 替换为某个状态代码。 本教程使用 *unhealthy* 测试不正常的方案，并使用 *healthy* 或 *warning* 测试正常的方案。 创建两个 URL，其中一个包含不正常状态，另一个包含正常状态。 例如：
 
     ```url
     https://myhc0417webapp.azurewebsites.net/api/healthStatus/unhealthy?code=hc4Y1wY4AqsskAkVw6WLAN1A4E6aB0h3MbQ3YJRF3XtXgHvooaG0aw==
@@ -96,9 +93,9 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri
 
     需要使用这两个 URL 才能完成本教程。
 
-1. 若要测试运行状况监视模拟器，请打开上一步骤中创建的 URL。  不正常状态的结果应类似于：
+1. 若要测试运行状况监视模拟器，请打开上一步骤中创建的 URL。 不正常状态的结果将类似于：
 
-    ```
+    ```Output
     Status: unhealthy
     ```
 
@@ -106,7 +103,7 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri
 
 本部分旨在介绍如何在实施模板中包含运行状况检查步骤。
 
-1. 打开在[将 Azure 部署管理器与资源管理器模板一起使用](./deployment-manager-tutorial.md)中创建的 **CreateADMRollout.json**。 此 JSON 文件是下载内容的一部分。  请参阅[先决条件](#prerequisites)。
+1. 打开在 [将 Azure 部署管理器与资源管理器模板一起使用](./deployment-manager-tutorial.md)中创建的 _CreateADMRollout.json_。 此 JSON 文件是下载内容的一部分。  请参阅[先决条件](#prerequisites)。
 1. 额外添加两个参数：
 
     ```json
@@ -175,7 +172,7 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri
 
     根据定义，如果运行状态为 *healthy* 或 *warning*，则实施将会继续。
 
-1. 更新实施定义的 **dependsON**，以包含新定义的运行状况检查步骤：
+1. 更新推出定义的 `dependsOn`，以包含新定义的运行状况检查步骤：
 
     ```json
     "dependsOn": [
@@ -184,7 +181,7 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri
     ],
     ```
 
-1. 更新 **stepGroups**，以包含运行状况检查步骤。 **healthCheckStep** 在 **stepGroup2** 的 **postDeploymentSteps** 中调用。 仅当运行状态为 *healthy* 或 *warning* 时，才部署 **stepGroup3** 和 **stepGroup4**。
+1. 更新 `stepGroups`，以包含运行状况检查步骤。 `healthCheckStep` 在 `stepGroup2` 的 `postDeploymentSteps` 中调用。 仅当运行状态为“正常”或“警告”时，才部署 `stepGroup3` 和 `stepGroup4`。
 
     ```json
     "stepGroups": [
@@ -222,7 +219,7 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri
     ]
     ```
 
-    如果对 **stepGroup3** 节在修订之前和之后的值进行比较，会发现此节现在依赖于 **stepGroup2**。  如果 **stepGroup3** 和后续步骤组依赖于运行状况监视的结果，则这种依赖关系是必要的。
+    如果对 `stepGroup3` 节在修订之前和之后的值进行比较，会发现此节现在依赖于 `stepGroup2`。 如果 `stepGroup3` 和后续步骤组依赖于运行状况监视的结果，则这种依赖关系是必要的。
 
     以下屏幕截图演示了修改的区域，以及如何使用运行状况检查步骤：
 
@@ -230,7 +227,7 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri
 
 ## <a name="deploy-the-topology"></a>部署拓扑
 
-运行以下 PowerShell 脚本以部署拓扑。 你需要在[将 Azure 部署管理器与资源管理器模板一起使用](./deployment-manager-tutorial.md)中使用的相同的 **CreateADMServiceTopology.json** 和 **CreateADMServiceTopology.Parameters.json**。
+运行以下 PowerShell 脚本以部署拓扑。 你需要在 [将 Azure 部署管理器与资源管理器模板一起使用](./deployment-manager-tutorial.md)中使用的相同的 _CreateADMServiceTopology.json_ 和 _CreateADMServiceTopology.Parameters.json_。
 
 ```azurepowershell
 # Create the service topology
@@ -248,7 +245,7 @@ New-AzResourceGroupDeployment `
 
 ## <a name="deploy-the-rollout-with-the-unhealthy-status"></a>部署状态不正常的实施方案
 
-使用在[创建运行状况检查服务模拟器](#create-a-health-check-service-simulator)中创建的不正常状态 URL。 你需要修订的 **CreateADMServiceTopology.json** 和在[将 Azure 部署管理器与资源管理器模板一起使用](./deployment-manager-tutorial.md)中使用的相同的 **CreateADMServiceTopology.Parameters.json**。
+使用在[创建运行状况检查服务模拟器](#create-a-health-check-service-simulator)中创建的不正常状态 URL。 你需要修订的 _CreateADMServiceTopology.json_ 和在 [将 Azure 部署管理器与资源管理器模板一起使用](./deployment-manager-tutorial.md)中使用的相同的 _CreateADMServiceTopology.Parameters.json_。
 
 ```azurepowershell-interactive
 $healthCheckUrl = Read-Host -Prompt "Enter the health check Azure function URL"
@@ -267,7 +264,7 @@ New-AzResourceGroupDeployment `
 > [!NOTE]
 > `New-AzResourceGroupDeployment` 是异步调用。 成功消息只意味着部署已成功开始。 若要验证部署，请使用 `Get-AZDeploymentManagerRollout`。  查看下一过程。
 
-若要使用以下 PowerShell 脚本检查实施进度：
+若要检查推出进度，请使用以下 PowerShell 脚本：
 
 ```azurepowershell
 $projectName = Read-Host -Prompt "Enter the same project name used earlier in this tutorial"
@@ -283,7 +280,7 @@ Get-AzDeploymentManagerRollout `
 
 以下示例输出显示不正常的状态导致部署失败：
 
-```output
+```Output
 Service: myhc0417ServiceWUSrg
     TargetLocation: WestUS
     TargetSubscriptionId: <Subscription ID>
@@ -340,32 +337,32 @@ Id                      : /subscriptions/<Subscription ID>/resourcegroups/myhc04
 Tags                    :
 ```
 
-完成实施后，你会看到针对“美国西部”区域创建了一个附加的资源组。
+完成推出后，你会看到针对“美国西部”区域创建了一个附加的资源组。
 
 ## <a name="deploy-the-rollout-with-the-healthy-status"></a>部署状态正常的实施方案
 
-重复本部分中的步骤，以使用正常状态 URL 重新部署实施方案。  完成实施后，你会看到针对“美国东部”区域创建了另一个资源组。
+重复本部分中的步骤，以使用正常状态 URL 重新部署实施方案。 完成推出后，你会看到针对“美国东部”区域创建了另一个资源组。
 
 ## <a name="verify-the-deployment"></a>验证部署
 
 1. 打开 [Azure 门户](https://portal.azure.com)。
-2. 在实施部署创建的新资源组下面浏览到新建的 Web 应用程序。
-3. 在 Web 浏览器中打开该 Web 应用程序。 在 index.html 文件中检查位置和版本。
+1. 浏览到推出部署创建的新资源组下的新 Web 应用程序。
+1. 在 Web 浏览器中打开该 Web 应用程序。 验证 index.html 文件上的位置和版本。
 
 ## <a name="clean-up-resources"></a>清理资源
 
 不再需要 Azure 资源时，请通过删除资源组来清理部署的资源。
 
 1. 在 Azure 门户上的左侧菜单中选择“资源组”  。
-2. 使用“按名称筛选”字段来缩小本教程创建的资源组的范围。  应有 3-4 个资源组：
+1. 使用“按名称筛选”字段来缩小本教程创建的资源组的范围。 
 
     * **&lt;projectName>rg**：包含部署管理器资源。
     * **&lt;projectName>ServiceWUSrg**：包含 ServiceWUS 定义的资源。
     * **&lt;projectName>ServiceEUSrg**：包含 ServiceEUS 定义的资源。
     * 用户定义的托管标识的资源组。
-3. 选择资源组名称。
-4. 在顶部菜单中选择“删除资源组”。 
-5. 重复最后两个步骤，以删除本教程创建的其他资源组。
+1. 选择资源组名称。
+1. 在顶部菜单中选择“删除资源组”。 
+1. 重复最后两个步骤，以删除本教程创建的其他资源组。
 
 ## <a name="next-steps"></a>后续步骤
 

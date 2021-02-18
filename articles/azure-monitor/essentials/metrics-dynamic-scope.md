@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/14/2020
 ms.author: riroloff
 ms.subservice: metrics
-ms.openlocfilehash: 176acea34dead929986acb807b465593f9ffda5a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 23507a01f3ed0015690d9655fde92a875f89c2da
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100606288"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101095471"
 ---
 # <a name="view-multiple-resources-in-the-azure-metrics-explorer"></a>在 Azure 指标资源管理器中查看多个资源
 
@@ -33,7 +33,7 @@ ms.locfileid: "100606288"
 ![显示与多个资源兼容的资源菜单的屏幕截图。](./media/metrics-dynamic-scope/020.png)
 
 > [!WARNING] 
-> 你必须在订阅级别具有 "监视读者" 权限，才能可视化多个资源、资源组或订阅的指标。 有关详细信息，请参阅[使用 Azure 门户添加或删除 Azure 角色分配](../../role-based-access-control/role-assignments-portal.md)。
+> 你必须在订阅级别具有 "监视读者" 权限，才能可视化多个资源、资源组或订阅的指标。 有关详细信息，请参阅 [使用 Azure 门户分配 Azure 角色](../../role-based-access-control/role-assignments-portal.md)。
 
 若要可视化多个资源的指标，请首先在资源范围选取器中选择多个资源。 
 
@@ -81,7 +81,7 @@ ms.locfileid: "100606288"
 
 ## <a name="pin-multiple-resource-charts"></a>固定多个资源图表 
 
-跨资源组和订阅可视化度量值的多个资源图表要求用户在订阅级别具有 " *监视读取* 者" 权限。 确保将多个资源图表固定到的仪表板的所有用户都具有足够的权限。 有关详细信息，请参阅[使用 Azure 门户添加或删除 Azure 角色分配](../../role-based-access-control/role-assignments-portal.md)。
+跨资源组和订阅可视化度量值的多个资源图表要求用户在订阅级别具有 " *监视读取* 者" 权限。 确保将多个资源图表固定到的仪表板的所有用户都具有足够的权限。 有关详细信息，请参阅 [使用 Azure 门户分配 Azure 角色](../../role-based-access-control/role-assignments-portal.md)。
 
 若要将多个资源图表固定到仪表板，请参阅 [固定到仪表板](../essentials/metrics-charts.md#pinning-to-dashboards)。 
 

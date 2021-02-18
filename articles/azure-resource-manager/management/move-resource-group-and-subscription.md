@@ -4,12 +4,12 @@ description: 使用 Azure Resource Manager 将资源移到新的资源组或订�
 ms.topic: conceptual
 ms.date: 09/15/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: cd05fe045532ee1b1f1fb88e502d786daabf9365
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aca1e5255c89e99a2c996e072e5106da8dc3eef9
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319548"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101093627"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>将资源移到新的资源组或订阅
 
@@ -35,9 +35,9 @@ ms.locfileid: "91319548"
    * [恢复服务移动指南](../../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json)
    * [虚拟机移动指南](./move-limitations/virtual-machines-move-limitations.md)
 
-1. 如果将已分配 Azure 角色的资源直接分配给资源 (或子资源) ，则不会移动角色分配，也不会将其变成孤立角色。 移动之后，必须重新创建角色分配。 最终，将自动删除孤立角色分配，但最佳做法是在移动资源之前删除角色分配。
+1. 如果移动的资源具有直接分配给该资源（或子资源）的 Azure 角色，则该角色分配不会移动并会处于孤立状态。 移动后必须重新创建角色分配。 最终会自动删除孤立的角色分配，但最好是在移动资源之前删除角色分配。
 
-    有关如何管理角色分配的信息，请参阅 [列出 azure 角色分配](../../role-based-access-control/role-assignments-list-portal.md#list-role-assignments-at-a-scope) 以及 [添加或删除 azure 角色分配](../../role-based-access-control/role-assignments-portal.md)。
+    有关如何管理角色分配的信息，请参阅 [列出 azure 角色分配](../../role-based-access-control/role-assignments-list-portal.md#list-role-assignments-at-a-scope) 和 [分配 azure 角色](../../role-based-access-control/role-assignments-portal.md)。
 
 1. 源订阅和目标订阅必须处于活动状态。 如果在启用已禁用的帐户时遇到问题，请[创建 Azure 支持请求](../../azure-portal/supportability/how-to-create-azure-support-request.md)。 选择“订阅管理”  作为问题类型。
 
@@ -174,19 +174,15 @@ Authorization: Bearer <access-token>
 
 当你查看资源组时，移动选项处于禁用状态。
 
-:::image type="content" source="./media/move-resource-group-and-subscription/move-first-view.png" alt-text="移动选项处于禁用状态&quot;:::
+:::image type="content" source="./media/move-resource-group-and-subscription/move-first-view.png" alt-text="移动选项处于禁用状态":::
 
-若要启用移动选项，请选择要移动的资源。 若要选择所有资源，请选中列表顶部的复选框。 或者，分别选择各个资源。 选择 &quot;资源&quot; 后，&quot;移动" 选项处于启用状态。
+若要启用移动选项，请选择要移动的资源。 若要选择所有资源，请选中列表顶部的复选框。 或者，分别选择各个资源。 选择资源后，将启用移动选项。
 
-:::image type="content" source="./media/move-resource-group-and-subscription/select-resources.png" alt-text="移动选项处于禁用状态&quot;:::
-
-若要启用移动选项，请选择要移动的资源。 若要选择所有资源，请选中列表顶部的复选框。 或者，分别选择各个资源。 选择 &quot;资源&quot; 后，&quot;移动":::
+:::image type="content" source="./media/move-resource-group-and-subscription/select-resources.png" alt-text="选择资源":::
 
 选择“移动”按钮
 
-:::image type="content" source="./media/move-resource-group-and-subscription/move-options.png" alt-text="移动选项处于禁用状态&quot;:::
-
-若要启用移动选项，请选择要移动的资源。 若要选择所有资源，请选中列表顶部的复选框。 或者，分别选择各个资源。 选择 &quot;资源&quot; 后，&quot;移动":::
+:::image type="content" source="./media/move-resource-group-and-subscription/move-options.png" alt-text="移动选项":::
 
 此按钮提供了三个选项：
 
@@ -198,15 +194,11 @@ Authorization: Bearer <access-token>
 
 选择目标资源组。 确认需要更新这些资源的脚本，选择“确定”  。 如果你选择了移动到新的订阅，则还必须选择目标订阅。
 
-:::image type="content" source="./media/move-resource-group-and-subscription/move-destination.png" alt-text="移动选项处于禁用状态&quot;:::
-
-若要启用移动选项，请选择要移动的资源。 若要选择所有资源，请选中列表顶部的复选框。 或者，分别选择各个资源。 选择 &quot;资源&quot; 后，&quot;移动":::
+:::image type="content" source="./media/move-resource-group-and-subscription/move-destination.png" alt-text="选择目标":::
 
 验证资源是否可以移动后，你会看到一个通知，指示移动操作正在运行。
 
-:::image type="content" source="./media/move-resource-group-and-subscription/move-notification.png" alt-text="移动选项处于禁用状态&quot;:::
-
-若要启用移动选项，请选择要移动的资源。 若要选择所有资源，请选中列表顶部的复选框。 或者，分别选择各个资源。 选择 &quot;资源&quot; 后，&quot;移动":::
+:::image type="content" source="./media/move-resource-group-and-subscription/move-notification.png" alt-text="通知":::
 
 操作完成后，你会获得结果通知。
 

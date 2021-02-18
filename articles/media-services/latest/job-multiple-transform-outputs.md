@@ -1,6 +1,6 @@
 ---
 title: 创建具有多个转换输出的作业
-description: 本主题演示如何创建有多个转换输出的 Azure 媒体服务作业。
+description: 本主题演示如何创建具有多个转换输出的 Azure 媒体服务作业。
 services: media-services
 documentationcenter: ''
 author: IngridAtMicrosoft
@@ -12,18 +12,18 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0396415593f2d0f41abc55433bb8f19c4913ac26
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: a40ce1fd7b3d9d946641c91f5876d8c73755b005
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954134"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101092262"
 ---
-# <a name="create-a-job-with-multiple-transform-outputs"></a>创建有多个转换输出的作业
+# <a name="create-a-job-with-multiple-transform-outputs"></a>创建具有多个转换输出的作业
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-本主题说明如何创建有两个转换输出的转换。 第一个调用要编码的输入，以便使用内置 [AdaptiveStreaming](encoding-concept.md#builtinstandardencoderpreset) 预设进行自适应比特率流式处理。 第二个调用输入视频中的音频信号，该信号使用 [AudioAnalyzerPreset](analyzing-video-audio-files-concept.md#built-in-presets) 进行处理。 创建转换后，可以提交作业来相应地处理视频。 由于在此示例中我们要指定两个转换输出，因此必须指定两个作业输出。 可以选择将两个作业输出定向到相同的资产（如下所示），也可以将结果写入单独的资产。
+本主题说明如何创建具有两个转换输出的转换。 第一种方式是使用内置的 [microsoft.media.adaptivestreaming.smoothbytestreamhandler](encoding-concept.md#builtinstandardencoderpreset) 预设对要编码的输入进行编码，以便进行自适应比特率流式处理。 第二个调用将输入视频中的音频信号与 [AudioAnalyzerPreset](analyzing-video-audio-files-concept.md#built-in-presets)一起处理。 创建转换后，可以提交相应的作业来处理视频。 由于在此示例中，我们指定了两个转换输出，因此必须指定两个作业输出。 你可以选择将两个作业输出定向到相同的资产 (如下所示) ，也可以将结果写入单独的资产。
  
 
 > [!TIP]
@@ -68,9 +68,10 @@ private static async Task<Transform> GetOrCreateTransformAsync(
     return transform;
 }
 ```
+
 ## <a name="submit-a-job"></a>提交作业
 
-使用一个 HTTPS URL 输入和两个作业输出创建一个作业。
+使用 HTTPS URL 输入创建作业并使用两个作业输出。
 
 ```csharp
 private static async Task<Job> SubmitJobAsync(IAzureMediaServicesClient client,

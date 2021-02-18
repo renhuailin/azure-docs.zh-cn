@@ -11,12 +11,12 @@ ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: 7e2d4b47f8f37a8e6d69a7846b8b0f92247121da
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: ad19c976cceab76d6eb0dbfbea5840d9764bffec
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98685185"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101092939"
 ---
 # <a name="secure-a-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中保护专用 SQL 池（以前称为 SQL DW）
 
@@ -92,9 +92,9 @@ EXEC sp_addrolemember 'db_datawriter', 'ApplicationUser'; -- allows ApplicationU
 GRANT SELECT ON SCHEMA::Test to ApplicationUser
 ```
 
-通过 Azure 门户或 Azure 资源管理器 API 管理数据库和服务器的操作可根据门户用户帐户的角色分配进行控制。 有关详细信息，请参阅[使用 Azure 门户添加或删除 Azure 角色分配](../../role-based-access-control/role-assignments-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。
+通过 Azure 门户或 Azure 资源管理器 API 管理数据库和服务器的操作可根据门户用户帐户的角色分配进行控制。 有关详细信息，请参阅 [使用 Azure 门户分配 Azure 角色](../../role-based-access-control/role-assignments-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。
 
-## <a name="encryption"></a>Encryption
+## <a name="encryption"></a>加密
 
 透明数据加密 (TDE) 可以对静态数据进行加密和解密，避免恶意活动造成的威胁。 在加密数据库时，可以对关联的备份和事务日志文件加密，无需对应用程序进行任何更改。 TDE 使用称为数据库加密密钥的对称密钥来加密整个数据库的存储。
 

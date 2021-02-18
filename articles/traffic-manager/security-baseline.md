@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: bc121b3f5aadad1e68315acac5daade5337b701b
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: f8f9da1b9c0b2df4e353b90538d52d9cb9b9e241
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100580369"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101093916"
 ---
 # <a name="azure-security-baseline-for-azure-traffic-manager"></a>适用于 Azure 流量管理器的 Azure 安全基线
 
@@ -114,7 +114,7 @@ ms.locfileid: "100580369"
 
 在 Resource Manager 中，只要配置流量管理器配置文件的人员具有终结点的读取访问权限，任何订阅的终结点就都可添加到流量管理器中。
 
-- [使用 Azure 门户添加或删除 Azure 角色分配](../role-based-access-control/role-assignments-portal.md)
+- [使用 Azure 门户分配 Azure 角色](../role-based-access-control/role-assignments-portal.md)
 
 - [如何使用 PowerShell 获取 Azure AD 中的目录角色](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
 
@@ -272,7 +272,7 @@ ms.locfileid: "100580369"
 
 Azure 流量管理器具有一个名为“流量管理器参与者”的预定义 Azure 角色，该角色可以分配给用户。
 
-- [使用 Azure 门户添加或删除 Azure 角色分配](../role-based-access-control/role-assignments-portal.md)
+- [使用 Azure 门户分配 Azure 角色](../role-based-access-control/role-assignments-portal.md)
 
 - [流量管理器参与者角色](../role-based-access-control/built-in-roles.md#traffic-manager-contributor)
 

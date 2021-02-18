@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/08/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 002c6762c71d5ffb45e56f3bc74d911570bca8bd
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 79743ba2c733855a377ae8e2522ce54eca9e8c04
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100571955"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101091092"
 ---
 # <a name="azure-security-baseline-for-azure-database-migration-service"></a>适用于 Azure 数据库迁移服务的 Azure 安全基线
 
@@ -269,7 +269,7 @@ Azure 高级威胁防护 (ATP) 是一种安全解决方案，它可使用 Active
 
 - [什么是 Azure 基于角色的访问控制 (Azure RBAC)](../role-based-access-control/overview.md)
 
-- [如何在 Azure 中配置 RBAC](../role-based-access-control/role-assignments-portal.md) 
+- [如何配置 Azure RBAC](../role-based-access-control/role-assignments-portal.md) 
 
 - [如何使用 Azure AD 标识和访问评审](../active-directory/governance/access-reviews-overview.md)
 

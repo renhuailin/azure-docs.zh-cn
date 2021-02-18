@@ -1,20 +1,20 @@
 ---
-title: 按流量计费的异常情况检测 |Azure Marketplace
-description: 了解计费计费的自动异常情况检测如何帮助确保客户正确计费，以按流量计费方式使用商业 marketplace 产品/服务。
+title: 管理合作伙伴中心的计费异常 |Azure Marketplace
+description: 了解计费计费的自动异常情况检测如何帮助确保客户正确计费，以按流量计费方式使用商业 marketplace 产品。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 2/17/2021
+ms.date: 2/18/2021
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: 7f1bcac49ccb12ea1e0517aed5a139e549451ec0
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 1ff6262a75261c575082f3fc48d588c868ad0b51
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/18/2021
-ms.locfileid: "100653000"
+ms.locfileid: "101092527"
 ---
-# <a name="anomaly-detection-for-metered-billing"></a>针对按流量计费的异常情况检测
+# <a name="manage-metered-billing-anomalies-in-partner-center"></a>管理合作伙伴中心的计费异常
 
 自定义的按流量计费选项目前可用于 [软件即服务](plan-saas-offer.md) (SaaS) 产品和使用托管应用程序计划的 [Azure 应用程序](plan-azure-application-offer.md#types-of-plans) 。
 
@@ -77,6 +77,7 @@ Microsoft 在向客户开具发票之前，会向你提供合作伙伴，以报�
 > [!IMPORTANT]
 > 在出现 overcharge 情况时，可以重新提交超额使用情况。
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 - [使用商业性 marketplace 计量服务的 SaaS 计费计费](./partner-center-portal/saas-metered-billing.md)
 - [托管应用程序计费计费](./partner-center-portal/azure-app-metered-billing.md)
+- [针对按流量计费的异常情况检测服务](./partner-center-portal/anomaly-detection-service-for-metered-billing.md)

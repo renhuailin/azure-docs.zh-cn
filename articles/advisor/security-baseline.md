@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 36d5eba344906ca03b137efb220f54dc3a11eb6d
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: aae76d50811db87bdf4753ed456a6d8e6d95d6ab
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100572811"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101094626"
 ---
 # <a name="azure-security-baseline-for-azure-advisor"></a>适用于 Azure 顾问的 Azure 安全基线
 
@@ -175,7 +175,7 @@ Azure 高级威胁防护 (ATP) 是一种安全解决方案，它可使用 Active
 
 什么是 Azure 基于角色的访问控制 (Azure RBAC) ../role-based-access-control/overview.md 
 
-- [如何在 Azure 中配置 RBAC](../role-based-access-control/role-assignments-portal.md) 
+- [如何配置 Azure RBAC](../role-based-access-control/role-assignments-portal.md) 
 
 - [如何使用 Azure AD 标识和访问评审](../active-directory/governance/access-reviews-overview.md)
 

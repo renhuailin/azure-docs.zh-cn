@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8c63ada9621fc1485742a7683fd6742f0e896854
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: ce18e71ced320c408933caeb39b469d5885bd6ba
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954423"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101095941"
 ---
 # <a name="use-the-content-aware-encoding-preset-to-find-the-optimal-bitrate-value-for-a-given-resolution"></a>使用内容感知编码预设来查找给定分辨率的最佳比特率值
 
@@ -29,7 +29,7 @@ ms.locfileid: "98954423"
 
 Microsoft 的 [自适应流式处理](autogen-bitrate-ladder.md) 预设部分寻址源视频的质量和分辨率的变化问题。 我们的客户混合使用不同的内容，其中某些内容的分辨率为 1080p，有些为 720p，还有少部分为标清或更低分辨率。 此外，并非所有源内容都是电影或电视演播室提供的高质量夹层文件。 自适应流式处理预设解决了这些问题，它可以确保比特率梯度永不超过输入夹层文件的分辨率或平均比特率。 但是，此预设不会检查除分辨率和比特率以外的源属性。
 
-## <a name="the-content-aware-encoding"></a>内容感知编码 
+## <a name="the-content-aware-encoding"></a>内容感知编码
 
 内容感知编码预设扩展了“自适应比特率流式处理”机制，它可以整合自定义逻辑，使编码器能够查找给定分辨率的最佳比特率值，但不需要进行大量的计算分析。 此预设将生成一组 GOP 对齐的 MP4 文件。 在提供任何输入内容的情况下，服务将对输入内容执行初始的轻量分析，并使用结果来确定最佳层数，以及自适应流式处理适合传送的比特率和分辨率设置。 此预设特别适用于中低复杂性的视频，其中的输出文件的比特率低于自适应流式处理预设，但其质量仍会为观众提供良好的体验。 输出将包含带有交错式视频和音频的 MP4 文件
 
@@ -57,7 +57,7 @@ Microsoft 的 [自适应流式处理](autogen-bitrate-ladder.md) 预设部分寻
 
 可按如下所示创建使用此预设的转换。 
 
-有关使用转换输出的教程，请参阅[后续步骤](#next-steps)部分。 可以在 MPEG-DASH 和 HLS 等协议中通过媒体服务流式处理终结点传送输出资产（如教程中所述）。
+有关使用转换输出的教程，请参阅 [后续步骤](#next-steps) 部分。 可以在 MPEG-DASH 和 HLS 等协议中通过媒体服务流式处理终结点传送输出资产（如教程中所述）。
 
 > [!NOTE]
 > 请确保使用预设的 ContentAwareEncoding 而不使用 ContentAwareEncodingExperimental。

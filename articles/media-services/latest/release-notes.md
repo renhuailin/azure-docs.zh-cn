@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 10/21/2020
 ms.author: inhenkel
-ms.openlocfilehash: 2254762ec2cc9d99946afaef12f452fdfbfea9e2
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 14bc7b6f45b04f230252e85cd10b7246529cb751
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98898233"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101095158"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure 媒体服务 v3 发行说明
 
@@ -48,11 +48,11 @@ Azure 媒体服务现已在 Azure 门户的挪威东部区域提供。  此区�
 
 ### <a name="basic-audio-analysis"></a>基本音频分析
 
-音频分析预设现在包含基本模式定价层。 新的基本音频分析器模式提供了一种低成本的选项，可以提取语音脚本并设置输出字幕和副标题的格式。 此模式执行语音转文本听录并生成 VTT 字幕文件。 此模式的输出包括一个见解 JSON 文件，该文件仅包含关键字、听录和计时信息。 此模式不包括自动语言检测和说话人分割聚类。 请参阅支持的 [语言列表。](analyzing-video-audio-files-concept.md#built-in-presets)
+音频分析预设现在包含基本模式定价层。 新的基本音频分析器模式提供了一个低成本的选项，用于提取语音口述文本并设置输出隐藏式字幕和字幕的格式。 此模式执行语音转文本听录并生成 VTT 字幕文件。 此模式的输出包括一个见解 JSON 文件，该文件仅包含关键字、听录和计时信息。 此模式不包括自动语言检测和说话人分割聚类。 请参阅[支持的语言](analyzing-video-audio-files-concept.md#built-in-presets)的列表。
 
 使用索引器 v1 和索引器 v2 的客户应该迁移到基本的音频分析预设。
 
-有关基本音频分析器模式的详细信息，请参阅 [分析视频和音频文件](analyzing-video-audio-files-concept.md)。  若要了解如何使用 REST API 的基本音频分析器模式，请参阅 [如何创建基本音频转换](how-to-create-basic-audio-transform.md)。
+有关基本音频分析器模式的详细信息，请参阅[分析视频和音频文件](analyzing-video-audio-files-concept.md)。  若要了解如何在 REST API 中使用基本音频分析器模式，请参阅[如何创建基本音频转换](how-to-create-basic-audio-transform.md)。
 
 ### <a name="live-events"></a>直播活动
 
@@ -171,7 +171,7 @@ Azure Media Player 文档已迁移到 [Azure 文档](../azure-media-player/azure
 
 ### <a name="video-indexer-video-analytics"></a>视频索引器，视频分析
 
-- 使用 VideoAnalyzer 预设提取的关键帧现在采用视频的原始分辨率，而不是重设大小。 高分辨率关键帧提取提供原始质量的图像，并使你能够利用 Microsoft 计算机视觉和自定义视觉服务提供的基于映像的智能模型，从视频获得更多见解。
+- 使用 VideoAnalyzer 预设提取的关键帧现在采用视频的原始分辨率，而不是重设大小。 高分辨率关键帧提取可为你提供原始质量的图像，并允许你利用 Microsoft 计算机视觉和自定义视觉服务提供的基于图像的人工智能模型，从视频中获得更多见解。
 
 ## <a name="september-2019"></a>2019 年 9 月
 
@@ -434,12 +434,11 @@ CMAF 和“cbcs”加密支持 Apple HLS (iOS 11+) 以及支持 CMAF 的 MPEG-DA
 
 查看 [Azure 媒体服务社区](media-services-community.md)文章，了解可以提出问题、提供反馈和获取有关媒体服务的更新的不同方法。
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
-[从 Media Services V2 迁移到 v3 的迁移指南](migrate-v-2-v-3-migration-introduction.md)。
+[有关从媒体服务 v2 迁移到 v3 的迁移指南](migrate-v-2-v-3-migration-introduction.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
 - [概述](media-services-overview.md)
-- [媒体服务 v3 文档更新](docs-release-notes.md)
 - [媒体服务 v2 发行说明](../previous/media-services-release-notes.md)

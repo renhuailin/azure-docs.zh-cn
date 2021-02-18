@@ -5,22 +5,22 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 12/23/2019
-ms.openlocfilehash: 121c5850ef47999f54d206b95b69e10775d3e5c9
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 0fffe763f77fffcec6010d43deb92ffea9ece15d
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98946087"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101094917"
 ---
 # <a name="create-a-non-interactive-authentication-net-hdinsight-application"></a>创建非交互式身份验证 .NET HDInsight 应用程序
 
 在应用程序自身的标识下运行 Microsoft .NET Azure HDInsight 应用程序， (非交互式) 或在应用程序的已登录用户的标识下 (交互式) 。 本文介绍了如何创建非交互式身份验证 .NET 应用程序以连接到 Azure 并管理 HDInsight。 有关交互式应用程序的示例，请参阅[连接到 Azure HDInsight](hdinsight-administer-use-dotnet-sdk.md#connect-to-azure-hdinsight)。
 
-从非交互式 .NET 应用程序，需要：
+需要从非交互式 .NET 应用程序中获取：
 
-* Azure 订阅租户 ID（也称为目录 ID）  。 请参阅[获取租户 ID](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)。
+* Azure 订阅租户 ID（也称为目录 ID）。 请参阅[获取租户 ID](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)。
 * Azure Active Directory (Azure AD) 应用程序客户端 ID。 请参阅[创建 Azure Active Directory 应用程序](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)和[获取应用程序 ID](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)。
-* Azure AD 应用程序密钥。 请参阅[获取应用程序身份验证密钥](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)。
+* Azure AD 应用程序密钥。 请参阅 [获取应用程序身份验证密钥](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -28,11 +28,11 @@ HDInsight 群集。 请参阅[入门教程](hadoop/apache-hadoop-linux-tutorial-
 
 ## <a name="assign-a-role-to-the-azure-ad-application"></a>将角色分配给 Azure AD 应用程序
 
-向 Azure AD 应用程序分配[角色](../role-based-access-control/built-in-roles.md)，为其授予执行操作的权限。 可将作用域设置为订阅、资源组或资源级别。 较低级别的作用域将继承权限。 例如，将某个应用程序添加到资源组的 "读取者" 角色意味着该应用程序可以读取该资源组以及其中的所有资源。 本文介绍如何在资源组级别设置作用域。 有关详细信息，请参阅[使用角色分配管理对 Azure 订阅资源的访问权限](../role-based-access-control/role-assignments-portal.md)。
+向 Azure AD 应用程序分配[角色](../role-based-access-control/built-in-roles.md)，为其授予执行操作的权限。 可将作用域设置为订阅、资源组或资源级别。 较低级别的作用域将继承权限。 例如，将某个应用程序添加到资源组的 "读取者" 角色意味着该应用程序可以读取该资源组以及其中的所有资源。 本文介绍如何在资源组级别设置作用域。 有关详细信息，请参阅 [分配 azure 角色以管理对 Azure 订阅资源的访问权限](../role-based-access-control/role-assignments-portal.md)。
 
 **将“所有者”角色添加到 Azure AD 应用程序**
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 导航到具有 HDInsight 群集的资源组，在本文的后面部分中你将在该群集上运行 Hive 查询。 如果有大量资源组，可以使用筛选器查找所需的资源组。
 1. 在“资源组”菜单中，选择“访问控制（标识和访问管理）”。
 1. 选择“角色分配”选项卡以查看当前的角色分配。

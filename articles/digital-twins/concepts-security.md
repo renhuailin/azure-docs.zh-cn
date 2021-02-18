@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: b589f98ee78d0709b2a74ba4e364cec0e486e968
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: d129890cc63e5a0e4cbc6139e1de2df7a31f6f77
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100547156"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101094556"
 ---
 # <a name="secure-azure-digital-twins"></a>保护 Azure 数字孪生
 
@@ -55,7 +55,7 @@ Azure 提供了 **两个 azure 内置角色** ，用于授权对 Azure 数字孪
 | Azure 数字孪生数据读者 | 提供对 Azure 数字孪生资源的只读访问权限 | d57506d4-4c8d-48b1-8587-93c323f6a5a3 |
 
 可以通过两种方式分配角色：
-* 通过访问控制 (的 IAM) 窗格中的 Azure 数字孪生在 Azure 门户中 (参阅 [*使用 Azure 门户添加或删除 azure 角色分配*](../role-based-access-control/role-assignments-portal.md)) 
+* 通过访问控制 (IAM) 窗格中的 Azure 数字孪生在 Azure 门户中 (参阅 [*使用 Azure 门户分配 azure 角色*](../role-based-access-control/role-assignments-portal.md)) 
 * 通过 CLI 命令添加或删除角色
 
 有关如何执行此操作的更多详细步骤，请在 Azure 数字孪生教程中试用 [*：连接端到端解决方案*](tutorial-end-to-end.md)。

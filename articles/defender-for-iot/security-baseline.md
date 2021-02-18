@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/19/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 6fbd70c1de99818e2baf73d15ed365db3a54e43d
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.openlocfilehash: adb9cb234e76da5dab4503c59eb19ba6645e56c8
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98246717"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101092656"
 ---
 # <a name="azure-security-baseline-for-azure-defender-for-iot"></a>适用于 Azure Defender for IoT 的 Azure 安全基线
 
@@ -167,7 +167,7 @@ Azure 高级威胁防护 (ATP) 是一种安全解决方案，它可使用 Active
 
 - [什么是 Azure 基于角色的访问控制 (Azure RBAC)](../role-based-access-control/overview.md) 
 
-- [如何在 Azure 中配置 RBAC](../role-based-access-control/role-assignments-portal.md) 
+- [如何配置 Azure RBAC](../role-based-access-control/role-assignments-portal.md) 
 
 - [如何使用 Azure AD 标识和访问评审](../active-directory/governance/access-reviews-overview.md)
 

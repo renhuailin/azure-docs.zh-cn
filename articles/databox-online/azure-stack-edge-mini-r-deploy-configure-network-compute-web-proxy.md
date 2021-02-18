@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 10/14/2020
+ms.date: 02/04/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge Mini R so I can use it to transfer data to Azure.
-ms.openlocfilehash: 915aca5f7400496aacb3c3cf248120dff39d747c
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 1cca747003a127371db7d110500e2b4168f10219
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96463795"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594445"
 ---
 # <a name="tutorial-configure-network-for-azure-stack-edge-mini-r"></a>教程：配置 Azure Stack Edge Mini R 的网络
 
@@ -126,6 +126,7 @@ ms.locfileid: "96463795"
    - 如果你的环境中启用了 DHCP，则会自动配置网络接口。 系统会自动分配 IP 地址、子网、网关和 DNS。
    - 如果未启用 DHCP，则可以根据需要分配静态 IP。
    - 可以将网络接口配置为 IPv4。
+   - Azure Stack Edge 不支持网络接口卡 (NIC) 组合或链接聚合。
    - 任何端口的序列号都与节点序列号相对应。 对于 K 系列设备，仅显示一个序列号。
 
      >[!NOTE] 

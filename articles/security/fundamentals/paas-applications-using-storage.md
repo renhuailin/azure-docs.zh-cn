@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/28/2018
 ms.author: tomsh
-ms.openlocfilehash: 082408f357e97a2ed2153d43dbea459ff09ba704
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 12cce0eac3827046ae9171f3dd5696ae5905c802
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94693171"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101093981"
 ---
 # <a name="best-practices-for-securing-paas-web-and-mobile-applications-using-azure-storage"></a>使用 Azure 存储保护 PaaS Web 和移动应用程序的最佳做法
 本文介绍 Azure 存储安全在保护平台即服务 (PaaS) Web 和移动应用程序方面的最佳做法。 这些最佳实践衍生自我们的 Azure 经验和客户经验。
@@ -56,15 +56,15 @@ Azure 存储提供了以下四种服务：Blob 存储、表存储、队列存储
 若要了解有关共享访问签名的详细信息，请参阅[使用共享访问签名](../../storage/common/storage-sas-overview.md)。 
 
 ## <a name="use-azure-role-based-access-control"></a>使用 Azure 基于角色的访问控制
-管理访问的另一种方法是使用 [Azure 基于角色的访问控制](../../role-based-access-control/overview.md) (Azure RBAC)。 借助 Azure RBAC，你可以专注于根据需要知道和最低权限安全原则，为员工提供他们所需的确切权限。 权限过多，可能会向攻击者公开帐户。 权限太少意味着员工无法有效地完成其工作。 Azure RBAC 通过为 Azure 提供精细的访问管理，帮助解决此问题。 对于想要实施数据访问安全策略的组织，这是必须要做的事。
+管理访问的另一种方法是使用 [Azure 基于角色的访问控制](../../role-based-access-control/overview.md) (Azure RBAC)。 使用 Azure RBAC 时，可根据了解内容的需要和最低特权安全原则，重点考虑为员工提供所需的准确权限。 权限过多，可能会向攻击者公开帐户。 权限太少意味着员工无法有效地完成其工作。 Azure RBAC 通过为 Azure 提供细致的访问管理来帮助你解决此问题。 对于想要实施数据访问安全策略的组织，这是必须要做的事。
 
 可以使用 Azure 中的 Azure 内置角色向用户分配权限。 例如，将存储帐户参与者用于需要管理存储帐户的云操作员，并使用经典存储帐户参与者角色来管理经典存储帐户。 如果云操作员需要管理 VM 但不管理他们连接到的虚拟网络或存储帐户，则可以将他们添加到虚拟机参与者角色。
 
-不通过使用 Azure RBAC 等功能实施数据访问控制的组织可能会向其用户提供比所需权限更多的特权。 一开始就允许某些用户访问他们不应有权访问的数据可能会导致数据泄漏。
+未使用 Azure RBAC 之类的功能强制实施数据访问控制的组织可能会给其用户分配不必要的权限。 一开始就允许某些用户访问他们不应有权访问的数据可能会导致数据泄漏。
 
-若要了解有关 Azure RBAC 的详细信息，请参阅：
+若要详细了解 Azure RBAC，请参阅：
 
-- [使用 Azure 门户添加或删除 Azure 角色分配](../../role-based-access-control/role-assignments-portal.md)
+- [使用 Azure 门户分配 Azure 角色](../../role-based-access-control/role-assignments-portal.md)
 - [Azure 内置角色](../../role-based-access-control/built-in-roles.md)
 - [Azure 存储安全指南](../../storage/blobs/security-recommendations.md) 
 

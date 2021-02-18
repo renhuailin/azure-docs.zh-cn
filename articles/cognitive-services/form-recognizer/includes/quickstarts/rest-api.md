@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 12/15/2020
 ms.author: pafarley
-ms.openlocfilehash: 3112c93e0877a8441875e3c7627c2a7b84ac8ab1
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 8ba24d5a59beade1429b9d86ed549f1dae3c2f1f
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99808447"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100551880"
 ---
 > [!NOTE]
 > 本指南使用 cURL 执行 REST API 调用。 还有[GitHub 上的示例代码](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/python/FormRecognizer/rest)，它说明了如何使用 Python 调用 REST API。
@@ -85,9 +85,14 @@ curl -v -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.2/layout/analyzeR
 
 你将收到包含 JSON 内容的 `200 (success)` 响应。
 
-请查看以下发票图像及其相应的 JSON 输出。 为了简单起见，已缩短输出。 `"readResults"` 节点包含每一行文本，以及其各自在页面上的边界框位置。 `"selectionMarks"` 节点（在 v2.1 预览版中）显示每个选择标记（复选框、单选框），并显示其状态是“已选中”还是“未选中”。 `"pageResults"` 部分包含提取的表。 对于每个表，将会提取文本、行和列索引、行和列跨距、边界框等。
+请查看以下发票图像及其相应的 JSON 输出。
+* `"readResults"` 节点包含每一行文本，以及其各自在页面上的边界框位置。 
+* `"selectionMarks"` 节点（在 v2.1 预览版中）显示每个选择标记（复选框、单选框），并显示其状态是“已选中”还是“未选中”。 
+* `"pageResults"` 部分包含提取的表。 对于每个表，将会提取文本、行和列索引、行和列跨距、边界框等。
 
 :::image type="content" source="../../media/contoso-invoice.png" alt-text="包含表的 Contoso 项目声明文档。":::
+
+为了简单起见，已缩短输出。 请参阅 [GitHub 上的完整示例输出](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/sample-layout-output.json)。
 
 # <a name="v20"></a>[v2.0](#tab/v2-0)    
 ```json
@@ -355,11 +360,16 @@ curl -v -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.2/prebuilt/invoic
 
 ### <a name="examine-the-response"></a>检查响应
 
-你将收到包含 JSON 输出的 `200 (Success)` 响应。 `"readResults"` 字段包含从账单提取的每行文本，`"pageResults"` 包含从账单提取的表格和选择标记，而 `"documentResults"` 字段包含账单中最相关部分的键/值信息。
+你将收到包含 JSON 输出的 `200 (Success)` 响应。 
+* `"readResults"` 字段包含从发票中提取的每行文本。
+* `"pageResults"` 包含从发票中提取的表和选择标记。
+* `"documentResults"` 字段包含发票中最相关部分的键/值信息。
 
-请查看下列账单文档及其对应的 JSON 输出。 为便于阅读，已将该 JSON 内容缩短。
+请查看下列账单文档及其对应的 JSON 输出。 
 
 * [示例发票](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/curl/form-recognizer/sample-invoice.pdf)
+
+为便于阅读，已将此 JSON 内容缩短。 请参阅 [GitHub 上的完整示例输出](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/sample-invoice-output.json)。
 
 ```json
 {
@@ -716,7 +726,7 @@ curl -X GET "https://{Endpoint}/formrecognizer/v2.1-preview/custom/models/{model
 
 在不使用标签训练的自定义模型中，键/值对关联和表位于 JSON 输出的 `"pageResults"` 节点中。 在使用标签训练的自定义模型中，键/值对关联位于 `"documentResults"` 节点中。 如果还通过 includeTextDetails URL 参数指定了纯文本提取，则 `"readResults"` 节点将显示文档中所有文本的内容和位置  。
 
-为了简单起见，已缩短此示例 JSON 输出。
+为了简单起见，已缩短此示例 JSON 输出。 请参阅 [GitHub 上的完整示例输出](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/analyze-result-invoice-6.pdf.json)。
 
 # <a name="v20"></a>[v2.0](#tab/v2-0)
 ```JSON
@@ -1041,13 +1051,15 @@ curl -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.2/prebuilt/receipt/a
 
 ### <a name="examine-the-response"></a>检查响应
 
-你将收到包含 JSON 输出的 `200 (Success)` 响应。 第一个字段 `"status"` 指示操作的状态。 如果操作已完成，`"readResults"` 字段包含已从回执中提取的每行文本，而 `"documentResults"` 字段包含该回执中最相关部分的键/值信息。 如果操作未完成，`"status"` 的值将为 `"running"` 或 `"notStarted"`，你应当采用手动方式或通过脚本再次调用该 API。 我们建议两次调用间隔一秒或更长时间。
+你将收到包含 JSON 输出的 `200 (Success)` 响应。 第一个字段 `"status"` 指示操作的状态。 如果操作未完成，`"status"` 的值将为 `"running"` 或 `"notStarted"`，你应当采用手动方式或通过脚本再次调用该 API。 我们建议两次调用间隔一秒或更长时间。
 
-请查看以下回执图像及其相应的 JSON 输出。 为可读起见，已将该输出缩短。
+`"readResults"` 节点包含所有已识别的文本（如果将可选 includeTextDetails 参数设置为 `true`）。 文本按页，然后按行，然后按单个单词进行组织。 `"documentResults"` 节点包含模型发现的特定于回执的值。 你将在这里找到有用的键/值对，如税款、总计、商家地址等。
+
+请查看以下回执图像及其相应的 JSON 输出。
 
 ![Contoso 商店提供的回执](../../media/contoso-allinone.jpg)
 
-`"readResults"` 节点包含所有已识别的文本（如果将可选 includeTextDetails 参数设置为 `true`）。 文本按页，然后按行，然后按单个单词进行组织。 `"documentResults"` 节点包含模型发现的特定于回执的值。 你将在这里找到有用的键/值对，如税款、总计、商家地址等。
+为便于阅读，已将此输出缩短。 请参阅 [GitHub 上的完整示例输出](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/receipt-result.json)。
 
 ```json
 {
@@ -1386,11 +1398,11 @@ curl -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.2/prebuilt/receipt/a
 本部分演示如何使用预先训练的模型分析和提取英文名片中的常见字段。 有关名片分析的详细信息，请参阅[名片概念指南](../../concept-business-cards.md)。 若要开始分析名片，请使用以下 cURL 命令调用[分析名片](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeBusinessCardAsync) API。 运行该命令之前，请进行以下更改：
 
 1. 将 `{Endpoint}` 替换为从表单识别器订阅中获取的终结点。
-1. 将 `{your receipt URL}` 替换为回执图像的 URL 地址。
+1. 将 `{your business card URL}` 替换为回执图像的 URL 地址。
 1. 将 `{subscription key}` 替换为从上一步复制的订阅密钥。
 
 ```bash
-curl -i -X POST "https://{Endpoint}/formrecognizer/v2.1-preview.2/prebuilt/businessCard/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ 'source': '{your receipt URL}'}"
+curl -i -X POST "https://{Endpoint}/formrecognizer/v2.1-preview.2/prebuilt/businessCard/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ 'source': '{your business card URL}'}"
 ```
 
 你将收到 `202 (Success)` 响应，其中包含“Operation-Location”标头。 此标头的值包含一个可用于查询异步操作状态和获取结果的操作 ID。
@@ -1414,11 +1426,13 @@ curl -v -X GET "https://westcentralus.api.cognitive.microsoft.com/formrecognizer
 
 ### <a name="examine-the-response"></a>检查响应
 
-你将收到包含 JSON 输出的 `200 (Success)` 响应。 `"readResults"` 节点包含所有已识别的文本。 文本按页，然后按行，然后按单个单词进行组织。 `"documentResults"` 节点包含模型发现的特定于名片的值。 在此，你可以找到有用的联系人信息，如公司名、名字、姓氏、电话号码等。
+你将收到包含 JSON 输出的 `200 (Success)` 响应。 
+
+`"readResults"` 节点包含所有已识别的文本。 文本按页，然后按行，然后按单个单词进行组织。 `"documentResults"` 节点包含模型发现的特定于名片的值。 在此，你可以找到有用的联系人信息，如公司名、名字、姓氏、电话号码等。
 
 ![Contoso 公司的名片](../../media/business-card-english.jpg)
 
-此示例说明表单识别器返回的 JSON 输出。 为了提高可读性，此响应已被截断。
+为便于阅读，已缩短此示例 JSON 输出。 请参阅 [GitHub 上的完整示例输出](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/business-card-result.json)。
 
 ```json
 {

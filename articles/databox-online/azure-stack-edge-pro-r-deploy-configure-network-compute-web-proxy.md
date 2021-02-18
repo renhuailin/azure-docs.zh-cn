@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 10/15/2020
+ms.date: 02/04/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge Pro R so I can use it to transfer data to Azure.
-ms.openlocfilehash: ad0010a1885c1e9bac8fa2341771cedc12115adc
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 11c1d76b5784587f234455f81595778897569eb1
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96463538"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594344"
 ---
 # <a name="tutorial-configure-network-for-azure-stack-edge-pro-r"></a>教程：配置 Azure Stack Edge Pro R 的网络
 
@@ -72,6 +72,7 @@ ms.locfileid: "96463538"
    * 如果你的环境中启用了 DHCP，则会自动配置网络接口。 系统会自动分配 IP 地址、子网、网关和 DNS。
    * 如果未启用 DHCP，则可以根据需要分配静态 IP。
    * 可以将网络接口配置为 IPv4。
+   * Azure Stack Edge 不支持网络接口卡 (NIC) 组合或链接聚合。
    * 任何端口的序列号都与节点序列号相对应。
     <!--* On the 25-Gbps interfaces, you can set the RDMA (Remote Direct Access Memory) mode to iWarp or RoCE (RDMA over Converged Ethernet). Where low latencies are the primary requirement and scalability is not a concern, use RoCE. When latency is a key requirement, but ease-of-use and scalability are also high priorities, iWARP is the best candidate.-->
     配置设备网络后，页面将更新，如下所示。

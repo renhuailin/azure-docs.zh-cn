@@ -6,12 +6,12 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 06/02/2020
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 8bdf637ab773e90a5eac42bcaa443cf6741db636
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 6a6f782768db12c2ce75f5cf1e66100222f24446
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94696007"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101095209"
 ---
 # <a name="configure-a-nodejs-app-for-azure-app-service"></a>为 Azure 应用服务配置 Node.js 应用
 
@@ -29,7 +29,7 @@ Node.js 应用必须与所有必需的 NPM 依赖项一起部署。 当你在启
 az webapp config appsettings list --name <app-name> --resource-group <resource-group-name> --query "[?name=='WEBSITE_NODE_DEFAULT_VERSION'].value"
 ```
 
-若要显示所有支持的 Node.js 版本，请在 [Cloud Shell](https://shell.azure.com)中运行以下命令：
+要显示所有受支持的 Node.js 版本，请在 [Cloud Shell](https://shell.azure.com) 中运行以下命令：
 
 ```azurecli-interactive
 az webapp list-runtimes | grep node
@@ -45,7 +45,7 @@ az webapp list-runtimes | grep node
 az webapp config show --resource-group <resource-group-name> --name <app-name> --query linuxFxVersion
 ```
 
-若要显示所有支持的 Node.js 版本，请在 [Cloud Shell](https://shell.azure.com)中运行以下命令：
+要显示所有受支持的 Node.js 版本，请在 [Cloud Shell](https://shell.azure.com) 中运行以下命令：
 
 ```azurecli-interactive
 az webapp list-runtimes --linux | grep NODE
@@ -342,6 +342,19 @@ if (req.secure) {
 
 ::: zone-end
 
+
+::: zone pivot="platform-linux"
+
+## <a name="monitor-with-application-insights"></a>使用 Application Insights 进行监视
+
+Application Insights 允许你监视应用程序的性能、异常和使用情况，而无需进行任何代码更改。 若要附加 App Insights 代理，请转到门户中的 web 应用并选择 "**设置**" 下的 **Application Insights** ，然后选择 "**打开 Application Insights**"。 接下来，选择现有的 App Insights 资源，或创建一个新资源。 最后，选择底部的 " **应用** "。 若要使用 PowerShell 检测 web 应用，请参阅 [这些说明](../azure-monitor/app/azure-web-apps.md?tabs=netcore#enabling-through-powershell)
+
+此代理将监视服务器端 Node.js 应用程序。 若要监视客户端 JavaScript，请 [将 JAVASCRIPT SDK 添加到你的项目](../azure-monitor/app/javascript.md)。 
+
+有关详细信息，请参阅 [Application Insights 扩展发行说明](../azure-monitor/app/web-app-extension-release-notes.md)。
+
+::: zone-end
+
 ## <a name="troubleshooting"></a>疑难解答
 
 如果运行中的 Node.js 应用在应用服务中的行为不同或有错误，请尝试执行以下操作：
@@ -370,4 +383,3 @@ if (req.secure) {
 > [应用服务 Linux 常见问题解答](faq-app-service-linux.md)
 
 ::: zone-end
-

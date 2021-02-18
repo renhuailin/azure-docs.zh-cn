@@ -6,12 +6,12 @@ ms.author: tefa
 ms.service: signalr
 ms.topic: conceptual
 ms.date: 08/03/2020
-ms.openlocfilehash: 97386b18360e22b457dbcdda53c4f81e7d4ed272
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: 597b69c1180ea1fb2a6812d648f8b8ad37707d66
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97797462"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101092610"
 ---
 # <a name="authenticate-an-application-with-azure-active-directory-to-access-azure-signalr-service"></a>使用 Azure Active Directory 访问 Azure SignalR 服务，对应用程序进行身份验证
 Microsoft Azure 基于 Azure Active Directory (Azure AD) 针对资源和应用程序提供了集成的访问控制管理功能。 将 Azure AD 与 Azure SignalR Service 结合使用的主要优势是，无需再将凭据存储在代码中。 可以从 Microsoft 标识平台请求 OAuth 2.0 访问令牌。 用于请求令牌的资源名称为 `https://signalr.azure.com/`。 Azure AD 对运行应用程序) 应用程序、资源组或服务主体 (的安全主体进行身份验证。 如果身份验证成功，Azure AD 将向应用程序返回一个访问令牌，然后应用程序可使用该访问令牌向 Azure SignalR 服务资源授予请求。
@@ -55,8 +55,8 @@ Microsoft Azure 基于 Azure Active Directory (Azure AD) 针对资源和应用�
 
 ![上传证书](./media/authenticate/certification.png)
 
-## <a name="add-rbac-roles-using-the-azure-portal"></a>使用 Azure 门户添加 RBAC 角色  
-若要详细了解如何使用 RBAC 和 Azure 门户管理对 Azure 资源的访问，请参阅[此文](..//role-based-access-control/role-assignments-portal.md)。 
+## <a name="assign-azure-roles-using-the-azure-portal"></a>使用 Azure 门户分配 Azure 角色  
+若要详细了解如何使用 Azure RBAC 和 Azure 门户管理对 Azure 资源的访问，请参阅[此文](..//role-based-access-control/role-assignments-portal.md)。 
 
 在确定角色分配的适当范围后，在 Azure 门户中导航到该资源。 显示资源的“访问控制(IAM)”设置，并按以下说明管理角色分配：
 
@@ -81,7 +81,7 @@ Microsoft Azure 基于 Azure Active Directory (Azure AD) 针对资源和应用�
 
 ## <a name="sample-codes-while-configuring-your-app-server"></a>配置应用服务器时的示例代码。
 
-在以下情况下添加下列选项 `AddAzureSignalR` ：
+在 `AddAzureSignalR` 时，添加以下选项：
 
 ```C#
 services.AddSignalR().AddAzureSignalR(option =>

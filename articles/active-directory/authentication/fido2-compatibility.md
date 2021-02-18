@@ -11,12 +11,12 @@ author: knicholasa
 manager: martinco
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e324ae0fc80bb5990f9cf15901080684086a549
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: a8ed99338a10eb226823c4bd4857d812038ff632
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/18/2021
-ms.locfileid: "100652235"
+ms.locfileid: "101094506"
 ---
 # <a name="browser-support-of-fido2-passwordless-authentication"></a>FIDO2 无密码 authentication 的浏览器支持
 
@@ -32,6 +32,17 @@ Azure Active Directory 允许将 [FIDO2 安全密钥](https://docs.microsoft.com
 | **Windows**  | ![适用于 AAD 帐户的 Chrome 支持 Windows 上的 USB。][y] | ![Chrome 在 Windows 上支持 AAD 帐户的 NFC。][y] | ![Chrome 支持 Windows 上的 BLE 用于 AAD 帐户。][y] | ![边缘支持 AAD 帐户的 Windows 上的 USB。][y] | ![边缘支持 Windows 上的 NFC 帐户的 NFC。][y] | ![边缘支持适用于 AAD 帐户的 Windows 上的 BLE。][y] | ![Firefox 支持 AAD 帐户的 Windows 上的 USB。][y] | ![Firefox 支持在 Windows 上启用用于 AAD 帐户的 NFC。][y] | ![Firefox 支持 Windows 上的 BLE 用于 AAD 帐户。][y] |
 | **macOS**  | ![Chrome 支持 AAD 帐户的 macOS 上的 USB。][y] | ![Chrome 在 macOS 上不支持 AAD 帐户的 NFC。][n] | ![Chrome 不支持 AAD 帐户的 macOS 上的 BLE。][n] | ![边缘支持 AAD 帐户的 macOS 上的 USB。][y] | ![Edge 不支持 AAD 帐户的 macOS 上的 NFC。][n] | ![Edge 不支持 AAD 帐户的 macOS 上的 BLE。][n] | ![Firefox 不支持 AAD 帐户的 macOS 上的 USB。][n] | ![在 macOS 上，Firefox 不支持 AAD 帐户的 NFC。][n] | ![Firefox 不支持 AAD 帐户的 macOS 上的 BLE。][n] |
 | **Linux**  | ![Chrome 支持在 Linux 上为 AAD 帐户启用 USB。][y] | ![Chrome 不支持在 Linux 上用于 AAD 帐户的 NFC。][n] | ![Chrome 不支持 Linux 上的 BLE 用于 AAD 帐户。][n] | ![Edge 不支持在 Linux 上为 AAD 帐户启用 USB。][n] | ![Edge 不支持 Linux 上的 NFC 帐户的 NFC。][n] | ![对于 AAD 帐户，Edge 不支持 Linux 上的 BLE。][n] | ![Firefox 不支持在 Linux 上为 AAD 帐户启用 USB。][n] | ![在 Linux 上，Firefox 不支持 AAD 帐户的 NFC。][n] | ![在 Linux 上，Firefox 不支持 AAD 帐户的 BLE。][n] |
+
+## <a name="unsupported-browsers"></a>不受支持的浏览器
+
+以下操作系统和浏览器组合不受支持，但正在调查未来的支持和测试。 如果你想要查看其他操作系统和浏览器支持，请使用页面底部的产品反馈工具提供反馈。
+
+| 操作系统 | 浏览者 |
+| ---- | ---- |
+| iOS | Safari，无畏 |
+| macOS | Safari |
+| Android | Chrome |
+| ChromeOS | Chrome |
 
 ## <a name="operating-system-versions-tested"></a>已测试的操作系统版本
 

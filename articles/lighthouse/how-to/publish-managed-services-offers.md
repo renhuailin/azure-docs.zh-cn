@@ -1,14 +1,14 @@
 ---
 title: 将托管服务产品/服务发布到 Azure Marketplace
 description: 了解如何发布加入客户到 Azure Lighthouse 的托管服务产品/服务。
-ms.date: 02/16/2021
+ms.date: 02/17/2021
 ms.topic: how-to
-ms.openlocfilehash: 3af460f17533d70b24f76ab40460a5fa920cdece
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: b906ba9961ae4f77ca16890fd0a9036123343111
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100555807"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101092142"
 ---
 # <a name="publish-a-managed-service-offer-to-azure-marketplace"></a>将托管服务产品/服务发布到 Azure Marketplace
 
@@ -33,6 +33,9 @@ ms.locfileid: "100555807"
 |需要客户接受 Azure 门户     |是     |否   |
 |可以使用自动化来加入多个订阅、资源组或客户 |否     |是    |
 |立即访问新的内置角色和 Azure Lighthouse 功能     |在某些延迟后，通常不会始终 ()          |是         |
+
+> [!NOTE]
+> 托管服务产品/服务可能在 Azure 政府版和其他国家云中不可用。
 
 ## <a name="create-your-offer"></a>创建产品/服务
 

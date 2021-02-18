@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: 460380d9435528dcd8cbb3f877c8034fdc34f50c
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: f4d65c97bfccd223453583b25ee0586c5bc0b1ec
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98134141"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101091442"
 ---
 # <a name="faq-about-using-azure-database-migration-service"></a>有关使用 Azure 数据库迁移服务的常见问题解答
 
@@ -51,8 +51,8 @@ Azure 数据库迁移服务是用于大规模 Microsoft Azure 数据库迁移的
 **问：Azure 数据库迁移服务与 Azure 迁移产品/服务有何差别？**
 Azure 迁移服务可以帮助将本地虚拟机迁移到 Azure IaaS。 该服务会评估是否适合迁移以及需要根据性能进行哪些大小调整，并提供在 Azure 中运行本地虚拟机的成本估算。 Azure Migrate 适合用于将基于本地 VM 的工作负荷直接迁移到 Azure IaaS VM。 但是，与 Azure 数据库迁移服务不同，Azure Migrate 不是适用于 Azure SQL 数据库或 Azure SQL 托管实例等 Azure PaaS 关系数据库平台的专用数据库迁移服务产品。
 
-**：.数据库迁移服务是否存储客户数据？**
-否。 数据库迁移服务不存储客户数据。
+**问：数据库迁移服务是否存储客户数据？**
+不是。 数据库迁移服务不存储客户数据。
 
 ## <a name="setup"></a>设置
 
@@ -62,7 +62,7 @@ Azure 迁移服务可以帮助将本地虚拟机迁移到 Azure IaaS。 该服�
 在所有支持的迁移方案中通用的 Azure 数据库迁移服务先决条件包括需要：
 
 * 使用 Azure 资源管理器部署模型创建适合 Azure 数据库迁移服务的 Microsoft Azure 虚拟网络，它将使用 [ExpressRoute](../expressroute/expressroute-introduction.md) 或 [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md) 为本地源服务器提供站点到站点连接。
-* 确保虚拟网络的网络安全组规则未阻止以下通信端口：443、53、5671-5672、9350-9354、445、12000。 有关虚拟网络 NSG 流量筛选的更多详细信息，请参阅[使用网络安全组筛选网络流量](../virtual-network/virtual-network-vnet-plan-design-arm.md)一文。
+* 确保虚拟网络安全组规则不会阻止端口443用于 ServiceTags 的空间、存储和 AzureMonitor。 有关虚拟网络 NSG 流量筛选的更多详细信息，请参阅[使用网络安全组筛选网络流量](../virtual-network/virtual-network-vnet-plan-design-arm.md)一文。
 * 在源数据库的前面使用了防火墙设备时，可能需要添加防火墙规则以允许 Azure 数据库迁移服务访问要迁移的源数据库。
 
 有关使用 Azure 数据库迁移服务来竞争特定迁移方案所需的所有先决条件的列表，请参阅 docs.microsoft.com 上的 Azure 数据库迁移服务 [文档](./dms-overview.md) 中的相关教程。
@@ -109,7 +109,7 @@ Azure 迁移服务可以帮助将本地虚拟机迁移到 Azure IaaS。 该服�
 ## <a name="troubleshooting-and-optimization"></a>故障排除和优化
 
 **问：我正在 DMS 中设置一个迁移项目，在连接到源数据库时遇到问题。**
-如果在执行迁移时连接到源数据库系统时遇到问题，请在设置 DMS 实例的虚拟网络的同一子网中创建一个虚拟机。 在该虚拟机中，应该能够运行连接测试，例如，使用 UDL 文件测试连接到 SQL Server，或下载 Robo 3T 以测试 MongoDB 连接。 如果连接测试成功，则在连接到源数据库时应该不会遇到问题。 如果连接测试失败，请与网络管理员联系。
+如果在迁移过程中连接到源数据库系统时遇到问题，请在用于设置 DMS 实例的虚拟网络的同一子网中创建一个虚拟机。 在该虚拟机中，应该能够运行连接测试，例如，使用 UDL 文件测试连接到 SQL Server，或下载 Robo 3T 以测试 MongoDB 连接。 如果连接测试成功，则在连接到源数据库时应该不会遇到问题。 如果连接测试失败，请与网络管理员联系。
 
 **问：为什么 Azure 数据库迁移服务不可用或已停止？**
 如果用户显式停止 Azure 数据库迁移服务 (DMS)，或者如果服务处于非活动状态已有 24 小时，则服务将处于已停止或自动暂停状态。 在上述每种情况下，服务将不可用并处于已停止状态。  若要恢复活动迁移，请重启该服务。

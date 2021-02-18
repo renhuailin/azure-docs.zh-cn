@@ -3,12 +3,12 @@ title: 以编程方式创建 Azure 仪表板
 description: 使用 Azure 门户中的仪表板作为模板以编程方式创建 Azure 仪表板。 包括 JSON 引用。
 ms.topic: how-to
 ms.date: 12/4/2020
-ms.openlocfilehash: e69d3f3cea0ff63f94e797047eb10b9583678b1b
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: bd56dc1c729c5aa7a77e79aa3af3366166fdcfea
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96745802"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101095170"
 ---
 # <a name="programmatically-create-azure-dashboards"></a>以编程方式创建 Azure 仪表板
 
@@ -46,7 +46,7 @@ ms.locfileid: "96745802"
 
 ![共享仪表板](./media/azure-portal-dashboards-create-programmatically/share-command.png)
 
-选择“共享”时，系统会提示选择要发布到的订阅和资源组。  必须对所选订阅和资源组拥有写入访问权限。 有关详细信息，请参阅[使用 Azure 门户添加或删除 Azure 角色分配](../role-based-access-control/role-assignments-portal.md)。
+选择“共享”时，系统会提示选择要发布到的订阅和资源组。  必须对所选订阅和资源组拥有写入访问权限。 有关详细信息，请参阅 [使用 Azure 门户分配 Azure 角色](../role-based-access-control/role-assignments-portal.md)。
 
 ![对共享和访问权限进行更改](./media/azure-portal-dashboards-create-programmatically/sharing-and-access.png)
 
@@ -656,35 +656,35 @@ id: "[resourceId(parameters('virtualMachineResourceGroup'), 'Microsoft.Compute/v
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
-- 这些示例使用以下仪表板： [portal-dashboard-template-testvm.json](https://raw.githubusercontent.com/Azure/azure-docs-powershell-samples/master/azure-portal/portal-dashboard-template-testvm.json)。 将尖括号中的内容替换为你的值。
+- 这些示例使用以下仪表板：[portal-dashboard-template-testvm.json](https://raw.githubusercontent.com/Azure/azure-docs-powershell-samples/master/azure-portal/portal-dashboard-template-testvm.json) 将尖括号中的内容替换为你的值。
 
-运行 [az portal 仪表板 create](/cli/azure/ext/portal/portal/dashboard#ext_portal_az_portal_dashboard_create) 命令以创建仪表板：
+运行 [az portal dashboard create](/cli/azure/ext/portal/portal/dashboard#ext_portal_az_portal_dashboard_create) 命令来创建仪表板：
 
 ```azurecli
 az portal dashboard create --resource-group myResourceGroup --name 'Simple VM Dashboard' \
    --input-path portal-dashboard-template-testvm.json --location centralus
 ```
 
-你可以使用 [az portal 仪表板 update](/cli/azure/ext/portal/portal/dashboard#ext_portal_az_portal_dashboard_update) 命令更新仪表板：
+可以使用 [az portal dashboard update](/cli/azure/ext/portal/portal/dashboard#ext_portal_az_portal_dashboard_update) 命令更新仪表板：
 
 ```azurecli
 az portal dashboard update --resource-group myResourceGroup --name 'Simple VM Dashboard' \
 --input-path portal-dashboard-template-testvm.json --location centralus
 ```
 
-若要查看仪表板的详细信息，请运行 [az portal 仪表板 show](/cli/azure/ext/portal/portal/dashboard#ext_portal_az_portal_dashboard_show) 命令：
+通过运行 [az portal dashboard show](/cli/azure/ext/portal/portal/dashboard#ext_portal_az_portal_dashboard_show) 命令查看仪表板的详细信息：
 
 ```azurecli
 az portal dashboard show --resource-group myResourceGroup --name 'Simple VM Dashboard'
 ```
 
-若要查看当前订阅的所有仪表板，请使用 [az portal 仪表盘 list](/cli/azure/ext/portal/portal/dashboard#ext_portal_az_portal_dashboard_list)：
+若要查看当前订阅的所有仪表板，请使用 [az portal dashboard list](/cli/azure/ext/portal/portal/dashboard#ext_portal_az_portal_dashboard_list)：
 
 ```azurecli
 az portal dashboard list
 ```
 
-你还可以查看资源组的所有仪表板：
+还可以查看资源组的所有仪表板：
 
 ```azurecli
 az portal dashboard list --resource-group myResourceGroup
@@ -692,6 +692,6 @@ az portal dashboard list --resource-group myResourceGroup
 
 ## <a name="next-steps"></a>后续步骤
 
-有关桌面的详细信息，请参阅 [管理 Azure 门户设置和首选项](set-preferences.md)。
+有关桌面的详细信息，请参阅[管理 Azure 门户设置和首选项](set-preferences.md)。
 
-有关仪表板 Azure CLI 支持的详细信息，请参阅 [az 门户仪表板](/cli/azure/ext/portal/portal/dashboard)。
+有关对仪表板的 Azure CLI 支持的详细信息，请参阅 [az portal dashboard](/cli/azure/ext/portal/portal/dashboard)。

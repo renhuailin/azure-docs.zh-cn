@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 01/13/2021
 ms.author: pafarley
-ms.openlocfilehash: 31ca65099d645b7fdfee70275515f0a864cd905f
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: dbe0b5ac207b361a9584603bbe2d59abd5e5ca4e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100007391"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390396"
 ---
 # <a name="whats-new-in-computer-vision"></a>计算机视觉中的新增功能
 
@@ -26,7 +26,7 @@ ms.locfileid: "100007391"
 ### <a name="read-api-v32-public-preview-with-ocr-support-for-73-languages"></a>读取 API v3.2 公共预览版（带有对 73 种语言的 OCR 支持）
 计算机视觉的读取 API v3.2 公共预览版（可用作云服务和 Docker 容器）包括以下更新：
 * [用于 73 种语言的 OCR](./language-support.md#optical-character-recognition-ocr)，这些语言包括简体中文和繁体中文、日语、韩语和拉丁语言。
-* 用于文本行输出的自然读取顺序。
+* 文本行输出的自然读取顺序（仅限拉丁语言）
 * 文本行的手写样式分类以及置信度分数（仅限拉丁语言）。
 * 对于多页文档，仅提取所选页面的文本。
 * 可为本地部署用作 [Distroless 容器](./computer-vision-how-to-install-containers.md?tabs=version-3-2)。

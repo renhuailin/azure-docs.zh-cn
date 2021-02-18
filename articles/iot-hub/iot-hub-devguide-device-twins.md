@@ -11,12 +11,12 @@ ms.date: 09/29/2020
 ms.custom:
 - mqtt
 - 'Role: Cloud Development'
-ms.openlocfilehash: b83faecb16ac09a47a0ade25474f7a5b3ecd4296
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: fff4b9157c30203f47c65a74b211e3dbf6426d92
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400922"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101093024"
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>了解并在 IoT 中心内使用设备孪生
 
@@ -42,6 +42,8 @@ ms.locfileid: "97400922"
 有关使用报告的属性、设备到云的消息或文件上传的指导，请参阅[设备到云的通信指南](iot-hub-devguide-d2c-guidance.md)。
 
 有关使用所需的属性、直接方法或云到设备的消息的指导，请参阅[云到设备的通信指南](iot-hub-devguide-c2d-guidance.md)。
+
+若要了解设备孪生如何与 Azure IoT 即插即用设备使用的设备型号相关，请参阅 [了解 IoT 即插即用数字孪生](../iot-pnp/concepts-digital-twin.md)。
 
 ## <a name="device-twins"></a>设备孪生
 

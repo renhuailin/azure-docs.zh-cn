@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions, devx-track-azurecli
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e22e5fc4bc7211d905dbe8775b0ef6e893bd2cc
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 66958e275a6dee13244f0f283b1ee1dbb5d40470
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98761002"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101093458"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>使用 Azure Active Directory 身份验证（预览版）登录到 Azure 中的 Windows 虚拟机
 
@@ -194,9 +194,9 @@ az role assignment create \
 
 有关如何使用 Azure RBAC 管理对 Azure 订阅资源的访问的详细信息，请参阅以下文章：
 
-- [使用 Azure CLI 添加或删除 Azure 角色分配](../../role-based-access-control/role-assignments-cli.md)
-- [使用 Azure 门户添加或删除 Azure 角色分配](../../role-based-access-control/role-assignments-portal.md)
-- [使用 Azure PowerShell 添加或删除 Azure 角色分配](../../role-based-access-control/role-assignments-powershell.md)。
+- [使用 Azure CLI 分配 Azure 角色](../../role-based-access-control/role-assignments-cli.md)
+- [使用 Azure 门户分配 Azure 角色](../../role-based-access-control/role-assignments-portal.md)
+- [使用 Azure PowerShell 分配 Azure 角色](../../role-based-access-control/role-assignments-powershell.md)。
 
 ## <a name="using-conditional-access"></a>使用条件访问
 

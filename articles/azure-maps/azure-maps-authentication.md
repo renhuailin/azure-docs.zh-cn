@@ -10,12 +10,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: d47e98273e696a4b6e827d8ebbc71a297f2861cb
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 9c973859c8b7a3d04693946f50377837c3538b85
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905309"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101094086"
 ---
 # <a name="authentication-with-azure-maps"></a>使用 Azure Maps 进行身份验证
 
@@ -84,7 +84,7 @@ Azure Maps 支持对 azure [RBAC)  (azure RBAC ](../role-based-access-control/ov
 
 以下部分讨论与 Azure RBAC Azure Maps 集成的概念和组件。 作为 Azure Maps 帐户设置过程的一部分，Azure AD 目录关联到 Azure Maps 帐户所在的 Azure 订阅。 
 
-配置 Azure RBAC 时，选择安全主体并将其应用于角色分配。 若要了解如何将角色分配添加到 Azure 门户，请参阅 [添加或删除 Azure 角色分配](../role-based-access-control/role-assignments-portal.md)。
+配置 Azure RBAC 时，选择安全主体并将其应用于角色分配。 若要了解如何将角色分配添加到 Azure 门户，请参阅 [分配 Azure 角色](../role-based-access-control/role-assignments-portal.md)。
 
 ### <a name="picking-a-role-definition"></a>选取角色定义
 

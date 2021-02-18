@@ -15,12 +15,12 @@ ms.workload: na
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 3e35ab78b83c0daa96e9b958d70f6e341cdcc537
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 9291d53822f0fbb80f759908933db58f2224c3d7
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98891414"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101091907"
 ---
 # <a name="cli-example-create-and-submit-a-job"></a>CLI 示例：创建并提交作业
 
@@ -31,8 +31,6 @@ ms.locfileid: "98891414"
 ## <a name="prerequisites"></a>必备条件 
 
 [创建媒体服务帐户](./create-account-howto.md)。
-
-[!INCLUDE [media-services-cli-instructions.md](../../../includes/media-services-cli-instructions.md)]
 
 ## <a name="example-script"></a>示例脚本
 

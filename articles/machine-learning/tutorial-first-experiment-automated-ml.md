@@ -11,12 +11,12 @@ ms.author: sacartac
 ms.reviewer: nibaccam
 ms.date: 12/21/2020
 ms.custom: automl
-ms.openlocfilehash: ff9bd328dd98fbd614a3bb63a1edddc2027d97b2
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: f0bb354bce0c4696f60e2be5c6186760518c7431
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879775"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99549180"
 ---
 # <a name="tutorial-create-a-classification-model-with-automated-ml-in-azure-machine-learning"></a>教程：使用 Azure 机器学习中的自动化 ML 创建分类模型
 
@@ -102,8 +102,8 @@ Azure 机器学习工作区是云中的基础资源，用于试验、训练和�
         列标题| 指示如何处理数据集的标头（如果有）。| 所有文件都具有相同的标题
         跳过行 | 指示要跳过数据集中的多少行（如果有）。| 无
 
-    1. 通过“架构”窗体，可以进一步为此试验配置数据。 对于本示例，我们不做任何选择。 选择“**下一页**”。
-
+    1. 通过“架构”窗体，可以进一步为此试验配置数据。 对于本示例，为 day_of_week 选择切换开关，以使其不包含在内。 选择“**下一页**”。
+         ![架构窗体](./media/tutorial-first-experiment-automated-ml/schema-tab-config.gif)
     1. 在“确认详细信息”窗体上，确认信息与先前在“基本信息”、“数据存储和文件选择”和“设置和预览”窗体上填充的内容匹配。  
     
     1. 选择“创建”以完成数据集的创建。
@@ -168,14 +168,8 @@ Azure 机器学习工作区是云中的基础资源，用于试验、训练和�
         验证 | 选择交叉验证类型和测试数。|验证类型：<br>k-折交叉验证&nbsp;&nbsp; <br> <br> 验证次数：2
         并发| 每次迭代执行的并行迭代的最大数目| 最大并发迭代次数：&nbsp;&nbsp;5
         
-        选择“保存”。
+        选择“保存”。 
     
-    1. 选择“查看特征化设置”。 对于本示例，为 day_of_week 功能选择切换开关，以便在本试验中不包含此特征化。
-
-        ![特征化选择](./media/tutorial-first-experiment-automated-ml/featurization-setting-config.gif)   
- 
-        选择“保存”。
-
 1. 选择“完成”以运行试验。 当试验准备开始时，将打开“运行详细信息”屏幕并且会在顶部显示“运行状态”。 此状态随着试验的进行而更新。 通知也会显示在工作室的右上角，以告知你试验的状态。
 
 >[!IMPORTANT]
@@ -211,7 +205,7 @@ Azure 机器学习工作区是云中的基础资源，用于试验、训练和�
 
 1. 按如下所示填充“部署模型”窗格：
 
-    字段| Value
+    字段| 值
     ----|----
     部署名称| my-automl-deploy
     部署说明| 我的第一个自动化机器学习试验部署

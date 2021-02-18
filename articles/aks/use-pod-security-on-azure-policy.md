@@ -4,18 +4,18 @@ description: '了解如何在 Azure Kubernetes Service 上通过 Azure 策略保
 services: container-service
 ms.topic: article
 ms.date: 09/22/2020
-ms.openlocfilehash: 8e437095b3d527647a453ba89adaa2ab62672177
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 34f2bfe346d7163a254e2ccecd1d7ef63ddb4194
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348519"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101092623"
 ---
 # <a name="secure-pods-with-azure-policy"></a>使用 Azure Policy 保护 Pod
 
 若要提高 AKS 群集的安全性，可以控制要授予哪些功能，以及根据公司策略运行的任何功能。 此访问通过 [用于 AKS 的 Azure 策略外接程序][kubernetes-policy-reference]提供的内置策略定义。 通过提供对 pod 规范安全方面（如 root 权限）的更多控制，可实现更严格的安全遵从性并了解群集中部署的内容。 如果 pod 不满足策略中指定的条件，Azure 策略可以禁止 pod 启动或标记冲突。 本文介绍如何使用 Azure 策略来限制 AKS 中 pod 的部署。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 
 本文假定你拥有现有的 AKS 群集。 如果需要 AKS 群集，请参阅 AKS 快速入门[使用 Azure CLI][aks-quickstart-cli] 或[使用 Azure 门户][aks-quickstart-portal]。
 
@@ -60,7 +60,7 @@ ms.locfileid: "93348519"
 以下限制仅适用于 AKS 的 Azure 策略外接程序：
 
 - [AKS Pod 安全策略 (预览) ](use-pod-security-policies.md) 并且用于 AKS 的 Azure 策略外接程序不能同时启用。 
-- 用于评估的 Azure 策略外接程序自动排除的命名空间： _kube_ 、 _gatekeeper-system_ _aks 和 periscope_ 。
+- 用于评估的 Azure 策略外接程序自动排除的命名空间： _kube_、  _aks 和 periscope_。 如果将 Calico 网络策略用于 Kubernetes 版本1.20 及更高版本，则将自动排除2个以上的命名空间，这些命名空间为 _Calico_ 和 _tigera_。
 
 ### <a name="recommendations"></a>建议
 
@@ -151,9 +151,9 @@ If the built-in initiatives to address pod security do not match your requiremen
 
 AKS 要求在群集上运行系统 pod 以提供关键服务，例如 DNS 解析。 限制 pod 功能的策略可能会影响系统 pod 的稳定性。 因此，在 **创建、更新和策略审核过程中，将在许可请求期间排除** 以下命名空间。 这会强制从 Azure 策略中排除这些命名空间的新部署。
 
-1. kube-系统
+1. kube-system
 1. 网关守卫-系统
-1. azure-弧线
+1. azure-arc
 1. aks-periscope
 
 在创建、更新和审核过程中，可以从评估中排除其他自定义命名空间。 如果有在批准命名空间中运行的专用 pod，并希望避免触发审核冲突，则应使用这些排除项。
@@ -298,7 +298,7 @@ az aks disable-addons --addons azure-policy --name MyAKSCluster --resource-group
 
 下面概述了 pod 安全策略与 Azure 策略之间的行为更改。
 
-|场景| Pod 安全策略 | Azure Policy |
+|方案| Pod 安全策略 | Azure Policy |
 |---|---|---|
 |安装|启用 pod 安全策略功能 |启用 Azure 策略外接程序
 |部署策略| 部署 pod 安全策略资源| 将 Azure 策略分配到订阅或资源组作用域。 Azure 策略外接程序是 Kubernetes 资源应用程序所必需的。

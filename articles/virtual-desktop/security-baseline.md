@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/25/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 01cd79afe3e718a32663544a76a2a43353bc082e
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 42795e2dda6df24e656c9c06f6a9424bd9e4b5cb
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99575375"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101092987"
 ---
 # <a name="azure-security-baseline-for-windows-virtual-desktop"></a>适用于 Windows 虚拟桌面的 Azure 安全基线
 
@@ -94,7 +94,7 @@ Windows 虚拟桌面不打算运行 web 应用程序，并且不需要配置任�
 
 - [如何部署 Azure 防火墙](../firewall/tutorial-firewall-deploy-portal.md) 
 
-- [Azure Marketplace 包含第三方 ID 功能](https://azuremarketplace.microsoft.com/marketplace?search=IDS) 
+- [Azure 市场包含第三方 IDS 功能](https://azuremarketplace.microsoft.com/marketplace?search=IDS) 
 
 - [Microsoft Defender ATP EDR 功能](/bs-cyrl-ba/windows/security/threat-protection/microsoft-defender-atp/overview-endpoint-detection-response)
 
@@ -328,7 +328,7 @@ Windows 虚拟桌面支持传统的基于密码的身份验证，例如仅限云
 
 - [什么是 Azure 基于角色的访问控制 (Azure RBAC)](../role-based-access-control/overview.md) 
 
-- [如何在 Azure 中配置 RBAC](../role-based-access-control/role-assignments-portal.md) 
+- [如何配置 Azure RBAC](../role-based-access-control/role-assignments-portal.md) 
 
 - [如何使用 Azure AD 标识和访问评审](../active-directory/governance/access-reviews-overview.md)
 

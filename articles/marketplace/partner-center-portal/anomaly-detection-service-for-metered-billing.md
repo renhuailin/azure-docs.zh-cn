@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: mingshen
 author: mingshen-ms
 ms.date: 06/10/2020
-ms.openlocfilehash: 5ab57bcccb6f681f5c9282ef461181952ed5a679
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: ac3e07c67ca82c2960de1c4341a714b33751bfc1
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/18/2021
-ms.locfileid: "100653068"
+ms.locfileid: "101092406"
 ---
 # <a name="anomaly-detection-service-for-metered-billing"></a>针对按流量计费的异常情况检测服务
 
@@ -50,7 +50,7 @@ ms.locfileid: "100653068"
 
 ## <a name="anomaly-detection-notification"></a>异常情况检测通知
 
-你可以评估、管理和确认合作伙伴中心的异常情况。 若要了解如何操作，请参阅 [按流量计费的异常情况检测](../anomaly-detection.md)。
+你可以评估、管理和确认合作伙伴中心的异常情况。 若要了解如何操作，请参阅 [在合作伙伴中心管理按流量计费的异常](../anomaly-detection.md)。
 
 若要确保你的客户不会额外收取按流量计费，应调查检测到的异常是否为实际问题。 如果是这样，则可以在合作伙伴中心确认错误的用法。
 
@@ -83,4 +83,4 @@ ms.locfileid: "100653068"
 ## <a name="next-steps"></a>后续步骤
 
 - 了解 [Marketplace 计量服务 API](marketplace-metering-service-apis.md)。
-- [针对按流量计费的异常情况检测](../anomaly-detection.md)
+- [管理合作伙伴中心的计费异常](../anomaly-detection.md)
