@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 12/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 9672d18fe99d8baae3c73fa3782531eb84114713
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: 05d312296b48f35ea87c5443cc587989e2d11fd5
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97515631"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587974"
 ---
 # <a name="deploy-the-windows-virtual-desktop-classic-diagnostics-tool"></a>部署 Windows 虚拟桌面 (经典) 诊断工具
 
@@ -116,7 +116,7 @@ Windows 虚拟桌面的诊断工具可为你实现以下目的：
     -   处理器信息 (\*) \\ 处理器时间
     -   每个会话 (的用户输入延迟 \*) \\ 最大输入延迟
 
-[在 Azure Monitor 中了解有关 Windows 和 Linux 性能数据源](../../azure-monitor/platform/data-sources-performance-counters.md)的性能计数器的详细信息。
+[在 Azure Monitor 中了解有关 Windows 和 Linux 性能数据源](../../azure-monitor/agents/data-sources-performance-counters.md)的性能计数器的详细信息。
 
 >[!NOTE]
 >你配置的任何其他计数器将不会显示在诊断工具本身中。 若要使它显示在诊断工具中，需要配置该工具的配置文件。 有关如何使用高级管理完成此操作的说明，可在 GitHub 中的日后使用。
@@ -199,7 +199,7 @@ Windows 虚拟桌面的诊断工具可为你实现以下目的：
 
 在使诊断工具可供用户使用之前，请确保他们具有以下权限：
 
-- 用户需要 log analytics 的读取访问权限。 有关详细信息，请参阅 [Azure Monitor 的角色、权限和安全入门](../../azure-monitor/platform/roles-permissions-security.md)。
+- 用户需要 log analytics 的读取访问权限。 有关详细信息，请参阅 [Azure Monitor 的角色、权限和安全入门](../../azure-monitor/roles-permissions-security.md)。
 -  用户还需要对 Windows 虚拟桌面租户的 "读取" 访问权限 ("RDS 读取器角色") 。 有关详细信息，请参阅 [Windows 虚拟桌面中的委托访问](delegated-access-virtual-desktop-2019.md)。
 
 还需要为用户指定以下信息：

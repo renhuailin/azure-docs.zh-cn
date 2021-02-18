@@ -3,12 +3,12 @@ title: Azure Monitor 日志数据模型
 description: 本文介绍 Azure 备份数据的 Azure Monitor Log Analytics 数据模型详细信息。
 ms.topic: conceptual
 ms.date: 02/26/2019
-ms.openlocfilehash: 1fcb4eb0c584f792132f19c8c4d66289342aa36e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2d2146612763bac39eb636bb7da522586a0daee2
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89020943"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100586769"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Azure 备份数据的 Log Analytics 数据模型
 
@@ -462,7 +462,7 @@ ms.locfileid: "89020943"
 
 ## <a name="v1-schema-vs-v2-schema"></a>V1 架构与 V2 架构
 
-之前，Azure 备份代理和 Azure VM 备份的诊断数据已发送到称为“V1 架构”的架构中的 Azure 诊断表。 随后，添加了新列以支持其他方案和工作负载，并且已将诊断数据推送到称为“V2 架构”的新架构。  
+之前，Azure 备份代理和 Azure VM 备份的诊断数据已发送到称为 ***V1 架构** _ 的架构中的 Azure 诊断表。 接下来，添加新列以支持其他方案和工作负荷，并将诊断数据推送到称为 _ *_V2 架构_* * 的新架构。  
 
 出于向后兼容的原因，Azure 备份代理和 Azure VM 备份的诊断数据当前发送到 V1 和 V2 架构中的 Azure 诊断表（V1 架构现在位于弃用路径上）。 可以通过在日志查询中筛选 SchemaVersion_s=="V1" 的记录来确定 Log Analytics 中的哪些记录属于 V1 架构。
 
@@ -495,4 +495,4 @@ ms.locfileid: "89020943"
 
 ## <a name="next-steps"></a>后续步骤
 
-查看数据模型后，可以开始在 Azure Monitor 日志中[创建自定义查询](../azure-monitor/learn/tutorial-logs-dashboards.md)，以构建自己的仪表板。
+查看数据模型后，可以开始在 Azure Monitor 日志中[创建自定义查询](../azure-monitor/visualize/tutorial-logs-dashboards.md)，以构建自己的仪表板。

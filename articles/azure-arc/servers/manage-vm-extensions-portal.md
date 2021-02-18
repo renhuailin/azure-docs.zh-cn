@@ -3,12 +3,12 @@ title: Azure 门户启用 VM 扩展
 description: 本文介绍如何在 Azure 门户的混合云环境中，将虚拟机扩展部署到已启用 Azure Arc 的服务器。
 ms.date: 01/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 43bbcef28b77e7c7112880fdac1bbd4809791cef
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: b0e114b314179d42ccd47b7d7bd534d3a824a411
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98728937"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587661"
 ---
 # <a name="enable-azure-vm-extensions-from-the-azure-portal"></a>启用 Azure 门户的 Azure VM 扩展
 
@@ -33,7 +33,7 @@ VM 扩展可通过 Azure 门户应用服务器托管计算机的 Arc。
 
     ![安装 Log Analytics VM 扩展](./media/manage-vm-extensions/mma-extension-config.png)
 
-    若要完成安装，你需要提供工作区 ID 和主密钥。 如果你不熟悉如何查找此信息，请参阅 [获取工作区 ID 和密钥](../../azure-monitor/platform/log-analytics-agent.md#workspace-id-and-key)。
+    若要完成安装，你需要提供工作区 ID 和主密钥。 如果你不熟悉如何查找此信息，请参阅 [获取工作区 ID 和密钥](../../azure-monitor/agents/log-analytics-agent.md#workspace-id-and-key)。
 
 4. 确认提供所需信息后，选择 " **创建**"。 将显示部署的摘要，你可以查看部署的状态。
 

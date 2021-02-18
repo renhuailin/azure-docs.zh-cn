@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/04/2018
-ms.openlocfilehash: be50deb836082354db899e84ef24d75c4d403432
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9dc31cd4f492a4e95ce8232a8df28f07206e23b1
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91450396"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587163"
 ---
 # <a name="vmware-monitoring-deprecated-solution-in-azure-monitor"></a>Azure Monitor 中的 VMware 监视（已弃用）解决方案
 
@@ -33,7 +33,7 @@ Azure Monitor 中的 VMware 监视解决方案是一个有助于针对大型 VMw
 vSphere ESXi 主机 5.5、6.0 和 6.5
 
 #### <a name="prepare-a-linux-server"></a>准备一台 Linux 服务器
-创建 Linux 操作系统系统 VM，以接收来自 ESXi 主机的所有系统日志数据。 [Log Analytics Linux 代理](../learn/quick-collect-linux-computer.md)是所有 ESXi 主机 syslog 数据的集合点。 可以使用多个 ESXi 主机将日志转发到一台 Linux 服务器，如以下示例所示。
+创建 Linux 操作系统系统 VM，以接收来自 ESXi 主机的所有系统日志数据。 [Log Analytics Linux 代理](../vm/quick-collect-linux-computer.md)是所有 ESXi 主机 syslog 数据的集合点。 可以使用多个 ESXi 主机将日志转发到一台 Linux 服务器，如以下示例所示。
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]  
 
@@ -122,7 +122,7 @@ VMware 磁贴显示在 Log Analytics 工作区中。 它提供任何失败的高
 
 单击任意边栏选项卡，打开 Log Analytics 搜索窗格，其中显示了特定于边栏选项卡的详细信息。
 
-在此处可以编辑日志查询，以对某些具体内容进行修改。 有关创建日志查询的详细信息，请参阅[在 Azure Monitor 中使用日志查询查找数据](../log-query/log-query-overview.md)。
+在此处可以编辑日志查询，以对某些具体内容进行修改。 有关创建日志查询的详细信息，请参阅[在 Azure Monitor 中使用日志查询查找数据](../logs/log-query-overview.md)。
 
 #### <a name="find-esxi-host-events"></a>查找 ESXi 主机事件
 单台 ESXi 主机基于其进程会生成多个日志。 VMware 监视解决方案可对其进行集中管理，并总结事件计数。 此集中式视图可帮助你了解哪些 ESXi 主机有大量的事件，以及在环境中最常发生哪些事件。
@@ -151,12 +151,12 @@ VMware 磁贴显示在 Log Analytics 工作区中。 它提供任何失败的高
 
 
 #### <a name="save-queries"></a>保存查询
-保存日志查询是 Azure Monitor 中的标准功能，可帮助你保留认为有用的任何查询。 创建有用的查询后，单击“收藏夹”  将其保存下来。 已保存的查询可在以后从[我的仪表板](../learn/tutorial-logs-dashboards.md)页（可在其中创建你自己的自定义仪表板）轻松地对其进行重复使用。
+保存日志查询是 Azure Monitor 中的标准功能，可帮助你保留认为有用的任何查询。 创建有用的查询后，单击“收藏夹”  将其保存下来。 已保存的查询可在以后从[我的仪表板](../visualize/tutorial-logs-dashboards.md)页（可在其中创建你自己的自定义仪表板）轻松地对其进行重复使用。
 
 ![屏幕截图显示带有 "撤消"、"导出"、"警报"、"保存"、"收藏夹" 和 "历史记录" 图标的标有 "日志搜索" 的](./media/vmware/dockerdashboardview.png)
 
 #### <a name="create-alerts-from-queries"></a>从查询中创建警报
-创建查询后，你可能想要使用查询在特定事件发生时向你发出警报。 有关如何创建警报的信息，请参阅 [Log Analytics 中的警报](../platform/alerts-overview.md)。 有关警报查询示例和其他查询示例，请参阅[使用 Log Analytics 监视 VMware](/archive/blogs/msoms/monitor-vmware-using-oms-log-analytics) 博客文章。
+创建查询后，你可能想要使用查询在特定事件发生时向你发出警报。 有关如何创建警报的信息，请参阅 [Log Analytics 中的警报](../alerts/alerts-overview.md)。 有关警报查询示例和其他查询示例，请参阅[使用 Log Analytics 监视 VMware](/archive/blogs/msoms/monitor-vmware-using-oms-log-analytics) 博客文章。
 
 ## <a name="frequently-asked-questions"></a>常见问题
 ### <a name="what-do-i-need-to-do-on-the-esxi-host-setting-what-impact-will-it-have-on-my-current-environment"></a>需要对 ESXi 主机设置执行哪些操作？ 这对目前的环境有什么影响？
@@ -197,7 +197,7 @@ syslog 时间戳有一个 ESXi 主机 bug。 有关详细信息，请参阅 [VMw
      d. 如果文件不存在或用户和组设置有误，则通过[准备 Linux 服务器](#prepare-a-linux-server)采取纠正措施。
 
 ## <a name="next-steps"></a>后续步骤
-* 使用 Log Analytics 中的[日志查询](../log-query/log-query-overview.md)可查看详细的 VMware 主机数据。
-* [创建自己的仪表板](../learn/tutorial-logs-dashboards.md)显示了 VMware 主机数据。
-* 发生特定 VMware 主机事件时[创建警报](../platform/alerts-overview.md)。
+* 使用 Log Analytics 中的[日志查询](../logs/log-query-overview.md)可查看详细的 VMware 主机数据。
+* [创建自己的仪表板](../visualize/tutorial-logs-dashboards.md)显示了 VMware 主机数据。
+* 发生特定 VMware 主机事件时[创建警报](../alerts/alerts-overview.md)。
 

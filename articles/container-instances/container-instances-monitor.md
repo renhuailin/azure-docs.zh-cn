@@ -3,12 +3,12 @@ title: 监视容器实例
 description: 如何监视 Azure 容器实例中的容器消耗的计算资源，例如 CPU 和内存。
 ms.topic: article
 ms.date: 12/17/2020
-ms.openlocfilehash: 83a8a5ab2c8c49f4044564c2d899685914103b0b
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: ae9725ffe66bebbed26745c311b2ada07d5d2c00
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97916062"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589300"
 ---
 # <a name="monitor-container-resources-in-azure-container-instances"></a>监视 Azure 容器实例中的容器资源
 
@@ -27,11 +27,11 @@ ms.locfileid: "97916062"
 
 Azure Monitor 提供下述 [Azure 容器实例指标][supported-metrics]。 这些指标适用于容器组和单独的容器。 默认情况下，指标聚合为平均值。
 
-- **Millicores** 中测量的 **CPU 使用率**。 
+- CPU 使用率以毫核心为单位进行度量。 
   - 一个毫核心是一个 CPU 核心的 1/1000，因此 500 毫核心表示 0.5 CPU 核心的使用量。
-- **内存使用量** （字节）
-- 每秒 **接收的网络字节数**
-- 每秒 **传输的网络字节数** 
+- 内存使用量以字节为单位
+- 每秒接收到的网络字节数
+- 每秒传输的网络字节数 
 
 ## <a name="get-metrics---azure-portal"></a>获取指标 - Azure 门户
 
@@ -39,7 +39,7 @@ Azure Monitor 提供下述 [Azure 容器实例指标][supported-metrics]。 这�
 
 ![双图表][dual-chart]
 
-在包含多个容器的容器组中，使用 [维度][monitor-dimension] 按容器显示度量值。 若要创建包含个体容器指标的图表，请执行以下步骤：
+在包含多个容器的容器组中，使用[维度][monitor-dimension]按容器显示指标。 若要创建包含个体容器指标的图表，请执行以下步骤：
 
 1. 在“概览”页中选择一个指标图表，例如“CPU”。  
 1. 选择“应用拆分”按钮，然后选择“容器名称”。
@@ -146,6 +146,6 @@ Timestamp            Name          Containername             Average
 
 <!-- LINKS - Internal -->
 [azure-monitoring]: ../azure-monitor/overview.md
-[metric-alert]: ..//azure-monitor/platform/alerts-metric.md
-[monitor-dimension]: ../azure-monitor/platform/data-platform-metrics.md#multi-dimensional-metrics
-[supported-metrics]: ../azure-monitor/platform/metrics-supported.md#microsoftcontainerinstancecontainergroups
+[metric-alert]: ..//azure-monitor/alerts/alerts-metric.md
+[monitor-dimension]: ../azure-monitor/essentials/data-platform-metrics.md#multi-dimensional-metrics
+[supported-metrics]: ../azure-monitor/essentials/metrics-supported.md#microsoftcontainerinstancecontainergroups

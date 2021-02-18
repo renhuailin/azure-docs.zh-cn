@@ -4,19 +4,19 @@ description: 组织的见解的所有者、参与者和读者。
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: cd1e69ecd121380353ad6400d473d572b7b7bb3e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4254170ad100b634439cc846dc381e305ae71d1f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89076678"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589596"
 ---
 # <a name="resources-roles-and-access-control-in-application-insights"></a>Application Insights 中的资源、角色和访问控制
 
-通过使用 azure [RBAC)  (azure 基于角色的访问控制](../../role-based-access-control/role-assignments-portal.md)，可以控制哪些用户对 azure [Application Insights][start]中的数据具有读取和更新访问权限。
+通过使用 [Azure 基于角色的访问控制 (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md)，可以控制用户的权限，只允许特定的用户对 Azure [Application Insights][start] 中的数据具有读取和更新访问权限。
 
 > [!IMPORTANT]
-> 将访问权限分配给应用程序资源所属**资源组或订阅**中的用户（并非资源本身）。 分配 **Application Insights 组件参与者**角色。 这可确保对 Web 测试和警报及应用程序资源的访问实现统一控制。 [了解详细信息](#access)。
+> 将访问权限分配给应用程序资源所属 **资源组或订阅** 中的用户（并非资源本身）。 分配 **Application Insights 组件参与者** 角色。 这可确保对 Web 测试和警报及应用程序资源的访问实现统一控制。 [了解详细信息](#access)。
 
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
@@ -76,7 +76,7 @@ ms.locfileid: "89076678"
 | [读者](../../role-based-access-control/built-in-roles.md#reader) |可以查看但无法更改任何内容。 |
 | [Application Insights 快照调试器](../../role-based-access-control/built-in-roles.md#application-insights-snapshot-debugger) | 授予用户使用 Application Insights 快照调试器功能的权限。 请注意，此角色既不包含在所有者角色中，也不包含在参与者角色中。 |
 | Azure 服务部署版本管理参与者 | 通过 Azure 服务部署进行部署的服务的参与者角色。 |
-| [数据清除程序](../../role-based-access-control/built-in-roles.md#data-purger) | 清除个人数据的特殊角色。 有关更多信息，请参阅我们的[个人数据指南](../platform/personal-data-mgmt.md)。   |
+| [数据清除程序](../../role-based-access-control/built-in-roles.md#data-purger) | 清除个人数据的特殊角色。 有关更多信息，请参阅我们的[个人数据指南](../logs/personal-data-mgmt.md)。   |
 | ExpressRoute 管理员 | 可以创建删除和管理快速路由。|
 | [Log Analytics 参与者](../../role-based-access-control/built-in-roles.md#log-analytics-contributor) | Log Analytics 参与者可以读取所有监视数据并编辑监视设置。 编辑监视设置包括向 VM 添加 VM 扩展、读取存储帐户密钥以便能够从 Azure 存储配置日志收集、创建和配置自动化帐户、添加解决方案以及配置所有 Azure 资源上的 Azure 诊断。  |
 | [Log Analytics 读者](../../role-based-access-control/built-in-roles.md#log-analytics-reader) | Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置，其中包括查看所有 Azure 资源上的 Azure 诊断的配置。 |

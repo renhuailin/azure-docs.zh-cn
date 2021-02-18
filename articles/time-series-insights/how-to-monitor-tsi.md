@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/10/2020
 ms.custom: lyrana
-ms.openlocfilehash: 3fc880e238c1c9f45c663975470a6ab57267a648
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 940f7efc7130ef80817be3b42e3c0eff83588a90
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879538"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587991"
 ---
 # <a name="monitoring-time-series-insights"></a>监视时序见解
 
@@ -29,7 +29,7 @@ ms.locfileid: "98879538"
 
 时序见解使用 [Azure Monitor](../azure-monitor/overview.md) 创建监视数据。Azure Monitor 是 Azure 中的一个全堆栈监视服务，提供用于监视 Azure 资源以及其他云中的资源和本地资源的整套功能。
 
-一开始可以阅读[使用 Azure Monitor 监视 Azure 资源](../azure-monitor/insights/monitor-azure-resource.md)一文，其中介绍了以下概念：
+一开始可以阅读[使用 Azure Monitor 监视 Azure 资源](../azure-monitor/essentials/monitor-azure-resource.md)一文，其中介绍了以下概念：
 
 - 说明是 Azure Monitor？
 - 与监视相关的成本
@@ -40,11 +40,11 @@ ms.locfileid: "98879538"
 本文中的以下各部分将介绍从 Azure 时序见解收集的特定数据。 这些部分还提供了使用 Azure 工具配置数据收集和分析此数据的示例。
 
 > [!TIP]
-> 若想了解与 Azure Monitor 相关的成本，请参阅[使用情况和估计成本](../azure-monitor/platform/usage-estimated-costs.md)。 若要了解数据在 Azure Monitor 中显示需要花多长时间，请参阅 [日志数据引入时间](../azure-monitor/platform/data-ingestion-time.md)。
+> 若想了解与 Azure Monitor 相关的成本，请参阅[使用情况和估计成本](../azure-monitor//usage-estimated-costs.md)。 若要了解数据在 Azure Monitor 中显示需要花多长时间，请参阅 [日志数据引入时间](../azure-monitor/logs/data-ingestion-time.md)。
 
 ## <a name="monitoring-data-from-azure-time-series-insights"></a>监视来自 Azure 时序见解的数据
 
-Azure 时序见解收集的监视数据的类型与 [Azure 资源的监视数据](../azure-monitor/insights/monitor-azure-resource.md#monitoring-data)中所述的其他 Azure 资源相同。 
+Azure 时序见解收集的监视数据的类型与 [Azure 资源的监视数据](../azure-monitor/essentials/monitor-azure-resource.md#monitoring-data)中所述的其他 Azure 资源相同。 
 
 请参阅 [Azure 时序见解监视数据引用](how-to-monitor-tsi-reference.md)来获取可以收集的日志和指标的详细参考信息。
 
@@ -53,7 +53,7 @@ Azure 时序见解收集的监视数据的类型与 [Azure 资源的监视数据
 平台指标会自动收集和存储，但你可以使用诊断设置将其路由到其他位置。
 
 在创建诊断设置并将其路由到一个或多个位置之前，不会收集和存储资源日志。
-有关使用 Azure 门户、CLI 或 PowerShell 创建诊断设置的详细过程，请参阅[创建诊断设置以收集 Azure 中的平台日志和指标](../azure-monitor/platform/diagnostic-settings.md)。 创建诊断设置时，请指定要收集的日志类别。
+有关使用 Azure 门户、CLI 或 PowerShell 创建诊断设置的详细过程，请参阅[创建诊断设置以收集 Azure 中的平台日志和指标](../azure-monitor/essentials/diagnostic-settings.md)。 创建诊断设置时，请指定要收集的日志类别。
 
 可以从 Azure 时序见解的以下类别收集日志：
 
@@ -80,7 +80,7 @@ Azure 时序见解收集的监视数据的类型与 [Azure 资源的监视数据
 
 Azure Monitor 日志中的数据以表形式存储，每个表包含自己独有的属性集。
 
-Azure Monitor 中的所有资源日志都具有后跟服务特定字段的相同字段。 [Azure Monitor 资源日志架构](../azure-monitor/platform/resource-logs-schema.md#top-level-common-schema)概述了常见架构。 有关为 Azure 时序见解收集的资源日志类型的列表，请参阅 [Azure 时序见解监视数据参考](how-to-monitor-tsi-reference.md#resource-logs)。
+Azure Monitor 中的所有资源日志都具有后跟服务特定字段的相同字段。 [Azure Monitor 资源日志架构](../azure-monitor/essentials/resource-logs-schema.md#top-level-common-schema)概述了常见架构。 有关为 Azure 时序见解收集的资源日志类型的列表，请参阅 [Azure 时序见解监视数据参考](how-to-monitor-tsi-reference.md#resource-logs)。
 
 Azure 时序见解将数据存储在以下表中。
 
@@ -122,4 +122,4 @@ Azure 时序见解将数据存储在以下表中。
 ## <a name="next-steps"></a>后续步骤
 
 * 请参阅 [Azure 时序见解监视数据参考](how-to-monitor-tsi-reference.md)，获取由 Azure 时序见解创建的日志和指标的参考信息。
-* 有关监视 Azure 资源的详细信息，请参阅[通过 Azure Monitor 监视 Azure 资源](../azure-monitor/insights/monitor-azure-resource.md)。
+* 有关监视 Azure 资源的详细信息，请参阅[通过 Azure Monitor 监视 Azure 资源](../azure-monitor/essentials/monitor-azure-resource.md)。
