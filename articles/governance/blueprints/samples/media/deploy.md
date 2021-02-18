@@ -3,12 +3,12 @@ title: 部署媒体蓝图示例
 description: 媒体蓝图示例的部署步骤，包括蓝图项目参数详细信息。
 ms.date: 01/08/2021
 ms.topic: sample
-ms.openlocfilehash: 5dc3720ceb1bdd8e50ab220288cef64c73e304ff
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: 13d50c2a791a72c58d8ebef7a46c592efd0cb9a8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98034996"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577303"
 ---
 # <a name="deploy-the-media-blueprint-sample"></a>部署媒体蓝图示例
 
@@ -16,7 +16,7 @@ ms.locfileid: "98034996"
 
 > [!div class="checklist"]
 > - 基于示例创建新的蓝图
-> - 将示例副本标记为“已发布”
+> - 将示例副本标记为“已发布” 
 > - 将蓝图副本分配到现有的订阅
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free)。
@@ -36,13 +36,13 @@ ms.locfileid: "98034996"
    - **蓝图名称**：提供蓝图示例副本的名称。
    - **定义位置**：使用省略号并选择要将示例副本保存到的管理组。
 
-1. 选择页面顶部的“项目”选项卡，或页面底部的“下一步:项目”。
+1. 选择页面顶部的“项目”选项卡，或页面底部的“下一步:   项目”。
 
-1. 查看构成蓝图示例的项目列表。 许多项目包含稍后我们将要定义的参数。 查看完蓝图示例后，选择“保存草稿”。
+1. 查看构成蓝图示例的项目列表。 许多项目包含稍后我们将要定义的参数。 查看完蓝图示例后，选择“保存草稿”。 
 
 ## <a name="publish-the-sample-copy"></a>发布示例副本
 
-现已在环境中创建蓝图示例的副本。 该副本在创建后处于“草稿”模式，必须先将其 **发布**，然后才能分配和部署它。 可根据环境和需求自定义蓝图示例的副本，但这种修改可能会使该副本偏离标准。
+现已在环境中创建蓝图示例的副本。 该副本在创建后处于“草稿”模式，必须先将其 **发布**，然后才能分配和部署它。  可根据环境和需求自定义蓝图示例的副本，但这种修改可能会使该副本偏离标准。
 
 1. 选择“所有服务”，然后在左窗格中搜索并选择“策略”。  在“策略”页上选择“蓝图”。 
 
@@ -67,7 +67,7 @@ ms.locfileid: "98034996"
      - **订阅**：在蓝图示例副本所保存到的管理组中选择一个或多个订阅。 如果选择多个订阅，将使用输入的参数为每个订阅创建一个分配。
      - **分配名称**：系统会根据蓝图的名称预先填充该名称。
        请根据需要更改该名称，或保留原样。
-     - 位置：选择要在其中创建托管标识的区域。 Azure 蓝图使用此托管标识在分配的蓝图中部署所有项目。 若要了解详细信息，请参阅 [Azure 资源的托管标识](../../../../active-directory/managed-identities-azure-resources/overview.md)。
+     - **位置**：选择要在其中创建托管标识的区域。 Azure 蓝图使用此托管标识在分配的蓝图中部署所有项目。 若要了解详细信息，请参阅 [Azure 资源的托管标识](../../../../active-directory/managed-identities-azure-resources/overview.md)。
      - **蓝图定义版本**：选择蓝图示例副本的 **已发布** 版本。
 
    - 锁分配
@@ -82,7 +82,7 @@ ms.locfileid: "98034996"
 
      在本部分定义的参数将应用到定义了这些参数的项目。 这些参数属于[动态参数](../../concepts/parameters.md#dynamic-parameters) ，因为它们是在分配蓝图期间定义的。 有关完整列表或项目参数及其说明，请参阅[项目参数表](#artifact-parameters-table) 。
 
-1. 输入所有参数后，选择页面底部的“分配”。 随后将创建蓝图分配，并开始部署项目。 部署过程大约需要一小时。 若要检查部署状态，请打开蓝图分配。
+1. 输入所有参数后，选择页面底部的“分配”。  随后将创建蓝图分配，并开始部署项目。 部署过程大约需要一小时。 若要检查部署状态，请打开蓝图分配。
 
 > [!WARNING]
 > Azure 蓝图服务和内置蓝图示例是 **免费的**。 Azure 资源[按产品定价](https://azure.microsoft.com/pricing/) 。 使用[定价计算器](https://azure.microsoft.com/pricing/calculator/) 可以估算运行此蓝图示例部署的资源所需的成本。
@@ -93,12 +93,12 @@ ms.locfileid: "98034996"
 
 项目名称|项目类型|参数名称|说明|
 |-|-|-|-|
-|\[预览\]：为 Linux VM 部署 Log Analytics 代理 |策略分配 |Linux VM 的 Log Analytics 工作区 |有关详细信息，请参阅[在 Azure 门户中创建 Log Analytics 工作区](../../../../azure-monitor/learn/quick-create-workspace.md)。 |
+|\[预览\]：为 Linux VM 部署 Log Analytics 代理 |策略分配 |Linux VM 的 Log Analytics 工作区 |有关详细信息，请参阅[在 Azure 门户中创建 Log Analytics 工作区](../../../../azure-monitor/logs/quick-create-workspace.md)。 |
 |\[预览\]：为 Linux VM 部署 Log Analytics 代理 |策略分配 |可选：支持将 Linux OS 添加到范围的 VM 映像列表 |可以使用空数组来表示没有可选参数：`[]` |
 |\[预览\]：为 Windows VM 部署 Log Analytics 代理 |策略分配 |可选：支持将 Windows OS 添加到范围的 VM 映像列表 |可以使用空数组来表示没有可选参数：`[]` |
-|\[预览\]：为 Windows VM 部署 Log Analytics 代理 |策略分配 |Windows VM 的 Log Analytics 工作区 |有关详细信息，请参阅[在 Azure 门户中创建 Log Analytics 工作区](../../../../azure-monitor/learn/quick-create-workspace.md)。 |
+|\[预览\]：为 Windows VM 部署 Log Analytics 代理 |策略分配 |Windows VM 的 Log Analytics 工作区 |有关详细信息，请参阅[在 Azure 门户中创建 Log Analytics 工作区](../../../../azure-monitor/logs/quick-create-workspace.md)。 |
 |\[预览\]：审核媒体控件并部署特定的 VM 扩展以支持审核要求 |策略分配 |应为 VM 配置的 Log Analytics 工作区 ID |这是应为 VM 配置的 Log Analytics 工作区的 ID (GUID)。 |
-|\[预览\]：审核媒体控件并部署特定的 VM 扩展以支持审核要求 |策略分配 |应启用诊断日志的资源类型列表 |用于审核是否未启用诊断日志设置的资源类型列表。 [Azure Monitor 诊断日志架构](../../../../azure-monitor/platform/resource-logs-schema.md#service-specific-schemas)中提供了可接受的值。 |
+|\[预览\]：审核媒体控件并部署特定的 VM 扩展以支持审核要求 |策略分配 |应启用诊断日志的资源类型列表 |用于审核是否未启用诊断日志设置的资源类型列表。 [Azure Monitor 诊断日志架构](../../../../azure-monitor/essentials/resource-logs-schema.md#service-specific-schemas)中提供了可接受的值。 |
 |\[预览\]：审核媒体控件并部署特定的 VM 扩展以支持审核要求 |策略分配 |管理员组 |组。 示例： `Administrator; myUser1; myUser2` |
 |\[预览\]：审核媒体控件并部署特定的 VM 扩展以支持审核要求 |策略分配 |应该包括在 Windows VM 管理员组中的用户的列表 |以分号分隔的应包括在管理员本地组中的成员列表。 示例： `Administrator; myUser1; myUser2` |
 |在存储帐户上部署高级威胁防护 |策略分配 |效果 |有关策略效果的信息，可参阅[了解 Azure Policy 效果](../../../policy/concepts/effects.md)。 |

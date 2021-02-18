@@ -1,16 +1,16 @@
 ---
 title: Azure 服务总线主题和订阅入门 | Microsoft Docs
 description: 编写一个 C# .NET Core 控制台应用程序，以便使用服务总线消息传递主题和订阅。
-ms.topic: conceptual
+ms.topic: quickstart
 ms.tgt_pltfrm: dotnet
 ms.date: 09/02/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 85eb8e6cdaa8636215c5df9d81dbecdca97a2501
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
-ms.translationtype: MT
+ms.openlocfilehash: 28e94cdb0df0a18b41f4c8a0ded362b50df6dcac
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95819245"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652966"
 ---
 # <a name="get-started-with-service-bus-topics"></a>服务总线主题入门
 本教程涵盖以下步骤：
@@ -19,12 +19,12 @@ ms.locfileid: "95819245"
 2. 编写 .NET Core 控制台应用程序，从订阅接收这些消息。
 
 > [!WARNING]
-> 此快速入门使用旧的 有关使用最新的 Azure node.js 包的快速入门，请参阅 [使用 azure. 传送包发送和接收消息](service-bus-dotnet-how-to-use-topics-subscriptions.md)。 若要将应用程序从使用旧库移动到新的库，请参阅 [从 azure 迁移到 azure 的指南](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/servicebus/Azure.Messaging.ServiceBus/MigrationGuide.md)。 
+> 本快速入门使用旧的 Microsoft.Azure.ServiceBus 包。 如需了解使用最新 Azure.Messaging.ServiceBus 包的快速入门，请参阅[使用 Azure.Messaging.ServiceBus 包发送和接收消息](service-bus-dotnet-how-to-use-topics-subscriptions.md)。 若要将应用程序从使用旧库迁移到使用新库，请参阅[从 Microsoft.Azure.ServiceBus 迁移到 Azure.Messaging.ServiceBus 的指南](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/servicebus/Azure.Messaging.ServiceBus/MigrationGuide.md)。 
 
 ## <a name="prerequisites"></a>先决条件
 
-1. Azure 订阅。 要完成本教程，需要一个 Azure 帐户。 可以激活 [Visual Studio 或 MSDN 订阅者权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF)或注册[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)。
-2. 遵循[快速入门：使用 Azure 门户创建服务总线主题和主题的订阅](service-bus-quickstart-topics-subscriptions-portal.md)来执行以下任务：
+1. Azure 订阅。 若要完成本教程，需要一个 Azure 帐户。 可以激活 [Visual Studio 或 MSDN 订阅者权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF)或注册[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)。
+2. 按照[快速入门：使用 Azure 门户创建服务总线主题和主题的订阅](service-bus-quickstart-topics-subscriptions-portal.md)来执行以下任务：
     1. 创建一个服务总线 **命名空间**。
     2. 获取 **连接字符串**。
     3. 在此命名空间中创建一个 **主题**。

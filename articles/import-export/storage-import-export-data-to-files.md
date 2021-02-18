@@ -5,16 +5,16 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/14/2021
+ms.date: 02/16/2021
 ms.author: alkohli
 ms.subservice: common
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: e038cdcb50c7ee15960c904c8e234d6917d02f3b
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 44473efbfb1c07c628c939fd05805ed92e691736
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98706270"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100651782"
 ---
 # <a name="use-azure-importexport-service-to-import-data-to-azure-files"></a>使用 Azure 导入/导出服务将数据导入到 Azure 文件
 
@@ -119,13 +119,13 @@ ms.locfileid: "98706270"
 
 在 Azure 门户中执行以下步骤来创建导入作业。
 1. 登录到 https://portal.azure.com/ 。
-2. 转到“所有服务”>“存储”>“导入/导出作业”。
+2. 搜索 **导入/导出作业**。
 
-    ![转到“导入/导出”](./media/storage-import-export-data-to-blobs/import-to-blob1.png)
+    ![搜索导入/导出作业](./media/storage-import-export-data-to-blobs/import-to-blob-1.png)
 
-3. 单击“创建导入/导出作业”。
+3. 选择“+ 新建”  。
 
-    ![单击导入/导出作业](./media/storage-import-export-data-to-blobs/import-to-blob2.png)
+    ![选择 "新建" 创建新的 ](./media/storage-import-export-data-to-blobs/import-to-blob-2.png)
 
 4. 在“基本信息”中：
 
@@ -136,7 +136,7 @@ ms.locfileid: "98706270"
     - 选择一个订阅。
     - 选一个择资源组。
 
-        ![创建导入作业 - 步骤 1](./media/storage-import-export-data-to-blobs/import-to-blob3.png)
+        ![创建导入作业 - 步骤 1](./media/storage-import-export-data-to-blobs/import-to-blob-3.png)
 
 3. 在“作业详细信息”中：
 
@@ -144,7 +144,7 @@ ms.locfileid: "98706270"
     - 选择要将数据导入到的存储帐户。
     - 放置位置会根据选定存储帐户所属的区域自动进行填充。
 
-       ![创建导入作业 - 步骤 2](./media/storage-import-export-data-to-blobs/import-to-blob4.png)
+       ![创建导入作业 - 步骤 2](./media/storage-import-export-data-to-blobs/import-to-blob-4.png)
 
 4. 在“回寄信息”中：
 
@@ -155,7 +155,7 @@ ms.locfileid: "98706270"
         > [!TIP]
         > 请提供组电子邮件，而非为单个用户指定电子邮件地址。 这可确保即使管理员离开也会收到通知。
 
-       ![创建导入作业 - 步骤 3](./media/storage-import-export-data-to-blobs/import-to-blob5.png)
+       ![创建导入作业 - 步骤 3](./media/storage-import-export-data-to-blobs/import-to-blob-5.png)
 
 
 5. 在“摘要”中：
@@ -163,7 +163,7 @@ ms.locfileid: "98706270"
     - 提供用来将磁盘寄回 Azure 的 Azure 数据中心送货地址。 请确保寄送标签上标明了作业名称和完整地址。
     - 单击“确定”以完成导入作业创建。
 
-        ![创建导入作业 - 步骤 4](./media/storage-import-export-data-to-blobs/import-to-blob6.png)
+        ![创建导入作业 - 步骤 4](./media/storage-import-export-data-to-blobs/import-to-blob-6.png)
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 

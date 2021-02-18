@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 11/23/2020
 ms.author: yuajia
-ms.openlocfilehash: 43f53d1098e08a0f913e3baec2c6aaf3d65054d0
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 8a4b48586c564ee5d14a0768156b0477e2935ccf
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96501413"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575446"
 ---
 # <a name="real-time-monitoring-metrics-and-access-logs-for-azure-cdn"></a>Azure CDN 的实时监视、指标和访问日志
 利用 Microsoft 提供的 Azure CDN，你可以通过以下方式监视资源，以帮助你排查、跟踪和调试问题。 
@@ -215,7 +215,7 @@ Microsoft Azure CDN 与 Azure Monitor 集成，并发布四个 CDN 指标来帮�
 
 从 Microsoft 度量值 Azure CDN，并以60秒为间隔发送指标。 此指标最多可能需要3分钟才能在门户中显示。 
 
-有关详细信息，请参阅 [Azure Monitor 指标](../azure-monitor/platform/data-platform-metrics.md)。
+有关详细信息，请参阅 [Azure Monitor 指标](../azure-monitor/essentials/data-platform-metrics.md)。
 
 **Microsoft Azure CDN 支持的指标**
 
@@ -226,7 +226,7 @@ Microsoft Azure CDN 与 Azure Monitor 集成，并发布四个 CDN 指标来帮�
 | ResponseSize | 从 CDN 边缘到客户端的响应发送的字节数。 |终结点 </br> 客户端国家/地区。 </br> 客户端区域。 </br> HTTP 状态。 </br> HTTP 状态组。 |
 | TotalLatency | CDN 从 **cdn 发送到客户端之前**，CDN 收到的客户端请求的总时间。 |终结点 </br> 客户端国家/地区。 </br> 客户端区域。 </br> HTTP 状态。 </br> HTTP 状态组。 |
 
-**_Bytes r = 从起源) /egress 的边缘出口 (出口_*
+***Bytes r = 从起源) /egress 的边缘出口 (出口**
 
 排除的方案数（按字节数计算）：
 
@@ -259,13 +259,13 @@ Microsoft Azure CDN 与 Azure Monitor 集成，并发布四个 CDN 指标来帮�
 
 ### <a name="alerts"></a>警报
 
-可以通过选择 "**监视** 警报" 在 Microsoft CDN 上设置警报  >>  **Alerts**。
+可以通过选择 "**监视** 警报" 在 Microsoft CDN 上设置警报  >>  。
 
 为 "度量值" 部分中列出的指标选择 **新的警报规则** ：
 
 :::image type="content" source="./media/cdn-raw-logs/raw-logs-08.png" alt-text="为 CDN 终结点配置警报。" border="true":::
 
-将根据 Azure Monitor 对警报进行收费。 有关警报的详细信息，请参阅 [Azure Monitor 警报](../azure-monitor/platform/alerts-overview.md)。
+将根据 Azure Monitor 对警报进行收费。 有关警报的详细信息，请参阅 [Azure Monitor 警报](../azure-monitor/alerts/alerts-overview.md)。
 
 ### <a name="additional-metrics"></a>其他指标
 可以使用 Azure Log Analytics 和原始日志启用其他度量值，以实现额外的费用。
@@ -299,4 +299,4 @@ Microsoft Azure CDN 与 Azure Monitor 集成，并发布四个 CDN 指标来帮�
 
 * 详细了解 [Azure Monitor](../azure-monitor/overview.md)。
 
-* 配置 [Azure Monitor 中的 Log Analytics](../azure-monitor/log-query/log-analytics-tutorial.md)。
+* 配置 [Azure Monitor 中的 Log Analytics](../azure-monitor/logs/log-analytics-tutorial.md)。

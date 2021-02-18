@@ -13,16 +13,16 @@ ms.tgt_pltfrm: multiple
 ms.devlang: multiple
 ms.topic: overview
 ms.custom: mvc
-ms.date: 03/23/2020
+ms.date: 02/12/2021
 ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 04/30/2019
-ms.openlocfilehash: b8ac964c62ac4b30e9280e4ae921297ba860d7c2
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ba5a329d12735fbddc86ff2e3725a1e7de6d9d89
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "86529924"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546459"
 ---
 # <a name="what-is-azure-notification-hubs"></a>什么是 Azure 通知中心？
 
@@ -52,7 +52,7 @@ Azure 通知中心提供易于使用且横向扩展的推送引擎，允许你�
 
 ## <a name="how-do-push-notifications-work"></a>推送通知的工作原理是什么？
 
-推送通知通过称为*平台通知系统* (PNS) 的特定于平台的基础结构进行传送。 它们提供基本的推送功能，使用提供的句柄向设备传送消息，没有通用接口。 若要跨应用的 Android、iOS 和 Windows 版本将通知发送给所有客户，开发人员必须单独使用 Apple Push Notification 服务 (APNS)、Firebase Cloud Messaging (FCM) 和 Windows 通知服务 (WNS)。
+推送通知通过称为 *平台通知系统* (PNS) 的特定于平台的基础结构进行传送。 它们提供基本的推送功能，使用提供的句柄向设备传送消息，没有通用接口。 若要跨应用的 Android、iOS 和 Windows 版本将通知发送给所有客户，开发人员必须单独使用 Apple Push Notification 服务 (APNS)、Firebase Cloud Messaging (FCM) 和 Windows 通知服务 (WNS)。
 
 从较高层面讲，推送的工作原理如下：
 

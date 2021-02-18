@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 02/05/2021
 ms.author: akjosh
-ms.openlocfilehash: ebc4867f0ce16657c550b3d33d76fccdb41cef54
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: d45535f11568fddd10130d506af3329dcdfb0484
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99980637"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100580284"
 ---
 # <a name="use-linux-diagnostic-extension-40-to-monitor-metrics-and-logs"></a>使用 Linux 诊断扩展4.0 监视指标和日志
 
@@ -524,7 +524,7 @@ minSeverity | Syslog 严重性级别（例如“LOG\_ERR”或“LOG\_INFO”）
 
 元素 | 值
 ------- | -----
-file | 要监视和捕获的日志文件的完整路径名。 路径名必须命名单个文件；它不能命名目录，也不能包含通配符。 “Omsagent”用户帐户必须具有文件路径的读取访问权限。
+文件 | 要监视和捕获的日志文件的完整路径名。 路径名必须命名单个文件；它不能命名目录，也不能包含通配符。 “Omsagent”用户帐户必须具有文件路径的读取访问权限。
 表 | （可选）指定的存储帐户（在受保护的配置中指定）中的 Azure 存储表，文件“结尾”处的新行将写入此表。
 sinks | （可选）日志行发送到的附加接收器的名称的逗号分隔列表。
 
@@ -827,6 +827,6 @@ Set-AzVMExtension -ResourceGroupName <resource_group_name> -VMName <vm_name> -Lo
 
 ## <a name="next-steps"></a>后续步骤
 
-* 在 [Azure Monitor](../../azure-monitor/platform/alerts-classic-portal.md) 中为收集的指标创建指标警报。
-* 为指标创建[监控图表](../../azure-monitor/platform/data-platform.md)。
+* 在 [Azure Monitor](../../azure-monitor/alerts/alerts-classic-portal.md) 中为收集的指标创建指标警报。
+* 为指标创建[监控图表](../../azure-monitor/data-platform.md)。
 * 了解如何使用指标[创建虚拟机规模集](../linux/tutorial-create-vmss.md)以控制自动缩放。

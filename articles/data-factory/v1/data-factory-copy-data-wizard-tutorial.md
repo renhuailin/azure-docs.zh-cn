@@ -1,23 +1,18 @@
 ---
 title: '教程：使用复制向导创建管道 '
 description: 在本教程中，通过使用数据工厂所支持的复制向导，创建带有复制活动的 Azure 数据工厂管道。
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: b87afb8e-53b7-4e1b-905b-0343dd096198
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 93360e48dad13b9ec57175d31ecb61d32974f066
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 60a575fc211c512c8657bffd567c96f98cc3d69a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93128396"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100377000"
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-data-factory-copy-wizard"></a>教程：使用数据工厂复制向导创建包含复制活动的管道
 > [!div class="op_single_selector"]
@@ -52,7 +47,7 @@ ms.locfileid: "93128396"
 2. 在“新建数据工厂”  边栏选项卡中：
    
    1. 输入 **ADFTutorialDataFactory** 作为 **名称**。
-       Azure 数据工厂的名称必须全局唯一。 如果收到错误`Data factory name “ADFTutorialDataFactory” is not available`，请更改数据工厂的名称（例如改为 yournameADFTutorialDataFactoryYYYYMMDD），并重新尝试创建。 有关数据工厂项目命名规则，请参阅 [Data Factory - Naming Rules](data-factory-naming-rules.md) （数据工厂 - 命名规则）主题。  
+       Azure 数据工厂的名称必须全局唯一。 如果收到错误`Data factory name "ADFTutorialDataFactory" is not available`，请更改数据工厂的名称（例如改为 yournameADFTutorialDataFactoryYYYYMMDD），并重新尝试创建。 有关数据工厂项目命名规则，请参阅 [Data Factory - Naming Rules](data-factory-naming-rules.md) （数据工厂 - 命名规则）主题。  
       
        ![数据工厂名称不可用](./media/data-factory-copy-data-wizard-tutorial/getstarted-data-factory-not-available.png)    
    2. 选择 **Azure 订阅**。
