@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/17/2020
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: 708c70a5144e4e38dd5de9524711c80ef28cd839
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: 9302bde13a303dda2107900dc0c10cc180669a18
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100092122"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100650722"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>如何调用文本分析 REST API
 
@@ -37,7 +37,7 @@ ms.locfileid: "100092122"
 
 ## <a name="change-your-pricing-tier"></a>更改定价层 
 
-如果现有文本分析资源使用 S0 到 S4 定价层，则可以将其更新为使用标准 (S) [定价层](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/)：
+如果现有文本分析资源使用 S0 到 S4 定价层，则应将其更新为使用标准 (S) [定价层](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/)。 S0 到 S4 定价层将被停用。 更新资源的定价：
 
 1. 导航到 [Azure 门户](https://portal.azure.com/)中的文本分析资源。
 2. 选择左侧导航菜单中的 " **定价层** "。 它将低于 " **资源管理**"。 
@@ -123,7 +123,7 @@ ms.locfileid: "100092122"
 
 | 元素 | 有效值 | 必需？ | 使用情况 |
 |---------|--------------|-----------|-------|
-|`displayName` | String | 可选 | 用作作业的唯一标识符的显示名称。|
+|`displayName` | 字符串 | 可选 | 用作作业的唯一标识符的显示名称。|
 |`analysisInput` | 包括 `documents` 以下字段 | 必需 | 包含要发送的文档的信息。 |
 |`documents` | 包括 `id` 以下和 `text` 字段 | 必需 | 包含要发送的每个文档的信息以及文档的原始文本。 |
 |`id` | String | 必须 | 提供的 Id 用于构建输出的结构。 |
@@ -132,7 +132,7 @@ ms.locfileid: "100092122"
 |`parameters` | 包括 `model-version` 以下和 `stringIndexType` 字段 | 必需 | 此字段包含在所选的上述功能任务中。 它们包含有关要使用的模型版本的信息和索引类型。 |
 |`model-version` | String | 必须 | 指定要使用的模型的版本。  |
 |`stringIndexType` | String | 必须 | 指定与编程环境匹配的文本解码器。  支持的类型 `textElement_v8` (默认值) 、 `unicodeCodePoint` 、 `utf16CodeUnit` 。 有关详细信息，请参阅 [文本偏移文章](../concepts/text-offsets.md#offsets-in-api-version-31-preview) 。  |
-|`domain` | String | 可选 | 仅适用于任务的参数 `entityRecognitionPiiTasks` ，可以设置为 `pii` 或 `phi` 。 如果未指定，则默认为 `pii` 。  |
+|`domain` | 字符串 | 可选 | 仅适用于任务的参数 `entityRecognitionPiiTasks` ，可以设置为 `pii` 或 `phi` 。 如果未指定，则默认为 `pii` 。  |
 
 ```json
 {
@@ -240,7 +240,7 @@ example.json
 |--|--|--|
 | 提交运行状况作业文本分析  | POST | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.3/entities/health/jobs` |
 | 获取作业状态和结果 | GET | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.3/entities/health/jobs/<Operation-Location>` |
-| 取消作业 | 删除 | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.3/entities/health/jobs/<Operation-Location>` |
+| 取消作业 | DELETE | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.3/entities/health/jobs/<Operation-Location>` |
 
 --- 
 

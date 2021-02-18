@@ -6,12 +6,12 @@ manager: nitinme
 ms.author: lajanuar
 author: laujan
 ms.date: 02/11/2021
-ms.openlocfilehash: f6b68ea756253a30f006983c214e287c75637278
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: 5508ffc758b08642b05b1f77b66c9f29be1c85a2
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100642319"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100650773"
 ---
 # <a name="get-started-with-document-translation-preview"></a>文档翻译 (预览入门) 
 
@@ -108,7 +108,7 @@ https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/batc
 * 将其中一个示例中的代码复制并粘贴到你的项目中。
 * 设置终结点、订阅密钥和容器 URL 值。
 * 运行该程序。 例如：`python translate.py`。
-  
+
 ### <a name="java"></a>[Java](#tab/java)
 
 * 为项目创建一个工作目录。 例如：
@@ -127,7 +127,7 @@ mkdir sample-project
 mkdir -p src/main/java/
 ```
 
-* Java 源文件 (例如， _.java_) 在 src/main/**java** 中实时运行。
+**注意**： java 源文件 (_例如，.java_) 在 src/main/**Java** 中运行。
 
 * 在根目录 (例如， *示例-项目*) ，用 Gradle 初始化项目：
 
@@ -136,6 +136,7 @@ gradle init --type basic
 ```
 
 * 当提示你选择一个 **DSL** 时，选择 **Kotlin**。
+
 * 更新 `build.gradle.kts`  文件。 请记住，您需要根据 `mainClassName` 该示例更新：
 
   ```java
@@ -155,7 +156,8 @@ gradle init --type basic
   ```
 
 * 在 **java** 目录中创建一个 java 文件，并复制/粘贴提供的示例中的代码。 别忘了添加订阅密钥和终结点。
-**生成并运行根目录的示例**：
+
+* **生成并运行根目录的示例**：
 
 ```powershell
 gradle build
@@ -172,7 +174,7 @@ gradle run
 * 生成文件，例如“go build example-code.go”。
 * 运行文件，例如“example-code”。
 
----
+ ---
 
 ## <a name="make-document-translation-requests"></a>发出文档翻译请求
 
@@ -1248,7 +1250,7 @@ func main() {
 > [!NOTE]
 > 上述内容限制在公开发布之前可能会发生更改。
 
-## <a name="learn-more"></a>了解更多
+## <a name="learn-more"></a>了解详细信息
 
 * [Translator v3 API 参考](../reference/v3-0-reference.md)
 * [语言支持](../language-support.md)

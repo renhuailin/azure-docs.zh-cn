@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: kumud
-ms.openlocfilehash: 61ca4dc8cd7048df69c827e7ca657b9882900819
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: cc0028a8c7d6d15277c3789118b13b80ed4306ea
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98218903"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596633"
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>创建、更改或删除虚拟网络
 
@@ -87,7 +87,7 @@ ms.locfileid: "98218903"
    - **属性**：显示有关虚拟网络的设置，包括虚拟网络的资源 ID 及其所在的 Azure 订阅。
    - **示意图**：该图提供已连接到虚拟网络的所有设备的可视表示形式。 图示提供一些有关设备的关键信息。 若要在此视图中管理设备，请选择设备。
    - **常用 Azure 设置**：若要详细了解常见的 Azure 设置，请参阅以下信息：
-     - [活动日志](../azure-monitor/platform/platform-logs-overview.md)
+     - [活动日志](../azure-monitor/essentials/platform-logs-overview.md)
      - [访问控制 (IAM)](../role-based-access-control/overview.md)
      - [标记](../azure-resource-manager/management/tag-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
      - [锁](../azure-resource-manager/management/lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)

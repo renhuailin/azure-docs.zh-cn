@@ -10,12 +10,12 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 zone_pivot_groups: client-operating-system-macos-and-linux-windows-powershell
-ms.openlocfilehash: ac9c8efbe29bf1420a94d486b650758cc22bec2f
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 61ac4c979445ef48b5986ec3793a9880cedc837a
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100575758"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100650246"
 ---
 # <a name="upload-usage-data-metrics-and-logs-to-azure-monitor"></a>将使用情况数据、指标和日志上传到 Azure Monitor
 
@@ -29,7 +29,7 @@ ms.locfileid: "100575758"
 上载使用情况数据、指标或日志之前，需要执行以下操作：
 
 * 安装工具 
-* [注册 `Microsoft.AzureData` 资源提供程序](#register-the-resource-provider) 
+* [注册 `Microsoft.AzureArcData` 资源提供程序](#register-the-resource-provider) 
 * [创建服务主体](#create-service-principal)
 
 ## <a name="install-tools"></a>安装工具

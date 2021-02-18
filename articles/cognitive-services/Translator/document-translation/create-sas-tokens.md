@@ -1,17 +1,17 @@
 ---
 title: 使用 Microsoft 存储资源管理器为容器和 blob 创建共享访问签名 (SAS) 令牌
-description: 如何使用 Microsoft 存储资源管理器为容器和 blob (SAS) 创建共享访问令牌
+description: 如何使用 Microsoft 存储资源管理器和 Azure 门户为容器和 blob (SAS) 创建共享访问令牌
 ms.topic: how-to
 manager: nitinme
 ms.author: lajanuar
 author: laujan
 ms.date: 02/11/2021
-ms.openlocfilehash: 49813a29009e04c81dae59a7d4da2bae411e07b2
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: 1425be4fc4e462185f9fee573dc87b04a68bfea4
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100642340"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100650739"
 ---
 # <a name="create-sas-tokens-for-document-translation"></a>创建用于文档翻译的 SAS 令牌
 
@@ -102,7 +102,7 @@ ms.locfileid: "100642340"
 
 1. 若要构造 SAS URL，请在存储服务的 URL)  (URI 添加 SAS 令牌。
 
-## <a name="learn-more"></a>了解更多
+## <a name="learn-more"></a>了解详细信息
 
 * [以编程方式为 blob 或容器创建 SAS 令牌](/azure/storage/blobs/sas-service-create)
 * [目录、容器或 blob 的权限](/rest/api/storageservices/create-service-sas#permissions-for-a-directory-container-or-blob)

@@ -1,7 +1,7 @@
 ---
 title: 远程模型部署故障排除
 titleSuffix: Azure Machine Learning
-description: 了解如何使用 Azure Kubernetes 服务和 Azure 容器实例解决、解决和排查一些常见的 Docker 部署错误。
+description: 了解如何规避、解决及排查 Azure Kubernetes 服务和 Azure 容器实例的一些常见 Docker 部署错误。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,16 +10,24 @@ ms.author: gopalv
 ms.date: 11/25/2020
 ms.topic: troubleshooting
 ms.custom: contperf-fy20q4, devx-track-python, deploy, contperf-fy21q2
-ms.openlocfilehash: 2b953fd040b9ba76eacddb91a89ac65d51e340a0
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: 4901d73235778a3194fe75b95df9cb81aeeb093b
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98071657"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100651674"
 ---
 # <a name="troubleshooting-remote-model-deployment"></a>远程模型部署故障排除 
 
-了解如何使用 Azure 机器学习在将模型部署到 Azure 容器实例时可能会遇到的常见错误以及如何解决这些错误，如使用 (ACI) 和 Azure Kubernetes Service (AKS) 。
+了解如何使用 Azure 机器学习排查、解决或规避在将模型部署到 Azure 容器实例 (ACI) 和 Azure Kubernetes 服务 (AKS) 时可能遇到的常见错误。
+
+> [!NOTE]
+> 如果要将模型部署到 Azure Kubernetes Service (AKS) ，建议为该群集启用 [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-enable-existing-clusters) 。 这将帮助你了解总体群集运行状况和资源使用情况。 你还可能会发现以下资源非常有用：
+>
+> * [检查影响 AKS 群集的资源运行状况事件](https://docs.microsoft.com/azure/aks/aks-resource-health)
+> * [Azure Kubernetes Service 诊断](https://docs.microsoft.com/azure/aks/concepts-diagnostics)
+>
+> 如果尝试将模型部署到不正常或过载的群集，则应该会遇到问题。 如果需要帮助排查 AKS 群集问题，请联系 AKS 支持。
 
 ## <a name="prerequisites"></a>先决条件
 

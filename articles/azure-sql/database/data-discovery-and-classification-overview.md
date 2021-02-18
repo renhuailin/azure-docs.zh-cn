@@ -11,14 +11,14 @@ ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 02/11/2021
+ms.date: 02/17/2021
 tags: azure-synapse
-ms.openlocfilehash: 254d69c723a97d9007a1f6c0f0eb7b34bcfe3c4e
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: fee285aa3beb308f5e6b3b233d40597c2a287eb7
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100392759"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100651963"
 ---
 # <a name="data-discovery--classification"></a>数据发现和分类
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -195,3 +195,4 @@ ms.locfileid: "100392759"
 
 - 请考虑配置 [Azure SQL 审核](../../azure-sql/database/auditing-overview.md)来监视和审核对已分类敏感数据的访问。
 - 对于包含数据发现 & 分类的演示文稿，请参阅 [查找、分类、标记 & 保护 SQL 数据 |公开的数据](https://www.youtube.com/watch?v=itVi9bkJUNc)。
+- 若要使用 T-sql 命令通过 Azure 监控范围标签对 Azure SQL 数据库和 Azure Synapse Analytics 进行分类，请参阅 [使用 Azure 监控范围标签对 AZURE sql 数据进行分类](https://docs.microsoft.com/azure/sql-database/scripts/sql-database-import-purview-labels)。

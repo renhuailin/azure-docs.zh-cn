@@ -4,18 +4,17 @@ titleSuffix: Azure Data Science Virtual Machine
 description: 将数据科学 VM 部署到企业团队环境的模式。
 keywords: 深度学习, AI, 数据科学工具, 数据科学虚拟机, 地理空间分析, 团队数据科学过程
 services: machine-learning
-ms.service: machine-learning
-ms.subservice: data-science-vm
+ms.service: data-science-vm
 author: vijetajo
 ms.author: vijetaj
 ms.topic: overview
 ms.date: 05/08/2018
-ms.openlocfilehash: 9126dbcfbfe9e3a94514ebf45685bdfc55dd0306
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 28dea7c28f47a9850486877571672cbd717e9f1f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462995"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596774"
 ---
 # <a name="data-science-virtual-machine-based-team-analytics-and-ai-environment"></a>基于数据科学虚拟机的团队分析和 AI 环境 
 [Data Science Virtual Machine](overview.md) (DSVM) 在 Azure 平台上提供了一个丰富的环境，其中包含为人工智能 (AI) 和数据分析预建的软件。
@@ -38,7 +37,7 @@ ms.locfileid: "96462995"
 这一系列针对前面的每个主题提供指导和方针。 它不包括在大型企业配置中部署 DSVM 的所有注意事项和需求。 以下是在企业中实现 DSVM 实例时可以使用的其他一些 Azure 资源：
 
 * [网络安全](../../security/fundamentals/network-overview.md)
-* [监视](../../azure-monitor/insights/monitor-vm-azure.md)和[管理](../../virtual-machines/maintenance-and-updates.md?bc=%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json%252c%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json%253ftoc%253d%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [监视](../../azure-monitor/vm/monitor-vm-azure.md)和[管理](../../virtual-machines/maintenance-and-updates.md?bc=%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json%252c%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json%253ftoc%253d%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [日志记录和审核](../../security/fundamentals/log-audit.md)
 * [Azure 基于角色的访问控制 (Azure RBAC)](../../role-based-access-control/overview.md)
 * [策略设置和执行](../../governance/policy/overview.md)
