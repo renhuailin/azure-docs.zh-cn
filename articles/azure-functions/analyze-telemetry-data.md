@@ -4,12 +4,12 @@ description: 本文介绍了如何查看和查询由 Azure Application Insights 
 ms.topic: how-to
 ms.date: 10/14/2020
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 9e03a36824853a3e43bbf8628fd12481cfbcaf25
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 56af6af6f4204a819c06fd97cda357dca20a19b0
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99549552"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591177"
 ---
 # <a name="analyze-azure-functions-telemetry-in-application-insights"></a>在 Application Insights 中分析 Azure Functions 遥测数据 
 
@@ -64,12 +64,12 @@ Azure Functions 与 Application Insights 集成，以用于更好地监视函数
 | ---- | ----------- |
 | **[失败](../azure-monitor/app/asp-net-exceptions.md)** |  基于函数失败和服务器异常来创建图表和警报。 操作名称是函数名称。 不显示依赖项中的失败，除非为依赖项实现了自定义遥测。 |
 | **[性能](../azure-monitor/app/performance-counters.md)** | 通过查看每个 Cloud 角色实例的资源利用率和吞吐量来分析性能问题。 如果要针对函数阻碍基础资源正常工作的情况进行调试，此性能数据会很有用。 |
-| **[指标](../azure-monitor/platform/metrics-charts.md)** | 创建基于指标的图表和警报。 指标包括函数调用次数、执行时间和成功率。 |
+| **[指标](../azure-monitor/essentials/metrics-charts.md)** | 创建基于指标的图表和警报。 指标包括函数调用次数、执行时间和成功率。 |
 | **[实时指标](../azure-monitor/app/live-stream.md)** | 随着指标数据的创建，近实时地查看指标数据。 |
 
 ## <a name="query-telemetry-data"></a>查询遥测数据
 
-借助 [Application Insights Analytics](../azure-monitor/log-query/log-query-overview.md)，便可以访问数据库中以表形式存储的所有遥测数据。 Analytics 提供了一种用于提取、处理和可视化数据的查询语言。 
+借助 [Application Insights Analytics](../azure-monitor/logs/log-query-overview.md)，便可以访问数据库中以表形式存储的所有遥测数据。 Analytics 提供了一种用于提取、处理和可视化数据的查询语言。 
 
 选择“日志”以浏览或查询记录的事件。
 

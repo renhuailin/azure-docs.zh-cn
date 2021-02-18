@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 4/26/2019
 ms.author: steveesp
 ms.reviewer: kumud, mareat
-ms.openlocfilehash: 280b3cbef8307691b0d50c4a26f6dca18b7fb65b
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: cb128f9269895f04d1e0dad8e0c8d06c481e86c6
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98233859"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576157"
 ---
 # <a name="virtual-machine-network-bandwidth"></a>虚拟机网络带宽
 
@@ -55,12 +55,12 @@ Azure 虚拟机必须有一个（但也可能有多个）连接的网络接口�
 ## <a name="flow-limits-and-active-connections-recommendations"></a>流限制和活动连接建议
 
 如今，Azure 网络堆栈支持 1M total flow (50 万个入站和50万个出站) 用于 VM。 VM 可以在不同方案中处理的活动连接总数如下所示。
-- 属于 VNET 的 Vm 可以 _*_在每个方向_*_ 上处理具有50万个活动流的所有 VM 大小的50万个 **_活动连接数_*。  
-- 如果 Vm 具有网络虚拟设备 (Nva) 例如网关、代理、防火墙，则可以 *_在每个方向_* 上处理与50万个 _ 活动流的 250k _*_活动连接_*_*，因为在新连接设置到下一跃点时，将会进行转发和其他新的流程创建。 
+- 属于 VNET 的 Vm 可以处理50万个 ***活动连接**，对于所有 VM，都可以 _在每个方向_ 上处理50万个 _ * 活动流 * *。  
+- 具有网络虚拟设备 (Nva) （如网关、代理、防火墙）的 Vm 可以 *_在每个方向_* 上处理50万个 _ 活动的 250k ***active connections***，因为在新连接设置到下一跃点时，将会进行转发和其他新的流程创建。 
 
 一旦达到此限制，就会删除其他连接。 连接建立速度和终止速度也可能影响网络性能，因为连接的建立和终止与包处理例程共享 CPU。 建议针对预期的流量模式对工作负荷进行基准测试，并根据性能需要对工作负荷进行相应的横向扩展。
 
-[Azure Monitor](../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachines) 中提供的指标用于跟踪 VM 或 VMSS 实例上的网络流数和流创建速率。
+[Azure Monitor](../azure-monitor/essentials/metrics-supported.md#microsoftcomputevirtualmachines) 中提供的指标用于跟踪 VM 或 VMSS 实例上的网络流数和流创建速率。
 
 ![此屏幕截图显示了 Azure Monitor 的“指标”页，其中包含入站流和出站流的折线图和总计。](media/virtual-machine-network-throughput/azure-monitor-flow-metrics.png)
 

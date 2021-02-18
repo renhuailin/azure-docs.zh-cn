@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 9/25/2018
 ms.author: aanandr
 ms.custom: ''
-ms.openlocfilehash: b7c683edd15ab05e9efc239ffe07759078754607
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: a68e1a3f60930e290e97084ff2ec9350b18e2873
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222643"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594966"
 ---
 # <a name="azure-kubernetes-network-policies-overview"></a>Azure Kubernetes 网络策略概述
 
@@ -106,7 +106,7 @@ Azure NPM 包含信息性 Prometheus 指标，可让你监视和更好地了解�
 ### <a name="benefits-of-azure-npm-metrics"></a>Azure NPM 指标的优点
 用户以前只能使用命令在群集节点内运行的网络配置来了解其网络配置 `iptables -L` ，这会生成详细且难以理解输出的信息。 NPM 指标提供以下与网络策略、IPTables 规则和 IPSets 相关的好处。
 - 提供对三个与时间维度之间的关系的深入了解，以对配置进行调试。
-- 所有 IPSets 和每个 IPSet 中的条目数。
+- 所有 IPSet 和每个 IPSet 中的条目数。
 - 应用具有 IPTable/IPSet 级别粒度的策略所用的时间。
  
 ### <a name="supported-metrics"></a>支持的指标
@@ -130,7 +130,7 @@ Azure NPM 包含信息性 Prometheus 指标，可让你监视和更好地了解�
 可以通过 Azure Monitor 容器或通过 Prometheus 来擦除指标。
 
 ### <a name="setup-for-azure-monitor"></a>Azure Monitor 的设置
-第一步是为 Kubernetes 群集的容器启用 Azure Monitor。 可在 [容器 Azure Monitor](../azure-monitor/insights/container-insights-overview.md)中找到步骤概述。 启用容器 Azure Monitor 后，配置 [容器的 Azure Monitor](https://aka.ms/container-azm-ms-agentconfig) ，以启用 NPM 集成和 Prometheus NPM 指标的收集。 适用于容器的 Azure monitor ConfigMap 有一个 ```integrations``` 节，其中包含用于收集 NPM 度量值的设置。 默认情况下，ConfigMap 中禁用这些设置。 启用 "基本" 设置 ```collect_basic_metrics = true``` ，将收集基本的 NPM 指标。 启用 "高级 ```collect_advanced_metrics = true``` " 设置将收集除基本指标之外的高级度量值。 
+第一步是为 Kubernetes 群集的容器启用 Azure Monitor。 可在 [容器 Azure Monitor](../azure-monitor/containers/container-insights-overview.md)中找到步骤概述。 启用容器 Azure Monitor 后，配置 [容器的 Azure Monitor](https://aka.ms/container-azm-ms-agentconfig) ，以启用 NPM 集成和 Prometheus NPM 指标的收集。 适用于容器的 Azure monitor ConfigMap 有一个 ```integrations``` 节，其中包含用于收集 NPM 度量值的设置。 默认情况下，ConfigMap 中禁用这些设置。 启用 "基本" 设置 ```collect_basic_metrics = true``` ，将收集基本的 NPM 指标。 启用 "高级 ```collect_advanced_metrics = true``` " 设置将收集除基本指标之外的高级度量值。 
 
 编辑 ConfigMap 后，将其保存在本地，并按如下所示将 ConfigMap 应用到群集。
 
@@ -143,7 +143,7 @@ integrations: |-
 ```
 高级度量值是可选的，启用它们会自动启用基本指标收集。 高级度量值当前仅包含 `npm_ipset_counts`
 
-详细了解 [config map 中的 Azure monitor for 容器集合设置](../azure-monitor/insights/container-insights-agent-config.md)
+详细了解 [config map 中的 Azure monitor for 容器集合设置](../azure-monitor/containers/container-insights-agent-config.md)
 
 ### <a name="visualization-options-for-azure-monitor"></a>Azure Monitor 的可视化选项
 启用 NPM 指标收集后，可以使用容器 Insights 或 Grafana 在 Azure 门户中查看指标。
@@ -154,7 +154,7 @@ integrations: |-
 除了在) 下查看工作簿 (图片外，还可以直接在 "见解" 部分下的 "日志" 中查询 Prometheus 度量值。 例如，此查询将返回所收集的所有指标。
 |其中，TimeGenerated > 前 (5h) |其中，Name 包含 "npm_"
 
-你还可以直接查询指标 Log Analytics。 通过[Log Analytics 查询入门](../azure-monitor/insights/container-insights-log-search.md)了解更多相关信息 
+你还可以直接查询指标 Log Analytics。 通过[Log Analytics 查询入门](../azure-monitor/containers/container-insights-log-search.md)了解更多相关信息 
 
 #### <a name="viewing-in-grafana-dashboard"></a>在 Grafana 仪表板中查看
 设置 Grafana 服务器，并按照 [此处](https://grafana.com/grafana/plugins/grafana-azure-monitor-datasource)所述配置 Log Analytics 数据源。 然后，将 [具有 Log Analytics 后端的 Grafana 仪表板](https://grafana.com/grafana/dashboards/10956) 导入到 Grafana 实验室。

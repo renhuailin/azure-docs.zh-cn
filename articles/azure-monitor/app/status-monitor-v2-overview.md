@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 09/16/2019
-ms.openlocfilehash: f0ce969a4ab016d6a036d33a0e9bf027bb580a20
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 69f80856150e461c6edfafdf0aa89de77c4ab0fd
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186212"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100583812"
 ---
 # <a name="deploy-azure-monitor-application-insights-agent-for-on-premises-servers"></a>为本地服务器部署 Azure Monitor Application Insights 代理
 
@@ -67,7 +67,7 @@ Application Insights 代理位于此处： https://www.powershellgallery.com/pac
   - [Get-ApplicationInsightsMonitoringStatus](./status-monitor-v2-api-reference.md#get-applicationinsightsmonitoringstatus) cmdlet 可用于验证启用是否成功。
   - 我们建议你使用[实时指标](./live-stream.md)来快速确定应用是否正在发送遥测数据。
 
-  - 还可以使用 [Log Analytics](../log-query/log-analytics-tutorial.md) 列出当前正在发送遥测数据的所有云角色：
+  - 还可以使用 [Log Analytics](../logs/log-analytics-tutorial.md) 列出当前正在发送遥测数据的所有云角色：
       ```Kusto
       union * | summarize count() by cloud_RoleName, cloud_RoleInstance
       ```
@@ -76,9 +76,9 @@ Application Insights 代理位于此处： https://www.powershellgallery.com/pac
 
 查看遥测：
 
-* [浏览指标](../platform/metrics-charts.md)，以便监视性能和使用情况。
+* [浏览指标](../essentials/metrics-charts.md)，以便监视性能和使用情况。
 * [搜索事件和日志](./diagnostic-search.md)以诊断问题。
-* [使用分析](../log-query/log-query-overview.md)，以便进行更高级的查询。
+* [使用分析](../logs/log-query-overview.md)，以便进行更高级的查询。
 * [创建仪表板](./overview-dashboard.md)。
 
 添加更多遥测：

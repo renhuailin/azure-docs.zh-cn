@@ -7,17 +7,17 @@ author: DaleKoetke
 ms.author: dalek
 ms.date: 2/7/2021
 ms.reviewer: mbullwin
-ms.openlocfilehash: 3ae3224ae17d0dee2ed1080669c6057ca62959d9
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: db5506f1f1fcabf3a922115c24aa64e35b888fbd
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100384497"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573757"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>管理 Application Insights 的使用情况和成本
 
 > [!NOTE]
-> 本文介绍如何了解和控制 Application Insights 的成本。  相关文章[监视使用情况及预估成本](../platform/usage-estimated-costs.md)介绍了如何针对不同的定价模型查看多个 Azure 监视功能的使用情况及预估成本。
+> 本文介绍如何了解和控制 Application Insights 的成本。  相关文章[监视使用情况及预估成本](..//usage-estimated-costs.md)介绍了如何针对不同的定价模型查看多个 Azure 监视功能的使用情况及预估成本。
 
 无论 Web 应用程序是托管在 Azure 中还是本地，Application Insights 都会提供所需的功能，便于你监视其可用性、性能和使用情况。 Application Insights 支持 .NET、Java 和 Node.js 等常用语言和框架，并与 Azure DevOps、Jira 和 PagerDuty 等 DevOps 流程和工具相集成。 请务必了解能够确定应用程序监视成本的因素。 本文介绍能够产生应用程序监视成本的因素，以及如何主动监视成本。
 
@@ -33,7 +33,7 @@ ms.locfileid: "100384497"
 
 ### <a name="workspace-based-application-insights"></a>基于工作区的 Application Insights
 
-对于将数据发送到 Log Analytics 工作区的 Application Insights 资源（称为[基于工作区的 Application Insights 资源](create-workspace-resource.md)），数据引入和保留的计费由 Application Insights 数据所在的工作区完成。 这样，客户除了能够使用“即用即付”定价模型之外，还能使用 Log Analytics [定价模型](../platform/manage-cost-storage.md#pricing-model)的所有选项，其中包括“预留产能”。 Log Analytics 还提供了更多数据保留选项，包括[按数据类型保留](../platform/manage-cost-storage.md#retention-by-data-type)。 工作区中的 Application Insights 数据类型具有 90 天的保留期，无需支付费用。 使用 Web 测试以及启用自定义指标维度警报时，仍通过 Application Insights 来报告。 请了解如何使用[使用情况和预估成本](../platform/manage-cost-storage.md#understand-your-usage-and-estimate-costs)、[Azure 成本管理 + 计费](../platform/manage-cost-storage.md#viewing-log-analytics-usage-on-your-azure-bill)以及 [Log Analytics查询](#data-volume-for-workspace-based-application-insights-resources)，在 Log Analytics 中跟踪数据引入和保留成本。 
+对于将数据发送到 Log Analytics 工作区的 Application Insights 资源（称为[基于工作区的 Application Insights 资源](create-workspace-resource.md)），数据引入和保留的计费由 Application Insights 数据所在的工作区完成。 这样，客户除了能够使用“即用即付”定价模型之外，还能使用 Log Analytics [定价模型](../logs/manage-cost-storage.md#pricing-model)的所有选项，其中包括“预留产能”。 Log Analytics 还提供了更多数据保留选项，包括[按数据类型保留](../logs/manage-cost-storage.md#retention-by-data-type)。 工作区中的 Application Insights 数据类型具有 90 天的保留期，无需支付费用。 使用 Web 测试以及启用自定义指标维度警报时，仍通过 Application Insights 来报告。 请了解如何使用[使用情况和预估成本](../logs/manage-cost-storage.md#understand-your-usage-and-estimate-costs)、[Azure 成本管理 + 计费](../logs/manage-cost-storage.md#viewing-log-analytics-usage-on-your-azure-bill)以及 [Log Analytics查询](#data-volume-for-workspace-based-application-insights-resources)，在 Log Analytics 中跟踪数据引入和保留成本。 
 
 ## <a name="estimating-the-costs-to-manage-your-application"></a>估算应用程序的管理成本
 
@@ -106,7 +106,7 @@ systemEvents
 | summarize sum(BillingTelemetrySizeInBytes) by BillingTelemetryType, bin(timestamp, 1d) | render barchart  
 ```
 
-请注意，在 [Azure 日志警报](../platform/alerts-unified-log.md)中，可以使用此查询对数据量设置警报。  
+请注意，在 [Azure 日志警报](../alerts/alerts-unified-log.md)中，可以使用此查询对数据量设置警报。  
 
 若要详细了解遥测数据的更改情况，可以使用以下查询按类型获取事件计数：
 
@@ -224,7 +224,7 @@ Azure 在 [Azure 成本管理和计费](../../cost-management-billing/costs/quic
 
 ### <a name="create-alerts-for-the-daily-cap"></a>创建针对每日上限的警报
 
-当引入的数据量达到警告级别或每日上限级别时，“Application Insights 每日上限”会在 Azure 活动日志中创建一个事件。  可以[基于这些活动日志事件创建警报](../platform/alerts-activity-log.md#create-with-the-azure-portal)。 这些事件的信号名称如下：
+当引入的数据量达到警告级别或每日上限级别时，“Application Insights 每日上限”会在 Azure 活动日志中创建一个事件。  可以[基于这些活动日志事件创建警报](../alerts/alerts-activity-log.md#create-with-the-azure-portal)。 这些事件的信号名称如下：
 
 * 已达到 Application Insights 组件的每日上限警告阈值
 
@@ -248,7 +248,7 @@ Azure 在 [Azure 成本管理和计费](../../cost-management-billing/costs/quic
 > “数据采样”窗格仅控制引入采样的值。 它不反映 Application Insights SDK 在应用中应用的采样速率。 如果传入的遥测已在 SDK 处进行了采样，则引入采样不适用。
 >
 
-若要查找实际采样率（无论是否已应用），请使用[分析查询](../log-query/log-query-overview.md)。 该查询如下所示：
+若要查找实际采样率（无论是否已应用），请使用[分析查询](../logs/log-query-overview.md)。 该查询如下所示：
 
 ```kusto
 requests | where timestamp > ago(1d)
@@ -288,7 +288,7 @@ Application Insights 资源的默认保留期为 90 天。 可以为每个 Appli
 
 这些旧的定价层已经过重命名。 “企业”定价层现在称为“按节点”层，而“基本”定价层现在称为“按 GB”层 。 下文和 Azure 门户中将使用这些新名称。  
 
-“按节点”（以前称为“企业”）层按节点收费，并且每个节点都会收到每日数据限额。 在“按节点”定价层中，你需要为引入的数据中超出规定限额的数据付费。 如果你使用的是 Operations Management Suite，应选择“按节点”层。 在 2018 年 4 月，我们[引入了](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/) Azure 监视的新定价模型。 此模型在监视服务的完整组合中采用简单的“即用即付”模型。 了解有关 [新定价模型](../platform/usage-estimated-costs.md)的详细信息。
+“按节点”（以前称为“企业”）层按节点收费，并且每个节点都会收到每日数据限额。 在“按节点”定价层中，你需要为引入的数据中超出规定限额的数据付费。 如果你使用的是 Operations Management Suite，应选择“按节点”层。 在 2018 年 4 月，我们[引入了](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/) Azure 监视的新定价模型。 此模型在监视服务的完整组合中采用简单的“即用即付”模型。 了解有关 [新定价模型](..//usage-estimated-costs.md)的详细信息。
 
 有关在你所在区域中以适合你的货币计价的当前价格，请参阅 [Application Insights 定价](https://azure.microsoft.com/pricing/details/application-insights/)。
 
@@ -323,7 +323,7 @@ Application Insights 资源的默认保留期为 90 天。 可以为每个 Appli
 
 ### <a name="examples-of-how-to-determine-distinct-node-count"></a>演示如何确定不同节点计数的示例
 
-| 场景                               | 每日节点计数总数 |
+| 方案                               | 每日节点计数总数 |
 |:---------------------------------------|:----------------:|
 | 1 个应用程序使用 3 个 Azure 应用服务实例和 1 个虚拟服务器 | 4 |
 | 3 个应用程序正运行在 2 个 VM 上，这些应用程序的 Application Insights 资源属于同一订阅，并且位于“按节点”层中 | 2 | 

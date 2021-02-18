@@ -15,18 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: yelevin
-ms.openlocfilehash: 7701fc6d90fd9ebc7ec29f0ffdd7d050c58c036c
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: abecddb6f5469cb4ef463e65d6c74149bf34dca9
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94655657"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590228"
 ---
 # <a name="connect-your-domain-name-server"></a>连接域名服务器
 
 > [!IMPORTANT]
 > Azure Sentinel 中的 DNS 数据连接器目前为公共预览版。
-> 此功能在提供时没有服务级别协议，不建议用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> 此功能不附带服务级别协议，不建议将其用于生产工作负载。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 可以将 Windows 上运行的任何域名服务器 (DNS) 连接到 Azure Sentinel。 这是通过在 DNS 计算机上安装代理来完成的。 使用 DNS 日志，可以通过收集、分析和关联分析和审核日志以及来自 DNS 服务器的其他相关数据，获取对组织的 DNS 基础结构的安全、性能和操作相关的见解。
 
@@ -43,10 +43,10 @@ ms.locfileid: "94655657"
 
 | **连接的源** | **支持** | **说明** |
 | --- | --- | --- |
-| [Windows 代理](../azure-monitor/platform/agent-windows.md) | 是 | 解决方案会从 Windows 代理收集 DNS 信息。 |
-| [Linux 代理](../azure-monitor/learn/quick-collect-linux-computer.md) | 否 | 解决方案不会从直接 Linux 代理收集 DNS 信息。 |
-| [System Center Operations Manager 管理组](../azure-monitor/platform/om-agents.md) | 是 | 解决方案会从连接的 Operations Manager 管理组中的代理收集 DNS 信息。 从 Operations Manager 代理到 Azure Monitor 的直接连接不是必需的。 数据将从管理组转发到 Log Analytics 工作区。 |
-| [Azure 存储帐户](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace) | 否 | 解决方案不会使用 Azure 存储。 |
+| [Windows 代理](../azure-monitor/agents/agent-windows.md) | 是 | 解决方案会从 Windows 代理收集 DNS 信息。 |
+| [Linux 代理](../azure-monitor/vm/quick-collect-linux-computer.md) | 否 | 解决方案不会从直接 Linux 代理收集 DNS 信息。 |
+| [System Center Operations Manager 管理组](../azure-monitor/agents/om-agents.md) | 是 | 解决方案会从连接的 Operations Manager 管理组中的代理收集 DNS 信息。 从 Operations Manager 代理到 Azure Monitor 的直接连接不是必需的。 数据将从管理组转发到 Log Analytics 工作区。 |
+| [Azure 存储帐户](../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace) | 否 | 解决方案不会使用 Azure 存储。 |
 
 ### <a name="data-collection-details"></a>数据收集详细信息
 

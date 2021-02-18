@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: 50d78e83bbbeb4b0252c83f9f52e94599ea6946c
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 2f68452bed69e4e174f126d259e8df6d2283e6cf
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98787954"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585225"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>监视、诊断和排查 Microsoft Azure 存储问题
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -94,7 +94,7 @@ ms.locfileid: "98787954"
 ## <a name="monitoring-your-storage-service"></a><a name="monitoring-your-storage-service"></a>监视存储服务
 如果熟悉 Windows 性能监视，则可以将存储度量值视为 Windows 性能监视器计数器的 Azure 存储等效项。 在“存储指标”中，可找到一组综合指标（相当于 Windows 性能监视器术语中的计数器），例如服务可用性、向服务发送的请求总数或向服务发出的成功请求的百分比。 有关可用度量值的完整列表，请参阅[存储分析度量值表架构](/rest/api/storageservices/Storage-Analytics-Metrics-Table-Schema)。 可以指定希望存储服务每隔一小时还是每隔一分钟收集和聚合一次度量值。 有关如何启用度量值和监视存储帐户的详细信息，请参阅 [Enabling storage metrics and viewing metrics data](../blobs/monitor-blob-storage.md)（启用存储度量值并查看度量值数据）。
 
-可以选择要将哪些每小时指标显示在 [Azure 门户](https://portal.azure.com)中，并配置规则以便在每小时指标超过特定阈值时，通过电子邮件通知管理员。 有关详细信息，请参阅[接收警报通知](../../azure-monitor/platform/alerts-overview.md)。
+可以选择要将哪些每小时指标显示在 [Azure 门户](https://portal.azure.com)中，并配置规则以便在每小时指标超过特定阈值时，通过电子邮件通知管理员。 有关详细信息，请参阅[接收警报通知](../../azure-monitor/alerts/alerts-overview.md)。
 
 建议查看[用于存储的 Azure Monitor](../../azure-monitor/insights/storage-insights-overview.md)（预览版）。 它是 Azure Monitor 的一项功能，通过提供 Azure 存储服务性能、容量和可用性的统一视图，提供对 Azure 存储帐户的全面监视。 它不要求你启用或配置任何内容，你可以立即从预定义的交互式图表和包含的其他可视化效果中查看这些指标。
 
@@ -472,7 +472,7 @@ queueServicePoint.UseNagleAlgorithm = false;
 ### <a name="the-client-is-receiving-http-403-forbidden-messages"></a><a name="the-client-is-receiving-403-messages"></a>客户端正在接收“HTTP 403 (禁止访问)”消息
 如果客户端应用程序引发“HTTP 403(禁止)”错误，则可能的原因是客户端在发送存储请求时使用了过期的共享访问签名 (SAS)（虽然其他可能的原因包括时钟偏差、无效密钥和空标头）。 如果已过期的 SAS 密钥是原因，则你不会在服务器端存储日志记录日志数据中看到任何条目。 下表显示了存储客户端库生成的客户端日志的示例，它说明了如何出现此问题：
 
-| Source | 详细程度 | 详细程度 | 客户端请求 ID | 操作文本 |
+| 源 | 详细程度 | 详细程度 | 客户端请求 ID | 操作文本 |
 | --- | --- | --- | --- | --- |
 | Microsoft.Azure.Storage |信息 |3 |85d077ab-... |正在按位置模式 PrimaryOnly 使用主位置启动操作。 |
 | Microsoft.Azure.Storage |信息 |3 |85d077ab -… |开始向 <https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Synchronous_and_Asynchronous_Requests#Synchronous_request> 发出同步请求 |
@@ -797,7 +797,7 @@ WireShark 会在 **packetlist** 窗口中突出显示存在的任何错误。 �
 * [存储分析日志格式](/rest/api/storageservices/storage-analytics-log-format)
 
 <!--Anchors-->
-[简介]: #introduction
+[介绍]: #introduction
 [本指南的组织方式]: #how-this-guide-is-organized
 
 [监视存储服务]: #monitoring-your-storage-service

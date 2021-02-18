@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 10/21/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure certificates for Azure Stack Edge Mini R  so I can use it to transfer data to Azure.
-ms.openlocfilehash: 1e81ab61b04f9cca6aff57de1736eac25a871c97
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: c3a09242b895234c96c64d9e23449d980e47e387
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96463811"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546731"
 ---
 # <a name="tutorial-configure-certificates-vpn-encryption-for-your-azure-stack-edge-mini-r"></a>教程：配置证书, VPN, 对 Azure Stack Edge Mini R 加密
 
@@ -38,10 +38,10 @@ ms.locfileid: "96463811"
 * 已根据[安装 Azure Stack Edge Mini R](azure-stack-edge-mini-r-deploy-install.md) 中详述的内容安装了物理设备。
 
 * 如果你计划使用自己的证书：
-    - 应该使用适当的格式来准备证书，包括签名链证书。 有关证书的详细信息，请参阅[管理证书](azure-stack-edge-j-series-manage-certificates.md)
+    - 应该使用适当的格式来准备证书，包括签名链证书。 有关证书的详细信息，请参阅[管理证书](azure-stack-edge-gpu-manage-certificates.md)
 
     - 如果你的设备已在 Azure 政府、Azure 政府机密或 Azure 政府最高机密云中部署，但未在 Azure 公有云中部署，则需具备签名链证书，然后才能激活该设备。 
-    有关证书的详细信息，请参阅[管理证书](azure-stack-edge-j-series-manage-certificates.md)。
+    有关证书的详细信息，请参阅[管理证书](azure-stack-edge-gpu-manage-certificates.md)。
 
 
 ## <a name="configure-certificates-for-device"></a>为设备配置证书

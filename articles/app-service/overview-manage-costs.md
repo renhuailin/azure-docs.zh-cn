@@ -5,12 +5,12 @@ ms.custom: subject-cost-optimization
 ms.service: app-service
 ms.topic: how-to
 ms.date: 01/01/2021
-ms.openlocfilehash: 3df08705859678525526f8fef198826f58249d8b
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: ada4c1991a57c8252247c9617e097dc82cb3b4a9
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99573358"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593981"
 ---
 # <a name="plan-and-manage-costs-for-azure-app-service"></a>规划和管理 Azure App Service 的成本
 
@@ -38,7 +38,7 @@ ms.locfileid: "99573358"
 - **应用服务计划**  承载应用服务应用程序所必需的。
 - **隔离层**  应用服务环境需要 [虚拟网络](../virtual-network/index.yml) 。
 - **备份**  需要一个 [存储帐户](../storage/index.yml) 才能进行备份。
-- **诊断日志**  你可以选择 [存储帐户](../storage/index.yml) 作为日志记录选项，或与 [Azure Log Analytics](../azure-monitor/log-query/log-analytics-tutorial.md)集成。
+- **诊断日志**  你可以选择 [存储帐户](../storage/index.yml) 作为日志记录选项，或与 [Azure Log Analytics](../azure-monitor/logs/log-analytics-tutorial.md)集成。
 - **应用服务证书**  在 Azure 中购买的证书必须在 [Azure Key Vault](../key-vault/index.yml)维护。
 
 应用服务的其他成本资源 (参阅 [应用服务定价](https://azure.microsoft.com/pricing/details/app-service/)) 详细信息：
@@ -114,7 +114,7 @@ ms.locfileid: "99573358"
 > [!NOTE]
 > **Premium V3** 支持 Windows 容器和 Linux 容器。 
 
-选择所需的定价层后，应将空闲实例降到最低。 在扩展部署中，你可以在未充分利用的计算实例上浪费资金。 应该 [配置自动缩放](../azure-monitor/platform/autoscale-get-started.md)，在 **标准** 层和更高版本中可用。 通过创建横向扩展计划以及基于指标的向外扩展规则，你只需为在给定时间内真正需要的实例付费。
+选择所需的定价层后，应将空闲实例降到最低。 在扩展部署中，你可以在未充分利用的计算实例上浪费资金。 应该 [配置自动缩放](../azure-monitor/autoscale/autoscale-get-started.md)，在 **标准** 层和更高版本中可用。 通过创建横向扩展计划以及基于指标的向外扩展规则，你只需为在给定时间内真正需要的实例付费。
 
 ### <a name="azure-reservations"></a>Azure 预留
 

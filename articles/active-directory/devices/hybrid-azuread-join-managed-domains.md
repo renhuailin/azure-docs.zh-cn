@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d3da63503c80652bc8737f2cb4894e25d8bc6fc0
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 4fb45f222fcf5abd762d97d702925655db6cba60
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98893400"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100365763"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>教程：为托管域配置混合 Azure Active Directory 加入
 
@@ -82,7 +82,7 @@ ms.locfileid: "98893400"
 
 如果组织需要通过经身份验证的出站代理访问 Internet，请确保 Windows 10 计算机能够成功对出站代理进行身份验证。 由于 Windows 10 计算机使用计算机上下文运行设备注册，因此请使用计算机上下文配置出站代理身份验证。 根据配置要求使用相应的出站代理提供程序。
 
-使用[测试设备注册连接](https://gallery.technet.microsoft.com/Test-Device-Registration-3dc944c0)脚本验证设备是否能够访问系统帐户下的上述 Microsoft 资源。
+使用[测试设备注册连接](https://docs.microsoft.com/samples/azure-samples/testdeviceregconnectivity/testdeviceregconnectivity/)脚本验证设备是否能够访问系统帐户下的上述 Microsoft 资源。
 
 ## <a name="configure-hybrid-azure-ad-join"></a>配置混合 Azure AD 联接
 

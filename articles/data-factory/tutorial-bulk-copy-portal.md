@@ -1,22 +1,19 @@
 ---
 title: 使用 Azure 门户批量复制数据
 description: 使用 Azure 数据工厂和复制活动将源数据存储中的数据批量复制到目标数据存储。
-services: data-factory
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/29/2021
-ms.openlocfilehash: cb5ea99223b803435ecd8716a7a57152266878a8
-ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
+ms.openlocfilehash: 4807d1d5e97f7f95521df054d1a71f8925ac4ebb
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99223352"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100367599"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory-in-the-azure-portal"></a>在 Azure 门户中使用 Azure 数据工厂批量复制多个表
 

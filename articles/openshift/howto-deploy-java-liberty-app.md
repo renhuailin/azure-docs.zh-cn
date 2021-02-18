@@ -3,16 +3,16 @@ title: 在 Azure Red Hat OpenShift 4 群集上使用开放式自由/WebSphere �
 description: 在 Azure Red Hat OpenShift 4 群集上使用开放式自由/WebSphere 自由部署 Java 应用程序。
 author: jiangma
 ms.author: jiangma
-ms.service: container-service
+ms.service: azure-redhat-openshift
 ms.topic: conceptual
 ms.date: 10/30/2020
 keywords: java、jakartaee、javaee、microprofile、开放式-自由、websphere-、aro、openshift、red hat
-ms.openlocfilehash: 0c17c911d1eefe646785314a26b6a9b1e964ca67
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: acb448a9662daa58b5d2ff42861e238e23586b33
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96493929"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100633880"
 ---
 # <a name="deploy-a-java-application-with-open-libertywebsphere-liberty-on-an-azure-red-hat-openshift-4-cluster"></a>在 Azure Red Hat OpenShift 4 群集上使用开放式自由/WebSphere 自由部署 Java 应用程序
 
@@ -97,7 +97,7 @@ ms.locfileid: "96493929"
 1. 使用凭据登录到浏览器中的 OpenShift web 控制台 `kubeadmin` 。
 2. 导航到 "**运算符**  >  **OperatorHub** " 并搜索 "**开放式自由运算符**"。
 3. 从搜索结果中选择 " **打开自由运算符** "。
-4. 选择“安装”。
+4. 选择“安装”  。
 5. 在 popup **Create Operator 订阅** 中，检查 **群集上的所有命名空间 (默认)** **安装模式**、 **Beta 版****更新通道** 和 **自动****批准策略**：
 
    ![为开放式自由运算符创建操作员订阅](./media/howto-deploy-java-liberty-app/install-operator.png)
