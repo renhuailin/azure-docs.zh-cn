@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 5659f3b2d020a97ed2460c55283bb41f2f7606cc
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 16c18d8f86890baaf1882c532c19ff32ab2017da
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98943743"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592651"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>教程：创建和管理 Azure 预算
 
@@ -140,7 +140,7 @@ ms.locfileid: "98943743"
 
 ## <a name="trigger-an-action-group"></a>触发操作组
 
-在为订阅或资源组范围创建或编辑预算时，可以将其配置为调用操作组。 达到预算阈值时，操作组可以执行各种不同的操作。 目前只支持将操作组用于订阅和资源组范围。 有关操作组的详细信息，请参阅[在 Azure 门户中创建和管理操作组](../../azure-monitor/platform/action-groups.md)。 若要详细了解如何将基于预算的自动化与操作组配合使用，请参阅[使用 Azure 预算管理成本](../manage/cost-management-budget-scenario.md)。
+在为订阅或资源组范围创建或编辑预算时，可以将其配置为调用操作组。 达到预算阈值时，操作组可以执行各种不同的操作。 目前只支持将操作组用于订阅和资源组范围。 有关操作组的详细信息，请参阅[在 Azure 门户中创建和管理操作组](../../azure-monitor/alerts/action-groups.md)。 若要详细了解如何将基于预算的自动化与操作组配合使用，请参阅[使用 Azure 预算管理成本](../manage/cost-management-budget-scenario.md)。
 
 若要创建或更新操作组，请在创建或编辑预算时选择“管理操作组”。
 
@@ -160,7 +160,7 @@ ms.locfileid: "98943743"
 
 ![示例，显示配置有各种操作组和操作类型的警报条件](./media/tutorial-acm-create-budgets/manage-action-groups04.png)
 
-预算与操作组的集成仅适用于禁用常见警报架构的操作组。 若要详细了解如何禁用该架构，请参阅[如何启用常见警报架构？](../../azure-monitor/platform/alerts-common-schema.md#how-do-i-enable-the-common-alert-schema)
+预算与操作组的集成仅适用于禁用常见警报架构的操作组。 若要详细了解如何禁用该架构，请参阅[如何启用常见警报架构？](../../azure-monitor/alerts/alerts-common-schema.md#how-do-i-enable-the-common-alert-schema)
 
 ## <a name="create-and-edit-budgets-with-powershell"></a>通过 PowerShell 创建和编辑预算
 

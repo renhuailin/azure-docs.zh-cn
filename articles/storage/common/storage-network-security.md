@@ -9,12 +9,12 @@ ms.date: 01/27/2021
 ms.author: normesta
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 5e08af509487188245b0fad9ba2d0f490944868f
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 17a2d04fd6519dfdaf3c97c4ef56e87e162c9e9c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100371781"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591568"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>配置 Azure 存储防火墙和虚拟网络
 
@@ -60,7 +60,7 @@ Azure 存储提供分层安全模型。 利用此模型，你可以根据所用�
 
 可以通过 Azure 门户、PowerShell 或 CLIv2 管理存储帐户的默认网络访问规则。
 
-#### <a name="portal"></a>[门户](#tab/azure-portal)
+#### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. 转至要保护的存储帐户。
 
@@ -147,7 +147,7 @@ Azure 存储提供分层安全模型。 利用此模型，你可以根据所用�
 
 可以通过 Azure 门户、PowerShell 或 CLIv2 管理存储帐户的虚拟网络规则。
 
-#### <a name="portal"></a>[门户](#tab/azure-portal)
+#### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. 转至要保护的存储帐户。
 
@@ -273,7 +273,7 @@ IP 网络规则仅适用于 **公共 Internet** IP 地址。 IP 规则不允许�
 
 可以通过 Azure 门户、PowerShell 或 CLIv2 管理存储帐户的 IP 网络规则。
 
-#### <a name="portal"></a>[门户](#tab/azure-portal)
+#### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. 转至要保护的存储帐户。
 
@@ -378,7 +378,7 @@ IP 网络规则仅适用于 **公共 Internet** IP 地址。 IP 规则不允许�
 > 目前仅支持 Azure Synapse 的资源实例规则。 在接下来的几周内将提供对本文中 " [基于系统分配的托管标识受信任的访问](#trusted-access-system-assigned-managed-identity) " 一节中列出的其他 Azure 服务的支持。
 
 
-### <a name="portal"></a>[门户](#tab/azure-portal)
+### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 可以在 Azure 门户中添加或删除资源网络规则。
 
@@ -567,7 +567,7 @@ az storage account network-rule list \
 | Azure 文件同步          | Microsoft.StorageSync      | 使你能够将本地文件服务器转换为 Azure 文件共享的缓存。 可实现多站点同步、快速灾难恢复和云端备份。 [了解详细信息](../files/storage-sync-files-planning.md) |
 | Azure HDInsight          | Microsoft.HDInsight        | 为新的 HDInsight 群集预配默认文件系统的初始内容。 [了解详细信息](../../hdinsight/hdinsight-hadoop-use-blob-storage.md)。 |
 | Azure 导入导出      | Microsoft.ImportExport     | 允许使用 Azure 存储导入/导出服务将数据导入到 Azure 存储或从 Azure 存储导出数据。 [了解详细信息](../../import-export/storage-import-export-service.md)。  |
-| Azure Monitor            | Microsoft.Insights         | 允许向受保护的存储帐户写入监视数据，包括资源日志、Azure Active Directory 登录和审核日志，以及 Microsoft Intune 日志。 [了解详细信息](../../azure-monitor/platform/roles-permissions-security.md)。 |
+| Azure Monitor            | Microsoft.Insights         | 允许向受保护的存储帐户写入监视数据，包括资源日志、Azure Active Directory 登录和审核日志，以及 Microsoft Intune 日志。 [了解详细信息](../../azure-monitor/roles-permissions-security.md)。 |
 | Azure 网络         | Microsoft.Network          | 以多种方式（包括使用网络观察程序和流量分析服务）存储和分析网络流量日志。 [了解详细信息](../../network-watcher/network-watcher-nsg-flow-logging-overview.md)。 |
 | Azure Site Recovery      | Microsoft.SiteRecovery     | 使用启用了防火墙的缓存、源或目标存储帐户时，请启用复制，以实现 Azure IaaS 虚拟机的灾难恢复。  [了解详细信息](../../site-recovery/azure-to-azure-tutorial-enable-replication.md)。 |
 
@@ -613,7 +613,7 @@ az storage account network-rule list \
 
 可以通过 Azure 门户、PowerShell 或 Azure CLI v2 管理网络规则例外。
 
-#### <a name="portal"></a>[门户](#tab/azure-portal)
+#### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. 转至要保护的存储帐户。
 

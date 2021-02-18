@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 9b9a83cf71dfa7658c34c3c98f8d12a056adad0c
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: e7e8d51b8227acd033c95583d6e61d78a56d62a3
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94698778"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590280"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Azure 中 IaaS 工作负荷的安全性最佳实践
 本文介绍了 VM 和操作系统的安全最佳做法。
@@ -130,24 +130,24 @@ Microsoft 反恶意软件包括实时保护、计划扫描、恶意软件修正�
 
 安全中心可主动监视威胁，并通过“安全警报”公开潜在的威胁。 关联的威胁将合并到名为“安全事件”的单个视图中。
 
-安全中心将数据存储在 [Azure Monitor 日志](../../azure-monitor/log-query/log-query-overview.md)中。 Azure Monitor 日志提供查询语言和分析引擎，让你能够深入了解应用程序和资源的操作。 数据也是从 [Azure Monitor](../../batch/monitoring-overview.md)、管理解决方案以及安装在虚拟机（云中或本地）上的代理收集的数据。 可以通过此共享功能全面了解自己的环境。
+安全中心将数据存储在 [Azure Monitor 日志](../../azure-monitor/logs/log-query-overview.md)中。 Azure Monitor 日志提供查询语言和分析引擎，让你能够深入了解应用程序和资源的操作。 数据也是从 [Azure Monitor](../../batch/monitoring-overview.md)、管理解决方案以及安装在虚拟机（云中或本地）上的代理收集的数据。 可以通过此共享功能全面了解自己的环境。
 
 没有为 VM 实施强大安全措施的组织将意识不到未经授权的用户可能试图绕过安全控制机制。
 
 ## <a name="monitor-vm-performance"></a>监视 VM 性能
 如果 VM 进程消耗的资源多过实际所需的量，可能会造成资源滥用的问题。 VM 性能问题可能会导致服务中断，从而违反可用性安全原则。 这对于托管 IIS 或其他 Web 服务器的 VM 尤其重要，因为 CPU 或内存占用较高可能意味着遭到拒绝服务 (DoS) 攻击。 不仅要在出现问题时被动监视 VM 的访问，而且还要在正常运行期间针对基准性能进行主动监视。
 
-我们还建议使用 [Azure Monitor](../../azure-monitor/platform/data-platform.md) 来洞察资源的运行状况。 Azure Monitor 功能：
+我们还建议使用 [Azure Monitor](../../azure-monitor/data-platform.md) 来洞察资源的运行状况。 Azure Monitor 功能：
 
-- [资源诊断日志文件](../../azure-monitor/platform/platform-logs-overview.md)：监视 VM 资源并识别可能会损害性能与可用性的潜在问题。
-- [Azure 诊断扩展](../../azure-monitor/platform/diagnostics-extension-overview.md)：在 Windows VM 上提供监视和诊断功能。 在 [Azure 资源管理器模板](../../virtual-machines/extensions/diagnostics-template.md)中包含该扩展即可启用这些功能。
+- [资源诊断日志文件](../../azure-monitor/essentials/platform-logs-overview.md)：监视 VM 资源并识别可能会损害性能与可用性的潜在问题。
+- [Azure 诊断扩展](../../azure-monitor/agents/diagnostics-extension-overview.md)：在 Windows VM 上提供监视和诊断功能。 在 [Azure 资源管理器模板](../../virtual-machines/extensions/diagnostics-template.md)中包含该扩展即可启用这些功能。
 
 不监视 VM 性能的组织无法确定性能模式的某些变化是正常还是异常。 若 VM 消耗的资源超过平常，可能意味着存在来自外部资源的攻击，或者此 VM 中有不安全的进程正在运行。
 
 ## <a name="encrypt-your-virtual-hard-disk-files"></a>加密虚拟硬盘文件
 建议加密虚拟硬盘 (VHD)，以帮助保护存储中的静态启动卷和数据卷以及加密密钥和机密。
 
-[Azure 磁盘加密](./azure-disk-encryption-vms-vmss.md)用于加密 Windows 和 Linux IaaS 虚拟机磁盘。 Azure 磁盘加密使用 Windows 行业标准的 [BitLocker](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc732774(v=ws.11)) 功能和 Linux 的 [DM-CRYPT](https://en.wikipedia.org/wiki/Dm-crypt) 功能为 OS 和数据磁盘提供卷加密。 该解决方案与 [Azure Key Vault](https://azure.microsoft.com/documentation/services/key-vault/) 集成，帮助用户管理 Key Vault 订阅中的磁盘加密密钥和机密。 此解决方案还可确保虚拟机磁盘上的所有数据在 Azure 存储中静态加密。
+[Azure 磁盘加密](./azure-disk-encryption-vms-vmss.md)用于加密 Windows 和 Linux IaaS 虚拟机磁盘。 Azure 磁盘加密利用 Windows 的行业标准 [BitLocker](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc732774(v=ws.11)) 功能和 Linux 的 [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) 功能，为 OS 和数据磁盘提供卷加密。 该解决方案与 [Azure Key Vault](https://azure.microsoft.com/documentation/services/key-vault/) 集成，帮助用户管理 Key Vault 订阅中的磁盘加密密钥和机密。 此解决方案还可确保虚拟机磁盘上的所有数据在 Azure 存储中静态加密。
 
 下面是使用 Azure 磁盘加密的最佳做法：
 
@@ -172,7 +172,7 @@ Azure 磁盘加密可解决以下业务需求：
 监视和限制 VM 直接 Internet 连接。 攻击者会不断地扫描公共云 IP 范围，寻找开放管理端口，并尝试 "轻松" 的攻击，如常见密码和已知的修补漏洞。 下表列出了有助于防范这些攻击的最佳做法：
 
 **最佳做法**：防止无意中暴露网络路由和安全性。   
-**详细信息**：使用 Azure RBAC 确保只有中心网络组具有网络资源的权限。
+**详细信息**：使用 Azure RBAC 确保只有中心网络组有权访问网络资源。
 
 **最佳做法**：标识并修正允许从 "任何" 源 IP 地址进行访问的公开 vm。   
 **详细信息**：使用 Azure 安全中心。 如果你的任何网络安全组有一个或多个允许从 "任何" 源 IP 地址进行访问的入站规则，安全中心将建议你通过面向 internet 的终结点限制访问。 安全中心将建议编辑这些入站规则，以对实际需要访问的源 IP 地址[限制访问](../../security-center/security-center-network-recommendations.md)。

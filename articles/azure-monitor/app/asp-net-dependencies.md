@@ -4,20 +4,20 @@ description: 使用 Application Insights 监视来自本地或 Microsoft Azure W
 ms.topic: conceptual
 ms.date: 08/26/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: df13042656aa077b30bf144aab0a47d9fc0a0662
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 05b6c29b121cbf42cf0ebe12b2879e50735db7ea
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91263923"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100651997"
 ---
 # <a name="dependency-tracking-in-azure-application-insights"></a>在 Azure Application Insights 中跟踪依赖项 
 
-*依赖项*是应用程序调用的一个组件。 它通常是使用 HTTP、数据库或文件系统调用的服务。 [Application Insights](./app-insights-overview.md) 可以度量依赖项调用的持续时间、调用结果是否失败，以及依赖项名称等附加信息。 可以调查特定的依赖项调用，并将其与请求和异常相关联。
+依赖项是由应用程序调用的组件。 它通常是使用 HTTP、数据库或文件系统调用的服务。 [Application Insights](./app-insights-overview.md) 可以度量依赖项调用的持续时间、调用结果是否失败，以及依赖项名称等附加信息。 可以调查特定的依赖项调用，并将其与请求和异常相关联。
 
 ## <a name="automatically-tracked-dependencies"></a>自动跟踪的依赖项
 
-适用于 .NET 的 Application Insights Sdk 和 .NET Core 附带了 `DependencyTrackingTelemetryModule` ，这是自动收集依赖项的遥测模块。 根据链接的官方文档进行配置后，将自动为 [ASP.NET](./asp-net.md) 和 [ASP.NET Core](./asp-net-core.md) 应用程序启用此依赖项收集功能。`DependencyTrackingTelemetryModule` 作为[此](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector/) NuGet 包附送，使用 NuGet 包 `Microsoft.ApplicationInsights.Web` 或 `Microsoft.ApplicationInsights.AspNetCore` 时会自动打开它。
+适用于 .NET 和 .NET Core 的 Application Insights SDK 随附了 `DependencyTrackingTelemetryModule`：一个自动收集依赖项的遥测模块。 根据链接的官方文档进行配置后，将自动为 [ASP.NET](./asp-net.md) 和 [ASP.NET Core](./asp-net-core.md) 应用程序启用此依赖项收集功能。`DependencyTrackingTelemetryModule` 作为[此](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector/) NuGet 包附送，使用 NuGet 包 `Microsoft.ApplicationInsights.Web` 或 `Microsoft.ApplicationInsights.AspNetCore` 时会自动打开它。
 
  `DependencyTrackingTelemetryModule` 目前会自动跟踪以下依赖项：
 
@@ -35,7 +35,7 @@ ms.locfileid: "91263923"
 
 ## <a name="setup-automatic-dependency-tracking-in-console-apps"></a>在控制台应用中设置自动依赖项跟踪
 
-若要从 .NET 控制台应用自动跟踪依赖项，请安装 NuGet 包 `Microsoft.ApplicationInsights.DependencyCollector` ，并按 `DependencyTrackingTelemetryModule` 如下所示进行初始化：
+要从 .NET 控制台应用自动跟踪依赖项，请安装 NuGet 包 `Microsoft.ApplicationInsights.DependencyCollector`，并按如下所示初始化 `DependencyTrackingTelemetryModule`：
 
 ```csharp
     DependencyTrackingTelemetryModule depModule = new DependencyTrackingTelemetryModule();
@@ -109,9 +109,10 @@ services.ConfigureTelemetryModule<DependencyTrackingTelemetryModule>((module, o)
 除了上述平台特定的步骤之外，还必须通过使用以下命令修改 applicationInsights.config 文件来显式选择启用 SQL 命令集合：
 
 ```xml
-<Add Type="Microsoft.ApplicationInsights.DependencyCollector.DependencyTrackingTelemetryModule, Microsoft.AI.DependencyCollector">
-<EnableSqlCommandTextInstrumentation>true</EnableSqlCommandTextInstrumentation>
-</Add>
+<TelemetryModules>
+  <Add Type="Microsoft.ApplicationInsights.DependencyCollector.DependencyTrackingTelemetryModule, Microsoft.AI.DependencyCollector">
+    <EnableSqlCommandTextInstrumentation>true</EnableSqlCommandTextInstrumentation>
+  </Add>
 ```
 
 在上述情况下，验证是否已正确安装该检测引擎的适当方法是验证收集的 `DependencyTelemetry` 的 SDK 版本是否为“rddp”。 “rdddsd”或“rddf”表示依赖项是通过 DiagnosticSource 或 EventSource 回调收集的，因此不会捕获完整的 SQL 查询。
@@ -132,7 +133,7 @@ services.ConfigureTelemetryModule<DependencyTrackingTelemetryModule>((module, o)
 
 打开“性能”选项卡，导航到顶部的操作旁边的“依赖项”选项卡。
 
-单击整个选项卡下面的某个**依赖项名称**。 选择一个依赖项后，右侧会显示该依赖项的持续时间分布图。
+单击整个选项卡下面的某个 **依赖项名称**。 选择一个依赖项后，右侧会显示该依赖项的持续时间分布图。
 
 ![在“性能”选项卡中，单击顶部的“依赖项”选项卡，然后单击图表中的某个依赖项名称](./media/asp-net-dependencies/2-perf-dependencies.png)
 
@@ -199,7 +200,7 @@ services.ConfigureTelemetryModule<DependencyTrackingTelemetryModule>((module, o)
 
 * 失败依赖项调用的“success”字段设置为 False。 `DependencyTrackingTelemetryModule` 不会报告 `ExceptionTelemetry`。 [此处](data-model-dependency-telemetry.md)介绍了依赖项的完整数据模型。
 
-### <a name="how-do-i-calculate-ingestion-latency-for-my-dependency-telemetry"></a>*如何实现计算依赖项遥测的引入延迟？*
+### <a name="how-do-i-calculate-ingestion-latency-for-my-dependency-telemetry"></a>如何计算依赖项遥测的引入延迟？
 
 ```kusto
 dependencies
@@ -207,9 +208,9 @@ dependencies
 | extend TimeIngested = ingestion_time()
 ```
 
-### <a name="how-do-i-determine-the-time-the-dependency-call-was-initiated"></a>*如何实现确定启动依赖项调用的时间？*
+### <a name="how-do-i-determine-the-time-the-dependency-call-was-initiated"></a>如何确定启动依赖项调用的时间？
 
-在 "Log Analytics 查询" 视图中， `timestamp` 表示启动 TrackDependency ( # A1 调用的时刻，这是在接收依赖项调用响应之后立即发生的。 若要计算依赖项调用的开始时间，您需要执行 `timestamp` 并减去 `duration` 依赖项调用的记录。
+在 Log Analytics“查询”视图中，`timestamp` 表示启动 TrackDependency() 调用的时刻，该时刻是在收到依赖项调用响应后立即发生的。 若要计算依赖项调用的开始时间，需要获取 `timestamp`，然后减去记录的依赖项调用的 `duration`。
 
 ## <a name="open-source-sdk"></a>开源 SDK
 与每个 Application Insights SDK 一样，依赖项收集模块也是开源的。 请在[官方 GitHub 存储库](https://github.com/Microsoft/ApplicationInsights-dotnet-server)中阅读和贡献代码，或者报告问题。

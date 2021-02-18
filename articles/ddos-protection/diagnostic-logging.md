@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 42d4467a6441e517ef3194f701eb47e7e68505b1
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: cc5b3b85d6d13fda532da0993fa7f733126b8eae
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99806301"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591876"
 ---
 # <a name="view-and-configure-ddos-diagnostic-logging"></a>查看和配置 DDoS 诊断日志记录
 
@@ -51,15 +51,15 @@ Azure DDoS 防护标准通过 DDoS 攻击分析提供详细的攻击见解和可
 3. 在 " **设置**" 下，选择 " **诊断设置**"。
 4. 选择包含要记录的公共 IP 地址的订阅和资源组。
 5. 为 "**资源类型**" 选择 "**公共 ip 地址**"，然后选择要为其启用日志的特定公共 ip 地址。
-6. 选择“添加诊断设置”。  在 " **类别详细信息**" 下，选择所需的以下任意选项，然后选择 " **保存**"。
+6. 选择“添加诊断设置”。 在 " **类别详细信息**" 下，选择所需的以下任意选项，然后选择 " **保存**"。
 
     ![DDoS 诊断设置](./media/ddos-attack-telemetry/ddos-diagnostic-settings.png)
 
 7. 在 " **目标详细信息**" 下，根据需要选择以下任意选项：
 
-    - **存档到存储帐户**：将数据写入 Azure 存储帐户。 若要了解有关此选项的详细信息，请参阅 [存档资源日志](../azure-monitor/platform/resource-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#send-to-azure-storage)。
-    - **流式传输到事件中心**：允许日志接收器使用 Azure 事件中心选取日志。 事件中心将启用与 Splunk 或其他 SIEM 系统的集成。 若要了解有关此选项的详细信息，请参阅 [将资源日志流式传输到事件中心](../azure-monitor/platform/resource-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#send-to-azure-event-hubs)。
-    - **发送到 Log Analytics**：将日志写入 Azure Monitor 服务。 若要了解有关此选项的详细信息，请参阅 [收集用于 Azure Monitor 日志的日志](../azure-monitor/platform/resource-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#send-to-log-analytics-workspace)。
+    - **存档到存储帐户**：将数据写入 Azure 存储帐户。 若要了解有关此选项的详细信息，请参阅 [存档资源日志](../azure-monitor/essentials/resource-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#send-to-azure-storage)。
+    - **流式传输到事件中心**：允许日志接收器使用 Azure 事件中心选取日志。 事件中心将启用与 Splunk 或其他 SIEM 系统的集成。 若要了解有关此选项的详细信息，请参阅 [将资源日志流式传输到事件中心](../azure-monitor/essentials/resource-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#send-to-azure-event-hubs)。
+    - **发送到 Log Analytics**：将日志写入 Azure Monitor 服务。 若要了解有关此选项的详细信息，请参阅 [收集用于 Azure Monitor 日志的日志](../azure-monitor/essentials/resource-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#send-to-log-analytics-workspace)。
 
 ### <a name="log-schemas"></a>日志架构
 
@@ -73,12 +73,12 @@ Azure DDoS 防护标准通过 DDoS 攻击分析提供详细的攻击见解和可
 | **ResourceId** | 公共 IP 地址的资源 ID。 |
 | **类别** | 对于通知，这将为 `DDoSProtectionNotifications` 。|
 | **ResourceGroup** | 包含公共 IP 地址和虚拟网络的资源组。 |
-| **SubscriptionId** | DDoS 保护计划订阅 ID。 |
+| **订阅** | DDoS 保护计划订阅 ID。 |
 | **资源** | 公共 IP 地址的名称。 |
 | **ResourceType** | 这将始终为 `PUBLICIPADDRESS` 。 |
 | **OperationName** | 对于通知，这将为 `DDoSProtectionNotifications` 。  |
 | **消息** | 攻击的详细信息。 |
-| **类型** | 通知的类型。 可能的值包括 `MitigationStarted` 。 `MitigationStopped`. |
+| 类型 | 通知的类型。 可能的值包括 `MitigationStarted` 。 `MitigationStopped`. |
 | **PublicIpAddress** | 公共 IP 地址。 |
 
 # <a name="ddosmitigationflowlogs"></a>[DDoSMitigationFlowLogs](#tab/DDoSMitigationFlowLogs)
@@ -89,7 +89,7 @@ Azure DDoS 防护标准通过 DDoS 攻击分析提供详细的攻击见解和可
 | **ResourceId** | 公共 IP 地址的资源 ID。 |
 | **类别** | 对于流日志，这将为 `DDoSMitigationFlowLogs` 。|
 | **ResourceGroup** | 包含公共 IP 地址和虚拟网络的资源组。 |
-| **SubscriptionId** | DDoS 保护计划订阅 ID。 |
+| **订阅** | DDoS 保护计划订阅 ID。 |
 | **资源** | 公共 IP 地址的名称。 |
 | **ResourceType** | 这将始终为 `PUBLICIPADDRESS` 。 |
 | **OperationName** | 对于流日志，这将为 `DDoSMitigationFlowLogs` 。 |
@@ -108,7 +108,7 @@ Azure DDoS 防护标准通过 DDoS 攻击分析提供详细的攻击见解和可
 | **ResourceId** | 公共 IP 地址的资源 ID。 |
 | **类别** | 对于通知，这将为 `DDoSProtectionNotifications` 。|
 | **ResourceGroup** | 包含公共 IP 地址和虚拟网络的资源组。 |
-| **SubscriptionId** | DDoS 保护计划订阅 ID。 |
+| **订阅** | DDoS 保护计划订阅 ID。 |
 | **资源** | 公共 IP 地址的名称。 |
 | **ResourceType** | 这将始终为 `PUBLICIPADDRESS` 。 |
 | **OperationName** | 对于缓解报告，这将为 `DDoSMitigationReports` 。 |
@@ -130,7 +130,7 @@ Azure DDoS 防护标准通过 DDoS 攻击分析提供详细的攻击见解和可
 
 此 [模板](https://aka.ms/ddosdiaglogs) 创建一个 Azure 策略定义，用于在定义的作用域内的所有公共 IP 日志上自动启用诊断日志记录。
 
-[![“部署到 Azure”](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Network-Security%2Fmaster%2FAzure%2520DDoS%2520Protection%2FEnable%2520Diagnostic%2520Logging%2FAzure%2520Policy%2FDDoSLogs.json)
+[![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Network-Security%2Fmaster%2FAzure%2520DDoS%2520Protection%2FEnable%2520Diagnostic%2520Logging%2FAzure%2520Policy%2FDDoSLogs.json)
 
 ## <a name="view-log-data-in-workbooks"></a>查看工作簿中的日志数据
 
@@ -144,11 +144,11 @@ Azure DDoS 防护标准通过 DDoS 攻击分析提供详细的攻击见解和可
 
 可以使用 [此 Azure 资源管理器 (ARM) 模板](https://aka.ms/ddosworkbook) 来部署攻击分析工作簿。 利用此工作簿，可以可视化多个可筛选面板中的攻击数据，轻松了解面临的威胁。 
 
-[![“部署到 Azure”](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Network-Security%2Fmaster%2FAzure%2520DDoS%2520Protection%2FAzure%2520DDoS%2520Protection%2520Workbook%2FAzureDDoSWorkbook_ARM.json)
+[![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Network-Security%2Fmaster%2FAzure%2520DDoS%2520Protection%2FAzure%2520DDoS%2520Protection%2520Workbook%2FAzureDDoSWorkbook_ARM.json)
 
 ![DDoS 保护工作簿](./media/ddos-attack-telemetry/ddos-attack-analytics-workbook.png)
 
-## <a name="validate-and-test"></a>验证和测试
+## <a name="validate-and-test"></a>验证并测试
 
 若要模拟 DDoS 攻击来验证日志，请参阅 [验证 ddos 检测](test-through-simulations.md)。
 

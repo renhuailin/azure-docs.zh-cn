@@ -11,17 +11,17 @@ author: danimir
 ms.author: danil
 ms.reviewer: wiassaf, sstein
 ms.date: 1/14/2021
-ms.openlocfilehash: 3b57172daeffd1766da456e56cb5e445427a4858
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 17ea6716f090144e8dfef16721bfb69dc23e9912
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98220382"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589329"
 ---
 # <a name="troubleshoot-azure-sql-database-and-azure-sql-managed-instance-performance-issues-with-intelligent-insights"></a>使用智能见解排查 Azure SQL 数据库和 Azure SQL 托管实例的性能问题
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-本页提供有关通过[智能见解](intelligent-insights-overview.md)资源日志检测到的 Azure SQL 数据库和 Azure SQL 托管实例性能问题的信息。 可以将指标和资源日志流式传输到 [Azure Monitor 日志](../../azure-monitor/insights/azure-sql.md)、 [azure 事件中心](../../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs)、 [azure 存储](metrics-diagnostic-telemetry-logging-streaming-export-configure.md#stream-into-azure-storage)或第三方解决方案，以用于自定义 DevOps 警报和报告功能。
+本页提供有关通过[智能见解](intelligent-insights-overview.md)资源日志检测到的 Azure SQL 数据库和 Azure SQL 托管实例性能问题的信息。 可以将指标和资源日志流式传输到 [Azure Monitor 日志](../../azure-monitor/insights/azure-sql.md)、 [azure 事件中心](../../azure-monitor/essentials/resource-logs.md#send-to-azure-event-hubs)、 [azure 存储](metrics-diagnostic-telemetry-logging-streaming-export-configure.md#stream-into-azure-storage)或第三方解决方案，以用于自定义 DevOps 警报和报告功能。
 
 > [!NOTE]
 > 有关使用智能见解的快速性能故障排除指南，请参阅本文档中的 [建议的故障排除流程](intelligent-insights-troubleshoot-performance.md#recommended-troubleshooting-flow) 流程图。
@@ -129,8 +129,8 @@ Azure SQL 数据库上的资源通常称为 [DTU](service-tiers-dtu.md) 或 [vCo
 缓解问题的最简单安全方法是保持较短的事务运行时间，并减少开销最高的查询的锁占用时间。 可以将大批操作分成小批操作。 合理的做法是尽量提高查询效率，减少查询时的锁定时间。 减少大型扫描，因为这些扫描会增大死锁的可能性，并对数据库总体性能造成负面影响。 对于识别出的导致锁定的查询，可以通过创建新索引或将列添加到现有索引来避免表扫描。
 
 有关更多建议，请参阅：
-- [了解和解决 Azure SQL 阻止问题](understand-resolve-blocking.md)
-- [如何解决 SQL Server 中的锁升级导致的阻塞问题](https://support.microsoft.com/help/323630/how-to-resolve-blocking-problems-that-are-caused-by-lock-escalation-in)
+- [了解并解决 Azure SQL 阻塞问题](understand-resolve-blocking.md)
+- [如何解决 SQL Server 中的锁升级造成的阻塞问题](https://support.microsoft.com/help/323630/how-to-resolve-blocking-problems-that-are-caused-by-lock-escalation-in)
 
 ## <a name="increased-maxdop"></a>增加的 MAXDOP
 
@@ -335,4 +335,4 @@ Intelligent Insights 通常需要花费一小时来针对性能问题执行根�
 - 了解 [Intelligent Insights](intelligent-insights-overview.md) 概念。
 - 使用[智能见解性能诊断日志](intelligent-insights-use-diagnostics-log.md)。
 - 使用 [Azure SQL Analytics](../../azure-monitor/insights/azure-sql.md)进行监视。
-- 了解如何[从 Azure 资源收集和使用日志数据](../../azure-monitor/platform/platform-logs-overview.md)。
+- 了解如何[从 Azure 资源收集和使用日志数据](../../azure-monitor/essentials/platform-logs-overview.md)。

@@ -6,12 +6,12 @@ author: vineetvikram
 ms.author: vivikram
 ms.manager: abhemraj
 ms.date: 09/15/2020
-ms.openlocfilehash: 378a85ed77a6eedeb928dee541046db1909da553
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: f5304e7634cfb7b4d5c3c05036c0606ba03295ae
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99491985"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589060"
 ---
 # <a name="dependency-analysis"></a>依赖项分析
 
@@ -34,7 +34,7 @@ ms.locfileid: "99491985"
 **选项** | **详细信息** | **公有云** | **Azure Government**
 ----  |---- | ---- 
 **无代理** | 使用 vSphere Api 轮询 VMware Vm 的数据。<br/><br/> 不需要在 Vm 上安装代理。<br/><br/> 对于 VMware Vm，此选项目前为预览版。 | 。 | 。
-**基于代理的分析** | 使用 Azure Monitor 中的 [服务映射解决方案](../azure-monitor/insights/service-map.md) 来启用依赖项可视化和分析。<br/><br/> 需要在要分析的每台本地计算机上安装代理。 | 支持 | 不支持。
+**基于代理的分析** | 使用 Azure Monitor 中的 [服务映射解决方案](../azure-monitor/vm/service-map.md) 来启用依赖项可视化和分析。<br/><br/> 需要在要分析的每台本地计算机上安装代理。 | 支持 | 不支持。
 
 
 ## <a name="agentless-analysis"></a>无代理分析
@@ -58,7 +58,7 @@ ms.locfileid: "99491985"
 
 ## <a name="agent-based-analysis"></a>基于代理的分析
 
-对于基于代理的分析，服务器评估使用 Azure Monitor 中的 [服务映射](../azure-monitor/insights/service-map.md) 解决方案。 在要分析的每台计算机上安装 [Microsoft Monitoring Agent/Log Analytics 代理](../azure-monitor/platform/agents-overview.md#log-analytics-agent) 和 [依赖项代理](../azure-monitor/platform/agents-overview.md#dependency-agent)。
+对于基于代理的分析，服务器评估使用 Azure Monitor 中的 [服务映射](../azure-monitor/vm/service-map.md) 解决方案。 在要分析的每台计算机上安装 [Microsoft Monitoring Agent/Log Analytics 代理](../azure-monitor/agents/agents-overview.md#log-analytics-agent) 和 [依赖项代理](../azure-monitor/agents/agents-overview.md#dependency-agent)。
 
 ### <a name="dependency-data"></a>依赖关系数据
 
@@ -78,7 +78,7 @@ ms.locfileid: "99491985"
 --- | --- | ---
 **支持** | 仅适用于 VMware Vm 的预览。 [查看](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless) 支持的操作系统。 | 公开上市 (GA) 。
 **代理** | 你要分析的计算机上无需代理。 | 需要在要分析的每台本地计算机上安装代理。
-**Log Analytics** | 不需要。 | Azure Migrate 使用[Azure Monitor 日志](../azure-monitor/log-query/log-query-overview.md)中的[服务映射](../azure-monitor/insights/service-map.md)解决方案进行依赖项分析。<br/><br/> 将 Log Analytics 工作区与 Azure Migrate 项目关联。 工作区必须位于美国东部、东南亚或欧洲西部区域。 工作区必须位于[支持服务映射](../azure-monitor/insights/vminsights-configure-workspace.md#supported-regions)的区域中。
+**Log Analytics** | 不需要。 | Azure Migrate 使用[Azure Monitor 日志](../azure-monitor/logs/log-query-overview.md)中的[服务映射](../azure-monitor/vm/service-map.md)解决方案进行依赖项分析。<br/><br/> 将 Log Analytics 工作区与 Azure Migrate 项目关联。 工作区必须位于美国东部、东南亚或欧洲西部区域。 工作区必须位于[支持服务映射](../azure-monitor/vm/vminsights-configure-workspace.md#supported-regions)的区域中。
 **Process** | 捕获 TCP 连接数据。 发现后，它会按五分钟的间隔收集数据。 | 计算机上安装的服务映射代理收集有关 TCP 进程的数据以及每个进程的入站/出站连接。
 **数据** | 源计算机服务器名称、进程、应用程序名称。<br/><br/> 目标计算机服务器名称、进程、应用程序名称和端口。 | 源计算机服务器名称、进程、应用程序名称。<br/><br/> 目标计算机服务器名称、进程、应用程序名称和端口。<br/><br/> 为 Log Analytics 查询收集和提供连接、延迟和数据传输信息的数目。 
 **可视化** | 可在一小时到30天内查看单服务器的依赖关系图。 | 单个服务器的依赖关系图。<br/><br/> 一组服务器的依赖关系图。<br/><br/>  仅可在一小时内查看地图。<br/><br/> 在映射视图中添加和删除组中的服务器。

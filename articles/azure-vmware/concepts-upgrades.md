@@ -2,17 +2,17 @@
 title: 概念-私有云更新和升级
 description: 了解 Azure VMware 解决方案中的关键升级过程和功能。
 ms.topic: conceptual
-ms.date: 02/02/2021
-ms.openlocfilehash: 78d4b566aa9156cdddfdcd69b50ebfd1d10aa784
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.date: 02/16/2021
+ms.openlocfilehash: d93453cbf6ad744844a04cd298cc18ad181cc0b0
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100006694"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100634986"
 ---
 # <a name="azure-vmware-solution-private-cloud-updates-and-upgrades"></a>Azure VMware 解决方案私有云更新和升级
 
-Azure VMware 解决方案私有云的主要好处之一是为你维护平台。 平台维护包括对 VMware 验证的软件包的自动更新，可帮助确保使用最新版本的经验证的 Azure VMware 解决方案私有云软件。
+Azure VMware 解决方案私有云的一个优点是为你维护平台。 维护包括对 VMware 验证的软件包的自动更新，以帮助确保使用最新版本的 Azure VMware 解决方案私有云软件。
 
 具体而言，Azure VMware 解决方案私有云包括：
 
@@ -22,7 +22,7 @@ Azure VMware 解决方案私有云的主要好处之一是为你维护平台。 
 - 适用于 vSphere 工作负荷 Vm 的 VMware vSAN 数据存储  
 - 用于工作负荷移动性的 VMware HCX  
 
-除了这些组件以外，Azure VMware 解决方案私有云还包括 Azure 是中的资源，用于连接和操作私有云。 Azure VMware 解决方案持续监视是和 VMware 组件的运行状况。 当 Azure VMware 解决方案检测到故障时，它将采取措施来修复失败的组件。 
+Azure VMware 解决方案私有云还包括 Azure 是中的资源，用于连接和运行私有云。 Azure VMware 解决方案持续监视是和 VMware 组件的运行状况。 当 Azure VMware 解决方案检测到故障时，它将采取措施来修复失败的组件。 
 
 ## <a name="what-components-get-updated"></a>哪些组件已更新？   
 
@@ -46,12 +46,12 @@ Azure VMware 解决方案将以下类型的更新应用于 VMware 组件：
 
 ## <a name="vmware-appliance-backup"></a>VMware 设备备份 
 
-除了进行更新外，Azure VMware 解决方案还会对这些 VMware 组件进行配置备份：
+Azure VMware 解决方案还采用以下 VMware 组件的配置备份：
 
 - vCenter Server 
 - NSX-T 管理器 
 
-在出现故障时，Azure VMware 解决方案可以从配置备份还原这些设置。 
+发生故障时，Azure VMware 解决方案可以从配置备份还原这些组件。 
 
 有关 VMware 软件版本的详细信息，请参阅 [私有云和群集概念文章](concepts-private-clouds-clusters.md) 和 [常见问题解答](faq.yml)。
 

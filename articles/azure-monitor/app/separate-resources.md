@@ -3,12 +3,12 @@ title: 如何设计 Application Insights 部署 - 一个资源与多个资源？
 description: 为开发、测试和生产戳记直接遥测不同的资源。
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: 49e9b8920af7333e0d95e23e6e5cf0828d448609
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 3964cddcf27a4b2c7397b508ccb3cc8928bd04ad
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95536347"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589535"
 ---
 # <a name="how-many-application-insights-resources-should-i-deploy"></a>应该部署多少个 Application Insights 资源
 
@@ -26,7 +26,7 @@ ms.locfileid: "95536347"
 
 -   对于一起部署的应用程序组件。 通常由单个团队开发，由同一组 DevOps/ITOps 用户管理。
 -   如果有必要在默认情况下聚合所有关键绩效指标 (KPI)（如响应持续时间、仪表板中的故障率等）（可以选择按指标资源管理器体验中的角色名称划分）。
--   如果不需要管理基于 Azure 角色的访问控制 (Azure RBAC) 在应用程序组件之间有所不同。
+-   如果不需要在应用程序组件之间以不同方式管理 Azure 基于角色的访问控制 (Azure RBAC)。
 -   如果不需要组件之间不同的指标警报条件。
 -   如果不需要在组件之间以不同的方式管理连续导出。
 -   如果不需要在组件之间以不同的方式管理帐单/配额。
@@ -86,7 +86,7 @@ var appInsights = window.appInsights || function(config){ ...
 ## <a name="filter-on-build-number"></a>按版本号筛选
 发布新应用版本时，我们希望能够将不同版本的遥测数据分开。
 
-可以设置“应用程序版本”属性，这样便可以筛选[搜索](../../azure-monitor/app/diagnostic-search.md)和[指标资源管理器](../../azure-monitor/platform/metrics-charts.md)结果。
+可以设置“应用程序版本”属性，这样便可以筛选[搜索](../../azure-monitor/app/diagnostic-search.md)和[指标资源管理器](../../azure-monitor/essentials/metrics-charts.md)结果。
 
 可通过多种不同的方法设置“应用程序版本”属性。
 
@@ -132,7 +132,7 @@ var appInsights = window.appInsights || function(config){ ...
 </PropertyGroup>
 ```
 
-当它具有内部信息时，Application Insights Web 模块自动将 **应用程序版本** 作为属性添加到每个遥测项。 这样，便可以在执行[诊断搜索](../../azure-monitor/app/diagnostic-search.md)或[浏览指标](../../azure-monitor/platform/metrics-charts.md)时按版本进行筛选。
+当它具有内部信息时，Application Insights Web 模块自动将 **应用程序版本** 作为属性添加到每个遥测项。 这样，便可以在执行[诊断搜索](../../azure-monitor/app/diagnostic-search.md)或[浏览指标](../../azure-monitor/essentials/metrics-charts.md)时按版本进行筛选。
 
 但请注意，内部版本号只能由 Microsoft 生成引擎生成，而不能由 Visual Studio 中的开发人员生成引擎生成。
 

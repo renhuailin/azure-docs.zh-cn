@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: wiassaf, sstein
 ms.date: 04/06/2020
-ms.openlocfilehash: 999bb83af6937d4a7b3d7ee8207e2fd689a23d35
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 1de2c1ff02c799d04f2ab2c81e83dda5001a531f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96490799"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592730"
 ---
 # <a name="configure-streaming-export-of-azure-sql-database-and-sql-managed-instance-diagnostic-telemetry"></a>配置 Azure SQL 数据库和 Azure SQL 托管实例诊断遥测的流式导出
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -58,17 +58,17 @@ ms.locfileid: "96490799"
 
 - **[Log Analytics 工作区](#stream-into-sql-analytics)**：
 
-  流式传输到 [Log Analytics 工作区](../../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace) 的数据可由 [SQL Analytics](../../azure-monitor/insights/azure-sql.md)使用。 SQL Analytics 是一种仅限云的监视解决方案，提供对数据库的智能监视，其中包括性能报告、警报和缓解建议。 可以使用收集的其他监视数据对流式传输到 Log Analytics 工作区的数据进行分析，还可以利用其他 Azure Monitor 功能，如警报和可视化效果
+  流式传输到 [Log Analytics 工作区](../../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace) 的数据可由 [SQL Analytics](../../azure-monitor/insights/azure-sql.md)使用。 SQL Analytics 是一种仅限云的监视解决方案，提供对数据库的智能监视，其中包括性能报告、警报和缓解建议。 可以使用收集的其他监视数据对流式传输到 Log Analytics 工作区的数据进行分析，还可以利用其他 Azure Monitor 功能，如警报和可视化效果
 - **[Azure 事件中心](#stream-into-event-hubs)** ：
 
-  将数据流式传输到 [Azure 事件中心](../../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs)可提供以下功能：
+  将数据流式传输到 [Azure 事件中心](../../azure-monitor/essentials/resource-logs.md#send-to-azure-event-hubs)可提供以下功能：
 
   - 将日志流式传输到第三方日志记录和遥测系统：将所有指标和资源日志流式传输到单个事件中心，以通过管道将日志数据传送到第三方 SIEM 或日志分析工具。
   - **生成自定义遥测和日志记录平台**：可利用事件中心高度可缩放的发布-订阅功能，灵活地将指标和资源日志引入到自定义遥测平台。 有关详细信息，请参阅 [Designing and Sizing a Global Scale Telemetry Platform on Azure Event Hubs](https://azure.microsoft.com/documentation/videos/build-2015-designing-and-sizing-a-global-scale-telemetry-platform-on-azure-event-Hubs/)（在 Azure 事件中心设计全球规模的遥测平台并设置其大小）。
   - **通过将数据流式传输到 Power BI 来查看服务运行状况**：使用事件中心、流分析和 Power BI 将诊断数据转换为 Azure 服务的近乎实时见解。 有关此解决方案的详细信息，请参阅 [流分析和 Power BI：用于流式处理数据的实时分析仪表板](../../stream-analytics/stream-analytics-power-bi-dashboard.md) 。
 - **[Azure 存储](#stream-into-azure-storage)** ：
 
-  将数据流式传输到 [Azure 存储](../../azure-monitor/platform/resource-logs.md#send-to-azure-storage)可以存档大量诊断遥测数据，并且成本只是前两种流式传输选项的一小部分。
+  将数据流式传输到 [Azure 存储](../../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)可以存档大量诊断遥测数据，并且成本只是前两种流式传输选项的一小部分。
 
 流式传输到这些目标之一的诊断遥测数据可用于度量资源利用率和查询执行统计信息，以便更轻松地监视性能。
 
@@ -89,7 +89,7 @@ ms.locfileid: "96490799"
 
 ## <a name="configure-the-streaming-export-of-diagnostic-telemetry"></a>配置诊断遥测数据的流式导出
 
-可以使用 Azure 门户中的“诊断设置”菜单来启用和配置诊断遥测数据的流式传输。 此外，还可以使用 PowerShell、Azure CLI、[REST API](/rest/api/monitor/diagnosticsettings) 和[资源管理器模板](../../azure-monitor/samples/resource-manager-diagnostic-settings.md)来配置诊断遥测数据的流式传输。 可设置以下目标来流式传输诊断遥测数据：Azure 存储、Azure 事件中心和 Azure Monitor 日志。
+可以使用 Azure 门户中的“诊断设置”菜单来启用和配置诊断遥测数据的流式传输。 此外，还可以使用 PowerShell、Azure CLI、[REST API](/rest/api/monitor/diagnosticsettings) 和[资源管理器模板](../../azure-monitor/essentials/resource-manager-diagnostic-settings.md)来配置诊断遥测数据的流式传输。 可设置以下目标来流式传输诊断遥测数据：Azure 存储、Azure 事件中心和 Azure Monitor 日志。
 
 > [!IMPORTANT]
 > 默认不会启用诊断遥测数据的流式导出。
@@ -267,7 +267,7 @@ ms.locfileid: "96490799"
   (Get-AzOperationalInsightsWorkspace).ResourceId
   ```
 
-可以结合这些参数启用多个输出选项。
+可以组合这些参数，以启用多个输出选项。
 
 **配置多个 Azure 资源**
 
@@ -335,7 +335,7 @@ Azure SQL 数据库和 Azure SQL 托管实例度量值以及流式传输到 Log 
 2. 在解决方案中创建 Log Analytics 工作区。
 3. 将数据库配置为将诊断遥测流式传输到工作区中。
 
-您可以使用 Azure 门户的 "诊断设置" 选项卡中的内置 " **发送到 Log Analytics** " 选项配置此诊断遥测的流式导出。 还可以通过 [PowerShell cmdlet](metrics-diagnostic-telemetry-logging-streaming-export-configure.md?tabs=azure-powershell#configure-the-streaming-export-of-diagnostic-telemetry)、 [Azure CLI](metrics-diagnostic-telemetry-logging-streaming-export-configure.md?tabs=azure-cli#configure-the-streaming-export-of-diagnostic-telemetry)、 [Azure Monitor REST API](/rest/api/monitor/diagnosticsettings)或 [资源管理器模板](../../azure-monitor/samples/resource-manager-diagnostic-settings.md)使用诊断设置，启用到 Log Analytics 工作区的流式传输。
+您可以使用 Azure 门户的 "诊断设置" 选项卡中的内置 " **发送到 Log Analytics** " 选项配置此诊断遥测的流式导出。 还可以通过 [PowerShell cmdlet](metrics-diagnostic-telemetry-logging-streaming-export-configure.md?tabs=azure-powershell#configure-the-streaming-export-of-diagnostic-telemetry)、 [Azure CLI](metrics-diagnostic-telemetry-logging-streaming-export-configure.md?tabs=azure-cli#configure-the-streaming-export-of-diagnostic-telemetry)、 [Azure Monitor REST API](/rest/api/monitor/diagnosticsettings)或 [资源管理器模板](../../azure-monitor/essentials/resource-manager-diagnostic-settings.md)使用诊断设置，启用到 Log Analytics 工作区的流式传输。
 
 ### <a name="create-an-azure-sql-analytics-resource"></a>创建 Azure SQL Analytics 资源
 
@@ -428,7 +428,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 ## <a name="metrics-and-logs-available"></a>可用的指标和日志
 
-本文的本部分介绍了如何监视适用于单一数据库、共用数据库、弹性池、托管实例和实例数据库的遥测数据。 可以使用 [Azure Monitor 日志查询](../../azure-monitor/log-query/get-started-queries.md)语言将在 SQL Analytics 内收集的监视遥测数据用于你自己的自定义分析和应用程序开发。
+本文的本部分介绍了如何监视适用于单一数据库、共用数据库、弹性池、托管实例和实例数据库的遥测数据。 可以使用 [Azure Monitor 日志查询](../../azure-monitor/logs/get-started-queries.md)语言将在 SQL Analytics 内收集的监视遥测数据用于你自己的自定义分析和应用程序开发。
 
 ### <a name="basic-metrics"></a>基本指标
 
@@ -747,8 +747,8 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 若要了解如何启用日志记录并了解各种 Azure 服务支持的指标和日志类别，请参阅：
 
-- [Microsoft Azure 中的指标概述](../../azure-monitor/platform/data-platform.md)
-- [Azure 平台日志概述](../../azure-monitor/platform/platform-logs-overview.md)
+- [Microsoft Azure 中的指标概述](../../azure-monitor/data-platform.md)
+- [Azure 平台日志概述](../../azure-monitor/essentials/platform-logs-overview.md)
 
 若要了解事件中心，请阅读以下主题：
 

@@ -9,18 +9,18 @@ ms.date: 10/02/2020
 ms.author: normesta
 ms.subservice: logs
 ms.custom: monitoring
-ms.openlocfilehash: 3a3f4faf8278553153ae2186ea74d20702c603b3
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 4575709a4fa7067b02228036fb2e2b4a60844e21
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96780920"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592325"
 ---
 # <a name="azure-files-monitoring-data-reference"></a>Azure 文件监视数据引用
 
 有关收集和分析 Azure 文件的监视数据的详细信息，请参阅 [监视 Azure 文件](storage-files-monitoring.md) 。
 
-## <a name="metrics"></a>度量值
+## <a name="metrics"></a>指标
 
 下表列出了为 Azure 文件收集的平台指标。 
 
@@ -36,7 +36,7 @@ Azure 文件在 Azure Monitor 中提供了以下容量指标。
 
 #### <a name="azure-files"></a>Azure 文件
 
-下表显示了 [Azure 文件指标](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountsfileservices)。
+下表显示了 [Azure 文件指标](../../azure-monitor/essentials/metrics-supported.md#microsoftstoragestorageaccountsfileservices)。
 
 | 指标 | 说明 |
 | ------------------- | ----------------- |
@@ -85,7 +85,7 @@ Azure 文件在 Azure Monitor 中提供了以下容量指标。
 
 [!INCLUDE [Account level capacity metrics](../../../includes/azure-storage-logs-properties-service.md)]
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 - 有关监视 Azure 存储的说明，请参阅 [监视 Azure 文件](storage-files-monitoring-reference.md) 。
-- 有关监视 Azure 资源的详细信息，请参阅[使用 Azure Monitor 监视 Azure 资源](../../azure-monitor/insights/monitor-azure-resource.md)。
+- 有关监视 Azure 资源的详细信息，请参阅[通过 Azure Monitor 监视 Azure 资源](../../azure-monitor/essentials/monitor-azure-resource.md)。

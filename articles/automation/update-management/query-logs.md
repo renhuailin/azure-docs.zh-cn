@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 09/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 833e2f7808b4b8efa210bc6a903ed30fe9ac53e0
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 5eb0c7d72896cc9a27907743b1b9c3d5a40614dd
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92221987"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592867"
 ---
 # <a name="query-update-management-logs"></a>查询更新管理日志
 
@@ -38,9 +38,9 @@ ms.locfileid: "92221987"
 | SourceSystem | *OperationsManager* |
 | TenantId | 表示组织的 Azure Active Directory 实例的唯一标识符。 |
 | TimeGenerated | 创建记录的日期和时间。 |
-| 类型 | *Update* |
+| 类型 | *更新* |
 | UpdateClassification | 指示可应用的更新类型。 对于 Windows：<br> 关键更新<br> *安全更新*<br> 更新汇总<br> 功能包<br> 服务包<br> 定义更新<br> *工具*<br> 更新。 对于 Linux：<br> 关键和安全更新<br> *其他* |
-| UpdateSeverity | 漏洞的严重性分级。 值为：<br> *严重*<br> 重要说明<br> 中<br> *低* |
+| UpdateSeverity | 漏洞的严重性分级。 值为：<br> *严重*<br> *重要说明*<br> 中<br> *低* |
 | UpdateTitle | 更新的标题。|
 
 ### <a name="query-update-record"></a>查询更新记录
@@ -75,7 +75,7 @@ ms.locfileid: "92221987"
 | UpdateState | 该更新的当前状态。 |
 | 产品 | 该更新所适用的产品。 |
 | SubscriptionId | Azure 订阅的唯一标识符。 |
-| resourceGroup | 资源所属的资源组的名称。 |
+| ResourceGroup | 资源所属的资源组的名称。 |
 | ResourceProvider | 资源提供程序。 |
 | 资源 | 资源的名称。 |
 | ResourceType | 资源类型。 |
@@ -149,7 +149,7 @@ ms.locfileid: "92221987"
 | OsVersion | 操作系统的版本。 |
 | OtherUpdatesMissing | 检测到的缺失更新计数。 |
 | 资源 | 记录的资源名称。 |
-| resourceGroup | 包含该资源的资源组的名称。 |
+| ResourceGroup | 包含该资源的资源组的名称。 |
 | ResourceId | 与记录关联的资源的唯一标识符。 |
 | ResourceProvider | 资源提供程序。 |
 | ResourceType | 资源类型。 |
@@ -195,7 +195,7 @@ Heartbeat
 
 1. 打开“Windows 事件日志”。 转到“应用程序和服务日志\Operations Manager”，搜索来自“服务连接器”源的事件 ID 3000 和事件 ID 5002。  这些事件指示计算机已注册到 Log Analytics 工作区并且正在接收配置。
 
-如果代理无法与 Azure Monitor 日志通信且已配置为通过防火墙或代理服务器与 Internet 通信，请确认是否正确配置了防火墙或代理服务器。 若要了解如何验证防火墙或代理服务器是否已正确配置，请参阅 [Windows 代理的网络配置](../../azure-monitor/platform/agent-windows.md)或 [Linux 代理的网络配置](../../azure-monitor/learn/quick-collect-linux-computer.md)。
+如果代理无法与 Azure Monitor 日志通信且已配置为通过防火墙或代理服务器与 Internet 通信，请确认是否正确配置了防火墙或代理服务器。 若要了解如何验证防火墙或代理服务器是否已正确配置，请参阅 [Windows 代理的网络配置](../../azure-monitor/agents/agent-windows.md)或 [Linux 代理的网络配置](../../azure-monitor/vm/quick-collect-linux-computer.md)。
 
 > [!NOTE]
 > 如果 Linux 系统配置为与代理或 Log Analytics 网关通信，并且你要启用更新管理，请使用以下命令更新 `proxy.conf` 权限，以向 omiuser 组授予对文件的读取权限：
@@ -205,7 +205,7 @@ Heartbeat
 
 执行评估后，新添加的 Linux 代理会显示状态“已更新”。 此过程可能需要长达 6 小时的时间。
 
-若要确认 Operations Manager 管理组是否正在与 Azure Monitor 日志通信，请参阅[验证 Operations Manager 与 Azure Monitor 日志的集成](../../azure-monitor/platform/om-agents.md#validate-operations-manager-integration-with-azure-monitor)。
+若要确认 Operations Manager 管理组是否正在与 Azure Monitor 日志通信，请参阅[验证 Operations Manager 与 Azure Monitor 日志的集成](../../azure-monitor/agents/om-agents.md#validate-operations-manager-integration-with-azure-monitor)。
 
 ### <a name="single-azure-vm-assessment-queries-windows"></a>单个 Azure VM 评估查询 (Windows)
 
@@ -410,5 +410,5 @@ Update
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关 Azure Monitor 日志的详细信息，请参阅 [Azure Monitor 日志](../../azure-monitor/log-query/log-query-overview.md)。
+* 有关 Azure Monitor 日志的详细信息，请参阅 [Azure Monitor 日志](../../azure-monitor/logs/log-query-overview.md)。
 * 如需警报方面的帮助，请参阅[配置警报](configure-alerts.md)。

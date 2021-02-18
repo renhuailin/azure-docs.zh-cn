@@ -8,12 +8,12 @@ ms.author: maquaran
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 34c6e7ad8473f02f2772c84ea63aee2a41b97306
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 641b7d44407f8f3760c673f45d69dcfdc8b363b8
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100559696"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100650977"
 ---
 # <a name="diagnose-and-troubleshoot-the-availability-of-azure-cosmos-sdks-in-multiregional-environments"></a>诊断多区域环境中 Azure Cosmos SDK 的可用性并对其进行故障排除
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -43,7 +43,17 @@ ms.locfileid: "100559696"
 | 多个写入区域 | 主要区域  | 主要区域  |
 
 > [!NOTE]
-> 主要区域是指 [Azure Cosmos 帐户区域列表](distribute-data-globally.md)中的第一个区域
+> 主要区域指的是 [Azure Cosmos 帐户区域列表](distribute-data-globally.md)中的第一个区域。
+> 如果指定为区域首选项的值与任何现有 Azure 区域都不匹配，则将忽略这些值。 如果它们与某个现有区域匹配，但未将该帐户复制到该区域，则该客户端将连接到下一个匹配或与主要区域匹配的首选区域。
+
+> [!WARNING]
+> 若要禁用终结点重新发现，请在客户端配置中将其设置为 false)  (禁用此文档中所述的所有故障转移和可用性逻辑。
+> 此配置可通过每个 Azure Cosmos SDK 中的以下参数访问：
+>
+> * .NET V2 SDK 中的 [ConnectionPolicy EnableEndpointRediscovery](/dotnet/api/microsoft.azure.documents.client.connectionpolicy.enableendpointdiscovery) 属性。
+> * Java V4 SDK 中的 [CosmosClientBuilder. endpointDiscoveryEnabled](/java/api/com.azure.cosmos.cosmosclientbuilder.endpointdiscoveryenabled) 方法。
+> * Python SDK 中的 [CosmosClient.enable_endpoint_discovery](/python/api/azure-cosmos/azure.cosmos.cosmos_client.cosmosclient) 参数。
+> * [CosmosClientOptions. ConnectionPolicy. 为 enableendpointdiscovery](/javascript/api/@azure/cosmos/connectionpolicy#enableEndpointDiscovery)参数。
 
 通常情况下，SDK 客户端将连接到首选区域（如果设置了区域首选项）或主要区域（如果未设置首选项），并且操作将限于该区域，除非出现以下任何情况。
 
@@ -59,7 +69,7 @@ ms.locfileid: "100559696"
 
 ## <a name="removing-a-region-from-the-account"></a><a id="remove-region"></a>从帐户中删除区域
 
-从 Azure Cosmos 帐户删除区域时，任何主动使用该帐户的 SDK 客户端都将通过后端响应代码检测到区域删除。 然后，客户端将区域终结点标记为不可用。 客户端会重试当前操作，所有将来的操作将按照优先顺序永久路由到下一个区域。
+从 Azure Cosmos 帐户删除区域时，任何主动使用该帐户的 SDK 客户端都将通过后端响应代码检测到区域删除。 然后，客户端将区域终结点标记为不可用。 客户端会重试当前操作，所有将来的操作将按照优先顺序永久路由到下一个区域。 如果首选项列表仅有一个条目 (或为空) 但该帐户还有其他可用区域，则会路由到帐户列表中的下一个区域。
 
 ## <a name="adding-a-region-to-an-account"></a>将区域添加到帐户
 
