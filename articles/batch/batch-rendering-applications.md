@@ -3,12 +3,12 @@ title: 渲染应用程序
 description: 可以将任何渲染应用程序与 Azure Batch 配合使用。 不过，常见的预安装应用程序都提供了 Azure 市场 VM 映像。
 ms.date: 02/12/2021
 ms.topic: how-to
-ms.openlocfilehash: e296ab09498b6bb7ee21e3d88c9c416c66368d69
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 18fc142d2fa9c819b9872c64ef7aae4c73cc2428
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100362227"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100635330"
 ---
 # <a name="pre-installed-applications-on-batch-rendering-vm-images"></a>在 Batch 渲染 VM 映像上预安装的应用程序
 
@@ -20,7 +20,7 @@ ms.locfileid: "100362227"
 
 ## <a name="applications-on-latest-centos-7-rendering-image"></a>最新 CentOS 7 呈现图像上的应用程序
 
-以下列表适用于 CentOS 渲染图像1.1.7 版本。
+以下列表适用于 CentOS 渲染图像1.2.0 版本。
 
 * Autodesk Maya i/o 2020 更新4。6
 * Maya 2020 (Arnold 版本 6.2.0.0 Autodesk Arnold) MtoA-2020

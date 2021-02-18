@@ -3,12 +3,12 @@ title: 企业应用场景中的 Azure Lighthouse
 description: Azure Lighthouse 的功能可以简化使用多个 Azure AD 租户的企业中的跨租户管理。
 ms.date: 08/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 3f452e6810fa6809b5ba1b83b664f8b38d82a895
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: ca3d73a6c5b88f7531c3d76eb3bd348fdfe8fa39
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96004239"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573015"
 ---
 # <a name="azure-lighthouse-in-enterprise-scenarios"></a>企业应用场景中的 Azure Lighthouse
 
@@ -38,7 +38,7 @@ ms.locfileid: "96004239"
 
 Azure Lighthouse 仅提供管理租户和托管租户之间的逻辑链接，而不是物理移动数据或资源。 此外，访问始终只朝一个方向进行，即，从管理租户访问被管理租户。  在对被管理租户的资源执行管理操作时，管理租户中的用户和组应继续使用多重身份验证。
 
-实施内部或外部监管与合规性准则的企业可以使用 [Azure 活动日志](../../azure-monitor/platform/platform-logs-overview.md)来满足其透明性要求。 如果企业租户已建立管理和托管租户关系，则每个租户中的用户都可以查看记录的活动，以查看管理租户中用户执行的操作。
+实施内部或外部监管与合规性准则的企业可以使用 [Azure 活动日志](../../azure-monitor/essentials/platform-logs-overview.md)来满足其透明性要求。 如果企业租户已建立管理和托管租户关系，则每个租户中的用户都可以查看记录的活动，以查看管理租户中用户执行的操作。
 
 ## <a name="onboarding-considerations"></a>载入注意事项
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/10/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: ba15deed98af16b9b501439082ee6c9237fe20b7
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: d95a2318d94f52352c9546aedc24d0111c5ba0a4
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807201"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571651"
 ---
 # <a name="azure-security-baseline-for-azure-sentinel"></a>Azure Sentinel 的 azure 安全基线
 
@@ -37,9 +37,9 @@ ms.locfileid: "99807201"
 
 - [如何在 Azure Sentinel 中启用审核](resources.md)
 
-- [如何查看和检索 Azure 活动日志事件](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [如何查看和检索 Azure 活动日志事件](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [如何在 Azure Monitor 中创建警报](../azure-monitor/platform/alerts-activity-log.md)
+- [如何在 Azure Monitor 中创建警报](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -73,7 +73,7 @@ ms.locfileid: "99807201"
 
 **指南**：在 Azure Monitor 中，根据组织的符合性规定，设置与 Azure Sentinel 工作区关联的 Log Analytics 工作区的日志保持期。
 
-- [如何设置日志保留参数](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [如何设置日志保留参数](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure 安全中心监视**：不适用
 
@@ -341,7 +341,7 @@ Log Analytics 角色包括 Log Analytics 参与者和 Log Analytics 读者。 Lo
 
 **指南**： Azure Sentinel 和 Azure Monitor Log Analytics 工作区当前使用 Microsoft 托管的密钥来加密任何包含的静态数据。 对于 Sentinel，无需完全支持引入你自己的密钥的功能，但会在不久的将来进行。
 
-- [Azure Monitor 客户托管的密钥概述](../azure-monitor/platform/customer-managed-keys.md#customer-managed-key-overview)
+- [Azure Monitor 客户托管的密钥概述](../azure-monitor/logs/customer-managed-keys.md#customer-managed-key-overview)
 
 - [了解 Azure Sentinel 中客户托管的密钥 (预览) ](customer-managed-keys.md)
 
@@ -412,7 +412,7 @@ Log Analytics 角色包括 Log Analytics 参与者和 Log Analytics 读者。 Lo
 
 **指导**：使用 Azure Policy 对可以在订阅中创建的资源类型施加限制。 
 
-使用 Azure Resource Graph 查询/发现订阅中的资源。  确保环境中的所有 Azure 资源均已获得批准。
+使用 Azure Resource Graph 查询/发现订阅中的资源。  确保环境中存在的所有 Azure 资源已获得批准。
 
 - [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 

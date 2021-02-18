@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/03/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 862e8f07e321975ec5b673cfe5c86de85c9d160b
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 2947faa8c7b56fdbe4cf549529b63d506b810750
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202294"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570868"
 ---
 # <a name="azure-security-baseline-for-azure-iot-hub"></a>适用于 Azure IoT 中心的 Azure 安全基线
 
@@ -148,9 +148,9 @@ Azure DDoS 防护基本版已作为 IoT 中心的一部分启用，使用时无�
 
 **指南**：使用 Azure 活动日志监视网络资源配置，并检测与 Azure IoT 中心相关的网络资源的更改。 在 Azure Monitor 中创建当关键网络资源发生更改时触发的警报。
 
-- [如何查看和检索 Azure 活动日志事件](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [如何查看和检索 Azure 活动日志事件](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [如何在 Azure Monitor 中创建警报](../azure-monitor/platform/alerts-activity-log.md)
+- [如何在 Azure Monitor 中创建警报](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -185,9 +185,9 @@ Azure DDoS 防护基本版已作为 IoT 中心的一部分启用，使用时无�
 
 - [设置 Azure IoT 中心日志](monitor-iot-hub-reference.md#resource-logs)
 
-- [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/platform/diagnostic-settings.md)
+- [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/essentials/diagnostic-settings.md)
 
-- [了解 Azure 中的日志记录和不同的日志类型](../azure-monitor/platform/platform-logs-overview.md)
+- [了解 Azure 中的日志记录和不同的日志类型](../azure-monitor/essentials/platform-logs-overview.md)
 
 **Azure 安全中心监视**：是
 
@@ -205,7 +205,7 @@ Azure DDoS 防护基本版已作为 IoT 中心的一部分启用，使用时无�
 
 **指南**：在 Azure Monitor 中，根据组织的合规性规章，为与 Azure IoT 中心实例关联的 Log Analytics 工作区设置日志保持期。
 
-- [如何设置日志保留参数](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [如何设置日志保留参数](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure 安全中心监视**：不适用
 
@@ -220,9 +220,9 @@ Azure DDoS 防护基本版已作为 IoT 中心的一部分启用，使用时无�
 - [监视 Azure IoT 运行状况](monitor-iot-hub.md)
 - [如何加入 Azure Sentinel](../sentinel/quickstart-onboard.md)
   
-- [Log Analytics 查询入门](../azure-monitor/log-query/log-analytics-tutorial.md)
+- [Log Analytics 查询入门](../azure-monitor/logs/log-analytics-tutorial.md)
    
-- [如何在 Azure Monitor 中执行自定义查询](../azure-monitor/log-query/get-started-queries.md)
+- [如何在 Azure Monitor 中执行自定义查询](../azure-monitor/logs/get-started-queries.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -236,7 +236,7 @@ Azure DDoS 防护基本版已作为 IoT 中心的一部分启用，使用时无�
 - [如何加入 Azure Sentinel](../sentinel/quickstart-onboard.md)
 - [用于 IoT 警报的 Azure 安全中心](../defender-for-iot/concept-security-alerts.md)
 
-- [如何针对 Log Analytics 日志数据发出警报](../azure-monitor/learn/tutorial-response.md)
+- [如何针对 Log Analytics 日志数据发出警报](../azure-monitor/alerts/tutorial-response.md)
 
 **Azure 安全中心监视**：是
 
@@ -527,7 +527,7 @@ Azure IoT 中心对写入数据中心的静态数据和传输中的数据进行�
 
 **指南**：将 Azure Monitor 与 Azure 活动日志结合使用，以创建在 Azure IoT 中心的生产实例和其他关键或相关资源发生更改时发出的警报。
 
-- [如何针对 Azure 活动日志事件创建警报](../azure-monitor/platform/alerts-activity-log.md)
+- [如何针对 Azure 活动日志事件创建警报](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure 安全中心监视**：不适用
 

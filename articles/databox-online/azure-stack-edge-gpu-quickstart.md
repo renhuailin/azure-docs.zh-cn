@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 01/27/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to quickly deploy Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 642ab348cd2bb5cd2cedd2b481b0d06fb6c4b425
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 4f3ecb6c9aa4ec200cd1a53b82d7c81a2c8d4dcd
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98953931"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546782"
 ---
 # <a name="quickstart-get-started-with-azure-stack-edge-pro-with-gpu"></a>快速入门：开始使用 Azure Stack Edge Pro with GPU 
 
@@ -64,7 +64,7 @@ ms.locfileid: "98953931"
 10. **配置证书**：如果更改了设备名称和/或 DNS 域，则必须生成证书或添加证书以激活设备。 
 
     - 若要测试非生产工作负荷，请使用[“生成证书”选项](azure-stack-edge-gpu-deploy-configure-certificates.md#generate-device-certificates)。 
-    - 如果使用自己的证书，包括签名链，则以适当的格式[添加证书](azure-stack-edge-gpu-deploy-configure-certificates.md#bring-your-own-certificates)。 确保先上传签名链。 请参阅[创建证书](azure-stack-edge-j-series-create-certificates-tool.md)和[通过本地 UI 上传证书](azure-stack-edge-gpu-deploy-configure-certificates.md#bring-your-own-certificates)。
+    - 如果使用自己的证书，包括签名链，则以适当的格式[添加证书](azure-stack-edge-gpu-deploy-configure-certificates.md#bring-your-own-certificates)。 确保先上传签名链。 请参阅[创建证书](azure-stack-edge-gpu-create-certificates-tool.md)和[通过本地 UI 上传证书](azure-stack-edge-gpu-deploy-configure-certificates.md#bring-your-own-certificates)。
 
 11. **激活**：获取激活密钥 
 
@@ -73,7 +73,7 @@ ms.locfileid: "98953931"
 
 12. **配置计算**：在 Azure 门户中，转到“概述”>“设备”。 确认设备处于联机状态。 在左窗格中，转到“边缘计算”>“入门”>“配置边缘计算”>“计算”。 提供现有或新的 IoT 中心服务，并等待大约 20 分钟的时间完成计算配置。 请在[教程：在 Azure Stack Edge Pro GPU 设备上配置计算](azure-stack-edge-gpu-deploy-configure-compute.md)中查看详细信息
 
-现在即可在设备上[通过 IoT Edge](azure-stack-edge-gpu-deploy-sample-module-marketplace.md)、[通过 `kubectl`](azure-stack-edge-gpu-create-kubernetes-cluster.md) 或[通过启用了 Azure Arc 的 Kubernetes](azure-stack-edge-gpu-deploy-arc-kubernetes-cluster.md) 部署计算工作负荷！ 如果在设置过程中遇到任何问题，请转到[排查设备问题]()、[订购问题](azure-stack-edge-gpu-troubleshoot.md)、[证书问题](azure-stack-edge-j-series-certificate-troubleshooting.md)或 Kubernetes 问题。 
+现在即可在设备上[通过 IoT Edge](azure-stack-edge-gpu-deploy-sample-module-marketplace.md)、[通过 `kubectl`](azure-stack-edge-gpu-create-kubernetes-cluster.md) 或[通过启用了 Azure Arc 的 Kubernetes](azure-stack-edge-gpu-deploy-arc-kubernetes-cluster.md) 部署计算工作负荷！ 如果在设置过程中遇到任何问题，请转到[排查设备问题]()、[订购问题](azure-stack-edge-gpu-troubleshoot.md)、[证书问题](azure-stack-edge-gpu-certificate-troubleshooting.md)或 Kubernetes 问题。 
 
 ## <a name="next-steps"></a>后续步骤
 

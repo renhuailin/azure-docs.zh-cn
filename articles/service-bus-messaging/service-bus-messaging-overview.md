@@ -2,13 +2,13 @@
 title: Azure 服务总线消息传送概述 | Microsoft Docs
 description: 本文粗略概述了 Azure 服务总线（一个完全托管的企业集成消息代理）。
 ms.topic: overview
-ms.date: 01/28/2021
-ms.openlocfilehash: 232f25ca94e9426a20755940caf284426502cfb3
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.date: 02/16/2021
+ms.openlocfilehash: 897729b9748d69ad3c6de507e800dbb3a1a3619c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99219156"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570473"
 ---
 # <a name="what-is-azure-service-bus"></a>什么是 Azure 服务总线？
 Microsoft Azure 服务总线是一个完全托管的企业消息代理，其中包含消息队列和发布订阅主题。 服务总线用于分离应用程序和服务，提供以下优势：
@@ -118,11 +118,10 @@ Microsoft Azure 服务总线是一个完全托管的企业消息代理，其中�
 一个事务将两个或更多操作组合成执行作用域。 服务总线允许对针对单个事务作用域内的多个消息传递实体的操作进行分组。 消息实体可以是队列、主题或订阅。 有关详细信息，请参阅[服务总线事务处理概述](service-bus-transactions.md)。
 
 ### <a name="autodelete-on-idle"></a>出现空闲队列时自动删除
-
-可以使用“出现空闲队列时自动删除”功能指定一个空闲时间间隔，该时间间隔过后系统会自动删除队列或主题订阅。 最短持续时间为 5 分钟。 有关详细信息，请参阅 [QueueDescription.AutoDeleteOnIdle 属性](/dotnet/api/microsoft.servicebus.messaging.queuedescription.autodeleteonidle)。
+可以使用“出现空闲队列时自动删除”功能指定一个空闲时间间隔，该时间间隔过后系统会自动删除队列或主题订阅。 最短持续时间为 5 分钟。 
 
 ### <a name="duplicate-detection"></a>重复检测
-重复检测功能使发送方能够再次发送相同的消息，并让代理能够删除可能的重复项。 重复检测基于跟踪消息的 `message-id` 属性，这意味着，当重新发送消息时，应用程序需要注意使用相同的值，该值可能是直接从某些特定于应用程序的上下文中派生的。 有关详细信息，请参阅[重复检测](duplicate-detection.md)。
+重复检测功能使发送方能够再次发送相同的消息，并让代理能够删除可能的重复项。 有关详细信息，请参阅[重复检测](duplicate-detection.md)。
 
 ### <a name="geo-disaster-recovery"></a>异地灾难恢复
 

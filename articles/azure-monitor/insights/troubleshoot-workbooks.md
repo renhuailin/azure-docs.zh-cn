@@ -6,12 +6,12 @@ ms.author: lagayhar
 author: lgayhardt
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: 3a2765e9dcf3b0e7bf28191e6ecbb069f26c42f5
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: a823b5e2ae31e62ff6d876f0b3468953c0ed9c35
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98208516"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587146"
 ---
 # <a name="troubleshooting-workbook-based-insights"></a>排查基于工作簿的见解的问题
 
@@ -72,4 +72,4 @@ ms.locfileid: "98208516"
 
 ## <a name="next-steps"></a>后续步骤
 
-查看[使用 Azure Monitor 工作簿创建交互式报表](../platform/workbooks-overview.md)，详细了解工作簿旨在支持的方案、创作新报表和自定义现有报表的方式，以及更多信息。
+查看[使用 Azure Monitor 工作簿创建交互式报表](../visualize/workbooks-overview.md)，详细了解工作簿旨在支持的方案、创作新报表和自定义现有报表的方式，以及更多信息。

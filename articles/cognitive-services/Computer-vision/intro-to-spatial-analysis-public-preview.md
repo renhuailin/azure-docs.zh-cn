@@ -1,23 +1,23 @@
 ---
-title: 计算机视觉空间分析简介
+title: 空间分析概述
 titleSuffix: Azure Cognitive Services
 description: 本文档介绍计算机视觉空间分析容器的基本概念和功能。
 services: cognitive-services
-author: tchristiani
+author: nitinme
 manager: nitinme
-ms.author: terrychr
+ms.author: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 12/14/2020
-ms.openlocfilehash: f90e4e5e187977f0ee77a565ff9143902ea3a10d
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.date: 02/01/2021
+ms.openlocfilehash: ad05dd59c925242baf5c2b0e36c1f51bc4fec5d4
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736829"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575372"
 ---
-# <a name="introduction-to-computer-vision-spatial-analysis"></a>计算机视觉空间分析简介
+# <a name="overview-of-computer-vision-spatial-analysis"></a>计算机视觉空间分析概述
 
 计算机视觉空间分析是 Azure 认知服务计算机视觉的一项新功能，通过了解人员在给定领域的变动和状态，帮助组织最大限度地提高其物理空间的价值。 它允许从 CCTV 或监视摄像机中引入视频，运行 AI 操作以从视频流中提取见解，并生成由其他系统使用的事件。 使用摄像流输入时，AI 操作可以执行一些操作，例如，计算输入空间的人员数，或度量与人脸掩码和社会 distancing 准则的符合性。
 
@@ -35,37 +35,9 @@ ms.locfileid: "98736829"
 | 感兴趣区域 | 这是配置过程中在输入视频中定义的区域或行。 当某个人与视频的区域交互时，系统将生成一个事件。 例如，对于 PersonCrossingLine 操作，会在视频中定义一行。 当某个人越过该行时，将生成一个事件。 |
 | 事件 | 事件是空间分析的主输出。 每个操作都会定期 (ex 发出特定事件。 每分钟一次) 或发生特定的触发器。 此事件包括有关输入视频中发生的内容的信息，但不包括任何图像或视频。 例如，PeopleCount 操作可以在每次更改用户计数 (触发器时，每分钟) 或每 (定期) 发出包含更新计数的事件。 |
 
-## <a name="example-use-cases-for-spatial-analysis"></a>空间分析的示例用例
+## <a name="responsible-use-of-spatial-analysis-technology"></a>使用空间分析技术的责任
 
-下面是我们设计和测试空间分析时需要注意的示例用例。
-
-**社交 Distancing 合规性** -办公室空间包含多个照相机，它们使用空间分析通过测量人员之间的距离来监视社交 Distancing 的符合性。 设施经理可以使用热图，显示一段时间内社交 distancing 符合性的聚合统计信息，以调整工作区并使社会 distancing 更轻松。
-
-**购物者分析** -杂货商店使用位于产品显示器上的照相机来度量商品更改对商店流量的影响。 系统允许商店经理识别哪些新产品会对订婚进行最大的更改。
-
-**队列管理** -当等待时间太长，使其能够打开更多行时，位于结帐队列的照相机会向经理提供警报。 队列放弃上的历史数据可提供对使用者行为的见解。
-
-人 **脸掩码合规性**–零售商店可以使用指向商店正面的照相机来检查客户是否正在穿到商店，以检查客户是否正在戴上人脸的面具来维护安全合规性和分析聚合统计信息，以获得关于掩码使用趋势的信息。 
-
-**构建占有 & 分析** -办公室建筑使用侧重于进入的相机来度量 footfall，以及用户如何使用工作区。 Insights 允许建筑经理调整服务和布局，以便更好地为 occupants 提供服务。
-
-**最小员工检测** -在数据中心中，照相机监视围绕服务器的活动。 当员工以物理方式修复敏感设备时，出于安全原因，在修复过程中始终需要有两个人。 照相机用于验证是否遵循了此原则。
-
-**工作区优化** -在快速的餐厅餐厅中，厨房中的照相机用于生成有关员工工作流的聚合信息。 经理使用此方法来改进团队的流程和培训。
-
-## <a name="considerations-when-choosing-a-use-case"></a>选择用例时的注意事项
-
-**避免严重安全警报** -空间分析不适用于关键安全实时警报。 如果需要实时警报来触发干预以防发生伤害，就不应依赖于这种情况，例如，当某人出现时关闭一片繁重的机械。 它可以使用统计信息和干预降低风险，从而减少风险的行为，例如人们进入限制/禁止的区域。
-
-**避免将用于与雇用相关的决策** -空间分析提供了有关空间中人员的位置和移动的概率指标。 尽管此数据对于聚合过程改进可能很有用，但数据并不是单个辅助角色性能的良好指标，不应用于做出与雇用相关的决策。
-
-**避免将用于卫生保健相关的决策** -空间分析提供与人员移动相关的概率和部分数据。 数据不适用于与运行状况相关的决策。
-
-**避免在受保护的空间中使用** -通过评估相机位置和位置、调整感兴趣的角度和区域使其不会忽略受保护的区域（如卫生间）来保护个人的隐私。
-
-**仔细考虑在学校或老年护理设施中使用的功能** -空间分析并未对包含低于18岁或成人65的成人的数据进行大量测试。 我们建议客户在这些年龄主流的环境中全面评估其方案的错误率。
-
-**仔细考虑在公共空间中使用** -评估相机位置和位置、调整感兴趣的角度和区域以最大程度地减少从公共空间收集的范围。 公共空间（如街道和公园）中的照明和天气会显著影响空间分析系统的性能，并且极难在公共空间中提供有效的泄露。
+若要了解如何使用空间分析技术，请参阅 [透明度注释](/legal/cognitive-services/computer-vision/transparency-note-spatial-analysis?context=%2fazure%2fcognitive-services%2fComputer-vision%2fcontext%2fcontext)。 Microsoft 的透明度注释旨在帮助你了解 AI 技术的工作原理、系统所有者可做出的影响系统性能和行为的选项，以及考虑整个系统（包括技术、人员和环境）的重要性。
 
 ## <a name="spatial-analysis-gating-for-public-preview"></a>公共预览版的空间分析门
 
@@ -76,4 +48,4 @@ ms.locfileid: "98736829"
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [空间分析的特征和限制](/legal/cognitive-services/computer-vision/accuracy-and-limitations?context=%2fazure%2fcognitive-services%2fComputer-vision%2fcontext%2fcontext)
+> [空间分析容器入门](spatial-analysis-container.md)

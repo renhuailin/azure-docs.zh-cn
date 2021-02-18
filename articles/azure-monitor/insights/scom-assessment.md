@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/25/2018
-ms.openlocfilehash: 97d7d21374062462248e1b86f2bde2fef2d25331
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 685bf35bfb6d6e85d70bd1f1b446370d66a320f2
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96004902"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573386"
 ---
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>使用 System Center Operations Manager 运行状况检查（预览版）解决方案优化环境
 
@@ -147,7 +147,7 @@ ALTER ROLE [db_owner] ADD MEMBER [UserName]
 
 System Center Operations Manager 运行状况检查解决方案的管理包中包含一个名为“Microsoft System Center Operations Manager 运行运行状况检查规则”的规则。 此规则负责执行运行状况检查。 若要启用该规则并配置频率，请使用以下过程。
 
-默认情况下，Microsoft System Center Operations Manager 运行运行状况检查规则已禁用。 若要执行运行状况检查，必须在管理服务器上启用该规则。 使用以下步骤。
+默认情况下，Microsoft System Center Operations Manager 运行运行状况检查规则已禁用。 若要执行运行状况检查，必须在管理服务器上启用该规则。 请使用以下步骤：
 
 #### <a name="enable-the-rule-for-a-specific-management-server"></a>为特定的管理服务器启用规则
 
@@ -229,7 +229,7 @@ System Center Operations Manager 运行状况检查解决方案的管理包中�
     ```
 
     >[!NOTE]
-    > 如果工作区已升级到[新 Log Analytics 查询语言](../log-query/log-query-overview.md)，则上述查询会更改为如下所示。
+    > 如果工作区已升级到[新 Log Analytics 查询语言](../logs/log-query-overview.md)，则上述查询会更改为如下所示。
     >
     > `SCOMAssessmentRecommendationRecommendation | where RecommendationResult == "Failed" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
 
@@ -254,7 +254,7 @@ System Center Operations Manager 运行状况检查解决方案的管理包中�
     ```
 
     >[!NOTE]
-    > 如果工作区已升级到[新 Log Analytics 查询语言](../log-query/log-query-overview.md)，则上述查询会更改为如下所示。
+    > 如果工作区已升级到[新 Log Analytics 查询语言](../logs/log-query-overview.md)，则上述查询会更改为如下所示。
     >
     > `SCOMAssessmentRecommendationRecommendation | where RecommendationResult == "Ignore" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
 
@@ -295,5 +295,5 @@ System Center Operations Manager 运行状况检查解决方案的管理包中�
 
 ## <a name="next-steps"></a>后续步骤
 
-- [搜索日志](../log-query/log-query-overview.md)以了解如何分析详细的 System Center Operations Manager 运行状况检查数据和建议。
+- [搜索日志](../logs/log-query-overview.md)以了解如何分析详细的 System Center Operations Manager 运行状况检查数据和建议。
 

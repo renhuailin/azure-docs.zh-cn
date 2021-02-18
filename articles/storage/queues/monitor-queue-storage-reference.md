@@ -9,12 +9,12 @@ ms.topic: reference
 ms.service: azure-monitor
 ms.subservice: logs
 ms.custom: monitoring
-ms.openlocfilehash: ba8a82ed1113bfb3e71560ca9a6c713602df21f2
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 95f20737b044140fe12ea939e71cd2397cb4826d
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97590641"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576687"
 ---
 # <a name="azure-queue-storage-monitoring-data-reference"></a>Azure 队列存储监视数据引用
 
@@ -36,13 +36,13 @@ Azure 存储在 Azure Monitor 中提供以下容量指标。
 
 #### <a name="queue-storage-metrics"></a>队列存储指标
 
-此表显示了 [队列存储指标](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountsqueueservices)。
+此表显示了 [队列存储指标](../../azure-monitor/essentials/metrics-supported.md#microsoftstoragestorageaccountsqueueservices)。
 
 | 指标 | 说明 |
 | ------------------- | ----------------- |
-| **QueueCapacity** | 存储帐户使用的队列存储量。 <br><br> 单位 `Bytes` <br> 聚合类型： `Average` <br> 值示例： `1024` |
-| **QueueCount** | 存储帐户中的队列数目。 <br><br> 单位 `Count` <br> 聚合类型： `Average` <br> 值示例： `1024` |
-| **QueueMessageCount** | 存储帐户中队列消息的大致数目。 <br><br> 单位 `Count` <br> 聚合类型： `Average` <br> 值示例： `1024` |
+| **QueueCapacity** | 存储帐户使用的队列存储量。 <br><br> 单位：`Bytes` <br> 聚合类型： `Average` <br> 值示例： `1024` |
+| **QueueCount** | 存储帐户中的队列数目。 <br><br> 单位：`Count` <br> 聚合类型： `Average` <br> 值示例： `1024` |
+| **QueueMessageCount** | 存储帐户中队列消息的大致数目。 <br><br> 单位：`Count` <br> 聚合类型： `Average` <br> 值示例： `1024` |
 
 ### <a name="transaction-metrics"></a>事务指标
 
@@ -80,4 +80,4 @@ Azure 存储支持对 Azure Monitor 中的指标使用以下维度。
 ## <a name="see-also"></a>另请参阅
 
 - 有关监视 Azure 队列存储的说明，请参阅 [监视 Azure 队列存储](monitor-queue-storage.md) 。
-- 有关监视 Azure 资源的详细信息，请参阅[使用 Azure Monitor 监视 Azure 资源](../../azure-monitor/insights/monitor-azure-resource.md)。
+- 有关监视 Azure 资源的详细信息，请参阅[通过 Azure Monitor 监视 Azure 资源](../../azure-monitor/essentials/monitor-azure-resource.md)。

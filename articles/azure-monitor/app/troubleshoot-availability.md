@@ -1,17 +1,17 @@
 ---
-title: Azure 应用程序 Insights 可用性测试疑难解答
+title: 排查 Azure Application Insights 可用性测试问题
 description: 排查 Azure Application Insights 中的 Web 测试问题。 当网站不可用或响应速度缓慢时接收警报。
 ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 11/19/2020
 ms.reviewer: sdash
-ms.openlocfilehash: 368c45433247c441631bdf79bfc9caa28a41f1b4
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 849701caf73a4fb289773c67bccaab2e0f39dbd1
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96546738"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100583726"
 ---
 # <a name="troubleshooting"></a>故障排除
 
@@ -50,7 +50,7 @@ ms.locfileid: "96546738"
 
    * 若要降低暂时性网络问题等各方面因素导致的干扰，请确保选中“测试故障时允许重试”配置。 也可从多个位置进行测试并对警报规则阈值进行相应的管理，防止在出现特定于位置的问题时引发不必要的警报。
 
-   * 单击可用性散点图体验中的任何红色点，或者从 "搜索资源管理器" 中找到任何可用性错误，以查看我们报告失败的原因的详细信息。 测试结果以及相关的服务器端遥测数据（如果启用）应该有助于了解测试失败的原因。 暂时性问题的常见原因是网络或连接问题。
+   * 单击可用性散点图体验中的任意红点或搜索资源管理器中的任意可用性故障，以查看我们报告失败的详细原因。 测试结果以及相关的服务器端遥测数据（如果启用）应该有助于了解测试失败的原因。 暂时性问题的常见原因是网络或连接问题。
 
    * 测试是否超时？ 我们在 2 分钟后中止测试。 如果你的 ping 或多步骤测试花费的时间超过 2 分钟，我们会将其报告为失败。 请考虑将测试分成多个可在较短持续时间内完成的测试。
 
@@ -62,7 +62,7 @@ ms.locfileid: "96546738"
 
 ### <a name="i-did-not-receive-the-webhook-notification"></a>我尚未收到 Webhook 通知？
 
-检查以确保接收 Webhook 通知的应用程序可用并成功处理 Webhook 请求。 有关详细信息，请参阅[此文](../platform/alerts-log-webhook.md)。
+检查以确保接收 Webhook 通知的应用程序可用并成功处理 Webhook 请求。 有关详细信息，请参阅[此文](../alerts/alerts-log-webhook.md)。
 
 ### <a name="i-am-getting--403-forbidden-errors-what-does-this-mean"></a>我收到了 403 禁止访问的错误，这是什么意思？
 
@@ -113,7 +113,7 @@ ms.locfileid: "96546738"
 
 ## <a name="who-receives-the-classic-alert-notifications"></a>谁会收到（经典）警报通知？
 
-本节仅适用于经典警报，并将帮助优化警报通知以确保只有预期的接收人能收到通知。 若要详细了解[经典警报](../platform/alerts-classic.overview.md)与新的警报体验之间的区别，请参阅[警报概述文章](../platform/alerts-overview.md)。 若要控制新的警报体验中的警报通知，请使用[操作组](../platform/action-groups.md)。
+本节仅适用于经典警报，并将帮助优化警报通知以确保只有预期的接收人能收到通知。 若要详细了解[经典警报](../alerts/alerts-classic.overview.md)与新的警报体验之间的区别，请参阅[警报概述文章](../alerts/alerts-overview.md)。 若要控制新的警报体验中的警报通知，请使用[操作组](../alerts/action-groups.md)。
 
 * 建议将经典警报通知用于特定接收人。
 
@@ -124,7 +124,7 @@ ms.locfileid: "96546738"
 > [!NOTE]
 > 如果当前使用“批/组”复选框选项并禁用它，则无法还原更改。
 
-如果需要根据用户角色通知用户，请使用新的警报体验/近实时警报。 使用[操作组](../platform/action-groups.md)，可以为具有任何参与者/所有者/读者角色（未融合为单一选项）的用户配置电子邮件通知。
+如果需要根据用户角色通知用户，请使用新的警报体验/近实时警报。 使用[操作组](../alerts/action-groups.md)，可以为具有任何参与者/所有者/读者角色（未融合为单一选项）的用户配置电子邮件通知。
 
 ## <a name="next-steps"></a>后续步骤
 

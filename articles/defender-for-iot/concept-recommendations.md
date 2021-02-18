@@ -1,6 +1,6 @@
 ---
-title: 安全建议
-description: 了解安全建议的概念，以及如何在 Defender for IoT 中使用这些建议。
+title: IoT 中心的安全建议
+description: 了解安全建议的概念以及如何在用于 IoT 中心的 Defender 中使用它们。
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
@@ -11,44 +11,21 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/25/2021
+ms.date: 02/16/2021
 ms.author: shhazam
-ms.openlocfilehash: 10246277715d23f42eb0bd17d19794b8d4503f3f
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 4ae479fcff0514b42d46aef455d8a32d6ebfaf23
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100521860"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100636537"
 ---
-# <a name="security-recommendations"></a>安全建议
+# <a name="security-recommendations-for-iot-hub"></a>IoT 中心的安全建议
 
 Defender for IoT 会扫描你的 Azure 资源和 IoT 设备，并提供安全建议以减少你的攻击面。
 安全建议是可操作的，旨在帮助客户遵守安全最佳做法。
 
-在本文中，你将找到建议列表，可在 IoT 中心和/或 IoT 设备上触发。
-
-## <a name="agent-based-recommendations"></a>基于代理的建议
-
-设备建议提供用于改进设备安全状况的见解和建议。
-
-| 严重性 | 名称 | 数据源 | 说明 |
-|--|--|--|--|
-| 中 | 设备上有开放端口 | 经典安全模块 | 在设备上找到侦听终结点。 |
-| 中 | 在其中一个链中发现了宽松的防火墙策略。 | 经典安全模块 | 发现了允许的防火墙策略（输入/输出）。 默认情况下，防火墙策略应拒绝所有流量，并定义规则以允许与设备之间的必要通信。 |
-| 中 | 在输入链中发现了宽松的防火墙规则 | 经典安全模块 | 在防火墙中发现了包含适用于许多不同 IP 地址或端口的宽松模式的规则。 |
-| 中 | 在输出链中发现了宽松的防火墙规则 | 经典安全模块 | 在防火墙中发现了包含适用于许多不同 IP 地址或端口的宽松模式的规则。 |
-| 中 | 操作系统基线验证失败 | 经典安全模块 | 设备不符合 [CIS Linux 基准](https://www.cisecurity.org/cis-benchmarks/)。 |
-
-### <a name="agent-based-operational-recommendations"></a>基于代理的操作建议
-
-操作建议提供用于改进安全代理配置的见解和建议。
-
-| 严重性 | 名称 | 数据源 | 说明 |
-|--|--|--|--|
-| 低 | 代理发送未利用的消息 | 经典安全模块 | 在过去 24 小时内，10% 或更高比例的安全消息小于 4 KB。 |
-| 低 | 安全孪生体配置并非最佳 | 经典安全模块 | 安全孪生体配置并非最佳。 |
-| 低 | 安全孪生体配置冲突 | 经典安全模块 | 在安全孪生体配置中识别出了冲突。 |  |
-
+在本文中，你将看到一个建议列表，可以在 IoT 中心触发此列表。
 
 ## <a name="built-in-recommendations-in-iot-hub"></a>IoT 中心的内置建议
 

@@ -3,12 +3,12 @@ title: Azure VMware 解决方案 Vm 的生命周期管理
 description: 了解如何通过 Microsoft Azure 本机工具来管理 Azure VMware 解决方案 Vm 生命周期的所有方面。
 ms.topic: conceptual
 ms.date: 02/08/2021
-ms.openlocfilehash: d8224a37e46b336ebf889fe1c075930f34f10ca4
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: 2cb9964b68769b1e784cebf62b4d336b355c68fb
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99988529"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572208"
 ---
 # <a name="lifecycle-management-of-azure-vmware-solution-vms"></a>Azure VMware 解决方案 Vm 的生命周期管理
 
@@ -45,9 +45,9 @@ Microsoft Azure 本机工具可用于监视和管理 Azure 环境中)  (Vm 的�
 如果你不熟悉 Azure 或不熟悉前面提到的任何服务，请查看以下文章：
 
 - [自动化帐户身份验证概述](../automation/automation-security-overview.md)
-- [设计 Azure Monitor 日志部署](../azure-monitor/platform/design-logs-deployment.md) 和 [Azure Monitor](../azure-monitor/overview.md)
+- [设计 Azure Monitor 日志部署](../azure-monitor/logs/design-logs-deployment.md) 和 [Azure Monitor](../azure-monitor/overview.md)
 - Azure 安全中心的[规划](../security-center/security-center-planning-and-operations-guide.md)和[受支持的平台](../security-center/security-center-os-coverage.md)
-- [启用用于 VM 的 Azure Monitor 概述](../azure-monitor/insights/vminsights-enable-overview.md)
+- [启用用于 VM 的 Azure Monitor 概述](../azure-monitor/vm/vminsights-enable-overview.md)
 - [什么是启用了 Azure Arc 的服务器？](../azure-arc/servers/overview.md)[什么是启用 Azure Arc Kubernetes？](../azure-arc/kubernetes/overview.md)
 - [更新管理概述](../automation/update-management/overview.md)
 
@@ -59,7 +59,7 @@ Azure Automation 中的 azure 更新管理在混合环境中为 Windows 和 Linu
 
 1.  在将 Log Analytics 添加到 Azure 更新管理之前，首先需要 [创建一个 Azure 自动化帐户](../automation/automation-create-standalone-account.md)。 如果你喜欢使用模板创建帐户，请参阅[使用 Azure 资源管理器模板创建自动化帐户](../automation/quickstart-create-automation-account-template.md)。
 
-2. **Log Analytics 工作区** 使用 Log Analytics 代理或扩展启用日志收集和性能计数器收集。 若要创建 Log Analytics 工作区，请参阅 [在 Azure 门户中创建 Log Analytics 工作区](../azure-monitor/learn/quick-create-workspace.md)。 如果愿意，还可以通过 [CLI](../azure-monitor/learn/quick-create-workspace-cli.md)、 [PowerShell](../azure-monitor/platform/powershell-workspace-configuration.md)或 [Azure 资源管理器模板](../azure-monitor/samples/resource-manager-workspace.md)创建工作区。
+2. **Log Analytics 工作区** 使用 Log Analytics 代理或扩展启用日志收集和性能计数器收集。 若要创建 Log Analytics 工作区，请参阅 [在 Azure 门户中创建 Log Analytics 工作区](../azure-monitor/logs/quick-create-workspace.md)。 如果愿意，还可以通过 [CLI](../azure-monitor/logs/quick-create-workspace-cli.md)、 [PowerShell](../azure-monitor/logs/powershell-workspace-configuration.md)或 [Azure 资源管理器模板](../azure-monitor/logs/resource-manager-workspace.md)创建工作区。
 
 3. 若要为 Vm 启用 Azure 更新管理，请参阅 [从自动化帐户启用更新管理](../automation/update-management/enable-from-automation-account.md)。 在此过程中，你需要将 Log Analytics 工作区与自动化帐户相链接。 
  
@@ -99,22 +99,14 @@ Azure Arc 将 Azure 管理扩展到任何基础结构，包括 Azure VMware 解�
 
 Azure Monitor 是一种全面的解决方案，用于从云和本地环境收集、分析和操作遥测数据。 它不需要部署。 利用 Azure Monitor，你可以监视来宾操作系统的性能，并发现和映射 Azure VMware 解决方案或本地 Vm 的应用程序依赖项。
 
-- Azure Monitor 允许收集来自不同源的数据以进行监视和分析。 有关详细信息，请参阅 [Azure Monitor 的监视数据源](../azure-monitor/platform/data-sources.md)。
+- Azure Monitor 允许收集来自不同源的数据以进行监视和分析。 有关详细信息，请参阅 [Azure Monitor 的监视数据源](../azure-monitor/agents/data-sources.md)。
 
-- 收集各种类型的数据以进行分析、可视化和警报。 有关详细信息，请参阅 [Azure Monitor 数据平台](../azure-monitor/platform/data-platform.md)。
+- 收集各种类型的数据以进行分析、可视化和警报。 有关详细信息，请参阅 [Azure Monitor 数据平台](../azure-monitor/data-platform.md)。
 
-- 若要配置 Log Analytics 工作区 Azure Monitor，请参阅为 [用于 VM 的 Azure Monitor 配置 Log Analytics 工作区](../azure-monitor/insights/vminsights-configure-workspace.md)。
+- 若要配置 Log Analytics 工作区 Azure Monitor，请参阅为 [用于 VM 的 Azure Monitor 配置 Log Analytics 工作区](../azure-monitor/vm/vminsights-configure-workspace.md)。
 
 - 你可以创建警报规则，以确定你的环境中的问题，例如资源的高使用、缺少修补程序、磁盘空间不足和 Vm 的检测信号。 你还可以通过向 IT 服务管理 (ITSM) 工具发送警报，来设置对检测到的事件的自动响应。 还可以通过电子邮件发送警报检测通知。 若要创建此类规则，请参阅：
-    - [使用 Azure Monitor 创建、查看和管理指标警报](../azure-monitor/platform/alerts-metric.md)。
-    - [使用 Azure Monitor 创建、查看和管理日志警报](../azure-monitor/platform/alerts-log.md)。
-    - 用于设置自动操作和通知的[操作规则](../azure-monitor/platform/alerts-action-rules.md)。
-    - [使用 IT 服务管理连接器将 Azure 连接到 ITSM 工具](../azure-monitor/platform/itsmc-overview.md)。
-    
- ## <a name="next-steps"></a>后续步骤
-
-现在，你已介绍使用 Azure 的本机工具来管理 Azure VMware 解决方案 Vm 的整个生命周期，你可能想要了解：
-
-- [通过 Azure 安全中心保护 Azure VMware 解决方案 vm](azure-security-integration.md)。
-- [设置 Azure VMware 解决方案的 Azure 备份服务器](set-up-backup-server-for-azure-vmware-solution.md)。
-- [将 Azure VMware 解决方案集成到中心和辐射型体系结构中](concepts-hub-and-spoke.md)。
+    - [使用 Azure Monitor 创建、查看和管理指标警报](../azure-monitor/alerts/alerts-metric.md)。
+    - [使用 Azure Monitor 创建、查看和管理日志警报](../azure-monitor/alerts/alerts-log.md)。
+    - 用于设置自动操作和通知的[操作规则](../azure-monitor/alerts/alerts-action-rules.md)。
+    - [使用 IT 服务管理连接器将 Azure 连接到 ITSM 工具](../azure-monitor/alerts/itsmc-overview.md)。

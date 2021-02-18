@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/28/2020
 ms.author: yelevin
-ms.openlocfilehash: 9c100ca82b751a050e74cce85e1794701a789288
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: f9b50c831b435a6189a9b9e4d79a934a2661b033
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95498463"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570408"
 ---
 # <a name="permissions-in-azure-sentinel"></a>Azure Sentinel 中的权限
 
@@ -91,7 +91,7 @@ Azure Sentinel 使用 azure [RBAC)  (azure 基于角色的访问控制 ](../role
 
 - 除了或使用 Azure 内置角色，你还可以为 Azure Sentinel 创建 Azure 自定义角色。 Azure Sentinel 的 azure 自定义角色的创建方式与创建其他[azure 自定义角色](../role-based-access-control/custom-roles-rest.md#create-a-custom-role)的方式相同，具体取决于 azure Sentinel 和[azure Log Analytics 资源](../role-based-access-control/resource-provider-operations.md#microsoftoperationalinsights)的[特定权限](../role-based-access-control/resource-provider-operations.md#microsoftsecurityinsights)。
 
-- 可以在 Azure Sentinel 工作区中的数据上使用基于 Log Analytics 高级 Azure 角色的访问控制。 这包括基于数据类型的 Azure RBAC 和以资源为中心的 Azure RBAC。 有关 Log Analytics 角色的详细信息，请参阅 [在 Azure Monitor 中管理日志数据和工作区](../azure-monitor/platform/manage-access.md#manage-access-using-workspace-permissions)。
+- 可以在 Azure Sentinel 工作区中的数据上使用基于 Log Analytics 高级 Azure 角色的访问控制。 这包括基于数据类型的 Azure RBAC 和以资源为中心的 Azure RBAC。 有关 Log Analytics 角色的详细信息，请参阅[ Azure Monitor 中的日志数据和工作区](../azure-monitor/logs/manage-access.md#manage-access-using-workspace-permissions)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 09/28/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 1cc2cd1a7c5c16b1f9d1542e3f2d14dc030bb090
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: d1e51552acdd869a3f304a6d48e18e9d2aa6c782
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97586544"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576779"
 ---
 # <a name="monitor-azure-file-sync"></a>监视 Azure 文件同步
 
@@ -56,7 +56,7 @@ Azure Monitor 提供了下列 Azure 文件同步指标：
 
 ### <a name="alerts"></a>警报
 
-在监视数据中发现重要情况时，警报会以主动的方式通知你。 若要详细了解如何在 Azure Monitor 中配置警报，请参阅 [Microsoft Azure 中的警报概述](../../azure-monitor/platform/alerts-overview.md)。
+在监视数据中发现重要情况时，警报会以主动的方式通知你。 若要详细了解如何在 Azure Monitor 中配置警报，请参阅 [Microsoft Azure 中的警报概述](../../azure-monitor/alerts/alerts-overview.md)。
 
 **如何创建 Azure 文件同步的警报**
 
@@ -72,7 +72,7 @@ Azure Monitor 提供了下列 Azure 文件同步指标：
 
 下表列出了一些要监视的示例方案和用于警报的适当指标：
 
-| 场景 | 用于警报的指标 |
+| 方案 | 用于警报的指标 |
 |-|-|
 | 服务器终结点运行状况在门户中显示错误 | 同步会话结果 |
 | 文件未能同步到服务器或云终结点 | 未同步的文件 |
@@ -101,7 +101,7 @@ Azure Monitor 提供了下列 Azure 文件同步指标：
 ![已注册的服务器运行状况的屏幕截图](media/storage-sync-files-troubleshoot/file-sync-registered-servers.png)
 
 - 如果 **已注册的服务器** 状态为 " **联机**"，则服务器将成功与服务进行通信。
-- 如果 **已注册的服务器** 状态 **显示** 为 "脱机"，则存储同步监视器进程 ( # A0) 未运行，或者服务器无法访问 Azure 文件同步服务。 有关指南，请参阅 [故障排除文档](./storage-sync-files-troubleshoot.md?tabs=portal1%252cazure-portal#server-endpoint-noactivity) 。
+- 如果 **已注册的服务器** 状态 **显示** 为 "脱机"，则存储同步监视器进程 (AzureStorageSyncMonitor.exe) 未运行，或者服务器无法访问 Azure 文件同步服务。 有关指南，请参阅 [故障排除文档](./storage-sync-files-troubleshoot.md?tabs=portal1%252cazure-portal#server-endpoint-noactivity) 。
 
 ### <a name="server-endpoint-health"></a>服务器终结点运行状况
 
@@ -174,7 +174,7 @@ Azure Monitor 提供了下列 Azure 文件同步指标：
 
 使用服务器上的 Azure 文件同步性能计数器来监视同步活动。
 
-若要在服务器上查看 Azure 文件同步性能计数器，请打开 # A0)  ( 的性能监视器。 可以在 "已 **传输的 Afs 字节** " 和 " **afs 同步操作** " 对象下找到计数器。
+若要在服务器上查看 Azure 文件同步性能计数器，请打开性能监视器 (Perfmon.exe) "。 可以在 "已 **传输的 Afs 字节** " 和 " **afs 同步操作** " 对象下找到计数器。
 
 性能监视器提供了下列 Azure 文件同步性能计数器：
 

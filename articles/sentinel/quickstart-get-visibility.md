@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc, fasttrack-edit
 ms.date: 09/16/2020
 ms.author: yelevin
-ms.openlocfilehash: 369847810cdb7f7e93a13f5d410f226d3663080d
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 384c6df86b4aadb117bb31b4604fa4c2ffcda09a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96188575"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570585"
 ---
 # <a name="quickstart-get-started-with-azure-sentinel"></a>快速入门：Azure Sentinel 入门
 
@@ -52,7 +52,7 @@ ms.locfileid: "96188575"
 
 ## <a name="use-built-in-workbooks"></a>使用内置工作簿<a name="dashboards"></a>
 
-内置工作簿提供连接的数据源中的集成数据，让你深入调查这些服务中生成的事件。 内置工作簿包括 Azure AD、Azure 活动事件和本地信息，这些数据可能来自服务器的 Windows 事件、第一方警报或任何第三方（包括防火墙流量日志、Office 365 和基于 Windows 事件的不安全协议）。 这些工作簿基于 Azure Monitor 工作簿，为你提供增强的可定制性和灵活性，方便你设计自己的工作簿。 有关详细信息，请参阅[工作簿](../azure-monitor/platform/workbooks-overview.md)。
+内置工作簿提供连接的数据源中的集成数据，让你深入调查这些服务中生成的事件。 内置工作簿包括 Azure AD、Azure 活动事件和本地信息，这些数据可能来自服务器的 Windows 事件、第一方警报或任何第三方（包括防火墙流量日志、Office 365 和基于 Windows 事件的不安全协议）。 这些工作簿基于 Azure Monitor 工作簿，为你提供增强的可定制性和灵活性，方便你设计自己的工作簿。 有关详细信息，请参阅[工作簿](../azure-monitor/visualize/workbooks-overview.md)。
 
 1. 在“设置”下，选择“工作簿”。 在“已安装”下，可以看到所有已安装的工作簿。 在“全部”下，可以看到可供安装的整个内置工作簿库。 
 2. 搜索特定的工作簿以查看整个列表，以及每个工作簿的功能说明。 
@@ -66,14 +66,14 @@ ms.locfileid: "96188575"
       ![Palo Alto 仪表板](./media/qs-get-visibility/palo-alto-week-query.png)
 
 
-可以通过编辑主要查询![查询编辑按钮](./media/qs-get-visibility/edit-query-button.png)来自定义工作簿。 可以单击按钮 ![Log Analytics 按钮](./media/qs-get-visibility/go-to-la-button.png)转到 [Log Analytics 以编辑查询](../azure-monitor/log-query/log-analytics-tutorial.md)；可以选择省略号 (...) 并选择“自定义磁贴数据”，以编辑主要时间筛选器，或者从工作簿中删除特定的磁贴。
+可以通过编辑主要查询![查询编辑按钮](./media/qs-get-visibility/edit-query-button.png)来自定义工作簿。 可以单击按钮 ![Log Analytics 按钮](./media/qs-get-visibility/go-to-la-button.png)转到 [Log Analytics 以编辑查询](../azure-monitor/logs/log-analytics-tutorial.md)；可以选择省略号 (...) 并选择“自定义磁贴数据”，以编辑主要时间筛选器，或者从工作簿中删除特定的磁贴。
 
-有关使用查询的详细信息，请参阅[教程：Log Analytics 中的视觉数据](../azure-monitor/learn/tutorial-logs-dashboards.md)
+有关使用查询的详细信息，请参阅[教程：Log Analytics 中的视觉数据](../azure-monitor/visualize/tutorial-logs-dashboards.md)
 
 ### <a name="add-a-new-tile"></a>添加新磁贴
 
 若要添加新磁贴，可将其添加到现有工作簿 - 你创建的工作簿，或 Azure Sentinel 的内置工作簿。 
-1. 在 Log Analytics 中，遵照以下教程中的说明创建磁贴：[教程：Log Analytics 中的视觉数据](../azure-monitor/learn/tutorial-logs-dashboards.md)。 
+1. 在 Log Analytics 中，遵照以下教程中的说明创建磁贴：[教程：Log Analytics 中的视觉数据](../azure-monitor/visualize/tutorial-logs-dashboards.md)。 
 2. 创建磁贴后，在“固定”下，选择要在其中显示该磁贴的工作簿。
 
 ## <a name="create-new-workbooks"></a>创建新工作簿

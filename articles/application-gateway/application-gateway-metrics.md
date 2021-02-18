@@ -7,16 +7,16 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 06/06/2020
 ms.author: surmb
-ms.openlocfilehash: be629d9f8441ad40fe15f005f4aeb0ec5565a7ec
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 9faa3a284aa7151880526c1ee70cfadc3dbf3089
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96437059"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576109"
 ---
 # <a name="metrics-for-application-gateway"></a>应用程序网关的指标
 
-应用程序网关会将称为“指标”的数据点发布到 [Azure Monitor](../azure-monitor/overview.md)，使用户能够监视应用程序网关和后端实例的性能。 这些指标是一组有序时序数据中的数值，用于描述应用程序网关在特定时间的某种状况。 如果请求通过应用程序网关传送，则应用程序网关将会测量其指标并每隔 60 秒发送一次指标。 如果没有任何请求通过应用程序网关传送，或者指标没有数据，则不会报告指标。 有关详细信息，请参阅 [Azure Monitor 指标](../azure-monitor/platform/data-platform-metrics.md)。
+应用程序网关会将称为“指标”的数据点发布到 [Azure Monitor](../azure-monitor/overview.md)，使用户能够监视应用程序网关和后端实例的性能。 这些指标是一组有序时序数据中的数值，用于描述应用程序网关在特定时间的某种状况。 如果请求通过应用程序网关传送，则应用程序网关将会测量其指标并每隔 60 秒发送一次指标。 如果没有任何请求通过应用程序网关传送，或者指标没有数据，则不会报告指标。 有关详细信息，请参阅 [Azure Monitor 指标](../azure-monitor/essentials/data-platform-metrics.md)。
 
 ## <a name="metrics-supported-by-application-gateway-v2-sku"></a>应用程序网关 V2 SKU 支持的指标
 
@@ -162,7 +162,7 @@ ms.locfileid: "96437059"
 
 - **失败的请求数**
 
-  由于连接问题而失败的请求数。 此计数包括由于超过 "请求超时" HTTP 设置而失败的请求，以及因应用程序网关和后端之间的连接问题而失败的请求。 此计数不包括可用的正常后端，导致失败。 来自后端的4xx 和5xx 响应也不被视为此指标的一部分。
+  因连接问题而失败的请求数。 此计数包括由于超过“请求超时”HTTP 设置而失败的请求，以及由于应用程序网关和后端之间的连接问题而失败的请求。 此计数不包括由于没有可用的正常后端而导致的失败。 来自后端的 4xx 和 5xx 响应也不被视为此指标的一部分。
 
 - **响应状态**
 
@@ -200,7 +200,7 @@ ms.locfileid: "96437059"
 
 :::image type="content" source="media/application-gateway-diagnostics/figure5.png" alt-text="指标视图。" lightbox="media/application-gateway-diagnostics/figure5-lb.png":::
 
-若要查看当前的指标列表，请参阅 [Azure Monitor 支持的指标](../azure-monitor/platform/metrics-supported.md)。
+若要查看当前的指标列表，请参阅 [Azure Monitor 支持的指标](../azure-monitor/essentials/metrics-supported.md)。
 
 ### <a name="alert-rules-on-metrics"></a>有关指标的警报规则
 
@@ -230,9 +230,9 @@ ms.locfileid: "96437059"
 
 ![警报和规则列表][9]
 
-若要了解有关警报通知的详细信息，请参阅[接收警报通知](../azure-monitor/platform/alerts-overview.md)。
+若要了解有关警报通知的详细信息，请参阅[接收警报通知](../azure-monitor/alerts/alerts-overview.md)。
 
-若要了解有关 webhook 的详细信息以及如何将其与警报一起使用的详细信息，请参阅 [针对 Azure 指标警报配置 webhook](../azure-monitor/platform/alerts-webhooks.md)。
+若要了解有关 webhook 的详细信息以及如何将其与警报一起使用的详细信息，请参阅 [针对 Azure 指标警报配置 webhook](../azure-monitor/alerts/alerts-webhooks.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

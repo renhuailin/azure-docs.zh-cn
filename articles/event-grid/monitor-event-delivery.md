@@ -3,12 +3,12 @@ title: 查看 Azure 事件网格指标和设置警报
 description: 本文介绍如何使用 Azure 门户查看 Azure 事件网格主题和订阅的指标，并创建相关警报。
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 518d34d39e6fbecc408fe9a44d899fe4745d60d0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 8f8d7e15475ce74dc1af55dc7f6116d5d8b79cc8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96008950"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577401"
 ---
 # <a name="monitor-event-grid-message-delivery"></a>监视事件网格消息传送 
 本文介绍如何使用门户查看事件网格主题和订阅的指标，并创建相关警报。 
@@ -52,7 +52,7 @@ ms.locfileid: "96008950"
 
 :::image type="content" source="./media/monitor-event-delivery/topics-metrics-page.png" alt-text="“主题 - 指标”页":::
 
-若要详细了解指标，请参阅 [Azure Monitor 中的指标](../azure-monitor/platform/data-platform-metrics.md)
+若要详细了解指标，请参阅 [Azure Monitor 中的指标](../azure-monitor/essentials/data-platform-metrics.md)
 
 有关示例，请参阅“已发布事件”指标的指标图表。
 
@@ -91,7 +91,7 @@ ms.locfileid: "96008950"
 
 :::image type="content" source="./media/monitor-event-delivery/system-topic-metrics-page.png" alt-text="“系统主题 - 指标”页":::
 
-若要详细了解指标，请参阅 [Azure Monitor 中的指标](../azure-monitor/platform/data-platform-metrics.md)
+若要详细了解指标，请参阅 [Azure Monitor 中的指标](../azure-monitor/essentials/data-platform-metrics.md)
 
 
 ## <a name="next-steps"></a>后续步骤

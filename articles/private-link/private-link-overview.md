@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 01/28/2021
 ms.author: allensu
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: 681e4efc8a9edda896249fdc939d19b4f644f246
-ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
+ms.openlocfilehash: 34223298dbf0dad9d9214676a5190bef063a8228
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98986473"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577031"
 ---
 # <a name="what-is-azure-private-link"></a>什么是 Azure 专用链接？ 
 使用 Azure 专用链接，可以通过虚拟网络中的[专用终结点](private-endpoint-overview.md)访问 Azure PaaS 服务（例如，Azure 存储和 SQL 数据库）和 Azure 托管的客户拥有的服务/合作伙伴服务。
@@ -70,7 +70,7 @@ Azure 专用链接提供以下优势：
 | Azure 自动化  | 所有公共区域<br/> 所有政府区域 |  | 预览 </br> [了解如何为 Azure 自动化服务创建专用终结点。](../automation/how-to/private-link-security.md)| |
 | Azure IoT 中心 | 所有公共区域    |  | GA   <br/> [了解如何为 Azure IoT 中心创建专用终结点。](../iot-hub/virtual-network-support.md) |
 | Azure SignalR | 美国东部、美国中南部、<br/>美国西部 2、所有中国区域      |  | 预览   <br/> [了解如何为 Azure SignalR 创建专用终结点。](../azure-signalr/howto-private-endpoints.md)   |
-| Azure Monitor <br/>（Log Analytics 和 Application Insights） | 所有公共区域      |  | GA   <br/> [了解如何为 AAzure Monitor 创建专用终结点。](../azure-monitor/platform/private-link-security.md)   | 
+| Azure Monitor <br/>（Log Analytics 和 Application Insights） | 所有公共区域      |  | GA   <br/> [了解如何为 AAzure Monitor 创建专用终结点。](../azure-monitor/logs/private-link-security.md)   | 
 | Azure Batch | 除以下区域外的所有公共区域：德国中部、德国东北部 <br/> 所有政府区域  | | GA <br/> [了解如何为 Azure Batch 创建专用终结点。](../batch/private-connectivity.md) |
 |Azure 数据工厂 | 所有公共区域<br/> 所有政府区域<br/>所有中国区域    | 凭据需要存储在某个 Azure 密钥保管库中| GA   <br/> [了解如何为 Azure 数据工厂创建专用终结点。](../data-factory/data-factory-private-link.md)   |
 |Azure 托管磁盘 | 所有公共区域<br/> 所有政府区域<br/>所有中国区域    | [单击此处了解已知限制](../virtual-machines/disks-enable-private-links-for-import-export-portal.md#limitations) | GA   <br/> [了解如何为 Azure 托管磁盘创建专用终结点。](../virtual-machines/disks-enable-private-links-for-import-export-portal.md)   |

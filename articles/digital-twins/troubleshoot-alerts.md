@@ -7,18 +7,18 @@ ms.author: baanders
 ms.date: 7/28/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 057a1b08095a71e2fca6119f5b63bfdc787eea88
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.openlocfilehash: 461d7a82854ce62ee99eef1227c13c7a8f0371e2
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94616596"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594871"
 ---
 # <a name="troubleshooting-azure-digital-twins-alerts"></a>排查 Azure 数字孪生：警报
 
 Azure 数字孪生收集提供有关资源状态的信息的服务实例的 [指标](troubleshoot-metrics.md) 。 你可以使用这些度量值来评估 Azure 数字孪生服务及其连接到的资源的整体运行状况。
 
-当发现指标数据有重要条件时， **警报** 会主动通知您。 有了警报，你就可以在系统的用户注意到问题之前确定和解决这些问题。 可以在 [*Microsoft Azure 中的警报概述*](../azure-monitor/platform/alerts-overview.md)中阅读有关警报的详细信息。
+当发现指标数据有重要条件时，**警报** 会主动通知您。 有了警报，你就可以在系统的用户注意到问题之前确定和解决这些问题。 可以在 [*Microsoft Azure 中的警报概述*](../azure-monitor/alerts/alerts-overview.md)中阅读有关警报的详细信息。
 
 ## <a name="turn-on-alerts"></a>启用警报
 
@@ -26,7 +26,7 @@ Azure 数字孪生收集提供有关资源状态的信息的服务实例的 [指
 
 1. 登录到 [Azure 门户](https://portal.azure.com) 并导航到 Azure 数字孪生实例。 可以通过在门户搜索栏中键入其名称来找到它。 
 
-2. 从菜单中选择 " **警报** "，然后选择 " **+ 新建警报规则** "。
+2. 从菜单中选择 " **警报** "，然后选择 " **+ 新建警报规则**"。
 
 3. 在下面的 " *创建警报规则* " 页上，你可以按照提示定义条件、要触发的操作和警报详细信息。     
     * **作用域** 详细信息应自动填写实例的详细信息
@@ -38,7 +38,7 @@ Azure 数字孪生收集提供有关资源状态的信息的服务实例的 [指
 
 :::image type="content" source="media/troubleshoot-alerts/create-alert-rule.png" alt-text="显示 &quot;创建警报规则&quot; 页的屏幕截图，其中包含作用域、条件、操作组和警报规则详细信息的部分" lightbox="media/troubleshoot-alerts/create-alert-rule.png":::
 
-有关填写这些字段的指导演练，请参阅 [*Microsoft Azure 中的警报概述*](../azure-monitor/platform/alerts-overview.md)。 下面是 Azure 数字孪生步骤的一些示例。
+有关填写这些字段的指导演练，请参阅 [*Microsoft Azure 中的警报概述*](../azure-monitor/alerts/alerts-overview.md)。 下面是 Azure 数字孪生步骤的一些示例。
 
 ### <a name="select-conditions"></a>选择条件
 
@@ -58,6 +58,6 @@ Azure 数字孪生收集提供有关资源状态的信息的服务实例的 [指
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关 Azure Monitor 警报的详细信息，请参阅 [*Microsoft Azure 中的警报概述*](../azure-monitor/platform/alerts-overview.md)。
+* 有关 Azure Monitor 警报的详细信息，请参阅 [*Microsoft Azure 中的警报概述*](../azure-monitor/alerts/alerts-overview.md)。
 * 有关 Azure 数字孪生指标的信息，请参阅 [*故障排除：查看包含 Azure Monitor 的指标*](troubleshoot-metrics.md)。
 * 若要了解如何启用指标的诊断日志记录，请参阅 [*故障排除：设置诊断*](troubleshoot-diagnostics.md)。

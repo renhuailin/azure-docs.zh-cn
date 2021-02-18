@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: b160f6641cced1e4ea6af1eac225d92abe26a631
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 8b9f4a5afa039a08b92d6261db68aeba68055b67
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100380264"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577718"
 ---
 # <a name="azure-security-baseline-for-azure-app-configuration"></a>Azure 应用程序配置的 Azure 安全基线
 
@@ -602,9 +602,9 @@ Azure 安全中心还可针对某些可疑活动发出警报，例如，失败�
 
 **指导**：自动可用的活动日志包含针对应用程序配置资源的所有写入操作（PUT、POST、DELETE），但读取操作 (GET) 除外。 活动日志可用于在进行故障排除时查找错误，或监视组织中的用户如何对资源进行修改。 对于应用程序配置，活动日志仅可用于控制平面，并由 Azure 资源管理器 (ARM) 显示。 目前不支持面向客户的应用程序配置的数据平面日志记录。 也不能配置 Azure 资源日志。
 
-- [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/platform/diagnostic-settings.md)
+- [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/essentials/diagnostic-settings.md)
 
-- [了解 Azure 中的日志记录和不同的日志类型](../azure-monitor/platform/platform-logs-overview.md)
+- [了解 Azure 中的日志记录和不同的日志类型](../azure-monitor/essentials/platform-logs-overview.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -618,7 +618,7 @@ Azure 安全中心还可针对某些可疑活动发出警报，例如，失败�
 
 另外，请启用 Azure Sentinel 或第三方 SIEM 并将数据载入其中。 许多组织选择将 Azure Sentinel 用于频繁使用的“热”数据，并将 Azure 存储用于不太频繁使用的“冷”数据。
 
-- [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/platform/diagnostic-settings.md) 
+- [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/essentials/diagnostic-settings.md) 
 
 - [如何加入 Azure Sentinel](../sentinel/quickstart-onboard.md)
 
@@ -632,9 +632,9 @@ Azure 安全中心还可针对某些可疑活动发出警报，例如，失败�
 
 在 Azure Monitor 中，可根据组织的合规性规则设置 Log Analytics 工作区保持期。
 
-- [如何配置 Log Analytics 工作区保留期](../azure-monitor/platform/manage-cost-storage.md)
+- [如何配置 Log Analytics 工作区保留期](../azure-monitor/logs/manage-cost-storage.md)
 
-- [在 Azure 存储帐户中存储资源日志](../azure-monitor/platform/resource-logs.md#send-to-azure-storage)
+- [在 Azure 存储帐户中存储资源日志](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)
 
 **Azure 安全中心监视**：不适用
 
