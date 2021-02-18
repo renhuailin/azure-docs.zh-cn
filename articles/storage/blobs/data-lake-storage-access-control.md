@@ -5,15 +5,15 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/16/2020
+ms.date: 02/17/2021
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 2a1455c5956297a19d640146879f93b61d035139
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: c1e2b6abe378df1450967ee0e1df6021ca0d5744
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98185897"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100650365"
 ---
 # <a name="access-control-lists-acls-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 中的访问控制列表 (ACL)
 
@@ -28,18 +28,20 @@ Azure Data Lake Storage Gen2 实现了一个访问控制模型，该模型支持
 > [!NOTE]
 > ACL 仅应用于同一个租户中的安全主体，不应用于使用共享密钥或共享访问签名 (SAS) 令牌身份验证的用户。 那是因为没有与调用方关联的标识，因此不能执行基于安全主体权限的授权。  
 
+<a id="set-access-control-lists"></a>
+
 ## <a name="how-to-set-acls"></a>如何设置 ACL
 
 若要设置文件和目录级权限，请参阅以下任一文章：
 
 | 环境 | 项目 |
 |--------|-----------|
-|Azure 存储资源管理器 |[使用 Azure 存储资源管理器管理 Azure Data Lake Storage Gen2 中的目录、文件和 ACL](data-lake-storage-explorer.md#managing-access)|
-|.NET |[使用 .NET 管理 Azure Data Lake Storage Gen2 中的目录、文件和 ACL](data-lake-storage-directory-file-acl-dotnet.md#manage-access-control-lists-acls)|
-|Java|[使用 Java 管理 Azure Data Lake Storage Gen2 中的目录、文件和 ACL](data-lake-storage-directory-file-acl-java.md#manage-access-control-lists-acls)|
-|Python|[使用 Python 管理 Azure Data Lake Storage Gen2 中的目录、文件和 ACL](data-lake-storage-directory-file-acl-python.md#manage-access-control-lists-acls)|
-|PowerShell|[使用 PowerShell 管理 Azure Data Lake Storage Gen2 中的目录、文件和 ACL](data-lake-storage-directory-file-acl-powershell.md#manage-access-control-lists-acls)|
-|Azure CLI|[使用 Azure CLI 管理 Azure Data Lake Storage Gen2 中的目录、文件和 ACL](data-lake-storage-directory-file-acl-cli.md#manage-access-control-lists-acls)|
+|Azure 存储资源管理器 |[使用 Azure 存储资源管理器设置 Azure Data Lake Storage Gen2 中的 Acl](data-lake-storage-explorer-acl.md)|
+|.NET |[使用 .NET 设置 Azure Data Lake Storage Gen2 中的 Acl](data-lake-storage-acl-dotnet.md)|
+|Java|[使用 Java 在 Azure Data Lake Storage Gen2 中设置 Acl](data-lake-storage-acl-java.md)|
+|Python|[使用 Python 在 Azure Data Lake Storage Gen2 中设置 Acl](data-lake-storage-acl-python.md)|
+|PowerShell|[使用 PowerShell 设置 Azure Data Lake Storage Gen2 中的 Acl](data-lake-storage-acl-powershell.md)|
+|Azure CLI|[使用 Azure CLI 设置 Azure Data Lake Storage Gen2 中的 Acl](data-lake-storage-acl-cli.md)|
 |REST API |[路径 - 更新](/rest/api/storageservices/datalakestoragegen2/path/update)|
 
 > [!IMPORTANT]
@@ -60,7 +62,7 @@ Azure Data Lake Storage Gen2 实现了一个访问控制模型，该模型支持
 
 ## <a name="levels-of-permission"></a>权限级别
 
-容器中的目录和文件的权限为 " **读取**"、" **写入**" 和 " **执行**"，可用于文件和目录，如下表所示：
+容器中目录和文件的权限为“读取”、“写入”和“执行”，可对文件和目录使用这些权限，如下表所示：  
 
 |            |    文件     |   Directory |
 |------------|-------------|----------|
@@ -69,7 +71,7 @@ Azure Data Lake Storage Gen2 实现了一个访问控制模型，该模型支持
 | **执行 (X)** | 不表示 Data Lake Storage Gen2 上下文中的任何内容 | 需要遍历目录的子项 |
 
 > [!NOTE]
-> 如果你使用的是仅使用 Acl (没有 Azure RBAC) 的权限，则若要授予安全主体对文件的读取或写入访问权限，你需要为容器的根文件夹以及导致文件的文件夹层次结构中的每个文件夹授予安全主体 **执行** 权限。
+> 如果仅使用 ACL（不使用 Azure RBAC）授予权限，则要授予安全主体对文件的读取或写入访问权限，需要授予安全主体对容器根文件夹以及通向该文件的文件夹层次结构中每个文件夹的“执行”权限。
 
 ### <a name="short-forms-for-permissions"></a>权限的简短形式
 

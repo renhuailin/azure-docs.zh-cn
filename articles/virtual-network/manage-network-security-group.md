@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/13/2020
 ms.author: kumud
-ms.openlocfilehash: d42e0f5594fdde55f1b4183a806e388658e86dc3
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 5070b64c3900aa4ee1cf51519c7b64362ac37413
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222932"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596674"
 ---
 # <a name="create-change-or-delete-a-network-security-group"></a>创建、更改或删除网络安全组
 
@@ -93,7 +93,7 @@ ms.locfileid: "98222932"
 
 要了解有关列出的常见 Azure 设置的详细信息，请参阅以下文章：
 
-- [活动日志](../azure-monitor/platform/platform-logs-overview.md)
+- [活动日志](../azure-monitor/essentials/platform-logs-overview.md)
 - [访问控制 (IAM)](../role-based-access-control/overview.md)
 - [标记](../azure-resource-manager/management/tag-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - [锁](../azure-resource-manager/management/lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
