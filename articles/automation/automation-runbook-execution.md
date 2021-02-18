@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 10/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 71273c456b14fa4ea289e2a48d441de99ce8a4b1
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: ca28d5829689dca46bbf3a94ce7c1591c20cf7b0
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99053901"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100586053"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>在 Azure 自动化中执行 Runbook
 
@@ -85,18 +85,18 @@ Runbook 需要适当[凭据](shared-resources/credentials.md)才能访问任何�
 
 ## <a name="azure-monitor"></a>Azure Monitor
 
-Azure 自动化利用 [Azure Monitor](../azure-monitor/overview.md) 来监视其计算机操作。 这些操作需要 Log Analytics 工作区和 [Log Analytics 代理](../azure-monitor/platform/log-analytics-agent.md)。
+Azure 自动化利用 [Azure Monitor](../azure-monitor/overview.md) 来监视其计算机操作。 这些操作需要 Log Analytics 工作区和 [Log Analytics 代理](../azure-monitor/agents/log-analytics-agent.md)。
 
 ### <a name="log-analytics-agent-for-windows"></a>适用于 Windows 的 Log Analytics 代理
 
-[适用于 Windows 的 Log Analytics 代理](../azure-monitor/platform/agent-windows.md)可与 Azure Monitor 配合使用，用于管理 Windows VM 和物理计算机。 这些计算机可以在 Azure 或非 Azure 环境（例如本地数据中心）中运行。
+[适用于 Windows 的 Log Analytics 代理](../azure-monitor/agents/agent-windows.md)可与 Azure Monitor 配合使用，用于管理 Windows VM 和物理计算机。 这些计算机可以在 Azure 或非 Azure 环境（例如本地数据中心）中运行。
 
 >[!NOTE]
 >适用于 Windows 的 Log Analytics 代理之前称为 Microsoft Monitoring Agent (MMA)。
 
 ### <a name="log-analytics-agent-for-linux"></a>适用于 Linux 的 Log Analytics 代理
 
-[适用于 Linux 的 Log Analytics 代理](../azure-monitor/platform/agent-linux.md)与适用于 Windows 的代理工作原理类似，但它将 Linux 计算机连接到 Azure Monitor。 安装此代理时需具有 nxautomation 用户帐户，该用户帐户允许执行需要根权限的命令，例如，在混合 Runbook 辅助角色上执行的命令。 nxautomation 帐户是不需要密码的系统帐户。
+[适用于 Linux 的 Log Analytics 代理](../azure-monitor/agents/agent-linux.md)与适用于 Windows 的代理工作原理类似，但它将 Linux 计算机连接到 Azure Monitor。 安装此代理时需具有 nxautomation 用户帐户，该用户帐户允许执行需要根权限的命令，例如，在混合 Runbook 辅助角色上执行的命令。 nxautomation 帐户是不需要密码的系统帐户。
 
 在[安装 Linux 混合 Runbook 辅助角色](automation-linux-hrw-install.md)期间，必须存在具有相应 sudo 权限的 nxautomation 帐户。 如果尝试安装辅助角色，但该帐户不存在或没有相应权限，则安装会失败。
 
@@ -145,7 +145,7 @@ Azure 自动化支持从同一自动化帐户运行作业的环境。 一个 run
 | 失败，正在等待资源 |作业失败，因为它已达到[公平份额](#fair-share)限制三次，并且每次都从同一个检查点或 Runbook 开始处启动。 |
 | 已排队 |作业正在等待自动化辅助角色上的资源变得可用，以便其能够启动。 |
 | 正在恢复 |系统正在恢复已暂停的作业。 |
-| 运行 |作业正在运行。 |
+| 正在运行 |作业正在运行。 |
 | 正在运行，正在等待资源 |作业已卸载，因为它已达到公平份额限制。 片刻之后，它将从其上一个检查点恢复。 |
 | 正在启动 |作业已分配给辅助角色，并且系统正在将它启动。 |
 | 已停止 |作业在完成之前已被用户停止。 |
@@ -157,7 +157,7 @@ Azure 自动化支持从同一自动化帐户运行作业的环境。 一个 run
 
 在 Azure 自动化中执行 runbook 会在自动化帐户的活动日志中写入详细信息。 有关如何使用日志的详细信息，请参阅[从活动日志中检索详细信息](manage-runbooks.md#retrieve-details-from-activity-log)。
 
-## <a name="exceptions"></a>异常
+## <a name="exceptions"></a>例外
 
 本部分介绍在 runbook 中处理异常或间歇性问题的一些方法。 一个示例是 WebSocket 异常。 正确的异常处理可防止暂时性网络故障导致 runbook 失败。
 

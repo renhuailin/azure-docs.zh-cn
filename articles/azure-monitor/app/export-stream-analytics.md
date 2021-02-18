@@ -3,12 +3,12 @@ title: 使用流分析从 Azure Application Insights 进行导出 | Microsoft Do
 description: 流分析可以持续转换、筛选和路由从 Application Insights 导出的数据。
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: e90daf2516b00f7a27ac47e34cfc4ace03fee6e2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c8486d7e5656a7770aec4a50739d3a9160e123e3
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90979187"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100584324"
 ---
 # <a name="use-stream-analytics-to-process-exported-data-from-application-insights"></a>使用流分析处理从 Application Insights 导出的数据
 [Azure 流分析](https://azure.microsoft.com/services/stream-analytics/)是用于处理[从 Application Insights 导出](export-telemetry.md)的数据的理想工具。 流分析可以从各种源提取数据。 它可以转换和筛选数据，然后将其路由到各种接收器。
@@ -55,12 +55,12 @@ ms.locfileid: "90979187"
 
     ![选择事件类型](./media/export-stream-analytics/080.png)
 
-1. 让我们累积一些数据。 请休息一下，让其他人先使用该应用程序一段时间。 应用程序中会逐渐传入遥测数据，[指标资源管理器](../platform/metrics-charts.md)中会显示统计图表，[诊断搜索](./diagnostic-search.md)中会显示各个事件。 
+1. 让我们累积一些数据。 请休息一下，让其他人先使用该应用程序一段时间。 应用程序中会逐渐传入遥测数据，[指标资源管理器](../essentials/metrics-charts.md)中会显示统计图表，[诊断搜索](./diagnostic-search.md)中会显示各个事件。 
    
     此外，数据将导出到存储。 
 2. 检查导出的数据 在 Visual Studio 中，请选择“查看”>“Cloud Explorer”，并打开“Azure”>“存储”。 （如果没有此菜单选项，则需要安装 Azure SDK：打开“新建项目”对话框，打开 Visual C# /云/获取用于 .NET 的 Microsoft Azure SDK。）
    
-    ![显示如何设置要查看的事件类型的屏幕截图。](./media/export-stream-analytics/04-data.png)
+    ![屏幕截图中显示了如何设置要查看的事件类型。](./media/export-stream-analytics/04-data.png)
    
     记下派生自应用程序名称和检测密钥的路径名称的共同部分。 
 
@@ -69,21 +69,21 @@ ms.locfileid: "90979187"
 ## <a name="create-an-azure-stream-analytics-instance"></a>创建 Azure 流分析实例
 在 [Azure 门户](https://portal.azure.com/)中，选择 Azure 流分析服务，并创建新的流分析作业：
 
-![屏幕截图，显示在 Azure 门户中创建流分析作业的主页。](./media/export-stream-analytics/SA001.png)
+![屏幕截图中显示了 Azure 门户中用于创建流分析作业的主页。](./media/export-stream-analytics/SA001.png)
 
-![显示创建新的流分析作业时所需的详细信息的屏幕截图。](./media/export-stream-analytics/SA002.png)
+![屏幕截图中显示了创建新的流分析作业时所需的详细信息。](./media/export-stream-analytics/SA002.png)
 
 创建新作业后，选择“转到资源”。
 
-![显示新的流分析作业部署成功时接收的消息的屏幕截图。](./media/export-stream-analytics/SA003.png)
+![屏幕截图中显示了新的流分析作业部署成功时接收到的消息。](./media/export-stream-analytics/SA003.png)
 
 ### <a name="add-a-new-input"></a>添加新输入
 
-![显示如何向流分析作业添加输入的屏幕截图。](./media/export-stream-analytics/SA004.png)
+![屏幕截图中显示了如何向流分析作业添加输入。](./media/export-stream-analytics/SA004.png)
 
 将此位置设置为从连续导出 Blob 接收输入：
 
-![屏幕截图，显示如何配置流分析作业以从连续导出 blob 中获取输入。](./media/export-stream-analytics/SA0005.png)
+![屏幕截图中显示了如何配置流分析作业以从连续导出 blob 中获取输入。](./media/export-stream-analytics/SA0005.png)
 
 现在需要使用存储帐户的主访问密钥（前面已记下此密钥）。 将此密钥设置为存储帐户密钥。
 
@@ -98,7 +98,7 @@ ms.locfileid: "90979187"
 在本示例中：
 
 * `webapplication27` 是 Application Insights 资源的名称，**采用全小写**。
-* `1234...` 是 Application Insights 资源的检测密钥，但**省略了短划线**。 
+* `1234...` 是 Application Insights 资源的检测密钥，但 **省略了短划线**。 
 * `PageViews` 是要分析的数据类型。 可用的类型取决于在连续导出中设置的筛选器。 检查导出的数据以查看其他可用类型，并查看[导出数据模型](export-data-model.md)。
 * `/{date}/{time}` 是以文本形式写入的模式。
 
@@ -109,12 +109,12 @@ ms.locfileid: "90979187"
 ## <a name="add-new-output"></a>添加新输出
 现在选择作业 >“输出” > “添加”。
 
-![显示选择流分析作业以添加新输出的屏幕截图。](./media/export-stream-analytics/SA006.png)
+![屏幕截图中显示了如何选择流分析作业以添加新输出。](./media/export-stream-analytics/SA006.png)
 
 
 ![选择新通道，并依次单击“输出”、“添加”、“Power BI”](./media/export-stream-analytics/SA010.png)
 
-提供**工作或学校帐户**，以授权流分析访问 Power BI 资源。 然后为输出、目标 Power BI 数据集和表指定名称。
+提供 **工作或学校帐户**，以授权流分析访问 Power BI 资源。 然后为输出、目标 Power BI 数据集和表指定名称。
 
 ## <a name="set-the-query"></a>设置查询
 查询控制从输入到输出的转换。
@@ -196,7 +196,7 @@ FROM flat
 
 现在，可以在 [Power BI](https://powerbi.microsoft.com) 中的报告和仪表板内使用此数据集。
 
-![屏幕截图显示了从 Power BI 中的数据集进行的报表示例。](./media/export-stream-analytics/210.png)
+![屏幕截图中显示了根据 Power BI 中的数据集生成的报告示例。](./media/export-stream-analytics/210.png)
 
 ## <a name="no-data"></a>没有数据？
 * 请检查是否已正确地将[日期格式设置](#set-path-prefix-pattern)为 YYYY-MM-DD（包括短划线）。

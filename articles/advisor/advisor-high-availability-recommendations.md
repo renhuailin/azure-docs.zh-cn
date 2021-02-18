@@ -3,12 +3,12 @@ title: 使用顾问提高应用程序的可靠性
 description: 使用 Azure 顾问确保并提高业务关键 Azure 部署的可靠性。
 ms.topic: article
 ms.date: 09/27/2020
-ms.openlocfilehash: 0ced690ae735a281fdf8b1c3a020ff8c63ce469b
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: c96b47f1ee145129f4c14c6646f93abeb8a5aac9
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078028"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579964"
 ---
 # <a name="improve-the-reliability-of-your-application-by-using-azure-advisor"></a>使用 Azure 顾问提高应用程序的可靠性
 
@@ -68,7 +68,7 @@ Azure 顾问会检查是否有任何使用基本 SKU 的 VPN 网关，并建议�
 
 ## <a name="ensure-availability-set-fault-tolerance-temporarily-disabled"></a>确保可用性集容错（暂时禁用）
 
-要为应用程序提供冗余，建议将两个或更多虚拟机分组到一个可用性集中。 顾问标识包含单个虚拟机的可用性集，并建议向其中添加一个或多个虚拟机。 这种配置可以确保在发生计划内或计划外维护期间，至少有一个虚拟机可用，并且它满足 Azure 虚拟机 SLA 要求。可以选择创建虚拟机，或将现有的虚拟机添加到可用性集。  
+要为应用程序提供冗余，建议将两个或更多虚拟机分组到一个可用性集中。 顾问标识包含单个虚拟机的可用性集，并建议向其中添加一个或多个虚拟机。  这种配置可以确保在发生计划内或计划外维护期间，至少有一个虚拟机可用，并且它满足 Azure 虚拟机 SLA 要求。 可以选择创建虚拟机，或将现有的虚拟机添加到可用性集。  
 
 ## <a name="use-managed-disks-to-improve-data-reliability-temporarily-disabled"></a>使用托管磁盘提高数据可靠性（暂时禁用）
 
@@ -76,7 +76,7 @@ Azure 顾问会检查是否有任何使用基本 SKU 的 VPN 网关，并建议�
 
 ## <a name="repair-invalid-log-alert-rules"></a>修复无效的日志警报规则
 
-Azure 顾问检测到在 "条件" 部分中指定了无效查询的日志警报规则。 Azure Monitor 日志警报规则按指定的频率运行查询，并基于结果激发警报。 由于引用的资源、表或命令发生了变化，查询可能会因时间而变得无效。 顾问建议对警报查询进行更正，以防止自动禁用规则并确保监视范围。 有关详细信息，请参阅 [警报规则疑难解答](../azure-monitor/platform/alerts-troubleshoot-log.md#query-used-in-a-log-alert-isnt-valid)
+Azure 顾问会检测到在其条件部分指定了无效查询的日志警报规则。 Azure Monitor 日志警报规则按指定的频率运行查询，并根据结果触发警报。 随着时间的推移，查询可能会因所引用资源、表或命令的变化而变得无效。 顾问建议对警报查询进行更正，以防止自动禁用规则并确保监视范围。 有关详细信息，请参阅[警报规则故障排除](../azure-monitor/alerts/alerts-troubleshoot-log.md#query-used-in-a-log-alert-isnt-valid)
 
 ## <a name="configure-consistent-indexing-mode-on-your-azure-cosmos-db-collection"></a>在 Azure Cosmos DB 集合上配置“一致”索引模式
 
@@ -113,7 +113,7 @@ Azure 顾问会识别使用旧版本的 Azure Cosmos DB Spark 连接器的 Azure
 [Azure 连接的计算机代理](../azure-arc/servers/manage-agent.md)会定期更新，其中包含 bug 修复、稳定性增强和新功能。 我们已识别出不能使用最新版本的计算机代理的资源，此顾问建议会建议将代理升级到最新版本，以获得最佳的 Azure Arc 体验。
 
 ## <a name="do-not-override-hostname-to-ensure-website-integrity"></a>请勿替代主机名以确保网站的完整性
-在配置应用程序网关时，顾问建议尽量避免替代主机名。 如果在应用程序网关前端使用的域不同于访问后端所使用的域，可能会导致 cookie 或重定向 URL 被破坏。 请注意，并非所有情况都是如此，某种类别的后端（如 REST API 的后端）一般对此不太敏感。 请确保后端能够应对此情况或更新应用程序网关配置，以便不需要在后端替代主机名。 与应用服务一起使用时，将自定义域名附加到 Web 应用，并避免使用 *azurewebsites.net 主机名。* [详细了解自定义域](../application-gateway/troubleshoot-app-service-redirection-app-service-url.md)。
+顾问建议在配置应用程序网关时，尝试避免替代主机名。 如果在应用程序网关前端使用的域不同于访问后端所使用的域，可能会导致 cookie 或重定向 URL 被破坏。 请注意，并非所有情况都是如此，某种类别的后端（如 REST API 的后端）一般对此不太敏感。 请确保后端能够应对此情况或更新应用程序网关配置，以便不需要在后端替代主机名。 与应用服务一起使用时，将自定义域名附加到 Web 应用，并避免使用 *azurewebsites.net 主机名。* [详细了解自定义域](../application-gateway/troubleshoot-app-service-redirection-app-service-url.md)。
 
 ## <a name="how-to-access-high-availability-recommendations-in-advisor"></a>如何访问顾问中的高可用性建议
 

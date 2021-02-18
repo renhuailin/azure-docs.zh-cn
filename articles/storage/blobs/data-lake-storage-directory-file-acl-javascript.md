@@ -1,33 +1,36 @@
 ---
-title: 将 JavaScript 用于 Azure Data Lake Storage Gen2 中的文件和 ACL
-description: 使用适用于 JavaScript 的 Azure Storage Data Lake 客户端库在启用了分层命名空间 (HNS) 的存储帐户中管理目录和文件以及目录访问控制列表 (ACL)。
+title: 使用 JavaScript 管理 Azure Data Lake Storage Gen2 中的数据
+description: 使用 Azure Storage Data Lake 适用于 JavaScript 的客户端库来管理已启用分层命名空间的存储帐户中的目录和文件。
 author: normesta
 ms.service: storage
-ms.date: 03/20/2020
+ms.date: 02/17/2021
 ms.author: normesta
 ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
 ms.custom: devx-track-js
-ms.openlocfilehash: a929fcbc87a1ce11b226e9def46354c24a151a0c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 8ce5df805ddce6cdb52e4225bb77e2d8dfa9b9b0
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95913362"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100650161"
 ---
-# <a name="use-javascript-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>使用 JavaScript 管理 Azure Data Lake Storage Gen2 中的目录、文件和 ACL
+# <a name="use-javascript-to-manage-directories-and-files-in-azure-data-lake-storage-gen2"></a>使用 JavaScript 管理 Azure Data Lake Storage Gen2 中的目录和文件
 
-本文介绍了如何使用 JavaScript 在启用了分层命名空间 (HNS) 的存储帐户中创建和管理目录、文件与权限。 
+本文介绍如何使用 JavaScript 在具有分层命名空间的存储帐户中创建和管理目录和文件。
+
+若要了解如何获取、设置和更新访问控制列表 (ACL) 目录和文件，请参阅 [使用 JavaScript 管理 Azure Data Lake Storage Gen2 中的 acl](data-lake-storage-acl-javascript.md)。
 
 “[包(节点包管理器)](https://www.npmjs.com/package/@azure/storage-file-datalake)” | ”[示例](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-file-datalake/samples)” | ”[提供反馈](https://github.com/Azure/azure-sdk-for-java/issues)”
 
 ## <a name="prerequisites"></a>先决条件
 
-> [!div class="checklist"]
-> * Azure 订阅。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
-> * 一个已启用分层命名空间 (HNS) 的存储帐户。 按[这些](../common/storage-account-create.md)说明创建一个。
-> * 如果在 Node.js 应用程序中使用此包，则需要 Node.js 8.0.0 或更高版本。
+- Azure 订阅。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
+
+- 已启用分层命名空间的存储帐户。 按[这些](create-data-lake-storage-account.md)说明创建一个。
+
+- 如果在 Node.js 应用程序中使用此包，则需要 Node.js 8.0.0 或更高版本。
 
 ## <a name="set-up-your-project"></a>设置项目
 
@@ -67,10 +70,11 @@ function GetDataLakeServiceClient(accountName, accountKey) {
 }      
 
 ```
-> [!NOTE]
-> 此授权方法仅适用于 Node.js 应用程序。 如果打算在浏览器中运行代码，则可以使用 Azure Active Directory (AD) 进行授权。 
 
-### <a name="connect-by-using-azure-active-directory-ad"></a>使用 Azure Active Directory (AD) 进行连接
+> [!NOTE]
+> 此授权方法仅适用于 Node.js 应用程序。 如果打算在浏览器中运行代码，可以使用 Azure Active Directory (Azure AD) 进行授权。
+
+### <a name="connect-by-using-azure-active-directory-azure-ad"></a>使用 Azure Active Directory (Azure AD) 进行连接
 
 可以使用[适用于 JS 的 Azure 标识客户端库](https://www.npmjs.com/package/@azure/identity)，通过 Azure AD 对应用程序进行身份验证。
 
@@ -166,8 +170,6 @@ async function DeleteDirectory(fileSystemClient) {
 }
 ```
 
-
-
 ## <a name="upload-a-file-to-a-directory"></a>将文件上传到目录
 
 首先，读取文件。 此示例使用 Node.js `fs` 模块。 然后，通过创建一个 **FileClient** 实例并调用 **FileClient.create** 方法，在目标目录中创建文件引用。 通过调用 **FileClient.append** 方法来上传文件。 请确保通过调用 **FileClient.flush** 方法完成上传。
@@ -201,7 +203,7 @@ async function UploadFile(fileSystemClient) {
 首先，创建表示要下载的文件的一个 **FileSystemClient** 实例。 使用 **FileSystemClient.read** 方法读取该文件。 然后，写入该文件。 此示例使用 Node.js `fs` 模块来执行该操作。 
 
 > [!NOTE]
-> 此文件下载方法仅适用于 Node.js 应用程序。 如果打算在浏览器中运行代码，请参阅[适用于 JavaScript 的 Azure Storage File Data Lake 客户端库](https://www.npmjs.com/package/@azure/storage-file-datalake)自述文件来查看有关如何在浏览器中执行此操作的示例。 
+> 此文件下载方法仅适用于 Node.js 应用程序。 如果打算在浏览器中运行代码，请参阅[适用于 JavaScript 的 Azure Storage File Data Lake 客户端库](https://www.npmjs.com/package/@azure/storage-file-datalake)自述文件来查看有关如何在浏览器中执行此操作的示例。
 
 ```javascript
 async function DownloadFile(fileSystemClient) {
@@ -253,125 +255,8 @@ async function ListFilesInDirectory(fileSystemClient) {
 }
 ```
 
-## <a name="manage-access-control-lists-acls"></a>管理访问控制列表 (ACL)
-
-可以获取、设置和更新目录与文件的访问权限。
-
-> [!NOTE]
-> 若要使用 Azure Active Directory (Azure AD) 来授予访问权限，请确保已为安全主体分配了[存储 Blob 数据所有者角色](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)。 若要详细了解如何应用 ACL 权限以及更改它们所带来的影响，请参阅 [Azure Data Lake Storage Gen2 中的访问控制](./data-lake-storage-access-control.md)。
-
-### <a name="manage-a-directory-acl"></a>管理目录 ACL
-
-此示例获取并设置名为 `my-directory` 的目录的 ACL。 此示例为拥有用户提供读取、写入和执行权限，为拥有组授予读取和执行权限，并为所有其他用户提供读取访问权限。
-
-> [!NOTE]
-> 如果你的应用程序通过使用 Azure Active Directory (Azure AD) 来授予访问权限，请确保已向应用程序用来授权访问的安全主体分配了[存储 Blob 数据所有者角色](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)。 若要详细了解如何应用 ACL 权限以及更改它们所带来的影响，请参阅 [Azure Data Lake Storage Gen2 中的访问控制](./data-lake-storage-access-control.md)。
-
-```javascript
-async function ManageDirectoryACLs(fileSystemClient) {
-
-    const directoryClient = fileSystemClient.getDirectoryClient("my-directory"); 
-    const permissions = await directoryClient.getAccessControl();
-
-    console.log(permissions.acl);
-
-    const acl = [
-    {
-      accessControlType: "user",
-      entityId: "",
-      defaultScope: false,
-      permissions: {
-        read: true,
-        write: true,
-        execute: true
-      }
-    },
-    {
-      accessControlType: "group",
-      entityId: "",
-      defaultScope: false,
-      permissions: {
-        read: true,
-        write: false,
-        execute: true
-      }
-    },
-    {
-      accessControlType: "other",
-      entityId: "",
-      defaultScope: false,
-      permissions: {
-        read: true,
-        write: true,
-        execute: false
-      }
-
-    }
-
-  ];
-
-  await directoryClient.setAccessControl(acl);
-}
-```
-
-还可以获取和设置容器根目录的 ACL。 若要获取根目录，请将空字符串 (`/`) 传递到“DataLakeFileSystemClient.getDirectoryClient”方法。
-
-### <a name="manage-a-file-acl"></a>管理文件 ACL
-
-此示例获取并设置名为 `upload-file.txt` 的文件的 ACL。 此示例为拥有用户提供读取、写入和执行权限，为拥有组授予读取和执行权限，并为所有其他用户提供读取访问权限。
-
-> [!NOTE]
-> 如果你的应用程序通过使用 Azure Active Directory (Azure AD) 来授予访问权限，请确保已向应用程序用来授权访问的安全主体分配了[存储 Blob 数据所有者角色](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)。 若要详细了解如何应用 ACL 权限以及更改它们所带来的影响，请参阅 [Azure Data Lake Storage Gen2 中的访问控制](./data-lake-storage-access-control.md)。
-
-```javascript
-async function ManageFileACLs(fileSystemClient) {
-
-  const fileClient = fileSystemClient.getFileClient("my-directory/uploaded-file.txt"); 
-  const permissions = await fileClient.getAccessControl();
-
-  console.log(permissions.acl);
-
-  const acl = [
-  {
-    accessControlType: "user",
-    entityId: "",
-    defaultScope: false,
-    permissions: {
-      read: true,
-      write: true,
-      execute: true
-    }
-  },
-  {
-    accessControlType: "group",
-    entityId: "",
-    defaultScope: false,
-    permissions: {
-      read: true,
-      write: false,
-      execute: true
-    }
-  },
-  {
-    accessControlType: "other",
-    entityId: "",
-    defaultScope: false,
-    permissions: {
-      read: true,
-      write: true,
-      execute: false
-    }
-
-  }
-
-];
-
-await fileClient.setAccessControl(acl);        
-}
-```
-
 ## <a name="see-also"></a>另请参阅
 
-* [包(节点包管理器)](https://www.npmjs.com/package/@azure/storage-file-datalake)
-* [示例](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-file-datalake/samples)
-* [提供反馈](https://github.com/Azure/azure-sdk-for-java/issues)
+- [包(节点包管理器)](https://www.npmjs.com/package/@azure/storage-file-datalake)
+- [示例](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-file-datalake/samples)
+- [提供反馈](https://github.com/Azure/azure-sdk-for-java/issues)

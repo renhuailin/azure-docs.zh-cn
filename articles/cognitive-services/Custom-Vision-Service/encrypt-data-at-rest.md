@@ -9,12 +9,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: egeaney
-ms.openlocfilehash: 6c65f28c040b15aaa2ec8f3425209351e4b60486
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 822a4249b6ed054f36605d0367803da68bab090b
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100524396"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652252"
 ---
 # <a name="custom-vision-encryption-of-data-at-rest"></a>静态数据加密自定义视觉
 
@@ -24,15 +24,6 @@ ms.locfileid: "100524396"
 
 > [!IMPORTANT]
 > 仅限11月 11 2020 日之后创建的客户托管密钥是可用的资源。 若要将 CMK 与自定义视觉一起使用，需要创建新的自定义视觉资源。 创建资源后，可以使用 Azure Key Vault 来设置托管标识。
-
-## <a name="regional-availability"></a>区域可用性
-
-客户托管的密钥目前在以下区域中提供：
-
-* 美国中南部
-* 美国西部 2
-* 美国东部
-* US Gov 弗吉尼亚州
 
 [!INCLUDE [cognitive-services-cmk](../includes/configure-customer-managed-keys.md)]
 

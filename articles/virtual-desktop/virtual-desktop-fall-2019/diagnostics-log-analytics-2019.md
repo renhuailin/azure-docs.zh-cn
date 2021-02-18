@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 257656a29733972672570648d4317b7847fedff1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bfe8026f099c341b68a1aa1fc5e3fac425e29403
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88997670"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100578908"
 ---
 # <a name="use-log-analytics-for-the-diagnostics-feature-in-windows-virtual-desktop-classic"></a>使用 Log Analytics (经典 Windows 虚拟桌面中的诊断功能) 
 
@@ -32,9 +32,9 @@ Windows 虚拟桌面提供了一项诊断功能，使管理员能够通过单个
 
 ## <a name="before-you-get-started"></a>准备工作
 
-你需要 [创建工作区](../../azure-monitor/learn/quick-collect-windows-computer.md#create-a-workspace)，然后才能将 Log Analytics 用于诊断功能。
+你需要 [创建工作区](../../azure-monitor/vm/quick-collect-windows-computer.md#create-a-workspace)，然后才能将 Log Analytics 用于诊断功能。
 
-创建工作区后，请按照 [将 Windows 计算机连接到 Azure Monitor](../../azure-monitor/platform/log-analytics-agent.md#workspace-id-and-key) 中的说明获取以下信息：
+创建工作区后，请按照 [将 Windows 计算机连接到 Azure Monitor](../../azure-monitor/agents/log-analytics-agent.md#workspace-id-and-key) 中的说明获取以下信息：
 
 - 工作区 ID
 - 工作区的主密钥

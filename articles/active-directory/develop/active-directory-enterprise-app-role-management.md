@@ -10,14 +10,14 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/07/2020
+ms.date: 02/15/2021
 ms.author: jeedes
-ms.openlocfilehash: 38673df29dd50e77acc4b4d106d69a82cad9c040
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: aab1f99984ed5286692cbf9dae39fb4f7d28599c
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100104342"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652456"
 ---
 # <a name="how-to-configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications"></a>如何：为企业应用程序配置 SAML 令牌中颁发的角色声明
 
@@ -27,6 +27,9 @@ ms.locfileid: "100104342"
 
 - 安装了目录的 Azure AD 订阅。
 - 启用了单一登录 (SSO) 的订阅。 必须使用应用程序配置 SSO。
+
+> [!NOTE]
+> 本文介绍如何在 Azure AD 中使用 Api 在服务主体上创建/更新/删除应用程序角色。 如果要使用应用角色的新用户界面，请在 [此处](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps)查看详细信息。
 
 ## <a name="when-to-use-this-feature"></a>何时使用此功能
 
@@ -167,7 +170,7 @@ ms.locfileid: "100104342"
 
     1. 在“源属性”  列表中，键入为该行显示的属性值。
 
-    1. 选择“保存”。 
+    1. 选择“保存”。
 
 10. 若要在标识提供者启动的单一登录中测试应用程序，请登录到[访问面板](https://myapps.microsoft.com)，然后选择应用程序磁贴。 在 SAML 令牌中，应该会看到具有所提供的声明名称的用户的所有已分配角色。
 

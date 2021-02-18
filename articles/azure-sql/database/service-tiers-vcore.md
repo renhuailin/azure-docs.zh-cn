@@ -10,12 +10,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake
 ms.date: 01/15/2021
-ms.openlocfilehash: 35cdfdbdc04d0c88bc49c024ea7465537583e0d7
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: c55e2d2d9eaeae441e8a7505d0f391ed0860cedf
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98735505"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100634186"
 ---
 # <a name="vcore-model-overview---azure-sql-database-and-azure-sql-managed-instance"></a>vCore 模型概述 - Azure SQL 数据库和 Azure SQL 托管实例 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -125,7 +125,7 @@ DC 系列仅支持预配计算 (无服务器) 不支持无服务器，并且不�
 |Gen5     |**预配计算**<br>- Intel® E5-2673 v4 (Broadwell) 2.3-GHz、Intel® SP-8160 (Skylake)\* 和 Intel® 8272CL (Cascade Lake) 2.5 GHz\* 处理器<br>- 最多预配 80 个 vCore（1 个 vCore = 1 个超线程）<br><br>**无服务器计算**<br>- Intel® E5-2673 v4 (Broadwell) 2.3-GHz 和 Intel® SP-8160 (Skylake)* 处理器<br>- 自动扩展为 40 个 vCore（1 个 vCore = 1 个超线程）|**预配计算**<br>- 每个 vCore 5.1 GB<br>- 最多预配 408 GB<br><br>**无服务器计算**<br>- 自动扩展为每个vCore 24 GB<br>- 自动纵向扩展为最大 120 GB|
 |Fsv2 系列     |-Intel® 8168 (Skylake) 处理器<br>-将所有核心 turbo 时钟速度保持为 3.4 GHz，最大单一核心 turbo 时钟速度为 3.7 GHz。<br>-预配多达 72 Vcore (1 vCore = 1 超线程) |-1.9 GB/vCore<br>-预配高达 136 GB|
 |M 系列     |-Intel® E7-8890 v3 2.5 GHz 和 Intel® 8280M 2.7 GHz (级联 Lake) 处理器<br>-预配多达 128 Vcore (1 vCore = 1 超线程) |-每个 vCore 29 GB<br>-预配高达 3.7 TB|
-|DC 系列     | -Intel 2288G 处理器<br>- (Intel SGX) 的 Intel 软件防护扩展<br>-预配多达8个 Vcore (1 vCore = 1 个物理核心)  | 每 vCore 4.5 GB |
+|DC 系列     | -Intel 2288G 处理器<br>- (Intel SGX) ) 的 Intel 软件防护扩展<br>-预配多达8个 Vcore (1 vCore = 1 个物理核心)  | 每 vCore 4.5 GB |
 
 \* 在 [sys.dm_user_db_resource_governance](/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) 动态管理视图中，使用 Intel® SP-8160 (Skylake) 处理器的数据库的硬件代系会显示为 Gen6，而使用 Intel® 8272CL (Cascade Lake) 的数据库的硬件代系会显示为 Gen7。 不管处理器类型如何（Broadwell、Skylake 或 Cascade Lake），所有 Gen5 数据库的资源限制都相同。
 
@@ -204,7 +204,7 @@ az sql mi update -g mygroup -n myinstance --family Gen5
 
 Gen4 硬件正在 [逐步推出](https://azure.microsoft.com/updates/gen-4-hardware-on-azure-sql-database-approaching-end-of-life-in-2020/) ，在新部署中不再可用。 所有新的数据库都必须部署在第 5 代硬件上。
 
-Gen5 在世界各地的大多数区域中都可用。
+Gen5 在世界各地的所有公共区域中均可用。
 
 #### <a name="fsv2-series"></a>Fsv2 系列
 

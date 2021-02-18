@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 1/25/2021
 ms.author: allensu
-ms.openlocfilehash: 6f83df22465a2dc5fb871ae4e2c6dedd75e00075
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: 716acec51226e9e4ff47605c3ee2bd9a86be1933
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99834215"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100588559"
 ---
 # <a name="what-is-azure-load-balancer"></a>什么是 Azure 负载均衡器？
 
@@ -44,7 +44,7 @@ Azure 负载均衡器在开放式系统互连 (OSI) 模型的第四层上运行�
 
 可以使用标准负载均衡器完成的关键方案包括：
 
-- 对发往 Azure 虚拟机的 **[内部](./quickstart-load-balancer-standard-internal-portal.md)** 和 **[外部](./tutorial-load-balancer-standard-manage-portal.md)** 流量进行负载均衡。
+- 对发往 Azure 虚拟机的 **[内部](./quickstart-load-balancer-standard-internal-portal.md)** 和 **[外部](./quickstart-load-balancer-standard-public-portal.md)** 流量进行负载均衡。
 
 - 通过在区域 **[内部](./tutorial-load-balancer-standard-public-zonal-portal.md)** 和区域 **[之间](./tutorial-load-balancer-standard-public-zone-redundant-portal.md)** 分配资源，提高可用性。
 
