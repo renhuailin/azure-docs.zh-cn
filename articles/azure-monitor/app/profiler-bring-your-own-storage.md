@@ -6,12 +6,12 @@ author: renatosalas
 ms.author: regutier
 ms.date: 01/14/2021
 ms.reviewer: mbullwin
-ms.openlocfilehash: f82432c1dd8c66e8ce845831ff35d534a34e3e04
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 9c3ff91cbfb6423099040a6ea46eeb66f5461f48
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202532"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589667"
 ---
 # <a name="configure-bring-your-own-storage-byos-for-application-insights-profiler-and-snapshot-debugger"></a>配置自带存储 (BYOS) 用于 Application Insights Profiler 和 Snapshot Debugger
 
@@ -21,9 +21,9 @@ ms.locfileid: "98202532"
 使用自带存储时，这些项目将被上传到您控制的存储帐户中。 这意味着，你可以控制 "静态加密" 策略、"生存期管理策略" 和 "网络访问"。 但需支付与该存储帐户相关的费用。
 
 > [!NOTE]
-> 如果启用 "专用" 链接，则需要自带存储。 有关 Application Insights 的专用链接的详细信息， [请参阅文档。](../platform/private-link-security.md)
+> 如果启用 "专用" 链接，则需要自带存储。 有关 Application Insights 的专用链接的详细信息， [请参阅文档。](../logs/private-link-security.md)
 >
-> 如果你正在启用 Customer-Managed 密钥，则需要自带存储。 有关 Application Insights Customer-Managed 密钥的详细信息，[请参阅文档。](../platform/customer-managed-keys.md)
+> 如果你正在启用 Customer-Managed 密钥，则需要自带存储。 有关 Application Insights Customer-Managed 密钥的详细信息，[请参阅文档。](../logs/customer-managed-keys.md)
 
 ## <a name="how-will-my-storage-account-be-accessed"></a>如何访问我的存储帐户？
 1. 在虚拟机或应用服务中运行的代理会将项目 (配置文件、快照和符号) 上传到帐户中的 blob 容器。 此过程涉及到联系 Application Insights Profiler 或 Snapshot Debugger 服务，以获取 SAS (共享访问签名) 令牌连接到存储帐户中的新 blob。
@@ -156,7 +156,7 @@ _![ 图 1.1](media/profiler-bring-your-own-storage/figure-11.png)_
 
 #### <a name="configure-using-azure-resource-manager-template"></a>使用 Azure 资源管理器模板进行配置
 
-1. 在) 上创建一个具有以下内容的 Azure 资源管理器模板文件 ( # B0。
+1. 在) 上创建包含以下内容 (byos.template.js的 Azure 资源管理器模板文件。
     ```json
     {
       "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",

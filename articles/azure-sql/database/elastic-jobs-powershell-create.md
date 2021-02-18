@@ -11,17 +11,17 @@ author: johnpaulkee
 ms.author: joke
 ms.reviwer: sstein
 ms.date: 10/21/2020
-ms.openlocfilehash: 1fc5653f08f8fc7916257dfdba570f451c0afa75
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 95e9ef340328bb4c1835e966cc9c3019bca88c09
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131927"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100368823"
 ---
 # <a name="create-an-elastic-job-agent-using-powershell-preview"></a>使用 PowerShell 创建弹性作业代理（预览版）
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-[弹性作业（预览版）](job-automation-overview.md#elastic-database-jobs-preview)可以跨多个数据库并行运行一个或多个 Transact-SQL (T-SQL) 脚本。
+[弹性作业（预览版）](job-automation-overview.md)可以跨多个数据库并行运行一个或多个 Transact-SQL (T-SQL) 脚本。
 
 本教程介绍跨多个数据库运行查询所需的步骤：
 
@@ -63,7 +63,7 @@ Get-Module Az.Sql
 
 ## <a name="create-required-resources"></a>创建所需资源
 
-创建弹性作业代理需要一个用作[作业数据库](job-automation-overview.md#job-database)的数据库（S0 或更高级别）。
+创建弹性作业代理需要一个用作[作业数据库](job-automation-overview.md#elastic-job-database)的数据库（S0 或更高级别）。
 
 下面的脚本创建新的资源组、服务器以及可用作作业数据库的数据库。 第二个脚本创建另一个服务器，其中包含两个用于对其执行作业的空数据库。
 

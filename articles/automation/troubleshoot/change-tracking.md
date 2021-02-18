@@ -3,18 +3,63 @@ title: 排查 Azure 自动化更改跟踪和库存的问题
 description: 本文介绍了如何排查和解决 Azure 自动化更改跟踪和库存功能的问题。
 services: automation
 ms.subservice: change-inventory-management
-ms.date: 01/31/2019
+ms.date: 02/15/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: 516f1a4e5e7c677b17a2941ee3c300db44d49a3b
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 9fe53a343a9f6675519b60d37d077886adaf8a9d
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98896539"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100651148"
 ---
 # <a name="troubleshoot-change-tracking-and-inventory-issues"></a>排查更改跟踪和库存问题
 
 本文介绍了如何排查和解决 Azure 自动化更改跟踪和库存的问题。 有关更改跟踪和库存的一般信息，请参阅[更改跟踪和库存概述](../change-tracking/overview.md)。
+
+## <a name="general-errors"></a>常规错误
+
+### <a name="scenario-machine-is-already-registered-to-a-different-account"></a><a name="machine-already-registered"></a>场景：计算机已注册到其他帐户
+
+### <a name="issue"></a>问题
+
+看到以下错误消息：
+
+```error
+Unable to Register Machine for Change Tracking, Registration Failed with Exception System.InvalidOperationException: {"Message":"Machine is already registered to a different account."}
+```
+
+### <a name="cause"></a>原因
+
+计算机已部署到更改跟踪的另一个工作区。
+
+### <a name="resolution"></a>解决方法
+
+1. 请确保你的计算机向正确的工作区报告。 有关如何验证此操作的指导，请参阅 [验证代理与 Azure Monitor 的连接](../../azure-monitor/platform/agent-windows.md#verify-agent-connectivity-to-azure-monitor)。 此外，请确保此工作区已链接到 Azure 自动化帐户。 若要进行验证，请转到自动化帐户，选择“相关资源”下的“链接的工作区” 。
+
+1. 确保链接到自动化帐户的 Log Analytics 工作区中显示计算机。 在 Log Analytics 工作区中运行以下查询。
+
+   ```kusto
+   Heartbeat
+   | summarize by Computer, Solutions
+   ```
+
+   如果未在查询结果中看到您的计算机，则不会在最近签入。 可能存在本地配置问题。 应重新安装 Log Analytics 代理。
+
+   如果计算机在查询结果中列出，请在 "解决方案" 属性下 **更改跟踪** 列出。 这会验证它是否已注册到更改跟踪和清单。 如果未注册，请检查是否存在范围配置问题。 作用域配置确定哪些计算机配置为更改跟踪和清单。 若要配置目标计算机的作用域配置，请参阅 [从自动化帐户启用更改跟踪和清单](../change-tracking/enable-from-automation-account.md)。
+
+   在工作区中运行此查询。
+
+   ```kusto
+   Operation
+   | where OperationCategory == 'Data Collection Status'
+   | sort by TimeGenerated desc
+   ```
+
+1. 如果结果为 ```Data collection stopped due to daily limit of free data reached. Ingestion status = OverQuota```，则表示工作区中定义的配额已满，这导致无法保存数据。 在工作区中，请参阅 " **使用情况和预估成本**"。 选择允许使用更多数据的新 **定价层** ，或者单击 " **每日上限**" 并删除 cap。
+
+:::image type="content" source="./media/change-tracking/change-tracking-usage.png" alt-text="使用情况和预估成本。" lightbox="./media/change-tracking/change-tracking-usage.png":::
+
+如果问题仍未解决，请遵循[部署 Windows 混合 Runbook 辅助角色](../automation-windows-hrw-install.md)中的步骤来为 Windows 重新安装混合辅助角色。 对于 Linux，请按照  [部署 Linux 混合 Runbook 辅助角色](../automation-linux-hrw-install.md)中的步骤操作。
 
 ## <a name="windows"></a>Windows
 
@@ -96,11 +141,11 @@ Heartbeat
 | summarize by Computer, Solutions
 ```
 
-如果查询结果中未显示你的计算机，则表示该计算机最近未签入。 可能存在本地配置问题，应重新安装代理。 有关安装和配置的信息，请参阅[使用 Log Analytics 代理收集日志数据](../../azure-monitor/platform/log-analytics-agent.md)。
+如果查询结果中未显示你的计算机，则表示该计算机最近未签入。 可能存在本地配置问题，应重新安装代理。 有关安装和配置的信息，请参阅[使用 Log Analytics 代理收集日志数据](../../azure-monitor/agents/log-analytics-agent.md)。
 
 如果你的计算机显示在查询结果中，请验证作用域配置。 参阅[在 Azure Monitor 中设定监视解决方案的目标](../../azure-monitor/insights/solution-targeting.md)。
 
-有关此问题的更多排查方法，请参阅[问题：看不到任何 Linux 数据](../../azure-monitor/platform/agent-linux-troubleshoot.md#issue-you-are-not-seeing-any-linux-data)。
+有关此问题的更多排查方法，请参阅[问题：看不到任何 Linux 数据](../../azure-monitor/agents/agent-linux-troubleshoot.md#issue-you-are-not-seeing-any-linux-data)。
 
 ##### <a name="log-analytics-agent-for-linux-not-configured-correctly"></a>适用于 Linux 的 Log Analytics 代理未正确配置
 

@@ -3,16 +3,16 @@ title: 从 Azure Red Hat OpenShift 3.11 迁移到 Azure Red Hat OpenShift 4
 description: 从 Azure Red Hat OpenShift 3.11 迁移到 Azure Red Hat OpenShift 4
 author: sakthi-vetrivel
 ms.author: suvetriv
-ms.service: container-service
+ms.service: azure-redhat-openshift
 ms.topic: conceptual
 ms.date: 08/13/2020
 keywords: 迁移，aro，openshift，red hat
-ms.openlocfilehash: f9bfc924581d5dbe33c7c2683a0f6083cb2abc23
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: 371672de83a6d745d7b367f8327a64e11059923e
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99071029"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653272"
 ---
 # <a name="migrate-from-azure-red-hat-openshift-311-to-azure-red-hat-openshift-4"></a>从 Azure Red Hat OpenShift 3.11 迁移到 Azure Red Hat OpenShift 4
 
@@ -25,7 +25,7 @@ OpenShift 4 上的 Azure Red Hat OpenShift 在 Red Hat 核心操作系统、专�
 > [!NOTE]
 > Red Hat OpenShift 迁移工具（如控制平面迁移帮助工具和群集应用程序迁移工具） (凸轮) 不能与 Azure Red Hat OpenShift 3.11 群集一起使用。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>在开始之前
 
 本文假定你已有一个 Azure Red Hat OpenShift 3.11 群集。
 
@@ -100,13 +100,13 @@ Azure Red Hat OpenShift 4 支持以下 PersistentVolume 插件：
 
 Azure Red Hat OpenShift 4 可以从源代码构建映像，并对其进行部署，并管理其生命周期。 为了实现这一点，Azure Red Hat OpenShift 提供了4个 [集成的内部容器映像注册表](https://docs.openshift.com/container-platform/4.6/registry/registry-options.html) ，可在 Azure Red hat OpenShift 环境中将其部署到本地管理映像。
 
-如果使用的是外部注册表，如 [Azure 容器注册表](../container-registry/index.yml)、 [red hat Quay](ttps://docs.openshift.com/container-platform/4.6/registry/registry-options.html#registry-quay-overview_registry-options)注册表或启用了 [身份验证的 red hat 注册表](https://docs.openshift.com/container-platform/4.6/registry/registry-options.html#registry-authentication-enabled-registry-overview_registry-options)，请按照步骤向群集提供凭据，使群集能够访问存储库。
+如果使用的是外部注册表，如 [Azure 容器注册表](../container-registry/index.yml)、 [red hat Quay](https://docs.openshift.com/container-platform/4.6/registry/registry-options.html#registry-quay-overview_registry-options)注册表或启用了 [身份验证的 red hat 注册表](https://docs.openshift.com/container-platform/4.6/registry/registry-options.html#registry-authentication-enabled-registry-overview_registry-options)，请按照步骤向群集提供凭据，使群集能够访问存储库。
 
 ### <a name="monitoring"></a>监视
 
 Azure Red Hat OpenShift 包括预配置的预安装和自行更新监视堆栈，该堆栈基于 Prometheus 开源项目及其更广泛的系统。 它可以监视群集组件并包含一组警报，以立即通知群集管理员出现的任何问题和一组 Grafana 仪表板。 群集监视堆栈仅支持监视 Azure Red Hat OpenShift 群集。 有关详细信息，请参阅 [Azure Red Hat OpenShift 的群集监视](https://docs.openshift.com/container-platform/4.6/monitoring/understanding-the-monitoring-stack.html)。
 
-如果你使用的是适用于 [Azure Red Hat OpenShift 3.11 的容器 Azure Monitor](../azure-monitor/insights/container-insights-azure-redhat-setup.md)，则还可以为 [Azure red hat OpenShift 4 群集](../azure-monitor/insights/container-insights-azure-redhat4-setup.md) 的容器启用 Azure Monitor，并继续使用同一 Log Analytics 工作区。
+如果你使用的是适用于 [Azure Red Hat OpenShift 3.11 的容器 Azure Monitor](../azure-monitor/containers/container-insights-azure-redhat-setup.md)，则还可以为 [Azure red hat OpenShift 4 群集](../azure-monitor/containers/container-insights-azure-redhat4-setup.md) 的容器启用 Azure Monitor，并继续使用同一 Log Analytics 工作区。
 
 ## <a name="move-your-dns-or-load-balancer-configuration-to-the-new-cluster"></a>将 DNS 或负载平衡器配置移动到新群集
 

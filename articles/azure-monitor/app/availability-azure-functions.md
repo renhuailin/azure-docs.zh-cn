@@ -3,12 +3,12 @@ title: 使用 Azure Functions 创建和运行自定义可用性测试
 description: 本文档将介绍如何使用 TrackAvailability() 创建一个 Azure 函数，该函数会根据 TimerTrigger 函数中给定的配置定期运行。 此测试的结果将发送到 Application Insights 资源，你可以在其中查询可用性结果数据并对其发出警报。 使用自定义测试，你可以编写比使用门户 UI 更为复杂的可用性测试、监视 Azure VNET 内部的应用、更改终结点地址或创建可用性测试（如果在你所在的区域中不可用）。
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 3553b212d1b63d4bd239893ba90aa3465d98df60
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 98d9eaadb31ffdeabe85752f7c76bdd4f7c0d4f3
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91945645"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589937"
 ---
 # <a name="create-and-run-custom-availability-tests-using-azure-functions"></a>使用 Azure Functions 创建和运行自定义可用性测试
 
@@ -175,13 +175,13 @@ public async static Task RunAvailbiltyTestAsync(ILogger log)
 
 ## <a name="query-in-logs-analytics"></a>在“日志(分析)”中查询
 
-可以使用“日志(分析)”查看可用性结果、依赖关系等。 若要详细了解“日志”，请访问[日志查询概述](../log-query/log-query-overview.md)。
+可以使用“日志(分析)”查看可用性结果、依赖关系等。 若要详细了解“日志”，请访问[日志查询概述](../logs/log-query-overview.md)。
 
 >[!div class="mx-imgBorder"]
 >![可用性结果](media/availability-azure-functions/availabilityresults.png)
 
 >[!div class="mx-imgBorder"]
->![屏幕截图显示具有限制为50的依赖项的新查询选项卡。](media/availability-azure-functions/dependencies.png)
+>![屏幕截图显示了“新建查询”选项卡，其依赖项数量限制为 50。](media/availability-azure-functions/dependencies.png)
 
 ## <a name="next-steps"></a>后续步骤
 

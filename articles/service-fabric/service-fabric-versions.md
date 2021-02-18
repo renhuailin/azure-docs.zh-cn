@@ -3,12 +3,12 @@ title: 升级 Azure Service Fabric 群集版本
 description: 了解 Azure Service Fabric 中的群集版本，包括指向 Service Fabric 团队博客中最新版本的链接。
 ms.topic: troubleshooting
 ms.date: 06/15/2020
-ms.openlocfilehash: 5abfe83fcb68fcab7df22f1fd266cc695f2b9c80
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 9c7e5e3778c9a38190be210ebb391bc8b0b58c76
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99549062"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652048"
 ---
 # <a name="upgrade-your-azure-service-fabric-cluster-version"></a>升级 Azure Service Fabric 群集版本
 
@@ -25,13 +25,13 @@ ms.locfileid: "99549062"
 
 ### <a name="upgrade-alert-for-versions-between-57-and-6363"></a>5.7 与6.3.63 之间版本的升级警报。 *
 
-为了提高安全性和可用性，Azure 基础结构进行了可能影响 Service Fabric 客户的更改。 此更改会影响所有运行5.7 到6.3 版本的群集 Service Fabric。
+为了提高安全性和可用性，Azure 基础结构已进行更改，这可能会影响 Service Fabric 客户。 此更改会影响所有运行5.7 到6.3 版本的群集 Service Fabric。
 
-Service Fabric 运行时的更新适用于所有区域中所有受支持的 Service Fabric 版本。 升级到2021年1月19日的最新支持版本之一，以避免服务中断。
+我们提供了一个 Service Fabric 运行时更新，它适用于所有区域中所有受支持的 Service Fabric 版本。 升级到2021年1月19日的最新支持版本之一，以避免服务中断。
 
 如果你有支持计划并需要技术帮助，请通过 Azure 支持渠道联系。 为 Azure Service Fabric 提供支持请求，并在支持票证中提到此上下文。
 
-#### <a name="if-you-dont-upgrade-to-a-supported-version"></a>如果你不升级到受支持的版本
+#### <a name="if-you-dont-upgrade-to-a-supported-version"></a>如果未升级到受支持的版本
 
 在版本5.7 到 6.3.63. * 的版本上运行的 Azure Service Fabric 群集在年1月 2021 19 日未升级时不可用。
 
@@ -53,26 +53,26 @@ Service Fabric 运行时的更新适用于所有区域中所有受支持的 Serv
   | Linux Ubuntu 16.04 | 7.2.* | 7.2.* |
   | Linux Ubuntu 18.04 | 7.2.* | 7.2.* |
 
-### <a name="upgrade-alert-for-versions-later-than-63"></a>版本晚于6.3 的升级警报
+### <a name="upgrade-alert-for-versions-later-than-63"></a>针对低于 6.3 的版本的升级提醒
 
-为了提高安全性和可用性，Azure 基础结构进行了可能影响 Service Fabric 客户的更改。 此更改将影响所有使用 [适用于容器的开放网络模式](./service-fabric-networking-modes.md#set-up-open-networking-mode) 的 Service Fabric 群集，并运行6.3 到7.0 或更高版本的到或更7.0 高版本。 Service Fabric 运行时的更新适用于所有区域中所有受支持的 Service Fabric 版本。
+为了提高安全性和可用性，Azure 基础结构已进行更改，这可能会影响 Service Fabric 客户。 此更改会影响使用[容器的开放网络模式](./service-fabric-networking-modes.md#set-up-open-networking-mode)并运行版本 6.3 到 7.0 或 7.0 之后不兼容的受支持版本的所有 Service Fabric 群集。 我们提供了一个 Service Fabric 运行时更新，它适用于所有区域中所有受支持的 Service Fabric 版本。
 
-#### <a name="if-you-dont-upgrade-to-a-supported-version"></a>如果你不升级到受支持的版本
+#### <a name="if-you-dont-upgrade-to-a-supported-version"></a>如果未升级到受支持的版本
 
-如果在6.3 年1月19日之前未升级到受支持的版本2021，Azure Service Fabric 在低于的版本的版本上运行的群集将会出现功能中断或服务中断。
+如果 2021 年 1 月 19 日之前没有升级到受支持的版本，在高于 6.3 的未更改版本上运行的 Azure Service Fabric 群集会出现功能丢失或服务中断的情况。
   
-  - **对于运行版本高于6.3 的 Service Fabric 的群集**，该群集将保持不变。
+  - 对于运行的 Service Fabric 版本高于 6.3 的群集，如果未使用开放网络功能，则群集会保持正常运行状态。
 
- - **对于运行版本高于6.3 的 Service Fabric 的群集，并为 [容器使用开放网络功能](https://docs.microsoft.com/azure/service-fabric/service-fabric-networking-modes#set-up-open-networking-mode)** ，群集可能变为不可用，并将停止运行，这可能会导致工作负荷的服务中断。
+ - 对于运行的 Service Fabric 版本高于6.3 的群集，如果使用了[容器的开放网络功能](https://docs.microsoft.com/azure/service-fabric/service-fabric-networking-modes#set-up-open-networking-mode)，则该群集可能会变得不可用并停止运行，这可能会导致工作负荷的服务中断。
  
  -   **对于 [在7.0.457 和7.0.466 之间运行 Windows 版本的群集 () 包含的两个版本](https://docs.microsoft.com/azure/service-fabric/service-fabric-versions#supported-version-names) ，并且 windows OS 已启用 windows 容器功能。注意： Linux 版本7.0.457、7.0.464 和7.0.465 不受影响**。
-    - **影响**：群集将停止运行，这可能会导致工作负荷的服务中断。
+    - 影响是：群集会停止运行，这可能会导致工作负荷的服务中断。
     
 #### <a name="required-action"></a>必需的操作
 
-若要防止停机或功能丢失，请确保群集正在运行以下版本之一。
+若要防止停机或功能丢失，请确保群集运行的是以下版本之一。
 
-表中 Service Fabric 的版本包含防止功能丢失所需的更改。 请确保使用的是其中一种版本。  
+表中的 Service Fabric 版本包含防止功能丢失所需的更改。 请确保你使用的是这些版本之一。  
 
 > [!Note]
 > **Azure Service Fabric 群集在版本6.5 上运行，必须在 infrastucuture 更改之前同时执行多个升级，以避免群集的功能丢失**。 
@@ -130,6 +130,7 @@ Service Fabric 运行时的更新适用于所有区域中所有受支持的 Serv
 | 7.2.433.* | 7.0.470.* |低于或等于版本 4.2 |当前版本，因此无结束日期 |
 | 7.2.445.* | 7.0.470.* |低于或等于版本 4.2 |当前版本，因此无结束日期 |
 | 7.2.452.* | 7.0.470.* |低于或等于版本 4.2 |当前版本，因此无结束日期 |
+| 7.2.457.* | 7.0.470.* |低于或等于版本 4.2 |当前版本，因此无结束日期 |
 
 ## <a name="supported-operating-systems"></a>支持的操作系统
 
@@ -209,6 +210,7 @@ Service Fabric 运行时的更新适用于所有区域中所有受支持的 Serv
 | 7.1 CU10 | 7.1.510.9590 | NA |
 | 7.2 RTO | 7.2.413.9590 | NA |
 | 7.2 CU2 | 7.2.432.9590 | 7.2.431.1 |
-| 7.2 CU3 | 7.2.433.9590 | 不适用|
+| 7.2 CU3 | 7.2.433.9590 | NA |
 | 7.2 CU4 | 7.2.445.9590 | 7.2.447.1 |
 | 7.2 CU5 | 7.2.452.9590 | 7.2.454.1 |
+| 7.2 CU6 | 7.2.457.9590 | 7.2.456.1 |
