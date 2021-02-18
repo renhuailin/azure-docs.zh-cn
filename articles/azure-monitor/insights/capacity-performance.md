@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/13/2017
-ms.openlocfilehash: ee5aec2e483f41c73d57fc1d91427e5657bda3e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9fce67c0ffe1951b0bfc325603b6d8f985dd804d
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87317988"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592194"
 ---
 # <a name="plan-hyper-v-virtual-machine-capacity-with-the-capacity-and-performance-solution-deprecated"></a>使用容量和性能解决方案（已弃用）规划 Hyper-V 虚拟机容量
 
@@ -41,17 +41,17 @@ ms.locfileid: "87317988"
 
 | 连接的源 | 支持 | 说明 |
 |---|---|---|
-| [Windows 代理](../platform/agent-windows.md) | 是 | 解决方案从 Windows 代理收集容量和性能数据信息。 |
-| [Linux 代理](../learn/quick-collect-linux-computer.md) | 否 | 解决方案不从直接 Linux 代理收集容量和性能数据信息。|
-| [SCOM 管理组](../platform/om-agents.md) | 是 |解决方案从连接的 SCOM 管理组中的代理收集容量和性能数据。 不需要从 SCOM 代理直接连接到 Log Analytics。|
-| [Azure 存储帐户](../platform/resource-logs.md#send-to-log-analytics-workspace) | 否 | Azure 存储不包括容量和性能数据。|
+| [Windows 代理](../agents/agent-windows.md) | 是 | 解决方案从 Windows 代理收集容量和性能数据信息。 |
+| [Linux 代理](../vm/quick-collect-linux-computer.md) | 否    | 解决方案不从直接 Linux 代理收集容量和性能数据信息。|
+| [SCOM 管理组](../agents/om-agents.md) | 是 |解决方案从连接的 SCOM 管理组中的代理收集容量和性能数据。 不需要从 SCOM 代理直接连接到 Log Analytics。|
+| [Azure 存储帐户](../essentials/resource-logs.md#send-to-log-analytics-workspace) | 否 | Azure 存储不包括容量和性能数据。|
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - 必须在 Windows Server 2012 或更高版本的 Hyper-V 主机而非虚拟机上安装 Windows 或 Operations Manager 代理。
 
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>配置
 
 执行以下步骤，将容量和性能解决方案添加到工作区。
 
@@ -72,7 +72,7 @@ New Management Pack with id:"Microsoft.IntelligencePacks.CapacityPerformance", v
 
 更新容量和性能解决方案后，版本号会更改。
 
-有关如何更新解决方案管理包的详细信息，请参阅[将 Operations Manager 连接到 Log Analytics](../platform/om-agents.md)。
+有关如何更新解决方案管理包的详细信息，请参阅[将 Operations Manager 连接到 Log Analytics](../agents/om-agents.md)。
 
 ## <a name="using-the-solution"></a>使用解决方案
 
@@ -83,7 +83,7 @@ New Management Pack with id:"Microsoft.IntelligencePacks.CapacityPerformance", v
 
 ### <a name="review-utilization"></a>查看利用率
 
-单击“容量和性能”磁贴，打开“容量和性能”仪表板。 仪表板包含下表中的列。 每个列按照指定范围和时间范围列出了匹配该列条件的最多十项。 可单击该列底部的“查看全部”**** 或单击列标题运行返回所有记录的日志搜索。
+单击“容量和性能”磁贴，打开“容量和性能”仪表板。 仪表板包含下表中的列。 每个列按照指定范围和时间范围列出了匹配该列条件的最多十项。 可单击该列底部的“查看全部”或单击列标题运行返回所有记录的日志搜索。
 
 - **主机**
     - **主机 CPU 利用率**：根据所选时间段显示主计算机的 CPU 利用率图形趋势和主机的列表。 将鼠标悬停在折线图上即可查看特定时间点的详细信息。 单击图表即可在日志搜索中查看更多详细信息。 单击任意主机名称即可打开日志搜索并查看托管 VM 的 CPU 计数器详细信息。
@@ -129,5 +129,5 @@ New Management Pack with id:"Microsoft.IntelligencePacks.CapacityPerformance", v
 
 
 ## <a name="next-steps"></a>后续步骤
-* 使用 [Log Analytics 中的日志搜索](../log-query/log-query-overview.md)查看详细的容量和性能数据。
+* 使用 [Log Analytics 中的日志搜索](../logs/log-query-overview.md)查看详细的容量和性能数据。
 

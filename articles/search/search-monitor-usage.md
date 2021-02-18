@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: d47f6c20246e3210b58dbc9c802a11c866ae305e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3f348a5005f28fdd1d02be706ca2742d77368288
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88935001"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592373"
 ---
 # <a name="monitor-operations-and-activity-of-azure-cognitive-search"></a>监视 Azure 认知搜索的操作和活动
 
@@ -59,11 +59,11 @@ Azure 认知搜索按照连续 30 天的计划维护内部数据，以便报告�
 
 ### <a name="activity-logs-and-service-health"></a>活动日志和服务运行状况
 
-门户中的“[活动日志](../azure-monitor/platform/activity-log.md#view-the-activity-log)”页从 Azure 资源管理器收集信息，并报告服务运行状况的更改。 可以监视活动日志来了解服务运行状况相关的严重、错误和警告状态。
+门户中的“[活动日志](../azure-monitor/essentials/activity-log.md#view-the-activity-log)”页从 Azure 资源管理器收集信息，并报告服务运行状况的更改。 可以监视活动日志来了解服务运行状况相关的严重、错误和警告状态。
 
 常见条目包括对 API 密钥的引用 - 一般信息通知，如“获取管理密钥”和“获取查询密钥” 。 这些活动指示使用管理密钥（创建或删除对象）或查询密钥发出的请求，但不显示请求本身。 如需这种粒度的信息，必须配置诊断日志记录。
 
-可以通过左侧导航窗格、顶部窗口命令栏中的“通知”或者“诊断并解决问题”页访问**活动日志**。
+可以通过左侧导航窗格、顶部窗口命令栏中的“通知”或者“诊断并解决问题”页访问 **活动日志**。
 
 ### <a name="monitor-storage-in-the-usage-tab"></a>在“使用情况”选项卡中监视存储
 
@@ -90,7 +90,7 @@ Azure Monitor 提供多个存储选项，你的选择将决定你如何使用数
 * 如果要可视化 Power BI 报表中的 [日志数据](search-monitor-logs-powerbi.md) ，请选择 "Azure Blob 存储"。
 * 如果想要通过 Kusto 查询浏览数据，请选择“Log Analytics”。
 
-Azure Monitor 具有其自己的计费结构，此部分中引用的诊断日志具有相关的成本。 有关详细信息，请参阅[在 Azure Monitor 中监视使用情况和预估成本](../azure-monitor/platform/usage-estimated-costs.md)。
+Azure Monitor 具有其自己的计费结构，此部分中引用的诊断日志具有相关的成本。 有关详细信息，请参阅[在 Azure Monitor 中监视使用情况和预估成本](../azure-monitor//usage-estimated-costs.md)。
 
 ## <a name="monitor-user-access"></a>监视用户的访问
 
@@ -107,4 +107,4 @@ Azure Monitor 具有其自己的计费结构，此部分中引用的诊断日志
 熟练运用 Azure Monitor 是监督任何 Azure 服务（包括 Azure 认知搜索等资源）的关键所在。 如果你不熟悉 Azure Monitor，请花些时间阅读资源相关的文章。 除教程以外，以下文章也是不错的入门资源。
 
 > [!div class="nextstepaction"]
-> [使用 Azure Monitor 监视 Azure 资源](../azure-monitor/insights/monitor-azure-resource.md)
+> [使用 Azure Monitor 监视 Azure 资源](../azure-monitor/essentials/monitor-azure-resource.md)

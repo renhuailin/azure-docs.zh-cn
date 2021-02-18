@@ -3,19 +3,19 @@ title: 使用逻辑应用自动执行 Azure 应用程序 Insights 过程
 description: 了解如何通过将 Application Insights 连接器添加到逻辑应用来快速自动执行可重复的过程。
 ms.topic: conceptual
 ms.date: 03/11/2019
-ms.openlocfilehash: f6406c2e6fb933c561a8ae54009499768c81a204
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d7ff75be3cb847235405a740df4a20803cdc87b3
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90970865"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589922"
 ---
 # <a name="automate-application-insights-processes-by-using-logic-apps"></a>使用逻辑应用自动执行 Application Insights 过程
 
 是否发现自己曾对遥测数据重复运行相同的查询以检查服务是否正常运行？ 是否希望自动执行这些查询以查找趋势和异常，然后针对这些信息构建你自己的工作流？ 用于逻辑应用的 Azure Application Insights 连接器是适用于此用途的合适工具。
 
 > [!NOTE]
-> Azure 应用程序 Insights 连接器已替换为与 Azure Active Directory 集成的 [Azure Monitor 连接器](../platform/logicapp-flow-connector.md) ，而不需要 API 密钥，还可用于从 Log Analytics 工作区中检索数据。
+> Azure 应用程序 Insights 连接器已替换为与 Azure Active Directory 集成的 [Azure Monitor 连接器](../logs/logicapp-flow-connector.md) ，而不需要 API 密钥，还可用于从 Log Analytics 工作区中检索数据。
 
 通过这种集成，无需编写任何代码就可以自动执行许多过程。 可以使用 Application Insights 连接器创建逻辑应用，快速自动执行任何 Application Insights 过程。 
 
@@ -27,25 +27,25 @@ ms.locfileid: "90970865"
 
 ### <a name="step-1-create-a-logic-app"></a>步骤 1：创建逻辑应用
 1. 登录 [Azure 门户](https://portal.azure.com)。
-1. 单击“创建资源”****，选择“Web + 移动”****，然后选择“逻辑应用”****。
+1. 单击“创建资源”，选择“Web + 移动”，然后选择“逻辑应用”。
 
     ![新建逻辑应用窗口](./media/automate-with-logic-apps/1createlogicapp.png)
 
 ### <a name="step-2-create-a-trigger-for-your-logic-app"></a>步骤 2：为逻辑应用创建触发器
-1. 在“逻辑应用设计器”**** 窗口中的“首先使用常用触发器”**** 下，选择“重复周期”****。
+1. 在“逻辑应用设计器”窗口中的“首先使用常用触发器”下，选择“重复周期”。
 
     ![“逻辑应用设计器”窗口](./media/automate-with-logic-apps/2logicappdesigner.png)
 
-1. 在“间隔”**** 框中键入 **1**，然后在“频率”**** 框中选择“天”****。
+1. 在“间隔”框中键入 **1**，然后在“频率”框中选择“天”。
 
     ![逻辑应用设计器“重复周期”窗口](./media/automate-with-logic-apps/3recurrence.png)
 
 ### <a name="step-3-add-an-application-insights-action"></a>步骤 3：添加 Application Insights 操作
 1. 单击 " **新建步骤**"。
 
-1. 在“选择操作”**** 搜索框中，键入“Azure Application Insights”****。
+1. 在“选择操作”搜索框中，键入“Azure Application Insights”。
 
-1. 在“操作”**** 下，单击“Azure Application Insights - 将 Analytics 查询可视化”****。
+1. 在“操作”下，单击“Azure Application Insights - 将 Analytics 查询可视化”。
 
     ![逻辑应用设计器“选择操作”窗口](./media/automate-with-logic-apps/4visualize.png)
 
@@ -66,7 +66,7 @@ ms.locfileid: "90970865"
 
 创建自己的查询时，请在将其添加到流之前，验证它们是否可在 Analytics 中正常运行。
 
-1. 在“查询”**** 框中，添加以下 Analytics 查询：
+1. 在“查询”框中，添加以下 Analytics 查询：
 
     ```
     requests
@@ -79,7 +79,7 @@ ms.locfileid: "90970865"
     | evaluate autocluster()
     ```
 
-1. 在“图表类型”**** 框中，选择“Html 表”****。
+1. 在“图表类型”框中，选择“Html 表”。
 
     ![Analytics 查询配置窗口](./media/automate-with-logic-apps/8query.png)
 
@@ -87,21 +87,21 @@ ms.locfileid: "90970865"
 
 1. 单击 " **新建步骤**"。
 
-1. 在搜索框中键入 Office 365 Outlook****。
+1. 在搜索框中键入 Office 365 Outlook。
 
 1. 单击 " **Office 365 Outlook-发送电子邮件**"。
 
     ![Office 365 Outlook 选择](./media/automate-with-logic-apps/9sendemail.png)
 
-1. 在“发送电子邮件”**** 窗口中，执行以下操作：
+1. 在“发送电子邮件”窗口中，执行以下操作：
 
    a. 键入收件人的电子邮件地址。
 
    b. 键入电子邮件的主题。
 
-   c. 单击“正文”**** 框中的任意位置，然后在右侧打开的动态内容菜单中选择“正文”****。
+   c. 单击“正文”框中的任意位置，然后在右侧打开的动态内容菜单中选择“正文”。
     
-   d. 单击“添加新参数”**** 下拉列表，然后选择“附件”和“是 HTML”。
+   d. 单击“添加新参数”下拉列表，然后选择“附件”和“是 HTML”。
 
       ![屏幕截图显示 "发送电子邮件" 窗口，其中突出显示了 "正文" 框，而 "动态内容" 菜单显示在右侧。](./media/automate-with-logic-apps/10emailbody.png)
 
@@ -109,18 +109,18 @@ ms.locfileid: "90970865"
 
 1. 在动态内容菜单上执行以下操作：
 
-    a. 选择“附件名称”****。
+    a. 选择“附件名称”。
 
-    b. 选择“附件内容”****。
+    b. 选择“附件内容”。
     
-    c. 在“是否为 HTML”**** 框中选择“是”****。
+    c. 在“是否为 HTML”框中选择“是”。
 
       ![“Office 365 电子邮件配置”屏幕](./media/automate-with-logic-apps/12emailattachment.png)
 
 ### <a name="step-7-save-and-test-your-logic-app"></a>步骤 7：保存并测试逻辑应用
-* 单击“保存”以保存更改。
+*  以保存更改。
 
-可以等待触发器运行逻辑应用，也可以通过选择“运行”**** 立即运行逻辑应用。
+可以等待触发器运行逻辑应用，也可以通过选择“运行”立即运行逻辑应用。
 
 ![逻辑应用创建屏幕](./media/automate-with-logic-apps/13save.png)
 
@@ -130,7 +130,7 @@ ms.locfileid: "90970865"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 详细了解如何创建 [Analytics 查询](../log-query/get-started-queries.md)。
+- 详细了解如何创建 [Analytics 查询](../logs/get-started-queries.md)。
 - 了解有关[逻辑应用](../../logic-apps/logic-apps-overview.md)的详细信息。
 
 

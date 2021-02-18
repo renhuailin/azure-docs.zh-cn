@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 10/12/2018
-ms.openlocfilehash: 1faeb047783b9db24348425e5a6453754e550d4d
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: c58f94bcdb659eed67ebf023af473545d8cee1a7
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99833008"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587264"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>网络性能监视器解决方案常见问题解答
 
@@ -43,7 +43,7 @@ ms.locfileid: "99833008"
 要在节点 VM 上运行 NPM 解决方案以监视网络，节点应至少有 500 MB 内存和 1 个核心。 运行 NPM 不需要使用单独的节点。 该解决方案可以在运行了其他工作负荷的节点上运行。 在 CPU 使用率超过 5% 的情况下，该解决方案能够停止监视进程。
 
 ### <a name="to-use-npm-should-i-connect-my-nodes-as-direct-agent-or-through-system-center-operations-manager"></a>若要使用 NPM，是要以直接代理的形式还是通过 System Center Operations Manager 连接节点？
-性能监视器和服务连接监视器功能都支持 [作为直接代理连接](../platform/agent-windows.md) 并且 [通过 Operations Manager 连接](../platform/om-agents.md)的节点。
+性能监视器和服务连接监视器功能都支持 [作为直接代理连接](../agents/agent-windows.md) 并且 [通过 Operations Manager 连接](../agents/om-agents.md)的节点。
 
 对于 ExpressRoute 监视器功能，Azure 节点只能以直接代理的形式连接。 不支持通过 Operations Manager 连接的 Azure 节点。 对于本地节点，支持使用以直接代理形式连接的节点以及通过 Operations Manager 连接的节点来监视 ExpressRoute 线路。
 
@@ -98,7 +98,7 @@ NPM 使用基于跟踪路由的专属算法来发现源与目标之间的所有�
 NPM 根据每个网络路径、网段和构成网络跃点所属的不正常路径数，使用概率机制向它们分配故障概率。 随着网段和跃点属于越来越多的不正常路径，与之关联的故障概率将会增大。 如果有许多包含 NPM 代理的节点相互连接，因此增加了用于计算故障概率的数据点，则此算法的效果最佳。
 
 ### <a name="how-can-i-create-alerts-in-npm"></a>如何在 NPM 中创建警报？
-由于已知问题，当前无法从 NPM UI 创建警报。 请[手动创建警报](../platform/alerts-log.md)。
+由于已知问题，当前无法从 NPM UI 创建警报。 请[手动创建警报](../alerts/alerts-log.md)。
 
 ### <a name="what-are-the-default-log-analytics-queries-for-alerts"></a>哪个是针对警报的默认 Log Analytics 查询？
 性能监视器查询

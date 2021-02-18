@@ -3,12 +3,12 @@ title: 部署 SWIFT CSP-CSCF v2020 蓝图示例
 description: SWIFT CSP-CSCF v2020 蓝图示例的部署步骤，包括蓝图项目参数详细信息。
 ms.date: 01/08/2021
 ms.topic: sample
-ms.openlocfilehash: c3672dabb7f4c0a977b8140f470ddfc9fcea9c6d
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 8f28bae58128306776fa18a6b383e324482bb03f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98048753"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100582003"
 ---
 # <a name="deploy-the-swift-csp-cscf-v2020-blueprint-sample"></a>部署 SWIFT CSP-CSCF v2020 蓝图示例
 
@@ -16,7 +16,7 @@ ms.locfileid: "98048753"
 
 > [!div class="checklist"]
 > - 基于示例创建新的蓝图
-> - 将示例副本标记为“已发布”
+> - 将示例副本标记为“已发布” 
 > - 将蓝图副本分配到现有的订阅
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free)。
@@ -36,9 +36,9 @@ ms.locfileid: "98048753"
    - **蓝图名称**：提供“SWIFT CSP-CSCF v2020”蓝图示例副本的名称。
    - **定义位置**：使用省略号并选择要将示例副本保存到的管理组。
 
-1. 选择页面顶部的“项目”选项卡，或页面底部的“下一步:项目”。
+1. 选择页面顶部的“项目”选项卡，或页面底部的“下一步:   项目”。
 
-1. 查看构成蓝图示例的项目列表。 许多项目包含稍后我们将要定义的参数。 查看完蓝图示例后，选择“保存草稿”。
+1. 查看构成蓝图示例的项目列表。 许多项目包含稍后我们将要定义的参数。 查看完蓝图示例后，选择“保存草稿”。 
 
 ## <a name="publish-the-sample-copy"></a>发布示例副本
 
@@ -67,7 +67,7 @@ ms.locfileid: "98048753"
      - **订阅**：在蓝图示例副本所保存到的管理组中选择一个或多个订阅。 如果选择多个订阅，将使用输入的参数为每个订阅创建一个分配。
      - **分配名称**：系统会根据蓝图的名称预先填充该名称。
        请根据需要更改该名称，或保留原样。
-     - 位置：选择要在其中创建托管标识的区域。 Azure 蓝图使用此托管标识在分配的蓝图中部署所有项目。 若要了解详细信息，请参阅 [Azure 资源的托管标识](../../../../active-directory/managed-identities-azure-resources/overview.md)。
+     - **位置**：选择要在其中创建托管标识的区域。 Azure 蓝图使用此托管标识在分配的蓝图中部署所有项目。 若要了解详细信息，请参阅 [Azure 资源的托管标识](../../../../active-directory/managed-identities-azure-resources/overview.md)。
      - **蓝图定义版本**：选择蓝图示例副本的 **已发布** 版本。
 
    - 锁分配
@@ -82,7 +82,7 @@ ms.locfileid: "98048753"
 
      在本部分定义的参数将应用到定义了这些参数的项目。 这些参数属于[动态参数](../../concepts/parameters.md#dynamic-parameters) ，因为它们是在分配蓝图期间定义的。 有关完整列表或项目参数及其说明，请参阅[项目参数表](#artifact-parameters-table) 。
 
-1. 输入所有参数后，选择页面底部的“分配”。 随后将创建蓝图分配，并开始部署项目。 部署过程大约需要一小时。 若要检查部署状态，请打开蓝图分配。
+1. 输入所有参数后，选择页面底部的“分配”。  随后将创建蓝图分配，并开始部署项目。 部署过程大约需要一小时。 若要检查部署状态，请打开蓝图分配。
 
 > [!WARNING]
 > Azure 蓝图服务和内置蓝图示例是 **免费的**。 Azure 资源[按产品定价](https://azure.microsoft.com/pricing/) 。 使用[定价计算器](https://azure.microsoft.com/pricing/calculator/) 可以估算运行此蓝图示例部署的资源所需的成本。
@@ -93,7 +93,7 @@ ms.locfileid: "98048753"
 
 |项目名称|项目类型|参数名称|说明|
 |-|-|-|-|
-|\[预览\]：审核 SWIFT CSP-CSCF v2020 控制措施并部署特定 VM 扩展以支持审核要求|策略分配|应启用诊断日志的资源类型列表|用于审核是否未启用诊断日志设置的资源类型列表。 [Azure Monitor 资源日志类别](../../../../azure-monitor/platform/resource-logs-categories.md#supported-log-categories-per-resource-type)中提供了可接受的值。|
+|\[预览\]：审核 SWIFT CSP-CSCF v2020 控制措施并部署特定 VM 扩展以支持审核要求|策略分配|应启用诊断日志的资源类型列表|用于审核是否未启用诊断日志设置的资源类型列表。 [Azure Monitor 资源日志类别](../../../../azure-monitor/essentials/resource-logs-categories.md#supported-log-categories-per-resource-type)中提供了可接受的值。|
 |\[预览\]：审核 SWIFT CSP-CSCF v2020 控制措施并部署特定 VM 扩展以支持审核要求|策略分配|连接的工作区 ID|Log Analytics 代理应连接到的工作区 ID 的列表（以分号分隔）|
 |\[预览\]：审核 SWIFT CSP-CSCF v2020 控制措施并部署特定 VM 扩展以支持审核要求|策略分配|应该包括在 Windows VM 管理员组中的用户的列表|以分号分隔的应包括在管理员本地组中的成员列表。 例如：管理员；myUser1；myUser2|
 |\[预览\]：审核 SWIFT CSP-CSCF v2020 控制措施并部署特定 VM 扩展以支持审核要求|策略分配|域名 (FQDN)|Windows VM 应加入到的完全限定域名 (FQDN)|

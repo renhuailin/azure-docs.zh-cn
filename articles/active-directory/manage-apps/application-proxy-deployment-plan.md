@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 12/31/2020
 ms.author: kenwith
-ms.openlocfilehash: 213f7d95916555ea32925a5b0af0865d900b0209
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: c08ce3bc8b722f2ea417c854a606f1060aa174e3
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99257907"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100580051"
 ---
 # <a name="plan-an-azure-ad-application-proxy-deployment"></a>计划 Azure AD 应用程序代理部署
 
@@ -29,7 +29,7 @@ ms.locfileid: "99257907"
 
 以下部分提供了关键规划元素的广泛视图，这些元素将为你提供高效的部署体验。
 
-### <a name="prerequisites"></a>必备条件
+### <a name="prerequisites"></a>先决条件
 
 在开始实施之前，需要满足以下先决条件。 在本 [教程](application-proxy-add-on-premises-application.md)中，可以查看有关设置环境的详细信息，包括这些先决条件。
 
@@ -98,7 +98,7 @@ ms.locfileid: "99257907"
 | 身份验证类型| 应用程序支持的身份验证类型，如基本、Windows 集成身份验证、基于窗体、基于标头和声明。 <br>如果将应用程序配置为在特定的域帐户下运行，请注意服务帐户 (FQDN) 的完全限定的域名。<br> 如果基于 SAML，则为标识符和回复 Url。 <br> 如果基于标头，则为供应商解决方案和处理身份验证类型的特定要求。 |
 | 连接器组名称 | 将指定向此后端应用程序提供管道和 SSO 的连接器组的逻辑名称。 |
 | 用户/组访问权限 | 将被授予对应用程序的外部访问权限的用户或用户组。 |
-| 其他要求 | 请注意发布应用程序时应考虑的任何其他远程访问或安全要求。 |
+| 其他需求 | 请注意发布应用程序时应考虑的任何其他远程访问或安全要求。 |
 
 您可以下载此 [应用程序清单电子表格](https://aka.ms/appdiscovery) 来清点您的应用程序。
 
@@ -120,7 +120,7 @@ ms.locfileid: "99257907"
 
 * 只有通过组成员身份或单独分配到应用程序的用户可以访问这些应用程序。
 
-**性能**
+**“性能”**
 
 * 与从内部网络访问应用程序相比，应用程序性能不会有所下降。
 
@@ -302,7 +302,7 @@ Azure AD 通过 [审核日志和报告，](../reports-monitoring/concept-provisi
 
 #### <a name="windows-event-logs-and-performance-counters"></a>Windows 事件日志和性能计数器
 
-连接器具有管理日志和会话日志。 管理日志包括关键事件及其错误。 会话日志包括所有事务及其处理详细信息。 日志和计数器位于 Windows 事件日志中。有关详细信息，请参阅 [了解 Azure AD 应用程序代理连接器](./application-proxy-connectors.md#under-the-hood)。 按照本 [教程进行操作，在 Azure Monitor 中配置事件日志数据源](../../azure-monitor/platform/data-sources-windows-events.md)。
+连接器具有管理日志和会话日志。 管理日志包括关键事件及其错误。 会话日志包括所有事务及其处理详细信息。 日志和计数器位于 Windows 事件日志中。有关详细信息，请参阅 [了解 Azure AD 应用程序代理连接器](./application-proxy-connectors.md#under-the-hood)。 按照本 [教程进行操作，在 Azure Monitor 中配置事件日志数据源](../../azure-monitor/agents/data-sources-windows-events.md)。
 
 ### <a name="troubleshooting-guide-and-steps"></a>疑难解答指南和步骤
 

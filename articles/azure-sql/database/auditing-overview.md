@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 02/03/2021
 ms.custom: azure-synapse, sqldbrb=1
-ms.openlocfilehash: e96aa32c6b67290fc4b4ee62ae98c4e72399fd4b
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: 0e85019c8f02b8a4a97426d50a30d047b95378a1
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99509581"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572287"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL 数据库和 Azure Synapse Analytics 的审核
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -139,7 +139,7 @@ AzureDiagnostics
 
    ![LogAnalyticsworkspace](./media/auditing-overview/auditing_select_oms.png)
 
-有关 Azure Monitor Log Analytics 工作区的更多详细信息，请参阅[设计 Azure Monitor 日志部署](../../azure-monitor/platform/design-logs-deployment.md)
+有关 Azure Monitor Log Analytics 工作区的更多详细信息，请参阅[设计 Azure Monitor 日志部署](../../azure-monitor/logs/design-logs-deployment.md)
    
 ### <a name="audit-to-event-hub-destination"></a><a id="audit-event-hub-destination"></a>对事件中心目标的审核
 
@@ -170,7 +170,7 @@ AzureDiagnostics
     ![Log Analytics 安全见解](media/auditing-overview/auditing-log-analytics-dashboard-data.png)
 
 - 也可从 Log Analytics 边栏选项卡访问审核日志。 打开 Log Analytics 工作区，然后在“常规”部分单击“日志”。  一开始可以使用简单的查询（例如：搜索“SQLSecurityAuditEvents”）来查看审核日志。
-    在这里，还可以使用 [Azure Monitor 日志](../../azure-monitor/log-query/log-query-overview.md)来对审核日志数据运行高级搜索。 在 Azure Monitor 日志中，可以使用集成的搜索和自定义仪表板随时分析所有工作负荷和服务器中的数百万条记录，以获得实时操作见解。 若要详细了解 Azure Monitor 日志搜索语言和命令，请参阅 [Azure Monitor 日志搜索参考](../../azure-monitor/log-query/log-query-overview.md)。
+    在这里，还可以使用 [Azure Monitor 日志](../../azure-monitor/logs/log-query-overview.md)来对审核日志数据运行高级搜索。 在 Azure Monitor 日志中，可以使用集成的搜索和自定义仪表板随时分析所有工作负荷和服务器中的数百万条记录，以获得实时操作见解。 若要详细了解 Azure Monitor 日志搜索语言和命令，请参阅 [Azure Monitor 日志搜索参考](../../azure-monitor/logs/log-query-overview.md)。
 
 如果已选择将审核日志写入到事件中心，请执行以下操作：
 

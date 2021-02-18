@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/18/2019
 ms.author: v-miegge
-ms.openlocfilehash: ec605fd30252b9a0cfb80d0bc3ff145ed3b5a1d4
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: cde84a018d307bada6a6b6f3b5467b8addd007b1
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98573303"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571430"
 ---
 # <a name="troubleshoot-azure-virtual-machine-performance-on-linux-or-windows"></a>排查 Linux 或 Windows 上的 Azure 虚拟机性能问题
 
@@ -30,7 +30,7 @@ ms.locfileid: "98573303"
 
 ### <a name="azure-iaas-virtual-machine-monitoring"></a>Azure IAAS 虚拟机监视
 
-若要监视来宾 VM，请使用 Azure VM 监视，当较高层面的出现某些资源状况时，它可以发出警报。 若要检查是否已启用 VM 诊断，请参阅 [Azure 资源日志概述](../../azure-monitor/learn/tutorial-resource-logs.md)。 如果看到以下消息，则很可能未启用诊断：
+若要监视来宾 VM，请使用 Azure VM 监视，当较高层面的出现某些资源状况时，它可以发出警报。 若要检查是否已启用 VM 诊断，请参阅 [Azure 资源日志概述](../../azure-monitor/essentials/tutorial-resource-logs.md)。 如果看到以下消息，则很可能未启用诊断：
 
 ![未启用监视](media/troubleshoot-performance-virtual-machine-linux-windows/1-virtual-machines-monitoring-not-enabled.png)
  
@@ -101,7 +101,7 @@ ms.locfileid: "98573303"
 
 ### <a name="cpu-observe-trends"></a>观察 CPU 趋势
 
-查看性能问题时，请注意趋势，并了解它们对你产生的影响。 在后续部分，我们将使用门户中的“监视”图形来显示趋势。 还可以使用这些图形来交叉参考同一时间段内的不同资源行为。 若要自定义图形，请单击“[Azure Monitor 数据平台](../../azure-monitor/platform/data-platform.md)”。
+查看性能问题时，请注意趋势，并了解它们对你产生的影响。 在后续部分，我们将使用门户中的“监视”图形来显示趋势。 还可以使用这些图形来交叉参考同一时间段内的不同资源行为。 若要自定义图形，请单击“[Azure Monitor 数据平台](../../azure-monitor/data-platform.md)”。
 
 蜂值–蜂值可与计划的任务/已知事件相关。 如果可以识别任务，请确定该任务是否以所需的性能级别运行。 如果性能可接受，则可能不需要增加资源。
 

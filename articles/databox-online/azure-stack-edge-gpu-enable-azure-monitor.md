@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 02/02/2021
 ms.author: alkohli
-ms.openlocfilehash: 171b4dbfb2a5852e270c483a28cad31f97dcb42b
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 199ec8e2f1e8eb74d971286a4fc6180eb8b72f2a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99493906"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595981"
 ---
 # <a name="enable-azure-monitor-on-your-azure-stack-edge-pro-gpu-device"></a>在 Azure Stack Edge Pro GPU 设备上启用 Azure Monitor
 
@@ -49,7 +49,7 @@ ms.locfileid: "99493906"
 
         ![查看和创建 Log Analytics 工作区](media/azure-stack-edge-gpu-enable-azure-monitor/create-log-analytics-workspace-review-create-1.png)
 
-有关详细信息，请参阅 [通过 Azure 门户创建 Log Analytics 工作区](../azure-monitor/learn/quick-create-workspace.md)中的详细步骤。
+有关详细信息，请参阅 [通过 Azure 门户创建 Log Analytics 工作区](../azure-monitor/logs/quick-create-workspace.md)中的详细步骤。
 
 
 
@@ -57,7 +57,7 @@ ms.locfileid: "99493906"
 
 执行以下步骤以在工作区中启用容器见解。 
 
-1. 按照 [如何添加 Azure Monitor 容器解决方案](../azure-monitor/insights/container-insights-hybrid-setup.md#how-to-add-the-azure-monitor-containers-solution)中的详细步骤进行操作。 使用以下模板文件 `containerSolution.json` ：
+1. 按照 [如何添加 Azure Monitor 容器解决方案](../azure-monitor/containers/container-insights-hybrid-setup.md#how-to-add-the-azure-monitor-containers-solution)中的详细步骤进行操作。 使用以下模板文件 `containerSolution.json` ：
 
     ```yml
     {

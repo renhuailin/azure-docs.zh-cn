@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.author: lazinnat
 author: lazinnat
 ms.date: 06/12/2019
-ms.openlocfilehash: bff846b4b64778d5e40ea7f08f88faf3dde81d9e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 55263d3c742d18cf03303f96f08fb9aa370c7af8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91371603"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592056"
 ---
 # <a name="view-definition-artifact-in-azure-managed-applications"></a>查看 Azure 托管应用程序中的定义项目
 
@@ -131,13 +131,13 @@ ms.locfileid: "91371603"
 |description|否|托管应用程序的说明。|
 |命令|否|概述页的其他工具栏按钮的数组，请参阅[命令](#commands)。|
 
-![屏幕截图显示具有测试操作控件的托管应用程序的概述，以运行演示应用程序。](./media/view-definition/overview.png)
+![屏幕截图显示具有托管应用程序的“概述”，该应用有一个“测试操作”控件用于运行演示应用程序。](./media/view-definition/overview.png)
 
 ## <a name="metrics"></a>指标
 
 `"kind": "Metrics"`
 
-使用指标视图可以从 [Azure Monitor 指标](../../azure-monitor/platform/data-platform-metrics.md)中的托管应用程序资源收集和聚合数据。
+使用指标视图可以从 [Azure Monitor 指标](../../azure-monitor/essentials/data-platform-metrics.md)中的托管应用程序资源收集和聚合数据。
 
 ```json
 {
@@ -176,7 +176,7 @@ ms.locfileid: "91371603"
 |---------|---------|---------|
 |displayName|是|图表的显示标题。|
 |chartType|否|用于此图表的可视化效果。 默认使用折线图。 支持的图表类型：`Bar, Line, Area, Scatter`。|
-|指标|是|要在此图表上绘制的指标数组。 若要详细了解 Azure 门户中支持的指标，请参阅 [Azure Monitor 支持的指标](../../azure-monitor/platform/metrics-supported.md)|
+|指标|是|要在此图表上绘制的指标数组。 若要详细了解 Azure 门户中支持的指标，请参阅 [Azure Monitor 支持的指标](../../azure-monitor/essentials/metrics-supported.md)|
 
 ### <a name="metric"></a>指标
 
@@ -188,13 +188,13 @@ ms.locfileid: "91371603"
 |resourceTagFilter|否|要显示其指标的资源标记数组（使用单词 `or` 分隔）。 在资源类型筛选器的顶部应用。|
 |resourceType|是|要显示其指标的资源类型。|
 
-![屏幕截图显示了一个名为 "监视" 的页，即 "我的托管应用程序的指标视图"。](./media/view-definition/metrics.png)
+![屏幕截图显示托管应用程序的名为“我的指标视图”的“监视”页面。](./media/view-definition/metrics.png)
 
 ## <a name="custom-resources"></a>自定义资源
 
 `"kind": "CustomResources"`
 
-可以定义此类型的多个视图。 每个视图表示 **mainTemplate.json** 中定义的自定义提供程序中的**唯一**自定义资源类型。 有关自定义提供程序的简介，请参阅 [Azure 自定义提供程序预览版概述](../custom-providers/overview.md)。
+可以定义此类型的多个视图。 每个视图表示 **mainTemplate.json** 中定义的自定义提供程序中的 **唯一** 自定义资源类型。 有关自定义提供程序的简介，请参阅 [Azure 自定义提供程序预览版概述](../custom-providers/overview.md)。
 
 在此视图中，可对自定义资源类型执行 GET、PUT、DELETE 和 POST 操作。 POST 操作可以是全局自定义操作，或自定义资源类型上下文中的自定义操作。
 
@@ -226,15 +226,15 @@ ms.locfileid: "91371603"
 
 |属性|必须|说明|
 |---------|---------|---------|
-|displayName|是|视图的显示标题。 标题对于 **viewDefinition.json** 中的每个 CustomResources 视图应该**唯一**。|
+|displayName|是|视图的显示标题。 标题对于 **viewDefinition.json** 中的每个 CustomResources 视图应该 **唯一**。|
 |版本|否|用于呈现视图的平台版本。|
-|resourceType|是|自定义资源类型。 必须是自定义提供程序的**唯一**自定义资源类型。|
+|resourceType|是|自定义资源类型。 必须是自定义提供程序的 **唯一** 自定义资源类型。|
 |icon|否|视图的图标。 示例图标列表在 [JSON 架构](https://schema.management.azure.com/schemas/viewdefinition/0.0.1-preview/ViewDefinition.json#)中定义。|
 |createUIDefinition|否|为“创建自定义资源”命令创建 UI 定义架构。 有关创建 UI 定义的简介，请参阅 [CreateUiDefinition 入门](create-uidefinition-overview.md)|
 |命令|否|CustomResources 视图的其他工具栏按钮数组，请参阅[命令](#commands)。|
 |列|否|自定义资源的列数组。 如果未定义，则默认会显示 `name` 列。 该列必须具有 `"key"` 和 `"displayName"`。 对于键，请提供要在视图中显示的属性的键。 如果嵌套键，请使用句点作为分隔符，例如 `"key": "name"` 或 `"key": "properties.property1"`。 对于显示名称，请提供要在视图中显示的属性的显示名称。 还可以提供 `"optional"` 属性。 设置为 true 时，该列默认会在视图中隐藏。|
 
-![屏幕截图显示名为 "测试自定义资源类型" 和 "控件自定义上下文操作" 的资源页。](./media/view-definition/customresources.png)
+![屏幕截图显示名为“测试自定义资源类型”的“资源”页面以及“自定义上下文操作”控件。](./media/view-definition/customresources.png)
 
 ## <a name="commands"></a>命令
 
@@ -266,7 +266,7 @@ ms.locfileid: "91371603"
 
 可以定义此类型的多个视图。 使用此视图可以通过 **mainTemplate.json** 中定义的自定义提供程序，将现有资源链接到托管应用程序。 有关自定义提供程序的简介，请参阅 [Azure 自定义提供程序预览版概述](../custom-providers/overview.md)。
 
-在此视图中，可以基于 `targetResourceType` 扩展现有的 Azure 资源。 选择某个资源时，它会向**公共**自定义提供程序创建加入请求，这会对资源应用副作用。 
+在此视图中，可以基于 `targetResourceType` 扩展现有的 Azure 资源。 选择某个资源时，它会向 **公共** 自定义提供程序创建加入请求，这会对资源应用副作用。 
 
 ```json
 {
@@ -282,7 +282,7 @@ ms.locfileid: "91371603"
 
 |属性|必须|说明|
 |---------|---------|---------|
-|displayName|是|视图的显示标题。 标题对于 **viewDefinition.json** 中的每个 Associations 视图应该**唯一**。|
+|displayName|是|视图的显示标题。 标题对于 **viewDefinition.json** 中的每个 Associations 视图应该 **唯一**。|
 |版本|否|用于呈现视图的平台版本。|
 |targetResourceType|是|目标资源类型。 这是要为资源加入显示的资源类型。|
 |createUIDefinition|否|为“创建关联资源”命令创建 UI 定义架构。 有关创建 UI 定义的简介，请参阅 [CreateUiDefinition 入门](create-uidefinition-overview.md)|

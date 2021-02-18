@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 01/25/2019
 ms.author: duau
-ms.openlocfilehash: 837d1f78a9fde72137383e6c22adb8870997dc9b
-ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
+ms.openlocfilehash: 907c03bd15463368def316e72f55ce214cb3e617
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98986033"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571040"
 ---
 # <a name="configure-network-performance-monitor-for-expressroute"></a>为 ExpressRoute 配置网络性能监视器
 
@@ -54,7 +54,7 @@ ms.locfileid: "98986033"
 1. 在[Azure 门户](https://portal.azure.com)，选择 Vnet 的订阅到 ExpressRoute 线路对等。 然后从市场服务列表中搜索“网络性能监视器”。 在返回结果中，单击打开“网络性能监视器”页面。
 
    >[!NOTE]
-   >可以创建新的工作区或使用现有的工作区。 如果想要使用现有工作区，则必须确保工作区已迁移到新的查询语言。 [详细信息 .。。](../azure-monitor/log-query/log-query-overview.md)
+   >可以创建新的工作区或使用现有的工作区。 如果想要使用现有工作区，则必须确保工作区已迁移到新的查询语言。 [详细信息 .。。](../azure-monitor/logs/log-query-overview.md)
    >
 
    ![portal](./media/how-to-npm/3.png)<br><br>
@@ -118,7 +118,7 @@ ms.locfileid: "98986033"
 
 ### <a name="23-configure-proxy-settings-optional"></a><a name="proxy"></a>2.3：配置代理设置（可选）
 
-如果要使用 Web 代理访问 Internet，请执行以下步骤为 Microsoft Monitoring Agent 配置代理设置。 针对每个服务器执行这些步骤。 如果需要配置多台服务器，使用脚本自动执行此过程可能更加轻松。 如果是此情况，请参阅[使用脚本为 Microsoft Monitoring Agent 配置代理设置](../azure-monitor/platform/agent-windows.md)。
+如果要使用 Web 代理访问 Internet，请执行以下步骤为 Microsoft Monitoring Agent 配置代理设置。 针对每个服务器执行这些步骤。 如果需要配置多台服务器，使用脚本自动执行此过程可能更加轻松。 如果是此情况，请参阅[使用脚本为 Microsoft Monitoring Agent 配置代理设置](../azure-monitor/agents/agent-windows.md)。
 
 使用控制面板为 Microsoft Monitoring Agent 配置代理设置：
 
@@ -138,7 +138,7 @@ ms.locfileid: "98986033"
 3. 单击“Azure Log Analytics”选项卡。
 4. 在 " **状态** " 列中，应会看到代理成功连接到 Azure Monitor 日志。
 
-   ![状态](./media/how-to-npm/12.png)
+   ![status](./media/how-to-npm/12.png)
 
 ### <a name="25-open-the-firewall-ports-on-the-monitoring-agent-servers"></a><a name="firewall"></a>2.5：打开监视代理服务器上的防火墙端口
 

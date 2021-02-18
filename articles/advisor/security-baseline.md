@@ -1,24 +1,24 @@
 ---
-title: Azure Advisor 的 azure 安全基准
-description: Azure Advisor 安全基线为实现 Azure 安全基准中指定的安全建议提供过程指南和资源。
+title: 适用于 Azure 顾问的 Azure 安全基线
+description: Azure 顾问安全基线为实现 Azure 安全基准中指定的安全建议提供了过程指南和资源。
 author: msmbaldwin
 ms.service: advisor
 ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 2887b12e7ce24e9c5a881a2b3edeebb258532a49
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 36d5eba344906ca03b137efb220f54dc3a11eb6d
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736484"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572811"
 ---
-# <a name="azure-security-baseline-for-azure-advisor"></a>Azure Advisor 的 azure 安全基准
+# <a name="azure-security-baseline-for-azure-advisor"></a>适用于 Azure 顾问的 Azure 安全基线
 
-此安全基线将 [Azure 安全基准版本 2.0](../security/benchmarks/overview.md) 中的指南应用于 azure 顾问。 Azure 安全基准提供有关如何在 Azure 上保护云解决方案的建议。 内容按照 Azure 安全基准定义的 **安全控制措施** 进行分组，以及适用于 azure 顾问的相关指南。 排除了不适用于 Azure 顾问的 **控件**。
+此安全基线将 [Azure 安全基准版本 2.0](../security/benchmarks/overview.md) 中的指南应用于 Azure 顾问。 Azure 安全基准提供有关如何在 Azure 上保护云解决方案的建议。 内容按“安全控制”分组，这些控制根据适用于 Azure 顾问的 Azure 安全基准和相关指南定义。 排除了不适用于 Azure 顾问的“控制”。
 
-若要查看 Azure Advisor 如何完全映射到 Azure 安全基准，请参阅 [完整的 Azure advisor 安全基线映射文件](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)。
+若要查看 Azure 顾问如何完全映射到 Azure 安全基准，请参阅[完整的 Azure 顾问安全基线映射文件](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)。
 
 ## <a name="identity-management"></a>标识管理
 
@@ -26,14 +26,14 @@ ms.locfileid: "98736484"
 
 ### <a name="im-1-standardize-azure-active-directory-as-the-central-identity-and-authentication-system"></a>IM-1：将 Azure Active Directory 标准化为中央标识和身份验证系统
 
-**指南**： Azure 顾问使用 Azure Active Directory (Azure AD) 作为默认的标识和访问管理服务。 标准化 Azure AD 来管理组织的标识和访问管理：
+**指导**：Azure 顾问使用 Azure Active Directory (Azure AD) 作为默认标识和访问管理服务。 使 Azure AD 标准化，以便控制组织在以下资源中的标识和访问管理：
 
-- Microsoft 云资源，如 Azure 门户、Azure 存储、Azure 虚拟机 (Linux 和 Windows) 、Azure Key Vault、PaaS 和 SaaS 应用程序
+- Microsoft 云资源，例如 Azure 门户、Azure 存储、Azure 虚拟机（Linux 和 Windows）、Azure Key Vault、PaaS 和 SaaS 应用程序
 - 你的组织的资源，例如 Azure 上的应用程序，或公司网络资源
 
-确保在组织的云安全实践中保护 Azure AD 的优先级较高。 Azure AD 还提供了一个标识安全分数，有助于根据 Microsoft 的最佳实践建议评估标识安全状况。 使用评分来估计你的配置与最佳做法建议的匹配程度，并改善你的安全状况。
+确保在组织的云安全做法中，保护 Azure AD 是一个高优先级事项。 Azure AD 还提供了标识安全分数，让你可以根据 Microsoft 的最佳做法建议来评估标识安全状况。 使用评分来估计你的配置与最佳做法建议的匹配程度，并改善你的安全状况。
 
-请注意，Azure AD 支持外部标识，这允许没有 Microsoft 帐户的用户使用其外部标识登录到其应用程序和资源。
+请注意，Azure AD 支持外部标识，因此，没有 Microsoft 帐户的用户可以使用其外部标识登录到其应用程序和资源。
 
 - [Azure Active Directory 中的租赁](../active-directory/develop/single-and-multi-tenant-apps.md) 
 
@@ -61,9 +61,9 @@ ms.locfileid: "98736484"
 
 ### <a name="im-4-use-strong-authentication-controls-for-all-azure-active-directory-based-access"></a>IM-4：对所有基于 Azure Active Directory 的访问使用强身份验证控制
 
-**指南**： Azure 顾问使用 Azure Active Directory (Azure AD) ，通过多重身份验证和无密码方法支持强身份验证控制。
-- 多重身份验证-启用 Azure AD 多重身份验证，并遵循 Azure 安全中心的标识和访问管理建议，获取多重身份验证设置中的一些最佳实践。 多重身份验证可在所有用户上强制执行，根据登录条件和风险因素，选择用户或按用户级别。
-- 无密码 authentication –三个无密码 authentication 选项可用。 它们是、Windows Hello 企业版、Microsoft Authenticator 应用和本地身份验证方法（如智能卡）。
+**指导**：Azure 顾问使用 Azure Active Directory (Azure AD)，后者支持通过多重身份验证进行的强身份验证控制，并且支持强无密码方法。
+- 多重身份验证 - 启用 Azure AD 多重身份验证并遵循 Azure 安全中心标识和访问管理建议，以在多重身份验证设置中推行一些最佳做法。 可对所有用户或选定用户强制执行多重身份验证，也可以根据登录条件和风险因素在每个用户级别强制执行多重身份验证。
+- 无密码 authentication –三个无密码 authentication 选项可用。 它们是 Windows Hello for Business、Microsoft Authenticator 应用和本地身份验证方法（例如智能卡）。
 
 对于管理员和特权用户，请确保使用最高级别的强身份验证方法，然后向其他用户推出适当的强身份验证策略。
 
@@ -77,13 +77,13 @@ ms.locfileid: "98736484"
 
 ### <a name="im-5-monitor-and-alert-on-account-anomalies"></a>IM-5：监视并提醒帐户异常
 
-**指南**： Azure Advisor 与 Azure Active Directory (Azure AD 的) ，其中提供了以下数据源：
+**指导**：Azure 顾问与提供以下数据源的 Azure Active Directory (Azure AD) 集成：
 - 登录 - 登录报告提供有关托管应用程序使用情况和用户登录活动的信息。
 - 审核日志 - 通过日志为 Azure AD 中的各种功能所做的所有更改提供可跟踪性。 审核日志的示例包括对 Azure AD 中的任何资源（例如添加或删除用户、应用、组、角色和策略）所做的更改。
 - 风险登录 - 风险登录指示可能有用户帐户合法拥有者以外的人进行了登录尝试。
 - 已标记为存在风险的用户 - 风险用户是指可能已泄露的用户帐户。
 
-使用这些数据源可以与 Azure Monitor、Azure Sentinel 或第三方 SIEM 系统集成。 在 Azure 安全中心为某些可疑活动（如过多的身份验证尝试次数、不推荐使用的帐户）设置警报。
+使用这些数据源可以与 Azure Monitor、Azure Sentinel 或第三方 SIEM 系统集成。 在 Azure 安全中心内针对某些可疑活动（例如，失败的身份验证尝试次数过多、使用了订阅中的已弃用帐户）设置警报。
 
 Azure 高级威胁防护 (ATP) 是一种安全解决方案，它可使用 Active Directory 信号来识别、检测和调查高级威胁、泄露的标识以及恶意的内部操作。
 
@@ -99,7 +99,7 @@ Azure 高级威胁防护 (ATP) 是一种安全解决方案，它可使用 Active
 
 ### <a name="im-6-restrict-azure-resource-access-based-on-conditions"></a>IM-6：基于条件限制 Azure 资源访问
 
-**指南**： Azure 顾问支持 Azure Active Directory 的 (Azure AD) 条件性访问功能，以便基于用户定义的条件进行更精细的访问控制。 例如，来自某些 IP 范围的用户登录名需要使用多重身份验证进行登录。 精细身份验证会话管理策略还可用于不同的用例。
+**指导**：Azure 顾问支持 Azure Active Directory (Azure AD) 的条件访问功能，可根据用户定义的条件实现更细粒度的访问控制。 例如，来自某些 IP 范围的用户登录名需要使用多重身份验证进行登录。 精细身份验证会话管理策略还可用于不同的用例。
 
 - [Azure 条件访问概述](../active-directory/conditional-access/overview.md) 
 
@@ -117,9 +117,9 @@ Azure 高级威胁防护 (ATP) 是一种安全解决方案，它可使用 Active
 
 ### <a name="pa-2-restrict-administrative-access-to-business-critical-systems"></a>PA-2：限制对关键业务型系统的管理访问权限
 
-**指南**： azure 顾问使用基于 azure 角色的访问控制 (azure RBAC) 通过限制授予对订阅和管理组的特权访问权限的帐户，来隔离对关键系统的访问权限。
+**指导**：Azure 顾问使用 Azure 基于角色的访问控制 (Azure RBAC)，通过限制向哪些帐户授予对其所属的订阅和管理组的特权访问权限，来隔离对业务关键型系统的访问。
 
-限制对管理、标识和安全系统的访问，这些系统对业务关键访问具有管理访问权限，如 Active Directory 域控制器 (DCs) 、安全工具和系统管理工具，以及安装在业务关键系统上的代理。 入侵这些管理和安全系统的攻击者可以立即将它们用作损害业务关键型资产的武器。
+限制对业务关键型资产具有管理访问权限的管理、标识和安全系统的访问，这些资产包括在业务关键型系统上安装了代理的 Active Directory 域控制器 (DC)、安全工具和系统管理工具。 入侵这些管理和安全系统的攻击者可以立即将它们用作损害业务关键型资产的武器。
 
 所有类型的访问控制都应符合企业分段策略，确保访问控制保持一致。
 
@@ -135,11 +135,11 @@ Azure 高级威胁防护 (ATP) 是一种安全解决方案，它可使用 Active
 
 ### <a name="pa-3-review-and-reconcile-user-access-regularly"></a>PA-3：定期审查和协调用户访问权限
 
-**指南**： Azure 顾问使用 Azure Active Directory (Azure AD) 帐户来管理其资源、定期查看用户帐户和访问分配，以确保帐户及其访问有效。 实施 Azure AD 访问评审，以查看组成员身份、对企业应用程序的访问权限以及角色分配。 Azure AD 报告提供日志来帮助发现过时的帐户。 
+**指导**：Azure 顾问使用 Azure Active Directory (Azure AD) 帐户来定期管理其资源、审阅用户帐户和访问权限分配，以确保帐户及其访问权限有效。 实施 Azure AD 访问评审来审查组成员身份、对企业应用程序的访问权限和角色分配。 Azure AD 报告提供日志来帮助发现过时的帐户。 
 
-此外，还可以使用 Azure AD 的 Privileged Identity Management 功能创建访问评审报表工作流，以促进审核过程。 还可以将 Privileged Identity Management 配置为在创建过多的管理员帐户时发出警报，并识别过时或配置不正确的管理员帐户。
+另外，请使用 Azure AD 的 Privileged Identity Management 功能来创建访问评审报表工作流，以便执行评审。 Privileged Identity Management 还可配置为在创建过多管理员帐户时发出警报，并识别过时或配置不正确的管理员帐户。
 
-请注意，某些 Azure 服务支持不通过 Azure AD 管理的本地用户和角色。 客户需要单独管理这些用户。
+请注意，某些 Azure 服务支持不通过 Azure AD 进行管理的本地用户和角色。 客户需要单独管理这些用户。
 
 - [在 Privileged Identity Management (PIM) 中创建对 Azure 资源角色的访问评审](../active-directory/privileged-identity-management/pim-resource-roles-start-access-review.md) 
 
@@ -153,9 +153,9 @@ Azure 高级威胁防护 (ATP) 是一种安全解决方案，它可使用 Active
 
 **指导**：安全的独立工作站对于确保敏感角色（如管理员、开发人员和关键服务操作员）的安全至关重要。 
 
-使用高度安全的用户工作站和/或 Azure Bastion 执行管理任务。 选择 Azure Active Directory (Azure AD) ，Microsoft Defender 高级威胁防护 (ATP) ，其中包括用于为管理任务部署安全和托管用户工作站的 Microsoft Intune。 
+使用高度安全的用户工作站和/或 Azure Bastion 执行管理任务。 选择 Azure Active Directory (Azure AD)、Microsoft Defender 高级威胁防护 (ATP)（包括 Microsoft Intune）来部署安全的托管用户工作站，以便执行管理任务。 
 
-集中管理受保护的工作站来强制实施安全配置，包括强身份验证、软件和硬件基准、受限的逻辑访问和网络访问。
+集中管理安全工作站，以便强制实施安全配置，包括强身份验证、软件和硬件基线，以及受限制的逻辑和网络访问。
 
 - [了解特权访问工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/) 
  
@@ -167,9 +167,9 @@ Azure 高级威胁防护 (ATP) 是一种安全解决方案，它可使用 Active
 
 ### <a name="pa-7-follow-just-enough-administration-least-privilege-principle"></a>PA-7：遵循 Just Enough Administration（最小特权原则） 
 
-**指南**： azure 顾问与 azure 基于角色的访问控制集成， (azure RBAC) 管理其资源。 使用 Azure RBAC 通过角色分配来管理 Azure 资源访问权限。 
+**指导**：Azure 顾问已与 Azure 基于角色的访问控制 (Azure RBAC) 集成来管理其资源。 使用 Azure RBAC 通过角色分配来管理 Azure 资源访问。 
 
-将角色分配给用户、组服务主体和托管标识。 某些资源有预定义的内置角色，可通过 Azure CLI、Azure PowerShell 或 Azure 门户等工具来清点或查询这些角色。 通过 Azure RBAC 分配给资源的特权应始终限制为角色所需的权限。 这是对 Azure AD Privileged Identity Management (PIM) 的实时 (JIT) 方法的补充，应定期进行审查。
+将角色分配给用户、组服务主体和托管标识。 某些资源具有预定义的内置角色，可以通过工具（例如 Azure CLI、Azure PowerShell 或 Azure 门户）来清点或查询这些角色。 通过 Azure RBAC 分配给资源的权限应始终限制为角色必需的权限。 这是对 Azure AD Privileged Identity Management (PIM) 的实时 (JIT) 方法的补充，应定期进行审查。
 
 请使用内置角色来分配权限，仅在必要时创建自定义角色。
 
@@ -207,7 +207,7 @@ Azure 高级威胁防护 (ATP) 是一种安全解决方案，它可使用 Active
 
 ### <a name="am-5-limit-users-ability-to-interact-with-azure-resource-manager"></a>AM-5：限制用户与 Azure 资源管理器进行交互的能力
 
-**指南**： Azure 顾问使用 Azure Active Directory (Azure AD) 用于标识和身份验证，而 Azure 门户和 Azure 资源管理器用于管理 Advisor。 
+**指导**：Azure 顾问使用 Azure Active Directory (Azure AD) 来管理标识和身份验证，而 Azure 门户和 Azure 资源理器用来管理顾问。 
 
 使用 Azure 条件访问，根据业务要求，根据需要为 "Microsoft Azure 管理" 应用配置 "阻止访问"，以限制用户与 Azure 资源管理器的交互能力。 
 
@@ -223,13 +223,13 @@ Azure 高级威胁防护 (ATP) 是一种安全解决方案，它可使用 Active
 
 ### <a name="lt-4-enable-logging-for-azure-resources"></a>LT-4：为 Azure 资源启用日志记录
 
-**指南**：活动日志会自动提供，并包含 Azure Advisor 资源 (PUT、POST、DELETE) 的所有写入操作，但读取操作 (获取) 。 
+**指导**：活动日志自动可用，包含针对 Azure 顾问服务资源的所有写入操作（PUT、POST、DELETE），但读取操作 (GET) 除外。 
 
 活动日志可用于在进行故障排除时查找错误，或监视组织中的用户如何对资源进行修改。
 
-- [了解 Azure 中的日志记录和不同的日志类型](../azure-monitor/platform/platform-logs-overview.md)
+- [了解 Azure 中的日志记录和不同的日志类型](../azure-monitor/essentials/platform-logs-overview.md)
 
-- [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/platform/diagnostic-settings.md)
+- [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/essentials/diagnostic-settings.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -243,7 +243,7 @@ Azure 高级威胁防护 (ATP) 是一种安全解决方案，它可使用 Active
 
 另外，请启用 Azure Sentinel 或第三方 SIEM 并将数据载入其中。 许多组织选择将 Azure Sentinel 用于频繁使用的“热”数据，并将 Azure 存储用于不太频繁使用的“冷”数据。
 
-- [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/platform/diagnostic-settings.md) 
+- [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/essentials/diagnostic-settings.md) 
 
 - [如何加入 Azure Sentinel](../sentinel/quickstart-onboard.md)
 
@@ -253,12 +253,12 @@ Azure 高级威胁防护 (ATP) 是一种安全解决方案，它可使用 Active
 
 ### <a name="lt-6-configure-log-storage-retention"></a>LT-6：配置日志存储保留期
 
-**指南**：确保用于存储 Azure 顾问日志的任何存储帐户或 Log Analytics 工作区都具有根据你的组织的符合性规定设置的日志保持期。
+**指导**：确保用于存储 Azure 顾问日志的所有存储帐户或 Log Analytics 工作区都根据组织的合规性规定设置了日志保留期。
 在 Azure Monitor 中，可根据组织的合规性规则设置 Log Analytics 工作区保持期。 将 Azure 存储、Data Lake 或 Log Analytics 工作区帐户用于长期存储和存档存储。
 
-- [如何配置 Log Analytics 工作区保留期](../azure-monitor/platform/manage-cost-storage.md) 
+- [如何配置 Log Analytics 工作区保留期](../azure-monitor/logs/manage-cost-storage.md) 
 
-- [在 Azure 存储帐户中存储资源日志](../azure-monitor/platform/resource-logs.md#send-to-azure-storage)
+- [在 Azure 存储帐户中存储资源日志](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)
 
 **Azure 安全中心监视**：不适用
 
@@ -430,11 +430,11 @@ Azure 安全中心为每条警报分配严重性，方便你根据优先级来�
 
 ### <a name="gs-2-define-enterprise-segmentation-strategy"></a>GS-2：定义企业分段策略 
 
-**指南**：建立企业范围的策略，以通过结合使用标识、网络、应用程序、订阅、管理组和其他控件来细分对资产的访问。
+**指导**：建立企业级策略，以便使用标识、网络、应用程序、订阅、管理组和其他控制的组合对资产访问权限进行分段。
 
 仔细权衡安全分离需求与为需要彼此通信并访问数据的系统启用日常操作的需求。
 
-确保跨控制类型（包括网络安全、标识和访问模型、应用程序权限或访问模型以及人机处理控制）一致地实现分段策略。
+确保跨控制类型（包括网络安全、标识和访问模型、应用程序权限或访问模型，以及人机过程控制）一致地实现分段策略。
 
 - [有关 Azure 中的分段策略的指南（视频）](/security/compass/microsoft-security-compass-introduction#azure-components-and-reference-model-2151)
 
@@ -503,7 +503,7 @@ Azure 安全中心为每条警报分配严重性，方便你根据优先级来�
 
 ### <a name="gs-6-define-identity-and-privileged-access-strategy"></a>GS-6：定义标识和特权访问策略
 
-**指南**：建立 Azure 标识和特权访问方法，作为组织整体企业访问控制策略的一部分。  
+**指导**：制定 Azure 标识和特权访问方法，作为组织的整体企业访问控制策略的一部分。  
 
 此策略应包括针对以下元素的记录在案的指南、策略和标准： 
 
@@ -517,7 +517,7 @@ Azure 安全中心为每条警报分配严重性，方便你根据优先级来�
 
 -   用户标识和访问评审及协调流程
 
-有关详细信息，请查看引用的链接。
+有关详细信息，请参阅下列参考链接。
 
 - [Azure 安全基准 - 标识管理](../security/benchmarks/security-controls-v2-identity-management.md)
 

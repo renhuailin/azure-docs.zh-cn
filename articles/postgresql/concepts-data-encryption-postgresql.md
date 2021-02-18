@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 730d12558e413d96909914d06187d0d5f89ec661
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.openlocfilehash: d9624fd899649f4e54c5bd509ed5961b862632dd
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98567533"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581584"
 ---
 # <a name="azure-database-for-postgresql-single-server-data-encryption-with-a-customer-managed-key"></a>使用客户管理的密钥对 Azure Database for PostgreSQL 单一服务器进行数据加密
 
@@ -117,7 +117,7 @@ Key Vault 管理员还可[启用 Key Vault 审核事件的日志记录](../azure
 * [Azure 资源运行状况](../service-health/resource-health-overview.md)：在与数据库的第一次连接遭到拒绝后，已失去客户密钥访问权限的无法访问的数据库将显示为“无法访问”。
 * [活动日志](../service-health/alerts-activity-log-service-notifications-portal.md)：对 Key Vault 中客户管理的密钥访问失败时，活动日志中会添加相应条目。 如果为这些事件创建警报，就可尽快恢复访问。
 
-* [操作组](../azure-monitor/platform/action-groups.md)：定义这些组，使其根据首选项向你发送通知和警报。
+* [操作组](../azure-monitor/alerts/action-groups.md)：定义这些组，使其根据首选项向你发送通知和警报。
 
 ## <a name="restore-and-replicate-with-a-customers-managed-key-in-key-vault"></a>在 Key Vault 中使用客户管理的密钥进行还原和复制
 

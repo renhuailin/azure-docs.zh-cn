@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/23/2020
 ms.author: vinigam
-ms.openlocfilehash: bd13712d137ec5a1fdfa6dec8e6f6d1e0a7432cb
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: 61cb37e727808566db1bc9b1161960926e03cb91
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99833161"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570890"
 ---
 # <a name="create-a-monitor-in-connection-monitor-by-using-the-azure-portal"></a>使用 Azure 门户在连接监视器中创建监视器
 
@@ -186,7 +186,7 @@ ms.locfileid: "99833161"
 
 - **条件名称**：警报是基于 `Test Result(preview)` 指标创建的。 连接监视器测试结果失败时，警报规则将触发。 
 
-- **操作组名称**：你可以直接输入电子邮件，也可以通过操作组创建警报。 如果直接输入电子邮件，则会创建名为“NPM Email ActionGroup”的操作组。 电子邮件 ID 将添加到该操作组中。 如果选择使用操作组，则需要选择一个以前创建的操作组。 若要了解如何创建操作组，请参阅[在 Azure 门户中创建操作组](../azure-monitor/platform/action-groups.md)。 创建警报后，你可以[管理警报](../azure-monitor/platform/alerts-metric.md#view-and-manage-with-azure-portal)。 
+- **操作组名称**：你可以直接输入电子邮件，也可以通过操作组创建警报。 如果直接输入电子邮件，则会创建名为“NPM Email ActionGroup”的操作组。 电子邮件 ID 将添加到该操作组中。 如果选择使用操作组，则需要选择一个以前创建的操作组。 若要了解如何创建操作组，请参阅[在 Azure 门户中创建操作组](../azure-monitor/alerts/action-groups.md)。 创建警报后，你可以[管理警报](../azure-monitor/alerts/alerts-metric.md#view-and-manage-with-azure-portal)。 
 
 - **警报规则名称**：连接监视器的名称。
 

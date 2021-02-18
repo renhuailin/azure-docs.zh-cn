@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: cherylmc
-ms.openlocfilehash: 62979a2cbe2a5912476ca65327a06eef9c36c1cb
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: a5bbcc4c07826a5093da3f51c709f49ceb231753
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98127883"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596078"
 ---
 # <a name="azure-virtual-wan-logs-and-metrics"></a>Azure 虚拟 WAN 日志和指标
 
@@ -21,11 +21,11 @@ ms.locfileid: "98127883"
 
 本文讨论了可通过门户获得的指标和诊断。 指标是能够为近实时方案提供支持的轻型数据，因此，它们特别适合用于警报和快速检测问题。
 
-## <a name="monitoring-secured-hub-azure-firewall"></a>监视受保护的集线器 (Azure 防火墙)  
+## <a name="monitoring-secured-hub-azure-firewall"></a>监视受保护的中心（Azure 防火墙） 
 
 可以使用 Azure 防火墙日志监视受保护的中心。 此外，可以使用活动日志来审核对 Azure 防火墙资源执行的操作。
 
-如果已选择使用 Azure 防火墙保护虚拟中心，则可在此处获得相关的日志和指标： [Azure 防火墙日志和指标](../firewall/logs-and-metrics.md)。
+如果已选择使用 Azure 防火墙保护虚拟中心，则可访问以下链接了解相关的日志和指标：[Azure 防火墙日志和指标](../firewall/logs-and-metrics.md)。
 
 ## <a name="metrics"></a>指标
 
@@ -130,4 +130,4 @@ Azure 点到站点 VPN 网关提供以下诊断：
 ## <a name="next-steps"></a>后续步骤
 
 * 若要了解如何监视 Azure 防火墙日志和指标，请参阅[教程：监视 Azure 防火墙日志](../firewall/firewall-diagnostics.md)。
-* 若要详细了解 Azure Monitor 中的指标，请参阅 [Azure Monitor 中的指标](../azure-monitor/platform/data-platform-metrics.md)。
+* 若要详细了解 Azure Monitor 中的指标，请参阅 [Azure Monitor 中的指标](../azure-monitor/essentials/data-platform-metrics.md)。

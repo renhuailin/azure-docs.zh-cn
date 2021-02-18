@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: 2f814c54aeca8a337f786beb8da1b98accbeef7e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2278b9d70e888fa546dc64da4743b2bf5b6c45e8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87318991"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587523"
 ---
 # <a name="azure-monitor-application-insights-agent-api-reference"></a>Azure Monitor Application Insights 代理 API 参考
 
@@ -326,7 +326,7 @@ AppAlreadyInstrumented : true
 ```
 
 在此示例中，
-- **计算机标识符**是一个匿名 ID，用于唯一标识服务器。 如果你创建支持请求，我们需要该 ID 来查找你的服务器的日志。
+- **计算机标识符** 是一个匿名 ID，用于唯一标识服务器。 如果你创建支持请求，我们需要该 ID 来查找你的服务器的日志。
 - “默认网站”在 IIS 中处于“已停止”状态
 - **DemoWebApp111** 已在 IIS 中启动，但尚未收到任何请求。 此报告显示没有正在运行的进程（ProcessId：找不到）。
 - **DemoWebApp222** 正在运行且正受监视（已检测：是）。 根据用户配置，此站点的检测密钥 xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx123 匹配。
@@ -637,9 +637,9 @@ Timeout Reached. Stopping...
 ## <a name="next-steps"></a>后续步骤
 
   查看遥测：
- - [浏览指标](../platform/metrics-charts.md)，以便监视性能和使用情况。
+ - [浏览指标](../essentials/metrics-charts.md)，以便监视性能和使用情况。
 - [搜索事件和日志](./diagnostic-search.md)以诊断问题。
-- 使用[分析](../log-query/log-query-overview.md)，以便进行更高级的查询。
+- 使用[分析](../logs/log-query-overview.md)，以便进行更高级的查询。
 - [创建仪表板](./overview-dashboard.md)。
  
  添加更多遥测：

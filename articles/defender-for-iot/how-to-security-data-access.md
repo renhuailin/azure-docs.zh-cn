@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/04/2020
 ms.author: mlottner
-ms.openlocfilehash: 495f9d568760421c7f42df3acf74217c15b01a05
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.openlocfilehash: d054b005b6b11e718662619b5525de3fc1ae5f4c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98246333"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592648"
 ---
 # <a name="access-your-security-data"></a>访问安全数据
 
@@ -37,7 +37,7 @@ Defender for IoT 在 Log Analytics 工作区中存储安全警报、建议和原
 1. 在 Defender for IoT. 中选择警报或建议。
 1. 单击“进一步调查”，然后单击“若要查看哪些设备生成了此警报，请单击此处并查看 DeviceId 列” 。
 
-有关从 Log Analytics 查询数据的详细信息，请参阅 [Log Analytics 中的查询入门](../azure-monitor/log-query/get-started-queries.md)。
+有关从 Log Analytics 查询数据的详细信息，请参阅 [Log Analytics 中的查询入门](../azure-monitor/logs/get-started-queries.md)。
 
 ## <a name="security-alerts"></a>安全警报
 

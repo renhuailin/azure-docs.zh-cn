@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: f393c5df23b9552f598e05d25aaf09e529324abe
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 8c32d06247516611fc79bd6f77b60fec6b73044d
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201988"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591811"
 ---
 # <a name="azure-security-baseline-for-azure-cognitive-search"></a>Azure 认知搜索的 Azure 安全基线
 
@@ -171,7 +171,7 @@ ms.locfileid: "98201988"
 
 - [如何开始使用 Azure Monitor 和第三方 SIEM 集成](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
 
-- [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/platform/diagnostic-settings.md)
+- [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/essentials/diagnostic-settings.md)
 
 - [如何加入 Azure Sentinel](../sentinel/quickstart-onboard.md)
 
@@ -185,7 +185,7 @@ ms.locfileid: "98201988"
 
 - [如何收集和分析 Azure 认知搜索的日志数据](./search-monitor-logs.md)
 
-- [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/platform/diagnostic-settings.md) 
+- [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/essentials/diagnostic-settings.md) 
 
 **Azure 安全中心监视**：是
 
@@ -205,7 +205,7 @@ ms.locfileid: "98201988"
 
 在 Azure Monitor 中，根据组织的合规性规则设置 Log Analytics 工作区保持期。 将 Azure 存储帐户用于长期存储和存档存储。 
 
-- [更改 Log Analytics 中的数据保留期](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [更改 Log Analytics 中的数据保留期](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 - [如何为 Azure 存储帐户日志配置保留策略](../storage/common/storage-monitor-storage-account.md#configure-logging)
 
@@ -223,9 +223,9 @@ ms.locfileid: "98201988"
 
 - [如何加入 Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-- [了解 Log Analytics](../azure-monitor/log-query/log-analytics-tutorial.md)
+- [了解 Log Analytics](../azure-monitor/logs/log-analytics-tutorial.md)
 
-- [如何在 Azure Monitor 中执行自定义查询](../azure-monitor/log-query/get-started-queries.md)
+- [如何在 Azure Monitor 中执行自定义查询](../azure-monitor/logs/get-started-queries.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -239,7 +239,7 @@ ms.locfileid: "98201988"
 
 - [如何在 Azure 安全中心管理警报](../security-center/security-center-managing-and-responding-alerts.md)
 
-- [如何针对 Log Analytics 日志数据发出警报](../azure-monitor/learn/tutorial-response.md)
+- [如何针对 Log Analytics 日志数据发出警报](../azure-monitor/alerts/tutorial-response.md)
 
 **Azure 安全中心监视**：当前不可用
 
@@ -484,7 +484,7 @@ Microsoft 管理基础平台，并将所有客户内容视为敏感数据，防�
 
 **指导**：数据标识、分类和丢失防护功能尚不适用于认知搜索。 可以根据合规性需要实施第三方解决方案。 
 
-Microsoft 管理基础平台，并将所有客户内容视为敏感数据，防范客户数据丢失和泄露。 为了确保 Azure 中的客户数据保持安全，Microsoft 已实施并维护一套可靠的数据保护控制机制和功能。
+Microsoft 管理基础平台，并将所有客户内容视为敏感数据，防范客户数据丢失和泄露。 为了确保 Azure 中的客户数据保持安全，Microsoft 实施并维护了一套可靠的数据保护控制措施和功能。
 
 - [了解 Azure 中的客户数据保护](../security/fundamentals/protection-customer-data.md)
 
@@ -532,7 +532,7 @@ Microsoft 会管理认知搜索的底层基础结构，并实施严格的控制�
 
 **指导**：将 Azure Monitor 与 Azure 活动日志结合使用，以创建在认知搜索的生产实例和其他关键资源或相关资源发生更改时发出的警报。
 
-- [如何针对 Azure 活动日志事件创建警报](../azure-monitor/platform/alerts-activity-log.md)
+- [如何针对 Azure 活动日志事件创建警报](../azure-monitor/alerts/alerts-activity-log.md)
 
 - [如何为认知搜索活动创建警报](./search-monitor-logs.md)
 

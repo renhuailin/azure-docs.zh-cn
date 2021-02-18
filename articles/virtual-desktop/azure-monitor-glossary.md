@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/01/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f13909d3835bdbd2931277a88244abfae3f80759
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 29c49ceb3647964030f53c94276e831dc0f648c7
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96466357"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576616"
 ---
 # <a name="azure-monitor-for-windows-virtual-desktop-preview-glossary"></a>Windows 虚拟桌面 (预览版) 术语表的 Azure Monitor
 
@@ -24,7 +24,7 @@ ms.locfileid: "96466357"
 
 ## <a name="alerts"></a>警报
 
-在订阅上配置并归类为 " [严重性 1](#severity-1-alerts) " 的任何活动 Azure Monitor 警报都将显示在 "概述" 页中。 若要了解如何设置警报，请参阅 [响应带有 Azure Monitor 警报的事件](../azure-monitor/learn/tutorial-response.md)。
+在订阅上配置并归类为 " [严重性 1](#severity-1-alerts) " 的任何活动 Azure Monitor 警报都将显示在 "概述" 页中。 若要了解如何设置警报，请参阅 [响应带有 Azure Monitor 警报的事件](../azure-monitor/alerts/tutorial-response.md)。
 
 ## <a name="available-sessions"></a>可用会话数
 
@@ -128,7 +128,7 @@ Windows 虚拟桌面 Azure Monitor 中的 "输入延迟" 表示每个会话的�
 |RemoteFX 网络 (\*) \\ 当前的 TCP RTT|30 秒|
 |RemoteFX 网络 (\*) \\ 当前 UDP 带宽|30 秒|
 
-若要了解有关如何读取性能计数器的详细信息，请参阅 [配置性能计数器](../azure-monitor/platform/data-sources-performance-counters.md)。
+若要了解有关如何读取性能计数器的详细信息，请参阅 [配置性能计数器](../azure-monitor/agents/data-sources-performance-counters.md)。
 
 若要了解有关输入延迟性能计数器的详细信息，请参阅 [用户输入延迟性能计数器](/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters/)。
 
@@ -186,7 +186,7 @@ Windows 事件日志是在 Windows 虚拟机上 Log Analytics 代理收集的数
 | Microsoft FSLogix-应用程序/操作|错误、警告和信息|
 |FSLogix/Admin|错误、警告和信息|
 
-若要了解有关 Windows 事件的详细信息，请参阅 [windows 事件记录属性](../azure-monitor/platform/data-sources-windows-events.md)。
+若要了解有关 Windows 事件的详细信息，请参阅 [windows 事件记录属性](../azure-monitor/agents/data-sources-windows-events.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

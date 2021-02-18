@@ -5,16 +5,16 @@ services: automation
 ms.subservice: process-automation
 ms.date: 11/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: 20683808c81b32560170b175edf1c37c332f47ad
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 58c340c97bd8e46c5a588b4bf0ba2673712ffb95
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183611"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581197"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>部署 Linux 混合 Runbook 辅助角色
 
-可以使用 Azure 自动化的用户混合 Runbook 辅助角色功能直接在 Azure 或非 Azure 计算机上运行 runbook，包括使用已 [启用 Azure Arc 的服务器](../azure-arc/servers/overview.md)注册的服务器。 在托管角色的计算机或服务器上，你可以直接对环境中的资源运行 runbook，从而管理这些本地资源。
+可以使用 Azure 自动化的用户混合 Runbook 辅助角色功能直接在 Azure 或非 Azure 计算机上运行 runbook，包括使用已 [启用 Azure Arc 的服务器](../azure-arc/servers/overview.md)注册的服务器。 在托管角色的计算机或服务器中，可以直接运行 Runbook，并对环境中的资源运行 Runbook，从而管理这些本地资源。
 
 Linux 混合 Runbook 辅助角色以特殊用户身份执行 Runbook，该用户身份可进行权限提升，以运行需要提升权限的命令。 Azure 自动化将存储并管理 Runbook，然后将其传送到一台或多台指定的计算机。 本文介绍了如何在 Linux 计算机上安装混合 Runbook 辅助角色，如何删除辅助角色，以及如何删除混合 Runbook 辅助角色组。
 
@@ -26,13 +26,13 @@ Linux 混合 Runbook 辅助角色以特殊用户身份执行 Runbook，该用户
 
 ### <a name="a-log-analytics-workspace"></a>Log Analytics 工作区
 
-混合 Runbook 辅助角色依赖于 Azure Monitor Log Analytics 工作区来安装和配置角色。 你可通过 [Azure 资源管理器](../azure-monitor/samples/resource-manager-workspace.md#create-a-log-analytics-workspace)、[PowerShell](../azure-monitor/scripts/powershell-sample-create-workspace.md?toc=/powershell/module/toc.json) 或在 [Azure 门户](../azure-monitor/learn/quick-create-workspace.md)中创建该工作区。
+混合 Runbook 辅助角色依赖于 Azure Monitor Log Analytics 工作区来安装和配置角色。 你可通过 [Azure 资源管理器](../azure-monitor/logs/resource-manager-workspace.md#create-a-log-analytics-workspace)、[PowerShell](../azure-monitor/logs/powershell-sample-create-workspace.md?toc=/powershell/module/toc.json) 或在 [Azure 门户](../azure-monitor/logs/quick-create-workspace.md)中创建该工作区。
 
-如果没有 Azure Monitor Log Analytics 工作区，请在创建工作区前查看 [Azure Monitor 日志设计指南](../azure-monitor/platform/design-logs-deployment.md)。
+如果没有 Azure Monitor Log Analytics 工作区，请在创建工作区前查看 [Azure Monitor 日志设计指南](../azure-monitor/logs/design-logs-deployment.md)。
 
 ### <a name="log-analytics-agent"></a>Log Analytics 代理
 
-混合 Runbook 辅助角色需要受支持的 Linux 操作系统的 [Log Analytics 代理](../azure-monitor/platform/log-analytics-agent.md)。 对于托管在 Azure 外部的服务器或计算机，你可以使用 [启用了 Azure Arc 的服务器](../azure-arc/servers/overview.md)安装 Log Analytics 代理。
+混合 Runbook 辅助角色需要受支持的 Linux 操作系统的 [Log Analytics 代理](../azure-monitor/agents/log-analytics-agent.md)。 对于托管在 Azure 外部的服务器或计算机，你可以使用 [启用了 Azure Arc 的服务器](../azure-arc/servers/overview.md)安装 Log Analytics 代理。
 
 >[!NOTE]
 >安装适用于 Linux 的 Log Analytics 代理后，不应更改 `sudoers.d` 文件夹的权限或其所有权。 Nxautomation 帐户需要 Sudo 权限，该帐户是运行混合 Runbook 辅助角色的用户上下文。 不应删除该权限。 将此限制为某些文件夹或命令可能会导致中断性变更。
@@ -40,12 +40,12 @@ Linux 混合 Runbook 辅助角色以特殊用户身份执行 Runbook，该用户
 
 ### <a name="supported-linux-operating-systems"></a>受支持的 Linux 操作系统
 
-混合 Runbook 辅助角色功能支持以下分发版。 所有操作系统都假定为 x64。 任何操作系统均不支持 x86。
+混合 Runbook 辅助角色功能支持以下发行版。 所有操作系统都假定为 x64。 任何操作系统均不支持 x86。
 
-* Amazon Linux 2012.09 到2015.09
+* Amazon Linux 2012.09 - 2015.09
 * CentOS Linux 5、6 和 7
 * Oracle Linux 5、6 和 7
-* Red Hat Enterprise Linux Server 5、6和7
+* Red Hat Enterprise Linux Server 5、6 和 7
 * Debian GNU/Linux 6、7 和 8
 * Ubuntu 12.04 LTS、14.04 LTS、16.04 LTS 和 18.04 LTS
 * SUSE Linux Enterprise Server 12
@@ -70,10 +70,10 @@ Linux 系统和用户混合 Runbook 辅助角色的最低要求如下：
 
 ### <a name="adding-a-machine-to-a-hybrid-runbook-worker-group"></a>将计算机添加到混合 Runbook 辅助角色组
 
-可以将工作线程添加到某个自动化帐户中的混合 Runbook 辅助角色组。 对于托管由更新管理管理的系统混合 Runbook 辅助角色的计算机，可以将其添加到混合 Runbook 辅助角色组。 但必须同时对更新管理和混合 Runbook 辅助角色组成员身份使用同一自动化帐户。
+可将辅助角色计算机添加到其中一个自动化帐户中的混合 Runbook 辅助角色组。 对于托管系统混合 Runbook 辅助角色（由更新管理进行管理）的计算机，可以将其添加到混合 Runbook 辅助角色组。 但必须对更新管理和混合 Runbook 辅助角色组成员身份使用同一自动化帐户。
 
 >[!NOTE]
->Azure 自动化 [更新管理](./update-management/overview.md) 会自动在为更新管理启用的 azure 或非 azure 计算机上安装系统混合 Runbook 辅助角色。 但是，此辅助角色未注册到自动化帐户中的任何混合 Runbook 辅助角色组。 若要在这些计算机上运行 runbook，需将其添加到混合 Runbook 辅助角色组。 按照 [安装 Linux 混合 Runbook 辅助角色](#install-a-linux-hybrid-runbook-worker) 部分的步骤4将其添加到组。
+>Azure 自动化[更新管理](./update-management/overview.md)会自动在启用了更新管理的 Azure 或非 Azure 计算机上安装系统混合 Runbook 辅助角色。 但是，此辅助角色未注册到自动化帐户中的任何混合 Runbook 辅助角色组。 若要在这些计算机上运行 Runbook，需将其添加到混合 Runbook 辅助角色组。 按照[安装 Linux 混合 Runbook 辅助角色](#install-a-linux-hybrid-runbook-worker)部分下的步骤 4 操作，将其添加到组中。
 
 ## <a name="supported-linux-hardening"></a>支持的 Linux 强化
 
@@ -97,13 +97,13 @@ Linux 混合 Runbook 辅助角色支持 Azure 自动化中有限的一组 Runboo
 
 ### <a name="network-configuration"></a>网络配置
 
-有关混合 Runbook 辅助角色的网络要求，请参阅 [配置网络](automation-hybrid-runbook-worker.md#network-planning)。
+有关混合 Runbook 辅助角色的网络要求，请参阅[配置网络](automation-hybrid-runbook-worker.md#network-planning)。
 
 ## <a name="install-a-linux-hybrid-runbook-worker"></a>安装 Linux 混合 Runbook 辅助角色
 
 若要安装和配置 Linux 混合 Runbook 辅助角色，请执行以下步骤。
 
-1. 通过在提升的 PowerShell 命令提示符下运行以下命令，或者在 [Azure 门户](https://portal.azure.com)的 Cloud Shell 中运行以下命令，在 Log Analytics 工作区中启用 Azure 自动化解决方案：
+1. 通过在提升的 PowerShell 命令提示符中或在 [Azure 门户](https://portal.azure.com)的 Cloud Shell 中运行以下命令，在 Log Analytics 工作区中启用 Azure 自动化解决方案：
 
     ```powershell
     Set-AzOperationalInsightsIntelligencePack -ResourceGroupName <resourceGroupName> -WorkspaceName <workspaceName> -IntelligencePackName "AzureAutomation" -Enabled $true
@@ -111,7 +111,7 @@ Linux 混合 Runbook 辅助角色支持 Azure 自动化中有限的一组 Runboo
 
 2. 将 Log Analytics 代理部署到目标计算机。
 
-    * 对于 Azure VM，请使用[适用于 Linux 的虚拟机扩展](../virtual-machines/extensions/oms-linux.md)安装适用于 Linux 的 Log Analytics 代理。 该扩展在 Azure 虚拟机上安装 Log Analytics 代理，并将虚拟机注册到现有的 Log Analytics 工作区中。 可以使用 Azure 资源管理器模板、Azure CLI 或 Azure 策略为 [ *Linux* 或 *Windows* vm 内置策略分配部署 Log Analytics 代理](../governance/policy/samples/built-in-policies.md#monitoring) 。 安装代理后，可以将计算机添加到自动化帐户的混合 Runbook 辅助角色组。
+    * 对于 Azure VM，请使用[适用于 Linux 的虚拟机扩展](../virtual-machines/extensions/oms-linux.md)安装适用于 Linux 的 Log Analytics 代理。 该扩展在 Azure 虚拟机上安装 Log Analytics 代理，并将虚拟机注册到现有的 Log Analytics 工作区中。 可以使用 Azure 资源管理器模板、Azure CLI 或 Azure Policy 来分配[为 Linux 或 Windows VM 部署 Log Analytics 代理](../governance/policy/samples/built-in-policies.md#monitoring)内置策略 。 安装代理后，可将计算机添加到自动化帐户中的混合 Runbook 辅助角色组。
 
     * 对于非 Azure 计算机，你可以使用 [启用了 Azure Arc 的服务器](../azure-arc/servers/overview.md)安装 Log Analytics 代理。 启用 Arc 的服务器支持使用以下方法部署 Log Analytics 代理：
 
@@ -168,7 +168,7 @@ Linux 混合 Runbook 辅助角色支持 Azure 自动化中有限的一组 Runboo
    sudo python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/scripts/onboarding.py --register -w <logAnalyticsworkspaceId> -k <automationSharedKey> -g <hybridGroupName> -e <automationEndpoint>
    ```
 
-5. 完成脚本后，验证部署。 在自动化帐户的 " **混合 Runbook 辅助角色组** " 页中，在 " **用户混合 runbook 辅助角色组** " 选项卡下，会显示新的或现有的组以及成员数。 如果这是现有的组，则成员数会递增。 你可以从页面上的列表中选择组，从左侧菜单中选择 " **混合辅助角色**"。 在 " **混合辅助角色** " 页上，可以看到列出的组的每个成员。
+5. 完成脚本后，验证部署。 在自动化帐户的“混合 Runbook 辅助角色组”页的“使用混合 Runbook 辅助角色组”选项卡下，会显示新组或现有组以及成员数量 。 如果这是现有的组，则成员数会递增。 可从该页上的列表中选择此组，从左侧菜单中选择“混合辅助角色”。 在“混合辅助角色”页上，可以查看列出组的每个成员。
 
     > [!NOTE]
     > 如果要对 Azure VM 使用用于 Linux 的 Log Analytics 虚拟机扩展，建议将 `autoUpgradeMinorVersion` 设置为 `false`，因为自动升级版本可能会导致混合 Runbook 辅助角色出问题。 若要了解如何手动升级扩展，请参阅 [Azure CLI 部署](../virtual-machines/extensions/oms-linux.md#azure-cli-deployment)。

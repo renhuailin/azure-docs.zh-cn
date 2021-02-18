@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/19/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 850171a4f1f303ef344fa5007325093c6363615b
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: ac2982b021172893e4aabe0f21c7077115684eff
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98789071"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592624"
 ---
 # <a name="azure-security-baseline-for-azure-hpc-cache"></a>Azure HPC 缓存的 azure 安全基线
 
@@ -118,9 +118,9 @@ Azure HPC 缓存并不用于运行 web 应用程序，并且不需要配置任�
 
 **指南**：结合使用 Azure 防火墙和基于威胁智能的筛选，可以发出警报，并/或阻止来自已知恶意 IP 地址和域的流量。 IP 地址和域源自 Microsoft 威胁智能源。 
 
-需要进行负载检查时，可以使用负载检查功能在 Azure Marketplace 中部署第三方入侵检测/入侵阻止系统 (ID/IPS) 解决方案。 或者，你可以选择使用基于主机的 ID/IP 或基于主机的终结点检测和响应 (EDR) 解决方案与或而不是基于网络的 ID/IP 结合使用。
+需要进行负载检查时，可以使用负载检查功能在 Azure Marketplace 中部署第三方入侵检测/入侵阻止系统 (ID/IPS) 解决方案。 另外，还可选择将基于主机的 ID/IPS 或基于主机的终结点检测和响应 (EDR) 解决方案与基于网络的 ID/IPS 结合使用，或者替代基于网络的 ID/IPS。
 
-注意：如果你对 IDS/IP 使用有法规或其他要求，请确保始终对其进行优化，以便为你的 SIEM 解决方案提供高质量的警报。
+注意：如果在 IDS/IPS 的使用方面存在法规或其他要求，请确保始终对其进行优化，以便为 SIEM 解决方案提供高质量的警报。
 
 - [如何部署 Azure 防火墙](../firewall/tutorial-firewall-deploy-portal.md) 
 
@@ -613,9 +613,9 @@ Azure 安全中心还可以针对某些可疑活动发出警报，如失败的�
 
 还可以使用 Azure 安全中心和 Azure 策略为 HPC 缓存启用 Azure 资源日志，并使用和记录数据收集。 这些日志可能对日后调查安全事件和执行取证演练至关重要。
 
-- [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/platform/diagnostic-settings.md) 
+- [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/essentials/diagnostic-settings.md) 
 
-- [了解 Azure 中的日志记录和不同的日志类型](../azure-monitor/platform/platform-logs-overview.md) 
+- [了解 Azure 中的日志记录和不同的日志类型](../azure-monitor/essentials/platform-logs-overview.md) 
 
 - [了解 Azure 安全中心数据收集](../security-center/security-center-enable-data-collection.md)
 
@@ -633,7 +633,7 @@ Azure 安全中心还可以针对某些可疑活动发出警报，如失败的�
 
 许多组织选择将 Azure Sentinel 用于频繁使用的“热”数据，并将 Azure 存储用于不太频繁使用的“冷”数据。
 
-- [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/platform/diagnostic-settings.md) 
+- [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/essentials/diagnostic-settings.md) 
 
 - [如何加入 Azure Sentinel](../sentinel/quickstart-onboard.md)
 

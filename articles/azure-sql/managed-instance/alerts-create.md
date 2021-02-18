@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: wiassaf, sstein
 ms.date: 05/04/2020
-ms.openlocfilehash: a85bf6510163c47fa39bdb28debff806e1812f58
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: d37465223000399aa42895626c48426ddadc0c72
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499265"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592704"
 ---
 # <a name="create-alerts-for-azure-sql-managed-instance-using-the-azure-portal"></a>使用 Azure 门户为 Azure SQL 托管实例创建警报
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -41,7 +41,7 @@ ms.locfileid: "96499265"
 * 调用 Azure runbook
 * 调用外部票证 ITSM 兼容系统
 
-可以使用 [Azure 门户、PowerShell 或 Azure CLI](../../azure-monitor/platform/alerts-classic-portal.md) 或者 [Azure Monitor REST API](/rest/api/monitor/alertrules) 来配置和获取警报规则的相关信息。 
+可以使用 [Azure 门户、PowerShell 或 Azure CLI](../../azure-monitor/alerts/alerts-classic-portal.md) 或者 [Azure Monitor REST API](/rest/api/monitor/alertrules) 来配置和获取警报规则的相关信息。 
 
 ## <a name="alerting-metrics-available-for-managed-instance"></a>适用于托管实例的警报指标
 
@@ -113,7 +113,7 @@ ms.locfileid: "96499265"
 ## <a name="verifying-alerts"></a>验证警报
 
 > [!NOTE]
-> 若要抑制干扰警报，请参阅[使用操作规则抑制警报](../../azure-monitor/platform/alerts-action-rules.md#suppression-of-alerts)。
+> 若要抑制干扰警报，请参阅[使用操作规则抑制警报](../../azure-monitor/alerts/alerts-action-rules.md#suppression-of-alerts)。
 
 设置警报规则后，请验证警报触发情况及其频率是否符合需求。 对于此页上显示的关于针对已使用的存储空间设置警报的示例，如果警报选项是电子邮件，则可能会收到电子邮件，如下所示。
 
@@ -142,8 +142,8 @@ ms.locfileid: "96499265"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解 Azure Monitor 警报系统的详细信息，请参阅 [Microsoft Azure 中的警报概述](../../azure-monitor/platform/alerts-overview.md)
-* 了解有关指标警报的详细信息，请参阅[了解指标警报在 Azure Monitor 中的工作原理](../../azure-monitor/platform/alerts-metric-overview.md)
-* 了解如何在警报中配置 webhook 的详细信息，请参阅[使用经典指标警报调用 webhook](../../azure-monitor/platform/alerts-webhooks.md)
+* 了解 Azure Monitor 警报系统的详细信息，请参阅 [Microsoft Azure 中的警报概述](../../azure-monitor/alerts/alerts-overview.md)
+* 了解有关指标警报的详细信息，请参阅[了解指标警报在 Azure Monitor 中的工作原理](../../azure-monitor/alerts/alerts-metric-overview.md)
+* 了解如何在警报中配置 webhook 的详细信息，请参阅[使用经典指标警报调用 webhook](../../azure-monitor/alerts/alerts-webhooks.md)
 * 了解如何使用 PowerShell 配置和管理警报，请参阅[操作规则](/powershell/module/az.monitor/add-azmetricalertrulev2)
 * 了解如何使用 API 配置和管理警报，请参阅 [Azure Monitor REST API 参考](/rest/api/monitor/)

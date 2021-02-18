@@ -5,18 +5,18 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/22/2021
 ms.topic: conceptual
-ms.openlocfilehash: 7cf18b6b677daaf97d425c86a0cad91b3abcb225
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: c95ccb5ea1a23e8173d58bd3a18490e9b8e630e4
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98896946"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581256"
 ---
 # <a name="hybrid-runbook-worker-overview"></a>混合 Runbook 辅助角色概述
 
 Azure 自动化中的 Runbook 可能无权访问其他云或本地环境中的资源，因为它们在 Azure 云平台中运行。 利用 Azure 自动化的混合 Runbook 辅助角色功能，既可以直接在托管角色的计算机上运行 Runbook，也可以对环境中的资源运行 Runbook，从而管理这些本地资源。 Runbook 在 Azure 自动化中进行存储和管理，然后发送到一台或多台指定的计算机。
 
-## <a name="runbook-worker-types"></a>Runbook Worker 类型
+## <a name="runbook-worker-types"></a>Runbook 辅助角色类型
 
 有两种类型的 Runbook 辅助角色 - 系统和用户。 下表描述了它们之间的差异。
 
@@ -25,9 +25,9 @@ Azure 自动化中的 Runbook 可能无权访问其他云或本地环境中的�
 |**系统** |支持由更新管理功能使用的一组隐藏 Runbook，这些 Runbook 专门用于在 Windows 和 Linux 计算机上安装用户指定的更新。<br> 此类型的混合 Runbook 辅助角色不是混合 Runbook 辅助角色组的成员，因此不会运行面向 Runbook 辅助角色组的 Runbook。 |
 |**用户** |支持预期在 Windows 和 Linux 计算机上直接运行的用户定义的 Runbook，这些 Runbook 是一个或多个 Runbook 辅助角色组的成员。 |
 
-混合 Runbook 辅助角色可在 Windows 或 Linux 操作系统上运行，并且此角色依赖于向 Azure Monitor [Log Analytics 工作区](../azure-monitor/platform/design-logs-deployment.md)进行报告的 [Log Analytics 代理](../azure-monitor/platform/log-analytics-agent.md)。 该工作区不仅用于监视计算机是否运行支持的操作系统，还可以用于下载安装混合 Runbook 辅助角色所需的组件。
+混合 Runbook 辅助角色可在 Windows 或 Linux 操作系统上运行，并且此角色依赖于向 Azure Monitor [Log Analytics 工作区](../azure-monitor/logs/design-logs-deployment.md)进行报告的 [Log Analytics 代理](../azure-monitor/agents/log-analytics-agent.md)。 该工作区不仅用于监视计算机是否运行支持的操作系统，还可以用于下载安装混合 Runbook 辅助角色所需的组件。
 
-启用 Azure 自动化[更新管理](./update-management/overview.md)后，连接到 Log Analytics 工作区的任何计算机都会自动配置为系统混合 Runbook 辅助角色。 若要将其配置为用户 Windows 混合 Runbook 辅助角色，请参阅 [部署 Windows 混合](automation-windows-hrw-install.md) runbook 辅助角色和 linux，请参阅 [部署 Linux 混合 runbook 辅助角色](automation-linux-hrw-install.md)。
+启用 Azure 自动化[更新管理](./update-management/overview.md)后，连接到 Log Analytics 工作区的任何计算机都会自动配置为系统混合 Runbook 辅助角色。 若要将其配置为用户 Windows 混合 Runbook 辅助角色，请参阅[部署 Windows 混合 Runbook 辅助角色](automation-windows-hrw-install.md)；对于 Linux，请参阅[部署 Linux 混合Runbook 辅助角色](automation-linux-hrw-install.md)。
 
 ## <a name="how-does-it-work"></a>它是如何工作的？
 
@@ -37,7 +37,7 @@ Azure 自动化中的 Runbook 可能无权访问其他云或本地环境中的�
 
 在用户混合 Runbook 辅助角色中启动 Runbook 时，可以指定该辅助角色会在其中运行的组。 组中的每个辅助角色都会轮询 Azure 自动化以查看是否有可用作业。 如果作业可用，获取作业的第一个辅助角色将执行该作业。 作业队列的处理时间取决于混合辅助角色硬件配置文件和负载。 不能指定特定的辅助角色。 混合辅助角色使用轮询机制（每 30 秒一次），并遵循先到先服务的顺序。 根据推送作业的时间，无论哪个混合辅助角色对自动化服务执行 ping 操作，都可提取该作业。 通常，一个混合辅助角色在每次执行 ping 操作时（即每隔 30 秒）可提取四个作业。 如果推送作业的速率高于每 30 秒四个，则混合 Runbook 辅助角色组中的另一个混合辅助角色极有可能提取了该作业。
 
-混合 Runbook 辅助角色在磁盘空间、内存或网络插槽上没有很多 [Azure 沙箱](automation-runbook-execution.md#runbook-execution-environment) 资源 [限制](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits) 。 混合辅助角色的限制仅与辅助角色自己的资源相关，并且不受 Azure 沙箱具有的 [公平共享](automation-runbook-execution.md#fair-share) 时间限制的限制。
+对于磁盘空间、内存或网络套接字，混合 Runbook 辅助角色没有许多 [Azure 沙盒](automation-runbook-execution.md#runbook-execution-environment)资源[限制](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits)。 对混合辅助角色的限制仅与辅助角色自己的资源有关，并且它们不受 Azure 沙盒的[公平共享](automation-runbook-execution.md#fair-share)时间限制的约束。
 
 若要控制如何在混合 Runbook 辅助角色上分发 Runbook 以及何时或如何触发作业，可以针对自动化帐户中不同的混合 Runbook 辅助角色组注册混合辅助角色。 针对特定组或组指定目标作业，以支持执行排列。
 
@@ -62,7 +62,7 @@ Azure 自动化中的 Runbook 可能无权访问其他云或本地环境中的�
 
 ### <a name="firewall-use"></a>防火墙使用
 
-如果使用防火墙来限制对 Internet 的访问，则必须将防火墙配置为允许访问。 如果将 Log Analytics 网关用作代理，请确保为混合 Runbook 辅助角色配置 Log Analytics 网关。 请参阅[为自动化混合 Runbook 辅助角色配置 Log Analytics 网关](../azure-monitor/platform/gateway.md)。
+如果使用防火墙来限制对 Internet 的访问，则必须将防火墙配置为允许访问。 如果将 Log Analytics 网关用作代理，请确保为混合 Runbook 辅助角色配置 Log Analytics 网关。 请参阅[为自动化混合 Runbook 辅助角色配置 Log Analytics 网关](../azure-monitor/agents/gateway.md)。
 
 ### <a name="service-tags"></a>服务标记
 
@@ -89,7 +89,7 @@ Azure Automation 混合 Runbook 辅助角色可在 Azure 政府版中使用，�
 
 ### <a name="update-management-addresses-for-hybrid-runbook-worker"></a>混合 Runbook 辅助角色的更新管理地址
 
-除了混合 Runbook 辅助角色所需的标准地址和端口以外，更新管理还有 " [网络规划](./update-management/overview.md#ports) " 一节中所述的其他网络配置要求。
+除了混合 Runbook 辅助角色所需的标准地址和端口，更新管理还具有[网络规划](./update-management/overview.md#ports)部分下所述的其他网络配置要求。
 
 ## <a name="azure-automation-state-configuration-on-a-hybrid-runbook-worker"></a>混合 Runbook 辅助角色上的 Azure Automation State Configuration
 
@@ -97,7 +97,7 @@ Azure Automation 混合 Runbook 辅助角色可在 Azure 政府版中使用，�
 
 ## <a name="runbook-worker-limits"></a>Runbook 辅助角色限制
 
-每个自动化帐户的混合辅助角色组的数量上限为 4000，适用于系统和用户混合辅助角色。 如果要管理的计算机超过4000，建议创建另一个自动化帐户。
+每个自动化帐户的混合辅助角色组的数量上限为 4000，适用于系统和用户混合辅助角色。 如果要管理的计算机超过 4,000 台，建议创建其他自动化帐户。
 
 ## <a name="runbooks-on-a-hybrid-runbook-worker"></a>混合 Runbook 辅助角色上的 Runbook
 

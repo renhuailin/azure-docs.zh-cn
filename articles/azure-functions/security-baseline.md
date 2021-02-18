@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 5b38da5539cb80110b2a769a219213a5c74e1506
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: b57de23bf59f1b9c84674fe95495f980c4594e2a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98198549"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587611"
 ---
 # <a name="azure-security-baseline-for-azure-functions"></a>适用于 Azure Functions 的 Azure 安全基线
 
@@ -42,7 +42,7 @@ ms.locfileid: "98198549"
 
 **指南**：使用 Azure 安全中心并按照网络保护建议来帮助保护与 Azure Functions 应用相关的网络资源和网络配置。
 
-如果将网络安全组与 Azure Functions 实现 (Nsg) ，请启用 NSG 流日志，并将日志发送到 Azure 存储帐户以进行流量审核。 还可以将 NSG 流日志发送到 Log Analytics 工作区，并使用流量分析来深入了解 Azure 云中的流量流。 流量分析的优势包括能够可视化网络活动、识别热点、识别安全威胁、了解流量流模式，以及查明网络不当配置。
+如果将网络安全组与 Azure Functions 实现 (Nsg) ，请启用 NSG 流日志，并将日志发送到 Azure 存储帐户以进行流量审核。 还可以将 NSG 流日志发送到 Log Analytics 工作区，并使用流量分析来提供对 Azure 云中的流量流的见解。 流量分析的优势包括能够可视化网络活动、识别热点、识别安全威胁、了解流量流模式，以及查明网络不当配置。
 
 - [了解 Azure 安全中心提供的网络安全](../security-center/security-center-network-recommendations.md)
 
@@ -207,9 +207,9 @@ ms.locfileid: "98198549"
 
 **指南**：使用 Azure 活动日志监视网络资源配置，并检测与 Azure Functions 部署相关的网络设置和资源的更改。 在 Azure Monitor 中创建当关键网络设置或资源发生更改时触发的警报。 
 
-- [如何查看和检索 Azure 活动日志事件](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [如何查看和检索 Azure 活动日志事件](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [如何在 Azure Monitor 中创建警报](../azure-monitor/platform/alerts-activity-log.md)
+- [如何在 Azure Monitor 中创建警报](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -237,7 +237,7 @@ Azure Functions 还提供与 Azure 应用程序 Insights 的内置集成，以�
 
 （可选）可以启用将数据加入 Azure Sentinel 或第三方 SIEM 的功能。 
 
-- [如何启用 Azure 活动日志的诊断设置](../azure-monitor/platform/activity-log.md)
+- [如何启用 Azure 活动日志的诊断设置](../azure-monitor/essentials/activity-log.md)
 
 - [如何设置 Azure 应用程序 Insights Azure Functions](./functions-monitoring.md)
 
@@ -255,7 +255,7 @@ Azure Functions 还提供与 Azure 应用程序 Insights 的内置集成，以�
 
 如果在 function app 中内置自定义安全/审核日志记录，请启用诊断设置 "FunctionAppLogs"，并将日志发送到 Log Analytics 工作区、Azure 事件中心或 Azure 存储帐户以进行存档。 
 
-- [如何启用 Azure 活动日志的诊断设置](../azure-monitor/platform/activity-log.md)
+- [如何启用 Azure 活动日志的诊断设置](../azure-monitor/essentials/activity-log.md)
 
 - [如何对 Azure Functions (用户生成的日志) 启用诊断设置](./functions-monitor-log-analytics.md)
 
@@ -275,7 +275,7 @@ Azure Functions 还提供与 Azure 应用程序 Insights 的内置集成，以�
 
 **指南**：在 Azure Monitor 中，根据组织的符合性规定，设置与函数应用关联的 Log Analytics 工作区的日志保持期。
 
-- [如何设置日志保留参数](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [如何设置日志保留参数](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure 安全中心监视**：不适用
 
@@ -291,7 +291,7 @@ Azure Functions 还提供与 Azure 应用程序 Insights 的内置集成，以�
 
 （可选）可以启用将数据加入 Azure Sentinel 或第三方 SIEM 的功能。 
 
-- [如何启用 Azure 活动日志的诊断设置](../azure-monitor/platform/activity-log.md)
+- [如何启用 Azure 活动日志的诊断设置](../azure-monitor/essentials/activity-log.md)
 
 - [如何启用 Azure Functions 的诊断设置](./functions-monitor-log-analytics.md)
 
@@ -311,13 +311,13 @@ Azure Functions 还提供与 Azure 应用程序 Insights 的内置集成，以�
 
 （可选）可以启用将数据加入 Azure Sentinel 或第三方 SIEM 的功能。 
 
-- [如何启用 Azure 活动日志的诊断设置](../azure-monitor/platform/activity-log.md)
+- [如何启用 Azure 活动日志的诊断设置](../azure-monitor/essentials/activity-log.md)
 
 - [如何启用 Azure Functions 的诊断设置](./functions-monitor-log-analytics.md)
 
 - [如何为 Azure Functions 启用 Application Insights](./configure-monitoring.md#enable-application-insights-integration)
 
-- [如何在 Azure 中创建警报](../azure-monitor/learn/tutorial-response.md)
+- [如何在 Azure 中创建警报](../azure-monitor/alerts/tutorial-response.md)
 
 - [如何加入 Azure Sentinel](../sentinel/quickstart-onboard.md)
 
@@ -631,7 +631,7 @@ Microsoft 管理 Azure Functions 的底层基础结构，并实施了严格控�
 
 **指南**：将 Azure Monitor 与 Azure 活动日志结合使用，为生产函数应用以及其他关键或相关资源的发生更改创建警报。
 
-- [如何针对 Azure 活动日志事件创建警报](../azure-monitor/platform/alerts-activity-log.md)
+- [如何针对 Azure 活动日志事件创建警报](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -747,7 +747,7 @@ Microsoft 管理 Azure Functions 的底层基础结构，并实施了严格控�
 
 **指导**：使用 Azure Policy 对可以在订阅中创建的资源类型施加限制。 
 
-使用 Azure Resource Graph 查询/发现订阅中的资源。  确保环境中的所有 Azure 资源均已获得批准。 
+使用 Azure Resource Graph 查询/发现订阅中的资源。  确保环境中存在的所有 Azure 资源已获得批准。 
 
 - [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
@@ -972,7 +972,7 @@ Microsoft 管理 Azure Functions 的底层基础结构，并实施了严格控�
 
 ### <a name="712-manage-identities-securely-and-automatically"></a>7.12：安全自动管理标识
 
-**指南**：在 Azure AD 中，使用托管标识向函数应用提供自动管理的标识。 使用托管标识可以向支持 Azure AD 身份验证的任何服务（包括 Key Vault）进行身份验证，无需在代码中放入任何凭据。
+**指南**：在 Azure AD 中，使用托管标识向函数应用提供自动管理的标识。 通过托管标识可向支持 Azure AD 身份验证的任何服务（包括 Key Vault）证明身份，无需在代码中放入任何凭据。
 
 - [如何使用应用服务和 Azure Functions 的托管标识](../app-service/overview-managed-identity.md)
 
@@ -1045,7 +1045,7 @@ Microsoft 管理 Azure Functions 的底层基础结构，并实施了严格控�
 
 **责任**：客户
 
-### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9.2：执行完整的系统备份并备份所有客户管理的密钥
+### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9.2：执行完整系统备份，并备份客户管理的所有密钥
 
 **指南**：使用备份和还原功能来计划应用的定期备份。 在高级计划中运行的函数应用与 Azure App Service 中的 web 应用具有相同的托管功能，其中包括 "备份和还原" 功能。 在 Azure 密钥保管库中备份客户托管的密钥。
 

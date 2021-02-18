@@ -4,12 +4,12 @@ description: 本教程介绍如何配置 Azure Monitor 日志，以便监视和�
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: cf14cce631a505a951ec4d9c0955431b9a98527e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b7689d6e259055137a8d1d3c61552790ab9f28d3
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91840670"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100588246"
 ---
 # <a name="tutorial-monitor-windows-containers-on-service-fabric-using-azure-monitor-logs"></a>教程：使用 Azure Monitor 日志监视 Service Fabric 上的 Windows 容器
 
@@ -195,7 +195,7 @@ ms.locfileid: "91840670"
 
 选择“容器监视解决方案”后，会将你转到更加详细的仪表板，在其中可以滚动浏览多个面板并可在 Azure Monitor 日志中运行查询。
 
-由于该代理正在收集 docker 日志，因此，默认情况下它会显示 stdout** 和 stderr**。 如果水平滚动，将看到容器映像清单、状态、指标和示例查询，你可以运行这些查询以获取更多有用的数据。
+由于该代理正在收集 docker 日志，因此，默认情况下它会显示 stdout 和 stderr。 如果水平滚动，将看到容器映像清单、状态、指标和示例查询，你可以运行这些查询以获取更多有用的数据。
 
 ![容器解决方案仪表板](./media/service-fabric-tutorial-monitoring-wincontainers/container-metrics.png)
 
@@ -212,9 +212,9 @@ ms.locfileid: "91840670"
 * 选择“连接的源” > “Windows Server”，验证是否已连接了 5 个 Windows 计算机。
 * 选择“数据” > “Windows 性能计数器”，搜索并添加新性能计数器 。 此处会看到 Azure Monitor 日志提供的关于可收集的性能计数器的建议列表，以及用于搜索其他计数器的选项。 验证是否正在收集 **Processor(_Total)\% Processor Time** 和 **Memory(*)\Available MBytes** 计数器。
 
-几分钟后刷新**** 容器监视解决方案，应开始看到计算机性能数据** 出现。 此数据将有助于你了解的资源的使用情况。 此外，还可以使用这些指标做出适当的群集缩放决策，或者使用它们确认群集是否正在按照预期方式平衡负载。
+几分钟后刷新容器监视解决方案，应开始看到计算机性能数据出现。 此数据将有助于你了解的资源的使用情况。 此外，还可以使用这些指标做出适当的群集缩放决策，或者使用它们确认群集是否正在按照预期方式平衡负载。
 
-** 注意：请确保已正确设置时间筛选器，以便于使用这些指标。
+注意：请确保已正确设置时间筛选器，以便于使用这些指标。
 
 ![性能计数器 2](./media/service-fabric-tutorial-monitoring-wincontainers/perf-counters2.png)
 
@@ -230,6 +230,6 @@ ms.locfileid: "91840670"
 至此，你已配置对容器化应用程序的监视，请尝试执行以下操作：
 
 * 按照与本教程类似的步骤操作，为 Linux 群集配置 Azure Monitor 日志。 请参考[此模板](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Ubuntu-1-NodeType-Secure-OMS)，对资源管理器模板进行更改。
-* 配置 Azure Monitor 日志，以便设置有助于检测和诊断的[自动警报](../azure-monitor/platform/alerts-overview.md)。
+* 配置 Azure Monitor 日志，以便设置有助于检测和诊断的[自动警报](../azure-monitor/alerts/alerts-overview.md)。
 * 浏览 Service Fabric 的[性能计数器建议](service-fabric-diagnostics-event-generation-perf.md)列表，以为群集配置它们。
-* 掌握 Azure Monitor 日志中提供的[日志搜索和查询](../azure-monitor/log-query/log-query-overview.md)功能。
+* 掌握 Azure Monitor 日志中提供的[日志搜索和查询](../azure-monitor/logs/log-query-overview.md)功能。

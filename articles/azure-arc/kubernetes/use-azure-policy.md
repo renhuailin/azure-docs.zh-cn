@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: 使用 Azure 策略大规模应用群集配置
 keywords: Kubernetes、Arc、Azure、K8s、容器
-ms.openlocfilehash: b80e50cb4823632f054de3b7f9da71392f8578d7
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 23cd42458c396afd31741c648d713934250a4112
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/17/2021
-ms.locfileid: "100560191"
+ms.locfileid: "100587789"
 ---
 # <a name="use-azure-policy-to-apply-cluster-configurations-at-scale-preview"></a>使用 Azure 策略大规模应用群集配置（预览版）
 
@@ -74,4 +74,4 @@ ms.locfileid: "100560191"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [使用已启用 Arc 的 Kubernetes 群集设置适用于容器的 Azure Monitor](../../azure-monitor/insights/container-insights-enable-arc-enabled-clusters.md)
+* [使用已启用 Arc 的 Kubernetes 群集设置适用于容器的 Azure Monitor](../../azure-monitor/containers/container-insights-enable-arc-enabled-clusters.md)

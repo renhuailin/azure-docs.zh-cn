@@ -6,12 +6,12 @@ ms.author: magoedte
 ms.topic: conceptual
 ms.date: 12/11/2020
 ms.subservice: ''
-ms.openlocfilehash: 26e7dbf3f5629d4691211b6c9b82446ba4035421
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: f3c9197faaae89e0ffb238f987ee66dafea8abdd
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97347605"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579801"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-automation"></a>使用 Azure 专用链接将网络安全连接到 Azure 自动化
 
@@ -34,7 +34,7 @@ Azure 专用终结点是一个网络接口，可以将你通过专用且安全�
 - 私下连接到 Azure Monitor Log Analytics 工作区，而无需打开任何公共网络访问权限。
 
     >[!NOTE]
-    >如果你的自动化帐户已链接到 Log Analytics 工作区以转发作业数据，并且已启用诸如更新管理、更改跟踪和清单、状态配置或在空闲时间启动/停止 VM 等功能，则需要为 Log Analytics 工作区使用单独的专用终结点。 有关 Azure Monitor 的专用链接的详细信息，请参阅 [使用 Azure 专用链接安全地将网络连接到 Azure Monitor](../../azure-monitor/platform/private-link-security.md)。
+    >如果你的自动化帐户已链接到 Log Analytics 工作区以转发作业数据，并且已启用诸如更新管理、更改跟踪和清单、状态配置或在空闲时间启动/停止 VM 等功能，则需要为 Log Analytics 工作区使用单独的专用终结点。 有关 Azure Monitor 的专用链接的详细信息，请参阅 [使用 Azure 专用链接安全地将网络连接到 Azure Monitor](../../azure-monitor/logs/private-link-security.md)。
 
 - 确保仅通过已授权的专用网络访问自动化数据。
 - 通过定义通过专用终结点连接的 Azure 自动化资源，防止数据渗透从专用网络进行。
@@ -46,8 +46,8 @@ Azure 专用终结点是一个网络接口，可以将你通过专用且安全�
 ## <a name="limitations"></a>限制
 
 - 在当前的私有链接实现中，自动化帐户云作业无法访问使用专用终结点保护的 Azure 资源。 例如，Azure Key Vault、Azure SQL、Azure 存储帐户等。若要解决此问题，请改用 [混合 Runbook 辅助角色](../automation-hybrid-runbook-worker.md) 。
-- 需要使用最新版本的适用于 Windows 或 Linux 的 [Log Analytics 代理](../../azure-monitor/platform/log-analytics-agent.md) 。
-- [Log Analytics 网关](../../azure-monitor/platform/gateway.md)不支持 "专用" 链接。
+- 需要使用最新版本的适用于 Windows 或 Linux 的 [Log Analytics 代理](../../azure-monitor/agents/log-analytics-agent.md) 。
+- [Log Analytics 网关](../../azure-monitor/agents/gateway.md)不支持 "专用" 链接。
 
 ## <a name="how-it-works"></a>工作原理
 
@@ -70,13 +70,13 @@ Azure 自动化专用链接将一个或多个专用终结点连接 (，因此，
 
 ## <a name="hybrid-worker-scenario-for-update-management"></a>更新管理的混合辅助角色方案  
 
-系统混合 Runbook 辅助角色支持更新管理功能使用的一组隐藏 runbook，这些 runbook 旨在在 Windows 和 Linux 计算机上安装用户指定的更新。 启用 Azure 自动化更新管理后，任何连接到 Log Analytics 工作区的计算机都会自动配置为系统混合 Runbook 辅助角色。
+系统混合 Runbook 辅助角色支持更新管理功能使用的一组隐藏 runbook，这些 runbook 旨在在 Windows 和 Linux 计算机上安装用户指定的更新。 启用 Azure 自动化更新管理后，连接到 Log Analytics 工作区的任何计算机都会自动配置为系统混合 Runbook 辅助角色。
 
 若要了解 & 配置更新管理查看 [有关更新管理的信息](../update-management/overview.md)。 更新管理功能依赖于 Log Analytics 工作区，因此需要将工作区链接到自动化帐户。 Log Analytics 工作区存储解决方案收集的数据，并托管其日志搜索和视图。
 
 如果希望将计算机配置为更新管理，以安全方式通过专用链接通道连接到自动化 & Log Analytics 工作区，则必须为链接到使用 "专用链接" 配置的自动化帐户的 Log Analytics 工作区启用 "专用" 链接。
 
-可以按照 [配置 Log Analytics](../../azure-monitor/platform/private-link-security.md#configure-log-analytics)中所述的步骤来控制如何从私有链接范围的外部访问 Log Analytics 工作区。 如果将“允许公用网络访问以便执行引入”设置为“否”，则已连接的范围之外的计算机无法将数据上传到此工作区中 。 如果将“允许公用网络访问以便执行查询”设置为“否”，则范围之外的计算机无法访问此工作区中的数据 。
+可以按照 [配置 Log Analytics](../../azure-monitor/logs/private-link-security.md#configure-log-analytics)中所述的步骤来控制如何从私有链接范围的外部访问 Log Analytics 工作区。 如果将“允许公用网络访问以便执行引入”设置为“否”，则已连接的范围之外的计算机无法将数据上传到此工作区中 。 如果将“允许公用网络访问以便执行查询”设置为“否”，则范围之外的计算机无法访问此工作区中的数据 。
 
 使用 **DSCAndHybridWorker** 目标子资源启用用户 & 系统混合辅助角色的专用链接。
 

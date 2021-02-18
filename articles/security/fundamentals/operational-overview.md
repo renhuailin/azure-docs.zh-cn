@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/31/2019
 ms.author: tomsh
-ms.openlocfilehash: c3674b6877438a0dd4fe53569cf6852e872334a7
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 4bc30fbf342a9bc85b52c9f88ce7ca1df3c36e23
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98693606"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595503"
 ---
 # <a name="azure-operational-security-overview"></a>Azure 操作安全性概述
 
@@ -94,7 +94,7 @@ Azure AD 中还包括了整套[标识管理功能](./identity-management-overvie
 >[!Note]
 >若要深入了解安全中心中的角色和允许的操作，请参阅 [Azure 安全中心中的权限](../../security-center/security-center-permissions.md)。
 
-安全中心使用 Microsoft Monitoring Agent。 此代理与 Azure Monitor 服务使用的代理相同。 通过此代理收集的数据存储在与 Azure 订阅关联的现有 Log Analytics [工作区](../../azure-monitor/platform/manage-access.md)或新工作区中，具体取决于 VM 的地理位置。
+安全中心使用 Microsoft Monitoring Agent。 此代理与 Azure Monitor 服务使用的代理相同。 通过此代理收集的数据存储在与 Azure 订阅关联的现有 Log Analytics [工作区](../../azure-monitor/logs/manage-access.md)或新工作区中，具体取决于 VM 的地理位置。
 
 ## <a name="azure-monitor"></a>Azure Monitor
 
@@ -108,23 +108,23 @@ Azure Monitor 包括以下组件。
 
 ### <a name="azure-activity-log"></a>Azure 活动日志
 
-[Azure 活动日志](../../azure-monitor/platform/platform-logs-overview.md)提供相关信息，方便用户了解对订阅中的资源执行的操作。 Azure 活动日志此前称为“审核日志”或“操作日志”，因为它报告订阅的控制平面事件。
+[Azure 活动日志](../../azure-monitor/essentials/platform-logs-overview.md)提供相关信息，方便用户了解对订阅中的资源执行的操作。 Azure 活动日志此前称为“审核日志”或“操作日志”，因为它报告订阅的控制平面事件。
 
 ### <a name="azure-diagnostic-logs"></a>Azure 诊断日志
 
-[Azure 诊断日志](../../azure-monitor/platform/platform-logs-overview.md)由资源发出，提供与该资源的操作相关的各种频繁生成的数据。 这些日志的内容因资源类型而异。
+[Azure 诊断日志](../../azure-monitor/essentials/platform-logs-overview.md)由资源发出，提供与该资源的操作相关的各种频繁生成的数据。 这些日志的内容因资源类型而异。
 
 Windows 事件系统日志是一种 VM 诊断日志类别。 Blob、表和队列日志是存储帐户的诊断日志类别。
 
-诊断日志与[活动日志](../../azure-monitor/platform/platform-logs-overview.md)不同。 活动日志提供针对订阅中的资源执行的操作的深入信息。 诊断日志提供资源本身执行的操作的深入信息。
+诊断日志与[活动日志](../../azure-monitor/essentials/platform-logs-overview.md)不同。 活动日志提供针对订阅中的资源执行的操作的深入信息。 诊断日志提供资源本身执行的操作的深入信息。
 
 ### <a name="metrics"></a>指标
 
-Azure Monitor 可提供遥测数据，以便用户了解 Azure 上工作负荷的性能与运行状况。 最重要的 Azure 遥测数据类型是大多数 Azure 资源发出的[指标](../../azure-monitor/platform/data-platform.md)（也称为性能计数器）。 Azure 监视器提供多种方式来配置和使用这些指标，以便进行监视与故障排除。
+Azure Monitor 可提供遥测数据，以便用户了解 Azure 上工作负荷的性能与运行状况。 最重要的 Azure 遥测数据类型是大多数 Azure 资源发出的[指标](../../azure-monitor/data-platform.md)（也称为性能计数器）。 Azure 监视器提供多种方式来配置和使用这些指标，以便进行监视与故障排除。
 
 ### <a name="azure-diagnostics"></a>Azure 诊断
 
-Azure 诊断可在部署的应用程序上启用诊断数据收集功能。 可使用各种源的诊断扩展。 目前支持的有 [Azure 云服务角色](/visualstudio/azure/vs-azure-tools-configure-roles-for-cloud-service)、运行 Microsoft Windows 的 [Azure 虚拟机](/visualstudio/azure/vs-azure-tools-configure-roles-for-cloud-service)，以及 [Azure Service Fabric](../../azure-monitor/platform/diagnostics-extension-overview.md)。
+Azure 诊断可在部署的应用程序上启用诊断数据收集功能。 可使用各种源的诊断扩展。 目前支持的有 [Azure 云服务角色](/visualstudio/azure/vs-azure-tools-configure-roles-for-cloud-service)、运行 Microsoft Windows 的 [Azure 虚拟机](/visualstudio/azure/vs-azure-tools-configure-roles-for-cloud-service)，以及 [Azure Service Fabric](../../azure-monitor/agents/diagnostics-extension-overview.md)。
 
 ## <a name="azure-network-watcher"></a>Azure 网络观察程序
 

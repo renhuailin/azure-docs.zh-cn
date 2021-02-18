@@ -1,33 +1,33 @@
 ---
-title: 审核日志-Azure Database for MySQL-灵活服务器
-description: 介绍 Azure Database for MySQL 灵活的服务器中可用的审核日志。
+title: 审核日志 - Azure Database for MySQL 灵活服务器
+description: 描述 Azure Database for MySQL 灵活服务器中提供的审核日志。
 author: savjani
 ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/21/2020
-ms.openlocfilehash: 5aab78ad99b80ff1d7be92bd36847b01dbc0e33b
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: d38a0ea7307584c25ddec9389feaef7518bcf925
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94542212"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591750"
 ---
-# <a name="track-database-activity-with-audit-logs-in-azure-database-for-mysql-flexible-server"></a>在 Azure Database for MySQL 灵活的服务器中跟踪包含审核日志的数据库活动
+# <a name="track-database-activity-with-audit-logs-in-azure-database-for-mysql-flexible-server"></a>使用 Azure Database for MySQL 灵活服务器中的审核日志跟踪数据库活动
 
 > [!IMPORTANT] 
 > Azure Database for MySQL 灵活服务器当前以公共预览版提供
 
-Azure Database for MySQL 灵活的服务器为用户提供了配置审核日志的功能。 审核日志可用于跟踪数据库级活动，包括连接、管理、DDL 和 DML 事件。 这些类型的日志通常用于符合性目的。
+用户可在 Azure Database for MySQL 灵活服务器中配置审核日志。 还可使用审核日志来跟踪数据库级活动，包括连接、管理、DDL 和 DML 事件。 这些类型的日志通常用于符合性目的。
 
 ## <a name="configure-audit-logging"></a>配置审核日志记录
 
 >[!IMPORTANT]
 > 建议仅记录审核所需的事件类型和用户，以确保服务器的性能不会受到严重影响。
 
-默认情况下，审核日志处于禁用状态。 若要启用它们，请将 `audit_log_enabled` 服务器参数设置为 *ON* 。 这可以使用 Azure 门户或 Azure CLI 进行配置。 <!-- add link to server parameter-->. 
+默认情况下，审核日志处于禁用状态。 若要启用它们，请将 `audit_log_enabled` 服务器参数设置为“开启”。 可使用 Azure 门户或 Azure CLI 配置此功能 <!-- add link to server parameter-->. 
 
-可以调整以控制审核日志记录行为的其他参数包括：
+可调整来控制审核日志记录行为的其他参数包括：
 
 - `audit_log_events`：控制要记录的事件。 请查看下表以了解具体的审核事件。
 - `audit_log_include_users`：要包括 MySQL 用户进行日志记录。 此参数的默认值为空，这将包括所有用户进行日志记录。 此参数的优先级高于 `audit_log_exclude_users`。 此参数的最大长度为 512 个字符。
@@ -38,7 +38,7 @@ Azure Database for MySQL 灵活的服务器为用户提供了配置审核日志�
 
 | **事件** | **说明** |
 |---|---|
-| `CONNECTION` | - 启动连接（成功或不成功） <br> -会话期间用户/密码不同的用户重新进行身份验证 <br> - 终止连接 |
+| `CONNECTION` | - 启动连接（成功或不成功） <br> - 在会话期间使用不同的用户/密码对用户重新进行身份验证 <br> - 终止连接 |
 | `DML_SELECT`| SELECT 查询 |
 | `DML_NONSELECT` | INSERT/DELETE/UPDATE 查询 |
 | `DML` | DML = DML_SELECT + DML_NONSELECT |
@@ -50,9 +50,9 @@ Azure Database for MySQL 灵活的服务器为用户提供了配置审核日志�
 
 ## <a name="access-audit-logs"></a>访问审核日志
 
-审核日志与 Azure Monitor 诊断设置集成在一起。 在 MySQL 灵活的服务器上启用审核日志后，可以将其发送到 Azure Monitor 日志、事件中心或 Azure 存储。 若要了解有关诊断设置的详细信息，请参阅 [诊断日志文档](../../azure-monitor/platform/platform-logs-overview.md)。 若要详细了解如何在 Azure 门户中启用诊断设置，请参阅 [审核日志门户](how-to-configure-audit-logs-portal.md#set-up-diagnostics)。
+审核日志与 Azure Monitor 诊断设置相集成。 在 MySQL 灵活服务器上启用审核日志后，可以将它们发送到 Azure Monitor 日志、事件中心或 Azure 存储。 若要详细了解诊断设置，请参阅[诊断日志文档](../../azure-monitor/essentials/platform-logs-overview.md)。 若要详细了解如何在 Azure 门户中启用诊断设置，请参阅[审核日志门户文章](how-to-configure-audit-logs-portal.md#set-up-diagnostics)。
 
-以下各节介绍了基于事件类型的 MySQL 审核日志的输出。 根据输出方法，包含的字段以及这些字段出现的顺序可能会有所不同。
+以下部分介绍基于事件类型的 MySQL 审核日志的输出。 根据输出方法，包含的字段以及这些字段出现的顺序可能会有所不同。
 
 ### <a name="connection"></a>连接
 
@@ -196,6 +196,6 @@ Azure Database for MySQL 灵活的服务器为用户提供了配置审核日志�
     ``` 
 
 ## <a name="next-steps"></a>后续步骤
-- 了解有关[慢速查询日志](concepts-slow-query-logs.md)的详细信息
-- 从[Azure 门户](how-to-configure-audit-logs-portal.md)配置审核查询日志
+- 详细了解[慢查询日志](concepts-slow-query-logs.md)
+- 通过 [Azure 门户](how-to-configure-audit-logs-portal.md)配置审核查询日志
 <!-- - [How to configure audit logs in the Azure portal](howto-configure-audit-logs-portal.md)-->

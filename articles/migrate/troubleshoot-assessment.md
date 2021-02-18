@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: cefcd4ce287eecfe2c764d88d5d2233cc8ac0a5c
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 4eeda2e4e418920522f7a65bef68928963c43ad4
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96753439"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581789"
 ---
 # <a name="troubleshoot-assessmentdependency-visualization"></a>排查评估/依赖项可视化问题
 
@@ -75,7 +75,7 @@ ms.locfileid: "96753439"
 
 - VM SKU 建议取决于评估属性。
 - 这受您在 "服务器评估" 中执行的评估类型的影响： " *基于性能*" 或 *"本地*"。
-- 对于基于性能的评估，服务器评估将 (CPU、内存、磁盘和网络利用率) 本地 Vm 的使用率数据，以确定本地 Vm 的正确目标 VM SKU。 在确定有效利用率时，它还添加了舒适因子。
+- 对于“基于性能”的评估，服务器评估会考虑本地 VM 的利用率数据（CPU、内存、磁盘和网络利用率），以确定适合本地 VM 的目标 VM SKU。 在确定有效利用率时，它还添加了舒适因子。
 - 对于本地大小调整，不考虑性能数据，建议根据本地分配使用目标 SKU。
 
 为了说明这会如何影响建议，我们举个例子：
@@ -160,12 +160,12 @@ Azure 政府版不支持基于代理的依赖项分析。 请使用无代理依�
 
     ![MMA 状态](./media/troubleshoot-assessment/mma-properties.png)
 
-对于 Linux Vm，请确保 MMA 和依赖关系代理的安装命令已成功。 请参阅 [此处](../azure-monitor/insights/service-map.md#post-installation-issues)的更多故障排除指南。
+对于 Linux Vm，请确保 MMA 和依赖关系代理的安装命令已成功。 请参阅 [此处](../azure-monitor/vm/service-map.md#post-installation-issues)的更多故障排除指南。
 
 ## <a name="supported-operating-systems"></a>支持的操作系统
 
-- **MMS 代理**：查看支持的 [Windows](../azure-monitor/platform/agents-overview.md#supported-operating-systems)和 [Linux](../azure-monitor/platform/agents-overview.md#supported-operating-systems) 操作系统。
-- **依赖关系代理**：支持的 [Windows 和 Linux](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems) 操作系统。
+- **MMS 代理**：查看支持的 [Windows](../azure-monitor/agents/agents-overview.md#supported-operating-systems)和 [Linux](../azure-monitor/agents/agents-overview.md#supported-operating-systems) 操作系统。
+- **依赖关系代理**：支持的 [Windows 和 Linux](../azure-monitor/vm/vminsights-enable-overview.md#supported-operating-systems) 操作系统。
 
 ## <a name="visualize-dependencies-for--hour"></a>可视化 > 小时的依赖项
 
@@ -198,7 +198,7 @@ Azure Migrate 目前支持在“美国东部”、“东南亚”和“西欧”
 
 收集网络流量日志，如下所示：
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 2. 按 F12 开始开发人员工具。 如果需要，请清除 "  **在导航上清除条目** " 设置。
 3. 选择 " **网络** " 选项卡，开始捕获网络流量：
    - 在 Chrome 中，选择“保留日志”。 记录应自动启动。 红色圆圈表示正在捕获流量。 如果未显示红色圆圈，请选择要开始的黑色圆圈。

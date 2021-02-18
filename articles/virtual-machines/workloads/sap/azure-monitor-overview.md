@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/30/2020
 ms.author: radeltch
 ms.reviewer: cynthn
-ms.openlocfilehash: 1c33011d947d6dc9dd9ee4dd6331c24c06d99b38
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 411a95154c9ca36595dff4472e9ab8e1ae8a767e
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98693818"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571375"
 ---
 # <a name="azure-monitor-for-sap-solutions-preview"></a>适用于 SAP 解决方案的 Azure monitor (预览版) 
 
@@ -35,7 +35,7 @@ SAP 解决方案的 Azure Monitor 通过 Azure Marketplace 提供。 它提供�
 - SAP HANA 数据库
 - Microsoft SQL server
 
-SAP 解决方案的 Azure Monitor 使用现有 [Azure Monitor](../../../azure-monitor/overview.md) 功能（如 Log Analytics 和 [工作簿](../../../azure-monitor/platform/workbooks-overview.md) ）的强大功能来提供更多监视功能。 客户可以通过编辑 SAP 解决方案 Azure Monitor 提供的默认工作簿来创建 [自定义可视化效果](../../../azure-monitor/platform/workbooks-overview.md#getting-started) ，使用 Azure Log Analytics 工作区编写 [自定义查询](../../../azure-monitor/log-query/log-analytics-tutorial.md) 并创建 [自定义警报](../../../azure-monitor/learn/tutorial-response.md) ，利用 [灵活的保留期](../../../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period) 并将监视数据与票证系统连接。
+SAP 解决方案的 Azure Monitor 使用现有 [Azure Monitor](../../../azure-monitor/overview.md) 功能（如 Log Analytics 和 [工作簿](../../../azure-monitor/visualize/workbooks-overview.md) ）的强大功能来提供更多监视功能。 客户可以通过编辑 SAP 解决方案 Azure Monitor 提供的默认工作簿来创建 [自定义可视化效果](../../../azure-monitor/visualize/workbooks-overview.md#getting-started) ，使用 Azure Log Analytics 工作区编写 [自定义查询](../../../azure-monitor/logs/log-analytics-tutorial.md) 并创建 [自定义警报](../../../azure-monitor/alerts/tutorial-response.md) ，利用 [灵活的保留期](../../../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period) 并将监视数据与票证系统连接。
 
 ## <a name="what-data-does-azure-monitor-for-sap-solutions-collect"></a>SAP 解决方案 Azure Monitor 收集哪些数据？
 
@@ -91,9 +91,9 @@ Microsoft SQL server 遥测：
    - Azure 虚拟机：也称为 *收集器 VM*。 这是一个 Standard_B2ms VM。 此 VM 的主要目的是托管 *监视负载*。 监视负载是指从源系统收集遥测数据并将收集的数据传输到监视框架的逻辑。 在上面的关系图中，监视负载包含通过 SQL 端口连接到 SAP HANA 数据库的逻辑。
    - [Azure Key Vault](../../../key-vault/general/basic-concepts.md)：部署此资源以安全地保存 SAP HANA 数据库凭据并存储有关 [提供程序](./azure-monitor-providers.md)的信息。
    - Log Analytics 工作区：遥测数据所在的目标。
-      - 可视化基于使用 [Azure 工作簿](../../../azure-monitor/platform/workbooks-overview.md)Log Analytics 中的遥测构建。 客户可以自定义可视化效果。 客户还可以将工作簿或工作簿中的特定视觉对象固定到 Azure 仪表板，以实现 autorefresh 功能，最小粒度为30分钟。
+      - 可视化基于使用 [Azure 工作簿](../../../azure-monitor/visualize/workbooks-overview.md)Log Analytics 中的遥测构建。 客户可以自定义可视化效果。 客户还可以将工作簿或工作簿中的特定视觉对象固定到 Azure 仪表板，以实现 autorefresh 功能，最小粒度为30分钟。
       - 在部署时，客户可以通过选择此选项，将其现有的工作区与 SAP 监视器资源在同一订阅中。
-      - 客户可以使用 Kusto 查询语言 (KQL) 对 Log Analytics 工作区内的原始表运行 [查询](../../../azure-monitor/log-query/log-query-overview.md) 。 查看 *自定义日志*。
+      - 客户可以使用 Kusto 查询语言 (KQL) 对 Log Analytics 工作区内的原始表运行 [查询](../../../azure-monitor/logs/log-query-overview.md) 。 查看 *自定义日志*。
 
 > [!Note]
 > 客户负责修补和维护部署在托管资源组中的 VM。

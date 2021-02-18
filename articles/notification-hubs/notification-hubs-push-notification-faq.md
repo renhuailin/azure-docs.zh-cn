@@ -15,12 +15,12 @@ ms.date: 02/12/2021
 ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 11/13/2019
-ms.openlocfilehash: e34fbdca51e7680a80c768e49bae891cb56dfa9d
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: 0f79402956148c566bc34faa88e10895657883c2
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100546442"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591746"
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>使用 Azure 通知中心推送通知：常见问题
 
@@ -196,7 +196,7 @@ Azure 通知中心允许在 [Azure 门户]中查看遥测数据。 可以在[通
 
 - [使用 .NET 检索 Azure Monitor 指标](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/)。 此示例使用用户名和密码。 若要使用证书，请重载 FromServicePrincipal 方法以提供[此示例](https://github.com/Azure/azure-libraries-for-net/blob/master/src/ResourceManagement/ResourceManager/Authentication/AzureCredentialsFactory.cs)中所示的证书。 
 - [获取资源的指标和活动日志](https://azure.microsoft.com/resources/samples/monitor-dotnet-query-metrics-activitylogs/)
-- [Azure 监视 REST API 演练](../azure-monitor/platform/rest-api-walkthrough.md)
+- [Azure 监视 REST API 演练](../azure-monitor/essentials/rest-api-walkthrough.md)
 
 > [!NOTE]
 > 成功的通知仅意味着推送通知已传递到外部 PNS (例如，适用于 iOS 的 APNs 以及适用于 Android 设备的 macOS 或 FCM）) 。 PNS 负责将通知传递到目标设备。 PNS 通常不会向第三方公开传递指标。  
@@ -211,7 +211,7 @@ Azure 通知中心允许在 [Azure 门户]中查看遥测数据。 可以在[通
 [通知中心安全模型]: /previous-versions/azure/azure-services/dn495373(v=azure.100)
 [通知中心安全推送教程]: ./notification-hubs-aspnet-backend-ios-push-apple-apns-secure-notification.md
 [通知中心故障排除]: ./notification-hubs-push-notification-fixer.md
-[通知中心指标]: ../azure-monitor/platform/metrics-supported.md#microsoftnotificationhubsnamespacesnotificationhubs
+[通知中心指标]: ../azure-monitor/essentials/metrics-supported.md#microsoftnotificationhubsnamespacesnotificationhubs
 [注册信息导出/导入]: ./export-modify-registrations-bulk.md
 [Azure 门户]: https://portal.azure.com
 [complete samples]: https://github.com/Azure/azure-notificationhubs-samples

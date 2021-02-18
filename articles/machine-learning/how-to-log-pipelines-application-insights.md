@@ -10,12 +10,12 @@ ms.subservice: core
 ms.date: 08/11/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: e451e55a9a73022f9c90ba4adae91b520840481e
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 58e604eccaca4630a235f4ae83724df20d6b1e26
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880753"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592518"
 ---
 # <a name="collect-machine-learning-pipeline-log-files-in-application-insights-for-alerts-and-debugging"></a>在 Application Insights 中收集用于警报和调试的机器学习管道日志文件
 
@@ -164,6 +164,6 @@ Application Insights 中的结果将显示日志消息和级别、文件路径�
 
 ## <a name="next-steps"></a>后续步骤
 
-在 Application Insights 实例中启用日志后，可以使用这些日志基于查询结果设置 [Azure Monitor 警报](../azure-monitor/platform/alerts-overview.md#what-you-can-alert-on)。
+在 Application Insights 实例中启用日志后，可以使用这些日志基于查询结果设置 [Azure Monitor 警报](../azure-monitor/alerts/alerts-overview.md#what-you-can-alert-on)。
 
-还可以将查询结果添加到 [Azure 仪表板](../azure-monitor/learn/tutorial-app-dashboards.md#add-logs-query)以获取更多见解。
+还可以将查询结果添加到 [Azure 仪表板](../azure-monitor/app/tutorial-app-dashboards.md#add-logs-query)以获取更多见解。

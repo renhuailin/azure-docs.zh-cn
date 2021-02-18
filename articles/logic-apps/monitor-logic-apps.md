@@ -6,18 +6,18 @@ ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 05/04/2020
-ms.openlocfilehash: 356353da639ab97a1a4e5483abf56050f5a236f8
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 3c3d1930234c178a56227830ef0702450ddf4a8c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92676057"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100580661"
 ---
 # <a name="monitor-run-status-review-trigger-history-and-set-up-alerts-for-azure-logic-apps"></a>监视 Azure 逻辑应用的运行状态、查看其触发历史记录并为其设置警报
 
 在[创建并运行逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)后，可以检查该逻辑应用的运行状态、[运行历史记录](#review-runs-history)、[触发历史记录](#review-trigger-history)和性能。 要获取关于故障或其他可能问题的通知，请设置[警报](#add-azure-alerts)。 例如，可以创建一个警报，用于检测“一小时内运行失败超过五次的情况”。
 
-若要进行实时事件监视和更丰富的调试，可以使用 [Azure Monitor 日志](../azure-monitor/overview.md)为逻辑应用设置诊断日志记录。 此 Azure 服务可帮助你监视云和本地环境，使你能够更轻松地维持其可用性和性能。 然后，可以查找和查看事件，例如触发事件、运行事件和操作事件。 将此信息存储在 [Azure Monitor 日志](../azure-monitor/platform/data-platform-logs.md)中，可以创建[日志查询](../azure-monitor/log-query/log-query-overview.md)来帮助查找和分析此信息。 还可以将此诊断数据与其他 Azure 服务一起使用，例如 Azure 存储和 Azure 事件中心。 有关详细信息，请参阅 [使用 Azure Monitor 监视逻辑应用](../logic-apps/monitor-logic-apps-log-analytics.md)。
+若要进行实时事件监视和更丰富的调试，可以使用 [Azure Monitor 日志](../azure-monitor/overview.md)为逻辑应用设置诊断日志记录。 此 Azure 服务可帮助你监视云和本地环境，使你能够更轻松地维持其可用性和性能。 然后，可以查找和查看事件，例如触发事件、运行事件和操作事件。 将此信息存储在 [Azure Monitor 日志](../azure-monitor/logs/data-platform-logs.md)中，可以创建[日志查询](../azure-monitor/logs/log-query-overview.md)来帮助查找和分析此信息。 还可以将此诊断数据与其他 Azure 服务一起使用，例如 Azure 存储和 Azure 事件中心。 有关详细信息，请参阅 [使用 Azure Monitor 监视逻辑应用](../logic-apps/monitor-logic-apps-log-analytics.md)。
 
 > [!NOTE]
 > 如果逻辑应用在 [集成服务环境中运行 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) 已创建为使用 [内部访问终结点](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access)，则只能 *从虚拟网络内部* 查看和访问逻辑应用的运行历史记录中的输入和输出。 请确保专用终结点与要从中访问运行历史记录的计算机之间存在网络连接。 例如，你的客户端计算机可以位于 ISE 的虚拟网络中，也可以存在于连接到 ISE 虚拟网络的虚拟网络中，例如通过对等互连或虚拟专用网络。 有关详细信息，请参阅 [ISE 终结点访问](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access)。 
@@ -43,7 +43,7 @@ ms.locfileid: "92676057"
    在概述窗格中的“运行历史记录”下，显示了逻辑应用的所有以往、当前和任何等待中的运行。 如果列表显示多次运行，且你找不到所需条目，请尝试筛选列表。
 
    > [!TIP]
-   > 如果未显示运行状态，请尝试通过选择 " **刷新** " 来刷新 "概述" 页。 由于不符合条件或找不到任何数据而跳过的触发器不会运行。
+   > 如果未显示运行状态，请尝试通过选择 " **刷新**" 来刷新 "概述" 页。 由于不符合条件或找不到任何数据而跳过的触发器不会运行。
 
    ![概述、运行历史记录和其他逻辑应用信息](./media/monitor-logic-apps/overview-pane-logic-app-details-run-history.png)
 
@@ -54,9 +54,9 @@ ms.locfileid: "92676057"
    | **Aborted** | 由于外部问题（例如，系统中断或过期的 Azure 订阅），运行已停止或未完成。 |
    | 已取消 | 运行已触发并已启动，但收到了取消请求。 |
    | 失败 | 运行中的至少一个操作失败。 未设置工作流中的后续操作来处理失败。 |
-   | **正在运行** | 运行已触发并正在进行中，但对于由于 [操作限制](logic-apps-limits-and-config.md) 或 [当前定价计划](https://azure.microsoft.com/pricing/details/logic-apps/)而受到限制的运行，也可能显示此状态。 <p><p>**提示** ：如果设置 [诊断日志记录](monitor-logic-apps-log-analytics.md)，则可以获取发生的任何限制事件的相关信息。 |
+   | **正在运行** | 运行已触发并正在进行中，但对于由于 [操作限制](logic-apps-limits-and-config.md) 或 [当前定价计划](https://azure.microsoft.com/pricing/details/logic-apps/)而受到限制的运行，也可能显示此状态。 <p><p>**提示**：如果设置 [诊断日志记录](monitor-logic-apps-log-analytics.md)，则可以获取发生的任何限制事件的相关信息。 |
    | 成功 | 运行成功。 如果任何操作失败，工作流中的后续操作会处理失败。 |
-   | **已超时** | 运行超时，因为当前持续时间超过了运行持续时间限制，该限制由 " [**运行历史记录保持期（天**](logic-apps-limits-and-config.md#run-duration-retention-limits)）" 设置控制。 运行的持续时间是使用运行的开始时间和开始时间的运行持续时间限制来计算的。 <p><p>**注意** ：如果此运行的持续时间还超出了当前 *运行历史记录保留限制* ，而此限制也是由 " [**运行历史记录保持期（天**](logic-apps-limits-and-config.md#run-duration-retention-limits)）" 设置控制的，则每日清除作业将从运行历史记录中清除运行。 无论运行超时还是完成，始终都将使用运行的开始时间和 *当前* 保留限制来计算保持期。 因此，如果您缩短正在进行的运行的持续时间限制，则运行将超时。但是，运行会根据运行的持续时间是否超出保留限制，从运行历史记录中清除运行。 |
+   | **已超时** | 运行超时，因为当前持续时间超过了运行持续时间限制，该限制由 " [**运行历史记录保持期（天**](logic-apps-limits-and-config.md#run-duration-retention-limits)）" 设置控制。 运行的持续时间是使用运行的开始时间和开始时间的运行持续时间限制来计算的。 <p><p>**注意**：如果此运行的持续时间还超出了当前 *运行历史记录保留限制*，而此限制也是由 " [**运行历史记录保持期（天**](logic-apps-limits-and-config.md#run-duration-retention-limits)）" 设置控制的，则每日清除作业将从运行历史记录中清除运行。 无论运行超时还是完成，始终都将使用运行的开始时间和 *当前* 保留限制来计算保持期。 因此，如果您缩短正在进行的运行的持续时间限制，则运行将超时。但是，运行会根据运行的持续时间是否超出保留限制，从运行历史记录中清除运行。 |
    | **正在等待** | 运行未启动或已暂停，例如，由于仍在运行的工作流实例较早而暂停。 |
    |||
 
@@ -143,7 +143,7 @@ ms.locfileid: "92676057"
 
 ## <a name="set-up-monitoring-alerts"></a>设置监视警报
 
-若要在出现特定的指标或超出逻辑应用的阈值时收到警报，请[在 Azure Monitor 中设置警报](../azure-monitor/platform/alerts-overview.md)。 了解 [Azure 中的指标](../azure-monitor/platform/data-platform.md)。 若要在不使用 [Azure Monitor](../azure-monitor/log-query/log-query-overview.md) 的情况下设置警报，请执行以下步骤。
+若要在出现特定的指标或超出逻辑应用的阈值时收到警报，请[在 Azure Monitor 中设置警报](../azure-monitor/alerts/alerts-overview.md)。 了解 [Azure 中的指标](../azure-monitor/data-platform.md)。 若要在不使用 [Azure Monitor](../azure-monitor/logs/log-query-overview.md) 的情况下设置警报，请执行以下步骤。
 
 1. 在逻辑应用菜单中的“监视”下，选择“警报” > “新建警报规则”。  
 

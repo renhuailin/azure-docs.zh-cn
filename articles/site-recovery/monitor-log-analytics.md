@@ -7,16 +7,16 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: raynew
-ms.openlocfilehash: e3d3ce8218030bc8ba6c59b26b7360bf2299e02a
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 308e1bcf042feb15179d32844d8c569af6166619
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499809"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571677"
 ---
 # <a name="monitor-site-recovery-with-azure-monitor-logs"></a>使用 Azure Monitor 日志监视 Site Recovery
 
-本文介绍如何使用 [Azure Monitor 日志](../azure-monitor/platform/data-platform-logs.md)和 [Log Analytics](../azure-monitor/log-query/log-query-overview.md) 监视 Azure [Site Recovery](site-recovery-overview.md) 复制的计算机。
+本文介绍如何使用 [Azure Monitor 日志](../azure-monitor/logs/data-platform-logs.md)和 [Log Analytics](../azure-monitor/logs/log-query-overview.md) 监视 Azure [Site Recovery](site-recovery-overview.md) 复制的计算机。
 
 Azure Monitor 日志提供一个日志数据平台用于收集活动和资源日志，以及其他监视数据。 在 Azure Monitor 日志中，可以使用 Log Analytics 编写和测试日志查询，并以交互方式分析日志数据。 可以可视化和查询日志结果，并配置警报来根据监视的数据采取措施。
 
@@ -35,8 +35,8 @@ Azure Monitor 日志提供一个日志数据平台用于收集活动和资源日
 下面是需要的项：
 
 - 至少一台在恢复服务保管库中受保护的计算机。
-- 用于存储 Site Recovery 日志的 Log Analytics 工作区。 [了解](../azure-monitor/learn/quick-create-workspace.md)如何设置工作区。
-- 基本了解如何在 Log Analytics 中编写、运行和分析日志查询。 [了解详细信息](../azure-monitor/log-query/log-analytics-tutorial.md)。
+- 用于存储 Site Recovery 日志的 Log Analytics 工作区。 [了解](../azure-monitor/logs/quick-create-workspace.md)如何设置工作区。
+- 基本了解如何在 Log Analytics 中编写、运行和分析日志查询。 [了解详细信息](../azure-monitor/logs/log-analytics-tutorial.md)。
 
 在开始之前，我们建议查看[常见监视问题](monitoring-common-questions.md)。
 
@@ -62,9 +62,9 @@ Site Recovery 日志将开始馈送到选定工作区中的某个表 (**AzureDia
 1. 转到 Log Analytics 工作区并单击“高级设置”。
 2. 单击“连接的源”页面，然后选择“Windows Server” 。
 3. 在进程服务器上下载 Windows 代理（64 位）。 
-4. [获取工作区 ID 和密钥](../azure-monitor/platform/log-analytics-agent.md#workspace-id-and-key)
-5. [将代理配置为使用 TLS 1.2](../azure-monitor/platform/agent-windows.md#configure-agent-to-use-tls-12)
-6. 通过提供获取的工作区 ID 和密钥[完成代理安装](../azure-monitor/platform/agent-windows.md#install-agent-using-setup-wizard)。
+4. [获取工作区 ID 和密钥](../azure-monitor/agents/log-analytics-agent.md#workspace-id-and-key)
+5. [将代理配置为使用 TLS 1.2](../azure-monitor/agents/agent-windows.md#configure-agent-to-use-tls-12)
+6. 通过提供获取的工作区 ID 和密钥[完成代理安装](../azure-monitor/agents/agent-windows.md#install-agent-using-setup-wizard)。
 7. 安装完成后，转到 Log Analytics 工作区并单击“高级设置”。 转到“数据”页并单击“Windows 性能计数器” 。 
 8. 单击“+”添加以下两个计数器，采样间隔为 300 秒：
 
@@ -76,7 +76,7 @@ Site Recovery 日志将开始馈送到选定工作区中的某个表 (**AzureDia
 
 ## <a name="query-the-logs---examples"></a>查询日志 - 示例
 
-使用以 [Kusto 查询语言](../azure-monitor/log-query/get-started-queries.md)编写的日志查询从日志中检索数据。 本部分提供几个可用于 Site Recovery 监视的常见查询示例。
+使用以 [Kusto 查询语言](../azure-monitor/logs/get-started-queries.md)编写的日志查询从日志中检索数据。 本部分提供几个可用于 Site Recovery 监视的常见查询示例。
 
 > [!NOTE]
 > 其中一些示例使用设置为 **A2A** 的 **replicationProviderName_s**。 此查询检索已使用 Site Recovery 复制到次要 Azure 区域的 Azure VM。 若要检索已使用 Site Recovery 复制到 Azure 的本地 VMware VM 或物理服务器，可在这些示例中将 **A2A** 替换为 **InMageAzureV2**。
@@ -252,7 +252,7 @@ AzureDiagnostics 
 
 ## <a name="set-up-alerts---examples"></a>设置警报 - 示例
 
-可以基于 Azure Monitor 数据设置 Site Recovery 警报。 [详细了解](../azure-monitor/platform/alerts-log.md#create-a-log-alert-rule-with-the-azure-portal)如何设置日志警报。 
+可以基于 Azure Monitor 数据设置 Site Recovery 警报。 [详细了解](../azure-monitor/alerts/alerts-log.md#create-a-log-alert-rule-with-the-azure-portal)如何设置日志警报。 
 
 > [!NOTE]
 > 其中一些示例使用设置为 **A2A** 的 **replicationProviderName_s**。 这会针对已复制到次要 Azure 区域的 Azure VM 设置警报。 若要针对已复制到 Azure 的本地 VMware VM 或物理服务器设置警报，可在这些示例中将 **A2A** 替换为 **InMageAzureV2**。

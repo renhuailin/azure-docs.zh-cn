@@ -1,5 +1,5 @@
 ---
-title: 使用 PowerShell 在 Azure 云服务中启用诊断 (经典) |Microsoft Docs
+title: 使用 PowerShell 在 Azure 云服务（经典）中启用诊断 | Microsoft Docs
 description: 了解如何使用 PowerShell 在配置了 Azure 诊断扩展的 Azure 云服务中启用收集诊断数据。
 ms.topic: article
 ms.service: cloud-services
@@ -8,14 +8,14 @@ ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 8dcc6dd355e0c89aa4120a6cc7f331159d56c1bc
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 0b6096f980234c09bf1c2da2b4621b8ed66b495d
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98742176"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100578174"
 ---
-# <a name="enable-diagnostics-in-azure-cloud-services-classic-using-powershell"></a>使用 PowerShell 在 Azure 云服务中启用诊断 (经典) 
+# <a name="enable-diagnostics-in-azure-cloud-services-classic-using-powershell"></a>使用 PowerShell 在 Azure 云服务（经典）中启用诊断
 
 > [!IMPORTANT]
 > [Azure 云服务 (扩展支持) ](../cloud-services-extended-support/overview.md) 是适用于 Azure 云服务产品的新的基于 azure 资源管理器的部署模型。进行此更改后，基于 Azure Service Manager 的部署模型运行的 Azure 云服务已重命名为云服务 (经典) ，所有新部署应使用 [云服务 (扩展支持) ](../cloud-services-extended-support/overview.md)。
@@ -134,5 +134,5 @@ Remove-AzureServiceDiagnosticsExtension -ServiceName "MyService" -Role "WebRole"
 
 ## <a name="next-steps"></a>后续步骤
 * 有关使用 Azure 诊断和其他方法排查问题的详细说明，请参阅[在 Azure 云服务和虚拟机中启用诊断](cloud-services-dotnet-diagnostics.md)。
-* [诊断配置架构](../azure-monitor/platform/diagnostics-extension-schema-windows.md)说明了诊断扩展的各种 XML 配置选项。
+* [诊断配置架构](../azure-monitor/agents/diagnostics-extension-schema-windows.md)说明了诊断扩展的各种 XML 配置选项。
 * 若要了解如何为虚拟机启用诊断扩展，请参阅[使用 Azure 资源管理器模板创建具有监视和诊断功能的 Windows 虚拟机](../virtual-machines/extensions/diagnostics-template.md)
