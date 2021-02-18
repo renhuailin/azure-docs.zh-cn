@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 03/04/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: aaa3a6d128fe7dd466f6f60ab515f05fa38ba63b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1cc517ac3c903930eddb95a4813a8146cae2ec2c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84690370"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100582665"
 ---
 # <a name="monitor-server-metrics"></a>监视服务器指标
 
-Analysis Services 在 Azure 指标资源管理器（门户中的一个免费工具）中提供指标，以帮助你监视服务器的性能和运行状况。 例如，监视内存和 CPU 使用率、客户端连接数和查询资源消耗量。 Analysis Services 使用与大多数其他 Azure 服务相同的监视框架。 若要了解详细信息，请参阅 [Azure 指标资源管理器入门](../azure-monitor/platform/metrics-getting-started.md)。
+Analysis Services 在 Azure 指标资源管理器（门户中的一个免费工具）中提供指标，以帮助你监视服务器的性能和运行状况。 例如，监视内存和 CPU 使用率、客户端连接数和查询资源消耗量。 Analysis Services 使用与大多数其他 Azure 服务相同的监视框架。 若要了解详细信息，请参阅 [Azure 指标资源管理器入门](../azure-monitor/essentials/metrics-getting-started.md)。
 
 若要执行更深入的诊断、跟踪性能，并确定跨资源组或订阅中的多个服务资源的趋势，请使用 [Azure Monitor](../azure-monitor/overview.md)。 Azure Monitor（服务）可能会导致计费服务。
 
@@ -27,7 +27,7 @@ Analysis Services 在 Azure 指标资源管理器（门户中的一个免费工�
 
     ![在 Azure 门户中监视](./media/analysis-services-monitor/aas-monitor-portal.png)
 
-2. 在**指标**中，选择要在图表中包括的指标。 
+2. 在 **指标** 中，选择要在图表中包括的指标。 
 
     ![监视图表](./media/analysis-services-monitor/aas-monitor-chart.png)
 
@@ -89,5 +89,5 @@ Analysis Services 在 Azure 指标资源管理器（门户中的一个免费工�
 
 ## <a name="next-steps"></a>后续步骤
 [Azure Monitor 概述](../azure-monitor/overview.md)      
-[Azure 指标资源管理器入门](../azure-monitor/platform/metrics-getting-started.md)      
+[Azure 指标资源管理器入门](../azure-monitor/essentials/metrics-getting-started.md)      
 [Azure Monitor REST API 中的指标](/rest/api/monitor/metrics)

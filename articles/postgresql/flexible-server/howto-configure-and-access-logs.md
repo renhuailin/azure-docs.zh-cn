@@ -1,24 +1,24 @@
 ---
-title: 配置和访问日志-灵活的服务器-Azure Database for PostgreSQL
+title: 配置和访问日志 - 灵活服务器 - Azure Database for PostgreSQL
 description: 如何访问 Azure Database for PostgreSQL 灵活服务器的数据库日志
 author: lfittl-msft
 ms.author: lufittl
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: 3b54fe1ffd49c12db82a038ad449190a0049133f
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: e52f0f22065d89788d08659476d14af0351cc493
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492346"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590584"
 ---
-# <a name="configure-and-access-logs-in-azure-database-for-postgresql---flexible-server"></a>在 Azure Database for PostgreSQL 灵活的服务器中配置和访问日志
+# <a name="configure-and-access-logs-in-azure-database-for-postgresql---flexible-server"></a>配置和访问 Azure Database for PostgreSQL 灵活服务器中的日志
 
 > [!IMPORTANT]
 > Azure Database for PostgreSQL 灵活服务器以预览版提供
 
-PostgreSQL 日志在灵活服务器的每个节点上都可用。 可以将日志发送到存储服务器，也可以将日志发送到分析服务。 这些日志可用于识别、排除和修复配置错误和性能不佳问题。
+PostgreSQL 日志在灵活服务器的每个节点上都可用。 可以将日志发送到存储服务器或分析服务。 这些日志可用于识别、排除和修复配置错误和性能不佳问题。
 
 ## <a name="configure-diagnostic-settings"></a>配置诊断设置
 
@@ -29,7 +29,7 @@ PostgreSQL 日志在灵活服务器的每个节点上都可用。 可以将日�
 1. 在门户上 Postgres 服务器的导航菜单中，转到“诊断设置”。
    
 2. 选择“添加诊断设置”。
-   :::image type="content" source="media/howto-logging/diagnostic-settings.png" alt-text="添加诊断设置按钮":::
+   :::image type="content" source="media/howto-logging/diagnostic-settings.png" alt-text="“添加诊断设置”按钮":::
 
 3. 为此设置命名。 
 
@@ -40,13 +40,13 @@ PostgreSQL 日志在灵活服务器的每个节点上都可用。 可以将日�
 
 7. 保存设置。
 
-若要使用 PowerShell、CLI 或 REST API 启用资源日志，请访问 [诊断设置](../../azure-monitor/platform/diagnostic-settings.md) 一文。
+若要使用 PowerShell、CLI 或 REST API 启用资源日志，请访问[诊断设置](../../azure-monitor/essentials/diagnostic-settings.md)一文。
 
 ### <a name="access-resource-logs"></a>访问资源日志
 
-访问日志的方式取决于所选的终结点。 有关 Azure 存储，请参阅[日志存储帐户](../../azure-monitor/platform/resource-logs.md#send-to-azure-storage)一文。 有关事件中心，请参阅[流式传输 Azure 日志](../../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs)一文。
+访问日志的方式取决于所选的终结点。 有关 Azure 存储，请参阅[日志存储帐户](../../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)一文。 有关事件中心，请参阅[流式传输 Azure 日志](../../azure-monitor/essentials/resource-logs.md#send-to-azure-event-hubs)一文。
 
-Azure Monitor 日志将发送到所选的工作区。 Postgres 日志使用 **AzureDiagnostics** 收集模式，因此可以从 AzureDiagnostics 表查询它们。 下面描述了该表中的字段。 在 [Azure Monitor 日志查询](../../azure-monitor/log-query/log-query-overview.md)概述中详细了解查询和警报。
+Azure Monitor 日志将发送到所选的工作区。 Postgres 日志使用 **AzureDiagnostics** 收集模式，因此可以从 AzureDiagnostics 表查询它们。 下面描述了该表中的字段。 在 [Azure Monitor 日志查询](../../azure-monitor/logs/log-query-overview.md)概述中详细了解查询和警报。
 
 下面是可帮助你入门的查询。 可以基于查询配置警报。
 
@@ -71,5 +71,5 @@ AzureDiagnostics
 
 ## <a name="next-steps"></a>后续步骤
 
-- [Log analytics 查询入门](../../azure-monitor/log-query/log-analytics-tutorial.md)
+- [Log Analytics 查询入门](../../azure-monitor/logs/log-analytics-tutorial.md)
 - 了解 [Azure 事件中心](../../event-hubs/event-hubs-about.md)

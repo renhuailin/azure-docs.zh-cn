@@ -3,12 +3,12 @@ title: 部署 UK OFFICIAL 和 UK NHS 蓝图示例
 description: UK OFFICIAL 和 UK NHS 蓝图示例的部署步骤，包括蓝图项目参数详细信息。
 ms.date: 02/05/2021
 ms.topic: sample
-ms.openlocfilehash: 0c917134e5807283ceb0e7ce693037824794a6ef
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: fc41e7d9d3867123286f970d7c54f5e6fff2d276
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99627544"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100578037"
 ---
 # <a name="deploy-the-uk-official-and-uk-nhs-blueprint-samples"></a>部署 UK OFFICIAL 和 UK NHS 蓝图示例
 
@@ -93,9 +93,9 @@ ms.locfileid: "99627544"
 
 项目名称|项目类型|参数名称|说明|
 |-|-|-|-|
-|UK OFFICIAL 或 UK NHS 蓝图计划|策略分配 |用于审核诊断日志的资源类型（策略：UK OFFICIAL 或 UK NHS 蓝图计划） |用于审核是否未启用诊断日志设置的资源类型列表。  有关可接受的值，请参阅 [Azure 诊断日志支持的服务、架构和类别](../../../../azure-monitor/platform/resource-logs-schema.md)。 |
-|\[预览\]：为 Linux VM 部署 Log Analytics 代理 |策略分配 |可选：支持将 Linux OS 添加到范围的 VM 映像列表（策略：\[预览\]：为 Linux VM 部署 Log Analytics 代理） |（可选）默认值为“无”。 有关详细信息，请参阅[在 Azure 门户中创建 Log Analytics 工作区](../../../../azure-monitor/learn/quick-create-workspace.md)。 |
-|\[预览\]：为 Windows VM 部署 Log Analytics 代理 |策略分配 |可选：支持将 Windows OS 添加到范围的 VM 映像列表（策略：\[预览\]：为 Windows VM 部署 Log Analytics 代理） |（可选）默认值为“无”。 有关详细信息，请参阅[在 Azure 门户中创建 Log Analytics 工作区](../../../../azure-monitor/learn/quick-create-workspace.md)。 |
+|UK OFFICIAL 或 UK NHS 蓝图计划|策略分配 |用于审核诊断日志的资源类型（策略：UK OFFICIAL 或 UK NHS 蓝图计划） |用于审核是否未启用诊断日志设置的资源类型列表。  有关可接受的值，请参阅 [Azure 诊断日志支持的服务、架构和类别](../../../../azure-monitor/essentials/resource-logs-schema.md)。 |
+|\[预览\]：为 Linux VM 部署 Log Analytics 代理 |策略分配 |可选：支持将 Linux OS 添加到范围的 VM 映像列表（策略：\[预览\]：为 Linux VM 部署 Log Analytics 代理） |（可选）默认值为“无”。 有关详细信息，请参阅[在 Azure 门户中创建 Log Analytics 工作区](../../../../azure-monitor/logs/quick-create-workspace.md)。 |
+|\[预览\]：为 Windows VM 部署 Log Analytics 代理 |策略分配 |可选：支持将 Windows OS 添加到范围的 VM 映像列表（策略：\[预览\]：为 Windows VM 部署 Log Analytics 代理） |（可选）默认值为“无”。 有关详细信息，请参阅[在 Azure 门户中创建 Log Analytics 工作区](../../../../azure-monitor/logs/quick-create-workspace.md)。 |
 
 ## <a name="next-steps"></a>后续步骤
 

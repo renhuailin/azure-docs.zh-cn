@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
-ms.openlocfilehash: e9334d222d443679362514481ecd83b90bbda0ac
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 7b53b0bc8c7cc3df2123d327bf87a85081f88f50
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96855067"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589554"
 ---
 # <a name="sampling-in-application-insights"></a>在 Application Insights 中采样
 
@@ -54,7 +54,7 @@ ms.locfileid: "96855067"
 * **引入采样** 在 Application Insights 服务终结点上发生。 它会以设置的采样率丢弃一些来自应用的遥测数据。 它不会减少应用发送的遥测流量，但可帮助保持在每月配额内。 引入采样的大优点是，无需重新部署应用就可设置它。 引入采样统一适用于所有服务器和客户端，但在运行任何其他类型的采样时，不会应用引入采样。
 
 > [!IMPORTANT]
-> 如果为遥测类型启用了自适应或固定速率采样方法，则会为该遥测禁用引入采样。 但是，从 SDK 级别的采样中排除的遥测类型仍会按门户中设置的速率引入采样。
+> 如果为遥测类型启用了自适应或固定速率采样方法，则将对该遥测禁用引入采样。 但是，从 SDK 级别的采样中排除的遥测类型仍会按门户中设置的速率进行引入采样。
 
 ## <a name="adaptive-sampling"></a>自适应采样
 
@@ -478,7 +478,7 @@ handler = AzureLogHandler(
 
 ## <a name="knowing-whether-sampling-is-in-operation"></a>了解采样是否正在运行
 
-若要查找实际采样率（无论是否已应用），请使用如下所示的[分析查询](../log-query/log-query-overview.md)：
+若要查找实际采样率（无论是否已应用），请使用如下所示的[分析查询](../logs/log-query-overview.md)：
 
 ```kusto
 union requests,dependencies,pageViews,browserTimings,exceptions,traces

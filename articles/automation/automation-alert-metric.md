@@ -4,16 +4,16 @@ description: 本文介绍如何根据 Runbook 完成状态设置指标警报。
 services: automation
 ms.date: 08/10/2020
 ms.topic: article
-ms.openlocfilehash: 8767687f0b72d3469bef570770ac81fa8300097f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3a52824a7030d78647d8a664819f439d92d7296d
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88055916"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593954"
 ---
 # <a name="monitor-runbooks-with-metric-alerts"></a>使用指标警报监视 Runbook
 
-本文介绍如何根据 Runbook 完成状态创建[指标警报](../azure-monitor/platform/alerts-metric-overview.md)。
+本文介绍如何根据 Runbook 完成状态创建[指标警报](../azure-monitor/alerts/alerts-metric-overview.md)。
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
@@ -46,13 +46,13 @@ ms.locfileid: "88055916"
 
 3. 在“警报逻辑”下，定义警报的条件和阈值。 下面会显示定义的条件预览。
 
-4. 在“评估依据”下，选择查询的时间范围，以及查询的运行频率。 例如，如果您在过去**5 分钟**内选择了**时间段**，并且**频率**为**1 分钟**，则警报将查找满足过去5分钟的条件的 runbook 的数目。 此查询每分钟运行一次，一旦在 5 分钟时间范围内找不到定义的警报条件，则警报会自行解决。 完成后，单击“完成”。
+4. 在“评估依据”下，选择查询的时间范围，以及查询的运行频率。 例如，如果您在过去 **5 分钟** 内选择了 **时间段**，并且 **频率** 为 **1 分钟**，则警报将查找满足过去5分钟的条件的 runbook 的数目。 此查询每分钟运行一次，一旦在 5 分钟时间范围内找不到定义的警报条件，则警报会自行解决。 完成后，单击“完成”。
 
    ![选择警报的资源](./media/automation-alert-activity-log/configure-signal-logic.png)
 
 ### <a name="define-the-action-to-take"></a>定义要执行的操作
 
-1. 在“操作组”下，单击“指定操作组” 。 操作组是可以对多个警报使用的一组操作。 这可能包括但不限于电子邮件通知、Runbook、Webhook 以及其他操作。 若要详细了解操作组和创建可发送电子邮件通知的操作组的步骤，请参阅[创建和管理操作组](../azure-monitor/platform/action-groups.md)。
+1. 在“操作组”下，单击“指定操作组” 。 操作组是可以对多个警报使用的一组操作。 这可能包括但不限于电子邮件通知、Runbook、Webhook 以及其他操作。 若要详细了解操作组和创建可发送电子邮件通知的操作组的步骤，请参阅[创建和管理操作组](../azure-monitor/alerts/action-groups.md)。
 
 ### <a name="define-alert-details"></a>定义警报详细信息
 

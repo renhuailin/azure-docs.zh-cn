@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 10/05/2020
 ms.author: memildin
-ms.openlocfilehash: b26d42ca32f0048bb2bedcb5fef337c3ac1d7d65
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: a8cb997337d26a166b4c73d33965820da5ae2a86
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807218"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596316"
 ---
 # <a name="security-alerts-in-azure-security-center"></a>Azure 安全中心的安全警报
 
@@ -98,4 +98,4 @@ Azure 安全中心受益于在整个 Microsoft 有安全研究和数据科学团
 
 本文介绍了安全中心的各类警报。 有关详细信息，请参阅：
 
-- Azure 活动日志中的安全警报 - 安全警报和事件除了在 Azure 门户中或以编程方式提供之外，还会作为 [Azure 活动日志](../azure-monitor/platform/activity-log.md#view-the-activity-log)中的事件进行审核。 有关事件架构的详细信息，请参阅 [Azure 活动日志中的安全警报](https://go.microsoft.com/fwlink/?linkid=2114113)
+- Azure 活动日志中的安全警报 - 安全警报和事件除了在 Azure 门户中或以编程方式提供之外，还会作为 [Azure 活动日志](../azure-monitor/essentials/activity-log.md#view-the-activity-log)中的事件进行审核。 有关事件架构的详细信息，请参阅 [Azure 活动日志中的安全警报](https://go.microsoft.com/fwlink/?linkid=2114113)

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 10/18/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: a22d710f9e18dc98e9fe068abedd57152f4c755c
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 095eb8c20830b9bfe27e26453567d3c25230f2ef
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96463525"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100548108"
 ---
 # <a name="tutorial-configure-the-device-settings-for-azure-stack-edge-pro-r"></a>教程：为 Azure Stack Edge Pro R 配置设备设置
 
@@ -82,7 +82,7 @@ ms.locfileid: "96463525"
         ![本地 Web UI“更新服务器”页 2](./media/azure-stack-edge-pro-r-deploy-set-up-device-update-time/update-3.png)
 
         > [!NOTE] 
-        > 如果配置了单独的 Windows 更新服务器，并且选择通过 https（而不是 http）进行连接，则需要提供连接到更新服务器所需的签名链证书。 有关如何创建和上传证书的信息，请转到[管理证书](azure-stack-edge-j-series-manage-certificates.md)。         
+        > 如果配置了单独的 Windows 更新服务器，并且选择通过 https（而不是 http）进行连接，则需要提供连接到更新服务器所需的签名链证书。 有关如何创建和上传证书的信息，请转到[管理证书](azure-stack-edge-gpu-manage-certificates.md)。         
         > 若要在断开连接模式下工作（例如分层到 Modular Data Center 的 Azure Stack Edge 设备），请启用 WSUS 选项。 在激活期间，设备会扫描是否存在更新。如果未设置服务器，则激活将失败。 
 
 

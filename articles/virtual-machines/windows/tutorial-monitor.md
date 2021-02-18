@@ -10,12 +10,12 @@ ms.workload: infrastructure
 ms.date: 09/27/2018
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 89b33a697e818539ab6666be33fc1542c5bdcc51
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 3e7d93d7a1d0e804f340a7ce785ccc1165e93ee5
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736587"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570093"
 ---
 # <a name="tutorial-monitor-a-windows-virtual-machine-in-azure"></a>教程：监视 Azure 中的 Windows 虚拟机
 
@@ -86,18 +86,18 @@ Windows VM 在 Azure 中有一个与它交互的专用主机 VM。 系统会自�
 
 3. 在“见解(预览版)”页上，选择“立即试用”。
 
-    ![为 VM 启用用于 VM 的 Azure Monitor](../../azure-monitor/insights/media/vminsights-enable-single-vm/enable-vminsights-vm-portal.png)
+    ![为 VM 启用用于 VM 的 Azure Monitor](../../azure-monitor/vm/media/vminsights-enable-portal/enable-vminsights-vm-portal.png)
 
 4. 在“Azure Monitor Insights 载入”页上，如果现有的 Log Analytics 工作区与群集在同一订阅中，请从下拉列表中选择该工作区。  
 
     该列表预先选择了默认工作区和 VM 在订阅中部署的位置。 
 
     >[!NOTE]
-    >若要创建新的 Log Analytics 工作区以存储 VM 中的监视数据，请参阅[创建 Log Analytics 工作区](../../azure-monitor/learn/quick-create-workspace.md)。 该工作区必须属于[支持的区域](../../azure-monitor/insights/vminsights-configure-workspace.md#supported-regions)之一。
+    >若要创建新的 Log Analytics 工作区以存储 VM 中的监视数据，请参阅[创建 Log Analytics 工作区](../../azure-monitor/logs/quick-create-workspace.md)。 该工作区必须属于[支持的区域](../../azure-monitor/vm/vminsights-configure-workspace.md#supported-regions)之一。
 
 启用监视后，可能需要等待几分钟，然后才能查看 VM 的性能指标。
 
-![启用用于 VM 的 Azure Monitor 来监视部署处理](../../azure-monitor/insights/media/vminsights-enable-single-vm/onboard-vminsights-vm-portal-status.png)
+![启用用于 VM 的 Azure Monitor 来监视部署处理](../../azure-monitor/vm/media/vminsights-enable-portal/onboard-vminsights-vm-portal-status.png)
 
 ## <a name="view-vm-performance-metrics"></a>查看 VM 性能指标
 

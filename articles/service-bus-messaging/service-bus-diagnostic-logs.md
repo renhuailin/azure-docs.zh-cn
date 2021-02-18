@@ -3,12 +3,12 @@ title: Azure 服务总线诊断日志 | Microsoft Docs
 description: 本文概述了可用于 Azure 服务总线的所有操作和诊断日志。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: f227f5a988ccd51425b4f43e87b4ed4d9af74e1f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f2672d61285025eadb8f742ca2518297107595ce
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88064428"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585272"
 ---
 # <a name="enable-diagnostics-logs-for-service-bus"></a>为服务总线启用诊断日志
 
@@ -101,7 +101,7 @@ Azure 服务总线目前支持活动日志和操作日志，这些日志捕获�
 
 新设置将在大约 10 分钟后生效。 日志将显示在“诊断日志”窗格中配置的存档目标中。
 
-有关配置诊断设置的详细信息，请参阅 [Azure 诊断日志概述](../azure-monitor/platform/platform-logs-overview.md)。
+有关配置诊断设置的详细信息，请参阅 [Azure 诊断日志概述](../azure-monitor/essentials/platform-logs-overview.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -6,16 +6,18 @@ ms.date: 01/10/2019
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 50c5a8a0c1e7c5d554e19ffcbc9a78bc0a385a5c
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: c753e4e254890f9198da9bc913b29bdaae335b78
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131723"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573829"
 ---
 # <a name="monitor-dependencies-caught-exceptions-and-method-execution-times-in-java-web-apps"></a>监视 Java Web 应用中的依赖项、捕获的异常和方法执行时间
 
 > [!IMPORTANT]
+> 不再建议使用本文档中所述的方法。
+>
 > 监视 Java 应用程序的建议方法是在不更改代码的情况下使用自动检测。 请按照 [Application Insights Java 3.0 代理](./java-in-process-agent.md)指南进行操作。
 
 如果已[使用 Application Insights SDK 检测了 Java Web 应用][java]，则无需更改任何代码，就能使用 Java 代理来获取更深入的见解：
@@ -37,7 +39,7 @@ ms.locfileid: "98131723"
 若要使用 Java 代理，请在服务器上安装该代理。 必须使用 [Application Insights Java SDK][java] 检测 Web 应用。 
 
 ## <a name="install-the-application-insights-agent-for-java"></a>安装适用于 Java 的 Application Insights 代理
-1. 在运行 Java 服务器的计算机上， [下载2.x 代理](https://github.com/microsoft/ApplicationInsights-Java/releases/tag/2.6.2)。 请确保所使用的 2.x Java Agent 版本与你使用的 Application Insights Java SDK 版本相匹配。
+1. 在运行 Java 服务器的计算机上[下载 2.x 代理](https://github.com/microsoft/ApplicationInsights-Java/releases/tag/2.6.2)。 请确保所使用的 2.x Java 代理版本与所使用的 2.x Application Insights Java SDK 版本相匹配。
 2. 编辑应用程序服务器启动脚本，并添加以下 JVM 参数：
    
     `-javaagent:<full path to the agent JAR file>`
@@ -137,5 +139,5 @@ ms.locfileid: "98131723"
 [eclipse]: app-insights-java-eclipse.md
 [java]: java-get-started.md
 [javalogs]: java-trace-logs.md
-[metrics]: ../platform/metrics-charts.md
+[metrics]: ../essentials/metrics-charts.md
 

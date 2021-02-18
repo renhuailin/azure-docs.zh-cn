@@ -3,18 +3,18 @@ title: 使用 PowerShell 自动化 Azure Application Insights | Microsoft Docs
 description: 使用 Azure 资源管理器模板在 PowerShell 中自动创建和管理资源、警报和可用性测试。
 ms.topic: conceptual
 ms.date: 05/02/2020
-ms.openlocfilehash: c380880845c162a1e8fb38e699a439ac04fb3b5a
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: c2e3d33be487b6a92cb7038d814e17fcd5a10064
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186263"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589800"
 ---
 #  <a name="manage-application-insights-resources-using-powershell"></a>使用 PowerShell 管理 Application Insights 资源
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-本文演示如何通过 Azure 资源管理自动创建和更新 [Application Insights](./app-insights-overview.md) 资源。 例如，可能在生成过程中执行此操作。 除了基本的 Application Insights 资源，还可创建[可用性 Web 测试](./monitor-web-app-availability.md)、设置[警报](../platform/alerts-log.md)、设置[定价方案](pricing.md)和创建其他 Azure 资源。
+本文演示如何通过 Azure 资源管理自动创建和更新 [Application Insights](./app-insights-overview.md) 资源。 例如，可能在生成过程中执行此操作。 除了基本的 Application Insights 资源，还可创建[可用性 Web 测试](./monitor-web-app-availability.md)、设置[警报](../alerts/alerts-log.md)、设置[定价方案](pricing.md)和创建其他 Azure 资源。
 
 创建这些资源的关键是用于 [Azure 资源管理器](../../azure-resource-manager/management/manage-resources-powershell.md) 的 JSON 模板。 基本过程如下：下载现有资源的 JSON 定义；将特定值（如名称）参数化；然后在需要新建资源时运行模板。 可以将多个资源打包在一起，以便一次性创建它们，例如具有可用性测试、警报和连续导出的存储的应用监视器。 某些参数化有一些微妙之处，此处我们将进行介绍。
 
@@ -26,7 +26,7 @@ ms.locfileid: "96186263"
 1. 安装 [Microsoft Web 平台安装程序（v5 或更高版本）](https://www.microsoft.com/web/downloads/platform.aspx)。
 2. 使用它来安装 Microsoft Azure PowerShell。
 
-除了可以使用资源管理器模板以外，还有一组丰富的 [Application Insights PowerShell cmdlet](/powershell/module/az.applicationinsights)，可用于轻松地以编程方式配置 Application Insights 资源。 cmdlet 启用的功能包括：
+除了使用资源管理器模板，还可以使用许多 [Application Insights PowerShell cmdlet](/powershell/module/az.applicationinsights)，以编程方式轻松地配置 Application Insights 资源。 cmdlet 启用的功能包括：
 
 * 创建和删除 Application Insights 资源
 * 获取 Application Insights 资源及其属性的列表
@@ -404,12 +404,12 @@ armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/
 
 ## <a name="add-a-metric-alert"></a>添加指标警报
 
-若要自动创建指标警报，请参阅[指标警报模板](../platform/alerts-metric-create-templates.md#template-for-a-simple-static-threshold-metric-alert)一文
+若要自动创建指标警报，请参阅[指标警报模板](../alerts/alerts-metric-create-templates.md#template-for-a-simple-static-threshold-metric-alert)一文
 
 
 ## <a name="add-an-availability-test"></a>添加可用性测试
 
-若要自动执行可用性测试，请参阅[指标警报模板](../platform/alerts-metric-create-templates.md#template-for-an-availability-test-along-with-a-metric-alert)一文。
+若要自动执行可用性测试，请参阅[指标警报模板](../alerts/alerts-metric-create-templates.md#template-for-an-availability-test-along-with-a-metric-alert)一文。
 
 ## <a name="add-more-resources"></a>添加更多资源
 
@@ -469,6 +469,6 @@ Azure 应严格按顺序设置资源。 若要确保某一设置在下一设置�
 其他自动化文章：
 
 * [创建 Application Insights 资源](./create-new-resource.md#creating-a-resource-automatically) - 不使用模板的快速方法。
-* [创建 Web 测试](../samples/resource-manager-alerts-metric.md#availability-test-with-metric-alert)
+* [创建 Web 测试](../alerts/resource-manager-alerts-metric.md#availability-test-with-metric-alert)
 * [将 Azure 诊断发送到 Application Insights](powershell-azure-diagnostics.md)
 * [创建版本注释](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1)

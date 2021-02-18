@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/24/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: a0acbe84a98bc63e5806d25241811c0a7591b897
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 6f487467b08332eea4ee19a7fb8836d843bd254f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98872615"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100582650"
 ---
 # <a name="azure-security-baseline-for-virtual-wan"></a>适用于虚拟 WAN 的 Azure 安全基线
 
@@ -116,7 +116,7 @@ ms.locfileid: "98872615"
 
 ### <a name="im-1-standardize-azure-active-directory-as-the-central-identity-and-authentication-system"></a>IM-1：将 Azure Active Directory 标准化为中央标识和身份验证系统
 
-**指导**：Azure Active Directory (Azure AD) 是 Azure 服务的默认标识和访问管理服务。 包括虚拟 WAN。 标准化 Azure AD 来管理组织的标识和访问管理：
+**指导**：Azure Active Directory (Azure AD) 是 Azure 服务的默认标识和访问管理服务。 包括虚拟 WAN。 使 Azure AD 标准化，以便控制组织在以下资源中的标识和访问管理：
 
 - Microsoft 云资源，如 Azure 门户、Azure 存储、Azure 虚拟机 (Linux 和 Windows) 、Azure Key Vault、平台即服务 (PaaS) 和软件即服务 (SaaS) 应用程序。
 - 你的组织的资源，例如 Azure 上的应用程序，或公司网络资源
@@ -349,9 +349,9 @@ Azure AD 建议通过以下方案实现强身份验证控件：
 
 为虚拟 WAN 启用 Azure 资源日志。 可以使用 Azure 安全中心和 Azure Policy 来启用资源日志和日志数据收集。 这些日志可能对日后调查安全事件和执行取证演练至关重要。
 
-- [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/platform/diagnostic-settings.md) 
+- [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/essentials/diagnostic-settings.md) 
 
-- [了解 Azure 中的日志记录和不同的日志类型](../azure-monitor/platform/platform-logs-overview.md) 
+- [了解 Azure 中的日志记录和不同的日志类型](../azure-monitor/essentials/platform-logs-overview.md) 
 
 - [了解 Azure 安全中心数据收集](../security-center/security-center-enable-data-collection.md)
 
@@ -382,7 +382,7 @@ Azure 虚拟 WAN 安全性通过 Azure 防火墙实现。
 
 **指导**：根据合规性、法规和业务要求配置日志保留。 在 Azure Monitor 中，可根据组织的合规性规则设置 Log Analytics 工作区保持期。 将 Azure 存储、Data Lake 或 Log Analytics 工作区帐户用于长期存储和存档存储。
 
-- [更改 Log Analytics 中的数据保留期](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [更改 Log Analytics 中的数据保留期](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 - [如何为 Azure 存储帐户日志配置保留策略](../storage/common/storage-monitor-storage-account.md#configure-logging)
 

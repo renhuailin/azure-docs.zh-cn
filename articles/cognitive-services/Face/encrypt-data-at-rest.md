@@ -9,16 +9,16 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: egeaney
-ms.openlocfilehash: 8c6f4f7db312355b719deb434bf6a46fa55eec9d
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: a46253e586aaf90a85bc10e2c62ab6eb238f2ead
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100524433"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100650807"
 ---
 # <a name="face-service-encryption-of-data-at-rest"></a>人脸服务静态数据的加密
 
-人脸服务在将数据保存到云时会自动加密数据。 人脸服务加密可以保护数据，并帮助组织履行在安全性与合规性方面做出的承诺。
+人脸服务在保存到云时，会自动加密数据。 人脸服务加密可保护你的数据，并可帮助你满足组织的安全性和符合性承诺。
 
 [!INCLUDE [cognitive-services-about-encryption](../includes/cognitive-services-about-encryption.md)]
 

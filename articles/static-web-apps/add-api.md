@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: wachegha
 ms.custom: devx-track-js
-ms.openlocfilehash: 53be2ee9b6b3ab46f081747aec58b9c99fc54f0d
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 8a42ca4cf69515c99bb2e0bd28bb62dfed0e18f8
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96349950"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100650672"
 ---
 # <a name="add-an-api-to-azure-static-web-apps-preview-with-azure-functions"></a>使用 Azure Functions 将 API 添加到 Azure 静态 Web 应用预览版
 
@@ -234,7 +234,7 @@ Visual Studio Code 与 [Azure Functions Core Tools](../azure-functions/functions
 1. 单击“使用 GitHub 登录”按钮，然后使用 GitHub 进行身份验证
 1. 选择首选组织
 1. 从“存储库”下拉列表中选择“my-vanilla-api”
-1. 从“分支”下拉列表中选择“master”
+1. 从“分支”下拉列表中选择“主分支”
 1. 从 " _生成预设_ " 下拉选项中选择用于生成配置的框架
 
  > 这些字段将反映应用类型的默认项目结构。 更改值以适合你的应用。

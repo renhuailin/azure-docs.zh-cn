@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
-ms.openlocfilehash: f249a95551916311fab51ebef72b55d9a4343c0b
-ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
+ms.openlocfilehash: d35a97b0008a7ce3069185dd557a60221776b0ba
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100530512"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595456"
 ---
 # <a name="collect-data-from-linux-based-sources-using-syslog"></a>使用 Syslog 从基于 Linux 的源收集数据
 
@@ -34,7 +34,7 @@ ms.locfileid: "100530512"
 
 **Syslog** 是 Linux 通用的事件日志记录协议。 如果在 VM 或设备上安装了 **适用于 Linux 的 Log Analytics 代理** ，则安装例程会将本地 Syslog 守护程序配置为将消息转发到 TCP 端口25224上的代理。 然后，代理通过 HTTPS 将消息发送到 Log Analytics 工作区，在该工作区中，该消息将被解析为 **Azure Sentinel > 日志** 的 Syslog 表中的事件日志条目。
 
-有关详细信息，请参阅 [中的 Syslog 数据源 Azure Monitor](../azure-monitor/platform/data-sources-syslog.md)。
+有关详细信息，请参阅 [中的 Syslog 数据源 Azure Monitor](../azure-monitor/agents/data-sources-syslog.md)。
 
 ## <a name="configure-syslog-collection"></a>配置 Syslog 收集
 
@@ -83,7 +83,7 @@ ms.locfileid: "100530512"
 
 1. 若要在 **日志** 中查询 syslog 日志数据，请 `Syslog` 在 "查询" 窗口中键入。
 
-1. 您可以使用 [Azure Monitor 日志查询中的函数中](../azure-monitor/log-query/functions.md) 所述的查询参数来分析 Syslog 消息。 然后，可以将查询另存为新的 Log Analytics 函数，并将其用作新的数据类型。
+1. 您可以使用 [Azure Monitor 日志查询中的函数中](../azure-monitor/logs/functions.md) 所述的查询参数来分析 Syslog 消息。 然后，可以将查询另存为新的 Log Analytics 函数，并将其用作新的数据类型。
 
 > [!NOTE]
 > **使用同一台计算机转发普通 Syslog *和* CEF 消息**
@@ -92,7 +92,7 @@ ms.locfileid: "100530512"
 >
 >    已根据 [CEF 源设置了数据收集](connect-common-event-format.md)，并按上述方式配置 Log Analytics 代理：
 >
-> 1. 在以 CEF 格式发送日志的每台计算机上，必须编辑 Syslog 配置文件，以删除用于发送 CEF 消息的工具。 这样一来，在 CEF 中发送的功能也不会在 Syslog 中发送。 有关如何执行此操作的详细说明，请参阅在 [Linux 代理上配置 Syslog](../azure-monitor/platform/data-sources-syslog.md#configure-syslog-on-linux-agent) 。
+> 1. 在以 CEF 格式发送日志的每台计算机上，必须编辑 Syslog 配置文件，以删除用于发送 CEF 消息的工具。 这样一来，在 CEF 中发送的功能也不会在 Syslog 中发送。 有关如何执行此操作的详细说明，请参阅在 [Linux 代理上配置 Syslog](../azure-monitor/agents/data-sources-syslog.md#configure-syslog-on-linux-agent) 。
 >
 > 1. 必须在这些计算机上运行以下命令，才能在 Azure Sentinel 中通过 Syslog 配置禁用代理的同步。 这可以确保在上一步中所做的配置更改不会被覆盖。<br>
 > `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/OMS_MetaConfigHelper.py --disable'`

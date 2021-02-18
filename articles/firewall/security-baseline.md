@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 4fccb0b2e382e56e83fbbe54c0f0afa50a5c9590
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: d63150fc1d929b899281cdd0ed7abae5e728b115
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202464"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595283"
 ---
 # <a name="azure-security-baseline-for-azure-firewall"></a>适用于 Azure 防火墙的 Azure 安全基线
 
@@ -92,9 +92,9 @@ Azure 防火墙服务标记可用在“网络规则目标”字段中，并可�
 
 - [监视 Azure 防火墙日志和指标](./firewall-diagnostics.md)
 
-- [如何查看和检索 Azure 活动日志事件](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [如何查看和检索 Azure 活动日志事件](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [如何在 Azure Monitor 中创建警报](../azure-monitor/platform/alerts-activity-log.md) 
+- [如何在 Azure Monitor 中创建警报](../azure-monitor/alerts/alerts-activity-log.md) 
 
 **Azure 安全中心监视**：是
 
@@ -132,7 +132,7 @@ Azure 防火墙还提供以下诊断日志，以提供有关客户应用程序�
 
 活动日志中的资源操作列表：Azure 资源管理器资源提供程序操作
 
-- [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/platform/diagnostic-settings.md)
+- [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/essentials/diagnostic-settings.md)
 
 - [如何加入 Azure Sentinel](../sentinel/quickstart-onboard.md)
 
@@ -174,7 +174,7 @@ Azure Monitor 日志最适合用于应用程序常规实时监视或查看趋势
 
 - [Azure 防火墙日志和指标](logs-and-metrics.md)
 
-- [更改 Log Analytics 中的数据保留期](../azure-monitor/platform/manage-cost-storage.md)
+- [更改 Log Analytics 中的数据保留期](../azure-monitor/logs/manage-cost-storage.md)
 
 - [如何为 Azure 存储帐户日志配置保留策略](../storage/common/storage-monitor-storage-account.md#configure-logging)
 
@@ -216,7 +216,7 @@ Azure Monitor 日志可用于对应用程序进行常规实时监视或查看趋
 
 - [如何在 Azure 安全中心管理警报](../security-center/security-center-managing-and-responding-alerts.md)
 
-- [如何针对 Log Analytics 日志数据发出警报](../azure-monitor/learn/tutorial-response.md)
+- [如何针对 Log Analytics 日志数据发出警报](../azure-monitor/alerts/tutorial-response.md)
 
 **Azure 安全中心监视**：是
 
@@ -442,7 +442,7 @@ Azure Monitor 日志可用于对应用程序进行常规实时监视或查看趋
 
 **指南**：将 Azure Monitor 与 Azure 活动日志结合使用，以创建在 Azure 防火墙发生更改时发出的警报。
 
-- [如何针对 Azure 活动日志事件创建警报](../azure-monitor/platform/alerts-activity-log.md)
+- [如何针对 Azure 活动日志事件创建警报](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -698,7 +698,7 @@ Azure Monitor 日志可用于对应用程序进行常规实时监视或查看趋
 
 **指导**：安全中心为每条警报分配严重性，以帮助你优先处理应该最先调查的警报。 严重性取决于安全中心在发出警报时所依据的检测结果和分析结果的置信度，以及导致发出警报的活动的恶意企图的置信度。 
 
-此外，请用标记明确标记订阅（例如 生产、非生产）并创建命名系统来对 Azure 资源进行明确标识和分类，特别是处理敏感数据的资源。  你的责任是根据发生事件的 Azure 资源和环境的关键性确定修正警报的优先级。 
+此外，请明确标记订阅（例如 生产、非生产）并创建命名系统来对 Azure 资源进行明确标识和分类，特别是处理敏感数据的资源。  你的责任是根据发生事件的 Azure 资源和环境的关键性确定修正警报的优先级。 
 
 - [Azure 安全中心中的安全警报](../security-center/security-center-alerts-overview.md) 
 

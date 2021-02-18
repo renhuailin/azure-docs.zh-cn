@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/11/2018
 ms.author: duau
-ms.openlocfilehash: bd3588c207fe8828744a665539830d81805bd7b3
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: b18e0329aeb4e95e021c3326b6b428c10edc0c6e
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98184265"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100586420"
 ---
 # <a name="traffic-manager-metrics-and-alerts"></a>流量管理器指标和警报
 
@@ -26,7 +26,7 @@ ms.locfileid: "98184265"
 流量管理器针对每个配置文件提供了以下指标，客户可用于了解其流量管理器的使用情况以及该配置文件管理的终结点的状态。  
 
 ### <a name="queries-by-endpoint-returned"></a>按终结点返回的查询
-使用[此指标](../azure-monitor/platform/metrics-supported.md)可以查看流量管理器配置文件进程在指定的时间段内处理的查询数。 还可以在终结点级别粒度查看同一信息，这可帮助你了解某个终结点在来自流量管理器的查询响应中返回了多少次。
+使用[此指标](../azure-monitor/essentials/metrics-supported.md)可以查看流量管理器配置文件进程在指定的时间段内处理的查询数。 还可以在终结点级别粒度查看同一信息，这可帮助你了解某个终结点在来自流量管理器的查询响应中返回了多少次。
 
 在下面的示例中，图 1 显示了流量管理器配置文件返回的所有查询响应。 
 
@@ -42,7 +42,7 @@ ms.locfileid: "98184265"
 图 2：  其中显示了按终结点返回的查询量的拆分视图
 
 ## <a name="endpoint-status-by-endpoint"></a>按终结点显示的终结点状态
-使用[此指标](../azure-monitor/platform/metrics-supported.md#microsoftnetworktrafficmanagerprofiles)可以了解配置文件中的终结点的运行状况状态。 它采用两个值：
+使用[此指标](../azure-monitor/essentials/metrics-supported.md#microsoftnetworktrafficmanagerprofiles)可以了解配置文件中的终结点的运行状况状态。 它采用两个值：
  - 如果终结点正常运行，则使用 1  。
  - 如果终结点发生故障，则使用 **0**。
 
@@ -58,11 +58,11 @@ ms.locfileid: "98184265"
 
 图 4：  终结点状态指标的拆分视图
 
-可以通过 [Azure Monitor 服务](../azure-monitor/platform/metrics-supported.md)的门户、 [REST API](/rest/api/monitor/)、 [Azure CLI](/cli/azure/monitor)和 [Azure PowerShell](/powershell/module/az.applicationinsights)来使用这些指标，也可以通过流量管理器门户体验的 "指标" 部分使用这些指标。
+可以通过 [Azure Monitor 服务](../azure-monitor/essentials/metrics-supported.md)的门户、 [REST API](/rest/api/monitor/)、 [Azure CLI](/cli/azure/monitor)和 [Azure PowerShell](/powershell/module/az.applicationinsights)来使用这些指标，也可以通过流量管理器门户体验的 "指标" 部分使用这些指标。
 
 ## <a name="alerts-on-traffic-manager-metrics"></a>针对流量管理器指标的警报
-除了处理和显示来自流量管理器的指标外，Azure Monitor 还允许客户配置和接收与这些指标关联的警报。 你可以选择这些指标需要满足什么条件才会发生警报、需要以何频率监视这些条件，以及应当如何向你发送警报。 有关详细信息，请参阅 [Azure Monitor 警报文档](../azure-monitor/platform/alerts-metric.md)。
+除了处理和显示来自流量管理器的指标外，Azure Monitor 还允许客户配置和接收与这些指标关联的警报。 你可以选择这些指标需要满足什么条件才会发生警报、需要以何频率监视这些条件，以及应当如何向你发送警报。 有关详细信息，请参阅 [Azure Monitor 警报文档](../azure-monitor/alerts/alerts-metric.md)。
 
 ## <a name="next-steps"></a>后续步骤
-- 详细了解 [Azure Monitor 服务](../azure-monitor/platform/metrics-supported.md)
-- 了解如何[使用 Azure Monitor 创建图表](../azure-monitor/platform/metrics-getting-started.md#create-your-first-metric-chart)
+- 详细了解 [Azure Monitor 服务](../azure-monitor/essentials/metrics-supported.md)
+- 了解如何[使用 Azure Monitor 创建图表](../azure-monitor/essentials/metrics-getting-started.md#create-your-first-metric-chart)

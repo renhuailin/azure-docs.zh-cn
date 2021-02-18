@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 184f42b6da0133068e0a0218353e49c37e3c8c47
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 0d98edb820e3a6d27f0a57bfde801f064a905a5b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98730249"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575405"
 ---
 # <a name="azure-security-baseline-for-content-delivery-network"></a>内容交付网络的 Azure 安全基线
 
@@ -70,7 +70,7 @@ ms.locfileid: "98730249"
 
 ### <a name="pa-7-follow-just-enough-administration-least-privilege-principle"></a>PA-7：遵循 Just Enough Administration（最小特权原则） 
 
-**指南**：内容交付网络集成了 Azure 基于角色的访问控制 (RBAC) 来管理其资源。 使用 Azure RBAC 通过角色分配来管理 Azure 资源访问权限。 可将这些角色分配给用户、组服务主体和托管标识。 某些资源具有预定义的内置角色，可以通过工具（例如 Azure CLI、Azure PowerShell 或 Azure 门户）来清点或查询这些角色。 
+**指南**：内容交付网络集成了 Azure 基于角色的访问控制 (RBAC) 来管理其资源。 使用 Azure RBAC 通过角色分配来管理 Azure 资源访问。 可将这些角色分配给用户、组服务主体和托管标识。 某些资源具有预定义的内置角色，可以通过工具（例如 Azure CLI、Azure PowerShell 或 Azure 门户）来清点或查询这些角色。 
 
 根据角色的需要，限制通过 Azure RBAC 分配给资源的权限。 这是对 Azure AD Privileged Identity Management (PIM) 的实时 (JIT) 方法的补充，应定期进行审查。 
 
@@ -182,9 +182,9 @@ ms.locfileid: "98730249"
 
 启用用于 CDN 的 Azure 资源日志，可以使用 Azure 安全中心和 Azure 策略来启用资源日志和日志数据收集。 这些日志可能对日后调查安全事件和执行取证演练至关重要。
 
-- [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/platform/diagnostic-settings.md) 
+- [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/essentials/diagnostic-settings.md) 
 
-- [了解 Azure 中的日志记录和不同的日志类型](../azure-monitor/platform/platform-logs-overview.md) 
+- [了解 Azure 中的日志记录和不同的日志类型](../azure-monitor/essentials/platform-logs-overview.md) 
 
 - [了解 Azure 安全中心数据收集](../security-center/security-center-enable-data-collection.md)
 

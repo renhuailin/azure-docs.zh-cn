@@ -10,12 +10,12 @@ ms.service: cost-management-billing
 ms.subservice: cloudyn
 ms.custom: seodec18
 ROBOTS: NOINDEX
-ms.openlocfilehash: 14ea98ecc4d9682353038088a124802d60a5dd5d
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: da2e20e333fe499998fff72b175442650f5f1e28
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131439"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595318"
 ---
 # <a name="add-extended-metrics-for-azure-virtual-machines"></a>为 Azure 虚拟机添加扩展指标
 
@@ -31,7 +31,7 @@ Cloudyn 使用 Azure VM 中的 Azure 指标数据来显示有关其资源的详�
 例如，你可能想要监视 Azure VM 的 CPU 百分比和内存百分比。 Azure VM 指标对应于“CPU 百分比”和“\内存\使用中的已提交字节百分比”。
 
 > [!NOTE]
-> 只有 Azure 来宾级监视支持扩展的指标数据收集。 Cloudyn 与 [Log Analytics 代理](../../azure-monitor/platform/agents-overview.md)不兼容。
+> 只有 Azure 来宾级监视支持扩展的指标数据收集。 Cloudyn 与 [Log Analytics 代理](../../azure-monitor/agents/agents-overview.md)不兼容。
 
 [!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
 

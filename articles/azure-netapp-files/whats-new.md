@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 12/04/2020
 ms.author: b-juche
-ms.openlocfilehash: bba3dce2a2a18888cb88f4cf8b33cd48d6a4cd69
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: b40bbd6c470302b78b78744307805021a3649376
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97631153"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571033"
 ---
 # <a name="whats-new-in-azure-netapp-files"></a>Azure NetApp 文件中的新增功能
 
@@ -99,7 +99,7 @@ Azure NetApp 文件会定期更新。 本文总结了最新的新功能和增强
 
 ## <a name="may-2020"></a>2020 年 5 月
 
-* [备份策略用户](azure-netapp-files-create-volumes-smb.md#create-an-active-directory-connection)（预览版）
+* [备份策略用户](create-active-directory-connections.md)（预览版）
 
     Azure NetApp 文件允许包含其他帐户，这些帐户要求对创建用于 Azure NetApp 文件的计算机帐户具有提升的权限。 将允许指定的帐户在文件或文件夹级别更改 NTFS 权限。 例如，你可以指定一个非特权服务帐户，用于将数据迁移到 Azure NetApp 文件中的 SMB 文件共享。 备份策略用户功能目前提供公共预览版。
 

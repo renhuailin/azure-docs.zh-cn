@@ -3,12 +3,12 @@ title: 简介
 description: 了解使用 Azure VMware 解决方案在 Azure 中部署和管理基于 VMware 的工作负载的功能和优势。
 ms.topic: overview
 ms.date: 11/11/2020
-ms.openlocfilehash: 57edfc5786dfc95070b66eb9c8e2e038bafdcd35
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 255d3599385c60d3b13f4769796ced41a1177311
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94534647"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579286"
 ---
 # <a name="what-is-azure-vmware-solution"></a>什么是 Azure VMware 解决方案？
 
@@ -48,12 +48,12 @@ Azure VMware 解决方案私有云和群集是从裸机超融合 Azure 基础设
 
 在私有云中，你可以：
 - 收集每个 VM 上的日志。
-- 在 Linux 和 Windows VM 上[下载并安装 MMA 代理](../azure-monitor/platform/log-analytics-agent.md#installation-options)。
-- 启用 [Azure 诊断扩展](../azure-monitor/platform/diagnostics-extension-overview.md)。
-- [创建并运行新查询](../azure-monitor/platform/data-platform-logs.md#log-queries)。
+- 在 Linux 和 Windows VM 上[下载并安装 MMA 代理](../azure-monitor/agents/log-analytics-agent.md#installation-options)。
+- 启用 [Azure 诊断扩展](../azure-monitor/agents/diagnostics-extension-overview.md)。
+- [创建并运行新查询](../azure-monitor/logs/data-platform-logs.md#log-queries)。
 - 运行通常在 VM 上运行的相同查询。
 
-Azure VMware 解决方案中的监视模式类似于 IaaS 平台中的 Azure VM。 有关详细信息和操作说明，请参阅[使用 Azure Monitor 监视 Azure VM](../azure-monitor/insights/monitor-vm-azure.md)。
+Azure VMware 解决方案中的监视模式类似于 IaaS 平台中的 Azure VM。 有关详细信息和操作说明，请参阅[使用 Azure Monitor 监视 Azure VM](../azure-monitor/vm/monitor-vm-azure.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
