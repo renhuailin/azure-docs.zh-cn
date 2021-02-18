@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 9ac616ddf1c3475f2ca3b3e8097bb74da72faa77
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 33eaa1ea928cc0650c91948c70d46daf499f3b4b
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95500265"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99831192"
 ---
 # <a name="tutorial-connect-an-iot-plug-and-play-module-c"></a>教程：连接 IoT 即插即用模块 (C#)
 
@@ -20,7 +20,12 @@ ms.locfileid: "95500265"
 
 如果设备在连接到 IoT 中心并实现由模型 ID 标识的数字孪生定义语言 (DTDL) 模型中描述的属性和方法时发布其模型 ID，则该设备为 IoT 即插即用设备。 若要详细了解设备如何使用 DTDL 和模型 ID，请参阅 [IoT 即插即用开发人员指南](./concepts-developer-guide-device.md)。 模块以相同方式使用模型 ID 和 DTDL 模型。
 
-为了演示如何实现 IoT 即插即用模块，本教程介绍了如何将恒温器 C# 设备示例转换为泛型模块。
+本教程介绍如何执行以下操作来演示如何实现 IoT 即插即用模块：
+
+> [!div class="checklist"]
+> * 将具有模块的设备添加到 IoT 中心。
+> * 将恒温器 C# 设备示例转换为通用模块。
+> * 使用服务 SDK 与该模块交互。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -232,6 +237,10 @@ git clone https://github.com/Azure-Samples/azure-iot-samples-csharp.git
 * 来自 IoT Edge 设备的遥测数据。
 * IoT Edge 模块孪生属性更新（触发 IoT 即插即用通知）。
 * IoT Edge 模块对 IoT 即插即用命令做出的反应。
+
+## <a name="clean-up-resources"></a>清理资源
+
+[!INCLUDE [iot-pnp-clean-resources](../../includes/iot-pnp-clean-resources.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

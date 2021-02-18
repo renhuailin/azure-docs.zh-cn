@@ -6,14 +6,19 @@ ms.topic: tutorial
 ms.date: 01/11/2019
 ms.author: gwallace
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 4aa2fd08491616c1202cc19fb1a6b9bc8e89853c
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.openlocfilehash: d449343fd00ff958470a71ecb3a37d585d7ff8ed
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97826061"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99626605"
 ---
 # <a name="tutorial-remove-an-application-and-resources"></a>教程：删除应用程序和资源
+
+> [!IMPORTANT]
+> Azure Service Fabric 网格的预览版已停用。 不允许再通过 Service Fabric 网格 API 进行新的部署。 对现有部署的支持会持续到 2021 年 4 月 28 日。
+> 
+> 有关详细信息，请参阅 [Azure Service Fabric 网格预览版停用](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/)。
 
 本教程是一个系列中的第四部分， 内容为学习如何删除[以前部署到 Service Fabric 网格](service-fabric-mesh-tutorial-template-deploy-app.md)的正在运行的应用程序。 
 
@@ -26,13 +31,13 @@ ms.locfileid: "97826061"
 在此系列教程中，你会学习如何：
 > [!div class="checklist"]
 > * [使用模板将应用程序部署到 Service Fabric 网格](service-fabric-mesh-tutorial-template-deploy-app.md)
-> * [扩展 Service Fabric 网格中运行的应用程序](service-fabric-mesh-tutorial-template-scale-services.md)
+> * [缩放在 Service Fabric 网格中运行的应用程序](service-fabric-mesh-tutorial-template-scale-services.md)
 > * [升级 Service Fabric 网格中运行的应用程序](service-fabric-mesh-tutorial-template-upgrade-app.md)
 > * 删除应用程序
 
 [!INCLUDE [preview note](./includes/include-preview-note.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在开始学习本教程之前：
 

@@ -5,22 +5,20 @@ manager: evansma
 author: rayne-wiselman
 ms.service: resource-move
 ms.topic: tutorial
-ms.date: 09/09/2020
+ms.date: 02/04/2021
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 6f21db00ecc9ff2668698f53a4d20f5bae525721
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: d1ac17c93bdf95e36f68af678d2ee38b896ef1e7
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95520435"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979736"
 ---
 # <a name="tutorial-move-azure-vms-across-regions"></a>教程：跨区域移动 Azure VM
 
 本文将介绍如何使用 [Azure 资源转移器](overview.md)将 Azure VM 和相关的网络/存储资源移动到不同的 Azure 区域。
-
-> [!NOTE]
-> Azure 资源转移器目前提供公共预览版。
+.
 
 
 在本教程中，你将了解如何执行以下操作：
@@ -40,26 +38,21 @@ ms.locfileid: "95520435"
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。 然后登录到 [Azure 门户](https://portal.azure.com)。
 
 ## <a name="prerequisites"></a>先决条件
-
--  检查以确定你对包含要移动的资源的订阅具有“所有者”访问权限。
-    - 首次为 Azure 订阅中的特定源和目标对添加资源时，资源转移器将创建受订阅信任的[系统分配的托管标识](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types)（以前称为托管服务标识 (MSI)）。
-    - 若要创建标识，并为其分配所需的角色（来源订阅中的参与者或用户访问管理员），用于添加资源的帐户需要对订阅的“所有者”权限。 [详细了解](../role-based-access-control/rbac-and-directory-admin-roles.md#azure-roles) Azure 角色。
-- 订阅需要足够的配额来创建要在目标区域中移动的资源。 如果没有配额，请[请求其他限制](../azure-resource-manager/management/azure-subscription-service-limits.md)。
-- 验证与要将 VM 移动到的目标区域关联的定价和费用。 请使用[定价计算器](https://azure.microsoft.com/pricing/calculator/)来帮助你。
+**要求** | **说明**
+--- | ---
+**订阅权限** | 请检查你对包含待移动资源的订阅是否具有“所有者”访问权限<br/><br/> 为什么需要“所有者”访问权限？ 首次为 Azure 订阅中的特定源和目标对添加资源时，资源转移器将创建受订阅信任的[系统分配的托管标识](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types)（以前称为托管服务标识 (MSI)）。 若要创建标识，并为其分配所需的角色（来源订阅中的参与者或用户访问管理员），用于添加资源的帐户需要对订阅的“所有者”权限。 [详细了解](../role-based-access-control/rbac-and-directory-admin-roles.md#azure-roles) Azure 角色。
+**VM 支持** |  检查要移动的 VM 是否受支持。<br/><br/> - [验证](support-matrix-move-region-azure-vm.md#windows-vm-support)支持的 Windows VM。<br/><br/> - [验证](support-matrix-move-region-azure-vm.md#linux-vm-support)支持的 Linux VM 和内核版本。<br/><br/> - 查看支持的[计算](support-matrix-move-region-azure-vm.md#supported-vm-compute-settings)、[存储](support-matrix-move-region-azure-vm.md#supported-vm-storage-settings)和[网络](support-matrix-move-region-azure-vm.md#supported-vm-networking-settings)设置。
+目标订阅 | 目标区域中的订阅需要足够的配额来创建要在目标区域中移动的资源。 如果没有配额，请[请求其他限制](../azure-resource-manager/management/azure-subscription-service-limits.md)。
+目标区域费用 | 验证与要将 VM 移动到的目标区域关联的定价和费用。 请使用[定价计算器](https://azure.microsoft.com/pricing/calculator/)来帮助你。
     
 
-## <a name="check-vm-requirements"></a>检查 VM 要求
+## <a name="prepare-vms"></a>准备 VM
 
-1. 检查要移动的 VM 是否受支持。
-
-    - [验证](support-matrix-move-region-azure-vm.md#windows-vm-support)支持的 Windows VM。
-    - [验证](support-matrix-move-region-azure-vm.md#linux-vm-support)支持的 Linux VM 和内核版本。
-    - 查看支持的[计算](support-matrix-move-region-azure-vm.md#supported-vm-compute-settings)、[存储](support-matrix-move-region-azure-vm.md#supported-vm-storage-settings)和[网络](support-matrix-move-region-azure-vm.md#supported-vm-networking-settings)设置。
-2. 检查要移动的 VM 是否已打开。
-3. 确保 VM 具有最新的受信任的根证书和经过更新的证书吊销列表 (CRL)。 要执行此操作：
+1. 在检查 VM 是否满足要求后，请确保已打开需要移动的 VM。 所有需要在目标区域中可用的 VM 磁盘都必须在 VM 中附加并初始化。
+1. 确保 VM 具有最新的受信任的根证书和经过更新的证书吊销列表 (CRL)。 要执行此操作：
     - 在 Windows VM 上，安装最新的 Windows 更新。
     - 在 Linux VM 上，遵循分发服务器指南，让计算机具有最新的证书和 CRL。 
-4. 允许来自 VM 的出站连接：
+1. 允许来自 VM 的出站连接：
     - 如果使用基于 URL 的防火墙代理来控制出站连接，请允许访问以下 [URL](support-matrix-move-region-azure-vm.md#url-access)
     - 如果使用网络安全组 (NSG) 规则来控制出站连接，请创建这些[服务标记规则](support-matrix-move-region-azure-vm.md#nsg-rules)。
 
@@ -85,12 +78,12 @@ ms.locfileid: "95520435"
     ![用于选择源区域和目标区域的页面](./media/tutorial-move-region-virtual-machines/source-target.png)
 
 6. 在“要移动的资源”中，单击“选择资源” 。
-7. 在“选择资源”中，选择 VM。 只能添加[支持移动的资源](#check-vm-requirements)。 然后单击“完成”。
+7. 在“选择资源”中，选择 VM。 只能添加[支持移动的资源](#prepare-vms)。 然后单击“完成”。
 
     ![用于选择要移动的 VM 的页面](./media/tutorial-move-region-virtual-machines/select-vm.png)
 
 8.  在“要移动的资源”中，单击“下一步” 。
-9. 在“查看 + 添加”中，查看源和目标设置。 
+9. 在“查看”中，检查源和目标设置。 
 
     ![用于检查设置并继续移动的页面](./media/tutorial-move-region-virtual-machines/review.png)
 10. 单击“继续”，开始添加资源。
@@ -99,25 +92,27 @@ ms.locfileid: "95520435"
 
 > [!NOTE]
 > - 添加的资源处于“准备挂起”状态。
+> - VM 的资源组会自动添加。
 > - 如果要从移动集合中删除资源，所用的方法取决于你在移动过程中的进度。 [了解详细信息](remove-move-resources.md)。
 
 ## <a name="resolve-dependencies"></a>解决依赖项问题
 
 1. 如果资源在“问题”列中显示“验证依赖项”消息，请单击“验证依赖项”按钮 。 验证过程开始。
 2. 如果找到依赖项，请单击“添加依赖项”。 
-3. 在“添加依赖项”中，选择从属资源 >”添加依赖项” 。 在通知中监视进度。
+3. 在“添加依赖项”中，保留默认的“显示所有依赖项”选项 。
+
+    - “显示所有依赖项”会遍历某个资源的所有直接和间接依赖项。 例如，对于某个 VM，该选项会显示 NIC、虚拟网络、网络安全组 (NSG)，等等。
+    - “显示第一级依赖项”只显示直接依赖项。 例如，对于某个 VM，该选项会显示 NIC，而不会显示虚拟网络。
+
+
+4. 请选择需要添加的依赖资源 >“添加依赖项”。 在通知中监视进度。
 
     ![添加依赖项](./media/tutorial-move-region-virtual-machines/add-dependencies.png)
 
-4. 如果需要，添加其他依赖项，并再次验证依赖项。 
+4. 再次验证依赖项。 
     ![用于添加附加依赖项的页面](./media/tutorial-move-region-virtual-machines/add-additional-dependencies.png)
 
-4. 在“跨区域”页上，验证资源现在是否处于“准备挂起”状态，且没有任何问题。
 
-    ![页面显示处于“准备挂起”状态的资源](./media/tutorial-move-region-virtual-machines/prepare-pending.png)
-
-> [!NOTE]
-> 如果要在开始移动之前编辑目标设置，请在资源的“目标配置”列中选择链接，然后编辑设置。 如果编辑目标 VM 设置，则目标 VM 大小不应小于源 VM 大小。  
 
 ## <a name="move-the-source-resource-group"></a>移动源资源组 
 
@@ -158,9 +153,17 @@ ms.locfileid: "95520435"
 
 ## <a name="prepare-resources-to-move"></a>准备要移动的资源
 
+现在，源资源组已移动，你可以准备移动其他处于“准备挂起”状态的资源。
+
+1. 在“跨区域”中，验证资源现在是否处于“准备挂起”状态且没有任何问题。 如果不是，请再次验证并解决所有未解决的问题。
+
+    ![页面显示处于“准备挂起”状态的资源](./media/tutorial-move-region-virtual-machines/prepare-pending.png)
+
+2. 如果要在开始移动之前编辑目标设置，请在资源的“目标配置”列中选择链接，然后编辑设置。 如果编辑目标 VM 设置，则目标 VM 大小不应小于源 VM 大小。  
+
 现在，源资源组已移动，你可以准备移动其他资源。
 
-1. 在“跨区域”中，选择要准备的资源。 
+3. 选择需要准备的资源。 
 
     ![用于选择准备其他资源的页面](./media/tutorial-move-region-virtual-machines/prepare-other.png)
 
@@ -238,12 +241,16 @@ ms.locfileid: "95520435"
 - 不会自动从 VM 卸载移动服务。 手动卸载它，或者如果你计划再次移动服务器，则保留它。
 - 移动后，修改 Azure 基于角色的访问控制 (Azure RBAC) 规则。
 
+
 ## <a name="delete-source-resources-after-commit"></a>提交后删除源资源
 
 移动后，可以选择删除源区域中的资源。 
 
-1. 在“跨区域”中，单击要删除的每个源资源的名称。
-2. 在每个资源的属性页中，选择“删除”。
+> [!NOTE]
+> 有几种资源（例如，密钥保管库和 SQL Server 服务器）是无法从门户中删除的，必须从资源属性页中删除。
+
+1. 在“跨区域”中，单击要删除的源资源的名称。
+2. 选择“删除资源”。
 
 ## <a name="delete-additional-resources-created-for-move"></a>删除为移动创建的其他资源
 

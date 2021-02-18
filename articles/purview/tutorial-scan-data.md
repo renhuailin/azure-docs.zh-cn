@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/01/2020
-ms.openlocfilehash: e373556d189e9fffc0626d19250e79c09962a004
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: a88c837c986db346bcb4fbb1b15ceab6a304347d
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99062098"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99806217"
 ---
 # <a name="tutorial-scan-data-with-azure-purview-preview"></a>教程：使用 Azure Purview（预览版）扫描数据
 
@@ -91,7 +91,9 @@ PowerShell 安装所需的模块可能最多需要一分钟时间。
    1. 选择“概述”部分并保存“订阅 ID”的 GUID 。
 
    > [!NOTE]
-   > 请确保你使用的订阅与创建 Azure Purview 帐户时使用的订阅相同。 这是放置在允许列表中的同一订阅。
+   > - 请确保你使用的订阅与创建 Azure Purview 帐户时使用的订阅相同。 这是放置在允许列表中的同一订阅。
+   > - 在运行初学者工具包后，有时在 Azure Purview 中可能会缺少世系。 这是因为由初学者工具包创建的数据工厂在 Purview 中缺少权限。 请选择[此文档链接](how-to-link-azure-data-factory.md#view-existing-data-factory-connections)，以确保在 Purview 中正确配置数据工厂并为其分配适当的角色
+
 
 * CatalogName：在[创建 Azure Purview 帐户](create-catalog-portal.md)中创建的 Azure Purview 帐户的名称。
 

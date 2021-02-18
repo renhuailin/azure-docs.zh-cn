@@ -7,12 +7,12 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 08/25/2020
 ms.custom: mvc, seodec18
-ms.openlocfilehash: b45e1fbaf912cc045ba51a79db434baecbabdf43
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: eea42ab17311b85bdce429e22e8d0ed694e2f0ec
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96608242"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100096338"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>教程：将现有的自定义 DNS 名称映射到 Azure 应用服务
 
@@ -225,7 +225,7 @@ ms.locfileid: "96608242"
 
 1. 键入已配置 A 记录的完全限定的域名，如 `contoso.com`。 
 
-1. 选择“验证”。 此时会显示“添加自定义域”页。
+1. 选择“验证”。  此时会显示“添加自定义域”页。
 
 1. 确保“主机名记录类型”设置为“A 记录 (example.com)”。  选择“添加自定义域”。
 
@@ -309,17 +309,20 @@ ms.locfileid: "96608242"
 - 配置的自定义域缺少 A 记录或 CNAME 记录。
 - 浏览器客户端已缓存域的旧 IP 地址。 清除缓存并再次测试 DNS 解析。 在 Windows 计算机上，使用 `ipconfig /flushdns` 清除缓存。
 
-<a name="virtualdir" aria-hidden="true"></a>
-
 ## <a name="migrate-an-active-domain"></a>迁移活动域
 
 若要将实时站点及其 DNS 域名迁移到应用服务而不停机，请参阅[将活动 DNS 名称迁移到 Azure 应用服务](manage-custom-dns-migrate-domain.md)。
+
+<a name="virtualdir" aria-hidden="true"></a>
 
 ## <a name="redirect-to-a-custom-directory"></a>重定向到自定义目录
 
 默认情况下，应用服务将 Web 请求定向到应用代码的根目录下。 但某些 Web 框架不在根目录下启动。 例如，[Laravel](https://laravel.com/) 在 `public` 子目录中启动。 若要继续 `contoso.com` DNS 示例，此类应用可在 `http://contoso.com/public` 中访问，但你想要将 `http://contoso.com` 直接定向到 `public` 目录。 此步骤不涉及 DNS 解析，但会涉及到自定义虚拟目录。
 
-若要自定义虚拟目录，请在 Web 应用页的左侧窗格中选择“应用程序设置”。
+若要自定义用于 Windows 应用的虚拟目录，请在 Web 应用页的左侧窗格中选择“应用程序设置”。 
+
+> [!NOTE]
+> Linux 应用没有此页。 若要更改 Linux 应用的站点根目录，请参阅特定于语言的配置指南（例如 [PHP](configure-language-php.md?pivots=platform-linux#change-site-root)）。
 
 在页面底部，根虚拟目录 `/` 默认指向 `site\wwwroot`，这是应用代码的根目录。 将其改为指向例如 `site\wwwroot\public`，并保存所做的更改。
 

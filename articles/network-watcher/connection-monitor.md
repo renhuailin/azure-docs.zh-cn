@@ -15,17 +15,20 @@ ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: 24b1549b2e460bc0e72fb76f5437b15838604949
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: a4f3e0bbd282fb1253e206e71c2eb1667773248e
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97896356"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99834079"
 ---
 # <a name="tutorial-monitor-network-communication-between-two-virtual-machines-using-the-azure-portal"></a>教程：使用 Azure 门户监视两个虚拟机之间的网络通信
 
 > [!NOTE]
 > 本教程介绍连接监视器（经典版）。 试用经过改进的新[连接监视器](connection-monitor-overview.md)，体验增强的连接监视功能
+
+> [!IMPORTANT]
+> 自 2021 年 7 月 1 日起，你将无法在连接监视器（经典版）中添加新的连接监视器，但可以继续使用在 2021 年 7 月 1 日之前创建的现有连接监视器。 为了最大程度地减少当前工作负荷的服务中断，请在 2024 年 2 月 29 日之前，在 Azure 网络观察程序中[从连接监视器（经典版）迁移到新连接监视器](migrate-to-connection-monitor-from-connection-monitor-classic.md)。
 
 在虚拟机 (VM) 和终结点（例如另一 VM）之间成功通信对于组织来说可能很重要。 有时候，引入配置更改可能会导致通信中断。 在本教程中，你将了解如何执行以下操作：
 
@@ -75,7 +78,7 @@ ms.locfileid: "97896356"
 
 再次完成[创建第一个 VM](#create-the-first-vm) 中的步骤，并做出以下更改：
 
-|步骤|设置|“值”|
+|步骤|设置|值|
 |---|---|---|
 | 1 | 选择某一版本的 **Ubuntu Server** |                                                                         |
 | 3 | 名称                                  | myVm2                                                                   |
@@ -155,7 +158,7 @@ ms.locfileid: "97896356"
     | ---                     | ---            |
     | 目标端口范围 | 22             |
     | 操作                  | 拒绝           |
-    | 优先级                | 100            |
+    | 优先度                | 100            |
     | 名称                    | DenySshInbound |
 
 5. 由于连接监视器按 60 秒的时间间隔进行探测，因此请等待数分钟，然后在门户左侧选择“网络观察程序”、“连接监视器”，并再次选择“myVm1-myVm2(22)”监视器。    如下图所示，现在的结果有所不同：

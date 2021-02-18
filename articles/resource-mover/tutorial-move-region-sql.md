@@ -5,15 +5,15 @@ author: rayne-wiselman
 manager: evansma
 ms.service: resource-move
 ms.topic: tutorial
-ms.date: 09/09/2020
+ms.date: 02/04/2021
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 9fe43125c83436f89bf93cbe975317efec2beb46
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 4678a6128be13ac61dc4ac67bbd1a17e99c6d24d
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95542807"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820223"
 ---
 # <a name="tutorial-move-azure-sql-database-resources-to-another-region"></a>教程：将 Azure SQL 数据库资源移动到其他区域
 
@@ -272,8 +272,11 @@ ms.locfileid: "95542807"
 
 移动后，可以选择删除源区域中的资源。 
 
-1. 在“跨区域”中，单击要删除的每个源资源的名称。
-2. 在每个资源的属性页中，选择“删除”。
+> [!NOTE]
+> SQL Server 服务器是无法从门户中删除的，必须从资源属性页中删除。
+
+1. 在“跨区域”中，单击要删除的源资源的名称。
+2. 选择“删除资源”。
 
 ## <a name="next-steps"></a>后续步骤
 

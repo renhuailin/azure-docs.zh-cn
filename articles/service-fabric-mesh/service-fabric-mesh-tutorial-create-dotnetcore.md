@@ -6,14 +6,19 @@ ms.topic: tutorial
 ms.date: 09/18/2018
 ms.author: gwallace
 ms.custom: mvc, devcenter, devx-track-csharp
-ms.openlocfilehash: fa15432072f6478100a378fdbdb697556fdf1dc9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b0bdb3c09aead812e1c16f4d0d17aae58e141809
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91842540"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99626787"
 ---
 # <a name="tutorial-create-debug-deploy-and-upgrade-a-multi-service-service-fabric-mesh-app"></a>教程：创建、调试、部署和升级多服务 Service Fabric 网格应用
+
+> [!IMPORTANT]
+> Azure Service Fabric 网格的预览版已停用。 不允许再通过 Service Fabric 网格 API 进行新的部署。 对现有部署的支持会持续到 2021 年 4 月 28 日。
+> 
+> 有关详细信息，请参阅 [Azure Service Fabric 网格预览版停用](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/)。
 
 本教程是一个系列中的第一部分。 介绍了如何使用 Visual Studio 创建具有 ASP.NET web 前端和 ASP.NET Core Web API 后端服务的 Azure Service Fabric 网格应用。 然后，可在本地开发群集上调试应用。 还可将该应用发布到 Azure，然后进行配置和代码更改，并升级应用。 最后，可清理未使用的 Azure 资源，避免为没有使用的资源付费。
 
@@ -346,7 +351,7 @@ private static Uri backendUrl = new Uri($"http://{backendDNSName}:{Environment.G
 
 > [!IMPORTANT]
 > 在以下步骤中，将修改 YAML 文件。
-> 必须使用空格而不是制表符来缩进 service.yaml 文件中的变量，否则该文件无法编译。 当你创建环境变量时，Visual Studio 可能会插入制表符。 请将所有制表符替换为空格。 虽然在**生成**调试输出中会显示错误，但是应用仍然会启动，但它不会工作，除非你将制表符转换为空格并重新生成。 为确保 service.yaml 文件中不包含制表符，可以在 Visual Studio 编辑器中使用“编辑”  > “高级”  > “查看空白”来显示空白字符。   
+> 必须使用空格而不是制表符来缩进 service.yaml 文件中的变量，否则该文件无法编译。 当你创建环境变量时，Visual Studio 可能会插入制表符。 请将所有制表符替换为空格。 虽然在 **生成** 调试输出中会显示错误，但是应用仍然会启动，但它不会工作，除非你将制表符转换为空格并重新生成。 为确保 service.yaml 文件中不包含制表符，可以在 Visual Studio 编辑器中使用“编辑”  > “高级”  > “查看空白”来显示空白字符。   
 > 请注意，service.yaml 文件是使用英语区域设置进行处理的。 例如，如果需要使用小数分隔符，请使用句点而不是逗号。
 
 在“解决方案资源管理器”中导航到“ToDoService”项目，并打开“服务资源” > “service.yaml”。    

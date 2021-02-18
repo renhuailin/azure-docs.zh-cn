@@ -8,12 +8,12 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.date: 10/16/2020
-ms.openlocfilehash: 30b7f1054f7bfee8dc58638791f0b8a424de92a4
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: 7118ff589e580fd3aa1f693e72152f1ad4c18e10
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99226416"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979872"
 ---
 # <a name="tutorial-sign-in-users-and-call-a-protected-api-from-a-blazor-webassembly-app"></a>教程：从 Blazor WebAssembly 应用让用户登录并调用受保护的 API
 
@@ -102,7 +102,7 @@ dotnet run --framework netstandard2.1
 
 然后修改后面几个步骤中指定的代码。 这些更改会将[访问令牌](access-tokens.md)添加到发送至 Microsoft Graph API 的传出请求中。 [ASP.NET Core Blazor WebAssembly 其他安全方案](/aspnet/core/blazor/security/webassembly/additional-scenarios)中更加详细地讨论了此模式。
 
-首先，使用以下代码创建名为 GraphAuthorizationMessageHandler.cs 的新文件。 该处理程序用于将 `User.Read` 和 `Mail.Read` 作用域的访问令牌添加到发送至 Microsoft Graph API 的传出请求中。
+首先，使用以下代码创建名为 GraphAPIAuthorizationMessageHandler.cs 的新文件。 该处理程序用于将 `User.Read` 和 `Mail.Read` 作用域的访问令牌添加到发送至 Microsoft Graph API 的传出请求中。
 
 ```csharp
 using Microsoft.AspNetCore.Components;

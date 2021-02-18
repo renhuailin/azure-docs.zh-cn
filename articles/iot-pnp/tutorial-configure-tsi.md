@@ -1,24 +1,29 @@
 ---
-title: 使用 Azure 时序见解来存储和分析 Azure IoT 即插即用设备遥测
-description: 设置时序见解环境并连接 IoT 中心，以便从 IoT 即插即用设备查看和分析遥测。
+title: 教程 - 使用 Azure 时序见解来存储和分析 Azure IoT 即插即用设备遥测
+description: 教程 - 设置时序见解环境并连接 IoT 中心，以便从 IoT 即插即用设备查看和分析遥测。
 author: lyrana
 ms.author: lyhughes
 ms.date: 10/14/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 5491df61a1198e8eee4ba4701ccfc56154ec75eb
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 08ae21c2cd0859b7c361756a4f0380d3ab322a28
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905073"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99834351"
 ---
-# <a name="preview-tutorial-create-and-configure-a-time-series-insights-gen2-environment"></a>预览版教程：创建和配置时序见解 Gen2 环境
+# <a name="tutorial-create-and-configure-a-time-series-insights-gen2-environment"></a>Tutorial:创建和配置时序见解 Gen2 环境
 
 本教程将介绍如何创建和配置 [Azure 时序见解 Gen2](../time-series-insights/overview-what-is-tsi.md) 环境，以便与 IoT 即插即用解决方案集成。 使用时序见解在物联网 (IoT) 规模上收集、处理、存储、查询和可视化时序数据。
 
-首先，预配一个时序见解环境，并将 IoT 中心作为流式处理事件源进行连接。 然后通过模型同步来创建[时序模型](../time-series-insights/concepts-model-overview.md)。 使用温度控制器和恒温器设备采用的[数字孪生定义语言 (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl) 示例模型文件。
+在本教程中：
+
+> [!div class="checklist"]
+> * 预配时序见解环境并将 IoT 中心作为流式处理事件源进行连接。
+> * 通过模型同步来创作[时序模型](../time-series-insights/concepts-model-overview.md)。
+> * 使用温度控制器和恒温器设备采用的[数字孪生定义语言 (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl) 示例模型文件。
 
 > [!NOTE]
 > 时序见解和 IoT 即插即用之间的这种集成处于预览状态。 DTDL 设备模型映射到时序见解时序模型的方式可能会改变。 
@@ -222,10 +227,11 @@ az timeseriesinsights event-source iothub create -g $rg --environment-name $env 
 
 ![显示如何更改 thermostat2 的实例类型的屏幕截图。](./media/tutorial-configure-tsi/charting-values.png)
 
+## <a name="clean-up-resources"></a>清理资源
+
+[!INCLUDE [iot-pnp-clean-resources](../../includes/iot-pnp-clean-resources.md)]
+
 ## <a name="next-steps"></a>后续步骤
 
-* 若要详细了解各种图表绘制选项，包括间隔大小调整和 y 轴控件，请参阅 [Azure 时序见解资源管理器](../time-series-insights/concepts-ux-panels.md)。
-
-* 若要深入了解环境的时序模型，请参阅 [Azure 时序见解 Gen2 中的时序模型](../time-series-insights/concepts-model-overview.md)。
-
-* 若要深入了解查询 API 和时序表达式语法，请参阅 [Azure 时序见解 Gen2 查询 API](/rest/api/time-series-insights/reference-query-apis)。
+> [!div class="nextstepaction"]
+> 若要详细了解各种图表绘制选项，包括间隔大小调整和 y 轴控件，请参阅 [Azure 时序见解资源管理器](../time-series-insights/concepts-ux-panels.md)。

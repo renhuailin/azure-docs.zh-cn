@@ -6,14 +6,19 @@ ms.topic: tutorial
 ms.date: 01/11/2019
 ms.author: gwallace
 ms.custom: mvc, devcenter, devx-track-azurecli
-ms.openlocfilehash: 54ac7b27ada62a969dd40428fd9a753bb5a99530
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 589e881eb48daf7da9cd2a934b14acfcc76dc5f9
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499826"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99625410"
 ---
 # <a name="tutorial-deploy-an-application-to-service-fabric-mesh-using-a-template"></a>教程：使用模板将应用程序部署到 Service Fabric 网格
+
+> [!IMPORTANT]
+> Azure Service Fabric 网格的预览版已停用。 不允许再通过 Service Fabric 网格 API 进行新的部署。 对现有部署的支持会持续到 2021 年 4 月 28 日。
+> 
+> 有关详细信息，请参阅 [Azure Service Fabric 网格预览版停用](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/)。
 
 本教程是一个系列中的第一部分。 将了解如何使用模板部署 Azure Service Fabric 网格应用程序。  该应用程序由 ASP.NET Web 前端服务和 ASP.NET Core Web API 后端服务组成，这些服务可在 Docker 中心找到。  从 Docker 中心拉取两个容器映像，然后将其推送到你自己的专用注册表。 然后，为应用程序创建 Azure RM 模板并将应用程序从容器注册表部署到 Service Fabric 网格。 完成后，将在 Service Fabric 网格中运行一个简单的待办事项应用程序。
 

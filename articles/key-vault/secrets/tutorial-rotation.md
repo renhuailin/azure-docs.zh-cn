@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 01/26/2020
 ms.author: mbaldwin
 ms.custom: devx-track-csharp
-ms.openlocfilehash: cd90043c8f03361244d3500f83f6df5347f1d867
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 526c3d2d85a3f2877f82b3b764f395c51f7c05c0
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99539394"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99805224"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-that-use-one-set-of-authentication-credentials"></a>自动轮换使用一组身份验证凭据的资源的机密
 
@@ -213,7 +213,7 @@ az keyvault secret set --name sqlPassword --vault-name akvrotation-kv --value "S
 
 若要验证该机密是否已轮换，请转到“Key Vault” > “机密”：
 
-:::image type="content" source="../media/rotate-8.png" alt-text="转到“机密”":::
+:::image type="content" source="../media/rotate-8.png" alt-text="显示如何访问“Key Vault”>“机密”的屏幕截图。":::
 
 打开“sqlPassword”机密并查看原始版本和轮换后的版本：
 

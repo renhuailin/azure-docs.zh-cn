@@ -65,3 +65,6 @@
       href: troubleshoot-guide.md
     - name: TPM 和 VBS 证明协议
       href: virtualization-based-security-protocol.md
+    - name: Azure Policy 内置策略定义
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md

@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 10/08/2020
+ms.date: 02/04/2021
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 2f5f653fdaf9df5d1bb2cf87d06047510ad46d7b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 614a13a140453e3c7ed55a7fc0f9173626ad2f2f
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91856701"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99627681"
 ---
 1. 选择“连接 VPN 站点”来打开“连接站点”页   。
 
@@ -26,11 +26,11 @@ ms.locfileid: "91856701"
    * 选择适合“传播默认路由”的选项  。 “启用”选项允许虚拟中心将获知的默认路由传播到此连接  。 只有当虚拟 WAN 中心由于在中心部署防火墙而获知默认路由或另一个连接的站点已启用强制隧道时，此标志才会将默认路由传播到连接。 默认路由不源自虚拟 WAN 中心。
 
 2. 选择“连接”  。
-3. 几分钟后，该站点将显示连接和连接状态。
+3. 在几分钟之后，该站点会显示连接和连接状态。
 
-   ![屏幕截图显示“VPN 站点到站点”连接和连接状态。](./media/virtual-wan-tutorial-connect-vpn-site-include/status.png "status")
+   ![屏幕截图显示站点到站点连接和连接状态。](./media/virtual-wan-tutorial-connect-vpn-site-include/status.png "status")
 
-   **连接状态：** 这是将 VPN 站点连接到 Azure 中心 VPN 网关的连接的 Azure 资源状态。 控制平面操作成功后，Azure VPN 网关和本地 VPN 设备将继续建立连接。
+   **连接状态：** 这是将 VPN 站点连接到 Azure 中心 VPN 网关的连接的 Azure 资源的状态。 控制平面操作成功后，Azure VPN 网关和本地 VPN 设备将继续建立连接。
 
    **连接状态：** 这是中心和 VPN 站点中 Azure VPN 网关之间的实际连接（数据路径）状态。 可以显示以下任一状态：
 

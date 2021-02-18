@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 10/08/2020
+ms.date: 02/04/2021
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my local site to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
-ms.openlocfilehash: 7ba0f1b6f37da923e389964b99a02295dc3d6050
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: f3458c3b12b3151fd20531282f56ed2f1fd29b6b
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359521"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99627684"
 ---
 # <a name="tutorial-create-a-site-to-site-connection-using-azure-virtual-wan"></a>教程：使用 Azure 虚拟 WAN 创建站点到站点连接
 
@@ -55,7 +55,7 @@ ms.locfileid: "94359521"
 
 ## <a name="create-a-site"></a><a name="site"></a>创建站点
 
-现在，你可以创建与物理位置对应的站点。 创建任意数目的与物理位置对应的站点。 例如，如果你在纽约、伦敦和洛杉矶各有一个分支机构，请创建三个独立的站点。 这些站点包含本地 VPN 设备终结点。 在虚拟 WAN 中，每个虚拟中心最多可以创建 1000 个站点。 如果有多个中心，则可以为每个中心创建 1000 个站点。 如果你有虚拟 WAN 合作伙伴（插入链接）CPE 设备，请咨询这些设备以了解其对 Azure 的自动化。 通常，自动化意味着只需执行简单的单击操作即可将大规模分支信息导出到 Azure 中，并设置从 CPE 到 Azure 虚拟 WAN VPN 网关的连接。 有关详细信息，请参阅[从 Azure 到 CPE 合作伙伴的自动化指南](virtual-wan-configure-automation-providers.md)。
+在本部分，你将创建站点。 站点对应于你的物理位置。 请根据需要创建任意数量的站点。 例如，如果你在纽约、伦敦和洛杉矶各有一个分支机构，请创建三个独立的站点。 这些站点包含本地 VPN 设备终结点。 在虚拟 WAN 中，每个虚拟中心最多可创建 1000 个站点。 如果有多个中心，则可以为每个中心创建 1000 个站点。 如果你有虚拟 WAN 合作伙伴 CPE 设备，请咨询这些合作伙伴以了解他们对 Azure 进行的自动化。 通常，自动化意味着只需执行简单的单击操作即可将大规模分支信息导出到 Azure 中，并设置从 CPE 到 Azure 虚拟 WAN VPN 网关的连接。 有关详细信息，请参阅[从 Azure 到 CPE 合作伙伴的自动化指南](virtual-wan-configure-automation-providers.md)。
 
 [!INCLUDE [Create a site](../../includes/virtual-wan-tutorial-s2s-site-include.md)]
 
@@ -78,19 +78,19 @@ ms.locfileid: "94359521"
 3. 完成创建文件后，可以单击相应的链接下载该文件。
 4. 将配置应用到本地 VPN 设备。
 
-### <a name="understanding-the-vpn-device-configuration-file"></a>了解 VPN 设备配置文件
+### <a name="about-the-vpn-device-configuration-file"></a>关于 VPN 设备配置文件
 
 设备配置文件包含配置本地 VPN 设备时要使用的设置。 查看此文件时，请留意以下信息：
 
 * **vpnSiteConfiguration** - 此部分表示当站点连接到虚拟 WAN 时设置的设备详细信息。 它包含分支设备的名称和公共 IP 地址。
 * **vpnSiteConnections** - 此部分提供以下设置的信息：
 
-    * 虚拟中心 VNet 的 **地址空间**<br>示例：
+    * 虚拟中心 VNet 的地址空间  。<br>示例：
  
         ```
         "AddressSpace":"10.1.0.0/24"
         ```
-    * 已连接到中心的 VNet 的 **地址空间**<br>示例：
+    * 已连接到中心的 VNet 的地址空间  。<br>示例：
 
          ```
         "ConnectedSubnets":["10.2.0.0/16","10.3.0.0/16"]

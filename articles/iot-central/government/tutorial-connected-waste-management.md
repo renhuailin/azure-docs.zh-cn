@@ -1,18 +1,18 @@
 ---
 title: 教程：使用 Azure IoT Central 创建连接的废弃物管理应用
-description: 了解如何使用 Azure IoT Central 应用程序模板构建联网废弃物管理应用程序。
+description: Tutorial:了解如何使用 Azure IoT Central 应用程序模板构建联网废弃物管理应用程序
 author: miriambrus
 ms.author: miriamb
 ms.date: 12/11/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 8085409c3dc38d17b6fe0d3cb15857b2396e23b6
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 65245b3c4b7e18670682f7e9e890453e32337644
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97881338"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820067"
 ---
 # <a name="tutorial-create-a-connected-waste-management-app"></a>教程：创建连接的废弃物管理应用
 
@@ -20,13 +20,13 @@ ms.locfileid: "97881338"
 
 具体来说，你将学习如何： 
 
-* 使用 Azure IoT Central 联网废弃物管理模板来创建应用。
-* 浏览和自定义操作员仪表板。 
-* 浏览联网垃圾箱设备模板。
-* 浏览模拟设备。
-* 浏览并配置规则。
-* 配置作业。
-* 自定义应用程序品牌。
+> [!div class="checklist"]
+> 使用 Azure IoT Central 联网废弃物管理模板来创建应用。
+> 浏览和自定义操作员仪表板。 浏览联网垃圾箱设备模板。
+> 浏览模拟设备。
+> 浏览并配置规则。
+> 配置作业。
+> 自定义应用程序品牌。
 
 ## <a name="prerequisites"></a>先决条件
 

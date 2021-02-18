@@ -4,16 +4,24 @@ ms.author: dobett
 ms.service: iot-pnp
 ms.topic: include
 ms.date: 11/20/2020
-ms.openlocfilehash: 49b18b83c778a990398c4443d508743566ecfb20
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: bece0f95f3cd87bcf803637835ef1854606b088b
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95511247"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99834120"
 ---
 本教程介绍如何生成多组件示例 IoT 即插即用设备应用程序，将其连接到 IoT 中心，并使用 Azure CLI 来查看它发送的遥测数据。 该示例应用程序以 Java 编写，包含在用于 Java 的 Azure IoT 设备 SDK 中。 解决方案构建者可以使用 Azure CLI 来了解 IoT 即插即用设备的功能，而无需查看任何设备代码。
 
 本教程介绍如何使用组件生成示例 IoT 即插即用设备应用程序，将其连接到 IoT 中心，并使用 Azure IoT 资源管理器工具来查看它发送到中心的信息。 该示例应用程序以 Java 编写，包含在用于 Java 的 Azure IoT 设备 SDK 中。 解决方案构建者可以使用 Azure IoT 资源管理器工具来了解 IoT 即插即用设备的功能，而无需查看任何设备代码。
+
+本教程介绍以下操作：
+
+> [!div class="checklist"]
+> * 下载示例代码。
+> * 生成示例代码。
+> * 运行该示例设备应用程序，并验证它是否会连接到 IoT 中心。
+> * 检查源代码。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -135,5 +143,3 @@ Message message = PnpHelper.createIotHubMessageUtf8(telemetryName, currentTemper
 :::image type="content" source="media/iot-pnp-multiple-components-java/multiple-component.png" alt-text="Azure IoT 资源管理器中的多组件设备":::
 
 还可以使用 Azure IoT 资源管理器工具在两个恒温器组件或默认组件中调用命令。
-
-[!INCLUDE [iot-pnp-clean-resources.md](iot-pnp-clean-resources.md)]

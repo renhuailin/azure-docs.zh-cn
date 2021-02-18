@@ -6,14 +6,19 @@ ms.topic: tutorial
 ms.date: 09/18/2018
 ms.author: gwallace
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 1d594001340f76c6dde9f3e00de2d76ee4e5104b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4d78e1e27d70b147bb52dff13675e63b79335d62
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91843322"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99625459"
 ---
 # <a name="tutorial-remove-azure-resources"></a>教程：删除 Azure 资源
+
+> [!IMPORTANT]
+> Azure Service Fabric 网格的预览版已停用。 不允许再通过 Service Fabric 网格 API 进行新的部署。 对现有部署的支持会持续到 2021 年 4 月 28 日。
+> 
+> 有关详细信息，请参阅 [Azure Service Fabric 网格预览版停用](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/)。
 
 本教程是一个系列中的第五部分，介绍如何删除应用及其资源，以免为其付费。
 
@@ -39,7 +44,7 @@ ms.locfileid: "91843322"
 
 ## <a name="clean-up-resources"></a>清理资源
 
-本教程到此结束。 使用完创建的资源时，请删除它们，以免为不再使用的资源付费。 这非常重要，因为网格是一种按秒计费的无服务器服务。 若要了解有关网格定价的详细信息，请查看 https://aka.ms/sfmeshpricing 。
+本教程到此结束。 使用完创建的资源时，请删除它们，以免为不再使用的资源付费。 这非常重要，因为网格是一种按秒计费的无服务器服务。 若要了解有关网格定价的详细信息，请查看 https://aka.ms/sfmeshpricing。
 
 Azure 提供的一项便利是：若创建的资源与特定资源组关联，则删除该资源组即可删除所有关联的资源。 这样，就无需逐个删除。
 
