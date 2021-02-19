@@ -104,7 +104,7 @@
           href: service-fabric-tutorial-standalone-install-an-application.md
         - name: 4- 清理群集和删除基础结构
           href: service-fabric-tutorial-standalone-clean-up.md
-- name: 最佳实践
+- name: 最佳做法
   items:
     - name: Service Fabric 最佳做法概述
       href: service-fabric-best-practices-overview.md
@@ -406,6 +406,54 @@
           href: service-fabric-get-started-mac.md
         - name: 设置 Service Fabric CLI
           href: service-fabric-cli.md
+        - name: 在 IDE 中工作
+          items:
+            - name: 在 Windows/VS 开发环境中工作
+              items:
+                - name: 在 Visual Studio 中管理应用程序
+                  href: service-fabric-manage-application-in-visual-studio.md
+                - name: 在 Visual Studio 中配置安全连接
+                  href: service-fabric-visualstudio-configure-secure-connections.md
+                - name: 在 VS 中调试 .NET 服务
+                  href: service-fabric-debugging-your-application.md
+                - name: 使用 Service Fabric 和 VS 调试 Windows 容器
+                  href: service-fabric-how-to-debug-windows-containers.md
+                - name: 常见错误和异常
+                  href: service-fabric-errors-and-exceptions.md
+                - name: 在本地监视和诊断
+                  href: service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md
+                - name: 在 Windows 上设置 Linux 群集
+                  href: service-fabric-local-linux-cluster-windows.md
+                - name: 将 .NET Core 应用从 VS 部署到远程 Linux 群集
+                  href: service-fabric-how-to-publish-linux-app-vs.md
+            - name: 在 Linux/Eclipse 开发环境中工作
+              items:
+                - name: 用于 Java 开发的 Eclipse 插件入门
+                  href: service-fabric-get-started-eclipse.md
+                - name: 在 Eclipse 中调试 Java 服务
+                  href: service-fabric-debugging-your-application-java.md
+                - name: 在本地监视和诊断
+                  href: service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally-linux.md
+            - name: 在 VS Code 环境中工作
+              items:
+                - name: VS Code 入门
+                  href: service-fabric-get-started-vs-code.md
+                - name: 通过 VS Code 开发 C# Service Fabric 应用程序
+                  href: service-fabric-develop-csharp-applications-with-vs-code.md
+                - name: 通过 VS Code 开发 Java Service Fabric 应用程序
+                  href: service-fabric-develop-java-applications-with-vs-code.md
+    - name: 使用 Service Fabric 托管群集
+      items:
+        - name: 将虚拟机规模集扩展添加到托管群集节点类型
+          href: how-to-managed-cluster-vmss-extension.md
+        - name: 配置托管群集
+          href: how-to-managed-cluster-configuration.md
+        - name: 使用 ARM 模板部署托管群集应用程序
+          href: how-to-managed-cluster-app-deployment-template.md
+        - name: 将托管群集配置为启用托管标识
+          href: how-to-managed-identity-managed-cluster-virtual-machine-scale-sets.md
+        - name: 为托管的群集节点启用磁盘加密
+          href: how-to-enable-managed-cluster-disk-encryption.md
     - name: 规划和准备
       items:
         - name: 规划群集容量
@@ -416,6 +464,142 @@
           href: service-fabric-disaster-recovery.md
         - name: 规划应用程序容量
           href: service-fabric-capacity-planning.md
+    - name: 创建和管理群集
+      items:
+        - name: Azure 上的群集
+          items:
+            - name: 创建
+              items:
+                - name: 规划群集部署
+                  href: service-fabric-cluster-azure-deployment-preparation.md
+                - name: 在 Azure 门户中创建
+                  href: service-fabric-cluster-creation-via-portal.md
+                - name: 跨可用性区域部署 Azure Service Fabric 群集
+                  href: service-fabric-cross-availability-zones.md
+                - name: 通过无状态节点类型部署 Azure Service Fabric 群集
+                  href: service-fabric-stateless-node-types.md
+                - name: 设置 Azure Active Directory 身份验证
+                  href: service-fabric-cluster-creation-setup-aad.md
+                - name: 创建自定义群集模板
+                  href: service-fabric-cluster-creation-create-template.md
+                - name: 使用资源管理器创建
+                  href: service-fabric-cluster-creation-via-arm.md
+                - name: 使用证书公用名称创建
+                  href: service-fabric-create-cluster-using-cert-cn.md
+                - name: 创建 Linux 群集
+                  href: service-fabric-tutorial-create-vnet-and-linux-cluster.md
+            - name: 缩放
+              items:
+                - name: 手动横向扩展
+                  href: service-fabric-cluster-scale-in-out.md
+                - name: 以编程方式横向扩展
+                  href: service-fabric-cluster-programmatic-scaling.md
+                - name: 纵向扩展主节点类型
+                  href: service-fabric-scale-up-primary-node-type.md
+                - name: 添加节点类型
+                  href: virtual-machine-scale-set-scale-node-type-scale-out.md
+                - name: 删除节点类型
+                  href: service-fabric-how-to-remove-node-type.md
+            - name: 升级
+              items:
+                - name: 升级 Service Fabric 版本
+                  href: service-fabric-cluster-upgrade-version-azure.md
+                - name: 升级群集配置
+                  href: service-fabric-cluster-config-upgrade-azure.md
+                - name: 修补群集节点 (Windows)
+                  href: service-fabric-patch-orchestration-application.md
+                - name: 启用磁盘加密 (Windows)
+                  href: service-fabric-enable-azure-disk-encryption-windows.md
+                - name: 启用磁盘加密 (Linux)
+                  href: service-fabric-enable-azure-disk-encryption-linux.md
+                - name: 设置访问控制
+                  href: service-fabric-cluster-security-roles.md
+                - name: 打开负载均衡器的端口
+                  href: create-load-balancer-rule.md
+                - name: 将群集证书更改为公用名称
+                  href: service-fabric-cluster-change-cert-thumbprint-to-cn.md
+                - name: 以手动方式滚动更新群集证书
+                  href: service-fabric-cluster-rollover-cert-cn.md
+                - name: 管理群集证书
+                  href: service-fabric-cluster-security-update-certs-azure.md
+                - name: 远程连接到群集节点 VM
+                  href: service-fabric-cluster-remote-connect-to-azure-cluster-node.md
+        - name: 独立群集
+          items:
+            - name: 创建
+              items:
+                - name: 在本地创建
+                  href: service-fabric-cluster-creation-for-windows-server.md
+                - name: 使用证书进行保护
+                  href: service-fabric-windows-cluster-x509-security.md
+                - name: 使用 Windows 安全进行保护
+                  href: service-fabric-windows-cluster-windows-security.md
+                - name: 独立包的内容
+                  href: service-fabric-cluster-standalone-package-contents.md
+            - name: 缩放
+              href: service-fabric-cluster-windows-server-add-remove-nodes.md
+            - name: 升级
+              items:
+                - name: 升级 Service Fabric 版本
+                  href: service-fabric-cluster-upgrade-windows-server.md
+                - name: 升级群集配置
+                  href: service-fabric-cluster-config-upgrade-windows-server.md
+                - name: 配置设置
+                  href: service-fabric-cluster-manifest.md
+                - name: 设置访问控制
+                  href: service-fabric-cluster-security-roles.md
+                - name: 修补群集节点 (Windows)
+                  href: service-fabric-patch-orchestration-application.md
+        - name: 使用 Service Fabric Explorer 进行可视化
+          href: service-fabric-visualizing-your-cluster.md
+        - name: 连接到安全群集
+          href: service-fabric-connect-to-secure-cluster.md
+    - name: 监视和诊断
+      items:
+        - name: 诊断常见方案
+          href: service-fabric-diagnostics-common-scenarios.md
+        - name: 诊断代码包错误
+          href: service-fabric-diagnostics-code-package-errors.md
+        - name: 监视应用程序
+          items:
+            - name: 将日志记录添加到应用程序
+              href: service-fabric-how-to-diagnostics-log.md
+            - name: 使用 Application Insights 进行分析
+              href: service-fabric-diagnostics-event-analysis-appinsights.md
+            - name: 使用 EventFlow 聚合日志
+              href: service-fabric-diagnostics-event-aggregation-eventflow.md
+            - name: 监视容器
+              href: service-fabric-diagnostics-oms-containers.md
+        - name: 监视群集
+          items:
+            - name: 配置 Azure Monitor 日志以收集群集事件
+              href: service-fabric-diagnostics-oms-setup.md
+            - name: 使用 Azure Monitor 日志监视群集
+              href: service-fabric-diagnostics-event-analysis-oms.md
+            - name: 查询 EventStore API
+              href: service-fabric-diagnostics-eventstore-query.md
+            - name: Windows 群集诊断
+              href: service-fabric-diagnostics-event-aggregation-wad.md
+            - name: Linux 群集诊断
+              href: service-fabric-diagnostics-oms-syslog.md
+        - name: 监视基础架构
+          items:
+            - name: 使用 Log Analytics 代理收集性能计数器
+              href: service-fabric-diagnostics-oms-agent.md
+            - name: 使用 WAD 收集性能计数器
+              href: service-fabric-diagnostics-perf-wad.md
+        - name: 监视运行状况
+          items:
+            - name: 报告并检查运行情况
+              href: service-fabric-diagnostics-how-to-report-and-check-service-health.md
+            - name: 使用系统运行状况报告进行故障排除
+              href: service-fabric-understand-and-troubleshoot-with-system-health-reports.md
+            - name: 查看运行状况报告
+              href: service-fabric-view-entities-aggregated-health.md
+        - name: 诊断反向代理事件
+          href: service-fabric-reverse-proxy-diagnostics.md
+        - name: 对本地群集进行故障排除
+          href: service-fabric-troubleshoot-local-cluster-setup.md
     - name: 创建第一个...
       items:
         - name: Windows 容器应用程序
@@ -434,7 +618,7 @@
           href: service-fabric-create-your-first-linux-application-with-java.md
         - name: 基于 Windows 的来宾可执行应用程序
           href: quickstart-guest-app.md
-    - name: 构建应用程序
+    - name: 生成应用程序
       items:
         - name: 生成来宾可执行服务
           items:
@@ -547,52 +731,6 @@
           href: service-fabric-backuprestoreservice-quickstart-standalonecluster.md
         - name: 迁移旧的 Java 应用程序以支持 Maven
           href: service-fabric-migrate-old-javaapp-to-use-maven.md
-    - name: 在 IDE 中工作
-      items:
-        - name: 在 Windows/VS 开发环境中工作
-          items:
-            - name: 在 Visual Studio 中管理应用程序
-              href: service-fabric-manage-application-in-visual-studio.md
-            - name: 在 Visual Studio 中配置安全连接
-              href: service-fabric-visualstudio-configure-secure-connections.md
-            - name: 在 VS 中调试 .NET 服务
-              href: service-fabric-debugging-your-application.md
-            - name: 使用 Service Fabric 和 VS 调试 Windows 容器
-              href: service-fabric-how-to-debug-windows-containers.md
-            - name: 常见错误和异常
-              href: service-fabric-errors-and-exceptions.md
-            - name: 在本地监视和诊断
-              href: service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md
-            - name: 在 Windows 上设置 Linux 群集
-              href: service-fabric-local-linux-cluster-windows.md
-            - name: 将 .NET Core 应用从 VS 部署到远程 Linux 群集
-              href: service-fabric-how-to-publish-linux-app-vs.md
-        - name: 在 Linux/Eclipse 开发环境中工作
-          items:
-            - name: 用于 Java 开发的 Eclipse 插件入门
-              href: service-fabric-get-started-eclipse.md
-            - name: 在 Eclipse 中调试 Java 服务
-              href: service-fabric-debugging-your-application-java.md
-            - name: 在本地监视和诊断
-              href: service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally-linux.md
-        - name: 在 VS Code 环境中工作
-          items:
-            - name: VS Code 入门
-              href: service-fabric-get-started-vs-code.md
-            - name: 通过 VS Code 开发 C# Service Fabric 应用程序
-              href: service-fabric-develop-csharp-applications-with-vs-code.md
-            - name: 通过 VS Code 开发 Java Service Fabric 应用程序
-              href: service-fabric-develop-java-applications-with-vs-code.md
-    - name: 从云服务迁移
-      items:
-        - name: 云服务与 Service Fabric 的比较
-          href: service-fabric-cloud-services-migration-differences.md
-        - name: 迁移到 Service Fabric
-          href: service-fabric-cloud-services-migration-worker-role-stateless-service.md
-        - name: 建议的做法
-          href: /azure/architecture/service-fabric/migrate-from-cloud-services
-        - name: 实现应用程序现代化
-          href: /azure/architecture/service-fabric/modernize-app-azure-service-fabric
     - name: 管理应用程序生命周期
       items:
         - name: 打包应用程序
@@ -651,144 +789,6 @@
           href: service-fabric-reverseproxy-setup.md
         - name: 配置反向代理以进行安全通信
           href: service-fabric-reverseproxy-configure-secure-communication.md
-    - name: 创建和管理群集
-      items:
-        - name: Azure 上的群集
-          items:
-            - name: 创建
-              items:
-                - name: 规划群集部署
-                  href: service-fabric-cluster-azure-deployment-preparation.md
-                - name: 在 Azure 门户中创建
-                  href: service-fabric-cluster-creation-via-portal.md
-                - name: 跨可用性区域部署 Azure Service Fabric 群集
-                  href: service-fabric-cross-availability-zones.md
-                - name: 通过无状态节点类型部署 Azure Service Fabric 群集
-                  href: service-fabric-stateless-node-types.md
-                - name: 设置 Azure Active Directory 身份验证
-                  href: service-fabric-cluster-creation-setup-aad.md
-                - name: 创建自定义群集模板
-                  href: service-fabric-cluster-creation-create-template.md
-                - name: 使用资源管理器创建
-                  href: service-fabric-cluster-creation-via-arm.md
-                - name: 使用证书公用名称创建
-                  href: service-fabric-create-cluster-using-cert-cn.md
-                - name: 创建 Linux 群集
-                  href: service-fabric-tutorial-create-vnet-and-linux-cluster.md
-            - name: 缩放
-              items:
-                - name: 手动横向扩展
-                  href: service-fabric-cluster-scale-in-out.md
-                - name: 以编程方式横向扩展
-                  href: service-fabric-cluster-programmatic-scaling.md
-                - name: 纵向扩展主节点类型
-                  href: service-fabric-scale-up-primary-node-type.md
-                - name: 添加节点类型
-                  href: virtual-machine-scale-set-scale-node-type-scale-out.md
-                - name: 删除节点类型
-                  href: service-fabric-how-to-remove-node-type.md
-            - name: 升级
-              items:
-                - name: 将虚拟机规模集扩展添加到托管群集节点类型
-                  href: how-to-managed-cluster-vmss-extension.md
-                - name: 升级 Service Fabric 版本
-                  href: service-fabric-cluster-upgrade-version-azure.md
-                - name: 升级群集配置
-                  href: service-fabric-cluster-config-upgrade-azure.md
-                - name: 修补群集节点 (Windows)
-                  href: service-fabric-patch-orchestration-application.md
-                - name: 启用磁盘加密 (Windows)
-                  href: service-fabric-enable-azure-disk-encryption-windows.md
-                - name: 启用磁盘加密 (Linux)
-                  href: service-fabric-enable-azure-disk-encryption-linux.md
-                - name: 设置访问控制
-                  href: service-fabric-cluster-security-roles.md
-                - name: 打开负载均衡器的端口
-                  href: create-load-balancer-rule.md
-                - name: 将群集证书更改为公用名称
-                  href: service-fabric-cluster-change-cert-thumbprint-to-cn.md
-                - name: 以手动方式滚动更新群集证书
-                  href: service-fabric-cluster-rollover-cert-cn.md
-                - name: 管理群集证书
-                  href: service-fabric-cluster-security-update-certs-azure.md
-                - name: 远程连接到群集节点 VM
-                  href: service-fabric-cluster-remote-connect-to-azure-cluster-node.md
-        - name: 独立群集
-          items:
-            - name: 创建
-              items:
-                - name: 在本地创建
-                  href: service-fabric-cluster-creation-for-windows-server.md
-                - name: 使用证书进行保护
-                  href: service-fabric-windows-cluster-x509-security.md
-                - name: 使用 Windows 安全进行保护
-                  href: service-fabric-windows-cluster-windows-security.md
-                - name: 独立包的内容
-                  href: service-fabric-cluster-standalone-package-contents.md
-            - name: 缩放
-              href: service-fabric-cluster-windows-server-add-remove-nodes.md
-            - name: 升级
-              items:
-                - name: 升级 Service Fabric 版本
-                  href: service-fabric-cluster-upgrade-windows-server.md
-                - name: 升级群集配置
-                  href: service-fabric-cluster-config-upgrade-windows-server.md
-                - name: 配置设置
-                  href: service-fabric-cluster-manifest.md
-                - name: 设置访问控制
-                  href: service-fabric-cluster-security-roles.md
-                - name: 修补群集节点 (Windows)
-                  href: service-fabric-patch-orchestration-application.md
-        - name: 使用 Service Fabric Explorer 进行可视化
-          href: service-fabric-visualizing-your-cluster.md
-        - name: 连接到安全群集
-          href: service-fabric-connect-to-secure-cluster.md
-    - name: 监视和诊断
-      items:
-        - name: 诊断常见方案
-          href: service-fabric-diagnostics-common-scenarios.md
-        - name: 诊断代码包错误
-          href: service-fabric-diagnostics-code-package-errors.md
-        - name: 监视应用程序
-          items:
-            - name: 将日志记录添加到应用程序
-              href: service-fabric-how-to-diagnostics-log.md
-            - name: 使用 Application Insights 进行分析
-              href: service-fabric-diagnostics-event-analysis-appinsights.md
-            - name: 使用 EventFlow 聚合日志
-              href: service-fabric-diagnostics-event-aggregation-eventflow.md
-            - name: 监视容器
-              href: service-fabric-diagnostics-oms-containers.md
-        - name: 监视群集
-          items:
-            - name: 配置 Azure Monitor 日志以收集群集事件
-              href: service-fabric-diagnostics-oms-setup.md
-            - name: 使用 Azure Monitor 日志监视群集
-              href: service-fabric-diagnostics-event-analysis-oms.md
-            - name: 查询 EventStore API
-              href: service-fabric-diagnostics-eventstore-query.md
-            - name: Windows 群集诊断
-              href: service-fabric-diagnostics-event-aggregation-wad.md
-            - name: Linux 群集诊断
-              href: service-fabric-diagnostics-oms-syslog.md
-        - name: 监视基础架构
-          items:
-            - name: 使用 Log Analytics 代理收集性能计数器
-              href: service-fabric-diagnostics-oms-agent.md
-            - name: 使用 WAD 收集性能计数器
-              href: service-fabric-diagnostics-perf-wad.md
-        - name: 监视运行状况
-          items:
-            - name: 报告并检查运行情况
-              href: service-fabric-diagnostics-how-to-report-and-check-service-health.md
-            - name: 使用系统运行状况报告进行故障排除
-              href: service-fabric-understand-and-troubleshoot-with-system-health-reports.md
-            - name: 查看运行状况报告
-              href: service-fabric-view-entities-aggregated-health.md
-        - name: 诊断反向代理事件
-          href: service-fabric-reverse-proxy-diagnostics.md
-        - name: 对本地群集进行故障排除
-          href: service-fabric-troubleshoot-local-cluster-setup.md
     - name: 将托管标识用于 Service Fabric 应用
       items:
         - name: 群集设置
@@ -797,8 +797,6 @@
               href: configure-existing-cluster-enable-managed-identity-token-service.md
             - name: 将新 Azure Service Fabric 群集配置为启用托管标识
               href: configure-new-azure-service-fabric-enable-managed-identity.md
-            - name: 将 Service Fabric 托管群集配置为启用托管标识
-              href: how-to-managed-identity-managed-cluster-virtual-machine-scale-sets.md
         - name: 应用程序设置
           items:
             - name: 如何部署具有托管标识的应用程序
@@ -811,12 +809,22 @@
           href: how-to-managed-identity-service-fabric-app-code.md
         - name: 授予对其他 Azure 资源的访问权限
           href: how-to-grant-access-other-resources.md
+    - name: 从云服务迁移
+      items:
+        - name: 云服务与 Service Fabric 的比较
+          href: service-fabric-cloud-services-migration-differences.md
+        - name: 迁移到 Service Fabric
+          href: service-fabric-cloud-services-migration-worker-role-stateless-service.md
+        - name: 建议的做法
+          href: /azure/architecture/service-fabric/migrate-from-cloud-services
+        - name: 实现应用程序现代化
+          href: /azure/architecture/service-fabric/modernize-app-azure-service-fabric
 - name: 参考
   items:
     - name: Azure PowerShell
       href: /powershell/module/az.servicefabric/
     - name: PowerShell
-      href: /powershell/module/ServiceFabric/New-ServiceFabricService?view=azureservicefabricps
+      href: /powershell/module/servicefabric/?view=azureservicefabricps
     - name: Azure CLI (az sf)
       href: /cli/azure/sf
     - name: Service Fabric CLI (sfctl)

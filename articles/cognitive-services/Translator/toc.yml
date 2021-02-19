@@ -86,6 +86,22 @@
           href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
         - name: 合规性
           href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+- name: 文档翻译
+  items:
+    - name: 概述
+      items:
+        - name: 什么是文档翻译？
+          href: document-translation/overview.md
+    - name: 操作指南
+      items:
+        - name: 文档翻译入门
+          href: document-translation/get-started-with-document-translation.md
+        - name: 创建 SAS 令牌
+          href: document-translation/create-sas-tokens.md
+    - name: 参考
+      items:
+        - name: 文本翻译 API 参考
+          href: 'https://docs.microsoft.com/rest/api/cognitiveservices/translator/translation'
 - name: 自定义翻译
   items:
     - name: 概述

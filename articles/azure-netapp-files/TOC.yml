@@ -77,6 +77,8 @@
       href: manage-manual-qos-capacity-pool.md
     - name: 将子网委派给 Azure NetApp 文件
       href: azure-netapp-files-delegate-subnet.md
+    - name: 创建和管理 Active Directory 连接
+      href: create-active-directory-connections.md
     - name: 创建和管理 NFS 卷
       items:
         - name: 创建 NFS 卷

@@ -1,0 +1,113 @@
+- name: IoT 设备和应用程序开发
+  href: index.yml
+- name: 概述
+  items:
+    - name: IoT 设备和应用程序开发指的是什么？
+      href: about-iot-develop.md
+    - name: 我该使用哪一个 SDK？
+      href: about-iot-sdks.md
+- name: 快速入门
+  expanded: true
+  items:
+    - name: 设备应用程序开发入门
+      items:
+        - name: 将遥测数据发送到 IoT Central (Python)
+          href: quickstart-send-telemetry-python.md
+        - name: 将遥测数据发送到 IoT 中心 (Python)
+          href: quickstart-send-telemetry-cli-python.md
+        - name: 将遥测数据发送到 IoT 中心 (Node)
+          href: quickstart-send-telemetry-cli-node.md
+    - name: 嵌入式开发入门
+      href: quickstart-device-development.md
+- name: 教程
+  items:
+    - name: 安全地将 IoT 设备连接到云
+      href: 'https://docs.microsoft.com/learn/paths/securely-connect-iot-devices/'
+- name: 概念
+  items:
+    - name: 面向设备开发人员的连接选项
+      href: concepts-overview-connection-options.md
+    - name: 设备类型概述
+      href: concepts-iot-device-types.md
+- name: 参考
+  items:
+    - name: Azure CLI
+      href: /cli/azure/azure-cli-reference-for-IoT
+    - name: Azure PowerShell
+      href: /powershell/module/az.iothub#iothub
+    - name: C（设备）
+      href: /azure/iot-hub/iot-c-sdk-ref/
+    - name: Embedded C（设备）
+      href: 'https://azure.github.io/azure-sdk-for-c/'
+    - name: Azure RTOS 中间件（设备）
+      href: /azure/rtos/threadx
+    - name: .NET（设备）
+      href: /dotnet/api/microsoft.azure.devices.client
+    - name: .NET（服务）
+      href: /dotnet/api/microsoft.azure.devices
+    - name: .NET（管理）
+      href: /dotnet/api/overview/azure/iot/management
+    - name: Java（设备）
+      href: /java/api/com.microsoft.azure.sdk.iot.device
+    - name: Java（服务）
+      href: /java/api/com.microsoft.azure.sdk.iot.service
+    - name: Node.js（设备）
+      href: /javascript/api/azure-iot-device/
+    - name: Node.js（服务）
+      href: /javascript/api/azure-iothub/
+    - name: Node.js（管理）
+      href: /javascript/api/overview/azure/iothub/management
+    - name: Python（设备）
+      href: /python/api/azure-iot-device
+    - name: Python（服务）
+      href: /python/api/azure-iot-hub
+    - name: Python（管理）
+      href: /python/api/azure-mgmt-iothub
+    - name: REST（设备）
+      href: /rest/api/iothub/device
+    - name: REST（服务）
+      href: /rest/api/iothub/service/configuration
+    - name: REST（IoT 中心资源）
+      href: /rest/api/iothub/iothubresource
+    - name: REST（证书）
+      href: /rest/api/iothub/certificates
+    - name: 资源管理器模板
+      href: /azure/templates/microsoft.devices/iothub-allversions
+- name: 资源
+  items:
+    - name: 支持和帮助选项
+      href: ../iot-fundamentals/iot-support-help.md
+    - name: Azure IoT 示例
+      items:
+        - name: C# (.NET)
+          href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-csharp/'
+        - name: Node.js
+          href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-node/'
+        - name: Java
+          href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-java/'
+        - name: Python
+          href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-python/'
+        - name: iOS 平台
+          href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-ios/'
+    - name: Azure IoT 已认证设备目录
+      href: 'https://catalog.azureiotsolutions.com/'
+    - name: Azure IoT 开发人员中心
+      href: 'https://azure.microsoft.com/develop/iot/'
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/?category=iot'
+    - name: Azure IoT Tools
+      href: 'https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools'
+    - name: Azure IoT 资源管理器工具
+      href: 'https://github.com/Azure/azure-iot-explorer'
+    - name: iothub-diagnostics 工具
+      href: 'https://github.com/Azure/iothub-diagnostics'
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/details/iot-hub/'
+    - name: 定价计算器
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: 服务更新
+      href: 'https://azure.microsoft.com/updates/?product=iot-hub'
+    - name: 技术案例研究
+      href: 'https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured'
+    - name: 视频
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=iot-hub'

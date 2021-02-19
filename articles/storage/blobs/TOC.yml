@@ -43,7 +43,7 @@
                   href: storage-quickstart-blobs-python.md
                 - name: Python (v2.1 SDK)
                   href: storage-quickstart-blobs-python-legacy.md
-            - name: Javascript
+            - name: JavaScript
               items:
                 - name: JavaScript（适用于 Node.js 的 v12 SDK）
                   href: storage-quickstart-blobs-nodejs.md
@@ -105,7 +105,7 @@
           href: ../common/storage-samples-java.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Python
           href: ../common/storage-samples-python.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: Javascript
+        - name: JavaScript
           href: ../common/storage-samples-javascript.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: C++
           href: ../common/storage-samples-c-plus-plus.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
@@ -635,20 +635,16 @@
       items:
         - name: Data Lake Storage 简介
           href: data-lake-storage-introduction.md
-    - name: 快速入门
-      items:
-        - name: 使用 Databricks 分析数据
-          href: data-lake-storage-quickstart-create-databricks-account.md
     - name: 教程
       items:
-        - name: 使用 Azure Databricks 提取、转换和加载数据
-          href: /azure/databricks/scenarios/databricks-extract-load-sql-data-warehouse?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: 使用 Spark 通过 Databricks 访问 Data Lake Storage 数据
+        - name: 与 Databricks 和 Spark 配合使用
           href: data-lake-storage-use-databricks-spark.md
-        - name: 在 Azure HDInsight 上使用 Apache Hive 提取、转换和加载数据
+        - name: 与 Apache Hive 和 HDInsight 配合使用
           href: data-lake-storage-tutorial-extract-transform-load-hive.md
-        - name: 使用事件网格将数据插入 Databricks Delta 表中
+        - name: 与 Databricks Delta 和事件网格配合使用
           href: data-lake-storage-events.md
+        - name: 与其他 Azure 服务配合使用
+          href: data-lake-storage-integrate-with-services-tutorials.md
     - name: 概念
       items:
         - name: 处理大数据
@@ -705,7 +701,7 @@
       items:
         - name: 创建存储帐户
           href: create-data-lake-storage-account.md
-        - name: 迁移
+        - name: 迁移帐户和数据存储
           items:
             - name: 从 Data Lake Storage Gen1 迁移
               href: data-lake-storage-migrate-gen1-to-gen2.md
@@ -713,31 +709,7 @@
               href: data-lake-storage-migrate-on-premises-HDFS-cluster.md
             - name: 联机迁移 HDFS 存储
               href: migrate-gen2-wandisco-live-data-platform.md
-        - name: 管理
-          items:
-            - name: .NET
-              href: data-lake-storage-directory-file-acl-dotnet.md
-            - name: Java
-              href: data-lake-storage-directory-file-acl-java.md
-            - name: Python
-              href: data-lake-storage-directory-file-acl-python.md
-            - name: Javascript
-              href: data-lake-storage-directory-file-acl-javascript.md
-            - name: PowerShell
-              href: data-lake-storage-directory-file-acl-powershell.md
-            - name: CLI
-              href: data-lake-storage-directory-file-acl-cli.md
-            - name: 存储资源管理器
-              href: data-lake-storage-explorer.md
-            - name: Hadoop 文件系统 CLI
-              href: data-lake-storage-use-hdfs-data-lake-storage.md
-            - name: 以递归方式设置 ACL
-              href: recursive-access-control-lists.md
-        - name: 查询
-          items:
-            - name: 使用“查询加速”筛选数据
-              href: data-lake-storage-query-acceleration-how-to.md
-        - name: 传输
+        - name: 传输数据
           items:
             - name: AzCopy
               items:
@@ -761,9 +733,47 @@
               href: data-lake-storage-use-distcp.md
             - name: 通过数据移动库传输数据
               href: ../common/storage-use-data-movement-library.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: 优化
+        - name: 管理访问控制
           items:
-            - name: 优化性能
+            - name: 存储资源管理器
+              href: data-lake-storage-explorer-acl.md
+            - name: PowerShell
+              href: data-lake-storage-acl-powershell.md
+            - name: CLI
+              href: data-lake-storage-acl-cli.md
+            - name: .NET
+              href: data-lake-storage-acl-dotnet.md
+            - name: Java
+              href: data-lake-storage-acl-java.md
+            - name: Python
+              href: data-lake-storage-acl-python.md
+            - name: JavaScript
+              href: data-lake-storage-acl-javascript.md
+        - name: 处理数据
+          items:
+            - name: 存储资源管理器
+              href: data-lake-storage-explorer.md
+            - name: PowerShell
+              href: data-lake-storage-directory-file-acl-powershell.md
+            - name: CLI
+              href: data-lake-storage-directory-file-acl-cli.md
+            - name: .NET
+              href: data-lake-storage-directory-file-acl-dotnet.md
+            - name: Java
+              href: data-lake-storage-directory-file-acl-java.md
+            - name: Python
+              href: data-lake-storage-directory-file-acl-python.md
+            - name: JavaScript
+              href: data-lake-storage-directory-file-acl-javascript.md
+            - name: 查询加速
+              href: data-lake-storage-query-acceleration-how-to.md
+            - name: Hadoop 文件系统 CLI
+              href: data-lake-storage-use-hdfs-data-lake-storage.md
+        - name: 与 Azure 服务配合使用
+          href: data-lake-storage-integrate-with-services-tutorials.md
+        - name: 优化性能
+          items:
+            - name: 性能优化概述
               href: data-lake-storage-performance-tuning-guidance.md
             - name: 优化 HDInsight 上的 Spark
               href: data-lake-storage-performance-tuning-spark.md
@@ -781,7 +791,7 @@
           href: 'https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.0.0-preview.6/index.html'
         - name: Python
           href: 'https://azuresdkdocs.blob.core.windows.net/$web/python/azure-storage-file-datalake/12.0.0b5/index.html'
-        - name: Javascript
+        - name: JavaScript
           href: 'https://www.npmjs.com/package/@azure/storage-file-datalake/v/12.0.0-preview.6'
         - name: REST
           href: /rest/api/storageservices/data-lake-storage-gen2

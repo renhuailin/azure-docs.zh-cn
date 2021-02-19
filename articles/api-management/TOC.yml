@@ -281,6 +281,8 @@
               href: ../service-fabric/service-fabric-api-management-overview.md
             - name: 教程
               href: ../service-fabric/service-fabric-tutorial-deploy-api-management.md
+        - name: 诊断生产中的问题
+          href: diagnose-solve-problems.md
 - name: 参考
   items:
     - name: Azure CLI

@@ -132,6 +132,8 @@
       href: howto-backup-config-store.md
     - name: 使用托管标识来访问应用程序配置
       href: howto-integrate-azure-managed-service-identity.md
+    - name: 在 Visual Studio 中集成应用程序配置
+      href: /visualstudio/azure/vs-azure-tools-connected-services-app-configuration
 - name: 参考
   items:
     - name: 配置

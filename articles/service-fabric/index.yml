@@ -7,12 +7,12 @@ metadata:
   author: erikadoyle
   ms.author: edoyle
   ms.date: 07/31/2020
-  ms.openlocfilehash: 2f9b7264fe8199cb25772b0598354e474196ca93
-  ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+  ms.openlocfilehash: e850855a4f794e5e90abe9c86d6ddedd0af26a6b
+  ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 12/02/2020
-  ms.locfileid: "96499792"
+  ms.lasthandoff: 02/17/2021
+  ms.locfileid: "100634832"
 landingContent:
 - title: 试用 Service Fabric 托管群集（预览）
   linkLists:
@@ -24,8 +24,6 @@ landingContent:
       url: quickstart-managed-cluster-template.md
   - linkListType: tutorial
     links:
-    - text: 创建托管群集（预览）
-      url: tutorial-managed-cluster-deploy.md
     - text: 横向扩展托管群集节点类型（预览）
       url: tutorial-managed-cluster-scale.md
     - text: 添加和删除托管群集节点类型（预览）
@@ -34,6 +32,8 @@ landingContent:
       url: tutorial-managed-cluster-deploy-app.md
     - text: 将 VM 规模集扩展添加到托管群集节点类型（预览）
       url: how-to-managed-cluster-vmss-extension.md
+    - text: 为托管的群集节点启用磁盘加密
+      url: how-to-enable-managed-cluster-disk-encryption.md
   - linkListType: whats-new
     links:
     - text: Service Fabric 托管群集常见问题解答

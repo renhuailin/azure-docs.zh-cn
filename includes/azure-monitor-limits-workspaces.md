@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: 86c5c6fff06f43bf66427ba1935852fcf97a71c6
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 1f461c4870b398a49387472c49d45b90929405c7
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96356204"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100529694"
 ---
 **数据收集量和保留期** 
 
@@ -56,13 +56,19 @@ ms.locfileid: "96356204"
 | 最长查询运行时间 | 10 分钟 | 有关详细信息，请参阅[超时](https://dev.loganalytics.io/documentation/Using-the-API/Timeouts)。  |
 | 最大请求速率 | 每个 Azure AD 用户或客户端 IP 地址每 30 秒 200 个请求 | 有关详细信息，请参阅[速率限制](https://dev.loganalytics.io/documentation/Using-the-API/Limits)。 |
 
+**Azure Monitor 日志连接器**
+| Category | 限制 | 注释 |
+|:---|:---|:---|
+| 最大记录数 | 500,000 | |
+| 最大查询超时 | 110 秒 | |
+| 图表 | | 日志页面中的可视化效果与连接器使用不同的图表库，某些功能当前不可在连接器中使用。 |
+
 **常规工作区限制**
 
 | Category | 限制 | 注释 |
 |:---|:---|:---|
 | 表中的最大列数         | 500 | |
 | 列名称的最大字符数 | 500 | |
-| 数据导出 | 当前不可用 | 使用 Azure 函数或逻辑应用聚合和导出数据。 | 
 
 **<a name="data-ingestion-volume-rate">数据引入速率</a>**
 

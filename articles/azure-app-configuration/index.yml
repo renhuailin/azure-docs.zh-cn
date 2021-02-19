@@ -9,12 +9,12 @@ metadata:
   ms.service: azure-app-configuration
   ms.topic: landing-page
   ms.date: 02/03/2020
-  ms.openlocfilehash: 64a9bc3cf00af66c65b06b9edbed4621668b05bc
-  ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+  ms.openlocfilehash: 917508f1fee4e4a53083a29e2459a442f7fddccd
+  ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 02/14/2021
-  ms.locfileid: "100365015"
+  ms.lasthandoff: 02/18/2021
+  ms.locfileid: "100650229"
 landingContent:
 - title: 关于 Azure 应用配置
   linkLists:
@@ -24,6 +24,8 @@ landingContent:
       url: overview.md
     - text: 常见问题
       url: faq.yml
+    - text: 最佳做法
+      url: howto-best-practices.md
   - linkListType: video
     links:
     - text: Azure 应用配置入门
@@ -52,15 +54,15 @@ landingContent:
   linkLists:
   - linkListType: quickstart
     links:
+    - text: 编写 ASP.NET Core 应用代码
+      url: quickstart-aspnet-core-app.md
     - text: 编码 .NET Core 应用
       url: quickstart-dotnet-core-app.md
     - text: 编码 .NET Framework 应用
       url: quickstart-dotnet-app.md
-    - text: 编写 ASP.NET Core 应用代码
-      url: quickstart-aspnet-core-app.md
     - text: 使用 C# 编写 Azure Functions 应用代码
       url: quickstart-azure-functions-csharp.md
-    - text: 编写 Spring Boot 应用代码
+    - text: 编写 Java Spring 应用代码
       url: quickstart-java-spring-app.md
     - text: 编码 Python 应用
       url: quickstart-python.md
@@ -78,6 +80,8 @@ landingContent:
       url: enable-dynamic-configuration-azure-functions-csharp.md
     - text: 在 Spring Boot 中使用动态配置
       url: enable-dynamic-configuration-java-spring-app.md
+    - text: 使用推送模型集成动态配置
+      url: enable-dynamic-configuration-dotnet-core-push-refresh.md
   - linkListType: tutorial
     links:
     - text: 与 CI/CD 管道集成
@@ -102,10 +106,10 @@ landingContent:
       url: concept-feature-management.md
   - linkListType: quickstart
     links:
-    - text: .NET Core 应用
-      url: use-feature-flags-dotnet-core.md
     - text: ASP.NET Core 应用
       url: quickstart-feature-flag-aspnet-core.md
+    - text: .NET Core 应用
+      url: use-feature-flags-dotnet-core.md
     - text: .NET Framework 应用
       url: quickstart-feature-flag-dotnet.md
     - text: Spring Boot 应用
@@ -114,6 +118,12 @@ landingContent:
     links:
     - text: 管理功能标志
       url: manage-feature-flags.md
+    - text: 在 ASP.NET Core 中使用功能标志
+      url: use-feature-flags-dotnet-core.md
+    - text: 在 Spring Boot 中使用功能标志
+      url: use-feature-flags-spring-boot.md
+    - text: 为指定用户/组启用功能
+      url: howto-targetingfilter-aspnet-core.md
   - linkListType: reference
     links:
     - text: .NET Core 库

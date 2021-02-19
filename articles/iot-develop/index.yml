@@ -1,0 +1,41 @@
+### YamlMime:Landing
+title: IoT 设备和应用程序开发文档
+summary: 查看 Azure IoT 文档，了解如何开发嵌入式设备和构建支持设备的云应用程序。
+metadata:
+  title: IoT 设备和应用程序开发
+  description: 了解如何使用 Azure IoT 来开发嵌入式设备和构建支持设备的云应用程序。
+  services: iot-develop
+  ms.service: iot-develop
+  ms.topic: landing-page
+  author: timlt
+  ms.author: timlt
+  ms.date: 01/11/2021
+  ms.openlocfilehash: 98d3a7f3eb51ce9c2fddfe5b3ac6730d8ef3b3eb
+  ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 02/18/2021
+  ms.locfileid: "100656267"
+landingContent:
+- title: 关于 IoT 设备和应用程序开发
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure IoT 设备和应用程序开发指的是什么？
+      url: about-iot-develop.md
+    - text: 我该使用哪一个 SDK？
+      url: about-iot-sdks.md
+- title: 设备应用程序开发入门
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 将设备遥测数据发送到 IoT Central
+      url: quickstart-send-telemetry-python.md
+    - text: 将设备遥测数据发送到 IoT 中心
+      url: quickstart-send-telemetry-cli-python.md
+- title: 嵌入式设备开发入门
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 嵌入式设备开发入门
+      url: quickstart-device-development.md
