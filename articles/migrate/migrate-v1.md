@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.custom: mvc
-ms.openlocfilehash: 719fcca74d2cd048bf170940eff7da6a25425469
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 00e44185c938c94903e9b85a4748906721dac27f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100373277"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571700"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>使用以前版本的 Azure Migrate
 
@@ -210,14 +210,14 @@ vCenter Server 中指定为“其他”的 OS | 在此情况下，Azure Migrate 
 1. 若要将 Log Analytics 工作区附加到项目，请在“概述”>“Essentials”中，单击“需要配置”  。
 2. 可以创建新的工作区或附加现有的工作区：
   - 若要创建新的工作区，请指定名称。 在与迁移项目相同的 [Azure 地理位置](https://azure.microsoft.com/global-infrastructure/geographies/)中的区域内创建工作区。
-  - 附加现有的工作区时，可以从迁移项目所在订阅中的所有可用工作区进行选择。 只有在[受支持的服务映射区域](../azure-monitor/insights/vminsights-configure-workspace.md#supported-regions)中创建的那些工作区才会列出。 若要附加工作区，请确保对该工作区有“读取者”访问权限。
+  - 附加现有的工作区时，可以从迁移项目所在订阅中的所有可用工作区进行选择。 只有在[受支持的服务映射区域](../azure-monitor/vm/vminsights-configure-workspace.md#supported-regions)中创建的那些工作区才会列出。 若要附加工作区，请确保对该工作区有“读取者”访问权限。
 
 > [!NOTE]
 > 你无法更改与迁移项目关联的工作区。
 
 ### <a name="download-and-install-vm-agents"></a>下载并安装 VM 代理
 
-配置工作区后，请在要评估的每个本地计算机上下载并安装代理。 此外，如果计算机未连接到 Internet，则需要在计算机上下载并安装 [Log Analytics 网关](../azure-monitor/platform/gateway.md)。
+配置工作区后，请在要评估的每个本地计算机上下载并安装代理。 此外，如果计算机未连接到 Internet，则需要在计算机上下载并安装 [Log Analytics 网关](../azure-monitor/agents/gateway.md)。
 
 1. 在“概述”中，单击“管理” > “计算机”，然后选择所需的计算机。
 2. 在“依赖项”列中，单击“安装代理”。
@@ -238,7 +238,7 @@ vCenter Server 中指定为“其他”的 OS | 在此情况下，Azure Migrate 
 4. 在“代理安装选项”中，选择“Azure Log Analytics” > “下一步”。
 5. 单击“添加”以添加 Log Analytics 工作区。 粘贴从门户复制的工作区 ID 和密钥。 单击“下一步”。
 
-可以从命令行或使用自动化方法（如 Configuration Manager）安装代理。 [详细了解](../azure-monitor/platform/log-analytics-agent.md#installation-options)如何使用这些方法安装 MMA 代理。
+可以从命令行或使用自动化方法（如 Configuration Manager）安装代理。 [详细了解](../azure-monitor/agents/log-analytics-agent.md#installation-options)如何使用这些方法安装 MMA 代理。
 
 #### <a name="install-the-mma-agent-on-a-linux-machine"></a>在 Linux 计算机上安装 MMA 代理
 
@@ -249,11 +249,11 @@ vCenter Server 中指定为“其他”的 OS | 在此情况下，Azure Migrate 
 
     ```sudo sh ./omsagent-<version>.universal.x64.sh --install -w <workspace id> -s <workspace key>```
 
-[详细了解 MMA 支持的 Linux 操作系统的列表](../azure-monitor/platform/agents-overview.md#supported-operating-systems)。
+[详细了解 MMA 支持的 Linux 操作系统的列表](../azure-monitor/agents/agents-overview.md#supported-operating-systems)。
 
 ### <a name="install-the-mma-agent-on-a-machine-monitored-by-operations-manager"></a>在受 Operations Manager 监视的计算机上安装 MMA 代理
 
-受 System Center Operations Manager 2012 R2 或更高版本监视的计算机无需安装 MMA 代理。 服务映射与 Operations Manager MMA 集成，以收集必要的依赖项数据。 [了解详细信息](../azure-monitor/insights/service-map-scom.md#prerequisites)。 需要安装依赖项代理。
+受 System Center Operations Manager 2012 R2 或更高版本监视的计算机无需安装 MMA 代理。 服务映射与 Operations Manager MMA 集成，以收集必要的依赖项数据。 [了解详细信息](../azure-monitor/vm/service-map-scom.md#prerequisites)。 需要安装依赖项代理。
 
 ### <a name="install-the-dependency-agent"></a>安装依赖项代理
 
@@ -262,8 +262,8 @@ vCenter Server 中指定为“其他”的 OS | 在此情况下，Azure Migrate 
 
     ```sh InstallDependencyAgent-Linux64.bin```
 
-- 详细了解针对 Windows 和 Linux 操作系统的 [Dependency agent 支持](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems)。
-- [详细了解](../azure-monitor/insights/vminsights-enable-hybrid.md#dependency-agent)如何使用脚本来安装依赖项代理。
+- 详细了解针对 Windows 和 Linux 操作系统的 [Dependency agent 支持](../azure-monitor/vm/vminsights-enable-overview.md#supported-operating-systems)。
+- [详细了解](../azure-monitor/vm/vminsights-enable-hybrid.md#dependency-agent)如何使用脚本来安装依赖项代理。
 
 >[!NOTE]
 > 参考的“用于 VM 的 Azure Monitor”一文提供了部署 Dependency agent 的系统先决条件和方法的概述，也适用于服务映射解决方案。
@@ -298,7 +298,7 @@ vCenter Server 中指定为“其他”的 OS | 在此情况下，Azure Migrate 
 
 ## <a name="query-dependency-data-from-azure-monitor-logs"></a>查询 Azure Monitor 日志中的依赖项数据
 
-服务映射捕获的依赖项数据可用于在与 Azure Migrate 项目关联的 Log Analytics 工作区中进行查询。 [详细了解](../azure-monitor/insights/service-map.md#log-analytics-records)可在 Azure Monitor 日志中查询的服务映射数据表。 
+服务映射捕获的依赖项数据可用于在与 Azure Migrate 项目关联的 Log Analytics 工作区中进行查询。 [详细了解](../azure-monitor/vm/service-map.md#log-analytics-records)可在 Azure Monitor 日志中查询的服务映射数据表。 
 
 若要运行 Kusto 查询，请执行以下操作：
 
@@ -308,15 +308,15 @@ vCenter Server 中指定为“其他”的 OS | 在此情况下，Azure Migrate 
 4. 编写查询以使用 Azure Monitor 日志收集依赖项数据。 在下一部分查找示例查询。
 5. 通过单击“运行”，运行查询。 
 
-[详细了解](../azure-monitor/log-query/log-analytics-tutorial.md)如何编写 Kusto 查询。 
+[详细了解](../azure-monitor/logs/log-analytics-tutorial.md)如何编写 Kusto 查询。 
 
 ### <a name="sample-azure-monitor-logs-queries"></a>Azure Monitor 日志示例查询
 
-以下是可用于提取依赖项数据的示例查询。 可修改查询以提取首选数据点。 [此处](../azure-monitor/insights/service-map.md#log-analytics-records)提供依赖项数据记录中字段的详尽列表。 更多示例查询，请参阅[此处](../azure-monitor/insights/service-map.md#sample-log-searches)。
+以下是可用于提取依赖项数据的示例查询。 可修改查询以提取首选数据点。 [此处](../azure-monitor/vm/service-map.md#log-analytics-records)提供依赖项数据记录中字段的详尽列表。 更多示例查询，请参阅[此处](../azure-monitor/vm/service-map.md#sample-log-searches)。
 
 #### <a name="summarize-inbound-connections-on-a-set-of-machines"></a>总结一组计算机上的入站连接
 
-针对连接指标的表中的记录 VMConnection 不显示单个物理网络连接。 多个物理网络连接分组到一个逻辑连接中。 [详细了解](../azure-monitor/insights/service-map.md#connections)物理网络连接数据如何聚合到 VMConnection 中的单个逻辑记录中。 
+针对连接指标的表中的记录 VMConnection 不显示单个物理网络连接。 多个物理网络连接分组到一个逻辑连接中。 [详细了解](../azure-monitor/vm/service-map.md#connections)物理网络连接数据如何聚合到 VMConnection 中的单个逻辑记录中。 
 
 ```
 // the machines of interest
