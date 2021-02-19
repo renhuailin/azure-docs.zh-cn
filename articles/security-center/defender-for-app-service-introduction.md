@@ -7,12 +7,12 @@ ms.date: 01/25/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 99da711038e1fcea3e14584fde09ccd1f79feffa
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 2a3253d1ed8b0814fc20b3256a0f98d3aa0949f6
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98916690"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100393303"
 ---
 # <a name="introduction-to-azure-defender-for-app-service"></a>用于应用服务的 Azure Defender 简介
 
@@ -23,13 +23,13 @@ Azure 应用服务是一种完全托管的平台，用于构建和托管 Web 应
 
 ## <a name="availability"></a>可用性
 
-|方面|详细信息|
-|----|:----|
-|发布状态：|正式发布版 (GA)|
-|定价：|[用于应用服务的 Azure Defender](azure-defender.md) 按[定价页中](security-center-pricing.md)的定价计费<br>定价和设置页面列出了“资源数量”中的实例数。 该数字是指当你打开“定价层”页面时，此订阅的所有应用服务计划中正在运行的计算实例总数。<br>若要验证该计数，请在 Azure 门户打开“应用服务计划”，然后检查每个计划使用的计算实例数。|
-|支持的应用服务计划：|![是](./media/icons/yes-icon.png)“基本”、“标准”、“高级”、“独立”或“Linux”<br>![否](./media/icons/no-icon.png)“免费”、“共享”或“消耗”<br>[了解有关应用服务计划的详细信息](https://azure.microsoft.com/pricing/details/app-service/plans/)|
-|云：|![是](./media/icons/yes-icon.png) 商业云<br>![否](./media/icons/no-icon.png) 国家/主权（US Gov、中国 Gov、其他 Gov）|
-|||
+| 方面                       | 详细信息                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+|------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 发布状态：               | 正式发布版 (GA)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| 定价：                     | [用于应用服务的 Azure Defender](azure-defender.md) 按[定价页中](security-center-pricing.md)的定价计费<br>计费以所有计划中的总计算实例数为依据|
+| 支持的应用服务计划： | 支持所有应用服务计划（有一个例外，见下文）。 [了解有关应用服务计划的详细信息](https://azure.microsoft.com/pricing/details/app-service/plans/)。<br>不支持使用消耗计划的 Azure Functions。 [详细了解 Azure Functions 托管选项](../azure-functions/functions-scale.md)。                                                                                                                                                                                                                                                                   |
+| 云：                      | ![是](./media/icons/yes-icon.png) 商业云<br>![否](./media/icons/no-icon.png) 国家/主权（US Gov、中国 Gov、其他 Gov）                                                                                                                                                                                                                                                                                                                                                                                 |
+|                              |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-app-service"></a>适用于应用服务的 Azure Defender 有哪些优点？
 

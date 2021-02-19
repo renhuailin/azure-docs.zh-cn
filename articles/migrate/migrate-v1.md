@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.custom: mvc
-ms.openlocfilehash: 4fda6c51121838bfa1f3624759b1230d8554d573
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 719fcca74d2cd048bf170940eff7da6a25425469
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96753937"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100373277"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>使用以前版本的 Azure Migrate
 
@@ -22,7 +22,7 @@ ms.locfileid: "96753937"
 有两个版本的 Azure Migrate 服务：
 
 - **当前版本**：使用此版本创建 Azure Migrate 项目，发现本地计算机，并安排评估和迁移。 [详细了解](whats-new.md)此版本中的新增功能。
-- **以前版本**：如果你使用的是以前版本的 Azure Migrate（仅支持对本地 VMware VM 的评估），则现在应使用当前版本。 本文将以前版本的项目称为经典项目。 如果仍需使用在以前版本中创建的 Azure Migrate 项目，那么以下是可以执行与不可执行的操作：
+- **以前版本**：如果你使用的是以前版本的 Azure Migrate（仅支持对本地 VMware VM 的评估），则现在应使用当前版本。 本文将以前版本的项目称为经典项目。 Azure Migrate 经典版将于 2024 年 2 月停用。 2024 年 2 月之后，Azure Migrate 经典版将不再受支持，并且经典版项目中的库存元数据也将删除。 如果仍需使用经典版 Azure Migrate 项目，那么以下是可以执行与不可执行的操作：
     - 不能再创建迁移项目。
     - 建议不要执行新的发现。
     - 仍可以访问现有项目。

@@ -4,24 +4,24 @@ description: Azure IoT Central 是一种 IoT 应用程序平台，用于简化�
 author: dominicbetts
 ms.author: dobett
 ms.date: 05/05/2020
-ms.topic: overview
+ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom:
 - mvc
 - device-developer
-ms.openlocfilehash: e33f48c9496ffa3cca9d8b1aa71d524be9a311bb
-ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
+ms.openlocfilehash: 326fed659be43be3115cae1d7c2b14d0708f4a96
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96122259"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100377799"
 ---
-# <a name="iot-central-device-development-overview"></a>IoT Central 设备开发概述
+# <a name="iot-central-device-development-guide"></a>IoT Central 设备开发指南
 
 本文适用于设备开发人员。
 
-IoT Central 应用程序使你可以在设备整个生命周期内监视和管理数百万台设备。 本概述适用于要执行以下操作的设备开发人员：实现代码以在连接到 IoT Central 的设备上运行。
+IoT Central 应用程序使你可以在设备整个生命周期内监视和管理数百万台设备。 本指南适用于要执行以下操作的设备开发人员：实现代码以在连接到 IoT Central 的设备上运行。
 
 设备使用以下基元与 IoT Central 应用程序进行交互：
 

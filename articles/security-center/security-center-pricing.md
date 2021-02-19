@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/26/2021
+ms.date: 02/14/2021
 ms.author: memildin
-ms.openlocfilehash: 9e537bfa782569fb8fa2a7957c6874bda69d8c06
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 845697b9d2fd8d43caa3a9992fea8a780b7d9b7c
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98805352"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100522863"
 ---
 # <a name="pricing-of-azure-security-center"></a>Azure 安全中心定价
 Azure 安全中心为 Azure、本地和其他云中运行的工作负载提供统一的安全管理和高级威胁防护功能。 它可以提供针对混合云工作负载的可见性和可控性、可减小在威胁下的曝光面的积极防御功能以及有助于随时响应快速演变的网络风险的智能检测功能。
@@ -118,10 +118,18 @@ Azure 订阅可能具有多个管理员，这些管理员有权更改定价设�
 若要确认折扣，请联系安全中心的支持团队，并提供相关工作区 ID、区域和每个相关许可证的许可证信息。
 
 ### <a name="my-subscription-has-azure-defender-for-servers-enabled-do-i-pay-for-not-running-servers"></a>我的订阅已为服务器启用了 Azure Defender，是否需要为未运行的服务器付费？ 
-不是。 在订阅上启用[适用于服务器的 Azure Defender](defender-for-servers-introduction.md) 时，仅针对正在运行的服务器按小时计费。 无需为关闭的任何服务器付费。 
+不是。 如果在订阅中启用[适用于服务器的 Azure Defender](defender-for-servers-introduction.md)，则在计算机处于已解除分配电源状态时，你都无需为此状态的任何计算机付费。 计算机按照下表中所示的电源状态进行计费：
 
-> [!TIP]
-> 这也适用于安全中心所保护的其他资源类型。 
+| 状态        | 说明                                                                                                                                      | 实例使用情况计费 |
+|--------------|--------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------|
+| 正在启动     | VM 正在启动。                                                                                                                               | 不计费            |
+| 正在运行      | VM 的正常工作状态                                                                                                                    | 计费                |
+| 正在停止     | 这是一种过渡性状态。 完成后，会显示为“已停止”。                                                                           | 计费                |
+| 已停止      | VM 已在来宾 OS 中关闭，或者已使用 PowerOff API 关闭。 硬件仍然分配给 VM 并保留在主机上。 | 计费                |
+| 正在解除分配 | 过渡性状态。 完成后，VM 会显示为“已解除分配”。                                                                             | 不计费            |
+| 已解除分配  | VM 已成功停止并从主机中删除。                                                                                  | 不计费            |
+
+:::image type="content" source="media/security-center-pricing/deallocated-virtual-machines.png" alt-text="显示已解除分配的计算机的 Azure 虚拟机":::
 
 ### <a name="will-i-be-charged-for-machines-without-the-log-analytics-agent-installed"></a>是否需要为未安装 Log Analytics 代理的计算机付费？
 是的。 在订阅上启用[适用于服务器的 Azure Defender](defender-for-servers-introduction.md) 时，即使未安装 Log Analytics 代理，该订阅中的计算机也会受到一系列保护。

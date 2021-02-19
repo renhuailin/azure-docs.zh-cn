@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 09/17/2020
 ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: bf0df4cc6e686b553baf8c2439c807d2f07ef440
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 701fe4ffc6147086dde740bfdb2dc7db92508e28
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807473"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100380230"
 ---
 # <a name="tutorial-use-feature-flags-in-an-aspnet-core-app"></a>教程：在 ASP.NET Core 应用中使用功能标志
 
@@ -218,7 +218,7 @@ config.AddAzureAppConfiguration(options =>
 
 ## <a name="use-dependency-injection-to-access-ifeaturemanager"></a>使用依赖项注入访问 IFeatureManager 
 
-对于某些操作（例如，手动检查功能标志值），需要获取 [IFeatureManager](/dotnet/api/microsoft.featuremanagement.ifeaturemanage) 的实例。 在 ASP.NET Core MVC 中，可以通过依赖项注入访问功能管理器 `IFeatureManager`。 在下面的示例中，`IFeatureManager` 类型的参数将添加到控制器的构造函数的签名中。 运行时在调用构造函数时会自动解析引用并提供接口的一个实例。 如果你使用的应用程序模板中的控制器在构造函数中已有一个或多个依赖项注入参数（例如 `ILogger`），则只需添加 `IFeatureManager` 作为附加参数：
+对于某些操作（例如，手动检查功能标志值），需要获取 [IFeatureManager](https://docs.microsoft.com/dotnet/api/microsoft.featuremanagement.ifeaturemanager?view=azure-dotnet-preview) 的实例。 在 ASP.NET Core MVC 中，可以通过依赖项注入访问功能管理器 `IFeatureManager`。 在下面的示例中，`IFeatureManager` 类型的参数将添加到控制器的构造函数的签名中。 运行时在调用构造函数时会自动解析引用并提供接口的一个实例。 如果你使用的应用程序模板中的控制器在构造函数中已有一个或多个依赖项注入参数（例如 `ILogger`），则只需添加 `IFeatureManager` 作为附加参数：
 
 ### <a name="net-5x"></a>[.NET 5.x](#tab/core5x)
     

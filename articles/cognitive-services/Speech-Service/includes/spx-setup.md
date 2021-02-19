@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/15/2020
 ms.author: v-demjoh
-ms.openlocfilehash: d94b83dd658193069f24202b978d32389eb82ac1
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 1eae40437e06bfb150e202db1f3bb4125baeaa97
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99580299"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100515177"
 ---
 ## <a name="download-and-install"></a>下载并安装
 
@@ -39,6 +39,16 @@ ms.locfileid: "99580299"
 
 #### <a name="linux-install"></a>[Linux 安装](#tab/linuxinstall)
 
+使用语音 CLI 的 x64 体系结构支持以下 Linux 分发版：
+
+* CentOS 7/8
+* Debian 9/10 
+* Red Hat Enterprise Linux (RHEL) 7/8
+* Ubuntu 16.04/18.04/20.04
+
+> [!NOTE]
+> 语音 SDK（而不是语音 CLI）支持其他体系结构。 有关详细信息，请参阅[关于语音 SDK](../speech-sdk.md)。
+
 按照以下步骤在 x64 CPU 上安装 Linux 上的语音 CLI：
 
 1. 安装 [.NET Core 3.1](/dotnet/core/install/linux)。
@@ -49,7 +59,7 @@ ms.locfileid: "99580299"
 若要查看语音 CLI 的帮助，请键入 `spx`。
 
 > [!NOTE]
-> 作为 NuGet 的替代方法，你可以下载 [zip 存档](https://aka.ms/speech/spx-zips.zip)，将 `spx-netcore-30-linux-x64` 解压缩到新的 `~/spx` 目录，在二进制文件上键入 `sudo chmod +r+x spx`，然后将 `~/spx` 路径添加到 PATH 系统变量。
+> 作为 NuGet 的替代方法，你可以下载 [zip 存档](https://aka.ms/speech/spx-zips.zip)，将 `spx-netcore-30-linux-x64.zip` 解压缩到新的 `~/spx` 目录，在二进制文件上键入 `sudo chmod +r+x spx`，然后将 `~/spx` 路径添加到 PATH 系统变量。
 
 
 #### <a name="docker-install-windows-linux-macos"></a>[Docker 安装（Windows、Linux、macOS）](#tab/dockerinstall)
@@ -107,7 +117,7 @@ sudo docker run -it -v ABSOLUTE_PATH:/data --rm msftspeech/spx
 例如，在 Windows 上，此命令将设置密钥：
 
 ```console
-docker run -it -v c:\spx-data:/data --rm msftspeech/spx config @key --set SUBSCRIPTION-KEY
+docker run -it -v c:\spx-data:/data --rm msftspeech/spx config --set @key SUBSCRIPTION-KEY
 ```
 
 若要使用命令行工具进行更扩展的交互，可以通过添加入口点参数启动具有交互式 bash shell 的容器。
@@ -160,8 +170,8 @@ Follow these instructions to create a shortcut:
 获得订阅密钥和区域标识符后（例如 `eastus` 和 `westus`），运行以下命令。
 
 ```console
-spx config @key --set SUBSCRIPTION-KEY
-spx config @region --set REGION
+spx config --set @key SUBSCRIPTION-KEY
+spx config --set @region REGION
 ```
 
 现在会存储订阅身份验证，用于将来的 SPX 请求。 如果需要删除这些已存储值中的任何一个，请运行 `spx config @region --clear` 或 `spx config @key --clear`。

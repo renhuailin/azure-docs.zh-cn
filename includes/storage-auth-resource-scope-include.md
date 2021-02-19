@@ -4,16 +4,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 07/16/2020
+ms.date: 02/10/2021
 ms.author: tamram
-ms.openlocfilehash: 96d8100f2cffcfb001a693575128ce19e742225d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 483f5853c321eee4ac6d10543f0e360a0a5e54b9
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87534120"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100373738"
 ---
-向安全主体分配 Azure 角色之前，请确定安全主体应具有的访问权限的范围。 最佳做法规定，始终最好只授予最小的可能范围。
+向安全主体分配 Azure RBAC 角色之前，请确定安全主体应具有的访问权限的范围。 最佳做法规定，始终最好只授予最小的可能范围。 在较广范围内中定义的 Azure RBAC 角色由其下的资源继承。
 
 以下列表描述可以限定 Azure blob 和队列资源访问权限范围的等级，从最窄的范围开始：
 

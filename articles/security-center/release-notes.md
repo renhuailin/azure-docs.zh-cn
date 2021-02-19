@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/04/2021
+ms.date: 02/10/2021
 ms.author: memildin
-ms.openlocfilehash: fe031fa6de86b8059ba175fc4e1df6385ca7e796
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: d40d6107d3eee4b45f2184a61b1cdfc99559e9c7
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99551019"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100378994"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure 安全中心的新增功能
 
@@ -39,6 +39,7 @@ ms.locfileid: "99551019"
 - [直接链接到建议详细信息页中的策略](#direct-link-to-policy-from-recommendation-details-page)
 - [SQL 数据分类建议不再影响安全功能分数](#sql-data-classification-recommendation-no-longer-affects-your-secure-score)
 - [工作流自动化可由对监管合规性评估（预览版）的更改触发](#workflow-automations-can-be-triggered-by-changes-to-regulatory-compliance-assessments-preview)
+- [资产清单页增强功能](#asset-inventory-page-enhancements)
 
 ### <a name="kubernetes-workload-protection-recommendations-released-for-general-availability-ga"></a>Kubernetes 工作负载保护建议发布了正式版 (GA)
 
@@ -70,16 +71,32 @@ ms.locfileid: "99551019"
 
 
 ### <a name="sql-data-classification-recommendation-no-longer-affects-your-secure-score"></a>SQL 数据分类建议不再影响安全功能分数
-
 “应对 SQL 数据库中的敏感数据进行分类”建议不再影响安全功能分数。 这是“应用数据分类”安全控件中唯一的建议，因此该控件目前的安全功能分数值为 0。
 
 
 ### <a name="workflow-automations-can-be-triggered-by-changes-to-regulatory-compliance-assessments-preview"></a>工作流自动化可由对监管合规性评估（预览版）的更改触发
-
 我们向工作流自动化的触发器选项添加了第三种数据类型：对监管合规性评估的更改。
 
 :::image type="content" source="media/release-notes/regulatory-compliance-triggers-workflow-automation.png" alt-text="使用对监管合规性评估的更改来触发工作流自动化" lightbox="media/release-notes/regulatory-compliance-triggers-workflow-automation.png":::
 
+
+### <a name="asset-inventory-page-enhancements"></a>资产清单页增强功能
+安全中心的资产清单页在以下方面有所改进：
+
+- 页面顶部的摘要现在包括“未注册的订阅”，显示未启用安全中心的订阅数。
+
+    :::image type="content" source="media/release-notes/unregistered-subscriptions.png" alt-text="资产清单页面顶部摘要中未注册订阅的计数":::
+
+- 筛选器进行了扩展和增强，包括：
+    - **计数** - 每个筛选器都会显示满足每一类条件的资源数
+
+        :::image type="content" source="media/release-notes/counts-in-inventory-filters.png" alt-text="Azure 安全中心“资产清单”页的筛选器中的计数":::
+
+    - **包含豁免筛选器**（可选）- 将结果范围缩小为有/没有豁免的资源。 默认情况下不会显示此筛选器，但可从 **添加筛选器** 按钮进行访问。
+
+        :::image type="content" source="media/release-notes/adding-contains-exemption-filter.gif" alt-text="在 Azure 安全中心的“资产清单”页中添加筛选器“包含豁免”":::
+
+详细了解如何[利用资产清单浏览和管理资源](asset-inventory.md)。
 
 ## <a name="january-2021"></a>2021 年 1 月
 
@@ -630,7 +647,7 @@ NIST SP 800-171 R2 标准现可以内置计划的形式提供，用于安全中�
 
 该仪表板包含一组默认的法规标准。 如果提供的任何标准都与你的组织不相关，那么现在简单操作一下就可在订阅的 UI 中将它们删除。 只能在“订阅”级别删除标准，而不能从管理组范围删除。
 
-有关详细信息，请参阅[从仪表板中删除标准](update-regulatory-compliance-packages.md#removing-a-standard-from-your-dashboard)。
+有关详细信息，请参阅[从仪表板中删除标准](update-regulatory-compliance-packages.md#remove-a-standard-from-your-dashboard)。
 
 
 ### <a name="microsoftsecuritysecuritystatuses-table-removed-from-azure-resource-graph-arg"></a>从 Azure Resource Graph (ARG) 中删除了 Microsoft.Security/securityStatuses 表

@@ -212,6 +212,8 @@
       items:
         - name: 创建索引器
           href: search-howto-create-indexers.md
+        - name: 运行或重置索引器
+          href: search-howto-run-reset-indexers.md
         - name: 安排索引器
           href: search-howto-schedule-indexers.md
         - name: 定义字段映射
@@ -404,7 +406,7 @@
           href: search-howto-monitor-indexers.md
         - name: 搜索流量分析
           href: search-traffic-analytics.md
-    - name: 故障排除
+    - name: 疑难解答
       items:
         - name: 索引器问题
           href: search-indexer-troubleshooting.md
@@ -530,6 +532,8 @@
   items:
     - name: Azure 社区支持
       href: 'https://azure.microsoft.com/support/community/?product=search'
+    - name: 合作伙伴聚焦
+      href: resource-partners-knowledge-mining.md
     - name: Azure 更新
       href: 'https://azure.microsoft.com/updates/?product=search'
     - name: 反馈论坛 (UserVoice)
@@ -554,8 +558,6 @@
           href: 'https://www.pluralsight.com/courses/azure-adding-search-abilities-apps'
         - name: 开发人员课程 (Pluralsight)
           href: 'https://www.pluralsight.com/courses/microsoft-azure-textual-content-search-enabling'
-    - name: 合作伙伴解决方案
-      href: resource-partners-knowledge-mining.md
     - name: 常见问题解答
       href: search-faq-frequently-asked-questions.md
     - name: 定价
