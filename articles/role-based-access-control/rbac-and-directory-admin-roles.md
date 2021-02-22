@@ -15,12 +15,12 @@ ms.date: 01/04/2021
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro;
-ms.openlocfilehash: 0b43f30c25767a135b98b756d61ed2535e1fbd22
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: daab07a72f61cfdf4f39cae03a1c61bd18f37a8f
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99092194"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100557426"
 ---
 # <a name="classic-subscription-administrator-roles-azure-roles-and-azure-ad-roles"></a>经典订阅管理员角色、Azure 角色和 Azure AD 角色
 
@@ -91,7 +91,7 @@ Azure RBAC 是基于 [Azure 资源管理器](../azure-resource-manager/managemen
 
 ![Azure 门户中的内置角色](./media/rbac-and-directory-admin-roles/roles-list.png)
 
-有关详细信息，请参阅[使用 Azure 门户添加或删除 Azure 角色分配](role-assignments-portal.md)。
+有关详细信息，请参阅[使用 Azure 门户分配 Azure 角色](role-assignments-portal.md)。
 
 ## <a name="azure-ad-roles"></a>Azure AD 角色
 

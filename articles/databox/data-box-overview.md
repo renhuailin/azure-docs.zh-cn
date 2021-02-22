@@ -9,12 +9,12 @@ ms.subservice: pod
 ms.topic: overview
 ms.date: 12/18/2020
 ms.author: alkohli
-ms.openlocfilehash: dd71b03f55cc1522727f6c496c1bdbe0f42cb828
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: 13c07da7393c70bb1fc61930dd1179994c68ed75
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97678610"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100389801"
 ---
 # <a name="what-is-azure-data-box"></a>什么是 Azure Data Box？
 
@@ -42,7 +42,7 @@ Data Box 非常适合在在无网络连接到有限网络连接的情况下传�
 
 - **灾难恢复** - 将来自 Azure 的数据副本还原到本地网络。 在典型的灾难恢复场景中，大量的 Azure 数据会被导出到 Data Box。 Microsoft 随后会发送此 Data Box，数据很快就会在本地还原。
 
-- **安全要求** - 由于政府或安全要求，你需要能够从 Azure 导出数据。 例如，Azure 存储在 US Secret 和 Top Secret 云中可用时，你可以使用 Data Box 从 Azure 导出数据。 
+- **安全要求** - 由于政府或安全要求，需要能够从 Azure 导出数据。 例如，Azure 存储在 US Secret 和 Top Secret 云中可用时，你可以使用 Data Box 从 Azure 导出数据。 
 
 - **迁移回本地或其他云服务提供商** - 当你想要将所有数据移回本地或其他云服务提供商时，请通过 Data Box 导出数据以迁移工作负载。
 

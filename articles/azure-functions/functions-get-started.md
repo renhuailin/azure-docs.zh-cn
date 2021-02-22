@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 11/19/2020
 ms.author: cshoe
 zone_pivot_groups: programming-languages-set-functions-lang-workers
-ms.openlocfilehash: 78fd13825becfa186960a0dfd3dee83c312c9bcf
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: e969cc4bee9f09f4279d137abb33b75ca0672ffc
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96326941"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100364709"
 ---
 # <a name="getting-started-with-azure-functions"></a>Azure Functions 入门
 
@@ -28,6 +28,7 @@ ms.locfileid: "96326941"
 | **创建第一个函数** | 使用以下工具之一：<br><br><li>[Visual Studio](./functions-create-your-first-function-visual-studio.md)<li>[Visual Studio Code](./create-first-function-vs-code-csharp.md)<li>[命令行](./create-first-function-cli-csharp.md) |
 | **查看正在运行的函数** | <li>[Azure 示例浏览器](/samples/browse/?expanded=azure&languages=csharp&products=azure-functions)<li>[Azure 社区库](https://www.serverlesslibrary.net/?technology=Functions%202.x&language=C%23) |
 | **了解交互式教程**| <li>[为业务场景选择最佳的 Azure 无服务器技术](/learn/modules/serverless-fundamentals/)<li>[结构良好的框架 - 性能效率](/learn/modules/azure-well-architected-performance-efficiency/)<li>[使用触发器执行 Azure 函数](/learn/modules/execute-azure-function-with-triggers/) <br><br>请参阅 Microsoft Learn，查看[一系列完整的交互式教程](/learn/browse/?expanded=azure&products=azure-functions)。|
+| **查看最佳实践** |<li>[性能和可靠性](./functions-best-practices.md)<li>[管理连接](./manage-connections.md)<li>[错误处理和函数重试](./functions-bindings-error-pages.md?tabs=csharp)<li>[安全性](./security-concepts.md)|
 | **深入了解详细信息** | <li>了解函数如何[自动增加或减少](./functions-scale.md)实例以满足需求<li>了解可用的各种[部署方法](./functions-deployment-technologies.md)<li>使用内置的[监视工具](./functions-monitoring.md)来帮助分析函数<li>阅读 [C# 语言参考](./functions-dotnet-class-library.md)|
 
 ::: zone-end
@@ -38,6 +39,7 @@ ms.locfileid: "96326941"
 | **创建第一个函数** | 使用以下工具之一：<br><br><li>[Visual Studio Code](./create-first-function-vs-code-java.md)<li>[使用终端/命令提示符的 Java/Maven 函数](./create-first-function-cli-java.md)<li>[Gradle](./functions-create-first-java-gradle.md)<li>[Eclipse](./functions-create-maven-eclipse.md)<li>[IntelliJ IDEA](./functions-create-maven-intellij.md) |
 | **查看正在运行的函数** | <li>[Azure 示例浏览器](/samples/browse/?expanded=azure&languages=java&products=azure-functions)<li>[Azure 社区库](https://www.serverlesslibrary.net/?technology=Functions%202.x&language=Java) |
 | **了解交互式教程**| <li>[为业务场景选择最佳的 Azure 无服务器技术](/learn/modules/serverless-fundamentals/)<li>[结构良好的框架 - 性能效率](/learn/modules/azure-well-architected-performance-efficiency/)<li>[使用 Azure Functions 的 Maven 插件开发应用](/learn/modules/develop-azure-functions-app-with-maven-plugin/) <br><br>请参阅 Microsoft Learn，查看[一系列完整的交互式教程](/learn/browse/?expanded=azure&products=azure-functions)。|
+| **查看最佳实践** |<li>[性能和可靠性](./functions-best-practices.md)<li>[管理连接](./manage-connections.md)<li>[错误处理和函数重试](./functions-bindings-error-pages.md?tabs=java)<li>[安全性](./security-concepts.md)|
 | **深入了解详细信息** | <li>了解函数如何[自动增加或减少](./functions-scale.md)实例以满足需求<li>了解可用的各种[部署方法](./functions-deployment-technologies.md)<li>使用内置的[监视工具](./functions-monitoring.md)来帮助分析函数<li>阅读 [Java 语言参考](./functions-reference-java.md)|
 ::: zone-end
 
@@ -47,6 +49,7 @@ ms.locfileid: "96326941"
 | **创建第一个函数** | 使用以下工具之一：<br><br><li>[Visual Studio Code](./create-first-function-vs-code-node.md)<li>[Node.js 终端/命令提示符](./create-first-function-cli-java.md) |
 | **查看正在运行的函数** | <li>[Azure 示例浏览器](/samples/browse/?expanded=azure&languages=javascript%2ctypescript&products=azure-functions)<li>[Azure 社区库](https://www.serverlesslibrary.net/?technology=Functions%202.x&language=JavaScript%2CTypeScript) |
 | **了解交互式教程** | <li>[为业务场景选择最佳的 Azure 无服务器技术](/learn/modules/serverless-fundamentals/)<li>[结构良好的框架 - 性能效率](/learn/modules/azure-well-architected-performance-efficiency/)<li>[使用 Azure Functions 构建无服务器 API](/learn/modules/build-api-azure-functions/)<li>[使用 Azure Functions 创建无服务器逻辑](/learn/modules/create-serverless-logic-with-azure-functions/)<li>[使用 Azure Functions 将 Node.js 和 Express API 重构到无服务器 API](/learn/modules/shift-nodejs-express-apis-serverless/) <br><br>请参阅 Microsoft Learn，查看[一系列完整的交互式教程](/learn/browse/?expanded=azure&products=azure-functions)。|
+| **查看最佳实践** |<li>[性能和可靠性](./functions-best-practices.md)<li>[管理连接](./manage-connections.md)<li>[错误处理和函数重试](./functions-bindings-error-pages.md?tabs=javascript)<li>[安全性](./security-concepts.md)|
 | **深入了解详细信息** | <li>了解函数如何[自动增加或减少](./functions-scale.md)实例以满足需求<li>了解可用的各种[部署方法](./functions-deployment-technologies.md)<li>使用内置的[监视工具](./functions-monitoring.md)来帮助分析函数<li>阅读 [JavaScript](./functions-reference-node.md) 或 [TypeScript](./functions-reference-node.md#typescript) 语言参考|
 ::: zone-end
 
@@ -56,6 +59,7 @@ ms.locfileid: "96326941"
 | **创建第一个函数** | <li>使用 [Visual Studio Code](./create-first-function-vs-code-powershell.md) |
 | **查看正在运行的函数** | <li>[Azure 示例浏览器](/samples/browse/?expanded=azure&languages=powershell&products=azure-functions)<li>[Azure 社区库](https://www.serverlesslibrary.net/?technology=Functions%202.x&language=PowerShell) |
 | **了解交互式教程** | <li>[为业务场景选择最佳的 Azure 无服务器技术](/learn/modules/serverless-fundamentals/)<li>[结构良好的框架 - 性能效率](/learn/modules/azure-well-architected-performance-efficiency/)<li>[使用 Azure Functions 构建无服务器 API](/learn/modules/build-api-azure-functions/)<li>[使用 Azure Functions 创建无服务器逻辑](/learn/modules/create-serverless-logic-with-azure-functions/)<li>[使用触发器执行 Azure 函数](/learn/modules/execute-azure-function-with-triggers/) <br><br>请参阅 Microsoft Learn，查看[一系列完整的交互式教程](/learn/browse/?expanded=azure&products=azure-functions)。|
+| **查看最佳实践** |<li>[性能和可靠性](./functions-best-practices.md)<li>[管理连接](./manage-connections.md)<li>[错误处理和函数重试](./functions-bindings-error-pages.md?tabs=powershell)<li>[安全性](./security-concepts.md)|
 | **深入了解详细信息** | <li>了解函数如何[自动增加或减少](./functions-scale.md)实例以满足需求<li>了解可用的各种[部署方法](./functions-deployment-technologies.md)<li>使用内置的[监视工具](./functions-monitoring.md)来帮助分析函数<li>阅读 [PowerShell 语言参考](./functions-reference-powershell.md)）|
 ::: zone-end
 
@@ -65,6 +69,7 @@ ms.locfileid: "96326941"
 | **创建第一个函数** | 使用以下工具之一：<br><br><li>[Visual Studio Code](./create-first-function-vs-code-csharp.md?pivots=programming-language-python)<li>[终端/命令提示符](./create-first-function-cli-csharp.md?pivots=programming-language-python) |
 | **查看正在运行的函数** | <li>[Azure 示例浏览器](/samples/browse/?expanded=azure&languages=python&products=azure-functions)<li>[Azure 社区库](https://www.serverlesslibrary.net/?technology=Functions%202.x&language=Python) |
 | **了解交互式教程** | <li>[为业务场景选择最佳的 Azure 无服务器技术](/learn/modules/serverless-fundamentals/)<li>[结构良好的框架 - 性能效率](/learn/modules/azure-well-architected-performance-efficiency/)<li>[使用 Azure Functions 构建无服务器 API](/learn/modules/build-api-azure-functions/)<li>[使用 Azure Functions 创建无服务器逻辑](/learn/modules/create-serverless-logic-with-azure-functions/) <br><br>请参阅 Microsoft Learn，查看[一系列完整的交互式教程](/learn/browse/?expanded=azure&products=azure-functions)。|
+| **查看最佳实践** |<li>[性能和可靠性](./functions-best-practices.md)<li>[管理连接](./manage-connections.md)<li>[错误处理和函数重试](./functions-bindings-error-pages.md?tabs=python)<li>[安全性](./security-concepts.md)<li>[提高吞吐量性能](./python-scale-performance-reference.md)|
 | **深入了解详细信息** | <li>了解函数如何[自动增加或减少](./functions-scale.md)实例以满足需求<li>了解可用的各种[部署方法](./functions-deployment-technologies.md)<li>使用内置的[监视工具](./functions-monitoring.md)来帮助分析函数<li>阅读 [Python 语言参考](./functions-reference-python.md)|
 ::: zone-end
 

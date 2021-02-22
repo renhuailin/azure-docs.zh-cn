@@ -10,12 +10,12 @@ ms.subservice: secrets
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 78e9c50cb0601f6be69ae61f3a8e02621c7dd808
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 55814dff5cba572e2e22b5a0f9971bc920e32372
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98786033"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100526624"
 ---
 # <a name="about-azure-key-vault-secrets"></a>关于 Azure Key Vault 机密
 
@@ -74,7 +74,7 @@ Key Vault 中托管的机密的访问控制是在包含这些机密的 Key Vault
 - [使用 CLI 分配 Key Vault 访问策略](../general/assign-access-policy-cli.md)
 - [使用 PowerShell 分配 Key Vault 访问策略](../general/assign-access-policy-powershell.md)
 - [使用 Azure 门户分配 Key Vault 访问策略](../general/assign-access-policy-portal.md)
-- [使用 Azure 基于角色的访问控制提供对 Key Vault 密钥、证书和机密的访问权限（预览）](../general/rbac-guide.md)
+- [使用 Azure 基于角色的访问控制提供对 Key Vault 密钥、证书和机密的访问权限](../general/rbac-guide.md)
 
 ## <a name="secret-tags"></a>机密标记  
 可以用标记的形式指定其他特定于应用程序的元数据。 Key Vault 支持多达 15 种标记，每种标记可以有 256 个字符的名称和 256 个字符的值。  
@@ -124,7 +124,7 @@ Key Vault 可以管理 [Azure 存储帐户](../../storage/common/storage-account
 - [使用 CLI 分配 Key Vault 访问策略](../general/assign-access-policy-cli.md)
 - [使用 PowerShell 分配 Key Vault 访问策略](../general/assign-access-policy-powershell.md)
 - [使用 Azure 门户分配 Key Vault 访问策略](../general/assign-access-policy-portal.md)
-- [使用 Azure 基于角色的访问控制提供对 Key Vault 密钥、证书和机密的访问权限（预览）](../general/rbac-guide.md)
+- [使用 Azure 基于角色的访问控制提供对 Key Vault 密钥、证书和机密的访问权限](../general/rbac-guide.md)
 
 
 ## <a name="next-steps"></a>后续步骤

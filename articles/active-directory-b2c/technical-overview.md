@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 05/28/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: fef192ab273a0e53958cda315932f91b427a5d7d
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 3a044faf5546a22c997b8358d8809e240d563ac9
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97108377"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100556812"
 ---
 # <a name="technical-and-feature-overview-of-azure-active-directory-b2c"></a>Azure Active Directory B2C 的技术和功能概述
 
@@ -79,7 +79,7 @@ Azure AD B2C 定义多种类型的用户帐户。 Azure Active Directory、Azure
 
 ![使用社交帐户 (Facebook) 进行移动登录的示例](media/technical-overview/external-idp.png)
 
-若要了解如何在 Azure AD B2C 中添加标识提供者，请参阅[教程：将标识提供者添加到 Azure Active Directory B2C 中的应用程序](tutorial-add-identity-providers.md)。
+若要了解如何在 Azure AD B2C 中添加标识提供者，请参阅[将标识提供者添加到 Azure Active Directory B2C 中的应用程序](add-identity-provider.md)。
 
 ## <a name="identity-experiences-user-flows-or-custom-policies"></a>标识体验：用户流或自定义策略
 

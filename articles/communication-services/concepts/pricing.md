@@ -9,19 +9,19 @@ ms.author: mikben
 ms.date: 09/29/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 779fa577b25bd4f2aa92aa8b8cc1244a58bdf1ae
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 883be25716d94130984baef5e7a1eab80888a2b9
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92126184"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100558464"
 ---
 # <a name="pricing-scenarios"></a>定价方案
 
 [!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
 
-Azure 通信服务的价格通常基于即用即付模型。
+Azure 通信服务的价格通常基于即用即付模型。 以下示例中的价格用于说明目的，可能不会反映最新的 Azure 定价。
 
 ## <a name="voicevideo-calling-and-screen-sharing"></a>语音/视频呼叫和屏幕共享
 
@@ -48,9 +48,32 @@ Alice 与其同事 Bob 和 Charlie 进行了一次群呼。 Alice 和 Bob 使用
 
 群呼的总成本：0.48 美元 + 0.172 美元 = 0.652 美元
 
+### <a name="pricing-example-a-user-of-the-communication-services-js-client-library-joins-a-scheduled-microsoft-teams-meeting"></a>定价示例：一位通信服务 JS 客户端库用户加入计划的 Microsoft Teams 会议
+
+Alice 医生与她的患者 Bob 会面。 Alice 将从 Teams 桌面应用程序加入探访。 Bob 将收到一个通过医疗保健提供商网站加入的链接，该网站使用通信服务 JS 客户端库连接到会议。 Bob 将使用移动电话通过 Web 浏览器（iPhone 通过 Safari）进入会议。 虚拟探访期间可以聊天。 
+
+- 通话总时长为 30 分钟。
+- Alice 和 Bob 参与了整个通话。 Alice 在通话开始五分钟后打开她的视频，并共享屏幕 13 分钟。 Bob 在整个通话期间均打开了视频。
+- Alice 发送了 5 条消息，Bob 回复了 3 条消息。
+
+
+成本计算
+
+- 1 个参与者 (Bob) x 30 分钟 x 0.004 美元/参与者/分钟 = 0.12 美元 [视频和音频以相同费率进行收费]
+- 1 个参与者 (Alice) x 30 分钟 x 0.000 美元/参与者/分钟 = 0.0* 美元。 
+- 1 个参与方 (Bob) x 3 条聊天消息 x 0.0008 美元 = 0.0024 美元。
+- 1 个参与者 (Alice) x 5 条聊天消息 x 0.000 美元 = 0.0* 美元。 
+
+*Alice 的参与费用由她的 Teams 许可证涵盖。 为了方便起见，Azure 发票将显示 Teams 用户与通信服务用户之间产生的分钟数和聊天消息数，但来自 Teams 客户端的这些分钟数和消息数不会产生费用。
+
+**此次探访的总费用**： 
+- 用户使用通信服务 JS 客户端库加入：0.12 美元 + 0.0024 美元 = 0.1224 美元
+- 用户通过 Teams 桌面应用程序加入：0 美元（Teams 许可证涵盖） 
+
+
 ## <a name="chat"></a>聊天
 
-借助通信服务，你可以利用在 2 个或更多用户之间发送和接收聊天消息的功能来增强应用程序。 聊天客户端库适用于 JavaScript、.NET、Python 和 Java。 请参阅[此页面以了解客户端库](./sdk-options.md)
+借助通信服务，可以利用在 2 个或更多用户之间发送和接收聊天消息的功能来强化应用程序。 聊天客户端库适用于 JavaScript、.NET、Python 和 Java。 请参阅[此页面以了解客户端库](./sdk-options.md)
 
 ### <a name="price"></a>价格
 
@@ -58,7 +81,7 @@ Alice 与其同事 Bob 和 Charlie 进行了一次群呼。 Alice 和 Bob 使用
 
 ### <a name="pricing-example-chat-between-two-users"></a>定价示例：两个用户之间的聊天 
 
-Geeta 启动了与 Emily 的聊天线程以共享更新并发送 5 条消息。 聊天持续了 10 分钟，其中 Geeta 和 Emily 相互发送了 15 条消息。
+Geeta 启动了与 Emily 的聊天线程以共享更新并发送 5 条消息。 聊天时长为 10 分钟。 Geeta 和 Emily 每人另外发了 15 条消息。
 
 成本计算 
 - 发送的消息数 (5 + 15 + 15) x 0.0008 美元 = 0.028 美元

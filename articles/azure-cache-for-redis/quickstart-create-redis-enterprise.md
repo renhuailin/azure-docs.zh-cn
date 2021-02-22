@@ -1,20 +1,20 @@
 ---
-title: 快速入门：创建企业层缓存
-description: 本快速入门介绍如何创建 Azure Cache for Redis 企业层的实例
+title: 快速入门：创建 Redis Enterprise 缓存
+description: 本快速入门介绍如何在企业层中创建 Azure Cache for Redis 的实例
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 10/28/2020
-ms.openlocfilehash: 95f6e2cf7803ff0b152f33c08f170725b5a0e94e
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.date: 02/08/2021
+ms.openlocfilehash: 50535ab9ac2a3541ade7b9abd8f355bbeaf6d4b3
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95795669"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100364998"
 ---
-# <a name="quickstart-create-an-enterprise-tier-cache-preview"></a>快速入门：创建企业层缓存（预览版）
+# <a name="quickstart-create-a-redis-enterprise-cache-preview"></a>快速入门：创建 Redis Enterprise 缓存（预览版）
 
 Azure Cache for Redis 企业层在 Azure 上提供了完全集成和托管的 [Redis Enterprise](https://redislabs.com/redis-enterprise/)。 此功能目前以预览版的形式提供。 此预览版中有两个新层：
 * 企业层，它在虚拟机上使用易失存储器 (DRAM) 存储数据
@@ -22,7 +22,7 @@ Azure Cache for Redis 企业层在 Azure 上提供了完全集成和托管的 [R
 
 ## <a name="prerequisites"></a>先决条件
 
-在开始之前，你需要一个 Azure 订阅。 如果没有帐户，请创建一个[帐户](https://azure.microsoft.com/)。 有关详细信息，请参阅[企业层要求](cache-overview.md#enterprise-tier-requirements)。
+在开始之前，你需要一个 Azure 订阅。 如果没有帐户，请创建一个[帐户](https://azure.microsoft.com/)。 有关详细信息，请参阅[企业层要求](cache-overview.md#enterprise-and-enterprise-flash-tier-requirements)。
 
 ## <a name="create-a-cache"></a>创建缓存
 1. 若要创建缓存，请使用预览版邀请中的链接登录到 Azure 门户，然后选择“创建资源”。

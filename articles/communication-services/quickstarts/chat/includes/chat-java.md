@@ -10,12 +10,12 @@ ms.date: 9/1/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: edf48bc75817b3510264d852eb9cc717ed022f33
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 6a075ae721d767faf25e4774dd545d36eedfaef4
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94915140"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100379640"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -56,7 +56,7 @@ mvn archetype:generate -DgroupId=com.communication.quickstart -DartifactId=commu
 <dependency>
     <groupId>com.azure</groupId>
     <artifactId>azure-communication-chat</artifactId>
-    <version>1.0.0-beta.3</version> 
+    <version>1.0.0-beta.4</version> 
 </dependency>
 ```
 
@@ -66,9 +66,8 @@ mvn archetype:generate -DgroupId=com.communication.quickstart -DartifactId=commu
 <dependency>
     <groupId>com.azure</groupId>
     <artifactId>azure-communication-common</artifactId>
-    <version>1.0.0-beta.3</version> 
+    <version>1.0.0-beta.4</version> 
 </dependency>
-
 ```
 
 ## <a name="object-model"></a>对象模型
@@ -83,7 +82,7 @@ mvn archetype:generate -DgroupId=com.communication.quickstart -DartifactId=commu
 | ChatThreadAsyncClient | 异步聊天会话功能需要此类。 通过 ChatAsyncClient 获取实例，并使用它来发送/接收/更新/删除消息、添加/删除/获取用户、发送键入通知和阅读回执。 |
 
 ## <a name="create-a-chat-client"></a>创建聊天客户端
-若要创建聊天客户端，需使用通信服务终结点以及在前提步骤中生成的访问令牌。 使用用户访问令牌可以生成直接对 Azure 通信服务进行身份验证的客户端应用程序。 在服务器上生成这些令牌后，将它们传回客户端设备。 你需要使用 Common 客户端库中的 CommunicationUserCredential 类将令牌传递到聊天客户端。 
+若要创建聊天客户端，需使用通信服务终结点以及在前提步骤中生成的访问令牌。 使用用户访问令牌可以生成直接对 Azure 通信服务进行身份验证的客户端应用程序。 在服务器上生成这些令牌后，将它们传回客户端设备。 需要使用 Common 客户端库中的 CommunicationTokenCredential 类将令牌传递到聊天客户端。 
 
 添加导入语句时，请确保仅从 com.azure.communication.chat 和 com.azure.communication.chat.models 命名空间中添加，而不要从 com.azure.communication.chat.implementation 命名空间中添加。 在通过 Maven 生成的 App.java 文件中，可以使用以下代码开始操作：
 
@@ -112,8 +111,8 @@ public class App
         // User access token fetched from your trusted service
         String userAccessToken = "<USER_ACCESS_TOKEN>";
 
-        // Create a CommunicationUserCredential with the given access token, which is only valid until the token is valid
-        CommunicationUserCredential userCredential = new CommunicationUserCredential(userAccessToken);
+        // Create a CommunicationTokenCredential with the given access token, which is only valid until the token is valid
+        CommunicationTokenCredential userCredential = new CommunicationTokenCredential(userAccessToken);
 
         // Initialize the chat client
         final ChatClientBuilder builder = new ChatClientBuilder();
@@ -132,27 +131,27 @@ public class App
 `createChatThreadOptions` 用于描述会话请求。
 
 - 使用 `topic` 为该聊天提供一个主题；在创建聊天会话后可使用 `UpdateThread` 函数更新主题。
-- 使用 `members` 列出要添加到会话的会话成员。 `ChatThreadMember` 使用你在[用户访问令牌](../../access-tokens.md)快速入门中创建的用户。
+- 使用 `participants` 列出要添加到会话的会话参与者。 `ChatParticipant` 使用你在[用户访问令牌](../../access-tokens.md)快速入门中创建的用户。
 
-响应 `chatThreadClient` 用于对创建的聊天会话执行操作：向聊天会话添加成员、发送消息、删除消息等。它包含 `chatThreadId` 属性（聊天会话的唯一 ID）。 可以通过公共方法 .getChatThreadId() 访问该属性。
+响应 `chatThreadClient` 用于对创建的聊天会话执行操作：向聊天会话添加参与者、发送消息、删除消息等。它包含 `chatThreadId` 属性（聊天会话的唯一 ID）。 可以通过公共方法 .getChatThreadId() 访问该属性。
 
 ```Java
-List<ChatThreadMember> members = new ArrayList<ChatThreadMember>();
+List<ChatParticipant> participants = new ArrayList<ChatParticipant>();
 
-ChatThreadMember firstThreadMember = new ChatThreadMember()
+ChatParticipant firstThreadParticipant = new ChatParticipant()
     .setUser(firstUser)
-    .setDisplayName("Member Display Name 1");
+    .setDisplayName("Participant Display Name 1");
     
-ChatThreadMember secondThreadMember = new ChatThreadMember()
+ChatParticipant secondThreadParticipant = new ChatParticipant()
     .setUser(secondUser)
-    .setDisplayName("Member Display Name 2");
+    .setDisplayName("Participant Display Name 2");
 
-members.add(firstThreadMember);
-members.add(secondThreadMember);
+participants.add(firstThreadParticipant);
+participants.add(secondThreadParticipant);
 
 CreateChatThreadOptions createChatThreadOptions = new CreateChatThreadOptions()
     .setTopic("Topic")
-    .setMembers(members);
+    .setParticipants(participants);
 ChatThreadClient chatThreadClient = chatClient.createChatThread(createChatThreadOptions);
 String chatThreadId = chatThreadClient.getChatThreadId();
 ```
@@ -163,7 +162,7 @@ String chatThreadId = chatThreadClient.getChatThreadId();
 `sendChatMessageOptions` 用于描述聊天消息请求。
 
 - 使用 `content` 提供聊天消息内容。
-- 使用 `priority` 指定聊天消息优先级别，如“正常”或“高”；此属性可用于在应用中为接收人用户提供 UI 指示器，以凸显消息或执行自定义业务逻辑。
+- 使用 `type` 指定聊天消息内容类型（文本或 HTML）。
 - 使用 `senderDisplayName` 指定发送方的显示名称。
 
 响应 `sendChatMessageResult` 包含 `id`（消息的唯一 ID）。
@@ -171,7 +170,7 @@ String chatThreadId = chatThreadClient.getChatThreadId();
 ```Java
 SendChatMessageOptions sendChatMessageOptions = new SendChatMessageOptions()
     .setContent("Message content")
-    .setPriority(ChatMessagePriority.NORMAL)
+    .setType(ChatMessageType.TEXT)
     .setSenderDisplayName("Sender Display Name");
 
 SendChatMessageResult sendChatMessageResult = chatThreadClient.sendMessage(sendChatMessageOptions);
@@ -181,7 +180,7 @@ String chatMessageId = sendChatMessageResult.getId();
 
 ## <a name="get-a-chat-thread-client"></a>获取聊天会话客户端
 
-`getChatThreadClient` 方法返回某个已存在的会话的会话客户端。 它可用于对创建的会话执行操作：添加成员、发送消息等。`chatThreadId` 是现有聊天会话的唯一 ID。
+`getChatThreadClient` 方法返回某个已存在的会话的会话客户端。 可使用该方法对创建的会话执行操作：添加参与者、发送消息等。`chatThreadId` 是现有聊天会话的唯一 ID。
 
 ```Java
 String chatThreadId = "Id";
@@ -206,7 +205,7 @@ chatThreadClient.listMessages().iterableByPage().forEach(resp -> {
 
 `listMessages` 返回可使用 `chatMessage.getType()` 标识的不同类型的消息。 这些类型包括：
 
-- `Text`：会话成员发送的普通聊天消息。
+- `Text`：会话参与者发送的普通聊天消息。
 
 - `ThreadActivity/TopicUpdate`：指示主题已更新的系统消息。
 
@@ -216,44 +215,44 @@ chatThreadClient.listMessages().iterableByPage().forEach(resp -> {
 
 有关详细信息，请参阅[消息类型](../../../concepts/chat/concepts.md#message-types)。
 
-## <a name="add-a-user-as-member-to-the-chat-thread"></a>将用户作为成员添加到聊天会话中
+## <a name="add-a-user-as-participant-to-the-chat-thread"></a>将用户作为参与者添加到聊天会话
 
-创建聊天会话后，可以在其中添加和删除用户。 通过添加用户，可以向他们授予访问权限，使其能够在聊天会话中发送消息，以及添加/删除其他成员。 首先需要获取该用户的新访问令牌和标识。 在调用 addMembers 方法之前，请确保已获取该用户的新访问令牌和标识。 用户需要使用该访问令牌才能初始化聊天客户端。
+创建聊天会话后，可以在其中添加和删除用户。 通过添加用户，可以向他们授予访问权限，使其能够在聊天会话中发送消息，以及添加/删除其他参与者。 首先需要获取该用户的新访问令牌和标识。 在调用 addParticipants 方法之前，请确保已获取该用户的新访问令牌和标识。 用户需要使用该访问令牌才能初始化聊天客户端。
 
-使用 `addMembers` 方法将会话成员添加到由 threadId 标识的会话中。
+使用 `addParticipants` 方法将参与者添加到由 threadId 标识的会话中。
 
-- 使用 `members` 列出要添加到聊天会话的成员。
-- `user`（必需）是[用户访问令牌](../../access-tokens.md)快速入门中通过 CommunicationIdentityClient 创建的 CommunicationUser。
-- `display_name`（可选）是会话成员的显示名称。
-- `share_history_time`（可选）是开始与成员共享聊天历史记录的时间。 若要在聊天会话开始后共享历史记录，请将此属性设置为等于或早于会话创建时间的任何日期。 若在添加成员之前不共享任何历史记录，请将其设置为当前日期。 若要共享部分历史记录，请将其设置为所需日期。
+- 使用 `listParticipants` 列出要添加到聊天会话的参与者。
+- `user`（必需）是[用户访问令牌](../../access-tokens.md)快速入门中通过 CommunicationIdentityClient 创建的 CommunicationUserIdentifier。
+- `display_name`（可选）是会话参与者的显示名称。
+- `share_history_time`（可选）是开始与参与者共享聊天历史记录的时间。 若要在聊天会话开始后共享历史记录，请将此属性设置为等于或早于会话创建时间的任何日期。 若在添加参与者之前不共享任何历史记录，请将其设置为当前日期。 若要共享部分历史记录，请将其设置为所需日期。
 
 ```Java
-List<ChatThreadMember> members = new ArrayList<ChatThreadMember>();
+List<ChatParticipant> participants = new ArrayList<ChatParticipant>();
 
-ChatThreadMember firstThreadMember = new ChatThreadMember()
+ChatParticipant firstThreadParticipant = new ChatParticipant()
     .setUser(user1)
     .setDisplayName("Display Name 1");
 
-ChatThreadMember secondThreadMember = new ChatThreadMember()
+ChatParticipant secondThreadParticipant = new ChatParticipant()
     .setUser(user2)
     .setDisplayName("Display Name 2");
 
-members.add(firstThreadMember);
-members.add(secondThreadMember);
+participants.add(firstThreadParticipant);
+participants.add(secondThreadParticipant);
 
-AddChatThreadMembersOptions addChatThreadMembersOptions = new AddChatThreadMembersOptions()
-    .setMembers(members);
-chatThreadClient.addMembers(addChatThreadMembersOptions);
+AddChatParticipantsOptions addChatParticipantsOptions = new AddChatParticipantsOptions()
+    .setParticipants(participants);
+chatThreadClient.addParticipants(addChatParticipantsOptions);
 ```
 
 ## <a name="remove-user-from-a-chat-thread"></a>从聊天会话中删除用户
 
-与将用户添加到会话类似，可以从聊天会话中删除用户。 若要执行此操作，需要跟踪已添加的成员的用户标识。
+与将用户添加到会话类似，可以从聊天会话中删除用户。 若要执行此操作，需要跟踪已添加的参与者的用户标识。
 
-使用 `removeMember`，其中 `user` 是已创建的 CommunicationUser。
+使用 `removeParticipant`，其中 `user` 是已创建的 CommunicationUserIdentifier。
 
 ```Java
-chatThreadClient.removeMember(user);
+chatThreadClient.removeParticipant(user);
 ```
 
 ## <a name="run-the-code"></a>运行代码

@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: dcd8222b46262f6ec70459ec670789ae4a433c1d
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: 93f90520f9a5f6ec424a7558418abfa4de4699ee
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99625258"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100364828"
 ---
 # <a name="chat-client-library-overview"></a>聊天客户端库概述
 
@@ -53,6 +53,8 @@ Azure 通信服务聊天客户端库可用于向应用程序添加丰富的实�
 | 监视        | 监视与发送的消息有关的使用情况                                                                               | ✔️   | ✔️  | ✔️    | ✔️  |
 |                    | 监视应用发出的 API 请求的质量和状态，并通过门户配置警报                                                          | ✔️   | ✔️  | ✔️    | ✔️  |
 |其他功能 | 使用[认知服务 API](../../../cognitive-services/index.yml) 和聊天客户端库启用智能功能 - 对客户端上的传入消息进行语言翻译和情绪分析，在成员讲话时将语音转换为文本以撰写消息等。                                                                                         | ✔️   | ✔️  | ✔️    | ✔️  |
+
+专用信号包通过使用 Web 套接字实现。 如果不支持 Web 套接字，它将回退到长轮询。
 
 ## <a name="javascript-chat-client-library-support-by-os-and-browser"></a>OS 和浏览器对 JavaScript 聊天客户端库的支持
 

@@ -8,12 +8,12 @@ ms.date: 10/05/2020
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.openlocfilehash: 96b6467d0d529f5839c33182057f3aa3c39cb6e7
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: a214e91307308e191ce92b6461c1454d2cc7dd2b
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132544"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100370472"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>将合作伙伴 ID 链接到 Azure 帐户
 
@@ -162,9 +162,7 @@ C:\ az managementpartner delete --partner-id 12345
 
 **如果我的公司使用 [Azure Lighthouse](../../lighthouse/overview.md) 访问客户资源，则如何关联我的合作伙伴 ID？**
 
-如果[将托管服务套餐发布到 Azure Marketplace](../../lighthouse/how-to/publish-managed-services-offers.md)，以便将客户加入 Azure 委托的资源管理，则 MPN ID 会自动进行关联。
-
-如果[通过部署 Azure 资源管理器模板来载入客户](../../lighthouse/how-to/onboard-customer.md)，则需将 MPN ID 与至少一个可访问每个载入的订阅的用户帐户相关联。 请注意，你需要在服务提供商租户（而不是每个客户租户）中这样做。 为简单起见，建议在租户中创建服务主体帐户，将其与 MPN ID 关联，然后通过授予[可使用合作伙伴赚取额度的 Azure 内置角色](/partner-center/azure-roles-perms-pec)，向其授予对你载入的每个客户的访问权限。 有关详细信息，请参阅[链接合作伙伴 ID 以跟踪对委派的资源的影响](../../lighthouse/how-to/partner-earned-credit.md)。
+要识别 Azure Lighthouse 活动，需要将 MPN ID 与至少一个可访问你所有载入订阅的用户帐户相关联。 请注意，你需要在服务提供商租户（而不是每个客户租户）中这样做。 为简单起见，建议在租户中创建服务主体帐户，将其与 MPN ID 关联，然后通过授予[可使用合作伙伴赚取额度的 Azure 内置角色](/partner-center/azure-roles-perms-pec)，向其授予对你载入的每个客户的访问权限。 有关详细信息，请参阅[链接合作伙伴 ID 以跟踪对委派的资源的影响](../../lighthouse/how-to/partner-earned-credit.md)。
 
 如何向客户说明合作伙伴管理链接 (PAL)？
 

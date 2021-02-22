@@ -6,14 +6,14 @@ ms.subservice: reservations
 author: bandersmsft
 ms.reviewer: yashesvi
 ms.topic: how-to
-ms.date: 12/08/2020
+ms.date: 02/09/2021
 ms.author: banders
-ms.openlocfilehash: 2cd0611d5701f5ca407afd6d4e3b1b0ae22b6c12
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 717cf5acb63ee04852ccbb9aae2f7aed2b3c179a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97562967"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100392266"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>管理 Azure 资源的预留
 
@@ -35,7 +35,7 @@ ms.locfileid: "97562967"
 
 ![预留订单详细信息的示例，显示预留订单 ID ](./media/manage-reserved-vm-instance/reservation-order-details.png)
 
-预留从其预留订单继承权限。
+预留从其预留订单继承权限。 若要交换预留或对其退款，应将用户添加到预留订单。
 
 ## <a name="change-the-reservation-scope"></a>更改预留范围
 

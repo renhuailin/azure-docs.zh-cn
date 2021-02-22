@@ -6,13 +6,13 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.date: 05/14/2020
-ms.openlocfilehash: 9b022f83ed2a4e3a23165cc6bda298a53c008c7c
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.date: 02/11/2021
+ms.openlocfilehash: fb9f12b3b31f1049cd4d9306294783e514331229
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93331635"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100382185"
 ---
 # <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-postgresql---single-server"></a>快速入门：使用 ARM 模板创建 Azure Database for PostgreSQL 单一服务器
 
@@ -80,20 +80,20 @@ ms.locfileid: "93331635"
 
 4. 根据需要更改其他默认设置：
 
-    * **订阅** ：要用于服务器的 Azure 订阅。
-    * **SKU 容量** ：vCore 容量，值可以是 2（默认值）、4、8、16、32 或 64     。
-    * **SKU 名称** ：SKU 层前缀、SKU 系列和 SKU 容量，以下划线联接，例如 B_Gen5_1、GP_Gen5_2（默认值）或 MO_Gen5_32  。
+    * **订阅**：要用于服务器的 Azure 订阅。
+    * **SKU 容量**：vCore 容量，值可以是 2（默认值）、4、8、16、32 或 64     。
+    * **SKU 名称**：SKU 层前缀、SKU 系列和 SKU 容量，以下划线联接，例如 B_Gen5_1、GP_Gen5_2（默认值）或 MO_Gen5_32  。
     * **SKU 大小(MB)** ：Azure Database for PostgreSQL 服务器的存储大小，以 MB 为单位（默认值为 51200）。
-    * **SKU 层** ：部署层，例如“基本”、“常规用途”（默认值）或“内存优化”  。
-    * **SKU 系列** ：“Gen4”或“Gen5”（默认值），表示服务器部署的硬件代系 。
-    * **PostgreSQL 版本** ：要部署的 PostgreSQL 服务器版本，例如 9.5、9.6、10 或 11（默认值）   。
-    * **备份保留天数** ：异地冗余备份的所需保留期，以天为单位（默认值为 7）。
-    * **异地冗余备份** ：“已启用”或“已禁用”（默认值），具体取决于异地灾难恢复 (Geo-DR) 要求 。
-    * **虚拟网络名称** ：虚拟网络的名称（默认值为 azure_postgresql_vnet）。
-    * **子网名称** ：子网的名称（默认值为 azure_postgresql_subnet）。
-    * **虚拟网络规则名称** ：允许子网的虚拟网络规则的名称（默认值为 AllowSubnet）。
-    * **VNet 地址前缀** ：虚拟网络的地址前缀（默认值为 10.0.0.0/16）。
-    * **子网前缀** ：子网的地址前缀（默认值为 10.0.0.0/16）。
+    * **SKU 层**：部署层，例如“基本”、“常规用途”（默认值）或“内存优化”  。
+    * **SKU 系列**：“Gen4”或“Gen5”（默认值），表示服务器部署的硬件代系 。
+    * **PostgreSQL 版本**：要部署的 PostgreSQL 服务器版本，例如 9.5、9.6、10 或 11（默认值）   。
+    * **备份保留天数**：异地冗余备份的所需保留期，以天为单位（默认值为 7）。
+    * **异地冗余备份**：“已启用”或“已禁用”（默认值），具体取决于异地灾难恢复 (Geo-DR) 要求 。
+    * **虚拟网络名称**：虚拟网络的名称（默认值为 azure_postgresql_vnet）。
+    * **子网名称**：子网的名称（默认值为 azure_postgresql_subnet）。
+    * **虚拟网络规则名称**：允许子网的虚拟网络规则的名称（默认值为 AllowSubnet）。
+    * **VNet 地址前缀**：虚拟网络的地址前缀（默认值为 10.0.0.0/16）。
+    * **子网前缀**：子网的地址前缀（默认值为 10.0.0.0/16）。
 
 5. 阅读条款和条件，并选择“我同意上述条款和条件”。
 
@@ -175,11 +175,39 @@ read -p "Press [ENTER] to continue: "
 
 ---
 
+## <a name="exporting-arm-template-from-the-portal"></a>从门户导出 ARM 模板
+可从 Azure 门户[导出 ARM 模板](../azure-resource-manager/templates/export-template-portal.md)。 可以通过两种方式来导出模板：
+
+- [从资源组或资源导出](../azure-resource-manager/templates/export-template-portal.md#export-template-from-a-resource)。 此选项基于现有的资源生成新模板。 导出的模板是资源组当前状态的“快照”。 可以导出整个资源组，或该资源组中的特定资源。
+- [在部署之前导出或从历史记录导出](../azure-resource-manager/templates/export-template-portal.md#export-template-before-deployment)。 此选项检索用于部署的确切模板副本。
+
+导出模板时，将在 PostgreSQL 服务器资源的 ```"properties":{ }``` 部分中看到，出于安全原因不会包含 ```administratorLogin``` 和 ```administratorLoginPassword```。 部署模板前，必须将这些参数添加到模板中，否则模板会失败。
+
+```
+"resources": [
+    {
+      "type": "Microsoft.DBforPostgreSQL/servers",
+      "apiVersion": "2017-12-01",
+      "name": "[parameters('servers_name')]",
+      "location": "southcentralus",
+      "sku": {
+                "name": "B_Gen5_1",
+                "tier": "Basic",
+                "family": "Gen5",
+                "capacity": 1
+            },
+      "properties": {
+        "administratorLogin": "[parameters('administratorLogin')]",
+        "administratorLoginPassword": "[parameters('administratorLoginPassword')]",
+```
+
+
+
 ## <a name="clean-up-resources"></a>清理资源
 
 如果不再需要该资源组，可以将其删除，这将删除资源组中的资源。
 
-# <a name="portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. 在 [Azure 门户](https://portal.azure.com)中，搜索并选择“资源组”。
 

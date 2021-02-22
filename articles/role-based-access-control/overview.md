@@ -10,12 +10,12 @@ ms.workload: identity
 ms.date: 09/30/2020
 ms.author: rolyon
 ms.custom: contperf-fy21q1, azuread-video-2020
-ms.openlocfilehash: a39ae904bb1dd36c3d3e19e8f51ff24e8d975f9b
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 5bf9b79621ae1cd2c73f2e3ce18b0780bcdd2a71
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033912"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100559332"
 ---
 # <a name="what-is-azure-role-based-access-control-azure-rbac"></a>什么是 Azure 基于角色的访问控制 (Azure RBAC)？
 
@@ -38,7 +38,7 @@ Azure RBAC 是在 [Azure 资源管理器](../azure-resource-manager/management/o
 
 ## <a name="how-azure-rbac-works"></a>Azure RBAC 的工作原理
 
-使用 Azure RBAC 控制资源访问权限的方式是创建角色分配。 这是一个需要理解的重要概念 — 它涉及到如何强制实施权限。 角色分配包含三个要素：安全主体、角色订阅和范围。
+使用 Azure RBAC 控制资源访问权限的方式是分配 Azure 角色。 这是一个需要理解的重要概念 — 它涉及到如何强制实施权限。 角色分配包含三个要素：安全主体、角色订阅和范围。
 
 ### <a name="security-principal"></a>安全主体
 
@@ -80,9 +80,9 @@ Azure 具有数据操作，通过这些操作可以授予对对象内数据的�
 
 ![用于控制访问权限的角色分配](./media/overview/rbac-overview.png)
 
-可以使用 Azure 门户、Azure CLI、Azure PowerShell、Azure SDK 或 REST API 创建角色分配。
+可使用 Azure 门户、Azure CLI、Azure PowerShell、Azure SDK 或 REST API 分配角色。
 
-有关详细信息，请参阅[添加角色分配的步骤](role-assignments-steps.md)。
+有关详细信息，请参阅[分配 Azure 角色的步骤](role-assignments-steps.md)。
 
 ## <a name="multiple-role-assignments"></a>多角色分配
 
@@ -122,6 +122,6 @@ Azure 具有数据操作，通过这些操作可以授予对对象内数据的�
 
 ## <a name="next-steps"></a>后续步骤
 
-- [使用 Azure 门户添加或删除 Azure 角色分配](role-assignments-portal.md)
+- [使用 Azure 门户分配 Azure 角色](role-assignments-portal.md)
 - [了解不同角色](rbac-and-directory-admin-roles.md)
 - [云采用框架：Azure 中的资源访问管理](/azure/cloud-adoption-framework/govern/resource-consistency/resource-access-management)

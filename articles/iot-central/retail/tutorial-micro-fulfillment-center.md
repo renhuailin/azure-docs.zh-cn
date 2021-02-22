@@ -7,16 +7,22 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: tutorial
 ms.date: 01/09/2020
-ms.openlocfilehash: 938d5e96667db6de4a45134cbec2396d45bac9d6
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: ab4d609b1638b47ad73b6f1143adee2870577305
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99832124"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390464"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-micro-fulfillment-center-application-template"></a>教程：部署和演练微型配送中心应用程序模板
 
-在本教程中，你将使用 Azure IoT Central 微型配送中心应用程序模板来生成一个零售解决方案。 你将了解如何部署该模板、其中包含的设置，以及接下来要执行的操作。
+在本教程中，你将使用 Azure IoT Central 微型配送中心应用程序模板来生成一个零售解决方案。
+
+在本教程中，学习以下内容：
+
+> [!div class="checklist"]
+> * 如何部署应用程序模板
+> * 如何使用应用程序模板
 
 ## <a name="prerequisites"></a>先决条件
 若要完成本教程系列，需有一个 Azure 订阅。 可以选择使用 7 天免费试用版。 如果没有 Azure 订阅，则可在 [Azure 注册页](https://aka.ms/createazuresubscription)上创建一个。

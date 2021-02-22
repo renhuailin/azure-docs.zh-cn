@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: f949747649e351947ba65666fdb57c0beac3aa23
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 07ad53191c8212ccde5633a4068f31aa00ab69b1
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99492104"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100554721"
 ---
 # <a name="calling-client-library-overview"></a>呼叫客户端库概述
 
@@ -96,9 +96,10 @@ WebRTC API（如 `getUserMedia`）要求通过 HTTPS 处理调用这些 API 的�
 
 |           |Web | Android/iOS|
 |-----------|----|------------|
-|**# 个可同时发送的传出数据流** |1 个视频 + 1 个屏幕共享 | 1 个视频 |
-|**# 个可同时呈现的传入数据流** |1 个视频 + 1 个屏幕共享| 6 个视频 + 1 个屏幕共享 |
+|**# 个可同时发送的传出数据流** |1 个音频/视频或 1 个音频/屏幕共享 | 1 音频/视频 | 
+|**# 个可同时呈现的传入数据流** |1 个音频/视频或 1 个音频/屏幕共享| 6 个音频/视频或 1 屏幕共享 |
 
+请注意，在组方案中，一个混合音频流用于支持所有音频参与者。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -106,6 +107,6 @@ WebRTC API（如 `getUserMedia`）要求通过 HTTPS 处理调用这些 API 的�
 > [呼叫入门](../../quickstarts/voice-video-calling/getting-started-with-calling.md)
 
 有关详细信息，请参阅以下文章：
-- 熟悉常规[呼叫流](../call-flows.md)
+- 熟悉常规[呼叫流](../call-flows.md) 
 - 了解[呼叫类型](../voice-video-calling/about-call-types.md)
 - [规划 PSTN 解决方案](../telephony-sms/plan-solution.md)

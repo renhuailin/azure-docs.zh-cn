@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: ed3a88dbca1788a5c5a265fe91bdd5e88ae1fe36
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 2884df3a9b5cb3954c1c5e57d923eff97809a745
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96012759"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100382168"
 ---
 # <a name="quickstart-manage-blobs-with-javascript-v12-sdk-in-nodejs"></a>快速入门：在 Node.js 中使用 JavaScript v12 SDK 管理 blob
 
@@ -276,7 +276,7 @@ console.log("Container was deleted successfully. requestId: ", deleteContainerRe
 
 此应用创建文本字符串，并将其上传到 Blob 存储。 示例随后列出容器中的 Blob，下载 Blob 并显示下载的数据。
 
-在控制台提示符下，导航到包含blob-quickstart-v12.py 文件的目录，然后执行以下 `node` 命令来运行应用。
+在控制台提示符下，导航到包含 blob-quickstart-v12.js 文件的目录，然后执行以下 `node` 命令来运行应用。
 
 ```console
 node blob-quickstart-v12.js

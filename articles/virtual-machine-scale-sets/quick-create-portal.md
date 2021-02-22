@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 06/30/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 8243619bc7a32c5fa86b6e108d954674b54394e5
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 0408341eff483de71d76a24a933ece4cbdc2b947
+ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97913714"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100535274"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建虚拟机规模集
 
@@ -35,7 +35,7 @@ Azure [负载均衡器](../load-balancer/load-balancer-overview.md)在运行正�
 1. 在搜索框中，键入“负载均衡器”。 在搜索结果中的“市场”下，选取“负载均衡器” 。
 1. 在“创建负载均衡器”页的“基本信息”选项卡中，输入或选择以下信息 ：
 
-    | 设置                 | “值”   |
+    | 设置                 | 值   |
     | ---| ---|
     | 订阅  | 选择订阅。    |    
     | 资源组 | 选择“新建”并在文本框中键入 myVMSSResourceGroup。|
@@ -57,7 +57,7 @@ Azure [负载均衡器](../load-balancer/load-balancer-overview.md)在运行正�
 可使用 Windows Server 映像或 Linux 映像（如 RHEL、CentOS、Ubuntu 或 SLES）部署规模集。
 
 1. 在搜索框中键入“规模集”。 在结果中的“市场”下，选择“虚拟机规模集” 。 在“虚拟机规模集”页上选择“创建”，此操作将打开“创建虚拟机规模集”页。   
-1. 在“基本信息”选项卡中的“项目详细信息”下，确保选择了正确的订阅，然后选择 **新建** 资源组。 键入 myVMSSResourceGroup 作为名称，然后选择“确定”。 
+1. 在“基本信息”选项卡中的“项目详细信息”下，确保选择了正确的订阅，然后选择资源组列表中的“myVMSSResourceGroup” 。 
 1. 键入 myScaleSet 作为规模集的名称。
 1. 在“区域”中，选择离你近的区域。
 1. 选择市场映像作为“映像”。 在此示例中，我们选择了“Ubuntu 服务器 18.04 LTS”。

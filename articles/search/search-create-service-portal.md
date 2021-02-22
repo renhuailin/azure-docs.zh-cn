@@ -7,31 +7,29 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 01/23/2021
-ms.openlocfilehash: 57867cc4fb539b07fc1e4117f6e956078c41e2c6
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.date: 02/15/2021
+ms.openlocfilehash: 8a61ad1599a2d4d1aeaf8b36d2f92d95ec1896a0
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2021
-ms.locfileid: "98746690"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573051"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>快速入门：在门户中创建 Azure 认知搜索服务
 
 [Azure 认知搜索](search-what-is-azure-search.md)是用于将全文搜索体验添加到自定义应用的 Azure 资源。 可轻松地将其与其他提供数据或额外处理的 Azure 服务集成，与网络服务器上的应用集成，或与其他云平台上运行的软件集成。
 
-本文介绍如何在 [Azure 门户](https://portal.azure.com/)中创建搜索服务。
+可使用本文中介绍的 [Azure 门户](https://portal.azure.com/)创建搜索服务。 还可使用 [Azure PowerShell](search-manage-powershell.md)、[Azure CLI](/cli/azure/search) 或 [Azure 资源管理器服务模板](https://azure.microsoft.com/resources/templates/101-azure-search-create/)。
 
 [![动画 GIF](./media/search-create-service-portal/AnimatedGif-AzureSearch-small.gif)](./media/search-create-service-portal/AnimatedGif-AzureSearch.gif#lightbox)
-
-更喜欢 PowerShell？ 使用 Azure 资源管理器[服务模板](https://azure.microsoft.com/resources/templates/101-azure-search-create/)。 有关如何入门的帮助，请参阅[使用 PowerShell 管理 Azure 认知搜索](search-manage-powershell.md)。
 
 ## <a name="before-you-start"></a>开始之前
 
 以下服务属性在服务生存期内是固定的，更改任何属性都需要新的服务。 因为它们是固定的，所以在填写每个属性时，请考虑以下与用法相关的注意事项：
 
-* 服务名称变为 URL 终结点的一部分（[查看提示](#name-the-service)，了解有用的服务名称）。
-* [服务层](search-sku-tier.md)会影响计费，应设置容量上限。 某些功能在免费层上不可用。
-* 服务区域可能决定某些方案的可用性。 如果需要[高安全性功能](search-security-overview.md)或 [AI 扩充](cognitive-search-concept-intro.md)，则需要在与其他服务相同的区域中创建 Azure 认知搜索，或在提供相关功能的区域中进行创建。 
++ 服务名称变为 URL 终结点的一部分（[查看提示](#name-the-service)，了解有用的服务名称）。
++ [服务层](search-sku-tier.md)会影响计费，应设置容量上限。 某些功能在免费层上不可用。
++ 服务区域可能决定某些方案的可用性。 如果需要[高安全性功能](search-security-overview.md)或 [AI 扩充](cognitive-search-concept-intro.md)，则需要在与其他服务相同的区域中创建 Azure 认知搜索，或在提供相关功能的区域中进行创建。 
 
 ## <a name="subscribe-free-or-paid"></a>订阅（免费或付费）
 
@@ -74,33 +72,30 @@ ms.locfileid: "98746690"
 
 服务名称要求：
 
-* 它必须在 search.windows.net 命名空间中唯一
-* 它的长度必须为 2 到 60 个字符。
-* 必须使用小写字母、数字或短划线（“-”）
-* 前 2 个字符或最后一个字符不能为短划线（“-”）
-* 不能在任何位置使用连续的短划线（“--”）
++ 它必须在 search.windows.net 命名空间中唯一
++ 它的长度必须为 2 到 60 个字符。
++ 必须使用小写字母、数字或短划线（“-”）
++ 前 2 个字符或最后一个字符不能为短划线（“-”）
++ 不能在任何位置使用连续的短划线（“--”）
 
 > [!TIP]
 > 如果你认为今后会用到多个服务，我们建议根据命名约定在服务名称中包含区域（或位置）。 同一区域中的服务可以免费交换数据，因此，如果 Azure 认知搜索位于美国西部，而你在美国西部还有其他服务，则在决定如何合并或附加资源时，使用类似于 `mysearchservice-westus` 的名称就无需导航到属性页。
 
 ## <a name="choose-a-location"></a>选择位置
 
-Azure 认知搜索在大多数区域中可用。 支持的区域列表可在[定价页](https://azure.microsoft.com/pricing/details/search/)中找到。
+Azure 认知搜索在大多数区域都可用，如[可用产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/?products=search)中所述。 通常，如果使用多个 Azure 服务，请选择同时托管数据或应用程序服务的区域。 这样做可以最大程度地减少或避免出站数据的带宽费用（当服务位于同一区域时，出站数据没有任何费用）。
 
-> [!Note]
-> 印度中部和阿拉伯联合酋长国北部目前无法提供新服务。 对于已在这些区域中的服务，你可以无限制地纵向扩展，并且你的服务在该区域是完全受支持的。 这些限制是临时的，仅限于新服务。 如果这些限制不再适用，我们将删除此说明。
->
-> 双重加密仅在特定区域中可用。 有关详细信息，请参阅[双重加密](search-security-overview.md#double-encryption)。
++ [AI 扩充](cognitive-search-concept-intro.md)要求认知服务处于与 Azure 认知搜索相同的物理区域。 对于这一方面，有几个区域不提供这两种功能。 [可用产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/?products=search)页用两个复选标记表示两者皆可用。 不可用组合缺少一个复选标记：
 
-### <a name="requirements"></a>要求
+  :::image type="content" source="media/search-create-service-portal/region-availability.png" alt-text="区域可用性" border="true":::
 
- 如果使用 AI 扩充，请在认知服务所在的相同区域中创建搜索服务。 *将 Azure 认知搜索和认知服务归置在同一区域中是 AI 扩充的必要条件*。
++ 应在[区域对](../best-practices-availability-paired-regions.md#azure-regional-pairs)中创建多个搜索服务来满足业务连续性和灾难恢复 (BCDR) 要求。 例如，如果你在北美运营，则可以为每个搜索服务选择“美国东部”和“美国西部”或“美国中北部”和“美国中南部”。
 
- 具有业务连续性和灾难恢复 (BCDR) 要求的客户应在[区域对](../best-practices-availability-paired-regions.md#azure-regional-pairs)中创建其服务。 例如，如果你在北美运营，则可以为每个服务选择“美国东部和美国西部”或“美国中北部和美国中南部”。
+一些功能的可用性有限，具体取决于区域。 功能文档中概述了这些限制：
 
-### <a name="recommendations"></a>建议
++ [双重加密](search-security-overview.md#double-encryption)
 
-如果使用多个 Azure 服务，请选择同时托管数据或应用程序服务的区域。 这样做可以最大程度地减少或避免出站数据的带宽费用（当服务位于同一区域时，出站数据没有任何费用）。
++ [“性能缩放”一文中的“可用性区域](search-performance-optimization.md#availability-zones)。
 
 ## <a name="choose-a-pricing-tier"></a>选择一个定价层
 
@@ -126,7 +121,7 @@ Azure 认知搜索当前以[多个定价层](https://azure.microsoft.com/pricing
 
 1. 在“概览”页的右侧找到并复制 URL 终结点。
 
-2. 在“密钥”页上，复制其中一个管理密钥（它们等同）。 在服务上创建、更新和删除对象需要管理员 API 密钥。 相反，查询键提供索引内容的读取访问权限。
+1. 在“密钥”页上，复制其中一个管理密钥（它们等同）。 在服务上创建、更新和删除对象需要管理员 API 密钥。 相反，查询键提供索引内容的读取访问权限。
 
    :::image type="content" source="media/search-create-service-portal/get-url-key.png" alt-text="包含 URL 终结点的服务概览页" border="false":::
 
@@ -136,9 +131,9 @@ Azure 认知搜索当前以[多个定价层](https://azure.microsoft.com/pricing
 
 预配服务后，可以对其进行扩展以满足需求。 如果为 Azure 认知搜索服务选择了“标准”层，则可以采用两个维度扩展服务：副本和分区。 如果已选择基本层，仅可以添加副本。 如果预配了免费服务，则扩展不可用。
 
-“分区”允许服务存储和搜索更多文档*_。
+***分区*** 允许服务存储和搜索更多文档。
 
-“副本”允许服务处理负载更高的搜索查询。
+***副本*** 允许服务处理负载更高的搜索查询。
 
 添加资源会增加每月账单费用。 可以通过[定价计算器](https://azure.microsoft.com/pricing/calculator/)来了解添加资源对账单明细的影响。 请记住，可以根据负载来调整资源。 例如，可以通过增加资源来创建完整的初始索引，在以后再将资源减少到与增量索引编制相适应的某个程度。
 
@@ -146,8 +141,8 @@ Azure 认知搜索当前以[多个定价层](https://azure.microsoft.com/pricing
 > 一个服务必须具有[2 个用于只读 SLA 的副本和 3 个用于读/写 SLA 的副本](https://azure.microsoft.com/support/legal/sla/search/v1_0/)。
 
 1. 在 Azure 门户中转到“搜索服务”页。
-2. 在左侧导航窗格中，选择“设置”>“缩放”。
-3. 使用滑块添加任一类型的资源。
+1. 在左侧导航窗格中，选择“设置” > “缩放”。
+1. 使用滑块添加任一类型的资源。
 
 :::image type="content" source="media/search-create-service-portal/settings-scale.png" alt-text="通过副本和分区添加容量" border="false":::
 

@@ -9,14 +9,14 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 410f8ab4de0d93262647cbc07e0792cd39f7a844
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: 79382dde5780827d7b0393858fe8896c5da1b56d
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99593631"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100559440"
 ---
-# <a name="call-flows"></a>呼叫流
+# <a name="call-flow-basics"></a>呼叫流基础知识
 
 [!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
@@ -76,6 +76,14 @@ PSTN 媒体流量会通过一个称为媒体处理器的组件进行流动。
 
 :::image type="content" source="./media/call-flows/about-voice-group-calls-2.png" alt-text="显示通信服务内的 TCP 媒体处理流的关系图。":::
 
+### <a name="case-5-communication-services-client-library-and-microsoft-teams-in-a-scheduled-teams-meeting"></a>案例 5：计划的 Teams 会议中的通信服务客户端库和 Microsoft Teams
+
+信号流经信号控制器。 媒体流经媒体处理器。 信号控制器和媒体处理器在通信服务和 Microsoft Teams 之间共享。 
+
+:::image type="content" source="./media/call-flows/teams-communication-services-meeting.png" alt-text="显示计划的 Teams 会议中的通信服务客户端库和 Teams 客户端的关系图。":::
+
+
+
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
@@ -85,3 +93,4 @@ PSTN 媒体流量会通过一个称为媒体处理器的组件进行流动。
 
 - 详细了解[呼叫类型](../concepts/voice-video-calling/about-call-types.md)
 - 了解[客户端-服务器体系结构](./client-and-server-architecture.md)
+- 了解[呼叫流拓扑](./detailed-call-flows.md)

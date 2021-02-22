@@ -7,12 +7,12 @@ ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 10/22/2020
-ms.openlocfilehash: 864152d1f1d0074305cbba448946bc05888b4f3b
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 074b799a4f0e83c47aac0b2b3fca5386bd45429f
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94566752"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100521962"
 ---
 # <a name="quickstart-use-the-azure-portal-to-create-an-azure-database-for-mysql-flexible-server"></a>快速入门：使用 Azure 门户创建 Azure Database for MySQL 灵活服务器
 
@@ -49,7 +49,7 @@ Azure Database for MySQL 灵活服务器是一种托管服务，可用于在云�
     |**设置**|**建议的值**|**说明**|
     |---|---|---|
     订阅|订阅名称|要用于服务器的 Azure 订阅。 如果你有多个订阅，请选择要计费的资源所在的订阅。|
-    资源组|myresourcegroup| 新的资源组名称，或订阅中的现有资源组。|
+    资源组| myresourcegroup| 新的资源组名称，或订阅中的现有资源组。|
     服务器名称 |**mydemoserver**|标识你的灵活服务器的唯一名称。 域名 `mysql.database.azure.com` 将追加到所提供的服务器名称后面。 服务器名称只能包含小写字母、数字和连字符 (-) 字符。 它必须包含 3 到 63 个字符。|
     管理员用户名 |mydemouser| 连接到服务器时需要使用的你自己的登录帐户。 管理员用户名不能是“azure_superuser”、“admin”、“administrator”、“root”、“guest”或“public”     。|
     密码 |你的密码| 服务器管理员帐户的新密码。 该密码必须包含 8 到 128 个字符。 密码还必须包含以下三个类别的字符：英文大写字母、英文小写字母、数字（0 到 9）和非字母数字字符（!, $, #, % 等）。|
@@ -85,17 +85,35 @@ Azure Database for MySQL 灵活服务器是一种托管服务，可用于在云�
 
 ## <a name="connect-to-the-server-by-using-mysqlexe"></a>通过 mysql.exe 连接到服务器
 
-如果使用“专用访问(VNet 集成)”创建了灵活服务器，需要从与服务器相同的虚拟网络中的资源连接到服务器。 可以创建虚拟机并将其添加到使用灵活服务器创建的虚拟网络中。
+如果使用“专用访问(VNet 集成)”创建了灵活服务器，需要从与服务器相同的虚拟网络中的资源连接到服务器。 可以创建虚拟机并将其添加到使用灵活服务器创建的虚拟网络中。 有关详细信息，请参阅[配置专用访问文档](how-to-manage-virtual-network-portal.md)。
 
-如果使用“公共访问(允许的 IP 地址)”创建了灵活服务器，可以将本地 IP 地址添加到服务器上的防火墙规则列表中。
+如果使用“公共访问(允许的 IP 地址)”创建了灵活服务器，可以将本地 IP 地址添加到服务器上的防火墙规则列表中。 有关分步指南，请参阅[创建或管理防火墙规则文档](how-to-manage-firewall-portal.md)。
 
 可以使用 [mysql.exe](https://dev.mysql.com/doc/refman/8.0/en/mysql.html) 或 [MySQL Workbench](./connect-workbench.md) 从本地环境连接到服务器。 
 
-如果使用的是 mysql .exe，请使用以下命令进行连接。 在命令中使用服务器名称、用户名和密码。 
-
 ```bash
- mysql -h mydemoserver.mysql.database.azure.com -u mydemouser -p
+wget --no-check-certificate https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem
+mysql -h mydemoserver.mysql.database.azure.com -u mydemouser -p --ssl=true --ssl-ca=DigiCertGlobalRootCA.crt.pem
 ```
+
+如果已使用公共访问权限预配了灵活服务器，还可使用 [Azure Cloud Shell](https://shell.azure.com/bash)，通过预安装的 mysql 客户端连接到你的灵活服务器，如下所示：
+
+若要使用 Azure Cloud Shell 连接到灵活服务器，则将需要允许从 Azure Cloud Shell 到灵活服务器的网络访问。 若要实现此目的，可在 Azure 门户上访问 MySQL 灵活服务器的的“网络”边栏选项卡，选中“防火墙”部分下的“允许从 Azure 中的任何 Azure 服务公共访问此服务器”这一对话框，然后单击“保存”以保存设置 。
+
+> [!NOTE]
+> 选中“允许从 Azure 中的任何 Azure 服务公共访问此服务器”应仅用于开发或测试目的。 该选项可将防火墙配置为允许来自分配给任何 Azure 服务或资产的 IP 地址的连接，包括来自其他客户的订阅的连接。
+
+单击“尝试”以启动 Azure Cloud Shell，并使用以下命令连接到你的灵活服务器。 在命令中使用服务器名称、用户名和密码。 
+
+```azurecli-interactive
+wget --no-check-certificate https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem
+mysql -h mydemoserver.mysql.database.azure.com -u mydemouser -p --ssl=true --ssl-ca=DigiCertGlobalRootCA.crt.pem
+```
+
+如果按照之前的命令连接到灵活服务器时看到以下错误消息，则说明未使用前面提到过的“允许从 Azure 中的任何 Azure 服务公共访问此服务器”设置防火墙规则，或该选项未保存。 请尝试重新设置防火墙，然后重试。
+
+错误 2002 (HY000)：无法连接到 <servername> 上的 MySQL 服务器 (115)
+
 ## <a name="clean-up-resources"></a>清理资源
 现在已在资源组中创建 Azure Database for MySQL 灵活服务器。 如果将来不再需要这些资源，可以通过删除资源组来删除它们，也可以直接删除 MySQL 服务器。 若要删除资源组，请完成以下步骤：
 

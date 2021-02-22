@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: banders
-ms.openlocfilehash: cb9a035217734028df325555cb0954dedd29ac30
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: d234227de98beeed6898697fb6ed8e0865546e16
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91372283"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555848"
 ---
 # <a name="transfer-subscriptions-under-an-azure-plan-from-one-partner-to-another-preview"></a>将 Azure 计划下的订阅从一个合作伙伴转移到另一合作伙伴（预览）
 
@@ -22,7 +22,7 @@ ms.locfileid: "91372283"
 
 在转移期间，使用 Azure 基于角色的访问控制 (Azure RBAC) 为现有用户、组或服务主体分配的访问权限不受影响。 [Azure RBAC](../../role-based-access-control/overview.md) 有助于管理谁有权访问 Azure 资源、这些人可以对这些资源执行哪些操作，以及他们有权访问哪些区域。 通过订阅转移，新合作伙伴不会获得对你的资源的任何 Azure RBAC 访问权限。 旧合作伙伴将保留其 Azure RBAC 访问权限。
 
-因此，请务必删除旧合作伙伴的 Azure RBAC 访问权限，并为新合作伙伴授予访问权限。 有关为新合作伙伴提供访问权限的详细信息，请参阅[什么是 Azure 基于角色的访问控制 (Azure RBAC)？](../../role-based-access-control/overview.md) 要详细了解如何删除旧合作伙伴的 Azure RBAC 访问权限，请参阅[删除角色分配](../../role-based-access-control/role-assignments-portal.md#remove-a-role-assignment)。
+因此，请务必删除旧合作伙伴的 Azure RBAC 访问权限，并为新合作伙伴授予访问权限。 有关为新合作伙伴提供访问权限的详细信息，请参阅[什么是 Azure 基于角色的访问控制 (Azure RBAC)？](../../role-based-access-control/overview.md) 要详细了解如何删除旧合作伙伴的 Azure RBAC 访问权限，请参阅[删除 Azure 角色分配](../../role-based-access-control/role-assignments-remove.md)。
 
 此外，新合作伙伴不会自动获取对你的订阅的[代表客户管理 (AOBO)](https://channel9.msdn.com/Series/cspdev/Module-11-Admin-On-Behalf-Of-AOBO) 访问权限。 合作伙伴需要 AOBO 才能代表你管理 Azure 订阅。 有关 Azure 特权的详细信息，请参阅[获取管理客户服务或订阅的权限](/partner-center/customers-revoke-admin-privileges)。
 

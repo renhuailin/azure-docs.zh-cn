@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 02/05/2021
 ms.author: banders
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 87f29395e716ad3f06a99d6243b080acf86e4310
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: 2fb1a8c3e583a4bdc88f2b61844e9bcb16dc7cdf
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99979415"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100367191"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>将 Azure 订阅的计费所有权转移到另一帐户
 
@@ -91,9 +91,12 @@ Visual Studio 和 Microsoft 合作伙伴网络订阅具有关联的每月定期 
 
 ### <a name="original-azure-subscription-billing-owner-leaves-your-organization"></a>Azure 订阅的原始账单所有者离开了你的组织
 
-原因可能是创建 Azure 帐户和 Azure 订阅的原始账单所有者离开了你的组织。 如果出现此情况，那么组织的 Azure Active Directory 中将不再包含这些人员的用户标识。 随后会出现 Azure 订阅没有账单所有者的情况。 这会阻止任何人对帐户执行计费操作，包括查看账单和支付账单费用。 该订阅会进入过期状态。 最终由于未付费，订阅会被禁用。 而最后，订阅会被删除，这会影响在该订阅上运行的每项服务。
+> [!Note]
+> 本部分特别适用于 Microsoft 客户协议的计费帐户。 检查你是否有权访问 [Microsoft 客户协议](mca-request-billing-ownership.md#check-for-access)。
 
-当某订阅不再具备有效的账单所有者时，Azure 会向其他账单所有者、服务管理员、共同管理员和订阅所有者发送电子邮件，将此情况告知他们并提供链接供他们接受订阅的计费所有权。 任何用户都可选择该链接来接受计费所有权。 若要详细了解计费角色，请查看[计费角色](understand-mca-roles.md)以及[经典角色和 Azure RBAC 角色](../../role-based-access-control/rbac-and-directory-admin-roles.md)。
+原因可能是创建 Azure 帐户和 Azure 订阅的原始计费帐户所有者离开了你的组织。 如果出现此情况，那么组织的 Azure Active Directory 中将不再包含这些人员的用户标识。 随后会出现 Azure 订阅没有账单所有者的情况。 这会阻止任何人对帐户执行计费操作，包括查看账单和支付账单费用。 该订阅会进入过期状态。 最终由于未付费，订阅会被禁用。 而最后，订阅会被删除，这会影响在该订阅上运行的每项服务。
+
+当某订阅不再具备有效的计费帐户所有者时，Azure 会向其他计费帐户所有者、服务管理员（若有）、共同管理员（若有）和订阅所有者发送电子邮件，将此情况告知他们并提供链接供他们接受订阅的计费所有权。 任何用户都可选择该链接来接受计费所有权。 若要详细了解计费角色，请查看[计费角色](understand-mca-roles.md)以及[经典角色和 Azure RBAC 角色](../../role-based-access-control/rbac-and-directory-admin-roles.md)。
 
 下例展示了电子邮件的显示效果。
 

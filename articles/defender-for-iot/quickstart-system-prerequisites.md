@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 11/30/2020
 ms.topic: quickstart
 ms.service: azure
-ms.openlocfilehash: 8ee3afcae69ca6c082452e590eb8370bcc122af4
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 7b609fec2a47dc0685b30dac12f43263127f70ef
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97844453"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100523203"
 ---
 # <a name="system-prerequisites"></a>系统先决条件
 本文列出了运行 Azure Defender for IoT 的系统先决条件。
@@ -31,7 +31,7 @@ Defender for IoT 将所有欧洲区域的所有流量路由到西欧区域的数
 
 有关详细信息，请参阅 [IoT 中心支持的区域](https://azure.microsoft.com/global-infrastructure/services/?products=iot-hub)。
 
-## <a name="see-also"></a>另请参阅
+## <a name="next-steps"></a>后续步骤
 
-- [确定所需设备](how-to-identify-required-appliances.md)
-- [关于 Azure Defender for IoT 网络设置](how-to-set-up-your-network.md)
+[确定所需设备](how-to-identify-required-appliances.md)
+[关于 Azure Defender for IoT 网络设置](how-to-set-up-your-network.md)

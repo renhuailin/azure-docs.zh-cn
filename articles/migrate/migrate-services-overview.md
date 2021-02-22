@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: overview
 ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: b42aa3bfaeaa454b5d870dbae3bce539b682028f
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: a5fa6b1c75bee562394af42fcea9ebfabeb732f0
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96754073"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100389529"
 ---
 # <a name="about-azure-migrate"></a>关于 Azure Migrate
 
@@ -121,7 +121,7 @@ Azure Migrate 内置了 Azure 与合作伙伴的 ISV 工具，可提供丰富的
 有两个版本的 Azure Migrate 服务。
 
 - **当前版本**：使用此版本创建 Azure Migrate 项目，发现本地计算机，并安排评估和迁移。 [详细了解](whats-new.md)此版本中的新增功能。
-- **以前版本**：以前的 Azure Migrate 版本只支持评估本地 VMware VM。 如果使用的是旧版，则现在应使用新版。 无法再使用旧版创建 Azure Migrate 项目。 建议不要使用旧版执行新的发现操作。
+- **以前版本**：以前的 Azure Migrate 版本（亦称为 Azure Migrate 经典版）只支持评估本地 VMware VM。 Azure Migrate 经典版将于 2024 年 2 月停用。 2024 年 2 月之后，Azure Migrate 经典版将不再受支持，并且经典版项目中的库存元数据也将删除。 无法将以前版本中的项目或组件升级到新版本。 需要[创建新的 Azure Migrate 项目](create-manage-projects.md)并向其[添加评估和迁移工具](./create-manage-projects.md)。 学习教程，了解如何使用可用的评估和迁移工具。 如果已将 Log Analytics 工作区附加到了经典版项目，则可以在删除经典版项目后将其附加到当前版本的项目。
 
     若要在 Azure 门户中访问现有项目，请搜索并选择“Azure Migrate”。 “Azure Migrate”仪表板有一个通知，还有一个用于访问旧 Azure Migrate 项目的链接。
 

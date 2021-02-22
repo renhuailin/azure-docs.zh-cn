@@ -17,12 +17,12 @@ ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: c9815355b26a9c14c02110e4bb5fff4f998d2105
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 7efaaf9cbfdb13c80ce653c99d05da451c2b8968
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032026"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100547309"
 ---
 # <a name="what-is-azure-ad-entitlement-management"></a>Azure AD 权利管理是什么？
 
@@ -167,12 +167,13 @@ Azure AD 权利管理可以帮助解决这些难题。  若要了解有关客户
 
 下面是一些许可证场景示例，可帮助你确定必须拥有的许可证数量。
 
-| 场景 | 计算 | 许可证数量 |
+| 方案 | 计算 | 许可证数量 |
 | --- | --- | --- |
 | Woodgrove Bank 的全局管理员创建了初始目录，并将管理任务委托给了 6 个其他用户。 其中一个策略指定，所有员工（2000 名员工）都可以请求一组特定的访问包。 150 名员工请求了访问包。 | 可以请求访问包的 2000 名员工 | 2,000 |
 | Woodgrove Bank 的全局管理员创建了初始目录，并将管理任务委托给了 6 个其他用户。 其中一个策略指定，所有员工（2000 名员工）都可以请求一组特定的访问包。 另一个策略指定，来自“合作伙伴 Contoso 用户”（来宾）的某些用户可以经批准请求相同的访问包。 Contoso 有 30000 名用户。 150 名员工请求访问包，来自 Contoso 的 10500 名用户请求访问权限。 | 2000 名员工 + 比率超过 1:5 的来自 Contoso 的 500 名来宾用户 (10,500 - (2,000 * 5)) | 2,500 |
 
 ## <a name="next-steps"></a>后续步骤
 
-- [教程：创建第一个访问包](entitlement-management-access-package-first.md)
+- 如果希望使用 Azure 门户管理对资源的访问，请参阅[教程：管理对资源的访问 - Azure 门户](entitlement-management-access-package-first.md)。
+- 如果希望使用 Microsoft Graph 管理对资源的访问，请参阅[教程：管理对资源的访问 - Microsoft Graph](/graph/tutorial-access-package-api?toc=/azure/active-directory/governance/toc.json&bc=/azure/active-directory/governance/breadcrumb/toc.json)
 - [常见方案](entitlement-management-scenarios.md)

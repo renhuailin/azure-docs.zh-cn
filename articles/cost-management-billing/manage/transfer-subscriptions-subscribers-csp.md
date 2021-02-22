@@ -6,14 +6,14 @@ ms.reviewer: dhgandhi
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 11/17/2020
+ms.date: 02/11/2021
 ms.author: banders
-ms.openlocfilehash: 4cc213db19a567f18c5ff483b64a75e3bbeef892
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 63fbf76b2211e530707f3598d176b646c317cc53
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94962104"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100363043"
 ---
 # <a name="transfer-azure-subscriptions-between-subscribers-and-csps"></a>在订阅者与 CSP 之间转移 Azure 订阅
 
@@ -36,6 +36,7 @@ ms.locfileid: "94962104"
 
 若要将任何其他 Azure 订阅转移到 CSP 合作伙伴，订阅者需要将资源从源订阅转移到 CSP 订阅。 请使用以下指南在订阅之间移动资源。
 
+1. 与客户建立[经销商关系](/partner-center/request-a-relationship-with-a-customer)。 查看 [CSP 区域授权概述](/partner-center/regional-authorization-overview)，确保客户和合作伙伴租户在同一个获得授权的区域内。
 1. 与你的 CSP 合作伙伴合作来创建目标 Azure CSP 订阅。
 1. 请确保源订阅和目标 CSP 订阅位于相同的 Azure Active Directory (Azure AD) 租户中。  
     你不能更改 Azure CSP 订阅的 Azure AD 租户。 相反，你必须将源订阅添加或关联到 CSP Azure AD 租户。 有关详细信息，请参阅[将 Azure 订阅关联或添加到 Azure Active Directory 租户](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)。

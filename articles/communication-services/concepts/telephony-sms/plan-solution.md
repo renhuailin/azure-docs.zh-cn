@@ -1,7 +1,7 @@
 ---
-title: 规划 Azure 通信服务的电话服务和短信解决方案
+title: Azure 通信服务中的电话号码类型
 titleSuffix: An Azure Communication Services concept document
-description: 了解如何有效规划电话号码和电话服务的使用。
+description: 了解如何有效地将不同类型的电话号码用于短信和电话服务。
 author: prakulka
 manager: nmurav
 services: azure-communication-services
@@ -10,26 +10,21 @@ ms.date: 10/05/2020
 ms.topic: overview
 ms.custom: references_regions
 ms.service: azure-communication-services
-ms.openlocfilehash: 271d7ce38d50fd21975327eb1f21528aeacc485e
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 97ac8a63740bb3a0df74a2a698cacecf842760e9
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96937230"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100366460"
 ---
-# <a name="plan-your-telephony-and-sms-solution"></a>规划电话服务和短信解决方案
+# <a name="phone-number-types-in-azure-communication-services"></a>Azure 通信服务中的电话号码类型
 
 [!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 [!INCLUDE [Regional Availability Notice](../../includes/regional-availability-include.md)]
 
 借助 Azure 通信服务，可以使用电话号码通过公用电话交换网 (PSTN) 进行语音呼叫和发送短信。 在本文档中，我们将使用通信服务查看电话号码类型、配置选项和区域可用性，以规划电话服务和短信解决方案。
 
-
-
-
-
-## <a name="phone-number-types-in-azure-communication-services"></a>Azure 通信服务中的电话号码类型
- 
+## <a name="number-types-and-features"></a>号码类型和功能
 通信服务提供两种电话号码：本地和免费。 
 
 ### <a name="local-numbers"></a>本地号码
@@ -52,7 +47,7 @@ ms.locfileid: "96937230"
 | 免费电话         | +1（免费电话 *区号*）XXX XX XX | US                      | 通话（拨出）、短信（传入/传出）| 将电话号码分配给互动语音响应 (IVR) 系统/机器人、短信应用程序                                        |
 
 
-## <a name="phone-number-features-in-azure-communication-services"></a>Azure 通信服务中的电话号码功能 
+### <a name="phone-number-features-in-azure-communication-services"></a>Azure 通信服务中的电话号码功能 
 
 [!INCLUDE [Emergency Calling Notice](../../includes/emergency-calling-notice-include.md)]
 
@@ -92,5 +87,6 @@ ms.locfileid: "96937230"
 ### <a name="conceptual-documentation"></a>概念文档
 
 - [语音和视频概念](../voice-video-calling/about-call-types.md)
+- [电话服务概念](./telephony-concept.md)
 - [呼叫流](../call-flows.md)
 - [定价](../pricing.md)

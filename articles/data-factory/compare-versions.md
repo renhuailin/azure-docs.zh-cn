@@ -1,21 +1,17 @@
 ---
 title: Azure 数据工厂与数据工厂版本 1 之对比
 description: 本文将 Azure 数据工厂与 Azure 数据工厂版本 1 进行了比较。
-services: data-factory
-documentationcenter: ''
 author: kromerm
-manager: anandsub
+ms.author: makromer
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: overview
 ms.date: 04/09/2018
-ms.author: makromer
-ms.openlocfilehash: c6a46f6c8a57b681f66bb98fced17bf0e2464fcd
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: dc5a4c92ee4ac0acd4a69ef94fec0981e328d829
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92638238"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100393711"
 ---
 # <a name="compare-azure-data-factory-with-data-factory-version-1"></a>Azure 数据工厂与数据工厂版本 1 之对比
 
@@ -120,11 +116,11 @@ Azure-SSIS Integration Runtime 是由 Azure VM（节点）构成的完全托管�
 
 - .NET SDK：.NET SDK 在当前版本中进行了更新。
 
-- PowerShell：PowerShell cmdlet 在当前版本中进行了更新。 当前版本的 cmdlet 在名称中带有 **DataFactoryV2** ，例如：Get-AzDataFactoryV2. 
+- PowerShell：PowerShell cmdlet 在当前版本中进行了更新。 当前版本的 cmdlet 在名称中带有 **DataFactoryV2**，例如：Get-AzDataFactoryV2. 
 
-- **Python SDK** ：此 SDK 是当前版本中新增的。
+- **Python SDK**：此 SDK 是当前版本中新增的。
 
-- **REST API** ：REST API 在当前版本中进行了更新。 
+- **REST API**：REST API 在当前版本中进行了更新。 
 
 在当前版本中进行了更新的 SDK 不能向后兼容 V1 客户端。 
 

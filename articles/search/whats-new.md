@@ -8,12 +8,12 @@ ms.service: cognitive-search
 ms.topic: overview
 ms.date: 02/09/2021
 ms.custom: references_regions
-ms.openlocfilehash: 13cb22c178be29af71b57d0f50fdbd0e95718069
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: 6de91d51f3700c25ba1e0f361c948dc8ab338c43
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100104597"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590550"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure 认知搜索中的新增功能
 
@@ -24,7 +24,8 @@ ms.locfileid: "100104597"
 |功能&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |  说明 | 可用性  |
 |------------------------------|---------------|---------------|
 | [重置文档（预览）](search-howto-run-reset-indexers.md) |  重新处理了索引器工作负载中单独选择的搜索文档。 | [搜索 REST API 2020-06-30-Preview](/rest/api/searchservice/index-preview) |
-| [可用性区域](search-performance-optimization.md#availability-zones)| 在某些区域具有两个或更多副本的搜索服务（如[本文](search-performance-optimization.md#availability-zones)所述）凭借在两个或更多不同的物理位置具有副本来实现复原。  | 搜索服务创建的区域和日期确定了它是否可用。 有关详细信息，请查看性能优化文档。 |
+| [可用性区域](search-performance-optimization.md#availability-zones)| 在某些区域（如[性能缩放](search-performance-optimization.md#availability-zones)中所列）具有两个或更多副本的搜索服务凭借在两个或更多不同的物理位置具有副本来实现复原。  | 搜索服务创建的区域和日期确定了它是否可用。 有关详细信息，请参阅性能缩放一文。 |
+| [Azure CLI](/cli/azure/search) </br>[Azure PowerShell](/powershell/module/az.search/) | 新的修订版现在提供管理 REST API 2020-08-01 中的全部操作，包括对 IP 防火墙规则和专用终结点的支持。 | 正式发布。 |
 
 ## <a name="january-2021"></a>2021 年 1 月
 
@@ -77,7 +78,7 @@ ms.locfileid: "100104597"
 |11 月 | [文本翻译技能](cognitive-search-skill-text-translation.md) | 一种在索引期间用于评估和翻译文本的认知技能。 正式发布。|
 |11 月 | [Power BI 模板](https://github.com/Azure-Samples/cognitive-search-templates/blob/master/README.md) | 用于在知识存储中直观显示内容的模板 |
 |11 月 | [Azure Data Lake Storage Gen2（预览版）](search-howto-index-azure-data-lake-storage.md)、[Cosmos DB Gremlin API（预览版）](search-howto-index-cosmosdb.md)和 [Cosmos DB Cassandra API（预览版）](search-howto-index-cosmosdb.md) | 以公共预览版形式提供新的索引器数据源。 |
-|7 月 | [Azure 政府云支持](../azure-government/compare-azure-government-global-azure.md#azure-cognitive-search) | 正式发布。|
+|7 月 | [Azure 政府云支持](https://azure.microsoft.com/global-infrastructure/services/?regions=usgov-non-regional,us-dod-central,us-dod-east,usgov-arizona,usgov-texas,usgov-virginia&products=search) | 正式发布。|
 
 <a name="new-service-name"></a>
 

@@ -1,20 +1,20 @@
 ---
-title: 快速入门：创建 Azure Redis 缓存
-description: 本快速入门介绍如何创建 Azure Cache for Redis 的实例
+title: 快速入门：创建开放源 Redis 缓存
+description: 本快速入门介绍如何在基本、标准或高级层中创建 Azure Cache for Redis 的实例
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 05/12/2020
-ms.openlocfilehash: 829f954fede18da2dbf7b3f2d84f69452294a17a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 02/08/2021
+ms.openlocfilehash: 24de9e4eabfbc03e942868cce7560b5df093e1ad
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "83228258"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100365117"
 ---
-# <a name="quickstart-create-an-azure-cache-for-redis-instance"></a>快速入门：创建用于 Redis 的 Azure 缓存实例
+# <a name="quickstart-create-an-open-source-redis-cache"></a>快速入门：创建开放源 Redis 缓存
 
 Azure Cache for Redis 在 Azure 中提供完全托管的 [开源 Redis](https://redis.io/)。 可以从任何层（基本、标准或高级）和大小的 Azure Cache for Redis 实例开始，对其进行缩放以满足应用程序的性能需求。 本快速入门演示如何使用 Azure 门户新建 Azure Cache for Redis。
 
@@ -31,4 +31,3 @@ Azure Cache for Redis 在 Azure 中提供完全托管的 [开源 Redis](https://
 
 > [!div class="nextstepaction"]
 > [创建使用 Azure Redis 缓存的 ASP.NET Web 应用。](./cache-web-app-howto.md)
-
