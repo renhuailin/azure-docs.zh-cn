@@ -42,6 +42,14 @@
     - name: Azure 安全基准
       displayName: 'standards, azure, benchmark'
       href: ./samples/azure-security-benchmark.md
+    - name: Azure 安全基准基础
+      items:
+        - name: 概述
+          displayName: 'standards, azure, benchmark, foundation'
+          href: ./samples/azure-security-benchmark-foundation/index.md
+        - name: 部署步骤
+          displayName: 'standards, azure, benchmark, foundation, deploy'
+          href: ./samples/azure-security-benchmark-foundation/deploy.md
     - name: 澳大利亚政府 ISM PROTECTED
       items:
         - name: 概述

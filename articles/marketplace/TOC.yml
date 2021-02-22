@@ -299,7 +299,7 @@
       href: partner-center-portal/downloads-dashboard.md
     - name: 评分和评价仪表板
       href: partner-center-portal/ratings-reviews.md
-    - name: 针对按流量计费的异常情况检测
+    - name: 管理按流量计费异常
       href: anomaly-detection.md
     - name: 分析常见问题
       href: analytics-faq.md

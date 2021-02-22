@@ -475,6 +475,10 @@
           href: reference-third-party-cookies-spas.md
         - name: 在 Chrome 中处理 SameSite Cookie 更改
           href: howto-handle-samesite-cookie-changes-chrome-browser.md
+    - name: 支持无密码身份验证
+      items:
+        - name: 支持 FIDO2 身份验证
+          href: support-fido2-authentication.md
     - name: 对应用和服务进行身份验证
       items:
         - name: 使用 Azure PowerShell 创建服务主体

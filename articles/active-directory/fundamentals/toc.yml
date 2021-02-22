@@ -25,6 +25,8 @@
   items:
     - name: 安全性
       items:
+        - name: 保护 Microsoft 365 免受本地攻击
+          href: protect-m365-from-on-premises-attacks.md
         - name: 保护外部协作
           items:
             - name: 安全外部访问概述
@@ -47,8 +49,20 @@
               href: 8-secure-access-sensitivity-labels.md
             - name: 9 安全访问 Teams、SharePoint 和 OneDrive
               href: 9-secure-access-teams-sharepoint.md
-        - name: 保护 Microsoft 365 免受本地攻击
-          href: protect-m365-from-on-premises-attacks.md
+        - name: 保护服务帐户
+          items:
+            - name: 本地服务帐户简介
+              href: service-accounts-on-premises.md
+            - name: 保护组 MSA
+              href: service-accounts-group-managed.md
+            - name: 保护独立 MSA
+              href: service-accounts-standalone-managed.md
+            - name: 保护计算机帐户
+              href: service-accounts-computer.md
+            - name: 保护基于用户的服务帐户
+              href: service-accounts-user-on-premises.md
+            - name: 管理本地服务帐户
+              href: service-accounts-govern-on-premises.md
         - name: 启用 MFA
           href: concept-fundamentals-mfa-get-started.md
         - name: 安全默认值

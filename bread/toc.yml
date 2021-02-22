@@ -658,6 +658,9 @@
         - name: Front Door 服务
           tocHref: /azure/frontdoor/
           topicHref: /azure/frontdoor/
+        - name: Front Door 标准版/高级版（预览版）
+          tocHref: /azure/frontdoor/standard-premium
+          topicHref: /azure/frontdoor/standard-premium
         - name: Internet 分析器
           tocHref: /azure/internet-analyzer/
           topicHref: /azure/internet-analyzer/

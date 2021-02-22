@@ -14,8 +14,10 @@
 - name: 教程
   expanded: true
   items:
-    - name: 创建第一个访问包
+    - name: 管理资源访问 - Azure 门户
       href: entitlement-management-access-package-first.md
+    - name: 管理资源访问 - Microsoft Graph
+      href: /graph/tutorial-access-package-api?toc=/azure/active-directory/governance/toc.json&bc=/azure/active-directory/governance/breadcrumb/toc.json
 - name: 概念
   expanded: true
   items:

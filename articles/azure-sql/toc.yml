@@ -143,8 +143,10 @@
       items:
         - name: 请求增加配额
           href: database/quota-increase-request.md
-        - name: 作业自动化
+        - name: 使用弹性作业的作业自动化
           href: database/job-automation-overview.md
+        - name: 使用 SQL 代理的作业自动化
+          href: database/job-automation-managed-instances.md
         - name: 业务连续性
           items:
             - name: 配置故障转移组
@@ -1178,7 +1180,7 @@
               href: ./database/policy-reference.md
         - name: 资源
           items:
-            - name: 常见问题解答
+            - name: 常见问题
               href: virtual-machines/windows/frequently-asked-questions-faq.md
             - name: 定价
               href: virtual-machines/windows/pricing-guidance.md
@@ -1214,7 +1216,7 @@
               href: virtual-machines/linux/rhel-high-availability-listener-tutorial.md
         - name: 资源
           items:
-            - name: 常见问题解答
+            - name: 常见问题
               href: virtual-machines/linux/frequently-asked-questions-faq.md
             - name: “Linux 上的 SQL Server”文档
               href: /sql/linux/sql-server-linux-overview

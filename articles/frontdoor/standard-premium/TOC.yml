@@ -1,0 +1,91 @@
+- name: Front Door 标准版/高级版（预览版）文档
+  href: index.yml
+- name: 概述
+  items:
+    - name: 什么是 Azure Front Door 标准版/高级版（预览版）？
+      href: overview.md
+    - name: 层级比较
+      href: tier-comparison.md
+- name: 快速入门
+  expanded: true
+  items:
+    - name: 创建 Front Door 标准版/高级版 - 门户
+      href: create-front-door-portal.md
+- name: 概念
+  items:
+    - name: Front Door 常见问题解答
+      href: faq.md
+    - name: Endpoint Manager
+      href: concept-endpoint-manager.md
+    - name: 源
+      href: concept-origin.md
+    - name: 路由
+      href: concept-route.md
+    - name: 规则集
+      href: concept-rule-set.md
+    - name: 规则集匹配条件
+      href: concept-rule-set-match-conditions.md
+    - name: 规则集操作
+      href: concept-rule-set-actions.md
+    - name: URL 重定向和 URL 重写
+      href: concept-rule-set-url-redirect-and-rewrite.md
+    - name: 运行状况探测
+      href: concept-health-probes.md
+    - name: 专用链接
+      href: concept-private-link.md
+    - name: Caching
+      href: concept-caching.md
+    - name: DDoS
+      href: concept-ddos.md
+- name: 操作指南
+  items:
+    - name: 配置 Endpoint Manager
+      href: how-to-configure-endpoint-manager.md
+    - name: 配置源组
+      href: how-to-create-origin.md
+    - name: 添加自定义域
+      href: how-to-add-custom-domain.md
+    - name: 为自定义域启用 HTTPS
+      href: how-to-configure-https-custom-domain.md
+    - name: 路由关联
+      href: how-to-configure-route.md
+    - name: 使用规则集配置安全性标头
+      href: how-to-add-security-headers.md
+    - name: 缓存清除
+      href: how-to-cache-purge.md
+    - name: 压缩
+      href: how-to-compression.md
+    - name: 启用专用链接
+      href: how-to-enable-private-link.md
+    - name: Logging
+      href: how-to-logs.md
+    - name: 监视和警报
+      href: how-to-monitor-metrics.md
+    - name: 报表
+      href: how-to-reports.md
+    - name: 疑难解答
+      items:
+        - name: 路由问题
+          href: troubleshoot-route-issues.md
+        - name: 允许的证书颁发机构
+          href: troubleshoot-allowed-certificate-authority.md
+        - name: 压缩
+          href: troubleshoot-compression.md
+        - name: 跨源资源共享
+          href: troubleshoot-cross-origin-resources.md
+- name: 参考
+  items:
+    - name: .NET
+      href: /dotnet/api/microsoft.azure.management.cdn
+    - name: REST API
+      href: /rest/api/cdn/
+- name: 资源
+  items:
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/details/frontdoor/'
+    - name: 定价计算器
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: 服务更新
+      href: 'https://azure.microsoft.com/updates/?product=frontdoor'

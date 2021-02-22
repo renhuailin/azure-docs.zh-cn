@@ -426,8 +426,10 @@
             - name: Linux
               displayname: diagnostics extension
               items:
-                - name: 概述
+                - name: 4.0 版
                   href: ../virtual-machines/extensions/diagnostics-linux.md?toc=/azure/azure-monitor/toc.json
+                - name: 版本 3.0
+                  href: ../virtual-machines/extensions/diagnostics-linux-v3.md?toc=/azure/azure-monitor/toc.json
                 - name: 使用 Telegraf 收集指标
                   href: platform/collect-custom-metrics-linux-telegraf.md
         - name: 故障排除
@@ -449,7 +451,7 @@
           href: platform/autoscale-get-started.md
         - name: 配置设置
           href: platform/autoscale-understanding-settings.md
-        - name: 最佳做法
+        - name: 最佳实践
           href: platform/autoscale-best-practices.md
         - name: 常见指标
           href: platform/autoscale-common-metrics.md
@@ -781,7 +783,9 @@
             - name: 可用性警报
               displayname: 'alerts, global, alerting'
               href: app/availability-alerts.md
-            - name: 故障排除
+            - name: SLA 报表
+              href: app/sla-report.md
+            - name: 疑难解答
               displayname: 'availability, troubleshoot, troubleshoot availability'
               href: app/troubleshoot-availability.md
         - name: 分布式跟踪
@@ -794,6 +798,8 @@
         - name: 实时指标流
           displayname: 'live, quickpulse, quick pulse, live metrics'
           href: app/live-stream.md
+        - name: 工作项集成
+          href: app/work-item-integration.md
         - name: 指标
           items:
             - name: 基于日志的和预聚合的指标
@@ -972,10 +978,14 @@
               href: app/sharepoint.md
             - name: Windows 桌面
               href: app/windows-desktop.md
-        - name: 其他工具
-          items:
-            - name: 更改分析
-              href: app/change-analysis.md
+    - name: 更改分析
+      items:
+        - name: 概述
+          href: app/change-analysis.md
+        - name: 可视化效果
+          href: app/change-analysis-visualizations.md
+        - name: 疑难解答
+          href: app/change-analysis-troubleshoot.md
     - name: 用于 VM 的 Azure Monitor
       items:
         - name: 概述
@@ -1022,7 +1032,7 @@
               href: insights/vminsights-health-troubleshoot.md
         - name: 使用日志查询分析数据
           href: insights/vminsights-log-search.md
-        - name: 监视性能
+        - name: 警报
           href: insights/vminsights-alerts.md
         - name: 监视更改
           href: insights/vminsights-change-analysis.md
@@ -1034,7 +1044,7 @@
       items:
         - name: 概述
           href: insights/container-insights-overview.md
-        - name: 常见问题解答
+        - name: 常见问题
           href: faq.md#azure-monitor-for-containers
         - name: 启用监视
           items:

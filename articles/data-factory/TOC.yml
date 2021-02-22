@@ -105,6 +105,8 @@
       items:
         - name: 使用映射数据流转换数据
           items:
+            - name: 使用 Delta Lake 转换数据湖数据
+              href: tutorial-data-flow-delta-lake.md
             - name: 使用映射数据流转换数据
               href: tutorial-data-flow.md
             - name: 映射数据流视频教程
@@ -556,6 +558,8 @@
           href: data-flow-lookup.md
         - name: 新建分支
           href: data-flow-new-branch.md
+        - name: 分析
+          href: data-flow-parse.md
         - name: 透视
           href: data-flow-pivot.md
         - name: 级别
@@ -732,6 +736,8 @@
               href: how-to-sqldb-to-cosmosdb.md
             - name: 对代码片段进行重复数据消除和 NULL 检查
               href: how-to-data-flow-dedupe-nulls-snippets.md
+            - name: 使用数据流处理 AML 模型中的数据
+              href: scenario-dataflow-process-data-aml-models.md
         - name: 从本地进行 SSIS 迁移
           items:
             - name: SSIS 迁移概述
@@ -806,6 +812,8 @@
       href: /azure/templates/microsoft.datafactory/allversions
     - name: Python
       href: /python/api/overview/azure/datafactory
+    - name: Azure Policy 内置策略定义
+      href: policy-reference.md
 - name: 资源
   items:
     - name: 白皮书

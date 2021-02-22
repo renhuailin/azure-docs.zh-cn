@@ -1,0 +1,317 @@
+- name: Azure IoT Central 文档
+  href: index.yml
+- name: 概述
+  items:
+    - name: Azure IoT Central 是什么
+      href: core/overview-iot-central.md
+    - name: UI 教程
+      href: core/overview-iot-central-tour.md
+    - name: 最新更新
+      items:
+        - name: 2021 年 1 月新增功能和更新的功能
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-feature-updates-january-2021/'
+        - name: 2020 年11 月新增功能和更新的功能
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-feature-updates-november-2020/'
+        - name: 2020 年 10 月新增功能和更新的功能
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-feature-upadates-october-2020/'
+        - name: 2020 年 9 月新增功能和更新的功能
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-feature-updates-september-2020/'
+        - name: 2020 年 8 月新增功能和更新的功能
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-feature-updates-august-2020/'
+        - name: 2020 年 7 月新增功能和更新的功能
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-feature-updates-july-2020/'
+        - name: 2020 年 6 月新增功能和更新的功能
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-feature-updates-june-2020/'
+        - name: 2020 年 6 月 UI 和文档更新
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-ui-documenation-updates-june-2020/'
+        - name: 2020 年 5 月作业和指标更新
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-jobs-and-metrics-feature-updates-may-2020/'
+        - name: 2020 年 5 月仪表板更新
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-may-2020-dashboard-updates/'
+        - name: 2020 年 4 月新功能
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-april-2020-new-features/'
+        - name: 2020 年 4 月更新
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-april-2020-updates/'
+        - name: 2020 年 3 月
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-march-2020-updates/'
+- name: 快速入门
+  expanded: true
+  items:
+    - name: 1. 创建新应用程序
+      href: core/quick-deploy-iot-central.md
+    - name: 2. 添加模拟设备
+      href: core/quick-create-simulated-device.md
+    - name: 3. 配置管理规则和操作
+      href: core/quick-configure-rules.md
+    - name: 4. 监视设备
+      href: core/quick-monitor-devices.md
+- name: 教程
+  items:
+    - name: 开发和连接设备
+      items:
+        - name: 创建和连接设备
+          href: core/tutorial-connect-device.md
+        - name: 创建网关设备模板
+          href: core/tutorial-define-gateway-device-type.md
+        - name: 连接 IoT Edge 设备
+          href: core/tutorial-add-edge-as-leaf-device.md
+    - name: 生成集成的解决方案
+      items:
+        - name: 创建设备组
+          href: core/tutorial-use-device-groups.md
+        - name: 创建规则
+          href: core/tutorial-create-telemetry-rules.md
+        - name: 探索 IoT Central API
+          href: /learn/modules/manage-iot-central-apps-with-rest-api/
+    - name: 行业特定解决方案
+      items:
+        - name: Retail
+          href: retail/overview-iot-central-retail.md
+          items:
+            - name: 存储内分析签出
+              href: retail/store-analytics-architecture.md
+              items:
+                - name: 1 - 创建零售应用程序
+                  href: retail/tutorial-in-store-analytics-create-app.md
+                - name: 2- 自定义操作员仪表板
+                  href: retail/tutorial-in-store-analytics-customize-dashboard.md
+                - name: 3 - 导出数据并直观呈现见解
+                  href: retail/tutorial-in-store-analytics-export-data-visualize-insights.md
+            - name: 智能库存管理
+              href: retail/architecture-smart-inventory-management.md
+              items:
+                - name: 创建智能库存管理应用程序
+                  href: retail/tutorial-iot-central-smart-inventory-management.md
+            - name: 互联物流
+              href: retail/architecture-connected-logistics.md
+              items:
+                - name: 创建互联物流应用程序
+                  href: retail/tutorial-iot-central-connected-logistics.md
+            - name: 数字分发中心
+              href: retail/architecture-digital-distribution-center.md
+              items:
+                - name: 创建数字分发中心应用程序
+                  href: retail/tutorial-iot-central-digital-distribution-center.md
+            - name: 微履行中心
+              href: retail/architecture-micro-fulfillment-center.md
+              items:
+                - name: 创建微履行中心应用程序
+                  href: retail/tutorial-micro-fulfillment-center.md
+            - name: 视频分析 - 对象和运动检测
+              href: retail/architecture-video-analytics.md
+              items:
+                - name: 0 - 部署对象和运动检测应用程序
+                  href: retail/tutorial-video-analytics-deploy.md
+                - name: 1 - 创建视频分析应用程序
+                  items:
+                    - name: 对象和运动检测 (YOLO v3)
+                      href: retail/tutorial-video-analytics-create-app-yolo-v3.md
+                    - name: 对象和运动检测 (OpenVINO)
+                      href: retail/tutorial-video-analytics-create-app-openvino.md
+                - name: 2 - 配置 IoT Edge 设备
+                  items:
+                    - name: 在边缘上创建视频分析设备 (Linux VM)
+                      href: retail/tutorial-video-analytics-iot-edge-vm.md
+                    - name: 在边缘上创建视频分析设备 (Intel NUC)
+                      href: retail/tutorial-video-analytics-iot-edge-nuc.md
+                - name: 3 -监视和管理视频分析应用程序
+                  href: retail/tutorial-video-analytics-manage.md
+                - name: 4 - 修改和生成实时视频分析网关模块
+                  href: retail/tutorial-video-analytics-build-module.md
+        - name: 能源
+          href: energy/overview-iot-central-energy.md
+          items:
+            - name: 智能计量应用体系结构
+              href: energy/concept-iot-central-smart-meter-app.md
+            - name: 创建智能计量监视应用
+              href: energy/tutorial-smart-meter-app.md
+            - name: 太阳能板应用体系结构
+              href: energy/concept-iot-central-solar-panel-app.md
+            - name: 创建太阳能板监视应用
+              href: energy/tutorial-solar-panel-app.md
+        - name: 政府机关
+          href: government/overview-iot-central-government.md
+          items:
+            - name: 连接的废弃物检测参考体系结构
+              href: government/concepts-connectedwastemanagement-architecture.md
+            - name: 创建连接的废弃物管理应用
+              href: government/tutorial-connected-waste-management.md
+            - name: 水消耗量检测参考体系结构
+              href: government/concepts-waterconsumptionmonitoring-architecture.md
+            - name: 创建水消耗量监测应用
+              href: government/tutorial-water-consumption-monitoring.md
+            - name: 水质检测参考体系结构
+              href: government/concepts-waterqualitymonitoring-architecture.md
+            - name: 创建水质监测应用
+              href: government/tutorial-water-quality-monitoring.md
+            - name: 使用 Dynamics 365 Field Service 连接 Azure IoT Central 应用程序
+              href: government/how-to-configure-connected-field-services.md
+        - name: 医疗保健
+          href: healthcare/overview-iot-central-healthcare.md
+          items:
+            - name: 持续患者监视体系结构
+              href: healthcare/concept-continuous-patient-monitoring-architecture.md
+            - name: 创建持续患者监视解决方案
+              href: healthcare/tutorial-continuous-patient-monitoring.md
+            - name: 创建健康状况数据分类仪表板
+              href: healthcare/howto-health-data-triage.md
+- name: 概念
+  items:
+    - name: 体系结构
+      href: core/concepts-architecture.md
+    - name: 设备开发人员指南
+      href: core/overview-iot-central-developer.md
+    - name: 解决方案构建者指南
+      href: core/overview-iot-central-developer.md
+    - name: 什么是应用程序模板？
+      href: core/concepts-app-templates.md
+    - name: 什么是设备模板？
+      href: core/concepts-device-templates.md
+    - name: 设备连接
+      href: core/concepts-get-connected.md
+    - name: 消息有效负载
+      href: core/concepts-telemetry-properties-commands.md
+    - name: 连接 IoT Edge 设备
+      href: core/concepts-iot-edge.md
+- name: 操作指南
+  items:
+    - name: 开发和连接设备
+      items:
+        - name: 设置设备模板
+          href: core/howto-set-up-template.md
+        - name: 对设备模板进行版本控制
+          href: core/howto-version-device-template.md
+        - name: 如何使用属性
+          href: core/howto-use-properties.md
+        - name: 如何使用命令
+          href: core/howto-use-commands.md
+        - name: 使用 X.509 连接设备
+          href: core/how-to-connect-devices-x509.md
+        - name: 使用 Azure CLI 监视设备连接
+          href: core/howto-monitor-devices-azure-cli.md
+        - name: 准备和连接 Azure Sphere DevKit
+          href: core/howto-connect-sphere.md
+        - name: 准备和连接 RuuviTag 设备
+          href: core/howto-connect-ruuvi.md
+        - name: 准备和连接 Rigado Cascade 500
+          href: core/howto-connect-rigado-cascade-500.md
+        - name: 连接其他 IoT 云
+          href: core/howto-build-iotc-device-bridge.md
+    - name: 生成集成的解决方案
+      items:
+        - name: 向仪表板添加磁贴
+          href: core/howto-add-tiles-to-your-dashboard.md
+        - name: 配置规则
+          href: core/howto-configure-rules.md
+        - name: 根据规则创建 Webhook
+          href: core/howto-create-webhooks.md
+        - name: 根据规则连接 Azure Monitor 操作组
+          href: core/howto-use-action-groups.md
+        - name: 分析设备数据
+          href: core/howto-create-analytics.md
+        - name: 将数据导出到云目标
+          href: core/howto-export-data.md
+        - name: 将数据导出到云目标（旧版）
+          href: core/howto-export-data-legacy.md
+        - name: 使用工作流与其他服务集成
+          href: core/howto-configure-rules-advanced.md
+        - name: 创建自定义规则
+          href: core/howto-create-custom-rules.md
+        - name: 使用 Databricks 创建自定义分析
+          href: core/howto-create-custom-analytics.md
+        - name: 在 Power BI 中直观显示数据
+          href: core/howto-connect-powerbi.md
+    - name: 管理设备
+      items:
+        - name: 添加和删除设备
+          href: core/howto-manage-devices.md
+        - name: 运行作业
+          href: core/howto-run-a-job.md
+    - name: 管理解决方案
+      items:
+        - name: 管理应用程序设置
+          href: core/howto-administer.md
+        - name: 管理用户和角色
+          href: core/howto-manage-users-roles.md
+        - name: 管理帐单
+          href: core/howto-view-bill.md
+        - name: 自定义应用程序 UI
+          href: core/howto-customize-ui.md
+        - name: 导出应用程序
+          href: core/howto-use-app-templates.md
+        - name: 将 V2 迁移到 V3 应用程序
+          href: core/howto-migrate.md
+        - name: 监视应用程序运行状况
+          href: core/howto-monitor-application-health.md
+        - name: 关于你的应用程序
+          href: core/howto-get-app-info.md
+        - name: 配置和使用文件上传
+          href: core/howto-configure-file-uploads.md
+        - name: 滚动 X.509 证书
+          href: core/how-to-roll-x509-certificates.md
+        - name: 从 Azure 门户进行管理
+          href: core/howto-manage-iot-central-from-portal.md
+        - name: 从 Azure CLI 进行管理
+          href: core/howto-manage-iot-central-from-cli.md
+        - name: 从 Azure PowerShell 进行管理
+          href: core/howto-manage-iot-central-from-powershell.md
+        - name: 以编程方式管理
+          href: core/howto-manage-iot-central-programmatically.md
+        - name: 从云解决方案提供商门户进行管理
+          href: core/howto-create-and-manage-applications-csp.md
+    - name: 个性化设置解决方案
+      items:
+        - name: 创建个人仪表板
+          href: core/howto-create-personal-dashboards.md
+        - name: 管理个人首选项
+          href: core/howto-manage-preferences.md
+        - name: 切换实时聊天
+          href: core/howto-show-hide-chat.md
+    - name: 疑难解答
+      items:
+        - name: 设备连接
+          href: core/troubleshoot-connection.md
+    - name: 常见问题解答
+      href: core/howto-faq.md
+- name: 参考
+  items:
+    - name: Azure CLI
+      href: /cli/azure/azure-cli-reference-for-IoT
+    - name: IoT Central API 参考
+      href: /rest/api/iotcentral/
+- name: 资源
+  items:
+    - name: 代码示例
+      href: /samples/browse/?expanded=azure&products=azure-iot-central
+    - name: 支持和帮助选项
+      href: ../iot-fundamentals/iot-support-help.md
+    - name: Azure IoT 服务
+      items:
+        - name: IoT 中心
+          href: ../iot-hub/index.yml
+        - name: IoT 中心设备预配服务
+          href: ../iot-dps/index.yml
+        - name: IoT Edge
+          href: ../iot-edge/index.yml
+        - name: IoT 解决方案加速器
+          href: ../iot-accelerators/index.yml
+        - name: IoT 即插即用
+          href: ../iot-pnp/index.yml
+        - name: Azure Maps
+          href: ../azure-maps/index.yml
+        - name: 时序见解
+          href: ../time-series-insights/index.yml
+    - name: Azure IoT SDK
+      items:
+        - name: IoT 服务 SDK
+          href: ../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-service-sdks
+        - name: IoT 设备 SDK
+          href: ../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-device-sdks
+    - name: 客户数据驻留
+      href: core/iot-central-customer-data-residency.md
+    - name: 客户数据请求
+      href: core/iot-central-customer-data-requests.md
+    - name: 支持的浏览器
+      href: core/iot-central-supported-browsers.md
+    - name: Azure IoT Central（旧模板）
+      href: /previous-versions/azure/iot-central/core/overview-iot-central

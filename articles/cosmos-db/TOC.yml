@@ -932,7 +932,7 @@
         - name: REST（管理平面）
           href: /rest/api/cosmos-db-resource-provider/2020-04-01/sqlresources
         - name: PowerShell
-          href: /powershell/module/az.cosmosdb/?view=azps-5.1.0#cosmos-db&preserve-view=true
+          href: /powershell/module/az.cosmosdb/?view=azps-5.5.0#cosmos-db&preserve-view=true
         - name: 资源管理器模板
           href: /azure/templates/microsoft.documentdb/allversions
           displayName: ARM
@@ -976,7 +976,7 @@
           href: cassandra-import-data.md
     - name: 概念
       items:
-        - name: 常见问题解答
+        - name: 常见问题
           href: cassandra-faq.md
         - name: 弹性缩放
           href: manage-scale-cassandra.md
@@ -1050,7 +1050,7 @@
         - name: REST 资源提供程序
           href: /rest/api/cosmos-db-resource-provider/2020-04-01/cassandraresources
         - name: PowerShell
-          href: /powershell/module/az.cosmosdb/?view=azps-5.1.0#cosmos-db&preserve-view=true
+          href: /powershell/module/az.cosmosdb/?view=azps-5.5.0#cosmos-db&preserve-view=true
         - name: 资源管理器模板
           href: /azure/templates/microsoft.documentdb/allversions
 - name: MongoDB API
@@ -1107,7 +1107,7 @@
           href: mongodb-feature-support-36.md
         - name: 线路协议支持 (3.2)
           href: mongodb-feature-support.md
-        - name: 常见问题解答
+        - name: 常见问题
           href: mongodb-api-faq.md
         - name: 映射一致性级别
           href: mongodb-consistency.md
@@ -1117,6 +1117,8 @@
           items:
             - name: 迁移前指南
               href: mongodb-pre-migration.md
+            - name: MongoDB 本机工具（脱机）
+              href: tutorial-mongotools-cosmos-db.md
             - name: 数据库迁移服务（联机）
               href: ../dms/tutorial-mongodb-cosmos-db-online.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
             - name: 数据库迁移服务（脱机）
@@ -1175,7 +1177,7 @@
         - name: REST 资源提供程序
           href: /rest/api/cosmos-db-resource-provider/2020-04-01/mongodbresources
         - name: PowerShell
-          href: /powershell/module/az.cosmosdb/?view=azps-5.1.0#cosmos-db&preserve-view=true
+          href: /powershell/module/az.cosmosdb/?view=azps-5.5.0#cosmos-db&preserve-view=true
         - name: 资源管理器模板
           href: /azure/templates/microsoft.documentdb/allversions
 - name: Gremlin API
@@ -1207,7 +1209,7 @@
           href: tutorial-query-graph.md
     - name: 概念
       items:
-        - name: 常见问题解答
+        - name: 常见问题
           href: gremlin-api-faq.md
         - name: 响应头
           href: gremlin-headers.md
@@ -1253,7 +1255,7 @@
         - name: 响应标头
           href: gremlin-headers.md
         - name: PowerShell
-          href: /powershell/module/az.cosmosdb/?view=azps-5.1.0#cosmos-db&preserve-view=true
+          href: /powershell/module/az.cosmosdb/?view=azps-5.5.0#cosmos-db&preserve-view=true
         - name: REST 资源提供程序
           href: /rest/api/cosmos-db-resource-provider/2020-04-01/gremlinresources
         - name: 资源管理器模板
@@ -1306,7 +1308,7 @@
           maintainContext: true
     - name: 概念
       items:
-        - name: 常见问题解答
+        - name: 常见问题
           href: table-api-faq.md
     - name: 操作指南
       items:
@@ -1339,7 +1341,7 @@
         - name: Python
           href: table-sdk-python.md
         - name: PowerShell
-          href: /powershell/module/az.cosmosdb/?view=azps-5.1.0#cosmos-db&preserve-view=true
+          href: /powershell/module/az.cosmosdb/?view=azps-5.5.0#cosmos-db&preserve-view=true
         - name: 表存储 REST API
           href: /rest/api/storageservices/table-service-rest-api
 - name: 操作指南
@@ -1419,7 +1421,7 @@
           href: monitor-cosmos-db.md
         - name: 使用 Azure Monitor 指标
           items:
-            - name: 用于 Cosmos 的 Azure Monitor（预览版）
+            - name: 用于 Cosmos DB 的 Azure Monitor
               href: ../azure-monitor/insights/cosmosdb-insights-overview.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
             - name: 要监视的方案
               href: use-metrics.md
@@ -1455,7 +1457,7 @@
       href: query-cheat-sheet.md
     - name: SQL 演练
       href: 'https://www.documentdb.com/sql/demo'
-    - name: 常见问题解答
+    - name: 常见问题
       href: faq.md
     - name: 白皮书
       href: whitepapers.md

@@ -212,8 +212,10 @@
               href: application-proxy-integrate-with-microsoft-cloud-application-security.md
             - name: 与远程桌面集成
               href: application-proxy-integrate-with-remote-desktop-services.md
-            - name: 与 SharePoint 集成
+            - name: 与 SharePoint 集成 (Kerberos)
               href: application-proxy-integrate-with-sharepoint-server.md
+            - name: 与 SharePoint 集成 (SAML)
+              href: application-proxy-integrate-with-sharepoint-server-saml.md
             - name: 与 Teams 集成
               href: application-proxy-integrate-with-teams.md
             - name: 与 Tableau 集成

@@ -60,6 +60,8 @@
       href: ../migrate/how-to-create-azure-vmware-solution-assessment.md?context=/azure/migrate/context/migrate-context.json
     - name: 管理 DHCP
       href: manage-dhcp.md
+    - name: 配置 NSX 网络组件
+      href: configure-nsx-network-components-azure-portal.md
     - name: 为 VM 部署灾难恢复
       href: disaster-recovery-for-virtual-machines.md
     - name: 通过内容库部署 VM

@@ -5,15 +5,15 @@ services: frontdoor
 author: duongau
 ms.service: frontdoor
 ms.topic: include
-ms.date: 05/09/2019
-ms.author: sharadag
+ms.date: 02/18/2021
+ms.author: duau
 ms.custom: include file
-ms.openlocfilehash: 361fb18574e90fc46e45bff8914c51ee1afa2f96
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 53d837883daefddd5fa3f0f543eae1d116a5e86a
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89411618"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101102931"
 ---
 | 资源 | 限制 |
 | --- | --- |
@@ -35,6 +35,31 @@ ms.locfileid: "89411618"
 | Web 应用程序防火墙 Cookie 名称长度 | 256 |
 | 已检查的 Web 应用程序防火墙 HTTP 请求正文大小 | 128 KB |
 | Web 应用程序防火墙自定义响应正文长度 | 2 KB |
+
+### <a name="azure-front-door-standardpremium-preview-service-limits"></a>Azure Front Door 标准版/高级版（预览版）服务限制
+
+*** 每个订阅总共最多 500 个标准版和高级版配置文件。
+
+| 资源 | 标准 SKU 限制 | 高级 SKU 限制 |
+| --- | --- | --- |
+| 每个配置文件的最大终结点数  | 10 | 25 |
+| 每个配置文件的最大自定义域数 | 100 | 200 |
+| 每个配置文件的最大源组数 | 100 | 200 |
+| 每个配置文件的最大机密数 | 100 | 200 |
+| 每个配置文件的最大安全策略数 | 100 | 200 |
+| 每个配置文件的最大规则集数 | 100 | 200 |
+| 每个规则集的最大规则数 | 100 | 100 |
+| 每个源组的最大源数 | 50 | 50 |
+| 每个终结点的最大路由数 | 100 | 200 |
+| Web 应用程序防火墙根据每个自定义规则匹配条件数 | 10 | 10 |
+| 每个匹配条件的 Web 应用防火墙 IP 地址范围数 | 600 | 600 |
+| 每个匹配条件的 Web 应用程序防火墙字符串匹配值数 | 10 | 10 |
+| Web 应用程序防火墙字符串匹配值长度 | 256 | 256 |
+| Web 应用程序防火墙 POST 正文参数名称长度 | 256 | 256 |
+| Web 应用程序防火墙 HTTP 标头名称长度 | 256 | 256 |
+| Web 应用程序防火墙 Cookie 名称长度 | 256 | 256|
+| 已检查的 Web 应用程序防火墙 HTTP 请求正文大小 | 128 KB | 128 KB |
+| Web 应用程序防火墙自定义响应正文长度 | 2 KB | 2 KB |
 
 ### <a name="timeout-values"></a>超时值
 #### <a name="client-to-front-door"></a>客户端到 Front Door

@@ -206,6 +206,8 @@
                   href: azure-stack-edge-gpu-deploy-arc-kubernetes-cluster.md
                 - name: 通过 GitOps 部署无状态应用
                   href: azure-stack-edge-gpu-deploy-stateless-application-git-ops-guestbook.md
+                - name: 部署 Azure Arc 数据控制器
+                  href: azure-stack-edge-gpu-deploy-arc-data-controller.md
         - name: 配置 Azure 资源管理器（预览版）
           items:
             - name: 通过 Azure PowerShell 连接
@@ -237,13 +239,13 @@
         - name: 管理证书
           items:
             - name: 要求
-              href: azure-stack-edge-j-series-certificate-requirements.md
+              href: azure-stack-edge-gpu-certificate-requirements.md
             - name: 自带
-              href: azure-stack-edge-j-series-manage-certificates.md
+              href: azure-stack-edge-gpu-manage-certificates.md
             - name: 通过 Azure Stack 准备情况检查器工具进行创建
-              href: azure-stack-edge-j-series-create-certificates-tool.md
+              href: azure-stack-edge-gpu-create-certificates-tool.md
             - name: 排查证书错误
-              href: azure-stack-edge-j-series-certificate-troubleshooting.md
+              href: azure-stack-edge-gpu-certificate-troubleshooting.md
         - name: 管理 Edge 计算
           href: azure-stack-edge-j-series-manage-compute.md
         - name: 管理 Edge 容器注册表
@@ -383,6 +385,8 @@
           href: azure-stack-edge-return-device.md
         - name: 更换设备
           href: azure-stack-edge-replace-device.md
+        - name: 迁移到 GPU 设备
+          href: azure-stack-edge-migrate-fpga-gpu.md
     - name: 发行说明
       items:
         - name: 2101 - 最新版

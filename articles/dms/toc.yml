@@ -37,10 +37,8 @@
   items:
     - name: 迁移 SQL Server
       items:
-        - name: 到 Azure SQL 数据库（脱机）
+        - name: 到 Azure SQL 数据库
           href: tutorial-sql-server-to-azure-sql.md
-        - name: 到 Azure SQL 数据库（联机）
-          href: tutorial-sql-server-azure-sql-online.md
         - name: 到 Azure SQL 托管实例（脱机）
           href: tutorial-sql-server-to-managed-instance.md
         - name: 到 Azure SQL 托管实例（联机）
@@ -95,7 +93,7 @@
           href: howto-sql-server-to-azure-sql-managed-instance-powershell-offline.md
     - name: 将 SSIS 包重新部署到
       items:
-        - name: Azure SQL 数据库
+        - name: Azure SQL Database
           href: how-to-migrate-ssis-packages.md
         - name: Azure SQL 托管实例
           href: how-to-migrate-ssis-packages-managed-instance.md

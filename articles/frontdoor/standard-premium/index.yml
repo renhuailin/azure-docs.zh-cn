@@ -1,0 +1,127 @@
+### YamlMime:Landing
+title: Azure Front Door 标准版/高级版（预览版）文档
+summary: Azure Front Door 标准版/高级版（预览版）是一种新式安全应用程序交付网络平台，为全球 Web 应用程序提供可缩放的 CDN、DSA、GLB。
+metadata:
+  title: Azure Front Door 标准版/高级版文档
+  description: Azure Front Door 标准版/高级版（预览版）提供可缩放的安全入口点，用于快速交付全球 Web 应用程序。 使用我们的快速入门、教程和示例了解如何使用 Front Door。
+  services: frontdoor
+  ms.service: frontdoor
+  ms.topic: landing-page
+  author: duongau
+  ms.author: duau
+  ms.date: 02/18/2020
+  ms.openlocfilehash: b11cf6b0fe8c0f1cdf711ee3b9ef6c92e5bc71bb
+  ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 02/18/2021
+  ms.locfileid: "101097576"
+landingContent:
+- title: 了解 Azure Front Door 标准版/高级版（预览版）
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 Azure Front Door 标准版/高级版（预览版）？
+      url: overview.md
+- title: 创建 Front Door 配置文件
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 创建 Front Door 标准版/高级版配置文件
+      url: create-front-door-portal.md
+- title: 配置 Endpoint Manager
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Endpoint Manager
+      url: concept-endpoint-manager.md
+    - text: 路由
+      url: concept-route.md
+  - linkListType: how-to-guide
+    links:
+    - text: 配置 Endpoint Manager
+      url: how-to-configure-endpoint-manager.md
+- title: 添加自定义域
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 添加自定义域
+      url: how-to-add-custom-domain.md
+- title: 管理源组
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 源
+      url: concept-origin.md
+    - text: 运行状况探测
+      url: concept-health-probes.md
+  - linkListType: how-to-guide
+    links:
+    - text: 配置源组
+      url: how-to-create-origin.md
+- title: 配置规则集
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 什么是规则集？
+      url: concept-rule-set.md
+    - text: 规则集匹配条件
+      url: concept-rule-set-match-conditions.md
+    - text: 规则集操作
+      url: concept-rule-set-actions.md
+  - linkListType: how-to-guide
+    links:
+    - text: 配置规则集
+      url: how-to-configure-rule-set.md
+- title: 保护应用程序
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 专用链接
+      url: concept-private-link.md
+    - text: Azure Front Door 标准版/高级版上的 WAF
+      url: ../../web-application-firewall/afds/afds-overview.md
+    - text: DDOS 保护
+      url: concept-ddos.md
+  - linkListType: how-to-guide
+    links:
+    - text: 启用专用链接
+      url: how-to-enable-private-link.md
+    - text: 配置 WAF 策略
+      url: ../../web-application-firewall/afds/waf-front-door-create-portal.md
+- title: 报表、指标和日志
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 报表
+      url: how-to-reports.md
+    - text: 监视指标和警报
+      url: how-to-monitor-metrics.md
+    - text: Logging
+      url: how-to-logs.md
+- title: 缓存和优化
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Caching
+      url: concept-caching.md
+  - linkListType: how-to-guide
+    links:
+    - text: 缓存清除
+      url: how-to-cache-purge.md
+    - text: 压缩
+      url: how-to-compression.md
+- title: Azure Front Door 故障排除
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 常见路由问题
+      url: troubleshoot-route-issues.md
+    - text: 允许的证书颁发机构
+      url: troubleshoot-allowed-certificate-authority.md
+- title: 了解 Azure Front Door
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 Azure Front Door？
+      url: ../front-door-overview.md

@@ -13,12 +13,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 01/29/2019
   ms.author: aahi
-  ms.openlocfilehash: 48d045fb89a4b04826ecb9fd0c7d0b2ac676d64a
-  ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+  ms.openlocfilehash: 322be97658752fb1fd6c775ba25fc74f4e04e50d
+  ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 01/28/2021
-  ms.locfileid: "98944968"
+  ms.lasthandoff: 02/18/2021
+  ms.locfileid: "101093280"
 landingContent:
 - title: 关于文本分析 API
   linkLists:
@@ -114,6 +114,36 @@ landingContent:
     links:
     - text: 实体识别
       url: how-tos/text-analytics-how-to-entity-linking.md
+- title: 负责使用 AI
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 文本分析的透明度说明
+      url: /legal/cognitive-services/text-analytics/transparency-note?context=/azure/cognitive-services/text-analytics/context/context
+    - text: 运行状况的透明度说明
+      url: /legal/cognitive-services/text-analytics/transparency-note-health?context=/azure/cognitive-services/text-analytics/context/context
+    - text: PII 的透明度说明
+      url: /legal/cognitive-services/text-analytics/transparency-note-personally-identifiable-information?context=/azure/cognitive-services/text-analytics/context/context
+    - text: 情绪分析的透明度说明
+      url: /legal/cognitive-services/text-analytics/transparency-note-sentiment-analysis?context=/azure/cognitive-services/text-analytics/context/context
+  - linkListType: concept
+    links:
+    - text: 集成和负责使用
+      url: /legal/cognitive-services/text-analytics/guidance-integration-responsible-use?context=/azure/cognitive-services/text-analytics/context/context
+- title: 使用 Docker 容器
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 安装和运行文本分析容器
+      url: how-tos/text-analytics-how-to-install-containers.md
+    - text: 配置文本分析容器
+      url: text-analytics-resource-container-config.md
+    - text: 将文本分析用于运行状况容器
+      url: How-tos/text-analytics-for-health.md
+    - text: 将容器实例部署到 Azure
+      url: ../containers/azure-container-instance-recipe.md
+    - text: 将容器部署到 Azure Kubernetes 服务 (AKS)
+      url: how-tos/text-analytics-how-to-use-kubernetes-service.md
 - title: 参考
   linkLists:
   - linkListType: reference
@@ -134,20 +164,6 @@ landingContent:
       url: /powershell/module/az.cognitiveservices
     - text: Azure CLI
       url: /cli/azure/cognitiveservices?view=azure-cli-latest
-- title: 使用 Docker 容器
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: 安装和运行文本分析容器
-      url: how-tos/text-analytics-how-to-install-containers.md
-    - text: 配置文本分析容器
-      url: text-analytics-resource-container-config.md
-    - text: 将文本分析用于运行状况容器
-      url: How-tos/text-analytics-for-health.md
-    - text: 将容器实例部署到 Azure
-      url: ../containers/azure-container-instance-recipe.md
-    - text: 将容器部署到 Azure Kubernetes 服务 (AKS)
-      url: how-tos/text-analytics-how-to-use-kubernetes-service.md
 - title: 帮助和反馈
   linkLists:
   - linkListType: reference

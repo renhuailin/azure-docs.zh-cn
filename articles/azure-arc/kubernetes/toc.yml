@@ -4,6 +4,14 @@
   items:
     - name: 关于已启用 Arc 的 Kubernetes
       href: overview.md
+- name: 概念
+  items:
+    - name: 代理体系结构
+      href: conceptual-agent-architecture.md
+    - name: 配置和 GitOps
+      href: conceptual-configurations.md
+    - name: 常见问题
+      href: faq.md
 - name: 操作指南
   items:
     - name: 连接到 Azure Arc
@@ -12,7 +20,7 @@
           href: connect-cluster.md
         - name: 加入服务主体
           href: create-onboarding-service-principal.md
-    - name: 管理
+    - name: 方案
       items:
         - name: 使用 GitOps 部署配置
           href: use-gitops-connected-cluster.md

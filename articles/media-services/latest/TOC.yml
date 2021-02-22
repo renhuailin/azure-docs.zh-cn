@@ -327,6 +327,8 @@
           href: how-to-create-transform.md
         - name: 使用 REST 创建基本音频转换
           href: how-to-create-basic-audio-transform.md
+        - name: 创建缩略图子画面
+          href: how-to-create-thumbnail-sprites.md
         - name: 使用 REST 创建 copyAllBitrateNonInterleaved 转换
           href: how-to-create-copyallbitratenoninterleaved-transform.md
         - name: 复制未使用 REST 编码的视频
@@ -503,5 +505,3 @@
       href: azure-clouds-regions.md
     - name: 区域代码名称和终结点
       href: azure-regions-code-names.md
-    - name: 文档更新
-      href: docs-release-notes.md

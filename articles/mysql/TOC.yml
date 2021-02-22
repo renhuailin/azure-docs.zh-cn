@@ -30,7 +30,7 @@
     - name: 快速入门
       expanded: true
       items:
-        - name: 创建服务器
+        - name: 创建 MySQL 单一服务器
           items:
             - name: Azure 门户
               href: quickstart-create-mysql-server-database-using-azure-portal.md
@@ -419,8 +419,7 @@
     - name: 快速入门
       expanded: true
       items:
-        - name: 创建服务器
-          expanded: true
+        - name: 创建 MySQL 灵活服务器
           items:
             - name: Azure 门户
               href: flexible-server/quickstart-create-server-portal.md

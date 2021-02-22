@@ -59,6 +59,8 @@
           href: managed-identity-authentication.md
         - name: 管理代理
           href: manage-agent.md
+        - name: 跨区域迁移计算机
+          href: manage-howto-migrate.md
     - name: 方案
       items:
         - name: 加入 Azure Sentinel

@@ -12,6 +12,8 @@
       href: quickstarts/create-communication-resource.md
     - name: 创建和管理访问令牌
       href: quickstarts/access-tokens.md
+    - name: 使用托管标识 (.NET)
+      href: quickstarts/managed-identity.md
     - name: 聊天
       items:
         - name: 向应用添加聊天
@@ -58,8 +60,6 @@
 - name: 概念
   expanded: false
   items:
-    - name: Teams 互操作性
-      href: concepts/teams-interop.md
     - name: 聊天
       items:
         - name: 聊天客户端概述
@@ -72,8 +72,12 @@
           href: concepts/telephony-sms/sdk-features.md
         - name: 短信概念
           href: concepts/telephony-sms/concepts.md
-        - name: 规划电话和短信解决方案
+        - name: 电话服务概念
+          href: concepts/telephony-sms/telephony-concept.md
+        - name: Azure 通信服务中的电话号码类型
           href: concepts/telephony-sms/plan-solution.md
+        - name: SIP 接口基础结构要求
+          href: concepts/telephony-sms/sip-interface-infrastructure.md
     - name: 语音和视频呼叫
       items:
         - name: 呼叫客户端概述
@@ -86,6 +90,8 @@
           href: concepts/ui-framework/ui-sdk-overview.md
         - name: UI 框架功能
           href: concepts/ui-framework/ui-sdk-features.md
+    - name: Teams 互操作性
+      href: concepts/teams-interop.md
     - name: 客户端和服务器体系结构
       href: concepts/client-and-server-architecture.md
     - name: 呼叫流

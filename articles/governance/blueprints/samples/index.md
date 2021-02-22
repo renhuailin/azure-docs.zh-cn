@@ -1,14 +1,14 @@
 ---
 title: 蓝图示例的索引
 description: 用于通过 Azure 蓝图部署环境、策略和云采用框架基础的符合性和标准示例的索引。
-ms.date: 02/01/2021
+ms.date: 02/08/2020
 ms.topic: sample
-ms.openlocfilehash: 17bacecf8fcf7c0f1969a489561a3a3ac976872e
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: c64bc02c1dea4e2c53d4ff195add2ac7fa57874f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99225135"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100370948"
 ---
 # <a name="azure-blueprints-samples"></a>Azure 蓝图示例
 
@@ -18,8 +18,9 @@ ms.locfileid: "99225135"
 
 | 示例 | 说明 |
 |---------|---------|
-| [澳大利亚政府 ISM PROTECTED](./ism-protected/index.md) | 提供可帮助符合澳大利亚政府 ISM PROTECTED 的规范措施。 |
-| [Azure 安全基准 v1](./azure-security-benchmark.md) | 提供可帮助符合 [Azure 安全基准 v1](../../../security/benchmarks/overview.md) 的规范措施。 |
+| [澳大利亚政府 ISM PROTECTED](./ism-protected/index.md) | 提供可帮助满足澳大利亚政府 ISM PROTECTED 的规范措施。 |
+| [Azure 安全基准](./azure-security-benchmark.md) | 提供可帮助符合 [Azure 安全基准](../../../security/benchmarks/overview.md)的规范措施。 |
+| [Azure 安全基准基础](./azure-security-benchmark-foundation/index.md) | 部署和配置 Azure 安全基准基础。 |
 | [加拿大联邦 PBMM](./canada-federal-pbmm/index.md) | 提供防护措施，以便符合加拿大联邦受保护的 B、中等完整性、中等可用性 (PBMM)。 |
 | [CIS Microsoft Azure 基础基准](./cis-azure-1-1-0.md)| 提供一组策略以帮助符合 CIS Microsoft Azure 基础基准建议。 |
 | [DoD 影响级别 4](./dod-impact-level-4/index.md) | 提供了一组策略以帮助符合 DoD 影响级别 4。 |

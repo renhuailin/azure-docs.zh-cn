@@ -19,8 +19,18 @@
       href: tutorial-end-to-end.md
 - name: 概念
   items:
-    - name: 自定义模式
+    - name: DTDL 模型
       href: concepts-models.md
+    - name: Ontology
+      items:
+        - name: 什么是 ontology？
+          href: concepts-ontologies.md
+        - name: 采用行业标准 ontology
+          href: concepts-ontologies-adopt.md
+        - name: 转换 ontology
+          href: concepts-ontologies-convert.md
+        - name: 扩展 ontology
+          href: concepts-ontologies-extend.md
     - name: 数字孪生和孪生图
       href: concepts-twins-graph.md
     - name: 查询语言
@@ -65,10 +75,8 @@
           href: how-to-move-regions.md
     - name: 设计模型
       items:
-        - name: 管理自定义模型
+        - name: 管理 DTDL 模型
           href: how-to-manage-model.md
-        - name: 集成行业标准模型
-          href: how-to-integrate-models.md
         - name: 分析和验证模型
           href: how-to-parse-models.md
         - name: 添加标记
@@ -249,6 +257,12 @@
           href: /samples/azure-samples/digital-twins-explorer/digital-twins-explorer/
         - name: DTDL 验证器（示例）
           href: /samples/azure-samples/dtdl-validator/dtdl-validator/
+        - name: 模型上传器（示例）
+          href: 'https://github.com/Azure/opendigitaltwins-building-tools/tree/master/ModelUploader'
+        - name: 模型可视化程序（示例）
+          href: 'https://github.com/Azure/opendigitaltwins-building-tools/tree/master/AdtModelVisualizer'
+        - name: OWL2DTDL 转换器
+          href: 'https://github.com/Azure/opendigitaltwins-building-tools/tree/master/OWL2DTDL'
         - name: DPS 和 IoT 中心集成示例
           href: /samples/azure-samples/digital-twins-iothub-integration/adt-iothub-provision-sample/
         - name: SignalR 集成示例

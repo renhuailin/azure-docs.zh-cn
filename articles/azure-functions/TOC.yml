@@ -138,6 +138,23 @@
               href: ./scripts/functions-cli-create-function-app-vsts-continuous.md
 - name: 概念
   items:
+    - name: 最佳实践
+      items:
+        - name: 性能和可靠性
+          href: functions-best-practices.md
+          displayName: best practices
+        - name: 管理连接
+          href: manage-connections.md
+          displayName: best practices
+        - name: 存储注意事项
+          href: storage-considerations.md
+          displayName: 'encryption, keys, mount, files'
+        - name: 错误处理和函数重试
+          href: functions-bindings-error-pages.md
+          displayName: best practices
+        - name: 安全性
+          href: security-concepts.md
+          displayName: best practices
     - name: 比较运行时版本
       href: functions-versions.md
       displayName: 'migrate, migration, v3'
@@ -212,12 +229,7 @@
       href: functions-diagnostics.md
     - name: 消耗计划成本
       href: functions-consumption-costs.md
-    - name: 性能注意事项
-      href: functions-best-practices.md
       displayName: best practice
-    - name: 存储注意事项
-      href: storage-considerations.md
-      displayName: 'encryption, keys, mount, files'
     - name: Functions 代理
       href: functions-proxies.md
     - name: 网络选项

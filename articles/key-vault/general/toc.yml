@@ -43,7 +43,7 @@
   items:
     - name: 基本概念
       href: basic-concepts.md
-    - name: 最佳做法
+    - name: 最佳实践
       href: best-practices.md
     - name: 安全性
       items:
@@ -96,10 +96,12 @@
               href: assign-access-policy-powershell.md
             - name: 门户
               href: assign-access-policy-portal.md
-        - name: 使用 Azure RBAC 管理对密钥、机密和证书的访问权限（预览版）
-          href: rbac-guide.md
-        - name: 有关将保管库访问策略迁移到 Azure RBAC 的指南
-          href: rbac-migration.md
+        - name: Azure RBAC 权限模型
+          items:
+            - name: 使用 Azure RBAC 来管理对密钥、机密和证书的访问
+              href: rbac-guide.md
+            - name: 有关将保管库访问策略迁移到 Azure RBAC 的指南
+              href: rbac-migration.md
         - name: 排查访问问题
           href: troubleshooting-access-issues.md
     - name: 开发

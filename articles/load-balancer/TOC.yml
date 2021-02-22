@@ -33,8 +33,12 @@
       href: tutorial-load-balancer-standard-public-zonal-portal.md
     - name: 在负载均衡器中配置端口转发
       href: tutorial-load-balancer-port-forwarding-portal.md
-    - name: 创建跨区域负载均衡器 - 门户
-      href: tutorial-cross-region-portal.md
+    - name: 跨区域负载均衡器
+      items:
+        - name: 创建跨区域负载均衡器 - 门户
+          href: tutorial-cross-region-portal.md
+        - name: 创建跨区域负载均衡器 - PowerShell
+          href: tutorial-cross-region-powershell.md
 - name: 示例
   items:
     - name: Azure CLI
@@ -89,6 +93,8 @@
       href: backend-pool-management.md
     - name: 标准负载均衡器和虚拟机规模集
       href: load-balancer-standard-virtual-machine-scale-sets.md
+    - name: 使用 Azure 实例元数据服务检索信息
+      href: instance-metadata-service-load-balancer.md
 - name: 操作说明
   items:
     - name: 门户设置
@@ -144,6 +150,8 @@
           href: move-across-regions-internal-load-balancer-powershell.md
     - name: 仅出站的负载均衡器配置
       href: egress-only.md
+    - name: 使用 Azure IMDS 检索元数据
+      href: howto-load-balancer-imds.md
     - name: 疑难解答
       items:
         - name: 对 Azure 负载均衡器进行故障排除
@@ -181,6 +189,8 @@
     - name: 资源管理器模板
       href: /azure/templates/microsoft.network/loadbalancers
       displayName: ARM
+    - name: Azure 实例元数据服务 (IMDS) 的常见错误代码
+      href: troubleshoot-load-balancer-imds.md
 - name: 资源
   items:
     - name: 利用 Microsoft Learn 掌握技能

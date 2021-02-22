@@ -55,13 +55,13 @@
           href: role-assignments-list-cli.md
         - name: REST API
           href: role-assignments-list-rest.md
-    - name: 添加或删除角色分配
+    - name: 分配角色
       items:
-        - name: 角色分配的添加步骤
+        - name: 分配角色的步骤
           href: role-assignments-steps.md
         - name: 门户
           items:
-            - name: 添加或删除角色分配
+            - name: 分配角色
               href: role-assignments-portal.md
             - name: 订阅管理员
               href: role-assignments-portal-subscription-admin.md
@@ -78,6 +78,8 @@
         - name: ARM 模板
           displayName: Resource Manager
           href: role-assignments-template.md
+    - name: 删除角色分配
+      href: role-assignments-remove.md
     - name: 列出拒绝分配
       items:
         - name: 概述

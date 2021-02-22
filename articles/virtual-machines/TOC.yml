@@ -210,6 +210,12 @@
                   href: ./windows/n-series-driver-setup.md
             - name: 安装 AMD GPU 驱动程序
               href: ./windows/n-series-amd-driver-setup.md
+        - name: FPGA - 加速计算
+          items:
+            - name: 概述
+              href: sizes-field-programmable-gate-arrays.md?context=/azure/virtual-machines/context/context
+            - name: NP 系列
+              href: np-series.md
         - name: 高性能计算
           displayName: H-series
           items:
@@ -321,7 +327,8 @@
           href: ./linux/tutorial-build-deploy-azure-pipelines.md
         - name: 创建 LAMP 堆栈
           href: ./linux/tutorial-lamp-stack.md
-        - name: 使用 SSL 保护 Web 服务器
+        - name: 使用 TLS\SSL 保护 Web 服务器
+          displayname: SSL TLS
           items:
             - name: Linux
               href: ./linux/tutorial-secure-web-server.md
@@ -983,7 +990,7 @@
       href: ephemeral-os-disks.md
     - name: 迁移和转换
       items:
-        - name: 在“标准”和“高级”之间转换磁盘
+        - name: 将磁盘转换为另一种磁盘类型
           items:
             - name: CLI
               href: ./linux/convert-disk-storage.md
@@ -1221,6 +1228,8 @@
       href: maintenance-and-updates.md
     - name: 自动 VM 来宾修补（预览）
       href: ./windows/automatic-vm-guest-patching.md
+    - name: 自动升级扩展（预览）
+      href: ./automatic-extension-upgrade.md
     - name: 维护控制
       items:
         - name: 维护通知
@@ -1277,7 +1286,7 @@
       items:
         - name: 代理概述
           href: ../azure-monitor/platform/agents-overview.md?context=/azure/virtual-machines/context/context
-        - name: 常见问题解答
+        - name: 常见问题
           href: ../azure-monitor/faq.md?context=/azure/virtual-machines/context/context#agents
         - name: Azure 诊断扩展
           items:

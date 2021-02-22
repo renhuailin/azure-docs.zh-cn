@@ -151,6 +151,8 @@
       href: notification-hubs-baidu-china-android-notifications-get-started.md
     - name: 通过通知中心使用 APNS VOIP
       href: voip-apns.md
+    - name: 为通知中心启用诊断日志
+      href: notification-hubs-diagnostic-logs.md
 - name: 参考
   items:
     - name: .NET

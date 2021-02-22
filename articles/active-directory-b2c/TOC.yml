@@ -26,11 +26,7 @@
       href: tutorial-register-applications.md
     - name: 3 - 创建用户流
       href: tutorial-create-user-flows.md
-    - name: 添加标识提供程序
-      href: tutorial-add-identity-providers.md
-    - name: 自定义 UI
-      href: tutorial-customize-ui.md
-    - name: 对用户进行身份验证
+    - name: 4 - 对用户进行身份验证
       items:
         - name: ASP.NET
           href: tutorial-web-app-dotnet.md
@@ -41,7 +37,7 @@
         - name: Python
           href: tutorial-web-app-python.md
           displayName: flask
-    - name: 授予 API 访问权限
+    - name: 5 - 授予 API 访问权限
       items:
         - name: ASP.NET
           href: tutorial-web-api-dotnet.md
@@ -294,7 +290,7 @@
                       href: social-transformations.md
                     - name: StringCollection
                       href: stringcollection-transformations.md
-                    - name: String
+                    - name: 字符串
                       href: string-transformations.md
                 - name: 谓词
                   href: predicates.md
@@ -434,20 +430,20 @@
     - name: 安全 API 管理 API
       href: secure-api-management.md
       displayName: 'apim, api management, migrate, b2clogin.com'
-    - name: 基于手机的安全 MFA
-      href: phone-based-mfa.md
-      displayName: 'multi-factor authentication, Azure Monitor, Log Analytics'
     - name: 日志和监视
       items:
         - name: 审核日志
           href: view-audit-logs.md
-          displayName: 'log, logs, logging, usage, events'
+          displayName: 'log, logs, logging, usage, events, reports, reporting'
         - name: Azure Monitor
           href: azure-monitor.md
-          displayName: 'log, logs, logging, usage, events'
+          displayName: 'log, logs, logging, usage, events, reports, reporting, dashboard'
         - name: 使用情况分析
           href: analytics-with-application-insights.md
-          displayName: 'application insights, app insights'
+          displayName: 'application insights, app insights, reports, reporting'
+        - name: 基于手机的安全 MFA
+          href: phone-based-mfa.md
+          displayName: 'multi-factor authentication, Azure Monitor, Log Analytics, reports, reporting, dashboard'
     - name: 合规性
       items:
         - name: 用户访问权限

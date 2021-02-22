@@ -10,12 +10,12 @@ metadata:
   author: duongau
   ms.author: duau
   ms.date: 09/09/2020
-  ms.openlocfilehash: 844a2e070f5918352044c878657dc2dcee1902d4
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: 1f92d3b744be76e96b33bc32eafcf7555fccf815
+  ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "89657257"
+  ms.lasthandoff: 02/18/2021
+  ms.locfileid: "101092060"
 landingContent:
 - title: 了解 Azure Front Door
   linkLists:
@@ -23,6 +23,12 @@ landingContent:
     links:
     - text: 什么是 Azure Front Door？
       url: front-door-overview.md
+- title: 了解 Azure Front Door 标准版/高级版（预览版）
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 Azure Front Door 标准版/高级版（预览版）？
+      url: standard-premium/overview.md
 - title: 创建 Front Door
   linkLists:
   - linkListType: quickstart

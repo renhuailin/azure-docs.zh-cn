@@ -210,6 +210,8 @@
                       href: connect-zscaler.md
                 - name: 步骤 3 验证连接性
                   href: connect-cef-verify.md
+        - name: 创建自定义连接器
+          href: create-custom-connector.md
         - name: 连接威胁智能
           href: connect-threat-intelligence.md
         - name: 连接 Azure Stack VM
@@ -255,8 +257,6 @@
           href: hunting-with-rest-api.md
         - name: 通过 REST API 管理播放列表
           href: watchlist-with-rest-api.md
-    - name: Azure Monitor 数据参考
-      href: /azure/azure-monitor/reference/
     - name: Azure Sentinel 逻辑应用连接器
       href: /connectors/azuresentinel/
     - name: 网络规范化架构
@@ -275,8 +275,6 @@
   items:
     - name: 有用的资源
       href: resources.md
-    - name: Azure 路线图
-      href: 'https://azure.microsoft.com/updates/?updateType=security&category=security&query=sentinel'
     - name: Azure 安全性、隐私性与合规性博客
       href: /archive/blogs/azuresecurity/
     - name: 区域可用性

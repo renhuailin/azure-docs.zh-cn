@@ -10,6 +10,9 @@
     - name: 保护虚拟中心 - ARM 模板
       displayName: Resource Manager
       href: quick-secure-virtual-hub.md
+    - name: 使用策略部署防火墙 - ARM 模板
+      displayName: Resource Manager
+      href: quick-firewall-policy.md
 - name: 教程
   items:
     - name: 保护虚拟中心 - 门户

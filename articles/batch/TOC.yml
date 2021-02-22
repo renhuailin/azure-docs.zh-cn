@@ -172,6 +172,11 @@
         - name: 创建不具有公共 IP 地址的池
           displayName: private
           href: batch-pool-no-public-ip-address.md
+        - name: 使用池的扩展
+          href: create-pool-extensions.md
+        - name: 配置托管标识
+          displayName: user-assigned
+          href: managed-identity-pools.md
         - name: 装载虚拟文件系统
           href: virtual-file-mount.md
         - name: 装载 Azure 文件共享
