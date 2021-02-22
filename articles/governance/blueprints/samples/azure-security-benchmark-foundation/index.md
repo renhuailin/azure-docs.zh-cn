@@ -1,14 +1,14 @@
 ---
 title: Azure 安全基准基础蓝图示例概述
 description: Azure 安全基准基础蓝图示例的概述和体系结构。
-ms.date: 02/12/2020
+ms.date: 02/17/2020
 ms.topic: sample
-ms.openlocfilehash: 4bbc5b94ea9b977a2b71edbf15cf5a7aa0566974
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: b3b58f2fb603e23e4b188e527fa4fc60f4041a29
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100416211"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101095274"
 ---
 # <a name="overview-of-the-azure-security-benchmark-foundation-blueprint-sample"></a>Azure 安全基准基础蓝图示例的概述
 

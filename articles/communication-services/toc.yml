@@ -74,7 +74,7 @@
           href: concepts/telephony-sms/concepts.md
         - name: 电话服务概念
           href: concepts/telephony-sms/telephony-concept.md
-        - name: Azure 通信服务中的电话号码类型
+        - name: 电话号码类型
           href: concepts/telephony-sms/plan-solution.md
         - name: SIP 接口基础结构要求
           href: concepts/telephony-sms/sip-interface-infrastructure.md
