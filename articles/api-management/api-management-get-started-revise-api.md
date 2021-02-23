@@ -8,14 +8,14 @@ author: vladvino
 ms.service: api-management
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 10/30/2020
+ms.date: 02/09/2021
 ms.author: apimpm
-ms.openlocfilehash: 3804bfb2a269c431b1a00947f5c7613566a78f49
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: acb121bb00df481c926ebed9594bf0fe1b9b17ed
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93377477"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546629"
 ---
 # <a name="tutorial-use-revisions-to-make-non-breaking-api-changes-safely"></a>教程：使用修订安全地进行非中断性 API 变更
 当 API 准备就绪并即将供开发人员使用时，你最终需要对该 API 进行更改，同时避免干扰 API 的调用方。 另一种有效的做法是让开发人员知道所做的更改。 
@@ -78,6 +78,8 @@ ms.locfileid: "93377477"
 
 ## <a name="make-your-revision-current-and-add-a-change-log-entry"></a>将修订版设为当前版本并添加更改日志项目
 
+### <a name="portal"></a>[Portal](#tab/azure-portal)
+
 1. 在靠近页面顶部的菜单中选择“修订”选项卡。
 1. 打开“修订版 2”对应的上下文菜单 (**...**)。
 1. 选择“设为当前版本”。
@@ -86,6 +88,61 @@ ms.locfileid: "93377477"
 
     :::image type="content" source="media/api-management-getstarted-revise-api/revisions-menu.png" alt-text="“修订”窗口中的“修订”菜单":::
 
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+开始使用 Azure CLI：
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+使用此过程创建和更新版本。
+
+1. 运行 [az apim api list](/cli/azure/apim/api#az_apim_api_list) 命令以查看 API ID：
+
+   ```azurecli
+   az apim api list --resource-group apim-hello-word-resource-group \
+       --service-name apim-hello-world --output table
+   ```
+
+   要在下一个命令中使用的 API ID 是 `Name` 值。 API 版本位于 `ApiRevision` 列中。
+
+1. 若要创建版本和发行说明，请运行 [az apim api release create](/cli/azure/apim/api/release#az_apim_api_release_create) 命令：
+
+   ```azurecli
+   az apim api release create --resource-group apim-hello-word-resource-group \
+       --api-id demo-conference-api --api-revision 2 --service-name apim-hello-world \
+       --notes 'Testing revisions. Added new "test" operation.'
+   ```
+
+   你发布的修订版即为当前修订版。
+
+1. 若要查看版本，请使用 [az apim api release list](/cli/azure/apim/api/release#az_apim_api_release_list) 命令：
+
+   ```azurecli
+   az apim api release list --resource-group apim-hello-word-resource-group \
+       --api-id echo-api --service-name apim-hello-world --output table
+   ```
+
+   指定的注释显示在更改日志中。 可以在前一个命令的输出中看到这些注释。
+
+1. 创建版本时，可选用 `--notes` 参数。 稍后可以通过使用 [az apim api release update](/cli/azure/apim/api/release#az_apim_api_release_update) 命令添加或更改注释：
+
+   ```azurecli
+   az apim api release update --resource-group apim-hello-word-resource-group \
+       --api-id demo-conference-api --release-id 00000000000000000000000000000000 \
+       --service-name apim-hello-world --notes "Revised notes."
+   ```
+
+   使用 `Name` 列中的值作为版本 ID。
+
+可以通过运行 [az apim api release delete ](/cli/azure/apim/api/release#az_apim_api_release_delete) 命令删除任何版本：
+
+```azurecli
+az apim api release delete --resource-group apim-hello-word-resource-group \
+    --api-id demo-conference-api --release-id 00000000000000000000000000000000 
+    --service-name apim-hello-world
+```
+
+---
 
 ## <a name="browse-the-developer-portal-to-see-changes-and-change-log"></a>浏览开发人员门户以查看更改与更改日志
 

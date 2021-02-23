@@ -1,14 +1,14 @@
 ---
-title: 部署 Azure VMware 解决方案
-description: 使用 Azure 门户部署 Azure VMware 解决方案的步骤。
+title: 创建 Azure VMware 解决方案私有云
+description: 使用 Azure 门户创建 Azure VMware 解决方案私有云的步骤。
 ms.topic: include
-ms.date: 09/28/2020
-ms.openlocfilehash: 4d0881721cd8c13d1b6c9fb3a29e4cdb6d6a753f
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.date: 02/17/2021
+ms.openlocfilehash: 983dccfaa9ea43955bfecc68bbbe432c579d51d1
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91578303"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653121"
 ---
 <!-- Used in deploy-azure-vmware-solution.md and tutorial-create-private-cloud.md -->
 
@@ -40,4 +40,4 @@ ms.locfileid: "91578303"
 
 1. 验证部署是否成功。 导航到创建的资源组，然后选择私有云。  完成部署后，你将看到“成功”状态。 
 
-   :::image type="content" source="../media/tutorial-create-private-cloud/validate-deployment.png" alt-text="在“基本信息”选项卡上，输入相关字段的值。" border="true":::
+   :::image type="content" source="../media/tutorial-create-private-cloud/validate-deployment.png" alt-text="验证部署是否成功。" border="true":::

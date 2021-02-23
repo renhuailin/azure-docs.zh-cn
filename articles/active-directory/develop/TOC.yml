@@ -36,7 +36,7 @@
           href: quickstart-v2-aspnet-core-webapp.md
         - name: ASP.NET Core（调用 Microsoft Graph）
           href: quickstart-v2-aspnet-core-webapp-calls-graph.md
-        - name: Node.js - MSAL | 预览
+        - name: Node.js - MSAL
           href: quickstart-v2-nodejs-webapp-msal.md
         - name: Node.js - Passport.js
           displayName: 'OIDC, express'
@@ -62,12 +62,16 @@
           href: quickstart-v2-uwp.md
         - name: Windows 桌面 .NET
           href: quickstart-v2-windows-desktop.md
+        - name: Node.js Electron
+          href: quickstart-v2-nodejs-desktop.md
     - name: 守护程序或后端服务
       items:
         - name: .NET Core 控制台（守护程序）
           href: quickstart-v2-netcore-daemon.md
         - name: Python 控制台守护程序
           href: quickstart-v2-python-daemon.md
+        - name: Node.js 控制台守护程序
+          href: quickstart-v2-nodejs-console.md
         - name: Java 控制台守护程序
           href: quickstart-v2-java-daemon.md
 - name: 教程
@@ -88,6 +92,8 @@
           href: tutorial-v2-asp-webapp.md
         - name: Blazor 服务器
           href: tutorial-blazor-server.md
+        - name: Node.js web 应用教程
+          href: tutorial-v2-nodejs-webapp-msal.md
     - name: 移动和桌面
       items:
         - name: Android
@@ -101,10 +107,14 @@
           href: tutorial-v2-windows-desktop.md
         - name: 在 Android 应用中使用共享设备模式
           href: tutorial-v2-shared-device-mode.md
+        - name: Electron 桌面应用
+          href: tutorial-v2-nodejs-desktop.md
     - name: 守护程序或后端服务
       items:
         - name: ASP.NET 守护程序 Web 应用
           href: tutorial-v2-aspnet-daemon-web-app.md
+        - name: Node.js 控制台守护程序
+          href: tutorial-v2-nodejs-console.md
 - name: 示例
   href: sample-v2-code.md
 - name: 概念

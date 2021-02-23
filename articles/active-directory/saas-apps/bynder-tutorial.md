@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/07/2020
+ms.date: 02/03/2021
 ms.author: jeedes
-ms.openlocfilehash: d9e348d456d517cd20e899648b9e92b3cd802ffb
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: dd4114f417fa266d8d638e28167d513fdf01aa97
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98806308"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100380838"
 ---
 # <a name="tutorial-integrate-bynder-with-azure-active-directory"></a>教程：将 Bynder 与 Azure Active Directory 集成
 
@@ -30,7 +30,7 @@ ms.locfileid: "98806308"
 
 若要开始操作，需备齐以下项目：
 
-* 一个 Azure AD 订阅。 如果没有订阅，可以从[此处](https://azure.microsoft.com/pricing/free-trial/)获取一个月免费试用版。
+* 一个 Azure AD 订阅。 如果没有订阅，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。
 * 已启用 Bynder 单一登录 (SSO) 的订阅。
 
 ## <a name="scenario-description"></a>方案描述
@@ -40,7 +40,7 @@ ms.locfileid: "98806308"
 * Bynder 支持 **SP 和 IDP** 发起的 SSO
 * Bynder 支持 **实时** 用户预配
 
-## <a name="adding-bynder-from-the-gallery"></a>从库中添加 Bynder
+## <a name="add-bynder-from-the-gallery"></a>从库中添加 Bynder
 
 要配置 Bynder 与 Azure AD 的集成，需要将库中的 Bynder 添加到托管的 SaaS 应用列表。
 
@@ -56,7 +56,7 @@ ms.locfileid: "98806308"
 
 使用名为 **B.Simon** 的测试用户配置和测试 Bynder 的 Azure AD SSO。 若要运行 SSO，需要在 Azure AD 用户与 Bynder 相关用户之间建立链接关系。
 
-若要配置和测试 Bynder 的 Azure AD SSO，请完成以下构建基块：
+若要配置并测试 Bynder 的 Azure AD SSO，请执行以下步骤：
 
 1. **[配置 Azure AD SSO](#configure-azure-ad-sso)** - 使用户能够使用此功能。
    1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
@@ -65,13 +65,13 @@ ms.locfileid: "98806308"
    1. **[创建 Bynder 测试用户](#create-bynder-test-user)** - 在 Bynder 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
 1. **[测试 SSO](#test-sso)** - 验证配置是否正常工作。
 
-### <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
+## <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
 
 按照下列步骤在 Azure 门户中启用 Azure AD SSO。
 
 1. 在 Azure 门户的“Bynder”应用程序集成页上，找到“管理”部分，选择“单一登录”  。
 1. 在“选择单一登录方法”页上选择“SAML”   。
-1. 在“设置 SAML 单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置   。
+1. 在“设置 SAML 单一登录”页面上，单击“基本 SAML 配置”旁边的铅笔图标以编辑设置 。
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
@@ -163,4 +163,4 @@ ms.locfileid: "98806308"
 
 ## <a name="next-steps"></a>后续步骤
 
-配置 Bynder 后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。
+配置 Bynder 后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。

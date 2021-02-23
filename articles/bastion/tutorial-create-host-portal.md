@@ -5,14 +5,14 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: tutorial
-ms.date: 10/13/2020
+ms.date: 02/12/2021
 ms.author: cherylmc
-ms.openlocfilehash: a7937745e839b54d9ee7b6f056d10ff627e191d3
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 60b49e5b6e103a85d79cf8495f2743b22e434c96
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92327325"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100586786"
 ---
 # <a name="tutorial-configure-bastion-and-connect-to-a-windows-vm-through-a-browser"></a>教程：配置 Bastion 并通过浏览器连接到 Windows VM
 
@@ -53,21 +53,21 @@ ms.locfileid: "92327325"
 
    :::image type="content" source="./media/tutorial-create-host-portal/bastion-basics.png" alt-text="创建 Bastion 主机" lightbox="./media/tutorial-create-host-portal/bastion-basics.png":::
 
-    * **订阅** ：你需要用于新建 Bastion 资源的 Azure 订阅。
-    * **资源组** ：将在其中创建新的 Bastion 资源的 Azure 资源组。 如果目前没有资源组，可新建一个。
-    * **名称** ：新 Bastion 资源的名称。
-    * **区域** ：将在其中创建资源的 Azure 公共区域。
-    * **虚拟网络** ：将在其中创建 Bastion 资源的虚拟网络。 你可在此过程中通过门户创建新的虚拟网络，也可使用现有虚拟网络。 如果是后者，请确保现有虚拟网络有足够多的空闲地址空间来满足 Bastion 子网的要求。 如果从下拉列表中看不到虚拟网络，请确保已选择正确的“资源组”。
-    * **子网** ：创建或选择虚拟网络后，将显示“子网”字段。 Bastion 主机将部署到的虚拟网络中的子网。 此子网专用于该 Bastion 主机。 选择“管理子网配置”并创建 Azure Bastion 子网。 选择“+ 子网”并按照以下指南创建子网：
+    * **订阅**：你需要用于新建 Bastion 资源的 Azure 订阅。
+    * **资源组**：将在其中创建新的 Bastion 资源的 Azure 资源组。 如果目前没有资源组，可新建一个。
+    * **名称**：新 Bastion 资源的名称。
+    * **区域**：将在其中创建资源的 Azure 公共区域。
+    * **虚拟网络**：将在其中创建 Bastion 资源的虚拟网络。 你可在此过程中通过门户创建新的虚拟网络，也可使用现有虚拟网络。 如果是后者，请确保现有虚拟网络有足够多的空闲地址空间来满足 Bastion 子网的要求。 如果从下拉列表中看不到虚拟网络，请确保已选择正确的“资源组”。
+    * **子网**：创建或选择虚拟网络后，将显示“子网”字段。 Bastion 主机将部署到的虚拟网络中的子网。 此子网专用于该 Bastion 主机。 选择“管理子网配置”并创建 Azure Bastion 子网。 选择“+ 子网”并按照以下指南创建子网：
 
          * 子网命名必须为 AzureBastionSubnet。
          * 子网必须为 /27 或更大。
 
       无需填写其他字段。 选择“确定”，然后在页面顶部选择“创建 Bastion”以返回到 Bastion 配置页面 。
-    * **公共 IP 地址** ：Bastion 资源的公共 IP，将在该 IP 上通过端口 443 访问 RDP/SSH。 创建新的公共 IP。 公共 IP 地址必须与要创建的 Bastion 资源位于同一区域。 此 IP 地址与你要连接的任何 VM 无关。 它是 Bastion 主机资源的公共 IP。
-    * **公共 IP 地址名称** ：公共 IP 地址资源的名称。 在本教程中，你可以保留默认值。
-    * **公共 IP 地址 SKU** ：默认情况下，该设置预填充为“标准”。 Azure Bastion 仅使用/支持标准公共 IP SKU。
-    * **分配** ：默认情况下，该设置预填充为“静态”。
+    * **公共 IP 地址**：Bastion 资源的公共 IP，将在该 IP 上通过端口 443 访问 RDP/SSH。 创建新的公共 IP。 公共 IP 地址必须与要创建的 Bastion 资源位于同一区域。 此 IP 地址与你要连接的任何 VM 无关。 它是 Bastion 主机资源的公共 IP。
+    * **公共 IP 地址名称**：公共 IP 地址资源的名称。 在本教程中，你可以保留默认值。
+    * **公共 IP 地址 SKU**：默认情况下，该设置预填充为“标准”。 Azure Bastion 仅使用/支持标准公共 IP SKU。
+    * **分配**：默认情况下，该设置预填充为“静态”。
 
 1. 指定完设置后，选择“查看 + 创建”。 这会验证值。 验证通过后，即可创建 Bastion 资源。
 1. 选择“创建”  。

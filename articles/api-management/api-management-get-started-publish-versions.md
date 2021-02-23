@@ -5,14 +5,14 @@ author: vladvino
 ms.service: api-management
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 10/30/2020
+ms.date: 02/10/2021
 ms.author: apimpm
-ms.openlocfilehash: 4a107b4cc0dbf0b0845211ca64691fb0e792a47c
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: f6ea02c32ec7fcb694d63f29c63c3880a7cfff9e
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97679084"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546646"
 ---
 # <a name="tutorial-publish-multiple-versions-of-your-api"></a>教程：发布 API 的多个版本 
 
@@ -87,6 +87,32 @@ ms.locfileid: "97679084"
 1. 单击“选择”。
 
 :::image type="content" source="media/api-management-getstarted-publish-versions/08-add-multiple-versions-03-add-version-product.png" alt-text="向产品添加版本":::
+
+## <a name="use-version-sets"></a>使用版本集
+
+创建多个版本时，Azure 门户会创建一个版本集，它表示单个逻辑 API 的一组版本。 选择具有多个版本的 API 的名称。 Azure 门户会显示其版本集。 你可以自定义虚拟集的名称和说明 。
+
+你可以通过使用 Azure CLI 直接与版本集交互：
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+若要查看所有版本集，请运行 [az apim api versionset list](/cli/azure/apim/api/versionset#az_apim_api_versionset_list) 命令：
+
+```azurecli
+az apim api versionset list --resource-group apim-hello-word-resource-group \
+    --service-name apim-hello-world --output table
+```
+
+当 Azure 门户为你创建一个版本集时，它会分配一个字母数字名称并显示在列表的“名称”列中。 在其他 Azure CLI 命令中使用此名称。
+
+若要查看有关版本集的详细信息，请运行 [az apim api versionset show](/api/versionset#az_apim_api_versionset_show) 命令：
+
+```azurecli
+az apim api versionset show --resource-group apim-hello-word-resource-group \
+    --service-name apim-hello-world --version-set-id 00000000000000000000000
+```
+
+有关版本集的详细信息，请参阅 [Azure API 管理中的版本](api-management-versions.md#how-versions-are-represented)。
 
 ## <a name="browse-the-developer-portal-to-see-the-version"></a>浏览开发人员门户以查看版本
 

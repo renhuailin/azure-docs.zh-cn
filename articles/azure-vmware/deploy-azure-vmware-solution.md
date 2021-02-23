@@ -1,35 +1,27 @@
 ---
 title: 部署和配置 Azure VMware 解决方案
-description: 了解如何使用规划阶段中收集的信息部署 Azure VMware 解决方案私有云。
+description: 了解如何使用规划阶段中收集的信息部署和配置 Azure VMware 解决方案私有云。
 ms.topic: tutorial
-ms.date: 12/24/2020
-ms.openlocfilehash: f2b6f3c4ad82117fee96e0c2e5973a7011384d48
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.custom: contperf-fy21q3
+ms.date: 02/17/2021
+ms.openlocfilehash: bfd057a19ebe26a66d11b52ddf17c285a1f9a308
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98760885"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652728"
 ---
 # <a name="deploy-and-configure-azure-vmware-solution"></a>部署和配置 Azure VMware 解决方案
 
-本文介绍如何使用[规划部分](production-ready-deployment-steps.md)的信息部署 Azure VMware 解决方案。 
+本文介绍如何使用[规划部分](production-ready-deployment-steps.md)的信息部署和配置 Azure VMware 解决方案。 
 
 >[!IMPORTANT]
 >如果你尚未定义此信息，请先回到[规划部分](production-ready-deployment-steps.md)进行定义，然后再继续。
 
-## <a name="register-the-resource-provider"></a>注册资源提供程序
 
-[!INCLUDE [register-resource-provider-steps](includes/register-resource-provider-steps.md)]
+## <a name="create-an-azure-vmware-solution-private-cloud"></a>创建 Azure VMware 解决方案私有云
 
-
-## <a name="deploy-azure-vmware-solution"></a>部署 Azure VMware 解决方案
-
-使用[规划 Azure VMware 解决方案部署](production-ready-deployment-steps.md)一文中收集的信息：
-
->[!NOTE]
->若要部署 Azure VMware 解决方案，你在订阅中必须至少是参与者级别。
-
-[!INCLUDE [create-avs-private-cloud-azure-portal](includes/create-private-cloud-azure-portal-steps.md)]
+请按照[创建 Azure VMware 解决方案私有云](tutorial-create-private-cloud.md)教程中的先决条件和步骤进行操作。 可以使用 [Azure 门户](tutorial-create-private-cloud.md#azure-portal)或 [Azure CLI](tutorial-create-private-cloud.md#azure-cli) 创建 Azure VMware 解决方案私有云。  
 
 >[!NOTE]
 >有关此步骤的端到端概述，请观看 [Azure VMware 解决方案：部署](https://www.youtube.com/embed/gng7JjxgayI)视频。
@@ -60,7 +52,7 @@ ms.locfileid: "98760885"
 
 跳转盒位于 Azure VMware 解决方案通过其 ExpressRoute 线路进行连接的虚拟网络中。  在 Azure 中，转到跳转盒的网络接口，[查看有效路由](../virtual-network/manage-route-table.md#view-effective-routes)。
 
-在有效路由列表中，你应当会看到在 Azure VMware 解决方案部署过程中创建的网络。 你会看到从你在本文前面的[部署步骤](#deploy-azure-vmware-solution)中定义的 [`/22` 网络](production-ready-deployment-steps.md#ip-address-segment)派生的多个网络。
+在有效路由列表中，你应当会看到在 Azure VMware 解决方案部署过程中创建的网络。 你将看到从你在[创建私有云](#create-an-azure-vmware-solution-private-cloud)时[定义的 `/22` 网络](production-ready-deployment-steps.md#ip-address-segment)中派生的多个网络。  
 
 :::image type="content" source="media/pre-deployment/azure-vmware-solution-effective-routes.png" alt-text="验证从 Azure VMware 解决方案播发到 Azure 虚拟网络的网络路由" lightbox="media/pre-deployment/azure-vmware-solution-effective-routes.png":::
 
@@ -68,13 +60,13 @@ ms.locfileid: "98760885"
 
 ## <a name="connect-and-sign-in-to-vcenter-and-nsx-t"></a>连接并登录到 vCenter 和 NSX-T
 
-登录到你在前面的步骤中创建的跳转盒。 登录后，打开 Web 浏览器，导航到 vCenter 和 NSX-T 管理控制台并登录到其中。  
+登录到你在前面的步骤中创建的跳转盒。 登录后，打开 Web 浏览器，导航到 vCenter 和 NSX-T Manager 并登录到其中。  
 
-你可以在 Azure 门户中标识 vCenter 以及 NSX-T 管理控制台的 IP 地址和凭据。  选择你的私有云，然后在“概览”视图中选择“标识”>“默认” 。 
+你可以在 Azure 门户中标识 vCenter 以及 NSX-T Manager 控制台的 IP 地址和凭据。  选择你的私有云，然后在“概览”视图中选择“标识”>“默认” 。 
 
 ## <a name="create-a-network-segment-on-azure-vmware-solution"></a>在 Azure VMware 解决方案中创建一个网段
 
-你使用 NSX-T 在 Azure VMware 解决方案环境中创建新的网段。  你已在[规划部分](production-ready-deployment-steps.md)定义了要创建的网络。  如果你尚未定义它们，请先返回到[规划部分](production-ready-deployment-steps.md)定义它们，然后再继续。
+使用 NSX-T Manager 在 Azure VMware 解决方案环境中创建新的网段。  你已在[规划部分](production-ready-deployment-steps.md)定义了要创建的网络。  如果你尚未定义它们，请先返回到[规划部分](production-ready-deployment-steps.md)定义它们，然后再继续。
 
 >[!IMPORTANT]
 >请确保你定义的 CIDR 网络地址块不与 Azure 或本地环境中的任何地址块重叠。  

@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: tutorial
-ms.date: 05/12/2020
+ms.date: 02/10/2021
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: b3cb6bf56820da84d17f0b981f461a545bbe5ab6
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: d39c1d8c3ac60dda62556b1a8da0dfe29e3c1ee3
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96549253"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100383613"
 ---
 # <a name="tutorial-build-a-java-web-application-using-azure-cosmos-db-and-the-sql-api"></a>教程：使用 Azure Cosmos DB 和 SQL API 构建 Java Web 应用程序
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -37,7 +37,7 @@ ms.locfileid: "96549253"
 :::image type="content" source="./media/sql-api-java-application/image1.png" alt-text="我的待办事项列表 Java 应用程序":::
 
 > [!TIP]
-> 此应用程序开发教程假定你之前有使用 Java 的经验。 如果不熟悉 Java 或[必备工具](#Prerequisites)，我们建议从 GitHub 下载完整的 [todo](https://github.com/Azure-Samples/documentdb-java-todo-app) 项目，并按照[本文末尾的说明](#GetProject)生成该项目。 构建之后，可以回顾本文以深入了解项目上下文中的代码。  
+> 此应用程序开发教程假定你之前有使用 Java 的经验。 如果不熟悉 Java 或[必备工具](#Prerequisites)，我们建议从 GitHub 下载完整的 [todo]https://github.com/Azure-Samples/azure-cosmos-java-sql-api-todo-app) 项目，并按照[本文末尾的说明](#GetProject)生成该项目。 构建之后，可以回顾本文以深入了解项目上下文中的代码。  
 >
 
 ## <a name="prerequisites-for-this-java-web-application-tutorial"></a><a id="Prerequisites"></a>此 Java Web 应用程序教程的先决条件
@@ -110,15 +110,15 @@ ms.locfileid: "96549253"
    
    * 在“组 ID”框中，输入 `com.azure`。
    * 在“项目 ID”框中，输入 `azure-cosmos`。
-   * 在“版本”框中输入 `4.0.1-beta.1`。
+   * 在“版本”框中输入 `4.11.0`。
   
    或者，可以直接将组 ID 和项目 ID 的依赖项 XML 添加到 pom.xml 文件：
 
    ```xml
    <dependency>
-      <groupId>com.azure</groupId>
-      <artifactId>azure-cosmos</artifactId>
-      <version>4.0.1-beta.1</version>
+     <groupId>com.azure</groupId>
+     <artifactId>azure-cosmos</artifactId>
+     <version>4.11.0</version>
    </dependency>
    ```
 
@@ -132,7 +132,7 @@ ms.locfileid: "96549253"
 
 首先，让我们在新文件 TodoItem.java 中定义模型。 `TodoItem` 类定义项的架构以及 getter 和 setter 方法：
 
-:::code language="java" source="~/samples-cosmosdb-java-v4-web-app/src/com/microsoft/azure/documentdb/sample/model/TodoItem.java":::
+:::code language="java" source="~/samples-cosmosdb-java-v4-web-app/src/com/microsoft/azure/cosmos/sample/model/TodoItem.java":::
 
 ### <a name="add-the-data-access-objectdao-classes"></a>添加数据访问对象 (DAO) 类
 
@@ -140,37 +140,37 @@ ms.locfileid: "96549253"
 
 1. 若要调用 Azure Cosmos DB 服务，必须实例化一个新的 `cosmosClient` 对象。 一般情况下，最好是重用 `cosmosClient`，而不是为每个后续请求构造新的客户端。 可以通过在 `cosmosClientFactory` 类中定义客户端来重用它。 更新在[步骤 1](#CreateDB) 中保存的 HOST 和 MASTER_KEY 值。 将 HOST 替换为 URI，将 MASTER_KEY 替换为主密钥。 使用以下代码在 CosmosClientFactory.java 文件中创建 `CosmosClientFactory` 类：
 
-   :::code language="java" source="~/samples-cosmosdb-java-v4-web-app/src/com/microsoft/azure/documentdb/sample/dao/CosmosClientFactory.java":::
+   :::code language="java" source="~/samples-cosmosdb-java-v4-web-app/src/com/microsoft/azure/cosmos/sample/dao/CosmosClientFactory.java":::
 
 1. 创建新 TodoDao.java 文件，并添加 `TodoDao` 类以创建、更新、读取和删除 ToDo 项：
 
-   :::code language="java" source="~/samples-cosmosdb-java-v4-web-app/src/com/microsoft/azure/documentdb/sample/dao/TodoDao.java":::
+   :::code language="java" source="~/samples-cosmosdb-java-v4-web-app/src/com/microsoft/azure/cosmos/sample/dao/TodoDao.java":::
 
 1. 创建新 MockDao.java 文件，并添加 `MockDao` 类，此类实现 `TodoDao` 类以对项执行 CRUD 操作：
 
-   :::code language="java" source="~/samples-cosmosdb-java-v4-web-app/src/com/microsoft/azure/documentdb/sample/dao/MockDao.java":::
+   :::code language="java" source="~/samples-cosmosdb-java-v4-web-app/src/com/microsoft/azure/cosmos/sample/dao/MockDao.java":::
 
 1. 创建新 DocDbDao.java 文件，并添加 `DocDbDao` 类。 此类定义的代码用于将 TodoItem 保存到容器中，在存在数据库和集合时检索数据库和集合或是在不存在时创建新的数据库和集合。 此示例使用 [Gson](https://code.google.com/p/google-gson/) 将 TodoItem 普通旧 Java 对象 (POJO) 序列化到 JSON 文档和从中反序列化 POJO。 要将 ToDo 项保存到集合中，客户端需要知道保存到哪个数据库和集合（通过自链接引用） 此类还定义帮助程序函数以便按另一个属性（例如“ID”）而不是自链接来检索文档。 可使用帮助程序方法按 ID 检索 TodoItem JSON 文档，然后将其反序列化到 POJO。
 
    我们还可以通过 `cosmosClient` 客户端对象使用 SQL 查询获取 TodoItem 的集合或列表。 最后，定义删除方法以从列表中删除 TodoItem。 以下代码演示 `DocDbDao` 类的内容：
 
-   :::code language="java" source="~/samples-cosmosdb-java-v4-web-app/src/com/microsoft/azure/documentdb/sample/dao/DocDbDao.java":::
+   :::code language="java" source="~/samples-cosmosdb-java-v4-web-app/src/com/microsoft/azure/cosmos/sample/dao/DocDbDao.java":::
 
 1. 接下来，创建新 TodoDaoFactory.java 文件，并添加创建新 DocDbDao 对象的 `TodoDaoFactory` 类：
 
-   :::code language="java" source="~/samples-cosmosdb-java-v4-web-app/src/com/microsoft/azure/documentdb/sample/dao/TodoDaoFactory.java":::
+   :::code language="java" source="~/samples-cosmosdb-java-v4-web-app/src/com/microsoft/azure/cosmos/sample/dao/TodoDaoFactory.java":::
 
 ### <a name="add-a-controller"></a>添加控制器
 
 将 TodoItemController 控制器添加到应用程序。 在此项目中，将使用[项目 Lombok](https://projectlombok.org/) 生成构造函数、getter、setter 和一个生成器。 或者，可以手动编写此代码，或使用 IDE 生成此代码：
 
-:::code language="java" source="~/samples-cosmosdb-java-v4-web-app/src/com/microsoft/azure/documentdb/sample/controller/TodoItemController.java":::
+:::code language="java" source="~/samples-cosmosdb-java-v4-web-app/src/com/microsoft/azure/cosmos/sample/controller/TodoItemController.java":::
 
 ### <a name="create-a-servlet"></a>创建 servlet
 
 接下来，创建 servlet 以将 HTTP 请求路由到控制器。 创建 ApiServlet.java 文件，并在其下定义以下代码：
 
-:::code language="java" source="~/samples-cosmosdb-java-v4-web-app/src/com/microsoft/azure/documentdb/sample/ApiServlet.java":::
+:::code language="java" source="~/samples-cosmosdb-java-v4-web-app/src/com/microsoft/azure/cosmos/sample/ApiServlet.java":::
 
 ## <a name="wire-the-rest-of-the-of-java-app-together"></a><a id="Wire"></a>将 Java 应用的其余内容绑定在一起
 
@@ -194,17 +194,17 @@ ms.locfileid: "96549253"
 
 1. 在“WAR 导出”  窗口中，执行以下操作：
    
-   * 在“Web 项目”框中，输入 azure-documentdb-java-sample。
+   * 在“Web 项目”框中，输入 azure-cosmos-java-sample。
    * 在“目标”框中，选择一个目标以保存 WAR 文件。
    * 单击“完成”。
 
 1. 现在已经具有 WAR 文件，只需将它上传到 Azure 网站的 **webapps** 目录。 有关上传此文件的说明，请参阅[将 Java 应用程序添加到 Azure 应用服务 Web 应用](../app-service/quickstart-java.md)。 将 WAR 文件上传到 webapps 目录之后，运行时环境将检测到已经添加了此文件，并会自动加载它。
 
-1. 若要查看已完成的产品，请导航到 `http://YOUR\_SITE\_NAME.azurewebsites.net/azure-java-sample/` 并开始添加任务！
+1. 若要查看已完成的产品，请导航到 `http://YOUR\_SITE\_NAME.azurewebsites.net/azure-cosmos-java-sample/` 并开始添加任务！
 
 ## <a name="get-the-project-from-github"></a><a id="GetProject"></a>从 GitHub 获取项目
 
-GitHub 上的 [todo](https://github.com/Azure-Samples/documentdb-java-todo-app) 项目包含本教程中的所有示例。 要将 todo 项目导入 Eclipse，请确保具有 [先决条件](#Prerequisites) 部分中所列的软件和资源，并执行以下操作：
+GitHub 上的 [todo](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-todo-app) 项目包含本教程中的所有示例。 要将 todo 项目导入 Eclipse，请确保具有 [先决条件](#Prerequisites) 部分中所列的软件和资源，并执行以下操作：
 
 1. 安装 [项目 Lombok](https://projectlombok.org/)。 Lombok 用于生成项目中的构造函数、getter 和 setter。 下载 lombok.jar 文件之后，双击此文件进行安装，或者从命令行安装。
 
@@ -216,7 +216,7 @@ GitHub 上的 [todo](https://github.com/Azure-Samples/documentdb-java-todo-app) 
 
 1. 在“选择存储库源”屏幕上，单击“克隆 URI”。 
 
-1. 在“源 Git 存储库”屏幕上的“URI”框中，输入 https://github.com/Azure-Samples/documentdb-java-todo-app.git ，然后单击“下一步”  。
+1. 在“源 Git 存储库”屏幕上的“URI”框中，输入 https://github.com/Azure-Samples/azure-cosmos-java-sql-api-todo-app ，然后单击“下一步”  。
 
 1. 在“分支选择”屏幕上，确保已选择“main”，然后单击“下一步”  。
 
@@ -226,9 +226,9 @@ GitHub 上的 [todo](https://github.com/Azure-Samples/documentdb-java-todo-app) 
 
 1. 在“导入项目”屏幕上，取消选择“DocumentDB”项目，并单击“完成”。   DocumentDB 项目包含 Azure Cosmos DB Java SDK，我们会将其添加为依赖项。
 
-1. 在“项目资源管理器”中，导航到 azure-documentdb-java-sample\src\com.microsoft.azure.documentdb.sample.dao\DocumentClientFactory.java，并将 HOST 和 MASTER_KEY 值替换为 Azure Cosmos DB 帐户的 URI 和主密钥，然后保存该文件。 有关更多信息，请参阅[步骤 1.创建 Azure Cosmos 数据库帐户](#CreateDB)。
+1. 在“项目资源管理器”中，导航到 azure-cosmos-java-sample\src\com.microsoft.azure.cosmos.sample.dao\DocumentClientFactory.java，并将 HOST 和 MASTER_KEY 值替换为 Azure Cosmos DB 帐户的 URI 和主密钥，然后保存该文件。 有关更多信息，请参阅[步骤 1.创建 Azure Cosmos 数据库帐户](#CreateDB)。
 
-1. 在“项目资源管理器”中，右键单击“azure-documentdb-java-sample”，单击“生成路径”，并单击“配置生成路径”。   
+1. 在“项目资源管理器”中，右键单击“azure-cosmos-java-sample”，单击“生成路径”，并单击“配置生成路径”   。
 
 1. 在“Java 生成路径”屏幕上，在右侧窗格中，选择“库”选项卡，并单击“添加外部 JAR”。   导航至 lombok.jar 文件的位置，单击“打开”，并单击“确定”。 
 
@@ -242,11 +242,11 @@ GitHub 上的 [todo](https://github.com/Azure-Samples/documentdb-java-todo-app) 
 
 1. 在此屏幕下面的“服务器”选项卡上，右键单击“localhost 上的 Tomcat v7.0 服务器”，并单击“添加和删除”。  
 
-1. 在“添加和删除”窗口中，将 **azure-documentdb-java-sample** 移到“配置”框，然后单击“完成”。  
+1. 在“添加和删除”窗口中，将 azure-cosmos-java-sample 移到“配置”框，然后单击“完成”   。
 
 1. 在“服务器”选项卡上，右键单击“localhost 上的 Tomcat v7.0 服务器”，并单击“重新启动”。  
 
-1. 在浏览器中，导航到 `http://localhost:8080/azure-documentdb-java-sample/` 并开始向任务列表添加内容。 请注意，如果更改了默认端口值，请将 8080 更改成选择的值。
+1. 在浏览器中，导航到 `http://localhost:8080/azure-cosmos-java-sample/` 并开始向任务列表添加内容。 请注意，如果更改了默认端口值，请将 8080 更改成选择的值。
 
 1. 要将项目部署到 Azure 网站，请参阅[步骤 6. 将应用程序部署到 Azure 网站](#Deploy)。
 

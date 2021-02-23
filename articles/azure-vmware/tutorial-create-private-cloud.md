@@ -1,18 +1,18 @@
 ---
-title: 教程 - 在 Azure 中部署 vSphere 群集
-description: 了解如何使用 Azure VMware 解决方案在 Azure 中部署 vSphere 群集
+title: 教程 - 创建和部署 Azure VMware 解决方案私有云
+description: 了解如何创建和部署 Azure VMware 解决方案私有云
 ms.topic: tutorial
 ms.date: 11/19/2020
-ms.openlocfilehash: 3c8ae3673ad049153c2b9700bd7efae6c4c286ed
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: c8383e987e13e43ea9bc9ba5be196538a259aa8c
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100093941"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653120"
 ---
-# <a name="tutorial-deploy-an-azure-vmware-solution-private-cloud-in-azure"></a>教程：在 Azure 中部署 Azure VMware 解决方案私有云
+# <a name="tutorial-create-an-azure-vmware-solution-private-cloud"></a>教程：创建 Azure VMware 解决方案私有云
 
-使用 Azure VMware 解决方案，可以在 Azure 中部署 vSphere 群集。 最精简的初始部署是三个主机。 可以逐个添加更多的主机，每个群集最多可以包含 16 个主机。 
+本教程将介绍如何创建和部署 Azure VMware 解决方案私有云。 最精简的初始部署包括三个主机。 可以逐个添加更多的主机，每个群集最多可以包含 16 个主机。 
 
 由于在启动时 Azure VMware 解决方案不允许使用本地 vCenter 管理私有云，因此需要进行额外配置。 本教程将介绍这些过程和相关先决条件。
 
@@ -25,13 +25,10 @@ ms.locfileid: "100093941"
 ## <a name="prerequisites"></a>先决条件
 
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-- 拥有适当的管理权限和创建私有云的权限。
+- 拥有适当的管理权限和创建私有云的权限。 你在订阅中必须至少是参与者级别。
+- 按照你在部署 Azure VMware 解决方案的[规划](production-ready-deployment-steps.md)文章中收集的信息进行操作。
 - 确保已按照以下文章中所述配置相应的网络：[教程：网络清单](tutorial-network-checklist.md)。
-
-## <a name="register-the-resource-provider"></a>注册资源提供程序
-
-[!INCLUDE [register-resource-provider-steps](includes/register-resource-provider-steps.md)]
-
+- 已按[请求主机和启用 Microsoft.AVS 资源提供程序](enable-azure-vmware-solution.md)中所述预配了主机并注册了 Microsoft AVS 资源提供程序。
 
 ## <a name="create-a-private-cloud"></a>创建私有云
 
@@ -51,7 +48,7 @@ ms.locfileid: "100093941"
 
 #### <a name="create-a-resource-group"></a>创建资源组
 
-使用 `[az group create](/cli/azure/group)` 命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 以下示例在 eastus 位置创建名为 myResourceGroup 的资源组：
+使用 `[az group create](/cli/azure/group)` 命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 以下示例在 eastus 位置创建名为 myResourceGroup 的资源组： 
 
 ```azurecli-interactive
 

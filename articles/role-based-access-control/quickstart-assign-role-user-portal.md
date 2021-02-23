@@ -13,12 +13,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/22/2019
 ms.author: rolyon
-ms.openlocfilehash: c6736bb2642ff08d0aa3cda536ef1599324efded
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fcba9cad208c2ac170f91cc06a6db22e271f2a70
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85362002"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100559317"
 ---
 # <a name="tutorial-grant-a-user-access-to-azure-resources-using-the-azure-portal"></a>教程：使用 Azure 门户授予用户对 Azure 资源的访问权限
 
@@ -58,7 +58,7 @@ ms.locfileid: "85362002"
 
 ## <a name="grant-access"></a>授予访问权限
 
-在 Azure RBAC 中，若要授予访问权限，请创建角色分配。
+在 Azure RBAC 中，若要授予访问权限，需分配一个 Azure 角色。
 
 1. 在“资源组”列表中，单击新的 rbac-resource-group 资源组。
 
@@ -82,7 +82,7 @@ ms.locfileid: "85362002"
 
 1. 在“选择”列表中，选择你自己或其他用户。
 
-1. 单击“保存”，创建角色分配。
+1. 单击“保存”以分配该角色。
 
    片刻之后，将在 rbac-resource-group 资源组范围内为用户分配“虚拟机参与者”角色。
 

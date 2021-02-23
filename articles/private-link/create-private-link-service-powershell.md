@@ -4,15 +4,15 @@ description: 了解如何使用 Azure PowerShell 创建 Azure 专用链接服务
 services: private-link
 author: asudbring
 ms.service: private-link
-ms.topic: how-to
+ms.topic: quickstart
 ms.date: 01/24/2021
 ms.author: allensu
-ms.openlocfilehash: d48903a05a4e9b530dcd3e83e0c14c37dcc74797
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
-ms.translationtype: MT
+ms.openlocfilehash: 4780bc573796581438b8d331b1d1d9421a65414f
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98757519"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653238"
 ---
 # <a name="create-a-private-link-service-using-azure-powershell"></a>使用 Azure PowerShell 创建专用链接服务
 
@@ -137,11 +137,11 @@ New-AzLoadBalancer @loadbalancer
 
 ## <a name="create-a-private-link-service"></a>创建专用链接服务
 
-在本部分中，创建使用上一步中创建的标准 Azure 负载均衡器的专用链接服务。
+在本部分中，创建一项专用链接服务来使用上一步中创建的标准 Azure 负载均衡器。
 
-* 通过 [AzPrivateLinkServiceIpConfig](/powershell/module/az.network/new-azprivatelinkserviceipconfig)创建专用链接服务 IP 配置。
+* 通过 [New-AzPrivateLinkServiceIpConfig](/powershell/module/az.network/new-azprivatelinkserviceipconfig) 创建专用链接服务 IP 配置。
 
-* 创建具有 [AzPrivateLinkService](/powershell/module/az.network/new-azprivatelinkservice)的私有链接服务。
+* 通过 [New-AzPrivateLinkService](/powershell/module/az.network/new-azprivatelinkservice) 创建专用链接服务。
 
 ```azurepowershell
 ## Place the virtual network into a variable. ##
@@ -174,11 +174,11 @@ New-AzPrivateLinkService @privlinksettings
 
 ```
 
-专用链接服务已创建，可接收流量。 若要查看流量流，请将应用程序配置到标准负载均衡器的后面。
+专用链接服务已创建，可接收流量。 若要查看流量流，请在标准负载均衡器后面配置应用程序。
 
 ## <a name="create-private-endpoint"></a>创建专用终结点
 
-在本部分中，将专用链接服务映射到专用终结点。 虚拟网络包含专用链接服务的专用终结点。 此虚拟网络包含将访问专用链接服务的资源。
+在本部分，将专用链接服务映射到专用终结点。 虚拟网络包含用于专用链接服务的专用终结点。 此虚拟网络包含将访问专用链接服务的资源。
 
 ### <a name="create-private-endpoint-virtual-network"></a>创建专用终结点虚拟网络
 
@@ -207,11 +207,11 @@ $vnetpe = New-AzVirtualNetwork @net
 
 ### <a name="create-endpoint-and-connection"></a>创建终结点和连接
 
-* 使用 [AzPrivateLinkService](/powershell/module/az.network/get-azprivatelinkservice) 将您之前创建的私有链接服务的配置置于变量中供以后使用。
+* 使用 [Get-AzPrivateLinkService](/powershell/module/az.network/get-azprivatelinkservice) 将之前创建的专用链接服务的配置置于变量中供以后使用。
 
-* 使用 [AzPrivateLinkServiceConnection](/powershell/module/az.network/new-azprivatelinkserviceconnection) 创建连接配置。
+* 使用 [New-AzPrivateLinkServiceConnection](/powershell/module/az.network/new-azprivatelinkserviceconnection) 创建连接配置。
 
-* 使用 [AzPrivateEndpoint](/powershell/module/az.network/new-azprivateendpoint) 创建终结点。
+* 使用 [New-AzPrivateEndpoint](/powershell/module/az.network/new-azprivateendpoint) 创建终结点。
 
 
 
@@ -250,9 +250,9 @@ New-AzPrivateEndpoint @par4 -ByManualRequest
 
 ### <a name="approve-the-private-endpoint-connection"></a>批准专用终结点连接
 
-在本部分中，你将批准在之前步骤中创建的连接。
+本部分将批准在前面步骤中创建的连接。
 
-* 使用 [AzPrivateEndpointConnection](/powershell/module/az.network/approve-azprivateendpointconnection) 批准连接。
+* 使用 [Approve-AzPrivateEndpointConnection](/powershell/module/az.network/approve-azprivateendpointconnection) 批准连接。
 
 ```azurepowershell-interactive
 ## Place the private link service configuration into variable. ##
@@ -274,9 +274,9 @@ Approve-AzPrivateEndpointConnection @par2
 
 ### <a name="ip-address-of-private-endpoint"></a>专用终结点的 IP 地址
 
-在本部分中，你将找到与负载均衡器和专用链接服务对应的专用终结点的 IP 地址。
+在本部分，你将找到与负载均衡器和专用链接服务对应的专用终结点的 IP 地址。
 
-* 使用 [AzPrivateEndpoint](/powershell/module/az.network/get-azprivateendpoint) 检索 IP 地址。
+* 使用 [Get-AzPrivateEndpoint](/powershell/module/az.network/get-azprivateendpoint) 检索 IP 地址。
 
 ```azurepowershell-interactive
 ## Get private endpoint and the IP address and place in a variable for display. ##

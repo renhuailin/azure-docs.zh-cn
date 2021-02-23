@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 12/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ca023af0666899ae94d5bf82fc6f0736d5a8efa5
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 6b0bdc5a5b58c205d888c8892a4333225a9b316f
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97614262"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100557136"
 ---
 # <a name="tutorial-create-user-flows-in-azure-active-directory-b2c"></a>教程：在 Azure Active Directory B2C 中创建用户流
 
@@ -133,7 +133,7 @@ ms.locfileid: "97614262"
 > * 创建配置文件编辑用户流
 > * 创建密码重置用户流
 
-接下来，了解如何向应用程序添加标识提供程序，让用户能够登录到 Azure AD、Amazon、Facebook、GitHub、LinkedIn、Microsoft 或 Twitter 提供程序。
+接下来，了解如何使用 Azure AD B2C 在应用程序中登录和注册用户。 使用下面的 ASP.NET Web 应用程序链接，或在“用户身份验证”下的目录中导航到其他应用程序。
 
 > [!div class="nextstepaction"]
-> [将标识提供程序添加到应用程序 >](tutorial-add-identity-providers.md)
+> [教程：使用 Azure AD B2C 在 Web 应用程序中启用身份验证 >](tutorial-web-app-dotnet.md)

@@ -1,21 +1,17 @@
 ---
 title: '在 Azure 数据工厂中使用 Spark 转换数据 '
 description: 本教程提供有关在 Azure 数据工厂中使用 Spark 活动转换数据的分步说明。
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
 author: nabhishek
 ms.author: abnarain
-manager: anandsub
-ms.openlocfilehash: bef80cdeab32d14aeaae350adda869a8ea7b05c7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cf425ecb1a8aebf594828bfba50e9aba8ca9dd7e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81409091"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100377612"
 ---
 # <a name="transform-data-in-the-cloud-by-using-spark-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用 Spark 活动转换云中的数据
 
@@ -144,7 +140,7 @@ ms.locfileid: "81409091"
 
 
 ## <a name="author-a-pipeline"></a>创作管道 
-本步骤创建包含 Spark 活动的新管道。 该活动使用**单词计数**示例。 从此位置下载内容（如果尚未这样做）。
+本步骤创建包含 Spark 活动的新管道。 该活动使用 **单词计数** 示例。 从此位置下载内容（如果尚未这样做）。
 
 在偏好的编辑器中创建一个 JSON 文件，复制管道定义的以下 JSON 定义，并将该文件另存为 **MySparkOnDemandPipeline.json**。 
 

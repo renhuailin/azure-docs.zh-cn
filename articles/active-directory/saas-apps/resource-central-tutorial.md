@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 11/06/2020
+ms.date: 01/13/2021
 ms.author: jeedes
-ms.openlocfilehash: 2430de60b3de5812090496fa66e36b3d7515c6b1
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: dbc148fcbcd9c3be86a29df1e08755611a347b07
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96327349"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100586575"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-resource-central"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Resource Central 的集成
 
@@ -41,17 +41,16 @@ ms.locfileid: "96327349"
 
 * Resource Central 支持实时用户预配
 
-## <a name="adding-resource-central-from-the-gallery"></a>从库中添加 Resource Central
+## <a name="add-resource-central-from-the-gallery"></a>从库中添加 Resource Central
 
 若要配置 Resource Central 与 Azure AD 的集成，需要从库中将 Resource Central 添加到托管 SaaS 应用列表。
 
 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 Azure 门户。
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
-1. 导航到“企业应用程序”，选择“所有应用程序” 。
-1. 若要添加新的应用程序，请选择“新建应用程序”。
-1. 在“从库中添加”部分的搜索框中，键入“Resource Central” 。
+1. 导航到“企业应用程序”，选择“所有应用程序”   。
+1. 若要添加新的应用程序，请选择“新建应用程序”  。
+1. 在“从库中添加”部分的搜索框中，输入“Resource Central” 。
 1. 从结果面板中选择“Resource Central”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
-
 
 ## <a name="configure-and-test-azure-ad-sso-for-resource-central"></a>配置并测试 Resource Central 的 Azure AD SSO
 
@@ -62,8 +61,8 @@ ms.locfileid: "96327349"
 1. **[配置 Azure AD SSO](#configure-azure-ad-sso)** - 使用户能够使用此功能。
     1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 B. Simon 测试 Azure AD 单一登录。
     1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 B. Simon 能够使用 Azure AD 单一登录。
-1. **[配置 Resource Central SSO](#configure-resource-central-sso)** - 在应用程序端配置单一登录设置。
     1. **[创建 Resource Central 测试用户](#create-resource-central-test-user)** - 在 Resource Central 中创建 B.Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
+1. **[配置 Resource Central SSO](#configure-resource-central-sso)** - 在应用程序端配置单一登录设置。
 1. **[测试 SSO](#test-sso)** - 验证配置是否正常工作。
 
 ## <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
@@ -76,33 +75,34 @@ ms.locfileid: "96327349"
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 在“基本 SAML 配置”部分，输入以下字段的值  ：
+1. 在“基本 SAML 配置”中，输入以下字段的值：
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<DOMAIN_NAME>/ResourceCentral` 
+   1. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<DOMAIN_NAME>/ResourceCentral` 
 
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<DOMAIN_NAME>/ResourceCentral`
+   1. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<DOMAIN_NAME>/ResourceCentral`
 
-    c. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://<DOMAIN_NAME>/ResourceCentral/ExAuth/Saml2Authentication/Acs`
+   1. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<DOMAIN_NAME>/ResourceCentral/ExAuth/Saml2Authentication/Acs`
 
     > [!NOTE]
-    > 这些不是实际值。 请使用实际登录 URL、标识符和回复 URL 更新这些值。 请联系 [Resource Central 客户端支持团队](mailto:st@aod.vn)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
+    > 这些值不是文本值。 请使用实际登录 URL、标识符和回复 URL 更新这些值。 请联系 [Resource Central 客户端支持团队](mailto:st@aod.vn)获取这些值。  还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
-1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上   。
+1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上   。
 
     ![证书下载链接](common/certificatebase64.png)
 
-1. 在“设置 Resource Central”部分，根据要求复制相应的 URL。
+1. 在“设置 Resource Central”中，根据要求复制相应的 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
+
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
-在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
+在本部分中，你将在 Azure 门户中创建名为 B.Simon 的测试用户。
 
 1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”  。
 1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
+   1. 在“用户名”字段中输入 `username@companydomain.extension`。 例如，`B.Simon@contoso.com`。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 
@@ -113,30 +113,72 @@ ms.locfileid: "96327349"
 1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。 
 1. 在应用程序列表中，选择“Resource Central”。
 1. 在应用的概述页中，找到“管理”部分，选择“用户和组” 。
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
-1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。
-1. 如果你希望将某角色分配给用户，可以从“选择角色”下拉列表中选择该角色。 如果尚未为此应用设置任何角色，你将看到选择了“默认访问权限”角色。
-1. 在“添加分配”对话框中，单击“分配”按钮。
-
-## <a name="configure-resource-central-sso"></a>配置 Resource Central SSO
-
-若要在 Resource Central 端配置单一登录，需要将下载的“证书(Base64)”以及从 Azure 门户复制的相应 URL 发送给 [Resource Central 支持团队](mailto:rc@aod.vn) 。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+1. 选择“添加用户”，然后在“添加分配”窗格中选择“用户和组”  。
+1. 在“用户和组”窗格中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮   。
+1. 如果你希望将某角色分配给用户，可以在“选择角色”下拉列表中选择该角色。 如果尚未为此应用设置任何角色，你将看到选择了“默认访问权限”角色。
+1. 在“添加分配”窗格中，单击“分配”按钮 。
 
 ### <a name="create-resource-central-test-user"></a>创建 Resource Central 测试用户
 
-在本部分，我们会在 Resource Central 中创建一个名为 Britta Simon 的用户。 Resource Central 支持默认启用的实时用户预配。 此部分不存在任何操作项。 如果 Resource Central 中尚不存在用户，身份验证后会创建一个新用户。
+本部分将在 Resource Central 中创建一个名为 B.Simon 的用户 。
+
+1. 在 Resource Central 中，选择“安全性” > “人员” > “新建”  。
+  
+    :::image type="content" source="./media/resource-central/new-person.png" alt-text="显示“Resource Central”中的“人员”窗格的屏幕截图，其中突出显示了“新建”按钮。":::
+
+1. 在“人员详细信息”中，对于“显示名称”，请输入用户“B.Simon”  。 对于“SMTP 地址”，请输入用户的 Azure AD 用户名。 例如，`B.Simon@contoso.com`。
+
+    :::image type="content" source="./media/resource-central/person.png" alt-text="显示 Resource Central 中“人员详细信息”窗格的屏幕截图。":::
+
+## <a name="configure-resource-central-sso"></a>配置 Resource Central SSO
+
+本部分将在 Resource Central 系统管理员中配置单一登录。
+
+1. 在“Resource Central 系统管理员”中，选择“外部身份验证”。
+1.  对于“Enable Configuration”，选择“是” 。
+
+    ![显示在 Resource Central 的“外部身份验证”窗格中选择的“启用配置”选项的屏幕截图。](./media/resource-central/enable.png)
+
+1. 在“身份验证协议”中，选择“SAML2” 。 
+
+   :::image type="content" source="./media/resource-central/protocol.png" alt-text="显示在 Resource Central 中为身份验证协议选择 SAML2 的屏幕截图。":::
+
+1. 在“SAML2 配置”下，输入以下字段的值：
+
+    1. 对于“标识符(实体 ID)”、“登录 URL”、“注销 URL”和“Azure AD 标识符”，请输入相关 URL   ：
+
+       :::image type="content" source="./media/resource-central/auth.png" alt-text="Resource Central 中“SAML2”配置窗格的屏幕截图。":::
+
+        从“设置 Resource Central”窗格中复制 URL：
+
+        :::image type="content" source="./media/resource-central/setup.png" alt-text="Resource Central 中的“设置 Resource Central”窗格的屏幕截图。":::
+
+   1. 对于“返回 URL”，输入 `https://<DOMAIN_NAME>/ResourceCentral/ExAuth/Saml2Authentication/CallbackHandler`。
+  
+1. 对于“证书”，请上传证书，然后输入密码。
+
+   ![Resource Central 中证书部分的屏幕截图。](./media/resource-central/cert.png)
+   
+1. 选择“保存”。
+
+1. 返回到 **Azure 门户**。 在“SAML 签名证书”中，上传证书并输入密码。
+
+   ![Azure 门户中“上传证书”窗格的屏幕截图。](./media/resource-central/cert2.png).
+
+1. 选择 **添加** 。
 
 ## <a name="test-sso"></a>测试 SSO 
 
-在本部分，你将使用以下选项测试 Azure AD 单一登录配置。 
+在本部分中，测试 Azure AD 单一登录配置。 若要测试单一登录，有三个选项：
 
-* 在 Azure 门户中单击“测试此应用程序”。 这会重定向到 Resource Central 登录 URL，可在其中启动登录流。 
+* 在 Azure 门户中，选择“测试此应用程序”。 该链接重定向到 Resource Central 登录 URL，你可以在其中启动登录。
 
-* 直接转到 Resource Central 登录 URL，并在其中启动登录流。
+* 直接转到 Resource Central 登录 URL，并启动登录。
 
-* 可以使用 Microsoft 访问面板。 在访问面板中单击 Resource Central 磁贴时，将会重定向到 Resource Central 登录 URL。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+   :::image type="content" source="./media/resource-central/test.png" alt-text="单一登录测试网页的屏幕截图。":::
 
+* 使用 Microsoft 的“我的应用”门户。 在“我的应用”门户中，选择“Resource Central”磁贴以重定向到 Resource Central 登录 URL。 有关详细信息，请参阅[从“我的应用”门户登录和启动应用](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-配置 Resource Central 后，可以强制实施会话控制，从而实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。
+设置 Resource Central 后，即可强制实施会话控制，实时防止组织的敏感数据发生外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/15/2021
 ms.author: jeedes
-ms.openlocfilehash: ab2aa1df0719b685800529f32e36674bf85e57ee
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: c330ce9b9eec693d7dabda55ad65d297ca78ca01
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98625308"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653860"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-logicmonitor"></a>教程：Azure Active Directory 与 LogicMonitor 的集成
 
@@ -80,7 +80,9 @@ ms.locfileid: "98625308"
     a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.logicmonitor.com` 
 
     b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<companyname>.logicmonitor.com`
-
+    
+    c. 在“回复 URL (断言使用者服务 URL)”文本框中，使用以下模式键入 URL：`https://companyname.logicmonitor.com/santaba/saml/SSO/` 
+  
     > [!NOTE]
     > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [LogicMonitor 客户端支持团队](https://www.logicmonitor.com/contact/)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 

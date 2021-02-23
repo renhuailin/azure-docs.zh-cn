@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 01/08/2020
-ms.openlocfilehash: 249667dfa8c0491027f0244d4aa5e49d19399ab0
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 484598c7543e146618b6d2ab1f12bdf13710946b
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94955032"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101091363"
 ---
 # <a name="tutorial-migrate-rds-sql-server-to-azure-sql-database-or-an-azure-sql-managed-instance-online-using-dms"></a>教程：使用 DMS 将 RDS SQL Server 联机迁移到 Azure SQL 数据库或 Azure SQL 托管实例
 
@@ -61,7 +61,7 @@ ms.locfileid: "94955032"
     >
     > Azure 数据库迁移服务缺少 Internet 连接，因此必须提供此配置。 
 
-* 确保虚拟网络网络安全组规则未阻止到 Azure 数据库迁移服务的以下入站通信端口：443、53、9354、445、12000。 有关虚拟网络 NSG 流量筛选的更多详细信息，请参阅[使用网络安全组筛选网络流量](../virtual-network/virtual-network-vnet-plan-design-arm.md)一文。
+* 请确保虚拟网络的网络安全组规则不阻止 ServiceBus、存储服务和 AzureMonitor 的 ServiceTag 出站端口 443。 有关虚拟网络 NSG 流量筛选的更多详细信息，请参阅[使用网络安全组筛选网络流量](../virtual-network/virtual-network-vnet-plan-design-arm.md)一文。
 * 配置[针对数据库引擎访问的 Windows 防火墙](/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access)。
 * 打开 Windows 防火墙，使 Azure 数据库迁移服务能够访问源 SQL Server（默认情况下为 TCP 端口 1433）。
 * 对于 SQL 数据库，请创建服务器级[防火墙规则](../azure-sql/database/firewall-configure.md)，以允许 Azure 数据库迁移服务访问目标数据库。 提供用于 Azure 数据库迁移服务的虚拟网络子网范围。
@@ -145,7 +145,7 @@ ms.locfileid: "94955032"
 
    ![显示门户订阅](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/portal-select-subscription1.png)
 
-2. 选择要在其中创建 Azure 数据库迁移服务实例的订阅，再选择“资源提供程序”。
+2. 选择要在其中创建 Azure 数据库迁移服务实例的订阅，再选择“资源提供程序”  。
 
     ![显示资源提供程序](media/tutorial-sql-server-to-azure-sql-online/portal-select-resource-provider.png)
 
@@ -159,7 +159,7 @@ ms.locfileid: "94955032"
 
     ![Azure 市场](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/portal-marketplace.png)
 
-2. 在“Azure 数据库迁移服务”屏幕上，选择“创建” 。
+2. 在“Azure 数据库迁移服务”屏幕上，选择“创建”   。
 
     ![创建 Azure 数据库迁移服务实例](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dms-create1.png)
   
@@ -179,7 +179,7 @@ ms.locfileid: "94955032"
 
      ![配置 Azure 数据库迁移服务实例设置](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dms-settings3.png)
 
-7. 选择“创建”来创建服务。
+7. 选择“创建”  来创建服务。
 
 ## <a name="create-a-migration-project"></a>创建迁移项目
 
@@ -193,7 +193,7 @@ ms.locfileid: "94955032"
 
      ![查找 Azure 数据库迁移服务实例](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dms-instance-search.png)
 
-3. 选择“+ 新建迁移项目”。
+3. 选择“+ 新建迁移项目”  。
 4. 在“新建迁移项目”屏幕上指定项目名称，在“源服务器类型”文本框中选择“AWS RDS for SQL Server”，在“目标服务器类型”文本框中选择“Azure SQL 数据库”。    
 
     > [!NOTE]
@@ -202,7 +202,7 @@ ms.locfileid: "94955032"
 5. 在“选择活动类型”部分选择“联机数据迁移”。 
 
     > [!IMPORTANT]
-    > 请确保选择“联机数据迁移”；此方案不支持脱机迁移。
+    > 请确保选择“联机数据迁移”；此方案不支持脱机迁移  。
 
     ![创建数据库迁移服务项目](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dms-create-project4.png)
 
@@ -211,7 +211,7 @@ ms.locfileid: "94955032"
 
 6. 选择“保存” 。
 
-7. 选择“创建并运行活动”，以便创建项目并运行迁移活动。
+7. 选择“创建并运行活动”，以便创建项目并运行迁移活动。 
 
     ![创建并运行数据库迁移服务活动](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dms-create-and-run-activity1.png)
 
@@ -264,15 +264,15 @@ ms.locfileid: "94955032"
 
 ## <a name="run-the-migration"></a>运行迁移
 
-* 选择“运行迁移”。
+* 选择“运行迁移”  。
 
-    迁移活动窗口随即出现，活动的“状态”为“正在初始化” 。
+    迁移活动窗口随即出现，活动的“状态”为“正在初始化”   。
 
     ![活动状态 - 正在初始化](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dms-activity-status2.png)
 
 ## <a name="monitor-the-migration"></a>监视迁移
 
-1. 在迁移活动屏幕上选择“刷新”，以便更新显示，直到迁移的“状态”显示为“正在运行”。
+1. 在迁移活动屏幕上选择“刷新”  ，以便更新显示，直到迁移的“状态”  显示为“正在运行”  。
 
 2. 单击特定数据库即可转到“完整数据加载”和“增量数据同步”操作的迁移状态。 
 
@@ -282,7 +282,7 @@ ms.locfileid: "94955032"
 
 完成初始的完整加载以后，数据库会被标记为“直接转换可供执行”。
 
-1. 如果准备完成数据库迁移，请选择“启动直接转换”。
+1. 如果准备完成数据库迁移，请选择“启动直接转换”。 
 
     ![启动直接转换](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dms-start-cutover.png)
 

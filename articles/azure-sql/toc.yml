@@ -991,6 +991,8 @@
           href: managed-instance/alerts-create.md
         - name: 在托管实例上手动启动故障转移
           href: managed-instance/user-initiated-failover.md
+        - name: 使用日志重播服务迁移数据库
+          href: managed-instance/log-replay-service-migrate.md
     - name: 示例
       items:
         - name: Azure CLI
@@ -1180,7 +1182,7 @@
               href: ./database/policy-reference.md
         - name: 资源
           items:
-            - name: 常见问题
+            - name: 常见问题解答
               href: virtual-machines/windows/frequently-asked-questions-faq.md
             - name: 定价
               href: virtual-machines/windows/pricing-guidance.md
@@ -1216,7 +1218,7 @@
               href: virtual-machines/linux/rhel-high-availability-listener-tutorial.md
         - name: 资源
           items:
-            - name: 常见问题
+            - name: 常见问题解答
               href: virtual-machines/linux/frequently-asked-questions-faq.md
             - name: “Linux 上的 SQL Server”文档
               href: /sql/linux/sql-server-linux-overview

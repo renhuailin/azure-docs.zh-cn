@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 418446e0d465b606b8d580297cebd73c466d4841
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 9bd436b972dfb1549232831b1f07c3726ff459dd
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109006"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100556504"
 ---
 # <a name="create-a-user-flow-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中创建用户流
 
@@ -27,7 +27,7 @@ ms.locfileid: "97109006"
 ## <a name="before-you-begin"></a>在开始之前
 
 - 注册要用来测试新用户流的应用程序。 有关示例，请参阅[教程：在 Azure AD B2C 中注册 Web 应用程序](tutorial-register-applications.md)。
-- 如果想让用户能够通过 Azure AD、Amazon、Facebook、GitHub、LinkedIn、Microsoft 或 Twitter 等提供者进行登录，请添加外部标识提供者。 有关示例，请参阅[教程：将标识提供者添加到 Azure AD B2C 中的应用程序](tutorial-add-identity-providers.md)。
+- 如果想让用户能够通过 Azure AD、Amazon、Facebook、GitHub、LinkedIn、Microsoft 或 Twitter 等提供者进行登录，请添加外部标识提供者。 请参阅[将标识提供者添加到 Azure AD B2C 中的应用程序](add-identity-provider.md)。
 - 配置本地帐户标识提供者，以指定希望在租户中支持的本地帐户的标识类型（电子邮件、用户名、电话号码）。 然后，在创建单个用户流时，可以从这些支持的标识类型中进行选择。 用户完成用户流后，将在 Azure AD B2C 目录中创建本地帐户，并且你的本地帐户标识提供者将对用户的信息进行身份验证。 通过以下步骤配置租户的本地帐户标识提供者：
 
    1. 登录 [Azure 门户](https://portal.azure.com/)。 
@@ -66,7 +66,7 @@ ms.locfileid: "97109006"
 
    - 本地帐户。 如果想使用户可以在 Azure AD B2C 租户中创建本地帐户，请选择希望他们使用的标识符的类型（例如，电子邮件、用户 ID 或电话号码）。 仅列出在[本地帐户标识提供者](#before-you-begin)设置中配置的标识类型。
 
-   - 社交标识提供者。 如果要使用户可以通过[已添加的社交标识提供者](tutorial-add-identity-providers.md)（如 Azure AD、Amazon、Facebook、GitHub、LinkedIn、Microsoft 或 Twitter）进行登录，请从列表中选择提供者。
+   - 社交标识提供者。 如果要使用户可以通过[已添加的社交标识提供者](add-identity-provider.md)（如 Azure AD、Amazon、Facebook、GitHub、LinkedIn、Microsoft 或 Twitter）进行登录，请从列表中选择提供者。
 
 9. 对于“用户属性和声明”，请选择在注册期间要从用户收集并发送的声明和属性。 选择“显示更多”。 选择属性和声明，然后选择“确定”。
 

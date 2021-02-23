@@ -9,14 +9,15 @@ ms.topic: tutorial
 author: aminsaied
 ms.author: amsaied
 ms.reviewer: sgilley
-ms.date: 09/15/2020
+ms.date: 02/11/2021
 ms.custom: devx-track-python
-ms.openlocfilehash: 0d099d31db3619e14da4fe66e26b25a0e36ee39c
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+adobe-target: true
+ms.openlocfilehash: 5d61f330c823aff755a25e637bb58c132aa58100
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98250683"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100369101"
 ---
 # <a name="tutorial-get-started-with-azure-machine-learning-in-your-development-environment-part-1-of-4"></a>教程：在你的开发环境中开始使用 Azure 机器学习（第 1 部分，共 4 部分）
 
@@ -78,20 +79,29 @@ pip install azureml-core
 
 建议为本教程设置以下简单目录结构：
 
-```markdown
-tutorial
-└──.azureml
-```
+:::image type="content" source="media/tutorial-1st-experiment-sdk-local/directory-structure-1.png" alt-text="目录结构：包含 .azureml 子目录的教程顶层":::
+
 
 - `tutorial`：项目的顶级目录。
 - `.azureml`：用于存储 Azure 机器学习配置文件的隐藏子目录。
 
+例如，在 bash 窗口中创建此内容：
+
+```bash
+mkdir tutorial
+cd tutorial
+mkdir .azureml
+```
+
 > [!TIP]
-> 可在终端窗口中创建隐藏的 .azureml 子目录。  或使用以下方式：
+> 若要在图形窗口中创建或查看结构，首先要启用查看和创建隐藏文件和文件夹的功能：
 >
-> * 在 Mac 查找器窗口中使用 Command+Shift+. 来切换功能以查看和创建以点开头的目录。  
+> * 在 Mac 查找器窗口中使用 Command+Shift+. 切换显示隐藏文件/文件夹。  
 > * 在 Windows 10 文件资源管理器中，请参阅[如何查看隐藏的文件和文件夹](https://support.microsoft.com/en-us/windows/view-hidden-files-and-folders-in-windows-10-97fbc472-c603-9d90-91d0-1166d1d9f4b5)。 
 > * 在 Linux 图形界面中，使用 Ctrl+h 或“查看”菜单，并选中“显示隐藏的文件”复选框。  
+
+
+
 
 > [!div class="nextstepaction"]
 > [我创建了目录](?success=create-dir#workspace) [我遇到了一个问题](https://www.research.net/r/7C8Z3DN?issue=create-dir)
@@ -138,12 +148,7 @@ python ./01-create-workspace.py
 
 成功运行 01-create-workspace.py 后，文件夹结构将如下所示：
 
-```markdown
-tutorial
-└──.azureml
-|  └──config.json
-└──01-create-workspace.py
-```
+:::image type="content" source="media/tutorial-1st-experiment-sdk-local/directory-structure-2.png" alt-text="运行 01-create-workspace.py 后文件 config.json 显示在 .azureml 子目录中":::
 
 文件 `.azureml/config.json` 包含连接到 Azure 机器学习工作区所需的元数据。 也就是说，其中包含订阅 ID、资源组和工作区名称。 
 
@@ -196,13 +201,7 @@ python ./02-create-compute.py
 
 文件夹结构现在将如下所示：
 
-```bash
-tutorial
-└──.azureml
-|  └──config.json
-└──01-create-workspace.py
-└──02-create-compute.py
-```
+:::image type="content" source="media/tutorial-1st-experiment-sdk-local/directory-structure-3.png" alt-text="将 02-create-compute.py 添加到教程目录":::
 
 > [!div class="nextstepaction"]
 > [我创建了计算群集](?success=create-compute-cluster#next-steps) [我遇到了一个问题](https://www.research.net/r/7C8Z3DN?issue=create-compute-cluster)

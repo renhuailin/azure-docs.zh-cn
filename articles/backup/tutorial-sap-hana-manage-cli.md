@@ -4,12 +4,12 @@ description: 在本教程中，了解如何使用 Azure CLI 管理 Azure VM 上�
 ms.topic: tutorial
 ms.date: 12/4/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: cb552c5a336c3c55652936b87a668b54cfdeb41e
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: 665dfc64e750f448fc4c1a2d7e18f0cb6552f223
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99507226"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100371764"
 ---
 # <a name="tutorial-manage-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>教程：使用 Azure CLI 管理 Azure VM 中的 SAP HANA 数据库
 
@@ -95,7 +95,7 @@ cb110094-9b15-4c55-ad45-6899200eb8dd  SAPHANA
 az backup policy create --resource-group saphanaResourceGroup --vault-name saphanaVault --name sappolicy --backup-management-type AzureWorkload --policy sappolicy.json --workload-type SAPHana
 ```
 
-示例 JSON (sappolicy.json) 输出：
+示例 JSON (sappolicy.json)：
 
 ```json
   "eTag": null,
@@ -226,11 +226,12 @@ az backup policy create --resource-group saphanaResourceGroup --vault-name sapha
     ],
     "workLoadType": "SAPHanaDatabase"
   },
-  "resourceGroup": "azurefiles",
+  "resourceGroup": "saphanaResourceGroup",
   "tags": null,
   "type": "Microsoft.RecoveryServices/vaults/backupPolicies"
 } 
 ```
+成功创建策略后，命令的输出将显示执行命令时作为参数传递的策略 JSON。
 
 可以修改策略的以下部分，以指定所需的备份频率和增量备份的保留时间。
 

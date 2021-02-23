@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: devx-track-js
-ms.openlocfilehash: db53e4407674abc1e6c81090dc4a50afa784940d
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 2b072107275fba1ff83ab3ddac63ed8bf7766356
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98684819"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100389104"
 ---
 # <a name="tutorial-migrate-a-web-app-from-bing-maps"></a>教程：从必应地图迁移 Web 应用
 
@@ -33,9 +33,9 @@ ms.locfileid: "98684819"
 
 如果迁移现有的 Web 应用程序，请检查该应用程序是否使用 Cesium、Leaflet 和 OpenLayers 等开源地图控件库。 如果使用上述某个库，并且你希望继续使用该库，那么可将其连接到 Azure Maps 图块服务（[道路图块](/rest/api/maps/render/getmaptile) \| [卫星图块](/rest/api/maps/render/getmapimagerytile)）。 可在下面的链接中详细了解如何在一些常用开源地图控件库中使用 Azure Maps。
 
-* Cesium - 适用于 Web 的 3D 地图控件。 [代码示例](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Raster%20Tiles%20in%20Cesium%20JS) \| [文档](https://cesiumjs.org/)
-* Leaflet - 适用于 Web 的轻型 2D 地图控件。 [代码示例](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Azure%20Maps%20Raster%20Tiles%20in%20Leaflet%20JS) \| [文档](https://leafletjs.com/)
-* OpenLayers - 支持投影的适用于 Web 的 2D 地图控件。 [代码示例](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Raster%20Tiles%20in%20OpenLayers) \| [文档](https://openlayers.org/)
+* [Cesium](https://cesiumjs.org/) - 适用于 Web 的 3D 地图控件。 [代码示例](https://azuremapscodesamples.azurewebsites.net/?search=Cesium) \| [插件存储库]()
+* [Leaflet](https://leafletjs.com/) - 适用于 Web 的轻型 2D 地图控件。 [代码示例](https://azuremapscodesamples.azurewebsites.net/?search=leaflet) \| [插件存储库]()
+* [OpenLayers](https://openlayers.org/) - 支持投影的适用于 Web 的 2D 地图控件。 [代码示例](https://azuremapscodesamples.azurewebsites.net/?search=openlayers) \| [插件存储库]()
 
 如果使用 JavaScript 框架进行开发，则下述某一开源项目可能很有用：
 
@@ -64,7 +64,7 @@ ms.locfileid: "98684819"
 | 图块层              | ✓                                                                                      |
 | KML 层                | ✓                                                                                      |
 | 等高线层            | [示例](https://azuremapscodesamples.azurewebsites.net/?search=contour)              |
-| 数据装箱层       | [示例](https://azuremapscodesamples.azurewebsites.net/?search=data%20binning)       |
+| 数据装箱层       | 包含在开源 Azure Maps [网格数据源模块](https://github.com/Azure-Samples/azure-maps-gridded-data-source)中       |
 | 动态图块层      | 包含在开源 Azure Maps [动画模块](https://github.com/Azure-Samples/azure-maps-animations)中 |
 | 绘图工具            | ✓                                                                                      |
 | 地理编码器服务         | ✓                                                                                      |
@@ -72,10 +72,10 @@ ms.locfileid: "98684819"
 | 距离矩阵服务  | ✓                                                                                      |
 | 空间数据服务     | 空值                                                                                    |
 | 卫星/航拍图像 | ✓                                                                                      |
-| 鸟瞰图像         | 已计划                                                                                |
-| 街景图像       | 已计划                                                                                |
+| 鸟瞰图像         | 不适用                                                                                |
+| 街景图像       | 不适用                                                                                |
 | GeoJSON 支持          | ✓                                                                                      |
-| GeoXML 支持           | ✓                                                                                      |
+| GeoXML 支持           | ✓ [空间 IO 模块](how-to-use-spatial-io-module.md)                                                                                     |
 | 已知文本支持  | ✓                                                                                      |
 | 自定义地图样式        | 部分                                                                                |
 

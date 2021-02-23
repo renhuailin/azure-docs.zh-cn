@@ -5,14 +5,14 @@ author: vladvino
 ms.service: api-management
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 09/30/2020
+ms.date: 02/09/2021
 ms.author: apimpm
-ms.openlocfilehash: 231ce9d946a2fb6650f25d90aaa423d1c95fb106
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 75727d139242e1b537505d2ed907ae20fc5479f8
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91930707"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100547231"
 ---
 # <a name="tutorial-mock-api-responses"></a>教程：模拟 API 响应
 
@@ -53,14 +53,16 @@ ms.locfileid: "91930707"
 1. 请确保已在“网关”中选择“托管” 。
 1. 选择“创建”  。
 
-    :::image type="content" source="media/mock-api-responses/03-mock-api-responses-01-create-test-api.png" alt-text="模拟 API 响应":::
+    :::image type="content" source="media/mock-api-responses/03-mock-api-responses-01-create-test-api.png" alt-text="创建空白 API":::
 
 ## <a name="add-an-operation-to-the-test-api"></a>将操作添加到测试 API
 
 API 公开一个或多个操作。 在本部分中，将操作添加到你创建的空白 API。 完成本部分中的步骤之后调用该操作会生成错误。 完成后面[启用响应模拟](#enable-response-mocking)部分中的步骤后，不会出现任何错误。
 
+### <a name="portal"></a>[Portal](#tab/azure-portal)
+
 1. 选择上一步中创建的 API。
-1. 选择“+ 添加操作”。****
+1. 选择“+ 添加操作”。
 1. 在“前端”窗口中，输入以下值。
 
      | 设置             | 值                             | 说明                                                                                                                                                                                   |
@@ -77,7 +79,7 @@ API 公开一个或多个操作。 在本部分中，将操作添加到你创建
 1. 在“示例”文本框中，输入 `{ "sampleField" : "test" }`。
 1. 选择“保存”。
 
-:::image type="content" source="media/mock-api-responses/03-mock-api-responses-02-add-operation.png" alt-text="模拟 API 响应" border="false":::
+:::image type="content" source="media/mock-api-responses/03-mock-api-responses-02-add-operation.png" alt-text="添加 API 操作" border="false":::
 
 虽然此示例中不需要，但也可以在其他选项卡上配置 API 操作的其他设置，包括：
 
@@ -87,6 +89,39 @@ API 公开一个或多个操作。 在本部分中，将操作添加到你创建
 |**查询**     |  添加查询参数。 除了提供名称和说明以外，还可以提供可分配给查询参数的值。 其中一个值可被标记为默认（可选）。        |
 |**请求**     |  定义请求内容类型、示例和架构。       |
 
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+开始使用 Azure CLI：
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+若要将操作添加到测试 API，请运行 [az apim api operation create](/cli/azure/apim/api/operation#az_apim_api_operation_create) 命令：
+
+```azurecli
+az apim api operation create --resource-group apim-hello-word-resource-group \
+    --display-name "Test call" --api-id test-api --method GET \
+    --url-template /test --service-name apim-hello-world 
+```
+
+运行 [az apim api operation list](/cli/azure/apim/api/operation#az_apim_api_operation_list) 命令来查看有关 API 的所有操作：
+
+```azurecli
+az apim api operation list --resource-group apim-hello-word-resource-group \
+    --api-id test-api --service-name apim-hello-world --output table
+```
+
+若要删除操作，请使用 [az apim api operation delete](/cli/azure/apim/api/operation#az_apim_api_operation_delete) 命令。 获取上一个命令的操作 ID。
+
+```azurecli
+az apim api operation delete --resource-group apim-hello-word-resource-group \
+    --api-id test-api --operation-id 00000000000000000000000000000000 \
+    --service-name apim-hello-world
+```
+
+保留此操作，以便在文章的剩余部分中使用。
+
+---
+
 ## <a name="enable-response-mocking"></a>启用响应模拟
 
 1. 选择在[创建测试 API](#create-a-test-api) 中创建的 API。
@@ -94,15 +129,15 @@ API 公开一个或多个操作。 在本部分中，将操作添加到你创建
 1. 在右侧窗口中，确保已选中“设计”选项卡。
 1. 在“入站处理”窗口中，选择“+ 添加策略” 。
 
-    :::image type="content" source="media/mock-api-responses/03-mock-api-responses-03-enable-mocking.png" alt-text="模拟 API 响应" border="false":::
+    :::image type="content" source="media/mock-api-responses/03-mock-api-responses-03-enable-mocking.png" alt-text="添加处理策略" border="false":::
 
 1. 从库中选择“模拟响应”。
 
-    :::image type="content" source="media/mock-api-responses/mock-responses-policy-tile.png" alt-text="模拟 API 响应" border="false":::
+    :::image type="content" source="media/mock-api-responses/mock-responses-policy-tile.png" alt-text="模拟响应策略磁贴" border="false":::
 
 1. 在“API 管理响应”文本框中，键入 **200 OK, application/json**。 此项选择指示 API 应返回上一部分中定义的响应示例。
 
-    :::image type="content" source="media/mock-api-responses/mock-api-responses-set-mocking.png" alt-text="模拟 API 响应":::
+    :::image type="content" source="media/mock-api-responses/mock-api-responses-set-mocking.png" alt-text="设置模拟响应":::
 
 1. 选择“保存”。
 
@@ -115,11 +150,11 @@ API 公开一个或多个操作。 在本部分中，将操作添加到你创建
 1. 选择“测试”选项卡。
 1. 确保“测试调用”API 已选中。  选择“发送”以发出测试调用。 
 
-   :::image type="content" source="media/mock-api-responses/03-mock-api-responses-04-test-mocking.png" alt-text="模拟 API 响应":::
+   :::image type="content" source="media/mock-api-responses/03-mock-api-responses-04-test-mocking.png" alt-text="测试模拟 API":::
 
 1. “HTTP 响应”显示提供的 JSON，如本教程第一部分中的示例所示。 
 
-    :::image type="content" source="media/mock-api-responses/mock-api-responses-test-response.png" alt-text="模拟 API 响应":::
+    :::image type="content" source="media/mock-api-responses/mock-api-responses-test-response.png" alt-text="模拟 HTTP 响应":::
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -3,15 +3,16 @@ title: 使用 Azure 门户创建 Windows 虚拟桌面主机池 - Azure
 description: 如何使用 Azure 门户创建 Windows 虚拟桌面主机池。
 author: Heidilohr
 ms.topic: tutorial
-ms.date: 09/14/2020
+ms.custom: references_regions
+ms.date: 02/17/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 268f1c4bff84a2c9ef67c3f6b5749bc8d0b90e85
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 46a029a3b803428d6250b74059190f66183be452
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98735175"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100651453"
 ---
 # <a name="tutorial-create-a-host-pool-with-the-azure-portal"></a>教程：使用 Azure 门户创建主机池
 
@@ -67,6 +68,9 @@ ms.locfileid: "98735175"
 
      > [!div class="mx-imgBorder"]
      > ![Azure 门户的屏幕截图，其中显示了“位置”字段并选择了“美国东部”位置。 字段旁边的文本指出“将在美国东部存储元数据”。](media/portal-location-field.png)
+  
+   >[!NOTE]
+   > 如果要在美国以外的[受支持区域](data-locations.md)中创建主机池，则需要重新注册资源提供程序。 重新注册后，你应该会在下拉列表中看到其他区域以供选择位置。 参阅[创建主机池](troubleshoot-set-up-issues.md#i-only-see-us-when-setting-the-location-for-my-service-objects)故障排除文章了解如何重新注册。
 
 8. 在“主机池类型”下，选择主机池是“个人”还是“共用”类型 。
 

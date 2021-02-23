@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/13/2021
+ms.date: 02/02/2021
 ms.author: jeedes
-ms.openlocfilehash: 18d64e2b2ac359a9036ebd548ef886cb0efd3405
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 3d99ed71e284ae2e986a93591a61c3c9011857eb
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98622191"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100371287"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-splunk-enterprise-and-splunk-cloud"></a>教程：Azure Active Directory 与 Splunk Enterprise and Splunk Cloud 集成
 
@@ -28,10 +28,10 @@ ms.locfileid: "98622191"
 
 ## <a name="prerequisites"></a>先决条件
 
-若要配置并测试 Azure AD 与 Splunk Enterprise and Splunk Cloud 的集成，需要以下项：
+若要开始操作，需备齐以下项目：
 
-* 一个 Azure AD 订阅。 如果没有 Azure AD 环境，可以在[此处](https://azure.microsoft.com/pricing/free-trial/)获取一个月的试用版。
-* 已启用 Splunk Enterprise and Splunk Cloud 单一登录的订阅。
+* 一个 Azure AD 订阅。 如果没有订阅，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。
+* 已启用 Splunk Enterprise and Splunk Cloud 单一登录 (SSO) 的订阅。
 
 ## <a name="scenario-description"></a>方案描述
 
@@ -63,7 +63,7 @@ ms.locfileid: "98622191"
     1. **[创建 Splunk Enterprise and Splunk Cloud 测试用户](#create-splunk-enterprise-and-splunk-cloud-test-user)** - 在 Splunk Enterprise and Splunk Cloud 中创建 B.Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
 1. **[测试 SSO](#test-sso)** - 验证配置是否正常工作。
 
-### <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
+## <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
 
 按照下列步骤在 Azure 门户中启用 Azure AD SSO。
 
@@ -111,16 +111,15 @@ ms.locfileid: "98622191"
 1. 如果你希望将某角色分配给用户，可以从“选择角色”下拉列表中选择该角色。 如果尚未为此应用设置任何角色，你将看到选择了“默认访问权限”角色。
 1. 在“添加分配”对话框中，单击“分配”按钮。
 
-### <a name="configure-splunk-enterprise-and-splunk-cloud-sso"></a>配置 Splunk Enterprise and Splunk Cloud SSO
+## <a name="configure-splunk-enterprise-and-splunk-cloud-sso"></a>配置 Splunk Enterprise and Splunk Cloud SSO
 
   若要在 Splunk Enterprise and Splunk Cloud 端配置单一登录，需要将已下载的联合元数据 XML 和相应已复制的 URL 从 Azure 门户发送到 [Splunk Enterprise and Splunk Cloud 支持团队](https://www.splunk.com/en_us/about-splunk/contact-us.html) 。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
-
 
 ### <a name="create-splunk-enterprise-and-splunk-cloud-test-user"></a>创建 Splunk Enterprise and Splunk Cloud 测试用户
 
 在本部分中，会在 Splunk Enterprise and Splunk Cloud 中创建一个名为“Britta Simon”的用户。 与 [Splunk Enterprise and Splunk Cloud 支持团队](https://www.splunk.com/en_us/about-splunk/contact-us.html)协作，在 Splunk Enterprise and Splunk Cloud 平台中添加用户。 使用单一登录前，必须先创建并激活用户。
 
-### <a name="test-sso"></a>测试 SSO
+## <a name="test-sso"></a>测试 SSO
 
 在本部分，你将使用以下选项测试 Azure AD 单一登录配置。 
 

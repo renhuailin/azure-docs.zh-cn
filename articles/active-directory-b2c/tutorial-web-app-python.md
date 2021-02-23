@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
 ms.custom: devx-track-python
-ms.openlocfilehash: b4455f21ae7243ab7a15e8d746d6674289f9fdb5
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 56e92a698446bd417c74820d6da662ad9ee55c77
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94952992"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555677"
 ---
 # <a name="tutorial-enable-authentication-in-a-python-web-application-with-azure-ad-b2c"></a>教程：使用 Azure AD B2C 在 Python Web 应用程序中启用身份验证
 
@@ -185,4 +185,4 @@ CLIENT_SECRET = "22222222-2222-2222-2222-222222222222" # Placeholder - for use O
 接下来，了解如何通过 Azure AD B2C 自定义向用户显示的用户流页面的 UI：
 
 > [!div class="nextstepaction"]
-> [教程：在 Azure AD B2C 中自定义用户界面体验 >](tutorial-customize-ui.md)
+> [在 Azure AD B2C 中自定义用户界面体验 >](customize-ui.md)

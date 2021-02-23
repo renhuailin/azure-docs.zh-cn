@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.date: 11/05/2019
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: e16a738264e64e37cfa42722832dac7e34fee899
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: beb58922172a045242f4f9bcaf647b3cfc8b5551
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93339489"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100380791"
 ---
 # <a name="tutorial-create-a-notebook-in-azure-cosmos-db-to-analyze-and-visualize-the-data"></a>教程：在 Azure Cosmos DB 中创建笔记本用于分析和可视化数据
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -22,7 +22,7 @@ ms.locfileid: "93339489"
 
 ## <a name="prerequisites"></a>先决条件
 
-* [创建 Azure Cosmos 帐户时启用笔记本支持](enable-notebooks.md)
+* [在 Azure Cosmos 帐户中启用笔记本](enable-notebooks.md)
 
 ## <a name="create-the-resources-and-import-data"></a>创建资源并导入数据
  
@@ -30,11 +30,11 @@ ms.locfileid: "93339489"
 
 1. 导航到你的 Azure Cosmos 帐户，打开“数据资源管理器”。
 
-1. 转到“笔记本”选项卡，选择“我的笔记本”旁边的 `…`，然后创建一个 **新笔记本** 。  选择“Python 3”作为默认内核。
+1. 转到“笔记本”选项卡，选择“我的笔记本”旁边的 `…`，然后创建一个 **新笔记本**。  选择“Python 3”作为默认内核。
 
    :::image type="content" source="./media/create-notebook-visualize-data/create-new-notebook.png" alt-text="创建新的笔记本":::
 
-1. 创建新笔记本后，可将其重命名，例如 **VisualizeRetailData.ipynb** 。
+1. 创建新笔记本后，可将其重命名，例如 **VisualizeRetailData.ipynb**。
 
 1. 接下来，创建名为“RetailDemo”的数据库和名为“WebsiteData”的容器来存储零售数据。 可以使用 /CartID 作为分区键。 将以下代码复制并粘贴到笔记本的新单元中，然后运行此代码：
 
@@ -152,7 +152,7 @@ df_cosmos.head(10)
 
    :::image type="content" source="./media/create-notebook-visualize-data/total-sales-revenue-output.png" alt-text="总销售收入输出":::
 
-* **查询 2** ：若要获取前五个购买项的列表，请打开新的笔记本单元并运行以下代码：
+* **查询 2**：若要获取前五个购买项的列表，请打开新的笔记本单元并运行以下代码：
 
    ```python
    import pandas as pd

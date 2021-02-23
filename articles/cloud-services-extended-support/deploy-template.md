@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: f86b2a50040704aac2827c463a362a04f78ba34f
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: eb59bb43d493609ae408a402eaea2dcc9c6fab29
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881816"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100548771"
 ---
 # <a name="deploy-a-cloud-service-extended-support-using-arm-templates"></a>使用 ARM 模板部署云服务（外延支持）
 
@@ -134,7 +134,7 @@ ms.locfileid: "98881816"
     ```
  
 
-4. 在 ARM 模板的  `OsProfile`  部分添加 Key Vault 引用。 Key Vault 用于存储与云服务（外延支持）关联的证书。 将证书添加到 Key Vault，然后引用服务配置文件 (.cscfg) 中的证书指纹。 还需要启用 Key Vault 来获得适当的权限，以便云服务（外延支持）资源可从 Key Vault 检索存储为机密的证书。 有关详细信息，请查看[在云服务（外延支持）中使用证书](certificates-and-key-vault.md)。
+4. 在 ARM 模板的  `OsProfile`  部分添加 Key Vault 引用。 Key Vault 用于存储与云服务（外延支持）关联的证书。 将证书添加到 Key Vault，然后引用服务配置文件 (.cscfg) 中的证书指纹。 还需要启用 Key Vault 来获得适当的权限，以便云服务（外延支持）资源可从 Key Vault 检索存储为机密的证书。 Key Vault 必须与云服务位于同一区域和订阅中，并且名称必须唯一。 有关详细信息，请查看[在云服务（外延支持）中使用证书](certificates-and-key-vault.md)。
      
     ```json
     "osProfile": { 
@@ -441,17 +441,18 @@ ms.locfileid: "98881816"
             ]
           }
         }
-      }
+       }
+      ]
     }
     ```
  
-8. 部署模板并创建云服务（外延支持）部署。 
+8. 部署模板和参数文件（定义模板文件中的参数）用于创建云服务（扩展的支持）部署。 请参阅这些所需的[示例模板](https://github.com/Azure-Samples/cloud-services-extended-support)。
 
     ```powershell
-    New-AzResourceGroupDeployment -ResourceGroupName “ContosOrg -TemplateFile "file path to your template file”  
+    New-AzResourceGroupDeployment -ResourceGroupName “ContosOrg"  -TemplateFile "file path to your template file” -TemplateParameterFile "file path to your parameter file"
     ```
  
 ## <a name="next-steps"></a>后续步骤 
-- 查看云服务（外延支持）的[常见问题解答](faq.md)。
+- 请参阅云服务（外延支持）的[常见问题解答](faq.md)。
 - 使用 [Azure 门户](deploy-portal.md)、[PowerShell](deploy-powershell.md)、[模板](deploy-template.md)或 [Visual Studio](deploy-visual-studio.md) 部署云服务（外延支持）。
 - 访问[云服务（外延支持）示例存储库](https://github.com/Azure-Samples/cloud-services-extended-support)

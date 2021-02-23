@@ -13,98 +13,98 @@
 - name: 快速入门
   items:
     - name: 监视 Azure 资源
-      href: learn/quick-monitor-azure-resource.md
+      href: essentials/quick-monitor-azure-resource.md
     - name: 向工作区发送活动日志
       items:
         - name: Azure 门户
-          href: learn/quick-collect-activity-log-portal.md
+          href: essentials/quick-collect-activity-log-portal.md
         - name: ARM 模板
           displayName: Resource Manager
-          href: learn/quick-collect-activity-log-arm.md
+          href: essentials/quick-collect-activity-log-arm.md
     - name: 监视虚拟机
       items:
         - name: Azure VM
-          href: learn/quick-monitor-azure-vm.md
+          href: vm/quick-monitor-azure-vm.md
         - name: Linux 计算机
-          href: learn/quick-collect-linux-computer.md
+          href: vm/quick-collect-linux-computer.md
         - name: Windows 计算机
-          href: learn/quick-collect-windows-computer.md
+          href: vm/quick-collect-windows-computer.md
     - name: 监视应用程序
       items:
         - name: Node.js 应用程序
-          href: learn/nodejs-quick-start.md
+          href: app/nodejs-quick-start.md
         - name: 移动应用程序
-          href: learn/mobile-center-quickstart.md
+          href: app/mobile-center-quickstart.md
         - name: Web 应用程序
           href: app/website-monitoring.md
 - name: 教程
   items:
     - name: 创建指标图表
-      href: learn/tutorial-metrics-explorer.md
+      href: essentials/tutorial-metrics-explorer.md
     - name: 从 Azure 资源收集日志
-      href: learn/tutorial-resource-logs.md
+      href: essentials/tutorial-resource-logs.md
     - name: 编写日志查询
-      href: log-query/get-started-queries.md
+      href: logs/get-started-queries.md
     - name: 通过日志查询创建仪表板
-      href: learn/tutorial-logs-dashboards.md
+      href: visualize/tutorial-logs-dashboards.md
     - name: 通过日志查询创建警报
-      href: learn/tutorial-response.md
+      href: alerts/tutorial-response.md
     - name: 根据性能和计划自动缩放
-      href: learn/tutorial-autoscale-performance-schedule.md
+      href: autoscale/tutorial-autoscale-performance-schedule.md
     - name: Application Insights
       items:
         - name: 查找应用程序运行时异常
-          href: learn/tutorial-runtime-exceptions.md
+          href: app/tutorial-runtime-exceptions.md
         - name: 查找应用程序性能问题
-          href: learn/tutorial-performance.md
+          href: app/tutorial-performance.md
         - name: 根据应用程序运行状况发出警报
-          href: learn/tutorial-alert.md
+          href: app/tutorial-alert.md
         - name: 了解应用程序用户
-          href: learn/tutorial-users.md
+          href: app/tutorial-users.md
         - name: 包含应用程序数据的仪表板
-          href: learn/tutorial-app-dashboards.md
+          href: app/tutorial-app-dashboards.md
 - name: 示例
   items:
     - name: 资源管理器模板
       items:
         - name: 概述
-          href: samples/resource-manager-samples.md
+          href: resource-manager-samples.md
         - name: 代理
-          href: samples/resource-manager-agent.md
+          href: agents/resource-manager-agent.md
         - name: 警报
           items:
             - name: 日志警报规则
-              href: samples/resource-manager-alerts-log.md
+              href: alerts/resource-manager-alerts-log.md
             - name: 指标警报规则
-              href: samples/resource-manager-alerts-metric.md
+              href: alerts/resource-manager-alerts-metric.md
             - name: 操作组
-              href: samples/resource-manager-action-groups.md
+              href: alerts/resource-manager-action-groups.md
         - name: Application Insights
           items:
             - name: 创建资源
-              href: samples/resource-manager-app-resource.md
+              href: app/resource-manager-app-resource.md
             - name: Azure 应用服务
-              href: samples/resource-manager-web-app.md
+              href: app/resource-manager-web-app.md
             - name: Azure Functions
-              href: samples/resource-manager-function-app.md
+              href: app/resource-manager-function-app.md
         - name: 数据收集规则
-          href: samples/resource-manager-data-collection-rules.md
+          href: agents/resource-manager-data-collection-rules.md
         - name: 诊断设置
-          href: samples/resource-manager-diagnostic-settings.md
+          href: essentials/resource-manager-diagnostic-settings.md
         - name: Log Analytics 工作区
-          href: samples/resource-manager-workspace.md
+          href: logs/resource-manager-workspace.md
         - name: 日志查询
-          href: samples/resource-manager-log-queries.md
+          href: logs/resource-manager-log-queries.md
         - name: 工作簿
-          href: samples/resource-manager-workbooks.md
+          href: visualize/resource-manager-workbooks.md
         - name: 用于容器的 Azure Monitor
-          href: samples/resource-manager-container-insights.md
+          href: containers/resource-manager-container-insights.md
         - name: 用于 VM 的 Azure Monitor
-          href: samples/resource-manager-vminsights.md
+          href: vm/resource-manager-vminsights.md
     - name: Azure CLI
-      href: samples/cli-samples.md
+      href: cli-samples.md
     - name: Azure PowerShell
-      href: samples/powershell-samples.md
+      href: powershell-samples.md
 - name: 概念
   items:
     - name: 你可以监视什么？
@@ -112,52 +112,52 @@
     - name: 持续监视
       href: continuous-monitoring.md
     - name: 数据源
-      href: platform/data-sources.md
+      href: agents/data-sources.md
     - name: 数据平台
-      href: platform/data-platform.md
+      href: data-platform.md
     - name: 数据安全性
       items:
         - name: 日志数据
-          href: platform/data-security.md
+          href: logs/data-security.md
         - name: 客户管理的密钥
-          href: platform/customer-managed-keys.md
+          href: logs/customer-managed-keys.md
         - name: 专用链接网络
-          href: platform/private-link-security.md
+          href: logs/private-link-security.md
         - name: 专用存储
-          href: platform/private-storage.md
+          href: logs/private-storage.md
         - name: 个人日志数据处理
-          href: platform/personal-data-mgmt.md
+          href: logs/personal-data-mgmt.md
         - name: 应用程序数据收集、保留和存储
           href: app/data-retention-privacy.md
     - name: 警报
       items:
         - name: 概述
-          href: platform/alerts-overview.md
+          href: alerts/alerts-overview.md
         - name: 指标警报
-          href: platform/alerts-metric-overview.md
+          href: alerts/alerts-metric-overview.md
         - name: 日志警报
-          href: platform/alerts-unified-log.md
+          href: alerts/alerts-unified-log.md
         - name: 活动日志警报
-          href: platform/activity-log-alerts.md
+          href: alerts/activity-log-alerts.md
     - name: 可视化数据
       href: visualizations.md
     - name: 合作伙伴集成
-      href: platform/partners.md
+      href: partners.md
     - name: 安全性
       items:
         - name: 安全基线
           href: security-baseline.md
         - name: Azure Policy 的安全控件
           displayName: 'regulatory, compliance, standards, domains'
-          href: ./platform/security-controls-policy.md
+          href: .//security-controls-policy.md
 - name: 操作指南
   items:
     - name: 方案
       items:
         - name: 监视 Azure 资源
-          href: insights/monitor-azure-resource.md
+          href: essentials/monitor-azure-resource.md
         - name: 监视 Azure 虚拟机
-          href: insights/monitor-vm-azure.md
+          href: vm/monitor-vm-azure.md
           displayname: VM
     - name: 部署
       items:
@@ -169,236 +169,236 @@
     - name: 管理和配置
       items:
         - name: 角色权限和安全
-          href: platform/roles-permissions-security.md
+          href: roles-permissions-security.md
         - name: IP 地址
           href: app/ip-addresses.md
           displayname: 'firewall, firewall exceptions, whitelist'
         - name: 使用情况和成本
           items:
             - name: 使用情况和预估成本
-              href: platform/usage-estimated-costs.md
+              href: usage-estimated-costs.md
             - name: 应用程序使用情况和成本
               href: app/pricing.md
             - name: 日志数据使用情况和成本
-              href: platform/manage-cost-storage.md
+              href: logs/manage-cost-storage.md
     - name: Azure Monitor 指标
       items:
         - name: 概述
           displayname: Metrics
-          href: platform/data-platform-metrics.md
+          href: essentials/data-platform-metrics.md
         - name: 指标资源管理器
           items:
             - name: 指标资源管理器入门
-              href: platform/metrics-getting-started.md
+              href: essentials/metrics-getting-started.md
             - name: 指标资源管理器的高级功能
-              href: platform/metrics-charts.md
+              href: essentials/metrics-charts.md
             - name: 在指标资源管理器中查看多个资源
-              href: platform/metrics-dynamic-scope.md
+              href: essentials/metrics-dynamic-scope.md
             - name: 指标图表示例
-              href: platform/metric-chart-samples.md
+              href: essentials/metric-chart-samples.md
             - name: 排查指标图表问题
-              href: platform/metrics-troubleshoot.md
+              href: essentials/metrics-troubleshoot.md
             - name: 了解指标聚合
-              href: platform/metrics-aggregation-explained.md
+              href: essentials/metrics-aggregation-explained.md
     - name: Azure Monitor 日志
       items:
         - name: 概述
           displayname: 'Azure Monitor Logs, Logs, Log Analytics, log query, log queries, query, queries'
-          href: platform/data-platform-logs.md
+          href: logs/data-platform-logs.md
         - name: 工作区和群集
           items:
             - name: 创建工作区
               items:
                 - name: Azure 门户
-                  href: learn/quick-create-workspace.md
+                  href: logs/quick-create-workspace.md
                 - name: Azure CLI
-                  href: learn/quick-create-workspace-cli.md
+                  href: logs/quick-create-workspace-cli.md
                 - name: PowerShell
-                  href: platform/powershell-workspace-configuration.md
+                  href: logs/powershell-workspace-configuration.md
             - name: 设计工作区部署
-              href: platform/design-logs-deployment.md
+              href: logs/design-logs-deployment.md
             - name: 监视工作区
-              href: platform/monitor-workspace.md
+              href: logs/monitor-workspace.md
             - name: 删除和恢复工作区
-              href: platform/delete-workspace.md
+              href: logs/delete-workspace.md
             - name: 管理访问权限
               displayName: Log Analytics workspace
-              href: platform/manage-access.md
+              href: logs/manage-access.md
             - name: 移动工作区
-              href: platform/move-workspace.md
+              href: logs/move-workspace.md
             - name: 适用于服务提供商的设计
-              href: platform/service-providers.md
+              href: logs/service-providers.md
             - name: 专用群集
-              href: log-query/logs-dedicated-clusters.md
+              href: logs/logs-dedicated-clusters.md
         - name: Log Analytics
           items:
             - name: 概述
               displayname: 'Log Analytics, log query, log queries, query, queries'
-              href: log-query/log-analytics-overview.md
+              href: logs/log-analytics-overview.md
             - name: 教程
               displayname: 'Log Analytics workspace, log query, log queries, query, queries'
-              href: log-query/log-analytics-tutorial.md
+              href: logs/log-analytics-tutorial.md
             - name: 查询范围
-              href: log-query/scope.md
+              href: logs/scope.md
             - name: 查询示例
-              href: log-query/example-queries.md
+              href: logs/example-queries.md
         - name: 日志查询
           items:
             - name: 概述
               displayname: 'log query, log queries, query, queries'
-              href: log-query/log-query-overview.md
+              href: logs/log-query-overview.md
             - name: KQL 引用
               href: /azure/data-explorer/kusto/query/
             - name: 示例查询
               href: /azure/data-explorer/kusto/query/samples?&pivots=azuremonitor
             - name: 标准列
-              href: platform/log-standard-columns.md
+              href: logs/log-standard-columns.md
             - name: 审核查询
-              href: log-query/query-audit.md
+              href: logs/query-audit.md
             - name: 优化查询
-              href: log-query/query-optimization.md
+              href: logs/query-optimization.md
             - name: 函数
-              href: log-query/functions.md
+              href: logs/functions.md
             - name: 分析文本数据
-              href: log-query/parse-text.md
+              href: logs/parse-text.md
             - name: 计算机组
-              href: platform/computer-groups.md
+              href: logs/computer-groups.md
             - name: 跨资源查询
               items:
                 - name: 概述
                   displayname: cross-resource queries
-                  href: log-query/cross-workspace-query.md
+                  href: logs/cross-workspace-query.md
                 - name: 应用表达式
-                  href: log-query/app-expression.md
+                  href: logs/app-expression.md
                 - name: 工作区表达式
-                  href: log-query/workspace-expression.md
+                  href: logs/workspace-expression.md
                 - name: 资源表达式
-                  href: log-query/resource-expression.md
+                  href: logs/resource-expression.md
                 - name: 统一应用程序数据资源
-                  href: log-query/unify-app-resource-data.md
+                  href: logs/unify-app-resource-data.md
                 - name: Azure Monitor 和 Azure 数据资源管理器之间的跨服务查询概述
-                  href: platform/azure-data-explorer-monitor-cross-service-query.md
+                  href: logs/azure-data-explorer-monitor-cross-service-query.md
                 - name: 通过 Azure Monitor 查询 Azure 数据资源管理器
-                  href: platform/azure-monitor-data-explorer-proxy.md
+                  href: logs/azure-monitor-data-explorer-proxy.md
         - name: 数据导出
           items:
             - name: 工作区数据导出
-              href: platform/logs-data-export.md
+              href: logs/logs-data-export.md
             - name: 使用逻辑应用进行导出
-              href: platform/logs-export-logic-app.md
+              href: logs/logs-export-logic-app.md
             - name: 使用 Azure 数据资源管理器查询数据
-              href: platform/azure-data-explorer-query-storage.md
+              href: logs/azure-data-explorer-query-storage.md
             - name: 发送到 Excel
-              href: log-query/log-excel.md
+              href: logs/log-excel.md
             - name: 发送到 Power BI
-              href: log-query/log-powerbi.md
+              href: logs/log-powerbi.md
     - name: 平台日志
       items:
         - name: 概述
           displayName: 'Platform logs, Resource logs, Activity log'
-          href: platform/platform-logs-overview.md
+          href: essentials/platform-logs-overview.md
         - name: 活动日志
-          href: platform/activity-log.md
+          href: essentials/activity-log.md
         - name: 资源日志
-          href: platform/resource-logs.md
+          href: essentials/resource-logs.md
         - name: 诊断设置
           displayName: 'Platform logs, Resource logs, Activity log'
-          href: platform/diagnostic-settings.md
+          href: essentials/diagnostic-settings.md
     - name: 数据收集
       items:
         - name: 数据收集规则
-          href: platform/data-collection-rule-overview.md
+          href: agents/data-collection-rule-overview.md
         - name: 日志数据引入时间
           displayname: latency
-          href: platform/data-ingestion-time.md
+          href: logs/data-ingestion-time.md
         - name: 代理数据源
           items:
             - name: 概述
-              href: platform/agent-data-sources.md
+              href: agents/agent-data-sources.md
             - name: Windows 事件
-              href: platform/data-sources-windows-events.md
+              href: agents/data-sources-windows-events.md
             - name: 自定义 JSON 数据
-              href: platform/data-sources-json.md
+              href: agents/data-sources-json.md
             - name: CollectD 性能数据
-              href: platform/data-sources-collectd.md
+              href: agents/data-sources-collectd.md
             - name: Syslog
-              href: platform/data-sources-syslog.md
+              href: agents/data-sources-syslog.md
             - name: 性能计数器
-              href: platform/data-sources-performance-counters.md
+              href: agents/data-sources-performance-counters.md
             - name: Linux 应用程序性能
-              href: platform/data-sources-linux-applications.md
+              href: agents/data-sources-linux-applications.md
             - name: IIS 日志
-              href: platform/data-sources-iis-logs.md
+              href: agents/data-sources-iis-logs.md
             - name: Windows 事件跟踪数据
-              href: platform/data-sources-event-tracing-windows.md
+              href: agents/data-sources-event-tracing-windows.md
             - name: 自定义日志
-              href: platform/data-sources-custom-logs.md
+              href: agents/data-sources-custom-logs.md
             - name: 自定义字段
-              href: platform/custom-fields.md
+              href: logs/custom-fields.md
         - name: 自定义指标
           items:
             - name: 自定义指标
-              href: platform/metrics-custom-overview.md
+              href: essentials/metrics-custom-overview.md
             - name: 指标 REST API
-              href: platform/metrics-store-custom-rest-api.md
+              href: essentials/metrics-store-custom-rest-api.md
         - name: 自定义日志
           items:
             - name: Log Analytics 数据收集器 API
-              href: platform/data-collector-api.md
+              href: logs/data-collector-api.md
             - name: Log Analytics 数据收集器 API 管道示例
-              href: platform/create-pipeline-datacollector-api.md
+              href: logs/create-pipeline-datacollector-api.md
         - name: 逻辑应用
           items:
             - name: Azure Monitor 日志连接器
-              href: platform/logicapp-flow-connector.md
+              href: logs/logicapp-flow-connector.md
             - name: Application Insights 连接器
               href: app/automate-with-logic-apps.md
     - name: 代理
       items:
         - name: 概述
-          href: platform/agents-overview.md
+          href: agents/agents-overview.md
         - name: 常见问题解答
           href: faq.md#agents
         - name: Azure Monitor 代理
           items:
             - name: 概述
               displayname: Azure Monitor agent
-              href: platform/azure-monitor-agent-overview.md
+              href: agents/azure-monitor-agent-overview.md
             - name: 安装
               displayname: Azure Monitor agent
-              href: platform/azure-monitor-agent-install.md
+              href: agents/azure-monitor-agent-install.md
             - name: 数据收集
               displayname: 'data collection rule,Azure Monitor agent'
-              href: platform/data-collection-rule-azure-monitor-agent.md
+              href: agents/data-collection-rule-azure-monitor-agent.md
         - name: Log Analytics 代理
           items:
             - name: 概述
-              href: platform/log-analytics-agent.md
+              href: agents/log-analytics-agent.md
             - name: Windows 代理
-              href: platform/agent-windows.md
+              href: agents/agent-windows.md
             - name: Linux 代理
-              href: platform/agent-linux.md
+              href: agents/agent-linux.md
             - name: 适用于 Windows 的 VM 扩展
               href: ../virtual-machines/extensions/oms-windows.md?toc=/azure/azure-monitor/toc.json
             - name: 适用于 Linux 的 VM 扩展
               href: ../virtual-machines/extensions/oms-linux.md?toc=/azure/azure-monitor/toc.json
             - name: Log Analytics 网关
-              href: platform/gateway.md
+              href: agents/gateway.md
             - name: 代理管理
-              href: platform/agent-manage.md
+              href: agents/agent-manage.md
             - name: 代理运行状况
               href: insights/solution-agenthealth.md
         - name: Azure 诊断扩展
           items:
             - name: 概述
-              href: platform/diagnostics-extension-overview.md
+              href: agents/diagnostics-extension-overview.md
             - name: Windows
               displayname: diagnostics extension
               items:
                 - name: 安装和配置
                   items:
                     - name: 安装选项
-                      href: platform/diagnostics-extension-windows-install.md
+                      href: agents/diagnostics-extension-windows-install.md
                     - name: PowerShell
                       href: ../virtual-machines/extensions/diagnostics-windows.md?toc=/azure/azure-monitor/toc.json
                     - name: 资源管理器模板
@@ -406,23 +406,23 @@
                 - name: 发送到 Azure Monitor 指标存储
                   items:
                     - name: 虚拟机
-                      href: platform/collect-custom-metrics-guestos-resource-manager-vm.md
+                      href: essentials/collect-custom-metrics-guestos-resource-manager-vm.md
                     - name: 虚拟机规模集
-                      href: platform/collect-custom-metrics-guestos-resource-manager-vmss.md
+                      href: essentials/collect-custom-metrics-guestos-resource-manager-vmss.md
                     - name: VM 经典
-                      href: platform/collect-custom-metrics-guestos-vm-classic.md
+                      href: essentials/collect-custom-metrics-guestos-vm-classic.md
                     - name: 云服务
-                      href: platform/collect-custom-metrics-guestos-vm-cloud-service-classic.md
+                      href: essentials/collect-custom-metrics-guestos-vm-cloud-service-classic.md
                 - name: 发送到事件中心
-                  href: platform/diagnostics-extension-stream-event-hubs.md
+                  href: agents/diagnostics-extension-stream-event-hubs.md
                 - name: 发送到日志
-                  href: platform/diagnostics-extension-logs.md
+                  href: essentials/diagnostics-extension-logs.md
                 - name: 发送到 Application Insights
-                  href: platform/diagnostics-extension-to-application-insights.md
+                  href: agents/diagnostics-extension-to-application-insights.md
                 - name: 版本历史记录
-                  href: platform/diagnostics-extension-versions.md
+                  href: agents/diagnostics-extension-versions.md
                 - name: 疑难解答
-                  href: platform/diagnostics-extension-troubleshooting.md
+                  href: agents/diagnostics-extension-troubleshooting.md
             - name: Linux
               displayname: diagnostics extension
               items:
@@ -431,82 +431,82 @@
                 - name: 版本 3.0
                   href: ../virtual-machines/extensions/diagnostics-linux-v3.md?toc=/azure/azure-monitor/toc.json
                 - name: 使用 Telegraf 收集指标
-                  href: platform/collect-custom-metrics-linux-telegraf.md
+                  href: essentials/collect-custom-metrics-linux-telegraf.md
         - name: 故障排除
           items:
             - name: Log Analytics VM 扩展
               displayname: 'troubleshoot, troubleshooting'
-              href: platform/vmext-troubleshoot.md
+              href: visualize/vmext-troubleshoot.md
             - name: Log Analytics Windows 代理
               displayname: 'troubleshoot, troubleshooting'
-              href: platform/agent-windows-troubleshoot.md
+              href: agents/agent-windows-troubleshoot.md
             - name: Log Analytics Linux 代理
               displayname: 'troubleshoot, troubleshooting'
-              href: platform/agent-linux-troubleshoot.md
+              href: agents/agent-linux-troubleshoot.md
     - name: 自动缩放
       items:
         - name: 概述
-          href: platform/autoscale-overview.md
+          href: autoscale/autoscale-overview.md
         - name: 演练
-          href: platform/autoscale-get-started.md
+          href: autoscale/autoscale-get-started.md
         - name: 配置设置
-          href: platform/autoscale-understanding-settings.md
-        - name: 最佳实践
-          href: platform/autoscale-best-practices.md
+          href: autoscale/autoscale-understanding-settings.md
+        - name: 最佳做法
+          href: autoscale/autoscale-best-practices.md
         - name: 常见指标
-          href: platform/autoscale-common-metrics.md
+          href: autoscale/autoscale-common-metrics.md
         - name: 常见模式
-          href: platform/autoscale-common-scale-patterns.md
+          href: autoscale/autoscale-common-scale-patterns.md
         - name: 使用自定义指标缩放
-          href: platform/autoscale-custom-metric.md
+          href: autoscale/autoscale-custom-metric.md
         - name: 缩放虚拟机规模集
           href: ../virtual-machine-scale-sets/tutorial-autoscale-powershell.md?toc=/azure/azure-monitor/toc.json
         - name: 使用资源管理器模板缩放虚拟机规模集
-          href: platform/autoscale-virtual-machine-scale-sets.md
+          href: autoscale/autoscale-virtual-machine-scale-sets.md
         - name: 使用 Webhook 和电子邮件通知
-          href: platform/autoscale-webhook-email.md
+          href: autoscale/autoscale-webhook-email.md
         - name: 疑难解答
-          href: platform/autoscale-troubleshoot.md
+          href: autoscale/autoscale-troubleshoot.md
         - name: 资源日志架构
-          href: platform/autoscale-resource-log-schema.md
+          href: autoscale/autoscale-resource-log-schema.md
     - name: 警报
       items:
         - name: 指标警报规则
           items:
             - name: 管理指标警报
-              href: platform/alerts-metric.md
+              href: alerts/alerts-metric.md
             - name: 可用性
               href: app/monitor-web-app-availability.md
             - name: 使用动态阈值
-              href: platform/alerts-dynamic-thresholds.md
+              href: alerts/alerts-dynamic-thresholds.md
             - name: 针对多个系列的单个警报
-              href: platform/alerts-metric-multiple-time-series-single-rule.md
+              href: alerts/alerts-metric-multiple-time-series-single-rule.md
             - name: 基于日志的指标警报
-              href: platform/alerts-metric-logs.md
+              href: alerts/alerts-metric-logs.md
             - name: 使用 Resource Manager 模板
-              href: platform/alerts-metric-create-templates.md
+              href: alerts/alerts-metric-create-templates.md
             - name: 排查指标警报问题
-              href: platform/alerts-troubleshoot-metric.md
+              href: alerts/alerts-troubleshoot-metric.md
         - name: 日志警报规则
           items:
             - name: 管理日志警报
-              href: platform/alerts-log.md
+              href: alerts/alerts-log.md
             - name: 优化警报查询
-              href: platform/alerts-log-query.md
+              href: alerts/alerts-log-query.md
             - name: 使用 Resource Manager 模板
-              href: platform/alerts-log-create-templates.md
+              href: alerts/alerts-log-create-templates.md
             - name: 排查日志警报问题
-              href: platform/alerts-troubleshoot-log.md
+              href: alerts/alerts-troubleshoot-log.md
             - name: Webhook 操作
-              href: platform/alerts-log-webhook.md
+              href: alerts/alerts-log-webhook.md
         - name: 活动日志警报规则
           items:
             - name: 基于活动日志事件的警报
-              href: platform/alerts-activity-log.md
+              href: alerts/alerts-activity-log.md
             - name: 将管理事件迁移到活动日志警报
-              href: ./platform/activity-log-alerts.md
+              href: ./alerts/activity-log-alerts.md
             - name: Webhook 架构
-              href: platform/activity-log-alerts-webhook.md
+              href: alerts/activity-log-alerts-webhook.md
         - name: 服务运行状况警报
           items:
             - name: 查看通知
@@ -516,104 +516,106 @@
         - name: 通知和操作
           items:
             - name: 操作规则（预览版）
-              href: platform/alerts-action-rules.md
+              href: alerts/alerts-action-rules.md
               displayName: 'Azure CLI, az monitor action rule'
             - name: 创建操作组
-              href: platform/action-groups.md
+              href: alerts/action-groups.md
             - name: 常见警报架构
-              href: platform/alerts-common-schema.md
+              href: alerts/alerts-common-schema.md
             - name: 常见警报架构定义
-              href: platform/alerts-common-schema-definitions.md
+              href: alerts/alerts-common-schema-definitions.md
             - name: 将常见警报架构与逻辑应用集成
-              href: platform/alerts-common-schema-integrations.md
+              href: alerts/alerts-common-schema-integrations.md
             - name: 短信警报行为
-              href: platform/alerts-sms-behavior.md
+              href: alerts/alerts-sms-behavior.md
             - name: 通知速率限制
-              href: platform/alerts-rate-limiting.md
+              href: alerts/alerts-rate-limiting.md
             - name: 使用资源管理器创建操作组
-              href: platform/action-groups-create-resource-manager-template.md
+              href: alerts/action-groups-create-resource-manager-template.md
             - name: 实现逻辑应用操作
-              href: platform/action-groups-logic-app.md
+              href: alerts/action-groups-logic-app.md
         - name: 警报用户界面
           items:
             - name: 关于智能组
-              href: platform/alerts-smartgroups-overview.md
+              href: alerts/alerts-smartgroups-overview.md
             - name: 管理警报实例
-              href: platform/alerts-managing-alert-instances.md
+              href: alerts/alerts-managing-alert-instances.md
             - name: 管理智能组
-              href: platform/alerts-managing-smart-groups.md
+              href: alerts/alerts-managing-smart-groups.md
             - name: 管理警报和智能组状态
-              href: platform/alerts-managing-alert-states.md
+              href: alerts/alerts-managing-alert-states.md
         - name: 警报 API
-          href: platform/api-alerts.md
+          href: alerts/api-alerts.md
         - name: 排查警报问题
-          href: platform/alerts-troubleshoot.md
+          href: alerts/alerts-troubleshoot.md
         - name: 警报和区域移动
-          href: platform/alerts-resource-move.md
+          href: alerts/alerts-resource-move.md
         - name: IT 服务管理
           items:
             - name: IT 服务管理连接器概述
-              href: platform/itsmc-overview.md
+              href: alerts/itsmc-overview.md
             - name: IT 服务管理连接器合作伙伴设置
               items:
                 - name: 概述
-                  href: platform/itsmc-connections.md
+                  href: alerts/itsmc-connections.md
                 - name: ServiceNow
-                  href: platform/itsmc-connections-servicenow.md
+                  href: alerts/itsmc-connections-servicenow.md
                 - name: System Center Service Manager
                   items:
                     - name: 设置
-                      href: platform/itsmc-connections-scsm.md
+                      href: alerts/itsmc-connections-scsm.md
                     - name: 创建 Service Manager Web 应用
-                      href: platform/itsmc-service-manager-script.md
+                      href: alerts/itsmc-service-manager-script.md
                 - name: Cherwell
-                  href: platform/itsmc-connections-cherwell.md
+                  href: alerts/itsmc-connections-cherwell.md
                 - name: Provance
-                  href: platform/itsmc-connections-provance.md
+                  href: alerts/itsmc-connections-provance.md
             - name: IT 服务管理连接器 Azure 配置
-              href: platform/itsmc-definition.md
+              href: alerts/itsmc-definition.md
             - name: 从 IT 服务管理产品同步的数据
-              href: platform/itsmc-synced-data.md
+              href: alerts/itsmc-synced-data.md
             - name: 排查 ITSM 连接器中的问题
               items:
                 - name: 概述
-                  href: platform/itsmc-troubleshoot-overview.md
+                  href: alerts/itsmc-troubleshoot-overview.md
                 - name: 仪表板调查
-                  href: platform/itsmc-dashboard.md
+                  href: alerts/itsmc-dashboard.md
                 - name: 常见错误
-                  href: platform/itsmc-dashboard-errors.md
+                  href: alerts/itsmc-dashboard-errors.md
                 - name: 同步 ITSM 连接器
-                  href: platform/itsmc-resync-servicenow.md
+                  href: alerts/itsmc-resync-servicenow.md
+                - name: 连接器删除
+                  href: alerts/itsmc-connector-deletion.md
             - name: 与安全导出集成
               items:
                 - name: 概述
-                  href: platform/it-service-management-connector-secure-webhook-connections.md
+                  href: alerts/it-service-management-connector-secure-webhook-connections.md
                 - name: 安全导出 Azure 配置
-                  href: platform/itsm-connector-secure-webhook-connections-azure-configuration.md
+                  href: alerts/itsm-connector-secure-webhook-connections-azure-configuration.md
                 - name: IT 服务管理连接器合作伙伴设置
                   items:
                     - name: BMC
-                      href: platform/itsmc-secure-webhook-connections-bmc.md
+                      href: alerts/itsmc-secure-webhook-connections-bmc.md
                     - name: ServiceNow
-                      href: platform/itsmc-secure-webhook-connections-servicenow.md
+                      href: alerts/itsmc-secure-webhook-connections-servicenow.md
         - name: 迁移经典警报规则
           items:
             - name: 关于经典警报
-              href: platform/alerts-classic.overview.md
+              href: alerts/alerts-classic.overview.md
             - name: 准备迁移
-              href: platform/alerts-prepare-migration.md
+              href: alerts/alerts-prepare-migration.md
             - name: 了解迁移工具
-              href: platform/alerts-understand-migration.md
+              href: alerts/alerts-understand-migration.md
             - name: 使用迁移工具
-              href: platform/alerts-using-migration-tool.md
+              href: alerts/alerts-using-migration-tool.md
             - name: 自动迁移过程
-              href: platform/alerts-automatic-migration.md
+              href: alerts/alerts-automatic-migration.md
             - name: 管理经典指标警报
-              href: platform/alerts-classic-portal.md
+              href: alerts/alerts-classic-portal.md
             - name: 使用资源管理器模板的经典指标警报
-              href: platform/alerts-enable-template.md
+              href: alerts/alerts-enable-template.md
             - name: 调用 Webhook 的经典指标警报
-              href: platform/alerts-webhooks.md
+              href: alerts/alerts-webhooks.md
     - name: Application Insights
       items:
         - name: Application Insights 概述
@@ -805,7 +807,7 @@
             - name: 基于日志的和预聚合的指标
               href: app/pre-aggregated-metrics-log-metrics.md
             - name: 基于日志的指标定义
-              href: platform/app-insights-metrics.md
+              href: essentials/app-insights-metrics.md
             - name: 标准指标
               href: app/standard-metrics.md
         - name: 搜索
@@ -989,135 +991,133 @@
     - name: 用于 VM 的 Azure Monitor
       items:
         - name: 概述
-          href: insights/vminsights-overview.md
+          href: vm/vminsights-overview.md
         - name: 正式版常见问题解答
-          href: insights/vminsights-ga-release-faq.md
+          href: vm/vminsights-ga-release-faq.md
         - name: 常见问题解答
           href: faq.md#azure-monitor-for-vms
         - name: 配置工作区
-          href: insights/vminsights-configure-workspace.md
+          href: vm/vminsights-configure-workspace.md
         - name: 安装代理
           items:
             - name: 概述
-              href: insights/vminsights-enable-overview.md
+              href: vm/vminsights-enable-overview.md
             - name: Azure 门户
-              href: insights/vminsights-enable-portal.md
+              href: vm/vminsights-enable-portal.md
             - name: Azure PowerShell
-              href: insights/vminsights-enable-powershell.md
+              href: vm/vminsights-enable-powershell.md
             - name: ARM 模板
-              href: insights/vminsights-enable-resource-manager.md
+              href: vm/vminsights-enable-resource-manager.md
             - name: Azure Policy
-              href: insights/vminsights-enable-policy.md
+              href: vm/vminsights-enable-policy.md
             - name: 混合 VM
-              href: insights/vminsights-enable-hybrid.md
+              href: vm/vminsights-enable-hybrid.md
             - name: 升级依赖项代理
-              href: insights/vminsights-dependency-agent-maintenance.md
+              href: vm/vminsights-dependency-agent-maintenance.md
         - name: 映射依赖项
-          href: insights/vminsights-maps.md
+          href: vm/vminsights-maps.md
         - name: 监视性能
-          href: insights/vminsights-performance.md
+          href: vm/vminsights-performance.md
         - name: 监视来宾运行状态（预览版）
           items:
             - name: 概述
-              href: insights/vminsights-health-overview.md
+              href: vm/vminsights-health-overview.md
             - name: 启用
-              href: insights/vminsights-health-enable.md
+              href: vm/vminsights-health-enable.md
             - name: 警报
-              href: insights/vminsights-health-alerts.md
+              href: vm/vminsights-health-alerts.md
             - name: 在门户中配置监视器
-              href: insights/vminsights-health-configure.md
+              href: vm/vminsights-health-configure.md
             - name: 大规模配置监视器
-              href: insights/vminsights-health-configure-dcr.md
+              href: vm/vminsights-health-configure-dcr.md
             - name: 疑难解答
-              href: insights/vminsights-health-troubleshoot.md
+              href: vm/vminsights-health-troubleshoot.md
         - name: 使用日志查询分析数据
-          href: insights/vminsights-log-search.md
+          href: vm/vminsights-log-search.md
         - name: 警报
-          href: insights/vminsights-alerts.md
+          href: vm/vminsights-alerts.md
         - name: 监视更改
-          href: insights/vminsights-change-analysis.md
+          href: vm/vminsights-change-analysis.md
         - name: 通过工作簿实现数据可视化
-          href: insights/vminsights-workbooks.md
+          href: vm/vminsights-workbooks.md
         - name: 禁用监视
-          href: insights/vminsights-optout.md
+          href: vm/vminsights-optout.md
     - name: 用于容器的 Azure Monitor
       items:
         - name: 概述
-          href: insights/container-insights-overview.md
-        - name: 常见问题
+          href: containers/container-insights-overview.md
+        - name: 常见问题解答
           href: faq.md#azure-monitor-for-containers
         - name: 启用监视
           items:
             - name: 启用监视概述
-              href: insights/container-insights-onboard.md
+              href: containers/container-insights-onboard.md
             - name: 为新的 AKS 群集启用
-              href: insights/container-insights-enable-new-cluster.md
+              href: containers/container-insights-enable-new-cluster.md
             - name: 为现有的 AKS 群集启用
-              href: insights/container-insights-enable-existing-clusters.md
-            - name: 为使用 Azure Policy 的 AKS 启用
-              href: containers/container-insights-enable-aks-policy.md
+              href: containers/container-insights-enable-existing-clusters.md
             - name: 为已启用 Arc 的群集启用
-              href: insights/container-insights-enable-arc-enabled-clusters.md
+              href: containers/container-insights-enable-arc-enabled-clusters.md
             - name: 针对混合群集启用
-              href: insights/container-insights-hybrid-setup.md
+              href: containers/container-insights-hybrid-setup.md
             - name: 为 Azure Red Hat OpenShift v3 启用
-              href: insights/container-insights-azure-redhat-setup.md
+              href: containers/container-insights-azure-redhat-setup.md
             - name: 为 Azure Red Hat OpenShift v4 启用
-              href: insights/container-insights-azure-redhat4-setup.md
+              href: containers/container-insights-azure-redhat4-setup.md
             - name: 区域映射
-              href: insights/container-insights-region-mapping.md
+              href: containers/container-insights-region-mapping.md
         - name: 监视性能
-          href: insights/container-insights-analyze.md
+          href: containers/container-insights-analyze.md
         - name: 监视 GPU 性能
-          href: insights/container-insights-gpu-monitoring.md
+          href: containers/container-insights-gpu-monitoring.md
         - name: 监视网络配置
           href: ../virtual-network/kubernetes-network-policies.md?toc=/azure/azure-monitor/toc.json#monitor-and-visualize-network-configurations-with-azure-npm
         - name: 监视部署和 HPA
-          href: insights/container-insights-deployment-hpa-metrics.md
+          href: containers/container-insights-deployment-hpa-metrics.md
         - name: 监视永久性卷 (PV)
-          href: insights/container-insights-persistent-volumes.md
+          href: containers/container-insights-persistent-volumes.md
         - name: “报表”选项卡
           href: insights/container-insights-reports.md
         - name: 查看实时数据
           items:
             - name: 实时数据（预览版）概述
-              href: insights/container-insights-livedata-overview.md
+              href: containers/container-insights-livedata-overview.md
             - name: 设置
-              href: insights/container-insights-livedata-setup.md
+              href: containers/container-insights-livedata-setup.md
             - name: 查看群集指标
-              href: insights/container-insights-livedata-metrics.md
+              href: containers/container-insights-livedata-metrics.md
             - name: 查看部署
-              href: insights/container-insights-livedata-deployments.md
+              href: containers/container-insights-livedata-deployments.md
         - name: 使用日志查询分析数据
-          href: insights/container-insights-log-search.md
+          href: containers/container-insights-log-search.md
         - name: 警报
           items:
             - name: 创建日志警报规则
-              href: insights/container-insights-log-alerts.md
+              href: containers/container-insights-log-alerts.md
             - name: 创建指标警报规则
-              href: insights/container-insights-metric-alerts.md
+              href: containers/container-insights-metric-alerts.md
         - name: 代理管理
-          href: insights/container-insights-manage-agent.md
+          href: containers/container-insights-manage-agent.md
         - name: 配置 Prometheus 指标抓取
-          href: insights/container-insights-prometheus-integration.md
+          href: containers/container-insights-prometheus-integration.md
         - name: 配置代理收集设置
-          href: insights/container-insights-agent-config.md
+          href: containers/container-insights-agent-config.md
         - name: 更新以启用指标
-          href: insights/container-insights-update-metrics.md
+          href: containers/container-insights-update-metrics.md
         - name: 管理成本和使用情况
-          href: insights/container-insights-cost.md
+          href: containers/container-insights-cost.md
         - name: 禁用监视
           items:
             - name: 禁止监视 AKS
-              href: insights/container-insights-optout.md
+              href: containers/container-insights-optout.md
             - name: 禁止监视 Red Hat OpenShift v3
-              href: insights/container-insights-optout-openshift-v3.md
+              href: containers/container-insights-optout-openshift-v3.md
             - name: 禁止监视 Red Hat OpenShift v4
-              href: insights/container-insights-optout-openshift-v4.md
+              href: containers/container-insights-optout-openshift-v4.md
             - name: 禁止监视混合群集
-              href: insights/container-insights-optout-hybrid.md
+              href: containers/container-insights-optout-hybrid.md
         - name: 疑难解答
-          href: insights/container-insights-troubleshoot.md
+          href: containers/container-insights-troubleshoot.md
     - name: 洞察力
       items:
         - name: Azure Cache for Redis（预览版）
@@ -1153,7 +1153,7 @@
                 - name: 容量和性能解决方案
                   href: insights/capacity-performance.md
                 - name: Docker 和 Windows 容器监视
-                  href: insights/containers.md
+                  href: containers/containers.md
                 - name: 网络
                   items:
                     - name: 网络分析
@@ -1177,9 +1177,9 @@
                 - name: Office 365
                   href: insights/solution-office-365.md
                 - name: 服务映射解决方案
-                  href: insights/service-map.md
+                  href: vm/service-map.md
                 - name: 服务映射和 Operations Manager
-                  href: insights/service-map-scom.md
+                  href: vm/service-map-scom.md
                 - name: Azure SQL
                   href: insights/azure-sql.md
                 - name: SQL Server
@@ -1191,108 +1191,108 @@
                 - name: Wire Data 解决方案
                   href: insights/wire-data.md
                 - name: 警报管理解决方案
-                  href: platform/alert-management-solution.md
+                  href: insights/alert-management-solution.md
     - name: 工作簿
       items:
         - name: 概述
           displayname: Workbooks
-          href: platform/workbooks-overview.md
+          href: visualize/workbooks-overview.md
         - name: 可视化效果
           items:
             - name: 文本
-              href: platform/workbooks-text-visualizations.md
+              href: visualize/workbooks-text-visualizations.md
             - name: 图表
-              href: platform/workbooks-chart-visualizations.md
+              href: visualize/workbooks-chart-visualizations.md
             - name: 网格
-              href: platform/workbooks-grid-visualizations.md
+              href: visualize/workbooks-grid-visualizations.md
             - name: Tile
-              href: platform/workbooks-tile-visualizations.md
+              href: visualize/workbooks-tile-visualizations.md
             - name: 树
-              href: platform/workbooks-tree-visualizations.md
+              href: visualize/workbooks-tree-visualizations.md
             - name: 图形
-              href: platform/workbooks-graph-visualizations.md
+              href: visualize/workbooks-graph-visualizations.md
             - name: 映射
-              href: platform/workbooks-map-visualizations.md
+              href: visualize/workbooks-map-visualizations.md
             - name: 蜂巢
-              href: platform/workbooks-honey-comb.md
+              href: visualize/workbooks-honey-comb.md
             - name: 复合条
-              href: platform/workbooks-composite-bar.md
+              href: visualize/workbooks-composite-bar.md
         - name: 数据源
-          href: platform/workbooks-data-sources.md
+          href: visualize/workbooks-data-sources.md
         - name: 参数
           items:
             - name: 参数摘要
-              href: platform/workbooks-parameters.md
+              href: visualize/workbooks-parameters.md
             - name: 下拉参数
-              href: platform/workbooks-dropdowns.md
+              href: visualize/workbooks-dropdowns.md
             - name: 交互式参数
-              href: platform/workbooks-interactive.md
+              href: visualize/workbooks-interactive.md
             - name: 时间参数
-              href: platform/workbooks-time.md
+              href: visualize/workbooks-time.md
             - name: 文本参数
-              href: platform/workbooks-text.md
+              href: visualize/workbooks-text.md
             - name: 资源参数
-              href: platform/workbooks-resources.md
+              href: visualize/workbooks-resources.md
         - name: 配置
           items:
             - name: 访问控制
-              href: platform/workbooks-access-control.md
+              href: visualize/workbooks-access-control.md
             - name: 使用 Azure 资源管理器进行部署
-              href: platform/workbooks-automate.md
+              href: visualize/workbooks-automate.md
             - name: 组
-              href: platform/workbooks-groups.md
+              href: visualize/workbooks-groups.md
             - name: 自带存储空间
-              href: platform/workbooks-bring-your-own-storage.md
+              href: visualize/workbooks-bring-your-own-storage.md
             - name: 使用 JSONPath 转换 JSON 数据
-              href: platform/workbooks-jsonpath.md
+              href: visualize/workbooks-jsonpath.md
             - name: 将工作簿移动到其他区域
-              href: platform/workbooks-move-region.md
+              href: visualize/workbooks-move-region.md
             - name: 将工作簿模板移动到其他区域
-              href: platform/workbook-templates-move-region.md
+              href: visualize/workbook-templates-move-region.md
         - name: 链接
           items:
             - name: 链接操作
-              href: platform/workbooks-link-actions.md
+              href: visualize/workbooks-link-actions.md
         - name: 将视图转换为工作簿
           items:
             - name: 转换概述
-              href: platform/view-designer-conversion-overview.md
+              href: visualize/view-designer-conversion-overview.md
             - name: 转换选项
-              href: platform/view-designer-conversion-options.md
+              href: visualize/view-designer-conversion-options.md
             - name: 概览和访问权限
-              href: platform/view-designer-conversion-access.md
+              href: visualize/view-designer-conversion-access.md
             - name: 常见任务
-              href: platform/view-designer-conversion-tasks.md
+              href: visualize/view-designer-conversion-tasks.md
             - name: 磁贴转换
-              href: platform/view-designer-conversion-tiles.md
+              href: visualize/view-designer-conversion-tiles.md
             - name: 示例
-              href: platform/view-designer-conversion-examples.md
+              href: visualize/view-designer-conversion-examples.md
     - name: 其他可视化效果
       items:
         - name: Power BI
           items:
             - name: 导出日志数据
-              href: platform/powerbi.md
+              href: visualize/powerbi.md
             - name: 导出应用程序数据
               href: app/export-power-bi.md
         - name: 仪表板
           items:
             - name: 使用日志数据的仪表板
-              href: learn/tutorial-logs-dashboards.md
+              href: visualize/tutorial-logs-dashboards.md
             - name: 使用应用程序数据的仪表板
-              href: learn/tutorial-app-dashboards.md
+              href: app/tutorial-app-dashboards.md
             - name: 升级 Log Analytics 仪表板
-              href: log-query/dashboard-upgrade.md
+              href: logs/dashboard-upgrade.md
         - name: 将数据发送到 Grafana
-          href: platform/grafana-plugin.md
+          href: visualize/grafana-plugin.md
     - name: System Center 集成
       items:
         - name: 连接 Operations Manager
-          href: platform/om-agents.md
+          href: agents/om-agents.md
         - name: 评估 Operations Manager
           href: insights/scom-assessment.md
         - name: 连接 Configuration Manager
-          href: platform/collect-sccm.md
+          href: logs/collect-sccm.md
 - name: 参考
   items:
     - name: 服务限制
@@ -1304,23 +1304,23 @@
     - name: 支持的指标
       items:
         - name: 平台指标
-          href: platform/metrics-supported.md
+          href: essentials/metrics-supported.md
         - name: 诊断设置中的指标
-          href: platform/metrics-supported-export-diagnostic-settings.md
+          href: essentials/metrics-supported-export-diagnostic-settings.md
         - name: 警报中的指标
-          href: platform/alerts-metric-near-real-time.md
+          href: alerts/alerts-metric-near-real-time.md
     - name: 平台日志
       items:
         - name: 活动日志架构
-          href: platform/activity-log-schema.md
+          href: essentials/activity-log-schema.md
         - name: 资源日志架构
-          href: platform/resource-logs-schema.md
+          href: essentials/resource-logs-schema.md
         - name: 支持的资源日志类别
-          href: platform/resource-logs-categories.md
+          href: essentials/resource-logs-categories.md
     - name: 诊断扩展架构
       items:
         - name: Windows 诊断扩展
-          href: platform/diagnostics-extension-schema-windows.md
+          href: agents/diagnostics-extension-schema-windows.md
     - name: Application Insights
       items:
         - name: 依赖项自动收集
@@ -1390,7 +1390,7 @@
           href: /rest/api/loganalytics
         - name: REST API 演练
           displayname: 'metrics, analyze'
-          href: platform/rest-api-walkthrough.md
+          href: essentials/rest-api-walkthrough.md
     - name: 资源管理器模板
       items:
         - name: Azure Monitor
@@ -1399,28 +1399,28 @@
           href: /azure/templates/microsoft.operationalinsights/allversions
     - name: Azure Policy 内置策略定义
       displayName: 'samples, policies, definitions'
-      href: samples/policy-reference.md
+      href: policy-reference.md
     - name: 功能和 API 停用
       items:
         - name: OperationalInsights API
-          href: platform/operationalinsights-api-retirement.md
+          href: logs/operationalinsights-api-retirement.md
         - name: 经典的自动缩放和指标 API
-          href: ./platform/classic-api-retirement-metrics-autoscale.md
+          href: ./essentials/classic-api-retirement-metrics-autoscale.md
         - name: 经典的警报和监视
-          href: platform/monitoring-classic-retirement.md
+          href: alerts/monitoring-classic-retirement.md
         - name: 切换到当前日志警报 API
-          href: platform/alerts-log-api-switch.md
+          href: alerts/alerts-log-api-switch.md
         - name: Web 应用分析解决方案
           href: insights/azure-web-apps-analytics.md
         - name: Application Insights 连接器
-          href: platform/app-insights-connector.md
+          href: logs/app-insights-connector.md
         - name: OMS 门户弃用
-          href: platform/oms-portal-transition.md
+          href: logs/oms-portal-transition.md
         - name: 磁盘指标弃用
-          href: platform/portal-disk-metrics-deprecation.md
+          href: essentials/portal-disk-metrics-deprecation.md
         - name: 更改为 Blob 存储格式
           displayname: Diagnostic settings
-          href: platform/resource-logs-blob-format.md
+          href: essentials/resource-logs-blob-format.md
         - name: Key Vault 分析（已弃用）
           href: insights/azure-key-vault-deprecated.md
         - name: Unix 指标
@@ -1431,13 +1431,13 @@
         - name: 视图
           items:
             - name: 视图设计器
-              href: platform/view-designer.md
+              href: visualize/view-designer.md
             - name: 磁贴参考
-              href: platform/view-designer-tiles.md
+              href: visualize/view-designer-tiles.md
             - name: 可视化部分参考
-              href: platform/view-designer-parts.md
+              href: visualize/view-designer-parts.md
             - name: 筛选器
-              href: platform/view-designer-filters.md
+              href: visualize/view-designer-filters.md
 - name: 资源
   items:
     - name: Azure 路线图

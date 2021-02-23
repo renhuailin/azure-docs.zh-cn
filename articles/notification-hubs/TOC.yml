@@ -24,9 +24,9 @@
       items:
         - name: Firebase Cloud Messaging
           items:
-            - name: 向所有注册发送推送通知（SDK 版本 1.0.0-preview1）
+            - name: 向所有注册发送推送通知（当前 SDK）
               href: android-sdk.md
-            - name: 向所有注册发送推送通知（SDK 版本 0.6）
+            - name: 向所有注册发送推送通知（旧版 SDK）
               href: notification-hubs-android-push-notification-google-fcm-get-started.md
             - name: 向特定设备发送推送通知
               href: push-notifications-android-specific-devices-firebase-cloud-messaging.md
@@ -50,10 +50,10 @@
           items:
             - name: iOS 教程的先决条件
               href: ios-sdk-get-started.md
-            - name: Objective-C（版本 3.0.0 预览版 1）
-              href: ios-sdk-300.md
-            - name: Objective-C（版本 2.0.4）
-              href: ios-sdk-204.md
+            - name: Objective-C（当前 SDK）
+              href: ios-sdk-current.md
+            - name: Objective-C（旧版 SDK）
+              href: ios-sdk-legacy.md
         - name: 向特定设备发送推送通知
           href: notification-hubs-ios-xplat-segmented-apns-push-notification.md
         - name: 向特定用户发送推送通知

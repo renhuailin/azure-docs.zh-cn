@@ -7,7 +7,7 @@
     - name: 比较消息服务
       href: ../event-grid/compare-messaging-services.md
       maintainContext: true
-    - name: 结合使用服务总线和 Java 消息服务 (JMS) 2.0（预览版）
+    - name: 结合使用服务总线和 Java 消息服务 (JMS) 2.0
       href: how-to-use-java-message-service-20.md
 - name: 快速入门
   items:
@@ -90,6 +90,10 @@
       href: service-bus-samples.md
 - name: 概念
   items:
+    - name: 队列、主题和订阅
+      href: service-bus-queues-topics-subscriptions.md
+    - name: 主题筛选器和操作
+      href: topic-filters.md
     - name: 高级消息传送
       href: service-bus-premium-messaging.md
     - name: Azure 队列与服务总线队列的比较
@@ -158,12 +162,16 @@
       href: service-bus-create-namespace-portal.md
     - name: 开发
       items:
+        - name: 设置订阅筛选器和操作
+          href: service-bus-filter-examples.md
         - name: 消息处理
           items:
             - name: 队列、主题和订阅
               href: service-bus-queues-topics-subscriptions.md
-            - name: Java 消息实体 (JMS) 2.0 实体（预览版）
+            - name: Java 消息服务 (JMS) 2.0 实体
               href: java-message-service-20-entities.md
+            - name: Java 消息服务 (JMS) 开发人员 guide.md
+              href: jms-developer-guide.md
             - name: 消息、有效负载和序列化
               href: service-bus-messages-payloads.md
             - name: 消息传输、锁定和处置
@@ -172,8 +180,6 @@
               href: message-sequencing.md
             - name: 消息过期时间（生存时间）
               href: message-expiration.md
-        - name: 主题筛选器和操作
-          href: topic-filters.md
         - name: 从标准层迁移到高级层命名空间
           href: service-bus-migrate-standard-premium.md
         - name: 分区队列和主题
@@ -328,7 +334,7 @@
       href: ./policy-reference.md
 - name: 资源
   items:
-    - name: 常见问题
+    - name: 常见问题解答
       href: service-bus-faq.md
     - name: 利用 Microsoft Learn 掌握技能
       href: /learn/browse/?products=azure-service-bus

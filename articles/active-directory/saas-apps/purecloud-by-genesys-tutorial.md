@@ -9,24 +9,22 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/03/2019
+ms.date: 02/11/2021
 ms.author: jeedes
-ms.openlocfilehash: d7aa43a94c7b49eef5b3273617ad9038fd1202e4
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 8e31c050218e2069354d4d18f812a50f445e596f
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92505691"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100560675"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-purecloud-by-genesys"></a>教程：Azure Active Directory 单一登录 (SSO) 与 PureCloud by Genesys 集成
 
-本教程介绍如何将 PureCloud by Genesys 与 Azure Active Directory (Azure AD) 集成。 完成此操作后，你可以：
+本教程介绍如何将 PureCloud by Genesys 与 Azure Active Directory (Azure AD) 集成。 将 PureCloud by Genesys 与 Azure AD 集成后，可以：
 
-* 使用 Azure AD 控制哪些用户可以通过 Genesys 访问 PureCloud。
+* 在 Azure AD 中控制谁有权访问 PureCloud by Genesys。
 * 让用户使用其 Azure AD 帐户自动登录到 PureCloud by Genesys。
 * 在一个中心位置（Azure 门户）管理帐户。
-
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -42,45 +40,45 @@ ms.locfileid: "92505691"
 * PureCloud by Genesys 支持 SP 和 IDP 发起的 SSO  。
 
 > [!NOTE]
-> 由于此应用程序的 ID 是一个固定字符串值，因此只能在一个租户中配置一个实例。
+> 此应用程序的标识符是一个固定字符串值，因此只能在一个租户中配置一个实例。
 
-## <a name="adding-purecloud-by-genesys-from-the-gallery"></a>从库中添加 PureCloud by Genesys
+## <a name="add-purecloud-by-genesys-from-the-gallery"></a>从库中添加 PureCloud by Genesys
 
 若要配置 PureCloud by Genesys 与 Azure AD 的集成，必须从库中将 PureCloud by Genesys 添加到托管 SaaS 应用程序列表。 为此，请按照下列步骤进行操作：
 
-1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
+1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 Azure 门户。
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
 1. 转到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
 1. 在“从库中添加”部分的搜索框中，键入“PureCloud by Genesys”   。
 1. 从结果面板中选择“PureCloud by Genesys”，然后添加该应用  。 在该应用添加到租户时等待几秒钟。
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-purecloud-by-genesys"></a>配置和测试 PureCloud by Genesys 的 Azure AD 单一登录
+## <a name="configure-and-test-azure-ad-sso-for-purecloud-by-genesys"></a>配置并测试 PureCloud by Genesy 的 Azure AD SSO
 
 使用名为 B.Simon 的测试用户配置和测试 PureCloud by Genesys 的 Azure AD SSO  。 若要运行 SSO，必须在 Azure AD 用户与 PureCloud by Genesys 相关用户之间建立链接关系。
 
-若要配置和测试 PureCloud by Genesys 的 Azure AD SSO，请完成以下构建基块：
+若要配置并测试 PureCloud by Genesys 的 Azure AD SSO，请执行以下步骤：
 
 1. **[配置 Azure AD SSO](#configure-azure-ad-sso)** ，使用户能够使用此功能。
     1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** ，以使用 B.Simon 测试 Azure AD 单一登录。
     1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** ，使 B.Simon 能够使用 Azure AD 单一登录。
 1. **[配置 PureCloud by Genesys SSO](#configure-purecloud-by-genesys-sso)** 以在应用程序端配置单一登录设置。
-    1. **[创建 PureCloud by Genesys 测试用户](#create-purecloud-by-genesys-test-user)** 以在 PureCloud by Genesys 中创建 B.Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
+    1. **[创建 PureCloud by Genesys 测试用户](#create-purecloud-by-genesys-test-user)** - 在 PureCloud by Genesys 中创建 B.Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
 1. **[测试 SSO](#test-sso)** ，验证配置是否正常工作。
 
 ## <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
 
 若要在 Azure 门户中启用 Azure AD SSO，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)的“PureCloud by Genesys”应用程序集成页上，找到“管理”部分，选择“单一登录”    。
+1. 在 Azure 门户的 PureCloud by Genesys 应用程序集成页面上，找到“管理”部分并选择“单一登录”  。
 1. 在“选择单一登录方法”页上选择“SAML”   。
-1. 在“设置 SAML 单一登录”页上，选择“基本 SAML 配置”对应的笔形图标以编辑设置   。
+1. 在“设置 SAML 单一登录”页上，选择“基本 SAML 配置”对应的铅笔图标以编辑设置   。
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
 1. 若要在 IDP 发起模式下配置应用程序，请在“基本 SAML 配置”部分输入以下字段的值：  
 
-    a. 在“标识符”框中，输入与你所在区域对应的 URL  ：
+    a. 在“标识符”框中，输入与你所在区域对应的 URL：
 
     ```http
     https://login.mypurecloud.com/saml
@@ -90,7 +88,7 @@ ms.locfileid: "92505691"
     https://login.mypurecloud.au/saml
     ```
 
-    b. 在“回复 URL”框中，输入与你所在区域对应的 URL  ：
+    b. 在“回复 URL”框中，输入与你所在区域对应的 URL：
 
     ```http
     https://login.mypurecloud.com/saml
@@ -102,7 +100,7 @@ ms.locfileid: "92505691"
 
 1. 若要将应用程序配置为 SP 发起的模式，请选择“设置其他 URL”并执行以下步骤：  
 
-    在“登录 URL”框中，输入与你所在区域对应的 URL  ：
+    在“登录 URL”框中，输入与你所在区域对应的 URL：
     
     ```http
     https://login.mypurecloud.com
@@ -137,29 +135,23 @@ ms.locfileid: "92505691"
 
 1. 在 Azure 门户的左窗格中，依次选择“Azure Active Directory”、“用户”、“所有用户”。   
 1. 选择屏幕顶部的“新建用户”  。
-1. 在“用户”属性中执行以下步骤  ：
+1. 在“用户”属性中执行以下步骤：
    1. 在“名称”  字段中，输入 `B.Simon`。  
    1. 在“用户名字段”中，按以下格式输入用户名：username@companydomain.extension  。 例如：`B.Simon@contoso.com`。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值   。
-   1. 选择“创建”  。
+   1. 选择“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
-在本部分中，通过授予 B.Simon 访问 PureCloud by Genesys 的权限，设置其使用 Azure 单一登录。
+在本部分中，通过授予 B.Simon 访问 PureCloud by Genesys 的权限，允许其使用 Azure 单一登录。
 
 1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。  
 1. 在应用程序列表中，选择“PureCloud by Genesys”  。
 1. 在应用的概述页中，找到“管理”部分，选择“用户和组”   。
-
-   ![“用户和组”链接](common/users-groups-blade.png)
-
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。   
-
-    ![“添加用户”链接](common/add-assign-user.png)
-
-1. 在“用户和组”对话框中，选择“用户”列表中的“B.Simon”，然后选择屏幕底部的“选择”按钮    。
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后选择屏幕底部的“选择”按钮   。
-1. 在“添加分配”对话框中，选择“分配”按钮。  
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
+1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。
+1. 如果你希望将某角色分配给用户，可以从“选择角色”下拉列表中选择该角色。 如果尚未为此应用设置任何角色，你将看到选择了“默认访问权限”角色。
+1. 在“添加分配”对话框中，单击“分配”按钮。
 
 ## <a name="configure-purecloud-by-genesys-sso"></a>配置 PureCloud by Genesys SSO
 
@@ -167,11 +159,11 @@ ms.locfileid: "92505691"
 
 1. 选择顶部的“管理员”，然后转到“集成”下的“单一登录”    。
 
-    ![屏幕截图显示“PureCloud 管理”窗口，可在其中选择“单一登录”。](./media/purecloud-by-genesys-tutorial/configure01.png)
+    ![屏幕截图显示“PureCloud 管理”窗口，可在其中选择“单一登录”。](./media/purecloud-by-genesys-tutorial/configure-1.png)
 
 1. 切换到“ADFS/Azure AD(Premium)”选项卡，然后执行以下这些步骤  ：
 
-    ![屏幕截图显示了“集成”页面，你可以在其中输入所述值。](./media/purecloud-by-genesys-tutorial/configure02.png)
+    ![屏幕截图显示了“集成”页面，你可以在其中输入所述值。](./media/purecloud-by-genesys-tutorial/configure-2.png)
 
     a. 选择“浏览”，将从 Azure 门户下载的 base-64 编码证书上传到“ADFS 证书”   。
 
@@ -181,7 +173,7 @@ ms.locfileid: "92505691"
 
     d. 对于“信赖方标识符”值，转到 Azure 门户，然后在 PureCloud by Genesys 应用程序集成页中，选择“属性”选项卡并复制“应用程序 ID”值     。 然后将其粘贴到“信赖方标识符”框中  。
 
-    ![屏幕截图显示“属性”窗格，可在其中找到应用程序 ID 值。](./media/purecloud-by-genesys-tutorial/configure06.png)
+    ![屏幕截图显示“属性”窗格，可在其中找到应用程序 ID 值。](./media/purecloud-by-genesys-tutorial/configure-6.png)
 
     e. 选择“保存”。 
 
@@ -195,15 +187,15 @@ ms.locfileid: "92505691"
 
 1. 选择顶部的“管理员”并转到“人员和权限”下的“人员”    。
 
-    ![屏幕截图显示“PureCloud 管理”窗口，可在其中选择“人员”。](./media/purecloud-by-genesys-tutorial/configure03.png)
+    ![屏幕截图显示“PureCloud 管理”窗口，可在其中选择“人员”。](./media/purecloud-by-genesys-tutorial/configure-3.png)
 
 1. 在“人员”页上，选择“添加人员”   。
 
-    ![屏幕截图显示可在其中添加人员的“人员”页。](./media/purecloud-by-genesys-tutorial/configure04.png)
+    ![屏幕截图显示可在其中添加人员的“人员”页。](./media/purecloud-by-genesys-tutorial/configure-4.png)
 
 1. 在“将人员添加到组织”对话框中，执行以下这些步骤  ：
 
-    ![屏幕截图显示了可以在其中输入所述值的页。](./media/purecloud-by-genesys-tutorial/configure05.png)
+    ![屏幕截图显示了可以在其中输入所述值的页。](./media/purecloud-by-genesys-tutorial/configure-5.png)
 
     a. 在“全名”  框中，输入用户的姓名。 例如：B.simon  .
 
@@ -213,16 +205,20 @@ ms.locfileid: "92505691"
 
 ## <a name="test-sso"></a>测试 SSO
 
-在本部分中，使用访问面板测试 Azure AD 单一登录配置。
+在本部分，你将使用以下选项测试 Azure AD 单一登录配置。 
 
-选择“访问面板”中的“PureCloud by Genesys”磁贴时，应当会自动登录到为其设置了 SSO 的 PureCloud by Genesys 帐户  。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+#### <a name="sp-initiated"></a>SP 启动的：
 
-## <a name="additional-resources"></a>其他资源
+* 在 Azure 门户中单击“测试此应用程序”。 这将重定向到 PureCloud by Genesys 登录 URL，你可在其中启动登录流。  
 
-- [有关如何将 SaaS 应用程序与 Azure AD 集成的教程列表](./tutorial-list.md)
+* 直接转到 PureCloud by Genesys 登录 URL，并从那里启动登录流。
 
-- [Azure AD 中的应用程序访问和单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
+#### <a name="idp-initiated"></a>IDP 启动的：
 
-- [Azure AD 中的条件访问是什么？](../conditional-access/overview.md)
+* 在 Azure 门户中单击“测试此应用程序”后，你应会自动登录到为其设置了 SSO 的 PureCloud by Genesys。 
 
-- [通过 Azure AD 试用 PureCloud by Genesys](https://aad.portal.azure.com/)
+还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击 PureCloud by Genesys 磁贴时，如果是在 SP 模式下配置的，会重定向到应用程序登录页面来启动登录流；如果是在 IDP 模式下配置的，则应会自动登录到为其设置了 SSO 的 PureCloud by Genesys。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+
+## <a name="next-steps"></a>后续步骤
+
+配置 PureCloud by Genesys 后，即可强制实施会话控制，实时防止组织的敏感数据发生外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。

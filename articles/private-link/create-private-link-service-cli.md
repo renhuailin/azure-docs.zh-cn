@@ -4,15 +4,15 @@ description: 了解如何使用 Azure CLI 创建 Azure 专用链接服务
 services: private-link
 author: asudbring
 ms.service: private-link
-ms.topic: how-to
+ms.topic: quickstart
 ms.date: 01/22/2021
 ms.author: allensu
-ms.openlocfilehash: 567ed736c52e8b3cbb03edeb19b3c0e2364e4112
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
-ms.translationtype: MT
+ms.openlocfilehash: 27ce0b2646b6c380e86b377d3dba287f7791794e
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98757333"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653663"
 ---
 # <a name="create-a-private-link-service-using-azure-cli"></a>使用 Azure CLI 创建专用链接服务
 
@@ -30,7 +30,7 @@ Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。
 
 使用 [az group create](/cli/azure/group#az_group_create) 创建资源组：
 
-* 命名 **CreatePrivLinkService**。 
+* 名为“CreatePrivLinkService-rg”。 
 * 在位置“eastus”中。
 
 ```azurecli-interactive
@@ -52,10 +52,10 @@ Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。
 
 * 命名为“myVNet”。
 * 地址前缀为 10.1.0.0/16。
-* 名为 **mySubnet** 的子网。
+* 名为“mySubnet”的子网。
 * 子网前缀为 10.1.0.0/24。
-* 在 **CreatePrivLinkService** 资源组中。
-* **Eastus2** 的位置。
+* 在“CreatePrivLinkService-rg”资源组中。
+* eastus2 的位置。
 * 在子网上禁用专用链接服务的网络策略。
 
 ```azurecli-interactive
@@ -96,7 +96,7 @@ az network vnet subnet update \
 * 前端池命名为 myFrontEnd。
 * 后端池命名为 myBackEndPool。
 * 与虚拟网络 myVNet 相关联。
-* 与后端子网 **mySubnet** 关联。
+* 与后端子网 mySubnet 相关联。
 
 ```azurecli-interactive
   az network lb create \
@@ -168,12 +168,12 @@ az network vnet subnet update \
 
 在本部分中，创建使用上一步中创建的 Azure 负载均衡器的专用链接服务。
 
-使用 [az network private link service create](/cli/azure/network/private-link-service#az-network-private-link-service-create)通过标准负载均衡器前端 IP 配置创建专用链接服务：
+使用 [az network private-link-service create](/cli/azure/network/private-link-service#az-network-private-link-service-create) 通过标准负载均衡器前端 IP 配置创建专用链接服务：
 
-* 命名 **myPrivateLinkService**。
+* 名为 myPrivateLinkService。
 * 在虚拟网络“myVNet”中。
-* 与标准负载均衡器 **myLoadBalancer** 和前端配置 **myFrontEnd** 相关联。
-* 在 **eastus2** 位置。
+* 与标准负载均衡器 myLoadBalancer 和前端配置 myFrontEnd 相关联 。
+* 在 eastus2 位置。
  
 ```azurecli-interactive
 az network private-link-service create \
@@ -197,12 +197,12 @@ az network private-link-service create \
 
 使用 [az network vnet create](/cli/azure/network/vnet#az-network-vnet-create) 创建虚拟网络：
 
-* 命名 **myVNetPE**。
-* **11.1.0.0/16** 的地址前缀。
-* 名为 **mySubnetPE** 的子网。
-* **11.1.0.0/24** 的子网前缀。
-* 在 **CreatePrivLinkService** 资源组中。
-* **Eastus2** 的位置。
+* 名为“myVNetPE”。
+* 地址前缀为 11.1.0.0/16。
+* 名为“mySubnetPE”的子网。
+* 子网前缀为 11.1.0.0/24。
+* 在“CreatePrivLinkService-rg”资源组中。
+* eastus2 的位置。
 
 ```azurecli-interactive
   az network vnet create \
@@ -226,15 +226,15 @@ az network vnet subnet update \
 
 ### <a name="create-endpoint-and-connection"></a>创建终结点和连接
 
-* 使用 [az network private link service show](/cli/azure/network/private-link-service#az_network_private_link_service_show) 获取专用链接服务的资源 ID。 此命令将资源 ID 放在变量中供以后使用。
+* 使用 [az network private-link-service show](/cli/azure/network/private-link-service#az_network_private_link_service_show) 获取专用链接服务的资源 ID。 此命令将资源 ID 置于变量中以供以后使用。
 
-* 使用 [az network private endpoint create](/cli/azure/network/private-endpoint#az_network_private_endpoint_create) 在之前创建的虚拟网络中创建专用终结点。
+* 使用 [az network private-endpoint create](/cli/azure/network/private-endpoint#az_network_private_endpoint_create) 在之前创建的虚拟网络中创建专用终结点。
 
-* 命名 **MyPrivateEndpoint**。
-* 在 **CreatePrivLinkService** 资源组中。
-* 连接名称 **myPEconnectiontoPLS**。
-* **Eastus2** 的位置。
-* 在 "虚拟网络 **myVNetPE** " 和 "子网" **mySubnetPE** 中。
+* 名为“MyPrivateEndpoint”。
+* 在“CreatePrivLinkService-rg”资源组中。
+* 连接名称“myPEconnectiontoPLS”。
+* eastus2 的位置。
+* 在虚拟网络“myVNetPE”和子网“mySubnetPE”中 。
 
 ```azurecli-interactive
   export resourceid=$(az network private-link-service show \
@@ -256,7 +256,7 @@ az network vnet subnet update \
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果不再需要资源组、专用链接服务、负载均衡器和所有相关资源，请使用 [az group delete](/cli/azure/group#az-group-delete) 命令删除资源组。
+如果不再需要资源组、专用链接服务、负载均衡器和所有相关的资源，使用 [az group delete](/cli/azure/group#az-group-delete) 命令将它们删除。
 
 ```azurecli-interactive
   az group delete \

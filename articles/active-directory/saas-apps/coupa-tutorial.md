@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/14/2021
+ms.date: 02/05/2021
 ms.author: jeedes
-ms.openlocfilehash: c6932292b86924cfab6d17c315cbd6946bd63f61
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 0be2e2f6ce22525cb4c3a7e0656ce9ce75fb7f77
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98621323"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100363424"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-coupa"></a>教程：Azure Active Directory 与 Coupa 的集成
 
@@ -28,10 +28,10 @@ ms.locfileid: "98621323"
 
 ## <a name="prerequisites"></a>必备条件
 
-若要配置 Azure AD 与 Coupa 的集成，需要以下项：
+若要开始操作，需备齐以下项目：
 
-* 一个 Azure AD 订阅。 如果没有 Azure AD 环境，可以在[此处](https://azure.microsoft.com/pricing/free-trial/)获取一个月的试用版。
-* 启用了单一登录的 Coupa 订阅。
+* 一个 Azure AD 订阅。 如果没有订阅，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。
+* 已启用 Coupa 单一登录 (SSO) 的订阅。
 
 ## <a name="scenario-description"></a>方案描述
 
@@ -63,7 +63,7 @@ ms.locfileid: "98621323"
     1. **[创建 Coupa 测试用户](#create-coupa-test-user)** - 在 Coupa 中创建 B.Simon 的对应用户，并将其关联到该用户的 Azure AD 表示形式。
 1. **[测试 SSO](#test-sso)** - 验证配置是否正常工作。
 
-### <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
+## <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
 
 按照下列步骤在 Azure 门户中启用 Azure AD SSO。
 
@@ -128,17 +128,17 @@ ms.locfileid: "98621323"
 1. 如果你希望将某角色分配给用户，可以从“选择角色”下拉列表中选择该角色。 如果尚未为此应用设置任何角色，你将看到选择了“默认访问权限”角色。
 1. 在“添加分配”对话框中，单击“分配”按钮。
 
-### <a name="configure-coupa-sso"></a>配置 Coupa SSO
+## <a name="configure-coupa-sso"></a>配置 Coupa SSO
 
 1. 以管理员身份登录到 Coupa 公司站点。
 
 2. 转到“设置”\>“安全控制”。
 
-    ![安全控制](./media/coupa-tutorial/ic791900.png "安全控制")
+    ![安全控制](./media/coupa-tutorial/setup.png "安全控制")
 
 3. 在 **“使用 Coupa 凭据登录”** 部分中，执行以下步骤：
 
-    ![Coupa SP 元数据](./media/coupa-tutorial/ic791901.png "Coupa SP 元数据")
+    ![Coupa SP 元数据](./media/coupa-tutorial/login.png "Coupa SP 元数据")
 
     a. 选择 **“使用 SAML 登录”**。
 
@@ -158,15 +158,15 @@ ms.locfileid: "98621323"
 
 2. 在顶部菜单中，单击 **“设置”**，然后单击 **“用户”**。
 
-    ![用户](./media/coupa-tutorial/ic791908.png "用户")
+    ![用户](./media/coupa-tutorial/user.png "用户")
 
 3. 单击“创建”。
 
-    ![创建用户](./media/coupa-tutorial/ic791909.png "创建用户")
+    ![创建用户](./media/coupa-tutorial/create.png "创建用户")
 
 4. 在 **“创建用户”** 部分中，执行以下步骤：
 
-    ![用户详细信息](./media/coupa-tutorial/ic791910.png "用户详细信息")
+    ![用户详细信息](./media/coupa-tutorial/details.png "用户详细信息")
 
     a. 在相关文本框中输入要设置的有效 Azure Active Directory 帐户的 **“登录”**、**“名字”**、**“姓氏”**、**“单一登录 ID”** 和 **“电子邮件”** 属性。
 
@@ -179,7 +179,7 @@ ms.locfileid: "98621323"
 >[!NOTE]
 >可以使用 Coupa 提供的任何其他 Coupa 用户帐户创建工具或 API 来预配 Azure AD 用户帐户。
 
-### <a name="test-sso"></a>测试 SSO
+## <a name="test-sso"></a>测试 SSO
 
 在本部分，你将使用以下选项测试 Azure AD 单一登录配置。 
 
