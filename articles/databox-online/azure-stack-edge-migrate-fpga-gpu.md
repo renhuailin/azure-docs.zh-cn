@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 02/09/2021
+ms.date: 02/10/2021
 ms.author: alkohli
-ms.openlocfilehash: ce063e27620c3b0ccec9336e7a45ebb2ee1ad10d
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: 1db6574f8ca22b6fe60899f00700ee19d61eab3b
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100100877"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100382814"
 ---
 # <a name="migrate-workloads-from-an-azure-stack-edge-pro-fpga-to-an-azure-stack-edge-pro-gpu"></a>将工作负荷从 Azure Stack Edge Pro FPGA 迁移到 Azure Stack Edge Pro GPU
 
@@ -190,8 +190,8 @@ Edge 本地共享中的数据保留在设备上。 通过 Azure 门户在源设�
 
 准备好 IoT Edge 模块后，你将需要在目标设备上部署 IoT Edge 工作负荷。 如果在部署 IoT Edge 模块时遇到任何错误，请参阅：
 
-- [Azure IoT Edge 的常见问题和解决方法](../iot-edge/troubleshoot-common-errors.md)，和 
-- [IoT Edge 运行时错误][通过 Windows PowerShell 管理 Azure Stack Edge Pro GPU 设备](azure-stack-edge-gpu-troubleshoot.md#troubleshoot-iot-edge-errors)。
+- [Azure IoT Edge 的常见问题和解决方法](../iot-edge/troubleshoot-common-errors.md)。 
+- [IoT Edge 运行时错误](azure-stack-edge-gpu-troubleshoot.md#troubleshoot-iot-edge-errors)。
 
 ## <a name="verify-data"></a>验证数据
 

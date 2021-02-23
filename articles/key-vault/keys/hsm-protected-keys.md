@@ -10,12 +10,12 @@ ms.subservice: keys
 ms.topic: tutorial
 ms.date: 02/01/2021
 ms.author: ambapat
-ms.openlocfilehash: 17ef0cb7efcd2a76b46a6bb0dbc82268895dae00
-ms.sourcegitcommit: 983eb1131d59664c594dcb2829eb6d49c4af1560
+ms.openlocfilehash: 86807899c06cb333238344b7168b5675e8f2e9a3
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99222194"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100366579"
 ---
 # <a name="import-hsm-protected-keys-to-key-vault"></a>将 HSM 保护的密钥导入 Key Vault
 
@@ -38,9 +38,10 @@ ms.locfileid: "99222194"
 |Fortanix|制造商，<br/>HSM 即服务|<ul><li>自防御密钥管理服务 (SDKMS)</li><li>Equinix SmartKey</li></ul>|[使用新的 BYOK 方法](hsm-protected-keys-byok.md)|
 |Marvell|制造商|所有具有以下固件版本的 LiquidSecurity HSM<ul><li>固件版本 2.0.4 或更高版本</li><li>固件版本 3.2 或更高版本</li></ul>|[使用新的 BYOK 方法](hsm-protected-keys-byok.md)|
 |Cryptomathic|ISV（企业密钥管理系统）|多个 HSM 品牌和型号，包括<ul><li>nCipher</li><li>Thales</li><li>Utimaco</li></ul>有关详细信息，请参阅 [Cryptomathic 站点](https://www.cryptomathic.com/azurebyok)|[使用新的 BYOK 方法](hsm-protected-keys-byok.md)|
-|Securosys SA|制造商，HSM 即服务|Primus HSM 系列，Securosys Clouds HSM|[使用新的 BYOK 方法](hsm-protected-keys-byok.md)|
+|Securosys SA|制造商，<br/>HSM 即服务|Primus HSM 系列，Securosys Clouds HSM|[使用新的 BYOK 方法](hsm-protected-keys-byok.md)|
 |StorMagic|ISV（企业密钥管理系统）|多个 HSM 品牌和型号，包括<ul><li>Utimaco</li><li>Thales</li><li>nCipher</li></ul>请参阅 [StorMagic 站点](https://stormagic.com/doc/svkms/Content/Integrations/Azure_KeyVault_BYOK.htm)以了解详细信息|[使用新的 BYOK 方法](hsm-protected-keys-byok.md)|
-|IBM|制造商|IBM 476x, CryptoExpress|使用新的 BYOK 方法](hsm-protected-keys-byok.md)|
+|IBM|制造商|IBM 476x, CryptoExpress|[使用新的 BYOK 方法](hsm-protected-keys-byok.md)|
+|Utimaco|制造商，<br/>HSM 即服务|u.trust Anchor, CryptoServer|[使用新的 BYOK 方法](hsm-protected-keys-byok.md)|
 |||||
 
 ## <a name="next-steps"></a>后续步骤

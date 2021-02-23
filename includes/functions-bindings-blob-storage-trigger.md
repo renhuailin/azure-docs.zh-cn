@@ -9,13 +9,15 @@ ms.topic: include
 ms.date: 08/02/2019
 ms.author: cshoe
 ms.custom: include file
-ms.openlocfilehash: 4a879c4041fe317955a07eda9dd8a3ef9f542275
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 16ab569428510b3b423d6727fd31ee450a8d197e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95998818"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100381592"
 ---
+### <a name="default"></a>默认
+
 可以将以下参数类型用于触发 blob：
 
 * `Stream`
@@ -32,3 +34,17 @@ ms.locfileid: "95998818"
 如果尝试绑定到某个存储 SDK 类型并收到错误消息，请确保已引用[正确的存储 SDK 版本](../articles/azure-functions/functions-bindings-storage-blob.md#azure-storage-sdk-version-in-functions-1x)。
 
 由于整个 Blob 内容都会加载到内存中，因此，只有当 Blob 较小时才建议绑定到 `string` 或 `Byte[]`。 平时，最好使用 `Stream` 或 `CloudBlockBlob` 类型。 有关详细信息，请参阅本文后面的[并发和内存使用情况](../articles/azure-functions/functions-bindings-storage-blob-trigger.md#concurrency-and-memory-usage)。
+
+### <a name="additional-types"></a>其他类型
+
+应用如果使用 [5.0.0 版或更高版本的存储扩展](../articles/azure-functions/functions-bindings-storage-blob.md#storage-extension-5x-and-higher)，还可以使用[用于 .NET 的 Azure SDK](/dotnet/api/overview/azure/storage.blobs-readme) 中的类型。 此版本为了支持以下类型，删除了对旧的 `ICloudBlob`、`CloudBlockBlob`、`CloudPageBlob` 和 `CloudAppendBlob` 类型的支持：
+
+- [BlobClient](/dotnet/api/azure.storage.blobs.blobclient)<sup>1</sup>
+- [BlockBlobClient](/dotnet/api/azure.storage.blobs.specialized.blockblobclient)<sup>1</sup>
+- [PageBlobClient](/dotnet/api/azure.storage.blobs.specialized.pageblobclient)<sup>1</sup>
+- [AppendBlobClient](/dotnet/api/azure.storage.blobs.specialized.appendblobclient)<sup>1</sup>
+- [BlobBaseClient](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient)<sup>1</sup>
+
+<sup>1</sup> function.json 中需有 "inout" 绑定 `direction` 或 C# 类库中需有 `FileAccess.ReadWrite`。
+
+有关使用这些类型的示例，请参阅[扩展的 GitHub 存储库](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Microsoft.Azure.WebJobs.Extensions.Storage.Blobs#examples)。

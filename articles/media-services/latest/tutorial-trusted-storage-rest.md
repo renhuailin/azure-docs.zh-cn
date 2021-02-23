@@ -6,14 +6,14 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: tutorial
 ms.date: 2/8/2021
-ms.openlocfilehash: b20da64c135f7e54a7f6bc74beea073140a1e0a9
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: 18cb4e3ada94822c2f4cb1ca7675310a37e44e84
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100100879"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590658"
 ---
-# <a name="tutorial-media-services-trusted-storage"></a>Tutorial:受媒体服务信任的存储
+# <a name="tutorial-media-services-trusted-storage"></a>教程：受媒体服务信任的存储
 
 在本教程中，学习：
 
@@ -23,6 +23,9 @@ ms.locfileid: "100100879"
 > - 如何在使用网络访问控制（如防火墙或 VPN）时授予 Azure 服务访问存储帐户的权限
 
 使用 2020-05-01 API，可以通过将托管标识与媒体服务帐户关联来启用受信任的存储。
+
+>[!NOTE]
+>受信任的存储仅在 API 中可用，并且当前在 Azure 门户中未启用。
 
 媒体服务可以使用系统身份验证自动访问你的存储帐户。 媒体服务会验证媒体服务帐户和存储帐户是否在同一订阅中。 它还会验证添加关联的用户是否可以使用 Azure 资源管理器 RBAC 访问存储帐户。
 

@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/15/2020
 ms.author: v-demjoh
-ms.openlocfilehash: 1eae40437e06bfb150e202db1f3bb4125baeaa97
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: b985399eb89ae7bbf73d280775157207498f0080
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100515177"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100645505"
 ---
 ## <a name="download-and-install"></a>下载并安装
 
@@ -19,11 +19,12 @@ ms.locfileid: "100515177"
 按照以下步骤在 Windows 上安装语音 CLI：
 
 1. 在 Windows 上，需要安装适用于平台的 [Microsoft Visual C++ Redistributable for Visual Studio 2019](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)。 首次安装时，可能需要重启。
-1. 安装 [.NET Core 3.1](/dotnet/core/install/linux)。
+1. 安装 [.NET Core 3.1 SDK](/dotnet/core/install/linux)。
 2. 通过输入以下命令，使用 NuGet 安装语音 CLI：
 
-    `dotnet tool install --global Microsoft.CognitiveServices.Speech.CLI --version 1.15.0`
-
+   ```console
+   dotnet tool install --global Microsoft.CognitiveServices.Speech.CLI --version 1.15.0
+   ```
 若要查看语音 CLI 的帮助，请键入 `spx`。
 
 > [!NOTE]

@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/04/2021
+ms.date: 02/10/2021
 ms.author: memildin
-ms.openlocfilehash: 20a464011e5a8d37a6215b222323ca989e02ac04
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: fb8dc22c923b7b53a6263baa43046862af4d2f04
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99550894"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100370252"
 ---
 # <a name="tutorial-improve-your-regulatory-compliance"></a>教程：提高合规性
 
@@ -26,7 +26,7 @@ Azure 安全中心使用合规性仪表板，可以根据合规性要求简化�
 
 安全中心持续评估混合云环境，以根据适用于你的订阅的标准中的控制措施和最佳做法来分析风险因素。 仪表板反映了符合这些标准的状态。 
 
-在 Azure 订阅上启用安全中心后，系统会自动为其分配 [Azure 安全基准](../security/benchmarks/introduction.md)。 这一公认的基准建立在 [Internet 安全中心 (CIS)](https://www.cisecurity.org/benchmark/azure/) 和[国家标准与技术研究院 (NIST)](https://www.nist.gov/) 的控制基础上，重点关注以云为中心的安全性。
+在 Azure 订阅上启用安全中心后，系统会自动为该订阅分配 [Azure 安全基准](../security/benchmarks/introduction.md)。 这一公认的基准建立在 [Internet 安全中心 (CIS)](https://www.cisecurity.org/benchmark/azure/) 和[国家标准与技术研究院 (NIST)](https://www.nist.gov/) 的控制基础上，重点关注以云为中心的安全性。
 
 在法规合规性仪表板中，可以查看在所选标准和法规下，环境中所有评估的状态。 针对建议进行操作并减少环境中的风险因素以后，合规性情况得到了改善。
 
@@ -45,7 +45,7 @@ Azure 安全中心使用合规性仪表板，可以根据合规性要求简化�
 若要逐步执行本教程中介绍的功能：
 
 - 必须启用 [Azure Defender](azure-defender.md)。 可以免费试用 Azure Defender 30 天。
-- 你需要使用对策略合规性数据具有读取器访问权限的帐户登录（安全读取器不足）。 订阅的全局读取器角色将起作用。 至少需要分配“资源策略参与者”和“安全管理员”角色 。
+- 你必须使用对策略合规性数据具有读取者访问权限的帐户登录（安全读取者的权限不够）。 订阅的全局读取器角色将起作用。 至少需要分配“资源策略参与者”和“安全管理员”角色 。
 
 ##  <a name="assess-your-regulatory-compliance"></a>评估合规性
 
@@ -59,13 +59,13 @@ Azure 安全中心使用合规性仪表板，可以根据合规性要求简化�
 
     :::image type="content" source="./media/security-center-compliance-dashboard/compliance-dashboard.png" alt-text="法规符合性仪表板" lightbox="./media/security-center-compliance-dashboard/compliance-dashboard.png":::
 
-1. 针对与自己相关的符合性标准，选择一个选项卡 (1)。 你可看到该标准应用于哪些订阅 (2)，以及该标准的所有控件列表 (3)。 对于适用的控件，可以查看与该控件相关联的已通过评估和失败的评估的详细信息 (4)，以及受影响资源的数量 (5)。 某些控件为灰显状态。这些控件没有任何与之关联的安全中心评估。 你需要自行检查这些控件的要求，并在自己的环境中对其进行评估。 其中一部分可能与进程相关，与技术无关。
+1. 针对与自己相关的符合性标准，选择一个选项卡 (1)。 你可看到该标准应用于哪些订阅 (2)，以及该标准的所有控件列表 (3)。 对于适用控件，你可查看与控件关联的及格评估和未及格评估的详细信息 (4)，以及受影响的资源数量 (5)。 某些控件为灰显状态。这些控件没有任何与之关联的安全中心评估。 查看其要求并在环境中对其进行评估。 其中一部分可能与进程相关，与技术无关。
 
     :::image type="content" source="./media/security-center-compliance-dashboard/compliance-drilldown.png" alt-text="浏览特定标准的符合性详细信息":::
 
 1. 要生成总结特定标准的当前合规性状态的 PDF 报告，请选择“下载报告”。
 
-    该报告根据安全中心评估数据为所选标准提供符合性状态的高级别总结，并根据该特定标准的控制进行整理。 该报告可与相关利益干系人共享，并可能为内部和外部审计员提供证据。
+    该报告根据安全中心评估数据，就所选标准提供你的合规性状态的大致汇总。 该报告按照该特定标准的控件进行整理。 该报告可与相关利益干系人共享，并可能为内部和外部审计员提供证据。
 
     :::image type="content" source="./media/security-center-compliance-dashboard/download-report.png" alt-text="下载符合性报告":::
 
@@ -73,7 +73,7 @@ Azure 安全中心使用合规性仪表板，可以根据合规性要求简化�
 
 使用法规合规性仪表板中的信息，可以直接在仪表板中采用相关建议，改进合规性情况。
 
-1.  单击在仪表板中显示的失败评估即可查看该建议的详细信息。 每项建议都包含一组修正步骤，遵循这些步骤即可解决问题。
+1.  选择仪表板中出现的未及格评估可查看该建议的详细信息。 每项建议都包含一组修正步骤，可用于解决问题。
 
 1.  选择特定的资源，查看更多详细信息，然后解决与该资源的建议相关的问题。 <br>例如，在“Azure CIS 1.1.0 标准”中，选择“应对虚拟机应用磁盘加密”建议。
 
@@ -85,7 +85,7 @@ Azure 安全中心使用合规性仪表板，可以根据合规性要求简化�
 
     有关如何应用建议的详细信息，请参阅[在 Azure 安全中心实施安全建议](security-center-recommendations.md)。
 
-1.  在采取行动解决与建议相关的问题以后，就会在合规性仪表板报告中看到相关影响，因为你的合规性分数提高了。
+1.  在采取行动实施建议后，你将在合规性仪表板报表中看到相关影响，原因是你的合规性分数会增加。
 
     > [!NOTE]
     > 评估大约每 12 小时运行一次，因此只有在下一次相关评估运行以后才能看到对符合性数据造成的影响。
@@ -116,21 +116,99 @@ Azure 安全中心使用合规性仪表板，可以根据合规性要求简化�
 
 安全中心的工作流自动化功能可在任一法规合规性评估状态变更时触发逻辑应用。
 
-例如，在合规性评估失败时，你可能希望安全中心向特定用户发送电子邮件。 首先需要创建逻辑应用（使用 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)），然后在新工作流自动化中设置触发器，如[自动响应安全中心触发器](workflow-automation.md)中所述。
+例如，在合规性评估失败时，你可能希望安全中心向特定用户发送电子邮件。 首先需要创建逻辑应用（使用 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)），然后在新的工作流自动化中设置触发器，如[自动响应安全中心触发器](workflow-automation.md)中所述。
 
 :::image type="content" source="media/release-notes/regulatory-compliance-triggers-workflow-automation.png" alt-text="使用对监管合规性评估的更改来触发工作流自动化" lightbox="media/release-notes/regulatory-compliance-triggers-workflow-automation.png":::
+
+
+
+
+## <a name="faq---regulatory-compliance-dashboard"></a>常见问题解答 - 法规合规性仪表板
+
+- [合规性仪表板支持哪些标准？](#what-standards-are-supported-in-the-compliance-dashboard)
+- [一些控件为何灰显？](#why-do-some-controls-appear-grayed-out)
+- [可如何从仪表板中删除 PCI-DSS、ISO 27001 或 SOC2 TSP 等内置标准？](#how-can-i-remove-a-built-in-standard-like-pci-dss-iso-27001-or-soc2-tsp-from-the-dashboard)
+- [我根据建议执行了推荐的更改，但它没有在仪表板中反映出来](#i-made-the-suggested-changed-based-on-the-recommendation-yet-it-isnt-being-reflected-in-the-dashboard)
+- [我需要具备哪些权限才能访问仪表板？](#what-permissions-do-i-need-to-access-the-compliance-dashboard)
+- [没有为我加载法规合规性仪表板](#the-regulatory-compliance-dashboard-isnt-loading-for-me)
+- [可如何在仪表板中按照每种标准查看有关及格和不及格控件的报表？](#how-can-i-view-a-report-of-passing-and-failing-controls-per-standard-in-my-dashboard)
+- [可如何以非 PDF 的格式下载带有合规性数据的报表？](#how-can-i-download-a-report-with-compliance-data-in-a-format-other-than-pdf)
+- [可如何在法规合规性仪表板中为某些策略创建例外？](#how-can-i-create-exceptions-for-some-of-the-policies-in-the-regulatory-compliance-dashboard)
+- [需要具有哪些 Azure Defender 计划或许可证才能使用法规合规性仪表板？](#what-azure-defender-plans-or-licenses-do-i-need-to-use-the-regulatory-compliance-dashboard)
+
+### <a name="what-standards-are-supported-in-the-compliance-dashboard"></a>合规性仪表板支持哪些标准？
+默认情况下，法规合规性仪表板显示的是 Azure 安全基准。 Azure 安全基准是 Microsoft 制定的 Azure 专属准则，适合基于常见合规框架的安全性与合规性最佳做法。 有关详细信息，请查看 [Azure 安全基准简介](../security/benchmarks/introduction.md)。
+
+若要按任何其他标准跟踪合规性，需要将这些标准显式添加到仪表板中。
+ 
+可添加的标准包括 Azure CIS 1.1.0（新）、NIST SP 800-53 R4、NIST SP 800-171 R2、SWIFT CSP CSCF-v2020、UK Official 和 UK NHS、HIPAA HITRUST、加拿大联邦 PBMM、ISO 27001、SOC2-TSP、PCI-DSS 3.2.1。  
+ 
+更多标准将被添加仪表板中，可在[在法规合规性仪表板中自定义标准集](update-regulatory-compliance-packages.md)中查看详细信息。
+
+### <a name="why-do-some-controls-appear-grayed-out"></a>一些控件为何灰显？
+对于仪表板中的每一项合规性标准，都有一个列表列出该标准的控件。 对于适用控件，可查看及格评估和未及格评估的详细信息。
+
+某些控件为灰显状态。这些控件没有任何与之关联的安全中心评估。 某些控件与过程或进程相关，因此无法通过安全中心进行验证。 有些控件尚未实现任何自动化策略或评估，但未来将实现这些内容。 而有些控件由平台负责，具体可查看[云中的共同责任](../security/fundamentals/shared-responsibility.md)。 
+
+### <a name="how-can-i-remove-a-built-in-standard-like-pci-dss-iso-27001-or-soc2-tsp-from-the-dashboard"></a>可如何从仪表板中删除 PCI-DSS、ISO 27001 或 SOC2 TSP 等内置标准？ 
+若要自定义法规合规性仪表板，且仅关注适用于你的标准，你可删除所显示的与你的组织无关的所有法规标准。 若要删除标准，请按照[从仪表板中删除标准](update-regulatory-compliance-packages.md#remove-a-standard-from-your-dashboard)中的说明进行操作。
+
+### <a name="i-made-the-suggested-changed-based-on-the-recommendation-yet-it-isnt-being-reflected-in-the-dashboard"></a>我根据建议执行了推荐的更改，但它没有在仪表板中反映出来
+在采取行动实施建议后，要等 12 个小时才会看到合规性数据的变化。 评估大约每 12 小时运行一次，因此只有在评估运行后才会看到对合规性数据造成的影响。
+ 
+### <a name="what-permissions-do-i-need-to-access-the-compliance-dashboard"></a>我需要具备哪些权限才能访问仪表板？
+若要查看合规性数据，你至少需要还对策略合规性数据具有读取者访问权限，也就是说只有安全读取者权限是不够的。 如果你是订阅的全局读取者，那么这也足够了。
+
+要访问仪表板和管理标准，至少必须具备“资源策略参与者”和“安全管理员”角色 。
+
+
+### <a name="the-regulatory-compliance-dashboard-isnt-loading-for-me"></a>没有为我加载法规合规性仪表板
+若要使用法规合规性仪表板，Azure 安全中心必须已在订阅级别启用 Azure Defender。 如果仪表板没有正确加载，请尝试以下步骤：
+
+1. 清除浏览器缓存。
+1. 尝试使用其他浏览器。
+1. 尝试从其他网络位置打开仪表板。
+
+
+### <a name="how-can-i-view-a-report-of-passing-and-failing-controls-per-standard-in-my-dashboard"></a>可如何在仪表板中按照每种标准查看有关及格和不及格控件的报表？
+在主仪表板上，可查看仪表板中有关 (1) 和“排名前 4”的最低合规性标准的及格和不及格控件的报表。 若要查看各项及格/不及格控件状态，请选择 (2)“显示所有 x”（其中，x 是你正在跟踪的标准数目）。 上下文平面会显示你跟踪的各项标准的合规性状态。
+
+:::image type="content" source="media/security-center-compliance-dashboard/summaries-of-compliance-standards.png" alt-text="法规合规性仪表板的摘要部分":::
+
+
+### <a name="how-can-i-download-a-report-with-compliance-data-in-a-format-other-than-pdf"></a>可如何以非 PDF 的格式下载带有合规性数据的报表？
+选择“下载报表”时，可选择标准和格式（PDF 或 CSV）。 生成的报表将反映你在门户筛选器中选择的当前订阅集。
+
+- PDF 报表会显示你选择的标准的汇总状态
+- CSV 报表会提供每项资源的详细结果，原因是它与每项控件的关联策略相关
+
+目前不支持下载自定义策略的报表，仅支持下载所提供的法规标准的相关报表。
+
+
+### <a name="how-can-i-create-exceptions-for-some-of-the-policies-in-the-regulatory-compliance-dashboard"></a>可如何在法规合规性仪表板中为某些策略创建例外？
+对于安全中心内置的且包含在安全功能分数中的策略，可直接在门户中为一项或多项策略创建例外，如[从安全功能分数中排除资源和建议](exempt-resource.md)中所述。
+
+对于其他策略，可按照 [Azure Policy 例外结构](../governance/policy/concepts/exemption-structure.md)在策略本身直接创建例外。
+
+
+### <a name="what-azure-defender-plans-or-licenses-do-i-need-to-use-the-regulatory-compliance-dashboard"></a>需要具有哪些 Azure Defender 计划或许可证才能使用法规合规性仪表板？
+如果你在你的任何 Azure 资源类型上启用了任何 Azure Defender 包，那么你有权在安全中心访问法规合规性仪表板及其所有数据。
+
+
+
+
 
 ## <a name="next-steps"></a>后续步骤
 
 本教程介绍了如何使用安全中心的法规符合性仪表板执行以下操作：
 
-- 查看和监视与重要的标准和法规相关的合规性情况。
-- 改进符合性状态，方法是：解决相关的建议问题，观察符合性分数的改进情况。
+> [!div class="checklist"]
+> * 查看和监视与重要的标准和法规相关的合规性情况。
+> * 改进符合性状态，方法是：解决相关的建议问题，观察符合性分数的改进情况。
 
 法规合规性仪表板可以大大简化合规性过程，显著缩短为 Azure、混合环境和多云环境收集合规性证据所需的时间。
 
 若要了解更多信息，请参阅以下相关页面：
 
 - [自定义法规合规性仪表板中的标准集](update-regulatory-compliance-packages.md) - 了解如何选择在法规合规性仪表板中显示的标准。 
-- [Azure 安全中心的安全运行状况监视](security-center-monitoring.md) - 了解如何监视 Azure 资源的运行状况。
-- [管理 Azure 安全中心安全建议](security-center-recommendations.md) - 了解如何使用 Azure 安全中心的建议来保护 Azure 资源。
+- [管理 Azure 安全中心安全建议](security-center-recommendations.md) - 了解如何使用安全中心的建议来保护 Azure 资源。

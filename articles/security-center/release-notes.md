@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/10/2021
+ms.date: 02/17/2021
 ms.author: memildin
-ms.openlocfilehash: d40d6107d3eee4b45f2184a61b1cdfc99559e9c7
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 837ba5a0fd5ff94cc4f55cd4b01b8cb8a27425fd
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100378994"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100634254"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure 安全中心的新增功能
 
@@ -35,11 +35,29 @@ ms.locfileid: "100378994"
 
 2 月的更新包括：
 
+- [Azure 门户中的新安全警报页发布了正式版 (GA)](#new-security-alerts-page-in-the-azure-portal-released-for-general-availability-ga)
 - [Kubernetes 工作负载保护建议发布了正式版 (GA)](#kubernetes-workload-protection-recommendations-released-for-general-availability-ga)
 - [直接链接到建议详细信息页中的策略](#direct-link-to-policy-from-recommendation-details-page)
 - [SQL 数据分类建议不再影响安全功能分数](#sql-data-classification-recommendation-no-longer-affects-your-secure-score)
 - [工作流自动化可由对监管合规性评估（预览版）的更改触发](#workflow-automations-can-be-triggered-by-changes-to-regulatory-compliance-assessments-preview)
 - [资产清单页增强功能](#asset-inventory-page-enhancements)
+
+
+### <a name="new-security-alerts-page-in-the-azure-portal-released-for-general-availability-ga"></a>Azure 门户中的新安全警报页发布了正式版 (GA)
+
+Azure 安全中心的安全警报页经过重新设计，可提供以下内容：
+
+- 更好的警报会审体验 - 列表包含可自定义的筛选器和分组选项，有助于减少警报疲劳，让你能够更轻松地专注于相关度最高的威胁。
+- 警报列表中包含更多信息 - 例如 MITRE ATT&ACK 策略。
+- 用于创建示例警报的按钮 - 要评估 Azure Defender 功能并测试警报 配置（对于 SIEM 集成、电子邮件通知和工作流自动化），可以从所有 Azure Defender 计划创建示例警报。
+- 与 Azure Sentinel 事件体验的一致性 - 对于同时使用这两种产品的客户，现在可以更直接地在它们之间进行切换。
+- 更好的大型警报列表性能。
+- 警报列表键盘导航。
+- **来自 Azure Resource Graph 的警报** - 可以在 Azure Resource Graph 中查询警报，它是适用于所有资源的类 Kusto API。 如果要构建自己的警报仪表板，这也很有用。 [详细了解 Azure Resource Graph](../governance/resource-graph/index.yml)。
+- 创建示例警报功能 - 若要通过新的警报体验创建示例警报，请参阅[生成 Azure Defender 示例警报](security-center-alert-validation.md#generate-sample-azure-defender-alerts)。
+
+:::image type="content" source="media/security-center-managing-and-responding-alerts/alerts-page.png" alt-text="Azure 安全中心的安全警报列表":::
+
 
 ### <a name="kubernetes-workload-protection-recommendations-released-for-general-availability-ga"></a>Kubernetes 工作负载保护建议发布了正式版 (GA)
 

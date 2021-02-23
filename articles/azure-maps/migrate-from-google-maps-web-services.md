@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 3bb0aadf81ba501070ce0c734847bb16c0378896
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 04bbb0465f26e82d247c53e7393c4476b9d36fde
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624032"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100386843"
 ---
 # <a name="tutorial-migrate-web-service-from-google-maps"></a>教程：从 Google Maps 迁移 Web 服务
 
@@ -54,7 +54,7 @@ Azure Maps 和 Google Maps 都通过 REST Web 服务提供对空间 API 的访�
 
 以下服务 API 目前在 Azure Maps 中不可用：
 
-- 地理位置
+- 地理位置 - Azure Maps 的确有一项称为地理位置的服务，但它只在位置信息中提供 IP 地址，当前并不支持手机信号塔或 Wifi 热点。
 - 位置详细信息和照片 - 电话号码和网站 URL 在 Azure Maps 搜索 API 中可用。
 - 地图 URL
 - 最近的道路 - 这可以使用 Web SDK 实现（如[此处](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Basic%20snap%20to%20road%20logic)所示），但目前不作为服务提供。

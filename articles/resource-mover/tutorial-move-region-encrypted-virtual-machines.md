@@ -5,17 +5,17 @@ manager: evansma
 author: rayne-wiselman
 ms.service: resource-move
 ms.topic: tutorial
-ms.date: 02/04/2021
+ms.date: 02/10/2021
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 0bc70e14e341d9681c75933455eae6b0278724ca
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: 014b4d09a991ae4d0bb31ec0b9adee0c9e3b3553
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99981831"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100361003"
 ---
-# <a name="tutorial-move-encrypted-azure-vms-across-regions"></a>Tutorial:跨区域移动加密的 Azure VM
+# <a name="tutorial-move-encrypted-azure-vms-across-regions"></a>教程：跨区域移动加密的 Azure VM
 
 本文介绍如何使用 [Azure 资源转移器](overview.md)将加密的 Azure VM 移动到不同的 Azure 区域。 我们所说的加密是指：
 
@@ -54,26 +54,49 @@ ms.locfileid: "99981831"
 目标区域费用 | 验证与要将 VM 移动到的目标区域关联的定价和费用。 请使用[定价计算器](https://azure.microsoft.com/pricing/calculator/)来帮助你。
 
 
-## <a name="verify-key-vault-permissions-azure-disk-encryption"></a>验证密钥保管库权限（Azure 磁盘加密）
+## <a name="verify-user-permissions-on-key-vault-for-vms-using-azure-disk-encryption-ade"></a>使用 Azure 磁盘加密 (ADE) 验证用户对 VM 密钥保管库的权限
 
-如果要移动启用了 Azure 磁盘加密的 VM，请在源区域和目标区域中的密钥保管库中验证/设置权限，以确保移动加密的 VM 将会实现预期效果。 
+如果要移动启用了 Azure 磁盘加密的 VM，则需要按照[下文](#copy-the-keys-to-the-destination-key-vault)所述运行脚本，执行该脚本的用户应该具有相应的权限。 请参阅下表，了解所需权限。 通过在 Azure 门户中导航到该密钥保管库，可找到更改权限的选项 - 在“设置”下选择“访问策略” 。
 
-1. 在 Azure 门户中，打开源区域中的密钥保管库。
-2. 在“设置”下，选择“访问策略” 。
+:::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/key-vault-access-policies.png" alt-text="用于打开密钥保管库访问策略的按钮。" lightbox="./media/tutorial-move-region-encrypted-virtual-machines/key-vault-access-policies.png":::
 
-    :::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/key-vault-access-policies.png" alt-text="用于打开密钥保管库访问策略的按钮。" lightbox="./media/tutorial-move-region-encrypted-virtual-machines/key-vault-access-policies.png":::
+如果没有用户权限，请选择“添加访问策略”，并指定权限。 如果用户帐户已有策略，请在“用户”下，根据下表设置权限。
 
-3. 如果没有用户权限，请选择“添加访问策略”，并指定权限。 如果用户帐户已有策略，请在“用户”下设置权限。
+使用 ADE 的 Azure VM 可具有以下变体，且需要相应地为相关组件设置权限。
+- 仅使用机密对磁盘进行加密的默认选项
+- 使用[密钥加密密钥](../virtual-machines/windows/disk-encryption-key-vault.md#set-up-a-key-encryption-key-kek)增加了安全性
 
-    - 如果需要移动的 VM 启用了 Azure 磁盘加密 (ADE)，请在“密钥权限” > “密钥管理操作”中，选择“Get”和“List”（如果它们尚未处于选中状态）   。
-    - 如果使用客户管理的密钥 (CMK) 来加密用于静态加密（服务器端加密）的磁盘加密密钥，请在“密钥权限” > “密钥管理操作”中，选择“Get”和“List”   。 另外，请在“加密操作”中，选择“Decrypt”和“Encrypt”  
- 
-    :::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/set-vault-permissions.png" alt-text="用于选择密钥保管库权限的下拉列表。" lightbox="./media/tutorial-move-region-encrypted-virtual-machines/set-vault-permissions.png":::
+### <a name="source-region-keyvault"></a>源区域密钥保管库
 
-4. 在“机密权限”下的“机密管理操作”中，选择“Get”、“List”和“Set”    。 
-5. 如果要将权限分配到新用户帐户，请在“选择主体”中，选择要向其分配权限的用户。
-6. 在“访问策略”中，请确保启用“用于卷加密的 Azure 磁盘加密” 。
-7. 对目标区域中的密钥保管库重复该过程。
+需要为执行脚本的用户设置以下权限 
+
+组件 | 所需权限
+--- | ---
+机密|  Get 权限 <br> </br> 在“机密权限”>  “机密管理操作”中，选择“Get”   
+键 <br> </br> 如果要使用密钥加密密钥 (KEK)，除了机密以外，你还需要此权限| Get 和 Decrypt 权限 <br> </br> 在“密钥权限” > “密钥管理操作”中，选择“Get”  。 在“加密操作”中，选择“Decrypt” 。
+
+### <a name="destination-region-keyvault"></a>目标区域密钥保管库
+
+在“访问策略”中，请确保启用“用于卷加密的 Azure 磁盘加密” 。 
+
+需要为执行脚本的用户设置以下权限 
+
+组件 | 所需权限
+--- | ---
+机密|  Set 权限 <br> </br> 在“机密权限”>  “机密管理操作”中，选择“Set”   
+键 <br> </br> 如果要使用密钥加密密钥 (KEK)，除了机密以外，你还需要此权限| Get、Create 和 Encrypt 权限 <br> </br> 在“密钥权限” > “密钥管理操作”中，选择“Get”和“Create”   。 在“加密操作”中，选择“Encrypt” 。
+
+除了上述权限外，在目标密钥保管库中，你还需要为资源转移器用来代表你访问 Azure 资源的[托管系统标识](./common-questions.md#how-is-managed-identity-used-in-resource-mover)添加权限。 
+
+1. 在“设置”下，选择“添加访问策略” 。 
+2. 在“选择主体”中，搜索 MSI。 MSI 名称是 ```movecollection-<sourceregion>-<target-region>-<metadata-region>```。 
+3. 为 MSI 添加以下权限
+
+组件 | 所需权限
+--- | ---
+机密|  Get 和 List 权限 <br> </br> 在“机密权限”>  “机密管理操作”中，选择“Get”和“List”    
+键 <br> </br> 如果要使用密钥加密密钥 (KEK)，除了机密以外，你还需要此权限| Get、List 权限 <br> </br> 在“密钥权限” > “密钥管理操作”中，选择“Get”和“List”   
+
 
 
 ### <a name="copy-the-keys-to-the-destination-key-vault"></a>将密钥复制到目标密钥保管库
@@ -370,7 +393,7 @@ ms.locfileid: "99981831"
     - 保管库名称为 ```ResourceMove-<sourceregion>-<target-region>-GUID```。
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍以下操作：
+在本教程中，你将了解：
 
 > [!div class="checklist"]
 > * 已将加密的 Azure VM 及其依赖资源移动到了另一个 Azure 区域。

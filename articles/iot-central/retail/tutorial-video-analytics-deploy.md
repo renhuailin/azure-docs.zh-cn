@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: f7f1952ab8c98553a447c3ed1955fb556ba48124
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: e524905aaeed54de6501eb6f024bf28dbab9c594
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99831937"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100362159"
 ---
 # <a name="tutorial-how-to-deploy-an-iot-central-application-using-the-video-analytics---object-and-motion-detection-application-template"></a>Tutorial:如何使用“视频分析 - 对象和运动检测”应用程序模板部署 IoT Central 应用程序
 
@@ -22,6 +22,13 @@ ms.locfileid: "99831937"
 下面的视频演示了如何使用“视频分析 - 对象和运动检测”应用程序模板来部署 IoT Central 解决方案：
 
 > [!VIDEO https://www.youtube.com/embed/Bo3FziU9bSA]
+
+在此教程系列中，你将了解如何：
+
+> [!div class="checklist"]
+> * 部署应用程序
+> * 部署连接到应用程序的 IoT Edge 实例
+> * 监视和管理应用程序
 
 ## <a name="prerequisites"></a>先决条件
 
