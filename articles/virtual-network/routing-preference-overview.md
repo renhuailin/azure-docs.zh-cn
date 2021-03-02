@@ -11,22 +11,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/02/2020
+ms.date: 02/01/2021
 ms.author: mnayak
-ms.openlocfilehash: 7fdd23aea5e435c94493a0cbe86b6ffcdb0d2e10
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
-ms.translationtype: MT
+ms.custom: references_regions
+ms.openlocfilehash: b0235286260910a45523e3236e7ed3a114eaf57f
+ms.sourcegitcommit: 8c93b05c27c7e8a5ba62a4d6fc6fc4d0c3980a21
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99539063"
+ms.lasthandoff: 02/26/2021
+ms.locfileid: "101577499"
 ---
-# <a name="what-is-routing-preference-preview"></a>什么是路由首选项（预览版）？
+# <a name="what-is-routing-preference"></a>什么是路由首选项？
 
 Azure 路由首选项允许你选择流量在 Azure 和 Internet 之间的路由方式。 可以选择通过 Microsoft 网络或通过 ISP 网络（公共 Internet）来路由流量。 这些选项也分别称为“冷土豆路由”和“热土豆路由”。 出口数据传输价格因路由选择而有所不同。 创建公共 IP 地址时，可以选择路由选项。 公共 IP 地址可与虚拟机、虚拟机规模集、面向 Internet 的负载均衡器等资源相关联。还可以为 Azure 存储资源（例如 blob、文件、Web 和 Azure DataLake）设置路由首选项。 默认情况下，所有 Azure 服务的流量都是通过 Microsoft 全球网络路由的。
-
-> [!IMPORTANT]
-> 路由首选项目前为公共预览版。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="routing-via-microsoft-global-network"></a>通过 Microsoft 全球网络路由
 
@@ -70,13 +67,13 @@ Azure 路由首选项允许你选择流量在 Azure 和 Internet 之间的路由
 * Azure DataLake
 
 ## <a name="pricing"></a>定价
-这两个选项之间的价格差异反映在 Internet 出口数据传输定价中。 通过 Microsoft 全球网络路由的数据传输价格与当前 Internet 出口价格相同。 有关最新定价信息，请访问 [Azure 带宽定价页](https://azure.microsoft.com/pricing/details/bandwidth/)。 
+这两个选项之间的价格差异反映在 Internet 出口数据传输定价中。 通过 Microsoft 全球网络路由的数据传输价格与当前 Internet 出口价格相同。 有关最新定价信息，请访问 [Azure 带宽定价页](https://azure.microsoft.com/pricing/details/bandwidth/)。
 
 ## <a name="limitations"></a>限制
 
-* 路由首选项仅兼容公共 IP 地址的区域冗余标准 SKU。 不支持公共 IP 地址的基本 SKU。
+* 澳大利亚中部、澳大利亚中部 2、加拿大东部、巴西南部、韩国中部和韩国南部目前不支持路由首选项。
+* 路由首选项仅与公共 IP 地址的区域冗余标准 SKU 兼容。 不支持公共 IP 地址的基本 SKU。
 * 路由首选项目前仅支持 IPv4 公共 IP 地址。 不支持 IPv6 公共 IP 地址。
-* 具有多个 NIC 的虚拟机只能有一种类型的路由首选项。
 
 
 ## <a name="next-steps"></a>后续步骤
