@@ -5,38 +5,62 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 05/11/2020
+ms.date: 03/02/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 53d2369e93052ef28191dd1862034c1aaa488add
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: a9e7ec5569dd0de3b0535c3b0e3b3304848a5207
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97355590"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101653307"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>将 Google 添加为 B2B 来宾用户的标识提供者
 
-通过设置与 Google 的联合身份验证，你可以允许受邀用户使用其自己的 Gmail 帐户登录到你的共享应用和资源，而无需创建 Microsoft 帐户。 
+通过设置与 Google 的联合身份验证，你可以允许受邀用户使用其自己的 Gmail 帐户登录到你的共享应用和资源，而无需创建 Microsoft 帐户。
+
+将 Google 添加为某个应用程序的登录选项后，在 " **登录** " 页上，用户只需输入他们用于登录 google 的电子邮件，或者他们可以选择 **登录选项** 并选择 **"使用 Google 登录**"。 在这两种情况下，它们将被重定向到 Google 登录页进行身份验证。
+
+![Google 用户的登录选项](media/google-federation/sign-in-with-google-overview.png)
 
 > [!NOTE]
 > Google 联合专为 Gmail 用户设计。 若要与 G Suite 域联合，请使用 [直接联合](direct-federation.md)。
 
 > [!IMPORTANT]
-> **从2021年1月4日开始**，Google 是 [弃用 web 视图登录支持](https://developers.googleblog.com/2020/08/guidance-for-our-effort-to-block-less-secure-browser-and-apps.html)。 如果你使用 Google federation 或使用 Gmail 进行自助注册，则应 [测试业务线本机应用程序的兼容性](google-federation.md#deprecation-of-webview-sign-in-support)。
+> 从 2021 年 1 月 4 日开始，Google 将[弃用 WebView 登录支持](https://developers.googleblog.com/2020/08/guidance-for-our-effort-to-block-less-secure-browser-and-apps.html)。 如果要通过 Gmail 使用 Google 联合身份验证或自助服务注册，则应[测试业务线本机应用程序的兼容性](google-federation.md#deprecation-of-webview-sign-in-support)。
 
 ## <a name="what-is-the-experience-for-the-google-user"></a>Google 用户体验是什么？
-向 Google Gmail 用户发送邀请时，来宾用户应通过使用包含租户上下文的链接来访问共享应用或资源。 他们的体验根据是否已登录到 Google 而异：
-  - 系统将提示未登录到 Google 的来宾用户执行此操作。
-  - 系统将提示已登录到 Google 的来宾用户选择他们想要使用的帐户。 他们必须选择你在邀请他们时所用的帐户。
+
+当 Google 用户兑换你的邀请时，他们的体验会有所不同，具体取决于他们是否已登录到 Google：
+
+- 系统将提示未登录到 Google 的来宾用户执行此操作。
+- 系统将提示已登录到 Google 的来宾用户选择他们想要使用的帐户。 他们必须选择你在邀请他们时所用的帐户。
 
 如果来宾用户看到 "标头过长" 错误，则可能会清除其 cookie，或者打开私有或 incognito 窗口并再次尝试登录。
 
 ![显示 Google 登录页的屏幕截图。](media/google-federation/google-sign-in.png)
+
+## <a name="sign-in-endpoints"></a>登录终结点
+
+Google guest 用户现在可以使用 [公共终结点](redemption-experience.md#redemption-and-sign-in-through-a-common-endpoint) 登录到你的多租户或 Microsoft 第一方应用 (换言之，这是一个不包含租户上下文) 的常规应用 URL。 下面是常见终结点的示例：
+
+- `https://teams.microsoft.com`
+- `https://myapps.microsoft.com`
+- `https://portal.azure.com`
+
+在登录过程中，来宾用户选择 "登录" **选项**，然后选择 " **登录到组织**"。 然后，用户键入组织的名称并继续使用其 Google 凭据进行登录。
+
+Google guest 用户还可以使用包含租户信息的应用程序终结点，例如：
+
+  * `https://myapps.microsoft.com/?tenantid=<your tenant ID>`
+  * `https://myapps.microsoft.com/<your verified domain>.onmicrosoft.com`
+  * `https://portal.azure.com/<your tenant ID>`
+
+例如，你还可以通过包含你的租户信息，为 Google guest 用户提供指向应用程序或资源的直接链接 `https://myapps.microsoft.com/signin/Twitter/<application ID?tenantId=<your tenant ID>` 。
 
 ## <a name="deprecation-of-webview-sign-in-support"></a>弃用 Web 视图登录支持
 
@@ -66,23 +90,13 @@ ms.locfileid: "97355590"
    - 如果 Windows 应用使用嵌入的 Web 视图或 WebAccountManager (WAM) 在较早版本的 Windows 上，请更新到最新版本的 Windows。
    - 修改应用程序以使用系统浏览器进行登录。 有关详细信息，请参阅 MSAL.NET 文档中的 [嵌入 Vs 系统 WEB UI](../develop/msal-net-web-browsers.md#embedded-vs-system-web-ui) 。  
 
-## <a name="sign-in-endpoints"></a>登录终结点
 
-Teams 完全支持所有设备上的 Google 来宾用户。 Google 用户可以从 `https://teams.microsoft.com` 等常见终结点登录到 Teams。
-
-其他应用程序的常见终结点可能不支持 Google 用户。 Google guest 用户必须使用包含租户信息的链接登录。 下面是一些示例：
-  * `https://myapps.microsoft.com/?tenantid=<your tenant ID>`
-  * `https://portal.azure.com/<your tenant ID>`
-  * `https://myapps.microsoft.com/<your verified domain>.onmicrosoft.com`
-
-   如果 Google guest 用户尝试使用类似于或的 `https://myapps.microsoft.com` 链接 `https://portal.azure.com` ，则会出现错误。
-
-你还可以为 Google guest 用户提供指向应用程序或资源的直接链接，前提是该链接包含你的租户信息。 例如 `https://myapps.microsoft.com/signin/Twitter/<application ID?tenantId=<your tenant ID>`。 
 ## <a name="step-1-configure-a-google-developer-project"></a>步骤 1：配置 Google 开发人员项目
 首先，在 Google 开发人员控制台中创建一个新项目，以获取客户端 ID 和客户端密钥，稍后你可以将其添加到 Azure Active Directory (Azure AD) 。 
 1. 转到 Google API (https://console.developers.google.com )，并使用 Google 帐户登录。 我们建议使用共享团队 Google 帐户。
 2. 如果系统提示你执行此操作，请接受服务条款。
-3. 创建新项目：在仪表板上，选择 " **创建项目**"，为项目指定名称 (例如， **Azure AD B2B**) ，然后选择 " **创建**"： 
+3. 创建新项目：在页面的左上角，选择 "项目" 列表，然后在 " **选择项目** " 页上，选择 " **新建项目**"。
+4. 在 " **新建项目** " 页上，为项目指定一个名称 (例如， **Azure AD B2B**) ，然后选择 " **创建**"： 
    
    ![显示新项目页的屏幕截图。](media/google-federation/google-new-project.png)
 

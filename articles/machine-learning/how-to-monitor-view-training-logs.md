@@ -1,7 +1,7 @@
 ---
 title: 监视和查看 ML 运行日志与指标
 titleSuffix: Azure Machine Learning
-description: 通过 Jupyter 小组件和 Azure 机器学习工作室监视 ML 试验和查看运行指标。
+description: 使用 Jupyter 小组件和 Azure 机器学习工作室监视你的 ML 试验并查看运行指标。
 services: machine-learning
 author: likebupt
 ms.author: keli19
@@ -11,20 +11,20 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: ea96e1056e6157cfddbdc2f0b6451ed55a74d1de
-ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
+ms.openlocfilehash: 8b2a61a92a25e1c0da9f85439438e75969fcfbf0
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97756052"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101661012"
 ---
 # <a name="monitor-and-view-ml-run-logs-and-metrics"></a>监视和查看 ML 运行日志与指标
 
-了解如何监视 Azure 机器学习运行和查看其日志。 
+了解如何监视 Azure 机器学习运行并查看其日志。 
 
-运行试验时，将流式传输日志和指标。  此外，还可以添加自己的。  若要了解如何操作，请参阅 [在 AZURE ML 定型运行中启用日志记录](how-to-track-experiments.md)。
+当你运行试验时，系统会为你流式传输日志和指标。  此外，你还可以添加自己的日志和指标。  若要了解如何进行添加，请参阅[在 Azure ML 训练运行中启用日志记录](how-to-track-experiments.md)。
 
-日志可帮助你诊断运行的错误和警告。 性能指标（如参数和模型准确性）可帮助你跟踪和监视你的运行。
+日志可帮助你诊断你的运行的错误和警告。 性能指标（例如参数和模型准确性）可帮助你跟踪和监视你的运行。
 
 本文介绍如何使用以下方法查看日志：
 
@@ -78,6 +78,17 @@ RunDetails(run).show()
 
 <a id="queryrunmetrics"></a>
 
+### <a name="logging-run-metrics"></a>日志记录运行指标 
+
+使用日志记录 API 中的以下方法可影响指标可视化效果。 请注意这些记录的指标的 [服务限制](https://docs.microsoft.com/azure/machine-learning/resource-limits-quotas-capacity#metrics) 。 
+
+|记录的值|示例代码| 门户中的格式|
+|----|----|----|
+|记录一组数值| `run.log_list(name='Fibonacci', value=[0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89])`|单变量折线图|
+|使用重复使用的相同指标名称记录单个数值（例如在 for 循环中）| `for i in tqdm(range(-10, 10)):    run.log(name='Sigmoid', value=1 / (1 + np.exp(-i))) angle = i / 2.0`| 单变量折线图|
+|重复记录包含 2 个数字列的行|`run.log_row(name='Cosine Wave', angle=angle, cos=np.cos(angle))   sines['angle'].append(angle)      sines['sine'].append(np.sin(angle))`|双变量折线图|
+|记录包含 2 个数字列的表|`run.log_table(name='Sine Wave', value=sines)`|双变量折线图|
+
 ## <a name="query-run-metrics"></a>查询运行指标
 
 可以使用 ```run.get_metrics()``` 查看训练的模型的指标。 例如，可以将此方法示例与上面的示例配合使用，通过查找具有最低均方误差 (mse) 值的模型来确定最佳模型。
@@ -96,67 +107,55 @@ RunDetails(run).show()
 
 ![Azure 机器学习工作室中的运行详细信息](media/how-to-track-experiments/experimentation-tab.gif)
 
-### <a name="format-charts"></a>设置图表格式 
+### <a name="view-log-files-for-a-run"></a>查看某个运行的日志文件 
 
-使用日志记录 Api 中的以下方法来影响指标的可视化效果。
+日志文件是用于调试 Azure ML 工作负荷的重要资源。 可以向下钻取到特定运行来查看其日志和输出：  
 
-|记录的值|示例代码| 门户中的格式|
-|----|----|----|
-|记录一组数值| `run.log_list(name='Fibonacci', value=[0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89])`|单变量折线图|
-|使用重复使用的相同指标名称记录单个数值（例如在 for 循环中）| `for i in tqdm(range(-10, 10)):    run.log(name='Sigmoid', value=1 / (1 + np.exp(-i))) angle = i / 2.0`| 单变量折线图|
-|重复记录包含 2 个数字列的行|`run.log_row(name='Cosine Wave', angle=angle, cos=np.cos(angle))   sines['angle'].append(angle)      sines['sine'].append(np.sin(angle))`|双变量折线图|
-|记录包含 2 个数字列的表|`run.log_table(name='Sine Wave', value=sines)`|双变量折线图|
-
-
-### <a name="view-log-files-for-a-run"></a>查看运行的日志文件 
-
-日志文件是调试 Azure ML 工作负载的重要资源。 向下钻取到特定运行以查看其日志和输出：  
-
-1. 导航到 " **试验** " 选项卡。
+1. 导航到“试验”选项卡。
 1. 选择特定运行的 runID。
-1. 选择页面顶部的 " **输出和日志** "。
+1. 选择页面顶部的“输出和日志”。
 
-:::image type="content" source="media/how-to-monitor-view-training-logs/view-logs.png" alt-text="运行的输出和日志部分的屏幕截图":::
+:::image type="content" source="media/how-to-monitor-view-training-logs/view-logs.png" alt-text="运行的“输出和日志”部分的屏幕截图":::
 
-下表显示了你将在此部分中看到的文件夹中的日志文件的内容。
+下面的各表显示了此部分显示的文件夹中的日志文件的内容。
 
 > [!NOTE]
-> 每次运行时，不一定会显示每个文件。 例如，仅当生成新映像时才会显示 20_image_build_log * .txt (例如，当你更改环境) 时。
+> 每次运行不一定会看到每个文件。 例如，仅当生成新映像时（例如更改环境时），才会出现 20_image_build_log*.txt。
 
 #### <a name="azureml-logs-folder"></a>`azureml-logs` 文件夹
 
 |文件  |说明  |
 |---------|---------|
-|20_image_build_log.txt     | Docker 映像生成定型环境日志，可选，每次运行一次。 仅适用于更新环境的情况。 否则，AML 将重复使用缓存的映像。 如果成功，则包含相应图像的映像注册表详细信息。         |
-|55_azureml-<node_id # C1.txt     | 主机工具的 stdout/stderr 日志，每个节点一个。 将映像提取到计算目标。 请注意，只有在保护计算资源后，才会显示此日志。         |
-|65_job_prep-<node_id # C1.txt     |   作业准备脚本的 stdout/stderr 日志，每个节点一个。 下载你的代码以计算目标并数据存储 (如果请求) 。       |
-|70_driver_log (_x) .txt      |  AML 控制脚本和客户培训脚本中的 stdout/stderr 日志，每个进程一个。 **这是脚本的标准输出。这是代码的日志 (例如，打印语句) 显示。** 在大多数情况下，你将在此处监视日志。       |
-|70_mpi_log.txt     |   MPI framework 日志，可选，每次运行一次。 仅适用于 MPI 运行。   |
-|75_job_post-<node_id # C1.txt     |  作业发布脚本的 stdout/stderr 日志，每个节点一个。 发送日志，将计算资源释放回 Azure。        |
-|process_info.js      |   显示哪个进程在哪个节点上运行。  |
-|process_status.js      | 显示进程状态，即，如果进程未启动、正在运行或已完成。         |
+|20_image_build_log.txt     | 训练环境的 Docker 映像生成日志（可选），每次运行都有一个这样的文件。 仅当更新环境时适用。 其他情况下，AML 会重用缓存的映像。 如果成功，则包含相应映像的映像注册表详细信息。         |
+|55_azureml-execution-<node_id>.txt     | 主机工具的 stdout/stderr 日志，每个节点一个。 将映像拉取到计算目标。 请注意，只有在保护计算资源后，此日志才会出现。         |
+|65_job_prep-<node_id>.txt     |   作业准备脚本的 stdout/stderr 日志，每个节点一个。 将代码下载到计算目标和数据存储（如果已请求）。       |
+|70_driver_log(_x).txt      |  AML 控制脚本和客户训练脚本的 stdout/stderr 日志，每个进程一个。 这是脚本的标准输出。这是代码日志（例如 print 语句）的显示位置。 在大多数情况下，你将在此处监视日志。       |
+|70_mpi_log.txt     |   MPI 框架日志（可选），每个运行一个。 仅适用于 MPI 运行。   |
+|75_job_post-<node_id>.txt     |  作业释放脚本的 stdout/stderr 日志，每个节点一个。 发送日志，将计算资源释放回 Azure。        |
+|process_info.json      |   显示哪个进程在哪个节点上运行。  |
+|process_status.json      | 显示进程状态，即，进程是未启动、正在运行还是已完成。         |
 
 #### <a name="logs--azureml-folder"></a>`logs > azureml` 文件夹
 
 |文件  |说明  |
 |---------|---------|
-|110_azureml .log      |         |
-|job_prep_azureml .log     |   用于作业准备的系统日志        |
-|job_release_azureml .log     | 作业发布的系统日志        |
+|110_azureml.log      |         |
+|job_prep_azureml.log     |   有关作业准备情况的系统日志        |
+|job_release_azureml.log     | 有关作业释放的系统日志        |
 
 #### <a name="logs--azureml--sidecar--node_id-folder"></a>`logs > azureml > sidecar > node_id` 文件夹
 
-当启用挎斗时，作业准备和作业发布脚本将在挎斗容器中运行。  每个节点都有一个文件夹。 
+当启用了挎斗时，作业准备和作业释放脚本会在挎斗容器中运行。  每个节点都有一个文件夹。 
 
 |文件  |说明  |
 |---------|---------|
 |start_cms.txt     |  挎斗容器启动时启动的进程的日志       |
-|prep_cmd.txt      |   运行 (在运行时输入的 ContextManagers 的日志 `job_prep.py` 将流式传输到 `azureml-logs/65-job_prep`)        |
-|release_cmd.txt     |  运行时退出的 ComtextManagers 日志 `job_release.py`        |
+|prep_cmd.txt      |   运行 `job_prep.py` 时进入的 ContextManagers 的日志（其中一些会流式传输到 `azureml-logs/65-job_prep`）       |
+|release_cmd.txt     |  运行 `job_release.py` 时退出的 ComtextManagers 的日志        |
 
 #### <a name="other-folders"></a>其他文件夹
 
-对于多个计算群集上的作业培训，每个节点 IP 都有日志。 每个节点的结构与单一节点作业相同。 对于总体执行、stderr 和 stdout 日志，还有一个额外的日志文件夹。
+对于多个计算群集上的作业训练，将会针对每个节点 IP 提供日志。 每个节点的结构都与单节点作业相同。 对于总体执行、stderr 和 stdout 日志，还有一个额外的日志文件夹。
 
 Azure 机器学习在训练期间记录会从各种源（例如，运行训练作业的 AutoML 或 Docker 容器）记录信息。 其中的许多日志没有详细的阐述。 如果遇到问题且联系了 Microsoft 支持部门，他们可以在排除故障时使用这些日志。
 

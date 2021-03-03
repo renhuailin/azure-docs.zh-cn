@@ -7,21 +7,18 @@ manager: celestedg
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 05/06/2020
+ms.date: 03/02/2021
 ms.author: mimart
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7cddb40a6a43c38079906699d9fa4865c4daf558
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: a199c207e8ea35f1471df9bfd0c4134551b9995f
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94837084"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101653484"
 ---
-# <a name="language-customization-in-azure-active-directory-preview"></a>Azure Active Directory（预览版）中的语言自定义
-
-> [!NOTE]
-> 自助注册是 Azure Active Directory 的公共预览版功能。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+# <a name="language-customization-in-azure-active-directory"></a>Azure Active Directory 中的语言自定义
 
 用户流可以使用 Azure Active Directory (Azure AD) 中的语言自定义来适应不同的语言，从而满足用户需求。 Microsoft 提供 [36 种语言](#supported-languages)的翻译。 即使体验是针对一种语言提供的，也可以在“属性集合”页上自定义属性名称。
 
@@ -39,7 +36,7 @@ ms.locfileid: "94837084"
 1. 以 Azure AD 管理员身份登录到 [Azure 门户](https://portal.azure.com)。
 2. 在“Azure 服务”下，选择“Azure Active Directory”。
 3. 在左侧菜单中，选择“外部标识”。
-4. 选择“用户流(预览版)”。
+4. 选择“用户流”。
 3. 选择想要启用翻译的用户流。
 4. 选择“语言”。
 5. 在用户流的“语言”页面，选择想要自定义的语言。
@@ -115,7 +112,7 @@ ms.locfileid: "94837084"
 
 1. 完成对 JSON 文件的更改后，返回到租户。
 1. 选择“用户流”，单击想要启用翻译的用户流。
-1. 选择“语言”。
+1. 选择“语言”  。
 1. 选择要翻译成的语言。
 1. 选择“属性集合”页。
 1. 选择文件夹图标，选择要上传的 JSON 文件。
@@ -146,7 +143,7 @@ Chrome 和 Firefox 都会请求其设置的语言。 如果支持该语言，将
 
 ## <a name="supported-languages"></a>支持的语言
 
-Azure AD 支持以下语言。 用户流语言由 Azure AD 提供。 多重身份验证 (MFA) 通知语言由 [AZURE AD MFA](../authentication/concept-mfa-howitworks.md)提供。
+Azure AD 支持以下语言。 用户流语言由 Azure AD 提供。 多重身份验证 (MFA) 通知语言由 [Azure AD MFA](../authentication/concept-mfa-howitworks.md) 提供。
 
 | 语言              | 语言代码 | 用户流         | MFA 通知  |
 |-----------------------| :-----------: | :----------------: | :----------------: |
@@ -175,7 +172,7 @@ Azure AD 支持以下语言。 用户流语言由 Azure AD 提供。 多重身�
 | 日语              | ja            | ![绿色的选中标记。](./media/user-flow-customize-language/yes.png) | ![绿色的选中标记。](./media/user-flow-customize-language/yes.png) |
 | 哈萨克语                | kk            | ![X 指示否。](./media/user-flow-customize-language/no.png) | ![绿色的选中标记。](./media/user-flow-customize-language/yes.png) |
 | 卡纳达语               | kn            | ![绿色的选中标记。](./media/user-flow-customize-language/yes.png) | ![X 指示否。](./media/user-flow-customize-language/no.png) |
-| 韩语                | ko            | ![绿色的选中标记。](./media/user-flow-customize-language/yes.png) | ![绿色的选中标记。](./media/user-flow-customize-language/yes.png) |
+| 朝鲜语                | ko            | ![绿色的选中标记。](./media/user-flow-customize-language/yes.png) | ![绿色的选中标记。](./media/user-flow-customize-language/yes.png) |
 | 立陶宛语            | lt            | ![X 指示否。](./media/user-flow-customize-language/no.png) | ![绿色的选中标记。](./media/user-flow-customize-language/yes.png) |
 | 拉脱维亚语               | lv            | ![X 指示否。](./media/user-flow-customize-language/no.png) | ![绿色的选中标记。](./media/user-flow-customize-language/yes.png) |
 | 马拉雅拉姆语             | ml            | ![绿色的选中标记。](./media/user-flow-customize-language/yes.png) | ![X 指示否。](./media/user-flow-customize-language/no.png) |
@@ -192,8 +189,8 @@ Azure AD 支持以下语言。 用户流语言由 Azure AD 提供。 多重身�
 | 俄语               | ru            | ![绿色的选中标记。](./media/user-flow-customize-language/yes.png) | ![绿色的选中标记。](./media/user-flow-customize-language/yes.png) |
 | 斯洛伐克语                | sk            | ![绿色的选中标记。](./media/user-flow-customize-language/yes.png) | ![绿色的选中标记。](./media/user-flow-customize-language/yes.png) |
 | 斯洛文尼亚语             | sl            | ![X 指示否。](./media/user-flow-customize-language/no.png) | ![绿色的选中标记。](./media/user-flow-customize-language/yes.png) |
-| 塞尔维亚语 - 西里尔    | sr-cryl-cs    | ![X 指示否。](./media/user-flow-customize-language/no.png) | ![绿色的选中标记。](./media/user-flow-customize-language/yes.png) |
-| 塞尔维亚语 - 拉丁       | sr-latn-cs    | ![X 指示否。](./media/user-flow-customize-language/no.png) | ![绿色的选中标记。](./media/user-flow-customize-language/yes.png) |
+| 塞尔维亚语 - 西里尔文    | sr-cryl-cs    | ![X 指示否。](./media/user-flow-customize-language/no.png) | ![绿色的选中标记。](./media/user-flow-customize-language/yes.png) |
+| 塞尔维亚语 - 拉丁语       | sr-latn-cs    | ![X 指示否。](./media/user-flow-customize-language/no.png) | ![绿色的选中标记。](./media/user-flow-customize-language/yes.png) |
 | 瑞典语               | sv            | ![绿色的选中标记。](./media/user-flow-customize-language/yes.png) | ![绿色的选中标记。](./media/user-flow-customize-language/yes.png) |
 | 泰米尔语                 | ta            | ![绿色的选中标记。](./media/user-flow-customize-language/yes.png) | ![X 指示否。](./media/user-flow-customize-language/no.png) |
 | 泰卢固语                | te            | ![绿色的选中标记。](./media/user-flow-customize-language/yes.png) | ![X 指示否。](./media/user-flow-customize-language/no.png) |

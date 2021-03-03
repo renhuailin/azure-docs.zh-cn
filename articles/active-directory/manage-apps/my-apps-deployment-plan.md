@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 02/29/2020
 ms.author: kenwith
 ms.reviewer: baselden
-ms.openlocfilehash: 10e548eb87b7ac4254fa916f804a6710252be7fc
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: f63a8fd05e1a6ed5e41eeb64aa852ff01db295af
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99830713"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101645461"
 ---
 # <a name="plan-azure-active-directory-my-apps-configuration"></a>计划 Azure Active Directory 我的应用配置
 
@@ -102,7 +102,7 @@ Azure Active Directory (Azure AD) 我的应用程序是一个基于 web 的门�
 
 ### <a name="plan-communications"></a>规划沟通
 
-沟通对于任何新服务的成功都至关重要。 主动向用户通知其体验将发生更改的方式和时间，以及如何在需要时获得支持。
+通信对于任何新服务的成功至关重要。 主动向用户通知其体验将发生更改的方式和时间，以及如何在需要时获得支持。
 
 尽管我的应用程序通常不会创建用户问题，但必须做好准备。 开始之前，请为支持人员创建指南和所有资源的列表。
 
@@ -143,7 +143,7 @@ Azure AD 支持多种 SSO 选项。
 
 * [适用于 Chrome、Firefox、Microsoft Edge 或 IE 的用户驱动的下载和配置](../user-help/my-apps-portal-end-user-access.md)
 
-* [Internet Explorer Configuration Manager](https://docs.microsoft.com/mem/configmgr/core/clients/deploy/deploy-clients-to-windows-computers)
+* [Internet Explorer Configuration Manager](/mem/configmgr/core/clients/deploy/deploy-clients-to-windows-computers)
 
 此扩展允许用户从其搜索栏启动任何应用、查找对最近使用的应用程序的访问权限，以及链接到 "我的应用程序" 页。
 
@@ -256,11 +256,11 @@ Azure AD 将大多数审核数据保持30天。 可以通过 Azure 管理门户�
 
 | 角色| 角色| Azure AD 角色 |
 | - | - | - |
-| 支持管理员| 第1层支持| 无 |
+| 支持管理员| 第1层支持| None |
 | 标识管理员| 在问题影响时进行配置和调试 Azure AD| 全局管理员 |
-| 应用程序管理员| 应用程序中的用户证明，具有权限的用户配置| 无 |
+| 应用程序管理员| 应用程序中的用户证明，具有权限的用户配置| None |
 | 基础结构管理员| 证书滚动更新所有者| 全局管理员 |
-| 业务所有者/利益干系人| 应用程序中的用户证明，具有权限的用户配置| 无 |
+| 业务所有者/利益干系人| 应用程序中的用户证明，具有权限的用户配置| None |
 
 
 你可以使用 [Privileged Identity Management](../privileged-identity-management/pim-configure.md) 来管理你的角色，以便为具有目录权限的用户提供其他审核、控制和访问评审。
@@ -271,4 +271,3 @@ Azure AD 将大多数审核数据保持30天。 可以通过 Azure 管理门户�
 
 [计划应用程序代理部署](application-proxy-deployment-plan.md)
 
- 

@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 12/09/2020
 ms.topic: how-to
-ms.openlocfilehash: 22ad2d65710a3fc149f5a83fb511244ac3be2203
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 2b35abf7f318d4db6166dd48c4f7bd35aaf4d98a
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98733233"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101644402"
 ---
 # <a name="create-data-controller-in-azure-data-studio"></a>在 Azure Data Studio 中创建数据控制器
 
@@ -36,8 +36,8 @@ ms.locfileid: "98733233"
 2. 单击 "连接" 面板顶部的 **"..." 按钮，** 然后选择 "**新建部署 ...** "。
 3. 在新建部署向导中，选择 " **Azure Arc 数据控制器**"，并单击底部的 " **选择** " 按钮。
 4. 确保必备工具可用并满足所需的版本。 **单击 "下一步"**。
-5. 使用默认的 kubeconfig 文件或选择另一个文件。  单击 **“下一步”** 。
-6. 选择 Kubernetes 群集上下文。 单击 **“下一步”** 。
+5. 使用默认的 kubeconfig 文件或选择另一个文件。  单击“下一步”  。
+6. 选择 Kubernetes 群集上下文。 单击“下一步”  。
 7. 根据目标 Kubernetes 群集选择部署配置文件。 **单击 "下一步"**。
 8. 如果使用的是 Azure Red Hat OpenShift 或 Red Hat OpenShift 容器平台，请应用安全上下文约束。 按照在 [OpenShift 上为启用了 Azure Arc 的数据服务应用安全上下文约束](how-to-apply-security-context-constraint.md)中的说明进行操作。
 
@@ -49,7 +49,7 @@ ms.locfileid: "98733233"
    
    此处选择的 Azure 位置是 Azure 中的位置，其中存储了有关数据控制器和所管理的数据库实例的 *元* 数据。 数据控制器和数据库实例实际上 crewted 在 Kubernetes 群集中的任何位置。
 
-10. 选择适当的连接模式。 了解有关 [连接模式](https://docs.microsoft.com/azure/azure-arc/data/connectivity)的详细信息。 **单击 "下一步"**。
+10. 选择适当的连接模式。 了解有关 [连接模式](./connectivity.md)的详细信息。 **单击 "下一步"**。
 
     如果选择 "直接连接模式"，则需要如 " [创建服务主体](upload-metrics-and-logs-to-azure-monitor.md#create-service-principal)" 中所述。
 
@@ -61,7 +61,7 @@ ms.locfileid: "98733233"
 
 
 12. 选择将在其中部署数据控制器的存储类。 
-13.  输入用户名和密码，并确认数据控制器管理员用户帐户的密码。 单击 **“下一步”** 。
+13.  输入用户名和密码，并确认数据控制器管理员用户帐户的密码。 单击“下一步”  。
 
 14. 查看部署配置。
 15. 单击 " **部署** " 以将所需配置或 **脚本部署到笔记本** ，以查看部署说明或进行任何必要的更改，如存储类名称或服务类型。 单击笔记本顶部的 " **全部运行** "。

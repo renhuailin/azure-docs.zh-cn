@@ -1,42 +1,39 @@
 ---
-title: 无密码安全密钥登录 (预览) -Azure Active Directory
-description: 使用 FIDO2 安全密钥 () 预览版启用无密码安全密钥登录 Azure AD
+title: 无密码安全密钥登录 Azure Active Directory
+description: 使用 FIDO2 安全密钥启用无密码安全密钥登录 Azure AD
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 09/14/2020
+ms.date: 02/22/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ac8cf172a13e7198233170634ee4a3954793cd2
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 71a29a2a7e379e253b52813eb7a76f669abbf668
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96743422"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101653824"
 ---
-# <a name="enable-passwordless-security-key-sign-in-preview"></a>启用无密码安全密钥登录 (预览) 
+# <a name="enable-passwordless-security-key-sign-in"></a>启用无密码安全密钥登录 
 
 对于目前使用密码并具有共享 PC 环境的企业，安全密钥为辅助角色提供了无需输入用户名或密码即可进行身份验证的无缝方式。 安全密钥可提高工作人员的工作效率，并获得更好的安全性。
 
 本文档重点介绍如何启用基于安全密钥的无密码身份验证。 本文末尾，你将能够使用 FIDO2 安全密钥通过 Azure AD 帐户登录到基于 web 的应用程序。
 
-> [!NOTE]
-> FIDO2 安全密钥是 Azure Active Directory 的公共预览功能。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
-
 ## <a name="requirements"></a>要求
 
 - [Azure AD 多重身份验证](howto-mfa-getstarted.md)
-- 启用 [组合安全信息注册预览](concept-registration-mfa-sspr-combined.md)
+- 启用 [组合的安全信息注册](concept-registration-mfa-sspr-combined.md)
 - 兼容的 [FIDO2 安全密钥](concept-authentication-passwordless.md#fido2-security-keys)
 - WebAuthN 需要 Windows 10 版本1903或更高版本 * *
 
 若要使用安全密钥登录到 web 应用和服务，您必须拥有支持 WebAuthN 协议的浏览器。 其中包括 Microsoft Edge、Chrome、Firefox 和 Safari。
 
-## <a name="prepare-devices-for-preview"></a>为预览版准备设备
+## <a name="prepare-devices"></a>准备设备
 
 对于 Azure AD 联接的设备，最佳体验是在 Windows 10 版本1903或更高版本上。
 
@@ -46,12 +43,12 @@ ms.locfileid: "96743422"
 
 ### <a name="enable-the-combined-registration-experience"></a>启用组合注册体验
 
-无密码身份验证方法的注册功能依赖于组合注册功能。 按照 [ (预览) 启用组合安全信息注册 ](howto-registration-mfa-sspr-combined.md)一文中的步骤，启用合并注册。
+无密码身份验证方法的注册功能依赖于组合注册功能。 按照 [启用组合的安全信息注册](howto-registration-mfa-sspr-combined.md)一文中的步骤启用合并注册。
 
 ### <a name="enable-fido2-security-key-method"></a>启用 FIDO2 安全密钥方法
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
-1. 浏览到 **Azure Active Directory**  >  **安全**  >  **身份验证** 方法 "  >  **身份验证方法策略 (预览版)**。
+1. 浏览到 **Azure Active Directory**  >  **安全**  >  **身份验证** 方法 "  >  **身份验证方法策略**。
 1. 在 "方法 **FIDO2 安全密钥**" 下，选择以下选项：
    1. **启用** -是或否
    1. **目标** -所有用户或选择用户
@@ -59,7 +56,7 @@ ms.locfileid: "96743422"
 
 ## <a name="user-registration-and-management-of-fido2-security-keys"></a>FIDO2 安全密钥的用户注册和管理
 
-1. 浏览到 [https://myprofile.microsoft.com](https://myprofile.microsoft.com) 。
+1. 浏览到 [https://myprofile.microsoft.com](https://myprofile.microsoft.com)。
 1. 如果尚未登录，请登录。
 1. 单击 " **安全信息**"。
    1. 如果用户已注册至少一个 Azure AD 多重身份验证方法，则可以立即注册 FIDO2 安全密钥。
@@ -79,19 +76,19 @@ ms.locfileid: "96743422"
 
 ## <a name="troubleshooting-and-feedback"></a>故障排除和反馈
 
-若要在预览此功能时共享反馈或遇到问题，请使用以下步骤通过 Windows 反馈中心应用进行共享：
+如果你想要共享有关此功能的反馈或遇到问题，请使用以下步骤通过 Windows 反馈中心应用进行共享：
 
 1. 启动 **反馈中心** 并确保已登录。
 1. 按照以下分类提交反馈：
    - 类别：安全和隐私
    - 子类别： FIDO
-1. 若要捕获日志，请使用选项 **重新创建我的问题**
+1. 若要捕获日志，请使用选项 **重新创建问题**。
 
 ## <a name="known-issues"></a>已知问题
 
 ### <a name="security-key-provisioning"></a>安全密钥预配
 
-在公共预览版中，管理员预配和取消预配安全密钥不可用。
+管理员预配和取消预配安全密钥不可用。
 
 ### <a name="upn-changes"></a>UPN 更改
 

@@ -8,12 +8,12 @@ ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/24/2020
 ms.custom: references_regions
-ms.openlocfilehash: 9a73f9b734d5404d07e05dd37d5ad8571c1aab2e
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 3b19fab33d0c8f53025605fd14fe65f08e660392
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100383885"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101677919"
 ---
 # <a name="supported-data-sources-and-file-types-in-azure-purview"></a>Azure 监控范围中受支持的数据源和文件类型
 
@@ -43,9 +43,12 @@ Azure 监控范围支持以下源：
 
 以下文件类型支持扫描，以便进行架构提取和分类（如果适用）：
 
-- 扩展名支持的结构化文件格式： AVRO、ORC、PARQUET、CSV、JSON、PSV、SSV、TSV、TXT、XML
+- 扩展名支持的结构化文件格式： AVRO、ORC、PARQUET、CSV、JSON、PSV、SSV、TSV、TXT、XML、GZIP
 - 扩展名支持的文档文件格式： DOC、DOCM、.DOCX、点、ODP、ODS、ODT、PDF、.POT、PPS、PPSX、PPT、PPTM、.PPTX、XLC、XLS、.XLSB、XLSM、.XLSX、.XLT
 - 监控范围还支持自定义文件扩展名和自定义分析器。
+ 
+> [!Note]
+> 每个 Gzip 文件都必须映射到中的单个 csv 文件。 Gzip 文件服从系统和自定义分类规则。 目前，我们不支持扫描映射到中的多个文件的 gzip 文件或 csv 以外的任何文件类型。 
 
 ## <a name="sampling-within-a-file"></a>文件内的采样
 

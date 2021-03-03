@@ -6,13 +6,14 @@ ms.author: danis
 ms.date: 01/27/2021
 ms.topic: article
 ms.service: virtual-machines
-ms.subservice: imaging
-ms.openlocfilehash: 6090adffbab7c8c57837b62e190f90c8ffb18e3d
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.subservice: image-builder
+ms.collection: linux
+ms.openlocfilehash: d02a5c6bc194009d459647721dab16be0dcade84
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100636418"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101670480"
 ---
 # <a name="azure-image-builder-service-devops-task"></a>Azure 映像生成器服务 DevOps 任务
 
@@ -57,7 +58,7 @@ ms.locfileid: "100636418"
 
 选择 **发布管道**  >  **编辑**
 
-在用户代理上，选择 "添加"， *+* 然后搜索 " **映像生成器**"。 选择 **添加** 。
+在用户代理上，选择 "添加"， *+* 然后搜索 " **映像生成器**"。 选择“添加”。
 
 设置以下任务属性：
 
@@ -312,7 +313,7 @@ starting run template...
 
 ### <a name="can-i-specify-the-image-template-name"></a>能否指定映像模板名称？
 
-不是。 使用唯一的模板名称，然后将其删除。
+否。 使用唯一的模板名称，然后将其删除。
 
 ### <a name="the-image-builder-failed-how-can-i-troubleshoot"></a>图像生成器失败。 如何进行故障排除？
 

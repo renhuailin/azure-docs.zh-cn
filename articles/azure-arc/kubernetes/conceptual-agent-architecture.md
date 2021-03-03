@@ -2,18 +2,18 @@
 title: 已启用 Azure Arc Kubernetes 代理体系结构
 services: azure-arc
 ms.service: azure-arc
-ms.date: 02/17/2021
+ms.date: 02/19/2021
 ms.topic: conceptual
 author: shashankbarsin
 ms.author: shasb
 description: 本文提供支持 Azure Arc 的 Kubernetes 代理的体系结构概述
 keywords: Kubernetes、Arc、Azure、容器
-ms.openlocfilehash: 287ffdd40dc9ffdb91abb58b305d8b35b0bc3674
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: b4fb836cc7782f4026a28f4af0ca372c76486a31
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100652558"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101650526"
 ---
 # <a name="azure-arc-enabled-kubernetes-agent-architecture"></a>已启用 Azure Arc Kubernetes 代理体系结构
 
@@ -42,7 +42,7 @@ ms.locfileid: "100652558"
 
         | Agent | 说明 |
         | ----- | ----------- |
-        | `deployment.apps/clusteridentityoperator` | 启用 Azure Arc 的 Kubernetes 目前仅支持 [系统分配的标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)。 `clusteridentityoperator` 启动第一个出站通信。 第一次通信将获取其他代理用于与 Azure 通信的托管服务标识 (MSI) 证书。 |
+        | `deployment.apps/clusteridentityoperator` | 启用 Azure Arc 的 Kubernetes 目前仅支持 [系统分配的标识](../../active-directory/managed-identities-azure-resources/overview.md)。 `clusteridentityoperator` 启动第一个出站通信。 第一次通信将获取其他代理用于与 Azure 通信的托管服务标识 (MSI) 证书。 |
         | `deployment.apps/config-agent` | 监视群集上应用的源代码管理配置资源的已连接群集。 更新符合性状态。 |
         | `deployment.apps/controller-manager` | 协调 Azure Arc 组件之间的交互的运算符运算符。 |    
         | `deployment.apps/metrics-agent` | 收集其他 Arc 代理的指标以验证最佳性能。 |
@@ -93,5 +93,5 @@ ms.locfileid: "100652558"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [将群集连接到 Azure Arc](./connect-cluster.md)
+* [将群集连接到 Azure Arc](./quickstart-connect-cluster.md)
 * [配置概念概述](./conceptual-configurations.md)

@@ -1,29 +1,26 @@
 ---
-title: 无密码安全密钥登录到本地资源 (预览) -Azure Active Directory
-description: '了解如何使用 Azure Active Directory (预览版启用无密码安全密钥登录到本地资源) '
+title: 无密码安全密钥登录到本地资源-Azure Active Directory
+description: 了解如何使用 Azure Active Directory 启用无密码安全密钥登录到本地资源
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 03/09/2020
+ms.date: 02/22/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e1459442f7d99d1de88a685eed34493da530c1a4
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: db1b559bb4f6a1f8866116c287df5b814500210b
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96743473"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101647466"
 ---
-# <a name="enable-passwordless-security-key-sign-in-to-on-premises-resources-with-azure-active-directory-preview"></a>使用 Azure Active Directory (预览版启用无密码安全密钥登录到本地资源) 
+# <a name="enable-passwordless-security-key-sign-in-to-on-premises-resources-with-azure-active-directory"></a>启用无密码安全密钥使用 Azure Active Directory 登录到本地资源 
 
 本文档重点介绍如何为 **Azure AD 联接** 的环境和 **混合 Azure AD 已加入** Windows 10 设备的环境启用到本地资源的无密码身份验证。 此功能提供了使用与 Microsoft 兼容的安全密钥的本地资源 (SSO) 的无缝单一登录。
-
-> [!NOTE]
-> FIDO2 安全密钥是 Azure Active Directory 的公共预览功能。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="sso-to-on-premises-resources-using-fido2-keys"></a>使用 FIDO2 密钥的 SSO 到本地资源
 
@@ -42,7 +39,7 @@ Azure AD Kerberos Server 对象在本地 Active Directory 中创建，然后安�
 
 ## <a name="requirements"></a>要求
 
-在完成本文中的步骤之前，组织必须完成 [ (预览) 启用对 Windows 10 设备的无密码安全密钥签名 ](howto-authentication-passwordless-security-key.md) 的步骤。
+在完成本文中的步骤之前，组织必须完成为 [Windows 10 设备启用无密码安全密钥签名](howto-authentication-passwordless-security-key.md) 的步骤。
 
 组织还必须满足以下软件要求。
 
@@ -109,7 +106,7 @@ Get-AzureADKerberosServer -Domain $domain -CloudCredential $cloudCred -DomainCre
 
 此命令输出 Azure AD Kerberos 服务器的属性。 您可以查看属性以验证所有内容是否都按正确的顺序进行。
 
-| Property | 说明 |
+| 属性 | 说明 |
 | --- | --- |
 | ID | AD DS DC 对象的唯一 ID。 此 ID 有时称为 "槽" 或它是 "分支 ID"。 |
 | DomainDnsName | Active Directory 域的 DNS 域名。 |
@@ -156,13 +153,13 @@ Azure AD Kerberos server 对象在 Azure AD 中表示为 *KerberosDomain* 对象
 
 ## <a name="troubleshooting-and-feedback"></a>故障排除和反馈
 
-若要在预览此功能时共享反馈或遇到问题，请使用以下步骤通过 Windows 反馈中心应用进行共享：
+如果你想要共享有关此功能的反馈或遇到问题，请使用以下步骤通过 Windows 反馈中心应用进行共享：
 
 1. 启动 **反馈中心** 并确保已登录。
 1. 按照以下分类提交反馈：
    - 类别：安全和隐私
    - 子类别： FIDO
-1. 若要捕获日志，请使用选项 **重新创建我的问题**
+1. 若要捕获日志，请使用选项 **重新创建问题**。
 
 ## <a name="frequently-asked-questions"></a>常见问题
 

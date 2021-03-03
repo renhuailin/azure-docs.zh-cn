@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 01/20/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 430629f94695f0689422434c8d80fe4e1876e5dd
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 94e7ae93d05ae8ee35028882e14d8da74814d833
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98900109"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101650220"
 ---
 # <a name="tutorial-configure-ping-identity-with-azure-active-directory-b2c-for-secure-hybrid-access"></a>教程：使用 Azure Active Directory B2C 配置 Ping 标识以实现安全的混合访问
 
@@ -74,17 +74,17 @@ PingFederate 是一个企业标识桥，可以根据需要将其完全配置为�
 
 ![image 显示了 PingAccess 和 PingFederate 工作流](./media/partner-ping/pingaccess-pingfederate-workflow.png)
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要开始，你将需要：
 
 - Azure 订阅。 如果没有，请获取一个 [免费帐户](https://azure.microsoft.com/free/)。
 
-- 链接到 Azure 订阅的 [Azure AD B2C 租户](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant) 。
+- 链接到 Azure 订阅的 [Azure AD B2C 租户](./tutorial-create-tenant.md) 。
 
 - PingAccess 和 PingFederate 部署在 Docker 容器中或直接位于 Azure Vm 上。
 
-## <a name="connectivity"></a>连接性
+## <a name="connectivity"></a>连接
 
 检查以下是否已连接。
 
@@ -107,7 +107,7 @@ PingFederate 是一个企业标识桥，可以根据需要将其完全配置为�
 
 ![图像显示标记设置](./media/partner-ping/token-setting.png)
 
-在高级策略中，可以使用 **IssuanceClaimPattern** metadata 元素对 [JWT 令牌颁发者技术配置文件](https://docs.microsoft.com/azure/active-directory-b2c/jwt-issuer-technical-profile)中的 **AuthorityWithTfp** 值进行配置。
+在高级策略中，可以使用 **IssuanceClaimPattern** metadata 元素对 [JWT 令牌颁发者技术配置文件](./jwt-issuer-technical-profile.md)中的 **AuthorityWithTfp** 值进行配置。
 
 ## <a name="configure-pingaccesspingfederate"></a>配置 PingAccess/PingFederate
 
@@ -160,7 +160,7 @@ PingFederate 是一个企业标识桥，可以根据需要将其完全配置为�
 
 7. 在 " **客户端密码** " 字段中，输入您在 Azure AD 中为应用程序生成的 **密钥** 。
 
-8. 可选-可以使用 Microsoft Graph API 创建和使用自定义声明。 如果选择这样做，请选择 " **高级** "，并取消选择 " **请求配置文件** " 和 " **刷新用户属性** " 选项。 有关使用自定义声明的详细信息，请参阅 [使用自定义声明](https://docs.microsoft.com/azure/active-directory/application-proxy-ping-access#optional---use-a-custom-claim)。
+8. 可选-可以使用 Microsoft Graph API 创建和使用自定义声明。 如果选择这样做，请选择 " **高级** "，并取消选择 " **请求配置文件** " 和 " **刷新用户属性** " 选项。 有关使用自定义声明的详细信息，请参阅 [使用自定义声明](../active-directory/manage-apps/application-proxy-configure-single-sign-on-with-headers.md)。
 
 9. 选择“保存”
 
@@ -265,6 +265,6 @@ PingFederate 是一个企业标识桥，可以根据需要将其完全配置为�
 
 有关其他信息，请查看以下文章
 
-- [Azure AD B2C 中的自定义策略](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview)
+- [Azure AD B2C 中的自定义策略](./custom-policy-overview.md)
 
-- [Azure AD B2C 中的自定义策略入门](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications)
+- [Azure AD B2C 中的自定义策略入门](./custom-policy-get-started.md?tabs=applications)

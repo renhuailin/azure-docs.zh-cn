@@ -12,12 +12,12 @@ ms.date: 05/23/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
-ms.openlocfilehash: bce9479d063d091eb4fa68d2452d8a4218d45db9
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: c72a305a7000052be4f11c9c24a76db94de47ace
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99219937"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101650101"
 ---
 # <a name="support-and-help-options-for-developers"></a>开发人员的支持和帮助选项
 
@@ -32,11 +32,11 @@ ms.locfileid: "99219937"
 
 ## <a name="search"></a>搜索
 
-如果你有与开发相关的问题，则可以在文档、 [GitHub 示例](https://github.com/azure-samples)或 [Microsoft Q 答案&](https://docs.microsoft.com/answers/products/) 问题中找到答案。
+如果你有与开发相关的问题，则可以在文档、 [GitHub 示例](https://github.com/azure-samples)或 [Microsoft Q 答案&](/answers/products/) 问题中找到答案。
 
 ### <a name="scoped-search"></a>限定范围的搜索
 
-为了更快地获得结果，请通过在常用的搜索引擎中使用以下查询，将搜索范围限定为 [Microsoft Q&](https://docs.microsoft.com/answers/products/)文档和代码示例：
+为了更快地获得结果，请通过在常用的搜索引擎中使用以下查询，将搜索范围限定为 [Microsoft Q&](/answers/products/)文档和代码示例：
 
 ```
 {Your Search Terms} (site:http://www.docs.microsoft.com/answers/products/ OR site:docs.microsoft.com OR site:github.com/azure-samples OR site:cloudidentity.com OR site:developer.microsoft.com/graph)
@@ -53,24 +53,24 @@ ms.locfileid: "99219937"
 
 ## <a name="post-a-question-to-microsoft-qa"></a>将问题发布到 Microsoft Q&
 
-[Microsoft Q&](https://docs.microsoft.com/answers/products/) 是与开发相关的问题的首选渠道。 在这里，开发人员社区成员和 Microsoft 团队成员可直接助你解决问题。
+[Microsoft Q&](/answers/products/) 是与开发相关的问题的首选渠道。 在这里，开发人员社区成员和 Microsoft 团队成员可直接助你解决问题。
 
-如果通过搜索找不到问题的答案，请将新问题提交给 [Microsoft Q&](https://docs.microsoft.com/answers/products/) 。 在提问时请使用以下标记之一，以便社区更快速地识别问题和解答问题：
+如果通过搜索找不到问题的答案，请将新问题提交给 [Microsoft Q&](/answers/products/) 。 在提问时请使用以下标记之一，以便社区更快速地识别问题和解答问题：
 
 |组件/区域  | Tags |
 |---------|---------|
-| ADAL 库 | [[adal]](https://docs.microsoft.com/answers/topics/azure-ad-adal-deprecation.html) |
-| MSAL 库     | [[msal]](https://docs.microsoft.com/answers/topics/azure-ad-msal.html) |
-| OWIN 中间件  | [[azure-active-directory]](https://docs.microsoft.com/answers/topics/azure-active-directory.html) |
-| [Azure B2B](../external-identities/what-is-b2b.md)  | [[azure-ad-b2b]](https://docs.microsoft.com/answers/topics/azure-ad-b2b.html) |
-| [Azure B2C](https://azure.microsoft.com/services/active-directory-b2c/)  | [[azure-ad-b2c]](https://docs.microsoft.com/answers/topics/azure-ad-b2c.html) |
-| [Microsoft 图形 API](https://developer.microsoft.com/graph/) | [[azure--graph]](https://docs.microsoft.com/answers/topics/azure-ad-graph.html) |
-| 与身份验证或授权主题相关的其他任何方面 | [[azure-active-directory]](https://docs.microsoft.com/answers/topics/azure-active-directory.html) |
+| ADAL 库 | [[adal]](/answers/topics/azure-ad-adal-deprecation.html) |
+| MSAL 库     | [[msal]](/answers/topics/azure-ad-msal.html) |
+| OWIN 中间件  | [[azure-active-directory]](/answers/topics/azure-active-directory.html) |
+| [Azure B2B](../external-identities/what-is-b2b.md)  | [[azure-ad-b2b]](/answers/topics/azure-ad-b2b.html) |
+| [Azure B2C](https://azure.microsoft.com/services/active-directory-b2c/)  | [[azure-ad-b2c]](/answers/topics/azure-ad-b2c.html) |
+| [Microsoft 图形 API](https://developer.microsoft.com/graph/) | [[azure--graph]](/answers/topics/azure-ad-graph.html) |
+| 与身份验证或授权主题相关的其他任何方面 | [[azure-active-directory]](/answers/topics/azure-active-directory.html) |
 
-下面的 [Microsoft Q&](https://docs.microsoft.com/answers/products/) 文章包含有关如何提问和如何添加源代码的提示。 遵循以下准则可提高社区成员快速评估和响应问题的可能性：
+下面的 [Microsoft Q&](/answers/products/) 文章包含有关如何提问和如何添加源代码的提示。 遵循以下准则可提高社区成员快速评估和响应问题的可能性：
 
-* [如何正确提问](https://docs.microsoft.com/answers/articles/24951/how-to-write-a-quality-question.html)
-* [How to create a minimal, complete, and verifiable example](https://docs.microsoft.com/answers/articles/24907/how-to-write-a-quality-answer.html)（如何创建最小、完整且可验证的示例）
+* [如何正确提问](/answers/articles/24951/how-to-write-a-quality-question.html)
+* [How to create a minimal, complete, and verifiable example](/answers/articles/24907/how-to-write-a-quality-answer.html)（如何创建最小、完整且可验证的示例）
 
 ## <a name="create-a-github-issue"></a>创建 GitHub 问题
 

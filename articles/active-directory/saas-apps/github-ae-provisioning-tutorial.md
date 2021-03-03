@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2020
 ms.author: Zhchia
-ms.openlocfilehash: 4e43ebba9f5f3d0c52d1d03bbf6baca92d5b87a4
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: c3384effc961c6c588bc2d7f4f75bc386d63076b
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96178681"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101651564"
 ---
 # <a name="tutorial-configure-github-ae-for-automatic-user-provisioning"></a>教程：针对自动用户预配配置 GitHub 自动曝光
 
@@ -42,7 +42,7 @@ ms.locfileid: "96178681"
 * Azure AD 中[有权](../roles/permissions-reference.md)配置预配的用户帐户（例如应用管理员、云应用管理员、应用所有者或全局管理员）。 
 * GitHub 自动曝光，已完全 [初始化](https://docs.github.com/github-ae@latest/admin/configuration/initializing-github-ae) 并配置为通过 Azure AD 租户通过 [SAML SSO](https://docs.github.com/github-ae@latest/admin/authentication/configuring-authentication-and-provisioning-for-your-enterprise-using-azure-ad) 登录。
 
-## <a name="step-1-plan-your-provisioning-deployment"></a>步骤 1。 规划预配部署
+## <a name="step-1-plan-your-provisioning-deployment"></a>步骤 1。 计划预配部署
 1. 了解[预配服务的工作原理](../app-provisioning/user-provisioning.md)。
 2. 确定谁在[预配范围](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中。
 3. 确定要 [在 Azure AD 和 GitHub 自动曝光之间映射](../app-provisioning/customize-application-attributes.md)的数据。 
@@ -51,9 +51,9 @@ ms.locfileid: "96178681"
 
 了解如何 [在此处](https://docs.github.com/github-ae@latest/admin/authentication/configuring-user-provisioning-for-your-enterprise)启用 GitHub AE 的预配。
 
-## <a name="step-3-add-github-ae-from-the-azure-ad-application-gallery"></a>步骤 3. 从 Azure AD 应用程序库添加 GitHub 自动曝光
+## <a name="step-3-add-github-ae-from-the-azure-ad-application-gallery"></a>步骤 3。 从 Azure AD 应用程序库添加 GitHub 自动曝光
 
-从 Azure AD 应用程序库中添加 GitHub 自动曝光，开始管理预配到 GitHub 自动曝光。 如果你以前为 SSO 设置 GitHub AE，则可以使用相同的应用程序。 但建议你在最初测试集成时创建一个单独的应用。 可在[此处](../manage-apps/add-application-portal.md)详细了解如何从库中添加应用程序。 
+从 Azure AD 应用程序库中添加 GitHub 自动曝光，开始管理预配到 GitHub 自动曝光。 如果你以前为 SSO 设置 GitHub AE，则可以使用相同的应用程序。 但建议你在最初测试集成时创建一个单独的应用。 若要详细了解如何从库中添加应用，可以单击[此处](../manage-apps/add-application-portal.md)。 
 
 ## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>步骤 4. 定义谁在预配范围中 
 
@@ -78,7 +78,7 @@ Azure AD 预配服务允许你确定将根据分配给应用程序的人员，�
 
     ![应用程序列表中的 GitHub 自动曝光链接](common/all-applications.png)
 
-3. 选择“预配”选项卡。
+3. 选择“预配”  选项卡。
 
     ![“预配”选项卡](common/provisioning.png)
 
@@ -88,7 +88,7 @@ Azure AD 预配服务允许你确定将根据分配给应用程序的人员，�
 
 5. 在 " **管理员凭据** " 部分下，输入你在步骤2之前检索到的 GITHUB 自动曝光 **租户 URL** 和 **机密令牌** 。 单击 " **测试连接** " 以确保 Azure AD 可以连接到 GITHUB 自动曝光。 如果连接失败，请确保 GitHub 自动曝光帐户具有管理员权限，然后重试。
 
-    ![令牌](common/provisioning-testconnection-tenanturltoken.png)
+    ![标记](common/provisioning-testconnection-tenanturltoken.png)
 
 6. 在“通知电子邮件”字段中，输入应接收预配错误通知的个人或组的电子邮件地址，并选中“发生故障时发送电子邮件通知”复选框 。
 
@@ -111,17 +111,27 @@ Azure AD 预配服务允许你确定将根据分配给应用程序的人员，�
    |name.formatted|字符串|
    |displayName|字符串|
 
-10. 若要配置范围筛选器，请参阅[范围筛选器教程](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中提供的以下说明。
+10. 在 " **映射** " 部分下，选择 " **将 Azure Active Directory 组同步到 GitHub 自动曝光**"。
 
-11. 若要为 GitHub 自动曝光启用 Azure AD 预配服务，请在 "**设置**" 部分中将设置 **状态** 更改为 **"打开**"。
+11. 在 " **属性映射** " 部分中，查看从 Azure AD 同步到 GitHub AE 的组属性。 选为 " **匹配** " 属性的属性用于匹配 GitHub AE 中的组以执行更新操作。 选择“保存”按钮以提交任何更改  。
+
+      |Attribute|类型|
+      |---|---|
+      |displayName|字符串|
+      |externalId|字符串|
+      |members|参考|
+
+12. 若要配置范围筛选器，请参阅[范围筛选器教程](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中提供的以下说明。
+
+13. 若要为 GitHub 自动曝光启用 Azure AD 预配服务，请在 "**设置**" 部分中将设置 **状态** 更改为 **"打开**"。
 
     ![预配状态已打开](common/provisioning-toggle-on.png)
 
-12. 通过在 "**设置**" 部分的 "**范围**" 中选择所需的值，定义要预配到 GitHub 自动曝光的用户和/或组。
+14. 通过在 "**设置**" 部分的 "**范围**" 中选择所需的值，定义要预配到 GitHub 自动曝光的用户和/或组。
 
     ![预配范围](common/provisioning-scope.png)
 
-13. 已准备好预配时，单击“保存”  。
+15. 已准备好预配时，单击“保存”  。
 
     ![保存预配配置](common/provisioning-configuration-save.png)
 
@@ -132,7 +142,11 @@ Azure AD 预配服务允许你确定将根据分配给应用程序的人员，�
 
 1. 通过[预配日志](../reports-monitoring/concept-provisioning-logs.md)来确定哪些用户已预配成功或失败
 2. 检查[进度栏](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)来查看预配周期的状态以及完成进度
-3. 如果怀疑预配配置处于非正常状态，则应用程序将进入隔离状态。 可在[此处](../app-provisioning/application-provisioning-quarantine-status.md)了解有关隔离状态的详细信息。  
+3. 如果怀疑预配配置处于非正常状态，则应用程序将进入隔离状态。 有关隔离状态的详细信息，请访问[此处](../app-provisioning/application-provisioning-quarantine-status.md)。  
+
+## <a name="change-log"></a>更改日志
+
+* 02/18/2021-添加了对组设置的支持。
 
 ## <a name="additional-resources"></a>其他资源
 

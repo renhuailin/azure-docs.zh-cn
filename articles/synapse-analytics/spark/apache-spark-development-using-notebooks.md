@@ -10,12 +10,12 @@ ms.date: 10/19/2020
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: devx-track-python
-ms.openlocfilehash: 57999ce53e536d422e6502a77aaccdc66b4c5077
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: d5ff3fb988a7e907308ccccc8d0900d45a0601c0
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98898488"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101671602"
 ---
 # <a name="create-develop-and-maintain-synapse-studio-notebooks-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中创建、开发和维护 Synapse Studio 笔记本
 
@@ -33,14 +33,14 @@ Synapse Studio 笔记本是一个 web 界面，用于创建包含实时代码、
 ## <a name="preview-of-the-new-notebook-experience"></a>全新笔记本体验预览
 Synapse 团队将新的笔记本组件引入 Synapse Studio，为 Microsoft 客户提供一致的笔记本体验，并最大限度地提高可发现性、生产力、共享和协作。 全新的笔记本体验已准备就绪，可供预览。 检查笔记本工具栏中的 " **预览功能** " 按钮，将其打开。 下表捕获了现有笔记本 (之间的功能比较，并将其称为 "经典笔记本" ) 新的预览。  
 
-|Feature|传统笔记本|预览笔记本|
+|功能|传统笔记本|预览笔记本|
 |--|--|--|
 |% 运行| 不支持 | &#9745;|
 |% 历史记录| 不支持 |&#9745;
 |负载百分比| 不支持 |&#9745;|
 |%% html| 不支持 |&#9745;|
 |拖放以移动单元| 不支持 |&#9745;|
-|永久性显示 ( # A1 输出|&#9745;| 不可用 |
+|永久性显示 () 输出|&#9745;| 不可用 |
 |全部取消| &#9745;| 不可用|
 |运行上述所有单元格|&#9745;| 不可用 |
 |运行下面的所有单元格|&#9745;| 不可用 |
@@ -477,11 +477,11 @@ Azure 数据工厂将查找参数单元，并将此单元格视为执行时传�
 
 与 Jupyter Notebooks 类似，Azure Synapse Studio 笔记本具有模式用户界面。 键盘根据笔记本单元格的具体模式执行不同的任务。 Synapse Studio 笔记本支持给定代码单元格的以下两种模式：命令模式和编辑模式。
 
-1. 当没有文本光标提示你键入时，单元格处于命令模式。 当单元格处于命令模式时，可以将笔记本作为一个整体进行编辑，但不能键入单独的单元格。 通过按 `ESC` 或使用鼠标在单元格的编辑器区域外选择来进入命令模式。
+1. 当没有文本光标提示你键入时，单元格处于命令模式。 当单元格处于命令模式时，可以将笔记本作为一个整体进行编辑，但不能键入单独的单元格。 按 `ESC` 或使用鼠标选择单元格编辑器区域外部，进入命令模式。
 
    ![command-mode](./media/apache-spark-development-using-notebooks/synapse-command-mode-2.png)
 
-2. 编辑模式由文本光标指示，提示你在编辑器区域中键入内容。 当单元格处于编辑模式时，您可以在单元格中键入。 按下 `Enter` 或使用鼠标在单元格的编辑器区域中进行选择，以进入编辑模式。
+2. 编辑模式由文本光标指示，提示你在编辑器区域中键入内容。 当单元格处于编辑模式时，可以在单元格中键入。 按 `Enter` 或使用鼠标选择单元格的编辑器区域，进入编辑模式。
    
    ![edit-mode](./media/apache-spark-development-using-notebooks/synapse-edit-mode-2.png)
 
@@ -554,5 +554,5 @@ Azure 数据工厂将查找参数单元，并将此单元格视为执行时传�
 - [快速入门：使用 Web 工具在 Azure Synapse Analytics 中创建 Apache Spark 池](../quickstart-apache-spark-notebook.md)
 - [Azure Synapse Analytics 中的 Apache Spark 是什么](apache-spark-overview.md)
 - [将 .NET for Apache Spark 与 Azure Synapse Analytics 配合使用](spark-dotnet.md)
-- [.NET for Apache Spark 文档](/dotnet/spark?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+- [.NET for Apache Spark 文档](/dotnet/spark)
 - [Azure Synapse Analytics](../index.yml)

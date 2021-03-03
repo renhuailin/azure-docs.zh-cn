@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0211388f3b638080c79a58330ba1fff1989def7d
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 41a63d7d0c5844e7837be44b359b6d04a9009eb4
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101095877"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101651819"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 中的管理员角色权限
 
@@ -99,7 +99,7 @@ ms.locfileid: "101095877"
 >* 高级管理人员、法律顾问和人力资源员工之类的非管理员，可能有权访问敏感或私有信息。
 
 > [!IMPORTANT]
-> 此角色目前无法在旧版 MFA 管理门户中管理按用户的 MFA。 可以使用 [set-msoluser](https://docs.microsoft.com/powershell/module/msonline/set-msoluser) Commandlet Azure AD Powershell 模块来完成相同的功能。
+> 此角色目前无法在旧版 MFA 管理门户中管理按用户的 MFA。 可以使用 [set-msoluser](/powershell/module/msonline/set-msoluser) Commandlet Azure AD Powershell 模块来完成相同的功能。
 
 ### <a name="authentication-policy-administrator"></a>[身份验证策略管理员](#authentication-policy-administrator-permissions)
 
@@ -406,7 +406,7 @@ In | 有权执行的操作
 
 
 > [!IMPORTANT]
-> 此角色目前无法在旧版 MFA 管理门户中管理按用户的 MFA。 可以使用 [set-msoluser](https://docs.microsoft.com/powershell/module/msonline/set-msoluser) Commandlet Azure AD Powershell 模块来完成相同的功能。
+> 此角色目前无法在旧版 MFA 管理门户中管理按用户的 MFA。 可以使用 [set-msoluser](/powershell/module/msonline/set-msoluser) Commandlet Azure AD Powershell 模块来完成相同的功能。
 
 ### <a name="privileged-role-administrator"></a>[特权角色管理员](#privileged-role-administrator-permissions)
 
@@ -529,7 +529,7 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 在 Windows Defender ATP
 
 具有此角色的用户可以创建用户并管理用户的所有方面（存在一些限制，具体请参阅下表），还可以更新密码过期策略。 此外，具有此角色的用户可以创建和管理所有组。 此角色还能够创建和管理用户视图、管理支持票证和监视服务运行状况。 用户管理员无权管理充当大部分管理员角色的用户的某些用户属性。 具有此角色的用户无权管理 MFA。 下表列出了不存在这种限制的角色。
 
-| 用户管理员权限 | 注释 |
+| 用户管理员权限 | 说明 |
 | --- | --- |
 | 创建用户和组<br/>创建和管理用户视图<br/>管理 Office 支持票证<br/>更新密码过期策略 |  |
 | 管理许可证<br/>管理除用户主体名称之外的所有用户属性 | 适用于所有用户（包括所有管理员） |

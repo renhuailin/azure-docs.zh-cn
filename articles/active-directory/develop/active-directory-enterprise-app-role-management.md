@@ -12,12 +12,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 02/15/2021
 ms.author: jeedes
-ms.openlocfilehash: aab1f99984ed5286692cbf9dae39fb4f7d28599c
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 3c1b4b3d57bdce4a66adb35717f46d8989ee2453
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100652456"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101648809"
 ---
 # <a name="how-to-configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications"></a>如何：为企业应用程序配置 SAML 令牌中颁发的角色声明
 
@@ -29,7 +29,7 @@ ms.locfileid: "100652456"
 - 启用了单一登录 (SSO) 的订阅。 必须使用应用程序配置 SSO。
 
 > [!NOTE]
-> 本文介绍如何在 Azure AD 中使用 Api 在服务主体上创建/更新/删除应用程序角色。 如果要使用应用角色的新用户界面，请在 [此处](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps)查看详细信息。
+> 本文介绍如何在 Azure AD 中使用 Api 在服务主体上创建/更新/删除应用程序角色。 如果要使用应用角色的新用户界面，请在 [此处](./howto-add-app-roles-in-azure-ad-apps.md)查看详细信息。
 
 ## <a name="when-to-use-this-feature"></a>何时使用此功能
 
@@ -146,7 +146,7 @@ ms.locfileid: "100652456"
 
 1. 更新“属性”表以定义角色声明的自定义映射。
 
-1. 在“用户属性”  对话框的“用户声明”  部分执行以下步骤，以便添加 SAML 令牌属性，如下表所示：
+1. 在“用户属性”对话框的“用户声明”部分执行以下步骤，以便添加 SAML 令牌属性，如下表所示：
 
     | 特性名 | 特性值 |
     | -------------- | ----------------|

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.subservice: machine-learning
 ms.date: 04/15/2020
 ms.author: euang
-ms.openlocfilehash: 39ba8a5884abb4be9fa0b8e32a292e06738e1550
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 5caa41b852bf55a11489db6c0bab871b20720e05
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98935649"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101670668"
 ---
 # <a name="tutorial-build-a-machine-learning-app-with-apache-spark-mllib-and-azure-synapse-analytics"></a>教程：使用 Apache Spark MLlib 和 Azure Synapse Analytics 构建机器学习应用
 
@@ -197,7 +197,7 @@ train_data_df, test_data_df = encoded_final_df.randomSplit([trainingFraction, te
 > [!Note]
 > 若要保存模型，需要 Azure 角色“存储 Blob 数据参与者”。 在存储帐户下，转到“访问控制(IAM)”，然后选择“添加角色分配” 。 向 Azure SQL Database 服务器分配“存储 Blob 数据参与者”角色。 只有具有所有者权限的成员才能执行此步骤。 
 >
->有关各种 Azure 内置角色，请参阅[本指南](../../role-based-access-control/built-in-roles.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。
+>有关各种 Azure 内置角色，请参阅[本指南](../../role-based-access-control/built-in-roles.md)。
 
 ```python
 ## Create a new logistic regression object for the model
@@ -256,9 +256,9 @@ plt.show()
 
 ## <a name="next-steps"></a>后续步骤
 
-- [.NET for Apache Spark 文档](/dotnet/spark?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+- [.NET for Apache Spark 文档](/dotnet/spark)
 - [Azure Synapse Analytics](../index.yml)
 - [Apache Spark 官方文档](https://spark.apache.org/docs/2.4.5/)
 
 >[!NOTE]
-> 某些 Apache Spark 官方文档依赖于使用 Spark 控制台，但该控制台对于 Azure Synapse Analytics 中的 Apache Spark 不可用。 请改用[笔记本](../quickstart-apache-spark-notebook.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)或 [IntelliJ](../spark/intellij-tool-synapse.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) 体验。
+> 某些 Apache Spark 官方文档依赖于使用 Spark 控制台，但该控制台对于 Azure Synapse Analytics 中的 Apache Spark 不可用。 请改用[笔记本](../quickstart-apache-spark-notebook.md)或 [IntelliJ](../spark/intellij-tool-synapse.md) 体验。

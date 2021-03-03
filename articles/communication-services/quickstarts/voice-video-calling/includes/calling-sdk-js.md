@@ -4,28 +4,34 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: 7d391998e7f20cff0f77f6aab7938bc375f75c9e
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: 3830025d761c94e2b0b0bc3e66389d66794b946c
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99616489"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101661511"
 ---
 ## <a name="prerequisites"></a>先决条件
 
-- 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
+- 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - 已部署的通信服务资源。 [创建通信服务资源](../../create-communication-resource.md)。
 - 用于启用呼叫客户端的`User Access Token`。 详细了解[如何获取`User Access Token`](../../access-tokens.md)
-- 可选：完成快速入门[添加对应用程序调用](../getting-started-with-calling.md)的入门教程
+- 可选：完成[开始向应用程序添加通话功能](../getting-started-with-calling.md)快速入门
 
 ## <a name="setting-up"></a>设置
 
 ### <a name="install-the-client-library"></a>安装客户端库
 
-使用 `npm install` 命令安装适用于 JavaScript 的 Azure 通信服务调用和常见客户端库。
+> [!NOTE]
+> 本文档使用 1.0.0-beta.6 版的通话客户端库。
+
+使用 `npm install` 命令安装适用于 JavaScript 的 Azure 通信服务通话客户端库和通用客户端库。
+本文档引用 1.0.0-beta.5 版通话库中的类型。
 
 ```console
+npm install @azure/communication-common --save
 npm install @azure/communication-calling --save
+
 ```
 
 ## <a name="object-model"></a>对象模型
@@ -37,15 +43,15 @@ npm install @azure/communication-calling --save
 | CallClient                       | CallClient 是呼叫客户端库的主入口点。                                                                       |
 | CallAgent                        | CallAgent 用于启动和管理呼叫。                                                                                            |
 | DeviceManager                    | DeviceManager 用于管理媒体设备                                                                                           |
-| AzureCommunicationTokenCredential | AzureCommunicationTokenCredential 类实现 CommunicationTokenCredential 接口，该接口用于实例化 CallAgent。 |
+| AzureCommunicationTokenCredential | AzureCommunicationTokenCredential 类实现用于实例化 CallAgent 的 CommunicationTokenCredential 接口。 |
 
 
-## <a name="initialize-the-callclient-create-callagent-and-access-devicemanager"></a>初始化 CallClient、create CallAgent 和 access DeviceManager
+## <a name="initialize-the-callclient-create-callagent-and-access-devicemanager"></a>初始化 CallClient，创建 CallAgent 并访问 DeviceManager
 
-实例化一个新 `CallClient` 实例。 您可以使用记录器实例等自定义选项对其进行配置。
-实例 `CallClient` 化后，可以 `CallAgent` 通过对实例调用方法来创建实例 `createCallAgent` `CallClient` 。 这会以异步方式返回 `CallAgent` 实例对象。
-`createCallAgent`方法采用 `CommunicationTokenCredential` 作为参数，该参数接受[用户访问令牌](https://docs.microsoft.com/azure/communication-services/quickstarts/access-tokens)。
-若要访问 `DeviceManager` callAgent 实例，必须先创建。 然后，可以 `getDeviceManager` 在实例上使用方法 `CallClient` 获取 DeviceManager。
+实例化新的 `CallClient` 实例。 可使用自定义选项（例如 Logger 实例）对其进行配置。
+实例化 `CallClient` 后，可以通过在 `CallClient` 实例上调用 `createCallAgent` 方法来创建 `CallAgent` 实例。 这将异步返回 `CallAgent` 实例对象。
+`createCallAgent`方法采用 `CommunicationTokenCredential` 作为参数，该参数接受[用户访问令牌](../../access-tokens.md)。
+若要访问 `DeviceManager`，必须先创建 callAgent 实例。 然后可以使用 `CallClient` 实例上的 `getDeviceManager` 方法来获取 DeviceManager。
 
 ```js
 const userToken = '<user token>';
@@ -55,64 +61,69 @@ const callAgent = await callClient.createCallAgent(tokenCredential, {displayName
 const deviceManager = await callClient.getDeviceManager()
 ```
 
-## <a name="place-an-outgoing-call"></a>发出传出呼叫
+## <a name="place-an-outgoing-call"></a>拨出电话
 
-若要创建并启动呼叫，需要在 CallAgent 上使用其中一个 Api，并提供通过通信服务管理客户端库创建的用户。
+若要创建并启动呼叫，需要在 CallAgent 上使用其中一个 Api，并提供通过通信服务标识客户端库创建的用户。
 
-调用创建和启动是同步的。 调用实例允许您订阅调用事件。
+通话的创建和启动是同步的。 通过通话实例，可以订阅通话事件。
 
 ## <a name="place-a-call"></a>拨打电话
 
-### <a name="place-a-11-call-to-a-user-or-pstn"></a>向用户或 PSTN 发出1:1 调用
-若要调用另一个通信服务用户，请 `call` 在上调用方法 `callAgent` 并传递被调用方的 CommunicationUserIdentifier：
+### <a name="place-a-11-call-to-a-user-or-pstn"></a>向用户或 PSTN 发起一对一通话
+若要呼叫另一个通信服务用户，请在 `callAgent` 上调用 `startCall` 方法，并传递[使用通信服务管理库创建的](https://docs.microsoft.com/azure/communication-services/quickstarts/access-tokens)被呼叫方 CommunicationUserIdentifier。
 
 ```js
 const userCallee = { communicationUserId: '<ACS_USER_ID>' }
-const oneToOneCall = callAgent.call([userCallee]);
+const oneToOneCall = callAgent.startCall([userCallee]);
 ```
 
-若要对 PSTN 进行调用，请 `call` 在上调用方法 `callAgent` 并传递被调用方的 PhoneNumberIdentifier。
-必须将通信服务资源配置为允许 PSTN 调用。
-调用 PSTN 号码时，必须指定备用呼叫方 ID。
+若要呼叫 PSTN，请调用 `callAgent` 上的 `startCall` 方法，并传递被呼叫方的 PhoneNumberIdentifier。
+必须将通信服务资源配置为允许 PSTN 通话。
+呼叫 PSTN 号码时，必须指定备用呼叫方 ID。 备用呼叫方 ID 是指 PSTN 通话中用于标识呼叫方的电话号码（基于 E.164 标准）。 例如，当你向 PSTN 通话提供备用呼叫方 ID 时，该电话号码将在来电时显示给被呼叫方。
+
+> [!WARNING]
+> PSTN 通话目前提供个人预览版。 对于访问权限，[适用于早期采用者计划](https://aka.ms/ACS-EarlyAdopter)。
 ```js
 const pstnCalee = { phoneNumber: '<ACS_USER_ID>' }
 const alternateCallerId = {alternateCallerId: '<Alternate caller Id>'};
-const oneToOneCall = callAgent.call([pstnCallee], {alternateCallerId});
+const oneToOneCall = callAgent.startCall([pstnCallee], {alternateCallerId});
 ```
 
-### <a name="place-a-1n-call-with-users-and-pstn"></a>将1： n 调用与用户和 PSTN 一起使用
+### <a name="place-a-1n-call-with-users-and-pstn"></a>向用户和 PSTN 发起一对多通话
 ```js
 const userCallee = { communicationUserId: <ACS_USER_ID> }
 const pstnCallee = { phoneNumber: <PHONE_NUMBER>};
 const alternateCallerId = {alternateCallerId: '<Alternate caller Id>'};
-const groupCall = callAgent.call([userCallee, pstnCallee], {alternateCallerId});
+const groupCall = callAgent.startCall([userCallee, pstnCallee], {alternateCallerId});
+
 ```
 
-### <a name="place-a-11-call-with-video-camera"></a>使用摄像机发出1:1 呼叫
+### <a name="place-a-11-call-with-video-camera"></a>发起启用相机的一对一通话
 > [!WARNING]
-> 当前可以有一个以上的传出本地视频流。
-若要进行视频呼叫，必须使用 deviceManager API 枚举本地相机 `getCameraList` 。
-选择所需的照相机后，使用它来构造 `LocalVideoStream` 实例，并将其 `videoOptions` 作为数组中的项传入 `localVideoStream` 到 `call` 方法。
-呼叫连接后，它会自动开始将视频流从所选照相机发送到其他 () 的参与者。 这也适用于调用。接受 ( # A1 视频选项和 CallAgent ( # A3 视频选项。
+> 当前最多只能有一个传出本地视频流。
+若要发起视频通话，必须使用 deviceManager `getCameras()` API 枚举本地相机。
+选择所需的相机后，使用它来构造 `LocalVideoStream` 实例，并在 `videoOptions` 中将其作为 `localVideoStream` 数组中的项传递给 `startCall` 方法。
+通话接通后，会自动开始将来自所选相机的视频流发送给其他参与者。 这也适用于 Call.Accept() 视频选项和 CallAgent.join() 视频选项。
 ```js
 const deviceManager = await callClient.getDeviceManager();
-const videoDeviceInfo = deviceManager.getCameraList()[0];
+const cameras = await deviceManager.getCameras();
+videoDeviceInfo = cameras[0];
 localVideoStream = new LocalVideoStream(videoDeviceInfo);
 const placeCallOptions = {videoOptions: {localVideoStreams:[localVideoStream]}};
-const call = callAgent.call(['acsUserId'], placeCallOptions);
+const call = callAgent.startCall(['acsUserId'], placeCallOptions);
 
 ```
 
 ### <a name="join-a-group-call"></a>加入群组通话
-若要启动新组调用或加入正在进行的组调用，请使用 "join" 方法并向属性传递对象 `groupId` 。 该值必须是 GUID。
+若要发起新的群组通话或加入正在进行的群组通话，请使用“join”方法并传递带有 `groupId` 属性的对象。 该值必须为 GUID。
 ```js
 
 const context = { groupId: <GUID>}
 const call = callAgent.join(context);
 
 ```
-### <a name="join-a-teams-meeting"></a>加入团队会议
-若要加入团队会议，请使用 "联接" 方法并传递会议链接或会议的坐标
+### <a name="join-a-teams-meeting"></a>加入 Teams 会议
+若要加入 Teams 会议，请使用“join”方法并传递会议链接或会议坐标
 ```js
 // Join using meeting link
 const locator = { meetingLink: <meeting link>}
@@ -128,12 +139,15 @@ const locator = {
 const call = callAgent.join(locator);
 ```
 
-## <a name="receiving-an-incoming-call"></a>接收传入呼叫
+## <a name="receiving-an-incoming-call"></a>接听来电
 
-`CallAgent` `incomingCall` 当登录标识正在接收传入呼叫时，实例将发出事件。 若要侦听此事件，请按以下方式进行订阅：
+当登录者收到来电时，`CallAgent` 实例将发出 `incomingCall` 事件。 若要侦听此事件，请按以下方式订阅：
 
 ```js
 const incomingCallHander = async (args: { incomingCall: IncomingCall }) => {
+    //Get information about caller
+    var callerInfo = incomingCall.callerInfo
+    
     //accept the call
     var call = await incomingCall.accept();
 
@@ -143,52 +157,51 @@ const incomingCallHander = async (args: { incomingCall: IncomingCall }) => {
 callAgentInstance.on('incomingCall', incomingCallHander);
 ```
 
-此 `incomingCall` 事件将提供 `IncomingCall` 可接受或拒绝调用的实例。
+`incomingCall` 事件将提供 `IncomingCall` 的一个实例，你可以在该实例上接受或拒绝通话。
 
 
-## <a name="call-management"></a>呼叫管理
+## <a name="call-management"></a>通话管理
 
-你可以访问调用属性并在调用以管理与视频和音频相关的设置期间执行各种操作。
+可在通话过程中访问通话属性并执行各种操作来管理与视频和音频相关的设置。
 
-### <a name="call-properties"></a>调用属性
-* 获取此调用 (字符串) 的唯一 ID。
+### <a name="call-properties"></a>通话属性
+* 获取此通话的唯一 ID（字符串）。
 ```js
 
 const callId: string = call.id;
 
 ```
 
-* 若要了解调用中的其他参与者，请检查 `remoteParticipant` 该实例上的集合 `call` 。 数组包含 list `RemoteParticipant` 对象
+* 若要了解通话中的其他参与者，请检查 `call` 实例上的 `remoteParticipant` 集合。 数组包含列表 `RemoteParticipant` 对象
 ```js
 const remoteParticipants = call.remoteParticipants;
 ```
 
-* 如果调用是传入的，则为调用方的标识。 标识是 `CommunicationIdentifier` 类型之一
+* 呼叫方的标识符（如果是来电）。 标识符是 `CommunicationIdentifier` 类型之一
 ```js
 
-const callerIdentity = call.callerInfo.identity;
+const callerIdentity = call.callerInfo.identifier;
 
-```
-
-* 获取调用的状态。
+* Get the state of the Call.
 ```js
 
 const callState = call.state;
 
 ```
-这会返回表示调用的当前状态的字符串：
-* "无"-初始调用状态
-* "传入"-表示调用是传入的，它必须接受或拒绝
-* "正在连接"-在调用或接受调用后初始转换状态
-* "震铃"-对于传出呼叫，指示呼叫正在拨打远程参与者，并在其两侧 "传入"
-* "EarlyMedia"-表示在连接呼叫之前播放公告的状态
-* "已连接"-调用已连接
-* "保持"-呼叫处于暂挂状态，本地终结点与远程参与者之间没有媒体流动 (s) 
-* 在调用进入 "断开连接" 状态之前，"断开"-转换状态
-* "Disconnected"-最终调用状态
-  * 如果网络连接丢失，在大约2分钟后状态将变为 "已断开连接"。
+这会返回一个表示当前通话状态的字符串：
+* “None”- 初始通话状态
+* “Incoming”- 表示有来电，必须接听或拒绝
+* “Connecting”- 拨打或接听电话后的初始过渡状态
+* “Ringing”- 对于去电，表示远程参与者的电话正在响铃，对方的状态是“Incoming”
+* “EarlyMedia”- 表示在接通电话前播放通知的状态
+* “Connected”- 已接通电话
+* “LocalHold”- 本地参与者暂停通话，本地终结点与远程参与者之间没有媒体传输
+* “RemoteHold”- 远程参与者暂停通话，本地终结点与远程参与者之间没有媒体传输
+* “Disconnecting”- 通话进入“Disconnected”状态前的过渡状态
+* “Disconnected”- 最终通话状态
+  * 如果网络连接断开，大约 2 分钟后状态变为“Disconnected”。
 
-* 若要查看给定调用结束的原因，请检查 `callEndReason` 属性。
+* 若要了解给定通话为何终止，请检查 `callEndReason` 属性。
 ```js
 
 const callEndReason = call.callEndReason;
@@ -196,36 +209,36 @@ const callEndReason = call.callEndReason;
 // callEndReason.subCode (number) subCode associated with the reason
 ```
 
-* 若要了解当前调用是否为传入或传出调用，请检查 `direction` 属性，返回 `CallDirection` 。
+* 若要了解当前通话是来电还是去电，请检查 `direction` 属性，它将返回 `CallDirection`。
 ```js
 const isIncoming = call.direction == 'Incoming';
 const isOutgoing = call.direction == 'Outgoing';
 ```
 
-*  若要检查当前麦克风是否静音，请检查 `muted` 属性，返回 `Boolean` 。
+*  若要检查当前麦克风是否静音，请检查 `muted` 属性，它将返回 `Boolean`。
 ```js
 
 const muted = call.isMicrophoneMuted;
 
 ```
 
-* 若要查看是否正在从给定的终结点发送屏幕共享流，请检查 `isScreenSharingOn` 属性，返回 `Boolean` 。
+* 若要了解屏幕共享流是否来自给定终结点，请检查 `isScreenSharingOn` 属性，它将返回 `Boolean`。
 ```js
 
 const isScreenSharingOn = call.isScreenSharingOn;
 
 ```
 
-* 若要检查活动视频流，请检查 `localVideoStreams` 集合，其中包含 `LocalVideoStream` 对象
+* 若要检查活动视频流，请查看 `localVideoStreams` 集合，其中包含 `LocalVideoStream` 对象
 ```js
 
 const localVideoStreams = call.localVideoStreams;
 
 ```
 
-### <a name="call-ended-event"></a>Call 结束事件
+### <a name="call-ended-event"></a>通话结束事件
 
-`Call` `callEnded` 当调用结束时，实例将发出事件。 若要按以下方式侦听此事件：
+通话结束时，`Call` 实例将发出 `callEnded` 事件。 若要侦听此事件，请按以下方式订阅：
 
 ```js
 const callEndHander = async (args: { callEndReason: CallEndReason }) => {
@@ -237,14 +250,14 @@ call.on('callEnded', callEndHander);
 
 ### <a name="mute-and-unmute"></a>静音和取消静音
 
-若要使本地终结点静音或取消静音，你可以使用 `mute` 和 `unmute` 异步 api：
+若要使本地终结点静音或取消静音，可使用 `mute` 和 `unmute` 异步 API：
 
 ```js
 
-//mute local device 
+//mute local device
 await call.mute();
 
-//unmute local device 
+//unmute local device
 await call.unmute();
 
 ```
@@ -252,7 +265,7 @@ await call.unmute();
 ### <a name="start-and-stop-sending-local-video"></a>开始和停止发送本地视频
 
 
-若要开始视频，必须使用对象上的方法来枚举摄像机 `getCameraList` `deviceManager` 。 然后创建一个新实例，将 `LocalVideoStream` 所需的照相机 `startVideo` 作为参数传递给方法：
+若要开始发送视频，必须在 `deviceManager` 对象上使用 `getCameras` 方法来枚举相机。 然后创建新的 `LocalVideoStream` 实例，将所需相机作为参数传递给 `startVideo` 方法：
 
 
 ```js
@@ -261,7 +274,7 @@ await call.startVideo(localVideoStream);
 
 ```
 
-成功开始发送视频后， `LocalVideoStream` 实例将添加到 `localVideoStreams` 调用实例上的集合中。
+成功开始发送视频后，会将 `LocalVideoStream` 实例添加到通话实例上的 `localVideoStreams` 集合。
 
 ```js
 
@@ -269,7 +282,7 @@ call.localVideoStreams[0] === localVideoStream;
 
 ```
 
-若要停止本地视频，请 `localVideoStream` 在集合中传递可用的实例 `localVideoStreams` ：
+若要停止本地视频，请传递 `localVideoStreams` 集合中可用的 `localVideoStream` 实例：
 
 ```js
 
@@ -277,20 +290,20 @@ await call.stopVideo(localVideoStream);
 
 ```
 
-通过对实例调用来发送视频时，可以切换到不同的相机设备 `switchSource` `localVideoStream` ：
+对 `localVideoStream` 实例调用 `switchSource` 来发送视频时，可切换到不同的相机设备：
 
 ```js
-const source callClient.getDeviceManager().getCameraList()[1];
-localVideoStream.switchSource(source);
+const cameras = await callClient.getDeviceManager().getCameras();
+localVideoStream.switchSource(cameras[1]);
 
 ```
 
 ## <a name="remote-participants-management"></a>远程参与者管理
 
-所有远程参与者均由 `RemoteParticipant` 类型表示，并可通过 `remoteParticipants` 集合在调用实例上使用。
+所有远程参与者均以 `RemoteParticipant` 类型表示，可通过通话实例上的 `remoteParticipants` 集合获得。
 
-### <a name="list-participants-in-a-call"></a>列出调用中的参与者
-`remoteParticipants`集合返回给定调用中的远程参与者列表：
+### <a name="list-participants-in-a-call"></a>列出通话参与者
+`remoteParticipants` 集合会返回给定通话中远程参与者的列表：
 
 ```js
 
@@ -299,16 +312,17 @@ call.remoteParticipants; // [remoteParticipant, remoteParticipant....]
 ```
 
 ### <a name="remote-participant-properties"></a>远程参与者属性
-远程参与者具有与之关联的一组属性和集合
+远程参与者具有一组关联的属性和集合
 #### <a name="communicationidentifier"></a>CommunicationIdentifier
 获取此远程参与者的标识符。
+标识是“CommunicationIdentifier”类型之一：
 ```js
 const identifier = remoteParticipant.identifier;
 ```
-它可以是 "CommunicationIdentifier" 类型之一：
-  * {communicationUserId： "<ACS_USER_ID" >}-表示 ACS 用户的对象
-  * {phoneNumber： "<> '}-以164格式表示电话号码的对象
-  * {microsoftTeamsUserId： "<TEAMS_USER_ID>"，isAnonymous？： boolean; cloud？： "public" |"dod" |"gcch"-表示团队用户的对象
+它可以是“CommunicationIdentifier”类型之一：
+  * { communicationUserId: '<ACS_USER_ID'> } - 表示 ACS 用户的对象
+  * { phoneNumber: '<E.164>' } - 以 E.164 格式表示电话号码的对象
+  * { microsoftTeamsUserId: '<TEAMS_USER_ID>', isAnonymous?: boolean; cloud?: "public" | "dod" | "gcch" } - 表示 Teams 用户的对象
 
 #### <a name="state"></a>状态
 获取此远程参与者的状态。
@@ -316,35 +330,36 @@ const identifier = remoteParticipant.identifier;
 
 const state = remoteParticipant.state;
 ```
-状态可以是
-* "空闲"-初始状态
-* 参与者连接到呼叫时的 "正在连接"-转换状态
-* "已连接"-参与者已连接到呼叫
-* "保持"-参与者处于暂停状态
-* "EarlyMedia"-在参与者连接到呼叫之前播放公告
-* "断开连接"-最终状态-参与者已与呼叫断开连接
-  * 如果远程参与者丢失了其网络连接，则在大约2分钟后远程参与者状态将变为 "已断开连接"。
+状态可以是下列其中一项
+* “Idle”- 初始状态
+* “Connecting”- 参与者正在连接到通话时的过渡状态
+* “Ringing”- 参与者电话正在响铃
+* “Connected”- 参与者已接通电话
+* “Connected”- 参与者已暂停通话
+* “EarlyMedia”- 在参与者接通电话前播放通知
+* “Disconnected”- 最终状态：参与者已与通话断开连接
+  * 如果远程参与者失去其网络连接，则远程参与者状态在大约 2 分钟后变为“已断开连接”。
 
-#### <a name="call-end-reason"></a>调用结束原因
-若要了解参与者离开呼叫的原因，请检查 `callEndReason` 属性：
+#### <a name="call-end-reason"></a>通话结束原因
+若要了解参与者退出通话的原因，请检查 `callEndReason` 属性：
 ```js
 const callEndReason = remoteParticipant.callEndReason;
 // callEndReason.code (number) code associated with the reason
 // callEndReason.subCode (number) subCode associated with the reason
 ```
-#### <a name="is-muted"></a>静音
-若要检查此远程参与者是否已静音，请检查 `isMuted` 属性，返回 `Boolean`
+#### <a name="is-muted"></a>已静音
+若要检查此远程参与者是否已静音，请检查 `isMuted` 属性，它返回 `Boolean`
 ```js
 const isMuted = remoteParticipant.isMuted;
 ```
-#### <a name="is-speaking"></a>正在说话
-若要检查此远程参与者是否正在通话，请检查 `isSpeaking` 它返回的属性 `Boolean`
+#### <a name="is-speaking"></a>正在讲话
+若要检查此远程参与者是否正在讲话，请检查 `isSpeaking` 属性，它返回 `Boolean`
 ```js
 const isSpeaking = remoteParticipant.isSpeaking;
 ```
 
 #### <a name="video-streams"></a>视频流
-若要检查给定参与者在此调用中发送的所有视频流，请选中 `videoStreams` "集合"，其中包含 `RemoteVideoStream` 对象
+若要检查给定参与者在此通话中发送的所有视频流，请检查 `videoStreams` 集合，其中包括 `RemoteVideoStream` 对象
 ```js
 
 const videoStreams = remoteParticipant.videoStreams; // [RemoteVideoStream, ...]
@@ -352,10 +367,10 @@ const videoStreams = remoteParticipant.videoStreams; // [RemoteVideoStream, ...]
 ```
 
 
-### <a name="add-a-participant-to-a-call"></a>向呼叫添加参与者
+### <a name="add-a-participant-to-a-call"></a>向通话添加参与者
 
-若要将参与者添加到呼叫 (可以调用的用户或电话号码) `addParticipant` 。
-提供一个 "标识符" 类型。
+若要向通话添加参与者（用户或电话号码），可调用 `addParticipant`。
+提供一种“标识符”类型。
 这会以同步方式返回远程参与者实例。
 
 ```js
@@ -365,11 +380,11 @@ const remoteParticipant = call.addParticipant(userIdentifier);
 const remoteParticipant = call.addParticipant(pstnIdentifier, {alternateCallerId: '<Alternate Caller ID>'});
 ```
 
-### <a name="remove-participant-from-a-call"></a>从呼叫中删除参与者
+### <a name="remove-participant-from-a-call"></a>删除通话参与者
 
-若要从调用中删除参与者 (可以调用的用户或电话号码) `removeParticipant` 。
-必须传递 "Identifier" 类型之一，这会在从调用中删除参与者后异步解决。
-还将从集合中删除该参与者 `remoteParticipants` 。
+若要删除通话参与者（用户或电话号码），可调用 `removeParticipant`。
+必须传递一个“Identifier”类型。从通话中删除参与者后将异步解析它。
+还将从 `remoteParticipants` 集合中删除该参与者。
 
 ```js
 const userIdentifier = { communicationUserId: <ACS_USER_ID> };
@@ -380,95 +395,97 @@ await call.removeParticipant(pstnIdentifier);
 
 ## <a name="render-remote-participant-video-streams"></a>呈现远程参与者视频流
 
-若要列出视频流和远程参与者的屏幕共享流，请检查 `videoStreams` 集合：
+若要列出远程参与者的视频流和屏幕共享流，请检查 `videoStreams` 集合：
 
 ```js
 const remoteVideoStream: RemoteVideoStream = call.remoteParticipants[0].videoStreams[0];
-const streamType: MediaStreamType = remoteVideoStream.type;
+const streamType: MediaStreamType = remoteVideoStream.mediaStreamType;
 ```
- 
-若要呈现 `RemoteVideoStream` ，必须订阅 `isAvailableChanged` 事件。
-如果该 `isAvailable` 属性更改为 `true` ，则远程参与者将发送流。
-一旦发生这种情况，请创建的新实例 `Renderer` ，然后 `RendererView` 使用异步方法创建新的实例 `createView` 。  然后，可以附加 `view.target` 到任何 UI 元素。
-当远程流的可用性发生变化时，你可以选择销毁整个呈现器、特定 `RendererView` 或保留它们，但这将导致显示空白的视频帧。
+
+若要呈现 `RemoteVideoStream`，必须订阅 `isAvailableChanged` 事件。
+如果该 `isAvailable` 属性更改为 `true`，则远程参与者正在发送流。
+一旦发生这种情况，请创建新的 `Renderer` 实例，然后使用异步 `createView` 方法创建新的 `RendererView` 实例。  然后，可以将 `view.target` 附加到任何 UI 元素。
+当远程流的可用性发生变化时，可选择销毁整个呈现器、销毁特定的 `RendererView`，也可保留它们，但这将导致显示空白的视频帧。
 
 ```js
-let renderer: Renderer = new Renderer(remoteParticipantStream);
-const displayVideo = () => {
-    const view = await renderer.createView();
-    htmlElement.appendChild(view.target);
-}
-remoteParticipantStream.on('availabilityChanged', async () => {
-    if (remoteParticipantStream.isAvailable) {
-        displayVideo();
-    } else {
-        renderer.dispose();
+function subscribeToRemoteVideoStream(remoteVideoStream: RemoteVideoStream) {
+    let renderer: Renderer = new Renderer(remoteVideoStream);
+    const displayVideo = () => {
+        const view = await renderer.createView();
+        htmlElement.appendChild(view.target);
     }
-});
-if (remoteParticipantStream.isAvailable) {
-    displayVideo();
+    remoteVideoStream.on('availabilityChanged', async () => {
+        if (remoteVideoStream.isAvailable) {
+            displayVideo();
+        } else {
+            renderer.dispose();
+        }
+    });
+    if (remoteVideoStream.isAvailable) {
+        displayVideo();
+    }
 }
 ```
 
 ### <a name="remote-video-stream-properties"></a>远程视频流属性
 远程视频流具有以下属性：
 
-* `Id` -远程视频流的 ID
+* `Id` - 远程视频流的 ID
 ```js
 const id: number = remoteVideoStream.id;
 ```
 
-* `StreamSize` -size ( 远程视频流的宽度/高度 ) 
+* `StreamSize` - 远程视频流的大小（宽度/高度）
 ```js
 const size: {width: number; height: number} = remoteVideoStream.size;
 ```
 
-* `MediaStreamType` -可以是 "视频" 或 "ScreenSharing"
+* `MediaStreamType` - 可以是“Video”或“ScreenSharing”
 ```js
-const type: MediaStreamType = remoteVideoStream.type;
+const type: MediaStreamType = remoteVideoStream.mediaStreamType;
 ```
-* `isAvailable` -指示远程参与者终结点是否正在主动发送流
+* `isAvailable` - 指示远程参与者终结点是否正在主动发送流
 ```js
 const type: boolean = remoteVideoStream.isAvailable;
 ```
 
 ### <a name="renderer-methods-and-properties"></a>呈现器方法和属性
 
-* 创建一个 `RendererView` 可在以后附加到应用程序 UI 以呈现远程视频流的实例。
+* 创建一个 `RendererView` 实例，随后可将其附加到应用程序 UI 中来呈现远程视频流。
 ```js
 renderer.createView()
 ```
 
-* 释放呈现器和所有关联的 `RendererView` 实例。
+* 处置呈现器和所有关联的 `RendererView` 实例。
 ```js
 renderer.dispose()
 ```
 
 
 ### <a name="rendererview-methods-and-properties"></a>RendererView 方法和属性
-创建时， `RendererView` 可以指定 `scalingMode` 和 `mirrored` 属性。
-如果指定了，缩放模式可以是 "拉伸"、"裁剪" 或 "拟合" `Mirrored` 。呈现的流将垂直翻转。
+创建 `RendererView` 时，可以指定 `scalingMode` 和 `isMirrored` 属性。
+缩放模式可以是“Stretch”、“Crop”或“Fit”。如果指定了 `isMirrored`，呈现的流将会垂直翻转。
 
 ```js
-const rendererView: RendererView = renderer.createView({ scalingMode, mirrored });
+const rendererView: RendererView = renderer.createView({ scalingMode, isMirrored });
 ```
-任何给定 `RendererView` 实例都具有一个 `target` 表示呈现图面的属性。 此操作必须在应用程序 UI 中附加：
+任何给定的 `RendererView` 实例都有一个表示呈现图面的 `target` 属性。 必须将其附加到应用程序 UI 中：
 ```js
 document.body.appendChild(rendererView.target);
 ```
 
-稍后可以通过调用方法来更新缩放模式 `updateScalingMode` 。
+稍后可调用 `updateScalingMode` 方法来更新缩放模式。
 ```js
 view.updateScalingMode('Crop')
 ```
 
 ## <a name="device-management"></a>设备管理
 
-`DeviceManager` 允许你枚举可在调用中用于传输音频/视频流的本地设备。 它还允许你请求用户使用本机浏览器 API 访问其麦克风和照相机的权限。
+借助 `DeviceManager`，可枚举能够在通话中用于传输音频/视频流的本地设备。 你还可用它来通过本机浏览器 API 向用户请求访问其麦克风和相机的权限。
 
-可以 `deviceManager` 通过调用 `callClient.getDeviceManager()` 方法访问。
+可调用 `callClient.getDeviceManager()` 方法来访问 `deviceManager`。
 > [!WARNING]
-> 当前 `callAgent` 必须首先实例化对象，才能获得对 DeviceManager 的访问权限
+> 当前必须先实例化 `callAgent` 对象才能获得 DeviceManager 的访问权限
 
 ```js
 
@@ -478,48 +495,49 @@ const deviceManager = await callClient.getDeviceManager();
 
 ### <a name="enumerate-local-devices"></a>枚举本地设备
 
-若要访问本地设备，可以在 Device Manager 上使用枚举方法。 枚举是同步操作。
+若要访问本地设备，可在设备管理器上使用枚举方法。 枚举是异步操作。
 
 ```js
 
 //  Get a list of available video devices for use.
-const localCameras = deviceManager.getCameraList(); // [VideoDeviceInfo, VideoDeviceInfo...]
+const localCameras = await deviceManager.getCameras(); // [VideoDeviceInfo, VideoDeviceInfo...]
 
 // Get a list of available microphone devices for use.
-const localMicrophones = deviceManager.getMicrophoneList(); // [AudioDeviceInfo, AudioDeviceInfo...]
+const localMicrophones = await deviceManager.getMicrophones(); // [AudioDeviceInfo, AudioDeviceInfo...]
 
 // Get a list of available speaker devices for use.
-const localSpeakers = deviceManager.getSpeakerList(); // [AudioDeviceInfo, AudioDeviceInfo...]
+const localSpeakers = await deviceManager.getSpeakers(); // [AudioDeviceInfo, AudioDeviceInfo...]
 
 ```
 
-### <a name="set-default-microphonespeaker"></a>设置默认麦克风/发言人
+### <a name="set-default-microphonespeaker"></a>设置默认麦克风/扬声器
 
-使用设备管理器，可以设置一个默认设备，该设备将在启动呼叫时使用。
-如果未设置客户端默认值，则通信服务将回退到 OS 默认值。
+借助设备管理器，可设置发起通话时要使用的默认设备。
+如果未设置客户端默认值，通信服务将回退到 OS 默认值。
 
 ```js
 
 // Get the microphone device that is being used.
-const defaultMicrophone = deviceManager.getMicrophone();
+const defaultMicrophone = deviceManager.selectedMicrophone;
 
 // Set the microphone device to use.
-await deviceManager.setMicrophone(AudioDeviceInfo);
+await deviceManager.selectMicrophone(AudioDeviceInfo);
 
 // Get the speaker device that is being used.
-const defaultSpeaker = deviceManager.getSpeaker();
+const defaultSpeaker = deviceManager.selectedSpeaker;
 
 // Set the speaker device to use.
-await deviceManager.setSpeaker(AudioDeviceInfo);
+await deviceManager.selectSpeaker(AudioDeviceInfo);
 
 ```
 
 ### <a name="local-camera-preview"></a>本地相机预览
 
-你可以使用 `DeviceManager` 和 `Renderer` 从本地相机开始呈现流。 此流不会发送给其他参与者;这是一个本地预览源。 这是一个异步操作。
+可使用 `DeviceManager` 和 `Renderer` 开始呈现来自本地相机的流。 此流不会发送给其他参与者；这是一项本地预览源。 这是异步操作。
 
 ```js
-const localVideoDevice = deviceManager.getCameraList()[0];
+const cameras = await deviceManager.getCameras();
+const localVideoDevice = cameras[0];
 const localCameraStream = new LocalVideoStream(localVideoDevice);
 const renderer = new Renderer(localCameraStream);
 const view = await renderer.createView();
@@ -527,45 +545,35 @@ document.body.appendChild(view.target);
 
 ```
 
-### <a name="request-permission-to-cameramicrophone"></a>向照相机/麦克风请求权限
+### <a name="request-permission-to-cameramicrophone"></a>请求使用相机/麦克风的权限
 
-提示用户使用以下项授予相机/麦克风权限：
+使用以下内容提示用户授予相机/麦克风权限：
 
 ```js
-const result = await deviceManager.askDevicePermission(audio: true, video: true);
+const result = await deviceManager.askDevicePermission({audio: true, video: true});
 ```
-这会以异步方式解析，该对象指示是否 `audio` `video` 授予了和权限：
+这将异步解析，并通过一个对象指示是否已授予 `audio` 和 `video` 权限：
 ```js
 console.log(result.audio);
 console.log(result.video);
 ```
 
-可以通过调用来检查给定类型的当前权限状态 `getPermissionState` ：
 
-```js
+## <a name="call-recording-management"></a>通话录制管理
 
-const result = deviceManager.getPermissionState('Microphone'); // for microphone permission state
-const result = deviceManager.getPermissionState('Camera'); // for camera permission state
-
-console.log(result); // 'Granted' | 'Denied' | 'Prompt' | 'Unknown';
-
-```
-
-## <a name="call-recording-management"></a>调用录制管理
-
-呼叫记录是核心 API 的扩展功能 `Call` 。 首先需要获取录制功能 API 对象：
+通话录制是核心 `Call` API 的扩展功能。 首先需要获取录制功能 API 对象：
 
 ```js
 const callRecordingApi = call.api(Features.Recording);
 ```
 
-然后，若要检查是否正在记录调用，请检查的 `isRecordingActive` 属性 `callRecordingApi` ，返回 `Boolean` 。
+然后，若要检查是否正在录制通话，请检查 `callRecordingApi` 的 `isRecordingActive` 属性，它将返回 `Boolean`。
 
 ```js
 const isResordingActive = callRecordingApi.isRecordingActive;
 ```
 
-你还可以订阅记录更改：
+还可以订阅录制更改：
 
 ```js
 const isRecordingActiveChangedHandler = () => {
@@ -573,35 +581,35 @@ const isRecordingActiveChangedHandler = () => {
 };
 
 callRecordingApi.on('isRecordingActiveChanged', isRecordingActiveChangedHandler);
-               
+
 ```
 
-## <a name="call-transfer-management"></a>调用传输管理
+## <a name="call-transfer-management"></a>呼叫转移管理
 
-调用传输是核心 API 的扩展功能 `Call` 。 首先需要获取传输功能 API 对象：
+呼叫转移是核心 `Call` API 的扩展功能。 首先需要获取转移功能 API 对象：
 
 ```js
 const callTransferApi = call.api(Features.Transfer);
 ```
 
-调用传输涉及三方 *出让人*、 *transferee* 和 *传输目标*。 传输流的工作方式如下：
+呼叫转移涉及三方：转接方、被转接方和转接目标  。 转接流的原理如下：
 
-1. *出让人* 和 *transferee* 之间已有连接的调用
-2. *出让人* 决定将呼叫转移 (*transferee*  ->  *转接目标*) 
-3. *出让人* 调用 `transfer` API
-4. *transferee* 决定是 `accept` `reject` 通过事件 *传输目标* 还是传输请求 `transferRequested` 。
-5. 仅当 *transferee* 执行了传输请求时，*传输目标* 才会收到传入呼叫 `accept`
+1. 转接方和被转接方之间已经存在接通的电话 
+2. 转接方决定转接通话（被转接方  ->  转接目标  ）
+3. 转接方调用 `transfer` API
+4. 被转接方通过 `transferRequested` 事件决定是 `accept` 还是 `reject` 向转接目标转接的请求 。
+5. 只有被转接方 `accept` 转接请求，转接目标才会收到来电 
 
-### <a name="transfer-terminology"></a>传输术语
+### <a name="transfer-terminology"></a>转接术语
 
-- 出让人-启动传输请求的用户
-- Transferee-由出让人传输到传输目标的用户
-- 传输目标-要传输到的目标
+- 转接方 - 发起转接请求的用户
+- 被转接方 - 由转接方转接给转接目标的用户
+- 转接目标 - 要转接给的目标用户
 
-若要传输当前调用，可以使用 `transfer` 同步 API。 `transfer` 采用可选 `TransferCallOptions` 的，它允许您设置 `disableForwardingAndUnanswered` 标志：
+若要转接当前通话，可以使用 `transfer` 同步 API。 `transfer` 可接受可选的 `TransferCallOptions`，因此你可以设置 `disableForwardingAndUnanswered` 标志：
 
-- `disableForwardingAndUnanswered` = false-如果 *传输目标* 未应答传输呼叫，则会跟随 *传输目标* 转发和未应答的设置
-- `disableForwardingAndUnanswered` = true-如果 *传输目标* 未应答传输调用，则传输尝试将结束
+- `disableForwardingAndUnanswered` = false - 如果转接目标未接听转接的电话，它将遵循转接目标转接且未接听设置 
+- `disableForwardingAndUnanswered` = true - 如果转接目标未接听转接的电话，转接尝试将结束
 
 ```js
 // transfer target can be ACS user
@@ -613,7 +621,7 @@ const id = { communicationUserId: <ACS_USER_ID> };
 const transfer = callTransferApi.transfer({targetParticipant: id});
 ```
 
-传输允许您订阅 `transferStateChanged` 和 `transferRequested` 事件。 `transferRequsted` 事件来自 `call` 实例、 `transferStateChanged` 事件和传输， `state` 来自 `error` `transfer` 实例
+转接允许订阅 `transferStateChanged` 和 `transferRequested` 事件。 `transferRequsted` 事件来自 `call` 实例，`transferStateChanged` 事件以及转移 `state` 和 `error` 来自 `transfer` 实例
 
 ```js
 // transfer state
@@ -623,7 +631,7 @@ const transferState = transfer.state; // None | Transferring | Transferred | Fai
 const transferError = transfer.error; // transfer error code that describes the failure if transfer request failed
 ```
 
-Transferee 可以 `transferRequested` 通过 `accept()` 或 `reject()` 在中接受或拒绝由出让人启动的传输请求 `transferRequestedEventArgs` 。 你可以访问 `targetParticipant` 中的信息、 `accept` 和 `reject` 方法 `transferRequestedEventArgs` 。
+被转接方可以通过 `transferRequestedEventArgs` 中的 `accept()` 或 `reject()` 来接受或拒绝转接方在 `transferRequested` 事件中发起的转接请求。 可以在 `transferRequestedEventArgs` 中访问 `targetParticipant` 信息、`accept` 和 `reject` 方法。
 
 ```js
 // Transferee to accept the transfer request
@@ -638,41 +646,71 @@ callTransferApi.on('transferRequested', args => {
 ```
 
 ## <a name="eventing-model"></a>事件模型
-
-您可以订阅大多数属性和集合，以便在值发生更改时收到通知。
+必须检查当前值，并订阅更新事件以获取未来的值。
 
 ### <a name="properties"></a>属性
-订阅 `property changed` 事件：
 
 ```js
+// Inspect current value
+console.log(object.property);
 
-const eventHandler = () => {
-    // check current value of a property, value is not passed to callback
-    console.log(object.property);
-};
-object.on('propertyNameChanged',eventHandler);
+// Subscribe to value updates
+object.on('propertyChanged', () => {
+    // Inspect new value
+    console.log(object.property)
+});
 
-// To unsubscribe:
+// Unsubscribe from updates:
+object.off('propertyChanged', () => {});
 
-object.off('propertyNameChanged',eventHandler);
 
+
+// Example for inspecting call state
+console.log(call.state);
+call.on('stateChanged', () => {
+    console.log(call.state);
+});
+call.off('stateChanged', () => {});
 ```
 
 ### <a name="collections"></a>集合
-订阅 `collection updated` 事件：
-
 ```js
+// Inspect current collection
+object.collection.forEach(v => {
+    console.log(v);
+});
 
-const eventHandler = (e) => {
-    // check added elements
-    console.log(e.added);
-    // check removed elements
-    console.log(e.removed);
-};
-object.on('collectionNameUpdated',eventHandler);
+// Subscribe to collection updates
+object.on('collectionUpdated', e => {
+    // Inspect new values added to the collection
+    e.added.forEach(v => {
+        console.log(v);
+    });
+    // Inspect values removed from the collection
+    e.removed.forEach(v => {
+        console.log(v);
+    });
+});
 
-// To unsubscribe:
+// Unsubscribe from updates:
+object.off('collectionUpdated', () => {});
 
-object.off('collectionNameUpdated',eventHandler);
 
+
+// Example for subscribing to remote participants and their video streams
+call.remoteParticipants.forEach(p => {
+    subscribeToRemoteParticipant(p);
+})
+
+call.on('remoteParticipantsUpdated', e => {
+    e.added.forEach(p => { subscribeToRemoteParticipant(p) })
+    e.removed.forEach(p => { unsubscribeFromRemoteParticipant(p) })
+});
+
+function subscribeToRemoteParticipant(p) {
+    console.log(p.state);
+    p.on('stateChanged', () => { console.log(p.state); });
+    p.videoStreams.forEach(v => { subscribeToRemoteVideoStream(v) });
+    p.on('videoStreamsUpdated', e => { e.added.forEach(v => { subscribeToRemoteVideoStream(v) }) })
+}
 ```

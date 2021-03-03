@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: core
 ms.author: keli19
 author: likebupt
-ms.date: 09/09/2020
+ms.date: 02/05/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: 2ef125f65e13f7a9fa756553b1de148d4849babc
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: dda47d3ff561d4d57045dbb28f8c411e193086d5
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94553940"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101657346"
 ---
 # <a name="run-batch-predictions-using-azure-machine-learning-designer"></a>使用 Azure 机器学习设计器运行批量预测
 
@@ -144,6 +144,22 @@ ms.locfileid: "94553940"
 另外，还可以在终结点的“已发布管道”选项卡中设置新的默认管道。
 
 ![在 "已发布管道" 页中设置默认管道](./media/how-to-run-batch-predictions-designer/set-new-default-pipeline.png)
+
+## <a name="limitations"></a>限制
+
+如果在训练管道中进行了一些修改，则应重新提交定型管道， **更新**  推理管道并再次运行推理管道。
+
+请注意，在推理管道中将只更新模型，而不会更新数据转换。
+
+若要在推理管道中使用更新的转换，需要将转换模块的转换输出注册为数据集。
+
+![显示如何注册转换数据集的屏幕截图](./media/how-to-run-batch-predictions-designer/register-transformation-dataset.png)
+
+然后，手动将推理管道中的 **TD** 模块替换为已注册的数据集。
+
+![显示如何替换转换模块的屏幕截图](./media/how-to-run-batch-predictions-designer/replace-td-module-batch-inference-pipeline.png)
+
+然后，你可以提交带有更新的模型和转换的推理管道，然后发布。
 
 ## <a name="next-steps"></a>后续步骤
 

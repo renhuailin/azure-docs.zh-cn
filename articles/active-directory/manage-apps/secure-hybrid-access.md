@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: how-to
 ms.workload: identity
-ms.date: 9/10/2020
+ms.date: 2/16/2021
 ms.author: gasinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 521439da044fb4fc3c2f578f28658215266138d9
-ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
+ms.openlocfilehash: 68a4241a70577ce359320d388882312cf06090ba
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96317089"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101645404"
 ---
 # <a name="secure-hybrid-access-secure-legacy-apps-with-azure-active-directory"></a>安全混合访问：使用 Azure Active Directory 保护旧应用
 
@@ -44,13 +44,15 @@ ms.locfileid: "96317089"
 
 以下网络供应商提供预先构建的解决方案以及与 Azure AD 集成的详细指南。
 
-- [Akamai 企业应用程序访问 (EAA)](../saas-apps/akamai-tutorial.md)
+- [Akamai 企业应用程序访问 (EAA)](https://docs.microsoft.com/azure/active-directory/saas-apps/akamai-tutorial)
 
-- [Citrix 应用程序传送控制器 (ADC)](../saas-apps/citrix-netscaler-tutorial.md)
+- [Citrix 应用程序传送控制器 (ADC)](https://docs.microsoft.com/azure/active-directory/saas-apps/citrix-netscaler-tutorial)
 
-- [F5 Big-IP APM](f5-aad-integration.md)
+- [F5 Big-IP APM](https://docs.microsoft.com/azure/active-directory/saas-apps/headerf5-tutorial)
 
-- [Kemp](../saas-apps/kemp-tutorial.md)
+- [Kemp](https://docs.microsoft.com/azure/active-directory/saas-apps/kemp-tutorial)
+
+- [脉冲安全虚拟流量管理器 (VTM) ](https://docs.microsoft.com/azure/active-directory/saas-apps/pulse-secure-virtual-traffic-manager-tutorial)
 
 ### <a name="sha-through-vpn-and-sdp-applications"></a>SHA 到 VPN 和 SDP 应用程序
 
@@ -58,14 +60,26 @@ ms.locfileid: "96317089"
 
 ![映像显示了使用 VPN 合作伙伴和应用代理的安全混合访问 ](./media/secure-hybrid-access/app-proxy-vpn.png)
 
-以下 VPN 和 SDP 供应商提供预先构建的解决方案和与 Azure AD 集成的详细指南。
+以下 VPN 供应商提供预先构建的解决方案和与 Azure AD 集成的详细指南。
 
-• [Cisco AnyConnect](../saas-apps/cisco-anyconnect.md)
+- [Cisco AnyConnect](https://docs.microsoft.com/azure/active-directory/saas-apps/cisco-anyconnect)
 
-• [Fortinet](../saas-apps/fortigate-ssl-vpn-tutorial.md)
+- [Fortinet](https://docs.microsoft.com/azure/active-directory/saas-apps/fortigate-ssl-vpn-tutorial)
 
-• [F5 大 IP APM](f5-aad-password-less-vpn.md)
+- [F5 Big-IP APM](https://docs.microsoft.com/azure/active-directory/manage-apps/f5-aad-password-less-vpn)
 
-• [Palo Alto Networks 全局保护](../saas-apps/paloaltoadmin-tutorial.md)
+- [Palo Alto Networks 全局保护](https://docs.microsoft.com/azure/active-directory/saas-apps/paloaltoadmin-tutorial)
 
-• [Zscaler Private Access (ZPA) ](../saas-apps/zscalerprivateaccess-tutorial.md)
+- [脉冲安全脉冲连接安全 (电脑) ](https://docs.microsoft.com/azure/active-directory/saas-apps/pulse-secure-pcs-tutorial)
+
+以下 SDP 供应商提供预先构建的解决方案和与 Azure AD 集成的详细指南。
+
+- [Datawiza 访问代理](https://docs.microsoft.com/azure/active-directory/manage-apps/add-application-portal-setup-oidc-sso)
+
+- [Perimeter 81](https://docs.microsoft.com/azure/active-directory/saas-apps/perimeter-81-tutorial#:~:text=For%20SSO%20to%20work,%20you%20need%20to%20establish,to%20test%20Azure%20AD%20single%20sign-on%20with%20B.Simon.)
+
+- [Silverfort Authentication 平台](https://docs.microsoft.com/azure/active-directory/manage-apps/add-application-portal-setup-oidc-sso)
+
+- [Strata](https://docs.microsoft.com/azure/active-directory/saas-apps/maverics-identity-orchestrator-saml-connector-tutorial)
+
+- [Zscaler Private Access (ZPA)](https://docs.microsoft.com/azure/active-directory/saas-apps/zscalerprivateaccess-tutorial)

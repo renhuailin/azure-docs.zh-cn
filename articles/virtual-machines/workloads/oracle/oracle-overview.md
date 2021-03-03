@@ -1,24 +1,24 @@
 ---
 title: Microsoft Azure 上的 Oracle 解决方案 | Microsoft Docs
 description: 了解有关在 Microsoft Azure 上部署 Oracle 应用程序和解决方案的选项，包括完全在 Azure 基础结构上运行，或与 Oracle 云基础结构 (OCI) 跨云连接。
-services: virtual-machines-linux
 documentationcenter: ''
 author: dbakevlar
 tags: azure-resource-management
 ms.assetid: ''
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines
+ms.subservice: oracle
+ms.collection: linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/05/2020
 ms.author: kegorman
-ms.openlocfilehash: d9b032bbd89f8b6d300650ac54567b07ae3307b8
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 971f7c919595f915451faf9266ee3bb18b35087e
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94948385"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101677171"
 ---
 # <a name="overview-of-oracle-applications-and-solutions-on-azure"></a>Azure 上的 Oracle 应用程序和解决方案概述
 
@@ -102,4 +102,4 @@ ms.locfileid: "94948385"
 
 * 详细了解如何[将 Azure 与 OCI 互连](oracle-oci-overview.md)。
 
-* 查看 Ignite 2019 中的 [“Azure 上的 Oracle”概述课程](https://myignite.techcommunity.microsoft.com/sessions/82915)。 
+* 查看 Ignite 2019 中的 [“Azure 上的 Oracle”概述课程](https://www.pluralsight.com/courses/microsoft-ignite-session-57)。 

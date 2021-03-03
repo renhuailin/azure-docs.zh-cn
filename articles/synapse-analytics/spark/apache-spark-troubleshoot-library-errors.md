@@ -1,5 +1,5 @@
 ---
-title: 库安装错误疑难解答
+title: 排查库安装错误
 description: 本教程概述了如何排查库安装错误。
 services: synapse-analytics
 author: midesa
@@ -8,14 +8,14 @@ ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: conceptual
 ms.date: 01/04/2021
-ms.openlocfilehash: 60ea97ea2df271f867febec3fa0f0826a18dbbbf
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: e812fa47d35889a9cf8c671a4df6034812272a6a
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100416971"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101670636"
 ---
-# <a name="troubleshoot-library-installation-errors"></a>库安装错误疑难解答 
+# <a name="troubleshoot-library-installation-errors"></a>排查库安装错误 
 要使第三方或本地生成的代码可用于你的应用程序，你可以将库安装到你的无服务器 Apache Spark 池之一。 在启动池时，将从 PyPi 下载 requirements.txt 文件中列出的包。 每次从该 Spark 池中创建 Spark 实例时，都会使用此要求文件。 为 Spark 池安装库后，将可用于使用同一池的所有会话。 
 
 在某些情况下，你可能会发现你尝试安装的库未出现在 Apache Spark 池。 当提供的 requirements.txt 或指定的库中存在错误时，通常会发生这种情况。 当库安装过程中出现错误时，Apache Spark 池会恢复为 Synapse 基本运行时中指定的库。
@@ -54,7 +54,7 @@ df = spark.createDataFrame(data=data2,schema=schema)
 df.write.csv("abfss://<<ENTER NAME OF FILE SYSTEM>>@<<ENTER NAME OF PRIMARY STORAGE ACCOUNT>>.dfs.core.windows.net/validate_permissions.csv")
 
 ```
-如果收到错误，则可能缺少所需的权限。 若要了解如何获取所需的权限，请访问此文档： [分配存储 Blob 数据参与者或存储 Blob 数据所有者权限](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal#assign-an-azure-built-in-role)。
+如果收到错误，则可能缺少所需的权限。 若要了解如何获取所需的权限，请访问此文档： [分配存储 Blob 数据参与者或存储 Blob 数据所有者权限](../../storage/common/storage-auth-aad-rbac-portal.md#assign-an-azure-built-in-role)。
 
 此外，如果您运行的是管道，则工作区 MSI 也必须具有存储 Blob 数据所有者或存储 Blob 数据参与者权限。 若要了解如何向工作区标识授予此权限，请访问：向 [工作区托管标识授予权限](../security/how-to-grant-workspace-managed-identity-permissions.md)。
 
@@ -98,4 +98,3 @@ Synapse 无服务器 Apache Spark 池基于 Linux 分发。 直接从 PyPI 下�
 
 ## <a name="next-steps"></a>后续步骤
 - 查看默认库： [Apache Spark 版本支持](apache-spark-version-support.md)
-

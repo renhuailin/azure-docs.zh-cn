@@ -2,18 +2,18 @@
 title: 在 Azure 环境下的 Oracle 灾难恢复方案概述 | Microsoft 文档
 description: 在 Azure 环境下的 Oracle Database 12c 数据库灾难恢复方案
 author: dbakevlar
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines
+ms.subservice: oracle
+ms.collection: linux
 ms.topic: article
 ms.date: 08/02/2018
 ms.author: kegorman
-ms.reviewer: cynthn
-ms.openlocfilehash: 8c5281b4fe596cf9807d6f0dacb844562dc152dc
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 68b5b9dfd205628c9d7c430df4c0230267752e01
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880618"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101669941"
 ---
 # <a name="disaster-recovery-for-an-oracle-database-12c-database-in-an-azure-environment"></a>在 Azure 环境下的 Oracle Database 12c 数据库灾难恢复
 
@@ -89,7 +89,7 @@ ms.locfileid: "98880618"
 
 ![“DR 拓扑”页屏幕截图](./media/oracle-disaster-recovery/oracle_topology_03.png)
 
-## <a name="additional-reading"></a>其他阅读材料
+## <a name="additional-reading"></a>附加阅读材料
 
 - [在 Azure 上设计和实现 Oracle 数据库](oracle-design.md)
 - [配置 Oracle Data Guard](configure-oracle-dataguard.md)

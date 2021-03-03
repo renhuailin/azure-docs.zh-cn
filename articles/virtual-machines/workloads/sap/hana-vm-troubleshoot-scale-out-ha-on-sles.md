@@ -6,19 +6,18 @@ documentationcenter: ''
 author: hermanndms
 manager: juergent
 editor: ''
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/24/2018
 ms.author: hermannd
-ms.openlocfilehash: 87758100299eb170a7950a1a7a2c6bd2029b27fb
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: f4c1de484ce2659a7e84a1546a7c49c1d77a7d56
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96621546"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101674483"
 ---
 # <a name="verify-and-troubleshoot-sap-hana-scale-out-high-availability-setup-on-sles-12-sp3"></a>验证 SLES 12 SP3 上的 SAP HANA 横向扩展高可用性设置和排查其问题 
 
@@ -554,7 +553,7 @@ Last change: Wed Sep 12 07:46:54 2018 by root via cibadmin on hso-hana-vm-s2-1
 7 nodes configured
 17 resources configured
 
-              **_ Resource management is DISABLED _*_
+              *** Resource management is DISABLED ***
   The cluster will not attempt to start, stop or recover services
 
 Online: [ hso-hana-dm hso-hana-vm-s1-0 hso-hana-vm-s1-1 hso-hana-vm-s1-2 hso-hana-vm-s2-0 hso-hana-vm-s2-1 hso-hana-vm-s2-2 ]
@@ -590,7 +589,7 @@ crm configure property maintenance-mode=false
 </code></pre>
 
 
-另一个 _ *crm** 命令获取编辑器中的完整群集配置，以便可以对其进行编辑。 保存更改后，群集将启动相应的操作：
+另一个 crm 命令可将获取的完整群集配置导入编辑器，以便你可以对其进行编辑。 保存更改后，群集将启动相应的操作：
 
 <pre><code>
 crm configure edit

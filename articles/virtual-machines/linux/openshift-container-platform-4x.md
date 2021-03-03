@@ -3,25 +3,26 @@ title: 在 Azure 中部署 OpenShift 容器平台4。x
 description: 在 Azure 中部署 OpenShift 容器 Platform 4.x。
 author: haroldwongms
 manager: mdotson
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines
+ms.subservice: openshift
+ms.collection: linux
 ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
-ms.openlocfilehash: f2fb1657c26fce3e1fdd67f36b0c6511b78dd216
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e8650802b4add9b33664205367bb3242b32b9754
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87373532"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101670389"
 ---
 # <a name="deploy-openshift-container-platform-4x-in-azure"></a>在 Azure 中部署 OpenShift 容器平台4。x
 
 Azure 中的 OpenShift 容器平台 (OCP) 4.2 现在通过 Installer-Provisioned 基础结构 (IPI) 模型进行了支持。  尝试 OpenShift 4 的登录页为 [try.openshift.com](https://try.openshift.com/)。 若要在 Azure 中安装 OCP 4.2，请访问 [Red Hat OpenShift 群集管理器](https://cloud.redhat.com/openshift/install/azure/installer-provisioned) 页。  需要使用 Red Hat 凭据才能访问此站点。
 
 
-## <a name="notes"></a>注意 
+## <a name="notes"></a>说明 
 
  - 需要在 Azure 中安装和运行 OCP Azure Active Directory (AAD) 服务主体 (SP) 
      - 必须为 SP 授予 Azure Active Directory 关系图的 **OwnedBy** 的 API 权限

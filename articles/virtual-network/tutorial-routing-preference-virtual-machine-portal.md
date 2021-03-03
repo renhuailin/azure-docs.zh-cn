@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/02/2020
+ms.date: 02/01/2021
 ms.author: mnayak
-ms.openlocfilehash: beb670106690645a80aa12b930e3a005efb4282a
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 0559d02ec603d12578fa46d9790d0711fde5e38b
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98221640"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101670896"
 ---
 # <a name="configure-routing-preference-for-a-vm-using-the-azure-portal"></a>使用 Azure 门户为 VM 配置路由首选项
 
@@ -25,13 +25,9 @@ ms.locfileid: "98221640"
 
 本文介绍了如何使用 Azure 门户创建具有设置为通过公共 Internet 路由流量的公共 IP 的虚拟机。
 
-> [!IMPORTANT]
-> 路由首选项目前为公共预览版。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
-
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-登录 [Azure 门户](https://preview.portal.azure.com/)。
+登录 [Azure 门户](https://portal.azure.com/)。
 
 ## <a name="create-a-virtual-machine"></a>创建虚拟机
 
@@ -39,7 +35,7 @@ ms.locfileid: "98221640"
 2. 选择“计算”，然后选择“Windows Server 2016 VM”或另一操作系统。 
 3. 输入或选择以下信息，保留剩下的默认设置，然后选择“确定”：
 
-    |设置|值|
+    |设置|Value|
     |---|---|
     |名称|myVM|
     |用户名| 输入所选用户名。|

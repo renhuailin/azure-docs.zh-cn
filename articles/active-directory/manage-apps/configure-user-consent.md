@@ -12,12 +12,12 @@ ms.date: 06/01/2020
 ms.author: kenwith
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: b6dd95dafbd079e79247110ee227121483dc372e
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 68bb846ebb0199691161bc501441df908eb8ad87
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99259298"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101643603"
 ---
 # <a name="configure-how-end-users-consent-to-applications"></a>配置最终用户如何对应用程序表示同意
 
@@ -185,4 +185,4 @@ Set-AzureADMSAuthorizationPolicy `
 * [Microsoft 标识平台中的权限和许可](../develop/v2-permissions-and-consent.md)
 
 获取帮助或查找问题的答案：
-* [Azure AD 上的 Microsoft Q&。](https://docs.microsoft.com/answers/topics/azure-active-directory.html)
+* [Azure AD 上的 Microsoft Q&。](/answers/topics/azure-active-directory.html)

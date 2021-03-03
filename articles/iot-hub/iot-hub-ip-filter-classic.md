@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/16/2020
 ms.author: jlian
-ms.openlocfilehash: 70cea7a388c07bee9caa2e25e4061a3d3bb2b460
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 6f326bafb311acedc48c5a349c78f1cd6bcebc87
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98633822"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101661148"
 ---
 # <a name="iot-hub-classic-ip-filter-and-how-to-upgrade"></a>IoT 中心经典 IP 筛选器和升级方式 
 
@@ -25,12 +25,12 @@ ms.locfileid: "98633822"
 1.  访问 Azure 门户
 2.  导航到 IoT 中心。
 3.  从左侧菜单中选择“网络”。
-4.  你会看到一个横幅，提示你将 IP 筛选器升级到新模型。  选择“是”继续。
+4.  你会看到一个横幅，提示你将 IP 筛选器升级到新模型。 选择“是”，以继续操作。
     :::image type="content" source="media/iot-hub-ip-filter-classic/ip-filter-upgrade-banner.png" alt-text="显示从经典 IP 筛选器升级的横幅提示的图像":::
 5.  由于默认情况下新的 IP 筛选器会阻止所有 IP，升级会删除你的单个拒绝规则，但你可以在保存之前查看它们。 请仔细查看规则，以确保它们适用于你。
 6.  按照提示完成升级。
 
-## <a name="whats-new"></a>新变化
+## <a name="whats-new"></a>新增功能
 
 ### <a name="secure-by-default"></a>默认保护
 
@@ -88,7 +88,7 @@ ms.locfileid: "98633822"
 
 对于需要阻止特定 IP 地址的 IoT 中心终结点的情况，有两个具体用例：
 
-* IoT 中心应仅从指定范围内的 IP 地址接收流量并拒绝任何其他流量。 例如，将 IoT 中心与 [Azure Express Route](https://azure.microsoft.com/documentation/articles/expressroute-faqs/#supported-services) 配合使用，以在 IoT 中心与本地基础结构之间创建专用连接。
+* IoT 中心应仅从指定范围内的 IP 地址接收流量并拒绝任何其他流量。 例如，将 IoT 中心与 [Azure Express Route](../expressroute/expressroute-faqs.md#supported-services) 配合使用，以在 IoT 中心与本地基础结构之间创建专用连接。
 
 * 需要拒绝来自 IoT 中心管理员已标识为可疑地址的 IP 地址的流量。
 
@@ -141,7 +141,7 @@ ms.locfileid: "98633822"
 
 ### <a name="retrieve-and-update-ip-filters-using-azure-cli"></a>使用 Azure CLI 检索和更新 IP 筛选器
 
-可以通过 [Azure CLI](https://docs.microsoft.com/cli/azure/) 检索和更新 IoT 中心的 IP 筛选器。
+可以通过 [Azure CLI](/cli/azure/) 检索和更新 IoT 中心的 IP 筛选器。
 
 若要检索 IoT 中心的当前 IP 筛选器，请运行：
 
@@ -215,7 +215,7 @@ $iothubResource | Set-AzResource -Force
 
 ### <a name="update-ip-filter-rules-using-rest"></a>使用 REST 更新 IP 筛选器
 
-还可以使用 Azure 资源提供程序的 REST 终结点检索和修改 IoT 中心的 IP 筛选器。 请参阅 [createorupdate 方法](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate)`properties.ipFilterRules`。
+还可以使用 Azure 资源提供程序的 REST 终结点检索和修改 IoT 中心的 IP 筛选器。 请参阅 [createorupdate 方法](/rest/api/iothub/iothubresource/createorupdate)`properties.ipFilterRules`。
 
 ### <a name="ip-filter-rule-evaluation"></a>IP 筛选器规则评估
 

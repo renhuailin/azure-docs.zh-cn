@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c73bcd8fb4c6b594633abd1ac268bd8dfd78202
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: bd4c1adddbf4b13f8e299bd656443c9aaab1d55b
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100416977"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101644821"
 ---
 # <a name="securing-group-managed-service-accounts"></a>保护组托管服务帐户
 
@@ -41,7 +41,7 @@ Gmsa 提供了一个具有更高安全性的单一标识解决方案，同时通
 使用 Gmsa 作为本地服务的首选帐户类型，除非某个服务（如故障转移群集）不支持该服务。
 
 > [!IMPORTANT]
-> 在部署到生产环境之前，必须先通过 Gmsa 测试您的服务。 为此，请设置测试环境，并确保应用程序可以使用 gMSA 并访问它需要访问的资源。 有关详细信息，请参阅 [组托管服务帐户支持](https://docs.microsoft.com/system-center/scom/support-group-managed-service-accounts?view=sc-om-2019)。
+> 在部署到生产环境之前，必须先通过 Gmsa 测试您的服务。 为此，请设置测试环境，并确保应用程序可以使用 gMSA 并访问它需要访问的资源。 有关详细信息，请参阅 [组托管服务帐户支持](/system-center/scom/support-group-managed-service-accounts?view=sc-om-2019)。
 
 
 如果服务不支持使用 Gmsa，则下一种最佳选择是使用独立的托管服务帐户 (sMSA) 。 sMSAs 提供与 gMSA 相同的功能，但仅用于在单个服务器上部署。
@@ -108,18 +108,18 @@ Get-ADServiceAccount –Filter * | where $_.ObjectClass -eq "msDS-GroupManagedSe
 `Uninstall-ADServiceAccount`
 
 > [!NOTE]
-> 从 Windows Server 2012 开始，默认情况下，Uninstall-adserviceaccount cmdlet 适用于 Gmsa。 有关上述 cmdlet 的用法的详细信息，请参阅 [**使用组托管服务帐户入门**](https://docs.microsoft.com/windows-server/security/group-managed-service-accounts/getting-started-with-group-managed-service-accounts)。
+> 从 Windows Server 2012 开始，默认情况下，Uninstall-adserviceaccount cmdlet 适用于 Gmsa。 有关上述 cmdlet 的用法的详细信息，请参阅 [**使用组托管服务帐户入门**](/windows-server/security/group-managed-service-accounts/getting-started-with-group-managed-service-accounts)。
 
 ## <a name="move-to-a-gmsa"></a>移到 gMSA
 Gmsa 是用于满足本地需求的最安全的服务帐户类型。 如果可以移动到一个，则应该。 此外，请考虑将服务移到 Azure，将服务帐户移到 Azure Active directory。
 
-1.  确保在 [林中部署 KDS 根密钥](https://docs.microsoft.com/windows-server/security/group-managed-service-accounts/create-the-key-distribution-services-kds-root-key)。 这是一次性操作。
+1.  确保在 [林中部署 KDS 根密钥](/windows-server/security/group-managed-service-accounts/create-the-key-distribution-services-kds-root-key)。 这是一次性操作。
 
-2. [创建新的 gMSA](https://docs.microsoft.com/windows-server/security/group-managed-service-accounts/getting-started-with-group-managed-service-accounts)。
+2. [创建新的 gMSA](/windows-server/security/group-managed-service-accounts/getting-started-with-group-managed-service-accounts)。
 
 3. 在运行服务的每个主机上安装新的 gMSA。
    > [!NOTE] 
-   > 若要详细了解如何在主机上创建并安装 gMSA，请在将服务配置为使用 gMSA 之前，参阅 [使用组托管服务帐户入门](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj128431(v=ws.11))
+   > 若要详细了解如何在主机上创建并安装 gMSA，请在将服务配置为使用 gMSA 之前，参阅 [使用组托管服务帐户入门](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj128431(v=ws.11))
 
  
 4. 将服务标识更改为 gMSA，并指定空白密码。

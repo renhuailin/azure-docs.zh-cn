@@ -3,17 +3,18 @@ title: 创建 Azure 映像生成器模板（预览版）
 description: 了解如何创建与 Azure 映像生成器配合使用的模板。
 author: danielsollondon
 ms.author: danis
-ms.date: 08/13/2020
+ms.date: 02/18/2021
 ms.topic: reference
 ms.service: virtual-machines
-ms.subservice: imaging
+ms.subservice: image-builder
+ms.collection: linux
 ms.reviewer: cynthn
-ms.openlocfilehash: 9ae477dd04237e285915157615dcb6a6b841ca99
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: c2e4a2c2700af99a074dfd640177a6baefe763e2
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98678249"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101670430"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>预览版：创建 Azure 映像生成器模板 
 
@@ -308,11 +309,28 @@ Customize 属性：
 - **sha256Checksum** - 文件的 sha256 校验和的值。你将在本地生成此校验和，然后，映像生成器会对其进行验证。
     * 若要生成 sha256Checksum，请使用 Mac/Linux 上的终端运行：`sha256sum <fileName>`
 
-
-要以超级用户特权运行的命令必须带有 `sudo` 前缀。
-
 > [!NOTE]
 > 内联命令作为映像模板定义的一部分进行存储，你可以在转储映像定义时看到这些命令，在进行故障排除时，这些命令也可用于 Microsoft 支持部门。 如果有敏感的命令或值，强烈建议将它们移入脚本，并使用用户标识对 Azure 存储进行身份验证。
+
+#### <a name="super-user-privileges"></a>超级用户权限
+对于使用超级用户权限运行的命令，这些命令必须加 `sudo` 上前缀，你可以将这些命令添加到脚本中或使用它内联命令，例如：
+```json
+                "type": "Shell",
+                "name": "setupBuildPath",
+                "inline": [
+                    "sudo mkdir /buildArtifacts",
+                    "sudo cp /tmp/index.html /buildArtifacts/index.html"
+```
+使用 sudo 的脚本示例，可使用 scriptUri 进行引用：
+```bash
+#!/bin/bash -e
+
+echo "Telemetry: creating files"
+mkdir /myfiles
+
+echo "Telemetry: running sudo 'as-is' in a script"
+sudo touch /myfiles/somethingElevated.txt
+```
 
 ### <a name="windows-restart-customizer"></a>Windows restart 定制器 
 使用 Restart 定制器可以重启 Windows VM 并等待它重新联机，这样，你便可以安装需要重新启动的软件。  
@@ -397,6 +415,10 @@ OS 支持：Linux 和 Windows
 File 定制器属性：
 
 - **sourceUri** - 可访问的存储终结点，可以是 GitHub 或 Azure 存储。 只能下载一个文件，而不能下载整个目录。 如果需要下载目录，请使用压缩文件，然后使用 Shell 或 PowerShell 定制器将其解压缩。 
+
+> [!NOTE]
+> 如果 sourceUri 是 Azure 存储帐户，而不考虑将 blob 标记为公共的，则将向托管用户标识授予对 blob 的读取访问权限。 请参阅此 [示例](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-user-assigned-identity#create-a-resource-group) 以设置存储权限。
+
 - **destination** - 完整的目标路径和文件名。 任何被引用的路径和子目录必须存在，请使用 Shell 或 PowerShell 定制器提前设置这些路径和子目录。 可以使用脚本定制器创建路径。 
 
 Windows 目录和 Linux 路径支持此操作，但存在一些差别： 
@@ -408,8 +430,6 @@ Windows 目录和 Linux 路径支持此操作，但存在一些差别：
 
 > [!NOTE]
 > File 定制器仅适用于下载 < 20MB 的小文件。 要下载较大的文件，请使用脚本、内联命令或代码下载文件，例如，在 Linux 中使用 `wget` 或 `curl`，在 Windows 中使用 `Invoke-WebRequest`。
-
-可以使用 [MSI](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage) 从 Azure 存储下载 File 定制器中的文件。
 
 ### <a name="windows-update-customizer"></a>Windows Update 定制器
 此定制器是基于适用于 Packer 的[社区 Windows Update Provisioner](https://packer.io/docs/provisioners/community-supported.html)（由 Packer 社区维护的一个开源项目）生成的。 Microsoft 使用映像生成器服务来测试和验证该预配程序，支持使用该服务来调查问题，并会努力解决问题，但该开源项目不受 Microsoft 官方支持。 如需 Windows Update Provisioner 的详细文档和帮助，请参阅项目存储库。

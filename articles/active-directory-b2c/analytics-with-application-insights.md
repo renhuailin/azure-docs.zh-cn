@@ -12,12 +12,12 @@ ms.date: 01/29/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: dfe53f67ee9c6645a6dadda58573b892b676b739
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 92da0b12a3119b048866eef5b18f658916595294
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100651237"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101645919"
 ---
 # <a name="track-user-behavior-in-azure-ad-b2c-by-using-application-insights"></a>使用 Application Insights 跟踪 Azure AD B2C 中的用户行为
 
@@ -298,7 +298,7 @@ ms.locfileid: "100651237"
 
 ## <a name="enable-developer-mode"></a>启用开发人员模式
 
-使用 Application Insights 定义事件时，可以指示是否启用开发人员模式。 开发人员模式控制如何缓冲事件。 在事件量最少的开发环境中，启用开发人员模式会导致系统立即将事件发送到 Application Insights。 默认值是 `false`。 不要在生产环境中启用开发人员模式。
+使用 Application Insights 定义事件时，可以指示是否启用开发人员模式。 开发人员模式控制如何缓冲事件。 在事件量最少的开发环境中，启用开发人员模式会导致系统立即将事件发送到 Application Insights。 默认值为 `false`。 不要在生产环境中启用开发人员模式。
 
 若要启用开发人员模式，请将 `DeveloperMode` `true` `AppInsights-Common` 技术配置文件中的元数据更改为：
 
@@ -326,6 +326,6 @@ ms.locfileid: "100651237"
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何 [使用 Azure 应用程序 Insights 创建自定义 KPI 仪表板](../azure-monitor/learn/tutorial-app-dashboards.md)。
+了解如何 [使用 Azure 应用程序 Insights 创建自定义 KPI 仪表板](../azure-monitor/app/tutorial-app-dashboards.md)。
 
 ::: zone-end

@@ -6,20 +6,19 @@ documentationcenter: ''
 author: msjuergent
 manager: bburns
 editor: ''
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 01/31/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f72342a318e3436fb80fb06b2312f664c9d04969
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 16608facab27fc18924cf3a5c6da7e35db048f76
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967612"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101675607"
 ---
 # <a name="onboarding-requirements"></a>加入要求
 
@@ -62,7 +61,7 @@ ms.locfileid: "94967612"
 > 对于类型 II 设备，目前仅支持 SLES 12 SP2 OS 版本。 
 
 
-**数据库**
+**Database**
 
 - SAP HANA（平台版或企业版）的许可证和软件安装组件。
 

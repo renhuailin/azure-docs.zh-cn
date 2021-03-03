@@ -1,33 +1,33 @@
 ---
 title: 内容元数据属性
 titleSuffix: Azure Cognitive Search
-description: Blob 的元数据属性可向搜索索引中的字段提供内容，或在运行时通知索引行为的信息。 本文列出了 Azure 认知搜索中支持的元数据属性。
+description: 文档的元数据属性可向搜索索引中的字段提供内容，或在运行时通知索引行为的信息。 本文列出了 Azure 认知搜索中支持的元数据属性。
 manager: nitinme
 author: MarkHeff
 ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/03/2021
-ms.openlocfilehash: 79443785dbd8619e22358631c9c36a3da4ef2e84
-ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
+ms.date: 02/22/2021
+ms.openlocfilehash: cbb35f596a1d32816d1a73b462bf590d9dde0d52
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99477294"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101668412"
 ---
-# <a name="content-metadata-properties-used-in-blob-indexing-in-azure-cognitive-search"></a>Azure 认知搜索中的 blob 索引使用的内容元数据属性
+# <a name="content-metadata-properties-used-in-azure-cognitive-search"></a>Azure 认知搜索中使用的内容元数据属性
 
-Blob 可以包含各种内容，其中很多内容类型具有可在 blob 索引中使用的元数据属性。 正如可以为标准 blob 属性创建搜索字段（如 **`metadata_storage_name`** ），可以为特定于文档格式的元数据属性创建字段。
+SharePoint Online 和 Azure blob 存储可以包含各种内容，其中很多内容类型的元数据属性都可用于编制索引。 正如可以为标准 blob 属性创建搜索字段（如 **`metadata_storage_name`** ），可以为特定于文档格式的元数据属性创建字段。
 
 ## <a name="supported-document-formats"></a>支持的文档格式
 
-认知搜索支持以下文档格式的 blob 索引：
+认知搜索支持以下文档格式的 blob 索引和 SharePoint Online 文档索引：
 
 [!INCLUDE [search-blob-data-sources](../../includes/search-blob-data-sources.md)]
 
 ## <a name="properties-by-document-format"></a>按文档格式的属性
 
-下表汇总了每种文档格式的处理过程，并介绍了由 blob 索引器提取的元数据属性。
+下表汇总了每种文档格式的处理过程，并介绍了由 blob 索引器和 SharePoint Online 索引器提取的元数据属性。
 
 | 文档格式/内容类型 | 提取的元数据 | 处理详细信息 |
 | --- | --- | --- |
@@ -62,3 +62,4 @@ Blob 可以包含各种内容，其中很多内容类型具有可在 blob 索引
 * [Azure 认知搜索中的索引器](search-indexer-overview.md)
 * [使用 AI 了解 blob](search-blob-ai-integration.md)
 * [Blob 索引概述](search-blob-storage-integration.md)
+* [SharePoint Online 索引](search-howto-index-sharepoint-online.md)

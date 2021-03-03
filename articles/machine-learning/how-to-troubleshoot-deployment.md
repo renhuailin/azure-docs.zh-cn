@@ -10,22 +10,22 @@ ms.author: gopalv
 ms.date: 11/25/2020
 ms.topic: troubleshooting
 ms.custom: contperf-fy20q4, devx-track-python, deploy, contperf-fy21q2
-ms.openlocfilehash: 4901d73235778a3194fe75b95df9cb81aeeb093b
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 3839dd27d4ae380b268694a93e5910b323411847
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100651674"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101657275"
 ---
 # <a name="troubleshooting-remote-model-deployment"></a>远程模型部署故障排除 
 
 了解如何使用 Azure 机器学习排查、解决或规避在将模型部署到 Azure 容器实例 (ACI) 和 Azure Kubernetes 服务 (AKS) 时可能遇到的常见错误。
 
 > [!NOTE]
-> 如果要将模型部署到 Azure Kubernetes Service (AKS) ，建议为该群集启用 [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-enable-existing-clusters) 。 这将帮助你了解总体群集运行状况和资源使用情况。 你还可能会发现以下资源非常有用：
+> 如果要将模型部署到 Azure Kubernetes Service (AKS) ，建议为该群集启用 [Azure Monitor](../azure-monitor/containers/container-insights-enable-existing-clusters.md) 。 这将帮助你了解总体群集运行状况和资源使用情况。 你还可能会发现以下资源非常有用：
 >
-> * [检查影响 AKS 群集的资源运行状况事件](https://docs.microsoft.com/azure/aks/aks-resource-health)
-> * [Azure Kubernetes Service 诊断](https://docs.microsoft.com/azure/aks/concepts-diagnostics)
+> * [检查影响 AKS 群集的资源运行状况事件](../aks/aks-resource-health.md)
+> * [Azure Kubernetes Service 诊断](../aks/concepts-diagnostics.md)
 >
 > 如果尝试将模型部署到不正常或过载的群集，则应该会遇到问题。 如果需要帮助排查 AKS 群集问题，请联系 AKS 支持。
 

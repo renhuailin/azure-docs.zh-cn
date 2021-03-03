@@ -11,16 +11,16 @@ author: nibaccam
 ms.author: nibaccam
 ms.date: 08/31/2020
 ms.custom: devx-track-python, data4ml
-ms.openlocfilehash: 9e4722933ec224712c8d649c0d9d850a9ee3e322
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 1c2a917712cbde95fda9321e56fe1c033ad444aa
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98872003"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101659709"
 ---
 # <a name="secure-data-access-in-azure-machine-learning"></a>Azure 机器学习中的安全数据访问
 
-Azure 机器学习使你可以轻松连接到云中的数据。  它在基础存储服务上提供抽象层，让你可以安全地访问和使用数据，而无需编写特定于存储类型的代码。 Azure 机器学习还提供了以下数据功能：
+Azure 机器学习使你可以轻松连接到云中的数据。 它在基础存储服务上提供抽象层，让你可以安全地访问和使用数据，而无需编写特定于存储类型的代码。 Azure 机器学习还提供了以下数据功能：
 
 *    与 Pandas 和 Spark DataFrames 的互操作性
 *    数据世系的版本控制和跟踪
@@ -53,7 +53,7 @@ Azure 机器学习使你可以轻松连接到云中的数据。  它在基础存
 <a name="datastores"></a>
 ## <a name="connect-to-storage-with-datastores"></a>通过数据存储连接到存储
 
-Azure 机器学习数据存储可安全地将连接信息保存到 Azure 存储中，因此无需在脚本中对其进行编码。 [注册并创建一个数据存储](how-to-access-data.md)即可轻松连接到存储帐户，并访问底层 Azure 存储服务中的数据。 
+Azure 机器学习数据存储安全地将连接信息保存到 Azure 上的数据存储中，因此无需在脚本中对其进行编码。 [注册并创建一个数据](how-to-access-data.md) 存储，以便轻松连接到存储帐户，并访问基础存储服务中的数据。 
 
 Azure 中支持的基于云的存储服务，可注册为数据存储：
 
@@ -65,6 +65,9 @@ Azure 中支持的基于云的存储服务，可注册为数据存储：
 + Azure Database for PostgreSQL
 + Databricks 文件系统
 + Azure Database for MySQL
+
+>[!TIP]
+> 用于创建数据存储的公开功能需要基于凭据的身份验证来访问存储服务，如服务主体或共享访问签名 (SAS) 令牌。 对工作区具有 *读取* 者访问权限的用户可以访问这些凭据。 <br><br>如果这是一个问题，请  [创建一个使用基于标识的数据访问存储服务的数据存储 (预览) ](how-to-identity-based-data-access.md)。 此功能是 [实验](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py#stable-vs-experimental) 性预览功能，随时可能会更改。
 
 <a name="datasets"></a>
 ## <a name="reference-data-in-storage-with-datasets"></a>引用包含数据集的存储中的数据
@@ -107,7 +110,7 @@ Azure 机器学习数据集不是你的数据的副本。 创建数据集时，�
 
 <a name="label"></a>
 
-## <a name="label-data-with-data-labeling-projects"></a>为数据添加标签项目标签
+## <a name="label-data-with-data-labeling-projects"></a>使用数据标记项目标记数据
 
 在机器学习项目中，标记大量数据通常是一件很麻烦的事情。 这些包含计算机视觉组件（如图像分类或对象检测）的项目通常需要数千个图像和对应的标签。
 

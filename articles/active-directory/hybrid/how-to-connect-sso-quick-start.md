@@ -16,12 +16,12 @@ ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 59cc50274b291c23aeec4620ec7a09312cc0c1fb
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: e49ed356f294baca6e339faeebe92ca02b2723df
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98762253"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101644776"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quickstart"></a>Azure Active Directory 无缝单一登录：快速入门
 
@@ -161,10 +161,10 @@ Azure Active Directory (Azure AD) 无缝单一登录（无缝 SSO）可使登录
     ![屏幕截图显示选定的 "注册表" 和 "注册表项"。](./media/how-to-connect-sso-quick-start/sso15.png)
 
 4. 在相应字段中输入以下值，然后单击“确定”。
-   - **密钥路径**： **_Software\Microsoft\Windows\CurrentVersion\Internet Settings\ZoneMap\Domains\microsoftazuread-sso.com\autologon_* _
-   - _* 值名称 * *： **_https_*_
-   - _* 值类型 * *： **_REG_DWORD_*_
-   - _* 值数据 * *： **_00000001_*_
+   - **密钥路径**： **_Software\Microsoft\Windows\CurrentVersion\Internet Settings\ZoneMap\Domains\microsoftazuread-sso.com\autologon_**
+   - **值名称**： **_https_**
+   - **值类型**： **_REG_DWORD_**
+   - **值数据**： **_00000001_**
  
      ![显示 "新建注册表属性" 窗口的屏幕截图。](./media/how-to-connect-sso-quick-start/sso16.png)
  
@@ -176,7 +176,7 @@ Azure Active Directory (Azure AD) 无缝单一登录（无缝 SSO）可使登录
 
 Mozilla Firefox 不会自动使用 Kerberos 身份验证。 每个用户必须使用以下步骤手动将 Azure AD URL 添加到其 Firefox 设置：
 1. 运行 Firefox 并在地址栏中输入 `about:config`。 关闭你看到的任何通知。
-2. 搜索 _ *网络。协商身份验证-uri** 首选项。 此首选项列出了用于 Kerberos 身份验证的 Firefox 的受信任站点。
+2. 搜索 network.negotiate-auth.trusted-uris 首选项。 此首选项列出了用于 Kerberos 身份验证的 Firefox 的受信任站点。
 3. 右键单击并选择 " **修改**"。
 4. 在字段中输入 `https://autologon.microsoftazuread-sso.com`。
 5. 选择“确定”，然后重新打开浏览器。
@@ -205,7 +205,7 @@ Mozilla Firefox 不会自动使用 Kerberos 身份验证。 每个用户必须�
 
 #### <a name="known-browser-limitations"></a>已知的浏览器限制
 
-无缝 SSO 在 Firefox 和 Microsoft Edge 浏览器的隐私浏览模式下不起作用。 它在以增强保护模式下运行的 Internet Explorer 中也不起作用。 对于基于 Chromium 的 Microsoft Edge 的下一个版本，它在设计时无法在 InPrivate 和来宾模式下工作。
+无缝 SSO 在 Firefox 和 Microsoft Edge (旧式) 浏览器的专用浏览模式下不起作用。 它在以增强保护模式下运行的 Internet Explorer 中也不起作用。 无缝 SSO 支持基于 Chromium 的 Microsoft Edge 的下一个版本，并按设计在 InPrivate 和来宾模式下工作。
 
 ## <a name="step-4-test-the-feature"></a>步骤 4：测试功能
 
@@ -216,10 +216,10 @@ Mozilla Firefox 不会自动使用 Kerberos 身份验证。 每个用户必须�
   - 你可以通过组策略[将此功能扩展到用户](#step-3-roll-out-the-feature)。
 
 要测试用户仅输入用户名而不是密码的场景：
-   - 在新的专用浏览器会话中登录到 `https://myapps.microsoft.com/`。
+   - 登录到 " https://myapps.microsoft.com/ 。 请确保清除浏览器缓存，或在专用模式下与任何受支持的浏览器一起使用新的专用浏览器会话。
 
 要测试用户并非必须输入用户名或密码的场景，请使用以下步骤之一： 
-   - 在新的专用浏览器会话中登录到 `https://myapps.microsoft.com/contoso.onmicrosoft.com`。 将 *contoso* 替换为租户的名称。
+   - 登录以 `https://myapps.microsoft.com/contoso.onmicrosoft.com` 确保清除浏览器缓存，或在专用模式下与任何受支持的浏览器一起使用新的专用浏览器会话。 将 *contoso* 替换为租户的名称。
    - 在新的专用浏览器会话中登录到 `https://myapps.microsoft.com/contoso.com`。 将“contoso.com”替换为租户中的已验证域（而不是联盟域）。
 
 ## <a name="step-5-roll-over-keys"></a>步骤 5：滚动更新密钥

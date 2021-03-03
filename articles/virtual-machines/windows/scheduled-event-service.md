@@ -3,16 +3,16 @@ title: 监视 Azure 中 Vm 的计划事件
 description: 了解如何监视 Azure 虚拟机的计划事件。
 author: mysarn
 ms.service: virtual-machines
-ms.subservice: monitoring
+ms.subservice: scheduled-events
 ms.date: 08/20/2019
 ms.author: sarn
 ms.topic: how-to
-ms.openlocfilehash: a5e280fb562bf9bb36d0d729e5f494bd23776ec7
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 866522da162d22621bd37bf9d2f2fa6838206e17
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100570126"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101674691"
 ---
 # <a name="monitor-scheduled-events-for-your-azure-vms"></a>监视 Azure Vm 的计划事件
 
@@ -161,9 +161,9 @@ New-AzVm `
 1. 在“操作”下，选择“创建操作组”。  此时将打开“添加操作组”页。
 1. 在“操作组名称”中键入 *myActionGroup*。
 1. 在“短名称”中键入 myActionGroup 。
-1. 在“资源组”中选择“myResourceGroupAvailability”。 
+1. 在“资源组”中选择“myResourceGroupAvailability” 。
 1. 在“操作”下的“操作名称”中键入“电子邮件”，然后选择“电子邮件/短信/推送/语音”  。 此时将打开“电子邮件/短信/推送/语音”页。
-1. 选择“电子邮件”，键入电子邮件地址，然后选择“确定”。 
+1. 选择“电子邮件”，键入电子邮件地址，然后选择“确定” 。
 1. 在“添加操作组”页中选择“确定”。  
 1. 在“创建规则”页中的“警报详细信息”下，为“警报规则名称”键入 *myAlert*，然后为“说明”键入“电子邮件警报规则”。  
 1. 完成后，选择“创建警报规则”。

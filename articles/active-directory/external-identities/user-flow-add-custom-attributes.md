@@ -7,25 +7,22 @@ manager: celestedg
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 06/16/2020
+ms.date: 03/02/2021
 ms.author: mimart
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e64ab70fed13d4ca907b2bfb3aa448acdedc39e9
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 46b498f8b8512d0202f47dd31ba25cc851ca71e6
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92441447"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101644096"
 ---
-# <a name="define-custom-attributes-for-user-flows-preview"></a>定义用户流的自定义属性（预览）
-
-> [!NOTE]
-> 自定义用户属性功能是 Azure Active Directory 的公共预览版功能。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+# <a name="define-custom-attributes-for-user-flows"></a>定义用户流的自定义属性
 
 对于每个应用，你可能对要在注册期间收集的信息有不同的要求。 Azure AD 随附了一组存储在属性中的内置信息，如名字、姓氏、城市和邮政编码。 使用 Azure AD，可以扩展在外部用户通过用户流注册时存储在来宾帐户中的属性集。
 
-可以在 Azure 门户中创建自定义属性，并将它们用于自助注册用户流。 还可以使用 [Microsoft Graph API](../../active-directory-b2c/manage-user-accounts-graph-api.md) 读写这些属性。 Microsoft Graph API 支持创建用户，并使用扩展属性来更新用户。 图形 API 中的扩展属性使用约定 `extension_<extensions-app-id>_attributename` 来命名。 例如：
+可以在 Azure 门户中创建自定义属性，并将它们用于自助注册用户流。 还可以使用 [Microsoft Graph API](../../active-directory-b2c/microsoft-graph-operations.md) 读写这些属性。 Microsoft Graph API 支持创建用户，并使用扩展属性来更新用户。 图形 API 中的扩展属性使用约定 `extension_<extensions-app-id>_attributename` 来命名。 例如：
 
 ```JSON
 "extension_831374b3bd5041bfaa54263ec9e050fc_loyaltyNumber": "212342"
@@ -38,7 +35,7 @@ ms.locfileid: "92441447"
 1. 以 Azure AD 管理员身份登录到 [Azure 门户](https://portal.azure.com)。
 2. 在“Azure 服务”下，选择“Azure Active Directory”。
 3. 在左侧菜单中，选择“外部标识”。
-4. 选择“自定义用户属性(预览)”。 此时会列出可用的用户属性。
+4. 选择 " **自定义用户属性**"。 此时会列出可用的用户属性。
 
    ![选择注册用户流的用户属性](media/user-flow-add-custom-attributes/user-attributes.png)
 

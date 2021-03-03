@@ -9,12 +9,12 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: daveba
-ms.openlocfilehash: 53339623ee435362d248b794776681972000173e
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 9de518f53a6054a47a72e40ebe546a32dd48aabe
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99258568"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101647266"
 ---
 # <a name="azure-active-directory-application-management-whats-new"></a>Azure Active Directory 应用程序管理：新增功能
 
@@ -34,7 +34,7 @@ ms.locfileid: "99258568"
 - [Active Directory (Azure AD) 应用程序代理常见问题](application-proxy-faq.md)
 - [教程：在 Azure Active Directory 中添加一个本地应用程序以通过应用程序代理进行远程访问](application-proxy-add-on-premises-application.md)
 - [使用现有的本地代理服务器](application-proxy-configure-connectors-with-proxy-servers.md)
-- [为 Azure Active Directory 开发业务线应用](developer-guidance-for-integrating-applications.md)
+- [为 Azure Active Directory 开发业务线应用](../develop/v2-overview.md)
 - [了解 Azure AD 应用程序代理连接器](application-proxy-connectors.md)
 - [了解链接登录](configure-linked-sign-on.md)
 - [了解基于密码的单一登录](configure-password-single-sign-on-non-gallery-applications.md)

@@ -6,34 +6,33 @@ ms.author: thweiss
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 11/30/2020
+ms.date: 02/11/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6dd95fc8fd0ab0099ac7404d4ca4e4b1851f650f
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 8a16ecd2ee6ed939b2afd0e51e9cf531e419c8af
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97359595"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101656391"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>保护对 Azure Cosmos DB 中数据的访问
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-本文概述了如何保护对 [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)中存储的数据的访问。
+本文概述了 Azure Cosmos DB 中的数据访问控制。
 
-Azure Cosmos DB 使用两种类型的密钥来验证用户身份并提供其数据和资源的访问权限。 
+Azure Cosmos DB 提供了三种方法来控制对数据的访问。
 
-|密钥类型|资源|
+| 访问控制类型 | 特征 |
 |---|---|
-|[主键](#primary-keys) |用于管理资源：数据库帐户、数据库、用户和权限|
-|[资源令牌](#resource-tokens)|用于应用程序资源：容器、文档、附件、存储过程、触发器和 UDF|
+| [主键](#primary-keys) | 允许任何管理或数据操作的共享机密。 它同时提供读写和只读变量。 |
+| [基于角色的访问控制](#rbac) (预览)  | 使用 Azure Active Directory (AAD) 标识进行身份验证的细化、基于角色的权限模型。 |
+| [资源令牌](#resource-tokens)| 基于本机 Azure Cosmos DB 用户和权限的细化权限模型。 |
 
-<a id="primary-keys"></a>
+## <a name="primary-keys"></a><a id="primary-keys"></a> 主键
 
-## <a name="primary-keys"></a>主键
+主密钥提供对数据库帐户的所有管理资源的访问权限。 每个帐户包括两个主密钥：主要密钥和辅助密钥。 双重密钥的用途是让你重新生成或滚动密钥，从而可以持续访问帐户和数据。 若要了解有关主密钥的详细信息，请参阅[数据库安全性](database-security.md#primary-keys)一文。
 
-主密钥提供对数据库帐户的所有管理资源的访问权限。 每个帐户包括两个主密钥：主要密钥和辅助密钥。 使用两个密钥的目的是为了能够重新生成或轮换密钥，从而可以持续访问帐户和数据。 若要了解有关主密钥的详细信息，请参阅[数据库安全性](database-security.md#primary-keys)一文。
-
-### <a name="key-rotation"></a>密钥轮换<a id="key-rotation"></a>
+### <a name="key-rotation"></a><a id="key-rotation"></a> 密钥轮换
 
 轮换主密钥的过程相当简单。 
 
@@ -64,7 +63,23 @@ CosmosClient client = new CosmosClient(endpointUrl, authorizationKey);
 
 :::code language="python" source="~/cosmosdb-python-sdk/sdk/cosmos/azure-cosmos/samples/access_cosmos_with_resource_token.py" id="configureConnectivity":::
 
-## <a name="resource-tokens"></a>资源令牌 <a id="resource-tokens"></a>
+## <a name="role-based-access-control-preview"></a><a id="rbac"></a> 基于角色的访问控制 (预览) 
+
+Azure Cosmos DB 公开了一种内置的基于角色的访问控制 (RBAC) 系统，可让你：
+
+- 使用 Azure Active Directory (AAD) 标识对数据请求进行身份验证。
+- 使用细化的基于角色的权限模型来授权你的数据请求。
+
+Azure Cosmos DB RBAC 是在以下情况下的理想访问控制方法：
+
+- 您不希望使用共享机密（如主键），并且喜欢依赖基于令牌的身份验证机制。
+- 要使用 Azure AD 标识对请求进行身份验证，
+- 你需要细化的权限模型来严格限制允许身份执行的数据库操作，
+- 你希望将访问控制策略具体化为 "角色"，你可以将其分配给多个标识。
+
+有关 Azure Cosmos DB RBAC 的详细信息，请参阅 [为你的 Azure Cosmos DB 帐户配置基于角色的访问控制](how-to-setup-rbac.md) 。
+
+## <a name="resource-tokens"></a><a id="resource-tokens"></a> 资源令牌
 
 资源令牌提供对数据库中应用程序资源的访问权限。 资源令牌：
 
@@ -97,7 +112,7 @@ Cosmos DB 资源令牌提供一种安全的替代方案，使客户端能够根�
 
 有关用于生成或代理资源令牌的中间层服务的示例，请参阅 [ResourceTokenBroker 应用](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples/xamarin/UserItems/ResourceTokenBroker/ResourceTokenBroker/Controllers)。
 
-## <a name="users"></a>用户<a id="users"></a>
+### <a name="users"></a>用户<a id="users"></a>
 
 Azure Cosmos DB 用户与 Cosmos 数据库相关联。  每个数据库可以包含零个或更多 Cosmos DB 用户。 以下代码示例展示了如何使用 [Azure Cosmos DB .NET SDK v3](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/UserManagement) 创建 Cosmos DB 用户。
 
@@ -111,7 +126,7 @@ User user = await database.CreateUserAsync("User 1");
 > [!NOTE]
 > 每个 Cosmos DB 用户都有一个 ReadAsync() 方法，可以使用此方法检索与用户关联的[权限](#permissions)的列表。
 
-## <a name="permissions"></a>权限<a id="permissions"></a>
+### <a name="permissions"></a>权限<a id="permissions"></a>
 
 权限资源与用户相关联，并在容器以及分区键级别进行分配。 每个用户可能包含零个或多个权限。 用户在尝试访问某个特定容器或访问特定分区键中的数据时需要一个安全令牌，权限资源提供对该安全令牌的访问权限。 权限资源提供两种可用的访问级别：
 
@@ -127,7 +142,7 @@ User user = await database.CreateUserAsync("User 1");
 
 * resourceTokenPermissionMode - 此属性指示在创建资源令牌时设置的权限模式。 权限模式的值可以是“all”或“read”。
 
-### <a name="code-sample-to-create-permission"></a>有关创建权限的代码示例
+#### <a name="code-sample-to-create-permission"></a>有关创建权限的代码示例
 
 以下代码示例演示如何创建权限资源、读取权限资源的资源令牌以及将权限与上面创建的[用户](#users)关联。
 
@@ -142,7 +157,7 @@ user.CreatePermissionAsync(
         resourcePartitionKey: new PartitionKey("012345")));
 ```
 
-### <a name="code-sample-to-read-permission-for-user"></a>有关读取用户权限的代码示例
+#### <a name="code-sample-to-read-permission-for-user"></a>有关读取用户权限的代码示例
 
 下面的代码片段展示了如何检索与上面创建的用户关联的权限，并代表用户实例化一个新的 CosmosClient，作用域为单个分区键。
 
@@ -152,6 +167,15 @@ PermissionProperties permissionProperties = await user.GetPermission("permission
 
 CosmosClient client = new CosmosClient(accountEndpoint: "MyEndpoint", authKeyOrResourceToken: permissionProperties.Token);
 ```
+
+## <a name="differences-between-rbac-and-resource-tokens"></a>RBAC 和资源标记之间的差异
+
+| 使用者 | RBAC | 资源令牌 |
+|--|--|--|
+| 身份验证  | Azure Active Directory (Azure AD) 。 | 基于本机 Azure Cosmos DB 用户<br>将资源令牌与 Azure AD 集成需要额外的工作，以 Azure AD 标识和 Azure Cosmos DB 用户。 |
+| 授权 | 基于角色：角色定义映射允许的操作，并且可以分配给多个标识。 | 基于权限：对于每个 Azure Cosmos DB 用户，需要分配数据访问权限。 |
+| 标记范围 | AAD 令牌携带请求者的标识。 此标识将与所有分配的角色定义进行匹配以执行授权。 | 资源令牌将授予对特定 Azure Cosmos DB 资源上的特定 Azure Cosmos DB 用户的权限。 不同资源的授权请求可能需要不同的令牌。 |
+| 令牌刷新 | AAD 令牌会在 Azure Cosmos DB Sdk 过期时自动刷新。 | 不支持资源令牌刷新。 当资源令牌过期时，需要发出一个新的令牌。 |
 
 ## <a name="add-users-and-assign-roles"></a>添加用户和分配角色
 
@@ -169,7 +193,7 @@ CosmosClient client = new CosmosClient(accountEndpoint: "MyEndpoint", authKeyOrR
 
 ## <a name="delete-or-export-user-data"></a>删除或导出用户数据
 
-作为数据库服务，Azure Cosmos DB 使你可以搜索、选择、修改和删除位于数据库或容器中的任何数据。 不过，如果需要，你应负责使用提供的 Api，并定义查找和删除任何个人数据所需的逻辑。 每个多模型 API (SQL、MongoDB、Gremlin、Cassandra、Table) 提供不同的语言 Sdk，其中包含用于根据自定义谓词搜索和删除数据的方法。 还可启用[生存时间 (TTL)](time-to-live.md)功能在指定时间段后自动删除数据，不会产生任何额外费用。
+借助 Azure Cosmos DB 数据库服务，你可搜索、选择、修改和删除数据库或容器中的任何数据。 但是，你有责任使用提供的 API 并定义查找和擦除任何个人数据所需的逻辑（如果需要）。 每个多模型 API（SQL、MongoDB、Gremlin、Cassandra、表）都包含不同的语言 SDK，这些 SDK 提供了各种用于搜索和基于自定义谓词删除数据的方法。 还可启用[生存时间 (TTL)](time-to-live.md)功能在指定时间段后自动删除数据，不会产生任何额外费用。
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-dsr-and-stp-note.md)]
 

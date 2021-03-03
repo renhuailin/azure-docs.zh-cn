@@ -8,17 +8,48 @@ ms.subservice: core
 ms.topic: reference
 ms.author: larryfr
 author: BlackMist
-ms.date: 09/10/2020
-ms.openlocfilehash: c54034ef927bb49a955ef6121f5a8d56b57f0bd3
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 02/18/2021
+ms.openlocfilehash: b19c5e8ca1f7984f33a5cedf37a2774532c79350
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100375555"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101661097"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure 机器学习发行说明
 
 本文介绍 Azure 机器学习的版本。  有关完整的 SDK 参考内容，请访问 Azure 机器学习的[适用于 Python 的主要 SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) 参考页。
+
+__RSS 源__：通过将以下 URL 复制并粘贴到源阅读器中，可以在页面更新时收到通知：`https://docs.microsoft.com/api/search/rss?search=%22Azure+machine+learning+release+notes%22&locale=en-us`
+
+## <a name="2021-02-16"></a>2021-02-16
+
+### <a name="azure-machine-learning-sdk-for-python-v1230"></a>用于 Python 的 Azure 机器学习 SDK 1.23。0
++ **新功能**
+  + **azureml-core**
+    + [实验性功能]添加支持以将 synapse 工作区链接到 AML 作为链接服务
+    + [实验性功能]添加支持以将 synapse spark 池附加到 AML 作为计算
+    + [实验性功能]添加对基于标识的数据访问的支持。 用户无需提供凭据即可注册数据存储或数据集。 在这种情况下，用户的 AAD 令牌或计算目标的托管标识将用于身份验证。 在[此处](https://aka.ms/data-access)了解更多信息。
+  + **azureml-pipeline-steps**
+    + [实验性功能]添加对[SynapseSparkStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.synapsesparkstep?preserve-view=true&view=azure-ml-py)的支持
+  + azureml-synapse
+    + [实验性功能]添加了 spark 幻数支持，以在 synapse spark 池中运行交互式会话。
++ **Bug 修复与改进**
+  + **azureml-automl-runtime**
+    + 在此更新中，我们添加了 holt holt-winters 指数平滑处理 AutoML SDK 的预测工具箱。 给定时序后， (AICc 会选择最佳模型) 并返回 [的信息标准 ](https://otexts.com/fpp3/selecting-predictors.html#selecting-predictors) 。
+    + AutoML 现在将生成两个日志文件，而不是一个。 根据日志语句的生成过程，log 语句将转为另一个。
+    + 通过交叉验证在模型定型过程中删除不必要的示例内预测。 在某些情况下，这可能会降低模型定型时间，特别是对于时序预测模型。
+  + **azureml-contrib-fairness**
+    + 添加用于 dashboardDictionary 上传的 JSON 架构。
+  + **azureml-contrib-interpret**
+    + contrib-解读自述文件以反映将在10月后弃用后的下一个更新中删除包，请改用 azureml-解读包
+  + **azureml-core**
+    + 以前，可以创建具有小于最大节点计数的最小节点计数的预配配置。 现在已修复此项。 如果你现在尝试使用 SDK 创建预配配置， `min_nodes < max_nodes` 将引发 `ComputeTargetException` 。
+    +  修复 AmlCompute 中 wait_for_completion 的 bug，该 bug 导致函数在实际完成操作之前返回控制流
+    + 运行失败 () 现已弃用，请使用 "运行" 标记 () 将运行标记为 "已失败" 或 "使用运行"。取消 () 以将运行标记为已取消。
+    + 当提供的环境名称不是字符串时，显示错误消息 "环境名称应为 str， {} 找到"。
+  + **azureml-train-automl-client**
+    + 修复了一个 bug，该 bug 阻止取消对 Azure Databricks 群集执行的 AutoML 试验。
 
 
 ## <a name="2021-02-09"></a>2021-02-09
@@ -54,11 +85,11 @@ ms.locfileid: "100375555"
 ### <a name="azure-machine-learning-studio-notebooks-experience-january-update"></a>Azure 机器学习 Studio 笔记本体验 (1 月更新版) 
 + **新功能**
   + AzureML 中的本机 Markdown 编辑器。 用户现在可以在 AzureML 工作室中以本机方式呈现和编辑 markdown 文件。
-  + [ ( 脚本的 "运行" 按钮。 py，。R 和) ](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#run-a-notebook-or-python-script)。 用户现在可以轻松地在 AzureML 中运行 Python、R 和 Bash 脚本
-  + [变量资源管理器](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#explore-variables-in-the-notebook)。 浏览弹出式面板中变量和数据帧的内容。 用户可以轻松检查数据类型、大小和内容。
-  + [目录。](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#navigate-with-a-toc) 导航到笔记本的各个部分，Markdown 标头指示。
+  + [ ( 脚本的 "运行" 按钮。 py，。R 和) ](./how-to-run-jupyter-notebooks.md#run-a-notebook-or-python-script)。 用户现在可以轻松地在 AzureML 中运行 Python、R 和 Bash 脚本
+  + [变量资源管理器](./how-to-run-jupyter-notebooks.md#explore-variables-in-the-notebook)。 浏览弹出式面板中变量和数据帧的内容。 用户可以轻松检查数据类型、大小和内容。
+  + [目录。](./how-to-run-jupyter-notebooks.md#navigate-with-a-toc) 导航到笔记本的各个部分，Markdown 标头指示。
   + 将笔记本导出为 Latex/HTML/Py。 通过导出到 LaTex、HTML 或 py，创建易于共享的笔记本文件。
-  + Intellicode. ML 驱动的结果提供了增强的智能自动完成 [体验](https://docs.microsoft.com/visualstudio/intellicode/overview)。
+  + Intellicode. ML 驱动的结果提供了增强的智能自动完成 [体验](/visualstudio/intellicode/overview)。
 
 + **Bug 修复与改进**
   + 改进了页面加载时间

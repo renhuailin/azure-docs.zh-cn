@@ -1,20 +1,20 @@
 ---
-title: Azure Synapse Link for Azure Cosmos DB（预览版）支持的特性
+title: Synapse Link for Azure Cosmos DB 支持的功能
 description: 了解 Synapse Link for Azure Cosmos DB 支持的当前操作列表
 services: synapse-analytics
 author: ArnoMicrosoft
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: synapse-link
-ms.date: 09/15/2020
+ms.date: 03/02/2021
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: b58474758ac4d26b347dc72d84be401d15a3846b
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: cb2cadadacd914bfa5473b512255c1ab0f856150
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98119809"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101666309"
 ---
 # <a name="azure-synapse-link-for-azure-cosmos-db-supported-features"></a>Synapse Link for Azure Cosmos DB 支持的功能
 
@@ -31,9 +31,9 @@ Azure Cosmos DB 中有两种类型的容器：
 
 无需启用 Synapse 链接即可连接到 Azure Cosmos DB 容器。 在这种情况下，只能读取/写入事务存储区。 下面是 Azure Cosmos DB 的 Synapse 链接中当前支持的功能的列表。 
 
-| 类别              | 描述 |[Apache Spark 池](../sql/on-demand-workspace-overview.md) | [无服务器 SQL 池](../sql/on-demand-workspace-overview.md) |
+| 类别              | 说明 |[Apache Spark 池](../sql/on-demand-workspace-overview.md) | [无服务器 SQL 池](../sql/on-demand-workspace-overview.md) |
 | -------------------- | ----------------------------------------------------------- |----------------------------------------------------------- | ----------------------------------------------------------- |
-| 运行时支持 |支持 Azure Synapse 运行时访问 Azure Cosmos DB| ✓ | 预览 |
+| 运行时支持 |支持 Azure Synapse 运行时访问 Azure Cosmos DB| ✓ | ✓ |
 | Azure Cosmos DB API 支持 | 支持 Azure Cosmos DB API 类型 | SQL / MongoDB | SQL / MongoDB |
 | **Object**  |对象，例如可以创建一个表，直接指向 Azure Cosmos DB 容器| 数据帧、View、Table | 查看 |
 | **读取**    | 可读取 Azure Cosmos DB 容器的类型 | OLTP / HTAP | HTAP  |
@@ -51,7 +51,6 @@ Azure Cosmos DB 中有两种类型的容器：
 | 将数据帧写入容器 |将数据写入容器|✓| ✓ |
 | 加载容器中的流式处理数据帧 |使用 Azure Cosmos DB 更改源流式处理数据|✓| ✓ |
 | 将流式处理数据帧写入容器 |使用 Azure Cosmos DB 更改源流式处理数据|✓| ✓ |
-
 
 ## <a name="supported-code-generated-actions-for-serverless-sql-pool"></a>对无服务器 SQL 池支持的代码生成操作
 

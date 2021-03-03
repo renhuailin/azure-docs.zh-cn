@@ -10,12 +10,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 06/28/2020
 ms.custom: designer
-ms.openlocfilehash: 059b521461969d8148ced90cb3ceffd14a00c4bb
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: b439c5f084c762d3a256806d2e45dab96832bb78
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322264"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101661080"
 ---
 # <a name="what-is-azure-machine-learning-designer"></a>什么是 Azure 机器学习设计器？ 
 
@@ -81,7 +81,7 @@ ms.locfileid: "93322264"
 
 模块可能提供一组参数用于配置模块的内部算法。 在画布上选择模块时，模块的参数会显示在画布右侧的“属性”窗格中。 可以在该窗格中修改参数来调整模型。 可以在设计器中设置各个模块的计算资源。 
 
-:::image type="content" source="./media/concept-designer/properties.png"alt-text="模块属性":::
+:::image type="content" source="./media/concept-designer/properties.png" alt-text="模块属性":::
 
 
 有关在可用的机器学习算法库中导航的某些帮助，请参阅[算法和模块参考概述](algorithm-module-reference/module-reference.md)。 有关选择算法的帮助，请参阅 [Azure 机器学习算法速查表](algorithm-cheat-sheet.md)。
@@ -100,7 +100,7 @@ ms.locfileid: "93322264"
 
 ## <a name="deploy"></a>部署
 
-若要执行实时推理，必须将管道部署为 **实时终结点** 。 实时终结点在外部应用程序和评分模型之间创建接口。 对实时端点的调用会将预测结果实时返回给应用程序。 若要调用实时终结点，请传递部署终结点时创建的 API 密钥。 该终结点基于 REST，这是一种流行的 Web 编程项目的体系结构。
+若要执行实时推理，必须将管道部署为 **实时终结点**。 实时终结点在外部应用程序和评分模型之间创建接口。 对实时端点的调用会将预测结果实时返回给应用程序。 若要调用实时终结点，请传递部署终结点时创建的 API 密钥。 该终结点基于 REST，这是一种流行的 Web 编程项目的体系结构。
 
 必须将实时终结点部署到 Azure Kubernetes 服务群集。
 

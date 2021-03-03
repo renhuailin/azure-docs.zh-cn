@@ -4,17 +4,20 @@ description: 了解如何使用 Azure Key Vault 为 Azure Cosmos DB 帐户配置
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 08/05/2020
+ms.date: 02/19/2021
 ms.author: thweiss
-ms.openlocfilehash: e87f6f158265fd8ac210a0a071e35b0bb77df4d9
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 3ee566a598ea7fdf060712c934305ef63467e548
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96338247"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101656510"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-cosmos-account-with-azure-key-vault"></a>使用 Azure Key Vault 为 Azure Cosmos 帐户配置客户管理的密钥
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
+
+> [!NOTE]
+> 在 Azure Cosmos DB [分析存储](analytical-store-introduction.md) 中使用客户托管的密钥目前需要对你的帐户进行其他配置。 请联系 [azurecosmosdbcmk@service.microsoft.com](mailto:azurecosmosdbcmk@service.microsoft.com) 以获取详细信息。
 
 存储在 Azure Cosmos 帐户中的数据会自动使用由 Microsoft 管理的密钥（服务管理的密钥）进行无缝加密。 还可以选择使用你自己托管的密钥（客户托管密钥）来添加另一个加密层。
 
@@ -23,7 +26,7 @@ ms.locfileid: "96338247"
 必须将客户托管密钥存储在 [Azure Key Vault](../key-vault/general/overview.md) 中，并为每个启用了客户托管密钥的 Azure Cosmos 帐户提供一个密钥。 此密钥用于加密存储在该帐户中的所有数据。
 
 > [!NOTE]
-> 当前，客户托管密钥仅适用于新的 Azure Cosmos 帐户。 应在创建帐户期间配置这些密钥。
+> 当前，客户托管密钥仅适用于新的 Azure Cosmos 帐户。 应在帐户创建过程中对其进行配置。
 
 ## <a name="register-the-azure-cosmos-db-resource-provider-for-your-azure-subscription"></a><a id="register-resource-provider"></a> 为你的 Azure 订阅注册 Azure Cosmos DB 资源提供程序
 
@@ -291,6 +294,10 @@ Azure Cosmos 帐户中存储的所有数据都将通过客户托管密钥加密�
 ### <a name="are-customer-managed-keys-supported-for-existing-azure-cosmos-accounts"></a>现有的 Azure Cosmos 帐户是否支持客户管理的密钥？
 
 此功能目前仅适用于新帐户。
+
+### <a name="is-it-possible-to-use-customer-managed-keys-in-conjunction-with-the-azure-cosmos-db-analytical-store"></a>是否可以结合使用客户托管密钥和 Azure Cosmos DB [分析存储](analytical-store-introduction.md)？
+
+是，但目前需要对你的帐户进行其他配置。 请联系 [azurecosmosdbcmk@service.microsoft.com](mailto:azurecosmosdbcmk@service.microsoft.com) 以获取详细信息。
 
 ### <a name="is-there-a-plan-to-support-finer-granularity-than-account-level-keys"></a>是否有计划支持比帐户级别密钥更精细的粒度？
 

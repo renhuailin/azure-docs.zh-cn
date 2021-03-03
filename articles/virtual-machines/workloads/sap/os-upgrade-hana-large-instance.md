@@ -6,29 +6,25 @@ documentationcenter: ''
 author: saghorpa
 manager: juergent
 editor: ''
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/04/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cdc6dd49fe98085edf3c6fb16606b9f540b5a3a0
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: a3c4026616b19656c708f4dd4ac8a419f7774198
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96608684"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101668616"
 ---
 # <a name="operating-system-upgrade"></a>操作系统升级
 本文档介绍 HANA 大型实例操作系统升级的详细信息。
 
 >[!NOTE]
 >OS 升级是客户的责任，Microsoft 操作支持可指导你访问升级期间要注意的关键区域。 在计划升级前，你还应咨询操作系统供应商。
-
-> [!NOTE]
-> 本文包含对字词 *黑名单* 的引用，这是 Microsoft 不再使用的术语。 在从软件中删除该术语后，我们会将其从本文中删除。
 
 在配置过程中，Microsoft 运营团队会安装操作系统。
 随着时间推移，你需要维护 HLI 单元的操作系统（例如，修补、优化、升级等）。

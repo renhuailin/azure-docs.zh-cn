@@ -3,19 +3,20 @@ title: 在 Azure 中部署 OpenShift 容器平台 3.11 Self-Managed Marketplace 
 description: 在 Azure 中部署 OpenShift 容器平台 3.11 Self-Managed Marketplace 产品/服务。
 author: haroldwongms
 manager: mdotson
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines
+ms.subservice: openshift
+ms.collection: linux
 ms.topic: how-to
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
-ms.openlocfilehash: 36adf35c5fbfc3e88b7d9af425ebabc852707e69
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f257ed1097f49074d70f45f59e9040265f6cedef
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87374093"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101670448"
 ---
 # <a name="configure-prerequisites"></a>配置先决条件
 
@@ -93,7 +94,7 @@ ms.locfileid: "87374093"
 
 **更改大小**
 
-若要选择不同的 VM 大小，请单击 " ***更改大小***"。  将打开 "VM 选择" 窗口。  选择所需的 VM 大小，并单击 " **选择**"。
+若要选择不同的 VM 大小，请单击 "**更改大小**"。  将打开 "VM 选择" 窗口。  选择所需的 VM 大小，然后单击 "选择"。
 
    ![选择 VM 大小](media/openshift-marketplace-self-managed/ocp-selectvmsize.png)  
 <br>

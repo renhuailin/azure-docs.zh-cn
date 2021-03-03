@@ -9,20 +9,19 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.assetid: ec976257-396b-42a0-8ea1-01c97f820fa6
-ms.service: virtual-machines-windows
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/16/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 00d0aa10f2beda3d7b8508e5ca823e020dc79d95
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 4218b4c00b79d78965eaf6e73028e63f52b1ff17
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96489133"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101673627"
 ---
 # <a name="prepare-the-azure-infrastructure-for-sap-ha-by-using-a-windows-failover-cluster-and-shared-disk-for-sap-ascsscs"></a>针对 SAP ASCS/SCS 使用 Windows 故障转移群集和共享磁盘准备 SAP HA 的 Azure 基础结构
 
@@ -446,7 +445,7 @@ SAP ASCS、SAP SCS 和新的 SAP ERS2 使用虚拟主机名和虚拟 IP 地址�
 现在，你可以在 Azure 中使用 Windows Server 故障转移群集配置。 若要安装 SAP ASCS/SCS 实例，需要一个共享磁盘资源。 其中一个选项是使用 SIOS DataKeeper Cluster Edition 是可用于创建共享磁盘资源的第三方解决方案。  
 
 为 SAP ASCS/SCS 群集共享磁盘安装 SIOS DataKeeper Cluster Edition 的过程包括以下任务：
-- 如果需要，请添加 Microsoft .NET 框架。 https://us.sios.com/products/datakeeper-cluster/)有关最新 .net framework 要求，请参阅 [SIOS 文档] ( # B1 
+- 如果需要，请添加 Microsoft .NET 框架。 https://us.sios.com/products/datakeeper-cluster/)有关最新 .net framework 要求的详细要求，请参阅 [SIOS 文档] ( ( 
 - 安装 SIOS DataKeeper
 - 配置 SIOS DataKeeper
 

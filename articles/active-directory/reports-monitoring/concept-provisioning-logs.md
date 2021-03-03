@@ -17,12 +17,12 @@ ms.date: 1/29/2021
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ad69df37d2635156873dc59d6fbf700a67ade548
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 284b554581534a8493225fba0b70b074fb7dd982
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99091926"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101651931"
 ---
 # <a name="overview-of-provisioning-logs-in-the-azure-portal-preview"></a>Azure 门户 (预览版中的预配日志概述) 
 
@@ -60,8 +60,8 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 客户可以通过四种方式与预配日志交互：
 
 - 按照下一部分中所述，从 Azure 门户访问日志。
-- 将预配日志流式传输到 [Azure Monitor](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-log-analytics)。 此方法允许扩展的数据保留，并生成自定义仪表板、警报和查询。
-- 查询用于预配日志的 [MICROSOFT GRAPH API](https://docs.microsoft.com/graph/api/resources/provisioningobjectsummary?view=graph-rest-beta) 。
+- 将预配日志流式传输到 [Azure Monitor](../app-provisioning/application-provisioning-log-analytics.md)。 此方法允许扩展的数据保留，并生成自定义仪表板、警报和查询。
+- 查询用于预配日志的 [MICROSOFT GRAPH API](/graph/api/resources/provisioningobjectsummary?view=graph-rest-beta) 。
 - 下载 CSV 或 JSON 文件格式的设置日志。
 
 ## <a name="access-the-logs-from-the-azure-portal"></a>从 Azure 门户访问日志
@@ -103,8 +103,8 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 
 - **标识**
 - **日期**
-- **Status**
-- **Action**
+- **状态**
+- **操作**
 
 
 ![显示筛选器值的屏幕截图。](./media/concept-provisioning-logs/default-filter.png "筛选器")
@@ -117,7 +117,7 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 > 用户的名称可能并不总是出现在 **标识** 列中。 始终会有一个 ID。 
 
 
-“日期”筛选器用于定义已返回数据的时间范围。 可能的值有：
+“日期”筛选器用于定义已返回数据的时间范围。 可能的值包括：
 
 - 1 个月
 - 7 天
@@ -207,11 +207,11 @@ JSON 文件以缩小格式下载，以减少下载大小。 此格式可以使�
 
 下面是使用 PowerShell 处理 JSON 文件的一些示例命令。 您可以使用任何您喜欢的编程语言。  
 
-首先，通过运行以下命令 [读取 JSON 文件](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/convertfrom-json?view=powershell-7.1) ：
+首先，通过运行以下命令 [读取 JSON 文件](/powershell/module/microsoft.powershell.utility/convertfrom-json?view=powershell-7.1) ：
 
 ` $JSONContent = Get-Content -Path "<PATH TO THE PROVISIONING LOGS FILE>" | ConvertFrom-JSON`
 
-现在，你可以根据方案分析数据。 下面有几个示例： 
+现在，你可以根据方案分析数据。 下面是几个示例： 
 
 - 输出 JSON 文件中的所有作业 Id：
 

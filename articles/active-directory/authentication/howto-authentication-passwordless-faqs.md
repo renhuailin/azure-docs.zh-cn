@@ -1,24 +1,24 @@
 ---
 title: 混合 FIDO2 安全密钥部署的常见问题解答-Azure Active Directory
-description: '了解有关使用 Azure Active Directory (预览版的无密码混合 FIDO2 安全密钥登录的一些常见问题) '
+description: 了解有关使用 Azure Active Directory 的无密码混合 FIDO2 安全密钥登录的一些常见问题
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: troubleshooting
-ms.date: 08/19/2020
+ms.date: 02/22/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 98cb990ede7c4d6e261bba05b0b8c97d758e6c32
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: ca4943293f9474d4089267d05460d6d8766b79e6
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96743524"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101646378"
 ---
-# <a name="deployment-frequently-asked-questions-faqs-for-hybrid-fido2-security-keys-in-azure-ad-preview"></a>部署常见问题 (Azure AD () 预览版中的混合 FIDO2 安全密钥) 的常见问题
+# <a name="deployment-frequently-asked-questions-faqs-for-hybrid-fido2-security-keys-in-azure-ad"></a>部署常见问题 (常见问题) 中的混合 FIDO2 安全密钥 Azure AD 
 
 本文介绍了部署常见问题 (常见问题解答) 用于混合 Azure AD 加入设备和无密码登录到本地资源。 使用此无密码功能，可以使用 FIDO2 安全密钥在 Windows 10 设备上启用混合 Azure AD 加入设备的 Azure AD 身份验证。 用户可以使用新式凭据（如 FIDO2 密钥）在其设备上登录 Windows，并 Active Directory 域服务 (使用无缝单一登录 AD DS) 基于的资源，通过无缝单一登录 (的资源。
 
@@ -32,9 +32,6 @@ ms.locfileid: "96743524"
 * [无密码 FIDO2 安全密钥](howto-authentication-passwordless-security-key.md)
 * [无密码 Windows 10](howto-authentication-passwordless-security-key-windows.md)
 * [无密码本地](howto-authentication-passwordless-security-key-on-premises.md)
-
-> [!NOTE]
-> FIDO2 安全密钥是 Azure Active Directory 的公共预览功能。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="security-keys"></a>安全密钥
 
@@ -96,7 +93,7 @@ Internet 连接是启用此功能的先决条件。 用户首次使用 FIDO2 安
 * **。 msftauth.net*
 * **。 msftauthimages.net*
 * **。 phonefactor.net*
-* *enterpriseregistration。windows。net*
+* *enterpriseregistration.windows.net*
 * *management.azure.com*
 * *policykeyservice.dc.ad.msft.net*
 * *secure.aadcdn.microsoftonline p.com*
@@ -195,7 +192,7 @@ Azure AD Kerberos 服务器在本地 AD DS 环境中表示为域控制器 (DC) �
 
     一个 *ServiceConnectionPoint* 对象，用于存储有关 Azure AD Kerberos 服务器对象的元数据。 管理工具使用此对象来标识和查找 Azure AD Kerberos 服务器对象。
 
-**Azure Active Directory**
+Azure Active Directory
 
 Azure AD Kerberos 服务器在 Azure AD 中表示为 *KerberosDomain* 对象。 每个本地 AD DS 环境都以 Azure AD 租户中的单个 *KerberosDomain* 对象的形式表示。
 
@@ -228,13 +225,13 @@ Azure AD Connect 不会将信息从 Azure AD 写回 AD DS。 实用工具包含�
 
 HTTP 请求是标准的主刷新令牌 (PRT) 请求。 此 PRT 请求包括一个声明，指出需要 (TGT) 的 Kerberos 票证授予票证。
 
-| 声明 | 值 | 描述                             |
+| 声明 | “值” | 说明                             |
 |-------|-------|-----------------------------------------|
 | tgt   | true  | 声明指示客户端需要 TGT。 |
 
 Azure AD 将加密的客户端密钥和消息缓冲区合并为 PRT 响应作为附加属性。 负载使用 Azure AD 设备会话密钥进行加密。
 
-| 字段              | 类型   | 描述  |
+| 字段              | 类型   | 说明  |
 |--------------------|--------|--------------|
 | tgt_client_key     | 字符串 | Base64 编码的客户端密钥 (密钥) 。 此密钥是用于保护 TGT 的客户端机密。 在此无密码方案中，客户端密码由服务器作为每个 TGT 请求的一部分生成，然后在响应中返回给客户端。 |
 | tgt_key_type       | int    | 本地 AD DS 密钥类型，用于客户端密钥和 KERB_MESSAGE_BUFFER 中包括的 Kerberos 会话密钥。 |

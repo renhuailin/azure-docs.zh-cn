@@ -5,14 +5,14 @@ author: TheovanKraay
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: troubleshooting
-ms.date: 12/01/2020
+ms.date: 03/02/2021
 ms.author: thvankra
-ms.openlocfilehash: 6d9a74729768a326379b5efddb864a4fee02fa59
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: f9b6e586879b8697660ced7aa6f1e75083e3ee29
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99493204"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101658565"
 ---
 # <a name="troubleshoot-common-issues-in-azure-cosmos-db-cassandra-api"></a>排查 Azure Cosmos DB Cassandra API 中的常见问题
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -32,7 +32,7 @@ Azure Cosmos DB 中的 Cassandra API 是一个兼容层，它为常用的开源 
 你可能会看到此错误： `Cannot connect to any host, scheduling retry in 600000 milliseconds` 。 
 
 ### <a name="solution"></a>解决方案
-这可能是客户端上的 SNAT 消耗。 若要解决此问题，请按照 SNAT 中的步骤 [进行出站连接](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) 。 这也可能是一个空闲超时问题，其中默认情况下，Azure 负载均衡器有4分钟的空闲超时。 请参阅 [负载均衡器空闲超时](../load-balancer/load-balancer-tcp-idle-timeout.md?tabs=tcp-reset-idle-portal)的文档。 启用 "tcp-从驱动程序设置保持活动状态" (参阅 [下面](#enable-keep-alive-for-java-driver) 的) 并将 `keepAlive` 操作系统时间间隔设置为小于4分钟。
+这可能是客户端上的 SNAT 消耗。 若要解决此问题，请按照 SNAT 中的步骤 [进行出站连接](../load-balancer/load-balancer-outbound-connections.md) 。 这也可能是一个空闲超时问题，其中默认情况下，Azure 负载均衡器有4分钟的空闲超时。 请参阅 [负载均衡器空闲超时](../load-balancer/load-balancer-tcp-idle-timeout.md?tabs=tcp-reset-idle-portal)的文档。 启用 "tcp-从驱动程序设置保持活动状态" (参阅 [下面](#enable-keep-alive-for-java-driver) 的) 并将 `keepAlive` 操作系统时间间隔设置为小于4分钟。
 
  
 

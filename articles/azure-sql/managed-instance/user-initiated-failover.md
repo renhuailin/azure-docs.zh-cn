@@ -9,13 +9,13 @@ ms.topic: how-to
 author: danimir
 ms.author: danil
 ms.reviewer: douglas, sstein
-ms.date: 02/17/2021
-ms.openlocfilehash: ecd97efbf12fb149037a94749bc899169f2c5a92
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.date: 02/23/2021
+ms.openlocfilehash: c154699b7701b584e465ebea7950d4fe50be961f
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101096516"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101660791"
 ---
 # <a name="user-initiated-manual-failover-on-sql-managed-instance"></a>SQL 托管实例上用户启动的手动故障转移
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -34,7 +34,7 @@ ms.locfileid: "101096516"
 - 在某些情况下，查询性能降低，手动故障转移可帮助减轻性能问题。
 
 > [!NOTE]
-> 在部署到生产环境之前，请确保应用程序的故障转移是可复原的，这有助于降低生产环境中出现应用程序故障的风险，且有助于向客户提供应用程序可用性。
+> 在部署到生产环境之前，请确保应用程序的故障转移是可复原的，这有助于降低生产环境中出现应用程序故障的风险，且有助于向客户提供应用程序可用性。 若要详细了解如何通过 [测试应用云就绪情况来](https://youtu.be/FACWYLgYDL8) 测试应用程序的云就绪性，请参阅 SQL 托管实例视频编码。
 
 ## <a name="initiate-manual-failover-on-sql-managed-instance"></a>在 SQL 托管实例上启动手动故障转移
 
@@ -43,7 +43,7 @@ ms.locfileid: "101096516"
 启动故障转移的用户需要具有下列 Azure 角色之一：
 
 - “订阅所有者”角色或
-- “托管实例参与者”角色或
+- [托管实例参与者](../../role-based-access-control/built-in-roles.md#sql-managed-instance-contributor) 角色，或
 - 具有以下权限的自定义角色：
   - `Microsoft.Sql/managedInstances/failover/action`
 
@@ -153,6 +153,6 @@ SELECT sqlserver_start_time, sqlserver_start_time_ms_ticks FROM sys.dm_os_sys_in
 > - 在自动备份系统完成新数据库的第一次完整备份之前，将不允许进行故障转移。
 
 ## <a name="next-steps"></a>后续步骤
-
+- 若要详细了解如何通过 [测试应用云就绪情况来](https://youtu.be/FACWYLgYDL8) 测试应用程序的云就绪性，请参阅 SQL 托管实例视频编码。
 - 详细了解托管实例的高可用性 [Azure SQL 托管实例的高可用性](../database/high-availability-sla.md)。
 - 有关概述，请参阅[什么是 Azure SQL 托管实例？](sql-managed-instance-paas-overview.md)。

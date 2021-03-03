@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/09/2021
-ms.openlocfilehash: 06f9d336bb04aa26cea4ebcdae1cfd045e1c2a1b
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: bf8a4e51e23f438265af706914a6bc73ec30f64d
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100361241"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101667668"
 ---
 # <a name="how-to-run-or-reset-indexers-skills-or-documents"></a>如何运行或重置索引器、技能或文档
 
@@ -101,7 +101,7 @@ POST https://[service name].search.windows.net/skillsets/[skillset name]/resetsk
 > [!IMPORTANT] 
 > [重置文档](/rest/api/searchservice/preview-api/reset-documents) 处于公共预览中，仅可通过预览版 REST API 提供。 在 [补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)下，预览版功能按原样提供。
 
-[重置文档 API](https://docs.microsoft.com/rest/api/searchservice/preview-api/reset-documents)接受文档键的列表，以便您可以刷新特定文档。 如果已指定，则重置参数将成为所处理内容的唯一决定因素，而不考虑基础数据中的其他更改。 例如，如果自上次索引器运行后添加或更新了20个 blob，但你只重置了一个文档，则只会处理一个文档。
+[重置文档 API](/rest/api/searchservice/preview-api/reset-documents)接受文档键的列表，以便您可以刷新特定文档。 如果已指定，则重置参数将成为所处理内容的唯一决定因素，而不考虑基础数据中的其他更改。 例如，如果自上次索引器运行后添加或更新了20个 blob，但你只重置了一个文档，则只会处理一个文档。
 
 对于每个文档，将使用数据源中的值刷新该搜索文档中的所有字段。 不能选取并选择要刷新的字段。 
 

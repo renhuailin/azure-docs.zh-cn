@@ -6,18 +6,18 @@ ms.author: tisande
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: how-to
-ms.date: 03/19/2020
+ms.date: 03/02/2021
 ms.reviewer: sngun
 adobe-target: true
 adobe-target-activity: DocsExp-A/B-384740-MongoDB-2.8.2021
 adobe-target-experience: Experience B
 adobe-target-content: ./connect-mongodb-account-experimental
-ms.openlocfilehash: 702c2d896da2316a2e75c4dbbe4f16249537832b
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: b3e10931307914f1471b8a6fbffd38953ee4717b
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100093414"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101659471"
 ---
 # <a name="connect-a-mongodb-application-to-azure-cosmos-db"></a>将 MongoDB 应用程序连接到 Azure Cosmos DB
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -74,6 +74,12 @@ Azure Cosmos DB 支持标准的 MongoDB 连接字符串 URI 格式，但要满�
 以“连接字符串”边栏选项卡中显示的帐户为例  。 有效的连接字符串为：
 
 `mongodb://contoso123:0Fc3IolnL12312asdfawejunASDF@asdfYXX2t8a97kghVcUzcDv98hawelufhawefafnoQRGwNj2nMPL1Y9qsIr9Srdw==@contoso123.documents.azure.com:10255/mydatabase?ssl=true`
+
+## <a name="driver-requirements"></a>驱动程序要求
+
+支持线路协议版本3.4 或更高版本的所有驱动程序都将支持适用于 MongoDB Azure Cosmos DB API。
+
+具体而言，客户端驱动程序必须支持服务名称标识 (SNI) TLS 扩展和/或 appName 连接字符串选项。 如果 `appName` 提供了参数，则必须将其包含在 Azure 门户中的连接字符串值中。
 
 ## <a name="next-steps"></a>后续步骤
 

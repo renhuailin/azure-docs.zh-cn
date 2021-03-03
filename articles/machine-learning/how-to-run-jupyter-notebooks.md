@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 01/19/2021
-ms.openlocfilehash: 06ae46eb96db39f44cd052e6e9b0d1a19f898007
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: 18ccadcf43d41c677a665ed068d093f51389b576
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100091499"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101657326"
 ---
 # <a name="run-jupyter-notebooks-in-your-workspace"></a>在工作区中运行 Jupyter 笔记本
 
@@ -97,7 +97,7 @@ ms.locfileid: "100091499"
 
 ## <a name="run-a-notebook-or-python-script"></a>运行笔记本或 Python 脚本
 
-若要运行笔记本或 Python 脚本，请首先连接到正在运行的 [计算实例](concept-compute-instance.md)。
+若要运行笔记本或 Python 脚本，请先连接到正在运行的[计算实例](concept-compute-instance.md)。
 
 * 如果没有计算实例，请使用以下步骤创建一个计算实例：
 
@@ -105,7 +105,7 @@ ms.locfileid: "100091499"
         :::image type="content" source="media/how-to-run-jupyter-notebooks/new-compute.png" alt-text="创建新计算":::
     1. 为计算命名，并在“虚拟机大小”中选择一个大小。 
     1. 选择“创建”。
-    1. 计算实例自动连接到该文件。  你现在可以使用计算实例左侧的工具运行笔记本单元或 Python 脚本。
+    1. 计算实例自动连接到文件。  你现在可以使用计算实例左侧的工具运行笔记本单元或 Python 脚本。
 
 * 如果有已停止的计算实例，请选择 "计算" 下拉列表右侧的 "  **开始计算** "。 根据屏幕大小，此位置可能位于 " **...** " 菜单下。
 
@@ -117,23 +117,23 @@ ms.locfileid: "100091499"
 
 使用 [笔记本小组件](/python/api/azureml-widgets/azureml.widgets?preserve-view=true&view=azure-ml-py) 来查看运行和日志的进度。 小组件具有异步性，在训练结束之前，它会一直提供更新。 Jupyter 和 JupterLab 也支持 Azure 机器学习小组件。
 
-:::image type="content" source="media/how-to-run-jupyter-notebooks/jupyter-widget.png" alt-text="屏幕快照： Jupyter 笔记本小组件 ":::
+:::image type="content" source="media/how-to-run-jupyter-notebooks/jupyter-widget.png" alt-text="屏幕截图：Jupyter 笔记本小组件":::
 
-## <a name="explore-variables-in-the-notebook"></a>浏览笔记本中的变量
+## <a name="explore-variables-in-the-notebook"></a>探究笔记本中的变量
 
-在笔记本工具栏上，使用 **变量资源管理器** 工具显示已在笔记本中创建的所有变量的名称、类型、长度和示例值。
+在笔记本工具栏上，使用“变量资源管理器”工具显示已在笔记本中创建的所有变量的名称、类型、长度和示例值。
 
-:::image type="content" source="media/how-to-run-jupyter-notebooks/variable-explorer.png" alt-text="屏幕快照：变量资源管理器工具":::
+:::image type="content" source="media/how-to-run-jupyter-notebooks/variable-explorer.png" alt-text="屏幕截图：“变量资源管理器”工具":::
 
-选择工具以显示 "变量资源管理器" 窗口。
+选择此工具可显示“变量资源管理器”窗口。
 
-:::image type="content" source="media/how-to-run-jupyter-notebooks/variable-explorer-window.png" alt-text="屏幕快照：变量资源管理器窗口":::
+:::image type="content" source="media/how-to-run-jupyter-notebooks/variable-explorer-window.png" alt-text="屏幕截图：“变量资源管理器”窗口":::
 
-## <a name="navigate-with-a-toc"></a>使用 TOC 导航
+## <a name="navigate-with-a-toc"></a>使用目录进行导航
 
-在笔记本工具栏上，使用 "  **目录** " 工具显示或隐藏目录。  启动带有标题的 markdown 单元格，以将其添加到目录中。 单击表中的条目，滚动到笔记本中的相应单元。  
+在笔记本工具栏上，使用“目录”工具显示或隐藏目录。  启动带标题的 Markdown 单元格，以将其添加到目录中。 单击表中的某个条目可滚动到笔记本中的相应单元格。  
 
-:::image type="content" source="media/how-to-run-jupyter-notebooks/table-of-contents.png" alt-text="屏幕快照：笔记本中的目录":::
+:::image type="content" source="media/how-to-run-jupyter-notebooks/table-of-contents.png" alt-text="屏幕截图：笔记本中的目录":::
 
 ## <a name="change-the-notebook-environment"></a>更改笔记本环境
 
@@ -167,7 +167,7 @@ ms.locfileid: "100091499"
 
 “计算”下拉列表旁的指示器显示计算的状态。  在计算的下拉列表中也会显示状态。  
 
-|Color |计算状态 |
+|颜色 |计算状态 |
 |---------|---------| 
 | 绿色 | 正在运行计算 |
 | Red |计算失败 | 
@@ -177,7 +177,7 @@ ms.locfileid: "100091499"
 
 “内核”下拉列表旁的指示器显示内核的状态。
 
-|Color |内核状态 |
+|颜色 |内核状态 |
 |---------|---------|
 |  绿色 |内核已连接、空闲、繁忙|
 |  灰色 |内核未连接 |
@@ -188,12 +188,12 @@ ms.locfileid: "100091499"
 
 ## <a name="troubleshooting"></a>疑难解答
 
-* 如果无法连接到笔记本，请确保 **未** 禁用 web 套接字通信。 要使计算实例 Jupyter 功能正常工作，必须启用 web 套接字通信。 请确保网络允许到 *.instances.azureml.net 和 *.instances.azureml.ms 的 websocket 连接。 
+* 如果无法连接到笔记本，请确保未禁用 Web 套接字通信。 为了让计算实例 Jupyter 功能可以正常运行，必须启用 Web 套接字通信。 请确保网络允许到 *.instances.azureml.net 和 *.instances.azureml.ms 的 websocket 连接。 
 
-* 在专用链接工作区中部署计算实例时，只能从虚拟网络内部访问。 如果使用的是自定义 DNS 或主机文件，请为 <实例名称> 添加一个条目 <region> 。具有工作区专用终结点专用 IP 地址的 instances.azureml.ms。 有关详细信息，请参阅[自定义 DNS](https://docs.microsoft.com/azure/machine-learning/how-to-custom-dns?tabs=azure-cli) 一文。
+* 在专用链接工作区中部署计算实例时，只能从虚拟网络内部访问。 如果使用自定义 DNS 或 hosts 文件，请为 <instance-name>.<region>.instances.azureml.ms 添加一个条目，让该条目包含工作区专用终结点的专用 IP 地址。 有关详细信息，请参阅[自定义 DNS](./how-to-custom-dns.md?tabs=azure-cli) 一文。
     
 ## <a name="next-steps"></a>后续步骤
 
 * [运行第一个试验](tutorial-1st-experiment-sdk-train.md)
 * [使用快照备份文件存储](../storage/files/storage-snapshots-files.md)
-* [在安全环境中工作](https://docs.microsoft.com/azure/machine-learning/how-to-secure-training-vnet#compute-instance)
+* [在安全环境中工作](./how-to-secure-training-vnet.md#compute-instance)

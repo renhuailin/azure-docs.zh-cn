@@ -8,20 +8,19 @@ manager: bburns
 editor: ''
 tags: azure-resource-manager
 keywords: SAP，Azure，Oracle，数据防护
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 01/18/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b4cf2e79acf4cd58ff94a2e90f07202341672a1d
-ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
+ms.openlocfilehash: 29b1bcec58d6350d0f63c3fe0ce11ef99a648019
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98569430"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101668977"
 ---
 # <a name="azure-virtual-machines-oracle-dbms-deployment-for-sap-workload"></a>Azure 虚拟机 SAP 工作负荷的 Oracle DBMS 部署
 
@@ -390,12 +389,12 @@ Azure 文件服务等网络驱动器或远程共享不支持 Oracle Database 文
 
 | 组件 | 磁盘 | Caching | 存储池 |
 | --- | ---| --- | --- |
-| \oracle\<SID>\origlogaA | 高级或超磁盘 | 无 | 可用于高级  |
-| \oracle\<SID>\origlogaB | 高级或超磁盘 | 无 | 可用于高级 |
-| \oracle\<SID>\mirrlogAB | 高级或超磁盘 | 无 | 可用于高级 |
-| \oracle\<SID>\mirrlogBA | 高级或超磁盘 | 无 | 可用于高级 |
+| \oracle\<SID>\origlogaA | 高级或超磁盘 | None | 可用于高级  |
+| \oracle\<SID>\origlogaB | 高级或超磁盘 | None | 可用于高级 |
+| \oracle\<SID>\mirrlogAB | 高级或超磁盘 | None | 可用于高级 |
+| \oracle\<SID>\mirrlogBA | 高级或超磁盘 | None | 可用于高级 |
 | \oracle\<SID>\sapdata1...n | 高级或超磁盘 | 只读 | 建议用于高级  |
-| \oracle\SID\sapdata(n+1)* | 高级或超磁盘 | 无 | 可用于高级 |
+| \oracle\SID\sapdata(n+1)* | 高级或超磁盘 | None | 可用于高级 |
 | \oracle\<SID>\oraarch* | 高级或超磁盘 | 无 | 无需 |
 | Oracle Home， `saptrace` ，.。。 | OS 磁盘 (高级)  | 无需 |
 
@@ -445,7 +444,7 @@ SAP 应用程序使用 Oracle Database 的特定方案也受支持。 详细信�
 
 ### <a name="storage-configuration"></a>存储配置
 
-Ext4、xfs、NFSv 4.1 的文件系统仅在 Azure NetApp 文件 (和) # A3 或 Oracle (ASM 上 (，请参阅 SAP 说明 [#2039619](https://launchpad.support.sap.com/#/notes/2039619) ，了解 Azure 上的) 文件支持的发布/版本要求 Oracle Database。 所有数据库文件都必须存储在基于 Vhd、托管磁盘或和的这些文件系统上。 这些磁盘装载到 Azure VM，基于 [azure 页 blob 存储](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs)、 [azure 托管磁盘](../../managed-disks-overview.md)或 [azure NetApp 文件](https://azure.microsoft.com/services/netapp/)。
+Ext4、xfs、NFSv 4.1 的文件系统 (仅 (和) ) 或 Oracle ASM 上的 Azure NetApp 文件中 (参阅 SAP 说明 [#2039619](https://launchpad.support.sap.com/#/notes/2039619) ，了解 azure 上的) 文件是否支持发布/版本要求 Oracle Database。 所有数据库文件都必须存储在基于 Vhd、托管磁盘或和的这些文件系统上。 这些磁盘装载到 Azure VM，基于 [azure 页 blob 存储](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs)、 [azure 托管磁盘](../../managed-disks-overview.md)或 [azure NetApp 文件](https://azure.microsoft.com/services/netapp/)。
 
 最低要求列表，如下所示： 
 
@@ -487,12 +486,12 @@ Ext4、xfs、NFSv 4.1 的文件系统仅在 Azure NetApp 文件 (和) # A3 或 O
 
 | 组件 | 磁盘 | Caching | 撤消* |
 | --- | ---| --- | --- |
-| /oracle/\<SID>/origlogaA | 高级、超级磁盘或和 | 无 | 可用于高级  |
-| /oracle/\<SID>/origlogaB | 高级、超级磁盘或和 | 无 | 可用于高级 |
-| /oracle/\<SID>/mirrlogAB | 高级、超级磁盘或和 | 无 | 可用于高级 |
-| /oracle/\<SID>/mirrlogBA | 高级、超级磁盘或和 | 无 | 可用于高级 |
+| /oracle/\<SID>/origlogaA | 高级、超级磁盘或和 | None | 可用于高级  |
+| /oracle/\<SID>/origlogaB | 高级、超级磁盘或和 | None | 可用于高级 |
+| /oracle/\<SID>/mirrlogAB | 高级、超级磁盘或和 | None | 可用于高级 |
+| /oracle/\<SID>/mirrlogBA | 高级、超级磁盘或和 | None | 可用于高级 |
 | /oracle/\<SID>/sapdata1...n | 高级、超级磁盘或和 | 只读 | 建议用于高级  |
-| /oracle/\<SID>/sapdata(n+1)* | 高级、超级磁盘或和 | 无 | 可用于高级 |
+| /oracle/\<SID>/sapdata(n+1)* | 高级、超级磁盘或和 | None | 可用于高级 |
 | /oracle/\<SID>/oraarch* | 高级、超级磁盘或和 | 无 | 无需 |
 | Oracle Home， `saptrace` ，.。。 | OS 磁盘 (高级)  | 无需 |
 

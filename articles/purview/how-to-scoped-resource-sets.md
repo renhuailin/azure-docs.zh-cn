@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 02/17/2021
-ms.openlocfilehash: 517b07eecdbc63754f46fcf1051bf5b987dbc20e
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 8d7d482f38d58c8d6a8959acb51c94c0fb814697
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100654082"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101668429"
 ---
 # <a name="create-scoped-resource-set-configuration-rules"></a>创建作用域内资源集配置规则
 
@@ -43,7 +43,7 @@ ms.locfileid: "100654082"
 
 创建作用域内资源集规则时，请使用以下语法来指定应用规则的规则。
 
-### <a name="static-replacers-single-brackets"></a>静态 replacers (单个方括号) 
+### <a name="dynamic-replacers-single-brackets"></a>动态 replacers (单个方括号) 
 
 在作用域内的资源集规则中，将单个方括号用作 **动态 replacers** 。 使用格式指定限定名称中的动态替换器 `{<replacerName:<replacerType>}` 。 如果匹配，动态 replacers 将用作分组条件，指示资产应表示为资源集。 如果将资产分组到资源集中，则资源集限定路径将包含 `{replacerName}` 指定替换器的位置。
 
@@ -67,14 +67,14 @@ ms.locfileid: "100654082"
 
 | 类型 | 结构 |
 | ---- | --------- |
-| string | 包含1个或多个 Unicode 字符的序列，包括空格等分隔符。 |
+| 字符串 | 包含1个或多个 Unicode 字符的序列，包括空格等分隔符。 |
 | int | 1个或多个 0-9 ASCII 字符的序列，它可以是0前缀 (例如 0001) 。 |
-| guid | 作为 defineddefa 的 UUID 的一系列32或8-4-4-4-12 字符串表示形式 https://tools.ietf.org/html/rfc4122 |
+| GUID | 作为 defineddefa 的 UUID 的一系列32或8-4-4-4-12 字符串表示形式 https://tools.ietf.org/html/rfc4122 |
 | date | 包含6个或 8 0-9 个 ASCII 字符的序列，其分隔符如下： yyyymmdd，yyyy-mm-dd，yymmdd，yy https://tools.ietf.org/html/rfc3339 |
 | time | 一系列4或 6 0-9 ASCII 字符，带有可选分隔符： HHmm，HH： mm，HHmmss，HH： mm： ss https://tools.ietf.org/html/rfc3339 |
 | timestamp | 一系列带有可选分隔符的12或 14 0-9 ASCII 字符： yyyy-mm-Yyyy-mm-ddthh： mm，yyyymmddhhmm，yyyy-mm-Yyyy-mm-ddthh： mm： ss，yyyymmddHHmmss 中指定的 https://tools.ietf.org/html/rfc3339 |
 | boolean | 可以包含 "true" 或 "false"，不区分大小写。 |
-| number | 一系列0个或更多的 0-9 ASCII 字符， (例如 0001) 后跟一个句点 "."）。 以及一系列1个或多个 0-9 ASCII 字符， (例如 100)  | 
+| 数字 | 一系列0个或更多的 0-9 ASCII 字符， (例如 0001) 后跟一个句点 "."）。 以及一系列1个或多个 0-9 ASCII 字符， (例如 100)  | 
 | hex | 来自集0-1 和 A-f 的1个或多个 ASCII 字符的序列，该值可以是0作为前缀 |
 | 区域设置 | 与中指定的语法匹配的字符串 https://tools.ietf.org/html/rfc5646 |
 
@@ -92,7 +92,7 @@ ms.locfileid: "100654082"
 
 SAP 数据提取到完整和增量加载中
 
-*输入*
+#### <a name="inputs"></a>输入
 
 文件：
 -   `https://myazureblob.blob.core.windows.net/bar/customer/full/2020/01/13/saptable_customer_20200101_20200102_01.txt`
@@ -102,7 +102,7 @@ SAP 数据提取到完整和增量加载中
 -   `https://myazureblob.blob.core.windows.net/bar/customer/full/2020/01/17/saptable_customer_20200101_20200102_02.txt`
 
 
-*作用域资源集规则*
+#### <a name="scoped-resource-set-rule"></a>作用域资源集规则 
 
 **作用域：**https://myazureblob.blob.core.windows.net/bar/
 
@@ -112,7 +112,7 @@ SAP 数据提取到完整和增量加载中
 
 **资源集：** true
 
-*输出*
+#### <a name="output"></a>输出 
 
 一个资源集资产
 
@@ -124,7 +124,7 @@ SAP 数据提取到完整和增量加载中
 
 Avro 格式的 IoT 数据
 
-*输入*
+#### <a name="inputs"></a>输入 
 
 文件：
 -   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/01-01-2020/22:33:22-001.avro`
@@ -132,7 +132,7 @@ Avro 格式的 IoT 数据
 -   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/02-01-2020/22:33:22-001.avro`
 -   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-90/01-01-2020/22:33:22-001.avro`
 
-*作用域的资源集规则*
+#### <a name="scoped-resource-set-rules"></a>作用域的资源集规则 
 
 **作用域：**https://myazureblob.blob.core.windows.net/bar/
 
@@ -150,9 +150,9 @@ Avro 格式的 IoT 数据
 
 **限定名：**`raw/machinename-90/{date:date}/{time:time}-{id:int}.avro`
 
-**资源集： true**
+#### <a name="resource-set-true"></a>*资源集： true* 
 
-*输出*
+#### <a name="outputs"></a>Outputs 
 
 2个资源集 
 
@@ -172,7 +172,7 @@ Avro 格式的 IoT 数据
 
 Avro 格式的 IoT 数据
 
-*输入*
+#### <a name="inputs"></a>输入 
 
 文件：
 -   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/01-01-2020/22:33:22-001.avro`
@@ -180,7 +180,7 @@ Avro 格式的 IoT 数据
 -   `https://myazureblob.blob.core.windows.netbar/raw/machinename-89/02-01-2020/22:33:22-001.avro`
 -   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-90/01-01-2020/22:33:22-001.avro`
 
-*作用域资源集规则*
+#### <a name="scoped-resource-set-rule"></a>作用域资源集规则 
 
 **作用域：**https://myazureblob.blob.core.windows.net/bar/
 
@@ -190,7 +190,7 @@ Avro 格式的 IoT 数据
 
 **资源集：** true
 
-*输出*
+#### <a name="outputs"></a>Outputs 
 
 资源集1
 
@@ -208,7 +208,7 @@ Avro 格式的 IoT 数据
 
 不分组到资源集中
 
-*输入*
+#### <a name="inputs"></a>输入 
 
 文件：
 -   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/01-01-2020/22:33:22-001.avro`
@@ -216,7 +216,7 @@ Avro 格式的 IoT 数据
 -   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/02-01-2020/22:33:22-001.avro`
 -   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-90/01-01-2020/22:33:22-001.avro`
 
-*作用域资源集规则*
+#### <a name="scoped-resource-set-rule"></a>作用域资源集规则 
 
 **作用域：**https://myazureblob.blob.core.windows.net/bar/
 
@@ -226,7 +226,7 @@ Avro 格式的 IoT 数据
 
 **资源集：** false
 
-*输出*
+#### <a name="outputs"></a>Outputs 
 
 4个人资产
 

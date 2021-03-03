@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/27/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 9fac8db6747d1e081fa884ed794e55b98f44577f
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: b69e701177c6f017388521ed05c37de1271c7e60
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100652031"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101650152"
 ---
 # <a name="tutorial-develop-a-sample-scim-endpoint"></a>教程：开发示例 SCIM 终结点
 
@@ -33,7 +33,7 @@ ms.locfileid: "100652031"
 
 ## <a name="deploy-your-scim-endpoint-in-azure"></a>在 Azure 中部署 SCIM 终结点
 
-此处的步骤使用 [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) 和 [Azure App Service](https://docs.microsoft.com/azure/app-service/)将 SCIM 终结点部署到服务。 SCIM 引用代码还可以在本地运行，由本地服务器托管，也可以部署到另一个外部服务。
+此处的步骤使用 [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) 和 [Azure App Service](../../app-service/index.yml)将 SCIM 终结点部署到服务。 SCIM 引用代码还可以在本地运行，由本地服务器托管，也可以部署到另一个外部服务。
 
 1. 从 GitHub 中转到 [引用代码](https://github.com/AzureAD/SCIMReferenceCode) ，然后选择 " **克隆" 或 "下载**"。
 
@@ -114,19 +114,19 @@ ms.locfileid: "100652031"
 
 1. 创建具有以下变量的测试环境：
 
-   |环境|变量|值|
+   |环境|变量|Value|
    |-|-|-|
    |使用 IIS Express 在本地运行项目|||
    ||**Server**|`localhost`|
-   ||**端口**|`:44359`*(忘记 **`:`**)*|
+   ||端口 |`:44359`*(忘记 **`:`**)*|
    ||**Api**|`scim`|
    |使用 Kestrel 在本地运行项目|||
    ||**Server**|`localhost`|
-   ||**端口**|`:5001`*(忘记 **`:`**)*|
+   ||端口 |`:5001`*(忘记 **`:`**)*|
    ||**Api**|`scim`|
    |在 Azure 中托管终结点|||
    ||**Server**|*(输入 SCIM URL)*|
-   ||**端口**|*(留空)*|
+   ||端口 |*(留空)*|
    ||**Api**|`scim`|
 
 1. 使用 Postman 集合中的 " **获取密钥** " 将 **get** 请求发送到令牌终结点，并检索要在 **令牌** 变量中存储的用于后续请求的安全令牌。

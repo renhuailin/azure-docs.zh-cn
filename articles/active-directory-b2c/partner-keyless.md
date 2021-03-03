@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 1/17/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: c8a5666d373852da5ff79490f435b2d66d5cc6e0
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: b817cfc347ee79ff7c9cbb4124e3f2b7e4d2b7ee
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99090360"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101644249"
 ---
 # <a name="tutorial-configure-keyless-with-azure-active-directory-b2c"></a>教程：配置无键与 Azure Active Directory B2C
 
@@ -30,7 +30,7 @@ ms.locfileid: "99090360"
 
 - Azure 订阅。 如果没有订阅，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。
 
-- [Azure AD B2C 租户](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant)。 租户必须链接到你的 Azure 订阅。
+- [Azure AD B2C 租户](./tutorial-create-tenant.md)。 租户必须链接到你的 Azure 订阅。
 
 - 无键 cloud 租户，获取免费 [试用帐户](https://keyless.io/go)。
 
@@ -74,7 +74,7 @@ ms.locfileid: "99090360"
 
 5. 选择 " **标识提供者**"。
 
-6. 选择 **添加** 。
+6. 选择“添加”。
 
 ### <a name="configure-an-identity-provider"></a>配置标识提供者
 
@@ -83,7 +83,7 @@ ms.locfileid: "99090360"
 1. 选择 **标识提供者类型**  >  **OpenID connect (预览)**
 2. 填写表单以设置标识提供者：
 
-   |properties | 值 |
+   |属性 | Value |
    |:-----| :-----------|
    | 名称   | Keyless |
    | 元数据 URL | 插入托管无键 Authentication 应用程序的 URI，后跟特定路径，如 " https://keyless.auth/.well-known/openid-configuration " |
@@ -99,7 +99,7 @@ ms.locfileid: "99090360"
 
 5. 填写表单以映射标识提供者：
 
-   |properties | 值 |
+   |属性 | “值” |
    |:-----| :-----------|
    | UserID    | 从订阅中 |
    | 显示名称 | 从订阅中 |
@@ -129,7 +129,7 @@ ms.locfileid: "99090360"
 
 9. 在 " **用户属性和令牌声明**" 下，在 "收集属性" 选项中选择 " **电子邮件地址** "。 你可以添加 Azure Active Directory 可以与 Azure AD B2C 可以返回到客户端应用程序的声明一起收集的所有属性。
 
-10. 选择“创建”  。
+10. 选择“创建”。
 
 11. 成功创建后，选择新的 **用户流**。
 
@@ -157,6 +157,6 @@ ms.locfileid: "99090360"
 
 有关其他信息，请查看以下文章：
 
-- [Azure AD B2C 中的自定义策略](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview)
+- [Azure AD B2C 中的自定义策略](./custom-policy-overview.md)
 
-- [Azure AD B2C 中的自定义策略入门](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications)
+- [Azure AD B2C 中的自定义策略入门](./custom-policy-get-started.md?tabs=applications)

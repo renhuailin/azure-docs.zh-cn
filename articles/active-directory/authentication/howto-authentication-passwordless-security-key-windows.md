@@ -1,36 +1,33 @@
 ---
 title: 无密码安全密钥登录 Windows-Azure Active Directory
-description: 了解如何使用 FIDO2 安全密钥 () 预览版启用无密码安全密钥登录 Azure Active Directory
+description: 了解如何使用 FIDO2 安全密钥启用无密码安全密钥登录 Azure Active Directory
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 11/24/2020
+ms.date: 02/22/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 04a46a691b2f629b64cfe09c22813b05c593af1c
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 190e9c857f1ec9d19eb89493dc4b4a9fb68fac87
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96743456"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101653501"
 ---
-# <a name="enable-passwordless-security-key-sign-in-to-windows-10-devices-with-azure-active-directory-preview"></a>使用 Azure Active Directory (预览版启用对 Windows 10 设备的无密码安全密钥登录) 
+# <a name="enable-passwordless-security-key-sign-in-to-windows-10-devices-with-azure-active-directory"></a>使用 Azure Active Directory 启用无密码安全密钥登录到 Windows 10 设备 
 
 本文档重点介绍如何在 Windows 10 设备上启用基于 FIDO2 安全密钥的无密码身份验证。 在本文末尾，你将能够使用 FIDO2 安全密钥通过你的 Azure AD 帐户登录到 Azure AD 和混合 Azure AD 已加入 Windows 10 设备。
-
-> [!NOTE]
-> FIDO2 安全密钥是 Azure Active Directory 的公共预览功能。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="requirements"></a>要求
 
 | 设备类型 | 已加入 Azure AD | 已加入混合 Azure AD |
 | --- | --- | --- |
 | [Azure AD 多重身份验证](howto-mfa-getstarted.md) | X | X |
-| [组合安全信息注册预览](concept-registration-mfa-sspr-combined.md) | X | X |
+| [组合的安全信息注册](concept-registration-mfa-sspr-combined.md) | X | X |
 | 兼容的 [FIDO2 安全密钥](concept-authentication-passwordless.md#fido2-security-keys) | X | X |
 | WebAuthN 需要 Windows 10 版本1903或更高版本 | X | X |
 | [Azure AD 联接的设备](../devices/concept-azure-ad-join.md) 需要 Windows 10 版本1909或更高版本 | X |   |
@@ -54,9 +51,9 @@ ms.locfileid: "96743456"
 - 使用包含多个 Azure AD 帐户的安全密钥登录或解锁 Windows 10 设备。 此方案利用最后添加到安全密钥的帐户。 WebAuthN 允许用户选择他们想要使用的帐户。
 - 解锁运行 Windows 10 版本1809的设备。 为获得最佳体验，请使用 Windows 10 版本1903或更高版本。
 
-## <a name="prepare-devices-for-preview"></a>为预览版准备设备
+## <a name="prepare-devices"></a>准备设备
 
-在功能预览期间要试验的 Azure AD 联接的设备必须运行 Windows 10 版本1909或更高版本。
+Azure AD 联接的设备必须运行 Windows 10 版本1909或更高版本。
 
 混合 Azure AD 联接的设备必须运行 Windows 10 版本2004或更高版本。
 
@@ -89,7 +86,7 @@ ms.locfileid: "96743456"
 若要以特定的设备组为目标以启用凭据提供程序，请通过 Intune 使用以下自定义设置：
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
-1. 浏览到 **Microsoft Intune** 设备配置 "" 配置文件 ""  >  **Device configuration**  >  **Profiles**  >  **创建配置文件**"。
+1. 浏览到 **Microsoft Intune** 设备配置 "" 配置文件 ""  >    >    >  **创建配置文件**"。
 1. 用以下设置配置新配置文件：
    - 名称： Windows Sign-In 的安全密钥
    - 说明：在 Windows 登录过程中启用要使用的 FIDO 安全密钥
@@ -150,13 +147,13 @@ ms.locfileid: "96743456"
 
 ## <a name="troubleshooting-and-feedback"></a>故障排除和反馈
 
-若要在预览此功能时共享反馈或遇到问题，请使用以下步骤通过 Windows 反馈中心应用进行共享：
+如果你想要共享反馈或遇到有关此功能的问题，请使用以下步骤通过 Windows 反馈中心应用进行共享：
 
 1. 启动 **反馈中心** 并确保已登录。
 1. 按照以下分类提交反馈：
    - 类别：安全和隐私
    - 子类别： FIDO
-1. 若要捕获日志，请使用选项 **重新创建我的问题**
+1. 若要捕获日志，请使用选项 **重新创建问题**。
 
 ## <a name="next-steps"></a>后续步骤
 

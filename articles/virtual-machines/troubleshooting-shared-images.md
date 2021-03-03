@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 10/27/2020
 ms.author: olayemio
 ms.reviewer: cynthn
-ms.openlocfilehash: 9a905dd61bcc267b47dcd075f54a0ed6563a3797
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 507dd224ddeb935cc8b3718bb2e2628be36066f4
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879623"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101676018"
 ---
 # <a name="troubleshoot-shared-image-galleries-in-azure"></a>排查 Azure 中的共享映像库问题
 
@@ -52,9 +52,13 @@ ms.locfileid: "98879623"
 **原因**：你已尝试删除至少包含一个现有映像定义的库。 库必须为空，然后才能删除它。  
 **解决方法**：删除库中的所有映像定义，然后继续删除库。 如果映像定义包含映像版本，则必须先删除映像版本，然后才能删除图像定义。
 
+*库名称 "<galleryName \> " 在订阅 "" 中不是唯一的 <subscriptionId> 。请选择另一个库名称。*  
+**原因**：具有相同名称的现有库，并且已尝试使用同一名称创建另一个库。  
+**解决方法**：为库选择不同的名称。
+
 *资源 \> \_ \> 组 <resourceGroup 中 <区域1的位置中已存在资源 <galleryName \> 。无法在区域 2 <位置创建具有相同名称的资源 \_ \> 。请选择新的资源名称。*  
-**原因**：资源组中已存在具有相同名称的现有库，并且已尝试使用同一名称创建另一个具有相同名称的库。  
-**解决方法**：使用不同的库或使用其他资源组。
+**原因**：具有相同名称的现有库，并且已尝试使用同一名称创建另一个库。  
+**解决方法**：为库选择不同的名称。
 
 ## <a name="creating-or-modifying-image-definitions"></a>创建或修改映像定义 ##
 
@@ -158,7 +162,7 @@ ms.locfileid: "98879623"
 **解决方法**：选择一个整数值。
 
 *库映像版本发布配置文件区域 <publishingRegions \> 必须包含映像版本 <sourceRegion 的位置\>*  
-**原因**： \> <publishingRegions 列表中必须包含源映像 ( # B0 sourceRegion) 的位置 \> 。  
+**原因**： \> <publishingRegions 列表中必须包含源映像 (<sourceRegion) 的位置 \> 。  
 **解决方法**： \> <publishingRegions 列表中包括 <sourceRegion \> 。
 
 *\>参数 <属性 <值 \> 超出了范围。该值必须介于 <minValue \> 和 <个 \> （含）之间。*  
@@ -193,7 +197,7 @@ ms.locfileid: "98879623"
 **原因**： <resourceID \> 值的格式不正确。  
 **解决方法**：如果使用磁盘和/或磁盘快照作为映像版本的源，请检查磁盘和/或磁盘快照的资源 id 是否正确。
 
-*无法从以下项创建库映像版本： <resourceID， \> 因为父库映像中的 OS 状态 ( # B1 OsState \_ 1 \>) 不 <OsState \_ 2 \> 。*  
+*无法从以下项创建库映像版本： <resourceID， \> 因为父库映像中的 OS 状态 (<OsState \_ 1 \>) 不 <OsState \_ 2 \> 。*  
 **原因**： (通用化或专用) 的操作系统状态与映像定义中指定的操作系统状态不匹配。  
 **解决方法**：选择基于虚拟机的源 <OsState 1 的操作系统状态， \_ \> 或基于 <OsState 2 为 vm 创建新的映像定义 \_ \> 。
 

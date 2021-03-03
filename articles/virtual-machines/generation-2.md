@@ -6,20 +6,20 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.workload: infrastructure-services
 ms.topic: how-to
-ms.date: 08/28/2020
+ms.date: 02/26/2021
 ms.author: jushiman
-ms.openlocfilehash: 61897a790da8a5f52b1b8f8e208629e7755690fa
-ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
+ms.openlocfilehash: dcc599daaa8d124c7188165ff5e024767a5e3cd7
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97759732"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101672631"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Azure 对第 2 代 VM 的支持
 
 Azure 现已提供对第 2 代虚拟机 (VM) 的支持。 创建虚拟机后无法更改其代系，因此，在选择代系之前，请先查看本页上的注意事项。
 
-第 2 代 VM 支持第 1 代 VM 所不支持的某些关键特性。 这些特性包括更大的内存、Intel Software Guard Extensions (Intel SGX) 和虚拟化持久性内存 (vPMEM)。 在本地运行的第 2 代 VM 具有 Azure 中尚不支持的一些功能。 有关详细信息，请参阅[特性和功能](#features-and-capabilities)部分。
+第 2 代 VM 支持第 1 代 VM 所不支持的某些关键特性。 这些特性包括更大的内存、Intel Software Guard Extensions (Intel SGX) 和虚拟化持久性内存 (vPMEM)。 在本地运行的第 2 代 VM 具有 Azure 中尚不支持的一些特性。 有关详细信息，请参阅[特性和功能](#features-and-capabilities)部分。
 
 第 2 代 VM 使用新的基于 UEFI 的启动体系结构，而不是使用第 1 代 VM 所用的基于 BIOS 的体系结构。 与第 1 代 VM 相比，第 2 代 VM 的启动时间和安装时间可能有所改善。 有关第 2 代 VM 的概述以及第 1 代与第 2 代之间的某些差异，请参阅[应在 Hyper-V 中创建第 1 代还是第 2 代虚拟机？](/windows-server/virtualization/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v)。
 
@@ -79,11 +79,13 @@ Azure 目前不支持本地 Hyper-V 对第 2 代 VM 所支持的某些特性。
 
 | 第 2 代的特性                | 本地 Hyper-V | Azure |
 |-------------------------------------|---------------------|-------|
-| 安全启动                         | :heavy_check_mark:  | :x:   |
+| 安全启动                         | :heavy_check_mark:  | 具有可信启动 (预览)    |
 | 屏蔽 VM                         | :heavy_check_mark:  | :x:   |
-| vTPM                                | :heavy_check_mark:  | :x:   |
-| 基于虚拟化的安全性 (VBS) | :heavy_check_mark:  | :x:   |
+| vTPM                                | :heavy_check_mark:  | 具有可信启动 (预览)   |
+| 基于虚拟化的安全性 (VBS) | :heavy_check_mark:  | 具有可信启动 (预览)    |
 | VHDX 格式                         | :heavy_check_mark:  | :x:   |
+
+有关详细信息，请参阅 " [可信启动 (预览") ](trusted-launch.md)。
 
 ## <a name="features-and-capabilities"></a>特性和功能
 
@@ -105,7 +107,7 @@ Azure 目前不支持本地 Hyper-V 对第 2 代 VM 所支持的某些特性。
 | Azure Site Recovery               | :heavy_check_mark: | :heavy_check_mark: |
 | 备份/还原                    | :heavy_check_mark: | :heavy_check_mark: |
 | 共享映像库              | :heavy_check_mark: | :heavy_check_mark: |
-| [Azure 磁盘加密](../security/fundamentals/azure-disk-encryption-vms-vmss.md)             | :heavy_check_mark: | :x:                |
+| [Azure 磁盘加密](../security/fundamentals/azure-disk-encryption-vms-vmss.md)             | :heavy_check_mark: | :heavy_check_mark:                |
 | [服务器端加密](disk-encryption.md)            | :heavy_check_mark: | :heavy_check_mark: |
 
 ## <a name="creating-a-generation-2-vm"></a>创建第 2 代 VM
@@ -171,7 +173,7 @@ az vm image list --publisher Canonical --sku gen2 --output table --all
     是的。 但是，并非所有[第 2 代 VM 大小](#generation-2-vm-sizes)都已在每个区域中推出。 第 2 代 VM 的可用性取决于 VM 大小的可用性。
 
 * **第 1 代与第 2 代 VM 的价格是否有差别？**  
-   不是。
+   否。
 
 * **我有一个来自本地第 2 代 VM 的 .vhd 文件。我可以使用该 .vhd 文件在 Azure 中创建第 2 代 VM 吗？**
   是的，你可以将第 2 代 .vhd 文件带到 Azure，并使用该文件创建第 2 代 VM。 请使用以下步骤来执行该操作：
@@ -206,7 +208,7 @@ az vm image list --publisher Canonical --sku gen2 --output table --all
     是的。 有关详细信息，请参阅[创建具有加速网络的 VM](../virtual-network/create-vm-accelerated-networking-cli.md)。
 
 * **第 2 代 VM 在 Azure 中是否支持安全启动或 vTPM？**
-    Azure 中的第 1 代和第 2 代 VM 都不支持安全启动或 vTPM。 
+    VTPM 和安全启动都是第2代 Vm 的受信任启动 (预览) 功能。 有关详细信息，请参阅 [受信任的启动](trusted-launch.md)。
     
 * **第 2 代是否支持 VHDX？**  
     否，第 2 代 VM 仅支持 VHD。
@@ -225,5 +227,7 @@ az vm image list --publisher Canonical --sku gen2 --output table --all
     1. 验证是否正在搜索[支持 Gen2 VM 的 VM 大小](#generation-2-vm-sizes)。
 
 ## <a name="next-steps"></a>后续步骤
+
+在第2代 Vm 中了解有关 [受信任的启动 (预览) ](trusted-launch-portal.md) 的详细信息。
 
 了解 [Hyper-V 中的第 2 代虚拟机](/windows-server/virtualization/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v)。

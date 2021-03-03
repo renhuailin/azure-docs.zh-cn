@@ -1,0 +1,80 @@
+---
+title: 在 MongoDB Azure Cosmos DB API 中使用多文档事务
+description: 了解如何创建一个示例 Mongo shell 应用程序，该应用程序可在 MongoDB 4.0 的 Azure Cosmos DB API 中对固定集合执行多文档事务 (所有-或无语义) 。
+author: gahl-levy
+ms.service: cosmos-db
+ms.subservice: cosmosdb-mongo
+ms.topic: how-to
+ms.date: 03/02/2021
+ms.author: gahllevy
+ms.openlocfilehash: 4d7dcc829f25b7f1b7c6cb6b1d13a664d301bfe6
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101662187"
+---
+# <a name="use-multi-document-transactions-in-azure-cosmos-db-api-for-mongodb"></a>在 MongoDB Azure Cosmos DB API 中使用多文档事务
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
+
+在本文中，你将创建一个 Mongo shell 应用程序，该应用程序使用服务器版本4.0 在 MongoDB Azure Cosmos DB API 中对固定集合执行多文档事务。
+
+## <a name="what-are-multi-document-transactions"></a>多文档事务有哪些？
+
+在 MongoDB Azure Cosmos DB API 中，对单个文档的操作是原子的。 多文档事务使应用程序可以在多个文档中执行原子操作。 它为操作提供 "全部或全部" 语义。 提交时，事务内部所做的更改将持久保存，如果事务失败，则将放弃事务中的所有更改。
+
+多文档事务遵循 **ACID** 语义：
+
+* 原子性：所有操作都视为一个操作
+* 一致性：提交的数据有效
+* 隔离：与其他操作隔离
+* 持久性：在告知客户端时保留事务数据
+
+## <a name="requirements"></a>要求
+
+4.0 版的 unsharded 集合中支持多文档事务。 多文档事务不支持跨集合或分片集合。
+
+支持线路协议版本4.0 或更高版本的所有驱动程序都将支持适用于 MongoDB 多文档事务 Azure Cosmos DB API。
+
+## <a name="run-multi-document-transactions-in-mongodb-shell"></a>在 MongoDB shell 中运行多文档事务
+
+1. 打开命令提示符，中转到安装了 Mongo shell 版本4.0 和更高版本的目录：
+
+   ```powershell
+   cd <path_to_mongo_shell_>
+   ```
+
+2. *connect_friends.js* 创建 mongo shell 脚本并添加以下内容
+
+   ```javascript
+   // insert data into friends collection
+   db.getMongo().getDB("users").friends.insert({name:"Tom"})
+   db.getMongo().getDB("users").friends.insert({name:"Mike"})
+   // start transaction
+   var session = db.getMongo().startSession();
+   var friendsCollection = session.getDatabase("users").friends;
+   session.startTransaction();
+   // operations in transaction
+   try {
+       friendsCollection.updateOne({ name: "Tom" }, { $set: { friendOf: "Mike" } } );
+       friendsCollection.updateOne({ name: "Mike" }, { $set: { friendOf: "Tom" } } );
+   } catch (error) {
+       // abort transaction on error
+       session.abortTransaction();
+       throw error;
+   }
+
+    // commit transaction
+    session.commitTransaction();
+
+    ```
+
+3. 运行以下命令以执行多文档事务。 可以在 Azure 门户中找到主机、端口、用户和密钥。
+
+   ```powershell
+   mongo "<HOST>:<PORT>" -u "<USER>" -p "KEY" --ssl connect_friends.js
+   ```
+
+## <a name="next-steps"></a>后续步骤
+
+了解[MongoDB 4.0 AZURE COSMOS DB API](mongodb-feature-support-40.md)的新增功能

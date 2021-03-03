@@ -8,19 +8,18 @@ manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/05/2020
 ms.author: depadia
-ms.openlocfilehash: a7361dafce30b07e76d971bdcda41cf4b3cd9e6e
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 7a40acf7dea11781a0381e93ea180c5185b7818b
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98806176"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101671918"
 ---
 # <a name="sap-businessobjects-bi-platform-deployment-guide-for-linux-on-azure"></a>Azure 上的 SAP BusinessObjects BI 平台部署指南
 
@@ -37,7 +36,7 @@ ms.locfileid: "98806176"
 - Azure Database for MySQL (版本： 8.0.15) 
 - MySQL C API 连接器-libmysqlclient (版本： 6.1.11) 
 
-| 文件系统        | 说明                                                                                                               | 大小(GB)             | 所有者  | Group  | 存储                    |
+| 文件系统        | 说明                                                                                                               | 大小(GB)             | “所有者”  | 组  | 存储                    |
 |--------------------|---------------------------------------------------------------------------------------------------------------------------|-----------------------|--------|--------|----------------------------|
 | /usr/sap           | 用于安装 SAP BOBI 实例、默认 Tomcat Web 应用程序和数据库驱动程序的文件系统 (如有必要)  | SAP 大小调整准则 | bl1adm | sapsys | 托管高级磁盘-SSD |
 | /usr/sap/frsinput  | 装载目录适用于所有 BOBI 主机上用于共享文件的共享文件，这些主机将用作输入文件存储库目录  | 业务需求         | bl1adm | sapsys | Azure NetApp 文件         |

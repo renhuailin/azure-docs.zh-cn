@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: article
-ms.date: 06/16/2020
+ms.date: 03/02/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 26403c20d7f3274e8f3f2dcae479f72e9a7e3354
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 5265b875769e6a1b8f1728c9c41c0bee00619956
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807014"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101647381"
 ---
 # <a name="add-an-api-connector-to-a-user-flow"></a>向用户流添加 API 连接器
 
@@ -30,7 +30,7 @@ ms.locfileid: "99807014"
 1. 以 Azure AD 管理员身份登录到 [Azure 门户](https://portal.azure.com/)。
 2. 在“Azure 服务”下，选择“Azure Active Directory”。
 3. 在左侧菜单中，选择“外部标识”。
-4. 选择 " **所有 api 连接器" (预览 ")**，然后选择" **新建 api 连接器**"。
+4. 选择 " **所有 api 连接器**"，然后选择 " **新建 api 连接器**"。
 
    ![添加新的 API 连接器](./media/self-service-sign-up-add-api-connector/api-connector-new.png)
 
@@ -97,7 +97,7 @@ Content-type: application/json
 1. 以 Azure AD 管理员身份登录到 [Azure 门户](https://portal.azure.com/)。
 2. 在“Azure 服务”下，选择“Azure Active Directory”。
 3. 在左侧菜单中，选择“外部标识”。
-4. 选择 " **用户流 (预览")**，然后选择要向其添加 API 连接器的用户流。
+4. 选择 " **用户流**"，然后选择要向其添加 API 连接器的用户流。
 5. 选择 " **api 连接器**"，然后选择要在用户流中的以下步骤调用的 api 终结点：
 
    - **使用标识提供者登录后**
@@ -247,10 +247,10 @@ Content-type: application/json
 }
 ```
 
-| 参数                                          | 类型              | 必须 | 说明                                                                                                                                                                                                                                                                            |
+| 参数                                          | 类型              | 必选 | 说明                                                                                                                                                                                                                                                                            |
 | -------------------------------------------------- | ----------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 版本                                            | 字符串            | 是      | API 的版本。                                                                                                                                                                                                                                                                |
-| 操作                                             | 字符串            | 是      | 值必须是 `Continue`。                                                                                                                                                                                                                                                              |
+| action                                             | 字符串            | 是      | 值必须是 `Continue`。                                                                                                                                                                                                                                                              |
 | \<builtInUserAttribute>                            | \<attribute-type> | 否       | 如果值被选为要在 API 连接器配置中 **接收的声明** ，则这些值可以存储在目录中，并可存储在用户流的 **用户属性** 中。 如果选择作为 **应用程序声明**，则可以在令牌中返回值。                                              |
 | \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | 否       | 返回的声明不需要包含 `_<extensions-app-id>_` 。 如果值被选为要在 API 连接器配置和用户流的 **用户属性** 中 **接收的声明**，则这些值将存储在目录中。 自定义属性不能在令牌中发回。 |
 
@@ -269,10 +269,10 @@ Content-type: application/json
 
 ```
 
-| 参数   | 类型   | 必须 | 说明                                                                |
+| 参数   | 类型   | 必选 | 说明                                                                |
 | ----------- | ------ | -------- | -------------------------------------------------------------------------- |
 | 版本     | 字符串 | 是      | API 的版本。                                                    |
-| 操作      | 字符串 | 是      | 值必须是 `ShowBlockPage`                                              |
+| action      | 字符串 | 是      | 值必须是 `ShowBlockPage`                                              |
 | userMessage | 字符串 | 是      | 要向用户显示的消息。                                            |
 | code        | 字符串 | 否       | 错误代码。 可用于调试目的。 不会向用户显示。 |
 
@@ -295,10 +295,10 @@ Content-type: application/json
 }
 ```
 
-| 参数   | 类型    | 必须 | 说明                                                                |
+| 参数   | 类型    | 必选 | 说明                                                                |
 | ----------- | ------- | -------- | -------------------------------------------------------------------------- |
 | 版本     | 字符串  | 是      | API 的版本。                                                    |
-| 操作      | 字符串  | 是      | 值必须是 `ValidationError`。                                           |
+| action      | 字符串  | 是      | 值必须是 `ValidationError`。                                           |
 | status      | Integer | 是      | 必须是 `400` ValidationError 响应的值。                        |
 | userMessage | 字符串  | 是      | 要向用户显示的消息。                                            |
 | code        | 字符串  | 否       | 错误代码。 可用于调试目的。 不会向用户显示。 |
@@ -313,7 +313,7 @@ Content-type: application/json
 ### <a name="using-serverless-cloud-functions"></a>使用无服务器云功能
 无服务器函数（如 Azure Functions 中的 HTTP 触发器）提供了一种简单的方法来创建 API 终结点，以便与 API 连接器一起使用。 [例如](code-samples-self-service-sign-up.md#api-connector-azure-function-quickstarts)，你可以使用无服务器云功能来执行验证逻辑，并限制对特定域的登录。 无服务器云功能还可以调用和调用其他 web Api、用户存储和其他云服务，以实现更复杂的方案。
 
-### <a name="best-practices"></a>最佳做法
+### <a name="best-practices"></a>最佳实践
 请确保：
 * API 遵循上述 API 请求和响应约定。 
 * API 连接器的 **终结点 URL** 指向正确的 API 终结点。

@@ -1,7 +1,7 @@
 ---
 title: 创建并运行 ML 管道
 titleSuffix: Azure Machine Learning
-description: 创建并运行机器学习管道，以创建和管理将机器学习 (ML) 阶段组合在一起的工作流。
+description: 创建并运行机器学习管道以创建和管理将各个机器学习 (ML) 阶段整合到一起的工作流。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,18 +11,18 @@ author: NilsPohlmann
 ms.date: 12/10/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: 168e5340842dca3c26e4fa48d2f14b8ade529cd9
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 18d93a1a6ac9661b18054611015b02e41219bc14
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505695"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101659641"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>使用 Azure 机器学习 SDK 创建和运行机器学习管道
 
-本文介绍如何使用[AZURE 机器学习 SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)来创建和运行[机器学习管道](concept-ml-pipelines.md)。 使用 **ML 管道** 来创建将各种不同 ML 阶段拼结在一起的工作流。 然后发布该管道，以便以后访问或与他人共享。 跟踪 ML 管道，以了解模型在实际应用场合的表现并检测数据偏移。 ML 管道非常适合用于批量评分方案，它们可以使用各种计算，重复使用步骤而不是重新运行步骤，以及与其他人共享 ML 工作流。
+本文介绍如何使用 [Azure 机器学习 SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) 来创建并运行[机器学习管道](concept-ml-pipelines.md)。 使用 **ML 管道** 来创建将各种不同 ML 阶段拼结在一起的工作流。 然后发布该管道，以便以后访问或与他人共享。 跟踪 ML 管道，以了解模型在实际应用场合的表现并检测数据偏移。 ML 管道非常适合用于批量评分方案，它们可以使用各种计算，重复使用步骤而不是重新运行步骤，以及与其他人共享 ML 工作流。
 
-本文不是教程。 有关创建第一个管道的指导，请参阅 [教程：生成用于批处理评分的 Azure 机器学习管道](tutorial-pipeline-batch-scoring-classification.md) ，或 [在 Python 的 Azure 机器学习管道中使用自动 ML](how-to-use-automlstep-in-pipelines.md)。 
+本文不是教程。 有关创建首个管道的指南，请参阅[教程：生成用于批量评分的 Azure 机器学习管道](tutorial-pipeline-batch-scoring-classification.md)或[在 Python 的 Azure 机器学习管道中使用自动化 ML](how-to-use-automlstep-in-pipelines.md)。 
 
 尽管可以使用一种称作 [Azure 管道](/azure/devops/pipelines/targets/azure-machine-learning?context=azure%2fmachine-learning%2fservice%2fcontext%2fml-context&preserve-view=true&tabs=yaml&view=azure-devops)的不同类型的管道来实现 ML 任务的 CI/CD 自动化，但这种类型的管道并不会存储在工作区中。 [比较这些不同的管道](concept-ml-pipelines.md#which-azure-pipeline-technology-should-i-use)。
 
@@ -92,6 +92,7 @@ from azureml.core import Dataset
 
 my_dataset = Dataset.File.from_files([(def_blob_store, 'train-images/')])
 ```
+
 中间数据（或步骤输出）由 [PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?preserve-view=true&view=azure-ml-py) 对象表示。 `output_data1` 生成为步骤的输出，并用作一个或多个后续步骤的输入。 `PipelineData` 在步骤之间引入数据依赖项，并在管道中创建隐式执行顺序。 稍后在创建管道步骤时将使用此对象。
 
 ```python
@@ -108,7 +109,7 @@ output_data1 = PipelineData(
 > 也可以通过公共预览版类保留 [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) 管道步骤之间的中间数据。 有关使用 `OutputFileDatasetConfig` 类的代码示例，请参阅如何[生成两步 ML 管道](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/pipeline-with-datasets/pipeline-for-image-classification.ipynb)。
 
 > [!TIP]
-> 仅上传与现有作业相关的文件。 数据目录中文件的任何更改都将被视为原因，以便在下一次运行管道时重新运行该步骤，即使指定了重复使用。 
+> 只上传与当前工作相关的文件。 数据目录内任何文件的更改都将被视为下次运行管道时重新运行该步骤的理由，即使指定了重复使用。 
 
 ## <a name="set-up-a-compute-target"></a>设置计算目标
 
@@ -273,7 +274,7 @@ aml_run_config.environment.version = '1.0'
 > [!IMPORTANT]
 > 仅 Azure Blob 和 Azure 文件共享数据存储支持使用 PipelineData 将输出数据写回到数据存储。 
 >
-> 若要将输出数据写入 Azure Blob，Azure 文件共享，ADLS 第1代和 ADLS Gen 2 数据存储使用公共预览类 [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.output_dataset_config.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) 。
+> 若要将输出数据写回到 Azure Blob、Azure 文件共享、ADLS Gen 1 和 ADLS Gen2 数据存储，请使用公共预览版类 [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.output_dataset_config.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py)。
 
 ```python
 dataset_consuming_step = PythonScriptStep(

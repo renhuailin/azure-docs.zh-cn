@@ -6,12 +6,12 @@ ms.author: rosouz
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/30/2020
-ms.openlocfilehash: cef5f178ea879ba98df90da36ec9c4b639dd100a
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: 885aab68c769c0705994bad34bee6aaa4fdc3f3d
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99627763"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101658463"
 ---
 # <a name="frequently-asked-questions-about-azure-synapse-link-for-azure-cosmos-db"></a>有关 Azure Synapse Link for Azure Cosmos DB 的常见问题
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -67,6 +67,12 @@ Azure Cosmos DB SQL (Core) API 和 Azure Cosmos DB API for MongoDB 支持 Azure 
 ### <a name="is-there-any-effect-on-azure-cosmos-db-transactional-store-provisioned-rus"></a>是否会影响 Azure Cosmos DB 事务存储预配 RU？
 
 Azure Cosmos DB 保证事务和分析工作负荷之间的性能隔离。 在容器上启用分析存储不会影响 Azure Cosmos DB 事务存储上预配的 RU/s。 分析存储的事务（读取和写入）和存储成本将单独收费。 有关更多详细信息，请参阅 [Azure Cosmos DB 分析存储的定价](analytical-store-introduction.md#analytical-store-pricing)。
+
+### <a name="can-i-restrict-access-to-azure-cosmos-db-analytical-store"></a>能否限制对 Azure Cosmos DB 分析存储的访问？
+
+是，你可以配置 [托管专用终结点](analytical-store-private-endpoints.md) ，并限制对 Azure Synapse 托管虚拟网络的分析存储的网络访问。 托管专用终结点建立指向分析存储的专用链接。 此专用终结点还将限制对其他 Azure 数据服务中的事务存储的写入访问。
+
+可以在 Azure Synapse Analytics 工作区中将事务性存储和分析存储专用终结点添加到相同的 Azure Cosmos DB 帐户。 如果只想运行分析查询，则可能只需要映射分析专用终结点。
 
 ### <a name="are-delete-and-update-operations-on-the-transactional-store-reflected-in-the-analytical-store"></a>对事务存储的删除和更新操作是否反映在分析存储中？
 

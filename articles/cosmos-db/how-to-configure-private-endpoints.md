@@ -4,15 +4,15 @@ description: 了解如何使用虚拟网络中的专用 IP 地址设置 Azure �
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 12/16/2020
+ms.date: 03/02/2021
 ms.author: thweiss
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 9a6db0d25165059581d7ffafa5b8e7fd19330c87
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: c684bd38f5e82cc53da002278495c2d4a859edc2
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97629640"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101661284"
 ---
 # <a name="configure-azure-private-link-for-an-azure-cosmos-account"></a>为 Azure Cosmos 帐户配置 Azure 专用链接
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -22,11 +22,11 @@ ms.locfileid: "97629640"
 > [!NOTE]
 > 专用链接不会阻止公共 DNS 解析 Azure Cosmos 终结点。 筛选传入请求在应用程序级别（而不是传输或网络级别）进行。
 
-专用链接允许用户从虚拟网络内部或者从任何对等互连的虚拟网络访问 Azure Cosmos 帐户。 还可以在本地使用 VPN 或 Azure ExpressRoute 通过专用对等互连访问映射到专用链接的资源。 
+专用链接允许用户从虚拟网络内部或者从任何对等互连的虚拟网络访问 Azure Cosmos 帐户。 还可以在本地使用 VPN 或 Azure ExpressRoute 通过专用对等互连访问映射到专用链接的资源。
 
-可以使用自动或手动批准方法连接到配置了专用链接的 Azure Cosmos 帐户。 有关详细信息，请参阅“专用链接”文档的[批准工作流](../private-link/private-endpoint-overview.md#access-to-a-private-link-resource-using-approval-workflow)部分。 
+可以使用自动或手动批准方法连接到配置了专用链接的 Azure Cosmos 帐户。 有关详细信息，请参阅“专用链接”文档的[批准工作流](../private-link/private-endpoint-overview.md#access-to-a-private-link-resource-using-approval-workflow)部分。
 
-本文介绍了创建专用终结点的步骤。 它假设你使用的是自动审批方法。
+本文介绍如何为 Azure Cosmos DB 事务性存储设置专用终结点。 它假设你使用的是自动审批方法。 如果使用的是分析存储区，请参阅 [分析存储的专用终结点](analytical-store-private-endpoints.md) 一文。
 
 ## <a name="create-a-private-endpoint-by-using-the-azure-portal"></a>使用 Azure 门户创建专用终结点
 
@@ -40,7 +40,7 @@ ms.locfileid: "97629640"
 
 1. 在“创建专用终结点 - 基本信息”窗格中，输入或选择以下详细信息：
 
-    | 设置 | 值 |
+    | 设置 | Value |
     | ------- | ----- |
     | **项目详细信息** | |
     | 订阅 | 选择订阅。 |
@@ -52,7 +52,7 @@ ms.locfileid: "97629640"
 1. 在完成时选择“下一步:资源”。
 1. 在“创建专用终结点 - 资源”中，输入或选择以下信息：
 
-    | 设置 | 值 |
+    | 设置 | Value |
     | ------- | ----- |
     |连接方法  | 选择“连接到我的目录中的 Azure 资源”。 <br/><br/> 然后，可以选择一个资源来设置专用链接。 或者，可以使用他人与你共享的资源 ID 或别名连接到其资源。|
     | 订阅| 选择订阅。 |
@@ -64,10 +64,10 @@ ms.locfileid: "97629640"
 1. 在完成时选择“下一步:配置”。
 1. 在“创建专用终结点 - 配置”中，输入或选择以下信息：
 
-    | 设置 | 值 |
+    | 设置 | Value |
     | ------- | ----- |
     |**网络**| |
-    | 虚拟网络| 选择你的虚拟网络。 |
+    | 虚拟网络| 选择虚拟网络。 |
     | 子网 | 选择你的子网。 |
     |**专用 DNS 集成**||
     |与专用 DNS 区域集成 |请选择“是”。 <br><br/> 若要以私密方式连接到专用终结点，需有一条 DNS 记录。 建议将专用终结点与专用 DNS 区域集成。 你也可以使用自己的 DNS 服务器，或者使用虚拟机上的主机文件创建 DNS 记录。 |
@@ -511,7 +511,7 @@ $deploymentOutput
 }
 ```
 
-创建“PrivateZoneRecords_parameters.json”，为此请 替换为以下代码：
+创建“PrivateZoneRecords_parameters.json”，为此请 使用以下代码：
 
 ```json
 {
@@ -618,7 +618,7 @@ foreach ($ipconfig in $networkInterface.properties.ipConfigurations) {
 创建专用终结点时，可将其与 Azure 中的专用 DNS 区域集成。 如果选择改用自定义 DNS 区域，则必须对其进行配置，以便为保留给专用终结点使用的所有专用 IP 地址添加 DNS 记录。
 
 > [!IMPORTANT]
-> 这是请求的 DNS 解析，用于确定这些请求是通过专用终结点，还是采用标准公共路由。 请确保本地 DNS 正确引用由专用终结点映射的专用 IP 地址。
+> 它是请求的 DNS 解析，决定了这些请求是通过你的专用终结点，还是使用标准公共路由。 请确保你的本地 DNS 正确引用由专用终结点映射的专用 IP 地址。
 
 ## <a name="private-link-combined-with-firewall-rules"></a>将专用链接与防火墙规则结合使用
 
@@ -671,7 +671,7 @@ foreach ($ipconfig in $networkInterface.properties.ipConfigurations) {
 
 * 当你使用 Azure Cosmos DB 的用于 MongoDB 的 API 帐户时，仅服务器版本 3.6 上的帐户支持专用终结点（即使用 `*.mongo.cosmos.azure.com` 格式的终结点的帐户）。 服务器版本 3.2 上的帐户（即，使用格式为 `*.documents.azure.com` 的终结点的帐户）不支持专用链接。 若要使用专用链接，应将旧帐户迁移到新版本。
 
-* 当你使用具有专用链接的 Azure Cosmos DB 的用于 MongoDB 的 API 帐户时，某些工具或库可能无法工作，因为它们会自动从连接字符串中去掉 `appName` 参数。 此参数是通过专用终结点连接到帐户所必需的。 某些工具（如 Visual Studio Code）不会从连接字符串中删除此参数，因此它们是兼容的。
+* 如果 Azure Cosmos DB 使用的是具有专用链接的 MongoDB 帐户的 API，则工具/库必须支持) 名称标识 (SNI 或者传递 `appName` 连接字符串的参数以正确连接。 一些较旧的工具/库可能与使用私有链接功能不兼容。
 
 * 应在 Azure Cosmos 帐户范围内向网络管理员至少授予 `Microsoft.DocumentDB/databaseAccounts/PrivateEndpointConnectionsApproval/action` 权限，以创建自动批准的专用终结点。
 

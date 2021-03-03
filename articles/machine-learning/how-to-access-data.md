@@ -11,31 +11,33 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 11/03/2020
 ms.custom: how-to, contperf-fy21q1, devx-track-python, data4ml
-ms.openlocfilehash: bb63ac6de6c48bb3853bd235d908ee745ff5279d
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 0bc247e473ea96f2f9301eeaebb543b3317c84c7
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032841"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101659658"
 ---
 # <a name="connect-to-storage-services-on-azure"></a>连接到 Azure 上的存储服务
 
-本文介绍如何通过 Azure 机器学习数据存储连接到 Azure 上的存储服务。 数据存储可安全地连接到 Azure 存储服务，而不会损害你的身份验证凭据以及原始数据源的完整性。 它们会存储连接信息，例如与工作区关联的 [Key Vault](https://azure.microsoft.com/services/key-vault/) 中的订阅 ID 和令牌授权，让你能够安全地访问存储，而无需在脚本中对其进行硬编码。 可以使用 [Azure 机器学习 Python SDK](#python) 或 [Azure 机器学习工作室](how-to-connect-data-ui.md)来创建和注册数据存储。
+本文介绍如何通过 Azure 机器学习数据存储和 [Azure 机器学习 PYTHON SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)连接到 Azure 上的数据存储服务。
 
-如果希望使用 Azure 机器学习 VS Code 扩展来创建和管理数据存储，请访问 [VS Code 资源管理操作指南](how-to-manage-resources-vscode.md#datastores)以了解详细信息。
-
-可从[这些 Azure 存储解决方案](#matrix)创建数据存储。 对于不支持的存储解决方案，为了在 ML 试验期间节省数据出口成本，请[将数据移到](#move)支持的 Azure 存储解决方案。  
+数据存储安全地连接到 Azure 上的存储服务，而不会将你的身份验证凭据和原始数据源的完整性置于风险之中。 它们在与工作区关联的 [Key Vault](https://azure.microsoft.com/services/key-vault/) 中存储连接信息，如订阅 ID 和令牌授权，因此可以安全地访问存储，而无需在脚本中对其进行硬编码。 可以创建连接到 [这些 Azure 存储解决方案](#matrix)的数据存储。
 
 若要了解在 Azure 机器学习总体数据访问工作流中的哪些位置使用数据存储，请参阅[安全地访问数据](concept-data.md#data-workflow)一文。
 
+有关低代码体验，请参阅如何使用 [Azure 机器学习 studio 创建和注册数据存储](how-to-connect-data-ui.md#create-datastores)。
+
+>[!TIP]
+> 本文假设你想要使用基于凭据的身份验证凭据（如服务主体）或共享访问签名 (SAS) 令牌连接到存储服务。 请记住，如果向数据存储注册了凭据，则具有工作区 *读者* 角色的所有用户都可以检索这些凭据。 [了解有关工作区 *读者* 角色的详细信息。](how-to-assign-roles.md#default-roles) <br><br>如果这是个问题，请了解如何 [使用基于标识的访问权限连接到存储服务](how-to-identity-based-data-access.md)。 <br><br>此功能是 [实验](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py#stable-vs-experimental) 性预览功能，随时可能会更改。 
+
 ## <a name="prerequisites"></a>先决条件
 
-需要：
 - Azure 订阅。 如果没有 Azure 订阅，请在开始操作前先创建一个免费帐户。 试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
 
 - 一个使用[支持的存储类型](#matrix)的 Azure 存储帐户。
 
-- [适用于 Python 的 Azure 机器学习 SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)，或 [Azure 机器学习工作室](https://ml.azure.com/)的访问权限。
+- [适用于 Python 的 Azure 机器学习 SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)。
 
 - Azure 机器学习工作区。
   
@@ -59,7 +61,10 @@ ms.locfileid: "97032841"
 
 ## <a name="supported-data-storage-service-types"></a>支持的数据存储服务类型
 
-数据存储目前支持将连接信息存储到下表中列出的存储服务。
+数据存储目前支持将连接信息存储到下表中列出的存储服务。 
+
+> [!TIP]
+> 对于不支持的存储解决方案，为了在 ML 试验期间节省数据出口成本，请[将数据移到](#move)支持的 Azure 存储解决方案。 
 
 | 存储类型 | 身份验证类型 | [Azure 机器学习工作室](https://ml.azure.com/) | [Azure 机器学习 Python SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) |  [Azure 机器学习 CLI](reference-azure-machine-learning-cli.md) | [Azure 机器学习 Rest API](/rest/api/azureml/) | VS Code
 ---|---|---|---|---|---|---
@@ -88,7 +93,16 @@ ms.locfileid: "97032841"
 
 ### <a name="virtual-network"></a>虚拟网络 
 
-如果你的数据存储帐户在虚拟网络中，则需要执行其他配置步骤来确保 Azure 机器学习能够访问你的数据。 请参阅[在 Azure 虚拟网络中使用 Azure 机器学习工作室](how-to-enable-studio-virtual-network.md)，以确保在创建和注册数据存储时应用适当的配置步骤。  
+默认情况下，Azure 机器学习无法与位于防火墙后面或虚拟网络中的存储帐户通信。 如果你的数据存储帐户在虚拟网络中，则需要执行其他配置步骤来确保 Azure 机器学习能够访问你的数据。 
+
+> [!NOTE]
+> 本指南还适用于 [使用基于标识的数据访问 (预览) 创建的数据存储 ](how-to-identity-based-data-access.md)。 
+
+**对于 PYTHON SDK 用户**，若要通过计算目标上的培训脚本访问数据，计算目标必须位于存储的同一个虚拟网络和子网中。  
+
+**对于 Azure 机器学习 studio 用户**，多项功能依赖于从数据集读取数据的功能;数据集预览、配置文件和自动化机器学习。 若要在虚拟网络后使用这些功能，请使用 [studio 中的工作区托管标识](how-to-enable-studio-virtual-network.md) ，以允许 Azure 机器学习从虚拟网络外部访问存储帐户。 
+
+Azure 机器学习可以从虚拟网络外部的客户端接收请求。 若要确保请求服务中的数据的实体是安全的，请 [设置工作区的 Azure 专用链接](how-to-configure-private-link.md)。
 
 ### <a name="access-validation"></a>访问验证
 
@@ -204,18 +218,27 @@ adlsgen2_datastore = Datastore.register_azure_data_lake_gen2(workspace=ws,
                                                              client_secret=client_secret) # the secret of service principal
 ```
 
-<a name="arm"></a>
 
-## <a name="create-datastores-using-azure-resource-manager"></a>使用 Azure 资源管理器创建数据存储
+
+## <a name="create-datastores-with-other-azure-tools"></a>创建与其他 Azure 工具的数据存储
+除了使用 Python SDK 和工作室创建数据存储，还可以使用 Azure 资源管理器模板或 Azure 机器学习 VS Code 扩展。 
+
+<a name="arm"></a>
+### <a name="azure-resource-manager"></a>Azure 资源管理器
 
 [https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-datastore-create-*](https://github.com/Azure/azure-quickstart-templates/tree/master/) 上有许多模板可用于创建数据存储。
 
 若要了解如何使用这些模板，请参阅[使用 Azure 资源管理器模板创建 Azure 机器学习的工作区](how-to-create-workspace-template.md)。
 
+### <a name="vs-code-extension"></a>VS Code 扩展
+
+如果希望使用 Azure 机器学习 VS Code 扩展创建和管理数据存储，请访问 [VS Code 资源管理操作方法指南](how-to-manage-resources-vscode.md#datastores) 以了解详细信息。
 <a name="train"></a>
 ## <a name="use-data-in-your-datastores"></a>使用数据存储中的数据
 
-创建数据存储后，请[创建 Azure 机器学习数据集](how-to-create-register-datasets.md)，以便与数据进行交互。 数据集可将数据打包成一个延迟计算的可供机器学习任务（例如训练）使用的对象。 它们还提供从 Azure 存储服务（例如 Azure Blob 存储和 ADLS Gen2）[下载或装载](how-to-train-with-datasets.md#mount-vs-download)任何格式的文件的功能。 你还可以使用它们将表格数据加载到 pandas 或 Spark 数据帧中。
+创建数据存储后，请[创建 Azure 机器学习数据集](how-to-create-register-datasets.md)，以便与数据进行交互。 数据集可将数据打包成一个延迟计算的可供机器学习任务（例如训练）使用的对象。 
+
+使用数据集，你可以从 Azure 存储服务 [下载或装载](how-to-train-with-datasets.md#mount-vs-download) 任何格式的文件，以便在计算目标上进行模型定型。 [详细了解如何用数据集训练 ML 模型](how-to-train-with-datasets.md)。
 
 <a name="get"></a>
 

@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 02/09/2021
-ms.openlocfilehash: 75ea473c8669e9d50d2e9971a20a5fc1c3070779
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 7a6213528f204ac31fbcf8a29625787fc73d5153
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100368007"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101656799"
 ---
 # <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace"></a>为 Azure 机器学习工作区配置 Azure 专用链接
 
@@ -72,7 +72,7 @@ ws = Workspace.create(name='myworkspace',
 * `--pe-auto-approval`：是否应自动批准与工作区的专用终结点连接。
 * `--pe-resource-group`：要在其中创建专用终结点的资源组。 必须是包含虚拟网络的同一个组。
 * `--pe-vnet-name`：要在其中创建专用终结点的现有虚拟网络。
-* `--pe-subnet-name`：要在其中创建专用终结点的子网的名称。 默认值是 `default`。
+* `--pe-subnet-name`：要在其中创建专用终结点的子网的名称。 默认值为 `default`。
 
 除了 create 命令所需的参数外，还需要这些参数。 例如，以下命令使用现有的资源组和 VNet 在美国西部区域创建一个新的工作区：
 
@@ -87,7 +87,7 @@ az ml workspace create -r myresourcegroup \
     --pe-subnet-name mysubnet
 ```
 
-# <a name="portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 使用 Azure 机器学习 studio 中的 " __网络__ " 选项卡可以配置专用终结点。 但是，它需要现有虚拟网络。 有关详细信息，请参阅 [在门户中创建工作区](how-to-manage-workspace.md)。
 
@@ -122,7 +122,7 @@ ws.add_private_endpoint(private_endpoint_config=pe, private_endpoint_auto_approv
 az ml workspace private-endpoint add -w myworkspace  --pe-name myprivateendpoint --pe-auto-approval true --pe-vnet-name myvnet
 ```
 
-# <a name="portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 在门户的 "Azure 机器学习" 工作区中，选择 " __专用终结点连接__ "，然后选择 " __+ 专用终结点__"。 使用字段创建新的专用终结点。
 
@@ -155,7 +155,7 @@ ws.delete_private_endpoint_connection(private_endpoint_connection_name=connectio
 
 [机器学习的 Azure CLI 扩展](reference-azure-machine-learning-cli.md)提供了[az ml workspace private-endpoint delete](/cli/azure/ext/azure-cli-ml/ml/workspace/private-endpoint?view=azure-cli-latest#ext_azure_cli_ml_az_ml_workspace_private_endpoint_delete)命令。
 
-# <a name="portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 在门户的 "Azure 机器学习" 工作区中，选择 " __专用终结点连接__"，然后选择要删除的终结点。 最后，选择 " __删除__"。
 
@@ -172,7 +172,12 @@ ws.delete_private_endpoint_connection(private_endpoint_connection_name=connectio
 
 ## <a name="enable-public-access"></a>启用公共访问
 
-使用专用终结点配置工作区后，可以选择启用对工作区的公共访问。 这样做不会删除专用终结点。 除了专用访问，它还支持公共访问。 若要对启用了专用链接的工作区启用公共访问，请使用以下步骤：
+在某些情况下，你可能希望允许某人通过公共终结点（而不是通过 VNet）连接到受保护的工作区。 使用专用终结点配置工作区后，可以选择启用对工作区的公共访问。 这样做不会删除专用终结点。 VNet 后面的组件之间的所有通信仍受到保护。 除了通过 VNet 进行专用访问以外，它还启用仅对工作区的公共访问。
+
+> [!WARNING]
+> 通过公共终结点进行连接时，studio 的某些功能将无法访问你的数据。 如果数据存储在 VNet 保护的服务中，则会发生此问题。 例如，Azure 存储帐户。
+
+若要对启用了专用链接的工作区启用公共访问，请使用以下步骤：
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -189,7 +194,7 @@ ws.update(allow_public_access_when_behind_vnet=True)
 
 [机器学习的 Azure CLI 扩展](reference-azure-machine-learning-cli.md)提供了[az ml workspace update](/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest#ext_azure_cli_ml_az_ml_workspace_update)命令。 若要启用工作区公共访问权限，请添加参数 `--allow-public-access true` 。
 
-# <a name="portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 当前无法使用门户启用此功能。
 

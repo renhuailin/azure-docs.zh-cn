@@ -3,16 +3,17 @@ title: Azure 中 Vm 和规模集的自动扩展升级
 description: 了解如何在 Azure 中为虚拟机和虚拟机规模集启用自动扩展升级。
 author: mayanknayar
 ms.service: virtual-machines
+ms.subservice: automatic-extension-upgrades
 ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 02/12/2020
 ms.author: manayar
-ms.openlocfilehash: acc014785105d14c3109cfa420f0e9402ca3f534
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 104eada6dc342c21b8da2f409756e9f34c103936
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100417068"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101668327"
 ---
 # <a name="preview-automatic-extension-upgrade-for-vms-and-scale-sets-in-azure"></a>预览版： Azure 中 Vm 和规模集的自动扩展升级
 
@@ -21,7 +22,7 @@ Azure Vm 和 Azure 虚拟机规模集的预览中提供了自动扩展升级功�
  自动扩展升级具有以下功能：
 - 支持 Azure Vm 和 Azure 虚拟机规模集。 当前不支持 Service Fabric 虚拟机规模集。
 - 升级在可用性优先的部署模型中应用 (下面) 详细说明。
-- 当应用于虚拟机规模集时，不超过20% 的虚拟机规模集将在单个批处理中升级虚拟机， (每个批处理) 至少使用一台虚拟机。
+- 对于虚拟机规模集，不超过20% 的规模集虚拟机将在单个批处理中升级。 最小批处理大小为一台虚拟机。
 - 适用于所有 VM 大小，适用于 Windows 和 Linux 扩展。
 - 你可以随时选择退出自动升级。
 - 可在任意大小的虚拟机规模集上启用自动扩展升级。
@@ -36,24 +37,9 @@ Azure Vm 和 Azure 虚拟机规模集的预览中提供了自动扩展升级功�
 
 
 ## <a name="how-does-automatic-extension-upgrade-work"></a>自动扩展升级如何工作？
-扩展升级过程的工作方式是将 VM 上的现有扩展版本替换为扩展发布服务器发布的新扩展版本。 安装新扩展后，将监视 VM 的运行状况。 如果在升级完成后的5分钟内 VM 未处于正常状态，则新的扩展版本将回滚到以前的版本。
+扩展升级过程会将 VM 上的现有扩展版本替换为扩展发布服务器发布时具有相同扩展插件的新版本。 安装新扩展后，将监视 VM 的运行状况。 如果在升级完成后的5分钟内 VM 未处于正常状态，则扩展版本将回滚到以前的版本。
 
 自动重试失败的扩展更新。 每隔几天自动尝试一次，无需用户干预。
-
-
-## <a name="upgrade-process-for-virtual-machine-scale-sets"></a>虚拟机规模集的升级过程
-1. 在开始升级过程之前，协调器将确保整个规模集中的 Vm 数不能超过 20% (出于任何原因) 不正常。
-
-2. 升级 orchestrator 会标识要升级的 VM 实例的批，其中任何一个批处理的总 VM 计数最大为20%，受限于一个虚拟机的最小批处理大小。
-
-3. 对于已配置应用程序运行状况探测或应用程序运行状况扩展的规模集，升级最多会等待5分钟 (或定义的运行状况探测配置) ，以便 VM 在升级下一批之前处于正常状态。 如果 VM 不在升级后恢复其运行状况，则默认情况下会重新安装 VM 的以前的扩展版本。
-
-4. 升级 orchestrator 还跟踪升级后变为不正常的 Vm 的百分比。 如果升级过程中超过 20% 的已升级实例变得不正常，升级将会停止。
-
-上述过程会持续到升级了规模集中的所有实例为止。
-
-规模集升级 orchestrator 会在升级每个批次之前检查总体规模集的运行状况。 升级批时，可能会影响规模集虚拟机的运行状况的其他并发计划或计划外维护活动。 在这种情况下，如果规模集的实例数超过20%，则规模集升级将在当前批处理结束时停止。
-
 
 ### <a name="availability-first-updates"></a>可用性优先更新
 适用于平台的更新的第一个可用性模型将确保 Azure 中的可用性配置跨多个可用性级别。
@@ -62,7 +48,7 @@ Azure Vm 和 Azure 虚拟机规模集的预览中提供了自动扩展升级功�
 
 **跨区域：**
 - 更新将以分阶段的方式跨全局移动，以防止 Azure 范围内的部署失败。
-- "阶段" 可构成一个或多个区域，并且仅当阶段中符合条件的 Vm 成功更新时，更新才会移动到各个阶段。
+- "阶段" 可以有一个或多个区域，并且仅当上一阶段中符合条件的 Vm 成功更新时，更新才会移动到各个阶段。
 - 地域配对区域不会同时更新，并且不能在同一区域阶段中进行更新。
 - 更新的成功率是通过跟踪 VM 后期更新的运行状况来衡量的。 VM 运行状况通过 VM 的平台运行状况指标进行跟踪。 对于虚拟机规模集，如果应用于规模集，则会通过应用程序运行状况探测或应用程序运行状况扩展跟踪 VM 运行状况。
 
@@ -75,6 +61,18 @@ Azure Vm 和 Azure 虚拟机规模集的预览中提供了自动扩展升级功�
 - 公共可用性集中的 Vm 在更新域边界内更新，不会同时更新多个更新域中的 Vm。  
 - 公用虚拟机规模集中的 Vm 按批分组，并在更新域边界内更新。
 
+### <a name="upgrade-process-for-virtual-machine-scale-sets"></a>虚拟机规模集的升级过程
+1. 在开始升级过程之前，协调器将确保整个规模集中的 Vm 数不能超过 20% (出于任何原因) 不正常。
+
+2. 升级 orchestrator 会确定要升级的 VM 实例的批处理。 升级批处理最多可以有20% 的 VM 总数，受限于一个虚拟机的最小批处理大小。
+
+3. 对于已配置应用程序运行状况探测或应用程序运行状况扩展的规模集，升级最多会等待5分钟 (或定义的运行状况探测配置) ，以便在升级下一批之前，VM 变为正常。 如果 VM 不在升级后恢复其运行状况，则默认情况下会重新安装 VM 上的以前的扩展版本。
+
+4. 升级 orchestrator 还跟踪升级后变为不正常的 Vm 的百分比。 如果升级过程中超过 20% 的已升级实例变得不正常，升级将会停止。
+
+上述过程会持续到升级了规模集中的所有实例为止。
+
+规模集升级 orchestrator 会在升级每个批次之前检查总体规模集的运行状况。 升级批时，可能会影响规模集虚拟机的运行状况的其他并发计划或计划外维护活动。 在这种情况下，如果规模集的实例数超过20%，则规模集升级将在当前批处理结束时停止。
 
 ## <a name="supported-extensions"></a>支持的扩展
 自动扩展升级的预览支持以下扩展 (并且会定期添加更多的) ：
@@ -258,13 +256,13 @@ az vmss extension set \
 
 ## <a name="extension-upgrades-with-multiple-extensions"></a>具有多个扩展的扩展升级
 
-VM 或虚拟机规模集可以有多个启用了自动扩展升级功能的扩展，以及无需自动扩展升级的其他扩展。  
+VM 或虚拟机规模集可以有多个启用了自动扩展升级的扩展。 同一 VM 或规模集也可以包含未启用自动扩展升级的其他扩展。  
 
-如果有多个扩展升级可用于虚拟机，则可以将升级一起分批进行。 但是，每个扩展升级都单独应用于虚拟机上。 一个扩展的失败不会影响可能正在升级)  (的其他扩展。 例如，如果为升级计划了两个扩展，并且第一个扩展升级失败，则仍将升级第二个扩展。
+如果有多个扩展升级可用于虚拟机，则可以将升级一起分批进行，但会在虚拟机上单独应用每个扩展升级。 一个扩展的失败不会影响可能正在升级)  (的其他扩展。 例如，如果为升级计划了两个扩展，并且第一个扩展升级失败，则仍将升级第二个扩展。
 
-当 VM 或虚拟机规模集具有多个配置有 [扩展序列](../virtual-machine-scale-sets/virtual-machine-scale-sets-extension-sequencing.md)的扩展时，也可以应用自动扩展升级。 扩展序列号适用于首次部署 VM，并且对扩展的后续扩展升级都是独立应用的。
+当 VM 或虚拟机规模集具有多个配置有 [扩展序列](../virtual-machine-scale-sets/virtual-machine-scale-sets-extension-sequencing.md)的扩展时，也可以应用自动扩展升级。 扩展排序适用于首次部署 VM，并且扩展的任何未来扩展升级都是独立应用的。
 
 
 ## <a name="next-steps"></a>后续步骤
 > [!div class="nextstepaction"]
-> [了解应用程序运行状况扩展](./windows/automatic-vm-guest-patching.md)
+> [了解应用程序运行状况扩展](../virtual-machine-scale-sets/virtual-machine-scale-sets-health-extension.md)

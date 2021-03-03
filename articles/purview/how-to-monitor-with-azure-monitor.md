@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 12/03/2020
-ms.openlocfilehash: b13d03f05b7225a1c88f6b10b454749bd7b42477
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 4cb3965d359980856c238cd563ed8b761754660b
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100588337"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101667731"
 ---
 # <a name="azure-purview-metrics-in-azure-monitor"></a>Azure Monitor 中的 Azure 监控范围指标
 
@@ -34,7 +34,7 @@ Azure 监控范围管理员可以使用 Azure Monitor 来跟踪监控范围帐�
 
 1. 中转到 [Azure 门户](https://portal.azure.com) 并搜索 Azure 监控范围帐户名称。
 
-2. 选择“访问控制(IAM)”。
+2. 选择“访问控制 (IAM)”。
 
    :::image type="content" source="./media/how-to-monitor-with-azure-monitor/access-iam.png" alt-text="显示如何访问 IAM 的屏幕截图。":::
 
@@ -83,7 +83,7 @@ Azure 监控范围用户还可以直接从 Azure 监控范围帐户的管理中�
 
    :::image type="content" source="./media/how-to-monitor-with-azure-monitor/step-two-diagnostic-setting.png" alt-text="显示为诊断日志分配存储帐户的屏幕截图。" lightbox="./media/how-to-monitor-with-azure-monitor/step-two-diagnostic-setting.png":::
 
-允许最多15分钟开始接收新创建的存储帐户中的日志。 [请参阅数据保留和 Azure 存储帐户中的资源日志架构](../azure-monitor/platform/resource-logs.md#send-to-azure-storage)。 配置诊断日志后，事件会流向存储帐户。
+允许最多15分钟开始接收新创建的存储帐户中的日志。 [请参阅数据保留和 Azure 存储帐户中的资源日志架构](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)。 配置诊断日志后，事件会流向存储帐户。
 
 ### <a name="scanstatuslogevent"></a>ScanStatusLogEvent
 

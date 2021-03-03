@@ -13,12 +13,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: bcc44f61ccb7b4a19e7df39ab979669c5aa37da1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7f3bd8851fe723461c618499e539c987d79c0d68
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80154893"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101650135"
 ---
 # <a name="federation-metadata"></a>联合元数据
 
@@ -36,12 +36,12 @@ Azure AD 发布了特定于租户和独立于租户的终结点。
 ## <a name="federation-metadata-endpoints"></a>联合元数据终结点
 Azure AD 会在 `https://login.microsoftonline.com/<TenantDomainName>/FederationMetadata/2007-06/FederationMetadata.xml` 上发布联合元数据。
 
-对于特定于租户的终结点，`TenantDomainName` 可以是以下类型之一：
+对于 **特定于租户的终结点**，`TenantDomainName` 可以是以下类型之一：
 
 * Azure AD 租户的已注册域名，例如：`contoso.onmicrosoft.com`。
 * 域的不可变租户 ID，例如 `72f988bf-86f1-41af-91ab-2d7cd011db45`。
 
-对于独立于租户的终结点，`TenantDomainName` 为 `common`。 此文档仅列出了托管在 login.microsoftonline.com 上的所有 Azure AD 租户通用的联合元数据元素。
+对于 **独立于租户的终结点**，`TenantDomainName` 为 `common`。 此文档仅列出了托管在 login.microsoftonline.com 上的所有 Azure AD 租户通用的联合元数据元素。
 
 例如，特定于租户的终结点可以是 `https://login.microsoftonline.com/contoso.onmicrosoft.com/FederationMetadata/2007-06/FederationMetadata.xml`。 独立于租户的终结点为 [https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml](https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml)。 可以在浏览器中键入此 URL 以查看联合元数据文档。
 
@@ -96,7 +96,7 @@ MIIDPjCCAiqgAwIBAgIQVWmXY/+9RqFA/OG9kFulHDAJBgUrDgMCHQUAMC0xKzApBgNVBAMTImFjY291
 以下元数据显示了一个 `RoleDescriptor` 元素示例。
 
 ```
-<RoleDescriptor xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns:fed="https://docs.oasis-open.org/wsfed/federation/200706" xsi:type="fed:SecurityTokenServiceType"protocolSupportEnumeration="https://docs.oasis-open.org/wsfed/federation/200706">
+<RoleDescriptor xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns:fed="https://docs.oasis-open.org/wsfed/federation/200706" xsi:type="fed:SecurityTokenServiceType" protocolSupportEnumeration="https://docs.oasis-open.org/wsfed/federation/200706">
 ```
 
 在特定于 SAML 的部分中，WS 联合身份验证元数据读取器将读取 `IDPSSODescriptor` 元素中的证书。

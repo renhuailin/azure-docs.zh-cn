@@ -8,12 +8,12 @@ ms.author: arjagann
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: 762db9d165358f3347fc9b7f3aaaf39f0c762308
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: 0b30cb1767e733861d8418ea29e564bc90a5bc70
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99063190"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101676514"
 ---
 # <a name="make-indexer-connections-through-a-private-endpoint"></a>通过专用终结点建立索引器连接
 
@@ -47,7 +47,7 @@ ms.locfileid: "99063190"
 
 你还可以使用 [受支持的 api 列表](/rest/api/searchmanagement/privatelinkresources/listsupported)查询支持出站专用终结点连接的 Azure 资源。
 
-在本文的剩余部分中，如果你更喜欢) 和[Postman](https://www.postman.com/) (或其他任何 HTTP 客户端[（例如，](https://curl.se/)如果你更希望) 用于演示 REST API 调用，则[Azure CLI](https://docs.microsoft.com/cli/azure/) (或[ARMClient](https://github.com/projectkudu/ARMClient) ）的混合。
+在本文的剩余部分中，如果你更喜欢) 和[Postman](https://www.postman.com/) (或其他任何 HTTP 客户端[（例如，](https://curl.se/)如果你更希望) 用于演示 REST API 调用，则[Azure CLI](/cli/azure/) (或[ARMClient](https://github.com/projectkudu/ARMClient) ）的混合。
 
 > [!NOTE]
 > 本文中的示例基于以下假设：
@@ -69,7 +69,7 @@ ms.locfileid: "99063190"
 
 ### <a name="step-1-create-a-shared-private-link-resource-to-the-storage-account"></a>步骤1：创建存储帐户的共享专用链接资源
 
-若要请求 Azure 认知搜索创建到存储帐户的出站专用终结点连接，请执行以下 API 调用，如 [Azure CLI](https://docs.microsoft.com/cli/azure/)所示： 
+若要请求 Azure 认知搜索创建到存储帐户的出站专用终结点连接，请执行以下 API 调用，如 [Azure CLI](/cli/azure/)所示： 
 
 `az rest --method put --uri https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.Search/searchServices/contoso-search/sharedPrivateLinkResources/blob-pe?api-version=2020-08-01 --body @create-pe.json`
 

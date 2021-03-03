@@ -12,12 +12,12 @@ ms.date: 02/01/2021
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: b948de6ad9e07a650df98ef38104c02462ab532d
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 78f844295c16d15be65f345881ec92fa15a9734a
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99428025"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101649217"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Azure AD 身份验证和授权错误代码
 
@@ -95,7 +95,7 @@ ms.locfileid: "99428025"
 | AADSTS50000 | TokenIssuanceError - 登录服务出现问题。 请[开具支持票证](../fundamentals/active-directory-troubleshooting-support-howto.md)以解决此问题。 |
 | AADSTS50001 | InvalidResource - 资源已禁用或不存在。 请检查应用代码，确保为尝试访问的资源指定了确切的资源 URL。  |
 | AADSTS50002 | NotAllowedTenant - 由于租户中的代理访问权限受限，登录失败。 如果这是你自己的租户策略，可以更改受限的租户设置来解决此问题。 |
-| AADSTS500021 | 拒绝访问 "{tenant}" 租户。 AADSTS500021 指示已配置租户限制功能，并且用户正在尝试访问不在标头中指定的允许租户列表中的租户 `Restrict-Access-To-Tenant` 。 有关详细信息，请参阅 [使用租户限制管理对 SaaS 云应用程序的访问](/azure/active-directory/manage-apps/tenant-restrictions)。|
+| AADSTS500021 | 拒绝访问 "{tenant}" 租户。 AADSTS500021 指示已配置租户限制功能，并且用户正在尝试访问不在标头中指定的允许租户列表中的租户 `Restrict-Access-To-Tenant` 。 有关详细信息，请参阅 [使用租户限制管理对 SaaS 云应用程序的访问](../manage-apps/tenant-restrictions.md)。|
 | AADSTS50003 | MissingSigningKey - 由于缺少签名密钥或证书，登录失败。 这可能是因为应用中未配置任何签名密钥。 查看中概述的分辨率 [。/manage-apps/application-sign-in-problem-federated-sso-gallery.md # 未配置证书](../manage-apps/application-sign-in-problem-federated-sso-gallery.md#certificate-or-key-not-configured)。 如果仍然出现问题，请联系应用所有者或应用管理员。 |
 | AADSTS50005 | DevicePolicyError - 用户尝试从条件访问策略目前不支持的平台登录到设备。 |
 | AADSTS50006 | InvalidSignature - 由于签名无效，签名验证失败。 |
@@ -168,6 +168,7 @@ ms.locfileid: "99428025"
 | AADSTS50168 | ChromeBrowserSsoInterruptRequired - 客户端能够通过 Windows 10 帐户扩展获取 SSO 令牌，但在请求中找不到令牌，或提供的令牌已过期。 |
 | AADSTS50169 | InvalidRequestBadRealm - 领域不是当前服务命名空间的已配置领域。 |
 | AADSTS50170 | MissingExternalClaimsProviderMapping - 缺少外部控制映射。 |
+| AADSTS50173 | FreshTokenNeeded-提供的授予已过期，因为它被吊销，需要使用全新的身份验证令牌。 管理员或用户已吊销此用户的令牌，导致后续令牌刷新失败并需要重新进行身份验证。 让用户重新登录。 |
 | AADSTS50177 | ExternalChallengeNotSupportedForPassthroughUsers - 直通用户不支持外部质询。 |
 | AADSTS50178 | SessionControlNotSupportedForPassthroughUsers - 直通用户不支持会话控制。 |
 | AADSTS50180 | WindowsIntegratedAuthMissing - 需要 Windows 集成身份验证。 为租户启用无缝 SSO。 |

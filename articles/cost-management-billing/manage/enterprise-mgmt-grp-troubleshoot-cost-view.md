@@ -9,12 +9,12 @@ ms.topic: troubleshooting
 ms.date: 08/20/2019
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: bd0abadb624bced7f603fcbd112f7c422e88fc0c
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: d78621697d53f429624dc22a8e91ba4367dcfd18
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91371841"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101093959"
 ---
 # <a name="troubleshoot-enterprise-cost-views"></a>排查企业成本查看问题
 
@@ -41,7 +41,7 @@ ms.locfileid: "91371841"
 
 ![显示“资产不可用”消息的屏幕截图。](./media/enterprise-mgmt-grp-troubleshoot-cost-view/asset-not-found.png)
 
-让 Azure 订阅或管理组管理员提供访问权限。 有关详细信息，请参阅[使用 Azure 门户添加或删除 Azure 角色分配](../../role-based-access-control/role-assignments-portal.md)。
+让 Azure 订阅或管理组管理员提供访问权限。 有关详细信息，请参阅[使用 Azure 门户分配 Azure 角色](../../role-based-access-control/role-assignments-portal.md)。
 
 ## <a name="next-steps"></a>后续步骤
 - 如有任何疑问或需要帮助，请[创建支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)。

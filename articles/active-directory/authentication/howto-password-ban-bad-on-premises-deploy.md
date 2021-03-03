@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f17f6eb913d1ea54e8db6acd369d165553e16ec
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: c8cae19bd07e1cc87a0aaa25e47cf5f431d566ba
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100091034"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101653807"
 ---
 # <a name="plan-and-deploy-on-premises-azure-active-directory-password-protection"></a>规划和部署本地 Azure Active Directory 密码保护
 
@@ -42,13 +42,13 @@ ms.locfileid: "100091034"
 * 用户经常使用不安全的密码。
 * 他们需要通知用户即将执行的安全强制更改、可能对这些更改的影响，以及如何选择更安全的密码。
 
-还可以通过更强的密码验证来影响现有 Active Directory 域控制器部署自动化。 建议在审核期评估过程中至少发生一次 DC 升级和一个 DC 降级，以帮助发现此类问题。 有关详细信息，请参阅下列文章：
+还可以通过更强的密码验证来影响现有 Active Directory 域控制器部署自动化。 建议在审核期评估过程中至少发生一次 DC 升级和一个 DC 降级，以帮助发现此类问题。 有关详细信息，请参阅以下文章：
 
 * [Ntdsutil.exe 无法设置弱目录服务修复模式密码](howto-password-ban-bad-on-premises-troubleshoot.md#ntdsutilexe-fails-to-set-a-weak-dsrm-password)
 * [由于目录服务修复模式密码弱，域控制器副本升级失败](howto-password-ban-bad-on-premises-troubleshoot.md#domain-controller-replica-promotion-fails-because-of-a-weak-dsrm-password)
 * [由于本地管理员密码弱，域控制器降级失败](howto-password-ban-bad-on-premises-troubleshoot.md#domain-controller-demotion-fails-due-to-a-weak-local-administrator-password)
 
-在一个合理的时间段内，在审核模式下运行此功能后，可以将该配置从 *审核* 切换为 " *强制执行* "，以要求更安全的密码。 此期间的其他监视是一个不错的主意。
+在一个合理的时间段内，在审核模式下运行此功能后，可以将该配置从 *审核* 切换为 " *强制执行* "，以要求更安全的密码。 此期间的额外监视是一个不错的主意。
 
 请注意，Azure AD 密码保护只能在密码更改或设置操作期间验证密码。 在部署 Azure AD 密码保护之前，已接受并存储在 Active Directory 中的密码永远不会进行验证，并且将继续按原样工作。 随着时间的推移，所有用户和帐户最终会开始使用 Azure AD 密码保护验证密码，因为其现有密码会正常过期。 配置了 "密码永不过期" 的帐户不受此干扰。
 
@@ -102,7 +102,8 @@ Azure AD 密码保护 DC 代理软件的设计可减轻与高可用性相关的�
 
 * 将安装 Azure AD 密码保护 DC 代理软件的所有计算机都必须运行 Windows Server 2012 或更高版本，包括 Windows Server Core 版本。
     * Active Directory 域或林不需要处于 Windows Server 2012 域功能级别 (DFL) 或林功能级别 (FFL) 。 如 [设计原则](concept-password-ban-bad-on-premises.md#design-principles)中所述，要运行 DC 代理或代理软件，无需最低的 DFL 或 FFL。
-* 运行 Azure AD 密码保护 DC 代理的所有计算机必须安装 .NET 4.5。
+* 将安装 Azure AD 密码保护代理服务的所有计算机都必须安装有 .NET 4.7.2。
+    * 如果尚未安装 .NET 4.7.2，请下载并运行在 [Windows .NET Framework 4.7.2 脱机安装程序](https://support.microsoft.com/topic/microsoft-net-framework-4-7-2-offline-installer-for-windows-05a72734-2127-a15d-50cf-daf56d5faec2)中找到的安装程序。
 * 运行 Azure AD 密码保护 DC 代理服务的任何 Active Directory 域都必须使用分布式文件系统复制 (DFSR 复制) DFSR。
    * 如果你的域尚未使用 DFSR，则必须先迁移，然后才能安装 Azure AD 密码保护。 有关详细信息，请参阅 [SYSVOL 复制迁移指南： FRS 到 DFS 复制](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd640019(v=ws.10))
 
@@ -122,8 +123,8 @@ Azure AD 密码保护 DC 代理软件的设计可减轻与高可用性相关的�
     > [!NOTE]
     > Azure AD 密码保护代理服务部署是部署 Azure AD 密码保护的必需要求，即使域控制器可能有出站直接 internet 连接。
 
-* 将安装 Azure AD 密码保护代理服务的所有计算机必须安装了 .NET 4.7。
-    * .NET 4.7 应已安装在完全更新的 Windows 服务器上。 如有必要，请下载并运行在 [Windows .NET Framework 4.7 脱机安装程序](https://support.microsoft.com/help/3186497/the-net-framework-4-7-offline-installer-for-windows)中找到的安装程序。
+* 将安装 Azure AD 密码保护代理服务的所有计算机都必须安装有 .NET 4.7.2。
+    * 如果尚未安装 .NET 4.7.2，请下载并运行在 [Windows .NET Framework 4.7.2 脱机安装程序](https://support.microsoft.com/topic/microsoft-net-framework-4-7-2-offline-installer-for-windows-05a72734-2127-a15d-50cf-daf56d5faec2)中找到的安装程序。
 * 必须将承载 Azure AD 密码保护代理服务的所有计算机配置为授予域控制器登录到代理服务的能力。 此功能通过 "从网络访问此计算机" 权限分配来控制。
 * 承载 Azure AD 密码保护代理服务的所有计算机都必须配置为允许出站 TLS 1.2 HTTP 流量。
 * *全局管理员* 或 *安全管理员* 帐户，用于向 Azure AD 注册 Azure AD 密码保护代理服务和林。
@@ -157,7 +158,7 @@ Azure AD 密码保护代理服务通常位于本地 AD DS 环境中的成员服�
 选择一台或多台服务器以承载 Azure AD 密码保护代理服务。 以下注意事项适用于服务器 () ：
 
 * 每个此类服务只能提供单个林的密码策略。 主计算机必须加入到该林中的任何域。
-* 此功能支持在根域或子域中安装代理服务，或在这些域的组合中安装服务。
+* 可以在根域或子域中安装代理服务，也可以将代理服务安装到其中。
 * 林的每个域中至少有一个 DC 的网络连接，以及一个密码保护代理服务器。
 * 你可以在域控制器上运行 Azure AD 密码保护代理服务，以便进行测试，但该域控制器需要建立 internet 连接。 此连接可能是一个安全问题。 建议仅对此配置进行测试。
 * 建议至少为每个林提供两个 Azure AD 密码保护代理服务器以实现冗余，如前一节中的 [高可用性注意事项](#high-availability-considerations)中所述。
@@ -200,7 +201,7 @@ Azure AD 密码保护代理服务通常位于本地 AD DS 环境中的成员服�
 
     此 cmdlet 需要 Azure 租户的 *全局管理员* 或 *安全管理员* 凭据。 此 cmdlet 还必须使用具有本地管理员权限的帐户运行。
 
-    为 Azure AD 密码保护代理服务成功执行此命令后，该命令的其他调用会成功，但这是不必要的。
+    此命令成功后，其他调用也会成功，但不必要。
 
     `Register-AzureADPasswordProtectionProxy`Cmdlet 支持以下三种身份验证模式。 前两种模式支持 Azure AD 多重身份验证，但第三种模式不支持。
 

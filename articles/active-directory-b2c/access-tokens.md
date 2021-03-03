@@ -11,12 +11,12 @@ ms.date: 10/26/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 937041bbb48f112e2c8ed7d222dc7c7ef7ea8d81
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: e5168d5e5e3935da267fb26f38735a88bdfd7837
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92631387"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101654470"
 ---
 # <a name="request-an-access-token-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中请求访问令牌
 
@@ -58,7 +58,7 @@ OpenID Connect 标准指定了多个特殊的作用域值。 以下作用域表�
 
 - **openid** - 请求 ID 令牌。
 - **offline_access** - 使用 [授权代码流](authorization-code-flow.md)请求刷新令牌。
-- **00000000-0000-0000-0000-000000000000** -使用客户端 id 作为范围表示你的应用需要一个访问令牌，该令牌可用于你自己的服务或 web API （由同一客户端 ID 表示）。
+- **00000000-0000-0000-0000-000000000000** - 使用客户端 ID 作为范围即表示应用需要可以针对你自己的服务或 Web API（由同一客户端 ID 表示）使用的访问令牌。
 
 如果 `/authorize` 请求中的 **response_type** 参数包含 `token`，那么 **scope** 参数必须包含至少一个将被授予的资源作用域（除 `openid` 和 `offline_access` 以外）。 否则，`/authorize` 请求会失败。
 
@@ -91,7 +91,7 @@ https://jwt.ms/?code=eyJraWQiOiJjcGltY29yZV8wOTI1MjAxNSIsInZlciI6IjEuMC...
 成功接收授权代码以后，可以将其用于请求访问令牌：
 
 ```http
-POST <tenant-name>.onmicrosoft.com/<policy-name>/oauth2/v2.0/token HTTP/1.1
+POST <tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/<policy-name>/oauth2/v2.0/token HTTP/1.1
 Host: <tenant-name>.b2clogin.com
 Content-Type: application/x-www-form-urlencoded
 

@@ -12,32 +12,28 @@ ms.date: 11/04/2019
 ms.author: kenwith
 ms.reviewer: phsignor
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66a6317b0cb59d656cdb2e402c5ade1b78ed60aa
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 646c2216c3d71aa441d33dde0ab3e2ef7bb4fd89
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99258314"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101643552"
 ---
 # <a name="grant-tenant-wide-admin-consent-to-an-application"></a>向应用程序授予租户范围的管理员许可
 
-了解如何通过向应用程序授予租户范围的管理员许可来简化用户体验。 本文提供实现此目的的不同方式。 这些方法适用于 Azure Active Directory (Azure AD) 租户中的所有最终用户。
+  了解如何向应用程序授予租户范围内的管理员许可。 本文提供实现此目的的不同方式。
 
 有关许可应用程序的详细信息，请参阅 [Azure Active Directory 许可框架](../develop/consent-framework.md)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
-授予租户范围的管理员许可需要以[全局管理员](../roles/permissions-reference.md#global-administrator)、[应用程序管理员](../roles/permissions-reference.md#application-administrator)或[云应用程序管理员](../roles/permissions-reference.md#cloud-application-administrator)的身份登录。
-
-> [!IMPORTANT]
-> 为应用程序授予租户范围的管理员许可后，除非已配置为需要用户分配，否则所有用户都可以登录到该应用。 若要限制哪些用户可登录到某个应用程序，需要提供用户分配，然后将用户或组分配到该应用程序。 有关详细信息，请参阅[分配用户和组的方法](./assign-user-or-group-access-portal.md)。
->
-> 若要为 Microsoft Graph API 应用程序权限提供管理员许可，需要“全局管理员”角色。
+如果授予租户范围的管理员许可，则需要以授权代表组织同意的用户身份登录。 这包括 [全局管理员](../roles/permissions-reference.md#global-administrator) 和 [特权角色管理员](../roles/permissions-reference.md#privileged-role-administrator)，以及针对某些应用程序、 [应用程序管理员](../roles/permissions-reference.md#application-administrator) 和 [云应用程序管理员](../roles/permissions-reference.md#cloud-application-administrator)的。 如果为用户分配了 [自定义目录角色](../roles/custom-create.md) （其中包含 [向应用程序授予权限的权限](../roles/custom-consent-permissions.md)），则也可以授权该用户授予租户范围的同意。
 
 > [!WARNING]
 > 向某个应用程序授予租户范围的管理员许可将为该应用及其发布者授予对组织数据的访问权限。 在授予许可之前，请仔细查看应用程序请求的权限。
->
-> 若要为 Microsoft Graph API 应用程序权限提供管理员许可，需要“全局管理员”角色。
+
+> [!IMPORTANT]
+> 为应用程序授予租户范围的管理员许可后，除非已配置为需要用户分配，否则所有用户都可以登录到该应用。 若要限制哪些用户可登录到某个应用程序，需要提供用户分配，然后将用户或组分配到该应用程序。 有关详细信息，请参阅[分配用户和组的方法](./assign-user-or-group-access-portal.md)。
 
 ## <a name="grant-admin-consent-from-the-azure-portal"></a>从 Azure 门户授予管理员许可
 
@@ -101,4 +97,4 @@ https://login.microsoftonline.com/{tenant-id}/adminconsent?client_id={client-id}
 
 [Microsoft 标识平台中的权限和许可](../develop/v2-permissions-and-consent.md)
 
-[Microsoft Azure AD 上的&](https://docs.microsoft.com/answers/topics/azure-active-directory.html)
+[Microsoft Azure AD 上的&](/answers/topics/azure-active-directory.html)

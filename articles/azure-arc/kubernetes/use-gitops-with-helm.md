@@ -1,21 +1,21 @@
 ---
-title: '使用启用了 GitOps on Arc 的 Kubernetes 群集 (预览部署 Helm 图表) '
+title: 在启用 Arc 的 Kubernetes 群集上使用 GitOps 部署 Helm 图表
 services: azure-arc
 ms.service: azure-arc
-ms.date: 02/15/2021
+ms.date: 03/02/2021
 ms.topic: article
 author: mlearned
 ms.author: mlearned
-description: '将 GitOps 与 Helm 配合使用，以启用启用了 Azure Arc 的群集配置 (预览) '
+description: 将 GitOps 与 Helm 配合使用，以启用启用了 Azure Arc 的群集配置
 keywords: GitOps, Kubernetes, K8s, Azure, Helm, Arc, AKS, Azure Kubernetes 服务, 容器
-ms.openlocfilehash: 2dfb516487d1064f29b4018cc8b322e8db44e53a
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 117fc8dabdce2fdf23cbc2b9fe78137db1c656a5
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100558520"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101647636"
 ---
-# <a name="deploy-helm-charts-using-gitops-on-arc-enabled-kubernetes-cluster-preview"></a>使用启用了 GitOps on Arc 的 Kubernetes 群集 (预览部署 Helm 图表) 
+# <a name="deploy-helm-charts-using-gitops-on-an-arc-enabled-kubernetes-cluster"></a>在启用了 Arc 的 Kubernetes 群集上使用 GitOps 部署 Helm 图表
 
 Helm 是一种开放源打包工具，有助于安装和管理 Kubernetes 应用程序的生命周期。 与 APT 和 Yum 之类的 Linux 包管理器类似，Helm 用于管理 Kubernetes 图表，这些图表是预配置的 Kubernetes 资源包。
 
@@ -23,7 +23,7 @@ Helm 是一种开放源打包工具，有助于安装和管理 Kubernetes 应用
 
 ## <a name="before-you-begin"></a>开始之前
 
-验证是否已启用现有的 Azure Arc Kubernetes 连接群集。 如果需要连接的群集，请参阅 [连接启用 Azure Arc Kubernetes 群集快速入门](./connect-cluster.md)。
+验证是否已启用现有的 Azure Arc Kubernetes 连接群集。 如果需要连接的群集，请参阅 [连接启用 Azure Arc Kubernetes 群集快速入门](./quickstart-connect-cluster.md)。
 
 ## <a name="overview-of-using-gitops-and-helm-with-azure-arc-enabled-kubernetes"></a>将 GitOps 和 Helm 与启用了 Azure Arc 的 Kubernetes 一起使用概述
 
@@ -69,7 +69,7 @@ Helm 发布配置包含以下字段：
 | `metadata.name` | 必需字段。 需要遵循 Kubernetes 命名约定。 |
 | `metadata.namespace` | 可选字段。 确定发布的创建位置。 |
 | `spec.releaseName` | 可选字段。 如果未提供，则发布名称将为 `$namespace-$name` 。 |
-| `spec.chart.path` | 包含图表的目录，该目录是相对于存储库根所给定的。 |
+| `spec.chart.path` | 包含与存储库根) 相对的图表 (的目录。 |
 | `spec.values` | 用户自定义图表本身的默认参数值。 |
 
 在 HelmRelease 中指定的选项 `spec.values` 将覆盖图表源中指定的选项 `values.yaml` 。
@@ -78,30 +78,27 @@ Helm 发布配置包含以下字段：
 
 ## <a name="create-a-configuration"></a>创建配置
 
-使用的 Azure CLI 扩展将 `k8sconfiguration` 连接的群集链接到示例 Git 存储库。 为此配置指定名称 `azure-arc-sample` 并在命名空间中部署 Flux 运算符 `arc-k8s-demo` 。
+使用的 Azure CLI 扩展将 `k8s-configuration` 连接的群集链接到示例 Git 存储库。 为此配置指定名称 `azure-arc-sample` 并在命名空间中部署 Flux 运算符 `arc-k8s-demo` 。
 
 ```console
-az k8sconfiguration create --name azure-arc-sample --cluster-name AzureArcTest1 --resource-group AzureArcTest --operator-instance-name flux --operator-namespace arc-k8s-demo --operator-params='--git-readonly --git-path=releases' --enable-helm-operator --helm-operator-version='1.2.0' --helm-operator-params='--set helm.versions=v3' --repository-url https://github.com/Azure/arc-helm-demo.git --scope namespace --cluster-type connectedClusters
+az k8s-configuration create --name azure-arc-sample --cluster-name AzureArcTest1 --resource-group AzureArcTest --operator-instance-name flux --operator-namespace arc-k8s-demo --operator-params='--git-readonly --git-path=releases' --enable-helm-operator --helm-operator-version='1.2.0' --helm-operator-params='--set helm.versions=v3' --repository-url https://github.com/Azure/arc-helm-demo.git --scope namespace --cluster-type connectedClusters
 ```
 
 ### <a name="configuration-parameters"></a>配置参数
 
-若要自定义配置的创建，请 [了解你可以使用的其他参数](./use-gitops-connected-cluster.md#additional-parameters)。
+若要自定义配置的创建，请 [了解其他参数](./tutorial-use-gitops-connected-cluster.md#additional-parameters)。
 
 ## <a name="validate-the-configuration"></a>验证配置
 
-使用 Azure CLI 验证是否已 `sourceControlConfiguration` 成功创建。
+使用 Azure CLI 验证是否已成功创建配置。
 
 ```console
-az k8sconfiguration show --name azure-arc-sample --cluster-name AzureArcTest1 --resource-group AzureArcTest --cluster-type connectedClusters
+az k8s-configuration show --name azure-arc-sample --cluster-name AzureArcTest1 --resource-group AzureArcTest --cluster-type connectedClusters
 ```
 
-`sourceControlConfiguration`资源将更新为符合性状态、消息和调试信息。
+配置资源将更新为符合性状态、消息和调试信息。
 
-**输出：**
-
-```console
-Command group 'k8sconfiguration' is in preview. It may be changed/removed in a future release.
+```output
 {
   "complianceStatus": {
     "complianceState": "Installed",

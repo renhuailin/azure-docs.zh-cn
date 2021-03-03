@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/05/2021
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 16d2bf39d61961e2f83910735db1d0ddf1c91849
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: f22d97f8a4ab5e5b6e275c405cce523e8a7b8e72
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99627359"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101656544"
 ---
 # <a name="how-does-azure-cosmos-db-provide-high-availability"></a>Azure Cosmos DB 如何提供高可用性？
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -31,7 +31,7 @@ Azure Cosmos DB 是一种全球分布式数据库服务，是可用 [Azure 的�
 
 * 适用于美国国防部的 **Azure 政府部门 (DoD)** 在美国到美国国防部的两个区域中提供。
 
-在某个区域内，Azure Cosmos DB 将数据的四个副本作为副本保留在物理分区中，如下图所示：
+在一个区域内，Azure Cosmos DB 将数据的四个副本作为副本保留在物理分区中，如下图所示：
 
 :::image type="content" source="./media/high-availability/cosmosdb-data-redundancy.png" alt-text="物理分区" border="false":::
 
@@ -39,15 +39,15 @@ Azure Cosmos DB 是一种全球分布式数据库服务，是可用 [Azure 的�
 
 * 分区集是多个副本集的集合。 在每个区域中，每个分区受副本集的保护，该副本集中的大多数副本将复制并以持久方式提交所有写入内容。 副本分布在最多 10 到 20 个容错域中。
 
-* 将复制所有区域中的每个分区。 每个区域都包含一个 Azure Cosmos 容器的所有数据分区，可以在启用多区域写入时为读取和提供服务。  
+* 将复制所有区域中的每个分区。 每个区域均包含一个 Azure Cosmos 容器的所有数据分区，并且在启用了多区域写入时可供读取和写入。  
 
 如果 Azure Cosmos 帐户分布在 N 个 Azure 区域之间，则所有数据至少有 N x 4 个副本。 在超过 2 个区域中拥有 Azure Cosmos 帐户可提高应用程序的可用性，相关区域之间的延迟较低。
 
 ## <a name="slas-for-availability"></a>可用性 SLA
 
-Azure Cosmos DB 提供了全面的 Sla，其中包含吞吐量、99% 的延迟、一致性和高可用性。 下表显示 Azure Cosmos DB 针对单区域和多区域帐户提供的高可用性保证。 若要获得更高的写入可用性，请将 Azure Cosmos 帐户配置为具有多个写入区域。
+Azure Cosmos DB 提供综合性的 SLA，涵盖了吞吐量、99% 的情况下的延迟、一致性和高可用性。 下表显示 Azure Cosmos DB 针对单区域和多区域帐户提供的高可用性保证。 为提高写入可用性，请将 Azure Cosmos 帐户配置为使用多个写入区域。
 
-|操作类型  | 单区域 |多区域 (单区域写入) |多区域（多区域写入） |
+|操作类型  | 单区域 |多区域（单区域写入）|多区域（多区域写入） |
 |---------|---------|---------|-------|
 |写入    | 99.99    |99.99   |99.999|
 |读取     | 99.99    |99.999  |99.999|
@@ -80,7 +80,7 @@ Azure Cosmos DB 提供了全面的 Sla，其中包含吞吐量、99% 的延迟�
 
 * 在读取区域服务中断期间，使用任何一致性级别或强一致性且具有三个或更多读取区域的 Azure Cosmos 帐户仍将对读取和写入保持高可用性。
 
-* 使用强一致性的 Azure Cosmos 帐户，其中三个或更少的总区域 (一次写入，两次读取) 在读取区域中断期间将失去写入可用性。 但是，具有四个或更多个区域的客户可以通过提交支持票证来选择使用动态阅读仲裁。 在此配置中维护至少两个读取区域的帐户将保留写入可用性。
+* 使用强一致性和三个区域的 Azure Cosmos 帐户 (一次写入，两次读取) 会在读取区域中断期间维持写入可用性。 对于具有两个区域和启用了自动故障转移的帐户，该帐户将停止接受写入，直到将该区域标记为失败并发生自动故障转移。
 
 * 受影响的区域将自动断开连接，并标记为脱机。 [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md) 会将读取调用重定向到首选区域列表中的下一个可用区域。
 
@@ -110,7 +110,7 @@ Azure Cosmos DB 提供了全面的 Sla，其中包含吞吐量、99% 的延迟�
 |读取可用性 SLA  | 99.99% | 99.995% | 99.995% | 99.999% |
 |区域故障–数据丢失 | 数据丢失 | 无数据丢失 | 无数据丢失 | 无数据丢失 |
 |区域故障–可用性 | 可用性损失 | 无可用性损失 | 无可用性损失 | 无可用性损失 |
-|地区性中断–数据丢失 | 数据丢失 |  数据丢失 | 依赖于一致性级别。 有关详细信息，请参阅 [一致性、可用性和性能折衷](consistency-levels-tradeoffs.md) 。 | 依赖于一致性级别。 有关详细信息，请参阅 [一致性、可用性和性能折衷](consistency-levels-tradeoffs.md) 。
+|地区性中断–数据丢失 | 数据丢失 |  数据丢失 | 依赖于一致性级别。 有关详细信息，请参阅 [一致性、可用性和性能折衷](./consistency-levels.md) 。 | 依赖于一致性级别。 有关详细信息，请参阅 [一致性、可用性和性能折衷](./consistency-levels.md) 。
 |地区性中断–可用性 | 可用性损失 | 可用性损失 | 读取区域故障没有可用性损失，导致写入区域失败 | 无可用性损失 |
 |价格 ( ***1** _)  | 不适用 | 预配 RU/s x 1.25 速率 | 预配 RU/s x 1.25 速率 (_ *_2_* * )  | 多区域写入速率 |
 

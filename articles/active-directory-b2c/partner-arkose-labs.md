@@ -1,185 +1,237 @@
 ---
-title: Arkose 实验室与 Azure Active Directory B2C
+title: 用于配置 Arkose 实验室 Azure Active Directory B2C 的教程
 titleSuffix: Azure AD B2C
-description: 了解如何将 Azure AD B2C authentication 与 Arkose 实验室集成，以帮助防范机器人攻击、帐户接管攻击和欺诈性帐户空缺。
+description: 本教程介绍如何配置 Arkose 实验室 Azure Active Directory B2C 来识别有风险和虚假的用户
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: gargi-sinha
+manager: martinco
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 06/08/2020
-ms.author: mimart
+ms.date: 02/18/2021
+ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 2c7eea87101a36edb0d77026489ea351b601158b
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 04492abc0f235c2dc6139adbe543bcce82f7f7b3
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97584589"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101646843"
 ---
-# <a name="tutorial-for-configuring-arkose-labs-with-azure-active-directory-b2c"></a>有关配置 Arkose 实验室与 Azure Active Directory B2C 的教程
+# <a name="tutorial-configure-arkose-labs-with-azure-active-directory-b2c"></a>教程：配置 Arkose 实验室与 Azure Active Directory B2C
 
-在本教程中，了解如何将 Azure AD B2C authentication 与 Arkose 实验室集成。 Arkose 实验室可帮助组织防范机器人攻击、帐户接管攻击和欺诈性帐户空缺。  
+在本教程中，了解如何将 Azure Active Directory (AD) B2C 身份验证与 [Arkose 实验室](https://www.arkoselabs.com/)集成。 Arkose 实验室可帮助组织防范机器人攻击、帐户接管攻击和欺诈性帐户空缺。  
 
 ## <a name="prerequisites"></a>先决条件
 
 若要开始，你将需要：
 
-* 一个 Azure AD 订阅。 如果没有订阅，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。
-* 链接到 Azure 订阅的[Azure AD B2C 租户](tutorial-create-tenant.md)。
+- Azure 订阅。 如果没有订阅，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。
+
+- 链接到 Azure 订阅的[Azure AD B2C 租户](tutorial-create-tenant.md)。
+
+- [Arkose 实验室](https://www.arkoselabs.com/book-a-demo/)帐户。
 
 ## <a name="scenario-description"></a>方案描述
 
+Arkose 实验室集成包括以下组件：
+
+- **Arkose Labs** -一种欺诈和滥用服务，用于防止 bot 和其他自动滥用。
+
+- **Azure AD B2C 注册用户流** -将使用 Arkose 实验室服务的注册体验。 将使用自定义 HTML 和 JavaScript 以及 API 连接器与 Arkose 实验室服务集成。
+
+- **Azure 函数** -由你托管的 api 终结点，适用于 api 连接器功能。 此 API 负责对 Arkose 实验室会话令牌进行服务器端验证。
+
 下图说明了 Arkose 实验室与 Azure AD B2C 的集成方式。
 
-![Arkose 实验室体系结构图](media/partner-arkose-labs/arkose-architecture-diagram.png)
+![图像显示 Arkose 实验室体系结构图](media/partner-arkose-labs/arkose-labs-architecture-diagram.png)
 
 | 步骤  | 说明 |
 |---|---|
-|1     | 用户使用以前创建的帐户登录。 当用户选择 "提交" 时，会出现 "Arkose 实验强制" 的质询。 用户完成质询后，状态将发送到 Arkose 实验室以生成令牌。        |
-|2     |  Arkose 实验室会将令牌发送回 Azure AD B2C。       |
-|3     |  在提交登录表单之前，会将令牌发送到 Arkose 实验室进行验证。       |
-|4     |  Arkose 发送回质询的成功或失败结果。       |
-|5     |  如果质询成功完成，则会将登录表单提交到 Azure AD B2C，并 Azure AD B2C 完成身份验证。       |
-|   |   |
+|1     | 用户注册并创建帐户。 当用户选择 "提交" 时，会出现 "Arkose 实验强制" 的质询。         |
+|2     |  用户完成质询后，Azure AD B2C 将状态发送到 Arkose 实验室以生成令牌。 |
+|3     |  Arkose 实验室生成令牌并将其发送回 Azure AD B2C。   |
+|4     |  Azure AD B2C 调用中间 web API 来传递注册窗体。      |
+|5     |  中间 web API 将注册窗体发送到 Arkose Lab 进行令牌验证。    |
+|6     | Arkose Lab 处理并将验证结果发回到中间 web API。|
+|7     | 中间 web API 会将成功或失败结果从质询发送到 Azure AD B2C。 |
+|8     | 如果质询成功完成，则会将注册表单提交到 Azure AD B2C，并 Azure AD B2C 完成身份验证。|
 
 ## <a name="onboard-with-arkose-labs"></a>与 Arkose 实验室集成
 
-1. 首先联系 [Arkose 实验室](https://www.arkoselabs.com/book-a-demo/) 并创建帐户。
+1. 请联系 [Arkose](https://www.arkoselabs.com/book-a-demo/) 并创建帐户。
 
-2. 创建帐户后，导航到 https://dashboard.arkoselabs.com/login 。
+2. 创建帐户后，导航到 https://dashboard.arkoselabs.com/login  
 
-3. 在仪表板中，导航到 "站点设置" 查找公钥和私钥。 稍后将需要此信息来配置 Azure AD B2C。
+3. 在仪表板中，导航到 "站点设置" 查找公钥和私钥。 稍后将需要此信息来配置 Azure AD B2C。 公钥和私钥的值 `ARKOSE_PUBLIC_KEY` `ARKOSE_PRIVATE_KEY` 在 [示例代码](https://github.com/Azure-Samples/active-directory-b2c-node-sign-up-user-flow-arkose)中称为和。
 
 ## <a name="integrate-with-azure-ad-b2c"></a>与 Azure AD B2C 集成
 
-### <a name="part-1--create-blob-storage-to-store-the-custom-html"></a>第1部分–创建 blob 存储以存储自定义 HTML
+### <a name="part-1--create-a-arkosesessiontoken-custom-attribute"></a>第1部分–创建 ArkoseSessionToken 自定义属性
 
-若要创建存储帐户，请执行以下步骤：  
+若要创建自定义属性，请执行以下步骤：  
 
-1. 登录到 Azure 门户。
+1. 中转到 **Azure 门户**  >  **Azure AD B2C**
 
-2. 请确保使用包含你的 Azure 订阅的目录。 在顶部菜单中选择 " **目录 + 订阅** " 筛选器，然后选择包含你的订阅的目录。 此目录与包含 Azure B2C 租户的目录不同。
+2. 选择 **用户属性**
 
-3. 选择 "Azure 门户" 左上角的 " **所有服务** "，然后搜索并选择 "  **存储帐户**"。
+3. 选择“添加”
 
-4. 选择“添加” ****。
+4. 输入 **ArkoseSessionToken** 作为属性名称
 
-5. 在 " **资源组**" 下，选择 " **新建**"，输入新资源组的名称，然后选择 **"确定"**。
+5. 选择“创建”
 
-6. 输入存储帐户的名称。 所选名称在 Azure 中需唯一，且必须为 3 到 24 个字符，并且只能包含数字和小写字母。
+了解有关 [自定义属性](https://docs.microsoft.com/azure/active-directory-b2c/user-flow-custom-attributes?pivots=b2c-user-flow)的详细信息。
 
-7. 选择存储帐户的位置或接受默认位置。
+### <a name="part-2---create-a-user-flow"></a>第2部分-创建用户流
 
-8. 接受其他所有默认值，选择 "  **查看 &" 创建**"  >  。
+用户流可以用于 **注册** 和 **登录** ，也可以只 **注册**。 只有在注册过程中才会显示 Arkose Labs 用户流。
 
-9. 创建存储帐户后，选择“转到资源”。
+1. 有关创建用户流的 [说明](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-user-flows) ，请参阅。 如果使用现有用户流，则它必须为 **建议 (下一代预览)** 版本类型。
 
-#### <a name="create-a-container"></a>创建容器
+2. 在 "用户流设置" 中，单击 " **用户属性** "，然后选择 " **ArkoseSessionToken** " 声明。
 
-1. 在存储帐户的 "概述" 页上，选择 "  **blob**"。
+![图像显示如何选择自定义属性](media/partner-arkose-labs/select-custom-attribute.png)
 
-2. 选择 "  **容器**"，为容器输入名称，选择 "  **blob** (仅限 blob 的匿名读取访问) "，然后选择 **"确定"**。
+### <a name="part-3---configure-custom-html-javascript-and-page-layouts"></a>第3部分-配置自定义 HTML、JavaScript 和页面布局
 
-#### <a name="enable-cross-origin-resource-sharing-cors"></a> (CORS) 启用跨域资源共享
+中转到提供的 [HTML 脚本](https://github.com/Azure-Samples/active-directory-b2c-node-sign-up-user-flow-arkose/blob/main/Assets/selfAsserted.html)。 此文件包含一个 HTML 模板，其中包含 JavaScript `<script>` 标记，它将执行以下三个操作：
 
-浏览器中的 Azure AD B2C 代码使用新式标准方法从用户流中指定的 URL 加载自定义内容。 CORS 允许从其他域请求网页上的受限资源。
+1. 加载 Arkose 实验室脚本，该脚本将呈现 Arkose 实验室小组件，并执行客户端 Arkose 实验室验证。
 
-1. 在菜单中，选择 "  **CORS**"。
+2. `extension_ArkoseSessionToken` `ArkoseSessionToken` 从向用户显示的 UI 中隐藏对应于自定义特性的输入元素和标签。
 
-2. 对于 "  **允许的来源**"，输入  `https://your-tenant-name.b2clogin.com` 。 将你的租户-name 替换为你的 Azure AD B2C 租户的名称。 例如： `https://fabrikam.b2clogin.com`。 输入租户名称时全部使用小写字母。
+3. 当用户完成 Arkose 实验室质询时，Arkose 实验室会验证用户的响应并生成一个令牌。 `arkoseCallback`自定义 JavaScript 中的回调会将的值设置 `extension_ArkoseSessionToken` 为生成的令牌值。 此值将提交到 API 终结点，如下一节中所述。
 
-3. 对于  **允许的方法**，请选择 " **获取**"、" **PUT**" 和 " **选项**"。
+    请参阅 [此文](https://arkoselabs.atlassian.net/wiki/spaces/DG/pages/214176229/Standard+Setup) ，了解 Arkose 实验室客户端验证。
 
-4. 对于“允许的标头”，请输入一个星号 (*)。
+按照所述的步骤，为用户流使用自定义 HTML 和 JavaScript。
 
-5. 对于 " **公开标头**"，请输入星号 ( * ) 。
+1. 修改 [selfAsserted.html](https://github.com/Azure-Samples/active-directory-b2c-node-sign-up-user-flow-arkose/blob/main/Assets/selfAsserted.html) 文件，使其 `<ARKOSE_PUBLIC_KEY>` 与你为客户端验证生成的值匹配，并用于为你的帐户加载 Arkose 实验室脚本。
 
-6. 对于“最大期限”，请输入 200。
+2. 将 HTML 页面置于跨域资源共享上 (CORS) 启用的 web 终结点。 [创建 Azure blob 存储帐户](https://docs.microsoft.com/azure/storage/common/storage-account-create?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=azure-portal) 并 [配置 CORS](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services)。
 
-   ![Arkose 实验室注册和登录](media/partner-arkose-labs/signup-signin-arkose.png)
+  >[!NOTE]
+  >如果有自己的自定义 HTML，请将元素复制并粘贴 `<script>` 到 HTML 页上。
 
-7. 选择“保存”。
+3. 按照以下步骤配置页面布局
 
-### <a name="part-2--set-up-a-back-end-server"></a>第2部分-设置后端服务器
+   a. 从 Azure 门户中转到 **Azure AD B2C**
 
-下载 Git Bash 并按照以下步骤操作：
+   b. 导航到 " **用户** 流" 并选择用户流
 
-1. 按照说明 [创建一个 web 应用](../app-service/quickstart-php.md)，直到出现消息 "恭喜！已将第一个 PHP 应用部署到应用服务 "显示。
+   c. 选择 **页面布局**
 
-2. 打开本地文件夹，然后将该 verify-token 文件重命名为 "  **"。**
+   d. 选择 **本地帐户注册页面布局**
 
-3. 打开新重命名的文件 verify-token 文件和：
+   e. 切换 **使用自定义页内容** 
 
-   a. 将内容替换为在 [GitHub 存储库](https://github.com/ArkoseLabs/Azure-AD-B2C)中找到的 verify-token 文件中的内容。
+   f. 粘贴自定义 HTML 所在位置的 URI **使用自定义页内容**
 
-   b. 将第3行 <private_key> 替换为从 Arkose 实验室仪表板获取的私钥。
+   g. 如果使用社交标识提供者，请为 **社交帐户注册页面** 布局重复 **步骤 e** 和 **f** 。
 
-4. 在本地终端窗口中，提交在 Git 中所做的更改，然后将代码更改推送到 Azure，方法是在 Git Bash 中键入以下内容：
+   ![显示页面布局的图像](media/partner-arkose-labs/page-layouts.png)
 
-   ``git commit -am "updated output"``
+4. 从用户流中转到 " **属性** "，然后选择 " **启用 JavaScript** 强制页面布局 (预览") 。 请参阅此 [文章](https://docs.microsoft.com/azure/active-directory-b2c/javascript-and-page-layout?pivots=b2c-user-flow) 了解详细信息。
 
-   ``git push azure main``  
+### <a name="part-4---create-and-deploy-your-api"></a>第4部分-创建和部署 API
 
-### <a name="part-3---final-setup"></a>第3部分–最终设置
+安装 Visual Studio Code 的 [Azure Functions 扩展](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) 。
 
-#### <a name="store-the-custom-html"></a>存储自定义 HTML
+>[!Note]
+>本部分中所述的步骤假设你使用 Visual Studio Code 部署 Azure 函数。 你还可以使用 Azure 门户、终端或命令提示符或任何其他代码编辑器来进行部署。
 
-1. 打开存储在 [GitHub 存储库](https://github.com/ArkoseLabs/Azure-AD-B2C)中的 index.html 文件。
+#### <a name="run-the-api-locally"></a>在本地运行 API
 
-2. 将的所有实例替换 `<tenantname>` 为 b2C 租户名称 (换言之， `<tenantname>.b2clogin.com`) 。 应有四个实例。
+1. 导航到左侧导航栏上的 Visual Studio code 中的 Azure 扩展。 选择表示本地 Azure 函数的 **本地项目** 文件夹。
 
-3. 将替换为 `<appname>` 在第2部分 "步骤 1" 中创建的应用名称。
+2. 按 **F5** 或使用 "**调试**" "  >  **开始调试**" 菜单启动调试器并附加到 Azure Functions 主机。 此命令自动使用 Azure 函数创建的单个调试配置。
 
-   ![显示 Arkose 实验室 Azure CLI 的屏幕截图](media/partner-arkose-labs/arkose-azure-cli.png)
+3. Azure Function extension 将自动生成一些用于本地开发的文件，安装依赖项，并安装函数核心工具（如果尚未存在）。 这些工具可帮助进行调试体验。
 
-4. 将 `<public_key>` 第64行的替换为从 Arkose 实验室仪表板获取的公钥。
+4. 函数核心工具的输出将显示在 Visual Studio Code **终端** 面板中。 启动主机后， **Alt + 单击** 显示在输出中的本地 URL，打开浏览器并运行该函数。 在 Azure Functions 资源管理器中，右键单击该函数可查看本地托管函数的 url。
 
-5. 将 index.html 文件上传到上面创建的 blob 存储。
+若要在测试过程中重新部署本地实例，请重复步骤1到4。
 
-6. 请参阅 **存储**  >  **容器**  >  **上传**。
+#### <a name="add-environment-variables"></a>添加环境变量
 
-#### <a name="set-up-azure-ad-b2c"></a>设置 Azure AD B2C
+此示例使用 [HTTP 基本身份验证](https://tools.ietf.org/html/rfc7617)来保护 web API 终结点。
 
-> [!NOTE]
-> 如果没有租户，请[创建链接到 Azure 订阅的 Azure AD B2C 租户](tutorial-create-tenant.md)。
+用户名和密码存储为环境变量，而不是存储库的一部分。 有关详细信息，请参阅文件 [ 上的local.settings.js](https://docs.microsoft.com/azure/azure-functions/functions-run-local?tabs=macos%2Ccsharp%2Cbash#local-settings-file) 。
 
-1. 基于 [此处](tutorial-create-user-flows.md)的信息创建用户流。 进入 **测试用户流** 部分时停止。
+1. 在根文件夹中的文件上创建 local.settings.js
 
-2. 在 [用户流](javascript-and-page-layout.md)中启用 JavaScript。
+2. 将以下代码复制并粘贴到该文件中：
 
-3. 在同一 "用户流" 页上，启用 "自定义页面 URL：中转到 **用户流**  >  **页面布局**  >  "**使用自定义页面内容**  =  **yes**  >  **insert 自定义页面 URL**。
-此自定义页面 URL 从 blob 存储中 index.html 文件的位置获取  
+```
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "",
+    "FUNCTIONS_WORKER_RUNTIME": "node",
+    "BASIC_AUTH_USERNAME": "<USERNAME>",
+    "BASIC_AUTH_PASSWORD": "<PASSWORD>",
+    "ARKOSE_PRIVATE_KEY": "<ARKOSE_PRIVATE_KEY>",
+    "B2C_EXTENSIONS_APP_ID": "<B2C_EXTENSIONS_APP_ID>"
+  }
+}
+```
+**BASIC_AUTH_USERNAME** 和 **BASIC_AUTH_PASSWORD** 值将是用于对 Azure 函数的 API 调用进行身份验证的凭据。 选择所需的值。
 
-   ![显示 Arkose 实验室存储 url 的屏幕截图](media/partner-arkose-labs/arkose-storage-url.png)
+`<ARKOSE_PRIVATE_KEY>`是在 Arkose 实验室服务中生成的服务器端机密。 它用于调用 [Arkose 实验室服务器端验证 API](https://arkoselabs.atlassian.net/wiki/spaces/DG/pages/266214758/Server-Side+Instructions) 来验证前端生成的的值 `ArkoseSessionToken` 。
+
+`<B2C_EXTENSIONS_APP_ID>`是 Azure AD B2C 用来在目录中存储自定义属性的应用的应用程序 ID。 可以通过导航到应用注册、搜索 b2c 扩展应用程序，并从 " **概述** " 窗格中复制应用程序 (客户端) id 来查找此应用程序 id。 删除 `-` 字符。
+
+![Image 按应用 id 显示搜索](media/partner-arkose-labs/search-app-id.png)
+
+#### <a name="deploy-the-application-to-the-web"></a>将应用程序部署到 web
+
+1. 遵循 [本](https://docs.microsoft.com/azure/javascript/tutorial-vscode-serverless-node-04) 指南中所述的步骤，将 Azure 函数部署到云。 复制 Azure 函数的终结点 web URL。
+
+2. 部署完成后，选择 " **上传设置** " 选项。 它会将环境变量上传到应用服务的 [应用程序设置](https://docs.microsoft.com/azure/azure-functions/functions-develop-vs-code?tabs=csharp#application-settings-in-azure) 。 还可以[通过 Azure 门户](https://docs.microsoft.com/azure/azure-functions/functions-how-to-use-azure-function-app-settings)配置或管理这些应用程序设置。
+
+若要详细了解 Visual Studio Code 开发 Azure Functions，请参阅 [此文](https://docs.microsoft.com/azure/azure-functions/functions-develop-vs-code?tabs=csharp#republish-project-files) 。
+
+#### <a name="configure-and-enable-the-api-connector"></a>配置并启用 API 连接器
+
+为用户流[创建 API 连接器](https://docs.microsoft.com/azure/active-directory-b2c/add-api-connector)并启用它。 API 连接器配置应如下所示：
+
+![Image 按应用 id 显示搜索](media/partner-arkose-labs/configure-api-connector.png)
+
+- **终结点 url** -是在部署 Azure function 之前复制的函数 URL。
+
+- **用户名和密码** -是之前定义为环境变量的用户名和密码。
+
+若要启用 API 连接器，请在用户流的 " **API 连接器** 设置" 中，选择要在 **创建用户步骤之前** 在上调用的 api 连接器。 当用户在注册流中选择 " **创建** " 时，将调用 API。 API 将对值进行服务器端验证 `ArkoseSessionToken` ，此值是由 Arkose 小组件的回调设置的 `arkoseCallback` 。
+
+![图像显示启用 api 连接器](media/partner-arkose-labs/enable-api-connector.png)
 
 ## <a name="test-the-user-flow"></a>测试用户流
 
-1. 打开 Azure AD B2C 租户，然后在 " **策略**" 下选择 " **用户流**"。
+1. 打开 Azure AD B2C 租户，并在 "策略" 下选择 " **用户流**"。
 
 2. 选择以前创建的用户流。
 
 3. 选择 " **运行用户流** "，然后选择设置：
 
-   a. **应用程序** -选择注册的应用 (示例为 JWT) 。
+   a. 应用程序：选择注册应用 (示例为 JWT) 
 
-   b. **回复 url** -选择 "重定向 url"。
+   b. 回复 URL：选择 "重定向 URL"
 
    c. 选择“运行用户流”。
 
-4. 浏览注册流并创建帐户。
+4. 浏览注册流并创建帐户
 
-5. 注销。
+5. 注销
 
-6. 完成登录流。
+6. 浏览登录流  
 
 7. 选择 " **继续**" 后，将显示 Arkose 实验室测验题。
 
-## <a name="next-steps"></a>后续步骤
+## <a name="additional-resources"></a>其他资源
 
-有关其他信息，请查看以下文章：
+- Azure AD B2C 注册用户流的[示例代码](https://github.com/Azure-Samples/active-directory-b2c-node-sign-up-user-flow-arkose)
 
-- [Azure AD B2C 中的自定义策略](custom-policy-overview.md)
+- [Azure AD B2C 中的自定义策略](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview)
 
-- [Azure AD B2C 中的自定义策略入门](custom-policy-get-started.md?tabs=applications)
+- [Azure AD B2C 中的自定义策略入门](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications)

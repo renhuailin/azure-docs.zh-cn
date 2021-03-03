@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 01/14/2021
 ms.author: alsin
-ms.openlocfilehash: 13388bf289c1d10a2e7da04a4dd5d26be109535e
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: df5133ad4bb3155afdc9d43e595591d9cfda4ea0
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98697789"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101644436"
 ---
 # <a name="troubleshoot-common-automanage-onboarding-errors"></a>排查常见的 Automanage 载入错误
 Automanage 可能无法将计算机登记到服务中。 本文档介绍了如何排查部署故障，如何分担部署可能会失败的一些常见原因，并介绍了在缓解时可能会发生的后续步骤。
@@ -34,10 +34,10 @@ Automanage 可能无法将计算机登记到服务中。 本文档介绍了如�
 
 ## <a name="common-deployment-errors"></a>常见部署错误
 
-错误 |  缓解操作
+错误 |  缓解措施
 :-----|:-------------|
 Automanage 帐户权限不足错误 | 如果最近将包含新 Automanage 帐户的订阅移动到新租户中，则可能会发生这种情况。 [此处](./repair-automanage-account.md)提供了解决此问题的步骤。
-工作区区域与区域映射要求不匹配 | Automanage 无法载入你的计算机，但该计算机当前链接到的 Log Analytics 工作区未映射到受支持的自动化区域。 请确保现有 Log Analytics 工作区和自动化帐户位于 [受支持的区域映射](https://docs.microsoft.com/azure/automation/how-to/region-mappings)。
+工作区区域与区域映射要求不匹配 | Automanage 无法载入你的计算机，但该计算机当前链接到的 Log Analytics 工作区未映射到受支持的自动化区域。 请确保现有 Log Analytics 工作区和自动化帐户位于 [受支持的区域映射](../automation/how-to/region-mappings.md)。
 "分配失败;没有其他可用信息 " | 请打开 Microsoft Azure 支持案例。
 
 ## <a name="next-steps"></a>后续步骤
@@ -46,4 +46,3 @@ Automanage 帐户权限不足错误 | 如果最近将包含新 Automanage 帐户
 
 > [!div class="nextstepaction"]
 > [在 Azure 门户中为虚拟机启用 Automanage](quick-create-virtual-machines-portal.md)
-

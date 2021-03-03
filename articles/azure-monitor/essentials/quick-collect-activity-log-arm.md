@@ -7,12 +7,12 @@ ms.custom: subject-armqs, devx-track-azurecli
 author: bwren
 ms.author: bwren
 ms.date: 06/25/2020
-ms.openlocfilehash: 8150a172c49b2b0e969ff35928976e5909b7daa8
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 7465127ed9c52941d6c3ccfd40446546f0795455
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/17/2021
-ms.locfileid: "100626255"
+ms.locfileid: "100635466"
 ---
 # <a name="quickstart-send-azure-activity-log-to-log-analytics-workspace-using-an-arm-template"></a>快速入门：使用 ARM 模板将 Azure 活动日志发送到 Log Analytics 工作区
 
@@ -260,7 +260,7 @@ az deployment sub create --name CreateDiagnosticSetting --location eastus --temp
 # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
 ```powershell
-New-AzSubscriptionDeployment -Name CreateDiagnosticSetting -location eastus -TemplateFile CreateDiagnosticSetting.json -settingName="Send Activity log to workspace" -workspaceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/my-resource-group/providers/microsoft.operationalinsights/workspaces/my-workspace-01"
+New-AzSubscriptionDeployment -Name CreateDiagnosticSetting -location eastus -TemplateFile CreateDiagnosticSetting.json -settingName "Send Activity log to workspace" -workspaceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/my-resource-group/providers/microsoft.operationalinsights/workspaces/my-workspace-01"
 ```
 ---
 
@@ -285,11 +285,11 @@ az monitor diagnostic-settings show --resource '/subscriptions/00000000-0000-000
 
 ![Azure 门户](media/quick-collect-activity-log/azure-portal-monitor.png)
 
-在“Azure Monitor”菜单中选择“日志” 。 关闭“示例查询”页。 如果范围未设置为所创建的工作区，则单击“选择范围”并进行查找。
+在“Azure Monitor”菜单中选择“日志” 。 关闭“示例查询”页面。 如果范围未设置为所创建的工作区，则单击“选择范围”并进行查找。
 
 ![Log Analytics 范围](media/quick-collect-activity-log/log-analytics-scope.png)
 
-在查询窗口中，键入 `AzureActivity`，然后单击“运行”。 这是一个简单的查询，它返回“AzureActivity”表中的所有记录，该表中包含从活动日志发送的所有记录。
+在查询窗口中，键入 `AzureActivity` 然后单击“运行”。 这是一个简单的查询，它返回“AzureActivity”表中的所有记录，该表中包含从活动日志发送的所有记录。
 
 ![简单查询](media/quick-collect-activity-log/query-01.png)
 
@@ -297,7 +297,7 @@ az monitor diagnostic-settings show --resource '/subscriptions/00000000-0000-000
 
 ![展开属性](media/quick-collect-activity-log/expand-properties.png)
 
-尝试使用较为复杂的查询，例如 `AzureActivity | summarize count() by CategoryValue`，该查询提供按类别汇总的事件计数。
+尝试使用更为复杂的查询，例如 `AzureActivity | summarize count() by CategoryValue`，该查询提供按类别汇总的事件计数。
 
 ![复杂查询](media/quick-collect-activity-log/query-02.png)
 
@@ -321,7 +321,7 @@ Remove-AzResourceGroup -Name my-resource-group
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，你已将活动日志配置为发送到 Log Analytics 工作区。 现可配置要收集到工作区中的其他数据，在工作区中可以使用 Azure Monitor 中的[日志查询](../log-query/log-query-overview.md)来一起分析它，并利用[日志警报](../alerts/alerts-log-query.md)和[工作簿](../visualize/workbooks-overview.md)等功能。 接下来，应从 Azure 资源中收集[资源日志](../essentials/resource-logs.md)，以补充活动日志中的数据，从而深入了解各资源内执行的操作。
+在本快速入门中，已将活动日志配置为发送到 Log Analytics 工作区。 现可配置要收集到工作区中的其他数据，在工作区中可以使用 Azure Monitor 中的[日志查询](../log-query/log-query-overview.md)来分析这些数据，并利用[日志警报](../alerts/alerts-log-query.md)和[工作簿](../visualize/workbooks-overview.md)等功能。 接下来，应从 Azure 资源中收集[资源日志](../essentials/resource-logs.md)，以补充活动日志中的数据，从而深入了解各资源内执行的操作。
 
 > [!div class="nextstepaction"]
 > [使用 Azure Monitor 收集和分析资源日志](../essentials/tutorial-resource-logs.md)

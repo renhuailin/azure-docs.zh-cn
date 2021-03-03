@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: sstein
-ms.date: 12/8/2020
-ms.openlocfilehash: 1b8be7fc6295c6332d26718b5752d2fd8f2a6f73
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 2/22/2021
+ms.openlocfilehash: 4dd7bbe613b30df2611bfe6631950e121235204a
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100393235"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101658582"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL 数据库无服务器
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -103,9 +103,9 @@ Azure SQL 数据库中单一数据库的无服务器计算层由计算自动缩�
 
 随着从磁盘中不断提取数据，SQL 缓存也会不断增大，其增长速度与预配的数据库相同。 当数据库处于繁忙状态时，允许缓存无约束增大，但不能超过最大内存限制。
 
-## <a name="auto-pause-and-auto-resume"></a>自动暂停和自动恢复
+## <a name="auto-pausing-and-auto-resuming"></a>自动暂停和自动恢复
 
-### <a name="auto-pause"></a>自动暂停
+### <a name="auto-pausing"></a>自动暂停
 
 如果在自动暂停延迟期间满足以下所有条件，则会触发自动暂停：
 

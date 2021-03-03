@@ -13,12 +13,12 @@ ms.author: ryanwi
 ms.reviewer: jeedes
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 15a4dd56b509571094ef202fbce781104bda9188
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: d9a4da6fe65fda07609c7399518fa324017ea44c
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99052238"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101649339"
 ---
 # <a name="how-to-get-appsource-certified-for-azure-active-directory"></a>如何使 AppSource 通过 Azure Active Directory 的认证
 
@@ -102,7 +102,7 @@ ms.locfileid: "99052238"
 </tr>
 </table>
 
-### <a name="more-information"></a>更多信息
+### <a name="more-information"></a>详细信息
 
 有关 AppSource 试用体验的详细信息，请参阅[此视频](https://aka.ms/trialexperienceforwebapps)。 
 
@@ -113,9 +113,9 @@ ms.locfileid: "99052238"
 
 ## <a name="get-support"></a>获取支持
 
-对于 Azure AD 集成，我们使用与社区 [&的 Microsoft Q](https://docs.microsoft.com/answers/products/) 来提供支持。
+对于 Azure AD 集成，我们使用与社区 [&的 Microsoft Q](/answers/products/) 来提供支持。
 
-我们强烈建议你先提问&第一次，浏览现有问题，查看是否有人在之前提出过你的问题。 请确保已将你的问题或评论标记为 [`[azure-active-directory]`](https://docs.microsoft.com/answers/topics/azure-active-directory.html) 。
+我们强烈建议你先提问&第一次，浏览现有问题，查看是否有人在之前提出过你的问题。 请确保已将你的问题或评论标记为 [`[azure-active-directory]`](/answers/topics/azure-active-directory.html) 。
 
 使用以下评论部分提供反馈，帮助我们改进内容。
 

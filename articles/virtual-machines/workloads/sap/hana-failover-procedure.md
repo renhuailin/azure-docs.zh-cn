@@ -6,20 +6,19 @@ documentationcenter: ''
 author: saghorpa
 manager: juergent
 editor: ''
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/22/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1daba0819e0164602ae78ece87421834f36fb09a
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 2a33340524556f5da1703cae3532f053fbe8ba13
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967816"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101670991"
 ---
 # <a name="disaster-recovery-failover-procedure"></a>灾难恢复故障转移过程
 
@@ -53,7 +52,7 @@ ms.locfileid: "94967816"
 1. 关闭在 HANA 大型实例的灾难恢复单元上运行的 HANA 非生产实例。 已预安装了一个处于休眠状态的 HANA 生产实例。
 1. 确保未运行任何 SAP HANA 进程。 使用以下命令执行此项检查：
 
-      `/usr/sap/hostctrl/exe/sapcontrol –nr <HANA instance number> - function GetProcessList` 列中的一个值匹配。
+      `/usr/sap/hostctrl/exe/sapcontrol –nr <HANA instance number> - function GetProcessList`.
 
       输出应显示 **hdbdaemon** 进程处于停止状态且没有其他 HANA 进程处于运行或已开始状态。
 1. 确定希望将灾难恢复站点还原到的快照名称或 SAP HANA 备份 ID。 在真实的灾难恢复事例中，此快照通常是最新的快照。 如果需要恢复丢失的数据，请选择更早的快照。

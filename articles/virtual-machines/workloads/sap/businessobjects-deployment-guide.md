@@ -8,19 +8,18 @@ manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
-ms.service: virtual-machines-windows
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/05/2020
 ms.author: depadia
-ms.openlocfilehash: 0c2deb1ae1d41f8daaed8856f97c4b458930c616
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: e753d810bbc2ed1079b58d20a0659bf5e2219d11
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96484373"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101671903"
 ---
 # <a name="sap-businessobjects-bi-platform-planning-and-implementation-guide-on-azure"></a>Azure 上的 SAP BusinessObjects BI 平台规划和实现指南
 
@@ -140,7 +139,7 @@ BI 平台需要适用于 CMS 和审核数据存储的数据库，该数据库可
 
 本文档说明了在具有 Azure Database for MySQL 的 Linux 上 **通过 AZURE SQL 数据库** 和 **sap BOBI 平台** 部署适用于 Windows 的 sap BOBI 平台的准则。 这也是我们建议在 Azure 上运行 SAP BusinessObjects BI 平台的方法。
 
-## <a name="sizing"></a>大小调整
+## <a name="sizing"></a>调整大小
 
 调整大小是确定有效运行应用程序的硬件要求的过程。 对于 SAP BOBI 平台，需使用名为 [Quick Sizer](https://www.sap.com/about/benchmark/sizing.quick-sizer.html#quick-sizer)的 SAP 调整工具来完成大小调整。 此工具基于输入提供 SAP，后者需要映射到经过认证的 Azure 虚拟机类型。 SAP 说明 [1928533](https://launchpad.support.sap.com/#/notes/1928533) 提供受支持的 SAP 产品和 Azure VM 类型以及 sap 的列表。 有关调整大小的详细信息，请参阅 [SAP BI 大小调整指南](https://wiki.scn.sap.com/wiki/display/BOBJ/Sizing+and+Deploying+SAP+BusinessObjects+BI+4.x+Platform+and+Add-Ons)。
 

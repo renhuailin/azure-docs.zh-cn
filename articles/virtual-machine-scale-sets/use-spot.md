@@ -6,15 +6,15 @@ ms.author: jagaveer
 ms.topic: how-to
 ms.service: virtual-machine-scale-sets
 ms.subservice: spot
-ms.date: 03/25/2020
+ms.date: 02/26/2021
 ms.reviewer: cynthn
-ms.custom: jagaveer, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 265f78970f17fe7321db8786c2fb8dd2304bb578
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 33aa553e688b595551c20e8b1432163152865537
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100558677"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101675020"
 ---
 # <a name="azure-spot-virtual-machines-for-virtual-machine-scale-sets"></a>虚拟机规模集的 Azure 点虚拟机 
 
@@ -46,19 +46,38 @@ Azure 点虚拟机可部署到除 Microsoft Azure 中国世纪地区以外的任
 -   企业协议
 -   即用即付产品/服务代码003P
 -   赞助
-- 对于云服务提供商 (CSP) ，请联系你的合作伙伴
+- 对于云服务提供商)  (CSP，请参阅 [合作伙伴中心](https://docs.microsoft.com/partner-center/azure-plan-get-started) 或直接联系你的合作伙伴。
 
 ## <a name="eviction-policy"></a>逐出策略
 
-创建 Azure 点虚拟机规模集时，可以将逐出策略设置为 *释放* (默认) 或 *删除*。 
+使用 Azure 点虚拟机创建规模集时，可以将逐出策略设置为 *释放* (默认) 或 *删除*。 
 
 “解除分配”策略可将逐出的实例移到已停止-已解除分配状态，以允许重新部署逐出的实例。 但是，不保证分配将成功。 已解除分配的 VM 将计入规模集实例配额，基础磁盘仍会产生费用。 
 
-如果希望在逐出 Azure 点虚拟机规模集中的实例时删除这些实例，可以将逐出策略设置为 " *删除*"。 将逐出策略设置为删除后，可以通过增大规模集实例计数属性来创建新的 VM。 逐出的 VM 会连同其基础磁盘一起删除，因此可以避免存储费用。 还可以使用规模集的自动缩放功能来自动尝试补偿逐出的 VM，但是，无法保证分配成功。 建议你在将逐出策略设置为 "删除" 时，仅在 Azure 点虚拟机规模集上使用自动缩放功能，以避免磁盘成本和达到配额限制。 
+如果希望在逐出实例时删除实例，可以将逐出策略设置为 " *删除*"。 将逐出策略设置为删除后，可以通过增大规模集实例计数属性来创建新的 VM。 逐出的 VM 会连同其基础磁盘一起删除，因此可以避免存储费用。 还可以使用规模集的自动缩放功能来自动尝试补偿逐出的 VM，但是，无法保证分配成功。 建议你在将逐出策略设置为 "删除" 时，仅在 Azure 点虚拟机规模集上使用自动缩放功能，以避免磁盘成本和达到配额限制。 
 
 用户可以选择通过 [Azure Scheduled Events](../virtual-machines/linux/scheduled-events.md)接收 VM 内通知。 这样，系统就会在你的 VM 被逐出时向你发送通知。在逐出之前，你将有 30 秒的时间来完成任何作业并执行关闭任务。 
 
+<a name="bkmk_try"></a>
+## <a name="try--restore-preview"></a>尝试 (预览版 & 还原) 
+
+这个新的平台级别功能将使用 AI 自动尝试还原规模集内的已逐出 Azure 点虚拟机实例，以维护目标实例计数。 
+
+> [!IMPORTANT]
+> 请尝试 & 还原目前为公共预览版。
+> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+
+尝试 & 还原权益：
+- 默认情况下，在规模集中部署 Azure 点虚拟机时启用。
+- 尝试还原由于容量原因而逐出的 Azure 点虚拟机。
+- 所还原的 Azure 点虚拟机预计运行时间较长，且容量触发逐出的可能性较低。
+- 提高 Azure 点虚拟机的使用期限，使工作负荷运行更长时间。
+- 帮助虚拟机规模集维护 Azure 点虚拟机的目标计数，类似于 "保留即用即付" Vm 的 "维护目标计数" 功能。
+
+尝试在使用 [自动缩放](virtual-machine-scale-sets-autoscale-overview.md)的规模集中禁用 & 还原。 规模集中的 Vm 数由自动缩放规则驱动。
+
 ## <a name="placement-groups"></a>放置组
+
 放置组是类似于 Azure 可用性集的构造，具有其自己的容错域和升级域。 默认情况下，一个规模集包含一个放置组，最大大小为 100 台 VM。 如果将被调用的规模集属性 `singlePlacementGroup` 设置为 *false*，则规模集可以由多个放置组组成，其范围为 0-1000 个 vm。 
 
 > [!IMPORTANT]
@@ -136,6 +155,24 @@ $vmssConfig = New-AzVmssConfig `
 ```
 
 若要在逐出实例后将其删除，请将 `evictionPolicy` 参数更改为 `Delete`。
+
+
+## <a name="simulate-an-eviction"></a>模拟逐出
+
+可以 [模拟逐出](https://docs.microsoft.com/rest/api/compute/virtualmachines/simulateeviction) Azure 点虚拟机，以测试应用程序对突然逐出的响应情况。 
+
+将以下内容替换为你的信息： 
+
+- `subscriptionId`
+- `resourceGroupName`
+- `vmName`
+
+
+```rest
+POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/simulateEviction?api-version=2020-06-01
+```
+
+`Response Code: 204` 表示模拟逐出成功。 
 
 ## <a name="faq"></a>常见问题解答
 

@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ca00785bfe8a99b8a3d620559c4fa492ee60c63
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: f2bbc1c555824d4c632c5bf85a9cd0aa83087fc8
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96741739"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101648719"
 ---
 # <a name="troubleshoot-on-premises-azure-ad-password-protection"></a>故障排除：本地 Azure AD 密码保护
 
@@ -259,6 +259,146 @@ PS C:\> Get-AzureADPasswordProtectionDCAgent | Where-Object {$_.SoftwareVersion 
    `%windir%\sysvol\domain\Policies\AzureADPasswordProtection`
 
    如果在非默认位置配置了 sysvol 共享，则此路径不同。
+
+## <a name="health-testing-with-powershell-cmdlets"></a>PowerShell cmdlet 的运行状况测试
+
+AzureADPasswordProtection PowerShell 模块包括两个与运行状况相关的 cmdlet，这些 cmdlet 执行软件已安装且正常工作的基本验证。 在设置新部署之后、之后定期完成，以及在调查问题时，最好运行这些 cmdlet。
+
+每个单独的运行状况测试返回基本通过或失败的结果，以及失败时的可选消息。 如果失败的原因不明确，请查找错误事件日志消息，这些消息可能说明失败。 启用文本日志消息也可能会很有用。 有关更多详细信息，请参阅 [Monitor Azure AD Password Protection](howto-password-ban-bad-on-premises-monitor.md)。
+
+## <a name="proxy-health-testing"></a>代理运行状况测试
+
+Test-AzureADPasswordProtectionProxyHealth cmdlet 支持两个可单独运行的运行状况测试。 第三种模式允许运行所有不需要输入参数的测试。
+
+### <a name="proxy-registration-verification"></a>代理注册验证
+
+此测试验证是否已将代理程序正确地注册到 Azure，并能够在 Azure 中进行身份验证。 成功的运行将如下所示：
+
+```powershell
+PS C:\> Test-AzureADPasswordProtectionProxyHealth -VerifyProxyRegistration
+
+DiagnosticName          Result AdditionalInfo
+--------------          ------ --------------
+VerifyProxyRegistration Passed
+```
+
+如果检测到错误，则测试将返回失败的结果和可选的错误消息。 下面是一个可能发生的失败的示例：
+
+```powershell
+PS C:\> Test-AzureADPasswordProtectionProxyHealth -VerifyProxyRegistration
+
+DiagnosticName          Result AdditionalInfo
+--------------          ------ --------------
+VerifyProxyRegistration Failed No proxy certificates were found - please run the Register-AzureADPasswordProtectionProxy cmdlet to register the proxy.
+```
+
+### <a name="proxy-verification-of-end-to-end-azure-connectivity"></a>端对端 Azure 连接的代理验证
+
+此测试是-VerifyProxyRegistration 测试的超集。 它要求代理程序正确地注册到 Azure，能够在 Azure 中进行身份验证，最后添加一条检查消息是否可成功发送到 Azure，从而验证完全的端到端通信是否正常工作。
+
+成功的运行将如下所示：
+
+```powershell
+PS C:\> Test-AzureADPasswordProtectionProxyHealth -VerifyAzureConnectivity
+
+DiagnosticName          Result AdditionalInfo
+--------------          ------ --------------
+VerifyAzureConnectivity Passed
+```
+
+### <a name="proxy-verification-of-all-tests"></a>所有测试的代理验证
+
+此模式允许对不需要参数输入的 cmdlet 支持的所有测试进行大容量运行。 成功的运行将如下所示：
+
+```powershell
+PS C:\> Test-AzureADPasswordProtectionProxyHealth -TestAll
+
+DiagnosticName          Result AdditionalInfo
+--------------          ------ --------------
+VerifyTLSConfiguration  Passed
+VerifyProxyRegistration Passed
+VerifyAzureConnectivity Passed
+```
+
+## <a name="dc-agent-health-testing"></a>DC 代理运行状况测试
+
+Test-AzureADPasswordProtectionDCAgentHealth cmdlet 支持多个可单独运行的运行状况测试。 第三种模式允许运行所有不需要输入参数的测试。
+
+### <a name="basic-dc-agent-health-tests"></a>基本 DC 代理运行状况测试
+
+以下测试可以单独运行且不接受。 简要说明
+
+|DC 代理运行状况测试|说明|
+| --- | :---: |
+|-VerifyPasswordFilterDll|验证密码筛选器 dll 当前是否已加载并能够调用 DC 代理服务|
+|-VerifyForestRegistration|验证林当前是否已注册|
+|-VerifyEncryptionDecryption|使用 Microsoft KDS 服务验证基本加密和解密是否正常工作|
+|-VerifyDomainIsUsingDFSR|验证当前域是否正在使用 DFSR 进行 sysvol 复制|
+|-VerifyAzureConnectivity|使用任何可用的代理验证 Azure 的端到端通信是否正常工作|
+
+下面是通过的-VerifyPasswordFilterDll 测试的示例。其他测试在成功时将如下所示：
+
+```powershell
+PS C:\> Test-AzureADPasswordProtectionDCAgentHealth -VerifyPasswordFilterDll
+
+DiagnosticName          Result AdditionalInfo
+--------------          ------ --------------
+VerifyPasswordFilterDll Passed
+```
+
+### <a name="dc-agent-verification-of-all-tests"></a>所有测试的 DC 代理验证
+
+此模式允许对不需要参数输入的 cmdlet 支持的所有测试进行大容量运行。 成功的运行将如下所示：
+
+```powershell
+PS C:\> Test-AzureADPasswordProtectionDCAgentHealth -TestAll
+
+DiagnosticName             Result AdditionalInfo
+--------------             ------ --------------
+VerifyPasswordFilterDll    Passed
+VerifyForestRegistration   Passed
+VerifyEncryptionDecryption Passed
+VerifyDomainIsUsingDFSR    Passed
+VerifyAzureConnectivity    Passed
+```
+
+### <a name="connectivity-testing-using-specific-proxy-servers"></a>使用特定代理服务器进行的连接测试
+
+许多故障排除情况都涉及调查 DC 代理和代理之间的网络连接。 有两种运行状况测试可专门用于此类问题。 这些测试需要指定特定的代理服务器。
+
+#### <a name="verifying-connectivity-between-a-dc-agent-and-a-specific-proxy"></a>验证 DC 代理和特定代理之间的连接
+
+此测试验证从 DC 代理到代理的第一条通信支线的连接。 它验证代理是否收到呼叫，但不涉及与 Azure 的通信。 成功的运行如下所示：
+
+```powershell
+PS C:\> Test-AzureADPasswordProtectionDCAgentHealth -VerifyProxyConnectivity bpl2.bpl.com
+
+DiagnosticName          Result AdditionalInfo
+--------------          ------ --------------
+VerifyProxyConnectivity Passed
+```
+
+下面是在目标服务器上运行的代理服务已停止的示例失败条件：
+
+```powershell
+PS C:\> Test-AzureADPasswordProtectionDCAgentHealth -VerifyProxyConnectivity bpl2.bpl.com
+
+DiagnosticName          Result AdditionalInfo
+--------------          ------ --------------
+VerifyProxyConnectivity Failed The RPC endpoint mapper on the specified proxy returned no results; please check that the proxy service is running on that server.
+```
+
+#### <a name="verifying-connectivity-between-a-dc-agent-and-azure-using-a-specific-proxy"></a>使用特定代理验证 DC 代理和 Azure (之间的连接) 
+
+此测试使用特定代理验证 DC 代理与 Azure 之间的完全端到端连接。 成功的运行如下所示：
+
+```powershell
+PS C:\> Test-AzureADPasswordProtectionDCAgentHealth -VerifyAzureConnectivityViaSpecificProxy bpl2.bpl.com
+
+DiagnosticName                          Result AdditionalInfo
+--------------                          ------ --------------
+VerifyAzureConnectivityViaSpecificProxy Passed
+```
 
 ## <a name="next-steps"></a>后续步骤
 

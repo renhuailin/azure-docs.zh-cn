@@ -9,20 +9,19 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.assetid: d7c59cc1-b2d0-4d90-9126-628f9c7a5538
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/26/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6982b782fdd6b5b269c1562c54be3478c58bbce9
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 329e09221467c2602355e091876c95f305db3578
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500991"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101673740"
 ---
 # <a name="azure-storage-types-for-sap-workload"></a>适用于 SAP 工作负载的 Azure 存储类型
 Azure 有许多不同的存储类型，这些类型在功能、吞吐量、延迟和价格方面有所不同。 某些存储类型不是或不可用于 SAP 方案。 但对于特定的 SAP 工作负荷方案，多个 Azure 存储类型非常适合或进行了优化。 特别是对于 SAP HANA，某些 Azure 存储类型已通过 SAP HANA 使用进行了认证。 在本文档中，我们将浏览不同类型的存储，并介绍 SAP 工作负荷和 SAP 组件的功能和可用性。
@@ -136,7 +135,7 @@ Azure 高级 SSD 存储已引入，旨在提供：
 
 SAP 工作负荷的功能矩阵如下所示：
 
-| 功能| 备注| 备注/链接 | 
+| 功能| 评论| 备注/链接 | 
 | --- | --- | --- | 
 | OS 基本 VHD | 适合 | 所有系统 |
 | 数据磁盘 | 适合 | 所有系统- [专门用于 SAP HANA](../../how-to-enable-write-accelerator.md) |
@@ -194,7 +193,7 @@ Azure 超级磁盘为 Azure IaaS VM 提供高吞吐量、高 IOPS 和一贯低�
 
 SAP 工作负荷的功能矩阵如下所示：
 
-| 功能| 备注| 备注/链接 | 
+| 功能| 评论| 备注/链接 | 
 | --- | --- | --- | 
 | OS 基本 VHD | 不起作用 | - |
 | 数据磁盘 | 适合 | 所有系统  |
@@ -249,7 +248,7 @@ SAP 工作负荷的功能矩阵如下所示：
 
 SAP 工作负荷的功能矩阵如下所示：
 
-| 功能| 备注| 备注/链接 | 
+| 功能| 评论| 备注/链接 | 
 | --- | --- | --- | 
 | OS 基本 VHD | 不起作用 | - |
 | 数据磁盘 | 适合 | 仅 SAP HANA  |
@@ -282,7 +281,7 @@ SAP 工作负荷的功能矩阵如下所示：
 ## <a name="azure-standard-ssd-storage"></a>Azure 标准 SSD 存储
 与 Azure 标准 HDD 存储相比，Azure 标准 SSD 存储提供更好的可用性、一致性、可靠性和延迟。 它针对需要在低 IOPS 级别上具有一致性能的工作负荷进行了优化。 此存储是用于具有低 IOPS 和吞吐量要求的非生产 SAP 系统的最小存储空间。 SAP 工作负荷的功能矩阵如下所示：
 
-| 功能| 备注| 备注/链接 | 
+| 功能| 评论| 备注/链接 | 
 | --- | --- | --- | 
 | OS 基本 VHD | 限制合适 | 非生产系统 |
 | 数据磁盘 | 限制合适 | 某些非生产系统的 IOPS 和延迟需求较低 |
@@ -309,7 +308,7 @@ SAP 工作负荷的功能矩阵如下所示：
 ## <a name="azure-standard-hdd-storage"></a>Azure 标准 HDD 存储
 在2014年，azure 基础结构为 SAP NetWeaver 工作负荷认证时，Azure 标准 HDD 存储是唯一的存储类型。 在2014年，Azure 虚拟机的存储吞吐量较小且低。 因此，此存储类型能够满足需求。 存储非常适合于延迟的不区分工作负荷，在 SAP 空间中几乎不会遇到。 随着 Azure Vm 的增长吞吐量和这些 Vm 产生的工作负荷增加，此存储类型不会考虑到 SAP 方案的使用量。 SAP 工作负荷的功能矩阵如下所示：
 
-| 功能| 备注| 备注/链接 | 
+| 功能| 评论| 备注/链接 | 
 | --- | --- | --- | 
 | OS 基本 VHD | 不适用 | - |
 | 数据磁盘 | 不适用 | - |
@@ -335,7 +334,7 @@ SAP 工作负荷的功能矩阵如下所示：
 ## <a name="azure-vm-limits-in-storage-traffic"></a>存储流量中的 Azure VM 限制
 与本地方案相反，你选择的单个 VM 类型在存储带宽中扮演着重要的角色。 对于不同的存储类型，您需要考虑：
 
-| 存储类型| Linux | Windows | 说明 |
+| 存储类型| Linux | Windows | 注释 |
 | --- | --- | --- | --- |
 | 标准 HDD | [Azure 中 Linux Vm 的大小](../../sizes.md) | [Azure 中 Windows Vm 的大小](../../sizes.md) | 可能很难触摸中型或大型 Vm 的存储限制 |
 | 标准 SSD | [Azure 中 Linux Vm 的大小](../../sizes.md) | [Azure 中 Windows Vm 的大小](../../sizes.md) | 可能很难触摸中型或大型 Vm 的存储限制 |

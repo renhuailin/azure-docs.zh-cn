@@ -6,19 +6,19 @@ ms.topic: conceptual
 author: vladvino
 ms.author: apimpm
 ms.date: 11/27/2020
-ms.openlocfilehash: 72e91715398b4920c62afae5f36aa09954a577f9
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: e2842f3e428abb4f0eb628dbb8e446f2714d5d89
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97092136"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101652379"
 ---
 # <a name="api-management-soft-delete-preview"></a>API 管理软删除 (预览) 
 
 利用 API 管理软删除 (预览) ，你可以恢复和还原最近删除的 API 管理 (APIM) 实例。
 
 > [!IMPORTANT]
-> `2020-01-01-preview`使用和更高版本的 api 将仅删除使用和更高版本的 Api 管理实例，并使用本文中所述的步骤进行恢复。 使用以前的 API 版本删除的 APIM 实例将继续硬删除。 Azure PowerShell 和 Azure CLI 目前不使用该 `2020-06-01-preview` 版本，也会导致硬删除行为。
+> `2020-06-01-preview`使用和更高版本的 api 将仅删除使用和更高版本的 Api 管理实例，并使用本文中所述的步骤进行恢复。 使用以前的 API 版本删除的 APIM 实例将继续硬删除。 Azure PowerShell 和 Azure CLI 目前不使用该 `2020-06-01-preview` 版本，也会导致硬删除行为。
 
 ## <a name="supporting-interfaces"></a>支持接口
 
@@ -27,18 +27,18 @@ ms.locfileid: "97092136"
 > [!TIP]
 > 请参阅 [azure REST API 参考](/rest/api/azure/) ，了解调用 Azure REST api 的提示和工具。
 
-| 操作 | 说明 | API 管理命名空间 | 最小 API 版本 |
+| Operation | 说明 | API 管理命名空间 | 最小 API 版本 |
 |--|--|--|--|
 | [创建或更新](/rest/api/apimanagement/2020-06-01-preview/apimanagementservice/createorupdate) | 创建或更新 API 管理服务。  | API 管理服务 | 任意 |
 | [创建或更新](/rest/api/apimanagement/2020-06-01-preview/apimanagementservice/createorupdate) `restore` 属性设置为 **true** 的 | Undeletes API 管理服务（如果以前已软删除）。 如果 `restore` 已指定，并且设置为 `true` 所有其他属性，则将被忽略。  | API 管理服务 |  2020-06-01-预览 |
-| [删除](/rest/api/apimanagement/2020-06-01-preview/apimanagementservice/delete) | 删除现有的 API 管理服务。 | API 管理服务 | 2020-01-01-预览|
+| [删除](/rest/api/apimanagement/2020-06-01-preview/apimanagementservice/delete) | 删除现有的 API 管理服务。 | API 管理服务 | 2020-06-01-预览|
 | [按名称获取](/rest/api/apimanagement/2020-06-01-preview/deletedservices/getbyname) | 按名称获取软删除的 Api 管理服务。 | 删除的服务 | 2020-06-01-预览 |
 | [按订阅列出](/rest/api/apimanagement/2020-06-01-preview/deletedservices/listbysubscription) | 列出给定订阅可删除的所有软删除的服务。 | 删除的服务 | 2020-06-01-预览
-| [清除](/rest/api/apimanagement/2020-06-01-preview/deletedservices/purge) | 清除 API 管理服务 (会将其删除，并且不会删除) 的选项。 | 删除的服务 | 2020-06-01-预览
+| [清空](/rest/api/apimanagement/2020-06-01-preview/deletedservices/purge) | 清除 API 管理服务 (会将其删除，并且不会删除) 的选项。 | 删除的服务 | 2020-06-01-预览
 
 ## <a name="soft-delete-behavior"></a>软删除行为
 
-你可以使用任何 API 版本来创建 API 管理实例，但是，你需要使用 `2020-01-01-preview` 或更高版本来软删除你的 APIM 实例 (并且可以选择将其恢复) 。
+你可以使用任何 API 版本来创建 API 管理实例，但是，你需要使用 `2020-06-01-preview` 或更高版本来软删除你的 APIM 实例 (并且可以选择将其恢复) 。
 
 删除 API 管理实例时，该服务将处于已删除状态，从而使任何 APIM 操作都无法访问该服务。 在此状态下，APIM 实例只能列出、恢复或清除 (永久删除的) 中。
 

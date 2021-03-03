@@ -1,5 +1,5 @@
 ---
-title: '创建启用了 Azure Arc 的载入服务主体 (预览) '
+title: 为启用了 Azure Arc 的 Kubernetes 创建载入服务主体
 services: azure-arc
 ms.service: azure-arc
 ms.date: 02/09/2021
@@ -8,20 +8,20 @@ author: mlearned
 ms.author: mlearned
 description: '创建启用了 Azure Arc 的载入服务主体 '
 keywords: Kubernetes、Arc、Azure、容器
-ms.openlocfilehash: 8772cf7634d9a833af120784e3e7868b41d202c4
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: bda088bdae5c866493718db94c9a2da89cada8c9
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100390481"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101650340"
 ---
-# <a name="create-an-azure-arc-enabled-onboarding-service-principal-preview"></a>创建启用了 Azure Arc 的载入服务主体 (预览) 
+# <a name="create-an-onboarding-service-principal-for-azure-arc-enabled-kubernetes"></a>为启用了 Azure Arc 的 Kubernetes 创建载入服务主体
 
 ## <a name="overview"></a>概述
 
-可以将 Kubernetes 群集加入 Azure Arc，使用具有有限权限角色分配的服务主体。 此功能可用于 (CI/CD) 管道中的持续集成和持续部署，如 Azure Pipelines 和 GitHub 操作。
+可以使用具有有限权限角色分配的服务主体，将 Kubernetes 群集连接到 Azure Arc。 此功能可用于 (CI/CD) 管道中的持续集成和持续部署，如 Azure Pipelines 和 GitHub 操作。
 
-演练以下步骤，了解如何使用服务主体将 Kubernetes 群集载入 Azure Arc。
+演练以下步骤，了解如何使用服务主体将 Kubernetes 群集连接到 Azure Arc。
 
 ## <a name="create-a-new-service-principal"></a>创建新服务主体
 
@@ -49,11 +49,11 @@ az ad sp create-for-RBAC --skip-assignment --name "https://azure-arc-for-k8s-onb
 
 由于功能有限，客户可以轻松地将此主体重用于加入多个群集。
 
-可以在分配角色时传入相应的参数，进一步限制权限 `--scope` 。 这使得客户可以限制群集注册。 各类 `--scope` 参数支持以下场景：
+可以在分配角色时传入相应的参数，进一步限制权限 `--scope` 。 这允许管理员将群集注册限制到订阅或资源组的作用域。 各类 `--scope` 参数支持以下场景：
 
 | 资源  | `scope` 参数| 效果 |
 | ------------- | ------------- | ------------- |
-| 订阅 | `--scope /subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333` | 服务主体可以在给定订阅中的现有资源组内注册任何群集。 |
+| 订阅 | `--scope /subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333` | 服务主体可以在该订阅下的任何资源组中注册群集。 |
 | 资源组 | `--scope /subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333/resourceGroups/myGroup`  | 服务主体 __只能__ 注册资源组中的群集 `myGroup` 。 |
 
 ```console

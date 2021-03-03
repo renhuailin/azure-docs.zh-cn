@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: ryanwi
 ROBOTS: NOINDEX
-ms.openlocfilehash: cd55375f2c5970ff0620e753923f369d40478cef
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 9fa910dee2830f6749f0fbd36f065c31dafa6757
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99052019"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101646242"
 ---
 # <a name="how-application-consent-works"></a>应用程序同意操作的工作原理
 
@@ -31,4 +31,4 @@ ms.locfileid: "99052019"
 - 有关详细信息，请参阅[在授权代码授权流期间如何在 OAuth 2.0 协议层支持同意](../azuread-dev/v1-protocols-oauth-code.md#request-an-authorization-code)
 
 ## <a name="next-steps"></a>后续步骤
-[AzureAD Microsoft Q&](https://docs.microsoft.com/answers/topics/azure-active-directory.html)
+[AzureAD Microsoft Q&](/answers/topics/azure-active-directory.html)

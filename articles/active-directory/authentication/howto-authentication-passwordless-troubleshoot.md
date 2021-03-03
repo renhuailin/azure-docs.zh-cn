@@ -1,24 +1,24 @@
 ---
 title: 混合 FIDO2 安全密钥的已知问题和故障排除-Azure Active Directory
-description: '了解有关使用 Azure Active Directory (预览版对无密码混合 FIDO2 安全密钥登录进行故障排除的一些已知问题和方法) '
+description: 了解一些已知问题和解决无密码混合 FIDO2 安全密钥登录使用 Azure Active Directory 的方法
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: troubleshooting
-ms.date: 08/19/2020
+ms.date: 02/22/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea034974e85febcffeb2494d87b666a39e524eb1
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 435b27255ce58a3541d6b0d3a76bdf4080aa3962
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96743269"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101648769"
 ---
-# <a name="troubleshooting-for-hybrid-deployments-of-fido2-security-keys-in-azure-ad-preview"></a>Azure AD (预览版中的 FIDO2 安全密钥的混合部署疑难解答) 
+# <a name="troubleshooting-for-hybrid-deployments-of-fido2-security-keys-in-azure-ad"></a>Azure AD 中的 FIDO2 安全密钥的混合部署故障排除 
 
 本文介绍了有关混合 Azure AD 联接设备和无密码登录到本地资源的常见问题。 使用此无密码功能，可以使用 FIDO2 安全密钥在 Windows 10 设备上启用混合 Azure AD 加入设备的 Azure AD 身份验证。 用户可以使用新式凭据（如 FIDO2 密钥）在其设备上登录 Windows，并 Active Directory 域服务 (使用无缝单一登录 AD DS) 基于的资源，通过无缝单一登录 (的资源。
 
@@ -31,10 +31,7 @@ ms.locfileid: "96743269"
 
 * [无密码安全密钥](howto-authentication-passwordless-security-key.md)
 * [无密码 Windows 10](howto-authentication-passwordless-security-key-windows.md)
-* [本地无密码](howto-authentication-passwordless-security-key-on-premises.md)
-
-> [!NOTE]
-> FIDO2 安全密钥是 Azure Active Directory 的公共预览功能。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+* [无密码本地](howto-authentication-passwordless-security-key-on-premises.md)
 
 ## <a name="known-issues"></a>已知问题
 
@@ -143,7 +140,7 @@ Azure AD Kerberos 服务器 PowerShell cmdlet 使用与标准 Azure AD Connect �
 
 第一组属性来自本地 AD DS 环境中的对象。 第二部分 (以 * 云 * * 开头的属性从 Azure AD 中的 Kerberos Server 对象 ) ：
 
-| Property           | 说明  |
+| 属性           | 说明  |
 |--------------------|--------------|
 | ID                 | AD DS 域控制器对象的唯一 *Id* 。 |
 | DomainDnsName      | AD DS 域的 DNS 域名。 |

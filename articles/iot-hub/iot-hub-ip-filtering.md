@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/19/2020
 ms.author: jlian
-ms.openlocfilehash: c6544e8ac00744602476207a89567aea5afe5b1d
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 6f83421d4ee56d56875e13ffbdd8ac9dbbf4b6bb
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98632342"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101656357"
 ---
 # <a name="use-ip-filters"></a>使用 IP 筛选器
 
@@ -20,7 +20,7 @@ ms.locfileid: "98632342"
 
 ## <a name="when-to-use"></a>何时使用
 
-使用 IP 筛选器仅接收来自指定范围的 IP 地址的流量，并拒绝其他所有内容。 例如，将 IoT 中心与 [Azure Express Route](https://azure.microsoft.com/documentation/articles/expressroute-faqs/#supported-services) 一起使用，以在 IoT 中心与本地基础结构之间创建专用连接。
+使用 IP 筛选器仅接收来自指定范围的 IP 地址的流量，并拒绝其他所有内容。 例如，将 IoT 中心与 [Azure Express Route](../expressroute/expressroute-faqs.md#supported-services) 一起使用，以在 IoT 中心与本地基础结构之间创建专用连接。
 
 ## <a name="default-setting"></a>默认设置
 
@@ -164,7 +164,7 @@ $iothubResource | Set-AzResource -Force
 ## <a name="update-ip-filter-rules-using-rest"></a>使用 REST 更新 IP 筛选器
 
 
-还可以使用 Azure 资源提供程序的 REST 终结点检索和修改 IoT 中心的 IP 筛选器。 请参阅 [createorupdate 方法](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate)`properties.networkRuleSets`。
+还可以使用 Azure 资源提供程序的 REST 终结点检索和修改 IoT 中心的 IP 筛选器。 请参阅 [createorupdate 方法](/rest/api/iothub/iothubresource/createorupdate)`properties.networkRuleSets`。
 
 ## <a name="ip-filter-classic-retirement"></a>IP 筛选器 (经典) 停用
 
@@ -174,7 +174,7 @@ $iothubResource | Set-AzResource -Force
 
 若要进一步探索 IoT 中心的功能，请参阅：
 
-* [IoT 中心指标](iot-hub-metrics.md)
+* [IoT 中心指标](./monitor-iot-hub.md)
 * [IoT 中心支持具有专用链接和托管标识的虚拟网络](virtual-network-support.md)
 * [管理 IoT 中心的公用网络访问](iot-hub-public-network-access.md)
 * [监视 IoT 中心](monitor-iot-hub.md)

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 02/12/2021
+ms.date: 03/02/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: elisol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 08f560f076caf90c9c930cedfd6a7ba9c6c8b37d
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 95c7ca826eaf7d72cb35985b154458f149ef4a0e
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100365440"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101649303"
 ---
 # <a name="azure-active-directory-b2b-collaboration-invitation-redemption"></a>Azure Active Directory B2B 协作邀请兑换
 
@@ -26,23 +26,21 @@ ms.locfileid: "100365440"
 
    > [!IMPORTANT]
    > - 从 2021 年 1 月 4 日开始，Google 将[弃用 WebView 登录支持](https://developers.googleblog.com/2020/08/guidance-for-our-effort-to-block-less-secure-browser-and-apps.html)。 如果要通过 Gmail 使用 Google 联合身份验证或自助服务注册，则应[测试业务线本机应用程序的兼容性](google-federation.md#deprecation-of-webview-sign-in-support)。
-   > - **从2021年10月开始**，Microsoft 将不再支持通过创建非托管 Azure AD 帐户和用于 B2B 协作方案的租户来兑换邀请。 在准备期间，我们鼓励客户选择参与[电子邮件一次性密码身份验证](one-time-passcode.md)。 我们欢迎你提供有关此公共预览版功能的反馈，并且很乐意创建更多的协作方式。
+   > - 从 2021 年 10 月起，Microsoft 将不再支持兑换通过创建用于 B2B 协作方案的非托管 Azure AD 帐户和租户进行的邀请。 在准备期间，我们鼓励客户选择参与[电子邮件一次性密码身份验证](one-time-passcode.md)。 我们欢迎你提供有关此公共预览版功能的反馈，并且很乐意创建更多的协作方式。
 
-## <a name="redemption-through-the-invitation-email"></a>通过邀请电子邮件兑换
+## <a name="redemption-and-sign-in-through-a-common-endpoint"></a>通过公共终结点兑换和登录
 
-[使用 Azure 门户](./b2b-quickstart-add-guest-users-portal.md)将来宾用户添加到目录时，会在该过程中向来宾发送邀请电子邮件。 你还可以选择在[使用 PowerShell](./b2b-quickstart-invite-powershell.md) 将来宾用户添加到目录时发送邀请电子邮件。 下面是来宾在兑换电子邮件中的链接时的体验说明。
+例如，来宾用户可以通过公共终结点 (URL) 登录到多租户或 Microsoft 第一方应用 `https://myapps.microsoft.com` 。 以前，公共 URL 会将来宾用户重定向到其主租户，而不是资源租户进行身份验证，因此，需要特定于租户的链接 (例如 `https://myapps.microsoft.com/?tenantid=<tenant id>`) 。 现在，来宾用户可以跳到应用程序的通用 URL，选择 " **登录" 选项**，然后选择 " **登录到组织**"。 然后，用户键入组织的名称。
 
-1. 来宾收到从 Microsoft 邀请发送的[邀请电子邮件](./invitation-email-elements.md)。
-2. 来宾选择电子邮件中的“接受邀请”。
-3. 来宾将使用其自己的凭据登录到目录。 如果来宾没有可联合到目录的帐户，且未启用[电子邮件一次性密码 (OTP)](./one-time-passcode.md) 功能；系统将提示来宾创建个人 [MSA](https://support.microsoft.com/help/4026324/microsoft-account-how-to-create) 或 [Azure AD 自助服务帐户](../enterprise-users/directory-self-service-signup.md)。 有关详细信息，请参阅[邀请兑换流](#invitation-redemption-flow)。
-4. 将指导来宾完成下面所述的[同意体验](#consent-experience-for-the-guest)。
+![公共终结点登录](media/redemption-experience/common-endpoint-flow-small.png)
 
+然后，将用户重定向到你的租户终结点，用户可以使用其电子邮件地址登录，或者选择已配置的标识提供者。
 ## <a name="redemption-through-a-direct-link"></a>通过直接链接兑换
 
-作为邀请电子邮件的替代方法，你可以为来宾提供指向应用或门户的直接链接。 首先需要通过 [Azure 门户](./b2b-quickstart-add-guest-users-portal.md)或 [PowerShell](./b2b-quickstart-invite-powershell.md) 将来宾用户添加到目录。 然后，可以使用[将应用程序部署到用户的可自定义方式](../manage-apps/end-user-experiences.md)（包括直接登录链接）。 当来宾使用直接链接而不是邀请电子邮件时，仍将指导他们完成首次同意体验。
+作为邀请电子邮件或应用程序公用 URL 的替代方法，你可以为来宾授予指向你的应用或门户的直接链接。 首先需要通过 [Azure 门户](./b2b-quickstart-add-guest-users-portal.md)或 [PowerShell](./b2b-quickstart-invite-powershell.md) 将来宾用户添加到目录。 然后，可以使用[将应用程序部署到用户的可自定义方式](../manage-apps/end-user-experiences.md)（包括直接登录链接）。 当来宾使用直接链接而不是邀请电子邮件时，仍将指导他们完成首次同意体验。
 
-> [!IMPORTANT]
-> 直接链接必须特定于租户。 换句话说，它必须包含租户 ID 或已验证的域，以便可以在共享应用所在的租户中对来宾进行身份验证。 常见的 URL（如 https://myapps.microsoft.com ）对来宾不起作用，因为它将重定向到其主租户进行身份验证。 下面是包含租户上下文的直接链接的一些示例：
+> [!NOTE]
+> 直接链接特定于租户。 换句话说，它包含租户 ID 或已验证的域，以便在你的租户中对来宾进行身份验证。 下面是包含租户上下文的直接链接的一些示例：
  > - 应用访问面板：`https://myapps.microsoft.com/?tenantid=<tenant id>`
  > - 已验证域的应用访问面板：`https://myapps.microsoft.com/<;verified domain>`
  > - Azure 门户：`https://portal.azure.com/<tenant id>`
@@ -53,6 +51,14 @@ ms.locfileid: "100365440"
  - 有时，由于与联系人对象（例如，Outlook 联系人对象）存在冲突，受邀用户对象可能会没有电子邮件地址。 在这种情况下，用户必须单击邀请电子邮件中的兑换 URL。
  - 用户可使用受邀电子邮件地址的别名登录。 （别名指与电子邮件帐户关联的其他电子邮件地址。）在这种情况下，用户必须单击邀请电子邮件中的兑换 URL。
 
+## <a name="redemption-through-the-invitation-email"></a>通过邀请电子邮件兑换
+
+[使用 Azure 门户](./b2b-quickstart-add-guest-users-portal.md)将来宾用户添加到目录时，会在该过程中向来宾发送邀请电子邮件。 你还可以选择在[使用 PowerShell](./b2b-quickstart-invite-powershell.md) 将来宾用户添加到目录时发送邀请电子邮件。 下面是来宾在兑换电子邮件中的链接时的体验说明。
+
+1. 来宾收到从 Microsoft 邀请发送的[邀请电子邮件](./invitation-email-elements.md)。
+2. 来宾选择电子邮件中的“接受邀请”。
+3. 来宾将使用其自己的凭据登录到目录。 如果来宾没有可联合到目录的帐户，且未启用[电子邮件一次性密码 (OTP)](./one-time-passcode.md) 功能；系统将提示来宾创建个人 [MSA](https://support.microsoft.com/help/4026324/microsoft-account-how-to-create) 或 [Azure AD 自助服务帐户](../enterprise-users/directory-self-service-signup.md)。 有关详细信息，请参阅[邀请兑换流](#invitation-redemption-flow)。
+4. 将指导来宾完成下面所述的[同意体验](#consent-experience-for-the-guest)。
 ## <a name="invitation-redemption-flow"></a>邀请兑换流
 
 当用户单击[邀请电子邮件](invitation-email-elements.md)中的“接受邀请”链接时，Azure AD 会根据兑换流自动兑换邀请，如下所示：

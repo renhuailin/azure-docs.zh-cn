@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e2e87196f9d4d38743847ee68983216b8790e0b
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 9913132ca6ff3ce2840b55aa771f7bd9be2404ea
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99257264"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101650968"
 ---
 # <a name="protecting-microsoft-365-from-on-premises-attacks"></a>保护 Microsoft 365 免受本地攻击
 
@@ -141,7 +141,7 @@ Microsoft 365 云环境从广泛的监视和安全基础结构中获益。 使�
 
     *   阻止对 Azure 门户的访问。 您可以做出极少的必要例外。  创建包括所有来宾和外部用户的条件性访问策略。 然后 [实现策略来阻止访问](../../role-based-access-control/conditional-access-azure-management.md)。 
 
-* **断开连接的林**：使用 [Azure AD 云设置](../cloud-provisioning/what-is-cloud-provisioning.md)。 此方法使你能够连接到断开连接的林，无需建立跨林连接或信任，从而扩大了本地漏洞的影响。 
+* **断开连接的林**：使用 [Azure AD 云设置](../cloud-sync/what-is-cloud-sync.md)。 此方法使你能够连接到断开连接的林，无需建立跨林连接或信任，从而扩大了本地漏洞的影响。 
  
 ### <a name="limitations-and-tradeoffs"></a>限制和折衷
 

@@ -5,23 +5,27 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 05/19/2020
+ms.date: 03/02/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 547b455dc776b7304e413b3b6f1330e7cedcf2a2
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: d68f83bd042af6612b91807f2adeed54d24bfe01
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92441991"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101648606"
 ---
 # <a name="add-facebook-as-an-identity-provider-for-external-identities"></a>将 Facebook 添加为外部标识的标识提供者
 
-可以将 Facebook 添加到自助注册用户流（预览），这样用户可以使用自己的 Facebook 帐户来登录应用。 必须先为租户[启用自助注册](self-service-sign-up-user-flow.md)，然后才能允许用户使用 Facebook 登录。 将 Facebook 添加为标识提供者后，设置应用的用户流，并选择“Facebook”作为登录方式之一。
+你可以将 Facebook 添加到自助服务注册用户流，以便用户可以使用其自己的 Facebook 帐户登录到你的应用程序。 必须先为租户[启用自助注册](self-service-sign-up-user-flow.md)，然后才能允许用户使用 Facebook 登录。 将 Facebook 添加为标识提供者后，设置应用的用户流，并选择“Facebook”作为登录方式之一。
+
+将 Facebook 添加为某个应用程序的登录选项后，在 " **登录** " 页上，用户只需输入他们用于登录 Facebook 的电子邮件，或者他们可以选择 **登录选项** 并选择 **"使用 Facebook 登录**"。 在这两种情况下，它们将被重定向到 Facebook 登录页进行身份验证。
+
+![Facebook 用户的登录选项](media/facebook-federation/sign-in-with-facebook-overview.png)
 
 > [!NOTE]
 > 用户只能使用其 Facebook 帐户通过支持自助服务注册和用户流的应用进行注册。 用户无法通过 Facebook 帐户被邀请或兑换邀请。

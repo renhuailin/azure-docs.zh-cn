@@ -3,19 +3,18 @@ title: 在 Windows 上探索数据和模型
 titleSuffix: Azure Data Science Virtual Machine
 description: 在 Windows Data Science Virtual Machine 上执行数据探索和建模任务。
 services: machine-learning
-ms.service: machine-learning
-ms.subservice: data-science-vm
+ms.service: data-science-vm
 ms.custom: devx-track-python
 author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: 09a4dc8467b9b3c11c8daeb5ca8c62a0e26e79de
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: c44c40f2ddab53cf0beb5ecd48127d126fdb4333
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96575000"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101657394"
 ---
 # <a name="data-science-with-a-windows-data-science-virtual-machine"></a>使用 Windows Data Science Virtual Machine 的数据科学
 
@@ -252,8 +251,8 @@ print 'the size of the data is: %d rows and  %d columns' % df1.shape
 ![前 10 行数据的屏幕截图](./media/vm-do-ten-things/IPNB_data_readin.png)
 
 
-### <a name="azure-synapse-analytics-and-databases"></a>Azure Synapse 分析和数据库
-Azure Synapse Analytics 是一种弹性数据仓库即服务，具有企业级 SQL Server 体验。
+### <a name="azure-synapse-analytics-and-databases"></a>Azure Synapse Analytics 和数据库
+Azure Synapse Analytics 是一项弹性数据仓库即服务，具有企业级 SQL Server 体验。
 
 可以按照[本文](../../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md)中的说明预配 Azure Synapse Analytics。 预配 Azure Synapse Analytics 后，可按照[此演练](../team-data-science-process/sqldw-walkthrough.md)，使用 Azure Synapse Analytics 中的数据执行数据上传、探索和建模。
 

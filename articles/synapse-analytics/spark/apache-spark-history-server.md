@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 10/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: 94c30cad1e09a01686a9042a6271a152d0f433fd
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4471fed7b423fe05147db30afe57f6c845fe640e
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95995380"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101670693"
 ---
 # <a name="use-extended-apache-spark-history-server-to-debug-and-diagnose-apache-spark-applications"></a>使用扩展的 Apache Spark 历史记录服务器来调试和诊断 Apache Spark 应用程序
 
@@ -22,7 +22,7 @@ ms.locfileid: "95995380"
 
 此扩展包括 "数据" 选项卡、"图形" 选项卡和 "诊断" 选项卡。使用 " **数据** " 选项卡检查 Spark 作业的输入和输出数据。 " **关系图** " 选项卡显示作业图形的数据流和重播。 " **诊断** " 选项卡显示  **数据倾斜**、 **时间偏差** 和 **执行器使用情况分析**。
 
-## <a name="access-the-apache-spark-history-server"></a>访问 Apache Spark 历史记录服务器
+## <a name="access-the-apache-spark-history-server"></a>访问 Apache Spark History Server
 
 Apache Spark 历史记录服务器是用于完成和运行 Spark 应用程序的 web 用户界面。 你可以从 Azure Synapse Analytics 打开 Apache Spark history server web 界面。
 
@@ -125,7 +125,7 @@ Graph 节点显示热度地图图例中显示的颜色。
 |绿色|已成功完成：作业已成功完成。|
 |橙色|重试：失败但不影响作业最终结果的任务实例。 这些任务包括可能稍后会成功的重复或重试实例。|
 |蓝色|正在运行：任务正在运行。|
-|白色|正在等待或已跳过：任务正在等待运行，或已跳过该阶段。|
+|White|正在等待或已跳过：任务正在等待运行，或已跳过该阶段。|
 |Red|失败：任务失败。|
 
 下图显示了绿色、橙色和蓝色状态颜色。
@@ -239,5 +239,5 @@ Graph 节点显示热度地图图例中显示的颜色。
 ## <a name="next-steps"></a>后续步骤
 
 - [Azure Synapse Analytics](../overview-what-is.md)
-- [.NET for Apache Spark 文档](/dotnet/spark?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+- [.NET for Apache Spark 文档](/dotnet/spark)
 

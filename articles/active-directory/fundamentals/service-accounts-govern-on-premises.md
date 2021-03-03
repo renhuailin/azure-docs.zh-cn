@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 503d5c5c8d605e56ca510f12cd9c6f5a1f21c0bc
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 88fdfa1f449a0b65861ee09f2e78055a606c99d3
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100417043"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101649200"
 ---
 # <a name="governing-on-premises-service-accounts"></a>管理本地服务帐户
 
@@ -47,7 +47,7 @@ Windows Active Directory 中有四种类型的本地服务帐户：
 
 创建新的服务帐户时，请使用以下准则。
 
-| 原理| 注意事项 | 
+| 原则| 注意事项 | 
 | - |- | 
 | 服务帐户映射| 将服务帐户关联到单个服务、应用程序或脚本。 |
 | 所有权| 确保有请求并承担帐户责任的所有者。 |
@@ -60,11 +60,11 @@ Windows Active Directory 中有四种类型的本地服务帐户：
 
 将以下设置用于用作服务帐户的用户帐户：
 
-* [**帐户过期**](https://docs.microsoft.com/powershell/module/activedirectory/set-adaccountexpiration?view=winserver2012-ps)：将服务帐户设置为在其审阅期后自动过期设置的时间，除非确定它应该继续
+* [**帐户过期**](/powershell/module/activedirectory/set-adaccountexpiration?view=winserver2012-ps)：将服务帐户设置为在其审阅期后自动过期设置的时间，除非确定它应该继续
 
 *  **LogonWorkstations**：限制服务帐户可登录的权限。 如果它在计算机上本地运行并仅访问该计算机上的资源，则将其限制为在其他任何位置进行登录。
 
-* [**无法更改密码**](https://docs.microsoft.com/powershell/module/addsadministration/set-aduser?view=win10-ps)：通过将参数设置为 false，禁止服务帐户更改其密码。
+* [**无法更改密码**](/powershell/module/addsadministration/set-aduser?view=win10-ps)：通过将参数设置为 false，禁止服务帐户更改其密码。
 
  
 ## <a name="build-a-lifecycle-management-process"></a>构建生命周期管理过程
@@ -86,7 +86,7 @@ Windows Active Directory 中有四种类型的本地服务帐户：
 
 | 数据| 详细信息 |
 | - | - |
-| 所有者| 负责服务帐户的用户或组 |
+| “所有者”| 负责服务帐户的用户或组 |
 | 目的| 服务帐户的用途 |
 | 权限 (范围) | 预期权限集 |
 | 配置管理数据库 (CMDB) 链接| 跨链接服务帐户与目标脚本/应用程序和所有者 (s)  |
@@ -149,17 +149,17 @@ Windows Active Directory 中有四种类型的本地服务帐户：
 
 仅在 CMDB 中记录相关信息并执行风险评估后，才创建服务帐户。 应将帐户限制与风险评估相一致。 与评估相关时，请考虑以下限制：
 
-* [帐户到期日期](https://docs.microsoft.com/powershell/module/activedirectory/set-adaccountexpiration?view=winserver2012-ps)
+* [帐户到期日期](/powershell/module/activedirectory/set-adaccountexpiration?view=winserver2012-ps)
 
-   * 对于用作服务帐户的所有用户帐户，请定义实际使用的、明确的结束日期。 使用 "帐户过期" 标志设置此设置。 有关更多详细信息，请参阅[ ADAccountExpiration](https://docs.microsoft.com/powershell/module/addsadministration/set-adaccountexpiration?view=win10-ps)。 
+   * 对于用作服务帐户的所有用户帐户，请定义实际使用的、明确的结束日期。 使用 "帐户过期" 标志设置此设置。 有关更多详细信息，请参阅[ ADAccountExpiration](/powershell/module/addsadministration/set-adaccountexpiration?view=win10-ps)。 
 
-* 登录到 ([LogonWorkstation](https://docs.microsoft.com/powershell/module/addsadministration/set-aduser?view=win10-ps)) 
+* 登录到 ([LogonWorkstation](/powershell/module/addsadministration/set-aduser?view=win10-ps)) 
 
-* [密码策略](https://docs.microsoft.com/azure/active-directory-domain-services/password-policy) 要求
+* [密码策略](../../active-directory-domain-services/password-policy.md) 要求
 
-* 在 [OU 位置](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/delegating-administration-of-account-ous-and-resource-ous) 创建，可确保仅为特权用户进行管理
+* 在 [OU 位置](/windows-server/identity/ad-ds/plan/delegating-administration-of-account-ous-and-resource-ous) 创建，可确保仅为特权用户进行管理
 
-* 设置和收集审核 [，以检测](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-directory-service-changes) 对服务帐户和 [服务帐户](https://www.manageengine.com/products/active-directory-audit/how-to/audit-kerberos-authentication-events.html)的更改。
+* 设置和收集审核 [，以检测](/windows/security/threat-protection/auditing/audit-directory-service-changes) 对服务帐户和 [服务帐户](https://www.manageengine.com/products/active-directory-audit/how-to/audit-kerberos-authentication-events.html)的更改。
 
 准备好投入生产时，请安全地向服务帐户授予访问权限。 
 
@@ -193,7 +193,7 @@ Windows Active Directory 中有四种类型的本地服务帐户：
 
 3. 请在完成保留禁用策略后删除服务帐户。 
 
-   * 对于 Msa，你可以使用 PowerShell [将其卸载](https://docs.microsoft.com/powershell/module/activedirectory/uninstall-adserviceaccount?view=winserver2012-ps) 或从托管服务帐户容器中手动删除。
+   * 对于 Msa，你可以使用 PowerShell [将其卸载](/powershell/module/activedirectory/uninstall-adserviceaccount?view=winserver2012-ps) 或从托管服务帐户容器中手动删除。
 
    * 对于计算机或用户帐户，您可以从 Active Directory 中手动删除该帐户。
 

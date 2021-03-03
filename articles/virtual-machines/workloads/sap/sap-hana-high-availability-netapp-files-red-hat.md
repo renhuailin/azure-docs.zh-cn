@@ -6,19 +6,18 @@ documentationcenter: ''
 author: rdeltcheva
 manager: juergent
 editor: ''
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/01/2021
 ms.author: radeltch
-ms.openlocfilehash: b90d703a44cf89961eb0dca02abb1b8ea9cff166
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 2939e00d704f5c2799a1f16822cccdcc963fb73e
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99259196"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101671559"
 ---
 # <a name="high-availability-of-sap-hana-scale-up-with-azure-netapp-files-on-red-hat-enterprise-linux"></a>Red Hat Enterprise Linux 上的 Azure NetApp 文件 SAP HANA 扩展的高可用性
 
@@ -91,7 +90,7 @@ ms.locfileid: "99259196"
     - [在 Red Hat Enterprise Linux 上安装 SAP HANA 以便用于 Microsoft Azure。](https://access.redhat.com/solutions/3193782)
     - [当 HANA 文件系统位于 NFS 共享上时，配置 SAP HANA 向上扩展系统复制 Pacemaker 群集](https://access.redhat.com/solutions/5156571)
 - [使用 Azure NetApp 文件的 Microsoft Azure 上的 NetApp SAP 应用程序](https://www.netapp.com/us/media/tr-4746.pdf)
-- [适用于 SAP HANA 的 Azure NetApp 文件上的 NFS v4.1 卷](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-netapp)
+- [适用于 SAP HANA 的 Azure NetApp 文件上的 NFS v4.1 卷](./hana-vm-operations-netapp.md)
 
 ## <a name="overview"></a>概述
 
@@ -565,7 +564,7 @@ Azure NetApp 文件量的吞吐量是卷大小和服务级别的一项功能，�
 
    检查群集和所有资源的状态
    > [!NOTE]
-   > 本文包含对字词 *从属* 的引用，这是 Microsoft 不再使用的术语。 在从软件中删除该术语后，我们会将其从本文中删除。
+   > 本文包含对术语“从属”的引用，这是 Microsoft 不再使用的术语。 在从软件中删除该术语后，我们会将其从本文中删除。
    
     ```
     sudo pcs status
@@ -701,4 +700,4 @@ Azure NetApp 文件量的吞吐量是卷大小和服务级别的一项功能，�
 * [适用于 SAP 的 Azure 虚拟机规划和实施][planning-guide]
 * [适用于 SAP 的 Azure 虚拟机部署][deployment-guide]
 * [适用于 SAP 的 Azure 虚拟机 DBMS 部署][dbms-guide]
-* [适用于 SAP HANA 的 Azure NetApp 文件上的 NFS v4.1 卷](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-netapp)
+* [适用于 SAP HANA 的 Azure NetApp 文件上的 NFS v4.1 卷](./hana-vm-operations-netapp.md)

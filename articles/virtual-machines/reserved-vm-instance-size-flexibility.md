@@ -3,17 +3,17 @@ title: 虚拟机大小灵活性-Azure 保留 VM 实例
 description: 了解购买虚拟机预留实例时哪些大小系列有预留折扣。
 author: yashesvi
 ms.service: virtual-machines
-ms.subservice: sizes
+ms.subservice: reserved-instances
 ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/02/2021
 ms.author: yashar
-ms.openlocfilehash: cf8f2f794be4340de4419457872ed5ff4bb4a686
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: 6b04caec380a481569de4a33ea0159fd641c000f
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99980433"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101673953"
 ---
 # <a name="virtual-machine-size-flexibility-with-reserved-vm-instances"></a>虚拟机预留实例的虚拟机大小灵活性
 

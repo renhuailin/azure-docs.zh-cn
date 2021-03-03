@@ -1,7 +1,7 @@
 ---
 title: 训练深度学习 PyTorch 模型
 titleSuffix: Azure Machine Learning
-description: 了解如何使用 Azure 机器学习在企业规模上运行 PyTorch 训练脚本。
+description: 了解如何使用 Azure 机器学习在企业范围内运行 PyTorch 训练脚本。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,18 +11,18 @@ ms.reviewer: peterlu
 ms.date: 01/14/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 962054943a68aa61ac681de97eeebc10fe3f2b0a
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: cb556466a5a76cbb9447538e98a5a2385f7b5614
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98216625"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101660995"
 ---
 # <a name="train-pytorch-models-at-scale-with-azure-machine-learning"></a>使用 Azure 机器学习大规模训练 PyTorch 模型
 
 本文介绍了如何使用 Azure 机器学习在企业范围内运行 [PyTorch](https://pytorch.org/) 训练脚本。
 
-本文中的示例脚本用来对鸡和火鸡图像进行分类，以基于 PyTorch 的迁移学习[教程](https://pytorch.org/tutorials/beginner/transfer_learning_tutorial.html)构建深度学习神经网络 (DNN)。 传输学习是一项技术，可应用从解决一个问题到不同但相关的问题而获得的知识。 这会通过要求更少的数据、时间和计算资源而不是从头开始培训来对定型过程进行快捷处理。 若要详细了解传输学习，请参阅 [深度学习与机器学习](./concept-deep-learning-vs-machine-learning.md#what-is-transfer-learning) 文章。
+本文中的示例脚本用来对鸡和火鸡图像进行分类，以基于 PyTorch 的迁移学习[教程](https://pytorch.org/tutorials/beginner/transfer_learning_tutorial.html)构建深度学习神经网络 (DNN)。 迁移学习是一种将解决某个问题时获得的知识应用于虽然不同但却相关的问题的技术。 与从头开始训练相比，这需要较少的数据、时间和计算资源，从而简化了训练过程。 有关迁移学习的详细信息，请参阅[深度学习与机器学习](./concept-deep-learning-vs-machine-learning.md#what-is-transfer-learning)一文。
 
 无论是从头开始训练深度学习 PyTorch 模型，还是将现有模型引入云中，都可以通过 Azure 机器学习使用弹性云计算资源来横向扩展开源训练作业。 你可以通过 Azure 机器学习来构建、部署和监视生产级模型以及对其进行版本控制。 
 
@@ -199,7 +199,7 @@ src = ScriptRunConfig(source_directory=project_folder,
 有关通过 ScriptRunConfig 配置作业的详细信息，请参阅[配置并提交训练运行](how-to-set-up-training-targets.md)。
 
 > [!WARNING]
-> 如果你以前使用 PyTorch 估计器来配置 PyTorch 培训作业，请注意，在 1.19.0 SDK 版本中，估算已弃用。 使用 Azure ML SDK >= 1.15.0，建议使用 ScriptRunConfig 方法配置训练作业，包括使用深度学习框架的培训。 有关常见的迁移问题，请参阅 [估计器 To ScriptRunConfig 迁移指南](how-to-migrate-from-estimators-to-scriptrunconfig.md)。
+> 如果你以前使用 PyTorch 估算器来配置 PyTorch 训练作业，请注意，自 1.19.0 SDK 发行版起，该估算器已弃用。 对于不低于 1.15.0 版本的 Azure ML SDK，建议使用 ScriptRunConfig 作为配置训练作业（包括使用深度学习框架的作业）的方法。 有关常见的迁移问题，请参阅[估算器到 ScriptRunConfig 迁移指南](how-to-migrate-from-estimators-to-scriptrunconfig.md)。
 
 ## <a name="submit-your-run"></a>提交运行
 
@@ -285,39 +285,94 @@ src = ScriptRunConfig(source_directory=project_folder,
 ### <a name="distributeddataparallel"></a>DistributedDataParallel
 如果你使用的是 PyTorch 的内置 [DistributedDataParallel](https://pytorch.org/tutorials/intermediate/ddp_tutorial.html) 模块（在训练代码中使用 **torch.distributed** 包生成），也可以通过 Azure ML 来启动分布式作业。
 
-若要使用 DistributedDataParallel 运行分布式 PyTorch 作业，请将 [PyTorchConfiguration](/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration?preserve-view=true&view=azure-ml-py) 指定到 ScriptRunConfig 构造函数的 `distributed_job_config` 参数。 若要将 NCCL 后端用于 torch.distributed，请在 PyTorchConfiguration 中指定 `communication_backend='Nccl'`。 以下代码将配置一个 2 节点分布式作业。 对于 PyTorch 分布式 GPU 训练，建议使用 NCCL 后端作为后端。
+若要在 Azure ML 上启动分布式 PyTorch 作业，可以使用以下两个选项：
+1. 每进程启动：指定要运行的工作进程总数，Azure ML 将处理每个进程的启动。
+2. 每节点启动方式 `torch.distributed.launch` ：提供 `torch.distributed.launch` 要在每个节点上运行的命令。 Torch 启动实用工具将处理在每个节点上启动工作进程。
 
-对于通过 PyTorchConfiguration 配置的分布式 PyTorch 作业，Azure ML 将在计算目标的节点上设置以下环境变量：
+这些启动选项之间没有任何基本差异;这主要取决于用户的首选项或在 vanilla PyTorch 上构建的框架/库的约定 (如闪电或 Hugging 面) 。
 
-* `AZ_BATCHAI_PYTORCH_INIT_METHOD`：进程组的共享文件系统初始化的 URL
-* `AZ_BATCHAI_TASK_INDEX`：工作进程的全局排名
+#### <a name="per-process-launch"></a>每个进程的启动
+若要使用此选项运行分布式 PyTorch 作业，请执行以下操作：
+1. 指定训练脚本和参数
+2. 创建 [PyTorchConfiguration](/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration?preserve-view=true&view=azure-ml-py) ，并指定和 `process_count` `node_count` 。 `process_count`对应于要为作业运行的进程总数。 通常，此值应等于每个节点的 Gpu 数乘以节点数。 如果 `process_count` 未指定，AZURE ML 会默认为每个节点启动一个进程。
 
-可以通过 ScriptRunConfig 的 `arguments` 参数将这些环境变量指定到训练脚本的相应参数。
+Azure ML 将设置以下环境变量：
+* `MASTER_ADDR` -将承载排名为0的进程的计算机的 IP 地址。
+* `MASTER_PORT` -将承载排名为0的进程的计算机上的可用端口。
+* `NODE_RANK` -用于多节点定型的节点排名。 可能的值为0到 (总节点数-1) 。
+* `WORLD_SIZE` -进程总数。 这应该等于用于分布式培训 (GPU) 的设备总数。
+* `RANK` -当前进程的 (全局) 排名。 可能的值为0到 (世界大小-1) 。
+* `LOCAL_RANK` -本地 (节点内进程的相对) 排名。 可能的值为0，这是节点 1) 上 ( 的进程数。
+
+由于将由 Azure ML 为你设置所需的环境变量，因此你可以使用 [默认环境变量初始化方法](https://pytorch.org/docs/stable/distributed.html#environment-variable-initialization) 来初始化定型代码中的进程组。
+
+以下代码片段配置2节点的双节点 PyTorch 作业：
+```python
+from azureml.core import ScriptRunConfig
+from azureml.core.runconfig import PyTorchConfiguration
+
+curated_env_name = 'AzureML-PyTorch-1.6-GPU'
+pytorch_env = Environment.get(workspace=ws, name=curated_env_name)
+distr_config = PyTorchConfiguration(process_count=4, node_count=2)
+
+src = ScriptRunConfig(
+  source_directory='./src',
+  script='train.py',
+  arguments=['--epochs', 25],
+  compute_target=compute_target,
+  environment=pytorch_env,
+  distributed_job_config=distr_config,
+)
+
+run = Experiment(ws, 'experiment_name').submit(src)
+```
+
+> [!WARNING]
+> 若要将此选项用于每节点多进程培训，需使用 Azure ML Python SDK >= 1.22.0，如 `process_count` 1.22.0 中所述。
+
+> [!TIP]
+> 如果训练脚本将本地秩或排名等信息作为脚本参数传递，则可以在参数中引用 (s) 环境变量： `arguments=['--epochs', 50, '--local_rank', $LOCAL_RANK]` 。
+
+#### <a name="per-node-launch-with-torchdistributedlaunch"></a>每节点启动方式 `torch.distributed.launch`
+PyTorch 在 [torch](https://pytorch.org/docs/stable/distributed.html#launch-utility) 中提供一个启动实用工具，用户可以使用该工具启动每个节点的多个进程。 此 `torch.distributed.launch` 模块将在每个节点上生成多个训练过程。
+
+以下步骤将演示如何使用 Azure ML 上的每个节点启动器来配置 PyTorch 作业，该作业将实现等效的运行以下命令：
+
+```shell
+python -m torch.distributed.launch --nproc_per_node <num processes per node> \
+  --nnodes <num nodes> --node_rank $NODE_RANK --master_addr $MASTER_ADDR \
+  --master_port $MASTER_PORT --use_env \
+  <your training script> <your script arguments>
+```
+
+1. 为 `torch.distributed.launch` `command` 构造函数的参数提供命令 `ScriptRunConfig` 。 Azure ML 会在定型群集的每个节点上运行此命令。 `--nproc_per_node` 应小于或等于每个节点上可用的 Gpu 数。 `MASTER_ADDR`、 `MASTER_PORT` 和 `NODE_RANK` 都是由 Azure ML 设置的，因此，只需在命令中引用环境变量即可。 Azure ML 会将设置 `MASTER_PORT` 为6105，但如果需要，可以将不同的值传递给 `--master_port` 命令的参数 `torch.distributed.launch` 。  (启动实用工具将重置环境变量。 ) 
+2. 创建 `PyTorchConfiguration` 并指定 `node_count` 。 不需要设置， `process_count` 因为 AZURE ML 会默认为每个节点启动一个进程，这将运行你指定的启动命令。
 
 ```python
 from azureml.core import ScriptRunConfig
 from azureml.core.runconfig import PyTorchConfiguration
 
-args = ['--dist-backend', 'nccl',
-        '--dist-url', '$AZ_BATCHAI_PYTORCH_INIT_METHOD',
-        '--rank', '$AZ_BATCHAI_TASK_INDEX',
-        '--world-size', 2]
+curated_env_name = 'AzureML-PyTorch-1.6-GPU'
+pytorch_env = Environment.get(workspace=ws, name=curated_env_name)
+distr_config = PyTorchConfiguration(node_count=2)
+launch_cmd = "python -m torch.distributed.launch --nproc_per_node 2 --nnodes 2 --node_rank $NODE_RANK --master_addr $MASTER_ADDR --master_port $MASTER_PORT --use_env train.py --epochs 50".split()
 
-src = ScriptRunConfig(source_directory=project_folder,
-                      script='pytorch_mnist.py',
-                      arguments=args,
-                      compute_target=compute_target,
-                      environment=pytorch_env,
-                      distributed_job_config=PyTorchConfiguration(communication_backend='Nccl', node_count=2))
+src = ScriptRunConfig(
+  source_directory='./src',
+  command=launch_cmd,
+  compute_target=compute_target,
+  environment=pytorch_env,
+  distributed_job_config=distr_config,
+)
+
+run = Experiment(ws, 'experiment_name').submit(src)
 ```
 
-如果要改用 Gloo 后端来进行分布式训练，请改为指定 `communication_backend='Gloo'`。 对于分布式 CPU 训练，建议使用 Gloo 后端。
-
-有关如何在 Azure ML 上运行分布式 PyTorch 的完整教程，请参阅[使用 DistributedDataParallel 的分布式 PyTorch](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks/pytorch/distributed-pytorch-with-nccl-gloo)。
+有关如何在 Azure ML 上运行分布式 PyTorch 的完整教程，请参阅[使用 DistributedDataParallel 的分布式 PyTorch](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks/pytorch/distributed-pytorch-with-distributeddataparallel)。
 
 ### <a name="troubleshooting"></a>疑难解答
 
-* **Horovod 已** 关闭：在大多数情况下，如果遇到 "AbortedError： Horovod 已关闭"，则导致 Horovod 关闭的某个进程中存在基础异常。 MPI 作业中的每个排名都会在 Azure ML 中生成专属的日志文件。 这些日志名为 `70_driver_logs`。 对于分布式训练，日志名称带有 `_rank` 后缀，以方便区分日志。 若要查找导致 Horovod 关闭的确切错误，请浏览所有日志文件，并查看 driver_log 文件末尾的 `Traceback`。 其中的某个文件会指出实际的根本性异常。 
+* **Horovod 已关闭**：在大多数情况下，如果遇到“AbortedError:Horovod 已关闭”，则表示某个进程中存在潜在异常，导致 Horovod 关闭。 MPI 作业中的每个排名都会在 Azure ML 中生成专属的日志文件。 这些日志名为 `70_driver_logs`。 对于分布式训练，日志名称带有 `_rank` 后缀，以方便区分日志。 若要查找导致 Horovod 关闭的确切错误，请浏览所有日志文件，并查看 driver_log 文件末尾的 `Traceback`。 其中的某个文件会指出实际的根本性异常。 
 
 ## <a name="export-to-onnx"></a>导出到 ONNX
 

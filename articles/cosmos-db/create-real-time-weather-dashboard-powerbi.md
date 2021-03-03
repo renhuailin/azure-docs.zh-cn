@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 09/04/2019
 ms.reviewer: sngun
-ms.openlocfilehash: b3ec3e96aa1ba4bce3893c1af2446bb509a867b6
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 07a3deaf67c4f269b01d62ea25ddb212c1e01f6f
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93333590"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101657530"
 ---
 # <a name="create-a-real-time-dashboard-using-azure-cosmos-db-and-power-bi"></a>使用 Azure Cosmos DB 和 Power BI 创建实时仪表板
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -48,7 +48,7 @@ Azure Analysis Services 提供一个完全托管的平台即服务，用于在�
 
 ### <a name="ingest-weather-data-into-azure-cosmos-db"></a>将天气数据引入 Azure Cosmos DB
 
-设置一个引入管道，以将[天气数据](https://catalog.data.gov/dataset/local-weather-archive/resource/c28974a2-fc83-4722-8977-9a701323f729)加载到 Azure Cosmos DB 中。 可以设置一个 [Azure 数据工厂 (ADF)](../data-factory/connector-azure-cosmos-db.md) 作业，以使用 HTTP 源和 Cosmos DB 接收器定期将最新的天气数据载入 Azure Cosmos DB。
+设置一个引入管道，以将[天气数据](https://catalog.data.gov/dataset?groups=climate5434&#topic=climate_navigation)加载到 Azure Cosmos DB 中。 可以设置一个 [Azure 数据工厂 (ADF)](../data-factory/connector-azure-cosmos-db.md) 作业，以使用 HTTP 源和 Cosmos DB 接收器定期将最新的天气数据载入 Azure Cosmos DB。
 
 
 ### <a name="connect-power-bi-to-azure-cosmos-db"></a>将 Power BI 连接到 Azure Cosmos DB
@@ -94,7 +94,7 @@ Azure Analysis Services 提供一个完全托管的平台即服务，用于在�
 
 ### <a name="ingest-weather-data-into-azure-cosmos-db"></a>将天气数据引入 Azure Cosmos DB 
 
-设置一个引入管道，以将[天气数据](https://catalog.data.gov/dataset/local-weather-archive/resource/c28974a2-fc83-4722-8977-9a701323f729)加载到 Azure Cosmos DB 中。 可以设置一个 Azure 数据工厂 (ADF) 作业，以使用 HTTP 源和 Cosmos DB 接收器定期将最新的天气数据载入 Azure Cosmos DB。
+设置一个引入管道，以将[天气数据](https://catalog.data.gov/dataset?groups=climate5434&#topic=climate_navigation)加载到 Azure Cosmos DB 中。 可以设置一个 Azure 数据工厂 (ADF) 作业，以使用 HTTP 源和 Cosmos DB 接收器定期将最新的天气数据载入 Azure Cosmos DB。
 
 ### <a name="connect-azure-analysis-services-to-azure-cosmos-account"></a>将 Azure Analysis Services 连接到 Azure Cosmos 帐户
 
@@ -112,7 +112,7 @@ Azure Analysis Services 提供一个完全托管的平台即服务，用于在�
 
    :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/add-data-source.png" alt-text="添加 Cosmos DB 数据源":::
 
-   提供 **帐户 URI** 、 **数据库名称** 和 **容器名称** 以连接到 Azure Cosmos DB。 现在可以看到，Azure Cosmos 容器中的数据已导入到 Power BI 中。
+   提供 **帐户 URI**、**数据库名称** 和 **容器名称** 以连接到 Azure Cosmos DB。 现在可以看到，Azure Cosmos 容器中的数据已导入到 Power BI 中。
 
    :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/preview-cosmosdb-data.png" alt-text="预览 Azure Cosmos DB 数据":::
 

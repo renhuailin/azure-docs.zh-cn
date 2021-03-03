@@ -13,12 +13,12 @@ ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit, project-no-code
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 8a3cca7740adb6fa44b162e8c8740d1be1c7aa6b
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 9e315812f7e281cf281cad9e052ab4546bde05f9
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98953880"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101645834"
 ---
 # <a name="set-up-sign-in-for-a-specific-azure-active-directory-organization-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中设置登录特定 Azure Active Directory 组织
 
@@ -32,7 +32,7 @@ ms.locfileid: "98953880"
 
 ::: zone-end
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
@@ -89,8 +89,8 @@ ms.locfileid: "98953880"
     例如，`https://login.microsoftonline.com/contoso.com/v2.0/.well-known/openid-configuration`。
 
 1. 对于“客户端 ID”，输入之前记录的应用程序 ID。
-1. 对于“客户端机密”，请输入之前记录的客户端机密。
-1. 对于“范围”，请输入 `openid profile`。
+1. 对于“客户端密码”，输入之前记录的客户端密码。
+1. 对于 **作用域**，请输入 `openid profile` 。
 1. 对于“响应类型”和“响应模式” ，请保留默认值。
 1. （可选）对于“域提示”，请输入 `contoso.com`。 有关详细信息，请参阅[使用 Azure Active Directory B2C 设置直接登录](direct-signin.md#redirect-sign-in-to-a-social-provider)。
 1. 在“标识提供者声明映射”下，选择以下声明：
@@ -182,7 +182,7 @@ ms.locfileid: "98953880"
     </ClaimsProvider>
     ```
 
-4. 在 ClaimsProvider 元素下，将 Domain 的值更新为可用于与其他标识提供者进行区分的唯一值。 例如 `Contoso`。 你没有在此域设置的末尾添加 `.com`。
+4. 在 ClaimsProvider 元素下，将 Domain 的值更新为可用于与其他标识提供者进行区分的唯一值。 例如，`Contoso`。 你没有在此域设置的末尾添加 `.com`。
 5. 在 ClaimsProvider 元素下，将 DisplayName 的值更新为声明提供程序的友好名称。 目前不会使用此值。
 
 ### <a name="update-the-technical-profile"></a>更新技术配置文件

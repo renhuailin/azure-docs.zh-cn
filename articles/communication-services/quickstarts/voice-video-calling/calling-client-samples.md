@@ -10,16 +10,14 @@ ms.date: 03/18/2020
 ms.topic: conceptual
 ms.service: azure-communication-services
 zone_pivot_groups: acs-plat-web-ios-android
-ms.openlocfilehash: 1e5b0e88c4a84e27d662b2f2c4b39b14538af92a
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: e99af324e02e81e4b6888ee0e054ef466df899c1
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92126786"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101661509"
 ---
 # <a name="quickstart-use-the-communication-services-calling-client-library"></a>快速入门：使用通信服务调用客户端库
-
-[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
 通过使用通信服务呼叫客户端库向应用添加语音和视频呼叫，开启 Azure 通信服务使用旅程。
 

@@ -9,13 +9,13 @@ ms.topic: how-to
 author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
-ms.date: 11/06/2020
-ms.openlocfilehash: 9afe50e419f9c180b0b5efcd6182eb693dc6622a
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.date: 02/18/2020
+ms.openlocfilehash: 5485d97638679651a3890e0b7578787e481437c6
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99093936"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101656272"
 ---
 # <a name="migration-overview-sql-server-to-sql-managed-instance"></a>迁移概述：将 SQL Server 到 SQL 托管实例
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -90,6 +90,7 @@ ms.locfileid: "99093936"
 |---------|---------|
 |[Azure 数据库迁移服务 (DMS)](../../../dms/tutorial-sql-server-to-managed-instance.md)  | 支持在脱机模式下迁移的第一方 Azure 服务，适合能够在迁移过程中适应停机的应用程序。 与联机模式下的连续迁移不同，脱机模式下的迁移将一次性完成从源到目标的完整数据库备份的还原。 | 
 |[本地备份和还原](../../managed-instance/restore-sample-database-quickstart.md) | SQL 托管实例支持本机 SQL Server 数据库备份（.bak 文件）的还原 (RESTORE)，对于能够提供到 Azure 存储的完整数据库备份的客户而言，它是最简单的迁移选项。 还支持完整备份和差异备份，本文后面的[迁移资产部分](#migration-assets)中进行了介绍。| 
+|[日志重播服务 (LRS) ](../../managed-instance/log-replay-service-migrate.md) | 这是一项基于 SQL Server 日志传送技术为托管实例启用的云服务，它为可以向 Azure 存储提供完整、差异和日志数据库备份的客户提供迁移选项。 LRS 用于将备份文件从 Azure Blob 存储还原到 SQL 托管实例。| 
 | | |
 
 ### <a name="alternative-tools"></a>替代工具
@@ -116,6 +117,7 @@ ms.locfileid: "99093936"
 |---------|---------|---------|
 |[Azure 数据库迁移服务 (DMS)](../../../dms/tutorial-sql-server-to-managed-instance.md) | - 大规模迁移单个数据库或多个数据库。 </br> - 可在迁移过程中适应停机时间。 </br> </br> 支持的源： </br> - SQL Server (2005 - 2019) 本地或 Azure VM </br> - AWS EC2 </br> - AWS RDS </br> - GCP 计算 SQL Server VM |  - 可以通过 [PowerShell](../../../dms/howto-sql-server-to-azure-sql-mi-powershell.md) 自动进行大规模迁移。 </br> - 完成迁移的时间取决于数据库的大小，并受备份和还原时间的影响。 </br> - 可能需要足够的停机时间。 |
 |[本机备份和还原](../../managed-instance/restore-sample-database-quickstart.md) | - 迁移单个业务线应用程序数据库。  </br> - 无需单独的迁移服务或工具即可快速轻松地进行迁移。  </br> </br> 支持的源： </br> - SQL Server (2005 - 2019) 本地或 Azure VM </br> - AWS EC2 </br> - AWS RDS </br> - GCP 计算 SQL Server VM | - 数据库备份使用多个线程来优化指向 Azure Blob 存储的数据传输，但是 ISV 带宽和数据库大小会影响传输速率。 </br> - 停机时间应包含执行完整备份和还原所需的时间（这是数据操作的大小）。| 
+|[日志重播服务 (LRS) ](../../managed-instance/log-replay-service-migrate.md) | - 迁移单个业务线应用程序数据库。  </br> -需要对数据库迁移进行更多的控制。  </br> </br> 支持的源： </br> -SQL Server (2008-2019) 本地或 Azure VM </br> - AWS EC2 </br> - AWS RDS </br> - GCP 计算 SQL Server VM | -迁移需要在 SQL Server 上进行完整的数据库备份，并将备份文件复制到 Azure Blob 存储。 LRS 用于将备份文件从 Azure Blob 存储还原到 SQL 托管实例。 </br> -在迁移过程中要还原的数据库将处于还原模式，并且在完成该过程之前，无法用于读取或写入。| 
 | | | |
 
 ### <a name="alternative-options"></a>替代选项

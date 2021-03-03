@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 01/22/2021
+ms.date: 02/22/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: 1459dd41fcdc30a29a5f9f93ec9704083767a342
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 0bbaf5fa4f3404b0e4fdb4dc016b703c58910457
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98725665"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101652073"
 ---
 # <a name="what-authentication-and-verification-methods-are-available-in-azure-active-directory"></a>Azure Active Directory 中有哪些可用的身份验证和验证方法？
 
@@ -42,8 +42,8 @@ Azure AD 多重身份验证 (MFA) 只在用户登录时使用密码添加了额�
 |--------------------------------|:--------:|:---------:|:------------:|
 | Windows Hello for Business     | 高     | 高      | 高         |
 | Microsoft Authenticator 应用    | 高     | 高      | 高         |
-|  (预览版的 FIDO2 安全密钥)    | 高     | 高      | 高         |
-| OATH 硬件令牌（预览版） | 中   | 中    | 高         |
+| FIDO2 安全密钥             | 高     | 高      | 高         |
+| OATH 硬件令牌           | 中   | 中    | 高         |
 | OATH 软件令牌           | 中   | 中    | 高         |
 | SMS                            | 中   | 高      | 中等       |
 | 语音                          | 中   | 中    | 中       |
@@ -66,9 +66,9 @@ Azure AD 多重身份验证 (MFA) 只在用户登录时使用密码添加了额�
 | 方法                         | 主要身份验证 | 辅助身份验证  |
 |--------------------------------|:----------------------:|:-------------------------:|
 | Windows Hello for Business     | 是                    | MFA                       |
-| Microsoft Authenticator 应用    | 是（预览版）          | MFA 和 SSPR              |
-|  (预览版的 FIDO2 安全密钥)    | 是                    | MFA                       |
-| OATH 硬件令牌（预览版） | 否                     | MFA                       |
+| Microsoft Authenticator 应用    | 是                    | MFA 和 SSPR              |
+| FIDO2 安全密钥             | 是                    | MFA                       |
+| OATH 硬件令牌           | 否                     | MFA                       |
 | OATH 软件令牌           | 否                     | MFA                       |
 | SMS                            | 是                    | MFA 和 SSPR              |
 | 语音呼叫                     | 否                     | MFA 和 SSPR              |
@@ -80,8 +80,8 @@ Azure AD 多重身份验证 (MFA) 只在用户登录时使用密码添加了额�
 
 * [Windows Hello for Business](/windows/security/identity-protection/hello-for-business/hello-overview)
 * [Microsoft Authenticator 应用](concept-authentication-authenticator-app.md)
-* [ (预览版的 FIDO2 安全密钥) ](concept-authentication-passwordless.md#fido2-security-keys)
-* [OATH 硬件令牌（预览版）](concept-authentication-oath-tokens.md#oath-hardware-tokens-preview)
+* [FIDO2 安全密钥](concept-authentication-passwordless.md#fido2-security-keys)
+* [OATH 硬件令牌](concept-authentication-oath-tokens.md#oath-hardware-tokens)
 * [OATH 软件令牌](concept-authentication-oath-tokens.md#oath-software-tokens)
 * [SMS 登录](howto-authentication-sms-signin.md) 和 [验证](concept-authentication-phone-options.md#mobile-phone-verification)
 * [语音呼叫验证](concept-authentication-phone-options.md)

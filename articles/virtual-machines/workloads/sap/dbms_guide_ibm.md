@@ -6,20 +6,19 @@ author: msjuergent
 manager: bburns
 tags: azure-resource-manager
 keywords: Azure，Db2，SAP，IBM
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/20/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bce8b878de1892162ddce7957befa41649014073
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 3f89f218c82505fd6bc261d41938d4619b32bf8a
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94959006"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101675967"
 ---
 # <a name="ibm-db2-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>适用于 SAP 工作负荷的 IBM Db2 Azure 虚拟机 DBMS 部署
 
@@ -85,7 +84,7 @@ SAP 支持说明 [1928533]中列出的任何 VM 类型都支持 IBM DB2 For Sap 
 下面是适用于各种规模的基准配置，以及从小到大的 Db2 部署使用 SAP。 此列表基于 Azure 高级存储。 不过，还可以使用 Db2 完全支持 Azure Ultra 磁盘，还可以使用它们。 只需使用容量、突发吞吐量和突发 IOPS 的值即可定义超磁盘配置。 可以将/db2//log_dir 的 IOPS 限制为 <SID> 大约 5000 iops。 
 
 #### <a name="extra-small-sap-system-database-size-50---200-gb-example-solution-manager"></a>超大小型 SAP 系统：数据库大小 50-200 GB：示例解决方案管理器
-| VM 名称/大小 |Db2 装入点 |Azure 高级磁盘 |磁盘数 |IOPS |吞吐量 [MB/秒] |大小 [GB] |突发 IOPS |突发将 [GB] | 条带大小 | 缓存 |
+| VM 名称/大小 |Db2 装入点 |Azure 高级磁盘 |磁盘数 |IOPS |吞吐量 [MB/秒] |大小 [GB] |突发 IOPS |突发将 [GB] | 条带大小 | Caching |
 | --- | --- | --- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 |E4ds_v4 |/db2 |P6 |1 |240  |50  |64  |3,500  |170  ||  |
 |vCPU：4 |/db2/ <SID> /sapdata |P10 |2 |1,000  |200  |256  |7,000  |340  |256 KB |ReadOnly |
@@ -94,7 +93,7 @@ SAP 支持说明 [1928533]中列出的任何 VM 类型都支持 IBM DB2 For Sap 
 | |/db2/ <SID> /offline_log_dir |P10 |1 |500  |100  |128  |3,500  |170  || |
 
 #### <a name="small-sap-system-database-size-200---750-gb-small-business-suite"></a>小型 SAP 系统：数据库大小 200-750 GB：小型企业套件
-| VM 名称/大小 |Db2 装入点 |Azure 高级磁盘 |磁盘数 |IOPS |吞吐量 [MB/秒] |大小 [GB] |突发 IOPS |突发将 [GB] | 条带大小 | 缓存 |
+| VM 名称/大小 |Db2 装入点 |Azure 高级磁盘 |磁盘数 |IOPS |吞吐量 [MB/秒] |大小 [GB] |突发 IOPS |突发将 [GB] | 条带大小 | Caching |
 | --- | --- | --- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 |E16ds_v4 |/db2 |P6 |1 |240  |50  |64  |3,500  |170  || |
 |vCPU：16 |/db2/ <SID> /sapdata |P15 |4 |4400  |500  |1.024  |14,000  |680  |256 KB |ReadOnly |
@@ -103,7 +102,7 @@ SAP 支持说明 [1928533]中列出的任何 VM 类型都支持 IBM DB2 For Sap 
 | |/db2/ <SID> /offline_log_dir |P10 |1 |500  |100  |128  |3,500  |170  ||| 
 
 #### <a name="medium-sap-system-database-size-500---1000-gb-small-business-suite"></a>中型 SAP 系统：数据库大小 500-1000 GB：小型企业套件
-| VM 名称/大小 |Db2 装入点 |Azure 高级磁盘 |磁盘数 |IOPS |吞吐量 [MB/秒] |大小 [GB] |突发 IOPS |突发将 [GB] | 条带大小 | 缓存 |
+| VM 名称/大小 |Db2 装入点 |Azure 高级磁盘 |磁盘数 |IOPS |吞吐量 [MB/秒] |大小 [GB] |突发 IOPS |突发将 [GB] | 条带大小 | Caching |
 | --- | --- | --- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 |E32ds_v4 |/db2 |P6 |1 |240  |50  |64  |3,500  |170  || |
 |vCPU：32 |/db2/ <SID> /sapdata |P30 |2 |10,000  |400  |2.048  |10,000  |400  |256 KB |ReadOnly |
@@ -112,7 +111,7 @@ SAP 支持说明 [1928533]中列出的任何 VM 类型都支持 IBM DB2 For Sap 
 | |/db2/ <SID> /offline_log_dir |P15 |1 |1,100  |125  |256  |3,500  |170  ||| 
 
 #### <a name="large-sap-system-database-size-750---2000-gb-business-suite"></a>大型 SAP 系统：数据库大小 750-2000 GB：业务套件
-| VM 名称/大小 |Db2 装入点 |Azure 高级磁盘 |磁盘数 |IOPS |吞吐量 [MB/秒] |大小 [GB] |突发 IOPS |突发将 [GB] | 条带大小 | 缓存 |
+| VM 名称/大小 |Db2 装入点 |Azure 高级磁盘 |磁盘数 |IOPS |吞吐量 [MB/秒] |大小 [GB] |突发 IOPS |突发将 [GB] | 条带大小 | Caching |
 | --- | --- | --- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 |E64ds_v4 |/db2 |P6 |1 |240  |50  |64  |3,500  |170  || |
 |vCPU：64 |/db2/ <SID> /sapdata |P30 |4 |20,000  |800  |4.096  |20,000  |800  |256 KB |ReadOnly |
@@ -121,7 +120,7 @@ SAP 支持说明 [1928533]中列出的任何 VM 类型都支持 IBM DB2 For Sap 
 | |/db2/ <SID> /offline_log_dir |P20 |1 |2,300  |150  |512  |3,500  |170  || |
 
 #### <a name="large-multi-terabyte-sap-system-database-size-2-tb-global-business-suite-system"></a>大型多 tb SAP 系统：数据库大小 2 TB +：全局业务套件系统
-| VM 名称/大小 |Db2 装入点 |Azure 高级磁盘 |磁盘数 |IOPS |吞吐量 [MB/秒] |大小 [GB] |突发 IOPS |突发将 [GB] | 条带大小 | 缓存 |
+| VM 名称/大小 |Db2 装入点 |Azure 高级磁盘 |磁盘数 |IOPS |吞吐量 [MB/秒] |大小 [GB] |突发 IOPS |突发将 [GB] | 条带大小 | Caching |
 | --- | --- | --- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 |M128s |/db2 |P10 |1 |500  |100  |128  |3,500  |170  || |
 |vCPU：128 |/db2/ <SID> /sapdata |P40 |4 |30,000  |1.000  |8.192  |30,000  |1.000  |256 KB |ReadOnly |

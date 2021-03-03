@@ -14,12 +14,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 397c74203aae2f52ce81844695266cc36fdf3042
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 0b42ac7b4e379559d86942279eaa19fe58533840
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370893"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101651881"
 ---
 # <a name="reset-a-users-password-using-azure-active-directory"></a>使用 Azure Active Directory 重置用户的密码
 
@@ -35,13 +35,13 @@ ms.locfileid: "92370893"
 
 1. 以用户管理员或密码管理员身份登录到 [Azure 门户](https://portal.azure.com/)。 有关可用角色的详细信息，请参阅[在 Azure Active Directory 中分配管理员角色](../roles/permissions-reference.md#available-roles)
 
-2. 选择“Azure Active Directory”，选择“用户”，搜索并选择需要重置的用户，然后选择“重置密码”************。
+2. 选择“Azure Active Directory”，选择“用户”，搜索并选择需要重置的用户，然后选择“重置密码”。
 
-    将显示“Alain Charon - 配置文件”页面，其中包含“重置密码”选项********。
+    将显示“Alain Charon - 配置文件”页面，其中包含“重置密码”选项。
 
     ![用户的配置文件页面，其中突出显示“重置密码”选项](media/active-directory-users-reset-password-azure-portal/user-profile-reset-password-link.png)
 
-3. 在“重置密码”页面中，选择“重置密码”********。
+3. 在“重置密码”页面中，选择“重置密码”。
 
     > [!Note]
     > 使用 Azure Active Directory 时，会自动为用户生成临时密码。 使用本地 Active Directory 时，会为用户创建密码。
@@ -50,6 +50,10 @@ ms.locfileid: "92370893"
 
     >[!Note]
     >临时密码永不过期。 用户下次登录时，无论自生成临时密码以来已经过了多长时间，密码仍然有效。
+
+> [!IMPORTANT]
+> 如果管理员无法重置用户的密码，并且在 Azure AD Connect 服务器上的应用程序事件日志中出现以下错误代码 hr = 80231367，请查看 Active Directory 中的用户属性。  如果将 " **AdminCount** " 属性设置为1，则会阻止管理员重置用户的密码。  属性 **AdminCount** 必须设置为0，以便管理员能够重置用户的密码。
+
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: previous-author=fboylu, previous-ms.author=fboylu
 ms.openlocfilehash: 3edeee8f41c806c90f32208c0c4f174c76ba38d0
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
+ms.lasthandoff: 03/02/2021
 ms.locfileid: "93321991"
 ---
 # <a name="technical-guide-to-the-solution-template-for-predictive-maintenance-in-aerospace"></a>航空航天预测性维护的解决方案模板的技术指南
@@ -94,13 +94,15 @@ Azure 事件中心支持丰富的格式，可以使用 CSV 或 JSON 格式将数
 * 查找部署解决方案时生成的流分析作业![流分析图标](./media/predictive-maintenance-technical-guide/icon-stream-analytics.png)（例如，预测性维护解决方案的 **maintenancesa02asapbi** 和 **maintenancesa02asablob**）
 * 选择
   
-  * ***输入**：用于查看查询输入 _ ***查询**：用于查看查询本身 _ ***输出**：用于查看不同的输出
+  * “输入”可查看查询输入
+  * “查询”可查看查询本身
+  * “输出”可查看不同的输出
 
 有关 Azure 流分析查询构造的信息，请参阅 MSDN 上的 [Stream Analytics Query Reference](/stream-analytics-query/stream-analytics-query-language-reference) （流分析查询参考）。
 
 在此解决方案中，查询将三个数据集（具有近乎实时的传入数据流相关分析信息）输出到作为此解决方案模板中的一部分提供的 Power BI 仪表板。 由于对传入数据格式有隐含的了解，必须根据数据格式更改这些查询。
 
-第二个流分析作业 maintenancesa02asablob 中的查询仅将所有[事件中心](https://azure.microsoft.com/services/event-hubs/)事件输出到 [Azure 存储](https://azure.microsoft.com/services/storage/)。由于将完整的事件信息流式输出到存储，因此无论数据格式如何，都无需进行修改。
+第二个流分析作业 **maintenancesa02asablob** 中的查询将所有 [事件中心](https://azure.microsoft.com/services/event-hubs/)事件输出到 [Azure 存储](https://azure.microsoft.com/services/storage/)，由于将完整的事件信息流输出到存储，因此无论数据格式为何都无需进行修改。
 
 ### <a name="azure-data-factory"></a>Azure 数据工厂
 [Azure 数据工厂](https://azure.microsoft.com/documentation/services/data-factory/) 服务协调数据的移动和处理。 在航天工业预测性维护的解决方案模板中，数据工厂由 3 个[管道](../../data-factory/concepts-pipelines-activities.md)组成，使用不同的技术移动和处理数据。  可以打开随解决方案部署创建的解决方案模板图示底部的数据工厂节点来访问数据工厂。 数据集下的错误之所以发生，是因为启动数据生成器之前已部署数据工厂。 这些错误可以忽略，不会防碍数据工厂的正常运行。
@@ -118,20 +120,20 @@ Azure 事件中心支持丰富的格式，可以使用 CSV 或 JSON 格式将数
 #### <a name="aggregateflightinfopipeline"></a>*AggregateFlightInfoPipeline*
 该[管道](../../data-factory/concepts-pipelines-activities.md)包含单个活动 - [HDInsightHive](../../data-factory/transform-data-using-hadoop-hive.md) 活动，其使用 [HDInsightLinkedService](/previous-versions/azure/dn893526(v=azure.100)) 运行 [Hive](/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start) 脚本，在 [Azure 流分析作业](https://azure.microsoft.com/services/stream-analytics/)期间对放入 [Azure 存储](https://azure.microsoft.com/services/storage/)的数据进行分区。
 
-此分区任务的 [Hive](/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start) 脚本为 AggregateFlightInfo.hql
+此分区任务的 [Hive](/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start) 脚本为 ***AggregateFlightInfo.hql***
 
-#### <a name="_mlscoringpipeline"></a>_MLScoringPipeline*
+#### <a name="mlscoringpipeline"></a>*MLScoringPipeline*
 此[管道](../../data-factory/concepts-pipelines-activities.md)包含多个活动，其最终结果为来自与此解决方案模板关联的 [Azure 机器学习](https://azure.microsoft.com/services/machine-learning/)试验评分的预测。
 
 包含的活动有：
 
 * 使用 [HDInsightLinkedService](/previous-versions/azure/dn893526(v=azure.100)) 的 [HDInsightHive](../../data-factory/transform-data-using-hadoop-hive.md) 活动运行 [Hive](/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start) 脚本来执行 [Azure 机器学习](https://azure.microsoft.com/services/machine-learning/)试验所需的聚合及特征设计。
-  此分区任务的 [Hive](/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start) 脚本为 PrepareMLInput.hql。
-  [Copy](/previous-versions/azure/dn835035(v=azure.100)) 活动将来自 [HDInsightHive](../../data-factory/transform-data-using-hadoop-hive.md) 活动的结果移到可供 [AzureMLBatchScoring](/previous-versions/azure/dn894009(v=azure.100)) 活动访问的单个 [Azure 存储](https://azure.microsoft.com/services/storage/) Blob。
+  此分区任务的 [Hive](/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start) 脚本为 ***PrepareMLInput.hql***。
+* [Copy](/previous-versions/azure/dn835035(v=azure.100)) 活动将来自 [HDInsightHive](../../data-factory/transform-data-using-hadoop-hive.md) 活动的结果移到可供 [AzureMLBatchScoring](/previous-versions/azure/dn894009(v=azure.100)) 活动访问的单个 [Azure 存储](https://azure.microsoft.com/services/storage/) Blob。
 * [AzureMLBatchScoring](/previous-versions/azure/dn894009(v=azure.100)) 活动调用 [Azure 机器学习](https://azure.microsoft.com/services/machine-learning/)试验，将结果放入单个 [Azure 存储](https://azure.microsoft.com/services/storage/) Blob。
 
 #### <a name="copyscoredresultpipeline"></a>*CopyScoredResultPipeline*
-此[管道](../../data-factory/concepts-pipelines-activities.md)包含单个活动，即[复制](/previous-versions/azure/dn835035(v=azure.100))活动，该活动将 [Azure 机器学习](#azure-machine-learning)试验的结果从 MLScoringPipeline 移到随解决方案模板安装一起预配的 [Azure SQL 数据库](https://azure.microsoft.com/services/sql-database/)。
+此 [管道](../../data-factory/concepts-pipelines-activities.md)包含单个活动 - [Copy](/previous-versions/azure/dn835035(v=azure.100)) 活动，将 [Azure 机器学习](#azure-machine-learning)试验的结果从 ***MLScoringPipeline*** 移到随解决方案模板安装一起预配的 [Azure SQL 数据库](https://azure.microsoft.com/services/sql-database/)。
 
 ### <a name="azure-machine-learning"></a>Azure 机器学习
 用于此解决方案模板的 [Azure 机器学习](https://azure.microsoft.com/services/machine-learning/)试验提供了飞机引擎的剩余使用寿命 (RUL)。 该试验因使用的数据集而有所不同，需要专门针对引入的数据进行修改或替换。
@@ -139,7 +141,7 @@ Azure 事件中心支持丰富的格式，可以使用 CSV 或 JSON 格式将数
 ## <a name="monitor-progress"></a>监视进度
 启动数据生成器后，管道将开始冻结，解决方案的不同组件遵循数据工厂发出的命令开始操作。 可通过两种方式监视管道。
 
-流分析作业之一会将原始传入数据写入 Blob 存储。 如果在成功部署解决方案的屏幕中单击解决方案的“Blob 存储”组件，然后在右窗格中单击“打开”，则会转到 [Azure 门户](https://portal.azure.com/)。 进入门户后，单击“Blob”。 在随后出现的面板中，可以看到容器列表。 单击“maintenancesadata”。 随后出现的面板中有 **rawdata** 文件夹。 在 rawdata 文件夹内，可以看到名为 hour=17、hour=18 等的文件夹。 存在这些文件夹表明原始数据正在计算机上生成并存储在 Blob 存储中。 应会在这些文件夹中看到具有有限 MB 大小的 csv 文件。
+* 某个流分析作业会将原始传入数据写入 Blob 存储。 如果在成功部署解决方案的屏幕中单击解决方案的“Blob 存储”组件，然后在右窗格中单击“打开”，则会转到 [Azure 门户](https://portal.azure.com/)。 进入门户后，单击“Blob”。 在随后出现的面板中，可以看到容器列表。 单击“maintenancesadata”。 随后出现的面板中有 **rawdata** 文件夹。 在 rawdata 文件夹内，可以看到名为 hour=17、hour=18 等的文件夹。 存在这些文件夹表明原始数据正在计算机上生成并存储在 Blob 存储中。 应会在这些文件夹中看到具有有限 MB 大小的 csv 文件。
 * 管道的最后一个步骤是将数据（例如机器学习的预测数据）写入 SQL 数据库。 最多可能需要 3 个小时，数据才会出现在 SQL 数据库中。 监视 SQL 数据库中有多少数据的方法之一是使用 [Azure 门户](https://portal.azure.com/)。 在左侧面板中，找到 "SQL 数据库" :::image type="icon" source="./media/predictive-maintenance-technical-guide/icon-SQL-databases.png" border="false"::: 并单击它。 然后查找自己的数据库 **pmaintenancedb** 并单击它。 在下一页的底部，单击“管理”。
    
     ![管理图标](./media/predictive-maintenance-technical-guide/icon-manage.png)
@@ -177,7 +179,7 @@ Power BI 连接到充当其数据源、用于存储预测结果的 Azure SQL 数
      ![编辑查询](./media/predictive-maintenance-technical-guide/edit-queries.png)
    * 会看到两个表：**RemainingUsefulLife** 和 **PMResult**。 选择第一个表，并在右侧“查询设置”面板的“应用的步骤”下的“源”旁边单击![查询设置图标](./media/predictive-maintenance-technical-guide/icon-query-settings.png)。 忽略显示的任何警告消息。
    * 在弹出窗口中，将“服务器”和“数据库”替换为自己的服务器和数据库名称，然后单击“确定”。 对于服务器名称，请确保指定端口 1433 (**YourSolutionName.database.windows.net, 1433**)。 将数据库字段保留为 **pmaintenancedb**。 忽略屏幕上出现的警告消息。
-   * 下一个弹出窗口的左侧窗格中出现了两个选项（“Windows”和“数据库”）。 单击“数据库”，填充“用户名”和“密码”（首次部署解决方案和创建 Azure SQL 数据库时输入的用户名与密码）。 在“选择要将这些设置应用到的级别”***中，选中数据库级别选项。然后单击“连接”***。
+   * 下一个弹出窗口的左侧窗格中出现了两个选项（“Windows”和“数据库”）。 单击“数据库”，填充“用户名”和“密码”（首次部署解决方案和创建 Azure SQL 数据库时输入的用户名与密码）。 在“选择要将这些设置应用到的级别”中，选中数据库级别选项。 然后单击“连接”。
    * 单击第二个表 **PMResult**，在右侧“查询设置”面板的“应用的步骤”下的“源”旁边单击![导航图标](./media/predictive-maintenance-technical-guide/icon-navigation.png)，根据以上步骤更新服务器和数据库名称并单击“确定”。
    * 返回上一页后，请关闭窗口。 此时会显示一条消息 - 单击“应用”。 最后，单击“保存”保存更改。 Power BI 文件现在已与服务器建立连接。 如果可视化效果是空的，请务必单击图例右上角的橡皮擦图标清除可视化效果中的选择内容，这样即可查看所有数据。 使用刷新按钮显示可视化效果中的新数据。 最初，只会在可视化效果中看到种子数据，因为数据工厂计划为每隔 3 小时刷新一次。 3 小时后，刷新数据时，可以看到新预测数据反映在可视化效果中。
 3. （可选）将冷路径仪表板发布到 [Power BI online](https://www.powerbi.com/)。 此步骤需要 Power BI 帐户（或者工作帐户或学校帐户）。
@@ -217,7 +219,7 @@ Power BI 连接到充当其数据源、用于存储预测结果的 Azure SQL 数
 
 1. 下面为创建以上磁贴之一的步骤 – “传感器 11 车队视图与阈值 48.26”磁贴：
    
-   在左侧面板“数据集”部分中单击数据集“aircraftmonitor”。
+   * 在左侧面板“数据集”部分中单击数据集“aircraftmonitor”。
    * 单击 **折线图** 图标。
    * 单击“字段”窗格中的“已处理”，其会在“可视化效果”窗格中的“轴”下显示。
    * 单击“s11”和“s11\_alert”，两者都会在“值”下显示。 单击“s11”和“s11\_警告”旁的小箭头，将“总和”更改为“平均值”。

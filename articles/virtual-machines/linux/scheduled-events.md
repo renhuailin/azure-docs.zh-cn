@@ -2,18 +2,20 @@
 title: Azure 中适用于 Linux VM 的 Scheduled Events
 description: 使用 Azure 元数据服务为 Linux 虚拟机计划事件。
 author: EricRadzikowskiMSFT
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.subservice: scheduled-events
+ms.collection: linux
 ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 06/01/2020
 ms.author: ericrad
 ms.reviewer: mimckitt
-ms.openlocfilehash: 3bda1e2076e29fc1365bfc236adc9071db2564a1
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: 1029790cbcfa86f988c2249d67640a642e529229
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100104733"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101674862"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Azure 元数据服务：适用于 Linux VM 的计划事件
 

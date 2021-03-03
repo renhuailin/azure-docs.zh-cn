@@ -2,18 +2,18 @@
 title: Azure 上的 Oracle 数据库的参考体系结构 |Microsoft Docs
 description: 引用用于在 Microsoft Azure 虚拟机上运行 Oracle Database Enterprise Edition 数据库的体系结构。
 author: dbakevlar
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines
+ms.subservice: oracle
+ms.collection: linux
 ms.topic: article
 ms.date: 12/13/2019
 ms.author: kegorman
-ms.reviewer: cynthn
-ms.openlocfilehash: 27a1c57c234d3450cee606c4ffb7484f7b63e732
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 8257c58c4185172218b833c3d4988b4db661a97a
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98882291"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101669894"
 ---
 # <a name="reference-architectures-for-oracle-database-enterprise-edition-on-azure"></a>Azure 上的 Oracle Database Enterprise Edition 的参考体系结构
 

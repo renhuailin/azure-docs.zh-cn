@@ -10,18 +10,18 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/02/2020
+ms.date: 02/22/2021
 ms.author: mnayak
-ms.openlocfilehash: 2c6295db96f951abd1fd069535b98639e723d93a
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: f445eab65e8d2448e57bad19c52a4b72732016bb
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98217560"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101672932"
 ---
 # <a name="configure-routing-preference-for-a-public-ip-address-using-the-azure-portal"></a>使用 Azure 门户配置公共 IP 地址的路由首选项
 
-本文介绍如何通过 ISP 网络为公共 IP 地址配置 [路由首](./routing-preference-overview.md) 选项 (**Internet** 选项) 。 创建公共 IP 地址后，可将其与以下 Azure 资源关联，以获得 Internet 的入站和出站流量：
+本文介绍如何通过 ISP 网络为公共 IP 地址配置 [路由首](./routing-preference-overview.md) 选项 (**Internet** 选项) 。 创建公共 IP 地址后，可以将它与以下 Azure 资源关联，以用于 Internet 的入站和出站流量：
 
 * 虚拟机
 * 虚拟机规模集
@@ -30,22 +30,28 @@ ms.locfileid: "98217560"
 * 应用程序网关
 * Azure 防火墙
 
-默认情况下，公共 IP 地址的路由首选项对所有 Azure 服务设置为 Microsoft 全球网络，并可与任何 Azure 服务相关联。
-
-> [!IMPORTANT]
-> 路由首选项目前为公共预览版。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+默认情况下，对于所有 Azure 服务，公共 IP 地址的路由首选项设置为“Microsoft 全球网络”，并且可以与任何 Azure 服务相关联。
 
 如果还没有 Azure 订阅，请现在就创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="create-a-public-ip-address-with-a-routing-preference"></a>创建具有路由首选项的公共 IP 地址
-1. 登录 [Azure 门户](https://preview.portal.azure.com/)。
-2. 选择“创建资源”。 
+1. 登录 [Azure 门户](https://portal.azure.com/)。
+2. 选择“创建资源”。
 3. 在搜索框中键入“公共 IP 地址”。
 3. 在搜索结果中时，选择“公共 IP 地址”。 接下来，在“公共 IP 地址”页中，选择“创建”。
-3. 在“路由首选项”选项中，选择“Internet”。
+1. 对于 SKU，选择 " **标准**"。
+1. 对于 **路由首选项**，请选择 **Internet**。
 
-      ![创建公共 IP 地址](./media/routing-preference-portal/pip-new.png)
+      ![创建公共 IP 地址](./media/routing-preference-portal/public-ip-new.png)
+1. 在 " **IPV4 IP 地址配置** " 部分中，输入或选择以下信息：
+
+    | 设置 | “值” |
+    | ------- | ----- |
+    | 订阅 | 选择订阅。|
+    | 资源组 | 选择 " **新建**"，输入 *RoutingPreferenceResourceGroup*，然后选择 **"确定"**。 |
+    | 位置 | 选择“美国东部”。|
+    | 可用性区域 | 保留默认值- **区域冗余**。 |
+1. 选择“创建”。
 
     > [!NOTE]
     > 公共 IP 地址是使用 IPv4 或 IPv6 地址创建的。 但是，路由首选项目前仅支持 IPV4。

@@ -7,17 +7,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/14/2020
+ms.date: 02/23/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: ad9bd8dec94660d94cf3a106d31dafdad06f47a8
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 85d00b393ad169764a2f26e324295308ef49d3ba
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97584504"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101646566"
 ---
 # <a name="configure-session-behavior-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中配置会话行为
 
@@ -55,7 +55,7 @@ ms.locfileid: "97584504"
 
 社交或企业标识提供者需管理其自己的会话。 Cookie 存储在标识提供者的域名（例如 `https://login.salesforce.com`）下。 Azure AD B2C 不会控制联合标识提供者会话。 会话行为由联合标识提供者确定。 
 
-假设出现了下面这种情景：
+请参考以下方案：
 
 1. 用户登录 Facebook 以检查其源。
 2. 稍后，用户将打开你的应用程序并启动登录过程。 应用程序将用户重定向到 Azure AD B2C 以完成登录过程。
@@ -71,9 +71,9 @@ ms.locfileid: "97584504"
 
 你可以配置 Azure AD B2C 会话行为，包括：
 
-- **Web 应用会话生存期 (分钟)** -身份验证成功后将 Azure AD B2C 会话 cookie 存储在用户浏览器上的时间量。 可将会话生存时间设置为 15 到 720 分钟的值。
+- **Web 应用会话生存期 (分钟)** -身份验证成功后将 Azure AD B2C 会话 cookie 存储在用户浏览器上的时间量。 可以将会话生存期设置为介于15到720分钟之间的值。
 
-- **Web 应用会话超时** -指示会话如何通过会话生命时间设置或 "使我保持登录" 设置进行扩展。
+- **Web 应用会话超时** -通过 "会话生存期" 设置或 "使我保持登录 (KMSI) " 设置来指示会话的扩展方式。
   - **滚动** - 指示每当用户执行基于 Cookie 的身份验证时都延长会话（默认值）。
   - **绝对** - 指示在指定的时间段后强制用户重新进行身份验证。
 
@@ -82,9 +82,7 @@ ms.locfileid: "97584504"
   - **应用程序** - 此设置允许为某个应用程序维持独占式用户会话（独立于其他应用程序）。 例如，如果你希望无论用户是否已登录到 Contoso Groceries，他们都能够登录到 Contoso Pharmacy，则可以使用此设置。
   - **策略** - 此设置为某个用户流维持独占式用户会话（独立于使用它的应用程序）。 例如，如果用户已登录并完成多重身份验证 (MFA) 步骤，那么只要绑定到用户流的会话未过期，该用户就可以访问多个应用程序的具有较高安全性的部分。
   - **已禁用** - 此设置强制用户在每次执行策略时都要运行完整的用户流。
-::: zone pivot="b2c-custom-policy"
-- **使我保持登录** -通过使用永久性 cookie 延长会话生存期。 在用户关闭并重新打开浏览器后，会话将保持活动状态。 仅当用户注销时，才会撤销会话。“使我保持登录状态”功能仅适用于使用本地帐户进行的登录。 “使我保持登录状态”功能优先于会话生存时间的设置。 如果启用了“使我保持登录状态”功能，并且用户选择了此功能，则此功能将决定会话何时会过期。 
-::: zone-end
+- **使我保持登录 (KMSI)** -通过使用永久性 cookie 扩展会话生存期。 如果启用了此功能，并且用户选择了此功能，则即使用户关闭并重新打开浏览器，会话仍保持活动状态。 仅当用户注销时才会撤消会话。KMSI 功能仅适用于登录本地帐户。 KMSI 功能优先于会话生存期。
 
 ::: zone pivot="b2c-user-flow"
 
@@ -112,12 +110,43 @@ ms.locfileid: "97584504"
    <SessionExpiryInSeconds>86400</SessionExpiryInSeconds>
 </UserJourneyBehaviors>
 ```
+::: zone-end
 
 ## <a name="enable-keep-me-signed-in-kmsi"></a>启用 "使我保持登录 (KMSI) 
 
-你可以为 web 和本机应用程序的用户启用 "使我保持登录功能"，这些用户在你的 Azure Active Directory B2C (Azure AD B2C) 目录中具有本地帐户。 此功能会向返回到应用程序的用户授予访问权限，而不会提示他们重新输入用户名和密码。 当用户注销时，会撤销此访问权限。
+你可以为在 Azure AD B2C 目录中具有本地帐户的 web 和本机应用程序的用户启用 KMSI 功能。 启用该功能后，用户可以选择保持登录状态，以便在关闭浏览器后会话仍保持活动状态。 然后，他们可以重新打开浏览器，而不会提示用户重新输入其用户名和密码。 当用户注销时，会撤销此访问权限。
 
 ![显示“使我保持登录状态”复选框的示例注册登录页](./media/session-behavior/keep-me-signed-in.png)
+
+
+::: zone pivot="b2c-user-flow"
+
+可在单个用户流级别配置 KMSI。 为用户流启用 KMSI 之前，请考虑以下事项：
+
+- 仅 (SUSI) 、登录和配置文件编辑用户流的 **建议** 版本，才支持 KMSI。 如果你当前具有这些用户流的 **标准** 版本或 **旧版预览版** ，并且想要启用 KMSI，则需要创建这些用户流的新的 **建议** 版本。
+- 密码重置或注册用户流不支持 KMSI。
+- 如果要为租户中的所有应用程序启用 KMSI，建议为租户中的所有用户流启用 KMSI。 由于用户可以在会话过程中向用户显示多个策略，因此可能会遇到未启用 KMSI 的用户，这会从会话中删除 KMSI cookie。
+- 不应在公共计算机上启用 KMSI。
+
+### <a name="configure-kmsi-for-a-user-flow"></a>为用户流配置 KMSI
+
+若要为用户流启用 KMSI，请执行以下操作：
+
+1. 登录 [Azure 门户](https://portal.azure.com)。
+2. 请确保使用的是包含 Azure AD B2C 租户的目录。 在顶部菜单中选择 " **目录 + 订阅**"   筛选器，然后选择包含 Azure AD B2C 租户的目录。
+3. 选择 "Azure 门户" 左上角的 " **所有服务**"   ，然后搜索并选择 " **Azure AD B2C**"。
+4. 选择 " **用户流" (策略 ")**"。
+5. 打开之前创建的用户流。
+6. 选择 " **属性**"。
+
+7. 在 " **会话行为**" 下，选择 " **使我保持登录会话**"。 在 " **使我保持登录会话 (天)** 中，输入一个介于1到90之间的值，以指定会话可以保持打开状态的天数。
+
+
+   ![启用 "使我保持登录会话"](media/session-behavior/enable-keep-me-signed-in.png)
+
+::: zone-end
+
+::: zone pivot="b2c-custom-policy"
 
 用户不应在公用计算机上启用此选项。
 
@@ -168,7 +197,7 @@ ms.locfileid: "97584504"
 更新用于启动创建的用户旅程的信赖方 (RP) 文件。
 
 1. 打开自定义策略文件。 例如，SignUpOrSignin.xml。
-1. 如果它尚不存在，请将一个 `<UserJourneyBehaviors>` 子节点添加到该 `<RelyingParty>` 节点。 它必须紧跟在之后 `<DefaultUserJourney ReferenceId="User journey Id" />` ，例如： `<DefaultUserJourney ReferenceId="SignUpOrSignIn" />` 。
+1. 如果它尚不存在，请将 `<UserJourneyBehaviors>` 子节点添加到 `<RelyingParty>` 节点。 它必须紧跟在之后 `<DefaultUserJourney ReferenceId="User journey Id" />` ，例如： `<DefaultUserJourney ReferenceId="SignUpOrSignIn" />` 。
 1. 将以下节点添加为 `<UserJourneyBehaviors>` 元素的子级。
 
     ```xml

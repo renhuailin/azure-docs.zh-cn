@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 02/10/2021
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 599cf17e1ab2b85aac77893e8b2d520d412e1cea
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 5d43d6f56b48a34fa34baf727508ad8f1c151aa7
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100417127"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101674314"
 ---
 # <a name="connect-to-a-secure-azure-storage-account-from-your-synapse-workspace"></a>从 Synapse 工作区连接到安全的 Azure 存储帐户
 
@@ -21,7 +21,7 @@ ms.locfileid: "100417127"
 
 
 ## <a name="secured-azure-storage-accounts"></a>受保护的 Azure 存储帐户
-Azure 存储提供分层的安全模型，使你能够保护和控制对存储帐户的访问。 你可以配置 IP 防火墙规则，以将流量从所选的公共 IP 地址范围授予对存储帐户的访问权限。 你还可以配置网络规则，以便从所选虚拟网络向存储帐户授予流量。 可以合并允许从所选 IP 地址范围访问的 IP 防火墙规则，以及允许从同一存储帐户上的所选虚拟网络访问的网络规则。 这些规则适用于存储帐户的公共终结点。 不需要任何访问规则即可允许从工作区中创建的托管专用终结点到存储帐户的流量。 存储防火墙规则可以应用于现有存储帐户，也可以在创建新存储帐户时应用到新存储帐户。 可在 [此处](https://docs.microsoft.com/azure/storage/common/storage-network-security)详细了解如何保护存储帐户。
+Azure 存储提供分层的安全模型，使你能够保护和控制对存储帐户的访问。 你可以配置 IP 防火墙规则，以将流量从所选的公共 IP 地址范围授予对存储帐户的访问权限。 你还可以配置网络规则，以便从所选虚拟网络向存储帐户授予流量。 可以合并允许从所选 IP 地址范围访问的 IP 防火墙规则，以及允许从同一存储帐户上的所选虚拟网络访问的网络规则。 这些规则适用于存储帐户的公共终结点。 不需要任何访问规则即可允许从工作区中创建的托管专用终结点到存储帐户的流量。 存储防火墙规则可以应用于现有存储帐户，也可以在创建新存储帐户时应用到新存储帐户。 可在 [此处](../../storage/common/storage-network-security.md)详细了解如何保护存储帐户。
 
 ## <a name="synapse-workspaces-and-virtual-networks"></a>Synapse 工作区和虚拟网络
 当你创建 Synapse 工作区时，你可以选择启用要与之关联的托管虚拟网络。 如果你在创建工作区时未为其启用托管虚拟网络，则你的工作区位于共享虚拟网络中，同时还与其他未关联托管虚拟网络的 Synapse 工作区结合使用。 如果在创建工作区时启用了托管虚拟网络，则工作区与 Azure Synapse 管理的专用虚拟网络相关联。 不会在你的客户订阅中创建这些虚拟网络。 因此，你将无法使用上述网络规则将来自这些虚拟网络的流量授予对受保护的存储帐户的访问权限。  

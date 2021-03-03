@@ -3,18 +3,19 @@ title: 使用 Azure 门户部署 Azure 专用主机
 description: 使用 Azure 门户将 VM 和规模集部署到专用主机。
 author: cynthn
 ms.service: virtual-machines
+ms.subservice: dedicated-hosts
 ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 12/07/2020
 ms.author: cynthn
-ms.openlocfilehash: b166363a8c64a4a4c5d34efa55dcaefa09d6df49
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 3bc7909f38e63256d7d708ec189c628662cf8837
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97007936"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101667323"
 ---
-# <a name="deploy-vms-and-scale-sets-to-dedicated-hosts-using-the-portal"></a>使用门户将 Vm 和规模集部署到专用主机 
+# <a name="deploy-vms-and-scale-sets-to-dedicated-hosts-using-the-portal"></a>使用门户将 VM 和规模集部署到专用主机 
 
 本文介绍了如何创建 Azure [专用主机](dedicated-hosts.md)来托管虚拟机 (VM)。 
 
@@ -80,7 +81,7 @@ ms.locfileid: "97007936"
 1. 在“可用性选项”中，选择“可用性区域”，然后从下拉列表中选择 1 。
 1. 对于大小，选择“更改大小”。 在可用大小列表中，选择 Esv3 系列其中一个，例如“标准 E2s v3”。 可能需要清除筛选器才能查看所有可用大小。
 1. 根据需要完成“基本信息”选项卡上的其余字段。
-1. 如果要指定要用于 VM 的主机，则在页面顶部，选择 "**高级**" 选项卡，然后在 "**主机**" 部分中，为主机 "**主机组**" 和 " *myhost 代表*" 选择 **"** *myHostGroup* "。 否则，VM 将自动放置在具有容量的主机上。
+1. 如果要指定用于 VM 的主机，则在页面顶部，选择“高级”选项卡，然后在“主机”部分，对于“主机组”，选择“myHostGroup”，对于“主机”，选择“myHost” 。 否则，VM 将自动置于具有容量的主机上。
     ![选择主机组和主机](./media/dedicated-hosts-portal/advanced.png)
 1. 保留剩余的默认值，然后选择页面底部的“查看 + 创建”按钮。
 1. 显示验证通过的消息时，选择“创建”。

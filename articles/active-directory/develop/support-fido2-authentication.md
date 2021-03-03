@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 1/29/2021
 ms.author: nichola
 ms.custom: aaddev
-ms.openlocfilehash: 5abece0e272d4b72ba6f787ad44b091df5d45226
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: e7193ee5d076538689078ce634b8170926df20b6
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100417063"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101653246"
 ---
 # <a name="support-passwordless-authentication-with-fido2-keys-in-apps-you-develop"></a>支持在开发的应用中通过 FIDO2 密钥进行无密码身份验证
 
@@ -47,10 +47,10 @@ RequestedAuthnContext 元素是可选的，因此，若要解决此问题，可�
 用于实现身份验证的建议选项如下：
 
 - 使用 Microsoft 身份验证库 (MSAL) 的 .NET 桌面应用程序应使用 Windows 身份验证管理器 (WAM) 。 [GitHub 上记录](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/wam)了此集成及其优点。
-- 在嵌入式浏览器中使用 [WebView2](https://docs.microsoft.com/microsoft-edge/webview2/) 支持 FIDO2。
+- 在嵌入式浏览器中使用 [WebView2](/microsoft-edge/webview2/) 支持 FIDO2。
 - 使用系统浏览器。 默认情况下，桌面平台的 MSAL 库使用此方法。 你可以在 FIDO2 浏览器兼容性上查阅我们的页面，以确保你使用的浏览器支持 FIDO2 authentication。
 
-### <a name="mobile"></a>移动型
+### <a name="mobile"></a>移动电话
 
 从2020年2月开始，本机 iOS 或 Android 应用当前不支持 FIDO2，但正在开发中。
 

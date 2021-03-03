@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 07/06/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 6412036e3f16e2efb3bbf6669f6a31e9dc6e3584
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a18899ffc6b19be6226d9e0a3efd9a9519434601
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89434633"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101666222"
 ---
 # <a name="troubleshooting-vm-provisioning-with-cloud-init"></a>对使用 cloud-init 的 VM 预配进行故障排除
 
@@ -48,7 +48,7 @@ VM 预配失败的主要原因是 OS 映像不满足在 Azure 上运行的先决
 - [Ubuntu](create-upload-ubuntu.md)
 - [其他：非认可的分发版](create-upload-generic.md)
 
-对于[受支持的 Azure cloud-init 映像](./using-cloud-init.md)，Linux 发行版已准备好所有必需的包和配置，方便用户在 Azure 中正确预配映像。 如果发现 VM 未能从自己的特选映像创建，请尝试使用可选的已配置为进行云初始化的受支持的 Azure Marketplace 映像 `customData` 。 如果 `customData` 使用 Azure Marketplace 映像可以正常工作，则可能是特选映像出现问题。
+对于[受支持的 Azure cloud-init 映像](./using-cloud-init.md)，Linux 发行版已准备好所有必需的包和配置，方便用户在 Azure 中正确预配映像。 如果发现无法基于你自己的特选映像创建 VM，请尝试使用一个受支持的、已使用你的可选 `customData` 为其配置了 cloud-init 的 Azure 市场映像。 如果 `customData` 可以在 Azure 市场映像中正常使用，则可能是特选映像出现问题。
 
 ## <a name="step-3-collect--review-vm-logs"></a>步骤 3：收集和查看 VM 日志
 
@@ -58,7 +58,7 @@ VM 预配失败的主要原因是 OS 映像不满足在 Azure 上运行的先决
 
 - [串行控制台](../troubleshooting/serial-console-grub-single-user-mode.md)
 
-- 在创建 VM 之前[启用启动诊断](./tutorial-monitor.md#enable-boot-diagnostics)，然后在启动过程中[查看](./tutorial-monitor.md#view-boot-diagnostics)它们。
+- 在创建 VM 之前[启用启动诊断](/previous-versions/azure/virtual-machines/linux/tutorial-monitor#enable-boot-diagnostics)，然后在启动过程中[查看](/previous-versions/azure/virtual-machines/linux/tutorial-monitor#view-boot-diagnostics)它们。
 
 - [运行 AZ VM Repair](../troubleshooting/repair-linux-vm-using-azure-virtual-machine-repair-commands.md) 来附加和装载 OS 磁盘，这将允许你收集以下日志：
 ```bash
@@ -133,4 +133,4 @@ Cloud-init 有多个依赖项，这些依赖项记录在 Azure 上的映像所�
 
 ## <a name="next-steps"></a>后续步骤
 
-如果仍然无法厘清 cloud-init 未运行配置的原因，则需更细致地了解每个 cloud-init 阶段发生的情况，以及运行模块的时间。 有关详细信息，请参阅[更深入地了解 cloud-init 配置](./cloud-init-deep-dive.md)。 
+如果仍然无法厘清 cloud-init 未运行配置的原因，则需更细致地了解每个 cloud-init 阶段发生的情况，以及运行模块的时间。 有关详细信息，请参阅[更深入地了解 cloud-init 配置](./cloud-init-deep-dive.md)。

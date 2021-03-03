@@ -8,12 +8,12 @@ ms.topic: sample
 ms.service: virtual-machine-scale-sets
 ms.devlang: azurecli
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 493f479a09fc7b21bb857ebd98c35824c548b5d0
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 1abdf7ae15753d78ac8728f57e9b0cd5dcd9165e
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99539572"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101672593"
 ---
 # <a name="create-and-manage-virtual-machine-scale-set"></a>创建和管理虚拟机规模集
 
@@ -66,7 +66,7 @@ az disk update --resource-group MyResourceGroup --name myDataDisk --size-gb 200
 az vmss restart --resource-group MyResourceGroup --name myScaleSet --instance-ids 0
 ```
 
-若要使用扩展的磁盘，请扩展基础分区。 有关详细信息，请参阅[扩展磁盘分区和文件系统](/azure/virtual-machines/linux/expand-disks#expand-a-disk-partition-and-filesystem)。
+若要使用扩展的磁盘，请扩展基础分区。 有关详细信息，请参阅[扩展磁盘分区和文件系统](../../virtual-machines/linux/expand-disks.md#expand-a-disk-partition-and-filesystem)。
 
 此示例调整了数据磁盘的大小。 可以使用此相同的过程来更新 OS 磁盘。 有关 Windows 虚拟机的详细信息，请参阅[如何扩展虚拟机的 OS 驱动器](../../virtual-machines/windows/expand-os-disk.md)。 有关 Linux 虚拟机的详细信息，请参阅[使用 Azure CLI 扩展 Linux VM 上的虚拟硬盘](../../virtual-machines/linux/expand-disks.md)。
 

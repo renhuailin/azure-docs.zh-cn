@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 40bfa27dba905cb2e9a363c7739f0a43e7c2afdf
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: ad99c8d319a22f8b5388838b9d537de2f610478a
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100101134"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101650985"
 ---
 # <a name="monitoring-application-sign-in-health-for-resilience"></a>监视应用程序登录运行状况以实现复原
 
@@ -51,7 +51,7 @@ ms.locfileid: "100101134"
 
 * Azure 订阅中用于将日志发送到 Azure Monitor 日志的 Log Analytics 工作区。 
 
-   * 了解如何 [创建 Log Analytics 工作区](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)
+   * 了解如何 [创建 Log Analytics 工作区](../../azure-monitor/logs/quick-create-workspace.md)
 
 * 与 Azure Monitor 日志集成 Azure AD 日志
 
@@ -94,7 +94,7 @@ ms.locfileid: "100101134"
 
  若要配置基础查询并设置警报，请完成以下步骤。 你将使用示例查询作为你的配置的基础。 此部分的末尾显示了查询结构的说明。
 
-有关如何使用 Azure Monitor 创建、查看和管理日志警报的详细信息，请参阅 [管理日志警报](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log)。
+有关如何使用 Azure Monitor 创建、查看和管理日志警报的详细信息，请参阅 [管理日志警报](../../azure-monitor/alerts/alerts-log.md)。
 
  
 1. 在工作簿中，选择 " **编辑**"，然后选择位于关系图右侧上方的 " **查询" 图标** 。   
@@ -226,7 +226,7 @@ thisWeek
 
    * **频率 (分钟)**：60。 此值将计算周期设置为上一小时的每小时一次。
 
-   * 选择“完成”。
+   * 选择“完成”  。
 
 6. 在 " **操作** " 部分中，配置以下设置：  
 
@@ -280,10 +280,9 @@ thisWeek
 
 ## <a name="next-steps"></a>后续步骤
 
-[了解有关工作簿的详细信息](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-use-azure-monitor-workbooks)
+[了解有关工作簿的详细信息](../reports-monitoring/howto-use-azure-monitor-workbooks.md)
 
  
 
  
 
- 

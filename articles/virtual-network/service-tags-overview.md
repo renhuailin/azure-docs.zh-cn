@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 10/30/2020
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: 41db671e4ab76dc56dc2c01f4852640acfe3fd83
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 1186715003abef387343bb2b6cb71d56490c519d
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100389733"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101667841"
 ---
 # <a name="virtual-network-service-tags"></a>虚拟网络服务标记
 <a name="network-service-tags"></a>
@@ -40,7 +40,7 @@ ms.locfileid: "100389733"
 - 支持[区域](https://azure.microsoft.com/regions)范围。
 - 可在 [Azure 防火墙](../firewall/service-tags.md)规则中使用。
 
-默认情况下，服务标记反映了整个云的范围。 某些服务标记还可以通过将相应 IP 范围限制为指定的区域，来实现更精细的控制。 例如，服务标记“Storage”表示整个云的 Azure 存储，而“Storage.WestUS”则将范围缩小到来自美国西部区域的存储 IP 地址范围 。 下表指示每个服务标记是否支持此区域范围。  
+默认情况下，服务标记反映了整个云的范围。 某些服务标记还通过将相应的 IP 范围限于指定的区域，带给你更精细的控制。 例如，服务标记“Storage”表示整个云的 Azure 存储，而“Storage.WestUS”则将范围缩小到来自美国西部区域的存储 IP 地址范围 。 下表指出每个服务标记是否支持此类区域范围。  
 
 | 标记 | 目的 | 可以使用入站还是出站连接？ | 可以支持区域范围？ | 是否可与 Azure 防火墙一起使用？ |
 | --- | -------- |:---:|:---:|:---:|
@@ -53,6 +53,7 @@ ms.locfileid: "100389733"
 | **AzureActiveDirectory** | Azure Active Directory。 | 出站 | 否 | 是 |
 | **AzureActiveDirectoryDomainServices** | Azure Active Directory 域服务专用部署的管理流量。 | 推送、请求和匿名 | 否 | 是 |
 | **AzureAdvancedThreatProtection** | Azure 高级威胁防护。 | 出站 | 否 | 否 |
+| **AzureAPIForFHIR** | 适用于 FHIR 的 Azure API (Fast 医疗保健互操作性资源) 。<br/><br/> *注意：此标记当前不可通过 Azure 门户进行配置。*| 出站 | 否 | 否 |
 | **AzureArcInfrastructure** | 启用了 azure Arc 的服务器、启用了 Azure Arc 的 Kubernetes 和来宾配置流量。<br/><br/>*注意：* 此标记依赖于 **AzureActiveDirectory**、**AzureTrafficManager** 和 **AzureResourceManager** 标记。 *此标记当前不可通过 Azure 门户进行配置*。| 出站 | 否 | 是 |
 | **AzureBackup** |Azure 备份。<br/><br/>*注意：* 此标记依赖于 **存储** 和 **AzureActiveDirectory** 标记。 | 出站 | 否 | 是 |
 | **AzureBotService** | Azure 机器人服务。 | 出站 | 否 | 否 |

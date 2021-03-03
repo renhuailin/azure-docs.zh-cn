@@ -11,12 +11,12 @@ ms.author: shipatel
 author: shivp950
 ms.reviewer: larryfr
 ms.date: 05/11/2020
-ms.openlocfilehash: 1fd177273c9dafb04add64d8a8bfef1d81cc65d0
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 06b871d29c26241c38be27c4ace8ab7461834fd1
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93319323"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101655711"
 ---
 # <a name="trigger-applications-processes-or-cicd-workflows-based-on-azure-machine-learning-events-preview"></a>基于 Azure 机器学习事件 (预览版触发应用程序、进程或 CI/CD 工作流) 
 
@@ -29,9 +29,6 @@ Azure 机器学习管理机器学习进程的整个生命周期，包括模型�
 * 注册模型后使用 Azure 函数
 * 将事件从 Azure 机器学习流式传输到各种终结点
 * 检测到偏移时触发 ML 管道
-
-> [!NOTE] 
-> 目前，只有当运行状态为 **failed** 时才会触发 runStatusChanged 事件
 
 ## <a name="prerequisites"></a>先决条件
 要使用事件网格，需要以参与者或所有者身份访问将为其创建事件的 Azure 机器学习工作区。
@@ -84,7 +81,7 @@ Azure 机器学习事件的订阅受到 Azure RBAC)  (Azure 基于角色的访�
   | `Microsoft.MachineLearningServices.DatasetDriftDetected` | `datadrift/{data.DataDriftId}/run/{data.RunId}` | `datadrift/4e694bf5-712e-4e40-b06a-d2a2755212d4/run/my_driftrun1_1550564444_fbbcdc0f` |
   | `Microsoft.MachineLearningServices.RunStatusChanged` | `experiments/{ExperimentId}/runs/{RunId}` | `experiments/b1d7966c-f73a-4c68-b846-992ace89551f/runs/my_exp1_1554835758_38dbaa94` | 
 
-+ **高级筛选** ：Azure 事件网格还支持基于已发布事件架构的高级筛选。 有关 Azure 机器学习事件架构的详细信息，请参阅 [Azure 机器学习的 Azure 事件网格事件架构](../event-grid/event-schema-machine-learning.md)。  可以执行的一些高级筛选的示例包括：
++ **高级筛选**：Azure 事件网格还支持基于已发布事件架构的高级筛选。 有关 Azure 机器学习事件架构的详细信息，请参阅 [Azure 机器学习的 Azure 事件网格事件架构](../event-grid/event-schema-machine-learning.md)。  可以执行的一些高级筛选的示例包括：
 
   对于 `Microsoft.MachineLearningServices.ModelRegistered` 事件，要筛选模型的标记值：
 
@@ -135,7 +132,7 @@ Azure 事件网格允许客户生成可由 Azure 机器学习事件触发的反�
 
 可以安装最新的 [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)，也可以使用作为 Azure 订阅的一部分提供的 Azure Cloud Shell。
 
-若要安装事件网格扩展，请在 CLI 中使用以下命令：
+要安装事件网格扩展，请在 CLI 中使用以下命令：
 
 ```azurecli-interactive
 az add extension --name eventgrid

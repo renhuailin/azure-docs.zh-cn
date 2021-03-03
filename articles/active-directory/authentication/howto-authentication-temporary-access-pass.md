@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 02/12/2021
+ms.date: 02/19/2021
 ms.author: justinha
 author: inbarckms
 manager: daveba
 ms.reviewer: inbarckms
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 56d45119fa86ab47e6a625c628d8cb9763db83bd
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: b0f49f39e6bc291c3242fe739866a015ac154a8b
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100520883"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101651155"
 ---
 # <a name="configure-temporary-access-pass-in-azure-ad-to-register-passwordless-authentication-methods-preview"></a>在 Azure AD 中配置临时访问传递 (预览) 注册无密码身份验证方法
 
@@ -54,7 +54,7 @@ ms.locfileid: "100520883"
     最小生存期 | 1 小时         | 10–43200分钟 (30 天)  | 点击有效的最小分钟数。                                                                                                                                                                                                                         |   |
    | 最长生存期 | 24 小时       | 10–43200分钟 (30 天)  | 点击有效的最大分钟数。                                                                                                                                                                                                                         |   |
    | 默认生存期 | 1 小时         | 10–43200分钟 (30 天)  | 默认值可以在策略所配置的最小和最大生存期内由各个传递覆盖                                                                                                                                                |   |
-   | 一次性使用     | 错误          | True/False                 | 如果将策略设置为 "false"，则可以在租户有效期内使用一次或多次（最长 (生存期) ）。 通过在点击策略中强制使用一次性，在租户中创建的所有传递都将创建为一次性使用。 |   |
+   | 一次性使用     | False          | True/False                 | 如果将策略设置为 "false"，则可以在租户有效期内使用一次或多次（最长 (生存期) ）。 通过在点击策略中强制使用一次性，在租户中创建的所有传递都将创建为一次性使用。 |   |
    | 长度           | 8              | 8-48 个字符              | 定义密码的长度。                                                                                                                                                                                                                                      |   |
 
 ## <a name="create-a-tap-in-the-azure-ad-portal"></a>在 Azure AD 门户中创建点击
@@ -74,6 +74,9 @@ ms.locfileid: "100520883"
 1. 选择用于 **添加身份验证方法** 的选项。
 1. 在 " **选择方法**" 下，单击 " **临时访问传递 (预览")**。
 1. 定义自定义激活时间或持续时间，并单击 " **添加**"。
+
+   >[!NOTE]
+   >如果在租户中启用了 "使我保持登录状态 () KMSI"，则不会强制使用一次点击。 如果创建的是一次点击，请确保禁用 KMSI。
 
    ![如何创建点击的屏幕截图](./media/how-to-authentication-temporary-access-pass/create.png)
 
@@ -125,6 +128,7 @@ ms.locfileid: "100520883"
 - 来宾用户无法通过点击登录。
 - 在登录后，将需要在自助服务密码重置范围内的用户 (SSPR) 注册策略注册一个 SSPR 方法。 如果用户只是要使用 FIDO2 密钥，则从 SSPR 策略中排除这些密钥，或者禁用 SSPR 注册策略。 
 - 点击不能与网络策略服务器 (NPS) 扩展和 Active Directory 联合身份验证服务 (AD FS) 适配器一起使用。
+- 如果对租户启用了 KMSI，则不会强制使用 "一次性点击"。
 - 如果在租户上启用了无缝 SSO，则会提示用户输入密码。 " **使用临时访问 Pass** " 链接将可供用户使用点击来登录。
 
 ![改用点击的屏幕截图](./media/how-to-authentication-temporary-access-pass/alternative.png)

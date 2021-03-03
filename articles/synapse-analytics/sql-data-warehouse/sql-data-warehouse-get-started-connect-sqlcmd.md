@@ -1,6 +1,6 @@
 ---
 title: 使用 sqlcmd 进行连接
-description: 使用 sqlcmd 命令行实用程序连接并查询 Synapse SQL 池。
+description: 使用 sqlcmd 命令行实用程序连接到 Azure Synapse 分析中的专用 SQL 池并对其进行查询。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,14 +11,14 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 3d1d8d3ce3afece5a979aadc27cd82dc7ddaf0d5
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: f8b4d54585bc70c3ee5f24846e216f75e985cf84
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98676217"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101675736"
 ---
-# <a name="connect-to-sql-pool-in-azure-synapse-analytics-with-sqlcmd"></a>使用 sqlcmd 连接到 Azure Synapse Analytics 中的 SQL 池
+# <a name="connect-to-a-dedicated-sql-pool-in-azure-synapse-analytics-with-sqlcmd"></a>使用 sqlcmd 连接到 Azure Synapse 分析中的专用 SQL 池
 
 > [!div class="op_single_selector"]
 >
@@ -28,15 +28,15 @@ ms.locfileid: "98676217"
 > * [sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md)
 > * [SSMS](sql-data-warehouse-query-ssms.md)
 
-使用 [sqlcmd][sqlcmd] 命令行实用程序连接并查询 SQL 池。  
+使用 [sqlcmd] [sqlcmd] 命令行实用工具连接到专用 SQL 池并对其进行查询。  
 
 ## <a name="1-connect"></a>1.连接
 
-若要开始使用 [sqlcmd][sqlcmd]，请打开命令提示符并输入“sqlcmd”，后跟 SQL 池的连接字符串。 连接字符串需要以下参数：
+若要开始使用 [sqlcmd] [sqlcmd]，请打开命令提示符并输入 **sqlcmd** ，后跟专用 SQL 池的连接字符串。 连接字符串需要以下参数：
 
 * **服务器 (-S)：** 采用 `<`Server Name`>`.database.windows.net 格式的服务器
-* **数据库 (-d)：** SQL 池名称。
-* **启用带引号的标识符 (-I)：** 必须启用带引号的标识符才能连接到 SQL 池实例。
+* **数据库 () ：** 专用 SQL 池名称。
+* **启用带引号的标识符 (-I) ：** 必须启用带引号的标识符才能连接到专用的 SQL 池实例。
 
 若要使用 SQL Server 身份验证，需添加用户名/密码参数：
 

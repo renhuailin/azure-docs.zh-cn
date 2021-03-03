@@ -10,12 +10,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 11/09/2018
 ms.author: edprice
-ms.openlocfilehash: 711c1ba49ad0f347d30f2c8c40352ed95c1fd057
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 29150f229f1bd6adbbe6a335fdb91a44f3a2345b
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99221559"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101675677"
 ---
 # <a name="ibm-db2-purescale-on-azure"></a>Azure 上的 IBM DB2 pureScale
 
@@ -96,9 +96,9 @@ DB2 pureScale 使用共享的所有体系结构，所有数据都可以从所有
 
 IBM 建议为 DB2 pureScale 群集中的所有成员提供 InfiniBand 网络。 DB2 pureScale 还为 CF 使用远程直接内存访问 (RDMA)（如果可用）。
 
-在安装过程中，将创建一个 Azure [资源组](https://docs.microsoft.com/azure/azure-resource-manager/management/overview)来包含所有虚拟机。 一般情况下，可根据资源的生存期及其管理者将资源分组。 此体系结构中的虚拟机需要[加速网络](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/)。 这是一项 Azure 功能，可以通过单根 I/O虚拟化 (SR-IOV) 向虚拟机提供一致的超低网络延迟。
+在安装过程中，将创建一个 Azure [资源组](../../../../azure-resource-manager/management/overview.md)来包含所有虚拟机。 一般情况下，可根据资源的生存期及其管理者将资源分组。 此体系结构中的虚拟机需要[加速网络](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/)。 这是一项 Azure 功能，可以通过单根 I/O虚拟化 (SR-IOV) 向虚拟机提供一致的超低网络延迟。
 
-每台 Azur e虚拟机都部署到具有子网的虚拟网络中：主子网、Gluster FS 前端 (gfsfe)、Gluster FS 后端 (bfsbe)、DB2 pureScale (dB2be) 和 DB2 pureScale 前端 (db2fe)。 安装脚本还会在主子网中的虚拟机上创建主 [NIC](https://docs.microsoft.com/azure/virtual-machines/windows/multiple-nics)。
+每台 Azur e虚拟机都部署到具有子网的虚拟网络中：主子网、Gluster FS 前端 (gfsfe)、Gluster FS 后端 (bfsbe)、DB2 pureScale (dB2be) 和 DB2 pureScale 前端 (db2fe)。 安装脚本还会在主子网中的虚拟机上创建主 [NIC](../../../windows/multiple-nics.md)。
 
 [网络安全组](../../../../virtual-network/virtual-network-vnet-plan-design-arm.md)用于限制虚拟网络中的流量并隔离子网。
 

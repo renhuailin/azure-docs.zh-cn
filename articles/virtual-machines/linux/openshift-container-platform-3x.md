@@ -3,18 +3,19 @@ title: 在 Azure 中部署 OpenShift 容器平台3.11
 description: 在 Azure 中部署 OpenShift 容器平台3.11。
 author: haroldwongms
 manager: mdotson
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines
+ms.subservice: openshift
+ms.collection: linux
 ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 04/05/2020
 ms.author: haroldw
-ms.openlocfilehash: fab8f88a39730411503af273902a53f169e3fe57
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 054fb2ffc65b44d5436282eab5327f0facf39c06
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97703729"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101671190"
 ---
 # <a name="deploy-openshift-container-platform-311-in-azure"></a>在 Azure 中部署 OpenShift 容器平台3.11
 
@@ -276,13 +277,13 @@ ms.locfileid: "97703729"
 | `keyVaultName` | 创建的 Key Vault 的名称 |  |  |
 | `enableAzure` | 启用 Azure 云提供程序 | true <br> false | true |
 | `aadClientId` | Azure Active Directory 客户端 ID 也称为服务主体的应用程序 ID |  |  |
-| `domainName` | 要在适用)  (使用的自定义域名的名称。 如果不部署完全专用群集，则设置为 "无" |  | none |
+| `domainName` | 要在适用)  (使用的自定义域名的名称。 如果不部署完全专用群集，则设置为 "无" |  | 无 |
 | `masterClusterDnsType` | OpenShift web 控制台的域类型。 "默认" 将使用主基础公共 IP 的 DNS 标签。 "自定义" 允许您定义自己的名称 | default <br> 自定义 | default |
 | `masterClusterDns` | 如果选择了 "自定义"，则用于访问 OpenShift web 控制台的自定义 DNS 名称 `masterClusterDnsType` |  | console.contoso.com |
 | `routingSubDomainType` | 如果设置为 "nipio"， `routingSubDomain` 将使用 nip.io。  如果你有要用于路由的自己的域，请使用 "自定义" | nipio <br> 自定义 | nipio |
 | `routingSubDomain` | 如果选择了 "自定义"，则要用于路由的通配符 DNS 名称 `routingSubDomainType` |  | apps.contoso.com |
 | `virtualNetworkNewOrExisting` | 选择是使用现有虚拟网络还是新建虚拟网络 | 现有 <br> new | new |
-| `virtualNetworkResourceGroupName` | 如果为其选择了 "新建"，则为新虚拟网络的资源组名称 `virtualNetworkNewOrExisting` |  | resourceGroup ( # A1. name |
+| `virtualNetworkResourceGroupName` | 如果为其选择了 "新建"，则为新虚拟网络的资源组名称 `virtualNetworkNewOrExisting` |  | resourceGroup () 。名称 |
 | `virtualNetworkName` | 如果为其选择了 "新建"，要创建的新虚拟网络的名称 `virtualNetworkNewOrExisting` |  | openshiftvnet |
 | `addressPrefixes` | 新虚拟网络的地址前缀 |  | 10.0.0.0/14 |
 | `masterSubnetName` | 子网的名称 |  | mastersubnet |

@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.date: 2/2/2021
 ms.author: mimckitt
 ms.custom: rybaker, chmimckitt
-ms.openlocfilehash: 744f265251e9f58ce91085f0e5dd5d1ad13eec69
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: 6e6f6ced1cdba429abd914354a5eba861ab127ec
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99625105"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101670051"
 ---
 # <a name="how-to-deploy-windows-10-on-azure-with-multitenant-hosting-rights"></a>如何使用多租户托管权限在 Azure 上部署 Windows 10 
 对于其用户使用 Windows 10 企业版 E3/E5 或使用 Windows 虚拟桌面访问（用户订阅许可证或附加设备用户订阅许可证）的客户，通过使用 Windows 10 多租户托管权限，他们可以在云中使用其 Windows 10 许可证并在 Azure 上运行 Windows 10 虚拟机，无需购买其他许可证。 多租户托管权限仅适用于 Windows 10 (版本1703或更高版本) 。
@@ -26,7 +26,7 @@ ms.locfileid: "99625105"
 
 ## <a name="subscription-licenses-that-qualify-for-multitenant-hosting-rights"></a>符合多租户托管权限的订阅许可证
 
-使用 [Microsoft 管理中心](https://docs.microsoft.com/microsoft-365/admin/admin-overview/about-the-admin-center?view=o365-worldwide&preserve-view=true)，可以确认是否向用户分配了支持 Windows 10 的许可证。
+使用 [Microsoft 管理中心](/microsoft-365/admin/admin-overview/about-the-admin-center?preserve-view=true&view=o365-worldwide)，可以确认是否向用户分配了支持 Windows 10 的许可证。
 
 > [!IMPORTANT]
 > 若要在 Azure 中使用 Windows 10 映像，用户必须具有以下订阅许可证之一。 如果你没有这些订阅许可证，则可以通过 [云服务合作伙伴](https://azure.microsoft.com/overview/choosing-a-cloud-service-provider/) 或直接通过 [Microsoft](https://www.microsoft.com/microsoft-365?rtc=1)购买。

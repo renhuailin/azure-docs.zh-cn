@@ -2,18 +2,17 @@
 title: 在 Azure 虚拟机上设置 IBM Db2 HADR (Vm) |Microsoft Docs
 description: 在 Azure 虚拟机 (Vm) 上建立 IBM Db2 LUW 的高可用性。
 author: msjuergent
-ms.service: virtual-machines
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.date: 10/16/2020
 ms.author: juergent
 ms.reviewer: cynthn
-ms.openlocfilehash: 54bde8c9dd47e88ffdc831ccb9f7833720583238
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: faafce32c3452a5c4ff08783ec2edd28f7f961e9
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96621376"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101671887"
 ---
 # <a name="high-availability-of-ibm-db2-luw-on-azure-vms-on-suse-linux-enterprise-server-with-pacemaker"></a>与 Pacemaker SUSE Linux Enterprise Server 上的 Azure Vm 上的 IBM Db2 LUW 的高可用性
 
@@ -30,7 +29,7 @@ IBM Db2 for Linux、UNIX 和 Windows (LUW) 在 [高可用性和灾难恢复 (HAD
 
 在开始安装之前，请参阅以下 SAP 说明和文档：
 
-| SAP 说明 | 描述 |
+| SAP 说明 | 说明 |
 | --- | --- |
 | [1928533] | Azure 上的 SAP 应用程序：支持的产品和 Azure VM 类型 |
 | [2015553] | Azure 上的 SAP：支持先决条件 |
@@ -425,7 +424,7 @@ sudo crm configure property maintenance-mode=false</pre></code>
 
    e. 选择 IBM Db2 群集的虚拟机。
 
-   f. 选择“确定”  。
+   f. 选择“确定”。
 
 1. 创建运行状况探测：
 
@@ -483,7 +482,7 @@ j2ee/dbhost = db-virt-hostname
 1. 在右侧框中，选择密钥 jdbc/pool/ \<SAPSID> /url。
 1. 将 JDBC URL 中的主机名更改为虚拟主机名。
      `jdbc:db2://db-virt-hostname:5912/TSP:deferPrepares=0`
-1. 选择 **添加** 。
+1. 选择“添加”。
 1. 若要保存所做的更改，请在左上角选择磁盘图标。
 1. 关闭配置工具。
 1. 重新启动 Java 实例。

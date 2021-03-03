@@ -2,18 +2,19 @@
 title: 使用 RMAN 和 Azure 存储在 Azure Linux VM 上备份 Oracle Database 19c 数据库
 description: 了解如何将 Oracle Database 19c 数据库备份到 Azure 云存储。
 author: cro27
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines
+ms.subservice: oracle
+ms.collection: linux
 ms.topic: article
 ms.date: 01/28/2021
 ms.author: cholse
 ms.reviewer: dbakevlar
-ms.openlocfilehash: fce947c43e8559f4ea2a65645805e987a9015d3f
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: a6ce5446bd6470ef7a829925646d486801b28ebc
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99806267"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101670022"
 ---
 # <a name="back-up-and-recover-an-oracle-database-19c-database-on-an-azure-linux-vm-using-azure-storage"></a>使用 Azure 存储在 Azure Linux VM 上备份和恢复 Oracle Database 19c 数据库
 
@@ -176,7 +177,7 @@ ms.locfileid: "99806267"
 
 装载 Azure 文件时，我们将使用 `cache=none` 禁用文件共享数据的缓存。 若要确保在共享中创建的文件归 oracle 用户所有，也可以设置 `uid=oracle` 和 `gid=oinstall` 选项。 
 
-# <a name="portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 首先，设置存储帐户。
 
@@ -405,4 +406,4 @@ az group delete --name rg-oracle
 
 [教程：创建具有高可用性的 VM](../../linux/create-cli-complete.md)
 
-[浏览 VM 部署 Azure CLI 示例](../../linux/cli-samples.md)
+[浏览 VM 部署 Azure CLI 示例](https://github.com/Azure-Samples/azure-cli-samples/tree/master/virtual-machine)

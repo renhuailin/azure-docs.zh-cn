@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.date: 11/27/2018
 ms.author: cynthn
 ms.topic: conceptual
-ms.openlocfilehash: b7f6d30ffa849f78b0f7baa2d84e4fb01f3bf192
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 291b9a210bf5f8cc18ccf8a523e282d3fc85aa28
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500336"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101673345"
 ---
 # <a name="secure-and-use-policies-on-virtual-machines-in-azure"></a>在 Azure 中保护和使用虚拟机上的策略
 
@@ -73,4 +73,4 @@ Azure Active Directory (Azure AD) 中的 Azure 资源托管标识功能可以解
 
 
 ## <a name="next-steps"></a>后续步骤
-- 完成相关步骤，使用适用于 [Linux](../security/fundamentals/overview.md) 或 [Windows](./tutorial-azure-security.md) 的 Azure 安全中心监视虚拟机的安全性。
+- 完成相关步骤，使用适用于 [Linux](../security/fundamentals/overview.md) 或 [Windows](/previous-versions/azure/virtual-machines/tutorial-azure-security) 的 Azure 安全中心监视虚拟机的安全性。

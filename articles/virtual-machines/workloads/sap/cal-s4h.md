@@ -2,18 +2,17 @@
 title: 在 Azure VM 上部署 SAP S/4HANA 或 BW/4HANA | Microsoft Docs
 description: 在 Azure VM 上部署 SAP S/4HANA 或 BW/4HANA
 author: hermanndms
-ms.service: virtual-machines
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.date: 09/15/2016
 ms.author: hermannd
 ms.reviewer: cynthn
-ms.openlocfilehash: 6492e770479042a5a1b4da6f61917832adad4873
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4b739efcf2695a5385351f531efb6201bbea1cd5
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96021412"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101671937"
 ---
 # <a name="deploy-sap-s4hana-or-bw4hana-on-azure"></a>在 Azure 上部署 SAP S/4HANA 或 BW/4HANA
 本文介绍如何通过 SAP Cloud Appliance Library (SAP CAL) 3.0 在 Azure 上部署 S/4HANA。 若要部署其他基于 SAP HANA 的解决方案（如 BW/4HANA），请按照相同的步骤执行。
@@ -108,7 +107,7 @@ ms.locfileid: "96021412"
 
     b. 输入实例“名称”。
 
-    c. 选择 Azure **区域**。 SAP CAL 建议一个区域。 如果需要另一个 Azure 区域并且没有 SAP CAL 订阅，则需要通过 SAP 订购 CAL 订阅。
+    c. 选择 Azure“区域”。 SAP CAL 建议一个区域。 如果需要另一个 Azure 区域并且没有 SAP CAL 订阅，则需要通过 SAP 订购 CAL 订阅。
 
     d. 输入一个用于解决方案的八个或九个字符的主密码。 密码用于不同组件的管理员。
 

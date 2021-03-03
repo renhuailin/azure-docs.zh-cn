@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/01/2021
 ms.custom: references_regions
-ms.openlocfilehash: 5e8b873e0e4e89979769183cfbf0ad473069e897
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 60371888dbc4f0cbc33f1ad1b2a685dbb071c01a
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101096429"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101670712"
 ---
 # <a name="scale-for-performance-on-azure-cognitive-search"></a>Azure 认知搜索的性能缩放
 
@@ -91,7 +91,7 @@ ms.locfileid: "101096429"
 
 ### <a name="availability-zones"></a>可用性区域
 
-[可用性区域](https://docs.microsoft.com/azure/availability-zones/az-overview) 将区域的数据中心分成不同的物理位置组，以在同一区域内提供高可用性。 对于认知搜索，各个副本是区域分配的单位。 搜索服务在一个区域中运行;其副本在不同的区域中运行。
+[可用性区域](../availability-zones/az-overview.md) 将区域的数据中心分成不同的物理位置组，以在同一区域内提供高可用性。 对于认知搜索，各个副本是区域分配的单位。 搜索服务在一个区域中运行;其副本在不同的区域中运行。
 
 可以通过将两个或多个副本添加到搜索服务来利用 Azure 认知搜索可用性区域。 每个副本都将放置在该区域内的不同可用性区域中。 如果副本数多于可用性区域，副本将在可用性区域之间平均分布。
 

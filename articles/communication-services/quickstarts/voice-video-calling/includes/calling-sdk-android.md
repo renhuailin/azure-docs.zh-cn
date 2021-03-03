@@ -4,23 +4,26 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: 26e39b8f0429995bfa336c4971c76f90d903ff55
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: 3b2fb1c4e7a08619a0321e188b54bb581f97fd6d
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99628884"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101661510"
 ---
 ## <a name="prerequisites"></a>先决条件
 
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
 - 已部署的通信服务资源。 [创建通信服务资源](../../create-communication-resource.md)。
 - 用于启用呼叫客户端的`User Access Token`。 详细了解[如何获取`User Access Token`](../../access-tokens.md)
-- 可选：完成快速入门[添加对应用程序调用](../getting-started-with-calling.md)的入门教程
+- 可选：完成[开始向应用程序添加通话功能](../getting-started-with-calling.md)快速入门
 
 ## <a name="setting-up"></a>设置
 
 ### <a name="install-the-package"></a>安装包
+
+> [!NOTE]
+> 本文档使用 1.0.0-beta.8 版的通话客户端库。
 
 <!-- TODO: update with instructions on how to download, install and add package to project -->
 找到项目级别 build.gradle，确保将 `mavenCentral()` 添加到 `buildscript` 和 `allprojects` 下的存储库列表中
@@ -43,12 +46,12 @@ allprojects {
     }
 }
 ```
-然后，在模块级别的 gradle 中，将以下行添加到 "依赖项" 部分
+然后，在模块级别的 build.gradle 中，将以下行添加到 dependencies 部分
 
 ```groovy
 dependencies {
     ...
-    implementation 'com.azure.android:azure-communication-calling:1.0.0-beta.2'
+    implementation 'com.azure.android:azure-communication-calling:1.0.0-beta.8'
     ...
 }
 
@@ -62,80 +65,81 @@ dependencies {
 | ------------------------------------- | ------------------------------------------------------------ |
 | CallClient| CallClient 是呼叫客户端库的主入口点。|
 | CallAgent | CallAgent 用于启动和管理呼叫。 |
-| CommunicationUserCredential | CommunicationUserCredential 用作实例化 CallAgent 的令牌凭据。|
+| CommunicationTokenCredential | CommunicationTokenCredential 用作实例化 CallAgent 的令牌凭据。|
+| CommunicationIdentifier | CommunicationIdentifier 用作可参与通话的不同类型的参与者。|
 
-## <a name="initialize-the-callclient-create-a-callagent-and-access-the-devicemanager"></a>初始化 CallClient 并创建 CallAgent，并访问 DeviceManager
+## <a name="initialize-the-callclient-create-a-callagent-and-access-the-devicemanager"></a>初始化 CallClient、创建 CallAgent 和访问 DeviceManager
 
-若要创建 `CallAgent` 实例，必须对实例调用 `createCallAgent` 方法 `CallClient` 。 这会以异步方式返回 `CallAgent` 实例对象。
-`createCallAgent`方法采用 `CommunicationUserCredential` 作为参数，用于封装[访问令牌](../../access-tokens.md)。
-若要访问 `DeviceManager` ，必须首先创建一个 callAgent 实例，然后可以使用 `CallClient.getDeviceManager` 方法获取 DeviceManager。
+若要创建 `CallAgent` 实例，必须对 `CallClient` 实例调用 `createCallAgent` 方法。 这将异步返回 `CallAgent` 实例对象。
+`createCallAgent` 方法采用 `CommunicationUserCredential` 作为参数来封装[访问令牌](../../access-tokens.md)。
+若要访问 `DeviceManager`，必须先创建一个 callAgent 实例，然后可使用 `CallClient.getDeviceManager` 方法获取 DeviceManager。
 
 ```java
 String userToken = '<user token>';
 CallClient callClient = new CallClient();
-CommunicationUserCredential tokenCredential = new CommunicationUserCredential(userToken);
+CommunicationTokenCredential tokenCredential = new CommunicationTokenCredential(userToken);
 android.content.Context appContext = this.getApplicationContext(); // From within an Activity for instance
-CallAgent callAgent = await callClient.createCallAgent((appContext, tokenCredential).get();
-DeviceManage deviceManager = await callClient.getDeviceManager().get();
+CallAgent callAgent = callClient.createCallAgent((appContext, tokenCredential).get();
+DeviceManage deviceManager = callClient.getDeviceManager().get();
 ```
-若要为调用方设置显示名称，请使用以下替代方法：
+若要为主叫方设置显示名称，请使用以下替代方法：
 
 ```java
 String userToken = '<user token>';
 CallClient callClient = new CallClient();
-CommunicationUserCredential tokenCredential = new CommunicationUserCredential(userToken);
+CommunicationTokenCredential tokenCredential = new CommunicationTokenCredential(userToken);
 android.content.Context appContext = this.getApplicationContext(); // From within an Activity for instance
 CallAgentOptions callAgentOptions = new CallAgentOptions();
 callAgentOptions.setDisplayName("Alice Bob");
-CallAgent callAgent = await callClient.createCallAgent((appContext, tokenCredential, callAgentOptions).get();
-DeviceManage deviceManager = await callClient.getDeviceManager().get();
+CallAgent callAgent = callClient.createCallAgent((appContext, tokenCredential, callAgentOptions).get();
+DeviceManage deviceManager = callClient.getDeviceManager().get();
 ```
 
 
-## <a name="place-an-outgoing-call-and-join-a-group-call"></a>发出传出呼叫并加入组呼叫
+## <a name="place-an-outgoing-call-and-join-a-group-call"></a>拨出呼叫和加入群组通话
 
-若要创建并启动调用，需要调用 `CallAgent.call()` 方法，并为 `Identifier` 被调用方 () 。
-若要加入组调用，需要调用 `CallAgent.join()` 方法并提供 groupId。 组 Id 必须采用 GUID 或 UUID 格式。
+若要创建和发起呼叫，需要调用 `CallAgent.startCall()` 方法并为被叫方提供 `Identifier`。
+若要加入群组通话，需要调用 `CallAgent.join()` 方法并提供 groupId。 组 ID 必须采用 GUID 或 UUID 格式。
 
-调用创建和启动是同步的。 调用实例允许您订阅调用中的所有事件。
+创建和发起呼叫的操作是同步的。 通过呼叫实例，可订阅呼叫中的所有事件。
 
-### <a name="place-a-11-call-to-a-user"></a>向用户发出1:1 调用
-若要调用另一个通信服务用户，请 `call` 在上调用方法， `callAgent` 并通过键传递对象 `communicationUserId` 。
+### <a name="place-a-11-call-to-a-user"></a>向用户发出一对一呼叫
+若要向另一位通信服务用户发出呼叫，请对 `callAgent` 调用 `call` 方法，并传递带有 `communicationUserId` 键的对象。
 ```java
 StartCallOptions startCallOptions = new StartCallOptions();
 Context appContext = this.getApplicationContext();
-CommunicationUser acsUserId = new CommunicationUser(<USER_ID>);
-CommunicationUser participants[] = new CommunicationUser[]{ acsUserId };
-call oneToOneCall = callAgent.call(appContext, participants, startCallOptions);
+CommunicationUserIdentifier acsUserId = new CommunicationUserIdentifier(<USER_ID>);
+CommunicationUserIdentifier participants[] = new CommunicationUserIdentifier[]{ acsUserId };
+call oneToOneCall = callAgent.startCall(appContext, participants, startCallOptions);
 ```
 
-### <a name="place-a-1n-call-with-users-and-pstn"></a>将1： n 调用与用户和 PSTN 一起使用
+### <a name="place-a-1n-call-with-users-and-pstn"></a>向用户和 PSTN 发起一对多通话
 > [!WARNING]
-> 当前不支持 PSTN 调用
+> PSTN 呼叫当前不可用
 
-若要对用户和 PSTN 号码进行1： n 调用，必须指定被呼叫方的电话号码。
-必须将通信服务资源配置为允许 PSTN 调用：
+若要对用户和 PSTN 号码发出一对多呼叫，必须指定被叫方的电话号码。
+必须将通信服务资源配置为允许 PSTN 呼叫：
 ```java
-CommunicationUser acsUser1 = new CommunicationUser(<USER_ID>);
-PhoneNumber acsUser2 = new PhoneNumber("<PHONE_NUMBER>");
+CommunicationUserIdentifier acsUser1 = new CommunicationUserIdentifier(<USER_ID>);
+PhoneNumberIdentifier acsUser2 = new PhoneNumberIdentifier("<PHONE_NUMBER>");
 CommunicationIdentifier participants[] = new CommunicationIdentifier[]{ acsUser1, acsUser2 };
 StartCallOptions startCallOptions = new StartCallOptions();
 Context appContext = this.getApplicationContext();
-Call groupCall = callAgent.call(participants, startCallOptions);
+Call groupCall = callAgent.startCall(participants, startCallOptions);
 ```
 
-### <a name="place-a-11-call-with-video-camera"></a>使用摄像机发出1:1 呼叫
+### <a name="place-a-11-call-with-video-camera"></a>发起启用相机的一对一通话
 > [!WARNING]
-> 目前仅支持一个传出的本地视频流来向视频发出呼叫，你必须使用 API 枚举本地相机 `deviceManager` `getCameraList` 。
-选择所需的照相机后，可以使用它来构造 `LocalVideoStream` 实例，并将其 `videoOptions` 作为数组中的项传递 `localVideoStream` 给 `call` 方法。
-呼叫连接后，会自动开始将视频流从所选照相机发送到其他 () 的参与者。
+> 目前仅支持一个传出本地视频流。若要发出带有视频的呼叫，必须使用 `deviceManager` `getCameras` API 枚举本地相机。
+选择所需相机后，用它来构造一个 `LocalVideoStream` 实例，并将其作为 `call` 方法的 `localVideoStream` 数组中的项目传递给 `videoOptions`。
+呼叫接通后，会自动开始将视频流从所选相机发送给其他的参与者。
 
 > [!NOTE]
-> 由于隐私方面的问题，如果未在本地预览视频，则不会将视频共享到呼叫。
-有关更多详细信息，请参阅 [本地相机预览](#local-camera-preview) 。
+> 出于隐私考虑，如果未在本地预览视频，则不在呼叫中共享该视频。
+有关更多详细信息，请查看[本地相机预览](#local-camera-preview)。
 ```java
 Context appContext = this.getApplicationContext();
-VideoDeviceInfo desiredCamera = callClient.getDeviceManager().get().getCameraList().get(0);
+VideoDeviceInfo desiredCamera = callClient.getDeviceManager().get().getCameras().get(0);
 LocalVideoStream currentVideoStream = new LocalVideoStream(desiredCamera, appContext);
 VideoOptions videoOptions = new VideoOptions(currentVideoStream);
 
@@ -145,58 +149,52 @@ View uiView = previewRenderer.createView(new RenderingOptions(ScalingMode.Fit));
 // Attach the uiView to a viewable location on the app at this point
 layout.addView(uiView);
 
-CommunicationUser[] participants = new CommunicationUser[]{ new CommunicationUser("<acs user id>") };
+CommunicationUserIdentifier[] participants = new CommunicationUserIdentifier[]{ new CommunicationUserIdentifier("<acs user id>") };
 StartCallOptions startCallOptions = new StartCallOptions();
 startCallOptions.setVideoOptions(videoOptions);
-Call call = callAgent.call(context, participants, startCallOptions);
+Call call = callAgent.startCall(context, participants, startCallOptions);
 ```
 
 ### <a name="join-a-group-call"></a>加入群组通话
-若要启动新组调用或加入正在进行的组调用，必须调用 "join" 方法并使用属性传递对象 `groupId` 。 该值必须是 GUID。
+若要发起新的群组通话或加入正在进行的群组通话，必须调用“join”方法并传递带有 `groupId` 属性的对象。 该值必须为 GUID。
 ```java
 Context appContext = this.getApplicationContext();
-GroupCallContext groupCallContext = new groupCallContext("<GUID>");
+GroupCallLocator groupCallLocator = new GroupCallLocator("<GUID>");
 JoinCallOptions joinCallOptions = new JoinCallOptions();
 
-call = callAgent.join(context, groupCallContext, joinCallOptions);
+call = callAgent.join(context, groupCallLocator, joinCallOptions);
 ```
 
 ### <a name="accept-a-call"></a>接受呼叫
-若要接受调用，请对调用对象调用 "accept" 方法。
+若要接听来电，请对呼叫对象调用“accept”方法。
 
 ```java
 Context appContext = this.getApplicationContext();
-Call incomingCall = retrieveIncomingCall();
-incomingCall.accept(context).get();
+IncomingCall incomingCall = retrieveIncomingCall();
+Call call = incomingCall.accept(context).get();
 ```
 
-若要在上接受视频相机的呼叫：
+若要接受启用了摄像机的呼叫：
 
 ```java
 Context appContext = this.getApplicationContext();
-Call incomingCall = retrieveIncomingCall();
+IncomingCall incomingCall = retrieveIncomingCall();
 AcceptCallOptions acceptCallOptions = new AcceptCallOptions();
 VideoDeviceInfo desiredCamera = callClient.getDeviceManager().get().getCameraList().get(0);
 acceptCallOptions.setVideoOptions(new VideoOptions(new LocalVideoStream(desiredCamera, appContext)));
-incomingCall.accept(context, acceptCallOptions).get();
+Call call = incomingCall.accept(context, acceptCallOptions).get();
 ```
 
-可以通过订阅 `CallsUpdated` 对象上的事件 `callAgent` 并通过添加的调用来获取传入呼叫：
+可订阅 `callAgent` 对象上的 `onIncomingCall` 事件来获取来电：
 
 ```java
 // Assuming "callAgent" is an instance property obtained by calling the 'createCallAgent' method on CallClient instance 
 public Call retrieveIncomingCall() {
-    Call incomingCall;
-    callAgent.addOnCallsUpdatedListener(new CallsUpdatedListener() {
-        void onCallsUpdated(CallsUpdatedEvent callsUpdatedEvent) {
+    IncomingCall incomingCall;
+    callAgent.addOnIncomingCallListener(new IncomingCallListener() {
+        void onIncomingCall(IncomingCall inboundCall) {
             // Look for incoming call
-            List<Call> calls = callsUpdatedEvent.getAddedCalls();
-            for (Call call : calls) {
-                if (call.getState() == CallState.Incoming) {
-                    incomingCall = call;
-                    break;
-                }
-            }
+            incomingCall = inboundCall;
         }
     });
     return incomingCall;
@@ -207,14 +205,14 @@ public Call retrieveIncomingCall() {
 ## <a name="push-notifications"></a>推送通知
 
 ### <a name="overview"></a>概述
-移动推送通知是在移动设备上看到的弹出通知。 对于调用，我们将重点介绍 VoIP (通过 Internet 协议) 推送通知。 我们将注册推送通知，处理推送通知，然后取消注册推送通知。
+移动推送通知是移动设备上显示的弹出通知。 对于呼叫，我们将重点介绍 VoIP（Internet 语音协议）推送通知。 我们将注册推送通知、处理推送通知，然后取消注册推送通知。
 
 ### <a name="prerequisites"></a>先决条件
 
-使用云消息 (FCM) 启用，并将 Firebase 云消息服务连接到 Azure 通知中心实例来设置 Firebase 帐户。 有关详细信息，请参阅 [通信服务通知](../../../concepts/notifications.md) 。
-此外，本教程假定你使用 Android Studio 版本3.6 或更高版本来生成应用程序。
+一个 Firebase 帐户，它设置为启用 Cloud Messaging (FCM) 并将 Firebase Cloud Messaging 服务连接到 Azure 通知中心实例。 有关更多详细信息，请参阅[通信服务通知](../../../concepts/notifications.md)。
+此外，本教程假定你使用 Android Studio 3.6 或更高版本来构建应用程序。
 
-Android 应用程序需要一组权限，以便能够接收来自 Firebase 云消息传送的通知消息。 在 `AndroidManifest.xml` 文件中，在 *<manifest ... >* 或标记下面添加以下权限集 *</application>*
+Android 应用程序需要一组权限才能接收来自 Firebase Cloud Messaging 的通知消息。 在 `AndroidManifest.xml` 文件中，在 <manifest ...> 或 </application> 标记下添加以下权限集 
 
 ```XML
     <uses-permission android:name="android.permission.INTERNET"/>
@@ -224,9 +222,9 @@ Android 应用程序需要一组权限，以便能够接收来自 Firebase 云�
 
 ### <a name="register-for-push-notifications"></a>注册推送通知
 
-若要注册推送通知，应用程序需要 `registerPushNotification()` 在具有设备注册令牌的 *CallAgent* 实例上调用。
+若要注册推送通知，应用程序需要使用设备注册令牌在 CallAgent 实例上调用 `registerPushNotification()`。
 
-若要获取设备注册令牌，请将 Firebase 客户端库添加到应用程序模块的 *gradle* 文件，方法是在部分中添加以下行 `dependencies` （如果尚未这样做）：
+若要获取设备注册令牌，请在 `dependencies` 部分添加以下行（如果尚不存在），将 Firebase 客户端库添加到应用程序模块的 build.gradle 文件中：
 
 ```
     // Add the client library for Firebase Cloud Messaging
@@ -234,19 +232,19 @@ Android 应用程序需要一组权限，以便能够接收来自 Firebase 云�
     implementation 'com.google.firebase:firebase-messaging:20.2.4'
 ```
 
-在项目级别的 *gradle* 文件中，将以下内容添加到部分（ `dependencies` 如果尚未存在）：
+在项目级别的 build.gradle 文件中，将以下内容添加到 `dependencies` 部分（如果尚不存在）：
 
 ```
     classpath 'com.google.gms:google-services:4.3.3'
 ```
 
-如果文件中尚不存在以下插件，请将其添加到文件的开头：
+在文件的开头添加以下插件（如果尚不存在）：
 
 ```
 apply plugin: 'com.google.gms.google-services'
 ```
 
-选择工具栏中的 " *立即同步* "。 添加以下代码段以获取由客户端应用程序实例的 Firebase Cloud 消息客户端库生成的设备注册令牌。请确保将以下导入添加到实例的主活动的标头。 若要检索令牌，段需要它们：
+在工具栏中选择“立即同步”。 添加以下代码片段，获取 Firebase Cloud Messaging 客户端库为客户端应用程序实例生成的设备注册令牌。请务必将以下导入内容添加到实例主“活动”的标头中。 代码片段检索令牌时需要这些内容：
 
 ```
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -274,7 +272,7 @@ import com.google.firebase.iid.InstanceIdResult;
                     }
                 });
 ```
-向传入呼叫推送通知的调用服务客户端库注册设备注册令牌：
+在呼叫服务客户端库中注册设备注册令牌，以接收来电推送通知：
 
 ```java
 String deviceRegistrationToken = "<Device Token from previous section>";
@@ -286,11 +284,11 @@ catch(Exception e) {
 }
 ```
 
-### <a name="push-notification-handling"></a>推送通知处理
+### <a name="push-notification-handling"></a>处理推送通知
 
-若要接收传入的调用推送通知，请在具有有效负载的 *CallAgent* 实例上调用 *HandlePushNotification ( # B1* 。
+若要接收来电推送通知，请使用有效负载在 CallAgent 实例上调用 handlePushNotification() 。
 
-若要从 Firebase 云消息传送中获取有效负载，请首先创建一个新的服务 (文件 > 新的 > 服务 > 服务) 扩展 *FirebaseMessagingService* Firebase 客户端库类，并重写 `onMessageReceived` 方法。 此方法是在 Firebase Cloud 消息传递将推送通知传递到应用程序时调用的事件处理程序。
+若要从 Firebase Cloud Messaging 获取有效负载，请先创建一个新服务（“文件”>“新建”>“服务”>“服务”），该服务可扩展 FirebaseMessagingService Firebase 客户端库类并替代 `onMessageReceived` 方法。 当 Firebase Cloud Messaging 将推送通知传递到应用程序时，此方法被称为事件处理程序。
 
 ```java
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
@@ -308,7 +306,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     }
 }
 ```
-将以下服务定义添加到该 `AndroidManifest.xml` 文件中的 <application> 标记内：
+将以下服务定义添加到 `AndroidManifest.xml` 文件的 <application> 标记内：
 
 ```
         <service
@@ -320,22 +318,23 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         </service>
 ```
 
-- 检索有效负载后，可以通过对 *CallAgent* 实例调用 *handlePushNotification* 方法，将其传递给 *通信服务* 客户端库。 `CallAgent`通过 `createCallAgent(...)` 在类上调用方法来创建实例 `CallClient` 。
+- 检索到有效负载后，可将其传递给通信服务客户端库，以解析为内部 IncomingCallInformation 对象，该对象将通过在 CallAgent 实例上调用 handlePushNotification 方法进行处理   。 `CallAgent` 实例是通过在 `CallClient` 类上调用 `createCallAgent(...)` 方法来创建的。
 
 ```java
 try {
-    callAgent.handlePushNotification(pushNotificationMessageDataFromFCM).get();
+    IncomingCallInformation notification = IncomingCallInformation.fromMap(pushNotificationMessageDataFromFCM);
+    Future handlePushNotificationFuture = callAgent.handlePushNotification(notification).get();
 }
 catch(Exception e) {
     System.out.println("Something went wrong while handling the Incoming Calls Push Notifications.");
 }
 ```
 
-当推送通知消息的处理成功并且所有事件处理程序都已正确注册时，应用程序将会响铃。
+成功处理推送通知消息，且正确注册所有事件处理程序时，应用程序将响铃。
 
-### <a name="unregister-push-notifications"></a>注销推送通知
+### <a name="unregister-push-notifications"></a>取消注册推送通知
 
-应用程序可以随时取消注册推送通知。 `unregisterPushNotification()`在 callAgent 上调用方法以注销。
+应用程序可以随时取消注册推送通知。 若要取消注册，请在 callAgent 上调用 `unregisterPushNotification()` 方法。
 
 ```java
 try {
@@ -346,48 +345,48 @@ catch(Exception e) {
 }
 ```
 
-## <a name="call-management"></a>呼叫管理
-你可以访问调用属性并在调用以管理与视频和音频相关的设置期间执行各种操作。
+## <a name="call-management"></a>通话管理
+可在通话过程中访问通话属性并执行各种操作来管理与视频和音频相关的设置。
 
-### <a name="call-properties"></a>调用属性
+### <a name="call-properties"></a>通话属性
 
-获取此调用的唯一 ID：
+获取此呼叫的唯一 ID：
 
 ```java
-String callId = call.getCallId();
+String callId = call.getId();
 ```
 
-若要了解有关调用中的其他参与者，请检查 `remoteParticipant` 该实例上的集合 `call` ：
+若要了解呼叫中的其他参与者，请检查 `call` 实例上的 `remoteParticipant` 集合：
 
 ```java
 List<RemoteParticipant> remoteParticipants = call.getRemoteParticipants();
 ```
 
-如果调用是传入的，则调用方的标识：
+主叫方的标识（如果是来电）：
 
 ```java
 CommunicationIdentifier callerId = call.getCallerId();
 ```
 
-获取调用的状态： 
+获取呼叫的状态： 
 
 ```java
 CallState callState = call.getState();
 ```
 
-它返回表示调用的当前状态的字符串：
-* "无"-初始调用状态
-* "传入"-表示调用是传入的，它必须接受或拒绝
-* "正在连接"-在调用或接受调用后初始转换状态
-* "震铃"-对于传出呼叫，表示呼叫正在拨打远程参与者，这是 "传入" 的一方
-* "EarlyMedia"-表示在连接呼叫之前播放公告的状态
-* "已连接"-调用已连接
-* "保持"-呼叫处于暂挂状态，本地终结点与远程参与者之间没有媒体流动 (s) 
-* "断开"-在调用进入 "断开连接" 状态之前转换状态
-* "Disconnected"-最终调用状态
+它会返回一个表示当前呼叫状态的字符串：
+* “None”- 初始通话状态
+* “Connecting”- 拨打或接听电话后的初始过渡状态
+* “Ringing”- 对于去电，表示远程参与者的电话正在响铃
+* “EarlyMedia”- 表示在接通电话前播放通知的状态
+* “Connected”- 已接通电话
+* “LocalHold”- 本地参与者暂停通话，本地终结点与远程参与者之间没有媒体传输
+* “RemoteHold”- 远程参与者暂停通话，本地终结点与远程参与者之间没有媒体传输
+* “Disconnecting”- 通话进入“Disconnected”状态前的过渡状态
+* “Disconnected”- 最终通话状态
 
 
-若要了解调用结束的原因，请检查 `callEndReason` 属性。 它包含代码/子代码： 
+若要了解呼叫结束的原因，请检查 `callEndReason` 属性。 它包含代码/子代码： 
 
 ```java
 CallEndReason callEndReason = call.getCallEndReason();
@@ -395,10 +394,12 @@ int code = callEndReason.getCode();
 int subCode = callEndReason.getSubCode();
 ```
 
-若要查看当前调用是否为传入呼叫，请检查 `isIncoming` 属性：
+若要查看当前呼叫是来电还是去电，请检查 `callDirection` 属性：
 
 ```java
-boolean isIncoming = call.getIsIncoming();
+CallDirection callDirection = call.getCallDirection(); 
+// callDirection == CallDirection.Incoming for incoming call
+// callDirection == CallDirection.Outgoing for outgoing call
 ```
 
 若要查看当前麦克风是否静音，请检查 `muted` 属性：
@@ -407,7 +408,13 @@ boolean isIncoming = call.getIsIncoming();
 boolean muted = call.getIsMicrophoneMuted();
 ```
 
-若要检查活动视频流，请检查 `localVideoStreams` 集合：
+若要查看是否正在录制当前呼叫，请检查 `isRecordingActive` 属性：
+
+```java
+boolean recordinggActive = call.getIsRecordingActive();
+```
+
+若要检查活动视频流，请查看 `localVideoStreams` 集合：
 
 ```java
 List<LocalVideoStream> localVideoStreams = call.getLocalVideoStreams();
@@ -415,7 +422,7 @@ List<LocalVideoStream> localVideoStreams = call.getLocalVideoStreams();
 
 ### <a name="mute-and-unmute"></a>静音和取消静音
 
-若要使本地终结点静音或取消静音，你可以使用 `mute` 和 `unmute` 异步 api：
+若要使本地终结点静音或取消静音，可使用 `mute` 和 `unmute` 异步 API：
 
 ```java
 call.mute().get();
@@ -424,40 +431,40 @@ call.unmute().get();
 
 ### <a name="start-and-stop-sending-local-video"></a>开始和停止发送本地视频
 
-若要开始视频，必须 `getCameraList` 在对象上使用 API 来枚举摄像机 `deviceManager` 。 然后创建 `LocalVideoStream` 传递所需照相机的新实例，并将其 `startVideo` 作为参数传递给 API：
+若要开始发送视频，必须在 `deviceManager` 对象上使用 `getCameraList` API 来枚举相机。 然后，创建 `LocalVideoStream` 的新实例传递所需的相机，并将其作为参数传递给 `startVideo` API：
 
 ```java
 VideoDeviceInfo desiredCamera = <get-video-device>;
 Context appContext = this.getApplicationContext();
-currentVideoStream = new LocalVideoStream(desiredCamera, appContext);
-videoOptions = new VideoOptions(currentVideoStream);
-Future startVideoFuture = call.startVideo(currentVideoStream);
+LocalVideoStream currentLocalVideoStream = new LocalVideoStream(desiredCamera, appContext);
+VideoOptions videoOptions = new VideoOptions(currentLocalVideoStream);
+Future startVideoFuture = call.startVideo(currentLocalVideoStream);
 startVideoFuture.get();
 ```
 
-成功开始发送视频后， `LocalVideoStream` 实例将添加到 `localVideoStreams` 调用实例上的集合中。
+成功开始发送视频后，`LocalVideoStream` 实例将被添加到呼叫实例上的 `localVideoStreams` 集合中。
 
 ```java
-currentVideoStream == call.getLocalVideoStreams().get(0);
+currentLocalVideoStream == call.getLocalVideoStreams().get(0);
 ```
 
-若要停止本地视频，请 `localVideoStream` 在集合中传递可用的实例 `localVideoStreams` ：
+若要停止本地视频，请传递 `localVideoStreams` 集合中可用的 `LocalVideoStream` 实例：
 
 ```java
-call.stopVideo(localVideoStream).get();
+call.stopVideo(currentLocalVideoStream).get();
 ```
 
-通过对实例调用来发送视频时，可以切换到不同的相机设备 `switchSource` `localVideoStream` ：
+对 `LocalVideoStream` 实例调用 `switchSource` 来发送视频时，可切换到不同的相机设备：
 ```java
-localVideoStream.switchSource(source).get();
+currentLocalVideoStream.switchSource(source).get();
 ```
 
 ## <a name="remote-participants-management"></a>远程参与者管理
 
-所有远程参与者都按 `RemoteParticipant` 类型表示，可通过 `remoteParticipants` 调用实例上的集合来使用。
+所有远程参与者均以 `RemoteParticipant` 类型表示，可通过呼叫实例上的 `remoteParticipants` 集合获得。
 
-### <a name="list-participants-in-a-call"></a>列出调用中的参与者
-`remoteParticipants`集合返回给定调用中的远程参与者列表：
+### <a name="list-participants-in-a-call"></a>列出通话参与者
+`remoteParticipants` 集合会返回给定通话中远程参与者的列表：
 ```java
 List<RemoteParticipant> remoteParticipants = call.getRemoteParticipants(); // [remoteParticipant, remoteParticipant....]
 ```
@@ -466,25 +473,27 @@ List<RemoteParticipant> remoteParticipants = call.getRemoteParticipants(); // [r
 任何给定的远程参与者都具有与之关联的一组属性和集合：
 
 * 获取此远程参与者的标识符。
-标识是 "标识符" 类型之一
+标识其中一种“标识符”类型
 ```java
-CommunicationIdentifier participantIdentity = remoteParticipant.getIdentifier();
+CommunicationIdentifier participantIdentifier = remoteParticipant.getIdentifier();
 ```
 
 * 获取此远程参与者的状态。
 ```java
 ParticipantState state = remoteParticipant.getState();
 ```
-状态可以是
-* "空闲"-初始状态
-* 参与者连接到呼叫时的 "正在连接"-转换状态
-* "已连接"-参与者已连接到呼叫
-* "保持"-参与者处于暂停状态
-* "EarlyMedia"-在参与者连接到呼叫之前播放公告
-* "断开连接"-最终状态-参与者已与呼叫断开连接
+状态可以是下列其中一项
+* “Idle”- 初始状态
+* “EarlyMedia”- 在参与者接通电话前播放通知
+* “Ringing”- 参与者电话正在响铃
+* “Connecting”- 参与者正在连接到通话时的过渡状态
+* “Connected”- 参与者已接通电话
+* “Connected”- 参与者已暂停通话
+* “InLobby”- 参与者正在大厅中等待许可。 当前仅在 Teams 互操作方案中使用
+* “Disconnected”- 最终状态：参与者已与通话断开连接
 
 
-* 若要了解参与者离开呼叫的原因，请检查 `callEndReason` 属性：
+* 若要了解参与者退出通话的原因，请检查 `callEndReason` 属性：
 ```java
 CallEndReason callEndReason = remoteParticipant.getCallEndReason();
 ```
@@ -494,51 +503,53 @@ CallEndReason callEndReason = remoteParticipant.getCallEndReason();
 boolean isParticipantMuted = remoteParticipant.getIsMuted();
 ```
 
-* 若要检查此远程参与者是否正在通话，请检查 `isSpeaking` 属性：
+* 若要检查此远程参与者是否正在讲话，请检查 `isSpeaking` 属性：
 ```java
 boolean isParticipantSpeaking = remoteParticipant.getIsSpeaking();
 ```
 
-* 若要检查给定参与者在此调用中发送的所有视频流，请检查 `videoStreams` 集合：
+* 若要检查给定参与者在此呼叫中发送的所有视频流，请检查 `videoStreams` 集合：
 ```java
 List<RemoteVideoStream> videoStreams = remoteParticipant.getVideoStreams(); // [RemoteVideoStream, RemoteVideoStream, ...]
 ```
 
 
-### <a name="add-a-participant-to-a-call"></a>向呼叫添加参与者
+### <a name="add-a-participant-to-a-call"></a>向通话添加参与者
 
-若要将参与者添加到呼叫 (可以调用的用户或电话号码) `addParticipant` 。 这会以同步方式返回远程参与者实例。
+若要向通话添加参与者（用户或电话号码），可调用 `addParticipant`。 这会以同步方式返回远程参与者实例。
 
 ```java
-const acsUser = new CommunicationUser("<acs user id>");
-const acsPhone = new PhoneNumber("<phone number>");
+const acsUser = new CommunicationUserIdentifier("<acs user id>");
+const acsPhone = new PhoneNumberIdentifier("<phone number>");
 RemoteParticipant remoteParticipant1 = call.addParticipant(acsUser);
-RemoteParticipant remoteParticipant2 = call.addParticipant(acsPhone);
+AddPhoneNumberOptions addPhoneNumberOptions = new AddPhoneNumberOptions(new PhoneNumberIdentifier("<alternate phone number>"));
+RemoteParticipant remoteParticipant2 = call.addParticipant(acsPhone, addPhoneNumberOptions);
 ```
 
-### <a name="remove-participant-from-a-call"></a>从呼叫中删除参与者
-若要从调用中删除参与者 (可以调用的用户或电话号码) `removeParticipant` 。
-这会在从调用中删除参与者后异步解决。
-还将从集合中删除该参与者 `remoteParticipants` 。
+### <a name="remove-participant-from-a-call"></a>删除通话参与者
+若要删除通话参与者（用户或电话号码），可调用 `removeParticipant`。
+一旦从呼叫中删除参与者，就会异步解决此问题。
+这还将从 `remoteParticipants` 集合中删除该参与者。
 ```java
-RemoteParticipant remoteParticipant = call.getParticipants().get(0);
-call.removeParticipant(acsUser).get();
-call.removeParticipant(acsPhone).get();
+RemoteParticipant acsUserRemoteParticipant = call.getParticipants().get(0);
+RemoteParticipant acsPhoneRemoteParticipant = call.getParticipants().get(1);
+call.removeParticipant(acsUserRemoteParticipant).get();
+call.removeParticipant(acsPhoneRemoteParticipant).get();
 ```
 
 ## <a name="render-remote-participant-video-streams"></a>呈现远程参与者视频流
-若要列出视频流和远程参与者的屏幕共享流，请检查 `videoStreams` 集合：
+若要列出远程参与者的视频流和屏幕共享流，请检查 `videoStreams` 集合：
 ```java
 RemoteParticipant remoteParticipant = call.getRemoteParticipants().get(0);
 RemoteVideoStream remoteParticipantStream = remoteParticipant.getVideoStreams().get(0);
 MediaStreamType streamType = remoteParticipantStream.getType(); // of type MediaStreamType.Video or MediaStreamType.ScreenSharing
 ```
  
-若要 `RemoteVideoStream` 从远程参与者呈现，必须订阅 `OnVideoStreamsUpdated` 事件。
+若要呈现来自远程参与者的 `RemoteVideoStream`，必须订阅 `OnVideoStreamsUpdated` 事件。
 
-在此事件中，将 `isAvailable` 属性更改为 true 表示远程参与者当前正在发送流。 出现这种情况后，创建新的实例 `Renderer` ，然后使用异步 API 创建新的， `RendererView` `createView` 并 `view.target` 在应用程序 UI 中的任意位置附加。
+在此事件中，将 `isAvailable` 属性更改为 true 表示远程参与者当前正在发送流。 发生此情况后，请创建 `Renderer` 的新实例，然后使用异步 `createView` API 创建新的 `RendererView`，并在应用程序 UI 中的任意位置附加 `view.target`。
 
-当远程流的可用性发生变化时，你可以选择销毁整个呈现器、特定 `RendererView` 或保留它们，但这将导致显示空白的视频帧。
+当远程流的可用性发生变化时，可选择销毁整个呈现器、销毁特定的 `RendererView`，也可保留它们，但这将导致显示空白的视频帧。
 
 ```java
 Renderer remoteVideoRenderer = new Renderer(remoteParticipantStream, appContext);
@@ -561,35 +572,35 @@ void onRemoteParticipantVideoStreamsUpdated(RemoteParticipant participant, Remot
 ### <a name="remote-video-stream-properties"></a>远程视频流属性
 远程视频流具有几个属性
 
-* `Id` -远程视频流的 ID
+* `Id` - 远程视频流的 ID
 ```java
 int id = remoteVideoStream.getId();
 ```
 
-* `MediaStreamType` -可以是 "视频" 或 "ScreenSharing"
+* `MediaStreamType` - 可以是“Video”或“ScreenSharing”
 ```java
 MediaStreamType type = remoteVideoStream.getType();
 ```
 
-* `isAvailable` -指示远程参与者终结点是否正在主动发送流
+* `isAvailable` - 指示远程参与者终结点是否正在主动发送流
 ```java
 boolean availability = remoteVideoStream.getIsAvailable();
 ```
 
 ### <a name="renderer-methods-and-properties"></a>呈现器方法和属性
-以下 Api 的呈现器对象
+采用 API 的呈现器对象
 
-* 创建一个 `RendererView` 可在以后附加到应用程序 UI 以呈现远程视频流的实例。
+* 创建一个 `RendererView` 实例，随后可将其附加到应用程序 UI 中来呈现远程视频流。
 ```java
 // Create a view for a video stream
 renderer.createView()
 ```
-* Dispose 呈现器和 `RendererView` 与此呈现器关联的所有。 从 UI 中删除所有关联的视图时要调用的。
+* 处置呈现器及其所有相关 `RendererView`。 从 UI 中删除所有关联视图后，系统会调用它。
 ```java
 renderer.dispose()
 ```
 
-* `StreamSize` -size (远程视频流的宽度/高度) 
+* `StreamSize` - 远程视频流的大小（宽度/高度）
 ```java
 StreamSize renderStreamSize = remoteVideoStream.getSize();
 int width = renderStreamSize.getWidth();
@@ -598,19 +609,19 @@ int height = renderStreamSize.getHeight();
 
 
 ### <a name="rendererview-methods-and-properties"></a>RendererView 方法和属性
-创建时， `RendererView` 可以指定 `scalingMode` `mirrored` 将应用于此视图的和属性：缩放模式可以是 "Stretch" |"裁剪" |"拟合" 如果将 `mirrored` 设置为 `true` ，则呈现的流将垂直翻转。
+创建 `RendererView` 时，可指定将应用于此视图的 `scalingMode` 和 `mirrored` 属性：缩放模式可以是“拉伸”、“裁剪”或“拟合”。如果将 `mirrored` 设置为 `true`，则呈现的流将垂直翻转。
 
 ```java
 Renderer remoteVideoRenderer = new Renderer(remoteVideoStream, appContext);
 RendererView rendererView = remoteVideoRenderer.createView(new RenderingOptions(ScalingMode.Fit));
 ```
 
-然后，可以使用以下代码片段将创建的 RendererView 附加到应用程序 UI：
+然后，可使用以下代码片段将创建的 RendererView 附加到应用程序 UI：
 ```java
 layout.addView(rendererView);
 ```
 
-稍后可以通过 `updateScalingMode` 使用 ScalingMode 之一的 RendererView 对象调用 API 来更新缩放模式 |ScalingMode |ScalingMode 作为一个参数。
+稍后可在 RendererView 对象上调用 `updateScalingMode` API，并将 ScalingMode.Stretch、ScalingMode.Crop 或 ScalingMode.Fit 作为参数来更新缩放模式。
 ```java
 // Update the scale mode for this view.
 rendererView.updateScalingMode(ScalingMode.Crop)
@@ -619,11 +630,11 @@ rendererView.updateScalingMode(ScalingMode.Crop)
 
 ## <a name="device-management"></a>设备管理
 
-`DeviceManager` 允许你枚举可在调用中用于传输音频/视频流的本地设备。 它还允许你请求用户使用本机浏览器 API 访问其麦克风和照相机的权限。
+借助 `DeviceManager`，可枚举能够在通话中用于传输音频/视频流的本地设备。 你还可用它来通过本机浏览器 API 向用户请求访问其麦克风和相机的权限。
 
-可以 `deviceManager` 通过调用方法访问 `callClient.getDeviceManager()` 。
+可调用 `callClient.getDeviceManager()` 方法来访问 `deviceManager`。
 > [!WARNING]
-> 当前 `callAgent` 必须首先实例化对象，才能获得对 DeviceManager 的访问权限
+> 当前必须先实例化 `callAgent` 对象才能获得 DeviceManager 的访问权限
 
 ```java
 DeviceManager deviceManager = callClient.getDeviceManager().get();
@@ -631,34 +642,34 @@ DeviceManager deviceManager = callClient.getDeviceManager().get();
 
 ### <a name="enumerate-local-devices"></a>枚举本地设备
 
-若要访问本地设备，可以在 Device Manager 上使用枚举方法。 枚举是同步操作。
+若要访问本地设备，可在设备管理器上使用枚举方法。 枚举是同步操作。
 
 ```java
 //  Get a list of available video devices for use.
-List<VideoDeviceInfo> localCameras = deviceManager.getCameraList(); // [VideoDeviceInfo, VideoDeviceInfo...]
+List<VideoDeviceInfo> localCameras = deviceManager.getCameras(); // [VideoDeviceInfo, VideoDeviceInfo...]
 
 // Get a list of available microphone devices for use.
-List<AudioDeviceInfo> localMicrophones = deviceManager.getMicrophoneList(); // [AudioDeviceInfo, AudioDeviceInfo...]
+List<AudioDeviceInfo> localMicrophones = deviceManager.getMicrophones(); // [AudioDeviceInfo, AudioDeviceInfo...]
 
 // Get a list of available speaker devices for use.
-List<AudioDeviceInfo> localSpeakers = deviceManager.getSpeakerList(); // [AudioDeviceInfo, AudioDeviceInfo...]
+List<AudioDeviceInfo> localSpeakers = deviceManager.getSpeakers(); // [AudioDeviceInfo, AudioDeviceInfo...]
 ```
 
-### <a name="set-default-microphonespeaker"></a>设置默认麦克风/发言人
+### <a name="set-default-microphonespeaker"></a>设置默认麦克风/扬声器
 
-使用设备管理器，可以设置一个默认设备，该设备将在启动呼叫时使用。
-如果未设置客户端默认值，则通信服务将回退到 OS 默认值。
+借助设备管理器，可设置发起通话时要使用的默认设备。
+如果未设置客户端默认值，通信服务将回退到 OS 默认值。
 
 ```java
 
 // Get the microphone device that is being used.
-AudioDeviceInfo defaultMicrophone = deviceManager.getMicrophoneList().get(0);
+AudioDeviceInfo defaultMicrophone = deviceManager.getMicrophones().get(0);
 
 // Set the microphone device to use.
 deviceManager.setMicrophone(defaultMicrophone);
 
 // Get the speaker device that is being used.
-AudioDeviceInfo defaultSpeaker = deviceManager.getSpeakerList().get(0);
+AudioDeviceInfo defaultSpeaker = deviceManager.getSpeakers().get(0);
 
 // Set the speaker device to use.
 deviceManager.setSpeaker(defaultSpeaker);
@@ -666,7 +677,7 @@ deviceManager.setSpeaker(defaultSpeaker);
 
 ### <a name="local-camera-preview"></a>本地相机预览
 
-你可以使用 `DeviceManager` 和 `Renderer` 从本地相机开始呈现流。 此流不会发送给其他参与者;这是一个本地预览源。 这是一个异步操作。
+可使用 `DeviceManager` 和 `Renderer` 开始呈现来自本地相机的流。 此流不会发送给其他参与者；这是一项本地预览源。 这是异步操作。
 
 ```java
 VideoDeviceInfo videoDevice = <get-video-device>;
@@ -682,10 +693,10 @@ layout.addView(uiView);
 ```
 
 ## <a name="eventing-model"></a>事件模型
-您可以订阅大多数属性和集合，以便在值发生更改时收到通知。
+可订阅大多数属性和集合，以便在值发生更改时收到通知。
 
 ### <a name="properties"></a>属性
-订阅 `property changed` 事件：
+若要订阅 `property changed` 事件，请采取以下操作：
 
 ```java
 // subscribe
@@ -697,14 +708,14 @@ PropertyChangedListener callStateChangeListener = new PropertyChangedListener()
         Log.d("The call state has changed.");
     }
 }
-call.addOnCallStateChangedListener(callStateChangeListener);
+call.addOnStateChangedListener(callStateChangeListener);
 
 //unsubscribe
-call.removeOnCallStateChangedListener(callStateChangeListener);
+call.removeOnStateChangedListener(callStateChangeListener);
 ```
 
 ### <a name="collections"></a>集合
-订阅 `collection updated` 事件：
+若要订阅 `collection updated` 事件，请采取以下操作：
 
 ```java
 LocalVideoStreamsChangedListener localVideoStreamsChangedListener = new LocalVideoStreamsChangedListener()

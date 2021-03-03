@@ -12,12 +12,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: a4299eff296d9795f8d256ff1236a8e8b4ad3e42
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: f22a55a65b7dc4fd4f714d880804e6fd65dbbe46
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97585201"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101654368"
 ---
 # <a name="configure-tokens-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中配置令牌
 
@@ -43,7 +43,8 @@ ms.locfileid: "97585201"
 ![刷新令牌生存期](./media/configure-tokens/refresh-token-lifetime.png)
 
 > [!NOTE]
-> 使用授权代码流和 PKCE 的单页应用程序的刷新令牌生存期始终为 24 小时。 [详细了解浏览器中的刷新令牌的安全影响](../active-directory/develop/reference-third-party-cookies-spas.md#security-implications-of-refresh-tokens-in-the-browser)。
+> >使用带有 PKCE 的授权代码流的单页面应用程序的刷新令牌生存期始终为24小时，而移动应用、桌面应用和 web 应用不会遇到此限制。 [详细了解浏览器中的刷新令牌的安全影响](../active-directory/develop/reference-third-party-cookies-spas.md#security-implications-of-refresh-tokens-in-the-browser)。
+
 
 ## <a name="configure-token-lifetime"></a>配置令牌生存期
 

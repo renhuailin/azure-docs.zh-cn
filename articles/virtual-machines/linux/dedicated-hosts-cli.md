@@ -3,22 +3,23 @@ title: 使用 CLI 将 VM 和规模集实例部署到专用主机
 description: 使用 Azure CLI 将 VM 和规模集实例部署到专用主机。
 author: cynthn
 ms.service: virtual-machines
+ms.subservice: dedicated-hosts
 ms.topic: how-to
 ms.date: 11/12/2020
 ms.author: cynthn
-ms.openlocfilehash: dcb5a3c664386e65e676f5559c47236126fefe87
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 9d4117cafd665556fb60278aa4dc60dc14a27ada
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97704922"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101670519"
 ---
 # <a name="deploy-to-dedicated-hosts-using-the-azure-cli"></a>使用 Azure CLI 到专用主机
  
 
 本文介绍如何创建 Azure [专用主机](../dedicated-hosts.md)来托管虚拟机 (VM)。 
 
-请确保已安装 Azure CLI 版本2.16.0 或更高版本，并使用登录到 Azure 帐户 `az login` 。 
+确保已安装 Azure CLI 2.16.0 或更高版本，并已使用 `az login` 登录到 Azure 帐户。 
 
 
 ## <a name="limitations"></a>限制
@@ -263,7 +264,7 @@ az group export --name myDHResourceGroup > myDHResourceGroup.json
 
 此命令在当前工作目录中创建 `myDHResourceGroup.json` 文件。 从此模板创建环境时，系统会提示输入所有资源名称。 可以通过将 `--include-parameter-default-value` 参数添加到 `az group export` 命令在模板文件中填充这些名称。 请编辑 JSON 模板以指定资源名称，或创建 parameters.json 文件来指定资源名称。
  
-若要从模板创建环境，请使用 [az deployment group create](/cli/azure/deployment/group#az_deployment_group_create)。
+若要通过模板创建环境，请使用 [az deployment group create](/cli/azure/deployment/group#az_deployment_group_create)。
 
 ```azurecli-interactive
 az deployment group create \ 

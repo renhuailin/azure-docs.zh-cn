@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/26/2020
+ms.date: 2/23/2021
 ms.author: kenwith
 ms.reviewer: hpsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f605b2bb48855d70ea305dcda194b26da71ee9ec
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 611dd5e53ae96e06677b1c4a6a6f009e582b33af
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99252468"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101646259"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>使用租户限制管理对 SaaS 云应用程序的访问
 
@@ -27,7 +27,9 @@ ms.locfileid: "99252468"
 
 借助租户限制，组织可以指定其用户有权访问的租户的列表。 然后，Azure AD 只会授予对这些允许的租户的访问权限。
 
-本文重点介绍 Microsoft 365 的租户限制，但该功能应该适用于使用新式身份验证协议和 Azure AD 进行单一登录的任何 SaaS 云应用。 如果从 Microsoft 365 使用的租户中使用具有不同 Azure AD 租户的 SaaS 应用，请确保允许所有必需的租户。 有关 SaaS 云应用的详细信息，请参阅 [Active Directory 市场](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureActiveDirectory)。
+本文重点介绍 Microsoft 365 的租户限制，但该功能保护所有将用户发送到 Azure AD 进行单一登录的应用。 如果将 SaaS 应用与 Microsoft 365 使用的租户不同 Azure AD 租户，请确保允许所有必需的租户 (例如，在 B2B 协作方案) 中。 有关 SaaS 云应用的详细信息，请参阅 [Active Directory 市场](https://azuremarketplace.microsoft.com/marketplace/apps)。
+
+此外，租户限制功能现在支持阻止使用 (MSA 应用 [的所有 Microsoft 使用者应用程序](#blocking-consumer-applications)) 例如 OneDrive、Hotmail 和 Xbox.com。  这会对终结点使用单独的标头 `login.live.com` ，并在文档末尾详细说明。
 
 ## <a name="how-it-works"></a>工作原理
 
@@ -39,7 +41,7 @@ ms.locfileid: "99252468"
 
 3. **客户端软件**：为了支持租户限制，客户端软件必须直接从 Azure AD 请求令牌，使代理基础结构能够截获流量。 基于浏览器的 Microsoft 365 应用程序当前支持租户限制，因为使用新式身份验证的 Office 客户端 (例如 OAuth 2.0) 。
 
-4. **新式身份验证**：云服务必须使用新式身份验证来使用租户限制，阻止对所有不允许租户的访问。 默认情况下，你必须将 Microsoft 365 云服务配置为使用新式身份验证协议。 有关新式验证 Microsoft 365 支持的最新信息，请阅读 [更新的 Office 365 新式身份验证](https://www.microsoft.com/en-us/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/)。
+4. **新式身份验证**：云服务必须使用新式身份验证来使用租户限制，阻止对所有不允许租户的访问。 默认情况下，你必须将 Microsoft 365 云服务配置为使用新式身份验证协议。 有关新式验证 Microsoft 365 支持的最新信息，请阅读 [更新的 Office 365 新式身份验证](https://www.microsoft.com/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/)。
 
 下图演示了大致的流量流。 租户限制要求仅对要 Azure AD 的流量进行 TLS 检查，而不需要对 Microsoft 365 云服务进行 TLS 检测。 这种区别很重要，因为 Azure AD 的身份验证流量通常比 SaaS 应用程序（如 Exchange Online 和 SharePoint Online）的流量要小得多。
 
@@ -63,22 +65,20 @@ ms.locfileid: "99252468"
 
 - 客户端必须信任代理提供的用于 TLS 通信的证书链。 例如，如果使用了来自内部[公钥基础结构 (PKI)](/windows/desktop/seccertenroll/public-key-infrastructure) 的证书，则必须信任内部根证书颁发机构颁发的证书。
 
-- 使用租户限制需要 Azure AD Premium 1 许可证。 
+- 使用租户限制需要 Azure AD Premium 1 许可证。
 
 #### <a name="configuration"></a>配置
 
-对于 login.microsoftonline.com、login.microsoft.com 和 login.windows.net 的每个传入请求，请插入两个 HTTP 标头：“Restrict-Access-To-Tenants”和“Restrict-Access-Context” 。
+对于 login.microsoftonline.com、login.microsoft.com 和 login.windows.net 的每个传出请求，插入两个 HTTP 标头： "限制"-" *访问-租户* " 和 " *限制访问" 上下文*。
 
 > [!NOTE]
-> 配置 SSL 拦截和标头注入时，请确保排除发往的流量 https://device.login.microsoftonline.com 。 此 URL 用于设备身份验证，执行 TLS 中断和检查可能会影响客户端证书身份验证，这可能会导致设备注册和基于设备的条件访问出现问题。
-
-
+> 不要 `*.login.microsoftonline.com` 在代理配置下的下添加子域。 这样做会包括 device.login.microsoftonline.com，并会影响客户端证书身份验证，该身份验证用于设备注册和基于设备的条件访问方案。 将代理服务器配置为从 TLS 中断和检查和标头注入中排除 device.login.microsoftonline.com。
 
 这些标头应包含以下元素：
 
 - 对于 " *限制访问到租户*"，请使用的值 \<permitted tenant list\> ，它是要允许用户访问的租户的逗号分隔列表。 注册到租户的任何域都可用于标识此列表中的租户，以及目录 ID 本身。 有关描述租户的所有三种方法的示例，名称/值对允许 Contoso、Fabrikam 和 Microsoft 如下所示： `Restrict-Access-To-Tenants: contoso.com,fabrikam.onmicrosoft.com,72f988bf-86f1-41af-91ab-2d7cd011db47`
 
-- 对于 Restrict-Access-Context，应使用单个目录 ID 的值，用于声明哪个租户将要设置租户限制。 例如，要将 Contoso 声明为设置租户限制策略的租户，名称/值对如下所示： `Restrict-Access-Context: 456ff232-35l2-5h23-b3b3-3236w0826f3d` 。  你 **必须** 在此位置使用自己的目录 ID。
+- 对于 Restrict-Access-Context，应使用单个目录 ID 的值，用于声明哪个租户将要设置租户限制。 例如，要将 Contoso 声明为设置租户限制策略的租户，名称/值对如下所示： `Restrict-Access-Context: 456ff232-35l2-5h23-b3b3-3236w0826f3d` 。  你 **必须** 在此位置使用自己的目录 ID 才能获取这些身份验证的日志。
 
 > [!TIP]
 > 可在 [Azure Active Directory 门户](https://aad.portal.azure.com/)中找到该目录 ID。 以管理员身份登录，选择“Azure Active Directory”，再选择“属性”即可。  
@@ -88,9 +88,6 @@ ms.locfileid: "99252468"
 为了防止用户插入其自己的包含未批准租户的 HTTP 标头，代理需要替换 Restrict-Access-To-Tenants 标头（如果传入的请求中已提供此标头）。
 
 必须强制客户端针对发往 login.microsoftonline.com、login.microsoft.com 和 login.windows.net 的所有请求使用代理。 例如，如果使用 PAC 文件来指示客户端使用代理，则不应该允许最终用户编辑或禁用这些 PAC 文件。
-
-> [!NOTE]
-> 不要在代理配置中包含 login.microsoftonline.com 下的子域。 这样做会包括 device.login.microsoftonline.com，并可能会影响客户端证书身份验证，该身份验证用于设备注册和基于设备的条件访问方案。 将代理服务器配置为从 TLS 中断和检查和标头注入中排除 device.login.microsoftonline.com。
 
 ## <a name="the-user-experience"></a>用户体验
 
@@ -122,9 +119,6 @@ Restricted-Access-Context 租户的管理员可以使用此报告来查看由于
 - **Status**
 - **Date**
 - **日期(UTC)** （其中 UTC 是协调世界时）
-- **MFA 身份验证方法**（多重身份验证方法）
-- **MFA 身份验证详细信息**（多重身份验证详细信息）
-- **MFA 结果**
 - **IP 地址**
 - **客户端**
 - **用户名**
@@ -162,21 +156,30 @@ Fiddler 是一个免费 Web 调试代理，可用于捕获和修改 HTTP/HTTPS �
 
    1. 在 Fiddler Web 调试器工具中选择“规则”菜单，并选择“自定义规则...”  打开 CustomRules 文件。
 
-   2. 将以下行添加到 `OnBeforeRequest` 函数的开头。 替换为 \<tenant domain\> 注册到租户的域 (例如， `contoso.onmicrosoft.com`) 。 \<directory ID\>将替换为租户的 AZURE AD GUID 标识符。
+   2. 将以下行添加到 `OnBeforeRequest` 函数的开头。 替换为 \<List of tenant identifiers\> 注册到租户的域 (例如， `contoso.onmicrosoft.com`) 。 \<directory ID\>将替换为租户的 AZURE AD GUID 标识符。  **必须** 包含正确的 GUID 标识符才能使日志出现在租户中。 
 
-      ```JScript.NET
+   ```JScript.NET
+    // Allows access to the listed tenants.
       if (
           oSession.HostnameIs("login.microsoftonline.com") ||
           oSession.HostnameIs("login.microsoft.com") ||
           oSession.HostnameIs("login.windows.net")
       )
       {
-          oSession.oRequest["Restrict-Access-To-Tenants"] = "<tenant domain>";
-          oSession.oRequest["Restrict-Access-Context"] = "<directory ID>";
+          oSession.oRequest["Restrict-Access-To-Tenants"] = "<List of tenant identifiers>";
+          oSession.oRequest["Restrict-Access-Context"] = "<Your directory ID>";
       }
-      ```
 
-      如果需要允许多个租户，请使用逗号分隔租户名称。 例如：
+    // Blocks access to consumer apps
+      if (
+          oSession.HostnameIs("login.live.com")
+      )
+      {
+          oSession.oRequest["sec-Restrict-Tenant-Access-Policy"] = "restrict-msa";
+      }
+   ```
+
+如果需要允许多个租户，请使用逗号分隔租户名称。 例如：
 
       `oSession.oRequest["Restrict-Access-To-Tenants"] = "contoso.onmicrosoft.com,fabrikam.onmicrosoft.com";`
 
@@ -193,7 +196,33 @@ Fiddler 是一个免费 Web 调试代理，可用于捕获和修改 HTTP/HTTPS �
 
 有关具体细节，请参阅代理服务器文档。
 
+## <a name="blocking-consumer-applications"></a>阻止使用者应用程序
+
+如果 Microsoft 提供的应用程序支持使用者帐户和组织帐户（如 [OneDrive](https://onedrive.live.com/) 或 [Microsoft Learn](https://docs.microsoft.com/learn/)），则有时可能会托管在同一个 URL 上。  这意味着，必须访问该 URL 以便于工作的用户也可以访问该 URL 以供个人使用，这在您的操作指导原则下可能不允许这样做。
+
+某些组织尝试通过阻止 `login.live.com` 来阻止个人帐户进行身份验证，从而修复此问题。  这有多个缺点：
+
+1. 阻止 `login.live.com` 会阻止在 B2B 来宾方案中使用个人帐户，从而强行进入访问者和协作。
+1. [Autopilot 要求使用 `login.live.com` ](https://docs.microsoft.com/mem/autopilot/networking-requirements)以便进行部署。 当被阻止时，Intune 和 Autopilot 方案可能会失败 `login.live.com` 。
+1. 依赖于 MSA 服务的设备 Id 的组织遥测和 Windows 更新 [将停止工作](https://docs.microsoft.com/windows/deployment/update/windows-update-troubleshooting#feature-updates-are-not-being-offered-while-other-updates-are)。
+
+### <a name="configuration-for-consumer-apps"></a>使用者应用的配置
+
+当 `Restrict-Access-To-Tenants` 标头充当允许列表时，MSA 块将用作拒绝信号，告诉 Microsoft 帐户平台不允许用户登录到使用者应用程序。 若要发送此信号，请将 `sec-Restrict-Tenant-Access-Policy` 标头注入到 `login.live.com` 使用同一个公司代理或防火墙的[](#proxy-configuration-and-requirements)流量访问。 标头的值必须为 `restrict-msa` 。 如果该标头存在并且使用者应用尝试直接登录用户，则将阻止登录。
+
+目前，对使用者应用程序的身份验证不会显示在 [管理日志](#admin-experience)中，因为 login.live.com 与 Azure AD 分开托管。
+
+### <a name="what-the-header-does-and-does-not-block"></a>标头的作用和不会阻止
+
+`restrict-msa`策略阻止使用使用者应用程序，但允许通过多种其他类型的通信和身份验证：
+
+1. 适用于设备的无用户流量。  这包括 Autopilot、Windows 更新和组织遥测的流量。
+1. 消费者帐户的 B2B 身份验证。 [受邀与租户协作](https://docs.microsoft.com/azure/active-directory/external-identities/redemption-experience#invitation-redemption-flow)的 Microsoft 帐户的用户将在 login.live.com 中进行身份验证，以便访问资源租户。
+    1. 此访问权限是使用 `Restrict-Access-To-Tenants` 标头控制的，以允许或拒绝对该资源租户的访问。
+1. "传递" 身份验证，由许多 Azure 应用和 Office.com 使用，其中应用使用 Azure AD 在使用者上下文中登录使用者用户。
+    1. 此访问权限还可以使用 `Restrict-Access-To-Tenants` 标头进行控制，以允许或拒绝访问特殊的 "passthrough" 租户 (`f8cdef31-a31e-4b4a-93e4-5f571e91255a`) 。  如果此租户未显示在 `Restrict-Access-To-Tenants` 允许的域列表中，则将 Azure AD 阻止使用者帐户登录到这些应用。
+
 ## <a name="next-steps"></a>后续步骤
 
-- 阅读 [Updated Office 365 modern authentication](https://www.microsoft.com/en-us/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/)（更新的 Office 365 新式身份验证）
+- 阅读 [Updated Office 365 modern authentication](https://www.microsoft.com/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/)（更新的 Office 365 新式身份验证）
 - 查看 [Office 365 URL 和 IP 地址范围](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)

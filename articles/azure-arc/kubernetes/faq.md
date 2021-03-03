@@ -2,18 +2,18 @@
 title: 启用 Azure Arc Kubernetes 常见问题
 services: azure-arc
 ms.service: azure-arc
-ms.date: 02/17/2021
+ms.date: 02/19/2021
 ms.topic: conceptual
 author: shashankbarsin
 ms.author: shasb
 description: 本文包含与已启用 Azure Arc 相关的常见问题的列表 Kubernetes
 keywords: Kubernetes、Arc、Azure、容器、配置、GitOps、faq
-ms.openlocfilehash: e0d7501dc1a82940571d0168222c396f61a70bce
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: dc12294b5d53372be5f2e1dd71436973fefbb194
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100652490"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101647857"
 ---
 # <a name="frequently-asked-questions---azure-arc-enabled-kubernetes"></a>常见问题-Azure Arc 已启用 Kubernetes
 
@@ -21,17 +21,19 @@ ms.locfileid: "100652490"
 
 ## <a name="what-is-the-difference-between-azure-arc-enabled-kubernetes-and-azure-kubernetes-service-aks"></a>已启用 Azure Arc 的 Kubernetes 和 Azure Kubernetes 服务 (AKS) 之间有何区别？
 
-AKS 是 Azure 托管的 Kubernetes 产品/服务。 AKS 通过卸载 Azure 的许多复杂性和运营开销，简化了 Azure 中的托管 Kubernetes 群集的部署。 由于 Kubernetes 主机由 Azure 管理，因此你只需要管理和维护代理节点。
+AKS 是 Azure 托管的 Kubernetes 产品/服务。 AKS 通过卸载 Azure 的许多复杂性和运营开销，简化了 Azure 中的托管 Kubernetes 群集的部署。 由于 Kubernetes 主节点由 Azure 管理，因此你只需要管理和维护代理节点。
 
 使用启用了 azure Arc 的 Kubernetes，可以通过将 Kubernetes 群集连接到 Azure 来扩展 Azure 的管理功能 (例如 Azure Monitor 和 Azure 策略) 。 维护基础 Kubernetes 群集本身。
 
 ## <a name="do-i-need-to-connect-my-aks-clusters-running-on-azure-to-azure-arc"></a>是否需要将在 Azure 上运行的 AKS 群集连接到 Azure Arc？
 
-不是。 所有启用了 Azure Arc 的 Kubernetes 功能（包括 Azure Monitor 和 Azure 策略 (守卫) ）都可在 Azure 资源管理器) 中的本机资源 (AKS 上获得。
+否。 所有启用了 Azure Arc 的 Kubernetes 功能（包括 Azure Monitor 和 Azure 策略 (守卫) ）都可在 Azure 资源管理器) 中的本机资源 (AKS 上获得。
     
 ## <a name="should-i-connect-my-aks-hci-cluster-and-kubernetes-clusters-on-azure-stack-hub-and-azure-stack-edge-to-azure-arc"></a>是否应该将 AKS-HCI 群集和 Kubernetes 群集连接 Azure Stack 集线器上，并将 Azure Stack 边缘连接到 Azure Arc？
 
 是，将 AKS 或 Azure Stack 集线器 Azure Stack 上的-HCI 群集或 Kubernetes 群集连接到 Azure Arc 为群集提供了 Azure 资源管理器中的资源表示形式。 此资源表示形式将群集配置、Azure Monitor 和 Azure 策略 (守卫) 等功能扩展到连接的 Kubernetes 群集。
+
+如果启用了 Azure Arc 的 Kubernetes 群集 Azure Stack HCI (>= 2021 年4月更新) ，或 Windows Server 2019 Datacenter (>= 4 月2021更新) Azure Stack 上的 AKS，则 Kubernetes 配置将免费包括在内。
 
 ## <a name="how-to-address-expired-azure-arc-enabled-kubernetes-resources"></a>如何处理已过期的已启用 Azure Arc Kubernetes 资源？
 
@@ -70,6 +72,6 @@ CI/CD 管道适用于事件驱动的部署到 Kubernetes 群集 (例如，推送
 
 ## <a name="next-steps"></a>后续步骤
 
-* [将群集连接到 Azure Arc](./connect-cluster.md)
+* [将群集连接到 Azure Arc](./quickstart-connect-cluster.md)
 * [在启用了 Arc 的 Kubernetes 群集上创建配置](./use-gitops-connected-cluster.md)
 * [使用 Azure 策略大规模应用配置](./use-azure-policy.md)

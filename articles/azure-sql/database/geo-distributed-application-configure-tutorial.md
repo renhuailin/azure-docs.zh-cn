@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 03/12/2019
-ms.openlocfilehash: 98e3eb4927b8eb9e52fd974c1ef7c417aff2ad54
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 89d285a56553f5c521d1edbc92786debd4a92e32
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422784"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101659284"
 ---
 # <a name="tutorial-implement-a-geo-distributed-database-azure-sql-database"></a>教程：实现地理分散的数据库（Azure SQL 数据库）
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -49,7 +49,7 @@ ms.locfileid: "93422784"
   > [!NOTE]
   > 本教程使用 *AdventureWorksLT* 示例数据库。
 
-- Java 和 Maven，请参阅 [Build an app using SQL Server](https://www.microsoft.com/sql-server/developer-get-started/)（使用 SQL Server 生成应用），突出显示 **Java** ，选择环境，然后按步骤操作。
+- Java 和 Maven，请参阅 [Build an app using SQL Server](https://www.microsoft.com/sql-server/developer-get-started/)（使用 SQL Server 生成应用），突出显示 **Java**，选择环境，然后按步骤操作。
 
 > [!IMPORTANT]
 > 请务必设置防火墙规则，以便使用要在其上执行本教程中步骤的计算机的公共 IP 地址。 数据库级防火墙规则会自动复制到辅助服务器。
@@ -132,7 +132,7 @@ az sql failover-group create --name $failoverGroup --partner-server $drServer `
    mvn archetype:generate "-DgroupId=com.sqldbsamples" "-DartifactId=SqlDbSample" "-DarchetypeArtifactId=maven-archetype-quickstart" "-Dversion=1.0.0"
    ```
 
-1. 键入 **Y** ，然后按 **Enter** 。
+1. 键入 **Y**，然后按 **Enter**。
 
 1. 将目录切换到新项目。
 
@@ -227,10 +227,10 @@ az sql failover-group create --name $failoverGroup --partner-server $drServer `
             for(int i = 1; i < 1000; i++) {
                 //  loop will run for about 1 hour
                 System.out.print(i + ": insert on primary " +
-                   (insertData((highWaterMark + i))?"successful":"failed"));
+                   (insertData((highWaterMark + i)) ? "successful" : "failed"));
                 TimeUnit.SECONDS.sleep(1);
                 System.out.print(", read from secondary " +
-                   (selectData((highWaterMark + i))?"successful":"failed") + "\n");
+                   (selectData((highWaterMark + i)) ? "successful" : "failed") + "\n");
                 TimeUnit.SECONDS.sleep(3);
             }
          } catch(Exception e) {

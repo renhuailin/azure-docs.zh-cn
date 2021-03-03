@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f2b059bb6ae63d7f427ce970b2538da922e2dec
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 46cc8ef1158c02190f905cbe8eb1d12ea7be50a2
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94837257"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101644929"
 ---
 # <a name="what-is-a-primary-refresh-token"></a>什么是主刷新令牌？
 
-主刷新令牌 (PRT) 是 Windows 10、Windows Server 2016 及更高版本、iOS 和 Android 设备上的 Azure AD 身份验证的关键项目。 它是专门颁发给 Microsoft 第一方令牌代理的 JSON Web 令牌 (JWT)，用于在这些设备上使用的应用程序之间实现单一登录 (SSO)。 本文将详细介绍如何在 Windows 10 设备上颁发、使用和保护 PRT。
+主刷新令牌 (PRT) 是 Windows 10、Windows Server 2016 及更高版本、iOS 和 Android 设备上 Azure AD 身份验证的关键项目。 它是专门颁发给 Microsoft 第一方令牌代理的 JSON Web 令牌 (JWT)，用于在这些设备上使用的应用程序之间实现单一登录 (SSO)。 本文将详细介绍如何在 Windows 10 设备上颁发、使用和保护 PRT。
 
 本文假设你已了解 Azure AD 中的不同设备状态以及 Windows 10 中单一登录的工作原理。 要详细了解 Azure AD 中的设备，请参阅 [Azure Active Directory 中的设备管理是什么？](overview.md)
 
@@ -65,7 +65,7 @@ PRT 是从 Azure AD 发送的不透明 blob，其内容对于任何客户端组�
 在设备已注册 Azure AD 的方案中，Azure AD WAM 插件是 PRT 的主要颁发机构，因为此 Azure AD 帐户未发生 Windows 登录。
 
 > [!NOTE]
-> 第三方标识提供者需要支持 WS-Trust 协议，才能在 Windows 10 设备上颁发 PRT。 在没有 WS-TRUST 的情况下，不能将 PRT 颁发给混合 Azure AD 已加入或已加入 Azure AD 设备上的用户。 仅在 ADFS 上需要 usernamemixed 终结点。 Adfs/services/trust/2005/windowstransport 和 adfs/services/trust/13/windowstransport 都应作为仅面向 intranet 的终结点启用，且不能通过 Web 应用程序代理作为面向 extranet 的终结点 **公开**
+> 第三方标识提供者需要支持 WS-Trust 协议，才能在 Windows 10 设备上颁发 PRT。 若没有 WS-Trust，则无法将 PRT 颁发给已建立混合 Azure AD 联接或已建立 Azure AD 联接的设备上的用户。 在 ADFS 上仅需要 usernamemixed 终结点。 adfs/services/trust/2005/windowstransport 和 adfs/services/trust/13/windowstransport 应仅作为面向 Intranet 的终结点启用，不能通过 Web 应用程序代理作为面向 Extranet 的终结点公开
 
 ## <a name="what-is-the-lifetime-of-a-prt"></a>PRT 的生存期有多长？
 
@@ -85,11 +85,11 @@ PRT 通过两种不同的方法续订：
 * **通过 Azure AD CloudAP 插件每 4 小时续订一次**：在 Windows 登录过程中，CloudAP 插件每 4 小时就会续订一次 PRT。 如果在这段时间内用户没有 Internet 连接，CloudAP 插件将在设备连接到 Internet 后续订 PRT。
 * **通过 Azure AD WAM 插件在应用令牌请求中续订**：WAM 插件通过启用应用程序的无提示令牌请求，在 Windows 10 设备上启用 SSO。 WAM 插件可以通过两种不同的方式在这些令牌请求中续订 PRT：
    * 应用以无提示的方式向 WAM 请求访问令牌，但没有该应用可用的刷新令牌。 在这种情况下，WAM 使用 PRT 请求应用的令牌，并在响应中返回新的 PRT。
-   * 应用程序请求 WAM 访问令牌，但 PRT 无效或 Azure AD 需要额外的授权 (例如，Azure AD 多重身份验证) 。 在此方案中，WAM 会启动交互式登录，要求用户重新进行身份验证或提供附加验证，并会在身份验证成功后颁发新的 PRT。
+   * 应用向 WAM 请求访问令牌，但 PRT 无效或 Azure AD 需要额外的授权（例如 Azure AD 多重身份验证）。 在此方案中，WAM 会启动交互式登录，要求用户重新进行身份验证或提供附加验证，并会在身份验证成功后颁发新的 PRT。
 
-在 ADFS 环境中，无需直接向域控制器进行直接线路即可续订 PRT。 PRT 续订只需使用 WS-Trust 协议在代理上启用/adfs/services/trust/2005/usernamemixed 和/adfs/services/trust/13/usernamemixed 终结点。
+在 ADFS 环境中，续订 PRT 无需直连域控制器。 PRT 续订只需使用 WS-TRUST 协议在代理上启用 /adfs/services/trust/2005/usernamemixed 和 /adfs/services/trust/13/usernamemixed 终结点。
 
-仅当更改了密码，而不是 PRT 续订时，才需要 Windows 传输终结点进行密码身份验证。
+只有在更改了密码时才需要使用 Windows 传输终结点进行密码身份验证，而不是进行 PRT 续订。
 
 ### <a name="key-considerations"></a>重要注意事项
 
@@ -103,7 +103,7 @@ PRT 通过两种不同的方法续订：
 * **首次登录期间**：首次登录时，会使用在设备注册过程以加密方式生成的设备密钥对请求进行签名，从而颁发 PRT。 在具有有效且正常的 TPM 的设备上，TPM 会保护设备密钥以阻止所有恶意访问。 如果无法验证相应的设备密钥签名，则不会颁发 PRT。
 * **在令牌请求和续订过程中**：颁发 PRT 时，Azure AD 还会向设备颁发一个加密会话密钥。 它通过生成的公共传输密钥 (tkpub) 进行加密，并在设备注册过程中发送到 Azure AD。 此会话密钥只能由受 TPM 保护的专用传输密钥 (tkpriv) 解密。 会话密钥是发送到 Azure AD 的任何请求的所有权证明 (POP) 密钥。  会话密钥也受 TPM 保护，并且其他 OS 组件都不能访问它。 令牌请求或 PRT 续订请求通过 TPM 由该会话密钥安全地签名，以此确保不会被篡改。 若设备发出的请求未由相应的会话密钥签名，则 Azure AD 将使之无效。
 
-通过使用 TPM 保护这些密钥，恶意活动的参与者就不能盗取密钥，也无法在其他位置重播 PRT，因为即使攻击者已实际占用了该设备，也无法访问 TPM。  因此，使用 TPM 极大地增强了已建立 Azure AD 联接、已建立混合 Azure AD 联接以及已注册 Azure AD 的设备的安全性，可防止凭据被盗。 至于性能和可靠性，Windows 10 上的所有 Azure AD 设备注册方案都推荐使用 TPM 2.0 版。
+通过使用 TPM 保护这些密钥，我们将增强 PRT 的安全，防止恶意执行组件尝试盗取密钥或重播 PRT。  因此，使用 TPM 极大地增强了 Azure AD 联接、混合 Azure AD 联接和 Azure AD 注册的设备免受凭据被盗的安全性。 至于性能和可靠性，Windows 10 上的所有 Azure AD 设备注册方案都推荐使用 TPM 2.0 版。 由于可靠性问题，开始 Windows 10，1903更新，Azure AD 不会对任何上述密钥使用 TPM 1.2。 
 
 ### <a name="how-are-app-tokens-and-browser-cookies-protected"></a>应用令牌和浏览器 cookie 是如何受到保护的？
 
@@ -111,7 +111,7 @@ PRT 通过两种不同的方法续订：
 
 **浏览器 cookie**：在 Windows 10 中，Azure AD 以原生方式支持 Internet Explorer 和 Microsoft Edge 中的浏览器 SSO，或通过 Windows 10 帐户扩展支持 Google Chrome 中的浏览器 SSO。 建立安全性不仅是为了保护 cookie，还可以保护要将 cookie 发送到的终结点。 浏览器 cookie 的保护方式与 PRT 相同，也是使用会话密钥对 cookie 进行签名和保护。
 
-当用户启动浏览器交互时，浏览器（或扩展）会调用 COM 原生客户端主机。 原生客户端主机确保该页面来自允许的域。 浏览器可以将其他参数发送到原生客户端主机（包括 nonce），但原生客户端主机保证对主机名进行验证。 原生客户端主机从 CloudAP 插件请求 PRT-cookie，此插件使用受 TPM 保护的会话密钥创建 PRT-cookie 并对其进行签名。 因为 PRT-cookie 由会话密钥签名，所以不会被篡改。 此 PRT-cookie 包括在 Azure AD 的请求标头中，用于验证发出请求的设备。 如果使用的是 Chrome 浏览器，则只有在原生客户端主机的清单中显式定义的扩展才能调用它，从而防止任意扩展发出这些请求。 Azure AD 验证 PRT cookie 后，会向浏览器颁发会话 cookie。 此会话 cookie 还包含使用 PRT 颁发的相同会话密钥。 在后续请求中，会验证会话密钥，以将 cookie 绑定到设备，并阻止在其他位置重播。
+当用户启动浏览器交互时，浏览器（或扩展）会调用 COM 原生客户端主机。 原生客户端主机确保该页面来自允许的域。 浏览器可以将其他参数发送到原生客户端主机（包括 nonce），但原生客户端主机保证对主机名进行验证。 原生客户端主机从 CloudAP 插件请求 PRT-cookie，此插件使用受 TPM 保护的会话密钥创建 PRT-cookie 并对其进行签名。 由于 PRT-cookie 由会话密钥签名，因此很难篡改。 此 PRT-cookie 包括在 Azure AD 的请求标头中，用于验证发出请求的设备。 如果使用的是 Chrome 浏览器，则只有在原生客户端主机的清单中显式定义的扩展才能调用它，从而防止任意扩展发出这些请求。 Azure AD 验证 PRT cookie 后，会向浏览器颁发会话 cookie。 此会话 cookie 还包含使用 PRT 颁发的相同会话密钥。 在后续请求中，会验证会话密钥，以将 cookie 绑定到设备，并阻止在其他位置重播。
 
 ## <a name="when-does-a-prt-get-an-mfa-claim"></a>PRT 何时获得 MFA 声明？
 
@@ -173,7 +173,7 @@ Windows 10 维护每个凭据的 PRT 分区列表。 Windows Hello 企业版、�
 | G | CloudAP 插件将加密的 PRT 和会话密钥传递到 CloudAP。 CloudAP 请求 TPM 使用传输密钥 (tkpriv) 对会话密钥进行解密，并使用 TPM 自己的密钥对其重新加密。 CloudAP 将加密的会话密钥与 PRT 一起存储在其缓存中。 |
 
 > [!NOTE]
-> PRT 可以在外部续订，无需在外部启用 usernamemixed 终结点时使用 VPN 连接。
+> 当从外部启用 usernamemixed 终结点时，在不需要 VPN 连接的情况下可以从外部续订 PRT。
 
 ### <a name="prt-usage-during-app-token-requests"></a>应用令牌请求过程中的 PRT 使用
 
@@ -196,12 +196,12 @@ Windows 10 维护每个凭据的 PRT 分区列表。 Windows Hello 企业版、�
 | A | 用户使用其凭据登录到 Windows 以获取 PRT。 用户打开浏览器后，浏览器（或扩展）将从注册表加载 URL。 |
 | B | 当用户打开 Azure AD 登录 URL 时，浏览器或扩展会使用从注册表获取的 URL 来验证该 URL。 如果它们匹配，则浏览器调用原生客户端主机以获取令牌。 |
 | C | 原生客户端主机验证 URL 是否属于 Microsoft 标识提供者（Microsoft 帐户或 Azure AD），提取从 URL 发送的 nonce，并调用 CloudAP 插件以获取 PRT cookie。 |
-| D | CloudAP 插件将创建 PRT cookie，使用 TPM 绑定的会话密钥进行登录，然后将其发送回原生客户端主机。 因为 cookie 由会话密钥签名，所以不会被篡改。 |
+| D | CloudAP 插件将创建 PRT cookie，使用 TPM 绑定的会话密钥进行登录，然后将其发送回原生客户端主机。 |
 | E | 原生客户端主机会将此 PRT cookie 返回到浏览器，浏览器会将其包含在名为 x-ms-RefreshTokenCredential 的请求标头中，并从 Azure AD 请求令牌。 |
 | F | Azure AD 验证 PRT cookie 上的会话密钥签名，验证 nonce，验证设备在租户中是否有效，然后颁发网页的 ID 令牌和浏览器的已加密会话 cookie。 |
 
 > [!NOTE]
-> 以上步骤中描述的浏览器 SSO 流不适用于专用模式（如 Microsoft Edge 中的 InPrivate）或 Incognito in Google Chrome (中使用 Microsoft 帐户扩展) 时的会话。
+> 上述步骤中所述的浏览器 SSO 流不适用于隐私模式的会话，例如 Microsoft Edge 中的 InPrivate 或 Google Chrome 中的 Incognito（使用 Microsoft Accounts 扩展时）。
 
 ## <a name="next-steps"></a>后续步骤
 

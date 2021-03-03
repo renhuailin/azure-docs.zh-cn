@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 02/12/2021
+ms.date: 03/02/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 68ed67afc949b3a67936f20a098bca8b6906a598
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 747fa3005930414832878757664f4787157302d5
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100365542"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101645817"
 ---
 # <a name="enable-b2b-external-collaboration-and-manage-who-can-invite-guests"></a>启用 B2B 外部协作并管理谁可以邀请来宾
 
@@ -78,11 +78,11 @@ Azure AD 允许你限制外部来宾用户可以在你的 Azure AD 目录中所�
    >
    >![启用选择的电子邮件一次性密码](media/delegate-invitations/enable-email-otp-opted-in.png)
 
-7. 在 " **通过用户流启用来宾自助服务注册 (预览")** 上，如果希望能够创建允许用户注册应用的用户流，请选择 **"是"** 。 有关此设置的详细信息，请参阅 [向应用添加自助服务注册用户流 (预览) ](self-service-sign-up-user-flow.md)。
+7. 在 " **通过用户流启用来宾自助服务注册**" 下，如果想要创建允许用户注册应用的用户流，请选择 **"是"** 。 有关此设置的详细信息，请参阅 [向应用添加自助服务注册用户流](self-service-sign-up-user-flow.md)。
 
     ![通过用户流设置自助注册](./media/delegate-invitations/self-service-sign-up-setting.png)
 
-7. 在 " **协作限制**" 下，选择是允许还是拒绝指定的域的邀请。 有关详细信息，请参阅[允许或阻止向特定组织中的 B2B 用户发送邀请](allow-deny-list.md)。
+7. 在 " **协作限制**" 下，可以选择是允许还是拒绝指定的域的邀请，并在文本框中输入特定的域名。 若要阻止多个域，请分行输入每个域。 有关详细信息，请参阅[允许或阻止向特定组织中的 B2B 用户发送邀请](allow-deny-list.md)。
 
     ![协作限制设置](./media/delegate-invitations/collaboration-restrictions.png)
 ## <a name="assign-the-guest-inviter-role-to-a-user"></a>将“来宾邀请者”角色分配给用户

@@ -5,14 +5,15 @@ author: cynthn
 ms.author: cynthn
 ms.date: 05/05/2020
 ms.topic: how-to
-ms.service: virtual-machines-windows
-ms.subservice: imaging
-ms.openlocfilehash: e3a7ea2cd696f54b032a3f17eceff466a6201436
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.service: virtual-machines
+ms.subervice: image-builder
+ms.colletion: windows
+ms.openlocfilehash: fd30c2bf4e2c0bc04850704e412aad1db2b10143
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878674"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101677250"
 ---
 # <a name="preview-create-a-windows-image-and-distribute-it-to-a-shared-image-gallery"></a>预览版：创建 Windows 映像并将其分发到共享映像库 
 
@@ -31,7 +32,7 @@ Azure 映像生成器会自动运行 sysprep 来将映像通用化，这是一�
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="register-the-features"></a>注册功能
-若要在预览版期间使用 Azure 映像生成器，需要注册新功能。
+若要在预览期间使用 Azure 映像生成器，需要注册新功能。
 
 ```powershell
 Register-AzProviderFeature -FeatureName VirtualMachineTemplatePreview -ProviderNamespace Microsoft.VirtualMachineImages
@@ -147,7 +148,7 @@ https://docs.microsoft.com/azure/role-based-access-control/troubleshooting
 
 若要将映像生成器用于共享映像库，需要现有的映像库和映像定义。 映像生成器无法创建映像库和映像定义。
 
-如果还没有可使用的库和映像定义，请先进行创建。 首先创建映像库。
+如果还没有可使用的库和映像定义，请先创建它们。 首先创建映像库。
 
 ```powershell
 # Image gallery name

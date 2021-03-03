@@ -6,23 +6,22 @@ documentationcenter: ''
 author: hermanndms
 manager: juergent
 editor: ''
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: article
 ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/01/2020
 ms.author: juergent
-ms.openlocfilehash: 70b0f8178a94735a6ef37a225044984508cc2233
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 0ff226a156721382a289af0f2a8a0f898a57bab9
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97617130"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101667982"
 ---
 # <a name="sap-hana-azure-backup-on-file-level"></a>文件级别的 SAP HANA Azure 备份
 
-## <a name="introduction"></a>介绍
+## <a name="introduction"></a>简介
 
 本文是有关 [Azure 虚拟机上 SAP HANA 的备份指南](./sap-hana-backup-guide.md)的相关文章，其中提供了有关 azure 备份服务和存储快照的入门和详细信息。 
 

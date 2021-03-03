@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/28/2021
-ms.openlocfilehash: 5381c12253f3f301099d469639cc75e390ebceff
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 596eca0d73ffc4a590fae9b346658a2c31a1d68c
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100360952"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101676481"
 ---
 # <a name="creating-indexers-in-azure-cognitive-search"></a>在 Azure 中创建索引器认知搜索
 
@@ -155,7 +155,7 @@ AI 扩充超出了本文的范围。 有关详细信息，请从以下文章开�
 
 对于大型索引加载，索引器还会跟踪通过内部 "高水位线" 处理的最后一篇文档。 标记决不会在 API 中公开，但在内部，索引器将跟踪它停止的位置。 当索引通过计划运行或按需调用进行恢复时，索引器将引用高水位线，以便它可以从中断的位置继续。
 
-如果需要清除高水位线以使其完全重新编制索引，则可以使用 " [重置索引器](https://docs.microsoft.com/rest/api/searchservice/reset-indexer)"。 为了更好地重新编制索引，请使用 [重置技能](https://docs.microsoft.com/rest/api/searchservice/preview-api/reset-skills) 或 [重置文档](https://docs.microsoft.com/rest/api/searchservice/preview-api/reset-documents)。 如果启用了 [增量扩充](search-howto-incremental-index.md)，则可以通过重置 api 清除内部状态并刷新缓存。 有关每个重置选项的更多背景和比较，请参阅 [运行或重置索引器、技能和文档](search-howto-run-reset-indexers.md)。
+如果需要清除高水位线以使其完全重新编制索引，则可以使用 " [重置索引器](/rest/api/searchservice/reset-indexer)"。 为了更好地重新编制索引，请使用 [重置技能](/rest/api/searchservice/preview-api/reset-skills) 或 [重置文档](/rest/api/searchservice/preview-api/reset-documents)。 如果启用了 [增量扩充](search-howto-incremental-index.md)，则可以通过重置 api 清除内部状态并刷新缓存。 有关每个重置选项的更多背景和比较，请参阅 [运行或重置索引器、技能和文档](search-howto-run-reset-indexers.md)。
 
 ## <a name="know-your-data"></a>了解你的数据
 
@@ -165,7 +165,7 @@ AI 扩充超出了本文的范围。 有关详细信息，请从以下文章开�
 
 除平展数据外，还必须仅提取可搜索的数据。 可搜索数据为字母数字。 认知搜索无法以任何格式搜索二进制数据，但它可以提取并推断图像文件的文本说明 (请参阅 [AI 扩充](cognitive-search-concept-intro.md)) 创建可搜索的内容。 同样，使用 AI 扩充，自然语言模型可以分析大文本，以查找结构或相关信息，并生成可添加到搜索文档中的新内容。
 
-假设索引器不能解决数据问题，可能需要其他形式的数据清理或操作。 有关详细信息，请参阅 [Azure 数据库产品](/azure/?product=databases)的产品文档。
+假设索引器不能解决数据问题，可能需要其他形式的数据清理或操作。 有关详细信息，请参阅 [Azure 数据库产品](../index.yml?product=databases)的产品文档。
 
 ## <a name="know-your-index"></a>了解索引
 

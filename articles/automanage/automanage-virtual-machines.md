@@ -6,15 +6,15 @@ ms.service: virtual-machines
 ms.subservice: automanage
 ms.workload: infrastructure
 ms.topic: conceptual
-ms.date: 09/04/2020
+ms.date: 02/23/2021
 ms.author: deanwe
 ms.custom: references_regions
-ms.openlocfilehash: 7772d57937393da1c48fa2658818d8a1a2b28a1f
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 1d3b2174df5dd83852ce120ec6693ae187a3e795
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99550778"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101643504"
 ---
 # <a name="azure-automanage-for-virtual-machines"></a>适用于虚拟机的 Azure Automanage
 
@@ -28,27 +28,47 @@ ms.locfileid: "99550778"
 
 ## <a name="overview"></a>概述
 
-适用于虚拟机的 Azure Automanage 是一项服务，无需发现、了解如何载入，以及如何在 Azure 中配置某些服务来使你的虚拟机受益。 这些服务有助于增强对虚拟机的可靠性、安全性和管理，并将其视为 azure 最佳做法服务（如 [azure 更新管理](../automation/update-management/overview.md) 和 [azure 备份](../backup/backup-overview.md) ），只需进行几项命名即可。
+适用于虚拟机的 Azure Automanage 是一项服务，无需发现、了解如何载入，以及如何在 Azure 中配置某些服务来使你的虚拟机受益。 这些服务被视为 Azure 最佳做法服务，有助于增强对虚拟机的可靠性、安全性和管理。 示例服务包括 [azure 更新管理](../automation/update-management/overview.md) 和 [azure 备份](../backup/backup-overview.md)。
 
-将虚拟机载入 Azure Automanage 后，它会自动将每个最佳实践服务配置为其建议的设置。 对于每个服务，最佳做法都是不同的。 例如，Azure 备份可能是 Azure 备份，其中最好的做法是每天备份一次虚拟机，保持期为6个月。
+在将虚拟机载入 Azure Automanage 后，每个最佳实践服务都将配置为其建议的设置。 对于每个服务，最佳做法都是不同的。 例如，Azure 备份可能是 Azure 备份，其中最好的做法是每天备份一次虚拟机，保持期为6个月。
 
-Azure Automanage 还自动监视是否有偏移，并在检测到它时纠正。 这意味着，如果你的虚拟机载入 Azure Automanage，我们将不只针对 Azure 最佳做法对其进行配置，但我们将监视你的计算机，以确保它继续遵从其整个生命周期中的最佳实践。 如果你的虚拟机确实会偏离或偏离这些实践，我们会更正此错误，并将你的计算机恢复到所需状态。
-
-最后，体验非常简单。
-
+Azure Automanage 还自动监视是否有偏移，并在检测到它时纠正。 这意味着，如果你的虚拟机载入 Azure Automanage，我们将不只针对 Azure 最佳做法对其进行配置，但我们将监视你的计算机，以确保它继续遵从其整个生命周期中的最佳实践。 如果你的虚拟机确实会偏离或偏离这些实践 (例如，如果某个服务是 offboarded) 的，我们会更正此错误，并将你的计算机恢复到所需状态。
 
 ## <a name="prerequisites"></a>先决条件
 
 在虚拟机上尝试启用 Azure Automanage 之前，需要考虑几个先决条件。
 
-- 仅限 Windows Server Vm
-- Vm 必须位于受支持的区域 (请参阅下一段落) 
-- 用户必须具有正确的权限 (请参阅下一段落) 
+- 受支持的 [Windows Server 版本](automanage-windows-server.md#supported-windows-server-versions) 和 [Linux 发行版](automanage-linux.md#supported-linux-distributions-and-versions)
+- Vm 必须位于受支持的区域中 (如下所示) 
+- 用户必须具有正确的权限 (如下所示) 
 - Automanage 目前不支持沙盒订阅
 
-另外，请务必注意，Automanage 仅支持位于以下区域的 Windows Vm：西欧、美国东部、美国西部2、加拿大中部、美国西部、美国东部、日本东部。
+### <a name="supported-regions"></a>支持的区域
+Automanage 仅支持位于以下区域的 Vm：
+* 西欧
+* 北欧
+* 美国中部
+* 美国东部
+* 美国东部 2
+* 美国西部
+* 美国西部 2
+* 加拿大中部
+* 美国中西部
+* 美国中南部
+* 日本东部
+* 英国南部
+* 澳大利亚东部
+* 澳大利亚东南部
 
-必须对包含 Vm 的资源组具有 " **参与者** " 角色，才能使用现有的 Automanage 帐户在 vm 上启用 Automanage。 如果要使用新的 Automanage 帐户启用 Automanage，则需要对订阅拥有以下权限： **所有者** 角色或 **参与者** 以及 **用户访问管理员** 角色。
+### <a name="required-rbac-permissions"></a>必需的 RBAC 权限
+你的帐户将需要略有不同的 RBAC 角色，具体取决于是否使用新的 Automanage 帐户来启用 Automanage。
+
+如果要使用新的 Automanage 帐户启用 Automanage，请执行以下操作：
+* 订阅的 **所有者** 角色 (s) 包含 vm， _**或**_
+* 订阅上的 **参与者** 和 **用户访问管理员** 角色 (s) 包含 vm
+
+如果要使用现有的 Automanage 帐户启用 Automanage：
+* 包含 Vm 的资源组上的 **参与者** 角色
 
 > [!NOTE]
 > 如果要在连接到不同订阅中的工作区的 VM 上使用 Automanage，则必须具有上述每个订阅的权限。
@@ -57,11 +77,13 @@ Azure Automanage 还自动监视是否有偏移，并在检测到它时纠正。
 
 :::image type="content" source="media\automanage-virtual-machines\intelligently-onboard-services.png" alt-text="智能地内置服务。":::
 
-有关参与的 Azure 服务的完整列表以及支持的配置文件，请参阅 [Azure Automanage For 虚拟机最佳实践](virtual-machines-best-practices.md) 。
+有关参与 Azure 服务的完整列表以及其受支持的环境，请参阅以下内容：
+- [适用于 Linux 的 Automanage](automanage-linux.md)
+- [适用于 Windows Server 的 Automanage](automanage-windows-server.md)
 
  我们会自动将你带到这些参与服务。 它们对于我们的最佳实践白皮书至关重要，你可以在我们的 [云采用框架](/azure/cloud-adoption-framework/manage/azure-server-management)中找到它。
 
-对于所有这些服务，我们将自动载入、autoconfigure、监视偏移，并在检测到偏差时进行。
+对于所有这些服务，我们将自动载入、自动配置、监视偏移，并在检测到偏差时进行监视。
 
 
 ## <a name="enabling-automanage-for-vms-in-azure-portal"></a>为 Azure 门户中的 Vm 启用 Automanage
@@ -70,33 +92,37 @@ Azure Automanage 还自动监视是否有偏移，并在检测到它时纠正。
 
 如果你是第一次为 VM 启用 Automanage，则可以在 Azure 门户中搜索 **Automanage – Azure 虚拟机最佳实践**。 **在现有 VM 上** 单击 "启用"，选择要登记的 vm，单击 "**选择**"，单击 "**启用**"，即可完成操作。
 
-只有在尝试修正 VM 的情况下，你可能需要与此 VM 交互以管理这些服务，但无法执行此操作。 如果已成功修正 VM，我们会将其恢复为符合性，甚至无需发出警报。
+只有在尝试修正 VM 的情况下，你可能需要与此 VM 交互以管理这些服务，但无法执行此操作。 如果已成功修正 VM，我们会将其恢复为符合性，甚至无需发出警报。 有关更多详细信息，请参阅 [vm 的状态](#status-of-vms)。
 
 
-## <a name="configuration-profiles"></a>配置文件
+## <a name="environment-configuration"></a>环境配置
 
-为虚拟机启用 Automanage 时，需要配置配置文件。 配置文件是此服务的基础。 它们精确地定义了将计算机加入到哪些服务，以及这些服务的配置。
+为虚拟机启用 Automanage 时，需要一个环境。 环境是此服务的基础。 它们定义了将计算机加入到哪些服务，以及这些服务的配置。
 
-### <a name="default-configuration-profiles"></a>默认配置文件
+### <a name="default-environments"></a>默认环境
 
-当前有两个配置文件可用。
+目前有两个可用的环境。
 
-- **Azure 虚拟机最佳实践-开发/测试** 配置文件是为开发/测试计算机设计的。
-- **Azure 虚拟机最佳实践-生产** 配置文件用于生产。
+- **开发/测试** 环境设计用于开发/测试计算机。
+- **生产** 环境适用于生产环境。
 
 这种区别的原因是，根据工作负荷的运行，建议使用某些服务。 例如，在生产计算机中，会自动将你载入 Azure 备份。 但对于开发/测试计算机，备份服务是一种不必要的成本，因为开发/测试计算机通常会降低业务影响。
 
-### <a name="customizing-a-configuration-profile-using-preferences"></a>使用首选项自定义配置文件
+### <a name="customizing-an-environment-using-preferences"></a>使用首选项自定义环境
 
-除了我们所支持的标准服务外，我们还允许您配置首选项子集。 在不会违反最佳实践的一系列配置选项中，允许使用这些首选项。 例如，在 Azure 备份的情况下，我们将允许你定义备份的频率和发生时间。 但是，我们 *不* 会允许完全关闭 Azure 备份。
-
-> [!NOTE]
-> 在开发/测试配置文件中，我们根本不会备份 VM。
-
-可以通过首选项调整默认配置文件的设置。 了解如何在 [此处](virtual-machines-custom-preferences.md)创建首选项。
+除了我们所支持的标准服务外，我们还允许您配置首选项子集。 允许在一系列配置选项中使用这些首选项。 例如，在 Azure 备份的情况下，我们将允许你定义备份的频率和发生时间。
 
 > [!NOTE]
-> 启用 Automanage 时，无法更改 VM 上的配置文件。 需要为该 VM 禁用 Automanage，然后使用所需的配置配置文件和首选项重新启用 Automanage。
+> 在开发/测试环境中，我们根本不会备份 VM。
+
+可以通过首选项调整默认环境的设置。 了解如何在 [此处](virtual-machines-custom-preferences.md)创建首选项。
+
+> [!NOTE]
+> 启用 Automanage 后，不能更改 VM 上的 enivonrment 配置。 需要为该 VM 禁用 Automanage，然后使用所需的环境和首选项重新启用 Automanage。
+
+有关参与 Azure 服务的完整列表，以及它们是否支持首选项，请参阅以下内容：
+- [适用于 Linux 的 Automanage](automanage-windows-server.md)
+- [适用于 Windows Server 的 Automanage](automanage-windows-server.md)
 
 
 ## <a name="automanage-account"></a>Automanage 帐户
@@ -123,7 +149,7 @@ Automanage 帐户是安全上下文或用于执行自动操作的标识。 通�
 
 :::image type="content" source="media\automanage-virtual-machines\configured-status.png" alt-text="已配置虚拟机的列表。":::
 
-对于列出的每个 VM，将显示以下详细信息：名称、配置文件、配置首选项、状态、帐户、订阅和资源组。
+对于列出的每个 VM，将显示以下详细信息：名称、环境、配置首选项、状态、操作系统、帐户、订阅和资源组。
 
 " **状态** " 列可以显示以下状态：
 - *正在进行* -VM 刚启用并且正在配置
@@ -156,7 +182,7 @@ Automanage 帐户是安全上下文或用于执行自动操作的标识。 通�
 
 ## <a name="next-steps"></a>后续步骤
 
-在本文中，你已了解虚拟机的 Automanage 提供了一种方法，你无需知道、载入和配置最佳实践 Azure 服务。 此外，如果在配置文件中设置了载入的虚拟机偏离计算机，我们会自动将其恢复为符合性。
+在本文中，你已了解虚拟机的 Automanage 提供了一种方法，你无需知道、载入和配置最佳实践 Azure 服务。 此外，如果在环境设置中从虚拟机偏离载入到 Automanage 的计算机，我们会自动将其恢复为符合性。
 
 尝试在 Azure 门户中为虚拟机启用 Automanage。
 

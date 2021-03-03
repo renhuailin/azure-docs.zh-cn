@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure Active Directory 进行目录同步
-description: 与 Azure Active Directory 实现目录同步的体系结构指南。
+description: 有关如何实现与 Azure Active Directory 的目录同步的体系结构指南。
 services: active-directory
 author: BarbaraSelden
 manager: daveba
@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 748f91b2fe77667969e9736f8084a9dd24018425
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 98aa697c0120fd8a20adf11ad83e02406499a0d1
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96172463"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101648486"
 ---
 # <a name="directory-synchronization"></a>目录同步
 
@@ -54,7 +54,7 @@ ms.locfileid: "96172463"
 
 ## <a name="implement-directory-synchronization-with-azure-ad"></a>使用 Azure AD 实现目录同步
 
-* [什么是标识预配？](../cloud-provisioning/what-is-provisioning.md) 
+* [什么是标识预配？](../cloud-sync/what-is-provisioning.md) 
 
 * [混合标识目录集成工具](../hybrid/plan-hybrid-identity-design-considerations-tools-comparison.md) 
 

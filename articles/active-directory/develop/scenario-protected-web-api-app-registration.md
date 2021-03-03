@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 5d93df0b6d59e013c22e138942ab4651784421ae
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: dcfedf2cceddb59d456d421c4846f3cd252a65b3
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99584374"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101651858"
 ---
 # <a name="protected-web-api-app-registration"></a>受保护的 Web API：应用注册
 
@@ -78,7 +78,7 @@ Web API 不需注册重定向 URI，因为没有任何用户以交互方式登�
 ### <a name="exposing-delegated-permissions-scopes"></a>公开委托的权限（范围）
 
 1. 在应用程序注册中选择“公开 API”。
-1. 选择“添加范围”。 
+1. 选择“添加范围”。
 1. 出现提示时，请选择“保存并继续”，接受建议的应用程序 ID URI (`api://{clientId}`)。
 1. 指定以下值：
     - 选择“范围名称”并输入 **access_as_user**。
@@ -112,7 +112,7 @@ Web API 不需注册重定向 URI，因为没有任何用户以交互方式登�
 
 ```json
 "appRoles": [
-    {
+  {
     "allowedMemberTypes": [ "Application" ],
     "description": "Accesses the TodoListService-Cert as an application.",
     "displayName": "access_as_application",
@@ -121,7 +121,7 @@ Web API 不需注册重定向 URI，因为没有任何用户以交互方式登�
     "lang": null,
     "origin": "Application",
     "value": "access_as_application"
-    }
+  }
 ],
 ```
 
@@ -149,7 +149,7 @@ Web API 将检查应用角色。 此角色是软件开发人员公开应用程�
    >
    > 但是，如上一部分中所述，Web API 始终可以验证应用程序是否具有租户管理员授权的适当角色。API 的验证方式是验证访问令牌是否包含角色声明，以及此声明的值是否正确。 在上述 JSON 示例中，值为 `access_as_application`。
 
-1. 选择“保存” 。
+1. 选择“保存”  。
 
 ## <a name="next-steps"></a>后续步骤
 

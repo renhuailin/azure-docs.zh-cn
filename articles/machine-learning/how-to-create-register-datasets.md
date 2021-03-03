@@ -12,12 +12,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 07/31/2020
-ms.openlocfilehash: 39973fe8c15364dc214392985cecd8b8bc7834ed
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 9a50d8402515cb7aafa9a1b02c8b8c18412f6618
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878199"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101659386"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>创建 Azure 机器学习数据集
 
@@ -25,13 +25,13 @@ ms.locfileid: "98878199"
 
 通过创建数据集，可以创建对数据源位置的引用及其元数据的副本。 由于数据保留在其现有位置中，因此不会产生额外的存储成本，也不会损害数据源的完整性。 此外，还会对数据集进行延迟计算，从而有助于工作流性能速度。 可以从数据存储、公共 Url 和 [Azure 开放式数据集](../open-datasets/how-to-create-azure-machine-learning-dataset-from-open-dataset.md)创建数据集。
 
-对于低代码体验，请[使用 Azure 机器学习 Studio 创建 Azure 机器学习数据集。](how-to-connect-data-ui.md#create-datasets)
+对于低代码体验，请 [使用 Azure 机器学习 Studio 创建 Azure 机器学习数据集。](how-to-connect-data-ui.md#create-datasets)
 
 使用 Azure 机器学习数据集可以：
 
 * 在存储中保留数据的单个副本，供数据集引用。
 
-* 在模型训练期间无缝访问数据，而无需考虑连接字符串或数据路径。[详细了解如何使用数据集进行训练](how-to-train-with-datasets.md)。
+* 在模型训练期间无缝访问数据，而无需考虑连接字符串或数据路径。 [详细了解如何使用数据集进行训练](how-to-train-with-datasets.md)。
 
 * 与其他用户共享数据和展开协作。
 
@@ -82,7 +82,7 @@ ms.locfileid: "98878199"
 使用 [Python SDK](#create-a-tabulardataset) 或 [Azure 机器学习工作室](how-to-connect-data-ui.md#create-datasets)创建 TabularDataset。
 
 >[!NOTE]
-> 通过 Azure 机器学习工作室生成的 AutoML 工作流目前仅支持 TabularDataset。 
+> 通过 Azure 机器学习 studio 生成的[自动 ML](concept-automated-ml.md)工作流目前仅支持 TabularDatasets。 
 
 ## <a name="access-datasets-in-a-virtual-network"></a>访问虚拟网络中的数据集
 
@@ -90,15 +90,20 @@ ms.locfileid: "98878199"
 
 <a name="datasets-sdk"></a>
 
-## <a name="create-datasets"></a>创建数据集
+## <a name="create-datasets-from-datastores"></a>从数据存储创建数据集
 
-要使数据可供 Azure 机器学习访问，必须从 [Azure 数据存储](how-to-access-data.md)或公共 Web URL 中的路径创建数据集。 
+要使数据可 Azure 机器学习访问，必须使用 [Azure 机器学习数据存储](how-to-access-data.md) 或 web url 中的路径创建数据集。 
 
-若要使用 Python SDK 从 [Azure 数据存储](how-to-access-data.md)创建数据集，请执行以下步骤：
+> [!TIP] 
+> 可以直接从具有基于标识的数据访问的存储 url 创建数据集。 若要了解详细信息，请参阅 [使用基于标识的数据访问连接到存储 (预览) ](how-to-identity-based-data-access.md)<br><br>
+此功能是 [实验](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py#stable-vs-experimental) 性预览功能，随时可能会更改。 
 
-1. 验证是否对已注册的 Azure 数据存储拥有 `contributor` 或 `owner` 访问权限。
+ 
+使用 Python SDK 通过数据存储创建数据集：
 
-2. 通过引用数据存储中的路径创建数据集。 可以从多个数据存储中的多个路径创建数据集。 可以从其创建数据集的文件数量或数据大小没有硬性限制。 
+1. 验证你是否具有 `contributor` 或 `owner` 访问已注册 Azure 机器学习数据存储的基础存储服务。 [在 Azure 门户中检查存储帐户的权限](../role-based-access-control/check-access.md)。
+
+1. 通过引用数据存储中的路径创建数据集。 可以从多个数据存储中的多个路径创建数据集。 可以从其创建数据集的文件数量或数据大小没有硬性限制。 
 
 > [!NOTE]
 > 对于每个数据路径，会将几个请求发送到存储服务，以检查它是否指向文件或文件夹。 此开销可能会导致性能下降或故障。 数据集引用内含 1000 个文件的文件夹的行为被视为引用一个数据路径。 为了获得最佳性能，建议创建在数据存储中引用不到 100 个路径的数据集。
@@ -179,9 +184,9 @@ titanic_ds.take(3).to_pandas_dataframe()
 
 ## <a name="explore-data"></a>浏览数据
 
-创建并 [注册](#register-datasets) 数据集后，可以将其加载到笔记本中，以便在模型定型之前进行数据浏览。 如果不需要进行任何数据探索，请参阅如何在训练脚本中使用数据集，以便在对 [数据集进行训练时](how-to-train-with-datasets.md)提交 ML 试验。
+创建并[注册](#register-datasets)数据集之后，可以在模型训练之前将其加载到笔记本中以进行数据浏览。 如果不需要进行任何数据浏览，请参阅[使用数据集进行训练](how-to-train-with-datasets.md)，了解如何在训练脚本中使用数据集，以便提交 ML 试验。
 
-对于 FileDatasets，可以 **装载** 或 **下载** 数据集，并应用通常用于数据浏览的 python 库。 [了解有关装载与下载的详细信息](how-to-train-with-datasets.md#mount-vs-download)。
+对于 FileDataset，可以装载或下载数据集，并应用通常用于数据浏览的 python 库。 [详细了解如何装载和下载](how-to-train-with-datasets.md#mount-vs-download)。
 
 ```python
 # download the dataset 
@@ -196,7 +201,7 @@ mount_context = dataset.mount(mounted_path)
 mount_context.start()
 ```
 
-对于 TabularDatasets，请使用 [`to_pandas_dataframe()`](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py#to-pandas-dataframe-on-error--null---out-of-range-datetime--null--) 方法查看数据帧中的数据。 
+对于 TabularDataset，请使用 [`to_pandas_dataframe()`](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py#to-pandas-dataframe-on-error--null---out-of-range-datetime--null--) 方法来查看数据帧中的数据。 
 
 ```python
 # preview the first 3 rows of titanic_ds
@@ -261,7 +266,7 @@ titanic_ds = titanic_ds.register(workspace=workspace,
 若要了解如何使用这些模板，请参阅[使用 Azure 资源管理器模板创建 Azure 机器学习的工作区](how-to-create-workspace-template.md)。
 
 
-## <a name="create-datasets-with-azure-open-datasets"></a>使用 Azure 开放数据集创建数据集
+## <a name="create-datasets-from-azure-open-datasets"></a>从 Azure 开放数据集创建数据集
 
 [Azure 开放数据集](https://azure.microsoft.com/services/open-datasets/)是精选公共数据集，可用于将方案专属特征添加到机器学习解决方案，以提高模型的准确度。 数据集包括不受任何限制的天气、人口普查、节假日、公共安全和位置数据，有助于定型机器学习模型和扩充预测解决方案。 打开的数据集位于 Microsoft Azure 云中，同时包含在 SDK 和工作室中。
 
@@ -269,7 +274,7 @@ titanic_ds = titanic_ds.register(workspace=workspace,
 
 ## <a name="train-with-datasets"></a>使用数据集进行训练
 
-在机器学习试验中使用数据集来训练 ML 模型。 [详细了解如何使用数据集进行训练](how-to-train-with-datasets.md)
+在机器学习试验中使用数据集来训练 ML 模型。 [详细了解如何使用数据集进行训练](how-to-train-with-datasets.md)。
 
 ## <a name="version-datasets"></a>对数据集进行版本控制
 

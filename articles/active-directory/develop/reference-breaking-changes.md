@@ -8,22 +8,22 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: reference
-ms.date: 5/4/2020
+ms.date: 2/22/2021
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 94c34e6f7cb24ff749e5de95f1c28a496700af80
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: c5e7f556f37a1d6d53e0a938490f1099a7be776a
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348715"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101647415"
 ---
 # <a name="whats-new-for-authentication"></a>身份验证的新增功能
 
 > 通过将此 URL 粘贴到 RSS 源阅读器中即可在此页面更新时获得通知：<br/>`https://docs.microsoft.com/api/search/rss?search=%22whats%20new%20for%20authentication%22&locale=en-us`
 
-身份验证系统会持续更改和添加功能，以增强安全性并提高标准符合性。 为了让大家随时了解最新的开发成果，本文将提供有关以下详细信息的信息：
+身份验证系统会持续更改和添加功能，以增强安全性并提高标准符合性。 为了及时了解最新的开发，本文提供了有关以下详细信息的信息：
 
 - 最新功能
 - 已知问题
@@ -35,7 +35,28 @@ ms.locfileid: "96348715"
 
 ## <a name="upcoming-changes"></a>即将推出的更改
 
-目前没有计划。  请参阅下面的内容，了解已经进入或即将进入生产环境中的变更。
+### <a name="conditional-access-will-only-trigger-for-explicitly-requested-scopes"></a>只有显式请求的作用域才会触发条件性访问
+
+**生效日期**：2021年3月
+
+**受影响的终结点**： v2。0
+
+**受影响的协议**：所有使用 [动态许可](v2-permissions-and-consent.md#requesting-individual-user-consent)的流
+
+现在，使用动态同意的应用程序将获得他们同意的所有权限，即使未按名称在参数中请求也是如此 `scope` 。  这可能会导致应用程序请求（仅 `user.read` 同意） `files.read` 传递为权限分配的条件性访问 `files.read` 权限。 
+
+为了减少不必要的条件性访问提示的数量，Azure AD 更改向应用程序提供未请求的作用域的方式，以便仅显式请求的作用域触发条件访问。 此更改可能会导致应用依赖于 Azure AD 以前的行为 (即，即使未请求) 中断，也会提供所有权限，因为他们请求的令牌将是缺少的权限。
+
+现在，应用程序将接收具有此类权限的访问令牌：请求的权限，以及他们同意不需要条件性访问提示的用户。  访问令牌的作用域反映在令牌响应的 `scope` 参数中。 
+
+**示例**
+
+应用已同意 `user.read` 、 `files.readwrite` 和 `tasks.read` 。 `files.readwrite` 应用了条件性访问策略，而另两个策略不具有条件访问策略。 如果应用向发出令牌请求 `scope=user.read` ，且当前登录用户尚未通过任何条件性访问策略，则生成的令牌将用于 `user.read` 和 `tasks.read` 权限。 `tasks.read` 包括，因为应用程序已同意该应用程序，并且不需要强制实施条件性访问策略。 
+
+如果应用随后请求 `scope=files.readwrite` ，则租户所需的条件性访问将触发，并强制应用显示交互式身份验证提示，在该提示中可满足条件访问策略。  返回的令牌将包含全部三个作用域。 
+
+如果应用程序最后一次请求三个作用域中的任何一个请求 (假设， `scope=tasks.read`) ，Azure AD 将看到用户已完成所需的条件性访问策略 `files.readwrite` ，并再次颁发包含所有三个权限的令牌。 
+
 
 ## <a name="may-2020"></a>2020 年 5 月
 
@@ -65,7 +86,7 @@ ms.locfileid: "96348715"
 
 **受影响的协议**：所有用户流。
 
-从 2020 年 3 月 13 日开始，直接登录 Azure AD（而不是像 ADFS 这样的联合 IDP）的密码超过 256 个字符的用户将无法登录，并被要求重置其密码。  管理员可能会收到帮助重置用户密码的请求。
+从 2020 年 3 月 13 日开始，直接登录 Azure AD（而不是像 ADFS 这样的联合 IDP）的密码超过 256 个字符的用户将无法登录，并被要求重置其密码。  管理员可能会收到要求帮助重置用户密码的请求。
 
 登录日志中的错误将为 AADSTS 50052：InvalidPasswordExceedsMaxLength
 

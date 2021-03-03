@@ -1,14 +1,14 @@
 ---
 title: Connected Machine Windows 代理概述
 description: 本文详细概述了可用的支持 Azure Arc 的服务器代理，它支持监视混合环境中托管的虚拟机。
-ms.date: 02/16/2021
+ms.date: 02/18/2021
 ms.topic: conceptual
-ms.openlocfilehash: 8c06989d726a30e95f0b9c4dcc15a967d498f92a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: ebd9412849b4a0b3081e892d7472e598ca6e8365
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100580868"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101651087"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>支持 Azure Arc 的服务器代理概述
 
@@ -35,7 +35,7 @@ Azure 连接的计算机代理包包含多个逻辑组件，这些组件捆绑�
 
 ## <a name="instance-metadata"></a>实例元数据
 
-在连接的计算机代理注册启用了 Arc 的服务器后，将收集有关已连接计算机的元数据信息。 具体来说：
+在连接的计算机代理注册启用了 Arc 的服务器后，将收集有关已连接计算机的元数据信息。 尤其是在下列情况下：
 
 * 操作系统名称、类型和版本
 * 计算机名称
@@ -68,6 +68,10 @@ Azure 发出的代理请求以下元数据信息：
 适用于 Windows 和 Linux 的 Azure Connected Machine 代理可以手动或自动升级到最新版本，具体取决于你的要求。 有关详细信息，请参阅[此文](manage-agent.md)。
 
 ## <a name="prerequisites"></a>先决条件
+
+### <a name="supported-environments"></a>支持的环境
+
+启用 Arc 的服务器支持在 Azure *外部* 托管的任何物理服务器和虚拟机上安装连接的计算机代理。 这包括在 VMware、Azure Stack HCI 和其他云环境等平台上运行的虚拟机。 启用 Arc 的服务器不支持在运行于 Azure 中的虚拟机上安装代理，也不支持在 Azure Stack 集线器或 Azure Stack 边缘上运行的虚拟机，因为它们已作为 Azure Vm 建模。
 
 ### <a name="supported-operating-systems"></a>支持的操作系统
 

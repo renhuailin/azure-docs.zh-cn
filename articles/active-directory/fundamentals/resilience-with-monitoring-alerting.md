@@ -13,12 +13,12 @@ ms.reviewer: ''
 ms.date: 11/30/2020
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 90b2cd4521613a7b449598f0d097a7ec1c2958c6
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: a834d4d30c40b618b1601a7f8901c68143ef4912
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98724536"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101648511"
 ---
 # <a name="resilience-through-monitoring-and-analytics"></a>通过监视和分析实现复原能力
 
@@ -49,15 +49,15 @@ ms.locfileid: "98724536"
 
    - 以前的期间：创建时态图表以显示请求总数和成功率 (%) 在以前的某个期间（例如上周）的变化以供参考。
 
-- 警报：使用 Log Analytics 定义当关键指标突然发生变化时会触发的[警报](../../azure-monitor/platform/alerts-log.md)。 这些变化可能会对 SLO 产生负面影响。 警报使用各种形式的通知方法，包括电子邮件、短信和 Webhook。 首先定义一个充当阈值的条件，警报会根据该阈值触发。 例如：
+- 警报：使用 Log Analytics 定义当关键指标突然发生变化时会触发的[警报](../../azure-monitor/alerts/alerts-log.md)。 这些变化可能会对 SLO 产生负面影响。 警报使用各种形式的通知方法，包括电子邮件、短信和 Webhook。 首先定义一个充当阈值的条件，警报会根据该阈值触发。 例如：
   - 与请求总数的突然下降相对应的警报：当请求总数突然下降时触发警报。 例如，当请求总数与上一期间相比下降了 25％ 时，引发警报。  
   - 与成功率 (%) 的显著下降相对应的警报：当所选策略的成功率大幅下降时触发警报。
-  - 收到警报后，请使用 Azure AD B2C [Log Analytics](../reports-monitoring/howto-install-use-log-analytics-views.md)、 [Application Insights](../../active-directory-b2c/troubleshoot-with-application-insights.md)和 [VS Code 扩展](https://marketplace.visualstudio.com/items?itemName=AzureADB2CTools.aadb2c) 对问题进行故障排除。 解决问题并部署更新的应用程序或策略后，它会继续监视关键指标，直到它们恢复到正常范围。
+  - 收到警报后，请使用 [Log Analytics](../reports-monitoring/howto-install-use-log-analytics-views.md)、[Application Insights](../../active-directory-b2c/troubleshoot-with-application-insights.md) 和适用于 Azure AD B2C 的 [VS Code 扩展](https://marketplace.visualstudio.com/items?itemName=AzureADB2CTools.aadb2c)来排查问题。 解决问题并部署更新的应用程序或策略后，它会继续监视关键指标，直到它们恢复到正常范围。
 
 - 服务警报：使用 [Azure AD B2C 服务级别警报](../../service-health/service-health-overview.md)获取有关服务问题、计划内维护、运行状况公告和安全公告的通知。
 
 - 报告：[通过使用 Log Analytics](../reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)，生成报告来帮助你了解用户见解、技术挑战和增长机会。
-  - 运行状况仪表板：[使用 Azure 仪表板功能创建自定义仪表板](../../azure-monitor/learn/tutorial-app-dashboards.md)，该功能支持添加使用 Log Analytics 查询的图表。 例如，确定成功的和失败的登录的模式、失败原因以及用于发出请求的设备的相关遥测数据。
+  - 运行状况仪表板：[使用 Azure 仪表板功能创建自定义仪表板](../../azure-monitor/app/tutorial-app-dashboards.md)，该功能支持添加使用 Log Analytics 查询的图表。 例如，确定成功的和失败的登录的模式、失败原因以及用于发出请求的设备的相关遥测数据。
   - 放弃 Azure AD B2C 旅程：使用[工作簿](https://github.com/azure-ad-b2c/siem#list-of-abandon-journeys)跟踪已放弃的 Azure AD B2C 旅程的列表。在已放弃的旅程中，用户已启动登录或注册旅程，但从未完成它。 其中提供有关策略 ID 的详细信息，以及用户在放弃旅程之前所采取的步骤的细节。
   - Azure AD B2C 监视工作簿：使用[监视工作簿](https://github.com/azure-ad-b2c/siem)（包括 Azure AD B2C 仪表板、多重身份验证 (MFA) 操作、条件访问报告以及按 correlationId 分类的搜索日志），以便更好地深入了解 Azure AD B2C 环境的运行状况。
   

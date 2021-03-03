@@ -8,12 +8,12 @@ ms.author: rogarana
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 9ed811f96e08e8ebab2e6fd090a4322d9f7827fb
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: f9152e341ac04209754bbf5f008cd56373967b9f
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92681435"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101677448"
 ---
 # <a name="server-side-encryption-of-azure-disk-storage"></a>Azure 磁盘存储的服务器端加密
 
@@ -24,7 +24,7 @@ Azure 托管磁盘中的数据使用 256 位 [AES 加密](https://en.wikipedia.o
 服务器端加密不会影响托管磁盘的性能，并且不会产生额外的费用。 
 
 > [!NOTE]
-> 临时磁盘不是托管磁盘，并且不是由 SSE 加密的，除非你在主机上启用了加密。
+> 临时磁盘不是托管磁盘，不会由 SSE 加密，除非在主机上启用了加密。
 
 ## <a name="about-encryption-key-management"></a>关于加密密钥管理
 
@@ -45,15 +45,26 @@ Azure 托管磁盘中的数据使用 256 位 [AES 加密](https://en.wikipedia.o
 目前，客户托管密钥具有以下限制：
 
 - 如果为磁盘启用了此功能，则无法禁用它。
-    如果需要解决这种情况，必须使用 [Azure PowerShell 模块](windows/disks-upload-vhd-to-managed-disk-powershell.md#copy-a-managed-disk) 或 [Azure CLI](linux/disks-upload-vhd-to-managed-disk-cli.md#copy-a-managed-disk)将所有数据复制到完全不同的托管磁盘，而不使用客户管理的密钥。
+    如果需要解决此问题，必须使用 [Azure PowerShell 模块](windows/disks-upload-vhd-to-managed-disk-powershell.md#copy-a-managed-disk)或 [Azure CLI](linux/disks-upload-vhd-to-managed-disk-cli.md#copy-a-managed-disk) 将所有数据复制到完全不同的托管磁盘（未使用客户管理的密钥）。
 [!INCLUDE [virtual-machines-managed-disks-customer-managed-keys-restrictions](../../includes/virtual-machines-managed-disks-customer-managed-keys-restrictions.md)]
 
 #### <a name="supported-regions"></a>支持的区域
 
-客户管理的密钥在托管磁盘可用的所有区域中都可用。
+可在提供托管磁盘的所有区域中使用客户管理的密钥。
+
+自动密钥轮替为预览版，仅在以下区域提供：
+
+- 美国东部
+- 美国东部 2
+- 美国中南部
+- 美国西部
+- 美国西部 2
+- 北欧
+- 西欧
+- 法国中部
 
 > [!IMPORTANT]
-> 客户托管密钥依赖于 Azure 资源的托管标识（Azure Active Directory (Azure AD) 的一项功能）。 配置客户托管密钥时，实际上会自动将托管标识分配给你的资源。 如果随后将订阅、资源组或托管磁盘从一个 Azure AD 目录移到另一个目录，则与托管磁盘关联的托管标识不会传输到新租户，因此，客户管理的密钥可能不再工作。 有关详细信息，请参阅[在 Azure AD 目录之间转移订阅](../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories)。
+> 客户托管密钥依赖于 Azure 资源的托管标识（Azure Active Directory (Azure AD) 的一项功能）。 配置客户托管密钥时，实际上会自动将托管标识分配给你的资源。 如果随后将订阅、资源组或托管磁盘从一个 Azure AD 目录移动到另一个目录，则与托管磁盘关联的托管标识不会转移到新租户，因此，客户管理的密钥可能不再有效。 有关详细信息，请参阅[在 Azure AD 目录之间转移订阅](../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories)。
 
 ## <a name="encryption-at-host---end-to-end-encryption-for-your-vm-data"></a>主机加密 - VM 数据的端到端加密
 

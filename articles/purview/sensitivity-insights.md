@@ -6,19 +6,19 @@ ms.author: bagol
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 11/24/2020
-ms.openlocfilehash: dffecb48a8faa869cb3df450cc220e86195bbc87
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.date: 01/17/2021
+ms.openlocfilehash: bb8ac82b2e59ec86db89c7eba0ce607fcfc0ac2d
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98199370"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101676560"
 ---
 # <a name="sensitivity-label-insights-about-your-data-in-azure-purview"></a>有关 Azure 监控范围中的数据的敏感度标签见解
 
 本操作方法指南介绍了如何访问、查看和筛选应用于数据的敏感性标签提供的安全见解。
 
-支持的数据源包括： Azure Blob 存储、Azure Data Lake Storage (ADLS) 第1代、Azure Data Lake Storage (ADLS) 第2代、SQL Server、Azure SQL 数据库、Azure SQL 托管实例
+支持的数据源包括： Azure Blob 存储、Azure Data Lake Storage (ADLS) 第1代、Azure Data Lake Storage (ADLS) 第2代、SQL Server、Azure SQL 数据库、Azure SQL 托管实例、Amazon S3 存储桶
 
 在本操作方法指南中，你将学习如何执行以下操作：
 
@@ -40,7 +40,7 @@ ms.locfileid: "98199370"
 
 - [对 Azure 监控范围中的资产进行扩展 Microsoft 365 敏感度标签](create-sensitivity-label.md)，并创建或选择要应用于数据的标签。
 
-- 为每个数据源中的测试数据设置并完成扫描
+- 为每个数据源中的测试数据设置并完成扫描。 有关详细信息，请参阅 [在 Azure 监控范围中管理数据源 (预览) ](manage-data-sources.md) 并 [创建扫描规则集](create-a-scan-rule-set.md)。
 
 - 使用 [数据读取器或数据陈列角色](catalog-permissions.md#azure-purviews-pre-defined-data-plane-roles)的帐户登录到监控范围。
 

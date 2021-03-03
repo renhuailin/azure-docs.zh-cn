@@ -6,14 +6,14 @@ ms.service: virtual-machines
 ms.subservice: automanage
 ms.workload: infrastructure
 ms.topic: troubleshooting
-ms.date: 09/04/2020
+ms.date: 02/22/2021
 ms.author: deanwe
-ms.openlocfilehash: b8f2b3e1ffde49c8df3c3a6d7c0b9b3751fda5fa
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 214730733780ef3492048f697b1c5e180434a527
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98696170"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101654011"
 ---
 # <a name="frequently-asked-questions-for-azure-automanage-for-vms"></a>Azure Automanage for Vm 常见问题
 
@@ -27,7 +27,7 @@ ms.locfileid: "98696170"
 **启用 Azure Automanage 需要满足哪些先决条件？**
 
 若要启用 Azure Automanage，需要满足以下先决条件：
-- 仅限 Windows Server Vm
+- 受支持的 [Windows Server 版本](automanage-windows-server.md#supported-windows-server-versions) 和 [Linux 发行版](automanage-linux.md#supported-linux-distributions-and-versions)
 - Vm 必须位于受支持的区域
 - 用户必须具有正确的权限
 - 仅限非规模集 Vm
@@ -42,12 +42,12 @@ ms.locfileid: "98696170"
 
 **哪些区域受支持？**
 
-支持以下区域中的 Vm：西欧、美国东部、美国西部2、加拿大中部、美国东部、美国西部、日本东部。
+[此处](./automanage-virtual-machines.md#supported-regions)提供了受支持区域的完整列表。
 
 
 **Azure Automanage 自动执行哪些功能？**
 
-Automanage 在 VM 的整个生命周期中注册、配置和监视 [此处](virtual-machines-best-practices.md)列出的服务。
+Automanage 在 VM 的整个生命周期中注册、配置和监视 [此处](automanage-virtual-machines.md)列出的服务。
 
 **Azure Automanage 是否可用于启用了 Azure Arc 的 Vm？**
 
@@ -55,12 +55,12 @@ Automanage 当前不支持启用了 Arc 的 Vm。
 
 **能否在 Azure Automanage 上自定义配置？**
 
-客户可通过配置首选项自定义特定服务（如 Azure 备份保留）的设置。 有关可更改的设置的完整列表，请参阅 [此处](virtual-machines-best-practices.md)的文档。
+客户可通过配置首选项自定义特定服务（如 Azure 备份保留）的设置。 有关可更改的设置的完整列表，请参阅 [此处](automanage-virtual-machines.md#customizing-an-environment-using-preferences)的文档。
 
 
 **Azure Automanage 是否适用于 Linux 和 Windows Vm？**
 
-目前，Automanage 支持 Windows Server Azure Vm。
+是，请参阅受支持的 [Windows Server 版本](automanage-windows-server.md#supported-windows-server-versions) 和 [Linux 发行版](automanage-linux.md#supported-linux-distributions-and-versions)。
 
 
 **是否可以有选择性地在一组 Vm 上应用 Automanage？**

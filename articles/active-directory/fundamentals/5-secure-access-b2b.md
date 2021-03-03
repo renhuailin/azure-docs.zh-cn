@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 654e1c163a16f427958320ea081c38338e0ab4e1
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 4206ba7617032e34310682d1468e6b1b661b8c8a
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98725386"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101648581"
 ---
 # <a name="transition-to-governed-collaboration-with-azure-active-directory-b2b-collaboration"></a>通过 Azure Active Directory B2B 协作转换到受管控的协作 
 
@@ -100,7 +100,7 @@ ms.locfileid: "98725386"
 
 如果使用 Azure AD 权利管理，则可配置要求外部用户回答的问题。 然后，会向审批者显示这些问题，让他们做出决定。 你可以为每项[访问包策略](../governance/entitlement-management-access-package-approval-policy.md)配置不同的问题集，以便审批者可以获取其审批的访问权限的相关信息。 例如，如果一个访问包用于供应商访问权限，则可要求请求者提供其供应商合同号。 另一个用于供应商的访问包可以要求供应商提供原国籍。
 
-如果使用自助服务门户，则可以使用 [API 连接器](../external-identities/api-connectors-overview.md) 在用户注册时收集有关用户的其他属性。 然后，你可以使用这些属性来分配访问权限。 例如，如果在注册过程中收集其供应商 ID，则可以使用该属性将其动态分配给该供应商的组或访问包。 可以在 Azure 门户中创建自定义属性，并将它们用于自助注册用户流。 还可以使用 [Microsoft Graph API](../../active-directory-b2c/manage-user-accounts-graph-api.md) 读写这些属性。 
+如果使用自助服务门户，则可以使用 [API 连接器](../external-identities/api-connectors-overview.md) 在用户注册时收集有关用户的其他属性。 然后，你可以使用这些属性来分配访问权限。 例如，如果在注册过程中收集其供应商 ID，则可以使用该属性将其动态分配给该供应商的组或访问包。 可以在 Azure 门户中创建自定义属性，并将它们用于自助注册用户流。 还可以使用 [Microsoft Graph API](../../active-directory-b2c/microsoft-graph-operations.md) 读写这些属性。 
 
 ### <a name="troubleshoot-invitation-redemption-to-azure-ad-users"></a>排查 Azure AD 用户的邀请兑换问题
 
@@ -206,7 +206,7 @@ ms.locfileid: "98725386"
 
 请参阅以下文章，了解如何保护对资源的外部访问。 建议你按列出顺序执行这些操作。
 
-1. [确定与外部访问相关的安全状况](1-secure-access-posture.md)
+1. [确定外部访问的安全状况](1-secure-access-posture.md)
 
 2. [了解当前状况](2-secure-access-current-state.md)
 

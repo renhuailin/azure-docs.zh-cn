@@ -16,12 +16,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c835ddcee332499ef7853d0d2fa4fcdbcf8a1cf
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: c767d114ad6a1b5cb8b9c6bf4c0fe4f2ccd1dae6
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99988872"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101650118"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory 中的新增功能
 
@@ -181,7 +181,7 @@ Role-Based 访问控制中的两个新角色可分配给用户、攻击模拟管
 
 2021年1月，我们已在应用程序库中添加了以下29个新应用程序，并提供联合支持：
 
-[mySCView](https://dev.myscview.com/)、 [Talentech](https://talentech.com/contact/)、 [Bipsync](https://www.bipsync.com/)、 [OroTimesheet](https://app.orotimesheet.com/login.php)、 [Mio](https://app.m.io/auth/install/microsoft?scopetype=hub)、 [SOVELTO](https://login.soveltoeasy.fi/) [Supportbench](https://account.supportbench.net/agent/login/)，[Bienvenue 构造](https://formation.bienvenue.pro/login)， [AIDA 医疗保健 SSO](https://aidaforparents.com/login/organizations)，[国际 SOS 援助产品](../saas-apps/international-sos-assistance-products-tutorial.md)， [NAVEX One](../saas-apps/navex-one-tutorial.md)， [LabLog](../saas-apps/lablog-tutorial.md)，Oktopost [SAML](../saas-apps/oktopost-saml-tutorial.md)，EPHOTO [DAM](../saas-apps/ephoto-dam-tutorial.md)，[观念](../saas-apps/notion-tutorial.md)， [Syndio，](../saas-apps/syndio-tutorial.md) [Yello Enterprise](../saas-apps/yello-enterprise-tutorial.md)， [Timeclock 365 SAML](../saas-apps/timeclock-365-saml-tutorial.md)， [Nalco E-数据](https://www.ecolab.com/)，[空缺 Filler](https://app.vacancy-filler.co.uk/VFMVC/Account/Login)，Synerise [AI 增长生态系统](../saas-apps/synerise-ai-growth-ecosystem-tutorial.md)， [Imperva 数据安全](../saas-apps/imperva-data-security-tutorial.md)， [Illusive 网络](../saas-apps/illusive-networks-tutorial.md)， [Proware](../saas-apps/proware-tutorial.md) [，](../saas-apps/perimeter-81-tutorial.md)Splan[访问者，](../saas-apps/splan-visitor-tutorial.md) [Aruba 用户](https://docs.microsoft.com/azure/active-directory/saas-apps/burp-suite-enterprise-edition-tutorial)[体验见解，](../saas-apps/aruba-user-experience-insight-tutorial.md) [Contentsquare 81](../saas-apps/contentsquare-sso-tutorial.md)
+[mySCView](https://dev.myscview.com/)、 [Talentech](https://talentech.com/contact/)、 [Bipsync](https://www.bipsync.com/)、 [OroTimesheet](https://app.orotimesheet.com/login.php)、 [Mio](https://app.m.io/auth/install/microsoft?scopetype=hub)、 [SOVELTO](https://login.soveltoeasy.fi/) [Supportbench](https://account.supportbench.net/agent/login/)，[Bienvenue 构造](https://formation.bienvenue.pro/login)， [AIDA 医疗保健 SSO](https://aidaforparents.com/login/organizations)，[国际 SOS 援助产品](../saas-apps/international-sos-assistance-products-tutorial.md)， [NAVEX One](../saas-apps/navex-one-tutorial.md)， [LabLog](../saas-apps/lablog-tutorial.md)，Oktopost [SAML](../saas-apps/oktopost-saml-tutorial.md)，EPHOTO [DAM](../saas-apps/ephoto-dam-tutorial.md)，[观念](../saas-apps/notion-tutorial.md)， [Syndio，](../saas-apps/syndio-tutorial.md) [Yello Enterprise](../saas-apps/yello-enterprise-tutorial.md)， [Timeclock 365 SAML](../saas-apps/timeclock-365-saml-tutorial.md)， [Nalco E-数据](https://www.ecolab.com/)，[空缺 Filler](https://app.vacancy-filler.co.uk/VFMVC/Account/Login)，Synerise [AI 增长生态系统](../saas-apps/synerise-ai-growth-ecosystem-tutorial.md)， [Imperva 数据安全](../saas-apps/imperva-data-security-tutorial.md)， [Illusive 网络](../saas-apps/illusive-networks-tutorial.md)， [Proware](../saas-apps/proware-tutorial.md) [，](../saas-apps/perimeter-81-tutorial.md)Splan[访问者，](../saas-apps/splan-visitor-tutorial.md) [Aruba 用户](../saas-apps/burp-suite-enterprise-edition-tutorial.md)[体验见解，](../saas-apps/aruba-user-experience-insight-tutorial.md) [Contentsquare 81](../saas-apps/contentsquare-sso-tutorial.md)
 
 你还可以从此处查找所有应用程序的文档 https://aka.ms/AppsTutorial
 
@@ -806,11 +806,11 @@ Azure AD Connect 云预配公共预览版刷新功能通过客户反馈开发了
 
 - Azure 门户的属性映射体验
 
-    利用此功能，IT 管理员可以使用目前存在的各种映射类型将用户、组或联系人属性从 AD 映射到 Azure AD。 属性映射是一种功能，用于标准化从 Active Directory 流到 Azure Active Directory 的属性的值。 可以确定是直接将属性值映射到 Azure AD，还是在预配用户时使用表达式来转换属性值。 [了解详细信息](../cloud-provisioning/how-to-attribute-mapping.md)
+    利用此功能，IT 管理员可以使用目前存在的各种映射类型将用户、组或联系人属性从 AD 映射到 Azure AD。 属性映射是一种功能，用于标准化从 Active Directory 流到 Azure Active Directory 的属性的值。 可以确定是直接将属性值映射到 Azure AD，还是在预配用户时使用表达式来转换属性值。 [了解详细信息](../cloud-sync/how-to-attribute-mapping.md)
 
 - 按需预配或测试用户体验
 
-    设置配置后，你可能需要进行测试，以查看用户转换是否按预期方式工作，然后再将其应用到作用域中的所有用户。 利用按需预配，IT 管理员可以输入 AD 用户 (DN) 的可分辨名称，并查看其是否按预期同步。 按需设置提供了一种很好的方法来确保以前执行的属性映射。 [了解详细信息](../cloud-provisioning/how-to-on-demand-provision.md)
+    设置配置后，你可能需要进行测试，以查看用户转换是否按预期方式工作，然后再将其应用到作用域中的所有用户。 利用按需预配，IT 管理员可以输入 AD 用户 (DN) 的可分辨名称，并查看其是否按预期同步。 按需设置提供了一种很好的方法来确保以前执行的属性映射。 [了解详细信息](../cloud-sync/how-to-on-demand-provision.md)
  
 ---
 
@@ -1139,6 +1139,3 @@ Insights 管理员角色中的用户可以访问 [M365 Insights 应用程序](ht
 [ (生成 4.6.263.0) 的修补程序汇总包](https://support.microsoft.com/help/4576473/hotfix-rollup-package-build-4-6-263-0-is-available-for-microsoft-ident)可用于 MICROSOFT IDENTITY MANAGER (MIM) 2016 Service Pack 2 (SP2) 。 此汇总包包含 MIM CM、MIM 同步管理器和 PAM 组件的更新。 此外，MIM 通用连接器 build 1.1.1301.0 包含 Graph 连接器的更新。
 
 ---
- 
-
-

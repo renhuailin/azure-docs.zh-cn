@@ -9,20 +9,18 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 2cc7e1d0c108d45383a68258fb6f62fcab87d1f7
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 0dbd1770030eeee8768c0b610171f5f27456ed70
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100653809"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101656221"
 ---
 # <a name="client-and-server-architecture"></a>客户端和服务器体系结构
 
-[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
-
 <!--
 > [!WARNING]
-> This document is under construction and needs the following items to be addressed: 
+> This document is under construction and needs the following items to be addressed:
 > - Need to add security best practices for token management here
 > - Reference docs:
 > - https://docs.microsoft.com/windows/security/threat-protection/security-policy-settings/create-a-token-object
@@ -56,7 +54,7 @@ Azure 通信 JavaScript 客户端库可以启用具有丰富文本、语音和�
 通过电话系统进行通信会大幅增加应用程序的覆盖范围。 为了支持 PSTN 语音和短信方案，Azure 通信服务可帮助你直接从 Azure 门户 [获取电话号码](../quickstarts/telephony-sms/get-phone-number.md) ，或者使用 REST api 和客户端库。 获取电话号码后，可以使用这些电话号码在入站和出站方案中同时使用两个 PSTN 调用和 SMS。 下面是一个示例体系结构流：
 
 > [!Note]
-> 在公共预览版期间，我们提供了美国和加拿大的帐单地址的客户电话号码的设置。 
+> 在公共预览版期间，我们提供了美国和加拿大的帐单地址的客户电话号码的设置。
 
 :::image type="content" source="../media/scenarios/archdiagram-pstn.png" alt-text="显示通信服务 PSTN 体系结构的关系图。":::
 

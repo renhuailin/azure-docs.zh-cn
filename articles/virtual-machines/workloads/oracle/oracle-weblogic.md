@@ -2,18 +2,18 @@
 title: 什么是在 Azure 虚拟机上运行 Oracle WebLogic Server 的解决方案
 description: 了解如何在 Microsoft Azure 虚拟机上运行 Oracle WebLogic Server。
 author: rezar
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines
+ms.subservice: oracle
+ms.collection: linux
 ms.topic: article
 ms.date: 09/23/2020
 ms.author: rezar
-ms.reviewer: cynthn
-ms.openlocfilehash: 277e9049d2069190a68dd98c22acd60212c1b99d
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: e2d9ef1d864d18122e7718c9be99eba8b7cf3973
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96486685"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101672129"
 ---
 # <a name="what-are-solutions-for-running-oracle-weblogic-server-on-azure-virtual-machines"></a>采用哪些解决方案在 Azure 虚拟机上运行 Oracle WebLogic Server？
 
@@ -33,7 +33,7 @@ Azure WLS 解决方案旨在使其尽可能轻松地将 Java EE 应用程序直�
 
 此产品/服务支持一系列的操作系统、Java 和 WLS 版本， (例如 Oracle Linux 7.6) 上的 WebLogic Server 14 和 JDK 11。 这些基本映像还可在 Azure 上自行使用。 基本映像适用于需要复杂的自定义 Azure 部署的客户。 [此处](https://azuremarketplace.microsoft.com/en-us/marketplace/apps?search=WebLogic%20Server%20Base%20Image&page=1)提供当前的基本映像集。
 
-_如果你对开发这些产品/服务的工程团队有兴趣密切关注你的迁移方案，请 [CONTACT ME](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/oracle.oraclelinux-wls-cluster?tab=Overview)_ 在 [marketplace 产品概述页](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/oracle.oraclelinux-wls-cluster?tab=Overview)上选择 "联系我"。 计划经理、架构师和工程师将尽快进入你，并开始密切合作。 对迁移方案进行协作的机会是免费的，因为产品/服务处于主动初始开发环境。
+_如果你对开发这些产品/服务的工程团队有兴趣密切关注你的迁移方案，请 [](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/oracle.oraclelinux-wls-cluster?tab=Overview)_ 在 [marketplace 产品概述页](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/oracle.oraclelinux-wls-cluster?tab=Overview)上选择 "联系我"。 计划经理、架构师和工程师将尽快进入你，并开始密切合作。 对迁移方案进行协作的机会是免费的，因为产品/服务处于主动初始开发环境。
 
 ## <a name="oracle-weblogic-server-single-node"></a>Oracle WebLogic Server 单节点
 

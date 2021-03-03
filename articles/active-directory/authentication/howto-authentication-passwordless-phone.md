@@ -1,6 +1,6 @@
 ---
 title: 无密码登录 Microsoft Authenticator 应用-Azure Active Directory
-description: 使用 Microsoft Authenticator 应用 () 预览启用无密码登录 Azure AD
+description: 使用 Microsoft Authenticator 应用启用无密码登录 Azure AD
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,14 +11,14 @@ author: justinha
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 62dea67f139857befc7ca24b8b8a105241b5c949
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: 51e6cd7efcd0e851c15975aba5ff9b99c615eb7d
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99626149"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101653467"
 ---
-# <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app-preview"></a>使用 Microsoft Authenticator 应用 (预览版启用无密码登录) 
+# <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app"></a>启用 Microsoft Authenticator 应用的无密码登录 
 
 使用 Microsoft Authenticator 应用可以登录到任何 Azure AD 帐户，且无需输入密码。 Microsoft Authenticator 使用基于密钥的身份验证来启用绑定到设备（设备使用 PIN 或生物识别）的用户凭据。 [Windows Hello 企业版](/windows/security/identity-protection/hello-for-business/hello-identity-verification) 使用类似的技术。
 
@@ -40,7 +40,7 @@ ms.locfileid: "99626149"
 - 已在运行 iOS 8.0 或更高版本或者 Android 6.0 或更高版本的设备上安装最新版本的 Microsoft Authenticator。
 
 > [!NOTE]
-> 如果你使用 Azure AD PowerShell 启用 Microsoft Authenticator 无密码登录预览，则会为你的整个目录启用此功能。 如果使用此新方法启用，则它将取代 PowerShell 策略。 建议你通过新的 *身份验证方法* 菜单为租户中的所有用户启用，否则不在新策略中的用户将无法在没有密码的情况下进行登录。
+> 如果已启用 Microsoft Authenticator 无密码使用 Azure AD PowerShell 登录，则会为整个目录启用此功能。 如果使用此新方法启用，则它将取代 PowerShell 策略。 建议你通过新的 *身份验证方法* 菜单为租户中的所有用户启用，否则不在新策略中的用户将无法在没有密码的情况下进行登录。
 
 ## <a name="enable-passwordless-authentication-methods"></a>启用无密码身份验证方法
 
@@ -58,7 +58,7 @@ Azure AD 允许选择在登录过程中可使用的身份验证方法。 然后�
 
 1. 使用 *全局管理员* 帐户登录到 [Azure 门户](https://portal.azure.com)。
 1. 搜索并选择 *Azure Active Directory*，然后浏览到 **安全**  >  **身份验证方法**  >  **策略**。
-1. 在 **Microsoft Authenticator (预览 ")** 下，选择以下选项：
+1. 在 " **Microsoft Authenticator**" 下，选择以下选项：
    1. **启用** -是或否
    1. **目标** -所有用户或选择用户
 1. 默认情况下，每个添加的组或用户都处于启用状态，以在无密码和推送通知模式下使用 Microsoft Authenticator)  ( "任何" 模式。 若要更改此项，请为每行：
@@ -104,7 +104,7 @@ Azure AD 允许选择在登录过程中可使用的身份验证方法。 然后�
 
 ## <a name="known-issues"></a>已知问题
 
-当前预览体验存在以下已知问题。
+存在下列已知问题。
 
 ### <a name="not-seeing-option-for-passwordless-phone-sign-in"></a>无密码手机登录的 "不查看" 选项
 

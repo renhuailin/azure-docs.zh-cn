@@ -2,18 +2,18 @@
 title: Red Hat Enterprise Linux 自带订阅 Azure 映像 |Microsoft Docs
 description: 了解 Azure 上的 Red Hat Enterprise Linux 的自带订阅映像。
 author: asinn826
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines
+ms.subservice: redhat
+ms.collection: linux
 ms.topic: article
 ms.date: 06/10/2020
 ms.author: alsin
-ms.reviewer: cynthn
-ms.openlocfilehash: 38bf8b3c1c39322aea27f5f4d427c31010837bfb
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: af4f9dac30c1e443e9647a5b752cdabf9c094a6c
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100391014"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101676080"
 ---
 # <a name="red-hat-enterprise-linux-bring-your-own-subscription-gold-images-in-azure"></a>在 Azure 中 Red Hat Enterprise Linux 自带订阅金牌映像
 

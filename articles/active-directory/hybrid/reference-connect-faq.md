@@ -15,12 +15,12 @@ ms.date: 08/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1fa195fd8d40c6b67a9c446f0b2320fe47d75259
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 29c0ae8ec210356f6027a46ed01f2a7126ea4a49
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99092660"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101644725"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect 常见问题解答
 
@@ -201,7 +201,7 @@ Azure AD Connect 不支持纯 IPv6 环境。
 **问：我收到一封电子邮件，指出我的自动升级失效，需安装新版本。为什么我需要这样做？**  
 我们去年发布了一个 Azure AD Connect 版本，该版本在特定情况下会禁用服务器上的自动升级功能。 Azure AD Connect 1.1.750.0 版中已修复此问题。 如果你受此问题的影响，可通过以下方式进行缓解：运行一个 PowerShell 脚本来修复此问题，或者手动升级到最新版本的 Azure AD Connect。 
 
-若要运行该 PowerShell 脚本，请[下载该脚本](https://aka.ms/repairaadconnect)，并在 PowerShell 管理窗口中的 Azure AD Connect 服务器上运行该脚本。 若要了解如何运行该脚本，请[观看此简短视频](https://aka.ms/repairaadcau)。
+若要运行该 PowerShell 脚本，请[下载该脚本](/samples/browse/?redirectedfrom=TechNet-Gallery)，并在 PowerShell 管理窗口中的 Azure AD Connect 服务器上运行该脚本。 若要了解如何运行该脚本，请[观看此简短视频](https://aka.ms/repairaadcau)。
 
 若要手动进行升级，必须下载并运行最新版的 AADConnect.msi 文件。
  

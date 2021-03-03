@@ -3,17 +3,17 @@ title: HC 系列 VM 大小性能
 description: 了解 Azure 中 HC 系列 VM 大小的性能测试结果。
 author: vermagit
 ms.service: virtual-machines
-ms.subservice: workloads
+ms.subservice: hpc
 ms.topic: article
 ms.date: 09/10/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: e1abe4b87bd5be98dad8e43d604f833eae3854e7
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 0d164c19da1ed2cbf6930a92686b35690fb0afb5
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94966949"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101666922"
 ---
 # <a name="hc-series-virtual-machine-sizes"></a>HC 系列虚拟机大小
 

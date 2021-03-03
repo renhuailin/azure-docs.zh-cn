@@ -11,16 +11,16 @@ author: knicholasa
 manager: martinco
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a8ed99338a10eb226823c4bd4857d812038ff632
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 039dd8b6fa0769b6798630e666bfbf6de48ccf14
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101094506"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101649234"
 ---
 # <a name="browser-support-of-fido2-passwordless-authentication"></a>FIDO2 无密码 authentication 的浏览器支持
 
-Azure Active Directory 允许将 [FIDO2 安全密钥](https://docs.microsoft.com/azure/active-directory/authentication/concept-authentication-passwordless#fido2-security-keys) 用作无密码设备。 Microsoft 帐户的 FIDO2 authentication 的可用性已 [在2018中公布](https://techcommunity.microsoft.com/t5/identity-standards-blog/all-about-fido2-ctap2-and-webauthn/ba-p/288910)。 如公告中所述，必须实现 FIDO2 CTAP 规范的某些可选功能和扩展，以支持与 Microsoft 和 Azure Active Directory 帐户的安全身份验证。 下图显示了哪些浏览器和操作系统组合支持将 FIDO2 authentication 密钥与 Azure Active Directory 结合使用的无密码 authentication。
+Azure Active Directory 允许将 [FIDO2 安全密钥](./concept-authentication-passwordless.md#fido2-security-keys) 用作无密码设备。 Microsoft 帐户的 FIDO2 authentication 的可用性已 [在2018中公布](https://techcommunity.microsoft.com/t5/identity-standards-blog/all-about-fido2-ctap2-and-webauthn/ba-p/288910)。 如公告中所述，必须实现某些可选功能，以及 FIDO2 CTAP 规范的扩展，以支持与 Microsoft 和 Azure Active Directory 帐户的安全身份验证。 下图显示了哪些浏览器和操作系统组合支持将 FIDO2 authentication 密钥与 Azure Active Directory 结合使用的无密码 authentication。
 
 ## <a name="supported-browsers"></a>支持的浏览器
 
@@ -44,18 +44,21 @@ Azure Active Directory 允许将 [FIDO2 安全密钥](https://docs.microsoft.com
 | Android | Chrome |
 | ChromeOS | Chrome |
 
-## <a name="operating-system-versions-tested"></a>已测试的操作系统版本
+## <a name="minimum-browser-version"></a>最低浏览器版本
 
-上表中的信息已针对以下操作系统版本进行了测试。
+下面是最低浏览器版本要求。 
 
-| 操作系统 | 最新测试版本 |
-| --- | --- |
-| Windows | Windows 10 20H2 |
-| macOS | OS X 11 大 .Sur |
-| Linux | Fedora 32 工作站 |
+| 浏览者 | 最低版本 |
+| ---- | ---- |
+| Chrome | 76 |
+| Edge | Windows 10 版本 1903<sup>1</sup> |
+| Firefox | Chrome |
+| ChromeOS | 66 |
+
+<sup>1</sup>所有版本的新的基于 Chromium 的 Microsoft Edge 支持 Fido2。 1903中增加了对 Microsoft Edge 旧版本的支持。
 
 ## <a name="next-steps"></a>后续步骤
-[启用无密码安全密钥登录 (预览) ](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-passwordless-security-key)
+[启用无密码安全密钥登录 (预览) ](./howto-authentication-passwordless-security-key.md)
 
 <!--Image references-->
 [y]: ./media/fido2-compatibility/yes.png

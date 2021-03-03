@@ -10,12 +10,12 @@ ms.author: lazzeri
 author: FrancescaLazzeri
 ms.date: 01/14/2020
 ms.custom: contperf-fy21q1,contperfq1
-ms.openlocfilehash: 61305e4f9ba45cb7c13a96bee9d1aab81108bb4d
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 48de06d28442b4d05cd3a7ab287732c0999e434c
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98220688"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101659692"
 ---
 # <a name="deep-learning-vs-machine-learning-in-azure-machine-learning"></a>Azure 机器学习中的深度学习与机器学习
 
@@ -57,15 +57,15 @@ ms.locfileid: "98220688"
 |  **执行时间** | 花费几秒到几小时的相对较少时间进行训练。 | 通常需要很长的时间才能完成训练，因为深度学习算法涉及到许多层。 |
 |  **输出** | 输出通常是一个数值，例如评分或分类。 | 输出可以采用多种格式，例如文本、评分或声音。 |
 
-## <a name="what-is-transfer-learning"></a>什么是传输学习
+## <a name="what-is-transfer-learning"></a>什么是迁移学习
 
-训练深度学习模型通常需要大量的培训数据、高端计算资源 (GPU、TPU) 和更长的培训时间。 在未提供任何这些功能的情况下，你可以使用称为 "*传输学习*" 的技术来为训练过程提供快捷方式。
+训练深度学习模型通常需要大量的训练数据、高端计算资源（GPU、TPU）和较长的训练时间。 在你不具备上述任何条件的情况下，可以使用一种称为“迁移学习”的技术来缩短训练过程。
 
-传输学习是一项技术，可应用从解决一个问题到不同但相关的问题而获得的知识。
+迁移学习是一种将解决某个问题时获得的知识应用于虽然不同但却相关的问题的技术。
 
-由于神经网络的结构，第一组层通常包含较低级别的功能，而最后一组层包含较高级别的功能，更接近于相关领域。 通过重新调整最终层的大小以在新域或问题中使用，可以显著减少训练新模型所需的时间、数据和计算资源。 例如，如果您已有识别汽车的模型，则可以使用传输学习来重新调整该模型的用途，从而识别卡车、摩托车和其他类型的汽车。
+由于神经网络结构的原因，第一组层通常包含较低层次的特征，而最后一组层则包含更接近所讨论领域的较高层次的特征。 通过重新调整最终层在新领域或问题中的用途，可以显著减少训练新模型所需的时间、数据和计算资源量。 例如，如果已有一个识别汽车的模型，则可使用迁移学习重新调整该模型的用途，使之也识别卡车、摩托车和其他类型的车辆。
 
-了解如何在 Azure 机器学习中使用开源框架对图像分类应用传输学习： [使用传输学习训练深度学习 PyTorch 模型](./how-to-train-pytorch.md?WT.mc_id=docs-article-lazzeri)。
+了解如何使用 Azure 机器学习中的开源框架将迁移学习应用于图像分类：[使用迁移学习训练深度学习 PyTorch 模型](./how-to-train-pytorch.md?WT.mc_id=docs-article-lazzeri)
 
 ## <a name="deep-learning-use-cases"></a>深度学习用例
 
@@ -130,4 +130,4 @@ ms.locfileid: "98220688"
 
 - [使用 TensorFlow 估算器和 Keras 将手写数字分类](./how-to-train-keras.md?WT.mc_id=docs-article-lazzeri)
 
-- [使用 Chainer 模型将手写数字分类](./how-to-set-up-training-targets.md)
+- [使用 Chainer 模型将手写数字分类](./how-to-set-up-training-targets.md?WT.mc_id=docs-article-lazzeri)

@@ -6,19 +6,19 @@ ms.author: bagol
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 11/24/2020
-ms.openlocfilehash: a0eed27636a3f65d68489d1f2249db784ba1d722
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.date: 01/17/2021
+ms.openlocfilehash: b6ea3e762ad098e373baa8487d8926105820f226
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98196531"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101666512"
 ---
 # <a name="classification-insights-about-your-data-from-azure-purview"></a>有关 Azure 监控范围中的数据的分类见解
 
 本操作方法指南介绍了如何访问、查看和筛选数据的监控范围分类见解报表。
 
-支持的数据源包括： Azure Blob 存储、Azure Data Lake Storage (ADLS) 第1代、Azure Data Lake Storage (ADLS) GEN 2、Azure Cosmos DB (SQL API) 、Azure Synapse Analytics (以前的 SQL DW) 、Azure SQL 数据库、Azure SQL 托管实例、SQL Server
+支持的数据源包括： Azure Blob 存储、Azure Data Lake Storage (ADLS) 第1代、Azure Data Lake Storage (ADLS) 第2代、Azure Cosmos DB (SQL API) 、Azure Synapse Analytics (以前的 SQL DW) 、Azure SQL 数据库、Azure SQL 托管实例、SQL Server、Amazon S3 存储桶
 
 在本操作方法指南中，你将学习如何执行以下操作：
 
@@ -33,7 +33,7 @@ ms.locfileid: "98196531"
 
 - 设置 Azure 资源并用测试数据填充相关帐户
 
-- 为每个数据源中的测试数据设置并完成扫描
+- 为每个数据源中的测试数据设置并完成扫描。 有关详细信息，请参阅 [在 Azure 监控范围中管理数据源 (预览) ](manage-data-sources.md) 并 [创建扫描规则集](create-a-scan-rule-set.md)。
 
 - 使用 [数据读取器或数据陈列角色](catalog-permissions.md#azure-purviews-pre-defined-data-plane-roles)的帐户登录到监控范围。
 

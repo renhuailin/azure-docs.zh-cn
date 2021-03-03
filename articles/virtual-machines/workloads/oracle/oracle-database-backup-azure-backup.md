@@ -2,18 +2,19 @@
 title: 使用 Azure 备份来备份和恢复 Azure Linux VM 上的 Oracle Database 19c 数据库
 description: 了解如何使用 Azure 备份服务来备份和恢复 Oracle Database 19c 数据库。
 author: cro27
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines
+ms.subservice: oracle
+ms.collection: linux
 ms.topic: article
 ms.date: 01/28/2021
 ms.author: cholse
 ms.reviewer: dbakevlar
-ms.openlocfilehash: ac045694e8975509635e03221a8cb9cc84446b55
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 90f86a198ad36c2961f77336092d863953ee45ba
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99806403"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101673890"
 ---
 # <a name="back-up-and-recover-an-oracle-database-19c-database-on-an-azure-linux-vm-using-azure-backup"></a>使用 Azure 备份来备份和恢复 Azure Linux VM 上的 Oracle Database 19c 数据库
 
@@ -199,13 +200,13 @@ ms.locfileid: "99806403"
      RMAN> backup as compressed backupset database plus archivelog;
      ```
 
-## <a name="using-azure-backup"></a>使用 Azure 备份
+## <a name="using-azure-backup-preview"></a>使用 Azure 备份 (预览) 
 
 Azure 备份服务提供简单、安全且经济高效的解决方案来备份数据，并从 Microsoft Azure 云恢复数据。 Azure 备份提供独立且隔离的备份，可以防范原始数据的意外破坏。 备份存储在提供恢复点内置管理的恢复服务保管库中。 配置和可伸缩性很简单，备份经过优化，可以轻松地根据需要还原。
 
-Azure 备份服务提供了一个 [框架](../../../backup/backup-azure-linux-app-consistent.md) ，用于在 Windows 和 Linux vm 的备份过程中实现应用程序一致性，这些应用程序包括 Oracle、MySQL、Mongo DB、SAP HANA 和 PostGreSQL。 这涉及到在拍摄磁盘快照之前调用一个预脚本 (来静止应用程序) ，并调用后脚本 (命令在完成快照后将应用程序解除冻结) ，以将应用程序恢复到正常模式。 虽然在 GitHub 上提供了示例前脚本和后脚本，但你有责任来创建和维护这些脚本。 
+Azure 备份服务提供了一个 [框架](../../../backup/backup-azure-linux-app-consistent.md) ，用于在 Windows 和 Linux vm 的备份过程中实现应用程序一致性，这些应用程序包括 Oracle、MySQL、Mongo DB 和 PostGreSQL。 这涉及到在拍摄磁盘快照之前调用一个预脚本 (来静止应用程序) ，并调用后脚本 (命令在完成快照后将应用程序解除冻结) ，以将应用程序恢复到正常模式。 虽然在 GitHub 上提供了示例前脚本和后脚本，但你有责任来创建和维护这些脚本。
 
-现在，Azure 备份提供了增强的脚本前脚本和后脚本框架，Azure 备份服务将为所选应用程序提供打包的脚本前脚本和后脚本。 Azure 备份用户只需命名应用程序，Azure VM 备份就会自动调用相关的预先发布脚本。 打包后脚本和操作后脚本将由 Azure 备份团队维护，因此用户可以确保这些脚本的支持、所有权和有效性。 目前，增强型框架支持的应用程序是 *Oracle* 和 *MySQL*。
+现在，Azure 备份提供了增强的预脚本和后脚本框架 (， **该框架当前为预览版**) ，Azure 备份服务将为所选应用程序提供打包的前脚本和后脚本。 Azure 备份用户只需命名应用程序，Azure VM 备份就会自动调用相关的预先发布脚本。 打包后脚本和操作后脚本将由 Azure 备份团队维护，因此用户可以确保这些脚本的支持、所有权和有效性。 目前，增强型框架支持的应用程序是 *Oracle* 和 *MySQL*。
 
 在本部分中，你将使用 Azure Backup 增强框架来获取正在运行的 VM 和 Oracle 数据库的应用程序一致性快照。 当 Azure 备份拍摄 VM 磁盘的快照时，数据库将被置于备份模式，以便进行事务一致的联机备份。 快照将是存储的完整副本，而不是增量备份或副本写入快照，因此它是从还原数据库的有效介质。 使用 Azure 备份应用程序一致性快照的优点在于，无论数据库的大小如何，都非常快速，并且快照可用于还原操作，而无需等待将其传输到恢复服务保管库中的时间。
 
@@ -314,7 +315,7 @@ Azure 备份服务提供了一个 [框架](../../../backup/backup-azure-linux-ap
    sudo su -
    ```
 
-2. 创建应用程序一致性备份工作目录：
+2. 检查 "etc/azure" 文件夹。 如果不存在，请创建应用程序一致性备份工作目录：
 
    ```bash
    if [ ! -d "/etc/azure" ]; then
@@ -322,7 +323,7 @@ Azure 备份服务提供了一个 [框架](../../../backup/backup-azure-linux-ap
    fi
    ```
 
-3. 在名为 */etc/azure* 的目录中创建一个名为 *工作负荷* 的文件，其内容必须以开头 `[workload]` 。 以下命令将创建文件并填充内容：
+3. 检查文件夹中的 "工作负荷"。 如果该文件不存在，请在 */etc/azure* 目录中创建一个名为 *工作负荷* 的文件，其中包含以下内容，这些内容必须以开头 `[workload]` 。 如果文件已存在，则只需编辑字段，使其与以下内容匹配。 否则，以下命令将创建文件并填充内容：
 
    ```bash
    echo "[workload]
@@ -332,17 +333,9 @@ Azure 备份服务提供了一个 [框架](../../../backup/backup-azure-linux-ap
    linux_user = azbackup" > /etc/azure/workload.conf
    ```
 
-4. 从 [GitHub 存储库](https://github.com/Azure/azure-linux-extensions/tree/master/VMBackup/main/workloadPatch/DefaultScripts) 下载 PreOracleMaster 和 postOracleMaster 脚本，并将其复制到 */etc/azure* 目录。
-
-5. 更改文件权限
-
-```bash
-   chmod 744 workload.conf preOracleMaster.sql postOracleMaster.sql 
-   ```
-
 ### <a name="trigger-an-application-consistent-backup-of-the-vm"></a>触发 VM 的应用程序一致性备份
 
-# <a name="portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1.  在 Azure 门户中，请前往资源组 **rg-oracle** ，并单击虚拟机 **vmoracle19c**。
 
@@ -446,7 +439,7 @@ Azure 备份服务提供了一个 [框架](../../../backup/backup-azure-linux-ap
 
 ### <a name="generate-a-restore-script-from-the-recovery-services-vault"></a>从恢复服务保管库生成还原脚本
 
-# <a name="portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. 在 Azure 门户中，搜索 " *myVault* 恢复服务保管库" 项并将其选中。
 
@@ -665,7 +658,7 @@ $ scp vmoracle19c_xxxxxx_xxxxxx_xxxxxx.py azureuser@<publicIpAddress>:/tmp
 
 ### <a name="stop-and-delete-vmoracle19c"></a>停止并删除 vmoracle19c
 
-# <a name="portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. 在 Azure 门户中，请切换到 **vmoracle19c** 虚拟机，然后选择 " **停止**"。
 
@@ -691,7 +684,7 @@ $ scp vmoracle19c_xxxxxx_xxxxxx_xxxxxx.py azureuser@<publicIpAddress>:/tmp
 
 ### <a name="recover-the-vm"></a>恢复 VM
 
-# <a name="portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. 在 Azure 门户中创建用于过渡的存储帐户。
 
@@ -857,7 +850,7 @@ $ scp vmoracle19c_xxxxxx_xxxxxx_xxxxxx.py azureuser@<publicIpAddress>:/tmp
 
 恢复 VM 后，应将原始 IP 地址重新分配到新的 VM。
 
-# <a name="portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1.  在 Azure 门户中转到虚拟机 **vmoracle19c**。 你会注意到，已为其分配了新的公共 IP 和 NIC，类似于 vmoracle19c，但没有 DNS 地址。 删除原始 VM 时，将保留其公共 IP 和 NIC，接下来的步骤会将它们重新附加到新的 VM。
 
@@ -970,4 +963,4 @@ az group delete --name rg-oracle
 
 [教程：创建具有高可用性的 VM](../../linux/create-cli-complete.md)
 
-[浏览 VM 部署 Azure CLI 示例](../../linux/cli-samples.md)
+[浏览 VM 部署 Azure CLI 示例](https://github.com/Azure-Samples/azure-cli-samples/tree/master/virtual-machine)

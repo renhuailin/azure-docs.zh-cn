@@ -17,12 +17,12 @@ ms.date: 01/21/2021
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2027f713baf2b8039187e933ffc7bb0b68b5cc5f
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: b6ef122cd36c3d4e9135876647075f22158df0d1
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98631955"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101653229"
 ---
 # <a name="get-started-with-the-azure-active-directory-reporting-api"></a>Azure Active Directory 报告 API 入门
 
@@ -51,7 +51,7 @@ Azure Active Directory 提供了各种[报告](overview-reports.md)，其中包�
 
 可以使用 [Identity Protection 风险检测 API](/graph/api/resources/identityriskevent?view=graph-rest-beta) ，通过 Microsoft Graph 获取对安全检测的编程访问。 有关详细信息，请参阅 [Azure Active Directory 标识保护和 Microsoft Graph 入门](../identity-protection/howto-identity-protection-graph-api.md)。 
   
-你还可以使用 [预配日志 API](https://docs.microsoft.com/graph/api/resources/provisioningobjectsummary?view=graph-rest-beta) 来实现对租户中预配事件的编程访问。 
+你还可以使用 [预配日志 API](/graph/api/resources/provisioningobjectsummary?view=graph-rest-beta) 来实现对租户中预配事件的编程访问。 
 
 ## <a name="apis-with-microsoft-graph-explorer"></a>Microsoft Graph 浏览器 API
 

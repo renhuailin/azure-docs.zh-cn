@@ -3,24 +3,25 @@ title: 在 Azure Stack 中部署 OpenShift
 description: 在 Azure Stack 中部署 OpenShift。
 author: haroldwongms
 manager: joraio
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines
+ms.subservice: openshift
+ms.collection: linux
 ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
-ms.openlocfilehash: 3729dbbc54d15d4641f5e514582f1437e790ef19
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: decc66d2d5abd16c084aa19443dbac54e87a9560
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87374027"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101667236"
 ---
 # <a name="deploy-openshift-container-platform-or-okd-in-azure-stack"></a>在 Azure Stack 中部署 OpenShift 容器平台或 OKD。
 
 可在 Azure Stack 中部署 OpenShift。 Azure 与 Azure Stack 之间存在一些重要的差异，因此，部署方法和功能会略有不同。
 
-目前，Azure 云提供程序无法在 Azure Stack 中运行。 出于此原因，无法使用附加的磁盘作为 Azure Stack 中的永久存储。 相反，你可以配置其他存储选项，例如 NFS、iSCSI、GlusterFS 等。作为替代方法，你可以启用 CN，并使用 GlusterFS 来实现持久存储。 如果启用了 CNS，将部署额外的三个节点和附加的存储供 GlusterFS 使用。
+目前，Azure 云提供程序无法在 Azure Stack 中运行。 出于此原因，无法使用附加的磁盘作为 Azure Stack 中的永久存储。 可以改为配置其他存储选项，例如 NFS、iSCSI、GlusterFS，等等。或者，可以启用 CNS 并使用 GlusterFS 作为永久存储。 如果启用了 CNS，将部署额外的三个节点和附加的存储供 GlusterFS 使用。
 
 可以使用多种方法之一在 Azure Stack 中部署 OpenShift 容器平台或 OKD：
 

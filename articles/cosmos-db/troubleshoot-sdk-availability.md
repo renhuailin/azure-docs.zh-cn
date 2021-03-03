@@ -3,17 +3,17 @@ title: 诊断多区域环境中 Azure Cosmos SDK 的可用性并对其进行故�
 description: 了解有关在多区域环境中运行时 Azure Cosmos SDK 可用性行为的所有信息。
 author: ealsur
 ms.service: cosmos-db
-ms.date: 02/16/2021
+ms.date: 02/18/2021
 ms.author: maquaran
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 641b7d44407f8f3760c673f45d69dcfdc8b363b8
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 0720eb01920e39a9bee27e4d00d97acba55b0ad5
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100650977"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101661420"
 ---
 # <a name="diagnose-and-troubleshoot-the-availability-of-azure-cosmos-sdks-in-multiregional-environments"></a>诊断多区域环境中 Azure Cosmos SDK 的可用性并对其进行故障排除
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -47,13 +47,13 @@ ms.locfileid: "100650977"
 > 如果指定为区域首选项的值与任何现有 Azure 区域都不匹配，则将忽略这些值。 如果它们与某个现有区域匹配，但未将该帐户复制到该区域，则该客户端将连接到下一个匹配或与主要区域匹配的首选区域。
 
 > [!WARNING]
-> 若要禁用终结点重新发现，请在客户端配置中将其设置为 false)  (禁用此文档中所述的所有故障转移和可用性逻辑。
-> 此配置可通过每个 Azure Cosmos SDK 中的以下参数访问：
+> 此文档中所述的故障转移和可用性逻辑可在客户端配置上禁用，除非用户应用程序要处理可用性错误本身，否则不建议这样做。 这可以通过以下方式实现：
 >
-> * .NET V2 SDK 中的 [ConnectionPolicy EnableEndpointRediscovery](/dotnet/api/microsoft.azure.documents.client.connectionpolicy.enableendpointdiscovery) 属性。
-> * Java V4 SDK 中的 [CosmosClientBuilder. endpointDiscoveryEnabled](/java/api/com.azure.cosmos.cosmosclientbuilder.endpointdiscoveryenabled) 方法。
-> * Python SDK 中的 [CosmosClient.enable_endpoint_discovery](/python/api/azure-cosmos/azure.cosmos.cosmos_client.cosmosclient) 参数。
-> * [CosmosClientOptions. ConnectionPolicy. 为 enableendpointdiscovery](/javascript/api/@azure/cosmos/connectionpolicy#enableEndpointDiscovery)参数。
+> * 将 .NET V2 SDK 中的 [EnableEndpointRediscovery](/dotnet/api/microsoft.azure.documents.client.connectionpolicy.enableendpointdiscovery) 属性设置为 false。
+> * 将 .NET V3 SDK 中的 [LimitToEndpoint](/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.limittoendpoint) 属性设置为 true。
+> * 将 Java V4 SDK 中的 [endpointDiscoveryEnabled](/java/api/com.azure.cosmos.cosmosclientbuilder.endpointdiscoveryenabled) 方法设置为 false。
+> * 将 Python SDK 中的 [CosmosClient.enable_endpoint_discovery](/python/api/azure-cosmos/azure.cosmos.cosmos_client.cosmosclient) 参数设置为 false。
+> * 将 JS SDK 中的 [CosmosClientOptions. ConnectionPolicy. 为 enableendpointdiscovery](/javascript/api/@azure/cosmos/connectionpolicy#enableEndpointDiscovery) 参数设置为 false。
 
 通常情况下，SDK 客户端将连接到首选区域（如果设置了区域首选项）或主要区域（如果未设置首选项），并且操作将限于该区域，除非出现以下任何情况。
 

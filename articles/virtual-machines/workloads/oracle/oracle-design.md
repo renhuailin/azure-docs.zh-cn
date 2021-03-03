@@ -2,18 +2,19 @@
 title: 在 Azure 上设计和实现 Oracle 数据库 | Microsoft 文档
 description: 在 Azure 环境中设计和实现 Oracle 数据库。
 author: dbakevlar
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines
+ms.subservice: oracle
+ms.collection: linux
 ms.topic: article
 ms.date: 12/17/2020
 ms.author: kegorman
 ms.reviewer: tigorman
-ms.openlocfilehash: 0b6f4e652ca8fef7bee4165bcd0673be2fa11eac
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 6e59d0065dfa74979bf3bbc72458bda516e3b641
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98890758"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101669984"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>在 Azure 中设计和实现 Oracle 数据库
 
@@ -48,7 +49,7 @@ ms.locfileid: "98890758"
 | **资源** |专用  |与其他客户端共享|
 | **区域** |数据中心 |[区域对](../../regions.md#region-pairs)|
 | **存储** |SAN/物理磁盘 |[Azure 托管的存储](https://azure.microsoft.com/pricing/details/managed-disks/?v=17.23h)|
-| **缩放** |垂直缩放 |横向缩放|
+| 缩放  |垂直缩放 |横向缩放|
 
 
 ### <a name="requirements"></a>要求
@@ -220,7 +221,7 @@ SQL> @$ORACLE_HOME/rdbms/admin/awrrpt.sql;
 - 专用网络（子网）：建议将应用程序服务和数据库置于单独的子网上，以便通过 NSG 策略可以更好地进行控制。
 
 
-## <a name="additional-reading"></a>其他阅读材料
+## <a name="additional-reading"></a>附加阅读材料
 
 - [配置 Oracle ASM](configure-oracle-asm.md)
 - [配置 Oracle Data Guard](configure-oracle-dataguard.md)

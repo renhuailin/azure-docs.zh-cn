@@ -1,29 +1,29 @@
 ---
 title: 在 Azure Automanage 中为 Vm 创建自定义首选项
-description: 了解如何在 Azure Automanage 中为 Vm 调整配置文件，并设置自己的首选项。
+description: 了解如何在 Azure Automanage 中调整环境配置，并设置自己的首选项。
 author: ju-shim
 ms.service: virtual-machines
 ms.subservice: automanage
 ms.workload: infrastructure
 ms.topic: how-to
-ms.date: 09/04/2020
+ms.date: 02/22/2021
 ms.author: jushiman
-ms.openlocfilehash: 377677c9e5e81487059241db68baff639a3de033
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 584a3503bf736fcf727a169611e6c79e0c374c90
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91715047"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101647913"
 ---
 # <a name="create-a-custom-preference-in-azure-automanage-for-vms"></a>在 Azure Automanage 中为 Vm 创建自定义首选项
 
-Azure Automanage for 虚拟机最佳实践包含可根据需要进行调整的默认配置文件。 本文将介绍在新的或现有的 VM 上启用 automanagement 时，如何设置自己的配置文件首选项。
+适用于虚拟机的 Azure Automanage 最佳实践包含可根据需要进行调整的默认环境。 本文将介绍在新的或现有的 VM 上启用 automanagement 时，如何设置自己的首选项。
 
 目前支持 [Azure 备份](..\backup\backup-azure-arm-vms-prepare.md#create-a-custom-policy) 和 [Microsoft 反恶意软件](../security/fundamentals/antimalware.md#default-and-custom-antimalware-configuration)的自定义。
 
 
 > [!NOTE]
-> 启用 Automanage 时，不能在 VM 上更改配置文件或首选项。 需要为该 VM 禁用 Automanage，然后使用所需的配置配置文件和首选项重新启用 Automanage。
+> 启用 Automanage 时，无法更改 VM 的环境或首选项。 需要为该 VM 禁用 Automanage，然后使用所需的配置环境和首选项重新启用 Automanage。
 
 
 ## <a name="prerequisites"></a>先决条件
@@ -31,7 +31,7 @@ Azure Automanage for 虚拟机最佳实践包含可根据需要进行调整的�
 如果还没有 Azure 订阅，可以在开始前[创建一个帐户](https://azure.microsoft.com/pricing/purchase-options/pay-as-you-go/)。
 
 > [!NOTE]
-> 免费试用帐户无法访问本教程中使用的虚拟机。 请升级到即用即付订阅。
+> 免费试用帐户无法访问本教程中使用的虚拟机。 请升级为即用即付订阅。
 
 > [!IMPORTANT]
 > 若要启用 Automanage： **Owner** 角色或 **参与者** 以及 **用户访问管理员** 角色，需要以下 Azure RBAC 权限。
@@ -44,7 +44,7 @@ Azure Automanage for 虚拟机最佳实践包含可根据需要进行调整的�
 
 ## <a name="enable-automanage-for-vms-on-an-existing-vm"></a>在现有 VM 上启用适用于 VM 的自动管理
 
-1. 在搜索栏中，搜索并选择“自动管理 – Azure 虚拟机最佳做法”。
+1. 在搜索栏中，搜索并选择“Automanage - Azure 计算机最佳做法”。
 
 2. 选择“在现有 VM 上启用”。
 
@@ -55,32 +55,43 @@ Azure Automanage for 虚拟机最佳实践包含可根据需要进行调整的�
 
     :::image type="content" source="media\virtual-machine-custom-preferences\existing-vm-select-machine.png" alt-text="从可用 VM 列表中选择现有 VM。":::
 
-4. 在“配置文件”下，单击“浏览并更改配置文件和首选项” 。
+    > [!NOTE]
+    > 单击 " **显示不合格的计算机** "，查看不受支持的计算机和原因的列表。 
 
-    :::image type="content" source="media\virtual-machine-custom-preferences\existing-vm-quick-create.png" alt-text="从可用 VM 列表中选择现有 VM。" 边栏选项卡上，选择左侧的配置文件：用于测试的 *开发/测试* *，生产* 生产。
+4. 在 " **配置**" 下，单击 " **比较环境**"。
 
-    :::image type="content" source="media\virtual-machine-custom-preferences\browse-production-profile.png" alt-text="从可用 VM 列表中选择现有 VM。" 选项卡：
+    :::image type="content" source="media\virtual-machine-custom-preferences\existing-vm-quick-create.png" alt-text="比较环境。":::
+
+5. 在 " **环境详细信息** " 边栏选项卡上，从下拉菜单中选择环境： " *开发/测试* 测试"、"生产生产 *"，然后* 单击 **"确定"**
+
+    :::image type="content" source="media\virtual-machine-custom-preferences\browse-production-profile.png" alt-text="浏览生产环境。":::
+
+6. 选择环境后，可以选择 " **配置首选项**"。 默认情况下，将使用 Azure 最佳实践首选项。 此首选项包含对每个服务使用建议的设置。 通过创建自定义首选项来修改这些设置： 
+    1. 单击 " **创建新首选项**"。
+    1. 在 " **创建配置首选项** " 边栏选项卡中，填写 "基本信息" 选项卡：
         1. 订阅
         1. 资源组
         1. 首选项名称
         1. 区域
 
-    :::image type="content" source="media\virtual-machine-custom-preferences\create-preference.png" alt-text="从可用 VM 列表中选择现有 VM。" 选项卡并调整所需的配置首选项。
+    :::image type="content" source="media\virtual-machine-custom-preferences\create-preference.png" alt-text="填写配置首选项。":::
+
+7. 调整所需的配置首选项。
         
     > [!NOTE]
-    > 更改配置文件配置时，仅允许在最佳方案上限和下限范围内进行的调整。
+    > 更改环境配置时，仅允许在最佳方案上限和下限范围内进行的调整。
 
-8. 查看配置文件。
+8. 查看配置详细信息。
 9. 单击“创建”  按钮。
 
-10. 单击“启用”按钮****。
+10. 单击“启用”按钮。
 
 
 ## <a name="disable-automanage-for-vms"></a>禁用适用于 VM 的自动管理
 
 可通过禁用自动管理来快速停止适用于虚拟机的 Azure 自动管理。
 
-:::image type="content" source="media\virtual-machine-custom-preferences\disable-step-1.png" alt-text="从可用 VM 列表中选择现有 VM。":::
+:::image type="content" source="media\virtual-machine-custom-preferences\disable-step-1.png" alt-text="在虚拟机上禁用自动管理。":::
 
 1. 请转到“自动管理 – Azure 虚拟机最佳做法”页，其中列出了自动管理的所有 VM。
 1. 选中要禁用的虚拟机旁的复选框。

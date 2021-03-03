@@ -2,18 +2,18 @@
 title: 部署 Azure IoT Edge 工作负载（预览版）
 services: azure-arc
 ms.service: azure-arc
-ms.date: 02/10/2021
+ms.date: 02/19/2021
 ms.topic: article
 author: mlearned
 ms.author: mlearned
 description: 部署 Azure IoT Edge 工作负载
 keywords: Kubernetes, Arc, Azure, K8s, 容器
-ms.openlocfilehash: f228b79f14ab24281415cd4bd5964fc86a095d3c
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: c352455b69360df0b26f5aac38fc40ccb30fb9de
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100390430"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101650407"
 ---
 # <a name="deploy-azure-iot-edge-workloads-preview"></a>部署 Azure IoT Edge 工作负载（预览版）
 
@@ -43,7 +43,7 @@ Azure IoT Edge 允许应用程序操作员通过方便的云引入和双向通�
   $ kubectl create secret generic dcs --from-file=fully-qualified-path-to-values.yaml --namespace iotedge
   ```
 
-  还可以使用 [群集配置示例](./use-gitops-connected-cluster.md)远程设置。
+  还可以使用 [群集配置示例](./tutorial-use-gitops-connected-cluster.md)远程设置。
 
 ## <a name="connect-a-cluster"></a>连接群集
 
@@ -57,10 +57,10 @@ Azure IoT Edge 允许应用程序操作员通过方便的云引入和双向通�
 
 [示例 Git](https://github.com/veyalla/edgearc)存储库指向 IoT Edge Helm 图表，并引用必备组件部分中创建的机密。
 
-使用 `az` Azure CLI `k8sconfiguration` 扩展创建将连接的群集链接到 Git 存储库的配置：
+使用 `az` Azure CLI `k8s-configuration` 扩展创建将连接的群集链接到 Git 存储库的配置：
 
   ```
-  az k8sconfiguration create --name iotedge --cluster-name AzureArcIotEdge --resource-group AzureArcTest --operator-instance-name iotedge --operator-namespace azure-arc-iot-edge --enable-helm-operator --helm-operator-chart-version 0.6.0 --helm-operator-chart-values "--set helm.versions=v3" --repository-url "git://github.com/veyalla/edgearc.git" --cluster-scoped
+  az k8s-configuration create --name iotedge --cluster-name AzureArcIotEdge --resource-group AzureArcTest --operator-instance-name iotedge --operator-namespace azure-arc-iot-edge --enable-helm-operator --helm-operator-chart-version 0.6.0 --helm-operator-chart-values "--set helm.versions=v3" --repository-url "git://github.com/veyalla/edgearc.git" --cluster-scoped
   ```
 
 几分钟后，会看到部署到群集命名空间中的 IoT Edge 工作负荷模块 `iotedge` 。 
@@ -72,7 +72,7 @@ Azure IoT Edge 允许应用程序操作员通过方便的云引入和双向通�
 使用以下内容删除配置：
 
 ```
-az k8sconfiguration delete -g AzureArcTest --cluster-name AzureArcIotEdge --name iotedge
+az k8s-configuration delete -g AzureArcTest --cluster-name AzureArcIotEdge --name iotedge
 ```
 
 ## <a name="next-steps"></a>后续步骤

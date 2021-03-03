@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/31/2020
 ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: d36bcbd64c1169c923c6a1decdf907a8a9d6697b
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 9f2b5bf1195682b200b5840459194506e29bcdc6
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99255757"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101645082"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>规划自动用户预配部署
 
@@ -42,7 +42,7 @@ Azure Active Directory (Azure AD) 自动用户预配可通过安全地根据业�
 
 * **降低成本**。 自动用户预配通过避免与手动预配相关的低效和人为错误，降低了成本。 它减少了自定义开发的用户预配解决方案、脚本和审核日志的需求。
 
-### <a name="licensing"></a>许可
+### <a name="licensing"></a>授权
 
 Azure AD 使用应用程序库菜单中提供的模板为任何应用程序提供自助集成。 有关许可证要求的完整列表，请参阅 [Azure AD 授权 "页](https://azure.microsoft.com/pricing/details/active-directory/)。
 
@@ -306,7 +306,7 @@ Azure AD 可以通过审核日志和报告， [进一步深入](../app-provision
 
 * [预配到 Azure AD 库应用程序的用户组错误](../manage-apps/add-application-portal-assign-users.md)
 
-### <a name="helpful-documentation"></a>有用的文档
+### <a name="helpful-documentation"></a>可提供帮助的文档
 
 * [为属性映射编写表达式](../app-provisioning/functions-for-customizing-application-data.md)
 
@@ -322,7 +322,7 @@ Azure AD 可以通过审核日志和报告， [进一步深入](../app-provision
 
 * [随时了解 Azure AD 的新增功能](https://azure.microsoft.com/updates/?product=active-directory)
 
-* [Azure AD 论坛&的 Microsoft Q](https://docs.microsoft.com/answers/topics/azure-active-directory.html)
+* [Azure AD 论坛&的 Microsoft Q](/answers/topics/azure-active-directory.html)
 
 ## <a name="next-steps"></a>后续步骤
 * [配置自动用户预配](../app-provisioning/configure-automatic-user-provisioning-portal.md)

@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 06/24/2020
+ms.date: 03/02/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c9afb5a078d5359ed236b44c0a6712985bf8c305
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: d07aa283c40a54ba02faa13b07e466e519bd68ae
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99257179"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101649415"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>与面向来宾用户的 AD FS 和第三方提供者的直接联合（预览）
 
@@ -26,9 +26,7 @@ ms.locfileid: "99257179"
 
 本文介绍如何为实现 B2B 协作建立与其他组织的直接联合。 可以与其标识提供者 (IdP) 支持 SAML 2.0 或 WS-Fed 协议的任何组织建立直接联合。
 与合作伙伴的 IdP 建立直接联合时，该域中的新来宾用户可以使用其自己的 IdP 管理的组织帐户登录到 Azure AD 租户，并开始与你合作。 来宾用户无需创建单独的 Azure AD 帐户。
-> [!NOTE]
-> 直接联合来宾用户必须使用包含租户上下文的链接登录（例如，`https://myapps.microsoft.com/?tenantid=<tenant id>` 或 `https://portal.azure.com/<tenant id>`；对于经过验证的域，请使用 `https://myapps.microsoft.com/\<verified domain>.onmicrosoft.com`）。 也可以使用应用程序和资源的直接链接，只要这些链接包含租户上下文即可。 直接联合用户目前无法使用不包含租户上下文的通用终结点登录。 例如，使用 `https://myapps.microsoft.com`、`https://portal.azure.com` 或 `https://teams.microsoft.com` 将会导致错误。
- 
+
 ## <a name="when-is-a-guest-user-authenticated-with-direct-federation"></a>来宾用户何时使用直接联合进行身份验证？
 与组织建立直接联合后，邀请的任何新来宾用户都将使用直接联合进行身份验证。 特别要注意的是，建立直接联合并不会更改已兑换邀请的来宾用户的身份验证方法。 下面是一些示例：
  - 如果来宾用户已经兑换了邀请，而你随后与其组织建立了直接联合，则这些来宾用户将继续使用在建立直接联合之前使用的相同身份验证方法。
@@ -42,10 +40,28 @@ ms.locfileid: "99257179"
 ## <a name="end-user-experience"></a>最终用户体验 
 使用直接联合，来宾用户使用其自己的组织帐户登录到你的 Azure AD 租户。 当用户访问共享资源并提示登录时，直接联合用户会重定向到其 IdP。 成功登录后，他们会返回到 Azure AD 来访问资源。 直接联合用户的刷新令牌有效期为 12 小时，这是 Azure AD 中[传递刷新令牌的默认长度](../develop/active-directory-configurable-token-lifetimes.md#exceptions)。 如果联合 IdP 启用了 SSO，用户将体验 SSO，并在初始身份验证后不会看到任何登录提示。
 
+## <a name="sign-in-endpoints"></a>登录终结点
+
+直接联合身份验证来宾用户现在可以使用 [公共终结点](redemption-experience.md#redemption-and-sign-in-through-a-common-endpoint) 登录到你的多租户或 Microsoft 第一方应用 (换言之，这是一个不包含租户上下文) 的常规应用 URL。 下面是常见终结点的示例：
+
+- `https://teams.microsoft.com`
+- `https://myapps.microsoft.com`
+- `https://portal.azure.com`
+
+在登录过程中，来宾用户选择 "登录" **选项**，然后选择 " **登录到组织**"。 然后，用户键入组织的名称并继续使用其自己的凭据登录。
+
+直接联合身份验证来宾用户还可以使用包含租户信息的应用程序终结点，例如：
+
+  * `https://myapps.microsoft.com/?tenantid=<your tenant ID>`
+  * `https://myapps.microsoft.com/<your verified domain>.onmicrosoft.com`
+  * `https://portal.azure.com/<your tenant ID>`
+
+例如，你还可以通过包含你的租户信息，为直接联合身份验证来宾用户提供指向应用程序或资源的直接链接 `https://myapps.microsoft.com/signin/Twitter/<application ID?tenantId=<your tenant ID>` 。
+
 ## <a name="limitations"></a>限制
 
 ### <a name="dns-verified-domains-in-azure-ad"></a>Azure AD 中的 DNS 验证域
-要与之联盟的域必须在 Azure AD中通过 DNS 验证。 允许你建立与非托管（经电子邮件验证或“病毒性”）Azure AD 租户的直接联合，因为未对其进行 DNS 验证。
+要与之联合的域不得在 Azure AD 中进行 DNS 验证。 允许你建立与非托管（经电子邮件验证或“病毒性”）Azure AD 租户的直接联合，因为未对其进行 DNS 验证。
 
 ### <a name="authentication-url"></a>身份验证 URL
 直接联合只允许在身份验证 URL 的域与目标域匹配的策略中使用，或者在身份验证 URL 是这些允许的标识提供者之一的策略中使用（此列表可能会更改）：
@@ -60,7 +76,7 @@ ms.locfileid: "99257179"
 -   federation.exostar.com
 -   federation.exostartest.com
 
-例如，为 _ * fabrikam * * 设置直接联合时，身份验证 URL `https://fabrikam.com/adfs` 将通过验证。 同一域中的主机也将通过验证，例如 `https://sts.fabrikam.com/adfs`。 但是，同一域的身份验证 URL `https://fabrikamconglomerate.com/adfs` 或 `https://fabrikam.com.uk/adfs` 不会通过验证。
+例如，为 fabrikam.com 建立直接联合时，身份验证 URL `https://fabrikam.com/adfs` 将通过验证。 同一域中的主机也将通过验证，例如 `https://sts.fabrikam.com/adfs`。 但是，同一域的身份验证 URL `https://fabrikamconglomerate.com/adfs` 或 `https://fabrikam.com.uk/adfs` 不会通过验证。
 
 ### <a name="signing-certificate-renewal"></a>签名证书续订
 如果在标识提供者设置中指定元数据 URL，Azure AD 将在签名证书过期时自动续订该证书。 但是，如果出于任何原因在过期之前轮换证书，或未提供元数据 URL，Azure AD 将无法续订该证书。 在这种情况下，你将需要手动更新签名证书。
@@ -147,7 +163,7 @@ IdP 颁发的 WS-Fed 令牌的必需声明：
 
 1. 转到 [Azure 门户](https://portal.azure.com/)。 在左窗格中选择“Azure Active Directory”。 
 2. 选择“外部标识” > “所有标识提供者”。
-3. 选择 ""，然后选择 " **新建 SAML/WS-送 IdP**"。
+3. 选择 " **新建 SAML/WS-送 IdP**"。
 
     ![显示用于添加新 SAML 或 WS-Fed IdP 的按钮的屏幕截图](media/direct-federation/new-saml-wsfed-idp.png)
 

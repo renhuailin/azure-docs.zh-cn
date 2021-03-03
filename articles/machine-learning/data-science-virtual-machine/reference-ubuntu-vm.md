@@ -3,18 +3,18 @@ title: 参考： Ubuntu Data Science Virtual Machine
 titleSuffix: Azure Data Science Virtual Machine
 description: Data Science Virtual Machine 中包含的工具的详细信息
 author: gvashishtha
-ms.service: machine-learning
-ms.subservice: data-science-vm
+services: machine-learning
+ms.service: data-science-vm
 ms.custom: devx-track-python
 ms.author: gopalv
 ms.date: 09/11/2019
 ms.topic: reference
-ms.openlocfilehash: 6fb7b7c2e9022b6b629a039a48bb559b36393f79
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: e9a55f72718d6ed5991f3d0f16323409bb0f699f
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96013847"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101661063"
 ---
 # <a name="reference-ubuntu-linux-data-science-virtual-machine"></a>参考：Ubuntu (Linux) Data Science Virtual Machine
 
@@ -232,7 +232,7 @@ VM 上安装有以下 Azure 工具：
 * **Azure 存储资源管理器**：Azure 存储资源管理器是一个图形工具，用于浏览在 Azure 存储帐户中存储的对象，以及将数据上传到 Azure Blob 和从中下载数据。 可通过桌面快捷方式图标访问存储资源管理器。 还可以通过输入 **StorageExplorer** 从 shell 提示符打开此工具。 必须从 X2Go 客户端登录，或设置 X11 转发。
 * **Azure 库**：下面是一些预安装的库。
   
-  * **Python**：Python 中的 Azure 相关库包括 *azure*、*azureml*、*pydocumentdb* 和 *pyodbc*。 使用前三个库，可以访问 Azure 存储服务、Azure 机器学习和 Azure Cosmos DB（Azure 上的 NoSQL 数据库）。 第四个库 pyodbc (连同用于 SQL Server 的 Microsoft ODBC 驱动程序) ，可以使用 ODBC 接口从 Python 访问 SQL Server、Azure SQL 数据库和 Azure Synapse Analytics。 输入 **pip 列表** 查看所有列出的库。 请确保在 Python 2.7 和 3.5 环境中都运行此命令。
+  * **Python**：Python 中的 Azure 相关库包括 *azure*、*azureml*、*pydocumentdb* 和 *pyodbc*。 使用前三个库，可以访问 Azure 存储服务、Azure 机器学习和 Azure Cosmos DB（Azure 上的 NoSQL 数据库）。 通过第 4 个库 pyodbc（以及 SQL Server 的 Microsoft ODBC 驱动程序），可使用 ODBC 接口从 Python 访问 SQL Server、Azure SQL 数据库和 Azure Synapse Analytics。 输入 **pip 列表** 查看所有列出的库。 请确保在 Python 2.7 和 3.5 环境中都运行此命令。
   * **R**：R 中的 Azure 相关库包括 AzureML 和 RODBC。
   * **Java**：可在 VM 上的 /dsvm/sdk/AzureSDKJava 目录中找到 Azure Java 库列表。 密钥库是 Azure 存储和用于 SQL Server 的管理 API、Azure Cosmos DB 和 JDBC 驱动程序。  
 

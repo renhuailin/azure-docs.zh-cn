@@ -10,18 +10,18 @@ ms.author: luquinta
 author: luisquintanilla
 ms.date: 01/26/2021
 ms.custom: responsible-ml
-ms.openlocfilehash: 6daa03728a5f323f6f8b749975d31fbca24d5602
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 276c91ad7fb5b09dbe18d989741f0f54b8b0eb09
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98871496"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101659675"
 ---
 # <a name="mitigate-unfairness-in-machine-learning-models-preview"></a> (预览中缓解机器学习模型中的 unfairness) 
 
 了解机器学习和 [Fairlearn](https://fairlearn.github.io/) 的开源 Python 包如何帮助你在机器学习模型中缓解 unfairness 问题。 如果不努力了解公平性问题以及如何在构建机器学习模型时评估公平性，那么你构建的模型可能会产生不公平的结果。
 
-Fairlearn 开源包[用户指南](https://fairlearn.github.io/master/user_guide/index.html)的以下摘要介绍了如何使用它来评估正在构建的 AI 系统的公平性。  Fairlearn 开源包还可以提供一些选项，以帮助缓解或减少你观察到的任何公平性问题。  请参阅[操作方法](how-to-machine-learning-fairness-aml.md)和[示例笔记本](https://github.com/Azure/MachineLearningNotebooks/tree/master/contrib/fairness)，以便在有关 Azure 机器学习的训练期间启用 AI 系统的公平性评估。
+Fairlearn 开源包[用户指南](https://fairlearn.github.io/main/user_guide/index.html)的以下摘要介绍了如何使用它来评估正在构建的 AI 系统的公平性。  Fairlearn 开源包还可以提供一些选项，以帮助缓解或减少你观察到的任何公平性问题。  请参阅[操作方法](how-to-machine-learning-fairness-aml.md)和[示例笔记本](https://github.com/Azure/MachineLearningNotebooks/tree/master/contrib/fairness)，以便在有关 Azure 机器学习的训练期间启用 AI 系统的公平性评估。
 
 
 ## <a name="what-is-fairness-in-machine-learning-models"></a>什么是机器学习模型中的公平性？
@@ -109,6 +109,6 @@ Fairlearn 开源包提供了后期处理和降低不公平性的缓解算法：
 
 ## <a name="next-steps"></a>后续步骤
 
-- 查看 Fairlearn 的 [GitHub](https://github.com/fairlearn/fairlearn/)、[用户指南](https://fairlearn.github.io/master/user_guide/index.html)、[示例](https://fairlearn.github.io/master/auto_examples/)和[示例笔记本](https://github.com/fairlearn/fairlearn/tree/master/notebooks)，以了解如何使用各种组件。
+- 查看 Fairlearn 的 [GitHub](https://github.com/fairlearn/fairlearn/)、[用户指南](https://fairlearn.github.io/main/user_guide/index.html)、[示例](https://fairlearn.github.io/main/auto_examples/index.html)和[示例笔记本](https://github.com/fairlearn/fairlearn/tree/master/notebooks)，以了解如何使用各种组件。
 - 了解[如何](how-to-machine-learning-fairness-aml.md)在 Azure 机器学习中评估机器学习模型中的公平性。
 - 有关 Azure 机器学习中的其他公平性评估方案，请参阅[示例笔记本](https://github.com/Azure/MachineLearningNotebooks/tree/master/contrib/fairness)。 

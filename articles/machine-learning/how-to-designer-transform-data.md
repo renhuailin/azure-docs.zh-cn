@@ -10,12 +10,12 @@ ms.author: peterlu
 ms.date: 06/28/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: 70f5e17c4cc42201e9aa3d36c9937f6ceb9527d0
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 10904275d382c7f9dbf223ded78cab0adf14992a
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880197"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101661046"
 ---
 # <a name="transform-data-in-azure-machine-learning-designer"></a>在 Azure 机器学习设计器中转换数据
 
@@ -76,7 +76,7 @@ ms.locfileid: "98880197"
 
 管道应如下所示：
 
-:::image type="content" source="./media/how-to-designer-transform-data/split-data.png"alt-text="显示如何配置管道和“拆分数据”模块的屏幕截图":::
+:::image type="content" source="./media/how-to-designer-transform-data/split-data.png" alt-text="显示如何配置管道和“拆分数据”模块的屏幕截图":::
 
 
 ## <a name="save-the-datasets"></a>保存数据集

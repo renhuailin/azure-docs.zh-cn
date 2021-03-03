@@ -3,15 +3,15 @@ title: Azure API 管理 Dapr 集成策略 | Microsoft Docs
 description: 了解用于与 Dapr 微服务扩展进行交互的 Azure API 管理策略。
 author: vladvino
 ms.author: vlvinogr
-ms.date: 10/23/2020
+ms.date: 02/18/2021
 ms.topic: article
 ms.service: api-management
-ms.openlocfilehash: b8e253f75f56f961a24a441188b7a8e571622667
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 051bf4398555f318f613c66d58ec65be1d30e215
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99560233"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101646803"
 ---
 # <a name="api-management-dapr-integration-policies"></a>API 管理 Dapr 集成策略
 
@@ -45,21 +45,21 @@ template:
 
 ## <a name="send-request-to-a-service"></a><a name="invoke"></a> 发送对服务的请求
 
-此策略将当前请求的目标 URL 设置为 `http://localhost:3500/v1.0/invoke/{app-id}/method/{method-name}`，并且用策略语句中指定的值替换模板参数。
+此策略将当前请求的目标 URL 设置为 `http://localhost:3500/v1.0/invoke/{app-id}[.{ns-name}]/method/{method-name}`，并且用策略语句中指定的值替换模板参数。
 
 策略假设 Dapr 在网关所在的 pod 中的 sidecar 容器中运行。 接收到请求后，Dapr 运行时执行服务发现和实际调用，包括 HTTP 和 gRPC 之间可能的协议转换、重试、分布式跟踪和错误处理。
 
 ### <a name="policy-statement"></a>策略语句
 
 ```xml
-<set-backend-service backend-id="dapr" dapr-app-id="app-id" dapr-method="method-name" />
+<set-backend-service backend-id="dapr" dapr-app-id="app-id" dapr-method="method-name" dapr-namespace="ns-name" />
 ```
 
 ### <a name="examples"></a>示例
 
 #### <a name="example"></a>示例
 
-下面的示例演示如何在名为“echo”的微服务上调用名为“back”的方法。 `set-backend-service` 策略设置目标 URL。 `forward-request` 策略将请求分派到 Dapr 运行时，Dapr 运行时将请求传递给微服务。
+下面的示例演示如何在名为“echo”的微服务上调用名为“back”的方法。 `set-backend-service`策略将目标 URL 设置为 `http://localhost:3500/v1.0/invoke/echo.echo-app/method/back` 。 `forward-request` 策略将请求分派到 Dapr 运行时，Dapr 运行时将请求传递给微服务。
 
 为清楚起见，`forward-request` 策略在这里显示。 策略通常通过 `base` 关键字从全局范围“继承”。
 
@@ -67,7 +67,7 @@ template:
 <policies>
     <inbound>
         <base />
-        <set-backend-service backend-id="dapr" dapr-app-id="echo" dapr-method="back" />
+        <set-backend-service backend-id="dapr" dapr-app-id="echo" dapr-method="back" dapr-namespace="echo-app" />
     </inbound>
     <backend>
         <forward-request />
@@ -92,8 +92,9 @@ template:
 | 属性        | 说明                     | 必须 | 默认 |
 |------------------|---------------------------------|----------|---------|
 | backend-id       | 必须设置为“dapr”           | 是      | 不适用     |
-| dapr-app-id      | 目标微服务的名称。 映射到 Dapr 中的 [appId](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/service_invocation_api.md) 参数。| 是 | 不适用 |
-| dapr-method      | 要在目标微服务上调用的方法或 URL 的名称。 映射到 Dapr 中的 [method-name](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/service_invocation_api.md) 参数。| 是 | 空值 |
+| dapr-app-id      | 目标微服务的名称。 用于在 Dapr 中形成 [appId](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/service_invocation_api.md) 参数。| 是 | 不适用 |
+| dapr-method      | 要在目标微服务上调用的方法或 URL 的名称。 映射到 Dapr 中的 [method-name](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/service_invocation_api.md) 参数。| 是 | 不适用 |
+| dapr-命名空间   | 目标微服务所驻留的命名空间的名称。 用于在 Dapr 中形成 [appId](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/service_invocation_api.md) 参数。| 否 | 空值 |
 
 ### <a name="usage"></a>使用情况
 

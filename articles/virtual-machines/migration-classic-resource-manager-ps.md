@@ -4,17 +4,18 @@ description: 本文介绍如何在支持的平台上使用 Azure PowerShell 命�
 author: tanmaygore
 manager: vashan
 ms.service: virtual-machines
+ms.subservice: classic-to-arm-migration
 ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 02/06/2020
 ms.author: tagore
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 82eaa597796bf3772faa90a9dbc4151da935c46a
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.openlocfilehash: 0ffea1e35cd457fc1fa350b1b234360d111fc911
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98027717"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101669273"
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-powershell"></a>使用 PowerShell 将 IaaS 资源从经典部署模型迁移到 Azure 资源管理器部署模型
 
@@ -265,7 +266,7 @@ ms.locfileid: "98027717"
 完成虚拟机迁移之后，请先执行以下先决条件检查，然后再迁移存储帐户。
 
 > [!NOTE]
-> 如果存储帐户没有关联的磁盘或 VM 数据，则可以直接跳至“验证存储帐户并开始迁移”部分。 另请注意，删除经典磁盘、VM 映像或操作系统映像不会删除存储帐户中的源 VHD 文件。 但是，它会中断这些 VHD 文件的租约，以便在迁移后可以重复使用这些 VHD 文件来创建 ARM 磁盘或映像。
+> 如果存储帐户没有关联的磁盘或 VM 数据，则可以直接跳至“验证存储帐户并开始迁移”部分。 另请注意，删除经典磁盘、VM 映像或 OS 映像不会删除存储帐户中的源 VHD 文件。 但是，它会中断这些 VHD 文件的租用，以便在迁移后可以重复使用这些 VHD 文件来创建 ARM 磁盘或映像。
 
 * 关于是否迁移了 VM 或存储帐户是否有磁盘资源的先决条件检查：
     * 迁移其磁盘存储在存储帐户中的虚拟机。

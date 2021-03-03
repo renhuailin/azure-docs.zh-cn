@@ -9,20 +9,19 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.assetid: 887caaec-02ba-4711-bd4d-204a7d16b32b
-ms.service: virtual-machines-windows
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/29/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e098256a43add6df026ab136bcd6a6b549c147e7
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 842c56ef1fb6f68c3d8b82e2633d9a604db9fde2
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98871309"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101671635"
 ---
 # <a name="sap-workload-configurations-with-azure-availability-zones"></a>使用 Azure 可用性区域的 SAP 工作负荷配置
 除了在 Azure 可用性集内部署不同的 SAP 体系结构层以外，还可以对 SAP 工作负荷部署使用最近引入的 [Azure 可用性区域](../../../availability-zones/az-overview.md) 。 Azure 可用性区域定义为： "区域内的唯一物理位置。 每个区域由一个或多个数据中心组成，这些数据中心配备了独立电源、冷却和网络连接。 Azure 可用性区域在所有区域中均不可用。 对于提供可用性区域的 Azure 区域，请查看 [azure 区域映射](https://azure.microsoft.com/global-infrastructure/geographies/)。 此图将向你显示哪些区域提供或被公布以提供可用性区域。 
@@ -154,7 +153,7 @@ Azure 区域，在这种情况下，如果在不同可用性区域上部署的�
 
 对于跨不同区域的此类部署体系结构的 Azure 区域，最好是：
 
-- Southeast Asia
+- 东南亚
 - 澳大利亚东部
 - Brazil South
 - 德国中西部

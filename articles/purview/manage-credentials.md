@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 02/11/2021
-ms.openlocfilehash: 9ffc450294f186b77cc7a6c44c10eecf266161d3
-ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
+ms.openlocfilehash: 1857eab485e8651c05959f82cf11e69b6353c575
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100526677"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101673516"
 ---
 # <a name="credentials-for-source-authentication-in-azure-purview"></a>用于 Azure 监控范围中的源身份验证的凭据
 
@@ -85,8 +85,9 @@ ms.locfileid: "100526677"
 - 服务主体：将 **服务主体密钥** 添加为密钥保管库中的机密。
 - SQL 身份验证：将 **密码** 作为机密添加到密钥保管库中。
 - 帐户密钥：将 **帐户密钥** 作为机密添加到密钥保管库中。
+- 角色 ARN：对于 Amazon S3 数据源，请在 AWS 中添加 **角色 ARN** 。 
 
-有关详细信息，请参阅 [将机密添加到 Key Vault](../key-vault/secrets/quick-create-portal.md#add-a-secret-to-key-vault)。
+有关详细信息，请参阅 [将机密添加到 Key Vault](../key-vault/secrets/quick-create-portal.md#add-a-secret-to-key-vault) 和 [为监控范围创建新的 AWS 角色](register-scan-amazon-s3.md#create-a-new-aws-role-for-purview)。
 
 在密钥保管库中存储机密后：
 

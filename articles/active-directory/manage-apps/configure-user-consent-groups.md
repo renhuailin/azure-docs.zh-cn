@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.author: kenwith
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: cd1eb98fca9fe25b6672863c02b8a78e57063e5a
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 24b2b8ee6398ef1306aee59b5d7ca7525284f96b
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99259315"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101644541"
 ---
 # <a name="configure-group-owner-consent-to-apps-accessing-group-data"></a>配置组所有者对应用访问组数据的同意
 
@@ -27,7 +27,7 @@ ms.locfileid: "99259315"
 
 你可以配置允许哪些用户同意访问其组或团队数据的应用，也可以为所有用户禁用此设置。
 
-# <a name="portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 请按照以下步骤管理对访问组数据的应用的组所有者同意：
 
@@ -124,4 +124,4 @@ ms.locfileid: "99259315"
 * [Microsoft 标识平台中的权限和许可](../develop/v2-permissions-and-consent.md)
 
 获取帮助或查找问题的答案：
-* [Microsoft Azure AD 上的&](https://docs.microsoft.com/answers/topics/azure-active-directory.html)
+* [Microsoft Azure AD 上的&](/answers/topics/azure-active-directory.html)

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 10/24/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 128e053016faf3ed2a9c53ad21f35a13f3ac1265
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 4abef9c848a32d9fa6a34eabe407c4d10f913797
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99258161"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101643790"
 ---
 # <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>使用应用程序代理和 PingAccess 通过基于标头的身份验证进行单一登录
 
@@ -91,7 +91,7 @@ Azure Active Directory (Azure AD) 应用程序代理与 PingAccess 合作，以�
    > [!NOTE]
    > 如果这是第一个应用程序，则从使用端口 3000 开始，如果更改了 PingAccess 配置，则返回以更新此设置。 对于后续应用程序，端口将需要与你在 PingAccess 中配置的侦听器匹配。 详细了解 [PingAccess 中的侦听器](https://support.pingidentity.com/s/document-item?bundleId=pingaccess-52&topicId=reference/ui/pa_c_Listeners.html)。
 
-1. 选择 **添加** 。 此时将显示新应用程序的 "概述" 页。
+1. 选择“添加”。 此时将显示新应用程序的 "概述" 页。
 
 现在为应用程序测试分配用户，并选择基于标头的单一登录：
 
@@ -100,7 +100,7 @@ Azure Active Directory (Azure AD) 应用程序代理与 PingAccess 合作，以�
    ![显示用户和组的列表](./media/application-proxy-configure-single-sign-on-with-ping-access/users-and-groups.png)
 
 1. 选择用于应用程序测试的用户，然后选择 " **选择**"。 确保此测试帐户有权访问本地应用程序。
-1. 选择“分配”。 
+1. 选择“分配”。
 1. 从 "应用程序" 边栏中，选择 "  >  **基于标头的** 单一登录"。
 
    > [!TIP]
@@ -140,7 +140,7 @@ Azure Active Directory (Azure AD) 应用程序代理与 PingAccess 合作，以�
 | Azure AD 字段的名称 | PingAccess 字段的名称 | 数据格式 |
 | --- | --- | --- |
 | **应用程序（客户端）ID** | **客户端 ID** | GUID |
-| **Directory (租户) ID** | **N** | GUID |
+| **目录（租户）ID** | **颁发者** | GUID |
 | `PingAccess key` | **客户端机密** | 随机字符串 |
 
 收集此信息：
@@ -158,7 +158,7 @@ Azure Active Directory (Azure AD) 应用程序代理与 PingAccess 合作，以�
 
 1. 在 " **说明**" 中，键入 `PingAccess key` 。
 1. 在 " **过期**" 下，选择设置 PingAccess 项的方式： **1 年**、 **2 年** 或 **从不**。
-1. 选择 **添加** 。 PingAccess 项显示在客户端密码表中，并在 " **值** " 字段中显示一个随机字符串。
+1. 选择“添加”。 PingAccess 项显示在客户端密码表中，并在 " **值** " 字段中显示一个随机字符串。
 1. 在 PingAccess 项的 **值** 字段旁边，选择 " **复制到剪贴板** " 图标，然后复制并保存。 稍后将此值指定为 PingAccess 的客户端机密。
 
 **更新 `acceptMappedClaims` 字段：**
@@ -175,7 +175,8 @@ Azure Active Directory (Azure AD) 应用程序代理与 PingAccess 合作，以�
 可选声明允许你添加每个用户和租户具有的标准-非默认的声明。 可以通过修改应用程序清单来配置应用程序的可选声明。 有关详细信息，请参阅 [了解 Azure AD 应用程序清单一文](../develop/reference-app-manifest.md)
 
 例如，将电子邮件地址包含到 PingAccess 将使用的 access_token：
-```
+
+```json
     "optionalClaims": {
         "idToken": [],
         "accessToken": [

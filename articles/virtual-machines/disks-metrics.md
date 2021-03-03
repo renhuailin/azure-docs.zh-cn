@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/12/2021
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 8f5b7f8b5cd563f8b265d7051a57b0ac22598d1c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 60486c41ad843cf193ee0648dfcfef66f7668e47
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100608185"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101674978"
 ---
 # <a name="disk-performance-metrics"></a>磁盘性能指标
 Azure 在 Azure 门户中提供了度量值，可让你深入了解虚拟机 (VM) 和磁盘的执行情况。 还可以通过 API 调用来检索度量值。 本文分为3个小节：
@@ -129,6 +129,6 @@ Standard_D8s_v3 最多可以达到 28,600 个 IOPS。 让我们使用这些指�
 
 ## <a name="next-steps"></a>后续步骤
 
-- [Azure Monitor 指标概述](../azure-monitor/platform/data-platform-metrics.md)
-- [指标聚合说明](../azure-monitor/platform/metrics-aggregation-explained.md)
-- [使用 Azure Monitor 创建、查看和管理指标警报](../azure-monitor/platform/alerts-metric.md)
+- [Azure Monitor 指标概述](../azure-monitor/essentials/data-platform-metrics.md)
+- [指标聚合说明](../azure-monitor/essentials/metrics-aggregation-explained.md)
+- [使用 Azure Monitor 创建、查看和管理指标警报](../azure-monitor/alerts/alerts-metric.md)

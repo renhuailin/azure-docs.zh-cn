@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 08a919338789a02d50cbb6976ee50b214cb0d612
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: d081754616b40a21b3b842758844eb13e2752569
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100416974"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101650951"
 ---
 # <a name="securing-standalone-managed-service-accounts"></a>保护独立托管服务帐户
 
@@ -44,7 +44,7 @@ ms.locfileid: "100416974"
 
    * 主计算机的 DNS 名称已更改。
 
-   * 使用[PowerShell](https://docs.microsoft.com/powershell/module/addsadministration/set-adserviceaccount?view=win10-ps)添加或删除其他 sam-accountname 或 dns 主机名参数时
+   * 使用[PowerShell](/powershell/module/addsadministration/set-adserviceaccount?view=win10-ps)添加或删除其他 sam-accountname 或 dns 主机名参数时
 
 ## <a name="when-to-use-smsas"></a>何时使用 sMSAs
 
@@ -53,7 +53,7 @@ sMSAs 可简化管理和安全任务。 在将一个或多个服务部署到单�
 > [!NOTE] 
 > 虽然可以将 sMSAs 用于多个服务，但建议每个服务都有自己的标识用于审核目的。 
 
-如果软件的创建者无法告诉你它是否可以使用 MSA，则必须测试你的应用程序。 为此，请创建一个测试环境，并确保它可以访问所有所需的资源。 有关分步说明，请参阅 [创建和安装 sMSA](https://docs.microsoft.com/archive/blogs/askds/managed-service-accounts-understanding-implementing-best-practices-and-troubleshooting) 。
+如果软件的创建者无法告诉你它是否可以使用 MSA，则必须测试你的应用程序。 为此，请创建一个测试环境，并确保它可以访问所有所需的资源。 有关分步说明，请参阅 [创建和安装 sMSA](/archive/blogs/askds/managed-service-accounts-understanding-implementing-best-practices-and-troubleshooting) 。
 
 ### <a name="assess-security-posture-of-smsas"></a>评估 sMSAs 的安全状况
 
@@ -112,7 +112,7 @@ sMSAs 本质上比标准用户帐户更安全，需要进行密码管理。 但�
 
 ## <a name="move-to-smsas"></a>移到 sMSAs
 
-如果应用程序服务支持 sMSA 而不是 Gmsa，并且当前正在使用用户帐户或计算机帐户进行安全上下文，请在服务器上 [创建并安装 sMSA](https://docs.microsoft.com/archive/blogs/askds/managed-service-accounts-understanding-implementing-best-practices-and-troubleshooting) 。 
+如果应用程序服务支持 sMSA 而不是 Gmsa，并且当前正在使用用户帐户或计算机帐户进行安全上下文，请在服务器上 [创建并安装 sMSA](/archive/blogs/askds/managed-service-accounts-understanding-implementing-best-practices-and-troubleshooting) 。 
 
 理想情况下，将资源移到 Azure，并使用 Azure 托管标识或服务主体。
 
@@ -133,4 +133,3 @@ sMSAs 本质上比标准用户帐户更安全，需要进行密码管理。 但�
 
 * [管理本地服务帐户](service-accounts-govern-on-premises.md)
 
- 

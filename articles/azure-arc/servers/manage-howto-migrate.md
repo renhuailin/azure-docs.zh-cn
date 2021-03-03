@@ -3,12 +3,12 @@ title: 如何跨区域迁移启用了 Azure Arc 的服务器
 description: 了解如何将启用了 Azure Arc 的服务器从一个区域迁移到另一个区域。
 ms.date: 02/10/2021
 ms.topic: conceptual
-ms.openlocfilehash: d4e0f1e41e928ab489f7c2c167eea31785d9bc21
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 251a347205d93af715add52db293d8000438df44
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100417123"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101650169"
 ---
 # <a name="how-to-migrate-azure-arc-enabled-servers-across-regions"></a>如何跨区域迁移启用了 Azure Arc 的服务器
 
@@ -36,4 +36,4 @@ ms.locfileid: "100417123"
 
 * 有关疑难解答信息，请参阅 [连接计算机代理疑难解答指南](troubleshoot-agent-onboard.md)。
 
-* 了解如何使用 [Azure 策略](../../governance/policy/overview.md)管理计算机，例如 VM [来宾配置](../../governance/policy/concepts/guest-configuration.md)，验证计算机是否向预期的 Log Analytics 工作区进行报告，使用 [vm 策略 Azure Monitor](../../azure-monitor/insights/vminsights-enable-policy.md) 启用监视，等等。
+* 了解如何使用 [Azure 策略](../../governance/policy/overview.md)管理计算机，例如 VM [来宾配置](../../governance/policy/concepts/guest-configuration.md)，验证计算机是否向预期的 Log Analytics 工作区进行报告，使用 [vm 策略 Azure Monitor](../../azure-monitor/vm/vminsights-enable-policy.md) 启用监视，等等。

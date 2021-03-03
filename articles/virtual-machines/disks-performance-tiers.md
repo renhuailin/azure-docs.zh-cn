@@ -1,19 +1,19 @@
 ---
-title: 更改 Azure 托管磁盘的性能-CLI/PowerShell
+title: 更改 Azure 托管磁盘的性能 - CLI/PowerShell
 description: 了解如何使用 Azure PowerShell 模块或 Azure CLI 更改现有托管磁盘的性能层。
 author: roygara
 ms.service: virtual-machines
 ms.topic: how-to
-ms.date: 01/05/2021
+ms.date: 03/02/2021
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: f67113b2e2afa16456321b0ee2a94ce80fab4d81
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: 161aafce1c04e5d09cf08529bcbf1baf6b8a86b1
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97900954"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101674925"
 ---
 # <a name="change-your-performance-tier-using-the-azure-powershell-module-or-the-azure-cli"></a>使用 Azure PowerShell 模块或 Azure CLI 更改性能层
 
@@ -114,6 +114,36 @@ $disk = Get-AzDisk -ResourceGroupName $resourceGroupName -DiskName $diskName
 $disk.Tier
 ```
 ---
+
+## <a name="change-the-performance-tier-of-a-disk-without-downtime-preview"></a>更改磁盘的性能层，无需停机 (预览) 
+
+你还可以在不停机的情况下更改性能层，因此无需释放 VM 或分离磁盘来更改层。 有关预览版的详细信息和注册链接，请参阅 "在 [不停机的情况下更改性能层 (预览") ](#changing-performance-tier-without-downtime-preview) 部分。
+
+
+以下脚本将使用中的示例模板 [CreateUpdateDataDiskWithTier.js](https://github.com/Azure/azure-managed-disks-performance-tiers/blob/main/CreateUpdateDataDiskWithTier.json)来更新高于基线层的磁盘层。 替换 `<yourSubScriptionID>` 、、、 `<yourResourceGroupName>` `<yourDiskName>` `<yourDiskSize>` ， `<yourDesiredPerformanceTier>` 然后运行该脚本：
+
+ ```cli
+subscriptionId=<yourSubscriptionID>
+resourceGroupName=<yourResourceGroupName>
+diskName=<yourDiskName>
+diskSize=<yourDiskSize>
+performanceTier=<yourDesiredPerformanceTier>
+region=EastUS2EUAP
+
+ az login
+
+ az account set --subscription $subscriptionId
+
+ az group deployment create -g $resourceGroupName \
+--template-uri "https://raw.githubusercontent.com/Azure/azure-managed-disks-performance-tiers/main/CreateUpdateDataDiskWithTier.json" \
+--parameters "region=$region" "diskName=$diskName" "performanceTier=$performanceTier" "dataDiskSizeInGb=$diskSize"
+```
+
+性能层更改最长可能需要15分钟才能完成。 若要确认磁盘已更改层，请使用以下命令：
+
+```cli
+az resource show -n $diskName -g $resourceGroupName --namespace Microsoft.Compute --resource-type disks --api-version 2020-12-01 --query [properties.tier] -o tsv
+```
 
 ## <a name="next-steps"></a>后续步骤
 

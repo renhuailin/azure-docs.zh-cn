@@ -10,16 +10,16 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 908f047a22491d50337f51c0a6dce7f2db8a2ebc
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 74deebb66bc0db316e2aa36588034c6afb3bbe40
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97026806"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101674030"
 ---
 # <a name="optimize-transactions-with-dedicated-sql-pool-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中利用专用 SQL 池优化事务 
 
-了解如何在专用 SQL 池中优化事务性代码的性能，同时最大程度地降低长时间回退的风险。
+了解如何在尽量降低长时间回退风险的情况下优化专用 SQL 池中事务性代码的性能。
 
 ## <a name="transactions-and-logging"></a>事务和日志记录
 
@@ -68,14 +68,14 @@ CTAS 和 INSERT...SELECT 都是批量加载操作。 但两者都受目标表定
 
 | 主索引 | 加载方案 | 日志记录模式 |
 | --- | --- | --- |
-| 堆 |Any |**最少** |
+| 堆 |任意 |**最少** |
 | 聚集索引 |空目标表 |**最少** |
 | 聚集索引 |加载的行不与目标中现有页面重叠 |**最少** |
-| 聚集索引 |加载的行与目标中现有页面重叠 |完全 |
+| 聚集索引 |加载的行与目标中现有页面重叠 |完整 |
 | 聚集列存储索引 |批大小 >= 102,400/每分区对齐的分布区 |**最少** |
-| 聚集列存储索引 |批大小 < 102,400/每分区对齐的分布区 |完全 |
+| 聚集列存储索引 |批大小 < 102,400/每分区对齐的分布区 |完整 |
 
-值得注意的是，任何更新辅助或非聚集索引的写入都将始终是完整记录的操作。
+值得注意的是，任何更新辅助或非聚集索引的写入都会始终是完整记录的操作。
 
 > [!IMPORTANT]
 > 专用 SQL 池有60个分发版。 因此，假设所有行均匀分布且处于单个分区中，批在写入到聚集列存储索引时会需有 6,144,000 行（或更多）要按最少记录的方式记入日志。 如果对表进行分区且正插入的行跨越分区边界，则每个分区边界都需 6,144,000 行，假定数据分布很均匀。 每个分布区的每个分区各自必须超过 102,400 行的阈值，从而使插入以最少记录的方式记录到分布区中。
@@ -84,7 +84,7 @@ CTAS 和 INSERT...SELECT 都是批量加载操作。 但两者都受目标表定
 
 ## <a name="optimize-deletes"></a>优化删除
 
-DELETE 是一个完整记录的操作。  如果需要删除表或分区中的大量数据，`SELECT` 要保留的数据通常更有意义，其可作为最少记录的操作来运行。  若要选择数据，可使用 [CTAS](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) 创建新表。  创建后，可通过 [RENAME](/sql/t-sql/statements/rename-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 操作使用新创建的表将旧表交换出来。
+DELETE 是一个完整记录的操作。  如果需要删除表或分区中的大量数据， `SELECT` 要保留的数据通常更有意义，其可作为最少记录的操作来运行。  若要选择数据，可使用 [CTAS](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) 创建新表。  创建后，可通过 [RENAME](/sql/t-sql/statements/rename-transact-sql?view=azure-sqldw-latest&preserve-view=true) 操作使用新创建的表将旧表交换出来。
 
 ```sql
 -- Delete all sales transactions for Promotions except PromotionKey 2.
@@ -177,7 +177,7 @@ DROP TABLE [dbo].[FactInternetSales_old]
 ```
 
 > [!NOTE]
-> 重新创建大型表可以受益于使用专用的 SQL 池工作负荷管理功能。 有关详细信息，请参阅[用于工作负荷管理的资源类](../sql-data-warehouse/resource-classes-for-workload-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
+> 重新创建大型表时，使用专用 SQL 池工作负荷管理功能可带来很多好处。 有关详细信息，请参阅[用于工作负荷管理的资源类](../sql-data-warehouse/resource-classes-for-workload-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
 
 ## <a name="optimize-with-partition-switching"></a>通过分区切换进行优化
 
@@ -346,7 +346,7 @@ DROP TABLE #ptn_data
 
 对于大型数据修改操作，将操作划分为区块或批次来界定工作单元很有效。
 
-以下代码是可工作的示例。 批大小已设置为一个简单的数字来突显该方法。 实际中批大小会变得非常大。
+以下代码是一个可行的示例。 批大小已设置为一个简单的数字来突显该方法。 实际中批大小会变得非常大。
 
 ```sql
 SET NO_COUNT ON;
@@ -408,9 +408,9 @@ END
 
 Azure Synapse Analytics 允许你根据需要 [暂停、恢复和缩放](../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) 专用 SQL 池。 
 
-暂停或缩放专用 SQL 池时，必须了解任何正在进行的事务会立即终止，这一点很重要。导致回滚所有打开的事务。 
+暂停或缩放专用 SQL 池时，必须明白，任何正在运行的事务都会立即终止，导致打开的事务回退。 
 
-如果工作负荷在暂停或缩放操作前已发出数据修改在长时间运行之后仍未完成的指示，则需要撤消此项工作。 此撤消操作可能会影响暂停或缩放专用 SQL 池所用的时间。 
+如果工作负荷在暂停或缩放操作前已发出数据修改在长时间运行之后仍未完成的指示，则需要撤消此项工作。 此撤消操作可能会影响暂停或缩放专用 SQL 池所需的时间。 
 
 > [!IMPORTANT]
 > `UPDATE` 和 `DELETE` 都是完整记录的操作，因此这些撤消/重做操作相比同等最少记录的操作可能要花费更长的时间。
@@ -422,4 +422,4 @@ Azure Synapse Analytics 允许你根据需要 [暂停、恢复和缩放](../sql-
 
 ## <a name="next-steps"></a>后续步骤
 
-若要详细了解隔离级别和事务限制，请参阅 [专用 SQL 池中的事务](develop-transactions.md) 。  有关其他最佳做法的概述，请参阅 [SQL 池最佳做法](best-practices-sql-pool.md)。
+请参阅[专用 SQL 池中的事务](develop-transactions.md)，以便详细了解隔离级别和事务限制。  有关其他最佳做法的概述，请参阅 [SQL 池最佳做法](best-practices-sql-pool.md)。

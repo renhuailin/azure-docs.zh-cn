@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 01/30/2020
+ms.date: 02/22/2021
 ms.author: baselden
 author: justinha
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24d04c148e8a96e3b1d72c5301f6226df6d9a569
-ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
+ms.openlocfilehash: dc5916cf4277935f6d7d7f453fd4dd76d7909ef2
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100530342"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101651121"
 ---
 # <a name="plan-a-passwordless-authentication-deployment-in-azure-active-directory"></a>在 Azure Active Directory 中规划无密码 authentication 部署
 
@@ -51,10 +51,10 @@ Microsoft 提供了三种无密码的身份验证选项，涵盖了许多情况�
 
 Microsoft 的无密码身份验证方法可实现不同的方案。 请考虑你的组织需要、先决条件以及每种身份验证方法的功能，以选择你的无密码 authentication 战略。 建议使用 Windows 10 设备的每个组织都使用 Windows Hello for Business。 然后，将电话登录 (与 Microsoft Authenticator 应用) 或安全密钥一起添加到其他方案。
 
-| 方案 | 电话身份验证 | 安全密钥 | Windows Hello 企业版 |
+| 方案 | 电话身份验证 | 安全密钥 | Windows Hello for Business |
 | --- | --- | --- | --- |
 | **计算机登录**： <br> 从分配的 Windows 10 设备 | **否** | **是** <br> 带生物识别、PIN | **是**<br>带有生物识别识别和或 PIN |
-| **计算机登录**： <br> 从共享 Windows 10 设备 | **否** | **是** <br> 带生物识别、PIN  | 否 |
+| **计算机登录**： <br> 从共享 Windows 10 设备 | **否** | **是** <br> 带生物识别、PIN  | **否** |
 | **Web 应用登录**： <br>从用户专用计算机 | **是** | **是** <br> 已通过计算机登录启用对应用的单一登录 | **是**<br> 已通过计算机登录启用对应用的单一登录 |
 | **Web 应用登录**： <br> 从移动设备或非 windows 设备 | **是** | **否** | **是** |
 | **计算机登录**： <br> 非 Windows 计算机 | **是** | **是** | **是** |
@@ -82,7 +82,7 @@ Windows Hello 的先决条件非常依赖于你是在本地、混合还是仅限
 
 用户将其无密码方法注册为 Azure AD 多重身份验证注册流的一部分。 使用用户名和密码以及另一个注册方法的多重身份验证可以作为回退，以防它们在某些情况下无法使用其电话或安全密钥。
 
-### <a name="licensing"></a>许可 
+### <a name="licensing"></a>授权 
 无密码 authentication 无需额外付费，不过某些先决条件可能需要高级订阅。 [Azure Active Directory 许可页面](https://azure.microsoft.com/pricing/details/active-directory/)中提供详细的功能和许可信息。 
 
 ## <a name="develop-a-plan"></a>制定计划
@@ -109,7 +109,7 @@ Windows Hello 的先决条件非常依赖于你是在本地、混合还是仅限
 
 ### <a name="plan-communications"></a>规划沟通
 
-沟通对于任何新服务的成功都至关重要。 主动传达用户体验如何更改、何时发生更改，以及如何在遇到问题时获得支持。
+通信对于任何新服务的成功至关重要。 主动传达用户体验如何更改、何时发生更改，以及如何在遇到问题时获得支持。
 
 与最终用户的通信应包含以下信息：
 
@@ -149,7 +149,7 @@ Microsoft Authenticator 应用可从 Google Play 或 Apple App Store 免费下�
 
 -    在支持的浏览器上 Azure Active Directory web 应用
 -    加入 Windows 10 设备 Azure Active Directory
--    混合 Azure Active Directory 加入 Windows 10 设备 (预览版) 
+-    混合 Azure Active Directory 加入 Windows 10 设备
      -    提供对基于云的资源和本地资源的访问权限。 有关访问本地资源的详细信息，请参阅 [使用 FIDO2 密钥的 SSO 到本地资源](./howto-authentication-passwordless-security-key-on-premises.md)
 
 必须启用 **兼容的 FIDO2 安全密钥**。 Microsoft [与 FIDO2 重要供应商宣布了重要的合作关系](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Microsoft-passwordless-partnership-leads-to-innovation-and-great/ba-p/566493)。
@@ -193,7 +193,7 @@ Microsoft Authenticator 应用可从 Google Play 或 Apple App Store 免费下�
 
 #### <a name="enable-on-premises-integration"></a>启用本地集成
 
-若要启用对本地资源的访问，请按照以下步骤 [启用无密码 security key 登录到本地资源 (预览) ](howto-authentication-passwordless-security-key-on-premises.md)。
+若要启用对本地资源的访问，请执行以下步骤以 [启用无密码安全密钥登录到本地资源](howto-authentication-passwordless-security-key-on-premises.md)。
 
 > [!IMPORTANT]
 > 还必须完成所有混合 Azure AD 联接的设备的这些步骤，才能利用 Windows 10 登录的 FIDO2 安全密钥。
@@ -292,9 +292,9 @@ Azure AD 将条目添加到审核日志中：
 
 ### <a name="required-administrative-roles"></a>必需的管理角色
 
-| Azure AD 角色 | 描述 |
+| Azure AD 角色 | 说明 |
 | --- | --- |
-| 全局管理员|可实现组合注册体验的最小特权角色。 |
+| 全局管理员角色|可实现组合注册体验的最小特权角色。 |
 | 身份验证管理员 | 最小特权角色可以实现和管理身份验证方法。 |
 | 用户 | 用于在设备上配置验证器应用的最小特权角色，或用于注册 web 或 Windows 10 登录的安全密钥设备。 |
 

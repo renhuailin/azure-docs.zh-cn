@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 55de24975dadf27293f305611c6ba07522e8aa90
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: a9024bc9fbd460f403db2da8a65af1e9bd2e771b
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100416976"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101645610"
 ---
 # <a name="introduction-to-active-directory-service-accounts"></a>Active Directory 服务帐户简介
 
@@ -34,7 +34,7 @@ ms.locfileid: "100416976"
 
 ### <a name="group-msa-accounts"></a>组 MSA 帐户
 
-对于本地环境中运行的服务，尽可能使用 [组托管服务帐户](service-accounts-group-managed.md) (gmsa) 。 Gmsa 为服务器场或网络负载均衡器后面运行的服务提供单个标识解决方案。 它们还可用于在单个服务器上运行的服务。 [Gmsa 具有必须满足的特定要求](https://docs.microsoft.com/windows-server/security/group-managed-service-accounts/getting-started-with-group-managed-service-accounts)
+对于本地环境中运行的服务，尽可能使用 [组托管服务帐户](service-accounts-group-managed.md) (gmsa) 。 Gmsa 为服务器场或网络负载均衡器后面运行的服务提供单个标识解决方案。 它们还可用于在单个服务器上运行的服务。 [Gmsa 具有必须满足的特定要求](/windows-server/security/group-managed-service-accounts/getting-started-with-group-managed-service-accounts)
 
 ### <a name="standalone-msa-accounts"></a>独立 MSA 帐户
 
@@ -66,12 +66,12 @@ NT AUTHORITY\SYSTEM 是本地系统帐户的预定义名称。 它可用于启�
 
 | 条件| gMSA| sMSA| 计算机帐户| 用户帐户 |
 | - | - | - | - | - |
-| 应用在单个服务器上运行| 是| 是。 如果可能，请使用 gMSA| 是。 如果可能，请使用 MSA| 是。 如果可能，请使用 MSA。 |
-| 应用运行在多个服务器上| 是| 否| 不是。 帐户与服务器相关联| 是。 如果可能，请使用 MSA。 |
-| 应用在负载均衡器后运行| 是| 否| 否| 是。 仅在不能使用 gMSA 时使用 |
-| 应用在 Windows Server 2008 R2 上运行| 否| 是| 是。 如果可能，请使用 MSA。| 是。 如果可能，请使用 MSA。 |
-| 在 Windows server 2012 上运行| 是| 是。 如果可能，请使用 gMSA| 是。 尽可能使用 MSA| 是。 如果可能，请使用 MSA。 |
-| 要求将服务帐户限制为单一服务器| 否| 是| 是。 如果可能，请使用 sMSA| 不是。 |
+| 应用在单个服务器上运行| 是| 是。 如果可能，请使用 gMSA| 是的。 如果可能，请使用 MSA| 是的。 如果可能，请使用 MSA。 |
+| 应用运行在多个服务器上| 是| 否| 否。 帐户与服务器相关联| 是的。 如果可能，请使用 MSA。 |
+| 应用在负载均衡器后运行| 是| 否| 否| 可以。 仅在不能使用 gMSA 时使用 |
+| 应用在 Windows Server 2008 R2 上运行| 否| 是| 是。 如果可能，请使用 MSA。| 是的。 如果可能，请使用 MSA。 |
+| 在 Windows server 2012 上运行| 是| 是。 如果可能，请使用 gMSA| 是的。 尽可能使用 MSA| 是的。 如果可能，请使用 MSA。 |
+| 要求将服务帐户限制为单一服务器| 否| 是| 是。 如果可能，请使用 sMSA| 否。 |
 
 
  
@@ -138,4 +138,3 @@ Out-GridView
 
 * [管理本地服务帐户](service-accounts-govern-on-premises.md)
 
- 
