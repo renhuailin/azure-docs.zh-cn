@@ -3,12 +3,12 @@ title: 停机时间、SLA 和中断工作簿-Application Insights
 description: 通过 Application Insights 资源和 Azure 订阅中的单个窗格，计算和报告 Web 测试的 SLA。
 ms.topic: conceptual
 ms.date: 02/8/2021
-ms.openlocfilehash: 884d65d10ab0360957360efa8bf9dc4cac59949b
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: d225627a27bffd9088956e5aee37ca543e528d4a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99989274"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714045"
 ---
 # <a name="downtime-sla-and-outages-workbook"></a>停机时间、SLA 和中断工作簿
 
@@ -51,13 +51,13 @@ ms.locfileid: "99989274"
 
 ## <a name="edit-the-report"></a>编辑报表
 
-可以像对任何其他 [Azure Monitor 工作簿](../platform/workbooks-overview.md)一样编辑报表。 您可以根据团队的需求自定义查询或可视化对象。
+可以像对任何其他 [Azure Monitor 工作簿](../visualize/workbooks-overview.md)一样编辑报表。 您可以根据团队的需求自定义查询或可视化对象。
 
 :::image type="content" source="./media/sla-report/edit.gif" alt-text=" 选择 &quot;编辑&quot; 按钮以将可视化效果更改为饼图的 GIF。" lightbox="./media/sla-report/edit.gif":::
 
 ### <a name="log-analytics"></a>Log Analytics
 
-查询可以在 [Log Analytics](../log-query/log-analytics-overview.md) 中运行，并在其他报表或仪表板中使用。 删除参数限制并重新使用核心查询。
+查询可以在 [Log Analytics](../logs/log-analytics-overview.md) 中运行，并在其他报表或仪表板中使用。 删除参数限制并重新使用核心查询。
 
 :::image type="content" source="./media/sla-report/logs.gif" alt-text=" 日志查询的 GIF。" lightbox="./media/sla-report/logs.gif":::
 
@@ -69,6 +69,6 @@ ms.locfileid: "99989274"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [Log Analytics 查询优化提示](../log-query/query-optimization.md)。
-- 了解如何 [在工作簿中创建图表](../platform/workbooks-chart-visualizations.md)。
+- [Log Analytics 查询优化提示](../logs/query-optimization.md)。
+- 了解如何 [在工作簿中创建图表](../visualize/workbooks-chart-visualizations.md)。
 - 了解如何通过 [可用性测试](monitor-web-app-availability.md)监视网站。

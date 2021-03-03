@@ -6,12 +6,12 @@ ms.author: bahusse
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 2/11/2021
-ms.openlocfilehash: a83b570637d18fd0e92cd80ed87acbef8c7a9d77
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: b166e2f648446ac1672ead00a774d71d34699380
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100368058"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101724636"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-mariadb"></a>Azure Database for MariaDB 中的连接体系结构
 本文介绍 Azure Database for MariaDB 的连接体系结构，以及如何在 Azure 内部和外部将流量从客户端定向到 Azure Database for MariaDB 实例。
@@ -23,13 +23,13 @@ ms.locfileid: "100368058"
 ![连接体系结构概述](./media/concepts-connectivity-architecture/connectivity-architecture-overview-proxy.png)
 
 
-当客户端连接到数据库时，指向服务器的连接字符串将解析为网关 IP 地址。 网关侦听端口 3306 上的 IP 地址。 在数据库群集中，流量将转发到相应的 Azure Database for MariaDB。 因此，为了通过某种方式（例如，公司网络）连接到服务器，必须打开客户端防火墙，使出站流量能够到达我们的网关。 下面是一个按区域分类的可供我们的网关使用的 IP 地址的完整列表。
+当客户端连接到数据库时，指向服务器的连接字符串将解析为网关 IP 地址。 网关侦听端口 3306 上的 IP 地址。 在数据库群集中，流量将转发到相应的 Azure Database for MariaDB。 因此，为了通过某种方式（例如通过公司网络）连接到服务器，必须打开客户端防火墙，使出站流量能够访问我们的网关。 下面是一个按区域分类的可供我们的网关使用的 IP 地址的完整列表。
 
 ## <a name="azure-database-for-mariadb-gateway-ip-addresses"></a>Azure Database for MariaDB 网关 IP 地址
 
 网关服务托管在一个 IP 地址后面的一组无状态计算节点上，当你的客户端尝试连接到 Azure Database for MariaDB 服务器时，将首先访问该 IP 地址。 
 
-在持续的服务维护过程中，我们会定期刷新托管网关的计算硬件，以确保提供最安全和性能最佳的体验。 刷新网关硬件后，将首先生成一个新的计算节点通道。 这一新环为所有新创建的 Azure Database for MariaDB 服务器提供流量，在同一区域中，它具有与旧网关环不同的 IP 地址，以使流量区分开来。 新通道完全正常运行后，为现有服务器提供服务的较旧的网关硬件将计划解除授权。 在解除网关硬件的授权之前，运行其服务器并连接到较旧网关通道的客户可通过电子邮件和 Azure 门户提前三个月收到通知。 如果你在应用程序的连接字符串中硬编码网关 IP 地址， 
+在持续的服务维护过程中，我们会定期刷新托管网关的计算硬件，以确保提供最安全和性能最佳的体验。 刷新网关硬件后，将首先生成一个新的计算节点环。 这一新环为所有新创建的 Azure Database for MariaDB 服务器提供流量，在同一区域中，它具有与旧网关环不同的 IP 地址，以使流量区分开来。 新环完全正常运行后，为现有服务器提供服务的较旧的网关硬件将计划解除授权。 在解除网关硬件的授权之前，运行其服务器并连接到较旧网关通道的客户可通过电子邮件和 Azure 门户提前三个月收到通知。 如果你在应用程序的连接字符串中硬编码网关 IP 地址， 
 
 * 网关的解除授权可能会影响与服务器的连接。 不建议这样做。 你应在 <servername> 应用程序的连接字符串中使用 mariadb.database.azure.com 的完全限定域名 (FQDN) 。 
 * 请勿为使出站流量能够到达新的网关环而在客户端防火墙中更新较新的网关 IP 地址。
@@ -65,7 +65,7 @@ ms.locfileid: "100368058"
 | 印度中部 | 104.211.96.159     | | |
 | 印度南部 | 104.211.224.146  | | |
 | 印度西部 | 104.211.160.80    | | |
-| Japan East | 40.79.192.23 | 13.78.61.196 | |
+| Japan East | 40.79.192.23, 40.79.184.8 | 13.78.61.196 | |
 | 日本西部 | 191.238.68.11, 40.74.96.6, 40.74.96.7     | 104.214.148.156 | |
 | 韩国中部 | 52.231.17.13   | 52.231.32.42 | |
 | 韩国南部 | 52.231.145.3     | 52.231.200.86 | |

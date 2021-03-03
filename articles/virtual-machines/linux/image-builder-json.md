@@ -3,22 +3,22 @@ title: 创建 Azure 映像生成器模板（预览版）
 description: 了解如何创建与 Azure 映像生成器配合使用的模板。
 author: danielsollondon
 ms.author: danis
-ms.date: 02/18/2021
+ms.date: 03/02/2021
 ms.topic: reference
 ms.service: virtual-machines
 ms.subservice: image-builder
 ms.collection: linux
 ms.reviewer: cynthn
-ms.openlocfilehash: c2e4a2c2700af99a074dfd640177a6baefe763e2
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: eb02bff77ffedc0a1f2fee0a186d544c39374dbf
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101670430"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101693860"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>预览版：创建 Azure 映像生成器模板 
 
-Azure 映像生成器使用一个 .json 文件将信息传入映像生成器服务。 本文将会深入介绍该 json 文件的各个节，使你可以生成自己的模板。 若要查看完整 .json 文件的示例，请参阅 [Azure 映像生成器 GitHub](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts)。
+Azure 映像生成器使用一个 .json 文件将信息传入映像生成器服务。 本文将会深入介绍该 json 文件的各个节，使你可以生成自己的模板。 若要查看完整 .json 文件的示例，请参阅 [Azure 映像生成器 GitHub](https://github.com/Azure/azvmimagebuilder/tree/main/quickquickstarts)。
 
 下面是基本模板格式：
 
@@ -249,7 +249,7 @@ az vm image list -l westus -f UbuntuServer -p Canonical --output table –-all
 - 如果一个定制器失败，则整个自定义组件将会失败并报告错误。
 - 强烈建议在模板中使用脚本之前对其进行全面的测试。 在自己的 VM 上调试脚本会更方便。
 - 不要将敏感数据放在脚本中。 
-- 脚本位置需可公开访问，除非使用的是 [MSI](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage)。
+- 脚本位置需可公开访问，除非使用的是 [MSI](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-user-assigned-identity)。
 
 ```json
         "customize": [
@@ -697,4 +697,4 @@ az resource invoke-action \
 
 ## <a name="next-steps"></a>后续步骤
 
-[Azure 映像生成器 GitHub](https://github.com/danielsollondon/azvmimagebuilder) 中提供了适用于不同方案的示例 .json 文件。
+[Azure 映像生成器 GitHub](https://github.com/azure/azvmimagebuilder) 中提供了适用于不同方案的示例 .json 文件。

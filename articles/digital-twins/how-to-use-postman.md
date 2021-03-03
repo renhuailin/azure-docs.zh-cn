@@ -8,16 +8,16 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: how-to
 ms.date: 11/10/2020
-ms.openlocfilehash: 96872a067d2414254aec3f212542dadabdf2bd6f
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: d99ec80308152ce9e4870da809acaa25c663d98d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98791734"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101715694"
 ---
 # <a name="how-to-use-postman-to-send-requests-to-the-azure-digital-twins-apis"></a>如何使用 Postman 将请求发送到 Azure 数字孪生 Api
 
-[Postman](https://www.getpostman.com/) 是一种 REST 测试工具，可在桌面和基于插件的 GUI 中提供密钥 HTTP 请求功能。 可以使用它来创建 HTTP 请求并将其提交到 [Azure 数字孪生 REST api](how-to-use-apis-sdks.md)。
+[Postman](https://www.getpostman.com/) 是一种 REST 测试工具，它在桌面和基于插件的 GUI 中提供关键 HTTP 请求功能。 可以使用它来创建 HTTP 请求并将其提交到 [Azure 数字孪生 REST api](how-to-use-apis-sdks.md)。
 
 本文介绍了如何配置 [POSTMAN REST 客户端](https://www.getpostman.com/) ，以便与 Azure 数字孪生 api 交互，步骤如下：
 
@@ -140,7 +140,7 @@ Postman 中的请求保存在 (组) 的 **集合** 中。 当你创建集合以�
 1. 检查 " *标头* " 选项卡中为请求显示的标头是否与参考文档中所述的标头相匹配。 对于此请求，已经自动填写了若干标头。 对于查询 API，无需任何标头选项，因此执行此步骤。
 1. 检查 " *正文* " 选项卡中为请求显示的正文是否与参考文档中所述的需求相匹配。 对于查询 API，需要 JSON 正文来提供查询文本。 下面是此请求的示例正文，查询实例中的所有数字孪生：
 
-   :::image type="content" source="media/how-to-use-postman/postman-request-body.png" alt-text="在新请求的详细信息中，会显示 &quot;正文&quot; 选项卡。它包含具有 &quot;SELECT * FROM DIGITALTWINS&quot; 查询的原始 JSON 正文。"lightbox="media/how-to-use-postman/postman-request-body.png":::
+   :::image type="content" source="media/how-to-use-postman/postman-request-body.png" alt-text="在新请求的详细信息中，会显示 &quot;正文&quot; 选项卡。它包含具有 &quot;SELECT * FROM DIGITALTWINS&quot; 查询的原始 JSON 正文。" lightbox="media/how-to-use-postman/postman-request-body.png":::
 
    有关预编制 Azure 数字孪生查询的详细信息，请参阅 [*如何：查询双子图形*](how-to-query-graph.md)。
 

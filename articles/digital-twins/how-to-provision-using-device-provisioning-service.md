@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 9/1/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: e783e5dd3b0f1952928d1c36c682c5be1cba2599
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 924397c9c81d2a38ae74b95a8f7133ced8bde0d4
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98044384"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101736536"
 ---
 # <a name="auto-manage-devices-in-azure-digital-twins-using-device-provisioning-service-dps"></a>使用设备预配服务 (DPS) 自动管理 Azure 数字孪生中的设备
 
@@ -174,7 +174,7 @@ az dt twin show -n <Digital Twins instance name> --twin-id <Device Registration 
 
 ### <a name="create-an-azure-function"></a>创建 Azure 函数
 
-接下来，你将在 function app 中创建一个事件中心触发的函数。 可以使用端到端教程中创建的函数应用 ([*教程：连接端到端解决方案*](tutorial-end-to-end.md)) 或你自己的解决方案。 
+接下来，你将在函数应用中创建一个事件中心触发的函数。 可以使用端到端教程中创建的函数应用 ([*教程：连接端到端解决方案*](tutorial-end-to-end.md)) 或你自己的解决方案。 
 
 命名你的事件中心触发器 *lifecycleevents*，并将事件中心触发器连接到你在上一步中创建的事件中心。 如果使用了不同的事件中心名称，请将其更改为在下面的触发器名称中匹配。
 
@@ -223,7 +223,7 @@ az functionapp config appsettings set --settings "EVENTHUB_CONNECTIONSTRING=<Eve
 
 在本文的前半 [部分](#auto-provision-device-using-device-provisioning-service)，已在 IoT 中心创建了一个设备，并在相应的数字克隆中创建了一个。 
 
-现在，请前往 IoT 中心，删除该设备 (你可以使用 [Azure CLI 命令](/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest&preserve-view=true#ext-azure-cli-iot-ext-az-iot-hub-device-identity-delete) 或在 [Azure 门户](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Devices%2FIotHubs)) 中执行此操作。 
+现在，请前往 IoT 中心，删除该设备 (你可以使用 [Azure CLI 命令](/cli/azure/ext/azure-iot/iot/hub/module-identity?view=azure-cli-latest#ext_azure_iot_az_iot_hub_module_identity_delete) 或在 [Azure 门户](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Devices%2FIotHubs)) 中执行此操作。 
 
 设备将自动从 Azure 数字孪生中删除。 
 

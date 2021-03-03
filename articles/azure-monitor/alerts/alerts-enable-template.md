@@ -4,19 +4,19 @@ description: 了解如何使用资源管理器模板创建经典指标警报，�
 author: rboucher
 ms.author: robb
 ms.topic: conceptual
-ms.date: 03/09/2020
+ms.date: 02/14/2021
 ms.subservice: alerts
-ms.openlocfilehash: 418dde8311c2555f8df5929dd96ce72611422ee9
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 0923be317d497e471724b7611fe6b831a4be6f37
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100608336"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101718040"
 ---
 # <a name="create-a-classic-metric-alert-with-a-resource-manager-template"></a>使用资源管理器模板创建经典指标警报
 
 > [!WARNING]
-> 本文介绍了如何创建旧式经典指标警报。 Azure Monitor 现在支持[较新的近实时指标警报和新的警报体验](../platform/alerts-overview.md)。 对于公有云用户，经典警报会被 [停](../platform/monitoring-classic-retirement.md) 用，但对于尚不支持新警报的资源仍有限制。
+> 本文介绍了如何创建旧式经典指标警报。 Azure Monitor 现在支持[较新的近实时指标警报和新的警报体验](./alerts-overview.md)。 公有云用户会 [停](./monitoring-classic-retirement.md) 用经典警报，但在 **31 年 5 2021 月31日** 之前仍处于有限使用状态。 Azure 政府云和 Azure 中国世纪互联的经典警报将于 **2024 年2月29日** 停用。
 >
 
 本文说明如何使用 [Azure 资源管理器模板](../../azure-resource-manager/templates/template-syntax.md)配置 Azure 经典指标警报。 这样，便可以在创建资源时自动对资源设置警报，确保正确监视所有资源。
@@ -399,6 +399,6 @@ ms.locfileid: "100608336"
 ```
 
 ## <a name="next-steps"></a>后续步骤
-* [详细了解警报](../platform/alerts-overview.md)
-* [将诊断设置添加](../samples/resource-manager-diagnostic-settings.md) 到 Resource Manager 模板
+* [详细了解警报](./alerts-overview.md)
+* [将诊断设置添加](../essentials/resource-manager-diagnostic-settings.md) 到 Resource Manager 模板
 * 有关 JSON 语法和属性，请参阅 [Microsoft.Insights/alertrules](/azure/templates/microsoft.insights/alertrules) 模板参考。

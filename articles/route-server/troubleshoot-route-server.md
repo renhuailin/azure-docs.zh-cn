@@ -7,12 +7,12 @@ ms.service: route-server
 ms.topic: how-to
 ms.date: 03/02/2021
 ms.author: duau
-ms.openlocfilehash: 02dd9aa74da42f0a5d70de4513b88756a97bea1e
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 9fa0f73d06bda02d784628823ee70bc538b375e2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101679183"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101695798"
 ---
 # <a name="troubleshooting-azure-route-server-issues"></a>排查 Azure 路由服务器问题
 
@@ -21,11 +21,15 @@ ms.locfileid: "101679183"
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
 > 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-## <a name="bgp-connectivity-issues"></a>BGP 连接问题
+## <a name="connectivity-issues"></a>连接问题
 
-### <a name="why-is-the-bgp-peering-between-my-nva-and-the-azure-route-server-going-up-and-down-flapping"></a>为什么我的 NVA 与 Azure 路由服务器之间的 BGP 对等互连 ( "稳定" ) ？
+### <a name="why-does-my-nva-lose-internet-connectivity-after-it-advertises-the-default-route-00000-to-azure-route-server"></a>为什么当我的 NVA 将默认路由 (0.0.0.0/0) 广播到 Azure 路由服务器后，它会丢失 Internet 连接？
+当你的 NVA 公布默认路由时，Azure 路由服务器会将其用于虚拟网络中的所有 Vm，包括 NVA 本身。 此默认路由将 NVA 设置为所有 Internet 绑定流量的下一跃点。 如果你的 NVA 需要 Internet 连接，则需要将 [用户定义的路由](../virtual-network/virtual-networks-udr-overview.md) 配置为覆盖 NVA 的此默认路由，并将 UDR 附加到托管 NVA 的子网 (参阅下面) 的示例。 否则，NVA 主机将继续发送 Internet 绑定的流量，包括由 NVA 发送回 NVA 本身的流量。
 
-由于 BGP 计时器设置的原因，导致稳定的原因。 默认情况下，Azure 路由服务器上的保持活动状态计时器设置为60秒，保留计时器为180秒。
+| 路由 | 下一跃点 |
+|-------|----------|
+| 0.0.0.0/0 | Internet |
+
 
 ### <a name="why-can-i-ping-from-my-nva-to-the-bgp-peer-ip-on-azure-route-server-but-after-i-set-up-the-bgp-peering-between-them-i-cant-ping-the-same-ip-anymore-why-does-the-bgp-peering-goes-down"></a>我为什么可以从我的 NVA ping 到 Azure 路由服务器上的 BGP 对等节点 IP，但在设置它们之间的 BGP 对等互连后，不能再对同一 IP 进行 ping 操作呢？ BGP 对等互连为何会关闭？
 
@@ -37,11 +41,18 @@ ms.locfileid: "101679183"
 
 10.0.1.1 是子网中的默认网关 IP，其中，NVA (或更精确地) 承载其中一个 Nic。
 
-## <a name="bgp-route-issues"></a>BGP 路由问题
+### <a name="why-do-i-lose-connectivity-to-my-on-premises-network-over-expressroute-andor-azure-vpn-when-im-deploying-azure-route-server-to-a-virtual-network-that-already-has-expressroute-gateway-andor-azure-vpn-gateway"></a>为什么将 Azure 路由服务器部署到已有 ExpressRoute 网关和/或 Azure VPN 网关的虚拟网络时，无法通过 ExpressRoute 和/或 Azure VPN 连接到本地网络？
+将 Azure 路由服务器部署到虚拟网络时，我们需要在网关和虚拟网络之间更新控制平面。 在此更新过程中，虚拟网络中的 Vm 将失去与本地网络的连接。 我们强烈建议你计划维护，以便在生产环境中部署 Azure 路由服务器。  
+
+## <a name="control-plane-issues"></a>控制面问题
+
+### <a name="why-is-the-bgp-peering-between-my-nva-and-the-azure-route-server-going-up-and-down-flapping"></a>为什么我的 NVA 与 Azure 路由服务器之间的 BGP 对等互连 ( "稳定" ) ？
+
+由于 BGP 计时器设置的原因，导致稳定的原因。 默认情况下，Azure 路由服务器上的保持活动状态计时器设置为60秒，保留计时器为180秒。
 
 ### <a name="why-does-my-nva-not-receive-routes-from-azure-route-server-even-though-the-bgp-peering-is-up"></a>为什么 NVA 不会从 Azure 路由服务器接收路由，即使 BGP 对等互连已启动也是如此？
 
-Azure 路由服务器使用的 ASN 为65515。 请确保为 NVA 配置其他 ASN，以便可以在 NVA 和 Azure 路由服务器之间建立 "eBGP" 会话，以便可以自动进行路由传播。
+Azure 路由服务器使用的 ASN 为65515。 请确保为 NVA 配置其他 ASN，以便可以在 NVA 和 Azure 路由服务器之间建立 "eBGP" 会话，以便可以自动进行路由传播。 请确保在 BGP 配置中启用 "多跃点"，因为 NVA 和 Azure 路由服务器位于虚拟网络中的不同子网中。
 
 ### <a name="the-bgp-peering-between-my-nva-and-azure-route-server-is-up-i-can-see-routes-exchanged-correctly-between-them-why-arent-the-nva-routes-in-the-effective-routing-table-of-my-vm"></a>我的 NVA 与 Azure 路由服务器之间的 BGP 对等互连。 我可以看到在它们之间正确交换的路由。 为什么 NVA 路由在我的 VM 的有效路由表中呢？ 
 

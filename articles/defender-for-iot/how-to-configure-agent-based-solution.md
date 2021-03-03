@@ -1,5 +1,5 @@
 ---
-title: 为基于 IoT 代理的解决方案配置 Azure Defender
+title: 配置 Azure Defender for IoT 基于代理的解决方案
 description: 了解如何在 Azure Defender 中配置用于 IoT 代理的解决方案的数据收集
 author: shhazam-ms
 manager: rkarlin
@@ -7,14 +7,14 @@ ms.author: shhazam
 ms.date: 1/21/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 53fc01839ef522afaffe52cd8a3126e40ba94a05
-ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
+ms.openlocfilehash: e32b9c690db70baeda7dec2f9f1270f82c6881bd
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99809721"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733289"
 ---
-# <a name="configure-azure-defender-for-iot-agent-based-solution"></a>为基于 IoT 代理的解决方案配置 Azure Defender  
+# <a name="configure-azure-defender-for-iot-agent-based-solution"></a>配置 Azure Defender for IoT 基于代理的解决方案  
 
 本文介绍如何在 Azure Defender 中配置基于 IoT 代理的解决方案的数据收集。
 
@@ -87,7 +87,7 @@ Defender for IoT 允许在 Log Analytics 工作区中存储安全警报、建议
 
 1. **在 Log Analytics 工作区中选择调查建议**。 
  
-有关从 Log Analytics 查询数据的详细信息，请参阅 [Log Analytics 中的查询入门](../azure-monitor/log-query/get-started-queries.md)。 
+有关从 Log Analytics 查询数据的详细信息，请参阅 [Log Analytics 中的查询入门](../azure-monitor/logs/get-started-queries.md)。 
 
 ## <a name="turn-off-defender-for-iot"></a>关闭 Defender for IoT 
 
@@ -99,4 +99,4 @@ Defender for IoT 允许在 Log Analytics 工作区中存储安全警报、建议
 
 ## <a name="next-steps"></a>后续步骤 
 
-转到下一篇文章， [配置解决方案](quickstart-configure-your-solution.md)。 
+转到下一篇文章， [配置解决方案](quickstart-configure-your-solution.md)。

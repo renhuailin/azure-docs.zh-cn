@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 02/09/2021
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 328bfe57c675d49aa951388e2808fcecfe8da8b5
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: ae0112292994fdcf88e80abff8ab52e5971cb0ed
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100096525"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731079"
 ---
 # <a name="how-to-improve-your-custom-vision-model"></a>如何提高自定义视觉模型
 
-在本指南中，您将学习如何提高自定义影像服务模型的质量。 [分类器](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier)或[对象探测器](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/get-started-build-detector)的质量取决于你提供的标记数据的数量、质量和种类，以及总体数据集的平衡方式。 良好的模型包含一个平衡的定型数据集，代表将提交给它的内容。 构建此类模型的过程是迭代的;经常需要几轮培训，才能获得预期结果。
+在本指南中，您将学习如何提高自定义影像服务模型的质量。 [分类器](./getting-started-build-a-classifier.md)或[对象探测器](./get-started-build-detector.md)的质量取决于你提供的标记数据的数量、质量和种类，以及总体数据集的平衡方式。 良好的模型包含一个平衡的定型数据集，代表将提交给它的内容。 构建此类模型的过程是迭代的;经常需要几轮培训，才能获得预期结果。
 
 下面是一个常规模式，可帮助你训练更准确的模型：
 

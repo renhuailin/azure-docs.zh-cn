@@ -2,13 +2,13 @@
 title: Azure Monitor 中的指标 - Azure 事件中心 | Microsoft Docs
 description: 本文介绍如何使用 Azure 监视功能来监视 Azure 事件中心
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: a53f69030e8333dfe659b163b83983615212281f
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.date: 02/25/2021
+ms.openlocfilehash: 52ab66fe264b85be117eb8e2e21cb89f38d0fcae
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100573160"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101715575"
 ---
 # <a name="azure-event-hubs-metrics-in-azure-monitor"></a>Azure Monitor 中的 Azure 事件中心指标
 
@@ -76,7 +76,7 @@ Azure Monitor 提供多种访问指标的方法。 可通过 [Azure 门户](http
     - [.NET Core](event-hubs-dotnet-standard-getstarted-send.md)
     - [Java](event-hubs-java-get-started-send.md)
     - [Python](event-hubs-python-get-started-send.md)
-    - [JavaScript](event-hubs-java-get-started-send.md)
+    - [JavaScript](event-hubs-node-get-started-send.md)
 * [事件中心常见问题解答](event-hubs-faq.md)
 * [使用事件中心的示例应用程序](https://github.com/Azure/azure-event-hubs/tree/master/samples)
 

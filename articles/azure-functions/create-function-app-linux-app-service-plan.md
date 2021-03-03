@@ -3,18 +3,18 @@ title: 通过 Azure 门户在 Linux 上创建函数应用
 description: 了解如何使用 Azure 门户在 Linux 上创建第一个 Azure 函数。
 ms.topic: how-to
 ms.date: 04/29/2020
-ms.openlocfilehash: 34a93795b5e041ccef8e9576f97092e16c429444
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: d6787e1dd8312e368964a1f555025beff9a06a23
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97937172"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101732252"
 ---
 # <a name="create-a-function-app-on-linux-in-an-azure-app-service-plan"></a>在 Azure 应用服务计划中创建 Linux 上的函数应用
 
 使用 Azure Functions 可将函数托管在 Linux 上的默认 Azure 应用服务容器中。 本文逐步讲解如何使用 [Azure 门户](https://portal.azure.com)创建一个在[应用服务计划](dedicated-plan.md)中运行的由 Linux 托管的函数应用。 还可以[自带自定义的容器](functions-create-function-linux-custom-image.md)。
 
-![在 Azure 门户中创建 Function App](./media/create-function-app-linux-app-service-plan/function-app-in-portal-editor.png)
+[!INCLUDE [functions-in-portal-editing-note](../../includes/functions-in-portal-editing-note.md)] 
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -26,17 +26,17 @@ ms.locfileid: "97937172"
 
 必须使用函数应用在 Linux 上托管函数的执行。 函数应用提供一个用于执行函数代码的环境。 可以使用它将函数分组为一个逻辑单元，以便更轻松地管理、部署、缩放和共享资源。 在本文中，我们将在创建函数应用时创建应用服务计划。
 
-1. 在 Azure 门户菜单或 **“主页”** 页中，选择 **“创建资源”**   。
+1. 在 Azure 门户菜单或“主页”页中，选择“创建资源” 。
 
 1. 在 **“新建”** 页面，选择 **“计算”**  >  **“函数应用”** 。
 
     :::image type="content" source="./media/create-function-app-linux-app-service-plan/function-app-create-flow.png" alt-text="在 Azure 门户中创建函数应用":::
 
-1. 在 **“基本信息”** 页上，使用下表中指定的函数应用设置。
+1. 在“基本信息”页上，使用下表中指定的函数应用设置。
 
     | 设置      | 建议的值  | 说明 |
     | ------------ | ---------------- | ----------- |
-    | **订阅** | 订阅 | 要在其下创建此新函数应用的订阅。 |
+    | **订阅** | 你的订阅 | 要在其下创建此新函数应用的订阅。 |
     | **[资源组](../azure-resource-manager/management/overview.md)** |  *myResourceGroup* | 要在其中创建 Function App 的新资源组的名称。 |
     | **函数应用名称** | 全局唯一名称 | 用于标识新 Function App 的名称。 有效字符为 `a-z`（不区分大小写）、`0-9` 和 `-`。  |
     |**发布**| **“代码”** （默认值） | 用于发布代码文件或 Docker 容器的选项。 |

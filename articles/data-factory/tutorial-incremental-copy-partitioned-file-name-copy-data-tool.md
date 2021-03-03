@@ -6,17 +6,17 @@ ms.author: yexu
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 11/09/2020
-ms.openlocfilehash: 8e68852434a4a8bea43b575523a60c9346b2a569
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 02/18/2021
+ms.openlocfilehash: aa6c0d9035f172cc7fb520ff58f233a82fca228a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100384769"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101741066"
 ---
 # <a name="incrementally-copy-new-files-based-on-time-partitioned-file-name-by-using-the-copy-data-tool"></a>使用复制数据工具仅根据时间分区文件名以增量方式复制新文件
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 在本教程中，我们将使用 Azure 门户创建数据工厂。 然后，使用复制数据工具创建一个管道，该管道根据时间分区文件名以增量方式将新文件从 Azure Blob 存储复制到 Azure Blob 存储。
 
@@ -54,25 +54,25 @@ ms.locfileid: "100384769"
 
    ![在“新建”窗格中选择“数据工厂”](./media/doc-common-process/new-azure-data-factory-menu.png)
 
-2. 在“新建数据工厂”  页的“名称”下输入 **ADFTutorialDataFactory**  。
+2. 在“新建数据工厂”页的“名称”下输入 **ADFTutorialDataFactory** 。
 
-    数据工厂的名称必须全局唯一。  可能会收到以下错误消息：
+    数据工厂的名称必须全局唯一。 可能会收到以下错误消息：
 
    ![新的数据工厂错误消息](./media/doc-common-process/name-not-available-error.png)
 
-   如果收到有关名称值的错误消息，请为数据工厂输入另一名称。 例如，使用名称 _**yourname**_ **ADFTutorialDataFactory**。 有关数据工厂项目的命名规则，请参阅[数据工厂命名规则](naming-rules.md)。
+   如果收到有关名称值的错误消息，请为数据工厂输入另一名称。 例如，使用名称 _**yourname**_**ADFTutorialDataFactory**。 有关数据工厂项目的命名规则，请参阅[数据工厂命名规则](naming-rules.md)。
 3. 选择要在其中创建新数据工厂的 Azure **订阅**。
-4. 对于“资源组”，请执行以下步骤之一： 
+4. 对于“资源组”，请执行以下步骤之一：
 
     a. 选择“使用现有资源组”，并从下拉列表选择现有的资源组。 
 
-    b. 选择“新建”，并输入资源组的名称。  
+    b. 选择“新建”，并输入资源组的名称。 
          
     若要了解资源组，请参阅[使用资源组管理 Azure 资源](../azure-resource-manager/management/overview.md)。
 
-5. 在“版本”下选择“V2”作为版本。  
-6. 在“位置”下选择数据工厂的位置。  下拉列表中仅显示支持的位置。 数据工厂使用的数据存储（例如，Azure 存储和 SQL 数据库）和计算资源（例如，Azure HDInsight）可以位于其他位置和区域。
-7. 选择“创建”  。
+5. 在“版本”下选择“V2”作为版本。 
+6. 在“位置”下选择数据工厂的位置。 下拉列表中仅显示支持的位置。 数据工厂使用的数据存储（例如，Azure 存储和 SQL 数据库）和计算资源（例如，Azure HDInsight）可以位于其他位置和区域。
+7. 选择“创建”。
 8. 创建完以后，会显示“数据工厂”  主页。
 9. 若要在单独的选项卡中启动 Azure 数据工厂用户界面 (UI)，请选择“创作和监视”磁贴。 
 
@@ -102,7 +102,7 @@ ms.locfileid: "100384769"
     ![“属性”页](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/copy-data-tool-properties-page.png)
 3. 在“源数据存储”  页上，完成以下步骤：
 
-    a. 单击“+ 创建新连接”来添加连接 
+    a. 单击“+ 创建新连接”来添加连接
     
     b. 从库中选择“Azure Blob 存储”，然后选择“继续”。
     

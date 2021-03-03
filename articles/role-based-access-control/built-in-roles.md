@@ -7,14 +7,14 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 02/15/2021
+ms.date: 02/25/2021
 ms.custom: generated
-ms.openlocfilehash: 1cd86ac2b9500c15bc32445e1866a40ca1c6b409
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 90c0be8e6df3e489595bdafed1f29d1ed0ef00f8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100577001"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101724500"
 ---
 # <a name="azure-built-in-roles"></a>Azure 内置角色
 
@@ -39,7 +39,7 @@ ms.locfileid: "100577001"
 > | [虚拟机管理员登录](#virtual-machine-administrator-login) | 在门户中查看虚拟机并以管理员身份登录 | 1c0163c0-47e6-4577-8991-ea5c82e286e4 |
 > | [虚拟机参与者](#virtual-machine-contributor) | 允许管理虚拟机，但不允许访问这些虚拟机及其连接到的虚拟网络或存储帐户。 | 9980e02c-c2be-4d73-94e8-173b1dc7cf3c |
 > | [虚拟机用户登录](#virtual-machine-user-login) | 在门户中查看虚拟机并以普通用户身份登录。 | fb879df8-f326-4884-b1cf-06f3ad86be52 |
-> | **联网** |  |  |
+> | **网络** |  |  |
 > | [CDN 终结点参与者](#cdn-endpoint-contributor) | 可以管理 CDN 终结点，但不能向其他用户授予访问权限。 | 426e0c7f-0c7e-4658-b36f-ff54d6c29b45 |
 > | [CDN 终结点读者](#cdn-endpoint-reader) | 可以查看 CDN 终结点，但不能进行更改。 | 871e35f6-b5c1-49cc-a043-bde969a0f2cd |
 > | [CDN 配置文件参与者](#cdn-profile-contributor) | 可以管理 CDN 配置文件及其终结点，但不能向其他用户授予访问权限。 | ec156ff8-a8d1-4d15-830c-5b80698ca432 |
@@ -116,7 +116,7 @@ ms.locfileid: "100577001"
 > | [Azure 事件中心数据接收方](#azure-event-hubs-data-receiver) | 允许接收对 Azure 事件中心资源的访问权限。 | a638d3c7-ab3a-418d-83e6-5f17a39d4fde |
 > | [Azure 事件中心数据发送方](#azure-event-hubs-data-sender) | 允许以发送方式访问 Azure 事件中心资源。 | 2b629674-e913-4c01-ae53-ef4638d8f975 |
 > | [数据工厂参与者](#data-factory-contributor) | 创建和管理数据工厂，以及其中的子资源。 | 673868aa-7521-48a0-acc6-0f60742d39f5 |
-> | [数据清除程序](#data-purger) | 可清除分析数据 | 150f5e0c-0603-4f03-8c7f-cf70034c4e90 |
+> | [数据清除程序](#data-purger) | 删除 Log Analytics 工作区中的私有数据。 | 150f5e0c-0603-4f03-8c7f-cf70034c4e90 |
 > | [HDInsight 群集操作员](#hdinsight-cluster-operator) | 允许你读取和修改 HDInsight 群集配置。 | 61ed4efc-fab3-44fd-b111-e24485cc132a |
 > | [HDInsight 域服务参与者](#hdinsight-domain-services-contributor) | 可以读取、创建、修改和删除 HDInsight 企业安全性套餐所需的域服务相关操作 | 8d8d5a11-05d3-4bda-a417-a08778121c7c |
 > | [Log Analytics 参与者](#log-analytics-contributor) | Log Analytics 参与者可以读取所有监视数据并编辑监视设置。 编辑监视设置包括向 VM 添加 VM 扩展、读取存储帐户密钥以便能够从 Azure 存储配置日志收集、创建和配置自动化帐户、添加解决方案以及配置所有 Azure 资源上的 Azure 诊断。 | 92aaf0da-9dab-42b6-94a3-d43ce8d16293 |
@@ -3944,6 +3944,10 @@ ACR 隔离数据编写器
 > | [Microsoft.DocumentDB](resource-provider-operations.md#microsoftdocumentdb)/databaseAccounts/regenerateKey/* |  |
 > | [Microsoft.DocumentDB](resource-provider-operations.md#microsoftdocumentdb)/databaseAccounts/listKeys/* |  |
 > | [Microsoft.DocumentDB](resource-provider-operations.md#microsoftdocumentdb)/databaseAccounts/listConnectionStrings/* |  |
+> | [Microsoft.DocumentDB](resource-provider-operations.md#microsoftdocumentdb)/databaseAccounts/sqlRoleDefinitions/write | 创建或更新 SQL 角色定义 |
+> | [Microsoft.DocumentDB](resource-provider-operations.md#microsoftdocumentdb)/databaseAccounts/sqlRoleDefinitions/delete | 删除 SQL 角色定义 |
+> | [Microsoft.DocumentDB](resource-provider-operations.md#microsoftdocumentdb)/databaseAccounts/sqlRoleAssignments/write | 创建或更新 SQL 角色分配 |
+> | [Microsoft.DocumentDB](resource-provider-operations.md#microsoftdocumentdb)/databaseAccounts/sqlRoleAssignments/delete | 删除 SQL 角色分配 |
 > | **DataActions** |  |
 > | *无* |  |
 > | **NotDataActions** |  |
@@ -3973,7 +3977,11 @@ ACR 隔离数据编写器
         "Microsoft.DocumentDB/databaseAccounts/readonlyKeys/*",
         "Microsoft.DocumentDB/databaseAccounts/regenerateKey/*",
         "Microsoft.DocumentDB/databaseAccounts/listKeys/*",
-        "Microsoft.DocumentDB/databaseAccounts/listConnectionStrings/*"
+        "Microsoft.DocumentDB/databaseAccounts/listConnectionStrings/*",
+        "Microsoft.DocumentDB/databaseAccounts/sqlRoleDefinitions/write",
+        "Microsoft.DocumentDB/databaseAccounts/sqlRoleDefinitions/delete",
+        "Microsoft.DocumentDB/databaseAccounts/sqlRoleAssignments/write",
+        "Microsoft.DocumentDB/databaseAccounts/sqlRoleAssignments/delete"
       ],
       "dataActions": [],
       "notDataActions": []
@@ -4774,7 +4782,7 @@ ACR 隔离数据编写器
 
 ### <a name="data-purger"></a>数据清除程序
 
-可以清除分析数据 [了解详细信息](../azure-monitor/logs/personal-data-mgmt.md)
+删除 Log Analytics 工作区中的私有数据。 [了解详细信息](../azure-monitor/logs/personal-data-mgmt.md)
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 描述 |

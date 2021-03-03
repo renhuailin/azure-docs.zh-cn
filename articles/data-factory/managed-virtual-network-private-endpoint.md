@@ -9,12 +9,12 @@ ms.custom:
 - seo-lt-2019
 - references_regions
 ms.date: 07/15/2020
-ms.openlocfilehash: d950b05dd34788c2c5ef0b34b8ec8ac0b20ad4b6
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: b6000d8ff3eb35d678a94adc021efcadf8a77f81
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100379567"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699619"
 ---
 # <a name="azure-data-factory-managed-virtual-network-preview"></a>Azure 数据工厂托管的虚拟网络 (预览) 
 
@@ -43,7 +43,7 @@ ms.locfileid: "100379567"
 
 ## <a name="managed-private-endpoints"></a>托管专用终结点
 
-托管专用终结点是在 Azure 数据工厂托管的虚拟网络中创建的专用终结点，用于建立到 Azure 资源的专用链接。 Azure 数据工厂代表你管理这些专用终结点。 
+托管专用终结点是在 Azure 数据工厂托管的虚拟网络中创建的专用终结点，用于建立到 Azure 资源的专用链接。 Azure 数据工厂会代表你管理这些专用终结点。 
 
 ![新托管专用终结点](./media/tutorial-copy-data-portal-private/new-managed-private-endpoint.png)
 
@@ -98,21 +98,23 @@ Azure 数据工厂支持专用链接。 通过专用链接，你可以访问 Azu
 - 美国西部
 - 美国西部 2
 - 美国中南部
-- Central US
+- 美国中部
 - 北欧
 - 西欧
 - 英国南部
-- Southeast Asia
+- 东南亚
 - 澳大利亚东部
 - 澳大利亚东南部
 
 ### <a name="outbound-communications-through-public-endpoint-from-adf-managed-virtual-network"></a>从 ADF 托管虚拟网络通过公共终结点进行的出站通信
 - 对于出站通信，只打开端口443。
-- 不支持将 Azure 存储和 Azure Data Lake Gen2 从 ADF 托管的虚拟网络通过公共终结点进行连接。
+- 不支持通过公共终结点从 ADF 托管虚拟网络连接到 Azure 存储和 Azure Data Lake Gen2。
 
 ### <a name="linked-service-creation-of-azure-key-vault"></a>Azure Key Vault 的链接服务创建 
 - 为 Azure Key Vault 创建链接服务时，没有 Azure Integration Runtime 引用。 因此，在 Azure Key Vault 的链接服务创建过程中无法创建专用终结点。 但是，当你为引用 Azure Key Vault 链接服务的数据存储创建链接服务，并且此链接服务引用启用了托管虚拟网络 Azure Integration Runtime 时，你可以在创建期间为 Azure Key Vault 链接的服务创建专用终结点。 
 - Azure Key Vault 的链接服务的 **测试连接** 操作仅验证 URL 格式，但不执行任何网络操作。
+- 即使您为 Azure Key Vault 创建专用终结点， **使用专用终结点** 的列也始终显示为空白。
+![AKV 的专用终结点](./media/managed-vnet/akv-pe.png)
 
 ## <a name="next-steps"></a>后续步骤
 

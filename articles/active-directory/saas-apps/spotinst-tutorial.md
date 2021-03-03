@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/03/2020
 ms.author: jeedes
-ms.openlocfilehash: d9c9ac87e655cf9178d58f04b502f7e781d1fef7
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 402b5a975b3ded8327edcea81b680e9990bac39e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96181401"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101686557"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-spotinst"></a>教程：Azure Active Directory 与 Spotinst 的单一登录 (SSO) 集成
 
@@ -71,7 +71,7 @@ ms.locfileid: "96181401"
 
 1. 在 [Azure 门户](https://portal.azure.com/)中，在 **Spotinst** 应用程序集成页上，找到“管理”部分，选择“单一登录”   。
 1. 在“选择单一登录方法”页上选择“SAML”   。
-1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置   。
+1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置 。
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
@@ -95,7 +95,7 @@ ms.locfileid: "96181401"
     | FirstName | user.givenname |
     | LastName | user.surname |
 
-1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中找到“联合元数据 XML”，选择“下载”以下载该证书并将其保存在计算机上     。
+1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中找到“联合元数据 XML”，选择“下载”以下载该证书并将其保存在计算机上   。
 
     ![证书下载链接](common/metadataxml.png)
 
@@ -171,9 +171,9 @@ ms.locfileid: "96181401"
 
     ![屏幕截图显示了“添加用户”部分，你可以在其中输入所述值。](./media/spotinst-tutorial/adduser2.png)
 
-    * 在“全名”文本框中输入用户的全名，例如 BrittaSimon。
+    * 在“全名”文本框中输入用户的全名，例如 BrittaSimon`BrittaSimon`。
 
-    * 在“电子邮件”文本框中，输入用户的电子邮件地址（如 `brittasimon\@contoso.com`）。
+    * 在“电子邮件”文本框中，输入用户的电子邮件地址（如 `brittasimon@contoso.com`）。
 
     * 为组织角色、帐户角色和帐户选择组织特定的详细信息。
 

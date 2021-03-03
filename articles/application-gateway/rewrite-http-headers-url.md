@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 07/16/2020
 ms.author: surmb
-ms.openlocfilehash: 93af3183ae9e969d14a35ce4e365d48895ef4e79
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 81eaf95a4918590c6eaa2c17a45e6925a1a67992
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92216668"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726506"
 ---
 # <a name="rewrite-http-headers-and-url-with-application-gateway"></a>使用应用程序网关重写 HTTP 标头和 URL
 
@@ -50,19 +50,19 @@ HTTP 标头可让客户端和服务器连同请求或响应一起传递附加的
 
 若要了解如何使用 Azure 门户在应用程序网关中重写 URL，请参阅[此文](rewrite-url-portal.md)。
 
-![描述使用应用程序网关重写 URL 的过程的示意图。](./media/rewrite-http-headers-url/url-rewrite-overview.png)
+![此图描述了使用应用程序网关重写 URL 的过程。](./media/rewrite-http-headers-url/url-rewrite-overview.png)
 
 >[!NOTE]
-> URL 重写功能为预览版，仅适用于 Standard_v2 和 WAF_v2 SKU 版应用程序网关。 建议不要在生产环境中使用。 若要了解关于预览的详细信息，请参阅[此处的使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> URL 重写功能为预览版，仅适用于 Standard_v2 和 WAF_v2 SKU 版应用程序网关。 不建议在生产环境中使用。 若要了解关于预览的详细信息，请参阅[此处的使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="rewrite-actions"></a>重写操作
 
 使用重写操作指定要重写的 URL、请求标头或响应标头，以及将这些项重写后赋予的新值。 URL 或者新标头或现有标头的值可设置为以下类型的值：
 
 * 文本
-* 请求标头。 若要指定请求标头，需使用语法 {http_req_*headerName*}
-* 响应标头。 若要指定响应标头，需使用语法 {http_resp_*headerName*}
-* 服务器变量。 若要指定服务器变量，需使用语法 {var_*serverVariable*}。 请参阅支持的服务器变量的列表
+* 请求标头。 若要指定请求标头，需使用语法 {http_req_ *headerName*}
+* 响应标头。 若要指定响应标头，需使用语法 {http_resp_ *headerName*}
+* 服务器变量。 若要指定服务器变量，需使用语法 {var_ *serverVariable*}。 请参阅支持的服务器变量的列表
 * 文本、请求标头、响应标头和服务器变量的组合。 
 
 ## <a name="rewrite-conditions"></a>重写条件
@@ -114,7 +114,7 @@ HTTP 标头可让客户端和服务器连同请求或响应一起传递附加的
 | client_tcp_rtt            | 有关客户端 TCP 连接的信息。 在支持 TCP_INFO 套接字选项的系统上可用。 |
 | client_user               | 使用 HTTP 身份验证时提供的用于身份验证的用户名。 |
 | host                      | 采用以下优先顺序：请求行中的主机名、Host 请求标头字段中的主机名，或与请求匹配的服务器名称。 示例：在请求 `http://contoso.com:8080/article.aspx?id=123&title=fabrikam` 中，host 值将为 `contoso.com` |
-| cookie_*name*             | *name* Cookie。                                           |
+| cookie_ *name*             | *name* Cookie。                                           |
 | http_method               | 用于发出 URL 请求的方法。 例如 GET 或 POST。 |
 | http_status               | 会话状态。 例如 200、400 或 403。           |
 | http_version              | 请求协议。 通常为 HTTP/1.0、HTTP/1.1 或 HTTP/2.0。 |
@@ -164,7 +164,7 @@ HTTP 标头可让客户端和服务器连同请求或响应一起传递附加的
 
 由于应用服务是多租户服务，因此它会使用请求中的主机标头将请求路由到正确的终结点。 应用服务的默认域名为 *. azurewebsites.net (说 contoso.azurewebsites.net) 不同于应用程序网关的域名 (说 contoso.com) 。 由于客户端的原始请求具有应用程序网关的域名 (contoso.com) 作为主机名，因此应用程序网关会将主机名更改为 contoso.azurewebsites.net。 做出此更改的目的是使应用服务能够将请求路由到正确的终结点。
 
-当应用服务发送重定向响应时，它会在其响应的位置标头中，使用它从应用程序网关收到的请求中的相同主机名。 因此，客户端将直接向 contoso.azurewebsites.net/path2 发出请求，而不是通过应用程序网关 (contoso.com/path2) 。 不应该绕过应用程序网关。
+当应用服务发送重定向响应时，它会在其响应的位置标头中，使用它从应用程序网关收到的请求中的相同主机名。 因此，客户端将直接向 `contoso.azurewebsites.net/path2` 发出请求，而不是通过应用程序网关 (`contoso.com/path2`) 发出请求。 不应该绕过应用程序网关。
 
 将 location 标头中的主机名设置为应用程序网关的域名即可解决此问题。
 
@@ -211,13 +211,13 @@ HTTP 标头可让客户端和服务器连同请求或响应一起传递附加的
 
 * 第三条规则有一个条件，用于检查 query_string 变量中是否有“category=accessories”，并且有一个操作，用于将 URL 路径重写为 /listing3，此外还启用了“重新评估路径映射”功能
 
-:::image type="content" source="./media/rewrite-http-headers-url/url-scenario1-2.png" alt-text="URL 重写方案 1-1。":::
+:::image type="content" source="./media/rewrite-http-headers-url/url-scenario1-2.png" alt-text="URL 重写方案 1-2。":::
 
  
 
 **步骤 2 (b)：** 将此重写集与上述基于路径的规则的默认路径相关联
 
-:::image type="content" source="./media/rewrite-http-headers-url/url-scenario1-3.png" alt-text="URL 重写方案 1-1。":::
+:::image type="content" source="./media/rewrite-http-headers-url/url-scenario1-3.png" alt-text="URL 重写方案 1-3。":::
 
 现在，如果用户请求 *contoso.com/listing?category=any*，则它会与默认路径匹配，因为路径映射中的任何路径模式（/listing1、/listing2、/listing3）都不匹配。 由于你已将上述重写集与此路径相关联，因此系统会对此重写集进行评估。 由于查询字符串不会匹配此重写集中这 3 个重写规则中任何一个的条件，因此不会执行重写操作。因此，请求将不做任何更改，并路由到与默认路径（即 GenericList）关联的后端。
 
@@ -234,11 +234,11 @@ HTTP 标头可让客户端和服务器连同请求或响应一起传递附加的
 
 **条件** - 如果服务器变量 `uri_path` 等于模式 `/(.+)/(.+)`
 
-:::image type="content" source="./media/rewrite-http-headers-url/url-scenario2-1.png" alt-text="URL 重写方案 1-1。":::
+:::image type="content" source="./media/rewrite-http-headers-url/url-scenario2-1.png" alt-text="URL 重写方案 2-1。":::
 
 **操作** - 将 URL 路径设置为 `buy.aspx`，将查询字符串设置为 `category={var_uri_path_1}&product={var_uri_path_2}`
 
-:::image type="content" source="./media/rewrite-http-headers-url/url-scenario2-2.png" alt-text="URL 重写方案 1-1。":::
+:::image type="content" source="./media/rewrite-http-headers-url/url-scenario2-2.png" alt-text="URL 重写方案 2-2。":::
 
 有关如何实现上述方案的分步指南，请参阅[使用 Azure 门户在应用程序网关中重写 URL](rewrite-url-portal.md)
 
@@ -248,7 +248,7 @@ HTTP 标头可让客户端和服务器连同请求或响应一起传递附加的
 
 进行 URL 重定向时，应用程序网关会将包含新 URL 的重定向响应发送到客户端。 这样一来，客户端就必须将其请求重新发送到重定向中提供的新 URL。 用户在浏览器中看到的 URL 会更新为新 URL
 
-:::image type="content" source="./media/rewrite-http-headers-url/url-rewrite-vs-redirect.png" alt-text="URL 重写方案 1-1。":::
+:::image type="content" source="./media/rewrite-http-headers-url/url-rewrite-vs-redirect.png" alt-text="重写与重定向。":::
 
 ## <a name="limitations"></a>限制
 

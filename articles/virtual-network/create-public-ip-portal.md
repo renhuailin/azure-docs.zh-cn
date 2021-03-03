@@ -8,12 +8,12 @@ ms.subservice: ip-services
 ms.topic: how-to
 ms.date: 02/22/2021
 ms.author: allensu
-ms.openlocfilehash: 5c5650d896442f10846e16903a1231010d032a44
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: e6b7648188e2307da4ef40e0ab3daf6201f9d89d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101675211"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694863"
 ---
 # <a name="create-a-public-ip-address-using-the-azure-portal"></a>使用 Azure 门户创建公共 IP 地址
 
@@ -74,7 +74,6 @@ ms.locfileid: "101675211"
     | IP 版本              | 选择“IPv4”                 |    
     | SKU                     | 选择“基本”         |
     | 名称                    | 输入“myBasicPublicIP”          |
-    | 路由首选项      | 保留 " **Microsoft 网络**" 的默认值。 </br> 有关路由首选项的详细信息，请参阅 [什么是路由首选项 (预览) ？](./routing-preference-overview.md)。 |
     | IP 地址分配   | 选择 **静态** (请参阅下面的注释)                                      |
     | 空闲超时(分钟)  | 保留默认值 **4**。       |
     | DNS 名称标签          | 保留值为空    |
@@ -82,7 +81,7 @@ ms.locfileid: "101675211"
     | 资源组          | 选择 " **新建**"，输入 **myResourceGroup**。 </br> 选择“确定”。 |
     | 位置                | 选择“美国东部 2”      |
 
-:::image type="content" source="./media/create-public-ip-portal/create-standard-ip.png" alt-text="在 Azure 门户中创建标准 IP 地址" border="false":::
+:::image type="content" source="./media/create-public-ip-portal/create-basic-ip.png" alt-text="在 Azure 门户中创建标准 IP 地址" border="false":::
 
 如果 IP 地址可在一段时间内更改，则可以选择 **动态** ip 分配。
 

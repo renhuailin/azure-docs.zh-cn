@@ -3,12 +3,13 @@ title: 有关 Azure Kubernetes 服务 (AKS) 的常见问题解答
 description: 查找有关 Azure Kubernetes 服务 (AKS) 的某些常见问题的解答。
 ms.topic: conceptual
 ms.date: 08/06/2020
-ms.openlocfilehash: 6c2eddf3b7002b101fed8face4a58f2d2b2f4878
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.custom: references_regions
+ms.openlocfilehash: 6d7ea48722e6604fe67d7a4ddcb12870623d9354
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820256"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101739621"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>有关 Azure Kubernetes 服务 (AKS) 的常见问题解答
 
@@ -134,7 +135,7 @@ Windows Server 对节点池的支持具有一些限制，Kubernetes 项目中的
 
 AKS 提供 SLA 保证作为可选的附加功能，包括 [运行时间 SLA][uptime-sla]。 
 
-默认情况下提供的免费 SLA 不保证高可用 API 服务器终结点 (我们的服务级别目标为 99.5% ) 。 可能会出现暂时性的连接问题，如升级、不正常的是节点、平台维护等。如果工作负荷不允许 APIServer 重启，则建议使用运行时间 SLA。
+默认提供的免费 SKU 没有关联的服务级别 *协议*，但其服务级别 *目标* 为99.5%。 发生暂时性连接问题时，可能会出现暂时性的连接问题、不正常的是节点、平台维护、应用程序对 API 服务器的请求等。如果你的工作负荷不能容忍 API 服务器重启，则建议使用运行时间 SLA。
 
 ## <a name="can-i-apply-azure-reservation-discounts-to-my-aks-agent-nodes"></a>是否可将 Azure 预留折扣应用于 AKS 代理节点？
 
@@ -202,7 +203,7 @@ AKS 代理节点按标准 Azure 虚拟机计费，因此，如果你已为在 AK
 
 ## <a name="does-aks-store-any-customer-data-outside-of-the-clusters-region"></a>AKS 是否将任何客户数据存储在群集区域之外？
 
-用于在单个区域中存储客户数据的功能当前仅在亚太地理 (新加坡) 的东南部区域提供。 对于其他所有区域，客户数据存储在以下地域。
+启用将客户数据存储在单个区域中的功能目前仅适用于在巴西地区的亚太地域和巴西南部 () 圣保罗) 地区 (新加坡地区。 对于其他所有区域，客户数据存储在以下地域。
 
 ## <a name="are-aks-images-required-to-run-as-root"></a>AKS 映像是否需要以根用户身份运行？
 

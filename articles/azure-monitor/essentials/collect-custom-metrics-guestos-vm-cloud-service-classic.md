@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 971a3063ff86e2a6b7d1b11f72ff0a257f459da0
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: d6866361b78656d99888c4df70cc0c92ed096425
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100605933"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737046"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-classic-cloud-services"></a>将来宾 OS 指标发送到 Azure Monitor 指标存储经典云服务 
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-使用 Azure Monitor [诊断扩展](../agents/diagnostics-extension-overview.md)，可以从作为虚拟机、云服务或 Service Fabric 群集的一部分运行的来宾操作系统（来宾 OS）中收集指标和日志。 该扩展可将遥测数据发送到[许多不同的位置](../platform/data-platform.md?toc=/azure/azure-monitor/toc.json)。
+使用 Azure Monitor [诊断扩展](../agents/diagnostics-extension-overview.md)，可以从作为虚拟机、云服务或 Service Fabric 群集的一部分运行的来宾操作系统（来宾 OS）中收集指标和日志。 该扩展可将遥测数据发送到[许多不同的位置](../data-platform.md?toc=%2fazure%2fazure-monitor%2ftoc.json)。
 
 本文介绍将 Azure 经典云服务的来宾 OS 性能指标发送到 Azure Monitor 指标存储的过程。 自诊断版本 1.11 版起，可将指标直接写入已收集标准平台指标的 Azure Monitor 指标存储。 
 
@@ -34,7 +34,7 @@ ms.locfileid: "100605933"
 
 - 需要安装 [Azure PowerShell](/powershell/azure) 或 [Azure Cloud Shell](../../cloud-shell/overview.md)。
 
-- 云服务必须位于 [支持自定义指标的区域](../platform/metrics-custom-overview.md#supported-regions)中。
+- 云服务必须位于 [支持自定义指标的区域](./metrics-custom-overview.md#supported-regions)中。
 
 ## <a name="provision-a-cloud-service-and-storage-account"></a>预配云服务和存储帐户 
 
@@ -191,4 +191,4 @@ Set-AzureServiceDiagnosticsExtension -ServiceName <classicCloudServiceName> -Sto
 
 ## <a name="next-steps"></a>后续步骤
 
-- 详细了解[自定义指标](../platform/metrics-custom-overview.md)。
+- 详细了解[自定义指标](./metrics-custom-overview.md)。

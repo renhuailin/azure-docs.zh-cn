@@ -1,17 +1,16 @@
 ---
 title: Windows Azure 诊断扩展 (WAD) 配置架构版本历史记录
 description: 有关收集 Azure 虚拟机、VM 规模集、Service Fabric 和云服务中的性能计数器的信息。
-ms.subservice: diagnostic-extension
 ms.topic: reference
 author: bwren
 ms.author: bwren
 ms.date: 01/29/2020
-ms.openlocfilehash: 3b6dc0e19c181ebf4df2778633f981258023e046
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 57ba1c760fe8919fff95493c5c81da4368894f73
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100608172"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719808"
 ---
 # <a name="windows-azure-diagnostics-extension-wad-configuration-schema-versions-and-history"></a>Windows Azure 诊断扩展 (WAD) 配置架构版本和历史记录
 本文提供了作为 Microsoft Azure SDK 的一部分提供的 [Windows Azure 诊断扩展 (WAD)](diagnostics-extension-overview.md) 架构版本的历史记录。  
@@ -47,7 +46,7 @@ ms.locfileid: "100608172"
 ### <a name="diagnostics-extension-111"></a>诊断扩展 1.11
 添加了对 Azure Monitor 接收器的支持。 此接收器仅适用于性能计数器。 允许将在 VM、VMSS 或云服务上收集的性能计数器作为自定义指标发送到 Azure Monitor。 Azure Monitor 接收器支持：
 * 通过 [Azure Monitor 指标 API](/rest/api/monitor/metrics/list) 检索发送到 Azure Monitor 的所有性能计数器。
-* 通过 Azure Monitor 中新的[统一警报体验](../platform/alerts-overview.md)根据发送到 Azure Monitor 的所有性能计数器发出警报
+* 通过 Azure Monitor 中新的[统一警报体验](../alerts/alerts-overview.md)根据发送到 Azure Monitor 的所有性能计数器发出警报
 * 将性能计数器中的通配符运算符视为指标上的“实例”维度。 例如，如果你收集了“LogicalDisk(\*)/DiskWrites/sec”计数器，则可以根据“实例”维度进行筛选和拆分，以基于每个逻辑磁盘（C：、D：等）的磁盘写入次数/秒进行绘图或发出警报
 
 将 Azure Monitor 定义为诊断扩展配置中的新接收器
@@ -190,4 +189,3 @@ ms.locfileid: "100608172"
 * **云服务应用程序的诊断只能在角色级别配置，而不是在实例级别配置。**
 * **每次部署应用时，都会更新诊断配置** –如果从服务器资源管理器更改诊断配置并重新部署应用，这可能会导致奇偶校验问题。
 * **在 Azure SDK 2.5 及更高版本中，故障转储是在诊断配置文件而非代码中配置的** – 如果你在代码中配置了故障转储，则必须手动将配置从代码传输至配置文件，因为故障转储并未在迁移至 Azure SDK 2.6 的过程中传输。
-

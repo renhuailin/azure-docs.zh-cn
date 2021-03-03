@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/09/2021
 ms.author: memildin
-ms.openlocfilehash: 4dc9855afe7ed53db120f4dbc6c09ac4db0f58d9
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: d5c8ad0c4d9995a36b95ad2e67878f678887bfd2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99988573"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101701971"
 ---
 # <a name="configure-email-notifications-for-security-alerts"></a>针对安全警报配置电子邮件通知 
 
@@ -61,7 +61,7 @@ ms.locfileid: "99988573"
 1. 若要将安全联系人信息应用到订阅，请选择“保存”。
 
 ## <a name="customize-the-alerts-email-notifications-through-the-api"></a>通过 API 自定义安全警报电子邮件通知
-还可以通过提供的 REST API 来管理电子邮件通知。 有关完整详细信息，请参阅 [SecurityContacts API 文档](https://docs.microsoft.com/rest/api/securitycenter/securitycontacts)。
+还可以通过提供的 REST API 来管理电子邮件通知。 有关完整详细信息，请参阅 [SecurityContacts API 文档](/rest/api/securitycenter/securitycontacts)。
 
 这是创建安全联系人配置时 PUT 请求的请求正文示例：
 

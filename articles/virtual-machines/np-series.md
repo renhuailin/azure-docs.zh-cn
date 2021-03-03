@@ -7,16 +7,17 @@ ms.subservice: hpc
 ms.topic: conceptual
 ms.date: 02/09/2021
 ms.author: vikancha
-ms.openlocfilehash: 8d350e248d09f29496f4461b902eba96d8375732
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 4fe6df5a9eabc6e5088618039fdea450ee8314ce
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101668276"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101693843"
 ---
-# <a name="np-series-preview"></a>NP-IN 系列 (预览) 
-
+# <a name="np-series-preview"></a>NP-IN 系列 (预览)  
 NP-IN 系列虚拟机由 [Xilinx U250 ](https://www.xilinx.com/products/boards-and-kits/alveo/u250.html) fpga 提供支持，以加速工作负载，包括机器学习推理、视频转码和数据库搜索 & 分析。 NP-IN 系列 Vm 还由具有 3.2 GHz 的所有核心 turbo 时钟速度的 Intel 8171M (Skylake) Cpu 提供支持。
+
+使用 " [预览" 窗体](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR9x_QCQkJXxHl4qOI4jC9YtUOVI0VkgwVjhaTFFQMTVBTDFJVFpBMzJSSCQlQCN0PWcu) 提交请求成为 np-in 系列预览计划的一部分。
 
 
 [高级存储](premium-storage-performance.md)：支持<br>

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: article
-ms.date: 05/08/2019
+ms.date: 03/01/2021
 ms.author: alkohli
-ms.openlocfilehash: aadaedfd2c9ecf544d142e42a0fbeb410324b7d8
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: e7c8653b39a3e0333ff6e98783a6e9a1437dba22
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96581924"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101739205"
 ---
 # <a name="azure-data-box-gateway-system-requirements"></a>Azure Data Box Gateway 系统要求
 
@@ -32,7 +32,7 @@ Data Box Gateway 的基础主机系统可以提供以下资源来预配虚拟设
 | 规范                                          | 说明              |
 |---------------------------------------------------------|--------------------------|
 | 虚拟处理器（核心数）   | 最低为 4 核 |
-| 内存  | 最低为 8 GB|
+| 内存  | 最低 8 GB。 强烈建议至少 16 GB。 |
 | 可用性|单节点|
 | 磁盘| OS 磁盘：250 GB <br> 数据磁盘：最低为 2 TB、预配精简，并且必须由 SSD 提供支持|
 | 网络接口|1 个或多个虚拟网络接口|
@@ -48,7 +48,7 @@ Data Box Gateway 的基础主机系统可以提供以下资源来预配虚拟设
 
 ## <a name="supported-virtualization-platforms-for-device"></a>设备支持的虚拟化平台
 
-| **操作系统/平台**  |**版本**   |备注  |
+| **操作系统/平台**  |**版本**   |**备注**  |
 |---------|---------|---------|
 |Hyper-V  |  2012 R2 <br> 2016 <br> 2019 |         |
 |VMware ESXi     | 6.0 <br> 6.5 <br> 6.7       |不支持 VMware 工具。         |
@@ -93,7 +93,7 @@ Data Box Gateway 的基础主机系统可以提供以下资源来预配虚拟设
 
 [!INCLUDE [Internet bandwidth](../../includes/data-box-edge-gateway-internet-bandwidth.md)]
 
-## <a name="next-step"></a>下一步
+## <a name="next-step"></a>后续步骤
 
 * [部署 Azure Data Box Gateway](data-box-gateway-deploy-prep.md)
 

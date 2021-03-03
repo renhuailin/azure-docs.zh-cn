@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 01/22/2021
-ms.openlocfilehash: 05e40dd38fc7111521b600908cda38084249e4de
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 5de98f5bf57626a408dd5bec8575856074f434c7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98936054"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101705664"
 ---
 # <a name="tutorial-use-apache-hbase-in-azure-hdinsight"></a>教程：在 Azure HDInsight 中使用 Apache HBase
 
@@ -41,7 +41,7 @@ ms.locfileid: "98936054"
 
 2. 在“自定义部署”对话框中输入以下值：
 
-    |properties |说明 |
+    |属性 |说明 |
     |---|---|
     |订阅|选择用于创建群集的 Azure 订阅。|
     |资源组|创建 Azure 资源管理组，或使用现有的组。|
@@ -133,7 +133,7 @@ ms.locfileid: "98936054"
 
 HBase 提供了多种方法用于将数据载入表中。  有关详细信息，请参阅 [批量加载](https://hbase.apache.org/book.html#arch.bulk.load)。
 
-示例数据文件可在公共 Blob 容器 `wasb://hbasecontacts\@hditutorialdata.blob.core.windows.net/contacts.txt` 中找到。  该数据文件的内容为：
+示例数据文件可在公共 Blob 容器 `wasb://hbasecontacts@hditutorialdata.blob.core.windows.net/contacts.txt` 中找到。  该数据文件的内容为：
 
 `8396    Calvin Raji      230-555-0191    230-555-0191    5415 San Gabriel Dr.`
 
@@ -351,7 +351,7 @@ HDInsight 中的 HBase 随附了一个 Web UI 用于监视群集。 使用该 We
 
 如果不打算继续使用此应用程序，请使用以下步骤删除创建的 HBase 群集：
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 1. 在顶部的“搜索”框中，键入 **HDInsight**。
 1. 选择“服务”下的“HDInsight 群集” 。
 1. 在显示的 HDInsight 群集列表中，单击为本教程创建的群集旁边的“...”。 

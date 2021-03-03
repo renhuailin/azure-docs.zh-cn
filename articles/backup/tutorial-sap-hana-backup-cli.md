@@ -4,12 +4,12 @@ description: 在本教程中，了解如何使用 Azure CLI 将 Azure VM 上运�
 ms.topic: tutorial
 ms.date: 12/4/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: f146bed9ee607fe1b1b6062f9fe372fbb9b9ba6a
-ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
+ms.openlocfilehash: ba06ef876f30dc51e04fe7491d491621f5d8e21b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97746739"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710594"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>教程：使用 Azure CLI 备份 Azure VM 中的 SAP HANA 数据库
 
@@ -176,9 +176,7 @@ e0f15dae-7cac-4475-a833-f52c50e5b6c3  saphanaResourceGroup
 响应将为你提供作业名。 此作业名可用于使用 [az backup job show](/cli/azure/backup/job#az-backup-job-show) cmdlet 来跟踪作业状态。
 
 >[!NOTE]
->除了安排完整备份或差异备份，当前还可以手动触发它们。 日志备份由 SAP HANA 内部自动触发和管理。
->
-> Azure 备份目前不支持增量备份。
+>日志备份由 SAP HANA 内部自动触发和管理。
 
 ## <a name="next-steps"></a>后续步骤
 

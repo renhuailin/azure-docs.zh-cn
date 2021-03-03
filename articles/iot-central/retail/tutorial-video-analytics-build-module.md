@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: e5236bb7034ae4d5f86ab2f8f965bdbfbc3d6ccd
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: cbff2e774fae1f71624aa3cdbd83bfb21e3a9586
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99832039"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101721457"
 ---
 # <a name="tutorial-modify-and-build-the-live-video-analytics-gateway-modules"></a>教程：修改和生成实时视频分析网关模块
 
@@ -25,11 +25,13 @@ ms.locfileid: "99832039"
 
 完成本教程中的步骤需要具备以下各项：
 
-* [Node.js](https://nodejs.org/en/download/) v10 或更高版本
-* 已安装 [TSLint](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-typescript-tslint-plugin) 扩展的 [Visual Studio Code](https://code.visualstudio.com/Download)
-* [Docker](https://www.docker.com/products/docker-desktop) 引擎
-* 用于承载模块版本的 [Azure 容器注册表](../../container-registry/index.yml)。
-* [Azure 媒体服务](../../media-services/index.yml)帐户。 如果已完成之前的教程，可以再次使用之前创建的项。
+
+> [!div class="checklist"]
+> * [Node.js](https://nodejs.org/en/download/) v10 或更高版本
+> * 已安装 [TSLint](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-typescript-tslint-plugin) 扩展的 [Visual Studio Code](https://code.visualstudio.com/Download)
+> * [Docker](https://www.docker.com/products/docker-desktop) 引擎
+> * 用于承载模块版本的 [Azure 容器注册表](../../container-registry/index.yml)。
+> * [Azure 媒体服务](../../media-services/index.yml)帐户。 如果已完成之前的教程，可以再次使用之前创建的项。
 
 ## <a name="clone-the-repository"></a>克隆存储库
 

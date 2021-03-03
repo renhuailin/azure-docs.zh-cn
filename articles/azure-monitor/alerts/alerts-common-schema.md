@@ -4,12 +4,12 @@ description: 了解通用警报架构、应该使用它的原因以及启用它�
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 03/14/2019
-ms.openlocfilehash: aa619976c8fa03b925d66e884ad03fc4e385693e
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 70e37f8f1c9391eee5901f611bae579efe1cd9b9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100606206"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737284"
 ---
 # <a name="common-alert-schema"></a>常见警报架构
 
@@ -52,7 +52,7 @@ ms.locfileid: "100606206"
 > 1. 以下警报类型默认支持通用架构（不需选择加入）：
 >     * 智能检测警报
 > 1. 以下警报类型目前不支持通用架构：
->     * 由[用于 VM 的 Azure Monitor](../insights/vminsights-overview.md) 生成的警报
+>     * [VM insights](../vm/vminsights-overview.md)生成的警报
 >     * 由 [Azure 成本管理](../../cost-management-billing/manage/cost-management-budget-scenario.md)生成的警报
 
 ### <a name="through-the-azure-portal"></a>通过 Azure 门户

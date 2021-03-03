@@ -3,12 +3,12 @@ title: 管理 Azure VM 上已备份的 SAP HANA 数据库
 description: 本文介绍了对在 Azure 虚拟机上运行的 SAP HANA 数据库进行管理和监视时的常见任务。
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: 4c8dc80c7b48217e40d5325b75752e21174ecaae
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: 54d3341a83873ad3cc50815f04a0b252bb44438e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95811948"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703760"
 ---
 # <a name="manage-and-monitor-backed-up-sap-hana-databases"></a>管理和监视已备份的 SAP HANA 数据库
 
@@ -86,39 +86,39 @@ Azure 备份在 Azure 门户的“备份作业”部分中显示所有手动触�
 
 可以从“备份作业”页[监视](#monitor-manual-backup-jobs-in-the-portal)从 HANA 本机客户端（使用 Backint）触发以还原到同一台计算机的还原 。
 
-### <a name="run-sap-hana-native-client-backup-to-local-disk-on-a-database-with-azure-backup-enabled"></a>使用 Azure 备份在数据库上运行 SAP HANA native client 备份到本地磁盘
+### <a name="run-sap-hana-native-client-backup-to-local-disk-on-a-database-with-azure-backup-enabled"></a>在启用了 Azure 备份的数据库上运行到本地磁盘的 SAP HANA 本机客户端备份
 
 如果要对正在使用 Azure 备份备份的数据库执行本地备份（使用 HANA Studio/Cockpit），请执行以下操作：
 
 1. 等待数据库的所有完整备份或日志备份完成。 检查 SAP HANA Studio/Cockpit 中的状态。
-2. 对于相关数据库
+2. 对于相关的 DB
     1. 取消设置 backint 参数。 为此，请双击“systemdb” > “配置” > “选择数据库” > “筛选器(日志)”。   
-        * enable_auto_log_backup：否
-        * log_backup_using_backint： False
-        * catalog_backup_using_backint： False
-3. 按需执行数据库的完整备份
-4. 然后反向执行这些步骤。 对于上面提到的相同相关 DB，
+        * enable_auto_log_backup:否
+        * log_backup_using_backint:False
+        * catalog_backup_using_backint:False
+3. 按需对数据库进行完整备份
+4. 然后反向执行这些步骤。 对于上述相同的相关 DB，
     1. 重新启用 backint 参数
-        1. catalog_backup_using_backint： True
-        1. log_backup_using_backint： True
-        1. enable_auto_log_backup：是
+        1. catalog_backup_using_backint:True
+        1. log_backup_using_backint:True
+        1. enable_auto_log_backup:是
 
-### <a name="manage-or-clean-up-the-hana-catalog-for-a-database-with-azure-backup-enabled"></a>为启用了 Azure 备份的数据库管理或清理 HANA 目录
+### <a name="manage-or-clean-up-the-hana-catalog-for-a-database-with-azure-backup-enabled"></a>针对启用了 Azure 备份的数据库，管理或清理 HANA 目录
 
 如果要编辑或清理备份目录，请执行以下操作：
 
 1. 等待数据库的所有完整备份或日志备份完成。 检查 SAP HANA Studio/Cockpit 中的状态。
-2. 对于相关数据库
+2. 对于相关的 DB
     1. 取消设置 backint 参数。 为此，请双击“systemdb” > “配置” > “选择数据库” > “筛选器(日志)”。   
-        * enable_auto_log_backup：否
-        * log_backup_using_backint： False
-        * catalog_backup_using_backint： False
+        * enable_auto_log_backup:否
+        * log_backup_using_backint:False
+        * catalog_backup_using_backint:False
 3. 编辑目录并删除旧条目
-4. 然后反向执行这些步骤。 对于上面提到的相同相关 DB，
+4. 然后反向执行这些步骤。 对于上述相同的相关 DB，
     1. 重新启用 backint 参数
-        1. catalog_backup_using_backint： True
-        1. log_backup_using_backint： True
-        1. enable_auto_log_backup：是
+        1. catalog_backup_using_backint:True
+        1. log_backup_using_backint:True
+        1. enable_auto_log_backup:是
 
 ### <a name="change-policy"></a>更改策略
 
@@ -149,8 +149,6 @@ Azure 备份在 Azure 门户的“备份作业”部分中显示所有手动触�
 
 >[!NOTE]
 > 保留期内的所有更改都将以回溯方式应用于除新恢复点以外的所有旧恢复点。
->
-> 增量备份策略不能用于 SAP HANA 数据库。 这些数据库目前不支持增量备份。
 
 ### <a name="modify-policy"></a>修改策略
 
@@ -239,7 +237,7 @@ Azure 备份在 Azure 门户的“备份作业”部分中显示所有手动触�
 
 ### <a name="upgrading-to-a-new-version-in-either-sdc-or-mdc"></a>升级到 SDC 或 MDC 中的新版本
 
-了解如何继续备份 [正在升级其版本](backup-azure-sap-hana-database-troubleshoot.md#sdc-version-upgrade-or-mdc-version-upgrade-on-the-same-vm)的 SAP HANA 数据库。
+了解如何继续备份[正在升级版本](backup-azure-sap-hana-database-troubleshoot.md#sdc-version-upgrade-or-mdc-version-upgrade-on-the-same-vm)的 SAP HANA 数据库。
 
 ### <a name="unregister-an-sap-hana-instance"></a>取消注册 SAP HANA 实例
 

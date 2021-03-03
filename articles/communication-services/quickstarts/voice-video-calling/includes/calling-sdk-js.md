@@ -4,16 +4,16 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: 3830025d761c94e2b0b0bc3e66389d66794b946c
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 4a9454abc2c4e41d711a4aef6a30438a72d27edb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101661511"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750168"
 ---
 ## <a name="prerequisites"></a>先决条件
 
-- 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+- 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
 - 已部署的通信服务资源。 [创建通信服务资源](../../create-communication-resource.md)。
 - 用于启用呼叫客户端的`User Access Token`。 详细了解[如何获取`User Access Token`](../../access-tokens.md)
 - 可选：完成[开始向应用程序添加通话功能](../getting-started-with-calling.md)快速入门
@@ -63,7 +63,7 @@ const deviceManager = await callClient.getDeviceManager()
 
 ## <a name="place-an-outgoing-call"></a>拨出电话
 
-若要创建并启动呼叫，需要在 CallAgent 上使用其中一个 Api，并提供通过通信服务标识客户端库创建的用户。
+若要创建并启动通话，需要在 CallAgent 上使用其中一个 API，并提供通过通信服务管理客户端库创建的用户。
 
 通话的创建和启动是同步的。 通过通话实例，可以订阅通话事件。
 
@@ -254,10 +254,10 @@ call.on('callEnded', callEndHander);
 
 ```js
 
-//mute local device
+//mute local device 
 await call.mute();
 
-//unmute local device
+//unmute local device 
 await call.unmute();
 
 ```
@@ -401,7 +401,7 @@ await call.removeParticipant(pstnIdentifier);
 const remoteVideoStream: RemoteVideoStream = call.remoteParticipants[0].videoStreams[0];
 const streamType: MediaStreamType = remoteVideoStream.mediaStreamType;
 ```
-
+ 
 若要呈现 `RemoteVideoStream`，必须订阅 `isAvailableChanged` 事件。
 如果该 `isAvailable` 属性更改为 `true`，则远程参与者正在发送流。
 一旦发生这种情况，请创建新的 `Renderer` 实例，然后使用异步 `createView` 方法创建新的 `RendererView` 实例。  然后，可以将 `view.target` 附加到任何 UI 元素。
@@ -581,7 +581,7 @@ const isRecordingActiveChangedHandler = () => {
 };
 
 callRecordingApi.on('isRecordingActiveChanged', isRecordingActiveChangedHandler);
-
+               
 ```
 
 ## <a name="call-transfer-management"></a>呼叫转移管理

@@ -221,9 +221,9 @@
         - name: 强化 Docker 主机
           displayName: containers
           href: harden-docker-hosts.md
-        - name: 使用适用于 SQL 的 Azure Defender
-          href: defender-for-sql-usage.md
-          displayName: 'hybrid, arc'
+    - name: 使用适用于 SQL 的 Azure Defender
+      href: defender-for-sql-usage.md
+      displayName: 'hybrid, arc'
     - name: 使用适用于容器注册表的 Azure Defender
       items:
         - name: 扫描注册表映像是否存在漏洞
@@ -269,8 +269,6 @@
     - name: 保护 Kubernetes 工作负载
       displayName: 'k8s, containers, aks'
       href: kubernetes-workload-protections.md
-    - name: 管理调查用户数据
-      href: security-center-investigation-user-data.md
     - name: 获取租户范围内的可见性
       href: security-center-management-groups.md
     - name: 自定义 SQL 信息保护策略
@@ -292,7 +290,7 @@
           href: faq-vms.md
         - name: Azure Log Analytics 的现有用户
           href: faq-azure-monitor-logs.md
-    - name: 内置安全策略
+    - name: Azure Policy 内置策略定义
       displayName: 'samples, policy'
       href: policy-reference.md
     - name: Azure 路线图博客

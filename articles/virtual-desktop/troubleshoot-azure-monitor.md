@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 12/01/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 1453d43707a3680380e553fe69d738b27fe5ae3a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: c335c1cf7e5319b812345714dbdc6b87ddc4e81b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100571356"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101709166"
 ---
 # <a name="troubleshoot-azure-monitor-for-windows-virtual-desktop-preview"></a>Windows 虚拟桌面 (预览的 Azure Monitor 疑难解答) 
 
@@ -42,7 +42,7 @@ ms.locfileid: "100571356"
     - 对保存 Windows 虚拟桌面会话主机的订阅资源组的读取访问权限 
     - 对 Log Analytics 工作区的读访问权限
 
-- 你可能需要在服务器的防火墙中打开传出端口，以允许 Azure Monitor 向门户发送数据，请参阅 [传出端口](https://docs.microsoft.com/azure/azure-monitor/app/ip-addresses)。 
+- 你可能需要在服务器的防火墙中打开传出端口，以允许 Azure Monitor 向门户发送数据，请参阅 [传出端口](../azure-monitor/app/ip-addresses.md)。 
 
 - 看不到最近活动的数据？ 你可能需要等待15分钟，然后刷新该源。 Azure Monitor 在填充日志数据时的延迟时间为15分钟。 若要了解详细信息，请参阅 [Azure Monitor 中的日志数据引入时间](../azure-monitor/logs/data-ingestion-time.md)。
 
@@ -62,8 +62,8 @@ Windows 虚拟桌面 Azure Monitor 使用 Azure Monitor 工作簿。 使用工�
 
 如果要监视更多性能计数器或事件，可以允许它们发送到 Log Analytics 工作区，并在 "主机诊断：主机浏览器" 中对其进行监视。 
 
-- 若要添加性能计数器，请参阅 [配置性能计数器](https://docs.microsoft.com/azure/azure-monitor/platform/data-sources-performance-counters#configuring-performance-counters)
-- 若要添加 Windows 事件，请参阅 [配置 Windows 事件日志](https://docs.microsoft.com/azure/azure-monitor/platform/data-sources-windows-events#configuring-windows-event-logs)
+- 若要添加性能计数器，请参阅 [配置性能计数器](../azure-monitor/agents/data-sources-performance-counters.md#configuring-performance-counters)
+- 若要添加 Windows 事件，请参阅 [配置 Windows 事件日志](../azure-monitor/agents/data-sources-windows-events.md#configuring-windows-event-logs)
 
 找不到可帮助诊断问题的数据点？ 向我们发送反馈！
 

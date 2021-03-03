@@ -1,18 +1,18 @@
 ---
-title: 配置用于容器的 Azure Monitor 的代理数据收集 | Microsoft Docs
-description: 本主题介绍如何配置用于容器的 Azure Monitor 代理，以控制 stdout/stderr 和环境变量日志收集。
+title: 配置容器 insights 代理数据收集 |Microsoft Docs
+description: 本文介绍如何配置 Container insights 代理来控制 stdout/stderr 和环境变量日志收集。
 ms.topic: conceptual
 ms.date: 10/09/2020
-ms.openlocfilehash: f21b841bc129012b684d2a1c59eb72989fe9e0e0
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: d866fec2013daf9b8edfdbfd703c7b1098ae91bd
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100608749"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708384"
 ---
-# <a name="configure-agent-data-collection-for-azure-monitor-for-containers"></a>配置用于容器的 Azure Monitor 的代理数据收集
+# <a name="configure-agent-data-collection-for-container-insights"></a>为容器见解配置代理数据收集
 
-适用于容器的 Azure Monitor 通过容器化代理，从部署到托管 Kubernetes 群集的容器工作负载收集 stdout、stderr 和环境变量。 可以创建一个自定义的 Kubernetes ConfigMap 用于控制此体验，以配置代理数据收集设置。 
+容器见解从容器化代理中收集从部署到托管 Kubernetes 群集的容器工作负载中的 stdout、stderr 和环境变量。 可以创建一个自定义的 Kubernetes ConfigMap 用于控制此体验，以配置代理数据收集设置。 
 
 本文演示如何根据要求创建 ConfigMap 和配置数据收集。
 
@@ -142,8 +142,8 @@ omsagent pod 上以 pod 注释 (schema-versions) 的形式提供了支持的配�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 用于容器的 Azure Monitor 不包含预定义的警报集。 请查看[使用用于容器的 Azure Monitor 创建性能警报](./container-insights-log-alerts.md)，了解如何针对高 CPU 和内存利用率创建建议的警报以支持 DevOps 或操作流程和过程。
+- 容器见解不包括预定义的警报集。 查看 [使用容器见解创建性能警报](./container-insights-log-alerts.md) ，了解如何为高 CPU 和内存使用率创建建议警报，以支持 DevOps 或操作过程和过程。
 
-- 启用监视以收集 AKS 群集或混合群集及其上运行的工作负荷的运行状况和资源利用率，了解[如何使用](container-insights-analyze.md)用于容器的 Azure Monitor。
+- 启用监视功能可收集 AKS 或混合群集的运行状况和资源利用率，以及在这些群集上运行的工作负荷，了解 [如何使用](container-insights-analyze.md) 容器见解。
 
 - 请参阅[日志查询示例](container-insights-log-search.md#search-logs-to-analyze-data)，以查看预定义的查询，以及用于发警报、可视化或分析群集的评估或自定义示例。

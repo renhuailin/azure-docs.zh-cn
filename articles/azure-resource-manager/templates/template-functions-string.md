@@ -2,17 +2,17 @@
 title: 模板函数 - 字符串
 description: 介绍用于在 Azure 资源管理器模板中使用的函数 (ARM 模板) 处理字符串。
 ms.topic: conceptual
-ms.date: 11/18/2020
-ms.openlocfilehash: a70aaff91f701c0ba8d26db2488b82e052dd905d
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.date: 03/02/2021
+ms.openlocfilehash: e823acc07ce0618c064f30e103ec52b7133cea18
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920007"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731113"
 ---
 # <a name="string-functions-for-arm-templates"></a>ARM 模板的字符串函数
 
-资源管理器提供了以下函数，用于在 Azure 资源管理器模板中处理字符串 (ARM 模板) ：
+资源管理器提供了以下可用于在 Azure 资源管理器模板（ARM 模板）中处理字符串的函数：
 
 * [base64](#base64)
 * [base64ToJson](#base64tojson)
@@ -127,7 +127,7 @@ output toJsonOutput object = base64ToJson(base64Object)
 
 上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
 | base64Output | String | b25lLCB0d28sIHRocmVl |
 | toStringOutput | String | one, two, three |
@@ -211,7 +211,7 @@ output toJsonOutput object = base64ToJson(base64Object)
 
 上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
 | base64Output | String | b25lLCB0d28sIHRocmVl |
 | toStringOutput | String | one, two, three |
@@ -294,7 +294,7 @@ output toJsonOutput object = base64ToJson(base64Object)
 
 上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
 | base64Output | String | b25lLCB0d28sIHRocmVl |
 | toStringOutput | String | one, two, three |
@@ -305,6 +305,8 @@ output toJsonOutput object = base64ToJson(base64Object)
 `concat (arg1, arg2, arg3, ...)`
 
 合并多个字符串值并返回串联的字符串，或合并多个数组并返回串联的数组。
+
+为了简化字符串连接，Bicep 支持 [字符串内插](https://en.wikipedia.org/wiki/String_interpolation#) 语法。
 
 ### <a name="parameters"></a>参数
 
@@ -353,11 +355,19 @@ param prefix string = 'prefix'
 output concatOutput string = concat(prefix, '-', uniqueString(resourceGroup().id))
 ```
 
+或
+
+```bicep
+param prefix string = 'prefix'
+
+output concatOutput string = '${prefix}-${uniqueString(resourceGroup().id)}'
+```
+
 ---
 
 上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
 | concatOutput | String | prefix-5yj4yjf5mbg72 |
 
@@ -419,7 +429,7 @@ output return array = concat(firstArray, secondArray)
 
 上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
 | return | Array | ["1-1", "1-2", "1-3", "2-1", "2-2", "2-3"] |
 
@@ -526,7 +536,7 @@ output arrayFalse bool = contains(arrayToTest, 'four')
 
 上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
 | stringTrue | Bool | True |
 | stringFalse | Bool | False |
@@ -599,7 +609,7 @@ output toStringOutput string = dataUriToString(dataFormattedString)
 
 上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
 | dataUriOutput | String | data:text/plain;charset=utf8;base64,SGVsbG8= |
 | toStringOutput | String | Hello, World! |
@@ -668,7 +678,7 @@ output toStringOutput string = dataUriToString(dataFormattedString)
 
 上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
 | dataUriOutput | String | data:text/plain;charset=utf8;base64,SGVsbG8= |
 | toStringOutput | String | Hello, World! |
@@ -748,7 +758,7 @@ output stringEmpty bool = empty(testString)
 
 上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
 | arrayEmpty | Bool | True |
 | objectEmpty | Bool | True |
@@ -826,7 +836,7 @@ output endsFalse bool = endsWith('abcdef', 'e')
 
 上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
 | startsTrue | Bool | True |
 | startsCapTrue | Bool | True |
@@ -899,7 +909,7 @@ output stringOutput string = first('One Two Three')
 
 上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
 | arrayOutput | String | one |
 | stringOutput | String | O |
@@ -971,7 +981,7 @@ output formatTest string = format('{0}, {1}. Formatted number: {2:N0}', greeting
 
 上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
 | formatTest | String | Hello, User。 带格式的数字：8,175,133 |
 
@@ -1155,7 +1165,7 @@ output notFound int = indexOf('abcdef', 'z')
 
 上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
 | firstT | int | 0 |
 | lastT | int | 3 |
@@ -1235,7 +1245,7 @@ output stringOutput string = last('One Two Three')
 
 上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
 | arrayOutput | String | three |
 | stringOutput | String | e |
@@ -1246,9 +1256,9 @@ output stringOutput string = last('One Two Three')
 
 返回字符串中某个值的最后一个位置。 比较不区分大小写。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>参数
 
-| 参数 | 必须 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | stringToSearch |是 |string |包含要查找的项的值。 |
 | stringToFind |是 |string |要查找的值。 |
@@ -1307,7 +1317,7 @@ output notFound int = indexOf('abcdef', 'z')
 
 上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
 | firstT | int | 0 |
 | lastT | int | 3 |
@@ -1413,7 +1423,7 @@ output objectLength int = length(objectToTest)
 
 上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
 | arrayLength | int | 3 |
 | stringLength | int | 13 |
@@ -1482,7 +1492,7 @@ output guidOutput string = guidValue
 
 上述示例的输出根据每个部署的不同而异，但类似于：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
 | guidOutput | string | b76a51fc-bd72-4a77-b9a2-3c29e7d2e551 |
 
@@ -1530,7 +1540,7 @@ output guidOutput string = guidValue
 ```bicep
 param guidValue string = newGuid()
 
-var storageName = concat('storage', uniqueString(guidValue))
+var storageName = 'storage${uniqueString(guidValue)}'
 
 resource myStorage 'Microsoft.Storage/storageAccounts@2018-07-01' = {
   name: storageName
@@ -1549,7 +1559,7 @@ output nameOutput string = storageName
 
 上述示例的输出根据每个部署的不同而异，但类似于：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
 | nameOutput | string | storagenziwvyru7uxie |
 
@@ -1611,7 +1621,7 @@ output stringOutput string = padLeft(testString, 10, '0')
 
 上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
 | stringOutput | String | 0000000123 |
 
@@ -1676,7 +1686,7 @@ output secondOutput string = replace(testString, '1234', 'xxxx')
 
 上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
 | firstOutput | String | 1231231234 |
 | secondOutput | String | 123-123-xxxx |
@@ -1764,7 +1774,7 @@ output stringOutput string = skip(testString, charactersToSkip)
 
 上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
 | arrayOutput | Array | ["three"] |
 | stringOutput | String | two three |
@@ -1842,7 +1852,7 @@ output secondOutput array = split(secondString, delimiters)
 
 上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
 | firstOutput | Array | ["one", "two", "three"] |
 | secondOutput | Array | ["one", "two", "three"] |
@@ -1919,7 +1929,7 @@ output endsFalse bool = endsWith('abcdef', 'e')
 
 上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
 | startsTrue | Bool | True |
 | startsCapTrue | Bool | True |
@@ -2016,7 +2026,7 @@ output intOutput string = string(testInt)
 
 上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
 | objectOutput | String | {"valueA":10,"valueB":"Example Text"} |
 | arrayOutput | String | ["a","b","c"] |
@@ -2104,7 +2114,7 @@ output substringOutput string = substring(testString, 4, 3)
 
 上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
 | substringOutput | String | two |
 
@@ -2191,7 +2201,7 @@ output stringOutput string = take(testString, charactersToSkip)
 
 上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
 | arrayOutput | Array | ["one", "two"] |
 | stringOutput | String | on |
@@ -2255,7 +2265,7 @@ output toUpperOutput string = toUpper(testString)
 
 上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
 | toLowerOutput | String | one two three |
 | toUpperOutput | String | ONE TWO THREE |
@@ -2319,7 +2329,7 @@ output toUpperOutput string = toUpper(testString)
 
 上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
 | toLowerOutput | String | one two three |
 | toUpperOutput | String | ONE TWO THREE |
@@ -2468,7 +2478,7 @@ uniqueString(resourceGroup().id, deployment().name)
 
 ```bicep
 resource mystorage 'Microsoft.Storage/storageAccounts@@2018-07-01' = {
-  name: concat('storage, uniqueString(resourceGroup().id)')
+  name: 'storage${uniqueString(resourceGroup().id)}'
   ...
 }
 ```
@@ -2613,7 +2623,7 @@ output toStringOutput string = uriComponentToString(uriEncoded)
 
 上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
 | uriOutput | String | `http://contoso.com/resources/nested/azuredeploy.json` |
 | componentOutput | String | `http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json` |
@@ -2683,7 +2693,7 @@ output toStringOutput string = uriComponentToString(uriEncoded)
 
 上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
 | uriOutput | String | `http://contoso.com/resources/nested/azuredeploy.json` |
 | componentOutput | String | `http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json` |
@@ -2753,7 +2763,7 @@ output toStringOutput string = uriComponentToString(uriEncoded)
 
 上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
 | uriOutput | String | `http://contoso.com/resources/nested/azuredeploy.json` |
 | componentOutput | String | `http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json` |
@@ -2761,7 +2771,7 @@ output toStringOutput string = uriComponentToString(uriEncoded)
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关 ARM 模板中各部分的说明，请参阅 [了解 arm 模板的结构和语法](template-syntax.md)。
-* 若要合并多个模板，请参阅 [部署 Azure 资源时使用链接的模板和嵌套的模板](linked-templates.md)。
+* 有关 ARM 模板中各部分的说明，请参阅[了解 ARM 模板的结构和语法](template-syntax.md)。
+* 若要合并多个模板，请参阅[部署 Azure 资源时使用链接模板和嵌套模板](linked-templates.md)。
 * 若要在创建资源类型时迭代指定的次数，请参阅 [ARM 模板中的资源迭代](copy-resources.md)。
-* 若要查看如何部署已创建的模板，请参阅 [利用 ARM 模板部署资源和 Azure PowerShell](deploy-powershell.md)。
+* 若要了解如何部署已创建的模板，请参阅[使用 ARM 模板和 Azure PowerShell 部署资源](deploy-powershell.md)。

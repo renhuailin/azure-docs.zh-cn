@@ -1,14 +1,14 @@
 ---
 title: 启用了 Azure Arc 的服务器的 VM 扩展管理
 description: 启用 Azure Arc 的服务器可以管理虚拟机扩展的部署，这些扩展提供部署后配置和自动化任务和非 Azure Vm。
-ms.date: 01/07/2021
+ms.date: 03/01/2021
 ms.topic: conceptual
-ms.openlocfilehash: b39149eb7ac572ac3bd50bb6303f28d2340f387d
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 039c52ccbee03636da0f5acc0fc5844be9b646f5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100580853"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687900"
 ---
 # <a name="virtual-machine-extension-management-with-azure-arc-enabled-servers"></a>通过已启用 Azure Arc 的服务器进行虚拟机扩展管理
 
@@ -25,9 +25,7 @@ ms.locfileid: "100580853"
 
 支持 Azure Arc 的服务器 VM 扩展支持提供以下主要优势：
 
-- 使用 [Azure 自动化状态配置](../../automation/automation-dsc-overview.md) 集中存储配置，并通过 DSC VM 扩展维护启用混合连接的计算机的所需状态。
-
-- 收集日志数据以便通过 Log Analytics 代理 VM 扩展启用 [Azure Monitor 中的日志](../../azure-monitor/logs/data-platform-logs.md) 进行分析。 这对于跨不同类型的源中的数据进行复杂分析非常有用。
+- 通过启用 Log Analytics 代理 VM 扩展，收集用于通过日志进行分析的日志数据 [Azure Monitor](../../azure-monitor/logs/data-platform-logs.md) 。 这对于跨不同类型的源中的数据进行复杂分析非常有用。
 
 - 在 [用于 VM 的 Azure Monitor](../../azure-monitor/vm/vminsights-overview.md)中，会分析 Windows 和 Linux vm 的性能，并监视其进程和其他资源和外部进程的依赖项。 这是通过同时启用 Log Analytics 代理和依赖项代理 VM 扩展来实现的。
 
@@ -39,7 +37,7 @@ ms.locfileid: "100580853"
 
 VM 扩展功能仅在 [受支持区域](overview.md#supported-regions)的列表中提供。 确保你在其中一个区域中载入计算机。
 
-## <a name="extensions"></a>扩展
+## <a name="extensions"></a>Extensions
 
 在此版本中，我们在 Windows 和 Linux 计算机上支持以下 VM 扩展。
 
@@ -51,7 +49,6 @@ VM 扩展功能仅在 [受支持区域](overview.md#supported-regions)的列表�
 |----------|----------|-----|-----------------------|
 |Azure Defender 集成漏洞扫描程序 |Qualys |WindowsAgent.AzureSecurityCenter |[Azure 和混合计算机的 azure Defender 集成漏洞评估解决方案](../../security-center/deploy-vulnerability-assessment-vm.md)|
 |自定义脚本扩展 |Microsoft.Compute | CustomScriptExtension |[Windows 自定义脚本扩展](../../virtual-machines/extensions/custom-script-windows.md)|
-|PowerShell DSC |Microsoft PowerShell |DSC |[Windows PowerShell DSC 扩展](../../virtual-machines/extensions/dsc-windows.md)|
 |Log Analytics 代理 |Microsoft.EnterpriseCloud.Monitoring |MicrosoftMonitoringAgent |[适用于 Windows 的 Log Analytics VM 扩展](../../virtual-machines/extensions/oms-windows.md)|
 |用于 VM 的 Azure Monitor (insights)  |Microsoft.Azure.Monitoring.DependencyAgent |DependencyAgentWindows | [适用于 Windows 的依赖关系代理虚拟机扩展](../../virtual-machines/extensions/agent-dependency-windows.md)|
 |Azure Key Vault 证书同步 | 。保管库 |KeyVaultForWindows | [适用于 Windows 的 Key Vault 虚拟机扩展](../../virtual-machines/extensions/key-vault-windows.md) |
@@ -63,7 +60,6 @@ VM 扩展功能仅在 [受支持区域](overview.md#supported-regions)的列表�
 |----------|----------|-----|-----------------------|
 |Azure Defender 集成漏洞扫描程序 |Qualys |LinuxAgent.AzureSecurityCenter |[Azure 和混合计算机的 azure Defender 集成漏洞评估解决方案](../../security-center/deploy-vulnerability-assessment-vm.md)|
 |自定义脚本扩展 |Microsoft Azure 扩展 |CustomScript |[Linux 自定义脚本扩展版本2](../../virtual-machines/extensions/custom-script-linux.md) |
-|PowerShell DSC |Microsoft.OSTCExtensions |DSCForLinux |[适用于 Linux 的 PowerShell DSC 扩展](../../virtual-machines/extensions/dsc-linux.md) |
 |Log Analytics 代理 |Microsoft.EnterpriseCloud.Monitoring |OmsAgentForLinux |[适用于 Linux 的 Log Analytics VM 扩展](../../virtual-machines/extensions/oms-linux.md) |
 |用于 VM 的 Azure Monitor (insights)  |Microsoft.Azure.Monitoring.DependencyAgent |DependencyAgentLinux |[适用于 Linux 的依赖关系代理虚拟机扩展](../../virtual-machines/extensions/agent-dependency-linux.md) |
 |Azure Key Vault 证书同步 | 。保管库 |KeyVaultForLinux | [适用于 Linux 的 Key Vault 虚拟机扩展](../../virtual-machines/extensions/key-vault-linux.md) |
@@ -82,7 +78,7 @@ VM 扩展功能仅在 [受支持区域](overview.md#supported-regions)的列表�
 
 ### <a name="log-analytics-vm-extension"></a>Log Analytics VM 扩展
 
-适用于 Linux 的 Log Analytics 代理 VM 扩展需要在目标计算机上安装 Python 2.x。 
+适用于 Linux 的 Log Analytics 代理 VM 扩展需要在目标计算机上安装 Python 2.x。
 
 ### <a name="azure-key-vault-vm-extension-preview"></a>Azure Key Vault VM 扩展 (预览版) 
 

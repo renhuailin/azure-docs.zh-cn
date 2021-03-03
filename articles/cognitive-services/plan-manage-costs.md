@@ -7,12 +7,12 @@ ms.custom: subject-cost-optimization
 ms.service: cognitive-services
 ms.topic: how-to
 ms.date: 12/15/2020
-ms.openlocfilehash: 661af89ad223978abbefd71dd8008577475c5875
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: db99fa5caff27a24aa04e4780b25ade3f7c25496
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99221359"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699923"
 ---
 # <a name="plan-and-manage-costs-for-azure-cognitive-services"></a>规划和管理 Azure 认知服务的成本
 
@@ -68,7 +68,7 @@ ms.locfileid: "99221359"
 
 <!-- Note to Azure service writer: Modify the following as needed for your service. Replace example screenshots with ones taken for your service. If you need assistance capturing screenshots, ask banders for help. -->
 
-将 Azure 资源用于认知服务时，会产生成本。 Azure 资源使用情况单位成本因时间间隔 (秒、分钟、小时和天) 或 (字节、mb 等) 的单位使用情况而异。 一旦使用认知服务 (或认知服务开始) ，就会产生成本，你可以在 [成本分析](../cost-management/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)中查看成本。
+将 Azure 资源用于认知服务时，会产生成本。 Azure 资源使用情况单位成本因时间间隔 (秒、分钟、小时和天) 或 (字节、mb 等) 的单位使用情况而异。 一旦使用认知服务 (或认知服务开始) ，就会产生成本，你可以在 [成本分析](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)中查看成本。
 
 使用成本分析时，可以在不同时间间隔的图形和表中查看认知服务成本。 有些示例是按天、当前和上个月和年。 你还可以查看预算和预测成本的成本。 随着时间的推移切换到较长的视图，可帮助你确定支出趋势。 你会看到超支可能发生的位置。 如果已创建预算，还可以轻松地查看超出的位置。
 

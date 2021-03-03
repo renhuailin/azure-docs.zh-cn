@@ -6,15 +6,15 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 11/17/2020
-ms.openlocfilehash: f98e22ba28dcd05d164f40c301a2e43df66898de
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 60de25231f5fad3e7b1ddec21048d048e31f3416
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100597097"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737318"
 ---
 # <a name="resource-manager-template-samples-for-data-collection-rules-in-azure-monitor"></a>用于 Azure Monitor 中的数据收集规则的资源管理器模板示例
-本文包含用于在 Azure Monitor 中为虚拟机部署和配置 [Log Analytics 代理](../platform/log-analytics-agent.md)和[诊断扩展](../platform/diagnostics-extension-overview.md)的 [Azure 资源管理器模板](../../azure-resource-manager/templates/template-syntax.md)示例。 每个示例都包含模板文件和参数文件，其中包含要提供给模板的示例值。
+本文包含用于在 Azure Monitor 中为虚拟机部署和配置 [Log Analytics 代理](./log-analytics-agent.md)和[诊断扩展](./diagnostics-extension-overview.md)的 [Azure 资源管理器模板](../../azure-resource-manager/templates/template-syntax.md)示例。 每个示例都包含模板文件和参数文件，其中包含要提供给模板的示例值。
 
 [!INCLUDE [azure-monitor-samples](../../../includes/azure-monitor-resource-manager-samples.md)]
 
@@ -144,6 +144,6 @@ ms.locfileid: "100597097"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [获取 Azure Monitor 的其他示例模板](../samples/resource-manager-samples.md)。
-* [详细了解 Log Analytics 代理](../platform/log-analytics-agent.md)。
-* [详细了解诊断扩展](../platform/diagnostics-extension-overview.md)。
+* [获取 Azure Monitor 的其他示例模板](../resource-manager-samples.md)。
+* [详细了解 Log Analytics 代理](./log-analytics-agent.md)。
+* [详细了解诊断扩展](./diagnostics-extension-overview.md)。

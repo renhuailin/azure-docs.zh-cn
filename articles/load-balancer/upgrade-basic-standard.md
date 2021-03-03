@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 01/23/2020
 ms.author: irenehua
-ms.openlocfilehash: 3bf910d3309285c8b700c39af68fb90715f8863a
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: 0f8476a8759dd445500c2eb6c029cd618a7ff8ce
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99987719"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101718975"
 ---
 # <a name="upgrade-azure-public-load-balancer"></a>升级 Azure 公共负载均衡器
 [Azure 标准负载均衡器](load-balancer-overview.md)通过区域冗余提供丰富的功能和高可用性。 有关负载均衡器 SKU 的详细信息，请参阅[比较表](./skus.md#skus)。
@@ -23,7 +23,7 @@ ms.locfileid: "99987719"
 2. 运行 PowerShell 脚本以完成升级和流量迁移。
 
 > [!IMPORTANT]
-> 脚本当前正在进行维护。 有关如何从基本 SKU 和标准 SKU 升级公共 IP 地址的说明，请参阅 [此处](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address-upgrade?tabs=option-upgrade-cli%2Coption-migrate-powershell#tabpanel_CeZOj-G++Q_option-upgrade-cli) 的说明。
+> 脚本当前正在进行维护。 有关如何从基本 SKU 和标准 SKU 升级公共 IP 地址的说明，请参阅 [此处](../virtual-network/virtual-network-public-ip-address-upgrade.md?tabs=option-upgrade-cli%2coption-migrate-powershell#tabpanel_CeZOj-G++Q_option-upgrade-cli) 的说明。
 
 ## <a name="upgrade-overview"></a>升级概述
 

@@ -5,12 +5,12 @@ ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: b4a255235b2c6d772ab9a05dffacd4574ddd3280
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 0ce2651d5cfcb1578d78982af109a004aaac11f4
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100584193"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719774"
 ---
 # <a name="custom-metric-collection-in-net-and-net-core"></a>.NET 和 .NET Core 中的自定义指标集合
 
@@ -33,7 +33,7 @@ Azure Monitor Application Insights.NET 和 .NET Core SDK 有两种不同的方�
 总之，推荐使用 `GetMetric()` 方法，因为它执行预聚合、从所有 Track() 调用中累积值，并每分钟发送一次汇总/聚合。 通过发送更少的数据点，同时仍然收集所有相关信息，这可以显著降低成本和性能开销。
 
 > [!NOTE]
-> 只有 .NET 和 .NET Core SDK 具有 GetMetric() 方法。 如果你使用的是 Java，则可以使用 [Micrometer 指标](./micrometer-java.md)或 `TrackMetric()`。 对于 Python，可以使用 [OpenCensus.stats](./opencensus-python.md#metrics) 发送自定义指标。 对于 JavaScript 和 Node.js，仍可以使用 `TrackMetric()`，但请记住上一部分总结的注意事项。
+> 只有 .NET 和 .NET Core SDK 具有 GetMetric() 方法。 如果你使用的是 Java，则可以使用 [Micrometer 指标](./micrometer-java.md)或 `TrackMetric()`。 对于 JavaScript 和 Node.js，仍可以使用 `TrackMetric()`，但请记住上一部分总结的注意事项。 对于 Python，可以使用 [OpenCensus](./opencensus-python.md#metrics) 发送自定义指标，但指标实现不同。
 
 ## <a name="getting-started-with-getmetric"></a>GetMetric 入门
 
@@ -69,7 +69,7 @@ namespace WorkerService3
             // Here "computersSold", a custom metric name, is being tracked with a value of 42 every second.
             while (!stoppingToken.IsCancellationRequested)
             {
-                _telemetryClient.GetMetric("computersSold").TrackValue(42);
+                _telemetryClient.GetMetric("ComputersSold").TrackValue(42);
 
                 _logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
                 await Task.Delay(1000, stoppingToken);
@@ -89,7 +89,7 @@ Application Insights Telemetry: {"name":"Microsoft.ApplicationInsights.Dev.00000
 "ai.internal.sdkVersion":"m-agg2c:2.12.0-21496",
 "ai.internal.nodeName":"Test-Computer-Name"},
 "data":{"baseType":"MetricData",
-"baseData":{"ver":2,"metrics":[{"name":"computersSold",
+"baseData":{"ver":2,"metrics":[{"name":"ComputersSold",
 "kind":"Aggregation",
 "value":1722,
 "count":41,
@@ -101,6 +101,9 @@ Application Insights Telemetry: {"name":"Microsoft.ApplicationInsights.Dev.00000
 ```
 
 此单个遥测项代表了 41 个不同指标度量的聚合。 由于我们反复发送相同的值，因此标准偏差 (stDev) 为 0，具有相同的最大值 (max) 和最小值 (min)  。 值属性表示聚合的所有单个值的总和。
+
+> [!NOTE]
+> GetMetric 不支持跟踪 ) 或跟踪直方图/分布 (的最后一个值。
 
 如果我们在日志（分析）体验中检查 Application Insights 资源，此单独的遥测项将如下所示：
 
@@ -283,7 +286,7 @@ computersSold.TrackValue(100, "Dim1Value1", "Dim2Value3");
 // The above call does not track the metric, and returns false.
 ```
 
-* `seriesCountLimit` 是指标可以包含的最大数据时序数目。 达到此限制后，调用 `TrackValue()`。
+* `seriesCountLimit` 是指标可以包含的最大数据时序数目。 达到此限制后，将不会跟踪对的调用 `TrackValue()` 。
 * `valuesPerDimensionLimit` 以类似的方式限制每个维度的非重复值数目。
 * `restrictToUInt32Values` 确定是否只跟踪非负整数值。
 

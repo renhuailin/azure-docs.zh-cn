@@ -6,18 +6,18 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/24/2020
-ms.openlocfilehash: f9418b9a4bac9c458c530b246f7400ac067f5623
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 9c20994c27680aaccb68db2ff78deb6b6bf9f8cf
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100608338"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101718125"
 ---
 # <a name="connect-operations-manager-to-azure-monitor"></a>将 Operations Manager 连接到 Azure Monitor
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-若要保持 [System Center Operations Manager](/system-center/scom/key-concepts) 中的现有投资并将扩展功能用于 Azure Monitor，可将 Operations Manager 与 Log Analytics 工作区集成。 这样既可以利用 Azure Monitor 中的日志，又可以继续使用 Operations Manager 执行以下操作：
+若要保持 [System Center Operations Manager](/system-center/scom/key-concepts) 中的现有投资并将扩展功能用于 Azure Monitor，可将 Operations Manager 与 Log Analytics 工作区集成。 这样，便可以利用日志 Azure Monitor 的机会，同时继续使用 Operations Manager：
 
 * 使用 Operations Manager 监视 IT 服务的运行状况
 * 保持与支持事件和问题管理的 ITSM 解决方案集成
@@ -25,7 +25,7 @@ ms.locfileid: "100608338"
 
 与 System Center Operations Manager 集成时，可以利用 Azure Monitor 在收集、存储和分析 Operations Manager 日志数据方面的速度和效率优势，提高服务操作策略的价值。 Azure Monitor 日志查询可以帮助你确定问题的相关因素和根本原因，并重现其发生过程，为现有问题管理过程提供支持。 查询引擎在检查性能、事件和警报数据方面非常灵活，丰富的仪表板和报告功能可以有意义的方式公开此数据，这均展示了 Azure Monitor 为使 Operations Manager 锦上添花所引入的强大优势。
 
-向 Operations Manager 管理组报告的代理基于在工作区中启用的 [Log Analytics 数据源](../agents/agent-data-sources.md)和解决方案收集来自服务器的数据。 根据已启用的解决方案，其数据可直接从 Operations Manager 管理服务器发送到服务，或者出于在代理托管系统上收集的数据量的考虑，直接从代理发送到 Log Analytics 工作区。 管理服务器直接将数据转发到服务，数据永远不会写入操作数据库或数据仓库数据库。 当管理服务器与 Azure Monitor 断开连接时，会将数据缓存在本地直到重新建立通信。 如果管理服务器由于计划内维护或计划外停机而处于脱机状态，管理组中的另一台管理服务器将恢复与 Azure Monitor 的连接。  
+向 Operations Manager 管理组报告的代理基于工作区中已启用的 [Log Analytics 数据源](../agents/agent-data-sources.md) 和解决方案从服务器收集数据。 根据已启用的解决方案，其数据可直接从 Operations Manager 管理服务器发送到服务，或者出于在代理托管系统上收集的数据量的考虑，直接从代理发送到 Log Analytics 工作区。 管理服务器直接将数据转发到服务，数据永远不会写入操作数据库或数据仓库数据库。 当管理服务器与 Azure Monitor 断开连接时，会将数据缓存在本地直到重新建立通信。 如果管理服务器由于计划内维护或计划外停机而处于脱机状态，管理组中的另一台管理服务器将恢复与 Azure Monitor 的连接。  
 
 下图显示了 System Center Operations Manager 管理组中的管理服务器及代理与 Azure Monitor 之间的连接，包括方向和端口。
 
@@ -33,15 +33,15 @@ ms.locfileid: "100608338"
 
 如果 IT 安全策略不允许网络上的计算机连接到 Internet，可将管理服务器配置为连接到 Log Analytics 网关，以根据启用的解决方案接收配置信息并发送收集的数据。 有关如何将 Operations Manager 管理组配置为通过 Log Analytics 网关与 Azure Monitor 通信的详细信息和步骤，请参阅[使用 Log Analytics 网关将计算机连接到 Azure Monitor](./gateway.md)。  
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在开始之前，请查看以下要求。
 
 * Azure Monitor 仅支持 System Center Operations Manager 2016 或更高版本、Operations Manager 2012 SP1 UR6 或更高版本，以及 Operations Manager 2012 R2 UR2 或更高版本。 Operations Manager 2012 SP1 UR7 和 Operations Manager 2012 R2 UR3 中添加了代理服务器支持。
 * 将 System Center Operations Manager 2016 与美国政府云集成需要使用更新汇总 2 或更高版本随附的更新顾问管理包。 System Center Operations Manager 2012 R2 需要更新汇总 3 或更高版本随附的更新顾问管理包。
 * 所有 Operations Manager 代理必须满足最低支持要求。 确保代理中安装了最起码的更新，否则 Windows 代理通信可能失败，并在 Operations Manager 事件日志中生成错误。
-* Log Analytics 工作区。 有关详细信息，请查看 [Log Analytics 工作区概述](../platform/design-logs-deployment.md)。
-* 使用 [Log Analytics 参与者角色](../platform/manage-access.md#manage-access-using-azure-permissions)成员帐户在 Azure 中进行身份验证。
+* Log Analytics 工作区。 有关详细信息，请查看 [Log Analytics 工作区概述](../logs/design-logs-deployment.md)。
+* 使用 [Log Analytics 参与者角色](../logs/manage-access.md#manage-access-using-azure-permissions)成员帐户在 Azure 中进行身份验证。
 
 * 支持的区域-System Center Operations Manager 连接到 Log Analytics 工作区，则仅支持以下 Azure 区域：
     - 美国中西部
@@ -95,7 +95,7 @@ ms.locfileid: "100608338"
 
 ### <a name="tls-12-protocol"></a>TLS 1.2 协议
 
-为了确保传输到 Azure Monitor 的数据的安全性，强烈建议将代理和管理组配置为至少使用传输层安全性 (TLS) 1.2。 我们发现旧版 TLS/安全套接字层 (SSL) 容易受到攻击，尽管目前出于向后兼容，这些协议仍可正常工作，但我们 **不建议使用**。 有关其他信息，请查看[使用 TLS 1.2 安全地发送数据](../platform/data-security.md#sending-data-securely-using-tls-12)。
+为了确保传输到 Azure Monitor 的数据的安全性，强烈建议将代理和管理组配置为至少使用传输层安全性 (TLS) 1.2。 我们发现旧版 TLS/安全套接字层 (SSL) 容易受到攻击，尽管目前出于向后兼容，这些协议仍可正常工作，但我们 **不建议使用**。 有关其他信息，请查看[使用 TLS 1.2 安全地发送数据](../logs/data-security.md#sending-data-securely-using-tls-12)。
 
 ## <a name="connecting-operations-manager-to-azure-monitor"></a>将 Operations Manager 连接到 Azure Monitor
 
@@ -133,7 +133,7 @@ ms.locfileid: "100608338"
 
 配置与 Log Analytics 工作区的集成后，只是建立了与服务的连接，不会从向管理组报告的代理中收集任何数据。 配置针对 Azure Monitor 收集日志数据的特定代理管理计算机后才会出现这种情况。 可以单独选择计算机对象，或者选择一个包含 Windows 计算机对象的组。 不能选择包含另一个类实例的组，如逻辑磁盘或 SQL 数据库。
 
-1. 打开 Operations Manager 控制台并选择“**管理**”工作区。
+1. 打开 Operations Manager 控制台并选择“管理”工作区。
 1. 展开 Operations Management Suite 节点，并单击“**连接**”。
 1. 在窗格右侧的“操作”标题下单击“**添加计算机/组**”链接。
 1. 在“计算机搜索”对话框中，可以搜索 Operations Manager 监视的计算机或组。 选择包括 Operations Manager 管理服务器的计算机或组以加载到 Azure Monitor 中，单击 " **添加**"，然后单击 **"确定"**。
@@ -345,4 +345,3 @@ union *
 ## <a name="next-steps"></a>后续步骤
 
 若要添加功能并收集数据，请参阅[从解决方案库中添加 Azure Monitor 解决方案](../insights/solutions.md)。
-

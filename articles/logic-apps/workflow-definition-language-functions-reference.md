@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: reference
-ms.date: 01/13/2021
-ms.openlocfilehash: 4ed5a26e1f871f7ac5fd8f29f0a66bc39a8013a1
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.date: 02/18/2021
+ms.openlocfilehash: 484ee9e67aa2adc11529f8a2239a813b3b12f7b2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99507242"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702481"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>有关在 Azure 逻辑应用和 Power Automate 的表达式中使用函数的参考指南
 
@@ -282,7 +282,7 @@ Azure 逻辑应用会自动或隐式地在某些数据类型之间进行转换�
 | [multipartBody](../logic-apps/workflow-definition-language-functions-reference.md#multipartBody) | 返回具有多个部分的操作输出中某个特定部分的正文。 |
 | [outputs](../logic-apps/workflow-definition-language-functions-reference.md#outputs) | 返回操作在运行时的输出。 |
 | [parameters](../logic-apps/workflow-definition-language-functions-reference.md#parameters) | 返回工作流定义中描述的参数的值。 |
-| [result](../logic-apps/workflow-definition-language-functions-reference.md#result) | 返回指定的范围受限操作（例如 `For_each`、`Until` 和 `Scope`）中所有操作的输入和输出。 |
+| [result](../logic-apps/workflow-definition-language-functions-reference.md#result) | 返回指定作用域内操作内顶级操作的输入和输出，例如 `For_each` 、 `Until` 和 `Scope` 。 |
 | [trigger](../logic-apps/workflow-definition-language-functions-reference.md#trigger) | 返回触发器在运行时的输出，或者来自其他 JSON 名称和值对的输出。 另请参阅 [triggerOutputs](#triggerOutputs) 和 [triggerBody](../logic-apps/workflow-definition-language-functions-reference.md#triggerBody)。 |
 | [triggerBody](../logic-apps/workflow-definition-language-functions-reference.md#triggerBody) | 返回触发器在运行时的 `body` 输出。 请参阅 [trigger](../logic-apps/workflow-definition-language-functions-reference.md#trigger)。 |
 | [triggerFormDataValue](../logic-apps/workflow-definition-language-functions-reference.md#triggerFormDataValue) | 返回与表单数据或表单编码触发器输出中某个键名匹配的单个值。  |
@@ -351,7 +351,7 @@ action()
 action().outputs.body.<property>
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*property*> | 否 | 字符串 | 需要获取其值的操作对象属性的名称：**name**、**startTime**、**endTime**、**inputs**、**outputs**、**status**、**code**、**trackingId** 和 **clientTrackingId**。 在 Azure 门户中，可以通过查看特定运行历史记录的详细信息来查找这些属性。 有关详细信息，请参阅 [REST API - 工作流运行操作](/rest/api/logic/workflowrunactions/get)。 |
 |||||
@@ -373,7 +373,7 @@ action().outputs.body.<property>
 actionBody('<actionName>')
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*actionName*> | 是 | 字符串 | 所需的操作 `body` 输出的名称 |
 |||||
@@ -418,7 +418,7 @@ actionBody('Get_user')
 actionOutputs('<actionName>')
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*actionName*> | 是 | 字符串 | 所需的操作输出的名称 |
 |||||
@@ -491,7 +491,7 @@ actions('<actionName>')
 actions('<actionName>').outputs.body.<property>
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*actionName*> | 是 | 字符串 | 需要获取其输出的操作对象的名称  |
 | <*property*> | 否 | 字符串 | 需要获取其值的操作对象属性的名称：**name**、**startTime**、**endTime**、**inputs**、**outputs**、**status**、**code**、**trackingId** 和 **clientTrackingId**。 在 Azure 门户中，可以通过查看特定运行历史记录的详细信息来查找这些属性。 有关详细信息，请参阅 [REST API - 工作流运行操作](/rest/api/logic/workflowrunactions/get)。 |
@@ -522,7 +522,7 @@ actions('Get_user').outputs.body.status
 add(<summand_1>, <summand_2>)
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*summand_1*>, <*summand_2*> | 是 | 整数、浮点数或混合类型 | 要相加的数字 |
 |||||
@@ -552,7 +552,7 @@ add(1, 1.5)
 addDays('<timestamp>', <days>, '<format>'?)
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | 是 | 字符串 | 包含时间戳的字符串 |
 | <*days*> | 是 | Integer | 要加上的正负天数 |
@@ -594,7 +594,7 @@ addDays('2018-03-15T00:00:00Z', -5)
 addHours('<timestamp>', <hours>, '<format>'?)
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | 是 | 字符串 | 包含时间戳的字符串 |
 | <*hours*> | 是 | Integer | 要加上的正负小时数 |
@@ -636,7 +636,7 @@ addHours('2018-03-15T15:00:00Z', -5)
 addMinutes('<timestamp>', <minutes>, '<format>'?)
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | 是 | 字符串 | 包含时间戳的字符串 |
 | <*minutes*> | 是 | Integer | 要加上的正负分钟数 |
@@ -678,11 +678,11 @@ addMinutes('2018-03-15T00:20:00Z', -5)
 addProperty(<object>, '<property>', <value>)
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*object*> | 是 | 对象 | 要将属性添加到的 JSON 对象 |
 | <*property*> | 是 | 字符串 | 要添加的属性的名称 |
-| <*value*> | 是 | Any | 属性的值 |
+| <*value*> | 是 | 任意 | 属性的值 |
 |||||
 
 | 返回值 | 类型 | 说明 |
@@ -696,12 +696,12 @@ addProperty(<object>, '<property>', <value>)
 addProperty(<object>['<parent-property>'], '<child-property>', <value>)
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*object*> | 是 | 对象 | 要将属性添加到的 JSON 对象 |
 | <*parent-property*> | 是 | 字符串 | 要在其中添加子属性的父属性的名称 |
 | <*child-property*> | 是 | 字符串 | 要添加的子属性的名称 |
-| <*value*> | 是 | Any | 要为指定属性设置的值 |
+| <*value*> | 是 | 任意 | 要为指定属性设置的值 |
 |||||
 
 | 返回值 | 类型 | 说明 |
@@ -777,7 +777,7 @@ addProperty(json('{ "customerName": { "firstName": "Sophia", "surName": "Owen" }
 addSeconds('<timestamp>', <seconds>, '<format>'?)
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | 是 | 字符串 | 包含时间戳的字符串 |
 | <*seconds*> | 是 | Integer | 要加上的正负秒数 |
@@ -820,7 +820,7 @@ addSeconds('2018-03-15T00:00:30Z', -5)
 addToTime('<timestamp>', <interval>, '<timeUnit>', '<format>'?)
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | 是 | 字符串 | 包含时间戳的字符串 |
 | <*间隔*> | 是 | Integer | 要添加的指定时间单位数 |
@@ -864,14 +864,14 @@ addToTime('2018-01-01T00:00:00Z', 1, 'Day', 'D')
 and(<expression1>, <expression2>, ...)
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*expression1*>, <*expression2*>, ... | 是 | 布尔 | 要检查的表达式 |
+| <*expression1*>, <*expression2*>, ... | 是 | Boolean | 要检查的表达式 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | -----| ----------- |
-| true 或 false | 布尔 | 当所有表达式均为 true 时返回 true。 当至少一个表达式为 false 时返回 false。 |
+| true 或 false | Boolean | 当所有表达式均为 true 时返回 true。 当至少一个表达式为 false 时返回 false。 |
 ||||
 
 *示例 1*
@@ -917,7 +917,7 @@ and(equals(1, 2), equals(1, 3))
 array('<value>')
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*value*> | 是 | 字符串 | 用于创建数组的字符串 |
 |||||
@@ -950,7 +950,7 @@ array('hello')
 base64('<value>')
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*value*> | 是 | 字符串 | 输入字符串 |
 |||||
@@ -983,7 +983,7 @@ base64('hello')
 base64ToBinary('<value>')
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*value*> | 是 | 字符串 | 要转换的 base64 编码字符串 |
 |||||
@@ -1018,7 +1018,7 @@ base64ToBinary('aGVsbG8=')
 base64ToString('<value>')
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*value*> | 是 | 字符串 | 要解码的 base64 编码字符串 |
 |||||
@@ -1048,7 +1048,7 @@ base64ToString('aGVsbG8=')
 binary('<value>')
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*value*> | 是 | 字符串 | 要转换的字符串 |
 |||||
@@ -1082,7 +1082,7 @@ binary('hello')
 body('<actionName>')
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*actionName*> | 是 | 字符串 | 所需的操作 `body` 输出的名称 |
 |||||
@@ -1127,16 +1127,16 @@ body('Get_user')
 bool(<value>)
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*value*> | 是 | Any | 要转换为布尔值的值。 |
+| <*value*> | 是 | 任意 | 要转换为布尔值的值。 |
 |||||
 
 如果使用的是 `bool()` 对象，则对象的值必须是可以转换为布尔值的字符串或整数。
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| `true` 或 `false` | 布尔值 | 指定值的布尔值。 |
+| `true` 或 `false` | Boolean | 指定值的布尔值。 |
 ||||
 
 *输出*
@@ -1162,14 +1162,14 @@ bool(<value>)
 coalesce(<object_1>, <object_2>, ...)
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*object_1*>, <*object_2*>, ... | 是 | 任意，可以混用各种类型 | 要检查是否为 null 的一个或多个项 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*first-non-null-item*> | Any | 第一个不为 null 的项或值。 如果所有参数均为 null，则此函数返回 null。 |
+| <*first-non-null-item*> | 任意 | 第一个不为 null 的项或值。 如果所有参数均为 null，则此函数返回 null。 |
 ||||
 
 *示例*
@@ -1198,7 +1198,7 @@ coalesce(null, null, null)
 concat('<text1>', '<text2>', ...)
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*text1*>, <*text2*>, ... | 是 | 字符串 | 至少两个要组合的字符串 |
 |||||
@@ -1237,7 +1237,7 @@ contains([<collection>], '<value>')
 * 数组，在其中查找值
 * 字典，在其中查找键
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*collection*> | 是 | 字符串、数组或字典 | 要检查的集合 |
 | <*value*> | 是 | 分别为字符串、数组或字典 | 要查找的项 |
@@ -1245,7 +1245,7 @@ contains([<collection>], '<value>')
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| true 或 false | 布尔 | 当找到该项时返回 true。 找不到时返回 false。 |
+| true 或 false | Boolean | 当找到该项时返回 true。 找不到时返回 false。 |
 ||||
 
 *示例 1*
@@ -1274,7 +1274,7 @@ contains('hello world', 'universe')
 convertFromUtc('<timestamp>', '<destinationTimeZone>', '<format>'?)
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | 是 | 字符串 | 包含时间戳的字符串 |
 | <*destinationTimeZone*> | 是 | 字符串 | 目标时区的名称。 有关时区名称，请参阅 [Microsoft 时区索引值](https://support.microsoft.com/help/973627/microsoft-time-zone-index-values)，但你可能需要删除时区名称中的任何标点。 |
@@ -1316,7 +1316,7 @@ convertFromUtc('2018-01-01T08:00:00.0000000Z', 'Pacific Standard Time', 'D')
 convertTimeZone('<timestamp>', '<sourceTimeZone>', '<destinationTimeZone>', '<format>'?)
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | 是 | 字符串 | 包含时间戳的字符串 |
 | <*sourceTimeZone*> | 是 | 字符串 | 源时区的名称。 有关时区名称，请参阅 [Microsoft 时区索引值](https://support.microsoft.com/help/973627/microsoft-time-zone-index-values)，但你可能需要删除时区名称中的任何标点。 |
@@ -1359,7 +1359,7 @@ convertTimeZone('2018-01-01T80:00:00.0000000Z', 'UTC', 'Pacific Standard Time', 
 convertToUtc('<timestamp>', '<sourceTimeZone>', '<format>'?)
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | 是 | 字符串 | 包含时间戳的字符串 |
 | <*sourceTimeZone*> | 是 | 字符串 | 源时区的名称。 有关时区名称，请参阅 [Microsoft 时区索引值](https://support.microsoft.com/help/973627/microsoft-time-zone-index-values)，但你可能需要删除时区名称中的任何标点。 |
@@ -1402,7 +1402,7 @@ convertToUtc('01/01/2018 00:00:00', 'Pacific Standard Time', 'D')
 createArray('<object1>', '<object2>', ...)
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*object1*>, <*object2*>, ... | 是 | 任意，但不能混用 | 至少两个用于创建数组的项 |
 |||||
@@ -1432,7 +1432,7 @@ createArray('h', 'e', 'l', 'l', 'o')
 dataUri('<value>')
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*value*> | 是 | 字符串 | 要转换的字符串 |
 |||||
@@ -1464,7 +1464,7 @@ dataUri('hello')
 dataUriToBinary('<value>')
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*value*> | 是 | 字符串 | 要转换的数据 URI |
 |||||
@@ -1499,7 +1499,7 @@ dataUriToBinary('data:text/plain;charset=utf-8;base64,aGVsbG8=')
 dataUriToString('<value>')
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*value*> | 是 | 字符串 | 要转换的数据 URI |
 |||||
@@ -1529,7 +1529,7 @@ dataUriToString('data:text/plain;charset=utf-8;base64,aGVsbG8=')
 dayOfMonth('<timestamp>')
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | 是 | 字符串 | 包含时间戳的字符串 |
 |||||
@@ -1559,7 +1559,7 @@ dayOfMonth('2018-03-15T13:27:36Z')
 dayOfWeek('<timestamp>')
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | 是 | 字符串 | 包含时间戳的字符串 |
 |||||
@@ -1589,7 +1589,7 @@ dayOfWeek('2018-03-15T13:27:36Z')
 dayOfYear('<timestamp>')
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | 是 | 字符串 | 包含时间戳的字符串 |
 |||||
@@ -1628,7 +1628,7 @@ dayOfYear('2018-03-15T13:27:36Z')
 decodeDataUri('<value>')
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*value*> | 是 | 字符串 | 要解码的数据 URI 字符串 |
 |||||
@@ -1663,7 +1663,7 @@ decodeDataUri('data:text/plain;charset=utf-8;base64,aGVsbG8=')
 decodeUriComponent('<value>')
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*value*> | 是 | 字符串 | 包含要解码的转义字符的字符串 |
 |||||
@@ -1693,7 +1693,7 @@ decodeUriComponent('https%3A%2F%2Fcontoso.com')
 div(<dividend>, <divisor>)
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*dividend*> | 是 | 整数或浮点数 | 要用作 *divisor* 的被除数的数字 |
 | <*divisor*> | 是 | 整数或浮点数 | 用作 *dividend* 的除数的数字，但不能为 0 |
@@ -1735,7 +1735,7 @@ div(11.0,5)
 encodeUriComponent('<value>')
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*value*> | 是 | 字符串 | 要转换为 URI 编码格式的字符串 |
 |||||
@@ -1767,14 +1767,14 @@ empty('<collection>')
 empty([<collection>])
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*collection*> | 是 | 字符串、数组或对象 | 要检查的集合 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| true 或 false | 布尔 | 当集合为空时返回 true。 不为空时返回 false。 |
+| true 或 false | Boolean | 当集合为空时返回 true。 不为空时返回 false。 |
 ||||
 
 *示例*
@@ -1803,7 +1803,7 @@ empty('abc')
 endsWith('<text>', '<searchText>')
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*text*> | 是 | 字符串 | 要检查的字符串 |
 | <*searchText*> | 是 | 字符串 | 要查找的结尾子字符串 |
@@ -1811,7 +1811,7 @@ endsWith('<text>', '<searchText>')
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| true 或 false  | 布尔 | 当找到结尾子字符串时返回 true。 找不到时返回 false。 |
+| true 或 false  | Boolean | 当找到结尾子字符串时返回 true。 找不到时返回 false。 |
 ||||
 
 *示例 1*
@@ -1845,14 +1845,14 @@ endsWith('hello world', 'universe')
 equals('<object1>', '<object2>')
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*object1*>, <*object2*> | 是 | 各种 | 要比较的值、表达式或对象 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| true 或 false | 布尔 | 当两者相等时返回 true。 不相等时返回 false。 |
+| true 或 false | Boolean | 当两者相等时返回 true。 不相等时返回 false。 |
 ||||
 
 *示例*
@@ -1880,14 +1880,14 @@ first('<collection>')
 first([<collection>])
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*collection*> | 是 | 字符串或数组 | 要在其中查找第一项的集合 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*first-collection-item*> | Any | 集合中的第一项 |
+| <*first-collection-item*> | 任意 | 集合中的第一项 |
 ||||
 
 *示例*
@@ -1906,7 +1906,7 @@ first(createArray(0, 1, 2))
 
 <a name="float"></a>
 
-### <a name="float"></a>float
+### <a name="float"></a>FLOAT
 
 将浮点数的字符串版本转换为实际的浮点数。
 仅当将自定义参数传递给应用（例如，逻辑应用或流）时，才使用此函数。
@@ -1915,7 +1915,7 @@ first(createArray(0, 1, 2))
 float('<value>')
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*value*> | 是 | 字符串 | 包含要转换的有效浮点数的字符串 |
 |||||
@@ -1945,9 +1945,9 @@ float('10.333')
 formatDateTime('<timestamp>', '<format>'?)
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*timestamp*> | 是 | String | 包含时间戳的字符串 |
+| <*timestamp*> | 是 | 字符串 | 包含时间戳的字符串 |
 | <*format*> | 否 | 字符串 | [单一格式的说明符](/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式的模式](/dotnet/standard/base-types/custom-date-and-time-format-strings)。 时间戳的默认格式是 ["o"](/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy yyyy-mm-ddthh： MM： ss'.'fffffffk) ，它符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 并保留时区信息。 |
 |||||
 
@@ -1976,7 +1976,7 @@ formatDateTime('03/15/2018 12:00:00', 'yyyy-MM-ddTHH:mm:ss')
 formDataMultiValues('<actionName>', '<key>')
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*actionName*> | 是 | 字符串 | 其输出中具有所需键值的操作 |
 | <*key*> | 是 | 字符串 | 需要获取其值的键的名称 |
@@ -2008,7 +2008,7 @@ formDataMultiValues('Send_an_email', 'Subject')
 formDataValue('<actionName>', '<key>')
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*actionName*> | 是 | 字符串 | 其输出中具有所需键值的操作 |
 | <*key*> | 是 | 字符串 | 需要获取其值的键的名称 |
@@ -2039,7 +2039,7 @@ formDataValue('Send_an_email', 'Subject')
 formatNumber(<number>, <format>, <locale>?)
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*number*> | 是 | 整数或双精度 | 要设置格式的值。 |
 | <*format*> | 是 | 字符串 | 一个复合格式字符串，指定要使用的格式。 有关支持的数字格式字符串，请参阅 `number.ToString(<format>, <locale>)` 支持的[标准数字格式字符串](/dotnet/standard/base-types/standard-numeric-format-strings)。 |
@@ -2093,10 +2093,10 @@ formatNumber(17.35, 'C2', 'is-is')
 getFutureTime(<interval>, <timeUnit>, <format>?)
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*间隔*> | 是 | Integer | 要添加的指定时间单位数 |
-| <*timeUnit*> | 是 | String | 间隔使用的时间单位：“秒”、“分钟”、“小时”、“日”、“周”、“月”、“年” |
+| <*timeUnit*> | 是 | 字符串 | 间隔使用的时间单位：“秒”、“分钟”、“小时”、“日”、“周”、“月”、“年” |
 | <*format*> | 否 | 字符串 | [单一格式的说明符](/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式的模式](/dotnet/standard/base-types/custom-date-and-time-format-strings)。 时间戳的默认格式是 ["o"](/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy yyyy-mm-ddthh： MM： ss'.'fffffffk) ，它符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 并保留时区信息。 |
 |||||
 
@@ -2137,10 +2137,10 @@ getFutureTime(5, 'Day', 'D')
 getPastTime(<interval>, <timeUnit>, <format>?)
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*间隔*> | 是 | Integer | 要减去的指定时间单位数 |
-| <*timeUnit*> | 是 | String | 间隔使用的时间单位：“秒”、“分钟”、“小时”、“日”、“周”、“月”、“年” |
+| <*timeUnit*> | 是 | 字符串 | 间隔使用的时间单位：“秒”、“分钟”、“小时”、“日”、“周”、“月”、“年” |
 | <*format*> | 否 | 字符串 | [单一格式的说明符](/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式的模式](/dotnet/standard/base-types/custom-date-and-time-format-strings)。 时间戳的默认格式是 ["o"](/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy yyyy-mm-ddthh： MM： ss'.'fffffffk) ，它符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 并保留时区信息。 |
 |||||
 
@@ -2183,7 +2183,7 @@ greater(<value>, <compareTo>)
 greater('<value>', '<compareTo>')
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*value*> | 是 | 整数、浮点数或字符串 | 要检查是否大于第二个值的第一个值。 |
 | <*compareTo*> | 是 | 分别为整数、浮点数或字符串 | 比较值 |
@@ -2191,7 +2191,7 @@ greater('<value>', '<compareTo>')
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| true 或 false | 布尔 | 当第一个值大于第二个值时返回 true。 当第一个值等于或小于第二个值时返回 false。 |
+| true 或 false | Boolean | 当第一个值大于第二个值时返回 true。 当第一个值等于或小于第二个值时返回 false。 |
 ||||
 
 *示例*
@@ -2220,7 +2220,7 @@ greaterOrEquals(<value>, <compareTo>)
 greaterOrEquals('<value>', '<compareTo>')
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*value*> | 是 | 整数、浮点数或字符串 | 要检查是否大于或等于第二个值的第一个值 |
 | <*compareTo*> | 是 | 分别为整数、浮点数或字符串 | 比较值 |
@@ -2228,7 +2228,7 @@ greaterOrEquals('<value>', '<compareTo>')
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| true 或 false | 布尔 | 当第一个值大于或等于第二个值时返回 true。 当第一个值小于第二个值时返回 false。 |
+| true 或 false | Boolean | 当第一个值大于或等于第二个值时返回 true。 当第一个值小于第二个值时返回 false。 |
 ||||
 
 *示例*
@@ -2247,7 +2247,7 @@ greaterOrEquals('apple', 'banana')
 
 <a name="guid"></a>
 
-### <a name="guid"></a>guid
+### <a name="guid"></a>GUID
 
 生成一个字符串形式的全局唯一标识符 (GUID)，例如“c2ecc88d-88c8-4096-912c-d6f2e2b138ce”：
 
@@ -2261,7 +2261,7 @@ guid()
 guid('<format>')
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*format*> | 否 | 字符串 | 表示返回的 GUID 的单一[格式说明符](/dotnet/api/system.guid.tostring#system_guid_tostring_system_string_)。 默认情况下，格式为“D”，但可以使用“N”、“D”、“B”、“P”或“X”。 |
 |||||
@@ -2291,16 +2291,16 @@ guid('P')
 if(<expression>, <valueIfTrue>, <valueIfFalse>)
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*expression*> | 是 | 布尔 | 要检查的表达式 |
-| <*valueIfTrue*> | 是 | Any | 当表达式为 true 时要返回的值 |
-| <*valueIfFalse*> | 是 | Any | 当表达式为 false 时要返回的值 |
+| <*expression*> | 是 | Boolean | 要检查的表达式 |
+| <*valueIfTrue*> | 是 | 任意 | 当表达式为 true 时要返回的值 |
+| <*valueIfFalse*> | 是 | 任意 | 当表达式为 false 时要返回的值 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*specified-return-value*> | Any | 根据表达式为 true 或 false 返回的指定值 |
+| <*specified-return-value*> | 任意 | 根据表达式为 true 或 false 返回的指定值 |
 ||||
 
 *示例*
@@ -2323,7 +2323,7 @@ if(equals(1, 1), 'yes', 'no')
 indexOf('<text>', '<searchText>')
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*text*> | 是 | 字符串 | 包含要查找的子字符串的字符串 |
 | <*searchText*> | 是 | 字符串 | 要查找的子字符串 |
@@ -2354,7 +2354,7 @@ indexOf('hello world', 'world')
 int('<value>')
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*value*> | 是 | 字符串 | 要转换的字符串 |
 |||||
@@ -2387,7 +2387,7 @@ item()
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*current-array-item*> | Any | 返回在操作的当前迭代中数组中的当前项 |
+| <*current-array-item*> | 任意 | 返回在操作的当前迭代中数组中的当前项 |
 ||||
 
 *示例*
@@ -2409,14 +2409,14 @@ item().body
 items('<loopName>')
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*loopName*> | 是 | 字符串 | for-each 循环的名称 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*item*> | Any | 指定的 for-each 循环中当前周期中的项 |
+| <*item*> | 任意 | 指定的 for-each 循环中当前周期中的项 |
 ||||
 
 *示例*
@@ -2437,7 +2437,7 @@ items('myForEachLoopName')
 iterationIndexes('<loopName>')
 ```
 
-| 参数 | 必需 | 类型 | 说明 | 
+| 参数 | 必选 | 类型 | 说明 | 
 | --------- | -------- | ---- | ----------- | 
 | <*loopName*> | 是 | 字符串 | Until 循环的名称 | 
 ||||| 
@@ -2544,7 +2544,7 @@ json(xml('value'))
 >  
 > 此行为使此功能不适用于输出必须符合定义良好的协定的方案，例如，在关键业务系统或解决方案中。
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*value*> | 是 | 字符串或 XML | 要转换的字符串或 XML |
 |||||
@@ -2646,7 +2646,7 @@ intersection([<collection1>], [<collection2>], ...)
 intersection('<collection1>', '<collection2>', ...)
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*collection1*>, <*collection2*>, ... | 是 | 数组或对象，但不能为两者 | 仅需从中获取共有项的各个集合 |
 |||||
@@ -2676,7 +2676,7 @@ intersection(createArray(1, 2, 3), createArray(101, 2, 1, 10), createArray(6, 8,
 join([<collection>], '<delimiter>')
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*collection*> | 是 | Array | 包含要联接的项的数组 |
 | <*delimiter*> | 是 | 字符串 | 出现在结果字符串中的每个字符之间的分隔符 |
@@ -2708,7 +2708,7 @@ last('<collection>')
 last([<collection>])
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*collection*> | 是 | 字符串或数组 | 要在其中查找最后一项的集合 |
 |||||
@@ -2742,7 +2742,7 @@ last(createArray(0, 1, 2, 3))
 lastIndexOf('<text>', '<searchText>')
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*text*> | 是 | 字符串 | 包含要查找的子字符串的字符串 |
 | <*searchText*> | 是 | 字符串 | 要查找的子字符串 |
@@ -2786,7 +2786,7 @@ length('<collection>')
 length([<collection>])
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*collection*> | 是 | 字符串或数组 | 包含要计数的项的集合 |
 |||||
@@ -2819,7 +2819,7 @@ less(<value>, <compareTo>)
 less('<value>', '<compareTo>')
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*value*> | 是 | 整数、浮点数或字符串 | 要检查是否小于第二个值的第一个值 |
 | <*compareTo*> | 是 | 分别为整数、浮点数或字符串 | 比较项 |
@@ -2827,7 +2827,7 @@ less('<value>', '<compareTo>')
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| true 或 false | 布尔 | 当第一个值小于第二个值时返回 true。 当第一个值等于或大于第二个值时返回 false。 |
+| true 或 false | Boolean | 当第一个值小于第二个值时返回 true。 当第一个值等于或大于第二个值时返回 false。 |
 ||||
 
 *示例*
@@ -2856,7 +2856,7 @@ lessOrEquals(<value>, <compareTo>)
 lessOrEquals('<value>', '<compareTo>')
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*value*> | 是 | 整数、浮点数或字符串 | 要检查是否小于或等于第二个值的第一个值 |
 | <*compareTo*> | 是 | 分别为整数、浮点数或字符串 | 比较项 |
@@ -2864,7 +2864,7 @@ lessOrEquals('<value>', '<compareTo>')
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| true 或 false  | 布尔 | 当第一个值小于或等于第二个值时返回 true。 当第一个值大于第二个值时返回 false。 |
+| true 或 false  | Boolean | 当第一个值小于或等于第二个值时返回 true。 当第一个值大于第二个值时返回 false。 |
 ||||
 
 *示例*
@@ -2914,7 +2914,7 @@ max(<number1>, <number2>, ...)
 max([<number1>, <number2>, ...])
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*number1*>, <*number2*>, ... | 是 | 整数、浮点数或两者 | 需要从中获取最大值的数字集 |
 | [<*number1*>, <*number2*>, ...] | 是 | 数组 - 整数、浮点数或两者 | 需要从中获取最大值的数字数组 |
@@ -2947,7 +2947,7 @@ min(<number1>, <number2>, ...)
 min([<number1>, <number2>, ...])
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*number1*>, <*number2*>, ... | 是 | 整数、浮点数或两者 | 需要从中获取最小值的数字集 |
 | [<*number1*>, <*number2*>, ...] | 是 | 数组 - 整数、浮点数或两者 | 需要从中获取最小值的数字数组 |
@@ -2980,7 +2980,7 @@ min(createArray(1, 2, 3))
 mod(<dividend>, <divisor>)
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*dividend*> | 是 | 整数或浮点数 | 要用作 *divisor* 的被除数的数字 |
 | <*divisor*> | 是 | 整数或浮点数 | 用作 *dividend* 的除数的数字，但不能为 0。 |
@@ -3011,7 +3011,7 @@ mod(3, 2)
 mul(<multiplicand1>, <multiplicand2>)
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*multiplicand1*> | 是 | 整数或浮点数 | 要与 *multiplicand2* 相乘的数字 |
 | <*multiplicand2*> | 是 | 整数或浮点数 | 要与 *multiplicand1* 相乘的数字 |
@@ -3046,7 +3046,7 @@ mul(1.5, 2)
 multipartBody('<actionName>', <index>)
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*actionName*> | 是 | 字符串 | 具有多部分输出的操作的名称 |
 | <*index*> | 是 | Integer | 所需部分的索引值 |
@@ -3068,14 +3068,14 @@ multipartBody('<actionName>', <index>)
 not(<expression>)
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*expression*> | 是 | 布尔 | 要检查的表达式 |
+| <*expression*> | 是 | Boolean | 要检查的表达式 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| true 或 false | 布尔 | 当表达式为 false 时返回 true。 当表达式为 true 时返回 false。 |
+| true 或 false | Boolean | 当表达式为 false 时返回 true。 当表达式为 true 时返回 false。 |
 ||||
 
 *示例 1*
@@ -3117,14 +3117,14 @@ not(equals(1, 1))
 or(<expression1>, <expression2>, ...)
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*expression1*>, <*expression2*>, ... | 是 | 布尔 | 要检查的表达式 |
+| <*expression1*>, <*expression2*>, ... | 是 | Boolean | 要检查的表达式 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| true 或 false | 布尔 | 当至少一个表达式为 true 时返回 true。 当所有表达式均为 false 时返回 false。 |
+| true 或 false | Boolean | 当至少一个表达式为 true 时返回 true。 当所有表达式均为 false 时返回 false。 |
 ||||
 
 *示例 1*
@@ -3165,7 +3165,7 @@ or(equals(1, 2), equals(1, 3))
 outputs('<actionName>')
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*actionName*> | 是 | 字符串 | 所需的操作输出的名称 |
 |||||
@@ -3220,7 +3220,7 @@ outputs('Get_user')
 
 <a name="parameters"></a>
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
 返回工作流定义中描述的参数的值。
 
@@ -3228,14 +3228,14 @@ outputs('Get_user')
 parameters('<parameterName>')
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*parameterName*> | 是 | 字符串 | 需要获取其值的参数的名称。 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*parameter-value*> | Any | 指定的参数的值 |
+| <*parameter-value*> | 任意 | 指定的参数的值 |
 ||||
 
 *示例*
@@ -3266,7 +3266,7 @@ parameters('fullName')
 rand(<minValue>, <maxValue>)
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*minValue*> | 是 | Integer | 范围中的最小整数 |
 | <*maxValue*> | 是 | Integer | 此函数可以返回的范围中的最大整数之后的整数 |
@@ -3297,7 +3297,7 @@ rand(1, 5)
 range(<startIndex>, <count>)
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*startIndex*> | 是 | Integer | 作为数组开头的第一项的整数值 |
 | <*count*> | 是 | Integer | 数组中的整数个数 |
@@ -3328,7 +3328,7 @@ range(1, 4)
 replace('<text>', '<oldText>', '<newText>')
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*text*> | 是 | 字符串 | 包含要替换的子字符串的字符串 |
 | <*oldText*> | 是 | 字符串 | 要替换的子字符串 |
@@ -3360,7 +3360,7 @@ replace('the old string', 'old', 'new')
 removeProperty(<object>, '<property>')
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*object*> | 是 | 对象 | 要从中删除属性的 JSON 对象 |
 | <*property*> | 是 | 字符串 | 要删除的属性的名称 |
@@ -3377,7 +3377,7 @@ removeProperty(<object>, '<property>')
 removeProperty(<object>['<parent-property>'], '<child-property>')
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*object*> | 是 | 对象 | 要删除其属性的 JSON 对象 |
 | <*parent-property*> | 是 | 字符串 | 要删除其子属性的父属性的名称 |
@@ -3451,25 +3451,30 @@ removeProperty(json('{ "customerName": { "firstName": "Sophia", "middleName": "A
 
 ### <a name="result"></a>result
 
-返回指定的范围受限操作（例如 `For_each`、`Until` 或 `Scope` 操作）中所有操作的输入和输出。 此函数用于从失败的操作中返回结果，方便你诊断和处理异常。 有关详细信息，请参阅[获取失败的上下文和结果](../logic-apps/logic-apps-exception-handling.md#get-results-from-failures)。
+返回指定范围内操作中的顶级操作的结果，如 `For_each` 、 `Until` 或 `Scope` 操作。 `result()`函数接受单个参数，即作用域的名称，并返回一个数组，该数组包含该范围内第一级操作的信息。 这些操作对象包含与函数返回的属性相同的属性 `actions()` ，例如操作的开始时间、结束时间、状态、输入、相关 id 和输出。
+
+> [!NOTE]
+> 此函数 *只* 从作用域操作中的第一层操作返回信息，而不从更深层嵌套的操作（如 switch 或 condition 操作）返回信息。
+
+例如，您可以使用此函数从失败的操作获取结果，以便您可以诊断和处理异常。 有关详细信息，请参阅[获取失败的上下文和结果](../logic-apps/logic-apps-exception-handling.md#get-results-from-failures)。
 
 ```
 result('<scopedActionName>')
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*scopedActionName*> | 是 | 字符串 | 将会从其返回所有内部操作的输入和输出的范围受限操作的名称。 |
+| <*scopedActionName*> | 是 | 字符串 | 要从该范围内的顶级操作中输入和输出的范围操作的名称 |
 ||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*array-object*> | 数组对象 | 一个数组，其中包含显示在指定的范围受限操作中的每个操作的输入和输出数组 |
+| <*array-object*> | 数组对象 | 一个数组，该数组包含指定范围内的每个顶级操作的输入和输出的数组 |
 ||||
 
 *示例*
 
-此示例返回 HTTP 操作的每个迭代的输入和输出，该操作位于 `For_each` 循环中，在 `Compose` 操作中使用 `result()` 函数：
+此示例 `For_each` 通过使用操作中的函数，从循环内的中的每个迭代中返回 HTTP 操作的输入和输出 `result()` `Compose` ：
 
 ```json
 {
@@ -3578,10 +3583,10 @@ result('<scopedActionName>')
 setProperty(<object>, '<property>', <value>)
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*object*> | 是 | 对象 | 要设置其属性的 JSON 对象 |
-| <*property*> | 是 | String | 要设置的现有属性或新属性的名称 |
+| <*property*> | 是 | 字符串 | 要设置的现有属性或新属性的名称 |
 | <*value*> | 是 | 任意 | 要为指定属性设置的值 |
 |||||
 
@@ -3591,12 +3596,12 @@ setProperty(<object>, '<property>', <value>)
 setProperty(<object>['<parent-property>'], '<parent-property>', setProperty(<object>['parentProperty'], '<child-property>', <value>))
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*object*> | 是 | 对象 | 要设置其属性的 JSON 对象 |
 | <*parent-property*> | 是 | 字符串 | 要设置其子属性的父属性的名称 |
 | <*child-property*> | 是 | 字符串 | 要设置的子属性的名称 |
-| <*value*> | 是 | Any | 要为指定属性设置的值 |
+| <*value*> | 是 | 任意 | 要为指定属性设置的值 |
 |||||
 
 | 返回值 | 类型 | 说明 |
@@ -3670,7 +3675,7 @@ setProperty(json('{ "customerName": { "firstName": "Sophia", "surName": "Owen" }
 skip([<collection>], <count>)
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*collection*> | 是 | Array | 要删除其项的集合 |
 | <*count*> | 是 | Integer | 要从开头删除的项数（一个正整数） |
@@ -3701,7 +3706,7 @@ skip(createArray(0, 1, 2, 3), 1)
 split('<text>', '<delimiter>')
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*text*> | 是 | 字符串 | 根据原始字符串中指定的分隔符将分隔成子字符串的字符串 |
 | <*delimiter*> | 是 | 字符串 | 原始字符串中用作分隔符的字符 |
@@ -3732,7 +3737,7 @@ split('a_b_c', '_')
 startOfDay('<timestamp>', '<format>'?)
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | 是 | 字符串 | 包含时间戳的字符串 |
 | <*format*> | 否 | 字符串 | [单一格式的说明符](/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式的模式](/dotnet/standard/base-types/custom-date-and-time-format-strings)。 时间戳的默认格式是 ["o"](/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy yyyy-mm-ddthh： MM： ss'.'fffffffk) ，它符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 并保留时区信息。 |
@@ -3763,7 +3768,7 @@ startOfDay('2018-03-15T13:30:30Z')
 startOfHour('<timestamp>', '<format>'?)
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | 是 | 字符串 | 包含时间戳的字符串 |
 | <*format*> | 否 | 字符串 | [单一格式的说明符](/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式的模式](/dotnet/standard/base-types/custom-date-and-time-format-strings)。 时间戳的默认格式是 ["o"](/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy yyyy-mm-ddthh： MM： ss'.'fffffffk) ，它符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 并保留时区信息。 |
@@ -3794,7 +3799,7 @@ startOfHour('2018-03-15T13:30:30Z')
 startOfMonth('<timestamp>', '<format>'?)
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | 是 | 字符串 | 包含时间戳的字符串 |
 | <*format*> | 否 | 字符串 | [单一格式的说明符](/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式的模式](/dotnet/standard/base-types/custom-date-and-time-format-strings)。 时间戳的默认格式是 ["o"](/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy yyyy-mm-ddthh： MM： ss'.'fffffffk) ，它符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 并保留时区信息。 |
@@ -3802,7 +3807,7 @@ startOfMonth('<timestamp>', '<format>'?)
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*updated-timestamp*> | String | 指定的时间戳，但从该月第一天的零小时标记开始 |
+| <*updated-timestamp*> | 字符串 | 指定的时间戳，但从该月第一天的零小时标记开始 |
 ||||
 
 *示例 1*
@@ -3837,7 +3842,7 @@ startOfMonth('2018-03-15T13:30:30Z', 'yyyy-MM-dd')
 startsWith('<text>', '<searchText>')
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*text*> | 是 | 字符串 | 要检查的字符串 |
 | <*searchText*> | 是 | 字符串 | 要查找的起始字符串 |
@@ -3845,7 +3850,7 @@ startsWith('<text>', '<searchText>')
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| true 或 false  | 布尔 | 当找到起始子字符串时返回 true。 找不到时返回 false。 |
+| true 或 false  | Boolean | 当找到起始子字符串时返回 true。 找不到时返回 false。 |
 ||||
 
 *示例 1*
@@ -3878,7 +3883,7 @@ startsWith('hello world', 'greetings')
 string(<value>)
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*value*> | 是 | 任意 | 要转换的值。 如果此值为 NULL 或者计算结果为 NULL，则此值将转换为空字符串 (`""`) 值。 <p><p>例如，如果将字符串变量分配给不存在的属性（可以使用 `?` 运算符对其进行访问），则 NULL 值将转换为空字符串。 但是，比较 NULL 值与比较空字符串有所不同。 |
 |||||
@@ -3922,7 +3927,7 @@ string( { "name": "Sophie Owen" } )
 sub(<minuend>, <subtrahend>)
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*minuend*> | 是 | 整数或浮点数 | 要从中减去 *subtrahend* 的数字 |
 | <*subtrahend*> | 是 | 整数或浮点数 | 要从 *minuend* 中减去的数字 |
@@ -3953,7 +3958,7 @@ sub(10.3, .3)
 substring('<text>', <startIndex>, <length>)
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*text*> | 是 | 字符串 | 所需字符所在的字符串 |
 | <*startIndex*> | 是 | Integer | 一个等于或大于 0 的正数，需将其用作起始位置或索引值 |
@@ -3962,7 +3967,7 @@ substring('<text>', <startIndex>, <length>)
 
 > [!NOTE]
 > 请确保添加 *startIndex* 和 *length* 参数值的总和小于您为 *text* 参数提供的字符串的长度。
-> 否则，你将收到一个错误，这与其他语言中类似的函数不同，其中的结果是来自 *startIndex* 到字符串末尾的子字符串。 *Length* 参数是可选的，如果未提供此参数，则 **Substring ( # B1** 函数将以 *startIndex* 开头的所有字符都作为字符串的末尾。
+> 否则，你将收到一个错误，这与其他语言中类似的函数不同，其中的结果是来自 *startIndex* 到字符串末尾的子字符串。 *Length* 参数是可选的，如果未提供此参数，则 **substring ()** 函数将以 *startIndex* 开头的所有字符都作为字符串的末尾。
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
@@ -3990,7 +3995,7 @@ substring('hello world', 6, 5)
 subtractFromTime('<timestamp>', <interval>, '<timeUnit>', '<format>'?)
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | 是 | 字符串 | 包含时间戳的字符串 |
 | <*间隔*> | 是 | Integer | 要减去的指定时间单位数 |
@@ -4034,7 +4039,7 @@ take('<collection>', <count>)
 take([<collection>], <count>)
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*collection*> | 是 | 字符串或数组 | 所需项所在的集合 |
 | <*count*> | 是 | Integer | 从开头算起所需的项数（一个正整数） |
@@ -4069,7 +4074,7 @@ take(createArray(0, 1, 2, 3, 4), 3)
 ticks('<timestamp>')
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | 是 | 字符串 | 时间戳的字符串 |
 |||||
@@ -4089,7 +4094,7 @@ ticks('<timestamp>')
 toLower('<text>')
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*text*> | 是 | 字符串 | 要以小写格式返回的字符串 |
 |||||
@@ -4119,14 +4124,14 @@ toLower('Hello World')
 toUpper('<text>')
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*text*> | 是 | 字符串 | 要以大写格式返回的字符串 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*uppercase-text*> | String | 采用大写格式的原始字符串 |
+| <*uppercase-text*> | 字符串 | 采用大写格式的原始字符串 |
 ||||
 
 *示例*
@@ -4188,7 +4193,7 @@ triggerBody()
 triggerFormDataMultiValues('<key>')
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*key*> | 是 | 字符串 | 需要获取其值的键的名称 |
 |||||
@@ -4219,9 +4224,9 @@ triggerFormDataMultiValues('feedUrl')
 triggerFormDataValue('<key>')
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*key*> | 是 | String | 需要获取其值的键的名称 |
+| <*key*> | 是 | 字符串 | 需要获取其值的键的名称 |
 |||||
 
 | 返回值 | 类型 | 说明 |
@@ -4249,7 +4254,7 @@ triggerFormDataValue('feedUrl')
 triggerMultipartBody(<index>)
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*index*> | 是 | Integer | 所需部分的索引值 |
 |||||
@@ -4286,7 +4291,7 @@ triggerOutputs()
 trim('<text>')
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*text*> | 是 | 字符串 | 包含要删除的前导和尾随空格的字符串 |
 |||||
@@ -4318,7 +4323,7 @@ union('<collection1>', '<collection2>', ...)
 union([<collection1>], [<collection2>], ...)
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*collection1*>, <*collection2*>, ...  | 是 | 数组或对象，但不能为两者 | 需要从中获取所有项的各个集合 |
 |||||
@@ -4350,9 +4355,9 @@ union(createArray(1, 2, 3), createArray(1, 2, 10, 101))
 uriComponent('<value>')
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*value*> | 是 | String | 要转换为 URI 编码格式的字符串 |
+| <*value*> | 是 | 字符串 | 要转换为 URI 编码格式的字符串 |
 |||||
 
 | 返回值 | 类型 | 说明 |
@@ -4380,7 +4385,7 @@ uriComponent('https://contoso.com')
 uriComponentToBinary('<value>')
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*value*> | 是 | 字符串 | 要转换的 URI 编码字符串 |
 |||||
@@ -4415,9 +4420,9 @@ uriComponentToBinary('https%3A%2F%2Fcontoso.com')
 uriComponentToString('<value>')
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*value*> | 是 | String | 要解码的 URI 编码字符串 |
+| <*value*> | 是 | 字符串 | 要解码的 URI 编码字符串 |
 |||||
 
 | 返回值 | 类型 | 说明 |
@@ -4445,9 +4450,9 @@ uriComponentToString('https%3A%2F%2Fcontoso.com')
 uriHost('<uri>')
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*uri*> | 是 | String | 需要获取其 `host` 值的 URI |
+| <*uri*> | 是 | 字符串 | 需要获取其 `host` 值的 URI |
 |||||
 
 | 返回值 | 类型 | 说明 |
@@ -4475,7 +4480,7 @@ uriHost('https://www.localhost.com:8080')
 uriPath('<uri>')
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*uri*> | 是 | 字符串 | 需要获取其 `path` 值的 URI |
 |||||
@@ -4505,7 +4510,7 @@ uriPath('https://www.contoso.com/catalog/shownew.htm?date=today')
 uriPathAndQuery('<uri>')
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*uri*> | 是 | 字符串 | 需要获取其 `path` 和 `query` 值的 URI |
 |||||
@@ -4535,7 +4540,7 @@ uriPathAndQuery('https://www.contoso.com/catalog/shownew.htm?date=today')
 uriPort('<uri>')
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*uri*> | 是 | 字符串 | 需要获取其 `port` 值的 URI |
 |||||
@@ -4565,9 +4570,9 @@ uriPort('https://www.localhost:8080')
 uriQuery('<uri>')
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*uri*> | 是 | String | 需要获取其 `query` 值的 URI |
+| <*uri*> | 是 | 字符串 | 需要获取其 `query` 值的 URI |
 |||||
 
 | 返回值 | 类型 | 说明 |
@@ -4595,7 +4600,7 @@ uriQuery('https://www.contoso.com/catalog/shownew.htm?date=today')
 uriScheme('<uri>')
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*uri*> | 是 | 字符串 | 需要获取其 `scheme` 值的 URI |
 |||||
@@ -4628,9 +4633,9 @@ utcNow('<format>')
 另外，也可以使用 <*format*> 参数指定不同的格式。
 
 
-| 参数 | 必须 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*format*> | 否 | String | [单一格式的说明符](/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式的模式](/dotnet/standard/base-types/custom-date-and-time-format-strings)。 时间戳的默认格式是 ["o"](/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy yyyy-mm-ddthh： MM： ss'.'fffffffk) ，它符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 并保留时区信息。 |
+| <*format*> | 否 | 字符串 | [单一格式的说明符](/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式的模式](/dotnet/standard/base-types/custom-date-and-time-format-strings)。 时间戳的默认格式是 ["o"](/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy yyyy-mm-ddthh： MM： ss'.'fffffffk) ，它符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 并保留时区信息。 |
 |||||
 
 | 返回值 | 类型 | 说明 |
@@ -4670,14 +4675,14 @@ utcNow('D')
 variables('<variableName>')
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*variableName*> | 是 | 字符串 | 需要获取其值的变量的名称 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*variable-value*> | Any | 指定的变量的值 |
+| <*variable-value*> | 任意 | 指定的变量的值 |
 ||||
 
 *示例*
@@ -4701,7 +4706,7 @@ variables('numItems')
 workflow().<property>
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*property*> | 否 | 字符串 | 需要获取其值的工作流属性的名称 <p>工作流对象应具有以下属性：**name**、**type**、**id**、**location** 和 **run**。 **run** 属性值也是一个对象，它具有以下属性：**name**、**type** 和 **id**。 |
 |||||
@@ -4724,7 +4729,7 @@ workflow().run.name
 xml('<value>')
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*value*> | 是 | 字符串 | 要转换的包含 JSON 对象的字符串 <p>该 JSON 对象必须只有一个根属性，该属性不能是数组。 <br>请使用反斜杠字符 (\\) 作为双引号 (") 的转义字符。 |
 |||||
@@ -4782,16 +4787,16 @@ xml('<value>')
 xpath('<xml>', '<xpath>')
 ```
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*xml*> | 是 | Any | 要在其中搜索与 XPath 表达式值匹配的节点或值的 XML 字符串 |
-| <*xpath*> | 是 | Any | 用来查找匹配的 XML 节点或值的 XPath 表达式 |
+| <*xml*> | 是 | 任意 | 要在其中搜索与 XPath 表达式值匹配的节点或值的 XML 字符串 |
+| <*xpath*> | 是 | 任意 | 用来查找匹配的 XML 节点或值的 XPath 表达式 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
 | <*xml-node*> | XML | 一个 XML 节点，当只有单个节点与指定的 XPath 表达式匹配时 |
-| <*value*> | Any | 来自一个 XML 节点的值，当只有单个值与指定的 XPath 表达式匹配时 |
+| <*value*> | 任意 | 来自一个 XML 节点的值，当只有单个值与指定的 XPath 表达式匹配时 |
 | [<*xml-node1*>, <*xml-node2*>, ...] </br>-或- </br>[<*value1*>, <*value2*>, ...] | Array | 一个数组，其中包含与指定的 XPath 表达式匹配的 XML 节点或值 |
 ||||
 
@@ -4819,7 +4824,7 @@ xpath('<xml>', '<xpath>')
 
 `xpath(xml(parameters('items')), '/produce/item/name')`
 
-该示例还使用 [参数 ( # B1 ](#parameters) 函数获取中的 xml 字符串 `'items'` ，并使用 [xml ( # B3 ](#xml) 函数将字符串转换为 xml 格式。
+该示例还使用 [参数 () ](#parameters) 函数获取中的 xml 字符串 `'items'` ，并使用 [xml () ](#xml) 函数将字符串转换为 xml 格式。
 
 下面是结果数组，其中包含与 `<name></name` 匹配的节点：
 

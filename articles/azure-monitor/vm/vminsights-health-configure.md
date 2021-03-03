@@ -1,20 +1,20 @@
 ---
-title: 在用于 VM 的 Azure Monitor 来宾运行状况中配置监视（预览）
-description: 介绍如何使用 Azure 门户修改用于 VM 的 Azure Monitor 来宾健康 (预览版) 的默认监视。
+title: '在 VM insights 来宾健康状况 (预览中配置监视) '
+description: 介绍如何使用 Azure 门户修改 VM insights 来宾健康状况 (预览) 的默认监视。
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/14/2020
-ms.openlocfilehash: 427bdec2b5e5ab14d566375d5ad8f9da9dc3e81b
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 8c15a44fc086c9c686e75879b3086436ea327560
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100608830"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719587"
 ---
-# <a name="configure-monitoring-in-azure-monitor-for-vms-guest-health-preview"></a>在用于 VM 的 Azure Monitor 来宾运行状况中配置监视（预览）
-用于 VM 的 Azure Monitor 来宾健康状况允许你查看按固定时间间隔采样的一组性能度量定义的虚拟机的运行状况。 本文介绍如何使用 Azure 门户修改默认监视。 还介绍了 [使用数据收集规则配置监视](vminsights-health-configure-dcr.md)所需的监视器的基本概念。
+# <a name="configure-monitoring-in-vm-insights-guest-health-preview"></a>在 VM insights 来宾健康状况 (预览中配置监视) 
+VM insights 来宾运行状况允许你查看按固定时间间隔采样的一组性能度量定义的虚拟机的运行状况。 本文介绍如何使用 Azure 门户修改默认监视。 还介绍了 [使用数据收集规则配置监视](vminsights-health-configure-dcr.md)所需的监视器的基本概念。
 
 ## <a name="open-monitor-configuration"></a>打开监视器配置
 通过选择监视器，然后选择 " **配置** " 选项卡，打开 "监视配置" bin Azure 门户。

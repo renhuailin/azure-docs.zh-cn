@@ -7,12 +7,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
-ms.openlocfilehash: 8493b75f0d9e0f947996df431d63bfba9abdc9e0
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 9f4f5f82423f0ecb4e810eab2d675e95b8b66763
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100607609"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717156"
 ---
 # <a name="workbook-time-parameters"></a>工作簿时间参数
 
@@ -78,5 +78,5 @@ requests
 
 ## <a name="next-steps"></a>后续步骤
 
-* [开始](../platform/workbooks-overview.md#visualizations)详细了解工作簿丰富的可视化效果选项。
-* [控制](../platform/workbooks-access-control.md)并共享对工作簿资源的访问权限。
+* [开始](./workbooks-overview.md#visualizations)详细了解工作簿丰富的可视化效果选项。
+* [控制](./workbooks-access-control.md)并共享对工作簿资源的访问权限。

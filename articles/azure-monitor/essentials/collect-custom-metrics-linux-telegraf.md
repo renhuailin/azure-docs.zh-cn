@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: fbed48dda3d6b022d30bb9fb0507c3f9f203771d
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 4274f976a04a9694c0429a2a4794d645304a9e97
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100605926"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728801"
 ---
 # <a name="collect-custom-metrics-for-a-linux-vm-with-the-influxdata-telegraf-agent"></a>使用 InfluxData Telegraf 代理收集 Linux VM 的自定义指标
 
@@ -25,7 +25,7 @@ ms.locfileid: "100605926"
  ![Telegraph 代理概述](./media/collect-custom-metrics-linux-telegraf/telegraf-agent-overview.png)
 
 > [!NOTE]  
-> 所有区域都不支持自定义指标。 [此处](../platform/metrics-custom-overview.md#supported-regions)列出了支持的区域
+> 所有区域都不支持自定义指标。 [此处](./metrics-custom-overview.md#supported-regions)列出了支持的区域
 
 ## <a name="send-custom-metrics"></a>发送自定义指标 
 
@@ -136,4 +136,4 @@ sudo systemctl start telegraf
 不再需要资源组、虚拟机和所有相关的资源时，可将其删除。 为此，请选择虚拟机的资源组，然后选择“删除”。 确认要删除的资源组的名称。 
 
 ## <a name="next-steps"></a>后续步骤
-- 详细了解[自定义指标](../platform/metrics-custom-overview.md)。
+- 详细了解[自定义指标](./metrics-custom-overview.md)。

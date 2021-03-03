@@ -2,16 +2,16 @@
 title: 在模板中使用 Azure Key Vault
 description: 了解如何在 Azure 资源管理器模板（ARM 模板）部署期间使用 Azure Key Vault 来传递安全参数值。
 author: mumian
-ms.date: 04/23/2020
+ms.date: 03/01/2021
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: 44a5131a7ad90feeeeff56e95b64e65f3f18855c
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 388996dc0054192f6d9f3c87e11ca1d15e8a85e1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97674151"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703879"
 ---
 # <a name="tutorial-integrate-azure-key-vault-in-your-arm-template-deployment"></a>教程：在 ARM 模板部署中集成 Azure Key Vault
 
@@ -93,7 +93,14 @@ Write-Host "Press [ENTER] to continue ..."
 若要对部署进行验证，请在同一 shell 窗格中运行以下 PowerShell 命令，以明文形式检索机密。 此命令只能在同一 shell 会话中使用，因为它使用在先前 PowerShell 脚本中定义的变量 `$keyVaultName`。
 
 ```azurepowershell
-(Get-AzKeyVaultSecret -vaultName $keyVaultName  -name "vmAdminPassword").SecretValueText
+$secret = Get-AzKeyVaultSecret -VaultName $keyVaultName -Name "vmAdminPassword"
+$ssPtr = [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($secret.SecretValue)
+try {
+   $secretValueText = [System.Runtime.InteropServices.Marshal]::PtrToStringBSTR($ssPtr)
+} finally {
+   [System.Runtime.InteropServices.Marshal]::ZeroFreeBSTR($ssPtr)
+}
+Write-Output $secretValueText
 ```
 
 现在已准备好密钥保管库和密钥。 以下部分显示如何自定义现有模板，以便在部署过程中检索机密。
@@ -141,7 +148,7 @@ Azure 快速入门模板是 ARM 模板的存储库。 无需从头开始创建�
     "adminPassword": {
         "reference": {
             "keyVault": {
-            "id": "/subscriptions/<SubscriptionID>/resourceGroups/mykeyvaultdeploymentrg/providers/Microsoft.KeyVault/vaults/<KeyVaultName>"
+                "id": "/subscriptions/<SubscriptionID>/resourceGroups/mykeyvaultdeploymentrg/providers/Microsoft.KeyVault/vaults/<KeyVaultName>"
             },
             "secretName": "vmAdminPassword"
         }

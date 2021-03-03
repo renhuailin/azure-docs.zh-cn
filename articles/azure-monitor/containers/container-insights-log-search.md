@@ -1,22 +1,22 @@
 ---
-title: 如何从用于容器的 Azure Monitor 查询日志 | Microsoft Docs
-description: 用于容器的 Azure Monitor 收集指标和日志数据，本文介绍了这些记录并包含了示例查询。
+title: 如何从 Container insights 查询日志 |Microsoft Docs
+description: 容器见解收集指标和日志数据，本文介绍了这些记录，并包括示例查询。
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.openlocfilehash: 8f02d900ba931768c7f8acebc1b124aff777da18
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 79efa714548adbde67774cab741bf953a4ff1e83
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100608716"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711104"
 ---
-# <a name="how-to-query-logs-from-azure-monitor-for-containers"></a>如何从用于容器的 Azure Monitor 查询日志
+# <a name="how-to-query-logs-from-container-insights"></a>如何从 Container insights 查询日志
 
-适用于容器的 Azure Monitor 从容器主机和容器收集性能指标、清单数据和运行状况状态信息。 每三分钟收集一次数据，并将其转发到 Azure Monitor 中的 Log Analytics 工作区。 此数据可用于 Azure Monitor 中的[查询](../log-query/log-query-overview.md)。 此数据可应用于包括迁移计划、容量分析、发现和按需性能故障排除在内的方案。
+Container insights 收集容器主机和容器中的性能指标、清单数据和健康状况信息。 每三分钟收集一次数据，并将其转发到 Azure Monitor 中的 Log Analytics 工作区。 此数据可用于 Azure Monitor 中的[查询](../logs/log-query-overview.md)。 此数据可应用于包括迁移计划、容量分析、发现和按需性能故障排除在内的方案。
 
 ## <a name="container-records"></a>容器记录
 
-下表提供了适用于容器的 Azure Monitor 收集的记录的详细信息。 有关列说明的列表，请参阅 [ContainerInventory](/azure/azure-monitor/reference/tables/containerinventory) 和 [ContainerLog](/azure/azure-monitor/reference/tables/containerlog) 表的参考资料。
+下表提供了由容器 insights 收集的记录的详细信息。 有关列说明的列表，请参阅 [ContainerInventory](/azure/azure-monitor/reference/tables/containerinventory) 和 [ContainerLog](/azure/azure-monitor/reference/tables/containerlog) 表的参考资料。
 
 | 数据 | 数据源 | 数据类型 | 字段 |
 |------|-------------|-----------|--------|
@@ -110,4 +110,4 @@ KubeMonAgentEvents | where Level != "Info"
 
 ## <a name="next-steps"></a>后续步骤
 
-用于容器的 Azure Monitor 不包含预定义的警报集。 请查看[使用用于容器的 Azure Monitor 创建性能警报](./container-insights-log-alerts.md)，了解如何针对高 CPU 和内存利用率创建建议的警报以支持 DevOps 或操作流程和过程。
+容器见解不包括预定义的警报集。 查看 [使用容器见解创建性能警报](./container-insights-log-alerts.md) ，了解如何为高 CPU 和内存使用率创建建议警报，以支持 DevOps 或操作过程和过程。

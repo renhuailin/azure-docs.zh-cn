@@ -10,16 +10,16 @@ ms.workload: infrastructure
 ms.date: 08/04/2020
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 963a84c55a5433a204f387d1936eb7ceee60d913
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 9552e9c6deaabc9c847a8fbd26b1246b073dcc1b
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98730034"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101673281"
 ---
 # <a name="tutorial-create-and-manage-azure-virtual-networks-for-windows-virtual-machines-with-azure-powershell"></a>教程：使用 Azure PowerShell 为 Windows 虚拟机创建和管理 Azure 虚拟网络
 
-Azure 虚拟机使用 Azure 网络进行内部和外部网络通信。 本教程将指导读者部署两个虚拟机，并为这些 VM 配置 Azure 网络。 本教程中的示例假设 VM 将要托管包含数据库后端的 Web 应用程序，但本教程并未介绍如何部署应用程序。 本教程介绍如何执行下列操作：
+Azure 虚拟机使用 Azure 网络进行内部和外部网络通信。 本教程将指导读者部署两个虚拟机，并为这些 VM 配置 Azure 网络。 本教程中的示例假设 VM 将要托管包含数据库后端的 Web 应用程序，但本教程并未介绍如何部署应用程序。 在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建虚拟网络和子网
@@ -280,4 +280,4 @@ New-AzVM `
 > * 安全的网络流量
 > * 创建后端 VM
 
-若要了解如何保护 VM 磁盘，请参阅[磁盘的备份和灾难恢复](backup-and-disaster-recovery-for-azure-iaas-disks.md)。
+若要了解如何保护 VM 磁盘，请参阅[磁盘的备份和灾难恢复](../backup-and-disaster-recovery-for-azure-iaas-disks.md)。

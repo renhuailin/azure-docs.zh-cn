@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 06/09/2020
-ms.openlocfilehash: 377341cc76e1a37d493d66790a1d6d05d010dd5c
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 3d200cd9bccecf03f5313058189e134082a1a357
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101096181"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101742613"
 ---
 # <a name="tutorial-migrate-rds-mysql-to-azure-database-for-mysql-online-using-dms"></a>教程：使用 DMS 将 RDS MySQL 联机迁移到 Azure Database for MySQL
 
@@ -206,7 +206,7 @@ call mysql.rds_set_configuration('binlog retention hours', 120);
     > [!NOTE]
     > 也可以现在就选择“仅创建项目”来创建迁移项目，在以后再执行迁移。
 
-6. 选择“保存” 。
+6. 选择“保存”  。
 
 7. 选择“创建并运行活动”，以便创建项目并运行迁移活动。 
 
@@ -237,7 +237,7 @@ call mysql.rds_set_configuration('binlog retention hours', 120);
 
 ## <a name="run-the-migration"></a>运行迁移
 
-* 选择“运行迁移”  。
+* 选择“运行迁移”。
 
     迁移活动窗口随即出现，活动的“状态”为“正在初始化”   。
 

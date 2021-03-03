@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: c1e2b6abe378df1450967ee0e1df6021ca0d5744
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: d8ef616ef059424846d5c42a91262881b8f6d30b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100650365"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101701801"
 ---
 # <a name="access-control-lists-acls-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 中的访问控制列表 (ACL)
 
@@ -285,7 +285,7 @@ Azure 角色分配确实可以继承。 分配从订阅、资源组和存储帐�
 
 ### <a name="does-data-lake-storage-gen2-support-inheritance-of-acls"></a>Data Lake Storage Gen2 是否支持 ACL 继承？
 
-可以使用默认 ACL 来设置父目录下创建的新子目录和文件的 ACL。 若要更新现有子项的 ACL，你需要以递归方式为所需的目录层次结构添加、更新或删除 ACL。 有关详细信息，请参阅[以递归方式为 Azure Data Lake Storage Gen2 设置访问控制列表 (ACL)](recursive-access-control-lists.md)。 
+可以使用默认 ACL 来设置父目录下创建的新子目录和文件的 ACL。 若要更新现有子项的 ACL，你需要以递归方式为所需的目录层次结构添加、更新或删除 ACL。 有关详细信息，请参阅[以递归方式为 Azure Data Lake Storage Gen2 设置访问控制列表 (ACL)](#set-access-control-lists)。 
 
 ### <a name="which-permissions-are-required-to-recursively-delete-a-directory-and-its-contents"></a>以递归方式删除目录及其内容需要哪些权限？
 

@@ -2,17 +2,14 @@
 title: 调整 Azure Data Lake Analytics 中的配额和限制
 description: 了解如何调整和增加 Azure Data Lake Analytics (ADLA) 帐户中的配额和限制。
 ms.service: data-lake-analytics
-author: omidm1
-ms.author: omidm
-ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 03/15/2018
-ms.openlocfilehash: fd032235f286b5db1930e9c9c6d730b5424aa4eb
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 416b77fd86316acb8098531257e12b591a0ff052
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92220833"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710169"
 ---
 # <a name="adjust-quotas-and-limits-in-azure-data-lake-analytics"></a>调整 Azure Data Lake Analytics 中的配额和限制
 
@@ -20,7 +17,7 @@ ms.locfileid: "92220833"
 
 ## <a name="azure-subscriptions-limits"></a>Azure 订阅限制
 
-每个区域每个订阅的最大 ADLA 帐户数：5****
+每个区域每个订阅的最大 ADLA 帐户数：5
 
 如果尝试创建第 6 个 ADLA 帐户，将收到错误“已达到订阅名称区域中允许的 Data Lake Analytics 帐户的最大数量 (5)”。
 
@@ -31,7 +28,7 @@ ms.locfileid: "92220833"
 
 ## <a name="default-adla-account-limits"></a>默认 ADLA 帐户限制
 
-** (澳大利亚) 每个帐户的最大分析单位数：** 250，默认32
+**(澳大利亚) 每个帐户的最大分析单位数：** 250，默认32
 
 这是可在帐户中同时运行的最大 AU 数。 如果所有作业上正在运行的 AU 总数超出此限制，较新的作业将自动排队。 例如：
 
@@ -52,8 +49,8 @@ ms.locfileid: "92220833"
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 选择一个现有的 ADLA 帐户。
-3. 单击 **“属性”** 。
-4. 调整“最大 AU 数”****，“最大运行作业数”**** 和“作业提交限制”**** 的值以满足你的需求。
+3. 单击 **“属性”**。
+4. 调整“最大 AU 数”，“最大运行作业数”和“作业提交限制”的值以满足你的需求。
 
 ## <a name="increase-maximum-quota-limits"></a>增加最大配额限制
 
@@ -65,15 +62,15 @@ ms.locfileid: "92220833"
 
    ![Azure Data Lake Analytics 门户新支持请求](./media/data-lake-analytics-quota-limits/data-lake-analytics-quota-support-request.png)
 
-2. 对问题类型选择“配额”****。
+2. 对问题类型选择“配额”。
 
 3. 选择你的 **订阅** (确保它不是 "试用版" 订阅) 。
 
-4. 对配额类型选择“Data Lake Analytics”****。
+4. 对配额类型选择“Data Lake Analytics”。
 
    ![Azure Data Lake Analytics 支持请求配额类型](./media/data-lake-analytics-quota-limits/data-lake-analytics-quota-support-request-basics.png)
 
-5. 在问题页中，提供有关为何需要此额外容量的**详细信息**来说明请求提高上限的原因。
+5. 在问题页中，提供有关为何需要此额外容量的 **详细信息** 来说明请求提高上限的原因。
 
    ![Azure Data Lake Analytics 支持请求详细信息](./media/data-lake-analytics-quota-limits/data-lake-analytics-quota-support-request-details.png)
 

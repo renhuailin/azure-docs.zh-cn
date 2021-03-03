@@ -8,12 +8,12 @@ author: gachandw
 ms.author: gachandw
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 13fe83710c94c1ca37f05d59cb91f31aa8ca1bae
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 2650da2579f13ec1588af7a25e5b28908209bc82
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98744265"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101700178"
 ---
 # <a name="azure-cloud-services-extended-support-config-networkconfiguration-schema"></a>Azure 云服务 (扩展支持) config networkConfiguration 架构
 
@@ -23,7 +23,7 @@ ms.locfileid: "98744265"
 
 - [云服务 (扩展支持) 配置架构](schema-cscfg-file.md)。
 - [云服务 (扩展支持) 定义架构](schema-csdef-file.md)。
-- [创建虚拟网络](https://docs.microsoft.com/azure/virtual-network/manage-virtual-network)。
+- [创建虚拟网络](../virtual-network/manage-virtual-network.md)。
 
 ## <a name="networkconfiguration-element"></a>NetworkConfiguration 元素
 下面的示例显示了 `NetworkConfiguration` 元素及其子元素。

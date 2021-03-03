@@ -5,12 +5,12 @@ description: 查看在 Azure Kubernetes 服务 (AKS) 中运行 Windows Server �
 services: container-service
 ms.topic: article
 ms.date: 10/12/2020
-ms.openlocfilehash: b20ebe82556bb4db6844511ec0953f4d4e75f383
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: cc5a5ec2bbfb64a1e787277bf67579bad0543cd6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100574737"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101739570"
 ---
 # <a name="frequently-asked-questions-for-windows-server-node-pools-in-aks"></a>AKS 中 Windows Server 节点池的常见问题
 
@@ -54,6 +54,8 @@ AKS 群集中的主节点（控制平面）由 AKS 服务托管，不会向你�
 
 具有 Windows 节点池的 AKS 群集必须使用 Azure CNI（高级）网络模型。 不支持 Kubenet（基本）网络。 有关网络模型差异的详细信息，请参阅[适用于 AKS 中的应用程序的网络概念][azure-network-models]。 Azure CNI 网络模型需要对 IP 地址管理进行其他规划和考量。 有关如何规划和实现 Azure CNI 的详细信息，请参阅[在 AKS 中配置 Azure CNI 网络][configure-azure-cni]。
 
+当启用 Calico 时，AKS 群集上的 Windows 节点还 [ (DSR) 启用了直接服务器返回 ][dsr] 。
+
 ## <a name="is-preserving-the-client-source-ip-supported"></a>是否支持保留客户端源 IP？
 
 目前，Windows 节点不支持[客户端源 IP 保留][client-source-ip]。
@@ -91,7 +93,7 @@ AKS 群集最多可以包含 10 个节点池。 这些节点池中最多可以�
 
 ## <a name="are-all-features-supported-with-windows-nodes"></a>Windows 节点是否支持所有功能？
 
-Windows 节点当前不支持网络策略和 Kubenet。
+Windows 节点目前不支持 Kubenet。
 
 ## <a name="can-i-run-ingress-controllers-on-windows-nodes"></a>我是否可以在 Windows 节点上运行入口控制器？
 
@@ -197,3 +199,4 @@ az vmss show --name myAKSCluster --resource-group MC_CLUSTERNAME
 [managed-identity]: use-managed-identity.md
 [hybrid-vms]: ../virtual-machines/windows/hybrid-use-benefit-licensing.md
 [resource-groups]: faq.md#why-are-two-resource-groups-created-with-aks
+[dsr]: ../load-balancer/load-balancer-multivip-overview.md#rule-type-2-backend-port-reuse-by-using-floating-ip

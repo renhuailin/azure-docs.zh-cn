@@ -4,12 +4,12 @@ description: 监视 ASP.NET Core Web 应用程序的可用性、性能和使用�
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 04/30/2020
-ms.openlocfilehash: 93f72b7e2f709f32942564dc7322a4c5d1064cfc
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: be4cbe5f95fa6901ae4299662750c232d4700a8a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100589910"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711495"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>适用于 ASP.NET Core 应用程序的 Application Insights
 
@@ -30,9 +30,6 @@ ms.locfileid: "100589910"
 
 > [!NOTE]
 > ASP.NET Core 3.1 需要 [Application Insights 2.8.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.8.0) 或更高版本。
-
-> [!IMPORTANT]
-> 支持以下版本的 ASP.NET Core： ASP.NET Core 2.1 和3.1。 版本2.0、2.2 和3.0 已经停用，不再受支持。
 
 ## <a name="prerequisites"></a>先决条件
 

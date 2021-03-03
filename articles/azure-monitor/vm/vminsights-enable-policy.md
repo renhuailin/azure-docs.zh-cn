@@ -1,20 +1,20 @@
 ---
-title: 使用 Azure Policy 启用用于 VM 的 Azure Monitor
-description: 介绍如何使用 Azure 策略为多个 Azure 虚拟机或虚拟机规模集启用用于 VM 的 Azure Monitor。
+title: 使用 Azure 策略启用 VM insights
+description: 介绍如何使用 Azure 策略为多个 Azure 虚拟机或虚拟机规模集启用 VM 见解。
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: 4da0610de1f71cd422ec684ea633a4474c078862
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: a63a647f3d76e3cc2616f05fe96d86dbdd36e74d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100608675"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101707534"
 ---
-# <a name="enable-azure-monitor-for-vms-by-using-azure-policy"></a>使用 Azure Policy 启用用于 VM 的 Azure Monitor
-本文介绍如何使用 Azure 策略为使用 azure Arc (预览版) 连接的 Azure 虚拟机或混合虚拟机启用用于 VM 的 Azure Monitor。 Azure 策略允许你分配策略定义，用于在 Azure 环境中安装用于 VM 的 Azure Monitor 所需的代理，并在创建每个虚拟机时自动为 Vm 启用监视。 用于 VM 的 Azure Monitor 提供了一项功能，使你能够在你的环境中发现并修正不相容的 Vm。 使用此功能，而不是直接使用 Azure 策略。
+# <a name="enable-vm-insights-by-using-azure-policy"></a>使用 Azure 策略启用 VM insights
+本文介绍如何使用 Azure 策略为使用 azure Arc (preview) 连接的 Azure 虚拟机或混合虚拟机启用 VM insights。 Azure 策略允许你分配策略定义，以便在 Azure 环境中安装 VM insights 所需的代理，并在创建每个虚拟机时自动为 Vm 启用监视。 VM insights 提供了一项功能，使你能够在你的环境中发现并修正不相容的 Vm。 使用此功能，而不是直接使用 Azure 策略。
 
 如果你不熟悉 Azure 策略，请参阅 [使用 Azure 策略大规模部署 Azure Monitor](../deploy-scale.md)。
 
@@ -22,15 +22,15 @@ ms.locfileid: "100608675"
 > 若要通过 Azure 虚拟机规模集使用 Azure 策略，或直接使用 Azure 策略来启用 Azure 虚拟机，请参阅 [使用 Azure 策略大规模部署 Azure Monitor](../deploy-scale.md#azure-monitor-for-vms)。
 
 ## <a name="prerequisites"></a>先决条件
-- [创建并配置 Log Analytics 工作区](../insights/vminsights-configure-workspace.md)。
-- 请参阅 [支持的操作系统](../insights/vminsights-enable-overview.md#supported-operating-systems) ，以确保正在启用的虚拟机或虚拟机规模集的操作系统受支持。 
+- [创建并配置 Log Analytics 工作区](./vminsights-configure-workspace.md)。
+- 请参阅 [支持的操作系统](./vminsights-enable-overview.md#supported-operating-systems) ，以确保正在启用的虚拟机或虚拟机规模集的操作系统受支持。 
 
 
-## <a name="azure-monitor-for-vms-initiative"></a>用于 VM 的 Azure Monitor 计划
-用于 VM 的 Azure Monitor 提供了用于在 Azure 虚拟机上安装 Log Analytics 代理和依赖项代理的内置策略定义。 该计划 **启用用于 VM 的 Azure Monitor** 包括其中每个策略定义。 将此计划分配给管理组、订阅或资源组，以在该范围内的任何 Windows 或 Linux Azure 虚拟机上自动安装代理。
+## <a name="vm-insights-initiative"></a>VM insights 计划
+VM insights 提供内置策略定义，用于在 Azure 虚拟机上安装 Log Analytics 代理和依赖项代理。 该计划 **启用 VM insights** 包括其中每个策略定义。 将此计划分配给管理组、订阅或资源组，以在该范围内的任何 Windows 或 Linux Azure 虚拟机上自动安装代理。
 
 ## <a name="open-policy-coverage-feature"></a>打开策略覆盖率功能
-若要访问 **用于 VM 的 Azure Monitor 策略覆盖率**，请在 Azure 门户的 " **Azure Monitor** " 菜单中访问 **虚拟机**。 选择 **其他载入选项**，然后在 "**启用使用策略**" 下 **启用**。
+若要访问 **VM Insights 策略覆盖率**，请在 Azure 门户中的 " **Azure Monitor** " 菜单中，找到 **虚拟机**。 选择 **其他载入选项**，然后在 "**启用使用策略**" 下 **启用**。
 
 [![用于 VM 的 Azure Monitor 的“开始”选项卡](./media/vminsights-enable-policy/get-started-page.png)](./media/vminsights-enable-policy/get-started-page.png#lightbox)
 
@@ -39,7 +39,7 @@ ms.locfileid: "100608675"
 
 [![创建分配](media/vminsights-enable-policy/create-assignment.png)](media/vminsights-enable-policy/create-assignment.png#lightbox)
 
-这是在 Azure 策略中分配计划所用的相同页面，只不过它是用所选范围进行硬编码的，以及 **Enable 用于 VM 的 Azure Monitor** 计划定义。 你可以选择更改 **分配名称** 并添加 **描述**。 如果要为作用域提供排除项，请选择 " **排除** "。 例如，你的作用域可能是管理组，你可以指定要从分配中排除的管理组中的订阅。
+这是在 Azure 策略中分配计划所用的相同页面，只不过它是用所选范围进行硬编码的，以及 **ENABLE VM insights** 计划定义。 你可以选择更改 **分配名称** 并添加 **描述**。 如果要为作用域提供排除项，请选择 " **排除** "。 例如，你的作用域可能是管理组，你可以指定要从分配中排除的管理组中的订阅。
 
 [![分配计划](media/vminsights-enable-policy/assign-initiative.png)](media/vminsights-enable-policy/assign-initiative.png#lightbox)
 
@@ -53,14 +53,14 @@ ms.locfileid: "100608675"
 单击 " **查看** " 以查看分配的详细信息，然后单击 " **创建** " 来创建该分配。 此时请勿创建修正任务，因为你很可能需要多次修正任务来启用现有的虚拟机。 请参阅下面的 [更正符合性结果](#remediate-compliance-results) 。
 
 ## <a name="review-compliance"></a>查看符合性
-创建分配后，你可以查看和管理跨管理组和订阅的 **启用用于 VM 的 Azure Monitor** 计划的覆盖范围。 这将显示每个管理组或订阅中存在多少个虚拟机以及其符合性状态。
+创建分配后，你可以在管理组和订阅中查看和管理 **启用 VM insights** 计划的覆盖范围。 这将显示每个管理组或订阅中存在多少个虚拟机以及其符合性状态。
 
-[![用于 VM 的 Azure Monitor 的“管理策略”页](media/vminsights-enable-policy/manage-policy-page-01.png)](media/vminsights-enable-policy/manage-policy-page-01.png#lightbox)
+[![VM insights 管理策略页](media/vminsights-enable-policy/manage-policy-page-01.png)](media/vminsights-enable-policy/manage-policy-page-01.png#lightbox)
 
 
 下表提供了此视图中信息的说明。
 
-| 功能 | 说明 | 
+| 函数 | 说明 | 
 |----------|-------------| 
 | **范围** | 你拥有的或者继承了其访问权限的管理组和订阅，可以通过管理组层次结构向下钻取。|
 | **角色** | 作用域中的角色，可以是读取者、所有者或参与者。 如果你有权访问订阅，但不能访问其所属的管理组，则此字段将为空。 此角色确定你可以查看的数据和可执行的操作， (所有者) 、编辑它们或查看符合性。 |
@@ -105,11 +105,11 @@ ms.locfileid: "100608675"
 [![屏幕截图显示监视器的 "策略更正" 窗格 |虚拟机。](media/vminsights-enable-policy/remediation.png)](media/vminsights-enable-policy/remediation.png#lightbox)
 
 
-补救任务完成后，Vm 应符合为用于 VM 的 Azure Monitor 安装和启用的代理。 
+修正任务完成后，Vm 应符合为 VM insights 安装和启用的代理。 
 
 ## <a name="next-steps"></a>后续步骤
 
-现已为虚拟机启用了监视，可在用于 VM 的 Azure Monitor 中使用此信息进行分析。 
+为虚拟机启用监视后，可以使用 VM insights 分析此信息。 
 
-- 若要查看已发现的应用程序依赖项，请参阅[查看用于 VM 的 Azure Monitor 映射](vminsights-maps.md)。 
-- 若要通过 VM 的性能了解瓶颈和整体利用率，请参阅[查看 Azure VM 性能](vminsights-performance.md)。 
+- 若要查看已发现的应用程序依赖关系，请参阅 [查看 VM 见解 Map](vminsights-maps.md)。 
+- 若要通过 VM 的性能了解瓶颈和整体利用率，请参阅[查看 Azure VM 性能](vminsights-performance.md)。

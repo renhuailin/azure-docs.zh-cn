@@ -5,20 +5,20 @@ services: azure-monitor
 ms.topic: reference
 ms.date: 07/22/2020
 ms.subservice: metrics
-ms.openlocfilehash: 8f503623031b7071c5e0a206d078175e16a7e919
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: d48dcb4e45bbaf3d516f2a45e14a6be0837b55c0
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100608088"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734377"
 ---
 # <a name="azure-monitor-platform-metrics-exportable-via-diagnostic-settings"></a>可通过诊断设置导出的 Azure Monitor 平台指标
 
-Azure Monitor 默认提供[平台指标](../essentials/data-platform-metrics.md)，无需配置。 它提供多种方式来与平台指标交互，包括在门户中制作指标图表、通过 REST API 访问指标，或者使用 PowerShell 或 CLI 查询指标。 有关 Azure Monitor 的合并指标管道中当前可用的平台指标的完整列表，请参阅[支持的指标](../platform/metrics-supported.md)。 若要查询和访问这些指标，请使用 [2018-01-01 API 版本](/rest/api/monitor/metricdefinitions)。 其他指标可在门户或旧版 API 中使用。
+Azure Monitor 默认提供[平台指标](../essentials/data-platform-metrics.md)，无需配置。 它提供多种方式来与平台指标交互，包括在门户中制作指标图表、通过 REST API 访问指标，或者使用 PowerShell 或 CLI 查询指标。 有关 Azure Monitor 的合并指标管道中当前可用的平台指标的完整列表，请参阅[支持的指标](./metrics-supported.md)。 若要查询和访问这些指标，请使用 [2018-01-01 API 版本](/rest/api/monitor/metricdefinitions)。 其他指标可在门户或旧版 API 中使用。
 
 ## <a name="metrics-not-exportable-via-diagnostic-settings"></a>无法通过诊断设置导出的指标
 
-以前位于此位置的内容已移至 [Azure Monitor 指标的支持列表](../platform/metrics-supported.md#exporting-platform-metrics-to-other-locations)。
+以前位于此位置的内容已移至 [Azure Monitor 指标的支持列表](./metrics-supported.md#exporting-platform-metrics-to-other-locations)。
 
 通过诊断设置导出指标时存在一些限制。 可使用 REST API 导出所有指标。 
 
@@ -548,5 +548,4 @@ Azure Monitor 默认提供[平台指标](../essentials/data-platform-metrics.md)
 | Microsoft.Sql/servers/elasticPools | xtp_storage_percent | 内存中 OLTP 存储百分比 | 
 | Microsoft.Sql/servers | dtu_consumption_percent | DTU 百分比 | 
 | Microsoft.Sql/servers | dtu_used | 已用的 DTU | 
-| Microsoft.Sql/managedInstances | avg_cpu_percent | CPU 平均百分比 | 
-
+| Microsoft.Sql/managedInstances | avg_cpu_percent | CPU 平均百分比 |

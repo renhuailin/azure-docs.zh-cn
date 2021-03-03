@@ -4,12 +4,12 @@ description: 了解如何快速开始使用 Azure API 管理以及在 Service Fa
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: f1ae658ac4944f8d39dc11769669d32958fd14f4
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 681a1c5241743a0164d83d73753efa0b6c446109
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99491259"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101735584"
 ---
 # <a name="integrate-api-management-with-service-fabric-in-azure"></a>在 Azure 中将 API 管理与 Service Fabric 集成
 
@@ -277,7 +277,7 @@ az deployment group create --name ApiMgmtDeployment --resource-group $ResourceGr
 
 群集由群集资源本身以及其他 Azure 资源组成。 若要删除群集及其占用的所有资源，最简单的方式是删除资源组。
 
-登录到 Azure，选择要删除群集的订阅 ID。  可通过登录到 [Azure 门户](https://portal.azure.com)查找订阅 ID。 使用 [Remove-AzResourceGroup cmdlet](/en-us/powershell/module/az.resources/remove-azresourcegroup) 删除资源组和所有群集资源。
+登录到 Azure，选择要删除群集的订阅 ID。  可通过登录到 [Azure 门户](https://portal.azure.com)查找订阅 ID。 使用 [Remove-AzResourceGroup cmdlet](/powershell/module/az.resources/remove-azresourcegroup) 删除资源组和所有群集资源。
 
 ```powershell
 $ResourceGroupName = "sfclustertutorialgroup"

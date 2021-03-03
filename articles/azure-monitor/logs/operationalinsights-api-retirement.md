@@ -6,17 +6,17 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/29/2020
-ms.openlocfilehash: 6564e7263639f0a78df6f2674ce7a4b610fb0fc1
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 03e534564b4a32f112c2aaff44a187b10eb2a537
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100608206"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723106"
 ---
 # <a name="operationalinsights-api-version-retirement"></a>OperationalInsights API 版本停用
 Microsoft 至少会在停用 API 前提前 12 个月发出通知，以便顺利转换为更高版本/受支持版本。 我们发布了 OperationalInsights 资源提供程序 API 新版本 (2020-08-01)，并将于 2024 年 2 月 29 日停用任何早期的 API 版本。
 
-我们鼓励你立即开始使用版本2020-08-01，以获得新功能的优点，如 [专用群集](../log-query/logs-dedicated-clusters.md)、 [客户管理的密钥](../logs/customer-managed-keys.md)、 [专用链接](./private-link-security.md) 和 [数据导出](./logs-data-export.md)。 此外，新特性、功能和优化仅添加到最新的 API 中。
+我们鼓励你立即开始使用版本2020-08-01，以获得新功能的优点，如 [专用群集](./logs-dedicated-clusters.md)、 [客户管理的密钥](../logs/customer-managed-keys.md)、 [专用链接](./private-link-security.md) 和 [数据导出](./logs-data-export.md)。 此外，新特性、功能和优化仅添加到最新的 API 中。
 
 2024 年 2 月 29 日后，Azure Monitor 将不再支持 2020-08-01 之前的早期 API 版本。 如果不想升级，则 Azure Monitor 服务在 2024 年 2 月 29 日之前，将继续处理从早期版本发送的请求。
 

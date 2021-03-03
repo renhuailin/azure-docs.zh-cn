@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/27/2021
+ms.date: 02/19/2021
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 38978982baea41d23958a857b19a1edf2e454f37
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 412e5ac661761d5fda1d375c59511c053a6354a6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98938723"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714776"
 ---
 # <a name="change-how-a-storage-account-is-replicated"></a>更改存储帐户的复制方式
 
@@ -41,7 +41,7 @@ Azure 存储提供以下类型的复制：
 |--------------------|----------------------------------------------------|---------------------------------------------------------------------|----------------------------------------------------|---------------------------------------------------------------------|
 | <b>…从 LRS</b> | 空值 | 使用 Azure 门户、PowerShell 或 CLI 更改复制设置<sup>1、2</sup> | 执行手动迁移 <br /><br /> OR <br /><br /> 请求实时迁移 | 执行手动迁移 <br /><br /> OR <br /><br /> 先切换到 GRS/RA-GRS，然后请求实时迁移<sup>1</sup> |
 | <b>…从 GRS/RA-GRS</b> | 使用 Azure 门户、PowerShell 或 CLI 更改复制设置 | 空值 | 执行手动迁移 <br /><br /> OR <br /><br /> 先切换到 LRS，然后请求实时迁移 | 执行手动迁移 <br /><br /> OR <br /><br /> 请求实时迁移 |
-| <b>...from ZRS</b> | 执行手动迁移 | 执行手动迁移 | 不适用 | 使用 Azure 门户、PowerShell 或 CLI 更改复制设置<sup>1、3</sup> |
+| <b>...from ZRS</b> | 执行手动迁移 | 执行手动迁移 | 不适用 | 请求实时迁移 |
 | <b>...from GZRS/RA-GZRS</b> | 执行手动迁移 | 执行手动迁移 | 使用 Azure 门户、PowerShell 或 CLI 更改复制设置 | 空值 |
 
 <sup>1</sup> 会产生一次性出口费用。<br />
@@ -164,7 +164,7 @@ ZRS 经典版仅适用于常规用途 V1 (GPv1) 存储帐户中的 **块 Blob**�
 
 你还可以使用 ZRS 提供的区域中的 Azure 门户、PowerShell 或 Azure CLI 将 ZRS 经典存储帐户升级到 ZRS。
 
-# <a name="portal"></a>[门户](#tab/portal)
+# <a name="portal"></a>[Portal](#tab/portal)
 
 若要升级到 Azure 门户中的 ZRS，请导航到该帐户的 **配置** 设置，然后选择 " **升级**"：
 

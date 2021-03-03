@@ -10,19 +10,19 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2020
 ms.author: sausin
-ms.openlocfilehash: 0f932eed2f1d58e8470a24ea595e21712deb7f03
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 89d7a6f8beb004f57a00dfe75e4cc387c8591b1e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95021892"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101716578"
 ---
 # <a name="custom-commands-encryption-of-data-at-rest"></a>对静态数据的自定义命令加密
 
 自定义命令将数据保存到云时，会自动对其进行加密。 自定义命令服务加密可以保护数据，并帮助你满足组织的安全性和符合性承诺。
 
 > [!NOTE]
-> 自定义命令服务不会为与应用程序关联的 LUIS 资源自动启用加密。 如果需要，你必须从 [此处](./../LUIS/luis-encryption-of-data-at-rest.md)为 LUIS 资源启用加密。
+> 自定义命令服务不会为与应用程序关联的 LUIS 资源自动启用加密。 如果需要，你必须从 [此处](../luis/encrypt-data-at-rest.md)为 LUIS 资源启用加密。
 
 ## <a name="about-cognitive-services-encryption"></a>关于认知服务加密
 使用符合 [FIPS 140-2](https://en.wikipedia.org/wiki/FIPS_140-2) [的256位 AES 加密对](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) 数据进行加密和解密。 加密和解密都是透明的，这意味着将替你管理加密和访问。 你的数据默认情况下就是安全的，你无需修改代码或应用程序，即可利用加密。
@@ -52,22 +52,22 @@ ms.locfileid: "95021892"
 
 必须使用 Azure Key Vault 来存储客户管理的密钥。 可以创建自己的密钥并将其存储在 Key Vault 中，或者使用 Azure Key Vault API 来生成密钥。 语音资源和密钥保管库必须位于同一区域，并且在相同的 Azure Active Directory (Azure AD) 租户中，但它们可以位于不同的订阅中。 有关 Azure Key Vault 的详细信息，请参阅[什么是 Azure Key Vault？](../../key-vault/general/overview.md)。
 
-当创建新的语音资源并用于设置自定义命令时，应用程序数据始终使用 Microsoft 托管的密钥进行加密。 创建资源时，无法启用客户管理的密钥。 客户管理的密钥存储在 Azure Key Vault 中，并且必须使用访问策略对密钥保管库进行预配，此访问策略向与认知服务资源关联的托管标识授予密钥权限。 仅在使用 CMK 所需的定价层创建资源后，托管标识才可用。
+当创建新的语音资源并用于设置自定义命令时，应用程序数据始终使用 Microsoft 托管的密钥进行加密。 当创建资源时，无法启用客户管理的密钥。 客户管理的密钥存储在 Azure Key Vault 中，必须使用访问策略对密钥保管库进行预配，这些策略将密钥权限授予与认知服务资源关联的托管标识。 只有在使用 CMK 所需的定价层创建资源后，托管标识才可用。
 
-启用客户托管的密钥还将启用系统分配的 [托管标识](../../active-directory/managed-identities-azure-resources/overview.md)，一项功能 Azure AD。 启用系统分配的托管标识后，此资源将注册 Azure Active Directory。 注册后，将向托管标识授予对客户管理密钥安装过程中选择的 Key Vault 的访问权限。 
-
-> [!IMPORTANT]
-> 如果禁用系统分配的托管标识，则将删除对密钥保管库的访问权限，并且任何使用客户密钥加密的数据将无法再访问。 所有依赖于此数据的功能都将停止工作。
+启用客户管理的密钥还会启用系统分配的[托管标识](../../active-directory/managed-identities-azure-resources/overview.md)，这是 Azure AD 的一项功能。 启用系统分配的托管标识后，此资源将注册到 Azure Active Directory。 注册后，将向托管标识授予在设置客户管理的密钥期间选择的 Key Vault 的访问权限。 
 
 > [!IMPORTANT]
-> 托管标识当前不支持跨目录方案。 在 Azure 门户中配置客户管理的密钥时，会自动在这些内容下分配托管标识。 如果随后将订阅、资源组或资源从一个 Azure AD 目录移动到另一个目录，则与该资源关联的托管标识不会传输到新租户，因此，客户管理的密钥可能不再有效。 有关详细信息，请参阅 [Azure 资源的常见问题解答和已知问题](../../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories)中的“在 Azure AD 目录之间转移订阅”。  
+> 如果禁用系统分配的托管标识，则会删除对密钥保管库的访问权限，而使用客户密钥加密的任何数据都将不再可供访问。 任何依赖于此数据的功能都会失效。
+
+> [!IMPORTANT]
+> 托管标识当前不支持跨目录方案。 在 Azure 门户中配置客户管理的密钥时，系统会在幕后自动分配一个托管标识。 如果随后将订阅、资源组或资源从一个 Azure AD 目录移动到另一个目录，则与资源关联的托管标识不会转移到新租户，因此，客户管理的密钥可能不再有效。 有关详细信息，请参阅 [Azure 资源的常见问题解答和已知问题](../../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories)中的“在 Azure AD 目录之间转移订阅”。  
 
 ## <a name="configure-azure-key-vault"></a>配置 Azure Key Vault
 
-使用客户托管的密钥需要在密钥保管库中设置两个属性， **软删除** 并不 **清除**。 默认不会启用这些属性，但可以使用 PowerShell 或 Azure CLI 对新的或现有的 Key Vault 启用。
+使用客户管理的密钥需要在密钥保管库中设置两个属性：“软删除”和“不清除”。 默认不会启用这些属性，但可以使用 PowerShell 或 Azure CLI 对新的或现有的 Key Vault 启用。
 
 > [!IMPORTANT]
-> 如果你没有 " **软删除** " 和 " **未** 启用启用属性" 并删除你的密钥，则无法恢复认知服务资源中的数据。
+> 如果你在没有启用“软删除”和“不清除”属性的情况下删除了你的密钥，则无法恢复认知服务资源中的数据。
 
 若要了解如何在现有密钥保管库上启用这些属性，请参阅以下文章之一中标题为“启用软删除”和“启用清除保护”的部分： 
 
@@ -81,13 +81,13 @@ Azure 存储加密仅支持大小为 2048 的 RSA 密钥。 有关密钥的详�
 若要在 Azure 门户中启用客户管理的密钥，请执行以下步骤：
 
 1. 导航到语音资源。
-1. 在语音资源的 " **设置** " 边栏选项卡上，单击 " **加密**"。 选择 " **客户托管密钥** " 选项，如下图所示。
+1. 在语音资源的 " **设置** " 边栏选项卡上，单击 " **加密**"。 选择“客户管理的密钥”选项，如下图所示。
 
- ![显示如何选择客户托管密钥的屏幕截图](media/custom-commands/select-cmk.png)
+ ![屏幕截图显示了如何选择客户管理的密钥](media/custom-commands/select-cmk.png)
 
 ## <a name="specify-a-key"></a>指定密钥
 
-启用客户管理的密钥后，你将有机会指定与认知服务资源关联的密钥。
+启用客户管理的密钥后，可以指定要与认知服务资源关联的密钥。
 
 ### <a name="specify-a-key-as-a-uri"></a>将密钥指定为 URI
 
@@ -134,13 +134,13 @@ Azure 存储加密仅支持大小为 2048 的 RSA 密钥。 有关密钥的详�
 
 ## <a name="rotate-customer-managed-keys"></a>轮换客户管理的密钥
 
-可以根据自己的合规性策略，在 Azure 密钥保管库中轮换客户管理的密钥。 旋转密钥时，必须更新语音资源以使用新的密钥 URI。 若要了解如何更新资源以在 Azure 门户中使用新版本的密钥，请参阅 [更新密钥版本](#update-the-key-version)。
+可以根据自己的合规性策略，在 Azure 密钥保管库中轮换客户管理的密钥。 旋转密钥时，必须更新语音资源以使用新的密钥 URI。 若要了解如何更新资源以在 Azure 门户中使用新版本的密钥，请参阅[更新密钥版本](#update-the-key-version)。
 
-旋转密钥不会触发重新加密资源中的数据。 用户无需执行任何其他操作。
+轮换密钥不会触发资源中数据的重新加密。 用户无需执行任何其他操作。
 
 ## <a name="revoke-access-to-customer-managed-keys"></a>撤消对客户管理的密钥的访问权限
 
-若要撤消对客户管理的密钥的访问权限，请使用 PowerShell 或 Azure CLI。 有关详细信息，请参阅 [Azure Key Vault PowerShell](/powershell/module/az.keyvault//) 或 [Azure Key Vault CLI](/cli/azure/keyvault)。 撤消访问权限会有效地阻止访问认知服务资源中的所有数据，因为认知服务无法访问加密密钥。
+若要撤消对客户管理的密钥的访问权限，请使用 PowerShell 或 Azure CLI。 有关详细信息，请参阅 [Azure Key Vault PowerShell](/powershell/module/az.keyvault//) 或 [Azure Key Vault CLI](/cli/azure/keyvault)。 撤销访问权限实际上会阻止对认知服务资源中所有数据的访问，因为认知服务无法访问加密密钥。
 
 ## <a name="disable-customer-managed-keys"></a>禁用客户托管密钥
 

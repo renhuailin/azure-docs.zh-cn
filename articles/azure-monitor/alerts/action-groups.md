@@ -3,15 +3,15 @@ title: 在 Azure 门户中创建和管理器操作组
 description: 了解如何在 Azure 门户中创建和管理操作组。
 author: dkamstra
 ms.topic: conceptual
-ms.date: 01/28/2021
+ms.date: 02/25/2021
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 8905c3e4dfa1053646ede5c0b62149844e21ee7d
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 50fb898e1ea55d0bcc09fc10dfee051ca7b1d809
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100608144"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101701155"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>在 Azure 门户中创建和管理器操作组
 操作组是由 Azure 订阅的所有者定义的通知首选项的集合。 Azure Monitor 和服务运行状况警报使用操作组来通知用户某个警报已触发。 各种警报可以使用相同的操作组或不同的操作组，具体取决于用户的要求。 
@@ -118,6 +118,8 @@ ms.locfileid: "100608144"
 操作组中的 Runbook 操作数可能有限。 
 
 ### <a name="azure-app-push-notifications"></a>Azure 应用推送通知
+通过在配置 Azure 移动应用时提供用作帐户 ID 的电子邮件地址，启用到 [Azure 移动应用](https://azure.microsoft.com/features/azure-portal/mobile-app/) 的推送通知。
+
 操作组中的 Azure 应用操作数可能有限。
 
 ### <a name="email"></a>电子邮件
@@ -139,11 +141,11 @@ ms.locfileid: "100608144"
 2. 单击“所有用户”（在左窗格中），你将看到用户列表（在右窗格中）。
 3. 选择你要查看其“主电子邮件”信息的用户。
 
-  :::image type="content" source="media/action-groups/active-directory-user-profile.png" alt-text="有关如何查看用户配置文件的示例。"border="true":::
+  :::image type="content" source="media/action-groups/active-directory-user-profile.png" alt-text="有关如何查看用户配置文件的示例。" border="true":::
 
 4. 在“联系人信息”下的“用户配置文件”中，如果“电子邮件”选项卡为空白，请单击顶部的“编辑”按钮，然后添加你的“主电子邮件”，然后单击顶部的“保存”按钮。
 
-  :::image type="content" source="media/action-groups/active-directory-add-primary-email.png" alt-text="有关如何添加主电子邮件的示例。"border="true":::
+  :::image type="content" source="media/action-groups/active-directory-add-primary-email.png" alt-text="有关如何添加主电子邮件的示例。" border="true":::
 
 操作组中的电子邮件操作数可能有限。 请参阅[速率限制信息](./alerts-rate-limiting.md)一文。
 
@@ -153,7 +155,7 @@ ms.locfileid: "100608144"
 操作组中的函数操作数可能有限。
 
 ### <a name="itsm"></a>ITSM
-ITSM 操作需要 ITSM 连接。 了解如何创建 [ITSM 连接](../platform/itsmc-overview.md)。
+ITSM 操作需要 ITSM 连接。 了解如何创建 [ITSM 连接](./itsmc-overview.md)。
 
 操作组中的 ITSM 操作数可能有限。 
 
@@ -164,7 +166,7 @@ ITSM 操作需要 ITSM 连接。 了解如何创建 [ITSM 连接](../platform/it
 
 > [!NOTE]
 > 使用 webhook 操作要求目标 webhook 终结点不需要警报的详细信息即可成功运行，或者能够分析在 POST 操作中提供的警报上下文信息。 如果 webhook 终结点不能自行处理警报上下文信息，则可以使用类似于 [逻辑应用操作](./action-groups-logic-app.md) 的解决方案，对警报上下文信息的自定义操作进行匹配，以匹配 webhook 的预期数据格式。
-> 用户应是 webhook 服务主体的所有者，以确保不会违反安全性。 由于任何 Azure 客户都可以通过门户访问所有对象 ID，而无需检查所有者，因此任何人都可以将安全的 Webhook 添加到自己的操作组中，以获取违反安全性的 Azure Monitor 警报通知。
+> 用户应是 webhook 服务主体的所有者，以确保不会违反安全性。 由于任何 azure 客户都可以通过门户访问所有对象 Id，而不检查所有者，因此，任何人都可以将安全 webhook 添加到其自己的 azure monitor 警报通知的操作组，这会违反安全性。
 
 操作组 Webhook 操作使你能够利用 Azure Active Directory 来保护操作组和受保护的 Web API（Webhook 终结点）之间的连接。 下面介绍了利用此功能的整个工作流。 有关 Azure AD 应用程序和服务主体的概述，请参阅 [Microsoft 标识平台 (v2.0) 概述](../../active-directory/develop/v2-overview.md)。
 
@@ -191,7 +193,7 @@ ITSM 操作需要 ITSM 连接。 了解如何创建 [ITSM 连接](../platform/it
 Connect-AzureAD -TenantId "<provide your Azure AD tenant ID here>"
     
 # This is your Azure AD Application's ObjectId. 
-$myAzureADApplicationObjectId = "<the Object Id of your Azure AD Application>"
+$myAzureADApplicationObjectId = "<the Object ID of your Azure AD Application>"
     
 # This is the Action Groups Azure AD AppId
 $actionGroupsAppId = "461e8683-5575-4561-ac7f-899cc907d62a"
@@ -334,7 +336,7 @@ Webhook 使用以下规则进行处理
 ## <a name="next-steps"></a>后续步骤
 * 详细了解[短信警报行为](./alerts-sms-behavior.md)。  
 * 获取[对活动日志警报 webhook 架构的了解](./activity-log-alerts-webhook.md)。  
-* 详细了解 [ITSM 连接器](../platform/itsmc-overview.md)。
+* 详细了解 [ITSM 连接器](./itsmc-overview.md)。
 * 详细了解有关警报的[速率限制](./alerts-rate-limiting.md)。
-* 获取[活动日志警报概述](../platform/alerts-overview.md)，了解如何接收警报。  
+* 获取[活动日志警报概述](./alerts-overview.md)，了解如何接收警报。  
 * 了解如何[配置每次发布服务运行状况通知时的警报](../../service-health/alerts-activity-log-service-notifications-portal.md)。

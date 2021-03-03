@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: shlo
-ms.openlocfilehash: f1889d49d1eb4981e59af6248817a6a9b6e2002d
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 472d55f79033d60c4f40e60b55e0f7fc2ea4517e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99537249"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101716646"
 ---
 # <a name="disclosure-design-guidelines"></a>披露设计准则
 了解如何通过透明化语音体验的合成性质来构建和维护客户给予的信任。
@@ -74,8 +74,8 @@ ms.locfileid: "99537249"
 
   ![公开评估图表](media/responsible-ai/disclosure-guidelines/flowchart.png)
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 * [公开设计模式](concepts-disclosure-patterns.md)
-* [向配音员公开](https://docs.microsoft.com/legal/cognitive-services/speech-service/disclosure-voice-talent?context=/azure/cognitive-services/speech-service/context/context)
+* [向配音员公开](/legal/cognitive-services/speech-service/disclosure-voice-talent?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext)
 * [合成语音技术的负责任的部署指南](concepts-guidelines-responsible-deployment-synthetic.md)

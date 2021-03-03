@@ -6,18 +6,18 @@ ms.author: harelbr
 ms.topic: conceptual
 ms.date: 01/11/2021
 ms.subservice: alerts
-ms.openlocfilehash: e3a9810aef356b7acf5ae2522645c14ee445812b
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: bf55d66f7099717079190a538bad8bf777581825
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100606182"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723548"
 ---
 # <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>使用 Azure Monitor 创建、查看和管理指标警报
 
-Azure Monitor 中的指标警报提供了一种在指标超出阈值时获得通知的方式。 指标警报适用于一系列多维平台指标、自定义指标、Application Insights 标准指标和自定义指标。 本文将介绍如何通过 Azure 门户和 Azure CLI 创建、查看和管理指标警报规则。 也可以使用 Azure 资源管理器模板创建指标警报规则，[另外的文章](../platform/alerts-metric-create-templates.md)将会介绍此方法。
+Azure Monitor 中的指标警报提供了一种在指标超出阈值时获得通知的方式。 指标警报适用于一系列多维平台指标、自定义指标、Application Insights 标准指标和自定义指标。 本文将介绍如何通过 Azure 门户和 Azure CLI 创建、查看和管理指标警报规则。 也可以使用 Azure 资源管理器模板创建指标警报规则，[另外的文章](./alerts-metric-create-templates.md)将会介绍此方法。
 
-可以在[指标警报概述](../platform/alerts-metric-overview.md)中详细了解指标警报的工作原理。
+可以在[指标警报概述](./alerts-metric-overview.md)中详细了解指标警报的工作原理。
 
 ## <a name="create-with-azure-portal"></a>使用 Azure 门户进行创建
 
@@ -32,7 +32,7 @@ Azure Monitor 中的指标警报提供了一种在指标超出阈值时获得通
 
 3. 在加载的上下文窗格中单击“选择目标”，选择要发出警报的目标资源  。 使用“订阅”和“资源类型”下拉列表查找要监视的资源。   也可以使用搜索栏查找资源。
 
-4. 如果选定的资源具有可创建警报的指标，则右下方的“可用信号”将包含这些指标。  可在[此文](../platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported)中查看指标警报支持的资源类型的完整列表。
+4. 如果选定的资源具有可创建警报的指标，则右下方的“可用信号”将包含这些指标。  可在[此文](./alerts-metric-near-real-time.md#metrics-and-dimensions-supported)中查看指标警报支持的资源类型的完整列表。
 
 5. 选择目标资源后，单击“添加条件”  。
 
@@ -45,7 +45,7 @@ Azure Monitor 中的指标警报提供了一种在指标超出阈值时获得通
     - 如果你要查看的维度值没有显示，请单击“添加自定义值”来添加自定义维度值。
     - 还可为任何维度选择所有当前和未来值。 这会将选择范围动态调整为某个维度的所有当前和未来值。
 
-    指标警报规则将会针对所选值的所有组合对条件进行评估。 [详细了解如何针对多维指标发出警报](../platform/alerts-metric-overview.md)。
+    指标警报规则将会针对所选值的所有组合对条件进行评估。 [详细了解如何针对多维指标发出警报](./alerts-metric-overview.md)。
 
 9. 选择“阈值”  类型、“运算符”  和“聚合类型”  。 这将确定指标警报规则将评估的逻辑。
     - 如果使用“静态”  阈值，请继续定义“阈值”  。 指标图表可以帮助你确定可能合理的阈值。
@@ -154,8 +154,8 @@ Azure Monitor 中的指标警报提供了一种在指标超出阈值时获得通
 
 ## <a name="next-steps"></a>后续步骤
 
-- [使用 Azure 资源管理器模板创建指标警报](../platform/alerts-metric-create-templates.md)
-- [了解指标警报的工作原理](../platform/alerts-metric-overview.md)
+- [使用 Azure 资源管理器模板创建指标警报](./alerts-metric-create-templates.md)
+- [了解指标警报的工作原理](./alerts-metric-overview.md)
 - [了解指标警报与动态阈值条件的工作原理](../alerts/alerts-dynamic-thresholds.md)
-- [了解指标警报的 Webhook 架构](../platform/alerts-metric-near-real-time.md#payload-schema)
-- [指标警报问题故障排除](../platform/alerts-troubleshoot-metric.md)
+- [了解指标警报的 Webhook 架构](./alerts-metric-near-real-time.md#payload-schema)
+- [指标警报问题故障排除](./alerts-troubleshoot-metric.md)

@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/08/2021
-ms.openlocfilehash: a81676b9985b134a8214f7f5f97d85d27259b71f
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 4db9503ea84ae13148a89a03048c73399413e5cc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100417071"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710186"
 ---
 # <a name="parse-transformation-in-mapping-data-flow"></a>映射数据流中的分析转换
 
@@ -19,7 +19,9 @@ ms.locfileid: "100417071"
 
 使用 Parse 转换可以分析文档格式的数据中的列。 可以分析的嵌入文档的当前支持类型是 JSON 和分隔文本。
 
-## <a name="configuration"></a>Configuration
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RWykdO]
+
+## <a name="configuration"></a>配置
 
 在 "分析转换配置" 面板中，您将首先选取要以内联方式分析的列中包含的数据类型。 分析转换还包含以下配置设置。
 
@@ -29,7 +31,7 @@ ms.locfileid: "100417071"
 
 与派生列和聚合类似，你可以通过从下拉选取器中进行选择来修改现有列。 或者，您可以在此处键入新列的名称。 ADF 将分析的源数据存储在此列中。
 
-### <a name="expression"></a>Expression
+### <a name="expression"></a>表达式
 
 使用表达式生成器为分析设置源。 这只是选择包含要分析的自包含数据的源列，也可以创建复杂的表达式进行分析。
 

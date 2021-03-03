@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/01/2020
 ms.author: trbye
-ms.openlocfilehash: baa48ede04b9de98bd69de69753c97b5fcee7329
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 36885e4673b83d1db7972f03c4a6309f766206c5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99525256"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713093"
 ---
 # <a name="what-is-custom-neural-voice"></a>什么是自定义的神经声音？
 
-自定义的神经语音是一种 [文本到语音](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech) (TTS) 功能，它允许您通过提供自己的音频数据作为示例，为您的应用程序创建一种自定义的综合声音。 文本到语音的工作原理是使用机器学习模型将文本转换为合成语音，这听起来像是所选的声音。 使用 [REST API](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-text-to-speech)，你可以使应用程序与 [预建](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#neural-voices) 声音或通过自定义的神经语音功能开发的 [自定义语音](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-custom-voice-prepare-data) 模型进行交流。 自定义的神经声音基于神经 TTS 技术，该技术创建自然声音，与人类的语音进行比较时经常无法区分。
+自定义的神经语音是一种 [文本到语音](./text-to-speech.md) (TTS) 功能，它允许您通过提供自己的音频数据作为示例，为您的应用程序创建一种自定义的综合声音。 文本到语音的工作原理是使用机器学习模型将文本转换为合成语音，这听起来像是所选的声音。 使用 [REST API](./rest-text-to-speech.md)，你可以使应用程序与 [预建](./language-support.md#neural-voices) 声音或通过自定义的神经语音功能开发的 [自定义语音](./how-to-custom-voice-prepare-data.md) 模型进行交流。 自定义的神经声音基于神经 TTS 技术，该技术创建自然声音，与人类的语音进行比较时经常无法区分。
 自定义的神经语音的现实声音和自然声音可以代表品牌、personify 的计算机，并允许用户以自然方式与应用程序 conversationally 交互。
 
 > [!NOTE]
@@ -35,7 +35,7 @@ ms.locfileid: "99525256"
 
 神经 TTS 语音模型使用基于人为语音的记录样本的深层神经网络进行训练。 在本 [博客](https://techcommunity.microsoft.com/t5/azure-ai/neural-text-to-speech-extends-support-to-15-more-languages-with/ba-p/1505911)中，我们将介绍神经 TTS 如何与先进的神经语音合成模型结合使用。 该博客还介绍了如何调整通用基准模型，使其不超过2小时的语音数据 (或少于2000个记录的最谈话) 从目标扬声器，并了解目标演讲者的语音。 若要了解如何训练神经 vocoder，请参阅 [博客文章](https://techcommunity.microsoft.com/t5/azure-ai/azure-neural-tts-upgraded-with-hifinet-achieving-higher-audio/ba-p/1847860)。
 
-利用自定义的神经声音自定义功能，您可以调整神经 TTS 引擎以更好地适应您的用户方案。 若要创建自定义的神经声音，请使用 [Speech Studio](https://speech.microsoft.com/customvoice) 上传录制的音频和相应的脚本、训练模型，并将语音部署到自定义终结点。 根据用例，自定义的神经语音可用于实时将文本转换为语音 (例如，在智能虚拟助手) 或以脱机方式生成音频内容 (例如，在音频书籍中使用，或者在电子学习应用程序中使用用户提供的文本输入) 。 可以通过 [REST API](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-text-to-speech)、 [语音 SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started-text-to-speech?tabs=script%2Cwindowsinstall&pivots=programming-language-csharp)或 [web 门户](https://speech.microsoft.com/audiocontentcreation)获取此内容。
+利用自定义的神经声音自定义功能，您可以调整神经 TTS 引擎以更好地适应您的用户方案。 若要创建自定义的神经声音，请使用 [Speech Studio](https://speech.microsoft.com/customvoice) 上传录制的音频和相应的脚本、训练模型，并将语音部署到自定义终结点。 根据用例，自定义的神经语音可用于实时将文本转换为语音 (例如，在智能虚拟助手) 或以脱机方式生成音频内容 (例如，在音频书籍中使用，或者在电子学习应用程序中使用用户提供的文本输入) 。 可以通过 [REST API](./rest-text-to-speech.md)、 [语音 SDK](./get-started-text-to-speech.md?pivots=programming-language-csharp&tabs=script%2cwindowsinstall)或 [web 门户](https://speech.microsoft.com/audiocontentcreation)获取此内容。
 
 ## <a name="terms-and-definitions"></a>术语和定义
 

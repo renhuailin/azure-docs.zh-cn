@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/10/2020
 ms.custom: lyrana
-ms.openlocfilehash: 940f7efc7130ef80817be3b42e3c0eff83588a90
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: a46ddeddfcefcd4d6e7f87747fe36cfc6ec82e35
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100587991"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737556"
 ---
 # <a name="monitoring-time-series-insights"></a>监视时序见解
 
@@ -63,7 +63,7 @@ Azure 时序见解收集的监视数据的类型与 [Azure 资源的监视数据
 
 ## <a name="analyzing-metrics"></a>分析指标
 
-可以从“Azure Monitor”菜单中打开“指标”，以分析 Azure 时序见解指标以及来自其他 Azure 服务的指标。 有关使用此工具的详细信息，请参阅 [Azure 指标资源管理器入门](../azure-monitor/platform/metrics-getting-started.md)。
+可以从“Azure Monitor”菜单中打开“指标”，以分析 Azure 时序见解指标以及来自其他 Azure 服务的指标。 有关使用此工具的详细信息，请参阅 [Azure 指标资源管理器入门](../azure-monitor/essentials/metrics-getting-started.md)。
 
 有关收集的平台指标的列表，请参阅[监视 Azure 时序见解数据参考](how-to-monitor-tsi-reference.md#metrics)
 
@@ -115,7 +115,7 @@ Azure 时序见解将数据存储在以下表中。
 
 ## <a name="alerts"></a>警报
 
-在监视数据中发现重要情况时，Azure Monitor 警报会主动通知你。 有了警报，你就可以在客户注意到你的系统中的问题之前确定和解决它们。 可以在[指标](../azure-monitor/platform/alerts-metric-overview.md)、[日志](../azure-monitor/platform/alerts-unified-log.md)和[活动日志](../azure-monitor/platform/activity-log-alerts.md)上设置警报。 不同类型的警报各有优缺点。
+在监视数据中发现重要情况时，Azure Monitor 警报会主动通知你。 有了警报，你就可以在客户注意到你的系统中的问题之前确定和解决它们。 可以在[指标](../azure-monitor/alerts/alerts-metric-overview.md)、[日志](../azure-monitor/alerts/alerts-unified-log.md)和[活动日志](../azure-monitor/alerts/activity-log-alerts.md)上设置警报。 不同类型的警报各有优缺点。
 
 当基于平台指标创建警报规则时，请注意，对于以计数单位收集的时序见解平台指标，某些聚合可能不可用或无法使用。
 

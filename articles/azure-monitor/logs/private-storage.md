@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: noakup
 ms.author: noakuper
 ms.date: 09/03/2020
-ms.openlocfilehash: 3c5a528ada9e7239f5c53da1cae6df7ceffac918
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 4161f2f4ced848eb02d395dfb2da35d64f0c0fb6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100608204"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723055"
 ---
 # <a name="using-customer-managed-storage-accounts-in-azure-monitor-log-analytics"></a>在 Azure Monitor Log Analytics 中使用客户管理的存储帐户
 
@@ -51,6 +51,7 @@ Azure 诊断扩展代理 (也分别称为 Windows 和 Linux 代理的 WAD 和 LA
 * 允许 Azure Monitor 访问存储帐户。 如果选择仅允许选择网络访问存储帐户，则应选择例外： "允许受信任的 Microsoft 服务访问此存储帐户"。
 ![存储帐户信任 MS 服务映像](./media/private-storage/storage-trust.png)
 * 如果工作区也处理来自其他网络的流量，则应将存储帐户配置为允许来自相关网络/internet 的传入流量。
+* 在代理与存储帐户之间协调 TLS 版本-建议使用 TLS 1.2 或更高版本将数据发送到 Log Analytics。 查看 [特定于平台的指南](https://docs.microsoft.com/azure/azure-monitor/logs/data-security#sending-data-securely-using-tls-12)，如果需要，请 [将代理配置为使用 TLS 1.2](https://docs.microsoft.com/azure/azure-monitor/agents/agent-windows#configure-agent-to-use-tls-12)。 如果由于某种原因无法实现此目的，请配置存储帐户以接受 TLS 1.0。
 
 ### <a name="using-a-customer-managed-storage-account-for-cmk-data-encryption"></a>使用客户托管的存储帐户进行 CMK 数据加密
 Azure 存储会对存储帐户中的所有静态数据进行加密。 默认情况下，它使用 (MMK) 的 Microsoft 托管密钥来加密数据;但是，Azure 存储还允许使用 Azure 密钥保管库中的 CMK 来加密存储数据。 你可以将自己的密钥导入 Azure Key Vault 中，也可以使用 Azure Key Vault Api 来生成密钥。

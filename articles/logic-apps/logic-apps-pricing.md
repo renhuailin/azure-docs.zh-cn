@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: conceptual
 ms.date: 01/29/2021
-ms.openlocfilehash: 103855748c4b5d998dfc81eeb4044f5f53dae9e5
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 2b37308bcbcd489876c21dce56878de7e0daf545
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100372002"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699022"
 ---
 # <a name="pricing-and-billing-models-for-azure-logic-apps"></a>适用于 Azure 逻辑应用的定价和计费模型
 
@@ -94,12 +94,14 @@ ms.locfileid: "100372002"
 
 ## <a name="integration-accounts"></a>集成帐户
 
-[集成帐户](../logic-apps/logic-apps-pricing.md#integration-accounts)是您创建并链接到逻辑应用的单独资源，以便您可以浏览、构建和测试使用[EDI](logic-apps-enterprise-integration-b2b.md)和[XML 处理](logic-apps-enterprise-integration-xml.md)功能的 B2B 集成解决方案。 Azure 逻辑应用提供以下集成帐户级别或层：
+[集成帐户](../logic-apps/logic-apps-pricing.md#integration-accounts)是您创建并链接到逻辑应用的单独资源，以便您可以浏览、构建和测试使用[EDI](logic-apps-enterprise-integration-b2b.md)和[XML 处理](logic-apps-enterprise-integration-xml.md)功能的 B2B 集成解决方案。
+
+根据逻辑应用是基于消耗还是基于 ISE 的，Azure 逻辑应用提供了 [不同定价](https://azure.microsoft.com/pricing/details/logic-apps/) 和 [计费模型](logic-apps-pricing.md#integration-accounts)的各种集成帐户级别或层：
 
 | 层 | 说明 |
 |------|-------------|
 | **基本** | 适用于你只希望进行消息处理或充当与较大业务实体具有贸易合作伙伴关系的小型企业合作伙伴的情况。 <p><p>受逻辑应用 SLA 支持。 |
-| **Standard** | 适用于你具有更复杂 B2B 关系并增加了你必须管理的实体数的方案。 <p><p>受逻辑应用 SLA 支持。 |
+| **标准** | 适用于你具有更复杂 B2B 关系并增加了你必须管理的实体数的方案。 <p><p>受逻辑应用 SLA 支持。 |
 | **免费** | 适用于探索方案，而不是生产方案。 此层对区域可用性、吞吐量和使用量有限制。 例如，免费级别仅适用于 Azure 中的公共区域，例如 "美国西部" 或 "东南亚"，但不适用于 [Azure 中国世纪互联](/azure/china/overview-operations) 或 [azure 政府](../azure-government/documentation-government-welcome.md)版。 <p><p>**注意**：逻辑应用 SLA 不支持。 |
 |||
 

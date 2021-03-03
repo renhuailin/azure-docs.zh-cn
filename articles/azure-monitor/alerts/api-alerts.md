@@ -4,12 +4,12 @@ description: 使用 Log Analytics 警报 REST API 可以在 Log Analytics 中创
 ms.subservice: logs
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 6c347b7b8ddaac103019e15e32fb5c06219e0064
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 4acb6cdcb544e8774fb60bf1ead1a4a13140024a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100608892"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717802"
 ---
 # <a name="create-and-manage-alert-rules-in-log-analytics-with-rest-api"></a>在 Log Analytics 中通过 REST API 创建和管理警报规则 
 
@@ -21,7 +21,7 @@ ms.locfileid: "100608892"
 Log Analytics 搜索 REST API 为 RESTful，可通过 Azure 资源管理器 REST API 访问。 在本文档中，你将看到一些示例，其中使用  [ARMClient](https://github.com/projectkudu/ARMClient)（一种可简化调用 AZURE 资源管理器 API 的开源命令行工具）从 PowerShell 命令行访问 API。 ARMClient 和 PowerShell 的使用是访问 Log Analytics 搜索 API 的许多选项之一。 借助这些工具，可以利用 RESTful Azure 资源管理器 API 对 Log Analytics 工作区进行调用并在其中执行搜索命令。 API 以 JSON 格式输出搜索结果，从而允许通过编程以许多不同的方式来使用搜索结果。
 
 ## <a name="prerequisites"></a>先决条件
-目前，仅可以使用 Log Analytics 中已保存的搜索来创建警报。  有关详细信息，请参阅[日志搜索 REST API](../log-query/log-query-overview.md)。
+目前，仅可以使用 Log Analytics 中已保存的搜索来创建警报。  有关详细信息，请参阅[日志搜索 REST API](../logs/log-query-overview.md)。
 
 ## <a name="schedules"></a>计划
 已保存的搜索可以有一个或多个计划。 计划定义搜索的运行频率以及进行条件识别的时间间隔。
@@ -387,7 +387,6 @@ armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Na
 
 ## <a name="next-steps"></a>后续步骤
 
-* 在 Log Analytics 中使用 [REST API 执行日志搜索](../log-query/log-query-overview.md)。
+* 在 Log Analytics 中使用 [REST API 执行日志搜索](../logs/log-query-overview.md)。
 * 了解 [Azure monitor 中的日志警报](./alerts-unified-log.md)
 * 如何[在 Azure monitor 中创建、编辑或管理日志警报规则](./alerts-log.md)
-

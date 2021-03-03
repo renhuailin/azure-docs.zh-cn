@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 1/25/2021
 ms.author: allensu
-ms.openlocfilehash: 716acec51226e9e4ff47605c3ee2bd9a86be1933
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: a514edef1ef1f67fba3efae883ceb46dee249d6e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100588559"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101705494"
 ---
 # <a name="what-is-azure-load-balancer"></a>什么是 Azure 负载均衡器？
 
@@ -56,7 +56,7 @@ Azure 负载均衡器在开放式系统互连 (OSI) 模型的第四层上运行�
 
 - 启用对 **[IPv6](../virtual-network/ipv6-overview.md)** **[负载均衡](../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md)** 的支持。
 
-- 标准负载均衡器通过 [Azure Monitor](../azure-monitor/overview.md) 提供多维度指标。  可以就给定维度对这些指标进行筛选、分组和细分。  可便于深入了解服务的当前及历史性能和运行状况。 [Azure 负载均衡器见解](https://docs.microsoft.com/azure/load-balancer/load-balancer-insights)提供了一个预配置的仪表板，其中有用于呈现这些指标的实用可视化效果。  还支持资源运行状况。 有关更多详细信息，请查看 **[标准负载均衡器诊断](load-balancer-standard-diagnostics.md)** 。
+- 标准负载均衡器通过 [Azure Monitor](../azure-monitor/overview.md) 提供多维度指标。  可以就给定维度对这些指标进行筛选、分组和细分。  可便于深入了解服务的当前及历史性能和运行状况。 [Azure 负载均衡器见解](./load-balancer-insights.md)提供了一个预配置的仪表板，其中有用于呈现这些指标的实用可视化效果。  还支持资源运行状况。 有关更多详细信息，请查看 **[标准负载均衡器诊断](load-balancer-standard-diagnostics.md)** 。
 
 - 对 **[多个端口和/或多个 IP 地址](./load-balancer-multivip-overview.md)** 上的服务进行负载均衡。
 

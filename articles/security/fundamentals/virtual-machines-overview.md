@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/2/2019
 ms.author: terrylan
-ms.openlocfilehash: ed2cb967b24ce5abdebadfe29847ae1a16b4e745
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 036a1d3f8cad4ba9cda03a9001cfec1bb7de86b0
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498738"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101715031"
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Azure 虚拟机安全概述
 本文概述了可用于虚拟机的核心 Azure 安全功能。
@@ -51,7 +51,7 @@ Azure 虚拟机让你能够灵活地进行虚拟化，而无需购买和维护�
 了解有关反恶意软件的详细信息以保护虚拟机：
 
 * [在 Azure 虚拟机上部署反恶意软件解决方案](https://azure.microsoft.com/blog/deploying-antimalware-solutions-on-azure-virtual-machines/)
-* [如何在 Windows VM 上安装和配置服务型 Trend Micro Deep Security](../../virtual-machines/extensions/trend.md)
+* [如何在 Windows VM 上安装和配置服务型 Trend Micro Deep Security](/previous-versions/azure/virtual-machines/extensions/trend)
 * [如何在 Windows VM 上安装和配置 Symantec Endpoint Protection](../../virtual-machines/extensions/symantec.md)
 * [Azure 市场中的安全解决方案](https://azure.microsoft.com/marketplace/?term=security)
 

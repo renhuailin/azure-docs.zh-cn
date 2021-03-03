@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 02/18/2020
-ms.openlocfilehash: 5485d97638679651a3890e0b7578787e481437c6
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 1f619e1eac58f70642117dabafc266d1bc250609
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101656272"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690407"
 ---
 # <a name="migration-overview-sql-server-to-sql-managed-instance"></a>迁移概述：将 SQL Server 到 SQL 托管实例
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -115,7 +115,7 @@ ms.locfileid: "101656272"
 
 |迁移选项  |何时使用  |注意事项  |
 |---------|---------|---------|
-|[Azure 数据库迁移服务 (DMS)](../../../dms/tutorial-sql-server-to-managed-instance.md) | - 大规模迁移单个数据库或多个数据库。 </br> - 可在迁移过程中适应停机时间。 </br> </br> 支持的源： </br> - SQL Server (2005 - 2019) 本地或 Azure VM </br> - AWS EC2 </br> - AWS RDS </br> - GCP 计算 SQL Server VM |  - 可以通过 [PowerShell](../../../dms/howto-sql-server-to-azure-sql-mi-powershell.md) 自动进行大规模迁移。 </br> - 完成迁移的时间取决于数据库的大小，并受备份和还原时间的影响。 </br> - 可能需要足够的停机时间。 |
+|[Azure 数据库迁移服务 (DMS)](../../../dms/tutorial-sql-server-to-managed-instance.md) | - 大规模迁移单个数据库或多个数据库。 </br> - 可在迁移过程中适应停机时间。 </br> </br> 支持的源： </br> - SQL Server (2005 - 2019) 本地或 Azure VM </br> - AWS EC2 </br> - AWS RDS </br> - GCP 计算 SQL Server VM |  - 可以通过 [PowerShell](../../../dms/howto-sql-server-to-azure-sql-managed-instance-powershell-offline.md) 自动进行大规模迁移。 </br> - 完成迁移的时间取决于数据库的大小，并受备份和还原时间的影响。 </br> - 可能需要足够的停机时间。 |
 |[本机备份和还原](../../managed-instance/restore-sample-database-quickstart.md) | - 迁移单个业务线应用程序数据库。  </br> - 无需单独的迁移服务或工具即可快速轻松地进行迁移。  </br> </br> 支持的源： </br> - SQL Server (2005 - 2019) 本地或 Azure VM </br> - AWS EC2 </br> - AWS RDS </br> - GCP 计算 SQL Server VM | - 数据库备份使用多个线程来优化指向 Azure Blob 存储的数据传输，但是 ISV 带宽和数据库大小会影响传输速率。 </br> - 停机时间应包含执行完整备份和还原所需的时间（这是数据操作的大小）。| 
 |[日志重播服务 (LRS) ](../../managed-instance/log-replay-service-migrate.md) | - 迁移单个业务线应用程序数据库。  </br> -需要对数据库迁移进行更多的控制。  </br> </br> 支持的源： </br> -SQL Server (2008-2019) 本地或 Azure VM </br> - AWS EC2 </br> - AWS RDS </br> - GCP 计算 SQL Server VM | -迁移需要在 SQL Server 上进行完整的数据库备份，并将备份文件复制到 Azure Blob 存储。 LRS 用于将备份文件从 Azure Blob 存储还原到 SQL 托管实例。 </br> -在迁移过程中要还原的数据库将处于还原模式，并且在完成该过程之前，无法用于读取或写入。| 
 | | | |
@@ -163,7 +163,7 @@ SQL Server Reporting Services (SSRS) 报表可迁移到 Power BI 中的分页报
 
 #### <a name="sql-agent-jobs"></a>SQL 代理作业
 
-使用脱机 Azure 数据库迁移服务 (DMS) 选项来迁移 [SQL Agent 作业](../../../dms/howto-sql-server-to-azure-sql-mi-powershell.md#offline-migrations)。 其他情况下，使用 SQL Server Management Studio 在 Transact-SQL (T-SQL) 中编写脚本，然后在目标 SQL 托管实例上手动重新创建它们。 
+使用脱机 Azure 数据库迁移服务 (DMS) 选项来迁移 [SQL Agent 作业](../../../dms/howto-sql-server-to-azure-sql-managed-instance-powershell-offline.md)。 其他情况下，使用 SQL Server Management Studio 在 Transact-SQL (T-SQL) 中编写脚本，然后在目标 SQL 托管实例上手动重新创建它们。 
 
 > [!IMPORTANT]
 > 目前，Azure DMS 仅支持涉及 T-SQL 子系统步骤的作业。 涉及 SSIS 打包步骤的作业需要手动迁移。 

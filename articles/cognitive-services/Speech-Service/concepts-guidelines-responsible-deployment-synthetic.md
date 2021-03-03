@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/11/2019
 ms.author: benoah
-ms.openlocfilehash: 9a7a8868497433ea0de8f2f8b32f8e8fbaa497eb
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 3a0b645acd7c21ff0416c748cdd2caf7041be508
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99537178"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101730807"
 ---
 # <a name="guidelines-for-responsible-deployment-of-synthetic-voice-technology"></a>合成语音技术的负责任部署指南
 
@@ -62,8 +62,8 @@ Microsoft 要求其客户向其用户公开自定义的神经语音的综合性�
 具有言语障碍的人希望对其合成语音进行更新以反映年龄的增长（例如，儿童进入青春期）。 这些人还可能有随时间而改变的风格偏好，可能想要改变音调、口音或其他语音特征。
 
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
-* [针对配音员的披露内容](https://docs.microsoft.com/legal/cognitive-services/speech-service/disclosure-voice-talent?context=/azure/cognitive-services/speech-service/context/context)
+* [针对配音员的披露内容](/legal/cognitive-services/speech-service/disclosure-voice-talent?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext)
 * [如何披露](concepts-disclosure-guidelines.md)
 * [披露设计模式](concepts-disclosure-patterns.md)

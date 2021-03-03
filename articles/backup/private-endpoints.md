@@ -3,12 +3,12 @@ title: 专用终结点
 description: 了解创建 Azure 备份的专用终结点的过程以及使用专用终结点帮助维护资源安全的方案。
 ms.topic: conceptual
 ms.date: 05/07/2020
-ms.openlocfilehash: a22da7341e3ebeff29bc784cfff0cc8aeb87fb9b
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 9363aaf45a7c092d8a773a07803c8c1bce1eedd7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100362444"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728206"
 ---
 # <a name="private-endpoints-for-azure-backup"></a>Azure 备份的专用终结点
 
@@ -170,9 +170,9 @@ ms.locfileid: "100362444"
     > 在上面的文本中， `<geo>` 指的是地区代码 (例如，美国东部的 *eus* 和 *ne* ，并分别是北欧的) 。 请参阅以下用于地区代码的列表：
     >
     > - [所有公有云](https://download.microsoft.com/download/1/2/6/126a410b-0e06-45ed-b2df-84f353034fa1/AzureRegionCodesList.docx)
-    > - [中国](https://docs.microsoft.com/azure/china/resources-developer-guide#check-endpoints-in-azure)
-    > - [德国](https://docs.microsoft.com/azure/germany/germany-developer-guide#endpoint-mapping)
-    > - [US Gov](https://docs.microsoft.com/azure/azure-government/documentation-government-developer-guide)
+    > - [中国](/azure/china/resources-developer-guide#check-endpoints-in-azure)
+    > - [德国](../germany/germany-developer-guide.md#endpoint-mapping)
+    > - [US Gov](../azure-government/documentation-government-developer-guide.md)
 
 1. 接下来，需要添加所需的 DNS 记录。 若要查看需要添加到备份 DNS 区域的记录，请导航到上面创建的专用终结点，然后转到左侧导航栏下的 " **DNS 配置** " 选项。
 

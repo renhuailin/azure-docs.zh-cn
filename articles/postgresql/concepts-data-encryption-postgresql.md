@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: d9624fd899649f4e54c5bd509ed5961b862632dd
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 66faa2b3e6d24c264e2fe26ab42eeaffd48384f6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100581584"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101732830"
 ---
 # <a name="azure-database-for-postgresql-single-server-data-encryption-with-a-customer-managed-key"></a>使用客户管理的密钥对 Azure Database for PostgreSQL 单一服务器进行数据加密
 
@@ -60,7 +60,7 @@ Key Vault 管理员还可[启用 Key Vault 审核事件的日志记录](../azure
 下面是 Key Vault 的配置要求：
 
 * Key Vault 和 Azure Database for PostgreSQL 单一服务器必须属于同一个 Azure Active Directory (Azure AD) 租户。 不支持跨租户的 Key Vault 和服务器交互。 以后移动 Key Vault 资源时，需要重新配置数据加密。
-* 若要保留已删除的保管库，必须将密钥保管库设置为90天。 如果已将现有的密钥保管库配置为使用较小的数字，则需要创建新的密钥保管库，因为在创建后不能对其进行修改。
+* 必须将密钥保管库设置为90天，"保留删除的保管库的天数"。 如果已将现有的密钥保管库配置为使用较小的数字，则需要创建新的密钥保管库，因为在创建后不能对其进行修改。
 * 启用 Key Vault 上的软删除功能，防止在意外删除密钥（或 Key Vault）时丢失数据。 被软删除的资源将保留 90 天，除非用户在此期间恢复或清除它们。 “恢复”和“清除”操作均自带与 Key Vault 访问策略关联的权限。 软删除功能默认关闭，但你可通过 PowerShell 或 Azure CLI 启用它（请注意，无法通过 Azure 门户启用）。 
 * 启用清除保护以对已删除的保管库和保管库对象强制执行必需的保留期
 * 通过唯一托管标识，使用 get、wrapKey 和 unwrapKey 权限授权 Azure Database for PostgreSQL 单一服务器访问 Key Vault。 在 Azure 门户中，当在 PostgreSQL 单一服务器上启用数据加密时，将自动创建唯一的 "服务" 标识。 有关使用 Azure 门户时的详细分步说明，请参阅[通过 Azure 门户对 Azure Database for PostgreSQL 单一服务器进行数据加密](howto-data-encryption-portal.md)。

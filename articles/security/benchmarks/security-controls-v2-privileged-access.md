@@ -4,23 +4,25 @@ description: Azure 安全基准 V2 特权访问
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/20/2020
+ms.date: 02/22/2021
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: fd39f5e0af34c702cddc8e08b6a94e428c7f0167
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: a4f1c6e32bbc679a7ec946384903b2bda3887d05
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99092044"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720573"
 ---
 # <a name="security-control-v2-privileged-access"></a>安全控制 V2：特权访问
 
 特权访问包含用于保护对 Azure 租户和资源的特权访问的控制措施。 这包括一系列用于避免管理模型、管理帐户和特权访问工作站面临有意和无意的风险的控制措施。
 
+若要查看适用的内置 Azure 策略，请参阅 [Azure 安全基准管理法规符合性内置计划的详细信息：特权访问](../../governance/policy/samples/azure-security-benchmark#privileged-access)
+
 ## <a name="pa-1-protect-and-limit-highly-privileged-users"></a>PA-1：保护和限制具有较高权限的用户
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID (s)  |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | PA-1 | 4.3、4.8 | AC-2 |
 
@@ -30,7 +32,7 @@ ms.locfileid: "99092044"
 
 - 特权角色管理员：具有此角色的用户可管理 Azure AD 和 Azure AD Privileged Identity Management (PIM) 中的角色分配。 此外，该角色可管理 PIM 和管理单元的各个方面。
 
-注意：如果你使用的是分配了某些特权的自定义角色，则可能有其他关键角色需要进行管理。 此外，你可能还需要将类似的控制措施应用于关键业务资产的管理员帐户。  
+注意：如果你使用的是分配了某些特权的自定义角色，则可能有其他关键角色需要进行管理。 此外，你可能还需要将类似的控制措施应用于关键业务资产的管理员帐户。
 
 你可使用Azure AD Privileged Identity Management (PIM) 提供对 Azure 资源和 Azure AD 的实时 (JIT) 特权访问权限。 JIT 仅在用户需要执行特权任务时授予临时权限。 当 Azure AD 组织中存在可疑或不安全的活动时，PIM 还会生成安全警报。
 
@@ -54,7 +56,7 @@ ms.locfileid: "99092044"
 
 ## <a name="pa-2-restrict-administrative-access-to-business-critical-systems"></a>PA-2：限制对关键业务型系统的管理访问权限
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID (s)  |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | PA-2 | 13.2、2.10 | AC-2、SC-3、SC-7 |
 
@@ -82,7 +84,7 @@ ms.locfileid: "99092044"
 
 ## <a name="pa-3-review-and-reconcile-user-access-regularly"></a>PA-3：定期审查和协调用户访问权限
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID (s)  |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | PA-3 | 4.1、16.9、16.10 | AC-2 |
 
@@ -107,7 +109,7 @@ ms.locfileid: "99092044"
 
 ## <a name="pa-4-set-up-emergency-access-in-azure-ad"></a>PA-4：在 Azure AD 中设置紧急访问
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID (s)  |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | PA-4 | 16 | AC-2、CP-2 |
 
@@ -130,7 +132,7 @@ ms.locfileid: "99092044"
 
 ## <a name="pa-5-automate-entitlement-management"></a>PA-5：将权利管理自动化
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID (s)  |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | PA-5 | 16 | AC-2、AC-5、PM-10 |
 
@@ -151,15 +153,15 @@ ms.locfileid: "99092044"
 
 ## <a name="pa-6-use-privileged-access-workstations"></a>PA-6：使用特权访问工作站
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID (s)  |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | PA-6 | 4.6、11.6、12.12 | AC-2、SC-3、SC-7 |
 
-受保护的独立工作站对于机密角色（如管理员、开发人员和关键服务操作员）的安全性至关重要。 使用高度安全的用户工作站和/或 Azure Bastion 执行管理任务。 使用 Azure Active Directory、Microsoft Defender 高级威胁防护 (ATP) 和/或 Microsoft Intune 部署安全的托管用户工作站，用于执行管理任务。 可集中管理安全工作站，强制实施安全配置，包括强身份验证、软件和硬件基线，以及受限制的逻辑和网络访问。 
+受保护的隔离工作站对于敏感角色（如管理员、开发人员和关键服务操作员）的安全性至关重要。 使用高度安全的用户工作站和/或 Azure Bastion 执行管理任务。 使用 Azure Active Directory、Microsoft Defender 高级威胁防护 (ATP) 和/或 Microsoft Intune 部署安全的托管用户工作站，用于执行管理任务。 可集中管理安全工作站，强制实施安全配置，包括强身份验证、软件和硬件基线，以及受限制的逻辑和网络访问。 
 
-- [了解特权访问工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
+- [了解特权访问工作站](/security/compass/privileged-access-deployment)
 
-- [部署特权访问工作站](/security/compass/privileged-access-deployment)
+- [部署特权访问工作站](../../active-directory/devices/howto-azure-managed-workstation)
 
 **责任**：客户
 
@@ -173,12 +175,13 @@ ms.locfileid: "99092044"
 
 ## <a name="pa-7-follow-just-enough-administration-least-privilege-principle"></a>PA-7：遵循 Just Enough Administration（最小特权原则）
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID (s)  |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | PA-7 | 14.6 | AC-2、AC-3、SC-3 |
 
 借助 Azure 基于角色的访问控制 (Azure RBAC)，可通过角色分配管理 Azure 资源访问权限。 你可将这些角色分配给用户、组服务主体和托管标识。 某些资源具有预定义的内置角色，可通过 Azure CLI、Azure PowerShell 和 Azure 门户等工具来清点或查询这些角色。 通过 Azure RBAC 分配给资源的权限应始终限制为角色所需的权限。 受限权限是对 Azure AD Privileged Identity Management (PIM) 的实时 (JIT) 方法的补充，应定期检查这些权限。
-请使用内置角色来分配权限，仅在必要时创建自定义角色。 
+
+使用内置角色分配权限，并且仅在需要时创建自定义角色。
 
 - [什么是 Azure 基于角色的访问控制 (Azure RBAC)](../../role-based-access-control/overview.md)
 
@@ -192,15 +195,15 @@ ms.locfileid: "99092044"
 
 - [应用程序安全性和 DevSecOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
-- [安全合规性管理](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management) 
+- [安全合规性管理](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)
 
-- [状况管理](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)    
+- [状况管理](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)
 
 - [标识和密钥管理](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
 
 ## <a name="pa-8-choose-approval-process-for-microsoft-support"></a>PA-8：选择 Microsoft 支持的批准流程 
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID (s)  |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | PA-8 | 16 | AC-2、AC 3、AC 4 |
 

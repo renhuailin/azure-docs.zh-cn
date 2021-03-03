@@ -4,12 +4,12 @@ description: 使用 Azure 门户（包括跨区域还原功能）从恢复点还
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: 256998f2e687152bb63c9368af1a56f05bba7672
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: c15b2dc39202c6f8386031bcf055688aa2d279df
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820562"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101722681"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>如何在 Azure 门户中还原 Azure VM 数据
 
@@ -160,7 +160,7 @@ Azure 备份提供多种方法来还原 VM。
 
 次要区域还原用户体验将类似于主要区域还原用户体验。 在 "还原配置" 窗格中配置详细信息以配置还原时，系统将提示您仅提供辅助区域参数。
 
-目前，从主要区域开始，辅助区域 [RPO](azure-backup-glossary.md#rpo-recovery-point-objective) 最多为12个小时，即使 [读取访问异地冗余存储 (GRS) ](https://docs.microsoft.com/azure/storage/common/storage-redundancy#redundancy-in-a-secondary-region) 复制为15分钟。
+目前，从主要区域开始，辅助区域 [RPO](azure-backup-glossary.md#rpo-recovery-point-objective) 最多为12个小时，即使 [读取访问异地冗余存储 (GRS) ](../storage/common/storage-redundancy.md#redundancy-in-a-secondary-region) 复制为15分钟。
 
 ![选择要还原的 VM](./media/backup-azure-arm-restore-vms/sec-restore.png)
 
@@ -179,7 +179,7 @@ Azure 备份提供多种方法来还原 VM。
 >- 跨区域还原功能将 (客户管理的密钥) 启用的 Azure Vm 恢复，这些虚拟机不会在启用了 CMK 的恢复服务保管库中备份为辅助区域中启用了 CMK 的 Vm。
 >- 在次要区域中恢复所需的 Azure 角色与主要区域中的角色相同。
 
-可在同一区域的任何[可用性区域](https://docs.microsoft.com/azure/availability-zones/az-overview)中还原[Azure 区域固定 vm](https://docs.microsoft.com/azure/virtual-machines/windows/create-portal-availability-zone) 。
+可在同一区域的任何[可用性区域](../availability-zones/az-overview.md)中还原[Azure 区域固定 vm](../virtual-machines/windows/create-portal-availability-zone.md) 。
 
 在还原过程中，你将看到 "**可用性区域**" 选项。 你将首先看到你的默认区域。 若要选择不同的区域，请选择所选区域的编号。 如果固定的区域不可用，则无法将数据还原到另一个区域，因为备份的数据未 zonally 复制。
 
@@ -209,7 +209,7 @@ Azure 备份提供多种方法来还原 VM。
 **裸机还原** | Azure VM 与本地虚拟机监控程序之间的主要差别是 Azure 中不提供 VM 控制台。 某些方案（如使用裸机恢复 (BMR) 类型备份进行恢复）需要控制台。 但是，通过保管库进行 VM 还原完全取代了 BMR。
 **还原采用特殊网络配置的 VM** | 特殊网络配置包括使用内部或外部负载均衡、使用多个 NIC 或多个保留 IP 地址的 VM。 可使用[还原磁盘选项](#restore-disks)还原这些 VM。 此选项会将 VHD 复制到指定的存储帐户，然后，你可以根据配置，使用[内部](../load-balancer/quickstart-load-balancer-standard-internal-powershell.md)或[外部](../load-balancer/quickstart-load-balancer-standard-public-powershell.md)负载均衡器、[多个 NIC](../virtual-machines/windows/multiple-nics.md) 或[多个保留 IP 地址](../virtual-network/virtual-network-multiple-ip-addresses-powershell.md)创建 VM。
 **NIC/子网上的网络安全组 (NSG)** | Azure VM 备份支持在 VNet、子网和 NIC 级别备份和还原 NSG 信息。
-**区域固定的 VM** | 如果备份使用 Azure 备份) 固定到区域 (的 Azure VM，则可以将其在固定的区域中还原。 [了解更多信息](../availability-zones/az-overview.md)
+**区域固定的 VM** | 如果备份使用 Azure 备份) 固定到区域 (的 Azure VM，则可以将其在固定的区域中还原。 [了解详细信息](../availability-zones/az-overview.md)
 **还原任何可用性集中的 VM** | 从门户还原 VM 时，没有选择可用性集的选项。 还原的 VM 没有可用性集。 如果使用了还原磁盘选项，则使用提供的模板或 PowerShell 从磁盘创建 VM 时，可以[指定可用性集](../virtual-machines/windows/tutorial-availability-sets.md)。
 **还原特殊 Vm，如 SQL Vm** | 如果要使用 Azure VM 备份来备份 SQL VM，然后使用 "还原 VM" 选项或在还原磁盘后创建 VM，则必须向 SQL 提供程序注册新创建的 VM [，如下所述。](../azure-sql/virtual-machines/windows/sql-agent-extension-manually-register-single-vm.md?tabs=azure-cli%2cbash) 这会将还原的 VM 转换为 SQL VM。
 

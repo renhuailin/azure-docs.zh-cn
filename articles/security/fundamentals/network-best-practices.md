@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/02/2019
 ms.author: TomSh
-ms.openlocfilehash: 68f3b9f9cfa8ea74a8240fab6e47bf737788081f
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 4793216a12b17c4e4ea03f62d5a0ba512febc232
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99094318"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101735720"
 ---
 # <a name="azure-best-practices-for-network-security"></a>Azure 网络安全最佳做法
 本文介绍一系列 Azure 最佳做法以增强网络安全。 这些最佳实践衍生自我们的 Azure 网络经验和客户的经验。
@@ -206,7 +206,7 @@ Azure Private Link 具有以下优势：
 - **全球覆盖**：以私密方式连接到在其他区域中运行的服务。 使用者的虚拟网络可以在区域 A 中，它可以连接到区域 B 中的服务。
 - **易于设置和管理**：你不再需要在虚拟网络中保留的公共 IP 地址来通过 IP 防火墙保护 Azure 资源。 设置专用终结点不需要 NAT 或网关设备。 专用终结点通过简单的工作流进行配置。 在服务端，你还可以轻松地管理 Azure 服务资源上的连接请求。 Azure 专用链接适用于属于不同 Azure Active Directory 租户的使用者和服务。 
     
-若要了解有关专用终结点的详细信息以及可供使用的 Azure 服务和区域的详细信息，请参阅 [Azure Private Link](https://docs.microsoft.com/azure/private-link/private-link-overview)。
+若要了解有关专用终结点的详细信息以及可供使用的 Azure 服务和区域的详细信息，请参阅 [Azure Private Link](../../private-link/private-link-overview.md)。
 
 
 ## <a name="next-steps"></a>后续步骤

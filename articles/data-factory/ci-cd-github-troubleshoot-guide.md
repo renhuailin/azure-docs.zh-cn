@@ -7,12 +7,12 @@ ms.reviewer: susabat
 ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 12/03/2020
-ms.openlocfilehash: 091c0cb20877090453f38ab922cc2bd277e90093
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 5c33ef9559d9ce67eea62ee7f78425d18010c1cb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100393745"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101727951"
 ---
 # <a name="troubleshoot-ci-cd-azure-devops-and-github-issues-in-adf"></a>在 ADF 中排查 CI CD、Azure DevOps 和 GitHub 问题 
 
@@ -162,7 +162,7 @@ CI/CD 发布管道失败，出现以下错误：
 
 #### <a name="resolution"></a>解决方法
 
-CI/CD 进程已增强。 **自动发布** 功能从 ADF UX 中验证和导出所有 Azure 资源管理器 (ARM) 模板功能。 它通过公开提供的 npm 包实现逻辑 [@microsoft/azure-data-factory-utilities](https://www.npmjs.com/package/@microsoft/azure-data-factory-utilities) 。 这允许你以编程方式触发这些操作，而无需转到 ADF UI 并单击按钮。 这为 CI/CD 管道提供了 **真正** 的持续集成体验。 有关详细信息，请遵循 [ADF CI/CD 发布改进](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment-improvements) 。 
+CI/CD 进程已增强。 **自动发布** 功能从 ADF UX 中验证和导出所有 Azure 资源管理器 (ARM) 模板功能。 它通过公开提供的 npm 包实现逻辑 [@microsoft/azure-data-factory-utilities](https://www.npmjs.com/package/@microsoft/azure-data-factory-utilities) 。 这允许你以编程方式触发这些操作，而无需转到 ADF UI 并单击按钮。 这为 CI/CD 管道提供了 **真正** 的持续集成体验。 有关详细信息，请遵循 [ADF CI/CD 发布改进](./continuous-integration-deployment-improvements.md) 。 
 
 ###  <a name="cannot-publish-because-of-4mb-arm-template-limit"></a>无法发布，因为有4mb 个 ARM 模板限制  
 
@@ -176,7 +176,45 @@ Azure 资源管理器将模板大小限制为4mb。 将模板大小限制为 4 M
 
 #### <a name="resolution"></a>解决方法
 
-对于中小型解决方案，单个模板更易于理解和维护。 可以查看单个文件中的所有资源和值。 对于高级方案，使用链接模板可将解决方案分解为目标组件。 请遵循 [使用链接模板和嵌套模板](https://docs.microsoft.com/azure/azure-resource-manager/templates/linked-templates?tabs=azure-powershell)的最佳做法。
+对于中小型解决方案，单个模板更易于理解和维护。 可以查看单个文件中的所有资源和值。 对于高级方案，使用链接模板可将解决方案分解为目标组件。 请遵循 [使用链接模板和嵌套模板](../azure-resource-manager/templates/linked-templates.md?tabs=azure-powershell)的最佳做法。
+
+### <a name="cannot-connect-to-git-enterprise"></a>无法连接到 GIT Enterprise 
+
+##### <a name="issue"></a>问题
+
+由于权限问题，无法连接到 GIT 企业。 你可以看到类似于 **422-返回422的错误。**
+
+#### <a name="cause"></a>原因
+
+尚未为 ADF 配置 Oauth。 URL 配置错误。
+
+##### <a name="resolution"></a>解决方法
+
+首先授予对 ADF 的 Oauth 访问权限。 然后，必须使用正确的 URL 连接到 GIT 企业。 该配置必须设置为客户组织 () ，因为 ADF 服务将首先尝试 https://hostname/api/v3/search/repositories?q=user%3 <customer credential> ...。和失败。 然后，它将尝试 https://hostname/api/v3/orgs/ <vaorg> / <repo> 并成功。 
+ 
+### <a name="recover-from-a-deleted-data-factory"></a>从已删除的数据工厂恢复
+
+#### <a name="issue"></a>问题
+客户已删除数据工厂或包含数据工厂的资源组。 他想知道如何还原已删除的数据工厂。
+
+#### <a name="cause"></a>原因
+
+仅当客户已将源代码管理配置 (DevOps 或 Git) ，才能恢复数据工厂。 这会引入所有最新的已发布资源，并且 **不会** 还原未发布的管道、数据集和链接服务。
+
+如果没有源代码管理，则不可能从后端恢复已删除的数据工厂，因为一旦服务收到删除的命令，就会删除该实例，并且不会存储任何备份。
+
+#### <a name="resoloution"></a>Resoloution
+若要恢复包含源代码管理的已删除数据工厂，请参阅以下步骤：
+
+ * 创建新的 Azure 数据工厂。
+
+ * 用相同的设置重新配置 Git，但请确保将现有的数据工厂资源导入到所选存储库，然后选择 "新建分支"。
+
+ * 创建拉取请求，将更改合并到协作分支并发布。
+
+ * 如果客户在已删除的 ADF 中有自承载的 Integration Runtime，则必须在新的 ADF 中创建一个新的实例，还必须使用获取的新密钥在本地计算机/VM 上卸载并重新安装该实例。 IR 安装完成后，客户必须将链接服务更改为指向新的 IR 并测试连接，否则将失败，并出现错误 " **引用无效"。**
+
+
 
 ## <a name="next-steps"></a>后续步骤
 

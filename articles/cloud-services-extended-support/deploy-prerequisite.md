@@ -8,17 +8,17 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 42416b1fc06ff59a68a6f5044b8bcca5dc7f035f
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 1473305d7da57d1216ef05c0b88a0f69d586784b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880180"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728104"
 ---
 # <a name="prerequisites-for-deploying-azure-cloud-services-extended-support"></a>部署 Azure 云服务 (扩展支持) 的先决条件
 
 > [!IMPORTANT]
-> 云服务 (扩展支持) 目前为公共预览版。
+> 云服务（外延支持）目前为公共预览版。
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 若要确保云服务成功 (扩展支持) 部署请查看以下步骤，并在尝试任何部署之前完成每个项。 
@@ -42,7 +42,7 @@ CloudServices           Microsoft.Compute    Registered
 ## <a name="required-service-configuration-cscfg-file-updates"></a>所需的服务配置 ( .cscfg) 文件更新
 
 ### <a name="1-virtual-network"></a>1) 虚拟网络
-云服务 (扩展支持) 部署必须位于虚拟网络中。 可以通过 [Azure 门户](https://docs.microsoft.com/azure/virtual-network/quick-create-portal) [PowerShell](https://docs.microsoft.com/azure/virtual-network/quick-create-powershell)、 [Azure CLI](https://docs.microsoft.com/azure/virtual-network/quick-create-cli) 或 [ARM 模板](https://docs.microsoft.com/azure/virtual-network/quick-create-template)创建虚拟网络。 还必须在 [NetworkConfiguration](schema-cscfg-networkconfiguration.md) 节下的服务配置 ( .cscfg) 中引用虚拟网络和子网。 
+云服务（外延支持）部署必须在虚拟网络中。 可以通过 [Azure 门户](../virtual-network/quick-create-portal.md) [PowerShell](../virtual-network/quick-create-powershell.md)、 [Azure CLI](../virtual-network/quick-create-cli.md) 或 [ARM 模板](../virtual-network/quick-create-template.md)创建虚拟网络。 还必须在 [NetworkConfiguration](schema-cscfg-networkconfiguration.md) 节下的服务配置 ( .cscfg) 中引用虚拟网络和子网。 
 
 对于属于与云服务相同资源组的虚拟网络，只引用服务配置 ( .cscfg) 文件中的虚拟网络名称。 如果虚拟网络和云服务位于两个不同的资源组中，则需要在服务配置 ( .cscfg) 文件中指定虚拟网络的完整 Azure 资源管理器 ID。
  
@@ -87,9 +87,9 @@ Azure 资源管理器中已弃用以下大小。 但是，如果要继续使用�
 | 以前的大小名称 | 更新的大小名称 | 
 |---|---|
 | 特小型 | Standard_A0 | 
-| 小型 | Standard_A1 |
-| 中型 | Standard_A2 | 
-| 大型 | Standard_A3 | 
+| 小 | Standard_A1 |
+| 中 | Standard_A2 | 
+| 大 | Standard_A3 | 
 | 超大型 | Standard_A4 | 
 | A5 | Standard_A5 | 
 | A6 | Standard_A6 | 
@@ -103,7 +103,7 @@ Azure 资源管理器中已弃用以下大小。 但是，如果要继续使用�
  例如，`<WorkerRole name="WorkerRole1" vmsize="Medium"` 将变为 `<WorkerRole name="WorkerRole1" vmsize="Standard_A2"`。
  
 > [!NOTE]
-> 若要检索可用大小列表，请参阅 [资源 Sku 列表](https://docs.microsoft.com/rest/api/compute/resourceskus/list) 并应用以下筛选器： <br>
+> 若要检索可用大小列表，请参阅 [资源 Sku 列表](/rest/api/compute/resourceskus/list) 并应用以下筛选器： <br>
 `ResourceType = virtualMachines ` <br>
 `VMDeploymentTypes = PaaS `
 
@@ -120,10 +120,10 @@ Azure 资源管理器中已弃用以下大小。 但是，如果要继续使用�
 
 ## <a name="key-vault-creation"></a>Key Vault 创建 
 
-Key Vault 用于存储与云服务 (扩展支持) 相关联的证书。 将证书添加到 Key Vault，并在服务配置文件中引用证书指纹。 还需要启用 Key Vault 以获得相应的权限，使云服务 (扩展支持) 资源可从 Key Vault 检索作为机密存储的证书。 可以通过 [Azure 门户](https://docs.microsoft.com/azure/key-vault/general/quick-create-portal)和  [PowerShell](https://docs.microsoft.com/azure/key-vault/general/quick-create-powershell)创建 Key Vault。 Key Vault 必须与云服务在同一区域和订阅中创建。 有关详细信息，请参阅 [在 Azure 云服务中使用证书 (扩展支持) ](certificates-and-key-vault.md)。
+Key Vault 用于存储与云服务（外延支持）关联的证书。 将证书添加到 Key Vault，并在服务配置文件中引用证书指纹。 还需要启用 Key Vault 来获得适当的权限，以便云服务（外延支持）资源可从 Key Vault 检索存储为机密的证书。 可以通过 [Azure 门户](../key-vault/general/quick-create-portal.md)和  [PowerShell](../key-vault/general/quick-create-powershell.md)创建 Key Vault。 Key Vault 必须与云服务在同一区域和订阅中创建。 有关详细信息，请参阅[在 Azure 云服务（外延支持）中使用证书](certificates-and-key-vault.md)。
 
 ## <a name="next-steps"></a>后续步骤 
 - 查看云服务的 [部署先决条件](deploy-prerequisite.md) (扩展支持) 。
-- ) 使用 [Azure 门户](deploy-portal.md)、 [PowerShell](deploy-powershell.md)、 [模板](deploy-template.md) 或 [Visual Studio](deploy-visual-studio.md)部署云服务 (扩展支持。
-- 查看 [云服务的常见问题 (](faq.md) 扩展支持) 。
-- 访问 [云服务 (扩展支持) 示例存储库](https://github.com/Azure-Samples/cloud-services-extended-support)
+- 使用 [Azure 门户](deploy-portal.md)、[PowerShell](deploy-powershell.md)、[模板](deploy-template.md)或 [Visual Studio](deploy-visual-studio.md) 部署云服务（外延支持）。
+- 请参阅云服务（外延支持）的[常见问题解答](faq.md)。
+- 访问[云服务（外延支持）示例存储库](https://github.com/Azure-Samples/cloud-services-extended-support)

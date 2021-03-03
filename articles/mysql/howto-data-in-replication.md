@@ -6,19 +6,19 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 01/13/2021
-ms.openlocfilehash: 22974a47a6b1e9d49e5055a85f46286497cfe149
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 29ac0c5991964de48cedd15622d15e929bc9d733
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98250526"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101709540"
 ---
 # <a name="how-to-configure-azure-database-for-mysql-data-in-replication"></a>如何配置 Azure Database for MySQL 的数据传入复制
 
 本文介绍如何通过配置源服务器和副本服务器在 Azure Database for MySQL 中设置[数据传入复制](concepts-data-in-replication.md)。 本文假设读者在 MySQL 服务器和数据库方面有一定的经验。
 
 > [!NOTE]
-> 本文包含对字词 _从属_ 的引用，这是 Microsoft 不再使用的术语。 在从软件中删除该术语后，我们会将其从本文中删除。
+> 本文包含对术语“从属”的引用，这是 Microsoft 不再使用的术语。 在从软件中删除该术语后，我们会将其从本文中删除。
 >
 
 若要在 Azure Database for MySQL 服务中创建副本，[数据传入复制](concepts-data-in-replication.md)需同步本地 MySQL 源服务器、虚拟机 (VM) 或云数据库服务中的数据。 复制中数据以基于二进制日志 (binlog) 文件位置的从本机到 MySQL 的复制为基础。 若要了解有关 binlog 复制的详细信息，请参阅 [MySQL binlog 复制概述](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html)。
@@ -37,7 +37,7 @@ ms.locfileid: "98250526"
 
 2. 创建相同的用户帐户和相应的特权
 
-   用户帐户不会从源服务器复制到副本服务器。 如果你计划向用户提供对副本服务器的访问权限，则需要在新创建的 Azure Database for MySQL 服务器上手动创建所有帐户和相应的权限。
+   用户帐户不会从源服务器复制到副本服务器。 如果打算为用户提供访问副本服务器的权限，则需在这个新创建的 Azure Database for MySQL 服务器上手动创建所有帐户和相应的特权。
 
 3. 将源服务器的 IP 地址添加到副本的防火墙规则。
 
@@ -45,17 +45,17 @@ ms.locfileid: "98250526"
 
 ## <a name="configure-the-source-server"></a>配置源服务器
 
-以下步骤准备并配置本地或虚拟机中托管的 MySQL 服务器或其他云提供程序托管的数据库服务，以便向内复制数据。 此服务器是数据复制中的 "源"。
+以下步骤准备并配置本地或虚拟机中托管的 MySQL 服务器或其他云提供程序托管的数据库服务，以便向内复制数据。 该服务器是“数据传入”复制中的“源”。
 
-1. 继续之前，请查看 [源服务器要求](concepts-data-in-replication.md#requirements) 。
+1. 请先查看[源服务器要求](concepts-data-in-replication.md#requirements)，然后再继续。
 
-2. 请确保源服务器允许端口3306上的入站和出站流量，并且它具有 **公共 IP 地址**、DNS 可公开访问，或者具有完全限定的域名 (FQDN) 。
+2. 请确保源服务器允许端口 3306 上的入站和出站流量，并且源服务器具有公共 IP 地址，DNS 可供公开访问，或者 DNS 具有完全限定的域名 (FQDN)。
 
    通过尝试从其他计算机上托管的 MySQL 命令行或 Azure 门户中提供的 [Azure Cloud Shell](../cloud-shell/overview.md) ，测试与源服务器的连接。
 
-   如果你的组织具有严格的安全策略，并且不允许源服务器上的所有 IP 地址启用从 Azure 到源服务器的通信，则可以使用以下命令确定 MySQL 服务器的 IP 地址。
+   如果你的组织有严格的安全策略，并且不允许源服务器上的所有 IP 地址都能进行从 Azure 到源服务器的通信，那么你可能可以使用以下命令来确定 MySQL 服务器的 IP 地址。
 
-   1. 使用工具（如 MySQL 命令行）登录到 Azure Database for MySQL。
+   1. 使用 MySQL 命令行之类的工具登录 Azure Database for MySQL。
 
    2. 执行下面的查询。
 
@@ -74,7 +74,7 @@ ms.locfileid: "98250526"
       ```
 
    3. 退出 MySQL 命令行。
-   4. 在 ping 实用工具中执行以下命令以获取 IP 地址。
+   4. 在 ping 实用工具中执行以下命令获取 IP 地址。
 
       ```bash
       ping <output of step 2b>
@@ -101,9 +101,23 @@ ms.locfileid: "98250526"
    ```
 
    如果返回了值为“ON”的变量 [`log_bin`](https://dev.mysql.com/doc/refman/8.0/en/replication-options-binary-log.html#sysvar_log_bin)，则表示已在服务器上启用了二进制日志记录。
-
-   如果返回了值为“OFF”的 `log_bin`，请将 my.cnf 文件编辑为 `log_bin=ON` 以启用二进制日志记录，并重启服务器使更改生效。
-
+   
+   如果 `log_bin` 返回值为 "OFF" 的， 
+   1. 在源服务器中 (".cnf") 找到 MySQL 配置文件。 例如：/etc/my.cnf
+   2. 打开配置文件进行编辑，并在文件中找到 **mysqld** 节。
+   3.  在 mysqld 节中，添加以下行
+   
+       ```bash
+       log-bin=mysql-bin.log
+       ```
+     
+   4. 重新启动 MySQL 源服务器以使更改生效。
+   5. 重新启动服务器后，通过运行与以前相同的查询来验证是否已启用二进制日志记录：
+   
+      ```sql
+      SHOW VARIABLES LIKE 'log_bin';
+      ```
+   
 4. 源服务器设置
 
    “数据传入复制”要求参数 `lower_case_table_names` 在源服务器与副本服务器之间保持一致。 在 Azure Database for MySQL 中，该参数默认为 1。
@@ -116,7 +130,7 @@ ms.locfileid: "98250526"
 
    在源服务器上创建一个配置有复制特权的用户帐户。 这可以通过 SQL 命令或 MySQL Workbench 之类的工具来完成。 考虑是否打算使用 SSL 进行复制，因为这需要在创建用户时指定。 请参阅 MySQL 文档，了解如何在源服务器上[添加用户帐户](https://dev.mysql.com/doc/refman/5.7/en/user-names.html)。
 
-   在以下命令中，创建的新复制角色可以从任何计算机访问源，而不只是托管源本身的计算机。 这可以通过在创建用户的命令中指定“syncuser@'%'”来完成。 请参阅 MySQL 文档，详细了解如何[指定帐户名称](https://dev.mysql.com/doc/refman/5.7/en/account-names.html)。
+   在以下命令中，创建的新复制角色可从任何计算机访问源服务器，而不仅仅可从托管源服务器本身的计算机进行访问。 这可以通过在创建用户的命令中指定“syncuser@'%'”来完成。 请参阅 MySQL 文档，详细了解如何[指定帐户名称](https://dev.mysql.com/doc/refman/5.7/en/account-names.html)。
 
    **SQL 命令**
 
@@ -131,7 +145,7 @@ ms.locfileid: "98250526"
 
    *不使用 SSL 复制*
 
-   如果所有连接都不需要 SSL，请使用以下命令创建用户：
+   如果并非所有连接都要求 SSL，请使用以下命令来创建用户：
 
    ```sql
    CREATE USER 'syncuser'@'%' IDENTIFIED BY 'yourpassword';
@@ -140,7 +154,7 @@ ms.locfileid: "98250526"
 
    **MySQL Workbench**
 
-   若要在 MySQL 工作台中创建复制角色，请从 "**管理**" 面板中打开 "**用户和特权**" 面板，然后选择 "**添加帐户**"。
+   若要在 MySQL Workbench 中创建复制角色，请在“管理”面板中打开“用户和特权”面板，然后选择“添加帐户”。  
 
    :::image type="content" source="./media/howto-data-in-replication/users_privileges.png" alt-text="用户和特权":::
 
@@ -148,7 +162,7 @@ ms.locfileid: "98250526"
 
    :::image type="content" source="./media/howto-data-in-replication/syncuser.png" alt-text="同步用户":::
 
-   选择 "**管理角色**" 面板，然后从 **全局权限** 列表中选择 "**复制从属**"。 然后选择 " **应用** " 以创建复制角色。
+   选择“管理角色”面板，然后从“全局特权”列表中选择“复制从属实例”。   然后，选择“应用”以创建复制角色。
 
    :::image type="content" source="./media/howto-data-in-replication/replicationslave.png" alt-text="复制从属实例":::
 
@@ -169,7 +183,7 @@ ms.locfileid: "98250526"
     show master status;
    ```
 
-   结果应类似于以下内容。 请确保记下二进制文件名，因为后面的步骤会用到它。
+   结果应如下所示。 确保记下此二进制文件名，因为在后面的步骤中会用到它。
 
    :::image type="content" source="./media/howto-data-in-replication/masterstatus.png" alt-text="主机状态结果":::
 
@@ -177,11 +191,11 @@ ms.locfileid: "98250526"
 
 1. 确定要将哪些数据库和表复制到 Azure Database for MySQL 并从源服务器执行转储。
 
-    可以使用 mysqldump 从主服务器转储数据库。 有关详细信息，请参阅[转储和还原](concepts-migrate-dump-restore.md)。 不需要转储 MySQL 库和测试库。
+    可以使用 mysqldump 从主服务器转储数据库。 有关详细信息，请参阅[转储和还原](concepts-migrate-dump-restore.md)。 不需转储 MySQL 库和测试库。
 
 2. 将源服务器设置为读/写模式。
 
-   转储数据库后，将源 MySQL 服务器重新更改为读/写模式。
+   转储数据库后，将 MySQL 源服务器改回读/写模式。
 
    ```sql
    SET GLOBAL read_only = OFF;
@@ -211,10 +225,10 @@ ms.locfileid: "98250526"
    - master_log_pos：正在运行的 `show master status` 中的二进制日志位置
    - master_ssl_ca：CA 证书的上下文。 如果不使用 SSL，请传入空字符串。
 
-     建议将此参数作为变量传入。 有关详细信息，请参阅以下示例。
+     建议以变量形式传入此参数。 有关详细信息，请参阅以下示例。
 
    > [!NOTE]
-   > 如果源服务器托管在 Azure VM 中，请将“允许访问 Azure 服务”设置为“启用”，以允许源服务器和副本服务器相互通信。 从“连接安全性”选项可更改此设置。 有关详细信息，请参阅 [使用门户管理防火墙规则](howto-manage-firewall-using-portal.md) 。
+   > 如果源服务器托管在 Azure VM 中，请将“允许访问 Azure 服务”设置为“启用”，以允许源服务器和副本服务器相互通信。 从“连接安全性”选项可更改此设置。 有关详细信息，请参阅[使用门户管理防火墙规则](howto-manage-firewall-using-portal.md)。
 
    **示例**
 
@@ -242,7 +256,7 @@ ms.locfileid: "98250526"
       CALL mysql.az_replication_change_master('master.companya.com', 'syncuser', 'P@ssword!', 3306, 'mysql-bin.000002', 120, '');
       ```
 
-2. 滤除.
+2. 筛选。
 
    如果要跳过从主副本复制某些表的操作，请更新副本服务器上的 `replicate_wild_ignore_table` 服务器参数。 可以使用逗号分隔的列表提供多个表模式。
 
@@ -266,7 +280,7 @@ ms.locfileid: "98250526"
    show slave status;
    ```
 
-   如果 `Slave_IO_Running` 和 `Slave_SQL_Running` 状态为“yes”，并且 `Seconds_Behind_Master` 的值为“0”，则表示复制正常运行。 `Seconds_Behind_Master` 指示副本的陈旧状态。 如果值不是 "0"，则表示副本正在处理更新。
+   如果 `Slave_IO_Running` 和 `Slave_SQL_Running` 状态为“yes”，并且 `Seconds_Behind_Master` 的值为“0”，则表示复制正常运行。 `Seconds_Behind_Master` 指示副本的陈旧状态。 如果其值不为“0”，则表示副本正在处理更新。
 
 ## <a name="other-stored-procedures"></a>其他存储过程
 

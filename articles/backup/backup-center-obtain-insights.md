@@ -3,16 +3,16 @@ title: 使用备份中心获取见解
 description: 了解如何分析历史趋势，并通过备份中心获取有关备份的更深入见解。
 ms.topic: conceptual
 ms.date: 09/01/2020
-ms.openlocfilehash: 3086224e4dbb1be2ccfadbfcfcb7441b68a5ff6b
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 47158e53e6248b2b9cef4ff6fd6b5da5972786eb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100592005"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719451"
 ---
-# <a name="obtain-insights-using-backup-center-preview"></a>使用备份中心 (预览获取见解) 
+# <a name="obtain-insights-using-backup-center"></a>使用备份中心获取见解
 
-为了分析历史趋势并深入了解你的备份，备份中心提供了一个用于 [备份报表 (预览) ](configure-reports.md)的界面，该界面使用 [Azure Monitor 日志](../azure-monitor/logs/data-platform-logs.md) 和 [Azure 工作簿](../azure-monitor/visualize/workbooks-overview.md)。 备份报表提供以下功能：
+为了分析历史趋势并深入了解你的备份，备份中心为 [备份报表](configure-reports.md)提供了一个接口，该接口使用 [Azure Monitor 日志](../azure-monitor/logs/data-platform-logs.md) 和 [Azure 工作簿](../azure-monitor/visualize/workbooks-overview.md)。 备份报表提供以下功能：
 
 - 分配和预测需使用的云存储空间。
 
@@ -24,7 +24,7 @@ ms.locfileid: "100592005"
 
 ## <a name="supported-scenarios"></a>支持的方案
 
-- 备份报表 (预览) 当前不可用于 Azure Database for PostgreSQL 服务器备份。
+- 备份报表当前不可用于 Azure Database for PostgreSQL 服务器备份。
 
 - 有关支持的和不支持的方案的详细列表，请参阅 [支持矩阵](backup-center-support-matrix.md) 。
 
@@ -53,6 +53,8 @@ ms.locfileid: "100592005"
 1. **策略** -使用此选项卡查看所有活动策略的相关信息，例如，关联的项目数和在给定策略中备份的项目所消耗的云存储总量。 [了解详细信息](./configure-reports.md#policies)
 
 1. **优化** -使用此选项卡可查看备份的潜在成本优化机会。 [了解详细信息](./configure-reports.md#optimize)
+
+1. **策略遵守** -使用此选项卡可了解每个备份实例每天是否至少有一次成功备份。
 
 ## <a name="next-steps"></a>后续步骤
 

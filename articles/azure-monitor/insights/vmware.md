@@ -1,17 +1,16 @@
 ---
 title: Azure Monitor 中的 VMware 监视解决方案 | Microsoft Docs
 description: 了解 VMware 监视解决方案如何帮助管理日志和监视 ESXi 主机。
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/04/2018
-ms.openlocfilehash: 9dc31cd4f492a4e95ce8232a8df28f07206e23b1
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 9ade5a51e2251669daee6fbaca9aa4c50f7e9bfc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100587163"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704355"
 ---
 # <a name="vmware-monitoring-deprecated-solution-in-azure-monitor"></a>Azure Monitor 中的 VMware 监视（已弃用）解决方案
 
@@ -40,10 +39,10 @@ vSphere ESXi 主机 5.5、6.0 和 6.5
    ![系统日志流](./media/vmware/diagram.png)
 
 ### <a name="configure-syslog-collection"></a>配置系统日志收集
-1. 为 VSphere 设置 syslog 转发。 有关帮助设置 syslog 转发的详细信息，请参阅[在 ESXi 5.0 及更高版本上配置 syslog (2003322)](https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=2003322)。 转到“ESXi 主机配置”   > “软件”   > “高级设置”   > “Syslog”  。
+1. 为 VSphere 设置 syslog 转发。 有关帮助设置 syslog 转发的详细信息，请参阅[在 ESXi 5.0 及更高版本上配置 syslog (2003322)](https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=2003322)。 请参阅 **ESXi 主机配置**  >  **软件**  >  **高级设置**  >  **Syslog**。
    ![vsphereconfig](./media/vmware/vsphere1.png)  
-1. 在“Syslog.global.logHost”  字段中，添加 Linux 服务器和端口号 *1514*。 例如，`tcp://hostname:1514` 或 `tcp://123.456.789.101:1514`
-1. 为 syslog 打开 ESXi 主机防火墙。 “ESXi 主机配置”   > “软件”   > “安全配置文件”   > “防火墙”  并打开“属性”  。  
+1. 在“Syslog.global.logHost”字段中，添加 Linux 服务器和端口号 *1514*。 例如，`tcp://hostname:1514` 或 `tcp://123.456.789.101:1514`
+1. 为 syslog 打开 ESXi 主机防火墙。 **ESXi 主机配置**  > **软件**  > **安全配置文件**  > **防火墙** 并打开 **属性**。  
 
     ![vspherefw](./media/vmware/vsphere2.png)  
 
@@ -108,7 +107,7 @@ VMware 磁贴显示在 Log Analytics 工作区中。 它提供任何失败的高
 ![屏幕截图显示 VMware 磁贴，显示九个故障。](./media/vmware/tile.png)
 
 #### <a name="navigate-the-dashboard-view"></a>导航仪表板视图
-在“VMware”  仪表板视图中，边栏选项卡的组织方式如下：
+在“VMware”仪表板视图中，边栏选项卡的组织方式如下：
 
 * 失败状态计数
 * 按事件计数排名靠前的主机
@@ -131,7 +130,7 @@ VMware 磁贴显示在 Log Analytics 工作区中。 它提供任何失败的高
 
 可以通过单击 ESXi 主机或事件类型进一步了解相关信息。
 
-单击 ESXi 主机名时，可查看该 ESXi 主机的信息。 如果要缩小包含事件类型的结果范围，将 `“ProcessName_s=EVENT TYPE”` 添加到搜索查询中。 可以在搜索筛选器中选择“ProcessName”  。 会缩小信息范围。
+单击 ESXi 主机名时，可查看该 ESXi 主机的信息。 如果要缩小包含事件类型的结果范围，将 `“ProcessName_s=EVENT TYPE”` 添加到搜索查询中。 可以在搜索筛选器中选择“ProcessName”。 会缩小信息范围。
 
 ![VMware 监视仪表板视图中的 "每事件计数" 和 "每事件类型的细分" 的 ESXi 主机的屏幕截图。](./media/vmware/eventhostdrilldown.png)
 
@@ -151,7 +150,7 @@ VMware 磁贴显示在 Log Analytics 工作区中。 它提供任何失败的高
 
 
 #### <a name="save-queries"></a>保存查询
-保存日志查询是 Azure Monitor 中的标准功能，可帮助你保留认为有用的任何查询。 创建有用的查询后，单击“收藏夹”  将其保存下来。 已保存的查询可在以后从[我的仪表板](../visualize/tutorial-logs-dashboards.md)页（可在其中创建你自己的自定义仪表板）轻松地对其进行重复使用。
+保存日志查询是 Azure Monitor 中的标准功能，可帮助你保留认为有用的任何查询。 创建有用的查询后，单击“收藏夹”将其保存下来。 已保存的查询可在以后从[我的仪表板](../visualize/tutorial-logs-dashboards.md)页（可在其中创建你自己的自定义仪表板）轻松地对其进行重复使用。
 
 ![屏幕截图显示带有 "撤消"、"导出"、"警报"、"保存"、"收藏夹" 和 "历史记录" 图标的标有 "日志搜索" 的](./media/vmware/dockerdashboardview.png)
 
@@ -163,7 +162,7 @@ VMware 磁贴显示在 Log Analytics 工作区中。 它提供任何失败的高
 解决方案使用转发机制的本机 ESXi 主机 Syslog。 无需在 ESXi 主机上安装任何其他的 Microsoft 软件，便可捕获日志。 它对现有环境应该不会造成大的影响。 但是，需要设置 syslog 转发这一 ESXI 功能。
 
 ### <a name="do-i-need-to-restart-my-esxi-host"></a>是否需要重启 ESXi 主机？
-不是。 此执行过程不需要重启主机。 有时，vSphere 不会正确更新 syslog。 这种情况下，请登录到 ESXi 主机并重新加载 syslog。 同样，无需重启主机，使该过程不会造成环境中断。
+否。 此执行过程不需要重启主机。 有时，vSphere 不会正确更新 syslog。 这种情况下，请登录到 ESXi 主机并重新加载 syslog。 同样，无需重启主机，使该过程不会造成环境中断。
 
 ### <a name="can-i-increase-or-decrease-the-volume-of-log-data-sent-to-log-analytics"></a>是否可以增减发送到 Log Analytics 的日志数据量？
 可以。 可以在 vSphere 中使用 ESXi 主机日志级别设置。 日志集合基于 *info* 级别。 因此，如果想要审核 VM 创建或删除，则需在 Hostd 上保持 *info* 级别。 有关详细信息，请参阅 [VMware 知识库](https://kb.vmware.com/selfservice/microsites/search.do?&cmd=displayKC&externalId=1017658)。

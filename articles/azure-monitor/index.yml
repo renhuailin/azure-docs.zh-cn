@@ -8,12 +8,12 @@ metadata:
   author: rboucher
   ms.author: robb
   ms.date: 10/08/2019
-  ms.openlocfilehash: 788515589c4e250d6837a189d3cfcfac9e55d2ec
-  ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+  ms.openlocfilehash: 4753e4bb7fca1dadf0266c8fae11313872b29a3b
+  ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 02/17/2021
-  ms.locfileid: "100577537"
+  ms.lasthandoff: 03/03/2021
+  ms.locfileid: "101725707"
 landingContent:
 - title: 关于 Azure Monitor
   linkLists:
@@ -22,7 +22,7 @@ landingContent:
     - text: 说明是 Azure Monitor？
       url: overview.md
     - text: 什么是 Azure Monitor 日志/Log Analytics？
-      url: platform/data-platform-logs.md
+      url: ./logs/data-platform-logs.md
     - text: 什么是 Application Insights？
       url: app/app-insights-overview.md
     - text: Application Insights 内容中心页
@@ -34,7 +34,7 @@ landingContent:
     - text: 数据源概述
       url: agents/data-sources.md
     - text: 数据平台概述
-      url: platform/data-platform.md
+      url: ./data-platform.md
 - title: 10 分钟快速入门
   linkLists:
   - linkListType: quickstart
@@ -42,15 +42,15 @@ landingContent:
     - text: 监视指标并发出警报
       url: alerts/alerts-metric.md
     - text: 分析日志
-      url: ./log-query/log-analytics-tutorial.md
+      url: ./logs/log-analytics-tutorial.md
     - text: Log Analytics 中的 Azure VM
-      url: learn/quick-collect-azurevm.md
+      url: ./vm/quick-collect-azurevm.md
     - text: Log Analytics 中的 Linux VM
-      url: learn/quick-collect-linux-computer.md
+      url: ./vm/quick-collect-linux-computer.md
     - text: Log Analytics 中的 Windows VM
-      url: learn/quick-collect-windows-computer.md
+      url: ./vm/quick-collect-windows-computer.md
     - text: 根据订阅事件发出警报
-      url: platform/alerts-activity-log.md
+      url: ./alerts/alerts-activity-log.md
 - title: 监视应用程序
   linkLists:
   - linkListType: get-started
@@ -60,9 +60,9 @@ landingContent:
     - text: .NET Core
       url: app/asp-net-core.md
     - text: Node.js
-      url: learn/nodejs-quick-start.md
+      url: ./app/nodejs-quick-start.md
     - text: 移动型
-      url: learn/mobile-center-quickstart.md
+      url: ./app/mobile-center-quickstart.md
     - text: 网站
       url: app/website-monitoring.md
 - title: 培训

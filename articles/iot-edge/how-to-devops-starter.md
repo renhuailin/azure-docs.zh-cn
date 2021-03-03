@@ -7,12 +7,12 @@ ms.date: 08/25/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 97dc0fe5a3720a41dd63583c222762d832d636ea
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 933ddfb5fa5d58231e954dfd54bcc069b53dfe56
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96436991"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101721478"
 ---
 # <a name="create-a-cicd-pipeline-for-iot-edge-with-azure-devops-starter"></a>使用 Azure DevOps Starter 为 IoT Edge 创建 CI/CD 管道
 
@@ -29,6 +29,16 @@ DevOps Starter 在 Azure DevOps 中创建 CI/CD 管道。 可以创建新的 Azu
 1. 在左窗格中，选择 " **创建资源**"，然后搜索 **DevOps Starter**。  
 
 1. 选择“创建”。
+
+1. 默认情况下，使用 GitHub 设置 DevOps Starter。 若要利用本操作方法中的功能，请切换 DevOps 初学者，使用 Azure DevOps 进行设置。 按照 "在 **此处更改设置** " 链接。
+
+   ![在此处选择 "更改设置"，从 GitHub 切换到 Azure DevOps](./media/how-to-devops-starter/create-with-github-change-settings.png)
+
+1. 在右侧窗格中，选择 " **Azure DevOps** " 磁贴，并选择 " **完成**"。
+
+   ![选择 "Azure DevOps" 设置你的 DevOps Starter](./media/how-to-devops-starter/select-azure-devops.png)
+
+   现在应会看到 DevOps 初学者正在设置 Azure DevOps。
 
 ## <a name="create-a-new-application-pipeline"></a>新建应用程序管道
 

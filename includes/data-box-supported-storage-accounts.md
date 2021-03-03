@@ -3,14 +3,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: include
-ms.date: 12/23/2020
+ms.date: 02/21/2021
 ms.author: alkohli
-ms.openlocfilehash: 11958c54dd1f54e424b71eb00780f5309a1c0bab
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 112c30fdd242c20f11c43f42ba54e3717e074bbb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98209537"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101706023"
 ---
 下面是 Data Box 设备支持的存储帐户和存储类型的列表。 有关所有类型的存储帐户的所有功能的完整列表，请参阅 [存储帐户的类型](../articles/storage/common/storage-account-overview.md#types-of-storage-accounts)。
 
@@ -45,6 +45,7 @@ ms.locfileid: "98209537"
 > [!IMPORTANT]
 > - 对于常规用途的帐户，Data Box 不支持导入订单的队列、表和磁盘存储类型。 对于出口订单，Data Box 不支持用于常规用途帐户的队列、表、磁盘和 Azure Data Lake 第2代存储类型。
 > - Data Box 不支持 Blob 存储和块 Blob 存储帐户的追加 blob。
+> - Data Box 不支持 Azure Blob 存储中的网络文件系统 (NFS) 3.0 协议支持。
 > - 上传到页 blob 的数据必须为512字节，如 Vhd。
 > - 最多可导出 80 TB。
 > - 不会导出文件历史记录和 blob 快照。

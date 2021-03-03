@@ -12,12 +12,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: e29ef68bb6f02e329d0406cd80dceb25beab8932
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 418f0797343a64728c4e48084b09bd0e426cec62
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101645902"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101686404"
 ---
 # <a name="language-customization-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的语言自定义
 
@@ -226,7 +226,7 @@ https://wingtiptoysb2c.blob.core.windows.net/fr/wingtip/unified.html
 你将为内容定义和要支持的任何语言配置本地化资源元素。 若要自定义适用于英语和西班牙语的统一注册或登录页面，请在 `</SupportedLanguages>` 元素结束后添加以下 `LocalizedResources` 元素。
 
 > [!NOTE]
-> 在下面的示例中，我们在每行的开头都添加了井字符号 `#`，以便你可以在屏幕上轻松找到本地化的标签。
+> 在下面的示例中，我们在每行的开头添加了井号 `#` 符号，因此你可以轻松地在屏幕上找到本地化的标签。
 
 ```xml
 <!--Local account sign-up or sign-in page English-->

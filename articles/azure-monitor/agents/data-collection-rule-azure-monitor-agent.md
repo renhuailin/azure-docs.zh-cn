@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/19/2020
-ms.openlocfilehash: 6e65b828e2cf86614707c8a859abc0c4f2395899
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 93e244706d6d478155ac001d20fa3ce74fa6a887
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100607789"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723633"
 ---
 # <a name="configure-data-collection-for-the-azure-monitor-agent-preview"></a>配置 Azure Monitor agent (预览版的数据收集) 
 
@@ -82,7 +82,7 @@ ms.locfileid: "100607789"
 
 ## <a name="create-association-using-resource-manager-template"></a>使用资源管理器模板创建关联
 
-你无法使用资源管理器模板创建数据收集规则，但你可以使用资源管理器模板在启用 Azure 虚拟机或启用了 Azure Arc 的服务器之间创建关联。 请参阅示例模板 [Azure Monitor 中数据收集规则资源管理器模板示例](../samples/resource-manager-data-collection-rules.md) 。
+你无法使用资源管理器模板创建数据收集规则，但你可以使用资源管理器模板在启用 Azure 虚拟机或启用了 Azure Arc 的服务器之间创建关联。 请参阅示例模板 [Azure Monitor 中数据收集规则资源管理器模板示例](./resource-manager-data-collection-rules.md) 。
 
 ## <a name="next-steps"></a>后续步骤
 

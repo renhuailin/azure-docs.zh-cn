@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewr: cenkdin
-ms.openlocfilehash: 04a9776ca2686aebbb7668c86f5afcd61f5f9238
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b0271edbbd119e1d60f30cc149ba7772fd0cfa9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90530176"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101730212"
 ---
 # <a name="creating-filters-with-azure-media-services-rest-api"></a>使用 Azure 媒体服务 REST API 创建筛选器
 
@@ -32,7 +32,7 @@ ms.locfileid: "90530176"
 > 
 > 
 
-从 2.17 版开始，可使用媒体服务为资产定义筛选器。 这些筛选器是服务器端规则，可让客户选择运行如下操作：只播放一段视频（而非播放完整视频），或只指定客户设备可以处理的一部分音频和视频再现内容（而非与该资产相关的所有再现内容）。 通过按客户请求创建的**动态清单**可以实现对资产进行这种筛选，并基于指定的筛选器流式传输视频。
+从 2.17 版开始，可使用媒体服务为资产定义筛选器。 这些筛选器是服务器端规则，可让客户选择运行如下操作：只播放一段视频（而非播放完整视频），或只指定客户设备可以处理的一部分音频和视频再现内容（而非与该资产相关的所有再现内容）。 通过按客户请求创建的 **动态清单** 可以实现对资产进行这种筛选，并基于指定的筛选器流式传输视频。
 
 有关与筛选器和动态清单相关的更多详细信息，请参阅[动态清单概述](media-services-dynamic-manifest-overview.md)。
 
@@ -41,7 +41,7 @@ ms.locfileid: "90530176"
 ## <a name="types-used-to-create-filters"></a>用于创建筛选器的类型
 创建筛选器时会使用以下类型：  
 
-* [筛选器](/rest/api/media/operations/filter)
+* [Filter](/rest/api/media/operations/filter)
 * [AssetFilter](/rest/api/media/operations/assetfilter)
 * [PresentationTimeRange](/rest/api/media/operations/presentationtimerange)
 * [FilterTrackSelect 和 FilterTrackPropertyCondition](/rest/api/media/operations/filtertrackselect)
@@ -174,7 +174,7 @@ HTTP/1.1 201 Created
 ```
 
 ## <a name="list-filters"></a>列出筛选器
-### <a name="get-all-global-filters-in-the-ams-account"></a>获取 AMS 帐户中的所有全局**筛选器**
+### <a name="get-all-global-filters-in-the-ams-account"></a>获取 AMS 帐户中的所有全局 **筛选器**
 若要列出筛选器，请使用以下 HTTP 请求： 
 
 #### <a name="http-request"></a>HTTP 请求
@@ -353,17 +353,17 @@ Host: media.windows.net
 
 `http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=mpd-time-csf, filter=MyFilter)`
 
-**Apple HTTP Live Streaming (HLS) V4**
+**Apple HTTP 实时流 (HLS) V4**
 
 `http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl, filter=MyFilter)`
 
-**Apple HTTP Live Streaming (HLS) V3**
+**Apple HTTP 实时流 (HLS) V3**
 
 `http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl-v3, filter=MyFilter)`
 
-**平滑流式处理**
+**平滑流**
 
-`http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(filter=MyFilter)`
+`http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(filter=MyFilter)`
 
     
 ## <a name="media-services-learning-paths"></a>媒体服务学习路径

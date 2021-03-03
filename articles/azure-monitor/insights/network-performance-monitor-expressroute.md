@@ -1,22 +1,21 @@
 ---
 title: Azure Log Analytics 中的网络性能监视器解决方案 | Microsoft 文档
 description: 使用网络性能监视器中的 ExpressRoute 监视器功能通过 Azure ExpressRoute 监视分支办事处与 Azure 之间的端到端连接和性能。
-ms.subservice: logs
 ms.topic: conceptual
 author: abshamsft
 ms.author: absha
 ms.date: 11/27/2018
-ms.openlocfilehash: 477512c0b1de8548e2aa1e2971a5d831e84d2139
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 0b005e46e9f9a740fee153e063bebf108c22b303
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100578379"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101725690"
 ---
 # <a name="expressroute-monitor"></a>ExpressRoute 监视器
 
 > [!IMPORTANT]
-> 自2021年7月1日起，你将无法在现有工作区中添加新测试，也无法在网络性能监视器中启用新的工作区。 你可以继续使用在2021年7月之前创建的测试。 若要最大程度地减少对当前工作负荷的服务中断，请在2024年2月29日之前将 [测试从网络性能监视器迁移到](https://docs.microsoft.com/azure/network-watcher/migrate-to-connection-monitor-from-network-performance-monitor) Azure 网络观察程序中的新连接监视器。
+> 自2021年7月1日起，你将无法在现有工作区中添加新测试，也无法在网络性能监视器中启用新的工作区。 你可以继续使用在2021年7月之前创建的测试。 若要最大程度地减少对当前工作负荷的服务中断，请在2024年2月29日之前将 [测试从网络性能监视器迁移到](../../network-watcher/migrate-to-connection-monitor-from-network-performance-monitor.md) Azure 网络观察程序中的新连接监视器。
 
 可以使用[网络性能监视器](network-performance-monitor.md)中的 Azure ExpressRoute 监视器功能通过 Azure ExpressRoute 监视分支办事处与 Azure 之间的端到端连接和性能。 主要优势包括： 
 
@@ -144,4 +143,3 @@ ms.locfileid: "100578379"
 
 ## <a name="next-steps"></a>后续步骤
 [搜索日志](../logs/log-query-overview.md)以查看详细的网络性能数据记录。
-

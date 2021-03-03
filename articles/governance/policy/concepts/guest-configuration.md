@@ -3,14 +3,15 @@ title: 了解如何审核虚拟机的内容
 description: 了解 Azure Policy 如何使用来宾配置客户端审核虚拟机内部的设置。
 ms.date: 01/14/2021
 ms.topic: conceptual
-ms.openlocfilehash: 5d1503680ea2ca7d0ff7c8adae19c05abfe441c0
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: 33a492eb3c8c175bfcdc6a13cb467ed2f180c1e1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100104801"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702872"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>了解 Azure Policy 的来宾配置
+
 
 Azure 策略可以审核虚拟机中运行的计算机的设置，这二者都适用于在 Azure 和 [Arc 连接的计算机](../../../azure-arc/servers/overview.md)中运行的计算机 验证由来宾配置扩展和客户端执行。 扩展通过客户端验证设置，例如：
 
@@ -20,13 +21,15 @@ Azure 策略可以审核虚拟机中运行的计算机的设置，这二者都�
 
 目前，大部分 Azure Policy Guest Configuration 策略定义只会审核计算机内部的设置。 它们不会应用配置。 例外情况是[下面引用的一个内置策略](#applying-configurations-using-guest-configuration)。
 
+[此文档提供视频演练](https://youtu.be/Y6ryD3gTHOs)。
+
 ## <a name="enable-guest-configuration"></a>启用来宾配置
 
 若要审核环境中计算机（包括 Azure 中的计算机和 Arc 连接的计算机）的状态，请查看以下详细信息。
 
 ## <a name="resource-provider"></a>资源提供程序
 
-必须注册资源提供程序，之后才能使用来宾配置。 如果来宾配置策略的分配是通过门户完成的，则会自动注册资源提供程序。 可以通过[门户](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)、[Azure PowerShell](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-powershell) 或 [Azure CLI](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-cli) 手动注册。
+必须注册资源提供程序，之后才能使用来宾配置。 如果来宾配置策略的分配是通过门户完成的，或者如果订阅已在 Azure 安全中心注册，则资源提供程序会自动注册。 可以通过[门户](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)、[Azure PowerShell](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-powershell) 或 [Azure CLI](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-cli) 手动注册。
 
 ## <a name="deploy-requirements-for-azure-virtual-machines"></a>部署 Azure 虚拟机的要求
 
@@ -58,17 +61,17 @@ Azure 策略可以审核虚拟机中运行的计算机的设置，这二者都�
 
 ## <a name="supported-client-types"></a>支持的客户端类型
 
-来宾配置策略定义包含新版本。 如果来宾配置客户端不兼容，则会排除 Azure Marketplace 中提供的较旧版本的操作系统。 下表显示了 Azure 映像上支持的操作系统列表：
+来宾配置策略定义包含新版本。 如果来宾配置客户端不兼容，则会排除 Azure 市场中提供的旧版操作系统。 下表显示了 Azure 映像上支持的操作系统列表：
 
 |发布者|名称|版本|
 |-|-|-|
-|Canonical|Ubuntu Server|14.04 - 18.04|
-|Credativ|Debian|8 及更高版本|
-|Microsoft|Windows Server|2012 及更高版本|
+|Canonical|Ubuntu Server|14.04-20.04|
+|Credativ|Debian|8 - 10|
+|Microsoft|Windows Server|2012-2019|
 |Microsoft|Windows 客户端|Windows 10|
-|OpenLogic|CentOS|7.3 及更高版本|
-|Red Hat|Red Hat Enterprise Linux|7.4 - 7.8|
-|Suse|SLES|12 SP3-SP5|
+|OpenLogic|CentOS|7.3-8|
+|Red Hat|Red Hat Enterprise Linux|7.4-8|
+|Suse|SLES|12 SP3-SP5、15|
 
 来宾配置策略定义支持自定义虚拟机映像，只要它们是上表中的操作系统之一。
 
@@ -114,13 +117,30 @@ _部署先决条件以在虚拟机上启用 Guest Configuration 策略_ 计划�
 满足计算机中的所有要求后，AuditIfNotExists 策略定义才会返回合规性结果。 [部署 Azure 虚拟机的要求](#deploy-requirements-for-azure-virtual-machines)部分描述了这些要求
 
 > [!IMPORTANT]
-> 在旧版来宾配置中，需要计划以合并 DeployIfNoteExists 和 AuditIfNotExists 定义 。 不再需要 DeployIfNotExists 定义。 定义和计划标记为 `[Deprecated]`，但现有分配将继续发挥作用。 有关信息，请参阅博客文章：[为来宾配置审核策略发布了重要更改](https://techcommunity.microsoft.com/t5/azure-governance-and-management/important-change-released-for-guest-configuration-audit-policies/ba-p/1655316)
+> 在旧版来宾配置中，需要计划以合并 DeployIfNoteExists 和 AuditIfNotExists 定义 。 不再需要 DeployIfNotExists 定义。 定义和计划已标记 `[Deprecated]` 但现有分配将继续工作。 有关信息，请参阅博客文章：[为来宾配置审核策略发布了重要更改](https://techcommunity.microsoft.com/t5/azure-governance-and-management/important-change-released-for-guest-configuration-audit-policies/ba-p/1655316)
 
-Azure Policy 使用来宾配置资源提供程序 complianceStatus 属性在“合规性”节点中报告合规性 。 有关详细信息，请参阅[获取符合性数据](../how-to/get-compliance-data.md)。
+### <a name="what-is-a-guest-assignment"></a>什么是来宾分配？
+
+分配 Azure 策略时，如果该策略的类别为 "来宾配置"，则会提供元数据来描述来宾分配。
+可以将来宾分配看作是计算机和 Azure 策略方案间的链接。
+例如，下面的代码片段将 Azure Windows 基线配置与最低版本关联 `1.0.0` 到策略范围内的任何计算机。 默认情况下，来宾分配将仅执行计算机的审核。
+
+```json
+"metadata": {
+    "category": "Guest Configuration",
+    "guestConfiguration": {
+        "name": "AzureWindowsBaseline",
+        "version": "1.*"
+    }
+//additional metadata properties exist
+```
+
+来宾配置服务每台计算机自动创建来宾分配。 资源类型为 `Microsoft.GuestConfiguration/guestConfigurationAssignments`。
+Azure 策略使用来宾分配资源的 **complianceStatus** 属性来报告相容性状态。 有关详细信息，请参阅[获取符合性数据](../how-to/get-compliance-data.md)。
 
 #### <a name="auditing-operating-system-settings-following-industry-baselines"></a>按照行业基线审核操作系统设置
 
-Azure 策略中的一个计划会按照 "基准" 审核操作系统设置。 定义、 _\[ 预览 \] ： Windows 计算机应符合 Azure 安全基线的要求_，其中包含一组基于 Active Directory 组策略的规则。
+Azure Policy 中的某个计划会按照“基线”审核操作系统设置。 定义“\[预览\]:Windows 计算机应满足 Azure 安全基线的要求，其中包括一组基于 Active Directory 组策略的规则。
 
 大多数设置都可用作参数。 参数允许你自定义要审核的内容。
 根据你的要求调整策略，或将策略映射到第三方信息（如行业监管标准）。
@@ -201,6 +221,12 @@ Linux：`/var/lib/guestconfig/configurations`
 - [内置策略定义 - 来宾配置](../samples/built-in-policies.md#guest-configuration)
 - [内置计划 - 来宾配置](../samples/built-in-initiatives.md#guest-configuration)
 - [Azure Policy 示例 GitHub 存储库](https://github.com/Azure/azure-policy/tree/master/built-in-policies/policySetDefinitions/Guest%20Configuration)
+
+### <a name="video-overview"></a>视频概述
+
+以下 Azure 策略来宾配置概述来自 ITOps 讨论2021。
+
+[使用 Azure 策略来宾配置在混合服务器环境中管理基线](https://techcommunity.microsoft.com/t5/itops-talk-blog/ops114-governing-baselines-in-hybrid-server-environments-using/ba-p/2109245)
 
 ## <a name="next-steps"></a>后续步骤
 

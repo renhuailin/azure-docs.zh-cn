@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/25/2019
-ms.openlocfilehash: 77220fabc78dd10b4299219ef84c1f6eb32ba82e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7d732f0e42bc5eef8f72a2b9ce2adee28deb9a67
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85987276"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690958"
 ---
 # <a name="azure-powershell-samples-for-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL Database 和 Azure SQL 托管实例的 Azure PowerShell 示例
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -26,7 +26,7 @@ Azure SQL 数据库和 Azure SQL 托管实例允许使用 Azure PowerShell 配�
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-如果选择在本地安装并使用 PowerShell，则本教程需要 AZ PowerShell 1.4.0 或更高版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](/powershell/azure/install-az-ps)（安装 Azure PowerShell 模块）。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 来创建与 Azure 的连接。
+如果选择在本地安装并使用 PowerShell，则本教程需要 AZ PowerShell 1.4.0 或更高版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 来创建与 Azure 的连接。
 
 ## <a name="azure-sql-database"></a>[Azure SQL 数据库](#tab/single-database)
 
@@ -68,7 +68,7 @@ Azure SQL 数据库和 Azure SQL 托管实例允许使用 Azure PowerShell 配�
 |---|---|
 |**创建和配置托管实例**||
 | [创建和管理托管实例](../managed-instance/scripts/create-configure-managed-instance-powershell.md) | 此 PowerShell 脚本演示如何使用 Azure PowerShell 创建和管理托管实例。 |
-| [使用 Azure 资源管理器模板创建和管理托管实例](../managed-instance/scripts/create-powershell-azure-resource-manager-template.md?toc=%2fpowershell%2fmodule%2ftoc.json) | 此 PowerShell 脚本演示如何使用 Azure PowerShell 和 Azure 资源管理器模板创建和管理托管实例。|
+| [使用 Azure 资源管理器模板创建和管理托管实例](../managed-instance/create-template-quickstart.md?toc=%2fpowershell%2fmodule%2ftoc.json) | 此 PowerShell 脚本演示如何使用 Azure PowerShell 和 Azure 资源管理器模板创建和管理托管实例。|
 | [将数据库还原到另一个地理区域中的托管实例](../managed-instance/scripts/restore-geo-backup.md) | 此 PowerShell 脚本备份一个数据库并将其还原到另一个区域。 这称为异地还原灾难恢复方案。 |
 | 配置透明数据加密||
 | [使用 Azure Key Vault 中自己的密钥管理托管实例中的透明数据加密](../managed-instance/scripts/transparent-data-encryption-byok-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 此 PowerShell 脚本使用 Azure Key Vault 中的密钥在 Azure SQL 托管实例的“创建自己的密钥”方案中配置透明数据加密。|

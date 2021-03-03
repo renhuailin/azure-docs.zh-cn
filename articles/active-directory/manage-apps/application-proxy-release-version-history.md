@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/22/2020
 ms.subservice: app-mgmt
 ms.author: kenwith
-ms.openlocfilehash: a4b029a1397a2522dfaa6eba9c0206dd5a031875
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 6ba622bd52dc13fb0053b61b65529db6e6912611
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99258127"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101686710"
 ---
 # <a name="azure-ad-application-proxy-version-release-history"></a>Azure AD 应用程序代理：版本发布历史记录
 本文列出了已发布) 应用程序代理 Azure AD Azure Active Directory (的版本和功能。 Azure AD 团队定期更新具有新特性和功能的应用程序代理。 发布新版本时，应用程序代理连接器会自动更新。 
@@ -44,7 +44,7 @@ Azure AD 应用程序代理连接器下载 |  [下载最新的连接器](https:/
 
 ### <a name="fixed-issues"></a>已修复的问题
 - 修复了强制小写字符串的 websocket 问题。
-- 修复了导致连接器有时无响应的问题。
+- 修复了导致连接器偶尔无法响应的问题。
 
 ## <a name="1516260"></a>1.5.1626.0
 
@@ -60,7 +60,7 @@ Azure AD 应用程序代理连接器下载 |  [下载最新的连接器](https:/
 
 ### <a name="release-status"></a>版本状态
 
-7月7日，2020：已发布以供下载
+2020年4月7日：已发布以便下载此版本仅可通过下载页面安装。 此版本的自动升级版本将在以后发布。
 
 ### <a name="new-features-and-improvements"></a>新增功能和改进
 -   连接器仅将 TLS 1.2 用于所有连接。 有关更多详细信息，请参阅 [连接器先决条件](application-proxy-add-on-premises-application.md#prerequisites) 。

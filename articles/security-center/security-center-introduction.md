@@ -12,14 +12,14 @@ ms.topic: overview
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/26/2021
+ms.date: 02/17/2021
 ms.author: memildin
-ms.openlocfilehash: 9f39988375f58f75dad2b623cd3d937022a072e7
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: c4861192c7f2bbfb2a51e19b88daee45b501949b
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98806189"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100634764"
 ---
 # <a name="what-is-azure-security-center"></a>什么是 Azure 安全中心？
 
@@ -101,7 +101,7 @@ Azure 安全中心的值的核心在于其建议。 这些建议是针对在工�
 
 安全中心的威胁防护包括融合杀伤链分析，它可以基于网络杀伤链分析自动关联环境中的警报，有助于更好地了解攻击活动的完整情况，例如它的起始位置以及它对资源造成的影响。
 
-:::image type="content" source="./media/security-center-intro/sc-alerts.png" alt-text="安全警报":::
+:::image type="content" source="media/security-center-managing-and-responding-alerts/alerts-page.png" alt-text="Azure 安全中心的安全警报列表":::
 
 ### <a name="integration-with-microsoft-defender-for-endpoint"></a>与 Microsoft Defender for Endpoint 集成
 

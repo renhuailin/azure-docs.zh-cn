@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 96b9754908f437ccf81e002e9e9dd17af0bab4e3
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 46004d81756809958e359c2a0b72c143599c2853
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95019069"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101706752"
 ---
 # <a name="understand-what-good-utterances-are-for-your-luis-app"></a>了解哪些良好的话语适用于你的 LUIS 应用
 
@@ -54,7 +54,7 @@ ms.locfileid: "95019069"
 |我想要一台计算机，我该怎么做？|
 |我什么时候能有一台计算机？|
 
-这里的核心术语“计算机”没有变化。 可以使用替代话语“台式电脑”、“笔记本电脑”、“工作站”，甚至是“机器”。 LUIS 可以根据上下文智能地推断同义词，但当你创建用于训练的话语时，最好是改变它们。
+此处的核心术语 " *计算机*" 不会变化。 可以使用替代话语“台式电脑”、“笔记本电脑”、“工作站”，甚至是“机器”。 LUIS 可以根据上下文智能地推断同义词，但当你创建用于训练的话语时，最好是改变它们。
 
 ## <a name="example-utterances-in-each-intent"></a>每个意向的示例陈述
 

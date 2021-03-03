@@ -7,25 +7,44 @@ ms.reviewer: mikeray
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
-ms.date: 02/11/2021
+ms.date: 03/02/2021
 ms.topic: conceptual
-ms.openlocfilehash: f303ddb4d32da4c4cb6609f3ceec34e5c83529a8
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: d3eb4e4b45a13872a11515dd4f53fcbbc069a954
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100391450"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101686676"
 ---
 # <a name="release-notes---azure-arc-enabled-data-services-preview"></a>发行说明-启用了 Azure Arc 的数据服务 (预览) 
 
+本文重点介绍了 Azure Arc 启用的数据服务最近发布或改进的功能、功能和增强功能。 
+
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
+
+## <a name="february-2021"></a>2021 年 2 月
+
+### <a name="new-capabilities-and-features"></a>新功能和功能
+
+Azure 数据 CLI (`azdata`) 版本号：20.3.1。 下载位置 [https://aka.ms/azdata](https://aka.ms/azdata) 。 你可以 `azdata` 从 [安装 AZURE 数据 CLI (`azdata`) ](/sql/azdata/install/deploy-install-azdata)进行安装。
+
+其他更新包括：
+
+- 已启用 Azure Arc 的 SQL 托管实例
+   - Always On 可用性组的高可用性
+
+- 已启用 Azure Arc PostgreSQL 超大规模 Azure Data Studio： 
+   - 概述页现在显示每个节点的服务器组的状态
+   - 现在可以使用新的 "属性" 页显示有关服务器组的更多详细信息。
+   - 通过 **节点参数** 配置 Postgres 引擎参数页 =
+
+有关与此版本相关的问题，请参阅 [已知问题-启用了 Azure Arc 的数据服务 (预览) ](known-issues.md)
 
 ## <a name="january-2021"></a>2021 年 1 月
 
 ### <a name="new-capabilities-and-features"></a>新功能和功能
 
 Azure 数据 CLI (`azdata`) 版本号：20.3.0。 下载位置 [https://aka.ms/azdata](https://aka.ms/azdata) 。 你可以 `azdata` 从 [安装 AZURE 数据 CLI (`azdata`) ](/sql/azdata/install/deploy-install-azdata)进行安装。
-
 
 其他更新包括：
 - 适用于17种新语言的本地化门户

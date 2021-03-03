@@ -12,12 +12,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 02/16/2021
 ms.author: juliako
-ms.openlocfilehash: c8fcd6e662a0beff61209de4b5c4331618b45ea1
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 3a64bb261db39efb63b35004f1daa0452b4f0672
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100653291"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101715150"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure 媒体服务视频索引器发行说明
 
@@ -47,7 +47,7 @@ ms.locfileid: "100653291"
 
 先前的音频效果模型中包含的 **拍手** 事件类型现在已提取为 "一类 **响应** " 事件类型。
 
-当你选择在 [视频索引器](https://www.videoindexer.ai/)网站上查看视频的 **Insites** 时，音频效果会显示在页面上。
+当你选择在 [视频索引器](https://www.videoindexer.ai/)网站上查看视频 **见解** 时，此页面上将显示音频效果。
 
 :::image type="content" source="./media/release-notes/audio-detection.png" alt-text="音频事件检测":::
 

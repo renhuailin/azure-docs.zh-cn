@@ -7,13 +7,14 @@ ms.subservice: redhat
 ms.collection: linux
 ms.topic: article
 ms.date: 02/10/2020
-ms.author: alsin
-ms.openlocfilehash: 03c033ac5d0f20bbfd4f5dccfb5c2900596d2a41
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.author: mathapli
+ms.reviewer: cynthn
+ms.openlocfilehash: 42e0788a25efa5124f24a77b48469d6ed8265dfc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101673124"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694676"
 ---
 # <a name="overview-of-red-hat-enterprise-linux-images"></a>Red Hat Enterprise Linux 映像的概述
 
@@ -108,6 +109,8 @@ az vm create --name RhelVM --resource-group TestRG --image RedHat:RHEL:8-LVM:lat
 |----------|-------|------------|---------|--------
 |RedHat | RHEL | 8 | RHEL 次要版本和发布日期的串联值 (例如 8.0.20191023)  | 这些映像是已连接到标准 Red Hat 存储库的 RHEL 8 LVM 分区映像。
 |RedHat | RHEL | 8-gen2 | RHEL 次要版本和发布日期的串联值 (例如 8.0.20191024)  | 这些映像是连接到标准 Red Hat 存储库的 Hyper-v 第 2 RHEL 8 LVM 分区映像。 有关 Azure 中第2代 Vm 的详细信息，请参阅 [azure 上的第2代 Vm 支持](../../generation-2.md)。
+|RedHat | RHEL | RHEL-SAP-APPS | RHEL 次要版本和发布日期的串联值 (例如 8.1.2021012201)  | 这些映像是 RHEL for SAP 应用程序映像。 他们有权访问 SAP 应用程序存储库和基本 RHEL 存储库。
+|RedHat | RHEL | RHEL-SAP-HA | RHEL 次要版本和发布日期的串联值 (例如 8.1.2021010602)  | 这些映像是 RHEL，适用于具有高可用性和更新服务映像的 SAP。 他们有权访问 SAP 解决方案和应用程序存储库、高可用性存储库以及 RHEL E4S 存储库。 在基础计算费用的基础上，计费包括 RHEL premium、SAP premium 和高可用性高级版。
 
 ## <a name="rhel-extended-support-add-ons"></a>RHEL 扩展支持外接程序
 

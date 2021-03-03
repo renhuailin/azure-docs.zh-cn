@@ -11,12 +11,12 @@ author: peterclu
 ms.date: 10/06/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, references_regions, contperf-fy21q1
-ms.openlocfilehash: 857fba6dfa6191163c06c423cefb42d57f25dc1d
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: 1a73988b66ba7b47f18ecaaa07df59e9047a933b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99980569"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691818"
 ---
 # <a name="virtual-network-isolation-and-privacy-overview"></a>虚拟网络隔离和隐私概述
 
@@ -34,7 +34,7 @@ ms.locfileid: "99980569"
 + [Azure 虚拟网络](../virtual-network/virtual-networks-overview.md)
 + [IP 网络](../virtual-network/public-ip-addresses.md)
 + [Azure 专用链接](how-to-configure-private-link.md)
-+ [ (NSG 的网络安全组) ](../virtual-network/network-security-groups-overview.md)
++ [网络安全组 (NSG)](../virtual-network/network-security-groups-overview.md)
 + [网络防火墙](../firewall/overview.md)
 
 ## <a name="example-scenario"></a>示例方案
@@ -71,7 +71,7 @@ ms.locfileid: "99980569"
 1. 创建 [启用了专用链接的工作区](how-to-secure-workspace-vnet.md#secure-the-workspace-with-private-endpoint) ，以启用 VNet 与工作区之间的通信。
 1. 使用 [服务终结](../key-vault/general/overview-vnet-service-endpoints.md) 点或 [专用终结点](../key-vault/general/private-link-service.md)将 Azure Key Vault 添加到虚拟网络。 将 Key Vault 设置为 ["允许受信任的 Microsoft 服务跳过此防火墙"](how-to-secure-workspace-vnet.md#secure-azure-key-vault)。
 1. 使用 [服务终结](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-service-endpoints) 点或 [专用终结点](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-private-endpoints)将 Azure 存储帐户添加到虚拟网络。
-1. [将 Azure 容器注册表配置为使用专用终结点](how-to-secure-workspace-vnet.md#enable-azure-container-registry-acr) ，并 [在 Azure 容器实例中启用子网委托](how-to-secure-inferencing-vnet.md#enable-azure-container-instances-aci)。
+1. [将 Azure 容器注册表配置为使用专用终结点](how-to-secure-workspace-vnet.md#enable-azure-container-registry-acr)。
 
 ![显示工作区和关联资源如何通过服务终结点或 VNet 内的专用终结点相互通信的体系结构关系图](./media/how-to-network-security-overview/secure-workspace-resources.png)
 

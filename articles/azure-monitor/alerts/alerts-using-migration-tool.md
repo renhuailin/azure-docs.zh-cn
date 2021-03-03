@@ -4,35 +4,26 @@ description: 了解如何使用自愿性迁移工具迁移经典警报规则。
 author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
-ms.date: 03/19/2018
+ms.date: 02/14/2020
 ms.subservice: alerts
-ms.openlocfilehash: 28ccdde85f2873839fbe977c3c991177ac8bb3bb
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 644346c7355df581843fa8a838eea50cfeccefd6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100606146"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101729090"
 ---
 # <a name="use-the-voluntary-migration-tool-to-migrate-your-classic-alert-rules"></a>使用自愿性迁移工具迁移经典警报规则
 
-如前所述 [，为](../platform/monitoring-classic-retirement.md)公有云用户停用 Azure Monitor 中的经典警报，但对于尚不支持新警报的资源仍有限制。 在 Azure 门户向使用经典警报规则的客户和想要触发迁移的客户提供迁移工具。 本文介绍如何使用该迁移工具，该工具也可用于剩余的警报，并等待进一步公告。
+如前所述 [，对于](monitoring-classic-retirement.md)公有云用户，Azure Monitor 中的经典警报将会停用，但在31年 **5 月31日之前仍2021会** 受到限制。 Azure 政府云和 Azure 中国世纪互联的经典警报将于 **2024 年2月29日** 停用。
 
-## <a name="benefits-of-new-alerts"></a>新警报的优势
-
-经典警报即将被 Azure Monitor 中的全新统一警报取代。 新的警报平台具有以下优势：
-
-- 可以针对[更多 Azure 服务](alerts-metric-near-real-time.md#metrics-and-dimensions-supported)中的各种多维指标发出警报。
-- 新的指标警报支持[多资源警报规则](alerts-metric-overview.md#monitoring-at-scale-using-metric-alerts-in-azure-monitor)，这可以大幅减少管理多个规则所造成的开销。
-- 统一的通知机制，支持：
-  - [操作组](../platform/action-groups.md)：可以处理所有新警报类型（指标、日志和活动日志）的模块化通知机制。
-  - 新的通知机制，例如短信、语音和 ITSM 连接器。
-- [统一警报体验](../platform/alerts-overview.md)将针对不同信号（指标、日志和活动日志）发出的所有警报归并到一个位置。
+在 Azure 门户向使用经典警报规则的客户和想要触发迁移的客户提供迁移工具。 本文介绍如何使用迁移工具。
 
 ## <a name="before-you-migrate"></a>迁移之前
 
 迁移过程会将经典警报规则转换为新的等效警报规则，并创建操作组。 在准备期间，请注意以下几点：
 
-- 通知有效负载格式以及用于创建和管理新警报规则的 API 不同于经典警报规则，因为它们支持更多的功能。 [了解如何准备迁移](alerts-prepare-migration.md)。
+- 通知负载格式和用于创建和管理新警报规则的 Api 不同于经典警报规则，因为它们支持更多功能。 [了解如何准备迁移](alerts-prepare-migration.md)。
 
 - 使用该工具无法迁移某些经典警报规则。 [了解无法迁移哪些规则及其解决方法](alerts-understand-migration.md#manually-migrating-classic-alerts-to-newer-alerts)。
 
@@ -83,7 +74,7 @@ ms.locfileid: "100606146"
 
 ### <a name="who-can-trigger-the-migration"></a>谁可以触发迁移？
 
-在订阅级别拥有“监视参与者”角色的用户可以触发迁移。 [详细了解 Azure 基于角色的访问控制的迁移过程](alerts-understand-migration.md#who-can-trigger-the-migration)。
+在订阅级别向其分配了 "监视参与者" 角色的用户可以触发迁移。 [详细了解 Azure 基于角色的访问控制的迁移过程](alerts-understand-migration.md#who-can-trigger-the-migration)。
 
 ### <a name="how-long-will-the-migration-take"></a>迁移需要多长时间？
 

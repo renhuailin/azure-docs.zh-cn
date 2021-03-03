@@ -3,12 +3,12 @@ title: 使用 Azure 应用程序网关保护 Azure VMware 解决方案上的 web
 description: 配置 Azure 应用程序网关，以安全地公开在 Azure VMware 解决方案上运行的 web 应用。
 ms.topic: how-to
 ms.date: 02/10/2021
-ms.openlocfilehash: 9b10c206114ca922cc11bd8cb0321941b8ba672c
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 1ad615efe0de86a49714914507227b7cc1dca4cb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100384191"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733578"
 ---
 # <a name="use-azure-application-gateway-to-protect-your-web-apps-on-azure-vmware-solution"></a>使用 Azure 应用程序网关保护 Azure VMware 解决方案上的 web 应用
 
@@ -35,7 +35,7 @@ ms.locfileid: "100384191"
 
 :::image type="content" source="media/hub-spoke/azure-vmware-solution-second-level-traffic-segmentation.png" alt-text="显示用于通过 Azure VMware 解决方案 web 应用程序验证应用程序网关的测试方案的关系图。" border="false":::
 
-应用程序网关实例部署在中心的专用子网中。 它具有 Azure 公共 IP 地址。 建议为虚拟网络激活标准 DDoS 保护。 Web 服务器托管在 NSX T0 和 T1 网关后面的 Azure VMware 解决方案私有云上。 Azure VMware 解决方案使用 [ExpressRoute Global Reach](../expressroute/expressroute-global-reach.md) 来实现与集线器和本地系统的通信。
+应用程序网关实例部署在中心的专用子网中。 它具有 Azure 公共 IP 地址。 建议为虚拟网络激活 [Azure DDoS 保护标准](../ddos-protection/ddos-protection-overview.md) 。 Web 服务器托管在 NSX T0 和 T1 网关后面的 Azure VMware 解决方案私有云上。 Azure VMware 解决方案使用 [ExpressRoute Global Reach](../expressroute/expressroute-global-reach.md) 来实现与集线器和本地系统的通信。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -193,3 +193,4 @@ ms.locfileid: "100384191"
 - [配置不同方案的 Azure 应用程序网关](../application-gateway/configuration-overview.md)。
 - [部署流量管理器以平衡 Azure VMware 解决方案工作负荷](deploy-traffic-manager-balance-workloads.md)。
 - 将[Azure NetApp 文件与基于 Azure VMware 解决方案的工作负荷集成](netapp-files-with-azure-vmware-solution.md)。
+- [在虚拟网络中保护 Azure 资源](../ddos-protection/ddos-protection-overview.md)

@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 01/13/2021
 ms.author: pafarley
-ms.openlocfilehash: dbe0b5ac207b361a9584603bbe2d59abd5e5ca4e
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 4f5ea68102e98a9abc3e5a0a31d3153bc1bd1663
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100390396"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738219"
 ---
 # <a name="whats-new-in-computer-vision"></a>计算机视觉中的新增功能
 
@@ -50,8 +50,8 @@ ms.locfileid: "100390396"
 * 中断性变更：已将 personZoneEvent 事件重命名为 personZoneEnterExitEvent 。 此事件在某人进入或离开该区域时由 personcrossingpolygon 操作引发，并提供与所穿过区域的编号侧相关的方向信息。
 * 可在所有操作中将视频 URL 作为“专用参数/已模糊处理”提供。 模糊处理现在是可选操作，仅当 `KEY` 和 `IV` 作为环境变量提供时才有效。
 * 默认情况下，对所有操作启用了校准。 设置 `do_calibration: false` 可禁用它。
-* 通过 `enable_recalibration` 参数增加了对自动重新校准的支持（默认禁用）；有关详细信息，请参阅[空间分析操作](https://docs.microsoft.com/azure/cognitive-services/computer-vision/spatial-analysis-operations)
-* 照相机校准参数设置为 `DETECTOR_NODE_CONFIG`。 有关详细信息，请参阅[空间分析操作](https://docs.microsoft.com/azure/cognitive-services/computer-vision/spatial-analysis-operations)。
+* 通过 `enable_recalibration` 参数增加了对自动重新校准的支持（默认禁用）；有关详细信息，请参阅[空间分析操作](./spatial-analysis-operations.md)
+* 照相机校准参数设置为 `DETECTOR_NODE_CONFIG`。 有关详细信息，请参阅[空间分析操作](./spatial-analysis-operations.md)。
 
 
 ## <a name="october-2020"></a>2020 年 10 月

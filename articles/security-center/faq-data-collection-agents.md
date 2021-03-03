@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2020
 ms.author: memildin
-ms.openlocfilehash: 30744ab97549d585cb6893dc2e2e12009e8cd3fb
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 754e9516c5fd47668cbff5bdc64b8dfdeed050d8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100595767"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101705122"
 ---
 # <a name="faq---questions-about-data-collection-agents-and-workspaces"></a>常见问题解答 - 有关数据收集、代理和工作区的问题
 
@@ -27,7 +27,7 @@ ms.locfileid: "100595767"
 
 ## <a name="am-i-billed-for-azure-monitor-logs-on-the-workspaces-created-by-security-center"></a>安全中心创建的工作区中的 Azure Monitor 日志是否会产生费用？
 
-不是。 Azure Monitor 日志配置为按节点计费时，安全中心创建的工作区中的 Azure Monitor 日志不会产生费用。 安全中心的计费始终依据工作区上安装的以下安全中心安全策略和解决方案：
+否。 Azure Monitor 日志配置为按节点计费时，安全中心创建的工作区中的 Azure Monitor 日志不会产生费用。 安全中心的计费始终依据工作区上安装的以下安全中心安全策略和解决方案：
 
 - **Azure Defender off** –安全中心在默认工作区中启用 "SecurityCenterFree" 解决方案。 如果 Azure Defender 处于关闭状态，则你无需付费。
 
@@ -146,7 +146,7 @@ Windows 或 Linux IaaS VM 的合格条件如下：
 
 安装的代理将继续向其已配置的工作区报告，此外，它还会向安全中心上配置的工作区报告（Windows 计算机支持多主页）。
 
-如果配置的工作区是一个用户工作区（而不是安全中心的默认工作区），则需要在该工作区上安装“Security”/“SecurityCenterFree”解决方案，以便安全中心开始处理向该工作区报告的 VM 和计算机中的事件。
+如果配置的工作区是 (不是安全中心的默认工作区) 的用户工作区，则你需要在其上安装 "安全" 或 "SecurityCenterFree" 解决方案，以便安全中心开始处理从 Vm 和向该工作区报告的计算机的事件。
 
 对于 Linux 计算机，尚不支持代理多主页，因此，如果检测到现有的代理安装，则不会进行自动预配，并且不会更改计算机的配置。
 
@@ -207,7 +207,7 @@ Windows 或 Linux IaaS VM 的合格条件如下：
 
 手动安装 Log Analytics 代理扩展，使安全中心能够从 VM 收集安全数据并提供建议和警报。 有关安装的指导，请参阅 [Windows VM 的代理安装](../virtual-machines/extensions/oms-windows.md)或 [Linux VM 的代理安装](../virtual-machines/extensions/oms-linux.md)。
 
-可将代理连接到任何现有的自定义工作区或安全中心创建的工作区。 如果自定义工作区未启用“Security”或“SecurityCenterFree”解决方案，则需要应用解决方案。 若要应用解决方案，请选择自定义工作区或订阅，并通过“安全策略 – 定价层”页面应用定价层。
+可将代理连接到任何现有的自定义工作区或安全中心创建的工作区。 如果自定义工作区未启用 "安全" 或 "SecurityCenterFree" 解决方案，则需要应用解决方案。 若要应用解决方案，请选择自定义工作区或订阅，并通过“安全策略 – 定价层”页面应用定价层。
 
 :::image type="content" source="./media/security-center-platform-migration-faq/pricing-tier.png" alt-text="启用或禁用 Azure Defender":::
 

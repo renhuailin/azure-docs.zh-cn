@@ -1,17 +1,16 @@
 ---
 title: Azure Monitor 中的 Azure Key Vault 解决方案 |Microsoft Docs
 description: 可以在 Azure Monitor 中使用 Azure 密钥保管库解决方案来查看 Azure 密钥保管库日志。
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/27/2019
-ms.openlocfilehash: f9b265ba8970d9f065cc13cff1e5faeb466ac570
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 24869841a106a68234cfec600d9a98e519f8c6cc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100577495"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734190"
 ---
 # <a name="azure-key-vault-analytics-solution-in-azure-monitor"></a>Azure Monitor 中的 Azure Key Vault 分析解决方案
 

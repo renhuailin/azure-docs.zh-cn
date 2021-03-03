@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/03/2018
 ms.author: jeedes
-ms.openlocfilehash: fe241a3fd74e1421f1bd3d39087fe776ee7b61d9
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: e1440feacd10935b15195110cd7ea3e20b4d523c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92891493"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687611"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-jira-by-resolution-gmbh"></a>教程：Azure Active Directory 与 SAML SSO for Jira by resolution GmbH 集成
 
@@ -45,7 +45,7 @@ ms.locfileid: "92891493"
 
 ## <a name="adding-an-enterprise-application-for-single-sign-on"></a>添加一个企业应用程序用于单一登录
 
-若要在 Azure AD 中设置单一登录，需要添加一个新的企业应用程序。 库中为此预先配置了一个应用程序： **SAML SSO for Jira by resolution GmbH** 。
+若要在 Azure AD 中设置单一登录，需要添加一个新的企业应用程序。 库中为此预先配置了一个应用程序：**SAML SSO for Jira by resolution GmbH**。
 
 **若要从库中添加 SAML SSO for Jira by resolution GmbH，请执行以下步骤：**
 
@@ -61,7 +61,7 @@ ms.locfileid: "92891493"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中键入 **SAML SSO for Jira by resolution GmbH** ，在结果面板中选择“SAML SSO for Jira by resolution GmbH”，然后单击“添加”按钮添加该应用程序。  还可以更改企业应用的名称。
+4. 在搜索框中键入 **SAML SSO for Jira by resolution GmbH**，在结果面板中选择“SAML SSO for Jira by resolution GmbH”，然后单击“添加”按钮添加该应用程序。  还可以更改企业应用的名称。
 
      ![结果列表中的 SAML SSO for Jira by resolution GmbH](common/search-new-app.png)
 
@@ -101,7 +101,7 @@ ms.locfileid: "92891493"
 
     ![显示“基本 SAML 配置”部分的屏幕截图，其中突出显示了“标识符”和“回复 URL”文字框，并选择了“保存”按钮。](common/idp-intiated.png)
 
-    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<server-base-url>/plugins/servlet/samlsso`
+    a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://<server-base-url>/plugins/servlet/samlsso`
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<server-base-url>/plugins/servlet/samlsso`
 
@@ -126,11 +126,11 @@ ms.locfileid: "92891493"
     
     ![屏幕截图显示了指向“齿轮”图标的箭头，其中从下拉列表中选择了“管理应用”。](./media/samlssojira-tutorial/addon1.png)
 
-3. 如果已重定向到“管理员访问”页，请输入 **密码** ，然后单击“确认”按钮。
+3. 如果已重定向到“管理员访问”页，请输入 **密码**，然后单击“确认”按钮。
 
     ![屏幕截图显示了“管理员访问权限”页。](./media/samlssojira-tutorial/addon2.png)
 
-4. Jira 通常会将你重定向到 Atlassian 市场。 如果没有，请单击左面板中的“查找新应用”。 搜索 **SAML Single Sign On (SSO) for JIRA** ，然后单击“安装”按钮安装 SAML 插件。
+4. Jira 通常会将你重定向到 Atlassian 市场。 如果没有，请单击左面板中的“查找新应用”。 搜索 **SAML Single Sign On (SSO) for JIRA**，然后单击“安装”按钮安装 SAML 插件。
 
     ![屏幕截图显示了“Atlassian Marketplace for JIRA”页，其中有一箭头指向“SAML 单一登录(SSO) Jira，SAML/SSO”应用的“安装”按钮。](./media/samlssojira-tutorial/store.png)
 
@@ -158,9 +158,9 @@ ms.locfileid: "92891493"
  
     a. 设置“Azure AD”作为 IdP 类型。
     
-    b. 添加标识提供者的 **名称** （例如 Azure AD）。
+    b. 添加标识提供者的 **名称**（例如 Azure AD）。
     
-    c. （可选）添加标识提供者的 **说明** （例如 Azure AD）。
+    c. （可选）添加标识提供者的 **说明**（例如 Azure AD）。
     
     d. 单击“下一步”。
     
@@ -212,7 +212,7 @@ ms.locfileid: "92891493"
 
     ![“用户”对话框](common/user-properties.png)
 
-    a. 在“名称”字段中输入 **Britta Simon** 。
+    a. 在“名称”字段中输入 **Britta Simon**。
   
     b. 在“用户名”字段中输入 <b>BrittaSimon@contoso.com</b>。
 
@@ -228,7 +228,7 @@ ms.locfileid: "92891493"
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，搜索在本教程开头创建的企业应用程序。 如果你一直在遵循本教程中的步骤，该应用程序名为 **SAML SSO for Jira by resolution GmbH** 。 如果你指定了其他名称，请搜索该名称。
+2. 在应用程序列表中，搜索在本教程开头创建的企业应用程序。 如果你一直在遵循本教程中的步骤，该应用程序名为 **SAML SSO for Jira by resolution GmbH**。 如果你指定了其他名称，请搜索该名称。
 
     ![应用程序列表中的 SAML SSO for Jira by resolution GmbH 链接](common/all-applications.png)
 
@@ -258,7 +258,7 @@ ms.locfileid: "92891493"
 
    ![屏幕截图显示了指向“齿轮”图标的箭头，并从下拉列表中选择了“用户管理”。](./media/samlssojira-tutorial/user1.png)
 
-3. 如果已重定向到“管理员访问”页，请输入 **密码** ，然后单击“确认”按钮。
+3. 如果已重定向到“管理员访问”页，请输入 **密码**，然后单击“确认”按钮。
 
     ![屏幕截图显示了“管理员访问”页，其中突出显示了“密码”文本框。](./media/samlssojira-tutorial/user2.png) 
 
@@ -272,7 +272,7 @@ ms.locfileid: "92891493"
 
     a. 在“电子邮件地址”文本框中，键入用户的电子邮件地址：<b>BrittaSimon@contoso.com</b>。
 
-    b. 在“全名”文本框中，键入用户的全名： **Britta Simon** 。
+    b. 在“全名”文本框中，键入用户的全名： **Britta Simon**。
 
     c. 在“用户名”文本框中，键入用户的电子邮件地址：<b>BrittaSimon@contoso.com</b>。 
 
@@ -291,7 +291,7 @@ ms.locfileid: "92891493"
 
 ## <a name="enable-single-sign-on-redirection-for-jira"></a>为 Jira 启用单一登录重定向
 
-如前面的部分中所述，目前可以通过两种方式来触发单一登录： 使用 **Azure 门户** 或使用 **Jira 实例的特殊链接** 。 使用 resolution GmbH 提供的 SAML SSO 插件，还可以简单地通过 **访问指向 Jira 实例的任何 URL** ，来触发单一登录。
+如前面的部分中所述，目前可以通过两种方式来触发单一登录： 使用 **Azure 门户** 或使用 **Jira 实例的特殊链接**。 使用 resolution GmbH 提供的 SAML SSO 插件，还可以简单地通过 **访问指向 Jira 实例的任何 URL**，来触发单一登录。
 
 从本质上讲，访问 Jira 的所有用户在激活该插件中的某个选项后，会重定向到单一登录页。
 
@@ -308,7 +308,7 @@ ms.locfileid: "92891493"
 
 1. 按右上角的“保存设置”按钮。
 
-激活该选项后，如果已勾选“启用 nosso”选项，则仍可以通过导航到 `https://\<server-base-url>/login.jsp?nosso` 来查看用户名/密码提示。 同样，将 \<server-base-url> 替换为基 URL。
+激活该选项后，如果已勾选“启用 nosso”选项，则仍可以通过导航到 `https://<server-base-url>/login.jsp?nosso` 来查看用户名/密码提示。 同样，将 \<server-base-url> 替换为基 URL。
 
 
 ## <a name="additional-resources"></a>其他资源

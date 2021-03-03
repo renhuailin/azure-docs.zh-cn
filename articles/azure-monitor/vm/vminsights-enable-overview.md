@@ -1,22 +1,22 @@
 ---
-title: 启用用于 VM 的 Azure Monitor 概述
-description: 了解如何部署和配置用于 VM 的 Azure Monitor。 了解系统要求。
+title: 启用 VM insights 概述
+description: 了解如何部署和配置 VM insights。 了解系统要求。
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: d83ed63e5e86ac415a8d6145c2efe484ad335b75
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 661c65f33f0c65f2f7ccd038afdffbf3c8e241c9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100608680"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719689"
 ---
-# <a name="enable-azure-monitor-for-vms-overview"></a>启用用于 VM 的 Azure Monitor 概述
+# <a name="enable-vm-insights-overview"></a>启用 VM insights 概述
 
-本文概述了可用于启用用于 VM 的 Azure Monitor 来监视以下各项的运行状况和性能的选项：
+本文概述了可用于启用 VM insights 以监视以下各项的运行状况和性能的选项：
 
 - Azure 虚拟机 
 - Azure 虚拟机规模集
@@ -24,15 +24,15 @@ ms.locfileid: "100608680"
 - 本地虚拟机
 - 托管在其他云环境中的虚拟机。  
 
-若要设置用于 VM 的 Azure Monitor：
+若要设置 VM insights：
 
 * 通过直接从 Azure 门户中的菜单选择 " **见解** "，启用单个 azure 虚拟机、azure 虚拟机规模集或 azure Arc 计算机。
 * 使用 Azure 策略启用多个 Azure 虚拟机、Azure 虚拟机或 Azure Arc 计算机。 此方法可确保在现有和新的 VM 与规模集上安装并正确配置所需的依赖项。 系统会报告不符合要求的虚拟机和规模集，因此你可以决定是否启用它们并对其进行修正。
 * 使用 PowerShell 在指定的订阅或资源组中启用多个 Azure 虚拟机、Azure Arc 虚拟机、Azure 虚拟机规模集或 Azure Arc 计算机。
-* 启用用于 VM 的 Azure Monitor，以监视企业网络或其他云环境中托管的 VM 或物理计算机。
+* 启用 VM insights 来监视企业网络或其他云环境中托管的 Vm 或物理计算机。
 
 ## <a name="supported-machines"></a>支持的计算机
-用于 VM 的 Azure Monitor 支持以下计算机：
+VM insights 支持以下计算机：
 
 - Azure 虚拟机
 - Azure 虚拟机规模集
@@ -40,7 +40,7 @@ ms.locfileid: "100608680"
 
 
 ## <a name="supported-azure-arc-machines"></a>支持的 Azure Arc 计算机
-用于 VM 的 Azure Monitor 可用于可用 Arc 扩展服务的区域中启用了 Azure Arc 的服务器。 您必须运行版本0.9 或更高版本的 Arc 代理。
+VM insights 适用于 Arc 扩展服务可用的区域中启用了 Azure Arc 的服务器。 您必须运行版本0.9 或更高版本的 Arc 代理。
 
 | 连接的源 | 支持 | 说明 |
 |:--|:--|:--|
@@ -50,12 +50,12 @@ ms.locfileid: "100608680"
 
 ## <a name="supported-operating-systems"></a>支持的操作系统
 
-用于 VM 的 Azure Monitor 支持支持 Log Analytics 代理和依赖项代理的任何操作系统。 有关完整列表，请参阅 [Azure Monitor 代理概述 ](../agents/agents-overview.md#supported-operating-systems) 。
+VM insights 支持支持 Log Analytics 代理和依赖项代理的任何操作系统。 有关完整列表，请参阅 [Azure Monitor 代理概述 ](../agents/agents-overview.md#supported-operating-systems) 。
 
 > [!IMPORTANT]
-> 用于 VM 的 Azure Monitor 来宾健康功能在公共预览版中提供的操作系统支持更多。 有关详细列表，请参阅 [Enable 用于 VM 的 Azure Monitor guest health (preview) ](../vm/vminsights-health-enable.md) 。
+> VM insights 来宾运行状况功能在公共预览版中提供的操作系统支持更多。 有关详细列表，请参阅 [ENABLE VM insights 来宾 health (preview) ](../vm/vminsights-health-enable.md) 。
 
-有关支持用于 VM 的 Azure Monitor 的依赖项代理的 Linux 支持，请参阅以下注意事项列表：
+请参阅以下有关支持 VM insights 的依赖项代理的 Linux 支持的注意事项列表：
 
 - 仅默认版本和 SMP Linux 内核版本受支持。
 - 任何 Linux 发行版都不支持非标准内核版本（例如物理地址扩展 [PAE] 和 Xen）。 例如，不支持版本字符串为 *2.6.16.21-0.8-xen* 的系统。
@@ -64,15 +64,15 @@ ms.locfileid: "100608680"
 - 支持 CentOSPlus 内核。
 - 必须为 Spectre 漏洞修补 Linux 内核。 有关更多详细信息，请咨询 Linux 发行版供应商。
 ## <a name="log-analytics-workspace"></a>Log Analytics 工作区
-用于 VM 的 Azure Monitor 需要 Log Analytics 工作区。 有关此工作区的详细信息和要求，请参阅 [配置用于 VM 的 Azure Monitor Log Analytics 工作区](vminsights-configure-workspace.md) 。
+VM insights 需要 Log Analytics 工作区。 有关此工作区的详细信息和要求，请参阅 [配置 VM insights Log Analytics 工作区](vminsights-configure-workspace.md) 。
 ## <a name="agents"></a>代理
-用于 VM 的 Azure Monitor 要求在要监视的每个虚拟机或虚拟机规模集上安装以下两个代理。 若要载入资源，请安装这些代理并将其连接到工作区。  有关这些代理的网络要求，请参阅 [网络要求](../agents/log-analytics-agent.md#network-requirements) 。
+VM insights 要求在要监视的每个虚拟机或虚拟机规模集上安装以下两个代理。 若要载入资源，请安装这些代理并将其连接到工作区。  有关这些代理的网络要求，请参阅 [网络要求](../agents/log-analytics-agent.md#network-requirements) 。
 
 - [Log Analytics 代理](../agents/log-analytics-agent.md)。 从虚拟机或虚拟机规模集中收集事件和性能数据，并将其传送到 Log Analytics 工作区。 适用于 Azure 资源上的 Log Analytics 代理的部署方法使用适用于 [Windows](../../virtual-machines/extensions/oms-windows.md) 和 [Linux](../../virtual-machines/extensions/oms-linux.md)的 VM 扩展。
-- 依赖关系代理。 收集有关在虚拟机上运行的进程的已发现数据和外部进程依赖项，这些依赖关系由 [用于 VM 的 Azure Monitor 中的映射功能](../vm/vminsights-maps.md)使用。 依赖关系代理依赖于 Log Analytics 代理将其数据传递到 Azure Monitor。 适用于 Azure 资源上的依赖关系代理的部署方法使用适用于 [Windows](../../virtual-machines/extensions/agent-dependency-windows.md) 和 [Linux](../../virtual-machines/extensions/agent-dependency-linux.md)的 VM 扩展。
+- 依赖关系代理。 收集有关在虚拟机上运行的进程和外部进程依赖关系的发现的数据，这些依赖关系由 [VM insights 中的映射功能](../vm/vminsights-maps.md)使用。 依赖关系代理依赖于 Log Analytics 代理将其数据传递到 Azure Monitor。 适用于 Azure 资源上的依赖关系代理的部署方法使用适用于 [Windows](../../virtual-machines/extensions/agent-dependency-windows.md) 和 [Linux](../../virtual-machines/extensions/agent-dependency-linux.md)的 VM 扩展。
 
 > [!NOTE]
-> Log Analytics 代理是 System Center Operations Manager 使用的同一代理。 用于 VM 的 Azure Monitor 可以监视通过 Operations Manager 监视的代理（如果它们直接连接），并在这些代理上安装依赖项代理。 用于 VM 的 Azure Monitor 无法监视通过 [管理组连接](../tform/../agents/om-agents.md) 连接到 Azure Monitor 的代理。
+> Log Analytics 代理是 System Center Operations Manager 使用的同一代理。 如果代理是直接连接的，则 VM insights 可以监视也受 Operations Manager 监视的代理，并在这些代理上安装依赖项代理。 VM insights 无法监视通过 [管理组连接](../tform/../agents/om-agents.md) 连接到 Azure Monitor 的代理。
 
 下面是用于部署这些代理的多种方法。 
 
@@ -86,12 +86,12 @@ ms.locfileid: "100608680"
 
 ## <a name="network-requirements"></a>网络要求
 
-- 请参阅 Log Analytics 代理的网络要求的 [网络要求](../platform/log-analytics-agent.md#network-requirements) 。
+- 请参阅 Log Analytics 代理的网络要求的 [网络要求](../agents/log-analytics-agent.md#network-requirements) 。
 - 依赖关系代理需要从虚拟机到地址169.254.169.254 的连接。 这是 Azure 元数据服务终结点。 确保防火墙设置允许连接到此终结点。
 
 
 ## <a name="management-packs"></a>管理包
-为用于 VM 的 Azure Monitor 配置 Log Analytics 工作区时，会将两个管理包转发到连接到该工作区的所有 Windows 计算机。 管理包名为 *microsoft.intelligencepacks.updateassessment. microsoft.intelligencepacks.applicationdependencymonitor* 和 *microsoft.intelligencepacks.updateassessment VMInsights* 并写入 *%Programfiles%\Microsoft Monitoring Agent\Agent\Health Service state\management packs pack*。 
+为 VM insights 配置 Log Analytics 工作区时，会将两个管理包转发到连接到该工作区的所有 Windows 计算机。 管理包名为 *microsoft.intelligencepacks.updateassessment. microsoft.intelligencepacks.applicationdependencymonitor* 和 *microsoft.intelligencepacks.updateassessment VMInsights* 并写入 *%Programfiles%\Microsoft Monitoring Agent\Agent\Health Service state\management packs pack*。 
 
 *Microsoft.intelligencepacks.applicationdependencymonitor* 管理包使用的数据源是 **% Program Files%\Microsoft Monitoring Agent\Agent\Health Service State\Resources \<AutoGeneratedID>\Microsoft.EnterpriseManagement.Advisor.ApplicationDependencyMonitorDataSource.dll*。 *VMInsights* 管理包使用的数据源是 *% Program Files%\Microsoft Monitoring Agent\Agent\Health Service State\Resources \<AutoGeneratedID> \ Microsoft.VirtualMachineMonitoringModule.dll*。
 
@@ -107,4 +107,4 @@ Microsoft 使用 Azure Monitor 服务自动收集使用情况和性能数据。 
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解如何使用性能监视功能，请参阅 [查看用于 VM 的 Azure Monitor 性能](../vm/vminsights-performance.md)。 若要查看已发现的应用程序依赖项，请参阅[查看用于 VM 的 Azure Monitor 映射](../vm/vminsights-maps.md)。
+若要了解如何使用性能监视功能，请参阅 [查看 VM Insights 性能](../vm/vminsights-performance.md)。 若要查看已发现的应用程序依赖关系，请参阅 [查看 VM 见解 Map](../vm/vminsights-maps.md)。

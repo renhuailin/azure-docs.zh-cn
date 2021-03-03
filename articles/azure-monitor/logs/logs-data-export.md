@@ -7,12 +7,12 @@ ms.custom: references_regions, devx-track-azurecli
 author: bwren
 ms.author: bwren
 ms.date: 02/07/2021
-ms.openlocfilehash: 8de92e1f64389824e02882c02a860e9731a62b25
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: df165b83a6635fbcf72c94a4d16cbdf16c337636
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100608196"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713586"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Azure Monitor 中的 Log Analytics 工作区数据导出功能（预览版）
 使用 Azure Monitor 中的 Log Analytics 工作区数据导出功能，可以在收集 Log Analytics 工作区中所选表的数据时，将数据持续导出到 Azure 存储帐户或 Azure 事件中心。 本文提供了有关此功能的详细信息以及在工作区中配置数据导出的步骤。
@@ -40,9 +40,11 @@ Log Analytics 工作区数据导出会持续从 Log Analytics 工作区导出数
 - 如果数据导出规则包含不受支持的表，操作不会失败，但在表受到支持之前，不会导出该表的任何数据。 
 - 如果数据导出规则包含不存在的表，操作会失败并出现错误 ```Table <tableName> does not exist in the workspace```。
 - Log Analytics 工作区可以位于除以下区域外的任何区域：
-  - 瑞士北部
-  - 瑞士西部
   - Azure 政府区域
+  - 日本西部
+  - 巴西东南部
+  - 挪威东部
+  - 阿拉伯联合酋长国北部
 - 你可以在工作区中创建两个导出规则--在中，可以是一个到事件中心的规则，一个规则到存储帐户。
 - 目标存储帐户或事件中心必须与 Log Analytics 工作区位于同一区域。
 - 对于存储帐户，要导出的表的名称不能超过 60 个字符，而对于事件中心，不能超过 47 个字符。 名称较长的表将不会被导出。
@@ -51,7 +53,7 @@ Log Analytics 工作区数据导出会持续从 Log Analytics 工作区导出数
 ## <a name="data-completeness"></a>数据完整性
 如果目标不可用，数据导出会继续重新尝试发送数据，最多持续 30 分钟。 如果 30 分钟后仍不可用，数据将被放弃，直到目标变为可用。
 
-## <a name="cost"></a>Cost
+## <a name="cost"></a>成本
 数据导出功能当前不收取额外费用。 数据导出的定价将在以后公布，在开始计费之前将提供相关通知。 如果你选择在通知期后继续使用数据导出，则将按照适用的费率缴费。
 
 ## <a name="export-destinations"></a>导出目标
@@ -72,6 +74,9 @@ Log Analytics 工作区数据导出会持续从 Log Analytics 工作区导出数
 
 ### <a name="event-hub"></a>事件中心
 数据到达 Azure Monitor 时，将准实时地发送到事件中心。 将为导出的每个数据类型创建一个事件中心，其名称为 am- 后跟表的名称。 例如，表 SecurityEvent 将发送到名为 am-SecurityEvent 的事件中心中 。 如果要将导出的数据传递到特定事件中心，或者有一个表的名称超过了 47 个字符的限制，则可提供自己的事件中心名称并将定义的表的所有数据导出到该事件中心。
+
+> [!IMPORTANT]
+> [每个命名空间支持的事件中心数为 10](../../event-hubs/event-hubs-quotas#common-limits-for-all-tiers)。 如果导出10个以上的表，请提供自己的事件中心名称，将所有表导出到该事件中心。 
 
 注意事项：
 1. “基本”事件中心 SKU 支持的事件大小[限制](../../event-hubs/event-hubs-quotas.md#basic-vs-standard-tiers)更低，工作区中的某些日志可能会超过该限制而被删除。 建议使用“标准”或“专用”事件中心作为导出目标。

@@ -4,12 +4,12 @@ description: 使用 Azure 门户、Azure 资源管理器模板和 Azure PowerShe
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 06/25/2019
-ms.openlocfilehash: 83023cca6b034ee0e9acddfa081f09eb47b9fb1e
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: bb4c1410d046389ae9e82986c6b0ed3d133fcf2a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100608914"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704457"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-by-using-azure-monitor"></a>使用 Azure Monitor 创建、查看和管理活动日志警报  
 
@@ -26,7 +26,9 @@ ms.locfileid: "100608914"
 
 - 范围中的订阅并未不同于创建警报的订阅。
 - 条件必须是配置警报时所依据的级别、状态、调用方、资源组、资源 ID 或资源类型事件类别。
-- 警报配置 JSON 中没有“anyOf”条件或嵌套的条件。 简单而言，只允许一个“allOf”条件，而不允许更多的“allOf”或“anyOf”条件。
+- 只允许一个 "allOf" 条件。
+- "AnyOf" 可用于允许多个 (字段的多个条件，例如，如果 "状态" 或 "子状态" 字段等于某个值) ，则为。 请注意，"AnyOf" 的使用目前限制为使用 ARM 模板部署创建警报规则。
+- 如果 "操作" 等于 "delete" 或 "modify" ) ，则可使用 "ContainsAny" 来允许 (相同字段的多个值。 请注意，"ContainsAny" 的使用目前限制为使用 ARM 模板部署创建警报规则。
 - 当类别是“管理”时，必须在警报中至少指定上述条件之一。 不能创建每次在活动日志中创建事件时激活的警报。
 - 无法为活动日志的“警报”类别中的事件创建警报。
 
@@ -92,7 +94,7 @@ ms.locfileid: "100608914"
     - **说明**：新警报规则的说明。
     - **将警报保存到资源组**：选择要在其中保存此新规则的资源组。
 
-5. 在“操作组”下，从下拉菜单中指定要分配到此新警报规则的操作组。 或者，[创建新的操作组](../platform/action-groups.md)并将其分配到新规则。 若要创建新组，请选择“+ 新建组”。
+5. 在“操作组”下，从下拉菜单中指定要分配到此新警报规则的操作组。 或者，[创建新的操作组](./action-groups.md)并将其分配到新规则。 若要创建新组，请选择“+ 新建组”。
 
 6. 若要在创建规则后启用规则，请选择“创建后启用规则”选项对应的“是”。 
 7. 选择“创建警报规则”。
@@ -287,6 +289,5 @@ set [az monitor activity-log alert](/cli/azure/monitor/activity-log/alert) 下�
 
 - 了解[活动日志的 Webhook 架构](./activity-log-alerts-webhook.md)。
 - 阅读[活动日志概述](./activity-log-alerts.md)。
-- 详细了解[操作组](../platform/action-groups.md)。  
+- 详细了解[操作组](./action-groups.md)。  
 - 了解[服务运行状况通知](../../service-health/service-notifications.md)。
-

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: d029f033a3c452587dbeeadf69c46cc99f604031
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 58cd69ebe97d9d0965d7e648b0ded012ac71cd0d
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99053803"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101646110"
 ---
 # <a name="tutorial-configure-bluejeans-for-automatic-user-provisioning"></a>教程：为 BlueJeans 配置自动用户预配
 
@@ -27,7 +27,7 @@ ms.locfileid: "99053803"
 > * 在 BlueJeans 中创建用户
 > * 在用户不再有访问需求的情况下，在 BlueJeans 中删除用户
 > * 使用户属性在 Azure AD 和 BlueJeans 之间保持同步
-> * [单一登录](https://docs.microsoft.com/azure/active-directory/saas-apps/bluejeans-tutorial)到 BlueJeans（推荐）
+> * [单一登录](./bluejeans-tutorial.md)到 BlueJeans（推荐）
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -69,7 +69,7 @@ ms.locfileid: "99053803"
 
 使用 Azure AD 预配服务，可以根据对应用程序的分配和/或用户的属性来限定谁在预配范围内。 如果选择根据分配来限定要将谁预配到应用，可以使用以下[步骤](../manage-apps/assign-user-or-group-access-portal.md)将用户分配到应用程序。 如果选择仅根据用户的属性来限定要对谁进行预配，可以使用[此处](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)所述的范围筛选器。 
 
-* 将用户分配到 BlueJeans 时，必须选择“默认访问”以外的角色。 具有“默认访问”角色的用户被排除在预配范围之外，并在预配日志中被标记为无有效资格。 如果应用上唯一可用的角色是“默认访问”角色，可以[更新应用清单](../develop/howto-add-app-roles-in-azure-ad-apps.md)来添加其他角色。 
+* 将用户分配到 BlueJeans 时，必须选择“默认访问”以外的角色。 具有“默认访问”角色的用户被排除在预配范围之外，并在预配日志中被标记为无有效资格。 如果应用程序上唯一可用的角色是默认访问角色，则可以[更新应用程序清单](../develop/howto-add-app-roles-in-azure-ad-apps.md)以添加其他角色。 
 
 * 先小部分测试。 在向所有用户推出之前，请先在少量用户中进行测试。 如果预配范围设置为分配的用户，则可以先尝试将一两个用户分配到应用。 当预配范围设置为所有用户时，可以指定[基于属性的范围筛选器](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)。 
 
@@ -79,7 +79,7 @@ ms.locfileid: "99053803"
 
 ### <a name="to-configure-automatic-user-provisioning-for-bluejeans-in-azure-ad"></a>若要在 Azure AD 中为 BlueJeans 配置自动用户预配，请执行以下操作：
 
-1. 登录 [Azure 门户](https://portal.azure.com)。 依次选择“企业应用”和“所有应用”。
+1. 登录 [Azure 门户](https://portal.azure.com)。 依次选择“企业应用程序”、“所有应用程序” 。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
@@ -141,7 +141,7 @@ ms.locfileid: "99053803"
 配置预配后，请使用以下资源来监视部署：
 
 1. 通过[预配日志](../reports-monitoring/concept-provisioning-logs.md)来确定哪些用户已预配成功或失败
-2. 检查[进度栏](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user)来查看预配周期的状态以及完成进度
+2. 检查[进度栏](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)来查看预配周期的状态以及完成进度
 3. 如果怀疑预配配置处于非正常状态，则应用程序将进入隔离状态。 可在[此处](../app-provisioning/application-provisioning-quarantine-status.md)了解有关隔离状态的详细信息。  
 
 ## <a name="connector-limitations"></a>连接器限制

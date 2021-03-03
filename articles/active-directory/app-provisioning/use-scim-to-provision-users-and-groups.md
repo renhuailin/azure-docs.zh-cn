@@ -12,12 +12,12 @@ ms.date: 02/01/2021
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 35efcd4059ab654178fb87c133a6f64721caf7d2
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: 1445e7959906966c58730521123ae03590bef1b3
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99989057"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101652090"
 ---
 # <a name="tutorial-develop-and-plan-provisioning-for-a-scim-endpoint"></a>Tutorial:开发 SCIM 终结点并计划其预配
 
@@ -882,7 +882,7 @@ SCIM 服务必须具有 HTTP 地址和服务器身份验证证书，其中的根
 
 使用提供的 [postman 测试](https://github.com/AzureAD/SCIMReferenceCode/wiki/Test-Your-SCIM-Endpoint)以及使用 localhost 执行本地调试也需要持有者令牌。 该示例代码使用 ASP.NET Core 环境在开发阶段更改身份验证选项并启用自签名令牌。
 
-有关 ASP.NET Core 中多个环境的详细信息，请参阅[在 ASP.NET Core 中使用多个环境](https://docs.microsoft.com/aspnet/core/fundamentals/environments)。
+有关 ASP.NET Core 中多个环境的详细信息，请参阅[在 ASP.NET Core 中使用多个环境](/aspnet/core/fundamentals/environments)。
 
 以下代码强制使用通过自定义密钥签名的持有者令牌来验证对任何服务终结点的请求：
 

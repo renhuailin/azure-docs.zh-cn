@@ -7,12 +7,12 @@ manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 08/22/2019
-ms.openlocfilehash: 77464ccfb5b80c84f091d8e6bc491908baed6486
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 1fc21b6338accef8e22b2e41ad2017d24ab8bd38
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954997"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710458"
 ---
 # <a name="cognitive-services-and-machine-learning"></a>认知服务和机器学习
 
@@ -97,7 +97,7 @@ ms.locfileid: "98954997"
 |[人脸](./Face/Overview.md)|x|x||
 |[表单识别器](./form-recognizer/overview.md)||x||
 |[沉浸式阅读器](./immersive-reader/overview.md)|x|||
-|[墨迹识别器](./Ink-recognizer/overview.md)|x|x||
+|[墨迹识别器](/previous-versions/azure/cognitive-services/Ink-Recognizer/overview)|x|x||
 |[语言理解 (LUIS)](./LUIS/what-is-luis.md)||x||
 |[个性化体验创建服务](./personalizer/what-is-personalizer.md)|x*|x*|x|
 |[QnA Maker](./QnAMaker/Overview/overview.md)||x||
@@ -127,7 +127,7 @@ ms.locfileid: "98954997"
 
 |认知服务|模型信息|
 |--|--|
-|[自定义视觉](./custom-vision-service/overview.md)|适用于 Android 的 Tensorflow[导出](./Custom-Vision-Service/export-model-python.md)，CoreML for IOS11，ONNX FOR Windows ML|
+|[自定义视觉](./custom-vision-service/overview.md)|适用于 Android 的 Tensorflow[导出](./custom-vision-service/export-model-python.md)，CoreML for IOS11，ONNX FOR Windows ML|
 
 ## <a name="learn-more"></a>了解详细信息
 

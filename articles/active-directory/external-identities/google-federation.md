@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9e7ec5569dd0de3b0535c3b0e3b3304848a5207
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 5a397c17821d16594ccfb48175a8a141cb9f390b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101653307"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687815"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>将 Google 添加为 B2B 来宾用户的标识提供者
 
@@ -46,13 +46,7 @@ ms.locfileid: "101653307"
 
 ## <a name="sign-in-endpoints"></a>登录终结点
 
-Google guest 用户现在可以使用 [公共终结点](redemption-experience.md#redemption-and-sign-in-through-a-common-endpoint) 登录到你的多租户或 Microsoft 第一方应用 (换言之，这是一个不包含租户上下文) 的常规应用 URL。 下面是常见终结点的示例：
-
-- `https://teams.microsoft.com`
-- `https://myapps.microsoft.com`
-- `https://portal.azure.com`
-
-在登录过程中，来宾用户选择 "登录" **选项**，然后选择 " **登录到组织**"。 然后，用户键入组织的名称并继续使用其 Google 凭据进行登录。
+Google guest 用户现在可以使用 [公共终结点](redemption-experience.md#redemption-and-sign-in-through-a-common-endpoint) 登录到你的多租户或 Microsoft 第一方应用 (换言之，这是一个不包含租户上下文) 的常规应用 URL。 在登录过程中，来宾用户选择 "登录" **选项**，然后选择 " **登录到组织**"。 然后，用户键入组织的名称并继续使用其 Google 凭据进行登录。
 
 Google guest 用户还可以使用包含租户信息的应用程序终结点，例如：
 

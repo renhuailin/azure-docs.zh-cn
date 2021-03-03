@@ -6,12 +6,12 @@ manager: nitinme
 ms.author: lajanuar
 author: laujan
 ms.date: 02/11/2021
-ms.openlocfilehash: 1425be4fc4e462185f9fee573dc87b04a68bfea4
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 104329928c507c288537704fbbef4e35b65cb445
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100650739"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101739430"
 ---
 # <a name="create-sas-tokens-for-document-translation"></a>创建用于文档翻译的 SAS 令牌
 
@@ -21,8 +21,8 @@ ms.locfileid: "100650739"
 
 ### <a name="prerequisites"></a>先决条件
 
-* 你需要在 Windows、macOS 或 Linux 开发环境中安装 [**Azure 存储资源管理器**](/azure/vs-azure-tools-storage-manage-with-storage-explorer) 应用。 Azure 存储资源管理器是一种免费工具，可让你轻松管理 Azure 云存储资源。
-* 安装 Azure 存储资源管理器应用后， [将其连接到用于文档转换的存储帐户](/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows#connect-to-a-storage-account-or-service) 。
+* 你需要在 Windows、macOS 或 Linux 开发环境中安装 [**Azure 存储资源管理器**](../../../vs-azure-tools-storage-manage-with-storage-explorer.md) 应用。 Azure 存储资源管理器是一种免费工具，可让你轻松管理 Azure 云存储资源。
+* 安装 Azure 存储资源管理器应用后， [将其连接到用于文档转换的存储帐户](../../../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows#connect-to-a-storage-account-or-service) 。
 
 ### <a name="create-your-tokens"></a>创建令牌
 
@@ -65,7 +65,7 @@ ms.locfileid: "100650739"
 ## <a name="create-sas-tokens-for-blobs-in-the-azure-portal"></a>为 Azure 门户中的 blob 创建 SAS 令牌
 
 > [!NOTE]
-> 当前不支持在 Azure 门户中直接为容器创建 SAS 令牌。 但是，可以使用 [**Azure 存储资源管理器**](#create-sas-tokens-with-azure-storage-explorer) 创建 SAS 令牌，也可以 [通过编程方式](/azure/storage/blobs/sas-service-create)完成任务。
+> 当前不支持在 Azure 门户中直接为容器创建 SAS 令牌。 但是，可以使用 [**Azure 存储资源管理器**](#create-sas-tokens-with-azure-storage-explorer) 创建 SAS 令牌，也可以 [通过编程方式](../../../storage/blobs/sas-service-create.md)完成任务。
 
 <!-- markdownlint-disable MD024 -->
 ### <a name="prerequisites"></a>先决条件
@@ -104,7 +104,7 @@ ms.locfileid: "100650739"
 
 ## <a name="learn-more"></a>了解详细信息
 
-* [以编程方式为 blob 或容器创建 SAS 令牌](/azure/storage/blobs/sas-service-create)
+* [以编程方式为 blob 或容器创建 SAS 令牌](../../../storage/blobs/sas-service-create.md)
 * [目录、容器或 blob 的权限](/rest/api/storageservices/create-service-sas#permissions-for-a-directory-container-or-blob)
 
 ## <a name="next-steps"></a>后续步骤

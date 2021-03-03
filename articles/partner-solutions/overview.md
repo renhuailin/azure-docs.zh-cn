@@ -4,14 +4,14 @@ description: 了解 Azure 合作伙伴提供的解决方案。
 author: tfitzmac
 ms.topic: conceptual
 ms.service: partner-services
-ms.date: 01/19/2021
+ms.date: 02/12/2021
 ms.author: tomfitz
-ms.openlocfilehash: 6779596efdebf8220af99f4e86c1fe6cc0ec90d6
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: cab246cf19e8a2e3f9e7b08019cd836e3d085266
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98598781"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101736043"
 ---
 # <a name="extend-azure-with-solutions-from-partners"></a>利用合作伙伴提供的解决方案扩展 Azure
 
@@ -21,4 +21,5 @@ ms.locfileid: "98598781"
 
 | 合作伙伴解决方案 | 说明 |
 | :--- | :--- |
-| [Confluent 云的 Apache Kafka](./apache-kafka-confluent-cloud/overview.md) | 由 Apache Kafka 提供支持的完全托管的事件流平台 |
+| [Apache Kafka for Confluent Cloud](./apache-kafka-confluent-cloud/overview.md) | 由 Apache Kafka 提供支持的完全托管的事件流平台 |
+| [Datadog](./datadog/overview.md) | 在一个位置监视服务器、云、指标和应用。 |

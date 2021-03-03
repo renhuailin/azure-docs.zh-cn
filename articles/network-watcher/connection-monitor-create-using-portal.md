@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/23/2020
 ms.author: vinigam
-ms.openlocfilehash: 61cb37e727808566db1bc9b1161960926e03cb91
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: edf671c8005fa67f6161f383c503ca278dba3105
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100570890"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702158"
 ---
 # <a name="create-a-monitor-in-connection-monitor-by-using-the-azure-portal"></a>使用 Azure 门户在连接监视器中创建监视器
 
@@ -121,7 +121,7 @@ ms.locfileid: "100570890"
 
    * 若要选择本地代理，请选择 " **非 Azure 终结点** " 选项卡。默认情况下，代理按区域分组到工作区中。 所有这些工作区都配置了网络性能监视器。 
    
-       如果需要将网络性能监视器添加到工作区，请通过 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.NetworkMonitoringOMS?tab=Overview)获取。 有关如何添加网络性能监视器的信息，请参阅 [Azure Monitor 中的监视解决方案](../azure-monitor/insights/solutions.md)。 
+       如果需要将网络性能监视器添加到工作区，请通过 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/solarwinds.solarwinds-orion-network-performance-monitor?tab=Overview)获取。 有关如何添加网络性能监视器的信息，请参阅 [Azure Monitor 中的监视解决方案](../azure-monitor/insights/solutions.md)。 
    
        在“创建连接监视器”下的“基本信息”选项卡上，已选择默认区域。  如果更改了区域，则可以在新区域的工作区中选择代理。 可选择一个或多个代理或子网。 在“子网”视图中，可以选择要监视的特定 IP。 如果你添加多个子网，则会创建一个自定义的本地网络“OnPremises_Network_1”。 还可以通过更改“分组依据”选择器来按代理分组。
 

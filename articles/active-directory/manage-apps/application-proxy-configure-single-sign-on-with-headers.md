@@ -11,14 +11,14 @@ ms.topic: conceptual
 ms.date: 10/05/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: d4cd69a90c4af2f996bd965ffaa145dce761018f
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 512316b78a0d6422daf5e268ef30db72ccbcfaeb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99259530"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101688308"
 ---
-# <a name="header-based-single-sign-on-for-on-premises-apps-with-azure-ad-app-proxy-preview"></a>基于标头的单一登录，适用于具有 Azure AD 应用 Proxy (预览版的本地应用) 
+# <a name="header-based-single-sign-on-for-on-premises-apps-with-azure-ad-app-proxy"></a>具有 Azure AD 应用 Proxy 的本地应用的基于标头的单一登录
 
 Azure Active Directory (Azure AD) 应用程序代理在本地支持对使用标头进行身份验证的应用程序进行单一登录访问。 你可以在 Azure AD 中配置应用程序所需的标头值。 标头值将通过应用程序代理发送到应用程序。 对应用程序代理使用基于标头的身份验证的本机支持的一些优点包括：  
 
@@ -82,7 +82,7 @@ Azure Active Directory (Azure AD) 应用程序代理在本地支持对使用标�
     - 你还可以添加 **组标头**、将用户所属的所有组或作为标头分配给应用程序的组。 若要了解有关将组配置为值的详细信息，请参阅： [为应用程序配置组声明](../hybrid/how-to-connect-fed-group-claims.md#add-group-claims-to-tokens-for-saml-applications-using-sso-configuration)。 
 6. 选择“保存”。 
 
-## <a name="test-your-app"></a>测试应用 
+## <a name="test-your-app"></a>测试应用程序 
 
 完成所有这些步骤后，应用程序应运行并且可用。 测试应用： 
 1. 打开新的浏览器或专用浏览器窗口，确保清除以前缓存的标头。 然后导航到 ****   应用程序代理设置中的外部 URL。

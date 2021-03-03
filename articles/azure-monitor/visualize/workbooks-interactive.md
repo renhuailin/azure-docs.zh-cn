@@ -7,12 +7,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/20/2020
-ms.openlocfilehash: a70f2cff1df5d0f5d1d4a36bbc2a440518ce5ed4
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 2cb284e1978ad6c890835318c51c6095891397cd
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100607677"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723004"
 ---
 # <a name="interactive-workbooks"></a>交互式工作簿
 
@@ -188,5 +188,5 @@ ms.locfileid: "100607677"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [开始](../platform/workbooks-overview.md#visualizations)详细了解工作簿丰富的可视化效果选项。
-* [控制](../platform/workbooks-access-control.md)并共享对工作簿资源的访问权限。
+* [开始](./workbooks-overview.md#visualizations)详细了解工作簿丰富的可视化效果选项。
+* [控制](./workbooks-access-control.md)并共享对工作簿资源的访问权限。

@@ -2,13 +2,13 @@
 title: 通过多步骤 Web 测试进行监视 - Azure Application Insights
 description: 使用 Azure Application Insights 设置多步骤 Web 测试，以便监视 Web 应用程序
 ms.topic: conceptual
-ms.date: 05/26/2020
-ms.openlocfilehash: 0031971dc2ccd2a9e681220dd835f46d33e36dbb
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.date: 02/14/2021
+ms.openlocfilehash: 1d3597eaf54c40fb1f986d822af0dd6b8c8a7b2e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98934857"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719842"
 ---
 # <a name="multi-step-web-tests"></a>多步骤 Web 测试
 
@@ -65,7 +65,6 @@ ms.locfileid: "98934857"
 |设置| 说明
 |----|----|----|
 |**近实时（预览）** | 我们建议使用近实时警报。 在创建可用性测试后会配置此类警报。  |
-|**经典** | 我们不再建议对新的可用性测试使用经典警报。|
 |**警报位置阈值**|建议最少 3/5 个位置。 警报位置阈值和测试位置数目之间的最佳关系是，警报位置阈值  =  测试位置数 - 2，至少有 5 个测试位置 。|
 
 ## <a name="configuration"></a>配置

@@ -7,12 +7,12 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 09/11/2020
-ms.openlocfilehash: a95cacafc5b1d00b1e4d04fd84cdda2de72b6a59
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 4545c3529baf92e2f90d9289ec6828ad9a720e3a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100522999"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737998"
 ---
 # <a name="troubleshoot-mapping-data-flows-in-azure-data-factory"></a>排查 Azure 数据工厂中的映射数据流问题
 
@@ -132,7 +132,7 @@ ms.locfileid: "100522999"
  
 - **消息**：群集在执行期间遇到内存不足问题，请使用具有更大核心数和/或内存优化计算类型的集成运行时重试
 - **原因**：群集耗尽了内存。
-- **建议**：调试群集仅用于开发目的。 利用数据采样适当的计算类型和大小来运行有效负载。 若要获得最佳性能，请参阅 [数据流性能指南](https://docs.microsoft.com/azure/data-factory/concepts-data-flow-performance) 。
+- **建议**：调试群集仅用于开发目的。 利用数据采样适当的计算类型和大小来运行有效负载。 若要获得最佳性能，请参阅 [数据流性能指南](./concepts-data-flow-performance.md) 。
 
 ### <a name="error-code-df-executor-illegalargument"></a>错误代码：DF-Executor-illegalArgument
 - **消息**：请确保链接的服务中的访问密钥是正确的。
@@ -182,7 +182,7 @@ ms.locfileid: "100522999"
 
 - **消息**：提供的范围无效。
 - **原因**：未确定
-- **建议**：请检查参数值并按引用指定有效范围： [Excel properties](https://docs.microsoft.com/azure/data-factory/format-excel#dataset-properties)。
+- **建议**：请检查参数值并按引用指定有效范围： [Excel properties](./format-excel.md#dataset-properties)。
 
 - **消息**：仅支持 .xlsx 和 .xls 时提供无效 excel 文件
 - **原因**：未确定
@@ -204,7 +204,7 @@ ms.locfileid: "100522999"
 
 ### <a name="error-code-4502"></a>错误代码：4502
 - **消息**：存在大量的并发 MappingDataflow 执行，导致由于 Integration Runtime 下的限制而导致的失败。
-- **原因**：大量数据流活动运行正在 Integration Runtime。 请详细了解 [Azure 数据工厂限制](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#data-factory-limits)。
+- **原因**：大量数据流活动运行正在 Integration Runtime。 请详细了解 [Azure 数据工厂限制](../azure-resource-manager/management/azure-subscription-service-limits.md#data-factory-limits)。
 - **建议**：如果想要并行运行多个数据流活动，请在多个集成运行时中分发这些活动。
 
 

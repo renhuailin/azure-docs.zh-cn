@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 01/23/2020
 ms.topic: quickstart
-ms.openlocfilehash: 525872ca3ad2558c327b7b856254319d3db2dc7f
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: 5b3e9c944aece3b3e22ee7a5a6144751725ddf67
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99593987"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101729957"
 ---
 # <a name="quickstart-render-a-model-with-unity"></a>快速入门：使用 Unity 渲染模型
 
@@ -52,6 +52,7 @@ ms.locfileid: "99593987"
 mkdir ARR
 cd ARR
 git clone https://github.com/Azure/azure-remote-rendering
+powershell azure-remote-rendering\Scripts\DownloadUnityPackages.ps1
 ```
 
 最后一个命令会在 ARR 目录中创建一个子目录，其中包含 Azure 远程渲染的各个示例项目。

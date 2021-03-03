@@ -9,12 +9,12 @@ ms.custom:
 - seo-lt-2019
 - references_regions
 ms.date: 12/3/2020
-ms.openlocfilehash: c42eb8cac283ce096c42c9e5d4b7eac9a3e12625
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 44f093f96d0f4653a6fcca94aaa97264c93e3c7d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100364369"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101727934"
 ---
 # <a name="connect-data-factory-to-azure-purview-preview"></a>将数据工厂连接到 Azure 监控范围 (预览) 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
@@ -40,10 +40,10 @@ Azure 监控范围是一项新的云服务，可供数据用户集中管理跨�
 
 :::image type="content" source="./media/data-factory-purview/register-purview-account-tag.png" alt-text="注册监控范围帐户的标记的屏幕截图。":::
 
-2. 检查是否授予了将 Azure 监控范围帐户注册到数据工厂的权限。 请参阅 [如何连接 Azure 数据工厂和 Azure 监控范围](https://docs.microsoft.com/azure/purview/how-to-link-azure-data-factory#create-new-data-factory-connection)
+2. 检查是否授予了将 Azure 监控范围帐户注册到数据工厂的权限。 请参阅 [如何连接 Azure 数据工厂和 Azure 监控范围](../purview/how-to-link-azure-data-factory.md#create-new-data-factory-connection)
 
 ### <a name="register-data-factory-in-azure-purview"></a>在 Azure 监控范围中注册数据工厂
-有关如何在 Azure 监控范围中注册数据工厂的详细说明，请参阅 [如何连接 Azure 数据工厂和 Azure 监控范围](https://docs.microsoft.com/azure/purview/how-to-link-azure-data-factory)。 
+有关如何在 Azure 监控范围中注册数据工厂的详细说明，请参阅 [如何连接 Azure 数据工厂和 Azure 监控范围](../purview/how-to-link-azure-data-factory.md)。 
 
 ## <a name="report-lineage-data-to-azure-purview"></a>将沿袭数据报告给 Azure 监控范围
 当客户在 Azure 数据工厂中运行 "复制"、"数据流" 或 "执行 SSIS 包" 活动时，客户可以获取依赖关系，并大致概述数据源和目标之间的整个工作流过程。

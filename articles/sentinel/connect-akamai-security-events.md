@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/03/2021
 ms.author: yelevin
-ms.openlocfilehash: c833d87b8d85c75c4f050f0130ddfd74342f4c52
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 8aa5a52a06713b4f00b43205a57148049a8ef8da
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99566716"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711954"
 ---
 # <a name="connect-your-akamai-security-events-collector-to-azure-sentinel"></a>将 Akamai 安全事件收集器连接到 Azure Sentinel
 
@@ -35,7 +35,7 @@ ms.locfileid: "99566716"
 
 - 您必须对 Azure Sentinel 工作区具有读取和写入权限。
 
-- 您必须对工作区的共享密钥具有读取权限。 [了解有关工作区密钥的详细信息](../azure-monitor/platform/log-analytics-agent.md#workspace-id-and-key)。
+- 您必须对工作区的共享密钥具有读取权限。 [了解有关工作区密钥的详细信息](../azure-monitor/agents/log-analytics-agent.md#workspace-id-and-key)。
 
 ## <a name="send-akamai-security-events-logs-to-azure-sentinel"></a>将 Akamai 安全事件日志发送到 Azure Sentinel
 
@@ -168,7 +168,7 @@ ms.locfileid: "99566716"
 
     1. 在 " **类别**" 下输入 **函数**。
 
-    1. 单击“保存”。
+    1. 单击“ **保存**”。
 
     函数应用通常需要10到15分钟的时间才能激活。
 

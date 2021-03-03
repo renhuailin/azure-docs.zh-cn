@@ -6,12 +6,12 @@ manager: nitinme
 ms.author: lajanuar
 author: laujan
 ms.date: 02/11/2021
-ms.openlocfilehash: 5508ffc758b08642b05b1f77b66c9f29be1c85a2
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 886889ef9a42e358fca22a9d86955a23c5419dfa
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100650773"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738151"
 ---
 # <a name="get-started-with-document-translation-preview"></a>文档翻译 (预览入门) 
 
@@ -26,6 +26,8 @@ ms.locfileid: "100650773"
 * [**转换器**](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation)服务资源 (**不** 是认知服务资源) 。 
 
 * 一个 [**Azure blob 存储帐户**](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM)。 对 Azure 存储进行的所有访问都要通过存储帐户完成。
+
+* 已完成 [**文档翻译 (预览) 窗体**](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR-riVR3Xj0tOnIRdZOALbM9UOEE4UVdFQVBRQVBWWDBRQUM3WjYxUEpUTC4u) ，以使你的 Azure 订阅能够使用新的文档转换功能。
 
 > [!NOTE]
 > 目前仅支持 (单服务) 资源的翻译人员支持文档翻译， **而不** 支持认知服务 (多服务) 资源。
@@ -64,7 +66,7 @@ https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/batc
 
 ## <a name="create-your-azure-blob-storage-containers"></a>创建 Azure blob 存储容器
 
-需要为源、目标和可选的术语表文件在 [**Azure blob 存储帐户**](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM)中 [**创建容器**](/azure/storage/blobs/storage-quickstart-blobs-portal#create-a-container)。
+需要为源、目标和可选的术语表文件在 [**Azure blob 存储帐户**](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM)中 [**创建容器**](../../../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)。
 
 * **源容器**。 在此容器中，你可以将文件上传 (所需的) 。
 * **目标容器**。 在此容器中，你的已翻译文件将存储 (所需) 。  
@@ -201,26 +203,7 @@ gradle run
 >[!NOTE]
 > 如果目标中已存在具有相同名称的文件，则将覆盖该文件。
 
-### <a name="post-a-translation-request"></a>发布翻译请求
-
-> [!IMPORTANT]
->
-> * 对于下面的代码示例，可能需要根据操作更新以下字段：
-
->> [!div class="checklist"]
->>
->> * `endpoint`
->> * `subscriptionKey`
->> * `sourceURL`
->> * `targetURL`
->> * `glossaryURL`
->> * `id`  (作业 ID) 
->>
-> * 您可以 `id`  在 "POST 方法的响应标头 URL" 值中找到该作业 `Operation-Location`  。 该 URL 的最后一个参数是操作的作业 **`id`** 。  
-> * 你还可以使用获取作业请求来检索 `id`  文档转换操作的作业。
-> * 对于下面的示例，你将在指示的位置对密钥和终结点进行硬编码;请记住，在完成操作后从代码中删除该密钥，不要公开发布。  
->
-> 有关安全存储和访问凭据的方式，请参阅 [Azure 认知服务安全性](/azure/cognitive-services/cognitive-services-security?tabs=command-line%2Ccsharp) 。
+## <a name="post-a-translation-request"></a>发布翻译请求
 
 <!-- markdownlint-disable MD024 -->
 ### <a name="post-request-body-without-optional-glossaryurl"></a>不带可选 glossaryURL 的 POST 请求正文
@@ -286,7 +269,26 @@ gradle run
 }
 ```
 
-## <a name="_post-document-translation_-request-code-samples"></a>_发布文档翻译_ 请求代码示例
+> [!IMPORTANT]
+>
+> 对于下面的代码示例，可能需要根据操作更新以下字段：
+>>>
+>> * `endpoint`
+>> * `subscriptionKey`
+>> * `sourceURL`
+>> * `targetURL`
+>> * `glossaryURL`
+>> * `id`  (作业 ID) 
+>>
+> 查找值的位置 `id` ：
+> * 您可以 `id`  在 "POST 方法的响应标头 URL" 值中找到该作业 `Operation-Location`  。 该 URL 的最后一个参数是操作的作业 **`id`** 。  
+> * 你还可以使用获取作业请求来检索 `id`  文档转换操作的作业。
+>
+> 对于下面的代码示例，你将在指示的位置对密钥和终结点进行硬编码;请记住，在完成操作后从代码中删除该密钥，不要公开发布。  
+>
+> 有关安全存储和访问凭据的方式，请参阅 [Azure 认知服务安全性](/azure/cognitive-services/cognitive-services-security?tabs=command-line%2Ccsharp) 。
+
+## <a name="_post-document-translation_-request"></a>_发布文档翻译_ 请求
 
 向翻译服务提交批处理文档翻译请求。
 
@@ -519,7 +521,7 @@ if err != nil {
 
 ---
 
-## <a name="_get-file-formats_-code-samples"></a>_获取文件格式_ 代码示例
+## <a name="_get-file-formats_"></a>_获取文件格式_ 
 
 检索受支持的文件格式的列表。 如果成功，则此方法将返回一个 `200 OK` 响应代码。
 
@@ -696,7 +698,7 @@ func main() {
 
 ---
 
-## <a name="_get-job-status_-code-samples"></a>_获取作业状态_ 代码示例
+## <a name="_get-job-status_"></a>_获取作业状态_ 
 
 获取单个作业的当前状态以及文档翻译请求中所有作业的摘要。 如果成功，则此方法将返回一个 `200 OK` 响应代码。
 <!-- markdownlint-disable MD024 -->
@@ -875,7 +877,7 @@ func main() {
 
 ---
 
-## <a name="_get-document-status_-code-samples"></a>_获取文档状态_ 代码示例
+## <a name="_get-document-status_"></a>_获取文档状态_
 
 ### <a name="brief-overview"></a>简要概述
 
@@ -1055,7 +1057,7 @@ func main() {
 
 ---
 
-## <a name="_delete-job_-code-samples"></a>_删除作业_ 代码示例
+## <a name="_delete-job_"></a>_删除作业_ 
 
 ### <a name="brief-overview"></a>简要概述
 
@@ -1239,7 +1241,7 @@ func main() {
 
 下表列出了发送到文档转换的数据的限制。
 
-|Attribute | 限制|
+|属性 | 限制|
 |---|---|
 |文档大小| ≤ 40 MB |
 |文件总数。|≤1000 |
@@ -1254,7 +1256,7 @@ func main() {
 
 * [Translator v3 API 参考](../reference/v3-0-reference.md)
 * [语言支持](../language-support.md)
-* [AZURE API 管理中的订阅](/azure/api-management/api-management-subscriptions)。
+* [AZURE API 管理中的订阅](../../../api-management/api-management-subscriptions.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

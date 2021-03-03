@@ -5,12 +5,12 @@ author: nicolela
 ms.topic: article
 ms.date: 02/04/2021
 ms.author: nicolela
-ms.openlocfilehash: 8d5356f7fd2661d9743d1058a147a0b20f62850e
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 530597a72b19afa1e80b5c7640b105d86479b1c1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100373702"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101740097"
 ---
 # <a name="set-up-a-lab-for-arcmaparcgis-desktop"></a>设置 ArcMap\ArcGIS Desktop 的实验室
 
@@ -24,7 +24,7 @@ ms.locfileid: "100373702"
 
 ### <a name="lab-account-settings"></a>实验室帐户设置
 
-启用实验室帐户设置，如下表所述。  有关如何启用 Azure Marketplace 映像的详细信息，请参阅 [指定可用于实验室创建者的 Azure marketplace 映像](https://docs.microsoft.com/azure/lab-services/specify-marketplace-images)。
+启用实验室帐户设置，如下表所述。  有关如何启用 Azure Marketplace 映像的详细信息，请参阅 [指定可用于实验室创建者的 Azure marketplace 映像](./specify-marketplace-images.md)。
 
 | 实验室帐户设置 | Instructions |
 | ------------------- | ------------ |
@@ -34,7 +34,7 @@ ms.locfileid: "100373702"
 
 ArcGIS 桌面产品/服务的一种许可类型是 [并发使用许可证](https://desktop.arcgis.com/en/license-manager/latest/license-manager-basics.htm)。  这要求你在许可证服务器上安装 ArcGIS 许可证管理器。  许可证管理器会跟踪可同时运行的软件副本数。  有关如何在服务器上设置许可证管理器的详细信息，请参阅 [许可证管理器指南](https://desktop.arcgis.com/en/license-manager/latest/welcome.htm)。
 
-许可证服务器通常位于本地网络中或托管在 Azure 虚拟网络中的 Azure 虚拟机上。  设置许可证服务器后，需要将虚拟网络与[实验室帐户](https://docs.microsoft.com/azure/lab-services/tutorial-setup-lab-account)[对等](https://docs.microsoft.com/azure/lab-services/how-to-connect-peer-virtual-network)。  你需要在创建实验室之前执行网络对等互连，以便实验室 Vm 可以访问许可证服务器，反之亦然。
+许可证服务器通常位于本地网络中或托管在 Azure 虚拟网络中的 Azure 虚拟机上。  设置许可证服务器后，需要将虚拟网络与[实验室帐户](./tutorial-setup-lab-account.md)[对等](./how-to-connect-peer-virtual-network.md)。  你需要在创建实验室之前执行网络对等互连，以便实验室 Vm 可以访问许可证服务器，反之亦然。
 
 有关详细信息，请参阅 [将许可证服务器设置为共享资源](how-to-create-a-lab-with-shared-resource.md)。
 
@@ -81,7 +81,7 @@ ArcGIS 桌面产品/服务的一种许可类型是 [并发使用许可证](https
 - 用户断开连接时关闭虚拟机
     - 用户断开连接后15分钟
 
-## <a name="cost"></a>Cost
+## <a name="cost"></a>成本
 
 我们来介绍此类的可能的成本估算。 此估计不包括运行许可证服务器的成本。 我们将使用一类25名学生。 计划的类时间有20小时。 此外，每个学生在计划的类时间之外为家庭作业或分配获取10小时配额。 选择的虚拟机大小为 " **中**"，即 "42 实验室单位"。
 

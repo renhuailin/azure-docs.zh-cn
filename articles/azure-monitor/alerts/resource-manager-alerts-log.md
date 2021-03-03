@@ -6,12 +6,12 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 09/22/2020
-ms.openlocfilehash: 64bdbf1005f0283438777b3bb2ba1d3312b6e140
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 8dac947aea95dc79118032eb0996b6ba14f16363
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100597101"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714098"
 ---
 # <a name="resource-manager-template-samples-for-log-alert-rules-in-azure-monitor"></a>用于 Azure Monitor 日志警报规则的资源管理器模板示例
 本文包含用于在 Azure Monitor 中创建和配置日志查询警报的 [Azure 资源管理器模板](../../azure-resource-manager/templates/template-syntax.md)示例。 每个示例都包含模板文件和参数文件，其中包含要提供给模板的示例值。
@@ -479,4 +479,4 @@ ms.locfileid: "100597101"
 ## <a name="next-steps"></a>后续步骤
 
 * [获取 Azure Monitor 的其他示例模板](../resource-manager-samples.md)。
-* [详细了解警报规则](../platform/alerts-overview.md)。
+* [详细了解警报规则](./alerts-overview.md)。

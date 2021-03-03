@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: pafarley
-ms.openlocfilehash: c7b6586f02d14d4e49ce9a5024b19ea15c8d2267
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: f194f0bc7ec8d0bf2265c0863f93bfd11337b5f4
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100364676"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703382"
 ---
 # <a name="whats-new-in-form-recognizer"></a>表单识别器的新增功能
 
@@ -91,7 +91,7 @@ GitHub 上提供了 **新的示例**。
 * **货币支持** -检测和提取全局货币符号。
 * **Azure Gov** 识别器现已在 azure Gov 中提供。
 * **增强的安全功能**： 
-   * **自带密钥** 格式的识别器会在保存到云时自动加密数据，以保护数据，并帮助你满足组织的安全性和符合性承诺。 默认情况下，订阅使用 Microsoft 托管的加密密钥。 你现在可以通过自己的加密密钥来管理你的订阅。 [客户托管的密钥（也称为自带密钥 (BYOK) ](./form-recognizer-encryption-of-data-at-rest.md)）提供了更大的灵活性来创建、轮换、禁用和撤消访问控制。 此外，你还可以审核用于保护数据的加密密钥。  
+   * **自带密钥** 格式的识别器会在保存到云时自动加密数据，以保护数据，并帮助你满足组织的安全性和符合性承诺。 默认情况下，订阅使用 Microsoft 托管的加密密钥。 你现在可以通过自己的加密密钥来管理你的订阅。 [客户托管的密钥（也称为自带密钥 (BYOK) ](./encrypt-data-at-rest.md)）提供了更大的灵活性来创建、轮换、禁用和撤消访问控制。 此外，你还可以审核用于保护数据的加密密钥。  
    * **专用终结点** –使你能够在虚拟网络 (VNet) [通过专用链接安全地访问数据。](../../private-link/private-link-overview.md)
 
 
@@ -123,7 +123,7 @@ GitHub 上提供了 **新的示例**。
 
 ### <a name="security-improvements"></a>安全性改进
 
-* Customer-Managed 密钥现在可用于 FormRecognizer。 有关详细信息，请参阅 [窗体识别器的静态数据加密](./form-recognizer-encryption-of-data-at-rest.md)。
+* Customer-Managed 密钥现在可用于 FormRecognizer。 有关详细信息，请参阅 [窗体识别器的静态数据加密](./encrypt-data-at-rest.md)。
 * 使用托管标识通过 Azure Active Directory 访问 Azure 资源。 有关详细信息，请参阅 [授予对托管标识的访问权限](../authentication.md#authorize-access-to-managed-identities)。
 
 ## <a name="march-2020"></a>2020 年 3 月 

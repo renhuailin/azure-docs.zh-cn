@@ -9,12 +9,12 @@ ms.subservice: computer-vision
 ms.topic: include
 ms.date: 12/15/2020
 ms.author: pafarley
-ms.openlocfilehash: 7f1fe99cab46f8d3b87a5c1ef8397cf5f305b11c
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 2ae65cc8799fd507952120129ecef83655a465b7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98948565"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101749953"
 ---
 <a name="HOLTop"></a>
 
@@ -68,7 +68,7 @@ pip install pillow
 > 完成后，请记住将密钥从代码中删除，并且永远不要公开发布该密钥。 对于生产环境，请考虑使用安全的方法来存储和访问凭据。 例如，[Azure 密钥保管库](../../../../key-vault/general/overview.md)。
 
 > [!div class="nextstepaction"]
-> [我设置了客户端](?success=set-up-client#object-model) [我遇到问题](https://www.research.net/r/7QYZKHL?issue=set-up-client)
+> [我设置了客户端](?success=set-up-client#object-model) [我遇到问题](https://microsoft.qualtrics.com/jfe/form/SV_0Cl5zkG3CnDjq6O?PLanguage=Python&Section=set-up-client)
 
 ## <a name="object-model"></a>对象模型
 
@@ -95,7 +95,7 @@ pip install pillow
 [!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_client)]
 
 > [!div class="nextstepaction"]
-> [我执行了客户端身份验证](?success=authenticate-client#analyze-an-image) [我遇到问题](https://www.research.net/r/7QYZKHL?issue=authenticate-client)
+> [我执行了客户端身份验证](?success=authenticate-client#analyze-an-image) [我遇到问题](https://microsoft.qualtrics.com/jfe/form/SV_0Cl5zkG3CnDjq6O?PLanguage=Python&Section=authenticate-client)
 
 ## <a name="analyze-an-image"></a>分析图像
 
@@ -173,7 +173,7 @@ pip install pillow
 [!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_type)]
 
 > [!div class="nextstepaction"]
-> [我分析了图像](?success=analyze-image#read-printed-and-handwritten-text) [我遇到问题](https://www.research.net/r/7QYZKHL?issue=analyze-image)
+> [我分析了图像](?success=analyze-image#read-printed-and-handwritten-text) [我遇到问题](https://microsoft.qualtrics.com/jfe/form/SV_0Cl5zkG3CnDjq6O?PLanguage=Python&Section=analyze-image)
 
 ## <a name="read-printed-and-handwritten-text"></a>读取印刷体文本和手写文本
 
@@ -195,7 +195,7 @@ pip install pillow
 [!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_read_response)]
 
 > [!div class="nextstepaction"]
-> [我阅读了文字](?success=read-printed-handwritten-text#run-the-application) [我遇到问题](https://www.research.net/r/7QYZKHL?issue=read-printed-handwritten-text)
+> [我阅读了文字](?success=read-printed-handwritten-text#run-the-application) [我遇到问题](https://microsoft.qualtrics.com/jfe/form/SV_0Cl5zkG3CnDjq6O?PLanguage=Python&Section=read-printed-handwritten-text)
 
 ## <a name="run-the-application"></a>运行应用程序
 
@@ -206,17 +206,17 @@ python quickstart-file.py
 ```
 
 > [!div class="nextstepaction"]
-> [我运行了应用程序](?success=run-the-application#clean-up-resources) [我遇到问题](https://www.research.net/r/7QYZKHL?issue=run-the-application)
+> [我运行了应用程序](?success=run-the-application#clean-up-resources) [我遇到问题](https://microsoft.qualtrics.com/jfe/form/SV_0Cl5zkG3CnDjq6O?PLanguage=Python&Section=run-the-application)
 
 ## <a name="clean-up-resources"></a>清理资源
 
 如果想要清理并删除认知服务订阅，可以删除资源或资源组。 删除资源组同时也会删除与之相关联的任何其他资源。
 
-* [门户](../../../cognitive-services-apis-create-account.md#clean-up-resources)
+* [Portal](../../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 > [!div class="nextstepaction"]
-> [我清理了资源](?success=clean-up-resources#next-steps) [我遇到问题](https://www.research.net/r/7QYZKHL?issue=clean-up-resources)
+> [我清理了资源](?success=clean-up-resources#next-steps) [我遇到问题](https://microsoft.qualtrics.com/jfe/form/SV_0Cl5zkG3CnDjq6O?PLanguage=Python&Section=clean-up-resources)
 
 ## <a name="next-steps"></a>后续步骤
 

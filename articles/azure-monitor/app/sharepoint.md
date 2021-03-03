@@ -3,19 +3,19 @@ title: 使用 Application Insights 监视 SharePoint site 站点
 description: 开始使用新检测密钥监视新应用程序
 ms.topic: conceptual
 ms.date: 09/08/2020
-ms.openlocfilehash: f07c317a61c91daf7a469c1f9eaf1fb80d4ecc49
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e4cf30fbb5a0861d75fea852222f731a575ca7f2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91825285"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714011"
 ---
 # <a name="monitor-a-sharepoint-site-with-application-insights"></a>使用 Application Insights 监视 SharePoint site 站点
 
 Azure Application Insights 监视应用的可用性、性能和使用情况。 下面介绍如何为 SharePoint 站点设置它。
 
 > [!NOTE]
-> 出于安全方面的考虑，不能将本文中所述的脚本直接添加到 SharePoint 新式 UX 中的网页。 作为替代方法，你可以使用 [Sharepoint Framework (SPFx) ](/sharepoint/dev/spfx/extensions/overview-extensions) 来构建可用于在 SharePoint 站点上安装 Application Insights 的自定义扩展插件。
+> 出于安全考虑，你不能在 SharePoint 新式用户体验中直接向网页添加本文所述的脚本。 作为替代方法，可使用 [SharePoint 框架 (SPFx)](/sharepoint/dev/spfx/extensions/overview-extensions) 来构建可用于在 SharePoint 站点上安装 Application Insights 的自定义扩展。
 
 ## <a name="create-an-application-insights-resource"></a>创建 Application Insights 资源
 在 [Azure 门户](https://portal.azure.com)中，创建新的 Application Insights 资源。 选择 ASP.NET 作为应用程序类型。
@@ -26,6 +26,8 @@ Azure Application Insights 监视应用的可用性、性能和使用情况。 �
 
 ## <a name="add-the-script-to-your-web-pages"></a>将脚本添加到网页
 
+下面列出的当前代码 (片段) 为版本 "5"，版本在代码段中编码为 sv： "#"， [当前版本在 GitHub 上也可用](https://go.microsoft.com/fwlink/?linkid=2156318)。
+
 ```HTML
 <!-- 
 To collect user behavior analytics tools about your application, 
@@ -35,15 +37,25 @@ and before any other scripts. Your first data will appear
 automatically in just a few seconds.
 -->
 <script type="text/javascript">
-var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=window[sdkInstance],aisdk=window[aiName]||function(n){var o={config:n,initialize:!0},t=document,e=window,i="script";setTimeout(function(){var e=t.createElement(i);e.src=n.url||"https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js",t.getElementsByTagName(i)[0].parentNode.appendChild(e)});try{o.cookie=t.cookie}catch(e){}function a(n){o[n]=function(){var e=arguments;o.queue.push(function(){o[n].apply(o,e)})}}o.queue=[],o.version=2;for(var s=["Event","PageView","Exception","Trace","DependencyData","Metric","PageViewPerformance"];s.length;)a("track"+s.pop());var r="Track",c=r+"Page";a("start"+c),a("stop"+c);var u=r+"Event";if(a("start"+u),a("stop"+u),a("addTelemetryInitializer"),a("setAuthenticatedUserContext"),a("clearAuthenticatedUserContext"),a("flush"),o.SeverityLevel={Verbose:0,Information:1,Warning:2,Error:3,Critical:4},!(!0===n.disableExceptionTracking||n.extensionConfig&&n.extensionConfig.ApplicationInsightsAnalytics&&!0===n.extensionConfig.ApplicationInsightsAnalytics.disableExceptionTracking)){a("_"+(s="onerror"));var p=e[s];e[s]=function(e,n,t,i,a){var r=p&&p(e,n,t,i,a);return!0!==r&&o["_"+s]({message:e,url:n,lineNumber:t,columnNumber:i,error:a}),r},n.autoExceptionInstrumented=!0}return o}(
-{
+!function(T,l,y){var S=T.location,k="script",D="instrumentationKey",C="ingestionendpoint",I="disableExceptionTracking",E="ai.device.",b="toLowerCase",w="crossOrigin",N="POST",e="appInsightsSDK",t=y.name||"appInsights";(y.name||T[e])&&(T[e]=t);var n=T[t]||function(d){var g=!1,f=!1,m={initialize:!0,queue:[],sv:"5",version:2,config:d};function v(e,t){var n={},a="Browser";return n[E+"id"]=a[b](),n[E+"type"]=a,n["ai.operation.name"]=S&&S.pathname||"_unknown_",n["ai.internal.sdkVersion"]="javascript:snippet_"+(m.sv||m.version),{time:function(){var e=new Date;function t(e){var t=""+e;return 1===t.length&&(t="0"+t),t}return e.getUTCFullYear()+"-"+t(1+e.getUTCMonth())+"-"+t(e.getUTCDate())+"T"+t(e.getUTCHours())+":"+t(e.getUTCMinutes())+":"+t(e.getUTCSeconds())+"."+((e.getUTCMilliseconds()/1e3).toFixed(3)+"").slice(2,5)+"Z"}(),iKey:e,name:"Microsoft.ApplicationInsights."+e.replace(/-/g,"")+"."+t,sampleRate:100,tags:n,data:{baseData:{ver:2}}}}var h=d.url||y.src;if(h){function a(e){var t,n,a,i,r,o,s,c,u,p,l;g=!0,m.queue=[],f||(f=!0,t=h,s=function(){var e={},t=d.connectionString;if(t)for(var n=t.split(";"),a=0;a<n.length;a++){var i=n[a].split("=");2===i.length&&(e[i[0][b]()]=i[1])}if(!e[C]){var r=e.endpointsuffix,o=r?e.location:null;e[C]="https://"+(o?o+".":"")+"dc."+(r||"services.visualstudio.com")}return e}(),c=s[D]||d[D]||"",u=s[C],p=u?u+"/v2/track":d.endpointUrl,(l=[]).push((n="SDK LOAD Failure: Failed to load Application Insights SDK script (See stack for details)",a=t,i=p,(o=(r=v(c,"Exception")).data).baseType="ExceptionData",o.baseData.exceptions=[{typeName:"SDKLoadFailed",message:n.replace(/\./g,"-"),hasFullStack:!1,stack:n+"\nSnippet failed to load ["+a+"] -- Telemetry is disabled\nHelp Link: https://go.microsoft.com/fwlink/?linkid=2128109\nHost: "+(S&&S.pathname||"_unknown_")+"\nEndpoint: "+i,parsedStack:[]}],r)),l.push(function(e,t,n,a){var i=v(c,"Message"),r=i.data;r.baseType="MessageData";var o=r.baseData;return o.message='AI (Internal): 99 message:"'+("SDK LOAD Failure: Failed to load Application Insights SDK script (See stack for details) ("+n+")").replace(/\"/g,"")+'"',o.properties={endpoint:a},i}(0,0,t,p)),function(e,t){if(JSON){var n=T.fetch;if(n&&!y.useXhr)n(t,{method:N,body:JSON.stringify(e),mode:"cors"});else if(XMLHttpRequest){var a=new XMLHttpRequest;a.open(N,t),a.setRequestHeader("Content-type","application/json"),a.send(JSON.stringify(e))}}}(l,p))}function i(e,t){f||setTimeout(function(){!t&&m.core||a()},500)}var e=function(){var n=l.createElement(k);n.src=h;var e=y[w];return!e&&""!==e||"undefined"==n[w]||(n[w]=e),n.onload=i,n.onerror=a,n.onreadystatechange=function(e,t){"loaded"!==n.readyState&&"complete"!==n.readyState||i(0,t)},n}();y.ld<0?l.getElementsByTagName("head")[0].appendChild(e):setTimeout(function(){l.getElementsByTagName(k)[0].parentNode.appendChild(e)},y.ld||0)}try{m.cookie=l.cookie}catch(p){}function t(e){for(;e.length;)!function(t){m[t]=function(){var e=arguments;g||m.queue.push(function(){m[t].apply(m,e)})}}(e.pop())}var n="track",r="TrackPage",o="TrackEvent";t([n+"Event",n+"PageView",n+"Exception",n+"Trace",n+"DependencyData",n+"Metric",n+"PageViewPerformance","start"+r,"stop"+r,"start"+o,"stop"+o,"addTelemetryInitializer","setAuthenticatedUserContext","clearAuthenticatedUserContext","flush"]),m.SeverityLevel={Verbose:0,Information:1,Warning:2,Error:3,Critical:4};var s=(d.extensionConfig||{}).ApplicationInsightsAnalytics||{};if(!0!==d[I]&&!0!==s[I]){var c="onerror";t(["_"+c]);var u=T[c];T[c]=function(e,t,n,a,i){var r=u&&u(e,t,n,a,i);return!0!==r&&m["_"+c]({message:e,url:t,lineNumber:n,columnNumber:a,error:i}),r},d.autoExceptionInstrumented=!0}return m}(y.cfg);function a(){y.onInit&&y.onInit(n)}(T[t]=n).queue&&0===n.queue.length?(n.queue.push(a),n.trackPageView({})):a()}(window,document,{nConfig||{}).ApplicationInsightsAnalytics||{};if(!0!==d[C]&&!0!==s[C]){method="onerror",t(["_"+method]);var c=T[method];T[method]=function(e,t,n,a,i){var r=c&&c(e,t,n,a,i);return!0!==r&&m["_"+method]({message:e,url:t,lineNumber:n,columnNumber:a,error:i}),r},d.autoExceptionInstrumented=!0}return m}(y.cfg);(T[t]=n).queue&&0===n.queue.length&&n.trackPageView({})}(window,document,{
+src: "https://js.monitor.azure.com/scripts/b/ai.2.gbl.min.js", // The SDK URL Source
+// name: "appInsights", // Global SDK Instance name defaults to "appInsights" when not supplied
+// ld: 0, // Defines the load delay (in ms) before attempting to load the sdk. -1 = block page load and add to head. (default) = 0ms load after timeout,
+// useXhr: 1, // Use XHR instead of fetch to report failures (if available),
+crossOrigin: "anonymous", // When supplied this will add the provided value as the cross origin attribute on the script tag
+// onInit: null, // Once the application insights instance has loaded and initialized this callback function will be called with 1 argument -- the sdk instance (DO NOT ADD anything to the sdk.queue -- As they won't get called)
+cfg: { // Application Insights Configuration
   instrumentationKey:"INSTRUMENTATION_KEY"
-}
-);(window[aiName]=aisdk).queue&&0===aisdk.queue.length&&aisdk.trackPageView({});
+}});
 </script>
 ```
 
-在 &lt; &gt; 要跟踪的每一页的/头标记之前插入脚本。如果你的网站有母版页，你可以将该脚本放在此处。 例如，在 ASP.NET MVC 项目中，将其放置在 View\Shared\_Layout.cshtml 中
+> [!NOTE]
+> SharePoint 的 Url 使用不同的模块格式 "...\ai.2.gbl.min.js" (注意 **gbl。**) 这一备用模块格式是避免脚本加载顺序所导致的问题所必需的，这将导致 SDK 无法初始化，并将导致遥测事件丢失。
+>
+> 此问题是由在 SDK 之前加载并初始化 requireJS 导致的。
+
+在要跟踪的每个页面的 &lt;/head&gt; 标记之前插入脚本。如果网站有母版页，可以在那里插入脚本。 例如，在 ASP.NET MVC 项目中，将其放置在 View\Shared\_Layout.cshtml 中
 
 该脚本包含将遥测定向到 Application Insights 资源的检测密钥。
 
@@ -53,18 +65,18 @@ var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=wi
 
 签出母版页并使用 SharePoint Designer 或任何其他编辑器编辑它。
 
-![显示如何使用 Sharepoing 设计器或其他编辑器编辑母版页的屏幕截图。](./media/sharepoint/03-master.png)
+![显示如何使用 SharePoint Designer 或任何其他编辑器编辑母版页的屏幕截图。](./media/sharepoint/03-master.png)
 
-将代码添加到 </head> 标记。 
+将代码添加到以下项前面： </head> 标记。 
 
-![屏幕截图，显示要将代码添加到网站页的位置。](./media/sharepoint/04-code.png)
+![显示要将代码添加到站点页的位置的屏幕截图。](./media/sharepoint/04-code.png)
 
 #### <a name="or-on-individual-pages"></a>或在个别页面上
 要监视一组有限的页面，请将脚本分别添加到每个页面。 
 
 插入 Web 部分并在其中嵌入代码片段。
 
-![屏幕截图，显示如何添加脚本来监视一组有限的页面。](./media/sharepoint/05-page.png)
+![显示如何添加脚本来监视一组有限页面的屏幕截图。](./media/sharepoint/05-page.png)
 
 ## <a name="view-data-about-your-app"></a>查看关于应用的数据
 重新部署应用。
@@ -73,7 +85,7 @@ var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=wi
 
 第一批事件会显示在“搜索”中。 
 
-![显示您可以在应用程序中查看的新数据的屏幕截图。](./media/sharepoint/09-search.png)
+![显示可在应用中查看的新数据的屏幕截图。](./media/sharepoint/09-search.png)
 
 如果需要更多数据，在几秒后单击“刷新”。
 
@@ -82,7 +94,7 @@ var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=wi
 
 1. 从 Application Insights 中的 Essentials 下拉列表中复制应用的检测密钥。 
 
-    ![屏幕截图显示了从 Application Insights 中的 Essentials 下拉列表复制应用程序的检测。](./media/sharepoint/02-props.png)
+    ![显示如何从 Application Insights 中的 Essentials 下拉列表中复制应用的检测的屏幕截图。](./media/sharepoint/02-props.png)
 
 1. 在下面代码片段中将“XXXX”替换为检测密钥。 
 2. 将脚本嵌入 SharePoint 应用，而不是从门户获取的代码片段。

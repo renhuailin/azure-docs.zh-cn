@@ -5,13 +5,13 @@ author: niklarin
 ms.author: nlarin
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/23/2020
-ms.openlocfilehash: c30c01a18a17981b4e034c9df2cf822e6580430e
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.date: 02/21/2021
+ms.openlocfilehash: a6f049670a6860bbc195b92458945d1a53029b4f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98567728"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101732796"
 ---
 # <a name="networking-overview---azure-database-for-postgresql---flexible-server"></a>网络概述 - Azure Database for PostgreSQL 灵活服务器
 
@@ -62,7 +62,9 @@ ms.locfileid: "98567728"
 
    PostgreSQL 灵活服务器必须位于委派为仅供 PostgreSQL 灵活服务器使用的子网中。 该委派意味着只有 Azure Database for PostgreSQL 灵活服务器才能使用该子网。 不能在委派子网中使用其他 Azure 资源类型。 通过将子网的委派属性指定为 Microsoft.DBforPostgreSQL/flexibleServers 来委派子网。
 
-* **网络安全组(NSG)** 通过网络安全组中的安全规则，可以筛选可流入和流出虚拟网络子网和网络接口的流量类型。 有关详细信息，请参阅[网络安全组概述](../../virtual-network/network-security-groups-overview.md)。
+   为 `Microsoft.Storage` 委托给灵活服务器的子网添加到服务终结点。 
+
+* 网络安全组 (NSG) - 使用网络安全组中的安全规则，可以筛选可流入和流出虚拟网络子网和网络接口的网络流量的类型。 有关详细信息，请参阅[网络安全组概述](../../virtual-network/network-security-groups-overview.md)。
 
 
 ### <a name="unsupported-virtual-network-scenarios"></a>不受支持的虚拟网络场景

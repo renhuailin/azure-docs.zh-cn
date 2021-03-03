@@ -1,19 +1,19 @@
 ---
-title: 容器区域映射的 Azure Monitor
-description: 介绍容器 Azure Monitor 之间支持的区域映射，Log Analytics 工作区和自定义度量值。
+title: 容器见解区域映射
+description: 介绍容器见解、Log Analytics 工作区和自定义指标之间支持的区域映射。
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: 9b77242de3e7845a97874b663266103bf00a8e66
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: f9e910b1352109608becb82609e85e26d27d2cd1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100608593"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728869"
 ---
-# <a name="region-mappings-supported-by-azure-monitor-for-containers"></a>容器 Azure Monitor 支持区域映射
+# <a name="region-mappings-supported-by-container-insights"></a>容器见解支持的区域映射
 
- 为容器启用 Azure Monitor 时，仅支持某些区域以链接 Log Analytics 工作区和 AKS 群集，以及收集提交到 Azure Monitor 的自定义指标。
+ 启用容器见解时，仅支持某些区域以链接 Log Analytics 工作区和 AKS 群集，以及收集提交给 Azure Monitor 的自定义指标。
 
 ## <a name="log-analytics-workspace-supported-mappings"></a>Log Analytics 支持工作区的映射
 
@@ -53,4 +53,4 @@ ms.locfileid: "100608593"
 
 ## <a name="next-steps"></a>后续步骤
 
-若要开始监视 AKS 群集，请查看[如何为容器启用 Azure Monitor](container-insights-onboard.md) 以了解启用监视的要求和可用方法。  
+若要开始监视 AKS 群集，请查看 [如何启用容器见解](container-insights-onboard.md) ，了解启用监视的要求和可用方法。  

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/13/2020
-ms.openlocfilehash: fdd3886dda794ff9a91e2c2be6a3d810086d0ed2
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 9d93e3ec08ff16a1fcca0c914b9e817d4ca89d60
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100607564"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101707942"
 ---
 # <a name="azure-monitor-logs-connector-for-logic-apps-and-power-automate"></a>适用于逻辑应用和 Power Automate 的 Azure Monitor 日志连接器
 借助 [Azure 逻辑应用](../../logic-apps/index.yml) 和 [Power Automate](https://flow.microsoft.com)，可以使用数百个操作为多种服务创建自动化工作流。 使用 Azure Monitor 日志连接器，可以在 Azure Monitor 中生成可从 Log Analytics 工作区或 Application Insights 应用程序检索数据的工作流。 本文介绍该连接器附带的操作，并演练如何使用这些数据生成工作流。
@@ -125,6 +125,6 @@ Event
 
 ## <a name="next-steps"></a>后续步骤
 
-- 详细了解 [Azure Monitor 中的日志查询](../log-query/log-query-overview.md)。
+- 详细了解 [Azure Monitor 中的日志查询](./log-query-overview.md)。
 - 详细了解[逻辑应用](../../logic-apps/index.yml)
 - 详细了解 [Power Automate](https://flow.microsoft.com)。

@@ -1,18 +1,18 @@
 ---
-title: 用于容器的 Azure Monitor 概述 | Microsoft Docs
-description: 本文介绍用于容器的 Azure Monitor，它通过监视 AKS 群集和 Azure 中容器实例的运行状况监视 AKS 容器见解解决方案及其提供的值。
+title: 容器见解概述 |Microsoft Docs
+description: 本文介绍了通过监视 Azure 中的 AKS 群集和容器实例的运行状况来监视 AKS Container Insights 解决方案及其提供的价值的容器见解。
 ms.topic: conceptual
 ms.date: 09/08/2020
-ms.openlocfilehash: a9b9e155884b20c19b9b82994a3b9b1bdf53f27a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 1055e2228c6625ae24e6bf388cf297e3e3363666
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100608947"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723378"
 ---
-# <a name="azure-monitor-for-containers-overview"></a>用于容器的 Azure Monitor 概述
+# <a name="container-insights-overview"></a>容器见解概述
 
-用于容器的 Azure Monitor 功能旨在监视部署到以下位置的容器工作负荷的性能：
+容器见解是一项功能，用于监视部署到的容器工作负荷的性能：
 
 - [Azure Kubernetes 服务 (AKS)](../../aks/intro-kubernetes.md) 上托管的托管 Kubernetes 群集
 - 使用 [AKS 引擎](https://github.com/Azure/aks-engine)在 Azure 上托管的自托管 Kubernetes 群集
@@ -21,17 +21,17 @@ ms.locfileid: "100608947"
 - [Azure Red Hat OpenShift](../../openshift/intro-openshift.md)
 - [已启用 Azure Arc Kubernetes](../../azure-arc/kubernetes/overview.md) (预览版) 
 
-适用于容器的 Azure Monitor 支持运行 Linux 和 Windows Server 2019 操作系统的群集。 它支持的容器运行时为 Docker、Moby 和任何 CRI 兼容的运行时（如 CRI-O 和 ContainerD）。
+Container insights 支持运行 Linux 和 Windows Server 2019 操作系统的群集。 它支持的容器运行时为 Docker、Moby 和任何 CRI 兼容的运行时（如 CRI-O 和 ContainerD）。
 
 监视容器至关重要，特别是在大规模运行包含多个应用程序的生产群集时。
 
-用于容器的 Azure Monitor 通过 Metrics API 从 Kubernetes 中提供的控制器、节点和容器收集内存和处理器指标，来提供性能可见性。 容器日志也会被收集。  从 Kubernetes 群集启用监视后，将通过适用于 Linux 的 Log Analytics 代理的容器化版本自动收集指标和日志。 指标将写入指标存储区，日志数据将写入与 [Log Analytics](../log-query/log-query-overview.md) 工作区关联的日志存储区。
+容器见解通过指标 API 从 Kubernetes 中提供的控制器、节点和容器中收集内存和处理器指标，从而为你提供性能可见性。 容器日志也会被收集。  从 Kubernetes 群集启用监视后，将通过适用于 Linux 的 Log Analytics 代理的容器化版本自动收集指标和日志。 指标将写入指标存储区，日志数据将写入与 [Log Analytics](../logs/log-query-overview.md) 工作区关联的日志存储区。
 
-![用于容器的 Azure Monitor 的体系结构](./media/container-insights-overview/azmon-containers-architecture-01.png)
+![容器分析体系结构](./media/container-insights-overview/azmon-containers-architecture-01.png)
 
-## <a name="what-does-azure-monitor-for-containers-provide"></a>用于容器的 Azure Monitor 提供了什么？
+## <a name="what-does-container-insights-provide"></a>Container insights 提供了哪些功能？
 
-适用于容器的 Azure Monitor 提供使用 Azure Monitor 的不同功能的综合监视体验。 利用这些功能，可以了解运行 Linux 和 Windows Server 2019 操作系统的 Kubernetes 群集的性能和运行状况，以及容器工作负载。 使用用于容器的 Azure Monitor 可以：
+Container insights 使用 Azure Monitor 的不同功能提供全面的监视体验。 利用这些功能，可以了解运行 Linux 和 Windows Server 2019 操作系统的 Kubernetes 群集的性能和运行状况，以及容器工作负载。 借助容器见解，你可以：
 
 * 确定节点上运行的 AKS 容器及其平均处理器和内存利用率。 此信息可帮助标识资源瓶颈。
 * 确定 Azure 容器实例中托管的容器组及其容器的处理器和内存利用率。
@@ -56,19 +56,18 @@ ms.locfileid: "100608947"
 - 仅监视 Pod 环境，不监视 Docker 环境。
 - 使用预览版时，最多支持 30 个 Windows Server 容器。 此限制不适用于 Linux 容器。
 
-请观看以下视频，提供中级深入探讨，帮助你了解如何使用容器 Azure Monitor 来监视 AKS 群集。
+请观看以下视频，提供中级深入探讨，帮助你了解如何使用容器见解监视 AKS 群集。
 
-> [!VIDEO https://www.youtube.com/embed/RjsNmapggPU]
+> [!VIDEO https://youtu.be/XEdwGvS2AwA]
 
 ## <a name="how-do-i-access-this-feature"></a>如何访问此功能？
 
-可以通过两种方式访问用于容器的 Azure Monitor：从 Azure Monitor 访问或直接从所选 AKS 群集访问。 在 Azure Monitor 中可以从全局角度查看已部署的所有容器（受到监视的容器和未受监视的容器），从而可以跨订阅和资源组进行搜索和筛选，然后从所选容器钻取到用于容器的 Azure Monitor。  否则，可以直接从 AKS 页上选定的 AKS 容器访问该功能。
+可以通过两种方式访问容器见解：从 Azure Monitor 或直接从所选 AKS 群集。 在 Azure Monitor 中，你将对部署的所有容器进行全局透视，这些容器受到监视且不是，允许你跨订阅和资源组搜索和筛选，然后从所选容器深化到容器见解。  否则，可以直接从 AKS 页上选定的 AKS 容器访问该功能。
 
-![访问用于容器的 Azure Monitor 的方法概述](./media/container-insights-overview/azmon-containers-experience.png)
+![访问 Container insights 的方法概述](./media/container-insights-overview/azmon-containers-experience.png)
 
-如果有兴趣监视和管理在 AKS 外部运行的 Docker 和 Windows 容器主机以查看配置、审核和资源利用率，请参阅[容器监视解决方案](../insights/containers.md)。
+如果有兴趣监视和管理在 AKS 外部运行的 Docker 和 Windows 容器主机以查看配置、审核和资源利用率，请参阅[容器监视解决方案](./containers.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-若要开始监视 Kubernetes 群集，请查看[如何启用用于容器的 Azure Monitor](container-insights-onboard.md)，以了解启用监视的要求和可用方法。
-
+若要开始监视 Kubernetes 群集，请查看 [如何启用容器见解](container-insights-onboard.md) ，了解启用监视的要求和可用方法。

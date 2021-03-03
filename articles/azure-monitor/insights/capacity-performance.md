@@ -1,17 +1,16 @@
 ---
 title: Azure Monitor 中的容量和性能解决方案 | Microsoft Docs
 description: 使用 Monitor 中的容量和性能解决方案来帮助了解 Hyper-V 服务器的容量。
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/13/2017
-ms.openlocfilehash: 9fce67c0ffe1951b0bfc325603b6d8f985dd804d
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: aa08b9f5db5e6371bcd20b473a0c755db3199e7c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100592194"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704287"
 ---
 # <a name="plan-hyper-v-virtual-machine-capacity-with-the-capacity-and-performance-solution-deprecated"></a>使用容量和性能解决方案（已弃用）规划 Hyper-V 虚拟机容量
 

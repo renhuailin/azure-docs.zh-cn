@@ -1,41 +1,48 @@
 ---
 title: 在 Azure API for FHIR 中启用诊断日志记录
-description: 本文介绍如何在 Azure API for FHIR® 中启用诊断日志记录
+description: 本文介绍如何在 Azure API for FHIR 中启用诊断日志记录®
 services: healthcare-apis
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: conceptual
 ms.reviewer: dseven
 ms.author: cavoeg
-author: CaitlinV39
-ms.date: 02/03/2021
-ms.openlocfilehash: 220618f93d23ec71ee3246e8bd68bfd724860696
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+author: zxue
+ms.date: 02/24/2021
+ms.openlocfilehash: 73e1db2754749e1fb1142231e7179771bcce8e76
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100581967"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101712769"
 ---
 # <a name="enable-diagnostic-logging-in-azure-api-for-fhir"></a>在 Azure API for FHIR 中启用诊断日志记录
 
-本文介绍如何在 Azure API for FHIR 中启用诊断日志记录，以及如何查看这些日志的一些示例查询。 对于必须符合法规与管制要求的任何医疗保健服务（例如 HIPAA）而言，访问诊断日志是必不可少的。 启用诊断日志的 Azure API for FHIR 中的功能是 Azure 门户中的 [**诊断设置**](../azure-monitor/essentials/diagnostic-settings.md) 。 
+本文介绍如何在 Azure API for FHIR 中启用诊断日志记录，以及如何查看这些日志的一些示例查询。 对于符合法规要求 (如 HIPAA) 的任何医疗保健服务，访问诊断日志是必需的。 启用诊断日志的 Azure API for FHIR 中的功能是 Azure 门户中的 [**诊断设置**](../azure-monitor/essentials/diagnostic-settings.md) 。 
+
+## <a name="view-and-download-fhir-metrics-data"></a>查看和下载 FHIR 指标数据
+
+你可以查看 "监视" 下的指标 |门户中的指标。 度量值包括请求数、平均延迟、错误数、数据大小、使用的 ru、超出容量的请求数，以及% ) 中的可用性 (。 下面的屏幕截图显示了用于在过去7天内非常少的活动的示例环境中使用的 ru。 您可以下载 Json 格式的数据。
+
+   :::image type="content" source="media/diagnostic-logging/fhir-metrics-rus-screen.png" alt-text="门户中用于 FHIR 指标的 Azure API" lightbox="media/diagnostic-logging/fhir-metrics-rus-screen.png":::
 
 ## <a name="enable-audit-logs"></a>启用审核日志
 1. 若要在 Azure API for FHIR 中启用诊断日志记录，请在 Azure 门户中选择 Azure API for FHIR 服务 
-2. 导航到“诊断设置”  诊断设置 
-![](media/diagnostic-logging/diagnostic-settings-screen.png) 
+2. 导航到 "**诊断设置**" 
 
-3. 选择“+ 添加诊断设置” 
+   :::image type="content" source="media/diagnostic-logging/diagnostic-settings-screen.png" alt-text="添加 Azure FHIR 诊断设置。" lightbox="media/diagnostic-logging/diagnostic-settings-screen.png":::
 
-4. 输入设置名称
+3. 选择“+ 添加诊断设置”
 
-5. 选择用于访问诊断日志的方法：
+4. 输入设置的名称
 
-    1. 存档到存储帐户以进行审核或手动检查。  要使用的存储帐户需已事先创建。
-    2. 流式传输到事件中心，供第三方服务或自定义分析解决方案引入。  在配置此步骤之前，需先创建事件中心命名空间和事件中心策略。
-    3. 流式传输到 Azure Monitor 中的 Log Analytics 工作区。  在选择此选项之前，需先创建 Logs Analytics 工作区。
+5. 选择要用于访问诊断日志的方法：
 
-6. 选择 **AuditLogs** 和/或 **AllMetrics**。 指标包括服务名称、可用性、数据大小、总延迟、请求总数、错误总数和时间戳。
+    1. **存档到存储帐户** 进行审核或手动检查。 需要使用的存储帐户需要已创建。
+    2. **流式传输到事件中心** ，以供第三方服务或自定义分析解决方案引入。 你将需要创建事件中心命名空间和事件中心策略，然后才能配置此步骤。
+    3. **流到 Azure Monitor 中的 Log Analytics** 工作区。 你将需要创建日志分析工作区，然后才能选择此选项。
+
+6. 选择 **AuditLogs** 和/或 **AllMetrics**。 指标包括服务名称、可用性、数据大小、总延迟、请求总数、错误总数和时间戳。 可以在 [支持的指标](https://docs.microsoft.com/azure/azure-monitor/essentials/metrics-supported#microsofthealthcareapisservices)中找到更多详细信息。 
 
    :::image type="content" source="media/diagnostic-logging/fhir-diagnostic-setting.png" alt-text="Azure FHIR 诊断设置。选择 AuditLogs 和/或 AllMetrics。" lightbox="media/diagnostic-logging/fhir-diagnostic-setting.png":::
 
@@ -50,7 +57,7 @@ ms.locfileid: "100581967"
 ## <a name="audit-log-details"></a>审核日志详细信息
 目前，Azure API for FHIR 服务会在审核日志中返回以下字段： 
 
-|字段名称  |类型  |注释  |
+|字段名称  |类型  |说明  |
 |---------|---------|---------|
 |CallerIdentity|动态|包含标识信息的泛型属性包
 |CallerIdentityIssuer|字符串|颁发者 
@@ -97,7 +104,7 @@ MicrosoftHealthcareApisAuditLogs
 | where ResultType == "Failed" 
 ```
 
-## <a name="conclusion"></a>结束语 
+## <a name="conclusion"></a>结论 
 有权访问诊断日志对于监视服务和提供相容性报告非常重要。 使用用于 FHIR 的 Azure API 可以通过诊断日志执行这些操作。 
  
 FHIR 是 HL7 的注册商标，经 HL7 许可使用。

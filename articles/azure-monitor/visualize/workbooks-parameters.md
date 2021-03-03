@@ -7,12 +7,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
-ms.openlocfilehash: 7c086938ec98fc1d34ba21f678b2091c3b5ac1c4
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 95e810373ac5a591c530004e8d1175c3300656f5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100606042"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101700552"
 ---
 # <a name="workbook-parameters"></a>工作簿参数
 
@@ -81,5 +81,5 @@ ms.locfileid: "100606042"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [开始](../platform/workbooks-overview.md#visualizations)详细了解工作簿丰富的可视化效果选项。
-* [控制](../platform/workbooks-access-control.md)并共享对工作簿资源的访问权限。
+* [开始](./workbooks-overview.md#visualizations)详细了解工作簿丰富的可视化效果选项。
+* [控制](./workbooks-access-control.md)并共享对工作簿资源的访问权限。

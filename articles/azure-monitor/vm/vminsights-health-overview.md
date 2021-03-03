@@ -1,26 +1,26 @@
 ---
-title: 用于 VM 的 Azure Monitor 来宾运行状况（预览）
-description: 用于 VM 的 Azure Monitor 中的运行状况功能概述，包括如何查看虚拟机的运行状况，以及在虚拟机变为不正常时接收警报。
+title: 'VM insights 来宾运行状况 (预览) '
+description: VM insights 中的运行状况功能概述，包括如何查看虚拟机的运行状况，以及在虚拟机变得不正常时接收警报。
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/27/2020
-ms.openlocfilehash: 96bed9f3b04e54e2e9a5234d78f9a2660126742e
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 3db6c2f4da28bba2d12aacc90b2fa8e420aa6fbf
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100606242"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101707449"
 ---
-# <a name="azure-monitor-for-vms-guest-health-preview"></a>用于 VM 的 Azure Monitor 来宾运行状况（预览）
-使用 "来宾运行状况"，可以根据一组从来宾操作系统定期采样的性能度量来查看虚拟机的运行状况。用于 VM 的 Azure Monitor 你可以快速检查订阅或资源组中所有虚拟机的运行状况、向下钻取特定虚拟机的详细运行状况，或在虚拟机变得不正常时主动通知。 
+# <a name="vm-insights-guest-health-preview"></a>VM insights 来宾运行状况 (预览) 
+利用 VM insights 来宾运行状况，你可以根据一组性能度量来查看虚拟机的运行状况，该度量值是从来宾操作系统定期抽样的。 你可以快速检查订阅或资源组中所有虚拟机的运行状况、向下钻取特定虚拟机的详细运行状况，或在虚拟机变得不正常时主动通知。 
 
 ## <a name="enable-virtual-machine-health"></a>启用虚拟机运行状况
-有关启用来宾健康功能和载入虚拟机的详细信息，请参阅 [启用用于 VM 的 Azure Monitor 来宾健康状况 (预览版) ](vminsights-health-enable.md) 。
+有关启用来宾健康功能和载入虚拟机的详细信息，请参阅 [启用 VM insights 来宾健康状况 (预览) ](vminsights-health-enable.md) 。
 
 ## <a name="pricing"></a>定价
-来宾运行状况功能不会直接收费，但会在 Log Analytics 工作区中引入和存储健康状况数据。 所有数据都存储在 *HealthStateChangeEvent* 表中。 有关定价模型和成本的详细信息，请参阅 [使用 Azure Monitor 日志管理使用情况和成本](../platform/manage-cost-storage.md) 。
+来宾运行状况功能不会直接收费，但会在 Log Analytics 工作区中引入和存储健康状况数据。 所有数据都存储在 *HealthStateChangeEvent* 表中。 有关定价模型和成本的详细信息，请参阅 [使用 Azure Monitor 日志管理使用情况和成本](../logs/manage-cost-storage.md) 。
 
 ## <a name="view-virtual-machine-health"></a>查看虚拟机运行状况
 在 "**入门**" 页的 "**来宾 VM 运行状况**" 列中，可以快速查看特定订阅或资源组中每个虚拟机的运行状况。 显示每个虚拟机的当前运行状况，而每个组的图标显示该组中每种状态下的虚拟机的数量。
@@ -60,7 +60,7 @@ ms.locfileid: "100606242"
 | 严重 | 如果) 定义此监视器，则该监视器超出了严重阈值 (。 |
 | Unknown  | 未收集足够的数据来确定运行状况状态。 |
 | 已禁用 | 监视器当前已禁用。 |
-| 无     | 监视器刚刚启动，尚未评估或监视的对象不再存在。 |
+| None     | 监视器刚刚启动，尚未评估或监视的对象不再存在。 |
 
 
 
@@ -95,7 +95,7 @@ ms.locfileid: "100606242"
 [![监视器详细信息历史记录](media/vminsights-health-overview/monitor-details-history.png)](media/vminsights-health-overview/monitor-details-history.png#lightbox)
 
 ### <a name="configuration"></a>配置
-查看和修改所选 VM 的监视器配置。 有关详细信息，请参阅 [用于 VM 的 Azure Monitor 来宾健康状况 () 预览版中的配置监视 ](vminsights-health-enable.md) 。
+查看和修改所选 VM 的监视器配置。 有关详细信息，请参阅 [在 VM insights 来宾运行状况 (预览) 中配置监视 ](vminsights-health-enable.md) 。
 
 [![监视详细信息配置](media/vminsights-health-overview/monitor-details-configuration.png)](media/vminsights-health-overview/monitor-details-configuration.png#lightbox)
 
@@ -104,6 +104,6 @@ ms.locfileid: "100606242"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [在用于 VM 的 Azure Monitor 和载入代理中启用来宾运行状况。](vminsights-health-enable.md)
+- [在 VM insights 和载入代理中启用来宾运行状况。](vminsights-health-enable.md)
 - [使用 Azure 门户配置监视器。](vminsights-health-configure.md)
 - [使用数据收集规则配置监视器。](vminsights-health-configure-dcr.md)

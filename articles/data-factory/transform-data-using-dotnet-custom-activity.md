@@ -7,12 +7,12 @@ ms.author: abnarain
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/26/2018
-ms.openlocfilehash: ab49c294fb8923c9a1a47af016e5224a8bba846c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 64588d5968df635c3bb017bd1ff1d10951968f32
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100576356"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101724942"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>在 Azure 数据工厂管道中使用自定义活动
 
@@ -37,7 +37,7 @@ ms.locfileid: "100576356"
 * [New-AzBatchPool](/powershell/module/az.batch/New-AzBatchPool) cmdlet 以创建 Azure Batch 池。
 
 > [!IMPORTANT]
-> 创建新的 Azure Batch 池时，必须使用 "VirtualMachineConfiguration" 而不是 "CloudServiceConfiguration"。 有关更多详细信息，请参阅 [Azure Batch 池迁移指南](https://docs.microsoft.com/azure/batch/batch-pool-cloud-service-to-virtual-machine-configuration)。 
+> 创建新的 Azure Batch 池时，必须使用 "VirtualMachineConfiguration" 而不是 "CloudServiceConfiguration"。 有关更多详细信息，请参阅 [Azure Batch 池迁移指南](../batch/batch-pool-cloud-service-to-virtual-machine-configuration.md)。 
 
 ## <a name="azure-batch-linked-service"></a>Azure Batch 链接服务
 
@@ -100,7 +100,7 @@ ms.locfileid: "100576356"
 
 下表描述了此活动特有的属性的名称和描述。
 
-| 属性              | 说明                              | 必需 |
+| 属性              | 说明                              | 必选 |
 | :-------------------- | :--------------------------------------- | :------- |
 | name                  | 管道中活动的名称     | 是      |
 | description           | 描述活动用途的文本。  | 否       |
@@ -301,7 +301,7 @@ Activity Error section:
 如果要在下游活动中使用 stdout.txt 的内容，则可以在表达式“\@activity('MyCustomActivity').output.outputs[0]”中获取 stdout.txt 文件的路径。
 
 > [!IMPORTANT]
-> - activity.json、linkedServices.json 和 datasets.json 存储在 Batch 任务的 runtime 文件夹中。 在此示例中，activity.json、linkedServices.json 和 datasets.json 存储在 `"https://adfv2storage.blob.core.windows.net/adfjobs/\<GUID>/runtime/"` 路径中。 必要时需要单独清理它们。
+> - activity.json、linkedServices.json 和 datasets.json 存储在 Batch 任务的 runtime 文件夹中。 在此示例中，activity.json、linkedServices.json 和 datasets.json 存储在 `https://adfv2storage.blob.core.windows.net/adfjobs/<GUID>/runtime/` 路径中。 必要时需要单独清理它们。
 > - 对于使用自承载集成运行时的链接服务，将通过自承载集成运行时对敏感信息（例如密钥或密码）进行加密，以确保凭据保留在客户定义的专用网络环境中。 以此方式在自定义应用程序代码中进行引用时，可能会丢掉一些敏感字段。 如果需要，请在 extendedProperties 中使用 SecureString 而非使用链接服务引用。
 
 ## <a name="pass-outputs-to-another-activity"></a>将输出传递给另一个活动

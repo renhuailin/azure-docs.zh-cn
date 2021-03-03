@@ -4,12 +4,12 @@ description: 了解自动缩放云服务、虚拟机和 Web 应用时常用的�
 ms.topic: conceptual
 ms.date: 12/6/2016
 ms.subservice: autoscale
-ms.openlocfilehash: f358efb8f99066dc1d7a564ad36d6ed1290853e0
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 4b763f39d3b88a7884e89dddbc2c483c1bb84d31
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100608257"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717768"
 ---
 # <a name="azure-monitor-autoscaling-common-metrics"></a>Azure Monitor 自动缩放常用指标
 
@@ -33,8 +33,8 @@ Azure Monitor 自动缩放仅适用于[虚拟机规模集](https://azure.microso
 ### <a name="host-metrics-for-resource-manager-based-windows-and-linux-vms"></a>基于 Resource Manager 的 Windows 和 Linux VM 的主机指标
 默认情况下，将向 Windows 和 Linux 实例中的 Azure VM 和 VMSS 发出以下主机级指标。 这些指标可描述 Azure VM，但这些指标是从 Azure VM 主机而不是通过来宾 VM 上安装的代理收集的。 可在自动缩放规则中使用这些指标。
 
-- [基于 Resource Manager 的 Windows 和 Linux VM 的主机指标](../platform/metrics-supported.md#microsoftcomputevirtualmachines)
-- [基于 Resource Manager 的 Windows 和 Linux VM 规模集的主机指标](../platform/metrics-supported.md#microsoftcomputevirtualmachinescalesets)
+- [基于 Resource Manager 的 Windows 和 Linux VM 的主机指标](../essentials/metrics-supported.md#microsoftcomputevirtualmachines)
+- [基于 Resource Manager 的 Windows 和 Linux VM 规模集的主机指标](../essentials/metrics-supported.md#microsoftcomputevirtualmachinescalesets)
 
 ### <a name="guest-os-metrics-for-resource-manager-based-windows-vms"></a>基于资源管理器的 Windows VM 的来宾 OS 指标
 在 Azure 中创建 VM 时，使用诊断扩展会启用诊断。 诊断扩展会发出一组从 VM 内部获取的指标。 这意味着可以自动缩放不是默认发出的指标。
@@ -186,4 +186,3 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 > 若使用服务总线，则不存在资源组这一概念，但 Azure Resource Manager 会为每个区域创建一个默认资源组。 此资源组通常采用“Default-ServiceBus-[region]”的格式。 例如，“Default-ServiceBus-EastUS”、“Default-ServiceBus-WestUS”、“Default-ServiceBus-AustraliaEast”等等。
 >
 >
-

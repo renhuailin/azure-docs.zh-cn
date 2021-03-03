@@ -13,12 +13,12 @@ author: williamdassafMSFT
 ms.author: wiassaf
 ms.reviewer: ''
 ms.date: 2/1/2021
-ms.openlocfilehash: 942698e5c42e1f46ff05dacdacdb0d124135a6c4
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 1f4bd28d2b95aeebe07fcad84d757327622d51f0
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100390753"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690424"
 ---
 # <a name="automate-management-tasks-using-elastic-jobs-preview"></a>使用弹性作业（预览版）自动完成管理任务
 
@@ -56,7 +56,7 @@ ms.locfileid: "100390753"
 
 对于 SQL Server 和 Azure SQL 托管实例中的 T-SQL 脚本作业自动化，请考虑 [SQL 代理](job-automation-managed-instances.md)。 
 
-对于 Azure Synapse Analytics 中的 T-SQL 脚本作业自动化，请考虑[具有重复触发器的管道](/azure/synapse-analytics/data-integration/concepts-data-factory-differences.md)，这些管道[基于 Azure 数据工厂](/azure/synapse-analytics/data-integration/concepts-data-factory-differences)。
+对于 Azure Synapse Analytics 中的 T-SQL 脚本作业自动化，请考虑[具有重复触发器的管道](../../synapse-analytics/data-integration/concepts-data-factory-differences.md)，这些管道[基于 Azure 数据工厂](../../synapse-analytics/data-integration/concepts-data-factory-differences.md)。
 
 值得注意的是，SQL 代理（在 SQL Server 中提供以及作为 SQL 托管实例的一部分提供）与数据库弹性作业代理（可对 Azure SQL 数据库或 SQL Server 和 Azure SQL 托管实例、Azure Synapse Analytics 中的数据库执行 T-SQL）之间存在差异。
 

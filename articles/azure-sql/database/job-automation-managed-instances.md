@@ -12,12 +12,12 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: ''
 ms.date: 02/01/2021
-ms.openlocfilehash: beb82f8435aea817a074ce83fddc6a5417b86c26
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 6ba1ba9d8c809a805fe8691baf96350b70ec6a51
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100417092"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691886"
 ---
 # <a name="automate-management-tasks-using-sql-agent-jobs-in-azure-sql-managed-instance"></a>使用 Azure SQL 托管实例中的 SQL 代理作业自动执行管理任务
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -78,7 +78,7 @@ SQL 代理作业有几个关键概念：
 
 SQL 代理作业步骤是 SQL 代理应执行的操作序列。 每个步骤包含该步骤成功或失败时应执行的后续步骤，以及失败时的重试次数。
 
-SQL 代理允许您创建不同类型的作业步骤，如针对数据库执行单个 Transact-sql 批处理的 Transact-sql 作业步骤，或可执行自定义 OS 脚本的 OS 命令/PowerShell 步骤、可用于使用 SSIS 运行时加载数据的 [ssis 作业步骤](/azure/data-factory/how-to-invoke-ssis-package-managed-instance-agent) ，或可将数据库中的更改发布到其他数据库的 [复制](../managed-instance/replication-transactional-overview.md) 步骤。
+SQL 代理允许您创建不同类型的作业步骤，如针对数据库执行单个 Transact-sql 批处理的 Transact-sql 作业步骤，或可执行自定义 OS 脚本的 OS 命令/PowerShell 步骤、可用于使用 SSIS 运行时加载数据的 [ssis 作业步骤](../../data-factory/how-to-invoke-ssis-package-managed-instance-agent.md) ，或可将数据库中的更改发布到其他数据库的 [复制](../managed-instance/replication-transactional-overview.md) 步骤。
 
 > [!Note]
 > 若要详细了解如何利用 azure SSIS Integration Runtime 与 Azure SQL 托管实例托管的 SSISDB，请参阅 [在 Azure 数据工厂中将 AZURE SQL 托管实例与 SQL Server Integration Services (SSIS) 配合使用](/../azure/data-factory/how-to-use-sql-managed-instance-with-ir.md)。
@@ -200,7 +200,7 @@ GRANT EXECUTE ON master.dbo.xp_sqlagent_is_starting TO [login_name];
 GRANT EXECUTE ON master.dbo.xp_sqlagent_notify TO [login_name];
 ```
 
-## <a name="learn-more"></a>了解更多
+## <a name="learn-more"></a>了解详细信息
 
 - [什么是 Azure SQL 托管实例？](../managed-instance/sql-managed-instance-paas-overview.md)
 - [& SQL 托管实例的 Azure SQL 数据库中有哪些新功能？](../../azure-sql/database/doc-changes-updates-release-notes.md?tabs=managed-instance)

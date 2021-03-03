@@ -10,12 +10,12 @@ ms.custom: ''
 ms.workload: infrastructure-services
 ms.date: 7/16/2020
 ms.author: jonbeck
-ms.openlocfilehash: d805fb926131e047572887758b10506e4edd5944
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 1e2eddd821bb7a9d2050913efef3d73b406e32f7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183373"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733204"
 ---
 # <a name="tutorial-creating-a-new-child-dns-zone"></a>教程：创建新的子 DNS 区域
 
@@ -81,7 +81,8 @@ ms.locfileid: "96183373"
 1.  在完成时选择“下一步:  标记”，然后选择“下一步:  查看 + 创建”。
 1.  在“查看 + 创建”选项卡上查看摘要，更正任何验证错误，然后选择“创建” 。
 
-    :::image type="content" source="./media/dns-delegate-domain-azure-dns/create-dns-zone-child-inline.png" alt-text="所选子区域的屏幕截图" border="true"  lightbox="./media/dns-delegate-domain-azure-dns/create-dns-zone-child-expanded.png":::
+    :::image type="content" source="./media/dns-delegate-domain-azure-dns/create-dns-zone-child-inline.png" alt-text="所选子区域的屏幕截图" border="true" lightbox="./media/dns-delegate-domain-azure-dns/create-dns-zone-child-expanded.png":::
+
 ## <a name="verify-child-dns-zone"></a>验证子 DNS 区域
 现在，你已经创建了一个新的子 DNS 区域 subdomain.contoso.com。 若要验证委派是否正确，你需要检查子区域的名称服务器 (NS) 记录是否在父区域中，具体如下所述。  
 

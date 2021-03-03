@@ -7,27 +7,16 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/25/2020
-ms.openlocfilehash: 8714c3c3794186d6c21a0513bd7700764c000b6d
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: 90a873b7de6ccc1ba21a05bf4c0e288ed668cac0
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97694782"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694455"
 ---
 # <a name="manage-data-sources-in-azure-purview-preview"></a>在 Azure 监控范围中管理数据源 (预览) 
 
-本文介绍如何在 Azure 监控范围中注册新数据源、管理数据源集合以及查看 Azure 中的源 (预览) 。 Azure 监控范围支持以下数据源：
-
-* 本地 SQL server
-* Azure Data Lake Storage Gen1 
-* Azure Data Lake Storage Gen2
-* Azure Blob 存储
-* Azure 数据资源管理器
-* Azure SQL DB
-* Azure SQL DB 托管实例
-* Azure Synapse Analytics（以前称为 SQL DW）
-* Azure Cosmos DB
-* Power BI
+本文介绍如何在 Azure 监控范围中注册新数据源、管理数据源的集合以及查看源 (预览) 
 
 ## <a name="register-a-new-source"></a>注册新的源
 
@@ -37,7 +26,7 @@ ms.locfileid: "97694782"
 
    :::image type="content" source="media/manage-data-sources/purview-studio.png" alt-text="Azure 监控范围 Studio":::
 
-1. 选择 " **注册**"，然后选择源类型。 此示例使用 Azure Blob 存储。 选择“继续”。 
+1. 选择 " **注册**"，然后选择源类型。 此示例使用 Azure Blob 存储。 选择“继续”。
 
    :::image type="content" source="media/manage-data-sources/select-source-type.png" alt-text="在 &quot;注册源&quot; 页中选择数据源类型":::
 

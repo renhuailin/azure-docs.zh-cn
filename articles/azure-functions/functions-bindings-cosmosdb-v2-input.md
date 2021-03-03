@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/24/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 49762b1844aec85ff55ae2a16243a231414b263f
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: aca6981e2214b9dbd03e6808e77c26fcd67c13cd
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98071572"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711563"
 ---
 # <a name="azure-cosmos-db-input-binding-for-azure-functions-2x-and-higher"></a>适用于 Azure Functions 2.x 及更高版本的 Azure Cosmos DB 输入绑定
 
@@ -1205,34 +1205,34 @@ module.exports = function (context, input) {
 
 下面的示例演示如何读取和更新单个 Cosmos DB 文档。 文档的唯一标识符通过队列消息中的 JSON 值提供。
 
-Cosmos DB 输入绑定首先列在函数配置文件中找到的绑定列表中 (_function.js_) 。
+Cosmos DB 输入绑定在函数配置文件 (_function.json_) 中提供的绑定列表中首先列出。
 
 <a name="queue-trigger-look-up-id-from-json-ps"></a>
 
 ```json
 {
-  "name": "InputDocumentIn",
-  "type": "cosmosDB",
-  "databaseName": "MyDatabase",
-  "collectionName": "MyCollection",
-  "id" : "{queueTrigger_payload_property}",
-  "partitionKey": "{queueTrigger_payload_property}",
-  "connectionStringSetting": "CosmosDBConnection",
-  "direction": "in"
+  "name": "InputDocumentIn",
+  "type": "cosmosDB",
+  "databaseName": "MyDatabase",
+  "collectionName": "MyCollection",
+  "id": "{queueTrigger_payload_property}",
+  "partitionKey": "{queueTrigger_payload_property}",
+  "connectionStringSetting": "CosmosDBConnection",
+  "direction": "in"
 },
 {
-  "name": "InputDocumentOut",
-  "type": "cosmosDB",
-  "databaseName": "MyDatabase",
-  "collectionName": "MyCollection",
-  "createIfNotExists": false,
-  "partitionKey": "{queueTrigger_payload_property}",
-  "connectionStringSetting": "CosmosDBConnection",
-  "direction": "out"
+  "name": "InputDocumentOut",
+  "type": "cosmosDB",
+  "databaseName": "MyDatabase",
+  "collectionName": "MyCollection",
+  "createIfNotExists": false,
+  "partitionKey": "{queueTrigger_payload_property}",
+  "connectionStringSetting": "CosmosDBConnection",
+  "direction": "out"
 }
 ```
 
-_run.ps1_ 文件具有 PowerShell 代码，该代码读取传入的文档并输出更改。
+_run.ps1_ 文件包含 PowerShell 代码，该代码读取传入的文档并输出更改。
 
 ```powershell
 param($QueueItem, $InputDocumentIn, $TriggerMetadata) 
@@ -1247,9 +1247,9 @@ Push-OutputBinding -Name InputDocumentOut -Value $Document 
 
 ### <a name="http-trigger-look-up-id-from-query-string"></a>HTTP 触发器，从查询字符串查找 ID
 
-下面的示例演示如何从 web API 读取和更新单个 Cosmos DB 文档。 文档的唯一标识符是通过 HTTP 请求中的 querystring 参数提供的，该参数是在绑定的属性中定义的 `"Id": "{Query.Id}"` 。
+下面的示例演示如何通过 Web API 读取和更新单个 Cosmos DB 文档。 文档的唯一标识符通过 HTTP 请求中的 querystring 参数提供，如绑定的 `"Id": "{Query.Id}"` 属性所定义。
 
-Cosmos DB 输入绑定首先列在函数配置文件中找到的绑定列表中 (_function.js_) 。
+Cosmos DB 输入绑定在函数配置文件 (_function.json_) 中提供的绑定列表中首先列出。
 
 ```json
 { 
@@ -1284,7 +1284,7 @@ Cosmos DB 输入绑定首先列在函数配置文件中找到的绑定列表中 
 } 
 ```
   
-_run.ps1_ 文件具有 PowerShell 代码，该代码读取传入的文档并输出更改。
+_run.ps1_ 文件包含 PowerShell 代码，该代码读取传入的文档并输出更改。
 
 ```powershell
 using namespace System.Net 
@@ -1316,9 +1316,9 @@ if (-not $ToDoItem) {
 
 ### <a name="http-trigger-look-up-id-from-route-data"></a>HTTP 触发器，从路由数据查找 ID
 
-下面的示例演示如何从 web API 读取和更新单个 Cosmos DB 文档。 文档的唯一标识符通过路由参数提供。 路由参数在 HTTP 请求绑定的属性中定义 `route` ，并在 Cosmos DB `"Id": "{Id}"` 绑定属性中引用。
+下面的示例演示如何通过 Web API 读取和更新单个 Cosmos DB 文档。 文档的唯一标识符通过 route 参数提供。 route 参数在 HTTP 请求绑定的 `route` 属性中定义，并在 Cosmos DB `"Id": "{Id}"` 绑定属性中引用。
 
-Cosmos DB 输入绑定首先列在函数配置文件中找到的绑定列表中 (_function.js_) 。
+Cosmos DB 输入绑定在函数配置文件 (_function.json_) 中提供的绑定列表中首先列出。
 
 ```json
 { 
@@ -1354,7 +1354,7 @@ Cosmos DB 输入绑定首先列在函数配置文件中找到的绑定列表中 
 } 
 ```
 
-_run.ps1_ 文件具有 PowerShell 代码，该代码读取传入的文档并输出更改。
+_run.ps1_ 文件包含 PowerShell 代码，该代码读取传入的文档并输出更改。
 
 ```powershell
 using namespace System.Net 
@@ -1385,7 +1385,7 @@ if (-not $ToDoItem) {
 
 ### <a name="queue-trigger-get-multiple-docs-using-sqlquery"></a>队列触发器，使用 SqlQuery 获取多个文档
 
-下面的示例演示如何读取多个 Cosmos DB 文档。 函数的配置文件 (_上的function.js_) 定义绑定属性，其中包括 `sqlQuery` 。 为属性提供的 SQL 语句 `sqlQuery` 选择提供给函数的文档集。
+下面的示例演示如何读取多个 Cosmos DB 文档。 函数的配置文件 (_function.json_) 定义了包含 `sqlQuery` 的绑定属性。 提供给 `sqlQuery` 属性的 SQL 语句选择提供给函数的文档集。
 
 ```json
 { 
@@ -1399,7 +1399,7 @@ if (-not $ToDoItem) {
 } 
 ```
 
-_Run1.ps_ 文件包含用于读取传入文档的 PowerShell 代码。
+_run1.ps_ 文件包含 PowerShell 代码，该代码读取传入的文档。
 
 ```powershell
 param($QueueItem, $Documents, $TriggerMetadata) 
@@ -1655,7 +1655,7 @@ Python 不支持特性。
 |---------|---------|----------------------|
 |type     | 不适用 | 必须设置为 `cosmosDB`。        |
 |**direction**     | 不适用 | 必须设置为 `in`。         |
-|**name**     | 不适用 | 表示函数中的文档的绑定参数的名称。  |
+|name      | 不适用 | 表示函数中的文档的绑定参数的名称。  |
 |**databaseName** |**DatabaseName** |包含文档的数据库。        |
 |**collectionName** |**CollectionName** | 包含文档的集合的名称。 |
 |**id**    | Id | 要检索的文档的 ID。 此属性支持[绑定表达式](./functions-bindings-expressions-patterns.md)。 不要同时设置 `id` 和 **sqlQuery** 属性。 如果上述两个属性都未设置，则会检索整个集合。 |
@@ -1682,11 +1682,11 @@ Python 不支持特性。
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-函数退出时不会自动进行更新。 请改用 `context.bindings.<documentName>In` 和 `context.bindings.<documentName>Out` 进行更新。 有关更多详细信息，请参阅 [JavaScript 示例](#example) 。
+函数退出时不会自动进行更新。 请改用 `context.bindings.<documentName>In` 和 `context.bindings.<documentName>Out` 进行更新。 有关更多详细信息，请参阅 [JavaScript 示例](#example)。
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-不会在函数退出时自动更新文档。 若要更新函数中的文档，请使用 [输出绑定](./functions-bindings-cosmosdb-v2-input.md)。 有关更多详细信息，请参阅 [PowerShell 示例](#example) 。
+函数退出时不会自动对文档进行更新。 若要在函数中更新文档，请使用[输出绑定](./functions-bindings-cosmosdb-v2-input.md)。 有关更多详细信息，请参阅 [PowerShell 示例](#example)。
 
 # <a name="python"></a>[Python](#tab/python)
 

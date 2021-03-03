@@ -9,16 +9,16 @@ ms.reviewer: estfan, daviburg, logicappspm
 ms.topic: article
 ms.date: 02/01/2021
 tags: connectors
-ms.openlocfilehash: cbbc0edf710b8823c1a36daa66bc01d89acf63da
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: e52c4acb4b59414e89e87bf5a6ee2cfae8207cae
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99575477"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101712447"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>从 Azure 逻辑应用连接到 SAP 系统
 
-本文介绍如何使用 [sap 连接器](https://docs.microsoft.com/connectors/sap/)从逻辑应用访问 SAP 资源。
+本文介绍如何使用 [sap 连接器](/connectors/sap/)从逻辑应用访问 SAP 资源。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -225,7 +225,7 @@ SAP 连接器使用 [ (NCo) 库的 sap .Net 连接器](https://support.sap.com/e
 
    ![逻辑应用设计器的屏幕截图，显示要添加到逻辑应用的新 HTTP 请求触发器。](./media/logic-apps-using-sap-connector/add-http-trigger-logic-app.png)
 
-1. 保存逻辑应用，以便可以为逻辑应用生成终结点 URL。 在设计器工具栏上选择“保存”。  终结点 URL 现在会出现在触发器中。 
+1. 保存逻辑应用，以便可以为逻辑应用生成终结点 URL。 在设计器工具栏上选择“保存”。 终结点 URL 现在会出现在触发器中。 
 
    ![逻辑应用设计器的屏幕截图，其中显示了复制生成的 POST URL 时发出 HTTP 请求触发器。](./media/logic-apps-using-sap-connector/generate-http-endpoint-url.png)
 
@@ -306,7 +306,7 @@ SAP 连接器使用 [ (NCo) 库的 sap .Net 连接器](https://support.sap.com/e
 
       ![完成 SAP 操作](./media/logic-apps-using-sap-connector/SAP-app-server-complete-action.png)
 
-1. 保存逻辑应用。 在设计器工具栏上选择“保存”。 
+1. 保存逻辑应用。 在设计器工具栏上选择“保存”。
 
 #### <a name="send-flat-file-idocs"></a>发送平面文件 Idoc
 
@@ -547,14 +547,14 @@ SAP 连接器支持逻辑应用触发器的 Azure [异步请求-答复模式](/a
 
 如果 [为逻辑应用使用本地数据网关](../logic-apps/logic-apps-gateway-install.md)，则可以为 SAP 连接器配置扩展日志文件。 你可以使用本地数据网关将 Windows (ETW) 事件的事件跟踪重定向到你的网关的日志记录 .zip 文件中包含的循环日志文件。 
 
-你可以从网关应用的设置中将 [所有网关的配置和服务日志导出](https://docs.microsoft.com/data-integration/gateway/service-gateway-tshoot#collect-logs-from-the-on-premises-data-gateway-app) 到中的 .zip 文件。
+你可以从网关应用的设置中将 [所有网关的配置和服务日志导出](/data-integration/gateway/service-gateway-tshoot#collect-logs-from-the-on-premises-data-gateway-app) 到中的 .zip 文件。
 
 > [!NOTE]
 > 当始终启用时，扩展日志记录可能会影响逻辑应用的性能。 完成分析并解决问题后，最佳做法是关闭扩展日志文件。
 
 #### <a name="capture-etw-events"></a>捕获 ETW 事件
 
-或者，高级用户可以直接捕获 ETW 事件。 然后，你可以 [在事件中心的 Azure 诊断中使用数据](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostics-extension-stream-event-hubs) ，或将 [数据收集到 Azure Monitor 日志](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostics-extension-logs)。 有关详细信息，请参阅 [收集和存储数据的最佳做法](https://docs.microsoft.com/azure/architecture/best-practices/monitoring#collecting-and-storing-data)。 可以使用 [PerfView](https://github.com/Microsoft/perfview/blob/master/README.md) 来处理生成的 ETL 文件，也可以编写自己的程序。 本演练使用 PerfView：
+或者，高级用户可以直接捕获 ETW 事件。 然后，你可以 [在事件中心的 Azure 诊断中使用数据](../azure-monitor/agents/diagnostics-extension-stream-event-hubs.md) ，或将 [数据收集到 Azure Monitor 日志](/azure/azure-monitor/agents/diagnostics-extension-logs)。 有关详细信息，请参阅 [收集和存储数据的最佳做法](/azure/architecture/best-practices/monitoring#collecting-and-storing-data)。 可以使用 [PerfView](https://github.com/Microsoft/perfview/blob/master/README.md) 来处理生成的 ETL 文件，也可以编写自己的程序。 本演练使用 PerfView：
 
 1. 在 PerfView 菜单中，选择 " **收集** &gt; **收集** " 以捕获事件。
 
@@ -713,7 +713,7 @@ SAP 连接器支持逻辑应用触发器的 Azure [异步请求-答复模式](/a
 
 1. 通过选择 "**继续**" 确认 "**哪个 IDoc 类型？"** 消息。
 
-1. 选择 **EDIDC** 节点。 为接收方和发送方端口输入合适的值。 选择“继续”。 
+1. 选择 **EDIDC** 节点。 为接收方和发送方端口输入合适的值。 选择“继续”。
 
 1. 选择 **标准出站处理**。
 
@@ -1336,7 +1336,7 @@ https://docs.microsoft.com/connectors/sap/#call-bapi-(preview))在 SAP 服务器
 
 ### <a name="send-idoc-action"></a>发送 IDoc 操作
 
-[Send IDoc (`SendIDoc`) ](https://docs.microsoft.com/connectors/sap/#send-idoc-(preview))操作会将 IDoc 消息发送到 SAP 服务器。
+[Send IDoc (`SendIDoc`) ](/connectors/sap/)操作会将 IDoc 消息发送到 SAP 服务器。
 
 你必须在调用中使用以下参数： 
 

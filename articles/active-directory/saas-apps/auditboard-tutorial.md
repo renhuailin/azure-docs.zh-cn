@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
-ms.openlocfilehash: 28661d15cd051d2e77174fc438632d02753a4a94
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 670ceb9f342bc629ebad4630f2ecdff311e54d1b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92457497"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101689124"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-auditboard"></a>教程：Azure Active Directory 与 AuditBoard 集成
 
@@ -103,7 +103,7 @@ ms.locfileid: "92457497"
 
     a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.auditboardapp.com/api/v1/sso/saml/metadata.xml`
 
-    b. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.auditboardapp.com/api/v1/sso/saml/assert`
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.auditboardapp.com/api/v1/sso/saml/assert`
 
     c. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤   ：
 
@@ -130,7 +130,7 @@ ms.locfileid: "92457497"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -140,11 +140,11 @@ ms.locfileid: "92457497"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中键入 `brittasimon\@yourcompanydomain.extension`。  例如： BrittaSimon@contoso.com
+    b. 在“用户名”字段中键入 `brittasimon@yourcompanydomain.extension`。 例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -162,7 +162,7 @@ ms.locfileid: "92457497"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 

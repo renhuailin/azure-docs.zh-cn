@@ -5,7 +5,7 @@
     - name: 关于 AKS
       href: intro-kubernetes.md
     - name: 解决方案体系结构
-      href: /azure/architecture/reference-architectures/containers/aks-start-here?bc=%2fazure%2faks%2fbreadcrumb%2ftoc.json&toc=%2fazure%2faks%2ftoc.json
+      href: /azure/architecture/reference-architectures/containers/aks-start-here?bc=%2fazure%2faks%2fbreadcrumb%2ftoc.json&toc=%2fazure%2faks%2ftoc.json?WT.mc_id=AKSDOCSTOC
 - name: 快速入门
   expanded: true
   items:
@@ -294,14 +294,14 @@
     - name: 监视和日志记录
       items:
         - name: 用于容器的 Azure Monitor
-          href: ../azure-monitor/insights/container-insights-overview.md
+          href: ../azure-monitor/containers/container-insights-overview.md
           maintainContext: true
         - name: 查看控制平面组件日志
           href: view-control-plane-logs.md
         - name: 查看 kubelet 日志
           href: kubelet-logs.md
         - name: 实时查看容器数据
-          href: ../azure-monitor/insights/container-insights-livedata-overview.md
+          href: ../azure-monitor/containers/container-insights-livedata-overview.md
           maintainContext: true
     - name: 使用 Windows Server 容器
       items:

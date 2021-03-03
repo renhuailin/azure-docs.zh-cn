@@ -7,12 +7,12 @@ author: bwren
 ms.author: bwren
 ms.date: 08/19/2019
 ms.custom: mvc, sec-javascript-october2019
-ms.openlocfilehash: 6cc9c6af4592956b6498e826ef65b556e5780f34
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 2e267682118c4ba6fe25c11a4ae5088916d0e6fb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100626119"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101736978"
 ---
 # <a name="collect-data-from-an-azure-virtual-machine-with-azure-monitor"></a>使用 Azure Monitor 从 Azure 虚拟机收集数据
 
@@ -141,4 +141,4 @@ Azure Monitor 可以从你为长期分析和报告指定的 Windows 事件日志
 若要了解如何查看和分析数据，请继续本教程。
 
 > [!div class="nextstepaction"]
-> [在 Log Analytics 中查看或分析数据](../log-query/log-analytics-tutorial.md)
+> [在 Log Analytics 中查看或分析数据](../logs/log-analytics-tutorial.md)

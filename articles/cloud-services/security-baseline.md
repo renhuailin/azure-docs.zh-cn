@@ -4,15 +4,15 @@ description: Azure 云服务安全基线为实现 Azure 安全基准中指定的
 author: msmbaldwin
 ms.service: cloud-services
 ms.topic: conceptual
-ms.date: 11/02/2020
+ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 28be34e9323697759b2492d86b968f8e3d47a28e
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 105fd185900692669fdc40e0c47a03474524e250
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100572047"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731096"
 ---
 # <a name="azure-security-baseline-for-azure-cloud-services"></a>适用于 Azure 云服务的 Azure 安全基线
 
@@ -22,25 +22,25 @@ ms.locfileid: "100572047"
  
 若要了解云服务如何完全映射到 Azure 安全基准，请参阅[完整的云服务安全基线映射文件](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)。
 
-## <a name="network-security"></a>网络安全性
+## <a name="network-security"></a>网络安全
 
-[有关详细信息，请参阅 *Azure 安全基线：* 网络安全](../security/benchmarks/security-control-network-security.md)。
+[有关详细信息，请参阅 *Azure 安全基线：* 网络安全性](../security/benchmarks/security-control-network-security.md)。
 
 ### <a name="11-protect-azure-resources-within-virtual-networks"></a>1.1：保护虚拟网络中的 Azure 资源
 
 **指导**：创建具有独立的公共和专用子网的经典 Azure 虚拟网络，以根据受信任的端口和 IP 范围强制实施隔离。 这些虚拟网络和子网必须是基于经典虚拟网络（经典部署）的资源，而不是当前的 Azure 资源管理器资源。  
 
-使用网络安全组允许或拒绝流量，网络安全组包含基于流量方向、协议、源地址和端口以及目标地址和端口的访问控制规则。 可以随时更改网络安全组的规则，所做的更改将应用于所有关联的实例。
+使用网络安全组允许或拒绝流量，网络安全组包含基于流量方向、协议、源地址和端口以及目标地址和端口的访问控制规则。 网络安全组的规则随时可以更改，更改将应用于所有关联的实例。
 
 Microsoft Azure 云服务 (经典) 不能放置在 Azure 资源管理器虚拟网络中。 但是，可以通过对等互连将基于资源管理器的虚拟网络与基于经典部署的虚拟网络连接起来。 
 
 - [网络安全组概述](../virtual-network/network-security-groups-overview.md)
 
-- [虚拟网络对等互连](./cloud-services-connectivity-and-networking-faq.md?preserve-view=true#how-can-i-use-azure-resource-manager-virtual-networks-with-cloud-services)
-
-**Azure 安全中心监视**：不适用
+- [虚拟网络对等互连](https://docs.microsoft.com/azure/cloud-services/cloud-services-connectivity-and-networking-faq#how-can-i-use-azure-resource-manager-virtual-networks-with-cloud-services)
 
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="12-monitor-and-log-the-configuration-and-traffic-of-virtual-networks-subnets-and-nics"></a>1.2：监视和记录虚拟网络、子网和 NIC 的配置与流量
 
@@ -58,11 +58,11 @@ Microsoft Azure 云服务 (经典) 不能放置在 Azure 资源管理器虚拟�
 
 - [云服务配置文件](schema-cscfg-file.md)
 
-- [Azure Policy 支持的服务列表](/cli/azure/azure-services-the-azure-cli-can-manage?preserve-view=)
-
-**Azure 安全中心监视**：不适用
+- [Azure Policy 支持的服务列表](/cli/azure/azure-services-the-azure-cli-can-manage)
 
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="13-protect-critical-web-applications"></a>1.3：保护关键 Web 应用程序
 
@@ -72,9 +72,9 @@ Microsoft Azure 云服务 (经典) 不能放置在 Azure 资源管理器虚拟�
 
 - [配置 TLS/SSL 证书](cloud-services-configure-ssl-certificate-portal.md)
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1.4：拒绝与已知恶意的 IP 地址进行通信
 
@@ -89,15 +89,15 @@ Microsoft Azure 云服务 (经典) 不能放置在 Azure 资源管理器虚拟�
 
 为经典订阅管理员分配配置“拒绝应用”规则。 默认情况下，在定义内部终结点后，通信可以从任意角色流动到角色的内部终结点，而不会受到任何限制。 若要限制通信，你必须将 NetworkTrafficRules 元素添加到服务定义文件中的 ServiceDefinition 元素。
 
-- [如何阻止/禁用发往云服务的默认 URL 的传入流量](./cloud-services-connectivity-and-networking-faq.md?preserve-view=true#how-can-i-blockdisable-incoming-traffic-to-the-default-url-of-my-cloud-service)
+- [如何阻止/禁用发往云服务的默认 URL 的传入流量](https://docs.microsoft.com/azure/cloud-services/cloud-services-connectivity-and-networking-faq#how-can-i-blockdisable-incoming-traffic-to-the-default-url-of-my-cloud-service)
 
-- [Azure DDOS 防护](./cloud-services-connectivity-and-networking-faq.md?preserve-view=true#how-do-i-prevent-receiving-thousands-of-hits-from-unknown-ip-addresses-that-might-indicate-a-malicious-attack-to-the-cloud-service)
+- [Azure DDOS 防护](https://docs.microsoft.com/azure/cloud-services/cloud-services-connectivity-and-networking-faq#how-do-i-prevent-receiving-thousands-of-hits-from-unknown-ip-addresses-that-might-indicate-a-malicious-attack-to-the-cloud-service)
 
-- [阻止特定 IP 地址](cloud-services-startup-tasks-common.md#block-a-specific-ip-address)
-
-**Azure 安全中心监视**：不适用
+- [阻止特定 IP 地址](https://docs.microsoft.com/azure/cloud-services/cloud-services-startup-tasks-common#block-a-specific-ip-address)
 
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="15-record-network-packets"></a>1.5：记录网络数据包
 
@@ -107,21 +107,21 @@ Microsoft Azure 云服务 (经典) 不能放置在 Azure 资源管理器虚拟�
 
 - [在网络安全组上配置流日志记录](../virtual-machines/extensions/network-watcher-linux.md)
 
-- [有关配置流日志的详细信息，请访问此文](/cli/azure/azure-services-the-azure-cli-can-manage?preserve-view=)
-
-**Azure 安全中心监视**：不适用
+- [有关配置流日志的详细信息，请访问此文](/cli/azure/azure-services-the-azure-cli-can-manage)
 
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1.6：部署基于网络的入侵检测/入侵防护系统 (IDS/IPS)
 
 **指导**：Azure 云服务没有内置的 IDS 或 IPS 功能。 客户可以根据组织的要求从 Azure 市场中选择并部署基于网络的补充 IDS 或 IPS 解决方案。 使用第三方解决方案时，请确保使用 Azure 云服务全面测试所选的 IDS 或 IPS 解决方案，以确保操作正确和功能正常。
 
-- [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/?term=Firewall) 
-
-**Azure 安全中心监视**：不适用
+- [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/?term=Firewall)
 
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="17-manage-traffic-to-web-applications"></a>1.7：管理发往 Web 应用程序的流量
 
@@ -139,9 +139,9 @@ Microsoft Azure 云服务 (经典) 不能放置在 Azure 资源管理器虚拟�
 
 - [如何部署应用程序网关](../application-gateway/quick-create-portal.md)
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1.9：维护网络设备的标准安全配置
 
@@ -151,9 +151,9 @@ Microsoft Azure 云服务 (经典) 不能放置在 Azure 资源管理器虚拟�
 
 请注意，不支持将 Azure Policy 用于 Azure 云服务来强制实施配置。
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="110-document-traffic-configuration-rules"></a>1.10：阐述流量配置规则
 
@@ -163,9 +163,9 @@ Microsoft Azure 云服务 (经典) 不能放置在 Azure 资源管理器虚拟�
 
 - [如何使用网络安全组规则筛选网络流量](../virtual-network/tutorial-filter-network-traffic.md)
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1.11：使用自动化工具来监视网络资源配置和检测更改
 
@@ -175,15 +175,15 @@ Microsoft Azure 云服务 (经典) 不能放置在 Azure 资源管理器虚拟�
 
 创建诊断设置，以便将活动日志发送到 Azure Monitor，也可将其发送到 Azure 事件中心以转发到 Azure 外部，或发送到 Azure 存储进行存档。 配置 Azure Monitor，以便在 Azure 云服务中的关键资源发生更改时获得通知警报。 
 
-- [Azure 活动日志](../azure-monitor/essentials/activity-log.md)
+- [Azure 活动日志](/azure/azure-monitor/platform/activity-log)
 
-- [使用 Azure Monitor 创建、查看和管理活动日志警报](../azure-monitor/alerts/alerts-activity-log.md)
+- [使用 Azure Monitor 创建、查看和管理活动日志警报](/azure/azure-monitor/platform/alerts-activity-log)
 
 - [流量管理器监视](../traffic-manager/traffic-manager-monitoring.md)
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ## <a name="logging-and-monitoring"></a>日志记录和监视
 
@@ -193,15 +193,15 @@ Microsoft Azure 云服务 (经典) 不能放置在 Azure 资源管理器虚拟�
 
 **指导**：Microsoft 为 Azure 云服务维护 Azure 资源的时间源。 客户可能需要创建网络规则，以允许使用 UDP 协议通过端口 123 访问其环境中使用的时间服务器。
 
-- [NTP 服务器访问](../firewall/protect-windows-virtual-desktop.md#additional-considerations)
-
-**Azure 安全中心监视**：是
+- [NTP 服务器访问](https://docs.microsoft.com/azure/firewall/protect-windows-virtual-desktop#additional-considerations)
 
 **责任**：共享
 
+**Azure 安全中心监视**：无
+
 ### <a name="22-configure-central-security-log-management"></a>2.2：配置中心安全日志管理
 
-**指导**：通过 Azure 事件中心以编程方式使用云服务流数据。 将所有这些数据集成并发送到 Azure Sentinel 以监视和查看你的日志，或者使用第三方 SIEM。 为了进行集中的安全日志管理，请通过配置连续导出将所选 Azure 安全中心数据导出到 Azure 事件中心，然后为 SIEM 设置相应的连接器。 下面是适用于 Azure Sentinel 的一些选项，包括第三方工具：
+**指导**：通过 Azure 事件中心以编程方式使用云服务流数据。 将所有这些数据集成并发送到 Azure Sentinel 以监视和查看你的日志，或者使用第三方 SIEM。 为了进行集中的安全日志管理，请通过配置连续导出将所选 Azure 安全中心数据导出到 Azure 事件中心，然后为 SIEM 设置相应的连接器。 下面是 Azure Sentinel 的一些选项，包括第三方工具：
 
 - Azure Sentinel - 使用原生的安全中心警报数据连接器
 - Splunk - 使用适用于 Splunk 的 Azure Monitor 加载项
@@ -218,30 +218,30 @@ Microsoft Azure 云服务 (经典) 不能放置在 Azure 资源管理器虚拟�
 
 - [通过 Azure 事件中心配置 SIEM 集成](../security-center/continuous-export.md)
 
-**Azure 安全中心监视**：是
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="23-enable-audit-logging-for-azure-resources"></a>2.3：为 Azure 资源启用审核日志记录
 
 **指导**：配置 Visual Studio 以设置用于对 Azure 云服务进行故障排除的 Azure 诊断，这将捕获虚拟机（包括运行你的 Azure 云服务的虚拟机实例）上的系统和日志记录数据。 诊断数据将传输到你选择的存储帐户。 在 Azure 云服务项目中启用诊断，然后再完成其部署。
 
  
-在 Azure Monitor 的活动日志中查看某些事件的更改历史记录。 审核某个事件时间段内发生的更改。 从活动日志中选择事件，以便通过“更改历史记录(预览)”选项卡进行更深入的检查。从 Visual Studio 发布 Azure 云服务时，将诊断数据发送到 Application Insights。 在那时创建 Application Insights Azure 资源，或者将数据发送到现有 Azure 资源。 
+在 Azure Monitor 的活动日志中查看某些事件的更改历史记录。 审核某个事件时间段内发生的更改。 从活动日志中选择事件以进行更深入的检查，并使用更改历史记录 (预览 ") 选项卡。从 Visual Studio 发布 Azure 云服务时，请将诊断数据发送到 Application Insights。 在那时创建 Application Insights Azure 资源，或者将数据发送到现有 Azure 资源。 
 
 Application Insights 可以监视 Azure 云服务的可用性、性能、故障和使用情况。 可将自定义图表添加到 Application Insights，以便查看最重要的数据。 在 Azure 云服务项目中使用 Application Insights SDK 可以收集角色实例数据。 
 
-- [部署前在 Visual Studio 中启用诊断](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines?preserve-view=true#to-turn-on-diagnostics-in-visual-studio-before-deployment)
+- [部署前在 Visual Studio 中启用诊断](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#to-turn-on-diagnostics-in-visual-studio-before-deployment)
 
-- [查看更改历史记录](../azure-monitor/essentials/activity-log.md#view-change-history)
+- [查看更改历史记录](/azure/azure-monitor/platform/activity-log#view-change-history)
 
 - [适用于 Azure 云服务（经典）的 Application Insights](../azure-monitor/app/cloudservices.md)
 
-- [为 Azure 云服务（经典）和虚拟机设置诊断](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines?preserve-view=true&toc=%2fazure%2fcloud-services%2ftoc.json)
-
-**Azure 安全中心监视**：是
+- [为 Azure 云服务（经典）和虚拟机设置诊断](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines)
 
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="25-configure-security-log-storage-retention"></a>2.5：配置安全日志存储保留期
 
@@ -251,9 +251,9 @@ Application Insights 可以监视 Azure 云服务的可用性、性能、故障�
 
 - [云服务监视简介](cloud-services-how-to-monitor.md)
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="26-monitor-and-review-logs"></a>2.6：监视和审查日志
 
@@ -269,11 +269,11 @@ Azure 诊断扩展收集数据，并将数据存储在 Azure 存储帐户中。 
 
 - [使用 PowerShell 在 Azure 云服务中启用诊断](cloud-services-diagnostics-powershell.md)
 
-- [在 Azure 存储中存储和查看诊断数据](diagnostics-extension-to-storage.md?&amp;preserve-view=true)
-
-**Azure 安全中心监视**：不适用
+- [在 Azure 存储中存储和查看诊断数据](https://docs.microsoft.com/azure/cloud-services/diagnostics-extension-to-storage?&amp;preserve-view=true)
 
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="27-enable-alerts-for-anomalous-activities"></a>2.7：针对异常活动启用警报
 
@@ -281,19 +281,19 @@ Azure 诊断扩展收集数据，并将数据存储在 Azure 存储帐户中。 
 
 - [与 SIEM 集成](../security-center/continuous-export.md)
 
-**Azure 安全中心监视**：是
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="28-centralize-anti-malware-logging"></a>2.8：集中管理反恶意软件日志记录
 
 **指导**：适用于 Azure 的 Microsoft Antimalware 可保护 Azure 云服务和虚拟机。 此外，你可以选择部署第三方安全解决方案，例如 Web 应用程序防火墙、网络防火墙、反恶意软件、入侵检测和防护系统 (IDS 或 IPS)，等等。
 
-- [Azure 基本 IPS/IDS 和 DDOS 提供哪些特性和功能](./cloud-services-configuration-and-management-faq.md?preserve-view=true#what-are-the-features-and-capabilities-that-azure-basic-ipsids-and-ddos-provides)
-
-**Azure 安全中心监视**：不适用
+- [Azure 基本 IPS/IDS 和 DDOS 提供哪些特性和功能](https://docs.microsoft.com/azure/cloud-services/cloud-services-configuration-and-management-faq#what-are-the-features-and-capabilities-that-azure-basic-ipsids-and-ddos-provides)
 
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ## <a name="identity-and-access-control"></a>标识和访问控制
 
@@ -315,21 +315,21 @@ Get-AzRoleAssignment -IncludeClassicAdministrators
 
 查看经典订阅管理角色之间的差异。 
 
-- [三个经典订阅管理角色之间的差异](../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles)
-
-**Azure 安全中心监视**：不适用
+- [三个经典订阅管理角色之间的差异](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles#classic-subscription-administrator-roles)
 
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="33-use-dedicated-administrative-accounts"></a>3.3：使用专用管理帐户
 
 **指导**：建议根据可用角色以及操作和管理 Azure 云服务资源所需的权限，围绕专用管理帐户的使用创建标准操作规程。
 
-- [经典订阅管理角色之间的差异](../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles)
-
-**Azure 安全中心监视**：不适用
+- [经典订阅管理角色之间的差异](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles#classic-subscription-administrator-roles)
 
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3.4：将单一登录 (SSO) 与 Azure Active Directory 配合使用
 
@@ -337,9 +337,9 @@ Get-AzRoleAssignment -IncludeClassicAdministrators
 
 - [什么是 (SSO) 的单一登录 ](../active-directory/manage-apps/what-is-single-sign-on.md)
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3.6：对所有管理任务使用专用计算机（特权访问工作站）
 
@@ -347,11 +347,11 @@ Get-AzRoleAssignment -IncludeClassicAdministrators
 
 - [了解安全的 Azure 托管工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
-- [如何启用 Azure AD MFA](../active-directory/authentication/howto-mfa-getstarted.md)
-
-**Azure 安全中心监视**：不适用
+- [如何启用 Azure Active Directory (Azure AD) 多重身份验证](../active-directory/authentication/howto-mfa-getstarted.md)
 
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ## <a name="data-protection"></a>数据保护
 
@@ -375,9 +375,9 @@ Get-AzRoleAssignment -IncludeClassicAdministrators
 
 - [获取包](/rest/api/compute/cloudservices/rest-get-package)
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2：隔离存储或处理敏感信息的系统
 
@@ -389,11 +389,11 @@ Get-AzRoleAssignment -IncludeClassicAdministrators
 
 - [如何创建管理组](../governance/management-groups/create-management-group-portal.md)
 
-- [WebRole 架构](schema-csdef-webrole.md#Certificate)
-
-**Azure 安全中心监视**：不适用
+- [WebRole 架构](https://docs.microsoft.com/azure/cloud-services/schema-csdef-webrole#Certificate)
 
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4.3：监视和阻止未经授权的敏感信息传输
 
@@ -401,9 +401,9 @@ Get-AzRoleAssignment -IncludeClassicAdministrators
 
 - [了解 Azure 中的客户数据保护](../security/fundamentals/protection-customer-data.md)
 
-**Azure 安全中心监视**：不适用
-
 **责任**：共享
+
+**Azure 安全中心监视**：无
 
 ### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4.4：加密传输中的所有敏感信息
 
@@ -413,15 +413,15 @@ Get-AzRoleAssignment -IncludeClassicAdministrators
 
 使用管理证书通过管理 API 进行身份验证。管理证书允许你通过经典部署模型进行身份验证。 许多程序和工具（如 Visual Studio 或 Azure SDK）会使用这些证书来自动配置和部署各种 Azure 服务。 
 
-Azure 服务管理 API 允许以编程方式访问通过 Azure 门户提供的服务管理功能，以获得更多参考信息。 可以使用 Azure SDK for Python 管理 Azure 云服务和 Azure 存储帐户。 Azure SDK for Python 包装了服务管理 API（一个 REST API）。 所有 API 操作都通过 TLS 执行，并使用 X.509 v3 证书互相进行身份验证。 可以从在 Azure 中运行的服务内访问管理服务。 还可以直接通过 Internet 从可发送 HTTPS 请求和接收 HTTPS 响应的任意应用程序访问管理服务。
+为了进一步参考，经典部署模型 API 提供了通过 Azure 门户提供的经典部署模型功能的编程访问。 可以使用 Azure SDK for Python 管理 Azure 云服务和 Azure 存储帐户。 用于 Python 的 Azure SDK 包装了经典部署模型 API，即 REST API。 所有 API 操作都通过 TLS 执行，并使用 X.509 v3 证书互相进行身份验证。 可以从在 Azure 中运行的服务内访问管理服务。 还可以直接通过 Internet 从可发送 HTTPS 请求和接收 HTTPS 响应的任意应用程序访问管理服务。
 
 - [为 Azure 中的应用程序配置 TLS](cloud-services-configure-ssl-certificate-portal.md)
 
-- [从 Python 使用服务管理](cloud-services-python-how-to-use-service-management.md)
-
-**Azure 安全中心监视**：不适用
+- [使用 Python 中的经典部署模型](cloud-services-python-how-to-use-service-management.md)
 
 **责任**：共享
+
+**Azure 安全中心监视**：无
 
 ### <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4.5：使用有效的发现工具识别敏感数据
 
@@ -429,9 +429,9 @@ Azure 服务管理 API 允许以编程方式访问通过 Azure 门户提供的�
 
 - [了解 Azure 中的客户数据保护](../security/fundamentals/protection-customer-data.md)
 
-**Azure 安全中心监视**：不适用
-
 **责任**：共享
+
+**Azure 安全中心监视**：无
 
 ### <a name="47-use-host-based-data-loss-prevention-to-enforce-access-control"></a>4.7：使用基于主机的数据丢失防护来强制实施访问控制
 
@@ -443,41 +443,41 @@ Azure 服务管理 API 允许以编程方式访问通过 Azure 门户提供的�
 
 - [了解 Azure 中的客户数据保护](../security/fundamentals/protection-customer-data.md)
 
-**Azure 安全中心监视**：不适用
-
 **责任**：共享
+
+**Azure 安全中心监视**：无
 
 ### <a name="48-encrypt-sensitive-information-at-rest"></a>4.8：静态加密敏感信息
 
-**指导**：Azure 云服务不支持静态加密。 这是因为 Azure 云服务设计为无状态的服务。 Azure 云服务支持外部存储，例如，默认情况下静态加密的 Azure 存储。  
+**指导**：Azure 云服务不支持静态加密。 这是因为 Azure 云服务设计为无状态。 Azure 云服务支持外部存储，例如，默认情况下加密的 Azure 存储。  
 
 存储在临时磁盘中的应用程序数据不会加密。 客户负责根据需要管理和加密这些数据。  
 
 - [了解 Azure 中的静态加密](../security/fundamentals/encryption-atrest.md)
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4.9：记录对关键 Azure 资源的更改并对此类更改发出警报
 
-**指导**：可以使用 Azure Monitor 中的经典指标警报，在应用于关键资源的指标之一超出阈值时获得通知。 经典指标警报是一个较旧的功能，它仅可针对非维度指标发出警报。 有一个称为“指标警报”的较新功能，它具有比经典指标警报改进的功能。 
+**指导**：可以使用 Azure Monitor 中的经典指标警报，在应用于关键资源的指标之一超出阈值时获得通知。 经典指标警报是一个较旧的功能，它仅可针对非维度指标发出警报。 有一种称为 "指标警报" 的新功能，这些功能已改进了针对经典指标警报的功能。 
 
 另外，Application Insights 可以监视 Azure 云服务应用的可用性、性能、故障和使用情况。 这将结合使用来自 Application Insights SDK 的数据与来自 Azure 云服务的 Azure 诊断数据。
 
-- [使用 Azure Monitor 创建、查看和管理经典指标警报](../azure-monitor/alerts/alerts-classic-portal.md)
+- [使用 Azure Monitor 创建、查看和管理经典指标警报](/azure/azure-monitor/platform/alerts-classic-portal)
 
-- [指标警报概述](../azure-monitor/alerts/alerts-metric-overview.md) 
+- [指标警报概述](/azure/azure-monitor/platform/alerts-metric-overview) 
 
 - [适用于 Azure 云服务（经典）的 Application Insights](../azure-monitor/app/cloudservices.md)
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ## <a name="vulnerability-management"></a>漏洞管理
 
-[有关详细信息，请参阅 *Azure 安全基线：* 漏洞管理](../security/benchmarks/security-control-vulnerability-management.md)。
+[有关详细信息，请参阅 *Azure 安全基线：* 漏洞管理。](../security/benchmarks/security-control-vulnerability-management.md)
 
 ### <a name="52-deploy-automated-operating-system-patch-management-solution"></a>5.2：部署自动操作系统修补管理解决方案
 
@@ -493,11 +493,11 @@ Azure 服务管理 API 允许以编程方式访问通过 Azure 门户提供的�
 
 - [如何配置云服务（经典）](cloud-services-how-to-configure-portal.md)
 
-- [管理来宾 OS 版本](cloud-services-how-to-configure-portal.md#manage-guest-os-version)
-
-**Azure 安全中心监视**：不适用
+- [管理来宾 OS 版本](https://docs.microsoft.com/azure/cloud-services/cloud-services-how-to-configure-portal#manage-guest-os-version)
 
 **责任**：共享
+
+**Azure 安全中心监视**：无
 
 ### <a name="53-deploy-an-automated-patch-management-solution-for-third-party-software-titles"></a>5.3：为第三方软件部署自动化补丁管理解决方案
 
@@ -505,9 +505,9 @@ Azure 服务管理 API 允许以编程方式访问通过 Azure 门户提供的�
 
 这样更新管理就可以通过第三方软件来修补使用 Configuration Manager 作为其更新存储库的计算机。
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="55-use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>5.5：使用风险评级过程来确定已发现漏洞的修正措施的优先级
 
@@ -523,13 +523,13 @@ Azure 服务管理 API 允许以编程方式访问通过 Azure 门户提供的�
 
 支持性文档：
 
-- [针对 Azure 资源的风险评估](../security/fundamentals/ddos-best-practices.md#risk-evaluation-of-your-azure-resources)
-
-**Azure 安全中心监视**：不适用
+- [针对 Azure 资源的风险评估](https://docs.microsoft.com/azure/security/fundamentals/ddos-best-practices#risk-evaluation-of-your-azure-resources)
 
 **责任**：客户
 
-## <a name="inventory-and-asset-management"></a>库存和资产管理
+**Azure 安全中心监视**：无
+
+## <a name="inventory-and-asset-management"></a>清单和资产管理
 
 [有关详细信息，请参阅 *Azure 安全基线：* 清单和资产管理](../security/benchmarks/security-control-inventory-asset-management.md)。
 
@@ -537,29 +537,29 @@ Azure 服务管理 API 允许以编程方式访问通过 Azure 门户提供的�
 
 **指导**：不适用于 Azure 云服务。 此建议适用于 IaaS 计算资源。
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="63-delete-unauthorized-azure-resources"></a>6.3：删除未经授权的 Azure 资源
 
 **指导**：建议定期核对清单，确保及时地从订阅中删除未经授权的资源。
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="64-define-and-maintain-an-inventory-of-approved-azure-resources"></a>6.4：定义并维护已批准 Azure 资源的清单
 
 **指导**：客户应当为计算资源定义批准的 Azure 资源和批准的软件。
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="65-monitor-for-unapproved-azure-resources"></a>6.5：监视未批准的 Azure 资源
 
-**指导**：使用 Azure 安全中心提供的自适应应用程序控制功能。 它是安全中心提供的一种智能的、自动化的端到端解决方案，有助于控制可在 Windows 和 Linux、Azure 和非 Azure 计算机上运行的应用程序。 它还有助于增强计算机抵御恶意软件的能力。 
+**指导**：使用 Azure 安全中心提供的自适应应用程序控制功能。 它是来自安全中心的智能、自动化的端到端解决方案，可帮助你控制哪些应用程序可以在 Windows 和 Linux、Azure 和非 Azure 计算机上运行。 它还有助于增强计算机抵御恶意软件的能力。 
 
 此功能适用于 Azure 和非 Azure Windows（所有版本，不管是经典部署模型还是 Azure 资源管理器部署模型）和 Linux 计算机。
 
@@ -576,13 +576,13 @@ Azure 服务管理 API 允许以编程方式访问通过 Azure 门户提供的�
 
 - [自适应应用程序控制](../security-center/security-center-adaptive-application.md)
 
-**Azure 安全中心监视**：是
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6.6：监视计算资源中未批准的软件应用程序
 
-**指导**：使用 Azure 安全中心提供的自适应应用程序控制功能。 它是安全中心提供的一种智能的、自动化的端到端解决方案，有助于控制可在 Windows 和 Linux、Azure 和非 Azure 计算机上运行的应用程序。 它还有助于增强计算机抵御恶意软件的能力。 
+**指导**：使用 Azure 安全中心提供的自适应应用程序控制功能。 它是来自安全中心的智能、自动化的端到端解决方案，可帮助你控制哪些应用程序可以在 Windows 和 Linux、Azure 和非 Azure 计算机上运行。 它还有助于增强计算机抵御恶意软件的能力。 
 
 此功能适用于 Azure 和非 Azure Windows（所有版本，不管是经典部署模型还是 Azure 资源管理器部署模型）和 Linux 计算机。
 
@@ -604,13 +604,13 @@ Azure 服务管理 API 允许以编程方式访问通过 Azure 门户提供的�
 
 - [自适应应用程序控制](../security-center/security-center-adaptive-application.md)
 
-**Azure 安全中心监视**：是
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6.7：删除未批准的 Azure 资源和软件应用程序
 
-**指导**：使用 Azure 安全中心提供的自适应应用程序控制功能。 它是安全中心提供的一种智能的、自动化的端到端解决方案，有助于控制可在 Windows 和 Linux、Azure 和非 Azure 计算机上运行的应用程序。 它还有助于增强计算机抵御恶意软件的能力。 
+**指导**：使用 Azure 安全中心提供的自适应应用程序控制功能。 它是来自安全中心的智能、自动化的端到端解决方案，可帮助你控制哪些应用程序可以在 Windows 和 Linux、Azure 和非 Azure 计算机上运行。 它还有助于增强计算机抵御恶意软件的能力。 
 
 此功能适用于 Azure 和非 Azure Windows（所有版本，不管是经典部署模型还是 Azure 资源管理器部署模型）和 Linux 计算机。
 
@@ -632,13 +632,13 @@ Azure 服务管理 API 允许以编程方式访问通过 Azure 门户提供的�
 
 - [自适应应用程序控制](../security-center/security-center-adaptive-application.md)
 
-**Azure 安全中心监视**：是
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="68-use-only-approved-applications"></a>6.8：仅使用已批准的应用程序
 
-**指导**：使用 Azure 安全中心提供的自适应应用程序控制功能。 它是安全中心提供的一种智能的、自动化的端到端解决方案，有助于控制可在 Windows 和 Linux、Azure 和非 Azure 计算机上运行的应用程序。 它还有助于增强计算机抵御恶意软件的能力。 
+**指导**：使用 Azure 安全中心提供的自适应应用程序控制功能。 它是来自安全中心的智能、自动化的端到端解决方案，可帮助你控制哪些应用程序可以在 Windows 和 Linux、Azure 和非 Azure 计算机上运行。 它还有助于增强计算机抵御恶意软件的能力。 
 
 此功能适用于 Azure 和非 Azure Windows（所有版本，不管是经典部署模型还是 Azure 资源管理器部署模型）和 Linux 计算机。
 
@@ -660,13 +660,13 @@ Azure 服务管理 API 允许以编程方式访问通过 Azure 门户提供的�
 
 - [自适应应用程序控制](../security-center/security-center-adaptive-application.md)
 
-**Azure 安全中心监视**：是
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="610-maintain-an-inventory-of-approved-software-titles"></a>6.10：维护已获批软件的清单
 
-**指导**：使用 Azure 安全中心提供的自适应应用程序控制功能。 它是安全中心提供的一种智能的、自动化的端到端解决方案，有助于控制可在 Windows 和 Linux、Azure 和非 Azure 计算机上运行的应用程序。 它还有助于增强计算机抵御恶意软件的能力。 
+**指导**：使用 Azure 安全中心提供的自适应应用程序控制功能。 它是来自安全中心的智能、自动化的端到端解决方案，可帮助你控制哪些应用程序可以在 Windows 和 Linux、Azure 和非 Azure 计算机上运行。 它还有助于增强计算机抵御恶意软件的能力。 
 
 此功能适用于 Azure 和非 Azure Windows（所有版本，不管是经典部署模型还是 Azure 资源管理器部署模型）和 Linux 计算机。
 
@@ -683,13 +683,13 @@ Azure 服务管理 API 允许以编程方式访问通过 Azure 门户提供的�
 
 - [自适应应用程序控制](../security-center/security-center-adaptive-application.md)
 
-**Azure 安全中心监视**：是
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="612-limit-users-ability-to-execute-scripts-in-compute-resources"></a>6.12：限制用户在计算资源中执行脚本的能力
 
-**指导**：使用 Azure 安全中心提供的自适应应用程序控制功能。 它是安全中心提供的一种智能的、自动化的端到端解决方案，有助于控制可在 Windows 和 Linux、Azure 和非 Azure 计算机上运行的应用程序。 它还有助于增强计算机抵御恶意软件的能力。 
+**指导**：使用 Azure 安全中心提供的自适应应用程序控制功能。 它是来自安全中心的智能、自动化的端到端解决方案，可帮助你控制哪些应用程序可以在 Windows 和 Linux、Azure 和非 Azure 计算机上运行。 它还有助于增强计算机抵御恶意软件的能力。 
 
 此功能适用于 Azure 和非 Azure Windows（所有版本，不管是经典部署模型还是 Azure 资源管理器部署模型）和 Linux 计算机。
 
@@ -711,9 +711,9 @@ Azure 服务管理 API 允许以编程方式访问通过 Azure 门户提供的�
 
 - [自适应应用程序控制](../security-center/security-center-adaptive-application.md)
 
-**Azure 安全中心监视**：是
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6.13：以物理或逻辑方式隔离高风险应用程序
 
@@ -725,9 +725,9 @@ Azure 服务管理 API 允许以编程方式访问通过 Azure 门户提供的�
 
 - [教程 - 在 Azure 门户中使用网络安全组筛选网络流量](../virtual-network/tutorial-filter-network-traffic.md)
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ## <a name="secure-configuration"></a>安全配置
 
@@ -741,41 +741,41 @@ Azure 服务管理 API 允许以编程方式访问通过 Azure 门户提供的�
 
 - [安全建议 - 参考指南](../security-center/recommendations-reference.md)
 
-**Azure 安全中心监视**：是
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="73-maintain-secure-azure-resource-configurations"></a>7.3：维护安全的 Azure 资源配置
 
 **指导**：不适用于 Azure 云服务。 它基于经典部署模型。 建议使用第三方解决方案来维护安全的 Azure 资源配置
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="75-securely-store-configuration-of-azure-resources"></a>7.5：安全存储 Azure 资源的配置
 
 **指导**：Azure 云服务的配置文件存储资源的操作属性。 你可以将配置文件的副本存储到安全的存储帐户。
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="77-deploy-configuration-management-tools-for-azure-resources"></a>7.7：部署 Azure 资源的配置管理工具
 
 **指导**：不适用于 Azure 云服务。 它基于经典部署模型，无法通过基于 Azure 资源管理器部署的配置工具进行管理。
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="78-deploy-configuration-management-tools-for-operating-systems"></a>7.8：部署操作系统的配置管理工具
 
 **指导**：不适用于 Azure 云服务。 此建议适用于基于基础结构即服务 (IaaS) 的计算资源。
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="79-implement-automated-configuration-monitoring-for-azure-resources"></a>7.9：为 Azure 资源实施自动配置监视
 
@@ -783,9 +783,9 @@ Azure 服务管理 API 允许以编程方式访问通过 Azure 门户提供的�
 
 - [如何在 Azure 安全中心修正建议](../security-center/security-center-remediate-recommendations.md)
 
-**Azure 安全中心监视**：是
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7.10：为操作系统实施自动配置监视
 
@@ -793,9 +793,9 @@ Azure 服务管理 API 允许以编程方式访问通过 Azure 门户提供的�
 
 - [了解 Azure 安全中心容器建议](../security-center/container-security.md)
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="711-manage-azure-secrets-securely"></a>7.11：安全管理 Azure 机密
 
@@ -805,11 +805,11 @@ Azure 服务管理 API 允许以编程方式访问通过 Azure 门户提供的�
 
 此外，建议将 Azure 云服务中使用的证书的私钥存储到受保护的存储中。
 
-- [从 PowerShell 配置远程桌面](cloud-services-role-enable-remote-desktop-powershell.md#configure-remote-desktop-from-powershell)
-
-**Azure 安全中心监视**：不适用
+- [从 PowerShell 配置远程桌面](https://docs.microsoft.com/azure/cloud-services/cloud-services-role-enable-remote-desktop-powershell#configure-remote-desktop-from-powershell)
 
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="713-eliminate-unintended-credential-exposure"></a>7.13：消除意外的凭据透露
 
@@ -820,11 +820,11 @@ Azure 服务管理 API 允许以编程方式访问通过 Azure 门户提供的�
 
 将 Azure 云服务中使用的证书的私钥存储到受保护的存储位置。
 
-- [从 PowerShell 配置远程桌面](cloud-services-role-enable-remote-desktop-powershell.md#configure-remote-desktop-from-powershell)
-
-**Azure 安全中心监视**：不适用
+- [从 PowerShell 配置远程桌面](https://docs.microsoft.com/azure/cloud-services/cloud-services-role-enable-remote-desktop-powershell#configure-remote-desktop-from-powershell)
 
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ## <a name="malware-defense"></a>恶意软件防护
 
@@ -840,15 +840,15 @@ Azure 服务管理 API 允许以编程方式访问通过 Azure 门户提供的�
 
 选择 Azure 安全中心内的自适应应用程序控制功能，这是一个智能的自动化端到端解决方案。 它有助于增强计算机抵御恶意软件的能力，让你能够阻止运行恶意应用程序的尝试（包括在其他情况下可能会被反恶意软件解决方案遗漏的尝试）或者向用户发出此方面的警报。
 
-- [如何以自动化方式为 Azure 云服务添加 Antimalware 扩展](./cloud-services-configuration-and-management-faq.md?preserve-view=true#how-can-i-add-an-antimalware-extension-for-my-cloud-services-in-an-automated-way)
+- [如何以自动化方式为 Azure 云服务添加 Antimalware 扩展](https://docs.microsoft.com/azure/cloud-services/cloud-services-configuration-and-management-faq#how-can-i-add-an-antimalware-extension-for-my-cloud-services-in-an-automated-way)
 
-- [反恶意软件部署方案](../security/fundamentals/antimalware.md#antimalware-deployment-scenarios)
+- [反恶意软件部署方案](https://docs.microsoft.com/azure/security/fundamentals/antimalware#antimalware-deployment-scenarios)
 
 - [自适应应用程序控制](../security-center/security-center-adaptive-application.md)
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ## <a name="incident-response"></a>事件响应
 
@@ -866,19 +866,19 @@ Azure 服务管理 API 允许以编程方式访问通过 Azure 门户提供的�
 
 - [客户还可以利用 NIST 的“计算机安全事件处理指南”来制定他们自己的事件响应计划](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf)
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10.2：创建事件评分和优先级设定过程
 
-**指导**：Azure 安全中心为每条警报分配严重性，方便你根据优先级来确定应该最先调查的警报。 严重性取决于安全中心在发出警报时所依据的检测结果和分析结果的置信度，以及导致发出警报的活动的恶意企图的置信度。 
+**指导**：Azure 安全中心为每条警报分配严重性，方便你根据优先级来确定应该最先调查的警报。 严重性取决于安全中心对调查结果或用于发出警报的分析的确信程度，以及对导致警报的活动背后存在恶意意图的确信程度。 
 
 清楚地标记订阅（例如生产、非生产），并创建命名系统来对 Azure 资源进行明确标识和分类。
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="103-test-security-response-procedures"></a>10.3：测试安全响应过程
 
@@ -886,9 +886,9 @@ Azure 服务管理 API 允许以编程方式访问通过 Azure 门户提供的�
 
 - [请参阅 NIST 的刊物：Guide to Test, Training, and Exercise Programs for IT Plans and Capabilities](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf)（IT 规划和功能的测试、培训与演练计划指南）
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10.4：提供安全事件联系人详细信息，并针对安全事件配置警报通知
 
@@ -896,9 +896,9 @@ Azure 服务管理 API 允许以编程方式访问通过 Azure 门户提供的�
 
 - [如何设置 Azure 安全中心安全联系人](../security-center/security-center-provide-security-contact-details.md)
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10.5：将安全警报整合到事件响应系统中
 
@@ -908,9 +908,9 @@ Azure 服务管理 API 允许以编程方式访问通过 Azure 门户提供的�
 
 - [如何将警报流式传输到 Azure Sentinel](../sentinel/connect-azure-security-center.md)
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="106-automate-the-response-to-security-alerts"></a>10.6：自动响应安全警报
 
@@ -918,9 +918,9 @@ Azure 服务管理 API 允许以编程方式访问通过 Azure 门户提供的�
 
 - [如何配置工作流自动化和逻辑应用](../security-center/workflow-automation.md)
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>渗透测试和红队练习
 
@@ -928,15 +928,17 @@ Azure 服务管理 API 允许以编程方式访问通过 Azure 门户提供的�
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11.1：定期对 Azure 资源执行渗透测试，确保修正所有发现的关键安全问题
 
-指南：遵循 Microsoft Rules of Engagement 以确保渗透测试不违反 Microsoft 政策： https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1 
+**指导**：请遵循 Microsoft 云渗透测试互动规则，确保你的渗透测试不违反 Microsoft 政策。 使用 Microsoft 红队演练策略和执行，以及针对 Microsoft 托管云基础结构、服务和应用程序执行现场渗透测试。 
 
-- [可在此处详细了解如何针对 Microsoft 托管云基础结构、服务和应用程序执行红队测试和实时站点渗透测试，以及 Microsoft 的相关策略](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
+- [参与的渗透测试规则](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1) 
 
-**Azure 安全中心监视**：不适用
+- [Microsoft 云红色组合](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
 
 **责任**：共享
 
+**Azure 安全中心监视**：无
+
 ## <a name="next-steps"></a>后续步骤
 
-- 请参阅 [Azure 安全基准](../security/benchmarks/overview.md)
-- 详细了解 [Azure 安全基线](../security/benchmarks/security-baselines-overview.md)
+- 参阅 [Azure 安全基准 V2 概述](/azure/security/benchmarks/overview)
+- 详细了解 [Azure 安全基线](/azure/security/benchmarks/security-baselines-overview)

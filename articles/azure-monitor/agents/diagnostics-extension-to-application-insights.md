@@ -1,17 +1,16 @@
 ---
 title: 将 Azure 诊断数据发送到 Application Insights
 description: 更新 Azure 诊断公共配置，以将数据发送到 Application Insights。
-ms.subservice: diagnostic-extension
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/19/2016
-ms.openlocfilehash: 5af0eb20f9766369caa7351719b63b213c394e5d
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: b9e9d6b1b5939804b24fd523bf8b7444ed41178f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100608175"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708588"
 ---
 # <a name="send-cloud-service-virtual-machine-or-service-fabric-diagnostic-data-to-application-insights"></a>将云服务、虚拟机或 Service Fabric 诊断数据发送到 Application Insights
 云服务、虚拟机、虚拟机规模集和 Service Fabric 都使用 Azure 诊断扩展来收集数据。  Azure 诊断将数据发送到 Azure 存储表。  但是，也可以 Azure 诊断扩展 1.5 或更高版本，通过管道将所有或一部分数据发送到其他位置。
@@ -56,7 +55,7 @@ Application Insights 接收器的示例配置：
     ]
 }
 ```
-- **接收器** 的 name  属性是用于唯一标识该接收器的字符串值。
+- **接收器的** *name* 属性是用于唯一标识该接收器的字符串值。
 
 - **ApplicationInsights** 元素指定要将 Azure 诊断数据发送到的 Application Insights 资源的检测键。
     - 如果没有 Application Insights 资源，请参阅[创建新的 Application Insights 资源](../app/create-new-resource.md)，了解有关创建资源和获取检测键的详细信息。
@@ -65,7 +64,7 @@ Application Insights 接收器的示例配置：
 - **Channels** 元素包含一个或多个 **Channels** 元素。
     - *name* 属性唯一引用该通道。
     - 使用 *loglevel* 属性可以指定通道允许的日志级别。 可用日志级别从最多信息到最少信息的顺序依次为：
-        - “详细”
+        - 详细
         - 信息
         - 警告
         - 错误
@@ -172,10 +171,11 @@ Application Insights 接收器的示例配置：
 
 ### <a name="send-all-the-data-that-is-being-collected-by-azure-diagnostics"></a>发送 Azure 诊断收集的所有数据
 
-```XML
+```xml
 <DiagnosticMonitorConfiguration overallQuotaInMB="4096" sinks="ApplicationInsights">
 ```
-```JSON
+
+```json
 "DiagnosticMonitorConfiguration": {
     "overallQuotaInMB": 4096,
     "sinks": "ApplicationInsights",
@@ -184,10 +184,11 @@ Application Insights 接收器的示例配置：
 
 ### <a name="send-only-error-logs-to-the-application-insights-sink"></a>只将错误日志发送到 Application Insights 接收器
 
-```XML
+```xml
 <DiagnosticMonitorConfiguration overallQuotaInMB="4096" sinks="ApplicationInsights.MyTopDiagdata">
 ```
-```JSON
+
+```json
 "DiagnosticMonitorConfiguration": {
     "overallQuotaInMB": 4096,
     "sinks": "ApplicationInsights.MyTopDiagData",
@@ -210,7 +211,7 @@ Application Insights 接收器的示例配置：
 
 - **通道只能记录类型，而不能记录性能计数器。** 如果对性能计数器元素指定通道，将忽略该通道。
 - **通道的日志级别不能超过 Azure 诊断所要收集的日志级别。** 例如，不能在 Logs 元素中收集应用程序日志错误，并且不能尝试向 Application Insight 接收器发送详细日志。 *scheduledTransferLogLevelFilter* 属性收集的日志数始终必须等于或大于尝试发送到接收器的日志数。
-- **无法将 Azure 诊断扩展收集的 Blob 数据发送到 Application Insights。** 例如，*Directories* 节点下指定的任何数据。 对于故障转储，实际故障转储将发送到 Blob 存储，并只会将生成了故障转储的通知发送到 Application Insights。
+- **无法将 Azure 诊断扩展收集的 Blob 数据发送到 Application Insights。** 例如，在 " *目录* " 节点下指定的任何内容。 对于故障转储，实际故障转储将发送到 Blob 存储，并只会将生成了故障转储的通知发送到 Application Insights。
 
 ## <a name="next-steps"></a>后续步骤
 * 了解如何在 Application Insights 中[查看 Azure 诊断信息](../app/cloudservices.md)。

@@ -4,19 +4,19 @@ description: 了解如何将 Azure 指标警报重新路由到其他非 Azure �
 author: harelbr
 ms.author: harelbr
 ms.topic: conceptual
-ms.date: 04/03/2017
+ms.date: 02/14/2021
 ms.subservice: alerts
-ms.openlocfilehash: 93b8a9935e1a26df5aa76ca45c890036589a48ff
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 1ead28618582ff670aca048bb92803d61c6ca938
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100608316"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723514"
 ---
 # <a name="call-a-webhook-with-a-classic-metric-alert-in-azure-monitor"></a>在 Azure Monitor 中对经典指标警报调用 Webhook
 
 > [!WARNING]
-> 本文介绍了如何使用旧式经典指标警报。 Azure Monitor 现在支持[较新的近实时指标警报和新的警报体验](../platform/alerts-overview.md)。 对于公有云用户，经典警报会被 [停](../platform/monitoring-classic-retirement.md) 用，但对于尚不支持新警报的资源仍有限制。
+> 本文介绍了如何使用旧式经典指标警报。 Azure Monitor 现在支持[较新的近实时指标警报和新的警报体验](./alerts-overview.md)。 公有云用户会 [停](./monitoring-classic-retirement.md) 用经典警报，但在 **31 年 5 2021 月31日** 之前仍处于有限使用状态。 Azure 政府云和 Azure 中国世纪互联的经典警报将于 **2024 年2月29日** 停用。
 >
 
 可以使用 Webhook 将 Azure 警报通知路由到其他系统，以便进行后续处理或自定义操作。 可以针对警报使用 Webhook，以将警报路由到可以发送短信的服务，以记录 Bug、通过聊天/消息服务通知团队，或进行各种其他操作。 
@@ -30,7 +30,7 @@ Azure 警报使用 HTTP POST 将警报内容以 JSON 格式发送到创建警报
 
 ![“添加警报规则”窗格](./media/alerts-webhooks/Alertwebhook.png)
 
-还可以使用 [Azure PowerShell cmdlet](../samples/powershell-samples.md#create-metric-alerts)、[跨平台 CLI](../samples/cli-samples.md#work-with-alerts) 或 [Azure Monitor REST API](/rest/api/monitor/alertrules) 将警报配置为发布到 Webhook URI。
+还可以使用 [Azure PowerShell cmdlet](../powershell-samples.md#create-metric-alerts)、[跨平台 CLI](../cli-samples.md#work-with-alerts) 或 [Azure Monitor REST API](/rest/api/monitor/alertrules) 将警报配置为发布到 Webhook URI。
 
 ## <a name="authenticate-the-webhook"></a>对 webhook 进行身份验证
 Webhook 可使用基于令牌的身份验证进行身份验证。 保存的 Webhook URI 具有令牌 ID。 例如： `https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue`

@@ -1,24 +1,24 @@
 ---
-title: 启用用于 VM 的 Azure Monitor 来宾运行状况（预览）
-description: 介绍如何在你的订阅中启用用于 VM 的 Azure Monitor 来宾健康状况，以及如何载入 Vm。
+title: '启用 VM insights 来宾运行状况 (预览) '
+description: 介绍如何在你的订阅中启用 VM insights 来宾运行状况以及如何载入 Vm。
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/16/2020
 ms.custom: references_regions
-ms.openlocfilehash: 5a65a986e95f333b6179c71a46edc69ca61acdea
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 3747e9190010bd3c0b88dfdbe9da01009316c275
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100608073"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733714"
 ---
-# <a name="enable-azure-monitor-for-vms-guest-health-preview"></a>启用用于 VM 的 Azure Monitor 来宾运行状况（预览）
-用于 VM 的 Azure Monitor 来宾健康状况允许你查看按固定时间间隔采样的一组性能度量定义的虚拟机的运行状况。 本文介绍如何在你的订阅中启用此功能，以及如何为每个虚拟机启用来宾监视。
+# <a name="enable-vm-insights-guest-health-preview"></a>启用 VM insights 来宾运行状况 (预览) 
+VM insights 来宾运行状况允许你查看按固定时间间隔采样的一组性能度量定义的虚拟机的运行状况。 本文介绍如何在你的订阅中启用此功能，以及如何为每个虚拟机启用来宾监视。
 
 ## <a name="current-limitations"></a>当前限制
-在公共预览版中，用于 VM 的 Azure Monitor 来宾健康状况有以下限制：
+VM insights 来宾运行状况在公共预览版中具有以下限制：
 
 - 目前仅支持 Azure 虚拟机。 当前不支持 Azure Arc for servers。
 
@@ -35,20 +35,26 @@ ms.locfileid: "100608073"
 
 - 澳大利亚中部
 - 澳大利亚东部
-- Australia Southeast
+- 澳大利亚东南部
+- 加拿大中部
 - 印度中部
 - 美国中部
 - 东亚
 - 美国东部
 - 美国东部 2
 - 美国东部 2 EUAP
+- 法国中部
 - 德国中西部
 - Japan East
+- 韩国中部
 - 美国中北部
 - 北欧
 - 美国中南部
+- 南非北部
 - 东南亚
+- 瑞士北部
 - 英国南部
+- 英国西部
 - 美国中西部
 - 西欧
 - 美国西部
@@ -57,24 +63,36 @@ ms.locfileid: "100608073"
 
 Log Analytics 工作区必须位于以下区域之一：
 
-- Central US
+- 澳大利亚中部
+- 澳大利亚东部
+- 澳大利亚东南部
+- 加拿大中部
+- 加拿大印度
+- 美国中部
+- 东亚
 - 美国东部
 - 美国东部 2
 - 美国东部 2 EUAP
+- 法国中部
+- 日本东部
+- 美国中北部
 - 北欧
+- 美国中南部
 - 东南亚
+- 瑞士北部
 - 英国南部
 - 西欧区域
+- 美国西部
 - 美国西部 2
 
 ## <a name="prerequisites"></a>先决条件
 
-- 虚拟机必须载入，才能用于 VM 的 Azure Monitor。
+- 虚拟机必须载入 VM insights。
 - 执行载入步骤的用户必须至少具有 "参与者" 级别对虚拟机和数据收集规则所在的订阅的访问权限。
 - 必需的 Azure 资源提供程序必须注册，如以下部分所述。
 
 ## <a name="register-required-azure-resource-providers"></a>注册所需的 Azure 资源提供程序
-为你的订阅注册以下 Azure 资源提供程序，以启用用于 VM 的 Azure Monitor 来宾健康状况。 
+为你的订阅注册以下 Azure 资源提供程序以启用 VM insights 来宾运行状况。 
 
 - Microsoft.WorkloadMonitor
 - Microsoft.Insights
@@ -90,7 +108,7 @@ POST https://management.azure.com/subscriptions/[subscriptionId]/providers/Micro
 ## <a name="enable-a-virtual-machine-using-the-azure-portal"></a>使用 Azure 门户启用虚拟机
 在 Azure 门户中为虚拟机启用来宾运行状况时，系统将为你执行所有必需的配置。 这包括创建需要数据收集规则、在虚拟机上安装来宾运行状况扩展，以及创建与数据收集规则的关联。
 
-在用于 VM 的 Azure Monitor 中的 " **入门** " 视图中，单击虚拟机的升级消息旁边的链接，然后单击 " **升级** " 按钮。 还可选择多个虚拟机一起升级。
+在 VM insights 的 " **入门** " 视图中，单击虚拟机的升级消息旁边的链接，然后单击 " **升级** " 按钮。 还可选择多个虚拟机一起升级。
 
 ![启用虚拟机上的运行状况功能](media/vminsights-health-enable/enable-agent.png)
 
@@ -107,10 +125,10 @@ POST https://management.azure.com/subscriptions/[subscriptionId]/providers/Micro
 > [!NOTE]
 > 如果使用 Azure 门户启用虚拟机，则会为你创建此处所述的数据收集规则。 在这种情况下，不需要执行此步骤。
 
-用于 VM 的 Azure Monitor 来宾运行状况中的监视器的配置存储在 [数据收集规则 (DCR) ](../agents/data-collection-rule-overview.md)中。 具有来宾运行状况扩展的每个虚拟机都需要与此规则关联。
+VM insights 来宾运行状况中的监视器的配置存储在 [数据收集规则 (DCR) ](../agents/data-collection-rule-overview.md)。 具有来宾运行状况扩展的每个虚拟机都需要与此规则关联。
 
 > [!NOTE]
-> 你可以创建其他数据收集规则来修改监视器的默认配置，如在 [用于 VM 的 Azure Monitor 来宾健康状况 (预览版) ](vminsights-health-configure.md)中所述。
+> 可以根据在 [VM insights 来宾健康状况 (预览) 中配置监视 ](vminsights-health-configure.md)中所述，创建其他数据收集规则来修改监视器的默认配置。
 
 模板需要以下参数的值：
 
@@ -414,4 +432,4 @@ az deployment group create --name GuestHealthDeployment --resource-group my-reso
 
 ## <a name="next-steps"></a>后续步骤
 
-- [用于 VM 的 Azure Monitor 启用自定义监视器](vminsights-health-configure.md)
+- [自定义 VM insights 启用的监视器](vminsights-health-configure.md)

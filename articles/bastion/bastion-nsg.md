@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: conceptual
 ms.date: 12/09/2020
 ms.author: cherylmc
-ms.openlocfilehash: 4fe22e0dae73df7af4fc24ba508ecbecf72dfd05
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: b6a0dee4c3fef1be4f4b9f910b4c6256b4924a2d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97795356"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101700212"
 ---
 # <a name="working-with-nsg-access-and-azure-bastion"></a>使用 NSG 访问和 Azure Bastion
 
@@ -32,15 +32,19 @@ ms.locfileid: "97795356"
 
 本部分介绍用户与 Azure Bastion 之间的网络流量，以及到虚拟网络中的目标 VM 的网络流量：
 
+> [!IMPORTANT]
+> 如果选择将 NSG 与 Azure 堡垒资源一起使用，则 **必须** 创建以下所有入站和出站流量规则。 省略 NSG 中的以下任何规则后，会阻止 Azure 堡垒资源在将来收到必要的更新，从而将资源打开，以应对将来的安全漏洞。
+> 
+
 ### <a name="azurebastionsubnet"></a><a name="apply"></a>AzureBastionSubnet
 
-Azure Bastion 将专门部署到 *AzureBastionSubnet_。
+Azure Bastion 将专门部署到 ***AzureBastionSubnet***。
 
-_ **入口流量：**
+* **入口流量：**
 
    * **来自公共 Internet 的入口流量：** Azure Bastion 将创建一个公共 IP，需要在该公共 IP 上启用端口 443，用于入口流量。 不需要在 AzureBastionSubnet 上打开端口 3389/22。
    * **来自 Azure Bastion 控制平面的入口流量：** 对于控制平面连接，请启用从 GatewayManager 服务标记进行的端口 443 入站。 这使控制平面（即网关管理器）能够与 Azure Bastion 通信。
-   * **从 Azure 堡垒数据平面传输流量：** 对于 Azure 堡垒基础组件之间的数据平面通信，请从 **VirtualNetwork** service 标记中启用端口8080、5701 Inbound 入 **VirtualNetwork** service 标记。 这使得 Azure 堡垒的组件能够彼此通信。
+   * **来自 Azure Bastion 数据平面的入口流量：** 对于 Azure Bastion 基础组件之间的数据平面通信，启用端口 8080、5701 从 VirtualNetwork 服务标记到 VirtualNetwork 服务标记入站 。 这使得 Azure Bastion 的组件能够彼此通信。
    * **来自 Azure 负载均衡器的入口流量：** 对于运行状况探测，请从 AzureLoadBalancer 服务标记启用端口 443 入站。 这使得 Azure 负载均衡器能够检测连接性
 
 
@@ -49,9 +53,9 @@ _ **入口流量：**
 * **出口流量：**
 
    * **流向目标 VM 的出口流量：** Azure Bastion 将通过专用 IP 到达目标 VM。 NSG 需要允许端口 3389 和 22 的出口流量流向其他目标 VM 子网。
-   * **到 Azure 堡垒数据平面的出口流量：** 对于 Azure 堡垒基础组件之间的数据平面通信，启用端口8080，将 **VirtualNetwork** service 标记中的5701出站发送到 **VirtualNetwork** 服务标记。 这使得 Azure 堡垒的组件能够彼此通信。
+   * **流向 Azure Bastion 数据平面的出口流量：** 对于 Azure Bastion 基础组件之间的数据平面通信，启用端口 8080、5701 从 VirtualNetwork 服务标记到 VirtualNetwork 服务标记出站 。 这使得 Azure Bastion 的组件能够彼此通信。
    * **流向 Azure 中其他公共终结点的出口流量：** Azure Bastion 需要能够连接到 Azure 中的各种公共终结点，以便执行相应操作（例如，存储诊断日志和计量日志）。 因此，Azure Bastion 需要出站到 443，再到 AzureCloud 服务标记。
-   * 流向 **Internet 的出口流量：** 若要进行会话和证书验证，Azure 堡垒需要能够与 Internet 通信。 出于此原因，我们建议启用到 Internet 的出站端口 80 **。**
+   * **流向目标 Internet 的出口流量：** 若要进行会话和证书验证，Azure Bastion 需要能与 Internet 通信。 出于此原因，我们建议启用到 Internet 的出站端口 80 **。**
 
 
    :::image type="content" source="./media/bastion-nsg/outbound.png" alt-text="屏幕截图显示 Azure Bastion 连接的出站安全规则。":::

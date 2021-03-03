@@ -4,15 +4,15 @@ description: 应用服务环境概述
 author: ccompy
 ms.assetid: 3d37f007-d6f2-4e47-8e26-b844e47ee919
 ms.topic: article
-ms.date: 11/16/2020
+ms.date: 03/02/2021
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: fbc498fcd654d16936c2548528e2600be68a2ad9
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 23b23340550ded3642d19500270f06cfb6faf8cb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94663503"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101735091"
 ---
 # <a name="app-service-environment-overview"></a>应用服务环境概述 
 
@@ -53,7 +53,7 @@ ASEv3 附带有自己的定价层（独立版）。
 多租户应用服务中的应用可以使用多个网络功能来访问网络隔离的资源，或使其自身成为网络隔离资源。 这些功能在应用程序级别启用。  使用 ASE 时，应用上没有其他配置，因此它们位于 VNet 中。 应用部署到已在 VNet 中的网络隔离环境。 在 ASE 托管网络隔离的应用程序的基础上，它也是单租户系统。 没有其他客户使用 ASE。 如果确实需要完整的隔离情景，还可以将 ASE 部署到专用硬件上。 在网络隔离的应用程序托管、单个租赁和功能之间 
 
 ## <a name="dedicated-environment"></a>专用环境
-ASE 专用于单个订阅，可托管200应用服务计划实例。 其范围可涵盖单个应用服务计划中的 100 个实例，也可以是 100 个单实例应用服务计划，或者两者之间的任何实例。
+ASE 专用于单个订阅，可以在多个应用服务计划中托管200个应用服务计划实例。 "实例" 一词指的是应用服务计划水平缩放。 每个实例都等效于辅助角色。 当 ASE 可以具有200个实例时，单个独立的 v2 应用服务计划可以包含100个实例。 ASE 可以在每个、200单实例应用服务计划中包含100实例的两个应用服务计划，或者两者之间的所有内容。
 
 ASE 由前端和辅助角色组成。 前端负责处理 HTTP/HTTPS 终止以及 ASE 中应用请求的自动负载均衡。 前端作为应用服务计划自动添加在 ASE 中，并且可以扩展。
 
@@ -77,7 +77,7 @@ ASE 功能直接将 Azure 应用服务部署到客户的 Azure 资源管理器�
 ## <a name="preview"></a>预览
 应用服务环境 v3 为公共预览版。  预览过程中会添加某些功能。 ASEv3 的当前限制包括：
 
-- 无法将应用服务计划扩展到五个以上的实例
+- 无法将应用服务计划缩放到50以上的实例
 - 无法从专用注册表获取容器
 - 当前不受支持的应用服务功能无法通过客户 VNet
 - 没有带 internet 可访问终结点的外部部署模型

@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/19/2020
-ms.openlocfilehash: a4883bfce2469af0ee8bcc34933f94b0b5329959
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: 2ecc5df9db51bb6c923b9e0f47163e492bd76cfa
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100518073"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101695732"
 ---
 # <a name="register-and-scan-a-power-bi-tenant-preview"></a>注册并扫描 Power BI 租户 (预览版) 
 
@@ -98,11 +98,13 @@ ms.locfileid: "100518073"
     > 对于 Power BI，只允许一个实例的数据源注册和扫描。
 
 
-4. 为扫描指定一个名称。 请注意，唯一支持的身份验证方法是 **托管标识**。
+4. 为扫描指定一个名称。 然后选择包含或排除个人工作区的选项。 请注意，唯一支持的身份验证方法是 **托管标识**。
 
     :::image type="content" source="media/setup-power-bi-scan-catalog-portal/power-bi-scan-setup.png" alt-text="显示 Power BI 扫描设置的图像":::
 
-    扫描名称长度必须介于3-63 个字符之间，并且必须仅包含字母、数字、下划线和连字符。  不允许使用空格。
+    > [!Note]
+    > * 如果将扫描配置切换为包含或排除个人工作区，将触发对 PowerBI 源的完全扫描
+    > * 扫描名称长度必须介于3-63 个字符之间，并且必须仅包含字母、数字、下划线和连字符。 不允许使用空格。
 
 5. 设置扫描触发器。 你的选项为 **每7天****一次**，**每隔30天**。
 

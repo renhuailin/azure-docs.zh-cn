@@ -8,13 +8,13 @@ ms.topic: include
 ms.date: 04/27/2020
 ms.author: albecker1
 ms.custom: include file
-ms.openlocfilehash: 634deb655620f99c7b7b2b55819c58308eaa5a92
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0f85f2770b98507618d5cbfdec1b55f397c7f514
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91275145"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750360"
 ---
-在 Azure 上，我们提供了在虚拟机和磁盘上提升磁盘存储 IOPS 和 MB/秒性能的功能（称为突发）。 突发在许多情况下非常有用，例如处理意外的磁盘流量或处理批处理作业。 可以有效地利用 VM 和磁盘级别的突发，以在 VM 和磁盘上实现良好的基线性能和突发性能。 这样，你就可以在 VM 和磁盘上都获得良好的基线性能和突发性能。 
+Azure 提供了提升磁盘存储 IOPS 和 MB/s 性能的功能，这称为 (VM) 和磁盘的虚拟机的突发。 你可以有效地利用 VM 和磁盘突发，在 Vm 和磁盘上实现更好的突发性能。
 
-请注意，磁盘和 VM 上的突发相互独立。 如果有突发磁盘，则不需要使用突发 VM 来允许磁盘突发。 如果有突发 VM，则不需要使用突发磁盘来允许 VM 突发。 
+Azure Vm 和磁盘资源的突发会不相互依赖。 对于连接到突发功能的磁盘，无需使用突发功能的 VM 来突发。 同样，不需要将支持突发功能的磁盘连接到突发功能的 VM 以使 VM 突发。

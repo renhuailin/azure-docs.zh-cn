@@ -4,14 +4,14 @@ description: 排查 Azure Application Insights 中的 Web 测试问题。 当网
 ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
-ms.date: 11/19/2020
+ms.date: 02/14/2021
 ms.reviewer: sdash
-ms.openlocfilehash: 849701caf73a4fb289773c67bccaab2e0f39dbd1
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 940a70de81df60f7b6c1545c992e1ee10e69fa9f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100583726"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728920"
 ---
 # <a name="troubleshooting"></a>故障排除
 
@@ -58,7 +58,7 @@ ms.locfileid: "100583726"
 
 ### <a name="i-did-not-get-an-email-when-the-alert-triggered-or-resolved-or-both"></a>在警报触发和/或解决时，我并未收到电子邮件？
 
-检查经典警报配置，确认是否已直接列出你的电子邮件，或者你所在的通讯组列表是否配置为接收通知。 如果是，则检查通讯组列表配置，确认它可以接收外部电子邮件。 另外，检查邮件管理员是否有可能配置了任何可能导致此问题的策略。
+选中 "警报" 操作组配置以确认已直接列出你的电子邮件，或者你所在的通讯组列表配置为接收通知。 如果是，则检查通讯组列表配置，确认它可以接收外部电子邮件。 另外，检查邮件管理员是否有可能配置了任何可能导致此问题的策略。
 
 ### <a name="i-did-not-receive-the-webhook-notification"></a>我尚未收到 Webhook 通知？
 
@@ -110,21 +110,6 @@ ms.locfileid: "100583726"
 ### <a name="how-can-i-run-a-test-with-client-certificates"></a>如何使用客户端证书运行测试？
 
 目前不支持。
-
-## <a name="who-receives-the-classic-alert-notifications"></a>谁会收到（经典）警报通知？
-
-本节仅适用于经典警报，并将帮助优化警报通知以确保只有预期的接收人能收到通知。 若要详细了解[经典警报](../alerts/alerts-classic.overview.md)与新的警报体验之间的区别，请参阅[警报概述文章](../alerts/alerts-overview.md)。 若要控制新的警报体验中的警报通知，请使用[操作组](../alerts/action-groups.md)。
-
-* 建议将经典警报通知用于特定接收人。
-
-* 对于 Y 个位置中 X 个位置的失败相关警报，如已启用“批/组”复选框选项，会向具有管理员/共同管理员角色的用户发送相关通知。  实质上是 _订阅_ 的 _所有_ 管理员均会收到通知。
-
-* 对于可用性指标警报，“批量/组”复选框选项（如果已启用）将发送给订阅中具有所有者、参与者或阅读者角色的用户。 实际上，可以访问包含 Application Insights 资源在内的订阅的所有用户均会收到通知。 
-
-> [!NOTE]
-> 如果当前使用“批/组”复选框选项并禁用它，则无法还原更改。
-
-如果需要根据用户角色通知用户，请使用新的警报体验/近实时警报。 使用[操作组](../alerts/action-groups.md)，可以为具有任何参与者/所有者/读者角色（未融合为单一选项）的用户配置电子邮件通知。
 
 ## <a name="next-steps"></a>后续步骤
 

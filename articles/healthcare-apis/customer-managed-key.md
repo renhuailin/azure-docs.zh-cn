@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: overview
 ms.date: 09/28/2020
 ms.author: ginle
-ms.openlocfilehash: 6dff16f4a68f3db4ff841141e7d7025e794cca8f
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: f810769529569309656193d41f28cca201a85c07
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100105175"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719213"
 ---
 # <a name="configure-customer-managed-keys-at-rest"></a>配置客户管理的静态密钥
 
@@ -140,4 +140,4 @@ New-AzResourceGroupDeployment `
 本文介绍了如何使用 Azure 门户、PowerShell、CLI 和资源管理器模板配置客户管理的静态密钥。 可以查看“Azure Cosmos DB 常见问题解答”部分，了解可能遇到的其他问题： 
  
 >[!div class="nextstepaction"]
->[Cosmos DB：如何设置 CMK](https://docs.microsoft.com/azure/cosmos-db/how-to-setup-cmk#frequently-asked-questions)
+>[Cosmos DB：如何设置 CMK](../cosmos-db/how-to-setup-cmk.md#frequently-asked-questions)

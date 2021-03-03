@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/07/2020
 ms.author: alexeyo
-ms.openlocfilehash: 9b923ba208dd2a5111a59f67401b1e4f080b7187
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: f5566276f4555e2480434e385bf2129f5b8cdd24
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96754158"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699974"
 ---
 # <a name="speech-services-quotas-and-limits"></a>语音服务配额和限制
 
@@ -104,7 +104,7 @@ ms.locfileid: "96754158"
 并发请求限制参数的现有值不通过 Azure 门户、命令行工具或 API 请求显示。 若要验证现有值，请创建 Azure 支持请求。
 
 >[!NOTE]
->[语音容器](speech-container-howto.md) 不需要增加并发请求限制，因为容器只受托管它们的硬件的 cpu 的约束。 但是，语音容器具有其自己的容量限制，应考虑这些限制。 请参阅 "是否可以 *帮助进行容量规划和本地的语音到文本容器的成本估算？"* 从 [语音容器常见问题解答](speech-container-faq.md)。
+>[语音容器](speech-container-howto.md) 不需要增加并发请求限制，因为容器只受托管它们的硬件的 cpu 的约束。 但是，语音容器具有其自己的容量限制，应考虑这些限制。 请参阅 "是否可以 *帮助进行容量规划和本地的语音到文本容器的成本估算？"* 从 [语音容器常见问题解答](./speech-container-howto.md)。
 
 #### <a name="have-the-required-information-ready"></a>准备好必需的信息：
 - 对于基础模型：
@@ -205,4 +205,3 @@ ms.locfileid: "96754158"
   - [先前收集的](#prepare-the-required-information) Azure 资源信息 
   - 输入必填信息之后，单击“审阅 + 创建”选项卡中的“创建”按钮 
   - 注意 Azure 门户通知中的支持请求编号。 我们会尽快联系你以进行进一步处理
-

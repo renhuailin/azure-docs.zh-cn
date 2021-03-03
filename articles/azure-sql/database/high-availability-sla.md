@@ -12,12 +12,12 @@ author: emlisa
 ms.author: emlisa
 ms.reviewer: sstein, emlisa
 ms.date: 10/28/2020
-ms.openlocfilehash: 53b6b4f5d783029cb53de71fe3c47b8cb2d26968
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: 5e84831798ec1c5f42facb04a25da9d8631b9d04
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99593412"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690577"
 ---
 # <a name="high-availability-for-azure-sql-database-and-sql-managed-instance"></a>Azure SQL 数据库和 SQL 托管实例的高可用性
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -52,7 +52,7 @@ SQL 数据库和 SQL 托管实例均在最新稳定版本的 SQL Server 数据�
 
 "常规用途" 层的区域冗余配置具有两个层：  
 
-- 具有数据库文件 ( .mdf/.ldf) 的有状态数据层，这些文件存储在 ZRS PFS (区域冗余 [存储高级文件共享](../../storage/files/storage-how-to-create-premium-fileshare.md)中。 使用 [区域冗余存储](../../storage/common/storage-redundancy.md) 将数据和日志文件同步复制到三个物理隔离的 Azure 可用性区域中。
+- 具有数据库文件 ( .mdf/.ldf) 的有状态数据层，这些文件存储在 ZRS PFS (区域冗余 [存储高级文件共享](../../storage/files/storage-how-to-create-file-share.md)中。 使用 [区域冗余存储](../../storage/common/storage-redundancy.md) 将数据和日志文件同步复制到三个物理隔离的 Azure 可用性区域中。
 - 无状态计算层，用于运行 sqlservr.exe 进程，并且仅包含暂时性和缓存的数据，例如 TempDB、附加的 SSD 上的模型数据库、计划缓存、缓冲池和内存中的列存储池。 此无状态节点由 Azure Service Fabric 操作，用于初始化 sqlservr.exe，控制节点的运行状况，并在必要时执行故障转移到另一个节点。 对于区域冗余常规用途数据库，具有备用容量的节点可在其他可用性区域中轻松地用于故障转移。
 
 以下关系图演示了常规用途服务层的高可用性体系结构的区域冗余版本：

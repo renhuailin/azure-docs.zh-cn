@@ -1,19 +1,19 @@
 ---
-title: 包含文件
+title: include 文件
 description: 包含文件
 services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 06/05/2020
+ms.date: 03/02/2021
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: ba50def51bcea4f477bea5cecbe5b1ed0409b01a
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 52b9bee1d43c0f136889a6a54277d4bb45dd4a45
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98792278"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750417"
 ---
 可以选择使用自己的密钥在每个托管磁盘的级别管理加密。 使用客户托管密钥对托管磁盘进行服务器端加密提供了与 Azure Key Vault 的集成体验。 可以将 [RSA 密钥](../articles/key-vault/keys/hsm-protected-keys.md)导入 Key Vault，也可以在 Azure Key Vault 中生成新的 RSA 密钥。 
 
@@ -43,3 +43,7 @@ Azure 托管磁盘使用[信封加密](../articles/storage/common/storage-client
 1. 若要读取或写入数据，托管磁盘会将请求发送到 Azure Key Vault 以加密（包装）和解密（解包）数据加密密钥，以便执行数据的加密和解密。 
 
 若要撤销对客户托管密钥的访问权限，请参阅 [Azure Key Vault PowerShell](/powershell/module/azurerm.keyvault/) 和 [Azure Key Vault CLI](/cli/azure/keyvault)。 撤销访问权限会实际阻止对存储帐户中所有数据的访问权限，因为 Azure 存储无法访问加密密钥。
+
+#### <a name="automatic-key-rotation-of-customer-managed-keys-preview"></a> (预览版的客户托管密钥的自动密钥轮换) 
+
+可以选择对最新密钥版本启用自动密钥旋转。 磁盘通过其磁盘加密集引用密钥。 为磁盘加密集启用自动轮换时，系统将自动更新所有托管磁盘、快照，以及引用磁盘加密设置的映像，使其在一小时内使用新版本的密钥。 此功能目前在预览版的有限区域中可用。 有关区域可用性，请参阅 [支持的区域](#supported-regions) 部分。

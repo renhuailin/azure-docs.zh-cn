@@ -3,14 +3,14 @@ author: MikeRayMSFT
 ms.service: azure-arc
 ms.subservice: azure-arc-data
 ms.topic: include
-ms.date: 01/15/2021
+ms.date: 03/02/2021
 ms.author: mikeray
-ms.openlocfilehash: 6c8dbeea83cba306cfb788cf447236088045ffc9
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 0fca43f76b24a08ca96be749f7f2a822b0be2418
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99494000"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687578"
 ---
 本部分介绍如何 (SCC) 应用安全上下文约束。 对于预览版本，它们放宽了安全约束。 
 
@@ -40,12 +40,6 @@ ms.locfileid: "99494000"
    oc adm policy add-scc-to-user arc-data-scc --serviceaccount default --namespace arc
    ```
 
-   > [!NOTE]
-   > RedHat OpenShift 4.5 或更高版本，将更改如何将 SCC 应用到服务帐户。
-   > 在此处和下面的命令中使用相同的命名空间 `azdata arc dc create` 。 示例为 `arc` 。 
-   > 
-   > 如果使用 RedHat OpenShift 4.5 或更高版本，请运行： 
-   >
-   >```console
-   >oc create rolebinding arc-data-rbac --clusterrole=system:openshift:scc:arc-data-scc --serviceaccount=arc:default
-   >```
+   ```console
+   oc create rolebinding arc-data-rbac --clusterrole=system:openshift:scc:arc-data-scc --serviceaccount=arc:default
+   ```

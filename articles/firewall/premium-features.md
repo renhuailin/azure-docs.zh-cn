@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: conceptual
-ms.date: 02/16/2021
+ms.date: 02/25/2021
 ms.author: victorh
-ms.openlocfilehash: e823e1efc66592e9f48b7ff5e53a176a4e8cb514
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: ff5c6961e64deddc8e52dc92a7c34b5b369a44ed
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100549580"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101715558"
 ---
 # <a name="azure-firewall-premium-preview-features"></a>Azure 防火墙高级预览版功能
 
@@ -23,7 +23,7 @@ ms.locfileid: "100549580"
 > Azure 防火墙高级版目前为公共预览版。
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
- Azure 防火墙高级预览版是下一代防火墙，其中包含高度敏感和管控环境所需的功能。
+ Azure 防火墙高级预览版是新一代防火墙，其中包含高度敏感环境和受管制环境所需的功能。
 
 :::image type="content" source="media/premium-features/premium-overview.png" alt-text="Azure 防火墙高级概述示意图":::
 
@@ -80,7 +80,20 @@ URL 筛选可以应用于 HTTP 和 HTTPS 流量。 检查 HTTPS 通信时，Azur
 
 #### <a name="category-exceptions"></a>类别异常
 
-您可以为 web 类别规则创建例外。 在规则集合组中创建一个具有较高优先级的单独的允许或拒绝规则集合。 例如，你可以配置允许 `www.linkedin.com` 优先级为100的规则集合，并使用拒绝优先级为200的 **社交网络** 的规则集合。 这会为预定义的 **社交网络** web 类别创建例外。 
+您可以为 web 类别规则创建例外。 在规则集合组中创建一个具有较高优先级的单独的允许或拒绝规则集合。 例如，你可以配置允许 `www.linkedin.com` 优先级为100的规则集合，并使用拒绝优先级为200的 **社交网络** 的规则集合。 这会为预定义的 **社交网络** web 类别创建例外。
+
+#### <a name="categorization-change"></a>分类更改
+
+如果需要，可以请求分类更改：
+
+ - 假设 FQDN 或 URL 应采用不同的类别 
+ 
+或 
+
+- 具有未分类的 FQDN 或 URL 的建议类别
+
+欢迎在中提交请求 [https://aka.ms/azfw-webcategories-request](https://aka.ms/azfw-webcategories-request) 。
+ 
 
 ## <a name="known-issues"></a>已知问题
 
@@ -90,7 +103,7 @@ Azure 防火墙高级预览版具有以下已知问题：
 |---------|---------|---------|
 |仅 HTTPS 标准端口支持 TLS 检测|TLS 检查仅支持 HTTPS/443。 |无。 其他端口将在 GA 中受支持。|
 |ESNI 支持 HTTPS 中的 FQDN 解析|HTTPS 握手不支持加密的 SNI。|目前只有 Firefox 通过自定义配置支持 ESNI。 建议的解决方法是禁用此功能。|
-| (TLS 的客户端证书) |客户端证书用于在客户端与服务器之间建立相互的身份信任。 TLS 协商期间使用客户端证书。 Azure 防火墙会重新协商与服务器的连接，并且无权访问客户端证书的私钥。|无|
+| (TLS 的客户端证书) |客户端证书用于在客户端与服务器之间建立相互的身份信任。 TLS 协商期间使用客户端证书。 Azure 防火墙会重新协商与服务器的连接，并且无权访问客户端证书的私钥。|None|
 |QUIC/HTTP3|QUIC 是新的 HTTP 主版本。 它是基于 UDP 的协议，超过 80 (计划) 和 443 (SSL) 。 不支持 FQDN/URL/TLS 检查。|配置作为网络规则传递 UDP 80/443。|
 |高级版中不支持安全中心和强制隧道|目前，在安全中心部署和强制隧道配置中不支持防火墙高级 SKU。|修补计划为 GA。|
 不受信任的客户签名证书|从基于 intranet 的 web 服务器接收到的客户签名证书不受防火墙信任。|修补计划为 GA。
@@ -98,6 +111,7 @@ Azure 防火墙高级预览版具有以下已知问题：
 |IDP for HTTP (的警报中的源 IP 地址错误，无 TLS 检查) 。|当使用纯文本 HTTP 流量时，IDP 会发出新警报，并且目标为公共 IP 地址，显示的源 IP 地址错误 (显示的是内部 IP 地址，而不是) 的原始 IP 地址。|修补计划为 GA。|
 |证书传播|在防火墙上应用 CA 证书后，证书可能需要5-10 分钟才能生效。|修补计划为 GA。|
 |绕过 IDP|IDP 旁路不适用于 TLS 终止的流量，并且不支持源 IP 地址和源 IP 组。|修补计划为 GA。|
+|TLS 1.3 支持|TLS 1.3 部分受支持。 从客户端到防火墙的 TLS 隧道基于 TLS 1.2，从防火墙到外部 Web 服务器都基于 TLS 1.3。|正在调查更新。|
 
 
 

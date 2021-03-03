@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d07aa283c40a54ba02faa13b07e466e519bd68ae
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 598cbf303c8a87675833b8d87f05055771e46f55
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101649415"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687237"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>与面向来宾用户的 AD FS 和第三方提供者的直接联合（预览）
 
@@ -42,13 +42,7 @@ ms.locfileid: "101649415"
 
 ## <a name="sign-in-endpoints"></a>登录终结点
 
-直接联合身份验证来宾用户现在可以使用 [公共终结点](redemption-experience.md#redemption-and-sign-in-through-a-common-endpoint) 登录到你的多租户或 Microsoft 第一方应用 (换言之，这是一个不包含租户上下文) 的常规应用 URL。 下面是常见终结点的示例：
-
-- `https://teams.microsoft.com`
-- `https://myapps.microsoft.com`
-- `https://portal.azure.com`
-
-在登录过程中，来宾用户选择 "登录" **选项**，然后选择 " **登录到组织**"。 然后，用户键入组织的名称并继续使用其自己的凭据登录。
+直接联合身份验证来宾用户现在可以使用 [公共终结点](redemption-experience.md#redemption-and-sign-in-through-a-common-endpoint) 登录到你的多租户或 Microsoft 第一方应用 (换言之，这是一个不包含租户上下文) 的常规应用 URL。 在登录过程中，来宾用户选择 "登录" **选项**，然后选择 " **登录到组织**"。 然后，用户键入组织的名称并继续使用其自己的凭据登录。
 
 直接联合身份验证来宾用户还可以使用包含租户信息的应用程序终结点，例如：
 

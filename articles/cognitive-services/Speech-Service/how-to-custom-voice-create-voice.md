@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: 0650a173b02e1b8f1f829953be1dd852024e6f65
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 541448f08e4ce9961d34063dcc225bf89d969a73
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99524509"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703365"
 ---
 # <a name="create-a-custom-voice"></a>创建自定义语音
 
@@ -60,7 +60,7 @@ ms.locfileid: "99524509"
 
 > [!NOTE]
 > 如果使用自定义的神经声音，则必须在 " **语音** " 选项卡中注册语音人才。准备录制脚本时，请确保包括以下句子，以获取语音人才确认，以便使用语音数据创建 TTS 语音模型并生成综合语音。 "I [陈述你的名字] 知道，你的语音记录将由 [状态公司名称] 用来创建和使用我的语音合成版本。"
-此句子将用于验证定型数据集中的录制是否由发出许可的同一人来完成。 [阅读有关如何处理你的数据的详细信息以及如何在此完成语音人才验证](https://aka.ms/CNV-data-privacy)。 
+此句子将用于验证定型数据集中的录制是否由发出许可的同一人来完成。 [阅读有关如何处理你的数据的详细信息以及如何在此完成语音人才验证](/legal/cognitive-services/speech-service/custom-neural-voice/data-privacy-security-custom-neural-voice?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext)。 
 
 ## <a name="build-your-custom-voice-model"></a>生成自定义语音模型
 
@@ -87,7 +87,7 @@ ms.locfileid: "99524509"
 5. 在下一步中选择 **训练方法** 。 
 
     > [!NOTE]
-    > 如果要训练某一神经声音，则必须指定一个 voice 人才配置文件，其中包含一条语音许可文件，该文件提供了一种确认使用其语音数据训练自定义语音模型的语音许可文件。 自定义的神经语音可用于受限访问。 请确保了解负责的 [AI 要求](https://aka.ms/gating-overview) ，并在 [此处应用访问权限](https://aka.ms/customneural)。 
+    > 如果要训练某一神经声音，则必须指定一个 voice 人才配置文件，其中包含一条语音许可文件，该文件提供了一种确认使用其语音数据训练自定义语音模型的语音许可文件。 自定义的神经语音可用于受限访问。 请确保了解负责的 [AI 要求](/legal/cognitive-services/speech-service/custom-neural-voice/limited-access-custom-neural-voice?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext) ，并在 [此处应用访问权限](https://aka.ms/customneural)。 
     
     在此页上，您还可以选择上载您的脚本以进行测试。 测试脚本必须是小于1Mb 的 txt 文件。 支持的编码格式包括 ANSI/ASCII、UTF-8、UTF-8-BOM、UTF-16-LE 或 UTF-16。 查询文本的每个段落将生成一个单独的音频。 如果要将所有句子合并为一个音频，请将它们放在一个段落中。 
 
@@ -126,7 +126,7 @@ ms.locfileid: "99524509"
 
 3.  在 "模型详细信息" 页上，可以在 " **测试** " 选项卡下找到示例音频文件。 
 
-语音质量取决于多个因素，包括定型数据的大小、录制质量、抄本文件的准确性、训练数据中的语音记录与设计好的语音的个性（对于目标用例）以及更多内容。 [查看此处以了解有关技术的功能和限制的详细信息，以及提高模型质量的最佳实践](https://aka.ms/CNV-limits)。 
+语音质量取决于多个因素，包括定型数据的大小、录制质量、抄本文件的准确性、训练数据中的语音记录与设计好的语音的个性（对于目标用例）以及更多内容。 [查看此处以了解有关技术的功能和限制的详细信息，以及提高模型质量的最佳实践](/legal/cognitive-services/speech-service/custom-neural-voice/characteristics-and-limitations-custom-neural-voice?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext)。 
 
 ## <a name="create-and-use-a-custom-voice-endpoint"></a>创建并使用自定义语音终结点
 

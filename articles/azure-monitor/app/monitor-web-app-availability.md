@@ -2,14 +2,14 @@
 title: 监视任何网站的可用性和响应能力 | Microsoft Docs
 description: 在 Application Insights 中设置 Web 测试。 当网站不可用或响应速度缓慢时接收警报。
 ms.topic: conceptual
-ms.date: 09/16/2019
+ms.date: 02/14/2021
 ms.reviewer: sdash
-ms.openlocfilehash: 41338760034918dce30ffb45c738588a2aa29786
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 0ea44aad43a3dd6f11656a45dc7d0e619187fc22
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100585936"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101729022"
 ---
 # <a name="monitor-the-availability-of-any-website"></a>监视任意网站的可用性
 
@@ -72,7 +72,6 @@ ms.locfileid: "100585936"
 |设置| 说明
 |----|----|----|
 |**近实时（预览）** | 我们建议使用近实时警报。 在创建可用性测试后会配置此类警报。  |
-|**经典** | 我们不再建议对新的可用性测试使用经典警报。|
 |**警报位置阈值**|建议最少 3/5 个位置。 警报位置阈值和测试位置数目之间的最佳关系是警报位置阈值  =  测试位置数 - 2，至少有 5 个测试位置   。|
 
 ### <a name="location-population-tags"></a>位置人口标记
@@ -95,7 +94,7 @@ ms.locfileid: "100585936"
 |----------------------------------------|-------------------|
 | 澳大利亚东部                         | emea-au-syd  |
 | Brazil South                           | latam-gru-边缘 |
-| Central US                             | 美国 mia-边缘    |
+| 美国中部                             | 美国 mia-边缘    |
 | 东亚                              | apac-hkn-bc-op-nt-azr   |
 | 美国东部                                | us-va-圣 bc-op-nt-azr     |
 | 法国南部 (以前的华北)  | emea-ch-zrh  |
@@ -104,7 +103,7 @@ ms.locfileid: "100585936"
 | 北欧                           | emea-db3-bc-op-nt-azr   |
 | 美国中北部                       | us-ch1-bc-op-nt-azr     |
 | 美国中南部                       | us-sn1-bc-op-nt-azr     |
-| Southeast Asia                         | apac-sin-bc-op-nt-azr   |
+| 东南亚                         | apac-sin-bc-op-nt-azr   |
 | 英国西部                                | emea-停止-边缘  |
 | 西欧                            | emea-nl-bc-op-nt-azr   |
 | 美国西部                                | us-sjc-dp1-bc-op-nt-azr     |

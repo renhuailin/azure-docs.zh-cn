@@ -67,7 +67,7 @@
           href: ./samples/pattern-logical-operators.md
         - name: 字段
           href: ./samples/pattern-fields.md
-        - name: parameters
+        - name: 参数
           href: ./samples/pattern-parameters.md
         - name: 效果详细信息
           href: ./samples/pattern-effect-details.md
@@ -202,7 +202,7 @@
           href: ../../azure-monitor/deploy-scale.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json
         - name: 启用用于 VM 的 Azure Monitor（预览版）
           displayName: 'monitor, insights, log analytics, builtin'
-          href: ../../azure-monitor/insights/vminsights-enable-policy.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json
+          href: ../../azure-monitor/vm/vminsights-enable-policy.md?bc=%2fazure%2fgovernance%2fpolicy%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fgovernance%2fpolicy%2ftoc.json
     - name: Azure 存储集成
       items:
         - name: 使用 Azure Policy 审核 TLS
@@ -323,16 +323,6 @@
       items:
         - name: 治理 YouTube 频道
           href: 'https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ'
-        - name: 来宾配置视频
-          items:
-            - name: 入门
-              href: 'https://www.youtube.com/watch?v=mjJw9_EIyHo'
-            - name: 了解计划
-              href: 'https://www.youtube.com/watch?v=4JZH3kuG8bI'
-            - name: 分配策略
-              href: 'https://www.youtube.com/watch?v=fbZBaxcjA-Y'
-            - name: 修正任务
-              href: 'https://www.youtube.com/watch?v=URE4DUYMgmg'
     - name: Azure 路线图
       href: 'https://azure.microsoft.com/roadmap/'
     - name: 定价计算器

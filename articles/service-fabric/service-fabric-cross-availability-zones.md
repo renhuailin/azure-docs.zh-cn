@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: 50ab66a1f98d06d79a46d61f683d56822b619721
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: ef1a49301cf150f92d30c163dee262a22f1515d9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100007034"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714946"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-across-availability-zones"></a>跨可用性区域部署 Azure Service Fabric 群集
 Azure 中的可用性区域是一种高可用性产品，可保护应用程序和数据免受数据中心故障的影响。 可用性区域是一种独特的物理位置，它在 Azure 区域内配有独立的电源、冷却和网络。
@@ -345,7 +345,7 @@ Set-AzureRmPublicIpAddress -PublicIpAddress $PublicIP
 
 * 第一个值为 **zones** 属性，该属性指定虚拟机规模集中存在的可用性区域。
 * 第二个值为 "singlePlacementGroup" 属性，该属性必须设置为 true。 **即使 "singlePlacementGroup = true"，规模集跨越 3 AZ 的规模集也可扩展到最多300个 Vm。**
-* 第三个值是 "zoneBalance"，如果设置为 true，则将确保严格区域平衡。 建议将此值设置为 true，以避免跨区域分布 Vm 不平衡。 阅读有关 [zoneBalancing](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md#zone-balancing)的信息。
+* 第三个值是 "zoneBalance"，这可确保严格地进行区域平衡。 这应该是 "true"，以避免跨区域分配 Vm 不平衡。 跨区域的 VM 分发不平衡的群集不太可能在 scenatio 区域关闭。 阅读有关 [zoneBalancing](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md#zone-balancing)的信息。
 * 不需要配置 FaultDomain 和 UpgradeDomain 重写。
 
 ```json
@@ -409,7 +409,7 @@ Set-AzureRmPublicIpAddress -PublicIpAddress $PublicIP
 > * 公共 IP 和负载均衡器资源应使用标准 SKU，如本文前面所述。
 > * 节点上的 "multipleAvailabilityZones" 属性只能在创建 nodeType 时定义，以后不能修改。 因此，无法用此属性配置现有的 nodeTypes。
 > * 如果省略 "sfZonalUpgradeMode" 或将其设置为 "分层"，则群集和应用程序部署将会变慢，因为群集中存在更多的升级域。 必须正确调整升级策略的超时，以合并15个升级域的升级时间持续时间，这一点非常重要。
-> * 建议将群集的可靠性级别设置为 "白金"，确保群集置。
+> * 设置群集 **reliabilityLevel = 白金** ，以确保群集置一个区域关闭方案。
 
 >[!NOTE]
 > 为获得最佳实践，建议将 sfZonalUpgradeMode 设置为 "分层" 或 "省略"。 部署将遵循影响少量副本和/或实例的 Vm 的区域分发，使其更安全。

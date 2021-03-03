@@ -1,20 +1,20 @@
 ---
-title: 用于 VM 的 Azure Monitor 来宾运行状况的故障排除（预览）
-description: 描述在用于 VM 的 Azure Monitor 运行状况问题时可以采取的故障排除步骤。
+title: '排查 VM insights 来宾运行状况 (预览) '
+description: 介绍在遇到 VM insights 运行状况问题时可以采取的故障排除步骤。
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/08/2020
-ms.openlocfilehash: da8097341f8499be4e28fa37c06d963d057966ea
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 6ae0a9e20d6aad7200729419ece333d80e652c3c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100606236"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703913"
 ---
-# <a name="troubleshoot-azure-monitor-for-vms-guest-health-preview"></a>用于 VM 的 Azure Monitor 来宾运行状况的故障排除（预览）
-本文介绍在用于 VM 的 Azure Monitor 运行状况问题时可以采取的故障排除步骤。
+# <a name="troubleshoot-vm-insights-guest-health-preview"></a>排查 VM insights 来宾运行状况 (预览) 
+本文介绍了在遇到 VM insights 运行状况问题时可以采取的故障排除步骤。
 
 ## <a name="error-message-that-no-data-is-available"></a>错误消息，指出没有可用的数据 
 
@@ -34,7 +34,7 @@ ms.locfileid: "100606236"
 ![VM 扩展](media/vminsights-health-troubleshoot/extensions.png)
 
 ### <a name="verify-the-system-assigned-identity-is-enabled-on-the-virtual-machine"></a>验证是否在虚拟机上启用了系统分配的标识
-验证虚拟机上是否已启用系统分配的标识。 从 Azure 门户中的虚拟机菜单中选择 " **标识** "。 
+验证虚拟机上是否已启用系统分配的标识。 从 Azure 门户中的虚拟机菜单中选择 " **标识** "。 如果启用了用户托管标识，无论系统托管标识的状态如何，Azure Monitor 代理都无法与配置服务通信，并且来宾运行状况扩展将不起作用。
 
 ![系统分配标识](media/vminsights-health-troubleshoot/system-identity.png)
 
@@ -48,4 +48,4 @@ ms.locfileid: "100606236"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [获取用于 VM 的 Azure Monitor 来宾健康功能的概述](vminsights-health-overview.md)
+- [获取 VM insights 的来宾运行状况功能的概述](vminsights-health-overview.md)

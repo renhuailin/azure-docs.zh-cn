@@ -10,12 +10,12 @@ ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: how-to
 ms.date: 02/16/2021
-ms.openlocfilehash: 37b9860546f9fd16045906ce9385a1590c46b970
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: a0d8532d19aff41bc5e7defb3b58462e81018749
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100556339"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101712923"
 ---
 # <a name="create-a-translator-resource"></a>创建“翻译”资源
 
@@ -57,7 +57,7 @@ ms.locfileid: "100556339"
 
 1. 资源组。 你选择的 Azure 资源组用作新资源的虚拟容器。 你可以创建新的资源组，或将资源添加到共享相同生命周期、权限和策略的预先存在的资源组。
 
-1. **资源区域**。 选择 " **全局** "，除非你的业务或应用程序需要特定区域。 "转换器" 是一种非区域服务-不依赖于特定的 Azure 区域。 *请参阅* [Azure 中的区域和可用性区域](/azure/availability-zones/az-overview)。
+1. **资源区域**。 选择 " **全局** "，除非你的业务或应用程序需要特定区域。 "转换器" 是一种非区域服务-不依赖于特定的 Azure 区域。 *请参阅* [Azure 中的区域和可用性区域](../../availability-zones/az-overview.md)。
 
 1. **名称**。 输入为资源选择的名称。 你选择的名称在 Azure 中必须是唯一的。
 
@@ -107,7 +107,7 @@ ms.locfileid: "100556339"
 1. 选择相邻的复选框，选择要删除的资源。
 1. 从右边缘附近的顶部菜单中选择 " **删除** "。
 1. 在 "**已删除资源**" 对话框中，键入 *yes* 。
-1. 选择“删除” 。
+1. 选择“删除”。 
 
 若要删除资源组，请执行以下操作：
 

@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 - device-developer
-ms.openlocfilehash: 028088087b16ded182042aadec4be08a4b8a9589
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: 4db7c9fdfd439e049ca76fec6f0e66bd4a37fffd
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99062672"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702702"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>连接到 Azure IoT Central
 
@@ -217,7 +217,44 @@ IoT Central 应用程序使用设备发送的模型 ID [将注册的设备与设
 
 ## <a name="best-practices"></a>最佳做法
 
-第一次连接设备时，请勿保留或缓存 DPS 返回的设备连接字符串。 若要重新连接设备，请执行标准设备注册流以获取正确的设备连接字符串。 如果设备缓存连接字符串，则设备软件面临具有陈旧连接字符串的风险。 如果 IoT Central 更新其使用的基础 Azure IoT 中心，则具有陈旧连接字符串的设备将无法连接。
+这些建议显示了如何实现设备，以便充分利用 IoT Central 中内置的灾难恢复和自动缩放。
+
+以下列表显示了当设备连接到 IoT Central 时的高级流程：
+
+1. 使用 DPS 预配设备并获取设备连接字符串。
+
+1. 使用连接字符串连接 IoT Central 的内部 IoT 中心终结点。 向 IoT Central 应用程序发送数据并从中接收数据。
+
+1. 如果设备获取连接失败，请根据错误类型重试连接或重新设置设备。
+
+### <a name="use-dps-to-provision-the-device"></a>使用 DPS 预配设备
+
+若要使用 DPS 预配设备，请使用 IoT Central 应用程序中的作用域 ID、凭据和设备 ID。 若要了解有关凭据类型的详细信息，请参阅 [x.509 组注册](#x509-group-enrollment) 和 [SAS 组注册](#sas-group-enrollment)。 若要了解有关设备 Id 的详细信息，请参阅 [设备注册](#device-registration)。
+
+成功时，DPS 返回一个连接字符串，设备可以使用该字符串连接到 IoT Central 应用程序。 若要解决预配错误，请参阅 [检查设备的设置状态](troubleshoot-connection.md#check-the-provisioning-status-of-your-device)。
+
+设备可以缓存用于以后连接的连接字符串。 但是，必须准备好设备来 [处理连接故障](#handle-connection-failures)。
+
+### <a name="connect-to-iot-central"></a>连接到 IoT Central
+
+使用连接字符串连接 IoT Central 的内部 IoT 中心终结点。 通过此连接，你可以将遥测数据发送到 IoT Central 应用程序，将属性值与 IoT Central 应用程序同步，并对 IoT Central 应用程序发送的命令进行响应。
+
+### <a name="handle-connection-failures"></a>处理连接失败
+
+出于缩放或灾难恢复目的，IoT Central 可能会更新其底层 IoT 中心。 若要维护连接性，设备代码应通过建立与新 IoT 中心终结点的连接来处理特定连接错误。
+
+如果设备在连接时获得以下任何错误，则它应使用 DPS 重做设置步骤来获取新的连接字符串。 这些错误意味着设备使用的连接字符串不再有效：
+
+- IoT 中心终结点无法访问。
+- 安全令牌已过期。
+- 已在 IoT 中心禁用设备。
+
+如果设备在连接时获得以下任何错误，则它应使用回退策略重试连接。 这些错误意味着设备使用的连接字符串仍然有效，但暂时性的情况是阻止设备连接：
+
+- 操作员阻止的设备。
+- 服务内部错误500。
+
+若要了解有关设备错误代码的详细信息，请参阅 [设备连接故障排除](troubleshoot-connection.md)。
 
 ## <a name="sdk-support"></a>SDK 支持
 
@@ -241,9 +278,9 @@ Azure 设备 SDK 为实现设备代码提供最简便的方法。 以下设备 S
 
 | Azure IoT Central | Azure IoT 中心 |
 | ----------- | ------- |
-| 遥测技术 | 设备到云的消息传送 |
+| 遥测 | 设备到云的消息传送 |
 | 脱机命令 | 云到设备的消息传送 |
-| properties | 设备孪生报告属性 |
+| 属性 | 设备孪生报告属性 |
 | 属性（可写） | 设备孪生所需的和报告的属性 |
 | Command | 直接方法 |
 

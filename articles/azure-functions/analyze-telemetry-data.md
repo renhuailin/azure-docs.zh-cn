@@ -4,12 +4,12 @@ description: 本文介绍了如何查看和查询由 Azure Application Insights 
 ms.topic: how-to
 ms.date: 10/14/2020
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 56af6af6f4204a819c06fd97cda357dca20a19b0
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: d06fe64ddc0475b5ca7d9c16876c8dfc9acda544
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100591177"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101729362"
 ---
 # <a name="analyze-azure-functions-telemetry-in-application-insights"></a>在 Application Insights 中分析 Azure Functions 遥测数据 
 
@@ -142,14 +142,14 @@ traces
 
 ## <a name="azure-monitor-metrics"></a>Azure Monitor 指标
 
-除了 Application Insights 收集的遥测数据以外，还可以从 [Azure Monitor 指标](../azure-monitor/platform/data-platform-metrics.md)获取有关函数应用运行方式的数据。 除了 [适用于应用服务应用](../app-service/web-sites-monitor.md#understand-metrics)的常用指标以外，还有两个特定于相关函数的指标：
+除了 Application Insights 收集的遥测数据以外，还可以从 [Azure Monitor 指标](../azure-monitor/essentials/data-platform-metrics.md)获取有关函数应用运行方式的数据。 除了 [适用于应用服务应用](../app-service/web-sites-monitor.md#understand-metrics)的常用指标以外，还有两个特定于相关函数的指标：
 
 | 指标 | 说明 |
 | ---- | ---- |
 | **FunctionExecutionCount** | 函数执行计数指示函数应用执行的次数。 这与在应用程序中运行函数的次数相关。 此指标目前不支持在 Linux 上运行的高级和专用 (应用服务) 计划。 |
 | **FunctionExecutionUnits** | 函数执行单位是执行时间与内存使用情况的组合。  目前无法通过 Azure Monitor 获取内存数据这一指标。 但是，如果要优化应用的内存用量，可以使用 Application Insights 收集的性能计数器数据。 此指标目前不支持在 Linux 上运行的高级和专用 (应用服务) 计划。|
 
-若要详细了解如何使用 Application Insights 数据计算消耗计划的成本，请参阅 [估计消耗计划成本](functions-consumption-costs.md)。 若要详细了解如何使用监视器资源管理器查看指标，请参阅 [Azure 指标资源管理器](../azure-monitor/platform/metrics-getting-started.md)入门。
+若要详细了解如何使用 Application Insights 数据计算消耗计划的成本，请参阅 [估计消耗计划成本](functions-consumption-costs.md)。 若要详细了解如何使用监视器资源管理器查看指标，请参阅 [Azure 指标资源管理器](../azure-monitor/essentials/metrics-getting-started.md)入门。
 
 
 ## <a name="next-steps"></a>后续步骤
@@ -158,4 +158,3 @@ traces
 
 + [监视 Azure Functions](functions-monitoring.md)
 + [如何配置对 Azure Functions 的监视](configure-monitoring.md)
-

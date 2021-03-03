@@ -9,12 +9,12 @@ ms.date: 07/30/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 564f19a1be5b3ce8a5267a07bd4f1f6de80fecf1
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 8e64233ce1d59512e38ce6c366eba889392c4623
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96621274"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101736485"
 ---
 # <a name="tutorial-perform-image-classification-at-the-edge-with-custom-vision-service"></a>教程：在边缘使用自定义视觉服务进行图像分类
 
@@ -40,7 +40,7 @@ Azure IoT Edge 可以将工作负荷从云移到边缘，让 IoT 解决方案更
 ## <a name="prerequisites"></a>先决条件
 
 >[!TIP]
->本教程是 [Raspberry Pi 3 上的自定义视觉和 Azure IoT Edge](https://github.com/Azure-Samples/Custom-vision-service-iot-edge-raspberry-pi) 示例项目的简化版本。 本教程旨在在云 VM 上运行，并使用静态图像训练和测试图像分类器，这对于刚开始评估 IoT Edge 上的自定义视觉的用户非常有用。 该示例项目使用物理硬件并设置一个实时相机源，用于训练和测试图像分类器，这对于想要尝试更详细的真实应用场景的用户非常有用。
+>本教程是 [Raspberry Pi 3 上的自定义视觉和 Azure IoT Edge](https://github.com/Azure-Samples/custom-vision-service-iot-edge-raspberry-pi) 示例项目的简化版本。 本教程旨在在云 VM 上运行，并使用静态图像训练和测试图像分类器，这对于刚开始评估 IoT Edge 上的自定义视觉的用户非常有用。 该示例项目使用物理硬件并设置一个实时相机源，用于训练和测试图像分类器，这对于想要尝试更详细的真实应用场景的用户非常有用。
 
 在开始学习本教程之前，应已完成上一篇教程，了解如何设置用于开发 Linux 容器的环境：[开发适用于 Linux 设备的 IoT Edge 模块](tutorial-develop-for-linux.md)。 完成该教程后，应已准备好以下必备组件：
 
@@ -72,7 +72,7 @@ Azure IoT Edge 可以将工作负荷从云移到边缘，让 IoT 解决方案更
 
 4. 使用以下值来创建项目：
 
-   | 字段 | 值 |
+   | 字段 | Value |
    | ----- | ----- |
    | 名称 | 为项目提供一个名称，例如 **EdgeTreeClassifier**。 |
    | 说明 | 可选项目说明。 |
@@ -146,7 +146,7 @@ Azure IoT Edge 可以将工作负荷从云移到边缘，让 IoT 解决方案更
 
 1. 在“命令面板”中，输入并运行 Azure IoT Edge：**New IoT Edge solution** 命令。 在命令面板中提供以下信息，以便创建解决方案： 
 
-   | 字段 | 值 |
+   | 字段 | Value |
    | ----- | ----- |
    | 选择文件夹 | 在适用于 VS Code 的开发计算机上选择用于创建解决方案文件的位置。 |
    | 提供解决方案名称 | 输入解决方案的描述性名称（例如 **CustomVisionSolution**），或者接受默认名称。 |
@@ -214,7 +214,7 @@ Visual Studio Code 中的 Python 模块模板包含一些可以在运行后对 I
 
 1. 在同一 Visual Studio Code 窗口中，使用命令面板运行 **Azure IoT Edge:** Add IoT Edge Module”。 在命令面板中提供新模块所需的以下信息： 
 
-   | Prompt | 值 | 
+   | Prompt | Value | 
    | ------ | ----- |
    | 选择部署模板文件 | 选择 CustomVisionSolution 文件夹中的 deployment.template.json 文件。 |
    | 选择模块模板 | 选择“Python 模块” |

@@ -4,12 +4,12 @@ description: '了解如何启用和查看 Azure Kubernetes Service (AKS 中的 K
 services: container-service
 ms.topic: article
 ms.date: 01/27/2020
-ms.openlocfilehash: 7fce3db6f3636a5ee984c8be44f877c5636f4e16
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 4027b2ca66b4d4319f7df347df6d671e6d48b772
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98948748"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101735125"
 ---
 # <a name="enable-and-review-kubernetes-control-plane-logs-in-azure-kubernetes-service-aks"></a>启用并查看 Azure Kubernetes 服务中的 Kubernetes 控制平面日志 (AKS) 
 
@@ -171,8 +171,8 @@ AKS 记录以下事件：
 <!-- LINKS - internal -->
 [cli-quickstart]: kubernetes-walkthrough.md
 [portal-quickstart]: kubernetes-walkthrough-portal.md
-[log-analytics-overview]: ../azure-monitor/log-query/log-query-overview.md
-[analyze-log-analytics]: ../azure-monitor/log-query/log-analytics-tutorial.md
+[log-analytics-overview]: ../azure-monitor/logs/log-query-overview.md
+[analyze-log-analytics]: ../azure-monitor/logs/log-analytics-tutorial.md
 [kubelet-logs]: kubelet-logs.md
 [aks-ssh]: ssh.md
 [az-feature-register]: /cli/azure/feature#az-feature-register

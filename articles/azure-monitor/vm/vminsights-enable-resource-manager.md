@@ -1,20 +1,20 @@
 ---
-title: 使用资源管理器模板启用用于 VM 的 Azure Monitor
-description: 本文介绍如何使用 Azure PowerShell 或 Azure 资源管理器模板为一个或多个 Azure 虚拟机或虚拟机规模集启用用于 VM 的 Azure Monitor。
+title: 使用资源管理器模板启用 VM insights
+description: 本文介绍如何使用 Azure PowerShell 或 Azure 资源管理器模板为一个或多个 Azure 虚拟机或虚拟机规模集启用 VM insights。
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: a719be730c76d8e334195fdc9b35bbcad0d06b13
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 57e2649dfe651bfa1e2ef18ff52ca611c122d696
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100608666"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101707483"
 ---
-# <a name="enable-azure-monitor-for-vms-using-resource-manager-templates"></a>使用资源管理器模板启用用于 VM 的 Azure Monitor
-本文介绍如何使用资源管理器模板为虚拟机或虚拟机规模集启用用于 VM 的 Azure Monitor。 此过程可用于以下操作：
+# <a name="enable-vm-insights-using-resource-manager-templates"></a>使用资源管理器模板启用 VM insights
+本文介绍如何使用资源管理器模板为虚拟机或虚拟机规模集启用 VM 见解。 此过程可用于以下操作：
 
 - Azure 虚拟机
 - Azure 虚拟机规模集
@@ -22,8 +22,8 @@ ms.locfileid: "100608666"
 
 ## <a name="prerequisites"></a>先决条件
 
-- [创建并配置 Log Analytics 工作区](../insights/vminsights-configure-workspace.md)。 
-- 请参阅 [支持的操作系统](../insights/vminsights-enable-overview.md#supported-operating-systems) ，以确保正在启用的虚拟机或虚拟机规模集的操作系统受支持。 
+- [创建并配置 Log Analytics 工作区](./vminsights-configure-workspace.md)。 
+- 请参阅 [支持的操作系统](./vminsights-enable-overview.md#supported-operating-systems) ，以确保正在启用的虚拟机或虚拟机规模集的操作系统受支持。 
 
 ## <a name="resource-manager-templates"></a>资源管理器模板
 
@@ -37,14 +37,14 @@ Azure 资源管理器模板在存档文件 (.zip) 中提供，该文件可以从
 
 下载文件包含下述适用于不同方案的模板：
 
-- **ExistingVmOnboarding** 模板可启用用于 VM 的 Azure Monitor，前提是虚拟机已存在。
-- **NewVmOnboarding** 模板用于创建虚拟机并启用用于 VM 的 Azure Monitor 来监视它。
-- **ExistingVmssOnboarding** 模板可启用用于 VM 的 Azure Monitor，前提是虚拟机规模集已存在。
-- **NewVmssOnboarding** 模板用于创建虚拟机规模集并启用用于 VM 的 Azure Monitor 来监视它们。
-- **ConfigureWorkspace** 模板可将 Log Analytics 工作区配置为支持用于 VM 的 Azure Monitor，只需启用相关解决方案以及 Linux 和 Windows 操作系统性能计数器集合即可。
+- 如果虚拟机已存在，则 **ExistingVmOnboarding** 模板启用 VM insights。
+- **NewVmOnboarding** 模板创建虚拟机，并启用 VM insights 来监视它。
+- 如果虚拟机规模集已存在，则 **ExistingVmssOnboarding** 模板启用 VM insights。
+- **NewVmssOnboarding** 模板创建虚拟机规模集，并启用 VM insights 来监视它们。
+- **ConfigureWorkspace** 模板通过启用 Linux 和 Windows 操作系统性能计数器的解决方案和集合来配置 Log Analytics 工作区以支持 VM insights。
 
 >[!NOTE]
->如果虚拟机规模集已经存在，且升级策略已设置为“手动”，则不需在运行 **ExistingVmssOnboarding** Azure 资源管理器模板后默认为实例启用用于 VM 的 Azure Monitor。 必须手动升级实例。
+>如果虚拟机规模集已存在并且升级策略设置为 **手动**，则在运行 **ExistingVmssOnboarding** Azure 资源管理器模板之后，默认情况下不会为实例启用 VM insights。 必须手动升级实例。
 
 ## <a name="deploy-templates"></a>部署模板
 可以使用 [适用于资源管理器模板的任何部署方法](../../azure-resource-manager/templates/deploy-powershell.md) （包括以下使用 POWERSHELL 和 CLI 的示例）部署模板。
@@ -62,8 +62,8 @@ az deployment group create --resource-group <ResourceGroupName> --template-file 
 
 ## <a name="next-steps"></a>后续步骤
 
-现已为虚拟机启用了监视，可在用于 VM 的 Azure Monitor 中使用此信息进行分析。
+为虚拟机启用监视后，可以使用 VM insights 分析此信息。
 
-- 若要查看已发现的应用程序依赖项，请参阅[查看用于 VM 的 Azure Monitor 映射](vminsights-maps.md)。
+- 若要查看已发现的应用程序依赖关系，请参阅 [查看 VM 见解 Map](vminsights-maps.md)。
 
 - 若要确定虚拟机的性能瓶颈和总体利用率，请参阅 [查看 AZURE Vm 性能](vminsights-performance.md)。

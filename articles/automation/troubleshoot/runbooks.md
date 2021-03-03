@@ -5,12 +5,12 @@ services: automation
 ms.date: 02/11/2021
 ms.topic: troubleshooting
 ms.custom: has-adal-ref
-ms.openlocfilehash: 0ae7af848fd3ceb1d5b186a5a326c8fa43a69d24
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 1ff5adf3ec974cc922d73cf5993a78722ca1b591
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100388016"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723803"
 ---
 # <a name="troubleshoot-runbook-issues"></a>排查 Runbook 问题
 
@@ -160,7 +160,7 @@ Run Login-AzureRMAccount to login.
 
 1. 复制该订阅的名称。
 
-1. 现在，可以使用以下 Runbook 代码来测试从自动化帐户访问其他订阅的权限。 请将 `"\<CertificateThumbprint\>"` 替换为在步骤 1 中复制的值。 请将 `"\<SubscriptionName\>"` 替换为在步骤 4 中复制的值。
+1. 现在，可以使用以下 Runbook 代码来测试从自动化帐户访问其他订阅的权限。 请将 `<CertificateThumbprint>` 替换为在步骤 1 中复制的值。 请将 `"<SubscriptionName>"` 替换为在步骤 4 中复制的值。
 
     ```powershell
     $Conn = Get-AutomationConnection -Name AzureRunAsConnection

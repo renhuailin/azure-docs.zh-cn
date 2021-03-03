@@ -3,14 +3,14 @@ title: 配置 Azure 备份报表
 description: 使用 Log Analytics 和 Azure 工作簿配置和查看 Azure 备份的报表
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 78ab22bece54caa15e23021e594eaa0742505f79
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 62bb59a8a77d11e30e54298317a35e1f883a9622
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100591974"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710611"
 ---
-# <a name="configure-azure-backup-reports-preview"></a> (预览配置 Azure 备份报表) 
+# <a name="configure-azure-backup-reports"></a>配置 Azure 备份报表
 
 备份管理员的一个常见需求是根据时间跨度较长的数据获取有关备份的见解。 此类解决方案的用例包括：
 
@@ -139,6 +139,20 @@ Azure 备份还提供内置 Azure Policy 定义，该定义会自动配置给定
 选项卡顶部的“备份管理类型”筛选器应已选择“Azure VM 中的 SQL”和“Azure VM 中的 SAP HANA”项，以便网格能够按预期显示数据库工作负荷。
 
 ![“优化”选项卡 - 备份计划优化](./media/backup-azure-configure-backup-reports/optimize-backup-schedule.png)
+
+###### <a name="policy-adherence"></a>策略遵从
+
+使用此选项卡，可以确定所有备份实例是否每天都有至少一个成功的备份。 可以按时间段或备份实例查看策略符合情况。
+
+###### <a name="email-azure-backup-reports"></a>电子邮件 Azure 备份报告
+
+使用备份报表中可用的 **电子邮件报告** 功能，可以创建自动化任务，通过电子邮件接收定期报告。 此功能的工作方式是在 Azure 环境中部署一个逻辑应用，以便根据你提供的输入从所选 Log Analytics (LA) 工作区查询数据。
+
+创建逻辑应用后，你将需要授权与 Azure Monitor 日志和 Office 365 的连接。 为此，请导航到 Azure 门户中的 " **逻辑应用** "，然后搜索已创建的任务的名称。 选择 " **api 连接** " 菜单项将打开需要授权的 api 连接的列表。
+
+###### <a name="customize-azure-backup-reports"></a>自定义 Azure 备份报表
+
+备份报表对 Azure Monitor 日志使用函数。 这些函数对中的原始 Azure 备份表中的数据进行操作，并返回带格式的数据，这些数据可帮助你使用简单查询轻松检索所有与备份相关的实体的信息。
 
 ## <a name="export-to-excel"></a>导出到 Excel
 

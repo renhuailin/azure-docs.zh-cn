@@ -9,18 +9,18 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: 5465fa63a3dff71de2e370281df9351e2bac76c7
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: a5ccaa95c8f29395770395076f75f36019a4355c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790519"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737675"
 ---
 # <a name="storage-analytics"></a>存储分析
 
-Azure 存储分析执行日志记录并为存储帐户提供度量值数据。 可以使用此数据跟踪请求、分析使用情况趋势以及诊断存储帐户的问题。
+Azure 存储分析执行日志记录并为存储帐户提供度量值数据。 可以使用此数据为存储帐户跟踪请求、分析使用趋势和诊断问题。
 
-若要使用存储分析，必须为每个要监视的服务单独启用它。 可以从 [Azure 门户](https://portal.azure.com)中启用它。 有关详细信息，请参阅[在 Azure 门户中监视存储帐户](storage-monitor-storage-account.md)。 还可以通过 REST API 或客户端库以编程方式启用存储分析。 使用[设置 Blob 服务属性](/rest/api/storageservices/set-blob-service-properties)、[设置队列服务属性](/rest/api/storageservices/set-queue-service-properties)、[设置表服务属性](/rest/api/storageservices/set-table-service-properties)和[设置文件服务属性](/rest/api/storageservices/Get-File-Service-Properties)操作，为每个服务启用存储分析。
+若要使用存储分析，必须为每个要监视的服务单独启用它。 可以从 [Azure 门户](https://portal.azure.com)中启用它。 有关详细信息，请参阅 [在 Azure 门户中监视存储帐户](./manage-storage-analytics-logs.md)。 还可以通过 REST API 或客户端库以编程方式启用存储分析。 使用[设置 Blob 服务属性](/rest/api/storageservices/set-blob-service-properties)、[设置队列服务属性](/rest/api/storageservices/set-queue-service-properties)、[设置表服务属性](/rest/api/storageservices/set-table-service-properties)和[设置文件服务属性](/rest/api/storageservices/Get-File-Service-Properties)操作，为每个服务启用存储分析。
 
 聚合数据存储在众所周知的 Blob（用于日志记录）和众所周知的表（用于度量）中，可以使用 BLOB 服务和表服务 API 对其进行访问。
 
@@ -46,6 +46,6 @@ Azure 存储分析执行日志记录并为存储帐户提供度量值数据。 �
 查看存储分析数据时，可以使用[存储分析记录的操作和状态消息](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)主题中的表来确定计费的请求。 然后，可以将日志和指标数据与状态消息进行比较，以查看是否对你的特定请求进行收费。 也可以使用前述主题中的表来调查存储服务或各个 API 操作的可用性。
 
 ## <a name="next-steps"></a>后续步骤
-* [在 Azure 门户中监视存储帐户](storage-monitor-storage-account.md)
+* [在 Azure 门户中监视存储帐户](./manage-storage-analytics-logs.md)
 * [存储分析度量值](storage-analytics-metrics.md)
 * [存储分析日志记录](storage-analytics-logging.md)

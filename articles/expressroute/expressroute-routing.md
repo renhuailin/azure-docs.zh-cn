@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/19/2019
 ms.author: duau
-ms.openlocfilehash: 436e866969d620389818bcebca3c5c37b8805309
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 0dc2b48d02eb8a69afc947891c263ef1510257a7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97629028"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101721831"
 ---
 # <a name="expressroute-routing-requirements"></a>ExpressRoute 路由要求
 若要使用 ExpressRoute 连接到 Microsoft 云服务，需要设置并管理路由。 某些连接服务提供商以托管服务形式提供路由的设置和管理。 请咨询连接服务提供商，以确定他们是否提供此类服务。 如果不提供，则必须遵守以下要求：
@@ -20,23 +20,32 @@ ms.locfileid: "97629028"
 有关需要在设置后才能建立连接的路由会话的说明，请参阅[线路和路由域](expressroute-circuit-peerings.md)一文。
 
 > [!NOTE]
-> Microsoft 不支持将任何路由器冗余协议（例如 HSRP 和 VRRP）用于高可用性配置。 我们依赖每个对等互连的一组冗余 BGP 会话来获得高可用性。
+> Microsoft 不支持任何高可用性配置的路由器冗余协议（例如 HSRP 和 VRRP）。 我们依赖每个对等互连的一组冗余 BGP 会话来获得高可用性。
 > 
 > 
 
 ## <a name="ip-addresses-used-for-peerings"></a>用于对等互连的 IP 地址
-需要保留一些 IP 地址块用于配置网络与 Microsoft Enterprise Edge (MSEE) 路由器之间的路由。 本部分提供了要求列表，并介绍有关如何获取和使用这些 IP 地址的规则。
+用户需要保留一些 IP 地址，用于配置网络与 Microsoft Enterprise Edge (MSEE) 路由器之间的路由。 本部分提供了要求列表，并介绍有关如何获取和使用这些 IP 地址的规则。
 
 ### <a name="ip-addresses-used-for-azure-private-peering"></a>用于 Azure 专用对等互连的 IP 地址
-可以使用专用 IP 地址或公共 IP 地址配置对等互连。 用于配置路由的地址范围不得与用于在 Azure 中创建虚拟网络的地址范围重叠。 
+可以使用专用 IP 地址或公共 IP 地址来配置对等互连。 用于配置路由的地址范围不得与用于在 Azure 中创建虚拟网络的地址范围重叠。 
 
-* 必须为路由接口保留一个 /29 子网或两个 /30 子网。
-* 用于路由的子网可以是专用 IP 地址或公共 IP 地址。
-* 子网不得与客户保留用于 Microsoft 云的范围冲突。
-* 如果使用 /29 子网，它将拆分成两个 /30 子网。 
-  * 第一个 /30 子网用于主链路，第二个 /30 子网用于辅助链路。
-  * 对于每个 /30 子网，必须在路由器上使用 /30 子网的第一个 IP 地址。 Microsoft 使用 /30 子网的第二个 IP 地址设置 BGP 会话。
-  * 只有设置两个 BGP 会话，我们的 [可用性 SLA](https://azure.microsoft.com/support/legal/sla/) 才有效。  
+* IPv4
+    * 必须为路由接口保留一个 /29 子网或两个 /30 子网。
+    * 用于路由的子网可以是专用 IP 地址或公共 IP 地址。
+    * 子网不得与客户保留用于 Microsoft 云的范围冲突。
+    * 如果使用 /29 子网，它将拆分成两个 /30 子网。 
+      * 第一个 /30 子网用于主链路，第二个 /30 子网用于辅助链路。
+      * 对于每个 /30 子网，必须在路由器上使用 /30 子网的第一个 IP 地址。 Microsoft 使用 /30 子网的第二个 IP 地址设置 BGP 会话。
+      * 只有设置两个 BGP 会话，我们的 [可用性 SLA](https://azure.microsoft.com/support/legal/sla/) 才有效。
+* IPv6：
+    * 必须为路由接口保留一个/125 子网或两个/126 子网。
+    * 用于路由的子网可以是专用 IP 地址或公共 IP 地址。
+    * 子网不得与客户保留用于 Microsoft 云的范围冲突。
+    * 如果使用 /125 子网，它将拆分成两个 /126 子网。 
+      * 第一个/126 子网用于主链路，第二个/30 子网用于辅助链路。
+      * 对于每个 /126 子网，必须在路由器上使用 /126 子网的第一个 IP 地址。 Microsoft 使用 /126 子网的第二个 IP 地址设置 BGP 会话。
+      * 只有设置两个 BGP 会话，我们的 [可用性 SLA](https://azure.microsoft.com/support/legal/sla/) 才有效。
 
 #### <a name="example-for-private-peering"></a>专用对等互连示例
 如果选择使用 a.b.c.d/29 设置对等互连，它将拆分成两个 /30 子网。 在以下示例中，请注意 a.b.c.d/29 子网的用法：
@@ -47,11 +56,11 @@ ms.locfileid: "97629028"
 
 假设选择 192.168.100.128/29 设置专用对等互连。 192.168.100.128/29 包括从 192.168.100.128 到 192.168.100.135 的地址，其中：
 
-* 192.168.100.128/30 分配给 link1（提供商使用 192.168.100.129，Microsoft 使用 192.168.100.130）。
-* 192.168.100.132/30 分配给 link2（提供商使用 192.168.100.133，Microsoft 使用 192.168.100.134）。
+* 192.168.100.128/30 将分配给 link1（提供商使用 192.168.100.129，而 Microsoft 使用 192.168.100.130）。
+* 192.168.100.132/30 将分配给 link2（提供商使用 192.168.100.133，而 Microsoft 使用 192.168.100.134）。
 
 ### <a name="ip-addresses-used-for-microsoft-peering"></a>用于 Microsoft 对等互连的 IP 地址
-必须使用自己的公共 IP 地址设置 BGP 会话。 Microsoft 必须能够通过路由 Internet 注册表和 Internet 路由注册表验证 IP 地址的所有权。
+必须使用自己的公共 IP 地址来设置 BGP 会话。 Microsoft 必须能够通过路由 Internet 注册表和 Internet 路由注册表来验证 IP 地址的所有权。
 
 * 门户中列出的与 Microsoft 对等互连的已播发公共前缀相对应的 IP 将为 Microsoft 核心路由器创建 ACL，目的是允许来自这些 IP 的入站流量。 
 * 必须使用一个唯一的 /29 (IPv4) 或 /125 (IPv6) 子网或两个 /30 (IPv4) 或 /126 (IPv6) 子网为每条 ExpressRoute 线路（如果有多个）的每个对等互连设置 BGP 对等互连。
@@ -69,7 +78,7 @@ ms.locfileid: "97629028"
 > Azure 公共对等互连不适用于新线路。
 > 
 
-必须使用自己的公共 IP 地址设置 BGP 会话。 Microsoft 必须能够通过路由 Internet 注册表和 Internet 路由注册表验证 IP 地址的所有权。 
+必须使用自己的公共 IP 地址来设置 BGP 会话。 Microsoft 必须能够通过路由 Internet 注册表和 Internet 路由注册表来验证 IP 地址的所有权。 
 
 * 必须使用一个唯一的 /29 子网或两个 /30 子网为每条 ExpressRoute 线路（如果有多个）的每个对等互连设置 BGP 对等互连。 
 * 如果使用 /29 子网，它将拆分成两个 /30 子网。 
@@ -80,10 +89,10 @@ ms.locfileid: "97629028"
 ## <a name="public-ip-address-requirement"></a>公共 IP 地址要求
 
 ### <a name="private-peering"></a>专用对等互连
-可选择使用用于专用对等互连的公共或专用 IPv4 地址。 我们会对用户的流量进行端到端隔离，因此在进行专用对等互连时，不可能出现与其他客户的地址发生重叠的情况。 这些地址不会播发到 Internet。 
+进行专用对等互连时，可以选择使用公共的或专用的 IPv4 地址。 我们会对用户的流量进行端到端隔离，因此在进行专用对等互连时，不可能出现与其他客户的地址发生重叠的情况。 这些地址不会播发到 Internet。 
 
 ### <a name="microsoft-peering"></a>Microsoft 对等互连
-可以使用 Microsoft 对等互连路径连接到 Microsoft 云服务。 服务列表包括 Microsoft 365 服务，例如 Exchange Online、SharePoint Online、Skype for Business 和 Microsoft 团队。 Microsoft 在 Microsoft 对等互连上支持双向连接。 定向到 Microsoft 云服务的流量必须使用有效的公共 IPv4 地址才能进入 Microsoft 网络。
+可以使用 Microsoft 对等互连路径连接到 Microsoft 云服务。 服务列表包括 Microsoft 365 服务，例如 Exchange Online、SharePoint Online、Skype for Business 和 Microsoft 团队。 Microsoft 支持在 Microsoft 对等互连时进行双向连接。 定向到 Microsoft 云服务的流量必须使用有效的公共 IPv4 地址才能进入 Microsoft 网络。
 
 确保 IP 地址和 AS 号码已在下列其中一个注册表中注册：
 
@@ -105,7 +114,7 @@ ms.locfileid: "97629028"
 > 
 
 ### <a name="public-peering-deprecated---not-available-for-new-circuits"></a>公共对等互连（已弃用 - 不适用于新线路）
-Azure 公共对等互连路径使用户能够通过其公共 IP 地址连接到 Azure 中托管的所有服务。 这些服务包括 [ExpessRoute 常见问题](expressroute-faqs.md) 中列出的服务，以及由 ISV 托管在 Microsoft Azure 上的所有服务。 始终从用户网络向 Microsoft 网络发起与公共对等互连中 Microsoft Azure 服务的连接。 必须为定向到 Microsoft 网络的流量使用公共 IP 地址。
+Azure 公共对等互连路径用于连接到托管于 Azure 中的所有服务的公共 IP 地址。 其中包括 [ExpessRoute 常见问题](expressroute-faqs.md) 中列出的服务以及由 Microsoft Azure 上的 ISV 托管的任何服务。 始终从网络向 Microsoft 网络发起与公共对等互连中 Microsoft Azure 服务的连接。 必须使用公共 IP 地址才能将流量发往 Microsoft 网络。
 
 > [!IMPORTANT]
 > 所有 Azure PaaS 服务可通过 Microsoft 对等互连访问。
@@ -114,7 +123,7 @@ Azure 公共对等互连路径使用户能够通过其公共 IP 地址连接到 
 公共对等互连允许使用专用 AS 编号。
 
 ## <a name="dynamic-route-exchange"></a>动态路由交换
-路由交换会通过 eBGP 协议进行。 在 MSEE 与路由器之间建立 EBGP 会话。 不要求对 BGP 会话进行身份验证。 如果需要，可以配置 MD5 哈希。 有关配置 BGP 会话的信息，请参阅[配置路由](how-to-routefilter-portal.md)及[线路预配工作流和线路状态](expressroute-workflows.md)。
+路由交换将通过 eBGP 协议进行。 EBGP 会话在 MSEE 与路由器之间建立。 不要求对 BGP 会话进行身份验证。 如果需要，可以配置 MD5 哈希。 有关配置 BGP 会话的信息，请参阅[配置路由](how-to-routefilter-portal.md)及[线路预配工作流和线路状态](expressroute-workflows.md)。
 
 ## <a name="autonomous-system-numbers"></a>自治系统编号
 Microsoft 使用 AS 12076 进行 Azure 公共、Azure 专用和 Microsoft 对等互连。 我们保留了 ASN 65515-65520 供内部使用。 支持 16 和 32 位 AS 编号。
@@ -122,20 +131,20 @@ Microsoft 使用 AS 12076 进行 Azure 公共、Azure 专用和 Microsoft 对等
 数据传输对称没有相关要求。 转发与返回路径可以遍历不同的路由器对。 相同的路由必须从属于你的多个线路对的任何一端播发。 路由指标不需要完全相同。
 
 ## <a name="route-aggregation-and-prefix-limits"></a>路由聚合与前缀限制
-支持通过 Azure 专用对等互连播发最多 4000 个前缀。 如果启用 ExpressRoute 高级外接程序，则最多可增加 10,000 个前缀。 接受为每个 BGP 会话最多使用 200 个前缀建立 Azure 公共和 Microsoft 对等互连。 
+通过 Azure 专用对等互连，我们最多支持4000个 IPv4 前缀和100个 IPv6 前缀。 如果启用了 ExpressRoute 高级版外接程序，则可将此数量增加到10000个 IPv4 前缀。 我们接受为每个 BGP 会话最多使用 200 个前缀建立 Azure 公共和 Microsoft 对等互连。 
 
-如果前缀数目超过此限制，将丢弃 BGP 会话。 只接受专用对等互连链路上的默认路由。 提供商必须从 Azure 公共和 Microsoft 对等互连路径中筛选默认路由和专用 IP 地址 (RFC 1918)。 
+如果前缀数目超过此限制，将丢弃 BGP 会话。 我们只接受专用对等互连链路上的默认路由。 提供商必须从 Azure 公共和 Microsoft 对等互连路径中筛选出默认路由和专用 IP 地址 (RFC 1918)。 
 
 ## <a name="transit-routing-and-cross-region-routing"></a>传输路由和跨区域路由
 ExpressRoute 不能配置为传输路由器。 必须依赖连接服务提供商的传输路由服务。
 
 ## <a name="advertising-default-routes"></a>播发默认路由
-只有 Azure 专用对等互连会话允许默认路由。 在这种情况下，可将所有流量从关联的虚拟网络路由到用户网络。 在专用对等互连中播发默认路由会导致阻止来自 Azure 的 Internet 路径。 必须依赖企业网络边缘，为 Azure 中托管的服务往返路由 Internet 的流量。 
+只有 Azure 专用对等互连会话允许默认路由。 在这种情况下，我们将所有流量从关联的虚拟网络路由到网络。 在专用对等互连中播发默认路由会导致来自 Azure 的 Internet 路径遭到阻止。 必须依赖企业网络边缘，为 Azure 中托管的服务往返路由 Internet 的流量。 
 
- 若要启用与其他 Azure 服务和基础结构服务的连接，必须确保已准备下列其中一项：
+ 要连接其他 Azure 服务和基础结构服务，必须确保已准备好下列其中一项：
 
 * 已启用 Azure 公共对等互连，以将流量路由到公共终结点。
-* 使用用户定义的路由可为需要 Internet 连接的每个子网建立 Internet 连接。
+* 使用用户定义的路由，为需要 Internet 连接的每个子网建立 Internet 连接。
 
 > [!NOTE]
 > 播发默认路由会中断 Windows 和其他 VM 许可证激活。 请按照 [此处](/archive/blogs/mast/use-azure-custom-routes-to-enable-kms-activation-with-forced-tunneling) 的说明来解决此问题。
@@ -183,7 +192,7 @@ ExpressRoute 不能配置为传输路由器。 必须依赖连接服务提供商
 | 挪威西部 | 12076:51043 | 12076:52043 | 12076:53043 | 12076:54043 | 12076:55043 | 
 | **亚太区** | |
 | 东亚 | 12076:51010 | 12076:52010 | 12076:53010 | 12076:54010 | 12076:55010 |
-| Southeast Asia | 12076:51011 | 12076:52011 | 12076:53011 | 12076:54011 | 12076:55011 |
+| 东南亚 | 12076:51011 | 12076:52011 | 12076:53011 | 12076:54011 | 12076:55011 |
 | **日本** | |
 | Japan East | 12076:51012 | 12076:52012 | 12076:53012 | 12076:54012 | 12076:55012 |
 | 日本西部 | 12076:51013 | 12076:52013 | 12076:53013 | 12076:54013 | 12076:55013 |
@@ -226,7 +235,7 @@ ExpressRoute 不能配置为传输路由器。 必须依赖连接服务提供商
 | CRM Online\*\*\*\* |12076:5040 |
 | Azure 全局服务\* | 12076:5050 |
 | Azure Active Directory |12076:5060 |
-| Azure Resource Manager |12076:5070 |
+| Azure 资源管理器 |12076:5070 |
 | 其他 Office 365 联机服务 * * | 12076:5100 |
 
 \* Azure 全局服务目前仅包含 Azure DevOps。

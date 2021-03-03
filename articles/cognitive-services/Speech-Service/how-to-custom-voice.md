@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: trbye
-ms.openlocfilehash: eff51c8568ce82c9d8d21bff7a2ba079c291679c
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: 45f4ca6349c14f21ce48a1fcf34b7fc8998dd278
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100007289"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733510"
 ---
 # <a name="get-started-with-custom-voice"></a>自定义语音入门
 
@@ -39,10 +39,10 @@ ms.locfileid: "100007289"
 
 ## <a name="custom-neural-voices"></a>自定义神经语音
 
-自定义语音当前同时支持标准层和神经层。 自定义的神经语音使用户能够生成更高质量的语音模型，同时需要较少的数据，并提供可帮助你部署 AI 责任的度量值。 我们建议你应使用自定义的神经语音为更自然的对话接口开发更逼真的声音，并使你的客户和最终用户能够以一种有责任的方式从最新的文本到语音技术中获益。 [详细了解自定义的神经声音](https://aka.ms/CNV-Transparency-Note)。 
+自定义语音当前同时支持标准层和神经层。 自定义的神经语音使用户能够生成更高质量的语音模型，同时需要较少的数据，并提供可帮助你部署 AI 责任的度量值。 我们建议你应使用自定义的神经语音为更自然的对话接口开发更逼真的声音，并使你的客户和最终用户能够以一种有责任的方式从最新的文本到语音技术中获益。 [详细了解自定义的神经声音](/legal/cognitive-services/speech-service/custom-neural-voice/transparency-note-custom-neural-voice?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext)。 
 
 > [!NOTE]
-> 作为 Microsoft 对设计责任 AI 的承诺的一部分，我们限制了自定义的神经语音的使用。 只有在查看了应用程序并将其与我们的责任 AI 原则结合使用之后，才能获得技术的访问权限。 在[此处](https://aka.ms/customneural)了解有关[策略的](https://aka.ms/gating-overview)详细信息。 自定义语音的标准版本和神经版本支持的 [语言](language-support.md#customization) 和 [区域](regions.md#custom-voices) 是不同的。 在开始之前，请查看详细信息。  
+> 作为 Microsoft 对设计责任 AI 的承诺的一部分，我们限制了自定义的神经语音的使用。 只有在查看了应用程序并将其与我们的责任 AI 原则结合使用之后，才能获得技术的访问权限。 在[此处](https://aka.ms/customneural)了解有关[策略的](/legal/cognitive-services/speech-service/custom-neural-voice/limited-access-custom-neural-voice?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext)详细信息。 自定义语音的标准版本和神经版本支持的 [语言](language-support.md#customization) 和 [区域](regions.md#custom-voices) 是不同的。 在开始之前，请查看详细信息。  
 
 ## <a name="set-up-your-azure-account"></a>设置 Azure 帐户
 
@@ -71,7 +71,7 @@ ms.locfileid: "100007289"
 
 如果使用的是非神经 (或标准) 自定义语音，请考虑按以下步骤立即迁移到自定义的神经语音。 移动到自定义的神经语音将帮助你开发更逼真的声音，更逼真地提供更自然的会话界面，并使你的客户和最终用户能够以一种有责任的方式从最新的文本到语音技术中获益。 
 
-1. 在[此处](https://aka.ms/customneural)了解有关[策略的](https://aka.ms/gating-overview)详细信息。 请注意，根据我们的资格准则，对自定义的神经语音服务的访问受 Microsoft 唯一的决定。 客户在查看其应用程序后，可能只会获得对技术的访问权限，并且他们已承诺与我们的 [责任 AI 原则](https://microsoft.com/ai/responsible-ai) 和 [行为准则](https://aka.ms/custom-neural-code-of-conduct)协调使用该技术。 
+1. 在[此处](https://aka.ms/customneural)了解有关[策略的](/legal/cognitive-services/speech-service/custom-neural-voice/limited-access-custom-neural-voice?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext)详细信息。 请注意，根据我们的资格准则，对自定义的神经语音服务的访问受 Microsoft 唯一的决定。 客户在查看其应用程序后，可能只会获得对技术的访问权限，并且他们已承诺与我们的 [责任 AI 原则](https://microsoft.com/ai/responsible-ai) 和 [行为准则](/legal/cognitive-services/speech-service/tts-code-of-conduct?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext)协调使用该技术。 
 2. 当你的应用程序获得批准后，你将获得对 "神经" 培训功能的访问权限。 请确保使用在应用程序中提供的同一 Azure 订阅登录到 [自定义语音门户](https://speech.microsoft.com/customvoice) 。 
     > [!IMPORTANT]
     > 为了防范语音模型，防止在未经授权的情况下进行语音模型的培训，或在没有语音人才确认的情况下，我们要求客户上传一条经过书面批准的语音人才。 准备记录脚本时，请确保包含此句子。 "I [陈述你的名字] 知道，你的语音记录将由 [状态公司名称] 用来创建和使用我的语音合成版本。"

@@ -6,15 +6,15 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/05/2019
-ms.openlocfilehash: 92603165ac399415ec4fb6daeea1641065671a83
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 3dffab040b8ee17760e23aa8b1d8fb65aa0417e7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100608396"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734122"
 ---
 # <a name="computer-groups-in-azure-monitor-log-queries"></a>Azure Monitor 日志查询中的计算机组
-使用 Azure Monitor 中的计算机组可为一组特定的计算机设定[日志查询](../log-query/log-query-overview.md)的范围。  每个组使用定义的查询或通过从不同源导入组填充计算机。  当日志查询中包括组时，结果仅限于与组中的计算机匹配的记录。
+使用 Azure Monitor 中的计算机组可为一组特定的计算机设定[日志查询](./log-query-overview.md)的范围。  每个组使用定义的查询或通过从不同源导入组填充计算机。  当日志查询中包括组时，结果仅限于与组中的计算机匹配的记录。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -135,5 +135,4 @@ let ADComputers = ComputerGroup | where GroupSource == "ActiveDirectory" and Gro
 | `TimeGenerated` |创建或更新计算机组的日期和时间。 |
 
 ## <a name="next-steps"></a>后续步骤
-* 了解[日志查询](../log-query/log-query-overview.md)以便分析从数据源和解决方案中收集的数据。  
-
+* 了解[日志查询](./log-query-overview.md)以便分析从数据源和解决方案中收集的数据。

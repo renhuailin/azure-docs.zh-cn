@@ -1,24 +1,24 @@
 ---
 title: 使用 Azure Monitor 创建和管理经典指标警报
-description: 了解如何使用 Azure 门户、CLI 或 Powershell 来创建、查看和管理经典指标警报规则。
+description: 了解如何使用 Azure 门户、CLI 或 PowerShell 创建、查看和管理经典指标警报规则。
 author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
-ms.date: 09/18/2018
-ms.openlocfilehash: 015a84ab6f81875407f460c4a45423f3f5e22b7f
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.date: 02/14/2021
+ms.openlocfilehash: 854867bb6f40bdd8f0fac28e69d936a4027760b5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100608904"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714368"
 ---
 # <a name="create-view-and-manage-classic-metric-alerts-using-azure-monitor"></a>使用 Azure Monitor 创建、查看和管理经典指标警报
 
 > [!WARNING]
-> 本文介绍了如何创建旧式经典指标警报。 Azure Monitor 现在支持[较新的近实时指标警报和新的警报体验](../platform/alerts-overview.md)。 对于公有云用户，经典警报会被 [停](../platform/monitoring-classic-retirement.md) 用，但对于尚不支持新警报的资源仍有限制。
+> 本文介绍了如何创建旧式经典指标警报。 Azure Monitor 现在支持[较新的近实时指标警报和新的警报体验](./alerts-overview.md)。 公有云用户会 [停](./monitoring-classic-retirement.md) 用经典警报，但在 **31 年 5 2021 月31日** 之前仍处于有限使用状态。 Azure 政府云和 Azure 中国世纪互联的经典警报将于 **2024 年2月29日** 停用。
 >
 
-Azure Monitor 中的经典指标警报提供了一种在指标超出阈值时获得通知的方法。 经典指标警报是一个较旧的功能，它仅可针对非维度指标发出警报。 有一个称为“指标警报”的较新功能，它具有比经典指标警报改进的功能。 可以在[指标警报概述](../platform/alerts-metric-overview.md)中了解新的指标警报功能的详细信息。 在本文中，我们将介绍如何通过 Azure 门户、Azure CLI 和 Powershell 创建、查看和管理经典指标警报规则。
+Azure Monitor 中的经典指标警报提供了一种在指标超出阈值时获得通知的方法。 经典指标警报是一个较旧的功能，它仅可针对非维度指标发出警报。 有一个称为“指标警报”的较新功能，它具有比经典指标警报改进的功能。 可以在[指标警报概述](./alerts-metric-overview.md)中了解新的指标警报功能的详细信息。 本文介绍如何通过 Azure 门户、Azure CLI 和 PowerShell 创建、查看和管理经典指标警报规则。
 
 ## <a name="with-azure-portal"></a>使用 Azure 门户
 
@@ -134,6 +134,5 @@ az monitor alert delete --name <alert name> --resource-group <group name>
 
 ## <a name="next-steps"></a>后续步骤
 
-- [使用资源管理器模板创建经典指标警报](../platform/alerts-enable-template.md)。
-- [使用 Webhook 让经典指标警报通知非 Azure 系统](../platform/alerts-webhooks.md)。
-
+- [使用资源管理器模板创建经典指标警报](./alerts-enable-template.md)。
+- [使用 Webhook 让经典指标警报通知非 Azure 系统](./alerts-webhooks.md)。

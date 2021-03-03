@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: db410133bab530db731eee58048d1f9d26a1a3fb
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 65f18a21be48b6f78605b10950a2b38709b66f2d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100605944"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713654"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine-scale-set"></a>使用 Windows 虚拟机规模集的 Azure 资源管理器模板将来宾 OS 指标发送到 Azure Monitor 指标存储
 
@@ -30,7 +30,7 @@ ms.locfileid: "100605944"
 
 - 需要安装 [Azure PowerShell](/powershell/azure)，但也可以使用 [Azure Cloud Shell](../../cloud-shell/overview.md) 
 
-- VM 资源必须位于[支持自定义指标的区域](../platform/metrics-custom-overview.md#supported-regions)中。
+- VM 资源必须位于[支持自定义指标的区域](./metrics-custom-overview.md#supported-regions)中。
 
 ## <a name="set-up-azure-monitor-as-a-data-sink"></a>将 Azure Monitor 设置为数据接收器 
 Azure 诊断扩展使用名为“数据接收器”的功能将指标和日志路由到不同位置。 以下步骤说明如何通过资源管理器模板和 PowerShell 来使用新的 Azure Monitor 数据接收器部署 VM。 
@@ -252,7 +252,7 @@ MSI 扩展中的以下代码还会将诊断扩展和配置作为扩展资源添�
    ```
 
    > [!NOTE]  
-   > 请记得使用为自定义指标启用的 Azure 区域。 请记得使用[为自定义指标启用的 Azure 区域](../platform/metrics-custom-overview.md#supported-regions)。
+   > 请记得使用为自定义指标启用的 Azure 区域。 请记得使用[为自定义指标启用的 Azure 区域](./metrics-custom-overview.md#supported-regions)。
  
 1. 运行以下命令以部署 VM：  
 
@@ -292,4 +292,4 @@ MSI 扩展中的以下代码还会将诊断扩展和配置作为扩展资源添�
 
 
 ## <a name="next-steps"></a>后续步骤
-- 详细了解[自定义指标](../platform/metrics-custom-overview.md)。
+- 详细了解[自定义指标](./metrics-custom-overview.md)。

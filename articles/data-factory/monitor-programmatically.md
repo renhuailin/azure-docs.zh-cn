@@ -7,12 +7,12 @@ ms.date: 01/16/2018
 author: dcstwh
 ms.author: weetok
 ms.custom: devx-track-python
-ms.openlocfilehash: 038da033c2bdf78a0a2547cc713944bc11bf093d
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 6c913c7c623c77baea0c575d06d2c44709af43fa
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100379890"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101740428"
 ---
 # <a name="programmatically-monitor-an-azure-data-factory"></a>以编程方式监视 Azure 数据工厂
 
@@ -30,7 +30,7 @@ ms.locfileid: "100379890"
 
 ## <a name="pipeline-run-information"></a>管道运行信息
 
-有关管道运行属性，请参阅 [PIPELINERUN API 参考](https://docs.microsoft.com/rest/api/datafactory/pipelineruns/get#pipelinerun)。 管道运行在其生命周期中具有不同状态，下面列出了可能的运行状态值：
+有关管道运行属性，请参阅 [PIPELINERUN API 参考](/rest/api/datafactory/pipelineruns/get#pipelinerun)。 管道运行在其生命周期中具有不同状态，下面列出了可能的运行状态值：
 
 * 已排队
 * 正在进行
@@ -163,5 +163,4 @@ print_activity_run_details(activity_runs_paged[0])
 有关 PowerShell cmdlet 的完整文档，请参阅[数据工厂 PowerShell cmdlet 参考](/powershell/module/az.datafactory)。
 
 ## <a name="next-steps"></a>后续步骤
-若要了解如何使用 Azure Monitor 监视数据工厂管道，请参阅[使用 Azure Monitor 监视管道](monitor-using-azure-monitor.md)一文。 
-
+若要了解如何使用 Azure Monitor 监视数据工厂管道，请参阅[使用 Azure Monitor 监视管道](monitor-using-azure-monitor.md)一文。

@@ -11,12 +11,12 @@ author: shkale-msft
 ms.author: shkale
 ms.reviewer: mathoma, stevestein, danil
 ms.date: 11/18/2020
-ms.openlocfilehash: e4917d03e3c0fb8109f9ad9bdcea9e7c1cdcd5df
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
+ms.openlocfilehash: 862d33e523562511796999d82b67d2b4b11efaf3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98108052"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690597"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>自动备份 - Azure SQL 数据库和 SQL 托管实例
 
@@ -122,7 +122,7 @@ SQL 数据库和 SQL 托管实例按累积值形式计算使用的总备份存�
 
 ## <a name="backup-retention"></a>备份保留
 
-对于所有新的、还原和复制的数据库，Azure SQL 数据库和 Azure SQL 托管实例会默认保留足以实现过去 7 天的 PITR 的备份量。 除了超大规模和 Basic 层数据库，你可以更改1-35 天范围内每个活动数据库的 [备份保留期](#change-the-pitr-backup-retention-period) 。 如[备份存储消耗量](#backup-storage-consumption)中所述，为启用 PITR 而存储的备份可能早于保留期。 仅对于 Azure SQL 托管实例，在 0-35 天范围内删除了数据库后，可以设置 PITR 备份保留率。 
+对于所有新的、还原和复制的数据库，Azure SQL 数据库和 Azure SQL 托管实例会默认保留足以实现过去 7 天的 PITR 的备份量。 除了超大规模数据库和基本层数据库之外，可以按每个活动数据库[更改备份保持期](#change-the-pitr-backup-retention-period)，更改幅度可为 1-35 天。 如[备份存储消耗量](#backup-storage-consumption)中所述，为启用 PITR 而存储的备份可能早于保留期。 仅对于 Azure SQL 托管实例，在 0-35 天范围内删除了数据库后，可以设置 PITR 备份保留率。 
 
 如果删除数据库，系统会保留数据库的备份至特定的保留期，与为任何一个联机数据库的保留方式一样。 不能更改已删除的数据库的备份保留期。
 
@@ -229,17 +229,15 @@ Azure SQL 工程团队持续不断地自动测试自动数据库备份的还原�
 
 ### <a name="change-the-pitr-backup-retention-period-by-using-the-azure-portal"></a>使用 Azure 门户更改 PITR 备份保留期
 
-若要通过使用 Azure 门户更改活动数据库的 PITR 备份保持期，请转到具有要更改保持期的数据库的服务器或托管实例。 
+若要通过使用 Azure 门户更改活动数据库的 PITR 备份保持期，请转到具有要更改保持期的数据库的服务器或托管实例。 在左窗格中选择 " **备份** "，然后选择 " **保留策略** " 选项卡。选择要更改其 PITR 备份保留期的数据库 () 。 然后从操作栏中选择 " **配置保留** "。
+
+
 
 #### <a name="sql-database"></a>[SQL 数据库](#tab/single-database)
-
-对 SQL 数据库的 PITR 备份保留期更改是在门户中的服务器级别进行的。 若要为服务器上的数据库更改 PITR 保留期，请转到服务器概述边栏选项卡。 在左侧窗格中选择“管理备份”，并选择更改范围内的数据库，然后在屏幕顶部选择“配置保留期” ：
 
 ![更改 PITR 保留期，服务器级别](./media/automated-backups-overview/configure-backup-retention-sqldb.png)
 
 #### <a name="sql-managed-instance"></a>[SQL 托管实例](#tab/managed-instance)
-
-对 SQL 托管实例的 PITR 备份保留期更改是在单一数据库级别进行的。 若要从 Azure 门户更改实例数据库的 PITR 备份保留期，请转到单个数据库的概述边栏选项卡。 然后在屏幕顶部选择“配置备份保留期”：
 
 ![更改 PITR 保留期，托管实例](./media/automated-backups-overview/configure-backup-retention-sqlmi.png)
 

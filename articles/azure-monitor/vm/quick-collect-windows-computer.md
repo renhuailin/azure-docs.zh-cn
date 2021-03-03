@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 08/22/2019
 ms.author: bwren
 ms.custom: mvc, seo-javascript-october2019
-ms.openlocfilehash: 5d34893c522bd3cc3b862284cb84b44bab40856a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 65d60c77280b569d1bff5e4d3acbdf97ead96270
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100626104"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733782"
 ---
 # <a name="collect-data-from-a-windows-computer-in-a-hybrid-environment-with-azure-monitor"></a>使用 Azure Monitor 从混合环境中的 Windows 计算机收集数据
 
@@ -122,7 +122,7 @@ Azure Monitor 可从 Windows 事件日志以及性能计数器中收集指定的
 
 8. 首次为新的 Log Analytics 工作区配置 Windows 性能计数器时，可以选择快速创建几个通用的计数器。 每个选项将会列出，其旁边带有一个复选框：
 
-    ![Windows 性能计数器](media/quick-collect-windows-computer/windows-perfcounters-default.png)上获取。
+    ![Windows 性能计数器](media/quick-collect-windows-computer/windows-perfcounters-default.png).
     
     选择“添加所选性能计数器”。 随即会添加这些计数器，并为其预设 10 秒收集采样间隔。
 
@@ -165,4 +165,4 @@ Azure Monitor 可从 Windows 事件日志以及性能计数器中收集指定的
 若要了解如何查看和分析数据，请继续学习以下教程：
 
 > [!div class="nextstepaction"]
-> [在 Log Analytics 中查看或分析数据](../log-query/log-analytics-tutorial.md)
+> [在 Log Analytics 中查看或分析数据](../logs/log-analytics-tutorial.md)

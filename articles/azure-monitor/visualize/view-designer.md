@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/04/2020
-ms.openlocfilehash: d63627c00f6fd06ba00a9d8a905891238ce94697
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 11a6d21a7a066d331a92453e9aaa876800da0bf4
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100606028"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101700535"
 ---
 # <a name="create-custom-views-by-using-view-designer-in-azure-monitor"></a>在 Azure Monitor 中使用视图设计器创建自定义视图
 在 Azure Monitor 中使用视图设计器即可在 Azure 门户中创建各种自定义视图，使 Log Analytics 工作区中的数据可视化。 本文概述了视图设计器以及创建和编辑自定义视图的过程。
@@ -38,10 +38,10 @@ ms.locfileid: "100606028"
 |:--- |:--- |
 | 磁贴 | 显示在 Azure Monitor“概述”页上。 每个磁贴都会显示一个可视化摘要，其中包含磁贴所代表的自定义视图。 每个磁贴类型提供的记录可视化效果各不相同。 选择磁贴即可显示自定义视图。 |
 | 自定义视图 | 在选择磁贴时显示。 每个视图包含一个或多个可视化部件。 |
-| 可视化部件 | 根据一个或多个[日志查询](../log-query/log-query-overview.md)，提供 Log Analytics 工作区中数据的可视化效果。 大多数部件会包括提供高级可视化效果的标头，以及显示最匹配结果的列表。 每个部件类型提供了 Log Analytics 工作区中记录的不同可视化效果。 选择部件中的元素即可进行日志查询，获取详细的记录。 |
+| 可视化部件 | 根据一个或多个[日志查询](../logs/log-query-overview.md)，提供 Log Analytics 工作区中数据的可视化效果。 大多数部件会包括提供高级可视化效果的标头，以及显示最匹配结果的列表。 每个部件类型提供了 Log Analytics 工作区中记录的不同可视化效果。 选择部件中的元素即可进行日志查询，获取详细的记录。 |
 
 ## <a name="required-permissions"></a>所需的权限
-你至少需要 Log Analytics 工作区中的[参与者级别权限](../platform/manage-access.md#manage-access-using-azure-permissions)，才能创建或修改视图。 如果没有此权限，则菜单中不会显示“视图设计器”选项。
+你至少需要 Log Analytics 工作区中的[参与者级别权限](../logs/manage-access.md#manage-access-using-azure-permissions)，才能创建或修改视图。 如果没有此权限，则菜单中不会显示“视图设计器”选项。
 
 
 ## <a name="work-with-an-existing-view"></a>使用现有视图
@@ -54,7 +54,7 @@ ms.locfileid: "100606028"
 | 选项 | 说明 |
 |:--|:--|
 | 刷新   | 使用最新数据刷新视图。 | 
-| 日志      | 打开 [Log Analytics](../log-query/log-query-overview.md)，使用日志查询对数据进行分析。 |
+| 日志      | 打开 [Log Analytics](../logs/log-query-overview.md)，使用日志查询对数据进行分析。 |
 | 编辑       | 在视图设计器中打开视图，以便编辑其内容和配置。  |
 | 克隆      | 创建一个新视图，并在视图设计器中打开它。 新视图的名称与原始名称相同，但其末尾附加了 *Copy* 字样。 |
 | 日期范围 | 为视图中包含的数据设置日期和时间范围筛选器。 在视图中的查询中设置任何日期范围前，将应用此日期范围。  |

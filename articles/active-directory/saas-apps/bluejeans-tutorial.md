@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/09/2020
 ms.author: jeedes
-ms.openlocfilehash: 4026bd9c5b4d73953509617fe4a8623987d22341
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: a920abacb0df030f7d38aed11e04a693cfa352a6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92456936"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101686564"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-bluejeans-for-azure-ad"></a>教程：Azure Active Directory 单一登录 (SSO) 与 BlueJeans for Azure AD 集成
 
@@ -54,8 +54,8 @@ ms.locfileid: "92456936"
 若要配置 BlueJeans for Azure AD 与 Azure AD 的集成，需要从库中将 BlueJeans for Azure AD 添加到托管 SaaS 应用列表。
 
 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
-1. 在左侧导航窗格中，选择“Azure Active Directory”服务。
-1. 导航到“企业应用程序”，选择“所有应用程序” 。
+1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
+1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”。
 1. 在“从库中添加”部分的搜索框中，键入“BlueJeans for Azure AD” 。
 1. 从结果面板中选择“BlueJeans for Azure AD”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
@@ -130,7 +130,7 @@ ms.locfileid: "92456936"
 
 在本部分，我们通过授予 B.Simon 访问 BlueJeans for Azure AD 的权限，使其能够使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。 
 1. 在应用程序列表中选择“BlueJeans for Azure AD”。
 1. 在应用的概述页中，找到“管理”部分，选择“用户和组” 。
 
@@ -201,9 +201,9 @@ ms.locfileid: "92456936"
 
     ![屏幕截图显示“添加用户”部分，可在其中输入此步骤中所述的信息。](./media/bluejeans-tutorial/ic785886.png "添加用户")
 
-    a. 在“名字”文本框中，输入用户的名字，例如 B 。
+    a. 在“名字”文本框中，输入用户的名字，例如 B   。
 
-    b. 在“姓氏”文本框中，输入用户的名字，如 Simon 。
+    b. 在“姓氏”文本框中，输入用户的名字，如 Simon   。
 
     c. 在“选取 BlueJeans for Azure AD 用户名”文本框中，输入用户的用户名，例如 **Brittasimon**
 
@@ -211,7 +211,7 @@ ms.locfileid: "92456936"
 
     e. 在“公司”文本框中，输入你的公司。
 
-    f. 在“电子邮件地址”文本框中，输入用户的电子邮件地址，例如 `b.simon\@contoso.com`。
+    f. 在“电子邮件地址”文本框中，输入用户的电子邮件地址，例如 `b.simon@contoso.com`。
 
     g. 在“创建 BlueJeans for Azure AD 会议 ID”文本框中，输入你的会议 ID。
 

@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 05/15/2020
-ms.openlocfilehash: c411250f7d850e56c9c54c27e888cba8f3acfece
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 5d5a580e2b7be4699933b43687dcf164bf8f4a4a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100522200"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101700076"
 ---
 # <a name="collaborate-with-other-authors-and-editors"></a>与其他作者和编辑人员协作
 
@@ -25,7 +25,7 @@ ms.locfileid: "100522200"
 * 快速将作者和编辑器添加到资源中的所有知识库，因为控件位于资源级别，而不是在知识库级别。
 
 > [!NOTE]
-> 请确保为资源添加自定义子域。 默认情况下应存在[自定义子域](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains)，但如果不存在，请添加它
+> 请确保为资源添加自定义子域。 默认情况下应存在[自定义子域](../../cognitive-services-custom-subdomains.md)，但如果不存在，请添加它
 
 ## <a name="access-is-provided-by-a-defined-role"></a>访问由定义的角色提供
 
@@ -55,6 +55,6 @@ ms.locfileid: "100522200"
 
 如果通过 REST 或 Sdk 使用 Api 创作和协作，则需要 [创建服务主体](../../authentication.md#assign-a-role-to-a-service-principal) 来管理身份验证。
 
-## <a name="next-step"></a>下一步
+## <a name="next-step"></a>后续步骤
 
 * 为语言和客户端应用程序设计知识库

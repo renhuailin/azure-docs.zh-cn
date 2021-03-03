@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 01/12/2020
 ms.subservice: metrics
-ms.openlocfilehash: c47c316c82d8c510b4446e4335a219f400d476e4
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: a88a52163f03d2bffb0c9c4eab53fd814d9554fb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100607336"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101725860"
 ---
 # <a name="azure-monitor-metrics-metrics-aggregation-and-display-explained"></a>Azure Monitor 指标的指标聚合和显示说明
 
@@ -101,7 +101,7 @@ ms.locfileid: "100607336"
 
 在指标资源管理器中绘制指标图表时，可以选择按维度“拆分”图表。  拆分图表意味着查看基础数据以获取更多详细信息，并在指标资源管理器中查看绘制成图表或筛选的数据。
 
-例如，[Microsoft.ApiManagement/service](../platform/metrics-supported.md#microsoftapimanagementservice) 将“位置”作为多种指标的维度。 
+例如，[Microsoft.ApiManagement/service](./metrics-supported.md#microsoftapimanagementservice) 将“位置”作为多种指标的维度。 
 
 - “容量”就是一个这样的指标。 具有“位置”维度意味着，基础系统将存储每个位置的容量的指标记录，而不是总量的一个指标记录。 然后，你可以在指标图表中检索或拆分该信息。  
 
@@ -109,7 +109,7 @@ ms.locfileid: "100607336"
 
 - “请求”是一个更灵活的指标，具有 7 个不同的维度。 
  
-有关每个指标和可用维度的详细信息，请查看 Azure Monitor [支持的指标](../platform/metrics-supported.md)一文。 另外，每个资源提供程序和类型的相关文档可能会提供有关维度及其度量内容的其他信息。
+有关每个指标和可用维度的详细信息，请查看 Azure Monitor [支持的指标](./metrics-supported.md)一文。 另外，每个资源提供程序和类型的相关文档可能会提供有关维度及其度量内容的其他信息。
 
 可以结合使用拆分和筛选来深入了解问题。 下面是一个图形示例，其中显示了资源组中一组 VM 的平均磁盘写入字节数。 我们汇总了具有此指标的所有 VM，但我们可能想要深入了解哪些 VM 是造成早上 6 点左右高峰的真正原因。 它们是否是相同的计算机？ 涉及多少台计算机？  
 

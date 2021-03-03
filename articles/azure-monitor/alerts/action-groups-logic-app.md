@@ -4,14 +4,14 @@ description: 了解如何创建逻辑应用操作处理 Azure Monitor 警报。
 author: dkamstra
 ms.author: dukek
 ms.topic: conceptual
-ms.date: 07/18/2018
+ms.date: 02/19/2021
 ms.subservice: alerts
-ms.openlocfilehash: d74d77abbc0d105e6772240b8a6d7f463e8d94f7
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: adef1f729cbecd08b2cf99231423287bdc4c6ae0
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100608772"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101701172"
 ---
 # <a name="how-to-trigger-complex-actions-with-azure-monitor-alerts"></a>如何使用 Azure Monitor 警报触发复杂操作
 
@@ -19,7 +19,7 @@ ms.locfileid: "100608772"
 
 ## <a name="overview"></a>概述
 
-触发 Azure Monitor 警报时，它将调用[操作组](../platform/action-groups.md)。 通过操作组可触发一个或多个操作，以告知其他人发生了警报，以及予以补救。
+触发 Azure Monitor 警报时，它将调用[操作组](./action-groups.md)。 通过操作组可触发一个或多个操作，以告知其他人发生了警报，以及予以补救。
 
 常规过程：
 
@@ -35,29 +35,15 @@ ms.locfileid: "100608772"
 
 ## <a name="create-an-activity-log-alert-administrative"></a>创建活动日志警报：管理
 
-1.  在 Azure 门户的左上角，选择“创建资源”。
+1. [创建逻辑应用](~/articles/logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-2.  搜索并选择“逻辑应用”，然后选择“创建”。
+2.  选择触发器：“当收到 HTTP 请求时”。
 
-3.  为逻辑应用指定 **名称**，并选择一个 **资源组**。
+1. 在“收到 HTTP 请求时”对话框中，选择“使用示例有效负载生成架构”。 
 
-    ![创建逻辑应用](media/action-groups-logic-app/create-logic-app-dialog.png "创建逻辑应用")
+    ![显示已选中“收到 HTTP 请求时”对话框和“使用示例有效负载生成架构”选项的屏幕截图。 ](~/articles/app-service/media/tutorial-send-email/generate-schema-with-payload.png)
 
-4.  选择“创建”以创建逻辑应用。 此时会弹出一条消息，指出已创建逻辑应用。 选择“启动资源”打开“逻辑应用设计器”。
-
-5.  选择触发器：“当收到 HTTP 请求时”。
-
-    ![逻辑应用触发器](media/action-groups-logic-app/logic-app-triggers.png "逻辑应用触发器")
-
-6.  选择“编辑”更改 HTTP 请求触发器。
-
-    ![HTTP 请求触发器](media/action-groups-logic-app/http-request-trigger-shape.png "HTTP 请求触发器")
-
-7.  选择“使用示例有效负载生成架构”。
-
-    ![使用示例有效负载](media/action-groups-logic-app/use-sample-payload-button.png "使用示例有效负载")
-
-8.  将以下示例有效负载复制并粘贴到对话框中：
+3.  将以下示例有效负载复制并粘贴到对话框中：
 
     ```json
         {
@@ -128,7 +114,7 @@ ms.locfileid: "100608772"
 
 14. 在“逻辑应用设计器”的顶部，选择“保存”以保存逻辑应用。
 
-15. 打开现有的操作组并添加一个操作，以引用逻辑应用。 如果你没有现有操作组，请参阅 [在 Azure 门户中创建和管理操作组](../platform/action-groups.md) 以创建一个。 切勿忘记保存更改。
+15. 打开现有的操作组并添加一个操作，以引用逻辑应用。 如果你没有现有操作组，请参阅 [在 Azure 门户中创建和管理操作组](./action-groups.md) 以创建一个。 切勿忘记保存更改。
 
     ![更新操作组](media/action-groups-logic-app/update-action-group.png "更新操作组")
 
@@ -138,8 +124,8 @@ ms.locfileid: "100608772"
 
 Azure Service Health 条目包含在活动日志中。 创建警报的过程类似于[创建活动日志警报](#create-an-activity-log-alert-administrative)，但存在几处差别：
 
-- 步骤 1 至步骤 7 相同。
-- 在步骤 8 中，对 HTTP 请求触发器使用以下示例有效负载：
+- 步骤1到3是相同的。
+- 对于步骤4，请对 HTTP 请求触发器使用以下示例有效负载：
 
     ```json
     {
@@ -183,8 +169,8 @@ Azure Service Health 条目包含在活动日志中。 创建警报的过程类�
     }
     ```
 
--  步骤 9 和 10 相同。
--  对于步骤 11 到 14，请使用以下过程：
+-  步骤5和6相同。
+-  对于步骤7到11，请使用以下过程：
 
    1. 选择 " **+** **新建步骤** "，然后选择 " **添加条件**"。 设置以下条件，以便逻辑应用仅在输入数据与下面的值匹配时执行。  在文本框中输入版本值时，请在其周围加上引号 ("0.1.1") 以确保它被评估为字符串而不是数字类型。  如果返回到该页，系统不会显示引号，但底层代码仍然保持字符串类型。   
        - `schemaId == Microsoft.Insights/activityLogs`
@@ -226,8 +212,8 @@ Azure Service Health 条目包含在活动日志中。 创建警报的过程类�
 
 创建指标警报的过程类似于[创建活动日志警报](#create-an-activity-log-alert-administrative)，但存在几处差别：
 
-- 步骤 1 至步骤 7 相同。
-- 在步骤 8 中，对 HTTP 请求触发器使用以下示例有效负载：
+- 步骤1到3是相同的。
+- 对于步骤4，请对 HTTP 请求触发器使用以下示例有效负载：
 
     ```json
     {
@@ -271,8 +257,8 @@ Azure Service Health 条目包含在活动日志中。 创建警报的过程类�
     }
     ```
 
-- 步骤 9 和 10 相同。
-- 对于步骤 11 到 14，请使用以下过程：
+- 步骤5和6相同。
+- 对于步骤7到11，请使用以下过程：
 
   1. 选择 " **+** **新建步骤** "，然后选择 " **添加条件**"。 设置以下条件，以便逻辑应用仅在输入数据与下面的值匹配时执行。 在文本框中输入版本值时，请在其周围加上引号 ("2.0") 以确保它被评估为字符串而不是数字类型。  如果返回到该页，系统不会显示引号，但底层代码仍然保持字符串类型。 
      - `schemaId == AzureMonitorMetricAlert`
@@ -294,7 +280,6 @@ Azure Service Health 条目包含在活动日志中。 创建警报的过程类�
 逻辑应用具有大量不同的连接器，可在广泛的应用程序和数据库中触发操作。 Slack、SQL Server、Oracle、Salesforce 只是一些示例。 有关连接器的详细信息，请参阅[逻辑应用连接器](../../connectors/apis-list.md)。  
 
 ## <a name="next-steps"></a>后续步骤
-* 参阅 [Azure 活动日志警报概述](../platform/alerts-overview.md)，了解如何接收警报。  
+* 参阅 [Azure 活动日志警报概述](./alerts-overview.md)，了解如何接收警报。  
 * 了解如何[配置发布 Azure 服务运行状况通知时的警报](../../service-health/alerts-activity-log-service-notifications-portal.md)。
-* 详细了解[操作组](../platform/action-groups.md)。
-
+* 详细了解[操作组](./action-groups.md)。

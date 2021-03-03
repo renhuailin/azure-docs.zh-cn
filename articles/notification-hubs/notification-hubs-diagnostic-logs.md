@@ -6,12 +6,12 @@ ms.author: brjones
 ms.service: notification-hubs
 ms.topic: article
 ms.date: 01/29/2021
-ms.openlocfilehash: b532dca6ceba44a32132bf64b322e1b4764fd5fa
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: b98a04a70062461cec603bea83052c4f1224819e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100417107"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101736230"
 ---
 # <a name="enable-diagnostics-logs-for-notification-hubs"></a>为通知中心启用诊断日志
 
@@ -141,8 +141,7 @@ Azure 通知中心当前支持活动和操作日志，它们捕获在 Azure 通�
 ## <a name="next-steps"></a>后续步骤
 
 若要详细了解如何配置诊断设置，请参阅：
-* [Azure 诊断日志概述](../azure-monitor/platform/platform-logs-overview.md)。
+* [Azure 诊断日志概述](../azure-monitor/essentials/platform-logs-overview.md)。
 
 若要了解有关 Azure 通知中心的详细信息，请参阅：
 * [什么是 Azure 通知中心？](notification-hubs-push-notification-overview.md)
-

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 02/15/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: 9fe53a343a9f6675519b60d37d077886adaf8a9d
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: dd027f94edad580836f0afb8c7293c81ca77605a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100651148"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723820"
 ---
 # <a name="troubleshoot-change-tracking-and-inventory-issues"></a>排查更改跟踪和库存问题
 
@@ -34,7 +34,7 @@ Unable to Register Machine for Change Tracking, Registration Failed with Excepti
 
 ### <a name="resolution"></a>解决方法
 
-1. 请确保你的计算机向正确的工作区报告。 有关如何验证此操作的指导，请参阅 [验证代理与 Azure Monitor 的连接](../../azure-monitor/platform/agent-windows.md#verify-agent-connectivity-to-azure-monitor)。 此外，请确保此工作区已链接到 Azure 自动化帐户。 若要进行验证，请转到自动化帐户，选择“相关资源”下的“链接的工作区” 。
+1. 请确保你的计算机向正确的工作区报告。 有关如何验证此操作的指导，请参阅 [验证代理与 Azure Monitor 的连接](../../azure-monitor/agents/agent-windows.md#verify-agent-connectivity-to-azure-monitor)。 此外，请确保此工作区已链接到 Azure 自动化帐户。 若要进行验证，请转到自动化帐户，选择“相关资源”下的“链接的工作区” 。
 
 1. 确保链接到自动化帐户的 Log Analytics 工作区中显示计算机。 在 Log Analytics 工作区中运行以下查询。
 

@@ -6,16 +6,17 @@ author: v-dalc
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 02/17/2021
+ms.date: 02/25/2021
 ms.author: alkohli
-ms.openlocfilehash: 46a60642e177a2bfb9e8fb996427ea45f6777468
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.custom: references_regions
+ms.openlocfilehash: a692aeba312b6fcad580eac901f4b7bc65f059fc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100652779"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101730569"
 ---
-# <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box：常见问题解答
+# <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box：常见问题
 
 利用 Microsoft Azure Data Box 混合云解决方案，可使用传输设备通过快速、经济和可靠的方式将 TB 量级的数据发送到 Azure。 本常见问题解答文章包含了在 Azure 门户使用 Data Box 时可能遇到的问题及其解答。
 
@@ -32,18 +33,18 @@ ms.locfileid: "100652779"
 
 ## <a name="about-the-service"></a>关于该服务
 
-### <a name="q-what-is-azure-data-box-service"></a>问： 什么是 Azure Data Box 服务？ 
+### <a name="q-what-is-azure-data-box-service"></a>Q. 什么是 Azure Data Box 服务？ 
 A.  Azure Data Box 服务专为脱机数据引入而设计。 此服务可以管理针对数据传输定制的、具有不同存储容量的所有产品阵列。 
 
-### <a name="q-what-is-azure-data-box"></a>问： 什么是 Azure Data Box？
+### <a name="q-what-is-azure-data-box"></a>Q. 什么是 Azure Data Box？
 A. 使用 Azure Data Box，可以快速、廉价且安全地将数 TB 的数据传输到 Azure。 可通过 Azure 门户订购 Data Box 设备。 Microsoft 通过区域承运人向你寄送具有 80 TB 可用容量的存储设备。 
 
 收到设备后，可使用本地 Web UI 进行快速设置。 将服务器中的数据复制到设备或从设备复制到服务器，并将设备送回 Azure。 对于导入顺序，Azure 数据中心中的数据自动从设备上传到 Azure。 通过 Azure 门户中的 Data Box 服务对整个过程进行端到端跟踪。
 
-### <a name="q-when-should-i-use-data-box"></a>问： 何时应使用 Data Box？
+### <a name="q-when-should-i-use-data-box"></a>Q. 何时应使用 Data Box？
 A. 如果要在 Azure 中传输 40-500 TB 的数据，则可以使用 Data Box。 对于 < 40 TB 的数据大小，请使用 Data Box Disk，对于 > 500 TB 的数据大小，请注册 [Data Box Heavy](data-box-heavy-overview.md)。
 
-### <a name="q-what-is-the-price-of-data-box"></a>问： Data Box 的价格是多少？
+### <a name="q-what-is-the-price-of-data-box"></a>Q. Data Box 的价格是多少？
 A. 使用 Data Box 10 天会产生少许费用。 在 Azure 门户中创建订单并选择产品型号时，将显示设备的费用。 还适用于 Azure 存储的标准寄送费用和费用。 对于导入订单，出口订单遵循类似的定价模型，但可能会收取额外的出口费用。 
 
 有关详细信息，请参阅 [Azure Data Box 定价](https://azure.microsoft.com/pricing/details/storage/databox/) 和 [出口费用](https://azure.microsoft.com/pricing/details/bandwidth/)。 
@@ -69,7 +70,17 @@ Data Box 仅支持在与目标相同的国家/地区内进行数据引入或传�
 
 3. 然后，可以使用 AzCopy 之类的工具将数据复制到美国西部的存储帐户。 此步骤将产生 Data Box 计费中未包含的 [标准存储](https://azure.microsoft.com/pricing/details/storage/) 和 [带宽费用](https://azure.microsoft.com/pricing/details/bandwidth/) 。
 
-### <a name="q-how-can-i-recover-my-data-if-an-entire-region-fails"></a>问： 如果整个区域发生故障，如何恢复数据？
+#### <a name="q-does-data-box-store-any-customer-data-outside-of-the-service-region"></a>Q. Data Box 是否在服务区域之外存储任何客户数据？
+
+A. 否。 Data Box 不会在服务区域之外存储任何客户数据。 客户具有其数据的完全所有权，并且可以根据在订单创建过程中选择的存储帐户将数据保存到指定位置。  
+
+除了客户数据之外，还存在 Data Box 的数据，其中包括与设备相关的安全项目、设备和服务的监视日志以及与服务相关的元数据。 在除巴西南部和东南亚) 以外的所有 (区域中，Data Box 数据通过异地冗余存储帐户存储并复制到配对区域，以防止数据丢失。  
+
+由于巴西南部和东南亚的 [数据派驻要求](https://azure.microsoft.com/global-infrastructure/data-residency/#more-information) ，Data Box 数据存储在区域冗余存储 (ZRS) 帐户中，使其包含在单个区域中。 对于东南亚，所有 Data Box 数据都存储在新加坡中，对于巴西南部，数据存储在巴西。 
+
+如果巴西南部和东南亚发生服务中断，则客户可以从其他区域创建新订单。 将从创建新订单的区域中为其提供服务，并且客户负责发运 Data Box 设备。
+
+### <a name="q-how-can-i-recover-my-data-if-an-entire-region-fails"></a>Q. 如果整个区域发生故障，如何恢复数据？
 
 A. 在极端情况下，由于重大灾难导致区域丢失，Microsoft 可能会启动区域故障转移。 在这种情况下，不需要执行任何操作。 如果故障转移区域处于相同的国家或地区边界内，则会通过该区域实现订单。 但是，某些 Azure 区域在同一地理位置或商务边界内没有配对区域。 如果其中任何一个区域发生灾难，则需要再次从可用的其他区域创建 Data Box 顺序，并将数据复制到新区域中的 Azure。 有关详细信息，请参阅[业务连续性和灾难恢复 (BCDR)：Azure 配对区域](../best-practices-availability-paired-regions.md)。
 
@@ -111,7 +122,7 @@ A. 以下每个订单处理阶段的预计提前期有助于你充分了解预�
 ### <a name="q-i-ordered-a-couple-of-data-box-devices-i-cant-create-any-additional-orders-why"></a>Q. 我订购了多台 Data Box 设备。 我无法创建任何其他订单。 为什么？
 A. 对于每个商务边界，每个订阅最多允许5个有效订单 () 选择的国家和地区的组合。 如果需要订购更多设备，请联系 Microsoft 支持部门提高订阅限制。
 
-### <a name="q-when-i-try-to-create-an-order-i-receive-a-notification-that-the-data-box-service-is-not-available-what-does-this-mean"></a>问： 我在尝试创建订单时收到通知，提示 Data Box 服务不可用。 这是什么意思呢？
+### <a name="q-when-i-try-to-create-an-order-i-receive-a-notification-that-the-data-box-service-is-not-available-what-does-this-mean"></a>Q. 我在尝试创建订单时收到通知，提示 Data Box 服务不可用。 这是什么意思呢？
 A. Data Box 服务不适用于所选国家和地区的组合。 更改此组合可能会允许使用 Data Box 服务。 有关该服务适用区域的列表，请转到 [Data Box 的适用区域](data-box-overview.md#region-availability)。
 
 ### <a name="q-i-placed-my-data-box-order-few-days-back-when-will-i-receive-my-data-box"></a>Q. 我数天前订购了 Data Box。 何时能收到 Data Box？
@@ -122,13 +133,13 @@ A. 可以克隆以前的订单。 克隆操作会创建与以前相同的订单�
 
 ## <a name="configure-and-connect"></a>配置和连接
 
-### <a name="q-how-do-i-unlock-the-data-box"></a>问： 如何解锁 Data Box？ 
+### <a name="q-how-do-i-unlock-the-data-box"></a>Q. 如何解锁 Data Box？ 
 A.  在 Azure 门户中，转到 Data Box 订单，并导航到“设备详细信息”。 复制解锁密码。 在 Data Box 上使用此密码登录本地 Web UI。 有关详细信息，请转到[教程：为 Azure Data Box 拆除包装、连接电缆并连接到它](data-box-deploy-set-up.md)。
 
-### <a name="q-can-i-use-a-linux-host-computer-to-connect-and-copy-the-data-on-to-the-data-box"></a>问： 是否可以使用 Linux 主机建立连接并将数据复制到 Data Box？
+### <a name="q-can-i-use-a-linux-host-computer-to-connect-and-copy-the-data-on-to-the-data-box"></a>Q. 是否可以使用 Linux 主机建立连接并将数据复制到 Data Box？
 A.  是的。 可以使用 Data Box 连接 SMB 和 NFS 客户端。 有关详细信息，请转到主机的[受支持操作系统](data-box-system-requirements.md)列表。
 
-### <a name="q-my-data-box-is-dispatched-but-now-i-want-to-cancel-this-order-why-is-the-cancel-button-not-available"></a>问： 我的 Data Box 已发货，但现在我想取消此订单。 为何取消按钮不可用？
+### <a name="q-my-data-box-is-dispatched-but-now-i-want-to-cancel-this-order-why-is-the-cancel-button-not-available"></a>Q. 我的 Data Box 已发货，但现在我想取消此订单。 为何取消按钮不可用？
 A.  订购 Data Box 后，只能在处理订单前取消。 一旦 Data Box 订单已处理，便无法再取消订单。 
 
 ### <a name="q-can-i-connect-a-data-box-at-the-same-to-multiple-host-computers-to-transfer-data"></a>Q. 是否可以同时将 Data Box 连接到多台主机来传输数据？
@@ -164,7 +175,7 @@ A. 在 Data Box 前面的 "电源" 按钮下有两个 LED 灯。 最底部的指
 
 如果系统故障指示灯仍然亮起，请 [联系 Microsoft 支持部门](data-box-disk-contact-microsoft-support.md)。
 
-### <a name="q-i-cant-access-the-data-box-unlock-password-in-the-azure-portal-why"></a>问： 无法在 Azure 门户中访问 Data Box 解锁密码。 为什么？
+### <a name="q-i-cant-access-the-data-box-unlock-password-in-the-azure-portal-why"></a>Q. 无法在 Azure 门户中访问 Data Box 解锁密码。 为什么？
 A. 如果无法在 Azure 门户中访问 "解锁密码"，请检查订阅和存储帐户的权限。 请确保具有资源组级别的参与者或所有者权限。 需要至少具有 Data Box 操作员角色权限才能查看访问凭据。
 
 ### <a name="q-is-port-channel-configuration-supported-on-data-box-how-about-mpio"></a>Q. Data Box 上是否支持端口通道配置？ 是否支持 MPIO？
@@ -215,7 +226,7 @@ A.  To speed up the copy process:
 - Copy files to the VM's disk.-->
 
 
-### <a name="q-can-i-use-multiple-storage-accounts-with-data-box"></a>问： 是否可对 Data Box 使用多个存储帐户？
+### <a name="q-can-i-use-multiple-storage-accounts-with-data-box"></a>Q. 是否可对 Data Box 使用多个存储帐户？
 A.  是的。 Data Box 最多支持 10 个存储帐户（常规用途帐户、经典帐户或 blob 存储帐户）。 支持热 Blob 和冷 Blob。
 
 
@@ -296,7 +307,7 @@ A.  以下报表可用于支持监管链：
 A.  承运人跟踪日志在 Data Box 订单历史记录中捕获。 设备已返回 Azure 数据中心且其中的数据已清理后，此报告可用。 如立即需要，还可直接转到承运人的网站，使用订单跟踪号码获取跟踪信息。
 
 ### <a name="can-i-transport-the-data-box-to-azure-datacenter"></a>我能否自己将 Data Box 送到 Azure 数据中心？ 
-A.  不是。 如果你选择了 Microsoft 托管的装运，则无法传输数据。 目前，Azure 数据中心不接受来自客户的 Data Box 或除 UPS 以外的运营商。
+A.  否。 如果你选择了 Microsoft 托管的装运，则无法传输数据。 目前，Azure 数据中心不接受来自客户的 Data Box 或除 UPS 以外的运营商。
 
 如果选择了 "自行管理的装运"，则可以从 Azure 数据中心选择或删除 Data Box。
 

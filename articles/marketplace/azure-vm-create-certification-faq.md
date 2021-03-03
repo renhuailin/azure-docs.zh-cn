@@ -4,15 +4,15 @@ description: 解决与测试和验证虚拟机 (VM) Azure Marketplace 的映像�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: troubleshooting
-author: iqshahmicrosoft
-ms.author: iqshah
+author: mathapli
+ms.author: mathapli
 ms.date: 01/18/2021
-ms.openlocfilehash: 80dc19a58d212bb6ab8d608e222cd3a0bd3990d1
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: adcd91d58b3bb5fde3ffa81c828c58d4b6db48d4
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98600991"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101721151"
 ---
 # <a name="troubleshoot-virtual-machine-certification"></a>排查虚拟机证书问题
 
@@ -32,7 +32,7 @@ ms.locfileid: "98600991"
 1. 选择你的 Linux VM。
 1. 请参阅 " **诊断设置**"。
 1. 通过更新 **存储帐户** 启用基本矩阵。
-1. 选择“保存”。 
+1. 选择“保存”。
 
    ![显示如何启用来宾级别监视的屏幕截图。](./media/create-vm/vm-certification-issues-solutions-1.png)
 
@@ -189,7 +189,7 @@ Microsoft 认证工具包可帮助你运行测试用例，并验证你的 VHD �
 
 有关操作系统磁盘大小的限制，请参阅以下规则。 提交任何请求时，验证 OS 磁盘大小是否在 Linux 或 Windows 的限制范围内。
 
-|OS|推荐的 VHD 大小|
+|(OS)|推荐的 VHD 大小|
 |---|---|
 |Linux|1 GB 到 1023 GB|
 |Windows|30 GB 到 250 GB|
@@ -245,9 +245,9 @@ Microsoft 认证工具包可帮助你运行测试用例，并验证你的 VHD �
 ||16.04 LTS|4.15.0-1049|
 ||18.04 LTS|4.18.0-1023|
 ||18.04 LTS|5.0.0-1025|
-||18.10 |4.18.0-1023|
-||19.04 |5.0.0-1010|
-||19.04 |5.3.0-1004|
+||18.10|4.18.0-1023|
+||19.04|5.0.0-1010|
+||19.04|5.3.0-1004|
 |RHEL 和美分 OS|6.10|2.6.32-754.15。3|
 ||7.2|3.10.0-327.79。2|
 ||7.3|3.10.0-514.66。2|
@@ -594,8 +594,37 @@ Azure 上的所有 Vhd 必须将虚拟大小调整为 1 mb 的倍数 (MB) 。 �
 
 若要完成发布过程，请参阅 [查看和发布产品/服务](review-publish-offer.md)。
 
+### <a name="vm-images-with-limited-access-or-requiring-custom-templates"></a>具有有限访问权限或需要自定义模板的 VM 映像
+
+#### <a name="locked-down-or-ssh-disabled-offer"></a>锁定 (或) SSH 禁用提议
+
+  已发布的映像将被视为锁定 Vm，并将适用于 Linux 的已禁用 (适用于 Linux) 或禁用 RDP 的 Windows)  (。 有一些特殊的业务方案，因为发布者只允许对不受限制的用户访问。 在验证检查期间，锁定的 Vm 可能不允许执行某些证书命令。
+
+
+#### <a name="custom-templates"></a>自定义模板
+
+   通常，在单个 VM 产品/服务下发布的所有映像都将遵循用于部署的标准 ARM 模板。 但是，在某些情况下，可能需要在部署 Vm 时进行自定义 (例如，要) 配置多个 NIC (s) 。
+    
+   根据以下方案 (非详尽) ，发布者将使用自定义模板部署 VM：
+
+   * VM 需要额外的网络子网。
+   * 要插入到 ARM 模板中的其他元数据。
+   * 执行 ARM 模板的先决条件命令。
+
+### <a name="vm-extensions"></a>VM 扩展   
+
+   Azure 虚拟机 (VM) 扩展是小型应用程序，可在 Azure VM 上提供部署后配置和自动化任务。 例如，如果某个虚拟机需要安装软件、防病毒保护或运行脚本，便可以使用 VM 扩展。 
+
+   Linux VM 扩展验证要求以下内容是映像的一部分：
+* Azure Linux 代理更2.2.41
+* Python 版本高于2。8 
+
+
+有关详细信息，请访问 [VM 扩展](https://docs.microsoft.com/azure/virtual-machines/extensions/diagnostics-linux)。
+     
 ## <a name="next-steps"></a>后续步骤
 
 - [配置 VM 产品/服务属性](azure-vm-create-properties.md)
 - [活动 marketplace 奖励](partner-center-portal/marketplace-rewards.md)
 - 如果你有疑问或反馈，请联系 [合作伙伴中心支持](https://aka.ms/marketplacepublishersupport)部门。
+ 

@@ -6,12 +6,12 @@ title: Azure 春季云参考体系结构
 ms.author: akaleshian
 ms.service: spring-cloud
 description: 此参考体系结构是使用适用于 Azure 春季云的典型企业中心和辐射设计的基础。
-ms.openlocfilehash: 7d069e67e5161135b309aee3dc9c6ac921105623
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: c87462c8d6ab86299b6202acaa23f93d19240e0e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100634356"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101735482"
 ---
 # <a name="azure-spring-cloud-reference-architecture"></a>Azure 春季云参考体系结构
 
@@ -212,7 +212,7 @@ Azure 春季 Cloud 使用 AKS 作为基础组件来设计。 尽管 AKS 通过�
 | 6.5 | 确保网络观察程序为 "已启用"。 |
 | 6.6 | 确保使用 UDP 的入口受到限制。 |
 
-部署到受保护的环境中时，azure 春季云要求管理流量从 Azure 传出。 若要实现此目的，必须允许客户责任中列出的网络和应用程序规则在 [VNET 中运行 Azure 春季 Cloud](/azure/spring-cloud/spring-cloud-vnet-customer-responsibilities)。
+部署到受保护的环境中时，azure 春季云要求管理流量从 Azure 传出。 若要实现此目的，必须允许客户责任中列出的网络和应用程序规则在 [VNET 中运行 Azure 春季 Cloud](./spring-cloud-vnet-customer-responsibilities.md)。
 
 #### <a name="application-security"></a>应用程序安全性
 
@@ -246,23 +246,23 @@ CI 控件8.1 和8.2 建议为凭据设置过期日期，以确保强制执行旋
 通过 [Azure 春季云参考体系结构][10] 存储库中提供的 ARM、Terraform 和 Azure CLI 部署探索此参考体系结构。
 
 <!-- Reference links in article -->
-[1]: /azure/spring-cloud/
-[2]: /azure/key-vault/
-[3]: /azure/azure-monitor/
-[4]: /azure/security-center/
+[1]: ./index.yml
+[2]: ../key-vault/index.yml
+[3]: ../azure-monitor/index.yml
+[4]: ../security-center/index.yml
 [5]: /azure/devops/pipelines/
-[6]: /azure/application-gateway/
-[7]: /azure/web-application-firewall/
-[8]: /azure/spring-cloud/spring-cloud-tutorial-config-server/
+[6]: ../application-gateway/index.yml
+[7]: ../web-application-firewall/index.yml
+[8]: ./spring-cloud-tutorial-config-server.md
 [9]: https://steeltoe.io/
 [10]: https://github.com/Azure/azure-spring-cloud-reference-architecture
-[11]: /azure/spring-cloud/spring-cloud-tutorial-deploy-in-azure-virtual-network#virtual-network-requirements
-[12]: /azure/spring-cloud/spring-cloud-vnet-customer-responsibilities#azure-spring-cloud-network-requirements
-[13]: /azure/spring-cloud/spring-cloud-vnet-customer-responsibilities#azure-spring-cloud-fqdn-requirements--application-rules
-[14]: /azure/spring-cloud/spring-cloud-howto-staging-environment
+[11]: ./spring-cloud-tutorial-deploy-in-azure-virtual-network.md#virtual-network-requirements
+[12]: ./spring-cloud-vnet-customer-responsibilities.md#azure-spring-cloud-network-requirements
+[13]: ./spring-cloud-vnet-customer-responsibilities.md#azure-spring-cloud-fqdn-requirements--application-rules
+[14]: ./spring-cloud-howto-staging-environment.md
 [15]: https://devblogs.microsoft.com/java/monitor-applications-and-dependencies-in-azure-spring-cloud/
 [16]: /azure/architecture/framework/
-[17]: /azure/spring-cloud/spring-cloud-tutorial-deploy-in-azure-virtual-network#virtual-network-requirements
+[17]: ./spring-cloud-tutorial-deploy-in-azure-virtual-network.md#virtual-network-requirements
 [18]: https://cloudsecurityalliance.org/
 [19]: https://cloudsecurityalliance.org/research/working-groups/cloud-controls-matrix
 [20]: https://azure.microsoft.com/resources/cis-microsoft-azure-foundations-security-benchmark/

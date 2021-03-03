@@ -7,17 +7,17 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 8d0f1e711b325b1b9ce4e431c1438e511384e8a0
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: b042049c803ad04b54bb6c2a242ca1008bc17dd3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100606303"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734513"
 ---
 # <a name="advanced-features-of-the-azure-metrics-explorer"></a>Azure 指标资源管理器的高级功能
 
 > [!NOTE]
-> 本文假定你熟悉 Azure Monitor 的 Azure 指标资源管理器的基本功能。 如果你是新用户，希望了解如何创建第一个指标图表，请参阅[指标资源管理器入门](../platform/metrics-getting-started.md)。
+> 本文假定你熟悉 Azure Monitor 的 Azure 指标资源管理器的基本功能。 如果你是新用户，希望了解如何创建第一个指标图表，请参阅[指标资源管理器入门](./metrics-getting-started.md)。
 
 在 Azure Monitor 中，[指标](data-platform-metrics.md)是随着时间的推移收集和存储的一系列度量值和计数。 指标可以是标准（也称为“平台”）指标，也可以是自定义指标。 
 
@@ -49,11 +49,11 @@ ms.locfileid: "100606303"
 ### <a name="view-metrics-across-multiple-resources"></a>查看多个资源的指标
 某些资源类型可以查询多个资源的指标。 这些资源必须位于相同的订阅和位置中。 可以在“资源类型”菜单顶部找到这些资源类型。 
 
-有关详细信息，请参阅 [选择多个资源](../platform/metrics-dynamic-scope.md#select-multiple-resources)。
+有关详细信息，请参阅 [选择多个资源](./metrics-dynamic-scope.md#select-multiple-resources)。
 
 ![屏幕截图，显示跨资源的类型。](./media/metrics-charts/multi-resource-scope.png)
 
-对于兼容多个资源的类型，你可以查询跨订阅或跨多个资源组的指标。 有关详细信息，请参阅 [选择资源组或订阅](../platform/metrics-dynamic-scope.md#select-a-resource-group-or-subscription)。
+对于兼容多个资源的类型，你可以查询跨订阅或跨多个资源组的指标。 有关详细信息，请参阅 [选择资源组或订阅](./metrics-dynamic-scope.md#select-a-resource-group-or-subscription)。
 
 ## <a name="multiple-metric-lines-and-charts"></a>多个指标行和图表
 
@@ -67,7 +67,7 @@ ms.locfileid: "100606303"
 
 ### <a name="multiple-metrics-on-the-same-chart"></a>同一图表上的多个指标
 
-若要在同一个图表中查看多个指标，请首先[创建新的图表](../platform/metrics-getting-started.md#create-your-first-metric-chart)。 然后选择“添加指标”。 通过同样的步骤在同一图表上添加另一指标。
+若要在同一个图表中查看多个指标，请首先[创建新的图表](./metrics-getting-started.md#create-your-first-metric-chart)。 然后选择“添加指标”。 通过同样的步骤在同一图表上添加另一指标。
 
 > [!NOTE]
 > 通常，图表不应混合那些使用不同度量单位的指标。 例如，应避免将一个使用毫秒的指标与另一个使用千字节的指标混合使用。 还应避免混合使用尺度差别很大的指标。 
@@ -86,7 +86,7 @@ ms.locfileid: "100606303"
 
 在图表上使用不同的聚合之前，应了解指标资源管理器处理它们的方式。 指标是在一段时间内捕获的一系列度量（或“指标值”）。 绘制图表时，所选指标的值将基于时间粒度进行单独聚合。 
 
-请使用指标资源管理器的[时间选取器面板](../platform/metrics-getting-started.md#select-a-time-range)选择时间粒度的大小。 如果没有显式选择时间粒度，则默认使用当前选择的时间范围。 确定时间粒度后，在每个时间粒度期间捕获的指标值会聚合在图表上，每个时间粒度一个数据点。
+请使用指标资源管理器的[时间选取器面板](./metrics-getting-started.md#select-a-time-range)选择时间粒度的大小。 如果没有显式选择时间粒度，则默认使用当前选择的时间范围。 确定时间粒度后，在每个时间粒度期间捕获的指标值会聚合在图表上，每个时间粒度一个数据点。
 
 例如，假设图表显示“服务器响应时间”指标。 它针对“过去 24 小时”的时间跨度使用“平均值”聚合。  在本示例中：
 
@@ -230,6 +230,42 @@ ms.locfileid: "100606303"
 
 有关详细信息，请参阅[创建、查看和管理指标警报](../alerts/alerts-metric.md)。
 
+## <a name="correlate-metrics-to-logs"></a>将指标关联到日志
+为了帮助客户诊断其指标图表中异常的根本原因，我们已创建了深化日志。 深化日志使客户能够将指标图表中的峰值与日志和查询相关联。 
+
+在我们深入探讨经验之前，我们首先要介绍提供的不同类型的日志和查询。 
+
+| 术语             | 定义  | 
+|------------------|-------------|
+| 活动日志    | 了解从外部（管理平台）  对订阅中的每个 Azure 资源执行的操作，以及对服务运行状况事件进行的更新。 使用活动日志来确定任何写入操作 (PUT、POST、DELETE) 对订阅中的资源执行的操作。 每个 Azure 订阅都有一个活动日志。  |   
+| 诊断日志   | 提供对 Azure 资源中执行的操作的深入了解 (数据平面) ，例如从 Key Vault 获取机密或向数据库发出请求。 资源日志的内容因 Azure 服务和资源类型而异。 **注意：** 必须由服务提供并由客户启用  | 
+| 建议日志 | 客户可利用的基于方案的查询来调查指标资源管理器中的异常。  |
+
+目前，钻取日志可供选择资源提供程序使用。 具有完整的日志记录体验的资源提供程序包括： 
+
+* Application Insights 
+* 自动缩放 
+* 应用服务  
+* 存储  
+
+下面是 Application Insights 资源提供程序的示例体验。
+
+![App insights 指标边栏选项卡中的故障高峰](./media/metrics-charts/drill-into-log-ai.png)
+
+若要诊断失败请求中的峰值，请单击 "深化日志"。
+
+![钻取日志下拉列表的屏幕截图](./media/metrics-charts/drill-into-logs-dropdown.png)
+
+单击 "失败" 选项后，会出现 "自定义故障" 边栏选项卡，该边栏选项卡提供失败的操作操作、顶级异常类型和依赖关系。 
+
+![App insights 故障边栏选项卡的屏幕截图](./media/metrics-charts/ai-failure-blade.png)
+
+### <a name="common-problems-with-drill-into-logs"></a>深化日志的常见问题
+
+* 日志和查询已禁用-若要查看建议的日志和查询，必须将诊断日志路由到 Log Analytics。 阅读 [本文档](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings) 以了解如何执行此操作。 
+* 仅提供活动日志-"深化日志" 功能仅适用于选择资源提供程序。 默认情况下，会提供活动日志。 
+
+ 
 ## <a name="troubleshooting"></a>故障排除
 
 如果在图表上看不到任何数据，请查看以下故障排除信息：
@@ -242,6 +278,5 @@ ms.locfileid: "100606303"
 
 ## <a name="next-steps"></a>后续步骤
 
-若要使用指标创建可操作的仪表板，请参阅[创建自定义 KPI 仪表板](../learn/tutorial-app-dashboards.md)。
+若要使用指标创建可操作的仪表板，请参阅[创建自定义 KPI 仪表板](../app/tutorial-app-dashboards.md)。
 
- 

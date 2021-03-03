@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: ferno
 ms.reviewer: mathoma
 ms.date: 04/28/2020
-ms.openlocfilehash: 67902073b1484835d23566c91cbfae6f1d80d249
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 47ea5ea73c581313f90791ca6d7892ebad3f666b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900470"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690679"
 ---
 # <a name="tutorial-configure-replication-between-two-managed-instances"></a>教程：配置两个托管实例之间的复制
 
@@ -51,7 +51,7 @@ ms.locfileid: "92900470"
 - 发布服务器托管实例与分发服务器和订阅服务器位于同一虚拟网络中，或者已在所有三个实体的虚拟网络之间配置了 [VPN 网关](../../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)。 
 - 连接时，在复制参与者之间使用 SQL 身份验证。
 - 适用于复制工作目录的 Azure 存储帐户共享。
-- 需要在托管实例的 NSG 安全规则中打开端口 445（TCP 出站）才能访问 Azure 文件共享。  如果遇到错误 `failed to connect to azure storage \<storage account name> with os error 53`，则需要将出站规则添加到相应 SQL 托管实例子网的 NSG。
+- 需要在托管实例的 NSG 安全规则中打开端口 445（TCP 出站）才能访问 Azure 文件共享。  如果遇到错误 `failed to connect to azure storage <storage account name> with os error 53`，则需要将出站规则添加到相应 SQL 托管实例子网的 NSG。
 
 ## <a name="1---create-a-resource-group"></a>1 - 创建资源组
 

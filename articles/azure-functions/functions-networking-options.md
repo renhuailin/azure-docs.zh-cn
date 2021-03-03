@@ -5,12 +5,12 @@ author: cachai2
 ms.topic: conceptual
 ms.date: 1/21/2021
 ms.author: cachai
-ms.openlocfilehash: 2c3f207e98f574bb6c43f87d34b0a404e263e83c
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: ceef827f7406f8915d205349372a43626c917e4b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98806981"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101729226"
 ---
 # <a name="azure-functions-networking-options"></a>Azure Functions 网络选项
 
@@ -87,7 +87,7 @@ Azure Functions 中的虚拟网络集成将共享基础结构与应用服务 Web
 
 ## <a name="restrict-your-storage-account-to-a-virtual-network"></a>将存储帐户限制到虚拟网络中 
 
-创建函数应用时，必须创建或链接到支持 Blob、队列和表存储的常规用途的 Azure 存储帐户。  可以将此存储帐户替换为服务终结点或专用终结点所保护的存储帐户。  此功能目前仅适用于 Windows 高级版计划。  若要使用限制到专用网络的存储帐户来设置函数，请执行以下操作：
+创建函数应用时，必须创建或链接到支持 Blob、队列和表存储的常规用途的 Azure 存储帐户。  可以将此存储帐户替换为服务终结点或专用终结点所保护的存储帐户。  此功能目前仅适用于所有支持 Vnet 的 sku，其中包括标准版和高级版，在弹性戳记上，Vnet 仅适用于高级 sku。 若要使用限制到专用网络的存储帐户来设置函数，请执行以下操作：
 
 1. 使用未启用服务终结点的存储帐户创建一个函数。
 1. 将该函数配置为连接到你的虚拟网络。

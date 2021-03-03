@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: a2ab63febbb4439e50ef0f7bcc0f9797dc50c62c
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: a9dfd185af012314ddc481b598f181b6760640ec
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99260022"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690934"
 ---
 # <a name="migration-guide-sql-server-to-sql-database"></a>迁移指南：将 SQL Server 到 SQL 数据库
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
@@ -157,8 +157,8 @@ ms.locfileid: "99260022"
 |  | 资源争用 | 建议 |
 |--|--|--|
 | **源 (通常在本地)** |源中的迁移过程中的主要瓶颈是数据 i/o 和数据文件延迟，需要仔细监视。  |根据数据 IO 和数据文件的延迟时间，以及它是虚拟机还是物理服务器，你必须使用存储管理员并探索选项来缓解瓶颈。 |
-|**Azure SQL Database (目标)**|最大的限制因素是日志生成速率和日志文件的延迟。 使用 Azure SQL 数据库时，最多可以获得 96 MB/s 的日志生成速率。 | 若要加快迁移速度，请将目标 SQL DB 扩展到业务关键 Gen5 8 vcore，以获取 96 MB/秒的最大日志生成速率，并为日志文件实现低延迟。 [超大规模](https://docs.microsoft.com/azure/azure-sql/database/service-tier-hyperscale)服务层提供 100 MB/秒的对数率，而不考虑所选的服务级别 |
-|**Network** |所需的网络带宽等于最大日志引入速率 96 MB/s (768 Mb/秒)  |根据从本地数据中心到 Azure 的网络连接，请检查网络带宽 (通常是 [Azure ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction#bandwidth-options)) ，以满足日志引入速率上限。 |
+|**Azure SQL Database (目标)**|最大的限制因素是日志生成速率和日志文件的延迟。 使用 Azure SQL 数据库时，最多可以获得 96 MB/s 的日志生成速率。 | 若要加快迁移速度，请将目标 SQL DB 扩展到业务关键 Gen5 8 vcore，以获取 96 MB/秒的最大日志生成速率，并为日志文件实现低延迟。 [超大规模](../../database/service-tier-hyperscale.md)服务层提供 100 MB/秒的对数率，而不考虑所选的服务级别 |
+|**Network** |所需的网络带宽等于最大日志引入速率 96 MB/s (768 Mb/秒)  |根据从本地数据中心到 Azure 的网络连接，请检查网络带宽 (通常是 [Azure ExpressRoute](../../../expressroute/expressroute-introduction.md#bandwidth-options)) ，以满足日志引入速率上限。 |
 |**用于数据迁移助手 (DMA 的虚拟机)** |CPU 是运行 DMA 的虚拟机的主要瓶颈 |使用快速启动数据迁移时要考虑的事项 </br>-Azure 计算密集型 Vm </br>-使用至少 F8s_v2 (8 vcore) VM 运行 DMA </br>-确保 VM 在与目标相同的 Azure 区域中运行 |
 |**Azure 数据库迁移服务 (DMS)** |DM 的计算资源争用和数据库对象注意事项 |使用高级 4 vCore。 DM 自动处理数据库对象（如外键、触发器、约束和非聚集索引），无需任何手动干预。  |
 

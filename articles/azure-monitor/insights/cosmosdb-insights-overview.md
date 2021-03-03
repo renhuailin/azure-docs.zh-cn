@@ -5,12 +5,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: fdf482f5afc444aff77c2ab528a4e333a0282c3d
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: d88bf65f1bd94e29bd9f60f5597d655f0040623b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100582369"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101725732"
 ---
 # <a name="explore-azure-monitor-for-azure-cosmos-db"></a>探究适用于 Azure Cosmos DB 的 Azure Monitor
 
@@ -37,7 +37,7 @@ ms.locfileid: "100582369"
 
 若要查看所有订阅中的存储帐户的利用率和性能，请执行以下步骤。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 
 2. 搜索“Monitor”并选择“Monitor”。
 
@@ -87,13 +87,51 @@ ms.locfileid: "100582369"
 
 与概览工作簿一样，在“订阅”列中选择某个 Azure Cosmos DB 资源旁边的下拉箭头时，会显示组成该数据库的各个容器的明细。
 
-### <a name="operations"></a>操作 
+### <a name="operations"></a>操作
 
-在页面顶部选择“操作”，工作簿模板的“操作”部分随即打开。 可以在其中查看按发出的请求类型细分的请求数。 
+在页面顶部选择“操作”，工作簿模板的“操作”部分随即打开。 可以在其中查看按发出的请求类型细分的请求数。
 
 因此，在下面的示例中，你会看到 `eastus-billingint` 收到的主要是读取请求，但有少量的更新插入和创建请求。 而从请求的角度来看，`westeurope-billingint` 收到的是只读请求，至少在过去四小时（目前通过工作簿的时间范围参数对工作簿进行的范围设置）是这样。
 
-![操作工作簿](./media/cosmosdb-insights-overview/operation.png) 
+![操作工作簿](./media/cosmosdb-insights-overview/operation.png)
+
+## <a name="view-from-an-azure-cosmos-db-resource"></a>从 Azure Cosmos DB 资源查看
+
+1. 搜索或选择任何现有的 Azure Cosmos DB 帐户。
+
+:::image type="content" source="./media/cosmosdb-insights-overview/cosmosdb-search.png" alt-text="搜索 Azure Cosmos DB。" border="true":::
+
+2. 导航到 Azure Cosmos DB 帐户后，请在 "监视" 部分中选择 " **Insights (预览")** 或 **工作簿** ，对吞吐量、请求、存储、可用性、延迟、系统和帐户管理执行进一步的分析。
+
+:::image type="content" source="./media/cosmosdb-insights-overview/cosmosdb-overview.png" alt-text="Cosmos DB Insights 概述。" border="true":::
+
+### <a name="time-range"></a>时间范围
+
+默认情况下，" **时间范围** " 字段显示 **最近24小时** 内的数据。 您可以修改时间范围，以在最近5分钟到过去7天的任何时间显示数据。 时间范围选择器还包括一个 **自定义** 模式，可让你键入开始/结束日期，以根据所选帐户的可用数据查看自定义时间范围。
+
+:::image type="content" source="./media/cosmosdb-insights-overview/cosmosdb-time-range.png" alt-text="Cosmos DB 时间范围。" border="true":::
+
+### <a name="insights-overview"></a>见解概述
+
+" **概述** " 选项卡为所选 Azure Cosmos DB 帐户提供最常见的指标，包括：
+
+* 请求总数
+*  (429s 的失败请求) 
+* 规范化 RU 消耗量 (最大) 
+* 数据 & 索引使用情况
+* 按集合 Cosmos DB 帐户指标
+
+**请求总数：** 此图提供按状态代码细分的帐户请求总数。 图底部的单位是该时间段的总请求数之和。
+
+:::image type="content" source="./media/cosmosdb-insights-overview/cosmosdb-total-requests.png" alt-text="Cosmos DB 请求总数图。" border="true":::
+
+**(429s) 失败的请求**：此图提供了状态代码为429的失败请求的视图。 图底部的单位是该时间段内失败请求总数的总和。
+
+:::image type="content" source="./media/cosmosdb-insights-overview/cosmosdb-429.png" alt-text="Cosmos DB 失败请求图形。" border="true":::
+
+**规范化 Ru 消耗量 (max)**：此图提供指定时间段内0-100% 的规范化 ru 消耗单位的最大百分比。
+
+:::image type="content" source="./media/cosmosdb-insights-overview/cosmosdb-normalized-ru.png" alt-text="Cosmos DB 规范化 RU 消耗量。" border="true":::
 
 ## <a name="pin-export-and-expand"></a>固定、导出和展开
 

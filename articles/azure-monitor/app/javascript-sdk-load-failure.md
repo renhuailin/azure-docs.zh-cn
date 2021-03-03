@@ -6,12 +6,12 @@ author: MSNev
 ms.author: newylie
 ms.date: 06/05/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 30c7caef4143b1a7cdba959971ff7689f986cb9e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6295a56abbf3466c68b968c935936dbc10e22fb5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91333250"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711410"
 ---
 # <a name="troubleshooting-sdk-load-failure-for-javascript-web-apps"></a>排查 JavaScript Web 应用的 SDK 加载失败问题
 
@@ -68,7 +68,7 @@ Editor Note: This link name above "SDK Load Failure" has a direct references by 
  
 ## <a name="application-insights-cdn-outage"></a>Application Insights CDN 中断
 
-若要确认是否存在 Application Insights CDN 中断，可以尝试直接从与最终用户的位置不同的位置（可能是你自己的开发计算机，假定你的组织尚未阻止该域）通过浏览器来访问 CDN 终结点（例如 https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js) ）。
+可以通过以下方式确认是否存在 Application Insights CDN 中断：尝试从浏览器中直接访问 CDN 终结点 (例如， https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js 或 https://js.monitor.azure.com/scripts/b/ai.2.min.js) 从你的最终用户可能来自你自己的开发计算机的不同位置 (假设你的组织尚未阻止此域) 。
 
 如果确认发生了中断，可以[创建新的支持票证](https://azure.microsoft.com/support/create-ticket/)，或尝试更改用于下载 SDK 的 URL。
 
@@ -106,7 +106,7 @@ SDK 未能初始化是指 &lt;script /&gt; 已成功从 CDN 下载，但在初�
 
 若要查找错误的配置，请更改传递到代码片段中的配置（如果尚未这样做），使之仅包含字符串值形式的检测密钥。
 
-> src: "https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js ",<br />
+> src: "https://js.monitor.azure.com/scripts/b/ai.2.min.js ",<br />
 > cfg:{<br />
 > instrumentationKey:"INSTRUMENTATION_KEY"<br />
 > }});<br />
@@ -134,7 +134,7 @@ SDK 未能初始化是指 &lt;script /&gt; 已成功从 CDN 下载，但在初�
 > [!WARNING]
 > 这是一个仅限开发人员使用的设置，不应在完整的生产环境中启用，因为你会丢失遥测数据。
 
-> src: "https://az416426.vo.msecnd.net/scripts/b/ai.2.js ",<br />
+> src: "https://js.monitor.azure.com/scripts/b/ai.2.min.js ",<br />
 > cfg:{<br />
 > instrumentationKey:"INSTRUMENTATION_KEY",<br />
 > enableDebug: true<br />

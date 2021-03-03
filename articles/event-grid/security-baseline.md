@@ -4,23 +4,27 @@ description: 事件网格安全基线为实现 Azure 安全基准中指定的安
 author: msmbaldwin
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 08/21/2020
+ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: ef0f308c3ea2986301b0247111ef96bb133b57f4
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 80b630bb2f06d3eb634b9d9d32649ea8a47c0b0b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100571939"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101739137"
 ---
 # <a name="azure-security-baseline-for-event-grid"></a>事件网格的 Azure 安全基线
 
-Microsoft Azure 事件网格的 Azure 安全基线包含的建议可帮助你提高部署的安全状况。 此服务的基线摘自 [Azure 安全基准版本 1.0](../security/benchmarks/overview.md)，其中提供了有关如何根据我们的最佳做法指导保护 Azure 上的云解决方案的建议。 有关详细信息，请参阅 [Azure 安全基线概述](../security/benchmarks/security-baselines-overview.md)。
+此安全基线将 [Azure 安全基准版本 1.0](../security/benchmarks/overview-v1.md) 中的指导应用于 Microsoft Azure 事件网格。 Azure 安全基准提供有关如何在 Azure 上保护云解决方案的建议。
+内容由 Azure 安全基准定义的 **安全控制** 和适用于 Azure 事件网格的相关指南进行分组。 排除了不适用于 Azure 事件网格的 **控件**。
 
-## <a name="network-security"></a>网络安全性
+ 
+若要查看 Azure 事件网格如何完全映射到 Azure 安全基准，请参阅 [完整的 Azure 事件网格安全基线映射文件](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)。
 
-[有关详细信息，请参阅 *Azure 安全基线：* 网络安全](../security/benchmarks/security-control-network-security.md)。
+## <a name="network-security"></a>网络安全
+
+[有关详细信息，请参阅 *Azure 安全基线：* 网络安全性](../security/benchmarks/security-control-network-security.md)。
 
 ### <a name="11-protect-azure-resources-within-virtual-networks"></a>1.1：保护虚拟网络中的 Azure 资源
 
@@ -28,41 +32,41 @@ Microsoft Azure 事件网格的 Azure 安全基线包含的建议可帮助你提
 
 对于将内容发布到主题和域的操作，Azure 事件网格还支持进行基于公共 IP 的访问控制。 使用基于 IP 的控制，可以将主题和域的发布者限制为一组经过批准的计算机和云服务。 此功能是对事件网格支持的身份验证机制的补充。 
 
-- [有关事件网格专用终结点的更多详细信息](network-security.md#private-endpoints)
+- [有关事件网格专用终结点的更多详细信息](https://docs.microsoft.com/azure/event-grid/network-security#private-endpoints)
 
-- [有关事件网格 IP 防火墙的详细信息](network-security.md#ip-firewall)
+- [有关事件网格 IP 防火墙的详细信息](https://docs.microsoft.com/azure/event-grid/network-security#ip-firewall)
 
 - [Azure 事件网格网络安全](network-security.md) 
 
 - [Azure 专用链接概述](../private-link/private-link-overview.md)
 
-- [Azure 网络安全组](../virtual-network/network-security-groups-overview.md)
-
-**Azure 安全中心监视**：是
+- [Azure 网络安全组](/azure/virtual-network/security-overview)
 
 **责任**：客户
 
+**Azure 安全中心监视**：无
+
 ### <a name="12-monitor-and-log-the-configuration-and-traffic-of-virtual-networks-subnets-and-nics"></a>1.2：监视和记录虚拟网络、子网和 NIC 的配置与流量
 
-**指导**：使用 Azure 安全中心并遵循网络保护建议来保护 Azure 中的事件网格资源。 如果使用 Azure 虚拟机来访问事件网格资源，请启用网络安全组 (NSG) 流日志，并将日志发送到存储帐户进行流量
+**指导**：使用 Azure 安全中心并遵循网络保护建议来保护 Azure 中的事件网格资源。 如果使用
 
-审核。
+Azure 虚拟机若要访问事件网格资源，请启用网络安全组 (NSG) 流日志，并将日志发送到存储帐户以进行流量审核。
 
 - [如何启用 NSG 流日志](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
 - [了解 Azure 安全中心提供的网络安全](../security-center/security-center-network-recommendations.md)
 
-**Azure 安全中心监视**：是
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="13-protect-critical-web-applications"></a>1.3：保护关键 Web 应用程序
 
 **指导**：不适用；此建议适用于 Azure 应用服务或计算资源上运行的 Web 应用程序。
 
-**Azure 安全中心监视**：不适用
-
 **责任**：不适用
+
+**Azure 安全中心监视**：无
 
 ### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1.4：拒绝与已知恶意的 IP 地址进行通信
 
@@ -76,11 +80,11 @@ Microsoft Azure 事件网格的 Azure 安全基线包含的建议可帮助你提
 
 - [如何配置 DDoS 防护](../ddos-protection/manage-ddos-protection.md)
 
-- [有关 Azure 安全中心集成威胁情报的详细信息](../security-center/azure-defender.md)
-
-**Azure 安全中心监视**：是
+- [有关 Azure 安全中心集成威胁情报的详细信息](/azure/security-center/security-center-alerts-service-layer)
 
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="15-record-network-packets"></a>1.5：记录网络数据包
 
@@ -96,9 +100,9 @@ Microsoft Azure 事件网格的 Azure 安全基线包含的建议可帮助你提
 
 - [如何启用网络观察程序](../network-watcher/network-watcher-create.md)
 
-**Azure 安全中心监视**：是
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1.6：部署基于网络的入侵检测/入侵防护系统 (IDS/IPS)
 
@@ -112,64 +116,68 @@ Microsoft Azure 事件网格的 Azure 安全基线包含的建议可帮助你提
 
 - [如何配置 Azure 防火墙警报](../firewall/threat-intel.md)
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="17-manage-traffic-to-web-applications"></a>1.7：管理发往 Web 应用程序的流量
 
 **指导**：不适用；此建议适用于 Azure 应用服务或计算资源上运行的 Web 应用程序。
 
-**Azure 安全中心监视**：不适用
-
 **责任**：不适用
+
+**Azure 安全中心监视**：无
 
 ### <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1.8：最大程度地降低网络安全规则的复杂性和管理开销
 
 **指导**：对于虚拟网络中需要访问 Azure 事件网格资源的资源，请在网络安全组或 Azure 防火墙上使用虚拟网络服务标记来定义网络访问控制。 创建安全规则时，可以使用服务标记代替特定的 IP 地址。 通过在规则的相应源字段或目标字段中指定服务标记名（例如，AzureEventGrid），可以允许或拒绝相应服务的流量。 Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更改时自动更新服务标记。
 
-- [如何使用 Azure 事件网格服务标记](network-security.md#service-tags)
+- [如何使用 Azure 事件网格服务标记](https://docs.microsoft.com/azure/event-grid/network-security#service-tags)
 
 - [有关使用服务标记的详细信息](../virtual-network/service-tags-overview.md)
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1.9：维护网络设备的标准安全配置
 
 **指导**：使用 Azure Policy 为与 Azure 事件网格命名空间关联的网络资源定义和实施标准安全配置。 在“Microsoft.EventGrid”和“Microsoft.Network”命名空间中使用 Azure Policy 别名创建自定义策略，以审核或强制实施事件网格资源的网络配置。 
 
-你还可以使用与 Azure 事件网格相关的内置策略定义，例如：- Azure 事件网格域应使用专用链接；- Azure 事件网格主题应使用专用链接
-- [事件网格资源的内置策略](../governance/policy/samples/built-in-policies.md#event-grid)
+你还可以使用与 Azure 事件网格相关的内置策略定义，例如：
+
+- Azure 事件网格域应使用专用链接
+
+- Azure 事件网格主题应使用 Azure 的专用链接
+- [事件网格资源的内置策略](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#event-grid)
 
 - [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="110-document-traffic-configuration-rules"></a>1.10：阐述流量配置规则
 
 **指导**：对与 Azure 事件网格资源关联的网络资源使用标记，以便按逻辑将这些资源组织成某种分类。
 
-- [如何创建和使用标记](../azure-resource-manager/management/tag-resources.md)
-
-**Azure 安全中心监视**：不适用
+- [如何创建和使用标记](/azure/azure-resource-manager/resource-group-using-tags)
 
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1.11：使用自动化工具来监视网络资源配置和检测更改
 
 **指导**：使用 Azure 活动日志监视网络资源配置，并检测与 Azure 事件网格相关的网络资源的更改。 在 Azure Monitor 中创建当关键网络资源发生更改时触发的警报。
 
-- [如何查看和检索 Azure 活动日志事件](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
+- [如何查看和检索 Azure 活动日志事件](/azure/azure-monitor/platform/activity-log-view)
 
-- [如何在 Azure Monitor 中创建警报](../azure-monitor/alerts/alerts-activity-log.md)
-
-**Azure 安全中心监视**：不适用
+- [如何在 Azure Monitor 中创建警报](/azure/azure-monitor/platform/alerts-activity-log)
 
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ## <a name="logging-and-monitoring"></a>日志记录和监视
 
@@ -183,9 +191,9 @@ Microsoft Azure 事件网格的 Azure 安全基线包含的建议可帮助你提
 
 - [如何加入 Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-**Azure 安全中心监视**：是
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="23-enable-audit-logging-for-azure-resources"></a>2.3：为 Azure 资源启用审核日志记录
 
@@ -193,27 +201,27 @@ Microsoft Azure 事件网格的 Azure 安全基线包含的建议可帮助你提
 
 - [为 Azure 事件网格主题或域启用诊断日志](enable-diagnostic-logs-topic.md)
 
-**Azure 安全中心监视**：是
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="24-collect-security-logs-from-operating-systems"></a>2.4：从操作系统收集安全日志
 
-**指导**：不适用；此建议适用于计算资源。
-
-**Azure 安全中心监视**：不适用
+**指南**：不适用；此建议适用于计算资源。
 
 **责任**：不适用
+
+**Azure 安全中心监视**：无
 
 ### <a name="25-configure-security-log-storage-retention"></a>2.5：配置安全日志存储保留期
 
 **指导**：在 Azure Monitor 中，根据组织的合规性规定，为与 Azure 事件网格资源关联的 Log Analytics 工作区设置日志保留期。
 
-- [如何设置日志保留参数](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
-
-**Azure 安全中心监视**：不适用
+- [如何设置日志保留参数](/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
 
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="26-monitor-and-review-logs"></a>2.6：监视和审查日志
 
@@ -227,13 +235,13 @@ Microsoft Azure 事件网格的 Azure 安全基线包含的建议可帮助你提
 
 - [如何加入 Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-- [Log Analytics 查询入门](../azure-monitor/logs/log-analytics-tutorial.md)
+- [Log Analytics 查询入门](/azure/azure-monitor/log-query/log-analytics-tutorial)
 
-- [如何在 Azure Monitor 中执行自定义查询](../azure-monitor/logs/get-started-queries.md)
-
-**Azure 安全中心监视**：不适用
+- [如何在 Azure Monitor 中执行自定义查询](/azure/azure-monitor/log-query/get-started-queries)
 
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="27-enable-alerts-for-anomalous-activities"></a>2.7：针对异常活动启用警报
 
@@ -249,37 +257,37 @@ Microsoft Azure 事件网格的 Azure 安全基线包含的建议可帮助你提
 
 - [事件网格诊断日志架构的详细信息](diagnostic-logs.md)
 
-- [使用 Azure Monitor 创建、查看和管理日志警报](../azure-monitor/alerts/alerts-log.md)
+- [使用 Azure Monitor 创建、查看和管理日志警报](/azure/azure-monitor/platform/alerts-log)
 
 - [如何加入 Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-**Azure 安全中心监视**：是
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="28-centralize-anti-malware-logging"></a>2.8：集中管理反恶意软件日志记录
 
 **指导**：不适用；Azure 事件网格不会处理或生成与反恶意软件相关的日志。
 
-**Azure 安全中心监视**：不适用
-
 **责任**：不适用
+
+**Azure 安全中心监视**：无
 
 ### <a name="29-enable-dns-query-logging"></a>2.9：启用 DNS 查询日志记录
 
 **指导**：不适用；Azure 事件网格不会处理或生成与 DNS 相关的日志。
 
-**Azure 安全中心监视**：不适用
-
 **责任**：不适用
+
+**Azure 安全中心监视**：无
 
 ### <a name="210-enable-command-line-audit-logging"></a>2.10：启用命令行审核日志记录
 
-**指导**：不适用；此建议适用于计算资源。
-
-**Azure 安全中心监视**：不适用
+**指南**：不适用；此建议适用于计算资源。
 
 **责任**：不适用
+
+**Azure 安全中心监视**：无
 
 ## <a name="identity-and-access-control"></a>标识和访问控制
 
@@ -293,27 +301,27 @@ Microsoft Azure 事件网格的 Azure 安全基线包含的建议可帮助你提
 
 - [授权访问事件网格资源](security-authorization.md)
 
-- [如何使用 PowerShell 获取 Azure AD 中的目录角色](/powershell/module/azuread/get-azureaddirectoryrole)
+- [如何使用 PowerShell 在 Azure Active Directory (Azure AD) 中获取目录角色](/powershell/module/azuread/get-azureaddirectoryrole)
 
 - [如何使用 PowerShell 获取 Azure AD 中目录角色的成员](/powershell/module/azuread/get-azureaddirectoryrolemember)
 
-**Azure 安全中心监视**：是
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="32-change-default-passwords-where-applicable"></a>3.2：在适用的情况下更改默认密码
 
-**指导**：对事件网格资源的访问管理是通过 Azure Active Directory (AD) 控制的。 Azure AD 没有默认密码。
-
-**Azure 安全中心监视**：不适用
+**指南**：通过) Azure Active Directory (Azure AD 控制对事件网格资源的访问管理。 Azure AD 没有默认密码。
 
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="33-use-dedicated-administrative-accounts"></a>3.3：使用专用管理帐户
 
 **指南**：围绕专用管理帐户的使用创建标准操作程序。
 
-还可以通过使用 Azure AD Privileged Identity Management 和 Azure 资源管理器来启用即时访问权限。
+还可以通过使用 Azure Active Directory (Azure AD) Privileged Identity Management 和 Azure 资源管理器来启用实时访问。
 
 事件网格可以为 Azure 事件网格主题或域启用托管服务标识，并使用该标识将事件转发到支持的目标，如服务总线队列和主题、事件中心和存储帐户。 共享访问签名 (SAS) 令牌用于将事件发布到 Azure 事件网格。 使用这些帐户创建有关事件访问、转发和发布的标准操作过程。
 
@@ -321,55 +329,55 @@ Microsoft Azure 事件网格的 Azure 安全基线包含的建议可帮助你提
 
 - [对发布客户端进行身份验证（Azure 事件网格）](security-authenticate-publishing-clients.md)
 
-- [详细了解 Privileged Identity Management](../active-directory/privileged-identity-management/index.yml)
-
-**Azure 安全中心监视**：是
+- [详细了解 Privileged Identity Management](/azure/active-directory/privileged-identity-management/)
 
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3.4：将单一登录 (SSO) 与 Azure Active Directory 配合使用
 
 **指导**：不适用；事件网格服务不支持 SSO。
 
-**Azure 安全中心监视**：不适用
-
 **责任**：不适用
+
+**Azure 安全中心监视**：无
 
 ### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3.5：对所有基于 Azure Active Directory 的访问使用多重身份验证
 
-**指导**：不适用；事件网格服务不使用多重身份验证
-
-**Azure 安全中心监视**：不适用
+**指南**：不适用;事件网格服务不使用多重身份验证。
 
 **责任**：不适用
+
+**Azure 安全中心监视**：无
 
 ### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3.6：对所有管理任务使用专用计算机（特权访问工作站）
 
-**指导**：不适用；事件网格方案不需要特权访问工作站。 
-
-**Azure 安全中心监视**：不适用
+**指导**：不适用；事件网格方案不需要特权访问工作站。
 
 **责任**：不适用
 
+**Azure 安全中心监视**：无
+
 ### <a name="37-log-and-alert-on-suspicious-activities-from-administrative-accounts"></a>3.7：记录来自管理帐户的可疑活动并对其发出警报
 
-**指导**：使用 Azure Active Directory 安全报告和监视来检测环境中何时发生可疑活动或不安全的活动。 使用 Azure 安全中心监视标识和访问活动。
+**指导**：使用 Azure Active Directory (Azure AD) 安全报告和监视，来检测环境中何时发生可疑或不安全的活动。 使用 Azure 安全中心监视标识和访问活动。
 
-- [如何确定标记为存在风险活动的 Azure AD 用户](../active-directory/identity-protection/overview-identity-protection.md)
+- [如何确定标记为存在风险活动的 Azure AD 用户](/azure/active-directory/reports-monitoring/concept-user-at-risk)
 
 - [如何在 Azure 安全中心内监视用户的标识和访问活动](../security-center/security-center-identity-access.md)
 
-**Azure 安全中心监视**：是
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="38-manage-azure-resources-only-from-approved-locations"></a>3.8：仅从批准的位置管理 Azure 资源
 
-**指导**：不适用。 事件网格不使用 Azure AD 对事件发布客户端进行身份验证；它支持通过 SAS 密钥进行身份验证。
-
-**Azure 安全中心监视**：不适用
+**指导**：不适用。 事件网格不使用 Azure Active Directory (Azure AD) 对事件发布客户端进行身份验证;它通过 SAS 密钥支持身份验证。
 
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="39-use-azure-active-directory"></a>3.9：使用 Azure Active Directory
 
@@ -383,61 +391,59 @@ Microsoft Azure 事件网格的 Azure 安全基线包含的建议可帮助你提
 
 - [如何创建和配置 Azure AD 实例](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3.10：定期审查和协调用户访问
 
-**指南**：Azure AD 提供日志来帮助发现过时的帐户。 此外，请使用 Azure AD 标识和访问评审来有效管理组成员身份、对企业应用程序的访问以及角色分配。 可以定期评审用户的访问权限，确保只有适当的用户才持续拥有访问权限。 
- 
-当环境中出现可疑或不安全的活动时，可使用 Azure Active Directory (AD) Privileged Identity Management (PIM) 生成日志和警报。
+**指导**：Azure Active Directory (Azure AD) 提供日志来帮助发现过时的帐户。 此外，请使用 Azure AD 标识和访问评审来有效管理组成员身份、对企业应用程序的访问以及角色分配。 可以定期评审用户的访问权限，确保只有适当的用户才持续拥有访问权限。
 
-- [了解 Azure AD 报告](../active-directory/reports-monitoring/index.yml)
+使用 Azure AD Privileged Identity Management (PIM) 在环境中发生可疑或不安全的活动时生成日志和警报。
+
+- [了解 Azure AD 报告](/azure/active-directory/reports-monitoring)
 
 - [如何使用 Azure AD 标识和访问评审](../active-directory/governance/access-reviews-overview.md)
 
-- [部署 Azure AD Privileged Identity Management (PIM)](../active-directory/privileged-identity-management/pim-deployment-plan.md)
-
-**Azure 安全中心监视**：是
+- [部署 Azure AD Privileged Identity Management (PIM)](/azure/active-directory/privileged-identity-management/pim-deployment-plan)
 
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="311-monitor-attempts-to-access-deactivated-credentials"></a>3.11：监视尝试访问已停用凭据的行为
 
-**指导**：你有权访问 Azure AD 登录活动、审核和风险事件日志源，因此可以与任何 SIEM/监视工具集成。
+**指南**：你有权访问 Azure Active Directory (Azure AD) 登录活动、审核和风险事件日志源，这允许你与任何 SIEM/监视工具集成。
 
 可以通过为 Azure AD 用户帐户创建诊断设置，并将审核日志和登录日志发送到 Log Analytics 工作区，来简化此过程。 你可以在 Log Analytics 工作区中配置所需的警报。
 
-- [如何将 Azure 活动日志与 Azure Monitor 集成](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
-
-**Azure 安全中心监视**：不适用
+- [如何将 Azure 活动日志与 Azure Monitor 集成](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
 
 **责任**：客户
 
+**Azure 安全中心监视**：无
+
 ### <a name="312-alert-on-account-login-behavior-deviation"></a>3.12：针对帐户登录行为偏差发出警报
 
-**指导**：使用 Azure AD 标识保护功能来配置对检测到的与用户标识相关的可疑操作的自动响应。 还可将数据引入 Azure Sentinel 以做进一步调查。
- 
- 
- 
-- [如何查看 Azure AD 风险登录](../active-directory/identity-protection/overview-identity-protection.md)
+**指南**：使用 Azure Active Directory (Azure AD) Identity Protection 功能配置对检测到的与用户标识相关的可疑操作的自动响应。 还可以将数据引入 Azure Sentinel 中以便进一步调查。
+
+- [如何查看 Azure AD 风险登录](/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
 
 - [如何配置和启用标识保护风险策略](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
 - [如何加入 Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios"></a>3.13：在支持场合下为 Microsoft 提供对相关客户数据的访问权限
 
 **指导**：不适用；事件网格服务目前不支持客户密码箱。
 
-**Azure 安全中心监视**：不适用
-
 **责任**：不适用
+
+**Azure 安全中心监视**：无
 
 ## <a name="data-protection"></a>数据保护
 
@@ -449,25 +455,25 @@ Microsoft Azure 事件网格的 Azure 安全基线包含的建议可帮助你提
  
  
  
-- [如何创建和使用标记](../azure-resource-manager/management/tag-resources.md)
-
-**Azure 安全中心监视**：不适用
+- [如何创建和使用标记](/azure/azure-resource-manager/resource-group-using-tags)
 
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2：隔离存储或处理敏感信息的系统
 
 **指导**：使用单独的订阅和管理组对各个安全域（如环境类型和数据敏感度级别）实现隔离。 你可以限制对应用程序和企业环境所需 Azure 资源的访问级别。 可以通过 Azure RBAC 来控制对 Azure 资源的访问。
 
-- [如何创建其他 Azure 订阅](../cost-management-billing/manage/create-subscription.md)
+- [如何创建其他 Azure 订阅](/azure/billing/billing-create-subscription)
 
-- [如何创建管理组](../governance/management-groups/create-management-group-portal.md)
+- [如何创建管理组](/azure/governance/management-groups/create)
 
-- [如何创建和使用标记](../azure-resource-manager/management/tag-resources.md)
-
-**Azure 安全中心监视**：不适用
+- [如何创建和使用标记](/azure/azure-resource-manager/resource-group-using-tags)
 
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4.3：监视和阻止未经授权的敏感信息传输
 
@@ -475,17 +481,17 @@ Microsoft Azure 事件网格的 Azure 安全基线包含的建议可帮助你提
 
 - [了解 Azure 中的客户数据保护](../security/fundamentals/protection-customer-data.md)
 
-**Azure 安全中心监视**：不适用
-
 **责任**：共享
+
+**Azure 安全中心监视**：无
 
 ### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4.4：加密传输中的所有敏感信息
 
-**指导**：Azure 事件网格需要使用 HTTPS 进行发布操作，并支持使用 HTTPS 将事件传递到 Webhook 终结点。 在 Azure Global 中，事件网格支持 1.1 和 1.2 版本的 TLS，但我们强烈建议使用 1.2 版本。 在国家云（例如 Azure 政府和由中国的世纪互联运营的 Azure）中，事件网格仅支持 1.2 版本的 TLS。 
-
-**Azure 安全中心监视**：不适用
+**指导**：Azure 事件网格需要使用 HTTPS 进行发布操作，并支持使用 HTTPS 将事件传递到 Webhook 终结点。 在 Azure Global 中，事件网格支持 1.1 和 1.2 版本的 TLS，但我们强烈建议使用 1.2 版本。 在国家云（例如 Azure 政府和由中国的世纪互联运营的 Azure）中，事件网格仅支持 1.2 版本的 TLS。
 
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4.5：使用有效的发现工具识别敏感数据
 
@@ -495,59 +501,59 @@ Microsoft Azure 事件网格的 Azure 安全基线包含的建议可帮助你提
 
 - [了解 Azure 中的客户数据保护](../security/fundamentals/protection-customer-data.md)
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="46-use-azure-rbac-to-manage-access-to-resources"></a>4.6：使用 Azure RBAC 管理对资源的访问
 
-**指导**：Azure 事件网格支持使用 Azure Active Directory (AD) 对事件网格资源请求进行授权。 可以通过 Azure AD 使用 Azure 基于角色的访问控制 (Azure RBAC) 向安全主体授予权限，该安全主体可能是用户，也可能是应用程序服务主体。
+**指南**： Azure 事件网格支持使用 Azure Active Directory (Azure AD) 向事件网格资源的请求授权。 可以通过 Azure AD 使用 Azure 基于角色的访问控制 (Azure RBAC) 向安全主体授予权限，该安全主体可能是用户，也可能是应用程序服务主体。
 
 - [授权访问事件网格资源](security-authorization.md)
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4.9：记录对关键 Azure 资源的更改并对此类更改发出警报
 
 **指导**：将 Azure Monitor 与 Azure 活动日志结合使用，以创建在 Azure 事件网格资源的生产实例和其他关键资源或相关资源发生更改时发出的警报。
 
-- [如何针对 Azure 活动日志事件创建警报](../azure-monitor/alerts/alerts-activity-log.md)
-
-**Azure 安全中心监视**：不适用
+- [如何针对 Azure 活动日志事件创建警报](/azure/azure-monitor/platform/alerts-activity-log)
 
 **责任**：客户
 
+**Azure 安全中心监视**：无
+
 ## <a name="vulnerability-management"></a>漏洞管理
 
-[有关详细信息，请参阅 *Azure 安全基线：* 漏洞管理](../security/benchmarks/security-control-vulnerability-management.md)。
+[有关详细信息，请参阅 *Azure 安全基线：* 漏洞管理。](../security/benchmarks/security-control-vulnerability-management.md)
 
 ### <a name="53-deploy-an-automated-patch-management-solution-for-third-party-software-titles"></a>5.3：为第三方软件部署自动化补丁管理解决方案
 
 **指导**：不适用；此项指导适用于计算资源。
 
-**Azure 安全中心监视**：不适用
-
 **责任**：不适用
+
+**Azure 安全中心监视**：无
 
 ### <a name="54-compare-back-to-back-vulnerability-scans"></a>5.4：比较连续进行的漏洞扫描
 
 **指导**：不适用；此项指导适用于计算资源。
 
-**Azure 安全中心监视**：不适用
-
 **责任**：不适用
+
+**Azure 安全中心监视**：无
 
 ### <a name="55-use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>5.5：使用风险评级过程来确定已发现漏洞的修正措施的优先级
 
 **指导**：不适用；此项指导适用于计算资源。
 
-**Azure 安全中心监视**：不适用
-
 **责任**：不适用
 
-## <a name="inventory-and-asset-management"></a>库存和资产管理
+**Azure 安全中心监视**：无
+
+## <a name="inventory-and-asset-management"></a>清单和资产管理
 
 [有关详细信息，请参阅 *Azure 安全基线：* 清单和资产管理](../security/benchmarks/security-control-inventory-asset-management.md)。
 
@@ -555,19 +561,19 @@ Microsoft Azure 事件网格的 Azure 安全基线包含的建议可帮助你提
 
 **指导**：不适用；此项指导适用于计算资源。
 
-**Azure 安全中心监视**：不适用
-
 **责任**：不适用
+
+**Azure 安全中心监视**：无
 
 ### <a name="62-maintain-asset-metadata"></a>6.2：维护资产元数据
 
 **指导**：将标记应用到 Azure资源，以便有条理地将元数据组织成某种分类。
 
-- [如何创建和使用标记](../azure-resource-manager/management/tag-resources.md)
-
-**Azure 安全中心监视**：不适用
+- [如何创建和使用标记](/azure/azure-resource-manager/resource-group-using-tags)
 
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="63-delete-unauthorized-azure-resources"></a>6.3：删除未经授权的 Azure 资源
 
@@ -575,23 +581,23 @@ Microsoft Azure 事件网格的 Azure 安全基线包含的建议可帮助你提
  
  
  
-- [如何创建其他 Azure 订阅](../cost-management-billing/manage/create-subscription.md)
+- [如何创建其他 Azure 订阅](/azure/billing/billing-create-subscription)
 
-- [如何创建管理组](../governance/management-groups/create-management-group-portal.md)
+- [如何创建管理组](/azure/governance/management-groups/create)
 
-- [如何创建和使用标记](../azure-resource-manager/management/tag-resources.md)
-
-**Azure 安全中心监视**：不适用
+- [如何创建和使用标记](/azure/azure-resource-manager/resource-group-using-tags)
 
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="64-define-and-maintain-an-inventory-of-approved-azure-resources"></a>6.4：定义并维护已批准 Azure 资源的清单
 
 **指导**：根据组织需求，创建已获批 Azure 资源以及已获批用于计算资源的软件的清单。
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="65-monitor-for-unapproved-azure-resources"></a>6.5：监视未批准的 Azure 资源
 
@@ -605,33 +611,33 @@ Microsoft Azure 事件网格的 Azure 安全基线包含的建议可帮助你提
 - [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 - [如何使用 Azure Graph 创建查询](../governance/resource-graph/first-query-portal.md)
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6.6：监视计算资源中未批准的软件应用程序
 
-**指导**：不适用；此建议适用于计算资源。
-
-**Azure 安全中心监视**：不适用
+**指南**：不适用；此建议适用于计算资源。
 
 **责任**：不适用
+
+**Azure 安全中心监视**：无
 
 ### <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6.7：删除未批准的 Azure 资源和软件应用程序
 
-**指导**：不适用；此建议适用于计算资源。
-
-**Azure 安全中心监视**：不适用
+**指南**：不适用；此建议适用于计算资源。
 
 **责任**：不适用
+
+**Azure 安全中心监视**：无
 
 ### <a name="68-use-only-approved-applications"></a>6.8：仅使用已批准的应用程序
 
-**指导**：不适用；此建议适用于计算资源。
-
-**Azure 安全中心监视**：不适用
+**指南**：不适用；此建议适用于计算资源。
 
 **责任**：不适用
+
+**Azure 安全中心监视**：无
 
 ### <a name="69-use-only-approved-azure-services"></a>6.9：仅使用已批准的 Azure 服务
 
@@ -646,45 +652,43 @@ Microsoft Azure 事件网格的 Azure 安全基线包含的建议可帮助你提
 
 - [如何使用 Azure Graph 创建查询](../governance/resource-graph/first-query-portal.md)
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="610-maintain-an-inventory-of-approved-software-titles"></a>6.10：维护已获批软件的清单
 
 **指导**：不适用；此建议适用于计算资源。
 
-**Azure 安全中心监视**：不适用
-
 **责任**：不适用
+
+**Azure 安全中心监视**：无
 
 ### <a name="611-limit-users-ability-to-interact-with-azure-resource-manager"></a>6.11：限制用户与 Azure 资源管理器进行交互的能力
 
-**指导**：通过为“Microsoft Azure 管理”应用配置“阻止访问”，使用 Azure AD 条件访问来限制用户与 Azure 资源管理器交互的能力。
- 
- 
- 
+**指南**：使用 Azure Active Directory (Azure AD) 条件性访问，以限制用户与 Azure 资源管理器交互的能力，方法是配置 "Microsoft Azure 管理" 应用程序的 "阻止访问"。
+
 - [如何配置条件访问来阻止对 Azure 资源管理器的访问](../role-based-access-control/conditional-access-azure-management.md)
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="612-limit-users-ability-to-execute-scripts-in-compute-resources"></a>6.12：限制用户在计算资源中执行脚本的能力
 
 **指导**：不适用；此建议适用于计算资源。
 
-**Azure 安全中心监视**：不适用
-
 **责任**：不适用
+
+**Azure 安全中心监视**：无
 
 ### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6.13：以物理或逻辑方式隔离高风险应用程序
 
 **指导**：不适用；此建议适用于 Azure 应用服务或计算资源上运行的 Web 应用程序。
 
-**Azure 安全中心监视**：不适用
-
 **责任**：不适用
+
+**Azure 安全中心监视**：无
 
 ## <a name="secure-configuration"></a>安全配置
 
@@ -700,17 +704,17 @@ Azure 资源管理器能够以 JavaScript 对象表示法 (JSON) 格式导出模
 
 - [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="72-establish-secure-operating-system-configurations"></a>7.2：建立安全的操作系统配置
 
 **指导**：不适用；此项指导适用于计算资源。
 
-**Azure 安全中心监视**：不适用
-
 **责任**：不适用
+
+**Azure 安全中心监视**：无
 
 ### <a name="73-maintain-secure-azure-resource-configurations"></a>7.3：维护安全的 Azure 资源配置
 
@@ -722,17 +726,17 @@ Azure 资源管理器能够以 JavaScript 对象表示法 (JSON) 格式导出模
 
 - [Azure 资源管理器模板概述](../azure-resource-manager/templates/overview.md)
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="74-maintain-secure-operating-system-configurations"></a>7.4：维护安全的操作系统配置
 
 **指导**：不适用；此项指导适用于计算资源。
 
-**Azure 安全中心监视**：不适用
-
 **责任**：不适用
+
+**Azure 安全中心监视**：无
 
 ### <a name="75-securely-store-configuration-of-azure-resources"></a>7.5：安全存储 Azure 资源的配置
 
@@ -740,19 +744,19 @@ Azure 资源管理器能够以 JavaScript 对象表示法 (JSON) 格式导出模
 
 - [如何在 Azure DevOps 中存储代码](/azure/devops/repos/git/gitworkflow)
 
-- [Azure Repos 文档](/azure/devops/repos/index)
-
-**Azure 安全中心监视**：不适用
+- [Azure Repos 文档](/azure/devops/repos/)
 
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="76-securely-store-custom-operating-system-images"></a>7.6：安全存储自定义操作系统映像
 
 **指导**：不适用；此项指导适用于计算资源。
 
-**Azure 安全中心监视**：不适用
-
 **责任**：不适用
+
+**Azure 安全中心监视**：无
 
 ### <a name="77-deploy-configuration-management-tools-for-azure-resources"></a>7.7：部署 Azure 资源的配置管理工具
 
@@ -760,19 +764,19 @@ Azure 资源管理器能够以 JavaScript 对象表示法 (JSON) 格式导出模
 
 - [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-- [如何使用别名](../governance/policy/concepts/definition-structure.md#aliases)
-
-**Azure 安全中心监视**：不适用
+- [如何使用别名](https://docs.microsoft.com/azure/governance/policy/concepts/definition-structure#aliases)
 
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="78-deploy-configuration-management-tools-for-operating-systems"></a>7.8：部署操作系统的配置管理工具
 
 **指导**：不适用；此项指导适用于计算资源。
 
-**Azure 安全中心监视**：不适用
-
 **责任**：不适用
+
+**Azure 安全中心监视**：无
 
 ### <a name="79-implement-automated-configuration-monitoring-for-azure-resources"></a>7.9：为 Azure 资源实施自动配置监视
 
@@ -780,17 +784,17 @@ Azure 资源管理器能够以 JavaScript 对象表示法 (JSON) 格式导出模
 
 - [如何在 Azure 安全中心修正建议](../security-center/security-center-remediate-recommendations.md)
 
-**Azure 安全中心监视**：是
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7.10：为操作系统实施自动配置监视
 
 **指导**：不适用；此项指导适用于计算资源。
 
-**Azure 安全中心监视**：不适用
-
 **责任**：不适用
+
+**Azure 安全中心监视**：无
 
 ### <a name="711-manage-azure-secrets-securely"></a>7.11：安全管理 Azure 机密
 
@@ -802,15 +806,15 @@ Azure 资源管理器能够以 JavaScript 对象表示法 (JSON) 格式导出模
 
 - [如何使用 Azure 资源的托管标识](../azure-app-configuration/howto-integrate-azure-managed-service-identity.md)
 
-- [如何创建 Key Vault](../key-vault/general/quick-create-portal.md)
+- [如何创建 Key Vault](../key-vault/secrets/quick-create-portal.md)
 
 - [如何向 Key Vault 进行身份验证](../key-vault/general/authentication.md)
 
 - [如何分配 Key Vault 访问策略](../key-vault/general/assign-access-policy-portal.md)
 
-**Azure 安全中心监视**：是
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="712-manage-identities-securely-and-automatically"></a>7.12：安全自动管理标识
 
@@ -818,9 +822,9 @@ Azure 资源管理器能够以 JavaScript 对象表示法 (JSON) 格式导出模
 
 - [使用托管标识进行事件传递](managed-service-identity.md)
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="713-eliminate-unintended-credential-exposure"></a>7.13：消除意外的凭据透露
 
@@ -828,9 +832,9 @@ Azure 资源管理器能够以 JavaScript 对象表示法 (JSON) 格式导出模
 
 - [如何设置凭据扫描程序](https://secdevtools.azurewebsites.net/helpcredscan.html)
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ## <a name="malware-defense"></a>恶意软件防护
 
@@ -842,9 +846,9 @@ Azure 资源管理器能够以 JavaScript 对象表示法 (JSON) 格式导出模
 
 你需要负责预先扫描要上传到非计算 Azure 资源的任何内容。 Microsoft 无法访问客户数据，因此无法代表你对客户内容执行反恶意软件扫描。
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ## <a name="data-recovery"></a>数据恢复
 
@@ -856,9 +860,9 @@ Azure 资源管理器能够以 JavaScript 对象表示法 (JSON) 格式导出模
 
 - [Azure 事件网格中的服务器端异地灾难恢复](geo-disaster-recovery.md)
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9.2：执行完整系统备份，并备份客户管理的所有密钥
 
@@ -868,9 +872,9 @@ Azure 资源管理器能够以 JavaScript 对象表示法 (JSON) 格式导出模
 
 - [Azure 事件网格中的服务器端异地灾难恢复](geo-disaster-recovery.md)
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9.3：验证所有备份，包括客户管理的密钥
 
@@ -880,9 +884,9 @@ Azure 资源管理器能够以 JavaScript 对象表示法 (JSON) 格式导出模
 
 - [Azure 事件网格中的服务器端异地灾难恢复](geo-disaster-recovery.md)
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4：确保保护备份和客户管理的密钥
 
@@ -893,9 +897,9 @@ Azure 资源管理器能够以 JavaScript 对象表示法 (JSON) 格式导出模
 
 - [了解 Azure RBAC](../role-based-access-control/overview.md)
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ## <a name="incident-response"></a>事件响应
 
@@ -911,9 +915,9 @@ Azure 资源管理器能够以 JavaScript 对象表示法 (JSON) 格式导出模
 
 - [使用 NIST 的“计算机安全事件处理指南”，帮助制定自己的事件响应计划](https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final)
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10.2：创建事件评分和优先级设定过程
 
@@ -926,11 +930,11 @@ Azure 资源管理器能够以 JavaScript 对象表示法 (JSON) 格式导出模
 
 - [Azure 安全中心中的安全警报](../security-center/security-center-alerts-overview.md)
 
-- [使用标记整理 Azure 资源](../azure-resource-manager/management/tag-resources.md)
-
-**Azure 安全中心监视**：是
+- [使用标记整理 Azure 资源](/azure/azure-resource-manager/resource-group-using-tags)
 
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="103-test-security-response-procedures"></a>10.3：测试安全响应过程
 
@@ -940,9 +944,9 @@ Azure 资源管理器能够以 JavaScript 对象表示法 (JSON) 格式导出模
  
 - [NIST 出版物 - IT 计划和功能的测试、训练和演练计划指南](https://csrc.nist.gov/publications/detail/sp/800-84/final)
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10.4：提供安全事件联系人详细信息，并针对安全事件配置警报通知
 
@@ -952,9 +956,9 @@ Azure 资源管理器能够以 JavaScript 对象表示法 (JSON) 格式导出模
  
 - [如何设置 Azure 安全中心安全联系人](../security-center/security-center-provide-security-contact-details.md)
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10.5：将安全警报整合到事件响应系统中
 
@@ -964,9 +968,9 @@ Azure 资源管理器能够以 JavaScript 对象表示法 (JSON) 格式导出模
 
 - [如何将警报流式传输到 Azure Sentinel](../sentinel/connect-azure-security-center.md)
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="106-automate-the-response-to-security-alerts"></a>10.6：自动响应安全警报
 
@@ -974,9 +978,9 @@ Azure 资源管理器能够以 JavaScript 对象表示法 (JSON) 格式导出模
 
 - [如何在安全中心配置工作流自动化](../security-center/workflow-automation.md)
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>渗透测试和红队练习
 
@@ -990,11 +994,11 @@ Azure 资源管理器能够以 JavaScript 对象表示法 (JSON) 格式导出模
 
 - [Microsoft 云红色组合](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
 
-**Azure 安全中心监视**：不适用
-
 **责任**：共享
+
+**Azure 安全中心监视**：无
 
 ## <a name="next-steps"></a>后续步骤
 
-- 请参阅 [Azure 安全基准](../security/benchmarks/overview.md)
-- 详细了解 [Azure 安全基线](../security/benchmarks/security-baselines-overview.md)
+- 参阅 [Azure 安全基准 V2 概述](/azure/security/benchmarks/overview)
+- 详细了解 [Azure 安全基线](/azure/security/benchmarks/security-baselines-overview)

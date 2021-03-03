@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/31/2020
-ms.openlocfilehash: 678a6f0dc19d966f3d15e713008c19c8fbb96f5e
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 5eaa2d686ecd38c006a720e9ffb97a4604f18ba8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100608872"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708860"
 ---
 # <a name="using-functions-in-azure-monitor-log-queries"></a>在 Azure Monitor 日志查询中使用函数
 
@@ -35,7 +35,7 @@ ms.locfileid: "100608872"
 通过在另一个查询中添加其别名来使用函数。 可以像使用其他任何表一样使用它。
 
 ## <a name="function-parameters"></a>函数参数 
-可以为函数添加参数，以便在调用该函数时为某些变量提供值。 目前使用参数创建函数的唯一方法是使用资源管理器模板。 有关示例，请参阅[用于 Azure Monitor 日志查询的资源管理器模板示例](../samples/resource-manager-log-queries.md#parameterized-function)。
+可以为函数添加参数，以便在调用该函数时为某些变量提供值。 目前使用参数创建函数的唯一方法是使用资源管理器模板。 有关示例，请参阅[用于 Azure Monitor 日志查询的资源管理器模板示例](./resource-manager-log-queries.md#parameterized-function)。
 
 ## <a name="example"></a>示例
 以下示例查询将返回最近一天报告的所有缺失的安全更新。 使用别名 security_updates_last_day 将此查询另存为函数。 

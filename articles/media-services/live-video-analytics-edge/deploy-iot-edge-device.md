@@ -3,12 +3,12 @@ title: 在 IoT Edge 设备上部署实时视频分析 - Azure
 description: 本文列出了将帮助你在 IoT Edge 设备上部署实时视频分析的步骤。 你可能会在以下情况下执行此操作，例如：如果你有权访问本地 Linux 计算机并且/或之前创建了 Azure 媒体服务帐户。
 ms.topic: how-to
 ms.date: 09/09/2020
-ms.openlocfilehash: ff5dbc8e643137008aa7819b455adcf97c05bfc9
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 01b98c7a1f4073adcd8dea7cbfbfc57abc3787c1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99491784"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101718924"
 ---
 # <a name="deploy-live-video-analytics-on-an-iot-edge-device"></a>在 IoT Edge 设备上部署实时视频分析
 
@@ -23,7 +23,7 @@ ms.locfileid: "99491784"
 * 运行[支持的 Linux 操作系统](../../iot-edge/support.md#operating-systems)之一的 x86-64 或 ARM64 设备
 * 你拥有[所有者权限](../../role-based-access-control/built-in-roles.md#owner)的 Azure 订阅
 * [创建和设置 IoT 中心](../../iot-hub/iot-hub-create-through-portal.md)
-* [注册 IoT Edge 设备](../../iot-edge/how-to-manual-provision-symmetric-key.md)
+* [注册 IoT Edge 设备](../../iot-edge/how-to-register-device.md)
 * [在基于 Debian 的 Linux 系统上安装 Azure IoT Edge 运行时](../../iot-edge/how-to-install-iot-edge.md)
 * [创建 Azure 媒体服务帐户](../latest/create-account-howto.md)
 
@@ -61,8 +61,8 @@ az ams streaming-endpoint start --resource-group $RESOURCE_GROUP --account-name 
 若要运行 IoT Edge 上的实时视频分析模块，请创建权限尽可能少的本地用户帐户。 例如，在 Linux 计算机上运行以下命令：
 
 ```
-sudo groupadd -g 1010 localuser
-sudo adduser --home /home/edgeuser --uid 1010 -gid 1010 edgeuser
+sudo groupadd -g 1010 localusergroup
+sudo useradd --home-dir /home/edgeuser --uid 1010 --gid 1010 lvaedgeuser
 ```
 
 ## <a name="granting-permissions-to-device-storage"></a>授予设备存储权限
@@ -72,15 +72,15 @@ sudo adduser --home /home/edgeuser --uid 1010 -gid 1010 edgeuser
 * 需要一个本地文件夹来存储应用程序配置数据。 使用以下命令创建文件夹并向本地用户帐户授予写入该文件夹的权限：
 
 ```
-sudo mkdir /var/lib/azuremediaservices
-sudo chown -R edgeuser /var/lib/azuremediaservices
+sudo mkdir -p /var/lib/azuremediaservices
+sudo chown -R lvaedgeuser /var/lib/azuremediaservices
 ```
 
 * 还需要一个文件夹来[将视频录制到本地文件](event-based-video-recording-concept.md#video-recording-based-on-events-from-other-sources)。 同样，使用以下命令创建一个本地文件夹：
 
 ```
-sudo mkdir /var/media
-sudo chown -R edgeuser /var/media
+sudo mkdir -p /var/media
+sudo chown -R lvaedgeuser /var/media
 ```
 
 ## <a name="deploy-live-video-analytics-edge-module"></a>部署实时视频分析 Edge 模块

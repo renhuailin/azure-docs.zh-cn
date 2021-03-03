@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: error-reference
 ms.date: 04/20/2020
-ms.openlocfilehash: 13d804ec39c3d7753d4ee04962a88d4451fb04d9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 89f063ab50cfd880552e80a77ba798e4d06de5b3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81727250"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101709574"
 ---
 # <a name="error-codes"></a>错误代码 #
 
@@ -46,11 +46,11 @@ ms.locfileid: "81727250"
 
 | 错误代码。路径名 | 代码，位 [27-0] (28 位)  | 说明 |
 |---|---:|---|
-| **MEDIA_ERR_ABORTED 错误范围 (0x0100000-0x01FFFFF) ** | | |
+| **MEDIA_ERR_ABORTED 错误范围 (0x0100000-0x01FFFFF)** | | |
 | abortedErrUnknown | 0x0100000 | 一般中止错误 |
 | abortedErrNotImplemented | 0x0100001 | 中止错误，未实现 |
 | abortedErrHttpMixedContentBlocked | 0x0100002 | 中止错误，阻止了混合内容-一般在 `http://` 从页面加载流时 `https://` 出现 |
-| **MEDIA_ERR_NETWORK 错误开始值 (0x0200000-0x02FFFFF) ** | | |
+| **MEDIA_ERR_NETWORK 错误开始值 (0x0200000-0x02FFFFF)** | | |
 | networkErrUnknown | 0x0200000 | 一般网络错误 |
 | networkErrHttpBadUrlFormat | 0x0200190 | Http 400 错误响应 |
 | networkErrHttpUserAuthRequired | 0x0200191 | Http 401 错误响应 |
@@ -65,15 +65,15 @@ ms.locfileid: "81727250"
 | networkErrHttpGatewayTimeout | 0x02001F8 | Http 504 错误响应 |
 | networkErrTimeout | 0x0200258 | 网络超时错误
 | networkErrErr | 0x0200259 | 网络连接错误响应 |
-| **MEDIA_ERR_DECODE 错误 (0x0300000-0x03FFFFF) ** | | |
+| **MEDIA_ERR_DECODE 错误 (0x0300000-0x03FFFFF)** | | |
 | decodeErrUnknown | 0x0300000 | 一般解码错误 |
-| **MEDIA_ERR_SRC_NOT_SUPPORTED 错误 (0x0400000-0x04FFFFF) ** | | |
+| **MEDIA_ERR_SRC_NOT_SUPPORTED 错误 (0x0400000-0x04FFFFF)** | | |
 | srcErrUnknown | 0x0400000 | 不支持通用源错误 |
 | srcErrParsePresentation | 0x0400001 | 演示分析错误 |
 | srcErrParseSegment | 0x0400002 | 段分析错误 |
 | srcErrUnsupportedPresentation | 0x0400003 | 不支持演示 |
 | srcErrInvalidSegment | 0x0400004 | 段无效 |
-| **MEDIA_ERR_ENCRYPTED 错误开始值 (0x0500000-0x05FFFFF) ** | | |
+| **MEDIA_ERR_ENCRYPTED 错误开始值 (0x0500000-0x05FFFFF)** | | |
 | encryptErrUnknown | 0x0500000 | 一般加密错误 | 
 | encryptErrDecrypterNotFound | 0x0500001 | 找不到 Decrypter |
 | encryptErrDecrypterInit | 0x0500002 | Decrypter 初始化错误 |
@@ -81,12 +81,12 @@ ms.locfileid: "81727250"
 | encryptErrKeyAcquire | 0x0500004 | 密钥获取失败 |
 | encryptErrDecryption | 0x0500005 | 解密段失败 |
 | encryptErrLicenseAcquire | 0x0500006 | 许可证获取失败 |
-| **SRC_PLAYER_MISMATCH 错误开始值 (0x0600000-0x06FFFFF) ** | | |
+| **SRC_PLAYER_MISMATCH 错误开始值 (0x0600000-0x06FFFFF)** | | |
 | srcPlayerMismatchUnknown | 0x0600000 | 一般无匹配的技术玩家播放源 |
 | srcPlayerMismatchFlashNotInstalled | 0x0600001 |如果已安装，则不会安装闪存插件。 *或* 安装了 Flash 30，并播放了 AES 内容。  如果是这种情况，请尝试使用其他浏览器。 截至6月7日，目前不支持闪存30。 有关更多详细信息，请参阅 [已知问题](azure-media-player-known-issues.md) 。 注意：如果0x00600003，则不会安装闪存和 Silverlight （如果在 techOrder 中指定了）。|
 | srcPlayerMismatchSilverlightNotInstalled | 0x0600002 | 如果安装了源，则不会安装 Silverlight 插件。 注意：如果0x00600003，则不会安装闪存和 Silverlight （如果在 techOrder 中指定了）。 |
 | | 0x00600003 | 如果在 techOrder 中指定了 Flash 和 Silverlight，则不会安装。 |
-| **0x0FF00000)  (未知错误 ** | | |
+| **0x0FF00000)  (未知错误** | | |
 | errUnknown | 0xFF00000 | 未知错误 |
 
 ## <a name="user-error-messages"></a>用户错误消息 ##

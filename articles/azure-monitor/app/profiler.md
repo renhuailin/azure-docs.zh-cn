@@ -6,12 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: b1158a614da9ba32f628aba5dd2ed2cc71b4b455
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: b743b5be195f44c03adbee75c3108f4908d8d4e8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98947035"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717751"
 ---
 # <a name="profile-live-azure-app-service-apps-with-application-insights"></a>使用 Application Insights 探查实时 Azure 应用服务应用
 
@@ -25,8 +25,12 @@ ms.locfileid: "98947035"
 
 Application Insights Profiler 是作为应用服务运行时的一部分预先安装的。 下面的步骤将说明如何为应用服务启用它。 即使在生成时已在应用程序中包含了 App Insights SDK，也应该执行这些步骤。
 
+> [!NOTE]
+> Application Insights Profiler 的无代码置备安装遵循 .NET Core 支持策略。
+> 有关支持的运行时的详细信息，请参阅 [.Net Core 支持策略](https://dotnet.microsoft.com/platform/support/policy/dotnet-core)。
+
 1. 导航到应用服务的 Azure 控制面板。
-1. 为应用服务启用“Always On”设置。 可以在“设置”>“配置”页面下找到该设置（参阅下一步中的屏幕截图），然后单击“常规设置”选项卡  。
+1. 为应用服务启用“Always On”设置。 可以在 " **设置**"、" **配置** " 页 (在下一步中看到屏幕截图) ，然后选择 " **常规设置** " 选项卡。
 1. 导航到“设置”>“Application Insights”页面。
 
    ![在应用服务门户上启用 App Insights](./media/profiler/AppInsights-AppServices.png)
@@ -43,7 +47,7 @@ Application Insights Profiler 是作为应用服务运行时的一部分预先�
 可以通过为 Azure 应用服务创建应用设置来启用 Application Insights Profiler。 包含如上所示选项的页面将为你创建这些应用设置。 但是，也可以使用模板或其他方式自动创建这些设置。 如果 Application Insights 资源与 Azure 应用服务位于不同的订阅中，这些设置也将起作用。
 下面是启用 Profiler 所需的设置：
 
-|应用设置    | 值    |
+|应用设置    | Value    |
 |---------------|----------|
 |APPINSIGHTS_INSTRUMENTATIONKEY         | Application Insights 资源的 iKey    |
 |APPINSIGHTS_PROFILERFEATURE_VERSION | 1.0.0 |
@@ -63,7 +67,7 @@ Application Insights Profiler 是作为应用服务运行时的一部分预先�
 
 ## <a name="disable-profiler"></a>禁用 Profiler
 
-若要为单个应用实例停止或重启 Profiler，请转到“Web 作业”并停止名为 ApplicationInsightsProfiler3 的 Web 作业。 即使已根据前面所述使用 Application Insights 页上的开关禁用了 Profiler，Profiler 进程也仍会运行。 Profiler 将检查它是否已启用。 如果已禁用，它会休眠一段时间，然后再次检查。 已禁用的 Profiler 不会执行任何探查。 如果禁用此 Web 作业，则 Profiler 进程根本不会运行，甚至不会检查它是否已启用。
+若要为单个应用的实例停止或重新启动探查器，请在左侧边栏中选择 " **Web 作业** " 并停止名为的 web 作业 `ApplicationInsightsProfiler3` 。
 
   ![禁用针对 Web 作业的 Profiler][disable-profiler-webjob]
 

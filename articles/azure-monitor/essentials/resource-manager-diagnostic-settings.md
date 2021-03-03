@@ -6,12 +6,12 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 09/11/2020
-ms.openlocfilehash: 87951c0366090c1ea4eba490d114771e47bf452c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 304c359296c4fbff79dd367facd8bbb98c8903b5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100597127"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731436"
 ---
 # <a name="resource-manager-template-samples-for-diagnostic-settings-in-azure-monitor"></a>Azure Monitor 中的诊断设置的资源管理器模板示例
 本文包含用于为 Azure 资源创建诊断设置的 [Azure 资源管理器模板](../../azure-resource-manager/templates/template-syntax.md)示例。 每个示例都包含模板文件和参数文件，其中包含要提供给模板的示例值。
@@ -349,7 +349,7 @@ ms.locfileid: "100597127"
 ```
 
 ## <a name="diagnostic-setting-for-recovery-services-vault"></a>恢复服务保管库的诊断设置
-下面的示例将 `microsoft.recoveryservices/vaults/providers/diagnosticSettings` 类型的资源添加到模板，从而为 Azure 恢复服务保管库创建诊断设置。 此示例指定收集模式，如 [Azure 资源日志](../platform/resource-logs.md#send-to-log-analytics-workspace)中所述。 为 `logAnalyticsDestinationType` 属性指定 `Dedicated` 或 `AzureDiagnostics`。
+下面的示例将 `microsoft.recoveryservices/vaults/providers/diagnosticSettings` 类型的资源添加到模板，从而为 Azure 恢复服务保管库创建诊断设置。 此示例指定收集模式，如 [Azure 资源日志](./resource-logs.md#send-to-log-analytics-workspace)中所述。 为 `logAnalyticsDestinationType` 属性指定 `Dedicated` 或 `AzureDiagnostics`。
 
 ### <a name="template-file"></a>模板文件
 
@@ -812,5 +812,5 @@ ms.locfileid: "100597127"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [获取 Azure Monitor 的其他示例模板](../samples/resource-manager-samples.md)。
+* [获取 Azure Monitor 的其他示例模板](../resource-manager-samples.md)。
 * [详细了解诊断设置](../essentials/diagnostic-settings.md)。

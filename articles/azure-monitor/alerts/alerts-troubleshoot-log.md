@@ -6,18 +6,18 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 09/22/2020
-ms.openlocfilehash: b877cba794f97dd4736e30a72d91695774c8e688
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 9352b27002162e08d53bc8166ceddd010be3c8d1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100606163"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738644"
 ---
 # <a name="troubleshoot-log-alerts-in-azure-monitor"></a>在 Azure Monitor 中排查日志警报问题  
 
 本文介绍如何解决 Azure Monitor 中日志警报的常见问题。 它还提供了有关日志警报功能和配置的常见问题的解决方法。
 
-通过日志警报，用户可以使用 [Log Analytics](../log-query/log-analytics-tutorial.md) 查询按每个设置的频率评估资源日志，并根据结果触发警报。 规则可以使用[操作组](../platform/action-groups.md)触发一个或多个操作。 [详细了解日志警报的功能和术语](alerts-unified-log.md)。
+通过日志警报，用户可以使用 [Log Analytics](../logs/log-analytics-tutorial.md) 查询按每个设置的频率评估资源日志，并根据结果触发警报。 规则可以使用[操作组](./action-groups.md)触发一个或多个操作。 [详细了解日志警报的功能和术语](alerts-unified-log.md)。
 
 > [!NOTE]
 > 本文不考虑 Azure 门户中显示警报规则已触发以及不是通过关联的操作组执行通知的情况。 对于这类情况，请参阅[此处](./alerts-troubleshoot.md#action-or-notification-on-my-alert-did-not-work-as-expected)，了解故障排除的详细信息。
@@ -26,7 +26,7 @@ ms.locfileid: "100606163"
 
 ### <a name="data-ingestion-time-for-logs"></a>日志的数据引入时间
 
-Azure Monitor 处理来自世界各地的数 TB 的客户日志，这可能导致[日志引入延迟](../platform/data-ingestion-time.md)。
+Azure Monitor 处理来自世界各地的数 TB 的客户日志，这可能导致[日志引入延迟](../logs/data-ingestion-time.md)。
 
 日志是半结构化数据，本质上比指标的延迟更大。 如果触发警报的延迟超过 4 分钟，则应考虑使用[指标警报](alerts-metric-overview.md)。 你可以使用[日志的指标警报](alerts-metric-logs.md)将数据从日志发送到指标存储。
 
@@ -60,7 +60,7 @@ Azure Monitor 处理来自世界各地的数 TB 的客户日志，这可能导�
 
 ### <a name="alert-triggered-by-partial-data"></a>部分数据触发了警报
 
-Azure Monitor 处理来自世界各地的数 TB 的客户日志，这可能导致[日志引入延迟](../platform/data-ingestion-time.md)。
+Azure Monitor 处理来自世界各地的数 TB 的客户日志，这可能导致[日志引入延迟](../logs/data-ingestion-time.md)。
 
 日志是半结构化数据，本质上比指标的延迟更大。 如果触发警报出现很多误触发，则应考虑使用[指标警报](alerts-metric-overview.md)。 你可以使用[日志的指标警报](alerts-metric-logs.md)将数据从日志发送到指标存储。
 
@@ -87,7 +87,7 @@ SecurityEvent
 
 无需向查询添加警报逻辑，这样做甚至可能导致问题。 在上面的示例中，如果你在查询中包括 `count`，它将始终得到值 1，因为警报服务将执行 `count` 的 `count`。
 
-优化的查询是日志警报服务运行的内容。 你可以在 Log Analytics [门户](../log-query/log-query-overview.md)或 [API](/rest/api/loganalytics/) 中运行修改后的查询。
+优化的查询是日志警报服务运行的内容。 你可以在 Log Analytics [门户](../logs/log-query-overview.md)或 [API](/rest/api/loganalytics/) 中运行修改后的查询。
 
 在工作区和 Application Insights 中，它在条件窗格中称为“要执行的查询”。 在所有其他资源类型中，在条件选项卡中选择“查看最终警报查询”。
 
@@ -108,7 +108,7 @@ SecurityEvent
 创建日志预警规则后，将验证查询的语法是否正确。 但有时，日志预警规则中提供的查询可能会开始失败。 下面是一些常见原因：
 
 - 规则是通过 API 创建的，并且用户跳过了验证。
-- 查询[在多个资源上运行](../log-query/cross-workspace-query.md)，并且已删除或移动一个或多个资源。
+- 查询[在多个资源上运行](../logs/cross-workspace-query.md)，并且已删除或移动一个或多个资源。
 - [查询失败](https://dev.loganalytics.io/documentation/Using-the-API/Errors)，因为：
     - 未将日志记录解决方案[部署到工作空间](../insights/solutions.md#install-a-monitoring-solution)，因此未创建表。
     - 数据在查询中停止流向表超过 30 天。
@@ -219,5 +219,5 @@ SecurityEvent
 ## <a name="next-steps"></a>后续步骤
 
 - 了解 [Azure 中的日志警报](./alerts-unified-log.md)。
-- 了解有关[配置日志警报](../log-query/log-query-overview.md)的详细信息。
-- 了解有关[日志查询](../log-query/log-query-overview.md)的详细信息。
+- 了解有关[配置日志警报](../logs/log-query-overview.md)的详细信息。
+- 了解有关[日志查询](../logs/log-query-overview.md)的详细信息。

@@ -1,20 +1,20 @@
 ---
 title: 模板结构和语法
-description: 介绍使用声明性 JSON 语法) 的 Azure 资源管理器模板 (ARM 模板的结构和属性。
+description: 介绍使用声明性 JSON 语法的 Azure 资源管理器模板的结构和属性。
 ms.topic: conceptual
 ms.date: 12/17/2020
-ms.openlocfilehash: 4c08612325d2776f8f1a7fe4486e6f592ca474a0
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 31576c72fb845677f132fd9cd6ee776db922d436
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97934690"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101722698"
 ---
 # <a name="understand-the-structure-and-syntax-of-arm-templates"></a>了解 ARM 模板的结构和语法
 
-本文介绍了 Azure 资源管理器模板 (ARM 模板) 的结构。 演示了模板的不同部分，以及可在相应部分使用的属性。
+本文介绍 Azure 资源管理器模板（ARM 模板）的结构。 演示了模板的不同部分，以及可在相应部分使用的属性。
 
-本文面向对 ARM 模板有一定了解的用户， 其中提供了有关模板结构的详细信息。 有关引导你完成模板创建过程的分步教程，请参阅[教程：创建和部署第一个 ARM 模板](template-tutorial-create-first-template.md)。 若要通过 Microsoft Learn 上的一组指导性模板了解 ARM 模板，请参阅 [使用 ARM 模板在 Azure 中部署和管理资源](/learn/paths/deploy-manage-resource-manager-templates/)。
+本文面向对 ARM 模板有一定了解的用户， 其中提供了有关模板结构的详细信息。 有关引导你完成模板创建过程的分步教程，请参阅[教程：创建和部署第一个 ARM 模板](template-tutorial-create-first-template.md)。 要通过 Microsoft Learn 上的一组引导式模块了解 ARM 模板，请参阅[使用 ARM 模板在 Azure 中部署和管理资源](/learn/paths/deploy-manage-resource-manager-templates/)。
 
 ## <a name="template-format"></a>模板格式
 
@@ -35,7 +35,7 @@ ms.locfileid: "97934690"
 
 | 元素名称 | 必须 | 说明 |
 |:--- |:--- |:--- |
-| $schema |是 |描述模板语言版本的 JavaScript 对象表示法 (JSON) 架构文件的位置。 所用版本号取决于部署范围和 JSON 编辑器。<br><br>如果在 [Azure 资源管理器工具扩展](quickstart-create-templates-use-visual-studio-code.md)中使用 Visual Studio Code，请使用最新版本的资源组部署：<br>`https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#`<br><br>其他编辑器（包括 Visual Studio）可能无法处理此架构。 对于这些编辑器，请使用：<br>`https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#`<br><br>对于订阅部署，请使用：<br>`https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#`<br><br>对于管理组部署，请使用：<br>`https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#`<br><br>对于租户部署，请使用：<br>`https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#` |
+| $schema |是 |用于说明模板语言版本的 JavaScript 对象表示法 (JSON) 架构文件所在的位置。 所用版本号取决于部署范围和 JSON 编辑器。<br><br>如果使用的是[带有 Azure 资源管理器工具扩展的 Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md)，请使用最新版本进行资源组部署：<br>`https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#`<br><br>其他编辑器（包括 Visual Studio）可能无法处理此架构。 对于这些编辑器，请使用：<br>`https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#`<br><br>对于订阅部署，请使用：<br>`https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#`<br><br>对于管理组部署，请使用：<br>`https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#`<br><br>对于租户部署，请使用：<br>`https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#` |
 | contentVersion |是 |模板的版本（例如 1.0.0.0）。 可为此元素提供任意值。 使用此值记录模板中的重要更改。 使用模板部署资源时，此值可用于确保使用正确的模板。 |
 | apiProfile |否 | 用作资源类型 API 版本集合的 API 版本。 使用此值可以避免为模板中的每个资源指定 API 版本。 如果你指定 API 配置文件版本但不指定资源类型的 API 版本，则资源管理器将使用配置文件中为该资源类型定义的 API 版本。<br><br>将模板部署到不同的环境（例如 Azure Stack 和全球 Azure）时，API 配置文件属性非常有用。 使用 API 配置文件版本可确保模板自动使用两个环境均支持的版本。 有关最新 API 配置文件版本以及配置文件中定义的资源 API 版本的列表，请参阅 [API 配置文件](https://github.com/Azure/azure-rest-api-specs/tree/master/profile)。<br><br>有关详细信息，请参阅[使用 API 配置文件跟踪版本](templates-cloud-consistency.md#track-versions-using-api-profiles)。 |
 | [parameters](#parameters) |否 |执行部署以自定义资源部署时提供的值。 |
@@ -74,8 +74,8 @@ ms.locfileid: "97934690"
       "defaultValue": 1
     },
     "boolParameter": {
-        "type": "bool",
-        "defaultValue": true
+      "type": "bool",
+      "defaultValue": true
     },
     "objectParameter": {
       "type": "object",
@@ -98,13 +98,13 @@ ms.locfileid: "97934690"
 
 对于作为内联参数传递的整数，值的范围可能受限于用于部署的 SDK 或命令行工具。 例如，使用 PowerShell 部署模板时，整数类型的范围可能为 -2147483648 到 2147483647。 为了避免此限制，请在[参数文件](parameter-files.md)中指定大的整数值。 资源类型会针对整数属性应用其自己的限制。
 
-在模板中指定布尔值和整数值时，请勿对值使用引号。 带有双引号 () 的开始和结束字符串值 `"string value"` 。
+在模板中指定布尔值和整数值时，请勿对值使用引号。 字符串值以双引号 (`"string value"`) 开头和结尾。
 
-对象以左大括号开头 (`{`) 并以右大括号 (`}`) 结束。 数组以左方括号开头 (`[`) 并以右括号 (`]`) 结束。
+对象以左大括号 (`{`) 开头，以右大括号 (`}`) 结尾。 数组以左中括号 (`[`) 开头，以右中括号 (`]`) 结尾。
 
 ## <a name="parameters"></a>参数
 
-在 `parameters` 模板的节中，可以指定在部署资源时可以输入的值。 一个模板中最多可以有 256 个参数。 可以通过使用包含多个属性的对象来减少参数的数目。
+在模板的 `parameters` 节中，可以指定在部署资源时能够输入的值。 一个模板中最多可以有 256 个参数。 可以通过使用包含多个属性的对象来减少参数的数目。
 
 参数的可用属性为：
 
@@ -141,7 +141,7 @@ ms.locfileid: "97934690"
 
 ## <a name="variables"></a>变量
 
-在 `variables` 部分中，你将构造可在整个模板中使用的值。 不需要定义变量，但使用变量可以减少复杂的表达式，从而简化模板。 每个变量的格式都与其中一种[数据类型](#data-types)匹配。
+在 `variables` 节中，可以构造能够在整个模板中使用的值。 不需要定义变量，但使用变量可以减少复杂的表达式，从而简化模板。 每个变量的格式都与其中一种[数据类型](#data-types)匹配。
 
 以下示例演示了可用于定义变量的选项：
 
@@ -211,7 +211,7 @@ ms.locfileid: "97934690"
 | 元素名称 | 必须 | 说明 |
 |:--- |:--- |:--- |
 | 命名空间 |是 |自定义函数的命名空间。 用于避免与模板函数的命名冲突。 |
-| function-name |是 |自定义函数的名称。 调用函数时，将函数名称与命名空间组合在一起。 例如，若要调用 `uniqueName` 命名空间 contoso 中名为的函数，请使用 `"[contoso.uniqueName()]"` 。 |
+| function-name |是 |自定义函数的名称。 调用函数时，将函数名称与命名空间组合在一起。 例如，若要在命名空间 contoso 中调用名为 `uniqueName` 的函数，请使用 `"[contoso.uniqueName()]"`。 |
 | parameter-name |否 |要在自定义函数中使用的参数的名称。 |
 | parameter-value |否 |参数值的类型。 允许的类型和值为 **string**、**securestring**、**int**、**bool**、**object**、**secureObject** 和 **array**。 |
 | output-type |是 |输出值的类型。 输出值支持的类型与函数输入参数相同。 |
@@ -221,7 +221,7 @@ ms.locfileid: "97934690"
 
 ## <a name="resources"></a>资源
 
-在 `resources` 部分中，将定义已部署或更新的资源。
+在 `resources` 节中，可以定义所部署或更新的资源。
 
 使用以下结构定义资源：
 
@@ -282,12 +282,12 @@ ms.locfileid: "97934690"
 | 元素名称 | 必须 | 说明 |
 |:--- |:--- |:--- |
 | condition | 否 | 布尔值，该值指示在此部署期间是否将预配资源。 为 `true` 时，在部署期间创建资源。 为 `false` 时，此部署将跳过资源。 请参阅[条件](conditional-resource-deployment.md)。 |
-| type |是 |资源的类型。 此值是资源提供程序的命名空间和资源类型的组合 (如 `Microsoft.Storage/storageAccounts`) 。 若要确定可用值，请参阅[模板参考](/azure/templates/)。 对于子资源，类型的格式取决于该资源是嵌套在父资源中，还是在父资源的外部定义。 请参阅[设置子资源的名称和类型](child-resource-name-type.md)。 |
-| apiVersion |是 |用于创建资源的 REST API 版本。 创建新模板时，将此值设置为要部署的资源的最新版本。 只要模板按需工作，就可以继续使用相同的 API 版本。 通过继续使用相同的 API 版本，你可以最大程度地减少新 API 版本更改模板工作方式的风险。 仅当想要使用在更高版本中引入的新功能时，才应考虑更新 API 版本。 若要确定可用值，请参阅[模板参考](/azure/templates/)。 |
+| type |是 |资源的类型。 此值是资源提供程序的命名空间和资源类型的组合（例如 `Microsoft.Storage/storageAccounts`）。 若要确定可用值，请参阅[模板参考](/azure/templates/)。 对于子资源，类型的格式取决于该资源是嵌套在父资源中，还是在父资源的外部定义。 请参阅[设置子资源的名称和类型](child-resource-name-type.md)。 |
+| apiVersion |是 |用于创建资源的 REST API 版本。 创建新模板时，将此值设置为要部署的资源的最新版本。 只要模板可以根据需要工作，就可以继续使用同一 API 版本。 通过继续使用同一 API 版本，可以最大程度地减少新 API 版本更改模板工作方式的风险。 仅当需要使用在更高版本中引入的新功能时，才应考虑更新 API 版本。 若要确定可用值，请参阅[模板参考](/azure/templates/)。 |
 | name |是 |资源的名称。 该名称必须遵循 RFC3986 中定义的 URI 构成部分限制。 向外部各方公开资源名称的 Azure 服务会验证名称，以确保它不是试图窃取另一标识。 对于子资源，名称的格式取决于该资源是嵌套在父资源中，还是在父资源的外部定义。 请参阅[设置子资源的名称和类型](child-resource-name-type.md)。 |
 | comments |否 |用于描述模板中资源的注释。 有关详细信息，请参阅[模板中的注释](template-syntax.md#comments)。 |
 | location |多种多样 |提供的资源支持的地理位置。 可以选择任何可用位置，但通常选取靠近用户的位置。 通常还会将彼此交互的资源置于同一区域。 大多数资源类型需要一个位置，但某些类型（如角色分配）不需要位置。 请参阅[设置资源位置](resource-location.md)。 |
-| dependsOn |否 |部署此资源之前必须部署的资源。 Resource Manager 会评估资源之间的依赖关系，并按正确的顺序部署资源。 如果资源互不依赖，则会并行部署资源。 该值可以是资源名称或资源唯一标识符的逗号分隔列表。 在此模板中仅部署列出的资源。 未在此模板中定义的资源必须是已存在的资源。 避免添加不必要的依赖项，因为这些依赖项可能会降低部署速度并创建循环依赖项。 有关设置依赖项的指导，请参阅 [定义在 ARM 模板中部署资源的顺序](define-resource-dependency.md)。 |
+| dependsOn |否 |部署此资源之前必须部署的资源。 Resource Manager 会评估资源之间的依赖关系，并按正确的顺序部署资源。 如果资源互不依赖，则会并行部署资源。 该值可以是资源名称或资源唯一标识符的逗号分隔列表。 在此模板中仅部署列出的资源。 未在此模板中定义的资源必须是已存在的资源。 避免添加不必要的依赖项，因为这些依赖项可能会降低部署速度并创建循环依赖项。 有关设置依赖项的指南，请参阅[在 ARM 模板中定义部署资源的顺序](define-resource-dependency.md)。 |
 | 标记 |否 |与资源关联的标记。 应用可以在订阅中对资源进行逻辑组织的标记。 |
 | sku | 否 | 某些资源接受定义了要部署的 SKU 的值。 例如，可以为存储帐户指定冗余类型。 |
 | kind | 否 | 某些资源接受定义了你部署的资源类型的值。 例如，可以指定要创建的 Cosmos DB 的类型。 |
@@ -298,7 +298,7 @@ ms.locfileid: "97934690"
 
 ## <a name="outputs"></a>Outputs
 
-在 `outputs` 部分中，可以指定从部署返回的值。 一般情况下，将从已部署的资源返回值。
+在 `outputs` 节中，可以指定从部署返回的值。 一般情况下，将从已部署的资源返回值。
 
 以下示例演示了输出定义的结构：
 
@@ -351,7 +351,7 @@ ms.locfileid: "97934690"
   ],
 ```
 
-在 Visual Studio Code 中， [Azure 资源管理器工具扩展](quickstart-create-templates-use-visual-studio-code.md) 可以自动检测 ARM 模板并更改语言模式。 如果在 Visual Studio Code 右下角看到 **Azure 资源管理器模板** ，则可以使用内联注释。 内联注释不再标记为无效。
+在 Visual Studio Code 中，[Azure 资源管理器工具扩展](quickstart-create-templates-use-visual-studio-code.md)可以自动检测 ARM 模板并更改语言模式。 如果在 Visual Studio Code 右下角看到 **Azure 资源管理器模板**，则可使用内联注释。 内联注释不再标记为无效。
 
 ![Visual Studio Code Azure 资源管理器模板模式](./media/template-syntax/resource-manager-template-editor-mode.png)
 
@@ -369,7 +369,7 @@ ms.locfileid: "97934690"
   },
 ```
 
-对于 `parameters` ，添加一个 `metadata` 具有属性的对象 `description` 。
+对于 `parameters`，请添加具有 `description` 属性的 `metadata` 对象。
 
 ```json
 "parameters": {
@@ -385,7 +385,7 @@ ms.locfileid: "97934690"
 
 ![显示参数提示](./media/template-syntax/show-parameter-tip.png)
 
-对于 `resources` ，添加 `comments` 元素或 `metadata` 对象。 下面的示例演示了一个 `comments` 元素和一个 `metadata` 对象。
+对于 `resources`，请添加 `comments` 元素或 `metadata` 对象。 以下示例显示了 `comments` 元素和 `metadata` 对象。
 
 ```json
 "resources": [
@@ -411,7 +411,7 @@ ms.locfileid: "97934690"
 ]
 ```
 
-对于 `outputs` ，请将 `metadata` 对象添加到输出值。
+对于 `outputs`，请将 `metadata` 对象添加到输出值。
 
 ```json
 "outputs": {
@@ -424,11 +424,11 @@ ms.locfileid: "97934690"
   },
 ```
 
-不能将 `metadata` 对象添加到用户定义的函数。
+无法将 `metadata` 对象添加到用户定义的函数。
 
 ## <a name="multi-line-strings"></a>多行字符串
 
-可将一个字符串分成多个行。 有关示例，请参阅 `location` 下面的 JSON 示例中的属性和注释之一。
+可将一个字符串分成多个行。 例如，请参见以下 JSON 示例中的 `location` 属性和注释之一。
 
 ```json
 {
@@ -454,7 +454,7 @@ ms.locfileid: "97934690"
 ## <a name="next-steps"></a>后续步骤
 
 * 若要查看许多不同类型的解决方案的完整模型，请参阅 [Azure Quickstart Templates](https://azure.microsoft.com/documentation/templates/)（Azure 快速入门模板）。
-* 有关可在模板中使用的函数的详细信息，请参阅 [ARM 模板函数](template-functions.md)。
-* 若要在部署期间合并多个模板，请参阅 [部署 Azure 资源时使用链接的模板和嵌套的模板](linked-templates.md)。
+* 有关用户可以使用的来自模板中的函数的详细信息，请参阅 [ARM 模板函数](template-functions.md)。
+* 若要在部署期间合并若干模板，请参阅[部署 Azure 资源时使用链接模版和嵌套模版](linked-templates.md)。
 * 有关创建模板的建议，请参阅 [ARM 模板的最佳做法](template-best-practices.md)。
 * 有关常见问题的解答，请参阅[有关 ARM 模板的常见问题解答](frequently-asked-questions.md)。

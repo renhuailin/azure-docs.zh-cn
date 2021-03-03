@@ -1,22 +1,22 @@
 ---
-title: 容器 Azure Monitor 的监视开销 |Microsoft Docs
-description: 本文介绍用于容器的 Azure Monitor 收集的指标和清单数据的监视成本，以帮助客户管理其使用情况和相关成本。
+title: 容器见解的监视成本 |Microsoft Docs
+description: 本文介绍容器见解收集的指标 & 清单数据的监视开销，以帮助客户管理其使用情况和相关成本。
 ms.topic: conceptual
 ms.date: 05/29/2020
-ms.openlocfilehash: 0a3118e1dd839eced5e1f15d28feff4bbb58014f
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 78387e950d476126d7c2065a530844e44fd59b4f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100608728"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728903"
 ---
-# <a name="understand-monitoring-costs-for-azure-monitor-for-containers"></a>了解用于容器的 Azure Monitor 的监视成本
+# <a name="understand-monitoring-costs-for-container-insights"></a>了解容器见解的监视成本
 
-本文提供用于容器的 Azure Monitor 的定价指导，帮助你了解以下内容：
+本文提供了有关容器见解的定价指导，帮助你了解以下各项：
 
 * 启用此见解之前，如何预先估算成本
 
-* 为一个或多个容器启用用于容器的 Azure Monitor 之后，如何测量成本
+* 如何在为一个或多个容器启用容器见解后测量成本
 
 * 如何控制数据收集并降低成本
 
@@ -27,7 +27,7 @@ Azure Monitor 定价模型主要基于 Log Analytics 工作区中每天引入的
 >[!NOTE]
 >所有规模和定价仅适用于示例估算。 有关基于 Azure Monitor Log Analytics 定价模型和 Azure 区域的最新定价，请参阅 Azure Monitor [定价](https://azure.microsoft.com/pricing/details/monitor/)页。
 
-下面汇总了用于容器的 Azure Monitor 从 Kubernetes 群集收集的数据类型，这些数据类型会影响成本，并且可以根据使用情况进行自定义：
+下面汇总了使用容器见解从 Kubernetes 群集收集的数据类型，这些数据可影响成本，并可根据使用情况进行自定义：
 
 - 来自群集中每个 Kubernetes 命名空间中每个受监视容器的 Stdout、stderr 容器日志
 
@@ -37,11 +37,11 @@ Azure Monitor 定价模型主要基于 Log Analytics 工作区中每天引入的
 
 - Prometheus 指标的主动抓取
 
-- AKS 群集中 Kubernetes 主节点日志的[诊断日志收集](../../aks/view-master-logs.md)，用于分析由主组件（例如 kube-apiserver 和 kube-controller-manager）生成的日志数据。
+- AKS 群集中 Kubernetes 主节点日志的[诊断日志收集](../../aks/view-control-plane-logs.md)，用于分析由主组件（例如 kube-apiserver 和 kube-controller-manager）生成的日志数据。
 
 ## <a name="what-is-collected-from-kubernetes-clusters"></a>从 Kubernetes 群集收集的内容
 
-用于容器的 Azure Monitor 包含收集的一组预定义指标和清单项，这些指标和清单项作为日志数据写入到 Log Analytics 工作区中。 默认情况下，下面列出的所有指标每隔一分钟收集一次。
+容器见解包含一组预定义的度量值和收集的清单项，这些项以日志数据形式写入 Log Analytics 工作区中。 默认情况下，下面列出的所有指标每隔一分钟收集一次。
 
 ### <a name="node-metrics-collected"></a>收集的节点指标
 
@@ -194,10 +194,10 @@ Azure Monitor 定价模型主要基于 Log Analytics 工作区中每天引入的
 
 - 确保以最佳方式设置抓取频率（默认值为 60 秒）。 虽然可以将频率提高到 15 秒，但需要确保抓取的指标以该频率发布。 否则，系统会抓取许多重复指标并每隔一段时间发送到 Log Analytics 工作区，这样不仅会增加数据引入和保留成本，用处也不大。 
 
-- 用于容器的 Azure Monitor 支持按指标名称分类的排除列表和包含列表。 例如，如果要在群集中抓取 kubedns 指标，默认情况下可能会有数百个指标被抓取，但你很可能只对某个子集感兴趣。 确认你指定了要抓取的指标列表，或者除了少数指标外，排除其他指标以节省数据引入量。 启用抓取但不使用其中许多指标（它们只会给 Log Analytics 帐单增加额外的费用），这一点很容易做到。
+- Container insights 支持按指标名称排除 & 包含列表。 例如，如果要在群集中抓取 kubedns 指标，默认情况下可能会有数百个指标被抓取，但你很可能只对某个子集感兴趣。 确认你指定了要抓取的指标列表，或者除了少数指标外，排除其他指标以节省数据引入量。 启用抓取但不使用其中许多指标（它们只会给 Log Analytics 帐单增加额外的费用），这一点很容易做到。
 
 - 抓取 Pod 注释时，确保按命名空间进行筛选，以便从不使用的命名空间（例如 dev-test 命名空间）中排除 Pod 指标抓取。
 
 ## <a name="next-steps"></a>后续步骤
 
-若要详细了解如何根据数据（通过用于容器的 Azure Monitor 收集）中的最新使用模式，了解可能产生的成本，请参阅[管理使用情况并估算成本](../platform/manage-cost-storage.md)。
+若要详细了解如何根据使用容器见解收集的数据的最近使用模式来了解开销，请参阅 [管理使用情况和估计成本](../logs/manage-cost-storage.md)。

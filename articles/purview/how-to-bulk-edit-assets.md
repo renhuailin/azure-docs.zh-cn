@@ -7,12 +7,12 @@ ms.service: data-catalog
 ms.subservice: data-catalog-gen2
 ms.topic: conceptual
 ms.date: 11/24/2020
-ms.openlocfilehash: c42a6894c33993dc9aee5a9fdd10b1c3a3627320
-ms.sourcegitcommit: 287c20509c4cf21d20eea4619bbef0746a5cd46e
+ms.openlocfilehash: 77bfa3d22d628cf179e95cd4892ec030f22ab35f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97372088"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101693758"
 ---
 # <a name="how-to-bulk-edit-assets-to-tag-glossary-terms"></a>如何批量编辑资产以标记术语表术语
 
@@ -63,11 +63,15 @@ ms.locfileid: "97372088"
    
     :::image type="content" source="media/how-to-bulk-edit-assets/replace-list.png" alt-text="删除字词的屏幕截图。":::
 
-7. 完成后，选择 " **关闭** " 或 " **全部删除"，并关闭**"批量编辑" 边栏选项卡。 关闭将不会删除所选的资产，而 "全部删除" 和 "关闭" 会删除所有选定的资产。
+7. 对于分类、所有者和专家，请重复上述步骤。
+
+    :::image type="content" source="media/how-to-bulk-edit-assets/all-list.png" alt-text="删除字词的屏幕截图。":::
+
+8. 完成后，选择 " **关闭** " 或 " **全部删除"，并关闭**"批量编辑" 边栏选项卡。 关闭将不会删除所选的资产，而 "全部删除" 和 "关闭" 会删除所有选定的资产。
     :::image type="content" source="media/how-to-bulk-edit-assets/close-list.png" alt-text="关闭的屏幕截图。":::
 
    > [!Important]
-   > 用于批量编辑的建议资产数量为15。 选择15个以上可能会导致性能问题。
+   > 用于批量编辑的建议资产数量为15。 选择25个以上可能会导致性能问题。
    > 仅当至少选择了一个资产时，" **所选视图** " 框才可见。
 
 

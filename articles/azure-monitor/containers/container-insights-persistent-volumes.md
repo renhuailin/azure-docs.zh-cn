@@ -1,22 +1,22 @@
 ---
-title: 使用用于容器的 Azure Monitor 配置 PV 监视 | Microsoft Docs
-description: 本文介绍如何使用用于容器的 Azure Monitor 对具有永久性卷的 Kubernetes 群集配置监视。
+title: 配置采用容器 insights 的 PV 监视 |Microsoft Docs
+description: 本文介绍如何通过容器见解配置监视包含持久卷的 Kubernetes 群集。
 ms.topic: conceptual
 ms.date: 10/20/2020
-ms.openlocfilehash: d7da6bc88e7c8526e3940714502d3c92d2f37dd8
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 0afbeab49a6909a0011cd75a0419f7325ca68132
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100608945"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713722"
 ---
-# <a name="configure-pv-monitoring-with-azure-monitor-for-containers"></a>使用用于容器的 Azure Monitor 配置 PV 监视
+# <a name="configure-pv-monitoring-with-container-insights"></a>配置采用容器 insights 的 PV 监视
 
-从代理版本 ciprod10052020 开始，集成了用于容器的 Azure Monitor 的代理现在支持监视 PV（永久性卷）使用情况。
+从代理版本 *ciprod10052020* 开始，Container insights 集成代理现在支持监视 PV (持久卷) 使用情况。
 
 ## <a name="pv-metrics"></a>PV 指标
 
-通过以 60 秒的间隔收集以下指标并将其存储在 InsightMetric 表中，用于容器的 Azure Monitor 会自动开始监视 PV。
+容器见解会按60sec 间隔收集以下度量值并将其存储在 **InsightMetrics** 表中，从而自动开始监视 PV。
 
 |指标名称 |指标维度（标记） |说明 |
 |------------|------------------------|------------|
@@ -24,7 +24,7 @@ ms.locfileid: "100608945"
 
 ## <a name="monitor-persistent-volumes"></a>监视永久性卷
 
-用于容器的 Azure Monitor 在每个集群的工作簿中包含此指标的预配置图表。 可以通过在左侧窗格中选择“工作簿”，直接从 AKS 群集的“工作负载详细信息”工作簿的“永久性卷”选项卡中找到图表，也可以通过 Insight 中的“查看工作簿”下拉列表找到 。 还可以启用针对 PV 使用情况的建议警报，并在 Log Analytics 中查询这些指标。  
+容器见解为每个群集的工作簿中的此指标包含预配置的图表。 可以通过在左侧窗格中选择“工作簿”，直接从 AKS 群集的“工作负载详细信息”工作簿的“永久性卷”选项卡中找到图表，也可以通过 Insight 中的“查看工作簿”下拉列表找到 。 还可以启用针对 PV 使用情况的建议警报，并在 Log Analytics 中查询这些指标。  
 
 ![Azure Monitor PV 工作负载工作簿示例](./media/container-insights-persistent-volumes/pv-workload-example.PNG)
 

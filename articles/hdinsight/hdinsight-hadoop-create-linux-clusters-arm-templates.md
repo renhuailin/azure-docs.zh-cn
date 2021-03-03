@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-azurecli
 ms.date: 04/07/2020
-ms.openlocfilehash: c36cee8ce7076093499a76ec0952ad37bd7511a7
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 43f9736ce902d4c195d6b07cfdf7011ba9ca0c2c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98945871"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702736"
 ---
 # <a name="create-apache-hadoop-clusters-in-hdinsight-by-using-resource-manager-templates"></a>使用资源管理器模板在 HDInsight 中创建 Apache Hadoop 群集
 
@@ -73,7 +73,7 @@ ms.locfileid: "98945871"
 在本文中，已经学习了几种创建 HDInsight 群集的方法。 要了解更多信息，请参阅下列文章：
 
 * 有关 HDInsight 相关模板的详细信息，请参阅 [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/?term=hdinsight)。
-* 有关通过 .NET 客户端库部署资源的示例，请参阅[使用 .NET 库和模板部署资源](../virtual-machines/windows/csharp-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+* 有关通过 .NET 客户端库部署资源的示例，请参阅[使用 .NET 库和模板部署资源](/previous-versions/azure/virtual-machines/windows/csharp-template?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 * 有关部署应用程序的详细示例，请参阅[按可预见的方式在 Azure 中预配和部署微服务](../app-service/deploy-complex-application-predictably.md)。
 * 有关将解决方案部署到不同环境的指南，请参阅 [Microsoft Azure 中的开发和测试环境](../devtest-labs/devtest-lab-overview.md)。
 * 若要了解 Azure Resource Manager 模板的节，请参阅[创作模板](../azure-resource-manager/templates/template-syntax.md)。

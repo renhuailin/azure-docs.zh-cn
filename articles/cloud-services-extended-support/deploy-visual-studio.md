@@ -9,12 +9,12 @@ ms.workload: azure-vs
 ms.topic: tutorial
 ms.date: 10/5/2020
 ms.author: ghogen
-ms.openlocfilehash: b12f8beeee054e547a6b58750d8482d32ee14453
-ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
+ms.openlocfilehash: 80aa160c53b278137467dba2afa41384c7c4f378
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98747251"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101722664"
 ---
 # <a name="create-and-deploy-a-azure-cloud-service-extended-support-using-visual-studio"></a>使用 Visual Studio 创建和部署 Azure 云服务（外延支持）
 
@@ -63,7 +63,7 @@ Visual Studio Azure 项目与解决方案中的角色项目具有关联。 该�
 - **服务定义文件** - 定义了应用程序的运行时设置，包括所需角色、终结点和虚拟机大小。
 - **服务配置文件** - 配置了角色有多少实例在运行以及为角色定义的设置的值。
 
-有关这些文件的详细信息，请参阅[使用 Visual Studio 配置 Azure 云服务的角色](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-configure-roles-for-cloud-service)。
+有关这些文件的详细信息，请参阅[使用 Visual Studio 配置 Azure 云服务的角色](/visualstudio/azure/vs-azure-tools-configure-roles-for-cloud-service)。
 
 ## <a name="publish-a-cloud-service"></a>发布云服务
 
@@ -75,7 +75,7 @@ Visual Studio Azure 项目与解决方案中的角色项目具有关联。 该�
 
 1. **帐户** - 选择一个帐户，或者在帐户下拉列表中选择“添加帐户”。
 
-1. **选择订阅** - 选择要用于部署的订阅。 用于部署云服务（外延支持）的订阅需要具有通过基于角色的访问控制 (RBAC) 分配的所有者或参与者角色。 如果订阅不具有这些角色中的任何一种角色，请参阅[角色分配的添加步骤](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-steps)来添加角色，然后再继续操作。
+1. **选择订阅** - 选择要用于部署的订阅。 用于部署云服务（外延支持）的订阅需要具有通过基于角色的访问控制 (RBAC) 分配的所有者或参与者角色。 如果订阅不具有这些角色中的任何一种角色，请参阅[角色分配的添加步骤](../role-based-access-control/role-assignments-steps.md)来添加角色，然后再继续操作。
 
 1. 选择“下一步”，移动到“设置”页 。
 
@@ -105,7 +105,7 @@ Visual Studio Azure 项目与解决方案中的角色项目具有关联。 该�
 
    ![诊断设置](./media/diagnostics-settings.png)
 
-   通过诊断，可以对 Azure 云服务（或 Azure 虚拟机）进行故障排除。 有关诊断的详细信息，请参阅 [Configuring Diagnostics for Azure Cloud Services and Virtual Machines](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines)（为 Azure 云服务和虚拟机配置诊断）。 有关 Application Insights 的信息，请参阅[什么是 Application Insights？](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview)。
+   通过诊断，可以对 Azure 云服务（或 Azure 虚拟机）进行故障排除。 有关诊断的详细信息，请参阅 [Configuring Diagnostics for Azure Cloud Services and Virtual Machines](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines)（为 Azure 云服务和虚拟机配置诊断）。 有关 Application Insights 的信息，请参阅[什么是 Application Insights？](../azure-monitor/app/app-insights-overview.md)。
 
 1. 选择“下一步”，移动到“摘要”页面 。
 
@@ -126,4 +126,4 @@ Visual Studio Azure 项目与解决方案中的角色项目具有关联。 该�
 
 ## <a name="next-steps"></a>后续步骤
 
-使用“发布”屏幕上的“配置”按钮设置持续集成 (CI) 。 有关详细信息，请参阅 [Azure Pipelines 文档](https://docs.microsoft.com/azure/devops/pipelines)。
+使用“发布”屏幕上的“配置”按钮设置持续集成 (CI) 。 有关详细信息，请参阅 [Azure Pipelines 文档](/azure/devops/pipelines)。

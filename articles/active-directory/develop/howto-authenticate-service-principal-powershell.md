@@ -10,15 +10,15 @@ ms.subservice: develop
 ms.custom: aaddev , devx-track-azurepowershell
 ms.topic: how-to
 ms.tgt_pltfrm: multiple
-ms.date: 06/26/2020
+ms.date: 02/22/2021
 ms.author: ryanwi
 ms.reviewer: tomfitz
-ms.openlocfilehash: b07679c6dd5e03131fde1439213783893971a088
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: b27af53d615fa9c0c46699a52a004098dc46b7b2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99581799"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101688529"
 ---
 # <a name="how-to-use-azure-powershell-to-create-a-service-principal-with-a-certificate"></a>如何：通过 Azure PowerShell 使用证书创建服务主体
 
@@ -72,7 +72,7 @@ New-AzRoleAssignment -RoleDefinitionName Reader -ServicePrincipalName $sp.Applic
 
 可以使用 **ResourceGroupName** 参数将角色分配范围限制为特定资源组。 还可以使用 **ResourceType** 和 **ResourceName** 参数将范围限制为特定资源。 
 
-如果没有 **windows 10 或 Windows Server 2016**，请从 Microsoft 脚本中心下载 [自签名证书生成器](https://gallery.technet.microsoft.com/scriptcenter/Self-signed-certificate-5920a7c6/) 。 解压其内容，并导入所需的 cmdlet。
+如果没有 **windows 10 或 Windows Server 2016**，请从 PKI 解决方案下载 [SelfSignedCertificateEx cmdlet](https://www.pkisolutions.com/tools/pspki/New-SelfSignedCertificateEx/) 。 解压其内容，并导入所需的 cmdlet。
 
 ```powershell
 # Only run if you could not use New-SelfSignedCertificate

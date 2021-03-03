@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 01/27/2021
 ms.author: alkohli
-ms.openlocfilehash: 4c4fbef807d31e03a79f80db7fd29580074fb8bd
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: bd49edcfaca781ac3d36fbf871ec146b32c64ae3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98955418"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733408"
 ---
 # <a name="manage-compute-on-your-azure-stack-edge-pro-gpu"></a>管理 Azure Stack Edge Pro GPU 上的计算
 
@@ -21,11 +21,6 @@ ms.locfileid: "98955418"
 
 本文介绍如何通过 Azure Stack Edge Pro GPU 设备上的 IoT Edge 服务管理计算。 可以通过 Azure 门户或本地 Web UI 管理计算。 使用 Azure 门户管理模块、触发器和 IoT Edge 配置，并使用本地 web UI 管理计算网络设置。
 
-在本文中，学习如何：
-
-> [!div class="checklist"]
-> * 管理触发器
-> * 管理 IoT Edge 配置
 
 
 ## <a name="manage-triggers"></a>管理触发器
@@ -130,6 +125,22 @@ ms.locfileid: "98955418"
     ![出现提示时选择“是”](media/azure-stack-edge-j-series-manage-compute/refresh-configuration-2.png)
 
 3. 同步完成后，请退出对话框。
+
+## <a name="change-external-service-ips-for-containers"></a>更改容器的外部服务 Ip
+
+Kubernetes 外部服务 Ip 用于与 Kubernetes 群集外部公开的服务联系。 激活设备后，可以通过访问本地 UI，为设备的容器化工作负荷设置或修改外部服务 Ip。
+
+
+1. 在设备的本地用户界面中转到 " **计算**"。
+1. 选择其网络为计算配置的端口。 在打开的边栏选项卡中，指定 (new) 或修改现有) Kubernetes 外部服务 Ip 的 (。 这些 Ip 用于任何需要在 Kubernetes 群集外部公开的服务。 
+    - 你的设备上运行的服务需要至少1个服务 IP `edgehub` ，并由 IoT Edge 模块使用。 
+    - 你需要为要部署的每个其他 IoT Edge 模块或容器提供一个 IP。 
+    - 这些是静态的连续 Ip。
+
+    ![更改 Kubernetes 服务 Ip](media/azure-stack-edge-j-series-manage-compute/change-service-ips-1.png)
+
+1. 选择“应用”。 应用 Ip 后，你的设备不需要重新启动或重新启动。 新 Ip 会立即生效。
+
 
 ## <a name="next-steps"></a>后续步骤
 

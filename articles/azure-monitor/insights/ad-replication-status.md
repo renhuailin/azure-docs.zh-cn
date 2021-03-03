@@ -1,17 +1,16 @@
 ---
 title: 监视 Active Directory 复制状态
 description: Active Directory 复制状态解决方案包定期监视 Active Directory 环境中是否有任何复制失败。
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/24/2018
-ms.openlocfilehash: 01d641801b1b9a0cfaa4fd7ee11e3c55314dc53c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: c99ad16e119c4262aa6d9d645b2457cdd46061b2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100577532"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101700671"
 ---
 # <a name="monitor-active-directory-replication-status-with-azure-monitor"></a>使用 Azure Monitor 监视 Active Directory 复制状态
 

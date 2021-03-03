@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: ba17346d5f064b57f98e7ad8745d9f80bdde5116
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: c60aac675a76d8cb25463f8b0ca1b2dc563d1179
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101092305"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101730314"
 ---
 # <a name="how-to-encode-with-a-custom-transform---net"></a>如何对自定义转换进行编码 - .NET
 
@@ -41,10 +41,10 @@ ms.locfileid: "101092305"
 使用以下命令将包含完整 .NET Core 示例的 GitHub 存储库克隆到计算机：  
 
  ```bash
- git clone https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials.git
+ git clone https://github.com/Azure-Samples/media-services-v3-dotnet.git
  ```
  
-自定义预设示例位于 [EncodeCustomTransform](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/blob/master/NETCore/EncodeCustomTransform/) 文件夹中。
+自定义预设示例位于编码中， [其中包含使用 .net 文件夹的自定义预设](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/EncodingWithMESCustomPreset) 。
 
 ## <a name="create-a-transform-with-a-custom-preset"></a>使用自定义预设创建转换
 
@@ -56,7 +56,7 @@ ms.locfileid: "101092305"
 
 下面的示例定义了一组我们希望在使用此转换时生成的输出。 我们首先为音频编码添加一个 AacAudio 层，为视频编码添加两个 H264Video 层。 在视频层中，我们分配标签，以便可以在输出文件名中使用它们。 接下来，我们希望输出还包括缩略图。 在以下示例中，我们指定 PNG 格式的图像，这些图像以输入视频分辨率的 50% 生成，并以输入视频长度的 {25%, 50%, 75%} 三个时间戳生成。 最后，我们指定输出文件的格式 - 一个用于视频 + 音频，另一个用于缩略图。 由于我们有多个 H264 层，因此我们必须使用宏来为每个层生成唯一的名称。 可以使用 `{Label}` 或 `{Bitrate}` 宏，此示例显示了前者。
 
-[!code-csharp[Main](../../../media-services-v3-dotnet-core-tutorials/NETCore/EncodeCustomTransform/MediaV3ConsoleApp/Program.cs#EnsureTransformExists)]
+[!code-csharp[Main](../../../media-services-v3-dotnet/blob/main/VideoEncoding/EncodingWithMESCustomPreset/Program.cs#EnsureTransformExists)]
 
 ## <a name="next-steps"></a>后续步骤
 

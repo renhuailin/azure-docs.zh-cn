@@ -5,13 +5,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: how-to
-ms.date: 12/16/2020
-ms.openlocfilehash: 242980ac1b89345ed9d8ff903e65129cff3cb917
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.date: 02/23/2021
+ms.openlocfilehash: dc309e85373193e4f5d431f543ff3e59ea5bebc7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97964093"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101739256"
 ---
 # <a name="share-and-receive-data-from-azure-blob-storage-and-azure-data-lake-storage"></a>从 Azure Blob 和 Azure Data Lake Storage 共享和接收数据
 
@@ -24,6 +24,7 @@ Azure 数据共享支持从 Azure Data Lake Gen1 和 Azure Data Lake Gen2 共享
 在基于快照的共享中共享文件系统、容器或文件夹时，数据使用者可以选择创建共享数据的完整副本。 或者，他们可以使用增量快照功能只复制新的或更新的文件。 增量快照功能基于文件的上次修改时间。 
 
 快照期间将覆盖具有相同名称的现有文件。 不会在目标上删除从源中删除的文件。 源中的空子文件夹不会复制到目标。 
+
 ## <a name="share-data"></a>共享数据
 
 使用以下部分中的信息通过 Azure 数据共享来共享数据。 
@@ -57,7 +58,7 @@ Azure 数据共享支持从 Azure Data Lake Gen1 和 Azure Data Lake Gen2 共享
 
      **设置** | **建议的值** | **字段说明**
     |---|---|---|
-    | 订阅 | 订阅 | 为数据共享帐户选择一个 Azure 订阅。|
+    | 订阅 | 你的订阅 | 为数据共享帐户选择一个 Azure 订阅。|
     | 资源组 | *test-resource-group* | 使用现有资源组或创建资源组。 |
     | 位置 | *美国东部 2* | 选择 Data Share 帐户的区域。
     | 名称 | *datashareaccount* | 命名你的数据共享帐户。 |
@@ -81,7 +82,7 @@ Azure 数据共享支持从 Azure Data Lake Gen1 和 Azure Data Lake Gen2 共享
 
     ![显示数据共享详细信息的屏幕截图。](./media/enter-share-details.png "输入数据共享的详细信息。") 
 
-1. 选择“继续”。 
+1. 选择“继续”。
 
 1. 若要将数据集添加到共享中，请选择 " **添加数据集**"。 
 
@@ -99,7 +100,7 @@ Azure 数据共享支持从 Azure Data Lake Gen1 和 Azure Data Lake Gen2 共享
 
     ![显示如何添加收件人电子邮件地址的屏幕截图。](./media/add-recipient.png "添加收件人。") 
 
-1. 选择“继续”。 
+1. 选择“继续”。
 
 1. 如果选择了快照共享类型，则可以设置快照计划来更新数据使用者的数据。 
 
@@ -184,7 +185,7 @@ Azure 数据共享支持从 Azure Data Lake Gen1 和 Azure Data Lake Gen2 共享
 ### <a name="trigger-a-snapshot"></a>触发快照
 本部分中的步骤仅适用于基于快照的共享。
 
-1. 可以通过 " **详细信息** " 选项卡触发快照。在选项卡上，选择 " **触发器快照**"。 可以选择触发数据的完整快照或增量快照。 如果是第一次从数据提供程序接收数据，请选择 " **完全复制**"。 
+1. 可以通过 " **详细信息** " 选项卡触发快照。在选项卡上，选择 " **触发器快照**"。 可以选择触发数据的完整快照或增量快照。 如果是第一次从数据提供程序接收数据，请选择 " **完全复制**"。 当执行快照时，后续快照将不会启动，直到上一个快照完成为止。
 
    ![显示触发器快照选择的屏幕截图。](./media/trigger-snapshot.png "触发器快照。") 
 
@@ -194,6 +195,14 @@ Azure 数据共享支持从 Azure Data Lake Gen1 和 Azure Data Lake Gen2 共享
 
 ### <a name="view-history"></a>查看历史记录
 只能在基于快照的共享中查看快照历史记录。 若要查看历史记录，请打开 " **历史记录** " 选项卡。在这里，可以看到过去30天内生成的所有快照的历史记录。 
+
+## <a name="storage-snapshot-performance"></a>存储快照性能
+除了文件数和共享数据大小以外，存储快照性能还会受到许多因素的影响。 我们始终建议你执行自己的性能测试。 下面是影响性能的一些示例因素。
+
+* 对源和目标数据存储区的并行访问。  
+* 源和目标数据存储区的位置。 
+* 对于增量快照，共享数据集中的文件数可能会影响查找上次成功快照之后最后修改时间内的文件列表所花的时间。 
+
 
 ## <a name="next-steps"></a>后续步骤
 已了解如何使用 Azure 数据共享服务从存储帐户共享和接收数据。 若要了解如何从其他数据源共享，请参阅 [支持的数据存储](supported-data-stores.md)。

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: yelevin
-ms.openlocfilehash: 35b3f4fe5703e9ce902553f992dfa44cea7db78f
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 5d847ac7ed805ad88bc24ed63896edc6f7596f9b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100570455"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101729770"
 ---
 # <a name="normalization-in-azure-sentinel"></a>Azure Sentinel 中的规范化
 
@@ -130,7 +130,7 @@ Azure Sentinel [官方 GitHub 存储库](https://github.com/Azure/Azure-Sentinel
 > 可以在任何查询中使用保存的函数，而不是 Azure Sentinel 表，包括搜寻和检测查询。 有关详细信息，请参阅：
 >
 > - [Azure Sentinel 中的数据规范化](normalization.md#parsers)
-> - [分析 Azure Monitor 日志中的文本](/azure/azure-monitor/log-query/parse-text)
+> - [分析 Azure Monitor 日志中的文本](../azure-monitor/logs/parse-text.md)
 >
 #### <a name="customizing-parsers"></a>自定义分析器
 

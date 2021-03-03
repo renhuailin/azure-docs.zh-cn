@@ -3,14 +3,14 @@ title: 在 Azure 自动化中部署 Linux 混合 Runbook 辅助角色
 description: 本文介绍如何安装 Azure 自动化混合 Runbook 辅助角色，以便在本地数据中心或云环境中基于 Linux 的计算机上运行 Runbook。
 services: automation
 ms.subservice: process-automation
-ms.date: 11/23/2020
+ms.date: 02/18/2021
 ms.topic: conceptual
-ms.openlocfilehash: 58c340c97bd8e46c5a588b4bf0ba2673712ffb95
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 543ae640871699c7e1fffda46463752483ff6a4e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100581197"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708911"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>部署 Linux 混合 Runbook 辅助角色
 
@@ -43,12 +43,15 @@ Linux 混合 Runbook 辅助角色以特殊用户身份执行 Runbook，该用户
 混合 Runbook 辅助角色功能支持以下发行版。 所有操作系统都假定为 x64。 任何操作系统均不支持 x86。
 
 * Amazon Linux 2012.09 - 2015.09
-* CentOS Linux 5、6 和 7
+* CentOS Linux 5、6、7和8
 * Oracle Linux 5、6 和 7
-* Red Hat Enterprise Linux Server 5、6 和 7
+* Red Hat Enterprise Linux Server 5、6、7和8
 * Debian GNU/Linux 6、7 和 8
 * Ubuntu 12.04 LTS、14.04 LTS、16.04 LTS 和 18.04 LTS
-* SUSE Linux Enterprise Server 12
+* SUSE Linux Enterprise Server 12 和15
+
+> [!IMPORTANT]
+> 在启用依赖于系统混合 Runbook 辅助角色的更新管理功能之前，请在 [此处](update-management/overview.md#supported-operating-systems)确认它支持的分发。
 
 ### <a name="minimum-requirements"></a>最低要求
 

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 11/30/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: b6879d4869604af5232088063a6153a01208e7d0
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 5e5d5370057449d1877c31b249d3fe47fd60bf2a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99259332"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687662"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>使用 Azure AD 应用程序代理发布远程桌面
 
@@ -57,7 +57,7 @@ ms.locfileid: "99259332"
 ### <a name="publish-the-rd-host-endpoint"></a>发布 RD 主机终结点
 
 1. 使用以下值[发布新的应用程序代理应用程序](application-proxy-add-on-premises-application.md)：
-   - 内部 URL：`https://\<rdhost\>.com/`，其中，`\<rdhost\>` 是 RD Web 和 RD 网关共享的共用根。
+   - 内部 URL：`https://<rdhost>.com/`，其中，`<rdhost>` 是 RD Web 和 RD 网关共享的共用根。
    - 外部 URL：系统会根据应用程序的名称自动填充此字段，但可以修改它。 用户访问 RDS 时，会转到此 URL。
    - 预身份验证方法：Azure Active Directory
    - 转换 URL 标头：否
@@ -69,7 +69,7 @@ ms.locfileid: "99259332"
 
 4. 选择 " **Azure Active Directory**"，然后选择 " **应用注册**"。 从列表中选择应用。
 5. 在 " **管理**" 下，选择 " **品牌**"。
-6. 将 " **主页 URL** " 字段更新为指向 RD Web 终结点 (如 `https://\<rdhost\>.com/RDWeb`) 。
+6. 将 " **主页 URL** " 字段更新为指向 RD Web 终结点 (如 `https://<rdhost>.com/RDWeb`) 。
 
 ### <a name="direct-rds-traffic-to-application-proxy"></a>将 RDS 流量定向到应用程序代理
 
@@ -78,7 +78,7 @@ ms.locfileid: "99259332"
 1. 连接到运行 RD 连接代理角色的 RDS 服务器。
 2. 启动 **服务器管理器**。
 3. 在左侧窗格中选择“远程桌面服务”。
-4. 选择“概述”。
+4. 选择“概述”。 
 5. 在“部署概述”部分中，选择下拉菜单并选择“编辑部署属性”。
 6. 在“RD 网关”选项卡中，将“服务器名称”字段更改为针对应用程序代理中的 RD 主机终结点设置的外部 URL。
 7. 将“登录方法”字段更改为“密码身份验证”。

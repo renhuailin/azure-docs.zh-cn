@@ -4,16 +4,16 @@ description: Azure 应用服务的应用程序性能监视。 对加载和响应
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js, devx-track-dotnet
-ms.openlocfilehash: 74b39219b3b18c8de0214367d141085f6dc5f674
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 7661066bc2666070c8b3ed9263b1223c09d6c720
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100573998"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734717"
 ---
 # <a name="monitor-azure-app-service-performance"></a>监视 Azure 应用服务性能
 
-现在，可以比过去更轻松地针对 [Azure 应用服务](../../app-service/index.yml)中运行的基于 ASP.NET 和 ASP.NET Core 的 Web 应用程序启用监视。 以前需要手动安装某个站点扩展，而现在应用服务映像中默认会内置最新的扩展/代理。 本文逐步讲解如何启用 Application Insights 监视，并提供有关如何自动完成大规模部署的初步指导。
+现在比以往更轻松地在 [Azure 应用服务](../../app-service/index.yml) 上运行的 ASP.NET、ASP.NET Core 和基于 Node.js 的 web 应用程序上启用监视。 以前需要手动安装某个站点扩展，而现在应用服务映像中默认会内置最新的扩展/代理。 本文逐步讲解如何启用 Application Insights 监视，并提供有关如何自动完成大规模部署的初步指导。
 
 > [!NOTE]
 > 通过“开发工具” > “扩展”手动添加 Application Insights 站点扩展的功能已弃用。  此扩展安装方法依赖于每个新版本的手动更新。 扩展的最新稳定版现在会[预装](https://github.com/projectkudu/kudu/wiki/Azure-Site-Extensions)在应用服务映像中。 这些文件位于 `d:\Program Files (x86)\SiteExtensions\ApplicationInsightsAgent` 中，每发布一个稳定版本，它们都会自动更新。 如果在下文中遵循基于代理的说明启用监视，系统会自动删除已弃用的扩展。
@@ -97,7 +97,7 @@ ms.locfileid: "100573998"
 
 # <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
-在应用服务 Web 应用中的“设置”下，选择“Application Insights” > “启用”。 基于 Node.js 代理的监视目前为预览版。
+不支持基于 Windows 代理的监视，若要与 Linux 一起使用，请访问 [Node.js 应用服务文档](../../app-service/configure-language-nodejs.md?pivots=platform-linux#monitor-with-application-insights)。
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -170,6 +170,7 @@ ms.locfileid: "100573998"
 |XDT_MicrosoftApplicationInsights_Mode |  （仅限默认模式）已启用基本功能以确保最佳性能。 | `default` 或 `recommended`。 |
 |InstrumentationEngine_EXTENSION_VERSION | 控制是否要启用二进制重写引擎 `InstrumentationEngine`。 此设置会对性能以及冷启动/启动时间造成影响。 | `~1` |
 |XDT_MicrosoftApplicationInsights_BaseExtensions | 控制是否要随依赖项调用一起捕获 SQL 和 Azure 表文本。 性能警告：应用程序冷启动时间将会受到影响。 此设置需要 `InstrumentationEngine`。 | `~1` |
+|XDT_MicrosoftApplicationInsights_PreemptSdk | 仅适用于 ASP.NET Core 应用。 启用 Application Insights SDK) 互操作 (互操作。 将扩展与 SDK 并行加载，并使用它发送遥测 (禁用 Application Insights SDK) 。 |`1`|
 
 ### <a name="app-service-application-settings-with-azure-resource-manager"></a>使用 Azure 资源管理器配置应用服务应用程序设置
 

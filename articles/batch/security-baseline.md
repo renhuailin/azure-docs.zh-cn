@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 96d1c4c0ad210352be94255609a3a373b408ed23
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: d8ef3efcda55868abec188c10ef904ae40a56722
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100593303"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728138"
 ---
 # <a name="azure-security-baseline-for-batch"></a>Batch 的 Azure 安全基线
 
@@ -140,7 +140,7 @@ ms.locfileid: "100593303"
 
 **指导**：使用 Azure 活动日志监视网络资源配置，并检测与 Azure Batch 池相关的网络资源的更改。 在 Azure Monitor 中创建当关键网络资源发生更改时触发的警报。
 
-- [如何查看和检索 Azure 活动日志事件](../azure-monitor/platform/activity-log.md#view-the-activity-log) 
+- [如何查看和检索 Azure 活动日志事件](../azure-monitor/essentials/activity-log.md#view-the-activity-log) 
 
 - [如何在 Azure Monitor 中创建警报](../azure-monitor/alerts/alerts-activity-log.md)
 
@@ -516,7 +516,7 @@ Azure 磁盘加密可用于帮助保护数据，使组织能够信守在安全�
 
 - [如何针对 Azure 活动日志事件创建警报](../azure-monitor/alerts/alerts-activity-log.md)
 
-- [如何为 Azure 存储帐户启用其他日志记录/审核](../storage/common/storage-monitor-storage-account.md)
+- [如何为 Azure 存储帐户启用其他日志记录/审核](../storage/common/manage-storage-analytics-logs.md)
 
 **Azure 安全中心监视**：是
 

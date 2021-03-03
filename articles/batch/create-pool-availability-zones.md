@@ -3,12 +3,12 @@ title: 在可用性区域之间创建池
 description: 了解如何创建具有区域性策略的批处理池来帮助防止故障。
 ms.topic: how-to
 ms.date: 01/28/2021
-ms.openlocfilehash: 98109e1b74106bc636eaa715575e4b30ab29f9e2
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 56e718bedf504b8e69598c2d99ab8b889a470b89
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99055731"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101725282"
 ---
 # <a name="create-an-azure-batch-pool-across-availability-zones"></a>跨可用性区域创建 Azure Batch 池
 
@@ -22,7 +22,7 @@ ms.locfileid: "99055731"
 
 为了在可用性区域之间分配批处理池，创建池的 Azure 区域必须在多个区域中支持请求的 VM SKU。 可以通过调用 [资源 Sku 列表 API](/rest/api/compute/resourceskus/list)并检查 [ResourceSku](/rest/api/compute/resourceskus/list#resourcesku)的 " **locationInfo** " 字段来对此进行验证。 确保请求的 VM SKU 支持多个区域。
 
-对于 [用户订阅模式批处理帐户](accounts.md#batch-accounts)，请确保要在其中创建池的订阅在请求的 VM SKU 上没有区域提供限制。 若要确认这一点，请调用 [资源 Sku 列表 API](/rest/api/compute/resourceskus/list) 并检查 [ResourceSkuRestrictions](/rest/api/compute/resourceskus/list#resourceskurestrictions)。 如果存在区域限制，则可以提交 [支持票证](../azure-portal/supportability/sku-series-unavailable.md) 来删除区域限制。
+对于 [用户订阅模式批处理帐户](accounts.md#batch-accounts)，请确保要在其中创建池的订阅在请求的 VM SKU 上没有区域提供限制。 若要确认这一点，请调用 [资源 Sku 列表 API](/rest/api/compute/resourceskus/list) 并检查 [ResourceSkuRestrictions](/rest/api/compute/resourceskus/list#resourceskurestrictions)。 如果存在区域限制，则可以提交 [支持票证](/troubleshoot/azure/general/region-access-request-process) 来删除区域限制。
 
 另请注意，如果池已启用节点间通信，并使用支持不允许的 [VM SKU](../virtual-machines/workloads/hpc/enable-infiniband.md)，则无法使用该区域策略创建池。
 
@@ -83,4 +83,3 @@ client-request-id: 00000000-0000-0000-0000-000000000000
 - 了解 [Batch 服务工作流和主要资源](batch-service-workflow-features.md)（如池、节点、作业和任务）。
 - 了解如何[在 Azure 虚拟网络的子网中创建池](batch-virtual-network.md)。
 - 了解如何 [创建不带公共 IP 地址的 Azure Batch 池](./batch-pool-no-public-ip-address.md)。
-

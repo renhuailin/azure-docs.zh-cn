@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: f8f9da1b9c0b2df4e353b90538d52d9cb9b9e241
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 62be64f3134bbbbbe2b18bef384654168f958287
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101093916"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101701597"
 ---
 # <a name="azure-security-baseline-for-azure-traffic-manager"></a>适用于 Azure 流量管理器的 Azure 安全基线
 
@@ -62,7 +62,7 @@ ms.locfileid: "101093916"
 
 - [更改 Log Analytics 中的数据保留期](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
-- [如何为 Azure 存储帐户日志配置保留策略](../storage/common/storage-monitor-storage-account.md#configure-logging)
+- [如何为 Azure 存储帐户日志配置保留策略](../storage/common/manage-storage-analytics-logs.md#configure-logging)
 
 **Azure 安全中心监视**：不适用
 

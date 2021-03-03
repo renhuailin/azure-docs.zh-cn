@@ -10,12 +10,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: eb1891b7201d8e1d3d18b0e01817ee943ae6341f
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: 9d00b6aa09ef19b1e6892e0e90536e45dd3bce79
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100548176"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101718516"
 ---
 # <a name="client-side-encryption-and-azure-key-vault-for-microsoft-azure-storage"></a>Microsoft Azure 存储的客户端加密和 Azure 密钥保管库
 
@@ -132,23 +132,25 @@ Key Vault 集成有两个必需的包：
 * Azure.Core 包含 `IKeyEncryptionKey` 和 `IKeyEncryptionKeyResolver` 接口。 用于 .NET 的存储客户端库已将其定义为一个依赖项。
 * Azure.Security.KeyVault.Keys (v4.x) 包含 Key Vault REST 客户端，以及用于客户端加密的加密客户端。
 
+密钥保管库专为高价值主密钥设计，每个密钥保管库的限流限制的设计也考虑了这一点。 在 KeyVault 4.1.0 的情况下，没有 `IKeyEncryptionKeyResolver` 支持密钥缓存的实现。 由于限制，应执行 [此示例](https://docs.microsoft.com/samples/azure/azure-sdk-for-net/azure-key-vault-proxy/) ，接下来可以将缓存层注入到 `Azure.Security.KeyVault.Keys.Cryptography.KeyResolver` 实例中。
+
 # <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
 有三个密钥保管库包：
 
 * Microsoft.Azure.KeyVault.Core 包含 IKey 和 IKeyResolver。 它是没有依赖项的小型包。 用于 .NET 的存储空间客户端库将其定义为一个依赖项。
 * Microsoft.Azure.KeyVault (v3.x) 包含 Key Vault REST 客户端。
-* Microsoft.Azure.KeyVault.Extensions (v3.x) 包含扩展代码，代码中包含加密算法和 RSAKey 与 SymmetricKey 的实现。 它依赖于 Core 和 KeyVault 命名空间，并提供用于定义聚合解析程序（在用户想要使用多个密钥提供程序时）和缓存密钥解析程序的功能。 虽然存储客户端库不直接依赖于此包，但是如果用户想要使用 Azure 密钥保管库来存储其密钥或通过密钥保管库扩展来使用本地和云加密提供程序，则他们将需要此包。
-
-有关 v11 中 Key Vault 用法的详细信息，可查看 [v11 加密代码示例](https://github.com/Azure/azure-storage-net/tree/master/Samples/GettingStarted/EncryptionSamples)。
-
----
+* Microsoft.Azure.KeyVault.Extensions (v3.x) 包含扩展代码，代码中包含加密算法和 RSAKey 与 SymmetricKey 的实现。 它依赖于 Core 和 KeyVault 命名空间，并提供用于定义聚合解析程序（在用户想要使用多个密钥提供程序时）和缓存密钥解析程序的功能。 虽然存储客户端库不直接依赖于此包，但是如果用户想要使用 Azure 密钥保管库存储其密钥或通过密钥保管库扩展来使用本地和云加密提供程序，则他们需要此包。
 
 密钥保管库专为高价值主密钥设计，每个密钥保管库的限流限制的设计也考虑了这一点。 使用密钥保管库执行客户端加密时，首选模型是使用在密钥保管库中作为机密存储并在本地缓存的对称主密钥。 用户必须执行以下操作：
 
 1. 脱机创建一个机密并将其上传到密钥保管库。
 2. 使用机密的基标识符作为参数来解析机密的当前版本进行加密，并在本地缓存此信息。 使用 CachingKeyResolver 进行缓存；用户不需要实现自己的缓存逻辑。
 3. 创建加密策略时，使用缓存解析程序作为输入。
+
+有关 v11 中 Key Vault 用法的详细信息，可查看 [v11 加密代码示例](https://github.com/Azure/azure-storage-net/tree/master/Samples/GettingStarted/EncryptionSamples)。
+
+---
 
 ## <a name="best-practices"></a>最佳实践
 

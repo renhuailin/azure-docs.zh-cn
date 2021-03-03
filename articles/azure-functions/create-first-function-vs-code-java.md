@@ -3,16 +3,27 @@ title: 使用 Visual Studio Code 创建 Java 函数 - Azure Functions
 description: 了解如何创建 Java 函数，然后使用 Visual Studio Code 中的 Azure Functions 扩展将本地项目发布到 Azure Functions 中托管的无服务器实例。
 ms.topic: quickstart
 ms.date: 11/03/2020
-ms.openlocfilehash: 36516abd8b50c0b0b7d72e6bae0b67701509ca65
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+adobe-target: true
+adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
+adobe-target-experience: Experience B
+adobe-target-content: ./create-first-function-vs-code-java-uiex
+ms.openlocfilehash: 10ac677fb65428e8b8855c43b319bbebe7bbbb71
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99493628"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101701426"
 ---
 # <a name="quickstart-create-a-java-function-in-azure-using-visual-studio-code"></a>快速入门：在 Azure 中使用 Visual Studio Code 创建 Java 函数
 
-[!INCLUDE [functions-language-selector-quickstart-vs-code](../../includes/functions-language-selector-quickstart-vs-code.md)]
+> [!div class="op_single_selector" title1="选择你的函数语言： "]
+> - [Java](create-first-function-vs-code-java.md)
+> - [Python](create-first-function-vs-code-python.md)
+> - [C#](create-first-function-vs-code-csharp.md)
+> - [JavaScript](create-first-function-vs-code-node.md)
+> - [PowerShell](create-first-function-vs-code-powershell.md)
+> - [TypeScript](create-first-function-vs-code-typescript.md)
+> - [其他 (Go/Rust)](create-first-function-vs-code-other.md)
 
 在本文中，我们使用 Visual Studio Code 来创建一个响应 HTTP 请求的 Java 函数。 在本地测试代码后，将代码部署到 Azure Functions 的无服务器环境。
 

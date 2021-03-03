@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/03/2020
-ms.openlocfilehash: abad5a0146f98993cd02425b33466c447f9d97ca
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 50bfed0ee4346955a9e478e7567f00610d8184f1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100605973"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708656"
 ---
 # <a name="install-log-analytics-agent-on-windows-computers"></a>在 Windows 计算机上安装 Log Analytics 代理
 本文详细介绍如何使用以下方法在 Windows 计算机上安装 Log Analytics 代理：
@@ -20,7 +20,7 @@ ms.locfileid: "100605973"
 * [Azure 自动化 Desired State Configuration (DSC)](#install-agent-using-dsc-in-azure-automation)。 
 
 >[!IMPORTANT]
-> 本文所述的安装方法通常用于本地或其他云中的虚拟机。 有关可用于 Azure 虚拟机的更高效选项，请参阅[安装选项](../platform/log-analytics-agent.md#installation-options)。
+> 本文所述的安装方法通常用于本地或其他云中的虚拟机。 有关可用于 Azure 虚拟机的更高效选项，请参阅[安装选项](./log-analytics-agent.md#installation-options)。
 
 > [!NOTE]
 > 如果需要将代理配置为向多个工作区报告，则不能在初始设置期间执行此操作，而只能在之后通过从控制面板或 PowerShell 更新设置执行，如[添加或删除工作区](agent-manage.md#adding-or-removing-a-workspace)中所述。  
@@ -42,12 +42,12 @@ Windows 代理将于 2020 年 8 月 17 日开始以独占方式使用 SHA-2 签�
 4. 建议将代理配置为[使用 TLS 1.2](agent-windows.md#configure-agent-to-use-tls-12)。 
 
 ## <a name="network-requirements"></a>网络要求
-有关 Windows 代理的网络要求，请参阅 [Log Analytics 代理概述](../platform/log-analytics-agent.md#network-requirements)。
+有关 Windows 代理的网络要求，请参阅 [Log Analytics 代理概述](./log-analytics-agent.md#network-requirements)。
 
 
    
 ## <a name="configure-agent-to-use-tls-12"></a>将代理配置为使用 TLS 1.2
-[TLS 1.2](/windows-server/security/tls/tls-registry-settings#tls-12) 协议可确保在 Windows 代理与 Log Analytics 服务之间进行通信的传输中数据的安全性。 如果要在[默认情况下未启用 TLS 1.2 的操作系统](../platform/data-security.md#sending-data-securely-using-tls-12)上安装，则应使用以下步骤配置 TLS 1.2。
+[TLS 1.2](/windows-server/security/tls/tls-registry-settings#tls-12) 协议可确保在 Windows 代理与 Log Analytics 服务之间进行通信的传输中数据的安全性。 如果要在[默认情况下未启用 TLS 1.2 的操作系统](../logs/data-security.md#sending-data-securely-using-tls-12)上安装，则应使用以下步骤配置 TLS 1.2。
 
 1. 找到以下注册表子项：**HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols**
 2. 在“Protocols”下为 TLS 1.2 创建一个子项：HKLM\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2
@@ -91,7 +91,7 @@ Windows 代理将于 2020 年 8 月 17 日开始以独占方式使用 SHA-2 签�
 
 下表突出显示了代理的安装程序支持的特定参数，包括使用 Automation DSC 进行部署的时间。
 
-|特定于 MMA 的选项                   |注释         |
+|特定于 MMA 的选项                   |说明         |
 |---------------------------------------|--------------|
 | NOAPM=1                               | 可选参数。 安装不带 .NET 应用程序性能监视的代理。|   
 |ADD_OPINSIGHTS_WORKSPACE               | 1 = 将代理配置为向工作区报告                |

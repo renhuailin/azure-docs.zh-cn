@@ -3,20 +3,20 @@ title: 使用 Azure 策略启用 AKS 监视加载项
 description: 介绍如何使用 Azure 自定义策略启用 AKS 监视加载项。
 ms.topic: conceptual
 ms.date: 02/04/2021
-ms.openlocfilehash: 302fdbbbcadf211339952f4b1bd97dcbb4ab1a85
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 2163527cc83e70913e9a6e11bf2e22f9ed9c6690
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99808132"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713892"
 ---
 # <a name="enable-aks-monitoring-addon-using-azure-policy"></a>使用 Azure 策略启用 AKS 监视加载项
 本文介绍如何使用 Azure 自定义策略启用 AKS 监视加载项。 可以在订阅或资源组作用域上为监视加载项自定义策略分配。 如果 Azure Log Analytics 工作区和 AKS 群集位于不同的订阅中，则策略分配使用的托管标识必须对 Log Analytics 工作区的资源具有所需的角色权限。 同样，如果策略的范围限定为资源组，那么，如果工作区不在所选的资源组范围内，则托管标识应拥有 Log Analytics 工作区所需的角色权限。
 
 监视加载项需要 Azure 策略使用的托管标识上的以下角色：
 
- - [kubernetes--参与者-role](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#azure-kubernetes-service-contributor-role)
- - [日志分析-参与者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#log-analytics-contributor)
+ - [kubernetes--参与者-role](../../role-based-access-control/built-in-roles.md#azure-kubernetes-service-contributor-role)
+ - [日志分析-参与者](../../role-based-access-control/built-in-roles.md#log-analytics-contributor)
 
 ## <a name="create-and-assign-policy-definition-using-azure-portal"></a>使用 Azure 门户创建和分配策略定义
 
@@ -79,6 +79,5 @@ ms.locfileid: "99808132"
 
 - 了解有关 [Azure 策略](../../governance/policy/overview.md)的详细信息。
 - 了解 [修正安全的工作](../../governance/policy/how-to/remediate-resources.md#how-remediation-security-works)方式。
-- 了解有关 [容器 Azure Monitor 的](../insights/container-insights-overview.md)详细信息。
-- 安装 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
-
+- 详细了解 [容器见解](./container-insights-overview.md)。
+- 安装 [Azure CLI](/cli/azure/install-azure-cli)。

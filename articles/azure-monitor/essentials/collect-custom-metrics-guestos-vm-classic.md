@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: ''
-ms.openlocfilehash: 48c7323a630f5c79c7ecb16e26c9ec79ec2014a1
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: f0c97d128837e77325e68ae28161a98938510ff8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100605943"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723276"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metrics-database-for-a-windows-virtual-machine-classic"></a>将来宾 OS 指标发送到适用于 Windows 虚拟机（经典）的 Azure Monitor 指标数据库
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Azure Monitor [诊断扩展](../agents/diagnostics-extension-overview.md)（称为“WAD”或“诊断”）支持从作为虚拟机、云服务或 Service Fabric 群集的一部分运行的来宾操作系统（来宾 OS）中收集指标和日志。 该扩展可将遥测数据发送到[许多不同的位置](../platform/data-platform.md?toc=/azure/azure-monitor/toc.json)。
+Azure Monitor [诊断扩展](../agents/diagnostics-extension-overview.md)（称为“WAD”或“诊断”）支持从作为虚拟机、云服务或 Service Fabric 群集的一部分运行的来宾操作系统（来宾 OS）中收集指标和日志。 该扩展可将遥测数据发送到[许多不同的位置](../data-platform.md?toc=%2fazure%2fazure-monitor%2ftoc.json)。
 
 本文介绍了将 Windows 虚拟机 (经典) 发送到 Azure Monitor 指标数据库的来宾 OS 性能度量值的过程。 自诊断版本 1.11 版起，可将指标直接写入已收集标准平台指标的 Azure Monitor 指标存储。 
 
@@ -26,7 +26,7 @@ Azure Monitor [诊断扩展](../agents/diagnostics-extension-overview.md)（称�
 
 本文概述的过程仅适用于运行 Windows 操作系统的经典虚拟机。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - 你必须是 Azure 订阅的[服务管理员或共同管理员](../../cost-management-billing/manage/add-change-subscription-administrator.md)。 
 
@@ -34,7 +34,7 @@ Azure Monitor [诊断扩展](../agents/diagnostics-extension-overview.md)（称�
 
 - 需要安装 [Azure PowerShell](/powershell/azure) 或 [Azure Cloud Shell](../../cloud-shell/overview.md)。
 
-- VM 资源必须位于[支持自定义指标的区域](../platform/metrics-custom-overview.md#supported-regions)中。
+- VM 资源必须位于[支持自定义指标的区域](./metrics-custom-overview.md#supported-regions)中。
 
 ## <a name="create-a-classic-virtual-machine-and-storage-account"></a>创建经典虚拟机和存储帐户
 
@@ -203,4 +203,4 @@ Azure Monitor [诊断扩展](../agents/diagnostics-extension-overview.md)（称�
 
 
 ## <a name="next-steps"></a>后续步骤
-- 详细了解[自定义指标](../platform/metrics-custom-overview.md)。
+- 详细了解[自定义指标](./metrics-custom-overview.md)。

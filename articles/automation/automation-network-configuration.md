@@ -4,12 +4,12 @@ description: 本文详细说明了 Azure 自动化状态配置、Azure 自动化
 ms.author: magoedte
 ms.topic: conceptual
 ms.date: 01/26/2021
-ms.openlocfilehash: 0add7eed6abbe6c137d423ee4a7ef5f0f60072e3
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 36331e9c07926d4d3ffff136aefa2f9a77d47cb4
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98900146"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708877"
 ---
 # <a name="azure-automation-network-configuration-details"></a>Azure 自动化网络配置详细信息
 
@@ -26,7 +26,7 @@ ms.locfileid: "98900146"
 
 ### <a name="network-planning-for-hybrid-runbook-worker"></a>混合 Runbook 辅助角色的网络规划
 
-对于要连接到 Azure Automation 并向其注册的系统或用户混合 Runbook 辅助角色，它必须有权访问此部分中所述的端口号和 Url。 辅助角色还必须有权访问 Log Analytics 代理连接到 Azure Monitor Log Analytics 工作区 [所需的端口和 url](../azure-monitor/platform/agent-windows.md) 。
+对于要连接到 Azure Automation 并向其注册的系统或用户混合 Runbook 辅助角色，它必须有权访问此部分中所述的端口号和 Url。 辅助角色还必须有权访问 Log Analytics 代理连接到 Azure Monitor Log Analytics 工作区 [所需的端口和 url](../azure-monitor/agents/agent-windows.md) 。
 
 如果为特定的区域定义了自动化帐户，则可以限制与该区域数据中心之间的混合 Runbook 辅助角色通信。 查看 [Azure Automation 用于](how-to/automation-region-dns-records.md) 所需 dns 记录的 dns 记录。
 

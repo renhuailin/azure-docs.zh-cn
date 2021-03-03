@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/20/2020
-ms.openlocfilehash: bef7db19142f0387077af1487230e7891c255aa1
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 09df1c2ecb94089f23a88dd36c5343bb4cf2feea
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100608214"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710934"
 ---
 # <a name="monitor-health-of-log-analytics-workspace-in-azure-monitor"></a>监视 Azure Monitor 中 Log Analytics 工作区的运行状况
 若要维持 Azure Monitor 中 Log Analytics 工作区的性能和可用性，你需要能够主动检测出现的任何问题。 本文介绍如何使用[操作](/azure/azure-monitor/reference/tables/operation)表中的数据监视 Log Analytics 工作区的运行状况。 此表存在于每个 Log Analytics 工作区中，并且包含工作区中发生的错误和警告。 你应定期查看这些数据，并创建警报，以便在工作区中发生任何重要事件时主动收到通知。
@@ -58,10 +58,10 @@ _LogOperation 函数返回下表中的列。
 | 自定义日志 | 错误   | 已达到自定义字段列限制。 | [Azure Monitor 服务限制](../service-limits.md#log-analytics-workspaces) |
 | 自定义日志 | 错误   | 自定义日志引入失败。 | |
 | 元数据 | 错误 | 检测到配置错误。 | |
-| 数据收集 | 错误   | 数据已删除，因为请求的创建时间早于设置的天数。 | [使用 Azure Monitor 日志管理使用情况和成本](../platform/manage-cost-storage.md#alert-when-daily-cap-reached)
+| 数据收集 | 错误   | 数据已删除，因为请求的创建时间早于设置的天数。 | [使用 Azure Monitor 日志管理使用情况和成本](./manage-cost-storage.md#alert-when-daily-cap-reached)
 | 数据收集 | 信息    | 检测到收集计算机配置。| |
-| 数据收集 | 信息    | 数据收集由于新的一天而开始。 | [使用 Azure Monitor 日志管理使用情况和成本](../platform/manage-cost-storage.md#alert-when-daily-cap-reached) |
-| 数据收集 | 警告 | 由于达到每日限制，数据收集已停止。| [使用 Azure Monitor 日志管理使用情况和成本](../platform/manage-cost-storage.md#alert-when-daily-cap-reached) |
+| 数据收集 | 信息    | 数据收集由于新的一天而开始。 | [使用 Azure Monitor 日志管理使用情况和成本](./manage-cost-storage.md#alert-when-daily-cap-reached) |
+| 数据收集 | 警告 | 由于达到每日限制，数据收集已停止。| [使用 Azure Monitor 日志管理使用情况和成本](./manage-cost-storage.md#alert-when-daily-cap-reached) |
 | 数据处理 | 错误   | JSON 格式无效。 | [使用 HTTP 数据收集器 API（公共预览版）将日志数据发送到 Azure Monitor](../logs/data-collector-api.md#request-body) | 
 | 数据处理 | 警告 | 值已剪裁为允许的最大大小。 | [Azure Monitor 服务限制](../service-limits.md#log-analytics-workspaces) |
 | 数据处理 | 警告 | 由于达到大小限制，字段值已被剪裁。 | [Azure Monitor 服务限制](../service-limits.md#log-analytics-workspaces) | 
@@ -125,4 +125,4 @@ _LogOperation 函数返回下表中的列。
 ## <a name="next-steps"></a>后续步骤
 
 - 详细了解[日志警报](../alerts/alerts-log.md)。
-- 收集工作区的[查询审核数据](../log-query/query-audit.md)。
+- 收集工作区的[查询审核数据](./query-audit.md)。

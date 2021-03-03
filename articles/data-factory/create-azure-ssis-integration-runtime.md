@@ -3,15 +3,15 @@ title: 在 Azure 数据工厂中创建 Azure-SSIS 集成运行时
 description: 了解如何在 Azure 数据工厂中创建 Azure-SSIS 集成运行时，以便能够在 Azure 中部署和运行 SSIS 包。
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 10/13/2020
+ms.date: 02/22/2021
 author: swinarko
 ms.author: sawinark
-ms.openlocfilehash: 4e3137b08c558c8e9dfadda07f0b8bb66433ee83
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 4b26abe1d1340e4e8c5f034fad72f612f0b246a2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100389410"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101739397"
 ---
 # <a name="create-an-azure-ssis-integration-runtime-in-azure-data-factory"></a>在 Azure 数据工厂中创建 Azure-SSIS 集成运行时
 
@@ -147,15 +147,21 @@ ms.locfileid: "100389410"
    
       根据所选的数据库服务器，系统可以代表你创建 SSISDB 实例作为单一数据库、创建此实例作为弹性池的一部分，或者在托管实例中创建。 可以在公用网络中访问或者通过加入虚拟网络来访问该实例。 有关选择用来托管 SSISDB 的数据库服务器类型的指导，请参阅[比较 SQL 数据库与 SQL 托管实例](../data-factory/create-azure-ssis-integration-runtime.md#comparison-of-sql-database-and-sql-managed-instance)。   
 
-      如果选择具有 IP 防火墙规则/虚拟网络服务终结点的 Azure SQL 数据库服务器或具有专用终结点的托管实例来承载 SSISDB，或者需要在未配置自承载 IR 的情况下访问本地数据，则需要将 Azure-SSIS IR 加入虚拟网络。 有关详细信息，请参阅[在虚拟网络中创建 Azure-SSIS IR]()。
+      如果选择具有 IP 防火墙规则/虚拟网络服务终结点的 Azure SQL 数据库服务器或具有专用终结点的托管实例来承载 SSISDB，或者需要在未配置自承载 IR 的情况下访问本地数据，则需要将 Azure-SSIS IR 加入虚拟网络。 有关详细信息，请参阅[将 Azure-SSIS IR 加入虚拟网络](./join-azure-ssis-integration-runtime-virtual-network.md)。
 
    1. 选中“结合 ADF 的托管标识使用 Azure AD 身份验证”复选框，选择数据库服务器用来承载 SSISDB 的身份验证方法。 选择使用数据工厂的托管标识进行 SQL 身份验证或 Azure AD 身份验证。
 
-      如果选中该复选框，需将数据工厂的托管标识添加到有权访问数据库服务器的 Azure AD 组中。 有关详细信息，请参阅[使用 Azure AD 身份验证创建 Azure-SSIS IR]()。
+      如果选中该复选框，需将数据工厂的托管标识添加到有权访问数据库服务器的 Azure AD 组中。 有关详细信息，请参阅[为 Azure-SSIS IR 启用 Azure AD 身份验证](./enable-aad-authentication-azure-ssis-ir.md)。
    
    1. 对于“管理员用户名”，请输入用于承载 SSISDB 的数据库服务器的 SQL 身份验证用户名。 
 
    1. 对于“管理员密码”，请输入用于承载 SSISDB 的数据库服务器的 SQL 身份验证密码。 
+
+   1. 选中 " **将双备用 Azure-SSIS Integration Runtime 与 SSISDB 故障转移结合使用** " 复选框，以配置与 Azure SQL 数据库/托管实例故障转移组同步使用的双备用 AZURE SSIS IR 对，以实现业务连续性和灾难恢复 (BCDR) 。
+   
+      如果选中该复选框，请在 " **双重备用对名称** " 文本框中输入名称以标识主要和辅助 AZURE-SSIS IRs 对。 创建主要和辅助 Azure-SSIS IRs 时，需要输入相同的对名称。
+
+      有关详细信息，请参阅 [Configure a Azure-SSIS IR FOR BCDR](./configure-bcdr-azure-ssis-integration-runtime.md)。
 
    1. 对于“目录数据库服务层级”，请选择用于承载 SSISDB 的数据库服务器的服务层级。 选择“基本”、“标准”或“高级”层级，或选择弹性池名称。
 

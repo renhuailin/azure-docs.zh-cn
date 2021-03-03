@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 12/4/2019
 ms.author: vikancha
-ms.openlocfilehash: 78971a92f1815236bd4b360e8df01b02b4c40626
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 1e08d54b9467231233c62635dafc5135456a3843
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101677228"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101695407"
 ---
 # <a name="install-amd-gpu-drivers-on-n-series-vms-running-windows"></a>在运行 Windows 的 N 系列 VM 上安装 AMD GPU 驱动程序
 
@@ -31,7 +31,7 @@ NVv4 VM 仅支持 Microsoft 发布的 GPU 驱动程序。 请勿从任何其他�
 
 | OS | 驱动程序 |
 | -------- |------------- |
-| Windows 10 企业多会话-内部版本1909 <br/><br/>Windows 10-内部版本1909<br/><br/>Windows Server 2016<br/><br/>Windows Server 2019 | [20. Q4](https://download.microsoft.com/download/f/1/6/f16e6275-a718-40cd-a366-9382739ebd39/AMD-Azure-NVv4-Driver-20Q4.exee) ( .exe)  |
+| Windows 10 企业多会话-内部版本1909 <br/><br/>Windows 10-内部版本1909<br/><br/>Windows Server 2016<br/><br/>Windows Server 2019 | [20. Q4](https://download.microsoft.com/download/f/1/6/f16e6275-a718-40cd-a366-9382739ebd39/AMD-Azure-NVv4-Driver-20Q4.exe) ( .exe)  |
 
  > [!NOTE]
    >  如果使用版本1903/1909，可能需要更新以下组策略才能获得最佳性能。 任何其他 Windows 版本都不需要这些更改。

@@ -4,12 +4,12 @@ description: 本文介绍如何从 Azure 虚拟机恢复点恢复文件和文件
 ms.topic: conceptual
 ms.date: 03/12/2020
 ms.custom: references_regions
-ms.openlocfilehash: 9bd66c1e3c89c8974adc3970f8595e5100878088
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.openlocfilehash: c5a027773a55347b71c1e6a66d24d7fdb99220d0
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98567136"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101725503"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>从 Azure 虚拟机备份恢复文件
 
@@ -76,6 +76,11 @@ Azure 备份提供从 Azure VM 备份（也称恢复点）还原 [Azure 虚拟�
 ### <a name="virtual-machine-backups-having-large-disks"></a>具有大磁盘的虚拟机备份
 
 如果备份的计算机上有大量磁盘（> 16 个）或大磁盘（每个磁盘 > 4 TB），则建议不要在同一台计算机上执行该脚本以进行还原，因为这会对 VM 产生重大影响。 取而代之的是，建议仅为文件恢复使用单独的 VM (Azure VM D2v3 VM)，并在不需要时将其关闭。 
+
+请参阅从具有大磁盘的已备份 Vm 还原文件的要求：<br>
+[Windows OS](#for-backed-up-vms-with-large-disks-windows)<br>
+[Linux OS](#for-backed-up-vms-with-large-disks-linux)
+
 
 ## <a name="step-3-os-requirements-to-successfully-run-the-script"></a>步骤 3：成功运行脚本的 OS 要求
 

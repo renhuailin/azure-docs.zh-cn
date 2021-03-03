@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 58987523d86b0e3acb63d3dc220f68753501830e
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: b88cc2d70d38d84436beaff41b5b40b9c06debca
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101666021"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101695543"
 ---
 # <a name="gpu-optimized-virtual-machine-sizes"></a>GPU 优化虚拟机大小
 
@@ -43,7 +43,7 @@ GPU 优化 VM 大小是具有单个、多个或部分 GPU 的专用虚拟机。 
 
 - N 系列 VM 只能按 Resource Manager 部署模型部署。
 
-- N 系列的 VM 在对其磁盘支持的 Azure 存储类型方面有所不同。 NC 和 NV VM 仅支持标准磁盘存储 (HDD) 所支持的 VM 磁盘。 NCv2、NCv3、ND、NDv2 和 NVv2 VM 仅支持高级磁盘存储 (SSD) 所支持的 VM 磁盘。
+- N 系列的 VM 在对其磁盘支持的 Azure 存储类型方面有所不同。 NC 和 NV VM 仅支持标准磁盘存储 (HDD) 所支持的 VM 磁盘。 所有其他 GPU Vm 支持标准磁盘存储和高级磁盘存储支持的 VM 磁盘 (SSD) 。
 
 - 如果需要部署的 N 系列 VM 较多，请考虑使用即用即付订阅或其他购买选项。 如果使用的是 [Azure 免费帐户](https://azure.microsoft.com/free/)，则仅可以使用有限数量的 Azure 计算核心。
 

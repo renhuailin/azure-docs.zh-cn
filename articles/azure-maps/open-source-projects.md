@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 16e7f04c62f25e787c3cab44b85a075e1c7d7277
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 8be747d2027291203272a960efe6b26368471a50
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100386741"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101735040"
 ---
 # <a name="azure-maps-community---open-source-projects"></a>Azure Maps 社区-开源项目
 
@@ -70,9 +70,9 @@ ms.locfileid: "100386741"
 
 | 项目名称 | 说明 |
 |-|-|
-| [Azure Maps Cesium 插件](https://github.com/azure-samples/azure-maps-cesium) | [CESIUM JS](https://cesium.com/cesiumjs/)插件，可以轻松地将 Azure Maps 服务（如[磁贴层](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview)和[地理编码服务](https://docs.microsoft.com/rest/api/maps/search)）集成。 |
-| [Azure Maps Leaflet 插件](https://github.com/azure-samples/azure-maps-leaflet) | [Leaflet](https://leafletjs.com/) JavaScript 插件，可轻松地覆盖[Azure Maps 磁贴服务](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview)中的图块层。 |
- | [Azure Maps OpenLayers 插件](https://github.com/azure-samples/azure-maps-openlayers) | [OpenLayers](https://www.openlayers.org/) JavaScript 插件，可轻松地覆盖[Azure Maps 磁贴服务](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview)中的图块层。 |
+| [Azure Maps Cesium 插件](https://github.com/azure-samples/azure-maps-cesium) | [CESIUM JS](https://cesium.com/cesiumjs/)插件，可以轻松地将 Azure Maps 服务（如[磁贴层](/rest/api/maps/renderv2/getmaptilepreview)和[地理编码服务](/rest/api/maps/search)）集成。 |
+| [Azure Maps Leaflet 插件](https://github.com/azure-samples/azure-maps-leaflet) | [Leaflet](https://leafletjs.com/) JavaScript 插件，可轻松地覆盖[Azure Maps 磁贴服务](/rest/api/maps/renderv2/getmaptilepreview)中的图块层。 |
+ | [Azure Maps OpenLayers 插件](https://github.com/azure-samples/azure-maps-openlayers) | [OpenLayers](https://www.openlayers.org/) JavaScript 插件，可轻松地覆盖[Azure Maps 磁贴服务](/rest/api/maps/renderv2/getmaptilepreview)中的图块层。 |
 
 **工具和资源**
 
@@ -99,4 +99,4 @@ ms.locfileid: "100386741"
 查找更多开源 Azure Maps 项目。
 
 > [!div class="nextstepaction"]
-> [示例代码](/samples/browse/?products=azure-maps)
+> [代码示例](/samples/browse/?products=azure-maps)

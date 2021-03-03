@@ -3,16 +3,16 @@ title: Azure 安全基准基础蓝图示例概述
 description: Azure 安全基准基础蓝图示例的概述和体系结构。
 ms.date: 02/17/2020
 ms.topic: sample
-ms.openlocfilehash: b3b58f2fb603e23e4b188e527fa4fc60f4041a29
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: ed497eff85e07b6a51939907bc751f3b40c99b30
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101095274"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101741865"
 ---
 # <a name="overview-of-the-azure-security-benchmark-foundation-blueprint-sample"></a>Azure 安全基准基础蓝图示例的概述
 
-Azure 安全基准基础蓝图示例提供一套基线基础结构模式来帮助你构建安全且合规的 Azure 环境。 此蓝图有助于部署基于云的体系结构，以便为有认证或合规性要求的方案提供解决方案。 此基本蓝图示例是 [Azure 安全基准示例蓝图](../azure-security-benchmark/index.md)的一个扩展。 它根据 [Azure 安全基准](../../../../security/benchmarks/index.yml)中定义的策略和其他规范措施部署和配置网络边界、监视和其他资源。
+Azure 安全基准基础蓝图示例提供一套基线基础结构模式来帮助你构建安全且合规的 Azure 环境。 此蓝图有助于部署基于云的体系结构，以便为有认证或合规性要求的方案提供解决方案。 此基本蓝图示例是 [Azure 安全基准示例蓝图](../azure-security-benchmark.md)的一个扩展。 它根据 [Azure 安全基准](../../../../security/benchmarks/index.yml)中定义的策略和其他规范措施部署和配置网络边界、监视和其他资源。
 
 ## <a name="architecture"></a>体系结构
 
@@ -23,7 +23,7 @@ Azure 安全基准基础蓝图示例提供一套基线基础结构模式来帮�
 
 此蓝图部署多个 Azure 服务来提供安全、受监视的企业就绪基础。 此环境包括：
 
-- [Azure Monitor 日志](../../../../azure-monitor/platform/data-platform-logs.md)和 Azure 存储帐户，确保资源日志、活动日志、指标和网络流量流都存储在一个中心位置，以便轻松进行查询、分析、存档和预警。
+- [Azure Monitor 日志](../../../../azure-monitor/logs/data-platform-logs.md)和 Azure 存储帐户，确保资源日志、活动日志、指标和网络流量流都存储在一个中心位置，以便轻松进行查询、分析、存档和预警。
 - [Azure 安全中心](../../../../security-center/security-center-introduction.md)（标准版），用于为 Azure 资源提供威胁防护。
 - 中心 [Azure 虚拟网络](../../../../virtual-network/virtual-networks-overview.md)，支持用于连接回本地网络的子网，Internet 连接的入口和出口堆栈以及用于部署其他管理服务的可选子网。 分支虚拟网络，包含用于托管应用程序工作负载的子网。 部署后可根据需要创建其他子网以便支持适用的场景。
 - [Azure 防火墙](../../../../firewall/overview.md)，用于路由所有出站 Internet 流量以及通过跳转盒启用入站 Internet 流量。 （默认防火墙规则会阻止所有 Internet 入站和出站流量，因此如果适用，部署规则后必须进行配置。）

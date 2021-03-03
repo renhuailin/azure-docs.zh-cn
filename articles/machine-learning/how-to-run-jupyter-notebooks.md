@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 01/19/2021
-ms.openlocfilehash: 18ccadcf43d41c677a665ed068d093f51389b576
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 82c11b913d38695c8738de88f3ce69b198ee099e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101657326"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691869"
 ---
 # <a name="run-jupyter-notebooks-in-your-workspace"></a>在工作区中运行 Jupyter 笔记本
 
@@ -190,7 +190,7 @@ ms.locfileid: "101657326"
 
 * 如果无法连接到笔记本，请确保未禁用 Web 套接字通信。 为了让计算实例 Jupyter 功能可以正常运行，必须启用 Web 套接字通信。 请确保网络允许到 *.instances.azureml.net 和 *.instances.azureml.ms 的 websocket 连接。 
 
-* 在专用链接工作区中部署计算实例时，只能从虚拟网络内部访问。 如果使用自定义 DNS 或 hosts 文件，请为 <instance-name>.<region>.instances.azureml.ms 添加一个条目，让该条目包含工作区专用终结点的专用 IP 地址。 有关详细信息，请参阅[自定义 DNS](./how-to-custom-dns.md?tabs=azure-cli) 一文。
+* 在专用链接工作区中部署计算实例时，只能 [从虚拟网络内部访问](https://docs.microsoft.com/azure/machine-learning/how-to-secure-training-vnet#compute-instance)。 如果使用自定义 DNS 或 hosts 文件，请为 <instance-name>.<region>.instances.azureml.ms 添加一个条目，让该条目包含工作区专用终结点的专用 IP 地址。 有关详细信息，请参阅[自定义 DNS](./how-to-custom-dns.md?tabs=azure-cli) 一文。
     
 ## <a name="next-steps"></a>后续步骤
 

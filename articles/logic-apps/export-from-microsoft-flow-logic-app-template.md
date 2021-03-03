@@ -5,30 +5,30 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, sneshaf, pinath, logicappspm
 ms.topic: conceptual
-ms.date: 01/20/2021
-ms.openlocfilehash: a90f75db6961ea06b1cf9c2958556c1c2ef24805
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 02/22/2021
+ms.openlocfilehash: f2b4e09ec9b50bb6993c89d90b0f33c0c905cbf0
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100380128"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699090"
 ---
 # <a name="export-flows-from-power-automate-and-deploy-to-azure-logic-apps"></a>从 Power Automate 导出流并将其部署到 Azure 逻辑应用
 
-> 对于10月2020日后创建的流，不能再从电源自动导出并将其部署到 Azure 逻辑应用。
-
 若要扩展和扩展流的功能，可以将该流从 [电源自动](https://flow.microsoft.com) 迁移到 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)。 可以将流导出为逻辑应用的 Azure 资源管理器模板，将该逻辑应用模板部署到 Azure 资源组，然后在逻辑应用设计器中打开该逻辑应用。
 
-> [!NOTE]
-> 在 Azure 逻辑应用中，并不是所有电源自动连接器都可用。 只能迁移在 Azure 逻辑应用中具有等效连接器的电源自动执行流。 例如，按钮触发器、审批连接器和通知连接器特定于电源自动执行。 目前，OpenAPI 中基于的流不支持作为逻辑应用模板的导出和部署。
->
-> * 若要找出哪些电源自动连接器没有逻辑应用等效项，请参阅 [电源自动连接器](/connectors/connector-reference/connector-reference-powerautomate-connectors)。
->
-> * 若要找出哪些逻辑应用连接器没有电源自动执行等效功能，请参阅 [逻辑应用连接器](/connectors/connector-reference/connector-reference-logicapps-connectors)。
+> [!IMPORTANT]
+> 导出到逻辑应用不适用于在2020年8月之后创建的电源自动执行流。 2020年10月，电源自动执行标准化的新流创建（ [OpenAPI 2.0 协议](https://swagger.io/specification/v2/)）。 基于此协议的新流与逻辑应用工作流不兼容，因此已禁用将这些流导出到逻辑应用。 相反，你必须为这些流手动 [创建逻辑应用](quickstart-create-first-logic-app-workflow.md) 。
+
+在 Azure 逻辑应用中，并不是所有电源自动连接器都可用。 只能迁移在 Azure 逻辑应用中具有等效连接器的电源自动执行流。 例如，按钮触发器、审批连接器和通知连接器特定于电源自动执行。 
+
+* 若要找出哪些电源自动连接器没有逻辑应用等效项，请参阅 [电源自动连接器](/connectors/connector-reference/connector-reference-powerautomate-connectors)。
+
+* 若要找出哪些逻辑应用连接器没有电源自动执行等效功能，请参阅 [逻辑应用连接器](/connectors/connector-reference/connector-reference-logicapps-connectors)。
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。
+* Azure 帐户和订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。
 
 * 要从电源自动导出的流
 
@@ -68,7 +68,7 @@ ms.locfileid: "100380128"
 
    1. 选择或指定模板的输入参数值。
 
-      | properties | 说明 |
+      | 属性 | 说明 |
       |----------|-------------|
       | **订阅** | 用于计费的 Azure 订阅 |
       | **资源组** | 要用于逻辑应用的 Azure 资源组。 您可以使用现有组或创建新组。 |

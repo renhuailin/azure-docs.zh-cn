@@ -3,12 +3,12 @@ title: Azure Functions 专用托管
 description: 了解在专用应用服务托管计划上运行 Azure Functions 的好处。
 ms.topic: conceptual
 ms.date: 10/29/2020
-ms.openlocfilehash: 0ee32d4c4a7d33664da88b133a1f7011fc09f298
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: a9f976eda4a551c302ba7df92fbdbbf7a4fce1d7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100591056"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704559"
 ---
 # <a name="dedicated-hosting-plans-for-azure-functions"></a>Azure Functions 的专用托管计划
 
@@ -41,7 +41,7 @@ ms.locfileid: "100591056"
 
 ## <a name="app-service-environments"></a>应用服务环境
 
-在[应用服务环境](../app-service/environment/intro.md) (ASE) 中运行可以让你完全隔离函数，并利用比应用服务计划更多的实例。 若要开始，请参阅。
+在应用服务环境 (ASE) 中运行可以让你完全隔离函数，并利用比应用服务计划更多的实例。 若要开始，请参阅 [应用服务环境简介](../app-service/environment/intro.md)。
 
 如果只想在虚拟网络中运行函数应用，则可以使用[高级计划](functions-premium-plan.md)来执行此操作。 若要了解详细信息，请参阅[建立 Azure Functions 专用站点访问](functions-create-private-site-access.md)。 
 

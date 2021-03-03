@@ -96,6 +96,8 @@
   items:
     - name: 全文搜索
       href: search-lucene-query-architecture.md
+    - name: 语义搜索
+      href: semantic-search-overview.md
     - name: 相关性评分
       href: index-similarity-and-scoring.md
     - name: 索引器
@@ -109,7 +111,7 @@
           href: cognitive-search-debug-session.md
         - name: 知识存储
           href: knowledge-store-concept-intro.md
-        - name: 投影数
+        - name: 投影
           href: knowledge-store-projection-overview.md
         - name: 增量扩充
           href: cognitive-search-incremental-indexing-conceptual.md
@@ -218,6 +220,8 @@
           href: search-howto-schedule-indexers.md
         - name: 定义字段映射
           href: search-indexer-field-mappings.md
+        - name: 内容元数据属性
+          href: search-blob-metadata-properties.md
         - name: 通过托管标识连接
           items:
             - name: 托管标识概述
@@ -228,6 +232,8 @@
               href: search-howto-managed-identities-cosmos-db.md
             - name: SQL 数据库
               href: search-howto-managed-identities-sql.md
+        - name: SharePoint Online
+          href: search-howto-index-sharepoint-online.md
         - name: Azure Blob
           items:
             - name: 在 Blob 上搜索
@@ -248,8 +254,6 @@
               href: search-howto-index-json-blobs.md
             - name: 为加密的 Blob 创建索引
               href: search-howto-index-encrypted-blobs.md
-            - name: Blob 内容的元数据属性
-              href: search-blob-metadata-properties.md
         - name: Azure 表
           href: search-howto-indexing-azure-tables.md
         - name: Azure Cosmos DB
@@ -306,6 +310,10 @@
       items:
         - name: 创建基本查询
           href: search-query-create.md
+        - name: 创建语义查询
+          href: semantic-how-to-query-request.md
+        - name: 向查询添加拼写检查
+          href: speller-how-to-add.md
         - name: 查询类型和组合
           href: search-query-overview.md
         - name: 使用简单语法（示例）
@@ -348,6 +356,8 @@
       items:
         - name: 处理结果
           href: search-pagination-page-layout.md
+        - name: 构建语义响应
+          href: semantic-how-to-query-response.md
         - name: 为配置文件评分
           href: index-add-scoring-profiles.md
         - name: 相似性算法
@@ -388,6 +398,8 @@
           href: search-manage.md
         - name: PowerShell
           href: search-manage-powershell.md
+        - name: Azure CLI
+          href: search-manage-azure-cli.md
         - name: 跨区域移动服务
           href: search-howto-move-across-regions.md
         - name: 基于角色的管理员访问权限

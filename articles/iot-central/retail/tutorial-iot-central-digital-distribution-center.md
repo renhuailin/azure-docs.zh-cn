@@ -7,12 +7,12 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: tutorial
 ms.date: 10/20/2019
-ms.openlocfilehash: 9d7c4d2afa8eaf197ec05bcb0aed654153fb8f0d
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: 40b0d7eeb77f165c50c5470e1b5869e240d36534
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99831291"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702685"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-digital-distribution-center-application-template"></a>教程：部署并演练数字分发中心应用程序模板
 
@@ -21,7 +21,8 @@ ms.locfileid: "99831291"
 本教程介绍如何执行下列操作： 
 
 > [!div class="checklist"]
-> 创建数字分发中心应用程序并进行演练 
+> * 创建数字分发中心应用程序 
+> * 演练应用程序 
 
 ## <a name="prerequisites"></a>先决条件
 * 无需满足特定的先决条件，就可以部署此应用

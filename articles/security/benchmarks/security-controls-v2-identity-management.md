@@ -4,32 +4,34 @@ description: Azure 安全基准 V2 标识管理
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/20/2020
+ms.date: 02/22/2021
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 33f5dff65fa7ad8274051f784f2e61dc8366d389
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: f76ebf8609b5f4ac587800359a5cbb0c6f967f3c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97368845"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101698597"
 ---
 # <a name="security-control-v2-identity-management"></a>安全控制 V2：标识管理
 
 标识管理涵盖了使用 Azure Active Directory 建立安全标识和访问控制的控件。 这包括将单一登录、强身份验证、托管标识（和服务主体）用于应用程序、条件访问和帐户异常监视。
 
+若要查看适用的内置 Azure 策略，请参阅 [Azure 安全基准管理法规符合性内置计划的详细信息：身份管理](../../governance/policy/samples/azure-security-benchmark#identity-management)
+
 ## <a name="im-1-standardize-azure-active-directory-as-the-central-identity-and-authentication-system"></a>IM-1：将 Azure Active Directory 标准化为中央标识和身份验证系统
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID (s)  |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | IM-1 | 16.1、16.2、16.4、16.5 | IA-2、IA-8、AC-2、AC-3 |
 
-Azure Active Directory (Azure AD) 是 Azure 的默认标识和访问管理服务。 你应该在 Azure AD 上标准化，以便控制你的组织在以下方面的标识和访问管理：
+Azure Active Directory (Azure AD) 是 Azure 的默认标识和访问管理服务。 你应该在 Azure AD 上标准化，以便在中管理你的组织的标识和访问管理：
 - Microsoft 云资源，如 Azure 门户、Azure 存储、Azure 虚拟机（Linux 和 Windows）、Azure Key Vault、PaaS 和 SaaS 应用程序。
 
 - 你的组织的资源，例如 Azure 上的应用程序，或公司网络资源。
 
-在组织的云安全做法中，应优先处理 Azure AD 保护事宜。 Azure AD 提供标识安全分数，让你可以根据 Microsoft 的最佳做法建议来评估标识安全状况。 使用评分来估计你的配置与最佳做法建议的匹配程度，并改善你的安全状况。
+在组织的云安全做法中，应优先处理 Azure AD 保护事宜。 Azure AD 提供标识安全分数，有助于根据 Microsoft 的最佳实践建议评估标识安全状况。 使用评分来估计你的配置与最佳做法建议的匹配程度，并改善你的安全状况。
 
 注意：Azure AD 支持外部标识提供者，这些提供者允许没有 Microsoft 帐户的用户使用其外部标识登录到其应用程序和资源。
 
@@ -37,7 +39,7 @@ Azure Active Directory (Azure AD) 是 Azure 的默认标识和访问管理服务
 
 - [如何创建和配置 Azure AD 实例](../../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
-- [定义 Azure AD 租户](https://azure.microsoft.com/resources/securing-azure-environments-with-azure-active-directory/)  
+- [定义 Azure AD 租户](https://azure.microsoft.com/resources/securing-azure-environments-with-azure-active-directory/)
 
 - [对应用程序使用外部标识提供者](../../active-directory/external-identities/identity-providers.md)
 
@@ -57,13 +59,13 @@ Azure Active Directory (Azure AD) 是 Azure 的默认标识和访问管理服务
 
 ## <a name="im-2-manage-application-identities-securely-and-automatically"></a>IM-2：安全且自动地管理应用程序标识
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID (s)  |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | IM-2 | 空值 | AC-2、AC-3、IA-2、IA-4、IA-9 |
 
 对于非人工帐户（例如服务或自动化），请使用 Azure 托管标识，而不是创建功能更强大的人工帐户来访问资源或执行代码。 Azure 托管标识可以向支持 Azure AD 身份验证的 Azure 服务和资源进行身份验证。 身份验证是通过预定义的访问授权规则启用的，避免了在源代码或配置文件中使用硬编码的凭据。 
 
-对于不支持托管标识的服务，则请使用 Azure AD 在资源级别创建权限受限的服务主体。  建议使用证书凭据配置服务主体，并回退到客户端机密。 在这两种情况下，都可以将 Azure Key Vault 与 Azure 托管标识结合使用，以便运行时环境（例如 Azure 函数）可以从密钥保管库中检索凭据。
+对于不支持托管标识的服务，则请使用 Azure AD 在资源级别创建权限受限的服务主体。 建议使用证书凭据配置服务主体，并回退到客户端机密。 在这两种情况下，都可以将 Azure Key Vault 与 Azure 托管标识结合使用，以便运行时环境（例如 Azure 函数）可以从密钥保管库中检索凭据。
 
 - [Azure 托管标识](../../active-directory/managed-identities-azure-resources/overview.md)
 
@@ -85,13 +87,13 @@ Azure Active Directory (Azure AD) 是 Azure 的默认标识和访问管理服务
 
 ## <a name="im-3-use-azure-ad-single-sign-on-sso-for-application-access"></a>IM-3：使用 Azure AD 单一登录 (SSO) 进行应用程序访问
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID (s)  |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | IM-3 | 4.4 | IA-2、IA-4 |
 
 Azure AD 提供对 Azure 资源、云应用程序和本地应用程序的标识和访问管理。 标识和访问管理适用于企业标识（例如员工）以及外部标识（例如合作伙伴、供应商和提供商）。
 
-使用 Azure AD 单一登录 (SSO) 管理你的组织在本地和云中的数据和资源，并对其进行安全的访问。 将你的所有用户、应用程序和设备连接到 Azure AD，以便实现无缝的安全访问，并实现更好的可见性和控制。 
+使用 Azure AD 单一登录 (SSO) 管理对本地和云中的组织数据和资源的访问。 将你的所有用户、应用程序和设备连接到 Azure AD，以便实现无缝的安全访问，并实现更好的可见性和控制。 
 
 - [了解 Azure AD 的应用程序 SSO](../../active-directory/manage-apps/what-is-single-sign-on.md)
 
@@ -107,20 +109,21 @@ Azure AD 提供对 Azure 资源、云应用程序和本地应用程序的标识�
 
 ## <a name="im-4-use-strong-authentication-controls-for-all-azure-active-directory-based-access"></a>IM-4：对所有基于 Azure Active Directory 的访问使用强身份验证控制
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID (s)  |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | IM-4 | 4.2、4.4、4.5、11.5、12.11、16.3 | AC-2、AC-3、IA-2、IA-4 |
 
-Azure AD 支持通过多重身份验证 (MFA) 和强无密码方法进行强身份验证控制。  
-- 多重身份验证：启用 Azure AD MFA，并遵循 Azure 安全中心标识和访问管理建议来设置你的 MFA。 可以基于登录条件和风险因素，对所有用户、特选用户或单个用户强制执行 MFA。 
+Azure AD 支持通过多重身份验证 (MFA) 和强无密码方法进行强身份验证控制。
 
-- 无密码身份验证：有三个无密码身份验证选项可用：Windows Hello for Business、Microsoft Authenticator 应用和本地身份验证方法（例如智能卡）。 
+- 多重身份验证：启用 Azure AD MFA，并遵循 Azure 安全中心标识和访问管理建议来设置你的 MFA。 可以基于登录条件和风险因素，对所有用户、特选用户或单个用户强制执行 MFA。
+
+- 无密码 authentication：有三个无密码 authentication 选项可用： Windows Hello 企业版、Microsoft Authenticator 应用和本地身份验证方法（如智能卡）。
 
 对于管理员和特权用户，请确保使用最高级别的强身份验证方法，然后将相应的强身份验证策略推广到其他用户。
 
-如果仍使用传统的基于密码的身份验证进行 Azure AD 身份验证，请注意，纯云帐户（直接在 Azure 中创建的用户帐户）具有默认的基线密码策略。 混合帐户（来自本地 Active Directory 的用户帐户）遵循本地密码策略。 使用基于密码的身份验证时，Azure AD 提供了密码保护功能，以防止用户设置容易猜出的密码。 Microsoft 提供了基于遥测进行更新的受禁密码的全局列表，客户可以根据自己的需求（例如品牌、文化参考等）来补充列表。 此密码保护可用于纯云帐户和混合帐户。 
+如果仍使用传统的基于密码的身份验证进行 Azure AD 身份验证，请注意，纯云帐户（直接在 Azure 中创建的用户帐户）具有默认的基线密码策略。 混合帐户（来自本地 Active Directory 的用户帐户）遵循本地密码策略。 使用基于密码的身份验证时，Azure AD 提供了密码保护功能，以防止用户设置容易猜出的密码。 Microsoft 提供了基于遥测进行更新的禁止密码的全局列表，客户可以根据其需要 (例如品牌、文化引用等 ) ）来增加列表。 此密码保护可用于纯云帐户和混合帐户。
 
-注意：仅基于密码凭据的身份验证容易遭受常见的攻击方法攻击。 为了提高安全性，请使用强身份验证，例如 MFA 和强密码策略。 对于可能具有默认密码的第三方应用程序和市场服务，应在初次设置服务期间更改这些设置。 
+注意：仅基于密码凭据的身份验证容易遭受常见的攻击方法攻击。 为了提高安全性，请使用强身份验证，例如 MFA 和强密码策略。 对于可能具有默认密码的第三方应用程序和市场服务，应在初次设置服务期间更改这些设置。
 
 - [如何在 Azure 中启用 MFA](../../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -142,7 +145,7 @@ Azure AD 支持通过多重身份验证 (MFA) 和强无密码方法进行强身�
 
 ## <a name="im-5-monitor-and-alert-on-account-anomalies"></a>IM-5：监视并提醒帐户异常
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID (s)  |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | IM-5 | 4.8、4.9、16.12、16.13 | AC-2、AC-3、AC-7、AU-6 |
 
@@ -175,7 +178,7 @@ Azure 高级威胁防护 (ATP) 是一种安全解决方案，可使用本地 Act
 
 - [连接 Azure AD Identity Protection 的数据](../../sentinel/connect-azure-ad-identity-protection.md)
 
-- [Azure 高级威胁防护](/azure-advanced-threat-protection/what-is-atp)
+- [Microsoft Defender for Identity](/azure-advanced-threat-protection/what-is-atp)
 
 **责任**：客户
 
@@ -187,7 +190,7 @@ Azure 高级威胁防护 (ATP) 是一种安全解决方案，可使用本地 Act
 
 ## <a name="im-6-restrict-azure-resource-access-based-on-conditions"></a>IM-6：基于条件限制 Azure 资源访问
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID (s)  |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | IM-6 | 空值 | AC-2、AC-3 |
 
@@ -213,13 +216,13 @@ Azure 高级威胁防护 (ATP) 是一种安全解决方案，可使用本地 Act
 
 ## <a name="im-7-eliminate-unintended-credential-exposure"></a>IM-7：消除意外的凭据透露
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID (s)  |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | IM-7 | 18.1, 18.7 | IA-5 |
 
 执行 Azure DevOps 凭据扫描程序来识别代码中的凭据。 凭据扫描程序还会建议你将发现的凭据转移到更安全的位置，例如 Azure Key Vault。
 
-对于 GitHub，你可以使用原生的机密扫描功能来识别代码中的凭据或其他形式的机密。
+对于 GitHub，你可以使用本机密钥扫描功能来识别代码中的凭据或其他形式的机密。
 
 - [如何设置凭据扫描程序](https://secdevtools.azurewebsites.net/helpcredscan.html)
 
@@ -235,15 +238,15 @@ Azure 高级威胁防护 (ATP) 是一种安全解决方案，可使用本地 Act
 
 ## <a name="im-8-secure-user-access-to-legacy-applications"></a>IM-8：保护用户对旧版应用程序的访问
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID (s)  |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | IM-8 | 14.6 | AC-2、AC-3、SC-11 |
 
 确保为旧版应用程序和它们存储和处理的数据提供新式访问控制和会话监视。 虽然通常使用 VPN 来访问旧版应用程序，但它们通常只有基本的访问控制和有限的会话监视。
 
-使用 Azure AD 应用程序代理，你可以将旧版本地应用程序发布到采用单一登录 (SSO) 的远程用户，同时使用 Azure AD 条件访问显式验证远程用户和设备的可信度。 
+使用 Azure AD 应用程序代理，你可以将旧版本地应用程序发布到采用单一登录 (SSO) 的远程用户，同时使用 Azure AD 条件访问显式验证远程用户和设备的可信度。
 
-另外，Microsoft Cloud App Security 是一种云访问安全代理 (CASB) 服务，其提供的控件可用于监视用户的应用程序会话并阻止操作（适用于旧版本地应用程序和云软件即服务 (SaaS) 应用程序）。 
+另外，Microsoft Cloud App Security 是一种云访问安全代理 (CASB) 服务，它可提供控制，用于监视用户的应用程序会话，并为旧的本地应用程序和云软件作为服务 (SaaS) 应用程序) 提供阻止 (操作。
 
 - [Azure AD 应用程序代理](../../active-directory/manage-apps/application-proxy.md#what-is-application-proxy)
 

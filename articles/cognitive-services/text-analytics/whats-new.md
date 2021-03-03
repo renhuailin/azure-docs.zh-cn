@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 02/16/2021
+ms.date: 02/23/2021
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: 3205e96bca6ce13afdfe06fede1112e6ddb1ab39
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 629b40567ad9a1126413f5a97d1dc6264b4b10ca
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100653911"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101736625"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>文本分析 API 中有哪些新功能？
 
@@ -24,7 +24,12 @@ ms.locfileid: "100653911"
 
 ## <a name="february-2021"></a>2021 年 2 月
 
+* `2021-01-15`[命名实体识别](how-tos/text-analytics-how-to-entity-linking.md)-预览版. x 中 PII 终结点的模型版本，它提供 
+  * 对9种新语言的扩展支持
+  * 提高了支持的语言的已命名实体类别的 AI 质量。
 * S0 到 S4 定价层将于2021年3月8日停用。 如果现有文本分析资源使用 S0 到 S4 定价层，则应将其更新为使用标准 (S) [定价层](how-tos/text-analytics-how-to-call-api.md#change-your-pricing-tier)。
+* [语言检测容器](how-tos/text-analytics-how-to-install-containers.md?tabs=sentiment)现已正式发布。
+* 此 API 的2.1 版正在停用。 
 
 ## <a name="january-2021"></a>2021 年 1 月
 
@@ -207,7 +212,7 @@ JSON 响应中以下属性的名称已更改（如果适用）：
 
 * 以下常规实体类型的识别仅 (英语) ：
     * PersonType
-    * 产品
+    * Products
     * 事件
     * 地缘政治实体 (GPE) 作为 "位置" 下的子类型
     * 技能
@@ -219,7 +224,7 @@ JSON 响应中以下属性的名称已更改（如果适用）：
     * 日期作为 DateTime 下的子类型
     * 电子邮件 
     * 电话号码 (仅限我们) 
-    * URL
+    * 代码
     * IP 地址
 
 ### <a name="october-2019"></a>2019 年 10 月

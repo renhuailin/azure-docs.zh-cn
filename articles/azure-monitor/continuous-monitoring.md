@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/12/2018
-ms.openlocfilehash: 89ce214ef9686d2704878304b8b324871ad9473f
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 0ca6185d829e5941145905e1bc63cc2fb9ac781e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100579494"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731640"
 ---
 # <a name="continuous-monitoring-with-azure-monitor"></a>使用 Azure Monitor 进行持续监视
 
@@ -36,7 +36,7 @@ ms.locfileid: "100579494"
 应用程序的可靠性只与其底层基础结构相当。 为整个基础结构启用监视有助于实现全面的观察，发生故障时，还可以更轻松地发现潜在的根本原因。 Azure Monitor 可帮助你跟踪整个混合基础结构（包括 VM、容器、存储和网络等资源）的运行状况与性能。
 
 - 无需进行任何配置，即可自动从大多数 Azure 资源获取[平台指标、活动日志和诊断日志](agents/data-sources.md)。
-- 使用[用于 VM 的 Azure Monitor](vm/vminsights-overview.md) 为 VM 启用更深入的监视。
+- 使用 [vm insights](vm/vminsights-overview.md)为 vm 启用更深层监视。
 -  使用[用于容器的 Azure Monitor](containers/container-insights-overview.md) 为 AKS 群集启用更深入的监视。
 - 为环境中的不同应用程序和服务添加[监视解决方案](./monitor-reference.md)。
 

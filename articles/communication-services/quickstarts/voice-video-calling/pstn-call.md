@@ -8,17 +8,16 @@ ms.date: 09/11/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
 zone_pivot_groups: acs-plat-web-ios-android
-ms.openlocfilehash: 692e3a2e64c42702d46c38175a814819c8f539cf
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: d26c089376f5de1ad669ff95a0bf4e96cc8f4682
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91762533"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101659998"
 ---
 # <a name="quickstart-call-to-phone"></a>快速入门：拨打电话
-[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
-通过使用通信服务呼叫客户端库向应用添加 PSTN 呼叫，开启 Azure 通信服务使用旅程。 
+通过使用通信服务呼叫客户端库向应用添加 PSTN 呼叫，开启 Azure 通信服务使用旅程。
 
 ::: zone pivot="platform-web"
 [!INCLUDE [Calling with JavaScript](./includes/pstn-call-js.md)]

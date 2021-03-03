@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 02/01/2021
-ms.openlocfilehash: 62bdafd2dba31d875b0befccca0fb4a0e94f4e79
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: e096e21e7d20c992e18634d684f663f149cc3c55
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100582817"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691240"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>使用客户管理的密钥进行 Azure SQL 透明数据加密
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -187,7 +187,7 @@ Key Vault 管理员还可以[启用 Key Vault 审核事件的日志记录](../..
 
 即使没有为服务器配置异地冗余，我们也强烈建议将服务器配置为使用两个不同区域中的包含相同密钥材料的两个不同 Key Vault。 不应将另一区域的辅助 Key Vault 中的密钥标记为 TDE 保护器，甚至不允许这样做。 如果发生了影响主要 Key Vault 的服务中断，只有在满足上述条件时，系统才会自动切换到辅助 Key Vault 中具有相同指纹的另一个已链接密钥（如果存在）。 请注意，如果 TDE 保护程序由于吊销访问权限而无法访问，或者由于删除了密钥或密钥保管库，则不会发生此开关，因为这可能表明客户有意要限制服务器访问密钥。在密钥保管库外创建密钥，并将其导入到这两个密钥保管库中，可以在不同区域中的两个密钥保管库中提供相同的密钥材料。 
 
-另外，还可以通过使用与服务器相同的区域中的主密钥保管库生成密钥，并将密钥克隆到不同 Azure 区域中的密钥保管库来实现此目的。 使用 [AzKeyVaultKey](https://docs.microsoft.com/powershell/module/az.keyvault/Backup-AzKeyVaultKey) cmdlet 从主密钥保管库中检索加密格式的密钥，然后使用 [AzKeyVaultKey](https://docs.microsoft.com/powershell/module/az.keyvault/restore-azkeyvaultkey) cmdlet 并在第二个区域中指定密钥保管库来克隆该密钥。 或者，使用 Azure 门户来备份和还原密钥。 仅允许在同一 Azure 订阅和 [Azure 地域](https://azure.microsoft.com/global-infrastructure/geographies/)内的密钥保管库之间执行密钥备份/还原操作。  
+另外，还可以通过使用与服务器相同的区域中的主密钥保管库生成密钥，并将密钥克隆到不同 Azure 区域中的密钥保管库来实现此目的。 使用 [AzKeyVaultKey](/powershell/module/az.keyvault/Backup-AzKeyVaultKey) cmdlet 从主密钥保管库中检索加密格式的密钥，然后使用 [AzKeyVaultKey](/powershell/module/az.keyvault/restore-azkeyvaultkey) cmdlet 并在第二个区域中指定密钥保管库来克隆该密钥。 或者，使用 Azure 门户来备份和还原密钥。 仅允许在同一 Azure 订阅和 [Azure 地域](https://azure.microsoft.com/global-infrastructure/geographies/)内的密钥保管库之间执行密钥备份/还原操作。  
 
 ![单服务器高可用性](./media/transparent-data-encryption-byok-overview/customer-managed-tde-with-ha.png)
 

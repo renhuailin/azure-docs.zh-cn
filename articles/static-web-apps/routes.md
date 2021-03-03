@@ -7,14 +7,17 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 39950b4d62b7dbfacba94f5ba3c5de50bbb974b3
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 5cbcbcf8914a663a6d039abecd6a4488eaf677b2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100653667"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101739638"
 ---
 # <a name="routes-in-azure-static-web-apps-preview"></a>Azure 静态 Web 应用预览中的路由
+
+> [!IMPORTANT]
+> 文件 *routes.js上* 定义的功能现已弃用，并且更好地在 Azure 静态 Web Apps [配置文件](./configuration.md#routes)中实现。
 
 Azure 静态 Web 应用中的路由为静态内容和 Api<sup>1</sup>定义后端路由规则和授权行为。 规则在 routes.json 文件中定义为一组规则。
 
@@ -29,6 +32,9 @@ Azure 静态 Web 应用中的路由为静态内容和 Api<sup>1</sup>定义后�
 有关详细信息，请参阅 [示例路由文件](#example-route-file) 。
 
 ## <a name="location"></a>位置
+
+> [!IMPORTANT]
+> 文件 *routes.js上* 定义的功能现已弃用，并且更好地在 Azure 静态 Web Apps [配置文件](./configuration.md#routes)中实现。
 
 routes.json 文件必须存在于应用生成工件文件夹的根目录中。 如果 Web 应用包含将生成的文件从特定文件夹复制到生成工件文件夹的生成步骤，则 routes.json 文件需要存在于该特定文件夹中。
 
@@ -46,6 +52,9 @@ routes.json 文件必须存在于应用生成工件文件夹的根目录中。 �
 
 ## <a name="defining-routes"></a>定义路由
 
+> [!IMPORTANT]
+> 文件 *routes.js上* 定义的功能现已弃用，并且更好地在 Azure 静态 Web Apps [配置文件](./configuration.md#routes)中实现。
+
 路由在 routes.json 文件中定义为 `routes` 属性上的路由规则数组。 每个规则都包含一个路由模式，以及一个或多个可选的规则属性。 有关用法示例，请参阅[路由文件示例](#example-route-file)。
 
 | 规则属性  | 必选 | 默认值 | 注释                                                      |
@@ -56,6 +65,9 @@ routes.json 文件必须存在于应用生成工件文件夹的根目录中。 �
 | `statusCode`   | 否       | 200           | 响应请求的 [HTTP 状态代码](https://wikipedia.org/wiki/List_of_HTTP_status_codes)。 |
 
 ## <a name="securing-routes-with-roles"></a>使用角色保护路由
+
+> [!IMPORTANT]
+> 文件 *routes.js上* 定义的功能现已弃用，并且更好地在 Azure 静态 Web Apps [配置文件](./configuration.md#routes)中实现。
 
 通过将一个或多个角色名称添加到规则的 `allowedRoles` 数组中来保护路由。 有关用法示例，请参阅[路由文件示例](#example-route-file)。
 
@@ -81,6 +93,9 @@ routes.json 文件必须存在于应用生成工件文件夹的根目录中。 �
 - 单个用户通过[邀请](authentication-authorization.md)关联到角色。
 
 ## <a name="wildcards"></a>通配符
+
+> [!IMPORTANT]
+> 文件 *routes.js上* 定义的功能现已弃用，并且更好地在 Azure 静态 Web Apps [配置文件](./configuration.md#routes)中实现。
 
 通配符规则与给定路由模式下的所有请求相匹配。 如果在规则中定义 `serve` 值，则命名的文件或路径将作为响应提供。
 
@@ -109,6 +124,9 @@ routes.json 文件必须存在于应用生成工件文件夹的根目录中。 �
 
 ## <a name="fallback-routes"></a>回退路由
 
+> [!IMPORTANT]
+> 文件 *routes.js上* 定义的功能现已弃用，并且更好地在 Azure 静态 Web Apps [配置文件](./configuration.md#routes)中实现。
+
 单页面应用程序，无论使用的是前端 JavaScript 框架还是库或 WebAssembly 平台（如 Blazor），通常都依赖于客户端路由来实现 web 应用导航。 这些客户端路由规则无需向服务器发回请求即可更新浏览器的窗口位置。 如果刷新页面，或直接导航到客户端路由规则生成的位置，则需要服务器端回退路由来提供相应的 HTML 页面。
 
 下面的示例演示了一个常见的回退路由：
@@ -128,6 +146,9 @@ routes.json 文件必须存在于应用生成工件文件夹的根目录中。 �
 必须在路由规则最后列出回退路由，因为它会捕获先前定义的规则未捕获的所有请求。
 
 ## <a name="redirects"></a>重定向
+
+> [!IMPORTANT]
+> 文件 *routes.js上* 定义的功能现已弃用，并且更好地在 Azure 静态 Web Apps [配置文件](./configuration.md#routes)中实现。
 
 可以使用 [301](https://en.wikipedia.org/wiki/HTTP_301) 和 [302](https://en.wikipedia.org/wiki/HTTP_302) HTTP 状态代码，以将请求重定向到另一个路由。
 
@@ -153,6 +174,9 @@ routes.json 文件必须存在于应用生成工件文件夹的根目录中。 �
 
 ## <a name="custom-error-pages"></a>自定义错误页
 
+> [!IMPORTANT]
+> 文件 *routes.js上* 定义的功能现已弃用，并且更好地在 Azure 静态 Web Apps [配置文件](./configuration.md#routes)中实现。
+
 用户可能会遇到多个可能导致错误的不同情况。 使用 `platformErrorOverrides` 数组，可以提供自定义体验来响应这些错误。 请参阅[示例路由文件](#example-route-file)，以便将数组放置在 routes.json 文件中。
 
 > [!NOTE]
@@ -171,6 +195,9 @@ routes.json 文件必须存在于应用生成工件文件夹的根目录中。 �
 | `Unauthorized_Unknown` | 401 | 尝试对用户进行身份验证时出现未知问题。 此错误的一个原因可能是用户未被识别，因为他们未向应用程序授予许可。|
 
 ## <a name="custom-mime-types"></a>自定义 mime 类型
+
+> [!IMPORTANT]
+> 文件 *routes.js上* 定义的功能现已弃用，并且更好地在 Azure 静态 Web Apps [配置文件](./configuration.md#routes)中实现。
 
 与该 `mimeTypes` 数组在同一级别上列出的对象 `routes` 允许您将 [MIME 类型](https://developer.mozilla.org/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types) 与文件扩展名关联。
 
@@ -194,6 +221,9 @@ routes.json 文件必须存在于应用生成工件文件夹的根目录中。 �
 > 静态 Web 应用了解 Blazor 应用程序以及 WASM 和 DLL 文件的预期 MIME 类型，无需为这些文件添加映射。
 
 ## <a name="default-headers"></a>默认标头
+
+> [!IMPORTANT]
+> 文件 *routes.js上* 定义的功能现已弃用，并且更好地在 Azure 静态 Web Apps [配置文件](./configuration.md#routes)中实现。
 
 与该 `defaultHeaders` 数组在同一级别上列出的对象可 `routes` 用于添加、修改或删除 [响应标头](https://developer.mozilla.org/docs/Web/HTTP/Headers)。
 
@@ -221,6 +251,9 @@ routes.json 文件必须存在于应用生成工件文件夹的根目录中。 �
 - 在routes.js中定义 _的_ 标头仅适用于静态内容。 可以在函数的代码中自定义 API 终结点的响应标头。
 
 ## <a name="example-route-file"></a>路由文件示例
+
+> [!IMPORTANT]
+> 文件 *routes.js上* 定义的功能现已弃用，并且更好地在 Azure 静态 Web Apps [配置文件](./configuration.md#routes)中实现。
 
 下面的示例演示如何在 routes.json 文件中生成静态内容和 API 的路由规则。 某些路由使用 [/.auth 系统文件夹](authentication-authorization.md)来访问与身份验证相关的终结点。
 

@@ -6,19 +6,19 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.subservice: alerts
-ms.openlocfilehash: cfe6aa489bcc771213ec04ca9cddd1267ccf1338
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: cda3af012a83342d5650c542fafdcd6bc36bd8e3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100607757"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717972"
 ---
 # <a name="optimizing-log-alert-queries"></a>优化日志警报查询
-本文介绍如何编写和转换[日志警报](../platform/alerts-unified-log.md)查询，以获得最佳性能。 经过优化的查询可降低延迟并加载频繁运行的警报。
+本文介绍如何编写和转换[日志警报](./alerts-unified-log.md)查询，以获得最佳性能。 经过优化的查询可降低延迟并加载频繁运行的警报。
 
 ## <a name="how-to-start-writing-an-alert-log-query"></a>如何开始编写警报日志查询
 
-警报查询开始于[查询 Log Analytics 中指示问题的日志数据](alerts-log.md#create-a-log-alert-rule-with-the-azure-portal)。 可以使用[警报查询示例主题](../log-query/example-queries.md)来了解可发现的内容。 还可以[开始编写你自己的查询](../log-query/log-analytics-tutorial.md)。 
+警报查询开始于[查询 Log Analytics 中指示问题的日志数据](alerts-log.md#create-a-log-alert-rule-with-the-azure-portal)。 可以使用[警报查询示例主题](../logs/example-queries.md)来了解可发现的内容。 还可以[开始编写你自己的查询](../logs/log-analytics-tutorial.md)。 
 
 ### <a name="queries-that-indicate-the-issue-and-not-the-alert"></a>指示问题而非警报的查询
 
@@ -44,7 +44,7 @@ SecurityEvent
 在查询中使用 `limit` 和 `take` 可能会增加警报的延迟和负载，因为结果会随着时间的推移而产生不一致。 最好仅在必要时才使用它。
 
 ## <a name="log-query-constraints"></a>日志查询约束
-[Azure Monitor 中的日志查询](../log-query/log-query-overview.md)以 table、[`search`](/azure/kusto/query/searchoperator) 或 [`union`](/azure/kusto/query/unionoperator) 运算符开头。
+[Azure Monitor 中的日志查询](../logs/log-query-overview.md)以 table、[`search`](/azure/kusto/query/searchoperator) 或 [`union`](/azure/kusto/query/unionoperator) 运算符开头。
 
 对日志预警规则的查询应始终以表开始，以定义明确的范围，从而提高查询性能和结果的相关性。 预警规则中的查询经常运行，因此使用 `search` 和 `union` 会造成额外开销，并增加警报的延迟，因为它需要扫描多个表。 这些运算符还会降低警报服务优化查询的性能。
 
@@ -57,7 +57,7 @@ SecurityEvent
 | where EventID == 4624
 ```
 
-使用[跨资源查询](../log-query/cross-workspace-query.md)的日志预警规则不受此更改的影响，因为跨资源查询使用 `union` 类型，这会将查询范围限制为特定资源。 以下示例将是有效的日志警报查询：
+使用[跨资源查询](../logs/cross-workspace-query.md)的日志预警规则不受此更改的影响，因为跨资源查询使用 `union` 类型，这会将查询范围限制为特定资源。 以下示例将是有效的日志警报查询：
 
 ```Kusto
 union
@@ -67,7 +67,7 @@ workspace('Contoso-workspace1').Perf
 ```
 
 >[!NOTE]
-> 新的 [scheduledQueryRules API](/rest/api/monitor/scheduledqueryrules) 支持[跨资源查询](../log-query/cross-workspace-query.md)。 如果仍使用 [旧版 Log Analytics 警报 API](../platform/api-alerts.md) 来创建日志警报，可以在 [此处](../alerts/alerts-log-api-switch.md)了解切换。
+> 新的 [scheduledQueryRules API](/rest/api/monitor/scheduledqueryrules) 支持[跨资源查询](../logs/cross-workspace-query.md)。 如果仍使用 [旧版 Log Analytics 警报 API](./api-alerts.md) 来创建日志警报，可以在 [此处](../alerts/alerts-log-api-switch.md)了解切换。
 
 ## <a name="examples"></a>示例
 以下示例包括使用 `search` 和 `union` 的日志查询，并提供可用于修改这些查询以与预警规则配合使用的步骤。
@@ -217,4 +217,4 @@ SecurityEvent
 
 ## <a name="next-steps"></a>后续步骤
 - 了解 Azure Monitor 中的[日志警报](alerts-log.md)。
-- 了解[日志查询](../log-query/log-query-overview.md)。
+- 了解[日志查询](../logs/log-query-overview.md)。

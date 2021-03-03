@@ -9,12 +9,12 @@ ms.subservice: qna-maker
 zone_pivot_groups: URL-test-interface
 ms.topic: quickstart
 ms.date: 07/16/2020
-ms.openlocfilehash: c934aca046ada07e0d6cda44221cc81a8eb4e57d
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 4ed4ec7bfaa6a6099d9017f08375698c62faa36c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96345743"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101722409"
 ---
 # <a name="quickstart-get-an-answer-from-knowledge-base"></a>快速入门：从知识库获取答案
 
@@ -35,7 +35,7 @@ ms.locfileid: "96345743"
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [使用批处理文件测试知识库](../index.yml)
+> [使用批处理文件测试知识库](../how-to/test-knowledge-base.md#batch-test-with-tool)
 
 详细了解元数据：
 * [创作 - 将元数据添加到 QnA 对](../How-To/edit-knowledge-base.md#add-metadata)

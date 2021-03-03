@@ -1,16 +1,16 @@
 ---
-title: 为容器 Azure Monitor 配置 Azure Red Hat OpenShift v3. x |Microsoft Docs
+title: 配置 Azure Red Hat OpenShift v3. x with Container insights |Microsoft Docs
 description: 本文介绍如何使用 Azure Red Hat OpenShift 版本3和更高版本上托管 Azure Monitor 来配置监视 Kubernetes 群集。
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: f21a338a06d4a0947e2623854d828c720fb2d4bb
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: b46dfda0bdb0f3b582aa751786187a4d74524f75
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100608733"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708367"
 ---
-# <a name="configure-azure-red-hat-openshift-v3-with-azure-monitor-for-containers"></a>配置适用于容器 Azure Monitor 的 Azure Red Hat OpenShift v3
+# <a name="configure-azure-red-hat-openshift-v3-with-container-insights"></a>配置具有容器 insights 的 Azure Red Hat OpenShift v3
 
 >[!IMPORTANT]
 > Azure Red Hat OpenShift 3.11 6 2022 月将停用。
@@ -21,33 +21,33 @@ ms.locfileid: "100608733"
 > 按照本指南 [创建 Azure Red Hat OpenShift 4 群集](../../openshift/tutorial-create-cluster.md)。
 > 如果有特定问题， [请](mailto:aro-feedback@microsoft.com)联系我们。
 
-容器 Azure Monitor 为 Azure Kubernetes 服务提供丰富的监视体验 (AKS) 和 AKS Engine 群集。 本文介绍如何启用对 [Azure Red Hat OpenShift](../../openshift/intro-openshift.md) 版本3中托管的 Kubernetes 群集和版本3的最新支持版本的监视，以实现类似的监视体验。
+容器见解提供丰富的监视体验，适用于 Azure Kubernetes 服务 (AKS) 和 AKS 引擎群集。 本文介绍如何启用对 [Azure Red Hat OpenShift](../../openshift/intro-openshift.md) 版本3中托管的 Kubernetes 群集和版本3的最新支持版本的监视，以实现类似的监视体验。
 
 >[!NOTE]
 >目前，对 Azure Red Hat OpenShift 的支持是公共预览版中的一项功能。
 >
 
-可以使用以下受支持的方法，为新的或 Azure Red Hat OpenShift 的一个或多个现有部署启用容器 Azure Monitor：
+可以使用以下受支持的方法，为新的或 Azure Red Hat OpenShift 的一个或多个现有部署启用容器 insights：
 
 - 对于来自 Azure 门户或使用 Azure 资源管理器模板的现有群集。
 - 对于使用 Azure 资源管理器模板的新群集，或在使用 [Azure CLI](/cli/azure/openshift#az-openshift-create)创建新群集时使用。
 
 ## <a name="supported-and-unsupported-features"></a>支持和不支持的功能
 
-容器 Azure Monitor 支持按 [概述](container-insights-overview.md) 一文中所述监视 Azure Red Hat OpenShift，但以下功能除外：
+Container insights 支持监视 Azure Red Hat OpenShift，如 [概述](container-insights-overview.md) 一文中所述，以下功能除外：
 
 - 实时数据 (预览) 
 - [收集](container-insights-update-metrics.md) 群集节点和 pod 中的指标，并将其存储在 Azure Monitor 度量值数据库中
 
 ## <a name="prerequisites"></a>先决条件
 
-- [Log Analytics 工作区](../platform/design-logs-deployment.md)。
+- [Log Analytics 工作区](../logs/design-logs-deployment.md)。
 
-    用于容器的 Azure Monitor 支持在 Azure [产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor) 中列出的区域中的 Log Analytics 工作区。 若要创建你自己的工作区，可通过 [Azure 资源管理器](../samples/resource-manager-workspace.md)、[PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json) 或 [Azure 门户](../learn/quick-create-workspace.md)进行创建。
+    Container insights 支持 Azure [产品（按区域](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor)）中列出的区域中的 Log Analytics 工作区。 若要创建你自己的工作区，可通过 [Azure 资源管理器](../logs/resource-manager-workspace.md)、[PowerShell](../logs/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json) 或 [Azure 门户](../logs/quick-create-workspace.md)进行创建。
 
-- 若要启用和访问容器 Azure Monitor 中的功能，至少需要是 Azure 订阅中的 Azure *参与者* 角色的成员，以及配置了 Azure Monitor for 容器的 Log Analytics 工作区的 [*Log Analytics 参与者*](../platform/manage-access.md#manage-access-using-azure-permissions) 角色的成员。
+- 若要启用和访问 Container insights 中的功能，至少需要是 Azure 订阅中的 Azure *参与者* 角色的成员，并且是配置有容器见解 Log Analytics 工作区的 [*Log Analytics 参与者*](../logs/manage-access.md#manage-access-using-azure-permissions) 角色的成员。
 
-- 若要查看监视数据，你是使用为容器 Azure Monitor 配置的 Log Analytics 工作区的 " [*Log Analytics 读取*](../platform/manage-access.md#manage-access-using-azure-permissions) 者角色" 权限的成员。
+- 若要查看监视数据，你是使用容器见解配置的 Log Analytics 工作区的 " [*Log Analytics 读取*](../logs/manage-access.md#manage-access-using-azure-permissions) 者角色" 权限的成员。
 
 ## <a name="identify-your-log-analytics-workspace-id"></a>确定 Log Analytics 工作区 ID
 
@@ -176,13 +176,13 @@ ms.locfileid: "100608733"
 
 4. 在非监视群集列表中，找到列表中的群集，然后单击 " **启用**"。 您可以通过在列 **分类类型** 下查找值 **ARO** 来识别列表中的结果。
 
-5. 在“载入到用于容器的 Azure Monitor”页上，如果现有 Log Analytics 工作区与群集在同一订阅中，请从下拉列表中选择该工作区  。  
+5. 在 " **载入到容器 insights** " 页上，如果在与群集相同的订阅中有现有 Log Analytics 工作区，请从下拉列表中选择它。  
     此列表 preselects 在订阅中部署群集的默认工作区和位置。
 
     ![为非监视群集启用监视](./media/container-insights-onboard/kubernetes-onboard-brownfield-01.png)
 
     >[!NOTE]
-    >如果想要创建新的 Log Analytics 工作区用于存储来自群集的监视数据，请按照[创建 Log Analytics 工作区](../learn/quick-create-workspace.md)中的说明进行操作。 请确保在部署 RedHat OpenShift 群集的同一订阅中创建工作区。
+    >如果想要创建新的 Log Analytics 工作区用于存储来自群集的监视数据，请按照[创建 Log Analytics 工作区](../logs/quick-create-workspace.md)中的说明进行操作。 请确保在部署 RedHat OpenShift 群集的同一订阅中创建工作区。
 
 启用监视后，可能需要约 15 分钟才能查看群集的运行状况指标。
 
@@ -246,10 +246,10 @@ ms.locfileid: "100608733"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 启用监视功能以收集 RedHat OpenShift 群集的运行状况和资源利用率，并了解 [如何使用](container-insights-analyze.md) 容器 Azure Monitor。
+- 启用监视功能以收集 RedHat OpenShift 群集的运行状况和资源利用率，并了解 [如何使用](container-insights-analyze.md) 容器见解。
 
 - 默认情况下，容器化代理收集所有命名空间（kube 除外）中运行的所有容器的 stdout/stderr 容器日志。 若要配置特定于特定命名空间或命名空间的容器日志集合，请查看 [Container Insights 代理配置](container-insights-agent-config.md) ，将所需的数据收集设置配置为 ConfigMap 配置文件。
 
 - 若要从群集中擦除和分析 Prometheus 指标，请查看 [配置 Prometheus 指标抓取](container-insights-prometheus-integration.md)
 
-- 若要了解如何停止监视包含容器 Azure Monitor 的群集，请参阅 [如何停止监视 Azure Red Hat OpenShift 群集](./container-insights-optout-openshift-v3.md)。
+- 若要了解如何停止监视具有容器见解的群集，请参阅 [如何停止监视 Azure Red Hat OpenShift 群集](./container-insights-optout-openshift-v3.md)。

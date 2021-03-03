@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: shlo
-ms.openlocfilehash: 425096bf7cb75ae3560c06cbcd32778536dc1952
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: aec553b473e0fb2688224e8a8d027f7e9f3a6025
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99537334"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101716612"
 ---
 # <a name="disclosure-design-patterns"></a>披露设计模式
 你已经确定了合成语音体验的正确[披露级别](concepts-disclosure-guidelines.md#disclosure-assessment)，现在正是探索潜在设计模式的好时机。
@@ -243,8 +243,8 @@ ms.locfileid: "99537334"
 - [Microsoft Windows UWP 语音设计指南](/windows/uwp/design/input/speech-interactions)
 - [Microsoft Windows 混合现实语音命令指南](/windows/mixed-reality/voice-design#top-things-users-should-know-about-speech-in-mixed-reality)
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
-* [向配音员公开](https://docs.microsoft.com/legal/cognitive-services/speech-service/disclosure-voice-talent?context=/azure/cognitive-services/speech-service/context/context)
+* [向配音员公开](/legal/cognitive-services/speech-service/disclosure-voice-talent?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext)
 * [合成语音技术的负责任的部署指南](concepts-guidelines-responsible-deployment-synthetic.md)
 * [如何披露](concepts-disclosure-guidelines.md)

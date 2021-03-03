@@ -8,12 +8,12 @@ ms.service: web-application-firewall
 ms.date: 12/04/2020
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 2de8a47b841a4a5c82aaeb92419ec3d9714268ea
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 48d4fe254f51dde932f04ef791e1109a0ced07ff
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879421"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101701614"
 ---
 # <a name="what-is-azure-web-application-firewall-on-azure-application-gateway"></a>什么是 Azure 应用程序网关上的 Azure Web 应用程序防火墙？
 
@@ -133,7 +133,7 @@ OWASP 有两种模式，用于决定是否阻止流量：传统模式和异常�
 
 在异常评分模式下，当防火墙处于阻止模式时，不会立即阻止与任何规则匹配的流量。 规则具有一定的严重性：“严重”、“错误”、“警告”或“通知”。 此严重性会影响请求的数值，该数值称为异常分数。 例如，一个“警告”规则匹配对应的分数为 3。 一个“严重”规则匹配对应的分数为 5。
 
-|严重性  |值  |
+|严重性  |Value  |
 |---------|---------|
 |严重     |5|
 |错误        |4|
@@ -173,7 +173,7 @@ Microsoft Azure Sentinel 是可缩放的云原生安全信息事件管理 (SIEM)
 
 #### <a name="azure-monitor-workbook-for-waf"></a>用于 WAF 的 Azure Monitor 工作簿
 
-此工作簿支持跨多个可筛选面板自定义与安全相关 WAF 事件的可视化。 它适用于所有 WAF 类型，包括应用程序网关、Front Door 和 CDN，并且可以根据 WAF 类型或特定 WAF 实例进行筛选。 通过 ARM 模板或库模板导入。 若要部署此工作簿，请参阅 [WAF 工作簿](https://github.com/Azure/Azure-Network-Security/tree/master/Azure%20WAF/Azure%20Monitor%20Workbook)。
+此工作簿支持跨多个可筛选面板自定义与安全相关 WAF 事件的可视化。 它适用于所有 WAF 类型，包括应用程序网关、Front Door 和 CDN，并且可以根据 WAF 类型或特定 WAF 实例进行筛选。 通过 ARM 模板或库模板导入。 若要部署此工作簿，请参阅 [WAF 工作簿](https://github.com/Azure/Azure-Network-Security/tree/master/Azure%20Firewall/Workbook%20-%20Azure%20Firewall%20Monitor%20Workbook)。
 
 #### <a name="logging"></a>日志记录
 

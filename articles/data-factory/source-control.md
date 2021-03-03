@@ -6,13 +6,13 @@ author: dcstwh
 ms.author: weetok
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 11/02/2020
-ms.openlocfilehash: 5bf1877edaa6c13cb0c645eb2d1c7ec2dc53ad00
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 02/26/2021
+ms.openlocfilehash: 7691c285bcc1c490878f5055468b0a57b6248679
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100392436"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719325"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Azure 数据工厂中的源代码管理
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
@@ -61,13 +61,13 @@ ms.locfileid: "100392436"
 
 ### <a name="configuration-method-2-authoring-canvas"></a>配置方法2：创作画布
 
-在 Azure 数据工厂 UX 创作画布中，选择“数据工厂”下拉菜单，然后选择“设置代码库” 。
+在 Azure 数据工厂 UX 创作画布中，选择 " **数据工厂** " 下拉菜单，然后选择 " **设置代码存储库**"。
 
 ![配置代码存储库设置的创作](media/author-visually/configure-repo-2.png)
 
 ### <a name="configuration-method-3-management-hub"></a>配置方法3：管理中心
 
-在 ADF UX 中中转到管理中心。 选择 "**源代码管理**" 部分中的 **Git 配置**。 如果未连接存储库，请单击 " **设置代码存储库**"。
+在 ADF UX 中中转到管理中心。 选择 "**源代码管理**" 部分中的 **Git 配置**。 如果未连接存储库，请单击 " **配置**"。
 
 ![从管理中心配置代码存储库设置](media/author-visually/configure-repo-3.png)
 

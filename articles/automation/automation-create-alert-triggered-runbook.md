@@ -3,18 +3,18 @@ title: 使用警报触发 Azure 自动化 Runbook
 description: 本文介绍如何在引发 Azure 警报时触发 runbook 运行。
 services: automation
 ms.subservice: process-automation
-ms.date: 04/29/2019
+ms.date: 02/14/2021
 ms.topic: conceptual
-ms.openlocfilehash: add2bbb7b8f9eeb72c8c58b8c54b070a6b14d8e6
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 0483b171ee65ac55d65261140738bc5c1838873f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100586070"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101732286"
 ---
 # <a name="use-an-alert-to-trigger-an-azure-automation-runbook"></a>使用警报触发 Azure 自动化 Runbook
 
-可以使用 [Azure Monitor](../azure-monitor/overview.md) 来监视 Azure 中大多数服务的基本级别指标和日志。 可以使用[操作组](../azure-monitor/alerts/action-groups.md)或经典警报调用 Azure 自动化 Runbook，以便基于警报自动执行任务。 本文介绍如何使用警报来配置和运行 Runbook。
+可以使用 [Azure Monitor](../azure-monitor/overview.md) 来监视 Azure 中大多数服务的基本级别指标和日志。 可以通过使用 [操作组](../azure-monitor/platform/action-groups.md) 来调用 Azure 自动化 runbook，以便基于警报自动执行任务。 本文介绍如何使用警报来配置和运行 Runbook。
 
 ## <a name="alert-types"></a>警报类型
 
@@ -52,7 +52,7 @@ ms.locfileid: "100586070"
 1. 转到 Azure 自动化帐户。
 2. 在“过程自动化”下，选择“Runbook”。 
 3. 在 Runbook 列表的顶部选择“+ 创建 Runbook”。
-4. 在“添加 runbook”页上，输入 Stop-AzureVmInResponsetoVMAlert 作为 runbook 名称 。 对于 runbook 类型，选择“PowerShell”。 然后选择“创建”。  
+4. 在“添加 runbook”页上，输入 Stop-AzureVmInResponsetoVMAlert 作为 runbook 名称 。 对于 runbook 类型，选择“PowerShell”。 然后选择“创建”  。  
 5. 将以下 PowerShell 示例复制到“编辑”页中。
 
     ```powershell-interactive

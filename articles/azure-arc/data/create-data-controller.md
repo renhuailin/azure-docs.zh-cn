@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 02/11/2021
+ms.date: 03/02/2021
 ms.topic: how-to
-ms.openlocfilehash: dd20a76ebc833320050c87862ad5022e99cd453a
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 329df78bb5829695b95fcca5b7ed7e1439ced821
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100384956"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101688359"
 ---
 # <a name="create-the-azure-arc-data-controller"></a>创建 Azure Arc 数据控制器
 
@@ -37,7 +37,7 @@ ms.locfileid: "100384956"
 
 > [!IMPORTANT]
 > * Kubernetes 支持的最低版本为 v 1.17。 有关其他信息，请参阅 [已知问题](./release-notes.md#known-issues) 。 
-> * 最小支持的 OCP 版本为4.3。
+> * 最小支持的 OCP 版本为4.5。
 > * 请参阅 [连接要求](connectivity.md) ，了解你的环境和 Azure 之间需要哪些连接。
 > * 请参阅 [存储配置指南](storage-configuration.md) 以了解有关如何配置永久性存储的详细信息。
 > * 如果你使用的是 Azure Kubernetes 服务，则群集的工作节点 VM 大小至少应为 **Standard_D8s_v3** 并使用 **高级磁盘。** 群集不应跨多个可用性区域。 

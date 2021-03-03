@@ -6,13 +6,13 @@ author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 02/01/2021
-ms.openlocfilehash: e4f756631b51ce9c5fba32939d1c6651e7b328d0
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 02/25/2021
+ms.openlocfilehash: c3c874b2e6362ceb5b4746f67614b5d85991efbc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100378513"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101712974"
 ---
 # <a name="copy-data-from-an-sap-table-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 SAP 表复制数据
 
@@ -21,7 +21,7 @@ ms.locfileid: "100378513"
 本文概述如何使用 Azure 数据工厂中的复制活动从 SAP 表复制数据。 有关详细信息，请参阅[复制活动概述](copy-activity-overview.md)。
 
 >[!TIP]
->若要了解 ADF 对 SAP 数据集成方案的总体支持，请参阅[使用 Azure 数据工厂进行 SAP 数据集成](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf)白皮书，其中包含各 SAP 连接器的详细介绍、比较和指导。
+>若要了解 ADF 对 SAP 数据集成方案的总体支持，请参阅[使用 Azure 数据工厂进行 SAP 数据集成白皮书](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf)，其中包含每个 SAP 连接器的详细介绍、比较和指导。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -66,7 +66,7 @@ ms.locfileid: "100378513"
 - 在数据工厂 SAP 表连接器中使用的 SAP 用户必须拥有以下权限：
 
   - 使用远程函数调用 (RFC) 目标的授权。
-  - 对 S_SDSAUTH 授权对象拥有“执行”活动权限。
+  - 对 S_SDSAUTH 授权对象的执行活动的权限，或对 S_RFC 的执行活动的权限： FUGR-RFC1，SYST，SYSU FUNC-RFCPING，RFC_FUNCTION_SEARCH ACTVT –16授权对象。 
 
 ## <a name="get-started"></a>入门
 

@@ -3,12 +3,12 @@ title: 大规模监视委托的资源
 description: 了解如何在你管理的客户租户之间以可伸缩方式有效地使用 Azure Monitor 日志。
 ms.date: 02/11/2021
 ms.topic: how-to
-ms.openlocfilehash: aadd14bb3e4aad61fb2afc0735b5714deedfe301
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 98fd984492276dbdfbc2f8001bca19560764a2a7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100593112"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101742579"
 ---
 # <a name="monitor-delegated-resources-at-scale"></a>大规模监视委托的资源
 
@@ -49,7 +49,7 @@ ms.locfileid: "100593112"
 
 您可以在您的管理的客户租户中查看委派的订阅的 [警报](../../azure-monitor/alerts/alerts-overview.md) 。
 
-在管理租户中，可以在 Azure 门户中 [创建、查看和管理活动日志警报](../../azure-monitor/platform/alerts-activity-log.md) ，也可以通过 api 和管理工具进行管理。
+在管理租户中，可以在 Azure 门户中 [创建、查看和管理活动日志警报](../../azure-monitor/alerts/alerts-activity-log.md) ，也可以通过 api 和管理工具进行管理。
 
 若要跨多个客户自动刷新警报，请使用 [Azure 资源关系图](../../governance/resource-graph/overview.md) 查询来筛选警报。 可以将查询固定到仪表板，并选择所有合适的客户和订阅。 例如，下面的查询将显示严重性0和1个警报，每60分钟刷新一次。
 

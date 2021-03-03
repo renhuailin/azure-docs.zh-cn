@@ -3,12 +3,12 @@ title: 在 Azure VMware 解决方案中配置 NSX 网络组件
 description: 了解如何使用 Azure VMware 解决方案控制台配置 NSX-T 网段。
 ms.topic: how-to
 ms.date: 02/16/2021
-ms.openlocfilehash: dbed29fb1063b78386f9ec1e2ee00d9c685a944e
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 0478582a9bc4fb77a1784c27ec4f5c302d6b89fc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100417109"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101716881"
 ---
 # <a name="configure-nsx-network-components-in-azure-vmware-solution"></a>在 Azure VMware 解决方案中配置 NSX 网络组件
 
@@ -36,13 +36,9 @@ ms.locfileid: "100417109"
 >[!NOTE]
 >如果计划使用 DHCP，则需要先 [配置 dhcp 服务器或 dhcp 中继](#create-a-dhcp-server-or-dhcp-relay-in-the-azure-portal) ，然后才能创建和配置 NSX-T 段。
 
-1. 在 Azure VMware 解决方案私有云的 "**工作负荷网络**" 下，选择 "**段**" "  >  **添加**"。
+1. 在 Azure VMware 解决方案私有云的 "**工作负荷网络**" 下，选择 "**段**" "  >  **添加**"。 提供新逻辑段的详细信息，然后选择 **"确定"**。
 
    :::image type="content" source="media/configure-nsx-network-components-azure-portal/add-new-nsxt-segment.png" alt-text="显示如何添加新段的屏幕截图。":::
-
-1. 提供新逻辑段的详细信息。
-
-   :::image type="content" source="media/configure-nsx-network-components-azure-portal/create-new-segment-details.png" alt-text="显示新段的详细信息的屏幕截图。":::
    
    - **段名称** -vCenter 中可见的逻辑交换机的名称。
    - **子网网关** -带有子网掩码的逻辑交换机子网的网关 IP 地址。 Vm 连接到逻辑交换机，连接到此交换机的所有 Vm 都属于同一子网。  而且，附加到此逻辑段的所有 Vm 必须从同一段传输 IP 地址。
@@ -50,8 +46,6 @@ ms.locfileid: "100417109"
    - **连接的网关**  - *默认情况下选择 "只读"。*  第1层网关和段信息的类型。 
       - **T1** -NSX-T Manager 中第1层网关的名称。 Azure VMware 解决方案私有云随附主动/主动模式下的 NSX T 层0网关，并在主动/备用模式下提供默认的 NSX-T 层级网关。  通过 Azure VMware 解决方案控制台创建的段只连接到默认的第1层网关，这些段的工作负荷 East-West 和 North-South 连接。 只能通过 NSX-T Manager 创建更多第1层网关。 从 NSX-T Manager 控制台创建的第1层网关在 Azure VMware 解决方案控制台中不可见。 
       - Azure VMware 解决方案支持的 **类型** 覆盖段。
-
-1. 选择 **"确定"** 以创建段并将其附加到第1层网关。 
 
    此段现在可在 Azure VMware 解决方案控制台、NSX-T 管理器和 vCenter 中看到。
 
@@ -157,24 +151,12 @@ ms.locfileid: "100417109"
 
 ### <a name="step-2-configure-dns-service"></a>步骤 2。 配置 DNS 服务
 
-1. 选择 " **DNS 服务** " 选项卡，选择 " **添加**"，然后提供：
+1. 选择 " **DNS 服务** " 选项卡，选择 " **添加**"。 提供详细信息，然后选择 **"确定"**。
 
    :::image type="content" source="media/configure-nsx-network-components-azure-portal/nsxt-workload-networking-configure-dns-service.png" alt-text="显示 DNS 服务所需的信息的屏幕截图。":::
 
-   1. DNS 服务的名称。
-
-   1. 输入 DNS 服务的 IP 地址。
-
-   1. 选择在 "DNS 区域" 选项卡下创建的默认 DNS 区域。
-
-   1. 选择在 "DNS 区域" 选项卡下添加的 FQDN 区域。
-
-   1. 选择 **日志级别**。
-
    >[!TIP]
    >默认情况下会选择 **第1层网关**，并反映部署 Azure VMware 解决方案时创建的网关。
-
-1. 选择“确定”。 
 
    DNS 服务已成功添加。
 

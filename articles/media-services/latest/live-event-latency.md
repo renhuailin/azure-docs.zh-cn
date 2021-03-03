@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 023b0f4d7f0367882e0a5bb2be89c485c18bc03c
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 490b9d54aa3b661124699a472b453f80d9c39963
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98897826"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101705358"
 ---
 # <a name="live-event-low-latency-settings"></a>直播活动低延迟设置
 
@@ -34,28 +34,11 @@ ms.locfileid: "98897826"
 
 以下 .NET 示例展示了如何在 **LiveEvent** 上设置 **LowLatency**：
 
-```csharp
-LiveEvent liveEvent = new LiveEvent(
-            location: mediaService.Location, 
-            description: "Sample LiveEvent for testing",
-            vanityUrl: false,
-            encoding: new LiveEventEncoding(
-                        // Set this to Standard to enable a transcoding LiveEvent, and None to enable a pass-through LiveEvent
-                        encodingType:LiveEventEncodingType.None, 
-                        presetName:null
-                    ),
-            input: new LiveEventInput(LiveEventInputProtocol.RTMP,liveEventInputAccess), 
-            preview: liveEventPreview,
-            streamOptions: new List<StreamOptionsFlag?>()
-            {
-                // Set this to Default or Low Latency
-                // To use low latency optimally, you should tune your encoder settings down to 1 second "Group Of Pictures" (GOP) length instead of 2 seconds.
-                StreamOptionsFlag.LowLatency
-            }
-        );
-```                
+[!code-csharp[Main](../../../media-services-v3-dotnet/blob/main/Live/LiveEventWithDVR/Program.cs#NewLiveEvent)]
 
-参阅完整示例：[MediaV3LiveApp](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/blob/master/NETCore/Live/MediaV3LiveApp/Program.cs#L126)。
+        
+
+请参阅完整示例： [带 DVR 的实时事件](https://github.com/Azure-Samples/media-services-v3-dotnet/blob/main/Live/LiveEventWithDVR/Program.cs)。
 
 ## <a name="live-events-latency"></a>直播活动延迟
 

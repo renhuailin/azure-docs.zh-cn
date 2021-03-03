@@ -12,17 +12,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: vinigam
-ms.openlocfilehash: ff4882f2146a8b978047df2fcf6c52734534979f
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: d4ab5361d245ad1ee10d43184cc0a2d65fed2054
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99833977"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101730025"
 ---
 # <a name="migrate-to-connection-monitor-from-connection-monitor-classic"></a>从连接监视器（经典版）迁移到连接监视器
 
 > [!IMPORTANT]
-> 从2021年7月1日开始，你将不能在连接监视器 (经典) 中添加新的连接监视器，但你可以继续使用在年 7 2021 月之前创建的现有连接监视器。 若要最大程度地减少对当前工作负荷的服务中断，请 [从连接监视器 (经典) 迁移到](migrate-to-connection-monitor-from-connection-monitor-classic.md)  2024 年2月29日之前的 Azure 网络观察程序中的新连接监视器。
+> 自 2021 年 7 月 1 日起，你将无法在连接监视器（经典版）中添加新的连接监视器，但可以继续使用在 2021 年 7 月 1 日之前创建的现有连接监视器。 若要最大程度地减少对当前工作负荷的服务中断，请 [从连接监视器 (经典) 迁移到](migrate-to-connection-monitor-from-connection-monitor-classic.md)  2024 年2月29日之前的 Azure 网络观察程序中的新连接监视器。
 
 只需点击几下鼠标，就能将现有连接监视器迁移到经过改进的新连接监视器，并且无需停机。 要了解有关这些优势的详细信息，请参阅[连接监视器](./connection-monitor-overview.md)。
 
@@ -32,7 +32,7 @@ ms.locfileid: "99833977"
 
 * 代理和防火墙设置按原样工作。 不需要进行任何更改。 
 * 现有的连接监视器已映射到“连接监视器”>“测试组”>“测试格式”。 通过选择“编辑”，可以查看和修改新连接监视器的属性，下载模板以对连接监视器进行更改，然后通过 Azure 资源管理器提交。 
-* 具有网络观察程序扩展的 Azure 虚拟机将数据发送到工作区和指标。 连接监视器通过新指标（ChecksFailedPercent 和 RoundTripTimeMs）而不是旧指标（ProbesFailedPercent 和 AverageRoundtripMs）提供数据。 
+* 具有网络观察程序扩展的 Azure 虚拟机将数据发送到工作区和指标。 连接监视器通过新指标（ChecksFailedPercent 和 RoundTripTimeMs）而不是旧指标（ProbesFailedPercent 和 AverageRoundtripMs）提供数据。 旧指标将迁移到新度量值，如 > ProbesFailedPercent ChecksFailedPercent 和 > AverageRoundtripMs RoundTripTimeMs。
 * 数据监视：
    * **警报**：自动迁移到新指标。
    * **仪表板和集成**：需要手动编辑指标集。 
@@ -49,7 +49,7 @@ ms.locfileid: "99833977"
     
 1. 选择你的订阅和要迁移的连接监视器，然后选择“迁移所选内容”。 
 
-只需点击几下，就可以将现有的连接监视器迁移到连接监视器。 
+只需点击几下，就可以将现有的连接监视器迁移到连接监视器。 从 CM (经典) 迁移到 CM 后，你将无法在 CM (经典下查看监视器) 
 
 现在，可以自定义连接监视器属性、更改默认工作区、下载模板并检查迁移状态。 
 

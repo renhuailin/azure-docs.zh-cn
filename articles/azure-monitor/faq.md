@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2020
-ms.openlocfilehash: 212828493a381ca118d3bdc54428bddba9bd842a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 6840abe507543c4e03448401f091b6caa0a466c6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100577572"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717445"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor 常见问题解答
 
@@ -54,7 +54,7 @@ ms.locfileid: "100577572"
 Azure Monitor 从各种源（包括来自 Azure 平台的日志和指标，自定义应用程序和在虚拟机上运行的代理）收集数据。 其他服务（例如 Azure 安全中心和网络观察程序）会将数据收集到 Log Analytics 工作区中，以便能够使用 Azure Monitor 数据进行分析。 你也可使用日志或指标的 REST API 将自定义数据发送到 Azure Monitor。 请参阅 [Azure Monitor 的监视数据源](agents/data-sources.md)。
 
 ### <a name="what-data-is-collected-by-azure-monitor"></a>Azure Monitor 会收集哪些数据？ 
-Azure Monitor 将来自各种来源的数据收集到[日志](logs/data-platform-logs.md)或[指标](essentials/data-platform-metrics.md)中。 每种数据类型都有自身的相对优点，每种数据都支持 Azure Monitor 中的一组特定功能。 每个 Azure 订阅都有一个指标数据库，可根据需要创建多个 Log Analytics 工作区来收集日志。 请参阅 [Azure Monitor 数据平台](/data-platform.md)。
+Azure Monitor 将来自各种来源的数据收集到[日志](logs/data-platform-logs.md)或[指标](essentials/data-platform-metrics.md)中。 每种数据类型都有自身的相对优点，每种数据都支持 Azure Monitor 中的一组特定功能。 每个 Azure 订阅都有一个指标数据库，可根据需要创建多个 Log Analytics 工作区来收集日志。 请参阅 [Azure Monitor 数据平台](data-platform.md)。
 
 ### <a name="is-there-a-maximum-amount-of-data-that-i-can-collect-in-azure-monitor"></a>可在 Azure Monitor 中收集的数据量是否有上限？
 可收集的指标数据量没有限制，但数据的存储时间最长为 93 天。 请参阅[指标保留期](essentials/data-platform-metrics.md#retention-of-metrics)。 可收集的日志数据量没有限制，但可能受到你为 Log Analytics 工作区选择的定价层的影响。 请参阅[定价详细信息](https://azure.microsoft.com/pricing/details/monitor/)。
@@ -86,7 +86,7 @@ p
 系统会根据数据的[保留期](logs/manage-cost-storage.md#change-the-data-retention-period)从工作区中删除数据。 出于隐私或合规性原因，你可以删除特定数据。 有关详细信息，请参阅[如何导出和删除私人数据](logs/personal-data-mgmt.md#how-to-export-and-delete-private-data)。
 
 ### <a name="is-log-analytics-storage-immutable"></a>Log Analytics 存储是否不可变？
-数据库存储中的数据在引入后将无法更改，但可以通过 [*清除* API 路径删除以删除私有数据](platform/personal-data-mgmt.md#delete)。 尽管不能更改数据，但某些证书要求数据是不可变的，并且不能在存储中更改或删除。 可以通过将 [数据导出](platform/logs-data-export.md) 到配置为 [不可变存储](../storage/blobs/storage-blob-immutability-policies-manage.md)的存储帐户来实现数据永久性。
+数据库存储中的数据在引入后将无法更改，但可以通过 [*清除* API 路径删除以删除私有数据](./logs/personal-data-mgmt.md#delete)。 尽管不能更改数据，但某些证书要求数据是不可变的，并且不能在存储中更改或删除。 可以通过将 [数据导出](./logs/logs-data-export.md) 到配置为 [不可变存储](../storage/blobs/storage-blob-immutability-policies-manage.md)的存储帐户来实现数据永久性。
 
 ### <a name="what-is-a-log-analytics-workspace"></a>什么是 Log Analytics 工作区？
 Azure Monitor 收集的所有日志数据都存储在 Log Analytics 工作区中。 工作区实质上是从各种来源收集日志数据的容器。 可为所有监视数据使用一个 Log Analytics 工作区，也可要求使用多个工作区。 请参阅[设计 Azure Monitor 日志部署](logs/design-logs-deployment.md)。
@@ -607,7 +607,7 @@ OpenTelemetry 规范定义了 [SDK](https://github.com/open-telemetry/openteleme
 [OpenCensus](https://opencensus.io/) 是 [OpenTelemetry](https://opentelemetry.io/) 的前身。 Microsoft 帮助整合 [OpenTracing](https://opentracing.io/) 和 OpenCensus 用于创建 OpenTelemetry，OpenTelemetry 是全球唯一的可观测性标准。 Azure Monitor 当前[生产推荐的 Python SDK](app/opencensus-python.md) 基于 OpenCensus，但最终所有 Azure Monitor SDK 都将基于 OpenTelemetry。
 
 
-## <a name="azure-monitor-for-containers"></a>用于容器的 Azure Monitor
+## <a name="container-insights"></a>容器见解
 
 ### <a name="what-does-other-processes-represent-under-the-node-view"></a>节点视图下的“其他进程”表示什么？
 
@@ -676,11 +676,11 @@ ContainerLog
 
 ### <a name="can-i-view-metrics-collected-in-grafana"></a>能否在 Grafana 中查看收集的指标？
 
-用于容器的 Azure Monitor 支持在 Grafana 仪表板中查看 Log Analytics 工作区中存储的指标。 我们提供了一个模板，你可从 Grafana 的[仪表板存储库](https://grafana.com/grafana/dashboards?dataSource=grafana-azure-monitor-datasource&category=docker)中下载以供入门和参考，它可帮助你了解如何从受监视的群集查询其他数据，来在自定义 Grafana 仪表板中直观显示。 
+Container insights 支持查看存储在 Grafana 仪表板中的 Log Analytics 工作区中的度量值。 我们提供了一个模板，你可从 Grafana 的[仪表板存储库](https://grafana.com/grafana/dashboards?dataSource=grafana-azure-monitor-datasource&category=docker)中下载以供入门和参考，它可帮助你了解如何从受监视的群集查询其他数据，来在自定义 Grafana 仪表板中直观显示。 
 
-### <a name="can-i-monitor-my-aks-engine-cluster-with-azure-monitor-for-containers"></a>能否通过用于容器的 Azure Monitor 监视 AKS-Engine 群集？
+### <a name="can-i-monitor-my-aks-engine-cluster-with-container-insights"></a>能否通过容器见解监视 AKS 群集？
 
-用于容器的 Azure Monitor 支持监视部署到 Azure 上托管的 AKS-Engine（以前称为 ACS-Engine）群集的容器工作负载。 要进一步了解详细信息并概要了解为此方案启用监视功能所需的步骤，请参阅[对 AKS-Engine 使用用于容器的 Azure Monitor](https://github.com/microsoft/OMS-docker/tree/aks-engine)。
+Container insights 支持监视部署到 AKS 的容器工作负荷， (以前称为 ACS 引擎) 群集在 Azure 上托管 () s。 有关为此方案启用监视所需步骤的详细信息和概述，请参阅 [使用容器 insights 获取 AKS](https://github.com/microsoft/OMS-docker/tree/aks-engine)。
 
 ### <a name="why-dont-i-see-data-in-my-log-analytics-workspace"></a>为什么在 Log Analytics 工作区中看不到数据？
 
@@ -696,11 +696,11 @@ ContainerInventory 表包含已停止和正在运行的容器的信息。 此表
 
 ### <a name="is-there-support-for-kubernetes-rbac-enabled-aks-clusters"></a>是否支持启用了 Kubernetes RBAC 的 AKS 群集？
 
-容器监视解决方案不支持 Kubernetes RBAC，但用于容器的 Azure Monitor 支持 Kubernetes RBAC。 在显示这些群集的数据的边栏选项卡上，解决方案详细信息页可能不会显示正确的信息。
+容器监视解决方案不支持 Kubernetes RBAC，但容器见解支持此解决方案。 在显示这些群集的数据的边栏选项卡上，解决方案详细信息页可能不会显示正确的信息。
 
 ### <a name="how-do-i-enable-log-collection-for-containers-in-the-kube-system-namespace-through-helm"></a>如何通过 Helm 为 kube-system 命名空间中的容器启用日志收集？
 
-默认情况下，kube-system 命名空间中的容器的日志收集被禁用。 可以通过在 omsagent 上设置一个环境变量来启用日志收集。 有关详细信息，请参阅 GitHub 上的[用于容器的 Azure Monitor](https://aka.ms/azuremonitor-containers-helm-chart) 页面。 
+默认情况下，kube-system 命名空间中的容器的日志收集被禁用。 可以通过在 omsagent 上设置一个环境变量来启用日志收集。 有关详细信息，请参阅 [容器 insights](https://aka.ms/azuremonitor-containers-helm-chart) GitHub 页面。 
 
 ### <a name="how-do-i-update-the-omsagent-to-the-latest-released-version"></a>如何将 omsagent 更新为最新发布的版本？
 
@@ -708,7 +708,7 @@ ContainerInventory 表包含已停止和正在运行的容器的信息。 此表
 
 ### <a name="how-do-i-enable-multi-line-logging"></a>如何启用多行日志记录？
 
-当前，用于容器的 Azure Monitor 不支持多行日志记录，但提供了暂时解决方案。 你可以将所有服务配置为以 JSON 格式进行写入，然后 Docker/Moby 会在单个行上写入它们。
+当前的容器见解不支持多行日志记录，但有一些可用的解决方法。 你可以将所有服务配置为以 JSON 格式进行写入，然后 Docker/Moby 会在单个行上写入它们。
 
 例如，可以将你的日志包装为一个 JSON 对象，如示例 node.js 应用程序的以下示例中所示：
 
@@ -732,30 +732,30 @@ LogEntry : ({"Hello": "This example has multiple lines:","Docker/Moby": "will no
 
 ### <a name="how-do-i-resolve-azure-ad-errors-when-i-enable-live-logs"></a>如何解决在启用实时日志时遇到的 Azure AD 错误？ 
 
-你可能会看到以下错误：在请求中指定的回复 URL 与为应用程序“<application ID\>”配置的回复 URL 不匹配。 有关此问题的解决方案，可参阅[如何使用用于容器的 Azure Monitor 实时查看容器数据](containers/container-insights-livedata-setup.md#configure-ad-integrated-authentication)一文。 
+你可能会看到以下错误：在请求中指定的回复 URL 与为应用程序“<application ID\>”配置的回复 URL 不匹配。 本文 [介绍了如何通过容器见解实时查看容器数据](containers/container-insights-livedata-setup.md#configure-ad-integrated-authentication)一文中提供了解决此解决方案的解决方案。 
 
 ### <a name="why-cant-i-upgrade-cluster-after-onboarding"></a>在加入后为何无法升级群集？
 
-如果在为 AKS 群集启用用于容器的 Azure Monitor 之后，删除了群集向其发送数据的 Log Analytics 工作区，则在尝试升级群集时会失败。 要解决此情况，必须禁用再重新启用监视功能，使其引用订阅中的其他有效工作区。 在你重新尝试升级群集时，应该就会处理并成功完成。  
+如果为 AKS 群集启用容器见解后，请删除群集发送其数据的 Log Analytics 工作区，尝试升级群集时，它将失败。 要解决此情况，必须禁用再重新启用监视功能，使其引用订阅中的其他有效工作区。 在你重新尝试升级群集时，应该就会处理并成功完成。  
 
 ### <a name="which-ports-and-domains-do-i-need-to-openallow-for-the-agent"></a>需要为代理打开/允许哪些端口和域？
 
 请参阅[网络防火墙要求](containers/container-insights-onboard.md#network-firewall-requirements)，了解使用Azure、Azure 美国政府和 Azure 中国世纪互联云的容器化代理所需的代理和防火墙配置信息。
 
 
-## <a name="azure-monitor-for-vms"></a>用于 VM 的 Azure Monitor
+## <a name="vm-insights"></a>VM insights
 
 ### <a name="can-i-onboard-to-an-existing-workspace"></a>是否可以载入到现有工作区？
-如果虚拟机已连接到 Log Analytics 工作区，则在加入用于 VM 的 Azure Monitor 时，你可以继续使用该工作区，前提是该工作区位于某个 [受支持的区域](vm/vminsights-configure-workspace.md#supported-regions)中。
+如果虚拟机已连接到 Log Analytics 工作区，则可以在载入 VM insights 时继续使用该工作区，前提是该工作区位于某个 [受支持的区域](vm/vminsights-configure-workspace.md#supported-regions)中。
 
 
 ### <a name="can-i-onboard-to-a-new-workspace"></a>是否可以载入到新工作区？ 
-如果 VM 当前未连接到现有的 Log Analytics 工作区，则你需要创建一个新工作区来存储数据。 如果通过 Azure 门户为用于 VM 的 Azure Monitor 配置了单个 Azure VM，则系统会自动创建新的默认工作区。
+如果 VM 当前未连接到现有的 Log Analytics 工作区，则你需要创建一个新工作区来存储数据。 如果通过 Azure 门户为 VM insights 配置单个 Azure VM，则会自动创建新的默认工作区。
 
-如果选择使用基于脚本的方法，可在[使用 Azure PowerShell 或资源管理器模板启用用于 VM 的 Azure Monitor](./vm/vminsights-enable-powershell.md) 一文中找到这些步骤。 
+如果选择使用基于脚本的方法，请在 [使用 Azure PowerShell 或资源管理器模板启用 VM insights](./vm/vminsights-enable-powershell.md) 一文中介绍了这些步骤。 
 
 ### <a name="what-do-i-do-if-my-vm-is-already-reporting-to-an-existing-workspace"></a>如果 VM 已开始向现有工作区报告，我该怎么做？
-如果你已开始从虚拟机收集数据，则可能已将虚拟机配置为向现有的 Log Analytics 工作区报告数据。  只要该工作区在某个受支持区域中，就可以在该现有工作区中启用用于 VM 的 Azure Monitor。  目前，如果使用的工作区不在受支持的区域中，则无法加入用于 VM 的 Azure Monitor。  我们将力求支持更多的区域。
+如果你已开始从虚拟机收集数据，则可能已将虚拟机配置为向现有的 Log Analytics 工作区报告数据。  只要该工作区位于支持的某个区域，就可以在该预先存在的工作区中启用 VM 见解。  如果你使用的工作区不在我们支持的某个区域，此时你将无法加入到 VM insights。  我们将力求支持更多的区域。
 
 
 ### <a name="why-did-my-vm-fail-to-onboard"></a>为何我的 VM 无法载入？
@@ -763,7 +763,7 @@ LogEntry : ({"Hello": "This example has multiple lines:","Docker/Moby": "will no
 
 * 创建默认的 Log Analytics 工作区（如果已选择该选项）。
 * 使用 VM 扩展在 Azure VM 上安装 Log Analytics 代理（如果确定有必要）。  
-* 使用某个扩展在 Azure VM 上安装用于 VM 的 Azure Monitor 映射依赖项代理（如果确定有必要）。 
+* 如果已确定 VM insights 映射依赖关系代理是必需的，则使用扩展在 Azure Vm 上安装该代理。 
 
 在载入过程中，我们会检查上述每个步骤的状态，并在门户中返回通知状态。 配置工作区和安装代理通常需要 5 到 10 分钟。 在门户中查看监视数据需要额外花费 5 到 10 分钟时间。  
 
@@ -776,10 +776,10 @@ LogEntry : ({"Hello": "This example has multiple lines:","Docker/Moby": "will no
 如果在磁盘表或某些性能图表中未看到性能数据，则原因可能是未在工作区中配置性能计数器。 若要解决此问题，请运行以下 [PowerShell 脚本](./vm/vminsights-enable-powershell.md)。
 
 
-### <a name="how-is-azure-monitor-for-vms-map-feature-different-from-service-map"></a>用于 VM 的 Azure Monitor 映射功能与服务映射有何不同？
-用于 VM 的 Azure Monitor 映射功能基于服务映射，但存在以下差异：
+### <a name="how-is-vm-insights-map-feature-different-from-service-map"></a>VM insights 地图功能与服务映射有何不同？
+VM insights 地图功能基于服务映射，但具有以下不同之处：
 
-* 可以从“VM”边栏选项卡，或者 Azure Monitor 中的“用于 VM 的 Azure Monitor”访问“映射”视图。
+* 可以从 "VM" 边栏选项卡和 "Azure Monitor 下的 VM 见解访问" 地图 "视图。
 * “映射”中的连接现在可单击，所选连接的边侧面板中会显示连接指标数据的视图。
 * 可以使用一个新 API 创建映射，以便更好地支持更复杂的映射。
 * 受监视 VM 现在包含在客户端组节点中，圆环图显示该组中受监视与不受监视虚拟机的比例。  展开该组后，还可以在该图表中筛选计算机列表。
@@ -787,19 +787,19 @@ LogEntry : ({"Hello": "This example has multiple lines:","Docker/Moby": "will no
 * 映射样式已更新，与 Application Insights 中的应用映射更一致。
 * 侧面板已更新，但尚未包含服务映射中支持的整套集成功能 -“更新管理”、“更改跟踪”、“安全性”和“服务台”。 
 * 用于选择要映射的组和计算机的选项已更新，现在支持订阅、资源组、Azure 虚拟机规模集和云服务。
-* 无法在用于 VM 的 Azure Monitor 映射功能中创建新的服务映射计算机组。  
+* 无法在 VM insights 地图功能中创建新的服务映射计算机组。  
 
 ### <a name="why-do-my-performance-charts-show-dotted-lines"></a>为何我的性能图表显示虚线？
 这有几个原因。  如果数据集合中存在间隙，则我们会绘制虚线。  如果为启用的性能计数器修改了数据采样频率（默认设置为每隔 60 秒收集数据），并且为图表选择较窄的时间范围，而采样频率小于图表中使用的桶大小（例如，采样频率为每隔 10 分钟，图表上的每个桶为 5 分钟），则可能会在图表中看到虚线。  在这种情况下，选择查看更宽的时间范围应该可使图表线条显示为实线而不是虚线。
 
-### <a name="are-groups-supported-with-azure-monitor-for-vms"></a>用于 VM 的 Azure Monitor 是否支持组？
+### <a name="are-groups-supported-with-vm-insights"></a>VM insights 是否支持组？
 是，一旦安装依赖项代理，我们就会从 VM 中收集信息，以根据订阅、资源组、虚拟机规模集和云服务显示组。  如果你一直在使用服务映射并创建了计算机组，则也会显示这些组。  如果你为正在查看的工作区创建了计算机组，那么这些组也会显示在组筛选器中。 
 
 ### <a name="how-do-i-see-the-details-for-what-is-driving-the-95th-percentile-line-in-the-aggregate-performance-charts"></a>如何查看聚合性能图表中驱动第 95 百分位线条的详细信息？
 默认情况下，列表已经过排序，会显示所选指标的第 95 百分位值最大的 VM，但“可用内存”图表除外，其中显示第 5 百分位值最小的计算机。  单击图表会打开“前 N 项列表”视图，其中已选择相应的指标。
 
 ### <a name="how-does-the-map-feature-handle-duplicate-ips-across-different-vnets-and-subnets"></a>“映射”功能如何处理不同 VNet 和子网中的重复 IP？
-如果跨子网和 VNet 复制 VM 或 Azure 虚拟机规模集的 IP 范围，可能导致用于 VM 的 Azure Monitor 映射显示错误的信息。 这是一个已知问题，我们正在研究可改进此体验的选项。
+如果要将 Vm 或 Azure 虚拟机规模集复制到跨子网和 vnet 的 IP 范围，则可能会导致 VM insights 映射显示错误的信息。 这是一个已知问题，我们正在研究可改进此体验的选项。
 
 ### <a name="does-map-feature-support-ipv6"></a>“映射”功能是否支持 IPv6？
 “映射”功能目前仅支持 IPv4，我们正在研究 IPv6 的支持。 我们还支持 IPv6 隧道内部的 IPv4。
@@ -809,7 +809,7 @@ LogEntry : ({"Hello": "This example has multiple lines:","Docker/Moby": "will no
 
 ### <a name="why-does-the-network-chart-on-the-performance-tab-look-different-than-the-network-chart-on-the-azure-vm-overview-page"></a>为何“性能”选项卡上的网络图表不同于 Azure VM“概述”页上的网络图表？
 
-Azure VM 的概述页基于来宾 VM 中的活动的主机度量值显示图表。  Azure VM“概述”中的网络图表仅显示计费的网络流量。  这不包括虚拟网络间的流量。  为用于 VM 的 Azure Monitor 显示的数据和图表基于来宾 VM 中的数据，网络图表显示入站和出站到该 VM 的所有 TCP/IP 流量，包括虚拟网络之间的流量。
+Azure VM 的概述页基于来宾 VM 中的活动的主机度量值显示图表。  Azure VM“概述”中的网络图表仅显示计费的网络流量。  这不包括虚拟网络间的流量。  为 VM insights 显示的数据和图表基于来宾 VM 中的数据，而 "网络" 图表显示了到该 VM 的入站和出站的所有 TCP/IP 流量，包括虚拟网络之间的流量。
 
 ### <a name="how-is-response-time-measured-for-data-stored-in-vmconnection-and-displayed-in-the-connection-panel-and-workbooks"></a>如何测量 VMConnection 中存储且在连接面板和工作簿中显示的数据的响应时间？
 
@@ -818,9 +818,9 @@ Azure VM 的概述页基于来宾 VM 中的活动的主机度量值显示图表�
 该近似值非常适合基于请求/响应的协议，即在连接上发出单个请求，到达的也是单个响应。 这种情况适用于 HTTP(S)（不带管道），但不适用于其他协议。
 
 ### <a name="are-there-limitations-if-i-am-on-the-log-analytics-free-pricing-plan"></a>如果我处于 Log Analytics 免费定价计划中，是否有限制？
-如果已经为 Azure Monitor 配置了使用 *免费* 定价层的 Log Analytics 工作区，则用于 VM 的 Azure Monitor 的映射功能将仅支持已连接到工作区的五台计算机。 如果已有五台 VM 连接到免费工作区，你断开了其中一台 VM 的连接，然后连接到一台新的 VM，则新的 VM 将不受监视并且不会反映在“映射”页上。  
+如果已使用 *免费* 定价层将 Azure Monitor 配置为 Log Analytics 工作区，则 VM insights 地图功能将仅支持连接到工作区的五台连接的计算机。 如果已有五台 VM 连接到免费工作区，你断开了其中一台 VM 的连接，然后连接到一台新的 VM，则新的 VM 将不受监视并且不会反映在“映射”页上。  
 
-此情况下，在你打开 VM 并从左侧窗格中选择“见解”时，甚至在 VM 上安装它后，系统都将通过“立即尝试”选项向你发出提示 。  但是，如果此 VM 未加入到用于 VM 的 Azure Monitor，则不会像通常情况下那样通过选项向你发出提示。 
+此情况下，在你打开 VM 并从左侧窗格中选择“见解”时，甚至在 VM 上安装它后，系统都将通过“立即尝试”选项向你发出提示 。  但是，如果未将此 VM 载入到 VM insights，则不会提示你提供通常出现的选项。 
 
 
 ## <a name="next-steps"></a>后续步骤

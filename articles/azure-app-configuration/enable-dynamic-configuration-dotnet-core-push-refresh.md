@@ -14,12 +14,12 @@ ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 07/25/2020
 ms.author: abarora
-ms.openlocfilehash: 553c5081947ad784a8cdae6ad0eb92fc3e2a2c85
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: 977982bf1a36b4b85524df2513f2272fe4a8d1bf
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99981823"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101701512"
 ---
 # <a name="tutorial-use-dynamic-configuration-using-push-refresh-in-a-net-core-app"></a>Tutorial:在 .NET Core 应用中通过推送刷新使用动态配置
 
@@ -27,7 +27,7 @@ ms.locfileid: "99981823"
 
 1. 轮询模型：这是使用轮询检测配置更改的默认行为。 设置的缓存值到期后，对 `TryRefreshAsync` 或 `RefreshAsync` 的下一次调用将向服务器发送请求，以检查配置是否已更改，并根据需要拉取已更新的配置。
 
-1. 推送模型：这将使用[应用配置事件](./concept-app-configuration-event.md)检测配置更改。 应用配置设置为向 Azure 事件网格发送键值更改事件后，应用程序就可以使用这些事件来优化保持配置更新所需的请求总数。 应用程序可以选择直接从事件网格订阅这些，也可以选择通过某一[受支持的事件处理程序](https://docs.microsoft.com/azure/event-grid/event-handlers)（如 Webhook、Azure 函数或服务总线主题）订阅这些。
+1. 推送模型：这将使用[应用配置事件](./concept-app-configuration-event.md)检测配置更改。 应用配置设置为向 Azure 事件网格发送键值更改事件后，应用程序就可以使用这些事件来优化保持配置更新所需的请求总数。 应用程序可以选择直接从事件网格订阅这些，也可以选择通过某一[受支持的事件处理程序](../event-grid/event-handlers.md)（如 Webhook、Azure 函数或服务总线主题）订阅这些。
 
 应用程序可以选择直接从事件网格或通过 Webhook 或通过将事件转发到 Azure 服务总线来订阅这些事件。 Azure 服务总线 SDK 提供了一个 API 来注册消息处理程序，从而为没有 HTTP 终结点或不希望持续轮询事件网格以获取更改的应用程序简化了这个过程。
 
@@ -50,7 +50,7 @@ ms.locfileid: "99981823"
 
 ## <a name="set-up-azure-service-bus-topic-and-subscription"></a>设置 Azure 服务总线主题和订阅
 
-本教程使用事件网格的服务总线集成来简化不希望持续轮询应用配置更改的应用程序的配置更改检测。 Azure 服务总线 SDK 提供了一个用于注册消息处理程序的 API，该消息处理程序可用于在应用配置中检测到更改时更新配置。 遵循[快速入门：使用 Azure 门户创建服务总线主题和订阅](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-quickstart-topics-subscriptions-portal)中的步骤，创建服务总线命名空间主题和订阅。
+本教程使用事件网格的服务总线集成来简化不希望持续轮询应用配置更改的应用程序的配置更改检测。 Azure 服务总线 SDK 提供了一个用于注册消息处理程序的 API，该消息处理程序可用于在应用配置中检测到更改时更新配置。 遵循[快速入门：使用 Azure 门户创建服务总线主题和订阅](../service-bus-messaging/service-bus-quickstart-topics-subscriptions-portal.md)中的步骤，创建服务总线命名空间主题和订阅。
 
 创建资源后，添加以下环境变量。 这些环境变量将用于注册事件处理程序，以便获取应用程序代码中的配置更改。
 
@@ -81,7 +81,7 @@ ms.locfileid: "99981823"
     ![应用配置事件订阅](./media/event-subscription-view.png)
 
 > [!NOTE]
-> 订阅配置更改时，可以使用一个或多个筛选器来减少发送到应用程序的事件数。 这些筛选器可以配置为[事件网格订阅筛选器](https://docs.microsoft.com/azure/event-grid/event-filtering)或[服务总线订阅筛选器](https://docs.microsoft.com/azure/service-bus-messaging/topic-filters)。 例如，订阅筛选器可用于仅订阅以特定字符串开头的键的更改的事件。
+> 订阅配置更改时，可以使用一个或多个筛选器来减少发送到应用程序的事件数。 这些筛选器可以配置为[事件网格订阅筛选器](../event-grid/event-filtering.md)或[服务总线订阅筛选器](../service-bus-messaging/topic-filters.md)。 例如，订阅筛选器可用于仅订阅以特定字符串开头的键的更改的事件。
 
 ## <a name="register-event-handler-to-reload-data-from-app-configuration"></a>注册事件处理程序以从应用配置重新加载数据
 
@@ -171,7 +171,7 @@ namespace TestConsole
 }
 ```
 
-[SetDirty](https://docs.microsoft.com/dotnet/api/microsoft.extensions.configuration.azureappconfiguration.iconfigurationrefresher.setdirty) 方法用于将为刷新而注册的键值的缓存值设置为“脏”。 这样可以确保对 `RefreshAsync` 或 `TryRefreshAsync` 的下一次调用会使用“应用配置”重新验证缓存的值，并在需要时对其进行更新。
+[SetDirty](/dotnet/api/microsoft.extensions.configuration.azureappconfiguration.iconfigurationrefresher.setdirty) 方法用于将为刷新而注册的键值的缓存值设置为“脏”。 这样可以确保对 `RefreshAsync` 或 `TryRefreshAsync` 的下一次调用会使用“应用配置”重新验证缓存的值，并在需要时对其进行更新。
 
 在将缓存值标记为“脏”之前会添加一个随机延迟，以减少在多个实例同时刷新时可能存在的限制。 缓存值被标记为“脏”之前的默认最大延迟是 30 秒，但可以通过向 `SetDirty` 方法传递可选的 `TimeSpan` 参数来重写该值。
 

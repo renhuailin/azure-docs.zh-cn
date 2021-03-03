@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan,moslake,josack
 ms.date: 02/02/2021
-ms.openlocfilehash: aa18baf9739663c7132a49d3d07434b9d187f02b
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 34613633b6b27fc3387e6a9fa63caf4a194ba963
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100588743"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691223"
 ---
 # <a name="resource-limits-for-azure-sql-database-and-azure-synapse-analytics-servers"></a>Azure SQL 数据库和 Azure Synapse Analytics 服务器的资源限制
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -31,7 +31,7 @@ ms.locfileid: "100588743"
 | 资源 | 限制 |
 | :--- | :--- |
 | 每个服务器的数据库数 | 5000 |
-| 任意区域中每个订阅的服务器默认数量 | 20 个 |
+| 任意区域中每个订阅的服务器默认数量 | 20 |
 | 任意区域中每个订阅的服务器数上限 | 200 |  
 | 每个服务器的 DTU/eDTU 配额 | 54,000 |  
 | 每个服务器/实例的 vCore 配额 | 540 |
@@ -70,7 +70,7 @@ ms.locfileid: "100588743"
 - 提高数据库或弹性池的大小上限，或添加更多存储资源。 请参阅[缩放单一数据库资源](single-database-scale.md)和[缩放弹性池资源](elastic-pool-scale.md)。
 - 如果数据库在弹性池内，可选择将数据库移出弹性池，从而避免与其他数据库共享存储空间。
 - 收缩数据库来回收未使用的空间。 有关详细信息，请参阅[管理 Azure SQL 数据库中的文件空间](file-space-manage.md)。
-- 检查高空间利用率是否是由于持久性版本存储 (PVS) 大小的峰值。 PVS 是每个数据库的一部分，用于实现  [加速数据库恢复](../accelerated-database-recovery.md)。 若要确定当前的 PVS 大小，请参阅 [PVS 故障排除](https://docs.microsoft.com/sql/relational-databases/accelerated-database-recovery-management#troubleshooting)。 较大的 PVS 大小的一个常见原因是 (小时) 打开长时间的事务，以防止在 PVS 中清除旧版本。
+- 检查高空间利用率是否是由于持久性版本存储 (PVS) 大小的峰值。 PVS 是每个数据库的一部分，用于实现  [加速数据库恢复](../accelerated-database-recovery.md)。 若要确定当前的 PVS 大小，请参阅 [PVS 故障排除](/sql/relational-databases/accelerated-database-recovery-management#troubleshooting)。 较大的 PVS 大小的一个常见原因是 (小时) 打开长时间的事务，以防止在 PVS 中清除旧版本。
 
 ### <a name="sessions-and-workers-requests"></a>会话和辅助角色（请求）
 
@@ -120,7 +120,7 @@ Azure SQL Database 需要计算资源来实现核心服务功能，例如高可�
 
 当 CPU 总消耗量较高时，缓解措施与前面所述相同，也包括增大服务目标和/或优化用户工作负载。
 
-## <a name="resource-governance"></a>资源治理
+## <a name="resource-governance"></a>资源调控
 
 为了强制资源限制，Azure SQL Database 使用基于 SQL Server [Resource Governor](/sql/relational-databases/resource-governor/resource-governor)、已修改和扩展的资源调控实现在 Azure SQL 数据库中运行。 在 SQL 数据库中，多个 [资源池](/sql/relational-databases/resource-governor/resource-governor-resource-pool) 和 [工作负荷组](/sql/relational-databases/resource-governor/resource-governor-workload-group)，同时将资源限制设置为池和组级别，提供了一个 [平衡的数据库即服务](https://azure.microsoft.com/blog/resource-governance-in-azure-sql-database/)。 用户工作负荷和内部工作负荷归类为单独的资源池和工作负荷组。 主副本和可读辅助副本上的用户工作负荷（包括异地副本）归类为 `SloSharedPool1` 资源池和 `UserPrimaryGroup.DBId[N]` 工作负荷组，其中 `N` 代表数据库 ID 值。 此外，还有多个资源池和工作负荷组用于各种内部工作负荷。
 
@@ -159,7 +159,7 @@ Azure SQL 数据库资源调控本质上是分层的。 从上到下，将使用
 
 日志速率调控器流量造型通过以下等待类型出现， (在 [sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) 和 [sys.dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql) 视图中公开) ：
 
-| Wait 类型 | 备注 |
+| Wait 类型 | 说明 |
 | :--- | :--- |
 | LOG_RATE_GOVERNOR | 数据库限制 |
 | POOL_LOG_RATE_GOVERNOR | 池限制 |

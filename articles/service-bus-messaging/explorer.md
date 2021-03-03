@@ -3,12 +3,12 @@ title: 使用 Azure 服务总线资源管理器在服务总线上执行数据操
 description: 本文介绍如何使用基于门户的 Azure 服务总线资源管理器访问 Azure 服务总线数据。
 ms.topic: conceptual
 ms.date: 01/20/2020
-ms.openlocfilehash: 06bc2ffffc6b467aa730e16599099bc95117dac9
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 0b5274c492a1dfb2523c52d7aea2b7ebf8eae675
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99092211"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738950"
 ---
 # <a name="use-service-bus-explorer-to-perform-data-operations-on-service-bus-preview"></a>使用服务总线资源管理器在服务总线上执行数据操作（预览版）
 
@@ -30,25 +30,25 @@ Azure 服务总线资源管理器扩展了门户功能，使其不仅支持管�
 
 ## <a name="prerequisites"></a>先决条件
 
-若要使用服务总线资源管理器工具，你将需要执行以下任务： 
+若要使用 Service Bus Explorer 工具，你将需要执行以下任务： 
 
 - 预配 Azure 服务总线命名空间。
-- 创建用于发送和接收消息的队列，或使用订阅的主题来测试该功能。 若要了解如何创建队列、主题和订阅，请参阅以下文章： 
+- 创建一个队列用于从中发送和接收消息，或者创建一个包含订阅的主题用于测试功能。 若要了解如何创建队列、主题和订阅，请参阅以下文章： 
     - [快速入门 - 创建队列](service-bus-quickstart-portal.md)
     - [快速入门 - 创建主题](service-bus-quickstart-topics-subscriptions-portal.md)
-- 确保你是该命名空间中某个角色的成员： 
-    - [服务总线数据所有者](/azure/role-based-access-control/built-in-roles#azure-service-bus-data-owner) 
-    - [参与者](/azure/role-based-access-control/built-in-roles#contributor) 
-    - [所有者](/azure/role-based-access-control/built-in-roles#owner)
+- 确保你是命名空间上以下角色之一的成员： 
+    - [服务总线数据所有者](../role-based-access-control/built-in-roles.md#azure-service-bus-data-owner) 
+    - [参与者](../role-based-access-control/built-in-roles.md#contributor) 
+    - [所有者](../role-based-access-control/built-in-roles.md#owner)
 
 
 ## <a name="using-the-service-bus-explorer"></a>使用服务总线资源管理器
 
 若要使用 Azure 服务总线资源管理器，需要导航到要在其中执行发送、速览和接收操作的服务总线命名空间。
 
-如果想要针对队列执行操作，请从导航菜单中选择 *"队列"**。 如果想要对主题（及其相关订阅）执行操作，请选择“主题”。 
+如果想要对队列执行操作，请从导航菜单中选择“队列”。 如果想要对主题（及其相关订阅）执行操作，请选择“主题”。 
 
-:::image type="content" source="./media/service-bus-explorer/queue-topics-left-navigation.png"alt-text="实体选择":::
+:::image type="content" source="./media/service-bus-explorer/queue-topics-left-navigation.png" alt-text="实体选择":::
 
 选择“队列”或“主题”后，选择特定的队列或主题。 
 
@@ -58,7 +58,7 @@ Azure 服务总线资源管理器扩展了门户功能，使其不仅支持管�
 
 ### <a name="sending-a-message-to-a-queue-or-topic"></a>向队列或主题发送消息
 
-若要向“队列”或“主题”发送消息，请单击服务总线资源管理器中的“发送”选项卡 。
+若要将消息发送到 **队列** 或 **主题**，请单击服务总线资源管理器上的 " **_发送_** " 选项卡。
 
 若要在此处撰写消息 - 
 
@@ -94,15 +94,15 @@ Azure 服务总线资源管理器扩展了门户功能，使其不仅支持管�
 从队列（或其死信子队列）接收消息 
 
 1. 单击服务总线资源管理器中的“接收”选项卡。
-2. 检查指标，确定是否存在可接收的“活动消息”或“死信消息”。
+2. 检查指标，确定是否存在可接收的“活动消息”或“死信消息”。 
 
     :::image type="content" source="./media/service-bus-explorer/queue-after-send-metrics.png" alt-text="QueueAfterSendMetrics":::
 
-3. 在“队列”与“死信”子队列之间进行选择。
+3. 在 ***Queue** _ 或 _ *_死信_** 子队列之间进行选择。
 
     :::image type="content" source="./media/service-bus-explorer/queue-or-deadletter.png" alt-text="QueueOrDeadletter":::
 
-4. 单击“接收”按钮，然后单击“是”以确认执行“接收并删除”操作 。
+4. 单击 "**接收**" 按钮，然后单击 "*_是_*" 以确认 "接收并删除" 操作。
 
 
 接收操作成功后，消息详细信息会显示在网格中，如下所示。 可以在网格中选择该消息以显示其详细信息。
@@ -118,11 +118,11 @@ Azure 服务总线资源管理器扩展了门户功能，使其不仅支持管�
 
     :::image type="content" source="./media/service-bus-explorer/peek-tab-selected.png" alt-text="PeekTab":::
 
-2. 检查指标，确定是否存在可速览的“活动消息”或“死信消息”。
+2. 检查指标，确定是否存在可速览的“活动消息”或“死信消息”。 
 
     :::image type="content" source="./media/service-bus-explorer/queue-after-send-metrics.png" alt-text="QueueAfterSendMetrics":::
 
-3. 然后在“队列”与“死信”子队列之间进行选择。
+3. 然后在 ***Queue** _ 或 _ *_死信_** 子队列之间选取。
 
     :::image type="content" source="./media/service-bus-explorer/queue-or-deadletter.png" alt-text="QueueOrDeadletter":::
 
@@ -134,7 +134,7 @@ Azure 服务总线资源管理器扩展了门户功能，使其不仅支持管�
 
 > [!NOTE]
 >
-> 由于速览不是破坏性操作，因此不会从队列中删除该消息。
+> 由于速览不是破坏性操作，因此 **不会** 从队列中删除该消息。
 >
 
 ### <a name="receiving-a-message-from-a-subscription"></a>从订阅接收消息
@@ -147,15 +147,15 @@ Azure 服务总线资源管理器扩展了门户功能，使其不仅支持管�
 > 若要浏览消息而不将其从队列中删除，请考虑使用“速览”功能。
 >
 
-1. 单击“接收”选项卡，然后从下拉选择器中选择特定的订阅 。
+1. 单击 "**接收**" 选项卡，然后从下拉选择器中选择特定的 _ *_订阅_**。
 
     :::image type="content" source="./media/service-bus-explorer/receive-subscription-tab-selected.png" alt-text="ReceiveTabSelected":::
 
-2. 在“订阅”与“死信”子实体之间进行选择 。
+2. 在 ***订阅** _ 或 _ *_死信_** 子实体之间进行选择。
 
     :::image type="content" source="./media/service-bus-explorer/subscription-or-deadletter.png" alt-text="SubscriptionOrDeadletter":::
 
-3. 单击“接收”按钮，然后单击“是”以确认执行“接收并删除”操作 。
+3. 单击 "**接收**" 按钮，然后单击 "*_是_*" 以确认 "接收并删除" 操作。
 
 接收操作成功后，收到的消息会显示在网格中，如下所示。 若要查看消息详细信息，请单击该消息。
 
@@ -165,11 +165,11 @@ Azure 服务总线资源管理器扩展了门户功能，使其不仅支持管�
 
 如果只是想浏览订阅或其死信子实体中的消息，也可以对订阅使用“速览”功能。
 
-1. 单击“速览”选项卡，然后从下拉选择器中选择特定的订阅 。
+1. 单击 "**查看**" 选项卡，然后从下拉选择器中选择特定的 _ *_订阅_**。
 
     :::image type="content" source="./media/service-bus-explorer/peek-subscription-tab-selected.png" alt-text="PeekTabSelected":::
 
-2. 在“订阅”与“死信”子实体之间进行选择 。
+2. 在 ***订阅** _ 或 _ *_死信_** 子实体之间进行选择。
 
     :::image type="content" source="./media/service-bus-explorer/subscription-or-deadletter.png" alt-text="SubscriptionOrDeadletter":::
 
@@ -181,7 +181,7 @@ Azure 服务总线资源管理器扩展了门户功能，使其不仅支持管�
 
 > [!NOTE]
 >
-> 由于速览不是破坏性操作，因此不会从队列中删除该消息。
+> 由于速览不是破坏性操作，因此 **不会** 从队列中删除该消息。
 >
 
 ## <a name="next-steps"></a>后续步骤

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/02/2020
-ms.openlocfilehash: 040c487df83c117e177b8a8b0e8fddde8682c67f
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: ae95580a8c192f0815623461fb21ec9ecf52ae26
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100606068"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101700637"
 ---
 # <a name="archive-data-from-log-analytics-workspace-to-azure-storage-using-logic-app"></a>使用逻辑应用将数据从 Log Analytics 工作区存档到 Azure 存储
 本文介绍一种使用 [Azure 逻辑应用](../../logic-apps/index.yml)从 Azure Monitor 中的 Log Analytics 工作区查询数据并将其发送到 Azure 存储的方法。 如果需要导出 Azure Monitor 日志数据用于审核和符合性场景或允许其他服务检索此数据，请使用此过程。  
@@ -118,7 +118,7 @@ AzureActivity
     ResourceId = _ResourceId 
 ```
 
-时间范围根据 TimeGenerated 列来指定将包含在查询中的记录 。 应将其设置为等于或大于查询中选择的时间范围的值。 由于此查询未使用 TimeGenerated 列，因此“在查询中设置”选项不可用 。 有关时间范围的更多详细信息，请参阅[查询范围](../log-query/scope.md)。 
+时间范围根据 TimeGenerated 列来指定将包含在查询中的记录 。 应将其设置为等于或大于查询中选择的时间范围的值。 由于此查询未使用 TimeGenerated 列，因此“在查询中设置”选项不可用 。 有关时间范围的更多详细信息，请参阅[查询范围](./scope.md)。 
 
 对于“时间范围”，选择“过去 4 小时” 。 这样可以确保引入时间大于 TimeGenerated 的所有记录都将包含在结果中。
    
@@ -210,6 +210,6 @@ subtractFromTime(formatDateTime(utcNow(),'yyyy-MM-ddTHH:00:00'), 1,'Hour')
 
 ## <a name="next-steps"></a>后续步骤
 
-- 详细了解 [Azure Monitor 中的日志查询](../log-query/log-query-overview.md)。
+- 详细了解 [Azure Monitor 中的日志查询](./log-query-overview.md)。
 - 详细了解[逻辑应用](../../logic-apps/index.yml)
 - 详细了解 [Power Automate](https://flow.microsoft.com)。

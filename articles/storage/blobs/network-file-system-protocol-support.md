@@ -5,27 +5,48 @@ author: normesta
 ms.subservice: blobs
 ms.service: storage
 ms.topic: conceptual
-ms.date: 08/04/2020
+ms.date: 02/19/2021
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: 52f7b328b013fd520787fca420a45ffdc5e9d9b1
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: a49c51d2afd464e7bea910ae0abe3dd02e939dbc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98250802"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101718483"
 ---
 # <a name="network-file-system-nfs-30-protocol-support-in-azure-blob-storage-preview"></a>Azure Blob 存储中的网络文件系统 (NFS) 3.0 协议支持 (预览) 
 
-Blob 存储现在支持网络文件系统 (NFS) 3.0 协议。 通过此支持，Windows 或 Linux 客户端可以从 Azure 虚拟机 (VM) 或本地计算机中的 Azure 虚拟机装载容器。 
+Blob 存储现在支持网络文件系统 (NFS) 3.0 协议。 此支持在对象存储规模和价格上提供 Linux 文件系统兼容性，并使 Windows 或 Linux 客户端能够在 Blob 存储中从 Azure 虚拟机 (VM) 或本地计算机装载容器。 
 
 > [!NOTE]
 > Azure Blob 存储中的 NFS 3.0 协议支持提供公共预览版。 它支持在以下区域中具有标准层性能的 GPV2 存储帐户：澳大利亚东部、韩国中部和美国中南部。 预览版还支持所有公共区域中具有高级性能层的块 blob。
 
+运行大规模旧工作负荷（例如高性能计算）在云中 (HPC) ，这始终是一项挑战。 原因之一是，应用程序通常使用传统的文件协议，如 NFS 或服务器消息块 (SMB) 来访问数据。 此外，本机云存储服务侧重于具有平面命名空间和广泛元数据的对象存储，而不是提供分层命名空间和高效的元数据操作的文件系统。 
+
+Blob 存储现在支持分层命名空间，当与 NFS 3.0 协议支持结合使用时，Azure 可让你更轻松地在大规模云对象存储之上运行旧版应用程序。 
+
+## <a name="applications-and-workloads-suited-for-this-feature"></a>适用于此功能的应用程序和工作负荷
+
+NFS 3.0 协议功能最适合用于处理高吞吐量、大规模、读取繁重的工作负荷，例如媒体处理、风险模拟和基因组学排序。 对于使用多个读取器和多个需要高带宽的线程的任何其他类型的工作负荷，应考虑使用此功能。 
+
+## <a name="nfs-30-and-the-hierarchical-namespace"></a>NFS 3.0 和分层命名空间
+
+NFS 3.0 协议支持需要将 blob 组织到分层命名空间中。 创建存储帐户时，可以启用分层命名空间。 Azure Data Lake Storage Gen2 引入了使用分层命名空间的功能。 它将 (文件) 的对象组织成目录和子目录的层次结构，其方式与计算机上文件系统的组织方式相同。  分层命名空间以线性方式缩放，并且不会降低数据容量或性能。 不同协议从分层命名空间扩展。 NFS 3.0 协议是下列可用协议之一。   
+
+> [!div class="mx-imgBorder"]
+> ![分层命名空间](./media/network-protocol-support/hierarchical-namespace-and-nfs-support.png)
+  
+## <a name="data-stored-as-block-blobs"></a>存储为块 blob 的数据
+
+如果启用 NFS 3.0 协议支持，存储帐户中的所有数据都将存储为块 blob。 块 blob 经过优化，可以有效地处理大量的读繁重数据。 块 blob 由块组成。 每个块由块 ID 标识。 块 blob 最多可包含50000块。 块 blob 中的每个块可以有不同的大小，最大可为帐户使用的服务版本所允许的最大大小。
+
+当应用程序使用 NFS 3.0 协议发出请求时，会将该请求转换为块 blob 操作的组合。 例如，NFS 3.0 读取远程过程调用 (RPC) 请求转换为 [获取 Blob](/rest/api/storageservices/get-blob) 操作。 NFS 3.0 写入 RPC 请求会转换为 " [获取块列表](/rest/api/storageservices/get-block-list)"、" [put 块](/rest/api/storageservices/put-block)" 和 " [put 块列表](/rest/api/storageservices/put-block-list)" 的组合。
+
 ## <a name="general-workflow-mounting-a-storage-account-container"></a>常规工作流：装载存储帐户容器
 
-若要装载存储帐户容器，则必须执行这些操作。
+你的 Windows 或 Linux 客户端可以从 Azure 虚拟机 (VM) 或本地计算机中的 Azure 虚拟机装载容器。 若要装载存储帐户容器，则必须执行这些操作。
 
 1. 将 NFS 3.0 协议功能注册到你的订阅。
 
@@ -58,7 +79,7 @@ Blob 存储现在支持网络文件系统 (NFS) 3.0 协议。 通过此支持，
 
 - 为存储帐户配置的 VNet。 
 
-  为了本文的目的，我们将该 VNet 称为 *主 vnet*。 若要了解详细信息，请参阅 [从虚拟网络授予访问权限](../common/storage-network-security.md#grant-access-from-a-virtual-network)。
+  在本文中，我们将该 VNet 称为 *主 vnet*。 若要了解详细信息，请参阅 [从虚拟网络授予访问权限](../common/storage-network-security.md#grant-access-from-a-virtual-network)。
 
 - 与主 VNet 位于同一区域的对等互连 VNet。
 
@@ -115,4 +136,6 @@ Azure Data Lake Storage Gen2 尚不支持以下 NFS 3.0 功能。
 
 ## <a name="next-steps"></a>后续步骤
 
-若要开始，请参阅 [使用网络文件系统装载 Blob 存储 (NFS) 3.0 协议 (预览) ](network-file-system-protocol-support-how-to.md)。
+- 若要开始，请参阅 [使用网络文件系统装载 Blob 存储 (NFS) 3.0 协议 (预览) ](network-file-system-protocol-support-how-to.md)。
+
+- 若要优化性能，请参阅 [Azure Blob 存储中的网络文件系统 (NFS) 3.0 性能注意事项 (预览) ](network-file-system-protocol-support-performance.md)。

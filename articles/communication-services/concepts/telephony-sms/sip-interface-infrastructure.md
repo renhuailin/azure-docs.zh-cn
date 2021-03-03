@@ -8,12 +8,12 @@ ms.author: bobazile
 ms.date: 02/09/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: b258f2ef82e74073e3e4f1aa61b036d423c30300
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 432a9dab851bda65ecf8736d725b08c5e726ac16
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100419396"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101659250"
 ---
 # <a name="sip-interface-infrastructure-requirements"></a>SIP 接口基础结构要求 
 
@@ -31,7 +31,7 @@ ms.locfileid: "100419396"
 |会话边界控制器 (SBC)|受支持的 SBC。 有关详细信息，请参阅[受支持的 SBC](#supported-session-border-controllers-sbcs)。|
 |连接到 SBC 的电话服务中继|连接到 SBC 的一个或多个电话服务中继。 SBC 一端通过 SIP 接口连接 Azure 通信服务。 SBC 还可以连接到第三方电话实体，如 PBX、模拟电话适配器等。 连接到 SBC 的任何 PSTN 连接选项都将起作用。 （对于 SBC 的 PSTN 中继配置，请咨询 SBC 供应商或中继提供商。）|
 |Azure 订阅|用于创建 ACS 资源的 Azure 订阅以及面向 SBC 的配置和连接。|
-|通信服务访问令牌|若要进行调用，需要具有 `voip` 作用域的有效访问令牌。 请参阅[访问令牌](https://docs.microsoft.com/azure/communication-services/concepts/identity-model#access-tokens)|
+|通信服务访问令牌|若要进行调用，需要具有 `voip` 作用域的有效访问令牌。 请参阅[访问令牌](../identity-model.md#access-tokens)|
 |用于 SBC 的公共 IP 地址|可用于连接到 SBC 的公共 IP 地址。 基于 SBC 的类型，SBC 可以使用 NAT。|
 |用于 SBC 的完全限定的域名 (FQDN)|用于 SBC 的 FQDN，其中 FQDN 的域部分与 Microsoft 365 或 Office 365 组织中的注册域不匹配。 有关详细信息，请参阅 [SBC 域名](#sbc-domain-names)。|
 |SBC 的公共 DNS 条目 |将 SBC FQDN 映射到公共 IP 地址的公共 DNS 条目。 |
@@ -187,7 +187,7 @@ SBC 发出 DNS 查询来解析 sip.pstnhub.microsoft.com。 系统将根据 SBC 
 
 ## <a name="supported-session-border-controllers-sbcs"></a>支持的会话边界控制器 (SBC)
 
-认证正在进行中。 在此期间，客户可使用 [Teams 认证的会话边界控制器](https://docs.microsoft.com/MicrosoftTeams/direct-routing-border-controllers)。 
+认证正在进行中。 在此期间，客户可使用 [Teams 认证的会话边界控制器](/MicrosoftTeams/direct-routing-border-controllers)。 
 
 ## <a name="next-steps"></a>后续步骤
 

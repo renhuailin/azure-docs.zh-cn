@@ -3,12 +3,12 @@ title: 升级 Azure Service Fabric 群集版本
 description: 了解 Azure Service Fabric 中的群集版本，包括指向 Service Fabric 团队博客中最新版本的链接。
 ms.topic: troubleshooting
 ms.date: 06/15/2020
-ms.openlocfilehash: 9c7e5e3778c9a38190be210ebb391bc8b0b58c76
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 7cb9a739572c667e0821a7a60f5c5d8cceb97957
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100652048"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101698376"
 ---
 # <a name="upgrade-your-azure-service-fabric-cluster-version"></a>升级 Azure Service Fabric 群集版本
 
@@ -63,9 +63,9 @@ ms.locfileid: "100652048"
   
   - 对于运行的 Service Fabric 版本高于 6.3 的群集，如果未使用开放网络功能，则群集会保持正常运行状态。
 
- - 对于运行的 Service Fabric 版本高于6.3 的群集，如果使用了[容器的开放网络功能](https://docs.microsoft.com/azure/service-fabric/service-fabric-networking-modes#set-up-open-networking-mode)，则该群集可能会变得不可用并停止运行，这可能会导致工作负荷的服务中断。
+ - 对于运行的 Service Fabric 版本高于6.3 的群集，如果使用了[容器的开放网络功能](./service-fabric-networking-modes.md#set-up-open-networking-mode)，则该群集可能会变得不可用并停止运行，这可能会导致工作负荷的服务中断。
  
- -   **对于 [在7.0.457 和7.0.466 之间运行 Windows 版本的群集 () 包含的两个版本](https://docs.microsoft.com/azure/service-fabric/service-fabric-versions#supported-version-names) ，并且 windows OS 已启用 windows 容器功能。注意： Linux 版本7.0.457、7.0.464 和7.0.465 不受影响**。
+ -   **对于 [在7.0.457 和7.0.466 之间运行 Windows 版本的群集 () 包含的两个版本](#supported-version-names) ，并且 windows OS 已启用 windows 容器功能。注意： Linux 版本7.0.457、7.0.464 和7.0.465 不受影响**。
     - 影响是：群集会停止运行，这可能会导致工作负荷的服务中断。
     
 #### <a name="required-action"></a>必需的操作

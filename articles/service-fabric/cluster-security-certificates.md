@@ -3,12 +3,12 @@ title: Service Fabric 群集中基于 X.509 证书的身份验证
 description: 了解 Service Fabric 群集中基于证书的身份验证，以及如何检测、缓解和修复与证书相关的问题。
 ms.topic: conceptual
 ms.date: 03/16/2020
-ms.openlocfilehash: 8af0246e0e576f9877c4c5e3b1f1a4314ae29827
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: 2d94e5cc78afbabde38eb38e0c4f89381bd67167
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97901243"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101729685"
 ---
 # <a name="x509-certificate-based-authentication-in-service-fabric-clusters"></a>Service Fabric 群集中基于 X.509 证书的身份验证
 
@@ -170,10 +170,10 @@ Service Fabric 群集的安全性设置大致描述以下方面：
   </NodeTypes>
 ```
 
-对于这两种类型的声明，Service Fabric 节点将在启动时读取配置，查找并加载指定的证书，并按 NotBefore 属性的降序对它们进行排序;将忽略过期证书，并将列表中的第一个元素选择为此节点尝试的任何 Service Fabric 连接的客户端凭据。  (实际上，Service Fabric 倾向于最近颁发的证书。 ) 
+对于任一类型的声明，Service Fabric 节点会在启动时读取配置，查找并加载指定的证书，并按证书的 NotBefore 属性以降序方式将证书排序；忽略已过期的证书，列表的第一个元素将选作此节点尝试建立的任何 Service Fabric 连接的客户端凭据。 （实际上，Service Fabric 会优先使用最近颁发的证书。）
 
 > [!NOTE]
-> 在版本 7.2.445 (7.2 CU4) 之前，Service Fabric 选择最早过期证书 (最远的 "NotAfter" 属性的证书) 
+> 在版本 7.2.445 (7.2 CU4) 之前，Service Fabric 选择了最后面的即将到期的证书（具有最远“NotAfter”属性的证书）
 
 请注意，对于基于公用名的出示声明，如果在进行区分大小写的精确字符串比较的情况下，某个证书的使用者公用名等于声明的 X509FindValue（或 X509FindValueSecondary）字段，则将该证书视为匹配。 这与验证规则相反。验证规则支持通配符匹配，以及不区分大小写的字符串比较。  
 
@@ -182,7 +182,7 @@ Service Fabric 群集的安全性设置大致描述以下方面：
 
 如前所述，证书验证始终意味着要生成并评估证书链。 对于 CA 颁发的证书，这种表面上简单的 OS API 调用通常需要对颁发者 PKI 的各个终结点进行多次出站调用、对响应进行缓存，以及执行其他操作。 由于证书验证调用在 Service Fabric 群集中非常普遍，PKI 终结点中出现任何问题都可能导致群集可用性下降或完全中断。 尽管无法抑制出站调用（如需此方面的详细信息，请参阅下面的“常见问题解答”部分），但可以使用以下设置来隐藏由于 CRL 调用失败而导致的验证错误。
 
-  * CrlCheckingFlag -“Security”节中转换为 UINT 的字符串。 Service Fabric 使用此设置的值通过更改链生成行为来隐藏证书链状态错误；此值将作为“dwFlags”参数传递给 Win32 CryptoAPI [CertGetCertificateChain](/windows/win32/api/wincrypt/nf-wincrypt-certgetcertificatechain) 调用，并可设置为该函数接受的任何有效标志组合。 值为 0 会强制 Service Fabric 运行时忽略任何信任状态错误 - 不建议使用此值，因为会导致严重的安全风险。 默认值为 0x40000000 (CERT_CHAIN_REVOCATION_CHECK_CHAIN_EXCLUDE_ROOT)。
+  * CrlCheckingFlag-在 "安全性" 部分下，将字符串转换为 UINT。 Service Fabric 使用此设置的值通过更改链生成行为来隐藏证书链状态错误；此值将作为“dwFlags”参数传递给 Win32 CryptoAPI [CertGetCertificateChain](/windows/win32/api/wincrypt/nf-wincrypt-certgetcertificatechain) 调用，并可设置为该函数接受的任何有效标志组合。 值为 0 会强制 Service Fabric 运行时忽略任何信任状态错误 - 不建议使用此值，因为会导致严重的安全风险。 默认值为 0x40000000 (CERT_CHAIN_REVOCATION_CHECK_CHAIN_EXCLUDE_ROOT)。
 
   何时使用：使用格式不全面的自签名证书或开发人员证书进行本地测试/没有适当的公钥基础结构用于支持证书。 还可以在 PKI 之间的过渡期间，在与外界隔绝的环境中用作缓解措施。
 
@@ -197,7 +197,7 @@ Service Fabric 群集的安全性设置大致描述以下方面：
     </Section>
   ```
 
-  * IgnoreCrlOfflineError -“Security”节中默认值为“false”的布尔值。 表示一个快捷方式，用于抑制“脱机吊销”链生成错误状态（或后续链策略验证错误状态）。
+  * IgnoreCrlOfflineError-在 "Security" 部分下，使用默认值 "false" 的布尔值。 表示一个快捷方式，用于抑制“脱机吊销”链生成错误状态（或后续链策略验证错误状态）。
 
   何时使用：本地测试，或者使用不是由适当 PKI 支持的开发人员证书。 在与外界隔绝的环境中用作缓解措施，或者在 PKI 已知不可访问时使用。
 
@@ -208,7 +208,7 @@ Service Fabric 群集的安全性设置大致描述以下方面：
     </Section>
   ```
 
-  其他值得注意的设置（都在“Security”节中）：
+  ) 的 "安全性" 部分下的其他一些值得注意的设置 (：
   * AcceptExpiredPinnedClusterCertificate - 在专用于基于指纹的证书验证的部分中已讨论；允许接受已过期的自签名群集证书。 
   * CertificateExpirySafetyMargin - 时间间隔，以证书的 NotAfter 时间戳之前的分钟数为单位，在此期间，证书被视为存在过期风险。 Service Fabric 会监视群集证书，并对其剩余可用性定期发出运行状况报告。 在“安全”时间间隔内，这些运行状况报告将提升为“警告”状态。 默认值为 30 天。
   * CertificateHealthReportingInterval - 控制与群集证书剩余有效时间相关的运行状况报告的频率。 发出报告时，每个这样的时间间隔只发出一次。 值以秒表示，默认值为 8 小时。

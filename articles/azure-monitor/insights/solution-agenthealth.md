@@ -1,22 +1,21 @@
 ---
 title: Azure Monitor 中的代理运行状况解决方案 |Microsoft Docs
 description: 本文旨在帮助你了解如何使用此解决方案来监视代理的运行状况，这些代理直接向 Log Analytics 或 System Center Operations Manager 报告。
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/06/2020
-ms.openlocfilehash: a498c229acce9359acfb4593ec5f833000ca2c39
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 171230dc2ce6189e36c601c6c7d3b3612fce160c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100573380"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711053"
 ---
 #  <a name="agent-health-solution-in-azure-monitor"></a>Azure Monitor 中的代理运行状况解决方案
 Azure 中的代理运行状况解决方案有助于你了解，在所有直接向 Azure Monitor 中的 Log Analytics 工作区报告或向连接到 Azure Monitor 的 System Center Operations Manager 管理组报告的代理中，哪些不响应且提交的是操作数据。  也可跟踪所部署代理的数目及其地理分布情况，并通过执行其他查询来不断了解在 Azure 或其他云环境中或本地部署的代理的分布情况。    
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 在部署此解决方案之前，请确认你当前已安装受支持的 [Windows 代理](../agents/agent-windows.md)，此类代理向 Log Analytics 工作区报告或向与工作区集成的 [Operations Manager 管理组](../agents/om-agents.md)报告。
 
 ## <a name="solution-components"></a>解决方案组件

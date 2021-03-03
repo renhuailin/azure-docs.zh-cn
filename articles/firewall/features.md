@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 02/16/2021
+ms.date: 02/25/2021
 ms.author: victorh
-ms.openlocfilehash: 9f89d84fc7033645b2b094e9f40a1d85b076623b
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: b01a856c71375af507e2bf29297e64a6ce9412e5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100544827"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101741423"
 ---
 # <a name="azure-firewall-features"></a>Azure 防火墙功能
 
@@ -123,6 +123,18 @@ Azure 防火墙工作簿为 Azure 防火墙数据分析提供了一个灵活的�
 - 防火墙高级–将检查完整的 URL， `www.google.com/news` 并将其分类为 *新闻*。
 
 根据 **责任** 严重性、 **高带宽**、 **业务使用** 情况、 **生产率损失**、 **常规冲浪** 和未 **分类** 来组织类别。
+
+### <a name="categorization-change"></a>分类更改
+
+如果需要，可以请求分类更改：
+
+ - 假设 FQDN 或 URL 应采用不同的类别 
+ 
+或 
+
+- 具有未分类的 FQDN 或 URL 的建议类别
+
+欢迎在中提交请求 [https://aka.ms/azfw-webcategories-request](https://aka.ms/azfw-webcategories-request) 。
 
 ### <a name="category-exceptions"></a>类别异常
 

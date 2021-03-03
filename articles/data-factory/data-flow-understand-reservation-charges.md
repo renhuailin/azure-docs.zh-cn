@@ -6,12 +6,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/05/2021
 ms.author: makromer
-ms.openlocfilehash: 3b97f09c2b6f4c5f5352bbaa081e0bcae900ebd5
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 12b640fd97f48e293320593b33ab2fdc54980c0f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99808134"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101716289"
 ---
 # <a name="how-a-reservation-discount-is-applied-to-azure-data-factory-data-flows"></a>如何将预订折扣应用于 Azure 数据工厂数据流
 
@@ -32,7 +32,7 @@ ADF 数据流保留容量折扣应用于每小时执行集成运行时。 您购
 - 方案1：通过输入80作为内存优化计算类型的数量，你可以购买一小时80内核的内存优化计算。 运行数据流时，Azure 集成运行时设置为144核心的内存，优化时间为一小时。 将按即用即付价格为数据流使用情况提供一小时的64核心。 对于内存优化使用量为80核心的一小时，可获得预订折扣。
 - 方案2：通过输入32作为常规用途计算类型的数量，你购买了一小时32核心常规用途计算类型的 ADF 数据流预留。 使用 "常规计算" Azure 集成运行时的32个核心，将数据流调试1小时。 你可以获得这一小时使用的保留折扣。
 
-若要了解 Azure 预留的应用情况并在计费使用情况报告中查看该信息，请参阅[了解 Azure 预留使用情况](https://docs.microsoft.com/azure/cost-management-billing/reservations/understand-reserved-instance-usage-ea)。
+若要了解 Azure 预留的应用情况并在计费使用情况报告中查看该信息，请参阅[了解 Azure 预留使用情况](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)。
 
 ## <a name="need-help-contact-us"></a>需要帮助？ 联系我们
 
@@ -42,4 +42,4 @@ ADF 数据流保留容量折扣应用于每小时执行集成运行时。 您购
 
 若要详细了解 Azure 保留，请参阅以下文章：
 
-- [什么是 Azure 预订？](https://docs.microsoft.com/azure/cost-management-billing/reservations/save-compute-costs-reservations)
+- [什么是 Azure 预订？](../cost-management-billing/reservations/save-compute-costs-reservations.md)

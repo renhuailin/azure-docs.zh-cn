@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 01/18/2021
-ms.openlocfilehash: d1ba698cd95a074c021aa351a98eb12fc8ae0fc3
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 0b0dd584aee4a7647a3028ea20b517c0d74a330a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100608293"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734734"
 ---
 # <a name="connector-status-errors-in-the-itsmc-dashboard"></a>ITSMC 仪表板中的连接器状态错误
 
@@ -56,7 +56,9 @@ IT 服务管理连接器 (ITSMC) "仪表板" 提供的错误可帮助解决连�
 
 ## <a name="invalid-refresh-token"></a>刷新令牌无效
 
-**错误**： "AccessToken 和 RefreshToken 无效。 用户需要重新进行身份验证。 "
+**错误**： 
+  * "AccessToken 和 RefreshToken 无效。 用户需要重新进行身份验证。 "
+  * "无法同步事件、警报和事件的模板配置。 有关更多详细信息，请参阅异常消息。
 
 **原因**：刷新令牌已过期。
 

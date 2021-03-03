@@ -1,28 +1,28 @@
 ---
 title: 为混合环境启用 Azure Monitor
-description: 本文介绍如何为包含一个或多个虚拟机的混合云环境启用用于 VM 的 Azure Monitor。
+description: 本文介绍如何为包含一个或多个虚拟机的混合云环境启用 VM insights。
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: d56b1ed7b4923b054ad6864b713fc2a26d95f7e2
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 6518906f264077ac88a90513a237840f7f814247
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100608682"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731266"
 ---
-# <a name="enable-azure-monitor-for-vms-for-a-hybrid-virtual-machine"></a>启用混合虚拟机的用于 VM 的 Azure Monitor
-本文介绍如何为 Azure 之外的虚拟机（包括本地和其他云环境）启用用于 VM 的 Azure Monitor。
+# <a name="enable-vm-insights-for-a-hybrid-virtual-machine"></a>为混合虚拟机启用 VM insights
+本文介绍如何为 Azure 外部的虚拟机（包括本地和其他云环境）启用 VM insights。
 
 > [!IMPORTANT]
-> 启用混合 Vm 的建议方法是首先为 [服务器启用 Azure Arc](../../azure-arc/servers/overview.md) ，以便可以使用类似于 Azure vm 的进程为用于 VM 的 Azure Monitor 启用 vm。 本文介绍如果选择不使用 Azure Arc，如何载入混合 Vm。
+> 启用混合 Vm 的建议方法是首先为 [服务器启用 Azure Arc](../../azure-arc/servers/overview.md) ，以便可以使用类似于 Azure vm 的进程为 vm insights 启用 vm。 本文介绍如果选择不使用 Azure Arc，如何载入混合 Vm。
 
 ## <a name="prerequisites"></a>先决条件
 
-- [创建并配置 Log Analytics 工作区](../insights/vminsights-configure-workspace.md)。
-- 请参阅 [支持的操作系统](../insights/vminsights-enable-overview.md#supported-operating-systems) ，以确保正在启用的虚拟机或虚拟机规模集的操作系统受支持。 
+- [创建并配置 Log Analytics 工作区](./vminsights-configure-workspace.md)。
+- 请参阅 [支持的操作系统](./vminsights-enable-overview.md#supported-operating-systems) ，以确保正在启用的虚拟机或虚拟机规模集的操作系统受支持。 
 
 
 ## <a name="overview"></a>概述
@@ -31,13 +31,13 @@ Azure 之外的虚拟机需要用于 Azure Vm 的相同 Log Analytics 代理和�
 有关部署 Log Analytics 代理的详细信息，请参阅 [将 Windows 计算机连接到 Azure Monitor](../agents/agent-windows.md) 或 [将 Linux 计算机连接到 Azure Monitor](../agents/agent-linux.md) 。 本文提供了依赖关系代理的详细信息。 
 
 ## <a name="firewall-requirements"></a>防火墙要求
-[Log Analytics 代理概述](../agents/log-analytics-agent.md#network-requirements)中提供了 Log Analytics 代理的防火墙要求。 用于 VM 的 Azure Monitor 映射依赖项代理本身不传输任何数据，它不需要对防火墙或端口做出任何更改。 映射数据始终由 Log Analytics 代理传输到 Azure Monitor 服务 - 要么采用直接传输的方式，要么通过 [Operations Management Suite 网关](../../azure-monitor/agents/gateway.md)进行传输（如果 IT 安全策略不允许网络中的计算机连接到 Internet）。
+[Log Analytics 代理概述](../agents/log-analytics-agent.md#network-requirements)中提供了 Log Analytics 代理的防火墙要求。 VM insights 映射依赖关系代理不会传输任何数据本身，也不需要对防火墙或端口进行任何更改。 映射数据始终由 Log Analytics 代理传输到 Azure Monitor 服务 - 要么采用直接传输的方式，要么通过 [Operations Management Suite 网关](../../azure-monitor/agents/gateway.md)进行传输（如果 IT 安全策略不允许网络中的计算机连接到 Internet）。
 
 
 ## <a name="dependency-agent"></a>依赖关系代理
 
 >[!NOTE]
->本部分中所述的以下信息也适用于[服务映射解决方案](../insights/service-map.md)。  
+>本部分中所述的以下信息也适用于[服务映射解决方案](./service-map.md)。  
 
 可从以下位置下载依赖项代理：
 
@@ -177,8 +177,8 @@ configuration VMInsights {
 
 ## <a name="next-steps"></a>后续步骤
 
-现已为虚拟机启用了监视，可在用于 VM 的 Azure Monitor 中使用此信息进行分析。
+为虚拟机启用监视后，可以使用 VM insights 分析此信息。
 
-- 若要查看已发现的应用程序依赖项，请参阅[查看用于 VM 的 Azure Monitor 映射](vminsights-maps.md)。
+- 若要查看已发现的应用程序依赖关系，请参阅 [查看 VM 见解 Map](vminsights-maps.md)。
 
 - 若要通过 VM 的性能了解瓶颈和整体利用率，请参阅[查看 Azure VM 性能](vminsights-performance.md)。

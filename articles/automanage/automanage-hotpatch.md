@@ -8,14 +8,14 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 02/22/2021
 ms.author: jushiman
-ms.openlocfilehash: bdd5a379afb9603c8966320d85c778632948cfd0
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 710e6902be6ebe28caaf40fb446e4ee7cd2bf4dc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101661819"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687560"
 ---
-# <a name="hotpatch-for-windows-server-azure-edition-preview"></a>Hotpatch for Windows Server Azure Edition (预览版) 
+# <a name="hotpatch-for-new-virtual-machines-preview"></a> (预览的新虚拟机的 Hotpatch) 
 
 热修补是在新的 Windows Server Azure Edition 虚拟机上安装更新的一种新方法， (Vm) 不需要在安装后重新启动。 本文介绍有关适用于 Windows Server Azure Edition Vm 的 Hotpatch 的信息，它们具有以下优势：
 * 更低的重启降低工作负荷的影响
@@ -26,10 +26,10 @@ ms.locfileid: "101661819"
 
 Hotpatch 的工作原理是：首先使用 Windows 更新最新的累积更新来建立基线。 Hotpatches 定期发布 (例如，在每月的第二个星期二) 该基线上生成的。 Hotpatches 将包含不需要重新启动的更新。 每三个月定期 (启动) ，将使用新的最新累积更新刷新基线。
 
-    :::image type="content" source="media\automanage-hotpatch\hotpatch-sample-schedule.png" alt-text="Hotpatch Sample Schedule.":::
+:::image type="content" source="media\automanage-hotpatch\hotpatch-sample-schedule.png" alt-text="Hotpatch 示例计划。":::
 
 有两种类型的基线： **计划的基线** 和 **计划外基线**。
-*  **计划的基线** 会定期发布，其中 Hotpatch 的版本介于之间。  计划的基线在该月的 _最新累积更新_ 中包含所有更新，并且需要重新启动。
+*  **计划的基线** 会定期发布，其中 hotpatch 的版本介于之间。  计划的基线在该月的 _最新累积更新_ 中包含所有更新，并且需要重新启动。
     * 上面的示例计划显示了一个日历年中的四个计划的基线发布， (关系图中的五个总计) ，以及8个 hotpatch 版本。
 * 当重要更新 (（例如零天修复) ），并且无法将特定更新作为 Hotpatch 发布时，将释放未 **计划的基线**。  当发布未计划的基线时，hotpatch 版本将替换为该月中的计划外基线。  计划外基线还会在该月的 _最新累积更新_ 中包含所有更新，并且还需要重新启动。
     * 上面的示例计划显示了两个计划外的基准，它们将替换这些月的 hotpatch 版本， (一年中不事先) 计划外基线的实际数量。
@@ -154,7 +154,7 @@ VM 每隔几天自动评估一次，并在30天内进行多次评估，以确定
 在此屏幕上，可看到 VM 的 Hotpatch 状态。 你还可以查看是否存在尚未安装的 VM 的可用修补程序。 如以上 "修补程序安装" 一节中所述，所有安全更新和关键更新都将使用 [自动 VM 来宾修补](https://docs.microsoft.com/azure/virtual-machines/automatic-vm-guest-patching) 自动安装到 vm 上，无需执行其他操作。 具有其他更新分类的修补程序不会自动安装。 相反，它们可在 "更新符合性" 选项卡下的可用修补程序列表中查看。还可以通过 "更新历史记录" 查看 VM 上的更新部署历史记录。 显示过去30天的更新历史记录，以及修补程序安装详细信息。
 
 
-    :::image type="content" source="media\automanage-hotpatch\hotpatch-management-ui.png" alt-text="Hotpatch Management.":::
+:::image type="content" source="media\automanage-hotpatch\hotpatch-management-ui.png" alt-text="Hotpatch 管理。":::
 
 通过自动 VM 来宾修补，你的 VM 会定期自动评估可用的更新。 这些定期评估确保检测到可用的修补程序。 你可以在上述更新屏幕上查看评估结果，包括上次评估的时间。 你还可以选择使用 "立即评估" 选项随时触发 VM 的按需修补程序评估并在评估完成后查看结果。
 
@@ -197,7 +197,7 @@ Hotpatch 包含 Windows 安全更新，并与在常规 (非 Hotpatch) Windows �
 
 ### <a name="are-reboots-still-needed-for-a-vm-enrolled-in-hotpatch"></a>对于在 Hotpatch 中注册的 VM，是否仍需要重新启动？
 
-* 安装不包含在 Hotpatch 程序中的更新时，仍然需要重新启动，并在基线 (Windows 更新已安装最新累积更新) 后定期需要重新启动。 此重新启动将使 VM 与累积更新中包含的所有修补程序同步。 需要重新启动) 的基线 (将在三个月的时间段开始，并随着时间的推移增加6到6个月。
+* 安装不包含在 Hotpatch 程序中的更新时，仍然需要重新启动，并在基线 (Windows 更新已安装最新累积更新) 后定期需要重新启动。 此重新启动将使 VM 与累积更新中包含的所有修补程序同步。 需要重新启动) 的基线 (将在三个月的时间段开始，并随着时间的推移而增加。
 
 ### <a name="are-my-applications-affected-when-a-hotpatch-update-is-installed"></a>安装 Hotpatch 更新时应用程序是否受到影响？
 

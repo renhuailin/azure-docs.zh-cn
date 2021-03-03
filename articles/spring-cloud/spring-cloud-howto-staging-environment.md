@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/14/2021
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 82a8da9d2663b03d89ad0819ec6d918bebaf5f5e
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: d610e79773dabb9942352747f1f032b17730ffca
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99574704"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738746"
 ---
 # <a name="set-up-a-staging-environment-in-azure-spring-cloud"></a>在 Azure Spring Cloud 中设置过渡环境
 
@@ -23,7 +23,7 @@ ms.locfileid: "99574704"
 ## <a name="prerequisites"></a>先决条件
 
 * *标准***定价层** 上的 Azure 春季云实例。
-* Azure CLI [Azure 春季云扩展](https://docs.microsoft.com/cli/azure/azure-cli-extensions-overview)
+* Azure CLI [Azure 春季云扩展](/cli/azure/azure-cli-extensions-overview)
 
 本文使用从弹簧初始值设定项生成的应用程序。 如果要在本示例中使用其他应用程序，则需要对应用程序的面向公众的部分进行简单的更改，以便将过渡部署与生产区分开。
 

@@ -7,12 +7,12 @@ ms.date: 01/22/2021
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 4012c7417345678717800f4fdede95947e00b828
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 374ddaa088fba9ae7035f170562e06b7f07eae47
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756689"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101709370"
 ---
 # <a name="exempting-resources-and-recommendations-from-your-secure-score"></a>从安全分数豁免资源和建议 
 
@@ -20,13 +20,13 @@ ms.locfileid: "98756689"
 
 调查 Azure 安全中心的安全建议时，所查看的第一条信息是受影响的资源的列表。
 
-有时，将列出不应包含的资源。 否则，将在你认为其不属于的范围内显示建议。 安全中心未跟踪的进程可能已修正了资源。 建议对于特定订阅可能不适合。 或者，您的组织可能只决定接受与特定资源相关的风险或建议。
+有时，将列出不应包含的资源。 或者，建议会在你认为它不属于的范围内显示。 安全中心未跟踪的进程可能已修正了资源。 该建议可能不适用于特定的订阅。 或者，组织可能只决定接受与特定资源或建议相关的风险。
 
 在这种情况下，你可以创建例外以获取以下建议：
 
-- **免除资源** ，以确保它不会在将来与不正常资源一起列出，且不会影响安全分数。 资源将列出为 "不适用"，原因将显示为 "已免除"，并显示所选的特定理由。
+- 免除某资源，以确保其将来不会被列入运行不正常的资源，并且不会影响安全分数。 该资源将被列为不适用，原因将显示“已免除”以及你选择的特定理由。
 
-- **豁免订阅或管理组** ，以确保建议不会影响安全分数，将来也不会显示订阅或管理组。 这与现有资源和将来创建的资源相关。 建议将用您为所选范围选择的特定对齐方式进行标记。
+- 免除某订阅或管理组，以确保建议不会影响安全分数，并且将来不会针对该订阅或管理组显示。 这与现有资源以及将来创建的任何资源相关。 建议将标记有你针对所选范围选择的特定理由。
 
 ## <a name="availability"></a>可用性
 
@@ -110,9 +110,9 @@ ms.locfileid: "98756689"
 
 为了跟踪用户如何行使此功能，我们创建了一个 Azure 资源管理器 (ARM) 模板，该模板部署逻辑应用操作手册和所有必要的 API 连接，以在创建例外时通知你。
 
-- 若要了解有关操作手册的详细信息，请参阅[技术社区博客](https://techcommunity.microsoft.com/t5/azure-security-center/how-to-keep-track-of-resource-exemptions-in-azure-security/ba-p/1770580)文章
+- 若要了解有关操作手册的详细信息，请参阅技术社区博客文章 [如何在 Azure 安全中心跟踪资源例外](https://techcommunity.microsoft.com/t5/azure-security-center/how-to-keep-track-of-resource-exemptions-in-azure-security/ba-p/1770580)
 - 你将在[Azure 安全中心 GitHub 存储库](https://github.com/Azure/Azure-Security-Center/tree/master/Workflow%20automation/Notify-ResourceExemption)中找到 ARM 模板
-- 可单击 [此处](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Security-Center%2Fmaster%2FWorkflow%2520automation%2FNotify-ResourceExemption%2Fazuredeploy.json) 部署所有必需的组件 
+- 若要部署所有必要的组件，请 [使用此自动化过程](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Security-Center%2Fmaster%2FWorkflow%2520automation%2FNotify-ResourceExemption%2Fazuredeploy.json)
 
 
 ## <a name="find-recommendations-with-exemptions-using-azure-resource-graph"></a>使用 Azure 资源关系图查找有关免除的建议

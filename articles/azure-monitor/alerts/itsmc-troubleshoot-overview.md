@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 04/12/2020
-ms.openlocfilehash: 991d37b097587e8e4a524c4fc8bc21e9b6af20b5
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: a01005231b5d775f79555ec10dedeb3f30b3426a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100607912"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737199"
 ---
 # <a name="troubleshoot-problems-in-it-service-management-connector"></a>解决 IT 服务管理连接器中的问题
 
@@ -55,7 +55,7 @@ Azure Monitor 在监视数据中发现重要条件时，主动通知你警报。
 
 * 凭据不正确。
 * 权限不足。
-* Web 应用部署不正确。
+* 对于 Service Manager 连接： web 应用未正确部署。
 
 **解决方法**：
 
@@ -95,3 +95,12 @@ Azure Monitor 在监视数据中发现重要条件时，主动通知你警报。
 **原因**：新创建的 ITSMC 实例尚未完成初始同步。
 
 **解决方法**：查看 [常见错误及其解决方法](itsmc-dashboard-errors.md)。
+
+### <a name="sync-connection"></a>同步连接 
+
+**原因**：可能有多种原因导致此症状：
+
+* 模板不会显示为操作定义的一部分。
+* 不会在 ServiceNow 中创建 Incedents/事件。
+
+**解决方法**： [同步连接器](itsmc-resync-servicenow.md)。

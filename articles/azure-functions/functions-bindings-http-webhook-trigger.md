@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: e64f8cded851427636a19e16cccd78932dd6baac
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: a9bb87206ccb0dca56c1744d5578eac7a17418c7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99054951"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726387"
 ---
 # <a name="azure-functions-http-trigger"></a>Azure Functions HTTP 触发器
 
@@ -549,9 +549,9 @@ Python 不支持特性。
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-| type  | 不适用| 必需 - 必须设置为 `httpTrigger`。 |
+| type | 不适用| 必需 - 必须设置为 `httpTrigger`。 |
 | **direction** | 不适用| 必需 - 必须设置为 `in`。 |
-| **name** | 不适用| 必需 - 在请求或请求正文的函数代码中使用的变量名称。 |
+| name | 不适用| 必需 - 在请求或请求正文的函数代码中使用的变量名称。 |
 | <a name="http-auth"></a>**authLevel** |  AuthLevel |确定请求中需要提供的密钥（如果有），以便调用此函数。 授权级别可以是以下值之一： <ul><li><code>anonymous</code>&mdash;无需 API 密钥。</li><li><code>function</code>&mdash;特定于函数的 API 密钥是必需的。 如果未提供任何值，该值为默认值。</li><li><code>admin</code>&mdash;无需主密钥。</li></ul> 有关详细信息，请参阅有关[授权密钥](#authorization-keys)的部分。 |
 | methods |**方法** | HTTP 方法的数组，该函数将响应此方法。 如果未指定，该函数将响应所有 HTTP 方法。 请参阅[自定义 HTTP 终结点](#customize-the-http-endpoint)。 |
 | route | **Route** | 定义路由模板，控制函数将响应的请求 URL。 如果未提供任何值，则默认值为 `<functionname>`。 有关详细信息，请参阅[自定义 HTTP 终结点](#customize-the-http-endpoint)。 |
@@ -749,9 +749,9 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 }
 ```
 
-使用路由参数时，会 `invoke_URL_template` 自动为函数创建。 你的客户端可以使用 URL 模板来了解在使用 url 调用函数时需要在 URL 中传递的参数。 在 [Azure 门户](https://portal.azure.com) 中导航到某个 HTTP 触发的函数，然后选择 " **获取函数 URL**"。
+使用路由参数时，会自动为函数创建 `invoke_URL_template`。 你的客户端可以使用 URL 模板来了解在使用 URL 调用函数时需要在 URL 中传递的参数。 在 [Azure 门户](https://portal.azure.com)中导航到某个 HTTP 触发的函数，然后选择“获取函数 URL”。
 
-可以 `invoke_URL_template` 使用 Azure 资源管理器 api For [List](https://docs.microsoft.com/rest/api/appservice/webapps/listfunctions) [Function 或 Get Function](https://docs.microsoft.com/rest/api/appservice/webapps/getfunction)以编程方式访问。
+可以通过用于[列出函数](/rest/api/appservice/webapps/listfunctions)或[获取函数](/rest/api/appservice/webapps/getfunction)的 Azure 资源管理器 API 以编程方式访问 `invoke_URL_template`。
 
 ## <a name="working-with-client-identities"></a>使用客户端标识
 
@@ -850,17 +850,17 @@ public static void Run(JObject input, ClaimsPrincipal principal, ILogger log)
 
 ## <a name="obtaining-keys"></a>获取密钥
 
-密钥作为 Function App 的一部分存储在 Azure 中，并进行了静态加密。 若要查看你的密钥、创建新的密钥或将密钥滚动到新值，请导航到 [Azure 门户](https://portal.azure.com) 中某个 HTTP 触发的函数，然后选择 " **功能键**"。
+密钥作为 Function App 的一部分存储在 Azure 中，并进行了静态加密。 若要查看密钥，请创建新的密钥或将密钥滚动更新到新值，在 [Azure 门户](https://portal.azure.com)中导航到某个 HTTP 触发的函数，然后选择“函数密钥”。
 
-你还可以管理主机密钥。 导航到 [Azure 门户](https://portal.azure.com) 中的函数应用，然后选择 " **应用密钥**"。
+你还可以管理主机密钥。 在 [Azure 门户](https://portal.azure.com)中导航到函数应用，并选择“应用密钥”。
 
-可以使用 Azure 资源管理器 Api 以编程方式获取函数和主机密钥。 存在用于 [列出功能键](/rest/api/appservice/webapps/listfunctionkeys) 和 [列出主机密钥](/rest/api/appservice/webapps/listhostkeys)的 api，并且在使用部署槽位时，等效的 Api 为 [列出功能键槽](/rest/api/appservice/webapps/listfunctionkeysslot) 和 [列表主机密钥槽](/rest/api/appservice/webapps/listhostkeysslot)。
+可以使用 Azure 资源管理器 API 以编程方式获取函数和主机密钥。 存在[列出函数密钥](/rest/api/appservice/webapps/listfunctionkeys)和[列出主机密钥](/rest/api/appservice/webapps/listhostkeys)的 API，使用部署槽时，等效的 API 是[列出函数密钥槽](/rest/api/appservice/webapps/listfunctionkeysslot)和[列出主机密钥槽](/rest/api/appservice/webapps/listhostkeysslot)。
 
-你还可以使用 [Create 或 Update 函数机密](/rest/api/appservice/webapps/createorupdatefunctionsecret)、创建或更新 [函数机密槽](/rest/api/appservice/webapps/createorupdatefunctionsecretslot)、创建或更新 [主机密钥](/rest/api/appservice/webapps/createorupdatehostsecret) 以及 [创建或更新主机机密槽](/rest/api/appservice/webapps/createorupdatehostsecretslot) api，以编程方式创建新的函数和主机密钥。
+你还可以使用[创建或更新函数机密](/rest/api/appservice/webapps/createorupdatefunctionsecret)、[创建或更新函数机密槽](/rest/api/appservice/webapps/createorupdatefunctionsecretslot)、[创建或更新主机机密](/rest/api/appservice/webapps/createorupdatehostsecret)和[创建或更新主机机密槽](/rest/api/appservice/webapps/createorupdatehostsecretslot) API 以编程方式创建新的函数和主机密钥。
 
-可以通过使用 [删除功能机密](/rest/api/appservice/webapps/deletefunctionsecret)、 [删除函数机密槽](/rest/api/appservice/webapps/deletefunctionsecretslot)、 [删除主机密钥](/rest/api/appservice/webapps/deletehostsecret)和 [删除主机机密槽](/rest/api/appservice/webapps/deletehostsecretslot) api，以编程方式删除函数和主机密钥。
+可以使用[删除函数机密](/rest/api/appservice/webapps/deletefunctionsecret)、[删除函数机密槽](/rest/api/appservice/webapps/deletefunctionsecretslot)、[删除主机机密](/rest/api/appservice/webapps/deletehostsecret)和[删除主机机密槽](/rest/api/appservice/webapps/deletehostsecretslot) API 以编程方式删除函数和主机密钥。
 
-你还可以使用 [旧密钥管理 api 获取功能密钥](https://github.com/Azure/azure-functions-host/wiki/Key-management-API)，但建议改为使用 Azure 资源管理器 api。
+你也可以使用[旧的密钥管理 API 来获取函数密钥](https://github.com/Azure/azure-functions-host/wiki/Key-management-API)，但建议改用 Azure 资源管理器 API。
 
 ## <a name="api-key-authorization"></a>API 密钥的授权
 

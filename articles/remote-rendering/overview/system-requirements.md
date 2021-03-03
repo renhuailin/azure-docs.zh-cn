@@ -1,23 +1,19 @@
 ---
-title: 系统要求
+title: 系统需求
 description: 列出 Azure 远程呈现的系统要求
 author: florianborn71
 ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: article
 ms.custom: references_regions
-ms.openlocfilehash: 4380f14610fb0775c82aa79ec7cda9dc70cf0715
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: dd91622344263dc366a76c913ce0be95718550cd
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97722685"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101705154"
 ---
-# <a name="system-requirements"></a>系统要求
-
-> [!IMPORTANT]
-> Azure 远程渲染目前为公共预览版。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+# <a name="system-requirements"></a>系统需求
 
 本章列出了使用 *Azure 远程渲染* (ARR) 的最低系统要求。
 
@@ -86,7 +82,7 @@ Azure 远程呈现目前仅支持将 **HoloLens 2** 和 Windows 桌面作为目�
 
 请确保你的防火墙 (设备、路由器内部等 ) 不会阻止这些 IP 范围和以下端口范围：
 
-| 端口              | 协议  | Allow    |
+| 端口              | 协议  | 允许    |
 |-------------------|---------- |----------|
 | 49152-65534       | TCP/UDP | 传出 |
 
@@ -94,7 +90,7 @@ Azure 远程呈现目前仅支持将 **HoloLens 2** 和 Windows 桌面作为目�
 
 确保防火墙（在设备上、路由器内部等）未阻止以下端口：
 
-| 端口              | 协议 | Allow    | 说明 |
+| 端口              | 协议 | 允许    | 说明 |
 |-------------------|----------|----------|-------------|
 | 50051             | TCP      | 传出 | 初始连接 (HTTP 握手)  |
 | 8266              | UDP      | 传出 | 数据传输 |

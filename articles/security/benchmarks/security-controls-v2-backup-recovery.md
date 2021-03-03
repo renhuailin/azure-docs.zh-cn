@@ -4,31 +4,33 @@ description: Azure 安全基准 V2 备份和恢复
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/20/2020
+ms.date: 02/22/2021
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 089cf521a7c5428833be340001c88b870c568a8f
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: fd9a01868230efd9e9078171359d81302b472cd3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97368879"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101724415"
 ---
 # <a name="security-control-v2-backup-and-recovery"></a>安全控制 V2：备份和恢复
 
 备份和恢复包括用于确保在不同服务层执行、验证和保护数据和配置备份的控制措施。
 
+若要查看适用的内置 Azure 策略，请参阅 [Azure 安全基准管理法规符合性内置计划的详细信息：备份和恢复](../../governance/policy/samples/azure-security-benchmark#backup-and-recovery)
+
 ## <a name="br-1-ensure-regular-automated-backups"></a>BR-1：确保定期执行自动备份
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID (s)  |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | BR-1 | 10.1 | CP-2、CP4、CP-6、CP-9 |
 
 确保在发生意外事件后，备份系统和数据以保持业务连续性。 这应该由恢复点目标 (RPO) 和恢复时间目标 (RTO) 的任何目标定义。
 
-启用 Azure 备份，配置备份源（例如 Azure VM、SQL Server、HANA 数据库或文件共享）以及所需的频率和保持期。  
+启用 Azure 备份，并配置备份源 (如 Azure Vm、SQL Server、HANA 数据库或文件共享) ，以及所需的频率和保留期。
 
-为了提高保护级别，可启用异地冗余存储选项，将备份数据复制到次要区域，并使用跨区域还原进行恢复。
+为了获得更高的保护级别，可以启用异地冗余存储选项，将备份数据复制到次要区域，并使用跨区域还原进行恢复。
 
 - [企业规模业务连续性和灾难恢复](/azure/cloud-adoption-framework/ready/enterprise-scale/business-continuity-and-disaster-recovery)
 
@@ -50,15 +52,15 @@ ms.locfileid: "97368879"
 
 ## <a name="br-2-encrypt-backup-data"></a>BR-2：加密备份数据
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID (s)  |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | BR-2 | 10.2 | CP-9 |
 
-确保备份不受攻击。 这应包括对备份进行加密，以防止丧失机密性。   
+确保你的备份受到防范攻击的威胁。 这应包括对备份进行加密，以防止丧失机密性。
 
-对于使用 Azure 备份的本地备份，请使用所提供的密码提供静态加密。 对于常规 Azure 服务备份，系统会使用 Azure 平台管理的密钥自动加密备份数据。 你可选择使用客户管理的密钥对备份进行加密。 在这种情况下，请确保 Key Vault 中客户管理的密钥也在备份范围内。 
+对于使用 Azure 备份的本地备份，请使用所提供的密码提供静态加密。 对于常规 Azure 服务备份，系统会使用 Azure 平台管理的密钥自动加密备份数据。 你可选择使用客户管理的密钥对备份进行加密。 在这种情况下，请确保 Key Vault 中客户管理的密钥也在备份范围内。
 
-在 Azure 备份中使用 Azure 基于角色的访问控制、Azure Key Vault 或其他资源，以保护备份和客户管理的密钥。 此外，可启用高级安全功能，要求在更改或删除备份之前进行 MFA。
+在 Azure 备份、Azure Key Vault 或其他资源中使用 Azure 基于角色的访问控制来保护备份和客户管理的密钥。 此外，可启用高级安全功能，要求在更改或删除备份之前进行 MFA。
 
 - [Azure 备份中的安全功能概述](../../backup/security-overview.md)
 
@@ -80,7 +82,7 @@ ms.locfileid: "97368879"
 
 ## <a name="br-3-validate-all-backups-including-customer-managed-keys"></a>BR-3：验证所有备份，包括客户管理的密钥
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID (s)  |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | BR-3 | 10.3 | CP-4、CP-9 |
 
@@ -100,11 +102,11 @@ ms.locfileid: "97368879"
 
 ## <a name="br-4-mitigate-risk-of-lost-keys"></a>BR-4：减少密钥丢失风险
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID (s)  |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | BR-4 | 10.4 | CP-9 |
 
-确保你有适当的措施来防止和恢复丢失的密钥。 在 Azure Key Vault 中启用软删除和清除保护，以防止意外删除或恶意删除密钥。  
+确保已准备好措施来防止密钥丢失和从密钥丢失中恢复。 在 Azure Key Vault 中启用软删除和清除保护，以防止意外删除或恶意删除密钥。
 
 - [如何在 Key Vault 中启用软删除和清除保护](../../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 

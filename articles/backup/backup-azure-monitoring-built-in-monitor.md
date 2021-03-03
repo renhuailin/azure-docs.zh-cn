@@ -4,12 +4,12 @@ description: 本文介绍使用 Azure 门户对 Azure 备份工作负荷执行�
 ms.topic: conceptual
 ms.date: 03/05/2019
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: 74669a1347fac9f61d028d9cb1f3da174bb71f96
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 2273b66be88cb22a15d0779ed2918ba3d94da1ce
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99550331"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713365"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>监视 Azure 备份工作负荷
 
@@ -119,6 +119,18 @@ Azure 备份针对 Azure 备份保护的工作负荷提供内置的监视和警�
 若要停用/解决某个活动警报，可以选择与要停用的警报相对应的列表项。 这将打开一个屏幕，其中会显示有关警报的详细信息，顶部有一个“停用”按钮。 选择此按钮会将警报的状态更改为“非活动”。 还可以通过以下方式停用警报：右键单击与警报对应的列表项并选择“停用”。
 
 ![停用恢复服务保管库警报](media/backup-azure-monitoring-laworkspace/vault-alert-inactivation.png)
+
+## <a name="azure-monitor-alerts-for-azure-backup-preview"></a>Azure 备份 (预览版 Azure Monitor 警报) 
+
+Azure 备份还通过 Azure Monitor 提供警报，使用户能够在不同的 Azure 服务（包括备份）中获得一致的警报管理体验。 使用 Azure Monitor 警报，你可以将警报路由到 Azure 备份支持的任何通知通道，例如电子邮件、ITSM、Webhook、逻辑应用等。
+
+目前，此功能适用于适用于 PostgreSQL Server、Azure Blob 和 Azure 托管磁盘的 Azure 数据库。 为以下情况生成警报，并且可以通过导航到备份保管库并单击 " **警报** " 菜单项来访问这些警报：
+
+- 删除备份数据
+- 备份失败 (若要获取有关备份失败的警报，需要通过预览门户注册名为 **EnableAzureBackupJobFailureAlertsToAzureMonitor** 的 AFEC 标志) 
+- 还原失败 (若要获取有关还原失败的警报，需要通过预览门户注册名为 **EnableAzureBackupJobFailureAlertsToAzureMonitor** 的 AFEC 标志) 
+
+有关 Azure Monitor 警报的详细信息，请参阅 [Azure 中的警报概述](https://docs.microsoft.com/azure/azure-monitor/alerts/alerts-overview)。
 
 ## <a name="next-steps"></a>后续步骤
 

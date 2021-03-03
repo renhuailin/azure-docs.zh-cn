@@ -13,12 +13,12 @@ ms.date: 10/03/2018
 ms.author: ryanwi
 ms.reviewer: jlu, annaba, hirsin
 ROBOTS: NOINDEX
-ms.openlocfilehash: 4f6b2b1c0f584e092c9e8f7d330a94b0b54fd6f2
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: d68cfb91445e2055cb3c3feb88bf925987ea9852
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98197415"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687390"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>如何：从 Azure 访问控制服务迁移
 
@@ -113,7 +113,7 @@ https://<mynamespace>.accesscontrol.windows.net
 以下是访问控制组件停用计划：
 
 - **2017 年 11 月**：[停用](https://blogs.technet.microsoft.com/enterprisemobility/2017/09/18/marching-into-the-future-of-the-azure-ad-admin-experience-retiring-the-azure-classic-portal/) Azure 经典门户中的 Azure AD 管理体验。 届时，将通过以下新专用 URL 管理访问控制命名空间：`https://manage.windowsazure.com?restoreClassic=true`。 如有需要，可使用此 URl 查看现有命名空间、启用/禁用命名空间和删除命名空间。
-- **2018 年 4 月 2 日**：完全停用 Azure 经典门户，这意味着，不再可以通过任何 URL 管理访问控制命名空间。 此时，不能禁用/启用、删除或枚举访问控制命名空间。 但可通过 `https://\<namespace\>.accesscontrol.windows.net` 访问功能完善的访问控制管理门户。 访问控制的其他所有组件继续正常运行。
+- **2018 年 4 月 2 日**：完全停用 Azure 经典门户，这意味着，不再可以通过任何 URL 管理访问控制命名空间。 此时，不能禁用/启用、删除或枚举访问控制命名空间。 但可通过 `https://<namespace>.accesscontrol.windows.net` 访问功能完善的访问控制管理门户。 访问控制的其他所有组件继续正常运行。
 - **2018 年 11 月 7 日**：永久关闭所有访问控制组件。 这包括访问控制管理门户、管理服务、STS 和令牌转换规则引擎。 此时，发送到 () 的访问控制的任何请求都将 \<namespace\> 失败。 应在此之前将所有现有应用和服务迁移到其他技术。
 
 > [!NOTE]
@@ -197,7 +197,7 @@ Azure AD 也未必支持与访问控制完全相同的身份验证协议。 例�
 | Facebook、Google、Yahoo 帐户 | 支持 | 都不支持 |
 | **协议和 SDK 兼容性** | | |
 | WIF | 支持 | 支持，但说明有限 |
-| WS-Federation | 支持 | 支持 |
+| WS 联合身份验证 | 支持 | 支持 |
 | OAuth 2.0 | 支持草案 13 | 支持最新规范 RFC 6749 |
 | WS-Trust | 支持 | 不支持 |
 | **标记格式** | | |
@@ -248,7 +248,7 @@ Azure AD 也未必支持与访问控制完全相同的身份验证协议。 例�
 | Facebook、Google、Yahoo 帐户 | 支持 | 本身支持 Facebook 和 Google，使用自定义策略通过 OpenID Connect 联合支持 Yahoo |
 | **协议和 SDK 兼容性** | | |
 | Windows Identity Foundation (WIF) | 支持 | 不支持 |
-| WS-Federation | 支持 | 不支持 |
+| WS 联合身份验证 | 支持 | 不支持 |
 | OAuth 2.0 | 支持草案 13 | 支持最新规范 RFC 6749 |
 | WS-Trust | 支持 | 不支持 |
 | **标记格式** | | |

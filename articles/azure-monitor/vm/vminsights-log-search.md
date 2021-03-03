@@ -1,25 +1,25 @@
 ---
-title: 如何从用于 VM 的 Azure Monitor 查询日志
-description: 用于 VM 解决方案的 Azure Monitor 收集指标和日志数据，本文介绍了这些记录并包含了示例查询。
+title: 如何从 VM insights 查询日志
+description: VM insights 解决方案将指标和日志数据收集到，本文介绍了这些记录，并包括示例查询。
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
-ms.openlocfilehash: ae0bc6ea35d5c6e3ebe0cd7f232e5c8b1e637d9d
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: bbecb15173c929aee46e7d1eeb5e83aab86430f5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100608665"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713518"
 ---
-# <a name="how-to-query-logs-from-azure-monitor-for-vms"></a>如何从用于 VM 的 Azure Monitor 查询日志
+# <a name="how-to-query-logs-from-vm-insights"></a>如何从 VM insights 查询日志
 
-用于 VM 的 Azure Monitor 收集性能和连接指标、计算机和进程库存数据以及运行状况信息，并将其转发到 Azure Monitor 中的 Log Analytics 工作区。  此数据可用于 Azure Monitor 中的[查询](../log-query/log-query-overview.md)。 此数据可应用于包括迁移计划、容量分析、发现和按需性能故障排除在内的方案。
+VM insights 收集性能和连接指标、计算机和进程清单数据以及健康状况信息，并将其转发到 Azure Monitor 中的 Log Analytics 工作区。  此数据可用于 Azure Monitor 中的[查询](../logs/log-query-overview.md)。 此数据可应用于包括迁移计划、容量分析、发现和按需性能故障排除在内的方案。
 
 ## <a name="map-records"></a>映射记录
 
-除了在进程或计算机启动或载入到用于 VM 的 Azure Monitor 映射功能时生成的记录以外，还会针对每个唯一计算机和进程每小时生成一条记录。 这些记录的属性在下表中列出。 ServiceMapComputer_CL 事件中的字段和值映射到 ServiceMap Azure 资源管理器 API 中计算机资源的字段。 ServiceMapProcess_CL 事件中的字段和值映射到 ServiceMap Azure 资源管理器 API 中进程资源的字段。 ResourceName_s 字段与相应的 Azure Resource Manager 资源中的名称字段匹配。 
+除了在进程或计算机启动或载入到 VM insights 地图功能时生成的记录外，还会针对每个唯一计算机和进程每小时生成一个记录。 这些记录的属性在下表中列出。 ServiceMapComputer_CL 事件中的字段和值映射到 ServiceMap Azure 资源管理器 API 中计算机资源的字段。 ServiceMapProcess_CL 事件中的字段和值映射到 ServiceMap Azure 资源管理器 API 中进程资源的字段。 ResourceName_s 字段与相应的 Azure Resource Manager 资源中的名称字段匹配。 
 
 包含内部生成的可用于标识唯一进程和计算机的属性：
 
@@ -51,7 +51,7 @@ ms.locfileid: "100608665"
 |:--|:--|
 |方向 |连接方向，值为 *inbound* 或 *outbound* |
 |计算机 |计算机 FQDN |
-|过程 |进程或进程组的标识，状态为正在启动/接受连接 |
+|进程 |进程或进程组的标识，状态为正在启动/接受连接 |
 |SourceIp |源的 IP 地址 |
 |DestinationIp |目标的 IP 地址 |
 |DestinationPort |目标的端口号 |
@@ -130,9 +130,9 @@ VMBoundPort 中的每个记录按以下字段标识：
 
 | 属性 | 说明 |
 |:--|:--|
-|过程 | 标识与端口关联的进程（或进程组）。|
+|进程 | 标识与端口关联的进程（或进程组）。|
 |Ip | 端口 IP 地址（可以是通配符 IP *0.0.0.0*） |
-|Port |端口号 |
+|端口 |端口号 |
 |协议 | 协议。  例如 *tcp* 或 *udp*（目前仅支持 *tcp*）。|
  
 端口派生自上述五个字段时使用的标识，存储在 PortId 属性中。 可以使用此属性快速查找一段时间内特定端口的记录。 
@@ -226,11 +226,11 @@ VMBoundPort 中的每个记录按以下字段标识：
 |Computer | 计算机 FQDN | 
 |AgentId | Log Analytics 代理的唯一 ID |
 |计算机 | ServiceMap 公开的计算机的 Azure 资源管理器资源的名称。 它的格式为 *m-{GUID}*，其中 *Guid* 是与 AgentId 相同的 guid。 | 
-|过程 | 服务映射进程的唯一标识符。 它采用 *p-{GUID}* 的形式。 
+|进程 | 服务映射进程的唯一标识符。 它采用 *p-{GUID}* 的形式。 
 |ExecutableName | 进程可执行文件的名称 | 
 |DisplayName | 进程显示名称 |
 |角色 | 进程角色： *web* 服务器、 *microsoft.windows.appserver.2008*、 *databaseServer*、 *ldapServer*、 *smbServer* |
-|Group | 进程组名称。 同一组中的进程在逻辑上是相关的，例如同一个产品或系统组件的一部分。 |
+|组 | 进程组名称。 同一组中的进程在逻辑上是相关的，例如同一个产品或系统组件的一部分。 |
 |StartTime | 进程池启动时间 |
 |FirstPid | 进程池中的第一个 PID |
 |说明 | 进程说明 |
@@ -473,6 +473,6 @@ let remoteMachines = remote | summarize by RemoteMachine;
 
 ## <a name="next-steps"></a>后续步骤
 
-* 如果不了解如何在 Azure Monitor 中编写日志查询，请参阅 Azure 门户中的[如何使用 Log Analytics](../log-query/log-analytics-tutorial.md) 来编写日志查询。
+* 如果不了解如何在 Azure Monitor 中编写日志查询，请参阅 Azure 门户中的[如何使用 Log Analytics](../logs/log-analytics-tutorial.md) 来编写日志查询。
 
-* 了解如何 [编写搜索查询](../log-query/get-started-queries.md)。
+* 了解如何 [编写搜索查询](../logs/get-started-queries.md)。

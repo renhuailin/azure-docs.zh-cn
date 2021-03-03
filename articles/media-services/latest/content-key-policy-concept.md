@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 29907a12f7edf7439f9bcfae0a1ad46b395d9ecf
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 1333bbcc7e2ea9219d28fcc1e63f21a833c2bc6f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98897201"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101709557"
 ---
 # <a name="content-key-policies"></a>内容密钥策略
 
@@ -64,4 +64,4 @@ ms.locfileid: "98897201"
 
 * [使用 AES-128 动态加密和密钥传递服务](protect-with-aes128.md)
 * [使用 DRM 动态加密和许可证传送服务](protect-with-drm.md)
-* [EncodeHTTPAndPublishAESEncrypted](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/tree/master/NETCore/EncodeHTTPAndPublishAESEncrypted)
+* [基本 AES 明文密钥加密和流式处理示例代码](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/ContentProtection/BasicAESClearKey)

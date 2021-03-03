@@ -6,20 +6,20 @@ author: nabhishek
 ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 11/09/2020
-ms.openlocfilehash: a0b406e2937e9ea8d63a1c993f1dbdbafd1bd1dc
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.date: 02/18/2021
+ms.openlocfilehash: aa6c7dd786a90abadb43a13eaa73a78a2a61bd0a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101094736"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719281"
 ---
 # <a name="copy-data-from-a-sql-server-database-to-azure-blob-storage-by-using-the-copy-data-tool"></a>使用“复制数据”工具将数据从 SQL Server 数据库复制到 Azure Blob 存储
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
 > * [版本 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [当前版本](tutorial-hybrid-copy-data-tool.md)
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 在本教程中，我们将使用 Azure 门户创建数据工厂。 然后，使用“复制数据”工具创建一个管道，用于将数据从 SQL Server 数据库复制到 Azure Blob 存储。
 
@@ -223,7 +223,7 @@ ms.locfileid: "101094736"
 
 
 ## <a name="next-steps"></a>后续步骤
-此示例中的管道可将数据从 SQL Server 数据库复制到 Blob 存储。 你已了解如何：
+此示例中的管道可将数据从 SQL Server 数据库复制到 Blob 存储。 你已了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建数据工厂。

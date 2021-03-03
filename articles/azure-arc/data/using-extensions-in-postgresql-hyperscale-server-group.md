@@ -10,12 +10,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 3b9c3c66e58ae51773a959aba0b2c76d97b44445
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 6586375d7db71274f40eb62aeb24f9daad0d7c2e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92309491"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101688291"
 ---
 # <a name="use-postgresql-extensions-in-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>在启用了 Azure Arc 的 PostgreSQL 超大规模服务器组中使用 PostgreSQL 扩展
 
@@ -24,40 +24,55 @@ ms.locfileid: "92309491"
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-## <a name="list-of-extensions"></a>扩展列表
-除了中的扩展外 [`contrib`](https://www.postgresql.org/docs/12/contrib.html) ，启用了 Azure Arc 的 PostgreSQL 超大规模服务器组的容器中存在的扩展列表为：
-- `citus`，v：9。4
-- `pg_cron`，v：1。2
-- `plpgsql`，v：1。0
-- `postgis`，v：3.0。2
-- `plv8`，v：2.3.14
+## <a name="supported-extensions"></a>支持的扩展
+标准 [`contrib`](https://www.postgresql.org/docs/12/contrib.html) 扩展和以下扩展已部署到启用了 Azure Arc 的 PostgreSQL 超大规模服务器组的容器中：
+- [`citus`](https://github.com/citusdata/citus)，v：9.4。 默认情况下，会加载 Citus extension by [Citus 数据](https://www.citusdata.com/) ，因为它将超大规模功能引入 PostgreSQL 引擎。 不支持从 Azure Arc PostgreSQL 超大规模服务器组删除 Citus 扩展。
+- [`pg_cron`](https://github.com/citusdata/pg_cron)，v：1。2
+- [`pgaudit`](https://www.pgaudit.org/)，v：1。4
+- plpgsql，v：1。0
+- [`postgis`](https://postgis.net)，v：3.0。2
+- [`plv8`](https://plv8.github.io/)，v：2.3.14
 
-此列表将不断演变，并将在本文档中发布更新。 除了上面列出的扩展名外，还不可能添加扩展。
+对此列表进行的更新将随着时间的推移而公布。
+
+> [!IMPORTANT]
+> 尽管你可能会向你的服务器组提供不是上面列出的扩展，但在此预览版中，它不会保留在系统中。 这意味着在系统重新启动后，它将不可用，您需要再次将其打开。
 
 本指南将介绍如何使用其中两个扩展：
-- [PostGIS](https://postgis.net/)
+- [`PostGIS`](https://postgis.net/)
 - [`pg_cron`](https://github.com/citusdata/pg_cron)
 
+## <a name="which-extensions-need-to-be-added-to-the-shared_preload_libraries-and-created"></a>需要将哪些扩展添加到 shared_preload_libraries 并创建？
 
-## <a name="manage-extensions"></a>管理扩展
+|Extensions   |需要添加到 shared_preload_libraries  |需要创建 |
+|-------------|--------------------------------------------------|---------------------- |
+|`pg_cron`      |否       |是        |
+|`pg_audit`     |是       |是        |
+|`plpgsql`      |是       |是        |
+|`postgis`      |否       |是        |
+|`plv8`      |否       |是        |
 
-### <a name="enable-extensions"></a>启用扩展
-对于属于的扩展，不需要执行此步骤 `contrib` 。
-启用扩展的命令的常规格式为：
+## <a name="add-extensions-to-the-shared_preload_libraries"></a>将扩展添加到 shared_preload_libraries
+有关 shared_preload_libraries 的详细信息，请参阅 [此处](https://www.postgresql.org/docs/current/runtime-config-client.html#GUC-SHARED-PRELOAD-LIBRARIES)的 PostgreSQL 文档：
+- 对于作为的一部分的扩展，不需要执行此步骤。 `contrib`
+- 对于不需要 shared_preload_libraries 预加载的扩展，此步骤不是必需的。 对于这些扩展，您可以跳到下一个段落 [创建扩展](https://docs.microsoft.com/azure/azure-arc/data/using-extensions-in-postgresql-hyperscale-server-group#create-extensions)。
 
-#### <a name="enable-an-extension-at-the-creation-time-of-a-server-group"></a>在服务器组的创建时间启用扩展：
+### <a name="add-an-extension-at-the-creation-time-of-a-server-group"></a>在创建服务器组时添加扩展
 ```console
 azdata arc postgres server create -n <name of your postgresql server group> --extensions <extension names>
 ```
-#### <a name="enable-an-extension-on-an-instance-that-already-exists"></a>对已存在的实例启用扩展：
+### <a name="add-an-extension-to-an-instance-that-already-exists"></a>将扩展添加到已存在的实例
 ```console
 azdata arc postgres server edit -n <name of your postgresql server group> --extensions <extension names>
 ```
 
-#### <a name="get-the-list-of-extensions-enabled"></a>获取已启用的扩展列表：
+
+
+
+## <a name="show-the-list-of-extensions-added-to-shared_preload_libraries"></a>显示添加到 shared_preload_libraries 的扩展的列表
 运行以下命令之一。
 
-##### <a name="with-azure-data-cli-azdata"></a>有 [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]
+### <a name="with-an-azdata-cli-command"></a>使用 azdata CLI 命令
 ```console
 azdata arc postgres server show -n <server group name>
 ```
@@ -74,7 +89,7 @@ azdata arc postgres server show -n <server group name>
       ]
     },
 ```
-##### <a name="with-kubectl"></a>With kubectl
+### <a name="with-kubectl"></a>With kubectl
 ```console
 kubectl describe postgresql-12s/postgres02
 ```
@@ -87,59 +102,34 @@ Engine:
 ```
 
 
-### <a name="create-extensions"></a>创建扩展：
+## <a name="create-extensions"></a>创建扩展
 用所选的客户端工具连接到你的服务器组，然后运行标准 PostgreSQL 查询：
 ```console
 CREATE EXTENSION <extension name>;
 ```
 
-### <a name="get-the-list-of-extension-created-in-your-server-group"></a>获取在服务器组中创建的扩展列表：
+## <a name="show-the-list-of-extensions-created"></a>显示已创建的扩展的列表
 用所选的客户端工具连接到你的服务器组，然后运行标准 PostgreSQL 查询：
 ```console
 select * from pg_extension;
 ```
 
-### <a name="drop-an-extension-from-your-server-group"></a>从服务器组中删除扩展：
+## <a name="drop-an-extension"></a>删除扩展
 用所选的客户端工具连接到你的服务器组，然后运行标准 PostgreSQL 查询：
 ```console
 drop extension <extension name>;
 ```
 
-## <a name="use-the-postgis-and-the-pg_cron-extensions"></a>使用 PostGIS 和 Pg_cron 扩展
-
-### <a name="the-postgis-extension"></a>PostGIS 扩展
-
-可以在现有服务器组上启用 PostGIS 扩展，也可以创建一个已启用扩展的新扩展：
-
-**在服务器组的创建时启用扩展：**
-```console
-azdata arc postgres server create -n <name of your postgresql server group> --extensions <extension names>
-
-#Example:
-azdata arc postgres server create -n pg2 -w 2 --extensions postgis
-```
-
-**对已存在的实例启用扩展：**
-```console
-azdata arc postgres server edit -n <name of your postgresql server group> --extensions <extension names>
-
-#Example:
-azdata arc postgres server edit --extensions postgis -n pg2
-```
-
-若要验证安装了哪些扩展，请在使用常用的 PostgreSQL 客户端工具（如 Azure Data Studio）连接到实例后使用以下标准 PostgreSQL 命令：
-```console
-select * from pg_extension;
-```
-
-对于 PostGIS 示例，先从 MIT 的城市部的城市研究中获取 [示例数据](http://duspviz.mit.edu/tutorials/intro-postgis/) & 计划。 `apt-get install unzip`使用 VM 进行测试时，可能需要运行以安装解压缩。
+## <a name="the-postgis-extension"></a>`PostGIS`扩展
+不需要将扩展添加到中 `PostGIS` `shared_preload_libraries` 。
+& 规划，获取 MIT 的城市研究的 [示例数据](http://duspviz.mit.edu/tutorials/intro-postgis/) 。 `apt-get install unzip`根据需要运行以安装解压缩。
 
 ```console
 wget http://duspviz.mit.edu/_assets/data/intro-postgis-datasets.zip
 unzip intro-postgis-datasets.zip
 ```
 
-接下来，请连接到数据库，并创建 PostGIS 扩展：
+接下来，请连接到数据库，并创建 `PostGIS` 扩展：
 
 ```console
 CREATE EXTENSION postgis;
@@ -165,7 +155,7 @@ CREATE TABLE coffee_shops (
 CREATE INDEX coffee_shops_gist ON coffee_shops USING gist (geom);
 ```
 
-现在，我们可以将 PostGIS 与 scale out 功能组合起来，并将 coffee_shops 表分散起来：
+现在，我们可以 `PostGIS` 将 coffee_shops 表分散起来，从而结合扩展功能：
 
 ```sql
 SELECT create_distributed_table('coffee_shops', 'id');
@@ -177,7 +167,7 @@ SELECT create_distributed_table('coffee_shops', 'id');
 \copy coffee_shops(id,name,address,city,state,zip,lat,lon) from cambridge_coffee_shops.csv CSV HEADER;
 ```
 
-并 `geom` 在 PostGIS 数据类型中用正确编码的纬度和经度填充字段 `geometry` ：
+并 `geom` 在数据类型中用正确编码的纬度和经度填充字段 `PostGIS` `geometry` ：
 
 ```sql
 UPDATE coffee_shops SET geom = ST_SetSRID(ST_MakePoint(lon,lat),4326);
@@ -190,15 +180,15 @@ SELECT name, address FROM coffee_shops ORDER BY geom <-> ST_SetSRID(ST_MakePoint
 ```
 
 
-### <a name="the-pg_cron-extension"></a>Pg_cron 扩展
+## <a name="the-pg_cron-extension"></a>`pg_cron`扩展
 
-`pg_cron`除了 PostGIS，让我们在 PostgreSQL 服务器组上启用：
+现在，让 `pg_cron` 我们通过将其添加到 shared_preload_libraries 来在 PostgreSQL 服务器组上启用：
 
 ```console
-azdata postgres server update -n pg2 -ns arc --extensions postgis,pg_cron
+azdata postgres server update -n pg2 -ns arc --extensions pg_cron
 ```
 
-请注意，这会重启节点并安装其他扩展，这可能需要 2-3 分钟。
+服务器组将重新启动并完成扩展的安装。 可能需要2到3分钟的时间。
 
 现在，我们可以再次连接，并创建 `pg_cron` 扩展：
 
@@ -206,7 +196,7 @@ azdata postgres server update -n pg2 -ns arc --extensions postgis,pg_cron
 CREATE EXTENSION pg_cron;
 ```
 
-对于测试目的，允许创建一个表，该表 `the_best_coffee_shop` 采用前面表中的随机名称 `coffee_shops` ，并设置表内容：
+对于测试目的，允许创建一个表，该表 `the_best_coffee_shop` 采用前面表中的随机名称 `coffee_shops` ，并插入表内容：
 
 ```sql
 CREATE TABLE the_best_coffee_shop(name text);
@@ -238,10 +228,8 @@ SELECT * FROM the_best_coffee_shop;
 
 有关语法的完整详细信息，请参阅 [PG_CRON 自述文件](https://github.com/citusdata/pg_cron) 。
 
->[!NOTE]
->不支持删除 `citus` 扩展。 `citus`需要扩展才能提供超大规模体验。
 
-## <a name="next-steps"></a>后续步骤：
-- 阅读有关[plv8](https://plv8.github.io/)的文档
-- 阅读有关[PostGIS](https://postgis.net/)的文档
+## <a name="next-steps"></a>后续步骤
+- 阅读文档 [`plv8`](https://plv8.github.io/)
+- 阅读文档 [`PostGIS`](https://postgis.net/)
 - 阅读文档 [`pg_cron`](https://github.com/citusdata/pg_cron)

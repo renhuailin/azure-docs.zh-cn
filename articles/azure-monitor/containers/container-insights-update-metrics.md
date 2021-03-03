@@ -1,19 +1,19 @@
 ---
-title: 如何更新用于容器的 Azure Monitor 以启用指标 | Microsoft Docs
-description: 本文介绍如何更新用于容器的 Azure Monitor，以启用支持浏览聚合指标并针对其发出警报的自定义指标功能。
+title: 如何更新容器见解以获取指标 |Microsoft Docs
+description: 本文介绍如何更新 Container insights，以启用支持对聚合指标进行浏览和警报的自定义指标功能。
 ms.topic: conceptual
 ms.date: 10/09/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 37c19cd074e9ce1985d5d0e82137d8603913d4bd
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: edca7e4e8f6a9ea8dd9efdaafab8c906efd671b6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100607364"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708265"
 ---
-# <a name="how-to-update-azure-monitor-for-containers-to-enable-metrics"></a>如何更新用于容器的 Azure Monitor 以启用指标
+# <a name="how-to-update-container-insights-to-enable-metrics"></a>如何更新容器见解以启用指标
 
-容器 Azure Monitor 引入了支持从 Azure Kubernetes 服务收集指标 (AKS) 和启用了 Azure Arc 的 Kubernetes 群集节点和 pod，并将它们写入 Azure Monitor 度量值存储。 此项更改旨在更及时地呈现性能图表中的聚合计算结果（平均值、计数、最大值、最小值与总和），支持在 Azure 门户仪表板中固定性能图表，以及支持指标警报。
+容器见解正在引入对从 Azure Kubernetes 服务收集指标 (AKS) 和启用了 Azure Arc 的 Kubernetes 群集节点和 pod 并将它们写入 Azure Monitor 指标存储区的支持。 此项更改旨在更及时地呈现性能图表中的聚合计算结果（平均值、计数、最大值、最小值与总和），支持在 Azure 门户仪表板中固定性能图表，以及支持指标警报。
 
 >[!NOTE]
 >此功能当前不支持 Azure Red Hat OpenShift 群集。
@@ -47,7 +47,7 @@ ms.locfileid: "100607364"
 
 ## <a name="upgrade-a-cluster-from-the-azure-portal"></a>通过 Azure 门户升级群集
 
-对于用于容器的 Azure Monitor 监视的现有 AKS 群集，在从 Azure Monitor 中的多群集视图选择要查看其运行状况的群集，或者直接从左窗格中的“见解”选择该群集后，门户顶部应会显示一个横幅。
+对于 AKS 监视的现有群集，从左侧窗格 Azure Monitor 中选择 "见解"，然后从左侧窗格中选择 " **见解** "，从 "多群集" 视图中选择要查看其运行状况的群集后，可以在门户顶部看到一个横幅。
 
 ![Azure 门户中的“升级 AKS 群集”横幅](./media/container-insights-update-metrics/portal-banner-enable-01.png)
 

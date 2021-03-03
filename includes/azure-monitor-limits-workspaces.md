@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: 1f461c4870b398a49387472c49d45b90929405c7
-ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
+ms.openlocfilehash: c55314764f973a5a015a2bfc02815a58ce659901
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100529694"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734009"
 ---
 **数据收集量和保留期** 
 
@@ -30,7 +30,7 @@ ms.locfileid: "100529694"
 
 | 定价层    | 工作区限制 | 注释
 |:---|:---|:---|
-| 免费层  | 10 个 | 此限制不能提高。 |
+| 免费层  | 10 | 此限制不能提高。 |
 | 其他所有层 | 无限制 | 你会受到资源组中的资源数以及每个订阅的资源组数的限制。 |
 
 **Azure 门户**
@@ -72,11 +72,11 @@ ms.locfileid: "100529694"
 
 **<a name="data-ingestion-volume-rate">数据引入速率</a>**
 
-Azure Monitor 是一种大规模数据服务，每月为成千上万的客户发送数 TB 的数据，并且此数据仍在不断增长。 引入量速率限制旨在使 Azure Monitor 客户与多租户环境中突然出现的引入高峰相隔绝。 为工作区定义的默认的引入量速率阈值为 500 M（压缩量），大约相应于未压缩时的每分钟 6 GB 的速率 - 根据日志长度及其压缩率，不同数据类型的实际大小可能不同。 通过[诊断设置](../articles/azure-monitor/platform/diagnostic-settings.md)，卷速率限制适用于从 Azure 资源引入的数据。 达到容量限制时，重试机制会在 30 分钟内 4 次尝试引入数据，如果操作失败则将其删除。 它不适用于从[代理](../articles/azure-monitor/platform/agents-overview.md)或[数据收集器 API](../articles/azure-monitor/platform/data-collector-api.md) 引入的数据。
+Azure Monitor 是一种大规模数据服务，每月为成千上万的客户发送数 TB 的数据，并且此数据仍在不断增长。 引入量速率限制旨在使 Azure Monitor 客户与多租户环境中突然出现的引入高峰相隔绝。 为工作区定义的默认的引入量速率阈值为 500 M（压缩量），大约相应于未压缩时的每分钟 6 GB 的速率 - 根据日志长度及其压缩率，不同数据类型的实际大小可能不同。 通过[诊断设置](../articles/azure-monitor/essentials/diagnostic-settings.md)，卷速率限制适用于从 Azure 资源引入的数据。 达到容量限制时，重试机制会在 30 分钟内 4 次尝试引入数据，如果操作失败则将其删除。 它不适用于从[代理](../articles/azure-monitor/agents/agents-overview.md)或[数据收集器 API](../articles/azure-monitor/logs/data-collector-api.md) 引入的数据。
 
 如果将数据发送至工作区时采用的引入量速率高于工作区中配置的阈值的 80%，则当继续超过阈值时，会每 6 小时向你工作区中的“操作”表发送一个事件。 如果引入量速率超过阈值，则当继续超过阈值时，某些数据会被放弃，并且每 6 小时向你工作区中的“操作”表发送一个事件。 如果引入量速率继续超过阈值，或者预计很快会达到阈值，你可打开支持请求，请求调高阈值。 
 
-请参阅 [在 Azure Monitor 中监视 Log Analytics 工作区的运行状况](../articles/azure-monitor/platform/monitor-workspace.md)，以创建在达到任何引入限制时主动通知的警报规则。
+请参阅 [在 Azure Monitor 中监视 Log Analytics 工作区的运行状况](../articles/azure-monitor/logs/monitor-workspace.md)，以创建在达到任何引入限制时主动通知的警报规则。
 
 >[!NOTE]
->根据 Log Analytics 的使用时长，你可能有权使用旧的定价层。 详细了解 [Log Analytics 的旧定价层](../articles/azure-monitor/platform/manage-cost-storage.md#legacy-pricing-tiers)。
+>根据 Log Analytics 的使用时长，你可能有权使用旧的定价层。 详细了解 [Log Analytics 的旧定价层](../articles/azure-monitor/logs/manage-cost-storage.md#legacy-pricing-tiers)。

@@ -4,15 +4,15 @@ description: 应用服务安全基线为实现 Azure 安全基准中指定的安
 author: msmbaldwin
 ms.service: app-service
 ms.topic: conceptual
-ms.date: 11/17/2020
+ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: f21c819f82051572e8a3dd01664053ade9196484
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: dd612e7e3c54a000d989c5a2f3a633d06d6d11cb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101095043"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101718286"
 ---
 # <a name="azure-security-baseline-for-app-service"></a>适用于应用服务的 Azure 安全基准
 
@@ -20,15 +20,15 @@ ms.locfileid: "101095043"
 
 若要查看应用服务如何完全映射到 Azure 安全基准，请参阅 [完整的应用服务安全基线映射文件](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)。
 
-## <a name="network-security"></a>网络安全性
+## <a name="network-security"></a>网络安全
 
-[有关详细信息，请参阅 *Azure 安全基线：* 网络安全](../security/benchmarks/security-control-network-security.md)。
+[有关详细信息，请参阅 *Azure 安全基线：* 网络安全性](../security/benchmarks/security-control-network-security.md)。
 
 ### <a name="11-protect-azure-resources-within-virtual-networks"></a>1.1：保护虚拟网络中的 Azure 资源
 
 **指南**：使用隔离定价层中的应用服务时，也称为应用服务环境 (ASE) ，可以直接将其部署到 Azure 虚拟网络中的子网中。 使用网络安全组来保护你的 Azure 应用服务环境，方法是阻止入站和出站流量到你的虚拟网络中的资源，或限制对应用服务环境中的应用的访问。
 
-默认情况下，网络安全组以最低优先级包含隐式拒绝规则，这要求你显式添加允许规则。 根据最小特权网络方法为网络安全组添加允许规则。 用于承载应用服务环境的底层虚拟机不能直接访问，因为它们在 Microsoft 管理的订阅中。
+默认情况下，网络安全组以最低优先级包含隐式拒绝规则，并要求你添加显式允许规则。 根据最小特权网络方法为网络安全组添加允许规则。 用于承载应用服务环境的底层虚拟机不能直接访问，因为它们在 Microsoft 管理的订阅中。
 
 通过 Web 应用程序防火墙 (WAF) 启用 Azure 应用程序网关来路由流量，从而保护应用服务环境。 将服务终结点与应用程序网关结合使用，以保护应用程序的入站发布流量。  
 
@@ -57,9 +57,17 @@ ms.locfileid: "101095043"
 
 - [如何创建内部 ASE](environment/create-ilb-ase.md)
 
-**Azure 安全中心监视**：目前不可用
-
 **责任**：客户
+
+**Azure 安全中心监视**： [azure 安全基准](/home/mbaldwin/docs/asb/azure-docs-pr/articles/governance/policy/samples/azure-security-benchmark.md) 是安全中心的默认策略计划，是 [安全中心建议](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/security-center-recommendations.md)的基础。 安全中心会自动启用与此控件相关的 Azure 策略定义。 与此控件相关的警报可能需要 [Azure Defender](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/azure-defender.md) 计划相关服务。
+
+**Azure 策略内置定义-Microsoft**：
+
+[!INCLUDE [Resource Policy for Microsoft.Network 1.1](../../includes/policy/standards/asb/rp-controls/microsoft.network-1-1.md)]
+
+**Azure 策略内置定义-Microsoft**：
+
+[!INCLUDE [Resource Policy for Microsoft.Web 1.1](../../includes/policy/standards/asb/rp-controls/microsoft.web-1-1.md)]
 
 ### <a name="12-monitor-and-log-the-configuration-and-traffic-of-virtual-networks-subnets-and-network-interfaces"></a>1.2：监视并记录虚拟网络、子网和网络接口的配置与流量
 
@@ -73,9 +81,13 @@ ms.locfileid: "101095043"
 
 - [如何启用应用服务的监视和保护](../security-center/defender-for-app-service-introduction.md)
 
-**Azure 安全中心监视**：是
-
 **责任**：客户
+
+**Azure 安全中心监视**： [azure 安全基准](/home/mbaldwin/docs/asb/azure-docs-pr/articles/governance/policy/samples/azure-security-benchmark.md) 是安全中心的默认策略计划，是 [安全中心建议](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/security-center-recommendations.md)的基础。 安全中心会自动启用与此控件相关的 Azure 策略定义。 与此控件相关的警报可能需要 [Azure Defender](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/azure-defender.md) 计划相关服务。
+
+**Azure 策略内置定义-Microsoft**：
+
+[!INCLUDE [Resource Policy for Microsoft.Network 1.2](../../includes/policy/standards/asb/rp-controls/microsoft.network-1-2.md)]
 
 ### <a name="13-protect-critical-web-applications"></a>1.3：保护关键 Web 应用程序
 
@@ -108,9 +120,13 @@ ms.locfileid: "101095043"
 
 - [跟踪 WAF 警报并通过 Azure Monitor 轻松监视趋势 ](../azure-monitor/overview.md)
 
-**Azure 安全中心监视**：是
-
 **责任**：客户
+
+**Azure 安全中心监视**： [azure 安全基准](/home/mbaldwin/docs/asb/azure-docs-pr/articles/governance/policy/samples/azure-security-benchmark.md) 是安全中心的默认策略计划，是 [安全中心建议](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/security-center-recommendations.md)的基础。 安全中心会自动启用与此控件相关的 Azure 策略定义。 与此控件相关的警报可能需要 [Azure Defender](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/azure-defender.md) 计划相关服务。
+
+**Azure 策略内置定义-Microsoft**：
+
+[!INCLUDE [Resource Policy for Microsoft.Web 1.3](../../includes/policy/standards/asb/rp-controls/microsoft.web-1-3.md)]
 
 ### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1.4：拒绝与已知恶意的 IP 地址进行通信
 
@@ -130,9 +146,13 @@ ms.locfileid: "101095043"
 
 - [如锁定应用服务环境中所述，保护 ASE](environment/firewall-integration.md)
 
-**Azure 安全中心监视**：是
-
 **责任**：客户
+
+**Azure 安全中心监视**： [azure 安全基准](/home/mbaldwin/docs/asb/azure-docs-pr/articles/governance/policy/samples/azure-security-benchmark.md) 是安全中心的默认策略计划，是 [安全中心建议](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/security-center-recommendations.md)的基础。 安全中心会自动启用与此控件相关的 Azure 策略定义。 与此控件相关的警报可能需要 [Azure Defender](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/azure-defender.md) 计划相关服务。
+
+**Azure 策略内置定义-Microsoft**：
+
+[!INCLUDE [Resource Policy for Microsoft.Network 1.4](../../includes/policy/standards/asb/rp-controls/microsoft.network-1-4.md)]
 
 ### <a name="15-record-network-packets"></a>1.5：记录网络数据包
 
@@ -140,9 +160,13 @@ ms.locfileid: "101095043"
 
 - [Azure 应用程序网关上的 Azure Web 应用程序防火墙](../web-application-firewall/ag/ag-overview.md)
 
-**Azure 安全中心监视**：是
-
 **责任**：客户
+
+**Azure 安全中心监视**： [azure 安全基准](/home/mbaldwin/docs/asb/azure-docs-pr/articles/governance/policy/samples/azure-security-benchmark.md) 是安全中心的默认策略计划，是 [安全中心建议](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/security-center-recommendations.md)的基础。 安全中心会自动启用与此控件相关的 Azure 策略定义。 与此控件相关的警报可能需要 [Azure Defender](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/azure-defender.md) 计划相关服务。
+
+**Azure 策略内置定义-Microsoft**：
+
+[!INCLUDE [Resource Policy for Microsoft.Network 1.5](../../includes/policy/standards/asb/rp-controls/microsoft.network-1-5.md)]
 
 ### <a name="17-manage-traffic-to-web-applications"></a>1.7：管理发往 Web 应用程序的流量
 
@@ -168,11 +192,11 @@ ms.locfileid: "101095043"
 
 - [如何通过门户使用应用程序网关配置端到端 TLS](../application-gateway/end-to-end-ssl-portal.md)
 
-- [如锁定应用服务中所述，保护 ASE](./environment/firewall-integration.md)
-
-**Azure 安全中心监视**：是
+- [如锁定应用服务中所述，保护 ASE](/azure/app-service/environment/firewall-integrationEnvironment:)
 
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1.8：最大程度地降低网络安全规则的复杂性和管理开销
 
@@ -184,9 +208,9 @@ Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更�
 
 - [虚拟网络服务标记](../virtual-network/service-tags-overview.md)
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1.9：维护网络设备的标准安全配置
 
@@ -205,11 +229,11 @@ Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更�
 
 - [如何通过门户使用应用程序网关配置端到端 TLS](../application-gateway/end-to-end-ssl-portal.md)
 
-- [如锁定应用服务中所述，保护 ASE](./environment/firewall-integration.md)
-
-**Azure 安全中心监视**：不适用
+- [如锁定应用服务中所述，保护 ASE](/azure/app-service/environment/firewall-integrationEnvironment:)
 
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="110-document-traffic-configuration-rules"></a>1.10：阐述流量配置规则
 
@@ -221,11 +245,11 @@ Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更�
 
 - [如何创建和使用标记](../azure-resource-manager/management/tag-resources.md)
 
-- [Azure 应用服务访问限制](./app-service-ip-restrictions.md)
-
-**Azure 安全中心监视**：不适用
+- [Azure 应用服务访问限制](/azure/app-service/app-service-ip-restriction)
 
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1.11：使用自动化工具来监视网络资源配置和检测更改
 
@@ -241,15 +265,15 @@ Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更�
 
 建议使用自动工具创建一个过程来监视网络资源配置并快速检测更改。
 
-- [如何查看和检索 Azure 活动日志事件](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
+- [如何查看和检索 Azure 活动日志事件](/azure/azure-monitor/platform/activity-log#view-the-activity-log)
 
-- [如何在 Azure Monitor 中创建警报](../azure-monitor/alerts/alerts-activity-log.md)
+- [如何在 Azure Monitor 中创建警报](/azure/azure-monitor/platform/alerts-activity-log)
 
 - [导出安全警报和建议](../security-center/continuous-export.md)
 
-**Azure 安全中心监视**：目前不可用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ## <a name="logging-and-monitoring"></a>日志记录和监视
 
@@ -261,7 +285,7 @@ Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更�
 
 根据你的业务需求，使用 Microsoft Azure Sentinel，这是一个可缩放的云本机安全信息事件管理 (SIEM) 可用于连接到各种数据源和连接器。 你还可以在 SIEM) 系统（如 Azure Marketplace 中的 Barracuda）上启用和数据到第三方安全信息事件管理 (。
 
-- [记录 ASE 活动](environment/using-an-ase.md#logging)
+- [记录 ASE 活动](https://docs.microsoft.com/azure/app-service/environment/using-an-ase#logging)
 
 - [如何启用 Azure App Service 的诊断设置](troubleshoot-diagnostic-logs.md)
 
@@ -269,35 +293,40 @@ Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更�
 
 - [从 Application Insights 导出遥测数据](../azure-monitor/app/export-telemetry.md)
 
-**Azure 安全中心监视**：是
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="23-enable-audit-logging-for-azure-resources"></a>2.3：为 Azure 资源启用审核日志记录
 
 **指南**：启用应用服务的控制平面审核日志记录的 Azure 活动日志诊断设置。 将日志发送到 Log Analytics 工作区、Azure 事件中心或 Azure 存储帐户。
+
 可以使用应用服务和其他 Azure 资源的 Azure 活动日志数据，确定任何写入操作 (PUT、POST、DELETE) 在控制平面级别执行的 "操作内容、操作人员和操作时间"。
 
 此外，Azure Key Vault 通过访问策略和审核历史记录提供集中式密钥管理。 
 
-- [如何启用 Azure 活动日志的诊断设置](../azure-monitor/essentials/activity-log.md)
+- [如何启用 Azure 活动日志的诊断设置](/azure/azure-monitor/platform/activity-log)
 
 - [如何启用 Azure App Service 的诊断设置](troubleshoot-diagnostic-logs.md)
 
 - [资源管理器操作](../role-based-access-control/resource-provider-operations.md)
 
-**Azure 安全中心监视**：是
-
 **责任**：客户
+
+**Azure 安全中心监视**： [azure 安全基准](/home/mbaldwin/docs/asb/azure-docs-pr/articles/governance/policy/samples/azure-security-benchmark.md) 是安全中心的默认策略计划，是 [安全中心建议](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/security-center-recommendations.md)的基础。 安全中心会自动启用与此控件相关的 Azure 策略定义。 与此控件相关的警报可能需要 [Azure Defender](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/azure-defender.md) 计划相关服务。
+
+**Azure 策略内置定义-Microsoft**：
+
+[!INCLUDE [Resource Policy for Microsoft.Web 2.3](../../includes/policy/standards/asb/rp-controls/microsoft.web-2-3.md)]
 
 ### <a name="25-configure-security-log-storage-retention"></a>2.5：配置安全日志存储保留期
 
 **指南**：在 Azure Monitor 中，根据组织的符合性规定，设置与应用服务资源关联的 Log Analytics 工作区的日志保持期。
-- [如何设置日志保留参数](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
-
-**Azure 安全中心监视**：不适用
+- [如何设置日志保留参数](/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
 
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="26-monitor-and-review-logs"></a>2.6：监视和查看日志
 
@@ -309,7 +338,7 @@ Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更�
 
 根据要求，使用 Azure Sentinel （一种可缩放的云和本机安全信息事件管理） (SIEM) ，与各种数据源和连接器集成。 在 Azure Marketplace 中，可以选择启用和将数据到第三方安全信息事件管理解决方案。
 
-- [如何启用 Azure 活动日志的诊断设置](../azure-monitor/essentials/activity-log.md)
+- [如何启用 Azure 活动日志的诊断设置](/azure/azure-monitor/platform/activity-log)
 
 - [如何启用 Application Insights](../azure-monitor/app/app-insights-overview.md)
 
@@ -317,9 +346,9 @@ Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更�
 
 - [如何加入 Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="27-enable-alerts-for-anomalous-activities"></a>2.7：针对异常活动启用警报
 
@@ -331,9 +360,9 @@ Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更�
 
 - [导出安全警报和建议](../security-center/continuous-export.md)
 
-**Azure 安全中心监视**：是
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ## <a name="identity-and-access-control"></a>标识和访问控制
 
@@ -343,15 +372,15 @@ Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更�
 
 **指南**： Azure Active Directory (Azure AD) 的内置角色必须明确分配并可查询。 使用 Azure AD PowerShell 模块执行即席查询，以发现属于管理组成员的帐户。
 
-- [如何使用 PowerShell 获取 Azure AD 中目录角色的成员](/powershell/module/azuread/get-azureaddirectoryrolemember?preserve-view=true&view=azureadps-2.0)
+- [如何使用 PowerShell 获取 Azure AD 中目录角色的成员](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0&amp;preserve-view=true)
 
-- [如何使用应用服务和 Azure Functions 的托管标识](overview-managed-identity.md?context=azure%2Factive-directory%2Fmanaged-identities-azure-resources%2Fcontext%2Fmsi-context&amp;tabs=dotnet)
+- [如何使用应用服务和 Azure Functions 的托管标识](https://docs.microsoft.com/azure/app-service/overview-managed-identity?context=azure%2Factive-directory%2Fmanaged-identities-azure-resources%2Fcontext%2Fmsi-context&amp;tabs=dotnet)
 
 - [使用 Azure 门户分配 Azure 角色](../role-based-access-control/role-assignments-portal.md)
 
-**Azure 安全中心监视**：是
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="32-change-default-passwords-where-applicable"></a>3.2：在适用的情况下更改默认密码
 
@@ -361,13 +390,13 @@ Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更�
 
 禁用匿名访问，除非你需要对其进行支持。 
 
-- [默认情况下，Azure App Service 提供标识提供者](overview-authentication-authorization.md#identity-providers)
+- [默认情况下，Azure App Service 提供标识提供者](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization#identity-providers)
 
 - [Azure 应用服务和 Azure Functions 中的身份验证和授权](overview-authentication-authorization.md)
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="33-use-dedicated-administrative-accounts"></a>3.3：使用专用管理帐户
 
@@ -387,9 +416,9 @@ Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更�
 
 - [了解有关向用户授予应用程序访问权限的详细信息](../role-based-access-control/overview.md)
 
-**Azure 安全中心监视**：是
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="34-use-azure-active-directory-single-sign-on-sso"></a>3.4：使用 Azure Active Directory 单一登录 (SSO)
 
@@ -406,15 +435,15 @@ Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更�
 
 - Twitter
 
-当你使用其中一个提供程序启用身份验证和授权时，它的登录终结点可用于用户身份验证，并可用于验证来自提供程序的身份验证令牌。
+对其中一个提供程序启用身份验证和授权时，其登录终结点可用于用户身份验证，以及验证来自提供程序的身份验证令牌。
 
-- [了解 Azure App Service 中的身份验证和授权](overview-authentication-authorization.md#identity-providers)
+- [了解 Azure App Service 中的身份验证和授权](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization#identity-providers)
 
 - [了解 Azure App Service 中的身份验证和授权](overview-authentication-authorization.md)
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3.5：对所有基于 Azure Active Directory 的访问使用多重身份验证
 
@@ -422,27 +451,27 @@ Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更�
 
 为 Azure AD 实施多重身份验证。 管理员需要确保门户中的订阅帐户受到保护。 订阅容易受到攻击，因为它管理你创建的资源。 
 
-- [Azure 安全 MFA](/previous-versions/azure/security/develop/secure-aad-app)
+- [Azure 安全多重身份验证](/azure/security/develop/secure-aad-app)
 
-- [如何在 Azure 中启用 MFA](../active-directory/authentication/howto-mfa-getstarted.md)
+- [如何在 Azure 中启用多重身份验证](../active-directory/authentication/howto-mfa-getstarted.md)
 
 - [如何在 Azure 安全中心监视标识和访问](../security-center/security-center-identity-access.md)
 
-**Azure 安全中心监视**：是
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="36-use-secure-azure-managed-workstations-for-administrative-tasks"></a>3.6：使用由 Azure 管理的安全工作站执行管理任务
 
-**指南**：通过配置为登录和配置 Azure 资源的多重身份验证，使用特权访问工作站 (PAW) 。
+**指南**：通过配置为登录和配置 Azure 资源的多重身份验证，使用特权访问工作站 (PAW) 。 
 
 - [了解特权访问工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
-- [如何在 Azure 中启用 MFA](../active-directory/authentication/howto-mfa-getstarted.md)
-
-**Azure 安全中心监视**：不适用
+- [如何在 Azure 中启用多重身份验证](../active-directory/authentication/howto-mfa-getstarted.md)
 
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="37-log-and-alert-on-suspicious-activities-from-administrative-accounts"></a>3.7：记录来自管理帐户的可疑活动并对其发出警报
 
@@ -458,9 +487,9 @@ Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更�
 
 - [Azure 计算资源的威胁防护](../security-center/azure-defender.md)
 
-**Azure 安全中心监视**：是
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="38-manage-azure-resources-from-only-approved-locations"></a>3.8：仅从批准的位置管理 Azure 资源
 
@@ -468,9 +497,9 @@ Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更�
 
 - [如何在 Azure 中配置命名位置](../active-directory/reports-monitoring/quickstart-configure-named-locations.md)
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="39-use-azure-active-directory"></a>3.9：使用 Azure Active Directory
 
@@ -480,21 +509,21 @@ Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更�
 
 - [如何创建和配置 Azure AD 实例](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
-**Azure 安全中心监视**：是
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3.10：定期审查和协调用户访问
 
 **指南**：使用 Azure Active Directory (Azure AD) 中的日志发现过期帐户。 使用 Azure 标识访问评审有效地管理组成员身份和对企业应用程序的访问权限，以及角色分配。 定期查看用户访问权限，以确保只有预期的用户才能继续访问。 
 
-- [了解 Azure AD 报告](../active-directory/reports-monitoring/index.yml)
+- [了解 Azure AD 报告](/azure/active-directory/reports-monitoring/)
 
 - [如何使用 Azure 标识访问评审](../active-directory/governance/access-reviews-overview.md)
 
-**Azure 安全中心监视**：是
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="311-monitor-attempts-to-access-deactivated-credentials"></a>3.11：监视尝试访问已停用凭据的行为
 
@@ -504,13 +533,13 @@ Azure AD 登录活动、审核和风险事件日志源的访问权限，可用�
 
 - [如何将 Azure App Service 应用配置为使用 Azure AD 登录](configure-authentication-provider-aad.md)
 
-- [如何将 Azure 活动日志集成到 Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
+- [如何将 Azure 活动日志集成到 Azure Monitor](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
 
 - [如何加入 Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-**Azure 安全中心监视**：目前不可用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="312-alert-on-account-sign-in-behavior-deviation"></a>3.12：针对帐户登录行为偏差发出警报
 
@@ -524,19 +553,19 @@ Azure AD 登录活动、审核和风险事件日志源的访问权限，可用�
 
 - [如何配置和启用标识保护风险策略](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
-**Azure 安全中心监视**：目前不可用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios"></a>3.13：在支持场合下为 Microsoft 提供对相关客户数据的访问权限
 
-**指南**：不适用于应用服务。 Azure App Service 不支持客户密码箱。
+**指南**：不可用;Azure App Service 不支持客户密码箱。
 
-- [支持客户密码箱的服务列表](../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-general-availability)
-
-**Azure 安全中心监视**：不适用
+- [支持客户密码箱的服务列表](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability)
 
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ## <a name="data-protection"></a>数据保护
 
@@ -548,9 +577,9 @@ Azure AD 登录活动、审核和风险事件日志源的访问权限，可用�
 
 - [如何创建和使用标记](../azure-resource-manager/management/tag-resources.md)
 
-**Azure 安全中心监视**：目前不可用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2：隔离存储或处理敏感信息的系统
 
@@ -570,9 +599,9 @@ Azure AD 登录活动、审核和风险事件日志源的访问权限，可用�
 
 - [如何创建内部 ASE](environment/create-ilb-ase.md)
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4.3：监视和阻止未经授权的敏感信息传输
 
@@ -582,9 +611,9 @@ Microsoft 管理应用服务的底层基础结构，并实施了严格控制来�
 
 - [了解 Azure 中的客户数据保护](../security/fundamentals/protection-customer-data.md)
 
-**Azure 安全中心监视**：目前不可用
-
 **责任**：共享
+
+**Azure 安全中心监视**：无
 
 ### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4.4：加密传输中的所有敏感信息
 
@@ -592,9 +621,13 @@ Microsoft 管理应用服务的底层基础结构，并实施了严格控制来�
 
 - [了解 Azure App Service web 应用传输的加密](security-recommendations.md)
 
-**Azure 安全中心监视**：是
-
 **责任**：客户
+
+**Azure 安全中心监视**： [azure 安全基准](/home/mbaldwin/docs/asb/azure-docs-pr/articles/governance/policy/samples/azure-security-benchmark.md) 是安全中心的默认策略计划，是 [安全中心建议](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/security-center-recommendations.md)的基础。 安全中心会自动启用与此控件相关的 Azure 策略定义。 与此控件相关的警报可能需要 [Azure Defender](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/azure-defender.md) 计划相关服务。
+
+**Azure 策略内置定义-Microsoft**：
+
+[!INCLUDE [Resource Policy for Microsoft.Web 4.4](../../includes/policy/standards/asb/rp-controls/microsoft.web-4-4.md)]
 
 ### <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4.5：使用有效的发现工具识别敏感数据
 
@@ -606,19 +639,19 @@ Microsoft 管理底层平台，并将所有客户数据视为敏感数据，并�
 
 - [了解 Azure 中的客户数据保护](../security/fundamentals/protection-customer-data.md)
 
-**Azure 安全中心监视**：目前不可用
-
 **责任**：共享
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4.6：使用基于角色的访问控制来控制对资源的访问
+**Azure 安全中心监视**：无
+
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6：使用 Azure RBAC 控制对资源的访问 
 
 **指南**：使用 azure 中基于角色的访问控制 (azure RBAC) 中 Azure Active Directory (Azure AD) 来控制对 Azure 门户上的应用服务控制平面的访问。
 
 - [如何配置 Azure RBAC](../role-based-access-control/role-assignments-portal.md)
 
-**Azure 安全中心监视**：目前不可用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="48-encrypt-sensitive-information-at-rest"></a>4.8：静态加密敏感信息
 
@@ -628,27 +661,27 @@ Microsoft 管理底层平台，并将所有客户数据视为敏感数据，并�
 
 请注意，虽然本地附加的磁盘可以由网站作为临时存储（ (例如 D:\local 和% TMP% ) ）使用，但它们不会静态加密。
 
-- [了解 Azure App Service 的数据保护控件]()
+- [了解 Azure App Service 的数据保护控件](https://docs.microsoft.com/azure/app-service/security-recommendations#data-protection)
 
 - [了解静态 Azure 存储加密](../storage/common/storage-service-encryption.md)
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4.9：记录对关键 Azure 资源的更改并对此类更改发出警报
 
 **指南**：将 Azure Monitor 与 Azure 活动日志结合使用，以便在对生产应用服务应用和其他关键或相关资源进行任何更改时创建警报。
 
-- [如何针对 Azure 活动日志事件创建警报](../azure-monitor/alerts/alerts-activity-log.md)
-
-**Azure 安全中心监视**：目前不可用
+- [如何针对 Azure 活动日志事件创建警报](/azure/azure-monitor/platform/alerts-activity-log)
 
 **责任**：客户
 
+**Azure 安全中心监视**：无
+
 ## <a name="vulnerability-management"></a>漏洞管理
 
-[有关详细信息，请参阅 *Azure 安全基线：* 漏洞管理](../security/benchmarks/security-control-vulnerability-management.md)。
+[有关详细信息，请参阅 *Azure 安全基线：* 漏洞管理。](../security/benchmarks/security-control-vulnerability-management.md)
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5.1：运行自动漏洞扫描工具
 
@@ -656,13 +689,13 @@ Microsoft 管理底层平台，并将所有客户数据视为敏感数据，并�
 
 查看并遵循安全中心提供的建议，确保应用服务应用的安全。
 
-- [如何将持续安全验证添加到 CI/CD 管道](/azure/devops/migrate/security-validation-cicd-pipeline?preserve-view=true&view=azure-devops)
+- [如何将持续安全验证添加到 CI/CD 管道](https://docs.microsoft.com/azure/devops/migrate/security-validation-cicd-pipeline?preserve-view=true&amp;view=azure-devops)
 
 - [如何实现 Azure 安全中心漏洞评估建议](../security-center/deploy-vulnerability-assessment-vm.md)
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="55-use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>5.5：使用风险评级过程来确定已发现漏洞的修正措施的优先级
 
@@ -670,11 +703,11 @@ Microsoft 管理底层平台，并将所有客户数据视为敏感数据，并�
 
 - [安全建议参考指南](../security-center/recommendations-reference.md)
 
-**Azure 安全中心监视**：不适用
-
 **责任**：共享
 
-## <a name="inventory-and-asset-management"></a>库存和资产管理
+**Azure 安全中心监视**：无
+
+## <a name="inventory-and-asset-management"></a>清单和资产管理
 
 [有关详细信息，请参阅 *Azure 安全基线：* 清单和资产管理](../security/benchmarks/security-control-inventory-asset-management.md)。
 
@@ -686,13 +719,13 @@ Microsoft 管理底层平台，并将所有客户数据视为敏感数据，并�
 
 - [如何使用 Azure Resource Graph 创建查询](../governance/resource-graph/first-query-portal.md)
 
-- [如何查看 Azure 订阅](/powershell/module/az.accounts/get-azsubscription?preserve-view=true&view=azps-4.8.0)
+- [如何查看 Azure 订阅](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?preserve-view=true&amp;view=azps-4.8.0)
 
 - [了解 Azure RBAC](../role-based-access-control/overview.md)
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="62-maintain-asset-metadata"></a>6.2：维护资产元数据
 
@@ -700,9 +733,9 @@ Microsoft 管理底层平台，并将所有客户数据视为敏感数据，并�
 
 - [如何创建和使用标记](../azure-resource-manager/management/tag-resources.md)
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="63-delete-unauthorized-azure-resources"></a>6.3：删除未经授权的 Azure 资源
 
@@ -721,17 +754,17 @@ Microsoft 管理底层平台，并将所有客户数据视为敏感数据，并�
 
 - [如何创建和使用标记](../azure-resource-manager/management/tag-resources.md)
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="64-define-and-maintain-inventory-of-approved-azure-resources"></a>6.4：定义并维护已批准的 Azure 资源的清单
 
 **指南**：根据组织需求为计算资源创建已批准的 Azure 资源和批准的软件的清单。
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="65-monitor-for-unapproved-azure-resources"></a>6.5：监视未批准的 Azure 资源
 
@@ -743,9 +776,9 @@ Microsoft 管理底层平台，并将所有客户数据视为敏感数据，并�
 
 - [如何使用 Azure Graph 创建查询](../governance/resource-graph/first-query-portal.md)
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6.6：监视计算资源中未批准的软件应用程序
 
@@ -759,9 +792,9 @@ Microsoft 管理底层平台，并将所有客户数据视为敏感数据，并�
 
 - [快速入门-使用 Azure 资源关系图资源管理器运行第一个资源图形查询](../governance/resource-graph/first-query-portal.md)
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6.7：删除未批准的 Azure 资源和软件应用程序
 
@@ -773,9 +806,9 @@ Microsoft 管理底层平台，并将所有客户数据视为敏感数据，并�
 
 - [快速入门-使用 Azure 资源关系图资源管理器运行第一个资源图形查询](../governance/resource-graph/first-query-portal.md)
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="68-use-only-approved-applications"></a>6.8：仅使用已批准的应用程序
 
@@ -787,9 +820,9 @@ Microsoft 管理底层平台，并将所有客户数据视为敏感数据，并�
 
 - [快速入门-使用 Azure 资源关系图资源管理器运行第一个资源图形查询](../governance/resource-graph/first-query-portal.md)
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="69-use-only-approved-azure-services"></a>6.9：仅使用已批准的 Azure 服务
 
@@ -807,13 +840,13 @@ Microsoft 管理底层平台，并将所有客户数据视为敏感数据，并�
 
 - [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-- [如何使用 Azure Policy 拒绝特定的资源类型](../governance/policy/samples/built-in-policies.md#general)
+- [如何使用 Azure Policy 拒绝特定的资源类型](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#general)
 
 - [在 Azure 应用服务中使用 WebJobs 运行后台任务](webjobs-create.md)
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="610-maintain-an-inventory-of-approved-software-titles"></a>6.10：维护已获批软件的清单
 
@@ -831,11 +864,11 @@ Microsoft 管理底层平台，并将所有客户数据视为敏感数据，并�
 
 - [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-- [如何使用 Azure Policy 拒绝特定的资源类型](../governance/policy/samples/built-in-policies.md#general)
-
-**Azure 安全中心监视**：不适用
+- [如何使用 Azure Policy 拒绝特定的资源类型](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#general)
 
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="611-limit-users-ability-to-interact-with-azure-resource-manager"></a>6.11：限制用户与 Azure 资源管理器进行交互的能力
 
@@ -843,9 +876,9 @@ Microsoft 管理底层平台，并将所有客户数据视为敏感数据，并�
 
 - [如何配置条件访问以阻止访问 Azure 资源管理器](../role-based-access-control/conditional-access-azure-management.md)
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="612-limit-users-ability-to-execute-scripts-within-compute-resources"></a>6.12：限制用户在计算资源中执行脚本的功能
 
@@ -853,9 +886,9 @@ Microsoft 管理底层平台，并将所有客户数据视为敏感数据，并�
 
 - [在 Azure 应用服务中使用 WebJobs 运行后台任务](webjobs-create.md)
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6.13：以物理或逻辑方式隔离高风险应用程序
 
@@ -869,9 +902,9 @@ Microsoft 管理底层平台，并将所有客户数据视为敏感数据，并�
 
 - [创建和使用内部负载均衡器应用服务环境](environment/create-ilb-ase.md)
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ## <a name="secure-configuration"></a>安全配置
 
@@ -884,20 +917,22 @@ Microsoft 管理底层平台，并将所有客户数据视为敏感数据，并�
 使用 "Microsoft Web" 命名空间中的 Azure 策略别名创建自定义策略，以审核或强制实施应用服务 Web 应用的配置。
 
 应用内置策略定义，例如：
+
 - 应用服务应使用虚拟网络服务终结点
+
 - 只能通过 HTTPS 访问 Web 应用程序
 
 - 在应用中使用最新的 TLS 版本
 
 建议将此过程记录为应用用于标准化使用的内置策略定义。   
 
-- [如何查看可用的 Azure Policy 别名](/powershell/module/az.resources/get-azpolicyalias?preserve-view=true&view=azps-4.8.0)
+- [如何查看可用的 Azure Policy 别名](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?preserve-view=true&amp;view=azps-4.8.0)
 
 - [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="73-maintain-secure-azure-resource-configurations"></a>7.3：维护安全的 Azure 资源配置
 
@@ -907,9 +942,9 @@ Microsoft 管理底层平台，并将所有客户数据视为敏感数据，并�
 
 - [了解 Azure Policy 效果](../governance/policy/concepts/effects.md)
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="75-securely-store-configuration-of-azure-resources"></a>7.5：安全存储 Azure 资源的配置
 
@@ -917,13 +952,13 @@ Microsoft 管理底层平台，并将所有客户数据视为敏感数据，并�
 
 使用现有的持续集成 (CI) 和持续交付 (CD) 管道部署已知安全的配置。
 
-- [如何在 Azure DevOps 中存储代码](/azure/devops/repos/git/gitworkflow?preserve-view=true&view=azure-devops)
+- [如何在 Azure DevOps 中存储代码](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?preserve-view=true&amp;view=azure-devops)
 
-- [Azure Repos 文档](/azure/devops/repos/?preserve-view=true&view=azure-devops)
-
-**Azure 安全中心监视**：不适用
+- [Azure Repos 文档](https://docs.microsoft.com/azure/devops/repos/?preserve-view=true&amp;view=azure-devops)
 
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="77-deploy-configuration-management-tools-for-azure-resources"></a>7.7：部署 Azure 资源的配置管理工具
 
@@ -931,9 +966,9 @@ Microsoft 管理底层平台，并将所有客户数据视为敏感数据，并�
 
 - [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="79-implement-automated-configuration-monitoring-for-azure-resources"></a>7.9：为 Azure 资源实施自动配置监视
 
@@ -943,9 +978,9 @@ Microsoft 管理底层平台，并将所有客户数据视为敏感数据，并�
 
 - [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="711-manage-azure-secrets-securely"></a>7.11：安全管理 Azure 机密
 
@@ -957,9 +992,9 @@ Microsoft 管理底层平台，并将所有客户数据视为敏感数据，并�
 
 - [如何使用托管标识提供 Key Vault 身份验证](../key-vault/general/assign-access-policy-portal.md)
 
-**Azure 安全中心监视**：是
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="712-manage-identities-securely-and-automatically"></a>7.12：安全自动管理标识
 
@@ -969,9 +1004,13 @@ Microsoft 管理底层平台，并将所有客户数据视为敏感数据，并�
 
 - [如何使用托管标识提供 Key Vault 身份验证](../key-vault/general/assign-access-policy-portal.md)
 
-**Azure 安全中心监视**：是
-
 **责任**：客户
+
+**Azure 安全中心监视**： [azure 安全基准](/home/mbaldwin/docs/asb/azure-docs-pr/articles/governance/policy/samples/azure-security-benchmark.md) 是安全中心的默认策略计划，是 [安全中心建议](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/security-center-recommendations.md)的基础。 安全中心会自动启用与此控件相关的 Azure 策略定义。 与此控件相关的警报可能需要 [Azure Defender](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/azure-defender.md) 计划相关服务。
+
+**Azure 策略内置定义-Microsoft**：
+
+[!INCLUDE [Resource Policy for Microsoft.Web 7.12](../../includes/policy/standards/asb/rp-controls/microsoft.web-7-12.md)]
 
 ### <a name="713-eliminate-unintended-credential-exposure"></a>7.13：消除意外的凭据透露
 
@@ -979,9 +1018,9 @@ Microsoft 管理底层平台，并将所有客户数据视为敏感数据，并�
 
 - [如何设置凭据扫描程序](https://secdevtools.azurewebsites.net/helpcredscan.html)
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ## <a name="data-recovery"></a>数据恢复
 
@@ -1000,11 +1039,11 @@ Microsoft 管理底层平台，并将所有客户数据视为敏感数据，并�
 
 - [了解 Azure App Service 备份功能](manage-backup.md)
 
-- [用于 Azure 存储加密的客户管理的密钥](../storage/common/customer-managed-keys-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
-
-**Azure 安全中心监视**：不适用
+- [用于 Azure 存储加密的客户管理的密钥](../storage/common/customer-managed-keys-overview.md)
 
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9.2：执行完整系统备份，并备份客户管理的所有密钥
 
@@ -1021,15 +1060,15 @@ Microsoft 管理底层平台，并将所有客户数据视为敏感数据，并�
 
 - [还原 Azure App Service 中运行的应用](web-sites-restore.md)
 
-- [了解 Azure 中的静态加密](../security/fundamentals/encryption-atrest.md#encryption-at-rest-in-microsoft-cloud-services) 
+- [了解 Azure 中的静态加密](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest#encryption-at-rest-in-microsoft-cloud-services) 
 
 - [加密模型和密钥管理表](../security/fundamentals/encryption-atrest.md)
 
 - [使用客户管理的密钥进行静态加密](configure-encrypt-at-rest-using-cmk.md)
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9.3：验证所有备份，包括客户管理的密钥
 
@@ -1039,9 +1078,9 @@ Microsoft 管理底层平台，并将所有客户数据视为敏感数据，并�
 
 - [如何还原 Azure App Service web 应用](web-sites-restore.md)
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4：确保保护备份和客户管理的密钥
 
@@ -1055,9 +1094,9 @@ Microsoft 管理底层平台，并将所有客户数据视为敏感数据，并�
 
 - [如何在 Azure Key Vault 中启用软删除](../key-vault/general/key-vault-recovery.md)
 
-**Azure 安全中心监视**：是
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ## <a name="incident-response"></a>事件响应
 
@@ -1075,19 +1114,19 @@ Microsoft 管理底层平台，并将所有客户数据视为敏感数据，并�
 
 - [客户还可以利用 NIST 的“计算机安全事件处理指南”来制定他们自己的事件响应计划](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf)
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10.2：创建事件评分和优先级设定过程
 
-**指导**：安全中心为每条警报分配严重性，以帮助你优先处理应该最先调查的警报。 严重性取决于安全中心在发出警报时所依据的检测结果和分析结果的置信度，以及导致发出警报的活动的恶意企图的置信度。
+**指南**：安全中心向每个警报分配一个严重性，帮助你优先处理应首先调查的警报。 严重性取决于安全中心对调查结果或用于发出警报的分析的确信程度，以及对导致警报的活动背后存在恶意意图的确信程度。
 
 此外，还可以清楚地标记订阅 (例如，生产、非生产) ，并创建一个命名系统来明确识别和分类 Azure 资源。
 
-**Azure 安全中心监视**：是
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="103-test-security-response-procedures"></a>10.3：测试安全响应过程
 
@@ -1095,9 +1134,9 @@ Microsoft 管理底层平台，并将所有客户数据视为敏感数据，并�
 
 - [参阅 NIST 出版物 - IT 计划和功能的测试、训练和演练计划指南](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf)
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10.4：提供安全事件联系人详细信息，并针对安全事件配置警报通知
 
@@ -1105,9 +1144,9 @@ Microsoft 管理底层平台，并将所有客户数据视为敏感数据，并�
 
 - [如何设置 Azure 安全中心安全联系人](../security-center/security-center-provide-security-contact-details.md)
 
-**Azure 安全中心监视**：是
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10.5：将安全警报整合到事件响应系统中
 
@@ -1117,9 +1156,9 @@ Microsoft 管理底层平台，并将所有客户数据视为敏感数据，并�
 
 - [如何将警报流式传输到 Azure Sentinel](../sentinel/connect-azure-security-center.md)
 
-**Azure 安全中心监视**：是
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="106-automate-the-response-to-security-alerts"></a>10.6：自动响应安全警报
 
@@ -1127,9 +1166,9 @@ Microsoft 管理底层平台，并将所有客户数据视为敏感数据，并�
 
 - [如何配置工作流自动化和逻辑应用](../security-center/workflow-automation.md)
 
-**Azure 安全中心监视**：是
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>渗透测试和红队练习
 
@@ -1137,17 +1176,17 @@ Microsoft 管理底层平台，并将所有客户数据视为敏感数据，并�
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11.1：定期对 Azure 资源执行渗透测试，确保修正所有发现的关键安全问题
 
-指南：遵循 Microsoft Rules of Engagement 以确保渗透测试不违反 Microsoft 政策： https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1
+**指导**：请遵循 Microsoft 云渗透测试互动规则，确保你的渗透测试不违反 Microsoft 政策。 使用 Microsoft 红队演练策略和执行，以及针对 Microsoft 托管云基础结构、服务和应用程序执行现场渗透测试。 
 
-你可以在 microsoft 管理的云基础结构、服务和应用程序上找到有关 Microsoft 策略和执行红色组合以及实时站点渗透测试的详细信息。
+- [参与的渗透测试规则](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1) 
 
 - [Microsoft 云红色组合](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
 
-**Azure 安全中心监视**：不适用
-
 **责任**：共享
+
+**Azure 安全中心监视**：无
 
 ## <a name="next-steps"></a>后续步骤
 
-- 请参阅 [Azure 安全基准](../security/benchmarks/overview.md)
-- 详细了解 [Azure 安全基线](../security/benchmarks/security-baselines-overview.md)
+- 参阅 [Azure 安全基准 V2 概述](/azure/security/benchmarks/overview)
+- 详细了解 [Azure 安全基线](/azure/security/benchmarks/security-baselines-overview)

@@ -8,14 +8,14 @@ ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 02/03/2021
+ms.date: 02/28/2021
 ms.custom: azure-synapse, sqldbrb=1
-ms.openlocfilehash: 0e85019c8f02b8a4a97426d50a30d047b95378a1
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 8635e3590d4196e407dfc591a55ee240806358ed
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100572287"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691512"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL 数据库和 Azure Synapse Analytics 的审核
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -47,6 +47,8 @@ ms.locfileid: "100572287"
 - 目前不支持高级存储 。
 - **Azure Data Lake Storage Gen2 存储帐户** 的 **分层命名空间** 目前 **不受支持**。
 - 不支持在已暂停的 Azure Synapse 上启用审核。 若要启用审核，请恢复运行 Azure Synapse。
+- **Azure SYNAPSE SQL 池** 的审核 **仅** 支持默认的审核操作组。
+
 
 #### <a name="define-server-level-vs-database-level-auditing-policy"></a><a id="server-vs-database-level"></a>定义服务器级和数据库级审核策略
 

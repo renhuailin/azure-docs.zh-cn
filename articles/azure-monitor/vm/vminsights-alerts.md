@@ -1,36 +1,36 @@
 ---
-title: 用于 VM 的 Azure Monitor 发出的警报
-description: 描述如何根据用于 VM 的 Azure Monitor 收集的性能数据创建警报规则。
+title: 来自 VM insights 的警报
+description: 描述如何从 VM insights 收集的性能数据创建警报规则。
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/10/2020
-ms.openlocfilehash: 4ae5b12f22b0cbcef7577c2eb9d4f3e3ae737590
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: e3b5f49d9a4ed7af40afba5b267ba0c7bb9cd73a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100608361"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704049"
 ---
-# <a name="how-to-create-alerts-from-azure-monitor-for-vms"></a>如何从用于 VM 的 Azure Monitor 创建警报
-[Azure Monitor 中的警报在](../platform/alerts-overview.md) 监视数据中主动通知你感兴趣的数据和模式。 用于 VM 的 Azure Monitor 不包括预配置的警报规则，但你可以基于它收集的数据创建自己的警报规则。 本文提供了有关创建警报规则的指导，包括一组示例查询。
+# <a name="how-to-create-alerts-from-vm-insights"></a>如何从 VM insights 创建警报
+[Azure Monitor 中的警报在](../alerts/alerts-overview.md) 监视数据中主动通知你感兴趣的数据和模式。 VM insights 不包括预配置的警报规则，但你可以基于它收集的数据创建自己的警报规则。 本文提供了有关创建警报规则的指导，包括一组示例查询。
 
 > [!IMPORTANT]
-> 本文中所述的警报基于用于 VM 的 Azure Monitor 收集的数据中的日志查询。 这不同于 [VM 来宾健康 Azure Monitor](vminsights-health-overview.md) 创建的警报，这是目前公共预览版中的一项功能。 由于此功能接近公开上市，因此会合并警报指南。
+> 本文中所述的警报基于收集的 VM insights 中的日志查询。 这不同于 [VM 来宾健康 Azure Monitor](vminsights-health-overview.md) 创建的警报，这是目前公共预览版中的一项功能。 由于此功能接近公开上市，因此会合并警报指南。
 
 
 ## <a name="alert-rule-types"></a>预警规则类型
-Azure Monitor 具有 [不同类型的警报规则](../platform/alerts-overview.md#what-you-can-alert-on) ，这些规则基于用于创建警报的数据。 用于 VM 的 Azure Monitor 收集的所有数据都存储在支持 [日志警报](../alerts/alerts-log.md)的 Azure Monitor 日志中。 你当前无法使用从用于 VM 的 Azure Monitor 收集的性能数据的 [指标警报](../alerts/alerts-log.md) ，因为不会将数据收集到 Azure Monitor 指标中。 若要收集指标警报的数据，请安装适用于 Windows Vm 的 [诊断扩展](../agents/diagnostics-extension-overview.md) 或适用于 Linux Vm 的 [Telegraf 代理](../platform/collect-custom-metrics-linux-telegraf.md) ，以将性能数据收集到指标中。
+Azure Monitor 具有 [不同类型的警报规则](../alerts/alerts-overview.md#what-you-can-alert-on) ，这些规则基于用于创建警报的数据。 VM insights 收集的所有数据都存储在支持 [日志警报](../alerts/alerts-log.md)Azure Monitor 日志中。 你当前无法使用从 VM insights 收集的性能数据的 [指标警报](../alerts/alerts-log.md) ，因为不会将数据收集到 Azure Monitor 度量值中。 若要收集指标警报的数据，请安装适用于 Windows Vm 的 [诊断扩展](../agents/diagnostics-extension-overview.md) 或适用于 Linux Vm 的 [Telegraf 代理](../essentials/collect-custom-metrics-linux-telegraf.md) ，以将性能数据收集到指标中。
 
 Azure Monitor 中有两种类型的日志警报：
 
 - "[结果数" 警报](../alerts/alerts-unified-log.md#count-of-the-results-table-rows)在查询至少返回指定数量的记录时创建单个警报。 它们非常适合于非数值数据，如 [Log Analytics 代理](../agents/log-analytics-agent.md) 收集的 Windows 和 Syslog 事件，或用于分析多台计算机上的性能趋势。
-- [指标度量警报](../alerts/alerts-unified-log.md#calculation-of-measure-based-on-a-numeric-column-such-as-cpu-counter-value) 为查询中的每个记录创建单独的警报，该警报的值超出了预警规则中定义的阈值。 这些警报规则非常适合于用于 VM 的 Azure Monitor 收集的性能数据，因为它们可以为每台计算机创建单独的警报。
+- [指标度量警报](../alerts/alerts-unified-log.md#calculation-of-measure-based-on-a-numeric-column-such-as-cpu-counter-value) 为查询中的每个记录创建单独的警报，该警报的值超出了预警规则中定义的阈值。 这些警报规则非常适合于 VM insights 收集的性能数据，因为它们可以为每台计算机创建单独的警报。
 
 
 ## <a name="alert-rule-walkthrough"></a>警报规则演练
-本部分逐步讲解如何使用用于 VM 的 Azure Monitor 中的性能数据创建指标度量警报规则。 可以将此基本过程与各种日志查询一起使用，以发出针对不同性能计数器的警报。
+本部分逐步讲解如何使用 VM insights 中的性能数据创建指标度量警报规则。 可以将此基本过程与各种日志查询一起使用，以发出针对不同性能计数器的警报。
 
 首先，按照 [使用 Azure Monitor 创建、查看和管理日志警报](../alerts/alerts-log.md)中的过程创建新的警报规则。 对于 **资源**，请选择 Azure Monitor vm 在订阅中使用的 Log Analytics 工作区。 由于日志警报规则的目标资源始终是 Log Analytics 工作区，因此日志查询必须包含针对特定虚拟机或虚拟机规模集的任何筛选器。 
 
@@ -44,7 +44,7 @@ Azure Monitor 中有两种类型的日志警报：
 ![指标度量警报规则](media/vminsights-alerts/metric-measurement-alert.png)
 
 ## <a name="sample-alert-queries"></a>示例警报查询
-以下查询可用于指标度量警报规则，该规则使用用于 VM 的 Azure Monitor 收集的性能数据。 每个按计算机汇总数据，以便为值超过阈值的每台计算机创建一个警报。
+以下查询可用于使用 VM insights 收集的性能数据的指标度量警报规则。 每个按计算机汇总数据，以便为值超过阈值的每台计算机创建一个警报。
 
 ### <a name="cpu-utilization"></a>CPU 使用率
 
@@ -200,5 +200,5 @@ or _ResourceId startswith "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/r
 
 ## <a name="next-steps"></a>后续步骤
 
-- 详细了解 [Azure Monitor 中的警报](../platform/alerts-overview.md)。
-- 了解有关 [使用用于 VM 的 Azure Monitor 中的数据的日志查询的](vminsights-log-search.md)详细信息。
+- 详细了解 [Azure Monitor 中的警报](../alerts/alerts-overview.md)。
+- 详细了解如何 [使用来自 VM insights 的数据进行日志查询](vminsights-log-search.md)。

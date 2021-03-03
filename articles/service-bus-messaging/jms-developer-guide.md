@@ -3,12 +3,12 @@ title: Azure 服务总线 JMS 2.0 开发人员指南
 description: 如何使用 Java 消息服务 (JMS) 2.0 API 与 Azure 服务总线通信
 ms.topic: article
 ms.date: 01/17/2021
-ms.openlocfilehash: 6c535b12906b6d9385029896dc5d0caf85d3399a
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 492da46a5ce4f5955a72972d91a8c56d54c385bb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100654072"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726948"
 ---
 # <a name="azure-service-bus-jms-20-developer-guide"></a>Azure 服务总线 JMS 2.0 开发人员指南
 
@@ -33,11 +33,11 @@ Java 消息服务 API 编程模型如下所示-
 
 # <a name="jms-20-programming-model"></a>[JMS 2.0 编程模型](#tab/JMS-20)
 
-:::image type="content" source="./media/jms-developer-guide/java-message-service-20-programming-model.png"alt-text="显示 JMS 2.0 编程模型的关系图。"border="false":::
+:::image type="content" source="./media/jms-developer-guide/java-message-service-20-programming-model.png "alt-text="显示 JMS 2.0 编程模型的关系图。" border="false":::
 
 # <a name="jms-11-programming-model"></a>[JMS 1.1 编程模型](#tab/JMS-11)
 
-:::image type="content" source="./media/jms-developer-guide/java-message-service-11-programming-model.png"alt-text="显示 JMS 1.1 编程模型的关系图。"border="false":::
+:::image type="content" source="./media/jms-developer-guide/java-message-service-11-programming-model.png "alt-text="显示 JMS 1.1 编程模型的关系图。" border="false":::
 
 ---
 

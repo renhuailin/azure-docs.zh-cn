@@ -7,17 +7,17 @@ ms.topic: conceptual
 ms.date: 06/12/2020
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 200c4c536df4a3e32b59945ae4ad97d7b770f269
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 38f5743e8a80af1ec824b07833f66ad50d67b91f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100605956"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723293"
 ---
 # <a name="azure-activity-log"></a>Azure 活动日志
-活动日志是 Azure 中的一种[平台日志](../platform/platform-logs-overview.md)，可用于深入了解订阅级别事件。 这包括何时修改了资源或何时启动了虚拟机等信息。 可以在 Azure 门户中查看活动日志，或在 PowerShell 和 CLI 中检索条目。 若要获得其他功能，应当创建诊断设置，以便将活动日志发送到 [Azure Monitor 日志](../platform/data-platform-logs.md)，发送到 Azure 事件中心以转发到 Azure 外部，或发送到 Azure 存储进行存档。 本文详细介绍了如何查看活动日志，以及如何将其发送到不同的目标。
+活动日志是 Azure 中的一种[平台日志](./platform-logs-overview.md)，可用于深入了解订阅级别事件。 这包括何时修改了资源或何时启动了虚拟机等信息。 可以在 Azure 门户中查看活动日志，或在 PowerShell 和 CLI 中检索条目。 若要获得其他功能，应当创建诊断设置，以便将活动日志发送到 [Azure Monitor 日志](../logs/data-platform-logs.md)，发送到 Azure 事件中心以转发到 Azure 外部，或发送到 Azure 存储进行存档。 本文详细介绍了如何查看活动日志，以及如何将其发送到不同的目标。
 
-有关创建诊断设置的详细信息，请参阅[创建诊断设置以将平台日志和指标发送到不同的目标](../platform/diagnostic-settings.md)。
+有关创建诊断设置的详细信息，请参阅[创建诊断设置以将平台日志和指标发送到不同的目标](./diagnostic-settings.md)。
 
 > [!NOTE]
 > 活动日志中的条目是系统生成的，无法更改或删除。
@@ -43,13 +43,13 @@ ms.locfileid: "100605956"
 ### <a name="other-methods-to-retrieve-activity-log-events"></a>检索活动日志事件的其他方法
 你还可以使用以下方法来访问活动日志事件。
 
-- 使用 [Get-AzLog](/powershell/module/az.monitor/get-azlog) cmdlet 从 PowerShell 检索活动日志。 请参阅 [Azure Monitor PowerShell 示例](../samples/powershell-samples.md#retrieve-activity-log)。
-- 使用 [az monitor activity-log](/cli/azure/monitor/activity-log) 从 CLI 检索活动日志。  请参阅 [Azure 监视器 CLI 示例](../samples/cli-samples.md#view-activity-log)。
+- 使用 [Get-AzLog](/powershell/module/az.monitor/get-azlog) cmdlet 从 PowerShell 检索活动日志。 请参阅 [Azure Monitor PowerShell 示例](../powershell-samples.md#retrieve-activity-log)。
+- 使用 [az monitor activity-log](/cli/azure/monitor/activity-log) 从 CLI 检索活动日志。  请参阅 [Azure 监视器 CLI 示例](../cli-samples.md#view-activity-log)。
 - 使用 [Azure Monitor REST API](/rest/api/monitor/) 从 REST 客户端检索活动日志。 
 
 
 ## <a name="send-to-log-analytics-workspace"></a>发送到 Log Analytics 工作区
- 将活动日志发送到 Log Analytics 工作区，以启用 [Azure Monitor 日志](../platform/data-platform-logs.md)的功能，包括下列项：
+ 将活动日志发送到 Log Analytics 工作区，以启用 [Azure Monitor 日志](../logs/data-platform-logs.md)的功能，包括下列项：
 
 - 使活动日志数据与 Azure Monitor 收集的其他监视数据产生关联。
 - 将来自多个 Azure 订阅和租户的活动日志合并到同一位置一起进行分析。
@@ -59,9 +59,9 @@ ms.locfileid: "100605956"
 - Log Analytics 工作区中存储的活动日志数据不产生数据引入费用。
 - Log Analytics 工作区中存储的活动日志数据在 90 天内不会产生数据保留费用。
 
-[创建诊断设置](../platform/diagnostic-settings.md)，以便将活动日志发送到 Log Analytics 工作区。 可以将任一订阅中的活动日志发送到最多五个工作区。 跨租户收集日志需要 [Azure Lighthouse](../../lighthouse/index.yml)。
+[创建诊断设置](./diagnostic-settings.md)，以便将活动日志发送到 Log Analytics 工作区。 可以将任一订阅中的活动日志发送到最多五个工作区。 跨租户收集日志需要 [Azure Lighthouse](../../lighthouse/index.yml)。
 
-Log Analytics 工作区中的活动日志数据存储在名为 AzureActivity 的表中，可以在 [Log Analytics](../log-query/log-analytics-tutorial.md) 中使用[日志查询](../log-query/log-query-overview.md)来检索该表。 此表的结构因[日志条目类别](activity-log-schema.md)而异。 有关表属性的说明，请参阅 [Azure Monitor 数据参考](/azure/azure-monitor/reference/tables/azureactivity)。
+Log Analytics 工作区中的活动日志数据存储在名为 AzureActivity 的表中，可以在 [Log Analytics](../logs/log-analytics-tutorial.md) 中使用[日志查询](../logs/log-query-overview.md)来检索该表。 此表的结构因[日志条目类别](activity-log-schema.md)而异。 有关表属性的说明，请参阅 [Azure Monitor 数据参考](/azure/azure-monitor/reference/tables/azureactivity)。
 
 例如，若要查看每个类别的活动日志记录计数，请使用以下查询。
 
@@ -200,7 +200,7 @@ insights-logs-networksecuritygrouprulecounter/resourceId=/SUBSCRIPTIONS/00000000
     Add-AzLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -serviceBusRuleId /subscriptions/s1/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/mytestSB/authorizationrules/RootManageSharedAccessKey -Location global,westus,eastus -RetentionInDays 90 -Category Write,Delete,Action
     ```
 
-    | 属性 | 必须 | 说明 |
+    | 属性 | 必选 | 说明 |
     | --- | --- | --- |
     | 名称 |是 |日志配置文件的名称。 |
     | StorageAccountId |否 |应该将活动日志保存到其中的存储帐户的资源 ID。 |
@@ -243,7 +243,7 @@ insights-logs-networksecuritygrouprulecounter/resourceId=/SUBSCRIPTIONS/00000000
    az monitor log-profiles create --name "default" --location null --locations "global" "eastus" "westus" --categories "Delete" "Write" "Action"  --enabled false --days 0 --service-bus-rule-id "/subscriptions/<YOUR SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventHub/namespaces/<EVENT HUB NAME SPACE>/authorizationrules/RootManageSharedAccessKey"
    ```
 
-    | 属性 | 必须 | 说明 |
+    | 属性 | 必选 | 说明 |
     | --- | --- | --- |
     | name |是 |日志配置文件的名称。 |
     | storage-account-id |是 |活动日志应保存到的存储帐户的资源 ID。 |
@@ -400,6 +400,6 @@ Azure Log Analytics 监视解决方案不久就会被弃用，并将替换为一
 
 ## <a name="next-steps"></a>后续步骤
 
-* [阅读平台日志概述](../platform/platform-logs-overview.md)
+* [阅读平台日志概述](./platform-logs-overview.md)
 * [查看活动日志事件架构](activity-log-schema.md)
-* [创建诊断设置将活动日志发送到其他目标](../platform/diagnostic-settings.md)
+* [创建诊断设置将活动日志发送到其他目标](./diagnostic-settings.md)

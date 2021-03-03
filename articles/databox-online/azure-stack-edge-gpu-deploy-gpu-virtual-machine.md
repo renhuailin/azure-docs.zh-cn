@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 12/21/2020
 ms.author: alkohli
-ms.openlocfilehash: 7534052412c2bee0f31e352fc577d376c11215c3
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: cb6b8e310f46cd98c4d3343d44fd83a3cc714a32
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98804934"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101730705"
 ---
 # <a name="gpu-vms-for-your-azure-stack-edge-pro-device"></a>Azure Stack Edge Pro 设备的 GPU Vm
 
@@ -110,8 +110,8 @@ Nvidia GPU 驱动程序扩展安装适当的 Nvidia CUDA 或网格驱动程序�
 1. 创建 VM 后，使用扩展模板部署 GPU 扩展。 对于 linux Vm，请参阅安装适用于 Linux 和 Windows Vm 的 [gpu 扩展](#gpu-extension-for-linux) ，请参阅安装适用于 [windows 的 gpu 扩展](#gpu-extension-for-windows)。
 
 1. 若要验证 GPU 扩展安装，请连接到 GPU VM：
-    1. 如果使用 Windows VM，请遵循 [连接到 WINDOWS vm](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md#connect-to-windows-vm)中的步骤。 [验证安装](#verify-windows-driver-installation)。
-    1. 如果使用 Linux VM，请遵循 [连接到 LINUX vm](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md#connect-to-linux-vm)中的步骤。 [验证安装](#verify-linux-driver-installation)。
+    1. 如果使用 Windows VM，请遵循 [连接到 WINDOWS vm](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md#connect-to-a-windows-vm)中的步骤。 [验证安装](#verify-windows-driver-installation)。
+    1. 如果使用 Linux VM，请遵循 [连接到 LINUX vm](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md#connect-to-a-linux-vm)中的步骤。 [验证安装](#verify-linux-driver-installation)。
 
 1. 如果需要，可以将计算网络切换回你需要的任何内容。 
 
@@ -545,7 +545,7 @@ PS C:\WINDOWS\system32>
 
 请按照以下步骤验证驱动程序安装：
 
-1. 连接到 GPU VM。 按照 [连接到 LINUX VM](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md#connect-to-linux-vm)中的说明进行操作。 
+1. 连接到 GPU VM。 按照 [连接到 LINUX VM](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md#connect-to-a-linux-vm)中的说明进行操作。 
 
     下面是示例输出：
 

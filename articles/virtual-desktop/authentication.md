@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 09/04/2020
+ms.date: 02/26/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 5681228e5da2708912d69f16a4b09a4a93d8bb04
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 04a4366bfee6b1d9c5f52d649910163269962684
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89500294"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101709251"
 ---
 # <a name="supported-authentication-methods"></a>支持的身份验证方法
 
@@ -21,14 +21,14 @@ ms.locfileid: "89500294"
 
 ## <a name="session-host-authentication"></a>会话主机身份验证
 
-Windows 虚拟桌面支持 NT LAN Manager (NTLM) ，以及用于会话主机身份验证的 Kerberos。 但是，若要使用 Kerberos，客户端需要从域控制器上运行的密钥发行中心 (KDC) 服务获取 Kerberos 安全票证。 若要获取票证，客户端需要向域控制器直接显示一行。 你可以通过使用企业网络直接了解这一行为。 你还可以使用与企业网络的 VPN 连接。
+Windows 虚拟桌面支持 NT LAN Manager (NTLM) ，以及用于会话主机身份验证的 Kerberos。 但是，若要使用 Kerberos，客户端需要从域控制器上运行的密钥发行中心 (KDC) 服务获取 Kerberos 安全票证。 若要获取票证，客户端需要向域控制器直接显示一行。 你可以通过使用企业网络直接了解这一行为。 你还可以使用与企业网络的 VPN 连接或设置 [KDC 代理服务器](key-distribution-center-proxy.md)。
 
 以下是当前支持的登录方法：
 
 - Windows 桌面客户端
     - 用户名和密码
     - 智能卡
-    - Windows Hello
+    - Windows Hello 企业版 (仅限证书信任) 
 - Windows Store 客户端
     - 用户名和密码
 - Web 客户端
@@ -41,7 +41,7 @@ Windows 虚拟桌面支持 NT LAN Manager (NTLM) ，以及用于会话主机身�
     - 用户名和密码
 
 >[!NOTE]
->智能卡和 Windows Hello 只能使用 Kerberos 进行登录。 用 Kerberos 登录需要对域控制器有线路视觉。
+>智能卡和 Windows Hello 企业版只能使用 Kerberos 登录。 使用 Kerberos 登录需要向域控制器或 [KDC 代理服务器](key-distribution-center-proxy.md)提供线路。
 
 ## <a name="hybrid-identity"></a>混合标识
 

@@ -7,18 +7,18 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/08/2020
-ms.openlocfilehash: 63613307847ba2bf617d7a6a1018d083dc5db3fe
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 809dc6d0958b754911362f933e9fe964bce9c679
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100393116"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101727917"
 ---
 # <a name="copy-and-transform-data-in-azure-blob-storage-by-using-azure-data-factory"></a>使用 Azure 数据工厂在 Azure Blob 存储中复制和转换数据
 
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
-> * [版本 1](v1/data-factory-azure-blob-connector.md)
-> * [当前版本](connector-azure-blob-storage.md)
+> - [版本 1](v1/data-factory-azure-blob-connector.md)
+> - [当前版本](connector-azure-blob-storage.md)
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
@@ -39,7 +39,7 @@ ms.locfileid: "100393116"
 
 对于复制活动，此 Blob 存储连接器支持以下操作：
 
-- 向/从常规用途的 Azure 存储帐户和热/冷 Blob 存储复制 Blob。 
+- 向/从常规用途的 Azure 存储帐户和热/冷 Blob 存储复制 Blob。
 - 通过使用帐户密钥身份验证、服务共享访问签名 (SAS) 身份验证、服务主体身份验证或 Azure 资源托管标识身份验证来复制 Blob。
 - 从块、追加或页 Blob 中复制 Blob，并将数据仅复制到块 Blob。
 - 按原样复制 Blob，或者使用[支持的文件格式和压缩编解码器](supported-file-formats-and-compression-codecs.md)分析或生成 Blob。
@@ -71,17 +71,17 @@ ms.locfileid: "100393116"
 
 数据工厂支持使用以下属性进行存储帐户密钥身份验证：
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | **type** 属性必须设置为 **AzureBlobStorage**（建议）或 **AzureStorage**（请查看以下注释）。 |是 |
-| connectionString | 为 **connectionString** 属性指定连接到存储所需的信息。 <br/> 还可以将帐户密钥放在 Azure Key Vault 中，从连接字符串中拉取 `accountKey` 配置。 有关详细信息，请参阅以下示例和[在 Azure Key Vault 中存储凭据](store-credentials-in-key-vault.md)一文。 |是 |
-| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 可使用 Azure Integration Runtime 或自承载集成运行时（如果数据存储位于专用网络中）。 如果未指定此属性，服务会使用默认的 Azure Integration Runtime。 |否 |
+| type | `type`必须将属性设置为 `AzureBlobStorage` (建议) 或 `AzureStorage` (参阅以下注释) 。 | 是 |
+| connectionString | 指定连接到属性的存储所需的信息 `connectionString` 。 <br/> 还可以将帐户密钥放在 Azure Key Vault 中，从连接字符串中拉取 `accountKey` 配置。 有关详细信息，请参阅以下示例和[在 Azure Key Vault 中存储凭据](store-credentials-in-key-vault.md)一文。 | 是 |
+| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 可使用 Azure Integration Runtime 或自承载集成运行时（如果数据存储位于专用网络中）。 如果未指定此属性，服务会使用默认的 Azure Integration Runtime。 | 否 |
 
 >[!NOTE]
 >使用帐户密钥身份验证时，不支持辅助 Blob 服务终结点。 可以使用其他身份验证类型。
 
 >[!NOTE]
->如果使用“AzureStorage”类型的链接服务，则仍然按原样支持它。 但是，建议你今后使用这个新的“AzureBlobStorage”链接服务类型。
+>如果使用 `AzureStorage` 类型链接服务，仍支持原样。 但建议使用新的 `AzureBlobStorage` 链接服务类型。
 
 **示例：**
 
@@ -91,11 +91,11 @@ ms.locfileid: "100393116"
     "properties": {
         "type": "AzureBlobStorage",
         "typeProperties": {
-            "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
+          "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
         },
         "connectVia": {
-            "referenceName": "<name of Integration Runtime>",
-            "type": "IntegrationRuntimeReference"
+          "referenceName": "<name of Integration Runtime>",
+          "type": "IntegrationRuntimeReference"
         }
     }
 }
@@ -110,19 +110,19 @@ ms.locfileid: "100393116"
         "type": "AzureBlobStorage",
         "typeProperties": {
             "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;",
-            "accountKey": { 
-                "type": "AzureKeyVaultSecret", 
-                "store": { 
-                    "referenceName": "<Azure Key Vault linked service name>", 
-                    "type": "LinkedServiceReference" 
-                }, 
-                "secretName": "<secretName>" 
+            "accountKey": {
+                "type": "AzureKeyVaultSecret",
+                "store": {
+                    "referenceName": "<Azure Key Vault linked service name>",
+                    "type": "LinkedServiceReference"
+                },
+                "secretName": "<secretName>"
             }
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
             "type": "IntegrationRuntimeReference"
-        }            
+        }
     }
 }
 ```
@@ -131,7 +131,7 @@ ms.locfileid: "100393116"
 
 共享访问签名对存储帐户中的资源提供委托访问。 使用共享访问签名可以在指定的时间内授予客户端对存储帐户中对象的有限访问权限。 
 
-无需共享帐户访问密钥。 共享访问签名是一个 URI，在其查询参数中包含对存储资源已验证访问所需的所有信息。 若要使用共享访问签名访问存储资源，客户端只需将共享访问签名传入到相应的构造函数或方法。 
+无需共享帐户访问密钥。 共享访问签名是一个 URI，在其查询参数中包含对存储资源已验证访问所需的所有信息。 若要使用共享访问签名访问存储资源，客户端只需将共享访问签名传入到相应的构造函数或方法。
 
 有关共享访问签名的详细信息，请参阅[共享访问签名：了解共享访问签名模型](../storage/common/storage-sas-overview.md)。
 
@@ -141,14 +141,14 @@ ms.locfileid: "100393116"
 
 数据工厂支持通过以下属性来使用共享访问签名身份验证：
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | **type** 属性必须设置为 **AzureBlobStorage**（建议）或 **AzureStorage**（请查看以下注释）。 |是 |
-| sasUri | 指定存储资源（例如 Blob 或容器）的共享访问签名 URI。 <br/>将此字段标记为 **SecureString**，以便安全地将其存储在数据工厂中。 还可以将 SAS 令牌放在 Azure Key Vault 中，以使用自动轮换和删除令牌部分。 有关详细信息，请参阅以下示例和[在 Azure Key Vault 中存储凭据](store-credentials-in-key-vault.md)。 |是 |
-| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 可使用 Azure Integration Runtime 或自承载集成运行时（如果数据存储位于专用网络中）。 如果未指定此属性，服务会使用默认的 Azure Integration Runtime。 |否 |
+| type | `type`必须将属性设置为 `AzureBlobStorage` (建议) 或 `AzureStorage` (参见下面的注释) 。 | 是 |
+| sasUri | 指定存储资源（例如 Blob 或容器）的共享访问签名 URI。 <br/>将此字段标记为 `SecureString` ，以将其安全地存储在数据工厂中。 还可以将 SAS 令牌放在 Azure Key Vault 中，以使用自动轮换和删除令牌部分。 有关详细信息，请参阅以下示例和[在 Azure Key Vault 中存储凭据](store-credentials-in-key-vault.md)。 | 是 |
+| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 可使用 Azure Integration Runtime 或自承载集成运行时（如果数据存储位于专用网络中）。 如果未指定此属性，服务会使用默认的 Azure Integration Runtime。 | 否 |
 
 >[!NOTE]
->如果使用“AzureStorage”类型的链接服务，则仍然按原样支持它。 但是，建议你今后使用这个新的“AzureBlobStorage”链接服务类型。
+>如果使用 `AzureStorage` 类型链接服务，仍支持原样。 但建议使用新的 `AzureBlobStorage` 链接服务类型。
 
 **示例：**
 
@@ -183,13 +183,13 @@ ms.locfileid: "100393116"
                 "type": "SecureString",
                 "value": "<SAS URI of the Azure Storage resource without token e.g. https://<accountname>.blob.core.windows.net/>"
             },
-            "sasToken": { 
-                "type": "AzureKeyVaultSecret", 
-                "store": { 
+            "sasToken": {
+                "type": "AzureKeyVaultSecret",
+                "store": {
                     "referenceName": "<Azure Key Vault linked service name>", 
-                    "type": "LinkedServiceReference" 
-                }, 
-                "secretName": "<secretName with value of SAS token e.g. ?sv=<storage version>&st=<start time>&se=<expire time>&sr=<resource>&sp=<permissions>&sip=<ip range>&spr=<protocol>&sig=<signature>>" 
+                    "type": "LinkedServiceReference"
+                },
+                "secretName": "<secretName with value of SAS token e.g. ?sv=<storage version>&st=<start time>&se=<expire time>&sr=<resource>&sp=<permissions>&sip=<ip range>&spr=<protocol>&sig=<signature>>"
             }
         },
         "connectVia": {
@@ -225,16 +225,16 @@ ms.locfileid: "100393116"
 
 Azure Blob 存储链接服务支持以下属性：
 
-| properties | 说明 | 必须 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | **type** 属性必须设置为 **AzureBlobStorage**。 |是 |
-| serviceEndpoint | 使用 `https://<accountName>.blob.core.windows.net/` 模式指定 Azure Blob 存储服务终结点。 |是 |
-| accountKind | 指定存储帐户的种类。 允许值包括：Storage（常规用途 v1）、StorageV2（常规用途 v2）、BlobStorage 或 BlockBlobStorage   。 <br/> 在数据流中使用 Azure Blob 链接服务时，如果帐户类型为空或“存储”，则不支持托管标识或服务主体身份验证。 请指定正确的帐户类型，选择一种不同的身份验证，或者将你的存储帐户升级到常规用途 v2。 |否 |
+| type | **type** 属性必须设置为 **AzureBlobStorage**。 | 是 |
+| serviceEndpoint | 使用 `https://<accountName>.blob.core.windows.net/` 模式指定 Azure Blob 存储服务终结点。 | 是 |
+| accountKind | 指定存储帐户的种类。 允许值包括：Storage（常规用途 v1）、StorageV2（常规用途 v2）、BlobStorage 或 BlockBlobStorage   。 <br/> 在数据流中使用 Azure Blob 链接服务时，如果帐户类型为空或“存储”，则不支持托管标识或服务主体身份验证。 请指定正确的帐户类型，选择一种不同的身份验证，或者将你的存储帐户升级到常规用途 v2。 | 否 |
 | servicePrincipalId | 指定应用程序的客户端 ID。 | 是 |
 | servicePrincipalKey | 指定应用程序的密钥。 将此字段标记为 SecureString 以将其安全地存储在数据工厂中，或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
 | tenant | 指定应用程序的租户信息（域名或租户 ID）。 通过将鼠标悬停在 Azure 门户右上角来检索租户信息。 | 是 |
 | azureCloudType | 对于服务主体身份验证，请指定 Azure Active Directory 应用程序注册到的 Azure 云环境的类型。 <br/> 允许的值为“AzurePublic”、“AzureChina”、“AzureUsGovernment”和“AzureGermany”   。 默认情况下，使用数据工厂的云环境。 | 否 |
-| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 可使用 Azure Integration Runtime 或自承载集成运行时（如果数据存储位于专用网络中）。 如果未指定此属性，服务会使用默认的 Azure Integration Runtime。 |否 |
+| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 可使用 Azure Integration Runtime 或自承载集成运行时（如果数据存储位于专用网络中）。 如果未指定此属性，服务会使用默认的 Azure Integration Runtime。 | 否 |
 
 >[!NOTE]
 >如果你的 blob 帐户启用了[软删除](../storage/blobs/soft-delete-blob-overview.md)，则数据流中不支持服务主体身份验证。
@@ -285,12 +285,12 @@ Azure Blob 存储链接服务支持以下属性：
 
 Azure Blob 存储链接服务支持以下属性：
 
-| properties | 说明 | 必须 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | **type** 属性必须设置为 **AzureBlobStorage**。 |是 |
-| serviceEndpoint | 使用 `https://<accountName>.blob.core.windows.net/` 模式指定 Azure Blob 存储服务终结点。 |是 |
-| accountKind | 指定存储帐户的种类。 允许值包括：Storage（常规用途 v1）、StorageV2（常规用途 v2）、BlobStorage 或 BlockBlobStorage   。 <br/> 在数据流中使用 Azure Blob 链接服务时，如果帐户类型为空或“存储”，则不支持托管标识或服务主体身份验证。 请指定正确的帐户类型，选择一种不同的身份验证，或者将你的存储帐户升级到常规用途 v2。 |否 |
-| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 可使用 Azure Integration Runtime 或自承载集成运行时（如果数据存储位于专用网络中）。 如果未指定此属性，服务会使用默认的 Azure Integration Runtime。 |否 |
+| type | **type** 属性必须设置为 **AzureBlobStorage**。 | 是 |
+| serviceEndpoint | 使用 `https://<accountName>.blob.core.windows.net/` 模式指定 Azure Blob 存储服务终结点。 | 是 |
+| accountKind | 指定存储帐户的种类。 允许值包括：Storage（常规用途 v1）、StorageV2（常规用途 v2）、BlobStorage 或 BlockBlobStorage   。 <br/> 在数据流中使用 Azure Blob 链接服务时，如果帐户类型为空或“存储”，则不支持托管标识或服务主体身份验证。 请指定正确的帐户类型，选择一种不同的身份验证，或者将你的存储帐户升级到常规用途 v2。 | 否 |
+| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 可使用 Azure Integration Runtime 或自承载集成运行时（如果数据存储位于专用网络中）。 如果未指定此属性，服务会使用默认的 Azure Integration Runtime。 | 否 |
 
 > [!NOTE]
 > 如果你的 blob 帐户启用了[软删除](../storage/blobs/soft-delete-blob-overview.md)，则数据流中不支持托管标识身份验证。
@@ -325,7 +325,7 @@ Azure Blob 存储链接服务支持以下属性：
 
 Azure Blob 存储支持基于格式的数据集中 `location` 设置下的以下属性：
 
-| 属性   | 说明                                                  | 必须 |
+| 属性   | 说明                                                  | 必选 |
 | ---------- | ------------------------------------------------------------ | -------- |
 | type       | 数据集中位置的 **type** 属性必须设置为 **AzureBlobStorageLocation**。 | 是      |
 | container  | Blob 容器。                                          | 是      |
@@ -369,7 +369,7 @@ Azure Blob 存储支持基于格式的数据集中 `location` 设置下的以下
 
 Azure Blob 存储支持基于格式的复制源中 `storeSettings` 设置下的以下属性：
 
-| 属性                 | 说明                                                  | 必须                                      |
+| 属性                 | 说明                                                  | 必选                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
 | type                     | `storeSettings` 下的 **type** 属性必须设置为 **AzureBlobStorageReadSettings**。 | 是                                           |
 | 找到要复制的文件： |  |  |
@@ -377,10 +377,10 @@ Azure Blob 存储支持基于格式的复制源中 `storeSettings` 设置下的�
 | 选项 2：Blob 前缀<br>- prefix | 在数据集中配置的给定容器下的 Blob 名称的前缀，用于筛选源 Blob。 名称以 `container_in_dataset/this_prefix` 开头的 Blob 会被选择。 它利用 Blob 存储的服务端筛选器。与通配符筛选器相比，该服务端筛选器可提供更好的性能。<br><br>在使用前缀的情况下选择复制到基于文件的接收器并保留层次结构时，请注意，系统会保留前缀中最后一个“/”后面的子路径。 例如，如果在源为 `container/folder/subfolder/file.txt` 的情况下将前缀配置为 `folder/sub`，则保留的文件路径为 `subfolder/file.txt`。 | 否                                                          |
 | 选项 3：通配符<br>- wildcardFolderPath | 数据集中配置的给定容器下包含通配符的文件夹路径，用于筛选源文件夹。 <br>允许的通配符为：`*`（匹配零个或更多字符）和 `?`（匹配零个或单个字符）。 如果文件夹名内包含通配符或此转义字符，请使用 `^` 进行转义。 <br>请参阅[文件夹和文件筛选器示例](#folder-and-file-filter-examples)中的更多示例。 | 否                                            |
 | 选项 3：通配符<br>- wildcardFileName | 给定容器和文件夹路径（或通配符文件夹路径）下包含通配符的文件名，用于筛选源文件。 <br>允许的通配符为：`*`（匹配零个或更多字符）和 `?`（匹配零个或单个字符）。 如果文件名包含通配符或此转义字符，请使用 `^` 进行转义。 请参阅[文件夹和文件筛选器示例](#folder-and-file-filter-examples)中的更多示例。 | 是 |
-| 选项 4：文件列表<br>- fileListPath | 指明复制给定文件集。 指向包含要复制的文件列表的文本文件，其中每行一个文件（即数据集中所配置路径的相对路径）。<br/>使用此选项时，请不要在数据集中指定文件名。 请参阅[文件列表示例](#file-list-examples)中的更多示例。 |否 |
+| 选项 4：文件列表<br>- fileListPath | 指明复制给定文件集。 指向包含要复制的文件列表的文本文件，其中每行一个文件（即数据集中所配置路径的相对路径）。<br/>使用此选项时，请不要在数据集中指定文件名。 请参阅[文件列表示例](#file-list-examples)中的更多示例。 | 否 |
 | 其他设置： |  | |
-| recursive | 指示是要从子文件夹中以递归方式读取数据，还是只从指定的文件夹中读取数据。 请注意，当 recursive 设置为 true 且接收器是基于文件的存储时，将不会在接收器上复制或创建空的文件夹或子文件夹。 <br>允许的值为 **true**（默认值）和 **false**。<br>如果配置 `fileListPath`，则此属性不适用。 |否 |
-| deleteFilesAfterCompletion | 指示是否会在二进制文件成功移到目标存储后将其从源存储中删除。 文件删除按文件进行。因此，当复制活动失败时，你会看到一些文件已经复制到目标并从源中删除，而另一些文件仍保留在源存储中。 <br/>此属性仅在二进制文件复制方案中有效。 默认值：false。 |否 |
+| recursive | 指示是要从子文件夹中以递归方式读取数据，还是只从指定的文件夹中读取数据。 请注意，当 recursive 设置为 true 且接收器是基于文件的存储时，将不会在接收器上复制或创建空的文件夹或子文件夹。 <br>允许的值为 **true**（默认值）和 **false**。<br>如果配置 `fileListPath`，则此属性不适用。 | 否 |
+| deleteFilesAfterCompletion | 指示是否会在二进制文件成功移到目标存储后将其从源存储中删除。 文件删除按文件进行。因此，当复制活动失败时，你会看到一些文件已经复制到目标并从源中删除，而另一些文件仍保留在源存储中。 <br/>此属性仅在二进制文件复制方案中有效。 默认值：false。 | 否 |
 | modifiedDatetimeStart    | 文件根据“上次修改时间”属性进行筛选。 <br>如果文件的上次修改时间在 `modifiedDatetimeStart` 和 `modifiedDatetimeEnd` 之间的时间范围内，则将选中这些文件。 该时间应用于 UTC 时区，格式为“2018-12-01T05:00:00Z”。 <br> 属性可以为 **NULL**，这意味着不会向数据集应用任何文件属性筛选器。  如果 `modifiedDatetimeStart` 具有日期/时间值，但 `modifiedDatetimeEnd` 为 NULL，则会选中“上次修改时间”属性大于或等于该日期/时间值的文件。  如果 `modifiedDatetimeEnd` 具有日期/时间值，但 `modifiedDatetimeStart` 为 NULL，则会选中“上次修改时间”属性小于该日期/时间值的文件。<br/>如果配置 `fileListPath`，则此属性不适用。 | 否                                            |
 | modifiedDatetimeEnd      | 同上。                                               | 否                                            |
 | enablePartitionDiscovery | 对于已分区的文件，请指定是否从文件路径分析分区，并将它们添加为附加的源列。<br/>允许的值为 false（默认）和 true 。 | 否                                            |
@@ -440,9 +440,9 @@ Azure Blob 存储支持基于格式的复制源中 `storeSettings` 设置下的�
 
 Azure Blob 存储支持基于格式的复制接收器中 `storeSettings` 设置下的以下属性：
 
-| 属性                 | 说明                                                  | 必须 |
+| 属性                 | 说明                                                  | 必选 |
 | ------------------------ | ------------------------------------------------------------ | -------- |
-| type                     | `storeSettings` 下的 **type** 属性必须设置为 **AzureBlobStorageWriteSettings**。 | 是      |
+| type                     | `type`下的属性 `storeSettings` 必须设置为 `AzureBlobStorageWriteSettings` 。 | 是      |
 | copyBehavior             | 定义以基于文件的数据存储中的文件为源时的复制行为。<br/><br/>允许值包括：<br/><b>- PreserveHierarchy（默认）</b>：将文件层次结构保留到目标文件夹中。 指向源文件夹的源文件相对路径与指向目标文件夹的目标文件相对路径相同。<br/><b>- FlattenHierarchy</b>：源文件夹中的所有文件都位于目标文件夹的第一级中。 目标文件具有自动生成的名称。 <br/><b>- MergeFiles</b>：将源文件夹中的所有文件合并到一个文件中。 如果指定了文件名或 Blob 名称，则合并文件的名称为指定名称。 否则，它是自动生成的文件名。 | 否       |
 | blockSizeInMB | 指定用于将数据写入块 Blob 的块大小（以 MB 为单位）。 详细了解[块 Blob](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-block-blobs)。 <br/>允许的值介于 4 MB 到 100 MB 之间。 <br/>默认情况下，数据工厂会根据源存储类型和数据自动确定块大小。 以非二进制格式复制到 Blob 存储中时，默认块大小为 100 MB，因此该存储（最多）可容纳 4.95 TB 的数据。 当数据不大时，它可能并非最优，特别是当你在网络连接不佳的情况下使用自承载集成运行时的时候，这会导致操作超时或性能问题。 可以显式指定块大小，同时确保 `blockSizeInMB*50000` 足够大，可以存储数据， 否则复制活动运行会失败。 | 否 |
 | maxConcurrentConnections | 与存储的并发连接数。 仅在要限制与数据存储的并发连接数时指定。 | 否       |
@@ -489,9 +489,9 @@ Azure Blob 存储支持基于格式的复制接收器中 `storeSettings` 设置�
 | folderPath | fileName | recursive | 源文件夹结构和筛选器结果（用 **粗体** 表示的文件已检索）|
 |:--- |:--- |:--- |:--- |
 | `container/Folder*` | （为空，使用默认值） | false | container<br/>&nbsp;&nbsp;&nbsp;&nbsp;FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File2.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
-| `container/Folder*` | （为空，使用默认值） | 是 | container<br/>&nbsp;&nbsp;&nbsp;&nbsp;FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File2.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File4.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
+| `container/Folder*` | （为空，使用默认值） | true | container<br/>&nbsp;&nbsp;&nbsp;&nbsp;FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File2.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File4.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
 | `container/Folder*` | `*.csv` | false | container<br/>&nbsp;&nbsp;&nbsp;&nbsp;FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File2.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
-| `container/Folder*` | `*.csv` | 是 | container<br/>&nbsp;&nbsp;&nbsp;&nbsp;FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File2.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
+| `container/Folder*` | `*.csv` | true | container<br/>&nbsp;&nbsp;&nbsp;&nbsp;FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File2.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
 
 ### <a name="file-list-examples"></a>文件列表示例
 
@@ -509,9 +509,9 @@ Azure Blob 存储支持基于格式的复制接收器中 `storeSettings` 设置�
 
 | recursive | copyBehavior | 源文件夹结构 | 生成目标 |
 |:--- |:--- |:--- |:--- |
-| 是 |preserveHierarchy | Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | 使用与源相同的结构创建目标文件夹 Folder1：<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 |
-| 是 |flattenHierarchy | Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | 使用以下结构创建目标文件夹 Folder1： <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1 的自动生成的名称<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2 的自动生成的名称<br/>&nbsp;&nbsp;&nbsp;&nbsp;File3 的自动生成的名称<br/>&nbsp;&nbsp;&nbsp;&nbsp;File4 的自动生成的名称<br/>&nbsp;&nbsp;&nbsp;&nbsp;File5 的自动生成的名称 |
-| 是 |mergeFiles | Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | 使用以下结构创建目标文件夹 Folder1： <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1 + File2 + File3 + File4 + File5 的内容将合并到一个文件中，且自动生成文件名。 |
+| true |preserveHierarchy | Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | 使用与源相同的结构创建目标文件夹 Folder1：<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 |
+| true |flattenHierarchy | Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | 使用以下结构创建目标文件夹 Folder1： <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1 的自动生成的名称<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2 的自动生成的名称<br/>&nbsp;&nbsp;&nbsp;&nbsp;File3 的自动生成的名称<br/>&nbsp;&nbsp;&nbsp;&nbsp;File4 的自动生成的名称<br/>&nbsp;&nbsp;&nbsp;&nbsp;File5 的自动生成的名称 |
+| true |mergeFiles | Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | 使用以下结构创建目标文件夹 Folder1： <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1 + File2 + File3 + File4 + File5 的内容将合并到一个文件中，且自动生成文件名。 |
 | false |preserveHierarchy | Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | 使用以下结构创建目标文件夹 Folder1： <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/><br/>不会选取带有 File3、File4 和 File5 的 Subfolder1。 |
 | false |flattenHierarchy | Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | 使用以下结构创建目标文件夹 Folder1： <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1 的自动生成的名称<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2 的自动生成的名称<br/><br/>不会选取带有 File3、File4 和 File5 的 Subfolder1。 |
 | false |mergeFiles | Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | 使用以下结构创建目标文件夹 Folder1：<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1 + File2 的内容将合并到一个文件中，且自动生成文件名。 File1 的自动生成的名称<br/><br/>不会选取带有 File3、File4 和 File5 的 Subfolder1。 |
@@ -523,12 +523,13 @@ Azure Blob 存储支持基于格式的复制接收器中 `storeSettings` 设置�
 ## <a name="mapping-data-flow-properties"></a>映射数据流属性
 
 在映射数据流中转换数据时，可以在 Azure Blob 存储中读取和写入以下格式的文件：
-* [Avro](format-avro.md#mapping-data-flow-properties)
-* [带分隔符的文本](format-delimited-text.md#mapping-data-flow-properties)
-* [增量](format-delta.md#mapping-data-flow-properties)
-* [Excel](format-excel.md#mapping-data-flow-properties)
-* [JSON](format-json.md#mapping-data-flow-properties)
-* [Parquet](format-parquet.md#mapping-data-flow-properties)
+
+- [Avro](format-avro.md#mapping-data-flow-properties)
+- [带分隔符的文本](format-delimited-text.md#mapping-data-flow-properties)
+- [增量](format-delta.md#mapping-data-flow-properties)
+- [Excel](format-excel.md#mapping-data-flow-properties)
+- [JSON](format-json.md#mapping-data-flow-properties)
+- [Parquet](format-parquet.md#mapping-data-flow-properties)
 
 格式特定的设置位于该格式的文档中。 有关详细信息，请参阅[映射数据流中的源转换](data-flow-source.md)和[映射数据流中的接收器转换](data-flow-sink.md)。
 
@@ -544,17 +545,17 @@ Azure Blob 存储支持基于格式的复制接收器中 `storeSettings` 设置�
 
 通配符示例：
 
-* ```*``` 表示任意字符集。
-* ```**``` 表示递归目录嵌套。
-* ```?``` 替换一个字符。
-* ```[]``` 与括号中的一个或多个字符匹配。
+- `*` 表示任意字符集。
+- `**` 表示递归目录嵌套。
+- `?` 替换一个字符。
+- `[]` 与括号中的一个或多个字符匹配。
 
-* ```/data/sales/**/*.csv``` 获取 /data/sales 下的所有 .csv 文件。
-* ```/data/sales/20??/**/``` 获取 20 世纪的所有文件。
-* ```/data/sales/*/*/*.csv``` 获取比 /data/sales 低两个级别的 .csv 文件。
-* ```/data/sales/2004/*/12/[XY]1?.csv``` 获取时间为 2004 年 12 月、以 X 或 Y 开头且以两位数为前缀的所有 .csv 文件。
+- `/data/sales/**/*.csv` 获取 /data/sales 下的所有 .csv 文件。
+- `/data/sales/20??/**/` 获取 20 世纪的所有文件。
+- `/data/sales/*/*/*.csv` 获取比 /data/sales 低两个级别的 .csv 文件。
+- `/data/sales/2004/*/12/[XY]1?.csv` 获取时间为 2004 年 12 月、以 X 或 Y 开头且以两位数为前缀的所有 .csv 文件。
 
-分区根路径：如果文件源中存在 ```key=value``` 格式（例如 `year=2019`）的分区文件夹，则可以向该分区文件夹树的顶层分配数据流中的列名称。
+分区根路径：如果文件源中存在 `key=value` 格式（例如 `year=2019`）的分区文件夹，则可以向该分区文件夹树的顶层分配数据流中的列名称。
 
 首先，设置一个通配符，用于包括属于分区文件夹以及要读取的叶文件的所有路径。
 
@@ -574,17 +575,17 @@ Azure Blob 存储支持基于格式的复制接收器中 `storeSettings` 设置�
 
 如果源路径包含通配符，则语法将如下所示：
 
-```/data/sales/20??/**/*.csv```
+`/data/sales/20??/**/*.csv`
 
 可以将“源”指定为：
 
-```/data/sales```
+`/data/sales`
 
 可以将“目标”指定为：
 
-```/backup/priorSales```
+`/backup/priorSales`
 
-在此例中，源自 /data/sales 下的所有文件都将移动到 /backup/priorSales。
+在这种情况下，所有源自的文件 `/data/sales` 都将移到 `/backup/priorSales` 。
 
 > [!NOTE]
 > 仅当从在管道中使用“执行数据流”活动的管道运行进程（管道调试或执行运行）中启动数据流时，文件操作才会运行。 文件操作不会在数据流调试模式下运行。
@@ -600,11 +601,11 @@ Azure Blob 存储支持基于格式的复制接收器中 `storeSettings` 设置�
 **清除文件夹：** 确定在写入数据之前是否清除目标文件夹。
 
 **文件名选项：** 确定目标文件在目标文件夹中的命名方式。 文件名选项有：
-   * **默认**：允许 Spark 根据 PART 默认值为文件命名。
-   * **模式**：输入一种模式，该模式枚举每个分区的输出文件。 例如，loans[n].csv 将创建 loans1.csv、loans2.csv 等等。
-   * **每个分区**：为每个分区输入一个文件名。
-   * **作为列中的数据**：将输出文件设置为列的值。 此路径是数据集容器而非目标文件夹的相对路径。 如果数据集中有文件夹路径，则会将其重写。
-   * **输出到一个文件**：将分区输出文件合并为一个命名的文件。 此路径是数据集文件夹的相对路径。 请注意，合并操作可能会因为节点大小而失败。 对于大型数据集，不建议使用此选项。
+   - **默认**：允许 Spark 根据 PART 默认值为文件命名。
+   - **模式**：输入一种模式，该模式枚举每个分区的输出文件。 例如， `loans[n].csv` 将创建 `loans1.csv` 、等 `loans2.csv` 。
+   - **每个分区**：为每个分区输入一个文件名。
+   - **作为列中的数据**：将输出文件设置为列的值。 此路径是数据集容器而非目标文件夹的相对路径。 如果数据集中有文件夹路径，则会将其重写。
+   - **输出到一个文件**：将分区输出文件合并为一个命名的文件。 此路径是数据集文件夹的相对路径。 请注意，合并操作可能会因为节点大小而失败。 对于大型数据集，不建议使用此选项。
 
 全部引用：确定是否将所有值置于引号中。
 
@@ -627,15 +628,15 @@ Azure Blob 存储支持基于格式的复制接收器中 `storeSettings` 设置�
 
 ### <a name="legacy-dataset-model"></a>旧数据集模型
 
-| properties | 说明 | 必须 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 数据集的 **type** 属性必须设置为 **AzureBlob**。 |是 |
-| folderPath | 指向 Blob 存储中的容器和文件夹的路径。 <br/><br/>不包含容器名称的路径支持通配符筛选器。 允许的通配符为：`*`（匹配零个或更多字符）和 `?`（匹配零个或单个字符）。 如果文件夹名内包含通配符或此转义字符，请使用 `^` 进行转义。 <br/><br/>示例：myblobcontainer/myblobfolder/。 请参阅[文件夹和文件筛选器示例](#folder-and-file-filter-examples)中的更多示例。 |对于复制或查找活动为“是”，对于 GetMetadata 活动为“否” |
-| fileName | 指定的“folderPath”值下 Blob 的名称或通配符筛选器。 如果没有为此属性指定任何值，则数据集会指向文件夹中的所有 Blob。 <br/><br/>对于筛选器，允许的通配符为 `*`（匹配零个或零个以上的字符）和 `?`（匹配零个或单个字符）。<br/>- 示例 1：`"fileName": "*.csv"`<br/>- 示例 2：`"fileName": "???20180427.txt"`<br/>如果文件名包含通配符或此转义字符，请使用 `^` 进行转义。<br/><br/>如果没有为输出数据集指定 **fileName**，并且没有在活动接收器中指定 **preserveHierarchy**，则复制活动会自动生成采用以下模式的 Blob 名称：“*Data.[activity run ID GUID].[GUID if FlattenHierarchy].[format if configured].[compression if configured]* ”。 例如：“Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt.gz”。 <br/><br/>如果使用表名称（而不是查询）从表格源进行复制，则名称模式为“[table name].[format].[compression if configured]”。 例如：“MyTable.csv”。 |否 |
-| modifiedDatetimeStart | 文件根据“上次修改时间”属性进行筛选。 如果文件的上次修改时间在 `modifiedDatetimeStart` 和 `modifiedDatetimeEnd` 之间的时间范围内，则将选中这些文件。 该时间应用于 UTC 时区，格式为“2018-12-01T05:00:00Z”。 <br/><br/> 请注意，要对大量文件进行筛选时，启用此设置会影响数据移动的整体性能。 <br/><br/> 属性可以为 **NULL**，这意味着不会向数据集应用任何文件属性筛选器。  如果 `modifiedDatetimeStart` 具有日期/时间值，但 `modifiedDatetimeEnd` 为 NULL，则会选中“上次修改时间”属性大于或等于该日期/时间值的文件。  如果 `modifiedDatetimeEnd` 具有日期/时间值，但 `modifiedDatetimeStart` 为 NULL，则会选中“上次修改时间”属性小于该日期/时间值的文件。| 否 |
-| modifiedDatetimeEnd | 文件根据“上次修改时间”属性进行筛选。 如果文件的上次修改时间在 `modifiedDatetimeStart` 和 `modifiedDatetimeEnd` 之间的时间范围内，则将选中这些文件。 该时间应用于 UTC 时区，格式为“2018-12-01T05:00:00Z”。 <br/><br/> 请注意，要对大量文件进行筛选时，启用此设置会影响数据移动的整体性能。 <br/><br/> 属性可以为 **NULL**，这意味着不会向数据集应用任何文件属性筛选器。  如果 `modifiedDatetimeStart` 具有日期/时间值，但 `modifiedDatetimeEnd` 为 NULL，则会选中“上次修改时间”属性大于或等于该日期/时间值的文件。  如果 `modifiedDatetimeEnd` 具有日期/时间值，但 `modifiedDatetimeStart` 为 NULL，则会选中“上次修改时间”属性小于该日期/时间值的文件。| 否 |
-| format | 若要在基于文件的存储之间按原样复制文件（二进制副本），可以在输入和输出数据集定义中跳过格式节。<br/><br/>若要分析或生成具有特定格式的文件，以下是受支持的文件格式类型：TextFormat、JsonFormat、AvroFormat、OrcFormat 和 ParquetFormat    。 请将 **format** 中的 **type** 属性设置为上述值之一。 有关详细信息，请参阅[文本格式](supported-file-formats-and-compression-codecs-legacy.md#text-format)、[JSON 格式](supported-file-formats-and-compression-codecs-legacy.md#json-format)、[Avro 格式](supported-file-formats-and-compression-codecs-legacy.md#avro-format)、[Orc 格式](supported-file-formats-and-compression-codecs-legacy.md#orc-format)和 [Parquet 格式](supported-file-formats-and-compression-codecs-legacy.md#parquet-format)部分。 |否（仅适用于二进制复制方案） |
-| compression | 指定数据的压缩类型和级别。 有关详细信息，请参阅[受支持的文件格式和压缩编解码器](supported-file-formats-and-compression-codecs-legacy.md#compression-support)。<br/>支持的类型为 **GZip**、**Deflate**、**BZip2** 和 **ZipDeflate**。<br/>支持的级别为“最佳”和“最快”。 |否 |
+| type | `type`数据集的属性必须设置为 `AzureBlob` 。 | 是 |
+| folderPath | 指向 Blob 存储中的容器和文件夹的路径。 <br/><br/>不包含容器名称的路径支持通配符筛选器。 允许的通配符为：`*`（匹配零个或更多字符）和 `?`（匹配零个或单个字符）。 如果文件夹名内包含通配符或此转义字符，请使用 `^` 进行转义。 <br/><br/>例如：`myblobcontainer/myblobfolder/`。 请参阅[文件夹和文件筛选器示例](#folder-and-file-filter-examples)中的更多示例。 | 对于 "复制" 或 "查找" 活动为 "是"，对于 GetMetadata 活动为 "否" |
+| fileName | 指定值下的 blob 的名称或通配符筛选器 `folderPath` 。 如果没有为此属性指定任何值，则数据集会指向文件夹中的所有 Blob。 <br/><br/>对于筛选器，允许的通配符为 `*`（匹配零个或零个以上的字符）和 `?`（匹配零个或单个字符）。<br/>- 示例 1：`"fileName": "*.csv"`<br/>- 示例 2：`"fileName": "???20180427.txt"`<br/>如果文件名包含通配符或此转义字符，请使用 `^` 进行转义。<br/><br/>如果 `fileName` 没有为输出数据集指定，并且 `preserveHierarchy` 未在活动接收器中指定，则复制活动会自动生成具有以下模式的 blob 名称： "*Data. [活动运行 ID GUID]。[GUID if FlattenHierarchy]。[格式（如果已配置）。[已配置压缩]*"。 例如：“Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt.gz”。 <br/><br/>如果使用表名而不是查询从表格源复制，则名称模式为 `[table name].[format].[compression if configured]` 。 例如：“MyTable.csv”。 | 否 |
+| modifiedDatetimeStart | 文件根据“上次修改时间”属性进行筛选。 如果文件的上次修改时间在 `modifiedDatetimeStart` 和 `modifiedDatetimeEnd` 之间的时间范围内，则将选中这些文件。 该时间应用于 UTC 时区，格式为“2018-12-01T05:00:00Z”。 <br/><br/> 请注意，要对大量文件进行筛选时，启用此设置会影响数据移动的整体性能。 <br/><br/> 属性可以为 `NULL` ，这意味着不会将任何文件属性筛选器应用于数据集。  当 `modifiedDatetimeStart` 具有 datetime 值但 `modifiedDatetimeEnd` 为时 `NULL` ，将选择最后修改的属性大于或等于 datetime 值的文件。  当 `modifiedDatetimeEnd` 具有日期时间值 `modifiedDatetimeStart` ，但为时 `NULL` ，将选择最后修改的属性小于 datetime 值的文件。| 否 |
+| modifiedDatetimeEnd | 文件根据“上次修改时间”属性进行筛选。 如果文件的上次修改时间在 `modifiedDatetimeStart` 和 `modifiedDatetimeEnd` 之间的时间范围内，则将选中这些文件。 该时间应用于 UTC 时区，格式为“2018-12-01T05:00:00Z”。 <br/><br/> 请注意，要对大量文件进行筛选时，启用此设置会影响数据移动的整体性能。 <br/><br/> 属性可以为 `NULL` ，这意味着不会将任何文件属性筛选器应用于数据集。  当 `modifiedDatetimeStart` 具有 datetime 值但 `modifiedDatetimeEnd` 为时 `NULL` ，将选择最后修改的属性大于或等于 datetime 值的文件。  当 `modifiedDatetimeEnd` 具有日期时间值 `modifiedDatetimeStart` ，但为时 `NULL` ，将选择最后修改的属性小于 datetime 值的文件。| 否 |
+| format | 若要在基于文件的存储之间按原样复制文件（二进制副本），可以在输入和输出数据集定义中跳过格式节。<br/><br/>若要分析或生成具有特定格式的文件，以下是受支持的文件格式类型：TextFormat、JsonFormat、AvroFormat、OrcFormat 和 ParquetFormat    。 请将 **format** 中的 **type** 属性设置为上述值之一。 有关详细信息，请参阅[文本格式](supported-file-formats-and-compression-codecs-legacy.md#text-format)、[JSON 格式](supported-file-formats-and-compression-codecs-legacy.md#json-format)、[Avro 格式](supported-file-formats-and-compression-codecs-legacy.md#avro-format)、[Orc 格式](supported-file-formats-and-compression-codecs-legacy.md#orc-format)和 [Parquet 格式](supported-file-formats-and-compression-codecs-legacy.md#parquet-format)部分。 | 否（仅适用于二进制复制方案） |
+| compression | 指定数据的压缩类型和级别。 有关详细信息，请参阅[受支持的文件格式和压缩编解码器](supported-file-formats-and-compression-codecs-legacy.md#compression-support)。<br/>支持的类型为 **GZip**、**Deflate**、**BZip2** 和 **ZipDeflate**。<br/>支持的级别为“最佳”和“最快”。 | 否 |
 
 >[!TIP]
 >如需复制文件夹下的所有 blob，请仅指定 folderPath。<br>如需复制具有给定名称的单个 Blob，请使用文件夹部分指定 folderPath，并使用文件名指定 fileName。<br>如需复制文件夹下 Blob 的子集，请使用文件夹部分指定 folderPath，并使用通配符筛选器指定 fileName。 
@@ -672,10 +673,10 @@ Azure Blob 存储支持基于格式的复制接收器中 `storeSettings` 设置�
 
 ### <a name="legacy-source-model-for-the-copy-activity"></a>复制活动的旧源模型
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 复制活动源的 **type** 属性必须设置为 **BlobSource**。 |是 |
-| recursive | 指示是要从子文件夹中以递归方式读取数据，还是只从指定的文件夹中读取数据。 请注意，当 recursive 设置为 true 且接收器是基于文件的存储时，将不会在接收器上复制或创建空的文件夹或子文件夹。<br/>允许的值为 **true**（默认值）和 **false**。 | 否 |
+| type | `type`复制活动源的属性必须设置为 `BlobSource` 。 | 是 |
+| recursive | 指示是要从子文件夹中以递归方式读取数据，还是只从指定的文件夹中读取数据。 请注意，当 `recursive` 设置为 `true` 并且接收器是基于文件的存储时，不会在接收器上复制或创建空的文件夹或子文件夹。<br/>允许的值为 `true` (默认) 和 `false` 。 | 否 |
 | maxConcurrentConnections | 与存储的并发连接数。 仅在要限制与数据存储的并发连接数时指定。 | 否 |
 
 **示例：**
@@ -712,9 +713,9 @@ Azure Blob 存储支持基于格式的复制接收器中 `storeSettings` 设置�
 
 ### <a name="legacy-sink-model-for-the-copy-activity"></a>复制活动的旧接收器模型
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 复制活动接收器的 **type** 属性必须设置为 **BlobSink**。 |是 |
+| type | `type`复制活动接收器的属性必须设置为 `BlobSink` 。 | 是 |
 | copyBehavior | 定义以基于文件的数据存储中的文件为源时的复制行为。<br/><br/>允许值包括：<br/><b>- PreserveHierarchy（默认）</b>：将文件层次结构保留到目标文件夹中。 从源文件到源文件夹的相对路径与从目标文件到目标文件夹的相对路径相同。<br/><b>- FlattenHierarchy</b>：源文件夹中的所有文件都位于目标文件夹的第一级中。 目标文件具有自动生成的名称。 <br/><b>- MergeFiles</b>：将源文件夹中的所有文件合并到一个文件中。 如果指定了文件名或 Blob 名称，则合并文件的名称为指定名称。 否则，它是自动生成的文件名。 | 否 |
 | maxConcurrentConnections | 与存储的并发连接数。 仅在要限制与数据存储的并发连接数时指定。 | 否 |
 

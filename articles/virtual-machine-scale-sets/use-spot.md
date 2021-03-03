@@ -9,12 +9,12 @@ ms.subservice: spot
 ms.date: 02/26/2021
 ms.reviewer: cynthn
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 33aa553e688b595551c20e8b1432163152865537
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: b20a5bd9c06c3948097389d5439defa219a7931b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101675020"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694982"
 ---
 # <a name="azure-spot-virtual-machines-for-virtual-machine-scale-sets"></a>虚拟机规模集的 Azure 点虚拟机 
 
@@ -68,13 +68,56 @@ Azure 点虚拟机可部署到除 Microsoft Azure 中国世纪地区以外的任
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 尝试 & 还原权益：
-- 默认情况下，在规模集中部署 Azure 点虚拟机时启用。
 - 尝试还原由于容量原因而逐出的 Azure 点虚拟机。
 - 所还原的 Azure 点虚拟机预计运行时间较长，且容量触发逐出的可能性较低。
 - 提高 Azure 点虚拟机的使用期限，使工作负荷运行更长时间。
 - 帮助虚拟机规模集维护 Azure 点虚拟机的目标计数，类似于 "保留即用即付" Vm 的 "维护目标计数" 功能。
 
 尝试在使用 [自动缩放](virtual-machine-scale-sets-autoscale-overview.md)的规模集中禁用 & 还原。 规模集中的 Vm 数由自动缩放规则驱动。
+
+### <a name="register-for-try--restore"></a>注册以进行试用 & 还原
+
+必须先注册预览版，然后才能使用试用 & 还原功能。 注册可能需要几分钟才能完成。 你可以使用 Azure CLI 或 PowerShell 来完成功能注册。
+
+
+**使用 CLI**
+
+使用 [az feature register](/cli/azure/feature#az-feature-register) 为你的订阅启用预览。 
+
+```azurecli-interactive
+az feature register --namespace Microsoft.Compute --name SpotTryRestore 
+```
+
+功能注册可能最多需要15分钟。 若要检查注册状态，请使用以下命令： 
+
+```azurecli-interactive
+az feature show --namespace Microsoft.Compute --name SpotTryRestore 
+```
+
+为订阅注册此功能后，通过将更改传播到计算资源提供程序来完成选择加入过程。 
+
+```azurecli-interactive
+az provider register --namespace Microsoft.Compute 
+```
+**使用 PowerShell** 
+
+使用 [AzProviderFeature](/powershell/module/az.resources/register-azproviderfeature) cmdlet 为你的订阅启用预览。 
+
+```azurepowershell-interactive
+Register-AzProviderFeature -FeatureName SpotTryRestore -ProviderNamespace Microsoft.Compute 
+```
+
+功能注册可能最多需要15分钟。 若要检查注册状态，请使用以下命令： 
+
+```azurepowershell-interactive
+Get-AzProviderFeature -FeatureName SpotTryRestore -ProviderNamespace Microsoft.Compute 
+```
+
+为订阅注册此功能后，通过将更改传播到计算资源提供程序来完成选择加入过程。 
+
+```azurepowershell-interactive
+Register-AzResourceProvider -ProviderNamespace Microsoft.Compute 
+```
 
 ## <a name="placement-groups"></a>放置组
 

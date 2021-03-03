@@ -2,13 +2,13 @@
 title: 模板中的变量
 description: 介绍如何在 Azure 资源管理器模板中定义变量 (ARM 模板) 和 Bicep 文件。
 ms.topic: conceptual
-ms.date: 02/12/2021
-ms.openlocfilehash: cafd42112e5d296cb73f88e292a66ca2203f3810
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 02/19/2021
+ms.openlocfilehash: e00a9e8e1801725707bac2abdc67512477e2cf07
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100364454"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101700331"
 ---
 # <a name="variables-in-arm-templates"></a>ARM 模板中的变量
 
@@ -70,10 +70,6 @@ var concatToParam = '${inputValue}-addtoparam'
 
 您可以使用 [模板函数](template-functions.md) 来构造变量值。
 
-在 JSON 模板中，不能使用 [reference](template-functions-resource.md#reference) 函数或变量声明中的任何 [列表](template-functions-resource.md#list) 函数。 在解析变量时，这些函数获取资源的运行时状态，不能在部署之前执行。
-
-在 Bicep 文件中声明变量时，引用和列表函数是有效的。
-
 下面的示例为存储帐户名称创建一个字符串值。 它使用多个模板函数来获取参数值，并将其连接到唯一字符串。
 
 # <a name="json"></a>[JSON](#tab/json)
@@ -92,6 +88,10 @@ var storageName = '${toLower(storageNamePrefix)}${uniqueString(resourceGroup().i
 
 ---
 
+在 JSON 模板中，不能使用 [reference](template-functions-resource.md#reference) 函数或变量声明中的任何 [列表](template-functions-resource.md#list) 函数。 在解析变量时，这些函数获取资源的运行时状态，不能在部署之前执行。
+
+在 Bicep 文件中，引用和列表函数在声明变量时有效。
+
 ## <a name="use-variable"></a>使用变量
 
 以下示例演示如何使用资源属性的变量。
@@ -101,6 +101,9 @@ var storageName = '${toLower(storageNamePrefix)}${uniqueString(resourceGroup().i
 在 JSON 模板中，使用 [variables](template-functions-deployment.md#variables) 函数引用变量的值。
 
 ```json
+"variables": {
+  "storageName": "[concat(toLower(parameters('storageNamePrefix')), uniqueString(resourceGroup().id))]"
+},
 "resources": [
   {
     "type": "Microsoft.Storage/storageAccounts",
@@ -115,6 +118,8 @@ var storageName = '${toLower(storageNamePrefix)}${uniqueString(resourceGroup().i
 在 Bicep 文件中，通过提供变量名称来引用变量的值。
 
 ```bicep
+var storageName = '${toLower(storageNamePrefix)}${uniqueString(resourceGroup().id)}'
+
 resource demoAccount 'Microsoft.Storage/storageAccounts@2019-06-01' = {
   name: storageName
 ```

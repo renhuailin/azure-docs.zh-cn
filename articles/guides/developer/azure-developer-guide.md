@@ -6,12 +6,12 @@ ms.service: azure
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
-ms.openlocfilehash: 1caab392af1dab4f2e706d7372b0a1d9b5e62db6
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 12b90bf709cb20bed844940570663a76052a540d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101091208"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738933"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Azure 开发人员入门指南
 
@@ -63,7 +63,7 @@ Azure 提供了支持应用程序开发和托管需求的服务。 Azure 还提�
 
 作为一个基础结构即服务 (IaaS) 提供程序，Azure 可让你部署到或将应用程序迁移到 Windows 或 Linux VM。 Azure 虚拟机连同 Azure 虚拟网络一起，可支持将 Windows 或 Linux VM 部署到 Azure。 通过 VM，你可以全面控制计算机的配置。 使用 Vm 时，需要负责所有服务器软件安装、配置、维护和操作系统修补程序。
 
-由于 Vm 的控制级别，可以在 Azure 上运行不适合 PaaS 模型的各种服务器工作负荷。 这些工作负载可包括数据库服务器、Windows Server Active Directory 和 Microsoft SharePoint。 有关详细信息，请参阅 [Linux](../../virtual-machines/linux/index.yml) 或 [Windows](../../virtual-machines/windows/index.yml) 的虚拟机文档。
+由于 Vm 的控制级别，可以在 Azure 上运行不适合 PaaS 模型的各种服务器工作负荷。 这些工作负载可包括数据库服务器、Windows Server Active Directory 和 Microsoft SharePoint。 有关详细信息，请参阅 [Linux](../../virtual-machines/index.yml) 或 [Windows](../../virtual-machines/index.yml) 的虚拟机文档。
 
 > **何时使用**：在你需要完全控制应用程序基础结构，或将本地应用程序工作负载迁移到 Azure 而无需进行更改的情况下，可以使用虚拟机。
 >
@@ -83,7 +83,7 @@ Azure 提供了支持应用程序开发和托管需求的服务。 Azure 还提�
 
 Azure Service Fabric 是一种分布式系统平台。 利用此平台，可以轻松生成、打包、部署和管理可缩放的可靠微服务。 它还提供了全面的应用程序管理功能，例如：
 
-* 预配
+* 设置
 * 正在部署
 * 监视
 * 升级/修补

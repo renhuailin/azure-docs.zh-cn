@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 02/11/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 19ce054ce29b744f900676ecf4e55af3487d9891
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: c775d81b88c891d6d8ea0a4597b4fa4fee29c86a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100373464"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737539"
 ---
 # <a name="set-up-msix-app-attach-with-the-azure-portal"></a>通过 Azure 门户设置 MSIX 应用附加
 
@@ -36,6 +36,7 @@ ms.locfileid: "100373464"
 - 扩展到已上载到文件共享中的 .MSIX 映像的 .MSIX 封装应用程序。
 - Windows 虚拟桌面部署中将存储 .MSIX 包的文件共享。
 - 你上载 .MSIX 映像的文件共享还必须可供主机池中 (Vm) 的所有虚拟机访问。 用户将需要只读权限才能访问该映像。
+- 如果证书未公开信任，请按照 [安装证书](app-attach.md#install-certificates)中的说明进行操作。
 
 ## <a name="turn-off-automatic-updates-for-msix-app-attach-applications"></a>关闭 .MSIX 应用附加应用程序的自动更新
 

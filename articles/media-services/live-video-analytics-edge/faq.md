@@ -3,12 +3,12 @@ title: IoT Edge 上的实时视频分析常见问题解答 - Azure
 description: 本文解答了有关 IoT Edge 上的实时视频分析的常见问题。
 ms.topic: conceptual
 ms.date: 12/01/2020
-ms.openlocfilehash: 0cb378bf614582070dd1bdd0a11706b26437af53
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 72a07a1a509aebcd7ba4048d0c84e913481c978e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880044"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702243"
 ---
 # <a name="live-video-analytics-on-iot-edge-faq"></a>IoT Edge 上的实时视频分析常见问题解答
 
@@ -230,7 +230,7 @@ microsoft.azure.media.live_video_analytics.extensibility.grpc.v1
 
 **是否可以使用 Azure Monitor 查看云端或边缘的媒体图形的运行状况、指标和性能？**
 
-可以。我们支持此方法。 若要了解详细信息，请参阅 [Azure Monitor 指标概述](../../azure-monitor/platform/data-platform-metrics.md)。
+可以。我们支持此方法。 若要了解详细信息，请参阅 [Azure Monitor 指标概述](../../azure-monitor/essentials/data-platform-metrics.md)。
 
 **是否有任何工具可用于简化监视媒体服务 IoT Edge 模块？**
 

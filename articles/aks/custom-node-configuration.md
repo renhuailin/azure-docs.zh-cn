@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 12/03/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 589081149d08983d3cd5a4a8822873f5a6cfca0e
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 7b39242a7d7208b33a070e86088b25e9414ead04
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99559435"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714623"
 ---
 # <a name="customize-node-configuration-for-azure-kubernetes-service-aks-node-pools-preview"></a>自定义 Azure Kubernetes Service (AKS) 节点池的节点配置 (预览) 
 
@@ -62,12 +62,12 @@ az extension update --name aks-preview
 | 参数 | 允许的值/间隔 | 默认 | 说明 |
 | --------- | ----------------------- | ------- | ----------- |
 | `cpuManagerPolicy` | 无、静态 | 无 | 静态策略允许具有整数 CPU 请求的可 [保证盒箱](https://kubernetes.io/docs/tasks/configure-pod-container/quality-service-pod/) 中的容器访问节点上的独占 cpu。 |
-| `cpuCfsQuota` | true、false | 是 |  对于指定 CPU 限制的容器，启用/禁用 CPU CFS 配额强制。 | 
+| `cpuCfsQuota` | true、false | true |  对于指定 CPU 限制的容器，启用/禁用 CPU CFS 配额强制。 | 
 | `cpuCfsQuotaPeriod` | 以毫秒为单位的间隔 (毫秒)  | `100ms` | 设置 CPU CFS 配额周期值。 | 
 | `imageGcHighThreshold` | 0-100 | 85 | 始终运行映像垃圾回收后的磁盘使用百分比。 **将** 触发垃圾回收的最小磁盘使用量。 若要禁用映像垃圾回收，请将设置为100。 | 
 | `imageGcLowThreshold` | 0-100，无高于 `imageGcHighThreshold` | 80 | 从不运行映像垃圾回收之前磁盘使用量的百分比。 **可** 触发垃圾回收的最小磁盘使用情况。 |
 | `topologyManagerPolicy` | 无，最大努力，受限制，单 numa 节点 | 无 | 优化 NUMA 节点对齐，请 [在此处](https://kubernetes.io/docs/tasks/administer-cluster/topology-manager/)查看详细信息。 仅 kubernetes v 1.18 +。 |
-| `allowedUnsafeSysctls` | `kernel.shm*`, `kernel.msg*`, `kernel.sem`, `fs.mqueue.*`, `net.*` | 无 | 允许的 unsafe sysctls 或 unsafe sysctl 模式的列表。 | 
+| `allowedUnsafeSysctls` | `kernel.shm*`, `kernel.msg*`, `kernel.sem`, `fs.mqueue.*`, `net.*` | None | 允许的 unsafe sysctls 或 unsafe sysctl 模式的列表。 | 
 
 ### <a name="linux-os-custom-configuration"></a>Linux OS 自定义配置
 
@@ -127,7 +127,7 @@ az extension update --name aks-preview
 | `vm.max_map_count` |  65530-262144 | 65530 | 此文件包含进程可能具有的最大内存映射区域数。 内存映射区域用作直接调用、和的副作用， `malloc` `mmap` 也是 `mprotect` `madvise` 在加载共享库时。 | 
 | `vm.vfs_cache_pressure` | 1 - 500 | 100 | 此百分比值控制内核回收内存的趋势，该内存用于缓存目录和 inode 对象。 |
 | `vm.swappiness` | 0 - 100 | 60 | 此控件用于定义内核交换内存页的方式。 较高的值会增加入侵量，较小的值会减少交换量。 如果值为0，则指示内核不启动交换，直到可用和文件支持的页数小于区域中的高水位标记。 | 
-| `swapFileSizeMB` | 1 MB- (/dev/sdb 的 [临时磁盘](../virtual-machines/managed-disks-overview.md#temporary-disk) 的大小)  | 无 | SwapFileSizeMB 指定将在此节点池的代理节点上创建交换文件的大小（MB）。 | 
+| `swapFileSizeMB` | 1 MB- (/dev/sdb 的 [临时磁盘](../virtual-machines/managed-disks-overview.md#temporary-disk) 的大小)  | None | SwapFileSizeMB 指定将在此节点池的代理节点上创建交换文件的大小（MB）。 | 
 | `transparentHugePageEnabled` | `always`, `madvise`, `never` | `always` | [透明 Hugepages](https://www.kernel.org/doc/html/latest/admin-guide/mm/transhuge.html#admin-guide-transhuge) 是一项 Linux 核心功能，旨在通过更有效地使用处理器的内存映射硬件来提高性能。 启用后，内核会尝试尽可能地进行分配 `hugepages` ，如果 `mmap` 区域为 2 mb，则任何 Linux 进程都将接收 2 mb 页面。 在某些情况下 `hugepages` ，当系统范围内启用时，应用程序可能会最终分配更多的内存资源。 应用程序可能 `mmap` 是一个较大的区域，只需触摸1个字节，在这种情况下，可能会分配一个 2 MB 页面，而不是一个4k 页面。 这种情况的原因是可以禁用 `hugepages` 系统范围的，或者只是将它们包含在 `MADV_HUGEPAGE madvise` 区域内。 | 
 | `transparentHugePageDefrag` | `always`, `defer`, `defer+madvise`, `madvise`, `never` | `madvise` | 此值控制内核是否应充分利用内存压缩以提高其 `hugepages` 可用性。 | 
 
@@ -198,7 +198,7 @@ az aks nodepool add --name mynodepool1 --cluster-name myAKSCluster --resource-gr
 [aks-scale-apps]: tutorial-kubernetes-scale.md
 [aks-support-policies]: support-policies.md
 [aks-upgrade]: upgrade-cluster.md
-[aks-view-master-logs]: ./view-master-logs.md#enable-resource-logs
+[aks-view-master-logs]: ./view-control-plane-logs.md#enable-resource-logs
 [autoscaler-profile-properties]: #using-the-autoscaler-profile
 [azure-cli-install]: /cli/azure/install-azure-cli
 [az-aks-show]: /cli/azure/aks#az-aks-show

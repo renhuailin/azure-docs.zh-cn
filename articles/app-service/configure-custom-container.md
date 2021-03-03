@@ -2,14 +2,14 @@
 title: 配置自定义容器
 description: 了解如何在 Azure App Service 中配置自定义容器。 本文介绍最常见的配置任务。
 ms.topic: article
-ms.date: 09/22/2020
+ms.date: 02/23/2021
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: a7582bbb866a63820abbd959e06628eda5d57e29
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 8083c3c0c88d904ccb3ec75ae69a699867bd0f25
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97007630"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704865"
 ---
 # <a name="configure-a-custom-container-for-azure-app-service"></a>为 Azure 应用服务配置自定义容器
 
@@ -111,7 +111,7 @@ az webapp config appsettings set --resource-group <group-name> --name <app-name>
 Set-AzWebApp -ResourceGroupName <group-name> -Name <app-name> -AppSettings @{"DB_HOST"="myownserver.mysql.database.azure.com"}
 ```
 
-当应用运行时，应用服务应用设置会自动注入到进程中。 
+当应用运行时，应用服务应用设置会自动注入到进程中。 可以通过 URL 验证容器环境变量 `https://<app-name>.scm.azurewebsites.net/Env)` 。
 
 ::: zone pivot="container-windows"
 对于 IIS 或 .NET Framework (4.0 或更高版本) 的容器，它们 `System.ConfigurationManager` 被应用服务自动注入到 .net 应用设置和连接字符串。 对于所有其他语言或框架，它们作为该进程的环境变量提供，其中包含以下相应的前缀之一：
@@ -196,7 +196,7 @@ Set-AzWebApp -ResourceGroupName <group-name> -Name <app-name> -AppSettings @{"WE
 - [在 Azure 门户中配置](#in-azure-portal)
 - [从 Kudu 控制台](#from-the-kudu-console)
 - [具有 Kudu API](#with-the-kudu-api)
-- [向 Azure monitor 发送日志](troubleshoot-diagnostic-logs.md#send-logs-to-azure-monitor-preview)
+- [将日志发送到 Azure Monitor](troubleshoot-diagnostic-logs.md#send-logs-to-azure-monitor-preview)
 
 ### <a name="in-azure-portal"></a>在 Azure 门户中配置
 
@@ -276,9 +276,9 @@ Set-AzWebApp -ResourceGroupName <group-name> -Name <app-name> -AppSettings @{"CO
 
 下表显示了可能的值：
 
-| 值 | 说明 |
+| “值” | 说明 |
 | - | - |
-| **修正** | 三次连续可用性检查后重启容器 |
+| **修复** | 三次连续可用性检查后重启容器 |
 | **ReportOnly** | 默认值。 请不要重启容器，但在三次连续的可用性检查后，会在 Docker 日志中报告容器。 |
 | 关闭 | 不检查可用性。 |
 
@@ -292,44 +292,55 @@ Set-AzWebApp -ResourceGroupName <group-name> -Name <app-name> -AppSettings @{"CO
 
 ## <a name="enable-ssh"></a>启用 SSH
 
-SSH 实现容器和客户端之间的安全通信。 为了使自定义容器支持 SSH，你必须将其添加到 Dockerfile 本身。
+SSH 实现容器和客户端之间的安全通信。 为了使自定义容器支持 SSH，你必须将其添加到 Docker 映像本身。
 
 > [!TIP]
-> 所有内置 Linux 容器都已将 SSH 说明添加到了其映像存储库中。 你可以使用 [Node.js 10.14 存储库](https://github.com/Azure-App-Service/node/blob/master/10.14) 完成以下说明，以查看其在此中的启用方式。
+> 应用服务中的所有内置 Linux 容器已将 SSH 说明添加到了其映像存储库中。 你可以使用 [Node.js 10.14 存储库](https://github.com/Azure-App-Service/node/blob/master/10.14) 完成以下说明，以查看其在此中的启用方式。 Node.js 内置映像中的配置略有不同，但原理相同。
 
-- 使用 [运行](https://docs.docker.com/engine/reference/builder/#run) 指令安装 SSH 服务器，并将根帐户的密码设置为 `"Docker!"` 。 例如，对于基于 [Alpine Linux](https://hub.docker.com/_/alpine)的映像，需要以下命令：
+- 将 [sshd_config 文件](https://man.openbsd.org/sshd_config) 添加到存储库，如以下示例中所示。
 
-    ```Dockerfile
-    RUN apk add openssh \
-         && echo "root:Docker!" | chpasswd 
     ```
-
-    此配置不允许从外部建立到容器的连接。 SSH 仅通过 `https://<app-name>.scm.azurewebsites.net` 发布凭据提供并经过身份验证。
-
-- 将 [此 sshd_config 文件](https://github.com/Azure-App-Service/node/blob/master/10.14/sshd_config) 添加到映像存储库，并使用 [copy](https://docs.docker.com/engine/reference/builder/#copy) 指令将文件复制到 */etc/ssh/* 目录中。 有关 *sshd_config* 文件的详细信息，请参阅 [OpenBSD 文档](https://man.openbsd.org/sshd_config)。
-
-    ```Dockerfile
-    COPY sshd_config /etc/ssh/
+    Port            2222
+    ListenAddress       0.0.0.0
+    LoginGraceTime      180
+    X11Forwarding       yes
+    Ciphers aes128-cbc,3des-cbc,aes256-cbc,aes128-ctr,aes192-ctr,aes256-ctr
+    MACs hmac-sha1,hmac-sha1-96
+    StrictModes         yes
+    SyslogFacility      DAEMON
+    PasswordAuthentication  yes
+    PermitEmptyPasswords    no
+    PermitRootLogin     yes
+    Subsystem sftp internal-sftp
     ```
 
     > [!NOTE]
-    > sshd_config 文件必须包括以下项：
+    > 此文件配置 OpenSSH 并且必须包括以下项：
+    > - `Port` 必须设置为2222。
     > - `Ciphers` 必须至少包含此列表中的一项：`aes128-cbc,3des-cbc,aes256-cbc`。
     > - `MACs` 必须至少包含此列表中的一项：`hmac-sha1,hmac-sha1-96`。
 
-- 使用 [公开](https://docs.docker.com/engine/reference/builder/#expose) 说明在容器中打开端口2222。 尽管根密码已知，但无法从 internet 访问端口2222。 它只能由专用虚拟网络的桥网络中的容器访问。
+- 在 Dockerfile 中，添加以下命令：
 
     ```Dockerfile
+    # Install OpenSSH and set the password for root to "Docker!". In this example, "apk add" is the install instruction for an Alpine Linux-based image.
+    RUN apk add openssh \
+         && echo "root:Docker!" | chpasswd 
+
+    # Copy the sshd_config file to the /etc/ssh/ directory
+    COPY sshd_config /etc/ssh/
+
+    # Open port 2222 for SSH access
     EXPOSE 80 2222
     ```
+
+    此配置不允许从外部建立到容器的连接。 容器的端口2222只能在专用虚拟网络的桥网络中访问，internet 上的攻击者无法访问该端口。
 
 - 在容器的启动脚本中启动 SSH 服务器。
 
     ```bash
     /usr/sbin/sshd
     ```
-
-    有关示例，请参阅默认 [Node.js 10.14 容器](https://github.com/Azure-App-Service/node/blob/master/10.14/startup/init_container.sh) 如何启动 SSH 服务器。
 
 ## <a name="access-diagnostic-logs"></a>访问诊断日志
 
@@ -378,7 +389,7 @@ wordpress:
 
 #### <a name="supported-options"></a>支持的选项
 
-- command
+- 命令
 - entrypoint
 - 环境
 - image

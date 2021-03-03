@@ -6,13 +6,13 @@ ms.author: dech
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
-ms.date: 05/19/2020
-ms.openlocfilehash: 8315369d2100036a50aae770267aa04bceb2dfb0
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.date: 02/22/2021
+ms.openlocfilehash: f7002b3968e91447a26315f31347ad469aa5daca
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93339795"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690645"
 ---
 # <a name="import-notebooks-from-a-github-repo-into-azure-cosmos-db"></a>将笔记本从 GitHub 存储库导入 Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -57,7 +57,12 @@ ms.locfileid: "93339795"
 
 :::image type="content" source="./media/import-github-notebooks/commit-changes-github.png" alt-text="编辑笔记本并将更改提交到 GitHub":::
 
+编辑笔记本后，可以将 [其发布到笔记本库](publish-notebook-gallery.md)。 
+
 ## <a name="next-steps"></a>后续步骤
 
 * 了解 [Azure Cosmos DB Jupyter 笔记本](cosmosdb-jupyter-notebooks.md)的优势。
-
+* [浏览笔记本示例库](https://cosmos.azure.com/gallery.html)
+* [将笔记本发布到 Azure Cosmos DB 笔记本库](publish-notebook-gallery.md)
+* [使用 Python 笔记本功能和命令](use-python-notebook-features-and-commands.md)
+* [使用 C# 笔记本功能和命令](use-csharp-notebook-features-and-commands.md)

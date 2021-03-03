@@ -5,18 +5,18 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 01/12/2021
-ms.openlocfilehash: 5a7ddcf25993ab4ce87bdc47c5e0ae32fa24b07f
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 7907c81e45680de49f6653891fb4204a59db1002
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98956472"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710543"
 ---
 # <a name="private-endpoints"></a>专用终结点
 
 Azure 专用终结点是一个网络接口，可以将你通过专用且安全的方式连接到 Azure 专用链接支持的服务。 现在，QnA Maker 提供了为 Azure 搜索服务创建专用终结点的支持。 此功能在 QnA Maker 管理的中提供。 
 
-专用终结点由 [Azure 专用链接](https://docs.microsoft.com/azure/private-link/private-link-overview)作为单独的服务提供。 有关成本的详细信息，请参阅 [定价页。](https://azure.microsoft.com/pricing/details/private-link/) 
+专用终结点由 [Azure 专用链接](../../private-link/private-link-overview.md)作为单独的服务提供。 有关成本的详细信息，请参阅 [定价页。](https://azure.microsoft.com/pricing/details/private-link/) 
 
 ## <a name="prerequisites"></a>先决条件
 > [!div class="checklist"]

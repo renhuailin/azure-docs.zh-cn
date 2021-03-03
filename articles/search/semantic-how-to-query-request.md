@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/02/2021
-ms.openlocfilehash: 0af868f62f9bc62ee6b4b2a10d16f8eed632b6d3
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 7551ef88c2251b64cf6f6db1de4fed22db2c69e2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101679177"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101693639"
 ---
 # <a name="create-a-semantic-query-in-cognitive-search"></a>在认知搜索中创建语义查询
 
@@ -82,7 +82,7 @@ POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/
 
 ### <a name="formulate-the-request"></a>制订请求
 
-1. 将 "queryType" 设置为 "语义"，将 "queryLanguage" 设置为 "en-us"。 这两个参数都是必需的。
+1. 设置 **`"queryType"`** 为 "语义" 和 **`"queryLanguage"`** "en-us"。 这两个参数都是必需的。
 
    QueryLanguage 必须与分配给索引架构中的字段定义的任何 [语言分析器](index-add-language-analyzers.md) 一致。 如果 queryLanguage 为 "en-us"，则任何语言分析器也必须是英语变体 ( "" 或 "en-us" ) 。 任何与语言无关的分析器（如关键字或 simple）都不与 queryLanguage 值冲突。
 
@@ -90,7 +90,9 @@ POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/
 
    尽管搜索索引中的内容可以用多种语言撰写，但查询输入最有可能出现在其中。 搜索引擎不检查 queryLanguage、语言分析器以及内容所用的语言的兼容性，因此请确保对查询进行相应的限定以避免产生不正确的结果。
 
-1. 可选，但建议设置 "searchFields"。
+<a name="searchfields"></a>
+
+1. 将 **`"searchFields"`** (设置为可选，但建议) 。
 
    在语义查询中，"searchFields" 字段的顺序反映语义分级中字段的优先级或相对重要性。 仅将使用顶级字符串字段 (独立或集合) 。 由于 searchFields 在简单的 Lucene 查询 (中有其他行为，没有隐含的优先级顺序) ，因此任何非字符串字段和子字段都不会导致错误，但也不会用于语义排名。
 
@@ -104,9 +106,9 @@ POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/
 
    + 如果未指定字段，则会将所有可搜索字段视为文档的语义排名。 但是，不建议这样做，因为它可能不会从搜索索引中产生最佳结果。
 
-1. 删除 "orderBy" 子句（如果它们存在于现有请求中）。 语义分数用于对结果进行排序，如果包括显式排序逻辑，则返回 HTTP 400 错误。
+1. 删除 **`"orderBy"`** 子句（如果它们存在于现有请求中）。 语义分数用于对结果进行排序，如果包括显式排序逻辑，则返回 HTTP 400 错误。
 
-1. （可选）将 "解答" 设置为 "extractive"，并指定要超过1个答案的答案数。
+1. （可选）将 **`"answers"`** 设置为 "extractive"，并指定要超过1个答案的答案的数目。
 
 1. （可选）自定义应用于字幕的突出显示样式。 标题对文档中汇总响应的关键章节应用突出显示格式。 默认值为 `<em>`。 若要指定格式设置的类型 (例如，黄色背景) ，可以设置 highlightPreTag 和 highlightPostTag。
 

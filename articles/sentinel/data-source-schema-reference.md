@@ -10,12 +10,12 @@ ms.subservice: azure-sentinel
 ms.topic: reference
 ms.custom: ''
 ms.date: 01/14/2021
-ms.openlocfilehash: b5d53ec6c6a8002c72a53d6928d56e55d520ef38
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 0cc1a083e1400b5a3167376e374af6c7bf7ab7c7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100390821"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101698342"
 ---
 # <a name="data-source-schema-reference"></a>数据源架构引用
 
@@ -34,7 +34,7 @@ ms.locfileid: "100390821"
 | **Network**                          | IIS 日志               | W3CIISLog              | [Azure Monitor W3CIISLog 引用](/azure/azure-monitor/reference/tables/w3ciislog) |
 | **Network**                          | VMinsights             | VMConnection           | [Azure Monitor VMConnection 引用](/azure/azure-monitor/reference/tables/vmconnection) |
 | **Network**                          | 线路数据解决方案     | WireData               | [Azure Monitor WireData 引用](/azure/azure-monitor/reference/tables/wiredata) |
-| **Network**                          | NSG 流日志          | AzureNetworkAnalytics  | [流量分析中的架构和数据聚合](/azure/network-watcher/traffic-analytics-schema) |
+| **Network**                          | NSG 流日志          | AzureNetworkAnalytics  | [流量分析中的架构和数据聚合](../network-watcher/traffic-analytics-schema.md) |
 | | | | |
 
 > [!NOTE]
@@ -44,7 +44,7 @@ ms.locfileid: "100390821"
 
 下表列出了支持的第三方供应商及其 Syslog 或常见事件格式 (CEF 的各种受支持的日志类型的文档) ，其中包含每个类别类型的 CEF 字段映射和示例日志。
 
-| 类型 |    Vendor |    产品 | Log Analytics tablename | CEF 字段映射引用  |
+| 类型 |    Vendor |    Products | Log Analytics tablename | CEF 字段映射引用  |
 | ----- | ----- | ----- | ----- |----- |
 | **Network** | 帕洛阿尔托   | 平移 OS    | CommonSecurityLog |   [平移操作系统9.0 常见事件格式集成指南](https://docs.paloaltonetworks.com/content/dam/techdocs/en_US/pdf/cef/pan-os-90-cef-configuration-guide.pdf) (搜索 *CEF 样式日志格式*)  |
 | **Network** | 检查点  |ALL   | CommonSecurityLog | [日志字段说明](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk109795)       |

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/08/2020
-ms.openlocfilehash: f06ed85e362f15e36e030cd11639d9d17348e938
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: bcd56e464419312e74aec01cf22ae56f797991ad
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100573613"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731759"
 ---
 # <a name="deploy-azure-monitor-at-scale-using-azure-policy"></a>使用 Azure Policy 大规模部署 Azure Monitor
 虽然某些 Azure Monitor 功能仅配置一次或有限的几次，但另一些功能必须针对要监视的每个资源重复配置。 本文介绍了如何使用 Azure Policy 大规模实施 Azure Monitor 以确保为所有 Azure 资源一致且准确地配置监视功能。
@@ -121,34 +121,34 @@ Azure Policy 包括多个与 Azure Monitor 相关的预生成定义。 你可以
 ![计划修正](media/deploy-scale/initiative-remediation.png)
 
 
-## <a name="azure-monitor-for-vms"></a>用于 VM 的 Azure Monitor
-[用于 VM 的 Azure Monitor](vm/vminsights-overview.md) 是 Azure Monitor 用于监视虚拟机的主要工具。 启用用于 VM 的 Azure Monitor 将同时安装 Log Analytics 代理和依赖项代理。 使用 Azure 策略可以确保在创建每个虚拟机时配置每个虚拟机，而不是手动执行这些任务。
+## <a name="vm-insights"></a>VM insights
+[VM insights](vm/vminsights-overview.md) 是 Azure Monitor 用于监视虚拟机的主要工具。 启用 VM insights 会同时安装 Log Analytics 代理和依赖项代理。 使用 Azure 策略可以确保在创建每个虚拟机时配置每个虚拟机，而不是手动执行这些任务。
 
 > [!NOTE]
-> 用于 VM 的 Azure Monitor 包括一项称为 **用于 VM 的 Azure Monitor 策略覆盖** 区的功能，可让你在你的环境中发现并修正不符合的虚拟机。 你可以使用此功能，而不是直接使用 azure Vm 的 azure 策略以及使用 Azure Arc 连接的混合虚拟机。对于 Azure 虚拟机规模集，必须使用 Azure 策略创建分配。
+> VM insights 包含一项名为 **VM Insights 策略覆盖范围** 的功能，可用于在你的环境中发现并修正不相容的虚拟机。 你可以使用此功能，而不是直接使用 azure Vm 的 azure 策略以及使用 Azure Arc 连接的混合虚拟机。对于 Azure 虚拟机规模集，必须使用 Azure 策略创建分配。
  
 
-用于 VM 的 Azure Monitor 包括以下内置方案，这些方案可安装两个代理以实现完全监视。 
+VM insights 包括以下内置方案，这些方案可安装两个代理以实现完全监视。 
 
 |名称 |说明 |
 |:---|:---|
-|启用用于 VM 的 Azure Monitor | 在 Azure Vm 上安装 Log Analytics 代理和依赖项代理，并将其与 Azure Arc 连接起来。 |
+|启用 VM insights | 在 Azure Vm 上安装 Log Analytics 代理和依赖项代理，并将其与 Azure Arc 连接起来。 |
 |为虚拟机规模集启用 Azure Monitor | 在 Azure 虚拟机规模集上安装 Log Analytics 代理和依赖项代理。 |
 
 
 ### <a name="virtual-machines"></a>虚拟机
-用于 VM 的 Azure Monitor 包括一项功能，可用于检查每个范围中的虚拟机数，以确定是否已应用该计划，而不是使用 Azure 策略界面为这些计划创建分配。 然后，你可以配置工作区，并使用该接口创建任何所需的分配。
+VM insights 包含一项功能，可用于检查每个范围中的虚拟机数，以确定是否已应用该计划，而不是使用 Azure 策略界面为这些计划创建分配。 然后，你可以配置工作区，并使用该接口创建任何所需的分配。
 
-有关此过程的详细信息，请参阅 [使用 Azure 策略启用用于 VM 的 Azure Monitor](./vm/vminsights-enable-policy.md)。
+有关此过程的详细信息，请参阅 [使用 Azure 策略启用 VM 见解](./vm/vminsights-enable-policy.md)。
 
-![用于 VM 的 Azure Monitor 策略](media/deploy-scale/vminsights-policy.png)
+![VM insights 策略](media/deploy-scale/vminsights-policy.png)
 
 ### <a name="virtual-machine-scale-sets"></a>虚拟机规模集
 要使用 Azure 策略为虚拟机规模集启用监视，请根据要监视的资源的作用域，将 **虚拟机规模集** 计划的 "启用 Azure Monitor 分配给 Azure 管理组、订阅或资源组。 [管理组](../governance/management-groups/overview.md)特别适用于限定策略作用域，尤其是当你的组织有多个订阅时。
 
 ![Azure 门户中的 "分配计划" 页的屏幕截图。 计划定义已设置为虚拟机规模集启用 Azure Monitor。](media/deploy-scale/virtual-machine-scale-set-assign-initiative.png)
 
-选择要将数据发送到的工作区。 此工作区必须安装了 *VMInsights* 解决方案，如 [用于 VM 的 Azure Monitor 配置 Log Analytics 工作区](vm/vminsights-configure-workspace.md)中所述。
+选择要将数据发送到的工作区。 此工作区必须安装了 *VMInsights* 解决方案，如为 [VM insights 配置 Log Analytics 工作区](vm/vminsights-configure-workspace.md)中所述。
 
 ![选择工作区](media/deploy-scale/virtual-machine-scale-set-workspace.png)
 
@@ -157,7 +157,7 @@ Azure Policy 包括多个与 Azure Monitor 相关的预生成定义。 你可以
 ![修正任务](media/deploy-scale/virtual-machine-scale-set-remediation.png)
 
 ### <a name="log-analytics-agent"></a>Log Analytics 代理
-你可能需要安装 Log Analytics 代理，但不希望安装依赖关系代理。 仅适用于代理的内置计划，但你可以根据用于 VM 的 Azure Monitor 提供的内置策略定义自行创建。
+你可能需要安装 Log Analytics 代理，但不希望安装依赖关系代理。 仅适用于代理的内置计划，但你可以根据 VM insights 提供的内置策略定义自行创建。
 
 > [!NOTE]
 > 由于它要求 Log Analytics 代理将其数据传递到 Azure Monitor，因此没有理由自行部署依赖关系代理。

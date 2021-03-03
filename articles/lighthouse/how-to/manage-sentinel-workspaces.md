@@ -1,14 +1,14 @@
 ---
 title: 大规模管理 Azure Sentinel 工作区
 description: 了解如何在委派的客户资源上有效地管理 Azure Sentinel。
-ms.date: 09/30/2020
+ms.date: 03/02/2021
 ms.topic: how-to
-ms.openlocfilehash: 91e2f875aa2fc067420c0c6eda4e7dd56bd2b088
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 009edaefe021dedb5d9a40a8cc3bac2c2974ae10
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424103"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702515"
 ---
 # <a name="manage-azure-sentinel-workspaces-at-scale"></a>大规模管理 Azure Sentinel 工作区
 
@@ -74,15 +74,15 @@ MSSP 将管理的每个客户订阅都必须 [载入 Azure Lighthouse](onboard-c
 
 ## <a name="run-log-analytics-and-hunting-queries-across-azure-sentinel-workspaces"></a>跨 Azure Sentinel 工作区运行 Log Analytics 和搜寻查询
 
-在管理租户中集中创建并保存用于威胁检测的 Log Analytics 查询，包括 [搜寻查询](../../sentinel/extend-sentinel-across-workspaces-tenants.md#cross-workspace-hunting)。 然后，可以通过使用 Union 运算符和工作区 ( # A1 表达式，在所有客户的 Azure Sentinel 工作区中运行这些查询。 有关详细信息，请参阅 [跨工作区查询](../../sentinel/extend-sentinel-across-workspaces-tenants.md#cross-workspace-querying)。
+在管理租户中集中创建并保存用于威胁检测的 Log Analytics 查询，包括 [搜寻查询](../../sentinel/extend-sentinel-across-workspaces-tenants.md#cross-workspace-hunting)。 然后，可以通过使用 Union 运算符和工作区 () 表达式，在所有客户的 Azure Sentinel 工作区中运行这些查询。 有关详细信息，请参阅 [跨工作区查询](../../sentinel/extend-sentinel-across-workspaces-tenants.md#cross-workspace-querying)。
 
 ## <a name="use-automation-for-cross-workspace-management"></a>使用自动化跨工作区管理
 
 可以使用自动化来管理多个 Azure Sentinel 工作区，并配置 [搜寻查询](../../sentinel/hunting.md)、行动手册和工作簿。 有关详细信息，请参阅 [使用自动化的跨工作区管理](../../sentinel/extend-sentinel-across-workspaces-tenants.md#cross-workspace-management-using-automation)。
 
-## <a name="manage-security-of-office-365-environments"></a>管理 Office 365 环境的安全性
+## <a name="monitor-security-of-office-365-environments"></a>监视 Office 365 环境的安全性
 
-将 Azure Lighthouse 与 Azure Sentinel 结合使用，以跨租户管理 Office 365 环境的安全性。 首先， [必须在托管租户中启用](../../sentinel/connect-office-365.md) "开箱即用" 的 Office 365 数据连接器，以使 Exchange 和 SharePoint 中的用户和管理活动 (包括 OneDrive) 的信息可引入到托管租户中的 Azure Sentinel 工作区。 这包括有关操作的详细信息，例如文件下载、发送的访问请求、对组事件的更改和邮箱操作，以及有关执行操作的用户的信息。 [Office 365 DLP 警报](https://techcommunity.microsoft.com/t5/azure-sentinel/ingest-office-365-dlp-events-into-azure-sentinel/ba-p/1031820) 也作为内置 office 365 连接器的一部分受到支持。
+结合使用 Azure Lighthouse 和 Azure Sentinel 来监视租户的 Office 365 环境的安全性。 首先， [必须在托管租户中启用](../../sentinel/connect-office-365.md) "开箱即用" 的 Office 365 数据连接器，以使 Exchange 和 SharePoint 中的用户和管理活动 (包括 OneDrive) 的信息可引入到托管租户中的 Azure Sentinel 工作区。 这包括有关操作的详细信息，例如文件下载、发送的访问请求、对组事件的更改和邮箱操作，以及有关执行操作的用户的信息。 [Office 365 DLP 警报](https://techcommunity.microsoft.com/t5/azure-sentinel/ingest-office-365-dlp-events-into-azure-sentinel/ba-p/1031820) 也作为内置 office 365 连接器的一部分受到支持。
 
 可以启用 [ (MCAS) 连接器的 Microsoft Cloud App Security](../../sentinel/connect-cloud-app-security.md) ，以将警报传输到 Azure Sentinel 中并将其 Cloud Discovery 日志。 这使你可以查看云应用、获取复杂分析来识别和对付以来自2200并控制数据的传输方式。 可以 [使用通用事件格式 (CEF) 使用 ](https://techcommunity.microsoft.com/t5/azure-sentinel/ingest-box-com-activity-events-via-microsoft-cloud-app-security/ba-p/1072849)MCAS 的活动日志。
 

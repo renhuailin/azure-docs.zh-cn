@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 04/11/2020
-ms.openlocfilehash: 077bda7c254e00e919a22423038a051dc7eafe60
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 9d54aca572d55b6107e756d50c4b2c02cae094cc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101094905"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101741474"
 ---
 # <a name="tutorial-migrate-rds-postgresql-to-azure-db-for-postgresql-online-using-dms"></a>教程：使用 DMS 将 RDS PostgreSQL 联机迁移到 Azure DB for PostgreSQL
 
@@ -57,7 +57,7 @@ ms.locfileid: "101094905"
 * 配置[针对数据库引擎访问的 Windows 防火墙](/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access)。
 * 打开 Windows 防火墙，使 Azure 数据库迁移服务能够访问源 PostgreSQL 服务器（默认情况下为 TCP 端口 5432）。
 * 在源数据库的前面使用了防火墙设备时，可能需要添加防火墙规则以允许 Azure 数据库迁移服务访问要迁移的源数据库。
-* 为 Azure Database for PostgreSQL 服务器创建服务器级[防火墙规则](https://docs.microsoft.com/azure/postgresql/concepts-firewall-rules)，以允许 Azure 数据库迁移服务访问目标数据库。 提供用于 Azure 数据库迁移服务的虚拟网络子网范围。
+* 为 Azure Database for PostgreSQL 服务器创建服务器级[防火墙规则](../postgresql/concepts-firewall-rules.md)，以允许 Azure 数据库迁移服务访问目标数据库。 提供用于 Azure 数据库迁移服务的虚拟网络子网范围。
 
 ### <a name="set-up-aws-rds-postgresql-for-replication"></a>设置 AWS RDS PostgreSQL 用于复制
 
@@ -204,7 +204,7 @@ ms.locfileid: "101094905"
     > [!NOTE]
     > 也可以现在就选择“仅创建项目”来创建迁移项目，在以后再执行迁移。
 
-5. 选择“保存” 。
+5. 选择“保存”  。
 
 6. 选择“创建并运行活动”，以便创建项目并运行迁移活动。 
 
@@ -235,7 +235,7 @@ ms.locfileid: "101094905"
 
 ## <a name="run-the-migration"></a>运行迁移
 
-* 选择“运行迁移”  。
+* 选择“运行迁移”。
 
     迁移活动窗口随即出现，活动的“状态”为“正在初始化”   。
 

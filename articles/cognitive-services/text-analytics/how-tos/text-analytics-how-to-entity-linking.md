@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 12/17/2020
+ms.date: 02/17/2021
 ms.author: aahi
-ms.openlocfilehash: 0b57629f5c21d933fc898258263199b5fc713fdb
-ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
+ms.openlocfilehash: 3fd3695490331a1f599db71bf5cafb25e957bf08
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97683355"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710339"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>如何在文本分析中使用命名实体识别
 
-文本分析 API 允许你采用非结构化文本，并会返回一个已消歧实体的列表，其中包含指向 Web 上的详细信息的链接。 API 为多个实体类别和实体链接都支持命名实体识别 (NER) 。
+文本分析 API 允许你采用非结构化文本，并会返回一个已消歧实体的列表，其中包含指向 Web 上的详细信息的链接。 此 API 支持若干实体类别的命名实体识别 (NER) 和实体链接。
 
 ## <a name="entity-linking"></a>实体链接
 
@@ -27,32 +27,32 @@ ms.locfileid: "97683355"
 
 ## <a name="named-entity-recognition-ner"></a>命名实体识别 (NER)
 
-命名实体识别 (NER) 可以标识文本中的不同实体并将它们分类为预定义的类或类型，例如： person、location、event、product 和组织。  
+命名实体识别 (NER) 是指识别文本中不同实体，并将它们分入预定义类或类型（例如：人员、位置、事件、产品和组织）的能力。  
 
 ## <a name="personally-identifiable-information-pii"></a>个人身份信息 (PII)
 
-PII 功能是 NER 的一部分，它可以在与个人相关的文本（例如电话号码、电子邮件地址、电子邮件地址、passport 号码）中识别和标记敏感实体。
+PII 功能是 NER 的一部分，可以识别和标记文本中与个人相关的敏感实体，例如：电话号码、电子邮件地址、邮寄地址、护照号码。
 
 ## <a name="named-entity-recognition-features-and-versions"></a>命名实体识别功能和版本
 
-| 功能                                                         | NER v3.0 | NER 3.1-预览版3 |
+| 功能                                                         | NER v3.0 | NER v3.1-preview.3 |
 |-----------------------------------------------------------------|--------|----------|
 | 用于单个请求和批量请求的方法                          | X      | X        |
 | 跨多个类别展开的实体识别           | X      | X        |
 | 用于发送实体链接和 NER 请求的不同终结点。 | X      | X        |
 | 个人 (`PII`) 和健康状况 (`PHI`) 信息实体的识别        |        | X        |
-| 密文 `PII`        |        | X        |
+| `PII` 的修正        |        | X        |
 
 有关信息，请参阅[语言支持](../language-support.md)。
 
 命名实体识别 v3 提供跨多种类型的扩展检测。 目前，NER v3.0 可以识别[常规实体类别](../named-entity-types.md)中的实体。
 
-命名实体识别-3.1-preview。3包括了3.0 的检测功能，以及： 
-* `PII`使用终结点检测) 个人信息 (的功能 `v3.1-preview.3/entities/recognition/pii` 。 
-* `domain=phi`用于检测 () 机密健康信息的可选参数 `PHI` 。
-* 使用终结点的[异步操作](text-analytics-how-to-call-api.md) `/analyze` 。
+命名实体识别 v3.1-preview.3 包括了 v3.0 的检测功能，以及： 
+* 使用 `v3.1-preview.3/entities/recognition/pii` 终结点检测个人信息 (`PII`) 的功能。 
+* 用于检测机密的健康状况信息 (`PHI`) 的可选的 `domain=phi` 参数。
+* 使用 `/analyze` 终结点的[异步操作](text-analytics-how-to-call-api.md)。
 
-有关详细信息，请参阅下面的 [实体类别](../named-entity-types.md) 文章和 [请求终结点](#request-endpoints) 部分。 有关置信度分数的详细信息，请参阅 [文本分析透明度注释](/legal/cognitive-services/text-analytics/transparency-note?context=/azure/cognitive-services/text-analytics/context/context)。 
+有关详细信息，请参阅下面的[实体类别](../named-entity-types.md)一文和[请求终结点](#request-endpoints)部分。 有关置信度分数的详细信息，请参阅 [文本分析透明度注释](/legal/cognitive-services/text-analytics/transparency-note?context=/azure/cognitive-services/text-analytics/context/context)。 
 
 ## <a name="sending-a-rest-api-request"></a>发送 REST API 请求
 
@@ -74,7 +74,7 @@ PII 功能是 NER 的一部分，它可以在与个人相关的文本（例如�
 
 #### <a name="version-31-preview3"></a>[Version 3.1-preview.3](#tab/version-3-preview)
 
-命名实体识别 `v3.1-preview.3` 对 NER、PII 和实体链接请求使用不同的终结点。 根据你的请求使用下面的 URL 格式。
+命名实体识别 `v3.1-preview.3` 对 NER、PII 和实体链接请求使用不同的终结点。 根据你的请求使用以下 URL 格式。
 
 **实体链接**
 * `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/entities/linking`
@@ -93,17 +93,17 @@ PII 功能是 NER 的一部分，它可以在与个人相关的文本（例如�
 
 `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/entities/recognition/pii?domain=phi`
 
-从开始 `v3.1-preview.3` ，JSON 响应包含一个 `redactedText` 属性，该属性包含已修改的输入文本，检测到的 PII 实体将由 `*` 实体中的每个字符替换为。
+从 `v3.1-preview.3` 开始，JSON 响应中将包含 `redactedText` 属性，该属性包含修改后的输入文本，其中检测到的 PII 实体的每个字符将被替换为 `*`。
 
 [`PII` 的命名实体识别版本 3.1-preview 参考](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-3/operations/EntitiesRecognitionPii)
 
 **异步操作**
 
-从开始 `v3.1-preview.3` ，你可以使用终结点异步发送 NER 请求 `/analyze` 。
+从 `v3.1-preview.3` 开始，可以使用 `/analyze` 终结点异步发送 NER 请求。
 
-* 异步操作- `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/analyze`
+* 异步操作 - `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/analyze`
 
-有关发送异步请求的信息，请参阅 [如何调用文本分析 API](text-analytics-how-to-call-api.md) 。
+有关发送异步请求的信息，请参阅[如何调用文本分析 API](text-analytics-how-to-call-api.md)。
 
 #### <a name="version-30"></a>[版本 3.0](#tab/version-3)
 
@@ -145,7 +145,7 @@ PII 功能是 NER 的一部分，它可以在与个人相关的文本（例如�
 
 ### <a name="example-asynchronous-ner-request"></a>异步 NER 请求示例
 
-如果将 `/analyze` 终结点用于 [异步操作](text-analytics-how-to-call-api.md)，将收到一个包含发送到 API 的任务的响应。
+如果将 `/analyze` 终结点用于[异步操作](text-analytics-how-to-call-api.md)，则将收到一个包含发送到 API 的任务的响应。
 
 ```json
 {
@@ -184,7 +184,7 @@ PII 功能是 NER 的一部分，它可以在与个人相关的文本（例如�
 
 ### <a name="example-synchronous-ner-request"></a>同步 NER 请求示例 
 
-版本3.0 仅包括同步操作。 以下 JSON 是可能发送到 API 的内容示例。 两个版本的 API 的请求格式相同。
+版本 3.0 仅包括同步操作。 以下 JSON 是可能发送到 API 的内容示例。 两个版本的 API 的请求格式相同。
 
 ```json
 {
@@ -210,15 +210,15 @@ PII 功能是 NER 的一部分，它可以在与个人相关的文本（例如�
 
 所有 POST 请求都将返回 JSON 格式的响应，其中包含 ID 和检测到的实体属性。
 
-系统会立即返回输出。 可将结果流式传输到接受 JSON 的应用程序，或者将输出保存到本地系统上的文件中，然后将其导入到允许对数据进行排序、搜索和操作的应用程序。 由于多语言和表情符号支持，响应可能包含文本偏移。 有关详细信息，请参阅 [如何处理文本偏移量](../concepts/text-offsets.md)。
+系统会立即返回输出。 可将结果流式传输到接受 JSON 的应用程序，或者将输出保存到本地系统上的文件中，然后将其导入到允许对数据进行排序、搜索和操作的应用程序。 由于多语言和表情符号支持，响应可能包含文本偏移。 有关详细信息，请参阅[如何处理文本偏移](../concepts/text-offsets.md)。
 
 ### <a name="example-responses"></a>示例响应
 
-版本3为常规 NER、PII 和实体链接提供单独的终结点。 版本 3.1-pareview 包括异步分析模式。 下面是对这些操作的响应。 
+版本 3 为常规 NER、PII 和实体链接提供不同的终结点。 版本 3.1-pareview 包括异步分析模式。 这些操作的响应如下所示。 
 
 #### <a name="version-31-preview"></a>[版本 3.1-preview](#tab/version-3-preview)
 
-### <a name="synchronous-example-results"></a>同步示例结果
+### <a name="synchronous-example-results"></a>同步结果示例
 
 常规 NER 响应的示例：
 
@@ -362,7 +362,7 @@ PII 响应的示例：
 }
 ```
 
-### <a name="example-asynchronous-result"></a>示例异步结果
+### <a name="example-asynchronous-result"></a>异步结果示例
 
 ```json
 {

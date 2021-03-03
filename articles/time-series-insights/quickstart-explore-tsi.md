@@ -9,13 +9,13 @@ manager: diviso
 ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
-ms.date: 01/11/2021
-ms.openlocfilehash: cb5bac06ab6eeaa00e72ba6068328a972b8ac37b
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.date: 03/01/2021
+ms.openlocfilehash: 25340af243217313ce6d3f7205c102d4bcd350b4
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98119305"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101698104"
 ---
 # <a name="quickstart-explore-the-azure-time-series-insights-gen2-demo-environment"></a>快速入门：浏览 Azure 时序见解 Gen2 演示环境
 
@@ -129,13 +129,6 @@ Azure 时序见解 Gen2 资源管理器演示历史数据和根本原因分析�
     * 更改显示内容，以将所有“发电机系统”传感器按同一图表比例叠加显示。
 
       [![更改显示内容以包含所有信息](media/v2-update-quickstart/quick-start-generator-system.png)](media/v2-update-quickstart/quick-start-generator-system.png#lightbox)
-
-## <a name="clean-up-resources"></a>清理资源
-
-现在你已完成本快速入门，请清除已创建的资源：
-
-1. 从 [Azure 门户](https://portal.azure.com)的左侧菜单中，选择“所有资源”，找到“Azure 时序见解 Gen2”资源组。
-1. 通过选择“删除”来删除整个资源组（以及其中包含的所有资源），或者单独删除每个资源。
 
 ## <a name="next-steps"></a>后续步骤
 

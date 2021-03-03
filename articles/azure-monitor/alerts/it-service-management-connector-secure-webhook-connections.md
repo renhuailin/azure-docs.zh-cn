@@ -6,18 +6,18 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 09/08/2020
-ms.openlocfilehash: 6b273b864c8329547ef91eb7063a064e0f5cb77d
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: b1295904f25d38c97578fa6fd6ede4ecd50c0456
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100608884"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728971"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-secure-export"></a>使用安全导出将 Azure 连接到 ITSM 工具
 
 本文说明如何使用安全导出配置 IT Service Management (ITSM) 产品或服务之间的连接。
 
-安全导出是 [IT 服务管理连接器 (ITSMC) ](../platform/itsmc-overview.md)的更新版本。 这两个版本都允许在 Azure Monitor 发送警报时在 ITSM 工具中创建工作项。 此功能包括指标、日志和活动日志警报。
+安全导出是 [IT 服务管理连接器 (ITSMC) ](./itsmc-overview.md)的更新版本。 这两个版本都允许在 Azure Monitor 发送警报时在 ITSM 工具中创建工作项。 此功能包括指标、日志和活动日志警报。
 
 ITSMC 使用用户名和密码凭据。 安全导出具有更强的身份验证，因为它使用 Azure Active Directory (Azure AD) 。 Azure AD 是 Microsoft 基于云的标识和访问管理服务。 它可帮助用户登录和访问内部或外部资源。 将 Azure AD 与 ITSM 结合使用有助于通过发送到外部系统的 Azure AD 应用程序 ID) 来识别 Azure 警报 (。
 
@@ -55,4 +55,4 @@ ITSMC 使用用户名和密码凭据。 安全导出具有更强的身份验证�
 
 ## <a name="next-steps"></a>后续步骤
 
-* [根据 Azure 警报日志创建 ITSM 工作项](../platform/itsmc-overview.md)
+* [根据 Azure 警报日志创建 ITSM 工作项](./itsmc-overview.md)

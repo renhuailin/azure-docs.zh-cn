@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 11/01/2019
 tags: connectors
-ms.openlocfilehash: af98811e158b9613e41389e08e19cb36797aa272
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 810aaae9634a7de8d07b6d49edd0c6c2eda96754
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790587"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101730875"
 ---
 # <a name="call-rest-endpoints-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用调用 REST 终结点
 
@@ -22,13 +22,13 @@ ms.locfileid: "92790587"
 
 * Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。
 
-* 用于描述目标 REST 终结点的 Swagger（非 OpenAPI）文件的 URL
+* 描述目标 REST 终结点的 Swagger（非 OpenAPI）文件的 URL
 
   通常，REST 终结点必须满足此条件，连接器才能工作：
 
   * Swagger 文件必须托管在可公开访问的 HTTPS URL 上。
   
-  * Swagger 文件必须包含 `operationID` 定义中每个操作的。 如果不是，则连接器只显示 Swagger 文件中的最后一个操作。 
+  * Swagger 文件必须包含定义中每个操作的 `operationID`。 如果未包含，则连接器只显示 Swagger 文件中的最后一个操作。 
 
   * 必须为 Swagger 文件启用[跨域资源共享 (CORS)](/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services)。
 
@@ -56,7 +56,7 @@ ms.locfileid: "92790587"
 
    `https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/export?DocumentFormat=Swagger&ApiName=Face%20API%20-%20V1.0`
 
-   ![此屏幕截图显示了带有“HTTP + Swagger”触发器的逻辑应用设计器，其中“Swagger 终结点 URL”属性设置为一个 URL 值。](./media/connectors-native-http-swagger/http-swagger-trigger-parameters.png)
+   ![显示逻辑应用设计器的屏幕截图，其中 "H T T P + Swagger" 触发器和 "Swagger Endpoint U R L" 属性设置为 U R L 值。](./media/connectors-native-http-swagger/http-swagger-trigger-parameters.png)
 
 1. 当设计器显示了 Swagger 文件描述的操作时，请选择要使用的操作。
 
@@ -74,7 +74,7 @@ ms.locfileid: "92790587"
 
 1. 继续使用触发器激发时运行的操作生成逻辑应用的工作流。
 
-1. 完成后，请记得保存逻辑应用。 在设计器工具栏上，选择“保存”。
+1. 完成后，请记得保存逻辑应用。 在设计器工具栏上选择“保存”。
 
 ## <a name="add-an-http--swagger-action"></a>添加 HTTP + Swagger 操作
 
@@ -112,7 +112,7 @@ ms.locfileid: "92790587"
 
    有关 HTTP + Swagger 可用的身份验证类型的详细信息，请参阅[向出站调用添加身份验证](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)。
 
-1. 完成后，请记得保存逻辑应用。 在设计器工具栏上，选择“保存”。
+1. 完成后，请记得保存逻辑应用。 在设计器工具栏上选择“保存”。
 
 <a name="host-swagger"></a>
 
@@ -124,13 +124,13 @@ ms.locfileid: "92790587"
 
 1. 现在，为 Blob 启用 CORS。 在存储帐户的菜单中选择“CORS”。 在“Blob 服务”选项卡上指定值，然后选择“保存”。 
 
-   | 属性 | 值 |
+   | 属性 | Value |
    |----------|-------|
    | **允许的源** | `*` |
    | **允许的方法** | `GET`, `HEAD`, `PUT` |
    | **允许的标头** | `*` |
    | **公开的标头** | `*` |
-   | **最大期限** （以秒为单位） | `200` |
+   | **最大期限**（以秒为单位） | `200` |
    |||
 
    此示例使用 [Azure 门户](https://portal.azure.com)，不过，你也可以使用 [Azure 存储资源管理器](https://storageexplorer.com/)之类的工具，或使用此示例 [PowerShell 脚本](https://github.com/logicappsio/EnableCORSAzureBlob/blob/master/EnableCORSAzureBlob.ps1)自动配置此设置。
@@ -149,8 +149,8 @@ ms.locfileid: "92790587"
 
 | 属性名称 | 类型 | 说明 |
 |---------------|------|-------------|
-| headers | object | 请求中的标头 |
-| body | object | JSON 对象 | 包含请求中正文内容的对象 |
+| headers | 对象 | 请求中的标头 |
+| body | 对象 | JSON 对象 | 包含请求中正文内容的对象 |
 | 状态代码 | int | 请求中的状态代码 |
 |||
 

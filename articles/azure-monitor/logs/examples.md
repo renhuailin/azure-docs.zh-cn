@@ -6,17 +6,17 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/16/2020
-ms.openlocfilehash: 213437e68efb27c483c8013d209261408ab9d4ea
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: e2050784d03b1f01e743df9b00916ec286a3e7ef
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100608871"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101736944"
 ---
 # <a name="azure-monitor-log-query-examples"></a>Azure Monitor 日志查询示例
-本文包含使用 [Kusto 查询语言](/azure/kusto/query/)从 Azure Monitor 中检索不同类型的日志数据的各种[查询](../log-query/log-query-overview.md)示例。 其中使用了不同的方法来合并和分析数据，因此，你可以使用这些示例来识别符合自身要求的不同策略。  
+本文包含使用 [Kusto 查询语言](/azure/kusto/query/)从 Azure Monitor 中检索不同类型的日志数据的各种[查询](./log-query-overview.md)示例。 其中使用了不同的方法来合并和分析数据，因此，你可以使用这些示例来识别符合自身要求的不同策略。  
 
-有关这些示例中使用的不同关键字的详细信息，请参阅 [Kusto 语言参考](/azure/kusto/query/)。 如果你是初次接触 Azure Monitor，请仔细阅读[有关创建查询的课程](../log-query/get-started-queries.md)。
+有关这些示例中使用的不同关键字的详细信息，请参阅 [Kusto 语言参考](/azure/kusto/query/)。 如果你是初次接触 Azure Monitor，请仔细阅读[有关创建查询的课程](./get-started-queries.md)。
 
 ## <a name="events"></a>事件
 
@@ -375,7 +375,7 @@ suspicious_users_that_later_logged_in
 
 ## <a name="usage"></a>使用情况
 
-`Usage` 数据类型可用于按解决方案或数据类型跟踪引入数据量。 还可以使用其他方法来研究按[计算机](../platform/manage-cost-storage.md#data-volume-by-computer)或 [Azure 订阅、资源组或资源](../platform/manage-cost-storage.md#data-volume-by-azure-resource-resource-group-or-subscription)引入的数据量。
+`Usage` 数据类型可用于按解决方案或数据类型跟踪引入数据量。 还可以使用其他方法来研究按[计算机](./manage-cost-storage.md#data-volume-by-computer)或 [Azure 订阅、资源组或资源](./manage-cost-storage.md#data-volume-by-azure-resource-resource-group-or-subscription)引入的数据量。
 
 #### <a name="data-volume-by-solution"></a>按解决方案统计的数据量
 
@@ -438,4 +438,4 @@ Update
 ## <a name="next-steps"></a>后续步骤
 
 - 有关语言的详细信息，请参阅 [Kusto 语言参考](/azure/kusto/query)。
-- 演练[有关在 Azure Monitor 中编写日志查询的课程](../log-query/get-started-queries.md)。
+- 演练[有关在 Azure Monitor 中编写日志查询的课程](./get-started-queries.md)。

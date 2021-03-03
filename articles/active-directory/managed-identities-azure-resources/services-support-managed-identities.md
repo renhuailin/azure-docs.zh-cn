@@ -11,12 +11,12 @@ ms.subservice: msi
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: references_regions
-ms.openlocfilehash: 3021e9155e229fcaf52166fd0e9dc908f9b7cfb6
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 7b9ae52a0d62da6a8637f63f15d8680b54aeefd1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101650067"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101688563"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>支持 Azure 资源托管标识的服务
 
@@ -234,6 +234,14 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 有关详细信息，请参阅[在 Azure Kubernetes 服务中使用托管标识](../../aks/use-managed-identity.md)。
 
+### <a name="azure-log-analytics-cluster"></a>Azure Log Analytics 群集
+
+托管标识类型 | 所有正式发布版<br>全球 Azure 区域 | Azure Government | Azure 德国 | Azure 中国世纪互联 |
+| --- | :-: | :-: | :-: | :-: |
+| 系统分配 | ![可用][check] | ![可用][check] | 不可用 | ![可用][check] |
+| 用户分配 | ![可用][check] | ![可用][check] | 不可用 | ![可用][check] |
+
+有关详细信息，请参阅[标识在 Azure Monitor 中的工作](../../azure-monitor/logs/customer-managed-keys.md)原理
 
 ### <a name="azure-logic-apps"></a>Azure 逻辑应用
 

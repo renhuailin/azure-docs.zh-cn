@@ -10,16 +10,16 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/10/2020
 ms.author: lajanuar
-ms.openlocfilehash: 935a9e92de88c2519dc1a1042315d204e8f60099
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: b114c4f3e6646f68e7a1068be8dd52778a26fb58
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98919912"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738134"
 ---
 # <a name="language-and-region-support-for-text-and-speech-translation"></a>文本和语音翻译的语言和区域支持
 
-使用翻译器可以在 70 多种文本翻译语言之间互译。 神经机器翻译 (NMT) 是采用 AI 的高质量机器翻译的新标准。当神经系统可用时，你可以在使用 V3 版翻译器时将神经机器翻译用作默认设置。
+使用转换器转换为任何90文本翻译语言和方言。 神经机器翻译 (NMT) 是采用 AI 的高质量机器翻译的新标准。当神经系统可用时，你可以在使用 V3 版翻译器时将神经机器翻译用作默认设置。
 
 你还可以结合使用转换器与自定义转换器来构建神经翻译系统，以了解你自己的业务和行业中使用的术语，并使用 Microsoft Speech Service 将语音翻译添加到应用中。
 
@@ -37,8 +37,12 @@ ms.locfileid: "98919912"
 | 语言 | 语言代码 |
 |:-|:-:|
 | 南非荷兰语 | `af` |
+| 阿尔巴尼亚语 | `sq` |
+| 阿姆哈拉语 | `am` |
 | 阿拉伯语 | `ar` |
+| 亚美尼亚语 | `hy` |
 | 阿萨姆语 | `as` |
+| 阿塞拜疆语 | `az` |
 | Bangla | `bn` |
 | 波斯尼亚语(拉丁语系) | `bs` |
 | 保加利亚语 | `bg` |
@@ -74,11 +78,13 @@ ms.locfileid: "98919912"
 | 日语 | `ja` |
 | 卡纳达语 | `kn` |
 | 哈萨克语 | `kk` |
+| 高棉语 | `km` |
 | 克林贡语 | `tlh-Latn` |
 | 克林贡语(plqaD) | `tlh-Piqd` |
 | 韩语 | `ko` |
 | 库尔德语(中部) | `ku` |
 | 库尔德语(北部) | `kmr` |
+| 老挝语 | `lo` |
 | 拉脱维亚语 | `lv` |
 | 立陶宛语 | `lt` |
 | 马达加斯加语 | `mg` |
@@ -87,6 +93,8 @@ ms.locfileid: "98919912"
 | 马耳他语 | `mt` |
 | 毛利语 | `mi` |
 | 马拉地语 | `mr` |
+| 缅甸 | `my` |
+| 尼泊尔语 | `ne` |
 | 挪威语 | `nb` |
 | 奥里亚语 | `or` |
 | 普什图语 | `ps` |
@@ -110,6 +118,7 @@ ms.locfileid: "98919912"
 | 泰米尔语 | `ta` |
 | 泰卢固语 | `te` |
 | 泰语 | `th` |
+| 提格里尼亚语 | `ti` |
 | 汤加语 | `to` |
 | 土耳其语 | `tr` |
 | 乌克兰语 | `uk` |
@@ -130,6 +139,7 @@ ms.locfileid: "98919912"
 | 语言 | 语言代码 |
 |:-|:-:|
 | 南非荷兰语 | `af` |
+| 阿尔巴尼亚语 | `sq` |
 | 阿拉伯语 | `ar` |
 | 保加利亚语 | `bg` |
 | 加泰罗尼亚语 | `ca` |
@@ -152,6 +162,7 @@ ms.locfileid: "98919912"
 | 匈牙利语 | `hu` |
 | 冰岛语 | `is` |
 | 印度尼西亚语 | `id` |
+| 因纽特语 | `iu` |
 | 爱尔兰语 | `ga` |
 | 意大利语 | `it` |
 | 日语 | `ja` |
@@ -210,7 +221,7 @@ Transliterate 方法支持以下语言。 在“音译方向”中，“<-->”�
 | 日语 | `ja` | 日语 `Jpan` | <--> | 拉丁语 `Latn` |
 | 卡纳达语 | `kn` | 卡纳达语 `Knda` | <--> | 拉丁语 `Latn` |
 |哈萨克语| `kk` | 西里尔语 `Cyrl`  | <--> | 拉丁语 `Latn` |
-|朝鲜语| `ko` | 朝鲜语 `Kore`  | <--> | 拉丁语 `Latn` |
+|韩语| `ko` | 韩语 `Kore`  | <--> | 拉丁语 `Latn` |
 |柯尔克孜语| `ky` | 西里尔语 `Cyrl`  | <--> | 拉丁语 `Latn` |
 |马其顿语| `mk` | 西里尔语 `Cyrl`  | <--> | 拉丁语 `Latn` |
 | 马拉雅拉姆语 | `ml` | 马拉雅拉姆语 `Mlym` | <--> | 拉丁语 `Latn` |
@@ -223,7 +234,7 @@ Transliterate 方法支持以下语言。 在“音译方向”中，“<-->”�
 | 塞尔维亚语（西里尔） | `sr-Cyrl` | 西里尔语 `Cyrl`  | --> | 拉丁语 `Latn` |
 | 塞尔维亚语（拉丁） | `sr-Latn` | 拉丁语 `Latn` | --> | 西里尔语 `Cyrl`|
 |信德语| `sd` | 阿拉伯语 `Arab`  | <--> | 拉丁语 `Latn` |
-|僧伽罗语| `si` | 罗语 `Sinh`  | <--> | 拉丁语 `Latn` |
+|僧伽罗语| `si` | 僧伽罗语 `Sinh`  | <--> | 拉丁语 `Latn` |
 |塔吉克语| `tg` | 西里尔语 `Cyrl`  | <--> | 拉丁语 `Latn` |
 | 泰米尔语 | `ta` | 泰米尔语 `Taml` | <--> | 拉丁语 `Latn` |
 |鞑靼语| `tt` | 西里尔语 `Cyrl`  | <--> | 拉丁语 `Latn` |
@@ -333,7 +344,7 @@ Transliterate 方法支持以下语言。 在“音译方向”中，“<-->”�
 | 意大利语      | `it`          |
 | 日语      | `ja`          |
 |卡纳达语|`kn`|
-| 朝鲜语      | `ko`          |
+| 韩语      | `ko`          |
 | 拉脱维亚语      | `lv`          |
 | 立陶宛语      | `lt`          |
 | 马达加斯加语| `mg`    |

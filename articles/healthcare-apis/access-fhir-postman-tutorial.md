@@ -9,12 +9,12 @@ ms.reviewer: dseven
 ms.author: matjazl
 author: matjazl
 ms.date: 02/01/2021
-ms.openlocfilehash: 5771f95da7b63c6c16bb581b84cc28c4b838ec27
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 6c4d63862f4e02f3fd525021921b02cde6d10f61
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99259010"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699328"
 ---
 # <a name="access-azure-api-for-fhir-with-postman"></a>使用 Postman 访问 Azure API for FHIR
 
@@ -24,7 +24,7 @@ ms.locfileid: "99259010"
 
 - Azure 中存在 FHIR 终结点。 可使用托管的 Azure API for FHIR 或 Azure 的开放源代码 FHIR 服务器设置该终结点。 使用 [Azure 门户](fhir-paas-portal-quickstart.md)、[PowerShell](fhir-paas-powershell-quickstart.md) 或 [Azure CLI](fhir-paas-cli-quickstart.md) 设置托管的 Azure API for FHIR。
 - 要用于访问 FHIR 服务的[客户端应用程序](register-confidential-azure-ad-client-app.md)。
-- 你已向客户端应用程序授予访问 FHIR 服务所需的权限，例如“FHIR 数据参与者”。 [为 FHIR 配置 Azure RBAC](https://docs.microsoft.com/azure/healthcare-apis/configure-azure-rbac) 提供了详细信息
+- 你已向客户端应用程序授予访问 FHIR 服务所需的权限，例如“FHIR 数据参与者”。 [为 FHIR 配置 Azure RBAC](./configure-azure-rbac.md) 提供了详细信息
 - 已安装 Postman。 可以从 [https://www.getpostman.com](https://www.getpostman.com) 获取它。
 
 ## <a name="fhir-server-and-authentication-details"></a>FHIR 服务器和身份验证详细信息

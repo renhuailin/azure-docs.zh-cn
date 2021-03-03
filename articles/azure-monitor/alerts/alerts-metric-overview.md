@@ -4,16 +4,16 @@ description: 获取指标警报功能的概述，以及它们在 Azure Monitor �
 ms.date: 01/19/2021
 ms.topic: conceptual
 ms.subservice: alerts
-ms.openlocfilehash: 989c3b8a50c3e613e67726684f35c6adce9c8b96
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: fc0f41f23f1d9387f806c947ac27e6f31cc0e053
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100606183"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723599"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>了解指标警报在 Azure Monitor 中的工作原理
 
-Azure Monitor 中的指标警报建立在多维指标的基础之上。 这些指标可能是[平台指标](alerts-metric-near-real-time.md#metrics-and-dimensions-supported)、[自定义指标](../platform/metrics-custom-overview.md)、[Azure Monitor 中已转换为指标的常用日志](./alerts-metric-logs.md)，以及 Application Insights 指标。 指标警报定期评估，以检查一个或多个指标时序的条件是否属实，并在符合评估条件时发出通知。 指标警报是有状态的，即，它们只会在状态有更改时才发出通知。
+Azure Monitor 中的指标警报建立在多维指标的基础之上。 这些指标可能是[平台指标](alerts-metric-near-real-time.md#metrics-and-dimensions-supported)、[自定义指标](../essentials/metrics-custom-overview.md)、[Azure Monitor 中已转换为指标的常用日志](./alerts-metric-logs.md)，以及 Application Insights 指标。 指标警报定期评估，以检查一个或多个指标时序的条件是否属实，并在符合评估条件时发出通知。 指标警报是有状态的，即，它们只会在状态有更改时才发出通知。
 
 ## <a name="how-do-metric-alerts-work"></a>指标警报的工作原理
 
@@ -26,7 +26,7 @@ Azure Monitor 中的指标警报建立在多维指标的基础之上。 这些�
 - 目标资源（要监视的 Azure 资源）：myVM
 - 指标：CPU 百分比
 - 条件类型：静态
-- 聚合类型（基于原始指标值运行的统计信息。 [支持的聚合类型](../platform/metrics-aggregation-explained.md#aggregation-types)为最小值、最大值、平均值、总值、计数）：平均值
+- 聚合类型（基于原始指标值运行的统计信息。 [支持的聚合类型](../essentials/metrics-aggregation-explained.md#aggregation-types)为最小值、最大值、平均值、总值、计数）：平均值
 - 期限（检查指标值时所依据的回溯时段）：过去 5 分钟
 - 频率（指标警报检查是否符合条件的频率）：1 分钟
 - 运算符：大于
@@ -43,7 +43,7 @@ Azure Monitor 中的指标警报建立在多维指标的基础之上。 这些�
 - 目标资源（要监视的 Azure 资源）：myVM
 - 指标：CPU 百分比
 - 条件类型：动态
-- 聚合类型（基于原始指标值运行的统计信息。 [支持的聚合类型](../platform/metrics-aggregation-explained.md#aggregation-types)为最小值、最大值、平均值、总值、计数）：平均值
+- 聚合类型（基于原始指标值运行的统计信息。 [支持的聚合类型](../essentials/metrics-aggregation-explained.md#aggregation-types)为最小值、最大值、平均值、总值、计数）：平均值
 - 期限（检查指标值时所依据的回溯时段）：过去 5 分钟
 - 频率（指标警报检查是否符合条件的频率）：1 分钟
 - 运算符：大于
@@ -180,9 +180,8 @@ Azure Monitor 中的指标警报还支持使用一个规则来监视多个维度
 ## <a name="next-steps"></a>后续步骤
 
 - [了解如何在 Azure 中创建、查看和管理指标警报](../alerts/alerts-metric.md)
-- [了解如何在 Azure 监视器指标资源管理器中创建警报](../platform/metrics-charts.md#alert-rules)
+- [了解如何在 Azure 监视器指标资源管理器中创建警报](../essentials/metrics-charts.md#alert-rules)
 - [了解如何使用 Azure 资源管理器模板部署指标警报](./alerts-metric-create-templates.md)
-- [详细了解操作组](../platform/action-groups.md)
+- [详细了解操作组](./action-groups.md)
 - [详细了解动态阈值条件类型](../alerts/alerts-dynamic-thresholds.md)
 - [详细了解指标警报中的故障排查问题](alerts-troubleshoot-metric.md)
-

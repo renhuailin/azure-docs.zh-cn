@@ -12,12 +12,12 @@ author: davidtrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 07/11/2019
-ms.openlocfilehash: 936e4f8f54e92ba90372fff1c9d8dfc1982bbd62
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: c84c81fa81cf4ba9be454eea5782927a09c3252a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96325108"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690951"
 ---
 # <a name="getting-started-with-azure-sql-managed-instance"></a>Azure SQL 托管实例入门
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -44,7 +44,7 @@ ms.locfileid: "96325108"
   > - 也可以从本地网络使用 Express Route 或站点到站点连接，但这些方法不在这些快速入门的讨论范围内。
   > - 请注意，如果将保持期从 0（无限制保留）更改为任意其他值，“保留”将仅适用于保留值更改后所写入的日志（仍保留在保留值设置为“无限制”的期间所写入的日志，即使启用了前述保留）。
 
-作为手动创建 SQL 托管实例的替代方法，可使用 [PowerShell](scripts/create-configure-managed-instance-powershell.md)、[带资源管理器模板的 PowerShell](scripts/create-powershell-azure-resource-manager-template.md) 或 [Azure CLI](/cli/azure/sql/mi#az-sql-mi-create) 来编写脚本并自动执行此过程。
+作为手动创建 SQL 托管实例的替代方法，可使用 [PowerShell](scripts/create-configure-managed-instance-powershell.md)、[带资源管理器模板的 PowerShell](./create-template-quickstart.md) 或 [Azure CLI](/cli/azure/sql/mi#az-sql-mi-create) 来编写脚本并自动执行此过程。
 
 ### <a name="migrate-your-databases"></a>迁移数据库
 

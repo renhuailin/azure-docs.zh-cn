@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/13/2020
 ms.author: erhopf
-ms.openlocfilehash: a44ff15300d05713e812f5c60ad3bf00d9f13104
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 6d2ad87f6a8c79f61d62140a1549968cd88d83aa
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99526850"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101722307"
 ---
 # <a name="record-voice-samples-to-create-a-custom-voice"></a>录制语音样本用于创建自定义语音
 
@@ -29,9 +29,9 @@ ms.locfileid: "99526850"
 > 如果要训练某一神经声音，则必须指定一个 voice 人才配置文件，其中包含一条语音许可文件，该文件提供了一种确认使用其语音数据训练自定义语音模型的语音许可文件。 准备录制脚本时，请确保包含下面的句子。 
 
 > "I [陈述你的名字] 知道，你的语音记录将由 [状态公司名称] 用来创建和使用我的语音合成版本。"
-此句子将用于验证定型数据是否由发出许可的同一人来完成。 在此处阅读有关 [语音人才验证](https://aka.ms/CNV-data-privacy) 的详细信息。
+此句子将用于验证定型数据是否由发出许可的同一人来完成。 在此处阅读有关 [语音人才验证](/legal/cognitive-services/speech-service/custom-neural-voice/data-privacy-security-custom-neural-voice?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext) 的详细信息。
 
-> 自定义的神经语音可用于受限访问。 请确保了解负责的 [AI 要求](https://aka.ms/gating-overview) ，并在 [此处应用访问权限](https://aka.ms/customneural)。 
+> 自定义的神经语音可用于受限访问。 请确保了解负责的 [AI 要求](/legal/cognitive-services/speech-service/custom-neural-voice/limited-access-custom-neural-voice?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext) ，并在 [此处应用访问权限](https://aka.ms/customneural)。 
 
 > [!TIP]
 > 要使录制结果质量最佳，请考虑使用 Microsoft 来开发自定义语音。 Microsoft 在为自己的产品（包括 Cortana 和 Office）制作精良语音方面经验丰富。

@@ -5,12 +5,12 @@ description: 了解如何在 Azure Kubernetes 服务 (AKS) 中使用 Kubernetes 
 services: container-service
 ms.topic: article
 ms.date: 05/06/2019
-ms.openlocfilehash: 598747c0d64db2ae62f740dca4c3e4141f2562f2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1d3aa49a749890783fdae589edab3d1910b2ac73
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87050474"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101729413"
 ---
 # <a name="secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中使用网络策略保护 Pod 之间的流量
 
@@ -20,7 +20,7 @@ ms.locfileid: "87050474"
 
 ## <a name="before-you-begin"></a>准备阶段
 
-需要安装并配置 Azure CLI 2.0.61 或更高版本。 运行  `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅 [安装 Azure CLI][install-azure-cli]。
+需要安装并配置 Azure CLI 2.0.61 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][install-azure-cli]。
 
 > [!TIP]
 > 如果你在预览期使用了网络策略功能，则我们建议[创建新的群集](#create-an-aks-cluster-and-enable-network-policy)。
@@ -52,8 +52,8 @@ Azure 提供两种方式来实现网络策略。 可以在创建 AKS 群集时�
 
 | 功能                               | Azure                      | Calico                      |
 |------------------------------------------|----------------------------|-----------------------------|
-| 支持的平台                      | Linux                      | Linux                       |
-| 支持的网络选项             | Azure CNI                  | Azure CNI 和 kubenet       |
+| 支持的平台                      | Linux                      | Linux、Windows Server 2019 (预览版)   |
+| 支持的网络选项             | Azure CNI                  | Azure CNI (Windows Server 2019 和 Linux) 和 kubenet (Linux)   |
 | 符合 Kubernetes 规范 | 支持的所有策略类型 |  支持的所有策略类型 |
 | 其他功能                      | 无                       | 扩展的策略模型，包括全局网络策略、全局网络集和主机终结点。 有关使用 `calicoctl` CLI 管理这些扩展功能的详细信息，请参阅 [calicoctl 用户参考][calicoctl]。 |
 | 支持                                  | 由 Azure 支持部门和工程团队提供支持 | 由 Azure 社区提供支持。 有关其他付费支持的详细信息，请参阅 [Project Calico 支持选项][calico-support]。 |
@@ -67,7 +67,7 @@ Azure 提供两种方式来实现网络策略。 可以在创建 AKS 群集时�
 * 允许基于 Pod 标签的流量。
 * 允许基于命名空间的流量。
 
-首先，让我们创建一个支持网络策略的 AKS 群集。 
+首先，让我们创建一个支持网络策略的 AKS 群集。
 
 > [!IMPORTANT]
 >
@@ -120,25 +120,101 @@ az role assignment create --assignee $SP_ID --scope $VNET_ID --role Contributor
 
 # Get the virtual network subnet resource ID
 SUBNET_ID=$(az network vnet subnet show --resource-group $RESOURCE_GROUP_NAME --vnet-name myVnet --name myAKSSubnet --query id -o tsv)
+```
 
-# Create the AKS cluster and specify the virtual network and service principal information
-# Enable network policy by using the `--network-policy` parameter
+### <a name="create-an-aks-cluster-for-azure-network-policies"></a>为 Azure 网络策略创建 AKS 群集
+
+创建 AKS 群集，并为网络插件和网络策略指定虚拟网络、服务主体信息和 *azure* 。
+
+```azurecli
 az aks create \
     --resource-group $RESOURCE_GROUP_NAME \
     --name $CLUSTER_NAME \
     --node-count 1 \
     --generate-ssh-keys \
-    --network-plugin azure \
     --service-cidr 10.0.0.0/16 \
     --dns-service-ip 10.0.0.10 \
     --docker-bridge-address 172.17.0.1/16 \
     --vnet-subnet-id $SUBNET_ID \
     --service-principal $SP_ID \
     --client-secret $SP_PASSWORD \
+    --network-plugin azure \
     --network-policy azure
 ```
 
 创建群集需要几分钟时间。 群集准备就绪后，使用 [az aks get-credentials][az-aks-get-credentials] 命令将 `kubectl` 配置为连接到 Kubernetes 群集。 此命令将下载凭据，并将 Kubernetes CLI 配置为使用这些凭据：
+
+```azurecli-interactive
+az aks get-credentials --resource-group $RESOURCE_GROUP_NAME --name $CLUSTER_NAME
+```
+
+### <a name="create-an-aks-cluster-for-calico-network-policies"></a>为 Calico 网络策略创建 AKS 群集
+
+创建 AKS 群集并为网络插件指定虚拟网络、服务主体信息、 *azure* ，并为网络策略指定 *calico* 。 使用 *calico* 作为网络策略可在 Linux 和 Windows 节点池上启用 calico 网络。
+
+如果你计划将 Windows 节点池添加到群集，请在中包括 `windows-admin-username` 和 `windows-admin-password` 参数，以满足 [Windows Server 密码要求][windows-server-password]。 若要将 Calico 与 Windows 节点池一起使用，还需要注册 `Microsoft.ContainerService/EnableAKSWindowsCalico` 。
+
+`EnableAKSWindowsCalico`使用[az feature register][az-feature-register]命令注册功能标志，如以下示例中所示：
+
+```azurecli-interactive
+az feature register --namespace "Microsoft.ContainerService" --name "EnableAKSWindowsCalico"
+```
+
+ 可以使用 [az feature list][az-feature-list] 命令检查注册状态：
+
+```azurecli-interactive
+az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnableAKSWindowsCalico')].{Name:name,State:properties.state}"
+```
+
+准备就绪后，使用 [az provider register][az-provider-register] 命令刷新 Microsoft.ContainerService 资源提供程序的注册状态：
+
+```azurecli-interactive
+az provider register --namespace Microsoft.ContainerService
+```
+
+> [!IMPORTANT]
+> 目前，在使用 Kubernetes 版本1.20 或更高版本的版本或更高版本的新群集上，将 Calico 网络策略用于 Windows 节点，需要使用 Azure CNI 网络。 启用了 Calico 的 AKS 群集上的 Windows 节点还默认启用 [ (DSR) 的直接服务器返回 ][dsr] 。
+>
+> 对于只有 Linux 节点池运行 Kubernetes 1.20 和早期版本的 Calico 的群集，Calico 版本将自动升级到3.17.2。
+
+Windows 节点的 Calico 网络策略目前处于预览阶段。
+
+[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
+
+```azurecli
+PASSWORD_WIN="P@ssw0rd1234"
+
+az aks create \
+    --resource-group $RESOURCE_GROUP_NAME \
+    --name $CLUSTER_NAME \
+    --node-count 1 \
+    --generate-ssh-keys \
+    --service-cidr 10.0.0.0/16 \
+    --dns-service-ip 10.0.0.10 \
+    --docker-bridge-address 172.17.0.1/16 \
+    --vnet-subnet-id $SUBNET_ID \
+    --service-principal $SP_ID \
+    --client-secret $SP_PASSWORD \
+    --windows-admin-password $PASSWORD_WIN \
+    --windows-admin-username azureuser \
+    --vm-set-type VirtualMachineScaleSets \
+    --kubernetes-version 1.20.2 \
+    --network-plugin azure \
+    --network-policy calico
+```
+
+创建群集需要几分钟时间。 默认情况下，仅使用 Linux 节点池创建群集。 如果要使用 Windows 节点池，可以添加一个。 例如：
+
+```azurecli
+az aks nodepool add \
+    --resource-group $RESOURCE_GROUP_NAME \
+    --cluster-name $CLUSTER_NAME \
+    --os-type Windows \
+    --name npwin \
+    --node-count 1
+```
+
+群集准备就绪后，使用 [az aks get-credentials][az-aks-get-credentials] 命令将 `kubectl` 配置为连接到 Kubernetes 群集。 此命令将下载凭据，并将 Kubernetes CLI 配置为使用这些凭据：
 
 ```azurecli-interactive
 az aks get-credentials --resource-group $RESOURCE_GROUP_NAME --name $CLUSTER_NAME
@@ -487,3 +563,7 @@ kubectl delete namespace development
 [az-feature-register]: /cli/azure/feature#az-feature-register
 [az-feature-list]: /cli/azure/feature#az-feature-list
 [az-provider-register]: /cli/azure/provider#az-provider-register
+[windows-server-password]: /windows/security/threat-protection/security-policy-settings/password-must-meet-complexity-requirements#reference
+[az-extension-add]: /cli/azure/extension?view=azure-cli-latest#az-extension-add
+[az-extension-update]: /cli/azure/extension?view=azure-cli-latest#az-extension-update
+[dsr]: ../load-balancer/load-balancer-multivip-overview.md#rule-type-2-backend-port-reuse-by-using-floating-ip

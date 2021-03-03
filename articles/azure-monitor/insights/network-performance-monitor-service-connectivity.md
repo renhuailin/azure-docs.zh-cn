@@ -1,22 +1,21 @@
 ---
 title: 网络性能监视器解决方案服务连接性 - Azure Log Analytics
 description: 可以使用网络性能监视器中的服务连接监视器功能，监视与 TCP 端口打开的任何终结点之间的网络连接。
-ms.subservice: logs
 ms.topic: conceptual
 author: abshamsft
 ms.author: absha
 ms.date: 02/20/2018
-ms.openlocfilehash: a980c0987106a80751a98c48dfc5780708e6f889
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: a5b42e61af398e111b2014f3734a0011a4bee778
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100573417"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734156"
 ---
 # <a name="service-connectivity-monitor"></a>服务连接监视器
 
 > [!IMPORTANT]
-> 自2021年7月1日起，你将无法在现有工作区中添加新测试，也无法在网络性能监视器中启用新的工作区。 你可以继续使用在2021年7月之前创建的测试。 若要最大程度地减少对当前工作负荷的服务中断，请在2024年2月29日之前将 [测试从网络性能监视器迁移到](https://docs.microsoft.com/azure/network-watcher/migrate-to-connection-monitor-from-network-performance-monitor) Azure 网络观察程序中的新连接监视器。
+> 自2021年7月1日起，你将无法在现有工作区中添加新测试，也无法在网络性能监视器中启用新的工作区。 你可以继续使用在2021年7月之前创建的测试。 若要最大程度地减少对当前工作负荷的服务中断，请在2024年2月29日之前将 [测试从网络性能监视器迁移到](../../network-watcher/migrate-to-connection-monitor-from-network-performance-monitor.md) Azure 网络观察程序中的新连接监视器。
 
 可以使用[网络性能监视器](network-performance-monitor.md)中的服务连接监视器功能，监视与 TCP 端口打开的任何终结点之间的网络连接。 此类终结点包括网站、SaaS 应用程序、PaaS 应用程序和 SQL 数据库。 
 
@@ -137,4 +136,3 @@ netsh advfirewall firewall add rule name="NPMDICMPV6TimeExceeded" protocol="icmp
 
 ## <a name="next-steps"></a>后续步骤
 [搜索日志](../logs/log-query-overview.md)以查看详细的网络性能数据记录。
-

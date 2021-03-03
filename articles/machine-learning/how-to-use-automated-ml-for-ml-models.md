@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 12/20/2020
 ms.topic: conceptual
 ms.custom: how-to, automl
-ms.openlocfilehash: 1a40fe01240474c2a6df3e028b7d03f3e8bb73fc
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: d7a0832fd15df402c88e1ba565c90a24e0d6eb8a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879741"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101692413"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>使用 Azure 机器学习创建、查看和部署自动化机器学习模型
 
@@ -88,7 +88,7 @@ ms.locfileid: "98879741"
 
     1. “确认详细信息”窗体上总结了先前在“基本信息”和“设置和预览”窗体中填充的信息  。 你还可以使用已启用分析的计算来为数据集创建数据配置文件。 详细了解[数据分析](how-to-connect-data-ui.md#profile)。
 
-        选择“**下一步**”。
+        选择“**下一页**”。
 1. 新建的数据集出现后，请将其选中。 还可以查看数据集和样本统计信息的预览。 
 
 1. 在“配置运行”窗体上，选择“新建”，然后输入“Tutorial-automl-deploy”作为实验名称  。
@@ -113,7 +113,7 @@ ms.locfileid: "98879741"
     >[!NOTE]
     > 计算名称将会指示选择/创建的计算是否已启用分析。 （有关更多详细信息，请参阅[数据分析](how-to-connect-data-ui.md#profile)部分）。
 
-    选择“**下一步**”。
+    选择“**下一页**”。
 
 1. 在“任务类型和设置”窗体中选择任务类型：分类、回归或预测。 有关详细信息，请参阅[支持的任务类型](concept-automated-ml.md#when-to-use-automl-classify-regression--forecast)。
 
@@ -180,6 +180,21 @@ ms.locfileid: "98879741"
 
 [![迭代详细信息](media/how-to-use-automated-ml-for-ml-models/iteration-details.png)](media/how-to-use-automated-ml-for-ml-models/iteration-details-expanded.png)
 
+## <a name="model-explanations"></a>模型说明
+
+为了更好地了解模型，请查看 (原始或设计) 的哪些数据功能会影响模型的预测和模型说明仪表板。 
+
+模型说明面板提供了定型模型的总体分析及其预测和说明。 它还可让你深入了解单个数据点及其各自的功能 importances。 [详细了解说明仪表板可视化效果和特定图形](how-to-machine-learning-interpretability-aml.md#visualizations)。
+
+若要获取特定模型的说明，请 
+
+1. 在 " **模型** " 选项卡上，选择要使用的模型。 
+1. 选择 " **说明模型** " 按钮，并提供可用于生成说明的计算。
+1. 检查 " **子运行** " 选项卡以了解状态。 
+1. 完成后，导航到 " **说明" (预览 ")** " 选项卡，其中包含 "说明" 仪表板。 
+
+    ![模型说明仪表板](media/how-to-use-automated-ml-for-ml-models/model-explanation-dashboard.png)
+
 ## <a name="deploy-your-model"></a>部署模型
 
 获得最佳模型后，可将其部署为 Web 服务以根据新数据进行预测。
@@ -199,7 +214,7 @@ ms.locfileid: "98879741"
 
 1. 填充“部署模型”窗格。
 
-    字段| 值
+    字段| Value
     ----|----
     名称| 输入部署的唯一名称。
     说明| 输入说明，以更清楚地指出此部署的用途。

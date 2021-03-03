@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/11/2021
-ms.openlocfilehash: b1262533c3398a774b85e4143289a9b7c342aeab
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: e9f0a285df6013334970b971e46079b9e78b19cb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100593577"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728954"
 ---
 # <a name="azure-monitor-for-existing-operations-manager-customers"></a>现有 Operations Manager 客户 Azure Monitor
 本文为当前使用 [System Center Operations Manager](/system-center/scom/welcome) ，并在将业务应用程序和其他资源迁移到 Azure 时计划过渡到 [Azure Monitor](overview.md) 的客户提供指导。 它假定您的最终目标是完全转换到云，使用 Azure Monitor 尽可能多地替换 Operations Manager 功能，而不会影响业务和 IT 操作要求。 
@@ -56,7 +56,7 @@ ms.locfileid: "100593577"
 
 迁移到 Azure 后，将启动 IaaS，将支持业务应用程序的虚拟机迁移到 Azure。 这些应用程序及其依赖的服务器软件的监视要求不会改变，你可以继续在这些服务器上使用现有管理包的 Operations Manager。 
 
-创建 Azure 订阅后，即可为 Azure 服务启用 Azure Monitor。 它自动收集平台指标和活动日志，并配置要收集的资源日志，以便可以使用日志查询以交互方式分析所有可用的遥测。 你可以在虚拟机上启用用于 VM 的 Azure Monitor 以分析整个环境中的监视数据，并发现计算机与进程之间的关系。 通过启用启用了 Azure Arc 的服务器，你可以将 Azure Monitor 的使用扩展到本地物理机和虚拟机。 
+创建 Azure 订阅后，即可为 Azure 服务启用 Azure Monitor。 它自动收集平台指标和活动日志，并配置要收集的资源日志，以便可以使用日志查询以交互方式分析所有可用的遥测。 在虚拟机上启用 VM insights，分析整个环境中的监视数据，并发现计算机与进程之间的关系。 通过启用启用了 Azure Arc 的服务器，你可以将 Azure Monitor 的使用扩展到本地物理机和虚拟机。 
 
 为每个业务应用程序启用 Application Insights。 它标识每个应用程序的不同组件，开始收集使用情况和性能数据，并标识代码中发生的任何错误。 您可以创建可用性测试来主动测试您的外部应用程序，并向您发出任何性能或可用性问题的警报。 虽然 Application Insights 提供了你没有 Operations Manager 的强大功能，但你仍会依赖于你为业务应用程序开发的自定义管理包，因为它们包括 Azure Monitor 尚未涵盖的监视方案。 
 
@@ -89,21 +89,21 @@ Azure Monitor 中的[见解](monitor-reference.md)类似于管理包，因为它
 ## <a name="monitor-server-software-and-local-infrastructure"></a>监视服务器软件和本地基础结构
 将计算机移动到云时，对其软件的监视要求不会改变。 你不再需要监视其物理组件，因为它们已经过虚拟化，但不管其环境如何，来宾操作系统及其工作负载都具有相同的要求。
 
-[用于 VM 的 Azure Monitor](vm/vminsights-overview.md) 是 Azure Monitor 用于监视虚拟机及其来宾操作系统和工作负载的主要功能。 与 Operations Manager 类似，用于 VM 的 Azure Monitor 使用代理从虚拟机的来宾操作系统收集数据。 这与管理包通常用于分析和警报的性能和事件数据相同。 但未预先存在的规则用于标识和警报在这些计算机中运行的业务应用程序和服务器软件的问题。 您必须创建自己的警报规则，以主动收到任何检测到的问题的通知。
+[VM insights](vm/vminsights-overview.md) 是 Azure Monitor 用于监视虚拟机及其来宾操作系统和工作负载的主要功能。 与 Operations Manager 类似，VM insights 使用代理从虚拟机的来宾操作系统收集数据。 这与管理包通常用于分析和警报的性能和事件数据相同。 但未预先存在的规则用于标识和警报在这些计算机中运行的业务应用程序和服务器软件的问题。 您必须创建自己的警报规则，以主动收到任何检测到的问题的通知。
 
-[![用于 VM 的 Azure Monitor 性能](media/azure-monitor-operations-manager/vm-insights-performance.png)](media/azure-monitor-operations-manager/vm-insights-performance.png#lightbox)
+[![VM insights 性能](media/azure-monitor-operations-manager/vm-insights-performance.png)](media/azure-monitor-operations-manager/vm-insights-performance.png#lightbox)
 
 Azure Monitor 也不会度量在虚拟机上运行的不同应用程序和服务的运行状况。 当某个值低于阈值但 Azure Monitor 当前不能定义计算机上运行的应用程序和服务的运行状况条件，也不提供运行状况汇总来对相关组件的运行状况进行分组时，指标警报可以自动解决。
 
 > [!NOTE]
-> 用于 VM 的 Azure Monitor 的新 [来宾健康功能](vm/vminsights-health-overview.md) 现在处于公共预览状态，并根据一组性能指标的运行状况状态发出警报。 此操作最初限制为一组与来宾操作系统相关的特定性能计数器，而不是在虚拟机中运行的应用程序或其他工作负荷。
+> [VM insights 的新来宾健康状况功能](vm/vminsights-health-overview.md)现在处于公共预览状态，并根据一组性能指标的运行状况状态发出警报。 此操作最初限制为一组与来宾操作系统相关的特定性能计数器，而不是在虚拟机中运行的应用程序或其他工作负荷。
 > 
-> [![用于 VM 的 Azure Monitor 来宾健康状况](media/azure-monitor-operations-manager/vm-insights-guest-health.png)](media/azure-monitor-operations-manager/vm-insights-guest-health.png#lightbox)
+> [![VM insights 来宾运行状况](media/azure-monitor-operations-manager/vm-insights-guest-health.png)](media/azure-monitor-operations-manager/vm-insights-guest-health.png#lightbox)
 
-在混合环境中监视计算机上的软件通常会结合使用用于 VM 的 Azure Monitor 和 Operations Manager，具体取决于每台计算机的要求以及您在 Azure Monitor 周围开发操作过程的成熟度。 Microsoft 管理代理 (称为 Azure Monitor) 中的 Log Analytics 代理，这两种平台都可以同时监视一台计算机。
+监视混合环境中计算机上的软件通常会结合使用 VM insights 和 Operations Manager，具体取决于每台计算机的要求以及您在 Azure Monitor 上开发操作过程的成熟度。 Microsoft 管理代理 (称为 Azure Monitor) 中的 Log Analytics 代理，这两种平台都可以同时监视一台计算机。
 
 > [!NOTE]
-> 将来，用于 VM 的 Azure Monitor 会转换为当前为公共预览版的 [Azure Monitor 代理](agents/azure-monitor-agent-overview.md)。 它将与 Microsoft Monitoring Agent 兼容，因此，这两个平台将继续监视相同的虚拟机。
+> 以后，VM insights 会转换为 [Azure Monitor 代理](agents/azure-monitor-agent-overview.md)，当前为公共预览版。 它将与 Microsoft Monitoring Agent 兼容，因此，这两个平台将继续监视相同的虚拟机。
 
 继续使用 Operations Manager，Azure Monitor 尚未提供的功能。 这包括用于关键服务器软件（如 IIS、SQL Server 或 Exchange）的管理包。 你还可以为本地基础结构开发的自定义管理包，这些管理包无法与 Azure Monitor 联系在一起。 如果你可以过渡到现代化你的服务操作（其中 Azure Monitor 和其他 Azure 服务可以增加或替换），则还继续使用 Operations Manager。 
 
@@ -114,9 +114,9 @@ Azure Monitor 也不会度量在虚拟机上运行的不同应用程序和服务
 - 使用 [日志查询](logs/log-query-overview.md) 可以使用其他 Azure 资源中的数据以交互方式分析虚拟机中的遥测数据。
 - 基于跨多个虚拟机的复杂逻辑创建 [日志警报规则](alerts/alerts-log-query.md) 。
 
-[![用于 VM 的 Azure Monitor 映射](media/azure-monitor-operations-manager/vm-insights-map.png)](media/azure-monitor-operations-manager/vm-insights-map.png#lightbox)
+[![VM 见解映射](media/azure-monitor-operations-manager/vm-insights-map.png)](media/azure-monitor-operations-manager/vm-insights-map.png#lightbox)
 
-除了 Azure 虚拟机外，用于 VM 的 Azure Monitor 还可以使用 [启用了 Azure Arc 的服务器](../azure-arc/servers/overview.md)监视本地和其他云中的计算机。 启用 Arc 的服务器允许管理托管在 Azure 外、公司网络或其他云提供商上的 Windows 和 Linux 计算机，与管理本机 Azure 虚拟机的方式一致。
+除了 Azure 虚拟机，VM insights 还可以使用 [启用了 Azure Arc 的服务器](../azure-arc/servers/overview.md)监视本地和其他云中的计算机。 启用 Arc 的服务器允许管理托管在 Azure 外、公司网络或其他云提供商上的 Windows 和 Linux 计算机，与管理本机 Azure 虚拟机的方式一致。
 
 
 
@@ -131,7 +131,7 @@ Azure Monitor 也不会度量在虚拟机上运行的不同应用程序和服务
 - 检测异常并钻取堆栈跟踪和相关请求。
 - 使用 [分布式跟踪](app/distributed-tracing.md) 和 [智能检测](app/proactive-diagnostics.md)等功能执行高级分析。
 - 使用 [指标资源管理器](essentials/metrics-getting-started.md) 以交互方式分析性能数据。
-- 使用 [日志查询](logs/log-query-overview.md) 以交互方式分析收集的遥测数据以及为 Azure 服务和用于 VM 的 Azure Monitor 收集的数据。
+- 使用 [日志查询](logs/log-query-overview.md) 以交互方式分析收集的遥测数据，以及为 Azure 服务和 VM insights 收集的数据。
 
 [![Application Insights](media/azure-monitor-operations-manager/application-insights.png)](media/azure-monitor-operations-manager/application-insights.png#lightbox)
 
@@ -150,5 +150,5 @@ Azure Monitor 也不会度量在虚拟机上运行的不同应用程序和服务
 - 请参阅 [云监视指南](/azure/cloud-adoption-framework/manage/monitor/) ，详细了解 Azure Monitor 和 System Center Operations Manager，并详细了解如何设计和实现混合监视环境。
 - 阅读有关 [监视 Azure 资源的](essentials/monitor-azure-resource.md)详细信息 Azure Monitor。
 - 阅读有关 [监视 Azure Monitor 中的 Azure 虚拟机的](vm/monitor-vm-azure.md)详细信息。
-- 阅读有关 [用于 VM 的 Azure Monitor](vm/vminsights-overview.md)的详细信息。
+- 阅读有关 [VM 见解](vm/vminsights-overview.md)的详细信息。
 - 阅读有关 [Application Insights](app/app-insights-overview.md)的详细信息。

@@ -2,14 +2,14 @@
 title: 在 Azure 门户中创建帐户
 description: 了解如何在 Azure 门户中创建 Azure Batch 帐户，以便在云中运行大规模并行工作负荷
 ms.topic: how-to
-ms.date: 01/26/2021
+ms.date: 02/23/2021
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bd9dd9b6d6d3a8d6938427b83528746ae5d09318
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 36759a0caef41af9307bf621a1b6b634ddf586cc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100368500"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703658"
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>使用 Azure 门户创建 Batch 帐户
 
@@ -21,7 +21,7 @@ ms.locfileid: "100368500"
 
 [!INCLUDE [batch-account-mode-include](../../includes/batch-account-mode-include.md)]
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 
 1. 从主页中选择 " **创建资源**"。
 
@@ -101,7 +101,7 @@ ms.locfileid: "100368500"
 
 在用户订阅模式下创建 Batch 帐户时，将 **用户订阅** 指定为池分配模式，选择创建的 Key Vault，并选中复选框以授予 Azure Batch 对 Key Vault 的访问权限。
 
-如果希望手动授予对 Key Vault 的访问权限，请访问 Key Vault 的 " **访问策略** " 部分，然后选择 " **添加访问策略**"。 选择 " **选择主体** " 旁边的链接，然后搜索 " **Microsoft Azure Batch** (应用程序 ID **ddbf3205-c6bd-46ae-8127-60eb93363864**) "。 选择该主体，然后使用下拉菜单配置 **机密权限** 。 必须至少授予 Azure Batch **Get**、**List**、**Set** 和 **Delete** 权限。
+如果希望手动授予对 Key Vault 的访问权限，请访问 Key Vault 的 " **访问策略** " 部分，然后选择 " **添加访问策略**"。 选择 " **选择主体** " 旁边的链接，然后搜索 " **Microsoft Azure Batch** (应用程序 ID **ddbf3205-c6bd-46ae-8127-60eb93363864**) "。 选择该主体，然后使用下拉菜单配置 **机密权限** 。 必须至少授予 Azure Batch **Get**、**List**、**Set** 和 **Delete** 权限。 对于 [启用了软删除的密钥保管库](../key-vault/general/soft-delete-overview.md)，还必须为 Azure Batch 提供 **恢复** 权限。
 
 :::image type="content" source="media/batch-account-create-portal/secret-permissions.png" alt-text="Azure Batch 的机密权限选项的屏幕截图":::
 

@@ -7,16 +7,16 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 01/25/2021
 ms.subservice: metrics
-ms.openlocfilehash: 9fba5b7636bcef68b55528350ea63ce9d386bb16
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: b1e61d0b8eb8312c78acabbd087208bb64a2d0d1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100606293"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734445"
 ---
 # <a name="custom-metrics-in-azure-monitor-preview"></a>Azure Monitor 中的自定义指标（预览版）
 
-在 Azure 中部署资源和应用程序时，需要开始收集遥测数据，以洞察它们的性能和运行状况。 Azure 提供一些现成的指标。 这些指标称为[标准指标或平台指标](../platform/metrics-supported.md)。 但是，它们在性质上有限制。 
+在 Azure 中部署资源和应用程序时，需要开始收集遥测数据，以洞察它们的性能和运行状况。 Azure 提供一些现成的指标。 这些指标称为[标准指标或平台指标](./metrics-supported.md)。 但是，它们在性质上有限制。 
 
 可能需要收集一些自定义性能指标或特定于业务的指标才能提供更深入的见解。 可以通过应用程序遥测、Azure 资源上运行的代理甚至从外到内的监视系统收集这些 **自定义** 指标，然后将其直接提交给 Azure Monitor。 发布到 Azure Monitor 之后，可以连同 Azure 发出的标准指标一起浏览、查询 Azure 资源和应用程序的自定义指标，并针对其发出警报。
 
@@ -223,5 +223,3 @@ Azure Monitor 针对自定义指标实施以下用量限制：
  - [使用 Telegraf 代理的 Linux 虚拟机](../essentials/collect-custom-metrics-linux-telegraf.md)
  - [REST API](./metrics-store-custom-rest-api.md)
  - [经典云服务](../essentials/collect-custom-metrics-guestos-vm-cloud-service-classic.md)
- 
-

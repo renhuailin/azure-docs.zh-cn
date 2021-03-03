@@ -3,15 +3,15 @@ title: 创建自动化任务以管理和监视 Azure 资源
 description: 设置自动化任务，以帮助你通过创建在 Azure 逻辑应用上运行的工作流来管理 Azure 资源和监视成本。
 services: logic-apps
 ms.suite: integration
-ms.reviewer: deli, jonfan, logicappspm
+ms.reviewer: logicappspm
 ms.topic: conceptual
-ms.date: 09/23/2020
-ms.openlocfilehash: 2b3b40b5958df52dabf92155a1de809578f1d374
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.date: 02/19/2021
+ms.openlocfilehash: 8180fe8554e5fff83e4caef8c245839518649ca1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92201114"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719043"
 ---
 # <a name="manage-azure-resources-and-monitor-costs-by-creating-automation-tasks-preview"></a> (预览中创建自动化任务来管理 Azure 资源和监视成本) 
 
@@ -71,13 +71,15 @@ ms.locfileid: "92201114"
 
    ![显示存储帐户 "任务" 窗格的屏幕截图，其中的工具栏已选中 "添加"](./media/create-automation-tasks-azure-resources/add-automation-task.png)
 
-1. 在 " **添加任务** " 窗格中的 " **选择模板**" 下，选择要创建的任务的模板，然后选择 " **下一步：身份验证**"。
+1. 在 " **添加任务** " 窗格中的 " **选择模板**" 下，选择要创建的任务的模板。 如果下一页未出现，请选择 " **下一步：身份验证**"。
 
    此示例通过选择 " **每月发送资源** 任务模板" 任务模板继续。
 
    ![显示选择 "每月发送资源成本" 和 "下一步：身份验证" 的屏幕截图](./media/create-automation-tasks-azure-resources/select-task-template.png)
 
-1. 在 " **身份验证**" 下的 " **连接** " 部分中，为每个连接选择 " **创建** "，以便可以为该连接提供身份验证凭据。 每个任务中的连接类型根据任务的不同而异。
+1. 在 " **身份验证**" 下的 " **连接** " 部分中，为任务中显示的每个连接选择 " **创建** "，以便可以为所有连接提供身份验证凭据。 每个任务中的连接类型根据任务的不同而异。
+
+   此示例仅显示此任务所需的一个连接。
 
    ![显示 Azure 资源管理器连接的选定 "创建" 选项的屏幕截图](./media/create-automation-tasks-azure-resources/create-authenticate-connections.png)
 
@@ -89,7 +91,7 @@ ms.locfileid: "92201114"
 
    ![显示已成功创建连接的屏幕截图](./media/create-automation-tasks-azure-resources/create-connection-success.png)
 
-1. 验证所有所需的连接后，选择 " **下一步：配置**"。
+1. 在对所有连接进行身份验证后，选择 " **下一步：配置** " （如果未显示下一页）。
 
 1. 在 " **配置**" 下，提供任务的名称以及任务所需的任何其他信息。 完成操作后，选择“创建”。
 
@@ -136,7 +138,7 @@ ms.locfileid: "92201114"
    | 状态 | 说明 |
    |--------|-------------|
    | 已取消 | 任务在运行时被取消。 |
-   | 失败 | 任务至少具有一个失败的操作，但不存在任何用于处理失败的后续操作。 |
+   | **已失败** | 任务至少具有一个失败的操作，但不存在任何用于处理失败的后续操作。 |
    | **正在运行** | 任务当前正在运行。 |
    | 成功 | 所有操作成功。 如果操作失败，则任务仍可以成功完成，但后续操作存在来处理失败。 |
    | **正在等待** | 该运行尚未开始，已暂停，因为该任务的更早实例仍在运行。 |
@@ -237,7 +239,7 @@ ms.locfileid: "92201114"
 
    1. 在 "逻辑应用创建" 窗格的 " **名称**" 下，为复制的逻辑应用工作流输入新名称。
 
-      除了 **逻辑应用状态**之外，其他属性不可编辑。 
+      除了 **逻辑应用状态** 之外，其他属性不可编辑。 
       
    1. 在 " **逻辑应用状态**" 下，选择 " **禁用** "，以便在进行更改时不会运行克隆的工作流。 准备好测试更改时，可以启用工作流。
 
@@ -265,7 +267,7 @@ ms.locfileid: "92201114"
 
 ## <a name="provide-feedback"></a>提供反馈
 
-我们想要倾听你的意见！ 若要报告 bug、提供反馈或询问有关此预览功能的问题，请 [联系 Azure 逻辑应用团队](mailto:logicapps@microsoft.com)。
+我们想要倾听你的意见！ 若要报告 bug、提供反馈或询问有关此预览功能的问题，请 [联系 Azure 逻辑应用团队](mailto:logicappspm@microsoft.com)。
 
 ## <a name="next-steps"></a>后续步骤
 

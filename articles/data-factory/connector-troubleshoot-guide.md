@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 02/08/2021
 ms.author: jingwang
 ms.custom: has-adal-ref
-ms.openlocfilehash: 63a690ffaaefc506de296d43e7de13020fbd584a
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 574c4967c1e45ce1ae2be92d8648d654322e2244
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100366919"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101727815"
 ---
 # <a name="troubleshoot-azure-data-factory-connectors"></a>排查 Azure 数据工厂连接器问题
 
@@ -28,7 +28,7 @@ ms.locfileid: "100366919"
 
 - **原因**： Blob 存储操作存在问题。
 
-- **建议**：若要检查错误详细信息，请参阅 [Blob 存储错误代码](https://docs.microsoft.com/rest/api/storageservices/blob-service-error-codes)。 有关更多帮助，请联系 Blob 存储团队。
+- **建议**：若要检查错误详细信息，请参阅 [Blob 存储错误代码](/rest/api/storageservices/blob-service-error-codes)。 有关更多帮助，请联系 Blob 存储团队。
 
 
 ### <a name="invalid-property-during-copy-activity"></a>执行复制活动期间属性无效
@@ -164,7 +164,7 @@ ms.locfileid: "100366919"
   | 原因分析                                               | 建议                                               |
   | :----------------------------------------------------------- | :----------------------------------------------------------- |
   | 如果 Azure Data Lake Storage Gen2 引发错误，则表明部分操作失败。| 检查 Azure Data Lake Storage Gen2 引发的详细错误消息。 如果错误是暂时性故障，请重试该操作。 如需进一步的帮助，请联系 Azure 存储支持，并提供错误消息中的请求 ID。 |
-  | 如果错误消息包含字符串 "禁止"，则你使用的服务主体或托管标识可能没有足够的权限访问 Azure Data Lake Storage Gen2。 | 若要解决此错误，请参阅 [使用 Azure 数据工厂复制和转换 Azure Data Lake Storage Gen2 中的数据](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#service-principal-authentication)。 |
+  | 如果错误消息包含字符串 "禁止"，则你使用的服务主体或托管标识可能没有足够的权限访问 Azure Data Lake Storage Gen2。 | 若要解决此错误，请参阅 [使用 Azure 数据工厂复制和转换 Azure Data Lake Storage Gen2 中的数据](./connector-azure-data-lake-storage.md#service-principal-authentication)。 |
   | 如果错误消息中包含字符串 "InternalServerError"，Azure Data Lake Storage Gen2 将返回错误。 | 此错误可能是由暂时性故障引起的。 如果是，请重试操作； 如果问题仍然存在，请联系 Azure 存储支持，并提供错误消息中的请求 ID。 |
 
 ### <a name="request-to-azure-data-lake-storage-gen2-account-caused-a-timeout-error"></a>请求 Azure Data Lake Storage Gen2 帐户导致超时错误
@@ -204,7 +204,7 @@ ms.locfileid: "100366919"
 
 - **原因**： Azure 文件存储操作存在问题。
 
-- **建议**：若要查看错误详细信息，请参阅 [Azure 文件帮助](https://docs.microsoft.com/rest/api/storageservices/file-service-error-codes)。 有关更多帮助，请联系 Azure 文件团队。
+- **建议**：若要查看错误详细信息，请参阅 [Azure 文件帮助](/rest/api/storageservices/file-service-error-codes)。 有关更多帮助，请联系 Azure 文件团队。
 
 
 ## <a name="azure-synapse-analytics-azure-sql-database-and-sql-server"></a>Azure Synapse Analytics、Azure SQL 数据库和 SQL Server
@@ -216,12 +216,12 @@ ms.locfileid: "100366919"
 
     | 原因分析                                               | 建议                                               |
     | :----------------------------------------------------------- | :----------------------------------------------------------- |
-    | 对于 Azure SQL，如果错误消息包含字符串 "SqlErrorNumber = 47073"，则表示在连接设置中拒绝公共网络访问。 | 在 Azure SQL 防火墙中，将 " **拒绝公共网络访问** " 选项设置为 " *否*"。 有关详细信息，请参阅 [AZURE SQL 连接设置](https://docs.microsoft.com/azure/azure-sql/database/connectivity-settings#deny-public-network-access)。 |
-    | 对于 Azure SQL，如果错误消息包含 SQL 错误代码（例如 "SqlErrorNumber = [errorcode]"），请参阅 Azure SQL 故障排除指南。 | 有关建议，请参阅 [使用 AZURE Sql 数据库和 AZURE sql 托管实例排查连接问题和其他错误](https://docs.microsoft.com/azure/azure-sql/database/troubleshoot-common-errors-issues)。 |
-    | 检查端口1433是否位于防火墙允许列表中。 | 有关详细信息，请参阅 [SQL Server 使用的端口](https://docs.microsoft.com/sql/sql-server/install/configure-the-windows-firewall-to-allow-sql-server-access#ports-used-by-)。 |
-    | 如果错误消息包含字符串 "SqlException"，则为 SQL 数据库，错误表示某些特定操作失败。 | 有关详细信息，请按 " [数据库引擎错误](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors)" 中的 SQL 错误代码进行搜索。 有关更多帮助，请联系 Azure SQL 支持。 |
-    | 如果这是暂时性问题 (例如，instable 网络连接) ，请在活动策略中添加 "重试" 以减轻。 | 有关详细信息，请参阅 [Azure 数据工厂中的管道和活动](https://docs.microsoft.com/azure/data-factory/concepts-pipelines-activities#activity-policy)。 |
-    | 如果错误消息包含字符串 "具有 IP 地址的客户端 ..."不允许访问服务器 "，并且你正在尝试连接到 Azure SQL 数据库，此错误通常是由 Azure SQL 数据库防火墙问题导致的。 | 在 Azure SQL Server 防火墙配置中，启用 " **允许 Azure 服务和资源访问此服务器** " 选项。 有关详细信息，请参阅 [AZURE SQL 数据库和 Azure SYNAPSE IP 防火墙规则](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure)。 |
+    | 对于 Azure SQL，如果错误消息包含字符串 "SqlErrorNumber = 47073"，则表示在连接设置中拒绝公共网络访问。 | 在 Azure SQL 防火墙中，将 " **拒绝公共网络访问** " 选项设置为 " *否*"。 有关详细信息，请参阅 [AZURE SQL 连接设置](../azure-sql/database/connectivity-settings.md#deny-public-network-access)。 |
+    | 对于 Azure SQL，如果错误消息包含 SQL 错误代码（例如 "SqlErrorNumber = [errorcode]"），请参阅 Azure SQL 故障排除指南。 | 有关建议，请参阅 [使用 AZURE Sql 数据库和 AZURE sql 托管实例排查连接问题和其他错误](../azure-sql/database/troubleshoot-common-errors-issues.md)。 |
+    | 检查端口1433是否位于防火墙允许列表中。 | 有关详细信息，请参阅 [SQL Server 使用的端口](/sql/sql-server/install/configure-the-windows-firewall-to-allow-sql-server-access#ports-used-by-)。 |
+    | 如果错误消息包含字符串 "SqlException"，则为 SQL 数据库，错误表示某些特定操作失败。 | 有关详细信息，请按 " [数据库引擎错误](/sql/relational-databases/errors-events/database-engine-events-and-errors)" 中的 SQL 错误代码进行搜索。 有关更多帮助，请联系 Azure SQL 支持。 |
+    | 如果这是暂时性问题 (例如，instable 网络连接) ，请在活动策略中添加 "重试" 以减轻。 | 有关详细信息，请参阅 [Azure 数据工厂中的管道和活动](./concepts-pipelines-activities.md#activity-policy)。 |
+    | 如果错误消息包含字符串 "具有 IP 地址的客户端 ..."不允许访问服务器 "，并且你正在尝试连接到 Azure SQL 数据库，此错误通常是由 Azure SQL 数据库防火墙问题导致的。 | 在 Azure SQL Server 防火墙配置中，启用 " **允许 Azure 服务和资源访问此服务器** " 选项。 有关详细信息，请参阅 [AZURE SQL 数据库和 Azure SYNAPSE IP 防火墙规则](../azure-sql/database/firewall-configure.md)。 |
     
 ### <a name="error-code-sqloperationfailed"></a>错误代码： SqlOperationFailed
 
@@ -231,9 +231,9 @@ ms.locfileid: "100366919"
 
     | 原因分析                                               | 建议                                               |
     | :----------------------------------------------------------- | :----------------------------------------------------------- |
-    | 如果错误消息包含字符串 "SqlException"，则 SQL 数据库会引发一个错误，指示某些特定操作失败。 | 如果未清除 SQL 错误，请尝试将数据库更改为最新兼容级别 "150"。 它可能会引发最新版本的 SQL 错误。 有关详细信息，请参阅[本文档](/sql/t-sql/statements/alter-database-transact-sql-compatibility-level#backwardCompat)。 <br/> 有关解决 SQL 问题的详细信息，请按 [数据库引擎错误](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors)中的 SQL 错误代码进行搜索。 有关更多帮助，请联系 Azure SQL 支持。 |
+    | 如果错误消息包含字符串 "SqlException"，则 SQL 数据库会引发一个错误，指示某些特定操作失败。 | 如果未清除 SQL 错误，请尝试将数据库更改为最新兼容级别 "150"。 它可能会引发最新版本的 SQL 错误。 有关详细信息，请参阅[本文档](/sql/t-sql/statements/alter-database-transact-sql-compatibility-level#backwardCompat)。 <br/> 有关解决 SQL 问题的详细信息，请按 [数据库引擎错误](/sql/relational-databases/errors-events/database-engine-events-and-errors)中的 SQL 错误代码进行搜索。 有关更多帮助，请联系 Azure SQL 支持。 |
     | 如果错误消息中包含字符串 "PdwManagedToNativeInteropException"，则通常是由于源列和接收器列大小不匹配造成的。 | 检查源列和接收器列的大小。 有关更多帮助，请联系 Azure SQL 支持。 |
-    | 如果错误消息包含字符串 "InvalidOperationException"，则通常是由于输入数据无效导致的。 | 若要确定哪个行遇到了问题，请在复制活动上启用容错功能，该功能可以将有问题的行重定向到存储，以便进一步调查。 有关详细信息，请参阅 [Azure 数据工厂中复制活动的容错能力](https://docs.microsoft.com/azure/data-factory/copy-activity-fault-tolerance)。 |
+    | 如果错误消息包含字符串 "InvalidOperationException"，则通常是由于输入数据无效导致的。 | 若要确定哪个行遇到了问题，请在复制活动上启用容错功能，该功能可以将有问题的行重定向到存储，以便进一步调查。 有关详细信息，请参阅 [Azure 数据工厂中复制活动的容错能力](./copy-activity-fault-tolerance.md)。 |
 
 
 ### <a name="error-code-sqlunauthorizedaccess"></a>错误代码： SqlUnauthorizedAccess
@@ -331,7 +331,7 @@ ms.locfileid: "100366919"
 
 - **原因**： SQL 大容量复制失败，因为从大容量复制程序实用工具接收到 (bcp) 客户端的列长度无效。
 
-- **建议**：若要确定哪个行遇到了问题，请在复制活动上启用容错功能。 这可以将有问题的行重定向到存储，以便进一步调查。 有关详细信息，请参阅 [Azure 数据工厂中复制活动的容错能力](https://docs.microsoft.com/azure/data-factory/copy-activity-fault-tolerance)。
+- **建议**：若要确定哪个行遇到了问题，请在复制活动上启用容错功能。 这可以将有问题的行重定向到存储，以便进一步调查。 有关详细信息，请参阅 [Azure 数据工厂中复制活动的容错能力](./copy-activity-fault-tolerance.md)。
 
 
 ### <a name="error-code-sqlconnectionisclosed"></a>错误代码： SqlConnectionIsClosed
@@ -470,7 +470,7 @@ ms.locfileid: "100366919"
 
 - **消息**：`Error thrown from driver. Sql code: '%code;'`
 
-- **原因**：如果错误消息包含字符串 "SQLSTATE = 51002 SQLCODE =-805"，请遵循 [使用 Azure 数据工厂从 DB2 复制数据](https://docs.microsoft.com/azure/data-factory/connector-db2#linked-service-properties)中的 "提示"。
+- **原因**：如果错误消息包含字符串 "SQLSTATE = 51002 SQLCODE =-805"，请遵循 [使用 Azure 数据工厂从 DB2 复制数据](./connector-db2.md#linked-service-properties)中的 "提示"。
 
 - **建议**：尝试在属性中设置 "NULLID" `packageCollection`  。
 
@@ -503,7 +503,7 @@ ms.locfileid: "100366919"
 
 ### <a name="error-code-dynamicscreateserviceclienterror"></a>错误代码： DynamicsCreateServiceClientError
 
-- 消息：`This is a transient issue on Dynamics server side. Try to rerun the pipeline.`
+- **消息**：`This is a transient issue on Dynamics server side. Try to rerun the pipeline.`
 
 - **原因**：此问题是 Dynamics 服务器端的暂时性问题。
 
@@ -647,7 +647,7 @@ ms.locfileid: "100366919"
 
 - **原因：** Azure 数据工厂不支持 Parquet 格式。
 
-- **建议**：通过 [Azure 数据工厂中的复制活动转到支持的文件格式和压缩编解码器，](https://docs.microsoft.com/azure/data-factory/supported-file-formats-and-compression-codecs)来仔细检查源数据。
+- **建议**：通过 [Azure 数据工厂中的复制活动转到支持的文件格式和压缩编解码器，](./supported-file-formats-and-compression-codecs.md)来仔细检查源数据。
 
 
 ### <a name="error-code-parquetmisseddecimalprecisionscale"></a>错误代码： ParquetMissedDecimalPrecisionScale
@@ -683,7 +683,7 @@ ms.locfileid: "100366919"
 
 - **原因**：无法将数据转换为在 "映射源" 中指定的类型。
 
-- **建议**：仔细检查源数据或在复制活动列映射中为此列指定正确的数据类型。 有关详细信息，请参阅 [Azure 数据工厂中的复制活动支持的文件格式和压缩编解码器](https://docs.microsoft.com/azure/data-factory/supported-file-formats-and-compression-codecs)。
+- **建议**：仔细检查源数据或在复制活动列映射中为此列指定正确的数据类型。 有关详细信息，请参阅 [Azure 数据工厂中的复制活动支持的文件格式和压缩编解码器](./supported-file-formats-and-compression-codecs.md)。
 
 
 ### <a name="error-code-parquetdatacountnotmatchcolumncount"></a>错误代码： ParquetDataCountNotMatchColumnCount
@@ -724,7 +724,7 @@ ms.locfileid: "100366919"
 
 ### <a name="error-code-parquetunsupportfilelevelcompressionoption"></a>错误代码： ParquetUnsupportFileLevelCompressionOption
 
-- 消息：`File level compression is not supported for Parquet.`
+- **消息**：`File level compression is not supported for Parquet.`
 
 - **原因**：不支持此方案。
 
@@ -733,7 +733,7 @@ ms.locfileid: "100366919"
 
 ### <a name="error-code-usererrorjniexception"></a>错误代码： UserErrorJniException
 
-- 消息：`Cannot create JVM: JNI return code [-6][JNI call failed: Invalid arguments.]`
+- **消息**：`Cannot create JVM: JNI return code [-6][JNI call failed: Invalid arguments.]`
 
 - **原因**：无法创建 JAVA 虚拟机 (JVM) ，因为已设置某些非法 (全局) 参数。
 
@@ -831,7 +831,7 @@ ms.locfileid: "100366919"
 
     如果私钥内容来自你的密钥保管库，则在将其直接上传到 SFTP 链接服务时，原始密钥文件可以工作。
 
-    有关详细信息，请参阅 [使用 Azure 数据工厂将数据从复制到 SFTP 服务器](https://docs.microsoft.com/azure/data-factory/connector-sftp#using-ssh-public-key-authentication)。 私钥内容是 base64 编码的 SSH 私钥内容。
+    有关详细信息，请参阅 [使用 Azure 数据工厂将数据从复制到 SFTP 服务器](./connector-sftp.md#using-ssh-public-key-authentication)。 私钥内容是 base64 编码的 SSH 私钥内容。
 
     用 base64 编码对 *整个* 原始私钥文件进行编码，并将编码的字符串存储在密钥保管库中。 如果从文件中选择 " **上传** "，则可以在 SFTP 链接服务上使用原来的私钥文件。
 
@@ -902,7 +902,7 @@ ms.locfileid: "100366919"
     如果要提升低吞吐量，请与 SFTP 管理员联系以增加并发连接计数限制，或者可以执行以下操作之一：
 
     * 如果使用自承载 IR，请将自承载 IR 计算机的 IP 添加到允许列表中。
-    * 如果使用 Azure IR，请添加 [Azure Integration Runtime 的 IP 地址](https://docs.microsoft.com/azure/data-factory/azure-integration-runtime-ip-addresses)。 如果不想向 SFTP 服务器允许列表添加一系列 Ip，请改用自承载 IR。
+    * 如果使用 Azure IR，请添加 [Azure Integration Runtime 的 IP 地址](./azure-integration-runtime-ip-addresses.md)。 如果不想向 SFTP 服务器允许列表添加一系列 Ip，请改用自承载 IR。
 
 ## <a name="sharepoint-online-list"></a>SharePoint Online 列表
 
@@ -961,7 +961,7 @@ ms.locfileid: "100366919"
 
 - **原因**：自承载 IR 找不到 Java 运行时。 读取特定源时需要 Java 运行时。
 
-- **建议**：检查集成运行时环境，请参阅 [使用自承载 Integration Runtime](https://docs.microsoft.com/azure/data-factory/format-parquet#using-self-hosted-integration-runtime)。
+- **建议**：检查集成运行时环境，请参阅 [使用自承载 Integration Runtime](./format-parquet.md#using-self-hosted-integration-runtime)。
 
 
 ### <a name="error-code-wildcardpathsinknotsupported"></a>错误代码： WildcardPathSinkNotSupported

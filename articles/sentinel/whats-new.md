@@ -7,13 +7,13 @@ ms.author: bagol
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
-ms.date: 02/04/2021
-ms.openlocfilehash: 9136947767bffb7bea800cdd2a735794baf8f329
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.date: 02/22/2021
+ms.openlocfilehash: 887245bbbefa1c0232313b638203206b623d506b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100007357"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101729702"
 ---
 # <a name="whats-new-in-azure-sentinel"></a>Azure Sentinel 中的新增功能
 
@@ -29,6 +29,37 @@ ms.locfileid: "100007357"
 >
 > 你还可以参与！ 加入我们的 [Azure Sentinel 威胁销售 GitHub 社区](https://github.com/Azure/Azure-Sentinel/wiki)。
 > 
+
+## <a name="february-2021"></a>2021 年 2 月
+
+- [实体页中的 UEBA insights](#ueba-insights-in-the-entity-page)
+- [改进的事件搜索](#improved-incident-search)
+
+### <a name="ueba-insights-in-the-entity-page"></a>实体页中的 UEBA insights
+
+Azure Sentinel 实体详细信息页提供了一个 " [见解" 窗格](identify-threats-with-entity-behavior-analytics.md#entity-insights)，其中显示了有关实体的行为见解，有助于快速确定异常和安全威胁。
+
+如果已 [启用 UEBA](ueba-enrichments.md)，并且选择的时间段至少为四天，此 Insights 窗格现在还将包括以下用于 UEBA Insights 的新部分：
+
+|部分  |说明  |
+|---------|---------|
+|**UEBA Insights**     | 汇总异常用户活动： <br>-跨地理位置、设备和环境<br>-跨时间和频率视野，与用户自己的历史记录相比 <br>-比较对等方的行为 <br>-与组织的行为比较     |
+|**基于安全组成员身份的用户对等**     |   列出基于 Azure AD 安全组成员身份的用户对等方，为安全操作团队提供共享类似权限的其他用户的列表。  |
+|**Azure 订阅的用户访问权限**     |     显示用户对 Azure 订阅的访问权限，可以直接访问，也可以通过 Azure AD 组/服务主体。   |
+|**与用户相关的威胁指标**     |  列出与用户活动中表示的 IP 地址相关的已知威胁的集合。 威胁由威胁类型和系列列出，由 Microsoft 的威胁情报服务来充实。       |
+|     |         |
+
+### <a name="improved-incident-search"></a>改进的事件搜索
+
+我们改进了 Azure Sentinel 事件搜索体验，使你能够在调查特定威胁时通过事件更快地导航。
+
+在 Azure Sentinel 中搜索事件时，你现在可以按以下事件详细信息进行搜索：
+
+- ID
+- 标题
+- Products
+- “所有者”
+- 标记
 
 ## <a name="january-2021"></a>2021 年 1 月
 
@@ -57,7 +88,7 @@ Azure Sentinel 现在支持新的 [Az SecurityInsights](https://www.powershellga
 
 **SecurityInsights** 模块支持常见的 Azure Sentinel 用例，例如与事件交互以更改 statues、严重性、所有者等、向事件添加注释和标签以及创建书签。
 
-尽管我们建议使用 Azure 资源管理器 CI/CD 管道 [ (ARM)](/azure/azure-resource-manager/templates/) 模板，但 **SecurityInsights** 模块对于后期部署任务非常有用，并且针对 SOC 自动化。  例如，SOC automation 可能包含配置数据连接器、创建分析规则或向分析规则添加自动化操作的步骤。
+尽管我们建议使用 Azure 资源管理器 CI/CD 管道 [ (ARM)](../azure-resource-manager/templates/index.yml) 模板，但 **SecurityInsights** 模块对于后期部署任务非常有用，并且针对 SOC 自动化。  例如，SOC automation 可能包含配置数据连接器、创建分析规则或向分析规则添加自动化操作的步骤。
 
 有关详细信息，包括可用 cmdlet 的完整列表和说明、参数说明和示例，请参阅 [SecurityInsights PowerShell 文档](/powershell/module/az.securityinsights/)。
 
@@ -85,7 +116,7 @@ Azure Sentinel 现在支持将专用 Log Analytics 群集作为部署选项。 �
 
 当同一群集上有多个工作区时，专用群集可让你使用客户管理的密钥、密码箱、双加密和更快跨工作区查询等功能。
 
-有关详细信息，请参阅 [Azure Monitor 记录专用群集](https://docs.microsoft.com/azure/azure-monitor/log-query/logs-dedicated-clusters)。
+有关详细信息，请参阅 [Azure Monitor 记录专用群集](../azure-monitor/logs/logs-dedicated-clusters.md)。
 
 ### <a name="logic-apps-managed-identities"></a>逻辑应用托管标识
 
@@ -97,7 +128,7 @@ Azure Sentinel 现在支持 Azure Sentinel 逻辑应用连接器的托管标识�
 
 有关详细信息，请参阅：
 
-- [在 Azure 逻辑应用中用托管标识进行身份验证](/azure/logic-apps/create-managed-service-identity)
+- [在 Azure 逻辑应用中用托管标识进行身份验证](../logic-apps/create-managed-service-identity.md)
 - [Azure Sentinel 逻辑应用连接器文档](/connectors/azuresentinel) 
 
 ### <a name="improved-rule-tuning-with-the-analytics-rule-preview-graphs-public-preview"></a>通过分析规则预览关系图 (公开预览版来改进规则优化) 
@@ -151,18 +182,18 @@ Azure Sentinel 使用 Log Analytics 代理向工作区发送事件，包括 Wind
 > Log Analytics 代理有时称为 OMS 代理或 Microsoft Monitoring Agent (MMA) 。 
 > 
 
-有关详细信息，请参阅 [Log Analytics 文档](/azure/azure-monitor/platform/log-analytics-agent) 和 [Log Analytics 代理发行说明](https://github.com/microsoft/OMS-Agent-for-Linux/releases)。
+有关详细信息，请参阅 [Log Analytics 文档](../azure-monitor/agents/log-analytics-agent.md) 和 [Log Analytics 代理发行说明](https://github.com/microsoft/OMS-Agent-for-Linux/releases)。
 ## <a name="november-2020"></a>2020 年 11 月
 
 - [监视 Azure Sentinel 中的逻辑应用行动手册](#monitor-your-logic-apps-playbooks-in-azure-sentinel)
 - [Microsoft 365 Defender 连接器 (公共预览版) ](#microsoft-365-defender-connector-public-preview)
 ### <a name="monitor-your-logic-apps-playbooks-in-azure-sentinel"></a>监视 Azure Sentinel 中的逻辑应用行动手册
 
-Azure Sentinel 现在集成了 [Azure 日志应用](/azure/logic-apps/)（一种云服务，可帮助你计划、自动执行和协调任务、业务流程和工作流）。
+Azure Sentinel 现在集成了 [Azure 日志应用](../logic-apps/index.yml)（一种云服务，可帮助你计划、自动执行和协调任务、业务流程和工作流）。
 
 使用 Azure 中的 Azure 逻辑应用作为操作手册，可以在创建事件时或会审和使用事件时自动调用操作手册。 
 
-为了深入了解行动手册的运行状况、性能和使用情况（包括使用 Azure 逻辑应用添加的任何应用程序），我们添加了名为 "执行 **手册运行状况监视**" 的 [Azure 工作簿](/azure/azure-monitor/platform/workbooks-overview)。 
+为了深入了解行动手册的运行状况、性能和使用情况（包括使用 Azure 逻辑应用添加的任何应用程序），我们添加了名为 "执行 **手册运行状况监视**" 的 [Azure 工作簿](../azure-monitor/visualize/workbooks-overview.md)。 
 
 使用 " **行动手册" 健康状况监视** 工作簿监视行动手册的运行状况，或查找成功或失败的运行量中的异常。 
 
@@ -172,9 +203,9 @@ Azure Sentinel 现在集成了 [Azure 日志应用](/azure/logic-apps/)（一种
 
 有关详细信息，请参阅：
 
-- [逻辑应用文档](/azure/logic-apps/monitor-logic-apps-log-analytics#set-up-azure-monitor-logs)
+- [逻辑应用文档](../logic-apps/monitor-logic-apps-log-analytics.md#set-up-azure-monitor-logs)
 
-- [Azure Monitor 文档](/azure/azure-monitor/platform/activity-log#send-to-log-analytics-workspace)
+- [Azure Monitor 文档](../azure-monitor/essentials/activity-log.md#send-to-log-analytics-workspace)
 
 ### <a name="microsoft-365-defender-connector-public-preview"></a>Microsoft 365 Defender 连接器 (公共预览版) 
  

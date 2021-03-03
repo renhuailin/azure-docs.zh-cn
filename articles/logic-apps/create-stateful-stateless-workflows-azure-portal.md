@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
-ms.date: 12/07/2020
-ms.openlocfilehash: a7e19894a4688fe270422e93f7081f98e0b699a3
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.date: 03/02/2021
+ms.openlocfilehash: 3cf5047dbb79f6d8b35b0fe089069a20ab4a50a6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936526"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101736321"
 ---
 # <a name="create-stateful-and-stateless-workflows-in-the-azure-portal-with-azure-logic-apps-preview"></a>通过 Azure 逻辑应用预览在 Azure 门户中创建有状态和无状态工作流
 
@@ -34,7 +34,7 @@ ms.locfileid: "97936526"
 
 * 触发工作流运行。
 
-* 查看工作流的运行历史记录。
+* 查看工作流的运行和触发历史记录。
 
 * 部署后启用或打开 Application Insights。
 
@@ -51,6 +51,8 @@ ms.locfileid: "97936526"
 
   > [!NOTE]
   > 有[状态逻辑应用](logic-apps-overview-preview.md#stateful-stateless)执行存储事务，如使用队列在表和 blob 中计划和存储工作流状态。 这些事务会产生 [Azure 存储费用](https://azure.microsoft.com/pricing/details/storage/)。 有关有状态逻辑应用如何将数据存储在外部存储中的详细信息，请参阅有 [状态和无状态](logic-apps-overview-preview.md#stateful-stateless)。
+
+* 若要部署到 Docker 容器，需要现有的 Docker 容器映像。 例如，可以通过 [Azure 容器注册表](../container-registry/container-registry-intro.md)、 [应用服务](../app-service/overview.md)或 [azure 容器实例](../container-instances/container-instances-overview.md)创建此映像。 
 
 * 若要在本文中生成相同的示例逻辑应用，需要使用 Microsoft 工作或学校帐户登录的 Office 365 Outlook 电子邮件帐户。
 
@@ -72,13 +74,13 @@ ms.locfileid: "97936526"
 
 1. 在 " **创建逻辑应用 (预览")** "页上的" **基本** 信息 "选项卡上，提供有关逻辑应用的此信息。
 
-   | 属性 | 必须 | 值 | 说明 |
+   | 属性 | 必选 | Value | 说明 |
    |----------|----------|-------|-------------|
    | **订阅** | 是 | <*Azure-subscription-name*> | 要用于逻辑应用的 Azure 订阅。 |
-   | **资源组** | 是 | <*Azure-resource-group-name*> | 在其中创建逻辑应用和相关资源的 Azure 资源组。 此资源名称在区域中必须唯一，并且只能包含字母、数字、连字符 (**-**) 、下划线 (**_**) 、括号 (**( # B6**) 和 **()** 。 <p><p>此示例将创建一个名为的资源组 `Fabrikam-Workflows-RG` 。 |
-   | **逻辑应用名称** | 是 | <*logic-app-name*> | 用于逻辑应用的名称。 此资源名称在区域中必须唯一，并且只能包含字母、数字、连字符 (**-**) 、下划线 (**_**) 、括号 (**( # B6**) 和 **()** 。 <p><p>此示例创建一个名为的逻辑应用 `Fabrikam-Workflows` 。 <p><p>**注意**：逻辑应用的名称会自动获得后缀， `.azurewebsites.net` 因为 **逻辑应用 (预览)** 资源由 Azure Functions 提供支持（使用相同的应用命名约定）。 |
-   | **发布** | 是 | <*部署-环境*> | 逻辑应用的部署目标。 可以通过选择 " **工作流** " 或 Docker 容器部署到 Azure。 <p><p>此示例使用 **工作流，该工作流** 是在 Azure 中 **(预览) 资源的逻辑应用** 。 <p><p>如果选择 " **Docker 容器**"，请 [指定要在逻辑应用的设置中使用的容器](#set-docker-container)。 |
-   | 区域 | 是 | <*Azure-region*> | 创建资源组和资源时要使用的 Azure 区域。 <p><p>此示例使用“美国西部”。 |
+   | **资源组** | 是 | <*Azure-resource-group-name*> | 在其中创建逻辑应用和相关资源的 Azure 资源组。 此资源名称在区域中必须唯一，并且只能包含字母、数字、连字符 (**-**) 、下划线 (**_**) 、括号 (**()**)  (和 **)** 。 <p><p>此示例将创建一个名为的资源组 `Fabrikam-Workflows-RG` 。 |
+   | **逻辑应用名称** | 是 | <*logic-app-name*> | 用于逻辑应用的名称。 此资源名称在区域中必须唯一，并且只能包含字母、数字、连字符 (**-**) 、下划线 (**_**) 、括号 (**()**)  (和 **)** 。 <p><p>此示例创建一个名为的逻辑应用 `Fabrikam-Workflows` 。 <p><p>**注意**：逻辑应用的名称会自动获得后缀， `.azurewebsites.net` 因为 **逻辑应用 (预览)** 资源由 Azure Functions 提供支持（使用相同的应用命名约定）。 |
+   | <bpt id="p1">**</bpt>Publish<ept id="p1">**</ept> | 是 | <*部署-环境*> | 逻辑应用的部署目标。 可以通过选择 " **工作流** " 或 " **Docker 容器**" 将其部署到 Azure。 <p><p>此示例使用 **工作流，该工作流** 将 **逻辑应用 (预览)** 资源部署到 Azure 门户。 <p><p>**注意**：选择 **docker 容器** 之前，请确保创建 docker 容器映像。 例如，可以通过 [Azure 容器注册表](../container-registry/container-registry-intro.md)、 [应用服务](../app-service/overview.md)或 [azure 容器实例](../container-instances/container-instances-overview.md)创建此映像。 这样，在选择 **Docker 容器** 后，可以 [指定要在逻辑应用的设置中使用的容器](#set-docker-container)。 |
+   | **区域** | 是 | <*Azure-region*> | 创建资源组和资源时要使用的 Azure 区域。 <p><p>此示例使用“美国西部”。 |
    |||||
 
    下面是一个示例：
@@ -87,10 +89,10 @@ ms.locfileid: "97936526"
 
 1. 接下来，在 " **托管** " 选项卡上，提供有关要用于逻辑应用的存储解决方案和托管计划的信息。
 
-   | 属性 | 必须 | 值 | 说明 |
+   | 属性 | 必选 | Value | 说明 |
    |----------|----------|-------|-------------|
    | **存储帐户** | 是 | <*Azure-storage-account-name*> | 用于存储事务的 [Azure 存储帐户](../storage/common/storage-account-overview.md) 。 此资源名称在不同区域中必须唯一，并且包含3-24 个字符且仅包含数字和小写字母。 选择现有帐户或创建新帐户。 <p><p>此示例将创建一个名为的存储帐户 `fabrikamstorageacct` 。 |
-   | **计划类型** | 是 | <*Azure 托管-计划*> | 用于部署逻辑应用的 [托管计划](../app-service/overview-hosting-plans.md) ，该计划为 [**高级**](../azure-functions/functions-premium-plan.md) 或 [**应用服务计划**](../azure-functions/dedicated-plan.md)。 你的选择会影响你稍后可以选择的定价层。 <p><p>此示例使用 **应用服务计划**。 <p><p>**注意**：与 Azure Functions 类似， **逻辑应用 (预览版)** 资源类型需要托管计划和定价层。 此资源类型不支持和使用托管计划。 有关详细信息，请查看以下主题： <p><p>- [Azure Functions 缩放和托管](../azure-functions/functions-scale.md) <br>- [应用服务定价详细信息](https://azure.microsoft.com/pricing/details/app-service/) <p><p> |
+   | **计划类型** | 是 | <*Azure 托管-计划*> | 用于部署逻辑应用的 [托管计划](../app-service/overview-hosting-plans.md) ，它是 [**功能高级**](../azure-functions/functions-premium-plan.md) 或 [**应用服务计划** (专用)](../azure-functions/dedicated-plan.md)。 你的选择会影响你稍后可用的功能和定价层。 <p><p>此示例使用 **应用服务计划**。 <p><p>**注意**：与 Azure Functions 类似， **逻辑应用 (预览版)** 资源类型需要托管计划和定价层。 消耗计划不受支持，也不能用于此资源类型。 有关详细信息，请查看以下主题： <p><p>- [Azure Functions 缩放和托管](../azure-functions/functions-scale.md) <br>- [应用服务定价详细信息](https://azure.microsoft.com/pricing/details/app-service/) <p><p>例如，"高级" 功能提供对网络功能的访问，如在创建和部署逻辑应用时将其与 Azure 虚拟网络进行连接和集成，类似于 Azure Functions。 有关详细信息，请查看以下主题： <p><p>- [Azure Functions 网络选项](../azure-functions/functions-networking-options.md) <br>- [Azure 逻辑应用在任意位置运行-网络可能的 Azure 逻辑应用预览](https://techcommunity.microsoft.com/t5/integrations-on-azure/logic-apps-anywhere-networking-possibilities-with-logic-app/ba-p/2105047) |
    | **Windows 计划** | 是 | <*计划名称*> | 要使用的计划名称。 选择现有计划或提供新计划的名称。 <p><p>此示例使用名称 `Fabrikam-Service-Plan`。 |
    | **SKU 和大小** | 是 | <*定价层*> | 用于托管逻辑应用的 [定价层](../app-service/overview-hosting-plans.md) 。 你的选择会受到你之前选择的计划类型的影响。 若要更改默认层，请选择 " **更改大小**"。 然后，你可以根据所需的工作负荷选择其他定价层。 <p><p>此示例使用 **适用于开发/测试** 工作负荷的免费 **F1 定价层**。 有关详细信息，请参阅 [应用服务定价详细信息](https://azure.microsoft.com/pricing/details/app-service/)。 |
    |||||
@@ -107,9 +109,12 @@ ms.locfileid: "97936526"
 
    ![显示 Azure 门户和新的逻辑应用资源设置的屏幕截图。](./media/create-stateful-stateless-workflows-azure-portal/check-logic-app-resource-settings.png)
 
+   > [!TIP]
+   > 如果在选择 " **创建**" 后收到验证错误，请打开并查看错误详细信息。 例如，如果所选区域达到了你要尝试创建的资源的配额，则可能必须尝试另一个区域。
+
    完成部署后，逻辑应用将自动处于活动状态，但不会执行任何操作，因为不存在工作流。
 
-1. 在 "部署完成" 页上，选择 " **中转到资源** "，以便可以开始生成工作流。
+1. 在 "部署完成" 页上，选择 " **中转到资源** "，以便可以开始生成工作流。 如果选择了用于部署逻辑应用的 **Docker 容器** ，请继续执行 [相关步骤，以提供有关 Docker 容器的信息](#set-docker-container)。
 
    ![显示 Azure 门户和完成的部署的屏幕截图。](./media/create-stateful-stateless-workflows-azure-portal/logic-app-completed-deployment.png)
 
@@ -117,15 +122,13 @@ ms.locfileid: "97936526"
 
 ## <a name="specify-docker-container-for-deployment"></a>指定 Docker 容器以进行部署
 
-如果在创建逻辑应用时选择了 **Docker 容器** ，请确保在 Azure 门户创建 **逻辑应用 (预览版)** 资源后，提供要用于部署的容器的相关信息。
+在开始执行这些步骤之前，需要一个 Docker 容器映像。 例如，可以通过 [Azure 容器注册表](../container-registry/container-registry-intro.md)、 [应用服务](../app-service/overview.md)或 [azure 容器实例](../container-instances/container-instances-overview.md)创建此映像。 然后，你可以在创建逻辑应用之后提供有关 Docker 容器的信息。
 
 1. 在 Azure 门户中，请参阅逻辑应用资源。
 
-1. 在逻辑应用菜单上的 " **设置**" 下，选择 " **容器设置**"。 提供 Docker 容器映像的详细信息和位置。
+1. 在逻辑应用菜单上的 " **设置**" 下，选择 " **部署中心**"。
 
-   ![显示逻辑应用菜单的屏幕截图，其中选择了 "容器设置"。](./media/create-stateful-stateless-workflows-azure-portal/logic-app-deploy-container-settings.png)
-
-1. 完成后，保存设置。
+1. 在 " **部署中心** " 窗格上，按照说明为 Docker 容器提供和管理详细信息。
 
 <a name="add-workflow"></a>
 
@@ -135,7 +138,7 @@ ms.locfileid: "97936526"
 
    ![显示逻辑应用资源菜单的屏幕截图，其中选择了 "工作流"，然后在工具栏上 h) "添加"。](./media/create-stateful-stateless-workflows-azure-portal/logic-app-add-blank-workflow.png)
 
-1. **新工作流** 窗格打开后，提供工作流的名称，并选择有 [**状态** 或 **无状态**](logic-apps-overview-preview.md#stateful-stateless)的工作流类型。 完成操作后，选择“创建”  。
+1. **新工作流** 窗格打开后，提供工作流的名称，并选择有 [**状态** 或 **无状态**](logic-apps-overview-preview.md#stateful-stateless)的工作流类型。 完成操作后，选择“创建”。
 
    此示例将添加一个名为的空白有状态工作流 `Fabrikam-Stateful-Workflow` 。 默认情况下，工作流处于启用状态，但在添加触发器和操作之前不会执行任何操作。
 
@@ -221,7 +224,7 @@ ms.locfileid: "97936526"
 
    ![显示设计器和 "发送电子邮件" 详细信息窗格并选择 "参数" 选项卡的屏幕截图。](./media/create-stateful-stateless-workflows-azure-portal/send-email-action-details.png)
 
-   | 属性 | 必须 | 值 | 说明 |
+   | 属性 | 必选 | Value | 说明 |
    |----------|----------|-------|-------------|
    | **To** | 是 | <*your-email-address*> | 电子邮件收件人，可以是你的电子邮件地址，用于测试目的。 此示例使用虚构电子邮件 `sophiaowen@fabrikam.com` 。 |
    | **主题** | 是 | `An email from your example workflow` | 电子邮件主题 |
@@ -231,7 +234,7 @@ ms.locfileid: "97936526"
    > [!NOTE]
    > 在 " **设置**"、" **静态结果**" 或 "选项卡 **后运行** " 的详细信息窗格中进行任何更改时，请确保选择 " **完成** " 以在切换选项卡或将焦点更改为设计器之前提交这些更改。 否则，设计器不会保留您的更改。
 
-1. 保存所有内容。 在设计器工具栏上选择“保存”。 
+1. 保存所有内容。 在设计器工具栏上选择“保存”。
 
 接下来，若要测试工作流，请手动触发运行。
 
@@ -286,9 +289,11 @@ ms.locfileid: "97936526"
 
       ![显示 Outlook 电子邮件的屏幕截图，如示例中所述](./media/create-stateful-stateless-workflows-azure-portal/workflow-app-result-email.png)
 
+<a name="view-run-history"></a>
+
 ## <a name="review-run-history"></a>查看运行历史记录
 
-对于有状态的工作流，在每个工作流运行后，您可以查看运行历史记录（包括整个运行的状态）、触发器以及每个操作及其输入和输出。
+对于有状态的工作流，在每个工作流运行后，您可以查看运行历史记录（包括整个运行的状态）、触发器以及每个操作及其输入和输出。 在 Azure 门户中，运行历史记录和触发器历史记录显示在工作流级别，而不是逻辑应用级别。 若要查看运行历史记录上下文之外的触发器历史记录，请参阅 [查看触发器历史](#view-trigger-histories)记录。
 
 1. 在 Azure 门户的工作流菜单上，选择 " **监视器**"。
 
@@ -303,7 +308,7 @@ ms.locfileid: "97936526"
    |------------|-------------|
    | **Aborted** | 由于外部问题（例如，系统中断或过期的 Azure 订阅），运行已停止或未完成。 |
    | 已取消 | 运行已触发并已启动，但收到了取消请求。 |
-   | 失败 | 运行中的至少一个操作失败。 未设置工作流中的后续操作来处理失败。 |
+   | **已失败** | 运行中的至少一个操作失败。 未设置工作流中的后续操作来处理失败。 |
    | **正在运行** | 运行已触发并正在进行中，但对于由于 [操作限制](logic-apps-limits-and-config.md) 或 [当前定价计划](https://azure.microsoft.com/pricing/details/logic-apps/)而受到限制的运行，也可能显示此状态。 <p><p>**提示**：如果设置 [诊断日志记录](monitor-logic-apps-log-analytics.md)，则可以获取发生的任何限制事件的相关信息。 |
    | 成功 | 运行成功。 如果任何操作失败，工作流中的后续操作会处理失败。 |
    | **已超时** | 运行超时，因为当前持续时间超过了运行持续时间限制，该限制由 " [**运行历史记录保持期（天**](logic-apps-limits-and-config.md#run-duration-retention-limits)）" 设置控制。 运行的持续时间是使用运行的开始时间和开始时间的运行持续时间限制来计算的。 <p><p>**注意**：如果此运行的持续时间还超出了当前 *运行历史记录保留限制*，而此限制也是由 " [**运行历史记录保持期（天**](logic-apps-limits-and-config.md#run-duration-retention-limits)）" 设置控制的，则每日清除作业将从运行历史记录中清除运行。 无论运行超时还是完成，始终都将使用运行的开始时间和 *当前* 保留限制来计算保持期。 因此，如果您缩短正在进行的运行的持续时间限制，则运行将超时。但是，运行会根据运行的持续时间是否超出保留限制，从运行历史记录中清除运行。 |
@@ -320,15 +325,15 @@ ms.locfileid: "97936526"
 
    | 操作状态 | 图标 | 说明 |
    |---------------|------|-------------|
-   | Aborted | !["中止" 操作状态的图标][aborted-icon] | 操作已停止或未完成，原因是外部问题，例如，系统中断或过期的 Azure 订阅。 |
+   | **Aborted** | !["中止" 操作状态的图标][aborted-icon] | 操作已停止或未完成，原因是外部问题，例如，系统中断或过期的 Azure 订阅。 |
    | 已取消 | !["已取消" 操作状态的图标][cancelled-icon] | 操作正在运行，但收到了取消请求。 |
-   | 失败 | !["失败" 操作状态的图标][failed-icon] | 操作失败。 |
-   | 运行 | !["正在运行" 操作状态的图标][running-icon] | 操作当前正在运行。 |
+   | **已失败** | !["失败" 操作状态的图标][failed-icon] | 操作失败。 |
+   | **正在运行** | !["正在运行" 操作状态的图标][running-icon] | 操作当前正在运行。 |
    | 已跳过 | !["跳过" 操作状态的图标][skipped-icon] | 此操作已被跳过，因为前一个操作失败。 操作具有要求在 `runAfter` 当前操作运行之前成功完成前面的操作的条件。 |
    | 成功 | !["成功" 操作状态的图标][succeeded-icon] | 操作成功。 |
-   | 已成功重试 | !["已成功重试" 操作状态的图标][succeeded-with-retries-icon] | 操作成功，但仅在一个或多个重试后。 若要查看重试历史记录，请在 "运行历史记录详细信息" 视图中选择该操作，以便可以查看输入和输出。 |
-   | 已超时 | !["超时" 操作状态的图标][timed-out-icon] | 由于操作的设置指定的超时限制，操作已停止。 |
-   | 等待 | !["等待" 操作状态的图标][waiting-icon] | 适用于正在等待来自调用方的入站请求的 webhook 操作。 |
+   | **已成功重试** | !["已成功重试" 操作状态的图标][succeeded-with-retries-icon] | 操作成功，但仅在一个或多个重试后。 若要查看重试历史记录，请在 "运行历史记录详细信息" 视图中选择该操作，以便可以查看输入和输出。 |
+   | **已超时** | !["超时" 操作状态的图标][timed-out-icon] | 由于操作的设置指定的超时限制，操作已停止。 |
+   | **正在等待** | !["等待" 操作状态的图标][waiting-icon] | 适用于正在等待来自调用方的入站请求的 webhook 操作。 |
    ||||
 
    [aborted-icon]: ./media/create-stateful-stateless-workflows-azure-portal/aborted.png
@@ -346,6 +351,18 @@ ms.locfileid: "97936526"
    ![屏幕截图，显示所选 "发送电子邮件" 操作中的输入和输出。](./media/create-stateful-stateless-workflows-azure-portal/review-step-inputs-outputs.png)
 
 1. 若要进一步查看该步骤的原始输入和输出，请选择 " **显示原始输入** " 或 " **显示原始输出**"。
+
+<a name="view-trigger-histories"></a>
+
+## <a name="review-trigger-histories"></a>查看触发器历史记录
+
+对于有状态的工作流，可以查看每个运行的触发器历史记录，包括触发器状态连同输入和输出，以及 [运行历史记录上下文](#view-run-history)。 在 Azure 门户中，触发器历史记录和运行历史记录显示在工作流级别，而不是逻辑应用级别。 若要查找此历史数据，请执行以下步骤：
+
+1. 在 Azure 门户的工作流菜单上的 " **开发人员**" 下，选择 " **触发历史记录**"。
+
+   " **触发器历史记录** " 窗格显示工作流运行的触发器历史记录。
+
+1. 若要查看特定的触发器历史记录，请选择该运行的 ID。
 
 <a name="enable-open-application-insights"></a>
 
@@ -365,7 +382,10 @@ ms.locfileid: "97936526"
 
    如果启用了 Application Insights，请在 " **Application Insights** " 窗格中选择 " **查看 Application Insights 数据**"。
 
-Application Insights 打开后，可以查看逻辑应用的各种指标。
+Application Insights 打开后，可以查看逻辑应用的各种指标。 有关详细信息，请查看以下主题：
+
+* [随时随地运行的 Azure 逻辑应用-监视 Application Insights-第1部分](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-monitor-with-application/ba-p/1877849)
+* [随时随地运行的 Azure 逻辑应用-监视 Application Insights-第2部分](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-monitor-with-application/ba-p/2003332)
 
 <a name="enable-run-history-stateless"></a>
 
@@ -447,7 +467,7 @@ Azure 逻辑应用预览支持对 Azure 函数操作、液体操作和 XML 操�
 
    `rm -rf {bundle-version}`
 
-   例如： `rm -rf 1.1.3`
+   例如：`rm -rf 1.1.3`
 
    > [!TIP]
    > 如果收到 "权限被拒绝" 或 "正在使用的文件" 之类的错误，请刷新浏览器中的页面，并再次尝试前面的步骤，直到删除该文件夹。

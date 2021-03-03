@@ -6,18 +6,18 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: how-to
 ms.date: 08/31/2020
-ms.openlocfilehash: 743fe146042c7b52394cc4ee8ced49a0f540e79c
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 69930e06e2ce7f2679feec74ca8ccbc93bdb8d30
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844278"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101721117"
 ---
 # <a name="how-to-create-an-overlay-with-media-encoder-standard"></a>如何使用 Media Encoder Standard 创建覆盖
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-使用 Media Encoder Standard 可以将图像、音频文件或其他视频覆盖到其他视频。 输入必须仅指定一个文件。 可以指定 JPG、PNG、GIF 或 BMP 格式的图像文件，或者指定音频文件 (如 WAV、MP3、WMA 或 M4A 文件) 或视频文件）。
+使用 Media Encoder Standard 可以将图像、音频文件或其他视频覆盖到另一个视频。 输入必须仅指定一个文件。 可以指定 JPG、PNG、GIF 或 BMP 格式的图像文件，或者指定音频文件（如 WAV、MP3、WMA 或 M4A 文件）或视频文件。
 
 
 ## <a name="prerequisites"></a>先决条件
@@ -53,4 +53,4 @@ ms.locfileid: "94844278"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [使用媒体服务编码时对视频进行子剪辑 - .NET](subclip-video-dotnet-howto.md)
+[!INCLUDE [transforms next steps](./includes/transforms-next-steps.md)]

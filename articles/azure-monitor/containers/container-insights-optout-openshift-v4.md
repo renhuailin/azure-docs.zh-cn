@@ -1,22 +1,22 @@
 ---
 title: 如何停止监视 Azure 和 Red Hat OpenShift v4 群集 |Microsoft Docs
-description: 本文介绍如何通过 Azure Monitor 容器停止监视 Azure Red Hat OpenShift 和 Red Hat OpenShift 版本4群集。
+description: 本文介绍如何通过容器见解停止监视 Azure Red Hat OpenShift 和 Red Hat OpenShift 版本4群集。
 ms.topic: conceptual
 ms.date: 04/24/2020
-ms.openlocfilehash: bf61457b9c8cff40eb3fee2c93c7184fbaae6db5
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 09ca05a25ce9bb02b8a3d515acf060e2e9e7e8c2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100608950"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731793"
 ---
 # <a name="how-to-stop-monitoring-your-azure-and-red-hat-openshift-v4-cluster"></a>如何停止监视 Azure 和 Red Hat OpenShift v4 群集
 
-启用对 Azure Red Hat OpenShift 和 Red Hat OpenShift 版本4.x 群集的监视后，如果你决定不再想要对其进行监视，则可以使用容器 Azure Monitor 停止监视群集。 本文介绍如何实现此目的。  
+启用 Azure Red Hat OpenShift 和 Red Hat OpenShift 版本4.x 群集的监视后，如果你决定不再想要对其进行监视，可以使用容器见解停止监视群集。 本文介绍如何实现此目的。  
 
 ## <a name="how-to-stop-monitoring-using-helm"></a>如何使用 Helm 停止监视
 
-1. 若要首先确定群集上安装的 helm 图表版本的 Azure Monitor，请运行以下 helm 命令。
+1. 若要首先确定群集上安装的容器 insights helm 图表版本，请运行以下 helm 命令。
 
     ```
     helm list
@@ -29,7 +29,7 @@ ms.locfileid: "100608950"
     azmon-containers-release-1      default         3               2020-04-21 15:27:24.1201959 -0700 PDT   deployed        azuremonitor-containers-2.7.0   7.0.0-1
     ```
 
-    *azmon-版本-1* 表示容器 Azure Monitor 的 helm 图表版本。
+    *azmon-版本-1* 表示用于容器见解的 helm 图表版本。
 
 2. 若要删除图表版本，请运行以下 helm 命令。
 
@@ -49,4 +49,4 @@ ms.locfileid: "100608950"
 
 ## <a name="next-steps"></a>后续步骤
 
-如果 Log Analytics 工作区仅用于支持监视群集，并且不再需要它，则必须手动将其删除。 如果你不熟悉如何删除工作区，请参阅 [删除 Azure Log Analytics 工作区](../platform/delete-workspace.md)。
+如果 Log Analytics 工作区仅用于支持监视群集，并且不再需要它，则必须手动将其删除。 如果你不熟悉如何删除工作区，请参阅 [删除 Azure Log Analytics 工作区](../logs/delete-workspace.md)。

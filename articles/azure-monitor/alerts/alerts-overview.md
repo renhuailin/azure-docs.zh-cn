@@ -1,15 +1,15 @@
 ---
 title: Azure 中的警报和通知监视概述
-description: Azure 中的警报概述。 警报、经典警报和警报界面。
+description: Azure Monitor 中的警报概述
 ms.subservice: alerts
 ms.topic: conceptual
-ms.date: 01/28/2018
-ms.openlocfilehash: 96e15c1e07d437855b6553757295800406a4cf4c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.date: 02/14/2021
+ms.openlocfilehash: e2d447b7407ed874d9c183c5cd2009882f1d6b3b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100606188"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723582"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Microsoft Azure 中的警报概述 
 
@@ -94,7 +94,7 @@ ms.locfileid: "100606188"
 > [!NOTE]
    >  只能访问过去 30 天内生成的警报。
 
-它不显示或跟踪经典警报。 可以通过更改订阅或筛选器参数来更新页面。 
+可以通过更改订阅或筛选器参数来更新页面。
 
 ![“警报”页的屏幕截图](media/alerts-overview/alerts-page.png)
 

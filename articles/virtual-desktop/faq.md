@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 10/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: b915445b74e202f010c5505cc240b6f36e9da77c
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 3bdb38b8a9590cf6191c75fdef024543c2b1c190
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108501"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720267"
 ---
 # <a name="windows-virtual-desktop-faq"></a>Windows 虚拟桌面常见问题解答
 
@@ -136,3 +136,7 @@ Azure Lighthouse 不完全支持管理 Windows 虚拟桌面环境。 由于 Ligh
 还不能将 CSP 沙盒订阅与 Windows 虚拟桌面服务一起使用。 若要了解详细信息，请参阅 [Integration 沙盒帐户](/partner-center/develop/set-up-api-access-in-partner-center#integration-sandbox-account)。
 
 最后，如果你从 CSP 所有者帐户启用了资源提供程序，则 CSP 客户帐户将不能修改资源提供程序。
+
+## <a name="how-often-should-i-turn-my-vms-on-to-prevent-registration-issues"></a>应如何打开 Vm 来防止注册问题？
+
+将 VM 注册到 Windows 虚拟桌面服务中的主机池后，每当 VM 处于活动状态时，代理会定期刷新 VM 的令牌。 注册令牌的证书有效期为90天。 由于此90天的限制，我们建议每90天启动一次 Vm。 如果在这段时间内启用 VM，则会阻止其注册令牌过期或无效。 如果在90天后启动了 VM 并且遇到注册问题，请按照 [Windows 虚拟桌面代理故障排除指南](troubleshoot-agent.md#your-issue-isnt-listed-here-or-wasnt-resolved) 中的说明从主机池中删除 VM，重新安装代理，然后将其重新注册到池中。

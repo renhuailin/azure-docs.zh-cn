@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/13/2020
 ms.author: kumud
-ms.openlocfilehash: 5070b64c3900aa4ee1cf51519c7b64362ac37413
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 5de909d0d57ae212fa562eb31551e2271d307d47
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100596674"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694251"
 ---
 # <a name="create-change-or-delete-a-network-security-group"></a>创建、更改或删除网络安全组
 
@@ -160,7 +160,7 @@ ms.locfileid: "100596674"
 
 4. <a name="security-rule-settings"></a>选择“添加”。 为以下设置选择或添加值，然后选择“确定”：
 
-    | 设置 | 值 | 详细信息 |
+    | 设置 | Value | 详细信息 |
     | ------- | ----- | ------- |
     | **Source** | 下列其中一项：<ul><li>**任意**</li><li>**IP 地址**</li><li>**服务标记**（入站安全规则）或 **VirtualNetwork**（出站安全规则）</li><li>**应用程序安全组**</li></ul> | <p>如果选择“IP 地址”，则还必须指定“源 IP 地址/CIDR 范围” 。</p><p>如果选择“服务标记”，则还可以选择“源服务标记”。 </p><p>如果选择“应用程序安全组”，则还必须选择现有的应用程序安全组。 如果为“源”和“目标”都选择“应用程序安全组”，则两个应用程序安全组中的网络接口必须在同一虚拟网络中  。</p> |
     | **源 IP 地址/CIDR 范围** | 逗号分隔的 IP 地址和无类域间路由 (CIDR) 范围列表 | <p>如果将“源”更改为“IP 地址”，则会显示此设置。  必须指定单个值或以逗号分隔的多个值的列表。 多个值的示例为 `10.0.0.0/16, 192.188.1.1`。 可指定的值的数目有限制。 有关更多详细信息，请参阅 [Azure 限制](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)。</p><p>如果指定的 IP 地址要分配给某个 Azure VM，请指定该 VM 的专用 IP 地址，而不是其公共 IP 地址。 Azure 会处理安全规则，具体时间是在其针对入站安全规则将公共 IP 地址转换为专用 IP 地址之后，但在其针对出站规则将专用 IP 地址转换为公共 IP 地址之前。 若要了解有关 Azure 中的公共和专用 IP 地址的详细信息，请参阅 [IP 地址类型](./public-ip-addresses.md)。</p> |
@@ -361,6 +361,11 @@ ms.locfileid: "100596674"
 | Microsoft.Network/networkSecurityGroups/write                 |   创建或更新网络安全组                             |
 | Microsoft.Network/networkSecurityGroups/delete                |   删除网络安全组                                       |
 | Microsoft.Network/networkSecurityGroups/join/action           |   将网络安全组与子网或网络接口关联 
+
+
+>[!NOTE]
+> 若要对 `write` 网络安全组执行操作，订阅帐户必须至少具有 `read` 对资源组的权限以及 `Microsoft.Network/networkSecurityGroups/write` 权限。
+
 
 ### <a name="network-security-group-rule"></a>网络安全组规则
 

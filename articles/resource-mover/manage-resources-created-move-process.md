@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 09/10/2020
 ms.author: raynew
-ms.openlocfilehash: 7ad0e73a90e733af0dd752100ebc71908f68181a
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: d3c4c4e86e2461ea1d05af284e724a5a2991f040
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100388475"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101727033"
 ---
 # <a name="manage-resources-created-for-the-vm-move"></a>管理为 VM 移动创建的资源
 
@@ -24,7 +24,7 @@ ms.locfileid: "100388475"
 
 手动删除移动集合和为 VM 移动创建的 Site Recovery 资源。
 
-1. 查看资源组 ```ResourceMoverRG-<sourceregion>-<target-region>``` 中的资源。
+1. 查看资源组 ```ResourceMoverRG-<sourceregion>-<target-region>-<metadataRegionShortName>``` 中的资源。
 2. 查看是否已移动/删除移动集合中的 VM 和所有其他源资源。 这可确保没有挂起的资源使用它们。
 2. 删除这些资源。
 

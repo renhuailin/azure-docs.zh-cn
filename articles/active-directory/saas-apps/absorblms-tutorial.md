@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/05/2021
 ms.author: jeedes
-ms.openlocfilehash: 5e962592779494e1d60d03e9e8a167d53ac8bda2
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 268943463002ddd1dbdbf67df9587758f81f537f
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100364075"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101646514"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-absorb-lms"></a>教程：Azure Active Directory 与 Absorb LMS 的集成
 
@@ -219,8 +219,8 @@ ms.locfileid: "100364075"
 
 * 在 Azure 门户中单击“测试此应用程序”后，你应会自动登录到为其设置了 SSO 的 Absorb LMS。
 
-* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击 Absorb LMS 磁贴时，你应会自动登录到为其设置了 SSO 的 Absorb LMS。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击 Absorb LMS 磁贴时，你应会自动登录到为其设置了 SSO 的 Absorb LMS。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-配置 Absorb LMS 后，即可强制实施会话控制，实时防止组织的敏感数据发生外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+配置 Absorb LMS 后，即可强制实施会话控制，实时防止组织的敏感数据发生外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。

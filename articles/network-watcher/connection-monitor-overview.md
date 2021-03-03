@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: vinigam
 ms.custom: mvc
-ms.openlocfilehash: ccc2b6baba0e97320a5352013dbecfc121188457
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 7abaae033d2dbdb329a1f99d8f9845e5965d806c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100361020"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101712311"
 ---
 # <a name="network-connectivity-monitoring-with-connection-monitor"></a>使用连接监视器进行网络连接监视
 
@@ -89,7 +89,7 @@ ms.locfileid: "100361020"
 
  请注意，在工作区使用的所有代理中，所用的端口号都应该相同。 
 
-该脚本可创建解决方案所需的注册表项。 它还会创建 Windows 防火墙规则，允许代理创建彼此之间的 TCP 连接。 该脚本创建的注册表项指定是否记录调试日志和该日志文件的路径。 该脚本还会定义用于通信的代理 TCP 端口。 该脚本会自动设置这些注册表项的值。 请勿手动更改这些注册表项。 默认打开的端口为 8084。 通过向该脚本提供参数 portNumber 即可使用自定义端口。 在运行该脚本的所有计算机上使用相同端口。 [阅读](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#network-requirements) 有关 Log Analytics 代理网络要求的详细信息
+该脚本可创建解决方案所需的注册表项。 它还会创建 Windows 防火墙规则，允许代理创建彼此之间的 TCP 连接。 该脚本创建的注册表项指定是否记录调试日志和该日志文件的路径。 该脚本还会定义用于通信的代理 TCP 端口。 该脚本会自动设置这些注册表项的值。 请勿手动更改这些注册表项。 默认打开的端口为 8084。 通过向该脚本提供参数 portNumber 即可使用自定义端口。 在运行该脚本的所有计算机上使用相同端口。 [阅读](../azure-monitor/agents/log-analytics-agent.md#network-requirements) 有关 Log Analytics 代理网络要求的详细信息
 
 此脚本仅在本地配置 Windows 防火墙。 如果有网络防火墙，请确保该防火墙允许流量去往网络性能监视器使用的 TCP 端口。
 

@@ -7,12 +7,12 @@ ms.date: 10/09/2017
 ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.workload: infrastructure
-ms.openlocfilehash: e85ac58c80e1fd695938bf09b6435dba1f4ee083
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: 924ee745804ef31e42dc21437dbb0459f6d37701
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100091340"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101693741"
 ---
 # <a name="how-to-enable-nested-virtualization-in-an-azure-vm"></a>如何在 Azure VM 中启用嵌套虚拟化
 
@@ -22,11 +22,9 @@ ms.locfileid: "100091340"
 
 ## <a name="create-a-nesting-capable-azure-vm"></a>创建支持嵌套的 Azure VM
 
-创建新的 Windows Server 2016 Azure VM。 有关支持嵌套的虚拟机大小的完整列表，请查看 [Azure 计算单位](../acu.md)一文。
+为主机创建新的 Windows Server 2016 或 Windows Server 2019 Azure VM。 请确保为 VM 选择一个支持嵌套的大小，并且该大小足以满足来宾 Vm 的需求。 有关支持嵌套的虚拟机大小的列表，请参阅 [Azure 计算单元](../acu.md) 一文。
 
-请记住选择足够大的 VM 大小来支持来宾虚拟机的需求。 在此示例中，我们使用的是 D4_v3 大小的 Azure VM。 
-
-可以在[此处](https://azure.microsoft.com/regions/services/)查看 Dv3 或 Ev3 系列虚拟机的区域可用性。
+可以在 " [按区域提供的产品](https://azure.microsoft.com/regions/services/) " 页上查看 VM 大小的区域可用性。
 
 >[!NOTE]
 >
@@ -48,7 +46,7 @@ ms.locfileid: "100091340"
 你可以手动配置这些设置，或者使用我们提供的 PowerShell 脚本来自动完成配置。
 
 ### <a name="option-1-use-a-powershell-script-to-configure-nested-virtualization"></a>选项 1：使用 PowerShell 脚本配置嵌套虚拟化
-在 [GitHub](https://github.com/charlieding/Virtualization-Documentation/tree/live/hyperv-tools/Nested) 上提供了用于在 Windows Server 2016 主机上启用嵌套虚拟化的 PowerShell 脚本。 该脚本将首先检查先决条件，然后在 Azure VM 上配置嵌套虚拟化。 必须重启 Azure VM 才能完成配置。 此脚本在其他环境中也可以运行，但不能保证。 有关在 Azure 上运行嵌套虚拟化的现场视频演示，请查看 Azure 博客文章！ https://aka.ms/AzureNVblog 。
+在 [GitHub](https://github.com/charlieding/Virtualization-Documentation/tree/live/hyperv-tools/Nested) 上提供了用于在 Windows Server 2016 主机上启用嵌套虚拟化的 PowerShell 脚本。 该脚本将首先检查先决条件，然后在 Azure VM 上配置嵌套虚拟化。 必须重启 Azure VM 才能完成配置。 此脚本在其他环境中也可以运行，但不能保证。 有关在 Azure 上运行嵌套虚拟化的现场视频演示，请查看 Azure 博客文章！ https://aka.ms/AzureNVblog.
 
 ### <a name="option-2-configure-nested-virtualization-manually"></a>选项 2：手动配置嵌套虚拟化
 
@@ -94,7 +92,7 @@ ms.locfileid: "100091340"
 4. 为 NAT 网关创建 IP 地址。
     
 若要配置网关，需要一些有关你网络的信息：    
-  * IPAddress - NAT 网关 IP 指定要用作虚拟网络子网的默认网关地址的 IPv4 或 IPv6 地址。 常规形式为 a.b.c.1（例如，“192.168.0.1”）。 尽管最后一个位置不一定是 .1，但通常是 1（基于前缀长度）。 通常情况下，应使用 RFC 1918 专用网络地址空间。 
+  * IP 地址-NAT 网关 IP 指定要用作虚拟网络子网的默认网关地址的 IPv4 或 IPv6 地址。 常规形式为 a.b.c.1（例如，“192.168.0.1”）。 尽管最后一个位置不一定是 .1，但通常是 1（基于前缀长度）。 通常情况下，应使用 RFC 1918 专用网络地址空间。 
   * PrefixLength - 子网前缀长度定义本地子网大小（子网掩码）。 子网前缀长度将介于 0 到 32 之间的一个整数值。 0 将映射整个 Internet，32 则只允许一个映射的 IP。 常用值范围从 24 到 12，具体要取决于多少 IP 需要附加到 NAT。 常用 PrefixLength 为 24 -- 这是子网掩码 255.255.255.0。
   * InterfaceIndex - ifIndex  是上一步中创建的虚拟交换机的接口索引。 
 

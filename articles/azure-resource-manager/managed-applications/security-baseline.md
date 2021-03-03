@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 2a5c31270f18c2e6149d93fa522818704b9747d8
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 42aea886e38622c773ac1ca0ea2533d8aa1c47bb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100588613"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717020"
 ---
 # <a name="azure-security-baseline-for-azure-managed-applications"></a>适用于 Azure 托管应用程序的 Azure 安全基线
 
@@ -447,7 +447,7 @@ Azure 安全中心还可针对某些可疑活动发出警报，例如，失败�
 
 - [如何配置 Log Analytics 工作区保留期](../../azure-monitor/logs/manage-cost-storage.md)
 
-- [在 Azure 存储帐户中存储资源日志](../../azure-monitor/platform/resource-logs.md#send-to-azure-storage)
+- [在 Azure 存储帐户中存储资源日志](../../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)
 
 **Azure 安全中心监视**：是
 

@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 01/14/2021
 ms.author: juliako
-ms.openlocfilehash: 4174e63ed12faf5d10029db5b4eb9bf9a40b9b5b
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: fe6be5778997f0ef4a3f53ae45d17352eca60d8e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99576272"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101727254"
 ---
 # <a name="create-a-video-indexer-account"></a>创建视频索引器帐户
 
@@ -201,7 +201,7 @@ ms.locfileid: "99576272"
 
 ### <a name="prerequisites-for-connecting-to-azure-government"></a>连接到 Azure 政府版的先决条件
 
--   [Azure 政府](https://docs.microsoft.com/azure/azure-government/)版中的 azure 订阅。
+-   [Azure 政府](../../azure-government/index.yml)版中的 azure 订阅。
 - Azure 政府版中的 Azure AD 帐户。
 - 所有权限和资源的预先要求，如上所述， [连接到 Azure 的先决条件](#prerequisites-for-connecting-to-azure)。
 
@@ -222,7 +222,7 @@ ms.locfileid: "99576272"
     
 ### <a name="create-new-account-via-the-api-on-azure-government"></a>通过 Azure 政府版 API 创建新帐户
 
-若要在 Azure 政府版中创建付费帐户，请按照 [创建-付费帐户](/azure/media-services/video-indexer/connect-to-azure)中的说明进行操作。 此 API 终结点仅包括政府云区域。
+若要在 Azure 政府版中创建付费帐户，请按照 [创建-付费帐户]()中的说明进行操作。 此 API 终结点仅包括政府云区域。
 
 ### <a name="limitations-of-video-indexer-on-azure-government"></a>Azure 政府版中的视频索引器限制
 

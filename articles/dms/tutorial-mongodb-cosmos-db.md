@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 02/03/2021
-ms.openlocfilehash: 1ba6a45062f4018c59f5b41ab616f7a04f87140a
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: b669870537ffb58d9ae7e8a5c65276d310ba6a7e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99575547"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101722018"
 ---
 # <a name="tutorial-migrate-mongodb-to-azure-cosmos-dbs-api-for-mongodb-offline-using-dms"></a>教程：使用 DMS 将 MongoDB 脱机迁移到 Azure Cosmos DB 的用于 MongoDB 的 API
 
@@ -31,7 +31,7 @@ ms.locfileid: "99575547"
 > * 运行迁移。
 > * 监视迁移。
 
-在本教程中，你将使用 Azure 数据库迁移服务，将 Azure 虚拟机中托管的 MongoDB 中的某个数据集迁移到 Azure Cosmos DB 的用于 MongoDB 的 API。 如果尚未设置 MongoDB 源，请参阅[在 Azure 中的 Windows VM 上安装和配置 MongoDB](../virtual-machines/windows/install-mongodb.md) 一文。
+在本教程中，你将使用 Azure 数据库迁移服务，将 Azure 虚拟机中托管的 MongoDB 中的某个数据集迁移到 Azure Cosmos DB 的用于 MongoDB 的 API。 如果尚未设置 MongoDB 源，请参阅[在 Azure 中的 Windows VM 上安装和配置 MongoDB](/previous-versions/azure/virtual-machines/windows/install-mongodb) 一文。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -86,7 +86,7 @@ ms.locfileid: "99575547"
 
     ![Azure 市场](media/tutorial-mongodb-to-cosmosdb/portal-marketplace.png)
 
-2. 在“Azure 数据库迁移服务”屏幕上，选择“创建” 。
+2. 在“Azure 数据库迁移服务”屏幕上，选择“创建”   。
 
     ![创建 Azure 数据库迁移服务实例](media/tutorial-mongodb-to-cosmosdb/dms-create1.png)
   

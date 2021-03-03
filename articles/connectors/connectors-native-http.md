@@ -3,16 +3,16 @@ title: 使用 HTTP 或 HTTPS 调用服务终结点
 description: 从 Azure 逻辑应用向服务终结点发送出站 HTTP 或 HTTPS 请求
 services: logic-apps
 ms.suite: integration
-ms.reviewer: jonfan, logicappspm
+ms.reviewer: estfan, logicappspm, azla
 ms.topic: conceptual
-ms.date: 09/14/2020
+ms.date: 02/18/2021
 tags: connectors
-ms.openlocfilehash: f2835bda8ac7242b7a3ea4ea63401f26b9c8e426
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: dab5b755347e46d8d509e8014bba8f496ca9c900
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99062989"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719434"
 ---
 # <a name="call-service-endpoints-over-http-or-https-from-azure-logic-apps"></a>从 Azure 逻辑应用通过 HTTP 或 HTTPS 调用服务终结点
 
@@ -249,8 +249,8 @@ HTTP 请求有一个[超时限制](../logic-apps/logic-apps-limits-and-config.md
 
 * `Accept-*` 标头（`Accept-version` 除外）
 * `Allow`
-* `Content-*``Content-Disposition` `Content-Encoding` `Content-Type` 当你使用 POST 和 PUT 操作，但不包括在获取操作中时，、和以外的标头
-* `Cookie`
+* `Content-*` 标头（和）除外，在 `Content-Disposition` `Content-Encoding` `Content-Type` 使用 POST 和 PUT 操作时，将遵循这些标头。 但是，当你使用 GET 操作时，逻辑应用将删除这些标头。
+* `Cookie` 标头，但逻辑应用接受使用 **Cookie** 属性指定的任何值。
 * `Expires`
 * `Host`
 * `Last-Modified`

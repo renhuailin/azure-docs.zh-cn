@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/27/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: b69e701177c6f017388521ed05c37de1271c7e60
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 4e933000c8e700d8bfd193b542e3855b2fca26f8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101650152"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101689328"
 ---
 # <a name="tutorial-develop-a-sample-scim-endpoint"></a>教程：开发示例 SCIM 终结点
 
@@ -57,6 +57,8 @@ ms.locfileid: "101650152"
     ![显示创建新应用服务的屏幕截图。](media/use-scim-to-build-users-and-groups-endpoints/cloud-publish-3.png)
 
 1. 选择要使用的资源组，然后选择 " **发布**"。
+
+    ![显示发布新应用服务的屏幕截图。](media/use-scim-to-build-users-and-groups-endpoints/cloud-publish-4.png)
 
 1. 在 " **Azure App Service** 配置" 中，选择 "应用程序"  >   ，然后选择 "**新建应用程序" 设置**，添加值为 *Token__TokenIssuer* 设置 `https://sts.windows.net/<tenant_id>/` 。 `<tenant_id>`将替换为你的 Azure AD 租户 ID。 如果要使用 [Postman](https://github.com/AzureAD/SCIMReferenceCode/wiki/Test-Your-SCIM-Endpoint)测试 SCIM 终结点，请使用值添加 *ASPNETCORE_ENVIRONMENT* 设置 `Development` 。
 

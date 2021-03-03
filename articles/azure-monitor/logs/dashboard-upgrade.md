@@ -6,12 +6,12 @@ ms.topic: article
 author: rboucher
 ms.author: robb
 ms.date: 07/01/2020
-ms.openlocfilehash: 96aea35a4796eae9d31062cedaf917a736f0fe82
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 139241d679007bf72680f91a1518a1ef90cc7efc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100606088"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101700620"
 ---
 # <a name="upgrading-your-log-analytics-dashboard-visualizations"></a>升级 Log Analytics 仪表板可视化效果
 
@@ -82,4 +82,4 @@ Azure 仪表板是一种可视化整个 Azure surface 区域的状态的方法�
 
 ## <a name="next-steps"></a>后续步骤
 
-[在 Log Analytics 中创建和共享仪表板](../learn/tutorial-logs-dashboards.md)
+[在 Log Analytics 中创建和共享仪表板](../visualize/tutorial-logs-dashboards.md)

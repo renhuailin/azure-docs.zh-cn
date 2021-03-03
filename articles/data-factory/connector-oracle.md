@@ -4,14 +4,14 @@ description: 了解如何使用数据工厂将数据从支持的源存储复制�
 author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 09/28/2020
+ms.date: 02/20/2021
 ms.author: jingwang
-ms.openlocfilehash: bba1ae991f2a4702a0d55a8dc3f6c7a44b9e7b65
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: ebafac024593767e884be908acbf0efb9ead50e9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100381335"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703297"
 ---
 # <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 Oracle 复制数据
 
@@ -64,7 +64,7 @@ ms.locfileid: "100381335"
 
 Oracle 链接服务支持以下属性：
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为 **Oracle**。 | 是 |
 | connectionString | 指定连接到 Oracle 数据库实例所需的信息。 <br/>还可以将密码放在 Azure Key Vault 中，并从连接字符串中拉取 `password` 配置。 有关更多详细信息，请参阅以下示例和[在 Azure Key Vault 中存储凭据](store-credentials-in-key-vault.md)。 <br><br>**支持的连接类型**：可以使用 **Oracle SID** 或 **Oracle 服务名称** 来标识数据库：<br>- 如果使用 SID：`Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;`<br>- 如果使用服务名称：`Host=<host>;Port=<port>;ServiceName=<servicename>;User Id=<username>;Password=<password>;`<br>对于“高级 Oracle 本机连接”选项，可以选择在 Oracle 服务器上的 [TNSNAMES.ORA](http://www.orafaq.com/wiki/Tnsnames.ora) 文件中添加一个条目，在“ADF Oracle 链接服务”中，选择使用“Oracle 服务名称”连接类型并配置相应的服务名称。 | 是 |
@@ -171,7 +171,7 @@ Oracle 链接服务支持以下属性：
 
 若要从/向 Oracle 复制数据，请将数据集的 type 属性设置为 `OracleTable`。 支持以下属性。
 
-| properties | 说明 | 必须 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为 `OracleTable`。 | 是 |
 | 架构 | 架构的名称。 |对于源为“No”，对于接收器为“Yes”  |
@@ -210,7 +210,7 @@ Oracle 链接服务支持以下属性：
 
 要从 Oracle 复制数据，请将复制活动中的源类型设置为 `OracleSource`。 复制活动的 **source** 节支持以下属性。
 
-| properties | 说明 | 必须 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动 source 的 type 属性必须设置为 `OracleSource`。 | 是 |
 | oracleReaderQuery | 使用自定义 SQL 查询读取数据。 例如 `"SELECT * FROM MyTable"`。<br>启用分区加载时，需要在查询中挂接任何相应的内置分区参数。 有关示例，请参阅[从 Oracle 进行并行复制](#parallel-copy-from-oracle)部分。 | 否 |
@@ -257,7 +257,7 @@ Oracle 链接服务支持以下属性：
 
 若要向 Oracle 复制数据，请将复制活动中的接收器类型设置为 `OracleSink`。 复制活动 **sink** 节支持以下属性。
 
-| properties | 说明 | 必须 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动接收器的 type 属性必须设置为 `OracleSink`。 | 是 |
 | writeBatchSize | 缓冲区大小达到 `writeBatchSize` 时将数据插入 SQL 表。<br/>允许的值为 Integer（行数）。 |否（默认值为 10,000） |
@@ -305,7 +305,7 @@ Oracle 链接服务支持以下属性：
 
 建议同时启用并行复制和数据分区，尤其是从 Oracle 数据库加载大量数据时。 下面是适用于不同方案的建议配置。 将数据复制到基于文件的数据存储中时，建议将数据作为多个文件写入文件夹（仅指定文件夹名称），在这种情况下，性能优于写入单个文件。
 
-| 场景                                                     | 建议的设置                                           |
+| 方案                                                     | 建议的设置                                           |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | 从包含物理分区的大型表进行完整加载。          | **分区选项**：表的物理分区。 <br><br/>在执行期间，数据工厂将自动检测物理分区并按分区复制数据。 |
 | 从不包含物理分区但包含用于数据分区的整数列的大型表进行完整加载。 | **分区选项**：动态范围分区。<br>**分区列**：指定用于对数据进行分区的列。 如果未指定，将使用主键列。 |
@@ -363,7 +363,8 @@ Oracle 链接服务支持以下属性：
 | LONG RAW |Byte[] |
 | NCHAR |String |
 | NCLOB |String |
-| NUMBER |Decimal、String（如果精度 > 28） |
+| NUMBER (p,s) |Decimal、String (if p > 28)  |
+| 没有精度和小数位数的数字 |Double |
 | NVARCHAR2 |String |
 | RAW |Byte[] |
 | ROWID |String |

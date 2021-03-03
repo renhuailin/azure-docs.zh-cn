@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
-ms.openlocfilehash: d83a2bc4723686920b487998a2040e5be02d4e1a
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: e93d03ac9ec404a18b480a0cd1bfe289944b60d8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92456953"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101689090"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bonusly"></a>教程：Azure Active Directory 与 Bonusly 集成
 
@@ -145,7 +145,7 @@ ms.locfileid: "92456953"
     
     d. 将从 Azure 门户复制的“指纹”值粘贴到“证书指纹”文本框中   。
     
-    e. 单击“保存”  。
+    e. 单击“ **保存**”。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -155,7 +155,7 @@ ms.locfileid: "92456953"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -169,7 +169,7 @@ ms.locfileid: "92456953"
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -232,7 +232,7 @@ ms.locfileid: "92456953"
 
     b. 在“姓氏”文本框中，输入用户的姓氏（如“Simon”）   。
 
-    c. 在“电子邮件”文本框中，输入用户的电子邮件地址（例如 `brittasimon\@contoso.com`）。
+    c. 在“电子邮件”文本框中，输入用户的电子邮件地址（例如 `brittasimon@contoso.com`）。
 
     d. 单击“保存”  。
 

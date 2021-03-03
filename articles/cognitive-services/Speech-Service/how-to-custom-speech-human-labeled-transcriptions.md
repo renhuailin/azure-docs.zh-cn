@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/12/2021
 ms.author: erhopf
-ms.openlocfilehash: db3d8f4424f59d8432221753af776a5b55859882
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: af6ced49071b7fbae983508e68964aa064ef38e1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100388849"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101700025"
 ---
 # <a name="how-to-create-human-labeled-transcriptions"></a>如何创建人为标记的听录
 
 若要提高特定情况下（尤其是在因删除或错误替代单词而导致问题的情况下）的识别准确度，需要对音频数据使用人为标记的听录。 什么是人为标记的听录？ 很简单，人为标记的听录是对音频文件进行的逐字/词听录。
 
-若要改善识别，建议使用大量的脚本数据，建议提供10到20小时的脚本数据。 在此页上，我们将查看旨在帮助你创建高质量听录的准则。 本指南按区域设置划分为“美国英语”、“中国大陆普通话”和“德语”三部分。
+若要改善识别，建议使用大量的脚本数据，我们建议提供1到20小时的脚本数据。 语音服务将使用最多20小时的音频进行培训。 在此页上，我们将查看旨在帮助你创建高质量听录的准则。 本指南按区域设置划分为“美国英语”、“中国大陆普通话”和“德语”三部分。
 
 > [!NOTE]
 > 并非所有基本模型都支持音频文件的自定义。 如果基本模型不支持该模型，则训练将使用与使用相关文本相同的方式来使用转录的文本。 有关支持音频数据定型的基本模型的列表，请参阅 [语言支持](language-support.md#speech-to-text) 。

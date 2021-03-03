@@ -6,18 +6,18 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/13/2020
-ms.openlocfilehash: 089c0739ff091d49734cad048c2bfb10d857617c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 96eab2d93ae0212568f8ef23e32a35016cb17248
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100608004"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101732048"
 ---
 # <a name="collect-iis-logs-with-log-analytics-agent-in-azure-monitor"></a>在 Azure Monitor 中使用 Log Analytics 代理收集 IIS 日志
-Internet Information Services (IIS) 会将用户活动存储在日志文件中，这些日志文件由 Log Analytics 代理收集并存储在 [Azure Monitor 日志](../platform/data-platform.md)中。
+Internet Information Services (IIS) 会将用户活动存储在日志文件中，这些日志文件由 Log Analytics 代理收集并存储在 [Azure Monitor 日志](../data-platform.md)中。
 
 > [!IMPORTANT]
-> 本文介绍如何使用 [Log Analytics 代理](../platform/log-analytics-agent.md)（Azure Monitor 使用的代理之一）收集 IIS 日志。 其他代理收集的数据不同，且配置也不同。 有关可用代理及其可收集的数据的列表，请参阅 [Azure Monitor 代理概述](../agents/agents-overview.md)。
+> 本文介绍如何使用 [Log Analytics 代理](./log-analytics-agent.md)（Azure Monitor 使用的代理之一）收集 IIS 日志。 其他代理收集的数据不同，且配置也不同。 有关可用代理及其可收集的数据的列表，请参阅 [Azure Monitor 代理概述](../agents/agents-overview.md)。
 
 ![IIS 日志](media/data-sources-iis-logs/overview.png)
 
@@ -75,4 +75,4 @@ IIS 日志记录的类型为 **W3CIISLog**，并具有下表中的属性：
 
 ## <a name="next-steps"></a>后续步骤
 * 配置 Azure Monitor 以收集其他[数据源](../agents/agent-data-sources.md)进行分析。
-* 了解[日志查询](../log-query/log-query-overview.md)以便分析从数据源和解决方案中收集的数据。
+* 了解[日志查询](../logs/log-query-overview.md)以便分析从数据源和解决方案中收集的数据。

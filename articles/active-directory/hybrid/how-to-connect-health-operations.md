@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 99ad0963677b9ef536deacc2122130186afe0726
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 37e41a00c1489d5b7b4822fec8bb4da35e917826
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98016960"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101686455"
 ---
 # <a name="azure-active-directory-connect-health-operations"></a>Azure Active Directory Connect Health 操作
 本主题介绍可通过使用 Azure Active Directory (Azure AD) Connect Health 执行的各种操作。
@@ -46,8 +46,6 @@ ms.locfileid: "98016960"
 > 如果在我们的后端服务中处理同步请求时出现问题，则此服务会向租户 (es) 的管理联系人电子邮件地址发送一封通知电子邮件，其中包含错误详细信息。 我们听说过来自客户的反馈，在某些情况下，这些消息的数量很大，因此我们正在改变我们发送这些消息的方式。 
 >
 > 不会在每次发生同步错误时都发送消息，而是发送后端服务返回的所有错误的每日摘要。 这使客户能够以更有效的方式处理这些错误并减少重复的错误消息数。
->
-> 我们计划在2020年1月15日实现此更改。
 
 ## <a name="delete-a-server-or-service-instance"></a>删除服务器或服务实例
 
@@ -111,7 +109,7 @@ Azure AD Connect Health 支持以下内置角色：
 
 | 角色 | 权限 |
 | --- | --- |
-| 所有者 |所有者可以在 Azure AD Connect Health 中管理访问权限（例如将角色分配到用户或组）、从门户查看所有信息（例如查看警报信息），以及更改设置（例如设置电子邮件通知）。 <br>默认情况下，将为 Azure AD 全局管理员分配此角色，且此角色是无法更改的。 |
+| “所有者” |所有者可以在 Azure AD Connect Health 中管理访问权限（例如将角色分配到用户或组）、从门户查看所有信息（例如查看警报信息），以及更改设置（例如设置电子邮件通知）。 <br>默认情况下，将为 Azure AD 全局管理员分配此角色，且此角色是无法更改的。 |
 | 参与者 |参与者可以在 Azure AD Connect Health 中从门户中 *查看所有信息*（例如查看警报信息）以及 *更改设置*（例如设置电子邮件通知）。 |
 | 读取器 |读取者可以在 Azure AD Connect Health 中从门户 *查看所有信息*（例如查看警报）。 |
 
@@ -133,7 +131,7 @@ Azure AD Connect Health 支持两个级别的访问管理：
 #### <a name="step-2-add-users-and-groups-and-assign-roles"></a>步骤 2：添加用户、组并分配角色
 1. 在“配置”部分中，单击“用户”。<br>
    ![Azure AD Connect Health 资源边栏的屏幕截图](./media/how-to-connect-health-operations/startRBAC.png)
-2. 选择“添加”  。
+2. 选择“添加”。
 3. 在“选择角色”窗格中，选择一个角色（例如“所有者”）。<br>
    ![Azure AD Connect Health 和 Azure RBAC 配置菜单的屏幕截图](./media/how-to-connect-health-operations/RBAC_add.png)
 4. 键入目标用户或组的名称或标识符。 可以同时选择一个或多个用户或组。 单击“选择”。

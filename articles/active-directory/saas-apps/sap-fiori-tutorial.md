@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/28/2020
 ms.author: jeedes
-ms.openlocfilehash: ab21c6dc95ef39e6273dac405ba58e748890fc1a
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 547d96a9591b99318a74977106e99511c9c80507
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97968426"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687101"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-fiori"></a>教程：Azure Active Directory 单一登录 (SSO) 与 SAP Fiori 集成
 
@@ -146,7 +146,7 @@ ms.locfileid: "97968426"
 
     ![选择元数据文件](common/browse-upload-metadata.png)
 
-    c. 成功上传元数据文件后，“标识符”和“回复 URL”值会自动填充在“基本 SAML 配置”窗格中    。 在“登录 URL”  框中，输入具有以下模式的 URL：`https:\//\<your company instance of SAP Fiori\>`。
+    c. 成功上传元数据文件后，“标识符”和“回复 URL”值会自动填充在“基本 SAML 配置”窗格中    。 在“登录 URL”  框中，输入具有以下模式的 URL：`https://<your company instance of SAP Fiori>`。
 
     > [!NOTE]
     > 有一些客户报告了与“回复 URL”值配置错误相关的错误  。 如果遇到此错误，可以使用以下 PowerShell 脚本为实例设置正确的回复 URL：

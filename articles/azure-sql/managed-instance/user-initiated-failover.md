@@ -9,13 +9,13 @@ ms.topic: how-to
 author: danimir
 ms.author: danil
 ms.reviewer: douglas, sstein
-ms.date: 02/23/2021
-ms.openlocfilehash: c154699b7701b584e465ebea7950d4fe50be961f
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.date: 02/27/2021
+ms.openlocfilehash: 3c969c1898e67361e37a825d7976b1c52d08dd24
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101660791"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691138"
 ---
 # <a name="user-initiated-manual-failover-on-sql-managed-instance"></a>SQL 托管实例上用户启动的手动故障转移
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -151,6 +151,7 @@ SELECT sqlserver_start_time, sqlserver_start_time_ms_ticks FROM sys.dm_os_sys_in
 > - 对于 BC 实例，若要使故障转移请求得到接受，必须存在仲裁副本。
 > - 对于 BC 实例，不能指定要在其上启动故障转移的可读辅助副本。
 > - 在自动备份系统完成新数据库的第一次完整备份之前，将不允许进行故障转移。
+> - 如果存在正在进行的数据库还原，则将不允许故障转移。
 
 ## <a name="next-steps"></a>后续步骤
 - 若要详细了解如何通过 [测试应用云就绪情况来](https://youtu.be/FACWYLgYDL8) 测试应用程序的云就绪性，请参阅 SQL 托管实例视频编码。

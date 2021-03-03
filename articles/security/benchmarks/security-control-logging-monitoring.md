@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: cfa2548abb28fa6f84178a1fb5716d0c03b163f1
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: d30d8cdfe6ee93f54dfd560987ac8b6a78517fd8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100570723"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101718686"
 ---
 # <a name="security-control-logging-and-monitoring"></a>安全控制：日志记录和监视
 
@@ -82,7 +82,7 @@ Microsoft 维护 Azure 资源的时间源，但是，你可以选择管理计算
 
 - [更改 Log Analytics 中的数据保留期](../../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
-- [如何为 Azure 存储帐户日志配置保留策略](../../storage/common/storage-monitor-storage-account.md#configure-logging)
+- [如何为 Azure 存储帐户日志配置保留策略](../../storage/common/manage-storage-analytics-logs.md#configure-logging)
 
 ## <a name="26-monitor-and-review-logs"></a>2.6：监视和审查日志
 

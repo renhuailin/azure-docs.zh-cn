@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: 06f1d34e7d8da9a3ece206fc1ff804accf9454ff
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 7d2a21a30cefbc6e83e48c29d81191323387b8f2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99493848"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101705537"
 ---
 # <a name="quickstart-create-and-provision-an-x509-device-using-c-device-sdk-for-iot-hub-device-provisioning-service"></a>快速入门：使用适用于 IoT 中心设备预配服务的 C 设备 SDK 创建和预配 X.509 设备
 
@@ -22,7 +22,9 @@ ms.locfileid: "99493848"
 
 这些步骤显示了如何使用 [C# 的 Azure IoT 示例](https://github.com/Azure-Samples/azure-iot-samples-csharp)中的设备代码来预配 X.509 设备。 在本文中，你将在开发计算机上运行设备示例代码，以使用设备预配服务连接到 IoT 中心。
 
-如果不熟悉自动预配过程，请查看[预配](about-iot-dps.md#provisioning-process)概述。 另外，在继续操作之前，请确保已完成[通过 Azure 门户设置 IoT 中心设备预配服务](./quick-setup-auto-provision.md)中的步骤。 
+## <a name="prerequisites"></a>先决条件
+
+如果不熟悉自动预配过程，请查看[预配](about-iot-dps.md#provisioning-process)概述。 另外，在继续操作之前，请确保已完成[通过 Azure 门户设置 IoT 中心设备预配服务](./quick-setup-auto-provision.md)中的步骤。
 
 Azure IoT 设备预配服务支持两类注册：
 - [注册组](concepts-service.md#enrollment-group)：用于注册多个相关设备。
@@ -48,8 +50,6 @@ Azure IoT 设备预配服务支持两类注册：
     ```bash
     dotnet --info
     ```
-
-
 
 ## <a name="create-a-self-signed-x509-device-certificate"></a>创建自签名的 X.509 设备证书
 

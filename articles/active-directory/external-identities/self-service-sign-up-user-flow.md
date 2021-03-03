@@ -11,26 +11,31 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a08cc9f5b6bf7f02666406bcc541edb677196eeb
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 883e658fd3f03eb50d54e548ffac49e23b340808
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101647330"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101688607"
 ---
-# <a name="add-a-self-service-sign-up-user-flow-to-an-app"></a>向应用添加自助注册用户流
+# <a name="add-a-self-service-sign-up-user-flow-to-an-app-preview"></a>向应用添加自助注册用户流（预览）
 
-可以为组织生成的应用创建用户流。 通过将用户流与应用关联，可以在相应应用上启用注册。 可以选择多个与用户流关联的应用。 将用户流与一个或多个应用关联后，访问相应应用的用户将能够使用用户流中配置的选项注册并获得来宾帐户。
+> [!NOTE]
+> 本文中提到的某些功能是 Azure Active Directory 的公共预览功能。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+
+对于构建的应用程序，可以创建允许用户注册应用程序并创建新来宾帐户的用户流。 自助服务注册用户流定义用户在注册过程中将遵循的一系列步骤，你将允许他们使用的标识提供者，以及你想要收集的用户属性。 你可以将一个或多个应用程序与一个用户流相关联。
 
 > [!NOTE]
 > 可以将用户流与组织生成的应用相关联。 用户流不能用于 Microsoft 应用，如 SharePoint 或 Teams。
 
 ## <a name="before-you-begin"></a>开始之前
 
-### <a name="add-social-identity-providers-optional"></a>添加社交标识提供者（可选）
+### <a name="add-identity-providers-optional"></a>添加标识提供程序 (可选) 
 
-Azure AD 是自助注册的默认标识提供者。 也就是说，在默认情况下，用户可以使用 Azure AD 帐户进行注册。 也可以通过在这些注册流中添加社交标识提供者来支持 Google 和 Facebook 帐户。
+Azure AD 是自助注册的默认标识提供者。 也就是说，在默认情况下，用户可以使用 Azure AD 帐户进行注册。 在自助注册用户流中，还可以包括 Google 和 Facebook 等社交标识提供者、Microsoft 帐户 (预览) 和电子邮件一次性密码 (预览) 。
 
+- [Microsoft 帐户 (预览) 标识提供者](microsoft-account.md)
+- [电子邮件一次性密码身份验证](one-time-passcode.md)
 - [向社交标识提供者列表添加 Facebook](facebook-federation.md)
 - [向社交标识提供者列表添加 Google](google-federation.md)
 

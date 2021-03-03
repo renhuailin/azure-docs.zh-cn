@@ -3,22 +3,21 @@ title: 使用流分析从 Azure Application Insights 进行导出 | Microsoft Do
 description: 流分析可以持续转换、筛选和路由从 Application Insights 导出的数据。
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: c8486d7e5656a7770aec4a50739d3a9160e123e3
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: a517bddd8981554b7fb5044d33b6c6777df51e36
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100584324"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719791"
 ---
 # <a name="use-stream-analytics-to-process-exported-data-from-application-insights"></a>使用流分析处理从 Application Insights 导出的数据
+
 [Azure 流分析](https://azure.microsoft.com/services/stream-analytics/)是用于处理[从 Application Insights 导出](export-telemetry.md)的数据的理想工具。 流分析可以从各种源提取数据。 它可以转换和筛选数据，然后将其路由到各种接收器。
 
 在本示例中，我们将创建一个适配器用于从 Application Insights 提取数据，重命名和处理某些字段，然后通过管道将数据传送到 Power BI。
 
 > [!WARNING]
 > 还有便利得多的[建议方法可在 Power BI 中显示 Application Insights 数据](./export-power-bi.md)。 本文所述的途径只是一个示例，演示如何处理导出的数据。
-> 
-> 
 
 ![通过 SA 导出到 PBI 的框图](./media/export-stream-analytics/020.png)
 
@@ -38,6 +37,7 @@ ms.locfileid: "100584324"
     ![在存储中，依次打开“设置”、“密钥”，并复制主访问密钥](./media/export-stream-analytics/045.png)
 
 ## <a name="start-continuous-export-to-azure-storage"></a>开始向 Azure 存储连续导出
+
 [连续导出](export-telemetry.md)会将数据从 Application Insights 移入 Azure 存储。
 
 1. 在 Azure 门户中，浏览到为应用程序创建的 Application Insights 资源。
@@ -55,18 +55,19 @@ ms.locfileid: "100584324"
 
     ![选择事件类型](./media/export-stream-analytics/080.png)
 
-1. 让我们累积一些数据。 请休息一下，让其他人先使用该应用程序一段时间。 应用程序中会逐渐传入遥测数据，[指标资源管理器](../essentials/metrics-charts.md)中会显示统计图表，[诊断搜索](./diagnostic-search.md)中会显示各个事件。 
+1. 让我们累积一些数据。 请休息一下，让其他人先使用该应用程序一段时间。 应用程序中会逐渐传入遥测数据，[指标资源管理器](../essentials/metrics-charts.md)中会显示统计图表，[诊断搜索](./diagnostic-search.md)中会显示各个事件。
    
     此外，数据将导出到存储。 
 2. 检查导出的数据 在 Visual Studio 中，请选择“查看”>“Cloud Explorer”，并打开“Azure”>“存储”。 （如果没有此菜单选项，则需要安装 Azure SDK：打开“新建项目”对话框，打开 Visual C# /云/获取用于 .NET 的 Microsoft Azure SDK。）
    
     ![屏幕截图中显示了如何设置要查看的事件类型。](./media/export-stream-analytics/04-data.png)
    
-    记下派生自应用程序名称和检测密钥的路径名称的共同部分。 
+    记下派生自应用程序名称和检测密钥的路径名称的共同部分。
 
 事件以 JSON 格式写入 Blob 文件。 每个文件可能包含一个或多个事件。 因此我们想要读取事件数据，并筛选出所需的字段。 可以针对数据执行各种操作，但我们目前的计划是使用流分析通过管道将数据传送到 Power BI。
 
 ## <a name="create-an-azure-stream-analytics-instance"></a>创建 Azure 流分析实例
+
 在 [Azure 门户](https://portal.azure.com/)中，选择 Azure 流分析服务，并创建新的流分析作业：
 
 ![屏幕截图中显示了 Azure 门户中用于创建流分析作业的主页。](./media/export-stream-analytics/SA001.png)
@@ -104,9 +105,9 @@ ms.locfileid: "100584324"
 
 > [!NOTE]
 > 检查存储，确保路径正确。
-> 
 
 ## <a name="add-new-output"></a>添加新输出
+
 现在选择作业 >“输出” > “添加”。
 
 ![屏幕截图中显示了如何选择流分析作业以添加新输出。](./media/export-stream-analytics/SA006.png)
@@ -117,11 +118,13 @@ ms.locfileid: "100584324"
 提供 **工作或学校帐户**，以授权流分析访问 Power BI 资源。 然后为输出、目标 Power BI 数据集和表指定名称。
 
 ## <a name="set-the-query"></a>设置查询
+
 查询控制从输入到输出的转换。
 
-使用“测试”功能检查输出是否正确。 在测试中提供从输入页获取的示例数据。 
+使用“测试”功能检查输出是否正确。 在测试中提供从输入页获取的示例数据。
 
 ### <a name="query-to-display-counts-of-events"></a>用于显示事件计数的查询
+
 粘贴以下查询：
 
 ```SQL
@@ -154,7 +157,7 @@ OUTER APPLY GetElements(A.context.custom.metrics) as flat
 GROUP BY TumblingWindow(minute, 1), A.context.data.eventtime
 ```
 
-* 此查询将钻取指标遥测数据，获取事件时间和指标值。 指标值在数组内部，因此我们使用了 OUTER APPLY GetElements 模式来提取行。 在本例中，“myMetric”是指标的名称。 
+* 此查询将钻取指标遥测数据，获取事件时间和指标值。 指标值在数组内部，因此我们使用了 OUTER APPLY GetElements 模式来提取行。 在本例中，“myMetric”是指标的名称。
 
 ### <a name="query-to-include-values-of-dimension-properties"></a>用于包含维度属性值的查询
 
@@ -178,17 +181,18 @@ FROM flat
 * 此查询包含不依赖于特定维度的维度属性的值，该维度位于维度数组中某个固定的索引处。
 
 ## <a name="run-the-job"></a>运行作业
-可以选择从过去的某个日期启动作业。 
+
+可以选择从过去的某个日期启动作业。
 
 ![选择作业，并单击“查询”。 粘贴以下示例。](./media/export-stream-analytics/SA008.png)
 
 等待作业运行。
 
 ## <a name="see-results-in-power-bi"></a>在 Power BI 中查看结果
+
 > [!WARNING]
 > 还有便利得多的[建议方法可在 Power BI 中显示 Application Insights 数据](./export-power-bi.md)。 本文所述的途径只是一个示例，演示如何处理导出的数据。
-> 
-> 
+
 
 使用工作或学校帐户打开 Power BI，并选择已定义为流分析作业输出的数据集和表。
 
@@ -199,17 +203,10 @@ FROM flat
 ![屏幕截图中显示了根据 Power BI 中的数据集生成的报告示例。](./media/export-stream-analytics/210.png)
 
 ## <a name="no-data"></a>没有数据？
+
 * 请检查是否已正确地将[日期格式设置](#set-path-prefix-pattern)为 YYYY-MM-DD（包括短划线）。
-
-## <a name="video"></a>视频
-Noam Ben Zeev 演示如何使用流分析处理导出的数据。
-
-> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Export-to-Power-BI-from-Application-Insights/player]
-> 
-> 
 
 ## <a name="next-steps"></a>后续步骤
 * [连续导出](export-telemetry.md)
 * [属性类型和值的详细数据模型参考。](export-data-model.md)
 * [Application Insights](./app-insights-overview.md)
-

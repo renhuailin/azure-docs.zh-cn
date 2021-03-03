@@ -5,12 +5,12 @@ ms.subservice: metrics
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.custom: has-adal-ref
-ms.openlocfilehash: 41c2432c3c80be7d28e8f33372dea44ba108c5d3
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: b22387272ebeae7a7db8f0e0940841415e345279
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100607821"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734207"
 ---
 # <a name="azure-monitoring-rest-api-walkthrough"></a>Azure 监视 REST API 演练
 
@@ -462,9 +462,9 @@ Invoke-RestMethod -Uri $request `
 >
 >
 
-**方法**：GET
+**方法**： `GET`
 
-**请求 URI**：`https:\//management.azure.com/subscriptions/\*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/*{resource-provider-namespace}*/*{resource-type}*/*{resource-name}*/providers/microsoft.insights/metrics?$filter=*{filter}*&api-version=*{apiVersion}*`
+**请求 URI**：`https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider-namespace}/{resource-type}/{resource-name}/providers/microsoft.insights/metrics?$filter={filter}&api-version={apiVersion}`
 
 例如，要检索给定时间范围内时间粒度为 1 小时的 RunsSucceeded 指标数据点，请求将如下所示：
 
@@ -734,7 +734,6 @@ GET https://management.azure.com/subscriptions/089bd33f-d4ec-47fe-8ba5-0753aa5c5
 ## <a name="next-steps"></a>后续步骤
 
 * 查看 [监视概述](../overview.md)。
-* 查看 [Azure 监视器支持的指标](../platform/metrics-supported.md)。
+* 查看 [Azure 监视器支持的指标](./metrics-supported.md)。
 * 查看 [Microsoft Azure 监视器 REST API 参考](/rest/api/monitor/)。
 * 查看 [Azure 管理库](/previous-versions/azure/reference/mt417623(v=azure.100))。
-

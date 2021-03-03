@@ -3,12 +3,12 @@ title: 排查 SAP HANA 数据库备份错误
 description: 介绍如何排查在使用 Azure 备份对 SAP HANA 数据库进行备份时可能发生的常见错误。
 ms.topic: troubleshooting
 ms.date: 11/7/2019
-ms.openlocfilehash: b9fa73ee38e337a547816432212bc68d419f40bb
-ms.sourcegitcommit: 1d366d72357db47feaea20c54004dc4467391364
+ms.openlocfilehash: 22800adc323bda8a60278160f24bc559103fb57e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95411319"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713331"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>排查 Azure 上的 SAP HANA 数据库备份问题
 
@@ -46,13 +46,6 @@ ms.locfileid: "95411319"
 | 错误消息      | <span style="font-weight:normal">指定的 SAP HANA 操作不受支持</span>              |
 | ------------------ | ------------------------------------------------------------ |
 | 可能的原因    | 适用于 SAP HANA 的 Azure 备份不支持在 SAP HANA 本机客户端 (Studio/Cockpit/DBA Cockpit) 上执行的增量备份和操作 |
-| **建议的操作** | 有关详细信息，请参阅[此文](./sap-hana-backup-support-matrix.md#scenario-support)。 |
-
-### <a name="usererrorhanapodoesnotsupportbackuptype"></a>UserErrorHANAPODoesNotSupportBackupType
-
-| 错误消息      | <span style="font-weight:normal">此 SAP HANA 数据库不支持请求的备份类型</span>  |
-| ------------------ | ------------------------------------------------------------ |
-| 可能的原因    | Azure 备份不支持增量备份和使用快照的备份 |
 | **建议的操作** | 有关详细信息，请参阅[此文](./sap-hana-backup-support-matrix.md#scenario-support)。 |
 
 ### <a name="usererrorhanalsnvalidationfailure"></a>UserErrorHANALSNValidationFailure
@@ -153,7 +146,7 @@ ms.locfileid: "95411319"
 - 确保新的 OS 版本、SDC 或 MDC 版本当前[受 Azure 备份支持](sap-hana-backup-support-matrix.md#scenario-support)
 - 对数据库[停止保护并保留数据](sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database)
 - 执行升级或更新
-- 重新运行预注册脚本。 通常，升级过程可能会删除 [必要的角色](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does)。 运行预注册脚本将帮助验证所有必需的角色。
+- 重新运行预注册脚本。 通常，升级过程可能会删除[必需的角色](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does)。 运行注册前脚本可帮助验证所有所需角色。
 - 再次恢复对数据库的保护
 
 ## <a name="sdc-to-mdc-upgrade-with-no-change-in-sid"></a>从 SDC 升级到 MDC（不更改 SID）

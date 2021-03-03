@@ -1,17 +1,16 @@
 ---
 title: 查看 Azure Web 应用分析数据 | Microsoft Docs
 description: 可以使用 Azure Web 应用分析解决方案来收集所有 Azure Web 应用资源的各种指标，以便深入了解 Azure Web 应用。
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/02/2018
-ms.openlocfilehash: e8f70563e54718c7714c21e27be2bacfe81a4439
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: df5b340dc297a9dc3154e8855d5ad584072e2fdb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87318005"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704253"
 ---
 # <a name="view-analytic-data-for-metrics-across-all-your-azure-web-app-resources"></a>查看所有 Azure Web 应用资源的指标的分析数据
 

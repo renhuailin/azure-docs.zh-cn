@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/24/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: f56270d853bf47faebbd6026586111ead6fb0495
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: ec746a5c347db8cb92c95b1d76f3622498f0039f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101091162"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101742375"
 ---
 # <a name="azure-security-baseline-for-azure-firewall-manager"></a>适用于 Azure 防火墙管理器的 Azure 安全基线
 
@@ -437,7 +437,7 @@ Azure 安全中心还可针对某些可疑活动发出警报，例如，失败�
 
 - [如何配置 Log Analytics 工作区保留期](../azure-monitor/logs/manage-cost-storage.md)
 
-- [在 Azure 存储帐户中存储资源日志](../azure-monitor/platform/resource-logs.md#send-to-azure-storage)
+- [在 Azure 存储帐户中存储资源日志](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)
 
 **Azure 安全中心监视**：目前不可用
 

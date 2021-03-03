@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: erhopf
 ms.service: cognitive-services
 ms.date: 02/08/2021
-ms.openlocfilehash: 92d75289fd4459db8c469a4cb562fe28e8aab779
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: 1cea159e6939463352102d7d3ff3dafbdea71b5a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99989013"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710307"
 ---
 # <a name="cognitive-services-docs-whats-new-for-january-1-2021---january-31-2021"></a>认知服务文档：2021年1月1日新增功能-年1月 2021 31 日
 
@@ -29,31 +29,31 @@ ms.locfileid: "99989013"
 
 **新文章**
 
-- [教程：使用 Azure 数据工厂从数据中批量提取信息](/azure/cognitive-services/form-recognizer/tutorial-bulk-processing.md)
+- [教程：使用 Azure 数据工厂从数据中批量提取信息](./form-recognizer/tutorial-bulk-processing.md)
 
 **更新的文章**
 
-- [什么是表单识别器？](/azure/cognitive-services/form-recognizer/overview.md)
+- [什么是表单识别器？](./form-recognizer/overview.md)
 
 ## <a name="immersive-reader"></a>沉浸式阅读器
 
 **更新的文章**
 
-- [创建沉浸式读者资源并配置 Azure Active Directory 身份验证](/azure/cognitive-services/immersive-reader/how-to-create-immersive-reader.md)
+- [创建沉浸式读者资源并配置 Azure Active Directory 身份验证](./immersive-reader/how-to-create-immersive-reader.md)
 
 ## <a name="personalizer"></a>个性化体验创建服务
 
 **更新的文章**
 
-- [特征是指有关操作和上下文的信息](/azure/cognitive-services/personalizer/concepts-features.md)
+- [特征是指有关操作和上下文的信息](./personalizer/concepts-features.md)
 
 ## <a name="text-analytics"></a>文本分析
 
 **更新的文章**
 
-- [文本分析 API v3 语言支持](/azure/cognitive-services/text-analytics/language-support.md)
-- [迁移到文本分析 API 版本 3.x](/azure/cognitive-services/text-analytics/migration-guide.md)
-- [文本分析 API 中有哪些新功能？](/azure/cognitive-services/text-analytics/whats-new.md)
+- [文本分析 API v3 语言支持](./text-analytics/language-support.md)
+- [迁移到文本分析 API 版本 3.x](./text-analytics/migration-guide.md)
+- [文本分析 API 中有哪些新功能？](./text-analytics/whats-new.md)
 
 ## <a name="community-contributors"></a>社区参与者
 

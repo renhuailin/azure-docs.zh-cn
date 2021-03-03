@@ -4,15 +4,15 @@ description: 本文介绍如何在 Azure 春季云中生成和收集结构化应
 author: MikeDodaro
 ms.service: spring-cloud
 ms.topic: conceptual
-ms.date: 01/13/2021
+ms.date: 02/05/2021
 ms.author: brendanm
 ms.custom: devx-track-java
-ms.openlocfilehash: c5c35fe8a352a1bc3467e9512a7fcbc068375bfb
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: e846da81444ae1632cb7f9a4cd413bc3f9b7b232
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99055691"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101701937"
 ---
 # <a name="structured-application-log-for-azure-spring-cloud"></a>适用于 Azure 春季云的结构化应用程序日志
 
@@ -23,13 +23,13 @@ ms.locfileid: "99055691"
 
 **JSON 架构要求：**
 
-| Json 密钥      | Json 值类型|  必需 | 列 Log Analytics| 说明 |
+| Json 密钥      | Json 值类型|  必选 | 列 Log Analytics| 说明 |
 | --------------| ------------|-----------|-----------------|--------------------------|
 | timestamp     | string      |     是   | AppTimestamp    | UTC 格式的时间戳  |
 | logger        | string      |     否    | 记录器          | logger                   |
 | 级别         | string      |     否    | CustomLevel     | 日志级别                |
 | 线程 (thread)        | string      |     否    | 线程          | 线程 (thread)                   |
-| message       | string      |     否    | 消息         | 日志消息              |
+| message       | string      |     否    | Message         | 日志消息              |
 | stackTrace    | string      |     否    | StackTrace      | 异常堆栈跟踪    |
 | exceptionClass| string      |     否    | ExceptionClass  | 异常类名     |
 | mdc           | 嵌套 JSON |     否    |                 | 映射的诊断上下文|
@@ -238,4 +238,4 @@ AppPlatformLogsforSpring
 ```
 
 ## <a name="next-steps"></a>后续步骤
-* 若要了解有关日志查询的详细信息，请参阅 [Azure Monitor 中的日志查询入门](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries)
+* 若要了解有关日志查询的详细信息，请参阅 [Azure Monitor 中的日志查询入门](../azure-monitor/logs/get-started-queries.md)

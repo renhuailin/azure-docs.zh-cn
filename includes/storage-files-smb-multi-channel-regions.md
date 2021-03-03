@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/12/2021
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 057fc654597360a4666342f7de10bf908224f1de
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: 276cc6ad12fe51947ae1db0ece6cbacec4b6771f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100521345"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101732525"
 ---
 Azure 文件共享的 SMB 多通道目前仅在以下区域提供：
 
@@ -31,4 +31,4 @@ Azure 文件共享的 SMB 多通道目前仅在以下区域提供：
 | 瑞士 | 瑞士北部 |
 | 阿拉伯联合酋长国 | 阿拉伯联合酋长国北部 |
 | 英国 | 英国南部，英国西部 |
-| 美国 | 美国中部、美国东部、美国中北部、美国中南部、美国西部 |
+| United States | 美国中部、美国东部、美国中北部、美国中南部、美国西部和美国西部2 |

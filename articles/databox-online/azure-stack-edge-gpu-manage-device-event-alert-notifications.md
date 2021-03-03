@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 02/02/2021
 ms.author: alkohli
-ms.openlocfilehash: 0ab7cdfb3d699a8415739565aae5d4326002bc43
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: c621584fa1dbed06873ac0867e20201e94c4a757
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100389138"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699675"
 ---
 # <a name="manage-device-event-alert-notifications-on-azure-stack-edge-pro-resources"></a>管理 Azure Stack Edge Pro 资源上的设备事件警报通知
 
@@ -23,7 +23,7 @@ ms.locfileid: "100389138"
 
 操作规则可以触发或禁止显示警报通知。 操作规则将添加到 *操作组* -一组通知首选项，用于通知需要对资源或资源集的不同上下文中触发的警报进行操作的用户。
 
-有关操作规则的详细信息，请参阅 [配置操作规则](/azure/azure-monitor/platform/alerts-action-rules?tabs=portal#configuring-an-action-rule)。 有关操作组的详细信息，请参阅 [在 Azure 门户中创建和管理操作组](/azure/azure-monitor/platform/action-groups)。
+有关操作规则的详细信息，请参阅 [配置操作规则](../azure-monitor/alerts/alerts-action-rules.md?tabs=portal#configuring-an-action-rule)。 有关操作组的详细信息，请参阅 [在 Azure 门户中创建和管理操作组](../azure-monitor/alerts/action-groups.md)。
 
 > [!NOTE]
 > 操作规则功能处于预览阶段。 当改进进程时，某些屏幕和步骤可能会更改。
@@ -34,7 +34,7 @@ ms.locfileid: "100389138"
 在 Azure 门户中执行以下步骤，为 Azure Stack Edge 设备创建操作规则。
 
 > [!NOTE]
-> 这些步骤创建将通知发送到操作组的操作规则。 有关创建操作规则以禁止显示通知的详细信息，请参阅 [配置操作规则](/azure/azure-monitor/platform/alerts-action-rules?tabs=portal#configuring-an-action-rule)。
+> 这些步骤创建将通知发送到操作组的操作规则。 有关创建操作规则以禁止显示通知的详细信息，请参阅 [配置操作规则](../azure-monitor/alerts/alerts-action-rules.md?tabs=portal#configuring-an-action-rule)。
 
 1. 中转到 Azure 门户中的 Azure Stack Edge 设备，然后 **> "监视**" "警报"。 选择 " **管理操作**"。
 
@@ -72,7 +72,7 @@ ms.locfileid: "100389138"
 
    2. 在 " **筛选器**" 下，添加要应用的每个筛选器。 对于每个筛选器，请选择筛选器类型、 **运算符** 和 **值**。
    
-      有关筛选器选项的列表，请参阅 [筛选条件](/azure/azure-monitor/platform/alerts-action-rules?tabs=portal#filter-criteria)。
+      有关筛选器选项的列表，请参阅 [筛选条件](../azure-monitor/alerts/alerts-action-rules.md?tabs=portal#filter-criteria)。
 
       下面的示例筛选器适用于监视服务为 Azure Stack Edge 资源引发的严重级别为2、3和4的所有警报。
 
@@ -85,11 +85,11 @@ ms.locfileid: "100389138"
    ![用于创建发送通知的操作规则的操作组选项](media/azure-stack-edge-gpu-manage-device-event-alert-notifications/new-action-rule-action-group-01.png)
 
    > [!NOTE]
-   > 若要创建禁止显示通知的规则，请选择 " **禁止** 显示"。 有关详细信息，请参阅 [配置操作规则](/azure/azure-monitor/platform/alerts-action-rules?tabs=portal#configuring-an-action-rule)。
+   > 若要创建禁止显示通知的规则，请选择 " **禁止** 显示"。 有关详细信息，请参阅 [配置操作规则](../azure-monitor/alerts/alerts-action-rules.md?tabs=portal#configuring-an-action-rule)。
 
 6. 选择要与此操作规则一起使用的操作组。 然后选取“选择”  。 你的新操作规则将添加到所选操作组的通知首选项。
 
-   如果需要创建新的操作组，请选择 " **+ 创建操作组**"，并按照 [使用 Azure 门户创建操作组](/azure/azure-monitor/platform/action-groups#create-an-action-group-by-using-the-azure-portal)中的步骤操作。
+   如果需要创建新的操作组，请选择 " **+ 创建操作组**"，并按照 [使用 Azure 门户创建操作组](../azure-monitor/alerts/action-groups.md#create-an-action-group-by-using-the-azure-portal)中的步骤操作。
 
    ![选择要用于规则的操作组，然后选择 "选择"。](media/azure-stack-edge-gpu-manage-device-event-alert-notifications/new-action-rule-action-group-02.png)
 
@@ -123,8 +123,8 @@ ms.locfileid: "100389138"
 
 ## <a name="next-steps"></a>后续步骤
 
-<!-- - See [Create and manage action groups in the Azure portal](/azure/azure-monitor/platform/action-groups) for guidance on creating a new action group.
-- See [Configure an action rule](/azure/azure-monitor/platform/alerts-action-rules?tabs=portal#configuring-an-action-rule) for more info about creating action rules that send or suppress alert notifications. -2 bullets referenced above. Making room for local tasks in "Next Steps." --> 
+<!-- - See [Create and manage action groups in the Azure portal](../azure-monitor/alerts/action-groups.md) for guidance on creating a new action group.
+- See [Configure an action rule](../azure-monitor/alerts/alerts-action-rules.md?tabs=portal#configuring-an-action-rule) for more info about creating action rules that send or suppress alert notifications. -2 bullets referenced above. Making room for local tasks in "Next Steps." --> 
 - 有关查看设备事件、硬件状态和指标图表的信息，请参阅 [监视 Azure Stack Edge Pro](azure-stack-edge-monitor.md) 。 
 - 请参阅 [使用 Azure Monitor](azure-stack-edge-gpu-enable-azure-monitor.md) 获取有关优化 Azure Stack EDGE Pro GPU 设备的 Azure Monitor 的信息。
-- 有关管理单个警报的信息，请参阅 [使用 Azure Monitor 链接目标创建、查看和管理指标警报](/azure/azure-monitor/platform/alerts-metric) 。
+- 有关管理单个警报的信息，请参阅 [使用 Azure Monitor 链接目标创建、查看和管理指标警报](../azure-monitor/alerts/alerts-metric.md) 。

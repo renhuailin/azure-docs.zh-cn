@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, bonova, danil
 ms.date: 1/12/2021
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: d43f794d6d73e26d791c5a11961470d2131b8951
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: a182ca3ba70b9faa1ba67fdb6c91a4eaf8e766ef
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100378615"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691189"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>SQL Server 与 Azure SQL 托管实例之间的 T-SQL 差异
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -277,7 +277,7 @@ WITH PRIVATE KEY (<private_key_options>)
 - `SINGLE_USER`
 - `WITNESS`
 
-某些 `ALTER DATABASE` 语句（例如 [SET CONTAINMENT](https://docs.microsoft.com/sql/relational-databases/databases/migrate-to-a-partially-contained-database?#converting-a-database-to-partially-contained-using-transact-sql)）可能会暂时失败，例如，在自动数据库备份期间失败，或者在数据库创建后立即失败。 在这种情况下应重试 `ALTER DATABASE` 语句。 有关相关错误消息的详细信息，请参阅[备注部分](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-mi-current&preserve-view=true&tabs=sqlpool#remarks-2)。
+某些 `ALTER DATABASE` 语句（例如 [SET CONTAINMENT](/sql/relational-databases/databases/migrate-to-a-partially-contained-database#converting-a-database-to-partially-contained-using-transact-sql)）可能会暂时失败，例如，在自动数据库备份期间失败，或者在数据库创建后立即失败。 在这种情况下应重试 `ALTER DATABASE` 语句。 有关相关错误消息的详细信息，请参阅[备注部分](/sql/t-sql/statements/alter-database-transact-sql?preserve-view=true&tabs=sqlpool&view=azuresqldb-mi-current#remarks-2)。
 
 有关详细信息，请参阅 [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql-file-and-filegroup-options)。
 
@@ -395,12 +395,12 @@ Azure SQL 托管实例当前不支持本地或 Azure 虚拟机中的 MSDTC 通�
 SQL 托管实例中的链接服务器支持有限数量的目标：
 
 - 支持的目标为 SQL 托管实例、SQL 数据库、Azure Synapse SQL [无服务器](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/) 和专用池，以及 SQL Server 实例。 
-- 分布式可写事务仅在托管实例之间可用。 有关详细信息，请参阅[分布式事务](https://docs.microsoft.com/azure/azure-sql/database/elastic-transactions-overview)。 但是，MS DTC 不受支持。
+- 分布式可写事务仅在托管实例之间可用。 有关详细信息，请参阅[分布式事务](../database/elastic-transactions-overview.md)。 但是，MS DTC 不受支持。
 - 不支持的目标为文件、Analysis Services 和其他 RDBMS。 尝试使用 `BULK INSERT` 或 `OPENROWSET` 作为文件导入的替代方法，或使用 [azure Synapse Analytics 中的无服务器 SQL 池](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/)加载文件。
 
 操作： 
 
-- 只有托管实例才支持[跨实例](https://docs.microsoft.com/azure/azure-sql/database/elastic-transactions-overview)写入事务。
+- 只有托管实例才支持[跨实例](../database/elastic-transactions-overview.md)写入事务。
 - 支持使用 `sp_dropserver` 删除链接服务器。 请参阅 [sp_dropserver](/sql/relational-databases/system-stored-procedures/sp-dropserver-transact-sql)。
 - `OPENROWSET` 函数只能用于在 SQL Server 实例上执行查询。 它们可以是托管的、位于本地或位于虚拟机中。 请参阅 [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql)。
 - `OPENDATASOURCE` 函数只能用于在 SQL Server 实例上执行查询。 它们可以是托管的、位于本地或位于虚拟机中。 仅支持将 `SQLNCLI`、`SQLNCLI11` 和 `SQLOLEDB` 值用作提供程序。 例如 `SELECT * FROM OPENDATASOURCE('SQLNCLI', '...').AdventureWorks2012.HumanResources.Employee`。 请参阅 [OPENDATASOURCE](/sql/t-sql/functions/opendatasource-transact-sql)。

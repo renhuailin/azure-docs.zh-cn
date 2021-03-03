@@ -8,12 +8,12 @@ ms.date: 01/26/2021
 ms.author: prsandhu
 ms.reviewer: cynthn
 ms.custom: fasttrack-edit, mvc, references_regions
-ms.openlocfilehash: 16bb173bdbe390da46f2dc105baa9bc73d25a3dc
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: fee000009be90a083406725fe7f1e8c4382af3e9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100557026"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101701444"
 ---
 # <a name="azure-services-that-support-availability-zones"></a>支持可用性区域的 Azure 服务
 
@@ -51,7 +51,7 @@ ms.locfileid: "100557026"
 |--------------------|----------------------|---------------------|----------------|
 |                    |                      |                     |                |
 | 加拿大中部     | 法国中部       | 南非北部 * | Japan East     |
-| Central US         | 德国中西部 |                     | Southeast Asia |
+| 美国中部         | 德国中西部 |                     | 东南亚 |
 | 美国东部            | 北欧         |                     | 澳大利亚东部 |
 | 美国东部 2          | 英国南部             |                     |                |
 | 美国中南部 | 西欧          |                     |                |
@@ -77,7 +77,7 @@ ms.locfileid: "100557026"
 
 **基础服务**
 
-|     产品                                                    | 复原             |
+|     Products                                                    | 复原             |
 |-----------------------------------------------------------------|:----------------------------:|
 |     存储帐户                                           | ： large_blue_diamond：  |
 |     应用程序网关 (V2)                                   | ： large_blue_diamond：  |
@@ -90,7 +90,7 @@ ms.locfileid: "100557026"
 |     Azure SQL Database (高级 & 业务关键层)      | ： large_blue_diamond：  |
 |     磁盘存储                                                | ： large_blue_diamond：  |
 |     事件中心                                                  | ： large_blue_diamond：  |
-|     密钥保管库                                                   | ： large_blue_diamond：  |
+|     Key Vault                                                   | ： large_blue_diamond：  |
 |     负载均衡器                                               | ： large_blue_diamond：  |
 |     服务总线                                                 | ： large_blue_diamond：  |
 |     Service Fabric                                            | ： large_blue_diamond：  |
@@ -106,13 +106,15 @@ ms.locfileid: "100557026"
 |     虚拟机： Dv3-Series                              | ： large_blue_diamond：  |
 |     虚拟机： ESv3-Series                             | ： large_blue_diamond：  |
 |     虚拟机： Ev3-Series                              | ： large_blue_diamond：  |
+|     虚拟机： F 系列                                | ： large_blue_diamond：  |
+|     虚拟机： FS-Series                               | ： large_blue_diamond：  |
 |     虚拟网络                                           | ： large_blue_diamond：  |
 |     VPN 网关                                                 | ： large_blue_diamond：  |
 
 
 **主流服务**
 
-| 产品                                        | 复原 |
+| Products                                        | 复原 |
 |-------------------------------------------------|:------------:|
 | 应用服务环境                        |      ： large_blue_diamond：  |
 | Azure Active Directory 域服务          |      ： large_blue_diamond：  |
@@ -129,11 +131,18 @@ ms.locfileid: "100557026"
 | Azure 专用链接                              |      ： large_blue_diamond：  |
 | Azure Red Hat OpenShift                         |      ： large_blue_diamond：  |
 | Azure Site Recovery                             |      ： large_blue_diamond：  |
+| Azure SQL：虚拟机                      |      ： large_blue_diamond：  |
+| Azure 搜索                                    |      ： large_blue_diamond：  |
+| Azure Web 应用程序防火墙                  |      ： large_blue_diamond：  |
+| 认知服务：文本分析              |      ： large_blue_diamond：  |
 | 容器注册表                              |      ： large_blue_diamond：  |
 | 事件网格                                      |      ： large_blue_diamond：  |
 | 网络观察程序                                 |      ： large_blue_diamond：  |
+| 网络观察程序：流量分析              |      ： large_blue_diamond：  |
 | Power BI Embedded                               |      ： large_blue_diamond：  |
 | 高级 Blob 存储                            |      ： large_blue_diamond：  |
+| 存储： Azure 高级文件                    |      ： large_blue_diamond：  |
+| 虚拟机： Azure 专用主机          |      ： large_blue_diamond：  |
 | 虚拟机： Ddsv4-Series                  |      ： large_blue_diamond：  |
 | 虚拟机： Ddv4-Series                   |      ： large_blue_diamond：  |
 | 虚拟机： Dsv4-Series                   |      ： large_blue_diamond：  |
@@ -145,29 +154,41 @@ ms.locfileid: "100557026"
 | 虚拟机： Fsv2-Series                   |      ： large_blue_diamond：  |
 | 虚拟机： M 系列                      |      ： large_blue_diamond：  |
 | 虚拟 WAN                                     |      ： large_blue_diamond：  |
+| 虚拟 WAN： ExpressRoute                       |      ： large_blue_diamond：  |
+| 虚拟 WAN：点到站点 VPN 网关          |      ： large_blue_diamond：  |
+| 虚拟 WAN：站点到站点 VPN 网关           |      ： large_blue_diamond：  |
 
 
 **非区域**
 
-|     产品                                  |     复原    |
+|     Products                                  |     复原    |
 |-----------------------------------------------|:-------------------:|
 |     Azure DNS                                 |     ： globe_with_meridians：             |
 |     Azure Active Directory                  |     ： globe_with_meridians：             |
+|     Azure 高级威胁防护          |     ： globe_with_meridians：             |
 |     Azure 顾问                             |     ： globe_with_meridians：             |
+|     Azure 蓝图                          |     ： globe_with_meridians：             |
 |     Azure 机器人服务                        |     ： globe_with_meridians：             |
 |     Azure Defender for IoT                  |     ： globe_with_meridians：             |
+|     Azure Front Door                           |     ： globe_with_meridians：             |
 |     Azure 信息保护            |     ： globe_with_meridians：             |
 |     Azure Lighthouse                        |     ： globe_with_meridians：             |
 |     Azure 托管应用程序              |     ： globe_with_meridians：             |
 |     Azure Maps                                |     ： globe_with_meridians：             |
 |     Azure Policy                              |     ： globe_with_meridians：             |
 |     Azure 资源关系图                    |     ： globe_with_meridians：             |
+|     Azure Sentinel                            |     ： globe_with_meridians：             |
 |     Azure Stack                               |     ： globe_with_meridians：             |
 |     Azure Stack 边缘                        |     ： globe_with_meridians：             |
 |     Cloud Shell                               |     ： globe_with_meridians：             |
+|     内容分发网络                  |     ： globe_with_meridians：             |
+|     成本管理                           |     ： globe_with_meridians：             |
 |     Microsoft Azure 的客户密码箱    |     ： globe_with_meridians：             |
+|     Intune                                    |     ： globe_with_meridians：             |
 |     Microsoft Azure 对等互连服务         |     ： globe_with_meridians：             |
 |     Microsoft Azure 门户                  |     ： globe_with_meridians：             |
+|     Microsoft Cloud App Security              |     ： globe_with_meridians：             |
+|     Microsoft Graph                           |     ： globe_with_meridians：             |
 |     安全中心                         |     ： globe_with_meridians：             |
 |     流量管理器                         |     ： globe_with_meridians：             |
 

@@ -3,12 +3,12 @@ title: 在 Visual Studio 中删除 Application Insights - Azure Monitor
 description: 如何在 Visual Studio 中删除用于 ASP.NET 和 ASP.NET Core 的 Application Insights SDK。
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: 5bfa6ee21cc1a55f653c0e79807a14ac34082e73
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1d70413fa6a47e2d41693db6eb705f31b2a2b1b2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90981475"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704304"
 ---
 # <a name="how-to-remove-application-insights-in-visual-studio"></a>如何在 Visual Studio 中删除 Application Insights
 
@@ -27,7 +27,7 @@ ms.locfileid: "90981475"
     > [!NOTE]
     > 如果启用了跟踪信息收集，则需要先卸载 Microsoft.ApplicationInsights.TraceListener。 输入 `Uninstall-package Microsoft.ApplicationInsights.TraceListener` 然后按照以下步骤删除 Microsoft.ApplicationInsights.Web。
 
-1. 输入以下命令： `Uninstall-Package Microsoft.ApplicationInsights.Web -RemoveDependencies`
+1. 输入以下命令：`Uninstall-Package Microsoft.ApplicationInsights.Web -RemoveDependencies`
 
     输入该命令后，将从项目中卸载 Application Insights 包及其所有依赖项。
     
@@ -39,17 +39,17 @@ ms.locfileid: "90981475"
 
     ![在顶部菜单中，单击“工具”>“NuGet 包管理器”>“包管理器控制台”](./media/remove-application-insights/package-manager.png)
 
-1. 输入以下命令： ` Uninstall-Package Microsoft.ApplicationInsights.AspNetCore -RemoveDependencies`
+1. 输入以下命令：` Uninstall-Package Microsoft.ApplicationInsights.AspNetCore -RemoveDependencies`
 
     输入该命令后，将从项目中卸载 Application Insights 包及其所有依赖项。
 
 ---
 
-## <a name="uninstall-using-the-visual-studio-nugetui"></a>使用 Visual Studio NuGet UI 卸载
+## <a name="uninstall-using-the-visual-studio-nuget-ui"></a>使用 Visual Studio NuGet UI 卸载
 
 # <a name="net"></a>[.NET](#tab/net)
 
-1. 在右侧的“解决方案资源管理器”中，右键单击“解决方案”并选择“管理解决方案的 NuGet 包”。 **   ****   ****
+1. 在右侧的解决方案资源管理器中，右键单击“解决方案”，并选择“为解决方案管理 NuGet 包” 。
 
     然后，会显示一个屏幕，可在其中编辑属于项目的所有 NuGet 包。
     
@@ -57,26 +57,26 @@ ms.locfileid: "90981475"
 
     > [!NOTE]
     > 如果启用了跟踪信息收集，需要在未选中“删除依赖项”的情况下，先卸载 Microsoft.ApplicationInsights.TraceListener，然后在选中“删除依赖项”的情况下，按照以下步骤卸载 Microsoft.ApplicationInsights.Web。
-    
-1. 单击“Microsoft.ApplicationInsights.Web”包。 在右侧选中“项目”旁边的复选框以选择所有项目。 **  
-    
-1. 要在卸载时删除所有依赖项，请在所选项目部分下选择“选项”下拉按钮。 ****  
 
-    在“卸载选项”下，选中“删除依赖项”旁边的复选框 **  ** 。
+1. 单击 **applicationinsights.config** 包。 在右侧选中“项目”旁边的复选框以选择所有项目。
+
+1. 若要在卸载时删除所有依赖项，请在选定项目所在的部分下选择“选项”下拉按钮。
+
+    在“卸载选项”下，选中“删除依赖项”旁边的复选框 。
 
 1. 选择“卸载” 。
     
-    ![屏幕截图显示 Applicationinsights.config 窗口，其中突出显示了删除依赖项并突出显示了卸载。](./media/remove-application-insights/uninstall-framework.png)
+    ![屏幕截图显示了 Microsoft.ApplicationInsights.Web 窗口，其中选中了“删除依赖项”并突出显示了“卸载”。](./media/remove-application-insights/uninstall-framework.png)
 
-    随即出现一个对话框，显示要从应用程序中删除的所有依赖项。 选择“确定”以卸载 ****  。
+    随即出现一个对话框，显示要从应用程序中删除的所有依赖项。 选择“确定”进行卸载。
     
-    ![屏幕截图显示一个对话框，其中包含要删除的依赖项。](./media/remove-application-insights/preview-uninstall-framework.png)
+    ![屏幕截图显示了一个对话框，其中包含要删除的依赖项。](./media/remove-application-insights/preview-uninstall-framework.png)
     
-1.  卸载所有内容后，可能仍会在“解决方案资源管理器”中看到“ApplicationInsights.config”和“AiHandleErrorAttribute.cs” ** 。 可手动删除这两个文件。
+1.  卸载所有内容后，你可能仍会在 *解决方案资源管理器* 中看到 "ApplicationInsights.config" 和 "AiHandleErrorAttribute.cs"。  可手动删除这两个文件。
 
 # <a name="net-core"></a>[.NET Core](#tab/netcore)
 
-1. 在右侧的“解决方案资源管理器”中，右键单击“解决方案”并选择“管理解决方案的 NuGet 包”。 **   ****   ****
+1. 在右侧的解决方案资源管理器中，右键单击“解决方案”，并选择“为解决方案管理 NuGet 包” 。
 
     然后，会显示一个屏幕，可在其中编辑属于项目的所有 NuGet 包。
 

@@ -5,14 +5,14 @@ services: azure-app-configuration
 author: AlexandraKemperMS
 ms.service: azure-app-configuration
 ms.topic: how-to
-ms.date: 07/27/2020
+ms.date: 02/23/2021
 ms.author: alkemper
-ms.openlocfilehash: c5e0cc3eb29fb612460b16d8de9dee62949b5bd2
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: 7d343e07414dd1c3f9786c1684eb6f14d5f45e51
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99979600"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101718176"
 ---
 # <a name="push-settings-to-app-configuration-with-azure-pipelines"></a>使用 Azure Pipelines 将设置推送到应用配置
 
@@ -80,7 +80,7 @@ ms.locfileid: "99979600"
 
 - **Azure 订阅**：包含可用 Azure 服务连接的下拉列表。 若要更新和刷新可用 Azure 服务连接的列表，请按文本框右侧的“刷新 Azure 订阅”按钮。
 - 应用配置名称：用于在所选订阅下加载可用配置存储的下拉列表。 若要更新和刷新可用配置存储的列表，请按文本框右侧的“刷新应用配置名称”按钮。
-- 配置文件路径：你的配置文件的路径。 可以浏览生成项目以选择一个配置文件。 （文本框右侧的 `...` 按钮）。
+- 配置文件路径：你的配置文件的路径。 可以浏览生成项目以选择一个配置文件。 （文本框右侧的 `...` 按钮）。 支持的文件格式为： yaml、json、properties。
 - 分隔符：用于平展 .json 和 .yml 文件的分隔符。
 - **深度**：要将 .json 和 .yml 文件平展到的深度。
 - 前缀：一个字符串，它会追加到向应用配置存储推送的每个键的开头。

@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 01/19/2021
-ms.openlocfilehash: c8d0ea43410b8d191d3d0b08c2f232bd72c80b20
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: b86414758c3b644725e5aa29ca3b314f489508aa
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101669618"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101693520"
 ---
 # <a name="automatically-label-your-data-in-azure-purview"></a>在 Azure 监控范围中自动标记数据
 
@@ -102,7 +102,10 @@ ms.locfileid: "101669618"
 
 **将敏感度标签扩展到监控范围：**
 
-在 Microsoft 365 中，导航到 " **信息保护** " 页。 在 "将 **标签扩展到 Azure 中的资产监控范围**" 中，选择 " **打开** " 按钮，然后在显示的确认对话框中选择 **"是"** 。
+以下步骤使你可以在 Azure 监控范围中使用你的敏感度标签，你可以在其中将灵敏度标签应用于 SQL 列、Azure Blob 存储中的文件等资产。
+
+1. 在 Microsoft 365 中，导航到 " **信息保护** " 页。 
+1. 在 "将 **标签扩展到 Azure 中的资产监控范围**" 中，选择 " **打开** " 按钮，然后在显示的确认对话框中选择 **"是"** 。
 
 例如：
 

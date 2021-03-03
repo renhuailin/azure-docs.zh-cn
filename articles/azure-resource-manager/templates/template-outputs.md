@@ -2,13 +2,13 @@
 title: 模板中的输出
 description: 介绍如何在 Azure 资源管理器模板中定义输出值 (ARM 模板) 和 Bicep 文件。
 ms.topic: conceptual
-ms.date: 02/17/2021
-ms.openlocfilehash: 0371a5293b302a2eb0febb010fc16caa8355eb18
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.date: 02/19/2021
+ms.openlocfilehash: 91feb1a0b653e4b6e96e38df57f87af27e4676f5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100653792"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703828"
 ---
 # <a name="outputs-in-arm-templates"></a>ARM 模板中的输出
 
@@ -35,7 +35,21 @@ ms.locfileid: "100653792"
 }
 ```
 
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+对于 Bicep，请使用 `output` 关键字。
+
+在下面的示例中， `publicIP` 是 Bicep 文件中部署的公共 IP 地址的标识符。 输出值获取公共 IP 地址的完全限定域名。
+
+```bicep
+output hostname string = publicIP.properties.dnsSettings.fqdn
+```
+
+---
+
 如果需要输出在名称中包含连字符的属性，请在该名称两侧使用方括号，而不要使用点表示法。 例如，使用  `['property-name']` 而不是 `.property-name` 。
+
+# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -58,16 +72,6 @@ ms.locfileid: "100653792"
 ```
 
 # <a name="bicep"></a>[Bicep](#tab/bicep)
-
-对于 Bicep，请使用 `output` 关键字。
-
-在以下示例中， `publicIP` 是 Bicep 文件中部署的公共 IP 地址的符号名称。 输出值获取公共 IP 地址的完全限定域名。
-
-```bicep
-output hostname string = publicIP.properties.dnsSettings.fqdn
-```
-
-如果需要输出在名称中包含连字符的属性，请在该名称两侧使用方括号，而不要使用点表示法。 例如，使用  `['property-name']` 而不是 `.property-name` 。
 
 ```bicep
 var user = {
@@ -99,9 +103,7 @@ output stringOutput string = user['user-name']
 
 # <a name="bicep"></a>[Bicep](#tab/bicep)
 
-条件输出当前不适用于 Bicep。
-
-但是，可以使用运算符根据 `?` 条件返回两个值中的一个值。
+若要在 Bicep 中指定条件输出，请使用 `?` 运算符。 下面的示例根据条件返回终结点 URL 或空字符串。
 
 ```bicep
 param deployStorage bool = true

@@ -1,20 +1,24 @@
 ---
 title: 链接的 Log Analytics 工作区支持的区域
 description: 本文介绍自动化帐户与 Log Analytics 工作区之间受支持的区域映射，因为它与 Azure 自动化的某些功能相关。
-ms.date: 01/21/2021
+ms.date: 02/17/2021
 services: automation
 ms.topic: conceptual
 ms.custom: references_regions
-ms.openlocfilehash: 3b744127b51b0e0db63c158feaf463af4cd0bdcf
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 0599dcb57b46d1e48b4035acac8b64edbbe06912
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98704315"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720165"
 ---
 # <a name="supported-regions-for-linked-log-analytics-workspace"></a>链接的 Log Analytics 工作区支持的区域
 
 在 Azure 自动化中，你可以为你的服务器和虚拟机启用更新管理、更改跟踪和清点以及在空闲时间启动/停止 VM 功能。 这些功能与 Log Analytics 工作区有依赖关系，因此需要将工作区链接到自动化帐户。 但是，只有某些区域才支持将它们链接在一起。 通常，如果你计划将自动化帐户链接到不会启用这些功能的工作区，则该映射不适用。
+
+此处所述的映射仅适用于将 Log Analytics 工作区链接到自动化帐户。 它们不适用于连接到已链接到自动化帐户的工作区 (Vm) 的虚拟机。 Vm 并不限于给定 Log Analytics 工作区所支持的区域。 它们可以位于任何区域中。 请记住，在不同区域中的 Vm 可能会影响状态、本地和国家/地区的法规要求，或公司的符合性要求。 在不同的区域中具有 Vm 还会导致数据带宽费用。
+
+在将 Vm 连接到其他区域中的工作区之前，应查看要求和可能的成本，以确认并了解法律和成本影响。
 
 本文提供了支持的映射，以便在自动化帐户中成功启用和使用这些功能。
 

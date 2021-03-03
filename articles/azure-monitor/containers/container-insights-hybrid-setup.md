@@ -1,22 +1,22 @@
 ---
-title: 为混合 Kubernetes 群集配置适用于容器的 Azure Monitor | Microsoft Docs
-description: 本文介绍了如何配置适用于容器的 Azure Monitor 以监视在 Azure Stack 或其他环境中承载的 Kubernetes 群集。
+title: 通过容器见解配置混合 Kubernetes 群集 |Microsoft Docs
+description: 本文介绍如何配置 Container insights 来监视 Azure Stack 或其他环境中托管的 Kubernetes 群集。
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 12901b1d2d7edd85fbe1650600856d09105c15b2
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: d2692b4a634d60ef62339f68277591d711260712
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100607756"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711240"
 ---
-# <a name="configure-hybrid-kubernetes-clusters-with-azure-monitor-for-containers"></a>为混合 Kubernetes 群集配置适用于容器的 Azure Monitor
+# <a name="configure-hybrid-kubernetes-clusters-with-container-insights"></a>通过容器见解配置混合 Kubernetes 群集
 
-适用于容器的 Azure Monitor 针对 Azure Kubernetes 服务 (AKS) 和 [Azure 上的 AKS 引擎](https://github.com/Azure/aks-engine)（Azure 上承载的一个自我管理的 Kubernetes 群集）提供了丰富的监视体验。 本文介绍了如何对在 Azure 外部承载的 Kubernetes 群集启用监视，并实现类似的监视体验。
+Container insights 提供丰富的监视体验，适用于 azure 上的 Azure Kubernetes 服务 (AKS) 和 [AKS Engine](https://github.com/Azure/aks-engine)，这是托管在 azure 上的自托管 Kubernetes 群集。 本文介绍了如何对在 Azure 外部承载的 Kubernetes 群集启用监视，并实现类似的监视体验。
 
 ## <a name="supported-configurations"></a>支持的配置
 
-适用于容器的 Azure Monitor 正式支持以下配置。 如果你使用不同版本的 Kubernetes 和操作系统，请将邮件发送至 askcoin@microsoft.com。
+容器见解正式支持以下配置。 如果你使用不同版本的 Kubernetes 和操作系统，请将邮件发送至 askcoin@microsoft.com。
 
 - 环境：
 
@@ -36,19 +36,19 @@ ms.locfileid: "100607756"
 
 在开始之前，请确保做好以下准备：
 
-- [Log Analytics 工作区](../platform/design-logs-deployment.md)。
+- [Log Analytics 工作区](../logs/design-logs-deployment.md)。
 
-    用于容器的 Azure Monitor 支持在 Azure [产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor) 中列出的区域中的 Log Analytics 工作区。 若要创建你自己的工作区，可通过 [Azure 资源管理器](../samples/resource-manager-workspace.md)、[PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json) 或 [Azure 门户](../learn/quick-create-workspace.md)进行创建。
+    Container insights 支持 Azure [产品（按区域](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor)）中列出的区域中的 Log Analytics 工作区。 若要创建你自己的工作区，可通过 [Azure 资源管理器](../logs/resource-manager-workspace.md)、[PowerShell](../logs/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json) 或 [Azure 门户](../logs/quick-create-workspace.md)进行创建。
 
     >[!NOTE]
     >不支持对同一 Log Analytics 工作区中具有相同群集名称的多个群集启用监视。 群集名称必须独一无二。
     >
 
-- 需要成为 **Log Analytics 参与者角色** 的成员才能启用容器监视。 要详细了解如何控制对 Log Analytics 工作区的访问，请参阅[管理对工作区和日志数据的访问](../platform/manage-access.md)。
+- 需要成为 **Log Analytics 参与者角色** 的成员才能启用容器监视。 要详细了解如何控制对 Log Analytics 工作区的访问，请参阅[管理对工作区和日志数据的访问](../logs/manage-access.md)。
 
-- 若要查看监视数据，需要在 Log Analytics 工作区（该工作区为容器配置了 Azure Monitor）中拥有 [Log Analytics 读者](../platform/manage-access.md#manage-access-using-azure-permissions)角色。
+- 若要查看监视数据，需要在 Log Analytics 工作区中具有使用容器见解配置的 [*Log Analytics 读者*](../logs/manage-access.md#manage-access-using-azure-permissions) 角色。
 
-- [HELM 客户端](https://helm.sh/docs/using_helm/)，用于为指定的 Kubernetes 群集载入适用于容器的 Azure Monitor 图表。
+- [HELM client](https://helm.sh/docs/using_helm/) ，为指定的 Kubernetes 群集加入容器见解图表。
 
 - 适用于 Linux 的 Log Analytics 代理的容器化版本与 Azure Monitor 进行通信需要以下代理和防火墙配置信息：
 
@@ -67,11 +67,11 @@ ms.locfileid: "100607756"
 
 ## <a name="enable-monitoring"></a>启用监视
 
-为混合 Kubernetes 群集启用适用于容器的 Azure Monitor 的操作包括按顺序执行以下步骤。
+为混合 Kubernetes 群集启用容器见解包含按顺序执行以下步骤。
 
 1. 为 Log Analytics 工作区配置容器见解解决方案。   
 
-2. 通过 Log Analytics 工作区启用适用于容器的 Azure Monitor 的 HELM 图表。
+2. 使用 Log Analytics 工作区启用 Container insights HELM 图表。
 
 有关 Azure Monitor 中监视解决方案的其他信息，请参阅[此文](../../azure-monitor/insights/solutions.md)。
 
@@ -252,7 +252,7 @@ ms.locfileid: "100607756"
 
 ## <a name="install-the-helm-chart"></a>安装 HELM 图表
 
-本部分介绍如何为适用于容器的 Azure Monitor 安装容器化代理。 在继续之前，需要先确定 `omsagent.secret.wsid` 参数所需的工作区 ID 和 `omsagent.secret.key` 参数所需的主密钥。 可以通过执行以下步骤来确定这些信息，然后运行命令来安装使用 HELM 图表的代理。
+在本部分中，你将安装容器 insights 的容器化代理。 在继续之前，需要先确定 `omsagent.secret.wsid` 参数所需的工作区 ID 和 `omsagent.secret.key` 参数所需的主密钥。 可以通过执行以下步骤来确定这些信息，然后运行命令来安装使用 HELM 图表的代理。
 
 1. 运行以下命令以确定工作区 ID：
 
@@ -325,14 +325,14 @@ ms.locfileid: "100607756"
 
 从图表版本 1.0.0 开始，可通过 ConfigMap 控制代理数据收集设置。 有关代理数据收集设置的文档，请参阅[此文](container-insights-agent-config.md)。
 
-成功部署图表后，可以在 Azure 门户中通过适用于容器的 Azure Monitor 查看混合 Kubernetes 群集的数据。  
+成功部署图表后，可以在 Azure 门户的容器见解中查看混合 Kubernetes 群集的数据。  
 
 >[!NOTE]
 >从代理收集数据到在 Azure Log Analytics 工作区中提交数据，引入延迟大约为 5 到 10 分钟。 群集的状态将显示值“无数据”或“未知”，直到所有必需的监视数据在 Azure Monitor 中可用。
 
 ## <a name="configure-proxy-endpoint"></a>配置代理终结点
 
-从图表版本 2.7.1 开始，图表将支持使用 `omsagent.proxy` 图表参数来指定代理终结点。 这样，图表即可通过代理服务器进行通信。 适用于容器的 Azure Monitor 代理与 Azure Monitor 之间的通信可以通过 HTTP 或 HTTPS 代理服务器进行，并且支持匿名身份验证和基本身份验证（用户名/密码）。
+从图表版本 2.7.1 开始，图表将支持使用 `omsagent.proxy` 图表参数来指定代理终结点。 这样，图表即可通过代理服务器进行通信。 容器 insights 代理与 Azure Monitor 之间的通信可以是 HTTP 或 HTTPS 代理服务器，并且支持匿名身份验证和基本身份验证 (用户名/密码) 。
 
 代理配置值具有以下语法：`[protocol://][user:password@]proxyhost[:port]`
 
@@ -356,7 +356,7 @@ ms.locfileid: "100607756"
 如果尝试为混合 Kubernetes 群集启用监视功能时遇到错误，请复制 PowerShell 脚本 [TroubleshootError_nonAzureK8s.ps1](https://aka.ms/troubleshoot-non-azure-k8s)，并将其保存到计算机上的某个文件夹中。 提供此脚本是为了帮助你检测和解决遇到的问题。 它可检测和尝试更正的问题如下所述：
 
 - 指定的 Log Analytics 工作区有效
-- 为 Log Analytics 工作区配置了适用于容器的 Azure Monitor 解决方案。 如果没有，请配置工作区。
+- Log Analytics 工作区是通过容器 insights 解决方案配置的。 如果没有，请配置工作区。
 - OmsAgent replicaset Pod 正在运行
 - OmsAgent daemonset Pod 正在运行
 - OmsAgent 运行状况服务正在运行
@@ -372,4 +372,4 @@ ms.locfileid: "100607756"
 
 ## <a name="next-steps"></a>后续步骤
 
-启用监视功能以收集混合 Kubernetes 群集及其上运行的工作负荷的运行状况和资源利用率后，请了解[如何使用](container-insights-analyze.md)用于容器的 Azure Monitor。
+启用监视功能以收集混合 Kubernetes 群集的运行状况和资源利用率，并了解 [如何使用](container-insights-analyze.md) 容器见解。

@@ -1,14 +1,14 @@
 ---
 title: 了解效果的工作原理
 description: Azure Policy 定义具有各种效果，用来确定如何对符合性进行管理和报告。
-ms.date: 10/05/2020
+ms.date: 02/17/2021
 ms.topic: conceptual
-ms.openlocfilehash: e72e94766dce2660409e729bc43eb107fb9ab39a
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 67445b3d0d63b3827f82822de00412bdab67c5ab
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97883072"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101741814"
 ---
 # <a name="understand-azure-policy-effects"></a>了解 Azure Policy 效果
 
@@ -266,8 +266,7 @@ AuditIfNotExists 效果的“details”属性具有定义要匹配的相关资�
 
 ### <a name="deployifnotexists-evaluation"></a>DeployIfNotExists 评估
 
-DeployIfNotExists 将在资源提供程序处理创建或更新资源请求并返回成功状态代码后运行约 15 分钟。 如果没有相关资源或如果由 **ExistenceCondition** 定义的资源未评估为 true，则会发生模板部署。
-部署持续时间取决于模板中包含资源的复杂性。
+在资源提供程序处理创建或更新订阅或资源请求并返回成功状态代码后，DeployIfNotExists 会运行大约15分钟。 如果没有相关资源或如果由 **ExistenceCondition** 定义的资源未评估为 true，则会发生模板部署。 部署持续时间取决于模板中包含资源的复杂性。
 
 在评估周期中，具有与资源匹配的 DeployIfNotExists 效果的策略定义被标记为不合规，但不对该资源执行任何操作。 使用[修正任务](../how-to/remediate-resources.md)来修正现有不符合资源。
 
@@ -482,8 +481,7 @@ EnforceRegoPolicy 效果的 Details 属性具有描述 Gatekeeper v2 许可控�
 
 ## <a name="modify"></a>修改
 
-Modify 用于在创建或更新期间在资源中添加、更新或删除属性或标记。
-常见的示例是在 costCenter 等资源上更新标记。 使用[修正任务](../how-to/remediate-resources.md)来修正现有不符合资源。 单个修改规则可以有任意数量的操作。
+Modify 用于在创建或更新过程中添加、更新或删除订阅或资源的属性或标记。 常见的示例是在 costCenter 等资源上更新标记。 使用[修正任务](../how-to/remediate-resources.md)来修正现有不符合资源。 单个修改规则可以有任意数量的操作。
 
 Modify 支持以下操作：
 

@@ -4,15 +4,15 @@ description: 了解 Azure 文件同步本地代理和防火墙设置。 查看 A
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/30/2020
+ms.date: 3/02/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 01ac42cce29f941a90631936ece025f02afedeaf
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: f0dbe7f32f14eb4da3d591811d619eb2e9bea397
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98673614"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101729634"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Azure 文件同步代理和防火墙设置
 Azure 文件同步可以将本地服务器连接到 Azure 文件，启用多站点同步和云分层功能。 因此，本地服务器必须连接到 Internet。 IT 管理员需确定服务器访问 Azure 云服务的最佳路径。
@@ -41,7 +41,7 @@ Azure 文件同步以独占方式通过 HTTPS 移动文件数据和元数据，�
 
 Azure 文件同步会通过任何可用方式来访问 Azure，自动适应各种网络特征（例如带宽、延迟）并提供进行微调所需的管理员控制。 目前并没有提供所有功能。 如果需要配置特定的行为，请通过 [Azure 文件 UserVoice](https://feedback.azure.com/forums/217298-storage?category_id=180670) 告知我们。
 
-## <a name="proxy"></a>Proxy (代理)
+## <a name="proxy"></a>代理
 Azure 文件同步支持特定于应用和计算机范围的代理设置。
 
 **特定于应用程序的代理设置** 允许专用于 Azure 文件同步流量的代理配置。 代理版本 4.0.1.0 或更高版本支持特定于应用的代理设置，可以在代理安装期间或使用 Set-StorageSyncProxyConfiguration PowerShell cmdlet 进行配置。
@@ -50,6 +50,30 @@ Azure 文件同步支持特定于应用和计算机范围的代理设置。
 ```powershell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
 Set-StorageSyncProxyConfiguration -Address <url> -Port <port number> -ProxyCredential <credentials>
+```
+例如，如果代理服务器要求使用用户名和密码进行身份验证，请运行以下 PowerShell 命令：
+
+```powershell
+# IP address or name of the proxy server.
+$Address="127.0.0.1"  
+
+# The port to use for the connection to the proxy.
+$Port=8080
+
+# The user name for a proxy.
+$UserName="user_name" 
+
+# Please type or paste a string with a password for the proxy.
+$SecurePassword = Read-Host -AsSecureString
+
+$Creds = New-Object System.Management.Automation.PSCredential ($UserName, $SecurePassword)
+
+# Please verify that you have entered the password correctly.
+Write-Host $Creds.GetNetworkCredential().Password
+
+Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
+
+Set-StorageSyncProxyConfiguration -Address $Address -Port $Port -ProxyCredential $Creds
 ```
 **计算机范围的代理设置** 对 Azure 文件同步代理是透明的，因为服务器的整个流量通过代理进行路由。
 
@@ -93,14 +117,14 @@ Set-StorageSyncProxyConfiguration -Address <url> -Port <port number> -ProxyCrede
 
 | 服务 | 公有云终结点 | Azure 政府版终结点 | 使用情况 |
 |---------|----------------|---------------|------------------------------|
-| **Azure Resource Manager** | `https://management.azure.com` | https://management.usgovcloudapi.net | 包括初始服务器注册调用在内的任何用户调用（例如 PowerShell）都会转到/经过此 URL。 |
-| **Azure Active Directory** | https://login.windows.net<br>`https://login.microsoftonline.com` | https://login.microsoftonline.us | Azure 资源管理器调用必须由经过身份验证的用户发出。 若要成功，请使用此 URL 进行用户身份验证。 |
-| **Azure Active Directory** | https://graph.microsoft.com/ | https://graph.microsoft.com/ | 在部署 Azure 文件同步的过程中，将在订阅的 Azure Active Directory 中创建服务主体。 此 URL 用于该操作。 此主体用于将最小的一组权限委托给 Azure 文件同步服务。 对 Azure 文件同步进行初始设置的用户必须是经过身份验证且具有订阅所有者特权的用户。 |
-| **Azure Active Directory** | https://secure.aadcdn.microsoftonline-p.com | 使用公共终结点 URL。 | Azure 文件同步服务器注册 UI 用来登录管理员的 Active Directory 身份验证库访问此 URL。 |
+| **Azure 资源管理器** | `https://management.azure.com` | https://management.usgovcloudapi.net | 包括初始服务器注册调用在内的任何用户调用（例如 PowerShell）都会转到/经过此 URL。 |
+| Azure Active Directory | https://login.windows.net<br>`https://login.microsoftonline.com` | https://login.microsoftonline.us | Azure 资源管理器调用必须由经过身份验证的用户发出。 若要成功，请使用此 URL 进行用户身份验证。 |
+| Azure Active Directory | https://graph.microsoft.com/ | https://graph.microsoft.com/ | 在部署 Azure 文件同步的过程中，将在订阅的 Azure Active Directory 中创建服务主体。 此 URL 用于该操作。 此主体用于将最小的一组权限委托给 Azure 文件同步服务。 对 Azure 文件同步进行初始设置的用户必须是经过身份验证且具有订阅所有者特权的用户。 |
+| Azure Active Directory | https://secure.aadcdn.microsoftonline-p.com | 使用公共终结点 URL。 | Azure 文件同步服务器注册 UI 用来登录管理员的 Active Directory 身份验证库访问此 URL。 |
 | **Azure 存储** | &ast;.core.windows.net | &ast;。 core.usgovcloudapi.net | 服务器在下载某个文件时，可以直接与存储帐户中的 Azure 文件共享通信，从而提高数据移动效率。 服务器有一个 SAS 密钥，只允许进行针对性的文件共享访问。 |
 | **Azure 文件同步** | &ast;.one.microsoft.com<br>&ast;。 afs.azure.net | &ast;。 afs.azure.us | 在完成初始服务器注册以后，服务器会收到一个区域 URL，适用于该区域中的 Azure 文件同步服务实例。 服务器可以使用此 URL 直接且高效地与负责其同步的实例通信。 |
-| **Microsoft PKI** | https://www.microsoft.com/pki/mscorp/cps<br><http://ocsp.msocsp.com> | https://www.microsoft.com/pki/mscorp/cps<br><http://ocsp.msocsp.com> | 安装 Azure 文件同步代理后，PKI URL 用于下载与 Azure 文件同步服务和 Azure 文件共享进行通信所需的中间证书。 OCSP URL 用于检查证书的状态。 |
-| **Microsoft Update** | &ast;.update.microsoft.com<br>&ast;.download.windowsupdate.com<br>&ast;.dl.delivery.mp.microsoft.com<br>&ast;.emdl.ws.microsoft.com | &ast;.update.microsoft.com<br>&ast;.download.windowsupdate.com<br>&ast;.dl.delivery.mp.microsoft.com<br>&ast;.emdl.ws.microsoft.com | 安装 Azure 文件同步代理后，Microsoft 更新 Url 用于下载 Azure 文件同步代理更新。 |
+| **Microsoft PKI** |  https://www.microsoft.com/pki/mscorp/cps<br>http://crl.microsoft.com/pki/mscorp/crl/<br>http://mscrl.microsoft.com/pki/mscorp/crl/<br>http://ocsp.msocsp.com<br>http://ocsp.digicert.com/<br>http://crl3.digicert.com/ | https://www.microsoft.com/pki/mscorp/cps<br>http://crl.microsoft.com/pki/mscorp/crl/<br>http://mscrl.microsoft.com/pki/mscorp/crl/<br>http://ocsp.msocsp.com<br>http://ocsp.digicert.com/<br>http://crl3.digicert.com/ | 安装 Azure 文件同步代理后，PKI URL 用于下载与 Azure 文件同步服务和 Azure 文件共享进行通信所需的中间证书。 OCSP URL 用于检查证书的状态。 |
+| **Microsoft Update** | &ast;.update.microsoft.com<br>&ast;.download.windowsupdate.com<br>&ast;。 ctldl.windowsupdate.com<br>&ast;.dl.delivery.mp.microsoft.com<br>&ast;.emdl.ws.microsoft.com | &ast;.update.microsoft.com<br>&ast;.download.windowsupdate.com<br>&ast;。 ctldl.windowsupdate.com<br>&ast;.dl.delivery.mp.microsoft.com<br>&ast;.emdl.ws.microsoft.com | 安装 Azure 文件同步代理后，Microsoft 更新 Url 用于下载 Azure 文件同步代理更新。 |
 
 > [!Important]
 > 允许流量 afs.azure.net 时 &ast; ，只能将流量发送到同步服务。 不存在使用此域的其他 Microsoft 服务。
@@ -119,7 +143,7 @@ Set-StorageSyncProxyConfiguration -Address <url> -Port <port number> -ProxyCrede
 | 公用 | 加拿大东部 | https： \/ /canadaeast01.afs.azure.net<br>https： \/ /kailani-cae.one.microsoft.com | 加拿大中部 | https： \/ /tm-canadaeast01.afs.azure.net<br>https： \/ /tm-kailani.cae.one.microsoft.com |
 | 公用 | 印度中部 | https： \/ /centralindia01.afs.azure.net<br>https： \/ /kailani-cin.one.microsoft.com | 印度南部 | https： \/ /tm-centralindia01.afs.azure.net<br>https： \/ /tm-kailani-cin.one.microsoft.com |
 | 公用 | 美国中部 | https： \/ /centralus01.afs.azure.net<br>https： \/ /kailani-cus.one.microsoft.com | 美国东部 2 | https： \/ /tm-centralus01.afs.azure.net<br>https： \/ /tm-kailani-cus.one.microsoft.com |
-| 公用 | 东亚 | https： \/ /eastasia01.afs.azure.net<br>https： \/ /kailani11.one.microsoft.com | Southeast Asia | https： \/ /tm-eastasia01.afs.azure.net<br>https： \/ /tm-kailani11.one.microsoft.com |
+| 公用 | 东亚 | https： \/ /eastasia01.afs.azure.net<br>https： \/ /kailani11.one.microsoft.com | 东南亚 | https： \/ /tm-eastasia01.afs.azure.net<br>https： \/ /tm-kailani11.one.microsoft.com |
 | 公用 | 美国东部 | https： \/ /eastus01.afs.azure.net<br>https： \/ /kailani1.one.microsoft.com | 美国西部 | https： \/ /tm-eastus01.afs.azure.net<br>https： \/ /tm-kailani1.one.microsoft.com |
 | 公用 | 美国东部 2 | https： \/ /eastus201.afs.azure.net<br>https： \/ /kailani-ess.one.microsoft.com | 美国中部 | https： \/ /tm-eastus201.afs.azure.net<br>https： \/ /tm-kailani-ess.one.microsoft.com |
 | 公用 | 德国北部 | https： \/ /germanynorth01.afs.azure.net | 德国中西部 | https： \/ /tm-germanywestcentral01.afs.azure.net |
@@ -132,7 +156,7 @@ Set-StorageSyncProxyConfiguration -Address <url> -Port <port number> -ProxyCrede
 | 公用 | 北欧 | https： \/ /northeurope01.afs.azure.net<br>https： \/ /kailani7.one.microsoft.com | 西欧 | https： \/ /tm-northeurope01.afs.azure.net<br>https： \/ /tm-kailani7.one.microsoft.com |
 | 公用 | 美国中南部 | https： \/ /southcentralus01.afs.azure.net | 美国中北部 | https： \/ /tm-southcentralus01.afs.azure.net |
 | 公用 | 印度南部 | https： \/ /southindia01.afs.azure.net<br>https： \/ /kailani-sin.one.microsoft.com | 印度中部 | https： \/ /tm-southindia01.afs.azure.net<br>https： \/ /tm-kailani-sin.one.microsoft.com |
-| 公用 | Southeast Asia | https： \/ /southeastasia01.afs.azure.net<br>https： \/ /kailani10.one.microsoft.com | 东亚 | https： \/ /tm-southeastasia01.afs.azure.net<br>https： \/ /tm-kailani10.one.microsoft.com |
+| 公用 | 东南亚 | https： \/ /southeastasia01.afs.azure.net<br>https： \/ /kailani10.one.microsoft.com | 东亚 | https： \/ /tm-southeastasia01.afs.azure.net<br>https： \/ /tm-kailani10.one.microsoft.com |
 | 公用 | 瑞士北部 | https： \/ /switzerlandnorth01.afs.azure.net<br>https： \/ /tm-switzerlandnorth01.afs.azure.net | 瑞士西部 | https： \/ /switzerlandwest01.afs.azure.net<br>https： \/ /tm-switzerlandwest01.afs.azure.net |
 | 公用 | 瑞士西部 | https： \/ /switzerlandwest01.afs.azure.net<br>https： \/ /tm-switzerlandwest01.afs.azure.net | 瑞士北部 | https： \/ /switzerlandnorth01.afs.azure.net<br>https： \/ /tm-switzerlandnorth01.afs.azure.net |
 | 公用 | 英国南部 | https： \/ /uksouth01.afs.azure.net<br>https： \/ /kailani-uks.one.microsoft.com | 英国西部 | https： \/ /tm-uksouth01.afs.azure.net<br>https： \/ /tm-kailani-uks.one.microsoft.com |

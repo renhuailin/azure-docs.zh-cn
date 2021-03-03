@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/13/2019
-ms.openlocfilehash: 2e103bb3cce364aeb5c25dcc2b54bf78c6993ca0
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 2dda18232e0cf3afa63a01814e776b90988e0b10
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100608445"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704338"
 ---
 # <a name="application-insights-connector-management-solution-deprecated"></a>Application Insights 连接器管理解决方案（已弃用）
 
@@ -22,7 +22,7 @@ ms.locfileid: "100608445"
 >
 >现有连接将继续运行到 2019 年 6 月 30 日为止。  随着 OMS 门户被弃用，将无法从门户中配置和删除现有的连接。 有关使用 PowerShell 删除现有连接的脚本，请参阅下面的[使用 PowerShell 删除连接器](#removing-the-connector-with-powershell)。
 >
->有关查询多个应用程序的 Application Insights 日志数据的指导，请参阅[统一多个 Azure Monitor Application Insights 资源](../log-query/unify-app-resource-data.md)。 有关 OMS 门户弃用的详细信息，请参阅 [OMS 门户即将转移到 Azure](../platform/oms-portal-transition.md)。
+>有关查询多个应用程序的 Application Insights 日志数据的指导，请参阅[统一多个 Azure Monitor Application Insights 资源](./unify-app-resource-data.md)。 有关 OMS 门户弃用的详细信息，请参阅 [OMS 门户即将转移到 Azure](./oms-portal-transition.md)。
 >
 > 
 
@@ -318,5 +318,4 @@ ApplicationInsights | summarize by ApplicationName
 
 ## <a name="next-steps"></a>后续步骤
 
-- 使用[日志搜索](../log-query/log-query-overview.md)可以查看 Application Insights 应用的详细信息。
-
+- 使用[日志搜索](./log-query-overview.md)可以查看 Application Insights 应用的详细信息。

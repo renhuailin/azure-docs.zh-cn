@@ -1,30 +1,24 @@
 ---
-title: 在将云服务部署到 Azure 时对 ConstrainedAllocationFailed 进行故障排除 |Microsoft Docs
-description: 本文介绍如何在将云服务部署到 Azure 时解决 ConstrainedAllocationFailed 异常。
+title: 在将云服务 (经典) 部署到 Azure 时对 ConstrainedAllocationFailed 进行故障排除 |Microsoft Docs
+description: 本文介绍如何在将云服务 (经典) 部署到 Azure 时解决 ConstrainedAllocationFailed 异常。
 services: cloud-services
 author: mibufo
 ms.author: v-mibufo
 ms.service: cloud-services
 ms.topic: troubleshooting
-ms.date: 02/04/2020
-ms.openlocfilehash: de344bbcd89158676bacf2a8aa1743d282700b9d
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.date: 02/22/2021
+ms.openlocfilehash: 346e7eb77039ab80e6f9dffb8ea8360198040504
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100520904"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738271"
 ---
-# <a name="troubleshoot-constrainedallocationfailed-when-deploying-a-cloud-service-to-azure"></a>在将云服务部署到 Azure 时对 ConstrainedAllocationFailed 进行故障排除
+# <a name="troubleshoot-constrainedallocationfailed-when-deploying-a-cloud-service-classic-to-azure"></a>在将云服务 (经典) 部署到 Azure 时对 ConstrainedAllocationFailed 进行故障排除
 
-在本文中，你将排查 Azure 云服务由于约束而无法部署的分配失败。
+在本文中，你将对 Azure 云服务 (经典) 由于分配约束而无法部署的分配失败进行故障排除。
 
-Microsoft Azure 在你执行以下操作时分配：
-
-- 升级云服务实例
-
-- 添加新的 web 角色或辅助角色实例
-
-- 将实例部署到云服务
+将实例部署到云服务 (经典) 或添加新的 web 角色或辅助角色实例时，Microsoft Azure 会分配计算资源。
 
 甚至在达到 Azure 订阅限制之前，甚至可能会在这些操作期间收到错误。
 
@@ -33,9 +27,11 @@ Microsoft Azure 在你执行以下操作时分配：
 
 ## <a name="symptom"></a>症状
 
-在 Azure 门户中，导航到云服务，并在侧栏中选择 " *操作日志 (经典")* 查看日志。
+在 Azure 门户中，导航到云服务 (经典) ，并在侧栏中选择 " *操作日志 (经典)* " 查看日志。
 
-检查云服务的日志时，你将看到以下异常：
+![Image 显示经典) 边栏选项卡 (操作日志。](./media/cloud-services-troubleshoot-constrained-allocation-failed/cloud-services-troubleshoot-allocation-logs.png)
+
+检查云服务的日志 (经典) 时，你将看到以下异常：
 
 |异常类型  |错误消息  |
 |---------|---------|
@@ -43,99 +39,42 @@ Microsoft Azure 在你执行以下操作时分配：
 
 ## <a name="cause"></a>原因
 
-正在部署到的区域或群集存在容量问题。 当所选的资源 SKU 不适用于指定的位置时，会发生这种情况。
+将第一个实例部署到云服务 (在过渡或生产) 中，该云服务会固定到群集。
 
-> [!NOTE]
-> 在部署云服务的第一个节点时，该节点 *固定* 到资源池。 资源池可以是单个群集，也可以是一组分类。
->
-> 随着时间的推移，此资源池中的资源可能会完全使用。 如果在固定的资源池中有足够的资源可用时，云服务对其他资源进行分配请求，则请求将导致 [分配失败](cloud-services-allocation-failures.md)。
+随着时间的推移，此群集中的资源可能会完全使用。 如果云服务 (经典) 在固定的群集中有足够的资源可用时，向分配请求更多资源，则该请求将导致分配失败。 有关详细信息，请参阅 [分配失败的常见问题](cloud-services-allocation-failures.md#common-issues)。
 
 ## <a name="solution"></a>解决方案
 
-在这种情况下，你应该选择一个不同的区域或 SKU，将云服务部署到。 在部署或升级云服务之前，可以确定区域或可用性区域中可用的 Sku。 遵循下面的 [Azure CLI](#list-skus-in-region-using-azure-cli)、 [PowerShell](#list-skus-in-region-using-powershell)或 [REST API](#list-skus-in-region-using-rest-api) 进程。
+将现有的云服务 *固定* 到群集。 云服务的任何进一步部署 (经典) 会在同一群集中发生。
 
-### <a name="list-skus-in-region-using-azure-cli"></a>使用 Azure CLI 列出区域中的 Sku
+在此情况下遇到分配错误时，建议的操作过程是将部署到新的云服务 (经典)  (并更新 *CNAME*) 。
 
-你可以使用 [az vm list-sku](https://docs.microsoft.com/cli/azure/vm.html#az_vm_list_skus) 命令。
+> [!TIP]
+> 这种解决方案可能会最成功，因为它允许平台从该区域的所有群集中进行选择。
 
-- 使用 `--location` 参数将输出筛选为你正在使用的位置。
-- 使用 `--size` 参数按部分大小名称搜索。
-- 有关详细信息，请参阅 " [SKU 不可用的解决错误](../azure-resource-manager/templates/error-sku-not-available.md#solution-2---azure-cli) " 指南。
+> [!NOTE]
+> 此解决方案应该不会导致停机。
 
-    例如：
+1.  (经典) 将工作负荷部署到新的云服务。
+    - 有关更多说明，请参阅 [如何创建和部署云服务 (经典) ](cloud-services-how-to-create-deploy-portal.md) 指南。
 
-    ```azurecli
-    az vm list-skus --location southcentralus --size Standard_F --output table
-    ```
+    > [!WARNING]
+    > 如果你不希望丢失与此部署槽位关联的 IP 地址，则可以使用 [解决方案 3-保留 IP 地址](cloud-services-allocation-failures.md#solutions)。
 
-    **示例结果：** ![运行 "az vm list-sku--location default-machinelearning-southcentralus--size Standard_F--output table" 命令的 Azure CLI 输出，其中显示了可用的 Sku。](./media/cloud-services-troubleshoot-constrained-allocation-failed/cloud-services-troubleshoot-constrained-allocation-failed-1.png)
+1. 更新 *CNAME* 或 *A* 记录，将流量指向新的云服务 (经典) 。
+    - 有关进一步说明，请参阅为 [Azure 云服务配置自定义域名 (经典) ](cloud-services-custom-domain-name-portal.md#understand-cname-and-a-records) 指南。
 
-#### <a name="list-skus-in-region-using-powershell"></a>使用 PowerShell 列出区域中的 Sku
+1. 在将零流量发送到旧站点后，你可以 (经典) 中删除旧的云服务。
+    - 有关进一步的说明，请参阅 [删除部署和云服务 (经典) ](cloud-services-how-to-manage-portal.md#delete-deployments-and-a-cloud-service) 指南。
+    - 若要查看云服务中的网络流量 (经典) ，请参阅 [云服务简介 (经典) 监视](cloud-services-how-to-monitor.md)。
 
-可以使用 [AzComputeResourceSku](https://docs.microsoft.com/powershell/module/az.compute/get-azcomputeresourcesku) 命令。
-
-- 按位置筛选结果。
-- 必须拥有最新版本 PowerShell 才能运行此命令。
-- 有关详细信息，请参阅 " [SKU 不可用的解决错误](../azure-resource-manager/templates/error-sku-not-available.md#solution-1---powershell) " 指南。
-
-例如：
-
-```azurepowershell
-Get-AzComputeResourceSku | where {$_.Locations -icontains "centralus"}
-```
-
-**其他一些有用的命令：**
-
-筛选出包含大小 (Standard_DS14_v2) 的位置：
-
-```azurepowershell
-Get-AzComputeResourceSku | where {$_.Locations.Contains("centralus") -and $_.ResourceType.Contains("virtualMachines") -and $_.Name.Contains("Standard_DS14_v2")}
-```
-
-筛选出所有包含大小 (V3) 的位置：
-
-```azurepowershell
-Get-AzComputeResourceSku | where {$_.Locations.Contains("centralus") -and $_.ResourceType.Contains("virtualMachines") -and $_.Name.Contains("v3")} | fc
-```
-
-#### <a name="list-skus-in-region-using-rest-api"></a>使用 REST API 列出区域中的 Sku
-
-可以使用 [资源 Sku 列表](https://docs.microsoft.com/rest/api/compute/resourceskus/list) 操作。 它会以下列格式返回可用 SKU 和区域：
-
-```json
-{
-  "value": [
-    {
-      "resourceType": "virtualMachines",
-      "name": "Standard_A0",
-      "tier": "Standard",
-      "size": "A0",
-      "locations": [
-        "eastus"
-      ],
-      "restrictions": []
-    },
-    {
-      "resourceType": "virtualMachines",
-      "name": "Standard_A1",
-      "tier": "Standard",
-      "size": "A1",
-      "locations": [
-        "eastus"
-      ],
-      "restrictions": []
-    },
-    <Rest_of_your_file_is_located_here...>
-  ]
-}
-    
-```
+请参阅 [排查云服务 (经典) 分配失败 |Microsoft Docs](cloud-services-allocation-failures.md#common-issues) 获取进一步的补救步骤。
 
 ## <a name="next-steps"></a>后续步骤
 
-对于更多的分配失败解决方案，并更好地了解如何生成它们：
+有关更多分配失败解决方案和背景信息：
 
 > [!div class="nextstepaction"]
-> [云服务 (分配失败) ](cloud-services-allocation-failures.md)
+> [分配失败-云服务 (经典) ](cloud-services-allocation-failures.md)
 
 如果本文未解决你的 Azure 问题，请访问 MSDN 上的 Azure 论坛 [并 Stack Overflow](https://azure.microsoft.com/support/forums/)。 可将问题发布到这些论坛上，或发布到 [Twitter 上的 @AzureSupport](https://twitter.com/AzureSupport)。 还可提交 Azure 支持请求。 若要提交支持请求，请在 [Azure 支持](https://azure.microsoft.com/support/options/)页上，选择“获取支持”。

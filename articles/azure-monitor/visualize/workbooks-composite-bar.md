@@ -8,12 +8,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 9/04/2020
 ms.author: lagayhar
-ms.openlocfilehash: 3bcbd2a58764003c174c02ec637050b57632048a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 9a02299853174192c6963cbb382ceb1aa06ac088
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100608484"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728597"
 ---
 # <a name="composite-bar-renderer"></a>复合条呈现器
 
@@ -193,4 +193,4 @@ None 聚合表示对于组行，该列不显示任何结果。
 ## <a name="next-steps"></a>后续步骤
 
 * 使用 Azure 资源管理器[部署](../visualize/workbooks-automate.md)工作簿。
-* [控制](../platform/workbooks-access-control.md)和共享对工作簿资源的访问权限。
+* [控制](./workbooks-access-control.md)和共享对工作簿资源的访问权限。

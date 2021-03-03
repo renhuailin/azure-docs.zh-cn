@@ -9,12 +9,12 @@ ms.author: chpalm
 ms.date: 10/06/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: ed9af178c10d033806b05f73372a0642bb28cab4
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: 24926640de3b50823dfeaf195500f33b49aebc18
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91801627"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652711"
 ---
 # <a name="quickstart-send-sms-messages-in-azure-logic-apps-with-azure-communication-services"></a>快速入门：使用 Azure 通信服务在 Azure 逻辑应用中发送短信
 
@@ -39,6 +39,8 @@ ms.locfileid: "91801627"
 
 - 支持短信的电话号码，或[获取一个电话号码](./get-phone-number.md)。
 
+[!INCLUDE [Regional Availability Notice](../../includes/regional-availability-include.md)]
+
 ## <a name="add-an-sms-action"></a>“添加短信”操作
 
 若要使用 Azure 通信服务短信连接器添加“发送短信”操作，作为工作流中的新步骤，请在 [Azure 门户](https://portal.azure.com)中打开了逻辑应用工作流的逻辑应用设计器中执行以下步骤：
@@ -47,7 +49,7 @@ ms.locfileid: "91801627"
 
 1. 在“选择操作”搜索框中，输入 `Azure Communication Services`。 从操作列表中选择“发送短信”。
 
-   :::image type="content" source="./media/logic-app/select-send-sms-action.png" alt-text="屏幕截图显示了打开至逻辑应用设计器的 Azure 门户，以及一个示例逻辑应用，该应用使用 Azure 通信服务连接器的“发送短信”操作。":::
+   :::image type="content" source="./media/logic-app/select-send-sms-action.png" alt-text="屏幕截图显示逻辑应用设计器和选中了“发送短信”操作的 Azure 通信服务连接器。":::
 
 1. 现在，创建与通信服务资源的连接。
 
@@ -57,7 +59,7 @@ ms.locfileid: "91801627"
 
    1. 选择“创建”。
 
-   :::image type="content" source="./media/logic-app/send-sms-configuration.png" alt-text="屏幕截图显示了打开至逻辑应用设计器的 Azure 门户，以及一个示例逻辑应用，该应用使用 Azure 通信服务连接器的“发送短信”操作。":::
+   :::image type="content" source="./media/logic-app/send-sms-configuration.png" alt-text="屏幕截图显示包含示例信息的“发送短信”操作配置。":::
 
 1. 在“发送短信”操作中，提供以下信息： 
 
@@ -67,7 +69,7 @@ ms.locfileid: "91801627"
 
    下面显示了包含示例信息的“发送短信”操作：
 
-   :::image type="content" source="./media/logic-app/send-sms-action.png" alt-text="屏幕截图显示了打开至逻辑应用设计器的 Azure 门户，以及一个示例逻辑应用，该应用使用 Azure 通信服务连接器的“发送短信”操作。":::
+   :::image type="content" source="./media/logic-app/send-sms-action.png" alt-text="屏幕截图显示包含示例信息的“发送短信”操作。":::
 
 1. 完成后，请在设计器工具栏上选择“保存”。
 
@@ -93,5 +95,5 @@ ms.locfileid: "91801627"
 有关 Azure 通信服务中的短信的详细信息，请参阅以下文章：
 
 - [短信概念](../../concepts/telephony-sms/concepts.md)
-- [规划电话和短信解决方案](../../concepts/telephony-sms/plan-solution.md)
+- [电话号码类型](../../concepts/telephony-sms/plan-solution.md)
 - [短信 SDK](../../concepts/telephony-sms/sdk-features.md)

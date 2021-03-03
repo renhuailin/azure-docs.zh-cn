@@ -1,24 +1,23 @@
 ---
 title: 常见问题解答 - Azure 中的网络性能监视器解决方案 | Microsoft Docs
 description: 本文收集了有关 Azure 中网络性能监视器的常见问题解答。 网络性能监视器 (NPM) 可帮助你近乎实时地监视网络性能，以检测并找到网络性能瓶颈。
-ms.subservice: logs
 ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 10/12/2018
-ms.openlocfilehash: c58f94bcdb659eed67ebf023af473545d8cee1a7
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 909cbd6174fe7eceaa8b53b5ba44fe72990b56d9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100587264"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708044"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>网络性能监视器解决方案常见问题解答
 
 ![网络性能监视器符号](media/network-performance-monitor-faq/npm-symbol.png)
 
 > [!IMPORTANT]
-> 自2021年7月1日起，你将无法在现有工作区中添加新测试，也无法在网络性能监视器中启用新的工作区。 你可以继续使用在2021年7月之前创建的测试。 若要最大程度地减少对当前工作负荷的服务中断，请在2024年2月29日之前将 [测试从网络性能监视器迁移到](https://docs.microsoft.com/azure/network-watcher/migrate-to-connection-monitor-from-network-performance-monitor) Azure 网络观察程序中的新连接监视器。
+> 自2021年7月1日起，你将无法在现有工作区中添加新测试，也无法在网络性能监视器中启用新的工作区。 你可以继续使用在2021年7月之前创建的测试。 若要最大程度地减少对当前工作负荷的服务中断，请在2024年2月29日之前将 [测试从网络性能监视器迁移到](../../network-watcher/migrate-to-connection-monitor-from-network-performance-monitor.md) Azure 网络观察程序中的新连接监视器。
 
 本文收集了有关 Azure 中网络性能监视器 (NPM) 的常见问题 (FAQ)
 

@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/08/2021
-ms.openlocfilehash: 902b13c947cb005189e23dee943867100809564e
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: 0a9a58e91202d42640264aba00e1a583be1cde70
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99988548"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101705647"
 ---
 # <a name="archived-release-notes"></a>已存档的发行说明
 
@@ -34,7 +34,7 @@ HDInsight 目前使用 Azure 虚拟机来预配群集。 从此版本开始，�
 
 ### <a name="deprecation"></a>弃用
 #### <a name="deprecation-of-hdinsight-36-ml-services-cluster"></a>弃用 HDInsight 3.6 ML 服务群集
-HDInsight 3.6 ML 服务群集类型将于 2020 年 12 月 31 日终止支持。 2020 年 12 月 31 日之后，客户将不能创建新的 3.6 ML 服务群集。 现有群集将在没有 Microsoft 支持的情况下按原样运行。 请在[此处](./hdinsight-component-versioning.md#available-versions)检查 HDInsight 版本的有效期限和群集类型。
+HDInsight 3.6 ML 服务群集类型将于 2020 年 12 月 31 日终止支持。 2020 年 12 月 31 日之后，客户将不能创建新的 3.6 ML 服务群集。 现有群集将在没有 Microsoft 支持的情况下按原样运行。 请在[此处](./hdinsight-component-versioning.md)检查 HDInsight 版本的有效期限和群集类型。
 
 #### <a name="disabled-vm-sizes"></a>禁用的 VM 大小
 自 2020 年 11 月 16 日起，HDInsight 将阻止新客户使用 standand_A8、standand_A9、standand_A10 和 standand_A11 VM 大小创建群集。 过去三个月内使用过这些 VM 大小的现有客户将不会受到影响。 自 2021 年 1 月 9 日起，HDInsight 将阻止所有客户使用 standand_A8、standand_A9、standand_A10 和 standand_A11 VM 大小创建群集。 现有群集将照常运行。 请考虑迁移到 HDInsight 4.0，避免出现潜在的系统/支持中断。
@@ -62,7 +62,7 @@ HDInsight 目前使用 Azure 虚拟机来预配群集。 从此版本开始，�
 
 ### <a name="deprecation"></a>弃用
 #### <a name="deprecation-of-hdinsight-36-ml-services-cluster"></a>弃用 HDInsight 3.6 ML 服务群集
-HDInsight 3.6 ML 服务群集类型将于 2020 年 12 月 31 日终止支持。 2020 年 12 月 31 日之后，客户将不会创建新的 3.6 ML 服务群集。 现有群集将在没有 Microsoft 支持的情况下按原样运行。 请在[此处](./hdinsight-component-versioning.md#available-versions)检查 HDInsight 版本的有效期限和群集类型。
+HDInsight 3.6 ML 服务群集类型将于 2020 年 12 月 31 日终止支持。 2020 年 12 月 31 日之后，客户将不会创建新的 3.6 ML 服务群集。 现有群集将在没有 Microsoft 支持的情况下按原样运行。 请在[此处](./hdinsight-component-versioning.md#supported-hdinsight-versions)检查 HDInsight 版本的有效期限和群集类型。
 
 #### <a name="disabled-vm-sizes"></a>禁用的 VM 大小
 自 2020 年 11 月 16 日起，HDInsight 将阻止新客户使用 standand_A8、standand_A9、standand_A10 和 standand_A11 VM 大小创建群集。 过去三个月内使用过这些 VM 大小的现有客户将不会受到影响。 自 2021 年 1 月 9 日起，HDInsight 将阻止所有客户使用 standand_A8、standand_A9、standand_A10 和 standand_A11 VM 大小创建群集。 现有群集将照常运行。 请考虑迁移到 HDInsight 4.0，避免出现潜在的系统/支持中断。
@@ -77,7 +77,7 @@ HDInsight 3.6 ML 服务群集类型将于 2020 年 12 月 31 日终止支持。 
 目前，HDInsight 不支持为 Spark、Hadoop 和 ML 服务群集类型自定义 Zookeeper 节点大小。 默认情况下为 A2_v2/A2 虚拟机大小（免费提供）。 在即将发布的版本中，可以选择最适合自己方案的 Zookeeper 虚拟机大小。 虚拟机大小不是 A2_v2/A2 的 Zookeeper 节点需要付费。 A2_v2 和 A2 虚拟机仍免费提供。
 
 #### <a name="default-cluster-version-will-be-changed-to-40"></a>默认群集版本将更改为 4.0
-自 2021 年 2 月起，HDInsight 群集的默认版本将从 3.6 更改为 4.0。 有关可用版本的详细信息，请参阅[可用版本](./hdinsight-component-versioning.md#available-versions)。 详细了解 [HDInsight 4.0](./hdinsight-version-release.md) 中的新增功能
+自 2021 年 2 月起，HDInsight 群集的默认版本将从 3.6 更改为 4.0。 有关可用版本的详细信息，请参阅 [支持的版本](./hdinsight-component-versioning.md#supported-hdinsight-versions)。 详细了解 [HDInsight 4.0](./hdinsight-version-release.md) 中的新增功能
 
 #### <a name="hdinsight-36-end-of-support-on-june-30-2021"></a>将于 2021 年 6 月 30 日终止支持 HDInsight 3.6
 将终止支持 HDInsight 3.6。 自 2021 年 6 月 30 日起，客户无法创建新的 HDInsight 3.6 群集。 现有群集将在没有 Microsoft 支持的情况下按原样运行。 请考虑迁移到 HDInsight 4.0，避免出现潜在的系统/支持中断。
@@ -103,7 +103,7 @@ HDInsight 目前使用 Azure 虚拟机来预配群集。 从此版本开始，�
 
 ### <a name="deprecation"></a>弃用
 #### <a name="deprecation-of-hdinsight-36-ml-services-cluster"></a>弃用 HDInsight 3.6 ML 服务群集
-HDInsight 3.6 ML 服务群集类型将于 2020 年 12 月 31 日终止支持。 之后，客户将不会创建新的 3.6 ML 服务群集。 现有群集将在没有 Microsoft 支持的情况下按原样运行。 请在[此处](./hdinsight-component-versioning.md#available-versions)检查 HDInsight 版本的有效期限和群集类型。
+HDInsight 3.6 ML 服务群集类型将于 2020 年 12 月 31 日终止支持。 之后，客户将不会创建新的 3.6 ML 服务群集。 现有群集将在没有 Microsoft 支持的情况下按原样运行。 请在[此处](./hdinsight-component-versioning.md#supported-hdinsight-versions)检查 HDInsight 版本的有效期限和群集类型。
 
 ### <a name="behavior-changes"></a>行为更改
 此版本没有行为变更。
@@ -334,7 +334,7 @@ Kafka 版本已从 2.1.0 升级到 2.1.1。
 ### <a name="deprecation"></a>弃用
 此版本无弃用。 若要为即将到来的弃用做好准备，请参阅[即将推出的变更](#upcoming-changes)。
 
-### <a name="behavior-changes"></a>行为更改
+### <a name="behavior-changes"></a>行为变更
 此版本无行为变更。 若要为即将推出的更改做好准备，请参阅[即将推出的更改](#upcoming-changes)。
 
 ### <a name="upcoming-changes"></a>即将推出的更改
@@ -390,7 +390,7 @@ HDInsight 会持续改善群集的可靠性和性能。
 ### <a name="deprecation"></a>弃用
 此版本无弃用。 若要为即将到来的弃用做好准备，请参阅[即将推出的变更](#upcoming-changes)。
 
-### <a name="behavior-changes"></a>行为更改
+### <a name="behavior-changes"></a>行为变更
 此版本无行为变更。 若要为即将到来的行为变更做好准备，请参阅[即将推出的变更](#upcoming-changes)。
 
 ### <a name="upcoming-changes"></a>即将推出的更改

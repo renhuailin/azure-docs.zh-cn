@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: a43a27a8e880c76ba21639437c0c20f583620d50
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: af028499d84a767ccb2a888ec7e7f92c80dbdd36
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100653612"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710560"
 ---
 # <a name="install-and-run-the-spatial-analysis-container-preview"></a> (预览中安装并运行空间分析容器) 
 
@@ -32,7 +32,7 @@ ms.locfileid: "100653612"
 
 若要运行空间分析容器，需要具有 [NVIDIA Tesla T4 GPU](https://www.nvidia.com/en-us/data-center/tesla-t4/)的计算设备。 建议你使用 GPU 加速 [Azure Stack 边缘](https://azure.microsoft.com/products/azure-stack/edge/) ，但该容器在满足最低要求的任何其他台式计算机上运行。 我们会将此设备称为 "主计算机"。
 
-#### <a name="azure-stack-edge-device"></a>[Azure Stack 边缘设备](#tab/azure-stack-edge)
+#### <a name="azure-stack-edge-device"></a>[Azure Stack Edge 设备](#tab/azure-stack-edge)
 
 Azure Stack Edge 是一种硬件即服务解决方案，是一种支持 AI 的边缘计算设备，具有网络数据传输功能。 有关详细准备和设置说明，请参阅 [Azure Stack Edge 文档](../../databox-online/azure-stack-edge-deploy-prep.md)。
 
@@ -90,7 +90,7 @@ Azure Stack Edge 是一种硬件即服务解决方案，是一种支持 AI 的�
 
 建议为主计算机使用 Azure Stack Edge 设备。 如果要配置其他设备，请单击 " **台式计算机** "; 如果使用的是虚拟机，则单击 " **虚拟机** "。
 
-#### <a name="azure-stack-edge-device"></a>[Azure Stack 边缘设备](#tab/azure-stack-edge)
+#### <a name="azure-stack-edge-device"></a>[Azure Stack Edge 设备](#tab/azure-stack-edge)
 
 ### <a name="configure-compute-on-the-azure-stack-edge-portal"></a>在 Azure Stack Edge 门户上配置计算 
  
@@ -295,7 +295,7 @@ sudo apt-get update
 sudo apt-get install iotedge=1.0.9* libiothsm-std=1.0.9*
 ```
 
-接下来，使用 [连接字符串](../../iot-edge/how-to-manual-provision-symmetric-key.md?view=iotedge-2018-06)将主机计算机注册为 IoT 中心实例中的 IoT Edge 设备。
+接下来，使用 [连接字符串](../../iot-edge/how-to-register-device.md?view=iotedge-2018-06)将主机计算机注册为 IoT 中心实例中的 IoT Edge 设备。
 
 需要将 IoT Edge 设备连接到 Azure IoT 中心。 需要从前面创建的 IoT Edge 设备中复制连接字符串。 或者，你可以在 Azure CLI 中运行以下命令。
 
@@ -446,7 +446,7 @@ sudo apt-get update
 sudo apt-get install iotedge=1.0.9* libiothsm-std=1.0.9*
 ```
 
-接下来，使用 [连接字符串](../../iot-edge/how-to-manual-provision-symmetric-key.md?view=iotedge-2018-06)将 VM 注册为 IoT 中心实例中的 IoT Edge 设备。
+接下来，使用 [连接字符串](../../iot-edge/how-to-register-device.md?view=iotedge-2018-06)将 VM 注册为 IoT 中心实例中的 IoT Edge 设备。
 
 需要将 IoT Edge 设备连接到 Azure IoT 中心。 需要从前面创建的 IoT Edge 设备中复制连接字符串。 或者，你可以在 Azure CLI 中运行以下命令。
 
@@ -472,7 +472,7 @@ sudo systemctl restart iotedge
 
 下表显示 IoT Edge 模块使用的各种环境变量。 你还可以使用中的属性在上面链接的部署清单中设置它们 `env` `spatialanalysis` ：
 
-| 设置名称 | 值 | 说明|
+| 设置名称 | “值” | 说明|
 |---------|---------|---------|
 | ARCHON_LOG_LEVEL | 信息详细 | 日志记录级别，请选择以下两个值之一|
 | ARCHON_SHARED_BUFFER_LIMIT | 377487360 | 不修改|

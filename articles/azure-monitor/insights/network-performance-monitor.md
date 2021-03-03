@@ -1,24 +1,23 @@
 ---
 title: Azure 中的网络性能监视器解决方案 | Microsoft Docs
 description: Azure 中的网络性能监视器可以近乎实时地监视网络性能，以检测并找到网络性能瓶颈。
-ms.subservice: logs
 ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 02/20/2018
-ms.openlocfilehash: 92326ea4d3de896a67b2953fb612b79948044d08
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: dd9f35a0b7c3bb5c2c5888765e4ebac436b4cde1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100573426"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711121"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Azure 中的网络性能监视器解决方案
 
 ![网络性能监视器符号](./media/network-performance-monitor/npm-symbol.png)
 
 > [!IMPORTANT]
-> 自2021年7月1日起，你将无法在现有工作区中添加新测试，也无法在网络性能监视器中启用新的工作区。 你可以继续使用在2021年7月之前创建的测试。 若要最大程度地减少对当前工作负荷的服务中断，请在2024年2月29日之前将 [测试从网络性能监视器迁移到](https://docs.microsoft.com/azure/network-watcher/migrate-to-connection-monitor-from-network-performance-monitor) Azure 网络观察程序中的新连接监视器。
+> 自2021年7月1日起，你将无法在现有工作区中添加新测试，也无法在网络性能监视器中启用新的工作区。 你可以继续使用在2021年7月之前创建的测试。 若要最大程度地减少对当前工作负荷的服务中断，请在2024年2月29日之前将 [测试从网络性能监视器迁移到](../../network-watcher/migrate-to-connection-monitor-from-network-performance-monitor.md) Azure 网络观察程序中的新连接监视器。
 
 网络性能监视器是一项基于云的混合网络监视解决方案，可帮助你监视网络基础结构中不同点之间的网络性能。 它还可以监视到服务和应用程序终结点的网络连接，以及 Azure ExpressRoute 的性能。 
 
@@ -48,7 +47,7 @@ NPM 可从以下任一区域托管的工作区监视世界上任何地方网络�
 * 美国中西部
 * 美国中北部
 * 美国中南部
-* Central US
+* 美国中部
 * 美国东部
 * 美国东部 2
 * 美国西部 2
@@ -301,4 +300,4 @@ NPM 可从以下任一区域托管的工作区监视世界上任何地方网络�
 * **加入我们的队伍**：我们总是希望一直有新客户不断加入我们的队伍。 那样，能够在早期接触到新功能并有机会帮助我们改进网络性能监视器。 如果有兴趣加入，请填写此[快速调查](https://aka.ms/npmcohort)。 
 
 ## <a name="next-steps"></a>后续步骤 
-详细了解[性能监视器](network-performance-monitor-performance-monitor.md)、[服务连接性监视器](network-performance-monitor-performance-monitor.md)和 [ExpressRoute 监视器](network-performance-monitor-expressroute.md)。 
+详细了解[性能监视器](network-performance-monitor-performance-monitor.md)、[服务连接性监视器](network-performance-monitor-performance-monitor.md)和 [ExpressRoute 监视器](network-performance-monitor-expressroute.md)。

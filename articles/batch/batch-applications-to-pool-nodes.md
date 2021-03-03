@@ -2,13 +2,13 @@
 title: 将应用程序和数据复制到池节点
 description: 了解如何将应用程序和数据复制到池节点。
 ms.topic: how-to
-ms.date: 02/10/2021
-ms.openlocfilehash: a5933a1c52e2848b6b414f1750bb24515fb9f28a
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 02/18/2021
+ms.openlocfilehash: 0109171fd78dc11058daa30bf4604bebc1eeb857
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100378496"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703641"
 ---
 # <a name="copy-applications-and-data-to-pool-nodes"></a>将应用程序和数据复制到池节点
 
@@ -33,10 +33,6 @@ Azure Batch 支持多种方法，用于将数据和应用程序获取到计算�
 对于需要在池中的每个节点上安装的应用程序或数据，请考虑使用 [应用程序包](batch-application-packages.md)。 没有与应用程序包关联的安装命令，但你可使用启动任务来运行任何安装命令。 如果应用程序无需安装或者包含大量文件，则可使用此方法。
 
 当你有大量文件时，应用程序包非常有用，因为它们可以将许多文件引用组合到小型有效负载中。 如果尝试将 100 个以上单独的资源文件包含到一个任务中，Batch 服务可能会遇到单任务内部系统限制。 当你有多个不同版本的相同应用程序，并且需要在它们之间进行选择时，应用程序包也很有用。
-
-## <a name="extensions"></a>扩展
-
-[扩展](create-pool-extensions.md) 是一种小型应用程序，用于简化批处理计算节点上的预配配置和设置。 创建池时，可以选择在预配计算节点时安装支持的扩展。 之后，扩展可以执行其预期操作。
 
 ## <a name="job-preparation-task-resource-files"></a>作业准备任务资源文件
 

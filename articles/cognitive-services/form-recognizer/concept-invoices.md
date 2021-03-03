@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: pafarley
-ms.openlocfilehash: 875fa2ad5a3a18c0e2582425a6528730234ac8ed
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: adcfef19de5987b9b4c54f6765589f2ae9868c11
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99585069"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101736740"
 ---
 # <a name="form-recognizer-prebuilt-invoice-model"></a>窗体识别器预生成发票型号
 
@@ -41,7 +41,7 @@ Azure 窗体识别器可以使用其预生成的发票模型分析和提取销�
 
 ### <a name="input-requirements"></a>输入要求 
 
-[!INCLUDE [input reqs](./includes/input-requirements-receipts.md)]
+[!INCLUDE [input requirements](./includes/input-requirements-receipts.md)]
 
 ## <a name="the-analyze-invoice-operation"></a>分析发票操作
 
@@ -57,7 +57,7 @@ Azure 窗体识别器可以使用其预生成的发票模型分析和提取销�
 
 |字段| 类型 | 可能值 |
 |:-----|:----:|:----|
-|status | string | notStarted：分析操作尚未开始。<br /><br />正在运行：分析操作正在进行。<br /><br />失败：分析操作失败。<br /><br />succeeded：分析操作成功。|
+|status | 字符串 | notStarted：分析操作尚未开始。<br /><br />正在运行：分析操作正在进行。<br /><br />失败：分析操作失败。<br /><br />succeeded：分析操作成功。|
 
 当 " **状态** " 字段的值为 " **成功** " 时，JSON 响应将包括发票理解结果、提取的表和可选的文本识别结果（如果请求）。 发票理解结果组织为命名字段值的字典，其中每个值都包含提取的文本、规范化值、边界框、置信度和对应的单词元素。 文本识别结果组织为带有文本、边界框和置信度信息的线条和单词的层次结构。
 
@@ -76,32 +76,32 @@ JSON 输出包含三个部分：
 
 |名称| 类型 | 说明 | 文本 | 值 (标准化输出)  |
 |:-----|:----|:----|:----| :----|
-| CustomerName | string | 正在开票的客户 | Microsoft Corp |  |
-| CustomerId | string | 客户的引用 ID | CID-12345 |  |
-| PurchaseOrder | string | 采购订单参考编号 | PO-3333 | |  |
-| InvoiceId | string | 此特定发票的 ID (通常为 "发票编号" )  | INV-100 | |  |
-| InvoiceDate | date | 发出发票的日期 | 2019 年 11 月 15 日 | 
-| DueDate | date | 此发票的日期支付截止日期 | 12/15/2019 | 2019-12-15 | 2019-11-15 |
-| VendorName | string | 已创建此发票的供应商 | CONTOSO 有限公司。 | |
-| VendorAddress | string | 供应商的邮件地址 | 123 456th 圣纽约，纽约州，10001 | |
-| VendorAddressRecipient | string | 与 VendorAddress 关联的名称 | Contoso 总部 | |
-| CustomerAddress | string | 客户的邮件地址 | 123其他 St，Redmond WA，98052 | |
-| CustomerAddressRecipient | string | 与 CustomerAddress 关联的名称 | Microsoft Corp | |
-| BillingAddress | string | 客户的明确帐单地址 | 123帐单 St，Redmond WA，98052 | |
-| BillingAddressRecipient | string | 与 BillingAddress 关联的名称 | Microsoft 服务 | |
-| ShippingAddress | string | 客户的显式寄送地址 | 123发货 St，Redmond WA，98052 | |
-| ShippingAddressRecipient | string | 与 ShippingAddress 关联的名称 | Microsoft 交付 | |
-| SubTotal | number | 此发票上标识的小计字段 | $100.00 | 100 | 
-| TotalTax | number | 此发票上标识的总税款字段 | $10.00 | 10 |
-| InvoiceTotal | number | 与此发票关联的新费用总计 | $110.00 | 110 |
-| AmountDue |  number | 供应商导致的总金额 | $610.00 | 610 |
-| Serviceaddress.uri | string | 客户的显式服务地址或属性地址 | 123服务 St，Redmond WA，98052 | |
-| ServiceAddressRecipient | string | 与 Serviceaddress.uri 关联的名称 | Microsoft 服务 | |
-| RemittanceAddress | string | 客户的显式汇款或付款地址 | 123汇款圣纽约，纽约州，10001 |  |
-| RemittanceAddressRecipient | string | 与 RemittanceAddress 关联的名称 | Contoso 计费 |  |
+| CustomerName | 字符串 | 正在开票的客户 | Microsoft Corp |  |
+| CustomerId | 字符串 | 客户的引用 ID | CID-12345 |  |
+| PurchaseOrder | 字符串 | 采购订单参考编号 | PO-3333 | |  |
+| InvoiceId | 字符串 | 此特定发票的 ID (通常为 "发票编号" )  | INV-100 | |  |
+| InvoiceDate | date | 发出发票的日期 | 2019 年 11 月 15 日 | 2019-11-15 |
+| DueDate | date | 此发票的日期支付截止日期 | 12/15/2019 | 2019-12-15 |
+| VendorName | 字符串 | 已创建此发票的供应商 | CONTOSO 有限公司。 | |
+| VendorAddress | 字符串 | 供应商的邮件地址 | 123 456th 圣纽约，纽约州，10001 | |
+| VendorAddressRecipient | 字符串 | 与 VendorAddress 关联的名称 | Contoso 总部 | |
+| CustomerAddress | 字符串 | 客户的邮件地址 | 123其他 St，Redmond WA，98052 | |
+| CustomerAddressRecipient | 字符串 | 与 CustomerAddress 关联的名称 | Microsoft Corp | |
+| BillingAddress | 字符串 | 客户的明确帐单地址 | 123帐单 St，Redmond WA，98052 | |
+| BillingAddressRecipient | 字符串 | 与 BillingAddress 关联的名称 | Microsoft 服务 | |
+| ShippingAddress | 字符串 | 客户的显式寄送地址 | 123发货 St，Redmond WA，98052 | |
+| ShippingAddressRecipient | 字符串 | 与 ShippingAddress 关联的名称 | Microsoft 交付 | |
+| SubTotal | 数字 | 此发票上标识的小计字段 | $100.00 | 100 | 
+| TotalTax | 数字 | 此发票上标识的总税款字段 | $10.00 | 10 |
+| InvoiceTotal | 数字 | 与此发票关联的新费用总计 | $110.00 | 110 |
+| AmountDue |  数字 | 供应商导致的总金额 | $610.00 | 610 |
+| Serviceaddress.uri | 字符串 | 客户的显式服务地址或属性地址 | 123服务 St，Redmond WA，98052 | |
+| ServiceAddressRecipient | 字符串 | 与 Serviceaddress.uri 关联的名称 | Microsoft 服务 | |
+| RemittanceAddress | 字符串 | 客户的显式汇款或付款地址 | 123汇款圣纽约，纽约州，10001 |  |
+| RemittanceAddressRecipient | 字符串 | 与 RemittanceAddress 关联的名称 | Contoso 计费 |  |
 | ServiceStartDate | date | 服务期间的第一个日期 (例如，公用事业帐单服务期间)  | 2019/10/14 | 2019-10-14 |
 | ServiceEndDate | date | 服务时段的结束日期 (例如，公用事业帐单服务期间)  | 11/14/2019 | 2019-11-14 |
-| PreviousUnpaidBalance | number | 明确的以前未付余额 | $500.00 | 500 |
+| PreviousUnpaidBalance | 数字 | 明确的以前未付余额 | $500.00 | 500 |
 
 
 ## <a name="next-steps"></a>后续步骤

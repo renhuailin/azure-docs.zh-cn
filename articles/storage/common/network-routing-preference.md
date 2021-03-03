@@ -1,26 +1,26 @@
 ---
-title: 配置网络路由首选项（预览）
+title: 网络路由首选项
 titleSuffix: Azure Storage
-description: 为 Azure 存储帐户配置网络路由首选项（预览），以指定网络流量如何通过 Internet 从客户端路由到你的帐户。
+description: 利用网络路由首选项，你可以指定如何通过 internet 从客户端将网络流量路由到你的帐户。
 services: storage
 author: santoshc
 ms.service: storage
 ms.topic: conceptual
-ms.date: 05/12/2020
+ms.date: 02/11/2021
 ms.author: santoshc
-ms.reviewer: tamram
+ms.reviewer: normesta
 ms.subservice: common
 ms.custom: references_regions
-ms.openlocfilehash: 601c8dfb4b4e2f16da5c560f67e2d251a5d3072a
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 6b6c90259c552895360281b393e15773c6e101e3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100362737"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726931"
 ---
-# <a name="configure-network-routing-preference-for-azure-storage-preview"></a>为 Azure 存储配置网络路由首选项（预览）
+# <a name="network-routing-preference-for-azure-storage"></a>Azure 存储的网络路由首选项
 
-可以为 Azure 存储帐户配置网络[路由首选项](../../virtual-network/routing-preference-overview.md)（预览），以指定网络流量如何通过 Internet 从客户端路由到你的帐户。 默认情况下，来自 Internet 的流量通过 [Microsoft 全球网络](../../networking/microsoft-global-network.md)路由到存储帐户的公共终结点。 Azure 存储提供额外的选项，用于配置将流量路由到存储帐户的方式。
+你可以为 Azure 存储帐户配置网络 [路由首选项](../../virtual-network/routing-preference-overview.md) ，以指定如何通过 internet 从客户端将网络流量路由到你的帐户。 默认情况下，来自 internet 的流量通过 [Microsoft 全球网络](../../networking/microsoft-global-network.md)路由到你的存储帐户的公共终结点。 Azure 存储提供额外的选项，用于配置将流量路由到存储帐户的方式。
 
 配置路由首选项使你可以灵活地优化流量，既可以优化网络性能，又可以降低成本。 配置路由首选项时，请指定默认情况下流量如何定向到存储帐户的公共终结点。 还可以为存储帐户发布特定于路由的终结点。
 
@@ -37,15 +37,17 @@ ms.locfileid: "100362737"
 
 ![Azure 存储的路由选项概述](media/network-routing-preference/routing-options-diagram.png)
 
-有关 Azure 中的路由首选项的详细信息，请参阅[什么是路由首选项（预览）？](../../virtual-network/routing-preference-overview.md)。
+有关 Azure 中的路由首选项的详细信息，请参阅 [什么是路由首选项？](../../virtual-network/routing-preference-overview.md)。
 
 ## <a name="routing-configuration"></a>路由配置
 
-可以在 Microsoft 全球网络和 Internet 路由之间进行选择，作为存储帐户公共终结点的默认路由首选项。 默认路由首选项适用于来自 Azure 外部的客户端的所有流量，并影响 Azure Data Lake Storage Gen2、Blob 存储、Azure 文件存储和静态网站的终结点。 Azure 队列或 Azure 表不支持配置路由首选项。
+有关演示如何配置路由首选项和特定于路由的终结点的分步指导，请参阅 [配置 Azure 存储的网络路由首选项](configure-network-routing-preference.md)。
+
+可以在 Microsoft 全局网络和 internet 路由之间进行选择，作为存储帐户的公共终结点的默认路由首选项。 默认路由首选项适用于来自 Azure 外部的客户端的所有流量，并影响 Azure Data Lake Storage Gen2、Blob 存储、Azure 文件存储和静态网站的终结点。 Azure 队列或 Azure 表不支持配置路由首选项。
 
 还可以为存储帐户发布特定于路由的终结点。 当你发布特定于路由的终结点时，Azure 存储会为你的存储帐户创建新的公共终结点，以便将流量路由到所需的路径。 这种灵活性使你可以通过特定路由将流量定向到存储帐户，而无需更改默认路由首选项。
 
-例如，针对“StorageAccountA”发布 Internet 路由特定的终结点，将为存储帐户发布以下终结点：
+例如，对于 "StorageAccountA" 发布 internet 路由特定的终结点，将为你的存储帐户发布以下终结点：
 
 | 存储服务        | 特定于路由的终结点                                  |
 | :--------------------- | :------------------------------------------------------- |
@@ -65,7 +67,7 @@ ms.locfileid: "100362737"
 
 可以通过 [Azure 门户](https://portal.azure.com)复制已发布的特定于路由的终结点的连接字符串。 这些连接字符串可用于使用所有现有 Azure 存储 SDK 和 API 进行共享密钥授权。
 
-## <a name="about-the-preview"></a>关于此预览版
+## <a name="regional-availability"></a>区域可用性
 
 Azure 存储的路由首选项在以下区域提供：
 
@@ -93,23 +95,24 @@ Azure 存储的路由首选项在以下区域提供：
 - 西欧 
 - 阿联酋中部
 - 东亚 
-- Southeast Asia 
+- 东南亚 
 - Japan East 
 - 日本西部 
 - 印度西部
 - 澳大利亚东部 
 - 澳大利亚东南部 
 
-以下已知问题会影响 Azure 存储的路由首选项预览：
+以下已知问题会影响 Azure 存储的路由首选项：
 
 - Microsoft 全球网络特定于路由的终结点的访问请求失败，出现 HTTP 错误 404 或类似错误。 如果将 Microsoft 全球网络设置为公共终结点的默认路由首选项，则通过 Microsoft 全球网络路由会按预期工作。
 
 ## <a name="pricing-and-billing"></a>定价和计费
 
-有关定价和计费的详细信息，请参阅[什么是路由首选项（预览）？](../../virtual-network/routing-preference-overview.md#pricing)中的“定价”部分。
+有关定价和计费的详细信息，请参阅 [什么是路由首选项](../../virtual-network/routing-preference-overview.md#pricing)中的 **定价** 部分？。
 
 ## <a name="next-steps"></a>后续步骤
 
-- [什么是路由首选项（预览）？](../../virtual-network/routing-preference-overview.md)
+- [什么是路由首选项？](../../virtual-network/routing-preference-overview.md)
+- [配置网络路由首选项](configure-network-routing-preference.md)
 - [配置 Azure 存储防火墙和虚拟网络](storage-network-security.md)
 - [有关 Blob 存储的安全性建议](../blobs/security-recommendations.md)

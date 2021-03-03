@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 09/09/2020
-ms.openlocfilehash: e8d89de079a50159bbed9c38487effb0c89448c2
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.date: 02/25/2021
+ms.openlocfilehash: c479f525435139b2f92838bf15edf4563aeed4e2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100607597"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704117"
 ---
 # <a name="standard-columns-in-azure-monitor-logs"></a>Azure Monitor 日志中的标准列
 Azure Monitor 日志中的数据[作为一组记录存储在 Log Analytics 工作区或 Application Insights 应用程序](../logs/data-platform-logs.md)中，每条记录都具有特定的数据类型，该数据类型包含一组惟一的列。 许多数据类型都具有在多种类型中通用的标准列。 本文介绍这些列，并提供如何在查询中使用它们的示例。
@@ -20,6 +20,10 @@ Application Insights 中基于工作区的应用程序将其数据存储在 Log 
 
 > [!NOTE]
 > 某些标准列不会显示在 Log Analytics 的架构视图或 intellisense 中，也不会显示在查询结果中，除非在输出中显式指定该列。
+> 
+
+## <a name="tenantid"></a>TenantId
+**TenantId** 列保存 Log Analytics 工作区的工作区 ID。
 
 ## <a name="timegenerated-and-timestamp"></a>TimeGenerated 和 timestamp
 TimeGenerated（Log Analytics 工作区）和 timestamp（Application Insights 应用程序）列包含数据源创建记录的日期和时间 。 有关更多详细信息，请参阅 [Azure Monitor 中的日志数据引入时间](../logs/data-ingestion-time.md)。
@@ -49,6 +53,10 @@ exceptions
 
 ## <a name="_timereceived"></a>\_TimeReceived
 **\_TimeReceived** 列包含 Azure 云中的 Azure Monitor 引入点收到记录的日期和时间。 这对于查明数据源与云之间的延迟问题非常有用。 例如，网络问题会导致从代理发送数据时出现延迟。 有关更多详细信息，请参阅 [Azure Monitor 中的日志数据引入时间](../logs/data-ingestion-time.md)。
+
+> [!NOTE]
+> **\_ TimeReceived** 列在每次使用时都将进行计算。 此过程会占用大量资源。 使用优化来筛选大量记录。 使用此函数周期性可能会导致查询执行持续时间增加。
+
 
 对于某个代理提供的事件记录，以下查询提供了按小时计的的平均延迟。 这包括从代理到云的时间，以及记录可供日志查询使用的总时间。
 
@@ -238,6 +246,6 @@ union withsource = tt *
 
 ## <a name="next-steps"></a>后续步骤
 
-- 详细了解如何[存储 Azure Monitor 日志数据](../log-query/log-query-overview.md)。
-- 获取有关[编写日志查询](../log-query/get-started-queries.md)的课程。
+- 详细了解如何[存储 Azure Monitor 日志数据](./log-query-overview.md)。
+- 获取有关[编写日志查询](./get-started-queries.md)的课程。
 - 获取有关[在日志查询中联接表](/azure/data-explorer/kusto/query/samples?&pivots=azuremonitor#joins)的课程。

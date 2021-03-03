@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: roygalMS
 ms.author: roygal
 ms.date: 11/03/2020
-ms.openlocfilehash: 80a508aeb7eff9567bea67cb84350fc2e77551da
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: d1db5f5e4164d971dff3ec6b042fa4b0a969e508
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100606073"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704236"
 ---
 # <a name="log-analytics-integration-with-power-bi"></a>Log Analytics 与 Power BI 的集成
 
@@ -19,7 +19,7 @@ ms.locfileid: "100606073"
 
 ## <a name="background"></a>背景 
 
-Azure Monitor 日志是为日志引入提供端到端解决方案的平台。 [Azure Monitor Log Analytics](../platform/data-platform.md#) 是用于查询这些日志的界面。 若要详细了解包括 Log Analytics 在内的整个 Azure Monitor 数据平台，请参阅 [Azure Monitor 数据平台](../platform/data-platform.md)。 
+Azure Monitor 日志是为日志引入提供端到端解决方案的平台。 [Azure Monitor Log Analytics](../platform/data-platform.md#) 是用于查询这些日志的界面。 若要详细了解包括 Log Analytics 在内的整个 Azure Monitor 数据平台，请参阅 [Azure Monitor 数据平台](../data-platform.md)。 
 
 Microsoft Power BI 是 Microsoft 的数据可视化平台。 有关如何入门的详细信息，请参阅 [Power BI 的主页](https://powerbi.microsoft.com/)。 
 
@@ -82,4 +82,4 @@ Power BI 增量刷新依赖于结果集中存在的日期/时间字段。 在配
 
 ## <a name="next-steps"></a>后续步骤
 
-开始使用 [Log Analytics 查询](../log-query/log-query-overview.md)。
+开始使用 [Log Analytics 查询](./log-query-overview.md)。

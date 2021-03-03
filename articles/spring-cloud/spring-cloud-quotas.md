@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 20ebeb23fe09ba4fd70a724828afadfaa3901abd
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: b02ccb3acb4546e08e7d58159ab9d85bca2d0eed
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101095668"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711869"
 ---
 # <a name="quotas-and-service-plans-for-azure-spring-cloud"></a>Azure Spring Cloud 的配额和服务计划
 
@@ -32,7 +32,7 @@ Azure 春季云服务实例 | 每个订阅的每个区域 | 10 | 10
 永久性卷 | 每个 Azure 春季云服务实例 | 1 GB/应用 x 10 个应用 | 50 GB/应用 x 10 个应用
 
 > [!TIP]
-> 列出的每个服务实例的应用程序实例总数适用于处于停止状态的应用/部署。 请删除未在使用的应用/部署。
+> 为每个服务实例的应用程序实例总数列出的限制适用于处于任何状态的应用和部署，包括 "已停止" 状态。 请删除未使用的应用或部署。
 
 ## <a name="next-steps"></a>后续步骤
 

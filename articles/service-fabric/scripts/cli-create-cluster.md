@@ -13,18 +13,18 @@ ms.topic: sample
 ms.date: 01/18/2018
 ms.author: atsenthi
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 675f6b9ac3ebb05539432b5febc279275f9de7f6
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 8a6f23a5f4ce497c38358f06394f0f0aa97f9889
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98785763"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101739655"
 ---
 # <a name="create-a-secure-service-fabric-linux-cluster-in-azure"></a>在 Azure 中创建安全的 Service Fabric Linux 群集
 
 此命令创建一个自签名证书，将其添加到密钥保管库并在本地下载该证书。  新证书用于在群集部署时保护群集。  也可以使用现有证书而不是创建一个新证书。  不管怎样，证书的使用者名称都必须与用于访问 Service Fabric 群集的域匹配。 只有满足此匹配，才能为群集的 HTTPS 管理终结点和 Service Fabric Explorer 提供 TLS。 无法从 CA 获取 `.cloudapp.azure.com` 域的 TLS/SSL 证书。 必须获取群集的自定义域名。 从 CA 请求证书时，该证书的使用者名称必须与用于群集的自定义域名匹配。
 
-根据需要安装 [Azure CLI](/en-us/cli/azure/install-azure-cli)。
+根据需要安装 [Azure CLI](cli/azure/install-azure-cli)。
 
 ## <a name="sample-script"></a>示例脚本
 

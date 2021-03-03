@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 15a77835e3e618c17b9839aa5a010cd4d29cebe1
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: e563981d3a68375105256aa6015aa94ada91326b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97653106"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711699"
 ---
 # <a name="add-a-tlsssl-certificate-in-azure-app-service"></a>在 Azure 应用服务中添加 TLS/SSL 证书
 
@@ -211,7 +211,7 @@ ms.locfileid: "97653106"
 | 设置 | 说明 |
 |-|-|
 | 订阅 | Key Vault 所属的订阅。 |
-| 密钥保管库 | 包含要导入的证书的保管库。 |
+| Key Vault | 包含要导入的证书的保管库。 |
 | 证书 | 从保管库中的 PKCS12 证书列表中进行选择。 保管库中的所有 PKCS12 证书都已通过其指纹列出，但在应用服务中并非支持所有证书。 |
 
 操作完成后，会在“私钥证书”列表中看到该证书。 如果导入失败并出现错误，则证书不满足[应用服务的要求](#private-certificate-requirements)。

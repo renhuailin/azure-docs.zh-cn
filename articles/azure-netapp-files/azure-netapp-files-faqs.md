@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/21/2021
 ms.author: b-juche
-ms.openlocfilehash: ec6a03673112dfb5397f6fae947f1fbf65fd6791
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 2cb0e3829011ca9bd0f2b6f36ebf3e6744a180ec
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881412"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713399"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>有关 Azure NetApp 文件的常见问题解答
 
@@ -110,7 +110,7 @@ Azure NetApp 文件提供了卷性能指标。 你还可以使用 Azure Monitor 
 
 ### <a name="whats-the-performance-impact-of-kerberos-on-nfsv41"></a>NFSv 4.1 上的 Kerberos 对性能有什么影响？
 
-请参阅 [nfsv 4.1 上的 Kerberos 对性能的影响](configure-kerberos-encryption.md#kerberos_performance) ，了解有关 nfsv 4.1 安全选项、测试的性能向量和预期的性能影响的信息。 
+请参阅 [nfsv 4.1 卷上 Kerberos 对性能的影响](performance-impact-kerberos.md) ，了解有关 nfsv 4.1 的安全选项、测试的性能向量和预期的性能影响的信息。 
 
 ## <a name="nfs-faqs"></a>NFS 常见问题解答
 
@@ -204,7 +204,7 @@ Azure NetApp 文件提供容量池和卷使用情况指标。 你还可以使用
 
 对于 320 MB 的目录，块数为655360，每个块的大小为512个字节。   (，即 320x1024x1024/512 )   
 
-示例:
+示例：
 
 ```console
 [makam@cycrh6rtp07 ~]$ stat bin

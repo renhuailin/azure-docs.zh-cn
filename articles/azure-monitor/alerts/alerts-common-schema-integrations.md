@@ -4,12 +4,12 @@ description: 了解如何创建一个逻辑应用，以利用常见警报架构�
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 05/27/2019
-ms.openlocfilehash: 4553ecc8d2df20ffdf9b76d381ecf3b88d84ef38
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 4824c5ab1826260ee1eb3639712d7138c7c85bfe
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100606220"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738661"
 ---
 # <a name="how-to-integrate-the-common-alert-schema-with-logic-apps"></a>如何将常见警报架构与逻辑应用集成
 
@@ -23,8 +23,8 @@ ms.locfileid: "100606220"
 ## <a name="prerequisites"></a>必备条件 
 
 本文假设读者熟悉以下操作 
-* 设置警报规则（[指标](../alerts/alerts-metric.md)、[日志](../platform/alerts-log.md)、[活动日志](../platform/alerts-activity-log.md)）
-* 设置[操作组](../platform/action-groups.md)
+* 设置警报规则（[指标](../alerts/alerts-metric.md)、[日志](./alerts-log.md)、[活动日志](./alerts-activity-log.md)）
+* 设置[操作组](./action-groups.md)
 * 从操作组中启用[常见警报架构](./alerts-common-schema.md#how-do-i-enable-the-common-alert-schema)
 
 ## <a name="create-a-logic-app-leveraging-the-common-alert-schema"></a>创建一个利用常见警报架构的逻辑应用
@@ -137,5 +137,5 @@ ms.locfileid: "100606220"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [详细了解操作组](../platform/action-groups.md)。
+* [详细了解操作组](./action-groups.md)。
 * [详细了解常见警报架构](./alerts-common-schema.md)。

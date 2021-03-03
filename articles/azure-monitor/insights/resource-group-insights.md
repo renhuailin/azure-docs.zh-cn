@@ -1,18 +1,17 @@
 ---
 title: Azure Monitor 资源组见解 |Microsoft Docs
 description: 通过 Azure Monitor 了解资源组级别的分布式应用程序和服务的运行状况和性能
-ms.subservice: ''
 ms.topic: conceptual
 author: NumberByColors
 ms.author: daviste
 ms.date: 09/19/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 620dadbaba049d6baea54b3b64c9e248fc48004a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: ab2c56b5e5cfc3dcb7411db27e7faabb2589be6c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100573449"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704321"
 ---
 # <a name="monitor-resource-groups-with-azure-monitor-preview"></a>使用 Azure Monitor（预览版）监视资源组
 

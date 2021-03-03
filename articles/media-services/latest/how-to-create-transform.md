@@ -15,12 +15,12 @@ ms.workload: na
 ms.date: 11/18/2020
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: adbd7deccf32312f67cff7b92ff7813036e9b1b3
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 4623610960d8f21a2dab3293c7499a2112416254
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98898522"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101718907"
 ---
 # <a name="create-a-transform"></a>创建转换
 
@@ -33,8 +33,6 @@ ms.locfileid: "98898522"
 [创建媒体服务帐户](./create-account-howto.md)。
 
 ## <a name="cli"></a>[CLI](#tab/cli/)
-
-[!INCLUDE [media-services-cli-instructions.md](../../../includes/media-services-cli-instructions.md)]
 
 > [!NOTE]
 > 只能为 [StandardEncoderPreset](/rest/api/media/transforms/createorupdate#standardencoderpreset) 指定自定义标准编码器预设 JSON 文件的路径，请参阅[使用自定义转换进行编码](custom-preset-cli-howto.md)示例。
@@ -53,4 +51,4 @@ ms.locfileid: "98898522"
 
 ## <a name="next-steps"></a>后续步骤
 
-[详细了解转换和作业](transforms-jobs-concept.md)
+[!INCLUDE [transforms next steps](./includes/transforms-next-steps.md)]

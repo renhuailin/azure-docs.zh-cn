@@ -6,13 +6,13 @@ author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 02/01/2021
-ms.openlocfilehash: 32c65a3e1063b29ab6458151aec42e4415a73b62
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 02/25/2021
+ms.openlocfilehash: ec4ea645e325ef48d4cb5951cd39fd4e9cbe1617
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100381318"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738049"
 ---
 # <a name="copy-and-transform-data-in-azure-database-for-postgresql-by-using-azure-data-factory"></a>使用 Azure 数据工厂复制和转换 Azure Database for PostgreSQL 中的数据
 
@@ -30,6 +30,8 @@ ms.locfileid: "100381318"
 - [映射数据流](concepts-data-flow-overview.md)
 - [Lookup 活动](control-flow-lookup-activity.md)
 
+目前，数据流支持 PostgreSQL 单一服务器的 Azure 数据库，但不支持灵活的服务器或超大规模 (Citus) 。
+
 ## <a name="getting-started"></a>入门
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
@@ -40,7 +42,7 @@ ms.locfileid: "100381318"
 
 Azure Database for PostgreSQL 链接服务支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**AzurePostgreSql**。 | 是 |
 | connectionString | 用于连接到 Azure Database for PostgreSQL 的 ODBC 连接字符串。<br/>还可以将密码放在 Azure 密钥保管库中，并从连接字符串中拉取 `password` 配置。 有关更多详细信息，请参阅以下示例和[在 Azure 密钥保管库中存储凭据](store-credentials-in-key-vault.md)。 | 是 |
@@ -97,7 +99,7 @@ Azure Database for PostgreSQL 链接服务支持以下属性：
 
 若要从 Azure Database for PostgreSQL 复制数据，请将数据集的 type 属性设置为 " **AzurePostgreSqlTable**"。 支持以下属性：
 
-| properties | 说明 | 必需 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为 AzurePostgreSqlTable  | 是 |
 | tableName | 表名称 | 否（如果指定了活动源中的“query”） |
@@ -126,7 +128,7 @@ Azure Database for PostgreSQL 链接服务支持以下属性：
 
 要从 Azure Database for PostgreSQL 复制数据，请将复制活动中的源类型设置为 **AzurePostgreSqlSource**。 复制活动 **source** 部分支持以下属性：
 
-| properties | 说明 | 必需 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为 **AzurePostgreSqlSource** | 是 |
 | query | 使用自定义 SQL 查询读取数据。 例如 `SELECT * FROM mytable` 或 `SELECT * FROM "MyTable"`。 请注意，在 PostgreSQL 中，如果未加引号，则实体名称不区分大小写。 | 否（如果指定了数据集中的 tableName 属性） |
@@ -167,7 +169,7 @@ Azure Database for PostgreSQL 链接服务支持以下属性：
 
 将数据复制到 Azure Database for PostgreSQL 时，复制活动的 **sink** 节支持以下属性：
 
-| Property | 说明 | 必需 |
+| Property | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动接收器的 type 属性必须设置为 **AzurePostgreSQLSink**。 | 是 |
 | preCopyScript | 每次运行时将数据写入 Azure Database for PostgreSQL 之前，为要执行的复制活动指定 SQL 查询。 可以使用此属性清除预加载的数据。 | 否 |

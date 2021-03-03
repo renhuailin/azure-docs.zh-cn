@@ -7,12 +7,12 @@ services: firewall
 ms.topic: how-to
 ms.date: 02/16/2021
 ms.author: victorh
-ms.openlocfilehash: ec8fc4473669b0c056d0b22ff44e5818b87ba3fa
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: fa106fac683619706f4be330ad1c4bff7b56f2dd
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100549584"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101721780"
 ---
 # <a name="deploy-and-configure-azure-firewall-premium-preview"></a>部署和配置 Azure 防火墙 Premium 预览版
 
@@ -20,7 +20,7 @@ ms.locfileid: "100549584"
 > Azure 防火墙高级版目前为公共预览版。
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
- Azure 防火墙高级预览版是下一代防火墙，其中包含高度敏感和管控环境所需的功能。 它包括以下功能：
+ Azure 防火墙高级预览版是新一代防火墙，其中包含高度敏感环境和受管制环境所需的功能。 它包括以下功能：
 
 - **TLS 检查** -解密出站流量，处理数据，然后加密数据并将数据发送到目标。
 - **Idp** -网络入侵检测和防护系统 (idp) 使你可以监视恶意活动的网络活动，记录有关此活动的信息，报告它，还可以选择尝试阻止它。
@@ -34,7 +34,7 @@ ms.locfileid: "100549584"
 - Azure 堡垒子网 (10.0.20.0/24) 
 - 防火墙子网 (10.0.100.0/24) 
 
-为了简单起见，在此测试环境中使用单个中心 VNet。 对于生产目的，具有对等互连 Vnet 的 [中心和辐射拓扑](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) 更为常见。
+为了简单起见，在此测试环境中使用单个中心 VNet。 对于生产目的，具有对等互连 Vnet 的 [中心和辐射拓扑](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) 更为常见。
 
 :::image type="content" source="media/premium-deploy/premium-topology.png" alt-text="中心 VNet 拓扑":::
 
@@ -141,7 +141,7 @@ ms.locfileid: "100549584"
 某些 HTML 页可能看起来不完整，因为它们引用的其他 Url 已被拒绝。 若要解决此问题，可以采取以下方法：
 
 - 如果 HTML 页面包含指向其他域的链接，则可以使用 "允许访问这些 Fqdn" 将这些域添加到新的应用程序规则。
-- 如果 HTML 页面包含指向子 Url 的链接，则可以修改规则并将星号添加到 URL。 例如： `targetURLs=www.nytimes.com/section/world*`
+- 如果 HTML 页面包含指向子 Url 的链接，则可以修改规则并将星号添加到 URL。 例如：`targetURLs=www.nytimes.com/section/world*`
 
    或者，可以向规则添加新的 URL。 例如： 
 
@@ -154,7 +154,7 @@ ms.locfileid: "100549584"
 2. 选择 " **应用程序规则**"，然后 **添加规则集合**。
 3. 对于 " **名称**"，键入 *GeneralWeb*， **优先级** *103*，" **规则收集组** "，选择 **DefaultApplicationRuleCollectionGroup**。
 4. 在 "**名称** 类型 *AllowSports*"、"**源**"、"协议 http"、"https" 的 "**规则**" 下， *\** 选择 "  **TLS 检查**"、"**目标类型**" "选择 *Web 类别 (预览")*   
-5. 选择 **添加** 。
+5. 选择“添加”。
 
       :::image type="content" source="media/premium-deploy/web-categories.png" alt-text="体育 web 类别":::
 6. 部署完成后，请转到  **WorkerVM** 并打开 web 浏览器并浏览到 `https://www.nfl.com` 。

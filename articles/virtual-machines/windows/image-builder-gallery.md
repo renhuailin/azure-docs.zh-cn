@@ -3,23 +3,23 @@ title: 将 Azure 映像生成器用于 Windows VM 的映像库（预览）
 description: 使用 Azure 映像生成器和 Azure PowerShell 创建 Azure 共享库映像版本。
 author: cynthn
 ms.author: cynthn
-ms.date: 05/05/2020
+ms.date: 03/02/2021
 ms.topic: how-to
 ms.service: virtual-machines
 ms.subervice: image-builder
 ms.colletion: windows
-ms.openlocfilehash: fd30c2bf4e2c0bc04850704e412aad1db2b10143
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: e8caf9f742217161c60ce90351989999f18adabb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101677250"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694081"
 ---
 # <a name="preview-create-a-windows-image-and-distribute-it-to-a-shared-image-gallery"></a>预览版：创建 Windows 映像并将其分发到共享映像库 
 
 本文介绍如何使用 Azure 映像生成器和 Azure PowerShell，来在[共享映像库](../shared-image-galleries.md)中创建映像版本，然后全局分发此映像。 也可以使用 [Azure CLI](../linux/image-builder-gallery.md) 来实现此目的。
 
-我们将使用一个 .json 模板来配置映像。 我们将使用的 .json 文件位于：[armTemplateWinSIG](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/1_Creating_a_Custom_Win_Shared_Image_Gallery_Image/armTemplateWinSIG.json)。 我们将下载并编辑此模板的本地版本，因此本文是使用本地 PowerShell 会话撰写的。
+我们将使用一个 .json 模板来配置映像。 我们将使用的 .json 文件位于：[armTemplateWinSIG](https://raw.githubusercontent.com/azure/azvmimagebuilder/master/quickquickstarts/1_Creating_a_Custom_Win_Shared_Image_Gallery_Image/armTemplateWinSIG.json)。 我们将下载并编辑此模板的本地版本，因此本文是使用本地 PowerShell 会话撰写的。
 
 此模板使用 [sharedImage](../linux/image-builder-json.md#distribute-sharedimage) 作为模板的 `distribute` 部分的值，以便将映像分发到共享映像库。
 
@@ -53,6 +53,7 @@ Get-AzResourceProvider -ProviderNamespace Microsoft.VirtualMachineImages | Forma
 Get-AzResourceProvider -ProviderNamespace Microsoft.Storage | Format-table -Property ResourceTypes,RegistrationState 
 Get-AzResourceProvider -ProviderNamespace Microsoft.Compute | Format-table -Property ResourceTypes,RegistrationState
 Get-AzResourceProvider -ProviderNamespace Microsoft.KeyVault | Format-table -Property ResourceTypes,RegistrationState
+Get-AzResourceProvider -ProviderNamespace Microsoft.Network | Format-table -Property ResourceTypes,RegistrationState
 ```
 
 如果未返回 `Registered`，请使用以下命令来注册提供程序：
@@ -62,6 +63,12 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.VirtualMachineImages
 Register-AzResourceProvider -ProviderNamespace Microsoft.Storage
 Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
 Register-AzResourceProvider -ProviderNamespace Microsoft.KeyVault
+Register-AzResourceProvider -ProviderNamespace Microsoft.Network
+```
+
+安装 PowerShell 模块：
+```powerShell
+'Az.ImageBuilder', 'Az.ManagedServiceIdentity' | ForEach-Object {Install-Module -Name $_ -AllowPrerelease}
 ```
 
 ## <a name="create-variables"></a>创建变量
@@ -123,7 +130,7 @@ $identityNamePrincipalId=$(Get-AzUserAssignedIdentity -ResourceGroupName $imageR
 此命令将下载 Azure 角色定义模板，并使用前面指定的参数更新模板。
 
 ```powershell
-$aibRoleImageCreationUrl="https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/solutions/12_Creating_AIB_Security_Roles/aibRoleImageCreation.json"
+$aibRoleImageCreationUrl="https://raw.githubusercontent.com/azure/azvmimagebuilder/master/solutions/12_Creating_AIB_Security_Roles/aibRoleImageCreation.json"
 $aibRoleImageCreationPath = "aibRoleImageCreation.json"
 
 # download config
@@ -190,7 +197,7 @@ New-AzGalleryImageDefinition `
 $templateFilePath = "armTemplateWinSIG.json"
 
 Invoke-WebRequest `
-   -Uri "https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/1_Creating_a_Custom_Win_Shared_Image_Gallery_Image/armTemplateWinSIG.json" `
+   -Uri "https://raw.githubusercontent.com/azure/azvmimagebuilder/master/quickquickstarts/1_Creating_a_Custom_Win_Shared_Image_Gallery_Image/armTemplateWinSIG.json" `
    -OutFile $templateFilePath `
    -UseBasicParsing
 
@@ -220,7 +227,7 @@ Invoke-WebRequest `
 New-AzResourceGroupDeployment `
    -ResourceGroupName $imageResourceGroup `
    -TemplateFile $templateFilePath `
-   -apiversion "2019-05-01-preview" `
+   -apiversion "2020-02-14" `
    -imageTemplateName $imageTemplateName `
    -svclocation $location
 ```
@@ -232,14 +239,17 @@ Invoke-AzResourceAction `
    -ResourceName $imageTemplateName `
    -ResourceGroupName $imageResourceGroup `
    -ResourceType Microsoft.VirtualMachineImages/imageTemplates `
-   -ApiVersion "2019-05-01-preview" `
+   -ApiVersion "2020-02-14" `
    -Action Run
 ```
 
-创建映像并将其复制到这两个区域，这可能需要一段时间。 等待此部分完成后继续创建 VM。
+创建映像并将其复制到这两个区域，这可能需要一段时间。 等待至此部分完成，然后再继续创建 VM。
 
-若要了解用于自动获取映像生成状态的选项，请参阅 GitHub 上此模板的[自述文件](https://github.com/danielsollondon/azvmimagebuilder/blob/master/quickquickstarts/1_Creating_a_Custom_Win_Shared_Image_Gallery_Image/readme.md#get-status-of-the-image-build-and-query)。
-
+有关自动获取映像生成状态的选项的信息，请参阅 [自述文件]
+```powershell
+Get-AzImageBuilderTemplate -ImageTemplateName $imageTemplateName -ResourceGroupName $imageResourceGroup |
+  Select-Object -Property Name, LastRunStatusRunState, LastRunStatusMessage, ProvisioningState
+```
 
 ## <a name="create-the-vm"></a>创建 VM
 
@@ -310,7 +320,7 @@ dir c:\
 获取映像模板的 ResourceID。 
 
 ```powerShell
-$resTemplateId = Get-AzResource -ResourceName $imageTemplateName -ResourceGroupName $imageResourceGroup -ResourceType Microsoft.VirtualMachineImages/imageTemplates -ApiVersion "2019-05-01-preview"
+$resTemplateId = Get-AzResource -ResourceName $imageTemplateName -ResourceGroupName $imageResourceGroup -ResourceType Microsoft.VirtualMachineImages/imageTemplates -ApiVersion "2020-02-14"
 ```
 
 删除映像模板。

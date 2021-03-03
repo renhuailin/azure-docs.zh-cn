@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 07/14/2020
+ms.date: 03/01/2021
 ms.author: apimpm
-ms.openlocfilehash: 77d9d20f3321aa5bb6c5ea47a3949a82bdd1ad75
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 85abf30d792b24b92685e191f5b460a42dc29142
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131235"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101688410"
 ---
 # <a name="api-management-cross-domain-policies"></a>API Management cross domain policies（API 管理跨域策略）
 本主题提供以下 API 管理策略的参考。 有关添加和配置策略的信息，请参阅 [API 管理中的策略](./api-management-policies.md)。
@@ -56,22 +56,25 @@ ms.locfileid: "92131235"
 |cross-domain|根元素。 子元素必须符合 [Adobe 跨域策略文件规范](https://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html)。|是|
 
 ### <a name="usage"></a>使用情况
-此策略可在以下策略[段](./api-management-howto-policies.md#sections)和[范围](./api-management-howto-policies.md#scopes)中使用。
+此策略可在以下策略[节](./api-management-howto-policies.md#sections)和[范围](./api-management-howto-policies.md#scopes)中使用。
 
-- **策略段：** 入站
+- **策略节：** 入站
 - **策略范围：** 所有范围
 
 ## <a name="cors"></a><a name="CORS"></a> CORS
-`cors` 策略向操作或 API 添加跨源资源共享 (CORS) 支持，以便从基于浏览器的客户端执行跨域调用。
+`cors` 策略向操作或 API 添加跨源资源共享 (CORS) 支持，以便从基于浏览器的客户端执行跨域调用。 
+
+> [!NOTE]
+> 如果请求与 API 中定义的 OPTIONS 方法匹配操作，则不会执行与 CORS 策略关联的预航班请求处理逻辑。 因此，此类操作可用于实现自定义的预飞行处理逻辑。
 
 CORS 允许浏览器与服务器交互，并确定是否允许特定的跨源请求（例如，通过某个网页上的 JavaScript 对其他域执行 XMLHttpRequests 调用）。 与只允许同源请求相比，它的灵活性更高，而且比允许所有跨源请求更安全。
 
-需要应用 CORS 策略，以在开发人员门户中启用交互式控制台。 有关详细信息，请参阅 [开发人员门户文档](./api-management-howto-developer-portal.md#cors) 。
+你需要应用 CORS 策略，以便在开发人员门户中启用交互式控制台。 有关详细信息，请参阅[开发人员门户文档](./api-management-howto-developer-portal.md#cors)。
 
 ### <a name="policy-statement"></a>策略语句
 
 ```xml
-<cors allow-credentials="false|true">
+<cors allow-credentials="false|true" terminate-unmatched-request="true|false">
     <allowed-origins>
         <origin>origin uri</origin>
     </allowed-origins>
@@ -122,23 +125,24 @@ CORS 允许浏览器与服务器交互，并确定是否允许特定的跨源请
 
 ### <a name="elements"></a>元素
 
-|名称|描述|必须|默认|
+|名称|说明|必须|默认|
 |----------|-----------------|--------------|-------------|
-|cors|根元素。|是|空值|
-|allowed-origins|包含的 `origin` 元素说明了跨域请求的允许来源。 `allowed-origins` 可能包含单个 `origin` 元素，该元素指定允许任何源的 `*`，或者包含一个或多个内含 URI 的 `origin` 元素。|是|空值|
+|cors|根元素。|是|不适用|
+|allowed-origins|包含的 `origin` 元素说明了跨域请求的允许来源。 `allowed-origins` 可能包含单个 `origin` 元素，该元素指定允许任何源的 `*`，或者包含一个或多个内含 URI 的 `origin` 元素。|是|不适用|
 |origin|值可以是允许所有源的 `*`，或者是用于指定单个源的 URI。 URI 必须包括方案、主机和端口。|是|如果 URI 中省略了端口，则端口 80 用于 HTTP，端口 443 用于 HTTPS。|
 |allowed-methods|如果允许 GET 或 POST 之外的方法，则此元素是必需的。 包含 `method` 元素，用于指定支持的 HTTP 谓词。 值 `*` 指示所有方法。|否|如果此部分不存在，则支持 GET 和 POST。|
-|method|指定 HTTP 谓词。|如果 `allowed-methods` 部分存在，则至少一个 `method` 元素是必需。|空值|
-|allowed-headers|此元素包含 `header` 元素，用于指定可以包括在请求中的标头的名称。|否|空值|
+|method|指定 HTTP 谓词。|如果 `allowed-methods` 部分存在，则至少一个 `method` 元素是必需。|不适用|
+|allowed-headers|此元素包含 `header` 元素，用于指定可以包括在请求中的标头的名称。|否|不适用|
 |expose-headers|此元素包含 `header` 元素，用于指定可以通过客户端访问的标头的名称。|否|不适用|
-|标头|指定标头名称。|如果节存在，则 `allowed-headers` 或 `expose-headers` 中至少一个 `header` 元素是必需。|空值|
+|标头|指定标头名称。|如果节存在，则 `allowed-headers` 或 `expose-headers` 中至少一个 `header` 元素是必需。|不适用|
 
 ### <a name="attributes"></a>属性
 
-|名称|描述|必须|默认|
+|名称|说明|必须|默认|
 |----------|-----------------|--------------|-------------|
-|allow-credentials|`Access-Control-Allow-Credentials`预检响应中的标头将设置为此属性的值，并且会影响客户端在跨域请求中提交凭据的能力。|否|false|
-|preflight-result-max-age|`Access-Control-Max-Age`预检响应中的标头将设置为此属性的值，并且会影响用户代理缓存预处理响应的能力。|否|0|
+|allow-credentials|预检响应中的 `Access-Control-Allow-Credentials` 标头将设置为此属性的值，会影响客户端在跨域请求中提交凭据的功能。|否|false|
+|不匹配-请求|此属性控制与 CORS 策略设置不匹配的跨源请求的处理。 当 OPTIONS 请求作为预航班请求处理并且不与 CORS 策略设置匹配时：如果属性设置为 `true` ，则立即终止请求并返回空的 200 OK 响应;如果将属性设置为 `false` ，请为传入元素的直接子级的其他范围内 CORS 策略检查入站，并应用这些策略。  如果未找到 CORS 策略，则使用空的 200 OK 响应终止请求。 当 GET 或 HEAD 请求包含源标头时 (，并因此被视为跨域请求) 并且不匹配 CORS 策略设置：如果属性设置为 `true` ，则立即终止请求，并显示空的 200 OK 响应;如果特性设置为，则 `false` 允许请求正常继续，而不将 CORS 标头添加到响应。|否|是|
+|preflight-result-max-age|预检响应中的 `Access-Control-Max-Age` 标头将设置为此属性的值，会影响用户代理缓存预检响应的功能。|否|0|
 
 ### <a name="usage"></a>使用情况
 此策略可在以下策略[节](./api-management-howto-policies.md#sections)和[范围](./api-management-howto-policies.md#scopes)中使用。
@@ -167,13 +171,13 @@ CORS 允许浏览器与服务器交互，并确定是否允许特定的跨源请
 
 ### <a name="elements"></a>元素
 
-|名称|描述|必需|
+|名称|说明|必需|
 |----------|-----------------|--------------|
 |jsonp|根元素。|是|
 
 ### <a name="attributes"></a>属性
 
-|名称|描述|必须|默认|
+|名称|说明|必须|默认|
 |----------|-----------------|--------------|-------------|
 |callback-parameter-name|以函数所在的完全限定域名为前缀的跨域 JavaScript 函数调用。|是|空值|
 

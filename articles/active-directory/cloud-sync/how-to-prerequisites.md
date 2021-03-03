@@ -7,18 +7,18 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/11/2020
+ms.date: 03/02/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b83c9b0ece933ad71810c50e89ae296aa218ec75
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: ac247b9dc70c565621d3544d14e2f76ff12fda47
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98613147"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101689311"
 ---
-# <a name="prerequisites-for-azure-ad-connect-cloud-sync"></a>Azure AD Connect 云同步的先决条件
+# <a name="prerequisites-for-azure-ad-connect-cloud-sync"></a>Azure AD Connect 云同步先决条件
 本文提供了有关如何选择和使用 Azure Active Directory (Azure AD) 将云同步连接为标识解决方案的指南。
 
 ## <a name="cloud-provisioning-agent-requirements"></a>云预配代理要求
@@ -26,16 +26,16 @@ ms.locfileid: "98613147"
 
 - 域管理员或企业管理员凭据，以创建 Azure AD Connect 的云同步 gMSA (组托管服务帐户) 运行代理服务。 
 - 不是来宾用户的 Azure AD 租户的混合标识管理员帐户。
-- 使用 Windows 2012 R2 或更高版本的预配代理的本地服务器。  此服务器应该是基于 [Active Directory 管理层模型](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)的第0层服务器。
+- 适用于 Windows 2016 或更高版本的预配代理的本地服务器。  此服务器应该是基于 [Active Directory 管理层模型](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)的第0层服务器。
 - 本地防火墙配置。
 
 ## <a name="group-managed-service-accounts"></a>Group Managed Service Accounts
 组托管服务帐户是一种托管的域帐户，它提供自动密码管理，简化的服务主体名称 (SPN) 管理、将管理委派给其他管理员以及在多个服务器上扩展此功能的能力。  Azure AD Connect 云同步支持，并使用 gMSA 来运行代理。  在安装过程中，系统会提示你输入管理凭据，以便创建此帐户。  该帐户将显示为 (domain\provAgentgMSA $) 。  有关 gMSA 的详细信息，请参阅 [组托管服务帐户](/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview) 
 
 ### <a name="prerequisites-for-gmsa"></a>GMSA 的先决条件：
-1.  GMSA 域的林中的 Active Directory 架构需要更新到 Windows Server 2012
+1.  GMSA 域的林中的 Active Directory 架构需要更新到 Windows Server 2012。
 2.  域控制器上的[POWERSHELL RSAT 模块](/windows-server/remote/remote-server-administration-tools)
-3.  域中至少有一个域控制器必须运行 Windows Server 2012。
+3.  域中至少有一个域控制器必须运行 Windows Server 201。
 4.  要安装代理的已加入域的服务器必须是 Windows Server 2012 或更高版本。
 
 ### <a name="custom-gmsa-account"></a>自定义 gMSA 帐户
@@ -43,14 +43,14 @@ ms.locfileid: "98613147"
 
 |类型 |名称 |访问 |应用于| 
 |-----|-----|-----|-----|
-|Allow |gMSA 帐户 |读取所有属性 |后代设备对象| 
+|允许 |gMSA 帐户 |读取所有属性 |后代设备对象| 
 |Allow |gMSA 帐户|读取所有属性 |后代 InetOrgPerson 对象| 
 |Allow |gMSA 帐户 |读取所有属性 |后代计算机对象| 
 |Allow |gMSA 帐户 |读取所有属性 |后代 foreignSecurityPrincipal 对象| 
 |Allow |gMSA 帐户 |完全控制 |后代组对象| 
 |Allow |gMSA 帐户 |读取所有属性 |后代用户对象| 
 |Allow |gMSA 帐户 |读取所有属性 |后代联系人对象| 
-|Allow |gMSA 帐户 |创建/删除用户对象|此对象和所有后代对象| 
+|允许 |gMSA 帐户 |创建/删除用户对象|此对象和所有后代对象| 
 
 有关如何升级现有代理以使用 gMSA 帐户的步骤，请参阅 [组托管服务帐户](how-to-install.md#group-managed-service-accounts)。
 
@@ -65,7 +65,7 @@ ms.locfileid: "98613147"
 
 ### <a name="in-your-on-premises-environment"></a>在本地环境中
 
-1. 指定一台已加入域的、运行 Windows Server 2012 R2 或更高版本、至少有 4-GB RAM 且装有 .NET 4.7.1+ 运行时的主机服务器。
+1. 使用最少 4 GB RAM 和 .NET 4.7.1 + 运行时标识运行 Windows Server 2016 或更高版本的已加入域的主机服务器。
 
 2. 本地服务器上的 PowerShell 执行策略必须设置为 Undefined 或 RemoteSigned。
 
@@ -110,7 +110,7 @@ ms.locfileid: "98613147"
 
 1. 重新启动服务器。
 
-## <a name="known-limitations"></a>已知限制
+## <a name="known-limitations"></a>已知的限制
 
 下面是已知的限制：
 

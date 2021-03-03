@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/14/2021
 ms.author: jeedes
-ms.openlocfilehash: da6faf5791c3e02be9494d0a0bdf9d78ec7fd42e
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 5e2cf4ac43fa2a828ebe9e9a5cb5d2e1d630a59a
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624703"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101649364"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cherwell"></a>教程：Azure Active Directory 与 Cherwell 集成
 
@@ -77,7 +77,7 @@ ms.locfileid: "98624703"
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 在“基本 SAML 配置”  部分中，按照以下步骤操作：
+4. 在“基本 SAML 配置”部分中，按照以下步骤操作：
 
     a. 在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<companyname>.cherwellondemand.com/cherwellclient`。
 
@@ -140,8 +140,8 @@ ms.locfileid: "98624703"
 
 * 直接转到 Cherwell 登录 URL，并从此处启动登录流。
 
-* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 Cherwell 磁贴时，应当会自动登录到已为其设置了 SSO 的 Cherwell。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 Cherwell 磁贴时，应当会自动登录到已为其设置了 SSO 的 Cherwell。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-配置 Cherwell 后，就可以强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+配置 Cherwell 后，就可以强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-aad)

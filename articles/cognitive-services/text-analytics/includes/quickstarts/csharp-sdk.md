@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 01/20/2021
 ms.author: aahi
 ms.reviewer: assafi
-ms.openlocfilehash: 6e71d9b4006d0353b094306424ba0fe99c581279
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 12838eb2cd8437b2c3b3c225651b51991625fd78
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99090689"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750195"
 ---
 <a name="HOLTop"></a>
 
@@ -25,10 +25,6 @@ ms.locfileid: "99090689"
 # <a name="version-30"></a>[版本 3.0](#tab/version-3)
 
 [v3 参考文档](/dotnet/api/azure.ai.textanalytics?preserve-view=true&view=azure-dotnet) | [v3 库源代码](https://github.com/Azure/azure-sdk-for-net/tree/Azure.AI.TextAnalytics_5.0.0/sdk/textanalytics/Azure.AI.TextAnalytics) | [v3 包(NuGet)](https://www.nuget.org/packages/Azure.AI.TextAnalytics) | [v3 示例](https://github.com/Azure/azure-sdk-for-net/tree/Azure.AI.TextAnalytics_5.0.0/sdk/textanalytics/Azure.AI.TextAnalytics/samples)
-
-# <a name="version-21"></a>[版本 2.1](#tab/version-2)
-
-[v2 参考文档](/dotnet/api/overview/azure/cognitiveservices/client) | [v2 库源代码](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Language.TextAnalytics) | [v2 包(NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.TextAnalytics/) | [v2 示例](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples)
 
 ---
 
@@ -58,13 +54,6 @@ ms.locfileid: "99090689"
 
 > [!TIP]
 > 想要立即查看整个快速入门代码文件？ 可以[在 GitHub 上](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/TextAnalytics/program.cs)找到它，其中包含此快速入门中的代码示例。 
-
-# <a name="version-21"></a>[版本 2.1](#tab/version-2)
-
-右键单击 **解决方案资源管理器** 中的解决方案，然后选择“管理 NuGet 包”  ，以便安装客户端库。 在打开的包管理器中选择“浏览”，搜索 `Microsoft.Azure.CognitiveServices.Language.TextAnalytics`。 单击它，然后进行 **安装**。 也可使用[包管理器控制台](/nuget/consume-packages/install-use-packages-powershell#find-and-install-a-package)。
-
-> [!TIP]
-> 想要立即查看整个快速入门代码文件？ 可以[在 GitHub 上](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/samples/TextAnalytics/synchronous/Program.cs)找到它，其中包含此快速入门中的代码示例。 
 
 ---
 
@@ -146,25 +135,6 @@ static void Main(string[] args)
 }
 ```
 
-# <a name="version-21"></a>[版本 2.1](#tab/version-2)
-
-打开 *program.cs* 文件并添加以下 `using` 指令：
-
-[!code-csharp[Import directives](~/cognitive-services-dotnet-sdk-samples/samples/TextAnalytics/synchronous/Program.cs?name=imports)]
-
-在应用程序的 `Program` 类中，为资源的密钥和终结点创建变量。 
-
-[!INCLUDE [text-analytics-find-resource-information](../find-azure-resource-info.md)]
-
-```csharp
-private static readonly string key = "<replace-with-your-text-analytics-key-here>";
-private static readonly string endpoint = "<replace-with-your-text-analytics-endpoint-here>";
-```
-
-替换应用程序的 `Main` 方法。 稍后将定义此处调用的方法。
-
-[!code-csharp[main method](~/cognitive-services-dotnet-sdk-samples/samples/TextAnalytics/synchronous/Program.cs?name=main)]
-
 ---
 
 ## <a name="object-model"></a>对象模型
@@ -199,16 +169,6 @@ var client = new TextAnalyticsClient(endpoint, credentials);
 ```csharp
 var client = new TextAnalyticsClient(endpoint, credentials);
 ```
-
-# <a name="version-21"></a>[版本 2.1](#tab/version-2)
-
-创建用于存储凭据的新 `ApiKeyServiceClientCredentials` 类，并将凭据发送到客户端的请求。 在该类中创建 `ProcessHttpRequestAsync()` 的重写，用于将密钥添加到 `Ocp-Apim-Subscription-Key` 标头。
-
-[!code-csharp[Client class](~/cognitive-services-dotnet-sdk-samples/samples/TextAnalytics/synchronous/Program.cs?name=clientClass)]
-
-创建一个方法，以实例化包含你的终结点的 [TextAnalyticsClient](/dotnet/api/microsoft.azure.cognitiveservices.language.textanalytics.textanalyticsclient) 对象和包含你的密钥的 `ApiKeyServiceClientCredentials` 对象。
-
-[!code-csharp[Client authentication](~/cognitive-services-dotnet-sdk-samples/samples/TextAnalytics/synchronous/Program.cs?name=authentication)]
 
 ---
 
@@ -381,18 +341,6 @@ Document sentiment: Positive
         Neutral score: 0.77
 ```
 
-# <a name="version-21"></a>[版本 2.1](#tab/version-2)
-
-创建名为 `SentimentAnalysisExample()` 的新函数，用于提取前面创建的客户端，并调用该客户端的 [Sentiment()](/dotnet/api/microsoft.azure.cognitiveservices.language.textanalytics.textanalyticsclientextensions.sentiment) 函数。 如果成功，返回的 [SentimentResult](/dotnet/api/microsoft.azure.cognitiveservices.language.textanalytics.models.sentimentresult) 对象将包含情绪 `Score`，否则包含 `errorMessage`。 
-
-评分接近 0 表示消极情绪，评分接近 1 表示积极情绪。
-
-[!code-csharp[Sentiment analysis](~/cognitive-services-dotnet-sdk-samples/samples/TextAnalytics/synchronous/Program.cs?name=sentiment)]
-
-```console
-Sentiment Score: 0.87
-```
-
 ---
 
 ## <a name="language-detection"></a>语言检测
@@ -445,20 +393,6 @@ Language:
         French, ISO-6391: fr
 ```
 
-# <a name="version-21"></a>[版本 2.1](#tab/version-2)
-
-创建名为 `languageDetectionExample()` 的新函数，用于提取前面创建的客户端，并调用该客户端的 [DetectLanguage()](/dotnet/api/microsoft.azure.cognitiveservices.language.textanalytics.textanalyticsclientextensions.detectlanguage#Microsoft_Azure_CognitiveServices_Language_TextAnalytics_TextAnalyticsClientExtensions_DetectLanguage_Microsoft_Azure_CognitiveServices_Language_TextAnalytics_ITextAnalyticsClient_System_String_System_String_System_Nullable_System_Boolean__System_Threading_CancellationToken_) 函数。 如果成功，返回的 [LanguageResult](/dotnet/api/microsoft.azure.cognitiveservices.language.textanalytics.models.languageresult) 对象将包含 `DetectedLanguages` 中检测到的语言列表，否则包含 `errorMessage`。 输出返回的第一种语言。
-
-> [!Tip]
-> 在某些情况下，可能很难根据输入区分语言。 可以使用 `countryHint` 参数指定 2 个字母的国家/地区代码。 默认情况下，API 使用“US”作为默认的 countryHint，要删除此行为，可以通过将此值设置为空字符串 `countryHint = ""` 来重置此参数。
-
-[!code-csharp[Language Detection example](~/cognitive-services-dotnet-sdk-samples/samples/TextAnalytics/synchronous/Program.cs?name=languageDetection)]
-
-### <a name="output"></a>输出
-
-```console
-Language: English
-```
 
 ---
 
@@ -723,15 +657,6 @@ Linked Entities:
                 Score: 0.33
 ```
 
-# <a name="version-21"></a>[版本 2.1](#tab/version-2)
-
-> [!NOTE]
-> 在版本 2.1 中，实体链接包含在 NER 响应中。
-
-创建名为 `RecognizeEntitiesExample()` 的新函数，用于提取前面创建的客户端，并调用该客户端的 [Entities()](/dotnet/api/microsoft.azure.cognitiveservices.language.textanalytics.textanalyticsclientextensions.entities#Microsoft_Azure_CognitiveServices_Language_TextAnalytics_TextAnalyticsClientExtensions_Entities_Microsoft_Azure_CognitiveServices_Language_TextAnalytics_ITextAnalyticsClient_System_String_System_String_System_Nullable_System_Boolean__System_Threading_CancellationToken_) 函数。 循环访问这些结果。 如果成功，返回的 [EntitiesResult](/dotnet/api/microsoft.azure.cognitiveservices.language.textanalytics.models.entitiesresult) 对象将包含 `Entities` 中检测到的实体列表，否则包含 `errorMessage`。 对于每个检测到的实体，输出其类型、子类型和维基百科名称（如果存在），以及其在原始文本中的位置。
-
-[!code-csharp[Entity Recognition example](~/cognitive-services-dotnet-sdk-samples/samples/TextAnalytics/synchronous/Program.cs?name=entityRecognition)]
-
 --- 
 
 
@@ -782,21 +707,6 @@ static void KeyPhraseExtractionExample(TextAnalyticsClient client)
     }
 }
 ```
-
-### <a name="output"></a>输出
-
-```console
-Key phrases:
-    cat
-    veterinarian
-```
-
-# <a name="version-21"></a>[版本 2.1](#tab/version-2)
-
-创建名为 `KeyPhraseExtractionExample()` 的新函数，用于提取前面创建的客户端，并调用该客户端的 [KeyPhrases()](/dotnet/api/microsoft.azure.cognitiveservices.language.textanalytics.textanalyticsclientextensions.keyphrases#Microsoft_Azure_CognitiveServices_Language_TextAnalytics_TextAnalyticsClientExtensions_KeyPhrases_Microsoft_Azure_CognitiveServices_Language_TextAnalytics_ITextAnalyticsClient_System_String_System_String_System_Nullable_System_Boolean__System_Threading_CancellationToken_) 函数。 如果成功，结果将包含 `KeyPhrases` 中检测到的关键短语列表，如果失败，则将包含 `errorMessage`。 输出任何检测到的关键短语。
-
-[!code-csharp[Key phrase extraction example](~/cognitive-services-dotnet-sdk-samples/samples/TextAnalytics/synchronous/Program.cs?name=keyPhraseExtraction)]
-
 
 ### <a name="output"></a>输出
 
@@ -898,9 +808,5 @@ Recognized Entities
 # <a name="version-30"></a>[版本 3.0](#tab/version-3)
 
 此功能在版本 3.0 中不可用。
-
-# <a name="version-21"></a>[版本 2.1](#tab/version-2)
-
-此功能在版本 2.1 中不可用。
 
 ---

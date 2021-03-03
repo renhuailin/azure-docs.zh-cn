@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 03/01/2021
 ms.author: alkohli
-ms.openlocfilehash: ef840b3d9db4e82eeecea37079a08ccb0858a77b
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: aac4278c6ce03c43418e99978cd039e24dc01194
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96448538"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719264"
 ---
 # <a name="kubernetes-workload-management-on-your-azure-stack-edge-pro-device"></a>Azure Stack Edge Pro 设备上的 Kubernetes 工作负荷管理
 
@@ -54,6 +54,17 @@ ms.locfileid: "96448538"
 - **启用 Azure Arc Kubernetes 部署**：启用了 azure Arc 的 Kubernetes 是一种混合管理工具，可用于在 Kubernetes 群集上部署应用程序。 可以通过在 Azure Stack Edge Pro 设备上连接到 Kubernetes 群集 `azure-arc namespace` 。 此命名空间中部署的代理负责连接到 Azure。 使用基于 GitOps 的配置管理应用部署配置。 
     
     启用 Azure Arc 后，Kubernetes 还将允许使用容器 Azure Monitor 来查看和监视群集。 有关详细信息，请参阅 [什么是启用了 Azure Arc 的 Kubernetes？](../azure-arc/kubernetes/overview.md)。
+    
+    从2021年3月开始，将对用户公开使用 Azure Arc Kubernetes，适用于用户和标准使用量收费。 作为一个有价值的预览客户，可免费使用 Azure Arc Kubernetes) Azure Stack Edge (设备。 若要获得预览版，请创建 [支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)：
+
+    1. 在“问题类型”下，选择“计费”。  
+    2. 在“订阅”下，选择自己的订阅。
+    3. 在 " **服务**" 下，选择 " **我的服务**"，然后选择 **Azure Stack 边缘**"。
+    4. 在 " **资源**" 下，选择资源。
+    5. 在 " **摘要**" 下，键入问题说明。
+    6. 在 " **问题类型**" 下，选择 " **意外费用**"。
+    7. 在 " **问题子类型**" 下，选择 " **帮助我了解免费试用版的费用"**。
+
 
 ## <a name="choose-the-deployment-type"></a>选择部署类型
 

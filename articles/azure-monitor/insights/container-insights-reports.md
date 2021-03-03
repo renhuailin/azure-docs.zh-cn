@@ -1,17 +1,17 @@
 ---
-title: 用于容器的 Azure Monitor 中的报表
-description: 描述可用于分析由用于容器的 Azure Monitor 收集的数据的报表。
+title: 容器见解中的报表
+description: 描述可用于分析由容器 insights 收集的数据的报告。
 ms.topic: conceptual
 ms.date: 12/07/2020
-ms.openlocfilehash: 94709cf4a8b579447c11f91f9bc6863ab4b4fe08
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: ab704ed184d9d67ddfba5aede385899faf2a56de
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100582316"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704270"
 ---
-# <a name="reports-in-azure-monitor-for-containers"></a>用于容器的 Azure Monitor 中的报表
-建议用于容器的 Azure Monitor 中的报表使用现成的 [Azure 工作簿](../visualize/workbooks-overview.md)。 本文介绍了可用的各种报表以及如何访问这些报表。
+# <a name="reports-in-container-insights"></a>容器见解中的报表
+容器见解中的报表是推荐使用的 [Azure 工作簿](../visualize/workbooks-overview.md)。 本文介绍了可用的各种报表以及如何访问这些报表。
 
 ## <a name="viewing-reports"></a>查看报告
 从 Azure 门户上的 Azure Monitor 菜单中，选择“容器” 。 在“监视”部分中选择“见解”，选择一个特定的群集，然后选择“报表(预览)”页面  。 

@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 11/09/2020
-ms.openlocfilehash: 5dde3da693d87d537fd2177a6f12b55297b5776e
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 6c597e8fd48eb157b69c918ae5fd5f699611ad75
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99582190"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703399"
 ---
 # <a name="precise-answering"></a>精确应答
 
@@ -32,7 +32,7 @@ QnA Maker 托管 (预览版) 中引入的精确应答功能，您可以从任何
 
 ## <a name="publishing-a-qna-maker-bot"></a>发布 QnA Maker 机器人
 
-发布机器人时，默认情况下，你可以在应用程序中获得精确的应答启用体验，你会在其中看到简短答案以及答案段。 请参阅 API 参考，获取有关如何在响应中使用称为 AnswerSpan) 的确切答案 (获取 [答案](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerv5.0-preview.1/knowledgebase/generateanswer#answerspan) 。 用户通过机器人应用服务更新模板可以灵活选择其他体验。 
+发布机器人时，默认情况下，你可以在应用程序中获得精确的应答启用体验，你会在其中看到简短答案以及答案段。 请参阅 API 参考，获取有关如何在响应中使用称为 AnswerSpan) 的确切答案 (获取 [答案](/rest/api/cognitiveservices/qnamakerv5.0-preview.1/knowledgebase/generateanswer#answerspan) 。 用户通过机器人应用服务更新模板可以灵活选择其他体验。 
 
 ## <a name="language-support"></a>语言支持
 

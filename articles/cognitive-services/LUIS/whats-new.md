@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: overview
 ms.date: 02/16/2021
-ms.openlocfilehash: f4ac384a9b1bce944397369cb93392f179643f96
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: bd70bb1a031b61e77fa84ff5567d95dc6d1e8788
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100558754"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101706735"
 ---
 # <a name="whats-new-in-language-understanding"></a>语言理解中的新增功能
 
@@ -56,7 +56,7 @@ ms.locfileid: "100558754"
 * 为开发人员提供的新资源
     * [持续集成工具](developer-reference-resource.md#continuous-integration-tools)
     * 研讨会 - [使用 LUIS 了解自然语言理解 (NLU) 的最佳实践](developer-reference-resource.md#workshops)
-* [客户托管密钥](luis-encryption-of-data-at-rest.md) - 通过使用自己的密钥加密所有在 LUIS 中使用的数据
+* [客户托管密钥](./encrypt-data-at-rest.md) - 通过使用自己的密钥加密所有在 LUIS 中使用的数据
 * [AI 展示](https://channel9.msdn.com/Shows/AI-Show/New-Features-in-Language-Understanding)（视频）- 查看 LUIS 的新功能
 
 

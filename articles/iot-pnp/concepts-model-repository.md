@@ -1,26 +1,26 @@
 ---
 title: 了解设备模型存储库的概念 |Microsoft Docs
-description: 作为解决方案开发人员或 IT 专业人员，请了解有关设备模型存储库的基本概念。
+description: 作为解决方案开发人员或 IT 专业人员，请了解有关设备型号存储库的基本概念。
 author: rido-min
 ms.author: rmpablos
 ms.date: 11/17/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: b567efe2541bb33c905def73bb78398799b4ed69
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: 1a58a2f69b9c6c6742c4b9daf32dd0e13341aac1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94920536"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101742137"
 ---
-# <a name="device-model-repository"></a>设备模型存储库
+# <a name="device-models-repository"></a>设备型号存储库
 
 设备模型存储库 (DMR) 使设备构建者能够管理和共享 IoT 即插即用设备型号。 设备模型是使用 [数字孪生建模语言 (DTDL) ](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)定义的 JSON LD 文档。
 
 DMR 定义了一个模式，用于根据设备克隆模型标识符 (DTMI) 在文件夹结构中存储 DTDL 接口。 可以通过将 DTMI 转换为相对路径，在 DMR 中查找接口。 例如， `dtmi:com:example:Thermostat;1` DTMI 转换为 `/dtmi/com/example/thermostat-1.json` 。
 
-## <a name="public-device-model-repository"></a>公用设备模型存储库
+## <a name="public-device-models-repository"></a>公用设备型号存储库
 
 Microsoft 托管了具有以下特征的公共 DMR：
 
@@ -28,7 +28,7 @@ Microsoft 托管了具有以下特征的公共 DMR：
 - 不可变性.  发布后，无法更新接口。
 - 超大规模。 Microsoft 提供所需的基础结构来创建安全、可缩放的终结点，你可以在其中发布和使用设备型号。
 
-## <a name="custom-device-model-repository"></a>自定义设备模型存储库
+## <a name="custom-device-models-repository"></a>自定义设备模型存储库
 
 使用相同的 DMR 模式在任何存储介质（例如本地文件系统或自定义 HTTP web 服务器）中创建自定义 DMR。 可以通过更改用于访问 DMR 的基 URL，从自定义 DMR 中检索设备模型，方法与从公共 DMR 检索设备模型的方式相同。
 

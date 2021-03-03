@@ -11,16 +11,37 @@ ms.subservice: develop
 ms.topic: reference
 ms.workload: identity
 ms.author: marsma
-ms.openlocfilehash: 11f32d893ccc26dd30d9997d4348661d45f84eb8
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: 56e6d859293b91a56252372574f59c8dcc2cd80e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99225473"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687322"
 ---
 # <a name="microsoft-identity-platform-docs-whats-new"></a>Microsoft 标识平台文档：新增功能
 
 欢迎使用 Microsoft 标识平台文档中的新增功能。 本文列出了过去三个月内添加的新文档以及有重要更新的文档。
+
+## <a name="february-2021"></a>2021 年 2 月
+
+### <a name="new-articles"></a>新文章
+
+- [快速入门：获取访问令牌并从 Electron 桌面应用调用 Microsoft Graph API](quickstart-v2-nodejs-desktop.md)
+- [教程：在 Electron 桌面应用中让用户登录并调用 Microsoft Graph API](tutorial-v2-nodejs-desktop.md)
+- [快速入门：使用应用的标识获取令牌并从 Node.js 控制台应用中调用 Microsoft Graph API](quickstart-v2-nodejs-console.md)
+- [Tutorial:在 Node.js 控制台应用中调用 Microsoft Graph API](tutorial-v2-nodejs-console.md)
+- [教程：在 Node.js & Express web 应用中登录用户](tutorial-v2-nodejs-webapp-msal.md)
+- [支持在开发的应用中通过 FIDO2 密钥进行无密码身份验证](support-fido2-authentication.md)
+
+### <a name="updated-articles"></a>更新的文章
+
+- [身份验证的新增功能](reference-breaking-changes.md)
+- [使用 MSAL.NET 通过社交标识将用户登录](msal-net-aad-b2c-considerations.md)
+- [Microsoft 标识平台代码示例（v2.0 终结点）](sample-v2-code.md)
+- [Microsoft 标识平台视频](identity-videos.md)
+- [快速入门：设置租户](quickstart-create-new-tenant.md)
+- [快速入门：将应用程序注册到 Microsoft 标识平台](quickstart-register-app.md)
+- [快速入门：使用应用的标识获取令牌并从 Java 控制台应用中调用 Microsoft Graph API](quickstart-v2-java-daemon.md)
 
 ## <a name="january-2021"></a>2021 年 1 月
 
@@ -66,17 +87,3 @@ ms.locfileid: "99225473"
 - [Microsoft 标识平台访问令牌](access-tokens.md)
 - [调用 Web API 的 Web API：获取应用的令牌](scenario-web-api-call-api-acquire-token.md)
 
-
-## <a name="november-2020"></a>2020 年 11 月
-
-### <a name="new-articles"></a>新文章
-
-- [如何在应用程序中使用启用了连续访问评估的 API](app-resilience-continuous-access-evaluation.md)
-
-### <a name="updated-articles"></a>更新的文章
-
-- [Microsoft 标识平台访问令牌](access-tokens.md)
-- [应用程序配置选项 (MSAL)](msal-client-application-configuration.md)
-- [如何：向应用提供可选声明](active-directory-optional-claims.md)
-- [将应用发布到 Azure AD 应用库](v2-howto-app-gallery-listing.md)
-- [如何：在应用程序中添加应用角色并在令牌中接收它们](howto-add-app-roles-in-azure-ad-apps.md)

@@ -4,15 +4,15 @@ description: 了解需要确保成功将网络设置为使用适用于 IoT 设�
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 01/03/2021
+ms.date: 02/18/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 4ceedf4d05c6f92e5c32da95f8b54fc6c95de01c
-ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
+ms.openlocfilehash: 0f85eebbfa8fcdfd9ad6e31a564f27b5d9bfbdfc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100526504"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733238"
 ---
 # <a name="about-azure-defender-for-iot-network-setup"></a>关于 Azure Defender for IoT 网络设置
 
@@ -22,7 +22,7 @@ Azure Defender for IoT 提供持续的 ICS 威胁监视和设备发现。 此平
 
 **用于 IoT 本地管理控制台的 Defender**：本地管理控制台提供所有网络设备的合并视图。 它在所有设备上实时查看关键的和 IoT 风险指标和警报。 它与 SOC 工作流和行动手册紧密集成，可轻松地确定缓解活动的优先级，以及威胁的跨站点关联。 
 
-适用于 **iot 的 iot 门户：** 用于 IoT 应用程序的 Defender 可帮助你购买解决方案设备、安装和更新软件以及更新 TI 包。 
+**用于 IoT 的 Defender 门户：** 用于 IoT 应用程序的 Defender 可帮助你购买解决方案设备、安装和更新软件以及更新 TI 包。 
 
 本文提供了有关解决方案体系结构、网络准备、先决条件等的信息，可帮助你成功将网络设置为使用适用于 IoT 设备的 Defender。 使用本文中的信息的读者应在操作和管理 OT 和 IoT 网络方面有经验。 示例包括自动化工程师、植物经理、网络基础结构服务提供商、网络安全团队、Ciso 或 Cio。
 
@@ -94,7 +94,7 @@ Azure Defender for IoT 提供持续的 ICS 威胁监视和设备发现。 此平
 
 验证你的组织安全策略是否允许访问以下内容：
 
-| 协议 | Transport | 输入/输出 | Port | 已使用 | 目的 | 源 | 目标 |
+| 协议 | Transport | 输入/输出 | 端口 | 已使用 | 目的 | 源 | 目标 |
 |--|--|--|--|--|--|--|--|
 | HTTPS | TCP | IN/OUT | 443 | 传感器和本地管理控制台 Web 控制台 | 访问 Web 控制台 | 客户端 | 传感器和本地管理控制台 |
 | SSH | TCP | IN/OUT | 22 | CLI | 访问 CLI | 客户端 | 传感器和本地管理控制台 |
@@ -365,7 +365,7 @@ RSPAN：基于 Cisco catalyst 2960 (24 端口) 。
 
 这些模型已测试兼容性。 其他供应商和型号也可能兼容。
 
-| 图像 | 建模 |
+| 映像 | 建模 |
 |--|--|
 | :::image type="content" source="media/how-to-set-up-your-network/garland-p1gccas-v2.png" alt-text="Garland P1GCCAS 的屏幕截图。"::: | Garland P1GCCAS |
 | :::image type="content" source="media/how-to-set-up-your-network/ixia-tpa2-cu3-v2.png" alt-text="IXIA TPA2-CU3 的屏幕截图。"::: | IXIA TPA2-CU3 |
@@ -532,7 +532,7 @@ RSPAN：基于 Cisco catalyst 2960 (24 端口) 。
 
 在站点部署之前查看此列表：
 
-| **#** | **任务或活动** | **Status** | **注释** |
+| **#** | **任务或活动** | **状态** | **注释** |
 |--|--|--|--|
 | 1 | 订购设备。 | ☐ |  |
 | 2 | 准备网络中子网的列表。 | ☐ |  |
@@ -592,7 +592,7 @@ RSPAN：基于 Cisco catalyst 2960 (24 端口) 。
 
 5. 若要验证交换机是否具有端口镜像功能，请提供 IoT 平台的 Defender 应连接到的交换机型号：
 
-    | **#** | **开关** | **Model** | **流量镜像支持 (SPAN、RSPAN 或 none)** |
+    | **#** | **Switch** | **Model** | **流量镜像支持 (SPAN、RSPAN 或 none)** |
     |--|--|--|--|
     | 1 |  |  |
     | 2 |  |  |
@@ -633,7 +633,7 @@ RSPAN：基于 Cisco catalyst 2960 (24 端口) 。
 
 提供将在企业网络中连接的传感器 NIC 的地址详细信息： 
 
-|  项               | 设备1 | 设备2 | 设备3 |
+|  项目               | 设备1 | 设备2 | 设备3 |
 | --------------- | ------------- | ------------- | ------------- |
 | 设备 IP 地址    |               |               |               |
 | 子网          |               |               |               |
@@ -643,7 +643,7 @@ RSPAN：基于 Cisco catalyst 2960 (24 端口) 。
 
 #### <a name="idraciloserver-management"></a>iDRAC/iLO/服务器管理
 
-|       项          | 设备1 | 设备2 | 设备3 |
+|       项目          | 设备1 | 设备2 | 设备3 |
 | --------------- | ------------- | ------------- | ------------- |
 | 设备 IP 地址     |               |               |               |
 | 子网          |               |               |               |
@@ -652,7 +652,7 @@ RSPAN：基于 Cisco catalyst 2960 (24 端口) 。
 
 #### <a name="on-premises-management-console"></a>本地管理控制台  
 
-|       项          | 可用 | 使用 HA) 时的被动 ( |
+|       项目          | 可用 | 使用 HA) 时的被动 ( |
 | --------------- | ------ | ----------------------- |
 | IP 地址             |        |                         |
 | 子网          |        |                         |
@@ -661,7 +661,7 @@ RSPAN：基于 Cisco catalyst 2960 (24 端口) 。
 
 #### <a name="snmp"></a>SNMP  
 
-|   项              | 详细信息 |
+|   项目              | 详细信息 |
 | --------------- | ------ |
 | IP              |        |
 | IP 地址 | |
@@ -695,6 +695,6 @@ RSPAN：基于 Cisco catalyst 2960 (24 端口) 。
 | 照相机 | |
 | X 射线计算机 | |
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 [关于用于 IoT 安装的 Defender](how-to-install-software.md)

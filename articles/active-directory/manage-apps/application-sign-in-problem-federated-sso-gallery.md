@@ -12,12 +12,12 @@ ms.date: 02/18/2019
 ms.author: kenwith
 ms.reviewer: luleon, asteen
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: d5a90909345599b2389d1752e00a7bc917d06822
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 97ce1fe43bc831661a8590921d8121a8a82ba7e7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99430405"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687169"
 ---
 # <a name="problems-signing-in-to-saml-based-single-sign-on-configured-apps"></a>登录到基于 SAML 的单一登录配置的应用时出现问题
 若要解决下面的登录问题，建议执行以下操作来更好地诊断和自动执行解决步骤：
@@ -41,7 +41,8 @@ ms.locfileid: "99430405"
 1. 选择“基于 SAML 的 SSO”。
 
 ## <a name="application-not-found-in-directory"></a>在目录中未找到应用程序
-`Error AADSTS70001: Application with Identifier 'https:\//contoso.com' was not found in the directory.`
+
+`Error AADSTS70001: Application with Identifier 'https://contoso.com' was not found in the directory.`
 
 可能的原因 
 
@@ -69,7 +70,7 @@ ms.locfileid: "99430405"
 在 Azure AD 中更新 "答复 URL" 值并将它与应用程序在 SAML 请求中发送的值匹配后，应该可以登录到应用程序。
 
 ## <a name="user-not-assigned-a-role"></a>未为用户分配角色
-`Error AADSTS50105: The signed in user 'brian\@contoso.com' is not assigned to a role for the application.`
+`Error AADSTS50105: The signed in user 'brian@contoso.com' is not assigned to a role for the application.`
 
 可能的原因 
 
@@ -147,7 +148,7 @@ Azure AD 无法识别 HTTP 请求中的 URL 参数中的 SAML 请求。 如果�
 
 删除为应用程序配置的未使用的答复 Url。
 
-在 "基于 SAML 的 SSO 配置" 页上的 " **回复 URL (断言使用者服务 URL")** 部分中，删除系统创建的未使用或默认的回复 url。 例如，`https://127.0.0.1:444/applications/default.aspx` 。
+在 "基于 SAML 的 SSO 配置" 页上的 " **回复 URL (断言使用者服务 URL")** 部分中，删除系统创建的未使用或默认的回复 url。 例如 `https://127.0.0.1:444/applications/default.aspx`。
 
 
 ## <a name="authentication-method-by-which-the-user-authenticated-with-the-service-doesnt-match-requested-authentication-method"></a>使用服务进行身份验证的用户不匹配请求的身份验证方法的身份验证方法

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: jeedes
-ms.openlocfilehash: ec07d36ad544f293064e877520bb4a7a4c9b269d
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 1f404d3613f9de8daadc4bb2ceb39282cf3b619e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92457599"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101688937"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-attendance-management-services"></a>教程：Azure Active Directory 与 Attendance Management Services 的集成
 
@@ -101,7 +101,7 @@ ms.locfileid: "92457599"
 
     ![Attendance Management Services 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://id.obc.jp/<tenant information >/`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://id.obc.jp/<tenant information >/` 
 
     b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://id.obc.jp/<tenant information >/`
 
@@ -154,7 +154,7 @@ ms.locfileid: "92457599"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -168,7 +168,7 @@ ms.locfileid: "92457599"
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -216,7 +216,7 @@ ms.locfileid: "92457599"
 
     ![显示可在其中执行所述任务的窗口的屏幕截图。](./media/attendancemanagementservices-tutorial/user4.png)
 
-    a. 在“OBCiD”文本框中，键入用户的电子邮件，例如 `BrittaSimon\@contoso.com`。
+    a. 在“OBCiD”文本框中，键入用户的电子邮件，例如 `BrittaSimon@contoso.com`。
 
     b. 在“密码”文本框中，键入用户的密码。 
 

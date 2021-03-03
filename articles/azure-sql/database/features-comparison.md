@@ -12,12 +12,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: bonova, sstein, danil
 ms.date: 02/21/2021
-ms.openlocfilehash: 7acb891cc887fb118a338cc837c5c5c4c98a63d8
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 75fc4166614862c5ac48a72bacb6b7b19019d003
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101655932"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691903"
 ---
 # <a name="features-comparison-azure-sql-database-and-azure-sql-managed-instance"></a>功能比较：Azure SQL 数据库和 Azure SQL 托管实例
 
@@ -48,7 +48,7 @@ Azure 管理数据库并保证其高可用性。 可能影响高可用性或无�
 | [BULK INSERT 语句](/sql/relational-databases/import-export/import-bulk-data-by-using-bulk-insert-or-openrowset-bulk-sql-server) | 是，但是只能从充当源的 Azure Blob 存储进行。 | 是，但是只能从充当源的 Azure Blob 存储进行 - 请参阅[差异](../managed-instance/transact-sql-tsql-differences-sql-server.md#bulk-insert--openrowset)。 |
 | [证书和非对称密钥](/sql/relational-databases/security/sql-server-certificates-and-asymmetric-keys) | 是，无法访问文件系统完成 `BACKUP` 和 `CREATE` 操作。 | 是，无法访问文件系统完成 `BACKUP` 和 `CREATE` 操作 - 请参阅[证书差异](../managed-instance/transact-sql-tsql-differences-sql-server.md#certificates)。 |
 | [更改数据捕获 - CDC](/sql/relational-databases/track-changes/about-change-data-capture-sql-server) | 否 | 是 |
-| [排序规则 - 服务器/实例](/sql/relational-databases/collations/set-or-change-the-server-collation) | 否，始终使用默认的服务器排序规则 `SQL_Latin1_General_CP1_CI_AS`。 | 是，可以在[创建实例](../managed-instance/scripts/create-powershell-azure-resource-manager-template.md)时设置，以后不可更新。 |
+| [排序规则 - 服务器/实例](/sql/relational-databases/collations/set-or-change-the-server-collation) | 否，始终使用默认的服务器排序规则 `SQL_Latin1_General_CP1_CI_AS`。 | 是，可以在[创建实例](../managed-instance/create-template-quickstart.md)时设置，以后不可更新。 |
 | [列存储索引](/sql/relational-databases/indexes/columnstore-indexes-overview) | 是 - [高级层、标准层 - S3 及以上层、常规用途层、业务关键层和超大规模层](/sql/relational-databases/indexes/columnstore-indexes-overview) |是 |
 | [公共语言运行时 - CLR](/sql/relational-databases/clr-integration/common-language-runtime-clr-integration-programming-concepts) | 否 | 是，但无权在 `CREATE ASSEMBLY` 语句中访问文件系统 - 请参阅 [CLR 差异](../managed-instance/transact-sql-tsql-differences-sql-server.md#clr) |
 | [凭据](/sql/relational-databases/security/authentication-access/credentials-database-engine) | 是，但是仅限[数据库范围的凭据](/sql/t-sql/statements/create-database-scoped-credential-transact-sql)。 | 是，但仅支持 **Azure Key Vault** 和 `SHARED ACCESS SIGNATURE` - 请参阅 [详细信息](../managed-instance/transact-sql-tsql-differences-sql-server.md#credential) |

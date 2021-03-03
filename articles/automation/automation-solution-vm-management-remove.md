@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 02/04/2021
 ms.topic: conceptual
-ms.openlocfilehash: bed9cd23abc96c51cad0a13e81ee0b64f0d433b6
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: a201274bf0c06382da790dd051bf5023337970b8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100012290"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723837"
 ---
 # <a name="remove-startstop-vms-during-off-hours-from-automation-account"></a>从自动化帐户中删除在空闲时间启动/停止 VM
 
@@ -94,7 +94,7 @@ ms.locfileid: "100012290"
 
 ## <a name="delete-the-feature"></a>删除功能
 
-若要从你的自动化帐户中删除在空闲时间启动/停止 VM，请执行以下步骤。 此进程不会删除自动化帐户和 Log Analytics 工作区。 如果不想保留 Log Analytics 工作区，则必须手动将其删除。 有关删除工作区的详细信息，请参阅 [删除和恢复 Azure Log Analytics 工作区](../azure-monitor/platform/delete-workspace.md)。
+若要从你的自动化帐户中删除在空闲时间启动/停止 VM，请执行以下步骤。 此进程不会删除自动化帐户和 Log Analytics 工作区。 如果不想保留 Log Analytics 工作区，则必须手动将其删除。 有关删除工作区的详细信息，请参阅 [删除和恢复 Azure Log Analytics 工作区](../azure-monitor/logs/delete-workspace.md)。
 
 1. 导航到自动化帐户，并在 "**相关资源**" 下选择 "**链接的工作区**"。
 

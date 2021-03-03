@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/25/2021
 ms.author: allensu
-ms.openlocfilehash: fbde2b95b7aca205f164dc45c1f0170cc4da74fb
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 29584a9453fa052745f417cba0bbe940766c30e9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100581891"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699073"
 ---
 # <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>通过指标、警报和资源运行状况进行标准负载均衡器诊断
 
@@ -72,18 +72,7 @@ Azure 门户通过“指标”页公开负载均衡器指标，可在特定资�
 
 ### <a name="retrieve-multi-dimensional-metrics-programmatically-via-apis"></a>通过 API 以编程方式检索多维指标
 
-有关如何检索多维指标定义和值的 API 指导，请参阅 [Azure 监视 REST API 演练](../azure-monitor/essentials/rest-api-walkthrough.md#retrieve-metric-definitions-multi-dimensional-api)。 可以通过为 "所有指标" 类别添加 [诊断设置](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings) ，将这些指标写入存储帐户。 
-
-### <a name="configure-alerts-for-multi-dimensional-metrics"></a>配置针对多维指标的警报 ###
-
-Azure 标准负载均衡器支持易于配置的针对多维指标的警报。 为特定指标配置自定义阈值，用以触发具有不同严重性级别的警报，从而提供无接触的资源监视体验。
-
-配置警报：
-1. 转到负载均衡器的“警报”子边栏选项卡
-1. 创建新的警报规则
-    1.  配置警报条件
-    1.  （可选）添加用于自动修复的操作组
-    1.  分配警报严重性、名称和说明，以实现直观的反应
+有关如何检索多维指标定义和值的 API 指导，请参阅 [Azure 监视 REST API 演练](../azure-monitor/essentials/rest-api-walkthrough.md#retrieve-metric-definitions-multi-dimensional-api)。 可以通过为 "所有指标" 类别添加 [诊断设置](../azure-monitor/essentials/diagnostic-settings.md) ，将这些指标写入存储帐户。 
 
 ### <a name="common-diagnostic-scenarios-and-recommended-views"></a><a name = "DiagnosticScenarios"></a>常见诊断场景和建议的视图
 
@@ -228,6 +217,32 @@ Azure 标准负载均衡器支持易于配置的针对多维指标的警报。 �
 客户可以使用该图表来自行排查部署问题，而无需猜测或询问支持部门是否发生了其他问题。 此服务之所以不可用，是因为配置不当或应用程序故障导致运行状况探测失败。
 </details>
 
+## <a name="configure-alerts-for-multi-dimensional-metrics"></a>配置针对多维指标的警报 ###
+
+Azure 标准负载均衡器支持易于配置的针对多维指标的警报。 为特定指标配置自定义阈值，用以触发具有不同严重性级别的警报，从而提供无接触的资源监视体验。
+
+配置警报：
+1. 转到负载均衡器的“警报”子边栏选项卡
+1. 创建新的警报规则
+    1.  配置警报条件
+    1.  （可选）添加用于自动修复的操作组
+    1.  分配警报严重性、名称和说明，以实现直观的反应
+
+### <a name="inbound-availability-alerting"></a>入站可用性警报
+若要为入站可用性发出警报，可以使用数据路径可用性和运行状况探测状态指标创建两个单独的警报。 客户可能会有不同的方案需要特定的警报逻辑，但以下示例对大多数配置都很有帮助。
+
+使用数据路径可用性，可以在特定的负载平衡规则变为不可用时触发警报。 你可以配置此警报，方法是为数据路径可用性设置警报条件，并按前端端口和前端 IP 地址的所有当前值和未来值进行拆分。 如果将警报逻辑设置为小于或等于0，则每当任何负载均衡规则变为无响应时，就会触发此警报。 根据所需的评估设置聚合粒度和评估频率。 
+
+使用运行状况探测状态时，可以在给定的后端实例无法在很长时间内响应运行状况探测时发出警报。 设置警报条件以使用运行状况探测状态指标，并使用 "后端 IP 地址" 和 "后端端口" 进行拆分。 这将确保你可以为每个单独的后端实例在特定端口上提供流量的能力单独发出警报。 使用 " **平均** " 聚合类型，并根据后端实例的探测频率以及您视为正常阈值的情况设置阈值。 
+
+还可以通过不按任何维度拆分并使用 **平均** 聚合类型，在后端池级别发出警报。 这将允许您设置警报规则，例如，当我的后端池成员的50% 不正常时发出警报。
+
+### <a name="outbound-availability-alerting"></a>出站可用性警报
+若要配置出站可用性，可以使用 SNAT 连接计数和已用 SNAT 端口指标来配置两个单独的警报。
+
+若要检测出站连接失败，请使用 SNAT 连接计数配置警报，并将筛选为连接状态 = Failed。 使用 **合计** 聚合。 然后，你还可以将此设置为 "后端 IP 地址"，并将其设置为 "所有当前和未来值"，为每个遇到失败连接的后端实例单独 如果你希望看到某些出站连接失败，请将阈值设置为大于零或更大的数字。
+
+通过使用的 SNAT 端口，可能会出现 SNAT 消耗和出站连接失败风险的警报。 使用此警报时，请确保使用后端 IP 地址和协议进行拆分，并使用 **平均** 聚合。 将阈值设置为大于为每个实例分配的、你认为不安全的端口数的百分比)  (。 例如，如果后端实例使用其分配的端口75%，并且它使用其分配的端口的90% 或100%，则可以配置低严重性警报。  
 ## <a name="resource-health-status"></a><a name = "ResourceHealth"></a>资源运行状况
 
 可以通过“Monitor”>“服务运行状况”下面的现有“资源运行状况”公开标准负载均衡器资源的运行状况。 每两分钟对其进行一次评估，方法是测量数据路径可用性，从而确定前端负载均衡终结点是否可用。
@@ -235,8 +250,8 @@ Azure 标准负载均衡器支持易于配置的针对多维指标的警报。 �
 | 资源运行状况 | 说明 |
 | --- | --- |
 | 可用 | 标准负载均衡器资源正常且可用。 |
-| 已降级 | 标准负载均衡器具有平台或用户启动的影响性能的事件。 “数据路径可用性”指标至少有两分钟报告了低于 90% 但高于 25% 的运行状况。 你将遇到中等到严重程度的性能影响。 [按照 RHC 故障排除指南](https://docs.microsoft.com/azure/load-balancer/troubleshoot-rhc)确定是否存在用户发起的且会影响你的可用性的事件。
-| 不可用 | 标准负载均衡器资源不正常。 “数据路径可用性”指标至少有两分钟报告了低于 25% 的运行状况。 你会遇到严重的性能影响，或者入站连接不可用。 可能存在导致不可用的用户或平台事件。 [按照 RHC 故障排除指南](https://docs.microsoft.com/azure/load-balancer/troubleshoot-rhc)确定是否存在用户发起的且会影响你的可用性的事件。 |
+| 已降级 | 标准负载均衡器具有平台或用户启动的影响性能的事件。 “数据路径可用性”指标至少有两分钟报告了低于 90% 但高于 25% 的运行状况。 你将遇到中等到严重程度的性能影响。 [按照 RHC 故障排除指南](./troubleshoot-rhc.md)确定是否存在用户发起的且会影响你的可用性的事件。
+| 不可用 | 标准负载均衡器资源不正常。 “数据路径可用性”指标至少有两分钟报告了低于 25% 的运行状况。 你会遇到严重的性能影响，或者入站连接不可用。 可能存在导致不可用的用户或平台事件。 [按照 RHC 故障排除指南](./troubleshoot-rhc.md)确定是否存在用户发起的且会影响你的可用性的事件。 |
 | Unknown | 标准负载均衡器资源的资源运行状况状态尚未更新，或者最近 10 分钟内未收到数据路径可用性信息。 此状态应该是暂时性的，系统在收到数据后会立即反映正确的状态。 |
 
 若要查看公共标准负载均衡器资源的运行状况，请执行以下步骤：
@@ -263,7 +278,7 @@ Azure 标准负载均衡器支持易于配置的针对多维指标的警报。 �
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解如何使用 [见解](https://docs.microsoft.com/azure/load-balancer/load-balancer-insights) 查看预配置的负载均衡器指标
+- 了解如何使用 [见解](./load-balancer-insights.md) 查看预配置的负载均衡器指标
 - 详细了解[标准负载均衡器](./load-balancer-overview.md)。
 - 详细了解[负载均衡器出站连接](./load-balancer-outbound-connections.md)。
 - 了解有关 [Azure Monitor](../azure-monitor/overview.md) 的信息。

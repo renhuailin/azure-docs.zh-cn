@@ -1,0 +1,110 @@
+- name: Azure Percept 文档
+  href: index.yml
+- name: 概述
+  items:
+    - name: Azure Percept 平台
+      href: overview-azure-percept.md
+    - name: Azure Percept Studio
+      href: overview-azure-percept-studio.md
+    - name: Azure Percept DK
+      href: overview-azure-percept-dk.md
+    - name: Azure Percept 音频
+      href: overview-azure-percept-audio.md
+    - name: Azure Percept AI 模型
+      href: overview-ai-models.md
+    - name: 高级开发
+      href: overview-advanced-code.md
+    - name: Azure Percept 安全性
+      href: overview-percept-security.md
+    - name: 80/20 集成
+      href: overview-8020-integration.md
+    - name: 更新 Percept 设备
+      href: overview-update-experience.md
+- name: 快速入门
+  items:
+    - name: 安装 Azure Percept 设备
+      items:
+        - name: 对 Azure Percept DK 进行拆箱和组装
+          href: quickstart-percept-dk-unboxing.md
+        - name: 完成 Azure Percept DK 安装体验
+          href: quickstart-percept-dk-set-up.md
+        - name: Azure Percept 音频设置
+          href: quickstart-percept-audio-setup.md
+- name: 教程
+  items:
+    - name: 使用 Azure Percept 开始原型设计
+      items:
+        - name: 生成并部署无代码视觉解决方案
+          href: tutorial-nocode-vision.md
+        - name: 生成并部署无代码语音解决方案
+          href: tutorial-no-code-speech.md
+    - name: 高级开发
+      items:
+        - name: 高级开发教程（云）
+          href: advanced-development-cloud.md
+        - name: 高级开发教程（本地）
+          href: advanced-development-local.md
+- name: 概念
+  items:
+    - name: Azure Percept 音频
+      items:
+        - name: LED 和按钮行为
+          href: audio-button-led-behavior.md
+- name: 操作指南
+  items:
+    - name: 使用 Azure Percept DK 开发视觉解决方案
+      items:
+        - name: 查看开发工具包的视频流
+          href: how-to-view-video-stream.md
+        - name: 将 AI 模型部署到开发工具包
+          href: how-to-deploy-model.md
+        - name: 捕获视觉项目的图像
+          href: how-to-capture-images.md
+        - name: 查看开发工具包的遥测数据
+          href: how-to-view-telemetry.md
+    - name: 使用 Azure Percept DK 开发语音解决方案
+      items:
+        - name: 在 Azure Percept Studio 中配置语音助理
+          href: how-to-configure-voice-assistant.md
+        - name: 在 IoT 中心配置语音助理
+          href: how-to-manage-voice-assistant.md
+    - name: 更新 Azure Percept 设备
+      items:
+        - name: 设置无线更新
+          href: how-to-set-up-over-the-air-updates.md
+        - name: 以无线方式更新 Azure Percept DK
+          href: how-to-update-over-the-air.md
+        - name: 通过 USB 更新 Azure Percept DK
+          href: how-to-update-via-usb.md
+    - name: 连接到 Azure Percept DK
+      items:
+        - name: 通过 SSH 连接
+          href: how-to-ssh-into-percept-dk.md
+        - name: 通过串口连接
+          href: how-to-connect-to-percept-dk-over-serial.md
+    - name: 工具
+      items:
+        - name: Devtools 包安装程序
+          href: dev-tools-installer.md
+    - name: 疑难解答
+      items:
+        - name: 安装体验故障排除
+          href: how-to-troubleshoot-setup.md
+        - name: 常规 Azure Percept DK 故障排除
+          href: troubleshoot-dev-kit.md
+        - name: 视觉解决方案故障排除
+          href: vision-solution-troubleshooting.md
+        - name: Azure Percept Audio 故障排除
+          href: troubleshoot-audio-accessory-speech-module.md
+- name: 参考
+  items:
+    - name: Azure Percept 设备数据表
+      items:
+        - name: Azure Percept DK 数据表
+          href: azure-percept-dk-datasheet.md
+        - name: Azure Percept Vision 数据表
+          href: azure-percept-vision-datasheet.md
+        - name: Azure Percept 音频数据表
+          href: azure-percept-audio-datasheet.md
+- name: 资源
+  items: null

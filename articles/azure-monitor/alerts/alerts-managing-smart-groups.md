@@ -4,16 +4,16 @@ description: 管理通过警报实例创建的智能组
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 09/24/2018
-ms.openlocfilehash: c36162f35c152fd5b9898d92b57e2e12044635a7
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 564440336bf6a90cbd40aba6c8284cbc6c5e3ff3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100607420"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101701070"
 ---
 # <a name="manage-smart-groups"></a>管理智能组
 
-[智能组](../platform/alerts-smartgroups-overview.md?toc=%2fazure%2fazure-monitor%2ftoc.json)使用机器学习算法根据共现或相似性将警报分组在一起，以便用户现在可以管理智能组，而不必单独管理每个警报。 本文将介绍如何在 Azure Monitor 中访问和使用智能组。
+[智能组](./alerts-smartgroups-overview.md?toc=%2fazure%2fazure-monitor%2ftoc.json)使用机器学习算法根据共现或相似性将警报分组在一起，以便用户现在可以管理智能组，而不必单独管理每个警报。 本文将介绍如何在 Azure Monitor 中访问和使用智能组。
 
 1. 若要查看为警报实例创建的智能组，可以执行以下任一操作：
 

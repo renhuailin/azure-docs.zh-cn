@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: sample
 ms.date: 05/18/2020
 ms.subservice: alerts
-ms.openlocfilehash: 9a6c62e91a2d3c600326730b3e6345f97bf6f5f9
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 0e928f3890e0d86aff7e4615d6d12e1b53c3b6f5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100597131"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734683"
 ---
 # <a name="resource-manager-template-samples-for-metric-alert-rules-in-azure-monitor"></a>用于 Azure Monitor 指标警报规则的资源管理器模板示例
 
@@ -3303,6 +3303,5 @@ ms.locfileid: "100597131"
 ## <a name="next-steps"></a>后续步骤
 
 - [获取 Azure Monitor 的其他示例模板](../resource-manager-samples.md)。
-- [详细了解警报](../platform/alerts-overview.md)。
+- [详细了解警报](./alerts-overview.md)。
 - [获取使用资源管理器模板创建操作组的示例](resource-manager-action-groups.md)
-

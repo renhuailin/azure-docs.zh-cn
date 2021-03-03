@@ -2,17 +2,17 @@
 title: 获取有关 Azure IoT Central 应用程序版本的信息 |Microsoft Docs
 description: 如何获取正在使用的 IoT Central 应用程序的相关信息
 services: iot-central
-author: dominicbetts
-ms.author: dobett
-ms.date: 06/26/2020
+author: TheJasonAndrew
+ms.author: v-anjaso
+ms.date: 02/26/2021
 ms.topic: how-to
 ms.service: iot-central
-ms.openlocfilehash: 5118fa22a198ee6871a4cfb455e88d345d6a44e0
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: b4a44433a9761bd387b24164653c8ed1538713ba
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98760854"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101721577"
 ---
 # <a name="about-your-application"></a>关于你的应用程序
 
@@ -25,7 +25,7 @@ ms.locfileid: "98760854"
 
 ## <a name="get-information-about-your-application"></a>获取有关应用程序的信息
 
-获取有关 IoT Central 应用程序的信息：
+获取有关 IoT Central 应用程序的信息： 
 
 1. 选择顶部菜单上的 " **帮助** " 链接。
 

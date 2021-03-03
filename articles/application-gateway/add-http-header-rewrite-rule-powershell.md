@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 04/12/2019
 ms.author: absha
-ms.openlocfilehash: 6938ad55915286af397fee6d72a333e3bb39a1e6
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 29ca3aff7d75c7a14bf7b325719924936762d191
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93397909"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711682"
 ---
 # <a name="rewrite-http-request-and-response-headers-with-azure-application-gateway---azure-powershell"></a>重写 Azure 应用程序网关中的 HTTP 请求和响应标头 - Azure PowerShell
 
@@ -22,7 +22,7 @@ ms.locfileid: "93397909"
 
 ## <a name="before-you-begin"></a>准备阶段
 
-- 若要完成本文中的步骤，需在本地运行 Azure PowerShell。 还需安装 Az 模块 1.0.0 或更高版本。 运行 `Import-Module Az` 和 `Get-Module Az`，确定已安装的版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](/powershell/azure/install-az-ps)（安装 Azure PowerShell 模块）。 验证 PowerShell 版本以后，请运行 `Login-AzAccount`，以便创建与 Azure 的连接。
+- 若要完成本文中的步骤，需在本地运行 Azure PowerShell。 还需安装 Az 模块 1.0.0 或更高版本。 运行 `Import-Module Az` 和 `Get-Module Az`，确定已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。 验证 PowerShell 版本以后，请运行 `Login-AzAccount`，以便创建与 Azure 的连接。
 - 需要有应用程序网关 v2 SKU 实例。 v1 SKU 不支持重写标头。 如果没有 v2 SKU，请在开始之前创建[应用程序网关 v2 SKU](./tutorial-autoscale-ps.md) 实例。
 
 ## <a name="create-required-objects"></a>创建所需对象
@@ -31,23 +31,23 @@ ms.locfileid: "93397909"
 
 1. 创建 HTTP 标头重写所需的对象：
 
-   - **RequestHeaderConfiguration** ：用于指定要重写的请求标头字段，以及标头的新值。
+   - **RequestHeaderConfiguration**：用于指定要重写的请求标头字段和标头的新值。
 
-   - **ResponseHeaderConfiguration** ：用于指定要重写的响应标头字段，以及标头的新值。
+   - **ResponseHeaderConfiguration**：用于指定要重写的响应标头字段和标头的新值。
 
-   - **ActionSet** ：包含前面指定的请求和响应标头的配置。
+   - **ActionSet**：包含之前指定的请求和响应标头的配置。
 
-   - **条件** ：一个可选配置。 重写条件评估 HTTP(S) 请求和响应的内容。 如果 HTTP(S) 请求或响应与重写条件匹配，则会发生重写操作。
+   - **条件**：可选配置。 重写条件评估 HTTP(S) 请求和响应的内容。 如果 HTTP(S) 请求或响应与重写条件匹配，则会发生重写操作。
 
      如果将多个条件关联到一个操作，仅当满足所有条件时，才会发生该操作。 换言之，操作属于逻辑 AND 运算。
 
-   - **RewriteRule** ：包含多个重写操作/重写条件的组合。
+   - **RewriteRule**：包含多个重写操作/重写条件组合。
 
-   - **RuleSequence** ：一项可选配置，用于确定重写规则的执行顺序。 在一个重写集中使用多个重写规则时，此配置非常有用。 规则顺序值较小的重写规则最先运行。 如果为两个重写规则分配了相同的规则顺序值，则执行顺序是不确定的。
+   - **RuleSequence**：帮助确定重写规则执行顺序的可选配置。 在一个重写集中使用多个重写规则时，此配置非常有用。 规则顺序值较小的重写规则最先运行。 如果为两个重写规则分配了相同的规则顺序值，则执行顺序是不确定的。
 
      如果没有显式指定 RuleSequence explicitly，则会设置默认值 100。
 
-   - **RewriteRuleSet** ：包含多个要关联到请求路由规则的重写规则。
+   - **RewriteRuleSet**：包含将与请求路由规则关联的多个重写规则。
 
 2. 将 RewriteRuleSet 附加到路由规则。 重写配置将通过路由规则附加到源侦听器。 使用基本路由规则时，标头重写配置与源侦听器相关联，并且是全局标头重写。 使用基于路径的路由规则时，将在 URL 路径映射中定义标头重写配置。 在这种情况下，该规则只会应用到站点的特定路径区域。
 
@@ -62,7 +62,7 @@ Select-AzSubscription -Subscription "<sub name>"
 
 ## <a name="specify-the-http-header-rewrite-rule-configuration"></a>指定 HTTP 标头重写规则配置
 
-在此示例中，当 location 标头包含对 azurewebsites.net 的引用时，我们将通过在 HTTP 响应中重写 location 标头来修改重定向 URL。 为此，我们将添加一个条件来评估响应中的 location 标头是否包含 azurewebsites.net。 我们将使用 `(https?):\/\/.*azurewebsites\.net(.*)$` 模式。 我们将使用 `{http_resp_Location_1}://contoso.com{http_resp_Location_2}` 作为标头值。 此值将用 location 标头中的 *contoso.com* 替换 *azurewebsites.net* 。
+在此示例中，当 location 标头包含对 azurewebsites.net 的引用时，我们将通过在 HTTP 响应中重写 location 标头来修改重定向 URL。 为此，我们将添加一个条件来评估响应中的 location 标头是否包含 azurewebsites.net。 我们将使用 `(https?)://.*azurewebsites.net(.*)$` 模式。 我们将使用 `{http_resp_Location_1}://contoso.com{http_resp_Location_2}` 作为标头值。 此值将用 location 标头中的 *contoso.com* 替换 *azurewebsites.net* 。
 
 ```azurepowershell
 $responseHeaderConfiguration = New-AzApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "Location" -HeaderValue "{http_resp_Location_1}://contoso.com{http_resp_Location_2}"

@@ -1,19 +1,19 @@
 ---
-title: 使用用于容器的 Azure Monitor 实时查看指标 | Microsoft Docs
-description: 本文介绍在用于容器的 Azure Monitor 中如何在不使用 kubectl 的情况下实时查看指标。
+title: 利用容器见解实时查看指标 |Microsoft Docs
+description: 本文介绍了度量值的实时视图，而无需将 kubectl 与 Container insights 结合使用。
 ms.topic: conceptual
 ms.date: 10/15/2019
 ms.custom: references_regions
-ms.openlocfilehash: 81d7210778fd6b5d75fb4b4fa8e066d2e015174f
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 2e3a8a417a934374c2c0b256bb65a471d98fdebe
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100607724"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731844"
 ---
 # <a name="how-to-view-metrics-in-real-time"></a>如何实时查看指标
 
-借助用于容器的 Azure Monitor 实时数据（预览版）功能，你可以实时可视化群集中有关节点和 pod 状态的指标。 它模拟对 `kubectl top nodes`、`kubectl get pods –all-namespaces` 和 `kubectl get nodes` 命令的直接访问，以调用、分析和可视化此见解中包含的性能图表中的数据。
+使用 Container insights 实时数据 (预览) 功能，可以在群集中实时显示有关节点和 pod 状态的指标。 它模拟对 `kubectl top nodes`、`kubectl get pods –all-namespaces` 和 `kubectl get nodes` 命令的直接访问，以调用、分析和可视化此见解中包含的性能图表中的数据。
 
 本文详细介绍了此功能，并帮助你了解如何使用此功能。
 
@@ -26,7 +26,7 @@ ms.locfileid: "100607724"
 
 实时数据（预览版）功能可直接访问 Kubernetes API；有关身份验证模型的其他信息，请参阅[此处](https://kubernetes.io/docs/concepts/overview/kubernetes-api/)。
 
-该功能对指标终结点（包括 `/api/v1/nodes`、`/apis/metrics.k8s.io/v1beta1/nodes` 和 `/api/v1/pods`）执行轮询操作，默认每 5 秒轮询一次。 这些数据缓存在浏览器中，你可以在用于容器的 Azure Monitor 中将它们绘制成四个性能图表，操作方法是在“群集”选项卡上选择“上线(预览)” 。 每个后续轮询都将绘制到一个滚动显示五分钟的可视化窗口中。
+该功能对指标终结点（包括 `/api/v1/nodes`、`/apis/metrics.k8s.io/v1beta1/nodes` 和 `/api/v1/pods`）执行轮询操作，默认每 5 秒轮询一次。 此数据在浏览器中缓存，并在 "群集" 选项卡上通过选择 " **(预览")** 在 "**群集**" 选项卡上包含的四个性能图表中插入。 每个后续轮询都将绘制到一个滚动显示五分钟的可视化窗口中。
 
 ![“群集”视图中的“上线”选项](./media/container-insights-livedata-metrics/cluster-view-go-live-example-01.png)
 

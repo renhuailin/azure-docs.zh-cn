@@ -1,14 +1,14 @@
 ---
 title: 如何停止监视 Azure Red Hat OpenShift v3 群集 |Microsoft Docs
-description: 本文介绍如何通过 Azure Monitor 容器来停止监视 Azure Red Hat OpenShift 群集。
+description: 本文介绍如何通过容器见解停止监视 Azure Red Hat OpenShift 群集。
 ms.topic: conceptual
 ms.date: 04/24/2020
-ms.openlocfilehash: 7e6ab46940ed29a98b3988c00c92d6c691d6e0f0
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 6a278898942e40d3347791d31a3c38341df01f7c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100608951"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731810"
 ---
 # <a name="how-to-stop-monitoring-your-azure-red-hat-openshift-v3-cluster"></a>如何停止监视 Azure Red Hat OpenShift v3 群集
 
@@ -21,7 +21,7 @@ ms.locfileid: "100608951"
 > 按照本指南 [创建 Azure Red Hat OpenShift 4 群集](../../openshift/tutorial-create-cluster.md)。
 > 如果有特定问题， [请](mailto:aro-feedback@microsoft.com)联系我们。
 
-启用 Azure Red Hat OpenShift 版本3.x 群集的监视后，如果你决定不再想要对其进行监视，则可以使用容器 Azure Monitor 停止监视群集。 本文介绍如何使用提供的 Azure 资源管理器模板来完成此操作。  
+启用 Azure Red Hat OpenShift 版本3.x 群集的监视后，如果你决定不再想要对其进行监视，可以使用容器见解停止监视群集。 本文介绍如何使用提供的 Azure 资源管理器模板来完成此操作。  
 
 ## <a name="azure-resource-manager-template"></a>Azure 资源管理器模板
 
@@ -137,4 +137,4 @@ ProvisioningState       : Succeeded
 
 ## <a name="next-steps"></a>后续步骤
 
-如果创建的工作区仅用于支持监视群集且不再被需要，则需要手动删除它。 如果你不熟悉如何删除工作区，请参阅 [删除 Azure Log Analytics 工作区](../platform/delete-workspace.md)。
+如果创建的工作区仅用于支持监视群集且不再被需要，则需要手动删除它。 如果你不熟悉如何删除工作区，请参阅 [删除 Azure Log Analytics 工作区](../logs/delete-workspace.md)。

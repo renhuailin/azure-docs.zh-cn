@@ -1,36 +1,37 @@
 ---
-title: 遥测处理器示例-Java 的 Azure Monitor Application Insights
-description: 阐释 Azure Monitor Java 中的遥测处理器的示例 Application Insights
+title: 遥测处理器示例-Azure Monitor Java Application Insights
+description: 探索在 Java Azure Monitor Application Insights 中显示遥测处理器的示例。
 ms.topic: conceptual
 ms.date: 12/29/2020
 author: kryalama
 ms.custom: devx-track-java
 ms.author: kryalama
-ms.openlocfilehash: 9b29c9611359c97c4097ad0b90ee2673bb28f37c
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 0978bd669855d264ed6dfa5eeddc45ad499aa2a5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98696306"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734581"
 ---
-# <a name="telemetry-processors-examples---azure-monitor-application-insights-for-java"></a>遥测处理器示例-Java 的 Azure Monitor Application Insights
+# <a name="telemetry-processor-examples---azure-monitor-application-insights-for-java"></a>遥测处理器示例-Azure Monitor Java Application Insights
 
-## <a name="includeexclude-samples"></a>包含/排除示例
+本文提供了 Application Insights for Java 中的遥测处理器的示例。 你将找到包含和排除配置的示例。 你还将找到属性处理器和跨越处理器的示例。
+## <a name="include-and-exclude-samples"></a>包括和排除示例
 
-### <a name="1-include-spans"></a>1. 包含跨越
+在本部分中，你将了解如何包含和排除范围。 你还将了解如何排除多个范围和应用选择性处理。
+### <a name="include-spans"></a>包含跨度
 
-下面演示了如何为此属性处理器包括范围。 不与属性匹配的其他所有范围均不由此处理器处理。
+本部分说明如何为属性处理器包括范围。 不匹配属性的范围不由处理器处理。
 
-下面是匹配项的条件：
-* 跨度名称必须等于 "spanA" 或 "spanB" 
+匹配要求范围名称等于 `spanA` 或 `spanB` 。 
 
-下面是与 include 属性匹配的范围，并应用了处理器操作。
-* Span1 Name： ' spanA ' 特性： {env： dev，test_request：123，credit_card： 1234}
-* Span2 Name： ' spanB ' 特性： {env： dev，test_request： false}
-* Span3 Name： ' spanA ' 特性： {env：1，test_request： dev，credit_card： 1234}
+这些范围与 include 属性匹配，并且应用处理器操作：
+* Span1 Name: 'spanA' Attributes: {env: dev, test_request:123, credit_card:1234}
+* Span2 Name: 'spanB' Attributes: {env: dev, test_request: false}
+* Span3 Name: 'spanA' Attributes: {env:1, test_request: dev, credit_card:1234}
 
-以下范围与 include 属性不匹配，并且不应用处理器操作。
-* Span4 Name： ' spanC ' 特性： {env： dev，test_request： false}
+此跨度与 include 属性不匹配，并且不应用处理器操作：
+* Span4 Name: 'spanC' Attributes: {env: dev, test_request: false}
 
 ```json
 {
@@ -58,20 +59,19 @@ ms.locfileid: "98696306"
 }
 ```
 
-### <a name="2-exclude-spans"></a>2. 排除范围
+### <a name="exclude-spans"></a>排除范围
 
-下面的示例演示如何排除此属性处理器的范围。 与属性匹配的所有范围均不由此处理器处理。
+本部分演示如何排除特性处理器的范围。 与属性匹配的跨度不由此处理器处理。
 
-下面是匹配项的条件：
-* 跨度名称必须等于 "spanA" 或 "spanB" 
+匹配要求范围名称等于 `spanA` 或 `spanB` 。
 
-以下是匹配排除属性的范围，不应用处理器操作。
-* Span1 Name： ' spanA ' 特性： {env： dev，test_request：123，credit_card： 1234}
-* Span2 Name： ' spanB ' 特性： {env： dev，test_request： false}
-* Span3 Name： ' spanA ' 特性： {env：1，test_request： dev，credit_card： 1234}
+以下范围与 exclude 属性匹配，并且不应用处理器操作：
+* Span1 Name: 'spanA' Attributes: {env: dev, test_request:123, credit_card:1234}
+* Span2 Name: 'spanB' Attributes: {env: dev, test_request: false}
+* Span3 Name: 'spanA' Attributes: {env:1, test_request: dev, credit_card:1234}
 
-以下范围与排除属性不匹配，将应用处理器操作。
-* Span4 Name： ' spanC ' 特性： {env： dev，test_request： false}
+此跨度与排除属性不匹配，并且应用处理器操作：
+* Span4 Name: 'spanC' Attributes: {env: dev, test_request: false}
 
 ```json
 {
@@ -99,21 +99,21 @@ ms.locfileid: "98696306"
 }
 ```
 
-### <a name="3-excludemulti-spans"></a>3. ExcludeMulti 跨越
+### <a name="exclude-spans-by-using-multiple-criteria"></a>通过使用多个条件排除范围
 
-下面的示例演示如何排除此属性处理器的范围。 与属性匹配的所有范围均不由此处理器处理。
+本部分演示如何排除特性处理器的范围。 与属性匹配的跨度不由此处理器处理。
 
-下面是匹配项的条件：
-* 匹配的范围中必须存在 ( "env"、"dev" ) 的属性。
-* 只要跨距中有键为 "test_request" 的属性，就会出现匹配项。
+匹配要求满足以下条件：
+* 例如， `env` 或 `dev`) 的属性必须存在于跨度中 (。
+* 范围必须具有具有键的特性 `test_request` 。
 
-以下是匹配排除属性的范围，不应用处理器操作。
-* Span1 Name： ' spanB ' 特性： {env： dev，test_request：123，credit_card： 1234}
-* Span2 Name： ' spanA ' 特性： {env： dev，test_request： false}
+以下范围与 exclude 属性匹配，并且不应用处理器操作。
+* Span1 Name: 'spanB' Attributes: {env: dev, test_request:123, credit_card:1234}
+* Span2 Name: 'spanA' Attributes: {env: dev, test_request: false}
 
-以下范围与排除属性不匹配，将应用处理器操作。
-* Span3 Name： ' spanB ' 特性： {env：1，test_request： dev，credit_card： 1234}
-* Span4 Name： ' spanC ' 特性： {env： dev，dev_request： false}
+以下范围与排除属性不匹配，并且应用了处理器操作：
+* Span3 Name: 'spanB' Attributes: {env:1, test_request: dev, credit_card:1234}
+* Span4 Name: 'spanC' Attributes: {env: dev, dev_request: false}
 
 
 ```json
@@ -151,18 +151,18 @@ ms.locfileid: "98696306"
 }
 ```
 
-### <a name="4-selective-processing"></a>4. 选择性处理
+### <a name="selective-processing"></a>选择性处理
 
-下面的示例演示了如何指定范围属性组，以指示此处理器应当应用于哪些范围。 属性的 `include` 指示应该包括哪些属性，而 `exclude` 属性则进一步筛选掉不应处理的范围。
+本部分说明如何指定范围属性，这些属性指示此处理器应应用到的范围。 Include 属性指示应处理的范围。 排除属性筛选掉不应处理的范围。
 
-对于以下配置，将应用以下范围来匹配属性和处理器操作：
+在下面的配置中，这些范围与属性匹配，并且应用处理器操作：
 
-* Span1 Name： ' spanB ' 特性： {env：生产 test_request：123，credit_card：1234，redact_trace： "false"}
-* Span2 Name： ' spanA ' 特性： {env：暂存、test_request： false、redact_trace： true}
+* Span1 Name: 'spanB' Attributes: {env: production, test_request:123, credit_card:1234, redact_trace: "false"}
+* Span2 Name: 'spanA' Attributes: {env: staging, test_request: false, redact_trace: true}
 
-以下范围与 include 属性不匹配，处理器操作得不到应用：
-* Span3 Name： ' spanB ' 属性： {env：生产，test_request： true，credit_card：1234，redact_trace： false}
-* Span4 Name： ' spanC ' 特性： {env： dev，test_request： false}
+这些范围与 include 属性不匹配，并且不应用处理器操作：
+* Span3 Name: 'spanB' Attributes: {env: production, test_request: true, credit_card:1234, redact_trace: false}
+* Span4 Name: 'spanC' Attributes: {env: dev, test_request: false}
 
 ```json
 {
@@ -206,7 +206,7 @@ ms.locfileid: "98696306"
 
 ### <a name="insert"></a>插入
 
-以下内容将插入一个新的属性 {"attribute1"： "attributeValue1"} 以跨越键 "attribute1" 不存在的位置。
+下面的示例将新属性插入 `{"attribute1": "attributeValue1"}` 到不存在键的范围中 `attribute1` 。
 
 ```json
 {
@@ -230,7 +230,7 @@ ms.locfileid: "98696306"
 
 ### <a name="insert-from-another-key"></a>从另一个键插入
 
-下面使用特性 "anotherkey" 中的值将新属性 {"newKey"： "value from 特性" anotherkey "} 插入到不存在键" newKey "的范围。 如果属性 "anotherkey" 不存在，则不会向范围中插入新的属性。
+下面的示例使用属性中的值 `anotherkey` 将新属性插入 `{"newKey": "<value from attribute anotherkey>"}` 到不存在键的范围中 `newKey` 。 如果该属性 `anotherkey` 不存在，则不会在范围中插入新的属性。
 
 ```json
 {
@@ -254,7 +254,7 @@ ms.locfileid: "98696306"
 
 ### <a name="update"></a>更新
 
-以下内容将属性更新为 {"db-library"： "修正"} 并使用特性 "foo" 中的值更新属性 "boo"。 不具有属性 "boo" 的范围将不会更改。
+下面的示例将属性更新为 `{"db.secret": "redacted"}` 。 它 `boo` 通过使用属性中的值更新属性 `foo` 。 未更改属性的范围 `boo` 。
 
 ```json
 {
@@ -283,7 +283,7 @@ ms.locfileid: "98696306"
 
 ### <a name="delete"></a>删除
 
-下面演示了如何删除键为 "credit_card" 的特性。
+下面的示例演示如何删除具有密钥的属性 `credit_card` 。
 
 ```json
 {
@@ -306,7 +306,7 @@ ms.locfileid: "98696306"
 
 ### <a name="hash"></a>哈希
 
-下面演示了哈希现有属性值。
+下面的示例演示如何对现有的属性值进行哈希处理。
 
 ```json
 {
@@ -329,13 +329,13 @@ ms.locfileid: "98696306"
 
 ### <a name="extract"></a>Extract
 
-下面的示例演示如何使用 regex 基于另一个属性的值创建新属性。
-例如，给定的 http. url = ' http://example.com/path?queryParam1=value1 ，queryParam2 = value2 ' 将插入以下属性：
-* httpProtocol： http
-* httpDomain： example.com
-* httpPath：路径
-* httpQueryParams： queryParam1 = value1，queryParam2 = value2
-* http.sys 值不会更改。
+下面的示例演示如何使用正则表达式 (regex) 基于另一个属性的值创建新属性。
+例如，在给定 `http.url = http://example.com/path?queryParam1=value1,queryParam2=value2` 的情况下，插入以下属性：
+* httpProtocol: `http`
+* httpDomain: `example.com`
+* HttpPath `path`
+* httpQueryParams: `queryParam1=value1,queryParam2=value2`
+* http .url： *无* 更改
 
 ```json
 {
@@ -357,8 +357,8 @@ ms.locfileid: "98696306"
 }
 ```
 
-以下示例演示了如何处理范围名称与正则表达式模式匹配的范围。
-此处理器会删除“token”属性，并在范围名称与“auth.\*”匹配但与“login.\*”不匹配的范围中对“password”属性进行模糊处理。
+下面的示例演示如何处理具有与正则表达式模式匹配的跨度的跨度。
+此处理器将删除该 `token` 属性。 它 `password` 在 span 名称匹配的范围中进行模糊处理属性 `auth.*` ，并且范围名称不匹配 `login.*` 。
 
 ```json
 {
@@ -401,7 +401,7 @@ ms.locfileid: "98696306"
 
 ### <a name="name-a-span"></a>为范围命名
 
-以下示例指定属性“db.svc”、“operation”和“id”的值将按该顺序形成范围的新名称，以值“::”作为分隔符。
+下面的示例指定属性 `db.svc` 、和的值 `operation` `id` 。 它通过使用这些属性（以该顺序分隔）来形成范围的新名称 `::` 。
 ```json
 {
   "connectionString": "InstrumentationKey=00000000-0000-0000-0000-000000000000",
@@ -423,9 +423,9 @@ ms.locfileid: "98696306"
 }
 ```
 
-### <a name="extract-attributes-from-span-name"></a>从范围名称中提取属性
+### <a name="extract-attributes-from-a-span-name"></a>从范围名称提取属性
 
-让我们假设输入范围名称为 /api/v1/document/12345678/update。 将以下结果应用于输出范围名称 /api/v1/document/{documentId}/update 会将新属性 "documentId"="12345678" 添加到范围。
+假设输入跨度的名称为 `/api/v1/document/12345678/update` 。 下面的示例将生成输出范围名称 `/api/v1/document/{documentId}/update` 。 它将新特性添加 `documentId=12345678` 到跨距。
 ```json
 {
   "connectionString": "InstrumentationKey=00000000-0000-0000-0000-000000000000",
@@ -446,11 +446,11 @@ ms.locfileid: "98696306"
 }
 ```
 
-### <a name="extract-attributes-from-span-name-with-include-and-exclude"></a>从包含和排除范围名称中提取属性
+### <a name="extract-attributes-from-a-span-name-by-using-include-and-exclude"></a>使用 include 和 exclude 从范围名称中提取属性
 
-下面演示了如何在范围具有以下属性时将范围名称重命名为“{operation_website}”并添加属性 {Key: operation_website, Value: oldSpanName }：
-- 范围名称在字符串中的任意位置包含“/”。
-- 范围名称不是“donot/change”。
+下面的示例演示如何将范围名称更改为 `{operation_website}` 。 `operation_website` `{oldSpanName}` 当跨度具有以下属性时，它将添加具有键和值的属性：
+- 范围名称包含 `/` 在字符串中的任意位置。
+- 跨度名称不为 `donot/change` 。
 ```json
 {
   "connectionString": "InstrumentationKey=00000000-0000-0000-0000-000000000000",

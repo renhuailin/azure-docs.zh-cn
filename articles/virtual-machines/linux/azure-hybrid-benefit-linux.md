@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: mathapli
-ms.openlocfilehash: 17b2e260f9a90ddda6e246058cefb1bec8b1ac5e
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 346d58dbe06a29a4ba114ae788dee16e80b8f9df
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101671205"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101695475"
 ---
 # <a name="how-azure-hybrid-benefit-applies-for-linux-virtual-machines"></a>如何将 Azure 混合权益适用于 Linux 虚拟机
 
@@ -177,7 +177,7 @@ az vm get-instance-view -g MyResourceGroup -n MyVm
 
 ### <a name="suse"></a>SUSE
 
-若要为 SLES Vm 使用 Azure 混合权益，以及从 SLES PAYG 迁移到 BYOS 或从 SLES BYOS 迁移到 PAYG 的信息，请参阅 [SUSE Linux Enterprise and Azure 混合权益](https://www.suse.com/c/suse-linux-enterprise-and-azure-hybrid-benefit/)。 
+若要为 SLES Vm 使用 Azure 混合权益，以及从 SLES PAYG 迁移到 BYOS 或从 SLES BYOS 迁移到 PAYG 的信息，请参阅 [SUSE Linux Enterprise and Azure 混合权益](https://www.suse.com/support/kb/doc/?id=000019868)。 
 
 ## <a name="frequently-asked-questions"></a>常见问题
 *问：我能否将许可证类型用于 `RHEL_BYOS` SLES 映像，反之亦然？*

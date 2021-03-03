@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/17/2020
-ms.openlocfilehash: f0d062766f0a5d58fbcaaa32b1df5a5e40c783b4
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 17c7609afeef8b5129e3bfe252def74b45cb4208
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100605969"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719944"
 ---
 # <a name="install-the-azure-monitor-agent-preview"></a> (预览版安装 Azure Monitor 代理) 
 本文提供了当前可用于在 Azure 虚拟机和启用了 Azure Arc 的服务器上安装 [Azure Monitor 代理](azure-monitor-agent-overview.md) 的不同选项，还提供了用于创建 [与数据收集规则关联](data-collection-rule-azure-monitor-agent.md) 的选项，这些规则定义了代理应收集的数据。
@@ -42,7 +42,7 @@ ms.locfileid: "100605969"
 获取用于安装代理并创建关联的示例模板： 
 
 - [用于在 Azure 和 Azure Arc (安装 Azure Monitor 代理的模板) ](../agents/resource-manager-agent.md#azure-monitor-agent-preview) 
-- [用于创建与数据收集规则关联的模板](../samples/resource-manager-data-collection-rules.md)
+- [用于创建与数据收集规则关联的模板](./resource-manager-data-collection-rules.md)
 
 使用 [任意部署方法为资源管理器模板](../../azure-resource-manager/templates/deploy-powershell.md) （例如以下命令）安装模板。
 

@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: 将 GitOps 与 Helm 配合使用，以启用启用了 Azure Arc 的群集配置
 keywords: GitOps, Kubernetes, K8s, Azure, Helm, Arc, AKS, Azure Kubernetes 服务, 容器
-ms.openlocfilehash: 117fc8dabdce2fdf23cbc2b9fe78137db1c656a5
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 0176d614a6bf44e2bf20cc7935521a6387a3b574
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101647636"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687273"
 ---
 # <a name="deploy-helm-charts-using-gitops-on-an-arc-enabled-kubernetes-cluster"></a>在启用了 Arc 的 Kubernetes 群集上使用 GitOps 部署 Helm 图表
 
@@ -81,7 +81,7 @@ Helm 发布配置包含以下字段：
 使用的 Azure CLI 扩展将 `k8s-configuration` 连接的群集链接到示例 Git 存储库。 为此配置指定名称 `azure-arc-sample` 并在命名空间中部署 Flux 运算符 `arc-k8s-demo` 。
 
 ```console
-az k8s-configuration create --name azure-arc-sample --cluster-name AzureArcTest1 --resource-group AzureArcTest --operator-instance-name flux --operator-namespace arc-k8s-demo --operator-params='--git-readonly --git-path=releases' --enable-helm-operator --helm-operator-version='1.2.0' --helm-operator-params='--set helm.versions=v3' --repository-url https://github.com/Azure/arc-helm-demo.git --scope namespace --cluster-type connectedClusters
+az k8s-configuration create --name azure-arc-sample --cluster-name AzureArcTest1 --resource-group AzureArcTest --operator-instance-name flux --operator-namespace arc-k8s-demo --operator-params='--git-readonly --git-path=releases' --enable-helm-operator --helm-operator-chart-version='1.2.0' --helm-operator-params='--set helm.versions=v3' --repository-url https://github.com/Azure/arc-helm-demo.git --scope namespace --cluster-type connectedClusters
 ```
 
 ### <a name="configuration-parameters"></a>配置参数

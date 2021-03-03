@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,seoapr2020
 ms.topic: conceptual
 ms.date: 11/20/2019
-ms.openlocfilehash: 13282962886d8682b6056d10f8f0cc5a7f626d60
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 84124f33f6aa02f63c0c47a24bd7d2a71ced2d11
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98946014"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699294"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight：常见问题
 
@@ -61,7 +61,7 @@ ms.locfileid: "98946014"
 
 - 使用 [HDInsight 应用程序平台](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/)安装应用程序。
 
-请参阅[在 HDInsight 中可以使用哪些 Apache Hadoop 组件和版本？](./hdinsight-component-versioning.md#apache-components-available-with-different-hdinsight-versions)了解受支持组件的列表
+请参阅[在 HDInsight 中可以使用哪些 Apache Hadoop 组件和版本？](./hdinsight-component-versioning.md)了解受支持组件的列表
 
 ### <a name="can-i-upgrade-the-individual-components-that-are-pre-installed-on-the-cluster"></a>是否可以升级预装在群集上的单个组件？
 
@@ -88,7 +88,7 @@ ms.locfileid: "98946014"
 
 ### <a name="how-can-i-migrate-from-the-existing-metastore-to-azure-sql-database"></a>如何从现有的元存储迁移到 Azure SQL 数据库？ 
 
-若要从 SQL Server 迁移到 Azure SQL Database，请参阅 [教程：使用 DMS 脱机将 SQL Server 迁移到 AZURE Sql 数据库中的单个数据库或池中的数据库](../dms/tutorial-sql-server-to-azure-sql.md)。
+要从 SQL Server 迁移到 Azure SQL 数据库，请参阅[教程：使用 DMS 将 SQL Server 脱机迁移到 Azure SQL 数据库中的单一数据库或共用数据库](../dms/tutorial-sql-server-to-azure-sql.md)。
 
 ### <a name="is-the-hive-metastore-deleted-when-the-cluster-is-deleted"></a>删除群集时是否会删除 Hive 元存储？
 
@@ -197,7 +197,7 @@ ktutil: q
 
 1. 使用以下命令禁用自动执行：
    
-  sudo `usr/local/bin/azsecd config -s clamav -d Disabled` sudo service azsecd 重启 
+  sudo `usr/local/bin/azsecd config -s clamav -d Disabled` sudo service azsecd restart 
    
 1. 添加一个 Cron 作业，以便以 root 身份运行以下命令：
    
@@ -234,7 +234,7 @@ ktutil: q
 
 ### <a name="how-can-i-set-up-auditing-for-my-blob-storage-account"></a>如何设置 Blob 存储帐户的审核？
 
-若要审核 Blob 存储帐户，请使用[在 Azure 门户中监视存储帐户](../storage/common/storage-monitor-storage-account.md)中的过程配置监视。 HDFS 审核日志仅提供本地 HDFS 文件系统 (hdfs://mycluster) 的审核信息。  它不包括在远程存储上执行的操作。
+若要审核 Blob 存储帐户，请使用[在 Azure 门户中监视存储帐户](../storage/common/manage-storage-analytics-logs.md)中的过程配置监视。 HDFS 审核日志仅提供本地 HDFS 文件系统 (hdfs://mycluster) 的审核信息。  它不包括在远程存储上执行的操作。
 
 ### <a name="how-can-i-transfer-files-between-a-blob-container-and-an-hdinsight-head-node"></a>如何在 Blob 容器与 HDInsight 头节点之间传输文件？
 
@@ -261,7 +261,7 @@ done
 
 ### <a name="can-i-increase-hdfs-storage-on-a-cluster-without-increasing-the-disk-size-of-worker-nodes"></a>是否可以在不增大工作器节点的磁盘大小的情况下增大群集上的 HDFS 存储？
 
-不是。 不能增加任何工作节点的磁盘大小。 因此，增加磁盘大小的唯一方法是删除群集，并将其重新创建为更大的辅助 Vm。 请不要使用 HDFS 来存储任何 HDInsight 数据，因为删除群集时会删除这些数据。 请改为在 Azure 中存储数据。 纵向扩展群集也可以将更多的容量添加到 HDInsight 群集。
+否。 不能增加任何工作节点的磁盘大小。 因此，增加磁盘大小的唯一方法是删除群集，并将其重新创建为更大的辅助 Vm。 请不要使用 HDFS 来存储任何 HDInsight 数据，因为删除群集时会删除这些数据。 请改为在 Azure 中存储数据。 纵向扩展群集也可以将更多的容量添加到 HDInsight 群集。
 
 ## <a name="edge-nodes"></a>边缘节点
 

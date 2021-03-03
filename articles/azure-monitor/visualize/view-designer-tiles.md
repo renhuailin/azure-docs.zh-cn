@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/17/2018
-ms.openlocfilehash: b73fa9702a95897afbca53e2de70dcabc04a4665
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: abcd95a0c433b59df6e7a564e5db948ea2a9eaf5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100606043"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717207"
 ---
 # <a name="reference-guide-to-view-designer-tiles-in-azure-monitor"></a>Azure Monitor 中视图设计器磁贴的参考指南
 在 Azure Monitor 中使用视图设计器即可在 Azure 门户中创建各种自定义视图，使 Log Analytics 工作区中的数据可视化。 本文针对自定义视图中可用的磁贴，提供设置方面的参考指南。
@@ -36,7 +36,7 @@ ms.locfileid: "100606043"
 后续部分将详细介绍磁贴类型及其属性。
 
 > [!NOTE]
-> 视图中的磁贴基于 Log Analytics 工作区中的[日志查询](../log-query/log-query-overview.md)。 它们目前不支持使用[跨资源查询](../log-query/cross-workspace-query.md)从 Application Insights 检索数据。
+> 视图中的磁贴基于 Log Analytics 工作区中的[日志查询](../logs/log-query-overview.md)。 它们目前不支持使用[跨资源查询](../logs/cross-workspace-query.md)从 Application Insights 检索数据。
 
 ## <a name="number-tile"></a>数字磁贴
 **数字** 磁贴显示一个日志查询中的记录数，具有一个标签。
@@ -173,5 +173,5 @@ ms.locfileid: "100606043"
 
 
 ## <a name="next-steps"></a>后续步骤
-* 了解有关[日志查询](../log-query/log-query-overview.md)以支持磁贴中的查询。
+* 了解有关[日志查询](../logs/log-query-overview.md)以支持磁贴中的查询。
 * 将[可视化部件](view-designer-parts.md)添加到自定义视图。

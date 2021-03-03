@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nabhishek
 ms.author: abnarain
 ms.date: 05/08/2019
-ms.openlocfilehash: 95d35b3496248db9acb69181191acde58ede7b44
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 2b5c053847852cc6090ee94858a5be52275d62fc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100589235"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101725333"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Azure 数据工厂支持的计算环境
 
@@ -102,13 +102,13 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 ```
 
 > [!IMPORTANT]
-> HDInsight 群集在 JSON 中指定的 Blob 存储 (**linkedServiceName**).内创建 **默认容器**。 HDInsight 不会在删除群集时删除此容器。 这是设计的行为。 使用按需 HDInsight 链接服务时，除非有现有的实时群集 (**timeToLive**)，否则每当需要处理切片时会创建 HDInsight 群集；并在处理完成后删除该群集。 
+> HDInsight 群集在 JSON 中指定的 Blob 存储 (**linkedServiceName**).内创建 **默认容器**。 HDInsight 不会在删除群集时删除此容器。 此行为是设计使然。 使用按需 HDInsight 链接服务时，除非有现有的实时群集 (**timeToLive**)，否则每当需要处理切片时会创建 HDInsight 群集；并在处理完成后删除该群集。 
 >
 > 随着运行的活动越来越多，Azure Blob 存储中会出现大量的容器。 如果不需要使用它们对作业进行故障排除，则可能需要删除它们以降低存储成本。 这些容器的名称遵循 `adf**yourdatafactoryname**-**linkedservicename**-datetimestamp` 模式。 使用 [Microsoft Azure 存储资源管理器](https://storageexplorer.com/)等工具删除 Azure Blob 存储中的容器。
 
 #### <a name="properties"></a>属性
 
-| 属性                     | 说明                              | 必需 |
+| 属性                     | 说明                              | 必选 |
 | ---------------------------- | ---------------------------------------- | -------- |
 | type                         | 类型属性应设置为 **HDInsightOnDemand**。 | 是      |
 | clusterSize                  | 群集中辅助进程/数据节点的数量。 HDInsight 群集创建时具有 2 个头节点以及一定数量的辅助进程节点（此节点的数量是为此属性所指定的数量）。 这些节点的大小为拥有 4 个核心的 Standard_D3，因此一个具有 4 个辅助节点的群集拥有 24 个核心（辅助节点有 4\*4 = 16 个核心，头节点有 2\*4 = 8 个核心）。 请参阅[使用 Hadoop、Spark、Kafka 等在 HDInsight 中设置群集](../hdinsight/hdinsight-hadoop-provision-linux-clusters.md)，了解详细信息。 | 是      |
@@ -156,7 +156,7 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 
 通过指定以下属性使用服务主体身份验证：
 
-| 属性                | 说明                              | 必须 |
+| 属性                | 说明                              | 必选 |
 | :---------------------- | :--------------------------------------- | :------- |
 | **servicePrincipalId**  | 指定应用程序的客户端 ID。     | 是      |
 | **servicePrincipalKey** | 指定应用程序的密钥。           | 是      |
@@ -166,7 +166,7 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 
 也可以为按需 HDInsight 群集的粒度配置指定以下属性。
 
-| 属性               | 说明                              | 必须 |
+| 属性               | 说明                              | 必选 |
 | :--------------------- | :--------------------------------------- | :------- |
 | coreConfiguration      | 为待创建的 HDInsight 群集指定核心配置参数（如在 core-site.xml 中）。 | 否       |
 | hBaseConfiguration     | 为 HDInsight 群集指定 HBase 配置参数 (hbase-site.xml)。 | 否       |
@@ -234,7 +234,7 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 #### <a name="node-sizes"></a>节点大小
 可使用以下属性指定头节点、数据节点和 Zookeeper 节点的大小： 
 
-| 属性          | 说明                              | 必须 |
+| 属性          | 说明                              | 必选 |
 | :---------------- | :--------------------------------------- | :------- |
 | headNodeSize      | 指定头节点的大小。 默认值为：Standard_D3。 有关详细信息，请参阅 **指定节点大小** 部分。 | 否       |
 | dataNodeSize      | 指定数据节点的大小。 默认值为：Standard_D3。 | 否       |
@@ -293,7 +293,7 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 ```
 
 ### <a name="properties"></a>属性
-| 属性          | 说明                                                  | 必需 |
+| 属性          | 说明                                                  | 必选 |
 | ----------------- | ------------------------------------------------------------ | -------- |
 | type              | 类型属性应设置为 **HDInsight**。            | 是      |
 | clusterUri        | HDInsight 群集的 URI。                            | 是      |
@@ -324,7 +324,7 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 * [New-AzBatchPool](/powershell/module/az.batch/New-AzBatchPool) cmdlet 以创建 Azure Batch 池。
 
 > [!IMPORTANT]
-> 创建新的 Azure Batch 池时，必须使用 "VirtualMachineConfiguration" 而不是 "CloudServiceConfiguration"。 有关更多详细信息，请参阅 [Azure Batch 池迁移指南](https://docs.microsoft.com/azure/batch/batch-pool-cloud-service-to-virtual-machine-configuration)。 
+> 创建新的 Azure Batch 池时，必须使用 "VirtualMachineConfiguration" 而不是 "CloudServiceConfiguration"。 有关更多详细信息，请参阅 [Azure Batch 池迁移指南](../batch/batch-pool-cloud-service-to-virtual-machine-configuration.md)。 
 
 ### <a name="example"></a>示例
 
@@ -356,7 +356,7 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 
 
 ### <a name="properties"></a>属性
-| 属性          | 说明                              | 必需 |
+| 属性          | 说明                              | 必选 |
 | ----------------- | ---------------------------------------- | -------- |
 | type              | 类型属性应设置为 **AzureBatch**。 | 是      |
 | accountName       | Azure Batch 帐户的名称。         | 是      |
@@ -392,7 +392,7 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 ```
 
 ### <a name="properties"></a>属性
-| 属性               | 说明                              | 必需                                 |
+| 属性               | 说明                              | 必选                                 |
 | ---------------------- | ---------------------------------------- | ---------------------------------------- |
 | 类型                   | 类型属性应设置为：AzureML。 | 是                                      |
 | mlEndpoint             | 批处理计分 URL。                   | 是                                      |
@@ -436,7 +436,7 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 ```
 
 ### <a name="properties"></a>属性
-| 属性               | 说明                              | 必需                                 |
+| 属性               | 说明                              | 必选                                 |
 | ---------------------- | ---------------------------------------- | ---------------------------------------- |
 | 类型                   | 类型属性应设置为：AzureMLService。 | 是                                      |
 | subscriptionId         | Azure 订阅 ID              | 是                                      |
@@ -479,7 +479,7 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 
 ### <a name="properties"></a>属性
 
-| 属性             | 说明                              | 必需                                 |
+| 属性             | 说明                              | 必选                                 |
 | -------------------- | ---------------------------------------- | ---------------------------------------- |
 | type                 | 类型属性应设置为：AzureDataLakeAnalytics。 | 是                                      |
 | accountName          | Azure Data Lake Analytics 帐户名。  | 是                                      |
@@ -541,7 +541,7 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 
 ### <a name="properties"></a>属性
 
-| 属性             | 说明                              | 必需                                 |
+| 属性             | 说明                              | 必选                                 |
 | -------------------- | ---------------------------------------- | ---------------------------------------- |
 | name                 | 链接服务的名称               | 是   |
 | type                 | 类型属性应设置为：**Azure Databricks**。 | 是                                      |

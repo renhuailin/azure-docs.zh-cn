@@ -160,8 +160,6 @@
           href: load-balancer-troubleshoot-health-probe-status.md
         - name: 后端池 (VM) 流量
           href: load-balancer-troubleshoot-backend-traffic.md
-        - name: 常见部署错误
-          href: load-balancer-common-deployment-errors.md
         - name: 常见的出站连接问题
           href: troubleshoot-outbound-connection.md
         - name: 资源运行状况和入站可用性问题
@@ -191,6 +189,8 @@
       displayName: ARM
     - name: Azure 实例元数据服务 (IMDS) 的常见错误代码
       href: troubleshoot-load-balancer-imds.md
+    - name: 常见部署错误
+      href: load-balancer-common-deployment-errors.md
 - name: 资源
   items:
     - name: 利用 Microsoft Learn 掌握技能

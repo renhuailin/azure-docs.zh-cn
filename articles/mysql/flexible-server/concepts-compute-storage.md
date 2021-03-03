@@ -6,12 +6,12 @@ ms.author: bahusse
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 1/28/2021
-ms.openlocfilehash: 765ff76578e48135d2e7d4d9200c1868d2501df4
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 9b5a2c5d004e63c602a30f7808586e97a0e436e8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99581442"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720930"
 ---
 # <a name="compute-and-storage-options-in-azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL 灵活服务器（预览版）中的计算和存储选项
 
@@ -72,7 +72,7 @@ ms.locfileid: "99581442"
 若要获取有关可用计算系列的更多详细信息，请参阅[可突发（B 系列）](../../virtual-machines/sizes-b-series-burstable.md)、[常规用途（Ddsv4 系列）](../../virtual-machines/ddv4-ddsv4-series.md)和[内存优化（Edsv4 系列）](../../virtual-machines/edv4-edsv4-series.md)的相关 Azure VM 文档。
 
 >[!NOTE]
->对于 [可突增 (B 系列) 计算层](../../virtual-machines/sizes-b-series-burstable.md) 如果 VM 启动/停止或重新启动，信用可能会丢失。 有关详细信息，请参阅 [可突增 (B 系列) 常见问题](https://docs.microsoft.com/azure/virtual-machines/sizes-b-series-burstable#q-why-is-my-remaining-credit-set-to-0-after-a-redeploy-or-a-stopstart)。
+>对于 [可突增 (B 系列) 计算层](../../virtual-machines/sizes-b-series-burstable.md) 如果 VM 启动/停止或重新启动，信用可能会丢失。 有关详细信息，请参阅 [可突增 (B 系列) 常见问题](../../virtual-machines/sizes-b-series-burstable.md#q-why-is-my-remaining-credit-set-to-0-after-a-redeploy-or-a-stopstart)。
 
 ## <a name="storage"></a>存储
 

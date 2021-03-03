@@ -12,12 +12,12 @@ ms.reviewer: nibaccam
 ms.date: 12/04/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: ec006636ed7e975b696aa32300b32089e3209bb5
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 3eaab31d3948e41a216eaa402c2a11e470a6545d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96600466"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691495"
 ---
 # <a name="start-monitor-and-cancel-training-runs-in-python"></a>在 Python 中启动、监视和取消训练运行
 
@@ -112,17 +112,7 @@ ms.locfileid: "96600466"
         > 有关更多示例 runconfig 文件，请参阅 [https://github.com/MicrosoftDocs/pipelines-azureml/](https://github.com/MicrosoftDocs/pipelines-azureml/)。
     
         有关详细信息，请参阅 [az ml run submit-script](/cli/azure/ext/azure-cli-ml/ml/run?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-submit-script)。
-    
-    # <a name="studio"></a>[工作室](#tab/azure-studio)
-    
-    若要开始在设计器中提交管道运行，请执行以下步骤：
-    
-    1. 为管道设置默认计算目标。
-    
-    1. 在管道画布顶部选择“运行”。
-    
-    1. 选择用于为管道运行分组的试验。
-    
+
     ---
 
 * 监视运行的状态
@@ -183,24 +173,128 @@ ms.locfileid: "96600466"
     
     # <a name="studio"></a>[工作室](#tab/azure-studio)
     
-    在工作室中查看试验的活动运行数。
+    查看工作室中的运行： 
     
-    1. 导航到“试验”部分。
+    1. 导航到“试验”选项卡。
     
-    1. 选择一个试验。
+    1. 选择 " **所有试验** " 以查看实验中的所有运行，或者选择 " **所有运行** " 以查看工作区中已提交的所有运行。
     
-        在试验页中，可以看到活动计算目标数以及每个运行的持续时间。 
+        在 " **所有运行"** 页面中，你可以按标记、试验、计算目标等筛选运行列表，以便更好地组织和确定工作范围。  
     
-    1. 通过选择运行比较、添加图表或应用筛选器，对试验进行自定义。 这些更改可以保存为“自定义视图”，以便你轻松返回到你的工作内容。 具有工作区权限的用户可以编辑或查看自定义视图。 此外还可以通过在浏览器中复制和粘贴 URL 与其他人共享自定义视图。  
+    1. 通过选择 "运行比较"、"添加图表" 或 "应用筛选器"，对页面进行自定义。 这些更改可以保存为“自定义视图”，以便你轻松返回到你的工作内容。 具有工作区权限的用户可以编辑或查看自定义视图。 此外，还可以通过选择 " **共享视图**" 与团队成员共享自定义视图以增强协作。   
     
         :::image type="content" source="media/how-to-manage-runs/custom-views.gif" alt-text="屏幕截图：创建自定义视图":::
     
-    1. 选择特定的运行编号。
-    
-    1. 在“日志”选项卡中，可以找到管道运行的诊断日志和错误日志。
+    1. 若要查看运行日志，请选择特定运行，然后在 " **输出 + 日志** " 选项卡中找到运行的诊断和错误日志。
     
     ---
+
+## <a name="run-description"></a>运行说明 
+
+可以将运行说明添加到运行，以便向运行提供更多上下文和信息。 你还可以从 "运行" 列表中搜索这些说明，并将运行说明作为列添加到 "运行" 列表中。 
+
+导航到运行的 " **运行详细信息** " 页，然后选择 "编辑" 或 "铅笔" 图标，为运行添加、编辑或删除说明。 若要将更改保存到 "运行" 列表中，请将所做的更改保存到现有的自定义视图或新的自定义视图。 允许对图像进行嵌入和深层链接的运行说明支持 Markdown 格式，如下所示。
+
+:::image type="content" source="media/how-to-manage-runs/rundescription.gif" alt-text="屏幕截图：创建运行说明"::: 
     
+
+## <a name="tag-and-find-runs"></a>标记和查找运行
+
+在 Azure 机器学习中，可以使用属性与标记来帮助组织运行，以及查询运行以获取重要信息。
+
+* 添加属性和标记
+
+    # <a name="python"></a>[Python](#tab/python)
+    
+    若要将可搜索的元数据添加到运行，请使用 [`add_properties()`](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=trueadd-properties-properties-) 方法。 例如，以下代码将 `"author"` 属性添加到运行：
+    
+    ```Python
+    local_run.add_properties({"author":"azureml-user"})
+    print(local_run.get_properties())
+    ```
+    
+    属性是不可变的，因此它们将创建一条永久记录用于审核目的。 以下代码示例会导致出错，因为我们已在前面的代码中添加了 `"azureml-user"` 作为 `"author"` 属性值：
+    
+    ```Python
+    try:
+        local_run.add_properties({"author":"different-user"})
+    except Exception as e:
+        print(e)
+    ```
+    
+    与属性不同，标记是可变的。 若要为试验的使用者添加可搜索且有意义的信息，请使用 [`tag()`](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truetag-key--value-none-) 方法。
+    
+    ```Python
+    local_run.tag("quality", "great run")
+    print(local_run.get_tags())
+    
+    local_run.tag("quality", "fantastic run")
+    print(local_run.get_tags())
+    ```
+    
+    还可以添加简单的字符串标记。 当这些标记作为键出现在标记字典中时，它们的值为 `None`。
+    
+    ```Python
+    local_run.tag("worth another look")
+    print(local_run.get_tags())
+    ```
+    
+    # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+    
+    > [!NOTE]
+    > 使用 CLI 只能添加或更新标记。
+    
+    若要添加或更新标记，请使用以下命令：
+    
+    ```azurecli-interactive
+    az ml run update -r runid --add-tag quality='fantastic run'
+    ```
+    
+    有关详细信息，请参阅 [az ml run update](/cli/azure/ext/azure-cli-ml/ml/run?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-update)。
+    
+    # <a name="studio"></a>[工作室](#tab/azure-studio)
+    
+    可以添加、编辑或删除工作室中的运行标记。 导航到运行的 " **运行详细信息** " 页，然后选择 "编辑" 或 "铅笔" 图标，为运行添加、编辑或删除标记。 你还可以从 "运行列表" 页面搜索并筛选这些标记。
+    
+    :::image type="content" source="media/how-to-manage-runs/run-tags.gif" alt-text="屏幕快照：添加、编辑或删除运行标记":::
+    
+    ---
+
+* 查询属性和标记
+
+    可以查询试验中的运行，以返回与特定属性和标记匹配的运行列表。
+
+    # <a name="python"></a>[Python](#tab/python)
+    
+    ```Python
+    list(exp.get_runs(properties={"author":"azureml-user"},tags={"quality":"fantastic run"}))
+    list(exp.get_runs(properties={"author":"azureml-user"},tags="worth another look"))
+    ```
+    
+    # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+    
+    Azure CLI 支持 [JMESPath](http://jmespath.org) 查询，可以使用这些查询基于属性和标记来筛选运行。 若要在 Azure CLI 中使用 JMESPath 查询，请使用 `--query` 参数指定该查询。 以下示例演示了一些使用属性和标记的查询：
+    
+    ```azurecli-interactive
+    # list runs where the author property = 'azureml-user'
+    az ml run list --experiment-name experiment [?properties.author=='azureml-user']
+    # list runs where the tag contains a key that starts with 'worth another look'
+    az ml run list --experiment-name experiment [?tags.keys(@)[?starts_with(@, 'worth another look')]]
+    # list runs where the author property = 'azureml-user' and the 'quality' tag starts with 'fantastic run'
+    az ml run list --experiment-name experiment [?properties.author=='azureml-user' && tags.quality=='fantastic run']
+    ```
+    
+    有关查询 Azure CLI 结果的详细信息，请参阅[查询 Azure CLI 命令输出](/cli/azure/query-azure-cli?preserve-view=true&view=azure-cli-latest)。
+    
+    # <a name="studio"></a>[工作室](#tab/azure-studio)
+    
+    1. 导航到 "  **所有运行** " 列表。
+    
+    1. 使用搜索栏来筛选运行的元数据，如标记、说明、试验名称和提交者名称。 标记筛选器还可用于筛选标记。 
+    
+    ---
+
+
 ## <a name="cancel-or-fail-runs"></a>取消运行或使其失败
 
 如果发现错误，或者完成运行花费的时间太长，可以取消该运行。
@@ -278,7 +372,7 @@ with exp.start_logging() as parent_run:
 
 ### <a name="submit-child-runs"></a>提交子运行
 
-也可以从父运行提交子运行。 通过此操作可创建父运行和子运行的层次结构。 不能创建 parentless 子运行：即使父代运行不执行任何操作，但启动子运行，仍需要创建层次结构。 所有运行的状态都是独立的： `"Completed"` 即使一个或多个子运行已取消或失败，父项也可以处于成功状态。  
+也可以从父运行提交子运行。 通过此操作可创建父运行和子运行的层次结构。 你无法创建没有父运行的子运行：即使父运行只启动子运行而不执行任何操作，仍需要创建层次结构。 所有运行的状态都是独立的：即使一个或多个子运行已取消或失败，父运行也可以处于 `"Completed"` 成功状态。  
 
 你可能会希望子运行使用与父运行不同的运行配置。 例如，对父运行使用常规的基于 CPU 的配置，而对子运行使用基于 GPU 的配置。 另一种常见的需求是向每个子运行传递不同的参数和数据。 若要自定义子运行，请为该子运行创建一个 `ScriptRunConfig` 对象。 下面的代码执行以下操作：
 
@@ -328,9 +422,9 @@ child_run.parent.id
 print(parent_run.get_children())
 ```
 
-### <a name="log-to-parent-or-root-run"></a>记录到父项或根运行
+### <a name="log-to-parent-or-root-run"></a>记录到父运行或根运行
 
-您可以使用 `Run.parent` 字段访问启动当前子运行的运行。 这种情况的一个常见用例是要将日志结果合并到一个位置。 请注意，子运行以异步方式执行，并且不保证超出父项的功能以等待其子运行完成。
+你可以使用 `Run.parent` 字段访问启动当前子运行的运行。 对于这种情况，一个常见的用例是将日志结果合并到单一位置。 请注意，子运行以异步方式执行，只能保证父运行等待其子运行完成，无法保证它们顺序一致和保持同步。
 
 ```python
 # in child (or even grandchild) run
@@ -344,101 +438,6 @@ current_child_run = Run.get_context()
 root_run(current_child_run).log("MyMetric", f"Data from child run {current_child_run.id}")
 
 ```
-
-
-## <a name="tag-and-find-runs"></a>标记和查找运行
-
-在 Azure 机器学习中，可以使用属性与标记来帮助组织运行，以及查询运行以获取重要信息。
-
-* 添加属性和标记
-
-    # <a name="python"></a>[Python](#tab/python)
-    
-    若要将可搜索的元数据添加到运行，请使用 [`add_properties()`](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=trueadd-properties-properties-) 方法。 例如，以下代码将 `"author"` 属性添加到运行：
-    
-    ```Python
-    local_run.add_properties({"author":"azureml-user"})
-    print(local_run.get_properties())
-    ```
-    
-    属性是不可变的，因此它们将创建一条永久记录用于审核目的。 以下代码示例会导致出错，因为我们已在前面的代码中添加了 `"azureml-user"` 作为 `"author"` 属性值：
-    
-    ```Python
-    try:
-        local_run.add_properties({"author":"different-user"})
-    except Exception as e:
-        print(e)
-    ```
-    
-    与属性不同，标记是可变的。 若要为试验的使用者添加可搜索且有意义的信息，请使用 [`tag()`](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truetag-key--value-none-) 方法。
-    
-    ```Python
-    local_run.tag("quality", "great run")
-    print(local_run.get_tags())
-    
-    local_run.tag("quality", "fantastic run")
-    print(local_run.get_tags())
-    ```
-    
-    还可以添加简单的字符串标记。 当这些标记作为键出现在标记字典中时，它们的值为 `None`。
-    
-    ```Python
-    local_run.tag("worth another look")
-    print(local_run.get_tags())
-    ```
-    
-    # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-    
-    > [!NOTE]
-    > 使用 CLI 只能添加或更新标记。
-    
-    若要添加或更新标记，请使用以下命令：
-    
-    ```azurecli-interactive
-    az ml run update -r runid --add-tag quality='fantastic run'
-    ```
-    
-    有关详细信息，请参阅 [az ml run update](/cli/azure/ext/azure-cli-ml/ml/run?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-update)。
-    
-    # <a name="studio"></a>[工作室](#tab/azure-studio)
-    
-    可以在工作室中查看属性和标记，但不能在其中进行修改。
-    
-    ---
-
-* 查询属性和标记
-
-    可以查询试验中的运行，以返回与特定属性和标记匹配的运行列表。
-
-    # <a name="python"></a>[Python](#tab/python)
-    
-    ```Python
-    list(exp.get_runs(properties={"author":"azureml-user"},tags={"quality":"fantastic run"}))
-    list(exp.get_runs(properties={"author":"azureml-user"},tags="worth another look"))
-    ```
-    
-    # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-    
-    Azure CLI 支持 [JMESPath](http://jmespath.org) 查询，可以使用这些查询基于属性和标记来筛选运行。 若要在 Azure CLI 中使用 JMESPath 查询，请使用 `--query` 参数指定该查询。 以下示例演示了一些使用属性和标记的查询：
-    
-    ```azurecli-interactive
-    # list runs where the author property = 'azureml-user'
-    az ml run list --experiment-name experiment [?properties.author=='azureml-user']
-    # list runs where the tag contains a key that starts with 'worth another look'
-    az ml run list --experiment-name experiment [?tags.keys(@)[?starts_with(@, 'worth another look')]]
-    # list runs where the author property = 'azureml-user' and the 'quality' tag starts with 'fantastic run'
-    az ml run list --experiment-name experiment [?properties.author=='azureml-user' && tags.quality=='fantastic run']
-    ```
-    
-    有关查询 Azure CLI 结果的详细信息，请参阅[查询 Azure CLI 命令输出](/cli/azure/query-azure-cli?preserve-view=true&view=azure-cli-latest)。
-    
-    # <a name="studio"></a>[工作室](#tab/azure-studio)
-    
-    1. 导航到“管道”部分。
-    
-    1. 使用搜索栏按标记、说明、试验名称和提交者姓名筛选管道。
-    
-    ---
 
 ## <a name="example-notebooks"></a>示例笔记本
 

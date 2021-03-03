@@ -4,12 +4,12 @@ description: 如何将 Java 消息服务 (JMS) 与 Azure 服务总线配合使�
 ms.topic: article
 ms.date: 07/17/2020
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: b7e4bf0ad69b6cd183296a7245ad3f720ced76c5
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 894821444f74248b73578595df943cb3a0025360
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100652594"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101698393"
 ---
 # <a name="use-java-message-service-20-api-with-azure-service-bus-premium"></a>将 Java 消息服务 2.0 API 与 Azure 服务总线高级版配合使用
 
@@ -34,7 +34,7 @@ ms.locfileid: "100652594"
    * 将 JDK 或 JRE 添加到生成路径和适当的系统变量。
    * 安装 Java IDE 以利用 JDK 或 JRE。 例如 Eclipse 或 IntelliJ。
 
-若要详细了解如何在 Azure 上为 Java 准备开发人员环境，请使用 [本指南](https://docs.microsoft.com/azure/developer/java/fundamentals/)。
+若要详细了解如何在 Azure 上为 Java 准备开发人员环境，请使用 [本指南](/azure/developer/java/fundamentals/)。
 
 ## <a name="what-jms-features-are-supported"></a>支持哪些 JMS 功能？
 

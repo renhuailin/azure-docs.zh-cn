@@ -6,25 +6,25 @@ ms.author: harelbr
 ms.topic: troubleshooting
 ms.date: 01/21/2021
 ms.subservice: alerts
-ms.openlocfilehash: 1908232184218316a1a887f17f2fc8104529a0e7
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 79cc7e1e4b574533fcad4592134109c52897e9ba
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100606169"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737250"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>排查 Azure Monitor 指标警报的问题 
 
 本文介绍了 Azure Monitor [指标警报](alerts-metric-overview.md)的常见问题，以及如何排查这些问题。
 
-在监视数据中发现重要情况时，Azure Monitor 警报会主动通知你。 有了警报，你就可以在系统的用户注意到问题之前确定和解决这些问题。 有关警报的详细信息，请参阅 [Microsoft Azure 中的警报概述](../platform/alerts-overview.md)。
+在监视数据中发现重要情况时，Azure Monitor 警报会主动通知你。 有了警报，你就可以在系统的用户注意到问题之前确定和解决这些问题。 有关警报的详细信息，请参阅 [Microsoft Azure 中的警报概述](./alerts-overview.md)。
 
 ## <a name="metric-alert-should-have-fired-but-didnt"></a>指标警报应当已触发但未触发 
 
 如果你认为某个指标警报应当已触发但未触发且在 Azure 门户中找不到该警报，则请尝试执行以下步骤：
 
 1. **配置** - 检查指标警报规则配置以确保它正确配置：
-    - 检查是否按预期配置了“聚合类型”和“聚合粒度(周期)” 。 “聚合类型”可确定指标值的聚合方式（详情请参见[此处](../platform/metrics-aggregation-explained.md#aggregation-types)），“聚合粒度(周期)”可控制每次运行警报规则时，评估聚合度量值的时间间隔 。
+    - 检查是否按预期配置了“聚合类型”和“聚合粒度(周期)” 。 “聚合类型”可确定指标值的聚合方式（详情请参见[此处](../essentials/metrics-aggregation-explained.md#aggregation-types)），“聚合粒度(周期)”可控制每次运行警报规则时，评估聚合度量值的时间间隔 。
     -  检查“阈值”或“敏感度”是否按预期方式配置 。
     - 对于使用“动态阈值”的警报规则，请检查是否配置了高级设置，因为“冲突的数量”可能会筛选警报，而“忽略之前的数据”会影响阈值的计算方式 。
 
@@ -69,10 +69,10 @@ ms.locfileid: "100606169"
 ## <a name="cant-find-the-metric-to-alert-on---virtual-machines-guest-metrics"></a>找不到用于对虚拟机来宾指标发出警报的指标
 
 若要在虚拟机的来宾操作系统度量值上发出警报 (例如：内存、磁盘空间) ，请确保已安装了将此数据收集到 Azure Monitor 指标所需的代理：
-- [对于 Windows VM](../platform/collect-custom-metrics-guestos-resource-manager-vm.md)
-- [对于 Linux VM](../platform/collect-custom-metrics-linux-telegraf.md)
+- [对于 Windows VM](../essentials/collect-custom-metrics-guestos-resource-manager-vm.md)
+- [对于 Linux VM](../essentials/collect-custom-metrics-linux-telegraf.md)
 
-有关从虚拟机的来宾操作系统收集数据的详细信息，请参阅 [此处](../insights/monitor-vm-azure.md#guest-operating-system)。
+有关从虚拟机的来宾操作系统收集数据的详细信息，请参阅 [此处](../vm/monitor-vm-azure.md#guest-operating-system)。
 
 > [!NOTE] 
 > 如果将来宾指标配置为发送到 Log Analytics 工作区中，则这些指标将显示在 Log Analytics 工作区资源下，并且只会在创建用于监视数据的警报规则后才开始显示数据。 为此，按照步骤[配置日志的指标警报](./alerts-metric-logs.md#configuring-metric-alert-for-logs)。
@@ -84,8 +84,8 @@ ms.locfileid: "100606169"
 
 如果要对特定指标发出警报，但创建警报规则时看不到该指标，请检查以下内容：
 - 如果看不到资源的任何指标，请[检查指标警报是否支持该资源类型](./alerts-metric-near-real-time.md)。
-- 如果可以看到资源的某些指标，但找不到特定指标，请[检查该指标是否可用](../platform/metrics-supported.md)；如果可用，请查看指标说明，检查它是否仅适用于特定版本的资源。
-- 如果该指标不适用于资源，则可能会在资源日志中提供，并且可使用日志警报来监视它。 请参阅此处，详细了解如何[从 Azure 资源收集资源日志并进行分析](../learn/tutorial-resource-logs.md)。
+- 如果可以看到资源的某些指标，但找不到特定指标，请[检查该指标是否可用](../essentials/metrics-supported.md)；如果可用，请查看指标说明，检查它是否仅适用于特定版本的资源。
+- 如果该指标不适用于资源，则可能会在资源日志中提供，并且可使用日志警报来监视它。 请参阅此处，详细了解如何[从 Azure 资源收集资源日志并进行分析](../essentials/tutorial-resource-logs.md)。
 
 ## <a name="cant-find-the-metric-dimension-to-alert-on"></a>找不到警报所针对的指标维度
 
@@ -211,7 +211,7 @@ ms.locfileid: "100606169"
 
 - 如果收到 `Metric not found` 错误：
 
-   - 对于平台指标：请确保你使用的是来自[“Azure Monitor 支持的指标”页](../platform/metrics-supported.md)的“指标名称”而不是“指标显示名称” 
+   - 对于平台指标：请确保你使用的是来自[“Azure Monitor 支持的指标”页](../essentials/metrics-supported.md)的“指标名称”而不是“指标显示名称” 
 
    - 对于自定义指标：请确保已发出指标（不能对尚不存在的自定义指标创建警报规则），并且提供的是自定义指标的命名空间（请参阅[此处](./alerts-metric-create-templates.md#template-for-a-static-threshold-metric-alert-that-monitors-a-custom-metric)的资源管理器模板示例）
 

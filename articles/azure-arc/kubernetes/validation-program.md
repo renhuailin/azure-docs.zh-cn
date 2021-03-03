@@ -8,12 +8,12 @@ author: shashankbarsin
 ms.author: shasb
 description: 描述 Kubernetes 分布的 Arc 验证计划
 keywords: Kubernetes，Arc，Azure，K8s，验证
-ms.openlocfilehash: ad87fe3f11c97524595a517b17bb52fa1b771c9d
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 0d7756f407a3a176c8913d99bdb45a5026300569
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101661840"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101689209"
 ---
 # <a name="azure-arc-validation-program"></a>Azure Arc 验证计划
 
@@ -32,11 +32,11 @@ ms.locfileid: "101661840"
 
 | 提供程序名称 | 分布名称 | 版本 |
 | ------------ | ----------------- | ------- |
-| RedHat       | [OpenShift 容器平台](https://www.openshift.com/products/container-platform) | [4.6](https://docs.openshift.com/container-platform/4.6/release_notes/ocp-4-6-release-notes.html) |
+| RedHat       | [OpenShift 容器平台](https://www.openshift.com/products/container-platform) | [4.5](https://docs.openshift.com/container-platform/4.5/release_notes/ocp-4-5-release-notes.html)、 [4.6](https://docs.openshift.com/container-platform/4.6/release_notes/ocp-4-6-release-notes.html)、 [4.7](https://docs.openshift.com/container-platform/4.7/release_notes/ocp-4-7-release-notes.html) |
 | VMware       | [Tanzu Kubernetes 网格](https://tanzu.vmware.com/kubernetes-grid) | Kubernetes 版本： v 1.17。5 |
 | Canonical    | [Charmed Kubernetes](https://ubuntu.com/kubernetes) | [1.19](https://ubuntu.com/kubernetes/docs/1.19/components) |
-| Rancher      | [Rancher Kubernetes 引擎](https://rancher.com/products/rke/) | RKE CLI 版本： [v 1.2.4](https://github.com/rancher/rke/releases/tag/v1.2.4);Kubernetes 版本： [1.19.6](https://github.com/kubernetes/kubernetes/releases/tag/v1.19.6)) 、 [1.18.14](https://github.com/kubernetes/kubernetes/releases/tag/v1.18.14)) 、 [1.17.16](https://github.com/kubernetes/kubernetes/releases/tag/v1.17.16))   |
-| Nutanix      | [Karbon](https://www.nutanix.com/products/karbon)    | 版本： [2.0](https://www.nutanix.com/blog/introducing-nutanix-karbon-2-kubernetes-simplicity-upgraded);Kubernetes 版本： [1.17.0](https://github.com/kubernetes/kubernetes/releases/tag/v1.17.0) |
+| SUSE Rancher      | [Rancher Kubernetes 引擎](https://rancher.com/products/rke/) | RKE CLI 版本： [v 1.2.4](https://github.com/rancher/rke/releases/tag/v1.2.4);Kubernetes 版本： [1.19.6](https://github.com/kubernetes/kubernetes/releases/tag/v1.19.6)) 、 [1.18.14](https://github.com/kubernetes/kubernetes/releases/tag/v1.18.14)) 、 [1.17.16](https://github.com/kubernetes/kubernetes/releases/tag/v1.17.16))   |
+| Nutanix      | [Karbon](https://www.nutanix.com/products/karbon)    | 版本2.2。1 |
 
 Azure Arc 团队还在以下公有云提供商上运行了一致性测试和已验证的支持 Azure Arc 的 Kubernetes 方案：
 

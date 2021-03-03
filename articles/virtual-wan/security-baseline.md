@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/24/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 6f487467b08332eea4ee19a7fb8836d843bd254f
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: e4bbc1565cec2c356e916f813a6a334648d82754
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100582650"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726727"
 ---
 # <a name="azure-security-baseline-for-virtual-wan"></a>适用于虚拟 WAN 的 Azure 安全基线
 
@@ -384,7 +384,7 @@ Azure 虚拟 WAN 安全性通过 Azure 防火墙实现。
 
 - [更改 Log Analytics 中的数据保留期](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
-- [如何为 Azure 存储帐户日志配置保留策略](../storage/common/storage-monitor-storage-account.md#configure-logging)
+- [如何为 Azure 存储帐户日志配置保留策略](../storage/common/manage-storage-analytics-logs.md#configure-logging)
 
 - [Azure 安全中心警报和建议导出](../security-center/continuous-export.md)
 

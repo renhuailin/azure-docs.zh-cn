@@ -7,12 +7,12 @@ author: DaleKoetke
 ms.author: dalek
 ms.date: 2/7/2021
 ms.reviewer: mbullwin
-ms.openlocfilehash: db5506f1f1fcabf3a922115c24aa64e35b888fbd
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 1f19366ac8fd7aedadcca0287540262516ad060c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100573757"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726168"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>管理 Application Insights 的使用情况和成本
 
@@ -294,7 +294,7 @@ Application Insights 资源的默认保留期为 90 天。 可以为每个 Appli
 
 ### <a name="understanding-billed-usage-on-the-legacy-enterprise-per-node-tier"></a>了解旧企业 (按节点) 层的计费使用情况 
 
-如下面更详细地说明，每个节点) 层的旧企业 (将使用情况与订阅中所有 Application Insights 资源的使用情况相结合，以计算节点数和数据超额量。 由于此组合过程，将 **仅针对其中一个资源报告订阅中所有 Application Insights 资源的使用情况**。  这会使 [计费的使用](https://docs.microsoft.com/azure/azure-monitor/app/pricing#viewing-application-insights-usage-on-your-azure-bill) 与每个 Application Insights 资源的使用情况非常复杂。 
+如下面更详细地说明，每个节点) 层的旧企业 (将使用情况与订阅中所有 Application Insights 资源的使用情况相结合，以计算节点数和数据超额量。 由于此组合过程，将 **仅针对其中一个资源报告订阅中所有 Application Insights 资源的使用情况**。  这会使 [计费的使用](#viewing-application-insights-usage-on-your-azure-bill) 与每个 Application Insights 资源的使用情况非常复杂。 
 
 > [!WARNING]
 > 由于跟踪和了解 Application Insights 资源在旧版企业 (的使用情况) 层，因此强烈建议使用当前的即用即付定价层。 

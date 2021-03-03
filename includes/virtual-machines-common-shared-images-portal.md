@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/06/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: e7a4af2c18bfc2b8fbd6149dab12c0bcfc665341
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 7bf71f55e1b49a9280b25cfcc01090afbd0c42db
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878811"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750475"
 ---
 ## <a name="create-an-image-gallery"></a>创建映像库
 
@@ -93,10 +93,7 @@ ms.locfileid: "98878811"
 
 我们建议你在映像库级别共享访问权限。 下面逐步说明如何共享刚刚创建的库。
 
-1. 打开 [Azure 门户](https://portal.azure.com)。
-1. 在左侧菜单中，选择“资源组”。 
-1. 在资源组列表中，选择“myGalleryRG”。 此时会打开资源组的边栏选项卡。
-1. 在“myGalleryRG”页左侧的菜单中，选择“访问控制(IAM)”。  
+1. 在新图像库的页面上，在左侧菜单中，选择 " **访问控制 (IAM)**。 
 1. 在“添加角色分配”下，选择“添加”。  此时会打开“添加角色分配”窗格。 
 1. 在“角色”下，选择“读取者”。 
 1. 在“将访问权限分配给”下，保留默认设置“Azure AD 用户、组或服务主体”。 

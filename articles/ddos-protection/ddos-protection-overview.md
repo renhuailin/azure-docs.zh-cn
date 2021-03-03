@@ -1,5 +1,5 @@
 ---
-title: Azure DDoS 保护标准概述
+title: Azure DDoS 防护标准概述
 description: 了解 Azure DDoS 防护标准在与应用程序设计最佳做法相结合时如何防范 DDoS 攻击。
 services: virtual-network
 documentationcenter: na
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/9/2020
 ms.author: yitoh
-ms.openlocfilehash: 71eada0dcd7f7684e6c6be935bcb44405eb95322
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: 2b0f8a73a6852883f87ba9fc4333cb6fa8101a39
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99626200"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703110"
 ---
 # <a name="azure-ddos-protection-standard-overview"></a>Azure DDoS 保护标准概述
 
@@ -54,7 +54,7 @@ DDoS 保护计划的每月固定费用为 $2944，涵盖最多100个公共 IP �
 
 ## <a name="reference-architectures"></a>参考体系结构
 
-DDoS 保护标准适用于 [部署在虚拟网络中的服务](https://docs.microsoft.com/azure/virtual-network/virtual-network-for-azure-services)。 对于其他服务，将会应用默认的基本 DDoS 防护服务。 若要了解有关支持的体系结构的详细信息，请参阅 [DDoS 保护参考体系结构](https://docs.microsoft.com/azure/ddos-protection/ddos-protection-reference-architectures)。 
+DDoS 保护标准适用于 [部署在虚拟网络中的服务](../virtual-network/virtual-network-for-azure-services.md)。 对于其他服务，将会应用默认的基本 DDoS 防护服务。 若要了解有关支持的体系结构的详细信息，请参阅 [DDoS 保护参考体系结构](./ddos-protection-reference-architectures.md)。 
 
 ## <a name="next-steps"></a>后续步骤
 

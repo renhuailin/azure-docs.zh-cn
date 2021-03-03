@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: caff705a03f7c4645eedc9423f6a9f9649c1167e
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: fb3aeb732166537dd4aa98acad0c4dfa5788a8ca
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100571292"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101732388"
 ---
 # <a name="azure-security-baseline-for-vpn-gateway"></a>VPN 网关的 Azure 安全基线
 
@@ -126,7 +126,7 @@ ms.locfileid: "100571292"
 
 - [更改 Log Analytics 中的数据保留期](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period) 
 
-- [如何为 Azure 存储帐户日志配置保留策略](../storage/common/storage-monitor-storage-account.md#configure-logging)
+- [如何为 Azure 存储帐户日志配置保留策略](../storage/common/manage-storage-analytics-logs.md#configure-logging)
 
 **Azure 安全中心监视**：目前不可用
 

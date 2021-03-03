@@ -6,18 +6,18 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/21/2020
-ms.openlocfilehash: f885945dfb6910df919038106487db912d87caee
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: c06123b33c7f467e12742cf6180d821e647b5115
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100607777"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711546"
 ---
 # <a name="collect-windows-and-linux-performance-data-sources-with-log-analytics-agent"></a>使用 Log Analytics 代理收集 Windows 和 Linux 性能数据源
 Windows 和 Linux 中的性能计数器提供对硬件组件、操作系统和应用程序性能的见解。  除聚合性能数据以用于长期分析和报告外，Azure Monitor 还可以定期从 Log Analytics 代理收集性能计数器以进行准实时 (NRT) 分析。
 
 > [!IMPORTANT]
-> 本文介绍如何使用 [Log Analytics 代理](../platform/log-analytics-agent.md)收集性能数据，该代理是 Azure Monitor 使用的代理之一。 其他代理收集的数据不同，且配置也不同。 有关可用代理及其可收集的数据的列表，请参阅 [Azure Monitor 代理概述](../agents/agents-overview.md)。
+> 本文介绍如何使用 [Log Analytics 代理](./log-analytics-agent.md)收集性能数据，该代理是 Azure Monitor 使用的代理之一。 其他代理收集的数据不同，且配置也不同。 有关可用代理及其可收集的数据的列表，请参阅 [Azure Monitor 代理概述](../agents/agents-overview.md)。
 
 ![性能计数器](media/data-sources-performance-counters/overview.png)
 
@@ -224,5 +224,5 @@ Azure Monitor 以指定的采样间隔在已安装相应计数器的所有代理
 
 ## <a name="next-steps"></a>后续步骤
 * [从 Linux 应用程序收集性能计数器](data-sources-linux-applications.md)，包括 MySQL 和 Apache HTTP Server。
-* 了解[日志查询](../log-query/log-query-overview.md)以便分析从数据源和解决方案中收集的数据。  
-* 将收集的数据导出到 [Power BI](../platform/powerbi.md) 以进行其他可视化操作和分析。
+* 了解[日志查询](../logs/log-query-overview.md)以便分析从数据源和解决方案中收集的数据。  
+* 将收集的数据导出到 [Power BI](../visualize/powerbi.md) 以进行其他可视化操作和分析。

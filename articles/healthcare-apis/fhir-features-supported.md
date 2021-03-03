@@ -1,6 +1,6 @@
 ---
-title: Azure 中支持的 FHIR 功能 - Azure API for FHIR
-description: 本文介绍 Azure API for FHIR 中实现的 FHIR 规范功能
+title: Azure 中支持的 FHIR 功能-Azure API for FHIR
+description: 本文介绍了在 Azure API for FHIR 中实现的 FHIR 规范的哪些功能
 services: healthcare-apis
 author: caitlinv39
 ms.service: healthcare-apis
@@ -8,35 +8,35 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 1/30/2021
 ms.author: cavoeg
-ms.openlocfilehash: e75cf8d6660bf6f2630b83e0c2c812fa7cf59057
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 19f051320aaa675ebe5ff148fb6580c2a5d8770c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99430236"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719128"
 ---
 # <a name="features"></a>功能
 
-Azure API for FHIR 为适用于 Azure 的 Microsoft FHIR 服务器提供完全托管的部署。 该服务器是 [FHIR](https://hl7.org/fhir) 标准的实现。 本文档列出了 FHIR 服务器的主要功能。
+适用于 FHIR 的 azure API 为 Azure 的 Microsoft FHIR 服务器提供完全托管的部署。 服务器是 [FHIR](https://hl7.org/fhir) 标准的实现。 本文档列出了 FHIR 服务器的主要功能。
 
 ## <a name="fhir-version"></a>FHIR 版本
 
-支持的最新版本：`4.0.1`
+支持的最新版本： `4.0.1`
 
-目前还支持的旧版本包括：`3.0.2`
+当前还支持以前的版本，包括： `3.0.2`
 
 ## <a name="rest-api"></a>REST API
 
-| API                            | 支持 - PaaS | 支持 - OSS (SQL) | 支持 - OSS (Cosmos DB) | 注释                                             |
+| API                            | 支持-PaaS | 支持-OSS (SQL)  | 支持-OSS (Cosmos DB)  | 评论                                             |
 |--------------------------------|-----------|-----------|-----------|-----------------------------------------------------|
 | 读取                           | 是       | 是       | 是       |                                                     |
 | vread                          | 是       | 是       | 是       |                                                     |
 | update                         | 是       | 是       | 是       |                                                     |
-| 使用乐观锁定的更新 | 是       | 是       | 是       |                                                     |
-| 更新（条件性）           | 是       | 是       | 是       |                                                     |
-| 修补                          | 否        | 否        | 否        |                                                     |
-| delete                         | 是       | 是       | 是       |                                                     |
-| 删除（条件性）           | 否        | 否        | 否        |                                                     |
+| 具有开放式锁定的更新 | 是       | 是       | 是       |                                                     |
+| 更新 (条件)            | 是       | 是       | 是       |                                                     |
+| 修补程序                          | 否        | 否        | 否        |                                                     |
+| delete                         | 是       | 是       | 是       |  请参阅下面的说明                                                   |
+| 删除 (条件)            | 否        | 否        | 否        |                                                     |
 | history                        | 是       | 是       | 是       |                                                     |
 | create                         | 是       | 是       | 是       | 同时支持 POST/PUT                               |
 | 创建 (条件)            | 是       | 是       | 是       | 问题 [#1382](https://github.com/microsoft/fhir-server/issues/1382) |
@@ -49,13 +49,16 @@ Azure API for FHIR 为适用于 Azure 的 Microsoft FHIR 服务器提供完全�
 | 分页                         | 部分   | 部分   | 部分   | `self``next`支持和                     |
 | 中间人                 | 否        | 否        | 否        |                                                     |
 
+> [!Note]
+> FHIR 规范定义的删除在删除后，对资源的后续非特定于版本的读取将返回 410 HTTP 状态代码，并且不再通过搜索找到资源。 通过用于 FHIR 的 Azure API，还可以完全删除 (包括资源) 所有历史记录。 若要完全删除资源，可以将参数设置传递 `hardDelete` 给 true (`DELETE {server}/{resource}/{id}?hardDelete=true`) 。 如果未传递此参数或将其设置 `hardDelete` 为 false，则资源的历史版本仍将可用。
+
 ## <a name="search"></a>搜索
 
 支持所有搜索参数类型。 
 
-| 搜索参数类型 | 支持-PaaS | 支持-OSS (SQL)  | 支持-OSS (Cosmos DB)  | 注释 |
+| 搜索参数类型 | 支持-PaaS | 支持-OSS (SQL)  | 支持-OSS (Cosmos DB)  | 评论 |
 |-----------------------|-----------|-----------|-----------|---------|
-| 数字                | 是       | 是       | 是       |         |
+| Number                | 是       | 是       | 是       |         |
 | Date/DateTime         | 是       | 是       | 是       |         |
 | 字符串                | 是       | 是       | 是       |         |
 | 令牌                 | 是       | 是       | 是       |         |
@@ -89,7 +92,7 @@ Azure API for FHIR 为适用于 Azure 的 Microsoft FHIR 服务器提供完全�
 | `_list`                 | 是       | 是       | 是       |         |
 | `_type`                 | 是       | 是       | 是       | 问题 [#1562](https://github.com/microsoft/fhir-server/issues/1562)        |
 | `_security`             | 是       | 是       | 是       |         |
-| `_profile`              | 部分   | 部分   | 部分   | 仅在 STU3 中受支持，在 R4 中不支持 |
+| `_profile`              | 部分   | 部分   | 部分   | 在 STU3 中受支持。 如果在2021年2月20日 **之后** 创建了数据库，则还会在 R4 中提供支持。 我们正在努力在2021年2月20日之前创建的数据库上启用 _profile。 |
 | `_text`                 | 否        | 否        | 否        |         |
 | `_content`              | 否        | 否        | 否        |         |
 | `_has`                  | 否        | 否        | 否        |         |
@@ -99,7 +102,7 @@ Azure API for FHIR 为适用于 Azure 的 Microsoft FHIR 服务器提供完全�
 | 搜索结果参数 | 支持-PaaS | 支持-OSS (SQL)  | 支持-OSS (Cosmos DB)  | 注释 |
 |-------------------------|-----------|-----------|-----------|---------|
 | `_elements`             | 是       | 是       | 是       | 问题 [#1256](https://github.com/microsoft/fhir-server/issues/1256)        |
-| `_count`                | 是       | 是       | 是       | `_count` 限制为100个字符。 如果设置为高于100，则仅返回100，并在捆绑包中返回警告。 |
+| `_count`                | 是       | 是       | 是       | `_count` 限制为1000个字符。 如果设置为高于1000，则仅返回1000，并在捆绑包中返回警告。 |
 | `_include`              | 是       | 是       | 是       |包含的项限制为100。 在 PaaS 上包含 PaaS，Cosmos DB 上的 OSS 不包括：循环访问支持。|
 | `_revinclude`           | 是       | 是       | 是       | 包含的项限制为100。 在 PaaS 上包含 PaaS，Cosmos DB 上的 OSS [不包括：循环访问支持](https://github.com/microsoft/fhir-server/issues/1313)。 问题 [#1319](https://github.com/microsoft/fhir-server/issues/1319)|
 | `_summary`              | 部分   | 部分   | 部分   | 支持 `_summary=count` |
@@ -113,7 +116,7 @@ Azure API for FHIR 为适用于 Azure 的 Microsoft FHIR 服务器提供完全�
 
 支持扩展 RESTful API 的所有操作。
 
-| 搜索参数类型 | 支持-PaaS | 支持-OSS (SQL)  | 支持-OSS (Cosmos DB)  | 注释 |
+| 搜索参数类型 | 支持-PaaS | 支持-OSS (SQL)  | 支持-OSS (Cosmos DB)  | 评论 |
 |------------------------|-----------|-----------|-----------|---------|
 |  (整个系统的 $export)  | 是       | 是       | 是       |         |
 | 患者/$export        | 是       | 是       | 是       |         |

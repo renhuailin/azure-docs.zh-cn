@@ -7,12 +7,15 @@ ms.date: 08/01/2020
 ms.custom: mvc, devcenter, seodec18
 zone_pivot_groups: app-service-platform-windows-linux
 adobe-target: true
-ms.openlocfilehash: b42abfda863ed38eb3c29004630f905edef075c4
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
+adobe-target-experience: Experience B
+adobe-target-content: ./quickstart-nodejs-uiex
+ms.openlocfilehash: 6c6f0543dcfbecd16ba4176272f928ffd0eb54de
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93359096"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101735108"
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>在 Azure 中创建 Node.js Web 应用
 
@@ -69,7 +72,7 @@ ms.locfileid: "93359096"
 
     ![登录 Azure](media/quickstart-nodejs/sign-in.png)
 
-1. 在 VS Code 的“AZURE 应用服务”资源管理器中，选择蓝色的向上箭头图标，将应用部署到 Azure。 （也可以从“命令面板”调用相同的命令 ( **Ctrl**+**Shift**+**P** )，方法是键入“部署到 Web 应用”，并选择“Azure 应用服务: 部署到 Web 应用”）。
+1. 在 VS Code 的“AZURE 应用服务”资源管理器中，选择蓝色的向上箭头图标，将应用部署到 Azure。 （也可以从“命令面板”调用相同的命令 (**Ctrl**+**Shift**+**P**)，方法是键入“部署到 Web 应用”，并选择“Azure 应用服务: 部署到 Web 应用”）。
 
     :::image type="content" source="media/quickstart-nodejs/deploy.png" alt-text="VS Code 中的 Azure 应用服务的屏幕截图，显示已选中蓝色箭头图标。":::
         
@@ -80,7 +83,7 @@ ms.locfileid: "93359096"
     - Linux：选择“创建新 Web 应用”
     - Windows：选择“创建新 Web 应用...高级”
 
-1. 键入 Web 应用的全局唯一名称，然后按 **Enter** 。 该名称必须在整个 Azure 中保持唯一，且只能使用字母数字字符（“A-Z”、“a-z”和“0-9”）和连字符（“-”）。
+1. 键入 Web 应用的全局唯一名称，然后按 **Enter**。 该名称必须在整个 Azure 中保持唯一，且只能使用字母数字字符（“A-Z”、“a-z”和“0-9”）和连字符（“-”）。
 
 1. 如果以 Linux 为目标，请在出现提示时选择 Node.js 版本。 建议使用 **LTS** 版本。
 
@@ -276,7 +279,7 @@ code .
 
 1. 键入 Web 应用的全局唯一名称，然后按 ENTER。 应用名称的有效字符为“a-z”、“0-9”和“-”。
 
-1. 选择 **Node.js 版本** ，建议使用“LTS”。
+1. 选择 **Node.js 版本**，建议使用“LTS”。
 
     通知通道将显示正在为应用创建 Azure 资源。
 

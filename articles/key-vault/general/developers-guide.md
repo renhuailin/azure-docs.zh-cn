@@ -8,104 +8,104 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 40ce5f55b4109fee0099110c17f02b33c3eff808
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 550084ccbb1df24fe0cbc0a4630efe19e6685e5c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98791418"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101709897"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Azure 密钥保管库开发人员指南
 
 使用 Key Vault 可以从应用程序中安全地访问敏感信息：
 
-- 保护密钥、机密和证书，无需自行编写代码，并且可以轻松地从应用程序中使用它们。
-- 你允许客户拥有和管理其自己的密钥、机密和证书，以便你可以专注于提供核心软件功能。 这样，你的应用程序将不承担客户租户密钥、机密和证书的责任或潜在责任。
-- 应用程序可以使用密钥进行签名和加密，但会使密钥管理在应用程序外部保持不变。 有关密钥的详细信息，请参阅 [关于密钥](../keys/about-keys.md)
-- 你可以通过将密码、访问密钥和 sas 令牌作为机密存储在 Key Vault 中来管理这些凭据，请参阅 [关于机密](../secrets/about-secrets.md)
-- 管理证书。 有关详细信息，请参阅 [关于证书](../certificates/about-certificates.md)
+- 无需自己编写代码即可保护密钥、机密和证书，并且能够轻松地在应用程序中使用它们。
+- 允许客户拥有和管理自己的密钥、机密和证书，以便你可以专注于提供核心软件功能。 这样，应用程序便不会对客户的租户密钥、机密和证书承担职责或潜在责任。
+- 应用程序可以使用密钥进行签名和加密，不过需要使密钥管理与应用程序分开。 有关密钥的详细信息，请参阅[关于密钥](../keys/about-keys.md)
+- 可以通过将凭据（如密码、访问密钥和 SAS 令牌）作为机密存储在 Key Vault 中来对其进行管理，请参阅[关于秘密](../secrets/about-secrets.md)
+- 管理证书。 有关详细信息，请参阅[关于证书](../certificates/about-certificates.md)
 
 有关 Azure Key Vault 的更多常规信息，请参阅[什么是 Key Vault](overview.md)。
 
 ## <a name="public-previews"></a>公共预览版
 
-我们会定期发布新 Key Vault 功能的公共预览版。 试用公共预览版功能，并通过 azurekeyvault@microsoft.com 反馈电子邮件地址告诉我们你的想法。
+我们会定期发布新 Key Vault 功能的公共预览版。 欢迎试用公共预览功能，并通过反馈电子邮件地址 azurekeyvault@microsoft.com 将你的想法告诉我们。
 
 ## <a name="creating-and-managing-key-vaults"></a>创建和管理密钥保管库
 
-与其他 Azure 服务一样，Key Vault 管理通过 Azure 资源管理器服务完成。 Azure 资源管理器是 Azure 的部署和管理服务。 它提供了一个管理层，用于在 Azure 帐户中创建、更新和删除资源。 有关详细信息，请参阅 [Azure 资源管理器](../../azure-resource-manager/management/overview.md)
+与其他 Azure 服务类似，Key Vault 管理也是通过 Azure 资源管理器服务完成的。 Azure 资源管理器是 Azure 的部署和管理服务。 它提供了一个管理层，用于在 Azure 帐户中创建、更新和删除资源。 有关详细信息，请参阅 [Azure 资源管理器 API](../../azure-resource-manager/management/overview.md)
 
-对管理层的访问由 [Azure 基于角色的访问控制](../../role-based-access-control/overview.md)来控制。 在 Key Vault 中，管理层也称为管理或控制平面，使你可以创建和管理密钥保管库及其属性（包括访问策略，但不包括密钥、机密和证书），这些策略是在数据平面上管理的。 你可以使用预定义的 `Key Vault Contributor` 角色来授予对 Key Vault 的管理访问权限。     
+对管理层的访问由 [Azure 基于角色的访问控制](../../role-based-access-control/overview.md)控制。 在 Key Vault 的管理层（也称为管理或控制平面）中，可以创建和管理 Key Vault 及其属性，包括访问策略，但不包括在数据平面上托管的密钥、机密和证书。 可以使用预定义的 `Key Vault Contributor` 角色来授予对 Key Vault 的管理访问权限。     
 
-**用于密钥保管库管理的 API 和 Sdk：**
+**用于密钥保管库管理的 API 和 SDK：**
 
 | Azure CLI | PowerShell | REST API | Resource Manager | .NET | Python | Java | JavaScript |  
 |--|--|--|--|--|--|--|--|
-|[引用](/cli/azure/keyvault)<br>[快速入门](quick-create-cli.md)|[引用](/powershell/module/az.keyvault)<br>[快速入门](quick-create-powershell.md)|[引用](/rest/api/keyvault/)|[引用](/azure/templates/microsoft.keyvault/vaults)<br>[快速入门](https://docs.microsoft.com/azure/key-vault/general/vault-create-template)|[引用](/dotnet/api/microsoft.azure.management.keyvault)|[引用](/python/api/azure-mgmt-keyvault/azure.mgmt.keyvault)|[引用](/java/api/com.microsoft.azure.management.keyvault)|[引用](/javascript/api/@azure/arm-keyvault)|
+|[引用](/cli/azure/keyvault)<br>[快速入门](quick-create-cli.md)|[引用](/powershell/module/az.keyvault)<br>[快速入门](quick-create-powershell.md)|[引用](/rest/api/keyvault/)|[引用](/azure/templates/microsoft.keyvault/vaults)<br>[快速入门](./vault-create-template.md)|[引用](/dotnet/api/microsoft.azure.management.keyvault)|[引用](/python/api/azure-mgmt-keyvault/azure.mgmt.keyvault)|[引用](/java/api/com.microsoft.azure.management.keyvault)|[引用](/javascript/api/@azure/arm-keyvault)|
 
-请参阅安装包和源代码的 [客户端库](client-libraries.md) 。
+有关安装包和源代码的信息，请参阅[客户端库](client-libraries.md)。
 
 有关 Key Vault 管理平面的详细信息，请参阅 [Key Vault 管理平面](./secure-your-key-vault.md#management-plane-and-azure-rbac)
 
 ## <a name="authenticate-to-key-vault-in-code"></a>在代码中对 Key Vault 进行身份验证
 
-Key Vault 正在使用要求 Azure AD 安全主体授予访问权限 Azure AD 身份验证。 Azure AD 安全主体可以是用户、应用程序服务主体、 [Azure 资源的托管标识](../../active-directory/managed-identities-azure-resources/overview.md)或任何类型的安全主体的组。
+Key Vault 使用的 Azure AD 身份验证要求 Azure AD 安全主体授予访问权限。 Azure AD 安全主体可以是用户、应用程序服务主体、[Azure 资源的托管标识](../../active-directory/managed-identities-azure-resources/overview.md)，也可以是任何类型的安全主体的组。
 
-### <a name="authentication-best-practices"></a>身份验证最佳实践
+### <a name="authentication-best-practices"></a>身份验证最佳做法
 
-建议将托管标识用于部署到 Azure 的应用程序。 如果你使用的是不支持托管标识的 Azure 服务，或者如果本地部署了应用程序，则可以 [使用具有证书的服务主体](../../active-directory/develop/howto-create-service-principal-portal.md) 。 在这种情况下，证书应存储在 Key Vault 并经常旋转。 使用机密的服务主体可用于开发和测试环境，并可在本地或使用用户主体 Cloud Shell。
+建议对部署到 Azure 的应用程序使用托管标识。 如果使用不支持托管标识的 Azure 服务或应用程序是在本地部署的，则可以选择[有证书的服务主体](../../active-directory/develop/howto-create-service-principal-portal.md)。 在这种情况下，证书应存储在 Key Vault 中并经常轮换。 使用机密的服务主体可用于开发和测试环境，并可在本地或使用用户主体 Cloud Shell。
 
 每个环境的建议安全主体：
 - **生产环境**：
   - 托管标识或具有证书的服务主体
 - **测试和开发环境**：
-  - 托管标识、包含证书的服务主体或带有密钥的服务主体
+  - 托管标识、具有证书的服务主体或具有机密的服务主体
 - **本地开发**：
-  - 带有机密的用户主体或服务主体
+  - 具有机密的用户主体或服务主体
 
-**Azure 标识客户端库** 支持上述身份验证方案，并与 Key Vault sdk 集成。 可以跨不同的环境和平台使用 Azure 标识库，而无需更改代码。 Azure 标识还会自动从已登录到 Azure 用户的身份验证令牌中 Azure CLI、Visual Studio、Visual Studio Code 等。 
+上述身份验证方案由 Azure 标识客户端库提供支持，并与 Key Vault SDK 集成在一起。 无需更改代码即可在不同的环境和平台上使用 Azure 标识库。 Azure 标识还将使用 Azure CLI、Visual Studio、Visual Studio Code 等从登录到 Azure 的用户中自动检索身份验证令牌。 
 
-有关 Azure 标识客户端 libarary 的详细信息，请参阅：
+有关 Azure 标识客户端库的详细信息，请参阅：
 
 **Azure 标识客户端库**
 
 | .NET | Python | Java | JavaScript |
 |--|--|--|--|
-|[Azure Identity SDK .NET](/dotnet/api/overview/azure/identity-readme)|[Azure Identity SDK Python](/python/api/overview/azure/identity-readme)|[Azure 标识 SDK Java](/java/api/overview/azure/identity-readme)|[Azure 标识 SDK JavaScript](/javascript/api/overview/azure/identity-readme)|     
+|[Azure 标识 SDK .NET](/dotnet/api/overview/azure/identity-readme)|[Azure 标识 SDK Python](/python/api/overview/azure/identity-readme)|[Azure 标识 SDK Java](/java/api/overview/azure/identity-readme)|[Azure 标识 SDK JavaScript](/javascript/api/overview/azure/identity-readme)|     
 
 >[!Note]
-> 建议用于 Key Vault .NET SDK 版本3（当前为弃用）的[应用身份验证库](/dotnet/api/overview/azure/service-to-service-authentication)。 请按照 [microsoft.azure.services.appauthentication To Azure](/dotnet/api/overview/azure/app-auth-migration) （将迁移到 KEY VAULT .Net SDK 版本4）进行迁移。
+> [应用身份验证库](/dotnet/api/overview/azure/service-to-service-authentication)（目前已弃用，建议使用 Key Vault .NET SDK 版本 3）。 请按照 [AppAuthentication to Azure.Identity 迁移指南](/dotnet/api/overview/azure/app-auth-migration)迁移到 Key Vault .NET SDK 版本 4。
 
-有关如何在应用程序中 Key Vault 进行身份验证的教程，请参阅：
-- [在 .NET 中的虚拟机中托管的应用程序中 Key Vault 进行身份验证](./tutorial-net-virtual-machine.md)
-- [在 Python 中托管的应用程序中 Key Vault 进行身份验证](./tutorial-python-virtual-machine.md)
-- [通过应用服务 Key Vault 进行身份验证](./tutorial-net-create-vault-azure-web-app.md)
+有关如何在应用程序中对 Key Vault 进行身份验证的教程，请参阅：
+- [在 .NET 的 VM 中托管的应用程序中对 Key Vault 进行身份验证](./tutorial-net-virtual-machine.md)
+- [在 Python 的 VM 中托管的应用程序中对 Key Vault 进行身份验证](./tutorial-python-virtual-machine.md)
+- [通过应用服务对 Key Vault 进行身份验证](./tutorial-net-create-vault-azure-web-app.md)
 
 ## <a name="manage-keys-certificates-and-secrets"></a>管理密钥、证书和机密
 
-访问密钥、机密和证书由数据平面控制。 可以使用本地保管库访问策略或 Azure RBAC (预览) 来实现数据平面访问控制。
+对密钥、机密和证书的访问由数据平面控制。 可以使用本地保管库访问策略或 Azure RBAC（预览版）完成数据平面访问控制。
 
-**密钥 API 和 Sdk**
+**密钥 API 和 SDK**
 
 | Azure CLI | PowerShell | REST API | Resource Manager | .NET | Python | Java | JavaScript |  
 |--|--|--|--|--|--|--|--|
 |[引用](/cli/azure/keyvault/key)<br>[快速入门](../keys/quick-create-cli.md)|[引用](/powershell/module/az.keyvault/)<br>[快速入门](../keys/quick-create-powershell.md)|[引用](/rest/api/keyvault/#key-operations)|[引用](/azure/templates/microsoft.keyvault/vaults/keys)<br>[快速入门](../keys/quick-create-template.md)|[引用](/dotnet/api/azure.security.keyvault.keys)<br>[快速入门](../keys/quick-create-net.md)|[引用](/python/api/azure-mgmt-keyvault/azure.mgmt.keyvault)<br>[快速入门](../keys/quick-create-python.md)|[引用](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-security-keyvault-keys/4.2.0/index.html)<br>[快速入门](../keys/quick-create-java.md)|[引用](/javascript/api/@azure/keyvault-keys/)<br>[快速入门](../keys/quick-create-node.md)|
 
-**证书 API 和 Sdk**
+**证书 API 和 SDK**
 
 | Azure CLI | PowerShell | REST API | Resource Manager | .NET | Python | Java | JavaScript |  
 |--|--|--|--|--|--|--|--|
 |[引用](/cli/azure/keyvault/certificate)<br>[快速入门](../certificates/quick-create-cli.md)|[引用](/powershell/module/az.keyvault)<br>[快速入门](../certificates/quick-create-powershell.md)|[引用](/rest/api/keyvault/#certificate-operations)|空值|[引用](/dotnet/api/azure.security.keyvault.certificates)<br>[快速入门](../certificates/quick-create-net.md)|[引用](/python/api/overview/azure/keyvault-certificates-readme)<br>[快速入门](../certificates/quick-create-python.md)|[引用](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-security-keyvault-certificates/4.1.0/index.html)<br>[快速入门](../certificates/quick-create-java.md)|[引用](/javascript/api/@azure/keyvault-certificates/)<br>[快速入门](../certificates/quick-create-node.md)|
 
-**机密 API 和 Sdk**
+**机密 API 和 SDK**
 
 | Azure CLI | PowerShell | REST API | Resource Manager | .NET | Python | Java | JavaScript |  
 |--|--|--|--|--|--|--|--|
 |[引用](/cli/azure/keyvault/secret)<br>[快速入门](../secrets/quick-create-cli.md)|[引用](/powershell/module/az.keyvault/)<br>[快速入门](../secrets/quick-create-powershell.md)|[引用](/rest/api/keyvault/#secret-operations)|[引用](/azure/templates/microsoft.keyvault/vaults/secrets)<br>[快速入门](../secrets/quick-create-template.md)|[引用](/dotnet/api/azure.security.keyvault.secrets)<br>[快速入门](../secrets/quick-create-net.md)|[引用](/python/api/overview/azure/keyvault-secrets-readme)<br>[快速入门](../secrets/quick-create-python.md)|[引用](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-security-keyvault-secrets/4.2.0/index.html)<br>[快速入门](../secrets/quick-create-java.md)|[引用](/javascript/api/@azure/keyvault-secrets/)<br>[快速入门](../secrets/quick-create-node.md)|
 
-请参阅安装包和源代码的 [客户端库](client-libraries.md) 。
+有关安装包和源代码的信息，请参阅[客户端库](client-libraries.md)。
 
-有关 Key Vault 数据平面安全性的详细信息，请参阅 [Key Vault 数据平面和访问策略](./secure-your-key-vault.md#data-plane-and-access-policies) 和 [Key Vault 数据平面和 Azure RBAC (预览) ](./secure-your-key-vault.md#data-plane-and-azure-rbac-preview)
+有关 Key Vault 数据平面安全性的详细信息，请参阅 [Key Vault 数据平面和访问策略](./secure-your-key-vault.md#data-plane-and-access-policies)和 [Key Vault 数据平面和 Azure RBAC（预览版）](./secure-your-key-vault.md#data-plane-and-azure-rbac-preview)
 
 ### <a name="code-examples"></a>代码示例
 
@@ -118,7 +118,7 @@ Key Vault 正在使用要求 Azure AD 安全主体授予访问权限 Azure AD �
 以下文章和方案提供了特定于任务的指导，方便用户使用 Azure Key Vault：
 
 - [访问防火墙后面的密钥保管库](access-behind-firewall.md) - 若要访问密钥保管库，密钥保管库客户端应用程序需要能够访问多个终结点才能使用各种功能。
-- 如何将证书部署到 Key Vault- [Windows](../../virtual-machines/extensions/key-vault-windows.md)、 [Linux](../../virtual-machines/extensions/key-vault-linux.md) （在 Azure 上的 VM 中运行的云应用程序）中的 vm 需要证书。 现在，如何将此证书部署到此 VM 中？
+- 如何将证书从 Key Vault 部署到 VM - [Windows](../../virtual-machines/extensions/key-vault-windows.md)、[Linux](../../virtual-machines/extensions/key-vault-linux.md) - 在 Azure VM 中运行的云应用程序需要证书。 现在，如何将此证书部署到此 VM 中？
 - [通过 Key Vault 部署 Azure Web 应用证书](../../app-service/configure-ssl-certificate.md#import-a-certificate-from-key-vault)
 - 分配访问策略（[CLI](assign-access-policy-cli.md) | [PowerShell](assign-access-policy-powershell.md) | [门户](assign-access-policy-portal.md)）。 
 - [如何将 Key Vault 软删除与 CLI 配合使用](./key-vault-recovery.md)介绍了 Key Vault 的使用和生命周期以及各种已启用软删除的 Key Vault 对象。
@@ -128,13 +128,13 @@ Key Vault 正在使用要求 Azure AD 安全主体授予访问权限 Azure AD �
 
 这些文章介绍了使用 Key Vault 或与之集成的其他方案和服务。
 
-- [静态加密](../../security/fundamentals/encryption-atrest.md) 允许在保留数据时对数据进行 (加密) 编码。 数据加密密钥通常由 Azure Key Vault 中的密钥加密密钥进行加密，以进一步限制访问。
+- [静态加密](../../security/fundamentals/encryption-atrest.md)可以在持久保存数据时对数据进行编码（加密）。 数据加密密钥通常由 Azure Key Vault 中的密钥加密密钥进行加密，以进一步限制访问。
 - [Azure 信息保护](/azure/information-protection/plan-implement-tenant-key)允许管理自己的租户密钥。 例如，不是由 Microsoft 管理租户密钥（默认设置），可以管理自己的租户密钥，以遵守适用于组织的具体规定。 管理自己的租户密钥也称为自带密钥（简称 BYOK）。
-- 使用[Azure 专用链接服务](private-link-service.md)，可以通过虚拟网络中的专用终结点访问 azure 服务 (例如，Azure Key Vault、azure 存储和 Azure Cosmos DB) 和 azure 托管的客户/合作伙伴服务。
-- Key Vault 与 [事件网格](../../event-grid/event-schema-key-vault.md)  的集成，用户可以在密钥保管库中存储的机密状态发生更改时收到通知。 你可以向应用程序分发新版本的机密，或轮换接近到期机密以防止中断。
-- 你可以通过 Key Vault 中的不需要的访问来保护 [Azure Devops](/azure/devops/pipelines/release/azure-key-vault) 机密。
+- 使用 [Azure 专用链接服务](private-link-service.md)，可以通过虚拟网络中的专用终结点访问 Azure 服务（例如 Azure Key Vault、Azure 存储和 Azure Cosmos DB）以及 Azure 托管的客户服务/合作伙伴服务。
+- 通过将 Key Vault 与[事件网格](../../event-grid/event-schema-key-vault.md)集成，用户可以在密钥保管库中存储的机密的状态发生更改时收到通知。 可以将新版本的机密分发到应用程序，也可以轮换即将到期的机密，以防止中断。
+- 可以防止自己的 [Azure Devops](/azure/devops/pipelines/release/azure-key-vault) 机密在 Key Vault 中被意外访问。
 - [使用 DataBricks 中存储 Key Vault 的机密连接到 Azure 存储](./integrate-databricks-blob-storage.md)
-- 在 Kubernetes 上配置并运行 [机密存储 CSI 驱动程序](./key-vault-integrate-kubernetes.md) 的 Azure Key Vault 提供程序
+- 为 Kubernetes 上的[机密存储 CSI 驱动程序](./key-vault-integrate-kubernetes.md)配置并运行 Azure Key Vault 提供程序
 
 ## <a name="key-vault-overviews-and-concepts"></a>Key Vault 概述和概念
 

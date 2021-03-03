@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 09/16/2020
-ms.openlocfilehash: 818cf97a640952de79e84184c52c20575a0cc92b
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: fe7bd4b9f800b59d2c16d4aa3dadd3626c55b7e1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100606072"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101707636"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Azure Monitor 日志专用群集
 
@@ -34,7 +34,7 @@ Azure Monitor 日志专用群集是一个部署选项，可为 Azure Monitor 日
 
 引入到专用群集的数据进行两次加密 — 一次在服务级别使用 Microsoft 管理的密钥或[客户管理的密钥](../logs/customer-managed-keys.md)，一次在基础结构级别使用两种不同的加密算法和两个不同的密钥。 [双重加密](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption)可以在其中一种加密算法或密钥可能被泄露的情况下提供保护。 在这种情况下，附加的加密层会继续保护你的数据。 专用群集还允许通过[密码箱](../logs/customer-managed-keys.md#customer-lockbox-preview)控制来保护数据。
 
-群集级别的所有操作都需要群集上的 `Microsoft.OperationalInsights/clusters/write` 操作权限。 可以通过包含 `*/write` 操作的所有者或参与者或包含 `Microsoft.OperationalInsights/*` 操作的 Log Analytics 参与者角色授予此权限。 有关 Log Analytics 权限的更多信息，请参阅[管理对 Azure Monitor 中的日志数据和工作区的访问](../platform/manage-access.md)。 
+群集级别的所有操作都需要群集上的 `Microsoft.OperationalInsights/clusters/write` 操作权限。 可以通过包含 `*/write` 操作的所有者或参与者或包含 `Microsoft.OperationalInsights/*` 操作的 Log Analytics 参与者角色授予此权限。 有关 Log Analytics 权限的更多信息，请参阅[管理对 Azure Monitor 中的日志数据和工作区的访问](./manage-access.md)。 
 
 
 ## <a name="cluster-pricing-model"></a>群集定价模型
@@ -77,7 +77,7 @@ Authorization: Bearer <token>
 - **ClusterName**：用于管理目的。 不会向用户公开此名称。
 - **ResourceGroupName**：对于任何 Azure 资源，群集都属于一个资源组。 建议使用中心 IT 资源组，因为群集通常由组织中的许多团队共享。 有关更多设计注意事项，请查看[设计 Azure Monitor 日志部署](../logs/design-logs-deployment.md)
 - **位置**：群集位于特定的 Azure 区域中。 只有位于此区域中的工作区才能链接到此群集。
-- **SkuCapacity**：创建群集资源时，必须指定产能预留级别 (SKU) 。 产能预留级别可以在每天 1000 GB 到 3000 GB 之间。 如果需要，你可以在以后按 100 进行增减。 如果你需要高于每天 3000 GB 的产能预留级别，请通过 LAIngestionRate@microsoft.com 与我们联系。 有关群集成本的更多信息，请参阅[管理 Log Analytics 群集的成本](../platform/manage-cost-storage.md#log-analytics-dedicated-clusters)
+- **SkuCapacity**：创建群集资源时，必须指定产能预留级别 (SKU) 。 产能预留级别可以在每天 1000 GB 到 3000 GB 之间。 如果需要，你可以在以后按 100 进行增减。 如果你需要高于每天 3000 GB 的产能预留级别，请通过 LAIngestionRate@microsoft.com 与我们联系。 有关群集成本的更多信息，请参阅[管理 Log Analytics 群集的成本](./manage-cost-storage.md#log-analytics-dedicated-clusters)
 
 创建群集资源后，可以编辑其他属性，如 sku、keyVaultProperties 或 billingType  。 参阅下面的更多详细信息。
 
@@ -300,7 +300,7 @@ Authorization: Bearer <token>
 - **keyVaultProperties** - 更新 Azure Key Vault 中的密钥。 请参阅[为群集更新密钥标识符详细信息](../logs/customer-managed-keys.md#update-cluster-with-key-identifier-details)。 它包含以下参数：KeyVaultUri、KeyName、KeyVersion  。 
 - **billingType** - billingType 属性可确定群集资源及其数据的计费归属 ：
   - **群集**（默认）- 群集的产能预留成本归因于群集资源。
-  - **工作区** - 群集的产能预留成本按比例分配给群集中的工作区，如果当天引入的总数据在产能预留之下，则会对群集资源的一些使用进行收费。 请参阅 [Log Analytics 专用群集](../platform/manage-cost-storage.md#log-analytics-dedicated-clusters)以了解有关群集定价模型的更多信息。 
+  - **工作区** - 群集的产能预留成本按比例分配给群集中的工作区，如果当天引入的总数据在产能预留之下，则会对群集资源的一些使用进行收费。 请参阅 [Log Analytics 专用群集](./manage-cost-storage.md#log-analytics-dedicated-clusters)以了解有关群集定价模型的更多信息。 
 
 > [!NOTE]
 > PowerShell 不支持 billingType 属性。
@@ -573,5 +573,5 @@ Remove-AzOperationalInsightsLinkedService -ResourceGroupName {resource-group-nam
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解 [Log Analytics 专用群集计费](../platform/manage-cost-storage.md#log-analytics-dedicated-clusters)
+- 了解 [Log Analytics 专用群集计费](./manage-cost-storage.md#log-analytics-dedicated-clusters)
 - 了解 [Log Analytics 工作区的正确设计](../logs/design-logs-deployment.md)

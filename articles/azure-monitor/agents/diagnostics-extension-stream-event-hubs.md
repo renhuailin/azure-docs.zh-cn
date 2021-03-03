@@ -1,17 +1,16 @@
 ---
 title: 将数据从 Windows Azure 诊断扩展发送到 Azure 事件中心
 description: 将 Azure Monitor 中的诊断扩展配置为将数据发送到 Azure 事件中心，以便将其转发到 Azure 之外的位置。
-ms.subservice: diagnostic-extension
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/18/2020
-ms.openlocfilehash: 979535b1f9a237f6975908178fb1e5ed819181b0
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 19c39632a1ed040636372d6bad53bf6859960b94
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100608342"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101732031"
 ---
 # <a name="send-data-from-windows-azure-diagnostics-extension-to-azure-event-hubs"></a>将数据从 Windows Azure 诊断扩展发送到 Azure 事件中心
 Azure 诊断扩展是 Azure Monitor 中的一个代理，可从 Azure 虚拟机的来宾操作系统和工作负荷及其他计算资源收集监视数据。 本文介绍如何将数据从 Windows Azure 诊断扩展 (WAD) 发送到 [Azure 事件中心](https://azure.microsoft.com/services/event-hubs/)，以便将其转发到 Azure 之外的位置。

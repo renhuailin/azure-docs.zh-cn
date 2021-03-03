@@ -1,29 +1,29 @@
 ---
-title: 将用于 VM 的 Azure Monitor 的映射功能与 Operations Manager 集成 | Microsoft Docs
-description: 用于 VM 的 Azure Monitor 可以自动发现 Windows 和 Linux 系统上的应用程序组件并映射服务之间的通信。 本文介绍如何使用映射功能在 Operations Manager 中自动创建分布式应用程序关系图。
+title: 将 VM insights 映射与 Operations Manager 集成 |Microsoft Docs
+description: VM insights 会自动发现 Windows 和 Linux 系统上的应用程序组件，并映射服务之间的通信。 本文介绍如何使用映射功能在 Operations Manager 中自动创建分布式应用程序关系图。
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/12/2019
-ms.openlocfilehash: 0722a1806cc94102f92045c78850d96ed9890d02
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: a39f40c2a284a743db258a49f36cb4f13c2a4d1c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100605889"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101725486"
 ---
-# <a name="integrate-system-center-operations-manager-with-azure-monitor-for-vms-map-feature"></a>将 System Center Operations Manager 与用于 VM 的 Azure Monitor 的映射功能集成
+# <a name="integrate-system-center-operations-manager-with-vm-insights-map-feature"></a>将 System Center Operations Manager 与 VM insights 地图功能集成
 
-在用于 VM 的 Azure Monitor 中，可以查看在 Azure 或你的环境中运行的 Windows 和 Linux 虚拟机 (VM) 上发现的应用程序组件。 通过映射功能与 System Center Operations Manager 的此集成，可以根据用于 VM 的 Azure Monitor 中的动态依赖关系映射，在 Operations Manager 中自动创建分布式应用程序关系图。 本文介绍如何配置 System Center Operations Manager 管理组以支持此功能。
+在 VM insights 中，可以查看在 Windows 和 Linux 虚拟机上发现的应用程序组件 (在 Azure 或环境中运行的 Vm) 。 通过这种与地图功能和 System Center Operations Manager 的集成，你可以根据 VM insights 中的动态依赖关系映射，在 Operations Manager 中自动创建分布式应用程序关系图。 本文介绍如何配置 System Center Operations Manager 管理组以支持此功能。
 
 >[!NOTE]
->如果已部署服务映射，可以在用于 VM 的 Azure Monitor 中查看映射，其中包括监视 VM 运行状况和性能的附加功能。 用于 VM 的 Azure Monitor 的映射功能旨在替代独立的服务映射解决方案。 若要了解详细信息，请参阅[面向 VM 的 Azure Monitor 概述](../vm/vminsights-overview.md)。
+>如果已部署服务映射，则可以在 VM insights 中查看映射，其中包括用于监视 VM 运行状况和性能的其他功能。 VM insights 的地图功能旨在替换独立的服务映射解决方案。 若要了解详细信息，请参阅 [VM insights 概述](../vm/vminsights-overview.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
 * System Center Operations Manager 管理组（2012 R2 或更高版本）。
-* 经配置后支持用于 VM 的 Azure Monitor 的 Log Analytics 工作区。
+* 配置为支持 VM insights 的 Log Analytics 工作区。
 * 一个或多个受 Operations Manager 监视并将数据发送到 Log Analytics 工作区的 Windows 和 Linux 虚拟机或物理计算机。 需将向 Operations Manager 管理组报告的 Linux 服务器配置为直接连接到 Azure Monitor。 有关详细信息，请参阅[使用 Log Analytics 代理收集日志数据](../agents/log-analytics-agent.md)中的概述。
 * 对与 Log Analytics 工作区关联的 Azure 订阅具有访问权限的服务主体。 有关详细信息，请参阅[创建服务主体](#create-a-service-principal)。
 
@@ -43,7 +43,7 @@ ms.locfileid: "100605889"
 >[!NOTE]
 >[Operations Management Suite 是一组服务](../terminology.md#april-2018---retirement-of-operations-management-suite-brand)，其中包括 Log Analytics（现在是 [Azure Monitor](../overview.md) 的一部分）。
 
-若要配置用于 VM 的 Azure Monitor 的映射集成，请执行以下操作：
+若要配置 VM insights 映射集成，请执行以下操作：
 
 1. 若要打开配置向导，请在“服务映射概述”窗格中单击“添加工作区”。   
 
@@ -66,7 +66,7 @@ ms.locfileid: "100605889"
     若要在集成中为某个服务器构建分布式应用程序关系图，该服务器必须：
 
    * 受 Operations Manager 监视
-   * 配置为向 Log Analytics 工作区（已配置了用于 VM 的 Azure Monitor）报告
+   * 配置为向配置了 VM insights 的 Log Analytics 工作区进行报告
    * 已列在服务映射服务器组中
 
      ![Operations Manager 配置组](media/service-map-scom/scom-config-group.png)
@@ -92,7 +92,7 @@ ms.locfileid: "100605889"
   >[!NOTE]
   >这些警报不是与 Operations Manager 同步的 Log Analytics 警报，而是根据服务映射管理包中定义的工作流在管理组中生成的警报。
 
-* **服务器**：列出配置为从用于 VM 的 Azure Monitor 映射功能同步的受监视服务器。
+* **服务器**：列出被配置为从 VM insights 映射功能同步的受监视服务器。
 
     ![Operations Manager 的“监视服务器”窗格](media/service-map-scom/scom-monitoring-servers.png)
 
@@ -117,7 +117,7 @@ ms.locfileid: "100605889"
 
 ## <a name="configure-rules-and-overrides"></a>配置规则和重写
 
-一项规则 (*Microsoft.SystemCenter.ServiceMapImport.Rule*)，用于定期从用于 VM 的 Azure Monitor 的映射功能提取信息。 若要修改同步时间间隔，可以重写此规则并修改参数 **IntervalMinutes** 的值。
+规则 *Microsoft.SystemCenter，microsoft.systemcenter.servicemapimport.rule* 会定期从 VM insights 地图功能中提取信息。 若要修改同步时间间隔，可以重写此规则并修改参数 **IntervalMinutes** 的值。
 
 ![Operations Manager 的“重写属性”窗口](media/service-map-scom/scom-overrides.png)
 
@@ -131,8 +131,8 @@ ms.locfileid: "100605889"
 当前设计存在以下问题和限制：
 
 * 只能连接到单个 Log Analytics 工作区。
-* 尽管可通过“创作”窗格手动将服务器添加到服务映射服务器组，但不会立即同步这些服务器的映射。 它们将在下一个同步周期内从用于 VM 的 Azure Monitor 的映射功能同步。
-* 如果对通过管理包创建的分布式应用程序关系图进行任何更改，则可能会在下一次与用于 VM 的 Azure Monitor 同步时覆盖这些更改。
+* 尽管可通过“创作”窗格手动将服务器添加到服务映射服务器组，但不会立即同步这些服务器的映射。 它们将在下一个同步周期内从 VM insights 映射功能同步。
+* 如果对管理包创建的分布式应用程序关系图进行了任何更改，则在下一次与 VM insights 同步时，可能会覆盖这些更改。
 
 ## <a name="create-a-service-principal"></a>创建服务主体
 
@@ -144,5 +144,5 @@ ms.locfileid: "100605889"
 
 ### <a name="suggestions"></a>建议
 
-对于与用于 VM 的 Azure Monitor 映射功能的集成或本文档，你是否有任何反馈？ 请访问[用户之声页面](https://feedback.azure.com/forums/267889-log-analytics/category/184492-service-map)，可在此处推荐功能或对现有建议投票。
+对于与 VM insights 地图功能或此文档的集成，你是否有任何反馈？ 请访问[用户之声页面](https://feedback.azure.com/forums/267889-log-analytics/category/184492-service-map)，可在此处推荐功能或对现有建议投票。
 

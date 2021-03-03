@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/1/2020
-ms.openlocfilehash: b4f828c675df9625d6d4889dbc31bbc4b9f887ed
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.openlocfilehash: 9b18b24686908ac92f97ea0cae892369919ae4d6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97386708"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101721010"
 ---
 # <a name="limitations-in-azure-database-for-mysql"></a>Azure Database for MySQL 中的限制
 以下各部分介绍了数据库服务中的容量、存储引擎支持、特权支持、数据操作语句支持和功能限制。 另请参阅适用于 MySQL 数据库引擎的[常规限制](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.6/en/limits.html)。
@@ -29,7 +29,7 @@ Azure Database for MySQL 支持优化服务器参数的值。 某些参数（例
 
 ## <a name="storage-engines"></a>存储引擎
 
-MySQL 支持许多存储引擎。 在 Azure Database for MySQL 灵活的服务器上，支持和不支持以下存储引擎：
+MySQL 支持许多存储引擎。 在 Azure Database for MySQL 上，支持和不支持以下存储引擎：
 
 ### <a name="supported"></a>支持
 - [InnoDB](https://dev.mysql.com/doc/refman/5.7/en/innodb-introduction.html)

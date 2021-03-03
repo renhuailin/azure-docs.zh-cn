@@ -6,18 +6,18 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/21/2020
-ms.openlocfilehash: c911b3a2ef927bf000513665dfafd735e3bcf181
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: b747a4b58c9c460178d415d0b45ade814723d8fe
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100607457"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719859"
 ---
 # <a name="collect-windows-event-log-data-sources-with-log-analytics-agent"></a>使用 Log Analytics 代理收集 Windows 事件日志数据源
 由于许多应用程序都会写入 Windows 事件日志，因此 Windows 事件日志是 Windows 虚拟机上 Log Analytics 代理最常见的[数据源](../agents/agent-data-sources.md)之一。  除了指定由需要监视的应用程序创建的任何自定义日志，还可以从标准日志（如系统和应用程序）中收集事件。
 
 > [!IMPORTANT]
-> 本文介绍如何使用 [Log Analytics 代理](../platform/log-analytics-agent.md)收集 Windows 事件，该代理是 Azure Monitor 使用的代理之一。 其他代理收集的数据不同，且配置也不同。 有关可用代理及其可收集的数据的列表，请参阅 [Azure Monitor 代理概述](../agents/agents-overview.md)。
+> 本文介绍如何使用 [Log Analytics 代理](./log-analytics-agent.md)收集 Windows 事件，该代理是 Azure Monitor 使用的代理之一。 其他代理收集的数据不同，且配置也不同。 有关可用代理及其可收集的数据的列表，请参阅 [Azure Monitor 代理概述](../agents/agents-overview.md)。
 
 ![Windows 事件](media/data-sources-windows-events/overview.png)     
 
@@ -73,5 +73,5 @@ Windows 事件记录都有一个 **事件** 类型，并且具有下表中的属
 
 ## <a name="next-steps"></a>后续步骤
 * 配置 Log Analytics 以收集其他[数据源](../agents/agent-data-sources.md)进行分析。
-* 了解[日志查询](../log-query/log-query-overview.md)以便分析从数据源和解决方案中收集的数据。  
+* 了解[日志查询](../logs/log-query-overview.md)以便分析从数据源和解决方案中收集的数据。  
 * 配置来自 Windows 代理的[性能计数器集合](data-sources-performance-counters.md)。

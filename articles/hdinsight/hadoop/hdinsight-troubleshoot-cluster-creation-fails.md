@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 04/14/2020
-ms.openlocfilehash: e12b96883ae26b6c10e3622c35914ce498afca48
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: f909f5714a049f63032c8a23ca1731777a40d332
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98944420"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702855"
 ---
 # <a name="troubleshoot-cluster-creation-failures-with-azure-hdinsight"></a>排查 Azure HDInsight 中的群集创建失败问题
 
@@ -65,7 +65,7 @@ ms.locfileid: "98944420"
 
 ## <a name="unsupported-component-versions"></a>不支持的组件版本
 
-确保在解决方案中使用[受支持版本的 Azure HDInsight](../hdinsight-component-versioning.md) 和任何 [Apache Hadoop 组件](../hdinsight-component-versioning.md#apache-components-available-with-different-hdinsight-versions)。  
+确保你使用的是 [受支持版本的 Azure HDInsight 和解决方案中 Apache Hadoop 组件](../hdinsight-component-versioning.md) 。  
 
 ## <a name="storage-account-name-restrictions"></a>存储帐户名称限制
 

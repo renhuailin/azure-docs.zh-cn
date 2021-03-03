@@ -2,13 +2,13 @@
 title: 设置诊断日志 - Azure 事件中心 | Microsoft Docs
 description: 了解如何为 Azure 中的事件中心设置活动日志和诊断日志。
 ms.topic: article
-ms.date: 10/27/2020
-ms.openlocfilehash: dc5cbea31583a4e8126897b2dcda63b216438e1b
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.date: 02/25/2021
+ms.openlocfilehash: 538ff86f1ef4c06bb5400af3fbd2394134aa17f3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100573167"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101742528"
 ---
 # <a name="set-up-diagnostic-logs-for-an-azure-event-hub"></a>设置 Azure 事件中心的诊断日志
 
@@ -158,7 +158,7 @@ Kafka 协调器日志 JSON 包括下表列出的元素：
 | 名称 | 说明 |
 | ---- | ----------- | 
 | `RequestId` | 请求 ID，用于跟踪目的 |
-| `ResourceId` | Azure 资源管理器资源 ID |
+| `ResourceId` | Azure Resource Manager 资源 ID |
 | `Operation` | 组协调期间执行的操作的名称 |
 | `ClientId` | 客户端 ID |
 | `NamespaceName` | 命名空间名称 | 
@@ -207,7 +207,7 @@ Kafka 用户错误日志 JSON 包括下表列出的元素：
 | `Count` | 给定操作的发生次数 |
 | `ResourceId` | Azure 资源管理器资源 ID。 |
 
-只有当命名空间允许从选定的网络或从特定的 IP 地址（IP 筛选器规则）进行访问时，才会生成虚拟网络日志 。 如果你不想使用这些功能限制对命名空间的访问，但仍希望获取虚拟网络日志来跟踪连接到事件中心命名空间的客户端的 IP 地址，则可以使用以下解决方法。 启用 IP 筛选并添加整个可寻址 IPv4 范围 (1.0.0.0/1 - 255.0.0.0/1)。 事件中心不支持 IPv6 范围。 
+只有当命名空间允许从选定的网络或从特定的 IP 地址（IP 筛选器规则）进行访问时，才会生成虚拟网络日志 。 如果你不想使用这些功能限制对命名空间的访问，但仍希望获取虚拟网络日志来跟踪连接到事件中心命名空间的客户端的 IP 地址，则可以使用以下解决方法。 [启用 IP 筛选](event-hubs-ip-filtering.md)，并将 "可寻址 IPv4 范围" (1.0.0.0/1-255.0.0.0/1) 中添加。 事件中心 IP 筛选不支持 IPv6 范围。 请注意，你可能会在日志中看到 IPv6 格式的专用终结点地址。 
 
 ### <a name="example"></a>示例
 

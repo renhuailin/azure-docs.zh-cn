@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2018
-ms.openlocfilehash: 7b670cafa4d643e37fae068a4c0033fc97a96ccd
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 074c5dda8ff8d5f837e8ea2a85c183c69421bedb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100606052"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710866"
 ---
 # <a name="reference-guide-to-view-designer-visualization-parts-in-azure-monitor"></a>Azure Monitor 中视图设计器可视化部件的参考指南
 在 Azure Monitor 中使用视图设计器即可在 Azure 门户中创建各种自定义视图，使 Log Analytics 工作区中的数据可视化。 本文针对自定义视图中可用的可视化部件，提供设置方面的参考指南。
@@ -39,7 +39,7 @@ ms.locfileid: "100606052"
 后续部分将详细介绍磁贴类型及其属性。
 
 > [!NOTE]
-> 视图中的部件基于 Log Analytics 工作区中的[日志查询](../log-query/log-query-overview.md)。 它们目前不支持使用[跨资源查询](../log-query/cross-workspace-query.md)从 Application Insights 检索数据。
+> 视图中的部件基于 Log Analytics 工作区中的[日志查询](../logs/log-query-overview.md)。 它们目前不支持使用[跨资源查询](../logs/cross-workspace-query.md)从 Application Insights 检索数据。
 
 ## <a name="list-of-queries-part"></a>查询列表部分
 查询列表部件显示日志查询的列表。 可以选择每个查询以显示其结果。 默认情况下，视图将包括单个查询，可以选择“+ 查询”添加其他查询  。
@@ -318,7 +318,7 @@ ms.locfileid: "100606052"
 例如，考虑一个名为 *Location* 的属性，该属性包括 *Redmond-Building 41* 和 *Bellevue-Building 12* 等值。 可以指定短划线 (–) 作为名称和值分隔符，指定 *City-Building* 作为名称。 此方法会将每个值分析为两个称作 *City* 和 *Building* 的属性。
 
 ### <a name="click-through-navigation"></a><a name="click-through-navigation"></a>点击导航
-点击导航定义在单击标题或视图中的列表项时要执行的操作。  这会在 [Log Analytics](../log-query/log-query-overview.md) 中打开查询或启动其他视图。
+点击导航定义在单击标题或视图中的列表项时要执行的操作。  这会在 [Log Analytics](../logs/log-query-overview.md) 中打开查询或启动其他视图。
 
 下表描述了点击导航的设置。
 
@@ -357,4 +357,4 @@ ms.locfileid: "100606052"
 | Color |指示阈值的颜色。 |
 
 ## <a name="next-steps"></a>后续步骤
-* 了解支持在可视化部件中进行查询的[日志查询](../log-query/log-query-overview.md)。
+* 了解支持在可视化部件中进行查询的[日志查询](../logs/log-query-overview.md)。

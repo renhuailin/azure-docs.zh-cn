@@ -9,12 +9,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: lagayhar
-ms.openlocfilehash: e0be5523cb3846760644d0c81b06d5caa5a35378
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 142853f0d5ed787d0b7aaee1bb118a001f144227
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100607952"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101722919"
 ---
 # <a name="how-to-use-jsonpath-to-transform-json-data-in-workbooks"></a>如何在工作簿中使用 JSONPath 转换 JSON 数据
 
@@ -22,7 +22,7 @@ ms.locfileid: "100607952"
 
 JSONPath 是适用于 JSON 的一种查询语言，类似于 XML 的 XPath。 与 XPath 类似，JSONPath 允许从 JSON 结构中提取和筛选数据。
 
-工作簿作者可以使用 JSONPath 转换将 JSON 转换为表结构。 然后，可以使用该表来绘制[工作簿可视化效果](../platform/workbooks-overview.md#visualizations)。
+工作簿作者可以使用 JSONPath 转换将 JSON 转换为表结构。 然后，可以使用该表来绘制[工作簿可视化效果](./workbooks-overview.md#visualizations)。
 
 ## <a name="using-jsonpath"></a>使用 JSONPath
 
@@ -84,5 +84,5 @@ JSONPath 是适用于 JSON 的一种查询语言，类似于 XML 的 XPath。 �
 ![ 使用 JSON 数据源和 JSON 路径结果格式编辑查询项](./media/workbooks-jsonpath/query-jsonpath.png)
 
 ## <a name="next-steps"></a>后续步骤
-- [工作簿概述](../platform/workbooks-overview.md)
+- [工作簿概述](./workbooks-overview.md)
 - [Azure Monitor 工作簿中的组](workbooks-groups.md)

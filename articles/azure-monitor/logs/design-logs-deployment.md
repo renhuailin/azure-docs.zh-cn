@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/20/2019
-ms.openlocfilehash: 482a0ba4051fb8b5d1705e0f951a9e075f40bbdb
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: ed9690a750ad6e1167ba0a0ae4a87b603c4a1f15
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100606075"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717394"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>设计 Azure Monitor 日志部署
 
@@ -25,7 +25,7 @@ Log Analytics 工作区可提供：
 
 * 数据存储的地理位置。
 * 遵循建议的设计策略之一授予不同的用户访问权限，以实现数据隔离。
-* 设置配置的范围，例如[定价层级](../platform/manage-cost-storage.md#changing-pricing-tier)、[保留期](../platform/manage-cost-storage.md#change-the-data-retention-period)和[数据上限](../platform/manage-cost-storage.md#manage-your-maximum-daily-data-volume)。
+* 设置配置的范围，例如[定价层级](./manage-cost-storage.md#changing-pricing-tier)、[保留期](./manage-cost-storage.md#change-the-data-retention-period)和[数据上限](./manage-cost-storage.md#manage-your-maximum-daily-data-volume)。
 
 工作区托管在物理群集上。 默认情况下，系统会创建和管理这些群集。 每天引入的数据超过 4TB 的客户应创建其自己的专用于工作区的群集，这样可以更好地进行控制并提高引入速率。
 
@@ -68,8 +68,8 @@ Log Analytics 工作区可提供：
 |:---|:---|
 | [访问模式](#access-mode) | 用户访问工作区的方法。  定义可用数据的范围，以及应用的访问控制模式。 |
 | [访问控制模式](#access-control-mode) | 工作区中的设置，用于定义是要在工作区级别还是资源级别应用权限。 |
-| [权限](../platform/manage-access.md) | 应用到工作区或资源的个人用户或用户组的权限。 定义用户有权访问哪些数据。 |
-| [表级别 Azure RBAC](../platform/manage-access.md#table-level-azure-rbac) | 应用到所有用户（无论他们使用的是访问模式还是访问控制模式）的可选精细权限。 定义用户可以访问哪些数据类型。 |
+| [权限](./manage-access.md) | 应用到工作区或资源的个人用户或用户组的权限。 定义用户有权访问哪些数据。 |
+| [表级别 Azure RBAC](./manage-access.md#table-level-azure-rbac) | 应用到所有用户（无论他们使用的是访问模式还是访问控制模式）的可选精细权限。 定义用户可以访问哪些数据类型。 |
 
 ## <a name="access-mode"></a>访问模式
 
@@ -91,7 +91,7 @@ Log Analytics 工作区可提供：
     > - Service Fabric
     > - Application Insights
     >
-    > 可以通过运行一个查询并检查所需的记录，来测试日志是否已适当关联到其资源。 如果 [_ResourceId](../platform/log-standard-columns.md#_resourceid) 属性中包含正确的资源 ID，则可以对数据进行以资源为中心的查询。
+    > 可以通过运行一个查询并检查所需的记录，来测试日志是否已适当关联到其资源。 如果 [_ResourceId](./log-standard-columns.md#_resourceid) 属性中包含正确的资源 ID，则可以对数据进行以资源为中心的查询。
 
 Azure Monitor 根据执行日志搜索时所在的上下文自动确定正确的模式。 范围始终显示在 Log Analytics 的左上部分。
 
@@ -102,8 +102,8 @@ Azure Monitor 根据执行日志搜索时所在的上下文自动确定正确的
 | 问题 | 工作区上下文 | 资源上下文 |
 |:---|:---|:---|
 | 每种模式适合哪类用户？ | 集中管理。 需要配置数据收集的管理员，以及需要访问各种资源的用户。 此外，需要访问 Azure 外部资源的日志的用户目前也需要使用此模式。 | 应用程序团队。 受监视 Azure 资源的管理员。 |
-| 用户需要哪些权限才能查看日志？ | 对工作区的权限。 请参阅 [使用工作区权限管理访问权限](../platform/manage-access.md#manage-access-using-workspace-permissions)中的 **工作区权限**。 | 对资源的读取访问权限。 请参阅 [使用 Azure 权限管理访问权限](../platform/manage-access.md#manage-access-using-azure-permissions)中的 **资源权限**。 权限可以继承（例如，从包含资源组继承），也可以直接分配给资源。 系统会自动分配对资源日志的权限。 |
-| 权限范围是什么？ | 工作区。 有权访问工作区的用户可以通过他们有权访问的表查询该工作区中的所有日志。 请参阅[表访问控制](../platform/manage-access.md#table-level-azure-rbac) | Azure 资源。 用户可以通过任何工作区查询他们有权访问的资源、资源组或订阅的日志，但无法查询其他资源的日志。 |
+| 用户需要哪些权限才能查看日志？ | 对工作区的权限。 请参阅 [使用工作区权限管理访问权限](./manage-access.md#manage-access-using-workspace-permissions)中的 **工作区权限**。 | 对资源的读取访问权限。 请参阅 [使用 Azure 权限管理访问权限](./manage-access.md#manage-access-using-azure-permissions)中的 **资源权限**。 权限可以继承（例如，从包含资源组继承），也可以直接分配给资源。 系统会自动分配对资源日志的权限。 |
+| 权限范围是什么？ | 工作区。 有权访问工作区的用户可以通过他们有权访问的表查询该工作区中的所有日志。 请参阅[表访问控制](./manage-access.md#table-level-azure-rbac) | Azure 资源。 用户可以通过任何工作区查询他们有权访问的资源、资源组或订阅的日志，但无法查询其他资源的日志。 |
 | 用户如何访问日志？ | <ul><li>从“Azure Monitor”菜单启动“日志”。 </li></ul> <ul><li>从“Log Analytics 工作区”启动“日志”。 </li></ul> <ul><li>从 Azure Monitor [工作簿](../visualizations.md#workbooks)。</li></ul> | <ul><li>从 Azure 资源的菜单启动“日志”</li></ul> <ul><li>从“Azure Monitor”菜单启动“日志”。 </li></ul> <ul><li>从“Log Analytics 工作区”启动“日志”。 </li></ul> <ul><li>从 Azure Monitor [工作簿](../visualizations.md#workbooks)。</li></ul> |
 
 ## <a name="access-control-mode"></a>访问控制模式
@@ -125,7 +125,7 @@ Azure Monitor 根据执行日志搜索时所在的上下文自动确定正确的
     > [!NOTE]
     > 如果用户只对工作区拥有资源权限，则他们只能使用资源上下文模式访问工作区（假设工作区访问模式设置为“使用资源或工作区权限”）。
 
-若要了解如何使用门户、PowerShell 或资源管理器模板更改访问控制模式，请参阅[配置访问控制模式](../platform/manage-access.md#configure-access-control-mode)。
+若要了解如何使用门户、PowerShell 或资源管理器模板更改访问控制模式，请参阅[配置访问控制模式](./manage-access.md#configure-access-control-mode)。
 
 ## <a name="scale-and-ingestion-volume-rate-limit"></a>规模和引入量速率限制
 
@@ -133,7 +133,7 @@ Azure Monitor 是一种大规模数据服务，每月为成千上万的客户发
 
 为了保护和隔离 Azure Monitor 客户及其后端基础结构，我们有一个默认的引入速率限制，该限制旨在防止出现峰值和泛洪情况。 速率限制默认值大约为“6 GB/分钟”，旨在实现正常引入。 有关引入量限制度量的更多详细信息，请参阅 [Azure Monitor 服务限制](../service-limits.md#data-ingestion-volume-rate)。
 
-每天的引入量少于 4TB 的客户通常不会达到这些限制。 如果客户在正常操作中引入了更多的量或出现峰值，该客户应考虑转移到[专用群集](../log-query/logs-dedicated-clusters.md)，在那里可以提高引入速率限制。
+每天的引入量少于 4TB 的客户通常不会达到这些限制。 如果客户在正常操作中引入了更多的量或出现峰值，该客户应考虑转移到[专用群集](./logs-dedicated-clusters.md)，在那里可以提高引入速率限制。
 
 当引入速率限制被激活或达到阈值的 80% 时，系统会向工作区中的“操作”表添加一个事件。 建议对其进行监视并创建警报。 有关更多详细信息，请参阅[数据引入量速率](../service-limits.md#data-ingestion-volume-rate)。
 
@@ -144,7 +144,7 @@ Azure Monitor 是一种大规模数据服务，每月为成千上万的客户发
 
 此方案涉及到 IT 组织订阅中的单个工作区设计，该设计不受数据主权或合规性的约束，或者需要映射到部署资源的区域。 此方案可让组织的安全和 IT 管理团队利用与 Azure 访问管理的改进集成以及更安全的访问控制。
 
-支持由不同团队维护的基础结构和应用程序的所有资源、监视解决方案和见解（例如 Application Insights 和用于 VM 的 Azure Monitor）将配置为向 IT 组织的集中式共享工作区转发收集的日志数据。 为每个团队的用户授予其已有权访问的资源的日志访问权限。
+所有资源、监视解决方案和见解（如 Application Insights 和 VM insights）、支持由不同团队维护的基础结构和应用程序配置为将收集的日志数据转发给 IT 组织的集中共享工作区。 为每个团队的用户授予其已有权访问的资源的日志访问权限。
 
 部署工作区体系结构后，可以使用 [Azure Policy](../../governance/policy/overview.md) 对 Azure 资源强制实施此方案。 此方案可让你定义策略并确保 Azure 资源合规，因此它们将其所有资源日志发送到特定的工作区。 例如，使用 Azure 虚拟机或虚拟机规模集时，可以使用现有的策略来评估工作区合规性和报告结果，或者自定义策略，以便在不合规的情况下予以补救。  
 
@@ -159,8 +159,8 @@ Azure Monitor 是一种大规模数据服务，每月为成千上万的客户发
 * 确定为应用程序团队授予的资源访问权限，并先在开发环境中进行测试，然后在生产环境中实施。
 * 将工作区配置为启用“使用资源或工作区权限”。
 * 删除应用程序团队的工作区读取和查询权限。
-* 启用并配置原始工作区中部署的任何监视解决方案、见解（例如用于容器的 Azure Monitor 和/或用于 VM 的 Azure Monitor）、自动化帐户和管理解决方案（例如更新管理、启动/停止 VM 等）。
+* 启用和配置任何监视解决方案，如 Container insights 和/或用于 VM 的 Azure Monitor、你的自动化帐户 (s) 和管理解决方案，如在原始工作区中部署的更新管理、启动/停止 Vm 等。
 
 ## <a name="next-steps"></a>后续步骤
 
-若要实施本指南中建议的安全权限和控制措施，请查看[管理对日志的访问权限](../platform/manage-access.md)。
+若要实施本指南中建议的安全权限和控制措施，请查看[管理对日志的访问权限](./manage-access.md)。

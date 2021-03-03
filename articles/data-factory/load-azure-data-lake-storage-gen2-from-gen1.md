@@ -6,17 +6,17 @@ author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 05/13/2019
-ms.openlocfilehash: 1b90ff8969edf3ce2886630dc88c50bc9185b85e
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 02/18/2021
+ms.openlocfilehash: 4a4bc0b55928fcaa40cd1cb03ca0522e611df476
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100370846"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101727713"
 ---
 # <a name="copy-data-from-azure-data-lake-storage-gen1-to-gen2-with-azure-data-factory"></a>使用 Azure 数据工厂将数据从 Azure Data Lake Storage Gen1 复制到 Gen2
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Azure Data Lake Storage Gen2 是一组专用于 [Azure Blob 存储](../storage/blobs/storage-blobs-introduction.md)中的大数据分析的功能。 它可使用文件系统和对象存储范例与数据进行交互。
 
@@ -62,7 +62,7 @@ Azure 数据工厂提供可横向扩展的托管数据移动解决方案。 由�
 1. 在 " **开始** " 页上，选择 " **复制数据** " 磁贴以启动 "复制数据" 工具。 
 
    ![“复制数据”工具磁贴](./media/load-azure-data-lake-storage-gen2-from-gen1/copy-data-tool-tile.png)
-2. 在 "**属性**" 页上，为 "**任务名称**" 字段指定 **CopyFromADLSGen1ToGen2** 。 选择“下一步”。
+2. 在 "**属性**" 页上，为 "**任务名称**" 字段指定 **CopyFromADLSGen1ToGen2** 。 选择“**下一页**”。
 
     ![“属性”页](./media/load-azure-data-lake-storage-gen2-from-gen1/copy-data-tool-properties-page.png)
 3. 在 " **源数据存储** " 页上，选择 " **+ 新建连接**"。
@@ -79,7 +79,7 @@ Azure 数据工厂提供可横向扩展的托管数据移动解决方案。 由�
   
    b. 选择 " **测试连接** " 以验证设置。 然后选择“完成”。
   
-   c. 你会看到已创建新连接。 选择“下一步”。
+   c. 你会看到已创建新连接。 选择“**下一页**”。
    
    > [!IMPORTANT]
    > 在本演练中，将使用 Azure 资源的托管标识对 Azure Data Lake Storage Gen1 进行身份验证。 若要在 Azure Data Lake Storage Gen1 中向托管标识授予适当的权限，请遵循 [这些说明](connector-azure-data-lake-store.md#managed-identity)。
@@ -90,7 +90,7 @@ Azure 数据工厂提供可横向扩展的托管数据移动解决方案。 由�
 
     ![选择输入文件或文件夹](./media/load-azure-data-lake-storage-gen2-from-gen1/choose-input-folder.png)
 
-7. 通过选择 " **以递归方式复制文件** " 和 " **二进制复制** " 选项来指定复制行为。 选择“下一步”。
+7. 通过选择 " **以递归方式复制文件** " 和 " **二进制复制** " 选项来指定复制行为。 选择“**下一页**”。
 
     ![屏幕截图显示选择输入文件或文件夹，您可以在其中选择 "以递归方式复制文件" 和 "二进制副本"。](./media/load-azure-data-lake-storage-gen2-from-gen1/specify-binary-copy.png)
     
@@ -132,7 +132,7 @@ Azure 数据工厂提供可横向扩展的托管数据移动解决方案。 由�
 
 17. 验证数据是否已复制到 Azure Data Lake Storage Gen2 帐户中。
 
-## <a name="best-practices"></a>最佳实践
+## <a name="best-practices"></a>最佳做法
 
 若要评估从 Azure Data Lake Storage Gen1 到一般 Azure Data Lake Storage Gen2 的升级，请参阅将 [大数据分析解决方案从 Azure Data Lake Storage Gen1 升级到 Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-migrate-gen1-to-gen2.md)。 以下部分介绍了如何使用数据工厂将数据从 Data Lake Storage Gen1 升级到 Data Lake Storage Gen2 的最佳实践。
 

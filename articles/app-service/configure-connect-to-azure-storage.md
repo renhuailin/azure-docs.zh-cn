@@ -6,18 +6,18 @@ ms.topic: article
 ms.date: 7/01/2019
 ms.author: msangapu
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: ab27de9274043439f790a8fecd443223e5f26b08
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: c3e5ca30b7f0f00b6d647f5fdaeb772900996adc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736198"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720233"
 ---
 # <a name="access-azure-storage-preview-as-a-network-share-from-a-container-in-app-service"></a>从应用服务中的容器作为网络共享访问 Azure 存储 (预览) 
 
 ::: zone pivot="container-windows"
 
-本指南说明如何将 Azure 存储文件作为网络共享附加到应用服务中的 windows 容器。 仅支持 [Azure 文件共享](../storage/files/storage-how-to-use-files-cli.md) 和 [高级文件共享](../storage/files/storage-how-to-create-premium-fileshare.md) 。 优势包括内容受保护，内容可移植，可以访问多个应用以及使用多种传输方法。
+本指南说明如何将 Azure 存储文件作为网络共享附加到应用服务中的 windows 容器。 仅支持 [Azure 文件共享](../storage/files/storage-how-to-use-files-cli.md) 和 [高级文件共享](../storage/files/storage-how-to-create-file-share.md) 。 优势包括内容受保护，内容可移植，可以访问多个应用以及使用多种传输方法。
 
 > [!NOTE]
 >应用服务中的 Azure 存储为 **预览版**，**不支持****生产方案**。

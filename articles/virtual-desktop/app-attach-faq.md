@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 78c21e9515965f1c15315967f6a19a0df2838dc2
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 395c274630131c2ae5f451443913e1e69c7c422a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97591189"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738695"
 ---
 # <a name="msix-app-attach-faq"></a>.MSIX 应用附加常见问题解答
 
@@ -53,7 +53,7 @@ Windows 10 企业版和 Windows 10 企业版多会话版本2004或更高版本�
 
 ## <a name="should-i-disable-auto-update-when-using-msix-app-attach"></a>使用 .MSIX 应用附加时，是否应禁用自动更新？
 
-是。 .MSIX 应用附加不支持 .MSIX 应用程序的自动更新。
+是的。 .MSIX 应用附加不支持 .MSIX 应用程序的自动更新。
 
 ## <a name="how-do-permissions-work-with-msix-app-attach"></a>如何对 .MSIX 应用附加功能使用权限？
 
@@ -61,15 +61,15 @@ Windows 10 企业版和 Windows 10 企业版多会话版本2004或更高版本�
 
 ## <a name="can-i-use-msix-app-attach-for-http-or-https"></a>能否对 HTTP 或 HTTPs 使用 .MSIX 应用连接？
 
-作为使用 .MSIX 应用附加的主机池的一部分的所有 Vm 必须对存储 .MSIX 映像的文件共享具有读取权限。 如果正在使用 Azure 文件，则必须授予 RBAC 和 NTFS 权限。
+当前不支持通过 HTTP 或 HTTPs 使用 .MSIX 应用附加。
 
 ## <a name="can-i-restage-the-same-msix-application"></a>我能 restage 同一个 .MSIX 应用程序吗？
 
-是。 您可以 restage 已预留的应用程序，这不会导致任何错误。
+是的。 您可以 restage 已预留的应用程序，这不会导致任何错误。
 
 ## <a name="does-msix-app-attach-support-self-signed-certificates"></a>.MSIX 应用附加是否支持自签名证书？
 
-当前不支持通过 HTTP 或 HTTPs 使用 .MSIX 应用附加。
+是的。 需要在所有会话主机 Vm 上安装自签名证书，其中 .MSIX 应用附加用于承载自签名应用程序。
 
 
 ## <a name="next-steps"></a>后续步骤

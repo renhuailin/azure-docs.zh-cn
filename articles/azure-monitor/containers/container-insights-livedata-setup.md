@@ -1,19 +1,19 @@
 ---
-title: 设置用于容器实时数据（预览版）的 Azure Monitor| Microsoft Docs
-description: 本文介绍在不将 kubectl 与适用于容器的 Azure Monitor 配合使用的情况下，如何设置容器日志 (stdout/stderr) 和事件的实时视图。
+title: 设置容器 insights 实时数据 (预览) |Microsoft Docs
+description: 本文介绍如何在 kubectl 中设置容器)  (日志的实时视图，而无需将与 Container insights 结合使用。
 ms.topic: conceptual
 ms.date: 01/08/2020
 ms.custom: references_regions
-ms.openlocfilehash: 3c176b2db659577d585ac077eebe0484203eb9cf
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 4302bdbb3d71c890f7fb0cfb82ab5f8d5aecbd43
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100606127"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713773"
 ---
 # <a name="how-to-set-up-the-live-data-preview-feature"></a>如何设置实时数据（预览版）功能
 
-若要从 Azure Kubernetes 服务 (AKS) 群集通过用于容器的 Azure Monitor 查看实时数据（预览版），你需要通过配置身份验证来授予访问 Kubernetes 数据的权限。 此安全配置允许在 Azure 门户中直接通过 Kubernetes API 实时访问你的数据。
+若要使用 Azure Kubernetes Service (AKS) 群集中的容器见解查看实时数据 (预览) ，需要配置身份验证，授予访问 Kubernetes 数据的权限。 此安全配置允许在 Azure 门户中直接通过 Kubernetes API 实时访问你的数据。
 
 此功能支持采用以下方法来控制对日志、事件和指标的访问：
 
@@ -46,7 +46,7 @@ Azure 门户会提示你验证你用于 Azure Active Directory 群集的登录�
 
 AKS 添加了一个名为 clusterMonitoringUser 的新的 Kubernetes 群集角色绑定，这样就不需要在进行[启用 Kubernetes RBAC](#configure-kubernetes-rbac-authorization) 的授权后应用额外的配置更改来允许 Kubernetes 用户角色绑定 clusterUser 对实时数据（预览版）功能进行访问。 此群集角色绑定具有现成的所有必需权限，可以访问 Kubernetes API 和用于使用实时数据（预览版）功能的终结点。
 
-为了通过此新用户使用实时数据（预览版）功能，你需要是 AKS 群集资源上的 [Azure Kubernetes 服务群集用户](../../role-based-access-control/built-in-roles.md#azure-kubernetes-service-cluster-user-role)或[参与者](../../role-based-access-control/built-in-roles.md#contributor)角色的成员。 当启用了用于容器的 Azure Monitor 时，默认情况下，它配置为使用 clusterMonitoringUser 进行身份验证。 如果群集中不存在 clusterMonitoringUser 角色绑定，则会改用 **clusterUser** 进行身份验证。 参与者可让你访问 clusterMonitoringUser（如果存在），而 Azure Kuberenetes 服务群集用户可让你访问 clusterUser。 这两个角色中的任何一个都授予使用此功能的足够访问权限。
+为了通过此新用户使用实时数据（预览版）功能，你需要是 AKS 群集资源上的 [Azure Kubernetes 服务群集用户](../../role-based-access-control/built-in-roles.md#azure-kubernetes-service-cluster-user-role)或[参与者](../../role-based-access-control/built-in-roles.md#contributor)角色的成员。 默认情况下，将容器见解配置为使用 clusterMonitoringUser 进行身份验证。 如果群集中不存在 clusterMonitoringUser 角色绑定，则会改用 **clusterUser** 进行身份验证。 参与者可让你访问 clusterMonitoringUser（如果存在），而 Azure Kuberenetes 服务群集用户可让你访问 clusterUser。 这两个角色中的任何一个都授予使用此功能的足够访问权限。
 
 AKS 在 2020 年 1 月发布了此新的角色绑定，因此在 2020 年 1 月之前创建的群集没有此项。 如果你有一个在 2020 年 1 月之前创建的群集，可以通过在该现有群集上执行 PUT 操作将新的 clusterMonitoringUser 添加到该群集，也可以通过在群集上执行任何会在群集上执行 PUT 操作的其他操作（例如更新群集版本）来这样做。
 
@@ -106,7 +106,7 @@ AKS 在 2020 年 1 月发布了此新的角色绑定，因此在 2020 年 1 月�
 有关 Kubernetes 中的高级安全设置的详细信息，请查看 [Kubernetes 文档](https://kubernetes.io/docs/reference/access-authn-authz/rbac/)。
 
 >[!NOTE]
->如果你要创建新的启用了 Kubernetes RBAC 的群集，请参阅[将 Azure Active Directory 与 Azure Kubernetes 服务集成](../../aks/azure-ad-integration-cli.md)并按照步骤来配置 Azure AD 身份验证。 在创建客户端应用程序的步骤中，该部分中的一个注释突出显示了你需要为适用于容器的 Azure Monitor 创建的与下面步骤 3 中指定的 URL 匹配的两个重定向 URL。
+>如果你要创建新的启用了 Kubernetes RBAC 的群集，请参阅[将 Azure Active Directory 与 Azure Kubernetes 服务集成](../../aks/azure-ad-integration-cli.md)并按照步骤来配置 Azure AD 身份验证。 在创建客户端应用程序的步骤中，此部分中的说明将突出显示你需要为与下面的步骤3中指定的容器 insights 创建的两个重定向 Url。
 
 ### <a name="client-registration-reconfiguration"></a>重新配置客户端注册
 

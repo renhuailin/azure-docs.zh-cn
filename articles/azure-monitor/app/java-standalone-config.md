@@ -1,19 +1,19 @@
 ---
-title: 配置选项-Azure Monitor Java Application Insights
-description: 如何为 Java 配置 Azure Monitor Application Insights
+title: 配置选项 - 适用于 Java 的 Azure Monitor Application Insights
+description: 如何配置适用于 Java 的 Azure Monitor Application Insights
 ms.topic: conceptual
 ms.date: 11/04/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 397c650d1d7a593a855c8f26e61dbf12ec6360fa
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 3806578f5d1af61329e2e32fa3e8eceb9afa4d42
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98631315"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713960"
 ---
-# <a name="configuration-options---azure-monitor-application-insights-for-java"></a>配置选项-Azure Monitor Java Application Insights
+# <a name="configuration-options---azure-monitor-application-insights-for-java"></a>配置选项 - 适用于 Java 的 Azure Monitor Application Insights
 
 > [!WARNING]
 > **如果要从 3.0 预览版升级**
@@ -170,7 +170,7 @@ ms.locfileid: "98631315"
 `${...}` 可用于在启动时从指定的环境变量中读取值。
 
 > [!NOTE]
-> 从版本3.0.2 开始，如果添加一个名为的自定义维度 `service.version` ，该值将存储在 `application_Version` Application Insights 日志表的列中，而不是作为自定义维度。
+> 从 3.0.2 版开始，如果你添加名为 `service.version` 的自定义维度，该值将存储在 Application Insights 日志表的 `application_Version` 列中，而不是作为自定义维度。
 
 ## <a name="telemetry-processors-preview"></a>遥测处理器（预览版）
 
@@ -187,9 +187,9 @@ ms.locfileid: "98631315"
 
 系统自动检测 Log4j、Logback 和 java.util.logging，并自动收集通过这些记录框架执行的日志记录。
 
-仅在第一次满足日志记录框架配置的阈值时才捕获日志记录，另一种方法还满足 Application Insights 配置的阈值。
+仅在日志记录首先满足记录框架的配置阈值，并且还满足 Application Insights 的配置阈值时，才捕获日志记录。
 
-默认 Application Insights 阈值为 `INFO` 。 如果要更改此级别，请执行以下操作：
+默认 Application Insights 阈值为 `INFO`。 若要更改此级别，请执行以下代码：
 
 ```json
 {
@@ -218,6 +218,9 @@ ms.locfileid: "98631315"
 | TRACE（或 FINEST） | TRACE  | TRACE   | FINEST  |
 | ALL               | ALL    | ALL     | ALL     |
 
+> [!NOTE]
+> 如果异常被传递到记录器，则日志消息 (和异常) 将显示在表中的 Azure 门户下， `exceptions` 而不是显示在 `traces` 表中。
+
 ## <a name="auto-collected-micrometer-metrics-including-spring-boot-actuator-metrics"></a>自动收集的 Micrometer 指标（包括 Spring Boot Actuator 指标）
 
 如果应用程序使用 [Micrometer](https://micrometer.io)，系统会自动收集发送到 Micrometer 全局注册表的指标。
@@ -239,9 +242,9 @@ ms.locfileid: "98631315"
 }
 ```
 
-## <a name="suppressing-specific-auto-collected-telemetry"></a>抑制特定的自动收集遥测
+## <a name="suppressing-specific-auto-collected-telemetry"></a>取消特定的自动收集遥测
 
-从版本3.0.2 开始，可使用以下配置选项取消特定的自动收集遥测：
+从版本 3.0.2 开始，可使用以下配置选项取消特定的自动收集遥测：
 
 ```json
 {
@@ -296,9 +299,9 @@ ms.locfileid: "98631315"
 }
 ```
 
-Application Insights Java 3.0 还会遵守全局 `-Dhttps.proxyHost` `-Dhttps.proxyPort` 设置，如果设置了这些设置。
+Application Insights Java 3.0 还沿用全局 `-Dhttps.proxyHost` 和 `-Dhttps.proxyPort`（如果已设置）。
 
-[//]: # "请注意，OpenTelemetry 支持在个人预览版中，直到 OpenTelemetry API 达到1。0"
+[//]: # "请注意，在 OpenTelemetry API 达到 1.0 之前，OpenTelemetry 支持以个人预览版提供"
 
 [//]: # "## 对 OpenTelemetry API 1.0 之前的版本的支持"
 
@@ -346,7 +349,7 @@ Application Insights Java 3.0 还会遵守全局 `-Dhttps.proxyHost` `-Dhttps.pr
 
 `maxHistory` 是保留的滚动更新日志文件的数目（除当前日志文件外）。
 
-从版本3.0.2 开始，还可以使用环境变量设置自我诊断 `level` `APPLICATIONINSIGHTS_SELF_DIAGNOSTICS_LEVEL` 。
+从版本 3.0.2 开始，还可以使用环境变量 `APPLICATIONINSIGHTS_SELF_DIAGNOSTICS_LEVEL` 设置自我诊断 `level`。
 
 ## <a name="an-example"></a>示例
 

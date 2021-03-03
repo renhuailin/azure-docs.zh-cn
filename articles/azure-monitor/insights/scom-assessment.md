@@ -1,17 +1,16 @@
 ---
 title: Azure Monitor System Center Operations Manager 评估
 description: 可以使用 System Center Operations Manager 运行状况检查解决方案定期评估环境的风险和运行状况。
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/25/2018
-ms.openlocfilehash: 685bf35bfb6d6e85d70bd1f1b446370d66a320f2
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 35ae1e09fd0a06014a747cef99631a7bfe2dee1c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100573386"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731402"
 ---
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>使用 System Center Operations Manager 运行状况检查（预览版）解决方案优化环境
 
@@ -25,7 +24,7 @@ ms.locfileid: "100573386"
 
 可以选择对组织最重要的重点领域，并跟踪一个运行正常无风险环境的进度。
 
-在解决方案并执行评估后，会在基础结构的“System Center Operations Manager 运行状况检查”仪表板上显示有关重点领域的摘要信息。  以下部分介绍如何使用“System Center Operations Manager 运行状况检查”仪表板上的信息，可以在其中查看并针对 Operations Manager 环境采取建议的操作。 
+在解决方案并执行评估后，会在基础结构的“System Center Operations Manager 运行状况检查”仪表板上显示有关重点领域的摘要信息。 以下部分介绍如何使用“System Center Operations Manager 运行状况检查”仪表板上的信息，可以在其中查看并针对 Operations Manager 环境采取建议的操作。
 
 ![System Center Operations Manager 解决方案磁贴](./media/scom-assessment/log-analytics-scom-healthcheck-tile.png)
 

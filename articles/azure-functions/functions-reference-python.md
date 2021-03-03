@@ -4,12 +4,12 @@ description: 了解如何使用 Pythong 开发函数
 ms.topic: article
 ms.date: 11/4/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: a13b4463d2a9c32a3487f839c0bf53b4c5bd2963
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 78965a1a09272663c52469b8ccd91988f30b53cc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98735837"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708690"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions Python 开发人员指南
 
@@ -20,6 +20,9 @@ ms.locfileid: "98735837"
 | 入门 | 概念| 方案/示例 |
 | -- | -- | -- | 
 | <ul><li>[使用 Visual Studio Code 的 Python 函数](./create-first-function-vs-code-csharp.md?pivots=programming-language-python)</li><li>[具有终端/命令提示符的 Python 函数](./create-first-function-cli-csharp.md?pivots=programming-language-python)</li></ul> | <ul><li>[开发人员指南](functions-reference.md)</li><li>[托管选项](functions-scale.md)</li><li>[性能 &nbsp; 注意事项](functions-best-practices.md)</li></ul> | <ul><li>[图像分类与 PyTorch](machine-learning-pytorch.md)</li><li>[Azure 自动化示例](/samples/azure-samples/azure-functions-python-list-resource-groups/azure-functions-python-sample-list-resource-groups/)</li><li>[将机器学习与 TensorFlow 配合使用](functions-machine-learning-tensorflow.md)</li><li>[浏览 Python 示例](/samples/browse/?products=azure-functions&languages=python)</li></ul> |
+
+> [!NOTE]
+> 尽管可以 [在 Windows 本地开发基于 python 的 Azure Functions](./azure-functions/create-first-function-vs-code-python#run-the-function-locally)，但仅在 Azure 中运行时，才支持基于 Linux 的托管计划的 python。 请参阅支持的 [操作系统/运行时](./azure-functions/functions-scale#operating-systemruntime) 组合的列表。
 
 ## <a name="programming-model"></a>编程模型
 
@@ -91,7 +94,7 @@ Python 函数项目的建议文件夹结构如以下示例所示：
  | - requirements.txt
  | - Dockerfile
 ```
-主项目文件夹 ( # B0 project_root>) 可以包含以下文件：
+主项目文件夹 (<project_root>) 可以包含以下文件：
 
 * *local.settings.json*：用于在本地运行时存储应用设置和连接字符串。 此文件不会被发布到 Azure。 若要了解详细信息，请参阅 [local.settings.file](functions-run-local.md#local-settings-file)。
 * *requirements.txt*：包含在发布到 Azure 时系统安装的 Python 包的列表。
@@ -615,8 +618,8 @@ getattr(azure.functions, '__version__', '< 1.2.1')
 
 |  Functions 运行时  | Debian 版本 | Python 版本 |
 |------------|------------|------------|
-| 版本 2.x | 拉伸  | [Python 3.6](https://github.com/Azure/azure-functions-docker/blob/master/host/2.0/stretch/amd64/python/python36/python36.Dockerfile)<br/>[Python 3.7](https://github.com/Azure/azure-functions-docker/blob/master/host/2.0/stretch/amd64/python/python37/python37.Dockerfile) |
-| 3\.x 版 | Buster | [Python 3.6](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python36/python36.Dockerfile)<br/>[Python 3.7](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python37/python37.Dockerfile)<br />[Python 3.8](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python38/python38.Dockerfile)<br/> [Python 3。9](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python39/python39.Dockerfile)|
+| 版本 2.x | 拉伸  | [Python 3.6](https://github.com/Azure/azure-functions-docker/blob/master/host/2.0/stretch/amd64/python/python36/python36.Dockerfile)<br/>[Python 3。7](https://github.com/Azure/azure-functions-docker/blob/master/host/2.0/stretch/amd64/python/python37/python37.Dockerfile) |
+| 3\.x 版 | Buster | [Python 3.6](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python36/python36.Dockerfile)<br/>[Python 3。7](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python37/python37.Dockerfile)<br />[Python 3.8](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python38/python38.Dockerfile)<br/> [Python 3。9](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python39/python39.Dockerfile)|
 
 ## <a name="cross-origin-resource-sharing"></a>跨域资源共享
 

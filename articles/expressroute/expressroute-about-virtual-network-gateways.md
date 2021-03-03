@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: duau
-ms.openlocfilehash: b721a9b8d8bdff3f3aaf05f15857c00347e7abb4
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 45b059784cc0b442b615a2a1cb50386da6ee990f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92202372"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101740913"
 ---
 # <a name="about-expressroute-virtual-network-gateways"></a>关于 ExpressRoute 虚拟网络网关
 
@@ -53,7 +53,7 @@ ms.locfileid: "92202372"
 
 创建网关子网时，请指定子网包含的 IP 地址数。 将网关子网中的 IP 地址分配到网关 VM 和网关服务。 有些配置需要具有比其他配置更多的 IP 地址。 
 
-规划网关子网大小时，请参阅你计划创建的配置的相关文档。 例如，ExpressRoute/VPN 网关共存配置所需的网关子网大于大多数其他配置。 此外，可能需要确保网关子网包含足够多的 IP 地址，以便应对将来可能会添加的配置。 尽管网关子网最小可创建为 /29，但建议创建 /27 或更大（/27、/26 等）的网关子网（如果你有可用的地址空间来执行此操作）。 这将适合大多数配置。
+规划网关子网大小时，请参阅你计划创建的配置的相关文档。 例如，ExpressRoute/VPN 网关共存配置所需的网关子网大于大多数其他配置。 此外，可能需要确保网关子网包含足够多的 IP 地址，以便应对将来可能会添加的配置。 尽管网关子网最小可创建为 /29，但建议创建 /27 或更大（/27、/26 等）的网关子网（如果你有可用的地址空间来执行此操作）。 如果创建的是双堆栈网关子网，我们建议还使用/64 或更大的 IPv6 范围。 这将适合大多数配置。
 
 以下 Resource Manager PowerShell 示例显示名为 GatewaySubnet 的网关子网。 可以看到，CIDR 表示法指定了 /27，这可提供足够的 IP 地址供大多数现有配置使用。
 
@@ -77,6 +77,11 @@ Add-AzVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.0.3.0/2
 
 新的网关 SKU 还支持其他部署选项，以最好地满足你的需求。 使用新网关 SKU 创建虚拟网络网关时，还可以选择在特定区域中部署网关。 这称为区域网关。 部署区域网关时，网关的所有实例都部署在同一可用性区域中。
 
+> [!IMPORTANT]
+> 如果打算在 ExpressRoute 上使用基于 IPv6 的专用对等互连，请确保为在双堆栈网关子网中部署的网关选择 AZ SKU。
+> 
+>
+
 ## <a name="fastpath"></a><a name="fastpath"></a>FastPath
 
 ExpressRoute 虚拟网络网关旨在交换网络路由和路由网络流量。 FastPath 旨在提高本地网络与虚拟网络之间的数据路径性能。 启用后，FastPath 会将网络流量直接发送到虚拟网络中的虚拟机，绕过网关。
@@ -95,7 +100,7 @@ ExpressRoute 虚拟网络网关旨在交换网络路由和路由网络流量。 
 
 有关可用连接配置的详细信息，请参阅 [ExpressRoute 概述](expressroute-introduction.md)。
 
-有关创建 ExpressRoute 网关的详细信息，请参阅为 [ExpressRoute 创建虚拟网络网关](expressroute-howto-add-gateway-resource-manager.md)。
+有关创建 ExpressRoute 网关的详细信息，请参阅[创建 ExpressRoute 的虚拟网络网关](expressroute-howto-add-gateway-resource-manager.md)。
 
 有关配置区域冗余网关的详细信息，请参阅 [创建区域冗余虚拟网络网关](../../articles/vpn-gateway/create-zone-redundant-vnet-gateway.md)。
 

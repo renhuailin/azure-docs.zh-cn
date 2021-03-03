@@ -3,16 +3,18 @@ title: 响应注册表操作的 Webhook
 description: 了解如何使用 Webhook 在注册表存储库中发生推送或拉取操作时触发事件。
 ms.topic: article
 ms.date: 05/24/2019
-ms.openlocfilehash: 1db1098da81e6cf9ecb262c99f705b77af2efd26
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 5374b58ba72727500294a173c26e9a131b29fe34
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96004477"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101722239"
 ---
 # <a name="using-azure-container-registry-webhooks"></a>使用 Azure 容器注册表 webhook
 
 Azure 容器注册表可存储和管理专用 Docker 容器映像，其方式类似于 Docker Hub 存储公共 Docker 映像。 它还可托管 [Helm Chart](container-registry-helm-repos.md)（预览版）的存储库；Helm Chart 是一种将应用程序部署到 Kubernetes 的打包格式。 可以使用 Webhook 在其中一个注册表存储库中发生特定操作时触发事件。 Webhook 可在注册表级别响应事件或者将其范围缩小到特定存储库标记。 通过[异地复制](container-registry-geo-replication.md)注册表，可将每个 Webhook 配置为响应特定区域副本中的事件。
+
+必须可以从注册表公开访问 webhook 的终结点。 你可以配置注册表 webhook 请求以对安全终结点进行身份验证。
 
 有关 Webhook 请求的详细信息，请参阅 [Azure 容器注册表 Webhook 架构参考](container-registry-webhook-reference.md)。
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/02/2019
 ms.author: jeedes
-ms.openlocfilehash: dfb18281ad558832e4b06d1c0d24654d351ed01d
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 4209e609420e610b9f3456da26b0afe0bf839d43
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92455181"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101689073"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-corptax"></a>教程：Azure Active Directory 与 Corptax 集成
 
@@ -119,7 +119,7 @@ ms.locfileid: "92455181"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new_user.png)
 
@@ -129,12 +129,11 @@ ms.locfileid: "92455181"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
 
-    b. 在“用户名”字段中，键入 `brittasimon\@yourcompanydomain.extension`   
-    例如： BrittaSimon@contoso.com
+    b. 在“用户名”字段中键入 `brittasimon@<yourcompanydomain.extension>`。  例如：`brittasimon@contoso.com`。
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -152,7 +151,7 @@ ms.locfileid: "92455181"
 
     ![“用户和组”链接](common/users_groups_blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add_assign_user.png)
 

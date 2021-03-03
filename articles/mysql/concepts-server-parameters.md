@@ -6,12 +6,12 @@ ms.author: bahusse
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 1/26/2021
-ms.openlocfilehash: 1b0bcf528a16e2f75bf21235980424b5375f8824
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 756337ce20c827d0c6549181c20fd843fa60c020
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99539478"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720947"
 ---
 # <a name="server-parameters-in-azure-database-for-mysql"></a>Azure Database for MySQL 中的服务器参数
 
@@ -272,7 +272,7 @@ lower_case_table_name 默认设置为 1，你可以在 MySQL 5.6 和 MySQL 5.7 �
 若要在服务器关闭时将缓冲池的状态设置为，请将服务器参数设置 `innodb_buffer_pool_dump_at_shutdown` 为 `ON` 。 同样，将 "服务器参数" 设置 `innodb_buffer_pool_load_at_startup` 为， `ON` 以在服务器启动时还原缓冲池状态。 可以通过降低和微调服务器参数的值来控制启动/重新启动的影响 `innodb_buffer_pool_dump_pct` ，默认情况下，此参数设置为 `25` 。
 
 > [!Note]
-> InnoDB 缓冲池预热参数仅在具有高达 16 TB 存储的常规用途存储服务器中受支持。 [在此处了解 Azure Database for MySQL 存储选项](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#storage)的详细信息。
+> InnoDB 缓冲池预热参数仅在具有高达 16 TB 存储的常规用途存储服务器中受支持。 [在此处了解 Azure Database for MySQL 存储选项](./concepts-pricing-tiers.md#storage)的详细信息。
 
 ### <a name="time_zone"></a>time_zone
 

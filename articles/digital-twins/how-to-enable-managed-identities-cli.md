@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 02/09/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 32cbe31f95c03f9b0b5eb1a31a28033dce18b112
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 035d782321feb5d467638159fc191f65573b1042
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100417152"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101716119"
 ---
 # <a name="enable-a-managed-identity-for-routing-azure-digital-twins-events-preview-azure-cli"></a>启用托管标识，以将 Azure 数字孪生事件路由 (预览) ： Azure CLI
 
@@ -87,8 +87,7 @@ az dt create -n {name_of_existing_instance} -g {resource_group} --assign-identit
 
 ### <a name="assign-the-role"></a>分配角色
 
->[!NOTE]
-> 此部分必须由具有管理用户对 Azure 资源的用户访问权限的 Azure 用户完成， (包括授予和委派) 的权限。 满足此要求的常见角色包括 " *所有者*"、" *帐户管理员*" 或 " *用户访问管理员* " 和 " *参与者*" 的组合。 有关 Azure 数字孪生角色的权限要求的详细信息，请参阅 [*如何：设置实例和身份验证*](how-to-set-up-instance-portal.md#prerequisites-permission-requirements)。
+[!INCLUDE [digital-twins-permissions-required.md](../../includes/digital-twins-permissions-required.md)]
 
 您可以将参数添加到 `--scopes` `az dt create` 命令中，以便将该标识分配给一个或多个具有指定角色的作用域。 这可以在首次创建实例时使用，也可以在以后通过传入已经存在的实例的名称来使用。
 
@@ -102,7 +101,7 @@ az dt create -n {instance_name} -g {resource_group} --assign-identity --scopes "
 
 或者，也可以使用 [**az role 赋值**](/cli/azure/role/assignment?view=azure-cli-latest&preserve-view=true) 命令组来创建和管理角色。 这可用于支持不想使用 create 命令对角色分配进行分组的其他方案。
 
-## <a name="create-an-endpoint-with-identity-based-authorization"></a>创建具有基于标识的授权的终结点
+## <a name="create-an-endpoint-with-identity-based-authentication"></a>创建具有基于标识的身份验证的终结点
 
 为 Azure 数字孪生实例设置系统管理的标识并向其分配适当的角色 () ，你可以创建能够使用标识进行身份验证的 Azure 数字孪生 [终结点](how-to-manage-routes-portal.md#create-an-endpoint-for-azure-digital-twins) 。 此选项仅适用于事件中心和服务总线类型终结点， (事件网格) 不支持此选项。
 

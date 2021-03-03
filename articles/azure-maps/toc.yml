@@ -160,10 +160,10 @@
               href: create-data-source-web-sdk.md
             - name: 添加符号层
               href: map-add-pin.md
-            - name: 添加弹出项
-              href: map-add-popup.md
             - name: 添加气泡层
               href: map-add-bubble-layer.md
+            - name: 添加弹出项
+              href: map-add-popup.md
             - name: 添加 HTML 标记
               href: map-add-custom-html.md
             - name: 添加线条层
@@ -250,14 +250,14 @@
           href: how-to-add-symbol-to-android-map.md
         - name: 添加气泡层
           href: map-add-bubble-layer-android.md
-        - name: 添加形状
+        - name: 显示功能信息
+          href: display-feature-information-android.md
+        - name: 添加线条层
+          href: android-map-add-line-layer.md
+        - name: 添加多边形层
           href: how-to-add-shapes-to-android-map.md
         - name: 添加热度地图层
           href: map-add-heat-map-layer-android.md
-        - name: 添加线条层
-          href: android-map-add-line-layer.md
-        - name: 显示功能信息
-          href: display-feature-information-android.md
         - name: 添加图块层
           href: how-to-add-tile-layer-android-map.md
         - name: 显示交通情况数据

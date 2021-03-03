@@ -7,12 +7,12 @@ ms.date: 05/11/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 37099b551e004ebfc702dce37c2a1499aa46ff10
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 7c91cd8cbb1a927a88f05fcea603c6a4ed6e1c14
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94950714"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719026"
 ---
 # <a name="how-to-deprovision-devices-that-were-previously-auto-provisioned"></a>如何取消预配以前自动预配的设备 
 
@@ -23,7 +23,7 @@ ms.locfileid: "94950714"
 1. 将设备从预配服务中取消注册，以免将来自动进行预配。 根据是要暂时还是永久撤销访问权限，可能需要禁用或删除登记条目。 对于使用 X.509 认证的设备，可能需要在现有注册组的层次结构中禁用/删除某个条目。  
  
    - 若要了解如何取消注册某个设备，请参阅[如何从 Azure IoT 中心设备预配服务中取消注册某个设备](how-to-revoke-device-access-portal.md)。
-   - 若要了解如何使用某个预配服务 SDK 以编程方式取消注册某个设备，请参阅[使用服务 SDK 管理设备注册](how-to-manage-enrollments-sdks.md)。
+   - 若要了解如何使用某个预配服务 SDK 以编程方式取消注册某个设备，请参阅[使用服务 SDK 管理设备注册](./quick-enroll-device-x509-java.md)。
 
 2. 从 IoT 中心取消注册设备，防止未来的通信和数据传输。 另外，可以在预配设备的 IoT 中心的标识注册表中临时禁用或永久删除该设备的条目。 若要详细了解禁用，请参阅[禁用设备](../iot-hub/iot-hub-devguide-identity-registry.md#disable-devices)。 对于 IoT 中心资源，请参阅 [Azure 门户](https://portal.azure.com)中的“设备管理/IoT 设备”。
 

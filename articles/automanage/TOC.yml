@@ -8,10 +8,13 @@
 - name: 概念
   expanded: true
   items:
-    - name: 虚拟机
-      href: automanage-virtual-machines.md
-    - name: VM 的最佳做法
-      href: virtual-machines-best-practices.md
+    - name: 适用于 Linux 的 Automanage
+      href: automanage-linux.md
+    - name: 适用于 Windows Server 的 Automanage
+      href: automanage-windows-server.md
+      items:
+        - name: 新虚拟机的热补丁
+          href: automanage-hotpatch.md
 - name: 如何
   expanded: true
   items:

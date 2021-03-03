@@ -4,12 +4,12 @@ description: 在规划 Service Fabric 群集时要考虑节点类型、持久性
 ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: pepogors
-ms.openlocfilehash: 03ec9b411f13f22a74b864a745acfed922e78b12
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: b3361337bb0cf60e47efe198aad7aa8cc20ae7b3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98790692"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714929"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Service Fabric 群集容量规划注意事项
 
@@ -39,21 +39,21 @@ ms.locfileid: "98790692"
 
 初始节点类型的数量取决于集群的目的以及集群上运行的应用程序和服务。 考虑以下问题：
 
-* ***应用程序是否有多个服务，其中是否有任何服务需面向公众或面向 Internet？** _
+* ***应用程序是否有多个服务，其中是否有任何服务需面向公众或面向 Internet？***
 
     典型的应用程序包括从客户端接收输入的前端网关服务，以及与前端服务进行通信的一个或多个后端服务，前端和后端服务之间单独联网。 这些情况通常需要三种节点类型：一个主节点类型和两个非主节点类型（分别用于前端和后端服务）。
 
-_ ***构成应用程序的各项服务是否有不同的基础结构要求，例如更多的 RAM 或更高的 CPU 周期？** _
+* ***构成应用程序的各项服务是否有不同的基础结构要求，例如更多的 RAM 或更高的 CPU 周期？***
 
-    Often, front-end service can run on smaller VMs (VM sizes like D2) that have ports open to the internet.  Computationally intensive back-end services might need to run on larger VMs (with VM sizes like D4, D6, D15) that are not internet-facing. Defining different node types for these services allow you to make more efficient and secure use of underlying Service Fabric VMs, and enables them to scale them independently. For more on estimating the amount of resources you'll need, see [Capacity planning for Service Fabric applications](service-fabric-capacity-planning.md)
+    前端服务通常可以在容量较小（如 D2 等 VM 大小）且向 Internet 开放了端口的 VM 上运行。  计算密集型后端服务可能需要在不面向 Internet 的大型 VM（D4、D6、D15 等 VM 大小）上运行。 为这些服务定义不同的节点类型，可以更有效、更安全地使用基础 Service Fabric VM，并使它们能够独立缩放。 有关估算所需资源量的详细信息，请参阅 [Service Fabric 应用程序的容量计划](service-fabric-capacity-planning.md)
 
-_ ***是否有应用程序服务需要横向扩展到 100 个节点以上？** _
+* ***是否有应用程序服务需要扩展到 100 个节点以上？***
 
-    A single node type can't reliably scale beyond 100 nodes per virtual machine scale set for Service Fabric applications. Running more than 100 nodes requires additional virtual machine scale sets (and therefore additional node types).
+    对于 Service Fabric 应用程序，单个节点类型无法可靠地扩展到每个虚拟机规模集 100 个节点以上。 运行超过 100 个节点需要额外的虚拟机规模集（因而还需要其他节点类型）。
 
-_ ***群集是否跨越可用性区域？** _
+* ***你的群集是否跨越可用性区域？***
 
-    Service Fabric supports clusters that span across [Availability Zones](../availability-zones/az-overview.md) by deploying node types that are pinned to specific zones, ensuring high-availability of your applications. Availability Zones require additional node type planning and minimum requirements. For details, see [Recommended topology for primary node type of Service Fabric clusters spanning across Availability Zones](service-fabric-cross-availability-zones.md#recommended-topology-for-primary-node-type-of-azure-service-fabric-clusters-spanning-across-availability-zones). 
+    Service Fabric 通过部署固定到特定区域的节点类型来支持跨 [可用性区域](../availability-zones/az-overview.md) 的群集，确保应用程序的高可用性。 可用性区域需要其他节点类型规划和最低要求。 有关详细信息，请参阅 [跨可用性区域 Service Fabric 群集的主节点类型的建议拓扑](service-fabric-cross-availability-zones.md#recommended-topology-for-primary-node-type-of-azure-service-fabric-clusters-spanning-across-availability-zones)。 
 
 为集群的初始创建确定节点类型的数量和属性时，请记住，部署集群后，随时可以添加、修改或删除（非主要）节点类型。 也可以在正在运行的集群中[修改主节点类型](service-fabric-scale-up-primary-node-type.md)（尽管在生产环境中执行此类操作需要大量的计划和谨慎工作）。
 
@@ -73,6 +73,9 @@ _ ***群集是否跨越可用性区域？** _
 | Gold             | 5                              | 专用于单个客户的全节点大小 (例如，L32s、GS5、G5、DS15_v2 D15_v2)  | 可延迟到 Service Fabric 群集批准 | 可以在每个升级域中暂停 2 个小时，以留出更多时间使副本从早期故障中恢复 |
 | Silver           | 5                              | 单核或更多核心的 VM，至少 50 GB 的本地 SSD                      | 可延迟到 Service Fabric 群集批准 | 任何时候都无法延迟                                                    |
 | Bronze          | 1                              | VM，至少 50 GB 的本地 SSD                                              | 不会因为 Service Fabric 群集延迟           | 任何时候都无法延迟                                                    |
+
+> [!NOTE]
+> 以上提到的最小 Vm 数是每个持久性级别的必需要求。 我们进行了就地验证，这将阻止创建或修改不满足这些要求的现有虚拟机 scalesets。
 
 > [!WARNING]
 > 在青铜级持续性下，无法进行自动 OS 映像升级。 虽然不推荐将[补丁协调应用程序](service-fabric-patch-orchestration-application.md)（仅适用于非 Azure 托管群集）用于白银或更高持续性级别，但对于 Service Fabric 升级域，只能通过它自动执行 Windows 更新。

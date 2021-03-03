@@ -5,13 +5,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: how-to
-ms.date: 11/12/2020
-ms.openlocfilehash: bdbbf3e808e1dda0970aaf87d154ee79bea4dcb1
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.date: 02/24/2021
+ms.openlocfilehash: f87ad76e9bb1db4d71716bf860d5fee2d413e8e9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97964161"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101740369"
 ---
 # <a name="share-and-receive-data-from-azure-sql-database-and-azure-synapse-analytics"></a>从 Azure SQL 数据库和 Azure Synapse Analytics 共享和接收数据
 
@@ -275,7 +275,7 @@ Azure 数据共享支持从 Azure SQL 数据库和 Azure Synapse Analytics 中�
 ### <a name="trigger-a-snapshot"></a>触发快照
 这些步骤仅适用于基于快照的共享。
 
-1. 可以通过依次选择“详细信息”选项卡、“触发快照”来触发快照 。 在这里，可以触发数据的完整或增量快照。 如果是首次从数据提供者处接收数据，请选择完整副本。 对于 SQL 源，仅支持完整快照。
+1. 可以通过依次选择“详细信息”选项卡、“触发快照”来触发快照 。 在这里，可以触发数据的完整或增量快照。 如果是首次从数据提供者处接收数据，请选择完整副本。 对于 SQL 源，仅支持完整快照。 当执行快照时，后续快照将不会启动，直到上一个快照完成为止。
 
    ![触发快照](./media/trigger-snapshot.png "触发快照") 
 
@@ -293,7 +293,7 @@ Azure 数据共享支持从 Azure SQL 数据库和 Azure Synapse Analytics 中�
 |:--- |:--- |
 | bigint |Int64 |
 | binary |Byte[] |
-| bit |布尔 |
+| bit |Boolean |
 | char |String, Char[] |
 | date |DateTime |
 | datetime |DateTime |
@@ -302,7 +302,7 @@ Azure 数据共享支持从 Azure SQL 数据库和 Azure Synapse Analytics 中�
 | 小数 |小数 |
 | FILESTREAM attribute (varbinary(max)) |Byte[] |
 | Float |Double |
-| 图像 |Byte[] |
+| image |Byte[] |
 | int |Int32 |
 | money |小数 |
 | nchar |String, Char[] |

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/11/2020
-ms.openlocfilehash: e8ad1cda8f80b1dbbdd56fb47bbf6c22aff82729
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 128a82fdc9b5a37258b5ca245a63bf52c050db26
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100606269"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713603"
 ---
 # <a name="log-analytics-data-security"></a>Log Analytics 数据安全
 本文档旨在提供特定于 Azure Log Analytics 的信息（Azure Monitor 的功能），用于补充有关 [Azure 信任中心](https://www.microsoft.com/en-us/trust-center?rtc=1)的信息。  
@@ -183,12 +183,12 @@ Log Analytics 服务通过使用 Azure 身份验证对证书和数据完整性�
 ## <a name="additional-security-features"></a>附加安全功能
 可以使用这些附加安全功能来进一步保护 Azure Monitor/Log Analytics 环境。 这些功能需要更多的管理员管理工作。 
 - [客户管理的（安全）密钥](../logs/customer-managed-keys.md) - 可以使用客户管理的密钥来加密发送到 Log Analytics 工作区的数据。 它需要使用 Azure Key Vault。 
-- [专用/客户管理的存储](../platform/private-storage.md) -管理个人加密的存储帐户，并告诉 Log Analytics 使用它来存储监视数据 
-- [专用链接网络](../platform/private-link-security.md) -Azure 专用链接允许你安全地将 azure PaaS 服务链接 (包括使用专用终结点 Azure Monitor) 到你的虚拟网络。 
+- [专用/客户管理的存储](./private-storage.md) -管理个人加密的存储帐户，并告诉 Log Analytics 使用它来存储监视数据 
+- [专用链接网络](./private-link-security.md) -Azure 专用链接允许你安全地将 azure PaaS 服务链接 (包括使用专用终结点 Azure Monitor) 到你的虚拟网络。 
 - [Azure 客户密码箱](../../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-preview) -用于 Microsoft Azure 的客户密码箱提供了一个界面，供客户查看和批准或拒绝客户数据访问请求。 当 Microsoft 工程师需要在支持请求期间访问客户数据时，可以使用此功能。
 
 
 ## <a name="next-steps"></a>后续步骤
-* 遵循 [Azure VM 快速入门](../learn/quick-collect-azurevm.md)，了解如何使用 Log Analytics 收集 Azure VM 的数据。  
+* 遵循 [Azure VM 快速入门](../vm/quick-collect-azurevm.md)，了解如何使用 Log Analytics 收集 Azure VM 的数据。  
 
-*  如果想要从环境中的 Windows 或 Linux 物理机或虚拟机收集数据，请参阅[适用于 Linux 计算机的快速入门](../vm/quick-collect-linux-computer.md)或[适用于 Windows 计算机的快速入门](../learn/quick-collect-windows-computer.md)
+*  如果想要从环境中的 Windows 或 Linux 物理机或虚拟机收集数据，请参阅[适用于 Linux 计算机的快速入门](../vm/quick-collect-linux-computer.md)或[适用于 Windows 计算机的快速入门](../vm/quick-collect-windows-computer.md)

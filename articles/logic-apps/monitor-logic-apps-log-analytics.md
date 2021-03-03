@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 09/24/2020
-ms.openlocfilehash: d72e3ffc8698d9f3a2df170bd87f2969475ca9ed
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: d1c095be1d0525cc843c04a3b83e14bb4211b175
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100580690"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101721253"
 ---
 # <a name="set-up-azure-monitor-logs-and-collect-diagnostics-data-for-azure-logic-apps"></a>设置 Azure Monitor 日志并收集 Azure 逻辑应用的诊断数据
 
@@ -142,9 +142,6 @@ ms.locfileid: "100580690"
    下面是一个显示特定逻辑应用所有运行的示例：
 
    ![查看逻辑应用运行和状态](./media/monitor-logic-apps-log-analytics/logic-app-run-details.png)
-
-   > [!NOTE]
-   > 此页面上的 **重新提交** 功能当前不可用。
 
    对于 [设置跟踪的属性](#extend-data)的操作，还可以通过在 "**跟踪属性**" 列中选择 "**视图**" 来查看这些属性。 若要搜索跟踪的属性，请使用列筛选器。
 

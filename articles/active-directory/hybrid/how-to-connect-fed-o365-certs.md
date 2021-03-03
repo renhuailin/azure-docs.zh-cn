@@ -16,12 +16,12 @@ ms.date: 10/20/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 78dcd9d020923251439a05316569b559c19057d1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: effdd156858caf5717aac92433e8bc5f4f6147ad
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89661459"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101686863"
 ---
 # <a name="renew-federation-certificates-for-microsoft-365-and-azure-active-directory"></a>续签 Microsoft 365 和 Azure Active Directory 的联合身份验证证书
 ## <a name="overview"></a>概述
@@ -34,7 +34,7 @@ ms.locfileid: "89661459"
 * 正在使用第三方标识提供者。
 
 ## <a name="default-configuration-of-ad-fs-for-token-signing-certificates"></a>令牌签名证书的默认 AD FS 配置
-令牌签名证书和令牌解密证书通常是自签名证书，有效期为一年。 默认情况下，AD FS 包含名为 **AutoCertificateRollover**的自动续订进程。 如果使用的是 AD FS 2.0 或更高版本，Microsoft 365 和 Azure AD 会在证书过期之前自动对其进行更新。
+令牌签名证书和令牌解密证书通常是自签名证书，有效期为一年。 默认情况下，AD FS 包含名为 **AutoCertificateRollover** 的自动续订进程。 如果使用的是 AD FS 2.0 或更高版本，Microsoft 365 和 Azure AD 会在证书过期之前自动对其进行更新。
 
 ### <a name="renewal-notification-from-the-microsoft-365-admin-center-or-an-email"></a>来自 Microsoft 365 管理中心或电子邮件的续订通知
 > [!NOTE]
@@ -157,7 +157,7 @@ https://(your_FS_name)/federationmetadata/2007-06/federationmetadata.xml
    >
 3. 查看命令输出中是否存在任何已列出的证书。 如果 AD FS 已生成新证书，则会在输出中看到两个证书：一个证书的 **IsPrimary** 值为 **True**，**NotAfter** 日期为 5 天内；另一个证书的 **IsPrimary** 为 **False**，**NotAfter** 大约为未来的 1 年。
 4. 如果只看到一个证书，且 **NotAfter** 日期在 5 天内，则需要生成新的证书。
-5. 若要生成新的证书，请在 PowerShell 命令提示符下执行以下命令： `PS C:\>Update-ADFSCertificate –CertificateType token-signing`。
+5. 若要生成新的证书，请在 PowerShell 命令提示符下执行以下命令： `PS C:\Update-ADFSCertificate –CertificateType token-signing`。
 6. 通过再次运行以下命令来验证更新：PS C:\>Get-ADFSCertificate –CertificateType token-signing
 
 此时会列出两个证书，其中一个的 **NotAfter** 日期大约为未来的 1 年，其 **IsPrimary** 值为 **False**。
@@ -167,7 +167,7 @@ https://(your_FS_name)/federationmetadata/2007-06/federationmetadata.xml
 
 1. 打开用于 Windows PowerShell 的 Microsoft Azure Active Directory 模块。
 2. 运行 $cred=Get-Credential。 当此 cmdlet 提示输入凭据时，键入云服务管理员帐户凭据。
-3. 运行 Connect-MsolService – Credential $cred。此 cmdlet 会将你连接到云服务。 通过工具运行任何其他已安装的 cmdlet 之前，必须创建你将连接到云服务的上下文。
+3. 运行 Connect-MsolService –Credential $cred。此 cmdlet 会你将连接到云服务。 通过工具运行任何其他已安装的 cmdlet 之前，必须创建你将连接到云服务的上下文。
 4. 如果在并非用作 AD FS 主联合服务器的计算机上运行这些命令，请运行 Set-MSOLAdfscontext -Computer &lt;AD FS primary server&gt;，其中 &lt;AD FS primary server&gt; 是主 AD FS 服务器的内部 FQDN 名称。 此 cmdlet 会创建你将连接到 AD FS 的上下文。
 5. 运行 Update-MSOLFederatedDomain -DomainName &lt;domain&gt;。 此 cmdlet 会将 AD FS 的设置更新到云服务中，并配置两者之间的信任关系。
 

@@ -3,12 +3,12 @@ title: 用于部署的链接模板
 description: 介绍如何使用 Azure 资源管理器模板（ARM 模板）中的链接模板创建一个模块化的模板解决方案。 演示如何传递参数值、指定参数文件和动态创建的 URL。
 ms.topic: conceptual
 ms.date: 01/26/2021
-ms.openlocfilehash: aae3947656e475d15bc4f0da770d0398fafa13c5
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: ac987b1390e939ad2b081745396245b432bb836b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880419"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101740998"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>部署 Azure 资源时使用链接模版和嵌套模版
 
@@ -281,7 +281,7 @@ ms.locfileid: "98880419"
 }
 ```
 
-使用嵌套模板中的安全参数值时请小心。 如果将作用域设置为 "外部"，则安全值将在部署历史记录中存储为纯文本。 在部署历史记录中查看模板的用户可以看到安全值。 改为使用内部范围或向父模板添加需要安全值的资源。
+使用嵌套模板中的安全参数值时请小心。 如果将范围设置为“外部”，则安全值将作为纯文本存储在部署历史记录中。 在部署历史记录中查看模板的用户可以看到安全值。 改为使用内部范围或向父模板添加需要安全值的资源。
 
 以下摘录显示了哪些值是安全的，哪些值是不安全的。
 
@@ -668,10 +668,10 @@ az deployment group create \
             "kind": "StorageV2"
             // Copy works here when scope is inner
             // But, when scope is default or outer, you get an error
-            //"copy":{
-            //  "name": "storagecopy",
-            //  "count": 2
-            //}
+            // "copy": {
+            //   "name": "storagecopy",
+            //   "count": 2
+            // }
           }
         ]
       }

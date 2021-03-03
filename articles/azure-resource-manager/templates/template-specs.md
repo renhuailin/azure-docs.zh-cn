@@ -2,15 +2,15 @@
 title: 创建和部署模板规格
 description: 介绍如何创建模板规格并与组织中的其他用户共享。
 ms.topic: conceptual
-ms.date: 01/14/2021
+ms.date: 03/02/2021
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 762c483883d391c436065b13b54f127f1618d7f9
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: e4efc63ffa49b1c8ca44fc806e37e4aa91cd76c8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98734909"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101700382"
 ---
 # <a name="azure-resource-manager-template-specs-preview"></a>Azure 资源管理器模板规格（预览版）
 
@@ -246,6 +246,78 @@ az deployment group create \
 
 ---
 
+## <a name="versioning"></a>版本控制
+
+创建模板规格时，需要为其提供版本名称。 循环访问模板代码时，可以更新现有版本（获取修补程序）或发布新版本。 版本是文本字符串。 可以选择遵循任意版本控制系统，包括语义化版本控制。 模板规格的用户可提供部署模板规格时要使用的版本名称。
+
+## <a name="use-tags"></a>使用标记
+
+可以通过[标记](../management/tag-resources.md)对资源进行逻辑组织。 您可以使用 Azure PowerShell 和 Azure CLI 将标记添加到模板规范：
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```azurepowershell
+New-AzTemplateSpec `
+  -Name storageSpec `
+  -Version 1.0a `
+  -ResourceGroupName templateSpecsRg `
+  -Location westus2 `
+  -TemplateFile ./mainTemplate.json `
+  -Tag @{Dept="Finance";Environment="Production"}
+```
+
+# <a name="cli"></a>[CLI](#tab/azure-cli)
+
+```azurecli
+az ts create \
+  --name storageSpec \
+  --version "1.0a" \
+  --resource-group templateSpecRG \
+  --location "westus2" \
+  --template-file "./mainTemplate.json" \
+  --tags Dept=Finance Environment=Production
+```
+
+---
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```azurepowershell
+Set-AzTemplateSpec `
+  -Name storageSpec `
+  -Version 1.0a `
+  -ResourceGroupName templateSpecsRg `
+  -Location westus2 `
+  -TemplateFile ./mainTemplate.json `
+  -Tag @{Dept="Finance";Environment="Production"}
+```
+
+# <a name="cli"></a>[CLI](#tab/azure-cli)
+
+```azurecli
+az ts update \
+  --name storageSpec \
+  --version "1.0a" \
+  --resource-group templateSpecRG \
+  --location "westus2" \
+  --template-file "./mainTemplate.json" \
+  --tags Dept=Finance Environment=Production
+```
+
+---
+
+当使用指定的版本参数创建或修改模板规范时，但没有标记/标记参数：
+
+- 如果模板规范存在并且具有标记，但该版本不存在，则新版本将继承与现有模板规范相同的标记。
+
+当创建或修改具有标记/标记参数和指定的 version 参数的模板规范时：
+
+- 如果模板规范和版本都不存在，则会将标记添加到新的模板规范和新版本。
+- 如果模板规范存在，但该版本不存在，则仅将标记添加到新版本。
+- 如果模板规范和版本都存在，则标记仅适用于版本。
+
+当使用指定的标记/标记参数修改模板时，如果未指定 version 参数，则仅将标记添加到模板规范。
+
 ## <a name="create-a-template-spec-with-linked-templates"></a>创建具有链接模板的模板规格
 
 如果模板规格的主模板引用了链接模板，则 PowerShell 和 CLI 命令可以自动查找并打包本地驱动器中的链接模板。 无需手动配置存储帐户或存储库即可托管模板规格 - 模板规格资源中包含了所有内容。
@@ -331,10 +403,6 @@ az deployment group create \
 ```
 
 有关链接模板规格的详细信息，请参阅[教程：将模板规格部署为链接模板](template-specs-deploy-linked-template.md)。
-
-## <a name="versioning"></a>版本控制
-
-创建模板规格时，需要为其提供版本名称。 循环访问模板代码时，可以更新现有版本（获取修补程序）或发布新版本。 版本是文本字符串。 可以选择遵循任意版本控制系统，包括语义化版本控制。 模板规格的用户可提供部署模板规格时要使用的版本名称。
 
 ## <a name="next-steps"></a>后续步骤
 

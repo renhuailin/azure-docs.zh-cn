@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/09/2021
 ms.author: bagol
-ms.openlocfilehash: 90646339ef41d0629a4d1ce8efed4b50427d3b2b
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 25f83088bdc55dbafe7ccf0ff06b0c6595c9ea71
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100417150"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101724347"
 ---
 # <a name="resources-for-creating-azure-sentinel-custom-connectors"></a>用于创建 Azure Sentinel 自定义连接器的资源
 
@@ -55,9 +55,9 @@ Azure Sentinel 提供 [适用于 Azure 服务和外部解决方案的各种内�
 
 如果数据源在文件中传递事件，我们建议使用 Azure Monitor Log Analytics 代理创建自定义连接器。
 
-- 有关详细信息，请参阅 [在 Azure Monitor 中收集自定义日志](/azure/azure-monitor/platform/data-sources-custom-logs)。
+- 有关详细信息，请参阅 [在 Azure Monitor 中收集自定义日志](../azure-monitor/agents/data-sources-custom-logs.md)。
 
-- 有关此方法的示例，请参阅 [在 Azure Monitor 中使用适用于 Linux 的 Log Analytics Agent 收集自定义 JSON 数据源](/azure/azure-monitor/platform/data-sources-json)。
+- 有关此方法的示例，请参阅 [在 Azure Monitor 中使用适用于 Linux 的 Log Analytics Agent 收集自定义 JSON 数据源](../azure-monitor/agents/data-sources-json.md)。
 
 ## <a name="connect-with-logstash"></a>连接 Logstash
 
@@ -83,7 +83,7 @@ Azure Sentinel 提供 [适用于 Azure 服务和外部解决方案的各种内�
 
 ## <a name="connect-with-logic-apps"></a>与逻辑应用连接
 
-使用 [Azure 逻辑应用](/azure/logic-apps/) 创建无服务器的自定义连接器用于 Azure Sentinel。
+使用 [Azure 逻辑应用](../logic-apps/index.yml) 创建无服务器的自定义连接器用于 Azure Sentinel。
 
 > [!NOTE]
 > 使用逻辑应用创建无服务器连接器可能会很方便，但对于大量数据，使用连接器的逻辑应用可能会耗费大量的数据。
@@ -95,9 +95,9 @@ Azure Sentinel 提供 [适用于 Azure 服务和外部解决方案的各种内�
 
     |触发器  |说明  |
     |---------|---------|
-    |**定期任务**     |   例如，将逻辑应用计划为从特定文件、数据库或外部 Api 定期检索数据。 <br>有关详细信息，请参阅 [在 Azure 逻辑应用中创建、计划和运行定期任务和工作流](/azure/connectors/connectors-native-recurrence)。      |
-    |**按需触发**     | 按需运行逻辑应用，以进行手动数据收集和测试。 <br>有关详细信息，请参阅  [使用 HTTPS 终结点调用、触发或嵌套逻辑应用](/azure/logic-apps/logic-apps-http-endpoint)。        |
-    |**HTTP/S 终结点**     |  建议用于流式处理，并且源系统可以启动数据传输。 <br>有关详细信息，请参阅 [通过 HTTP 或 HTTPs 调用服务终结点](/azure/connectors/connectors-native-http)。       |
+    |**定期任务**     |   例如，将逻辑应用计划为从特定文件、数据库或外部 Api 定期检索数据。 <br>有关详细信息，请参阅 [在 Azure 逻辑应用中创建、计划和运行定期任务和工作流](../connectors/connectors-native-recurrence.md)。      |
+    |**按需触发**     | 按需运行逻辑应用，以进行手动数据收集和测试。 <br>有关详细信息，请参阅  [使用 HTTPS 终结点调用、触发或嵌套逻辑应用](../logic-apps/logic-apps-http-endpoint.md)。        |
+    |**HTTP/S 终结点**     |  建议用于流式处理，并且源系统可以启动数据传输。 <br>有关详细信息，请参阅 [通过 HTTP 或 HTTPs 调用服务终结点](../connectors/connectors-native-http.md)。       |
     |     |         |
 
 1. **使用任何可读取信息的逻辑应用连接器获取事件**。 例如：
@@ -112,9 +112,9 @@ Azure Sentinel 提供 [适用于 Azure 服务和外部解决方案的各种内�
 
 1. **准备要检索的信息**。
 
-    例如，使用 " [分析 json" 操作](/azure/logic-apps/logic-apps-perform-data-operations#parse-json-action) 可以访问 JSON 内容中的属性，使你能够在为逻辑应用指定输入时从动态内容列表中选择这些属性。
+    例如，使用 " [分析 json" 操作](../logic-apps/logic-apps-perform-data-operations.md#parse-json-action) 可以访问 JSON 内容中的属性，使你能够在为逻辑应用指定输入时从动态内容列表中选择这些属性。
 
-    有关详细信息，请参阅 [在 Azure 逻辑应用中执行数据操作](/azure/logic-apps/logic-apps-perform-data-operations)。
+    有关详细信息，请参阅 [在 Azure 逻辑应用中执行数据操作](../logic-apps/logic-apps-perform-data-operations.md)。
 
 1. 将 **数据写入 Log Analytics**。
 
@@ -174,14 +174,14 @@ Import-Csv .\testcsv.csv
 
 直接调用 RESTful 终结点需要更多编程，它还提供更多的灵活性。
 
-有关详细信息，请参阅 [Log Analytics 数据收集器 API](/azure/azure-monitor/platform/data-collector-api)，尤其是以下示例：
+有关详细信息，请参阅 [Log Analytics 数据收集器 API](../azure-monitor/logs/data-collector-api.md)，尤其是以下示例：
 
-- [C#](https://docs.microsoft.com/azure/azure-monitor/platform/data-collector-api#c-sample)
-- [Python 2](https://docs.microsoft.com/azure/azure-monitor/platform/data-collector-api#python-2-sample)
+- [C#](../azure-monitor/logs/data-collector-api.md#c-sample)
+- [Python 2](../azure-monitor/logs/data-collector-api.md#python-2-sample)
 
 ## <a name="connect-with-azure-functions"></a>连接 Azure Functions
 
-结合使用 Azure Functions 和各种编码语言（例如 [PowerShell](/azure/azure-functions/functions-reference-powershell)）来创建无服务器的自定义连接器。
+结合使用 Azure Functions 和各种编码语言（例如 [PowerShell](../azure-functions/functions-reference-powershell.md)）来创建无服务器的自定义连接器。
 
 有关此方法的示例，请参阅：
 
@@ -189,7 +189,7 @@ Import-Csv .\testcsv.csv
 - [将 Okta Single Sign-On 连接到 Azure Sentinel with Azure Function](connect-okta-single-sign-on.md)
 - [通过 Azure Function 将 Proofpoint on demand 点击连接到 Azure Sentinel](connect-proofpoint-tap.md)
 - [将 Qualys VM 与 azure Function 连接到 Azure Sentinel](connect-qualys-vm.md)
-- [引入 XML、CSV 或其他格式的数据](/azure/azure-monitor/platform/create-pipeline-datacollector-api#ingesting-xml-csv-or-other-formats-of-data)
+- [引入 XML、CSV 或其他格式的数据](../azure-monitor/logs/create-pipeline-datacollector-api.md#ingesting-xml-csv-or-other-formats-of-data)
 - [利用 Azure Sentinel 监视缩放](https://techcommunity.microsoft.com/t5/azure-sentinel/monitoring-zoom-with-azure-sentinel/ba-p/1341516) (博客) 
 - [部署用于将 Office 365 管理 API 数据导入 Azure sentinel](https://github.com/Azure/Azure-Sentinel/tree/master/DataConnectors/O365%20Data) (Azure sentinel GitHub 社区的 Function App) 
 

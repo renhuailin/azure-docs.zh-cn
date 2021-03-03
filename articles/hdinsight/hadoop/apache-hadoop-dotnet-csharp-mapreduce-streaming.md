@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, seoapr2020, devx-track-csharp
 ms.date: 04/28/2020
-ms.openlocfilehash: 6948491091f558aa7f317d519b0f92c63cac4788
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 6e2758fd650547978924c25f8f3faf1e3e7194f6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98946634"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699379"
 ---
 # <a name="use-c-with-mapreduce-streaming-on-apache-hadoop-in-hdinsight"></a>在 HDInsight 中的 Apache Hadoop 上将 C# 与 MapReduce 流式处理配合使用
 
@@ -20,7 +20,7 @@ Apache Hadoop 流式处理使你能够使用脚本或可执行文件运行 MapRe
 
 ## <a name="net-on-hdinsight"></a>HDInsight 上的 .NET
 
-HDInsight 群集使用 [Mono (https://mono-project.com)](https://mono-project.com) 运行 .NET 应用程序。 HDInsight 版本 3.6 附带了 Mono 版本 4.2.1。 有关 HDInsight 随附的 Mono 版本的详细信息，请参阅[不同 HDInsight 版本随附的 Apache Hadoop 组件](../hdinsight-component-versioning.md#apache-components-available-with-different-hdinsight-versions)。
+HDInsight 群集使用 [Mono (https://mono-project.com)](https://mono-project.com) 运行 .NET 应用程序。 HDInsight 版本 3.6 附带了 Mono 版本 4.2.1。 有关 HDInsight 随附的 Mono 版本的详细信息，请参阅 [hdinsight 版本中可用的 Apache Hadoop 组件](../hdinsight-component-versioning.md)。
 
 有关 Mono 与 .NET Framework 版本的兼容性的详细信息，请参阅 [Mono 兼容性](https://www.mono-project.com/docs/about-mono/compatibility/)。
 

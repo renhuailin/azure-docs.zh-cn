@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 12/02/2020
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 5ecf9e49887eb584269f724d5199cbfb014351e0
-ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
+ms.openlocfilehash: 0c73d0394486472c2c3c92450aab6a1a0d329cf7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98986847"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101698206"
 ---
 # <a name="customer-responsibilities-for-running-azure-spring-cloud-in-vnet"></a>在 VNET 中运行 Azure 春季云中的客户责任
 本文档包含有关在虚拟网络中使用 Azure 春季云的规格。
@@ -32,15 +32,15 @@ ms.locfileid: "98986847"
 
 ## <a name="azure-spring-cloud-network-requirements"></a>Azure 春季云网络要求
 
-  | 目标终结点 | 端口 | 用途 | 备注 |
+  | 目标终结点 | 端口 | 用途 | 注意 |
   |------|------|------|
-  | *： 1194 *或* [ServiceTag](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) -AzureCloud：1194 | UDP：1194 | 底层 Kubernetes 群集管理。 | |
-  | *： 443 *或* [ServiceTag](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) -AzureCloud：443 | TCP：443 | Azure 春季云服务管理。 | 在 "networkProfile" 部分下的资源负载中，可以了解服务实例 "requiredTraffics" 的信息。 |
-  | *： 9000 *或* [ServiceTag](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) -AzureCloud：9000 | TCP：9000 | 底层 Kubernetes 群集管理。 |
+  | *： 1194 *或* [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) -AzureCloud：1194 | UDP：1194 | 底层 Kubernetes 群集管理。 | |
+  | *： 443 *或* [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) -AzureCloud：443 | TCP：443 | Azure 春季云服务管理。 | 在 "networkProfile" 部分下的资源负载中，可以了解服务实例 "requiredTraffics" 的信息。 |
+  | *： 9000 *或* [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) -AzureCloud：9000 | TCP：9000 | 底层 Kubernetes 群集管理。 |
   | *： 123 *或* ntp.ubuntu.com:123 | UDP:123 | Linux 节点上的 NTP 时间同步。 | |
-  | *. azure.io:443 *或* [ServiceTag](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) -AzureContainerRegistry：443 | TCP：443 | Azure 容器注册表。 | 可以通过 [在虚拟网络中](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)启用 *Azure 容器注册表* 服务终结点来替换。 |
-  | *. core.windows.net:443 和 *. core.windows.net:445 *或* [ServiceTag](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) -Storage：443和 storage：445 | TCP：443，TCP：445 | Azure 文件存储 | 可以替换为虚拟网络中的 *Azure 存储*[服务终结点](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)。 |
-  | *. servicebus.windows.net:443 *或* [ServiceTag](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) ：443 | TCP：443 | Azure 事件中心。 | 可以替换为虚拟网络中的 *Azure 事件中心*[服务终结点](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)。 |
+  | *. azure.io:443 *或* [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) -AzureContainerRegistry：443 | TCP：443 | Azure 容器注册表。 | 可以通过 [在虚拟网络中](../virtual-network/virtual-network-service-endpoints-overview.md)启用 *Azure 容器注册表* 服务终结点来替换。 |
+  | *. core.windows.net:443 和 *. core.windows.net:445 *或* [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) -Storage：443和 storage：445 | TCP：443，TCP：445 | Azure 文件存储 | 可以替换为虚拟网络中的 *Azure 存储*[服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)。 |
+  | *. servicebus.windows.net:443 *或* [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) ：443 | TCP：443 | Azure 事件中心。 | 可以替换为虚拟网络中的 *Azure 事件中心*[服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)。 |
   
 
 ## <a name="azure-spring-cloud-fqdn-requirements--application-rules"></a>Azure 春季 Cloud FQDN 要求/应用程序规则
@@ -63,4 +63,4 @@ Azure 防火墙提供完全限定的域名 (FQDN) 标记 **AzureKubernetesServic
 
 ## <a name="see-also"></a>另请参阅
 * [在专用网络中访问应用程序](spring-cloud-access-app-virtual-network.md)
-* [使用应用程序网关和 Azure 防火墙公开应用程序](spring-cloud-expose-apps-gateway-azure-firewall.md) 
+* [使用应用程序网关和 Azure 防火墙公开应用程序](spring-cloud-expose-apps-gateway-azure-firewall.md)

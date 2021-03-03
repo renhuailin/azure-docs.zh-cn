@@ -7,279 +7,949 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 04/29/2020
+ms.date: 02/17/2021
 ms.author: aahi
-ms.openlocfilehash: 49a2b285d9494dfc5ca0863c021733b4bc874efa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a376b050d79709885e3542d330bb6b1eea48d046
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91779333"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750853"
 ---
-此实体类别包括财务信息和官方形式的标识。 从模型版本开始可用 `2019-10-01` 。 下面列出了子类型。 
-
 ### <a name="financial-account-identification"></a>财务帐户标识
 
-| 子类型名称               | 说明                                                                |
-|----------------------------|----------------------------------------------------------------------------|
-| ABA 路由号码        | 美国银行家协会 (ABA) 传输路由号。                  |
-| SWIFT 代码                 | 付款说明信息的 SWIFT 代码。                           |
-| 信用卡                | 信用卡号。                                                       |
-| 国际银行帐号 (IBAN)                  | 付款说明信息的 IBAN 编码。                            |
+此实体类别包括标识的财务信息和正式形式。
 
+#### <a name="category-aba-routing-number"></a>类别： ABA 路由号
+
+此类别包含以下实体：
+
+:::row:::
+    :::column span="":::
+        **实体**
+
+        ABA 路由号码
+
+    :::column-end:::
+    :::column span="2":::
+        **详细信息**
+
+        美国银行家协会 (ABA) 转账路由号码。
+      
+    :::column-end:::
+:::row-end:::
+
+#### <a name="category-swift-code"></a>类别： SWIFT 代码
+
+此类别包含以下实体：
+
+:::row:::
+    :::column span="":::
+        **实体**
+
+        SWIFT 代码
+
+    :::column-end:::
+    :::column span="2":::
+        **详细信息**
+
+        付款说明信息中的 SWIFT 代码。
+      
+    :::column-end:::
+:::row-end:::
+
+#### <a name="category-credit-card"></a>类别：信用卡
+
+此类别包含以下实体：
+
+:::row:::
+    :::column span="":::
+        **实体**
+
+        信用卡
+
+    :::column-end:::
+    :::column span="2":::
+        **详细信息**
+
+        信用卡卡号。 
+      
+    :::column-end:::
+:::row-end:::
+
+#### <a name="category-international-banking-account-number-iban"></a>类别：国际银行帐号 (IBAN)  
+
+此类别包含以下实体：
+
+:::row:::
+    :::column span="":::
+        **实体**
+
+        信用卡
+
+    :::column-end:::
+    :::column span="2":::
+        **详细信息**
+
+        付款说明信息中的 IBAN 代码。
+      
+    :::column-end:::
+:::row-end:::
 
 ### <a name="government-and-countryregion-specific-identification"></a>政府和国家/地区特定的标识
 
 > [!NOTE]
-> 以下财务和国家/地区特定的实体不随参数一起返回 `domain=phi` ：
+> 以下特定于财务和国家/地区的实体不随 `domain=phi` 参数一起返回：
 > * 护照号码
-> * 税 Id
+> * 税务 ID
 
-以下实体按国家/地区进行分组和列出：
+以下实体按国家/地区分组和列出：
 
-阿根廷
-* 阿根廷国家标准 (DNI) 号
+#### <a name="argentina"></a>阿根廷
 
-奥地利
-* 奥地利标识卡
-* 奥地利纳税标识号
-* 奥地利增值增值税 (VAT) 号
+:::row:::
+    :::column span="":::
+        **实体**
 
-澳大利亚
-* 澳大利亚银行帐号
-* 澳大利亚业务数字
-* 澳大利亚公司编号
-* 澳大利亚驾照号码
-* 澳大利亚医疗帐号
-* 澳大利亚登记卡号码
-* 澳大利亚税金文件编号
+        阿根廷国民身份证 (DNI) 号码
 
-比利时
-* 比利时国号
-* 比利时增值税号
+    :::column-end:::
+:::row-end:::
 
-巴西 
-* 巴西法定实体编号 (CNPJ) 
-* 巴西 CPF 号
-* 巴西国家/地区 ID 卡 (RG) 
 
-保加利亚
-* 保加利亚统一民事号码
+#### <a name="austria"></a>奥地利
 
-加拿大
-* 加拿大银行帐号
-* 加拿大驾照号码
-* 加拿大运行状况服务号
-* 加拿大 Passport 号码
-* 加拿大个人健康标识号 (PHIN) 
-* 加拿大社会保险电话号码
+:::row:::
+    :::column span="":::
+        **实体**
 
-智利
-* 标识卡号 
+        奥地利标识卡
 
-中国
-* 中国居民标识卡 (PRC) 号
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
 
-克罗地亚
-* 克罗地亚标识卡号
-* 克罗地亚国家 ID 卡号
-* 克罗地亚个人身份 (OIB) 号
+        奥地利纳税标识号
 
-塞浦路斯
-* 塞浦路斯标识卡号
-* 塞浦路斯纳税标识号
+    :::column-end:::
 
-捷克共和国
-* 捷克语个人标识号
+:::row-end:::
+:::row:::
+    :::column span="":::
 
-丹麦
-* 丹麦个人识别码
+        奥地利增值增值税 (VAT) 号
 
-爱沙尼亚
-* 爱沙尼亚个人标识代码
+    :::column-end:::
+:::row-end:::
 
-欧盟 (EU) 
-* 欧盟借记卡号
-* 欧盟驾驶执照号码
-* 欧盟身份证号码
-* 欧盟护照号码
-* 欧盟社会安全号码 (SSN) 或等效 ID
-* 欧盟纳税标识号 (TIN)
 
-芬兰
-* 芬兰欧保健保险编号
-* 芬兰国 ID
-* 芬兰护照号码
 
-法国
-* 法国驾照号码
-* 法国健康保险编号
-* 法国国内 ID 卡 (CNI) 
-* 法国 Passport 号码
-* 法国社会保障号 (INSEE) 
-* 法国纳税标识号 (Numéro SPI) 
-* 法国值加税号
+#### <a name="australia"></a>澳大利亚
 
-德国
-* 德语驾照号码
-* 德国标识卡号
-* 德语 Passport 号码
-* 德国税收标识号
-* 德国增值税号
+:::row:::
+    :::column span="":::
+        **实体**
 
-希腊 
-* 希腊国家/地区 ID 卡号
-* 希腊税号
+        澳大利亚银行帐号
 
-香港特别行政区
-* 香港特别行政区标识卡 (HKID) 号
+    :::column-end:::
 
-匈牙利
-* 匈牙利国家识别号
-* 匈牙利税号
-* 匈牙利值添加的税号
+:::row-end:::
+:::row:::
+    :::column span="":::
 
-印度
-*  (平移) 的印度永久帐号
-* 印度唯一标识 (Aadhaar) 号
+        澳大利亚业务数字
 
-印度尼西亚
-* 印度尼西亚标识卡 (KTP) 号
+    :::column-end:::
 
-爱尔兰
-* 爱尔兰个人公共服务 (PPS) 号
+:::row-end:::
+:::row:::
+    :::column span="":::
 
-以色列
-* 以色列国家 ID
-* 以色列银行帐号
+        澳大利亚公司编号
 
-意大利
-* 意大利驱动程序的许可证 ID
-* 意大利会计代码
-* 增值税增值税号
+    :::column-end:::
 
-日本
-* 日本银行帐号
-* 日本驾照号码
-* 日语我的个人电话号码
-* 日本我的数字公司
-* 日本居民注册号
-* 日本居住证号码
-* 日本社交保险编号 (SIN) 
-* 日本护照号码
+:::row-end:::
+:::row:::
+    :::column span="":::
 
-拉脱维亚
-* 拉脱维亚个人代码
+        澳大利亚驾照  
 
-立陶宛
-* 立陶宛个人代码
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
 
-卢森堡
-* 卢森堡)  (的国家识别号
-* 卢森堡国内标识号 (非自然人员) 
+        澳大利亚医疗帐号
 
-马来西亚
-* 马来西亚标识卡号
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
 
-马耳他
-* 马耳他标识卡号
-* 马耳他税号
+        澳大利亚登记卡号码
 
-荷兰
-* 荷兰公民服务 (BSN) 号码
-* 荷兰税号
-* 荷兰增值税号
+    :::column-end:::
 
-新西兰
-* 新西兰银行帐号
-* 新西兰驾照号码
-* 新西兰 Inland 收入
-* 新西兰的健康部
-* 新西兰社交 Welfare 号码
+:::row-end:::
+:::row:::
+    :::column span="":::
 
-挪威
-* 挪威标识编号
+        澳大利亚登记卡号码
 
-菲律宾
-* 菲律宾统一多用途 ID 号
+    :::column-end:::
 
-波兰
-* 波兰标识卡
-* 波兰国 ID (PESEL) 
-* 波兰 Passport 号码
-* 波兰 REGON 号
-* 波兰纳税标识号
+:::row-end:::
+:::row:::
+    :::column span="":::
 
-葡萄牙 
-* 葡萄牙公民卡编号
-* 葡萄牙税号
+        澳大利亚税金文件编号
 
-罗马尼亚
-* 罗马尼亚个人数字代码 (CNP) 
+    :::column-end:::
 
-俄罗斯
-*  (国内) 的俄罗斯护照号码
-* 俄文 Passport 号码 (国际) 
+:::row-end:::
 
-沙特阿拉伯
-* 沙特阿拉伯国家 ID
 
-新加坡
-* 新加坡国家注册 ID 卡 (NRIC) 号
+#### <a name="belgium"></a>比利时
 
-斯洛伐克 
-* 斯洛伐克个人号码
+:::row:::
+    :::column span="":::
+        **实体**
 
-斯洛文尼亚
-* 斯洛文尼亚税号
-* 斯洛文尼亚唯一主机公民编号
+        比利时国号
 
-南非
-* 南非识别号
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
 
-韩国
-* 韩国居民注册号
+        比利时值加税 (VAT) 号
 
-西班牙 
-* 西班牙 DNI
-*  (SSN) 的西班牙社会保障号
-* 西班牙纳税标识号
+    :::column-end:::
 
-瑞典
-* 瑞典国家 ID
-* 瑞典 Passport 号码
-* 瑞典纳税标识号
+:::row-end:::
 
-瑞士
-* 瑞士社会保障号 AHV
 
-台湾 
-* 中国台湾地区 ID
-* 台湾居民证书 (ARC/TARC) 
-* 台湾护照号码
+#### <a name="brazil"></a>巴西 
 
-泰国
-* 泰国人口标识代码
+:::row:::
+    :::column span="":::
+        **实体**
 
-土耳其
-* 土耳其语国家识别号
+        巴西法定实体编号 (CNPJ) 
 
-乌克兰
-* 乌克兰 (国内) 
-* 乌克兰 (国际) 
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
 
-英国
-* 英国 驾照号码
-* 英国 选举滚动编号
-* 英国 国家运行状况服务 (NHS) 号
-* 英国 国家保险号码 (NINO) 
-* 英国 Passport 号码
-* 英国 唯一纳税人参考编号
+        巴西 CPF 号
 
-美国
-* U.S. 社会保障号 (SSN) 
-* 美国驾照号码
-* 美国 Passport 号码
-* 美国单独的纳税人标识号 (某种) 
-* 美国药品强制机构 (DEA) 号
-* 美国银行帐号
+    :::column-end:::
+
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        巴西国民身份证 (RG)
+
+    :::column-end:::
+:::row-end:::
+
+#### <a name="canada"></a>加拿大
+
+:::row:::
+    :::column span="":::
+        **实体**
+
+        加拿大银行帐号
+
+    :::column-end:::
+
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        加拿大驾照号码
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        加拿大运行状况服务编号
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        加拿大 passport 号码
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        加拿大个人健康标识号 (PHIN)
+
+    :::column-end:::
+
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        加拿大社会保险电话号码
+
+    :::column-end:::
+:::row-end:::
+
+#### <a name="chile"></a>智利 
+
+:::row:::
+    :::column span="":::
+        **实体**
+
+        智利标识卡号
+
+    :::column-end:::
+:::row-end:::
+
+#### <a name="china"></a>中国
+
+:::row:::
+    :::column span="":::
+        **实体**
+
+        中国居民标识卡 (PRC) 号
+
+    :::column-end:::
+:::row-end:::
+
+
+#### <a name="european-union-eu"></a>欧盟 (EU)
+
+:::row:::
+    :::column span="":::
+        **实体**
+
+        欧盟借记卡号
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        欧盟驱动程序的许可证编号
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        欧盟国家识别号
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        欧盟 passport 号码
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        欧盟社会保障号 (SSN) 或等效 ID
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        欧盟纳税标识号 (TIN)
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        欧盟 GPS 坐标
+
+    :::column-end:::
+:::row-end:::
+
+#### <a name="france"></a>法国
+
+:::row:::
+    :::column span="":::
+        **实体**
+
+        法国驾照号码
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        法国健康保险编号
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        法国国内 ID 卡 (CNI) 
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        法国 passport 号码
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        法国社会安全号码 (INSEE)
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        法国纳税标识号 (Numéro SPI) 
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        法国增值销售税 (VAT) 号
+
+    :::column-end:::
+:::row-end:::
+
+#### <a name="germany"></a>德国
+
+:::row:::
+    :::column span="":::
+        **实体**
+
+        德国驾照编号
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        德国身份证号码
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        德国登记卡号码
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        德国税务标识号
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        德国增值税号码
+
+    :::column-end:::
+:::row-end:::
+
+#### <a name="hong-kong"></a>香港特别行政区
+
+:::row:::
+    :::column span="":::
+        **实体**
+
+        香港特别行政区身份证 (HKID) 号码
+
+    :::column-end:::
+:::row-end:::
+
+#### <a name="hungary"></a>匈牙利
+
+:::row:::
+    :::column span="":::
+        **实体**
+
+        匈牙利个人识别码
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        匈牙利税务标识号
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        匈牙利增值税号码
+
+    :::column-end:::
+:::row-end:::
+
+#### <a name="india"></a>印度
+
+:::row:::
+    :::column span="":::
+        **实体**
+
+        印度永久帐号 (PAN)
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        印度唯一身份 (Aadhaar) 号码
+
+    :::column-end:::
+:::row-end:::
+
+
+#### <a name="indonesia"></a>印度尼西亚
+
+:::row:::
+    :::column span="":::
+        **实体**
+
+        印度尼西亚身份证 (KTP) 号码
+
+    :::column-end:::
+:::row-end:::
+
+#### <a name="ireland"></a>爱尔兰
+
+:::row:::
+    :::column span="":::
+        **实体**
+
+        爱尔兰个人公共服务 (PPS) 号码
+
+    :::column-end:::
+:::row-end:::
+
+#### <a name="israel"></a>以色列
+
+:::row:::
+    :::column span="":::
+        **实体**
+
+        以色列国民身份证
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        以色列银行帐号
+
+    :::column-end:::
+:::row-end:::
+
+#### <a name="italy"></a>意大利
+
+:::row:::
+    :::column span="":::
+        **实体**
+
+        意大利驾照编号
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        意大利会计代码
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        意大利增值税号码
+
+    :::column-end:::
+:::row-end:::
+
+
+#### <a name="japan"></a>日本
+
+:::row:::
+    :::column span="":::
+        **实体**
+
+        日本银行帐号
+
+    :::column-end:::
+
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        日本驾照编号
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        日本 "我的数字" (个人) 
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        日本 "我的数字" (公司) 
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        日本居民注册号码
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        日本居住卡号
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        日本社会保险号码 (SIN)
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        日本护照号码
+
+    :::column-end:::
+:::row-end:::
+
+#### <a name="luxembourg"></a>卢森堡
+
+:::row:::
+    :::column span="":::
+        **实体**
+
+         (自然人员的卢森堡国识别号) 
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        卢森堡国识别码 (非自然人员) 
+
+    :::column-end:::
+:::row-end:::
+
+#### <a name="malta"></a>马耳他
+
+:::row:::
+    :::column span="":::
+        **实体**
+
+        马耳他身份证号码
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        马耳他税务标识号
+
+    :::column-end:::
+:::row-end:::
+
+
+#### <a name="new-zealand"></a>新西兰
+
+:::row:::
+    :::column span="":::
+        **实体**
+
+        新西兰银行帐号
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        新西兰驾照编号
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        新西兰内陆收入编号
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        新西兰卫生部编号
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+       新西兰社会福利号码
+
+    :::column-end:::
+:::row-end:::
+
+
+#### <a name="philippines"></a>菲律宾
+
+:::row:::
+    :::column span="":::
+        **实体**
+
+        菲律宾统一多用途标识号码
+
+    :::column-end:::
+:::row-end:::
+
+#### <a name="portugal"></a>葡萄牙 
+
+:::row:::
+    :::column span="":::
+        **实体**
+
+        葡萄牙公民卡编号
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+       葡萄牙税务标识号
+
+    :::column-end:::
+:::row-end:::
+
+#### <a name="singapore"></a>新加坡
+
+:::row:::
+    :::column span="":::
+        **实体**
+
+        新加坡国家注册身份证 (NRIC) 号码
+
+    :::column-end:::
+:::row-end:::
+
+
+#### <a name="south-africa"></a>南非
+
+:::row:::
+    :::column span="":::
+        **实体**
+
+        南非身份证号码
+
+    :::column-end:::
+:::row-end:::
+
+
+#### <a name="south-korea"></a>韩国
+
+:::row:::
+    :::column span="":::
+        **实体**
+
+        韩国居民注册号码
+
+    :::column-end:::
+:::row-end:::
+
+#### <a name="spain"></a>西班牙
+
+:::row:::
+    :::column span="":::
+        **实体**
+
+        西班牙 DNI
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        西班牙社会安全号码 (SSN)
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        西班牙税务标识号
+
+    :::column-end:::
+:::row-end:::
+ 
+#### <a name="switzerland"></a>瑞士
+
+:::row:::
+    :::column span="":::
+        **实体**
+
+        瑞士社会安全号码 AHV
+
+    :::column-end:::
+:::row-end:::
+
+
+#### <a name="taiwan"></a>台湾 
+
+:::row:::
+    :::column span="":::
+        **实体**
+
+        台湾国民身份证
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+       台湾居民证 (ARC/TARC)
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        台湾护照号码
+
+    :::column-end:::
+:::row-end:::
+
+#### <a name="united-kingdom"></a>英国
+
+:::row:::
+    :::column span="":::
+        **实体**
+
+        英国 驾照编号
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+       英国 选举名册编号
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+       英国 国家医疗服务 (NHS) 号码
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+       英国 国家保险号码 (NINO)
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+       英国 或美国护照号码
+
+    :::column-end:::
+
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+       英国 唯一纳税人参考编号
+
+    :::column-end:::
+
+:::row-end:::
+
+
+#### <a name="united-states"></a>美国
+
+:::row:::
+    :::column span="":::
+        **实体**
+
+        美国社会安全号码 (SSN)
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+       美国驾照编号
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+       美国或英国 护照号码
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+       美国个人纳税人标识号 (ITIN)
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+       美国禁毒署 (DEA) 编号
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+       美国银行帐号
+
+    :::column-end:::
+:::row-end:::

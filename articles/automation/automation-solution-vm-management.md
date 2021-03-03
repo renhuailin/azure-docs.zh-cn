@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 02/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: a521ca80039b68f93bf7c9d98e51d9846e96e985
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: e58f63b6ed7fb26a4e3b3069773810c5e5b7cdc3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100593829"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101732269"
 ---
 # <a name="startstop-vms-during-off-hours-overview"></a>“在空闲时间启动/停止 VM”概述
 
@@ -39,7 +39,7 @@ ms.locfileid: "100593829"
 
 - “在空闲时间启动/停止 VM”功能的 runbook 使用 [Azure 运行方式帐户](./automation-security-overview.md#run-as-accounts)。 运行方式帐户是首选的身份验证方法，因为它使用证书身份验证，而不是可能会过期或经常更改的密码。
 
-- 一个 [Azure Monitor Log Analytics 工作区，该工作区](../azure-monitor/platform/design-logs-deployment.md) 将 runbook 作业日志和作业流结果存储在工作区中进行查询和分析。 自动化帐户可以链接到新的或现有的 Log Analytics 工作区，并且这两个资源需要位于同一资源组中。
+- 一个 [Azure Monitor Log Analytics 工作区，该工作区](../azure-monitor/logs/design-logs-deployment.md) 将 runbook 作业日志和作业流结果存储在工作区中进行查询和分析。 自动化帐户可以链接到新的或现有的 Log Analytics 工作区，并且这两个资源需要位于同一资源组中。
 
 对于为“在空闲时间启动/停止 VM”功能启用的 VM，建议使用单独的自动化帐户。 Azure 模块版本经常升级，其参数可能会更改。 此功能不按照与之相同的频率升级，所以可能不适用于它所使用的较新版本的 cmdlet。 在将更新的模块导入到你的生产自动化帐户 () 之前，建议将它们导入测试自动化帐户，以验证是否不存在任何兼容性问题。
 

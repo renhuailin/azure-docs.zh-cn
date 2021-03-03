@@ -3,14 +3,14 @@ title: 备份中心概述
 description: 本文概述了 Azure 的备份中心。
 ms.topic: conceptual
 ms.date: 09/30/2020
-ms.openlocfilehash: 93f9e5dc064d264e0cc111d8ddb093639307c55b
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 0acf3a17e41b89b462a7fb07c5d3ebd55d4052af
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100592026"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101725367"
 ---
-# <a name="overview-of-backup-center-preview"></a>备份中心 (预览) 概述
+# <a name="overview-of-backup-center"></a>备份中心概述
 
 备份中心在 Azure 中提供了一种 **统一的管理体验** ，使企业能够大规模控制、监视、操作和分析备份。 因此，它与 Azure 的本机管理体验一致。
 
@@ -18,11 +18,11 @@ ms.locfileid: "100592026"
 
 * **用于管理备份的单个窗格** ：备份中心设计为可在大型分布式 Azure 环境中正常运行。 你可以使用备份中心来有效地管理跨多个工作负荷类型、保管库、订阅、区域和 [Azure Lighthouse](../lighthouse/overview.md) 租户的备份。
 * 以 **数据中心为中心的管理**–备份中心提供视图和筛选器，这些视图和筛选器位于你备份 (例如，vm 和数据库) 的数据源中。 这允许资源所有者或备份管理员监视和操作项的备份，而无需专注于将项备份到的保管库。 此设计的一项重要功能是能够按特定于数据源的属性（如数据源订阅、数据源资源组和数据源标记）筛选视图。 例如，如果你的组织遵循将不同的标记分配给属于不同部门的 Vm 的做法，则可以使用备份中心基于要备份的底层 Vm 的标记筛选备份信息，而无需将精力集中在保管库的标记上。
-* **连接体验** –备份中心提供对现有 Azure 服务的本机集成，可大规模管理。 例如，备份中心使用 [Azure 策略](../governance/policy/overview.md) 体验来帮助你管理备份。 它还利用 [Azure 工作簿](../azure-monitor/visualize/workbooks-overview.md) 和 [Azure Monitor 日志](../azure-monitor/logs/data-platform-logs.md) 来帮助你查看有关备份的详细报表。 因此，您无需学习任何新的原则即可使用备份中心提供的各种功能。
+* **连接体验** –备份中心提供对现有 Azure 服务的本机集成，可大规模管理。 例如，备份中心使用 [Azure 策略](../governance/policy/overview.md) 体验来帮助你管理备份。 它还利用 [Azure 工作簿](../azure-monitor/visualize/workbooks-overview.md) 和 [Azure Monitor 日志](../azure-monitor/logs/data-platform-logs.md) 来帮助你查看有关备份的详细报表。 因此，您无需学习任何新的原则即可使用备份中心提供的各种功能。 还可以从备份中心发现社区资源。
 
 ## <a name="supported-scenarios"></a>支持的方案
 
-* 目前，azure vm 备份、azure VM 备份中的 SQL、azure VM 备份 SAP HANA、Azure 文件备份和 Azure Database for PostgreSQL 服务器备份支持备份中心。
+* 目前，Azure VM 备份支持备份中心、azure VM 备份中的 SQL、azure VM 备份 SAP HANA、Azure 文件备份、Azure Blob 备份、Azure 托管磁盘备份和 Azure Database for PostgreSQL 服务器备份。
 * 有关支持的和不支持的方案的详细列表，请参阅 [支持矩阵](backup-center-support-matrix.md) 。
 
 ## <a name="get-started"></a>入门

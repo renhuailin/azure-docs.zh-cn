@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 09/17/2020
 ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 701fe4ffc6147086dde740bfdb2dc7db92508e28
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 327bc687c466a30d4f92810e48dc08f822f752ec
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100380230"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726421"
 ---
 # <a name="tutorial-use-feature-flags-in-an-aspnet-core-app"></a>教程：在 ASP.NET Core 应用中使用功能标志
 
@@ -74,7 +74,7 @@ public class Startup
 ```
 
 
-如果在功能标志中使用筛选器，则必须包含 [Microsoft.FeatureManagement.FeatureFilters](/dotnet/api/microsoft.featuremanagement.featurefilters) 命名空间，添加对 [AddFeatureFilters](/dotnet/api/microsoft.featuremanagement.ifeaturemanagementbuilder.addfeaturefilter) 的调用，并指定要用作方法泛型类型的筛选器的类型名称。 若要详细了解如何使用功能筛选器来动态启用和禁用功能，请参阅[为目标受众启用功能的分阶段推出](/azure/azure-app-configuration/howto-targetingfilter-aspnet-core)。
+如果在功能标志中使用筛选器，则必须包含 [Microsoft.FeatureManagement.FeatureFilters](/dotnet/api/microsoft.featuremanagement.featurefilters) 命名空间，添加对 [AddFeatureFilters](/dotnet/api/microsoft.featuremanagement.ifeaturemanagementbuilder.addfeaturefilter) 的调用，并指定要用作方法泛型类型的筛选器的类型名称。 若要详细了解如何使用功能筛选器来动态启用和禁用功能，请参阅[为目标受众启用功能的分阶段推出](./howto-targetingfilter-aspnet-core.md)。
 
 以下示例演示如何使用名为 `PercentageFilter` 的内置功能筛选器：
 
@@ -211,14 +211,14 @@ config.AddAzureAppConfiguration(options =>
 
 * `FeatureA` 状态为“打开”。 
 * `FeatureB` 状态为“关闭”。 
-* `FeatureC` 指定包含 `Parameters` 属性的名为 `Percentage` 的筛选器。 `Percentage` 是可配置的筛选器。 在此示例中，`Percentage` 指定打开 `FeatureC` 标志的概率为 50%。  有关如何使用功能筛选器的操作指南，请参阅[使用功能筛选器启用条件功能标志](/azure/azure-app-configuration/howto-feature-filters-aspnet-core)。
+* `FeatureC` 指定包含 `Parameters` 属性的名为 `Percentage` 的筛选器。 `Percentage` 是可配置的筛选器。 在此示例中，`Percentage` 指定打开 `FeatureC` 标志的概率为 50%。  有关如何使用功能筛选器的操作指南，请参阅[使用功能筛选器启用条件功能标志](./howto-feature-filters-aspnet-core.md)。
 
 
 
 
 ## <a name="use-dependency-injection-to-access-ifeaturemanager"></a>使用依赖项注入访问 IFeatureManager 
 
-对于某些操作（例如，手动检查功能标志值），需要获取 [IFeatureManager](https://docs.microsoft.com/dotnet/api/microsoft.featuremanagement.ifeaturemanager?view=azure-dotnet-preview) 的实例。 在 ASP.NET Core MVC 中，可以通过依赖项注入访问功能管理器 `IFeatureManager`。 在下面的示例中，`IFeatureManager` 类型的参数将添加到控制器的构造函数的签名中。 运行时在调用构造函数时会自动解析引用并提供接口的一个实例。 如果你使用的应用程序模板中的控制器在构造函数中已有一个或多个依赖项注入参数（例如 `ILogger`），则只需添加 `IFeatureManager` 作为附加参数：
+对于某些操作（例如，手动检查功能标志值），需要获取 [IFeatureManager](/dotnet/api/microsoft.featuremanagement.ifeaturemanager?view=azure-dotnet-preview) 的实例。 在 ASP.NET Core MVC 中，可以通过依赖项注入访问功能管理器 `IFeatureManager`。 在下面的示例中，`IFeatureManager` 类型的参数将添加到控制器的构造函数的签名中。 运行时在调用构造函数时会自动解析引用并提供接口的一个实例。 如果你使用的应用程序模板中的控制器在构造函数中已有一个或多个依赖项注入参数（例如 `ILogger`），则只需添加 `IFeatureManager` 作为附加参数：
 
 ### <a name="net-5x"></a>[.NET 5.x](#tab/core5x)
     

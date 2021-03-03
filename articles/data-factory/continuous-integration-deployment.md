@@ -6,13 +6,13 @@ author: dcstwh
 ms.author: weetok
 ms.reviewer: maghan
 ms.topic: conceptual
-ms.date: 12/17/2020
-ms.openlocfilehash: c0d3ba8d9bea9fade58ed4a65c6d3ae43ef6acb3
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 02/18/2021
+ms.openlocfilehash: 2fd8911ca11ee6dfcf795347e1fe7f2c36a2b636
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100383596"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101716512"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Azure 数据工厂中的持续集成和交付
 
@@ -199,7 +199,7 @@ ms.locfileid: "100383596"
 
 ## <a name="use-custom-parameters-with-the-resource-manager-template"></a>将自定义参数用于资源管理器模板
 
-如果开发工厂具有关联的 git 存储库，则可替代通过发布或导出模板生成的资源管理器模板的默认资源管理器模板参数。 在以下情况下，你可能想要替代默认的参数化模板：
+如果开发工厂具有关联的 git 存储库，则可替代通过发布或导出模板生成的资源管理器模板的默认资源管理器模板参数。 在以下情况下，你可能需要覆盖默认资源管理器参数配置：
 
 * 你使用自动化 CI/CD，想要在部署资源管理器期间更改某些属性，但这些属性在默认情况下不会参数化。
 * 工厂太大，包含的参数数目超过了允许的最大数目 (256)，以致默认的资源管理器模板无效。
@@ -210,11 +210,14 @@ ms.locfileid: "100383596"
     * 重构数据流中的逻辑以减少参数（例如，管道参数均具有相同的值），只需使用全局参数即可。
     * 将一个数据工厂拆分为多个数据流。
 
-若要重写默认参数化模板，请在 "源代码管理" 部分中转到管理中心，并选择 " **参数化模板** "。 选择 " **编辑模板** "，打开参数化模板代码编辑器。 
+若要替代默认资源管理器参数配置，请在 "源代码管理" 部分中转到 " **管理** 中心" 和 "选择 **ARM 模板** "。 在 " **ARM 参数配置** " 部分下，单击 "编辑参数配置" 中的 " **编辑** " 图标以打开资源管理器参数配置代码编辑器。
 
 ![管理自定义参数](media/author-management-hub/management-hub-custom-parameters.png)
 
-创建自定义参数化模板将在 git 分支的根文件夹中创建一个名为 **arm-template-parameters-definition.js** 的文件。 必须使用这个具体的文件名。
+> [!NOTE]
+> **ARM 参数配置** 仅在 "GIT 模式" 下启用。 当前它在 "实时模式" 或 "数据工厂" 模式下处于禁用状态。
+
+创建自定义资源管理器参数配置会在 git 分支的根文件夹中创建一个名为 **arm-template-parameters-definition.js** 的文件。 必须使用这个具体的文件名。
 
 ![自定义参数文件](media/continuous-integration-deployment/custom-parameters.png)
 
@@ -223,7 +226,7 @@ ms.locfileid: "100383596"
 导出资源管理器模板时，数据工厂从你当前正在处理的分支读取此文件，而不是协作分支。 可以在某个专用分支中创建或编辑文件，在此文件中，可以通过选择 UI 中的“导出 ARM 模板”来测试更改。 然后，可将该文件合并到协作分支。
 
 > [!NOTE]
-> 自定义参数化模板不会更改 ARM 模板参数限制 256。 它允许选择和减少参数化属性的数目。
+> 自定义资源管理器参数配置不会将 ARM 模板参数限制更改为256。 它允许选择和减少参数化属性的数目。
 
 ### <a name="custom-parameter-syntax"></a>自定义参数语法
 
@@ -244,7 +247,7 @@ ms.locfileid: "100383596"
  
 ### <a name="sample-parameterization-template"></a>示例参数化模板
 
-下面是参数化模板的示例：
+下面是资源管理器参数配置可能如下所示的示例：
 
 ```json
 {

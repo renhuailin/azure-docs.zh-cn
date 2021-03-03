@@ -3,12 +3,12 @@ title: Azure Site Recovery 中的 VMware/物理灾难恢复支持列表
 description: 汇总了使用 Azure Site Recovery 将 VMware VM 和物理服务器灾难恢复到 Azure 的支持。
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: aecc7ccb6e633fc9c27b254f98931d682fa3d21b
-ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
+ms.openlocfilehash: 5eab1a1c8d085ab48dd54012908d40eec99ca4c7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100534663"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101705069"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>将 VMware VM 和物理服务器灾难恢复到 Azure 时的支持矩阵
 
@@ -93,7 +93,7 @@ Linux：CentOS | 5.2 到 5.11</b><br/> 6.1 到 6.10</b><br/> </br> 7.0、7.1、7
 Ubuntu | Ubuntu 14.04* LTS 服务器[（查看支持的内核版本）](#ubuntu-kernel-versions)<br/>Ubuntu 16.04* LTS 服务器[（查看支持的内核版本）](#ubuntu-kernel-versions) </br> Ubuntu 18.04* LTS 服务器[（查看支持的内核版本）](#ubuntu-kernel-versions) </br> Ubuntu 20.04* LTS 服务器[（查看支持的内核版本）](#ubuntu-kernel-versions) </br> （包括对所有 14.04.x、16.04.x、18.04.x、20.04.x* 版本的支持）   
 Debian | Debian 7/Debian 8（包括对所有 7. x、8. x 版本）；Debian 9（包括对 9.1 到 9.13 的版本的支持。 Debian 9.0 不受支持。 ) ，Debian 10 [ (检查支持的内核版本) ](#debian-kernel-versions)
 SUSE Linux | SUSE Linux Enterprise Server 12 SP1、SP2、SP3、SP4、[SP5](https://support.microsoft.com/help/4570609)[（查看支持的内核版本）](#suse-linux-enterprise-server-12-supported-kernel-versions) <br/> SUSE Linux Enterprise Server 15、15 SP1 [（查看支持的内核版本）](#suse-linux-enterprise-server-15-supported-kernel-versions) <br/> SUSE Linux Enterprise Server 11 SP3。 [请确保在配置服务器上下载最新的移动代理安装程序](vmware-physical-mobility-service-overview.md#download-latest-mobility-agent-installer-for-suse-11-sp3-rhel-5-debian-7-server)。 </br> SUSE Linux Enterprise Server 11 SP4 </br> **注意**：不支持将复制计算机从 SUSE Linux Enterprise Server 11 SP3 升级到 SP4。 若要升级，请禁用复制并在升级后重新启用它。 <br/>|
-Oracle Linux | 6.4、6.5、6.6、6.7、6.8、6.9、6.10、7.0、7.1、7.2、7.3、7.4、7.5、7.6、 [7.7](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery)、 [7.8、7.9](https://support.microsoft.com/help/4573888/) [、8.0](https://support.microsoft.com/help/4597409/) [、8.1](https://support.microsoft.com/help/4573888/) [、8.2](https://support.microsoft.com/help/4573888/)、 [](https://support.microsoft.com/help/4597409/) [8.3](https://support.microsoft.com/help/4573888/)  <br/> 运行 Red Hat 兼容内核或 Unbreakable Enterprise Kernel Release 3、4 和 5（UEK3、UEK4、UEK5）<br/><br/>8.1<br/>[9.35](https://support.microsoft.com/help/4573888/) 支持在版本 <= 3.10.0-1062* 的所有 UEK 内核和 RedHat 内核上运行。[9.36](https://support.microsoft.com/help/4578241/) 提供了对其余 RedHat 内核的支持
+Oracle Linux | 6.4、6.5、6.6、6.7、6.8、6.9、6.10、7.0、7.1、7.2、7.3、7.4、7.5、7.6、 [7.7、7.8](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery) [、7.9](https://support.microsoft.com/help/4573888/)、8.0、 [](https://support.microsoft.com/help/4573888/) [8.1、](https://support.microsoft.com/help/4597409/) [8.3、](https://support.microsoft.com/help/4597409/) [、、](https://support.microsoft.com/help/4573888/)  <br/> 运行 Red Hat 兼容内核或 Unbreakable Enterprise Kernel Release 3、4 和 5（UEK3、UEK4、UEK5）<br/><br/>8.1<br/>[9.35](https://support.microsoft.com/help/4573888/) 支持在版本 <= 3.10.0-1062* 的所有 UEK 内核和 RedHat 内核上运行。[9.36](https://support.microsoft.com/help/4578241/) 提供了对其余 RedHat 内核的支持
 
 > [!Note]
 >- 对于每个 Windows 版本，Azure Site Recovery 仅支持[长期服务渠道 (LTSC)](/windows-server/get-started-19/servicing-channels-19#long-term-servicing-channel-ltsc) 生成。  目前不支持[半年渠道](/windows-server/get-started-19/servicing-channels-19#semi-annual-channel)版本。
@@ -243,7 +243,7 @@ Docker 磁盘配置 | 否
 来宾/服务器多路径 (MPIO) | 否
 来宾/服务器 GPT 分区 | 从[更新汇总 37](https://support.microsoft.com/help/4508614/)（移动服务版本 9.25）开始支持五个分区。 以前支持四个。
 ReFS | 出行服务版本 9.23 或更高版本支持可复原文件系统
-来宾/服务器 EFI/UEFI 启动 | - Site Recovery 移动代理版本 9.30 及更高版本支持所有 [Azure 市场 UEFI OS](../virtual-machines/generation-2.md#generation-2-vm-images-in-azure-marketplace)。 <br/> - 不支持安全 UEFI 启动类型。 [了解详细信息。](../virtual-machines/generation-2.md#on-premises-vs-azure-generation-2-vms)
+来宾/服务器 EFI/UEFI 启动 | -支持所有 [Azure MARKETPLACE UEFI 操作系统](../virtual-machines/generation-2.md#generation-2-vm-images-in-azure-marketplace) ，其中 Site Recovery 移动代理9.30 版。 <br/> - 不支持安全 UEFI 启动类型。 [了解详细信息。](../virtual-machines/generation-2.md#on-premises-vs-azure-generation-2-vms)
 
 ## <a name="replication-channels"></a>复制通道
 

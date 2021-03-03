@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: c70e4a097a56b76089a26510bcf33b4c7c24c266
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: be7f15b5221be8b3acb7f64c4435e40f40f21f8f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96018709"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720913"
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Azure Database for MySQL 定价层
 
@@ -53,7 +53,7 @@ ms.locfileid: "96018709"
 > [!NOTE]
 > 以下区域支持存储最多16TB 和 20000 IOPS：美国东部、美国东部2、美国中部、巴西南部、美国西部、美国中北部、美国中南部、北欧、西欧、英国南部、英国西部、东南亚、东亚、日本东部、日本西部、韩国中部、韩国南部、澳大利亚东部、澳大利亚东部、日本东部、澳大利亚东部、澳大利亚东南部、美国西部2、美国中部、加拿大东部和加拿大中部。
 >
-> 所有其他区域支持最大4TB 的存储，最高可达 6000 IOPS。
+> 其他所有区域支持最大 4TB 的存储，最高可达 6000 IOPS。
 >
 
 在创建服务器的过程中和之后，可以添加更多的存储容量，这样系统就可以根据工作负荷的存储使用情况自动增加存储。 
@@ -91,7 +91,7 @@ Azure Database for MySQL 最高可以提供 100% 的已预配服务器存储作�
 
 创建服务器之后，可以独立地更改 vCore 数、硬件生成、定价层（基本层的操作除外）、存储量和备份保留期。 创建服务器之后，不能更改备份存储类型。 可以向上或向下调整 VCore 数。 备份保留期可以从 7 天到 35 天进行上下调整。 存储大小只能增加。 可以通过门户或 Azure CLI 缩放资源。 有关使用 Azure CLI 进行缩放的示例，请参阅[使用 Azure CLI 监视和缩放 Azure Database for MySQL 服务器](scripts/sample-scale-server.md)。
 
-更改 vCore 数、硬件生成或定价层时，将会使用新的计算分配创建原始服务器的副本。 启动并运行新服务器后，连接将切换到新服务器。 在系统切换到新服务器的短暂期间，无法建立新的连接，所有未提交的连接将会回退。 此时段不定，但大多数情况下短于一分钟。
+更改 vCore 数、硬件生成或定价层时，将会使用新的计算分配创建原始服务器的副本。 启动并运行新服务器后，连接将切换到新服务器。 在系统切换到新服务器的短暂期间，无法建立新的连接，所有未提交的连接将会回退。 此扩展过程中的停机时间可能大约为60-120 秒。 在缩放过程中的停机时间依赖于数据库恢复时间，这可能会导致数据库在执行缩放操作时服务器上的事务活动更长。 若要避免重新启动时间较长，建议在服务器上的事务活动较少的时段执行缩放操作。
 
 缩放存储和更改备份保留期是真正的联机操作。 不会造成停机，应用程序不会受影响。 当 IOPS 随已预配存储的大小缩放时，可以通过扩大存储来增加提供给服务器的 IOPS。
 

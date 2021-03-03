@@ -10,12 +10,12 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: 69f7ec5114ad650f33eae740a54a3821b76ef2ac
-ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
+ms.openlocfilehash: 65d95533e4cff02866111881f036225f9f544852
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99475533"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719009"
 ---
 # <a name="retrieve-logs-from-iot-edge-deployments"></a>检索 IoT Edge 部署中的日志
 
@@ -33,7 +33,18 @@ ms.locfileid: "99475533"
 <{Log Level}> {Timestamp} {Message Text}
 ```
 
-`{Log Level}` 应遵循 [Syslog 严重性级别格式](https://wikipedia.org/wiki/Syslog#Severity_level) ，且 `{Timestamp}` 格式应为 `yyyy-MM-dd hh:mm:ss.fff zzz` 。
+`{Timestamp}` 应设置为 `yyyy-MM-dd hh:mm:ss.fff zzz` ，并且 `{Log Level}` 应遵循下表，此表从 [Syslog 标准的严重性代码中](https://wikipedia.org/wiki/Syslog#Severity_level)派生其严重性级别。
+
+| “值” | Severity |
+|-|-|
+| 0 | 紧急情况 |
+| 1 | 警报 |
+| 2 | 严重 |
+| 3 | 错误 |
+| 4 | 警告 |
+| 5 | 通知 |
+| 6 | 信息 |
+| 7 | 调试 |
 
 [IoT Edge 中的记录器类](https://github.com/Azure/iotedge/blob/master/edge-util/src/Microsoft.Azure.Devices.Edge.Util/Logger.cs)充当规范实现。
 

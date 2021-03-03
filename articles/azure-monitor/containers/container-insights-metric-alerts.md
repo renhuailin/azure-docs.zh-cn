@@ -1,22 +1,22 @@
 ---
-title: 容器 Azure Monitor 的指标警报
-description: 本文介绍了公共预览版中适用于容器 Azure Monitor 建议的指标警报。
+title: 来自容器见解的指标警报
+description: 本文介绍了公共预览版中的容器见解提供的建议的指标警报。
 ms.topic: conceptual
 ms.date: 10/28/2020
-ms.openlocfilehash: 59c8d7b58809c981130d2ce92406fb5b1ce146ff
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: f19959c76d31422a0bdf898a6fa41e6b168e2e61
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100608469"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728886"
 ---
-# <a name="recommended-metric-alerts-preview-from-azure-monitor-for-containers"></a> (预览从容器 Azure Monitor 预览) 推荐的指标警报
+# <a name="recommended-metric-alerts-preview-from-container-insights"></a>从容器见解 (预览) 推荐的指标警报
 
-若要在出现系统资源问题时发出警报，以便在使用容器 Azure Monitor 时发出警报，你可以根据存储在 Azure Monitor 日志中的性能数据创建日志警报。 容器 Azure Monitor 现在包含预配置的指标警报规则，适用于 AKS 和启用了 Azure Arc 的 Kubernetes 群集。
+若要在出现系统资源问题时发出高峰请求并运行接近容量的警报，请使用容器见解，根据存储在 Azure Monitor 日志中的性能数据创建日志警报。 容器见解现在包括 AKS 和启用了 Azure Arc 的 Kubernetes 群集的预配置指标警报规则，该规则提供公共预览版。
 
 本文介绍了经验并指导如何配置和管理这些警报规则。
 
-如果你不熟悉 Azure Monitor 警报，请在开始之前参阅 [Microsoft Azure 中的警报概述](../platform/alerts-overview.md)。 若要了解有关指标警报的详细信息，请参阅 [Azure Monitor 中的指标警报](../alerts/alerts-metric-overview.md)。
+如果你不熟悉 Azure Monitor 警报，请在开始之前参阅 [Microsoft Azure 中的警报概述](../alerts/alerts-overview.md)。 若要了解有关指标警报的详细信息，请参阅 [Azure Monitor 中的指标警报](../alerts/alerts-metric-overview.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -31,13 +31,13 @@ ms.locfileid: "100608469"
     * 运行 `kubectl describe <omsagent-pod-name> --namespace=kube-system` 命令。 在返回的状态中，记下输出的“容器”部分中“映像”下 omsagent 的值。 
     * 在“节点”选项卡上选择群集节点，然后在右侧的“属性”窗格中记下“代理映像标记”下的值。  
 
-    为 AKS 显示的值应为 **ciprod05262020** 或更高版本。 为启用 Azure Arc 的 Kubernetes 群集显示的值应为 **ciprod09252020** 或更高版本。 如果群集具有较旧版本，请参阅 [如何升级容器的 Azure Monitor 代理](container-insights-manage-agent.md#upgrade-agent-on-aks-cluster) ，以获取最新版本的步骤。
+    为 AKS 显示的值应为 **ciprod05262020** 或更高版本。 为启用 Azure Arc 的 Kubernetes 群集显示的值应为 **ciprod09252020** 或更高版本。 如果群集具有较旧版本，请参阅 [如何升级 Container insights 代理](container-insights-manage-agent.md#upgrade-agent-on-aks-cluster) 以获取最新版本的步骤。
 
     有关与代理版本相关的详细信息，请参阅 [代理发行历史记录](https://github.com/microsoft/docker-provider/tree/ci_feature_prod)。 若要验证是否正在收集指标，可以使用 Azure Monitor 指标资源管理器，并验证是否列出了 **insights** 的 **指标命名空间**。 如果是这样，您可以继续设置警报。 如果看不到任何收集到的指标，则群集服务主体或 MSI 缺少必要的权限。 若要验证 SPN 或 MSI 是否为 " **监视指标发布者** " 角色的成员，请按照使用 Azure CLI 确认和设置角色分配部分的 " [每个群集升级](container-insights-update-metrics.md#upgrade-per-cluster-using-azure-cli) " 一节中所述的步骤进行操作。
 
 ## <a name="alert-rules-overview"></a>警报规则概述
 
-若要对重要内容进行警报，Azure Monitor 容器包括 AKS 和启用了 Azure Arc Kubernetes 群集的以下指标警报：
+为了就重要内容发出警报，Container insights 包括 AKS 和启用了 Azure Arc Kubernetes 群集的以下指标警报：
 
 |名称| 说明 |默认阈值 |
 |----|-------------|------------------|
@@ -108,15 +108,15 @@ ms.locfileid: "100608469"
 
 ### <a name="from-the-azure-portal"></a>通过 Azure 门户
 
-本部分逐步讲解如何启用 Azure 门户中的容器指标警报 (预览版) Azure Monitor。
+本部分逐步讲解如何从 Azure 门户启用容器 insights 指标警报 (预览) 。
 
 1. 登录 [Azure 门户](https://portal.azure.com/)。
 
-2. 通过从 Azure 门户中的左窗格中选择 " **见解** "，可以直接从 AKS 群集访问 Azure Monitor for 容器指标警报 (预览版) 功能。
+2. 通过从 Azure 门户的左窗格中选择 " **见解** "，可以直接从 AKS 群集访问 Container insights 指标警报 (预览) 功能。
 
 3. 在命令栏中，选择 " **推荐的警报**"。
 
-    ![容器 Azure Monitor 中的建议警报选项](./media/container-insights-metric-alerts/command-bar-recommended-alerts.png)
+    ![容器见解中的建议警报选项](./media/container-insights-metric-alerts/command-bar-recommended-alerts.png)
 
 4. " **推荐的警报** " 属性窗格会自动显示在页面的右侧。 默认情况下，列表中的所有警报规则都处于禁用状态。 选择 " **启用**" 后，将创建警报规则，并且规则名称将进行更新以包括指向警报资源的链接。
 
@@ -198,7 +198,7 @@ ms.locfileid: "100608469"
 
 ## <a name="edit-alert-rules"></a>编辑警报规则
 
-可以查看和管理容器警报规则 Azure Monitor，以编辑其阈值或为 AKS 群集配置 [操作组](../alerts/action-groups.md) 。 尽管可以从 Azure 门户和 Azure CLI 执行这些操作，但也可以直接从容器的 Azure Monitor 中的 AKS 群集执行这些操作。
+你可以查看和管理容器 insights 警报规则，以编辑其阈值或为你的 AKS 群集配置 [操作组](../alerts/action-groups.md) 。 尽管可以从 Azure 门户和 Azure CLI 执行这些操作，但也可以直接通过 AKS 群集在容器 insights 中执行这些操作。
 
 1. 在命令栏中，选择 " **推荐的警报**"。
 

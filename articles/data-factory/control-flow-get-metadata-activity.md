@@ -4,45 +4,34 @@ description: 了解如何在数据工厂管道中使用“获取元数据”活�
 author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 09/23/2020
+ms.date: 02/25/2021
 ms.author: jingwang
-ms.openlocfilehash: f860225862dcbfb79535acfbd6eeb89a217e7ae9
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 91cb10d601f0a44cf9895fffe558c03fdbe06eef
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100385483"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710220"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Azure 数据工厂中的“获取元数据”活动
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-可以使用“获取元数据”活动来检索 Azure 数据工厂中任何数据的元数据。 可在以下方案中使用此活动：
+可以使用“获取元数据”活动来检索 Azure 数据工厂中任何数据的元数据。 您可以使用条件表达式中的 Get Metadata 活动的输出来执行验证，或在后续活动中使用元数据。
 
-- 验证任何数据的元数据。
-- 数据就绪/可用时触发管道。
+## <a name="supported-capabilities"></a>支持的功能
 
-控制流中有以下功能：
-
-- 可以在条件表达式中使用“获取元数据”活动的输出来执行验证。
-- 可以在满足条件时通过 Do Until 循环触发管道。
-
-## <a name="capabilities"></a>功能
-
-“获取元数据”活动采用数据集作为输入，并返回元数据信息作为输出。 目前支持以下连接器以及对应的可检索元数据。 返回的元数据的最大大小约为 4 MB。
-
->[!NOTE]
->如果在自承载集成运行时中运行“获取元数据”活动，3.6 或更高版本将支持最新的功能。
+“获取元数据”活动采用数据集作为输入，并返回元数据信息作为输出。 目前支持以下连接器和相应的可检索元数据。 返回的元数据的最大大小为 **4 MB**。
 
 ### <a name="supported-connectors"></a>受支持的连接器
 
 **文件存储**
 
-| 连接器/元数据 | itemName<br>（文件/文件夹） | itemType<br>（文件/文件夹） | 大小<br>（文件） | created<br>（文件/文件夹） | lastModified<br>（文件/文件夹） |childItems<br>（文件夹） |contentMD5<br>（文件） | structure<br/>（文件） | columnCount<br>（文件） | exists<br>（文件/文件夹） |
+| 连接器/元数据 | itemName<br>（文件/文件夹） | itemType<br>（文件/文件夹） | 大小<br>（文件） | created<br>（文件/文件夹） | lastModified<sup>1</sup><br>（文件/文件夹） |childItems<br>（文件夹） |contentMD5<br>（文件） | 结构<sup>2</sup><br/>（文件） | columnCount<sup>2</sup><br>（文件） | 存在<sup>3</sup><br>（文件/文件夹） |
 |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |
-| [Amazon S3](connector-amazon-simple-storage-service.md) | √/√ | √/√ | √ | x/x | √/√* | √ | x | √ | √ | √/√* |
-| [Google Cloud Storage](connector-google-cloud-storage.md) | √/√ | √/√ | √ | x/x | √/√* | √ | x | √ | √ | √/√* |
-| [Azure Blob 存储](connector-azure-blob-storage.md) | √/√ | √/√ | √ | x/x | √/√* | √ | √ | √ | √ | √/√ |
+| [Amazon S3](connector-amazon-simple-storage-service.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
+| [Google Cloud Storage](connector-google-cloud-storage.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
+| [Azure Blob 存储](connector-azure-blob-storage.md) | √/√ | √/√ | √ | x/x | √/√ | √ | √ | √ | √ | √/√ |
 | [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
 | [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | √/√ | √/√ | √ | x/x | √/√ | √ | √ | √ | √ | √/√ |
 | [Azure 文件](connector-azure-file-storage.md) | √/√ | √/√ | √ | √/√ | √/√ | √ | x | √ | √ | √/√ |
@@ -50,12 +39,23 @@ ms.locfileid: "100385483"
 | [SFTP](connector-sftp.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
 | [FTP](connector-ftp.md) | √/√ | √/√ | √ | x/x | x/x | √ | x | √ | √ | √/√ |
 
-- 对文件夹使用“获取元数据”活动时，请确保对给定文件夹具有“列出/执行”权限。
-- 对于 Amazon S3 和 Google 云存储，`lastModified` 适用于桶和键，但不适用于虚拟文件夹；而 `exists` 适用于桶和键，但不适用于前缀或虚拟文件夹。
+<sup>1</sup> 元数据 `lastModified` ：
+- 对于 Amazon S3 和 Google 云存储，`lastModified` 适用于桶和键，但不适用于虚拟文件夹；而 `exists` 适用于桶和键，但不适用于前缀或虚拟文件夹。 
 - 对于 Azure Blob 存储，`lastModified` 适用于容器和 Blob，但不适用于虚拟文件夹。
-- `lastModified` 筛选器当前适用于筛选子项，但不适用于筛选指定的文件夹/文件本身。
+
+<sup>2</sup> `structure` `columnCount` 在从二进制、JSON 或 XML 文件获取元数据时，元数据和不受支持。
+
+<sup>3</sup> 元数据 `exists` ：适用于 Amazon S3 和 Google 云存储， `exists` 适用于 bucket 和密钥，但不适用于前缀或虚拟文件夹。
+
+注意以下事项：
+
+- 对文件夹使用“获取元数据”活动时，请确保对给定文件夹具有“列出/执行”权限。
 - “获取元数据”活动不支持文件夹/文件的通配符筛选器。
-- 从二进制文件、JSON 文件或 XML 文件获取元数据时，不支持 `structure` 和 `columnCount`。
+- `modifiedDatetimeStart``modifiedDatetimeEnd`在连接器上设置筛选器：
+
+    - 这两个属性用于在从文件夹中获取元数据时筛选子项目。 它不适用于从文件中获取元数据。
+    - 使用此类筛选器时， `childItems` 输出中仅包含在指定范围内修改的文件，而不包含文件夹。
+    - 若要应用此类筛选器，GetMetadata 活动会枚举指定文件夹中的所有文件，并检查修改后的时间。 即使所需的限定文件数较小，也应避免指向包含大量文件的文件夹。 
 
 **关系数据库**
 
@@ -85,9 +85,6 @@ ms.locfileid: "100385483"
 
 >[!TIP]
 >若要验证是否存在某个文件、文件夹或表，请在“获取元数据”活动字段列表中指定 `exists`。 然后可以检查活动输出中的 `exists: true/false` 结果。 如果未在该字段列表中指定 `exists`，那么，在找不到对象时，“获取元数据”活动将会失败。
-
->[!NOTE]
->从文件存储获取元数据以及配置 `modifiedDatetimeStart` 或 `modifiedDatetimeEnd` 时，输出中的 `childItems` 只包含给定路径中其最近修改时间在指定范围内的文件。 它不包含子文件夹中的项。
 
 ## <a name="syntax"></a>语法
 

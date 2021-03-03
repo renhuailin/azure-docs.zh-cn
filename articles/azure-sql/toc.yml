@@ -33,6 +33,16 @@
           href: database/features-comparison.md
         - name: 多模型功能
           href: multi-model-features.md
+        - name: 计划性维护
+          items:
+            - name: 维护时段
+              href: database/maintenance-window.md
+            - name: 配置维护时段
+              href: database/maintenance-window-configure.md
+            - name: 维护时段常见问题解答
+              href: database/maintenance-window-faq.yml
+            - name: 提前通知
+              href: database/advance-notifications.md
         - name: 内存中 OLTP
           href: in-memory-oltp-overview.md
         - name: 临时表

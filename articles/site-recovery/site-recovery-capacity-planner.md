@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: a5764e44db31755110ac99a3e8e8e0984cdf9604
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aa96845a2bd2f4659da1155c4f75281268dce76d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87490568"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737709"
 ---
 # <a name="plan-capacity-for-hyper-v-vm-disaster-recovery"></a>为 Hyper-V VM 灾难恢复规划容量 
 
@@ -43,7 +43,7 @@ Azure Site Recovery Capacity Planner 工具可帮助用户确定通过 Azure Sit
 
 
 ## <a name="run-the-quick-planner"></a>运行快速规划器
-1. 下载并打开 [Site Recovery Capacity Planner](https://aka.ms/asr-capacity-planner-excel) 工具。 需要运行宏。 在出现提示时，请选择启用编辑内容的选项。
+1. 下载并打开 [Site Recovery Capacity Planner](/samples/browse/?redirectedfrom=TechNet-Gallery) 工具。 需要运行宏。 在出现提示时，请选择启用编辑内容的选项。
 
 2. 在“选择规划器类型”列表框中，选择“快速规划器”   。
 
@@ -81,7 +81,7 @@ Azure Site Recovery Capacity Planner 工具可帮助用户确定通过 Azure Sit
 
 ## <a name="run-the-detailed-planner"></a>运行详细规划器
 
-1. 下载并打开 [Site Recovery Capacity Planner](https://aka.ms/asr-capacity-planner-excel) 工具。 需要运行宏。 在出现提示时，请选择启用编辑内容的选项。
+1. 下载并打开 [Site Recovery Capacity Planner](/samples/browse/?redirectedfrom=TechNet-Gallery) 工具。 需要运行宏。 在出现提示时，请选择启用编辑内容的选项。
 
 2. 在“选择规划器类型”  中，从列表框中选择“详细规划器”  。
 

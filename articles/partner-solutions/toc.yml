@@ -13,3 +13,14 @@
           href: ./apache-kafka-confluent-cloud/manage.md
         - name: 疑难解答
           href: ./apache-kafka-confluent-cloud/troubleshoot.md
+    - name: Datadog
+      items:
+        - name: 概述
+          displayName: 'Datadog, Monitoring'
+          href: ./datadog/overview.md
+        - name: 创建
+          href: ./datadog/create.md
+        - name: 管理
+          href: ./datadog/manage.md
+        - name: 疑难解答
+          href: ./datadog/troubleshoot.md

@@ -3,12 +3,12 @@ title: 创建 Azure VMware 解决方案私有云
 description: 使用 Azure 门户创建 Azure VMware 解决方案私有云的步骤。
 ms.topic: include
 ms.date: 02/17/2021
-ms.openlocfilehash: 983dccfaa9ea43955bfecc68bbbe432c579d51d1
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: da79881e609f982960468a8f26c98178f972ad43
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100653121"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101725386"
 ---
 <!-- Used in deploy-azure-vmware-solution.md and tutorial-create-private-cloud.md -->
 
@@ -18,7 +18,7 @@ ms.locfileid: "100653121"
 
 1. 在“基本信息”选项卡上，输入相关字段的值。 下表列出了字段的属性。
 
-   | 字段   | 值  |
+   | 字段   | Value  |
    | ---| --- |
    | **订阅** | 你打算用于部署的订阅。|
    | **资源组** | 私有云资源的资源组。 |
@@ -26,8 +26,6 @@ ms.locfileid: "100653121"
    | **资源名称** | Azure VMware 解决方案私有云的名称。 |
    | **SKU** | 选择以下 SKU 值：AV36 |
    | **主机** | 要添加到私有云群集的主机数。 默认值为 3，在部署后可以增大或减小此值。  |
-   | **vCenter 管理员密码** | 输入云管理员密码。 |
-   | **NSX-T 管理者密码** | 输入 NSX-T 管理员密码。 |
    | **地址块** | 输入私有云 CIDR 网络的 IP 地址块,，例如 10.175.0.0/22。 |
    | **虚拟网络** | 选择一个虚拟网络，或者为 Azure VMware 解决方案私有云创建一个新的虚拟网络。  |
 

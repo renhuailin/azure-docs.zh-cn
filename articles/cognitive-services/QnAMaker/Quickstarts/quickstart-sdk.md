@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 06/18/2020
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
 zone_pivot_groups: qnamaker-quickstart
-ms.openlocfilehash: de237c1bba699165e63fc0b2e4bfb58d25518bd9
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 5fd200fcd1d48b533e629fe4429f5bafb5fde817
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98701274"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101730920"
 ---
 # <a name="quickstart-qna-maker-client-library"></a>快速入门：QnA Maker 客户端库
 
@@ -50,13 +50,13 @@ QnA Maker 客户端库入门。 请按照以下步骤安装程序包并试用基
 
 如果想要清理并删除认知服务订阅，可以删除资源或资源组。 删除资源组同时也会删除与之相关联的任何其他资源。
 
-* [门户](../../cognitive-services-apis-create-account.md#clean-up-resources)
+* [Portal](../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
->[教程：使用批处理文件测试知识库](../index.yml)
+>[教程：使用批处理文件测试知识库](../how-to/test-knowledge-base.md#batch-test-with-tool)
 
 * [什么是 QnA Maker API？](../Overview/overview.md)
 * [编辑知识库](../how-to/edit-knowledge-base.md)

@@ -6,16 +6,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 01/20/2021
+ms.date: 02/09/2021
 ms.custom: devx-track-java
 ms.author: aahi
 ms.reviewer: tasharm, assafi, sumeh
-ms.openlocfilehash: 92b78cae7d1af5dc71509381afd7eaf3f962a8fa
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 4c87dc9f11a6a9780d77b39597e0479ccb6863d8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100515065"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750430"
 ---
 <a name="HOLTop"></a>
 
@@ -26,10 +26,6 @@ ms.locfileid: "100515065"
 # <a name="version-30"></a>[版本 3.0](#tab/version-3)
 
 [参考文档](/java/api/overview/azure/ai-textanalytics-readme) | [库源代码](https://github.com/Azure/azure-sdk-for-java/blob/azure-ai-textanalytics_5.0.0/sdk/textanalytics/azure-ai-textanalytics) | [包](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/5.0.0) | [示例](https://github.com/Azure/azure-sdk-for-java/tree/azure-ai-textanalytics_5.0.0/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics)
-
-# <a name="version-21"></a>[版本 2.1](#tab/version-2)
-
-本文仅介绍此 API 的版本 3.x。
 
 ---
 
@@ -76,10 +72,6 @@ ms.locfileid: "100515065"
 
 > [!TIP]
 > 想要立即查看整个快速入门代码文件？ 可以[在 GitHub 上](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/TextAnalytics/TextAnalyticsSamples.java)找到它，其中包含此快速入门中的代码示例。 
-
-# <a name="version-21"></a>[版本 2.1](#tab/version-2)
-
-本文仅介绍此 API 的版本 3.x。
 
 ---
 
@@ -136,10 +128,6 @@ public static void main(String[] args) {
         AnalyzeOperationExample(client)
 }
 ```
-
-# <a name="version-21"></a>[版本 2.1](#tab/version-2)
-
-本文仅介绍此 API 的版本 3.x。
 
 ---
 
@@ -321,10 +309,6 @@ Recognized document sentiment: positive, positive score: 1.0, neutral score: 0.0
 Recognized sentence sentiment: positive, positive score: 1.0, neutral score: 0.0, negative score: 0.0.
 Recognized sentence sentiment: neutral, positive score: 0.21, neutral score: 0.77, negative score: 0.02.
 ```
-
-# <a name="version-21"></a>[版本 2.1](#tab/version-2)
-
-本文仅介绍此 API 的版本 3.x。
 
 ---
 
@@ -570,10 +554,6 @@ Matches:
 Text: BASIC, Score: 0.33
 ```
 
-# <a name="version-21"></a>[版本 2.1](#tab/version-2)
-
-本文仅介绍此 API 的版本 3.x。
-
 ---
 
 ## <a name="key-phrase-extraction"></a>关键短语提取
@@ -683,9 +663,5 @@ Recognized entity: Paul Allen, entity category: Person, entity subcategory: null
 # <a name="version-30"></a>[版本 3.0](#tab/version-3)
 
 此功能在版本 3.0 中不可用。
-
-# <a name="version-21"></a>[版本 2.1](#tab/version-2)
-
-此功能在版本 2.1 中不可用。
 
 ---

@@ -1,21 +1,21 @@
 ---
-title: 如何升级用于 VM 的 Azure Monitor 依赖关系代理
-description: 本文介绍如何使用命令行、安装向导和其他方法升级用于 VM 的 Azure Monitor 依赖关系代理。
+title: 如何升级 VM insights 依赖关系代理
+description: 本文介绍如何使用命令行、安装向导和其他方法升级 VM insights 依赖项代理。
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/16/2020
-ms.openlocfilehash: 05358c560c70396d4e165abd174178378aad517b
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 14ca614c1e108ce43f05f98520cff6ff215ec5cc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100608683"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101722902"
 ---
-# <a name="how-to-upgrade-the-azure-monitor-for-vms-dependency-agent"></a>如何升级用于 VM 的 Azure Monitor 依赖关系代理
+# <a name="how-to-upgrade-the-vm-insights-dependency-agent"></a>如何升级 VM insights 依赖关系代理
 
-初始部署用于 VM 的 Azure Monitor 依赖关系代理后，将发布更新，其中包括 bug 修补程序或新功能的支持。  本文将帮助你了解可用的方法以及如何手动或通过自动化执行升级。
+初始部署 VM insights 依赖关系代理后，会发布更新，其中包括 bug 修补程序或新功能的支持。  本文将帮助你了解可用的方法以及如何手动或通过自动化执行升级。
 
 ## <a name="upgrade-options"></a>升级选项 
 
@@ -42,7 +42,7 @@ ms.locfileid: "100608683"
 3. 按照 **Dependency Agent 安装** 向导卸载以前版本的依赖关系代理，然后安装最新版本。
 
 
-### <a name="from-the-command-line"></a>从命令行
+### <a name="from-the-command-line"></a>从命令行中
 
 1. 使用具有管理权限的帐户登录到计算机。
 
@@ -70,4 +70,4 @@ ms.locfileid: "100608683"
 
 ## <a name="next-steps"></a>后续步骤
 
-如果要停止监视 Vm 一段时间或完全删除用于 VM 的 Azure Monitor，请参阅 [在用于 VM 的 Azure Monitor 中禁用 vm 监视](../vm/vminsights-optout.md)。
+如果要停止监视 Vm 一段时间或完全删除 VM insights，请参阅 [在 vm insights 中禁用 vm 监视](../vm/vminsights-optout.md)。

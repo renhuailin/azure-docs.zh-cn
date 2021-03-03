@@ -8,12 +8,12 @@ ms.author: nmurav
 ms.date: 12/11/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 1333bd08f8a79969817bcb21aa4580d1994d09ce
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: d2df7255980ca00d405cf80a9fff69ff0511bd17
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99594634"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101659301"
 ---
 # <a name="call-flow-topologies"></a>调用流拓扑
 本文介绍 Azure 通信服务呼叫流拓扑。 如果你是一名企业客户，且你将通信服务集成到你管理的某个网络中，那么请查看本文。 若要简要了解通信服务呼叫流，请访问[呼叫流概念文档](./call-flows.md)。
@@ -26,7 +26,7 @@ ms.locfileid: "99594634"
 
 客户网络包含你管理的任何网段。 这可能包括你的办公室，或者办公室、数据中心和 Internet 服务提供商之间的有线网络和无线网络。
 
-客户网络通常具有多个网络边界，它们有防火墙和/或代理服务器来强制实施你组织的安全策略。 建议进行[完全网络评估](https://docs.microsoft.com/microsoftteams/3-envision-evaluate-my-environment)，确保你的通信解决方案的性能和质量达到最优。
+客户网络通常具有多个网络边界，它们有防火墙和/或代理服务器来强制实施你组织的安全策略。 建议进行[完全网络评估](/microsoftteams/3-envision-evaluate-my-environment)，确保你的通信解决方案的性能和质量达到最优。
 
 通信服务网络是支持 Azure 通信服务的网段。 此网络由 Microsoft 进行管理，使用靠近大多数客户网络的边缘在全球各地分布。 此网络负责传输中继、群组通话的媒体处理，以及其他支持丰富实时媒体通信的组件。
 
@@ -199,4 +199,3 @@ VPN 用户与客户网络之间的信令使用流 2* 和流 4 流向 Azure。 �
 
 - 详细了解[呼叫类型](../concepts/voice-video-calling/about-call-types.md)
 - 了解[客户端-服务器体系结构](./client-and-server-architecture.md)
-

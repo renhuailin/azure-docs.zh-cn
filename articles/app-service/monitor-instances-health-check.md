@@ -6,18 +6,18 @@ author: msangapu-msft
 ms.topic: article
 ms.date: 12/03/2020
 ms.author: msangapu
-ms.openlocfilehash: 8892723ec1a53c59e3e6183b5d53c2e61db4e5d0
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 7d6f9564328f81b71c62a4243c5f4cc209a29d8f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99575222"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714470"
 ---
 # <a name="monitor-app-service-instances-using-health-check"></a>使用运行状况检查监视应用服务实例
 
 ![运行状况检查失败][2]
 
-本文使用 Azure 门户中的运行状况检查来监视应用服务实例。 运行状况检查将删除不正常的实例，从而提高应用程序的可用性。 应该将 [应用服务计划](/azure/app-service/overview-hosting-plans) 扩展到两个或更多实例，以使用运行状况检查。 运行状况检查路径应检查应用程序的关键组件。 例如，如果应用程序依赖于数据库和消息系统，则运行状况检查终结点应连接到这些组件。 如果应用程序无法连接到关键组件，路径应返回500级别的响应代码，以指示应用程序不正常。
+本文使用 Azure 门户中的运行状况检查来监视应用服务实例。 运行状况检查将删除不正常的实例，从而提高应用程序的可用性。 应该将 [应用服务计划](./overview-hosting-plans.md) 扩展到两个或更多实例，以使用运行状况检查。 运行状况检查路径应检查应用程序的关键组件。 例如，如果应用程序依赖于数据库和消息系统，则运行状况检查终结点应连接到这些组件。 如果应用程序无法连接到关键组件，路径应返回500级别的响应代码，以指示应用程序不正常。
 
 ## <a name="what-app-service-does-with-health-checks"></a>运行状况检查适用的应用服务
 

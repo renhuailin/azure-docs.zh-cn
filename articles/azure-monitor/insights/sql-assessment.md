@@ -1,17 +1,16 @@
 ---
 title: 通过 Azure Monitor 优化 SQL Server 环境 |Microsoft Docs
 description: 借助 Azure Monitor，可以使用 SQL 运行状况检查解决方案定期评估环境的风险和运行状况。
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/05/2020
-ms.openlocfilehash: e0a7a5b9e19436deaed45382fe23063fa61edadf
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 0f2319ea6ba314c08a67651667837f05df5765a1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100587258"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723225"
 ---
 # <a name="optimize-your-sql-environment-with-the-sql-server-health-check-solution-in-azure-monitor"></a>使用 Azure Monitor 中的 SQL Server 运行状况检查解决方案优化 SQL 环境
 

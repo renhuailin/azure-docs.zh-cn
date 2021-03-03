@@ -3,17 +3,16 @@ title: 安装并配置 Microsoft Azure 诊断扩展 (WAD)
 description: 了解如何安装和配置 Windows 诊断扩展。 另外，了解如何存储数据的说明以及 Azure 存储帐户。
 services: azure-monitor
 author: bwren
-ms.subservice: diagnostic-extension
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: bwren
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 865590ce67acee128863a7913aa844b951d07d56
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 174f372f9dbe8dc0449c7f9b9f5b34c6206f92de
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100608920"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708554"
 ---
 # <a name="install-and-configure-windows-azure-diagnostics-extension-wad"></a>安装并配置 Microsoft Azure 诊断扩展 (WAD)
 [Azure 诊断扩展](diagnostics-extension-overview.md)是 Azure Monitor 中的一个代理，可从 Azure 虚拟机的来宾操作系统和工作负载以及其他计算资源中收集监视数据。 本文详细介绍如何安装并配置 Windows 诊断扩展，以及如何将数据存储在 Azure 存储帐户中。

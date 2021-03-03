@@ -113,6 +113,9 @@
       items:
         - name: Azure CLI
           href: sample-scripts-azure-cli.md
+        - name: Azure Policy 内置策略定义
+          displayName: 'samples, policies, definitions'
+          href: ./policy-reference.md
     - name: 概念
       items:
         - name: 服务器
@@ -333,7 +336,7 @@
             - name: 针对指标创建警报
               href: howto-alert-on-metric.md
               displayName: 'alerts, metrics, monitor'
-        - name: 疑难解答
+        - name: 故障排除
           items:
             - name: 排查连接错误
               href: howto-troubleshoot-common-connection-issues.md
@@ -572,14 +575,6 @@
         - name: 设计实时仪表板
           href: tutorial-design-database-hyperscale-realtime.md
           displayName: 'hyperscale, tutorial, real-time'
-    - name: 示例
-      items:
-        - name: Azure CLI
-          href: sample-scripts-azure-cli.md
-          displayName: 'samples, azure cli'
-        - name: Azure Policy 内置策略定义
-          displayName: 'samples, policies, definitions'
-          href: ./policy-reference.md
     - name: 概念
       items:
         - name: 分布式数据

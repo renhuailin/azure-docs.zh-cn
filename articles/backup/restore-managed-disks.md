@@ -3,12 +3,12 @@ title: 还原 Azure 托管磁盘
 description: 了解如何从 Azure 门户还原 Azure 托管磁盘。
 ms.topic: conceptual
 ms.date: 01/07/2021
-ms.openlocfilehash: b9c9a22f25a8003151217bec15b618e3c380e67e
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 995217cd17d1e2a16cd7a5f963ee88aa7116d4a7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737370"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703743"
 ---
 # <a name="restore-azure-managed-disks-in-preview"></a> (预览中还原 Azure 托管磁盘) 
 
@@ -21,7 +21,7 @@ ms.locfileid: "98737370"
 
 目前，Original-Location 恢复 (OLR) 选项，通过替换从其执行备份的现有源磁盘来进行还原。 你可以从恢复点还原，以便在同一资源组中创建一个新磁盘，该磁盘与从中进行备份的源磁盘或任何其他资源组中的源磁盘相同。 这称为 Alternate-Location 恢复 (ALR) ，这有助于将源磁盘和还原 (的新) 磁盘保留下来。
 
-本文介绍如何执行以下操作：
+本文将指导如何进行以下操作：
 
 - 还原以创建新磁盘
 
@@ -66,7 +66,7 @@ ms.locfileid: "98737370"
     >
     >在计划的备份或按需备份操作期间，Azure 备份会将磁盘增量快照存储在配置磁盘的备份过程中提供的快照资源组中。 在还原操作过程中，Azure 备份将使用这些增量快照。 如果快照已从快照资源组中删除或移动，或者快照资源组上的备份保管库角色分配已撤消，则还原操作将失败。
 
-1. 如果要还原的磁盘是使用客户管理的密钥加密的， [ (CMK)](https://docs.microsoft.com/azure/virtual-machines/disks-enable-customer-managed-keys-portal) 或者使用 [使用平台托管密钥和客户托管密钥的双加密](https://docs.microsoft.com/azure/virtual-machines/disks-enable-double-encryption-at-rest-portal)，则将 " **读取** 者角色" 权限分配给 " **磁盘加密集** " 资源上的备份保管库的托管标识。
+1. 如果要还原的磁盘是使用客户管理的密钥加密的， [ (CMK)](../virtual-machines/disks-enable-customer-managed-keys-portal.md) 或者使用 [使用平台托管密钥和客户托管密钥的双加密](../virtual-machines/disks-enable-double-encryption-at-rest-portal.md)，则将 " **读取** 者角色" 权限分配给 " **磁盘加密集** " 资源上的备份保管库的托管标识。
 
 满足先决条件后，请按照以下步骤执行还原操作。
 

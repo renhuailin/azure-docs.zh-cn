@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/26/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 2c69cea7055476bcc4c4a28cea0a0cf8c8f66f88
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: bbb42a4955ff0b4fbbac58830ec5c8aecf04915d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98753463"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101686727"
 ---
 # <a name="a-web-api-that-calls-web-apis-call-an-api"></a>调用 Web API 的 Web API：调用 API
 
@@ -29,9 +29,15 @@ ms.locfileid: "98753463"
 
 使用 Microsoft.Identity.Web 时，有 3 种使用方案：
 
-- [选项 1：通过 Microsoft Graph SDK 调用 Microsoft Graph](#option-1-call-microsoft-graph-with-the-sdk)
-- [选项 2：在使用帮助程序类的情况下调用下游 Web API](#option-2-call-a-downstream-web-api-with-the-helper-class)
-- [选项 3：在不使用帮助程序类的情况下调用下游 Web API](#option-3-call-a-downstream-web-api-without-the-helper-class)
+- [调用 Web API 的 Web API：调用 API](#a-web-api-that-calls-web-apis-call-an-api)
+  - [控制器代码](#controller-code)
+- [ASP.NET Core](#aspnet-core)
+      - [选项 1：使用 SDK 调用 Microsoft Graph](#option-1-call-microsoft-graph-with-the-sdk)
+      - [选项 2：使用帮助程序类调用下游 Web API](#option-2-call-a-downstream-web-api-with-the-helper-class)
+      - [选项 3：在不使用帮助程序类的情况下调用下游 Web API](#option-3-call-a-downstream-web-api-without-the-helper-class)
+- [Java](#java)
+- [Python](#python)
+  - 后续步骤
 
 #### <a name="option-1-call-microsoft-graph-with-the-sdk"></a>选项 1：使用 SDK 调用 Microsoft Graph
 
@@ -159,10 +165,10 @@ private String callMicrosoftGraphMeEndpoint(String accessToken){
 ```
 
 # <a name="python"></a>[Python](#tab/python)
-我们尚未编写在 MSAL Python 中演示此流的示例。
+此处提供了一个示例，演示了如何在 MSAL Python [中](https://github.com/Azure-Samples/ms-identity-python-on-behalf-of)提供此流。
 
 ---
 
 ## <a name="next-steps"></a>后续步骤
 
-转到此方案中的下一篇文章：[转向生产](scenario-web-api-call-api-production.md)。
+转到此方案中的下一篇文章：[移到生产环境](scenario-web-api-call-api-production.md)。

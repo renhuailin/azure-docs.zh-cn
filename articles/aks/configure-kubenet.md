@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 06/02/2020
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: 6cb083e823583105f04aaa59a99357b2b2b2426b
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 564ebfd0a0a8aa8500b38edbc37c9a42b02b06ec
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97034048"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101735159"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中结合自己的 IP 地址范围使用 kubenet 网络
 
@@ -102,7 +102,7 @@ Azure 在一个 UDR 中最多支持 400 个路由，因此，AKS 群集中的节
 
 ## <a name="create-a-virtual-network-and-subnet"></a>创建虚拟网络和子网
 
-若要开始使用 *kubenet* 和自己的虚拟网络子网，请先使用 [az group create][az-group-create] 命令创建一个资源组。 以下示例在 eastus 位置创建名为 myResourceGroup 的资源组：
+若要开始使用 *kubenet* 和自己的虚拟网络子网，请先使用 [az group create][az-group-create] 命令创建一个资源组。 以下示例在 eastus 位置创建名为 myResourceGroup 的资源组：  
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -245,10 +245,9 @@ az aks create -g MyResourceGroup -n MyManagedCluster --vnet-subnet-id MySubnetID
 
 ## <a name="next-steps"></a>后续步骤
 
-在现有虚拟网络子网中部署 AKS 群集后，现在可以像平时一样使用该群集。 开始使用 [Azure Dev Spaces 生成应用][dev-spaces]、 [使用 Helm 部署现有应用][use-helm]或 [使用 Helm 创建新应用][develop-helm]。
+在现有虚拟网络子网中部署 AKS 群集后，现在可以像平时一样使用该群集。 开始使用 [Helm 创建新应用][develop-helm] 或 [使用 Helm 部署现有应用][use-helm]。
 
 <!-- LINKS - External -->
-[dev-spaces]: ../dev-spaces/index.yml
 [cni-networking]: https://github.com/Azure/azure-container-networking/blob/master/docs/cni.md
 [kubenet]: https://kubernetes.io/docs/concepts/cluster-administration/network-plugins/#kubenet
 [Calico-network-policies]: https://docs.projectcalico.org/v3.9/security/calico-network-policy

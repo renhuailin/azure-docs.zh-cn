@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: luquinta
 author: luisquintanilla
-ms.date: 12/21/2020
+ms.date: 02/25/2021
 ms.custom: responsible-ml
-ms.openlocfilehash: 7124fdd6e7d137e21234ff40426e13dc65b4f9e0
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: f849968c16d2c3d8940a71da0e0cda536882d9c8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98223102"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101692056"
 ---
 # <a name="what-is-responsible-machine-learning-preview"></a>什么是负责机器学习？ （预览版）
 
@@ -42,7 +42,7 @@ ms.locfileid: "98223102"
 
 难以解释的系统或非透明盒系统可能会出问题，因为利益干系人（如系统开发人员、监管人员、用户和业务决策者）难以理解系统做出某些决策的原因。 有些 AI 系统比其他系统更容易解释，有时需要在更高准确度的系统和更容易解释的系统之间进行取舍。
 
-若要生成可解释的 AI 系统，请使用 Microsoft 生成的开放源代码包 [InterpretML](https://github.com/interpretml/interpret)。 [可以在 Azure 机器学习中使用 InterpretML](how-to-machine-learning-interpretability.md)，以[解释和说明机器学习模型](how-to-machine-learning-interpretability-aml.md)，包括[自动化机器学习模型](how-to-machine-learning-interpretability-automl.md)。
+若要生成可解释的 AI 系统，请使用 Microsoft 生成的开放源代码包 [InterpretML](https://github.com/interpretml/interpret)。 InterpretML 包支持多种 interpretability 技术，如 SHapley 加法说明 (SHAP) 、模拟说明和排列功能重要性 (PFI) 。  [可以在 Azure 机器学习中使用 InterpretML](how-to-machine-learning-interpretability.md)，以[解释和说明机器学习模型](how-to-machine-learning-interpretability-aml.md)，包括[自动化机器学习模型](how-to-machine-learning-interpretability-automl.md)。
 
 ## <a name="mitigate-fairness-in-machine-learning-models"></a>提高机器学习模型中的公平性
 
@@ -63,7 +63,7 @@ AI 系统中的不公平性可能会导致以下意外后果：
 
 在传统方案中，原始数据存储在文件和数据库中。 用户通常在分析数据时使用原始数据。 这是一个问题，因为可能会侵犯个人隐私。 差异隐私尝试通过向数据添加“噪音”或随机性来处理此问题，这样用户就无法识别任何单独的数据点。
 
-实现差异隐私系统较为棘手。 [SmartNoise](https://github.com/opendifferentialprivacy/smartnoise-core) 是一个开源项目，其中包含用于构建全局差异专用系统的不同组件。 若要了解有关差异隐私和 SmartNoise 项目的详细信息，请参阅 [使用差分隐私和 SmartNoise 保留数据隐私](./concept-differential-privacy.md) 。
+实现差异隐私系统较为棘手。 [SmartNoise](https://github.com/opendifferentialprivacy/smartnoise-core) 是一个开放源代码项目，其中包含用于生成全局差异隐私系统的不同组件。 若要详细了解差异隐私和 SmartNoise 项目，请参阅[使用差异隐私和 SmartNoise 保护数据隐私](./concept-differential-privacy.md)一文。
 
 ## <a name="work-on-encrypted-data-with-homomorphic-encryption"></a>使用同态加密处理加密数据
 

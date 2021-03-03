@@ -6,12 +6,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/29/2020
 ms.author: jingwang
-ms.openlocfilehash: 30b8cb2b5c8b1ccd0c927a6ff8a3a282d3d43c69
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: f19f8fb3811435e9bbc207d2d130c0655a6dee02
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100386537"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101706057"
 ---
 # <a name="json-format-in-azure-data-factory"></a>Azure 数据工厂中的 JSON 格式
 
@@ -25,7 +25,7 @@ ms.locfileid: "100386537"
 
 有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 JSON 数据集支持的属性列表。
 
-| 属性         | 说明                                                  | 必须 |
+| 属性         | 说明                                                  | 必选 |
 | ---------------- | ------------------------------------------------------------ | -------- |
 | type             | 数据集的 type 属性必须设置为 **Json**。 | 是      |
 | location         | 文件的位置设置。 每个基于文件的连接器在 `location` 下都有其自己的位置类型和支持的属性。 **请在连接器文章 -> 数据集属性部分中查看详细信息**。 | 是      |
@@ -70,7 +70,7 @@ ms.locfileid: "100386537"
 
 复制活动的 ***\*source\**** 节支持以下属性。
 
-| 属性      | 说明                                                  | 必需 |
+| 属性      | 说明                                                  | 必选 |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | 复制活动源的 type 属性必须设置为 **JSONSource**。 | 是      |
 | formatSettings | 一组属性。 请参阅下面的“JSON 读取设置”表。 | 否       |
@@ -78,7 +78,7 @@ ms.locfileid: "100386537"
 
 `formatSettings` 下支持的“JSON 读取设置”：
 
-| 属性      | 说明                                                  | 必需 |
+| 属性      | 说明                                                  | 必选 |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | formatSettings 的 type 必须设置为“JsonReadSettings”。 | 是      |
 | compressionProperties | 一组属性，指示如何为给定的压缩编解码器解压缩数据。 | 否       |
@@ -89,7 +89,7 @@ ms.locfileid: "100386537"
 
 复制活动的 ***\*sink\**** 节支持以下属性。
 
-| properties      | 说明                                                  | 必需 |
+| 属性      | 说明                                                  | 必选 |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | 复制活动源的 type 属性必须设置为 **JSONSink**。 | 是      |
 | formatSettings | 一组属性。 请参阅下面的“JSON 写入设置”表。 | 否       |
@@ -97,7 +97,7 @@ ms.locfileid: "100386537"
 
 `formatSettings` 下支持的 **JSON 写入设置**：
 
-| 属性      | 说明                                                  | 必需                                              |
+| 属性      | 说明                                                  | 必选                                              |
 | ------------- | ------------------------------------------------------------ | ----------------------------------------------------- |
 | type          | formatSettings 的类型必须设置为 **JsonWriteSettings**。 | 是                                                   |
 | filePattern |指示每个 JSON 文件中存储的数据模式。 允许的值为：setOfObjects (JSON Lines) 和 arrayOfObjects。 **默认** 值为 **setOfObjects**。 请参阅 [JSON 文件模式](#json-file-patterns)部分，详细了解这些模式。 |否 |
@@ -218,7 +218,7 @@ ms.locfileid: "100386537"
 
 ### <a name="source-format-options"></a>源格式选项
 
-在数据流中使用 JSON 数据集作为源时，你可以设置五个额外的设置。 可以在“源选项”选项卡的“JSON 设置”可折叠列表下找到这些设置。 。  
+在数据流中使用 JSON 数据集作为源时，你可以设置五个额外的设置。 这些设置可在 "**源选项**" 选项卡中的 **JSON 设置** 可折叠项下找到。对于 **文档窗体** 设置，您可以选择一个 **文档**、**每行文档** 和文档类型的 **数组**。
 
 ![JSON 设置](media/data-flow/json-settings.png "JSON 设置")
 
@@ -299,7 +299,7 @@ File3.json
 
 | 名称 | 说明 | 必需 | 允许的值 | 数据流脚本属性 |
 | ---- | ----------- | -------- | -------------- | ---------------- |
-| 清除文件夹 | 在写入之前是否清除目标文件夹 | 否 | `true` 或 `false` | truncate |
+| 清除文件夹 | 如果在写入前目标文件夹已被清除 | 否 | `true` 或 `false` | truncate |
 | 文件名选项 | 写入的数据的命名格式。 默认情况下，每个分区有一个 `part-#####-tid-<guid>` 格式的文件 | 否 | 模式：String <br> 按分区：String[] <br> 作为列中的数据：String <br> 输出到单个文件：`['<fileName>']`  | filePattern <br> partitionFileNames <br> rowUrlColumn <br> partitionFileNames |
 
 ### <a name="creating-json-structures-in-a-derived-column"></a>在派生列中创建 JSON 结构

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/08/2021
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: b4a4fa8a207320a5867b6cdf1dc347bbb2f453af
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: e5872b6ab97a47c09081cf9c26fb7f140b110c3f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99525732"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733442"
 ---
 # <a name="text-to-speech-rest-api"></a>文本转语音 REST API
 
@@ -45,7 +45,7 @@ ms.locfileid: "99525732"
 
 ### <a name="regions-and-endpoints"></a>区域和终结点
 
-| 区域 | 终结点 |
+| 区域 | 端点 |
 |--------|----------|
 | 澳大利亚东部 | `https://australiaeast.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | 巴西南部 | `https://brazilsouth.tts.speech.microsoft.com/cognitiveservices/voices/list` |
@@ -213,10 +213,10 @@ Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY
 
 | 标头 | 说明 | 必需/可选 |
 |--------|-------------|---------------------|
-| `Authorization` | 前面带有单词 `Bearer` 的授权令牌。 有关详细信息，请参阅[身份验证](#authentication)。 | 必需 |
-| `Content-Type` | 指定所提供的文本的内容类型。 接受的值：`application/ssml+xml`。 | 必需 |
-| `X-Microsoft-OutputFormat` | 指定音频输出格式。 有关接受值的完整列表，请参阅[音频输出](#audio-outputs)。 | 必需 |
-| `User-Agent` | 应用程序名称。 提供的值必须少于 255 个字符。 | 必需 |
+| `Authorization` | 前面带有单词 `Bearer` 的授权令牌。 有关详细信息，请参阅[身份验证](#authentication)。 | 必须 |
+| `Content-Type` | 指定所提供的文本的内容类型。 接受的值：`application/ssml+xml`。 | 必须 |
+| `X-Microsoft-OutputFormat` | 指定音频输出格式。 有关接受值的完整列表，请参阅[音频输出](#audio-outputs)。 | 必须 |
+| `User-Agent` | 应用程序名称。 提供的值必须少于 255 个字符。 | 必须 |
 
 ### <a name="audio-outputs"></a>音频输出
 
@@ -279,5 +279,5 @@ Authorization: Bearer [Base64 access_token]
 ## <a name="next-steps"></a>后续步骤
 
 - [创建免费 Azure 帐户](https://azure.microsoft.com/free/cognitive-services/)
-- [用于长格式音频的异步合成](quickstarts/text-to-speech/async-synthesis-long-form-audio.md)
+- [用于长格式音频的异步合成](./long-audio-api.md)
 - [自定义语音入门](how-to-custom-voice.md)

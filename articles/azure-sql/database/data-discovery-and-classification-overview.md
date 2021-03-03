@@ -13,12 +13,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 02/17/2021
 tags: azure-synapse
-ms.openlocfilehash: fee285aa3beb308f5e6b3b233d40597c2a287eb7
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: f47303a953dbb06b4c9efdfbbae41715cad81d2a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100651963"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690798"
 ---
 # <a name="data-discovery--classification"></a>数据发现和分类
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -187,12 +187,12 @@ ms.locfileid: "100651963"
 
 ## <a name="faq---advanced-classification-capabilities"></a>常见问题解答-高级分类功能
 
-**问**： [Azure 监控范围](https://docs.microsoft.com/azure/purview/overview) 是否会将 sql 数据发现替换 & 分类，或是否会立即停用 & 分类的 sql 数据发现？
-**答**：我们将继续支持 & 分类的 SQL 数据发现，并鼓励你采用具有更丰富功能的 [Azure 监控范围](https://docs.microsoft.com/azure/purview/overview) 来驱动高级分类功能和数据管理。 如果我们决定停用任何服务、功能、API 或 SKU，你将会收到包含迁移或转换路径的提前通知。 在此处了解有关 Microsoft 生命周期策略的详细信息。
+**问**： [Azure 监控范围](../../purview/overview.md) 是否会将 sql 数据发现替换 & 分类，或是否会立即停用 & 分类的 sql 数据发现？
+**答**：我们将继续支持 & 分类的 SQL 数据发现，并鼓励你采用具有更丰富功能的 [Azure 监控范围](../../purview/overview.md) 来驱动高级分类功能和数据管理。 如果我们决定停用任何服务、功能、API 或 SKU，你将会收到包含迁移或转换路径的提前通知。 在此处了解有关 Microsoft 生命周期策略的详细信息。
 
 
 ## <a name="next-steps"></a><a id="next-steps"></a>后续步骤
 
 - 请考虑配置 [Azure SQL 审核](../../azure-sql/database/auditing-overview.md)来监视和审核对已分类敏感数据的访问。
 - 对于包含数据发现 & 分类的演示文稿，请参阅 [查找、分类、标记 & 保护 SQL 数据 |公开的数据](https://www.youtube.com/watch?v=itVi9bkJUNc)。
-- 若要使用 T-sql 命令通过 Azure 监控范围标签对 Azure SQL 数据库和 Azure Synapse Analytics 进行分类，请参阅 [使用 Azure 监控范围标签对 AZURE sql 数据进行分类](https://docs.microsoft.com/azure/sql-database/scripts/sql-database-import-purview-labels)。
+- 若要使用 T-sql 命令通过 Azure 监控范围标签对 Azure SQL 数据库和 Azure Synapse Analytics 进行分类，请参阅 [使用 Azure 监控范围标签对 AZURE sql 数据进行分类](../../sql-database/scripts/sql-database-import-purview-labels.md)。

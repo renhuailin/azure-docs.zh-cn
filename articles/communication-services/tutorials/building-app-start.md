@@ -8,14 +8,16 @@ ms.author: nmurav
 ms.date: 01/03/2012
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: d682524ae3ff5b82233a69959a309a7495e30bed
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: cd535227b421f4fb56dac3afb37033e3d77f75f7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101658057"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691529"
 ---
 # <a name="tutorial-prepare-a-web-app-for-azure-communication-services-nodejs"></a>Tutorial:为 Azure 通信服务准备 Web 应用 (Node.js)
+
+[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
 使用 Azure 通信服务可向应用程序添加实时通信。 在本教程中，你将了解如何设置支持 Azure 通信服务的 Web 应用。 本教程旨在介绍知识，适合想要开始使用实时通信的新的开发人员。
 
@@ -55,7 +57,7 @@ ms.locfileid: "101658057"
 
 我们将使用 Node.js 来下载和安装客户端应用程序所需的各种依赖项。 我们将用它来生成静态文件，然后在 Azure 中托管这些文件，因此你无需在你的服务器上配置它。
 
-Windows 开发人员可按照[此 NodeJS 教程](/windows/nodejs/setup-on-windows)来配置 Node、nvm 和 npm。
+Windows 开发人员可按照[此 NodeJS 教程](/windows/nodejs/setup-on-windows)来配置 Node、nvm 和 npm。 
 
 我们使用 LTS 12.20.0 版本测试了本教程。 安装 nvm 后，请使用以下 PowerShell 命令部署要使用的版本：
 
@@ -159,7 +161,7 @@ module.exports ={
     output: {
         filename:'app.js',
         path: path.resolve(__dirname, 'dist'),
-    }
+    }     
 }
 ```
 
@@ -216,7 +218,7 @@ module.exports = merge(common, {
 }
 ```
 
-你添加了可从 npm 使用的命令。
+你添加了可从 npm 使用的命令。 
 
 :::image type="content" source="./media/step-one-pic-12.png" alt-text="修改 package.json":::
 
@@ -277,13 +279,13 @@ npm run build:dev
 控制台将显示服务器的运行位置。 该名称默认为 `http://localhost:8080`。 build:dev 命令是我们之前添加到 `package.json` 的命令。
 
  :::image type="content" source="./media/step-one-pic-16.png" alt-text="启动开发服务器":::
-
+ 
  导航到浏览器中的地址，你会看到在前面的步骤中配置的页面和警报。
-
+ 
   :::image type="content" source="./media/step-one-pic-17.png" alt-text="Html 页面":::
-
-
-服务器运行时，可更改代码和服务器，HTML 页面也会自动重新加载。
+  
+ 
+服务器运行时，可更改代码和服务器，HTML 页面也会自动重新加载。 
 
 接下来，转到 Visual Studio Code 中的 `app.js` 文件并删除 `alert('Hello world alert!');`。 保存文件并验证浏览器中是否不再显示警报。
 
@@ -321,11 +323,11 @@ const { merge } = require('webpack-merge');
  ```
 
 请注意，此配置将与 webpack.common.js（我们在这里指定了输入文件和结果存储位置）合并，并将模式设置为“生产”。
-
+ 
 在 `package.json` 中添加以下代码：
 
 ```JavaScript
-"build:prod": "webpack --config webpack.prod.js"
+"build:prod": "webpack --config webpack.prod.js" 
 ```
 
 你的文件应如下所示：
@@ -339,14 +341,14 @@ const { merge } = require('webpack-merge');
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:dev": "webpack-dev-server --config webpack.dev.js",
-    "build:prod": "webpack --config webpack.prod.js"
+    "build:prod": "webpack --config webpack.prod.js" 
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@azure/communication-calling": "^1.0.0-beta.6",
-    "@azure/communication-common": "^1.0.0"
+    "@azure/communication-calling": "^1.0.0-beta.3",
+    "@azure/communication-common": "^1.0.0-beta.3"
   },
   "devDependencies": {
     "webpack": "^4.42.0",
@@ -366,13 +368,13 @@ const { merge } = require('webpack-merge');
 npm run build:prod
 ```
 
-该命令将在其中创建一个 `dist` 文件夹和生产就绪的 `app.js` 静态文件。
+该命令将在其中创建一个 `dist` 文件夹和生产就绪的 `app.js` 静态文件。 
 
  :::image type="content" source="./media/step-one-pic-21.png" alt-text="生产版本":::
-
-
+ 
+ 
 ### <a name="deploy-your-app-to-azure-storage"></a>将应用部署到 Azure 存储
-
+ 
 将 `index.html` 和 `app.css` 复制到 `dist` 文件夹。
 
 在 `dist` 文件夹中，创建一个新文件并将其命名为 `404.html`。 将以下标记复制到该文件中：
@@ -397,45 +399,45 @@ npm run build:prod
 右键单击并选择通过 Azure 存储部署到静态网站。
 
 :::image type="content" source="./media/step-one-pic-22.png" alt-text="开始部署到 Azure":::
-
+ 
 在 `Select subscription` 字段中，选择“登录到 Azure”（如果尚未创建订阅，请选择“创建免费的 Azure 帐户”）
-
+ 
 :::image type="content" source="./media/step-one-pic-23.png" alt-text="登录到 Azure":::
-
+ 
 选择 `Create new Storage Account` > `Advanced`：
 
  :::image type="content" source="./media/step-one-pic-24.png" alt-text="创建存储帐户组":::
-
+ 
  提供存储组的名称：
-
+ 
  :::image type="content" source="./media/step-one-pic-25.png" alt-text="添加帐户的名称":::
-
+ 
 如果需要，请创建新的资源组：
-
+ 
   :::image type="content" source="./media/step-one-pic-26.png" alt-text="创建新组":::
-
+  
   对于“你想启用静态网站托管吗?”，请回答“是”
-
+  
   :::image type="content" source="./media/step-one-pic-27.png" alt-text="选择用于启用静态网站托管的选项":::
-
+  
 创建文件 `index.html` 时，请在“输入索引文档名”中接受默认文件名。
 
-对于“输入 404 错误文档路径”，请键入 `404.html`。
-
-选择应用程序的位置。 选择的位置将定义在组通话中今后的通话应用程序将使用的媒体处理器。
+对于“输入 404 错误文档路径”，请键入 `404.html`。  
+  
+选择应用程序的位置。 选择的位置将定义在组通话中今后的通话应用程序将使用的媒体处理器。 
 
 Azure 通信服务会根据应用程序位置来选择媒体处理器。
 
 :::image type="content" source="./media/step-one-pic-28.png" alt-text="选择位置":::
-
-请等待资源和网站创建完毕。
-
+  
+请等待资源和网站创建完毕。 
+ 
 单击“浏览到网站”：
 
 :::image type="content" source="./media/step-one-pic-29.png" alt-text="部署已完成":::
-
+ 
 通过浏览器的开发工具，可检查源代码并查看我们为生产准备的文件。
-
+ 
 :::image type="content" source="./media/step-one-pic-30.png" alt-text="网站":::
 
 转到 [Azure 门户](https://portal.azure.com/#home)，选择你资源组，再选择所创建的应用程序，然后导航到 `Settings` > `Static website`。 你可看到已启用静态网站，请注意主要终结点、索引文档和错误路径文档文件。
@@ -446,7 +448,7 @@ Azure 通信服务会根据应用程序位置来选择媒体处理器。
 
 :::image type="content" source="./media/step-one-pic-32.png" alt-text="容器配置":::
 
-如果转到 `$web`，你将看到在 Visual Studio 中创建了文件，且这些文件已部署到 Azure。
+如果转到 `$web`，你将看到在 Visual Studio 中创建了文件，且这些文件已部署到 Azure。 
 
 :::image type="content" source="./media/step-one-pic-33.png" alt-text="部署":::
 

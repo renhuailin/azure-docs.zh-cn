@@ -9,12 +9,12 @@ metadata:
   author: mikben
   ms.author: mikben
   ms.date: 08/10/2020
-  ms.openlocfilehash: a39493fd0a1487602fd9cd2ad81fa81900f860d2
-  ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+  ms.openlocfilehash: 4727e7ca3e0831483811c77be34e69f794cfb576
+  ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 02/18/2021
-  ms.locfileid: "100652694"
+  ms.lasthandoff: 03/03/2021
+  ms.locfileid: "101690509"
 landingContent:
 - title: 关于 Azure 通信服务
   linkLists:
@@ -26,6 +26,8 @@ landingContent:
     links:
     - text: 客户端库选项
       url: concepts/sdk-options.md
+    - text: 团队互操作
+      url: concepts/teams-interop.md
 - title: 入门
   linkLists:
   - linkListType: quickstart

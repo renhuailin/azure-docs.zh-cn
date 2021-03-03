@@ -6,12 +6,12 @@ ms.author: noakuper
 ms.topic: conceptual
 ms.date: 10/05/2020
 ms.subservice: ''
-ms.openlocfilehash: 55a3cd6b02b9eeb774a084552c086acbfb9966cb
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: e9431aac203b831a0ffe22b835acf4677061780c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100607525"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101707701"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>使用 Azure 专用链接将网络安全地连接到 Azure Monitor
 
@@ -157,9 +157,53 @@ Azure Monitor 专用链接范围 (AMPLS) 将专用终结点连接 (，并将它�
  
    e.    选择“创建”。 
 
-    ![显示选择“创建专用终结点 2”的屏幕截图](./media/private-link-security/ampls-select-private-endpoint-create-5.png)
+    ![选择专用终结点详细信息的屏幕截图。](./media/private-link-security/ampls-select-private-endpoint-create-5.png)
 
 你现在已创建了一个连接到此 AMPLS 的新专用终结点。
+
+## <a name="review-and-validate-your-private-link-setup"></a>查看并验证专用链接设置
+
+### <a name="reviewing-your-endpoints-dns-settings"></a>查看终结点的 DNS 设置
+你创建的专用终结点现在应配置四个 DNS 区域：
+
+[![专用终结点 DNS 区域的屏幕截图。](./media/private-link-security/private-endpoint-dns-zones.png)](./media/private-link-security/private-endpoint-dns-zones-expanded.png#lightbox)
+
+* privatelink-azure-com
+* privatelink-opinsights-azure-com
+* privatelink-opinsights-azure com
+* privatelink-agentsvc-net
+
+其中每个区域将特定 Azure Monitor 终结点映射到专用终结点的 VNet Ip 池中的专用 Ip。
+
+#### <a name="privatelink-monitor-azure-com"></a>Privatelink-azure-com
+此区域涵盖 Azure Monitor 使用的全局终结点，这意味着，这些终结点为考虑所有资源而不是特定资源的请求提供服务。 此区域应为映射终结点：
+* `in.ai` - (Application Insights 引入终结点，你将看到一个全局和区域条目
+* `api` -Application Insights 和 Log Analytics API 终结点
+* `live` -Application Insights 实时指标终结点
+* `profiler` -Application Insights 探查器终结点
+* `snapshot`-Application Insights 快照终结点[ ![ 专用 DNS 区域监视器的屏幕截图-azure com。](./media/private-link-security/dns-zone-privatelink-monitor-azure-com.png)](./media/private-link-security/dns-zone-privatelink-monitor-azure-com-expanded.png#lightbox)
+
+#### <a name="privatelink-oms-opinsights-azure-com"></a>privatelink-opinsights-azure-com
+此区域涵盖特定于工作区的映射到 OMS 终结点。 应该会看到链接到 AMPLS 与此专用终结点连接的每个工作区的条目。
+[![专用 DNS 区域 opinsights 的屏幕截图。](./media/private-link-security/dns-zone-privatelink-oms-opinsights-azure-com.png)](./media/private-link-security/dns-zone-privatelink-oms-opinsights-azure-com-expanded.png#lightbox)
+
+#### <a name="privatelink-ods-opinsights-azure-com"></a>privatelink-opinsights-azure com
+此区域涵盖特定于工作区的到 ODS 终结点的映射-Log Analytics 的引入终结点。 应该会看到链接到 AMPLS 与此专用终结点连接的每个工作区的条目。
+[![专用 DNS 区域 opinsights 的屏幕截图。](./media/private-link-security/dns-zone-privatelink-ods-opinsights-azure-com.png)](./media/private-link-security/dns-zone-privatelink-ods-opinsights-azure-com-expanded.png#lightbox)
+
+#### <a name="privatelink-agentsvc-azure-automation-net"></a>privatelink-agentsvc-net
+此区域涵盖特定于工作区的映射到代理服务自动化终结点。 应该会看到链接到 AMPLS 与此专用终结点连接的每个工作区的条目。
+[![专用 DNS 区域代理 svc 的屏幕截图-azure-自动化-网络。](./media/private-link-security/dns-zone-privatelink-agentsvc-azure-automation-net.png)](./media/private-link-security/dns-zone-privatelink-agentsvc-azure-automation-net-expanded.png#lightbox)
+
+### <a name="validating-you-are-communicating-over-a-private-link"></a>验证是否通过专用链接进行通信
+* 若要验证你的请求现在是通过专用终结点和专用 IP 映射终结点发送的，你可以通过网络跟踪（甚至是你的浏览器）来查看这些请求。 例如，尝试查询你的工作区或应用程序时，请确保将请求发送到映射到 API 终结点的专用 IP，在此示例中为 *172.17.0.9*。
+
+    注意：某些浏览器可能会使用其他 DNS 设置 (请参阅 [BROWSER DNS settings](#browser-dns-settings)) 。 请确保应用 DNS 设置。
+
+* 若要确保你的工作区或组件没有收到来自公共网络的请求 (未通过 AMPLS) 连接，请将资源的公共引入和查询标志设置为 " *否* "，如 [从专用链接范围外管理访问](#manage-access-from-outside-of-private-links-scopes)中所述。
+
+* 从受保护网络上的客户端使用 `nslookup` 到 DNS 区域中列出的任何终结点。 它应由 DNS 服务器解析为映射的专用 Ip，而不是默认使用的公共 Ip。
+
 
 ## <a name="configure-log-analytics"></a>配置 Log Analytics
 
@@ -170,10 +214,10 @@ Azure Monitor 专用链接范围 (AMPLS) 将专用终结点连接 (，并将它�
 ### <a name="connected-azure-monitor-private-link-scopes"></a>已连接 Azure Monitor 专用链接范围
 连接到工作区的所有作用域都显示在此屏幕中。  (AMPLSs) 连接到作用域后，便可以从虚拟网络连接到每个 AMPLS 的网络流量到达此工作区。 通过此处创建连接与在作用域上设置连接与在 [连接 Azure Monitor 资源](#connect-azure-monitor-resources)时相同。 若要添加新连接，请选择 " **添加** "，然后选择 "Azure Monitor" 专用链接范围。 选择 " **应用** " 来连接它。 请注意，工作区可以连接到5个 AMPLS 对象，如 [限制和限制](#restrictions-and-limitations)中所述。 
 
-### <a name="access-from-outside-of-private-links-scopes"></a>从专用链接范围之外的访问权限
+### <a name="manage-access-from-outside-of-private-links-scopes"></a>从专用链接范围外管理访问权限
 此页面底部的设置控制从公共网络访问，这意味着网络未通过上面列出的作用域进行连接。 如果设置为 " **允许从公共网络访问** "，则 **不** 会阻止从连接范围之外的计算机引入日志。 将 " **允许对查询的公共网络访问** " 设置为 " **无** " 可阻止来自范围之外的计算机的查询。 这包括通过工作簿、面板、基于 API 的客户端体验、Azure 门户中的见解等运行的查询。 在 Azure 门户外运行的体验，还必须在专用链接的 VNET 中运行查询 Log Analytics 数据。
 
-### <a name="exceptions"></a>例外
+### <a name="exceptions"></a>异常
 如上所述的限制访问不适用于 Azure 资源管理器，因此具有以下限制：
 * 对数据的访问-同时阻止/允许来自公共网络的查询适用于大多数 Log Analytics 体验，一些经验通过 Azure 资源管理器查询数据，因此将无法查询数据，除非资源管理器) 不久就会将专用链接设置应用到 (。 例如，Azure Monitor 解决方案、工作簿和见解以及逻辑应用连接器。
 * 工作区管理-工作区设置和配置更改 (包括打开或关闭这些访问设置) 由 Azure 资源管理器管理。 使用适当的角色、权限、网络控制和审核限制对工作区管理的访问。 有关详细信息，请参阅 [Azure Monitor 角色、权限和安全性](../roles-permissions-security.md)。
@@ -207,7 +251,7 @@ Azure Monitor 专用链接范围 (AMPLS) 将专用终结点连接 (，并将它�
 
 需要将托管受监视工作负载的资源添加到专用链接中。 可在此[文档](../../app-service/networking/private-endpoint.md)中了解如何对应用服务执行此操作。
 
-仅可以此方式限制对 Application Insights 资源中数据的访问。 配置更改（例如打开或关闭这些访问设置）由 Azure 资源管理器进行管理。 转而使用适当的角色、权限、网络控件和审核来限制对资源管理器的访问。 有关详细信息，请参阅 [Azure Monitor 角色、权限和安全性](../roles-permissions-security.md)。
+仅可以此方式限制对 Application Insights 资源中数据的访问。 但是，配置更改（包括打开或关闭这些访问设置）由 Azure 资源管理器管理。 因此，你应该使用适当的角色、权限、网络控制和审核来限制对资源管理器的访问。 有关详细信息，请参阅 [Azure Monitor 角色、权限和安全性](../roles-permissions-security.md)。
 
 > [!NOTE]
 > 若要完全保护基于工作区的 Application Insights，需要锁定对 Application Insights 资源和基础 Log Analytics 工作区的访问。
@@ -218,14 +262,14 @@ Azure Monitor 专用链接范围 (AMPLS) 将专用终结点连接 (，并将它�
 如 [规划专用链接设置](#planning-your-private-link-setup)中所述，即使针对单个资源设置专用链接也会影响该网络中的所有 Azure Monitor 资源，以及共享同一 DNS 的其他网络中的所有资源。 这可能会使你的载入过程变得困难。 请考虑以下选项：
 
 * 最简单且最安全的方法是将所有 Application Insights 组件添加到 AMPLS。 对于想要仍从其他网络访问的组件，请将 "允许引入/查询公共 internet 访问" 标志设置为 "是" (默认) 。
-* 隔离网络-如果你 (，或者可以使用辐射 vnet 与) 对齐，请按照 [Azure 中的中心辐射网络拓扑](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)中的指导进行操作。 然后，在相关辐射 Vnet 中设置单独的专用链接设置。 请确保分隔 DNS 区域，因为与其他辐射网络共享 DNS 区域将导致 [dns 覆盖](#the-issue-of-dns-overrides)。
+* 隔离网络-如果你 (，或者可以使用辐射 vnet 与) 对齐，请按照 [Azure 中的中心辐射网络拓扑](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)中的指导进行操作。 然后，在相关辐射 Vnet 中设置单独的专用链接设置。 请确保分隔 DNS 区域，因为与其他辐射网络共享 DNS 区域将导致 [dns 覆盖](#the-issue-of-dns-overrides)。
 * 对特定应用使用自定义 DNS 区域-此解决方案允许你通过专用链接访问选择 Application Insights 组件，同时通过公用路由保留所有其他流量。
-    - 设置 [自定义专用 DNS 区域](https://docs.microsoft.com/azure/private-link/private-endpoint-dns)，并为其指定唯一名称，如 internal.monitor.azure.com
+    - 设置 [自定义专用 DNS 区域](../../private-link/private-endpoint-dns.md)，并为其指定唯一名称，如 internal.monitor.azure.com
     - 创建 AMPLS 和专用终结点，并选择 **不** 自动与专用 DNS 集成
-    - 中转到专用终结点-> DNS 配置，并查看类似于以下内容的 Fqdn 的建议映射： ![ 建议的 DNS 区域配置屏幕截图](./media/private-link-security/private-endpoint-fqdns.png)
+    - 中转到专用终结点-> DNS 配置，并查看 Fqdn 的建议映射。
     - 选择添加配置并选择刚创建的 internal.monitor.azure.com 区域
     - 为 ![ 已配置 DNS 区域的上述屏幕截图添加记录](./media/private-link-security/private-endpoint-global-dns-zone.png)
-    - 中转到 Application Insights 组件，并复制其 [连接字符串](https://docs.microsoft.com/azure/azure-monitor/app/sdk-connection-string)。
+    - 中转到 Application Insights 组件，并复制其 [连接字符串](../app/sdk-connection-string.md)。
     - 希望通过专用链接调用此组件的应用或脚本应使用 EndpointSuffix = internal 的连接字符串
 * 通过主机文件（而不是 DNS）映射终结点，只能通过网络中的特定计算机/VM 获得专用链接访问权限：
     - 设置 AMPLS 和专用终结点，并选择 **不** 自动与专用 DNS 集成 
@@ -280,7 +324,7 @@ $ sudo /opt/microsoft/omsagent/bin/omsadmin.sh -w <workspace id> -s <workspace k
 要使用 Azure Monitor 门户体验（例如 Application Insights 和 Log Analytics），你需要使 Azure 门户和 Azure Monitor 扩展能在专用网络上进行访问。 将 **AzureActiveDirectory**、 **AzureResourceManager**、 **AzureFrontDoor** 和 **AzureFrontDoor** [服务标记](../../firewall/service-tags.md) 添加到网络安全组。
 
 ### <a name="querying-data"></a>正在查询数据
-专用链接不支持该[ `externaldata` 运算符](https://docs.microsoft.com/azure/data-explorer/kusto/query/externaldata-operator?pivots=azuremonitor)，因为它从存储帐户读取数据，但不保证会私下访问存储。
+专用链接不支持该[ `externaldata` 运算符](/azure/data-explorer/kusto/query/externaldata-operator?pivots=azuremonitor)，因为它从存储帐户读取数据，但不保证会私下访问存储。
 
 ### <a name="programmatic-access"></a>以编程方式访问
 

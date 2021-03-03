@@ -3,14 +3,14 @@ author: aahill
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 01/20/2021
+ms.date: 02/09/2021
 ms.author: aahi
-ms.openlocfilehash: fc66cf75101d38ed1deac3b5368ee823dfdab821
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: a4c38b7ad92ebc1e42db31ea0c6e478bcfab50b8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100515076"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101749963"
 ---
 <a name="HOLTop"></a>
 
@@ -21,10 +21,6 @@ ms.locfileid: "100515076"
 # <a name="version-30"></a>[版本 3.0](#tab/version-3)
 
 [v3 参考文档](/python/api/azure-ai-textanalytics/azure.ai.textanalytics) | [v3 库源代码](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics) | [v3 包(PiPy)](https://pypi.org/project/azure-ai-textanalytics/) | [v3 示例](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/samples)
-
-# <a name="version-21"></a>[版本 2.1](#tab/version-2)
-
-[v2 参考文档](/python/api/overview/azure/cognitiveservices/textanalytics) | [v2 库源代码](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-language-textanalytics) | [v2 包(PiPy)](https://pypi.org/project/azure-cognitiveservices-language-textanalytics/) | [v2 示例](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)
 
 ---
 
@@ -62,15 +58,6 @@ pip install --upgrade azure-ai-textanalytics
 > 想要立即查看整个快速入门代码文件？ 可以[在 GitHub 上](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/TextAnalytics/python-v3-client-library.py)找到它，其中包含此快速入门中的代码示例。 
 
 
-# <a name="version-21"></a>[版本 2.1](#tab/version-2)
-
-```console
-pip install --upgrade azure-cognitiveservices-language-textanalytics
-```
-
-> [!TIP]
-> 想要立即查看整个快速入门代码文件？ 可以[在 GitHub 上](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/language/text_analytics_samples.py)找到它，其中包含此快速入门中的代码示例。 
-
 ---
 
 ### <a name="create-a-new-python-application"></a>创建新的 Python 应用程序
@@ -103,12 +90,6 @@ endpoint = "<paste-your-text-analytics-endpoint-here>"
 
 响应对象是一个列表，其中包含每个文档的已分析信息。 
 
-# <a name="version-21"></a>[版本 2.1](#tab/version-2)
-
-文本分析客户端是一个 [TextAnalyticsClient](/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient) 对象，它使用你的密钥向 Azure 进行身份验证。 该客户端提供了几种方法来分析文本，文本可以是单个字符串，也可以是批处理。 
-
-文本将以 `documents` 的列表的形式发送到 API，该项是包含 `id`、`text` 和 `language` 属性的组合的 `dictionary` 对象，具体取决于所用的方法。 `text` 属性存储要以源 `language` 分析的文本，而 `id` 则可以是任何值。 
-
 ---
 
 ## <a name="code-examples"></a>代码示例
@@ -128,15 +109,6 @@ endpoint = "<paste-your-text-analytics-endpoint-here>"
 
 
 # <a name="version-30"></a>[版本 3.0](#tab/version-3)
-
-* [对客户端进行身份验证](#authenticate-the-client)
-* [情绪分析](#sentiment-analysis)
-* [语言检测](#language-detection)
-* [命名实体识别](#named-entity-recognition-ner) 
-* [实体链接](#entity-linking)
-* [关键短语提取](#key-phrase-extraction)
-
-# <a name="version-21"></a>[版本 2.1](#tab/version-2)
 
 * [对客户端进行身份验证](#authenticate-the-client)
 * [情绪分析](#sentiment-analysis)
@@ -203,14 +175,6 @@ def authenticate_client():
    
 client = authenticate_client()
 ```
-
-# <a name="version-21"></a>[版本 2.1](#tab/version-2)
-
-[!code-python[imports statements](~/samples-cognitive-services-python-sdk/samples/language/text_analytics_samples.py?name=imports)]
-
-创建一个函数，以便通过上面创建的 `key` 和 `endpoint` 来实例化 `TextAnalyticsClient` 对象。 然后创建一个新客户端。 
-
-[!code-python[version 2 authentication](~/samples-cognitive-services-python-sdk/samples/language/text_analytics_samples.py?name=authentication)]
 
 --- 
 
@@ -421,21 +385,6 @@ Neutral=0.77
 Negative=0.02
 ```
 
-# <a name="version-21"></a>[版本 2.1](#tab/version-2)
-
-对客户端对象进行身份验证，并调用 [sentiment()](/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient#sentiment-show-stats-none--documents-none--custom-headers-none--raw-false----operation-config-) 函数。 循环访问结果，输出每个文档的 ID 和情绪分数。 评分接近 0 表示消极情绪，评分接近 1 表示积极情绪。
-
-[!code-python[sentiment analysis](~/samples-cognitive-services-python-sdk/samples/language/text_analytics_samples.py?name=sentimentAnalysis)]
-
-### <a name="output"></a>输出
-
-```console
-Document ID: 1 , Sentiment Score: 0.87
-Document ID: 2 , Sentiment Score: 0.11
-Document ID: 3 , Sentiment Score: 0.44
-Document ID: 4 , Sentiment Score: 1.00
-```
-
 ---
 
 ## <a name="language-detection"></a>语言检测
@@ -492,20 +441,6 @@ language_detection_example(client)
 Language:  French
 ```
 
-# <a name="version-21"></a>[版本 2.1](#tab/version-2)
-
-使用前面创建的客户端，调用 [detect_language()](/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient#detect-language-show-stats-none--documents-none--custom-headers-none--raw-false----operation-config-) 并获取结果。 然后循环访问结果，输出每个文档的 ID 和第一种返回的语言。
-
-[!code-python[language detection](~/samples-cognitive-services-python-sdk/samples/language/text_analytics_samples.py?name=languageDetection)]
-
-
-### <a name="output"></a>输出
-
-```console
-Document ID: 1 , Language: English
-Document ID: 2 , Language: Spanish
-Document ID: 3 , Language: Chinese_Simplified
-```
 
 ---
 
@@ -789,54 +724,6 @@ Linked Entities:
                 Confidence Score: 0.33
 ```
 
-# <a name="version-21"></a>[版本 2.1](#tab/version-2)
-
-> [!NOTE]
-> 在版本 2.1 中，实体链接包含在 NER 响应中。
-
-使用前面创建的客户端，调用 [entities()](/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient#entities-show-stats-none--documents-none--custom-headers-none--raw-false----operation-config-) 函数并获取结果。 然后循环访问结果，输出每个文档的 ID 和其中包含的实体。
-
-[!code-python[Entity recognition](~/samples-cognitive-services-python-sdk/samples/language/text_analytics_samples.py?name=entityRecognition)]
-
-### <a name="output"></a>输出
-
-```console
-Document ID: 1
-        Name: Microsoft,        Type: Organization,     Sub-Type: N/A
-        Offset: 0, Length: 9,   Score: 1.0
-
-        Name: Bill Gates,       Type: Person,   Sub-Type: N/A
-        Offset: 25, Length: 10, Score: 0.999847412109375
-
-        Name: Paul Allen,       Type: Person,   Sub-Type: N/A
-        Offset: 40, Length: 10, Score: 0.9988409876823425
-
-        Name: April 4,  Type: Other,    Sub-Type: N/A
-        Offset: 54, Length: 7,  Score: 0.8
-
-        Name: April 4, 1975,    Type: DateTime, Sub-Type: Date
-        Offset: 54, Length: 13, Score: 0.8
-
-        Name: BASIC,    Type: Other,    Sub-Type: N/A
-        Offset: 89, Length: 5,  Score: 0.8
-
-        Name: Altair 8800,      Type: Other,    Sub-Type: N/A
-        Offset: 116, Length: 11,        Score: 0.8
-
-Document ID: 2
-        Name: Microsoft,        Type: Organization,     Sub-Type: N/A
-        Offset: 21, Length: 9,  Score: 0.999755859375
-
-        Name: Redmond (Washington),     Type: Location, Sub-Type: N/A
-        Offset: 60, Length: 7,  Score: 0.9911284446716309
-
-        Name: 21 kilómetros,    Type: Quantity, Sub-Type: Dimension
-        Offset: 71, Length: 13, Score: 0.8
-
-        Name: Seattle,  Type: Location, Sub-Type: N/A
-        Offset: 88, Length: 7,  Score: 0.9998779296875
-```
-
 ---
 
 ### <a name="key-phrase-extraction"></a>关键短语提取
@@ -909,33 +796,6 @@ key_phrase_extraction_example(client)
          veterinarian
 ```
 
-# <a name="version-21"></a>[版本 2.1](#tab/version-2)
-
-使用前面创建的客户端，调用 [key_phrases()](/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient#key-phrases-show-stats-none--documents-none--custom-headers-none--raw-false----operation-config-) 函数并获取结果。 然后循环访问结果，输出每个文档的 ID 和其中包含的关键短语。
-
-[!code-python[key phrase extraction](~/samples-cognitive-services-python-sdk/samples/language/text_analytics_samples.py?name=keyPhrases)]
-
-
-### <a name="output"></a>输出
-
-```console
-Document ID: 1
-         Key phrases:
-                幸せ
-Document ID: 2
-         Key phrases:
-                Stuttgart
-                Hotel
-                Fahrt
-                Fu
-Document ID: 3
-         Key phrases:
-                cat
-                veterinarian
-Document ID: 4
-         Key phrases:
-                fútbol
-```
 
 ---
 
@@ -1003,9 +863,5 @@ Entity: Paul Allen
 # <a name="version-30"></a>[版本 3.0](#tab/version-3)
 
 此功能在版本 3.0 中不可用。
-
-# <a name="version-21"></a>[版本 2.1](#tab/version-2)
-
-此功能在版本 2.1 中不可用。
 
 ---

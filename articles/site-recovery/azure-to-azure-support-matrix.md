@@ -4,12 +4,12 @@ description: 汇总了使用 Azure Site Recovery 将 Azure VM 灾难恢复到次
 ms.topic: article
 ms.date: 11/29/2020
 ms.author: raynew
-ms.openlocfilehash: 522af9738cac098dcc9e8cb73183c0bd6b3b4902
-ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
+ms.openlocfilehash: 7e9cb2397017c428c3a5251ed0d0c4f9a076c72f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100534664"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101735533"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>在 Azure 区域之间进行 Azure VM 灾难恢复的支持矩阵
 
@@ -95,9 +95,9 @@ Site Recovery 支持复制那些运行本节中所列操作系统的 Azure VM。
 --- | ---
 Windows Server 2019 | 支持 Server Core、带桌面体验的服务器。
 Windows Server 2016  | 支持 Server Core、带桌面体验的服务器。
-Windows Server 2012 R2 | 。
-Windows Server 2012 | 。
-Windows Server 2008 R2 SP1/SP2 | 。<br/><br/> 从适用于 Azure VM 的移动服务扩展版本 [9.30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) 开始，需要在运行 Windows Server 2008 R2 SP1/SP2 的计算机上安装 Windows [服务堆栈更新 (SSU)](https://support.microsoft.com/help/4490628) 和 [SHA-2 更新](https://support.microsoft.com/help/4474419)。  从 2019 年 9 月开始不再支持 SHA-1。如果未启用 SHA-2 代码签名，则无法按预期方式安装/升级代理扩展。 详细了解 [SHA-2 升级和要求](https://aka.ms/SHA-2KB)。
+Windows Server 2012 R2 | 支持。
+Windows Server 2012 | 支持。
+Windows Server 2008 R2 SP1/SP2 | 支持。<br/><br/> 从适用于 Azure VM 的移动服务扩展版本 [9.30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) 开始，需要在运行 Windows Server 2008 R2 SP1/SP2 的计算机上安装 Windows [服务堆栈更新 (SSU)](https://support.microsoft.com/help/4490628) 和 [SHA-2 更新](https://support.microsoft.com/help/4474419)。  从 2019 年 9 月开始不再支持 SHA-1。如果未启用 SHA-2 代码签名，则无法按预期方式安装/升级代理扩展。 详细了解 [SHA-2 升级和要求](https://aka.ms/SHA-2KB)。
 Windows 10 (x64) | 支持。
 Windows 8.1 (x64) | 支持。
 Windows 8 (x64) | 支持。
@@ -258,6 +258,7 @@ NVMe 存储接口 | 不支持
 适用于 Windows OS 的 Azure 磁盘加密 (ADE) | 支持使用托管磁盘的 VM。 | 不支持使用非托管磁盘的 VM。 <br/><br/> 不支持 HSM 保护的密钥。 <br/><br/> 不支持加密单个磁盘上的各个卷。 |
 适用于 Linux OS 的 Azure 磁盘加密 (ADE) | 支持使用托管磁盘的 VM。 | 不支持使用非托管磁盘的 VM。 <br/><br/> 不支持 HSM 保护的密钥。 <br/><br/> 不支持对单个磁盘上的单个卷进行加密。 <br><br> 有关启用复制的已知问题。 [了解详细信息。](./azure-to-azure-troubleshoot-errors.md#enable-protection-failed-as-the-installer-is-unable-to-find-the-root-disk-error-code-151137) |
 SAS 密钥轮换 | 不支持 | 如果对存储帐户的 SAS 密钥进行轮换，客户需要禁用复制后再将其重新启用。 |
+主机缓存 | 支持
 热添加    | 支持 | 使用托管磁盘的 VM 支持对添加到已复制 Azure VM 的数据磁盘启用复制。 <br/><br/> 一次只能将一个磁盘热添加到 Azure VM。 不支持并行添加多个磁盘。 |
 热删除磁盘    | 不支持 | 如果在 VM 上删除数据磁盘，需要对 VM 禁用复制，然后重新启用复制。
 排除磁盘 | 支持。 必须使用 [PowerShell](azure-to-azure-exclude-disks.md) 进行配置。 |    默认会排除临时磁盘。

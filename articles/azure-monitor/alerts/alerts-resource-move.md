@@ -5,18 +5,18 @@ author: harelbr
 ms.author: harelbr
 ms.topic: how-to
 ms.custom: subject-moving-resources
-ms.date: 06/26/2020
+ms.date: 02/14/2021
 ms.subservice: alerts
-ms.openlocfilehash: b09c7f1ff429a3daf675b0f44cc8b64f27e79a07
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 435f7b9b585b4effe6b06d78587845bf53a7d051
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100606171"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714198"
 ---
 # <a name="how-to-update-alert-rules-or-action-rules-when-their-target-resource-moves-to-a-different-azure-region"></a>如何在警报规则或操作规则的目标资源移动到其他 Azure 区域时对这些规则进行更新
 
-本文介绍了当你在区域之间移动其他 Azure 资源时，为何现有的[警报规则](../platform/alerts-overview.md)和[操作规则](./alerts-action-rules.md)会受影响，以及如何识别和解决这些问题。 请查看主要的[资源移动文档](../../azure-resource-manager/management/move-region.md)，详细了解何时需要在区域之间移动资源，以及用于设计移动过程的清单。
+本文介绍了当你在区域之间移动其他 Azure 资源时，为何现有的[警报规则](./alerts-overview.md)和[操作规则](./alerts-action-rules.md)会受影响，以及如何识别和解决这些问题。 请查看主要的[资源移动文档](../../azure-resource-manager/management/move-region.md)，详细了解何时需要在区域之间移动资源，以及用于设计移动过程的清单。
 
 ## <a name="why-the-problem-exists"></a>存在此问题的原因
 
@@ -48,7 +48,6 @@ ms.locfileid: "100606171"
 
 - 活动日志警报规则
 - 操作规则
-- 经典警报
 - 指标警报-有关详细信息，请参阅下一节 [基于指标的警报规则](#alert-rules-based-on-metrics)。
 
 > [!NOTE]
@@ -112,4 +111,4 @@ Azure 资源发出的指标是区域性的。 每次将资源移到新区域时�
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何解决[警报通知](alerts-troubleshoot.md)、[指标警报](alerts-troubleshoot-metric.md)和[日志警报](alerts-troubleshoot-log.md)的其他问题。 
+了解如何解决[警报通知](alerts-troubleshoot.md)、[指标警报](alerts-troubleshoot-metric.md)和[日志警报](alerts-troubleshoot-log.md)的其他问题。

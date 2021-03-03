@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/18/2019
-ms.openlocfilehash: 17d89414a762dd6bf68176b5044787179eb80250
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 501e395cf91630789824cc111614e7150dddaa7c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100606077"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101700603"
 ---
 # <a name="log-data-ingestion-time-in-azure-monitor"></a>Azure Monitor 中的日志数据引入时间
 Azure Monitor 是一种大规模数据服务，每月为成千上万的客户发送数 TB 的数据，并且此数据仍在不断增长。 关于日志数据在收集后需要多长时间才可供使用，大家通常存有疑问。 本文将对影响此延迟的不同因素进行说明。
@@ -57,7 +57,7 @@ Azure 数据增加了额外的时间，以便在 Log Analytics 引入点处可�
 请参阅各解决方案的文档，确定其收集频率。
 
 ### <a name="pipeline-process-time"></a>管道处理时间
-将日志记录引入到 Azure Monitor 管道（如 [_TimeReceived](../platform/log-standard-columns.md#_timereceived) 属性中所标识）后，会将其写入临时存储，以确保租户隔离并确保数据不会丢失。 此过程通常会花费 5-15 秒的时间。 一些管理解决方案实施了更复杂的算法来聚合数据，并在数据流入时获得见解。 例如，网络性能监视器以 3 分钟的时间间隔聚合传入数据，有效地增加了 3 分钟的延迟。 处理自定义日志是另一个增加延迟的过程。 在某些情况下，此过程可能会为代理从文件收集的日志增加几分钟延迟。
+将日志记录引入到 Azure Monitor 管道（如 [_TimeReceived](./log-standard-columns.md#_timereceived) 属性中所标识）后，会将其写入临时存储，以确保租户隔离并确保数据不会丢失。 此过程通常会花费 5-15 秒的时间。 一些管理解决方案实施了更复杂的算法来聚合数据，并在数据流入时获得见解。 例如，网络性能监视器以 3 分钟的时间间隔聚合传入数据，有效地增加了 3 分钟的延迟。 处理自定义日志是另一个增加延迟的过程。 在某些情况下，此过程可能会为代理从文件收集的日志增加几分钟延迟。
 
 ### <a name="new-custom-data-types-provisioning"></a>新的自定义数据类型预配
 从[自定义日志](../agents/data-sources-custom-logs.md)或[数据收集器 API ](../logs/data-collector-api.md)创建新的自定义数据类型时，系统会创建专用存储容器。 这是一次性开销，仅在此数据类型第一次出现时支付。
@@ -77,8 +77,8 @@ Azure Monitor 的首要任务是确保不会丢失任何客户数据，因此系
 
 | 步骤 | 属性或函数 | 注释 |
 |:---|:---|:---|
-| 在数据源处创建的记录 | [TimeGenerated](../platform/log-standard-columns.md#timegenerated-and-timestamp) <br>如果数据源未设置此值，则它将设置为与 _TimeReceived 相同的时间。 |
-| Azure Monitor 引入终结点收到的记录 | [_TimeReceived](../platform/log-standard-columns.md#_timereceived) | |
+| 在数据源处创建的记录 | [TimeGenerated](./log-standard-columns.md#timegenerated-and-timestamp) <br>如果数据源未设置此值，则它将设置为与 _TimeReceived 相同的时间。 |
+| Azure Monitor 引入终结点收到的记录 | [_TimeReceived](./log-standard-columns.md#_timereceived) | |
 | 存储在工作区中并可用于查询的记录 | [ingestion_time()](/azure/kusto/query/ingestiontimefunction) | |
 
 ### <a name="ingestion-latency-delays"></a>引入延迟延迟

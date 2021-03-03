@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
-ms.date: 02/01/2021
-ms.openlocfilehash: 5db0214e9b985df5c5aedb1dbe9878e484af2a55
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.date: 03/02/2021
+ms.openlocfilehash: 9d8d3cb4bf68f7da2bddabd21272d1011ce92f66
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99430791"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101715201"
 ---
 # <a name="overview-azure-logic-apps-preview"></a>概述： Azure 逻辑应用预览
 
@@ -38,7 +38,7 @@ ms.locfileid: "99430791"
 
 * [Azure 逻辑应用预览中的限制](#limits)。
 
-有关详细信息，请参阅以下文章：
+有关详细信息，请查看以下其他主题：
 
 * [运行时的 Azure 逻辑应用-运行时深入探讨](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-runtime-deep-dive/ba-p/1835564)
 
@@ -50,7 +50,7 @@ ms.locfileid: "99430791"
 
 Azure 逻辑应用预览运行时使用 [Azure Functions](../azure-functions/functions-overview.md) 扩展性，并作为 Azure Functions 运行时的扩展托管。 此体系结构意味着可以在 Azure Functions 运行的任何位置运行新的逻辑应用类型。 你可以在几乎任何所需的网络拓扑中托管 Azure 逻辑应用预览运行时，并选择任何可用计算大小来处理工作流所需的必要工作负荷。 有关 Azure Functions 扩展性的详细信息，请参阅 [Web 作业 SDK：创建自定义输入和输出绑定](https://github.com/Azure/azure-webjobs-sdk/wiki/Creating-custom-input-and-output-bindings)。
 
-利用这种新方法，Azure 逻辑应用预览运行时和工作流都是你的应用程序的一部分，你可以将这些应用程序打包在一起。 通过此功能，只需将项目复制到宿主环境并启动应用即可部署和运行工作流。 在将更改部署到生产环境之前，此方法还提供了更标准化的方法来围绕工作流项目构建 DevOps 管道，以运行所需的测试和验证。 有关详细信息，请参阅 [运行时的 Azure 逻辑应用-运行时深入探讨](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-runtime-deep-dive/ba-p/1835564)。
+利用这种新方法，Azure 逻辑应用预览运行时和工作流都是你的应用程序的一部分，你可以将这些应用程序打包在一起。 通过此功能，只需将项目复制到宿主环境并启动应用即可部署和运行工作流。 在将更改部署到生产环境之前，此方法还提供了在工作流项目周围构建部署管道的更标准化的体验，以便运行所需的测试和验证。 有关详细信息，请参阅 [运行时的 Azure 逻辑应用-运行时深入探讨](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-runtime-deep-dive/ba-p/1835564)。
 
 下表简要概述了工作流共享资源的方式的差异，这取决于运行工作流的环境。 有关限制的差异，请参阅 [Azure 逻辑应用预览中的限制](#limits)。
 
@@ -139,10 +139,17 @@ Azure 逻辑应用预览包括许多当前功能和其他功能，例如：
 
 * 当你的 Azure 订阅和逻辑应用设置支持时，通过使用 [Application Insights](../azure-monitor/app/app-insights-overview.md) 为逻辑应用启用诊断日志记录和跟踪功能。
 
+* 访问网络功能，如使用 [Azure Functions 高级计划](../azure-functions/functions-premium-plan.md)创建和部署逻辑应用时，使用 Azure 虚拟网络进行连接并将其与 Azure 虚拟网络集成，类似于 Azure Functions。 有关详细信息，请查看以下主题：
+
+  * [Azure Functions 网络选项](../azure-functions/functions-networking-options.md)
+
+  * [Azure 逻辑应用在任意位置运行-网络可能的 Azure 逻辑应用预览](https://techcommunity.microsoft.com/t5/integrations-on-azure/logic-apps-anywhere-networking-possibilities-with-logic-app/ba-p/2105047)
+
 * 为 **逻辑应用 (预览)** 资源中的各个工作流使用的托管连接重新生成访问密钥。 对于此任务，请 [遵循 **逻辑应用** 资源的相同步骤，但在单独的工作流级别](logic-apps-securing-a-logic-app.md#regenerate-access-keys)，而不是逻辑应用资源级别。
 
-> [!NOTE]
-> 有关当前已知问题的信息，请查看 [GitHub 中的逻辑应用公共预览版已知问题页](https://github.com/Azure/logicapps/blob/master/articles/logic-apps-public-preview-known-issues.md)。
+* 按照与非预览设计器相同的步骤，在新设计器中添加并行分支。
+ 
+有关详细信息，请参阅 GitHub 中的 [更改、受限、不可用和不支持的功能](#limited-unavailable-unsupported) 和 [逻辑应用公共预览版已知问题页](https://github.com/Azure/logicapps/blob/master/articles/logic-apps-public-preview-known-issues.md)。
 
 <a name="pricing-model"></a>
 
@@ -171,7 +178,9 @@ Azure 逻辑应用预览包括许多当前功能和其他功能，例如：
 
 * **操作系统支持**：目前，Visual Studio Code 中的设计器不适用于 linux 操作系统，但你仍可以将使用逻辑应用预览运行时的逻辑应用部署到基于 linux 的虚拟机。 现在，你可以在 Windows 或 macOS 上 Visual Studio Code 中构建逻辑应用，然后将其部署到基于 Linux 的虚拟机。
 
-* **触发器和操作**：某些内置触发器不可用，例如滑动窗口和批处理。 若要启动工作流，请使用内置的 " [重复周期"、"请求"、"http"、"事件中心" 或 "服务总线触发器](../connectors/apis-list.md)"。 内置触发器和操作在 Azure 逻辑应用预览运行时中以本机方式运行，而托管连接器则部署在 Azure 中。 在设计器中，内置触发器和操作显示在 " **内置** " 选项卡下，而 "托管连接器触发器" 和 "操作" 显示在 " **Azure** " 选项卡下。
+* **触发器和操作**：内置触发器和操作在 Azure 逻辑应用预览运行时中以本机方式运行，而托管连接器则部署在 azure 中。 某些内置触发器不可用，例如滑动窗口和批处理。
+
+  若要启动工作流，请使用内置的 " [重复周期"、"请求"、"http"、"事件中心" 或 "服务总线触发器](../connectors/apis-list.md)"。 在设计器中，内置触发器和操作显示在 " **内置** " 选项卡下，而 "托管连接器触发器" 和 "操作" 显示在 " **Azure** " 选项卡下。
 
   > [!NOTE]
   > 若要在 Visual Studio Code 中本地运行，基于 webhook 的触发器和操作需要额外的设置。 有关详细信息，请参阅 [在 Visual Studio Code 中创建有状态和无状态工作流](create-stateful-stateless-workflows-visual-studio-code.md#webhook-setup)。
@@ -199,11 +208,11 @@ Azure 逻辑应用预览包括许多当前功能和其他功能，例如：
 
       * 内联代码操作操作不再需要集成帐户。
 
-      * 如果你使用的是 macOS 或 Linux，则在 Visual Studio Code (预览) 扩展时， **内联代码操作** 当前不可用。
+      * 对于 macOS 和 Linux，在 Visual Studio Code 中使用 Azure 逻辑应用 (预览) 扩展时，现在支持 **内联代码操作** 。
 
-      * 如果对内联代码操作操作进行更改，则需要重新启动逻辑应用。
+      * 如果对 **内联代码操作** 操作进行更改，则不再需要重新启动逻辑应用。
 
-      * 内联代码操作操作具有 [更新的限制](logic-apps-overview-preview.md#inline-code-limits)。
+      * **内联代码操作** 操作具有 [更新的限制](logic-apps-overview-preview.md#inline-code-limits)。
 
     * 某些 [内置 B2B 触发器和集成帐户的操作](../connectors/apis-list.md#integration-account-connectors) 不可用，例如 **平面文件** 编码和解码操作。
 
@@ -211,17 +220,15 @@ Azure 逻辑应用预览包括许多当前功能和其他功能，例如：
 
 * **托管计划可用性**：无论你是在 Azure 门户中创建新的 **逻辑应用 (预览)** 资源类型，还是从 Visual Studio Code 部署，你只能在 Azure 中使用高级服务托管计划或应用服务托管计划。 消耗托管计划不可用，因此不支持部署此资源类型。 你可以从 Visual Studio Code 部署到 Docker 容器，但不能部署到 [ (ISE) 的 integration service 环境 ](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)。
 
-* **并行分支**：当前不能通过新的设计器体验添加并行分支。 不过，您仍可以通过原始设计器体验添加这些分支，并使它们出现在新的设计器中。
-
-  1. 在设计器的底部，通过选择 " **新建画布** " 控件禁用新的体验。
-
-  1. 向工作流添加并行分支。
-
-  1. 再次选择 " **新建画布** " 控件，启用新的体验。
+* **Visual Studio Code 中的断点调试**：尽管你可以在工作流的文件 **workflow.js** 中添加和使用断点，但此时仅支持操作的断点，而非触发器。 有关详细信息，请参阅 [在 Visual Studio Code 中创建有状态和无状态工作流](create-stateful-stateless-workflows-visual-studio-code.md#manage-breakpoints)。
 
 * **缩放控件**：当前在设计器上无法使用缩放控件。
 
-* **Visual Studio Code 中的断点调试**：尽管你可以在工作流的文件 **workflow.js** 中添加和使用断点，但此时仅支持操作的断点，而非触发器。 有关详细信息，请参阅 [在 Visual Studio Code 中创建有状态和无状态工作流](create-stateful-stateless-workflows-visual-studio-code.md#manage-breakpoints)。
+* **触发器历史记录和运行历史记录**：对于 **逻辑应用 (预览)** 资源类型，Azure 门户中的触发器历史记录和运行历史记录显示在工作流级别，而不是逻辑应用级别。 若要查找此历史数据，请执行以下步骤：
+
+   * 若要查看运行历史记录，请在逻辑应用中打开工作流。 在 "工作流" 菜单的 " **开发人员**" 下，选择 " **监视器**"。
+
+   * 若要查看触发器历史记录，请在逻辑应用中打开工作流。 在 "工作流" 菜单的 " **开发人员**" 下，选择 " **触发历史记录**"。
 
 <a name="limits"></a>
 

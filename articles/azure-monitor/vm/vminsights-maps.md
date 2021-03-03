@@ -1,22 +1,22 @@
 ---
-title: 使用用于 VM 的 Azure Monitor 查看应用依赖项
-description: 映射是用于 VM 的 Azure Monitor 的一项功能。 它可以自动发现 Windows 和 Linux 系统上的应用程序组件并映射服务之间的通信。 本文提供有关如何在各种方案中使用映射功能的详细信息。
+title: 查看 VM insights 的应用依赖项
+description: Map 是 VM insights 的一项功能。 它可以自动发现 Windows 和 Linux 系统上的应用程序组件并映射服务之间的通信。 本文提供有关如何在各种方案中使用映射功能的详细信息。
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/20/2020
-ms.openlocfilehash: ea11a2dbff9c05400f24ecfa86c66395032b8ac9
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 19da3e3e02581ce9fad080bb23bc48dcb9a3ceb3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100608659"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719638"
 ---
-# <a name="use-the-map-feature-of-azure-monitor-for-vms-to-understand-application-components"></a>使用用于 VM 的 Azure Monitor 的地图功能来了解应用程序组件
-在用于 VM 的 Azure Monitor 中，可以查看在 Azure 或你的环境中运行的 Windows 和 Linux 虚拟机 (VM) 上发现的应用程序组件。 可通过两种方式观察 VM。 查看直接从 VM 建立的映射，或查看从 Azure Monitor 建立的映射，以查看各个 VM 组中的组件。 本文将帮助你了解这两种查看方法，以及如何使用映射功能。 
+# <a name="use-the-map-feature-of-vm-insights-to-understand-application-components"></a>使用 VM insights 的地图功能了解应用程序组件
+在 VM insights 中，可以查看在 Windows 和 Linux 虚拟机上发现的应用程序组件 (在 Azure 或环境中运行的 Vm) 。 可通过两种方式观察 VM。 查看直接从 VM 建立的映射，或查看从 Azure Monitor 建立的映射，以查看各个 VM 组中的组件。 本文将帮助你了解这两种查看方法，以及如何使用映射功能。 
 
-有关配置用于 VM 的 Azure Monitor 的信息，请参阅[启用用于 VM 的 Azure Monitor](../insights/vminsights-enable-overview.md)。
+有关配置 VM insights 的信息，请参阅 [ENABLE vm insights](./vminsights-enable-overview.md)。
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 登录 [Azure 门户](https://portal.azure.com)。
@@ -49,7 +49,7 @@ ms.locfileid: "100608659"
 - 包含一个子句，以按计算机将警报分组（例如“by Computer interval 1 minute”）。
 - 使警报基于指标。
 
-有关 Azure 警报和创建警报规则的详细信息，请参阅 [Azure Monitor 中的统一警报](../platform/alerts-overview.md)。
+有关 Azure 警报和创建警报规则的详细信息，请参阅 [Azure Monitor 中的统一警报](../alerts/alerts-overview.md)。
 
 右上角的“图例”选项描述映射中的符号和角色。 要深入了解映射并将其四处移动，请使用右下角的缩放控件。 可以设置缩放级别，并使映射适合页面大小。  
 
@@ -85,7 +85,7 @@ ms.locfileid: "100608659"
 
 ## <a name="view-a-map-from-a-vm"></a>从 VM 查看映射 
 
-若要直接从 VM 访问用于 VM 的 Azure Monitor：
+直接从 VM 访问 VM insights：
 
 1. 在 Azure 门户中，选择“虚拟机”。 
 2. 在列表中选择一个 VM。 在 " **监视** " 部分，选择 " **见解**"。  
@@ -99,7 +99,7 @@ ms.locfileid: "100608659"
 
 ## <a name="view-a-map-from-a-virtual-machine-scale-set"></a>从虚拟机规模集查看映射
 
-若要直接从虚拟机规模集访问用于 VM 的 Azure Monitor：
+若要从虚拟机规模集直接访问 VM insights：
 
 1. 在 Azure 门户中选择“虚拟机规模集”。
 2. 在列表中选择一个 VM。 然后在 " **监视** " 部分选择 " **见解**"。  
@@ -128,11 +128,10 @@ ms.locfileid: "100608659"
 
 使用页面顶部的“工作区”选择器选择一个工作区。 如果你有多个 Log Analytics 工作区，请选择已在解决方案中启用的，并且 VM 会向其报告的工作区。 
 
-“组”选择器将返回与所选工作区相关的计算机的订阅、资源组、[计算机组](../platform/computer-groups.md)以及虚拟机规模集。 所做的选择只会应用到映射功能，而不会传播到性能或运行状况功能。
+“组”选择器将返回与所选工作区相关的计算机的订阅、资源组、[计算机组](../logs/computer-groups.md)以及虚拟机规模集。 所做的选择只会应用到映射功能，而不会传播到性能或运行状况功能。
 
 默认情况下，映射显示最近 30 分钟。 若要查看过去发现的依赖项，可以查询最多一小时的历史时间范围。 若要运行查询，请使用“TimeRange”选择器。 例如，在发生某个事件期间，或者想要查看更改前的状态时，可以运行查询。  
 
 ## <a name="next-steps"></a>后续步骤
 
-若要标识瓶颈、检查性能和了解 VM 的总体利用率，请参阅[查看用于 VM 的 Azure Monitor 的性能状态](vminsights-performance.md)。 
-
+若要确定瓶颈、查看性能并了解 Vm 的总体利用率，请参阅 [查看 vm insights 的性能状态](vminsights-performance.md)。

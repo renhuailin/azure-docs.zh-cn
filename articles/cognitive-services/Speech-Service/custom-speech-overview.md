@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/12/2021
 ms.author: trbye
 ms.custom: contperf-fy21q2; references_regions
-ms.openlocfilehash: f2dca513b4413f1761ea1b21bf71f90bb27d3053
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 39370659e71a7d281914b360eea83eb0b68b25ba
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100388645"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101716561"
 ---
 # <a name="what-is-custom-speech"></a>什么是自定义语音识别？
 
@@ -45,7 +45,9 @@ ms.locfileid: "100388645"
 你需要有一个 Azure 帐户和语音服务订阅，然后才能使用 [Speech Studio](https://speech.microsoft.com/customspeech) 来创建自定义模型。 如果你没有帐户和订阅，[可以免费试用语音服务](overview.md#try-the-speech-service-for-free)。
 
 > [!NOTE]
-> 如果打算使用 **音频数据** 训练自定义模型，请选择以下区域之一，其中有专用硬件可用于培训。 这将减少训练模型所用的时间。
+> 请确保创建标准 (S0) 订阅。 不支持免费 (F0) 订阅。
+
+如果打算使用 **音频数据** 训练自定义模型，请选择以下区域之一，其中有专用硬件可用于培训。 这将减少训练模型所用的时间，并使您可以使用更多的音频进行定型。 在这些区域中，语音服务将使用最多20小时的音频进行培训;在其他区域中，最多只能使用8个小时。
 
 * 澳大利亚东部
 * 加拿大中部
@@ -61,9 +63,6 @@ ms.locfileid: "100388645"
 * US Gov 弗吉尼亚州
 * 西欧
 * 美国西部 2
-
-> [!NOTE]
-> 请确保创建标准 (S0) 订阅。 不支持免费 (F0) 订阅。
 
 创建 Azure 帐户和语音服务订阅后，需要登录到 [Speech Studio](https://speech.microsoft.com/customspeech) 并连接订阅。
 

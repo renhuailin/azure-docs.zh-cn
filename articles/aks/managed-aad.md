@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 02/1/2021
 ms.author: miwithro
-ms.openlocfilehash: 7f6cf503a459175e3109a515b666bbeaa3a25b4d
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 78eed4086c04ceca677a96f03875481e56206e0c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99549993"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723964"
 ---
 # <a name="aks-managed-azure-active-directory-integration"></a>AKS 托管的 Azure Active Directory 集成
 
@@ -231,6 +231,70 @@ kubectl get nodes
 
 :::image type="content" source="./media/managed-aad/conditional-access-sign-in-activity.png" alt-text="由于条件访问策略，登录条目失败":::
 
+## <a name="configure-just-in-time-cluster-access-with-azure-ad-and-aks"></a>使用 Azure AD 和 AKS 配置实时群集访问
+
+群集访问控制的另一个选项是将 Privileged Identity Management (PIM) 用于实时请求。
+
+>[!NOTE]
+> PIM 是需要高级 P2 SKU 的 Azure AD Premium 功能。 有关 Azure AD Sku 的详细信息，请参阅 [定价指南][aad-pricing]。
+
+若要使用 AKS 托管 Azure AD 集成将实时访问请求与 AKS 群集集成，请完成以下步骤：
+
+1. 在 Azure 门户顶部，搜索并选择 "Azure Active Directory"。
+1. 记下租户 ID （ `<tenant-id>` :::image type="content" source="./media/managed-aad/jit-get-tenant-id.png" alt-text="在 web 浏览器中称为的其他说明），将显示 Azure Active Directory 的 Azure 门户屏幕，其中突出显示了租户的 ID。":::
+1. 在左侧 Azure Active Directory 的菜单中，在 " *管理* " 下选择 " *组* "，然后选择 " *新建组*"。
+    :::image type="content" source="./media/managed-aad/jit-create-new-group.png" alt-text="显示 &quot;新建组&quot; 选项突出显示的 &quot;Azure 门户 Active Directory 组&quot; 屏幕。":::
+1. 请确保已选中 "组类型 *"，并* 输入组名称，如 " *myJITGroup*"。 在 " *Azure AD 角色可以分配给此组 (预览")* 中，选择 *"是"*。 最后，选择“创建”。
+    :::image type="content" source="./media/managed-aad/jit-new-group-created.png" alt-text="显示 Azure 门户的新组创建屏幕。":::
+1. 你将返回到 " *组* " 页。 选择新创建的组，并记下对象 ID，将这些说明的其余部分称为 `<object-id>` 。
+    :::image type="content" source="./media/managed-aad/jit-get-object-id.png" alt-text="显示刚刚创建的组的 Azure 门户屏幕，突出显示对象 Id":::
+1. 使用 `<tenant-id>` 前面的和值，通过 AKS 管理的 Azure AD 集成部署 AKS 群集 `<object-id>` ：
+    ```azurecli-interactive
+    az aks create -g myResourceGroup -n myManagedCluster --enable-aad --aad-admin-group-object-ids <object-id> --aad-tenant-id <tenant-id>
+    ```
+1. 返回 Azure 门户，在左侧 *活动* 的菜单中，选择 " *特权访问 (预览")* 并选择 " *启用特权访问*"。
+    :::image type="content" source="./media/managed-aad/jit-enabling-priv-access.png" alt-text="显示 Azure 门户的特权访问 (预览 &quot;) 页面，突出显示&quot; 启用特权访问 &quot;":::
+1. 选择 " *添加分配* " 开始授予访问权限。
+    :::image type="content" source="./media/managed-aad/jit-add-active-assignment.png" alt-text="显示启用后 Azure 门户的特权访问 (预览) 屏幕。&quot;添加分配&quot; 选项已突出显示。":::
+1. 选择 *成员* 的角色，并选择要向其授予群集访问权限的用户和组。 组管理员可随时修改这些分配。准备好继续时，选择 " *下一步*"。
+    :::image type="content" source="./media/managed-aad/jit-adding-assignment.png" alt-text="将显示 Azure 门户的 &quot;添加分配成员身份&quot; 屏幕，并选择要添加为成员的示例用户。选项 &quot;下一步&quot; 已突出显示。":::
+1. 选择 *活动* 的分配类型、所需的持续时间，并提供理由。 准备好继续时，选择 " *分配*"。 有关分配类型的详细信息，请参阅 [Privileged Identity Management 中的为特权访问组 (预览) 分配资格][aad-assignments]。
+    :::image type="content" source="./media/managed-aad/jit-set-active-assignment-details.png" alt-text="将显示 Azure 门户的 &quot;添加分配&quot; 设置屏幕。选择了 &quot;活动&quot; 分配类型，并提供了一个示例理由。&quot;Assign&quot; 选项已突出显示。":::
+
+完成分配后，请通过访问群集来验证实时访问是否正常工作。 例如：
+
+```azurecli-interactive
+ az aks get-credentials --resource-group myResourceGroup --name myManagedCluster
+```
+
+按照以下步骤登录。
+
+使用 `kubectl get nodes` 命令查看群集中的节点：
+
+```azurecli-interactive
+kubectl get nodes
+```
+
+请注意身份验证要求，然后按照步骤进行身份验证。 如果成功，应会看到类似于下面的输出：
+
+```output
+To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code AAAAAAAAA to authenticate.
+NAME                                STATUS   ROLES   AGE     VERSION
+aks-nodepool1-61156405-vmss000000   Ready    agent   6m36s   v1.18.14
+aks-nodepool1-61156405-vmss000001   Ready    agent   6m42s   v1.18.14
+aks-nodepool1-61156405-vmss000002   Ready    agent   6m33s   v1.18.14
+```
+
+### <a name="troubleshooting"></a>疑难解答
+
+如果 `kubectl get nodes` 返回类似于下面的错误：
+
+```output
+Error from server (Forbidden): nodes is forbidden: User "aaaa11111-11aa-aa11-a1a1-111111aaaaa" cannot list resource "nodes" in API group "" at the cluster scope
+```
+
+请确保安全组的管理员为你的帐户提供了一个 *活动* 分配。
+
 ## <a name="next-steps"></a>后续步骤
 
 * 了解 [适用于 Kubernetes 授权的 AZURE RBAC 集成][azure-rbac-integration]
@@ -243,6 +307,7 @@ kubectl get nodes
 [kubernetes-webhook]:https://kubernetes.io/docs/reference/access-authn-authz/authentication/#webhook-token-authentication
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 [aks-arm-template]: /azure/templates/microsoft.containerservice/managedclusters
+[aad-pricing]: /azure/pricing/details/active-directory
 
 <!-- LINKS - Internal -->
 [aad-conditional-access]: ../active-directory/conditional-access/overview.md
@@ -260,3 +325,4 @@ kubectl get nodes
 [azure-ad-cli]: azure-ad-integration-cli.md
 [access-cluster]: #access-an-azure-ad-enabled-cluster
 [aad-migrate]: #upgrading-to-aks-managed-azure-ad-integration
+[aad-assignments]: ../active-directory/privileged-identity-management/groups-assign-member-owner.md#assign-an-owner-or-member-of-a-group

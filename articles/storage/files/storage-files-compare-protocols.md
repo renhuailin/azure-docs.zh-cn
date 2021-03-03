@@ -8,12 +8,12 @@ ms.date: 12/04/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: e914bcece9a30270d12d5c2cc09d3fd1014783c6
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 482e6c9f2e25b867574090a1f34e95f466916ba9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97916501"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711835"
 ---
 # <a name="azure-file-share-protocols"></a>Azure 文件共享协议
 
@@ -26,6 +26,7 @@ Azure 文件提供了两个用于连接和装载 Azure 文件共享的协议。 
 |访问协议     |NFS 4。1         |SMB 2.1，SMB 3。0         |
 |推荐的操作系统     |Linux 内核版本 4.3 +         |Windows 2008 R2 +、Linux 内核版本 4.11 +         |
 |[可用层](storage-files-planning.md#storage-tiers)     |高级存储         |高级存储，事务优化，热，冷         |
+|计费模型         |[支付预配的容量](https://docs.microsoft.com/azure/storage/files/understanding-billing#provisioned-model)         |为 "高级" 级别、"[标准" 级别](https://docs.microsoft.com/azure/storage/files/understanding-billing#pay-as-you-go-model)的即用即付[容量付费](https://docs.microsoft.com/azure/storage/files/understanding-billing#provisioned-model)         |
 |[冗余](storage-files-planning.md#redundancy)     |LRS、ZRS         |LRS、ZRS、GRS         |
 |身份验证     |仅限基于主机的身份验证        |基于身份的身份验证，基于用户的身份验证         |
 |权限     |UNIX 样式权限         |NTFS 样式权限         |

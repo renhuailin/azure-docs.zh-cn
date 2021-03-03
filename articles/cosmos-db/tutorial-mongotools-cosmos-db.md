@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.topic: tutorial
 ms.date: 02/10/2021
 ms.reviewer: sngun
-ms.openlocfilehash: 2b52a9227e8bd487a8929df11047eef4672f7f4a
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 2e9f3c877a5c4650d3e31fa414cac76837f4c9e8
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100416288"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101655745"
 ---
 # <a name="tutorial-migrate-mongodb-to-azure-cosmos-dbs-api-for-mongodb-offline-using-mongodb-native-tools"></a>Tutorial:使用 MongoDB 本机工具将 MongoDB 脱机迁移到 Azure Cosmos DB 的用于 MongoDB 的 API
 
@@ -31,7 +31,7 @@ ms.locfileid: "100416288"
 
 MongoDB 本机工具只能在主机硬件允许的速度下移动数据。对于不考虑总迁移时间的小型数据集，本机工具可能是最简单的解决方案。 如果需要可缩放的迁移管道，那么 [MongoDB Spark 连接器](https://docs.mongodb.com/spark-connector/current/)、[Azure 数据迁移服务 (DMS)](../dms/tutorial-mongodb-cosmos-db.md) 或 [Azure 数据工厂 (ADF)](../data-factory/connector-azure-cosmos-db-mongodb-api.md) 可能是更好的选择。
 
-如果尚未设置 MongoDB 源，请参阅[在 Azure 中的 Windows VM 上安装和配置 MongoDB](../virtual-machines/windows/install-mongodb.md) 一文。
+如果尚未设置 MongoDB 源，请参阅[在 Azure 中的 Windows VM 上安装和配置 MongoDB](/previous-versions/azure/virtual-machines/windows/install-mongodb) 一文。
 
 ## <a name="prerequisites"></a>先决条件
 

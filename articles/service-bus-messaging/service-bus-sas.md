@@ -4,18 +4,18 @@ description: 根据如何使用共享访问签名进行服务总线访问控制�
 ms.topic: article
 ms.date: 01/19/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6bdc167c437a79d609db25a2e3c48b71e0a748b2
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: d210da4b653a20dd273dfce723f0bf9d5dbf743b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98598826"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737811"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>使用共享访问签名进行服务总线访问控制
 
-本文讨论 (SAS) 的 *共享访问签名* 、其工作原理以及如何以平台无关的方式使用它们。
+本文介绍共享访问签名 (SAS)、其工作原理以及如何以平台无关的方式使用它们。
 
-SAS 可以根据授权规则来保护对服务总线的访问。 它们是在命名空间上配置的，或者是在消息实体 (队列或主题) 上配置的。 授权规则具有与特定权限关联的名称，并包含一个加密密钥对。 通过服务总线 SDK 或者在自己的代码中使用规则名称和密钥可以生成 SAS 令牌。 然后，客户端可将令牌传递给服务总线，以证明请求的操作获得授权。
+SAS 可以根据授权规则来保护对服务总线的访问。 可以在命名空间或消息传递实体（队列或主题）中配置这些保护。 授权规则具有与特定权限关联的名称，并包含一个加密密钥对。 通过服务总线 SDK 或者在自己的代码中使用规则名称和密钥可以生成 SAS 令牌。 然后，客户端可将令牌传递给服务总线，以证明请求的操作获得授权。
 
 > [!NOTE]
 > Azure 服务总线支持使用 Azure Active Directory (Azure AD) 授予对服务总线命名空间及其实体的访问权限。 使用 Azure AD 返回的 OAuth 2.0 令牌授权用户或应用程序可提供比共享访问签名 (SAS) 更高的安全性和易用性。 使用 Azure AD，不需要在代码中存储令牌，也不需要冒潜在的安全漏洞风险。
@@ -41,7 +41,7 @@ SAS 可以根据授权规则来保护对服务总线的访问。 它们是在命
 策略规则授予的权限可以是以下各项的组合：
 
 * “发送”- 授予向实体发送消息的权限
-* "侦听"-授予接收 (队列、订阅) 和所有相关消息处理的权限
+* “侦听”- 授予接收（队列、订阅）和所有相关消息处理的权限
 * “管理”- 授予管理命名空间的拓扑的权限，包括创建和删除实体
 
 “管理”权限包括“发送”和“接收”权限。
@@ -55,7 +55,7 @@ SAS 可以根据授权规则来保护对服务总线的访问。 它们是在命
 ## <a name="best-practices-when-using-sas"></a>使用 SAS 的最佳实践
 在应用程序中使用共享访问签名时，需要知道以下两个可能的风险：
 
-- 如果 SAS 泄露，则获取它的任何人都可以使用它，这可能会损害你的服务总线资源。
+- 如果 SAS 泄露，则获取它的任何人都可以使用它，这可能会使服务总线资源遭到入侵。
 - 如果提供给客户端应用程序的 SAS 到期并且应用程序无法从服务检索新 SAS，则可能会影响该应用程序的功能。
 
 下面这些针对使用共享访问签名的建议可帮助降低这些风险：
@@ -84,14 +84,14 @@ SharedAccessSignature sig=<signature-string>&se=<expiry>&skn=<keyName>&sr=<URL-e
 
 - `se` - 令牌即时过期时间。 一个整数，反映自 1970 年 1 月 1 日令牌过期的时期 `00:00:00 UTC`（UNIX 时期）以来的秒数。
 - `skn` - 授权规则的名称。
-- `sr` -要访问的资源的 URL 编码 URI。
-- `sig` -URL 编码的 HMACSHA256 签名。 哈希计算类似于以下伪代码，并返回原始二进制输出的 base64。
+- `sr` - 要访问的资源的 URL 编码 URI。
+- `sig` - URL 编码的 HMACSHA256 签名。 哈希计算类似于以下伪代码，并返回原始二进制输出的 base64。
 
     ```
     urlencode(base64(hmacsha256(urlencode('https://<yournamespace>.servicebus.windows.net/') + "\n" + '<expiry instant>', '<signing key>')))
     ```
 
-下面是用于生成 SAS 令牌的示例 c # 代码：
+下面是用于生成 SAS 令牌的示例 C# 代码：
 
 ```csharp
 private static string createToken(string resourceUri, string keyName, string key)
@@ -130,9 +130,9 @@ SAS 令牌对于以 `signature-string` 中使用的 `<resourceURI>` 为前缀的
 
 ## <a name="shared-access-signature-authentication-with-service-bus"></a>服务总线的共享访问签名身份验证
 
-下面所述的方案包括配置授权规则、生成 SAS 令牌和客户端授权。
+如下所述的方案包括配置授权规则、生成 SAS 令牌和客户端授权。
 
-有关演示配置和使用 SAS 授权的服务总线应用程序的完整工作示例，请参阅 [Shared Access Signature authentication with Service Bus](https://code.msdn.microsoft.com/Shared-Access-Signature-0a88adf8)（服务总线的共享访问签名身份验证）。 演示如何使用为保护服务总线订阅，在命名空间或主题上配置的 SAS 授权规则的相关示例位于此处：[Using Shared Access Signature (SAS) authentication with Service Bus Subscriptions](https://code.msdn.microsoft.com/Using-Shared-Access-e605b37c)（将共享访问签名 (SAS) 身份验证与服务总线订阅配合使用）。
+有关演示配置和使用 SAS 授权的服务总线应用程序的示例，请参阅 [使用服务总线进行共享访问签名身份验证](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/ManagingEntities/SASAuthorizationRule)。
 
 ## <a name="access-shared-access-authorization-rules-on-an-entity"></a>访问实体上的共享访问授权规则
 

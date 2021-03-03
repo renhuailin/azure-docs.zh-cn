@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 0f705aa61f1fe627dc0c8227242538e01ffce1d5
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: e61d2ff3807b65022d72414615af9fa729359358
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99070767"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101715711"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-portal"></a>在 Azure 数字孪生 (门户中管理终结点和路由) 
 
@@ -76,7 +76,7 @@ ms.locfileid: "99070767"
 1. 通过选择 " _保存_" 完成终结点的创建。
 
 >[!IMPORTANT]
-> 为了成功地对终结点使用基于身份的身份验证，需要按照 [*如何：为路由事件启用托管标识 (预览)*](how-to-enable-managed-identities.md)为实例创建托管标识。
+> 为了成功地对终结点使用基于身份的身份验证，需要按照 [*如何：为路由事件启用托管标识 (预览)*](./how-to-enable-managed-identities-portal.md)为实例创建托管标识。
 
 创建终结点后，可以通过选中顶部 Azure 门户栏中的通知图标来验证是否已成功创建终结点： 
 

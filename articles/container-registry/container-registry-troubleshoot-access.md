@@ -3,12 +3,12 @@ title: 排查与注册表相关的网络问题
 description: 访问位于虚拟网络中或防火墙后面的 Azure 容器注册表时的常见问题的症状、原因和解决方法
 ms.topic: article
 ms.date: 10/01/2020
-ms.openlocfilehash: cf2f308f782ac7d6011c98afd181b194f2b3e09f
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 75c94d40663a7058dab7ed691183dd578964edcc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99525070"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699600"
 ---
 # <a name="troubleshoot-network-issues-with-registry"></a>排查与注册表相关的网络问题
 
@@ -140,5 +140,5 @@ ContainerRegistryLoginEvents 表中的注册表资源日志可能有助于诊断
   * [注册表登录故障排除](container-registry-troubleshoot-login.md) 
   * [注册表性能故障排除](container-registry-troubleshoot-performance.md)
 * [社区支持](https://azure.microsoft.com/support/community/)选项
-* [Microsoft 问答](https://docs.microsoft.com/answers/products/)
+* [Microsoft 问答](/answers/products/)
 * [开具支持票证](https://azure.microsoft.com/support/create-ticket/)

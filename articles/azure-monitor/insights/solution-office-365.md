@@ -1,17 +1,16 @@
 ---
 title: Azure 中的 Office 365 管理解决方案
 description: 本文详细介绍如何配置和使用 Azure 中的 Office 365 解决方案。  它还详细介绍了在 Azure Monitor 中创建的 Office 365 记录。
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2020
-ms.openlocfilehash: d031b64b36bd7ff91c64960642cfbf00fb1682ab
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: be5409f7130f0e79b77871a2657609e8ddb76e36
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100587300"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728628"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Azure 中的 Office 365 管理解决方案（预览版）
 
@@ -121,7 +120,7 @@ ms.locfileid: "100587300"
 - 通过对组织的 Office 365 活动数据使用[日志查询](../logs/log-query-overview.md)，执行操作故障排除。
 
 
-## <a name="uninstall"></a>“卸载”
+## <a name="uninstall"></a>卸载
 
 可以使用[删除管理解决方案](solutions.md#remove-a-monitoring-solution)中的过程删除 Office 365 管理解决方案。 但是，这不会停止将数据从 Office 365 收集到 Azure Monitor 中。 请按照下面的过程来取消订阅 Office 365 并停止收集数据。
 
@@ -272,7 +271,7 @@ ms.locfileid: "100587300"
 | ResultStatus | 指示操作（在 Operation 属性中指定）是成功还是失败。 可能的值有 Succeeded、PartiallySucceeded 或 Failed。 对于 Exchange 管理员活动，值为 True 或 False。 |
 | UserId | 执行使系统记下记录的操作的用户的 UPN（用户主体名称），例如 my_name@my_domain_name。 请注意，还包括系统帐户（例如 SHAREPOINT\system 或 NTAUTHORITY\SYSTEM）执行的活动的记录。 | 
 | UserKey | UserId 属性中标识的用户的备用 ID。  例如，此属性由 SharePoint、OneDrive for Business 和 Exchange 中用户执行的事件的 Passport 唯一 ID (PUID) 进行填充。 此属性还可为其他服务中发生的事件以及系统帐户执行的事件指定与 UserID 属性相同的值|
-| UserType | 执行操作的用户的类型。<br><br>管理员<br>应用程序<br>DcAdmin<br>常规<br>预留<br>服务主体<br>系统 |
+| UserType | 执行操作的用户的类型。<br><br>管理员<br>应用程序<br>DcAdmin<br>常规<br>保留<br>服务主体<br>系统 |
 
 
 ### <a name="azure-active-directory-base"></a>Azure Active Directory Base
@@ -381,7 +380,7 @@ Active Directory 用户尝试登录时，将创建这些记录。
 |:--- |:--- |
 | OfficeWorkload | Exchange |
 | RecordType     | ExchangeItem |
-| 项 | 表示对其执行操作的项 | 
+| 项目 | 表示对其执行操作的项 | 
 | SendAsUserMailboxGuid | 为发送电子邮件而访问的邮箱的 Exchange GUID。 |
 | SendAsUserSmtp | 被模拟用户的 SMTP 地址。 |
 | SendonBehalfOfUserMailboxGuid | 为代替发送邮件而访问的邮箱的 Exchange GUID。 |

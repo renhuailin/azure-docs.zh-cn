@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/24/2019
-ms.openlocfilehash: a9b93cf05141442901531e745971ee16348cdaae
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: d83ee4b53d4ccda9cb2af21fa0cb4c91822ec7c4
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100607464"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101732014"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>在 Azure Monitor 中使用 Log Analytics 网关连接无法访问 Internet 的计算机
 
@@ -89,7 +89,7 @@ Log Analytics 网关支持以下语言：
 
 Log Analytics 网关仅支持传输层安全性 (TLS) 1.0、1.1 和 1.2。  它不支持安全套接字层 (SSL)。  为了确保传输到 Log Analytics 的数据的安全性，请将网关配置为至少使用 TLS 1.2。 旧版 TLS 或 SSL 容易受到攻击。 尽管这些协议目前允许后向兼容，但请勿使用。  
 
-有关其他信息，请查看[使用 TLS 1.2 安全地发送数据](../platform/data-security.md#sending-data-securely-using-tls-12)。 
+有关其他信息，请查看[使用 TLS 1.2 安全地发送数据](../logs/data-security.md#sending-data-securely-using-tls-12)。 
 
 ### <a name="supported-number-of-agent-connections"></a>支持的代理连接数
 

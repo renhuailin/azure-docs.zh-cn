@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 5cde7e677bd0121954b01cf9bb8defe45111a5b2
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 8d518d540e50d96486fa98eea3c3267685776668
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94369182"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101706276"
 ---
 # <a name="natural-language-support-for-azure-cognitive-services"></a>Azure 认知服务的自然语言支持
 
@@ -24,7 +24,7 @@ ms.locfileid: "94369182"
 这些认知服务不限语言，不受人类语言的限制。
 
 * [异常探测器 (预览) ](./anomaly-detector/index.yml)
-* [自定义视觉](./Custom-Vision-Service/index.yml)
+* [自定义视觉](./custom-vision-service/index.yml)
 * [人脸](./face/index.yml)
 * [个性化体验创建服务](./personalizer/index.yml)
 
@@ -32,7 +32,7 @@ ms.locfileid: "94369182"
 
 * [计算机视觉](./computer-vision/language-support.md)
 * [表单识别器 (预览) ](./form-recognizer/language-support.md)
-* [墨迹识别器（预览版）](./ink-recognizer/language-support.md)
+* [墨迹识别器（预览版）](/previous-versions/azure/cognitive-services/Ink-Recognizer/language-support)
 * [视频索引器](../media-services/video-indexer/language-identification-model.md#guidelines-and-limitations)
 
 ## <a name="language"></a>语言

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/28/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 3701d9dde569432d8bf1910f04395df0b916b75a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 1e20ed632ee5b100098f7f35bcca16d157668cad
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100575154"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101721355"
 ---
 # <a name="azure-security-baseline-for-azure-load-balancer"></a>Azure 负载均衡器的 Azure 安全基线
 
@@ -296,7 +296,7 @@ Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更�
 
 - [更改 Log Analytics 中的数据保留期](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
-- [如何为 Azure 存储帐户日志配置保留策略](../storage/common/storage-monitor-storage-account.md#configure-logging)
+- [如何为 Azure 存储帐户日志配置保留策略](../storage/common/manage-storage-analytics-logs.md#configure-logging)
 
 **Azure 安全中心监视**：是
 

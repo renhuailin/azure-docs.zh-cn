@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 7a4408b54b663b2cd8abc22772ac1b799ea50de0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 56ac58e47bffc73c7079af043ad567a77e8f3323
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87083763"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101735499"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-iis-based-web-application"></a>为基于 IIS 的多层 Web 应用程序设置灾难恢复
 
@@ -122,10 +122,10 @@ Azure|不可用|是
 
 ![演示如何设置 TLS/SSL 绑定的屏幕截图](./media/site-recovery-iis/sslbinding.png)
 
-如果将 IP 地址关联到了某个站点，请使用新 IP 地址更新所有站点绑定。 若要更改站点绑定，请在恢复计划中的“组 3”后面添加 [IIS Web 层更新脚本](https://aka.ms/asr-web-tier-update-runbook-classic)。
+如果将 IP 地址关联到了某个站点，请使用新 IP 地址更新所有站点绑定。 若要更改站点绑定，请在恢复计划中的“组 3”后面添加 [IIS Web 层更新脚本](/samples/browse/?redirectedfrom=TechNet-Gallery)。
 
 #### <a name="update-the-load-balancer-ip-address"></a>更新负载均衡器 IP 地址
-如果使用 ARR 虚拟机，请在“组 4”后面添加 [IIS ARR 故障转移脚本](https://aka.ms/asr-iis-arrtier-failover-script-classic)来更新 IP 地址。
+如果使用 ARR 虚拟机，请在“组 4”后面添加 [IIS ARR 故障转移脚本](/samples/browse/?redirectedfrom=TechNet-Gallery)来更新 IP 地址。
 
 #### <a name="tlsssl-certificate-binding-for-an-https-connection"></a>用于 HTTPS 连接的 TLS/SSL 证书绑定
 网站可能具有关联的 TLS/SSL 证书，有助于确保 web 服务器与用户浏览器之间的安全通信。 如果网站有一个 HTTPS 连接，并且将一个 HTTPS 站点绑定关联到了具有 TLS/SSL 证书绑定的 IIS 服务器的 IP 地址，则故障转移后，必须使用 IIS 虚拟机的 IP 地址来为证书添加新的站点绑定。

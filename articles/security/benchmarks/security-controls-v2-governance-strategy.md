@@ -4,15 +4,15 @@ description: Azure 安全基准 V2 治理和策略
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/20/2020
+ms.date: 02/22/2021
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 935a6b41152ff914889e299b6455fbb30b2f0447
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: 277033e41ec7e02b89eca8cf74fe6854acb51cc1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97369049"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101727016"
 ---
 # <a name="security-control-v2-governance-and-strategy"></a>安全控制 V2：治理和策略
 
@@ -20,19 +20,19 @@ ms.locfileid: "97369049"
 
 ## <a name="gs-1-define-asset-management-and-data-protection-strategy"></a>GS-1：定义资产管理和数据保护策略
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID (s)  |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | GS-1 | 2、13 | SC、AC |
 
-确保制定和传达明确的用于对系统和数据进行持续监视和保护的策略。 确定业务关键数据和系统的发现、评估、保护和监视优先级。 
+确保制定和传达明确的用于对系统和数据进行持续监视和保护的策略。 确定业务关键数据和系统的发现、评估、保护和监视优先级。
 
 此策略应包括针对以下元素的记录在案的指南、策略和标准： 
 
 - 与业务风险相符的数据分类标准
 
-- 安全组织对风险和资产清单的洞察力 
+- 安全组织对风险和资产清单的洞察力
 
-- 安全组织对 Azure 服务使用的审批 
+- 安全组织对 Azure 服务使用的审批
 
 - 资产在其生命周期中的安全性
 
@@ -63,7 +63,7 @@ ms.locfileid: "97369049"
 
 ## <a name="gs-2-define-enterprise-segmentation-strategy"></a>GS-2：定义企业分段策略
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID (s)  |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | GS-2 | 4、9、16 | AC、CA、SC |
 
@@ -87,7 +87,7 @@ ms.locfileid: "97369049"
 
 ## <a name="gs-3-define-security-posture-management-strategy"></a>GS-3：定义安全状况管理策略
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID (s)  |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | GS-3 | 20、3、5 | RA、CM、SC |
 
@@ -103,11 +103,11 @@ ms.locfileid: "97369049"
 
 ## <a name="gs-4-align-organization-roles-responsibilities-and-accountabilities"></a>GS-4：协调组织角色、职责和责任
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID (s)  |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | GS-4 | 空值 | PL、PM |
 
-确保为安全组织中的角色和职责制定并传达清晰的策略。 优先考虑提供涉及安全决策的明确责任，对每个人进行共同职责模式培训，并为技术团队传授保护云的技术。
+确保为安全组织中的角色和责任记录并传达清晰的策略。 优先考虑提供涉及安全决策的明确责任，对每个人进行共同职责模式培训，并为技术团队传授保护云的技术。
 
 - [Azure 安全最佳做法 1 - 人员：针对云安全历程培训团队](/azure/cloud-adoption-framework/security/security-top-10#1-people-educate-teams-about-the-cloud-security-journey)
 
@@ -123,13 +123,13 @@ ms.locfileid: "97369049"
 
 ## <a name="gs-5-define-network-security-strategy"></a>GS-5：定义网络安全策略
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID (s)  |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | GS-5 | 9 | CA、SC |
 
-制定 Azure 网络安全方法，作为组织的整体安全访问控制策略的一部分。  
+建立 Azure 网络安全方法，作为组织整体安全访问控制策略的一部分。
 
-此策略应包括针对以下元素的记录在案的指南、策略和标准： 
+此策略应包括针对以下元素的记录在案的指南、策略和标准：
 
 - 集中化的网络管理和安全职责
 
@@ -141,7 +141,7 @@ ms.locfileid: "97369049"
 
 - 混合云和本地互连策略
 
-- 最新的网络安全项目（例如网络关系图、参考网络体系结构）
+- 最新的网络安全项目 (例如网络关系图、引用网络体系结构) 
 
 有关详细信息，请参阅以下资源：
 
@@ -161,13 +161,13 @@ ms.locfileid: "97369049"
 
 ## <a name="gs-6-define-identity-and-privileged-access-strategy"></a>GS-6：定义标识和特权访问策略
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID (s)  |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | GS-6 | 16、4 | AC、AU、SC |
 
-制定 Azure 标识和特权访问方法，作为组织的整体安全访问控制策略的一部分。  
+建立 Azure 标识和特权访问方法，作为组织整体安全访问控制策略的组成部分。
 
-此策略应包括针对以下元素的记录在案的指南、策略和标准： 
+此策略应包括针对以下元素的记录在案的指南、策略和标准：
 
 - 集中化的标识和身份验证系统及其与其他内部和外部标识系统的互连
 
@@ -175,7 +175,7 @@ ms.locfileid: "97369049"
 
 - 保护权限高的用户
 
-- 异常用户活动监视和处理  
+- 异常用户活动监视和处理
 
 - 用户标识和访问评审及协调流程
 
@@ -197,7 +197,7 @@ ms.locfileid: "97369049"
 
 ## <a name="gs-7-define-logging-and-threat-response-strategy"></a>GS-7：定义日志记录和威胁响应策略
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID (s)  |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | GS-7 | 19 | IR、AU、RA、SC |
 
@@ -238,7 +238,7 @@ ms.locfileid: "97369049"
 
 ## <a name="gs-8-define-backup-and-recovery-strategy"></a>GS-8：定义备份和恢复策略
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID (s)  |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | GS-8 | 10 | CP |
 

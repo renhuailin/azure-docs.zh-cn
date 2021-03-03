@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 03/02/2021
 ms.topic: how-to
-ms.openlocfilehash: bd8c079e91a6765dff8ad347085c44d0aa2f8d82
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 9c928040aa2ff5a6ebfb7102c03450d3d7297b59
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737297"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101686472"
 ---
 # <a name="create-an-azure-arc-data-controller-in-the-azure-portal"></a>在 Azure 门户中创建 Azure Arc 数据控制器
 
@@ -48,6 +48,10 @@ ms.locfileid: "98737297"
 1. 选择部署配置文件。
 1. 单击 " **在 Azure Studio 中打开** " 按钮。
 1. 在下一个屏幕上，你将看到所选内容的摘要和生成的笔记本。  可以单击 " **下载预配笔记本** " 按钮下载笔记本。
+
+   > [!IMPORTANT]
+   > 在 Azure Red Hat OpenShift 或 Red Hat OpenShift 容器平台上，必须先应用安全上下文约束，然后才能创建数据控制器。 按照在 [OpenShift 上为启用了 Azure Arc 的数据服务应用安全上下文约束](how-to-apply-security-context-constraint.md)中的说明进行操作。
+
 1. 在 Azure Data Studio 中打开笔记本，并单击顶部的 " **全部运行** " 按钮。
 1. 按照笔记本中的提示和说明完成数据控制器创建。
 

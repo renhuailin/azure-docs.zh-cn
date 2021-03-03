@@ -4,22 +4,22 @@ description: 了解如何修改 Webhook、逻辑应用和 Runbook，以准备自
 author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
-ms.date: 03/19/2018
+ms.date: 02/14/2021
 ms.subservice: alerts
-ms.openlocfilehash: 1d6fc8e4b9baecf02531fc1baa617b87a9d3255c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: c88d0b8595434298eb564034a44665c5375457c4
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100606187"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101701036"
 ---
 # <a name="prepare-your-logic-apps-and-runbooks-for-migration-of-classic-alert-rules"></a>准备逻辑应用和 Runbook 以迁移经典警报规则
 
 > [!NOTE]
-> 如前所述 [，为](../platform/monitoring-classic-retirement.md)公有云用户停用 Azure Monitor 中的经典警报，但对于尚不支持新警报的资源仍有限制。 这些警报的停用日期已进一步延长。 新日期即将发布。
+> 如前所述 [，对于](monitoring-classic-retirement.md)公有云用户，Azure Monitor 中的经典警报将会停用，但在31年 **5 月31日之前仍2021会** 受到限制。 Azure 政府云和 Azure 中国世纪互联的经典警报将于 **2024 年2月29日** 停用。
 >
 
-如果你选择自愿将经典警报规则迁移到新的警报规则，请注意，这两个系统存在一些差异。 本文将会解释这些差异以及如何做好相应的准备。
+如果选择主动将经典警报规则迁移到新的警报规则，则这两个系统之间存在一些差异。 本文将会解释这些差异以及如何做好相应的准备。
 
 ## <a name="api-changes"></a>API 更改
 
@@ -29,14 +29,14 @@ ms.locfileid: "100606187"
 
 | 部署脚本类型 | 经典警报 | 新指标警报 |
 | ---------------------- | -------------- | ----------------- |
-|REST API     | [microsoft insights/alertrules](/rest/api/monitor/alertrules)         | [microsoft insights/metricalerts](/rest/api/monitor/metricalerts)       |
+|REST API     | [microsoft.insights/alertrules](/rest/api/monitor/alertrules)         | [microsoft.insights/metricalerts](/rest/api/monitor/metricalerts)       |
 |Azure CLI     | [az monitor alert](/cli/azure/monitor/alert)        | [az monitor metrics alert](/cli/azure/monitor/metrics/alert)        |
 |PowerShell      | [引用](/powershell/module/az.monitor/add-azmetricalertrule)       |  [引用](/powershell/module/az.monitor/add-azmetricalertrulev2)    |
 | Azure 资源管理器模板 | [经典警报](./alerts-enable-template.md)|[新指标警报](./alerts-metric-create-templates.md)|
 
 ## <a name="notification-payload-changes"></a>通知有效负载更改
 
-[经典警报规则](../platform/alerts-webhooks.md)和[新指标警报](alerts-metric-near-real-time.md#payload-schema)的通知有效负载格式略有不同。 如果经典警报规则会触发你的任何 Webhook、逻辑应用或 Runbook 操作，则必须更新这些通知终结点，以接受新指标警报的有效负载格式。
+[经典警报规则](alerts-webhooks.md)和[新指标警报](alerts-metric-near-real-time.md#payload-schema)的通知有效负载格式略有不同。 如果具有使用 webhook、逻辑应用或 runbook 操作的经典警报规则，则必须更新目标以接受新的负载格式。
 
 使用下表将经典格式中的 Webhook 有效负载字段映射到新格式：
 
@@ -153,13 +153,13 @@ else {
 
 ## <a name="partner-integration-via-webhooks"></a>通过 Webhook 进行合作伙伴集成
 
-[我们的大部分与经典警报集成的合作伙伴](../platform/partners.md)已能够支持通过其集成处理新型指标警报。 能够处理新指标警报的已知集成包括：
+[我们的大部分与经典警报集成的合作伙伴](../partners.md)已能够支持通过其集成处理新型指标警报。 能够处理新指标警报的已知集成包括：
 
 - [PagerDuty](https://www.pagerduty.com/docs/guides/azure-integration-guide/)
 - [OpsGenie](https://docs.opsgenie.com/docs/microsoft-azure-integration)
 - [Signl4](https://www.signl4.com/blog/mobile-alert-notifications-azure-monitor/)
 
-如果你使用的合作伙伴集成未在此处列出，请与集成提供商确认其集成是否能够处理新的指标警报。
+如果你使用的是未在此处列出的合作伙伴集成，请向提供商确认他们处理的是新的指标警报。
 
 ## <a name="next-steps"></a>后续步骤
 

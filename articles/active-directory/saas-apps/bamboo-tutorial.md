@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/12/2021
 ms.author: jeedes
-ms.openlocfilehash: c92295eb3f173d0e050740d0aa38787eff242b39
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 8ec834d76692f78d1d7bc60ddbd4c73fe4adaede
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98623931"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101646096"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-bamboo-by-resolution-gmbh"></a>教程：Azure Active Directory 与 SAML SSO for Bamboo by resolution GmbH 集成
 
@@ -181,4 +181,4 @@ ms.locfileid: "98623931"
 
 ## <a name="next-steps"></a>后续步骤
 
-配置 SAML SSO for Bamboo by resolution GmbH 后，就可强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+配置 SAML SSO for Bamboo by resolution GmbH 后，就可强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。

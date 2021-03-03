@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: conceptual
-ms.date: 01/14/2021
+ms.date: 02/22/2021
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 99521a746a16a2d0de310fc6cfb2d2272e7b2593
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 0bfc09a372584a25c23060cef33d1f698e6d5ff3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98706246"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101712600"
 ---
 # <a name="azure-importexport-system-requirements"></a>Azure 导入/导出系统要求
 
@@ -44,6 +44,9 @@ Azure 导入/导出服务支持以下类型的存储帐户：
 - 标准常规用途 v2 存储帐户（建议用于大多数方案）
 - Blob 存储帐户
 - 常规用途 v1 存储帐户（经典部署或 Azure 资源管理器部署）
+
+> [!IMPORTANT]
+> Azure 导入/导出不支持 Azure Blob 存储中的网络文件系统 (NFS) 3.0 协议支持。
 
 有关存储帐户的详细信息，请参阅 [Azure 存储帐户概述](../storage/common/storage-account-overview.md)。
 

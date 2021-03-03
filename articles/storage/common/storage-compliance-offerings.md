@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: fryu
 ms.subservice: common
-ms.openlocfilehash: ca0e95d311adedf613ed168927491dfa85b1cabd
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 7ec938a13d04cf3400e4d3df0eeda051c61d35ad
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97095315"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101724262"
 ---
 # <a name="azure-storage-compliance-offerings"></a>Azure 存储符合性产品/服务
 
 为了帮助组织符合监管个人数据收集和使用的国家、地区和行业特定要求的标准，Microsoft Azure 和 Azure 存储提供了对任何云服务提供程序的全面认证和证明。
 
-你可以找到以下 Azure 存储上的符合性产品/服务，确保你的服务在使用 Azure 存储服务方面受到管控。 它们适用于以下 Azure 存储产品/服务：Blob、文件、队列、表、磁盘、冷存储和高级存储。
+你可以找到以下 Azure 存储上的符合性产品/服务，确保你的服务在使用 Azure 存储服务方面受到管控。 它们适用于以下 Azure 存储产品： Blob (ADLS Gen2) 、文件、队列、表、磁盘、冷存储和高级存储。
 
 ## <a name="global"></a>Global
 

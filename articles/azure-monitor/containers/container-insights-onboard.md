@@ -1,18 +1,18 @@
 ---
-title: 启用容器 Azure Monitor |Microsoft Docs
-description: 本文介绍如何为容器启用和配置 Azure Monitor，使你了解容器的性能以及已识别的性能相关问题。
+title: 启用容器见解 |Microsoft Docs
+description: 本文介绍如何启用和配置容器见解，以便你可以了解容器的执行情况以及已确定的与性能相关的问题。
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 56f60b58cff351aa37e98cdba933c929aaaedab6
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 58797221fa3380e4f7533a710e2f8dc658cb676c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100608467"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708350"
 ---
-# <a name="enable-azure-monitor-for-containers"></a>对容器启用 Azure Monitor
+# <a name="enable-container-insights"></a>启用容器见解
 
-本文概述了可用于为容器设置 Azure Monitor 的选项，这些选项用于监视部署到 Kubernetes 环境并托管在以下位置上的工作负载的性能：
+本文概述了可用于设置容器见解的选项，以监视部署到 Kubernetes 环境并在上托管的工作负荷的性能：
 
 - [Azure Kubernetes 服务 (AKS)](../../aks/index.yml)  
 - [Azure Red Hat OpenShift](../../openshift/intro-openshift.md) 版本3.x 和4。x  
@@ -23,7 +23,7 @@ ms.locfileid: "100608467"
 - Azure（通过使用 [AKS 引擎](https://github.com/Azure/aks-engine)）
 - [Azure Stack](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview) 或本地（通过使用 AKS 引擎）。
 
-可使用以下支持的任意方法为 Kubernetes 的新部署或是一个/多个现有部署启用用于容器的 Azure Monitor：
+可以使用以下任一受支持的方法为新部署或 Kubernetes 的一个或多个现有部署启用容器见解：
 
 - Azure 门户
 - Azure PowerShell
@@ -44,37 +44,37 @@ ms.locfileid: "100608467"
 
 - 拥有一个 Log Analytics 工作区。
 
-   用于容器的 Azure Monitor 支持在 Azure [可用产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor) 中列出的区域中的 Log Analytics 工作区。
+   Container insights 支持区域中列出的 [产品](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor)中列出的区域中的 Log Analytics 工作区。
 
    可以在为新 AKS 群集启用监视时创建工作区，或者可让加入体验在 AKS 群集订阅的默认资源组中创建默认的工作区。 
    
    如果你选择自己创建工作区，可通过以下方法创建工作区： 
-   - [Azure Resource Manager](../samples/resource-manager-workspace.md)
-   - [PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)
-   - [Azure 门户](../learn/quick-create-workspace.md) 
+   - [Azure Resource Manager](../logs/resource-manager-workspace.md)
+   - [PowerShell](../logs/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)
+   - [Azure 门户](../logs/quick-create-workspace.md) 
    
-   有关要用于默认工作区的支持的映射对的列表，请参阅 [容器 Azure Monitor 的区域映射](container-insights-region-mapping.md)。
+   有关要用于默认工作区的支持的映射对的列表，请参阅 [Container insights 的区域映射](container-insights-region-mapping.md)。
 
-- 需要成为 Log Analytics 参与者组的成员才能启用容器监视。 有关如何控制对 Log Analytics 工作区的访问的详细信息，请参阅[管理工作区](../platform/manage-access.md)。
+- 需要成为 Log Analytics 参与者组的成员才能启用容器监视。 有关如何控制对 Log Analytics 工作区的访问的详细信息，请参阅[管理工作区](../logs/manage-access.md)。
 
 - 需要成为 AKS 群集资源上[所有者](../../role-based-access-control/built-in-roles.md#owner)组的成员。
 
    [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
-- 若要查看监视数据，需要在 Log Analytics 工作区（该工作区为容器配置了 Azure Monitor）中拥有 [Log Analytics 读者](../platform/manage-access.md#manage-access-using-azure-permissions)角色。
+- 若要查看监视数据，需要在 Log Analytics 工作区中具有使用容器见解配置的 [*Log Analytics 读者*](../logs/manage-access.md#manage-access-using-azure-permissions) 角色。
 
 - 默认情况下不收集 Prometheus 指标。 在 [配置代理](container-insights-prometheus-integration.md) 以收集指标之前，请务必查看 [Prometheus 文档](https://prometheus.io/) ，以了解可以擦除哪些数据以及支持哪些方法。
 
 ## <a name="supported-configurations"></a>支持的配置
 
-用于容器的 Azure Monitor 正式支持以下配置：
+容器见解正式支持以下配置：
 
 - 环境： azure Red Hat OpenShift、Kubernetes 本地和 Azure 上的 AKS 引擎，以及 Azure Stack。 有关详细信息，请参阅 [Azure Stack 上的 AKS 引擎](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview)。
 - Kubernetes 和支持策略的版本与 [Azure Kubernetes 服务 (AKS) 中支持的版本](../../aks/supported-kubernetes-versions.md)相同。 
 
 ## <a name="network-firewall-requirements"></a>网络防火墙要求
 
-下表列出容器化代理与 Azure Monitor 容器进行通信所需的代理和防火墙配置信息。 来自代理的所有网络流量都是出站的，以便 Azure Monitor。
+下表列出容器化代理与 Container insights 通信所需的代理和防火墙配置信息。 来自代理的所有网络流量都是出站的，以便 Azure Monitor。
 
 |代理资源|端口 |
 |--------------|------|
@@ -102,7 +102,7 @@ ms.locfileid: "100608467"
 
 ## <a name="components"></a>组件
 
-监视性能的能力依赖于专门为用于容器的 Azure Monitor 开发的用于 Linux 的容器化 Log Analytics 代理。 此专用代理可从群集中的所有节点处收集性能和事件数据，并且在部署期间，会自动部署该代理，并注册指定 Log Analytics 工作区。 
+监视性能的能力取决于专门为容器见解开发的适用于 Linux 的容器化 Log Analytics 代理。 此专用代理可从群集中的所有节点处收集性能和事件数据，并且在部署期间，会自动部署该代理，并注册指定 Log Analytics 工作区。 
 
 该代理的版本为 microsoft/oms:ciprod04202018 或更高版本，并由采用以下格式的日期表示：mmddyyyy。
 
@@ -116,7 +116,7 @@ ms.locfileid: "100608467"
 >
 > 模板需要部署在群集所在的资源组中。
 
-若要为容器启用 Azure Monitor，请使用下表中所述的方法之一：
+若要启用 Container insights，请使用下表中所述的方法之一：
 
 | 部署状态 | 方法 | 说明 |
 |------------------|--------|-------------|
@@ -136,4 +136,4 @@ ms.locfileid: "100608467"
 
 ## <a name="next-steps"></a>后续步骤
 
-你现在已启用监视，接着可开始分析 Azure Kubernetes 服务 (AKS)、Azure Stack 或其他环境中托管的 Kubernetes 群集的性能。 若要了解如何使用用于容器的 Azure Monitor，请参阅[查看 Kubernetes 群集性能](container-insights-analyze.md)。
+你现在已启用监视，接着可开始分析 Azure Kubernetes 服务 (AKS)、Azure Stack 或其他环境中托管的 Kubernetes 群集的性能。 若要了解如何使用容器 insights，请参阅 [查看 Kubernetes 群集性能](container-insights-analyze.md)。

@@ -7,12 +7,16 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 08/25/2020
 ms.custom: mvc, seodec18
-ms.openlocfilehash: eea42ab17311b85bdce429e22e8d0ed694e2f0ec
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+adobe-target: true
+adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
+adobe-target-experience: Experience B
+adobe-target-content: ./app-service-web-tutorial-custom-domain-uiex
+ms.openlocfilehash: b3ff1b344852d57f0effbd978c06aa617682ea4f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100096338"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720303"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>教程：将现有的自定义 DNS 名称映射到 Azure 应用服务
 
@@ -31,7 +35,7 @@ ms.locfileid: "100096338"
 
 ## <a name="prerequisites"></a>先决条件
 
-为完成此教程：
+完成本教程：
 
 * [创建应用服务应用](./index.yml)，或使用为另一教程创建的应用。
 * 购买域名，确保可以访问域提供商（如 GoDaddy）的 DNS 注册表。
@@ -127,7 +131,7 @@ ms.locfileid: "100096338"
 
 将子域映射到应用的默认域名（`<app-name>.azurewebsites.net`，其中 `<app-name>` 是应用的名称）。 若要为 `www` 子域创建 CNAME 映射，请创建两条记录：
 
-| 记录类型 | 主机 | 值 | 注释 |
+| 记录类型 | 主机 | Value | 注释 |
 | - | - | - |
 | CNAME | `www` | `<app-name>.azurewebsites.net` | 域映射本身。 |
 | TXT | `asuid.www` | [之前获得的验证 ID](#get-a-domain-verification-id) | 应用服务访问 `asuid.<subdomain>` TXT 记录以验证你对自定义域的所有权。 |
@@ -195,7 +199,7 @@ ms.locfileid: "100096338"
 
 若要将 A 记录映射到应用（通常是根域），请创建两条记录：
 
-| 记录类型 | 主机 | 值 | 注释 |
+| 记录类型 | 主机 | Value | 注释 |
 | - | - | - |
 | A | `@` | 通过[复制应用的 IP 地址](#info)获得的 IP 地址 | 域映射本身（`@` 通常表示根域）。 |
 | TXT | `asuid` | [之前获得的验证 ID](#get-a-domain-verification-id) | 应用服务访问 `asuid.<subdomain>` TXT 记录以验证你对自定义域的所有权。 对于根域，请使用 `asuid`。 |
@@ -203,7 +207,7 @@ ms.locfileid: "100096338"
 > [!NOTE]
 > 若要使用 A 记录（而不是建议的 [CNAME 记录](#map-a-cname-record)）添加子域（如 `www.contoso.com`），A 记录和 TXT 记录应如下表所示：
 >
-> | 记录类型 | 主机 | 值 |
+> | 记录类型 | 主机 | Value |
 > | - | - | - |
 > | A | `www` | 通过[复制应用的 IP 地址](#info)获得的 IP 地址 |
 > | TXT | `asuid.www` | [之前获得的验证 ID](#get-a-domain-verification-id) |
@@ -256,7 +260,7 @@ ms.locfileid: "100096338"
 
 将通配符名称 `*` 映射到应用的默认域名（`<app-name>.azurewebsites.net`，其中 `<app-name>` 是应用的名称）。 若要映射通配符名称，请创建两条记录：
 
-| 记录类型 | 主机 | 值 | 注释 |
+| 记录类型 | 主机 | Value | 注释 |
 | - | - | - |
 | CNAME | `*` | `<app-name>.azurewebsites.net` | 域映射本身。 |
 | TXT | `asuid` | [之前获得的验证 ID](#get-a-domain-verification-id) | 应用服务访问 `asuid` TXT 记录以验证你对自定义域的所有权。 |

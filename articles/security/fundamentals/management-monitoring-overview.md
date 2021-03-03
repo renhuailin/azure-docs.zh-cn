@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2021
 ms.author: terrylan
-ms.openlocfilehash: d85b1fdd433c372bb41adec6e3d33013f19363f0
-ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
+ms.openlocfilehash: f87ea1e1c9f43de4e9e0f94d1cd855615a0a880c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98747167"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101712039"
 ---
 # <a name="azure-security-management-and-monitoring-overview"></a>Azure 安全管理和监视概述
 本文概述了 Azure 提供的安全功能和服务，以帮助管理和监视 Azure 云服务和虚拟机。
@@ -48,7 +48,7 @@ Azure 基于角色的访问控制 (Azure RBAC) 为 Azure 资源提供详细的�
 
 * [在 Azure 虚拟机上部署反恶意软件解决方案](https://azure.microsoft.com/blog/deploying-antimalware-solutions-on-azure-virtual-machines/)
 * [适用于 Azure 云服务和虚拟机的 Microsoft 反恶意软件](antimalware.md)
-* [如何在 Windows VM 上安装和配置 Trend Micro Deep Security 即服务](../../virtual-machines/extensions/trend.md)
+* [如何在 Windows VM 上安装和配置 Trend Micro Deep Security 即服务](/previous-versions/azure/virtual-machines/extensions/trend)
 * [如何在 Windows VM 上安装和配置 Symantec Endpoint Protection](../../virtual-machines/extensions/symantec.md)
 * [New Antimalware Options for Protecting Azure Virtual Machines](https://azure.microsoft.com/blog/new-antimalware-options-for-protecting-azure-virtual-machines/)（用于保护 Azure 虚拟机的新反恶意软件选项）
 
@@ -117,16 +117,16 @@ Azure AD 标识保护提供了可疑登录活动和潜在漏洞的统一视图�
 
 ## <a name="security-center"></a>安全中心
 
-Azure 安全中心可帮助防范、检测和应对威胁。 利用安全中心，你可以更深入地了解 Azure 资源以及混合云环境中的资源的安全性。 
+Azure 安全中心可帮助防范、检测和应对威胁。 通过安全中心可提高对 Azure 资源安全性以及混合云环境中资源的安全性的可见性和控制力度。 
 
-安全中心对已连接的资源执行持续的安全评估，并将其配置和部署与 [Azure 安全基准](../benchmarks/introduction.md) 进行比较，以提供针对你的环境定制的详细安全建议。
+安全中心对已连接的资源执行持续的安全评估，并将其配置和部署与 [Azure 安全基准检验](../benchmarks/introduction.md)进行比较，以提供针对你的环境量身定制的详细安全建议。
 
 安全中心通过以下方式帮助优化和监视 Azure 资源的安全：
 
 - 你可根据以下内容为 Azure 订阅资源定义策略：
     - 组织的安全需求。
     - 应用程序的类型或每个订阅中数据的敏感度。
-    - 适用于你的订阅的任何行业或法规标准或基准。 
+    - 适用于订阅的任何行业或监管标准或基准。 
 - 监视 Azure 虚拟机、网络和应用程序的状态。
 - 提供按优先级排列的安全警报列表，包括集成的合作伙伴解决方案中的警报。 它还提供了快速调查攻击所需的信息以及如何修复攻击的建议。
 

@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 09/24/2020
 ms.reviewer: mbullwin
 ms.custom: devx-track-python
-ms.openlocfilehash: f50628395526783face11fcb1438e2716135b640
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: d22174b269ba9cea3b2c9cb9de2b5521df2786fa
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100584032"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704406"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application"></a>为 Python 应用程序设置 Azure Monitor
 
@@ -221,6 +221,15 @@ logger.info('Hello, World!')
 
 ### <a name="metrics"></a>指标
 
+OpenCensus 支持4种聚合方法，但提供对 Azure Monitor 的部分支持：
+
+- **计数：** 度量值点的计数。 值为累积值，只能在重新启动时增加和重置为0。 
+- **总和：** 度量值的总和。 值为累积值，只能在重新启动时增加和重置为0。 
+- **LastValue：** 保留上一记录的值，删除所有其他值。
+- **分发：** 度量值点的直方图分布。 **Azure 导出程序不支持** 此方法。
+
+### <a name="count-aggregation-example"></a>计数聚合示例
+
 1. 首先，让我们生成一些本地指标数据。 我们将创建一个简单的指标，用于跟踪用户选择 Enter 键的次数。
 
     ```python
@@ -320,7 +329,7 @@ logger.info('Hello, World!')
         main()
     ```
 
-1. 导出程序按固定的间隔将指标数据发送到 Azure Monitor。 默认值为每 15 秒。 我们正在跟踪单个指标，因此，在每个间隔将会发送此指标数据及其包含的任何值和时间戳。 可在 `customMetrics` 下找到数据。
+1. 导出程序按固定的间隔将指标数据发送到 Azure Monitor。 默认值为每 15 秒。 我们正在跟踪单个指标，因此，在每个间隔将会发送此指标数据及其包含的任何值和时间戳。 值为累积值，只能在重新启动时增加和重置为0。 你可以在下查找数据 `customMetrics` ，但 `customMetrics` 不会有效地使用属性 ValueCount、ValueSum、ValueMin、ValueMax 和 valueStdDev。
 
 #### <a name="performance-counters"></a>性能计数器
 

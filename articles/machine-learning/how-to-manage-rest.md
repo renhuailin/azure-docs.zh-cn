@@ -10,12 +10,12 @@ ms.subservice: core
 ms.date: 01/31/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 09a0580adbe6d51e4de811a57ee17203d65a2435
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: bf1d6f5838e467c5f44a0090a4f1a15cd9d4ac77
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93316899"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101692447"
 ---
 # <a name="create-run-and-delete-azure-ml-resources-using-rest"></a>使用 REST 创建、运行和删除 Azure ML 资源
 
@@ -35,10 +35,10 @@ ms.locfileid: "93316899"
 
 ## <a name="prerequisites"></a>先决条件
 
-- 你对其拥有管理权限的 **Azure 订阅** 。 如果没有此类订阅，请尝试注册[免费或付费的个人订阅](https://aka.ms/AMLFree)
+- 你对其拥有管理权限的 **Azure 订阅**。 如果没有此类订阅，请尝试注册[免费或付费的个人订阅](https://aka.ms/AMLFree)
 - 一个 [Azure 机器学习工作区](./how-to-manage-workspace.md)
 - 管理 REST 请求使用服务主体身份验证。 遵循[为 Azure 机器学习资源和工作流设置身份验证](./how-to-setup-authentication.md#service-principal-authentication)中的步骤在工作区中创建服务主体
-- **curl** 实用工具。 在 [适用于 Linux 的 Windows 子系统](/windows/wsl/install-win10)或任何 UNIX 分发版中均已提供了 **curl** 程序。 在 PowerShell 中， **curl** 是 **Invoke-WebRequest** 的别名，并且 `curl -d "key=val" -X POST uri` 变成了 `Invoke-WebRequest -Body "key=val" -Method POST -Uri uri`。 
+- **curl** 实用工具。 在 [适用于 Linux 的 Windows 子系统](/windows/wsl/install-win10)或任何 UNIX 分发版中均已提供了 **curl** 程序。 在 PowerShell 中，**curl** 是 **Invoke-WebRequest** 的别名，并且 `curl -d "key=val" -X POST uri` 变成了 `Invoke-WebRequest -Body "key=val" -Method POST -Uri uri`。 
 
 ## <a name="retrieve-a-service-principal-authentication-token"></a>检索服务主体身份验证令牌
 
@@ -79,7 +79,7 @@ curl -X POST https://login.microsoftonline.com/{your-tenant-id}/oauth2/token \
 请记下该令牌，因为以后需要用它来对所有后续管理请求进行身份验证。 为此，可在所有请求中设置一个授权标头：
 
 ```bash
-curl -h "Authentication: Bearer {your-access-token}" ...more args...
+curl -h "Authorization:Bearer {your-access-token}" ...more args...
 ```
 
 请注意，该值以字符串“Bearer ”开头（其中包含一个空格，你需要在该空格后添加令牌）。
@@ -279,7 +279,7 @@ curl -X PUT \
 print("Hello, REST!")
 ```
 
-将下一个代码片段保存为 **definition.json** 。 确认“Script”值与刚刚压缩的 Python 文件的名称相匹配。 确认“Target”值与可用计算资源的名称相匹配。 
+将下一个代码片段保存为 **definition.json**。 确认“Script”值与刚刚压缩的 Python 文件的名称相匹配。 确认“Target”值与可用计算资源的名称相匹配。 
 
 ```json
 {

@@ -12,19 +12,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/30/2020
 ms.author: yelevin
-ms.openlocfilehash: 5c715804693571bc421951de1288fc884d2eae8d
-ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
+ms.openlocfilehash: 23e116eba6393f834b3368901d4440e668b16fca
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97746178"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101724279"
 ---
 # <a name="advanced-multistage-attack-detection-in-azure-sentinel"></a>Azure Sentinel 中的高级多阶段攻击检测
 
-
 > [!IMPORTANT]
-> Azure Sentinel 中的某些合成功能当前以 **公共预览版** 提供。
-> 提供这些功能没有服务级别协议，不建议用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> 有些合成检测 (会看到如下所示) 目前处于 **预览阶段**。 请参阅 [Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) ，了解适用于 Azure 功能的其他法律条款，这些功能适用于 beta 版、预览版或其他情况下尚未公开上市。
 
 通过基于机器学习使用合成技术，Azure Sentinel 可以通过标识在终止链的各个阶段观察到的异常行为和可疑活动的组合来自动检测多阶段攻击。 根据这些发现，Azure Sentinel 会生成事件，否则可能难以捕获。 这些事件包含两个或多个警报或活动。 按照设计，这些事件是低容量、高保真和高严重性。
 
@@ -60,12 +58,12 @@ ms.locfileid: "97746178"
 若要启用这些合成驱动的攻击检测方案，所列出的任何数据源都必须使用关联的 Azure Sentinel 数据连接器进行引入。
 
 > [!NOTE]
-> 其中一些方案为 **公共预览版**。 它们就是如此。
+> 其中一些方案处于 **预览阶段**。 它们就是如此。
 
 ## <a name="compute-resource-abuse"></a>计算资源滥用
 
 ### <a name="multiple-vm-creation-activities-following-suspicious-azure-active-directory-sign-in"></a>存在可疑 Azure Active Directory 登录后的多个 VM 创建活动
-此方案目前为 **公共预览版**。
+此方案目前处于 **预览阶段**。
 
 **MITRE ATT&CK 战术：** 初始访问权限、影响 
 
@@ -214,7 +212,7 @@ ms.locfileid: "97746178"
 ### <a name="suspicious-inbox-manipulation-rules-set-following-suspicious-azure-ad-sign-in"></a>可疑的收件箱操作规则在可疑 Azure AD 登录后设置
 此方案属于此列表中的两个威胁分类： **数据渗透** 和 **横向移动**。 为清楚起见，它显示在两个部分中。
 
-此方案目前为 **公共预览版**。
+此方案目前处于 **预览阶段**。
 
 **MITRE ATT&CK 战术：** 初始访问、横向移动、渗透
 
@@ -235,7 +233,7 @@ ms.locfileid: "97746178"
 - **用户的登录事件，其凭据已泄露，导致收到可疑收件箱操作规则**
 
 ### <a name="multiple-power-bi-report-sharing-activities-following-suspicious-azure-ad-sign-in"></a>Azure AD 登录时，多个 Power BI 报表共享活动 
-此方案目前为 **公共预览版**。
+此方案目前处于 **预览阶段**。
 
 **MITRE ATT&CK 战术：** 初始访问，渗透 
 
@@ -256,7 +254,7 @@ ms.locfileid: "97746178"
 - **来自泄露凭据的用户的登录事件，该事件将导致多个 Power BI 报表共享活动**
 
 ### <a name="suspicious-power-bi-report-sharing-following-suspicious-azure-ad-sign-in"></a>可疑 Power BI 报表在以下可疑 Azure AD 登录时共享
-此方案目前为 **公共预览版**。
+此方案目前处于 **预览阶段**。
 
 **MITRE ATT&CK 战术：** 初始访问，渗透 
 
@@ -299,7 +297,7 @@ ms.locfileid: "97746178"
 - **用户的登录事件，其凭据已泄露，导致批量文件删除**
 
 ### <a name="suspicious-email-deletion-activity-following-suspicious-azure-ad-sign-in"></a>可疑 Azure AD 登录后发生可疑电子邮件删除活动
-此方案目前为 **公共预览版**。
+此方案目前处于 **预览阶段**。
 
 **MITRE ATT&CK 战术：** 初始访问权限、影响 
 
@@ -322,7 +320,7 @@ ms.locfileid: "97746178"
 ## <a name="denial-of-service"></a>拒绝服务
 
 ### <a name="multiple-vm-delete-activities-following-suspicious-azure-ad-sign-in"></a>存在可疑 Azure AD 登录后的多个 VM 删除活动
-此方案目前为 **公共预览版**。
+此方案目前处于 **预览阶段**。
 
 **MITRE ATT&CK 战术：** 初始访问权限、影响
 
@@ -367,7 +365,7 @@ ms.locfileid: "97746178"
 ### <a name="suspicious-inbox-manipulation-rules-set-following-suspicious-azure-ad-sign-in"></a>可疑的收件箱操作规则在可疑 Azure AD 登录后设置
 此方案属于此列表中的两个威胁分类： **横向移动** 和 **数据渗透**。 为清楚起见，它显示在两个部分中。
 
-此方案目前为 **公共预览版**。
+此方案目前处于 **预览阶段**。
 
 **MITRE ATT&CK 战术：** 初始访问、横向移动、渗透
 
@@ -412,7 +410,7 @@ ms.locfileid: "97746178"
 ## <a name="malicious-execution-with-legitimate-process"></a>具有合法进程的恶意执行
 
 ### <a name="powershell-made-a-suspicious-network-connection-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>PowerShell 发出了可疑的网络连接，然后是由 Palo Alto Networks 防火墙标记的异常流量。
-此方案目前为 **公共预览版**。
+此方案目前处于 **预览阶段**。
 
 **MITRE ATT&CK 战术：** 操作
 
@@ -423,7 +421,7 @@ ms.locfileid: "97746178"
 **说明：** 此类型的合成事件表明，通过 PowerShell 命令发出出站连接请求，并遵循 Palo Alto 网络防火墙检测到异常的入站活动。 这表明攻击者可能会获得网络访问权限，并试图执行恶意操作。 遵循此模式的 PowerShell 的连接尝试可能表示恶意软件命令和控制活动，请求下载其他恶意软件或攻击者建立远程交互式访问。 与所有 "居住于土地" 的攻击一样，此活动可能是 PowerShell 的合法使用。 但是，在执行 PowerShell 命令后，恶意的入站防火墙活动会提高以恶意方式使用 PowerShell 的信心，并应进一步进行调查。 在 Palo Alto 日志中，Azure Sentinel 侧重于 [威胁日志](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/view-and-manage-logs/log-types-and-severity-levels/threat-logs)，如果允许威胁 (可疑数据、文件、洪水、数据包、扫描、间谍软件、url、病毒、漏洞、分秒必争、wildfires) ，则会将流量视为可疑。 另请参阅有关其他警报详细信息的合成事件描述中列出的 [威胁/内容类型](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/use-syslog-for-monitoring/syslog-field-descriptions/threat-log-fields.html) 的 Palo Alto 威胁日志。
 
 ### <a name="suspicious-remote-wmi-execution-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>可疑远程 WMI 执行，之后是由 Palo Alto Networks 防火墙标记的异常流量
-此方案目前为 **公共预览版**。
+此方案目前处于 **预览阶段**。
 
 **MITRE ATT&CK 战术：** 执行，发现
 
@@ -456,7 +454,7 @@ ms.locfileid: "97746178"
 ## <a name="malware-c2-or-download"></a>恶意软件 C2 或下载
 
 ### <a name="network-request-to-tor-anonymization-service-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>TOR 匿名服务的网络请求，后跟 Palo Alto 网络防火墙标记的异常流量。
-此方案目前为 **公共预览版**。
+此方案目前处于 **预览阶段**。
 
 **MITRE ATT&CK 战术：** 命令和控制
 
@@ -467,7 +465,7 @@ ms.locfileid: "97746178"
 **说明：** 此类型的合成事件表明已向 TOR 匿名服务发出出站连接请求，随后 Palo Alto 网络防火墙检测到异常入站活动。 这表明攻击者可能会获得网络访问权限，并试图隐藏其操作和意向。 按照此模式连接到 TOR 网络可能表示恶意软件命令和控制活动，请求下载额外的恶意软件或攻击者建立远程交互式访问。 在 Palo Alto 日志中，Azure Sentinel 侧重于 [威胁日志](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/view-and-manage-logs/log-types-and-severity-levels/threat-logs)，如果允许威胁 (可疑数据、文件、洪水、数据包、扫描、间谍软件、url、病毒、漏洞、分秒必争、wildfires) ，则会将流量视为可疑。 另请参阅有关其他警报详细信息的合成事件描述中列出的 [威胁/内容类型](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/use-syslog-for-monitoring/syslog-field-descriptions/threat-log-fields.html) 的 Palo Alto 威胁日志。
 
 ### <a name="outbound-connection-to-ip-with-a-history-of-unauthorized-access-attempts-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>到 IP 的出站连接，其中包含未经授权的访问尝试的历史记录，以及 Palo Alto 网络防火墙标记的异常流量
-此方案目前为 **公共预览版**。
+此方案目前处于 **预览阶段**。
 
 **MITRE ATT&CK 战术：** 命令和控制
 
@@ -502,7 +500,7 @@ ms.locfileid: "97746178"
 ## <a name="remote-exploitation"></a>远程攻击
 
 ### <a name="suspected-use-of-attack-framework-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>怀疑使用了攻击框架，并 Palo Alto 网络防火墙标记了异常流量
-此方案目前为 **公共预览版**。
+此方案目前处于 **预览阶段**。
 
 **MITRE ATT&CK 战术：** 初始访问、执行、横向移动、权限提升
 

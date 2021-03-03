@@ -9,20 +9,20 @@ ms.custom: seodec18, cog-serv-seo-aug-2020
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 09/28/2020
+ms.date: 02/10/2021
 ms.author: aahi
 keywords: 本地, Docker, 容器, 情绪分析, 自然语言处理
-ms.openlocfilehash: f785a5e6749e46b34723af11b4d61a98b5d94384
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: e815ecafe5d00f92a5430fdb71bcf952bc8984c8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97862500"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101736706"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>安装和运行文本分析容器
 
 > [!NOTE]
-> * 情绪分析 v3 的容器现已公开发布。 关键短语提取和语言检测容器以非封闭公开预览版的形式发布。
+> * 情绪分析和语言检测的容器现已正式发布。 关键短语提取容器作为无选通公共预览版提供。
 > * 实体链接和 NER 当前不可用作容器。
 > * 访问运行状况容器的文本分析需要[请求表单](https://aka.ms/csgate)。 目前，其使用不需付费。
 > * 容器映像位置最近可能已更改。 阅读本文以查看此容器的更新位置。
@@ -46,7 +46,7 @@ ms.locfileid: "97862500"
 |--|--|
 |Docker 引擎| 需要在[主计算机](#the-host-computer)上安装 Docker 引擎。 Docker 提供用于在 [macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 和 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上配置 Docker 环境的包。 有关 Docker 和容器的基础知识，请参阅 [Docker 概述](https://docs.docker.com/engine/docker-overview/)。<br><br> 必须将 Docker 配置为允许容器连接 Azure 并向其发送账单数据。 <br><br> 在 Windows 上，还必须将 Docker 配置为支持 Linux 容器。<br><br>|
 |熟悉 Docker | 应对 Docker 概念有基本的了解，例如注册表、存储库、容器和容器映像，以及基本的 `docker` 命令的知识。| 
-|文本分析资源 |若要使用容器，必须具有：<br><br>一个用于获取关联 API 密钥和终结点 URI 的 Azure [文本分析资源](../../cognitive-services-apis-create-account.md)。 这两个值可以从 Azure 门户中的“文本分析概述”和“密钥”页面获得，并且是启动容器时所必需的。<br><br>**{API_KEY}** ：“密钥”页上提供的两个可用资源密钥中的一个<br><br>**{ENDPOINT_URI}** ：“概述”页上提供的终结点|
+|文本分析资源 |若要使用容器，必须具有：<br><br>Azure [文本分析资源](../../cognitive-services-apis-create-account.md) ，具有免费的 (F0) 或标准 () [定价层](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/)。 你将需要通过导航到 Azure 门户中的资源的 " **密钥和终结点** " 页来获取关联的 API 密钥和终结点 URI。 <br><br>**{API_KEY}**：两个可用资源键之一。 <br><br>**{ENDPOINT_URI}**：资源的终结点。 |
 
 [!INCLUDE [Gathering required parameters](../../containers/includes/container-gathering-required-parameters.md)]
 
@@ -61,7 +61,7 @@ ms.locfileid: "97862500"
 |  | 最小主机规格 | 推荐主机规格 | 最小 TPS | 最大 TPS|
 |---|---------|-------------|--|--|
 | **语言检测、关键短语提取**   | 1 核，2GB 内存 | 1 核，4GB 内存 |15 | 30|
-| **情绪分析 v3**   | 1 核，2GB 内存 | 4 核，8GB 内存 |15 | 30|
+| **情绪分析**   | 1 核，2GB 内存 | 4 核，8GB 内存 |15 | 30|
 | **运行状况文本分析 - 1 文档/请求**   |  4 核，10GB 内存 | 6 核，12GB 内存 |15 | 30|
 | **运行状况文本分析 - 10 文档/请求**   |  6 核，16GB 内存 | 8 核，20GB 内存 |15 | 30|
 
@@ -73,7 +73,7 @@ CPU 核心和内存对应于 `--cpus` 和 `--memory` 设置，用作 `docker run
 
 Microsoft 容器注册表中提供了文本分析的容器映像。
 
-# <a name="sentiment-analysis-v3"></a>[情绪分析 v3](#tab/sentiment)
+# <a name="sentiment-analysis"></a>[情绪分析 ](#tab/sentiment)
 
 [!INCLUDE [docker-pull-sentiment-analysis-container](../includes/docker-pull-sentiment-analysis-container.md)]
 
@@ -81,7 +81,7 @@ Microsoft 容器注册表中提供了文本分析的容器映像。
 
 [!INCLUDE [docker-pull-key-phrase-extraction-container](../includes/docker-pull-key-phrase-extraction-container.md)]
 
-# <a name="language-detection-preview"></a>[语言检测（预览版）](#tab/language)
+# <a name="language-detection"></a>[语言检测](#tab/language)
 
 [!INCLUDE [docker-pull-language-detection-container](../includes/docker-pull-language-detection-container.md)]
 
@@ -89,7 +89,7 @@ Microsoft 容器注册表中提供了文本分析的容器映像。
 
 [!INCLUDE [docker-pull-health-container](../includes/docker-pull-health-container.md)]
 
-**_
+***
 
 ## <a name="how-to-use-the-container"></a>如何使用容器
 
@@ -103,11 +103,11 @@ Microsoft 容器注册表中提供了文本分析的容器映像。
 使用 [docker run](https://docs.docker.com/engine/reference/commandline/run/) 命令来运行容器。 容器将继续运行，直到停止它。
 
 > [!IMPORTANT]
-> 以下各部分中的 docker 命令使用反斜杠 `\` 作为行继续符。 根据主机操作系统的要求替换或删除字符。 
+> * 以下各节中的 docker 命令使用反斜杠 `\` 作为行继续符。 根据主机操作系统的要求替换或删除字符。 
 > * 必须指定 `Eula`、`Billing` 和 `ApiKey` 选项运行容器；否则，该容器不会启动。  有关详细信息，请参阅[计费](#billing)。
-> * 情绪分析 v3 容器现已正式发布，它将在响应时返回[情绪标签](../how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features)。 关键字提取和语言检测容器使用 API 的 v2，并且提供预览版。
+> * 情绪分析和语言检测容器已正式发布。 关键短语提取容器使用 API 的 v2，并处于预览阶段。
 
-# <a name="sentiment-analysis-v3"></a>[情绪分析 v3](#tab/sentiment)
+# <a name="sentiment-analysis"></a>[情绪分析](#tab/sentiment)
 
 [!INCLUDE [docker-run-sentiment-analysis-container](../includes/docker-run-sentiment-analysis-container.md)]
 
@@ -115,7 +115,7 @@ Microsoft 容器注册表中提供了文本分析的容器映像。
 
 [!INCLUDE [docker-run-key-phrase-extraction-container](../includes/docker-run-key-phrase-extraction-container.md)]
 
-# <a name="language-detection-preview"></a>[语言检测（预览版）](#tab/language)
+# <a name="language-detection"></a>[语言检测](#tab/language)
 
 [!INCLUDE [docker-run-language-detection-container](../includes/docker-run-language-detection-container.md)]
 
@@ -162,7 +162,7 @@ Microsoft 容器注册表中提供了文本分析的容器映像。
 * 文本分析为 Docker 提供了三个 Linux 容器，其中封装了各种功能：
    * *情绪分析*
    * *关键短语提取（预览版）* 
-   * *语言检测（预览版）*
+   * *语言检测*
    * *运行状况文本分析（预览版）*
 * 容器映像可从 Microsoft 容器注册表 (MCR) 或预览版容器注册表中下载。
 * 容器映像在 Docker 中运行。

@@ -5,17 +5,17 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 11/18/2020
+ms.date: 03/01/2021
 ms.author: victorh
-ms.openlocfilehash: 01f7aa61d3bfb3c712320bbf138160a7ff8197c7
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: bbf838cfa2a6addc665df4b62e2322d056778b49
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95502201"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101741355"
 ---
 # <a name="configure-azure-firewall-rules"></a>配置 Azure 防火墙规则
-在 Azure 防火墙上可以配置 NAT 规则、网络规则和应用程序规则。 处理规则集合时，会根据规则类型按优先级顺序（由低编号到高编号，从 100 到 65,000）进行。 规则集合名称只能包含字母、数字、下划线、句点或连字符。 它必须以字母或数字开头，以字母、数字或下划线结尾。 名称最大长度为 80 个字符。
+在 Azure 防火墙上可以配置 NAT 规则、网络规则和应用程序规则。 处理规则集合时，会根据规则类型按优先级顺序（由低编号到高编号，从 100 到 65,000）进行。 规则集合名称只能包含字母、数字、下划线、句点或连字符。 该名称必须以字母或数字开头，并且以字母、数字或下划线结尾。 名称最大长度为 80 个字符。
 
 最好在最初以 100 为增量（100、200、300，依此类推）设置规则集合优先级编号，这样在需要时就还有空间，可以添加更多的规则集合。
 
@@ -26,19 +26,19 @@ ms.locfileid: "95502201"
 
 ### <a name="network-rules-and-applications-rules"></a>网络规则和应用程序规则
 
-如果配置了网络规则和应用程序规则，则会在应用程序规则之前先按优先级顺序应用网络规则。 规则将终止。 因此，如果在网络规则中找到了匹配项，则不会处理其他规则。  如果没有匹配的网络规则，且协议为 HTTP、HTTPS 或 MSSQL，则应用程序规则将按优先级顺序对数据包进行评估。 如果仍未找到匹配项，则会根据[基础结构规则集合](infrastructure-fqdns.md)评估数据包。 如果仍然没有匹配项，则默认情况下会拒绝该数据包。
+如果配置了网络规则和应用程序规则，则会在应用程序规则之前先按优先级顺序应用网络规则。 规则将终止。 因此，如果在网络规则中找到了匹配项，则不会处理其他规则。  如果没有网络规则匹配项，并且，如果协议是 HTTP、HTTPS 或 MSSQL，则应用程序规则会按优先级顺序评估数据包。 如果仍未找到匹配项，则会根据[基础结构规则集合](infrastructure-fqdns.md)评估数据包。 如果仍然没有匹配项，则默认情况下会拒绝该数据包。
 
 #### <a name="network-rule-protocol"></a>网络规则协议
 
-可以为 **TCP**、 **UDP**、 **ICMP** 或 **任意** IP 协议配置网络规则。 任何 IP 协议都包括在 [Internet 号码分配机构 (IANA) 协议编号](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml) 文档中定义的所有 ip 协议。 如果显式配置了目标端口，则会将规则转换为 TCP + UDP 规则。
+可以为 TCP、UDP、ICMP 或“任意”IP 协议配置网络规则。    “任意”IP 协议包括 [Internet 数字分配机构 (IANA) 协议编号](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml)文档中定义的所有 IP 协议。 如果显式配置了目标端口，则会将规则转换为 TCP+UDP 规则。
 
-2020年11月9日之前， **任何** 含义为 **TCP**、 **UDP** 或 **ICMP**。 因此，你可能已在该日期之前配置了协议 = Any 的规则，并且目标端口 = "*"。 如果实际上不打算允许当前定义的任何 IP 协议，请修改该规则以显式配置要 (TCP、UDP 或 ICMP) )  (协议。
+在 2020 年 11 月 9 日之前，“任意”意味着 TCP、UDP 或 ICMP。    因此，你可能在该日期之前配置了协议为“任意”、目标端口为“*”的规则。 如果实际上不打算像当前定义一样允许任意 IP 协议，请修改规则以显式配置所需的协议（TCP、UDP 或 ICMP）。
 
 ## <a name="inbound-connectivity"></a>入站连接
 
 ### <a name="nat-rules"></a>NAT 规则
 
-可以通过配置目标网络地址转换 (DNAT) 来启用入站 Internet 连接，如[教程：使用 Azure 门户通过 Azure Firewall DNAT 筛选入站流量](tutorial-firewall-dnat.md)中所述。 NAT 规则会在网络规则之前按优先级应用。 如果找到匹配项，则会添加一个隐式的对应网络规则来允许转换后的流量。 可以通过以下方法替代此行为：显式添加一个网络规则集合并在其中包含将匹配转换后流量的拒绝规则。
+可以通过配置目标网络地址转换 (DNAT) 来启用入站 Internet 连接，如[教程：使用 Azure 门户通过 Azure Firewall DNAT 筛选入站流量](tutorial-firewall-dnat.md)中所述。 NAT 规则会在网络规则之前按优先级应用。 如果找到匹配项，则会添加一个隐式的对应网络规则来允许转换后的流量。 出于安全原因，推荐的方法是添加特定的 internet 源以允许 DNAT 访问网络，并避免使用通配符。
 
 应用程序规则不适用于入站连接。 因此，如果要筛选入站 HTTP/S 流量，应使用 Web 应用程序防火墙 (WAF) 。 有关详细信息，请参阅 [什么是 Azure Web 应用程序防火墙？](../web-application-firewall/overview.md)
 

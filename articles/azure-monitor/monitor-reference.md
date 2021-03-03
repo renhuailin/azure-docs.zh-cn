@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 08/15/2020
-ms.openlocfilehash: 153b153399bd430b4688d4790a3dd5785c545012
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 7c8f1a45f46975b489690eded5b094ffee94dbf1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100579386"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728393"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Azure Monitor 监视哪些内容？
 本文介绍了由 Azure Monitor 监视的不同应用程序和服务。 
@@ -26,12 +26,12 @@ ms.locfileid: "100579386"
 | 见解 | 说明 |
 |:---|:---|
 | [Application Insights](app/app-insights-overview.md) | 可扩展应用程序性能管理 (APM) 服务，用于监视任何平台上的实时 web 应用程序。 |
-| [用于容器的 Azure Monitor](containers/container-insights-overview.md) | 监视部署到 Azure 容器实例或 Azure Kubernetes 服务 (AKS) 上托管的托管 Kubernetes 群集的容器工作负荷的性能。 |
+| [容器见解](containers/container-insights-overview.md) | 监视部署到 Azure 容器实例或 Azure Kubernetes 服务 (AKS) 上托管的托管 Kubernetes 群集的容器工作负荷的性能。 |
 | [用于 Cosmos DB 的 Azure Monitor](insights/cosmosdb-insights-overview.md) | 提供了关于所有 Azure Cosmos DB 资源的整体性能、故障、容量和运行状况的统一交互式体验视图。 |
 | [用于网络的 Azure Monitor（预览版）](insights/network-insights-overview.md) | 提供所有网络资源的运行状况和指标的综合视图。 高级搜索功能通过便捷搜索网站名称，帮助你识别资源依赖关系，从而能够支持多种方案，比如识别用于托管网站的资源等。 |
 [用于资源组的 Azure Monitor（预览版）](insights/resource-group-insights.md) |  分类和诊断各资源出现的任何问题，同时提供有关资源组的运行状况和性能的整体上下文。 |
 | [用于存储的 Azure Monitor](insights/storage-insights-overview.md) | 通过提供 Azure 存储服务性能、容量和可用性的统一视图，提供对 Azure 存储帐户的全面监视。 |
-| [用于 VM 的 Azure Monitor](vm/vminsights-overview.md) | 可以大规模监视 Azure 虚拟机 (VM) 和虚拟机规模集。 它分析 Windows 和 Linux VM 的性能和运行状况，并监视它们的进程及其对其他资源和外部进程的依赖关系。 |
+| [VM insights](vm/vminsights-overview.md) | 可以大规模监视 Azure 虚拟机 (VM) 和虚拟机规模集。 它分析 Windows 和 Linux VM 的性能和运行状况，并监视它们的进程及其对其他资源和外部进程的依赖关系。 |
 | [Key Vault 的 Azure Monitor（预览版）](./insights/key-vault-insights-overview.md) | 提供 Key Vault 请求、性能、失败和延迟的统一视图，在其中可以全面监视密钥保管库。 |
 | [适用于 Azure Cache for Redis 的 Azure Monitor（预览版）](insights/redis-cache-insights-overview.md) |  提供有关整体性能、故障、容量和运行状况的统一交互式视图。 |
 
@@ -240,7 +240,7 @@ Azure Monitor 可以使用下表中列出的方法从 Azure 以外的资源收�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 阅读和深入了解[存储由见解和解决方案收集的日志和指标的 Azure Monitor数据平台](/data-platform.md)。
+- 阅读和深入了解[存储由见解和解决方案收集的日志和指标的 Azure Monitor数据平台](data-platform.md)。
 - 完成[有关监视 Azure 资源的教程](essentials/tutorial-resource-logs.md)。
 - 完成[编写日志查询以分析 Azure Monitor 日志中的数据的相关教程](essentials/tutorial-resource-logs.md)。
 - 完成[创建指标图表以分析 Azure Monitor 指标中的数据的相关教程](essentials/tutorial-metrics-explorer.md)。

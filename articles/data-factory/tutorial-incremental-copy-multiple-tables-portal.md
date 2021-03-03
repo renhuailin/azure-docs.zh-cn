@@ -6,17 +6,17 @@ author: dearandyxu
 ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
-ms.date: 11/09/2020
-ms.openlocfilehash: 10ebca487e8149b509935b5eb4c8d9f67ced8ade
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 02/18/2021
+ms.openlocfilehash: 3b97887e7bbd31fc1bb6ec0a074267aa081184c8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100361122"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101724891"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-a-database-in-azure-sql-database-using-the-azure-portal"></a>使用 Azure 门户以递增方式将数据从 SQL Server 中的多个表加载到 Azure SQL 数据库中的数据库
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 在本教程中，你将创建一个带管道的 Azure 数据工厂，该管道将增量数据从 SQL Server 数据库中的多个表加载到 Azure SQL 数据库中的数据库。    
 
@@ -245,12 +245,12 @@ END
 4. 选择要在其中创建数据工厂的 Azure **订阅**。 
 5. 对于 **资源组**，请执行以下步骤之一：
      
-    - 选择“使用现有资源组”，并从下拉列表选择现有的资源组。 
+    - 选择“使用现有资源组”，并从下拉列表选择现有的资源组。  
     - 选择“新建”，并输入资源组的名称。   
     若要了解有关资源组的详细信息，请参阅 [使用资源组管理 Azure 资源](../azure-resource-manager/management/overview.md)。  
 6. 选择“V2”作为“版本”。
 7. 选择数据工厂的 **位置**。 下拉列表中仅显示支持的位置。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库，等等）和计算资源（HDInsight 等）可以位于其他区域中。
-8. 单击 **创建**。      
+8. 单击“创建”。      
 9. 创建完成后，可以看到图中所示的“数据工厂”页。
    
    ![数据工厂主页](./media/doc-common-process/data-factory-home-page.png)
@@ -426,7 +426,7 @@ END
 1. 切换到“设置”选项卡。
 
     1. 为“源数据集”选择“SourceDataset”。  
-    1. 为“使用查询”选择“查询”。 
+    1. 为“使用查询”选择“查询”。
     1. 为“查询”输入以下 SQL 查询。
 
         ```sql    
@@ -442,7 +442,7 @@ END
 1. 选择管道中的“复制”活动。 切换到“属性”窗口中的“源”选项卡。  
 
     1. 为“源数据集”选择“SourceDataset”。  
-    1. 为“使用查询”选择“查询”。  
+    1. 为“使用查询”选择“查询”。 
     1. 为“查询”输入以下 SQL 查询。
 
         ```sql
@@ -476,7 +476,7 @@ END
         | 名称 | 类型 | Value | 
         | ---- | ---- | ----- |
         | LastModifiedtime | DateTime | `@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}` |
-        | TableName | String | `@{activity('LookupOldWaterMarkActivity').output.firstRow.TableName}` |
+        | TableName | 字符串 | `@{activity('LookupOldWaterMarkActivity').output.firstRow.TableName}` |
     
         ![存储过程活动 - 存储过程设置](./media/tutorial-incremental-copy-multiple-tables-portal/sproc-activity-sproc-settings.png)
 1. 选择“全部发布”，以便将创建的实体发布到数据工厂服务。 

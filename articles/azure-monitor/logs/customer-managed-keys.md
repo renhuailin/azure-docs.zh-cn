@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 01/10/2021
-ms.openlocfilehash: 9d8d37e1b161dfc8344d7ff03bc0093d23f86101
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: fa826e951b9fe34eb27481718b8f026747011e4e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100606094"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717411"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure Monitor 客户管理的密钥 
 
@@ -25,11 +25,11 @@ ms.locfileid: "100606094"
 
 Azure Monitor 确保使用 Microsoft 管理的密钥 (MMK) 静态加密所有数据和保存的查询。 Azure Monitor 还可以使用你自己的密钥进行加密（该密钥存储在 [Azure Key Vault](../../key-vault/general/overview.md) 中），这会赋予你控制权，允许你随时撤销对你的数据的访问权限。 Azure Monitor 进行加密的操作与[Azure 存储加密](../../storage/common/storage-service-encryption.md#about-azure-storage-encryption)的操作相同。
 
-客户管理的密钥在提供更高保护级别和控制的 [专用群集](../log-query/logs-dedicated-clusters.md) 上传递。 引入到专用群集的数据将被加密两次-一次是在使用 Microsoft 托管密钥或客户托管密钥的服务级别，一次使用两种不同的加密算法和两个不同的密钥。 [双重加密](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption)可以在其中一种加密算法或密钥可能被泄露的情况下提供保护。 在这种情况下，附加的加密层会继续保护你的数据。 专用群集还允许通过[密码箱](#customer-lockbox-preview)控制来保护数据。
+客户管理的密钥在提供更高保护级别和控制的 [专用群集](./logs-dedicated-clusters.md) 上传递。 引入到专用群集的数据将被加密两次-一次是在使用 Microsoft 托管密钥或客户托管密钥的服务级别，一次使用两种不同的加密算法和两个不同的密钥。 [双重加密](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption)可以在其中一种加密算法或密钥可能被泄露的情况下提供保护。 在这种情况下，附加的加密层会继续保护你的数据。 专用群集还允许通过[密码箱](#customer-lockbox-preview)控制来保护数据。
 
 过去 14 天内引入的数据也保存在热缓存（受 SSD 支持）中，以实现高效的查询引擎操作。 此数据保持使用 Microsoft 密钥进行加密，而不管客户管理的密钥的配置如何，但你对 SSD 数据的控制将遵循[密钥吊销](#key-revocation)规定。 我们正致力于在 2021 年的上半年使用客户管理的密钥加密 SSD 数据。
 
-Log Analytics 专用群集使用产能预留[定价模型](../log-query/logs-dedicated-clusters.md#cluster-pricing-model)，起始价格为 1000 GB/天。
+Log Analytics 专用群集使用产能预留[定价模型](./logs-dedicated-clusters.md#cluster-pricing-model)，起始价格为 1000 GB/天。
 
 ## <a name="how-customer-managed-key-works-in-azure-monitor"></a>客户管理的密钥在 Azure Monitor 中的操作方式
 
@@ -145,7 +145,7 @@ Authorization: Bearer <token>
 > [!IMPORTANT]
 > 如果 Key Vault Private-Link (vNet) ，则不能使用用户分配的托管标识。 在这种情况下，可以使用系统分配的托管标识。
 
-请遵循[“专用群集”一文](../log-query/logs-dedicated-clusters.md#creating-a-cluster)中说明的过程。 
+请遵循[“专用群集”一文](./logs-dedicated-clusters.md#creating-a-cluster)中说明的过程。 
 
 ## <a name="grant-key-vault-permissions"></a>授予 Key Vault 权限
 
@@ -253,7 +253,7 @@ Content-type: application/json
 
 需要具有对工作区和群集的“写入”权限才能执行此操作，其中包括 `Microsoft.OperationalInsights/workspaces/write` 和 `Microsoft.OperationalInsights/clusters/write`。
 
-请遵循[“专用群集”一文](../log-query/logs-dedicated-clusters.md#link-a-workspace-to-cluster)中说明的过程。
+请遵循[“专用群集”一文](./logs-dedicated-clusters.md#link-a-workspace-to-cluster)中说明的过程。
 
 ## <a name="key-revocation"></a>密钥吊销
 
@@ -387,7 +387,7 @@ Content-type: application/json
 
 ## <a name="customer-managed-key-operations"></a>客户管理的密钥的操作
 
-客户管理的密钥在专用群集上提供，并且[专用群集文章](../log-query/logs-dedicated-clusters.md#change-cluster-properties)中引用了这些操作
+客户管理的密钥在专用群集上提供，并且[专用群集文章](./logs-dedicated-clusters.md#change-cluster-properties)中引用了这些操作
 
 - 获取资源组中的所有群集  
 - 获取订阅中的所有群集
@@ -470,8 +470,8 @@ Content-type: application/json
 
   **群集更新**
   -  400 -- 群集处于正在删除状态。 正在执行异步操作。 群集必须完成其操作，才能执行任意更新操作。
-  -  400 -- KeyVaultProperties 不为空，但格式错误。 请参阅[密钥标识符更新](../platform/customer-managed-keys.md#update-cluster-with-key-identifier-details)。
-  -  400 -- 无法验证 Key Vault 中的密钥。 可能是由于权限不足或密钥不存在。 验证是否在 Key Vault 中[设置密钥和访问策略](../platform/customer-managed-keys.md#grant-key-vault-permissions)。
+  -  400 -- KeyVaultProperties 不为空，但格式错误。 请参阅[密钥标识符更新](#update-cluster-with-key-identifier-details)。
+  -  400 -- 无法验证 Key Vault 中的密钥。 可能是由于权限不足或密钥不存在。 验证是否在 Key Vault 中[设置密钥和访问策略](#grant-key-vault-permissions)。
   -  400 -- 密钥不可恢复。 Key Vault 必须设置为“软删除”和“清除保护”。 请参阅 [Key Vault 文档](../../key-vault/general/soft-delete-overview.md)
   -  400 -- 现在无法执行操作。 等待异步操作完成，然后重试。
   -  400 -- 群集处于正在删除状态。 等待异步操作完成，然后重试。
@@ -492,5 +492,5 @@ Content-type: application/json
   -  409 -- 正在执行工作区链接或取消链接操作。
 ## <a name="next-steps"></a>后续步骤
 
-- 了解 [Log Analytics 专用群集计费](../platform/manage-cost-storage.md#log-analytics-dedicated-clusters)
-- 了解 [Log Analytics 工作区的正确设计](../platform/design-logs-deployment.md)
+- 了解 [Log Analytics 专用群集计费](./manage-cost-storage.md#log-analytics-dedicated-clusters)
+- 了解 [Log Analytics 工作区的正确设计](./design-logs-deployment.md)

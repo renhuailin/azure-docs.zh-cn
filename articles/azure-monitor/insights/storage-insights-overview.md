@@ -1,17 +1,16 @@
 ---
 title: 使用用于存储的 Azure Monitor 监视 Azure 存储服务 | Microsoft Docs
 description: 本文介绍了用于存储的 Azure Monitor 功能，可便于存储管理员快速了解自己 Azure 存储帐户存在的性能和利用率问题。
-ms.subservice: ''
 ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 05/11/2020
-ms.openlocfilehash: 13c884d9f140fbd962bfa32ef2d853339aec325a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 0baaca8df8865061b51f1629da14c3b18a527047
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100587359"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708061"
 ---
 # <a name="monitoring-your-storage-service-with-azure-monitor-for-storage"></a>使用用于存储的 Azure Monitor 监视存储服务
 
@@ -85,7 +84,7 @@ ms.locfileid: "100587359"
 
 ## <a name="view-from-a-storage-account"></a>在存储帐户中查看
 
-若要直接从存储帐户访问用于 VM 的 Azure Monitor，请执行以下操作：
+若要从存储帐户直接访问 VM insights：
 
 1. 在 Azure 门户中，选择“存储帐户”。
 

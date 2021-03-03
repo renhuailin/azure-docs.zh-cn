@@ -6,16 +6,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 01/20/2021
+ms.date: 02/09/2021
 ms.author: aahi
 ms.reviewer: sumeh, assafi
 ms.custom: devx-track-js
-ms.openlocfilehash: 2a5bc5b6f9e2cb9a3f6895847dd8f03bc2540e18
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: e95c25121d0e8a7e7fb469c0473c35797e4519b9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100514926"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750569"
 ---
 <a name="HOLTop"></a>
 
@@ -28,10 +28,6 @@ ms.locfileid: "100514926"
 
 [v3 参考文档](/javascript/api/overview/azure/ai-text-analytics-readme?preserve-view=true&view=azure-node-latest) | [v3 库源代码](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics) | [v3 包(NPM)](https://www.npmjs.com/package/@azure/ai-text-analytics) | [v3 示例](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics/samples)
 
-
-# <a name="version-21"></a>[版本 2.1](#tab/version-2)
-
-[v2 参考文档](/javascript/api/@azure/cognitiveservices-textanalytics) | [v2 库源代码](https://github.com/Azure/azure-sdk-for-node/tree/master/lib/services/cognitiveServicesTextAnalytics) | [v2 包(NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-textanalytics) | [v2 示例](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/)
 
 ---
 
@@ -86,17 +82,6 @@ npm install --save @azure/ai-text-analytics@5.0.0
 > [!TIP]
 > 想要立即查看整个快速入门代码文件？ 可以[在 GitHub 上](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/TextAnalytics/text-analytics-v3-client-library.js)找到它，其中包含此快速入门中的代码示例。 
 
-# <a name="version-21"></a>[版本 2.1](#tab/version-2)
-
-安装 `@azure/cognitiveservices-textanalytics` NPM 包：
-
-```console
-npm install --save @azure/cognitiveservices-textanalytics @azure/ms-rest-js
-```
-
-> [!TIP]
-> 想要立即查看整个快速入门代码文件？ 可以[在 GitHub 上](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/textAnalytics.js)找到它，其中包含此快速入门中的代码示例。 
-
 ---
 
 应用的 `package.json` 文件将使用依赖项进行更新。
@@ -118,15 +103,6 @@ const { TextAnalyticsClient, AzureKeyCredential } = require("@azure/ai-text-anal
 const { TextAnalyticsClient, AzureKeyCredential } = require("@azure/ai-text-analytics");
 ```
 
-# <a name="version-21"></a>[版本 2.1](#tab/version-2)
-
-```javascript
-"use strict";
-
-const os = require("os");
-const CognitiveServicesCredentials = require("@azure/ms-rest-js");
-const TextAnalyticsAPIClient = require("@azure/cognitiveservices-textanalytics");
-```
 ---
 
 为资源的 Azure 终结点和密钥创建变量。
@@ -174,12 +150,6 @@ const textAnalyticsClient = new TextAnalyticsClient(endpoint,  new AzureKeyCrede
 ```javascript
 const textAnalyticsClient = new TextAnalyticsClient(endpoint,  new AzureKeyCredential(key));
 ```
-
-# <a name="version-21"></a>[版本 2.1](#tab/version-2)
-
-使用 `credentials` 和 `endpoint` 作为参数创建新的 [TextAnalyticsClient](/javascript/api/@azure/cognitiveservices-textanalytics/textanalyticsclient) 对象。
-
-[!code-javascript[Authentication and client creation](~/cognitive-services-node-sdk-samples/Samples/textAnalytics.js?name=authentication)]
 
 ---
 
@@ -358,23 +328,6 @@ ID: 0
                 Positive: 0.21  Negative: 0.02  Neutral: 0.77
 ```
 
-# <a name="version-21"></a>[版本 2.1](#tab/version-2)
-
-创建一个字典对象列表，用以包含你要分析的文档。 调用客户端的 [sentiment()](/javascript/api/@azure/cognitiveservices-textanalytics/textanalyticsclient#sentiment-models-textanalyticsclientsentimentoptionalparams-) 方法，并获取返回的 [SentimentBatchResult](/javascript/api/@azure/cognitiveservices-textanalytics/sentimentbatchresult)。 循环访问结果列表，输出每个文档的 ID 和情绪分数。 评分接近 0 表示消极情绪，评分接近 1 表示积极情绪。
-
-[!code-javascript[Sentiment analysis](~/cognitive-services-node-sdk-samples/Samples/textAnalytics.js?name=sentimentAnalysis)]
-
-在控制台窗口中使用 `node index.js` 运行代码。
-
-### <a name="output"></a>输出
-
-```console
-[ { id: '1', score: 0.87 } ]
-[ { id: '2', score: 0.11 } ]
-[ { id: '3', score: 0.44 } ]
-[ { id: '4', score: 1.00 } ]
-```
-
 ---
 
 ## <a name="language-detection"></a>语言检测
@@ -435,22 +388,6 @@ languageDetection(textAnalyticsClient);
 ```console
 ID: 0
         Primary Language French
-```
-
-# <a name="version-21"></a>[版本 2.1](#tab/version-2)
-
-创建包含你的文档的字典对象的列表。 调用客户端的 [detectLanguage()](/javascript/api/@azure/cognitiveservices-textanalytics/textanalyticsclient#detectlanguage-models-textanalyticsclientdetectlanguageoptionalparams-) 方法，并获取返回的 [LanguageBatchResult](/javascript/api/@azure/cognitiveservices-textanalytics/languagebatchresult)。 然后循环访问结果，输出每个文档的 ID 和语言。
-
-[!code-javascript[Language detection](~/cognitive-services-node-sdk-samples/Samples/textAnalytics.js?name=languageDetection)]
-
-在控制台窗口中使用 `node index.js` 运行代码。
-
-### <a name="output"></a>输出
-
-```console
-Document ID: 1 , Language: English
-Document ID: 2 , Language: Spanish
-Document ID: 3 , Language: Chinese_Simplified
 ```
 
 ---
@@ -704,46 +641,6 @@ Document ID: 0
                 Text: BASIC     Score: 0.33
 ```
 
-# <a name="version-21"></a>[版本 2.1](#tab/version-2)
-
-> [!NOTE]
-> 在版本 2.1 中，实体链接包含在 NER 响应中。
-
-创建对象的列表，其中包含你的文档。 调用客户端的 [entities()](/javascript/api/@azure/cognitiveservices-textanalytics/textanalyticsclient#entities-models-textanalyticscliententitiesoptionalparams-) 方法，并获取 [EntitiesBatchResult](/javascript/api/@azure/cognitiveservices-textanalytics/entitiesbatchresult) 对象。 循环访问结果列表，输出每个文档的 ID。 对于每个检测到的实体，输出其维基百科名称、类型和子类型（如果存在），以及其在原始文本中的位置。
-
-[!code-javascript[Entity recognition](~/cognitive-services-node-sdk-samples/Samples/textAnalytics.js?name=entityRecognition)]
-
-在控制台窗口中使用 `node index.js` 运行代码。
-
-### <a name="output"></a>输出
-
-```console
-Document ID: 1
-    Name: Microsoft,        Type: Organization,     Sub-Type: N/A
-    Offset: 0, Length: 9,   Score: 1.0
-    Name: Bill Gates,       Type: Person,   Sub-Type: N/A
-    Offset: 25, Length: 10, Score: 0.999847412109375
-    Name: Paul Allen,       Type: Person,   Sub-Type: N/A
-    Offset: 40, Length: 10, Score: 0.9988409876823425
-    Name: April 4,  Type: Other,    Sub-Type: N/A
-    Offset: 54, Length: 7,  Score: 0.8
-    Name: April 4, 1975,    Type: DateTime, Sub-Type: Date
-    Offset: 54, Length: 13, Score: 0.8
-    Name: BASIC,    Type: Other,    Sub-Type: N/A
-    Offset: 89, Length: 5,  Score: 0.8
-    Name: Altair 8800,      Type: Other,    Sub-Type: N/A
-    Offset: 116, Length: 11,        Score: 0.8
-
-Document ID: 2
-    Name: Microsoft,        Type: Organization,     Sub-Type: N/A
-    Offset: 21, Length: 9,  Score: 0.999755859375
-    Name: Redmond (Washington),     Type: Location, Sub-Type: N/A
-    Offset: 60, Length: 7,  Score: 0.9911284446716309
-    Name: 21 kilómetros,    Type: Quantity, Sub-Type: Dimension
-    Offset: 71, Length: 13, Score: 0.8
-    Name: Seattle,  Type: Location, Sub-Type: N/A
-    Offset: 88, Length: 7,  Score: 0.9998779296875
-```
 
 ---
 
@@ -807,24 +704,6 @@ ID: 0
         Document Key Phrases: cat,veterinarian
 ```
 
-# <a name="version-21"></a>[版本 2.1](#tab/version-2)
-
-创建对象的列表，其中包含你的文档。 调用客户端的 [keyPhrases()](/javascript/api/@azure/cognitiveservices-textanalytics/textanalyticsclient#keyphrases-models-textanalyticsclientkeyphrasesoptionalparams-) 方法，并获取返回的 [KeyPhraseBatchResult](/javascript/api/@azure/cognitiveservices-textanalytics/keyphrasebatchresult) 对象。 循环访问结果，输出每个文档的 ID 以及任何检测到的密钥短语。
-
-[!code-javascript[Key phrase extraction](~/cognitive-services-node-sdk-samples/Samples/textAnalytics.js?name=keyPhraseExtraction)]
-
-在控制台窗口中使用 `node index.js` 运行代码。
-
-### <a name="output"></a>输出
-
-```console
-[
-    { id: '1', keyPhrases: [ '幸せ' ] }
-    { id: '2', keyPhrases: [ 'Stuttgart', "hotel", "Fahrt", "Fu" ] }
-    { id: '3', keyPhrases: [ 'cat', 'veterinarian' ] }
-    { id: '3', keyPhrases: [ 'fútbol' ] }
-]
-```
 
 ---
 
@@ -886,10 +765,6 @@ analyze_example(textAnalyticsClient);
 # <a name="version-30"></a>[版本 3.0](#tab/version-3)
 
 此功能在版本 3.0 中不可用。
-
-# <a name="version-21"></a>[版本 2.1](#tab/version-2)
-
-此功能在版本 2.1 中不可用。
 
 ---
 

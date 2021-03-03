@@ -7,20 +7,20 @@ ms.topic: conceptual
 ms.author: jamesfit
 author: jimmyfit
 ms.date: 01/29/2021
-ms.openlocfilehash: 6239cf48794c74c5dd810fda42476df399300578
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: d0ded409d76d0b26a76aebb47b8de8f6143ceba5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100608025"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719893"
 ---
 # <a name="collecting-event-tracing-for-windows-etw-events-for-analysis-azure-monitor-logs"></a>收集 Windows (ETW 事件跟踪) 事件以进行分析 Azure Monitor 日志
 
-*Windows (ETW) 的事件跟踪* 为用户模式应用程序和内核模式驱动程序提供了一种检测机制。 Log Analytics 代理用于收集写入到管理和操作[ETW 通道](https://docs.microsoft.com/windows/win32/wes/eventmanifestschema-channeltype-complextype)的[Windows 事件](https://docs.microsoft.com/azure/azure-monitor/platform/data-sources-windows-events)。 但是，有时需要捕获和分析其他事件，如写入分析通道的事件。  
+*Windows (ETW) 的事件跟踪* 为用户模式应用程序和内核模式驱动程序提供了一种检测机制。 Log Analytics 代理用于收集写入到管理和操作[ETW 通道](/windows/win32/wes/eventmanifestschema-channeltype-complextype)的[Windows 事件](./data-sources-windows-events.md)。 但是，有时需要捕获和分析其他事件，如写入分析通道的事件。  
 
 ## <a name="event-flow"></a>事件流
 
-若要在 Azure Monitor 日志中成功收集 [基于清单的 ETW 事件](https://docs.microsoft.com/windows/win32/etw/about-event-tracing#types-of-providers) 以进行分析，必须使用适用于 WINDOWS (WAD) 的 [Azure 诊断扩展](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostics-extension-overview) 。 在这种情况下，诊断扩展将充当 ETW 使用者，将事件写入 Azure 存储 (表) 为中间存储。 此处，它将存储在名为 **WADETWEventTable** 的表中。 然后 Log Analytics 收集 Azure 存储中的表数据，将其呈现为名为 **ETWEvent** 的表。
+若要在 Azure Monitor 日志中成功收集 [基于清单的 ETW 事件](/windows/win32/etw/about-event-tracing#types-of-providers) 以进行分析，必须使用适用于 WINDOWS (WAD) 的 [Azure 诊断扩展](./diagnostics-extension-overview.md) 。 在这种情况下，诊断扩展将充当 ETW 使用者，将事件写入 Azure 存储 (表) 为中间存储。 此处，它将存储在名为 **WADETWEventTable** 的表中。 然后 Log Analytics 收集 Azure 存储中的表数据，将其呈现为名为 **ETWEvent** 的表。
 
 ![事件流](./media/data-sources-event-tracing-windows/event-flow.png)
 
@@ -46,7 +46,7 @@ Get-NetEventProvider -ShowInstalled | Select-Object Name, Guid
 
 ### <a name="step-2-diagnostics-extension"></a>步骤2：诊断扩展
 
-确保所有源系统上都 [安装](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostics-extension-windows-install#install-with-azure-portal)了 *Windows 诊断扩展*。
+确保所有源系统上都 [安装](./diagnostics-extension-windows-install.md#install-with-azure-portal)了 *Windows 诊断扩展*。
 
 ### <a name="step-3-configure-etw-log-collection"></a>步骤3：配置 ETW 日志收集
 
@@ -58,13 +58,13 @@ Get-NetEventProvider -ShowInstalled | Select-Object Name, Guid
 
 4. 基于你要为其配置集合的提供程序设置提供程序 GUID 或提供程序类
 
-5. 适当设置 [**日志级别**](https://docs.microsoft.com/windows/win32/etw/configuring-and-starting-an-event-tracing-session)
+5. 适当设置 [**日志级别**](/windows/win32/etw/configuring-and-starting-an-event-tracing-session)
 
 6. 单击提供的提供程序旁边的省略号，然后单击 "**配置**"
 
 7. 确保将 **默认目标表** 设置为 **etweventtable**
 
-8. 根据需要设置 [**关键字筛选器**](https://docs.microsoft.com/windows/win32/wes/defining-keywords-used-to-classify-types-of-events)
+8. 根据需要设置 [**关键字筛选器**](/windows/win32/wes/defining-keywords-used-to-classify-types-of-events)
 
 9. 保存提供程序和日志设置
 
@@ -72,8 +72,8 @@ Get-NetEventProvider -ShowInstalled | Select-Object Name, Guid
 
 ### <a name="step-4-configure-log-analytics-storage-account-collection"></a>步骤4：配置 Log Analytics 存储帐户集合
 
-按照 [以下说明](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostics-extension-logs#collect-logs-from-azure-storage) 收集 Azure 存储中的日志。 配置后，ETW 事件数据应显示在 **ETWEvent** 表下的 Log Analytics 中。
+按照 [以下说明](/azure/azure-monitor/agents/diagnostics-extension-logs#collect-logs-from-azure-storage) 收集 Azure 存储中的日志。 配置后，ETW 事件数据应显示在 **ETWEvent** 表下的 Log Analytics 中。
 
 ## <a name="next-steps"></a>后续步骤
-- 使用 [自定义字段](https://docs.microsoft.com/azure/azure-monitor/platform/custom-fields) 在 ETW 事件中创建结构
-- 了解[日志查询](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview)以便分析从数据源和解决方案中收集的数据。
+- 使用 [自定义字段](../logs/custom-fields.md) 在 ETW 事件中创建结构
+- 了解[日志查询](../logs/log-query-overview.md)以便分析从数据源和解决方案中收集的数据。

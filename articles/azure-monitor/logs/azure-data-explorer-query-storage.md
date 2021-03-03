@@ -7,12 +7,12 @@ ms.author: bwren
 ms.reviewer: bwren
 ms.topic: conceptual
 ms.date: 10/13/2020
-ms.openlocfilehash: 5a26e5d045be78772ee5dc940fcfecd3cfde9dc7
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: f24947eba71588d8b97afafea35f9a0bcab33c86
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100608413"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711002"
 ---
 # <a name="query-exported-data-from-azure-monitor-using-azure-data-explorer-preview"></a>使用 Azure 数据资源管理器查询从 Azure Monitor 中导出的数据（预览版）
 将数据从 Azure Monitor 导出到 Azure 存储帐户可以实现低成本保留，并能够将日志重新分配到不同的区域。 使用 Azure 数据资源管理器可查询从 Log Analytics 工作区导出的数据。 配置后，从你的工作区发送到 Azure 存储帐户的受支持的表将可用作 Azure 数据资源管理器的数据源。
@@ -30,9 +30,9 @@ ms.locfileid: "100608413"
 ## <a name="send-data-to-azure-storage"></a>将数据发送到 Azure 存储
 可以使用以下任一选项将 Azure Monitor 日志导出到 Azure 存储帐户。
 
-- 若要将所有数据从 Log Analytics 工作区导出到 Azure 存储帐户或事件中心，请使用 Azure Monitor 日志的 Log Analytics 工作区数据导出功能。 请参阅 [Azure Monitor 中的 Log Analytics 工作区数据导出功能（预览版）](../platform/logs-data-export.md)
-- 使用逻辑应用从日志查询进行计划性导出。 这类似于数据导出功能，但你可向 Azure 存储发送经过筛选或聚合的数据。 不过，此方法受限于[日志查询限制](../service-limits.md#log-analytics-workspaces)。请参阅[使用逻辑应用将 Log Analytics 工作区中的数据存档到 Azure 存储](../platform/logs-export-logic-app.md)。
-- 使用逻辑应用一次性导出。 请参阅[适用于逻辑应用和 Power Automate 的 Azure Monitor 日志连接器](../platform/logicapp-flow-connector.md)。
+- 若要将所有数据从 Log Analytics 工作区导出到 Azure 存储帐户或事件中心，请使用 Azure Monitor 日志的 Log Analytics 工作区数据导出功能。 请参阅 [Azure Monitor 中的 Log Analytics 工作区数据导出功能（预览版）](./logs-data-export.md)
+- 使用逻辑应用从日志查询进行计划性导出。 这类似于数据导出功能，但你可向 Azure 存储发送经过筛选或聚合的数据。 不过，此方法受限于[日志查询限制](../service-limits.md#log-analytics-workspaces)。请参阅[使用逻辑应用将 Log Analytics 工作区中的数据存档到 Azure 存储](./logs-export-logic-app.md)。
+- 使用逻辑应用一次性导出。 请参阅[适用于逻辑应用和 Power Automate 的 Azure Monitor 日志连接器](./logicapp-flow-connector.md)。
 - 使用 PowerShell 脚本一次性导出到本地计算机。 请参阅 [Invoke-AzOperationalInsightsQueryExport](https://www.powershellgallery.com/packages/Invoke-AzOperationalInsightsQueryExport)。
 
 > [!TIP]

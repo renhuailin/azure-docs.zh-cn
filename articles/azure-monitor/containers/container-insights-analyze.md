@@ -1,26 +1,26 @@
 ---
-title: 使用用于容器的 Azure Monitor 监视 Kubernetes | Microsoft Docs
-description: 本文介绍如何使用用于容器的 Azure Monitor 查看和分析 Kubernetes 群集的性能。
+title: Kubernetes monitoring with Container insights |Microsoft Docs
+description: 本文介绍如何使用容器见解查看和分析 Kubernetes 群集的性能。
 ms.topic: conceptual
 ms.date: 03/26/2020
-ms.openlocfilehash: 9bb21f7a651d773806a96bb19044abf3bc7dda5d
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 432de02d22a418e92a7487001ae8c128323f3685
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100608750"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711342"
 ---
-# <a name="monitor-your-kubernetes-cluster-performance-with-azure-monitor-for-containers"></a>使用适用于容器的 Azure Monitor 监视 Kubernetes 群集性能
+# <a name="monitor-your-kubernetes-cluster-performance-with-container-insights"></a>利用 Container insights 监视 Kubernetes 群集性能
 
-借助适用于容器的 Azure Monitor，可以使用性能图表和运行状况从两个角度监视托管在 Azure Kubernetes 服务 (AKS)、Azure Stack 或其他环境上的 Kubernetes 群集的工作负荷。 可以直接从群集进行监视，也可以从 Azure Monitor 查看订阅中的所有群集。 在监视特定 AKS 群集时，还可以查看 Azure 容器实例。
+借助 Container insights，你可以使用性能图表和运行状况状态监视托管在 Azure Kubernetes Service 上的 Kubernetes 群集的工作负荷， (AKS) 、Azure Stack 或其他环境中的两个透视。 可以直接从群集进行监视，也可以从 Azure Monitor 查看订阅中的所有群集。 在监视特定 AKS 群集时，还可以查看 Azure 容器实例。
 
 本文将帮助你了解这两个角度，并介绍 Azure Monitor 如何帮助你快速评估、调查和解决检测到的问题。
 
-若要了解如何启用适用于容器的 Azure Monitor，请参阅[载入适用于容器的 Azure Monitor](container-insights-onboard.md)。
+有关如何启用 Container insights 的信息，请参阅 [板载容器 insights](container-insights-onboard.md)。
 
 Azure Monitor 提供一个多群集视图，显示在订阅中跨资源组部署的所有运行 Linux 和 Windows Server 2019 的受监视 Kubernetes 群集的运行状况。 它显示跨所有环境发现的不受解决方案监视的群集。 可以即时了解群集运行状况，并且可以从这里向下钻取到节点和控制器性能页，或者进行导航来查看群集的性能图表。 对于发现的标识为“不受监视”的 AKS 群集，可以随时为该群集启用监视功能。
 
-概述文章中在[此处](container-insights-overview.md#what-does-azure-monitor-for-containers-provide)描述了使用适用于容器的 Azure Monitor 监视 Windows Server 群集与监视 Linux 群集的主要差异。
+与 Linux 群集相比，使用容器 insights 监视 Windows Server 群集的主要区别在本文的概述文章中进行[了介绍。](container-insights-overview.md#what-does-azure-monitor-for-containers-provide)
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
@@ -37,7 +37,7 @@ Azure Monitor 提供一个多群集视图，显示在订阅中跨资源组部署
 * **Azure** - Azure Kubernetes 服务中托管的 AKS 和 AKS 引擎群集
 * **Azure Stack（预览版）** - Azure Stack 上托管的 AKS 引擎群集
 * **非 Azure（预览版）** - 本地托管的 Kubernetes 群集
-* **所有** - 查看 Azure、Azure Stack 和本地环境（加入到适用于容器的 Azure Monitor）中托管的所有 Kubernetes 群集
+* **全部** -查看在 Azure 中托管的所有 Kubernetes 群集、Azure Stack 以及载入到容器 insights 的本地环境
 
 要查看特定环境中的群集，请在页面左上角的“环境”框中选择该环境。
 
@@ -59,7 +59,7 @@ Azure Monitor 提供一个多群集视图，显示在订阅中跨资源组部署
 * **找不到**：工作区、资源组或包含此解决方案的工作区的订阅已删除。
 * **未授权**：用户没有读取工作区中的数据所需的权限。
 * **错误**：尝试从工作区中读取数据时发生错误。
-* **配置不正确**：未在指定工作区中正确配置适用于容器的 Azure Monitor。
+* **配置错误**：在指定的工作区中未正确配置容器见解。
 * **没有数据**：在过去 30 分钟内未向工作区报告数据。
 
 在进行运行状态计算时，会将这三种状况中“最差”的一种视为群集的总体状况，但存在一种例外情况。 如果这三种状态中的任何一种为“未知”，则群集总体状态会显示为“未知”。
@@ -88,7 +88,7 @@ Azure Monitor 提供一个多群集视图，显示在订阅中跨资源组部署
 
 ## <a name="view-performance-directly-from-a-cluster"></a>直接从群集查看性能
 
-可以直接从 AKS 群集访问适用于容器的 Azure Monitor，方法是：从左窗格中选择“见解” > “群集”，或者从多群集视图中选择一个群集。 有关群集的信息组织成四个透视图：
+通过从左窗格中选择 "**见解**  >  **群集**"，或从多群集视图中选择群集，可以直接从 AKS 群集访问容器见解。 有关群集的信息组织成四个透视图：
 
 - 群集
 - Nodes
@@ -109,13 +109,13 @@ Azure Monitor 提供一个多群集视图，显示在订阅中跨资源组部署
 - **节点计数**：Kubernetes 提供的节点计数和状态。 表示的群集节点状态为“总计”、“就绪”和“未就绪”。 可以在图表上方的选择器中单独筛选或以组合方式进行筛选。
 - **活动 Pod 计数**：Kubernetes 提供的 Pod 计数和状态。 表示的 Pod 状态为“总计”、“挂起”、“正在运行”、“未知”、“成功”或“失败”。 可以在图表上方的选择器中单独筛选或以组合方式进行筛选。
 
-使用向左和向右箭头键可以循环浏览图表上的每个数据点。 使用向上和向下箭头键可以循环浏览百分位行。 选择其中任一图表右上角的图钉图标会将所选图表固定到你查看的最后一个 Azure 仪表板。 在仪表板中，可以调整图表大小及其位置。 在仪表板中选择图表会将你重定向到用于容器的 Azure Monitor，并加载正确的范围和视图。
+使用向左和向右箭头键可以循环浏览图表上的每个数据点。 使用向上和向下箭头键可以循环浏览百分位行。 选择其中任一图表右上角的图钉图标会将所选图表固定到你查看的最后一个 Azure 仪表板。 在仪表板中，可以调整图表大小及其位置。 选择仪表板中的图表会将用户重定向到容器见解，并加载正确的作用域和视图。
 
-适用于容器的 Azure Monitor 也支持 Azure Monitor [指标资源管理器](../essentials/metrics-getting-started.md)。在该管理器中，你可以创建自己的绘图图表、将趋势相关联并对其进行调查，以及将内容固定到仪表板。 在指标资源管理器中，还可以使用所设置的条件将指标可视化为[基于指标的警报规则](../alerts/alerts-metric.md)的基础。
+容器见解还支持 Azure Monitor [指标资源管理器](../essentials/metrics-getting-started.md)，您可以在其中创建自己的绘图图、关联和调查趋势以及固定到仪表板。 在指标资源管理器中，还可以使用所设置的条件将指标可视化为[基于指标的警报规则](../alerts/alerts-metric.md)的基础。
 
 ## <a name="view-container-metrics-in-metrics-explorer"></a>在指标资源管理器中查看容器指标
 
-在指标资源管理器中，可以通过适用于容器的 Azure Monitor 查看聚合的节点和 Pod 利用率指标。 下表汇总了详细信息，这些信息有助于你了解如何使用指标图表来可视化容器指标。
+在指标资源管理器中，可以查看容器见解中的聚合节点和 pod 使用情况指标。 下表汇总了详细信息，这些信息有助于你了解如何使用指标图表来可视化容器指标。
 
 |命名空间 | 指标 | 说明 |
 |----------|--------|-------------|
@@ -189,7 +189,7 @@ Azure Monitor 提供一个多群集视图，显示在订阅中跨资源组部署
 
 下表描述了查看“节点”选项卡时显示的信息。
 
-| 列 | 描述 |
+| 列 | 说明 |
 |--------|-------------|
 | 名称 | 主机的名称。 |
 | 状态 | 节点状态的 Kubernetes 视图。 |
@@ -232,7 +232,7 @@ Azure Monitor 提供一个多群集视图，显示在订阅中跨资源组部署
 
 下表描述了查看控制器时显示的信息：
 
-| 列 | 描述 |
+| 列 | 说明 |
 |--------|-------------|
 | 名称 | 控制器的名称。|
 | 状态 | 容器完成运行并处于“正常”、“已终止”、“已失败”、“已停止”或“已暂停”等状态时的汇总状态    。 如果容器仍在运行，但是状态未正确显示或者未被代理选择并且超出 30 分钟后仍未响应，则状态为“未知”。 下表提供了状态图标的更多详细信息。|
@@ -269,7 +269,7 @@ Azure Monitor 提供一个多群集视图，显示在订阅中跨资源组部署
 
 下表描述了查看容器时显示的信息。
 
-| 列 | 描述 |
+| 列 | 说明 |
 |--------|-------------|
 | 名称 | 控制器的名称。|
 | 状态 | 容器状态（如果有）。 接下来的表格提供状态图标的更多详细信息。|
@@ -297,12 +297,12 @@ Azure 网络策略管理器包含信息丰富的 Prometheus 指标，可用于�
 
 ## <a name="workbooks"></a>工作簿
 
-工作簿可将文本、日志查询、指标和参数合并到丰富的交互式报表中，使你能够分析群集性能。 有关适用于容器的 Azure Monitor 可使用的工作簿的说明，请参阅[用于容器的 Azure Monitor 中的工作簿](../insights/container-insights-reports.md)。
+工作簿可将文本、日志查询、指标和参数合并到丰富的交互式报表中，使你能够分析群集性能。 有关可用于容器见解的工作簿的说明，请参阅 [容器见解中的工作簿](../insights/container-insights-reports.md) 。
 
 
 ## <a name="next-steps"></a>后续步骤
 
-- 请查看[使用用于容器的 Azure Monitor 创建性能警报](./container-insights-log-alerts.md)，了解如何针对高 CPU 和内存利用率创建警报以支持 DevOps 或操作流程和过程。
+- 查看 [使用容器见解创建性能警报](./container-insights-log-alerts.md) ，了解如何创建高 CPU 和内存使用率的警报，以支持 DevOps 或操作过程和过程。
 
 - 通过查看[日志查询示例](container-insights-log-search.md#search-logs-to-analyze-data)，可查看预定义的查询和示例，从而对其进行评估或自定义，以便对群集执行警报、可视化或分析操作。
 

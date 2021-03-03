@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 12/03/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 780324d1a6f7d9edfb552377c3e966e6a186c231
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: dfedec85208ef9afaa58db2b200dc9f9988a845b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97347925"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101709234"
 ---
 # <a name="add-language-packs-to-a-windows-10-multi-session-image"></a>将语言包添加到 Windows 10 多会话映像
 
@@ -53,6 +53,7 @@ Windows 虚拟桌面是你的用户可以随时随地部署的一种服务。 �
           - [Windows 10 版本2004或 20H2 **9C** LXP ISO](https://software-download.microsoft.com/download/pr/Win_10_2004_32_64_ARM64_MultiLng_LngPkAll_LIP_9C_LXP_ONLY)
           - [Windows 10 版本2004或 20H2 **10C** LXP ISO](https://software-download.microsoft.com/download/pr/LanguageExperiencePack.2010C.iso)
           - [Windows 10 版本2004或 20H2 **11C** LXP ISO](https://software-download.microsoft.com/download/pr/LanguageExperiencePack.2011C.iso)
+          - [Windows 10 版本2004或 20H2 **1c** LXP ISO](https://software-download.microsoft.com/download/pr/LanguageExperiencePack.2101C.iso)
 
 - Windows 文件服务器虚拟机上的 Azure 文件共享或文件共享
 
@@ -168,9 +169,6 @@ $LanguageList = Get-WinUserLanguageList
 $LanguageList.Add("zh-cn")
 Set-WinUserLanguageList $LanguageList -force
 ```
-
->[!IMPORTANT]
->Windows 10 Enterprise 版本1903和1909不需要 `Microsoft-Windows-Client-Language-Pack_x64_<language-code>.cab` 包文件。
 
 该脚本可能需要一段时间，具体取决于安装所需的语言数量。
 

@@ -6,17 +6,17 @@ ms.author: yexu
 ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-dt-2019
-ms.date: 11/09/2020
-ms.openlocfilehash: 1f88571b407c138516568a7f74476ca35425da75
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 02/18/2021
+ms.openlocfilehash: 6f586cacaa983ea1e53b34f602f882c530a9bf28
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100384684"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101716323"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-the-azure-portal"></a>使用 Azure 门户以增量方式将 Azure SQL 数据库中的数据加载到 Azure Blob 存储
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 在本教程中，你将创建一个带管道的 Azure 数据工厂，将增量数据从 Azure SQL 数据库中的表加载到 Azure Blob 存储。
 
@@ -269,7 +269,7 @@ END
     1. 对于“存储过程名称”，请选择 **usp_write_watermark**。
     2. 若要指定存储过程参数的值，请单击“导入参数”，然后为参数输入以下值：
 
-        | 名称 | 类型 | 值 |
+        | 名称 | 类型 | Value |
         | ---- | ---- | ----- |
         | LastModifiedtime | DateTime | @{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue} |
         | TableName | 字符串 | @{activity('LookupOldWaterMarkActivity').output.firstRow.TableName} |

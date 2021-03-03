@@ -8,15 +8,15 @@ ms.subservice: core
 ms.author: laobri
 author: lobrien
 manager: cgronlun
-ms.date: 12/04/2020
+ms.date: 02/28/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, automl
-ms.openlocfilehash: 14e3991c7a9c24ea8fa2a619dc7100af2cd8617c
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: da973cf377ceace4a92d1cdd1e956321a5592e6a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100362754"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101692209"
 ---
 # <a name="use-automated-ml-in-an-azure-machine-learning-pipeline-in-python"></a>在 Python 的 Azure 机器学习管道中使用自动化 ML
 
@@ -136,8 +136,6 @@ from azureml.core import Run
 
 import pandas as pd 
 import numpy as np 
-import pyarrow as pa
-import pyarrow.parquet as pq
 import argparse
 
 RANDOM_SEED=42
@@ -188,10 +186,9 @@ titanic_ds = Run.get_context().input_datasets['titanic_ds']
 df = titanic_ds.to_pandas_dataframe().drop(['PassengerId', 'Name', 'Ticket', 'Cabin'], axis=1)
 df = prepare_embarked(prepare_genders(prepare_fare(prepare_age(df))))
 
-os.makedirs(os.path.dirname(args.output_path), exist_ok=True)
-pq.write_table(pa.Table.from_pandas(df), args.output_path)
+df.to_csv(os.path.join(args.output_path,"prepped_data.csv"))
 
-print(f"Wrote test to {args.output_path} and train to {args.output_path}")
+print(f"Wrote prepped data to {args.output_path}/prepped_data.csv")
 ```
 
 上面的代码片段是对泰坦尼克号数据进行数据准备的完整的极简示例。 代码片段以 Jupyter“magic 命令”开头，该命令将代码输出到文件中。 如果未使用 Jupyter 笔记本，请删除该行并手动创建文件。
@@ -200,33 +197,30 @@ print(f"Wrote test to {args.output_path} and train to {args.output_path}")
 
 代码定义了数据准备函数之后，会解析输入参数，这是我们要写入数据的路径。  （这些值将由 `OutputFileDatasetConfig` 对象确定，并将在下一步中进行讨论。）代码会检索已注册的 `'titanic_cs'` `Dataset`，将其转换为 Pandas `DataFrame`，并调用各种数据准备函数。 
 
-由于 `output_path` 是完全限定的，因此使用函数 `os.makedirs()` 来准备目录结构。 此时，你可以使用 `DataFrame.to_csv()` 来写入输出数据，但 Parquet 文件的效率更高。 对于此类小型数据集，这种效率可能无关紧要，但使用 PyArrow 包的 `from_pandas()` 和 `write_table()` 函数与使用 `to_csv()` 相比只是多按几次键盘而已。
-
-下面讨论的自动化 ML 步骤本机支持 Parquet 文件，因此不需要进行特殊处理即可使用它们。 
+由于 `output_path` 是一个目录，因此调用将 `to_csv()` 指定文件名 `prepped_data.csv` 。
 
 ### <a name="write-the-data-preparation-pipeline-step-pythonscriptstep"></a>编写数据准备管道步骤 (`PythonScriptStep`)
 
-上述数据准备代码必须与 `PythonScripStep` 对象相关联才能用于管道。 将 Parquet 数据准备输出写入到的路径由 `OutputFileDatasetConfig` 对象生成。 前面准备的资源（如 `ComputeTarget`、`RunConfig` 和 `'titanic_ds' Dataset`）用于补全规范。
+上述数据准备代码必须与 `PythonScripStep` 对象相关联才能用于管道。 CSV 输出写入到的路径由 `OutputFileDatasetConfig` 对象生成。 前面准备的资源（如 `ComputeTarget`、`RunConfig` 和 `'titanic_ds' Dataset`）用于补全规范。
 
-PipelineData 用户
 ```python
 from azureml.data import OutputFileDatasetConfig
 from azureml.pipeline.steps import PythonScriptStep
 
-prepped_data_path = OutputFileDatasetConfig(name="titanic_train", (destination=(datastore, 'outputdataset')))
+prepped_data_path = OutputFileDatasetConfig(name="output_path")
 
 dataprep_step = PythonScriptStep(
     name="dataprep", 
     script_name="dataprep.py", 
     compute_target=compute_target, 
     runconfig=aml_run_config,
-    arguments=[titanic_ds.as_named_input('titanic_ds').as_mount(), prepped_data_path],
-    inputs=[titanic_ds.as_named_input("titanic_ds")],
-    outputs=[prepped_data_path],
+    arguments=["--output_path", prepped_data_path],
+    inputs=[titanic_ds.as_named_input('titanic_ds')],
     allow_reuse=True
 )
 ```
-`prepped_data_path` 对象的类型为 `OutputFileDatasetConfig`，它指向一个目录。  请注意，它是在 `arguments` 参数中指定的。 如果回顾上一步，你将看到在数据准备代码中，参数 `'--output_path'` 的值即将 Parquet 文件写入到的文件路径。 
+
+`prepped_data_path` 对象的类型为 `OutputFileDatasetConfig`，它指向一个目录。  请注意，它是在 `arguments` 参数中指定的。 如果查看上一步，你会看到在数据准备代码中，参数的值 `'--output_path'` 为写入 CSV 文件的目录路径。 
 
 ## <a name="train-with-automlstep"></a>通过 AutoMLStep 训练
 
@@ -237,7 +231,6 @@ dataprep_step = PythonScriptStep(
 在 ML 管道中，输入数据必须是 `Dataset` 对象。 性能最高的方法是以 `OutputTabularDatasetConfig` 对象的形式提供输入数据。 可以使用 `OutputFileDatasetConfig` 上的 `read_delimited_files()` 创建该类型的对象，例如 `prepped_data_path`，例如 `prepped_data_path` 对象。
 
 ```python
-# type(prepped_data_path) == OutputFileDatasetConfig
 # type(prepped_data) == OutputTabularDatasetConfig
 prepped_data = prepped_data_path.read_delimited_files()
 ```
@@ -253,7 +246,7 @@ prepped_data = Dataset.get_by_name(ws, 'Data_prepared')
 | 方法 | 优点和缺点 | 
 |-|-|
 |`OutputTabularDatasetConfig`| 提高性能 | 
-|| 从 `PipelineData` 自然路由 | 
+|| 从 `OutputFileDatasetConfig` 自然路由 | 
 || 管道运行后不会保留数据 |
 || [显示 `OutputTabularDatasetConfig` 方法的笔记本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/nyc-taxi-data-regression-model-building/nyc-taxi-data-regression-model-building.ipynb) |
 | 已注册 `Dataset` | 较低性能 |
@@ -267,7 +260,6 @@ prepped_data = Dataset.get_by_name(ws, 'Data_prepared')
 `AutoMLStep` 的输出是高性能模型和该模型本身的最终指标分数。 若要在后续管道步骤中使用这些输出，请准备 `OutputFileDatasetConfig` 对象来接收它们。
 
 ```python
-
 from azureml.pipeline.core import TrainingOutput
 
 metrics_data = PipelineData(name='metrics_data',
@@ -311,6 +303,7 @@ automl_config = AutoMLConfig(task = 'classification',
 
 train_step = AutoMLStep(name='AutoML_Classification',
     automl_config=automl_config,
+    passthru_automl_config=False,
     outputs=[metrics_data,model_data],
     enable_default_model_output=False,
     enable_default_metrics_output=False,
@@ -325,7 +318,7 @@ train_step = AutoMLStep(name='AutoML_Classification',
 - `compute_target` 是先前定义的 `compute_target`，在本例中，它是一个基于 CPU、价格便宜的计算机。 如果你使用 AutoML 的深度学习工具，则需要将计算目标更改为基于 GPU
 - `featurization` 设置为 `auto`。 可以在自动化 ML 配置文档的[数据特征化](./how-to-configure-auto-train.md#data-featurization)部分找到更多详细信息 
 - `label_column_name` 指示要预测的列 
-- `training_data` 设置为从数据准备步骤的输出生成的 `PipelineOutputTabularDataset` 对象 
+- `training_data` 设置为从数据准备步骤的输出生成的 `OutputTabularDatasetConfig` 对象 
 
 `AutoMLStep` 本身接受 `AutoMLConfig`，并创建用于保存指标和模型数据的 `PipelineData` 对象作为输出。 
 

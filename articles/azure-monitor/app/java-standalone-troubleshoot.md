@@ -4,12 +4,12 @@ description: 了解如何对 Azure Monitor Application Insights 的 Java 代理�
 ms.topic: conceptual
 ms.date: 11/30/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 90e0ceb6ba9d696eb446d607ed2f2f134733618e
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 286354ecf508dec7b9ba7633bf3b5c7ddc6bfd91
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881111"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737051"
 ---
 # <a name="troubleshooting-guide-azure-monitor-application-insights-for-java"></a>故障排除指南：适用于 Java 的 Azure Monitor Application Insights
 
@@ -23,7 +23,7 @@ ms.locfileid: "98881111"
 
 ## <a name="jvm-fails-to-start"></a>JVM 无法启动
 
-如果 JVM 无法启动，因为 "缺少打开 zip 文件或 JAR 清单时出错"，请尝试重新下载代理 JAR 文件，因为它可能在文件传输过程中已损坏。
+如果 JVM 无法启动并显示“打开 zip 文件时出错或缺少 JAR 清单”，请尝试重新下载代理 jar 文件，因为它在文件传输过程中可能已损坏。
 
 ## <a name="upgrade-from-the-application-insights-java-2x-sdk"></a>从 Application Insights Java 2.x SDK 进行升级
 
@@ -45,15 +45,23 @@ ms.locfileid: "98881111"
 
 若要了解某个特定的日志记录语句是否满足日志记录框架的已配置阈值，最好的方法是确认它是否显示在正常的应用程序日志（例如文件或控制台）中。
 
+另请注意，如果异常被传递到记录器，则日志消息 (和异常) 将显示在表中的 Azure 门户下， `exceptions` 而不是显示在 `traces` 表中。
+
 有关更多详细信息，请参阅[自动收集的日志记录配置](./java-standalone-config.md#auto-collected-logging)。
 
 ## <a name="import-ssl-certificates"></a>导入 SSL 证书
 
 此部分可帮助你在使用 Java 代理时进行故障排除，并可能修复与 SSL 证书相关的异常。
 
-可以通过两种不同的路径来解决此问题。
+下面是两个不同的路径用于解决此问题：
+* 如果使用默认的 Java 密钥存储
+* 如果使用自定义 Java 密钥存储
 
-### <a name="if-using-a-default-java-keystore"></a>如果使用默认的 Java 密钥存储：
+如果不确定要遵循的路径，请检查是否有 JVM arg `-Djavax.net.ssl.trustStore=...` 。
+如果没有 _这样_ 的 JVM 参数，则可能使用的是默认的 Java 密钥存储。
+如果有 _这样_ 的 JVM 参数，则可能使用的是自定义密钥存储，而 JVM arg 会将你指向自定义密钥存储。
+
+### <a name="if-using-the-default-java-keystore"></a>如果使用默认的 Java 密钥存储：
 
 通常，默认的 Java 密钥存储已具有所有 CA 根证书。 但是，可能有一些例外情况，例如引入终结点证书可能由不同的根证书进行签名。 因此，建议执行以下三个步骤来解决此问题：
 

@@ -3,12 +3,12 @@ title: IoT Edge 上的实时视频分析入门 - Azure
 description: 本快速入门演示如何开始使用 IoT Edge 上的实时视频分析。 了解如何检测实时视频流中的运动。
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: d9f2637166c3807e36f4304e9394bf2ecf91d88c
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 57edf1721249f839f5c781756b3e09bf59888dab
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99573800"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101730280"
 ---
 # <a name="quickstart-get-started---live-video-analytics-on-iot-edge"></a>快速入门：入门 - IoT Edge 上的实时视频分析
 
@@ -69,10 +69,10 @@ ms.locfileid: "99573800"
     1. **网络接口** - Azure 虚拟机可通过它与 Internet、Azure 和其他资源进行通信。
     1. **堡垒连接** - 你可通过它使用浏览器和 Azure 门户连接到虚拟机。
     1. **公共 IP 地址** - Azure 资源可通过它与 Internet 和面向公众的 Azure 服务通信
-    1. **虚拟网络** - 通过它，许多类型的 Azure 资源（例如虚拟机）可以安全方式彼此通信、与 Internet 通信，以及与本地网络通信。 详细了解[虚拟网络](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)。
+    1. **虚拟网络** - 通过它，许多类型的 Azure 资源（例如虚拟机）可以安全方式彼此通信、与 Internet 通信，以及与本地网络通信。 详细了解[虚拟网络](../../virtual-network/virtual-networks-overview.md)。
     1. **IoT 中心** - 这充当消息中心，用于在 IoT 应用程序、IoT Edge 模块以及它管理的设备之间进行双向通信。
     1. **媒体服务帐户** - 这有助于在 Azure 中管理和流式传输媒体内容。
-    1. **存储帐户** - 你必须具有一个主存储帐户，而且可拥有任意数量与媒体服务帐户关联的辅助存储帐户。 有关详细信息，请参阅 [Azure 存储帐户与 Azure 媒体服务帐户](https://docs.microsoft.com/azure/media-services/latest/storage-account-concept)。
+    1. **存储帐户** - 你必须具有一个主存储帐户，而且可拥有任意数量与媒体服务帐户关联的辅助存储帐户。 有关详细信息，请参阅 [Azure 存储帐户与 Azure 媒体服务帐户](../latest/storage-account-concept.md)。
     1. **容器注册表** - 这有助于存储和管理专用 Docker 容器映像及相关项目。
 
 在脚本输出中，资源表会列出 IoT 中心名称。 查找资源类型 `Microsoft.Devices/IotHubs`，并记下名称。 下一步骤需要用到此名称。  

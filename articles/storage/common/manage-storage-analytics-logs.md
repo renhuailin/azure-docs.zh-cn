@@ -9,16 +9,16 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: bc6632b55ba8fd90317a8b5046a3e84d863bf0ef
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 0c182e1093c29206d27a0e55a46dd9a5607fa6ec
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99221552"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101701699"
 ---
 # <a name="enable-and-manage-azure-storage-analytics-logs-classic"></a>启用和管理 (经典) Azure 存储分析日志
 
-[Azure 存储分析](storage-analytics.md) 提供 blob、队列和表的日志。 你可以使用 [Azure 门户](https://portal.azure.com) 来配置为你的帐户记录的日志。 本文介绍如何启用和管理日志。 若要了解如何启用指标，请参阅 [启用和管理 Azure 存储分析指标 (经典) ](storage-monitor-storage-account.md)。  在 Azure 门户中检查和存储监视数据会产生相关的费用。 有关详细信息，请参阅[存储分析](storage-analytics.md)。
+[Azure 存储分析](storage-analytics.md) 提供 blob、队列和表的日志。 你可以使用 [Azure 门户](https://portal.azure.com) 来配置为你的帐户记录的日志。 本文介绍如何启用和管理日志。 若要了解如何启用指标，请参阅 [启用和管理 Azure 存储分析指标 (经典) ]()。  在 Azure 门户中检查和存储监视数据会产生相关的费用。 有关详细信息，请参阅[存储分析](storage-analytics.md)。
 
 > [!NOTE]
 > 建议在 Azure Monitor 中使用 Azure 存储日志，而不是存储分析日志。 Azure Monitor 中的 Azure 存储日志目前为公共预览版，可在所有公有云区域中进行预览测试。 此预览版启用 blob 的日志 (包括 Azure Data Lake Storage Gen2) 、文件、队列和表。 若要了解详细信息，请参阅以下文章：
@@ -39,7 +39,7 @@ ms.locfileid: "99221552"
 > [!NOTE]
 > Azure 文件目前支持存储分析度量值，但不支持存储分析日志记录。
 
-### <a name="portal"></a>[门户](#tab/azure-portal)
+### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. 在 [Azure 门户](https://portal.azure.com)中选择“存储帐户”，然后单击存储帐户的名称打开存储帐户边栏选项卡。
 
@@ -141,7 +141,7 @@ queueClient.SetServiceProperties(serviceProperties);
 > [!NOTE]
 > 这些步骤仅适用于未在其上启用 **分层命名空间** 设置的帐户。 如果已对帐户启用该设置，则尚不支持 "保留天数" 设置。 相反，您必须使用任何支持的工具（例如 Azure 存储资源管理器、REST 或 SDK）手动删除日志。 若要在存储帐户中查找这些日志，请参阅 [如何存储日志](storage-analytics-logging.md#how-logs-are-stored)。
 
-### <a name="portal"></a>[门户](#tab/azure-portal)
+### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. 在 [Azure 门户](https://portal.azure.com)中选择“存储帐户”，然后单击存储帐户的名称打开存储帐户边栏选项卡。
 2. 在菜单边栏选项卡的 "**监视 (经典)** " 部分中，选择 "**诊断设置" (经典)** 。
@@ -191,7 +191,7 @@ queueClient.SetServiceProperties(serviceProperties);
 
    * 将 `<storage-account-name>` 占位符值替换为存储帐户的名称。 
 
-6. 使用 [AzStorageServiceLoggingProperty](https://docs.microsoft.com/powershell/module/az.storage/get-azstorageserviceloggingproperty) 查看当前日志保留策略。 下面的示例将 blob 和队列存储服务的保留期输出到控制台。
+6. 使用 [AzStorageServiceLoggingProperty](/powershell/module/az.storage/get-azstorageserviceloggingproperty) 查看当前日志保留策略。 下面的示例将 blob 和队列存储服务的保留期输出到控制台。
 
    ```powershell
    Get-AzStorageServiceLoggingProperty -ServiceType Blob, Queue -Context $ctx
@@ -202,7 +202,7 @@ queueClient.SetServiceProperties(serviceProperties);
    > [!div class="mx-imgBorder"]
    > ![PowerShell 输出中的保留策略](./media/manage-storage-analytics-logs/retention-period-powershell.png)
 
-7. 使用 [AzStorageServiceLoggingProperty](https://docs.microsoft.com/powershell/module/az.storage/set-azstorageserviceloggingproperty) 更改保持期。 下面的示例将保持期更改为4天。  
+7. 使用 [AzStorageServiceLoggingProperty](/powershell/module/az.storage/set-azstorageserviceloggingproperty) 更改保持期。 下面的示例将保持期更改为4天。  
 
    ```powershell
    Set-AzStorageServiceLoggingProperty -ServiceType Blob, Queue -RetentionDays 4 -Context $ctx
@@ -290,7 +290,6 @@ azcopy copy 'https://mystorageaccount.blob.core.windows.net/$logs/queue' 'C:\Log
 ## <a name="next-steps"></a>后续步骤
 
 * 若要详细了解存储分析，请参阅存储分析的 [存储分析](storage-analytics.md) 。
-* [配置存储分析指标](storage-monitor-storage-account.md)。
 * 有关使用 .NET 语言配置存储日志记录的详细信息，请参阅[存储客户端库参考](/previous-versions/azure/dn261237(v=azure.100))。 
 * 有关使用 REST API 配置存储日志记录的一般信息，请参阅[启用和配置存储分析](/rest/api/storageservices/Enabling-and-Configuring-Storage-Analytics)。
 * 了解有关存储分析日志格式的详细信息。 请参阅 [存储分析日志格式](/rest/api/storageservices/storage-analytics-log-format)。

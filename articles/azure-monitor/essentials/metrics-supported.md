@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 02/06/2021
 ms.author: robb
 ms.subservice: metrics
-ms.openlocfilehash: 3f9ec395e8ccf6d5162717b2e38b0650ccc84812
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 6e4a776bd9aaf3900d05a6191b8ff4dcbb11fd52
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101091812"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731657"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Azure 监视器支持的指标
 
@@ -156,7 +156,7 @@ Azure 监视器提供多种方式来与指标交互，包括在门户中制作�
 |---|---|---|---|---|---|---|
 |active-timer-count|是|active-timer-count|计数|平均值|当前处于活动状态的计时器的数目|Deployment, AppName, Pod|
 |alloc-rate|是|alloc-rate|字节|平均值|托管堆中分配的字节数|Deployment, AppName, Pod|
-|AppCpuUsage|是|应用程序 CPU 使用率 (预览) |百分比|平均值|应用的最新 CPU 使用率|Deployment, AppName, Pod|
+|AppCpuUsage|是|应用 CPU 使用情况 |百分比|平均值|应用的最新 CPU 使用率|Deployment, AppName, Pod|
 |assembly-count|是|assembly-count|计数|平均值|加载的程序集的数目|Deployment, AppName, Pod|
 |cpu-usage|是|cpu-usage|百分比|平均值|进程使用 CPU 的时间百分比|Deployment, AppName, Pod|
 |current-requests|是|current-requests|计数|平均值|进程生存期内正在处理的请求总数|Deployment, AppName, Pod|
@@ -619,7 +619,7 @@ Azure 监视器提供多种方式来与指标交互，包括在门户中制作�
 
 |指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
-|ByteHitRatio|是|字节命中率|百分比|平均值|这是从缓存中提供的总字节数与总响应字节数之比|终结点|
+|ByteHitRatio|是|字节命中率|百分比|平均值|这是从缓存中提供的总字节数与总响应字节数之比|端点|
 |OriginHealthPercentage|是|原始运行状况百分比|百分比|平均值|成功的运行状况探测从 AFDX 到后端的百分比。|原点、OriginPool|
 |OriginLatency|是|源延迟|毫秒|平均值|从 AFDX 边缘向后端发送请求到后一条时间，直到 AFDX 从后端收到最后一个响应字节时得出的时间。|原点、Endpoint|
 |OriginRequestCount|是|源请求计数|计数|总计|从 AFDX 发送到源的请求数。|HttpStatus、HttpStatusGroup、源、终结点|
@@ -2167,9 +2167,9 @@ Azure 监视器提供多种方式来与指标交互，包括在门户中制作�
 
 |指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
-|QueryVolume|是|查询量|计数|总计|为 DNS 区域提供服务的查询数|无维度|
+|QueryVolume|否|查询量|计数|总计|为 DNS 区域提供服务的查询数|无维度|
 |RecordSetCapacityUtilization|否|记录集容量使用率|百分比|最大值|DNS 区域利用的记录集容量的百分比|无维度|
-|RecordSetCount|是|记录集计数|计数|最大值|DNS 区域中的记录集数|无维度|
+|RecordSetCount|否|记录集计数|计数|最大值|DNS 区域中的记录集数|无维度|
 
 
 ## <a name="microsoftnetworkexpressroutecircuits"></a>Microsoft.Network/expressRouteCircuits
@@ -2799,7 +2799,7 @@ Azure 监视器提供多种方式来与指标交互，包括在门户中制作�
 |SuccessE2ELatency|是|成功 E2E 延迟|毫秒|平均值|向存储服务或指定的 API 操作发出的成功请求的平均端到端延迟（以毫秒为单位）。 此值包括在 Azure 存储中读取请求、发送响应和接收响应确认所需的处理时间。|GeoType, ApiName, Authentication|
 |SuccessServerLatency|是|成功服务器延迟|毫秒|平均值|Azure 存储处理成功请求所用的平均时间。 此值不包括 SuccessE2ELatency 中指定的网络延迟。|GeoType, ApiName, Authentication|
 |事务|是|事务|计数|总计|向存储服务或指定的 API 操作发出的请求数。 此数值包括成功和失败的请求数，以及引发错误的请求数。 针对不同类型的响应数使用 ResponseType 维度。|ResponseType, GeoType, ApiName, Authentication|
-|UsedCapacity|否|已用容量|字节|平均值|存储帐户使用的存储量。 对于标准存储帐户，该指标是 Blob、表、文件和队列使用的容量总和。 对于高级存储帐户和 Blob 存储帐户，它与 BlobCapacity 或 FileCapacity 相同。|无维度|
+|UsedCapacity|是|已用容量|字节|平均值|存储帐户使用的存储量。 对于标准存储帐户，该指标是 Blob、表、文件和队列使用的容量总和。 对于高级存储帐户和 Blob 存储帐户，它与 BlobCapacity 或 FileCapacity 相同。|无维度|
 
 
 ## <a name="microsoftstoragestorageaccountsblobservices"></a>Microsoft.Storage/storageAccounts/blobServices
@@ -3137,11 +3137,11 @@ Azure 监视器提供多种方式来与指标交互，包括在门户中制作�
 |AverageResponseTime|是|平均响应时间（已弃用）|秒|平均值|应用处理请求的平均时间（以秒为单位）。|实例|
 |BytesReceived|是|数据输入|字节|总计|应用消耗的传入带宽量，以 MiB 为单位。|实例|
 |BytesSent|是|数据输出|字节|总计|应用消耗的传出带宽量，以 MiB 为单位。|实例|
-|CpuTime|是|CPU 时间|秒|总计|应用消耗的 CPU 量，以秒为单位。 有关此指标的详细信息， 请参阅 https://docs.microsoft.com/azure/app-service/web-sites-monitor#cpu-time-vs-cpu-percentage (cpu 时间与 cpu 百分比) 。|实例|
+|CpuTime|是|CPU 时间|秒|总计|应用消耗的 CPU 量，以秒为单位。 有关此指标的详细信息， 请参阅 https://docs.microsoft.com/azure/app-service/web-sites-monitor#cpu-time-vs-cpu-percentage (cpu 时间与 cpu 百分比) 。 不适用于 Azure Functions。|实例|
 |CurrentAssemblies|是|当前程序集|计数|平均值|此应用程序中的所有 AppDomain 中加载的程序集的当前数量。|实例|
 |FileSystemUsage|是|文件系统使用情况|字节|平均值|应用消耗的文件系统配额的百分比。|无维度|
-|FunctionExecutionCount|是|函数执行计数|计数|总计|函数执行计数|实例|
-|FunctionExecutionUnits|是|函数执行单位数|计数|总计|函数执行单位数|实例|
+|FunctionExecutionCount|是|函数执行计数|计数|总计|函数执行计数。 仅适用于 Azure Functions。|实例|
+|FunctionExecutionUnits|是|函数执行单位数|计数|总计|函数执行单位。 仅适用于 Azure Functions。|实例|
 |Gen0Collections|是|第 0 代垃圾回收|计数|总计|自应用进程启动以来对第 0 代对象进行垃圾回收的次数。 较高代系的垃圾回收包括所有较低代系的垃圾回收。|实例|
 |Gen1Collections|是|第 1 代垃圾回收|计数|总计|自应用进程启动以来对第 1 代对象进行垃圾回收的次数。 较高代系的垃圾回收包括所有较低代系的垃圾回收。|实例|
 |Gen2Collections|是|第 2 代垃圾回收|计数|总计|自应用进程启动以来对第 2 代对象进行垃圾回收的次数。|实例|

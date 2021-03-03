@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: fb1ec55bc68ccc323f8dee90982a9169e3085219
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.openlocfilehash: e386db1ee2042d75a31d4a9de2a5174e904c6b5c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98567638"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101732966"
 ---
 # <a name="create-an-azure-vmware-solution-avs-assessment"></a> (AVS) 评估创建 Azure VMware 解决方案
 
@@ -19,7 +19,7 @@ ms.locfileid: "98567638"
 
 [Azure Migrate](migrate-services-overview.md) 可帮助你迁移到 Azure。 Azure Migrate 提供了一个中心，用于跟踪 Azure 的本地基础结构、应用程序和数据的发现、评估以及迁移。 该中心提供用于评估和迁移的 Azure Migrate 工具，以及第三方独立软件供应商 (ISV) 产品。
 
-## <a name="before-you-start"></a>开始之前
+## <a name="before-you-start"></a>准备工作
 
 - 请确保已 [创建](./create-manage-projects.md) Azure Migrate 项目。
 - 如果已创建项目，请确保已 [添加](how-to-assess.md) Azure Migrate： Server 评估工具。
@@ -37,7 +37,7 @@ ms.locfileid: "98567638"
 **Azure VMware 解决方案 (AVS)** | 将本地服务器迁移到 [Azure VMware 解决方案 (AVS)](../azure-vmware/introduction.md) 的评估。 <br/><br/> 可使用此评估类型评估要迁移到 Azure VMware 解决方案 (AVS) 的本地 [VMware VM](how-to-set-up-appliance-vmware.md)。[了解详细信息](concepts-azure-vmware-solution-assessment-calculation.md)
 
 > [!NOTE]
-> Azure VMware 解决方案 (AVS) 评估目前处于预览阶段，只能为 VMware Vm 创建。
+> 只能为 VMware Vm 创建 Azure VMware 解决方案 (AVS) 评估。
 
 
 可以使用两种类型的大小调整条件来创建 Azure VMware 解决方案 (AVS) 评估：
@@ -50,37 +50,70 @@ ms.locfileid: "98567638"
 
 ## <a name="run-an-azure-vmware-solution-avs-assessment"></a> (AVS) 评估中运行 Azure VMware 解决方案
 
-运行 Azure VMware 解决方案 (AVS) 评估，如下所示：
+1. 在“服务器”页 >“Windows 和 Linux 服务器”中，单击“评估和迁移服务器”  。
 
-1. 查看有关创建评估的[最佳做法](best-practices-assessment.md)。
+   ![“评估和迁移服务器”按钮的位置](./media/tutorial-assess-vmware-azure-vmware-solution/assess.png)
 
-2. 在“服务器”选项卡上的“Azure Migrate: 服务器评估”磁贴中，单击“评估”。
+1. 在 **Azure Migrate:** 服务器评估”中，单击“评估”。
 
-    ![屏幕截图显示在 "评估工具" 下选择了评估的 Azure Migrate 服务器。](./media/how-to-create-assessment/assess.png)
+1. 在 "**评估服务器**  >  **评估类型**" 中，选择 " **Azure VMware 解决方案 (AVS)**。
 
-3. 在 " **评估服务器**" 中，选择 "Azure VMware 解决方案 (AVS) " 评估类型，并选择 "发现源"。
+1. 在“发现源”中：
 
-    :::image type="content" source="./media/how-to-create-avs-assessment/assess-servers-avs.png" alt-text="添加评估基础知识":::
+    - 如果使用设备发现了计算机，请选择“从 Azure Migrate 设备中发现的计算机”。
+    - 如果使用导入的 CSV 文件发现了计算机，请选择“导入的计算机”。 
+    
+1. 单击“编辑”查看评估属性。
 
-4. 单击 " **编辑** " 以查看评估属性。
-
-    :::image type="content" source="./media/tutorial-assess-vmware-azure-vmware-solution/assess-servers.png" alt-text="用于查看评估属性的 &quot;编辑&quot; 按钮的位置":::
-
-1. 在 "**选择要评估**  >  **评估名称** 的计算机" > 指定评估的名称。 
+    :::image type="content" source="./media/tutorial-assess-vmware-azure-vmware-solution/assess-servers.png" alt-text="用于选择评估设置的页面":::
  
-1. 在 " **选择或创建组** " > 选择 " **新建** "，然后指定组名称。 组将要评估的一个或多个 VM 集合到一起。
+
+1. 在“评估属性” > “目标属性”中 ：
+
+    - 在“目标位置”中，选择要迁移到的 Azure 区域。
+       - 大小和成本建议基于你指定的位置。
+   - “存储类型”默认为“vSAN” 。 这是用于 AVS 私有云的默认存储类型。
+   - 预留实例当前不支持 AVS 节点。
+1. 在“VM 大小”中：
+    - “节点类型”默认为“AV36” 。 Azure Migrate 会建议将 VM 迁移到 AVS 时所需的节点。
+    - 在“FTT 设置，RAID 级别”中，选择“允许的故障数”和“RAID”的组合。  选定的 FTT 选项，与本地 VM 磁盘要求共同决定 AVS 中所需的总 vSAN 存储。
+    - 在“CPU 超额订阅”中，指定与 AVS 节点中一个物理内核关联的虚拟核心的比率。 超过 4:1 的超额订阅可能会导致性能降低，但可应用于 Web 服务器类型的工作负载。
+    - 在 " **内存过载**" 中，指定群集上的提交内存的比率。 值为1表示100% 的内存使用情况，0.5 例如50%，2则使用可用内存的200%。 只能将介于0.5 到10之间的值添加到一个小数位数。
+    - 在 " **重复重复和压缩因子**" 中，为工作负荷指定预期的重复重复和压缩系数。 可以从本地 vSAN 或存储配置获取实际值，这可能因工作负荷而异。 值为3表示只使用300GB 磁盘的3倍。 如果值为1，则表示不重复或压缩。 只能将介于1到10之间的值添加到一个小数位。
+1. 在“节点大小”中： 
+    - 在“大小调整条件”中，选择进行评估时是基于静态元数据，还是以基于性能的数据为基础。 如果使用性能数据：
+        - 在“性能历史记录”中，指示要用于评估的数据持续时间
+        - 在“百分位使用率”中，指定要用于性能示例的百分位数值。 
+    - 在“舒适因子”中，指明要在评估过程中使用的缓冲区。 此帐户用于解决季节性使用情况、短期性能历史记录，以及未来使用量可能会增加等问题。 例如，如果使用舒适因子 2：
+    
+        **组件** | **有效利用率** | **添加舒适因子 (2.0)**
+        --- | --- | ---
+        核心数 | 2  | 4
+        内存 | 8 GB | 16 GB  
+
+1. 在“定价”中：
+    - 在“产品/服务”中，会显示已注册的 [Azure 产品/服务](https://azure.microsoft.com/support/legal/offer-details/)，“服务器评估”会估计该产品/服务的费用。
+    - 在“货币”中，为帐户选择计费货币。
+    - 在“折扣 (%)”中，添加基于 Azure 产品/服务获得的任何特定于订阅的折扣。 默认设置是 0%。
+
+1. 如有更改，请单击“保存”。
+
+    :::image type="content" source="./media/tutorial-assess-vmware-azure-vmware-solution/avs-view-all.png" alt-text="评估属性":::
+
+1. 在“评估服务器”中，单击“下一个” 。
+
+1. 在“选择要评估的计算机” > “评估名称”中，指定评估的名称 。 
+ 
+1. 在“选择或创建组”中，选择“新建”并指定组名称 。 
     
     :::image type="content" source="./media/tutorial-assess-vmware-azure-vmware-solution/assess-group.png" alt-text="将 VM 添加到组":::
+ 
+1. 选择设备，然后选择要添加到组的 VM。 然后单击“下一步”。
 
-1. 在“将计算机添加到组”中，选择要添加到该组的 VM。
+1. 在“审阅 + 创建评估”中，查看评估详细信息，然后单击“创建评估”以创建组并运行评估 。
 
-1. 单击“下一步”以转到“查看 + 创建评估”以查看评估详细信息 。
-
-1. 单击“创建评估”以创建该组，并运行评估。
-
-1. 创建评估后，在“服务器” > “Azure Migrate: 服务器评估” > “评估”中查看它。
-
-1. 单击“导出评估”，将评估下载为 Excel 文件。
+    > [!NOTE]
+    > 对于基于性能的评估，建议在开始发现后至少等待一天，然后再创建评估。 这为收集具有较高置信度的性能数据提供了时间。 理想情况下，在开始发现后，等待指定的性能持续时间（日/周/月）进行高置信度评级。
 
 
 ## <a name="review-an-azure-vmware-solution-avs-assessment"></a>查看 Azure VMware 解决方案 (AVS) 评估
@@ -91,7 +124,6 @@ Azure VMware 解决方案 (AVS) 评估介绍：
 - **AVS 节点数**：运行 vm 所需的每个 avs 节点数估算。
 - **跨 AVS 节点的使用率**：在所有节点上预计的 CPU、内存和存储利用率。
     - 利用率包括以下群集管理开销中的前期分解，如 vCenter Server、NSX Manager (大型) 、NSX 边缘，如果部署了 HCX，则 HCX Manager 和 IX 设备使用 ~ 44vCPU (11 CPU) ，在压缩和重复数据删除之前，需要 75GB RAM 和722GB 存储。
-    - 内存、重复项和压缩当前已设置为100% 的内存利用率和1.5 重复项和压缩，这将是以后版本中的用户定义输入，允许用户微调其所需的大小。
 - **每月成本估计**：运行本地 vm 的所有 Azure VMware 解决方案 (AVS) 节点的每月估算成本。
 
 
@@ -119,8 +151,6 @@ Azure VMware 解决方案 (AVS) 评估介绍：
 
 4. 单击 **AVS 就绪** 状态。 可以查看 VM 就绪性详细信息，并深入查看 VM 详细信息，包括计算、存储和网络设置。
 
-
-
 ### <a name="review-cost-details"></a>查看成本详细信息
 
 此视图显示在 Azure VMware 解决方案 (AVS) 中运行 Vm 的预计成本。
@@ -129,7 +159,7 @@ Azure VMware 解决方案 (AVS) 评估介绍：
 
     - 成本估算基于所有 Vm 的资源需求所需的 AVS 节点数。
     - 由于 Azure VMware 解决方案的定价 (AVS) 按节点进行，因此总成本不会产生计算成本和存储成本分布。
-    - 估算成本适用于在 AVS 上运行的本地 VM。 Azure Migrate 服务器评估不考虑 PaaS 或 SaaS 成本。
+    - 估算成本适用于在 AVS 上运行的本地 VM。 AVS 评估不会考虑 PaaS 或 SaaS 成本。
     
 2. 可以查看每月存储估算成本。 此视图显示评估的组的聚合存储成本，按不同类型的存储磁盘划分。
 

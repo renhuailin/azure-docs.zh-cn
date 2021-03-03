@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/31/2021
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: d4ead88fb34d6475dae66d9708d7203eb94eaef1
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 4e711eb70c1fa099dd67b1ec23a0e8014ee11e47
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100608076"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731385"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>使用 Azure Monitor 日志管理使用情况和成本    
 
@@ -268,7 +268,7 @@ Usage
 - 警报规则名称：达到每日数据限制
 - 严重性：警告（严重性 1）
 
-定义警报并达到限制后，警报将会触发，并执行操作组中定义的响应。 该警报可通过电子邮件和短信通知团队，或者使用 Webhook、自动化 Runbook 或[与外部 ITSM 解决方案的集成](../platform/itsmc-definition.md#create-itsm-work-items-from-azure-alerts)来自动执行操作。 
+定义警报并达到限制后，警报将会触发，并执行操作组中定义的响应。 该警报可通过电子邮件和短信通知团队，或者使用 Webhook、自动化 Runbook 或[与外部 ITSM 解决方案的集成](../alerts/itsmc-definition.md#create-itsm-work-items-from-azure-alerts)来自动执行操作。 
 
 ## <a name="troubleshooting-why-usage-is-higher-than-expected"></a>排查使用量超出预期的原因
 
@@ -488,8 +488,8 @@ find where TimeGenerated > ago(24h) project _ResourceId, _BilledSize, _IsBillabl
 | AzureDiagnostics           | 更改[资源日志集合](../essentials/diagnostic-settings.md#create-in-azure-portal)，以便： <br> - 减少向 Log Analytics 发送日志的资源数目 <br> - 仅收集必需的日志 |
 | 不需解决方案的计算机中的解决方案数据 | 使用[解决方案目标](../insights/solution-targeting.md)，只从必需的计算机组收集数据。 |
 | Application Insights | 查看选项 [https://docs.microsoft.com/azure/azure-monitor/app/pricing#managing-your-data-volume](managing Application Insights data volume) |
-| [SQL Analytics](https://docs.microsoft.com/azure/azure-monitor/insights/azure-sql) | 使用 [AzSqlServerAudit](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlserveraudit) 优化审核设置。 |
-| Azure Sentinel | 查看最近启用为其他数据卷的源的所有 [Sentinel 数据源](https://docs.microsoft.com/azure/sentinel/connect-data-sources) 。 |
+| [SQL Analytics](../insights/azure-sql.md) | 使用 [AzSqlServerAudit](/powershell/module/az.sql/set-azsqlserveraudit) 优化审核设置。 |
+| Azure Sentinel | 查看最近启用为其他数据卷的源的所有 [Sentinel 数据源](../../sentinel/connect-data-sources.md) 。 |
 
 ### <a name="getting-nodes-as-billed-in-the-per-node-pricing-tier"></a>获取按节点定价层中的计费节点
 

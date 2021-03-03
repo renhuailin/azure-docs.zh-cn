@@ -1,19 +1,19 @@
 ---
 title: 监视已部署的 Azure Kubernetes 服务 (AKS) 群集 | Microsoft Docs
-description: 了解如何使用用于容器的 Azure Monitor 启用对订阅中已部署的 Azure Kubernetes 服务 (AKS) 群集的监视。
+description: 了解如何使用已部署在订阅中的容器见解来启用对 Azure Kubernetes 服务 (AKS) 群集的监视。
 ms.topic: conceptual
 ms.date: 09/12/2019
 ms.custom: devx-track-terraform, devx-track-azurecli
-ms.openlocfilehash: 547c22e4d82aa728009a2fdb42f2c3b481b7a625
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: e84e1c4ad3aa3950a433218255ccac3d91435231
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100608723"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717666"
 ---
 # <a name="enable-monitoring-of-azure-kubernetes-service-aks-cluster-already-deployed"></a>启用对已部署的 Azure Kubernetes 服务 (AKS) 群集的监视
 
-本文介绍如何设置用于容器的 Azure Monitor，以监视订阅中已部署的 [Azure Kubernetes 服务](../../aks/index.yml)上托管的托管 Kubernetes 群集。
+本文介绍如何设置容器见解，以监视托管在 [Azure Kubernetes Service](../../aks/index.yml) 上并且已在订阅中部署的托管 Kubernetes 群集。
 
 可以使用下述支持的方法之一，以便启用对已部署的 AKS 群集的监视：
 
@@ -113,13 +113,13 @@ provisioningState       : Succeeded
 
 4. 从未监视的群集列表中找到容器，然后单击“启用”。
 
-5. 在“载入到用于容器的 Azure Monitor”页上，如果现有 Log Analytics 工作区与群集在同一订阅中，请从下拉列表中选择该工作区  。
+5. 在 " **载入到容器 insights** " 页上，如果在与群集相同的订阅中有现有 Log Analytics 工作区，请从下拉列表中选择它。
     列表预先选择了 AKS 容器在订阅中部署到的默认工作区和位置。
 
     ![启用 AKS 容器见解监视](./media/container-insights-onboard/kubernetes-onboard-brownfield-01.png)
 
     >[!NOTE]
-    >如果想要创建新的 Log Analytics 工作区用于存储来自群集的监视数据，请按照[创建 Log Analytics 工作区](../learn/quick-create-workspace.md)中的说明进行操作。 确保在部署 AKS 容器的同一订阅中创建工作区。
+    >如果想要创建新的 Log Analytics 工作区用于存储来自群集的监视数据，请按照[创建 Log Analytics 工作区](../logs/quick-create-workspace.md)中的说明进行操作。 确保在部署 AKS 容器的同一订阅中创建工作区。
 
 启用监视后，可能需要约 15 分钟才能查看群集的运行状况指标。
 
@@ -137,13 +137,13 @@ provisioningState       : Succeeded
 
 5. 在“Kubernetes 服务概述”页上，选择“监视 - 见解”。
 
-6. 在“载入到用于容器的 Azure Monitor”页上，如果现有 Log Analytics 工作区与群集在同一订阅中，请从下拉列表中选择该工作区  。
+6. 在 " **载入到容器 insights** " 页上，如果在与群集相同的订阅中有现有 Log Analytics 工作区，请在下拉列表中选择它。
     列表预先选择了 AKS 容器在订阅中部署到的默认工作区和位置。
 
     ![启用 AKS 容器运行状况监视](./media/container-insights-onboard/kubernetes-onboard-brownfield-02.png)
 
     >[!NOTE]
-    >如果想要创建新的 Log Analytics 工作区用于存储来自群集的监视数据，请按照[创建 Log Analytics 工作区](../learn/quick-create-workspace.md)中的说明进行操作。 确保在部署 AKS 容器的同一订阅中创建工作区。
+    >如果想要创建新的 Log Analytics 工作区用于存储来自群集的监视数据，请按照[创建 Log Analytics 工作区](../logs/quick-create-workspace.md)中的说明进行操作。 确保在部署 AKS 容器的同一订阅中创建工作区。
 
 启用监视后，可能需要约 15 分钟才能查看群集的运行数据。
 
@@ -158,7 +158,7 @@ provisioningState       : Succeeded
 >模板需要部署在群集所在的资源组中。
 >
 
-必须创建 Log Analytics 工作区，然后才能使用 Azure PowerShell 或 CLI 来启用监视。 若要创建工作区，可通过 [Azure 资源管理器](../samples/resource-manager-workspace.md)、[PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json) 或在 [Azure 门户](../learn/quick-create-workspace.md)中进行设置。
+必须创建 Log Analytics 工作区，然后才能使用 Azure PowerShell 或 CLI 来启用监视。 若要创建工作区，可通过 [Azure 资源管理器](../logs/resource-manager-workspace.md)、[PowerShell](../logs/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json) 或在 [Azure 门户](../logs/quick-create-workspace.md)中进行设置。
 
 如果不熟悉使用模板部署资源的概念，请参阅：
 
@@ -380,4 +380,4 @@ az aks show -g <resourceGroupofAKSCluster> -n <nameofAksCluster>
 
 * 如果在尝试载入解决方案时遇到问题，请查看[故障排除指南](container-insights-troubleshoot.md)
 
-* 启用监视以收集 AKS 群集及其上运行的工作负荷的运行状况和资源利用率，了解[如何使用](container-insights-analyze.md)用于容器的 Azure Monitor。
+* 启用监视功能以收集 AKS 群集的运行状况和资源利用率，并了解 [如何使用](container-insights-analyze.md) 容器见解。

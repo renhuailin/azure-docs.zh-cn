@@ -10,12 +10,12 @@ ms.date: 11/19/2020
 ms.author: martinle
 ms.reviewer: nirav
 zone_pivot_groups: programming-languages-spark-all-minus-sql
-ms.openlocfilehash: 8c2e2327667ccb9284a22e65418a80f3066d22df
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: a588b37b270917524453419619fdad6f88f92338
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96510788"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101693571"
 ---
 # <a name="secure-credentials-with-linked-services-using-the-tokenlibrary"></a>通过使用 TokenLibrary 的链接服务保护凭据
 
@@ -275,7 +275,7 @@ Console.WriteLine(connectionString);
 
 getConnectionStringAsMap 是 Scala 和 Python 中提供的 helper 函数，用于分析连接字符串中 _key=value_ 对中的特定值，例如
 
-_`DefaultEndpointsProtocol=https;AccountName=\<ACCOUNT NAME>;AccountKey=\<ACCOUNT KEY>`_
+_`DefaultEndpointsProtocol=https;AccountName=<ACCOUNT NAME>;AccountKey=<ACCOUNT KEY>`_
 
 使用 getConnectionStringAsMap 函数，传递密钥以返回值。  在上面的连接字符串示例中， 
 

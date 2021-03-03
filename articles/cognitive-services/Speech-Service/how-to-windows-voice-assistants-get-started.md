@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: travisw
-ms.openlocfilehash: 77d756bc0c7bbdfa38bb1262638ef85b051fc234
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: b50b98095cdfe0e6ec19c89b57887ebc4a0f6317
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95026482"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713042"
 ---
 # <a name="getting-started-with-voice-assistants-on-windows"></a>Windows 上的语音助手入门
 
@@ -34,7 +34,7 @@ ms.locfileid: "95026482"
 
 Windows 上完全自定义的语音代理所需的某些资源将需要 Microsoft 提供的资源。 [UWP 语音助手示例](windows-voice-assistants-faq.md#the-uwp-voice-assistant-sample)为初始开发和测试提供了这些资源的示例版本，因此不需要此部分进行初始开发。
 
-- **关键字模型：** 语音激活需要 Microsoft 的关键字模型，格式为 bin 文件。 UWP 语音助手示例中提供的 bin 文件的关键字为 "Contoso"。
+- **关键字模型：** 语音激活需要 Microsoft 的关键字模型，格式为 bin 文件。 UWP 语音助手示例中提供的 bin 文件是针对关键字 *Contoso* 的培训。
 - **受限访问功能令牌：** 由于 ConversationalAgent Api 提供对麦克风音频的访问权限，因此它们受有限访问功能的限制。 若要使用有限访问功能，你将需要从 Microsoft 获取连接到应用程序的包标识的有限访问权限功能标记。
 
 ## <a name="establish-a-dialog-service"></a>建立对话服务

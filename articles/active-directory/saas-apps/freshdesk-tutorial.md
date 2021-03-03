@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/20/2021
 ms.author: jeedes
-ms.openlocfilehash: d14f69865c254becc8295034b6311b1641dfd498
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: e1394eafdfd733b5d69a4d4abbb6b218b4c8c10d
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98623716"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101651898"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-freshdesk"></a>教程：Azure Active Directory 与 FreshDesk 集成
 
@@ -178,8 +178,8 @@ ms.locfileid: "98623716"
 
 * 直接转到 FreshDesk 登录 URL，并从此处启动登录流。
 
-* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 FreshDesk 磁贴时，应当会自动登录到已为其设置了 SSO 的 FreshDesk。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 FreshDesk 磁贴时，应当会自动登录到已为其设置了 SSO 的 FreshDesk。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-配置 FreshDesk 后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+配置 FreshDesk 后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。

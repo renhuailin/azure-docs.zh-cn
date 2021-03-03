@@ -14,12 +14,12 @@ ms.subservice: pim
 ms.date: 08/03/2020
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2ef27475509c59b3c0caf194fd85530f3fdd6c7c
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 0c9e2580d2a88fbbab755f0c3df2f923bdc45548
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92367833"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101688342"
 ---
 # <a name="bring-privileged-access-groups-preview-into-privileged-identity-management"></a>将特权访问组（预览）引入 Privileged Identity Management
 
@@ -44,6 +44,12 @@ ms.locfileid: "92367833"
 
 > [!NOTE]
 > 一旦某个特权访问组受到管理，就不能将其从管理中删除。 这可防止其他资源管理员删除 Privileged Identity Management 设置。
+>
+
+> [!IMPORTANT]
+> 如果从 Azure Active Directory 删除了特权访问组，则可能需要长达24小时的时间，才能从特权访问组 (预览版) 边栏选项卡中删除该组。 
+>
+
 
 ## <a name="next-steps"></a>后续步骤
 

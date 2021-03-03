@@ -6,21 +6,21 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2019
-ms.openlocfilehash: 33f7ed21ee20f78bae6803fab10fbb151995345f
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 7d5fcd4da5ab8b8516794bf99b8aab69ada24644
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100607873"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708112"
 ---
 # <a name="monitoring-azure-resources-with-azure-monitor"></a>使用 Azure Monitor 监视 Azure 资源
-如果你有关键应用程序和业务流程依赖于 Azure 资源，则需要监视这些资源的可用性、性能和操作。 本文描述了 Azure 资源生成的监视数据，介绍如何使用 Azure Monitor 的功能对此数据分析和发出警报。
+当你的关键应用程序和业务流程依赖于 Azure 资源时，你需要监视这些资源的可用性、性能和操作。 本文描述了 Azure 资源生成的监视数据，介绍如何使用 Azure Monitor 的功能对此数据分析和发出警报。
 
 > [!IMPORTANT]
 > 本文适用于 Azure 中使用 Azure Monitor 的所有服务。 计算资源（包括虚拟机和应用服务）如此处所述会生成相同的监视数据，但也有可能生成日志和指标的来宾操作系统。 要详细了解如何收集和分析此数据，请参阅这些服务的监视文档。
 
-## <a name="what-is-azure-monitor"></a>什么是 Azure Monitor？
-Azure Monitor 是 Azure 中的一项完整堆栈监视服务，它提供了一组完整的功能来监视 Azure 资源以及其他云中和本地的资源。 [Azure Monitor 数据平台](../platform/data-platform.md)将数据收集到[日志](../platform/data-platform-logs.md)和[指标](../essentials/data-platform-metrics.md)中，在这两个位置可以使用一组完整的监视工具对数据进行分析。 请参阅 [Azure Monitor 监视的内容](../monitor-reference.md)，查看 Azure Monitor 可监视的应用程序和服务的完整列表。
+## <a name="what-is-azure-monitor"></a>说明是 Azure Monitor？
+Azure Monitor 是 Azure 中的一项完整堆栈监视服务，它提供了一组完整的功能来监视 Azure 资源以及其他云中和本地的资源。 [Azure Monitor 数据平台](../data-platform.md)将数据收集到[日志](../logs/data-platform-logs.md)和[指标](../essentials/data-platform-metrics.md)中，在这两个位置可以使用一组完整的监视工具对数据进行分析。 请参阅 [Azure Monitor 监视的内容](../monitor-reference.md)，查看 Azure Monitor 可监视的应用程序和服务的完整列表。
 
 创建 Azure 资源后，Azure Monitor 会立即启用并开始收集指标和活动日志，你可在 [Azure 门户中查看和分析](#monitoring-in-the-azure-portal)这些内容。 通过某些配置，你可收集其他监视数据和启用其他功能。 要详细了解任何配置要求，请参阅下面的[监视数据](#monitoring-data)。
 
@@ -46,15 +46,15 @@ Azure Monitor 是 Azure 中的一项完整堆栈监视服务，它提供了一�
 - 通过 API 访问指标。
 
 ## <a name="monitoring-data"></a>监视数据
-Azure 中的资源会生成[日志](../platform/data-platform-logs.md)和[指标](../essentials/data-platform-metrics.md)，如下图所示。 请参阅每项 Azure 服务的相关文档，了解它们生成的特定数据以及提供的任何其他解决方案或见解。
+Azure 中的资源会生成[日志](../logs/data-platform-logs.md)和[指标](../essentials/data-platform-metrics.md)，如下图所示。 请参阅每项 Azure 服务的相关文档，了解它们生成的特定数据以及提供的任何其他解决方案或见解。
 
 ![概述](media/monitor-azure-resource/logs-metrics.png)
 
 
 
 - [平台指标](../essentials/data-platform-metrics.md) - 定期自动收集的数值，描述了资源在特定时间的某个方面。 
-- [资源日志](../platform/platform-logs-overview.md) - 提供在 Azure 资源内（数据平面）执行的操作的见解，例如从 Key Vault 获取机密或向数据库发出请求。 资源日志的内容和结构因 Azure 服务和资源类型而异。
-- [活动日志](../platform/platform-logs-overview.md) - 提供从外部（管理平面）对订阅中的各项 Azure 资源执行操作的见解，例如创建新的资源或启动虚拟机。 该信息显示了对订阅中的资源执行的任何写入操作（PUT、POST、DELETE）的执行内容、执行者和执行时间。
+- [资源日志](./platform-logs-overview.md) - 提供在 Azure 资源内（数据平面）执行的操作的见解，例如从 Key Vault 获取机密或向数据库发出请求。 资源日志的内容和结构因 Azure 服务和资源类型而异。
+- [活动日志](./platform-logs-overview.md) - 提供从外部（管理平面）对订阅中的各项 Azure 资源执行操作的见解，例如创建新的资源或启动虚拟机。 该信息显示了对订阅中的资源执行的任何写入操作（PUT、POST、DELETE）的执行内容、执行者和执行时间。
 
 
 ## <a name="configuration-requirements"></a>配置要求
@@ -63,11 +63,11 @@ Azure 中的资源会生成[日志](../platform/data-platform-logs.md)和[指标
 某些监视数据是自动收集的，但可能需要根据你的要求执行一些配置。 有关每种类型的监视数据的特定信息，请参阅下面的信息。
 
 - [平台指标](../essentials/data-platform-metrics.md) - 平台指标会自动收集到 [Azure Monitor 指标](../essentials/data-platform-metrics.md)中，无需进行任何配置。 可创建诊断设置，将条目发送到 Azure Monitor 日志，或将其转发到 Azure 之外。
-- [资源日志](../platform/platform-logs-overview.md) - 资源日志由 Azure 资源自动生成，但如果没有诊断设置，则不会收集。  可创建诊断设置，将条目发送到 Azure Monitor 日志，或将其转发到 Azure 之外。
-- [活动日志](../platform/platform-logs-overview.md) - 自动收集活动日志，无需任何配置，可在 Azure 门户中查看。 可创建诊断设置，将它们复制到 Azure Monitor 日志，或将其转发到 Azure 之外。
+- [资源日志](./platform-logs-overview.md) - 资源日志由 Azure 资源自动生成，但如果没有诊断设置，则不会收集。  可创建诊断设置，将条目发送到 Azure Monitor 日志，或将其转发到 Azure 之外。
+- [活动日志](./platform-logs-overview.md) - 自动收集活动日志，无需任何配置，可在 Azure 门户中查看。 可创建诊断设置，将它们复制到 Azure Monitor 日志，或将其转发到 Azure 之外。
 
 ### <a name="log-analytics-workspace"></a>Log Analytics 工作区
-要将数据收集到 Azure Monitor 日志中，需要使用 Log Analytics 工作区。 可通过创建新的工作区来快速开始监视服务，但使用从其他服务收集数据的工作区可能会对你有所帮助。 请参阅[在 Azure 门户中创建 Log Analytics 工作区](../learn/quick-create-workspace.md)，详细了解如何创建工作区和[设计 Azure Monitor 日志部署](../platform/design-logs-deployment.md)，来帮助确定满足你要求的最佳工作区设计。 如果你使用组织中现有的工作区，则需要具备[在 Azure Monitor 中管理对日志数据和工作区的访问](../platform/manage-access.md)中所述的相应权限。 
+要将数据收集到 Azure Monitor 日志中，需要使用 Log Analytics 工作区。 可通过创建新的工作区来快速开始监视服务，但使用从其他服务收集数据的工作区可能会对你有所帮助。 请参阅[在 Azure 门户中创建 Log Analytics 工作区](../logs/quick-create-workspace.md)，详细了解如何创建工作区和[设计 Azure Monitor 日志部署](../logs/design-logs-deployment.md)，来帮助确定满足你要求的最佳工作区设计。 如果你使用组织中现有的工作区，则需要具备[在 Azure Monitor 中管理对日志数据和工作区的访问](../logs/manage-access.md)中所述的相应权限。 
 
 
 
@@ -76,11 +76,11 @@ Azure 中的资源会生成[日志](../platform/data-platform-logs.md)和[指标
 ## <a name="diagnostic-settings"></a>诊断设置
 诊断设置会定义特定资源的资源日志和指标应发送到的位置。 可能的目标包括：
 
-- [Log Analytics 工作区](../platform/resource-logs.md#send-to-log-analytics-workspace)，通过它可使用功能强大的日志查询借助 Azure Monitor 收集的其他监视数据来分析数据，还可利用日志警报和可视化效果等其他 Azure Monitor 功能。 
-- [事件中心](../platform/resource-logs.md#send-to-azure-event-hubs)，用于将数据流式传输到外部系统，例如第三方 SIEM 和其他日志分析解决方案。 
-- [Azure 存储帐户](../platform/resource-logs.md#send-to-azure-storage)，适用于审核、静态分析或备份。
+- [Log Analytics 工作区](./resource-logs.md#send-to-log-analytics-workspace)，通过它可使用功能强大的日志查询借助 Azure Monitor 收集的其他监视数据来分析数据，还可利用日志警报和可视化效果等其他 Azure Monitor 功能。 
+- [事件中心](./resource-logs.md#send-to-azure-event-hubs)，用于将数据流式传输到外部系统，例如第三方 SIEM 和其他日志分析解决方案。 
+- [Azure 存储帐户](./resource-logs.md#send-to-azure-storage)，适用于审核、静态分析或备份。
 
-按照[创建诊断设置以收集 Azure 中的平台日志和指标](../essentials/diagnostic-settings.md)中的过程，通过 Azure 门户创建和管理诊断设置。 请参阅[使用资源管理器模板在 Azure 中创建诊断设置](../samples/resource-manager-diagnostic-settings.md)，在模板中定义这些设置，并在创建资源时对其启用全面监视。
+按照[创建诊断设置以收集 Azure 中的平台日志和指标](../essentials/diagnostic-settings.md)中的过程，通过 Azure 门户创建和管理诊断设置。 请参阅[使用资源管理器模板在 Azure 中创建诊断设置](./resource-manager-diagnostic-settings.md)，在模板中定义这些设置，并在创建资源时对其启用全面监视。
 
 
 ## <a name="monitoring-in-the-azure-portal"></a>在 Azure 门户中监视
@@ -100,9 +100,9 @@ Azure 中的资源会生成[日志](../platform/data-platform-logs.md)和[指标
 ![在 Azure 门户中深入分析](media/monitor-azure-resource/insights.png)
 
 ### <a name="metrics"></a>指标
-在 Azure 门户中使用[指标资源管理器](../platform/metrics-getting-started.md)分析指标，该管理器在大多数服务的“指标”菜单项中提供。 借助此工具，可使用单个指标或组合使用多个指标来确定相关性和趋势。 
+在 Azure 门户中使用[指标资源管理器](./metrics-getting-started.md)分析指标，该管理器在大多数服务的“指标”菜单项中提供。 借助此工具，可使用单个指标或组合使用多个指标来确定相关性和趋势。 
 
-- 请参阅 [Azure 指标资源管理器入门](../platform/metrics-getting-started.md)，了解有关使用指标资源管理器的基本信息。
+- 请参阅 [Azure 指标资源管理器入门](./metrics-getting-started.md)，了解有关使用指标资源管理器的基本信息。
 - 请参阅 [Azure 指标资源管理器的高级功能](../essentials/metrics-charts.md)，了解指标资源管理器的高级功能，例如使用多个指标以及应用筛选器和拆分。
 
 ![Azure 门户中的指标资源管理器](media/monitor-azure-resource/metrics.png)
@@ -119,11 +119,11 @@ Azure 中的资源会生成[日志](../platform/data-platform-logs.md)和[指标
 ### <a name="azure-monitor-logs"></a>Azure Monitor 日志
 Azure Monitor 日志整合了来自多项服务和其他数据源的日志和指标，以便使用强大的查询工具进行分析。 如上所述，请创建诊断设置，将平台指标、活动日志和资源日志收集放入 Azure Monitor 中的 Log Analytics 工作区。
 
-可通过 [Log Analytics](../log-query/log-analytics-tutorial.md) 使用[日志查询](../log-query/log-query-overview.md)，这是 Azure Monitor 的一项强大功能，可使用功能完备的查询语言对日志数据进行高级分析。 从 Azure 资源的“监视”菜单中的“日志”打开 Log Analytics，将资源用作[查询范围](../log-query/scope.md#query-scope)来处理日志查询 。 这样可跨多个表仅分析该资源的数据。 使用 Azure Monitor 菜单中的“日志”来访问所有资源的日志。 
+可通过 [Log Analytics](../logs/log-analytics-tutorial.md) 使用[日志查询](../logs/log-query-overview.md)，这是 Azure Monitor 的一项强大功能，可使用功能完备的查询语言对日志数据进行高级分析。 从 Azure 资源的“监视”菜单中的“日志”打开 Log Analytics，将资源用作[查询范围](../logs/scope.md#query-scope)来处理日志查询 。 这样可跨多个表仅分析该资源的数据。 使用 Azure Monitor 菜单中的“日志”来访问所有资源的日志。 
 
-- 请参阅 [Azure Monitor 中的日志查询入门](../log-query/get-started-queries.md)，通过教程了解如何使用编写日志查询时所用的查询语言。
-- 请参阅[在 Azure Monitor 的 Log Analytics 工作区中收集 Azure 资源日志](../platform/resource-logs.md#send-to-log-analytics-workspace)，了解如何在 Azure Monitor 日志中收集资源日志，以及如何在查询中访问这些日志。
-- 请参阅[收集模式](../platform/resource-logs.md#send-to-log-analytics-workspace)，了解 Azure Monitor 日志中构建资源日志数据的方式。
+- 请参阅 [Azure Monitor 中的日志查询入门](../logs/get-started-queries.md)，通过教程了解如何使用编写日志查询时所用的查询语言。
+- 请参阅[在 Azure Monitor 的 Log Analytics 工作区中收集 Azure 资源日志](./resource-logs.md#send-to-log-analytics-workspace)，了解如何在 Azure Monitor 日志中收集资源日志，以及如何在查询中访问这些日志。
+- 请参阅[收集模式](./resource-logs.md#send-to-log-analytics-workspace)，了解 Azure Monitor 日志中构建资源日志数据的方式。
 - 请参阅每项 Azure 服务的相关文档，详细了解 Azure Monitor 日志中的服务表。
 
 ![Azure 门户中的 Log Analytics](media/monitor-azure-resource/logs.png)
@@ -139,11 +139,11 @@ Azure Monitor 日志整合了来自多项服务和其他数据源的日志和指
 ## <a name="monitoring-from-rest-api"></a>通过 REST API 监视
 使用 REST API 将从资源收集到的监视数据加入到自定义应用程序中。
 
-- 请参阅 [Azure Monitor REST API 演练](../platform/rest-api-walkthrough.md)，详细了解如何通过 Azure Monitor REST API 访问指标。
+- 请参阅 [Azure Monitor REST API 演练](./rest-api-walkthrough.md)，详细了解如何通过 Azure Monitor REST API 访问指标。
 - 请参阅 [Azure Log Analytics REST API](https://dev.loganalytics.io/)，了解如何通过 Azure PowerShell 使用日志查询访问 Azure Monitor 日志数据。
 
 ## <a name="alerts"></a>警报
-在监视数据中发现重要情况时，[警报](../platform/alerts-overview.md)会主动通知你并可能采取措施。 请创建一个警报规则，用于定义警报的目标、确定是否创建警报的条件，以及要执行进行响应的任何操作。
+在监视数据中发现重要情况时，[警报](../alerts/alerts-overview.md)会主动通知你并可能采取措施。 请创建一个警报规则，用于定义警报的目标、确定是否创建警报的条件，以及要执行进行响应的任何操作。
 
 不同类型的警报规则使用不同类型的监视数据。
 
@@ -160,4 +160,4 @@ Azure Monitor 日志整合了来自多项服务和其他数据源的日志和指
 
 ## <a name="next-steps"></a>后续步骤
 
-* 请参阅 [Azure 资源日志支持的服务、架构和类别](../platform/resource-logs-schema.md)，了解不同 Azure 服务的资源日志。
+* 请参阅 [Azure 资源日志支持的服务、架构和类别](./resource-logs-schema.md)，了解不同 Azure 服务的资源日志。

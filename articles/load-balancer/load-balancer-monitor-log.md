@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/05/2020
 ms.author: allensu
-ms.openlocfilehash: 7a456057bc088264cefb91be9f3e5069b29474a1
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 36937ace82d2bd8d4317f90a375042de10fe719f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100596806"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101709812"
 ---
 # <a name="azure-monitor-logs-for-azure-standard-load-balancer"></a>Azure 标准负载均衡器的 Azure Monitor 日志
 
@@ -74,7 +74,7 @@ ms.locfileid: "100596806"
 
 ## <a name="view-and-analyze-the-activity-log"></a>查看和分析活动日志
 
-默认生成活动日志。 可以[按照此文中的说明](../azure-monitor/platform/activity-log.md)将活动日志配置为在订阅级别导出。 若要了解这些日志的详细信息，请阅读[查看活动日志以监视对资源的操作](../azure-resource-manager/management/view-activity-logs.md)一文。
+默认生成活动日志。 可以[按照此文中的说明](../azure-monitor/essentials/activity-log.md)将活动日志配置为在订阅级别导出。 若要了解这些日志的详细信息，请阅读[查看活动日志以监视对资源的操作](../azure-resource-manager/management/view-activity-logs.md)一文。
 
 可以使用以下任一方法查看和分析活动日志数据：
 
@@ -113,4 +113,4 @@ Azure 负载均衡器的指标转日志导出功能具有以下限制：
 
 ## <a name="next-steps"></a>后续步骤
 * [查看负载均衡器的可用指标](./load-balancer-standard-diagnostics.md)
-* [按照 Azure Monitor 说明创建并测试查询](../azure-monitor/log-query/log-query-overview.md)
+* [按照 Azure Monitor 说明创建并测试查询](../azure-monitor/logs/log-query-overview.md)

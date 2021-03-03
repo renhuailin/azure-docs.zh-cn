@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 1/21/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 5c216661e45e5ed34a95e8a56002f3ad175b089a
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: 1211cd306f10fb349bd42568697443ff103a171c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100545899"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703077"
 ---
 # <a name="enable-a-managed-identity-for-routing-azure-digital-twins-events-preview-azure-portal"></a>启用托管标识，以将 Azure 数字孪生事件路由 (预览) ： Azure 门户
 
@@ -89,8 +89,7 @@ ms.locfileid: "100545899"
 
 ### <a name="assign-the-role"></a>分配角色
 
->[!NOTE]
-> 此部分必须由具有管理用户对 Azure 资源的用户访问权限的 Azure 用户完成， (包括授予和委派) 的权限。 满足此要求的常见角色包括 " *所有者*"、" *帐户管理员*" 或 " *用户访问管理员* " 和 " *参与者*" 的组合。 有关 Azure 数字孪生角色的权限要求的详细信息，请参阅 [*如何：设置实例和身份验证*](how-to-set-up-instance-portal.md#prerequisites-permission-requirements)。
+[!INCLUDE [digital-twins-permissions-required.md](../../includes/digital-twins-permissions-required.md)]
 
 若要为标识分配角色，请先打开 [Azure 门户](https://portal.azure.com)。
 
@@ -116,7 +115,7 @@ ms.locfileid: "100545899"
 
 输入完详细信息后，请选择 " **保存**"。
 
-## <a name="create-an-endpoint-with-identity-based-authorization"></a>创建具有基于标识的授权的终结点
+## <a name="create-an-endpoint-with-identity-based-authentication"></a>创建具有基于标识的身份验证的终结点
 
 为 Azure 数字孪生实例设置系统管理的标识并向其分配适当的角色 () ，你可以创建能够使用标识进行身份验证的 Azure 数字孪生 [终结点](how-to-manage-routes-portal.md#create-an-endpoint-for-azure-digital-twins) 。 此选项仅适用于事件中心和服务总线类型终结点， (事件网格) 不支持此选项。
 

@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 12/02/2020
-ms.openlocfilehash: a693761bcecab87e343014127ad37077c2569e21
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 7466e143f345ea305c7e9ef118d09fb6f685ac16
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96551633"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694474"
 ---
 # <a name="how-to-create-import-and-export-glossary-terms"></a>如何创建、导入和导出词汇表术语
 
@@ -88,6 +88,10 @@ Azure 监控范围数据目录提供了一个模板 .csv 文件，用于将术�
 1. 如果位于词汇表中，则默认情况下，" **导出** " 按钮处于禁用状态。 选择要导出的字词后，如果所选字词属于相同模板，将启用 " **导出** " 按钮。
 
 2. 选择 " **导出** " 下载所选字词。
+
+ > [!Important]
+   > 如果层次结构中的字词属于不同的术语模板，则需要将它们拆分为不同的。要导入的 CSV 文件。 此外，当前不支持使用导入过程更新术语的父项。
+
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/22/2019
-ms.openlocfilehash: 0fc57b87e5ec1d7f47d9f9d74698af56172246ec
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: ab7d4bf0b8d8ca32dafe6f19b46047eca89a7734
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100608208"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733969"
 ---
 # <a name="oms-portal-moving-to-azure"></a>OMS 门户即将转移到 Azure
 
@@ -60,11 +60,11 @@ Azure 门户是所有 Azure 服务的中心，提供丰富的管理体验和功�
 |:---|:---|
 | ReadOnly | Log Analytics 读者 |
 | 参与者 | Log Analytics 参与者 |
-| 管理员 | 所有者 | 
+| 管理员 | “所有者” | 
  
 
 ## <a name="new-workspaces"></a>新工作区
-不再能够使用 OMS 门户创建新工作区。 请遵照[在 Azure 门户中创建 Log Analytics 工作区](../learn/quick-create-workspace.md)中的指导，在 Azure 门户中创建新工作区。
+不再能够使用 OMS 门户创建新工作区。 请遵照[在 Azure 门户中创建 Log Analytics 工作区](./quick-create-workspace.md)中的指导，在 Azure 门户中创建新工作区。
 
 ## <a name="changes-to-alerts"></a>警报更改
 
@@ -73,9 +73,9 @@ Azure 门户是所有 Azure 服务的中心，提供丰富的管理体验和功�
 警报已[扩展到 Azure 门户](../alerts/alerts-unified-log.md) 现有警报将继续列在 OMS 门户中，但你只能在 Azure 门户中管理它们。 如果使用 Log Analytics 警报 REST API 或 Log Analytics 警报资源模板以编程方式访问警报，需要在 API 调用、Azure 资源管理器模板和 PowerShell 命令中使用操作组而非操作。
 
 ### <a name="alert-management-solution"></a>警报管理解决方案
-作为上次公告中的一个更改，[警报管理解决方案](../platform/alert-management-solution.md)在 Azure 门户中将继续可用并完全受支持。 可以继续从 Azure 市场安装该解决方案。
+作为上次公告中的一个更改，[警报管理解决方案](../insights/alert-management-solution.md)在 Azure 门户中将继续可用并完全受支持。 可以继续从 Azure 市场安装该解决方案。
 
-尽管警报管理解决方案继续可用，但我们建议你使用 [Azure Monitor 的统一警报界面](../platform/alerts-overview.md)来可视化和管理 Azure 中的所有警报。 此新体验原生聚合来自 Azure 中多个源的警报，包括来自 Log Analytics 的日志警报。 如果你使用 Azure Monitor 的统一警报界面，则只有在将来自 System Center Operation Manager 的警报集成到 Azure 时才需要警报管理解决方案。 在 Azure Monitor 的统一警报界面中，可以查看警报的分布情况，通过智能组利用相关警报的自动分组，并在应用丰富的筛选器时查看多个订阅的警报。 警报管理方面将来的改进将主要来自此新体验。 
+尽管警报管理解决方案继续可用，但我们建议你使用 [Azure Monitor 的统一警报界面](../alerts/alerts-overview.md)来可视化和管理 Azure 中的所有警报。 此新体验原生聚合来自 Azure 中多个源的警报，包括来自 Log Analytics 的日志警报。 如果你使用 Azure Monitor 的统一警报界面，则只有在将来自 System Center Operation Manager 的警报集成到 Azure 时才需要警报管理解决方案。 在 Azure Monitor 的统一警报界面中，可以查看警报的分布情况，通过智能组利用相关警报的自动分组，并在应用丰富的筛选器时查看多个订阅的警报。 警报管理方面将来的改进将主要来自此新体验。 
 
 警报管理解决方案收集的数据（具有某种警报类型的记录）继续在 Log Analytics 中提供，前提是为工作区安装了该解决方案。 
 
@@ -83,7 +83,7 @@ Azure 门户是所有 Azure 服务的中心，提供丰富的管理体验和功�
 OMS 移动应用将随 OMS 门户一起淘汰。 无需使用 OMS 移动应用来访问有关 IT 基础结构、仪表板和保存的查询的信息，可以直接通过移动设备中的浏览器访问 Azure 门户。 若要获取警报，应配置 [Azure 操作组](../alerts/action-groups.md)来接收短信或语音呼叫形式的通知
 
 ## <a name="application-insights-connector-and-solution"></a>Application Insights 连接器和解决方案
-使用 [Application Insights 连接器](../logs/app-insights-connector.md)可将 Application Insights 数据包括在 Log Analytics 工作区中。 需要进行这种数据复制才能实现跨基础结构和应用程序数据的可见性。 通过将于 2019 年 3 月推出的 Application Insights 延长数据保留期支持以及执行[跨资源查询](../logs/cross-workspace-query.md)的能力，除了能够[查看多个 Azure Monitor Application Insights 资源](../log-query/unify-app-resource-data.md)，不再需要从 Application Insights 资源复制数据并将其发送到 Log Analytics。 此外，连接器会将应用程序属性的一个子集发送到 Log Analytics，同时，跨资源查询提供了增强的灵活性。  
+使用 [Application Insights 连接器](../logs/app-insights-connector.md)可将 Application Insights 数据包括在 Log Analytics 工作区中。 需要进行这种数据复制才能实现跨基础结构和应用程序数据的可见性。 通过将于 2019 年 3 月推出的 Application Insights 延长数据保留期支持以及执行[跨资源查询](../logs/cross-workspace-query.md)的能力，除了能够[查看多个 Azure Monitor Application Insights 资源](./unify-app-resource-data.md)，不再需要从 Application Insights 资源复制数据并将其发送到 Log Analytics。 此外，连接器会将应用程序属性的一个子集发送到 Log Analytics，同时，跨资源查询提供了增强的灵活性。  
 
 因此，在2019年3月30日，Application Insights 连接器已弃用，并已从 Azure Marketplace 中删除，以及 OMS 门户弃用。 现有连接将继续运行到 2019 年 6 月 30 日为止。 随着 OMS 门户被弃用，将无法从门户中配置和删除现有的连接。 将支持使用 2019 年 1 月推出的 REST API 来执行上述操作，并且将在 [Azure 更新](https://azure.microsoft.com/updates/)中发布通知。 
 

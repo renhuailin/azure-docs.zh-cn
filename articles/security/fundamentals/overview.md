@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2019
 ms.author: TomSh
-ms.openlocfilehash: 56965310c818f8d9089ab244641bdc562428a337
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: f1e56c38353b43faf600fdd8e6405eced7f1b8a0
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100580461"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720556"
 ---
 # <a name="introduction-to-azure-security"></a>Azure 安全性简介
 ## <a name="overview"></a>概述
@@ -53,7 +53,7 @@ Azure 的基础结构（从设备到应用程序）经过设计，可同时托�
 | [强制性安全培训、背景检查](https://downloads.cloudsecurityalliance.org/star/self-assessment/StandardResponsetoRequestforInformationWindowsAzureSecurityPrivacy.docx) |  [控制数据位置](https://www.microsoft.com/trustcenter/Privacy/Where-your-data-is-located) |  [通用控制中心](https://www.microsoft.com/trustcenter/Common-Controls-Hub) |[Microsoft 如何管理 Azure 服务中的数据位置](https://azuredatacentermap.azurewebsites.net/)|
 | [渗透测试](https://downloads.cloudsecurityalliance.org/star/self-assessment/StandardResponsetoRequestforInformationWindowsAzureSecurityPrivacy.docx)，[入侵检测，DDoS](https://www.microsoft.com/trustcenter/Security/ThreatManagement)，[审核和日志记录](https://www.microsoft.com/trustcenter/Security/AuditingAndLogging) | [根据条件提供数据访问](https://www.microsoft.com/trustcenter/Privacy/Who-can-access-your-data-and-on-what-terms) |  [云服务审慎调查清单](https://www.microsoft.com/trustcenter/Compliance/Due-Diligence-Checklist) |[Microsoft 中的哪些人员可以根据哪些条款访问数据](https://www.microsoft.com/trustcenter/Privacy/Who-can-access-your-data-and-on-what-terms)|
 | [艺术数据中心](https://www.microsoft.com/cloud-platform/global-datacenters)、物理安全、[安全网络](network-overview.md)的状态 | [响应执法部门](https://www.microsoft.com/trustcenter/Privacy/Responding-to-govt-agency-requests-for-customer-data) |  [服务、位置和行业的符合性](https://www.microsoft.com/trustcenter/Compliance/default.aspx) |[Microsoft 如何保护 Azure 服务中的客户数据](https://www.microsoft.com/trustcenter/Transparency/default.aspx)|
-|  [安全事件响应](https://aka.ms/SecurityResponsepaper)，[共担责任](./shared-responsibility.md) |[严格的隐私标准](https://www.microsoft.com/TrustCenter/Privacy/We-set-and-adhere-to-stringent-standards) |  | [查看 Azure 服务和透明度中心的认证](https://www.microsoft.com/trustcenter/Compliance/default.aspx)|
+|  [安全事件响应](/samples/browse/?redirectedfrom=TechNet-Gallery)，[共担责任](./shared-responsibility.md) |[严格的隐私标准](https://www.microsoft.com/TrustCenter/Privacy/We-set-and-adhere-to-stringent-standards) |  | [查看 Azure 服务和透明度中心的认证](https://www.microsoft.com/trustcenter/Compliance/default.aspx)|
 
 ### <a name="features-to-secure-data-and-application"></a>用于保护数据和应用程序的功能
 根据云服务模型，负责管理应用程序或服务的安全的人员需承担各种不同的责任。 Azure 平台中提供的功能可帮助用户通过内置功能以及可部署到 Azure 订阅中的合作伙伴解决方案来履行这些职责。

@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: troubleshooting
 ms.date: 02/22/2021
 ms.author: deanwe
-ms.openlocfilehash: 214730733780ef3492048f697b1c5e180434a527
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 0b4e116210cf68dc672122ad4ddc98f85067f3b8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101654011"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101688002"
 ---
 # <a name="frequently-asked-questions-for-azure-automanage-for-vms"></a>Azure Automanage for Vm 常见问题
 
@@ -80,7 +80,7 @@ Automanage 当前不支持启用了 Arc 的 Vm。
 
 **能否通过 Azure 策略应用 Automanage？**
 
-是的，我们有一个用于自动将 Automanage 应用于定义范围内的所有 Vm 的内置策略。 你还将指定配置文件 (开发测试或生产) 连同你的 Automanage 帐户一起指定。 若要详细了解如何通过 Azure 策略启用 Automanage，请参阅 [此处](virtual-machines-policy-enable.md)。
+是的，我们有一个用于自动将 Automanage 应用于定义范围内的所有 Vm 的内置策略。 你还将指定环境配置 (开发测试或生产) 连同你的 Automanage 帐户。 若要详细了解如何通过 Azure 策略启用 Automanage，请参阅 [此处](virtual-machines-policy-enable.md)。
 
 
 **什么是 Automanage 帐户？**
@@ -93,9 +93,9 @@ Automanage 帐户是一个 MSI (托管服务标识) ，它提供了用于执行�
 如果 VM 已链接到现有 Log Analytics 工作区，我们将重复使用该工作区来应用这些解决方案：更改跟踪、清点和更新管理。 连接到该工作区的所有 Vm 都将启用这些解决方案。
 
 
-**能否更改 VM 的配置文件？**
+**能否更改 VM 的环境？**
 
-此时，你将需要为该 VM 禁用 Automanage，然后使用所需的配置文件和首选项重新启用 Automanage。
+此时，你将需要为该 VM 禁用 Automanage，然后使用所需的环境和首选项重新启用 Automanage。
 
 
 **如果已为某个服务（例如更新管理）配置了我的 VM，将 Automanage 重新配置它？**

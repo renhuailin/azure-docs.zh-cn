@@ -10,8 +10,6 @@
   items:
     - name: 安全技术功能
       href: technical-capabilities.md
-    - name: 内置安全控件
-      href: security-controls.md
 - name: Azure 平台和基础结构
   items:
     - name: 基础结构安全性

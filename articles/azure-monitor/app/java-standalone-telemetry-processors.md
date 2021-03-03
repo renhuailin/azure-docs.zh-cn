@@ -1,70 +1,62 @@
 ---
-title: " (预览版的遥测处理器) -Azure Monitor Application Insights Java"
-description: 如何在 Azure Monitor Application Insights 中为 Java 配置遥测处理器
+title: 遥测处理器（预览版）- 适用于 Java 的 Azure Monitor Application Insights
+description: 了解如何在 Azure Monitor Application Insights 中为 Java 配置遥测处理器。
 ms.topic: conceptual
 ms.date: 10/29/2020
 author: kryalama
 ms.custom: devx-track-java
 ms.author: kryalama
-ms.openlocfilehash: c0745dd4069c64292fbcaef666d843ae2d25f7b3
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 35e53454e5b2c6265082bbedb4a8b60e82df7191
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98632574"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734564"
 ---
-# <a name="telemetry-processors-preview---azure-monitor-application-insights-for-java"></a> (预览版的遥测处理器) -Azure Monitor Application Insights Java
+# <a name="telemetry-processors-preview---azure-monitor-application-insights-for-java"></a>遥测处理器（预览版）- 适用于 Java 的 Azure Monitor Application Insights
 
 > [!NOTE]
-> 此功能目前仍为预览版。
+> 遥测处理器功能处于预览阶段。
 
-适用于 Application Insights 的 Java 3.0 代理现在具有在导出遥测数据之前处理该数据的功能。
+用于 Application Insights 的 Java 3.0 代理可以在导出数据之前处理遥测数据。
 
 下面是遥测处理器的一些用例：
- * 屏蔽敏感数据
- * 有条件地添加自定义维度
- * 更新用于聚合并在 Azure 门户中显示的名称
- * 删除范围属性以控制引入成本
+ * 创建敏感数据。
+ * 有条件地添加自定义维度。
+ * 更新用于聚合 Azure 门户中相似遥测的范围名称。
+ * 用于控制引入成本的删除范围属性。
 
 ## <a name="terminology"></a>术语
 
-在跳转到遥测处理器之前，请务必了解术语范围所指的内容。
+在了解遥测处理器之前，应了解术语 *跨度*。 跨度是的一般术语：
 
-范围是以下三种情况中的任何一项的一般术语：
+* 传入的请求。
+* 传出依赖关系 (例如，对另一个服务) 的远程调用。
+* 例如，进程内依赖关系 (，它由服务) 的子组件完成。
 
-* 传入的请求
-* 传出依赖关系 (例如，对另一个服务的远程调用) 
-* 进程内依赖关系 (例如，通过服务的子组件完成的工作) 
-
-出于遥测处理器的目的，范围的重要组成部分如下：
+对于遥测处理器，这些范围组件非常重要：
 
 * 名称
-* 属性
+* 特性
 
-范围名称是用于 Azure 门户中的请求和依赖项的主显示器。
-
-范围属性表示给定请求或依赖项的标准属性和自定义属性。
+范围名称是 Azure 门户中的请求和依赖项的主要显示。 范围属性表示给定请求或依赖项的标准属性和自定义属性。
 
 ## <a name="telemetry-processor-types"></a>遥测处理器类型
 
-目前有两种类型的遥测处理器。
+目前，两种类型的遥测处理器都是属性处理器和跨越处理器。
 
-#### <a name="attribute-processor"></a>属性处理器
+特性处理器可以插入、更新、删除或哈希特性。
+它还可以使用正则表达式从现有属性中提取一个或多个新属性。
 
-特性处理器具有插入、更新、删除或哈希特性的功能。
-它还可以通过正则表达式提取 (，) 现有属性中的一个或多个新属性。
-
-#### <a name="span-processor"></a>跨越处理器
-
-Span 处理器能够更新遥测名称。
-它还可以通过正则表达式提取 (，) 范围名称中的一个或多个新属性。
+Span 处理器可以更新遥测名称。
+它还可以使用正则表达式从范围名称中提取一个或多个新属性。
 
 > [!NOTE]
-> 请注意，当前遥测处理器仅处理字符串类型的属性，不处理类型为布尔值或数字的属性。
+> 目前，遥测处理器仅处理类型字符串的属性。 它们不处理布尔值或数字类型的属性。
 
 ## <a name="getting-started"></a>入门
 
-使用以下模板创建一个名为 `applicationinsights.json` 的配置文件，并将其置于 `applicationinsights-agent-*.jar` 所在的目录中。
+首先， *在上* 创建一个名为applicationinsights.js的配置文件。 将其保存在与 *applicationinsights.config \** 相同的目录中。 请使用以下模版。
 
 ```json
 {
@@ -88,29 +80,27 @@ Span 处理器能够更新遥测名称。
 }
 ```
 
-## <a name="includeexclude-criteria"></a>包含/排除条件
+## <a name="include-criteria-and-exclude-criteria"></a>包含条件和排除条件
 
-特性处理器和范围处理器都支持可选 `include` 的和 `exclude` 条件。
-仅当所提供的) 满足条件时，才会将处理器应用于与其条件匹配的那些范围 `include` (如果提供了) _，_ 则不符合其 `exclude` 标准 (。
+属性处理器和范围处理器都支持可选的 `include` 和 `exclude` 条件。
+处理器仅适用于符合条件的范围 `include` (如果提供了该处理器) _并且_ 不符合其 `exclude` 条件 (如果) 提供。
 
-若要配置此选项，则在 `include` 和/或 `exclude` 下至少必须有一个 `matchType` 以及 `spanNames` 和 `attributes` 中的一个。
-支持包含/排除配置具有多个指定的条件。
-所有指定条件的评估结果都必须为 true 才会被视为匹配。 
+若要配置此选项，请在 "" `include` 或 " (" 或 "两者" `exclude`) ，指定至少一个 `matchType` 和 `spanNames` 或 `attributes` 。
+包含-exclude 配置允许多个指定的条件。
+所有指定的条件的计算结果都必须为 true，才能生成匹配项。 
 
-必填字段： 
-* `matchType` 控制如何解释 `spanNames` 和 `attributes` 数组中的项。 可能的值包括 `regexp` 或 `strict`。 
+* **必填字段**： `matchType` 控制如何 `spanNames` 解释数组和数组中的项 `attributes` 。 可能值为 `regexp` 和 `strict`。 
 
-可选字段： 
-* `spanNames` 必须至少与一个项匹配。 
-* `attributes` 指定要用作匹配依据的属性列表。 所有这些属性必须完全匹配才会被视为匹配。
-
+* 可选字段： 
+    * `spanNames` 必须至少与一个项匹配。 
+    * `attributes` 指定要匹配的属性的列表。 所有这些属性都必须完全匹配才能生成匹配项。
+    
 > [!NOTE]
-> 如果同时指定了 `include` 和 `exclude`，则会在 `exclude` 属性之前检查 `include` 属性。
+> 如果同时 `include` 指定了和 `exclude` ，则将检查属性， `include` 然后 `exclude` 检查属性。
 
-#### <a name="sample-usage"></a>示例用法
+### <a name="sample-usage"></a>示例用法
 
 ```json
-
 "processors": [
   {
     "type": "attribute",
@@ -143,15 +133,20 @@ Span 处理器能够更新遥测名称。
   }
 ]
 ```
-有关详细信息，请查看 [遥测处理器示例](./java-standalone-telemetry-processors-examples.md) 文档。
+有关详细信息，请参阅 [遥测处理器示例](./java-standalone-telemetry-processors-examples.md)。
 
 ## <a name="attribute-processor"></a>属性处理器
 
-属性处理器修改范围的属性。 它还可以支持用于包括/排除范围的功能。 它接受一个操作列表，这些操作按配置文件中指定的顺序执行。 支持的操作有：
+属性处理器修改范围的属性。 它可以支持包括或排除范围。 它将使用配置文件指定的顺序执行的操作列表。 处理器支持以下操作：
 
+- `insert`
+- `update`
+- `delete`
+- `hash`
+- `extract`
 ### `insert`
 
-在不存在键的范围内插入新属性。   
+`insert`操作在不存在键的范围内插入新属性。   
 
 ```json
 "processors": [
@@ -167,14 +162,14 @@ Span 处理器能够更新遥测名称。
   }
 ]
 ```
-对于 `insert` 操作，以下项是必需的
-  * `key`
-  * 之一 `value` 或 `fromAttribute`
-  * `action`:`insert`
+`insert`操作需要以下设置：
+* `key`
+* `value`或`fromAttribute`
+* `action`: `insert`
 
 ### `update`
 
-更新范围中存在键的属性
+`update`操作更新范围中的属性，该键已存在。
 
 ```json
 "processors": [
@@ -190,15 +185,15 @@ Span 处理器能够更新遥测名称。
   }
 ]
 ```
-对于 `update` 操作，以下项是必需的
-  * `key`
-  * 之一 `value` 或 `fromAttribute`
-  * `action`:`update`
+`update`操作需要以下设置：
+* `key`
+* `value`或`fromAttribute`
+* `action`: `update`
 
 
 ### `delete` 
 
-删除范围中的属性
+`delete`操作删除范围中的属性。
 
 ```json
 "processors": [
@@ -213,13 +208,13 @@ Span 处理器能够更新遥测名称。
   }
 ]
 ```
-对于 `delete` 操作，以下项是必需的
-  * `key`
-  * `action`: `delete`
+`delete`操作需要以下设置：
+* `key`
+* `action`: `delete`
 
 ### `hash`
 
-哈希 (SHA1) 现有属性值
+`hash`操作 (SHA1) 现有属性值的哈希值。
 
 ```json
 "processors": [
@@ -234,16 +229,16 @@ Span 处理器能够更新遥测名称。
   }
 ]
 ```
-对于 `hash` 操作，以下项是必需的
+`hash`操作需要以下设置：
 * `key`
-* `action` : `hash`
+* `action`: `hash`
 
 ### `extract`
 
 > [!NOTE]
-> 此功能仅在3.0.2 和更高版本中
+> 此 `extract` 功能仅在版本3.0.2 和更高版本中可用。
 
-使用正则表达式规则从输入键到规则中指定的目标键提取值。 如果目标密钥已存在，则将其重写。 它的行为类似于 " [Span 处理器](#extract-attributes-from-span-name)" 设置，其 `toAttributes` 现有属性作为 "源"。
+`extract`操作通过使用从输入键到规则指定的目标键的正则表达式规则来提取值。 如果目标密钥已存在，则将其重写。 此操作的行为类似于 " [span 处理器](#extract-attributes-from-the-span-name)" `toAttributes` 设置，其中现有的属性是 "源"。
 
 ```json
 "processors": [
@@ -259,28 +254,24 @@ Span 处理器能够更新遥测名称。
   }
 ]
 ```
-对于 `extract` 操作，以下项是必需的
+`extract`操作需要以下设置：
 * `key`
 * `pattern`
-* `action` : `extract`
+* `action`: `extract`
 
-有关详细信息，请查看 [遥测处理器示例](./java-standalone-telemetry-processors-examples.md) 文档。
+有关详细信息，请参阅 [遥测处理器示例](./java-standalone-telemetry-processors-examples.md)。
 
-## <a name="span-processor"></a>跨越处理器
+## <a name="span-processor"></a>范围处理器
 
-范围处理器修改范围名称或根据范围名称修改范围的属性。 它还可以支持用于包括/排除范围的功能。
+范围处理器修改范围名称或根据范围名称修改范围的属性。 它可以支持包括或排除范围。
 
 ### <a name="name-a-span"></a>为范围命名
 
-作为 name 节的一部分，以下设置是必需的：
+`name`节需要 `fromAttributes` 设置。 这些属性中的值用于创建新名称，并按配置指定的顺序进行连接。 仅当所有这些属性都存在于范围中时，处理器才会更改范围名称。
 
-* `fromAttributes`：键的属性值用于按配置中指定的顺序创建新名称。 需要在范围中指定所有属性键，处理器才能对其进行重命名。
-
-还可以配置以下设置：
-
-* `separator`：一个指定的字符串，将用来拆分值
+此 `separator` 设置是可选的。 此设置是一个字符串。 它指定了拆分值。
 > [!NOTE]
-> 如果重命名依赖于属性处理器修改的属性，请确保在管道规范中的属性处理器之后指定范围处理器。
+> 如果重命名依赖于属性处理器来修改属性，请确保在管道规范中的属性处理器之后指定范围处理器。
 
 ```json
 "processors": [
@@ -297,16 +288,26 @@ Span 处理器能够更新遥测名称。
 ] 
 ```
 
-### <a name="extract-attributes-from-span-name"></a>从范围名称中提取属性
+### <a name="extract-attributes-from-the-span-name"></a>从范围名称提取属性
 
-接受正则表达式的列表，以据其匹配范围名称，并根据子表达式从中提取属性。 必须在 `toAttributes` 节下指定。
+`toAttributes`部分列出了要与范围名称匹配的正则表达式。 它基于子表达式提取特性。
 
-以下设置是必需的：
+此 `rules` 设置是必需的。 此设置列出了用于从范围名称中提取属性值的规则。 
 
-`rules`：用于从范围名称中提取属性值的规则列表。 范围名称中的值将替换为提取的属性名称。 列表中的每项规则都是一个正则表达式模式字符串。 将依据正则表达式来检查范围名称。 如果正则表达式匹配，则正则表达式的所有已命名子表达式都会被提取为属性并添加到范围中。 每个子表达式名称会成为一个属性名称，子表达式匹配部分会成为属性值。 范围名称中的匹配部分会替换为提取的属性名称。 如果属性已存在于范围中，则会被覆盖。 将按指定顺序为所有规则重复此过程。 每项后续规则都应用于处理上一规则后输出的范围名称。
+范围名称中的值将替换为提取的属性名称。 列表中的每个规则都是 (regex) 模式字符串的正则表达式。 
+
+下面介绍了如何通过提取的属性名称替换值：
+
+1. 对照 regex 检查范围名称。 
+1. 如果正则表达式匹配，则 regex 的所有命名子表达式都将作为特性提取。 
+1. 提取的属性将添加到范围中。 
+1. 每个子表达式名称将成为属性名称。 
+1. 子表达式匹配部分将成为特性值。 
+1. 范围名称中的匹配部分被提取的属性名称替换。 如果这些属性已在范围中存在，则会被覆盖。 
+ 
+按指定顺序对所有规则重复此过程。 每个后续规则都适用于作为上一规则输出的范围名称。
 
 ```json
-
 "processors": [
   {
     "type": "span",
@@ -324,26 +325,26 @@ Span 处理器能够更新遥测名称。
 
 ```
 
-## <a name="list-of-attributes"></a>属性列表
+## <a name="common-span-attributes"></a>公共范围属性
 
-下面列出了一些可在遥测处理程序中使用的常见范围属性。
+本部分列出了遥测处理器可以使用的一些常见范围属性。
 
 ### <a name="http-spans"></a>HTTP 范围
 
-| Attribute  | 类型 | 说明 | 
+| 属性  | 类型 | 说明 | 
 |---|---|---|
 | `http.method` | string | HTTP 请求方法。|
-| `http.url` | string | 完整的 HTTP 请求 URL，格式为 `scheme://host[:port]/path?query[#fragment]` 。 通常情况下，片段不通过 HTTP 传输，但如果已知，则它应包括在内。|
-| `http.status_code` | 数字 | [HTTP 响应状态代码](https://tools.ietf.org/html/rfc7231#section-6)。|
-| `http.flavor` | string | 使用的 HTTP 协议类型 |
-| `http.user_agent` | string | 客户端发送的 [HTTP 用户代理](https://tools.ietf.org/html/rfc7231#section-5.5.3) 标头的值。 |
+| `http.url` | string | 完整的 HTTP 请求 URL（采用 `scheme://host[:port]/path?query[#fragment]` 格式）。 片段通常不通过 HTTP 传输。 但如果该片段是已知的，则应将其包含在内。|
+| `http.status_code` | 数值 | [HTTP 响应状态代码](https://tools.ietf.org/html/rfc7231#section-6)。|
+| `http.flavor` | string | HTTP 协议的类型。 |
+| `http.user_agent` | string | 客户端发送的 [HTTP User-Agent](https://tools.ietf.org/html/rfc7231#section-5.5.3) 标头的值。 |
 
 ### <a name="jdbc-spans"></a>JDBC 跨越
 
-| Attribute  | 类型 | 说明  |
+| 属性  | 类型 | 说明  |
 |---|---|---|
-| `db.system` | string | 数据库管理系统的标识符 (要使用的 DBMS) 产品。 |
-| `db.connection_string` | string | 用于连接到数据库的连接字符串。 建议删除嵌入的凭据。|
+| `db.system` | 字符串 | 数据库管理系统 (DBMS) 使用的产品的标识符。 |
+| `db.connection_string` | 字符串 | 用于连接到数据库的连接字符串。 建议删除嵌入的凭据。|
 | `db.user` | string | 用于访问数据库的用户名。 |
-| `db.name` | string | 此属性用于报告正在访问的数据库的名称。 对于用于切换数据库的命令，应将其设置为目标数据库 (即使命令失败) 也是如此。|
-| `db.statement` | string | 正在执行的数据库语句。|
+| `db.name` | string | 用于报告正在访问的数据库的名称的字符串。 对于用于切换数据库的命令，应将此字符串设置为目标数据库，即使该命令失败也是如此。|
+| `db.statement` | 字符串 | 正在运行的数据库语句。|

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/07/2021
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: 502f93df8d9948a6d6682b14ea13b59e324833cb
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 4e626cb5cac29a0e5133eb77cbaff3f4131b8456
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101091469"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101722341"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>语音服务的语言和语音支持
 
@@ -62,25 +62,32 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | 荷兰语（荷兰）                | `nl-NL` | 音频 (20201015) <br>文本                                   |    是                       |
 | 英语（澳大利亚）                | `en-AU` | 音频 (20201019) <br>文本                 | 是                          |
 | 英语（加拿大）                   | `en-CA` | 音频 (20201019) <br>文本                 | 是                          |
+| 英语 (加纳)                     | `en-GH` | 文本                                   |                           |
 | 英语（香港）                | `en-HK` | 文本                                   |                           |
 | 英语（印度）                    | `en-IN` | 音频 (20200923) <br>文本                 | 是                          |
 | 英语（爱尔兰）                  | `en-IE` | 文本                                   |                           |
+| 英语 (肯尼亚)                     | `en-KE` | 文本                                   |                           |
 | 英语（新西兰）              | `en-NZ` | 音频 (20201019) <br>文本                 |  是                         |
 | 英语（尼日利亚）                  | `en-NG` | 文本                                   |                           |
 | 英语（菲律宾）              | `en-PH` | 文本                                   |                           |
 | 英语（新加坡）                | `en-SG` | 文本                                   |                           |
 | 英语（南非）             | `en-ZA` | 文本                                   |                           |
+| 英语 (坦桑尼亚)                  | `en-TZ` | 文本                                   |                           |
 | 英语（英国）           | `en-GB` | 音频 (20201019) <br>文本<br>发音| 是                          |
 | 英语（美国）            | `en-US` | 音频 (20201019) <br>文本<br>发音| 是                          |
 | 爱沙尼亚语（爱沙尼亚）                  | `et-EE` | 文本                                   |                           |
+| 菲律宾语（菲律宾）             | `fil-PH`| 文本                                   |                           |
 | 芬兰语（芬兰）                  | `fi-FI` | 文本                                   |     是                      |
 | 法语（加拿大）                    | `fr-CA` | 音频 (20201015) <br>文本                 |     是                      |
 | 法语（法国）                    | `fr-FR` | 音频 (20201015) <br>文本<br>发音|      是                     |
+| 法语（瑞士）               | `fr-CH` | 文本                                   |                           |
+| 德语（奥地利）                   | `de-AT` | 文本                                   |                           |
 | 德语（德国）                   | `de-DE` | 音频 (20190701、20200619、20201127) <br>文本<br>发音|  是                         |
 | 希腊语(希腊)                     | `el-GR` | 文本                                   |                           |
 | 古吉拉特语(印度)                  | `gu-IN` | 文本                                   |                           |
 | 印地语（印度）                      | `hi-IN` | 音频 (20200701) <br>文本                 |     是                      |
 | 匈牙利语(匈牙利)                | `hu-HU` | 文本                                   |                           |
+| 印度尼西亚语(印度尼西亚)             | `id-ID` | 文本                                   |                           |
 | 爱尔兰语（爱尔兰）                     | `ga-IE` | 文本                                   |                           |
 | 意大利语（意大利）                    | `it-IT` | 音频 (20201016) <br>文本<br>发音|      是                     |
 | 日语（日本）                   | `ja-JP` | 文本                                   |      是                     |
@@ -124,6 +131,7 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | 泰卢固语（印度）                     | `te-IN` | 文本                                   |                           |
 | 泰语（泰国）                    | `th-TH` | 文本                                   |      是                     |
 | 土耳其语（土耳其）                   | `tr-TR` | 文本                                   |                           |
+| 越南语(越南)               | `vi-VN` | 文本                                   |                           |
 
 ## <a name="text-to-speech"></a>文本转语音
 

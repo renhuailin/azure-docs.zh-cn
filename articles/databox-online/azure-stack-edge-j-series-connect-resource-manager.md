@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 01/25/2021
+ms.date: 03/01/2021
 ms.author: alkohli
-ms.openlocfilehash: ebadfc889eb648b734747e5a2a45662e82aab643
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: 0b4a31200b99062a72a02ca62ac8f3bf1206f9c9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100546799"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101722086"
 ---
 # <a name="connect-to-azure-resource-manager-on-your-azure-stack-edge-pro-device"></a>连接到 Azure Stack Edge Pro 设备上的 Azure 资源管理器
 
@@ -34,7 +34,7 @@ Azure 资源管理器提供一致的管理层来调用 Azure Stack Edge Pro 设�
 
 下表总结了设备上公开的各种终结点、支持的协议以及用于访问这些终结点的端口。 在本文中，你将找到对这些终结点的引用。
 
-| # | 终结点 | 支持的协议 | 使用的端口 | 用途 |
+| # | 端点 | 支持的协议 | 使用的端口 | 用于 |
 | --- | --- | --- | --- | --- |
 | 1. | Azure 资源管理器 | https | 443 | 连接到 Azure 资源管理器以实现自动化 |
 | 2. | 安全令牌服务 | https | 443 | 通过访问和刷新令牌进行身份验证 |
@@ -130,7 +130,7 @@ Azure 资源管理器提供一致的管理层来调用 Azure Stack Edge Pro 设�
 
 你的 Windows 客户端必须满足以下先决条件：
 
-1. 运行 PowerShell 版本5.0。 必须安装有 PowerShell 5.0 版或更高版本。 若要检查系统上的 PowerShell 版本，请运行以下 cmdlet：
+1. 运行 PowerShell 版本5.0。 必须安装有 PowerShell 版本5.0。 不支持 PowerShell core。 若要检查系统上的 PowerShell 版本，请运行以下 cmdlet：
 
     ```powershell
     $PSVersionTable.PSVersion

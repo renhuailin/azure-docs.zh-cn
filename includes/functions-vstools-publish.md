@@ -9,10 +9,10 @@ ms.date: 09/30/2020
 ms.author: glenga
 ms.custom: include file
 ms.openlocfilehash: 5b537b88052ce4042e346732f3dc63aaec6621cc
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2021
+ms.lasthandoff: 03/03/2021
 ms.locfileid: "100529736"
 ---
 1. 在解决方案资源管理器中，右键单击项目，选择“发布”，然后在“目标”中选择“Azure”，接着选择“下一步”    。
@@ -25,7 +25,7 @@ ms.locfileid: "100529736"
 
 1. 使用下表中指定的值创建新的实例：
 
-    | 设置      | “值”  | 描述                                |
+    | 设置      | “值”  | 说明                                |
     | ------------ |  ------- | -------------------------------------------------- |
     | **名称** | 全局唯一名称 | 用于唯一标识新 Function App 的名称。 接受此名称或输入新名称。 有效的字符是 `a-z`、`0-9` 和 `-`。 |
     | **订阅** | 你的订阅 | 要使用的 Azure 订阅。 接受此订阅，或从下拉列表中选择一个新订阅。 |

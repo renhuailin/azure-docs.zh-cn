@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 48501a2796f4d826a20af559058490a14785b53e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0503f6910186b42bf381c662c7942e37c28bfdf0
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84738628"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101709506"
 ---
 # <a name="visualize-network-traffic-patterns-to-and-from-your-vms-using-open-source-tools"></a>使用开源工具将传入和传出 VM 的网络流量模式可视化
 
@@ -47,7 +47,7 @@ Azure 网络观察程序允许在网络中执行数据包捕获，提供捕获�
 
 向 CapAnalysis 提供链接时，请务必在存储 Blob URL 的后面追加 SAS 令牌。  为此，请从存储帐户导航到“共享访问签名”，指定允许的权限，按“生成 SAS”按钮创建令牌。 然后，可将此 SAS 令牌追加到数据包捕获存储 Blob URL 的后面。
 
-生成的 URL 应如以下 URL 所示： `http:\//storageaccount.blob.core.windows.net/container/location?addSASkeyhere`
+生成的 URL 应如以下 URL 所示：`http://storageaccount.blob.core.windows.net/container/location?addSASkeyhere`
 
 
 ### <a name="analyzing-packet-captures"></a>分析数据包捕获
@@ -84,7 +84,7 @@ CapAnalysis 提供多种选项来可视化数据包捕获，每种选项从不�
 
     ![筛选器][11]
 
-    访问 [https://www.capanalysis.net/ca/#about](https://www.capanalysis.net/ca/#about) 可了解有关 CapAnalysis 所有功能的更多信息。
+    请访问 [https://www.capanalysis.net/ca/#about](https://www.capanalysis.net/ca/#about) 以了解有关所有 CapAnalysis 功能的详细信息。
 
 ## <a name="conclusion"></a>结论
 

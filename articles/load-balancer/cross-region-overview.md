@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: allensu
 ms.custom: references_regions
-ms.openlocfilehash: 89bf920a5a5dd833425f1b41bd206beaae9d30fd
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 64432e2717057c1ff6bb09e0158ddb779d5b5373
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98946267"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101742596"
 ---
 # <a name="cross-region-load-balancer-preview"></a>跨区域负载均衡器 (预览) 
 
@@ -35,7 +35,7 @@ Azure 标准负载均衡器支持跨区域负载均衡，支持异地冗余 HA �
 * 在无学习曲线的[现有负载均衡器解决方案上构建](#build-cross-region-solution-on-existing-azure-load-balancer)
 
 > [!IMPORTANT]
-> 跨区域负载均衡器目前处于预览阶段，可在门户中部署。 登录以 **https://preview.portal.azure.com** 查看和部署功能。 </br> </br>
+> 跨区域负载均衡器目前处于预览阶段。
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 跨区域负载均衡提供与区域标准负载均衡器相同的高性能和低延迟的优点。 
@@ -79,7 +79,7 @@ Azure 跨区域负载均衡器使用异地邻近性负载平衡算法来做出�
 
 ### <a name="ability-to-scale-updown-behind-a-single-endpoint"></a>能够在单个终结点后扩展/缩减
 
-向客户公开跨区域负载均衡器的全局终结点时，可以在全局终结点后面添加或删除区域部署，而不会影响客户。 
+向客户公开跨区域负载均衡器的全局终结点时，可以在全局终结点后面添加或删除区域部署，而不会发生中断。 
 
 <!---To learn about how to add or remove a regional deployment from the backend, read more [here](TODO: Insert CLI doc here).--->
 
@@ -94,13 +94,13 @@ Azure 跨区域负载均衡器使用异地邻近性负载平衡算法来做出�
 
 将现有的负载均衡器部署添加到跨区域负载均衡器，以实现高度可用的跨区域部署。
 
-**Home 区域** 是部署跨区域负载均衡器的位置。 此区域不影响流量的路由方式。 如果 home 区域出现故障，则不会影响流量流。
+**Home 区域** 是部署跨区域负载均衡器的位置。 此区域不影响流量的路由方式。 如果家庭区域出现故障，则通信流不受影响。
 
 ### <a name="home-regions"></a>家庭区域
 * 美国东部 2
 * 美国西部
 * 西欧
-* Southeast Asia
+* 东南亚
 * 美国中部
 * 北欧
 * 东亚
@@ -124,7 +124,7 @@ Azure 跨区域负载均衡器使用异地邻近性负载平衡算法来做出�
 * 美国中南部 
 * 美国西部 2 
 * 英国南部 
-* Southeast Asia 
+* 东南亚 
 * 美国中北部 
 * Japan East 
 * 东亚 
@@ -143,7 +143,7 @@ Azure 跨区域负载均衡器使用异地邻近性负载平衡算法来做出�
 
 * 当前无法配置运行状况探测。 默认运行状况探测每隔20秒自动收集有关区域负载均衡器的可用性信息。 
 
-* Azure kubernetes Service (AKS) 目前无法与跨区域负载均衡器集成。 在使用 AKS 部署的公共负载均衡器前面设置跨区域负载均衡器时，应会丢失连接。
+* 与 Azure Kubernetes Service (AKS) 的集成当前不可用。 使用 AKS 的公共负载均衡器部署跨区域负载均衡器时，将会失去连接。
 
 ## <a name="pricing-and-sla"></a>定价和 SLA
 跨区域负载均衡器共享标准负载均衡器的 [SLA](https://azure.microsoft.com/support/legal/sla/load-balancer/v1_0/ ) 。

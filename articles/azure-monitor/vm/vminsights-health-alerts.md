@@ -1,25 +1,25 @@
 ---
-title: 用于 VM 的 Azure Monitor 来宾运行状况警报（预览）
-description: 描述用于 VM 的 Azure Monitor 来宾健康状况创建的警报，包括如何启用和配置通知。
+title: 'VM insights 来宾运行状况警报 (预览) '
+description: 介绍由 VM insights 来宾运行状况创建的警报，包括如何启用和配置通知。
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/10/2020
-ms.openlocfilehash: 30025f387768aaf1e4d642292c21d5b15ccc7451
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: a32ba9f1c4cf5d6bb9de69e1a6860c858e3ee2a6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100608835"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101707500"
 ---
-# <a name="azure-monitor-for-vms-guest-health-alerts-preview"></a>用于 VM 的 Azure Monitor 来宾运行状况警报（预览）
-用于 VM 的 Azure Monitor 来宾健康状况允许你查看按固定时间间隔采样的一组性能度量定义的虚拟机的运行状况。 当虚拟机或监视器更改为不正常状态时，可以创建警报。 你可以使用 [Azure Monitor 中的警报规则创建](../platform/alerts-overview.md) 的警报来查看和管理这些警报，并选择在创建新警报时主动收到通知。
+# <a name="vm-insights-guest-health-alerts-preview"></a>VM insights 来宾运行状况警报 (预览) 
+VM insights 来宾运行状况允许你查看按固定时间间隔采样的一组性能度量定义的虚拟机的运行状况。 当虚拟机或监视器更改为不正常状态时，可以创建警报。 你可以使用 [Azure Monitor 中的警报规则创建](../alerts/alerts-overview.md) 的警报来查看和管理这些警报，并选择在创建新警报时主动收到通知。
 
 ## <a name="configure-alerts"></a>配置警报
-此功能处于预览状态时，不能为用于 VM 的 Azure Monitor 来宾健康状况创建明确的警报规则。 默认情况下，将为每个虚拟机创建警报，但不会为每个监视器创建警报。  这意味着，如果监视器更改为不影响虚拟机当前状态的状态，则不会创建任何警报，因为虚拟机状态不会更改。 
+此功能处于预览状态时，不能为 VM insights 来宾运行状况创建显式警报规则。 默认情况下，将为每个虚拟机创建警报，但不会为每个监视器创建警报。  这意味着，如果监视器更改为不影响虚拟机当前状态的状态，则不会创建任何警报，因为虚拟机状态不会更改。 
 
-你可以通过 Azure 门户中虚拟机配置的 " **警报状态** " 设置，为虚拟机上的特定虚拟机或特定监视器禁用警报。 有关在 Azure 门户中配置监视器的详细信息，请参阅 [用于 VM 的 Azure Monitor 来宾健康状况 () 预览版中的配置监视 ](vminsights-health-configure.md) 。 有关在一组虚拟机中配置监视器的详细信息，请参阅 [使用数据收集规则在用于 VM 的 Azure Monitor 来宾健康状况中配置监视 (预览版) ](vminsights-health-configure-dcr.md) 。
+你可以通过 Azure 门户中虚拟机配置的 " **警报状态** " 设置，为虚拟机上的特定虚拟机或特定监视器禁用警报。 有关在 Azure 门户中配置监视器的详细信息，请参阅 [在 VM insights 来宾健康状况 (预览中配置监视) ](vminsights-health-configure.md) 。 有关在一组虚拟机中配置监视器的详细信息，请参阅 [使用数据收集规则在 VM insights 来宾运行状况中配置监视 (预览) ](vminsights-health-configure-dcr.md) 。
 
 ## <a name="alert-severity"></a>警报严重性
 来宾运行状况创建的警报的严重性直接映射到触发警报的虚拟机或监视器的严重性。
@@ -31,12 +31,12 @@ ms.locfileid: "100608835"
 | 正常  | Sev4 |
 
 ## <a name="alert-lifecycle"></a>警报生命周期
-每当每个虚拟机更改为 **警告** 或 **严重** 状态时，将为每个虚拟机创建一个 [Azure 警报](../platform/alerts-overview.md)。 从 " **Azure Monitor** " 菜单中的 **警报** 或 Azure 门户中的虚拟机菜单中查看警报。
+每当每个虚拟机更改为 **警告** 或 **严重** 状态时，将为每个虚拟机创建一个 [Azure 警报](../alerts/alerts-overview.md)。 从 " **Azure Monitor** " 菜单中的 **警报** 或 Azure 门户中的虚拟机菜单中查看警报。
 
 如果在虚拟机状态发生更改时警报已处于已 **激发** 状态，则不会创建第二个警报，但会更改相同警报的严重性，使其与虚拟机的状态相匹配。 例如，如果在已 **激发****警告** 警报时虚拟机的状态更改为 "**严重**"，则该警报的严重性将更改为 **Sev1**。 如果在已 **激发** **Sev1** 警报时虚拟机的状态更改为 **警告** 状态，则该警报的严重性将变为 **Sev2**。 如果虚拟机恢复 **正常** 状态，则会解决警报，并将严重性更改为 **Sev4**。
 
 ## <a name="viewing-alerts"></a>查看警报
-查看用于 VM 的 Azure Monitor 来宾健康状况创建的警报，以及 [Azure 门户中](../platform/alerts-overview.md#alerts-experience)的其他警报。 你可以从 " **Azure Monitor** " 菜单中选择 "**警报**" 以查看所有受监视资源的警报，或从虚拟机的菜单中选择 "**警报**"，以仅查看该虚拟机的警报。
+查看 VM insights 来宾健康状况创建的警报，并 [在 Azure 门户中](../platform/alerts-overview.md#alerts-experience)显示其他警报。 你可以从 " **Azure Monitor** " 菜单中选择 "**警报**" 以查看所有受监视资源的警报，或从虚拟机的菜单中选择 "**警报**"，以仅查看该虚拟机的警报。
 
 ## <a name="alert-properties"></a>警报属性
 
@@ -106,6 +106,6 @@ ms.locfileid: "100608835"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [在用于 VM 的 Azure Monitor 和载入代理中启用来宾运行状况。](vminsights-health-enable.md)
+- [在 VM insights 和载入代理中启用来宾运行状况。](vminsights-health-enable.md)
 - [使用 Azure 门户配置监视器。](vminsights-health-configure.md)
 - [使用数据收集规则配置监视器。](vminsights-health-configure-dcr.md)

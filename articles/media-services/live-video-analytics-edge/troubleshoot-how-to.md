@@ -5,12 +5,12 @@ author: IngridAtMicrosoft
 ms.topic: how-to
 ms.author: inhenkel
 ms.date: 12/04/2020
-ms.openlocfilehash: ee5ae7ca8b52d44f21c35df23ef92f61d38fc3c3
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: d766843f58bc2cdd0dcdddfad337b23fefb28768
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99051289"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101698733"
 ---
 # <a name="troubleshoot-live-video-analytics-on-iot-edge"></a>对 IoT Edge 上的实时视频分析进行故障排除
 
@@ -105,7 +105,7 @@ IoT Edge 模块的容器日志应包含诊断信息，以帮助调试模块运�
 * **由于策略冲突而导致模板部署失败。**
     * 若要解决此问题，请与你的 IT 管理员合作，以确保调用 () 创建虚拟机，以绕过阻止 ssh 身份验证。 这不是必需的，因为我们使用的是需要用户名和密码才能与 Azure 资源通信的安全堡垒网络。 在成功创建并部署了虚拟机并将其连接到 IoT 中心后，这些凭据将存储在 Cloud Shell 中的 **~/clouddrive/lva-sample/vm-edge-device-credentials.txt** 文件中。
 * 安装脚本无法创建服务主体和/或 Azure 资源。
-    * 若要解决此问题，请检查你的订阅和 Azure 租户是否未达到其最大服务限制。 详细了解 [Azure AD 服务限制和限制](https://docs.microsoft.com/azure/active-directory/enterprise-users/directory-service-limits-restrictions) [、Azure 订阅和服务限制、配额和约束。](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)
+    * 若要解决此问题，请检查你的订阅和 Azure 租户是否未达到其最大服务限制。 详细了解 [Azure AD 服务限制和限制](../../active-directory/enterprise-users/directory-service-limits-restrictions.md) [、Azure 订阅和服务限制、配额和约束。](../../azure-resource-manager/management/azure-subscription-service-limits.md)
 
 > [!TIP]
 > 如果有任何其他可能需要帮助的问题，请 **[收集日志并提交支持票证](#collect-logs-for-submitting-a-support-ticket)**。 你还可以通过向我们发送电子邮件来联系我们 **[amshelp@microsoft.com](mailto:amshelp@microsoft.com)** 。

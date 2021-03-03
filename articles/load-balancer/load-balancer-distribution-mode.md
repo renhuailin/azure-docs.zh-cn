@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/04/2021
 ms.author: allensu
-ms.openlocfilehash: 22d7af4f307a99d2d2e29bc1f494d327394e4f10
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: 2d8d5d84d32cdb8cc813d033f3f3fbb453b538fe
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99594276"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101739910"
 ---
 # <a name="configure-the-distribution-mode-for-azure-load-balancer"></a>配置 Azure 负载均衡器的分配模式
 
@@ -43,7 +43,7 @@ Azure 负载均衡器支持两种分发模式，用于将流量分发到应用�
 3. 在 "负载均衡规则" 屏幕中，选择要更改分发模式的负载均衡规则。
 4. 在规则下，通过更改 " **会话持久性** " 下拉框更改分发模式。 
 
-可以使用以下选项： 
+提供了以下选项： 
 
 * **无(基于哈希)** - 指定任何虚拟机可能处理来自同一客户端的后续请求。
 * **客户端 IP (源 IP 关联两元组)** 指定来自同一客户端 IP 地址的连续请求将由同一虚拟机处理。
@@ -62,7 +62,7 @@ Azure 负载均衡器支持两种分发模式，用于将流量分发到应用�
 
 ```azurepowershell-interactive
 $lb = Get-AzLoadBalancer -Name MyLoadBalancer -ResourceGroupName MyResourceGroupLB
-$lb.LoadBalancingRules[0].LoadDistribution = 'sourceIp'
+$lb.LoadBalancingRules[0].LoadDistribution = 'default'
 Set-AzLoadBalancer -LoadBalancer $lb
 ```
 
@@ -83,7 +83,7 @@ Set-AzLoadBalancer -LoadBalancer $lb
 ```azurecli-interactive
 az network lb rule update \
     --lb-name myLoadBalancer \
-    --load-distribution SourceIP \
+    --load-distribution Default \
     --name myHTTPRule \
     --resource-group myResourceGroupLB 
 ```

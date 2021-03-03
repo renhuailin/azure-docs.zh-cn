@@ -1,17 +1,16 @@
 ---
 title: Azure 诊断扩展故障排除
 description: 排查在 Azure 虚拟机、Service Fabric 或云服务中使用 Azure 诊断时遇到的问题。
-ms.subservice: diagnostic-extension
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/08/2019
-ms.openlocfilehash: de42a70cf2950aca3dbe151407671306c793ed10
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 431b19595fbe2f5bc1f989e712c9c104af8e839b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100608173"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711512"
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Azure 诊断故障排除
 本文介绍有关使用 Azure 诊断的故障排除信息。 有关 Azure 诊断的详细信息，请参阅 [Azure 诊断概述](diagnostics-extension-overview.md)。

@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 04/15/2020
-ms.openlocfilehash: 04faaa05cf51f740958238ece0a9a211c43fca41
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: a4512a8f75d59f617058a50846d7578a90b9d062
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98935449"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101675821"
 ---
 # <a name="tutorial-create-an-apache-spark-application-with-intellij-using-a-synapse-workspace"></a>教程：使用 Synapse 工作区通过 IntelliJ 创建 Apache Spark 应用程序
 
@@ -34,7 +34,7 @@ ms.locfileid: "98935449"
 ## <a name="prerequisites"></a>先决条件
 
 - [IntelliJ IDEA 社区版](https://www.jetbrains.com/idea/download/download-thanks.html?platform=windows&code=IIC)。
-- Azure 工具包插件 3.27.0-2019.2 – 从 [IntelliJ 插件存储库](/java/azure/intellij/azure-toolkit-for-intellij-installation?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)安装
+- Azure 工具包插件 3.27.0-2019.2 – 从 [IntelliJ 插件存储库](/java/azure/intellij/azure-toolkit-for-intellij-installation)安装
 - [JDK（版本 1.8）](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)。
 - Scala 插件 – 从 [IntelliJ 插件存储库](../../hdinsight/spark/apache-spark-intellij-tool-plugin.md#install-scala-plugin-for-intellij-idea)安装。
 - 以下先决条件仅适用于 Windows 用户：
@@ -57,7 +57,7 @@ ms.locfileid: "98935449"
 5. 选择“**下一页**”。
 6. 在“新建项目”窗口中提供以下信息：
 
-    | properties | 说明 |
+    | 属性 | 说明 |
     | ----- | ----- |
     |项目名称| 输入名称。 本教程使用 `myApp`。|
     |项目位置&nbsp;| 输入所需的项目保存位置。|
@@ -145,7 +145,7 @@ ms.locfileid: "98935449"
     |主类名|默认值是所选文件中的主类。 可以通过选择省略号图标 (...) 并选择另一个类来更改类。|
     |作业配置|可以更改默认的键和值。 有关详细信息，请参阅 [Apache Livy REST API](http://livy.incubator.apache.org./docs/latest/rest-api.html)。|
     |命令行参数|如果需要，可为 main 类输入参数并以空格分隔。|
-    |引用的 Jar 和引用的文件|可以输入引用的 Jar 和引用的文件的路径（如果有）。 还可以在 Azure 虚拟文件系统中浏览文件，但目前仅支持 ADLS 第 2 代群集。 有关详细信息，请参阅 [Apache Spark 配置]https://spark.apache.org/docs/2.4.5/configuration.html#runtime-environment) 和[如何将资源上传到群集](../../storage/blobs/storage-quickstart-blobs-storage-explorer.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。|
+    |引用的 Jar 和引用的文件|可以输入引用的 Jar 和引用的文件的路径（如果有）。 还可以在 Azure 虚拟文件系统中浏览文件，但目前仅支持 ADLS 第 2 代群集。 有关详细信息，请参阅 [Apache Spark 配置]https://spark.apache.org/docs/2.4.5/configuration.html#runtime-environment) 和[如何将资源上传到群集](../../storage/blobs/storage-quickstart-blobs-storage-explorer.md)。|
     |作业上传存储|展开以显示其他选项。|
     |存储类型|从下拉列表中选择“使用 Azure Blob 上传”或“使用群集默认存储帐户上传” 。|
     |存储帐户|输入存储帐户。|
@@ -218,7 +218,7 @@ ms.locfileid: "98935449"
 3. 在主窗口中，选择“在本地运行”选项卡。
 4. 提供以下值，然后选择“确定”：
 
-    |properties |值 |
+    |属性 |Value |
     |----|----|
     |环境变量|请确认 HADOOP_HOME 的值是否正确。|
     |WINUTILS.exe 位置|请确保路径正确。|
@@ -249,7 +249,7 @@ ms.locfileid: "98935449"
 
 4. 提供以下值，然后选择“确定”：
 
-    |properties |值 |
+    |属性 |值 |
     |----|----|
     |主类名| 选择主类名。| 
     |Spark 池|选择要在其上运行应用程序的 Spark 池。|

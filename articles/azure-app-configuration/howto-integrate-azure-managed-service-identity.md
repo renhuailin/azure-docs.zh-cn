@@ -5,15 +5,15 @@ description: 使用托管标识向“Azure 应用程序配置”进行身份验�
 author: AlexandraKemperMS
 ms.author: alkemper
 ms.service: azure-app-configuration
-ms.custom: devx-track-csharp
+ms.custom: devx-track-csharp, fasttrack-edit
 ms.topic: conceptual
 ms.date: 2/25/2020
-ms.openlocfilehash: 483af51cbaeb8f7b295adb4231e65f742e3f53a1
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: b1de1a24a506c049782443e4d32039c28fece436
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98185455"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101718244"
 ---
 # <a name="use-managed-identities-to-access-app-configuration"></a>使用托管标识来访问应用程序配置
 
@@ -24,7 +24,7 @@ Azure 应用程序配置及其 .NET Core、.NET Framework 和 Java Spring 客户
 本文介绍如何利用管理标识访问应用程序配置。 它建立在快速入门中介绍的 Web 应用之上。 在继续操作之前，先[使用应用程序配置创建 ASP.NET Core 应用](./quickstart-aspnet-core-app.md)。
 
 > [!NOTE]
-> 本文使用 Azure App Service 作为示例，但相同的概念适用于支持托管标识的任何其他 Azure 服务，例如 [Azure Kubernetes 服务](../aks/use-azure-ad-pod-identity.md)、 [azure 虚拟机](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)和 [azure 容器实例](../container-instances/container-instances-managed-identity.md)。 如果你的工作负荷托管在这些服务之一中，你也可以利用该服务的托管标识支持。
+> 本文使用 Azure App Service 作为示例，但相同的概念适用于支持托管标识的任何其他 Azure 服务，例如 [Azure Kubernetes 服务](../aks/use-azure-ad-pod-identity.md)、 [azure 虚拟机](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)和 [azure 容器实例](../container-instances/container-instances-managed-identity.md)。 如果在其中某一种服务中托管工作负载，也可以利用该服务的托管标识支持。
 
 本文还介绍如何将托管标识与应用程序配置的 Key Vaul 引用结合使用。 通过单个托管标识，可以无缝访问 Key Vault 的机密和“应用程序配置”的配置值。 如果希望了解此功能，请先完成[将 Key Vault 引用和 ASP.NET Core 结合使用](./use-key-vault-references-dotnet-core.md)。
 
@@ -102,7 +102,7 @@ Azure 应用程序配置及其 .NET Core、.NET Framework 和 Java Spring 客户
     using Azure.Identity;
     ```
 
-1. 如果只希望访问直接存储在应用程序配置中的值，请 `CreateWebHostBuilder` 通过替换方法来更新方法 `config.AddAzureAppConfiguration()` (此方法在 `Microsoft.Azure.AppConfiguration.AspNetCore` 包) 中找到。
+1. 如果只需要访问直接存储在应用程序配置中的值，请通过替换 `config.AddAzureAppConfiguration()` 方法（可在 `Microsoft.Azure.AppConfiguration.AspNetCore` 包中找到）来更新 `CreateWebHostBuilder` 方法。
 
     > [!IMPORTANT]
     > `CreateHostBuilder` 替换 .NET Core 3.0 中的 `CreateWebHostBuilder`。  根据环境选择正确的语法。
@@ -139,7 +139,16 @@ Azure 应用程序配置及其 .NET Core、.NET Framework 和 Java Spring 客户
     ```
     ---
 
-1. 若要同时使用应用程序配置值和 Key Vault 引用，请更新 Program.cs，如下所示。 此代码 `SetCredential` 将调用作为的一部分 `ConfigureKeyVault` ，告诉配置提供程序在向 Key Vault 进行身份验证时要使用的凭据。
+    > [!NOTE]
+    > 如果要使用 **用户分配的托管标识**，请确保在创建 [ManagedIdentityCredential](https://docs.microsoft.com/dotnet/api/azure.identity.managedidentitycredential?view=azure-dotnet&preserve-view=true)时指定 clientId。
+    >```
+    >config.AddAzureAppConfiguration(options =>
+    >   options.Connect(new Uri(settings["AppConfig:Endpoint"]), new ManagedIdentityCredential(<your_clientId>)));
+    >```
+    >如 [Azure 资源的托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/known-issues#what-identity-will-imds-default-to-if-dont-specify-the-identity-in-the-request)中所述，有一种方法可以解决使用的托管标识。 在这种情况下，如果添加了新的用户分配的托管标识，或者) 启用了系统分配的托管标识，Azure 标识库将强制你指定所需的标识，以避免超过可能数的运行时 (问题。 因此，即使仅定义了一个用户分配的托管标识并且没有系统分配的托管标识，也需要指定 clientId。
+
+
+1. 若要同时使用应用程序配置值和 Key Vault 引用，请更新 Program.cs，如下所示。 此代码调用了作为 `ConfigureKeyVault` 的一部分的 `SetCredential`，以告知配置提供程序在向 Key Vault 进行身份验证时使用哪一凭据。
 
     ### <a name="net-core-2x"></a>[.NET Core 2.x](#tab/core2x)
 
@@ -189,10 +198,12 @@ Azure 应用程序配置及其 .NET Core、.NET Framework 和 Java Spring 客户
     ```
     ---
 
-    现在，你可以像访问任何其他应用程序配置键一样访问 Key Vault 引用。 配置提供程序将使用进行 `ManagedIdentityCredential` 身份验证，以便 Key Vault 和检索值。
+    现在，你可以像访问任何其他应用程序配置键一样访问 Key Vault 引用。 配置提供程序将会使用 `ManagedIdentityCredential` 来向 Key Vault 进行身份验证并检索值。
 
     > [!NOTE]
-    > `ManagedIdentityCredential`仅适用于支持托管标识身份验证的服务的 Azure 环境。 它在本地环境中不起作用。 用于 [`DefaultAzureCredential`](/dotnet/api/azure.identity.defaultazurecredential) 代码在本地和 Azure 环境中工作，因为它将回退到一些身份验证选项，包括托管标识。
+    > `ManagedIdentityCredential` 只适用于支持托管标识身份验证的服务的 Azure 环境。 它在本地环境中不起作用。 请使用 [`DefaultAzureCredential`](/dotnet/api/azure.identity.defaultazurecredential) 以使代码在本地和 Azure 环境中都能正常工作，因为它将会回退到包括托管标识在内的几个身份验证选项。
+    > 
+    > 如果要在部署到 Azure 时将 **用户 asigned 的托管标识** 用于 `DefaultAzureCredential` ，请 [指定 clientId](https://docs.microsoft.com/dotnet/api/overview/azure/identity-readme#specifying-a-user-assigned-managed-identity-with-the-defaultazurecredential)。
 
 [!INCLUDE [Prepare repository](../../includes/app-service-deploy-prepare-repo.md)]
 

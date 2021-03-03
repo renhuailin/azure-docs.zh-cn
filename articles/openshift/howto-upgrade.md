@@ -7,20 +7,20 @@ ms.date: 1/10/2021
 author: sakthi-vetrivel
 ms.author: suvetriv
 keywords: aro、openshift、az aro、red hat、cli
-ms.openlocfilehash: 2c2c8607374493aa4e1135bbef0156b9c0b66fa6
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: 742da12bd3a10cd1f541e9c43f654cfe7df04340
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100634969"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720879"
 ---
 # <a name="upgrade-an-azure-red-hat-openshift-aro-cluster"></a>升级 Azure Red Hat OpenShift (ARO) 群集
 
 ARO 群集生命周期的一部分涉及到定期升级到最新的 OpenShift 版本。 必须应用最新的安全版本，或者通过升级来获取最新功能。 本文介绍如何使用 OpenShift Web 控制台升级 OpenShift 群集中的所有组件。
 
-## <a name="before-you-begin"></a>在开始之前
+## <a name="before-you-begin"></a>准备阶段
 
-本文要求你正在运行 Azure CLI 版本2.0.65。 运行 `az --version` 即可查找当前版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)
+本文要求你正在运行 Azure CLI 版本2.0.65。 运行 `az --version` 即可查找当前版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)
 
 本文假设你有权访问现有的 Azure Red Hat OpenShift 群集作为具有权限的用户 `admin` 。
 
@@ -39,4 +39,3 @@ ARO 群集生命周期的一部分涉及到定期升级到最新的 OpenShift �
 ## <a name="next-steps"></a>后续步骤
 - [了解如何使用 OC CLI 升级 ARO 群集](https://docs.openshift.com/container-platform/4.6/updating/updating-cluster-between-minor.html)
 - 可以在客户门户的 [勘误表部分](https://access.redhat.com/downloads/content/290/ver=4.6/rhel---8/4.6.0/x86_64/product-errata) 找到有关可用 OpenShift 容器平台提议和更新的信息。
-  

@@ -9,17 +9,14 @@ ms.author: mikben
 ms.date: 09/29/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 883be25716d94130984baef5e7a1eab80888a2b9
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: bf255837a08a4810321f2f03cb97838e31a7cddc
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100558464"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101657751"
 ---
 # <a name="pricing-scenarios"></a>定价方案
-
-[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
-
 
 Azure 通信服务的价格通常基于即用即付模型。 以下示例中的价格用于说明目的，可能不会反映最新的 Azure 定价。
 
@@ -50,7 +47,7 @@ Alice 与其同事 Bob 和 Charlie 进行了一次群呼。 Alice 和 Bob 使用
 
 ### <a name="pricing-example-a-user-of-the-communication-services-js-client-library-joins-a-scheduled-microsoft-teams-meeting"></a>定价示例：一位通信服务 JS 客户端库用户加入计划的 Microsoft Teams 会议
 
-Alice 医生与她的患者 Bob 会面。 Alice 将从 Teams 桌面应用程序加入探访。 Bob 将收到一个通过医疗保健提供商网站加入的链接，该网站使用通信服务 JS 客户端库连接到会议。 Bob 将使用移动电话通过 Web 浏览器（iPhone 通过 Safari）进入会议。 虚拟探访期间可以聊天。 
+Alice 医生与她的患者 Bob 会面。 Alice 将从 Teams 桌面应用程序加入探访。 Bob 将收到一个通过医疗保健提供商网站加入的链接，该网站使用通信服务 JS 客户端库连接到会议。 Bob 将使用移动电话通过 Web 浏览器（iPhone 通过 Safari）进入会议。 虚拟探访期间可以聊天。
 
 - 通话总时长为 30 分钟。
 - Alice 和 Bob 参与了整个通话。 Alice 在通话开始五分钟后打开她的视频，并共享屏幕 13 分钟。 Bob 在整个通话期间均打开了视频。
@@ -60,15 +57,15 @@ Alice 医生与她的患者 Bob 会面。 Alice 将从 Teams 桌面应用程序�
 成本计算
 
 - 1 个参与者 (Bob) x 30 分钟 x 0.004 美元/参与者/分钟 = 0.12 美元 [视频和音频以相同费率进行收费]
-- 1 个参与者 (Alice) x 30 分钟 x 0.000 美元/参与者/分钟 = 0.0* 美元。 
+- 1 个参与者 (Alice) x 30 分钟 x 0.000 美元/参与者/分钟 = 0.0* 美元。
 - 1 个参与方 (Bob) x 3 条聊天消息 x 0.0008 美元 = 0.0024 美元。
-- 1 个参与者 (Alice) x 5 条聊天消息 x 0.000 美元 = 0.0* 美元。 
+- 1 个参与者 (Alice) x 5 条聊天消息 x 0.000 美元 = 0.0* 美元。
 
 *Alice 的参与费用由她的 Teams 许可证涵盖。 为了方便起见，Azure 发票将显示 Teams 用户与通信服务用户之间产生的分钟数和聊天消息数，但来自 Teams 客户端的这些分钟数和消息数不会产生费用。
 
-**此次探访的总费用**： 
+**此次探访的总费用**：
 - 用户使用通信服务 JS 客户端库加入：0.12 美元 + 0.0024 美元 = 0.1224 美元
-- 用户通过 Teams 桌面应用程序加入：0 美元（Teams 许可证涵盖） 
+- 用户通过 Teams 桌面应用程序加入：0 美元（Teams 许可证涵盖）
 
 
 ## <a name="chat"></a>聊天
@@ -79,27 +76,27 @@ Alice 医生与她的患者 Bob 会面。 Alice 将从 Teams 桌面应用程序�
 
 发送每条聊天消息的费用为 0.0008 美元。
 
-### <a name="pricing-example-chat-between-two-users"></a>定价示例：两个用户之间的聊天 
+### <a name="pricing-example-chat-between-two-users"></a>定价示例：两个用户之间的聊天
 
 Geeta 启动了与 Emily 的聊天线程以共享更新并发送 5 条消息。 聊天时长为 10 分钟。 Geeta 和 Emily 每人另外发了 15 条消息。
 
-成本计算 
+成本计算
 - 发送的消息数 (5 + 15 + 15) x 0.0008 美元 = 0.028 美元
 
-### <a name="pricing-example-group-chat-with-multiple-users"></a>定价示例：与多个用户进行的群聊 
+### <a name="pricing-example-group-chat-with-multiple-users"></a>定价示例：与多个用户进行的群聊
 
-Charlie 启动了与好友 Casey 和 Jasmine 的聊天线程以规划休假。 他们聊了一段时间，其中 Charlie、Casey 和 Jasmine 分别发送了 20、30 和 18 条消息。 他们意识到其好友 Rose 也可能会对加入旅行感兴趣，因此将她添加到聊天线程中，并与她共享所有消息历史记录。 
+Charlie 启动了与好友 Casey 和 Jasmine 的聊天线程以规划休假。 他们聊了一段时间，其中 Charlie、Casey 和 Jasmine 分别发送了 20、30 和 18 条消息。 他们意识到其好友 Rose 也可能会对加入旅行感兴趣，因此将她添加到聊天线程中，并与她共享所有消息历史记录。
 
 Rose 会看到消息并开始聊天。 与此同时，Casey 收到了一个电话，决定稍后再进行对话。 Charlie、Jasmine 和 Rose 决定了旅行日期，并分别发送了另外 30、25、35 条消息。
 
-成本计算 
+成本计算
 
 - 发送的消息数 (20 + 30 + 18 + 30 + 25 + 35) x 0.0008 美元 = 0.1264 美元
 
 
 ## <a name="telephony-and-sms"></a>电话服务和短信
 
-## <a name="price"></a>价格 
+## <a name="price"></a>价格
 
 电话服务按每分钟计费，短信服务按每条短信计费。 定价取决于所用号码的类型和位置以及呼叫和短信的目的地。
 

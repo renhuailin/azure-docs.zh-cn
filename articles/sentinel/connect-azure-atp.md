@@ -14,20 +14,22 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: b0cafcbc9fa6f0fcb31f44b44dfbe4fc3e10c17d
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 1fe36dc7b3c04f033c1b693b657e07bcf42e3223
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94656065"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714997"
 ---
 # <a name="connect-data-from-microsoft-defender-for-identity-formerly-azure-advanced-threat-protection"></a>将 Azure 高级威胁防护 (的数据从 Microsoft Defender 连接到身份验证) 
 
 > [!IMPORTANT]
 > Azure Sentinel 中的 Microsoft Defender for Identity 数据连接器目前为公共预览版。
-> 此功能在提供时没有服务级别协议，不建议用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> 此功能不附带服务级别协议，不建议将其用于生产工作负载。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-只需要单击一次，即可将 [Microsoft Defender For Identity 的](/azure-advanced-threat-protection/what-is-atp) 日志流式传输到 Azure Sentinel。
+本文介绍如何将 [Microsoft Defender For Identity 的](/azure-advanced-threat-protection/what-is-atp) 安全警报流式传输到 Azure Sentinel。 
+
+若要转发安全警报之外的运行状况警报，请将 Microsoft Defender 用于标识和 Syslog 服务器。 有关详细信息，请参阅 [Microsoft Defender 身份验证文档](/defender-for-identity/setting-syslog)。 
 
 ## <a name="prerequisites"></a>先决条件
 

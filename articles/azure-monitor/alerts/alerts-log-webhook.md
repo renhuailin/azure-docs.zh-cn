@@ -7,16 +7,16 @@ services: monitoring
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.subservice: alerts
-ms.openlocfilehash: f90709431ea54a640554b642b96a63c7edac472e
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 19cf900b8e943b4f9ee69a6241ebc7ddb5a3dba6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100607936"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704389"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>用于日志警报规则的 Webhook 操作
 
-[日志警报](alerts-log.md)支持[配置 Webhook 操作组](../platform/action-groups.md#webhook)。 本文介绍了哪些属性可用和如何配置自定义 JSON Webhook。
+[日志警报](alerts-log.md)支持[配置 Webhook 操作组](./action-groups.md#webhook)。 本文介绍了哪些属性可用和如何配置自定义 JSON Webhook。
 
 > [!NOTE]
 > API 版本 `2020-05-01-preview` 当前不支持基于 JSON 的自定义 Webhook
@@ -47,7 +47,7 @@ ms.locfileid: "100607936"
 | *SearchQuery* |#searchquery |警报规则所使用的日志搜索查询。 |
 | *SearchResults* |"IncludeSearchResults": true|查询以 JSON 表形式返回的记录，仅限于前 1,000 条记录。 在自定义 JSON Webhook 定义中添加 "IncludeSearchResults": true 作为顶级属性。 |
 | *Dimensions* |"IncludeDimensions": true|将该警报作为 JSON 部分触发的维度值组合。 在自定义 JSON Webhook 定义中添加 "IncludeDimensions": true 作为顶级属性。 |
-| 警报类型| #alerttype | 配置为[指标度量 或 结果数](../platform/alerts-unified-log.md#measure)的日志警报规则的类型。|
+| 警报类型| #alerttype | 配置为[指标度量 或 结果数](./alerts-unified-log.md#measure)的日志警报规则的类型。|
 | *WorkspaceID* |#workspaceid |Log Analytics 工作区的 ID。 |
 | *应用程序 ID* |#applicationid |Application Insights 应用的 ID。 |
 | *订阅 ID* |#subscriptionid |使用的 Azure 订阅的 ID。 |
@@ -84,7 +84,7 @@ ms.locfileid: "100607936"
 以下示例有效负载适用于基于 Log Analytics 的警报使用的标准 Webhook 操作：
 
 > [!NOTE]
-> 如果已从[旧的 Log Analytics 警报 api](../platform/api-alerts.md)[切换到当前的 scheduledQueryRules api](../alerts/alerts-log-api-switch.md) ，则 "严重性" 字段值会发生更改。
+> 如果已从[旧的 Log Analytics 警报 api](./api-alerts.md)[切换到当前的 scheduledQueryRules api](../alerts/alerts-log-api-switch.md) ，则 "严重性" 字段值会发生更改。
 
 ```json
 {
@@ -318,8 +318,8 @@ ms.locfileid: "100607936"
 ```
 
 ## <a name="next-steps"></a>后续步骤
-- 了解 [Azure 警报中的日志警报](../platform/alerts-unified-log.md)。
+- 了解 [Azure 警报中的日志警报](./alerts-unified-log.md)。
 - 了解如何[管理 Azure 中的日志警报](alerts-log.md)。
-- 创建和管理 [Azure 中的操作组](../platform/action-groups.md)。
-- 详细了解 [Application Insights](../log-query/log-query-overview.md)。
-- 了解有关[日志查询](../log-query/log-query-overview.md)的详细信息。 
+- 创建和管理 [Azure 中的操作组](./action-groups.md)。
+- 详细了解 [Application Insights](../logs/log-query-overview.md)。
+- 了解有关[日志查询](../logs/log-query-overview.md)的详细信息。

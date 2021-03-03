@@ -7,12 +7,12 @@ ms.author: normesta
 ms.date: 02/17/2021
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: d6897a863a0fd399d3c963d876404680026682dd
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: b67c3ccebefc178ddebc2b4a7fd49043bc0776b8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100654080"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101735414"
 ---
 # <a name="tutorials-that-use-azure-services-with-azure-data-lake-storage-gen2"></a>使用 Azure 服务与 Azure Data Lake Storage Gen2 的教程
 
@@ -22,6 +22,7 @@ ms.locfileid: "100654080"
 
 | Azure 服务 | 循序渐进指南 | 
 |---------------|-------------------|
+| Azure Synapse Analytics | [Azure Synapse Analytics 入门](../../synapse-analytics/get-started.md) |
 | Azure 数据工厂 | [使用 Azure 数据工厂将数据加载到 Azure Data Lake Storage Gen2 中](../../data-factory/load-azure-data-lake-storage-gen2.md) |
 | Azure Databricks | [与 Azure Databricks 配合使用](https://docs.azuredatabricks.net/data/data-sources/azure/azure-datalake-gen2.html) |
 | Azure Databricks | [使用 Azure Databricks 提取、转换和加载数据](/azure/databricks/scenarios/databricks-extract-load-sql-data-warehouse) |
@@ -29,7 +30,6 @@ ms.locfileid: "100654080"
 | Azure 事件网格 | [实现数据湖捕获模式以更新 Databricks Delta 表](data-lake-storage-events.md) |
 | Azure 机器学习 | [访问 Azure 存储服务中的数据](../../machine-learning/how-to-access-data.md) |
 | Azure Data Box | [使用 Azure Data Box 将数据从本地 HDFS 存储迁移到 Azure 存储](data-lake-storage-migrate-on-premises-hdfs-cluster.md) |
-| Azure Synapse Analytics | [Azure Synapse Analytics 入门](../../synapse-analytics/get-started.md) |
 | HDInsight | [将 Azure Data Lake Storage Gen2 用于 Azure HDInsight 群集](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md) |
 | HDInsight | [使用 Apache Hive on Azure HDInsight 提取、转换和加载数据](data-lake-storage-tutorial-extract-transform-load-hive.md) |
 | Power BI | [使用 Power BI 分析 Data Lake Storage Gen2 中的数据](/power-query/connectors/datalakestorage) |

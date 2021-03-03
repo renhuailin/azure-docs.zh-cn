@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: tutorial
 ms.date: 01/04/2021
 ms.author: pafarley
-ms.openlocfilehash: 1780aebc113fa68a9a89cfce9fd67c9b5911fc58
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 6faa612f55b4114b4242c48d43aae9aac8c56582
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98606641"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699991"
 ---
 # <a name="tutorial-extract-form-data-in-bulk-using-azure-data-factory"></a>教程：使用 Azure 数据工厂从数据中批量提取信息
 
@@ -65,7 +65,7 @@ ms.locfileid: "98606641"
 
 你的大量表单可能位于你的本地环境或 (s)FTP 服务器中。 本教程使用 Azure Data Lake Gen 2 存储帐户中的表单。 你可在这里使用 Azure 数据工厂、Azure 存储资源管理器或 AzCopy 来传输文件。 训练数据库和评分数据集可位于不同的容器中，但各表单类型的训练数据集必须在同一容器中（虽然它们可在不同的文件夹中）。
 
-若要创建新的 Data Lake，请按照[创建用于 Azure Data Lake Storage Gen2 的存储帐户](https://docs.microsoft.com/azure/storage/blobs/create-data-lake-storage-account)中的说明进行操作。
+若要创建新的 Data Lake，请按照[创建用于 Azure Data Lake Storage Gen2 的存储帐户](../../storage/blobs/create-data-lake-storage-account.md)中的说明进行操作。
 
 ## <a name="create-a-parameterization-table"></a>创建参数化表
 
@@ -89,7 +89,7 @@ ms.locfileid: "98606641"
 
 ### <a name="create-the-table"></a>创建表
 
-[创建 Azure SQL 数据库](https://ms.portal.azure.com/#create/Microsoft.SQLDatabase)，然后在[查询编辑器](https://docs.microsoft.com/azure/azure-sql/database/connect-query-portal)中运行以下 SQL 脚本来创建所需的表。
+[创建 Azure SQL 数据库](https://ms.portal.azure.com/#create/Microsoft.SQLDatabase)，然后在[查询编辑器](../../azure-sql/database/connect-query-portal.md)中运行以下 SQL 脚本来创建所需的表。
 
 ```sql
 CREATE TABLE dbo.ParamFormRecogniser(
@@ -142,7 +142,7 @@ END
 
 ### <a name="create-a-secret-scope-backed-by-azure-key-vault"></a>创建 Azure Key Vault 支持的机密范围
 
-若要引用前面创建的 Azure Key Vault 中的机密，你需要在 Databricks 中创建一个机密范围。 请按照[创建 Azure Key Vault 支持的机密范围](https://docs.microsoft.com/azure/databricks/security/secrets/secret-scopes#--create-an-azure-key-vault-backed-secret-scope)下的步骤进行操作。
+若要引用前面创建的 Azure Key Vault 中的机密，你需要在 Databricks 中创建一个机密范围。 请按照[创建 Azure Key Vault 支持的机密范围](/azure/databricks/security/secrets/secret-scopes#--create-an-azure-key-vault-backed-secret-scope)下的步骤进行操作。
 
 ### <a name="create-a-databricks-cluster"></a>创建 Databricks 群集
 
@@ -461,7 +461,7 @@ END
 
 ## <a name="automate-training-and-scoring-with-azure-data-factory"></a>使用 Azure 数据工厂自动训练和评分
 
-接下来只需要设置 Azure 数据工厂 (ADF) 服务来自动执行训练和评分过程即可。 首先，按照[创建数据工厂](https://docs.microsoft.com/azure/data-factory/quickstart-create-data-factory-portal#create-a-data-factory)中的步骤操作。 创建 ADF 资源后，需要创建 3 个管道：一个用于训练，两个用于评分（如下所述）。
+接下来只需要设置 Azure 数据工厂 (ADF) 服务来自动执行训练和评分过程即可。 首先，按照[创建数据工厂](../../data-factory/quickstart-create-data-factory-portal.md#create-a-data-factory)中的步骤操作。 创建 ADF 资源后，需要创建 3 个管道：一个用于训练，两个用于评分（如下所述）。
 
 ### <a name="training-pipeline"></a>训练管道
 

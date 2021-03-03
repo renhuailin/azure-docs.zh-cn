@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 12/01/2020
 ms.author: NanditaV
 ms.reviewer: jrasnick
-ms.openlocfilehash: 12d858488c4530e4b0d949cd36ed9ad2f7df4c59
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 6fd28c9392d760888eafde37471a49ffaa2e4423
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100384480"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694132"
 ---
 # <a name="create-a-workspace-with-data-exfiltration-protection-enabled"></a>创建启用了数据渗透保护的工作区
 本文介绍如何创建启用了 data 渗透 protection 的工作区，以及如何为此工作区管理已批准的 Azure AD 租户。
@@ -50,7 +50,7 @@ ms.locfileid: "100384480"
 >除了工作区租户之外的租户中的资源不能有阻止防火墙规则来连接到它们。 工作区托管的虚拟网络中的资源（如 Spark 群集）可通过托管的专用链接连接到受防火墙保护的资源。
 
 ## <a name="known-limitations"></a>已知的限制
-用户可以提供环境配置文件以从公共存储库（如 PyPI）安装 Python 包。 在数据渗透保护的工作区中，会阻止与出站存储库的连接。 因此，不支持从公共存储库（如 PyPI）安装 Python 库。 
+用户可以提供环境配置文件以从公共存储库（如 PyPI）安装 Python 包。 在数据渗透保护的工作区中，会阻止与出站存储库的连接。 因此，不支持从公共存储库（如 PyPI）安装 Python 库。 作为替代方法，用户可以在其主 Azure Data Lake Storage 帐户中创建专用通道，并在其 Conda 环境配置文件中引用。 
   
 ## <a name="next-steps"></a>后续步骤
 

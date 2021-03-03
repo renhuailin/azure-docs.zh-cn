@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 303a919cc0afc9b5db49918233f3e5718a896646
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 4461fb6904d51ee8d740b633a2d0028658ac2ced
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148050"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687543"
 ---
 # <a name="scale-up-and-down-an-azure-database-for-postgresql-hyperscale-server-group-using-cli-azdata-or-kubectl"></a>使用 CLI (azdata 或 kubectl，向上和向下缩放 Azure Database for PostgreSQL 超大规模服务器组) 
 
@@ -180,6 +180,21 @@ kubectl describe postgresql-12/<server group name>  [-n <namespace name>]
 ## <a name="scale-down-the-server-group"></a>缩小服务器组
 
 若要缩减服务器组，请执行相同的命令，但为要缩减的设置设置较小的值。 若要删除请求和/或限制，请将其值指定为空字符串。
+
+## <a name="reset-to-default-values"></a>重置为默认值
+若要将核心/内存限制/请求参数重置为其默认值，请对其进行编辑，并传递空字符串而不是实际值。 例如，如果要重置核心限制 (cl) 参数，请运行以下命令：
+- 在 Linux 客户端上：
+
+```console
+    azdata arc postgres server edit -n <servergroup name> -cl ""
+```
+
+- 在 Windows 客户端上： 
+ 
+```console
+    azdata arc postgres server edit -n <servergroup name> -cl '""'
+```
+
 
 ## <a name="next-steps"></a>后续步骤
 

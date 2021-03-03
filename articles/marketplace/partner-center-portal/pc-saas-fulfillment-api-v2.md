@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 06/10/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 0d7259972693b9ca12e0801007cbd3c0af45ca1c
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 2acf5178e7d1cfdf907146d733150a48e9696a5e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97937325"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101712345"
 ---
 # <a name="saas-fulfillment-apis-version-2-in-the-commercial-marketplace"></a>商业应用商店中的 SaaS 履单 Api 版本2
 
@@ -181,13 +181,13 @@ Microsoft 为客户提供30天的宽限期，然后才会自动取消订阅。 �
 
 *查询参数：*
 
-|  参数         | 值            |
+|  参数         | “值”            |
 |  ---------------   |  ---------------  |
 |  `ApiVersion`        |  使用2018-08-31。   |
 
 *请求标头：*
 
-|  参数         | 值             |
+|  参数         | “值”             |
 |  ---------------   |  ---------------  |
 |  `content-type`      | `application/json` |
 |  `x-ms-requestid`    |  唯一的字符串值，用于跟踪来自客户端的请求，最好是 GUID。 如果未提供此值，将在响应标头中生成并提供一个值。 |
@@ -259,7 +259,7 @@ Microsoft 为客户提供30天的宽限期，然后才会自动取消订阅。 �
 
 *查询参数：*
 
-|  参数         | 值             |
+|  参数         | “值”             |
 |  --------   |  ---------------  |
 | `ApiVersion`  |  使用2018-08-31。   |
 | `subscriptionId` | 已购买的 SaaS 订阅的唯一标识符。  此 ID 是使用 [解析 API](#resolve-a-purchased-subscription)解析商业 marketplace 授权令牌后获取的。
@@ -267,7 +267,7 @@ Microsoft 为客户提供30天的宽限期，然后才会自动取消订阅。 �
 
 *请求标头：*
 
-|  参数         | 值             |
+|  参数         | “值”             |
 |  ---------------   |  ---------------  |
 | `content-type`       |  `application/json`  |
 | `x-ms-requestid`     |  唯一的字符串值，用于跟踪来自客户端的请求，最好是 GUID。  如果未提供此值，将在响应标头中生成并提供一个值。 |
@@ -314,14 +314,14 @@ API 返回每页100的分页结果。
 
 *查询参数：*
 
-|  参数         | 值             |
+|  参数         | “值”             |
 |  --------   |  ---------------  |
 | `ApiVersion`  |  使用2018-08-31。  |
 | `continuationToken`  | 可选参数。 若要检索结果的第一页，请保留为空。  使用在参数中返回的值 `@nextLink` 来检索下一页。 |
 
 *请求标头：*
 
-|  参数         | 值             |
+|  参数         | “值”             |
 |  ---------------   |  ---------------  |
 | `content-type`       |  `application/json`  |
 | `x-ms-requestid`     |  唯一的字符串值，用于跟踪来自客户端的请求，最好是 GUID。 如果未提供此值，将在响应标头中生成并提供一个值。 |
@@ -421,14 +421,14 @@ API 返回每页100的分页结果。
 
 *查询参数：*
 
-|  参数         | 值             |
+|  参数         | “值”             |
 |  ---------------   |  ---------------  |
 | `ApiVersion`        |   使用2018-08-31。 |
 | `subscriptionId`     |  已购买的 SaaS 订阅的唯一标识符。  此 ID 是使用解析 API 解析商业 marketplace 授权令牌后获取的。 |
 
 *请求标头：*
 
-|  参数         | 值             |
+|  参数         | “值”             |
 |  ---------------   |  ---------------  |
 |  `content-type`      |  `application/json`  |
 |  `x-ms-requestid`    |  唯一的字符串值，用于跟踪来自客户端的请求，最好是 GUID。 如果未提供此值，将在响应标头中生成并提供一个值。 |
@@ -493,14 +493,14 @@ API 返回每页100的分页结果。
 
 *查询参数：*
 
-|  参数         | 值             |
+|  参数         | “值”             |
 |  ---------------   |  ---------------  |
 |  `ApiVersion`        |  使用2018-08-31。  |
 |  `subscriptionId`    |  已购买的 SaaS 订阅的唯一标识符。  此 ID 是使用解析 API 解析商业 marketplace 授权令牌后获取的。 |
 
 *请求标头：*
 
-|  参数         | 值             |
+|  参数         | “值”             |
 |  ---------------   |  ---------------  |
 |   `content-type`     |  `application/json` |
 |   `x-ms-requestid`   |  唯一的字符串值，用于跟踪来自客户端的请求，最好是 GUID。  如果未提供此值，将在响应标头中生成并提供一个值。 |
@@ -548,14 +548,14 @@ API 返回每页100的分页结果。
 
 *查询参数：*
 
-|  参数         | 值             |
+|  参数         | “值”             |
 |  ---------------   |  ---------------  |
 |  `ApiVersion`        |  使用2018-08-31。  |
 | `subscriptionId`     | 已购买的 SaaS 订阅的唯一标识符。  此 ID 是使用解析 API 解析商业 marketplace 授权令牌后获取的。 |
 
 *请求标头：*
  
-|  参数         | 值             |
+|  参数         | “值”             |
 |  ---------------   |  ---------------  |
 |  `content-type`      | `application/json`  |
 |  `x-ms-requestid`    | 唯一的字符串值，用于跟踪来自客户端的请求，最好是 GUID。 如果未提供此值，将在响应标头中生成并提供一个值。  |
@@ -578,9 +578,9 @@ API 返回每页100的分页结果。
 
 *响应标头：*
 
-|  参数         | 值             |
+|  参数         | “值”             |
 |  ---------------   |  ---------------  |
-|  `Operation-Location`        |  用于获取操作状态的 URL。  例如，`https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=2018-08-31` 。 |
+|  `Operation-Location`        |  用于获取操作状态的 URL。  例如 `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=2018-08-31`。 |
 
 代码：400请求错误：验证失败。
 
@@ -613,14 +613,14 @@ API 返回每页100的分页结果。
 
 *查询参数：*
 
-|  参数         | 值             |
+|  参数         | “值”             |
 |  ---------------   |  ---------------  |
 |  `ApiVersion`        |  使用2018-08-31。  |
 |  `subscriptionId`     | 已购买的 SaaS 订阅的唯一标识符。  此 ID 是使用解析 API 解析商业 marketplace 授权令牌后获取的。  |
 
 *请求标头：*
  
-|  参数         | 值             |
+|  参数         | “值”             |
 |  ---------------   |  ---------------  |
 |  `content-type`      | `application/json`  |
 |  `x-ms-requestid`    | 唯一的字符串值，用于跟踪来自客户端的请求，最好是 GUID。  如果未提供此值，将在响应标头中生成并提供一个值。  |
@@ -643,9 +643,9 @@ API 返回每页100的分页结果。
 
 *响应标头：*
 
-|  参数         | 值             |
+|  参数         | “值”             |
 |  ---------------   |  ---------------  |
-|  `Operation-Location`        |  链接到资源以获取操作的状态。  例如，`https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=2018-08-31` 。  |
+|  `Operation-Location`        |  链接到资源以获取操作的状态。  例如 `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=2018-08-31`。  |
 
 代码：400请求错误：验证失败。
 
@@ -686,14 +686,14 @@ API 返回每页100的分页结果。
 
 *查询参数：*
 
-|  参数         | 值             |
+|  参数         | “值”             |
 |  ---------------   |  ---------------  |
 |  `ApiVersion`        |  使用2018-08-31。  |
 |  `subscriptionId`     | 已购买的 SaaS 订阅的唯一标识符。  此 ID 是使用解析 API 解析商业 marketplace 授权令牌后获取的。  |
 
 *请求标头：*
  
-|  参数         | 值             |
+|  参数         | “值”             |
 |  ---------------   |  ---------------  |
 |  `content-type`      | `application/json`  |
 |  `x-ms-requestid`    | 唯一的字符串值，用于跟踪来自客户端的请求，最好是 GUID。  如果未提供此值，将在响应标头中生成并提供一个值。  |
@@ -708,9 +708,9 @@ API 返回每页100的分页结果。
 
 *响应标头：*
 
-|  参数         | 值             |
+|  参数         | “值”             |
 |  ---------------   |  ---------------  |
-|  `Operation-Location`        |  链接到资源以获取操作的状态。  例如，`https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=2018-08-31` 。 |
+|  `Operation-Location`        |  链接到资源以获取操作的状态。  例如 `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=2018-08-31`。 |
 
 代码：400错误的请求。  此 SaaS 订阅的 "删除" 不在 `allowedCustomerOperations` 列表中。
 
@@ -734,14 +734,14 @@ API 返回每页100的分页结果。
 
 *查询参数：*
 
-|  参数         | 值             |
+|  参数         | “值”             |
 |  ---------------   |  ---------------  |
 |    `ApiVersion`    |  使用2018-08-31。         |
 |    `subscriptionId` | 已购买的 SaaS 订阅的唯一标识符。  此 ID 是使用解析 API 解析商业 marketplace 授权令牌后获取的。  |
 
 *请求标头：*
  
-|  参数         | 值             |
+|  参数         | “值”             |
 |  ---------------   |  ---------------  |
 |  `content-type`     |  `application/json` |
 |  `x-ms-requestid`    |  唯一的字符串值，用于跟踪来自客户端的请求，最好是 GUID。  如果未提供此值，将在响应标头中生成并提供一个值。  |
@@ -795,7 +795,7 @@ API 返回每页100的分页结果。
 
 *查询参数：*
 
-|  参数         | 值             |
+|  参数         | “值”             |
 |  ---------------   |  ---------------  |
 |  `ApiVersion`        |  使用2018-08-31。  |
 |  `subscriptionId`    |  已购买的 SaaS 订阅的唯一标识符。  此 ID 是使用解析 API 解析商业 marketplace 授权令牌后获取的。 |
@@ -803,7 +803,7 @@ API 返回每页100的分页结果。
 
 *请求标头：*
 
-|  参数         | 值             |
+|  参数         | “值”             |
 |  ---------------   |  ---------------  |
 |  `content-type`      |  `application/json`   |
 |  `x-ms-requestid`    |  唯一的字符串值，用于跟踪来自客户端的请求，最好是 GUID。  如果未提供此值，将在响应标头中生成并提供一个值。 |
@@ -855,7 +855,7 @@ Response body:
 
 *查询参数：*
 
-|  参数         | 值             |
+|  参数         | “值”             |
 |  ---------------   |  ---------------  |
 |   `ApiVersion`       |  使用2018-08-31。  |
 |   `subscriptionId`   |  已购买的 SaaS 订阅的唯一标识符。  此 ID 是使用解析 API 解析商业 marketplace 授权令牌后获取的。  |
@@ -863,7 +863,7 @@ Response body:
 
 *请求标头：*
 
-|  参数         | 值             |
+|  参数         | “值”             |
 |  ---------------   |  ---------------  |
 |   `content-type`   | `application/json`   |
 |   `x-ms-requestid`   |  唯一的字符串值，用于跟踪来自客户端的请求，最好是 GUID。  如果未提供此值，将在响应标头中生成并提供一个值。 |
@@ -972,4 +972,4 @@ Response body:
 
 有关商业应用商店中 SaaS 产品/服务的更多选项，请参阅 [商业 marketplace 计量服务 api](marketplace-metering-service-apis.md) 。
 
-查看并使用本文档所述 Api 之上构建的 [SAAS SDK](https://github.com/Azure/Microsoft-commercial-marketplace-transactable-SaaS-offer-SDK) 。
+查看并使用 [不同编程语言和示例的客户端](https://github.com/microsoft/commercial-marketplace-samples)。

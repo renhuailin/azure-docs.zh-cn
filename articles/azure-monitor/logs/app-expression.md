@@ -1,17 +1,17 @@
 ---
 title: Azure Monitor 日志查询中的 app() 表达式 | Microsoft Docs
-description: 在 Azure Monitor 日志查询中使用 app 表达式从同一资源组、另一个资源组或另一个订阅中的特定 Application Insights 应用检索数据。
+description: app 表达式在 Azure Monitor 日志查询中用于从同一资源组、另一资源组或另一订阅中的特定 Application Insights 应用检索数据。
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/09/2019
-ms.openlocfilehash: cbfc9c8a32eb5345cfc69f51f40e0634e05bd978
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 4789594cef0f7e900582dd9aad231b81547d3b3e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100606109"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728410"
 ---
 # <a name="app-expression-in-azure-monitor-query"></a>Azure Monitor 查询中的 app() 表达式
 
@@ -37,7 +37,7 @@ ms.locfileid: "100606109"
 | Azure 资源 ID | Azure 资源的标识符 |app("/subscriptions/7293b69-db12-44fc-9a66-9c2005c3051d/resourcegroups/Fabrikam/providers/microsoft.insights/components/fabrikamapp") |
 
 
-## <a name="notes"></a>注释
+## <a name="notes"></a>说明
 
 * 必须具有该应用程序的读取权限。
 * 按应用程序的名称来标识应用程序，即假定该名称在所有可访问订阅中唯一。 如果拥有多个采用指定名称的应用程序，查询将因多义性而失败。 在这种情况下，必须使用一个其他的标识符。
@@ -73,6 +73,5 @@ union
 ## <a name="next-steps"></a>后续步骤
 
 - 参阅 [workspace 表达式](../logs/workspace-expression.md)，以引用 Log Analytics 工作区。
-- 了解 [Azure Monitor 数据是如何存储的](../log-query/log-query-overview.md)。
+- 了解 [Azure Monitor 数据是如何存储的](./log-query-overview.md)。
 - 访问有关 [Kusto 查询语言](/azure/kusto/query/)的完整文档。
-

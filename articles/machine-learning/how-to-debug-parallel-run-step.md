@@ -11,12 +11,12 @@ ms.reviewer: larryfr, vaidyas, laobri, tracych
 ms.author: trmccorm
 author: tmccrmck
 ms.date: 09/23/2020
-ms.openlocfilehash: a907bf61cb7ccb8b6d287840c12a00451cad782f
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: ee41ae2a705ceaa0e9742c91552d6bdae26820ce
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101657853"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690271"
 ---
 # <a name="troubleshooting-the-parallelrunstep"></a>排查 ParallelRunStep 问题
 
@@ -119,7 +119,7 @@ file_path = os.path.join(script_dir, "<file_name>")
 - `parallel_run_config`：`ParallelRunConfig` 对象，如前文所述。
 - `inputs`：要分区以进行并行处理的一个或多个单类型 Azure 机器学习数据集。
 - `side_inputs`：无需分区就可以用作辅助输入的一个或多个参考数据或数据集。
-- `output`：一个 `OutputDatasetConfig` 或 `PipelineData` 与输出目录相对应的对象。
+- `output`：一个 `OutputFileDatasetConfig` 对象，该对象表示将在其中存储输出数据的目录路径。
 - `arguments`：传递给用户脚本的参数列表。 使用 unknown_args 在入口脚本中检索它们（可选）。
 - `allow_reuse`：当使用相同的设置/输入运行时，该步骤是否应重用以前的结果。 如果此参数为 `False`，则在管道执行过程中将始终为此步骤生成新的运行。 （可选；默认值为 `True`。）
 

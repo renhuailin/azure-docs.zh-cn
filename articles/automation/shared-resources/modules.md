@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 02/01/2021
 ms.topic: conceptual
-ms.openlocfilehash: a784127cfd6019629f1c2714d0f36850406c3b9d
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 3f8e23fdeb0a05d2c19f131cf79a079426a9b494
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99548759"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726489"
 ---
 # <a name="manage-modules-in-azure-automation"></a>管理 Azure 自动化中的模块
 
@@ -142,6 +142,7 @@ Azure 自动化可以导入自定义模块以提供其 cmdlet。 它可以在后
 
 * runbook 从模块中调用 cmdlet 时。
 * runbook 使用 [Import-Module](/powershell/module/microsoft.powershell.core/import-module) cmdlet 显式导入模块时。
+* Runbook 使用 [using module](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_using?view=powershell-7.1#module-syntax) 语句显式导入模块。 从 Windows PowerShell 5.0 开始支持 using 语句，并支持类和枚举类型导入。
 * runbook 导入另一个依赖模块时。
 
 可以在 Azure 门户中导入 Az 模块。 请记住仅导入所需的 Az 模块，而不是导入整个 Az.Automation 模块。 由于 [Az.Accounts](https://www.powershellgallery.com/packages/Az.Accounts/1.1.0) 是其他 Az 模块的依赖项，因此请确保在其他模块之前先将其导入。

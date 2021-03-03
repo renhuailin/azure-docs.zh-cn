@@ -7,21 +7,21 @@ ms.topic: reference
 ms.date: 09/30/2020
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: a050e9832537dd9b6690c7f9409bfbb5b795af2c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: c2cea95dba3be02b9db584b0650761cb2d640283
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100605964"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728767"
 ---
 # <a name="azure-activity-log-event-schema"></a>Azure 活动日志事件架构
-[Azure 活动日志](../platform/platform-logs-overview.md)可以方便用户深入了解 Azure 中发生的任何订阅级别事件。 本文介绍活动日志类别以及每个类别的架构。 
+[Azure 活动日志](./platform-logs-overview.md)可以方便用户深入了解 Azure 中发生的任何订阅级别事件。 本文介绍活动日志类别以及每个类别的架构。 
 
 根据访问日志的方式，架构会有所不同：
  
 - 本文中所述的架构基于从 [REST API](/rest/api/monitor/activitylogs) 访问活动日志。 这也是在 Azure 门户中查看事件时，选择“JSON”选项时使用的架构。
-- 对于使用[诊断设置](../platform/diagnostic-settings.md)将活动日志发送到 Azure 存储或 Azure 事件中心时的架构，请参阅最后一节[来自存储帐户和事件中心的架构](#schema-from-storage-account-and-event-hubs)。
-- 对于使用[诊断设置](../platform/diagnostic-settings.md)将活动日志发送到 Log Analytics 工作区时的架构，请参阅[Azure Monitor 数据参考](/azure/azure-monitor/reference/)。
+- 对于使用[诊断设置](./diagnostic-settings.md)将活动日志发送到 Azure 存储或 Azure 事件中心时的架构，请参阅最后一节[来自存储帐户和事件中心的架构](#schema-from-storage-account-and-event-hubs)。
+- 对于使用[诊断设置](./diagnostic-settings.md)将活动日志发送到 Log Analytics 工作区时的架构，请参阅[Azure Monitor 数据参考](/azure/azure-monitor/reference/)。
 
 ## <a name="severity-level"></a>严重级别
 活动日志中的每个条目都有严重性级别。 严重性级别可以具有以下值之一：  
@@ -36,12 +36,12 @@ ms.locfileid: "100605964"
 每个资源提供程序的开发人员都会选择其资源条目的严重性级别。 因此，根据应用程序的生成方式，实际的严重性可能会有所不同。 例如，对于在隔离中进行的特定资源 "关键" 的项，与 Azure 应用程序的中心资源类型中的 "错误" 可能并不一样重要。 确定要针对其发出警报的事件时，请务必考虑这一事实。  
 
 ## <a name="categories"></a>Categories
-活动日志中的每个事件都有特定的类别，该类别在下表中进行了描述。 请参阅以下各部分，了解从门户、PowerShell、CLI 和 REST API 访问活动日志时，每个类别及其架构的详细信息。 [将活动日志流式传输到存储或事件中心](../platform/resource-logs.md#send-to-azure-event-hubs)时，架构是不同的。 本文最后一个部分提供了这些属性到[资源日志架构](../platform/resource-logs-schema.md)的映射。
+活动日志中的每个事件都有特定的类别，该类别在下表中进行了描述。 请参阅以下各部分，了解从门户、PowerShell、CLI 和 REST API 访问活动日志时，每个类别及其架构的详细信息。 [将活动日志流式传输到存储或事件中心](./resource-logs.md#send-to-azure-event-hubs)时，架构是不同的。 本文最后一个部分提供了这些属性到[资源日志架构](./resource-logs-schema.md)的映射。
 
 | 类别 | 说明 |
 |:---|:---|
 | [管理](#administrative-category) | 包含对通过资源管理器执行的所有创建、更新、删除和操作的记录。 管理事件示例包括创建虚拟机和删除网络安全组。<br><br>使用资源管理器的用户或应用程序执行的每个操作都作为对特定资源类型的操作进行建模。 如果操作类型为写入、删除或操作，则会在“管理”类别中记录该操作的启动和成功或失败记录。 管理事件还包括对订阅中 Azure 基于角色的访问控制进行的任何更改。 |
-| [服务运行状况](#service-health-category) | 包含对任何发生在 Azure 中的服务运行状况事件的记录。 SQL Azure 在美国东部的一个服务运行状况事件示例是遭遇停机。 <br><br>服务运行状况事件分 6 种：需要操作、协助恢复、事件、维护、信息或安全性。 仅当订阅中有某个资源受事件影响时，才会创建这些事件。
+| [服务运行状况](#service-health-category) | 包含对任何发生在 Azure 中的服务运行状况事件的记录。 SQL Azure 在美国东部的一个服务运行状况事件示例是遭遇停机。 <br><br>服务运行状况事件有 6 种：需要采取行动、辅助恢复、事件、维护、信息或安全。 仅当订阅中有某个资源受事件影响时，才会创建这些事件。
 | [资源运行状况](#resource-health-category) | 包含对 Azure 资源发生的任何资源运行状况事件的记录。 资源运行状况事件的一个示例是，虚拟机运行状况状态更改为“不可用”。<br><br>资源运行状况事件可以表现出以下四种运行状况状态之一：“Available”、“Unavailable”、“Degraded”和“Unknown”   。 此外，资源运行状况事件可以分为“平台启动”或“用户启动” 。 |
 | [Alert](#alert-category) | 包含 Azure 警报的激活记录。 警报事件的一个示例是，在过去 5 分钟内，我的 VM 上的 CPU % 始终超过 80。|
 | [自动缩放](#autoscale-category) | 包含基于自动缩放设置（在订阅中定义）的自动缩放引擎操作相关的事件记录。 自动缩放事件的一个示例是，自动缩放纵向扩展操作失败。 |
@@ -804,10 +804,10 @@ ms.locfileid: "100605964"
 
 
 ## <a name="schema-from-storage-account-and-event-hubs"></a>来自存储帐户和事件中心的架构
-将 Azure 活动日志流式传输到存储帐户或事件中心时，数据遵循[资源日志架构](../platform/resource-logs-schema.md)。 下表提供从上述架构到资源日志架构的属性映射。
+将 Azure 活动日志流式传输到存储帐户或事件中心时，数据遵循[资源日志架构](./resource-logs-schema.md)。 下表提供从上述架构到资源日志架构的属性映射。
 
 > [!IMPORTANT]
-> 写入到存储帐户的活动日志数据的格式已在 2018 年 11 月 1 日更改为 JSON Lines。 若要详细了解此格式更改，请参阅[为存档到存储帐户的 Azure Monitor 资源日志的格式更改做准备](../platform/resource-logs-blob-format.md)。
+> 写入到存储帐户的活动日志数据的格式已在 2018 年 11 月 1 日更改为 JSON Lines。 若要详细了解此格式更改，请参阅[为存档到存储帐户的 Azure Monitor 资源日志的格式更改做准备](./resource-logs-blob-format.md)。
 
 
 | 资源日志架构属性 | 活动日志 REST API 架构属性 | 注释 |
@@ -894,5 +894,5 @@ ms.locfileid: "100605964"
 
 
 ## <a name="next-steps"></a>后续步骤
-* [了解有关活动日志的更多信息](../platform/platform-logs-overview.md)
-* [创建诊断设置，以便将活动日志发送到 Log Analytics 工作区、Azure 存储或事件中心](../platform/diagnostic-settings.md)
+* [了解有关活动日志的更多信息](./platform-logs-overview.md)
+* [创建诊断设置，以便将活动日志发送到 Log Analytics 工作区、Azure 存储或事件中心](./diagnostic-settings.md)

@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 11/09/2020
 ms.author: spelluru
 ms.custom: devx-track-js
-ms.openlocfilehash: 27ffbafb92dd3269e38092b64e2b74f17ff9f09f
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 3c499dcb5233cbf5cd4048c641d1b38e289cc35f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100373073"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101739706"
 ---
 # <a name="send-messages-to-and-receive-messages-from-azure-service-bus-queues-javascript"></a>向 Azure 服务总线队列发送消息并从中接收消息 (JavaScript)
 本教程介绍如何使用 JavaScript 程序中的 [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) 包向服务总线队列发送消息并从中接收消息。
@@ -206,6 +206,6 @@ npm install @azure/service-bus
 请参阅以下文档和示例： 
 
 - [适用于 JavaScript 的 Azure 服务总线客户端库](https://www.npmjs.com/package/@azure/service-bus)
-- [JavaScript 示例](https://docs.microsoft.com/samples/azure/azure-sdk-for-js/service-bus-javascript/)
-- [TypeScript 示例](https://docs.microsoft.com/samples/azure/azure-sdk-for-js/service-bus-typescript/)
+- [JavaScript 示例](/samples/azure/azure-sdk-for-js/service-bus-javascript/)
+- [TypeScript 示例](/samples/azure/azure-sdk-for-js/service-bus-typescript/)
 - [API 参考文档](/javascript/api/overview/azure/service-bus)

@@ -4,12 +4,12 @@ description: 本教程介绍如何使用 Azure WCF 中继向外部客户端公�
 ms.topic: tutorial
 ms.custom: devx-track-dotnet
 ms.date: 06/23/2020
-ms.openlocfilehash: bb2b9b5ed7c263762cc24b8eb2e6d66215147c4c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7669bc07ad91933cd31bd2ccd10eaf830d98de7c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88935698"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710781"
 ---
 # <a name="tutorial-expose-an-on-premises-wcf-rest-service-to-external-client-by-using-azure-wcf-relay"></a>教程：使用 Azure WCF 中继向外部客户端公开本地 WCF REST 服务
 
@@ -54,7 +54,7 @@ ms.locfileid: "88935698"
 ### <a name="create-a-relay-contract-with-an-interface"></a>使用接口创建中继协定
 
 1. 以管理员身份启动 Microsoft Visual Studio。 为此，请右键单击 Visual Studio 程序图标，并选择“以管理员身份运行”。
-1. 在 Visual Studio 中，选择“新建项目”。
+1. 在 Visual Studio 中选择“创建新项目”。
 1. 在“创建新项目”中，选择适用于 C# 的“控制台应用(.NET Framework)”，然后选择“下一步”。  
 1. 将项目命名为 *EchoService* 并选择“创建”。
 
@@ -145,7 +145,7 @@ namespace Microsoft.ServiceBus.Samples
 
 创建 Azure 中继首先需要使用接口创建协定。 有关创建接口的详细信息，请参阅上一部分。 下一个过程实现接口。 此任务包括创建名为 `EchoService` 的类，用于实现用户定义的 `IEchoContract` 接口。 实现接口后，即可使用 *App.config* 配置文件配置接口。 配置文件包含应用程序所需的信息。 此信息包括服务的名称、协定的名称，以及用来与中继服务通信的协议类型。 该过程后面的示例中提供了这些任务所用的代码。 有关如何实现服务协定的更多常规讨论，请参阅[实现服务协定](/dotnet/framework/wcf/implementing-service-contracts)。
 
-1. 紧随 `IEchoContract` 接口定义之后，创建名为 `EchoService` 的新类。 `EchoService` 类实现 `IEchoContract` 接口。
+1. 在 `IEchoContract` 接口定义的正下方创建名为 `EchoService` 的新类。 `EchoService` 类实现 `IEchoContract` 接口。
 
     ```csharp
     class EchoService : IEchoContract
@@ -185,7 +185,7 @@ namespace Microsoft.ServiceBus.Samples
 1. 在 `<system.serviceModel>` 标记中，添加 `<services>` 元素。 可以在单个配置文件中定义多个中继应用程序。 但是，本教程只定义一个。
 
     ```xml
-    <?xmlversion="1.0"encoding="utf-8"?>
+    <?xmlversion="1.0" encoding="utf-8"?>
     <configuration>
       <system.serviceModel>
         <services>
@@ -513,7 +513,7 @@ namespace Microsoft.ServiceBus.Samples
 1. 在 `system.serviceModel` 元素中添加 `<client>` 元素。
 
     ```xml
-    <?xmlversion="1.0"encoding="utf-8"?>
+    <?xmlversion="1.0" encoding="utf-8"?>
     <configuration>
       <system.serviceModel>
         <client>

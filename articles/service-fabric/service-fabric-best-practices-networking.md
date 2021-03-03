@@ -5,12 +5,12 @@ author: chrpap
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: chrpap
-ms.openlocfilehash: b8db69792b31fd82646757423e669e39e8539d06
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: caba864e77822ccab649f694df7e63e0ee5d6e51
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91630696"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101732558"
 ---
 # <a name="networking"></a>网络
 
@@ -39,7 +39,7 @@ ms.locfileid: "91630696"
 ```
 可以在[使用加速网络的 Linux](../virtual-network/create-vm-accelerated-networking-cli.md) 上以及[使用加速网络的 Windows](../virtual-network/create-vm-accelerated-networking-powershell.md) 上预配 Service Fabric 群集。
 
-以下 Azure 虚拟机系列 SKU 支持加速网络：D/DSv2、D/DSv3、E/ESv3、F/FS、FSv2 以及 Ms/Mms。 加速网络已使用 Standard_DS8_v3 SKU 在 2019 年 1 月 23 日针对 Service Fabric Windows 群集成功进行测试，以及使用 Standard_DS12_v2 在 2019 年 1 月 29 日针对 Service Fabric Linux 群集成功进行测试。
+以下 Azure 虚拟机系列 SKU 支持加速网络：D/DSv2、D/DSv3、E/ESv3、F/FS、FSv2 以及 Ms/Mms。 加速网络已使用 Standard_DS8_v3 SKU 在 2019 年 1 月 23 日针对 Service Fabric Windows 群集成功进行测试，以及使用 Standard_DS12_v2 在 2019 年 1 月 29 日针对 Service Fabric Linux 群集成功进行测试。 请注意，加速网络需要至少4个个 vcpu。 
 
 若要在现有的 Service Fabric 群集上启用加速网络，需要首先[通过添加虚拟机规模集来横向扩展 Service Fabric 群集](./virtual-machine-scale-set-scale-node-type-scale-out.md)，以便执行以下操作：
 1. 预配已启用加速网络的 NodeType
@@ -59,7 +59,7 @@ ms.locfileid: "91630696"
 
 ## <a name="network-security-rules"></a>网络安全规则
 
-此处的基本规则是 Azure 托管的 Service Fabric 群集的安全锁定的最低要求。 无法打开以下端口或批准 IP/URL 将会阻止群集正常运行，并且可能不受支持。 设置此规则后，严格要求使用[自动 OS 映像升级](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md)，否则需要打开其他端口。
+此处的基本规则是 Azure 托管的 Service Fabric 群集的安全锁定的最低要求。 如果未能打开以下端口或未能批准 IP/URL，群集的正常操作会被阻止，并且可能不受支持。 设置此规则后，严格要求使用[自动 OS 映像升级](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md)，否则需要打开其他端口。
 
 ### <a name="inbound"></a>入站 
 |优先级   |名称               |端口        |协议  |源             |目标       |操作   

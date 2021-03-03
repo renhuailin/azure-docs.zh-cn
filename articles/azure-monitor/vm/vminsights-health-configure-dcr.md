@@ -1,31 +1,31 @@
 ---
-title: 使用数据收集规则在用于 VM 的 Azure Monitor 来宾运行状况中配置监视（预览）
-description: 介绍如何使用资源管理器模板在大规模用于 VM 的 Azure Monitor 来宾运行状况中修改默认监视。
+title: '使用数据收集规则在 VM insights 来宾运行状况中配置监视 (预览) '
+description: 介绍如何使用资源管理器模板在大规模中修改 VM insights 来宾运行状况中的默认监视。
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/15/2020
-ms.openlocfilehash: 2001fece40267ca2e3256e699d2dc253ceb10f0c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 907aea16b018fb5dd3846db546787d132f8f5a9f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100608833"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731215"
 ---
-# <a name="configure-monitoring-in-azure-monitor-for-vms-guest-health-using-data-collection-rules-preview"></a>使用数据收集规则在用于 VM 的 Azure Monitor 来宾运行状况中配置监视（预览）
-[用于 VM 的 Azure Monitor 来宾健康状况](vminsights-health-overview.md) 允许你查看按固定时间间隔采样的一组性能度量定义的虚拟机的运行状况。 本文介绍如何使用数据收集规则来修改多个虚拟机上的默认监视。
+# <a name="configure-monitoring-in-vm-insights-guest-health-using-data-collection-rules-preview"></a>使用数据收集规则在 VM insights 来宾运行状况中配置监视 (预览) 
+[VM insights 来宾运行状况](vminsights-health-overview.md) 允许你查看按固定时间间隔采样的一组性能度量定义的虚拟机的运行状况。 本文介绍如何使用数据收集规则来修改多个虚拟机上的默认监视。
 
 
 ## <a name="monitors"></a>监视器
-虚拟机的运行状况状态由其每个监视器的 [运行状况汇总](vminsights-health-overview.md#health-rollup-policy) 决定。 用于 VM 的 Azure Monitor 来宾健康状况中有两种监视器，如下表所示。
+虚拟机的运行状况状态由其每个监视器的 [运行状况汇总](vminsights-health-overview.md#health-rollup-policy) 决定。 VM insights 来宾运行状况中有两种类型的监视器，如下表所示。
 
 | 监视 | 说明 |
 |:---|:---|
 | 单元监视器 | 度量资源或应用程序的某个方面。 可能是检查性能计数器以确定资源的性能或其可用性。 |
 | 聚合监视器 | 将多个监视器组合在一起，以提供单个聚合运行状况状态。 聚合监视器可以包含一个或多个单元监视器和其他聚合监视器。 |
 
-不能直接更改用于 VM 的 Azure Monitor 来宾健康状况及其配置所使用的监视器集。 你可以创建 [替代](#overrides) ，但会修改默认配置的行为。 重写在数据收集规则中定义。 可以创建多个数据收集规则，每个规则包含多个替代以实现所需的监视配置。
+不能直接更改 VM insights 来宾运行状况和其配置所使用的监视器集。 你可以创建 [替代](#overrides) ，但会修改默认配置的行为。 重写在数据收集规则中定义。 可以创建多个数据收集规则，每个规则包含多个替代以实现所需的监视配置。
 
 ## <a name="monitor-properties"></a>监视器属性
 下表描述了可在每个监视器上配置的属性。
@@ -49,9 +49,9 @@ ms.locfileid: "100608833"
 
 | 监视 | 已启用 | 警报 | 警告 | 严重 | 评估频率 | Lookback | 计算类型 | 最小示例 | 最大示例 |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
-| CPU 使用率  | 正确 | 错误 | 无 | \> 90%    | 60 秒 | 240秒 | Min | 2 | 3 |
-| 可用内存 | 正确 | 错误 | 无 | \< 100 MB | 60 秒 | 240秒 | Max | 2 | 3 |
-| 文件系统      | 正确 | 错误 | 无 | \< 100 MB | 60 秒 | 120秒 | Max | 1 | 1 |
+| CPU 使用率  | True | False | None | \> 90%    | 60 秒 | 240秒 | Min | 2 | 3 |
+| 可用内存 | True | False | None | \< 100 MB | 60 秒 | 240秒 | Max | 2 | 3 |
+| 文件系统      | True | False | None | \< 100 MB | 60 秒 | 120秒 | Max | 1 | 1 |
 
 
 ## <a name="overrides"></a>替代
@@ -100,7 +100,7 @@ ms.locfileid: "100608833"
 ]
 ```
 
-| 元素 | 必须 | 说明 |
+| 元素 | 必选 | 说明 |
 |:---|:---|:---|
 | `name` | 是 | 扩展的用户定义字符串。 |
 | `streams` | 是 | 来宾运行状况数据将发送到的流的列表。 这必须包括 **HealthStateChange**。  |
@@ -119,7 +119,7 @@ ms.locfileid: "100608833"
 }
 ```
 
-| 元素 | 必须 | 说明 |
+| 元素 | 必选 | 说明 |
 |:---|:---|:---|
 | `schemaVersion` | 是 | 由 Microsoft 定义的字符串，用于表示元素的预期架构。 当前必须设置为1。0 |
 | `contentVersion` | 否 | 用户定义的字符串，用于跟踪不同版本的运行状况配置（如果需要）。 |
@@ -140,7 +140,7 @@ ms.locfileid: "100608833"
 ]
 ```
 
-| 元素 | 必须 | 说明 |
+| 元素 | 必选 | 说明 |
 |:---|:---|:---|
 | `scopes` | 是 | 指定此替代适用的虚拟机的一个或多个作用域的列表。 尽管 DCR 与虚拟机关联，但虚拟机必须在作用域内，才能应用替代。 |
 | `monitors` | 是 | 定义将接收此重写的监视器的一个或多个字符串的列表。  |

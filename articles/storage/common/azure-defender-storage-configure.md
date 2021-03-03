@@ -1,5 +1,5 @@
 ---
-title: 配置用于存储的 Azure Defender
+title: 配置适用于存储的 Azure Defender
 titleSuffix: Azure Storage
 description: 配置用于存储的 Azure Defender 以检测帐户活动中的异常，并通知可能有害的访问帐户尝试。
 services: storage
@@ -10,26 +10,26 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: tamram
 ms.reviewer: ozgun
-ms.openlocfilehash: 0bda32aaab301fe9ed685f0bfd6d4596fab4e5db
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: cdfc54b1eca3b07202148b7099884a04f35939ef
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789006"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101698138"
 ---
-# <a name="configure-azure-defender-for-storage"></a>配置用于存储的 Azure Defender
+# <a name="configure-azure-defender-for-storage"></a>配置适用于存储的 Azure Defender
 
-用于存储的 Azure Defender 提供额外的安全智能层，用于检测访问或利用存储帐户的异常和潜在有害尝试。 这一层保护使你可以在不是安全专家或管理安全监视系统的情况下解决威胁。
+用于存储的 Azure Defender 提供额外的安全智能层，可检测是否存在访问或攻击存储帐户的异常和潜在有害尝试行为。 借助此保护层，用户无需成为安全专家，也无需管理安全监视系统便可解决威胁。
 
 当活动出现异常时，会触发安全警报。 这些安全警报与 [Azure 安全中心](https://azure.microsoft.com/services/security-center/)集成，还会通过电子邮件发送给订阅管理员，并详细介绍了可疑活动以及如何调查和修正威胁的建议。
 
-服务引入对 Blob 存储和 Azure 文件的读取、写入和删除请求的资源日志，用于威胁检测。 若要调查来自 Azure Defender 的警报，可以使用存储分析日志记录查看相关的存储活动。 有关详细信息，请参阅在 [Azure 门户中监视存储帐户](storage-monitor-storage-account.md#configure-logging)中的 " **配置日志记录** "。
+服务引入对 Blob 存储和 Azure 文件的读取、写入和删除请求的资源日志，用于威胁检测。 若要调查来自 Azure Defender 的警报，可以使用存储分析日志记录查看相关的存储活动。 有关详细信息，请参阅在 [Azure 门户中监视存储帐户](./manage-storage-analytics-logs.md#configure-logging)中的 "**配置日志记录**"。
 
 ## <a name="availability"></a>可用性
 
-适用于存储的 azure Defender 目前可用于 Blob 存储、Azure 文件和 Azure Data Lake Storage Gen2。 支持 Azure Defender 的帐户类型包括常规用途 v2、块 blob 和 Blob 存储帐户。 适用于存储的 Azure Defender 适用于所有公有云和美国政府云，但不适用于其他主权或 Azure 政府版云区域。
+用于存储的 Azure Defender 目前可用于 Blob 存储、Azure 文件存储和 Azure Data Lake Storage Gen2。 支持 Azure Defender 的帐户类型包括常规用途 v2、块 Blob 和 Blob 存储帐户。 用于存储的 Azure Defender 可用于所有公有云和美国政府云，但不可用于其他主权或 Azure 政府云区域。
 
-为 Data Lake Storage 启用分层命名空间的帐户使用 Azure Blob 存储 Api 和 Data Lake Storage Api 支持事务。 Azure 文件共享通过 SMB 支持事务。
+为 Data Lake Storage 启用分层命名空间的帐户支持使用 Azure Blob 存储 API 和 Data Lake Storage API 的事务。 Azure 文件共享通过 SMB 支持事务。
 
 如需定价详细信息（包括 30 天免费试用版的信息），请参阅 [Azure 安全中心定价页](https://azure.microsoft.com/pricing/details/security-center/)。
 
@@ -52,24 +52,24 @@ ms.locfileid: "92789006"
 
 当你订阅 Azure 安全中心的标准层时，Azure Defender 会自动设置在你的所有存储帐户上。 可以在特定订阅下为存储帐户启用或禁用 Azure Defender，如下所示：
 
-1. 在 [Azure 门户](https://portal.azure.com)中启动 **Azure 安全中心** 。
-1. 在主菜单中的 " **管理** " 下，选择 " **定价 & 设置** "。
+1. 在 [Azure 门户](https://portal.azure.com)中启动 **Azure 安全中心**。
+1. 在主菜单中的 " **管理**" 下，选择 " **定价 & 设置**"。
 1. 选择要为其启用或禁用 Azure Defender 的订阅。
 1. 选择 " **打开 Azure defender** "，为订阅启用 azure defender。
-1. 在 " **按资源类型选择 Azure Defender 计划** " 下，找到 " **存储** " 行，然后在 " **计划** " 列中选择 " **已启用** "。
+1. 在 "**按资源类型选择 Azure Defender 计划**" 下，找到 "**存储**" 行，然后在 "**计划**" 列中选择 "**已启用**"。
 1. 保存所做更改。
 
     :::image type="content" source="media/azure-defender-storage-configure/enable-azure-defender-security-center.png" alt-text="显示如何在安全中心启用 Azure Defender 以实现存储的屏幕截图":::
 
 现在已为此订阅中的所有存储帐户启用 Azure Defender。
 
-### <a name="portal"></a>[门户](#tab/azure-portal)
+### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. 启动 [Azure 门户](https://portal.azure.com/)。
-1. 导航到自己的存储帐户。 在 " **设置** " 下，选择 " **高级安全** "。
-1. 选择 " **启用用于存储的 Azure Defender** "。
+1. 导航到自己的存储帐户。 在“设置”下，选择“高级安全”。
+1. 选择“启用用于存储的 Azure Defender”。
 
-    :::image type="content" source="media/azure-defender-storage-configure/enable-azure-defender-portal.png" alt-text="显示如何在安全中心启用 Azure Defender 以实现存储的屏幕截图":::
+    :::image type="content" source="media/azure-defender-storage-configure/enable-azure-defender-portal.png" alt-text="显示如何为 Azure 存储帐户启用 Azure Defender 的屏幕截图":::
 
 现在为此存储帐户启用了 Azure Defender。
 
@@ -84,15 +84,15 @@ ms.locfileid: "92789006"
 1. 启动 "Azure **策略-定义** " 页。
 1. 搜索 " **部署 Azure Defender 存储帐户** " 策略。
 
-    :::image type="content" source="media/azure-defender-storage-configure/storage-atp-policy-definitions.png" alt-text="显示如何在安全中心启用 Azure Defender 以实现存储的屏幕截图":::
+    :::image type="content" source="media/azure-defender-storage-configure/storage-atp-policy-definitions.png" alt-text="应用策略为存储帐户启用 Azure Defender":::
 
 1. 选择 Azure 订阅或资源组。
 
-    :::image type="content" source="media/azure-defender-storage-configure/storage-atp-policy2.png" alt-text="显示如何在安全中心启用 Azure Defender 以实现存储的屏幕截图":::
+    :::image type="content" source="media/azure-defender-storage-configure/storage-atp-policy2.png" alt-text="选择策略作用域的订阅或资源组 ":::
 
 1. 分配策略。
 
-    :::image type="content" source="media/azure-defender-storage-configure/storage-atp-policy1.png" alt-text="显示如何在安全中心启用 Azure Defender 以实现存储的屏幕截图":::
+    :::image type="content" source="media/azure-defender-storage-configure/storage-atp-policy1.png" alt-text="分配策略以启用 Azure Defender 存储":::
 
 ### <a name="rest-api"></a>[REST API](#tab/rest-api)
 
@@ -111,11 +111,11 @@ ms.locfileid: "92789006"
 
 ---
 
-## <a name="explore-security-anomalies"></a>探索安全异常
+## <a name="explore-security-anomalies"></a>了解安全异常
 
 存储活动出现异常时，用户会收到一封电子邮件通知，其中包含有关可疑安全事件的信息。 事件详细信息包括：
 
-- 异常的性质
+- 异常性质
 - 存储帐户名称
 - 事件时间
 - 存储类型
@@ -125,9 +125,11 @@ ms.locfileid: "92789006"
 
 电子邮件还包含有关可能原因的详细信息以及用于调查和缓解潜在威胁的建议操作。
 
-:::image type="content" source="media/azure-defender-storage-configure/storage-advanced-threat-protection-alert-email.png" alt-text="显示如何在安全中心启用 Azure Defender 以实现存储的屏幕截图" 磁贴](../../security-center/security-center-managing-and-responding-alerts.md)查看和管理当前的安全警报。 单击特定警报可提供详细信息以及用于调查当前威胁和解决潜在威胁的操作。
+:::image type="content" source="media/azure-defender-storage-configure/storage-advanced-threat-protection-alert-email.png" alt-text="用于存储的 Azure Defender 警报电子邮件":::
 
-:::image type="content" source="media/azure-defender-storage-configure/storage-advanced-threat-protection-alert.png" alt-text="显示如何在安全中心启用 Azure Defender 以实现存储的屏幕截图":::
+你可以从 Azure 安全中心的 " [安全警报" 磁贴](../../security-center/security-center-managing-and-responding-alerts.md)查看和管理当前的安全警报。 单击特定警报可提供详细信息以及用于调查当前威胁和解决潜在威胁的操作。
+
+:::image type="content" source="media/azure-defender-storage-configure/storage-advanced-threat-protection-alert.png" alt-text="用于存储的 Azure Defender 警报":::
 
 ## <a name="security-alerts"></a>安全警报
 

@@ -7,15 +7,15 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: bwren
 ms.subservice: metrics
-ms.openlocfilehash: 0ab7d8548494e96b4a7570ef26ccde39456bf690
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 0051ec15cafc60af6a0523631f77a9b52294e69c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100605946"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731708"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine"></a>使用 Windows 虚拟机的 Azure 资源管理器模板将来宾 OS 指标发送到 Azure Monitor 指标存储
-对于来自 Azure 虚拟机来宾 OS 的性能数据，不会像收集其他[平台指标](../insights/monitor-azure-resource.md#monitoring-data)一样自动收集其性能数据。 安装 Azure Monitor [诊断扩展](../agents/diagnostics-extension-overview.md)以将来宾 OS 指标收集到指标数据库中，以便该数据库可用于 Azure Monitor 指标的所有功能，包括准实时警报、制图、路由和来自 REST API 的访问。 本文介绍使用资源管理器模板将 Windows 虚拟机的来宾 OS 性能指标发送到指标数据库的过程。 
+对于来自 Azure 虚拟机来宾 OS 的性能数据，不会像收集其他[平台指标](./monitor-azure-resource.md#monitoring-data)一样自动收集其性能数据。 安装 Azure Monitor [诊断扩展](../agents/diagnostics-extension-overview.md)以将来宾 OS 指标收集到指标数据库中，以便该数据库可用于 Azure Monitor 指标的所有功能，包括准实时警报、制图、路由和来自 REST API 的访问。 本文介绍使用资源管理器模板将 Windows 虚拟机的来宾 OS 性能指标发送到指标数据库的过程。 
 
 > [!NOTE]
 > 有关配置诊断扩展以使用 Azure 门户收集来宾 OS 指标的详细信息，请参阅[安装和配置 Windows Azure 诊断扩展 (WAD)](../agents/diagnostics-extension-windows-install.md)。
@@ -29,7 +29,7 @@ ms.locfileid: "100605946"
 
 - 需要安装 [Azure PowerShell](/powershell/azure) 或 [Azure Cloud Shell](../../cloud-shell/overview.md)。
 
-- VM 资源必须位于[支持自定义指标的区域](../platform/metrics-custom-overview.md#supported-regions)中。 
+- VM 资源必须位于[支持自定义指标的区域](./metrics-custom-overview.md#supported-regions)中。 
 
 
 ## <a name="set-up-azure-monitor-as-a-data-sink"></a>将 Azure Monitor 设置为数据接收器
@@ -250,7 +250,7 @@ Azure 诊断扩展使用名为“数据接收器”的功能将指标和日志�
     New-AzResourceGroup -Name "<Name of Resource Group>" -Location "<Azure Region>"
    ```
    > [!NOTE]
-   > 请记住[使用为自定义指标启用的 Azure 区域](../platform/metrics-custom-overview.md)。
+   > 请记住[使用为自定义指标启用的 Azure 区域](./metrics-custom-overview.md)。
 
 1. 运行以下命令，使用资源管理器模板部署 VM。
    > [!NOTE]
@@ -285,4 +285,4 @@ Azure 诊断扩展使用名为“数据接收器”的功能将指标和日志�
 
 
 ## <a name="next-steps"></a>后续步骤
-- 详细了解[自定义指标](../platform/metrics-custom-overview.md)。
+- 详细了解[自定义指标](./metrics-custom-overview.md)。

@@ -1,17 +1,16 @@
 ---
 title: Azure Monitor 中的 Azure 网络分析解决方案 | Microsoft Docs
 description: 可以使用 Azure Monitor 中的 Azure 网络分析解决方案来审阅 Azure 网络安全组日志和 Azure 应用程序网关日志。
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/21/2018
-ms.openlocfilehash: cdb43bd8b91881905b1734d0c0b36c33fb27d232
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: b8b03378e82810bc2b9680805bacf8360f322a94
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100577513"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708129"
 ---
 # <a name="azure-networking-monitoring-solutions-in-azure-monitor"></a>Azure Monitor 中的 Azure 网络监视解决方案
 

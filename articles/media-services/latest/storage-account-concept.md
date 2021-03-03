@@ -42,7 +42,7 @@
 
 ## <a name="storage-account-double-encryption"></a>存储帐户双加密
 
-存储帐户支持双加密，但必须显式启用第二层。 请参阅[静态数据的 Azure 存储加密](https://docs.microsoft.com/azure/storage/common/storage-service-encryption#doubly-encrypt-data-with-infrastructure-encryption)。  
+存储帐户支持双加密，但必须显式启用第二层。 请参阅[静态数据的 Azure 存储加密](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption)。  
 
 ## <a name="storage-account-errors"></a>存储帐户错误
 

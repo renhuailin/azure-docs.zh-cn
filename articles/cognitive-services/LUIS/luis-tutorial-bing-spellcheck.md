@@ -9,16 +9,16 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 01/12/2021
-ms.openlocfilehash: ef9cb083c9bbe6eae5c34cd3799debde771231b6
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 509d1dc0b94bdfa9be5185df0bad793f7702eb26
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100558216"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731028"
 ---
 # <a name="correct-misspelled-words-with-bing-resource"></a>更正包含必应资源的拼写错误的单词
 
-V3 预测 API 现支持[必应拼写检查 API](https://docs.microsoft.com/bing/search-apis/bing-spell-check/overview)。 通过在请求的标头中包含必应搜索资源的键，向应用程序添加拼写检查。 如果已拥有必应资源，可以使用现有 Bing 资源，或 [创建新](https://portal.azure.com/#create/Microsoft.BingSearch) 资源来使用此功能。 
+V3 预测 API 现支持[必应拼写检查 API](/bing/search-apis/bing-spell-check/overview)。 通过在请求的标头中包含必应搜索资源的键，向应用程序添加拼写检查。 如果已拥有必应资源，可以使用现有 Bing 资源，或 [创建新](https://portal.azure.com/#create/Microsoft.BingSearch) 资源来使用此功能。 
 
 拼写错误的查询的预测输出示例：
 

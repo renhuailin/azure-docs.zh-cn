@@ -3,12 +3,12 @@ title: Azure 服务总线 - 自动更新消息传送单元
 description: 本文介绍如何使用自动更新 Service Bus 命名空间的消息传送单元。
 ms.topic: how-to
 ms.date: 09/15/2020
-ms.openlocfilehash: 932c7bb1235cb54aefe67253e38e1683187f4d2c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 594f9987bfa5a7a439fb862a0345d0004785b189
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100581647"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720590"
 ---
 # <a name="automatically-update-messaging-units-of-an-azure-service-bus-namespace"></a>自动更新 Azure 服务总线命名空间的消息传送单元。 
 自动缩放是指在处理应用程序负载时让适当数量的资源运行。 当负载增加时，它可以添加资源来处理增加的负载；当资源空闲时，它可以删除资源以节省资金。 请参阅 [Microsoft Azure 中的自动缩放概述](../azure-monitor/autoscale/autoscale-overview.md) ，了解有关 Azure Monitor 的自动缩放功能的详细信息。 
@@ -57,7 +57,7 @@ ms.locfileid: "100581647"
 不能将计划设置为在特定日期或日期范围内自动缩放的默认条件。 当具有计划的其他缩放条件都不匹配时，将执行此缩放条件。 
 
 ### <a name="scale-based-on-a-metric"></a>基于指标进行缩放
-下面的过程演示了如何添加一个条件，以便在 cpu 使用率大于75% 时，自动增加 (scale out) 的消息传送单元，并减小当 CPU 使用率低于25% 时 (缩放) 的消息单元。 增量是从1到2、2到4和4到8完成的。 同样，减量的实现方式为8到4，4到2，2到1。 
+下面的过程演示了如何添加一个条件，以便在 cpu 使用率大于75% 时，自动增加 (scale out) 的消息传送单元，并减小当 CPU 使用率低于25% 时 (缩放) 的消息单元。 增量是从1到2、2到4、4到8以及8到16的。 同样，减量是从16到8、8到4、4到2和2到1的。 
 
 1. 在 "**自动缩放设置**" 页上，为 "**选择如何缩放资源**" 选项选择 "**自定义自动缩放**"。 
 1. 在页面的 " **默认** " 部分中，指定默认条件的 **名称** 。 选择 **铅笔** 图标以编辑文本。 
@@ -74,7 +74,7 @@ ms.locfileid: "100581647"
         :::image type="content" source="./media/automate-update-messaging-units/scale-rule-cpu-75.png" alt-text="默认-如果 CPU 使用率大于75%，则向外缩放":::       
 
         > [!NOTE]
-        > 如果在此示例中总体 CPU 使用率超过75%，则自动缩放功能将增加命名空间的消息传送单元。 增量是从1到2、2到4和4到8完成的。 
+        > 如果在此示例中总体 CPU 使用率超过75%，则自动缩放功能将增加命名空间的消息传送单元。 增量是从1到2、2到4、4到8以及8到16的。 
 1. 再次选择 " **+ 添加规则** "，然后在 " **缩放规则** " 页上执行以下步骤：
     1. 从 " **指标名称** " 下拉列表中选择一个度量值。 在此示例中，它是 **CPU**。 
     1. 选择运算符和阈值。 在此示例中，它们 **小于** 和 **25** 的 **指标阈值触发缩放操作**。 
@@ -84,7 +84,7 @@ ms.locfileid: "100581647"
         :::image type="content" source="./media/automate-update-messaging-units/scale-rule-cpu-25.png" alt-text="默认-如果 CPU 使用率小于25%，则放大":::       
 
         > [!NOTE]
-        > 如果在此示例中总体 CPU 使用率低于25%，则自动缩放功能会减少命名空间的消息传送单元。 减量的实现方式为8到4，4到2，2到1。 
+        > 如果在此示例中总体 CPU 使用率低于25%，则自动缩放功能会减少命名空间的消息传送单元。 减量是从16到8、8到4、4到2和2到1的。 
 1. 设置消息传送单元的 **最小** 值和 **最大** 值以及 **默认** 数量。
 
     :::image type="content" source="./media/automate-update-messaging-units/default-scale-metric-based.png" alt-text="基于指标的默认规则":::

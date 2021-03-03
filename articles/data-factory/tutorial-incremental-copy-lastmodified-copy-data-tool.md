@@ -6,17 +6,17 @@ ms.author: yexu
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 11/09/2020
-ms.openlocfilehash: f2f0b3e452b39cb81f435dbee4a3b0f524b0213d
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 02/18/2021
+ms.openlocfilehash: fda76fd16787c01b9fc35ef63473be215a2c126d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100361137"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101740046"
 ---
 # <a name="incrementally-copy-new-and-changed-files-based-on-lastmodifieddate-by-using-the-copy-data-tool"></a>使用复制数据工具根据 LastModifiedDate 以增量方式复制新的和已更改的文件
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 在本教程中，你将使用 Azure 门户创建数据工厂。 然后，使用复制数据工具创建一个管道，该管道仅将 Azure Blob 存储中的新文件和已更改的文件以增量方式复制到另一个 Azure Blob 存储。 它使用 `LastModifiedDate` 来确定要复制的文件。
 
@@ -57,7 +57,7 @@ ms.locfileid: "100361137"
 
    ![“名称不可用”错误消息](./media/doc-common-process/name-not-available-error.png)
 
-   如果收到有关名称值的错误消息，请为数据工厂输入另一名称。 例如，使用名称 _**yourname**_ **ADFTutorialDataFactory**。 有关数据工厂项目的命名规则，请参阅[数据工厂命名规则](naming-rules.md)。
+   如果收到有关名称值的错误消息，请为数据工厂输入另一名称。 例如，使用名称 _**yourname**_**ADFTutorialDataFactory**。 有关数据工厂项目的命名规则，请参阅[数据工厂命名规则](naming-rules.md)。
 3. 在“订阅”下，选择要在其中创建新数据工厂的 Azure 订阅  。
 4. 在“资源组”下执行以下步骤之一  ：
 
@@ -67,7 +67,7 @@ ms.locfileid: "100361137"
          
     若要了解资源组，请参阅[使用资源组管理 Azure 资源](../azure-resource-manager/management/overview.md)。
 
-5. 在“版本”下选择“V2”。  
+5. 在“版本”下选择“V2”。 
 6. 在“位置”下选择数据工厂的位置。  列表中仅显示支持的位置。 数据工厂使用的数据存储（例如，Azure 存储和 Azure SQL 数据库）和计算资源（例如，Azure HDInsight）可以位于其他位置和区域。
 8. 选择“创建”  。
 9. 创建数据工厂后，会显示数据工厂主页。

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: tutorial
-ms.date: 08/31/2020
+ms.date: 02/09/2021
 ms.author: aahi
-ms.openlocfilehash: d987797c2c25f685a3c9250afeb17cec3ad3cb2e
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 8444ae08aa2c25c20723b2f8c571422af3b24bc8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94369539"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101736672"
 ---
 # <a name="tutorial-integrate-power-bi-with-the-text-analytics-cognitive-service"></a>教程：将 Power BI 与文本分析认知服务集成
 
@@ -89,7 +89,7 @@ CSV 导入对话框用于验证 Power BI Desktop 是否已正确检测到字符�
 ## <a name="understand-the-api"></a>了解 API
 <a name="UnderstandingAPI"></a>
 
-对于每个 HTTP 请求，文本分析服务的[关键短语 API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/56f30ceeeda5650db055a3c6) 最多可以处理一千个文本文档。 Power BI 偏好一次处理一个记录，因此在本教程中，对 API 的每次调用将只包含一个文档。 对于每个要处理的文档，关键短语 API 要求提供以下字段。
+对于每个 HTTP 请求，文本分析服务的[关键短语 API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V3-0/operations/KeyPhrases) 最多可以处理一千个文本文档。 Power BI 偏好一次处理一个记录，因此在本教程中，对 API 的每次调用将只包含一个文档。 对于每个要处理的文档，关键短语 API 要求提供以下字段。
 
 | 字段 | 说明 |
 | - | - |

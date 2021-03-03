@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/04/2021
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 8fc3ad3e1597d9b38bd095875c8a6f11260e8711
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: f64bb0dd0841e89d05a4399db4373a9eaaec48a2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100514984"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750692"
 ---
 你可以使用 Microsoft Intune (Windows 10) 部署 Azure VPN 客户端的配置文件。 本文将帮助你使用自定义设置创建 Intune 配置文件。
 
@@ -30,7 +30,7 @@ ms.locfileid: "100514984"
 * 自动连接
 * 受信任的网络检测已启用。
 
-有关其他受支持的选项，请参阅 [VPNV2 CSP](https://docs.microsoft.com/windows/client-management/mdm/vpnv2-csp) 一文。
+有关其他受支持的选项，请参阅 [VPNV2 CSP](/windows/client-management/mdm/vpnv2-csp) 一文。
 
 1. 从 Azure 门户下载 VPN 配置文件，并从包中提取 *azurevpnconfig.xml* 文件。
 1. 将下面的文本复制并粘贴到新的文本编辑器文件中。
@@ -76,10 +76,10 @@ ms.locfileid: "100514984"
    选择文件夹图标，并在 [XML](#xml) 步骤中选择在步骤6中保存的文件。 选择“添加”。
 
    :::image type="content" source="./media/vpn-gateway-virtual-wan-vpn-profile-intune/configuration-settings.png" alt-text="配置设置" lightbox="./media/vpn-gateway-virtual-wan-vpn-profile-intune/configuration-settings.png":::
-1. 选择“下一步”。
+1. 选择“**下一页**”。
 1. 在 " **分配**" 下，选择要将配置推送到的组。 然后，选择“下一步”  。
 1. 适用性规则是可选的。 根据需要定义任何规则，然后选择 " **下一步**"。
 1. 在“查看 + 创建”页面上，选择“创建”。 
 
     :::image type="content" source="./media/vpn-gateway-virtual-wan-vpn-profile-intune/create-profile.png" alt-text="创建配置文件":::
-1. 现在已创建自定义配置文件。 有关部署此配置文件的 Microsoft Intune 步骤，请参阅 [分配用户和设备配置文件](https://docs.microsoft.com/mem/intune/configuration/device-profile-assign)。
+1. 现在已创建自定义配置文件。 有关部署此配置文件的 Microsoft Intune 步骤，请参阅 [分配用户和设备配置文件](/mem/intune/configuration/device-profile-assign)。

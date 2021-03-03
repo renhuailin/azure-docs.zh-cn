@@ -7,13 +7,13 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/30/2020
-ms.openlocfilehash: 7ed1d9db09357b0702188c01a802600ff6350aff
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.date: 02/19/2021
+ms.openlocfilehash: b8754742c572a8dbc1f55c64e47bec640d757d65
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93147260"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101739362"
 ---
 # <a name="lookup-transformation-in-mapping-data-flow"></a>映射数据流中的查找转换
 
@@ -27,7 +27,7 @@ ms.locfileid: "93147260"
 
 ## <a name="configuration"></a>配置
 
-![屏幕截图显示具有以下文本中所述标签的 "查找设置" 选项卡。](media/data-flow/lookup1.png "查找")
+![屏幕截图显示“查找设置”选项卡，其中包含下文所述的标签。](media/data-flow/lookup1.png "查找")
 
 **主流：** 传入的数据流。 此流等效于联接的左侧。
 
@@ -38,8 +38,6 @@ ms.locfileid: "93147260"
 **匹配：** 仅当未选择“匹配多个行”时可见。 选择是否匹配任意行、首次匹配或最后匹配。 建议匹配任意行，因为它执行速度最快。 如果选择了首行或末行，则需要指定排序条件。
 
 **查找条件：** 选择要匹配的列。 如果满足相等条件，则将这些行视为匹配项。 悬停鼠标并选择“计算列”，以使用[数据流表达式语言](data-flow-expression-functions.md)提取值。
-
-查找转换只支持相等匹配。 若要自定义查找表达式以包含其他运算符（例如大于），建议使用[联接转换中的交叉联接](data-flow-join.md#custom-cross-join)。 交叉联接将避免执行时可能出现的笛卡尔积错误。
 
 输出数据中包含两个流中的所有列。 若要删除重复列或不需要的列，请在查找转换后添加[选择转换](data-flow-select.md)。 还可以在接收器转换中删除或重命名列。
 
@@ -71,7 +69,7 @@ ms.locfileid: "93147260"
 
 ## <a name="cached-lookup"></a>缓存查找
 
-如果要在同一源上执行多个更小的查找，则缓存的接收器和查找可能比查找转换更好用例。 缓存接收器可能更好的常见示例是，查找数据存储上的最大值，并将错误代码与错误消息数据库匹配。 有关详细信息，请了解 [缓存接收器](data-flow-sink.md#cache-sink) 和 [缓存的查找](concepts-data-flow-expression-builder.md#cached-lookup)。
+如果要在同一源上执行多次小范围查找，那么相比于查找转换，缓存的接收器和查找可能是一个更佳用例。 缓存接收器的常见示例在以下情况中可能更佳：查找数据存储中的最大值，将错误代码与错误消息数据库进行匹配。 有关详细信息，请了解[缓存接收器](data-flow-sink.md#cache-sink)和[缓存的查找](concepts-data-flow-expression-builder.md#cached-lookup)。
 
 ## <a name="data-flow-script"></a>数据流脚本
 
@@ -89,7 +87,7 @@ ms.locfileid: "93147260"
 ```
 ### <a name="example"></a>示例
 
-![屏幕截图显示以下代码的 "查找设置" 选项卡。](media/data-flow/lookup-dsl-example.png "查找")
+![屏幕截图显示以下代码的“查找设置”选项卡。](media/data-flow/lookup-dsl-example.png "查找")
 
 以上查找配置的数据流脚本位于下面的代码片段中。
 

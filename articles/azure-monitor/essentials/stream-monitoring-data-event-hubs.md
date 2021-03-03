@@ -7,12 +7,12 @@ ms.author: bwren
 ms.topic: conceptual
 ms.date: 07/15/2020
 ms.subservice: ''
-ms.openlocfilehash: e541869d040cc1eead2d295583c42016b64d5edb
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: db8f8628f77ef2a04a7e6d42d6470f254e458e01
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100607820"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708078"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub-or-external-partner"></a>将 Azure 监视数据流式传输到事件中心或外部合作伙伴
 
@@ -58,10 +58,9 @@ Azure Monitor 为 Azure、其他云和本地的应用程序与服务提供全堆
 | LogRhythm | 否| [此处](https://logrhythm.com/six-tips-for-securing-your-azure-cloud-environment/)提供了有关设置 LogRhythm，以从事件中心收集日志的说明。 
 |Logz.io | 是 | 有关详细信息，请参阅[开始使用用于在 Azure 上运行的 Java 应用的 Logz.io 进行监视和日志记录](/azure/developer/java/fundamentals/java-get-started-with-logzio)
 
-其他合作伙伴也可用。 有关所有 Azure Monitor 合作伙伴及其功能的更完整列表，请参阅 [Azure Monitor 合作伙伴集成](../platform/partners.md)。
+其他合作伙伴也可用。 有关所有 Azure Monitor 合作伙伴及其功能的更完整列表，请参阅 [Azure Monitor 合作伙伴集成](../partners.md)。
 
 ## <a name="next-steps"></a>后续步骤
 * [将活动日志存档到存储帐户](./activity-log.md#legacy-collection-methods)
 * [阅读 Azure 活动日志概述](../essentials/platform-logs-overview.md)
 * [根据活动日志事件设置警报](../alerts/alerts-log-webhook.md)
-

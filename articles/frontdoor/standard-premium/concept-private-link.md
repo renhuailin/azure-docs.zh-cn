@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/18/2021
 ms.author: tyao
 ms.custom: references_regions
-ms.openlocfilehash: dead60b9d8e0872f3d46b1f223ccf5e6697cbd90
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 6a1ec6e0b8862c6ad2b884b019e908e7d2a59a1e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101098741"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101715507"
 ---
 # <a name="secure-your-origin-with-private-link-in-azure-front-door-standardpremium-preview"></a>在 Azure 前门标准/高级 () 预览版中，通过专用链接保护源
 
@@ -30,7 +30,7 @@ ms.locfileid: "101098741"
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
 > 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-Azure 前门高级 SKU 可以使用专用链接服务连接到源。 你的应用程序可以托管在你的专用虚拟网络中，也可以位于 PaaS 服务后面，而不能从公共 Internet 进行访问。
+Azure 前门高级 SKU 可以使用专用链接服务连接到 Web 应用和存储帐户的源，从而无需公开访问源。
 
 :::image type="content" source="../media/concept-private-link/front-door-private-endpoint-architecture.png" alt-text="前门专用终结点体系结构":::
 
@@ -38,7 +38,8 @@ Azure 前门高级 SKU 可以使用专用链接服务连接到源。 你的应�
 
 :::image type="content" source="../media/concept-private-link/enable-private-endpoint.png" alt-text="启用专用终结点":::
 
-Azure 前门高级版支持各种原始类型。 如果你的源托管在专用网络中的一组虚拟机上，则需要先创建内部标准负载均衡器，启用到标准负载均衡器的专用链接服务，然后选择 "自定义源类型"。 对于 "专用链接配置"，请选择 "PrivateLinkServices" 作为 "资源类型"。 对于 PaaS 服务（例如 Azure Web 应用和存储帐户），可以先从相应的服务启用私有链接服务，然后选择 "Microsoft" "Web 应用" 和 "StorageAccounts/站点"。
+> [!NOTE]
+> 启用专用链接来源并批准专用终结点之间后，建立连接需要几分钟时间。 在此期间，对源的请求将收到前门错误消息。 建立连接后，错误消息将消失。
 
 ## <a name="limitations"></a>限制
 
@@ -50,6 +51,5 @@ Azure 前门专用终结点由平台和 Azure 前门的订阅进行管理。 Azu
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要使用专用链接服务将 Azure 前门 Premium 连接到虚拟机，请参阅 [创建专用终结点](../../private-link/create-private-endpoint-portal.md)。
 * 若要通过专用链接服务将 Azure 前门高级版连接到 Web 应用，请参阅 [使用专用终结点连接到 web 应用](../../private-link/tutorial-private-endpoint-webapp-portal.md)。
 * 若要通过专用链接服务将 Azure 前门高级版连接到存储帐户，请参阅 [使用专用终结点连接到存储帐户](../../private-link/tutorial-private-endpoint-storage-portal.md)。

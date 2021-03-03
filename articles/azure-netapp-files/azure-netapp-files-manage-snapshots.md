@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 02/10/2021
+ms.date: 02/20/2021
 ms.author: b-juche
-ms.openlocfilehash: 4d992bcc202dc8bdacdda6426371df1adb1ec3e6
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 2da2ae01e92ae2751f9f26e005579bad9911330a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100379108"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738729"
 ---
 # <a name="manage-snapshots-by-using-azure-netapp-files"></a>使用 Azure NetApp 文件管理快照
 
@@ -100,7 +100,7 @@ Azure NetApp 文件支持创建按需快照，并使用快照策略来计划自�
 
     ![每月快照策略](../media/azure-netapp-files/snapshot-policy-monthly.png) 
 
-4.  单击“保存”。  
+4.  单击“ **保存**”。  
 
 如果需要创建其他快照策略，请重复步骤3。
 创建的策略将显示在 "快照策略" 页中。
@@ -258,7 +258,10 @@ NFSv 4.1 不显示 `.snapshot` 目录 (`ls -la`) 。 但是，如果未设置 "�
 
 您可以删除不再需要保留的快照。 
 
-1. 中转到卷的 " **快照** " 菜单。 右键单击要删除的快照。 选择“删除” 。
+> [!IMPORTANT]
+> 快照删除操作不能撤消。 无法恢复已删除的快照。 
+
+1. 中转到卷的 " **快照** " 菜单。 右键单击要删除的快照。 选择“删除”。 
 
     ![描述快照右键单击菜单的屏幕截图](../media/azure-netapp-files/snapshot-right-click-menu.png) 
 

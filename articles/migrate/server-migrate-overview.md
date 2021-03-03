@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: cf3a3d3fdfcd03f068224c93643d364cd2646290
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 7446b2050fdd7bbc7704953c053da0629231191c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98895622"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101715116"
 ---
 # <a name="select-a-vmware-migration-option"></a>选择 VMware 迁移选项
 
@@ -28,13 +28,13 @@ ms.locfileid: "98895622"
 **设置** | **无代理** | **基于代理**
 --- | --- | ---
 **Azure 权限** | 你需要创建 Azure Migrate 项目的权限，并注册在部署 Azure Migrate 设备时创建 Azure AD 应用。 | 需要对 Azure 订阅具有参与者权限。 
-**复制** | 最多可同时从 vCenter Server 复制300个 Vm。<br/> 如果迁移的 Vm 超过50个，请创建多个批处理 Vm。<br/> 一次复制更多会影响性能。<br/><br/> 在门户中，一次最多可选择 10 台计算机进行复制。 若要复制更多计算机，请分批添加，每次添加 10 台。| 复制容量通过扩展复制设备而增加。
+**复制** | 最多可同时从 vCenter Server 复制500个 Vm。 在门户中，一次最多可选择 10 台计算机进行复制。 若要复制更多计算机，请分批添加，每次添加 10 台。| 复制容量通过扩展复制设备而增加。
 **设备部署** | [Azure Migrate 设备](migrate-appliance.md)部署在本地。 | [Azure Migrate 复制设备](migrate-replication-appliance.md)部署在本地。
 **Site Recovery 兼容性** | 兼容. | 如果已使用 Site Recovery 为计算机设置复制，则无法使用 Azure Migrate Server 迁移进行复制。
 **目标磁盘** | 托管磁盘 | 托管磁盘
 **磁盘限制** | OS 磁盘： 2 TB<br/><br/> 数据磁盘： 32 TB<br/><br/> 最大磁盘数：60 | OS 磁盘： 2 TB<br/><br/> 数据磁盘： 32 TB<br/><br/> 最大磁盘数：63
 **传递磁盘** | 不支持 | 支持
-**UEFI 启动** | 。 | 。
+**UEFI 启动** | 支持。 | 支持。
 
 ## <a name="compare-deployment-steps"></a>比较部署步骤
 
@@ -44,13 +44,13 @@ ms.locfileid: "98895622"
 --- | --- | --- | ---
 **部署 Azure Migrate 设备** | 在 VMware VM 上运行的轻型设备。<br/><br/> 设备用于发现和评估计算机，并使用无代理迁移来迁移计算机。 | 必需。<br/><br/> 如果已设置设备进行评估，则可以使用同一设备进行无代理迁移。 | 不需要。<br/><br/> 如果已设置了要评估的设备，则可以将其保留在原位，如果已完成评估，则可以将其删除。
 **使用服务器评估工具** | 利用 Azure Migrate：服务器评估工具评估计算机。 | 评估是可选的。 | 评估是可选的。
-**使用服务器迁移工具** | 在 Azure Migrate 项目中添加 Azure Migrate Server 迁移工具。 | 必需 | 必需
-**为迁移准备 VMware** | 在 VMware 服务器和 Vm 上配置设置。 | 必需 | 必需
-**在 Vm 上安装移动服务** | 移动服务在要复制的每个 VM 上运行 | 不需要 | 必须
-**部署复制设备** | [复制设备](migrate-replication-appliance.md)用于基于代理的迁移。 它在 Vm 上运行的移动服务与服务器迁移之间进行连接。 | 不需要 | 必须
-**复制 vm**。 启用 VM 复制。 | 配置复制设置并选择要复制的 Vm | 必需 | 必需
-**运行测试迁移** | 运行测试迁移，确保一切按预期正常进行。 | 必需 | 必需
-**运行完全迁移** | 迁移 Vm。 | 必需 | 必需
+**使用服务器迁移工具** | 在 Azure Migrate 项目中添加 Azure Migrate Server 迁移工具。 | 必选 | 必选
+**为迁移准备 VMware** | 在 VMware 服务器和 Vm 上配置设置。 | 必选 | 必选
+**在 Vm 上安装移动服务** | 移动服务在要复制的每个 VM 上运行 | 不是必需 | 必选
+**部署复制设备** | [复制设备](migrate-replication-appliance.md)用于基于代理的迁移。 它在 Vm 上运行的移动服务与服务器迁移之间进行连接。 | 不是必需 | 必选
+**复制 vm**。 启用 VM 复制。 | 配置复制设置并选择要复制的 Vm | 必选 | 必选
+**运行测试迁移** | 运行测试迁移，确保一切按预期正常进行。 | 必选 | 必选
+**运行完全迁移** | 迁移 Vm。 | 必选 | 必选
 
 
 

@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 44266f7a7485b44ba60a27aadd7422e8d1c3acf4
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: bb1935242790333a91b47ccecc19d934b8145085
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99259400"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101688325"
 ---
 # <a name="redirect-hard-coded-links-for-apps-published-with-azure-ad-application-proxy"></a>重定向 Azure AD 应用程序代理发布的应用的硬编码链接
 
@@ -63,6 +63,9 @@ Azure AD 应用程序代理使本地应用对远程或在自己设备上的用�
 若要使用此功能，用户需要下载该扩展并登录。 管理员或用户不需要进行其他配置。 
 
 若要了解详细信息，包括如何配置此选项，请参阅 [MyApps 浏览器扩展](../user-help/my-apps-portal-end-user-access.md#download-and-install-the-my-apps-secure-sign-in-extension) 文档。
+
+> [!NOTE]
+> MyApps 浏览器扩展不支持通配符 Url 的链接转换。
 
 ### <a name="option-3-link-translation-setting"></a>选项 3：链接转换设置 
 
@@ -141,7 +144,7 @@ Azure AD 应用程序代理使本地应用对远程或在自己设备上的用�
 3. 将“转换应用程序主体中的 URL”改为“是”。
 
    ![选择“是”可转换应用程序主体中的 URL](./media/application-proxy-configure-hard-coded-link-translation/select_yes.png)
-4. 选择“保存”应用所做的更改。
+4. 单击“保存”应用所做的更改。
 
 现在，当用户访问此应用程序时，代理将自动扫描租户上通过应用程序代理发布的内部 URL。
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/10/2021
 ms.author: duau
-ms.openlocfilehash: c686902ed23e0f1a94bc9548d0a876ecbbce8f31
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 5fedb9d09e61540d0ee8a1fe21fbd25f31390f5d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100377867"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101742443"
 ---
 # <a name="expressroute-connectivity-partners-and-peering-locations"></a>ExpressRoute 连接合作伙伴和对等互连位置
 
@@ -43,8 +43,8 @@ ExpressRoute 位置（有时称为对等互连位置或交会位置）是 Micros
 | **地缘政治区域** | **Azure 区域** | **ExpressRoute 位置** |
 | --- | --- | --- |
 | **澳大利亚政府** |澳大利亚中部、澳大利亚中部 2 |堪培拉、堪培拉 2 |
-| **欧洲** | 法国中部、法国南部、德国北部、德国中西部、北欧、挪威东部、挪威西部、瑞士北部、瑞士西部、英国西部、英国南部、西欧 |阿姆斯特丹、阿姆斯特丹 2、柏林、哥本哈根、都柏林、法兰克福、日内瓦、伦敦、伦敦 2、马赛、米兰、慕尼黑、纽波特（威尔士）、奥斯陆、巴黎、斯塔万格、斯德哥尔摩、苏黎世 |
-| **北美** |美国东部、美国西部、美国东部 2 区、美国西部 2 区、美国中部、美国中南部、美国中北部、美国中西部、加拿大中部、加拿大东部 |亚特兰大，芝加哥，达拉斯，丹佛，拉斯维加斯，洛杉矶，洛杉矶 Angeles2，迈阿密，明尼阿波利斯，蒙特利尔，纽约，Phoenix，魁北克城，Queretaro (墨西哥) ，Quincy，San Antonio，西雅图，硅谷，拉斯维加斯 Valley2，多伦多，范特区，华盛顿特区，华盛顿特区 |
+| **欧洲** | 法国中部、法国南部、德国北部、德国中西部、北欧、挪威东部、挪威西部、瑞士北部、瑞士西部、英国西部、英国南部、西欧 |阿姆斯特丹，Amsterdam2，柏林，哥本哈根，都柏林，法兰克福，Frankfurt2，Geneva，伦敦，London2，马德里，马赛，Milan，慕尼黑，纽波特 (威尔士) ，Oslo，巴黎，Stavanger，斯德哥尔摩，苏黎世 |
+| **北美** |美国东部、美国西部、美国东部 2 区、美国西部 2 区、美国中部、美国中南部、美国中北部、美国中西部、加拿大中部、加拿大东部 |亚特兰大，芝加哥，达拉斯，丹佛，拉斯维加斯，洛杉矶，洛杉矶 Angeles2，迈阿密，明尼阿波利斯，蒙特利尔，纽约，Phoenix，魁北克城，Queretaro (墨西哥) ，Quincy，San Antonio，北京，硅谷，硅 Valley2，多伦多，Toronto2，范特区，华盛顿特区，华盛顿特区 |
 | **亚洲** | 东亚、东南亚 | 曼谷、中国香港特别行政区、中国香港特别行政区 2、雅加达、吉隆坡、新加坡、新加坡 2、中国台北 |
 | **印度** | 印度西部、印度中部、印度南部 |金奈、金奈 2、孟买、孟买 2 |
 | **日本** | 日本西部、日本东部 |大阪、东京、东京 2 |
@@ -52,7 +52,7 @@ ExpressRoute 位置（有时称为对等互连位置或交会位置）是 Micros
 | **韩国** | 韩国中部、韩国南部 |釜山、首尔|
 | **阿联酋** | 阿联酋中部、阿联酋北部 | 迪拜、迪拜 2 |
 | **南非** | 南非西部、南非北部 |开普敦、约翰内斯堡 |
-| **南美洲** | 巴西南部 |波哥大，圣保罗 |
+| **南美洲** | 巴西南部 |波哥大，Rio de 里约热内卢，圣保罗 |
 
 
 ## <a name="regions-and-geopolitical-boundaries-for-national-clouds"></a>国家/地区云的区域和地缘政治边界
@@ -105,7 +105,7 @@ ExpressRoute 位置（有时称为对等互连位置或交会位置）是 Micros
 | **du datamena** |支持 |支持 | 迪拜 2 |
 | **eir** |支持 |支持 |都柏林|
 | **[Epsilon Global Communications](https://www.epsilontel.com/solutions/direct-cloud-connect)** |支持 |支持 |新加坡、新加坡 2 |
-| **[Equinix](https://www.equinix.com/partners/microsoft-azure/)** |支持 |支持 |阿姆斯特丹，Amsterdam2，亚特兰大，柏林，Canberra2，北京，达拉斯，Dubai2，都柏林，法兰克福，Geneva，香港特别行政区，伦敦，London2，洛杉矶，洛杉矶 Angeles2，墨尔本，迈阿密，Milan，纽约，大阪，巴黎，圣保罗，北京，斯德哥尔摩，圣保罗，北京，华盛顿州 |
+| **[Equinix](https://www.equinix.com/partners/microsoft-azure/)** |支持 |支持 |阿姆斯特丹、Amsterdam2、亚特兰大，柏林，波哥大，Canberra2，芝加哥，达拉斯，Dubai2，都柏林，法兰克福，Frankfurt2，Geneva，香港特别行政区，伦敦，London2，洛杉矶，洛杉矶 Angeles2，墨尔本，北京，Milan，纽约，大阪，巴黎，Rio de 里约热内卢，圣保罗，北京，首尔，北京， |
 | **Etisalat UAE** |支持 |支持 |迪拜|
 | **[euNetworks](https://eunetworks.com/services/solutions/cloud-connect/microsoft-azure-expressroute/)** |支持 |支持 |阿姆斯特丹，Amsterdam2，都柏林，法兰克福，伦敦 |
 | **[FarEasTone](https://www.fetnet.net/corporate/en/Enterprise.html)** |支持 |支持 |台北|
@@ -133,7 +133,7 @@ ExpressRoute 位置（有时称为对等互连位置或交会位置）是 Micros
 | **[Level 3 Communications](http://your.level3.com/LP=882?WT.tsrc=02192014LP882AzureVanityAzureText)** |支持 |支持 |阿姆斯特丹、芝加哥、达拉斯、伦敦、新港（威尔士）、圣保罗、西雅图、硅谷、新加坡、华盛顿特区 |
 | **LG CNS** |支持 |支持 |釜山、首尔 |
 | **[Liquid Telecom](https://www.liquidtelecom.com/products-and-services/cloud.html)** |支持 |支持 |开普敦、约翰内斯堡 |
-| **[Megaport](https://www.megaport.com/services/microsoft-expressroute/)** |支持 |支持 |阿姆斯特丹、亚特兰大、奥克兰、芝加哥、达拉斯、丹佛、Dubai2、都柏林，法兰克福，Geneva，香港特别行政区，香港 Kong2，拉斯维加斯，伦敦，London2，洛杉矶，墨尔本，迈阿密，明尼阿波利斯，蒙特利尔，纽约，大阪，Oslo，，魁北克城，San Antonio，西雅图，硅谷，新加坡，新加坡2，Stavanger，斯德哥尔摩，悉尼，Sydney2，北京，Tokyo2 多伦多， |
+| **[Megaport](https://www.megaport.com/services/microsoft-expressroute/)** |支持 |支持 |阿姆斯特丹、亚特兰大、奥克兰、钦奈、芝加哥、达拉斯、丹佛、Dubai2、都柏林法兰克福，Geneva，香港特别行政区，香港 Kong2，拉斯维加斯，伦敦，London2，洛杉矶，墨尔本，迈阿密，明尼阿波利斯，蒙特利尔，纽约，大阪，Oslo，巴黎，Antonio，魁北克城，San 新加坡2，北京，内华达州，新加坡，Stavanger，Sydney2，斯德哥尔摩，悉尼，Tokyo2，北京，多伦多， |
 | **[MTN](https://www.mtnbusiness.co.za/en/Cloud-Solutions/Pages/microsoft-express-route.aspx)** |支持 |支持 |London |
 | **[Neutrona Networks](https://www.neutrona.com/index.php/azure-expressroute/)** |支持 |支持 |达拉斯、洛杉矶、迈阿密、圣保罗、华盛顿特区 |
 | **[Next Generation Data](https://vantage-dc-cardiff.co.uk/)** |支持 |支持 |Newport(Wales) |
@@ -149,6 +149,7 @@ ExpressRoute 位置（有时称为对等互连位置或交会位置）是 Micros
 | **[Orixcom](https://www.orixcom.com/cloud-solutions/)** | 支持 | 支持 | 迪拜 2 |
 | **[PacketFabric](https://www.packetfabric.com/cloud-connectivity/microsoft-azure)** |支持 |支持 |芝加哥，拉斯维加斯，硅谷，华盛顿特区 |
 | **[PCCW Global Limited](https://consoleconnect.com/clouds/#azureRegions)** |支持 |支持 |芝加哥、香港特别行政区、香港 2、伦敦、新加坡 2 |
+| **[REANNZ](https://www.reannz.co.nz/products-and-services/cloud-connect/)** | 支持 | 支持 | 奥克兰 |
 | **[Retelit](https://www.retelit.it/EN/Home.aspx)** | 支持 | 支持 | Milan | 
 | **[Sejong Telecom](https://www.sejongtelecom.net/en/pages/service/cloud_ms)** |支持 |支持 |首尔 |
 | **[SES](https://www.ses.com/networks/signature-solutions/signature-cloud/ses-and-azure-expressroute)** | 支持 |支持 | London2，华盛顿特区 |

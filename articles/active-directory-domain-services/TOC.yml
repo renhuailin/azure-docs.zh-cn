@@ -21,7 +21,7 @@
       href: tutorial-configure-ldaps.md
     - name: 配置密码哈希同步
       href: tutorial-configure-password-hash-sync.md
-    - name: 创建副本集（预览）
+    - name: 创建副本集
       href: tutorial-create-replica-set.md
     - name: 创建自定义托管域
       href: tutorial-create-instance-advanced.md
@@ -43,7 +43,7 @@
       href: administration-concepts.md
     - name: 常见部署方案
       href: scenarios.md
-    - name: 副本集（预览）
+    - name: 副本集
       href: concepts-replica-sets.md
     - name: 林和信任
       items:

@@ -12,12 +12,12 @@ ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: japere
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 5d314331059a96388f23cd43667fca20a689f167
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 2a0411e97f78104de1356d482e4e43a42701c073
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99258840"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687618"
 ---
 # <a name="troubleshoot-problems-signing-in-to-an-application-from-azure-ad-my-apps"></a>排查 Azure AD 我的应用登录应用程序时遇到的问题
 
@@ -141,14 +141,15 @@ ms.locfileid: "99258840"
 7.  选择 **组** 以查看用户所属的组。
 
 ### <a name="check-if-a-user-has-more-than-999-app-role-assignments"></a>检查用户是否具有超过999个应用角色分配
-如果为用户分配了999以上的应用角色分配，则他们可能不会在我的应用中看到其所有应用。
+如果用户的应用角色分配超过999，则他们可能无法在我的应用中看到其所有应用。
 
 这是因为 "我的应用程序" 当前最多可读取999个应用角色分配，以确定向其分配用户的应用。 如果向用户分配的应用超过999个，则无法控制将在 "我的应用" 门户中显示的应用。
 
-若要检查授予用户的应用角色分配数，请执行以下步骤：
+若要检查用户是否具有超过999个应用角色分配，请执行以下步骤：
 1. 安装 [**Microsoft. Graph**](https://github.com/microsoftgraph/msgraph-sdk-powershell) PowerShell 模块。
-2. 以 `Connect-MgGraph -Scopes "Directory.Read.All"` **全局管理员** 身份运行和身份验证。
-3. 运行 `$m = Get-MgUserAppRoleAssignment -UserId "<userId>" | Measure; $m.Count` 确定用户当前已授予的应用角色分配的数量。
+2. 运行 `Connect-MgGraph -Scopes "User.ReadBasic.All Application.Read.All"`。
+3. 运行 `(Get-MgUserAppRoleAssignment -UserId "<userId>" -Top 999).Count` 确定用户当前已授予的应用角色分配的数量。
+4. 如果结果为999，则用户可能具有超过999个应用角色分配。
 
 ### <a name="check-a-users-assigned-licenses"></a>检查用户的已分配许可证
 若要检查用户的已分配许可证，请执行以下步骤：
@@ -171,7 +172,7 @@ ms.locfileid: "99258840"
 7.  选择 " **许可证** " 以查看用户当前已分配的许可证。
 8.  选择 " **分配** " 按钮。
 9.  从可用产品列表中选择 **一个或多个产品**。
-10. **可选** 选择 " **分配选项** " 项以按粒度分配产品。 选择“确定”。
+10. **可选** 选择 " **分配选项** " 项以按粒度分配产品。 选择“确定”  。
 11. 选择 " **分配** " 按钮，将这些许可证分配给此用户。
 
 ## <a name="troubleshooting-deep-links"></a>深层链接疑难解答

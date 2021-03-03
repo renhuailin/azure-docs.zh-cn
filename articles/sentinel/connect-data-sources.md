@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: aeb92dce41c12ada41175964835d9c89a634a6e3
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 3df78d6b53f8e8739307e9b870aa03d76bfd6771
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100590269"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101718601"
 ---
 # <a name="connect-data-sources"></a>连接数据源
 
@@ -56,7 +56,7 @@ Azure Sentinel 支持以下数据连接方法：
     - [Azure Web 应用程序防火墙 (WAF) ](connect-azure-waf.md) (以前的 Microsoft WAF) 
     - [Cloud App Security](connect-cloud-app-security.md)
     - [域名服务器](connect-dns.md)
-    - [Microsoft 365 Defender](connect-microsoft-365-defender.md) -包括 MDATP 原始数据
+    - [Microsoft 365 Defender](connect-microsoft-365-defender.md) -包括 M365D 事件和 MDE 原始数据
     - [Microsoft defender For Endpoint](connect-microsoft-defender-advanced-threat-protection.md) (以前的 Microsoft Defender 高级威胁防护) 
     - [Microsoft Defender For Identity](connect-azure-atp.md) (以前的 Azure 高级威胁防护) 
     - [Microsoft Defender For office 365](connect-office-365-advanced-threat-protection.md) (以前的 Office 365 高级威胁防护) 
@@ -76,6 +76,9 @@ Azure Sentinel 支持以下数据连接方法：
     - [Citrix Analytics（安全）](connect-citrix-analytics.md)
     - [F5 BIG-IP](connect-f5-big-ip.md)
     - [Forcepoint DLP](connect-forcepoint-dlp.md)
+    - [Google Workspace (以前的 G Suite) ](connect-google-workspace.md)
+    - [NXLog (Windows) DNS 日志](connect-nxlog-dns.md)
+    - [NXLog LinuxAudit](connect-nxlog-linuxaudit.md)
     - [Okta SSO](connect-okta-single-sign-on.md)
     - [Orca Security](connect-orca-security-alerts.md)
     - [Perimeter 81 日志](connect-perimeter-81-logs.md)
@@ -83,6 +86,7 @@ Azure Sentinel 支持以下数据连接方法：
     - [Proofpoint TAP](connect-proofpoint-tap.md)
     - [Qualys VM](connect-qualys-vm.md)
     - [Salesforce 服务云](connect-salesforce-service-cloud.md)
+    - [Sophos Cloud Optix](connect-sophos-cloud-optix.md)
     - [Squadra Technologies secRMM](connect-squadra-secrmm.md)
     - [Symantec ICDX](connect-symantec.md)
     - [VMware Carbon Black Cloud Endpoint Standard](connect-vmware-carbon-black.md)
@@ -98,6 +102,8 @@ Azure Sentinel 支持以下数据连接方法：
     - **防火墙、代理和终结点-CEF：**
         - [AI Vectra 检测](connect-ai-vectra-detect.md)
         - [Akamai 安全事件](connect-akamai-security-events.md)
+        - [Aruba ClearPass](connect-aruba-clearpass.md)
+        - [Broadcom Symantec DLP](connect-broadcom-symantec-dlp.md)
         - [Check Point](connect-checkpoint.md)
         - [Cisco ASA](connect-cisco.md)
         - [Citrix WAF](connect-citrix-waf.md)
@@ -118,6 +124,7 @@ Azure Sentinel 支持以下数据连接方法：
         - [其他基于 CEF 的设备](connect-common-event-format.md)
     - **防火墙、代理和终结点-Syslog：**
         - [Alsid for Active Directory](connect-alsid-active-directory.md)
+        - [Cisco Meraki](connect-cisco-meraki.md)
         - [Cisco 统一计算系统 (UCS) ](connect-cisco-ucs.md)
         - [Infoblox NIOS](connect-infoblox.md)
         - [Juniper SRX](connect-juniper-srx.md)
@@ -126,6 +133,7 @@ Azure Sentinel 支持以下数据连接方法：
         - [Squid Proxy](connect-squid-proxy.md)
         - [Symantec Proxy SG](connect-symantec-proxy-sg.md)
         - [Symantec VIP](connect-symantec-vip.md)
+        - [VMware ESXi](connect-vmware-esxi.md)
         - [其他基于 Syslog 的设备](connect-syslog.md)
     - [Apache HTTP Server](connect-apache-http-server.md)
     - DLP 解决方案

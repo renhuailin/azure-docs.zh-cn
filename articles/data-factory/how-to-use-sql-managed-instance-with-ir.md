@@ -6,12 +6,12 @@ ms.author: chugu
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 4/15/2020
-ms.openlocfilehash: 43b118b8f3f7444cd3c4d0cfa31b72a3522d6d84
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: c268dba51ecf2c2b246c54574ecf3838533b017e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100392572"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710203"
 ---
 # <a name="use-azure-sql-managed-instance-with-sql-server-integration-services-ssis-in-azure-data-factory"></a>在 Azure 数据工厂中结合使用 Azure SQL 托管实例和 SQL Server Integration Services (SSIS)
 
@@ -22,7 +22,7 @@ ms.locfileid: "100392572"
 - [为 Azure-SSIS IR 预配由 Azure SQL 托管实例托管的 SSIS 目录 (SSISDB)](#provision-azure-ssis-ir-with-ssisdb-hosted-by-azure-sql-managed-instance)
 - [通过 Azure SQL 托管实例代理作业执行 SSIS 包](how-to-invoke-ssis-package-managed-instance-agent.md)
 - [通过 Azure SQL 托管实例代理作业清理 SSISDB 日志](#clean-up-ssisdb-logs)
-- [使用 Azure SQL 托管实例进行 Azure-SSIS IR 故障转移](configure-bcdr-azure-ssis-integration-runtime.md#azure-ssis-ir-failover-with-a-sql-managed-instance)
+- [使用 Azure SQL 托管实例进行 Azure-SSIS IR 故障转移](configure-bcdr-azure-ssis-integration-runtime.md)
 - [使用 Azure SQL 托管实例作为数据库工作负荷目标，将本地 SSIS 工作负荷迁移到 ADF 中的 SSIS](scenario-ssis-migration-overview.md#azure-sql-managed-instance-as-database-workload-destination)
 
 ## <a name="provision-azure-ssis-ir-with-ssisdb-hosted-by-azure-sql-managed-instance"></a>为 Azure-SSIS IR 预配由 Azure SQL 托管实例托管的 SSISDB

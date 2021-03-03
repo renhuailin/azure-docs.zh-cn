@@ -1,17 +1,16 @@
 ---
 title: Windows 诊断扩展架构
 description: Azure Monitor 中 Windows 诊断扩展 (WAD) 的配置架构参考。
-ms.subservice: diagnostic-extension
 ms.topic: reference
 author: bwren
 ms.author: bwren
 ms.date: 01/20/2020
-ms.openlocfilehash: eccd4010d796e541e4a0a2c0b0c485b5f18f0366
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 4b4b893b222a62619a36d59c2cf042f1aa5590bc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100608343"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708622"
 ---
 # <a name="windows-diagnostics-extension-schema"></a>Windows 诊断扩展架构
 Azure 诊断扩展是 Azure Monitor 中的一个代理，用于从 Azure 计算资源的来宾操作系统和工作负荷中收集监视数据。 本文详细介绍了用于在 Windows 虚拟机和其他计算资源上配置诊断扩展的架构。

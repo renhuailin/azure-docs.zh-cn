@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: cawams
 ms.author: cawa
 ms.date: 02/11/2021
-ms.openlocfilehash: 643645eb3b361cd68def1177ba7e8af89f1963bc
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: 838a48aa11a1cb36c3a7d822ce88f58936aa976d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100520908"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734615"
 ---
 # <a name="visualizations-for-application-change-analysis-preview"></a>应用程序更改分析 (预览的可视化) 
 
@@ -80,13 +80,13 @@ UI 支持选择多个订阅以查看资源更改。 使用订阅筛选器：
 
 ## <a name="activity-log-change-history"></a>活动日志更改历史记录
 
-活动日志中的 " [查看更改历史记录](../platform/activity-log.md#view-change-history) " 功能将调用应用程序更改分析服务后端，以获取与操作关联的更改。 用于直接调用 [Azure 资源关系图](../../governance/resource-graph/overview.md)的 **更改历史记录**，但已通过交换后端来调用应用程序更改分析，因此，返回的更改将包括来自 [azure 资源关系图](../../governance/resource-graph/overview.md)的资源级别更改、 [azure 资源管理器](../../azure-resource-manager/management/overview.md)的资源属性以及 PaaS 服务（如应用服务 web 应用）的来宾内更改。 为了使应用程序更改分析服务能够扫描用户订阅中的更改，需要注册资源提供程序。 第一次输入 " **更改历史记录** " 选项卡时，该工具将自动开始注册 **ChangeAnalysis** 资源提供程序。 注册后，将立即提供 **Azure 资源关系图** 的更改，并涵盖过去14天的时间。 在订阅完成后大约4小时后，其他源的更改将可用。
+活动日志中的 " [查看更改历史记录](../essentials/activity-log.md#view-change-history) " 功能将调用应用程序更改分析服务后端，以获取与操作关联的更改。 用于直接调用 [Azure 资源关系图](../../governance/resource-graph/overview.md)的 **更改历史记录**，但已通过交换后端来调用应用程序更改分析，因此，返回的更改将包括来自 [azure 资源关系图](../../governance/resource-graph/overview.md)的资源级别更改、 [azure 资源管理器](../../azure-resource-manager/management/overview.md)的资源属性以及 PaaS 服务（如应用服务 web 应用）的来宾内更改。 为了使应用程序更改分析服务能够扫描用户订阅中的更改，需要注册资源提供程序。 第一次输入 " **更改历史记录** " 选项卡时，该工具将自动开始注册 **ChangeAnalysis** 资源提供程序。 注册后，将立即提供 **Azure 资源关系图** 的更改，并涵盖过去14天的时间。 在订阅完成后大约4小时后，其他源的更改将可用。
 
 ![活动日志更改历史记录集成](./media/change-analysis/activity-log-change-history.png)
 
 ## <a name="vm-insights-integration"></a>VM Insights 集成
 
-已启用 [VM Insights](../insights/vminsights-overview.md) 的用户可以查看其虚拟机中的更改，这些更改可能会导致度量值图表（例如 CPU 或内存）出现任何高峰。 更改数据集成在 VM Insights 导航栏中。 用户可以查看 VM 中是否发生了任何更改，并选择 **调查更改** 以在应用程序更改分析独立 UI 中查看更改详细信息。
+已启用 [VM Insights](../vm/vminsights-overview.md) 的用户可以查看其虚拟机中的更改，这些更改可能会导致度量值图表（例如 CPU 或内存）出现任何高峰。 更改数据集成在 VM Insights 导航栏中。 用户可以查看 VM 中是否发生了任何更改，并选择 **调查更改** 以在应用程序更改分析独立 UI 中查看更改详细信息。
 
 [![VM insights 集成](./media/change-analysis/vm-insights.png)](./media/change-analysis/vm-insights.png#lightbox)
 

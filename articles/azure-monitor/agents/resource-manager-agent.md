@@ -6,15 +6,15 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 11/17/2020
-ms.openlocfilehash: 9f8ad1e9a3c69d4ab629694fb18eab4bce95bb38
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 4d4f9b7caed81f8c01e7e2d7e9f94ec3acf3ba92
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100597372"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737335"
 ---
 # <a name="resource-manager-template-samples-for-agents-in-azure-monitor"></a>用于 Azure Monitor 代理的资源管理器模板示例
-本文包含用于在 Azure Monitor 中为虚拟机部署和配置 [Log Analytics 代理](../platform/log-analytics-agent.md)和[诊断扩展](../platform/diagnostics-extension-overview.md)的 [Azure 资源管理器模板](../../azure-resource-manager/templates/template-syntax.md)示例。 每个示例都包含模板文件和参数文件，其中包含要提供给模板的示例值。
+本文包含用于在 Azure Monitor 中为虚拟机部署和配置 [Log Analytics 代理](./log-analytics-agent.md)和[诊断扩展](./diagnostics-extension-overview.md)的 [Azure 资源管理器模板](../../azure-resource-manager/templates/template-syntax.md)示例。 每个示例都包含模板文件和参数文件，其中包含要提供给模板的示例值。
 
 [!INCLUDE [azure-monitor-samples](../../../includes/azure-monitor-resource-manager-samples.md)]
 
@@ -421,7 +421,7 @@ Windows 和 Linux 代理上 Azure Monitor 代理（预览版）中的本部分�
 本节中的示例在 Azure 中的 Windows 和 Linux 虚拟机上安装诊断扩展，并对其进行配置以实现数据收集。
 
 ### <a name="windows"></a>Windows
-以下示例将在 Windows Azure 虚拟机上启用和配置诊断扩展。 有关该配置的详细信息，请参阅 [Windows 诊断扩展架构](../platform/diagnostics-extension-schema-windows.md)。
+以下示例将在 Windows Azure 虚拟机上启用和配置诊断扩展。 有关该配置的详细信息，请参阅 [Windows 诊断扩展架构](./diagnostics-extension-schema-windows.md)。
 
 #### <a name="template-file"></a>模板文件
 
@@ -807,6 +807,6 @@ Windows 和 Linux 代理上 Azure Monitor 代理（预览版）中的本部分�
 
 ## <a name="next-steps"></a>后续步骤
 
-* [获取 Azure Monitor 的其他示例模板](../samples/resource-manager-samples.md)。
-* [详细了解 Log Analytics 代理](../platform/log-analytics-agent.md)。
-* [详细了解诊断扩展](../platform/diagnostics-extension-overview.md)。
+* [获取 Azure Monitor 的其他示例模板](../resource-manager-samples.md)。
+* [详细了解 Log Analytics 代理](./log-analytics-agent.md)。
+* [详细了解诊断扩展](./diagnostics-extension-overview.md)。

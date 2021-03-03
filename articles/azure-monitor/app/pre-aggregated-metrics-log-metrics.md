@@ -6,12 +6,12 @@ author: vgorbenko
 ms.author: vitalyg
 ms.date: 09/18/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: c419411b0956cdc42055f0e97a47fc8e4ddb38c9
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: acbe535d740eb527d165be1675f31e759851a987
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100589728"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717819"
 ---
 # <a name="log-based-and-pre-aggregated-metrics-in-application-insights"></a>Application Insights 中基于日志的指标和预先聚合的指标
 
@@ -48,8 +48,10 @@ ms.locfileid: "100589728"
 | .NET Core 和 .NET Framework | 支持 (V2.13.1+)| 通过 [TrackMetric](api-custom-events-metrics.md#trackmetric) 支持| 通过 [GetMetric](get-metric.md) 支持 (V2.7.2+) |
 | Java                         | 不支持       | 通过 [TrackMetric](api-custom-events-metrics.md#trackmetric) 支持| 不支持                           |
 | Node.js                      | 不支持       | 通过 [TrackMetric](api-custom-events-metrics.md#trackmetric) 支持| 不支持                           |
-| Python                       | 不支持       | 支持                                 | 通过 [OpenCensus.stats](opencensus-python.md#metrics) 支持 |  
+| Python                       | 不支持       | 支持                                 | 部分支持通过 [OpenCensus](opencensus-python.md#metrics) |  
 
+> [!NOTE]
+>  使用 OpenCensus 的 Python 的指标实现不同于 GetMetric。 有关详细信息，请参阅 [有关指标的 Python 文档](./opencensus-python.md#metrics)。
 
 ### <a name="codeless-supported-pre-aggregated-metrics-table"></a>支持无代码的预聚合指标表
 

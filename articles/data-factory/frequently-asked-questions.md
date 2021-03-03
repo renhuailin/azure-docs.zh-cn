@@ -6,12 +6,12 @@ ms.author: weetok
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: a3b892b5d92feb743d9a538c4e418b1f47e39b03
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: d0fd62c0173bec17c217ece5560119749d1a4fc6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100386299"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101739328"
 ---
 # <a name="azure-data-factory-faq"></a>Azure 数据工厂常见问题解答
 
@@ -48,7 +48,7 @@ Azure 数据工厂经过一系列符合性认证（包括 _SOC 1、2、3_、 _HI
     - 循环容器：
         * foreach 活动将在循环中迭代指定的活动集合。 
 - 基于触发器的流：
-    - 可以按需或按时钟时间触发管道。
+    - 可以按需或按时钟时间触发管道，也可以按事件网格主题响应
 - 增量流：
     - 可以使用参数并定义用于增量复制的高水位标记，同时移动本地或云中的关系存储中的维度或引用表，以将数据载入 Lake。
 
@@ -281,14 +281,14 @@ Azure 数据工厂 (ADF) 是一种托管的数据集成服务，它允许数据�
 整理数据流支持 SQL 中的以下数据类型。 使用不受支持的数据类型时，将会收到验证错误。
 
 * short
-* Double
+* double
 * real
 * FLOAT
 * char
 * nchar
 * varchar
 * nvarchar
-* 整型
+* integer
 * int
 * bit
 * boolean
@@ -296,7 +296,7 @@ Azure 数据工厂 (ADF) 是一种托管的数据集成服务，它允许数据�
 * tinyint
 * bigint
 * long
-* 文本
+* text
 * date
 * datetime
 * datetime2

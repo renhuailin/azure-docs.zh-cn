@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 05/21/2018
 tags: connectors
-ms.openlocfilehash: 52bf42434640dc965999895549b4fa12a139dcce
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 306298e4338665ef52add7f46d6da8675c97c3e2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95999597"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101716544"
 ---
 # <a name="find-results-in-bing-search-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用查找必应搜索中的结果
 
@@ -50,7 +50,7 @@ ms.locfileid: "95999597"
 
    对于此示例，请提供从必应搜索返回匹配的新闻文章的条件。
 
-   | 属性 | 必须 | 值 | 说明 |
+   | 属性 | 必选 | Value | 说明 |
    |----------|----------|-------|-------------|
    | 搜索查询 | 是 | <*搜索词*> | 输入要使用的搜索关键字。 |
    | 市场 | 是 | <*locale*> | 搜索区域设置。 默认为“zh-CN”，但可以选择另一个值。 |
@@ -101,7 +101,7 @@ ms.locfileid: "95999597"
 
    对于此示例，提供返回触发器结果子集的条件。
 
-   | 属性 | 必须 | 值 | 说明 |
+   | 属性 | 必选 | Value | 说明 |
    |----------|----------|-------|-------------|
    | 搜索查询 | 是 | <*搜索表达式*> | 输入用于查询触发器结果的表达式。 可以从动态内容列表的字段中进行选择，或使用表达式生成器创建表达式。 |
    | 市场 | 是 | <*locale*> | 搜索区域设置。 默认为“zh-CN”，但可以选择另一个值。 |
@@ -148,9 +148,9 @@ ms.locfileid: "95999597"
 
 1. 系统提示输入连接信息时，请提供以下详细信息：
 
-   | 属性 | 必须 | 值 | 说明 |
+   | 属性 | 必选 | Value | 说明 |
    |----------|----------|-------|-------------|
-   | 连接名称 | 是 | <*connection-name*> | 为连接创建的名称 |
+   | 连接名称 | 是 | <*connection-name*> | 将要为连接创建的名称 |
    | API 版本 | 是 | <*API 版本*> | 默认情况下，必应搜索 API 版本设置为当前版本。 可以根据需要选择早期版本。 |
    | API 密钥 | 是 | <*API 密钥*> | 之前获取的必应搜索 API 密钥。 如果没有密钥，请立刻获取 [API 密钥](https://azure.microsoft.com/try/cognitive-services/?api=bing-news-search-api)。 |  
    |||||  
@@ -159,7 +159,7 @@ ms.locfileid: "95999597"
 
    ![创建连接](./media/connectors-create-api-bing-search/bing-search-create-connection.png)
 
-2. 完成操作后，选择“创建”  。
+2. 完成操作后，选择“创建”。
 
 ## <a name="connector-reference"></a>连接器参考
 

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 7/14/2020
 ms.author: raynew
-ms.openlocfilehash: 79558bd2c8e9bfec0aff47d254944977d271a762
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 8d748f93337a770e0d565bab79fdfb3625bda70d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97587808"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101735516"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>将本地 Hyper-V VM 灾难恢复到 Azure 时的支持矩阵
 
@@ -60,8 +60,8 @@ VM 配置 | 复制到 Azure 的 VM 必须满足 [Azure 要求](#azure-vm-require
 
 **组件** | **使用 Virtual Machine Manager 的 Hyper-V** | **不使用 Virtual Machine Manager 的 Hyper-V**
 --- | --- | ---
-主机网络：NIC 组合 | “是” | 是
-主机网络：VLAN | “是” | 是
+主机网络：NIC 组合 | 是 | 是
+主机网络：VLAN | 是 | 是
 主机网络：IPv4 | 是 | 是
 主机网络：IPv6 | 否 | 否
 来宾 VM 网络：NIC 组合 | 否 | 否
@@ -80,11 +80,11 @@ Https Proxy | 否 | 否
 
 **组件** | **使用 Virtual Machine Manager 的 Hyper-V** | **不使用 Virtual Machine Manager 的 Hyper-V**
 --- | --- | ---
-Azure ExpressRoute | 是 | “是”
-ILB | 是 | “是”
-ELB | 是 | “是”
-Azure 流量管理器 | 是 | “是”
-多 NIC | 是 | “是”
+Azure ExpressRoute | 是 | 是
+ILB | 是 | 是
+ELB | 是 | 是
+Azure 流量管理器 | 是 | 是
+多 NIC | 是 | 是
 保留 IP | 是 | 是
 IPv4 | 是 | 是
 保留源 IP 地址 | 是 | 是
@@ -111,12 +111,12 @@ VHD/VHDX | 是 | 是
 EFI/UEFI<br></br>Azure 中迁移的 VM 将自动转换为 BIOS 启动 VM。 该 VM 应仅运行 Windows Server 2012 及更高版本。 OS 磁盘应该最多有五个分区或更少，OS 磁盘的大小应该小于 300 GB。| 是 | 是
 共享群集磁盘 | 否 | 否
 加密磁盘 | 否 | 否
-NFS | 不可用 | 不可用
+NFS | 不可用 | NA
 SMB 3.0 | 否 | 否
 RDM | 不可用 | 不可用
 磁盘 > 1 TB | 是，最大 4,095 GB | 是，最大 4,095 GB
 磁盘：4K 逻辑和物理扇区 | 不支持：Gen 1/Gen 2 | 不支持：Gen 1/Gen 2
-磁盘：4K 逻辑扇区和 512 字节物理扇区 | “是” |  是
+磁盘：4K 逻辑扇区和 512 字节物理扇区 | 是 |  是
 逻辑卷管理 (LVM)。 仅数据磁盘支持 LVM。 Azure 仅提供单个 OS 磁盘。 | 是 | 是
 包含条带化磁盘的卷 > 1 TB | 是 | 是
 存储空间 | 否 | 否
@@ -143,7 +143,7 @@ RDM | 不可用 | 不可用
 导入/导出服务 | 否 | 否
 启用了防火墙的 Azure 存储帐户 | 是的。 适用于目标存储和缓存。 | 是的。 适用于目标存储和缓存。
 修改存储帐户 | 否。 启用复制后，无法修改目标 Azure 存储帐户。 若要修改，请禁用然后重新启用灾难恢复。 | 否
-安全传输选项 | 是
+安全传输选项 | 是 | 是
 
 
 ## <a name="azure-compute-features"></a>Azure 计算功能

@@ -6,15 +6,15 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/06/2020
-ms.openlocfilehash: a28748854e039d639755ce6bb93fb68695bd9891
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: e03e31c342f90a0ea9f24e6be098a801410d4b72
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100608350"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101732082"
 ---
 # <a name="sources-of-monitoring-data-for-azure-monitor"></a>Azure Monitor 的监视数据源
-Azure Monitor 基于包含[日志](../platform/data-platform-logs.md)和[指标](../platform/data-platform-metrics.md)的[通用监视数据平台](../platform/data-platform.md)。 将数据收集到此平台后，可以使用 Azure Monitor 中的一组通用工具统一分析来自多个资源的数据。 还可以将监视数据发送到其他位置以支持特定的方案，某些资源可能会将数据写入到其他位置，然后可以在日志或指标中收集数据。
+Azure Monitor 基于包含[日志](../logs/data-platform-logs.md)和[指标](../essentials/data-platform-metrics.md)的[通用监视数据平台](../data-platform.md)。 将数据收集到此平台后，可以使用 Azure Monitor 中的一组通用工具统一分析来自多个资源的数据。 还可以将监视数据发送到其他位置以支持特定的方案，某些资源可能会将数据写入到其他位置，然后可以在日志或指标中收集数据。
 
 本文介绍 Azure Monitor 收集的不同监视数据源，以及 Azure 资源创建的监视数据。 本文还提供了有关在不同位置收集这些数据所需的配置的详细信息的链接。
 
@@ -40,7 +40,7 @@ Azure 应用程序中的监视数据源可以组织为层，最高的层是应�
 
 | 层 | 说明 | 收集方法 |
 |:---|:---|:---|
-| [操作系统（来宾）](#operating-system-guest) | 有关计算资源上的操作系统的数据。 | 安装 Log Analytics 代理以将客户端数据源收集到 Azure Monitor，并安装依赖项代理以收集支持用于 VM 的 Azure Monitor 的依赖项。<br>对于 Azure 虚拟机，请安装 Azure 诊断扩展以将日志和指标收集到 Azure Monitor。 |
+| [操作系统（来宾）](#operating-system-guest) | 有关计算资源上的操作系统的数据。 | 安装 Log Analytics 代理，将客户端数据源收集到 Azure Monitor 和依赖关系代理，以收集支持 VM insights 的依赖项。<br>对于 Azure 虚拟机，请安装 Azure 诊断扩展以将日志和指标收集到 Azure Monitor。 |
 | [应用程序代码](#application-code) | 有关实际应用程序和代码的性能与功能，包括性能跟踪、应用程序日志和用户遥测数据。 | 检测代码以将数据收集到 Application Insights 中。 |
 | [自定义源](#custom-sources) | 来自外部服务或者其他组件或设备的数据。 | 从任何 REST 客户端将日志或指标数据收集到 Azure Monitor 中。 |
 
@@ -66,14 +66,14 @@ Azure 应用程序中的监视数据源可以组织为层，最高的层是应�
 ![Azure 订阅](media/data-sources/azure-subscription.png)
 
 ### <a name="azure-activity-log"></a>Azure 活动日志 
-[Azure 活动日志](../platform/platform-logs-overview.md)包含服务运行状况记录，以及对 Azure 订阅中的资源所做的配置更改的记录。 活动日志可供所有 Azure 资源使用，代表其外部视图。
+[Azure 活动日志](../essentials/platform-logs-overview.md)包含服务运行状况记录，以及对 Azure 订阅中的资源所做的配置更改的记录。 活动日志可供所有 Azure 资源使用，代表其外部视图。
 
 | 目标 | 说明 | 参考 |
 |:---|:---|
-| 活动日志 | 活动日志将收集到其自身的数据存储中，可以通过 Azure Monitor 菜单查看这些日志，或使用它来创建活动日志警报。 | [在 Azure 门户中查询活动日志](./../platform/activity-log.md#view-the-activity-log) |
-| Azure Monitor 日志 | 配置 Azure Monitor 日志来收集活动日志，以结合其他监视数据对其进行分析。 | [收集和分析 Azure Monitor 的 Log Analytics 工作区中的 Azure 活动日志](./../platform/activity-log.md) |
-| Azure 存储 | 将活动日志导出到 Azure 存储进行存档。 | [存档活动日志](./../platform/resource-logs.md#send-to-azure-storage)  |
-| 事件中心 | 使用事件中心将活动日志流式传输到其他位置 | [将活动日志流式传输到事件中心](./../platform/resource-logs.md#send-to-azure-event-hubs) |
+| 活动日志 | 活动日志将收集到其自身的数据存储中，可以通过 Azure Monitor 菜单查看这些日志，或使用它来创建活动日志警报。 | [在 Azure 门户中查询活动日志](../essentials/activity-log.md#view-the-activity-log) |
+| Azure Monitor 日志 | 配置 Azure Monitor 日志来收集活动日志，以结合其他监视数据对其进行分析。 | [收集和分析 Azure Monitor 的 Log Analytics 工作区中的 Azure 活动日志](../essentials/activity-log.md) |
+| Azure 存储 | 将活动日志导出到 Azure 存储进行存档。 | [存档活动日志](../essentials/resource-logs.md#send-to-azure-storage)  |
+| 事件中心 | 使用事件中心将活动日志流式传输到其他位置 | [将活动日志流式传输到事件中心](../essentials/resource-logs.md#send-to-azure-event-hubs) |
 
 ### <a name="azure-service-health"></a>Azure 服务运行状况
 [Azure 服务运行状况](../../service-health/service-health-overview.md)提供订阅中应用程序和资源所依赖的 Azure 服务的运行状况信息。
@@ -90,24 +90,24 @@ Azure 应用程序中的监视数据源可以组织为层，最高的层是应�
 
 
 ### <a name="platform-metrics"></a>平台指标 
-大多数 Azure 服务会将[平台指标](../platform/data-platform-metrics.md)直接发送到指标数据库，这些指标反映了其性能和运行情况。 具体[指标因资源类型而异](../platform/metrics-supported.md)。 
+大多数 Azure 服务会将[平台指标](../essentials/data-platform-metrics.md)直接发送到指标数据库，这些指标反映了其性能和运行情况。 具体[指标因资源类型而异](../essentials/metrics-supported.md)。 
 
 | 目标 | 说明 | 参考 |
 |:---|:---|:---|
-| Azure Monitor 指标 | 平台指标将写入到 Azure Monitor 指标数据库，无需进行任何配置。 从指标资源管理器访问平台指标。  | [Azure 指标资源管理器入门](../platform/metrics-getting-started.md)<br>[Azure Monitor 支持的指标](../platform/metrics-supported.md) |
-| Azure Monitor 日志 | 将平台指标复制到日志中，以使用 Log Analytics 进行趋势分析和其他分析。 | [将 Azure 诊断定向到 Log Analytics](./../platform/resource-logs.md#send-to-log-analytics-workspace) |
-| 事件中心 | 使用事件中心将指标流式传输到其他位置。 |[将 Azure 监视数据流式传输到事件中心以便外部工具使用](../platform/stream-monitoring-data-event-hubs.md) |
+| Azure Monitor 指标 | 平台指标将写入到 Azure Monitor 指标数据库，无需进行任何配置。 从指标资源管理器访问平台指标。  | [Azure 指标资源管理器入门](../essentials/metrics-getting-started.md)<br>[Azure Monitor 支持的指标](../essentials/metrics-supported.md) |
+| Azure Monitor 日志 | 将平台指标复制到日志中，以使用 Log Analytics 进行趋势分析和其他分析。 | [将 Azure 诊断定向到 Log Analytics](../essentials/resource-logs.md#send-to-log-analytics-workspace) |
+| 事件中心 | 使用事件中心将指标流式传输到其他位置。 |[将 Azure 监视数据流式传输到事件中心以便外部工具使用](../essentials/stream-monitoring-data-event-hubs.md) |
 
 ### <a name="resource-logs"></a>资源日志
-[资源日志](../platform/platform-logs-overview.md)提供 Azure 资源的 _内部_ 运行情况的见解。  资源日志是自动创建的，但你必须创建诊断设置以指定目标，从而可以针对各个资源收集这些日志。
+[资源日志](../essentials/platform-logs-overview.md)提供 Azure 资源的 _内部_ 运行情况的见解。  资源日志是自动创建的，但你必须创建诊断设置以指定目标，从而可以针对各个资源收集这些日志。
 
-资源日志的配置要求和内容因资源类型而异，然而并非所有服务都创建资源日志。 有关每个服务的详细信息和详细配置过程的链接，请参阅 [Azure 资源日志支持的服务、架构和类别](./../platform/resource-logs-schema.md)。 如果某个服务未在本文中列出，则该服务当前不会创建资源日志。
+资源日志的配置要求和内容因资源类型而异，然而并非所有服务都创建资源日志。 有关每个服务的详细信息和详细配置过程的链接，请参阅 [Azure 资源日志支持的服务、架构和类别](../essentials/resource-logs-schema.md)。 如果某个服务未在本文中列出，则该服务当前不会创建资源日志。
 
 | 目标 | 说明 | 参考 |
 |:---|:---|:---|
-| Azure Monitor 日志 | 将资源日志发送到 Azure Monitor 日志，以结合收集的其他日志数据进行分析。 | [在 Azure Monitor 的 Log Analytics 工作区中收集 Azure 资源日志](./../platform/resource-logs.md#send-to-azure-storage) |
-| 存储 | 将资源日志发送到 Azure 存储进行存档。 | [存档 Azure 资源日志](./../platform/resource-logs.md#send-to-log-analytics-workspace) |
-| 事件中心 | 使用事件中心将资源日志流式传输到其他位置。 |[将 Azure 资源日志流式传输到事件中心](./../platform/resource-logs.md#send-to-azure-event-hubs) |
+| Azure Monitor 日志 | 将资源日志发送到 Azure Monitor 日志，以结合收集的其他日志数据进行分析。 | [在 Azure Monitor 的 Log Analytics 工作区中收集 Azure 资源日志](../essentials/resource-logs.md#send-to-azure-storage) |
+| 存储 | 将资源日志发送到 Azure 存储进行存档。 | [存档 Azure 资源日志](../essentials/resource-logs.md#send-to-log-analytics-workspace) |
+| 事件中心 | 使用事件中心将资源日志流式传输到其他位置。 |[将 Azure 资源日志流式传输到事件中心](../essentials/resource-logs.md#send-to-azure-event-hubs) |
 
 ## <a name="operating-system-guest"></a>操作系统（来宾）
 Azure 中的、其他云中的以及本地的计算资源都有要监视的来宾操作系统。 安装一个或多个代理后，可将来宾发出的遥测数据收集到 Azure Monitor 中，以使用与 Azure 服务本身相同的监视工具对其进行分析。
@@ -119,10 +119,10 @@ Azure 中的、其他云中的以及本地的计算资源都有要监视的来�
 
 | 目标 | 说明 | 参考 |
 |:---|:---|:---|
-| 存储 | Azure 诊断扩展始终写入 Azure 存储帐户。 | [安装并配置 Windows Azure 诊断扩展 (WAD)](../platform/diagnostics-extension-windows-install.md)<br>[使用 Linux 诊断扩展监视指标和日志](../../virtual-machines/extensions/diagnostics-linux.md) |
-| Azure Monitor 指标 | 配置用于收集性能计数器的诊断扩展时，这些计数器将写入到 Azure Monitor 指标数据库。 | [使用 Windows 虚拟机的资源管理器模板将来宾 OS 指标发送到 Azure Monitor 指标存储](../platform/collect-custom-metrics-guestos-resource-manager-vm.md) |
-| 事件中心 | 配置诊断扩展，以使用事件中心将数据流式传输到其他位置。  | [使用事件中心流式传输 Azure 诊断数据](../platform/diagnostics-extension-stream-event-hubs.md)<br>[使用 Linux 诊断扩展监视指标和日志](../../virtual-machines/extensions/diagnostics-linux.md) |
-| Application Insights 日志 | 从支持应用程序的计算资源收集日志和性能计数器，以结合其他应用程序数据对其进行分析。 | [将云服务、虚拟机或 Service Fabric 诊断数据发送到 Application Insights](../platform/diagnostics-extension-to-application-insights.md) |
+| 存储 | Azure 诊断扩展始终写入 Azure 存储帐户。 | [安装并配置 Windows Azure 诊断扩展 (WAD)](./diagnostics-extension-windows-install.md)<br>[使用 Linux 诊断扩展监视指标和日志](../../virtual-machines/extensions/diagnostics-linux.md) |
+| Azure Monitor 指标 | 配置用于收集性能计数器的诊断扩展时，这些计数器将写入到 Azure Monitor 指标数据库。 | [使用 Windows 虚拟机的资源管理器模板将来宾 OS 指标发送到 Azure Monitor 指标存储](../essentials/collect-custom-metrics-guestos-resource-manager-vm.md) |
+| 事件中心 | 配置诊断扩展，以使用事件中心将数据流式传输到其他位置。  | [使用事件中心流式传输 Azure 诊断数据](./diagnostics-extension-stream-event-hubs.md)<br>[使用 Linux 诊断扩展监视指标和日志](../../virtual-machines/extensions/diagnostics-linux.md) |
+| Application Insights 日志 | 从支持应用程序的计算资源收集日志和性能计数器，以结合其他应用程序数据对其进行分析。 | [将云服务、虚拟机或 Service Fabric 诊断数据发送到 Application Insights](./diagnostics-extension-to-application-insights.md) |
 
 
 ### <a name="log-analytics-agent"></a>Log Analytics 代理 
@@ -130,16 +130,16 @@ Azure 中的、其他云中的以及本地的计算资源都有要监视的来�
 
 | 目标 | 说明 | 参考 |
 |:---|:---|:---|
-| Azure Monitor 日志 | Log Analytics 代理可以直接连接到 Azure Monitor，也可以通过 System Center Operations Manager 进行连接，可用于从配置的数据源收集数据，或者从监视解决方案收集数据，以便提供在虚拟机上运行的应用程序的更多见解。 | [Azure Monitor 中的代理数据源](../agents/agent-data-sources.md)<br>[将 Operations Manager 连接到 Azure Monitor](../platform/om-agents.md) |
-| VM 存储 | 用于 VM 的 Azure Monitor 使用 Log Analytics 代理将运行状况状态信息存储在自定义位置。 有关详细信息，请参阅下一部分。  |
+| Azure Monitor 日志 | Log Analytics 代理可以直接连接到 Azure Monitor，也可以通过 System Center Operations Manager 进行连接，可用于从配置的数据源收集数据，或者从监视解决方案收集数据，以便提供在虚拟机上运行的应用程序的更多见解。 | [Azure Monitor 中的代理数据源](../agents/agent-data-sources.md)<br>[将 Operations Manager 连接到 Azure Monitor](./om-agents.md) |
+| VM 存储 | VM insights 使用 Log Analytics 代理在自定义位置中存储 heath 状态信息。 有关详细信息，请参阅下一部分。  |
 
 
-### <a name="azure-monitor-for-vms"></a>用于 VM 的 Azure Monitor 
-[用于 VM 的 Azure Monitor](../insights/vminsights-overview.md) 为虚拟机提供自定义的监视体验，提供除核心 Azure Monitor 功能以外的功能。 它要求在 Windows 和 Linux 虚拟机上安装 Dependency Agent，并与 Log Analytics 代理集成，以收集有关虚拟机上运行的进程和外部进程依赖项的发现数据。
+### <a name="vm-insights"></a>VM insights 
+[VM insights](../vm/vminsights-overview.md) 为虚拟机提供了自定义的监视体验，提供了除核心 Azure Monitor 功能以外的功能。 它要求在 Windows 和 Linux 虚拟机上安装 Dependency Agent，并与 Log Analytics 代理集成，以收集有关虚拟机上运行的进程和外部进程依赖项的发现数据。
 
 | 目标 | 说明 | 参考 |
 |:---|:---|:---|
-| Azure Monitor 日志 | 存储有关代理中的进程和依赖项的数据。 | [使用用于 VM 的 Azure Monitor（预览版）映射了解应用程序组件](../insights/vminsights-maps.md) |
+| Azure Monitor 日志 | 存储有关代理中的进程和依赖项的数据。 | [使用 VM insights (预览版) Map 了解应用程序组件](../vm/vminsights-maps.md) |
 
 
 
@@ -154,7 +154,7 @@ Azure Monitor 中的详细应用程序监视是通过 [Application Insights](/az
 
 | 目标 | 说明 | 参考 |
 |:---|:---|:---|
-| Azure Monitor 日志 | 有关应用程序的运行数据，包括页面查看次数、应用程序请求数、异常数和跟踪数。 | [在 Azure Monitor 中分析日志数据](../log-query/log-query-overview.md) |
+| Azure Monitor 日志 | 有关应用程序的运行数据，包括页面查看次数、应用程序请求数、异常数和跟踪数。 | [在 Azure Monitor 中分析日志数据](../logs/log-query-overview.md) |
 |                    | 应用程序组件之间的依赖关系信息，用于支持应用程序映射和遥测关联。 | [Application Insights 中的遥测关联](../app/correlation.md) <br> [应用程序映射](../app/app-map.md) |
 |            | 可用性测试（从公共 Internet 上的不同位置测试应用程序的可用性和响应能力）的结果。 | [监视任何网站的可用性和响应能力](../app/monitor-web-app-availability.md) |
 | Azure Monitor 指标 | Application Insights 将描述应用程序的性能和运行情况的指标以及在应用程序中定义的自定义指标收集到 Azure Monitor 指标数据库中。 | [Application Insights 中基于日志的指标和预先聚合的指标](../app/pre-aggregated-metrics-log-metrics.md)<br>[用于处理自定义事件和指标的 Application Insights API](../app/api-custom-events-metrics.md) |
@@ -170,20 +170,20 @@ Azure Monitor 中的详细应用程序监视是通过 [Application Insights](/az
 
 | 目标 | 说明 | 参考
 |:---|:---|:---|
-| Azure Monitor 日志 | 监视解决方案将数据收集到 Azure Monitor 日志中，以便在其中使用查询语言或通常包括在解决方案中的[视图](../platform/view-designer.md)对这些数据进行分析。 | [Azure 中的监视解决方案的数据收集详细信息](../monitor-reference.md) |
+| Azure Monitor 日志 | 监视解决方案将数据收集到 Azure Monitor 日志中，以便在其中使用查询语言或通常包括在解决方案中的[视图](../visualize/view-designer.md)对这些数据进行分析。 | [Azure 中的监视解决方案的数据收集详细信息](../monitor-reference.md) |
 
 
-### <a name="azure-monitor-for-containers"></a>用于容器的 Azure Monitor
-[用于容器的 Azure Monitor](../insights/container-insights-overview.md) 为 [Azure Kubernetes 服务 (AKS)](../../aks/index.yml) 提供自定义的监视体验。 它会收集有关这些资源的其他数据，如下表中所述。
+### <a name="container-insights"></a>容器见解
+[容器见解](../containers/container-insights-overview.md) 为 [Azure KUBERNETES Service (AKS) ](../../aks/index.yml)提供自定义监视体验。 它会收集有关这些资源的其他数据，如下表中所述。
 
 | 目标 | 说明 | 参考 |
 |:---|:---|:---|
-| Azure Monitor 日志 | 存储 AKS 的监视数据，包括库存、日志和事件。 指标数据还会存储在“日志”中，这样就可以在门户中利用其分析功能。 | [使用适用于容器的 Azure Monitor 了解 AKS 群集性能](../insights/container-insights-analyze.md) |
-| Azure Monitor 指标 | 指标数据将存储在指标数据库中，以驱动可视化和警报。 | [在指标资源管理器中查看容器指标](../insights/container-insights-analyze.md#view-container-metrics-in-metrics-explorer) |
-| Azure Kubernetes 服务 | 在门户中提供对 Azure Kubernetes 服务 (AKS) 容器日志 (stdout/stderror)、事件和 Pod 指标的直接访问。 | [如何实时查看 Kubernetes 日志、事件和 Pod 指标](../insights/container-insights-livedata-overview.md) |
+| Azure Monitor 日志 | 存储 AKS 的监视数据，包括库存、日志和事件。 指标数据还会存储在“日志”中，这样就可以在门户中利用其分析功能。 | [了解 AKS 群集性能和容器见解](../containers/container-insights-analyze.md) |
+| Azure Monitor 指标 | 指标数据将存储在指标数据库中，以驱动可视化和警报。 | [在指标资源管理器中查看容器指标](../containers/container-insights-analyze.md#view-container-metrics-in-metrics-explorer) |
+| Azure Kubernetes 服务 | 在门户中提供对 Azure Kubernetes 服务 (AKS) 容器日志 (stdout/stderror)、事件和 Pod 指标的直接访问。 | [如何实时查看 Kubernetes 日志、事件和 Pod 指标](../containers/container-insights-livedata-overview.md) |
 
-### <a name="azure-monitor-for-vms"></a>用于 VM 的 Azure Monitor
-[用于 VM 的 Azure Monitor](../insights/vminsights-overview.md) 提供了用于监视虚拟机的自定义体验。 前面的[操作系统（来宾）](#operating-system-guest)部分介绍了用于 VM 的 Azure Monitor 收集的数据。
+### <a name="vm-insights"></a>VM insights
+[VM insights](../vm/vminsights-overview.md) 提供了用于监视虚拟机的自定义体验。 VM insights 收集的数据的说明包括在上文的 [操作系统 (来宾) ](#operating-system-guest) 部分中。
 
 ## <a name="custom-sources"></a>自定义来源
 除了应用程序的标准层之外，还可能需要监视具有不能与其他数据源一起收集的遥测数据的其他资源。 对于这些资源，可使用 Azure Monitor API 将此数据写入到指标或日志。
@@ -192,8 +192,8 @@ Azure Monitor 中的详细应用程序监视是通过 [Application Insights](/az
 
 | 目标 | 方法 | 说明 | 参考 |
 |:---|:---|:---|:---|
-| Azure Monitor 日志 | 数据收集器 API | 从任何 REST 客户端收集日志数据，并将其存储在 Log Analytics 工作区中。 | [使用 HTTP 数据收集器 API（公共预览版）将日志数据发送到 Azure Monitor](../platform/data-collector-api.md) |
-| Azure Monitor 指标 | 自定义指标 API | 从任何 REST 客户端收集指标数据，并将其存储在 Azure Monitor 指标数据库中。 | [使用 REST API 将 Azure 资源的自定义指标发送到 Azure Monitor 指标存储](../platform/metrics-store-custom-rest-api.md) |
+| Azure Monitor 日志 | 数据收集器 API | 从任何 REST 客户端收集日志数据，并将其存储在 Log Analytics 工作区中。 | [使用 HTTP 数据收集器 API（公共预览版）将日志数据发送到 Azure Monitor](../logs/data-collector-api.md) |
+| Azure Monitor 指标 | 自定义指标 API | 从任何 REST 客户端收集指标数据，并将其存储在 Azure Monitor 指标数据库中。 | [使用 REST API 将 Azure 资源的自定义指标发送到 Azure Monitor 指标存储](../essentials/metrics-store-custom-rest-api.md) |
 
 
 ## <a name="other-services"></a>其他服务
@@ -207,5 +207,5 @@ Azure 中的其他服务将数据写入到 Azure Monitor 数据平台。 这样�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 详细了解 [Azure Monitor 收集的监视数据的类型](../platform/data-platform.md)以及如何查看和分析此数据。
+- 详细了解 [Azure Monitor 收集的监视数据的类型](../data-platform.md)以及如何查看和分析此数据。
 - 列出 [Azure 资源存储数据的不同位置](../monitor-reference.md)以及数据的访问方式。

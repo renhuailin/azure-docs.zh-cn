@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 12/16/2020
 ms.author: sefriend
 manager: clarkn
-ms.openlocfilehash: b71c5426b6fba6f232b5a7aa42347f6b25d46299
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: b0fc5bd16aaa455ce3f6d634ce35e9a389a6f13b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101094957"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101732575"
 ---
 # <a name="troubleshoot-common-windows-virtual-desktop-agent-issues"></a>排查常见的 Windows 虚拟桌面代理问题
 
@@ -21,6 +21,14 @@ ms.locfileid: "101094957"
    - 在代理安装过程中安装的问题会破坏到会话主机的连接。
 
 本文将指导你完成这些常见方案的解决方案，以及如何解决连接问题。
+
+>[!NOTE]
+>为了排查与会话连接和 Windows 虚拟桌面代理相关的问题，我们建议你查看 **事件查看器**  >  **Windows 日志**"  >  **应用程序** 中的事件日志。 查找具有以下源之一的事件，以确定问题：
+>
+>- WVD-Agent
+>- WVD-代理-更新程序
+>- RDAgentBootLoader
+>- MsiInstaller
 
 ## <a name="error-the-rdagentbootloader-andor-remote-desktop-agent-loader-has-stopped-running"></a>错误： RDAgentBootLoader 和/或远程桌面代理加载程序已停止运行
 
@@ -63,9 +71,9 @@ ms.locfileid: "101094957"
    > [!div class="mx-imgBorder"]
    > ![IsRegistered 1 的屏幕截图](media/isregistered-registry.png)
 
-## <a name="error-agent-cannot-connect-to-broker-with-invalid_form-or-not_found-url"></a>错误：代理无法连接到 INVALID_FORM 或 NOT_FOUND 的 broker。 URL
+## <a name="error-agent-cannot-connect-to-broker-with-invalid_form"></a>错误：代理无法与 INVALID_FORM 连接到 broker
 
-请参阅 **事件查看器**  >  **Windows 日志**"  >  **应用程序**。 如果看到 ID 为3277的事件，则表示 **INVALID_FORM** 或 **NOT_FOUND。URL** 在说明中，代理与代理之间的通信出现问题。 代理无法连接到代理，无法访问特定的 URL。 这可能是由于防火墙或 DNS 设置导致的。
+请参阅 **事件查看器**  >  **Windows 日志**"  >  **应用程序**。 如果在说明中看到 ID 为3277的事件，则 INVALID_FORM 表明代理与代理之间的通信出现问题。 由于某些防火墙或 DNS 设置的原因，代理无法连接到代理，或者无法访问特定的 URL。
 
 若要解决此问题，请检查是否可以访问 BrokerURI 和 BrokerURIGlobal：
 1. 打开注册表编辑器。 
@@ -100,13 +108,43 @@ ms.locfileid: "101094957"
 8. 如果网络阻止这些 Url，则需要取消阻止所需的 Url。 有关详细信息，请参阅 [所需 URL 列表](safe-url-list.md)。
 9. 如果这不能解决你的问题，请确保你没有任何具有用于阻止代理到 broker 连接的密码的组策略。 Windows 虚拟桌面使用与 [Azure 前门](../frontdoor/front-door-faq.MD#what-are-the-current-cipher-suites-supported-by-azure-front-door)相同的 TLS 1.2 密码。 有关详细信息，请参阅 [连接安全性](network-connectivity.md#connection-security)。
 
-## <a name="error-3703-or-3019"></a>错误：3703或3019
+## <a name="error-3703"></a>错误：3703
 
-请参阅 **事件查看器**  >  **Windows 日志**"  >  **应用程序**。 如果你看到 ID 为3703的事件，则说明中显示 **RD 网关 Url：不可访问** 或任何 ID 为3019的事件，则代理无法访问网关 url 或 web 套接字传输 url。 若要成功连接到会话主机并允许网络流量绕过限制，必须取消阻止 [所需 Url 列表](safe-url-list.md)中的 url。 此外，请确保你的防火墙或代理设置不会阻止这些 Url。 使用 Windows 虚拟桌面需要取消阻止这些 Url。
+请参阅 **事件查看器**  >  **Windows 日志**"  >  **应用程序**。 如果在说明中看到 ID 为3703的事件，其中显示了 "RD 网关 Url：无法访问"，则代理无法访问网关 Url。 若要成功连接到会话主机并允许网络流量绕过限制，必须取消阻止 [所需 Url 列表](safe-url-list.md)中的 url。 此外，请确保你的防火墙或代理设置不会阻止这些 Url。 使用 Windows 虚拟桌面需要取消阻止这些 Url。
 
 若要解决此问题，请验证防火墙和/或 DNS 设置是否未阻止这些 Url：
 1. [使用 Azure 防火墙保护 Windows 虚拟桌面部署。](../firewall/protect-windows-virtual-desktop.md)
 2. 配置 [Azure 防火墙 DNS 设置](../firewall/dns-settings.md)。
+
+## <a name="error-3019"></a>错误：3019
+
+请参阅 **事件查看器**  >  **Windows 日志**"  >  **应用程序**。 如果看到 ID 为3019的事件，则表示代理无法访问 web 套接字传输 Url。 若要成功连接到会话主机并允许网络流量绕过这些限制，必须取消阻止所 [需 url 列表](safe-url-list.md)中列出的 url。 与 Azure 网络团队合作，确保你的防火墙、代理和 DNS 设置未阻止这些 Url。 你还可以检查网络跟踪日志，以确定正在阻止 Windows 虚拟桌面服务的位置。 如果为此特定问题打开支持请求，请确保将网络跟踪日志附加到请求。
+
+## <a name="error-installationhealthcheckfailedexception"></a>错误： InstallationHealthCheckFailedException
+
+请参阅 **事件查看器**  >  **Windows 日志**"  >  **应用程序**。 如果在说明中看到 ID 为3277的事件，这意味着堆栈侦听器不起作用，因为终端服务器已经切换了堆栈侦听器的注册表项。
+
+要解决此问题：
+1. 检查 [堆栈侦听器是否正常工作](#error-stack-listener-isnt-working-on-windows-10-2004-vm)。
+2. 如果堆栈侦听器不起作用，请 [手动卸载并重新安装堆栈组件](#error-vms-are-stuck-in-unavailable-or-upgrading-state)。
+
+## <a name="error-endpoint_not_found"></a>错误： ENDPOINT_NOT_FOUND
+
+请参阅 **事件查看器**  >  **Windows 日志**"  >  **应用程序**。 如果你看到 ID 为3277的事件，则说明中显示 "ENDPOINT_NOT_FOUND"，表示代理找不到与之建立连接的终结点。 此连接问题可能是由于以下原因之一导致的：
+
+- 主机池中没有 Vm
+- 主机池中的 Vm 不处于活动状态
+- 主机池中的所有 Vm 已超过最大会话限制
+- 主机池中没有运行代理服务的 Vm
+
+要解决此问题：
+
+1. 请确保 VM 已打开且尚未从主机池中删除。
+2. 请确保 VM 未超出最大会话限制。
+3. 请确保 [代理服务正在运行](#error-the-rdagentbootloader-andor-remote-desktop-agent-loader-has-stopped-running) 且 [堆栈侦听器](#error-stack-listener-isnt-working-on-windows-10-2004-vm)正在运行。
+4. 请确保 [代理可以连接到 broker](#error-agent-cannot-connect-to-broker-with-invalid_form)。
+5. 请确保 [VM 具有有效的注册令牌](#error-invalid_registration_token)。
+6. 请确保 [VM 注册令牌未过期](faq.md#how-often-should-i-turn-my-vms-on-to-prevent-registration-issues)。 
 
 ## <a name="error-installmsiexception"></a>错误： InstallMsiException
 
@@ -125,7 +163,7 @@ ms.locfileid: "101094957"
 3. 在弹出的 " **策略的结果集** " 窗口中，请参阅类别路径。
 4. 选择策略。
 5. 选择“已禁用”。 
-6. 选择 **应用**。   
+6. 选择“应用”。   
 
    > [!div class="mx-imgBorder"]
    > ![策略结果集中的 Windows Installer 策略的屏幕截图](media/gpo-policy.png)
@@ -147,7 +185,7 @@ ms.locfileid: "101094957"
 3. 在弹出的 " **策略的结果集** " 窗口中，请参阅类别路径。
 4. 选择策略。
 5. 选择“已禁用”。 
-6. 选择 **应用**。   
+6. 选择“应用”。   
 
 ## <a name="error-stack-listener-isnt-working-on-windows-10-2004-vm"></a>错误：堆栈侦听器在 Windows 10 2004 VM 上不工作
 
@@ -176,15 +214,21 @@ ms.locfileid: "101094957"
 8. 在 " **ClusterSettings**" 下，找到 " **SessionDirectoryListener** "，并确保其数据值为 " **rdp-sxs ...**"。
 9. 如果 **SessionDirectoryListener** 未设置为 **rdp-sxs ...**，则需要执行 [卸载代理和启动加载](#step-1-uninstall-all-agent-boot-loader-and-stack-component-programs) 器部分中的步骤，以首先卸载代理、启动加载程序和堆栈组件，然后 [重新安装代理和启动加载程序](#step-4-reinstall-the-agent-and-boot-loader)。 这将重新安装并行堆栈。
 
-## <a name="error-users-keep-getting-disconnected-from-session-hosts"></a>错误：用户保持与会话主机断开连接
+## <a name="error-heartbeat-issue-where-users-keep-getting-disconnected-from-session-hosts"></a>错误：用户保持与会话主机断开连接的检测信号问题
 
-请参阅 **事件查看器**  >  **Windows 日志**"  >  **应用程序**。 如果看到的事件 ID 为0，则说明和/或用户保持与其会话主机断开连接时，你的服务器不会从 Windows 虚拟桌面服务中提取检测信号。 **CheckSessionHostDomainIsReachableAsync**
+如果服务器未从 Windows 虚拟桌面服务中提取检测信号，则需要更改检测信号阈值。 如果以下一个或多个方案适用，请按照本部分中的说明进行操作：
 
-若要解决此问题，请更改检测信号阈值：
+- 收到 **CheckSessionHostDomainIsReachableAsync** 错误
+- 收到 **ConnectionBrokenMissedHeartbeatThresholdExceeded** 错误
+- 正在接收 **ConnectionEstablished： UnexpectedNetworkDisconnect** 错误
+- 用户客户端保持断开连接
+- 用户保持与其会话主机断开连接
+
+更改检测信号阈值：
 1. 以管理员身份打开命令提示符。
 2. 输入 **qwinsta** 命令并运行该命令。
 3. 应显示两个堆栈组件： **rdp-tcp** 和 **rdp-sxs**。 
-   - 根据所使用的操作系统版本， **rdp-sxs** 后面可能跟有生成号。 如果是，请确保稍后将此数字记下来。
+   - 根据所使用的操作系统版本， **rdp-sxs** 后面可能跟有生成号。 如果是，请确保稍后记下此号码。
 4. 打开注册表编辑器。
 5. 请参阅 **HKEY_LOCAL_MACHINE**  >  **SYSTEM**  >  **CurrentControlSet**  >  **Control**  >  **Terminal Server**  >  **WinStations**。
 6. 在 **WinStations** 下，你可能会看到不同堆栈版本的多个文件夹。 选择与步骤3中的版本号匹配的文件夹。
@@ -194,6 +238,9 @@ ms.locfileid: "101094957"
    - HeartbeatDropCount：60 
 8. 重新启动 VM。
 
+>[!NOTE]
+>如果更改检测信号阈值不能解决问题，则可能会遇到基本网络问题，需要联系 Azure 网络团队了解相关信息。
+
 ## <a name="error-downloadmsiexception"></a>错误： DownloadMsiException
 
 请参阅 **事件查看器**  >  **Windows 日志**"  >  **应用程序**。 如果看到 ID 为3277的事件，则说明中的 **DownloadMsiException** 没有足够的磁盘空间用于 RDAgent。
@@ -201,6 +248,11 @@ ms.locfileid: "101094957"
 若要解决此问题，请通过以下方式在磁盘上腾出空间：
    - 删除不再位于用户中的文件
    - 提高 VM 的存储容量
+
+## <a name="error-agent-fails-to-update-with-missingmethodexception"></a>错误：代理无法更新 MissingMethodException
+
+请参阅 **事件查看器**  >  **Windows 日志**"  >  **应用程序**。 如果在说明中看到 ID 为3389的事件，其中显示了 "找不到 MissingMethodException：方法"，这意味着 Windows 虚拟桌面代理未成功更新并还原到早期版本。 这可能是因为虚拟机上当前安装的 .NET framework 的版本号低于4.7.2。 若要解决此问题，需要按照 [.NET Framework 文档](https://support.microsoft.com/topic/microsoft-net-framework-4-7-2-offline-installer-for-windows-05a72734-2127-a15d-50cf-daf56d5faec2)中的安装说明将 .net 升级到版本4.7.2 或更高版本。
+
 
 ## <a name="error-vms-are-stuck-in-unavailable-or-upgrading-state"></a>错误： Vm 停滞不可用或正在升级状态
 
@@ -210,7 +262,7 @@ ms.locfileid: "101094957"
 Get-AzWvdSessionHost -ResourceGroupName <resourcegroupname> -HostPoolName <hostpoolname> | Select-Object *
 ```
 
-如果为主机池中的会话主机或主机列出的状态始终显示 " **不可用** " 或 "正在 **升级**"，则代理或堆栈安装可能已失败
+如果为主机池中的会话主机或主机列出的状态始终显示 "不可用" 或 "正在升级"，则代理或堆栈未成功安装。
 
 若要解决此问题，请重新安装并行堆栈：
 1. 作为管理员打开命令提示。
@@ -253,7 +305,7 @@ VM 的名称已经注册，可能是重复的。
 要解决此问题：
 1. 按照 [从主机池中删除会话主机](#step-2-remove-the-session-host-from-the-host-pool) 部分中的步骤进行操作。
 2. [创建另一个 VM](expand-existing-host-pool.md#add-virtual-machines-with-the-azure-portal)。 请确保为此 VM 选择唯一的名称。
-3. 请参阅 Azure 门户] (https://portal.azure.com) 并打开 VM 所在的主机池的 " **概述** " 页。 
+3. 中转到 [Azure 门户](https://portal.azure.com) 并打开 VM 所在的主机池的 " **概述** " 页。 
 4. 打开 " **会话主机** " 选项卡并检查以确保所有会话主机都在该主机池中。
 5. 等待5-10 分钟，让会话主机状态显示为 " **可用**"。
 
@@ -320,12 +372,12 @@ VM 的名称已经注册，可能是重复的。
 ### <a name="step-4-reinstall-the-agent-and-boot-loader"></a>步骤4：重新安装代理和启动加载程序
 
 通过重新安装最新版本的代理和启动加载程序，可以自动安装并排堆栈和 Geneva 监视代理。 若要重新安装代理和启动加载程序：
-1. 以管理员身份登录到 VM，并按照 [注册虚拟机](create-host-pools-powershell.md#register-the-virtual-machines-to-the-windows-virtual-desktop-host-pool) 中的说明下载 **Windows 虚拟桌面代理** 和 **Windows 虚拟桌面代理加载程序**。
+1. 以管理员身份登录到 VM，并为部署使用正确的代理安装程序版本，具体取决于你的 VM 运行的 Windows 版本。 如果有 Windows 10 VM，请按照 [注册虚拟机](create-host-pools-powershell.md#register-the-virtual-machines-to-the-windows-virtual-desktop-host-pool) 中的说明下载 **Windows 虚拟桌面代理** 和 **Windows 虚拟桌面代理加载程序**。 如果有 Windows 7 VM，请按照 [注册虚拟机](deploy-windows-7-virtual-machine.md#configure-a-windows-7-virtual-machine) 中的步骤13-14 下载 **Windows 虚拟桌面代理** 和 **windows 虚拟桌面代理程序管理器**。
 
    > [!div class="mx-imgBorder"]
    > ![代理和引导程序下载页的屏幕截图](media/download-agent.png)
 
-2. 右键单击刚刚下载的代理和启动加载程序安装程序。
+2. 右键单击下载的代理和启动加载程序安装程序。
 3. 选择“属性”。
 4. 选择“取消阻止”。
 5. 选择“确定”  。

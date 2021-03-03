@@ -5,18 +5,14 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/05/2020
 ms.topic: overview
-ms.openlocfilehash: 14ebe9dfd11bed2dfaded9f18e23f73d33a708ae
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6001fff54b86b7c18684092aad6c7fdf64f81990
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91650453"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101729940"
 ---
 # <a name="about-azure-remote-rendering"></a>关于 Azure 远程渲染
-
-> [!IMPORTANT]
-> Azure 远程渲染目前为公共预览版。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 使用 Azure 远程渲染 (ARR) 服务可以在云中渲染高质量的交互式 3D 内容，并将其实时流式传输到 HoloLens 2 等设备。
 

@@ -1,33 +1,33 @@
 ---
-title: 使用 PowerShell 启用用于 VM 的 Azure Monitor
-description: 描述如何使用 Azure PowerShell 为 Azure 虚拟机或虚拟机规模集启用用于 VM 的 Azure Monitor。
+title: 使用 PowerShell 启用 VM insights
+description: 介绍如何使用 Azure PowerShell 为 Azure 虚拟机或虚拟机规模集启用 VM insights。
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: 83b17e021ce8003b5dbd279886edfdc199f58ce3
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 47ac71797684f82dfd94acff2d18bca11b2f50d1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100608667"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717071"
 ---
-# <a name="enable-azure-monitor-for-vms-using-powershell"></a>使用 PowerShell 启用用于 VM 的 Azure Monitor
-本文介绍如何使用 PowerShell 在 Azure 虚拟机上启用用于 VM 的 Azure Monitor。 此过程可用于以下操作：
+# <a name="enable-vm-insights-using-powershell"></a>使用 PowerShell 启用 VM insights
+本文介绍如何使用 PowerShell 在 Azure 虚拟机上启用 VM insights。 此过程可用于以下操作：
 
 - Azure 虚拟机
 - Azure 虚拟机规模集
 
 ## <a name="prerequisites"></a>先决条件
 
-- [创建并配置 Log Analytics 工作区](../insights/vminsights-configure-workspace.md)。
-- 请参阅 [支持的操作系统](../insights/vminsights-enable-overview.md#supported-operating-systems) ，以确保正在启用的虚拟机或虚拟机规模集的操作系统受支持。 
+- [创建并配置 Log Analytics 工作区](./vminsights-configure-workspace.md)。
+- 请参阅 [支持的操作系统](./vminsights-enable-overview.md#supported-operating-systems) ，以确保正在启用的虚拟机或虚拟机规模集的操作系统受支持。 
 
 
 ## <a name="powershell-script"></a>PowerShell 脚本
 
-若要为多个虚拟机或虚拟机规模集启用用于 VM 的 Azure Monitor，请使用 Azure PowerShell 库中提供的 PowerShell 脚本 [Install-VMInsights.ps1](https://www.powershellgallery.com/packages/Install-VMInsights)。 此脚本循环访问：
+若要为多个 Vm 或虚拟机规模集启用 VM insights，请使用 Azure PowerShell 库中提供的 PowerShell 脚本 [Install-VMInsights.ps1](https://www.powershellgallery.com/packages/Install-VMInsights)。 此脚本循环访问：
 
 - 订阅中的每个虚拟机和虚拟机规模集。
 - 通过 *ResourceGroup* 指定的具有作用域的资源组。
@@ -139,7 +139,7 @@ PARAMETERS
     Specify to use a PolicyAssignmentName for source and to reinstall (move to a new workspace)
 ```
 
-以下示例演示如何在文件夹中使用 PowerShell 命令来启用用于 VM 的 Azure Monitor，并了解预期的输出：
+下面的示例演示如何使用文件夹中的 PowerShell 命令来启用 VM insights 并了解预期的输出：
 
 ```powershell
 $WorkspaceId = "<GUID>"
@@ -190,5 +190,5 @@ Failed: (0)
 
 ## <a name="next-steps"></a>后续步骤
 
-* 请参阅 [使用用于 VM 的 Azure Monitor 映射](vminsights-maps.md) 查看已发现的应用程序依赖项。 
+* 请参阅 [使用 VM Insights 映射](vminsights-maps.md) 查看已发现的应用程序依赖关系。 
 * 请参阅 [查看 AZURE VM 性能](vminsights-performance.md) ，找出瓶颈、整体利用率和 VM 的性能。

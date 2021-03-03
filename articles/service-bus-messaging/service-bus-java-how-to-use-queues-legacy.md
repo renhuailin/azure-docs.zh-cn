@@ -5,12 +5,12 @@ ms.devlang: Java
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: d24645ada2ef4ac12101aa747aacc1bbf90f123e
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 1f7c5f71e75a1b683433531a9d95905e9a7d81cc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97509251"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101729719"
 ---
 # <a name="quickstart-use-azure-service-bus-queues-with-java-to-send-and-receive-messages"></a>快速入门：通过 Java 使用 Azure 服务总线队列发送和接收消息
 
@@ -185,7 +185,7 @@ public void run() throws Exception {
 ## <a name="next-steps"></a>后续步骤
 可在 [`azure-service-bus` 存储库](https://github.com/Azure/azure-service-bus/tree/master/samples/Java)中的 GitHub 上找到 Java 示例。
 
-[Azure SDK for Java]: /azure/developer/java/sdk/java-sdk-azure-get-started
+[Azure SDK for Java]: /azure/developer/java/sdk/get-started
 [Azure Toolkit for Eclipse]: /azure/developer/java/toolkit-for-eclipse/installation
 [Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
 [BrokeredMessage]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage

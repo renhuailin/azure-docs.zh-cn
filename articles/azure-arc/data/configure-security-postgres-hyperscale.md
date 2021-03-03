@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 4f89ace7130e95ba109edcf6becca1e15c8d32c1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d6e27fddceb69efbb2c1697c09ee9b61d7f38ee4
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91273194"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687968"
 ---
 # <a name="configure-security-for-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>为已启用 Azure Arc 的 PostgreSQL 超大规模服务器组配置安全性
 
@@ -23,6 +23,7 @@ ms.locfileid: "91273194"
 - 用户管理
    - 常规透视
    - 更改 _postgres_ 管理用户的密码
+- 审核
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
@@ -32,10 +33,10 @@ ms.locfileid: "91273194"
 ### <a name="hardware-linux-host-volume-encryption"></a>硬件： Linux 主机卷加密
 实施系统数据加密可以保护驻留在支持 Azure Arc 的数据服务安装程序所使用的磁盘上的任何数据。 你可以阅读有关本主题的详细信息：
 - 通常，Linux 上的[静态数据加密](https://wiki.archlinux.org/index.php/Data-at-rest_encryption) 
-- 具有 LUKS 的磁盘加密 `cryptsetup` 命令 (Linux) # B2 https://www.cyberciti.biz/security/howto-linux-hard-disk-encryption-with-luks-cryptsetup-command/) 具体来说，由于启用了 Azure Arc 的数据服务在你提供的物理基础结构上运行，因此你需要负责保护基础结构。
+- 通过 LUKS `cryptsetup` 加密命令 (Linux)  (的磁盘加密 https://www.cyberciti.biz/security/howto-linux-hard-disk-encryption-with-luks-cryptsetup-command/) 具体来说，由于 Azure Arc 启用的数据服务在你提供的物理基础结构上运行，因此你需要负责保护基础结构。
 
 ### <a name="software-use-the-postgresql-pgcrypto-extension-in-your-server-group"></a>软件：使用 `pgcrypto` 服务器组中的 PostgreSQL 扩展
-除了加密用于托管 Azure Arc 设置的磁盘之外，还可以配置启用了 Azure Arc 的 PostgreSQL 超大规模服务器组，以公开应用程序可用于加密数据库中的数据的机制)  (。 此 `pgcrypto` 扩展是 `contrib` Postgres 扩展的一部分，可在启用了 Azure Arc 的 PostgreSQL 超大规模服务器组中使用。 可在此处找到有关 `pgcrypto` 扩展[here](https://www.postgresql.org/docs/current/pgcrypto.html)的详细信息。
+除了加密用于托管 Azure Arc 设置的磁盘之外，还可以配置启用了 Azure Arc 的 PostgreSQL 超大规模服务器组，以公开应用程序可用于加密数据库中的数据的机制)  (。 此 `pgcrypto` 扩展是 `contrib` Postgres 扩展的一部分，可在启用了 Azure Arc 的 PostgreSQL 超大规模服务器组中使用。 可在此处找到有关 `pgcrypto` 扩展[](https://www.postgresql.org/docs/current/pgcrypto.html)的详细信息。
 总而言之，使用以下命令可以启用扩展，并使用它：
 
 
@@ -159,18 +160,19 @@ select * from mysecrets;
 azdata arc postgres server edit --name <server group name> --admin-password
 ```
 
-其中--admin-password 是与 AZDATA_PASSWORD **会话**环境变量中的某个值相关的布尔值。
-如果 AZDATA_PASSWORD **会话**的环境变量存在并且具有值，则运行上述命令会将 postgres 用户的密码设置为此环境变量的值。
+其中 `--admin-password` ，是一个与在 AZDATA_PASSWORD **会话** 环境变量中存在值相关的布尔值。
+如果 AZDATA_PASSWORD **会话** 环境变量存在并且具有值，则运行上述命令会将 postgres 用户的密码设置为此环境变量的值。
 
-如果 AZDATA_PASSWORD **会话**的环境变量存在，但没有值或 AZDATA_PASSWORD **会话**的环境变量不存在，则运行上述命令将提示用户以交互方式输入密码
+如果 AZDATA_PASSWORD **会话** 环境变量存在，但没有值或 AZDATA_PASSWORD **会话** 环境变量不存在，则运行上述命令将提示用户以交互方式输入密码
 
-#### <a name="changing-the-password-of-the-postgres-administrative-user-in-an-interactive-way"></a>以交互方式更改 postgres 管理用户的密码：
-1. 删除 AZDATA_PASSWORD **会话**的环境变量或删除其值
+#### <a name="change-the-password-of-the-postgres-administrative-user-in-an-interactive-way"></a>以交互方式更改 postgres 管理用户的密码
+
+1. 删除 AZDATA_PASSWORD **会话** 环境变量或删除其值
 2. 运行以下命令：
    ```console
    azdata arc postgres server edit --name <server group name> --admin-password
    ```
-   例如：
+   例如
    ```console
    azdata arc postgres server edit -n postgres01 --admin-password
    ```
@@ -186,13 +188,13 @@ azdata arc postgres server edit --name <server group name> --admin-password
    postgres01 is Ready
    ```
    
-#### <a name="changing-the-password-of-the-postgres-administrative-user-using-the-azdata_password-sessions-environment-variable"></a>使用 AZDATA_PASSWORD **会话**的环境变量更改 postgres 管理用户的密码：
-1. 将 AZDATA_PASSWORD **会话**的环境变量的值设置为你想要的密码。
+#### <a name="change-the-password-of-the-postgres-administrative-user-using-the-azdata_password-session-environment-variable"></a>使用 AZDATA_PASSWORD **会话** 环境变量更改 postgres 管理用户的密码：
+1. 将 AZDATA_PASSWORD **会话** 环境变量的值设置为你想要的密码。
 2. 运行命令：
    ```console
    azdata arc postgres server edit --name <server group name> --admin-password
    ```
-   例如：
+   例如
    ```console
    azdata arc postgres server edit -n postgres01 --admin-password
    ```
@@ -216,9 +218,12 @@ azdata arc postgres server edit --name <server group name> --admin-password
 > echo $env:AZDATA_PASSWORD
 > ```
 
+## <a name="audit"></a>审核
+
+对于审核方案，请将服务器组配置为使用 `pgaudit` Postgres 的扩展。 有关更多详细信息， `pgaudit` 请参阅[ `pgAudit` GitHub 项目](https://github.com/pgaudit/pgaudit/blob/master/README.md)。 若要 `pgaudit` 在服务器组中启用该扩展， [请阅读 Use PostgreSQL extension](using-extensions-in-postgresql-hyperscale-server-group.md)。
 
 
 ## <a name="next-steps"></a>后续步骤
-- 有关扩展的详细信息，请参阅 `pgcrypto` [此处](https://www.postgresql.org/docs/current/pgcrypto.html)。
-- [在此处](using-extensions-in-postgresql-hyperscale-server-group.md)阅读有关如何使用 Postgres 扩展的详细信息。
+- 请参阅[ `pgcrypto` 扩展](https://www.postgresql.org/docs/current/pgcrypto.html)
+- 请参阅 [使用 PostgreSQL 扩展](using-extensions-in-postgresql-hyperscale-server-group.md)
 

@@ -1,22 +1,21 @@
 ---
 title: 网络性能监视器中的性能监视器
 description: 借助网络性能监视器中的性能监视器功能可以监视网络中各个位置的网络连接。 可以监视云部署和本地位置、多个数据中心和分支机构、任务关健型多层应用程序或微服务。
-ms.subservice: logs
 ms.topic: conceptual
 author: abshamsft
 ms.author: absha
 ms.date: 02/20/2018
-ms.openlocfilehash: 5335882c11ee6a1a7352ef3dc9822cfa88eda196
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 505584abbe573c94056888b07406437650b09611
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100573511"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728614"
 ---
 # <a name="network-performance-monitor-solution-performance-monitoring"></a>网络性能监视器解决方案：性能监视
 
 > [!IMPORTANT]
-> 自2021年7月1日起，你将无法在现有工作区中添加新测试，也无法在网络性能监视器中启用新的工作区。 你可以继续使用在2021年7月之前创建的测试。 若要最大程度地减少对当前工作负荷的服务中断，请在2024年2月29日之前将 [测试从网络性能监视器迁移到](https://docs.microsoft.com/azure/network-watcher/migrate-to-connection-monitor-from-network-performance-monitor) Azure 网络观察程序中的新连接监视器。
+> 自2021年7月1日起，你将无法在现有工作区中添加新测试，也无法在网络性能监视器中启用新的工作区。 你可以继续使用在2021年7月之前创建的测试。 若要最大程度地减少对当前工作负荷的服务中断，请在2024年2月29日之前将 [测试从网络性能监视器迁移到](../../network-watcher/migrate-to-connection-monitor-from-network-performance-monitor.md) Azure 网络观察程序中的新连接监视器。
 
 借助[网络性能监视器](network-performance-monitor.md)中的性能监视器功能可以监视网络中各个位置的网络连接。 可以监视云部署和本地位置、多个数据中心和分支机构、任务关健型多层应用程序或微服务。 使用性能监视器，可以在用户产生抱怨之前检测到网络问题。 主要优势包括： 
 
@@ -132,4 +131,3 @@ ms.locfileid: "100573511"
 
 ## <a name="next-steps"></a>后续步骤
 [搜索日志](../logs/log-query-overview.md)以查看详细的网络性能数据记录。
-

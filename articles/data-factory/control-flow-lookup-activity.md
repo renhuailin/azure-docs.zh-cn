@@ -5,28 +5,32 @@ author: linda33wj
 ms.author: jingwang
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 10/14/2020
-ms.openlocfilehash: 5f46e2871aa0017f0a4b33df04a8ae9058c59e17
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 02/25/2021
+ms.openlocfilehash: 4b2fb49899b6a676520fe0912dd122dd72cce023
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100385466"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101712906"
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Azure 数据工厂中的查找活动
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-查找活动可以从任何 Azure 数据工厂支持的数据源检索数据集。 在以下方案中使用它：
-- 动态确定哪些对象在后续活动中工作，而不是针对对象名称进行硬编码。 一些对象示例包括文件和表。
+查找活动可以从任何 Azure 数据工厂支持的数据源检索数据集。 您可以使用它在后续活动中动态确定要操作的对象，而不是对对象名进行硬编码。 一些对象示例包括文件和表。
 
-查找活动读取并返回配置文件或表的内容。 它还返回执行查询或存储过程的结果。 查找活动的输出可用于后续复制或转换活动（如果它是单一实例值）。 该输出可用于 ForEach 活动（如果它是属性数组）。
+查找活动读取并返回配置文件或表的内容。 它还返回执行查询或存储过程的结果。 输出可以是单一实例值或特性数组，这些属性可在后续的复制、转换或控制流活动（如 ForEach 活动）中使用。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
-查找活动支持以下数据源。 
+注意以下事项：
 
-查找活动最多可以返回 5000 行；如果结果集包含的记录超过此范围，将返回前 5000 行。 “查找”活动的输出最多支持 4 MB 左右。如果大小超过此限制，则活动会失败。 目前，查找活动在超时前的最长持续时间为 24 小时。
+- Lookup 活动最多可以返回 **5000 行**;如果结果集包含更多记录，将返回前5000行。
+- 查找活动输出支持的大小最大为 **4 MB** ，如果大小超过限制，则活动将失败。 
+- 超时之前查找活动的最长持续时间为 **24 小时**。
+- 当使用查询或存储过程查找数据时，请确保返回一个结果集，并返回一个结果集。 否则，查找活动将失败。
+
+查找活动支持以下数据源。 
 
 [!INCLUDE [data-factory-v2-supported-data-stores](../../includes/data-factory-v2-supported-data-stores-for-lookup-activity.md)]
 
@@ -55,7 +59,7 @@ ms.locfileid: "100385466"
 ---- | ----------- | ---- | --------
 dataset | 为查找提供数据集引用。 从每篇相应的连接器文章的“数据集属性”部分中获取详细信息。 | 键/值对 | 是
 source | 包含特定于数据集的源属性，与复制活动源相同。 从每篇相应的连接器文章的“复制活动属性”部分中获取详细信息。 | 键/值对 | 是
-firstRowOnly | 指示仅返回第一行还是返回所有行。 | Boolean | 不是。 默认为 `true`。
+firstRowOnly | 指示仅返回第一行还是返回所有行。 | Boolean | 否。 默认为 `true`。
 
 > [!NOTE]
 > 
@@ -381,7 +385,7 @@ firstRowOnly | 指示仅返回第一行还是返回所有行。 | Boolean | 不�
 
 | 限制 | 解决方法 |
 |---|---|
-| Lookup 活动最多有 5,000 行，最大大小为 2 MB。 | 设计一个外部管道对内部管道进行迭代的两级管道，该管道会检索不超过最大行数或大小的数据。 |
+| 查找活动的最大行数为5000，最大大小为 4 MB。 | 设计一个外部管道对内部管道进行迭代的两级管道，该管道会检索不超过最大行数或大小的数据。 |
 | | |
 
 ## <a name="next-steps"></a>后续步骤

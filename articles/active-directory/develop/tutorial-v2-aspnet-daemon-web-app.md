@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 4fccff70fd267aef84550b4e2f5d6f5f9422a341
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: 5816bc542ff550accedd33ba9a7fd9d98583b3d1
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100103016"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101653756"
 ---
 # <a name="tutorial-build-a-multi-tenant-daemon-that-uses-the-microsoft-identity-platform"></a>教程：生成使用 Microsoft 标识平台的多租户守护程序
 
@@ -237,8 +237,8 @@ Visual Studio 将发布项目，同时自动打开浏览器并加载该项目的
 
 ## <a name="get-help"></a>获取帮助
 
-使用 [Microsoft Q&A](https://docs.microsoft.com/answers/products/) 获取社区的支持。
-先在 [Microsoft Q&A](https://docs.microsoft.com/answers/products/) 上提问并浏览现有问题，查看是否已有人提出过相同的问题。
+使用 [Microsoft Q&A](/answers/products/) 获取社区的支持。
+先在 [Microsoft Q&A](/answers/products/) 上提问并浏览现有问题，查看是否已有人提出过相同的问题。
 请务必在提问或评论中加上“azure-ad-adal-deprecation”、“azure-ad-msal”和“dotnet-standard”标记。
 
 如果发现示例中有错误，请在 [GitHub 问题](https://github.com/Azure-Samples/ms-identity-aspnet-daemon-webapp/issues)上提出问题。

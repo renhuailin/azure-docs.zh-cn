@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 03/01/2021
 ms.author: alkohli
-ms.openlocfilehash: e6dff06e92126e2fc4538273e229dcb0904e3101
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 3a0b87f04e60fd56d543c7c7a752cd788e087c78
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96466120"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101727475"
 ---
 # <a name="azure-stack-edge-mini-r-technical-specifications"></a>Azure Stack 边缘迷你 R 技术规范
 
@@ -80,9 +80,9 @@ Azure Stack Edge 迷你 R 设备包含一个外部 85 W AC 适配器，用于提
 
 ## <a name="included-battery"></a>已包含电池
 
-Azure Stack 边缘迷你 R 设备还包含按电源付费的板载电池。 
+Azure Stack 边缘迷你 R 设备还包含按电源付费的板载电池。
 
-附加类型2590电池可与板载电池结合使用，以在费用之间扩展设备的使用情况。 此电池应符合使用国家/地区的所有安全、运输和环境法规。
+附加 [类型2590电池](https://www.bren-tronics.com/bt-70791ck.html) 可与板载电池结合使用，以在费用之间扩展设备的使用情况。 此电池应符合使用国家/地区的所有安全、运输和环境法规。
 
 
 | 规格           | 值                      |

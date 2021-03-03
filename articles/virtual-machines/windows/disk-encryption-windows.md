@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: df74a15a84ba04addb75b021d3b77b06cfe2ea48
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 29a63d598ada8c413316fbf18bb87597afdf62de
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96781107"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101693826"
 ---
 # <a name="azure-disk-encryption-scenarios-on-windows-vms"></a>Windows VM 上的 Azure 磁盘加密方案
 
@@ -123,7 +123,7 @@ Azure 磁盘加密[与 Azure Key Vault 集成](disk-encryption-key-vault.md)，�
 可以通过使用[资源管理器模板加密正在运行的 Windows VM](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-windows-vm-without-aad)，在 Azure 中现有或正在运行的 IaaS Windows VM 上启用磁盘加密。
 
 
-1. 在 Azure 快速入门模板中，单击“部署到 Azure”。
+1. 在 Azure 快速入门模板中，单击“部署到 Azure”。 
 
 2. 选择订阅、资源组、位置、设置、法律条款和协议。 单击“购买”，在现有或正在运行的 IaaS VM 上启用加密。
 
@@ -151,7 +151,7 @@ Azure 磁盘加密[与 Azure Key Vault 集成](disk-encryption-key-vault.md)，�
 
 在以下情况下，加密将保留在 NVMe 磁盘上：
 - VM 重启
-- VMSS 重置映像
+- 虚拟机规模集映像
 - 交换操作系统
 
 NVMe 磁盘将在以下情况下取消初始化：
@@ -262,12 +262,11 @@ Azure 磁盘加密不支持以下方案、功能和技术：
 - 加密共享/分布式文件系统，包括但不限于 DFS、GFS、DRDB 和 CephFS。
 - 将加密的 VM 移到其他订阅或区域。
 - 创建已加密 VM 的映像或快照，并使用它来部署其他 VM。
-- Gen2 VM（请参阅：[Azure 对第 2 代 VM 的支持](../generation-2.md#generation-1-vs-generation-2-capabilities)）
 - 具有写入加速器磁盘的 M 系列 VM。
 - 将 ADE 应用到一个 VM，此 VM 使用[服务器端加密和客户管理的密钥](../disk-encryption.md) (SSE + CMK) 加密磁盘。 将 SSE+CMK 应用于使用 ADE 加密的 VM 上的数据磁盘，这种方案也不受支持。
 - 将使用 ADE 加密的 VM，或者曾经使用 ADE 加密的 VM 迁移到[使用客户管理的密钥的服务器端加密](../disk-encryption.md)。
-- [不带本地临时磁盘的 AZURE VM 大小](../azure-vms-no-temp-disk.md);具体而言，Dv4、Dsv4、Ev4 和 Esv4。
-- 加密故障转移群集中的 Vm。
+- [无本地临时磁盘（具体而言即 Dv4、Dsv4、Ev4 和 Esv4）的 Azure VM 大小](../azure-vms-no-temp-disk.md)。
+- 加密故障转移群集中的 VM。
 
 ## <a name="next-steps"></a>后续步骤
 

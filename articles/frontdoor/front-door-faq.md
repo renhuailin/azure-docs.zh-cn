@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/20/2020
 ms.author: duau
-ms.openlocfilehash: e28c995a0fb574f2e7319f8ee540f49d1bbed4dd
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 77cc509a9fac2a24b3cd70675c1ee4160ecdb24d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97656897"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101741848"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door"></a>Azure 前门常见问题
 
@@ -79,7 +79,7 @@ Azure 前门是全球分布的多租户服务。 因此，前门的基础结构�
 
 ### <a name="is-http-https-redirection-supported"></a>是否支持 HTTP 到 HTTPS 的重定向？
 
-是。 事实上，Azure 前门支持主机、路径和查询字符串重定向以及 URL 重定向的一部分。 了解有关 [URL 重定向](front-door-url-redirect.md)的详细信息。 
+是的。 事实上，Azure 前门支持主机、路径和查询字符串重定向以及 URL 重定向的一部分。 了解有关 [URL 重定向](front-door-url-redirect.md)的详细信息。 
 
 ### <a name="in-what-order-are-routing-rules-processed"></a>路由规则的处理顺序是什么？
 
@@ -97,9 +97,9 @@ Azure 前门是全球分布的多租户服务。 因此，前门的基础结构�
     > [!WARNING]
     > 前端的后端 IP 空间可能会更改，但在此之前，我们将确保我们已与 [AZURE IP 范围和服务标记](https://www.microsoft.com/download/details.aspx?id=56519)集成。 建议订阅 [AZURE IP 范围和服务标记](https://www.microsoft.com/download/details.aspx?id=56519) 以进行任何更改或更新。
 
--    使用 API 版本或更高版本对前门执行 GET 操作 `2020-01-01` 。 在 API 调用中，查找 " `frontdoorID` 字段"。 筛选由前门发送到后端的传入标头 "**X-FDID**"，其值与字段的值相同 `frontdoorID` 。 你还可以 `Front Door ID` 在前门门户页面的 "概述" 部分下找到值。 
+- `Front Door ID`在前门门户页面的 "概述" 部分下查找值。 然后，你可以使用此值来筛选由前门发送到后端的传入标头 "**X-FDID**"，以确保仅允许你自己的特定前门实例 (因为以上 IP 范围与其他客户) 的其他前门实例共享。
 
-- 应用后端 web 服务器中的规则筛选，基于生成的 "FDID" 标头值限制流量。
+- 应用后端 web 服务器中的规则筛选，基于生成的 "FDID" 标头值限制流量。 请注意，有些服务（如 Azure App Service）提供了 [基于此标头的筛选](../app-service/app-service-ip-restrictions#restrict-access-to-a-specific-azure-front-door-instance-preview) 功能，而无需更改应用程序或主机。
 
   下面是 [Microsoft Internet Information Services (IIS) ](https://www.iis.net/)的示例：
 
@@ -254,7 +254,7 @@ Azure 前门是全球分布的多租户平台，具有巨大的容量，可满�
 
 ### <a name="can-i-use-clientmutual-authentication-with-azure-front-door"></a>能否对 Azure 前门使用客户端/相互身份验证？
 
-错误。 尽管 Azure 前门支持 TLS 1.2，后者引入了 [RFC 5246](https://tools.ietf.org/html/rfc5246)中的客户端/相互身份验证，但目前，azure 前门不支持客户端/相互身份验证。
+否。 尽管 Azure 前门支持 TLS 1.2，后者引入了 [RFC 5246](https://tools.ietf.org/html/rfc5246)中的客户端/相互身份验证，但目前，azure 前门不支持客户端/相互身份验证。
 
 ## <a name="diagnostics-and-logging"></a>诊断和日志记录
 

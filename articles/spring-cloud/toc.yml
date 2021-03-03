@@ -188,3 +188,6 @@
     - name: Azure Policy 内置策略定义
       displayName: 'samples, policies, definitions'
       href: ./policy-reference.md
+    - name: 新增功能
+      displayName: What's New
+      href: 'https://azure.microsoft.com/updates/?query=spring'

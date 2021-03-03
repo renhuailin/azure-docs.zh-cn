@@ -4,15 +4,15 @@ description: 了解如何使用 Azure 资源管理器模板创建操作组。
 author: dkamstra
 services: azure-monitor
 ms.topic: conceptual
-ms.date: 02/16/2018
+ms.date: 02/19/2021
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 2275ea059b762e81330d3e6150c563e18a64b554
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 978372481513f3d68fdc587ccc1148976640bc80
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100606230"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101729124"
 ---
 # <a name="create-an-action-group-with-a-resource-manager-template"></a>使用资源管理器模板创建操作组
 本文说明如何使用 [Azure 资源管理器模板](../../azure-resource-manager/templates/template-syntax.md)配置操作组。 使用模板，可以自动设置可以在某些类型的警报中重复使用的操作组。 这些操作组可确保警报触发时所有相应的当事方可以收到通知。
@@ -50,7 +50,7 @@ ms.locfileid: "100606230"
   "resources": [
     {
       "type": "Microsoft.Insights/actionGroups",
-      "apiVersion": "2018-03-01",
+      "apiVersion": "2019-03-01",
       "name": "[parameters('actionGroupName')]",
       "location": "Global",
       "properties": {
@@ -71,21 +71,26 @@ ms.locfileid: "100606230"
         "emailReceivers": [
           {
             "name": "contosoEmail",
-            "emailAddress": "devops@contoso.com"
+            "emailAddress": "devops@contoso.com",
+            "useCommonAlertSchema": true
+
           },
           {
             "name": "contosoEmail2",
-            "emailAddress": "devops2@contoso.com"
+            "emailAddress": "devops2@contoso.com",
+            "useCommonAlertSchema": true
           }
         ],
         "webhookReceivers": [
           {
             "name": "contosoHook",
-            "serviceUri": "http://requestb.in/1bq62iu1"
+            "serviceUri": "http://requestb.in/1bq62iu1",
+            "useCommonAlertSchema": true
           },
           {
             "name": "contosoHook2",
-            "serviceUri": "http://requestb.in/1bq62iu2"
+            "serviceUri": "http://requestb.in/1bq62iu2",
+            "useCommonAlertSchema": true
           }
         ]
       }
@@ -133,7 +138,7 @@ ms.locfileid: "100606230"
   "resources": [
     {
       "type": "Microsoft.Insights/actionGroups",
-      "apiVersion": "2018-03-01",
+      "apiVersion": "2019-03-01",
       "name": "[parameters('actionGroupName')]",
       "location": "Global",
       "properties": {
@@ -146,7 +151,8 @@ ms.locfileid: "100606230"
         "webhookReceivers": [
           {
             "name": "[parameters('webhookReceiverName')]",
-            "serviceUri": "[parameters('webhookServiceUri')]"
+            "serviceUri": "[parameters('webhookServiceUri')]",
+            "useCommonAlertSchema": true
           }
         ]
       }
@@ -163,7 +169,6 @@ ms.locfileid: "100606230"
 
 
 ## <a name="next-steps"></a>后续步骤
-* 详细了解[操作组](../platform/action-groups.md)。
-* 详细了解[警报](../platform/alerts-overview.md)。
-* 了解如何[使用资源管理器模板添加警报](../platform/alerts-activity-log.md)。
-
+* 详细了解[操作组](./action-groups.md)。
+* 详细了解[警报](./alerts-overview.md)。
+* 了解如何[使用资源管理器模板添加警报](./alerts-activity-log.md)。

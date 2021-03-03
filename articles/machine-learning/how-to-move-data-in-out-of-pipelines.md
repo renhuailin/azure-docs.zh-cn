@@ -7,18 +7,17 @@ ms.service: machine-learning
 ms.subservice: core
 ms.author: laobri
 author: lobrien
-ms.date: 02/01/2021
+ms.date: 02/26/2021
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy20q4, devx-track-python, data4ml
-ms.openlocfilehash: 894b0fcddaead6ce60e1becc7221c4f5e608de48
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 5a83211654ad1abafff59d5968c191ec1fa63616
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99492291"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101692396"
 ---
 # <a name="moving-data-into-and-between-ml-pipeline-steps-python"></a>将数据移入 ML 管道和在 ML 管道之间移动数据的步骤 (Python)
-
 
 本文提供了用于在 Azure 机器学习管道中的步骤之间导入、转换和移动数据的代码。 有关数据在 Azure 机器学习中的工作原理的概述，请参阅[访问 Azure 存储服务中的数据](how-to-access-data.md)。 有关 Azure 机器学习管道的优点和结构，请参阅[什么是 Azure 机器学习管道？](concept-ml-pipelines.md)。
 
@@ -29,7 +28,7 @@ ms.locfileid: "99492291"
 - 将 `Dataset` 数据拆分为子集，例如训练子集和验证子集
 - 创建 `OutputFileDatasetConfig` 对象来将数据传输到下一管道步骤
 - 使用 `OutputFileDatasetConfig` 对象作为管道步骤的输入
-- 基于 `OutputFileDatasetConfig` 创建你要持久保存的新 `Dataset` 对象
+- `Dataset`从你的 wisƒh 创建新的对象 `OutputFileDatasetConfig` 以保留
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -64,10 +63,12 @@ ms.locfileid: "99492291"
 datastore = Datastore.get(workspace, 'training_data')
 iris_dataset = Dataset.Tabular.from_delimited_files(DataPath(datastore, 'iris.csv'))
 
-cats_dogs_dataset = Dataset.File.from_files(
-    paths='https://download.microsoft.com/download/3/E/1/3E1C3F21-ECDB-4869-8368-6DEBA77B919F/kagglecatsanddogs_3367a.zip',
-    archive_options=ArchiveOptions(archive_type=ArchiveType.ZIP, entry_glob='**/*.jpg')
-)
+datastore_path = [
+    DataPath(datastore, 'animals/dog/1.jpg'),
+    DataPath(datastore, 'animals/dog/2.jpg'),
+    DataPath(datastore, 'animals/cat/*.jpg')
+]
+cats_dogs_dataset = Dataset.File.from_files(path=datastore_path)
 ```
 
 若要详细了解如何使用各种选项以及基于各种源创建数据集、在 Azure 机器学习 UI 中注册数据集并查看它们、了解数据大小如何与计算容量交互，以及如何对数据集进行版本控制，请参阅[创建 Azure 机器学习数据集](how-to-create-register-datasets.md)。 
@@ -153,9 +154,9 @@ ds = Dataset.get_by_name(workspace=ws, name='mnist_opendataset')
 
 ## <a name="use-outputfiledatasetconfig-for-intermediate-data"></a>将 `OutputFileDatasetConfig` 用于中间数据
 
-尽管 `Dataset` 对象只表示持久性数据， [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) 对象 () 可用于从管道步骤 **和** 永久性输出数据输出的临时数据。 `OutputFileDatasetConfig` 支持将数据写入 blob 存储、文件共享、adlsgen1 或 adlsgen2。 它支持装入模式和上传模式。 在装入模式下，当文件关闭时，将永久存储写入到装载的目录中的文件。 在上传模式下，在作业结束时，将上载写入到输出目录中的文件。 如果作业失败或被取消，将不会上载输出目录。
+虽然 `Dataset` 对象仅代表持久性数据，但 [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) 对象可用于从管道步骤输出的临时数据以及持久性输出数据。 `OutputFileDatasetConfig` 支持将数据写入到 Blob 存储、文件共享、adlsgen1 或 adlsgen2。 它同时支持装载模式和上传模式。 在装载模式下，当文件关闭时，写入到装载的目录中的文件将永久存储。 在上传模式下，在作业结束时，将上传写入到输出目录中的文件。 如果作业失败或被取消，将不会上传输出目录。
 
- `OutputFileDatasetConfig` 对象的默认行为是写入工作区的默认数据存储。 `OutputFileDatasetConfig`用参数将对象传递给 `PythonScriptStep` `arguments` 。
+ `OutputFileDatasetConfig` 对象的默认行为是写入到工作区的默认数据存储。 可使用 `arguments` 参数将 `OutputFileDatasetConfig` 对象传递给 `PythonScriptStep`。
 
 ```python
 from azureml.data import OutputFileDatasetConfig
@@ -170,7 +171,7 @@ dataprep_step = PythonScriptStep(
     )
 ```
 
-您可以选择在 `OutputFileDatasetConfig` 运行结束时上载对象的内容。 在这种情况下，请将 `as_upload()` 函数与对象一起使用， `OutputFileDatasetConfig` 并指定是否覆盖目标中的现有文件。 
+你可以选择在运行结束时上传 `OutputFileDatasetConfig` 对象的内容。 在这种情况下，请将 `as_upload()` 函数与 `OutputFileDatasetConfig` 对象一起使用，并指定是否覆盖目标中的现有文件。 
 
 ```python
 #get blob datastore already registered with the workspace
@@ -179,7 +180,7 @@ OutputFileDatasetConfig(name="clean_data", destination=(blob_store, 'outputdatas
 ```
 
 > [!NOTE]
-> 对的并发写入 `OutputFileDatasetConfig` 会失败。 不要尝试同时使用一个 `OutputFileDatasetConfig` 。 不要在多处理 `OutputFileDatasetConfig` 情况下共享单个，如使用分布式培训时。 
+> 向 `OutputFileDatasetConfig` 进行的并发写入会失败。 请勿尝试共用单个 `OutputFileDatasetConfig`。 不要在多处理情况下（例如使用分布式训练时）共享单个 `OutputFileDatasetConfig`。 
 
 ### <a name="use-outputfiledatasetconfig-as-outputs-of-a-training-step"></a>将 `OutputFileDatasetConfig` 用作训练步骤的输出
 
@@ -198,13 +199,13 @@ with open(args.output_path, 'w') as f:
 
 ### <a name="read-outputfiledatasetconfig-as-inputs-to-non-initial-steps"></a>读取 `OutputFileDatasetConfig` 作为非初始步骤的输入
 
-在初始管道步骤将一些数据写入 `OutputFileDatasetConfig` 路径并且该步骤成为初始步骤的输出后，可将其用作后面步骤的输入。 
+当初始管道步骤将一些数据写入到 `OutputFileDatasetConfig` 路径并且这些数据成为该初始步骤的输出后，可将其用作后面步骤的输入。 
 
-在下面的代码中， 
+在以下代码中： 
 
-* `step1_output_data` 指示将 PythonScriptStep 的输出 `step1` 写入到上载访问模式下的 ADLS 第2代数据存储 `my_adlsgen2` 中。 详细了解如何 [设置角色权限](how-to-access-data.md#azure-data-lake-storage-generation-2) ，以便将数据写回 ADLS 第2代数据存储。 
+* `step1_output_data` 指示在上传访问模式下将 PythonScriptStep `step1` 的输出写入到 ADLS Gen 2 数据存储 `my_adlsgen2` 中。 详细了解如何[设置角色权限](how-to-access-data.md#azure-data-lake-storage-generation-2)以将数据写回 ADLS Gen 2 数据存储。 
 
-* `step1`完成并将输出写入到指示的目标后 `step1_output_data` ，步骤2可 `step1_output_data` 用作输入。 
+* 在 `step1` 完成并将输出写入到 `step1_output_data` 所指示的目标后，步骤 2 便可使用 `step1_output_data` 作为输入。 
 
 ```python
 # get adls gen 2 datastore already registered with the workspace
@@ -223,22 +224,31 @@ step2 = PythonScriptStep(
     script_name="step2.py",
     compute_target=compute,
     runconfig = aml_run_config,
-    arguments = ["--pd", step1_output_data.as_input]
+    arguments = ["--pd", step1_output_data.as_input()]
 
 )
 
 pipeline = Pipeline(workspace=ws, steps=[step1, step2])
 ```
 
-## <a name="register-outputfiledatasetconfig-objects-for-reuse"></a>注册 `OutputFileDatasetConfig` 对象以供重用
+## <a name="register-outputfiledatasetconfig-objects-for-reuse"></a>注册 `OutputFileDatasetConfig` 对象供重复使用
 
-如果你想要使你 `OutputFileDatasetConfig` 的可用时间超过实验的持续时间，请将其注册到你的工作区，以便在试验中共享和重复使用。
+如果你想要使你的 `OutputFileDatasetConfig` 的可用时间比试验持续时间更长，请将其注册到你的工作区，以便在不同的试验之间共享和重复使用。
 
 ```python
 step1_output_ds = step1_output_data.register_on_complete(name='processed_data', 
                                                          description = 'files from step1`)
 ```
 
+## <a name="delete-outputfiledatasetconfig-contents-when-no-longer-needed"></a>`OutputFileDatasetConfig`不再需要时删除内容
+
+Azure 不会自动删除用编写的中间数据 `OutputFileDatasetConfig` 。 若要避免大量不需要的数据的存储费用，应执行以下操作之一：
+
+* 当不再需要时，在管道运行结束时以编程方式删除中间数据
+* 将 blob 存储用于中间数据的短期存储策略 (参阅 [通过自动化 Azure Blob 存储访问层优化成本](../storage/blobs/storage/blobs/storage-lifecycle-management-concepts.md))  
+* 定期检查并删除不再需要的数据
+
+有关详细信息，请参阅 [计划和管理 Azure 机器学习的成本](concept-plan-manage-cost.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

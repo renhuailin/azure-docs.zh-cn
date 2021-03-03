@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/23/2020
 ms.author: yuajia
-ms.openlocfilehash: d1f3e59cc88ea9cb30e7eacbd26591e08d71be61
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 58db217ca173acbe0356596de916216c4ab7f241
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100575252"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101715541"
 ---
 # <a name="monitoring-metrics-and-logs-in-azure-front-door"></a>在 Azure 前门中监视指标和日志
 
@@ -25,7 +25,7 @@ ms.locfileid: "100575252"
 - **指标** Azure 前门目前有8个指标来查看性能计数器。
 - **日志**。 活动和诊断日志允许出于监视目的从资源保存或使用性能、访问及其他数据。
 
-### <a name="metrics"></a>指标
+##  <a name="metrics"></a><a name="metrics"></a>基准
 
 度量值是某些 Azure 资源的一项功能，可用于在门户中查看性能计数器。 以下是可用的前门指标：
 
@@ -121,8 +121,8 @@ ms.locfileid: "100575252"
 
 | 方案 | 日志条目计数 | POP | BackendHostname | isReceivedFromClient | CacheStatus |
 | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
-| 未启用缓存的路由规则 | 1 | 边缘 POP 代码 | 转发请求的后端 | 正确 | CONFIG_NOCACHE |
-| 启用了缓存的路由规则。 在边缘 POP 处命中缓存 | 1 | 边缘 POP 代码 | 空 | 正确 | 命中 |
+| 未启用缓存的路由规则 | 1 | 边缘 POP 代码 | 转发请求的后端 | True | CONFIG_NOCACHE |
+| 启用了缓存的路由规则。 在边缘 POP 处命中缓存 | 1 | 边缘 POP 代码 | 空 | True | 命中 |
 | 启用了缓存的路由规则。 在边缘 POP 缓存未命中，但在父缓存弹出时命中缓存 | 2 | 1. 边缘 POP 代码</br>2. 父缓存 POP 代码 | 1. 父缓存 POP 主机名</br>2。空 | 1. True</br>2. False | 1. 未命中</br>2. 命中 |
 | 启用了缓存的路由规则。 缓存未命中边缘 POP，但父缓存弹出时出现部分缓存命中 | 2 | 1. 边缘 POP 代码</br>2. 父缓存 POP 代码 | 1. 父缓存 POP 主机名</br>2. 帮助填充缓存的后端 | 1. True</br>2. False | 1. 未命中</br>2. PARTIAL_HIT |
 | 启用了缓存的路由规则。 在边缘 POP PARTIAL_HIT 缓存，但在父缓存中命中缓存 | 2 | 1. 边缘 POP 代码</br>2. 父缓存 POP 代码 | 1. 边缘 POP 代码</br>2. 父缓存 POP 代码 | 1. True</br>2. False | 1. PARTIAL_HIT</br>2. 命中 |

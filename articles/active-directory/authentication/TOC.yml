@@ -158,6 +158,8 @@
       href: howto-authentication-temporary-access-pass.md
     - name: 使用基于短信的身份验证
       href: howto-authentication-sms-signin.md
+    - name: 不支持双向短信
+      href: how-to-authentication-two-way-sms-unsupported.md
     - name: 使用电子邮件地址登录
       href: howto-authentication-use-email-signin.md
     - name: Azure AD 智能锁定
@@ -173,8 +175,8 @@
               href: active-directory-certificate-based-authentication-ios.md
     - name: 报表
       items:
-        - name: 使用情况和见解
-          href: howto-authentication-methods-usage-insights.md
+        - name: 身份验证方法活动
+          href: howto-authentication-methods-activity.md
         - name: SSPR 报告
           href: howto-sspr-reporting.md
         - name: MFA 报告

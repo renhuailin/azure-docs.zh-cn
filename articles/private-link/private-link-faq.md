@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 10/05/2019
 ms.author: allensu
-ms.openlocfilehash: b56c57a0b803a41c095f6f25f69a18a815d182f1
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 4e81d8f88a7c01b6d302bcdaa88559159bed04ea
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99582003"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101709397"
 ---
 # <a name="azure-private-link-frequently-asked-questions-faq"></a>Azure 专用链接常见问题解答 (FAQ)
 
@@ -20,8 +20,8 @@ ms.locfileid: "99582003"
 
 ### <a name="what-is-azure-private-endpoint-and-azure-private-link-service"></a>什么是 Azure 专用终结点和 Azure 专用链接服务？
 
-- **[Azure 专用终结点](private-endpoint-overview.md)** ：Azure 专用终结点是一个网络接口，可以将你通过专用且安全的方式连接到 Azure 专用链接支持的服务。 可以使用专用终结点连接到支持专用链接的 Azure PaaS 服务，或者连接到你自己的专用链接服务。
-- **[Azure 专用链接服务](private-link-service-overview.md)** ：Azure 专用链接服务是服务提供商创建的服务。 目前，专用链接服务可以附加到标准负载均衡器的前端 IP 配置。 
+- **[Azure 专用终结点](private-endpoint-overview.md)**： Azure 专用终结点是一个网络接口，该接口将你私下并安全地连接到由 Azure 专用链接提供支持的服务。 可以使用专用终结点连接到支持专用链接的 Azure PaaS 服务，或者连接到你自己的专用链接服务。
+- **[Azure Private Link service](private-link-service-overview.md)**： Azure 专用链接服务是服务提供商创建的服务。 目前，专用链接服务可以附加到标准负载均衡器的前端 IP 配置。 
 
 ### <a name="how-is-traffic-being-sent-when-using-private-link"></a>使用专用链接时流量是如何发送的？
 使用 Microsoft 主干来私下发送流量。 它不会遍历 internet。 Azure 专用链接不存储客户数据。
@@ -44,7 +44,7 @@ ms.locfileid: "99582003"
 是的。 可以在同一 VNet 或子网中创建多个专用终结点。 它们可以连接到不同的服务。  
  
 ### <a name="do-i-require-a-dedicated-subnet-for-private-endpoints"></a>专用终结点是否需要专用子网？ 
-不能。 专用终结点不需要专用子网。 可以从部署了你的服务的 VNet 的任何子网中选择专用终结点 IP。  
+否。 专用终结点不需要专用子网。 可以从部署了你的服务的 VNet 的任何子网中选择专用终结点 IP。  
  
 ### <a name="can-a-private-endpoint-connect-to-private-link-services-across-azure-active-directory-tenants"></a>专用终结点是否可以跨 Azure Active Directory 租户连接到专用链接服务？ 
 是的。 专用终结点可跨 Azure Active Directory 租户连接到专用链接服务或 Azure PaaS。 跨租户连接的专用终结点需要手动请求批准。 
@@ -66,6 +66,12 @@ ms.locfileid: "99582003"
 - 向专用链接服务添加 IP。 每个专用链接服务最多允许 8 个 IP。  
 - 向标准负载均衡器添加新的专用链接服务。 每个负载均衡器最多允许 8 个专用链接服务。   
 
+### <a name="what-is-natnetwork-address-translation-ip-configuration-used-in-private-link-service-how-can-i-scale-in-terms-of-available-ports-and-connections"></a>什么是 (网络地址转换) 专用链接服务中使用的 NAT IP 配置？ 如何在可用端口和连接方面进行缩放？ 
+
+NAT IP 配置通过在目标端 (服务提供程序端) 上的专用链接流量中提供源 NAT，确保源 (使用者端) 和目标 (服务) 提供程序之间不存在 IP 冲突。 对于服务接收的所有数据包，NAT IP 地址将显示为 "源 IP" 和 "目标 IP"。  可以从服务提供商的虚拟网络中的任何子网中选择 NAT IP。 
+
+每个 NAT IP 提供64k 的 TCP 连接 (64k 端口，标准负载均衡器每个 VM) 。 为了缩放和添加更多连接，可以添加新的 NAT Ip，或在标准负载均衡器后面添加更多 Vm。 这样做会缩放端口可用性，并允许更多连接。 连接将跨 NAT Ip 和标准负载均衡器后面的 Vm 分布。
+
 ### <a name="can-i-connect-my-service-to-multiple-private-endpoints"></a>是否可以将服务连接到多个专用终结点？
 是的。 一个专用链接服务可以接收来自多个专用终结点的连接。 但是，一个专用终结点只能连接到一个专用链接服务。  
  
@@ -77,13 +83,13 @@ ms.locfileid: "99582003"
 - **全部** - 所有人都可以找到服务。 
  
 ### <a name="can-i-create-a-private-link-service-with-basic-load-balancer"></a>是否可以使用基本负载均衡器创建专用链接服务？ 
-不能。 不支持通过基本负载均衡器的专用链接服务。
+否。 不支持通过基本负载均衡器的专用链接服务。
  
 ### <a name="is-a-dedicated-subnet-required-for-private-link-service"></a>专用链接服务是否需要专用子网？ 
-不能。 专用链接服务不需要专用子网。 可以选择部署了你的服务的 VNet 中的任何子网。   
+否。 专用链接服务不需要专用子网。 可以选择部署了你的服务的 VNet 中的任何子网。   
 
 ### <a name="im-a-service-provider-using-azure-private-link-do-i-need-to-make-sure-all-my-customers-have-unique-ip-space-and-dont-overlap-with-my-ip-space"></a>我是使用 Azure 专用链接的服务提供商。 我是否需要确保所有客户都具有唯一的 IP 空间，而不会与我的 IP 空间重叠？ 
-不能。 Azure 专用链接会为你提供此功能。 你不需要具有与客户的地址空间不重叠的地址空间。 
+否。 Azure 专用链接会为你提供此功能。 你不需要具有与客户的地址空间不重叠的地址空间。 
 
 ##  <a name="next-steps"></a>后续步骤
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/13/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: d1f0b0b36c8f0ed5ede7b5c3113207ae3cce10fd
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: f29e6f0de3286b04321207b4c469f34aeaee8ef5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100581251"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737403"
 ---
 # <a name="azure-security-baseline-for-azure-web-application-firewall"></a>Azure Web 应用程序防火墙的 azure 安全基线
 
@@ -164,7 +164,7 @@ Azure Sentinel 包含一个内置的 Azure WAF 工作簿，该工作簿提供 Az
 ### <a name="25-configure-security-log-storage-retention"></a>2.5：配置安全日志存储保留期
 
 **指南**：将 Azure Web 应用程序防火墙 (WAF) 日志发送到自定义存储帐户，并定义保留策略。 根据组织的符合性要求，使用 Azure Monitor 设置 Log Analytics 工作区保持期。
-- [为存储帐户配置监视](../storage/common/storage-monitor-storage-account.md#configure-logging)
+- [为存储帐户配置监视](../storage/common/manage-storage-analytics-logs.md#configure-logging)
 
 **Azure 安全中心监视**：不适用
 

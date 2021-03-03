@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/29/2020
 ms.author: irenehua
-ms.openlocfilehash: 1228462dc6437ecce7718c4747d2acb9ae7332cb
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 952889777e4236d7fa03fad5b1bdbf98499f7066
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100593034"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101721304"
 ---
 # <a name="update-or-delete-a-load-balancer-used-by-virtual-machine-scale-sets"></a>更新或删除虚拟机规模集使用的负载均衡器
 
@@ -111,6 +111,52 @@ az network lb inbound-nat-pool update
 1. 在 " **添加前端 IP 地址** " 页上，输入值，然后选择 **"确定"**。
 1. 如果需要新的负载均衡规则，请遵循本教程中的 [步骤 5](./load-balancer-multiple-ip.md#step-5-configure-the-health-probe) 和 [步骤 6](./load-balancer-multiple-ip.md#step-5-configure-the-health-probe) 。
 1. 如果需要，请使用新创建的前端 IP 配置创建一组新的入站 NAT 规则。 在上一节中找到了一个示例。
+
+## <a name="multiple-virtual-machine-scale-sets-behind-a-single-load-balancer"></a>单个负载均衡器后的多个虚拟机规模集
+
+在负载均衡器中创建入站 NAT 池，引用虚拟机规模集的网络配置文件中的入站 NAT 池，最后更新实例以使更改生效。 对所有虚拟机规模集重复这些步骤。
+
+请确保创建具有非重叠前端端口范围的单独入站 NAT 池。
+  
+```azurecli-interactive
+  az network lb inbound-nat-pool create 
+          -g MyResourceGroup 
+          --lb-name MyLb
+          -n MyNatPool 
+          --protocol Tcp 
+          --frontend-port-range-start 80 
+          --frontend-port-range-end 89 
+          --backend-port 80 
+          --frontend-ip-name MyFrontendIpConfig
+  az vmss update 
+          -g MyResourceGroup 
+          -n myVMSS 
+          --add virtualMachineProfile.networkProfile.networkInterfaceConfigurations[0].ipConfigurations[0].loadBalancerInboundNatPools "{'id':'/subscriptions/mySubscriptionId/resourceGroups/MyResourceGroup/providers/Microsoft.Network/loadBalancers/MyLb/inboundNatPools/MyNatPool'}"
+            
+  az vmss update-instances
+          -–instance-ids *
+          --resource-group MyResourceGroup
+          --name MyVMSS
+          
+  az network lb inbound-nat-pool create 
+          -g MyResourceGroup 
+          --lb-name MyLb
+          -n MyNatPool2
+          --protocol Tcp 
+          --frontend-port-range-start 100 
+          --frontend-port-range-end 109 
+          --backend-port 80 
+          --frontend-ip-name MyFrontendIpConfig2
+  az vmss update 
+          -g MyResourceGroup 
+          -n myVMSS2 
+          --add virtualMachineProfile.networkProfile.networkInterfaceConfigurations[0].ipConfigurations[0].loadBalancerInboundNatPools "{'id':'/subscriptions/mySubscriptionId/resourceGroups/MyResourceGroup/providers/Microsoft.Network/loadBalancers/MyLb/inboundNatPools/MyNatPool2'}"
+            
+  az vmss update-instances
+          -–instance-ids *
+          --resource-group MyResourceGroup
+          --name MyVMSS2
+```
 
 ## <a name="delete-the-front-end-ip-configuration-used-by-the-virtual-machine-scale-set"></a>删除虚拟机规模集使用的前端 IP 配置
 

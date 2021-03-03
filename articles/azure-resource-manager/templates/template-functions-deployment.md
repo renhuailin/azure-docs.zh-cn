@@ -2,13 +2,13 @@
 title: 模板函数 - 部署
 description: 介绍可在 Azure 资源管理器模板（ARM 模板）中使用的用于检索部署信息的函数。
 ms.topic: conceptual
-ms.date: 01/27/2021
-ms.openlocfilehash: 438afc947b07ac7425de365a2d63c427cf53e2ff
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.date: 03/02/2021
+ms.openlocfilehash: a9a073284c62efac4e77f8f9b35e8730c350e5f1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98943478"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101722715"
 ---
 # <a name="deployment-functions-for-arm-templates"></a>ARM 模板的部署函数
 
@@ -321,7 +321,7 @@ output environmentOutput object = environment()
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必须 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | parameterName |是 |字符串 |要返回的参数名称。 |
 
@@ -452,7 +452,7 @@ output crossOutput string = crossParameter
 
 上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
 | stringOutput | String | 选项 1 |
 | intOutput | int | 1 |
@@ -470,7 +470,7 @@ output crossOutput string = crossParameter
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必须 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | variableName |是 |String |要返回的变量名称。 |
 
@@ -508,7 +508,7 @@ output crossOutput string = crossParameter
 # <a name="bicep"></a>[Bicep](#tab/bicep)
 
 ```bicep
-var storageName = concat('storage', uniqueString(resourceGroup().id))
+var storageName = 'storage${uniqueString(resourceGroup().id)}'
 
 resource myStorage 'Microsoft.Storage/storageAccounts@2019-06-01' = {
   name: storageName

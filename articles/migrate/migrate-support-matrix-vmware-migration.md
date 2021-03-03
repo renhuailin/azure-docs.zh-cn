@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 0b671fbdfe16848012ac94671ce68e8a33a8b3e8
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: fc3ba062f4995e975015d7c4db145ccde0c3f701
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98703863"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101705205"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>VMware 迁移支持矩阵
 
@@ -29,8 +29,8 @@ ms.locfileid: "98703863"
 
 ## <a name="migration-limitations"></a>迁移限制
 
-- 对于复制，最多可以选择10个 Vm。 如果要迁移更多计算机，请在10个组中进行复制。
-- 对于 VMware 无代理迁移，可以同时运行多达300的复制。
+- 一次最多可选择10个 Vm，以便通过 Azure 门户进行复制。 如果要迁移更多计算机，请在10个组中进行复制。 可以通过 PowerShell cmdlet 复制的 Vm 数量没有限制。 我们的建议是从单个 vCenter 到 PowerShell，一次复制不超过500个 Vm，以确保最佳性能。
+- 对于 VMware 无代理迁移，可以从每个 vCenter Server 同时运行多达500副本。
 
 ## <a name="agentless-migration"></a>无代理迁移 
 
@@ -56,7 +56,7 @@ ms.locfileid: "98703863"
 --- | ---
 **受支持的操作系统** | 你可以迁移 Azure 支持的 [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) 和 [Linux](../virtual-machines/linux/endorsed-distros.md) 操作系统。
 **Azure 中的 Windows Vm** | 在迁移之前，你可能需要对 Vm [进行一些更改](prepare-for-migration.md#verify-required-changes-before-migrating) 。 
-**Azure 中的 Linux Vm** | 某些 VM 可能需要经过更改才能在 Azure 中运行。<br/><br/> 对于 Linux，Azure Migrate 会自动对这些操作系统进行更改：<br/> -Red Hat Enterprise Linux 7.8、7.7、7.6、7.5、7.4、7.0、1。x<br/> -O o 7.7，7.6，7.5，7.4，1。x</br> -SUSE Linux Enterprise Server 12 SP1 +<br/> -SUSE Linux Enterprise Server 15 SP1 <br/>-Ubuntu 19.04、19.10、14.04 LTS、16.04 LTS、18.04 LTS<br/> -Debian 7、8 <br/> Oracle Linux 7.7、7.7-CI<br/> 对于其他操作系统，请手动进行 [所需的更改](prepare-for-migration.md#verify-required-changes-before-migrating) 。
+**Azure 中的 Linux Vm** | 某些 VM 可能需要经过更改才能在 Azure 中运行。<br/><br/> 对于 Linux，Azure Migrate 会自动对这些操作系统进行更改：<br/> -Red Hat Enterprise Linux 7.8、7.7、7.6、7.5、7.4、7.0、1。x<br/> -O o 7.7，7.6，7.5，7.4，1。x</br> -SUSE Linux Enterprise Server 12 SP1 +<br/> -SUSE Linux Enterprise Server 15 SP1 <br/>-Ubuntu 19.04、19.10、14.04 LTS、16.04 LTS、18.04 LTS<br/> -Debian 7、8、9 <br/> Oracle Linux 7.7、7.7-CI<br/> 对于其他操作系统，请手动进行 [所需的更改](prepare-for-migration.md#verify-required-changes-before-migrating) 。
 **Linux 启动** | 如果/boot 位于专用分区上，则它应驻留在 OS 磁盘上，而不会分布在多个磁盘上。<br/> 如果/boot 是根 (/) 分区的一部分，则 "/" 分区应在 OS 磁盘上，而不是在其他磁盘上。
 **UEFI 启动** | 支持。 基于 UEFI 的 Vm 将迁移到 Azure 第2代 Vm。 
 **磁盘大小** | 2 TB 操作系统磁盘; 数据磁盘为 32 TB。
@@ -72,7 +72,7 @@ ms.locfileid: "98703863"
 **成组 Nic** | 不支持。
 **IPv6** | 不支持。
 **目标磁盘** | Vm 只能迁移到 Azure 中 (标准 HDD、标准 SSD、高级 SSD) 的托管磁盘。
-**同时复制** | 300 Vm/vCenter Server。 如果有更多的，请按批次300进行迁移。
+**同时复制** | 500 Vm/vCenter Server。 如果有更多的，请按批次500进行迁移。
 **(Windows 代理自动安装 Azure VM 代理)** | Windows Server 2008 R2 之前支持。
 
 ### <a name="appliance-requirements-agentless"></a>无代理) 的设备要求 (

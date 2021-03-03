@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 02/25/2021
+ms.date: 03/02/2021
 ms.author: justinha
 author: rhicock
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1e90a6060a9c8202f7f743a0ee433f89b9dc9fdd
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: d25ed1e46823ec6d820addf3944c96c97fcabcb8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101661826"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101689022"
 ---
 # <a name="two-way-sms-unsupported"></a>不支持双向短信
 
@@ -27,7 +27,7 @@ ms.locfileid: "101661826"
 ## <a name="required-actions"></a>必需的操作
 
 1. 为用户启用移动应用（如果尚未这样做）。 有关详细信息，请参阅 [使用 MFA 服务器启用移动应用身份验证](howto-mfaserver-deploy-mobileapp.md)。
-1. 通知最终用户访问你的 MFA 服务器 [用户门户](howto-mfaserver-deploy-userportal.md) 以激活移动应用。 [Microsoft Authenticator 应用](https://www.microsoft.com/account/authenticator)是推荐的验证选项，因为它比双向短信更安全。 有关详细信息，请参阅 [如何在电话传输上挂起身份验证](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/it-s-time-to-hang-up-on-phone-transports-for-authentication/ba-p/1751752)。
+1. 通知最终用户访问你的 MFA 服务器 [用户门户](howto-mfaserver-deploy-userportal.md) 以激活移动应用。 [Microsoft Authenticator 应用](https://www.microsoft.com/en-us/account/authenticator)是推荐的验证选项，因为它比双向短信更安全。 有关详细信息，请参阅 [如何在电话传输上挂起身份验证](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/it-s-time-to-hang-up-on-phone-transports-for-authentication/ba-p/1751752)。
 1. 将用户设置从双向文本消息更改为默认方法。
 
 ## <a name="faq"></a>常见问题解答

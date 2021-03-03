@@ -6,15 +6,15 @@ ms.topic: quickstart
 author: bwren
 ms.author: bwren
 ms.date: 06/25/2020
-ms.openlocfilehash: 2e6dc55b54bc3abaea22544d457f98307596c5dd
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 1316512badd69b545e39a47ea5da3ca6a0902482
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100626137"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734275"
 ---
 # <a name="send-azure-activity-log-to-log-analytics-workspace-using-azure-portal"></a>使用 Azure 门户将 Azure 活动日志发送到 Log Analytics 工作区
-活动日志是 Azure 中的一种平台日志，可用于深入了解订阅级别事件。 这包括何时修改了资源或何时启动了虚拟机等信息。 可以在 Azure 门户中查看活动日志，或在 PowerShell 和 CLI 中检索条目。 本快速入门演示如何使用 Azure 门户创建 Log Analytics 工作区和诊断设置，从而将活动日志发送到 Azure Monitor 日志，从中可以使用[日志查询](../log-query/log-query-overview.md)对活动日志进行分析，并启用其他功能，例如[日志警报](../alerts/alerts-log-query.md)和[工作簿](../visualize/workbooks-overview.md)。 
+活动日志是 Azure 中的一种平台日志，可用于深入了解订阅级别事件。 这包括何时修改了资源或何时启动了虚拟机等信息。 可以在 Azure 门户中查看活动日志，或在 PowerShell 和 CLI 中检索条目。 本快速入门演示如何使用 Azure 门户创建 Log Analytics 工作区和诊断设置，从而将活动日志发送到 Azure Monitor 日志，从中可以使用[日志查询](../logs/log-query-overview.md)对活动日志进行分析，并启用其他功能，例如[日志警报](../alerts/alerts-log-query.md)和[工作簿](../visualize/workbooks-overview.md)。 
 
 ## <a name="sign-in-to-azure-portal"></a>登录到 Azure 门户
 在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。 
@@ -73,7 +73,7 @@ ms.locfileid: "100626137"
 
 
 ## <a name="next-steps"></a>后续步骤
-在本快速入门中，已将活动日志配置为发送到 Log Analytics 工作区。 现可配置要收集到工作区中的其他数据，在工作区中可以使用 Azure Monitor 中的[日志查询](../log-query/log-query-overview.md)来分析这些数据，并利用[日志警报](../alerts/alerts-log-query.md)和[工作簿](../visualize/workbooks-overview.md)等功能。 接下来，应从 Azure 资源中收集[资源日志](../essentials/resource-logs.md)，以补充活动日志中的数据，从而深入了解各资源内执行的操作。
+在本快速入门中，已将活动日志配置为发送到 Log Analytics 工作区。 现可配置要收集到工作区中的其他数据，在工作区中可以使用 Azure Monitor 中的[日志查询](../logs/log-query-overview.md)来分析这些数据，并利用[日志警报](../alerts/alerts-log-query.md)和[工作簿](../visualize/workbooks-overview.md)等功能。 接下来，应从 Azure 资源中收集[资源日志](../essentials/resource-logs.md)，以补充活动日志中的数据，从而深入了解各资源内执行的操作。
 
 
 > [!div class="nextstepaction"]

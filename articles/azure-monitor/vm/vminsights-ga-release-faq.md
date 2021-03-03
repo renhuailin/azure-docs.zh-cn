@@ -1,26 +1,26 @@
 ---
-title: 用于 VM 的 Azure Monitor (GA) 常见问题 |Microsoft Docs
-description: 用于 VM 的 Azure Monitor 是 Azure 中的一个解决方案，它合并了 Azure VM 操作系统的运行状况和性能监视、应用程序组件及其与其他资源的依赖关系的自动发现功能，并映射这些组件和资源之间的通信。 本文解答了有关 GA 版本的常见问题。
+title: VM insights (GA) 常见问题 |Microsoft Docs
+description: VM insights 是 Azure 中的一种解决方案，用于合并 Azure VM 操作系统的运行状况和性能监视，并可自动发现应用程序组件以及与其他资源的依赖关系，并映射它们之间的通信。 本文解答了有关 GA 版本的常见问题。
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/31/2020
-ms.openlocfilehash: 1958c5fcdac4ae2a080dd8a43178c204ba5fadd6
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 0c55463847e0bf55cf14db2a35de1de16526cd90
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100608839"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710747"
 ---
-# <a name="azure-monitor-for-vms-generally-available-ga-frequently-asked-questions"></a>用于 VM 的 Azure Monitor 公开提供 (GA) 常见问题
+# <a name="vm-insights-generally-available-ga-frequently-asked-questions"></a>VM insights (GA) 常见问题
 此正式发行版常见问题解答介绍了在我们为 GA 做好准备后2019和 Q1 2020 中所做的更改。
 
-## <a name="updates-for-azure-monitor-for-vms"></a>用于 VM 的 Azure Monitor 更新
-我们发布了2020年1月的新用于 VM 的 Azure Monitor 版本。 现在，启用用于 VM 的 Azure Monitor 的客户将获得 GA 版本，但使用第2019和更早版本中的用于 VM 的 Azure Monitor 版本的现有客户将会收到升级的提示。 如果跨多个工作区进行大型部署，则此 FAQ 提供了大规模升级的指导。
+## <a name="updates-for-vm-insights"></a>VM insights 更新
+我们发布了新版本的 VM insights，这早2020于我们的 GA 公告。 现在，启用 VM insights 的客户将收到 GA 版本，但使用第2019和更早版本中的 VM insights 版本的现有客户将会收到升级提示。 如果跨多个工作区进行大型部署，则此 FAQ 提供了大规模升级的指导。
 
 
-在此升级过程中，用于 VM 的 Azure Monitor 性能数据存储在 [容器 Azure Monitor](../insights/container-insights-overview.md)相同的 *InsightsMetrics* 表中，这使你可以更轻松地查询两个数据集。 此外，还可以存储在以前使用的表中无法存储的多个不同的数据集。 
+在此升级过程中，用于 VM 的 Azure Monitor 性能数据将存储在与 [Container insights](../containers/container-insights-overview.md)相同的 *InsightsMetrics* 表中，这样就可以更轻松地查询两个数据集。 此外，还可以存储在以前使用的表中无法存储的多个不同的数据集。 
 
 现在，我们的性能视图使用我们在 *InsightsMetrics* 表中存储的数据。  如果尚未升级以在工作区中使用最新的 VMInsights 解决方案，则图表将不再显示信息。  你可以从我们的 **入门** 页面升级，如下所述。
 
@@ -28,13 +28,13 @@ ms.locfileid: "100608839"
 ## <a name="what-is-changing"></a>有什么变化？
 我们发布了一个名为 VMInsights 的新解决方案，其中包括用于数据收集的其他功能，以及用于将此数据存储在 Log Analytics 工作区中的新位置。 
 
-过去，我们在你的工作区中启用了 ServiceMap 解决方案，并在 Log Analytics 工作区中设置了性能计数器，以将数据发送到 *Perf* 表。 这一新的解决方案会将数据发送到名为 *InsightsMetrics* 的表，用于容器 Azure Monitor。 此表架构使我们可以存储与 *Perf* 表格式不兼容的其他度量值和服务数据集。
+过去，我们在你的工作区中启用了 ServiceMap 解决方案，并在 Log Analytics 工作区中设置了性能计数器，以将数据发送到 *Perf* 表。 这一新的解决方案会将数据发送到一个名为 *InsightsMetrics* 的表，该表也由容器 insights 使用。 此表架构使我们可以存储与 *Perf* 表格式不兼容的其他度量值和服务数据集。
 
 我们更新了性能图表，以使用我们在 *InsightsMetrics* 表中存储的数据。 可以按如下所述升级，以使用 **入门** 页中的 *InsightsMetrics* 表。
 
 
 ## <a name="how-do-i-upgrade"></a>如何实现升级？
-Log Analytics 工作区升级到 Vm 的最新 Azure Monitor 版本时，它会升级附加到该工作区的每个 Vm 上的依赖关系代理。 需要升级的每个 VM 都将在 Azure 门户中用于 VM 的 Azure Monitor 的 " **入门** " 选项卡中进行标识。 选择升级 VM 时，会将该 VM 的工作区与附加到该工作区的任何其他 Vm 一起升级。 可以选择单个 VM、多个 Vm、资源组或订阅。 
+Log Analytics 工作区升级到 Vm 的最新 Azure Monitor 版本时，它会升级附加到该工作区的每个 Vm 上的依赖关系代理。 需要升级的每个 VM 都将在 Azure 门户的 VM insights 中的 " **入门** " 选项卡上进行标识。 选择升级 VM 时，会将该 VM 的工作区与附加到该工作区的任何其他 Vm 一起升级。 可以选择单个 VM、多个 Vm、资源组或订阅。 
 
 使用以下命令通过 PowerShell 升级工作区：
 
@@ -44,7 +44,7 @@ Set-AzOperationalInsightsIntelligencePack -ResourceGroupName <resource-group-nam
 
 ## <a name="what-should-i-do-about-the-performance-counters-in-my-workspace-if-i-install-the-vminsights-solution"></a>如果安装 VMInsights 解决方案，我应该如何处理我的工作区中的性能计数器？
 
-上一种启用用于 VM 的 Azure Monitor 在工作区中使用性能计数器的方法。 当前版本将此数据存储在名为的表中 `InsightsMetrics` 。 如果不再需要使用这些性能计数器，可以选择在工作区中禁用这些计数器。 
+上一种启用 VM insights 的方法是在工作区中使用性能计数器。 当前版本将此数据存储在名为的表中 `InsightsMetrics` 。 如果不再需要使用这些性能计数器，可以选择在工作区中禁用这些计数器。 
 
 >[!NOTE]
 >如果在表中有引用这些计数器的警报规则 `Perf` ，则需要对其进行更新以引用存储在表中的新数据 `InsightsMetrics` 。 请参阅我们的文档，以了解可用于引用此表的示例日志查询。
@@ -66,11 +66,11 @@ Set-AzOperationalInsightsIntelligencePack -ResourceGroupName <resource-group-nam
 
 ## <a name="what-if-i-only-want-to-use-service-map"></a>如果我只想使用服务映射，该怎么办？
 
-这是正常的。 查看即将推出的更新用于 VM 的 Azure Monitor 时，你将看到 Azure 门户中的提示。 发布后，你会收到一条提示，要求你将更新为新版本。 如果你只想使用 [地图](vminsights-maps.md) 功能，则可以选择不升级并继续使用用于 VM 的 Azure Monitor 中的 "地图" 功能和从你的工作区或仪表板磁贴访问的服务映射解决方案。
+这是正常的。 查看有关即将进行的更新的 VM 见解时，你将看到 Azure 门户中的提示。 发布后，你会收到一条提示，要求你将更新为新版本。 如果你只想使用 [地图](vminsights-maps.md) 功能，可以选择不升级并继续使用 VM insights 中的 Maps 功能和从你的工作区或仪表板磁贴访问的服务映射解决方案。
 
-如果选择手动启用工作区中的性能计数器，则可能会在 Azure Monitor 查看的某些性能图表中看到数据。 新解决方案发布后，我们将更新性能图表以查询存储在表中的数据 `InsightsMetrics` 。 如果要在这些图表中看到该表中的数据，则需要升级到用于 VM 的 Azure Monitor 的新版本。
+如果选择手动启用工作区中的性能计数器，则可能会在 Azure Monitor 查看的某些性能图表中看到数据。 新解决方案发布后，我们将更新性能图表以查询存储在表中的数据 `InsightsMetrics` 。 如果要在这些图表中看到该表中的数据，则需要升级到新版本的 VM insights。
 
-从和中移动数据所做的更改 `ServiceMapComputer_CL` `ServiceMapProcess_CL` 将同时影响服务映射和用于 VM 的 Azure Monitor，因此仍需要规划此更新。
+从中移动数据所做的更改 `ServiceMapComputer_CL` `ServiceMapProcess_CL` 将同时影响服务映射和 VM insights，因此你仍需要规划此更新。
 
 如果选择不升级到 **VMInsights** 解决方案，我们将继续提供引用表中数据的旧版本的性能工作簿 `Perf` 。  
 
@@ -78,7 +78,7 @@ Set-AzOperationalInsightsIntelligencePack -ResourceGroupName <resource-group-nam
 
 如果同时使用这两种解决方案，则将不会复制数据集。 这两个产品/服务都共享将存储在 `VMComputer` (以前 ServiceMapComputer_CL) 的数据集， `VMProcess` (以前 ServiceMapProcess_CL、 `VMConnection` 和 `VMBoundPort` 表来存储我们收集的地图数据集。  
 
-`InsightsMetrics`如果你使用用于 VM 的 Azure Monitor 和 VM Insights 解决方案，则该表将存储我们收集并仅填充的 vm、进程和服务数据集。 服务映射解决方案将不会在表中收集或存储数据 `InsightsMetrics` 。
+`InsightsMetrics`如果你使用的是 vm insights 和 Vm insights 解决方案，则该表将存储我们收集并仅填充的 vm、进程和服务数据集。 服务映射解决方案将不会在表中收集或存储数据 `InsightsMetrics` 。
 
 ## <a name="will-i-be-double-charged-if-i-have-the-service-map-and-vminsights-solutions-in-my-workspace"></a>如果我的工作区中有服务映射和 VMInsights 解决方案，是否会向我收费？
 
@@ -94,7 +94,7 @@ Set-AzOperationalInsightsIntelligencePack -ResourceGroupName <resource-group-nam
 
 为了最大限度地减少对新客户的这些更改的影响，我们已将此功能转移到 **有限的公共预览版** 中。 此更新发生于10月2019。
 
-我们计划在用于 VM 的 Azure Monitor 公开上市后，在2020中重新启动此运行状况功能。
+我们计划在 VM insights 推出后，在2020中重新启动此运行状况功能。
 
 ## <a name="how-do-existing-customers-access-the-health-feature"></a>现有客户如何访问运行状况功能？
 
@@ -112,4 +112,4 @@ Set-AzOperationalInsightsIntelligencePack -ResourceGroupName <resource-group-nam
 
 ## <a name="next-steps"></a>后续步骤
 
-请参阅[部署用于 VM 的 Azure Monitor](../insights/vminsights-enable-overview.md)，了解有助于监视虚拟机的要求和方法。
+若要了解帮助监视虚拟机的要求和方法，请查看 [部署 VM insights](./vminsights-enable-overview.md)。

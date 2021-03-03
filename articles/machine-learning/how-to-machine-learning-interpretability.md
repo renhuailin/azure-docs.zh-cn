@@ -10,20 +10,20 @@ ms.custom: how-to, responsible-ml
 ms.author: mithigpe
 author: minthigpen
 ms.reviewer: Luis.Quintanilla
-ms.date: 11/16/2020
-ms.openlocfilehash: 6784361dde67d7dcc1423d9edbcc92ec513ff6d4
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.date: 02/25/2021
+ms.openlocfilehash: 2c61cfaf0e97f7d483239a23e5eea52b51c6a126
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222626"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690203"
 ---
 # <a name="model-interpretability-in-azure-machine-learning-preview"></a>Azure 机器学习（预览版）中的模型可解释性
 
 
-## <a name="overview-of-model-interpretability"></a>模型可解释性概述
+## <a name="model-interpretability-overview"></a>模型 interpretability 概述
 
-可解释性对于数据科学家、审核人员和业务决策者确保符合公司政策、行业标准和政府法规而言，都同样至关重要：
+模型 interpretability 对于数据科学家、审计员和业务决策者非常重要，可确保符合公司政策、行业标准和政府法规：
 
 + 数据科学家需要能够向主管和利益干系人解释其模型，使他们可以了解所发现的结果的价值和准确度。 它们还需要利用可解释性来调试其模型，并做出有关如何改进模型的明智决策。 
 
@@ -31,15 +31,15 @@ ms.locfileid: "98222626"
 
 + 业务决策者需要能够为最终用户提供透明度来获得内心的宁静。 这使他们可以获得并保有他人的信任。
 
-
 在模型开发过程的以下两个主要阶段中，启用解释机器学习模型的功能非常重要：
+
 + 在训练阶段。因为模型设计人员和评估人员可以使用模型的可解释性输出来验证假设条件，并与利益干系人建立信任关系。 他们还可以使用模型的见解进行调试，验证模型行为是否匹配目标，并检查是否存在模型不公平性或不重要的特征。
 
 + 在推理阶段。因为使部署的模型对外部透明可让主管了解模型在“部署后”的工作情况，及其决策如何对待和影响现实生活中的人们。 
 
 ## <a name="interpretability-with-azure-machine-learning"></a>Azure 机器学习的可解释性
 
-可通过以下 SDK 包使用可解释性类：（了解如何[安装适用于 Azure 机器学习的 SDK 包](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)）
+可以通过以下 SDK 包获取 model interpretability 类： (了解如何 [为 Azure 机器学习安装 SDK 包](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)) 
 
 * `azureml.interpret` 包含 Microsoft 支持的功能。
 
@@ -52,11 +52,7 @@ ms.locfileid: "98222626"
 + 在训练和推理期间，基于真实数据集大规模实现模型可解释性。
 + 使用交互式可视化仪表板在训练时发现数据中的模式和解释
 
-
 在机器学习中，“特征”是用于预测目标数据点的数据字段。 例如，若要预测信用风险，可以使用年龄、帐户大小和帐龄的数据字段。 在本例中，年龄、帐户大小和帐龄都是 **特征**。 特征重要性告知每个数据字段如何影响模型的预测。 例如，年龄可能在预测中广泛使用，而帐户大小和帐龄不会显著影响预测值。 此过程可让数据科学家解释生成的预测，使利益干系人能够洞察哪些特征在模型中最重要。
-
-下面介绍支持的可解释性技术、支持的机器学习模型和支持的运行环境。
-
 
 ## <a name="supported-interpretability-techniques"></a>支持的可解释性技术
 
@@ -70,9 +66,6 @@ ms.locfileid: "98222626"
 |SHAP 内核解释器| SHAP 的内核解释器使用特殊加权的本地线性回归来估算 **任何模型** 的 SHAP 值。|与模型无关|
 |模拟解释器（全局代理）| 模拟解释器基于训练[全局代理模型](https://christophm.github.io/interpretable-ml-book/global.html)来模拟黑盒模型的思路。 全局代理模型是本质上可解释的模型，经训练后可以尽量准确地给出 **任何黑盒模型** 的预测近似值。 数据科学家可以解释代理模型，以得出有关黑盒模型的结论。 可以使用以下可解释模型之一作为代理模型：LightGBM (LGBMExplainableModel)、线性回归 (LinearExplainableModel)、随机梯度下降可解释模型 (SGDExplainableModel) 和决策树 (DecisionTreeExplainableModel)。|与模型无关|
 |排列特征重要性解释器 (PFI)| 排列特征重要性是用于解释分类和回归模型的技术，该技术是受 [Breiman 的随机林论文](https://www.stat.berkeley.edu/~breiman/randomforest2001.pdf)（参阅第 10 部分）的启发开发出来的。 从较高层面看，其工作原理是对整个数据集以每次一个特征的形式随机排布数据，并计算相关性能指标的变化程度。 变化越大，该特征越重要。 PFI 可以解释 **任何基础模型** 的整体行为，但不会解释各个预测。 |与模型无关|
-
-
-
 
 除了上面所述的可解释性技术，我们还支持另一种基于 SHAP 的解释器（称为 `TabularExplainer`）。 根据模型，`TabularExplainer` 会使用受支持的 SHAP 解释器之一：
 

@@ -4,12 +4,12 @@ description: 了解 Azure Monitor 中的操作规则是什么，以及如何配�
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.subservice: alerts
-ms.openlocfilehash: 5fc9b1f75faec7f2be8f9e6126fdacf9697413f6
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 1a837ac9aa94effa021d5395fb4856d1d5df2e90
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100608815"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101718142"
 ---
 # <a name="action-rules-preview"></a>操作规则（预览版）
 
@@ -209,7 +209,7 @@ Contoso 希望无限期消除针对 **ContosoSub** 中 **Computer-01** 生成的
 
 ### <a name="scenario-3-action-group-defined-at-a-resource-group"></a>应用场景 3：在资源组中定义的操作组
 
-Contoso [在订阅级别定义了一个指标警报](../platform/alerts-metric-overview.md#monitoring-at-scale-using-metric-alerts-in-azure-monitor)。 但是，Contoso 想要定义专用针对其资源组 **ContosoRG** 生成的警报触发的操作。
+Contoso [在订阅级别定义了一个指标警报](./alerts-metric-overview.md#monitoring-at-scale-using-metric-alerts-in-azure-monitor)。 但是，Contoso 想要定义专用针对其资源组 **ContosoRG** 生成的警报触发的操作。
 
 **解决方案：** 使用以下设置创建一个操作规则：
 * 范围 = **ContosoRG**
@@ -253,11 +253,11 @@ az monitor action-rule delete --resource-group MyResourceGroupName --name MyActi
 
 ## <a name="best-practices"></a>最佳实践
 
-结合[“结果数”](../platform/alerts-unified-log.md)选项创建的日志警报会使用整个搜索结果生成单个警报实例（可能跨多台计算机）。 在此方案中，如果操作规则使用“警报上下文(有效负载)”筛选器，则只要有匹配项，该规则就会作用于警报实例。 在上述方案 2 中，如果生成的日志警报的搜索结果包含 **Computer-01** 和 **Computer-02**，则会消除整个通知。 完全不会为 **Computer-02** 生成通知。
+结合[“结果数”](./alerts-unified-log.md)选项创建的日志警报会使用整个搜索结果生成单个警报实例（可能跨多台计算机）。 在此方案中，如果操作规则使用“警报上下文(有效负载)”筛选器，则只要有匹配项，该规则就会作用于警报实例。 在上述方案 2 中，如果生成的日志警报的搜索结果包含 **Computer-01** 和 **Computer-02**，则会消除整个通知。 完全不会为 **Computer-02** 生成通知。
 
 ![此图显示了操作规则和日志警报，其中突出显示了单个警报实例。](media/alerts-action-rules/action-rules-log-alert-number-of-results.png)
 
-若要充分利用日志警报和操作规则，请使用[“指标度量”](../platform/alerts-unified-log.md)选项创建日志警报。 此选项会根据定义的组字段生成单独的警报实例。 然后，在方案 2 中，将为 **Computer-01** 和 **Computer-02** 生成单独的警报实例。 由于该方案中所述的操作规则，只会消除 **Computer-01** 的通知。 **Computer-02** 的通知会继续照常激发。
+若要充分利用日志警报和操作规则，请使用[“指标度量”](./alerts-unified-log.md)选项创建日志警报。 此选项会根据定义的组字段生成单独的警报实例。 然后，在方案 2 中，将为 **Computer-01** 和 **Computer-02** 生成单独的警报实例。 由于该方案中所述的操作规则，只会消除 **Computer-01** 的通知。 **Computer-02** 的通知会继续照常激发。
 
 ![操作规则和日志警报（结果数）](media/alerts-action-rules/action-rules-log-alert-metric-measurement.png)
 
@@ -287,7 +287,7 @@ az monitor action-rule delete --resource-group MyResourceGroupName --name MyActi
 
 ### <a name="can-i-see-the-alerts-that-have-been-suppressed-by-an-action-rule"></a>是否可以看到操作规则消除的警报？
 
-在[警报列表页](../platform/alerts-managing-alert-instances.md)中，可以选择一个名为“消除状态”的附加列。 如果消除了某个警报实例的通知，该实例会在列表中显示该状态。
+在[警报列表页](./alerts-managing-alert-instances.md)中，可以选择一个名为“消除状态”的附加列。 如果消除了某个警报实例的通知，该实例会在列表中显示该状态。
 
 ![消除的警报实例](media/alerts-action-rules/action-rules-suppressed-alerts.png)
 
@@ -321,4 +321,4 @@ az monitor action-rule delete --resource-group MyResourceGroupName --name MyActi
 
 ## <a name="next-steps"></a>后续步骤
 
-- [详细了解 Azure 中的警报](../platform/alerts-overview.md)
+- [详细了解 Azure 中的警报](./alerts-overview.md)

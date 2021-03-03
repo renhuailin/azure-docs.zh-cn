@@ -6,21 +6,21 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/21/2020
-ms.openlocfilehash: 9e0d9162c497ff035438b5a65c6f4500ce834860
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 06b59aa1fe6b51bf237c0cd64117166ca4ece10b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100605980"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734921"
 ---
 # <a name="install-log-analytics-agent-on-linux-computers"></a>在 Linux 计算机上安装 Log Analytics 代理
 本文详细介绍如何使用以下方法在 Linux 计算机上安装 Log Analytics 代理：
 
 * [使用 GitHub 上托管的包装器脚本安装 Linux 代理](#install-the-agent-using-wrapper-script)。 如果计算机已直接或通过代理服务器连接到 Internet，则建议使用此方法安装和升级代理。
-* [手动下载并安装](#install-the-agent-manually)代理。 如果 Linux 计算机无法访问 Internet，并通过 [Log Analytics 网关](../platform/gateway.md)与 Azure Monitor 或 Azure 自动化进行通信，则需要执行此步骤。 
+* [手动下载并安装](#install-the-agent-manually)代理。 如果 Linux 计算机无法访问 Internet，并通过 [Log Analytics 网关](./gateway.md)与 Azure Monitor 或 Azure 自动化进行通信，则需要执行此步骤。 
 
 >[!IMPORTANT]
-> 本文所述的安装方法通常用于本地或其他云中的虚拟机。 有关可用于 Azure 虚拟机的更高效选项，请参阅[安装选项](../platform/log-analytics-agent.md#installation-options)。
+> 本文所述的安装方法通常用于本地或其他云中的虚拟机。 有关可用于 Azure 虚拟机的更高效选项，请参阅[安装选项](./log-analytics-agent.md#installation-options)。
 
 
 
@@ -32,7 +32,7 @@ ms.locfileid: "100605980"
 >仅 x86_x64 平台（64 位）支持 OpenSSL 1.1.0，任何平台均不支持早于 1.x 版本的 OpenSSL。
 
 >[!NOTE]
->不支持在容器中运行 Log Analytics Linux 代理。 如果需要监视容器，请利用针对 Docker 主机的[容器监视解决方案](../insights/containers.md)，或利用针对 Kubernetes 的[用于容器的 Azure Monitor](../insights/container-insights-overview.md)。
+>不支持在容器中运行 Log Analytics Linux 代理。 如果需要监视容器，请利用适用于 Docker 主机的 [容器监视解决方案](../containers/containers.md) 或 Kubernetes 的 [容器见解](../containers/container-insights-overview.md) 。
 
 从 2018 年 8 月之后发布的版本开始，我们对支持模型进行了以下更改：  
 
@@ -100,7 +100,7 @@ OMS 代理不支持且未计划使用其他强化和自定义方法。
 >收集 Syslog 消息时需要 rsyslog 或 syslog ng。 不支持将 Red Hat Enterprise Linux 版本 5、CentOS 和 Oracle Linux 版本 (sysklog) 上的默认 syslog 守护程序用于 syslog 事件收集。 要从这些发行版的此版本中收集 syslog 数据，应安装并配置 rsyslog 守护程序以替换 sysklog。
 
 ## <a name="network-requirements"></a>网络要求
-有关 Linux 代理的网络要求，请参阅 [Log Analytics 代理概述](../platform/log-analytics-agent.md#network-requirements)。
+有关 Linux 代理的网络要求，请参阅 [Log Analytics 代理概述](./log-analytics-agent.md#network-requirements)。
 
 ## <a name="agent-install-package"></a>代理安装包
 

@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 266862a1691387caf1b1ffa9a47b0e60e84970d8
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 739e1dea23f87403a4aded50d5c9f254a55c64cc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492125"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737607"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>有关 Azure 文件的常见问题解答 (FAQ)
 [Azure 文件](storage-files-introduction.md) 在云中提供完全托管的文件共享，这些共享可通过行业标准的 [服务器消息块进行访问， (SMB) 协议](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) 和 [网络文件系统 (NFS) 协议](https://en.wikipedia.org/wiki/Network_File_System) (预览版) 。 你可以在云或 Windows、Linux 和 macOS 的本地部署同时装载 Azure 文件共享。 另外，你也可以使用 Azure 文件同步在 Windows Server 计算机上缓存 Azure 文件共享，以在靠近使用数据的位置实现快速访问。
@@ -73,7 +73,7 @@ ms.locfileid: "96492125"
 
 * <a id="tier-options"></a>
   **Azure 文件支持哪些存储层？**  
-    Azure 文件支持两种存储层：高级存储层和标准存储层。 标准文件共享是在常规用途（GPv1 或 GPv2）存储帐户中创建的，高级文件共享是在 FileStorage 存储帐户中创建的。 详细了解如何创建[标准文件共享](storage-how-to-create-file-share.md)和[高级文件共享](storage-how-to-create-premium-fileshare.md)。 
+    Azure 文件支持两种存储层：高级存储层和标准存储层。 标准文件共享是在常规用途（GPv1 或 GPv2）存储帐户中创建的，高级文件共享是在 FileStorage 存储帐户中创建的。 详细了解如何创建[标准文件共享](storage-how-to-create-file-share.md)和[高级文件共享](./storage-how-to-create-file-share.md)。 
     
     > [!NOTE]
     > 你无法使用 Blob 存储帐户或高级常规用途（GPv1 或 GPv2）存储帐户创建 Azure 文件共享。 标准 Azure 文件共享必须只能在标准常规用途帐户中创建，高级 Azure 文件共享必须只能在 FileStorage 存储帐户中创建。 *高级* 常规用途（GPv1 和 GPv2）存储帐户仅适用于高级页 Blob。 
@@ -324,14 +324,14 @@ ms.locfileid: "96492125"
 * <a id="expressroute-not-required"></a>
 **必须使用 Azure ExpressRoute 才能在本地连接到 Azure 文件或使用 Azure 文件同步吗？**  
 
-    不是。 ExpressRoute 不是访问 Azure 文件共享的必要条件。 如果要直接在本地装载 Azure 文件共享，则只需打开端口 445（TCP 出站）即可进行 Internet 访问（这是 SMB 用于进行通信的端口）。 如果正在使用 Azure 文件同步，则只需端口 443（TCP 出站）即可进行 HTTPS 访问（无需 SMB）。 但是，你可以将 ExpressRoute 与这些访问选项中任意一项一起使用。
+    否。 ExpressRoute 不是访问 Azure 文件共享的必要条件。 如果要直接在本地装载 Azure 文件共享，则只需打开端口 445（TCP 出站）即可进行 Internet 访问（这是 SMB 用于进行通信的端口）。 如果正在使用 Azure 文件同步，则只需端口 443（TCP 出站）即可进行 HTTPS 访问（无需 SMB）。 但是，你可以将 ExpressRoute 与这些访问选项中任意一项一起使用。
 
 * <a id="mount-locally"></a>
 **如何才能在本地计算机上装载 Azure 文件共享？**  
 
     可以使用 SMB 协议装载文件共享，只要端口 445（TCP 出站）处于打开状态，且客户端支持 SMB 3.0 协议（例如，如果使用的是 Windows 10 或 Windows Server 2016）。 如果端口 445 被组织的策略或 ISP 阻止，则可使用 Azure 文件同步访问 Azure 文件共享。
 
-## <a name="backup"></a>Backup
+## <a name="backup"></a>备份
 * <a id="backup-share"></a>
 **如何备份我的 Azure 文件共享？**  
     可以使用定期[共享快照](storage-snapshots-files.md)来防止意外删除。 此外，也可以使用 AzCopy、RoboCopy 或能够备份已装载文件共享的第三方备份工具。 Azure 备份提供 Azure 文件的备份。 深入了解[通过 Azure 备份服务备份 Azure 文件共享](../../backup/backup-afs.md)。
@@ -457,7 +457,7 @@ ms.locfileid: "96492125"
 
 * <a id="nested-shares"></a>
 **是否可以设置嵌套共享？也就是说，能否在共享下使用共享？**  
-    不是。 文件共享是可以装载的虚拟驱动程序，因此不支持嵌套共享。
+    否。 文件共享是可以装载的虚拟驱动程序，因此不支持嵌套共享。
 
 * <a id="ibm-mq"></a>
 **如何将 Azure 文件与 IBM MQ 配合使用？**  

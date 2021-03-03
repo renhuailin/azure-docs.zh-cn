@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/25/2021
-ms.openlocfilehash: ffdafbe991d3cd78e45c4804fd6cc5377099acbc
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 29164bbb205e9f3ad59ac28200b5c6cd1e47bf39
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100589419"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101707568"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>可视化 Azure Monitor 中的数据
 本文概述了将 Azure Monitor 中存储的日志和指标数据可视化时可使用的方法。
@@ -138,7 +138,7 @@ ms.locfileid: "100589419"
 - 查询的响应大小限制为 8MB，查询的执行时间限制为 110 秒。
 
 ## <a name="next-steps"></a>后续步骤
-- 了解[由 Azure Monitor 收集的数据](/data-platform.md)。
+- 了解[由 Azure Monitor 收集的数据](data-platform.md)。
 - 了解 [Azure 仪表板](../azure-portal/azure-portal-dashboards.md)。
 - 了解 [指标资源管理器](essentials/metrics-getting-started.md)
 - 了解[工作簿](./visualize/workbooks-overview.md)。

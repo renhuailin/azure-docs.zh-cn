@@ -4,19 +4,23 @@ description: Azure DNS 安全基线为实现 Azure 安全基准中指定的安�
 author: msmbaldwin
 ms.service: dns
 ms.topic: conceptual
-ms.date: 08/25/2020
+ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 26075a272252c0e04948315593bb2e4a38e195da
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: b870a0325646b01ae3a72bdd28d3ae33cba45b09
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100577364"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733119"
 ---
 # <a name="azure-security-baseline-for-azure-dns"></a>适用于 Azure DNS 的 Azure 安全基线
 
-适用于 Microsoft Azure DNS 的 Azure 安全基线包含有助于改进部署安全状况的建议。 此服务的基线摘自 [Azure 安全基准版本 1.0](../security/benchmarks/overview.md)，其中提供了有关如何根据我们的最佳做法指导保护 Azure 上的云解决方案的建议。 有关详细信息，请参阅 [Azure 安全基线概述](../security/benchmarks/security-baselines-overview.md)。
+此安全基线将 [Azure 安全基准版本 1.0](../security/benchmarks/overview-v1.md) 中的指南应用到 Microsoft Azure DNS。 Azure 安全基准提供有关如何在 Azure 上保护云解决方案的建议。
+内容由 Azure 安全基准定义的 **安全控制** 和适用于 Azure DNS 的相关指南进行分组。 排除了不适用于 Azure DNS 的 **控件**。
+
+ 
+若要查看 Azure DNS 完全映射到 Azure 安全基准，请参阅 [完整的 Azure DNS 安全基线映射文件](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)。
 
 ## <a name="logging-and-monitoring"></a>日志记录和监视
 
@@ -24,57 +28,57 @@ ms.locfileid: "100577364"
 
 ### <a name="22-configure-central-security-log-management"></a>2.2：配置中心安全日志管理
 
-**指导**：活动日志是 Azure 中的一种平台日志，可用于深入了解订阅级别事件。 将日志发送到 Log Aalytics 工作区、Azure 事件中心或 Azure 存储帐户进行存档。 活动日志提供有关在控制平面级别对 Azure DNS 资源执行的操作的见解。 使用 Azure 活动日志数据，可以确定在控制平面级别针对 DNS 区域执行的任何写入操作（PUT、POST、DELETE）的“操作内容、操作人员和操作时间”。
+**指南**：活动日志是 Azure 的平台日志，提供此日志可深入了解订阅级别事件。 将日志发送到 Log Aalytics 工作区、Azure 事件中心或 Azure 存储帐户进行存档。 活动日志提供有关在控制平面级别对 Azure DNS 资源执行的操作的见解。 使用 Azure 活动日志数据，可以确定在控制平面级别针对 DNS 区域执行的任何写入操作（PUT、POST、DELETE）的“操作内容、操作人员和操作时间”。
 
-通过 Azure Monitor 引入日志，以聚合终结点设备、网络资源和其他安全系统生成的安全数据。 或者，可以启用数据并将其加入 Azure Sentinel 或第三方 SIEM。
+通过 Azure Monitor 引入日志，以聚合终结点设备、网络资源和其他安全系统生成的安全数据。 或者，你可以将和机载数据启用到 Azure Sentinel 或第三方系统信息和事件管理解决方案。
 
 - [如何加入 Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-- [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/essentials/diagnostic-settings.md)
-
-**Azure 安全中心监视**：是
+- [如何使用 Azure Monitor 收集平台日志和指标](/azure/azure-monitor/platform/diagnostic-settings)
 
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="23-enable-audit-logging-for-azure-resources"></a>2.3：为 Azure 资源启用审核日志记录
 
 **指南**：不适用;DNS 服务不支持诊断日志。
 
-**Azure 安全中心监视**：不适用
-
 **责任**：不适用
+
+**Azure 安全中心监视**：无
 
 ### <a name="25-configure-security-log-storage-retention"></a>2.5：配置安全日志存储保留期
 
 **指南**：在 Azure Monitor 中，根据组织的合规性规则设置 Log Analytics 工作区保持期。 将 Azure 存储帐户用于长期存储和存档存储。
 
-- [更改 Log Analytics 中的数据保留期](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
+- [更改 Log Analytics 中的数据保留期](/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
 
-- [如何为 Azure 存储帐户日志配置保留策略](../storage/common/storage-monitor-storage-account.md#configure-logging)
-
-**Azure 安全中心监视**：不适用
+- [如何为 Azure 存储帐户日志配置保留策略](/azure/storage/common/storage-monitor-storage-account#configure-logging)
 
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="26-monitor-and-review-logs"></a>2.6：监视和审查日志
 
 **指导**：分析和监视日志中的异常行为，并定期查看结果。 使用 Azure Monitor 和 Log Analytics 工作区查看日志并对日志数据执行查询。
 
-或者，可以启用数据并将其加入 Azure Sentinel 或第三方 SIEM。 
+或者，你可以将和机载数据启用到 Azure Sentinel 或第三方系统信息和事件管理解决方案。
 
 - [如何加入 Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-- [Log Analytics 查询入门](../azure-monitor/logs/log-analytics-tutorial.md)
+- [Log Analytics 查询入门](/azure/azure-monitor/log-query/log-analytics-tutorial)
 
-- [如何在 Azure Monitor 中执行自定义查询](../azure-monitor/logs/get-started-queries.md)
-
-**Azure 安全中心监视**：是
+- [如何在 Azure Monitor 中执行自定义查询](/azure/azure-monitor/log-query/get-started-queries)
 
 **责任**：客户
 
+**Azure 安全中心监视**：无
+
 ### <a name="27-enable-alerts-for-anomalous-activities"></a>2.7：针对异常活动启用警报
 
-**指导**：使用 Azure 安全中心和 Log Analytics 工作区监视安全日志和事件中的异常活动并发出警报。
+**指南**：将 Azure 安全中心与 Log Analytics 工作区结合使用，以便在安全日志和事件中发现异常活动时进行监视和警报。
 
 或者，可以启用数据并将其加入 Azure Sentinel。
 
@@ -82,11 +86,11 @@ ms.locfileid: "100577364"
 
 - [如何在 Azure 安全中心管理警报](../security-center/security-center-managing-and-responding-alerts.md)
 
-- [如何针对 Log Analytics 日志数据发出警报](../azure-monitor/alerts/tutorial-response.md)
-
-**Azure 安全中心监视**：不适用
+- [如何针对 Log Analytics 日志数据发出警报](/azure/azure-monitor/learn/tutorial-response)
 
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ## <a name="identity-and-access-control"></a>标识和访问控制
 
@@ -98,43 +102,42 @@ ms.locfileid: "100577364"
 
 在 Azure DNS 中，存在 DNS 区域参与者角色以及区域级别和记录集级别的 Azure RBAC。 还可以构建自己的自定义 Azure 角色，进行更细致的控制。 注意，专用 DNS 区域资源使用另一个角色名称：专用 DNS 区域参与者。
 
-- [如何使用 PowerShell 获取 Azure AD 中的目录角色](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+- [如何使用 PowerShell 在 Azure Active Directory (Azure AD) 中获取目录角色](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0&amp;preserve-view=true)
 
-- [如何使用 PowerShell 获取 Azure AD 中目录角色的成员](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+- [如何使用 PowerShell 获取 Azure AD 中目录角色的成员](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0&amp;preserve-view=true)
 
-- [了解 Azure DNS 中的 Azure RBAC](dns-protect-zones-recordsets.md#azure-role-based-access-control)
-
-**Azure 安全中心监视**：是
+- [了解 Azure DNS 中的 Azure RBAC](https://docs.microsoft.com/azure/dns/dns-protect-zones-recordsets#azure-role-based-access-control)
 
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="32-change-default-passwords-where-applicable"></a>3.2：在适用的情况下更改默认密码
 
-**指导**：Azure AD 没有默认密码。 其他需要密码的 Azure 资源会强制创建具有复杂性要求和最小密码长度的密码。 该要求因服务而异。 你对可能使用默认密码的第三方应用程序和市场服务负责。
-
-**Azure 安全中心监视**：不适用
+**指导**：Azure Active Directory (Azure AD) 没有默认密码的概念。 其他需要密码的 Azure 资源会强制创建具有复杂性要求和最小密码长度的密码。 该要求因服务而异。 你对可能使用默认密码的第三方应用程序和市场服务负责。
 
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="33-use-dedicated-administrative-accounts"></a>3.3：使用专用管理帐户
 
 **指南**：围绕专用管理帐户的使用创建标准操作程序。 使用 Azure 安全中心标识和 &amp; 访问管理来监视管理帐户的数量。
 
 此外，为了帮助你跟踪专用管理帐户，你可以使用 Azure 安全中心提供的建议，例如：
-
 - 应该为你的订阅分配了多个所有者
 - 应从订阅中删除拥有所有者权限的已弃用帐户
 - 应从订阅中删除拥有所有者权限的外部帐户
 
-还可以通过使用 Azure AD Privileged Identity Management 和 Azure 资源管理器来启用对管理帐户的即时访问。 
+你还可以使用 Azure Active Directory (Azure AD) Privileged Identity Management 和 Azure 资源管理器来启用对管理帐户的实时访问。
 
-- [详细了解 Privileged Identity Management](../active-directory/privileged-identity-management/index.yml)
+- [详细了解 Privileged Identity Management](/azure/active-directory/privileged-identity-management/)
 
 - [如何使用 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-**Azure 安全中心监视**：是
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3.4：将单一登录 (SSO) 与 Azure Active Directory 配合使用
 
@@ -142,25 +145,25 @@ ms.locfileid: "100577364"
 
 - [如何调用 Azure REST API](/rest/api/azure/#how-to-call-azure-rest-apis-with-postman)
 
-- [如何将客户端应用程序（服务主体）注册到 Azure AD](/rest/api/azure/#register-your-client-application-with-azure-ad)
+- [如何将客户端应用程序 (服务主体) 注册 Azure Active Directory (Azure AD) ](/rest/api/azure/#register-your-client-application-with-azure-ad)
 
 - [Azure DNS 保护 API 信息](/rest/api/dns/)
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3.5：对所有基于 Azure Active Directory 的访问使用多重身份验证
 
-**指导**：启用 Azure Active Directory 多重身份验证，并遵循 Azure 安全中心标识和访问管理的建议。
+**指南**：启用 Azure Active Directory (Azure AD) 多重身份验证，并遵循 Azure 安全中心的标识和访问管理建议。
 
-- [如何在 Azure 中启用 MFA](../active-directory/authentication/howto-mfa-getstarted.md)
+- [如何在 Azure 中启用多重身份验证](../active-directory/authentication/howto-mfa-getstarted.md)
 
 - [如何在 Azure 安全中心监视标识和访问](../security-center/security-center-identity-access.md)
 
-**Azure 安全中心监视**：是
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3.6：对所有管理任务使用专用计算机（特权访问工作站）
 
@@ -168,33 +171,33 @@ ms.locfileid: "100577364"
 
 - [了解安全的 Azure 托管工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
-- [如何在 Azure 中启用 MFA](../active-directory/authentication/howto-mfa-getstarted.md)
-
-**Azure 安全中心监视**：不适用
+- [如何在 Azure 中启用多重身份验证](../active-directory/authentication/howto-mfa-getstarted.md)
 
 **责任**：客户
 
+**Azure 安全中心监视**：无
+
 ### <a name="37-log-and-alert-on-suspicious-activities-from-administrative-accounts"></a>3.7：记录来自管理帐户的可疑活动并对其发出警报
 
-**指导**：使用 Azure Active Directory 安全报告和监视来检测环境中何时发生可疑活动或不安全的活动。 使用 Azure 安全中心监视标识和访问活动。
+**指导**：使用 Azure Active Directory (Azure AD) 安全报告和监视，来检测环境中何时发生可疑或不安全的活动。 使用 Azure 安全中心监视标识和访问活动。
 
 - [如何确定标记为存在风险活动的 Azure AD 用户](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [如何在 Azure 安全中心内监视用户的标识和访问活动](../security-center/security-center-identity-access.md)
 
-**Azure 安全中心监视**：是
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="38-manage-azure-resources-only-from-approved-locations"></a>3.8：仅从批准的位置管理 Azure 资源
 
-**指导**：使用 Azure AD 命名位置，仅允许从 IP 地址范围或国家/地区的特定逻辑分组进行访问。
+**指南**：使用 Azure Active Directory (Azure AD) 命名位置，以仅允许来自 IP 地址范围或国家/地区的特定逻辑分组的访问。
 
 - [如何配置 Azure AD 命名位置](../active-directory/reports-monitoring/quickstart-configure-named-locations.md)
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="39-use-azure-active-directory"></a>3.9：使用 Azure Active Directory
 
@@ -202,37 +205,37 @@ ms.locfileid: "100577364"
 
 - [如何创建和配置 Azure AD 实例](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3.10：定期审查和协调用户访问
 
-**指南**：Azure Active Directory 提供有助于发现陈旧帐户的日志。 此外，请使用 Azure AD 标识和访问评审来有效管理组成员身份、对企业应用程序的访问以及角色分配。 可以定期评审用户的访问权限，确保只有适当的用户才持续拥有访问权限。 
+**指导**：Azure Active Directory (Azure AD) 提供日志来帮助发现过时的帐户。 此外，请使用 Azure AD 标识和访问评审来有效管理组成员身份、对企业应用程序的访问以及角色分配。 可以定期评审用户的访问权限，确保只有适当的用户才持续拥有访问权限。
 
-- [了解 Azure AD 报告](../active-directory/reports-monitoring/index.yml)
+- [了解 Azure AD 报告](/azure/active-directory/reports-monitoring/)
 
 - [如何使用 Azure AD 标识和访问评审](../active-directory/governance/access-reviews-overview.md)
 
-**Azure 安全中心监视**：是
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="311-monitor-attempts-to-access-deactivated-credentials"></a>3.11：监视尝试访问已停用凭据的行为
 
-**指导**：你有权访问 Azure AD 登录活动、审核和风险事件日志源，因此可以与任何 SIEM/监视工具集成。
+**指南**：你有权访问 Azure Active Directory (Azure AD) 登录活动、审核和风险事件日志源，这使你可以与任何系统信息和事件管理解决方案或监视工具集成。
 
 可以通过为 Azure AD 用户帐户创建诊断设置，并将审核日志和登录日志发送到 Log Analytics 工作区，来简化此过程。 你可以在 Log Analytics 工作区中配置所需的警报。
 
-- [如何将 Azure 活动日志与 Azure Monitor 集成](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
-
-**Azure 安全中心监视**：不适用
+- [如何将 Azure 活动日志与 Azure Monitor 集成](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
 
 **责任**：客户
 
+**Azure 安全中心监视**：无
+
 ### <a name="312-alert-on-account-login-behavior-deviation"></a>3.12：针对帐户登录行为偏差发出警报
 
-**指导**：使用 Azure AD 标识保护功能来配置对检测到的与用户标识相关的可疑操作的自动响应。 还可将数据引入 Azure Sentinel 以做进一步调查。
+**指南**：使用 Azure Active Directory (Azure AD) Identity Protection 功能配置对检测到的与用户标识相关的可疑操作的自动响应。 还可以将数据引入 Azure Sentinel 中以便进一步调查。
 
 - [如何查看 Azure AD 风险登录](../active-directory/identity-protection/overview-identity-protection.md)
 
@@ -240,9 +243,9 @@ ms.locfileid: "100577364"
 
 - [如何加入 Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ## <a name="data-protection"></a>数据保护
 
@@ -254,65 +257,69 @@ ms.locfileid: "100577364"
 
 - [如何创建和使用标记](../azure-resource-manager/management/tag-resources.md)
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="46-use-azure-rbac-to-manage-access-to-resources"></a>4.6：使用 Azure RBAC 管理对资源的访问
 
 **指导**：Azure 基于角色的访问控制 (Azure RBAC) 可用于对 Azure 用户、组和资源进行精细的访问管理。 使用 Azure RBAC，可以授予用户所需的访问权限级别。 
 
-在 Azure DNS 中，存在 DNS 区域参与者角色以及区域级别和记录集级别的 Azure RBAC。 还可以构建自己的自定义 Azure 角色，进行更细致的控制。
+在 Azure DNS 中，存在 DNS 区域参与者角色以及区域级别和记录集级别的 Azure RBAC。 
 
-- [如何配置 Azure RBAC](../role-based-access-control/role-assignments-portal.md)
+还可以构建自己的自定义 Azure 角色，进行更细致的控制。 
 
-- [了解 Azure DNS 中的 Azure RBAC](dns-protect-zones-recordsets.md#azure-role-based-access-control)
+- [如何配置 Azure RBAC](../role-based-access-control/role-assignments-portal.md) 
+
+- [了解 Azure DNS 中的 Azure RBAC](https://docs.microsoft.com/azure/dns/dns-protect-zones-recordsets#azure-role-based-access-control)
 
 - [了解 Azure 专用 DNS 中的 Azure RBAC](dns-protect-private-zones-recordsets.md)
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4.9：记录对关键 Azure 资源的更改并对此类更改发出警报
 
 **指导**：将 Azure Monitor 与 Azure 活动日志结合使用，以便创建要在 Azure DNS 以及其他关键或相关资源发生更改时触发的警报。
 
-- [如何针对 Azure 活动日志事件创建警报](../azure-monitor/alerts/alerts-activity-log.md)
-
-**Azure 安全中心监视**：是
+- [如何针对 Azure 活动日志事件创建警报](/azure/azure-monitor/platform/alerts-activity-log)
 
 **责任**：客户
 
-## <a name="inventory-and-asset-management"></a>库存和资产管理
+**Azure 安全中心监视**：无
+
+## <a name="inventory-and-asset-management"></a>清单和资产管理
 
 [有关详细信息，请参阅 *Azure 安全基线：* 清单和资产管理](../security/benchmarks/security-control-inventory-asset-management.md)。
 
 ### <a name="61-use-automated-asset-discovery-solution"></a>6.1：使用自动化资产发现解决方案
 
-**指导**：使用 Azure Resource Graph 来查询和发现订阅中的所有资源（例如计算、存储、网络、端口和协议等）。  确保租户中具有适当的（读取）权限，并枚举所有 Azure 订阅以及订阅中的资源。
+**指导**：使用 Azure Resource Graph 来查询和发现订阅中的所有资源（例如计算、存储、网络、端口和协议等）。 确保租户中具有适当的（读取）权限，并枚举所有 Azure 订阅以及订阅中的资源。
 
 尽管可以通过 Azure Resource Graph 浏览器发现经典 Azure 资源，但我们强烈建议你今后创建并使用 Azure 资源管理器资源。
 
 - [如何使用 Azure Resource Graph 浏览器创建查询](../governance/resource-graph/first-query-portal.md)
 
-- [如何查看 Azure 订阅](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+- [如何查看 Azure 订阅](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-4.8.0&amp;preserve-view=true)
 
 - [了解 Azure RBAC](../role-based-access-control/overview.md)
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="62-maintain-asset-metadata"></a>6.2：维护资产元数据
 
 **指导**：使用“策略名称”、“描述”和“类别”可根据分类以符合逻辑的方式组织资产。
 
-- [有关标记资产的详细信息，请参阅资源命名和标记决策指南](/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=%2fazure%2fazure-resource-manager%2fmanagement%2ftoc.json)
+有关标记资产的详细信息，请参阅有关资源命名和标记决策指南的文档。 
 
-**Azure 安全中心监视**：不适用
+- [资源命名和标记决策指南](/azure/cloud-adoption-framework/decision-guides/resource-tagging)
 
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="63-delete-unauthorized-azure-resources"></a>6.3：删除未经授权的 Azure 资源
 
@@ -324,17 +331,17 @@ ms.locfileid: "100577364"
 
 - [如何创建和使用标记](../azure-resource-manager/management/tag-resources.md)
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="64-define-and-maintain-an-inventory-of-approved-azure-resources"></a>6.4：定义并维护已批准 Azure 资源的清单
 
 **指导**：根据组织需求，创建已获批 Azure 资源以及已获批用于计算资源的软件的清单。
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="65-monitor-for-unapproved-azure-resources"></a>6.5：监视未批准的 Azure 资源
 
@@ -346,27 +353,26 @@ ms.locfileid: "100577364"
 
 - [如何使用 Azure Resource Graph 创建查询](../governance/resource-graph/first-query-portal.md)
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="69-use-only-approved-azure-services"></a>6.9：仅使用已批准的 Azure 服务
 
 **指导**：在 Azure Policy 中使用以下内置策略定义，对可以在客户订阅中创建的资源类型施加限制：
 
 - 不允许的资源类型
-
 - 允许的资源类型
 
-使用 Azure Resource Graph 查询/发现订阅中的资源。 确保环境中存在的所有 Azure 资源已获得批准。
+使用 Azure Resource Graph 查询或发现订阅中的资源。 确保环境中的所有 Azure 资源均已获得批准。
 
 - [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-- [如何使用 Azure Policy 拒绝特定的资源类型](../governance/policy/samples/index.md)
-
-**Azure 安全中心监视**：不适用
+- [如何使用 Azure Policy 拒绝特定的资源类型](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#general)
 
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="611-limit-users-ability-to-interact-with-azure-resource-manager"></a>6.11：限制用户与 Azure 资源管理器进行交互的能力
 
@@ -374,9 +380,9 @@ ms.locfileid: "100577364"
 
 - [如何配置条件访问以阻止访问 Azure 资源管理器](../role-based-access-control/conditional-access-azure-management.md)
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ## <a name="secure-configuration"></a>安全配置
 
@@ -386,19 +392,19 @@ ms.locfileid: "100577364"
 
 **指导**：使用 Azure Policy 为 Azure DNS 定义和实施标准安全配置。 在“Microsoft.Network”命名空间中使用 Azure Policy 别名创建自定义策略，以审核或强制实施恢复服务保管库的配置。
 
-- [如何查看可用的 Azure Policy 别名](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+- [如何查看可用的 Azure Policy 别名](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-4.8.0&amp;preserve-view=true)
 
 - [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="73-maintain-secure-azure-resource-configurations"></a>7.3：维护安全的 Azure 资源配置
 
-**指南**：使用 Azure Policy“[拒绝]”和“[不存在则部署]”对不同的 Azure 资源强制实施安全设置。
+**指导**：使用 Azure Policy“[拒绝]”和“[不存在则部署]”效果对不同的 Azure 资源强制实施安全设置。
 
-此外，Azure 资源管理器支持另一种类型的安全控件：资源锁定功能。 资源锁应用于资源，对所有用户和角色都有效。 有两种类型的资源锁：  CanNotDelete 和 ReadOnly  。
+此外，Azure 资源管理器支持另一种类型的安全控件：资源锁定功能。 资源锁应用于资源，对所有用户和角色都有效。 有两种类型的资源锁： CanNotDelete 和 ReadOnly。
 
 - [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
@@ -408,21 +414,21 @@ ms.locfileid: "100577364"
 
 - [如何防止 Azure 专用 DNS 中的更改](dns-protect-private-zones-recordsets.md)
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="75-securely-store-configuration-of-azure-resources"></a>7.5：安全存储 Azure 资源的配置
 
 **指导**：如果使用自定义的 Azure Policy 定义，请使用 Azure DevOps 或 Azure Repos 安全地存储和管理代码。
 
-- [如何在 Azure DevOps 中存储代码](/azure/devops/repos/git/gitworkflow?view=azure-devops)
+- [如何在 Azure DevOps 中存储代码](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops&amp;preserve-view=true)
 
-- [Azure Repos 文档](/azure/devops/repos/index?view=azure-devops)
-
-**Azure 安全中心监视**：不适用
+- [Azure Repos 文档](https://docs.microsoft.com/azure/devops/repos/?view=azure-devops&amp;preserve-view=true)
 
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="77-deploy-configuration-management-tools-for-azure-resources"></a>7.7：部署 Azure 资源的配置管理工具
 
@@ -430,19 +436,19 @@ ms.locfileid: "100577364"
 
 - [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="79-implement-automated-configuration-monitoring-for-azure-resources"></a>7.9：为 Azure 资源实施自动配置监视
 
-**指导**：在“Microsoft.Network”命名空间中使用内置的 Azure Policy 定义和 Azure Policy 别名创建自定义策略，以审核、强制实施系统配置并为其发出警报。 使用 Azure Policy“[审核]”、“[拒绝]”和“[不存在则部署]”自动强制实施 Azure 资源的配置。
+**指导**：在“Microsoft.Network”命名空间中使用内置的 Azure Policy 定义和 Azure Policy 别名创建自定义策略，以审核、强制实施系统配置并为其发出警报。 使用 Azure Policy 的“[审核]”、“[拒绝]”和“[不存在则部署]”效果自动强制实施 Azure 资源的配置。
 
 - [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="713-eliminate-unintended-credential-exposure"></a>7.13：消除意外的凭据透露
 
@@ -450,9 +456,9 @@ ms.locfileid: "100577364"
 
 - [如何设置凭据扫描程序](https://secdevtools.azurewebsites.net/helpcredscan.html)
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ## <a name="malware-defense"></a>恶意软件防护
 
@@ -464,9 +470,9 @@ ms.locfileid: "100577364"
 
 你需要负责预先扫描要上传到非计算 Azure 资源的任何内容。 Microsoft 无法访问客户数据，因此无法代表你对客户内容执行反恶意软件扫描。
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ## <a name="incident-response"></a>事件响应
 
@@ -482,9 +488,9 @@ ms.locfileid: "100577364"
 
 - [使用 NIST 的“计算机安全事件处理指南”，帮助制定自己的事件响应计划](https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final)
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10.2：创建事件评分和优先级设定过程
 
@@ -496,9 +502,9 @@ ms.locfileid: "100577364"
 
 - [使用标记整理 Azure 资源](../azure-resource-manager/management/tag-resources.md)
 
-**Azure 安全中心监视**：是
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="103-test-security-response-procedures"></a>10.3：测试安全响应过程
 
@@ -506,9 +512,9 @@ ms.locfileid: "100577364"
 
 - [NIST 发布内容 - IT 计划和功能的测试、训练和演练计划指南](https://csrc.nist.gov/publications/detail/sp/800-84/final)
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10.4：提供安全事件联系人详细信息，并针对安全事件配置警报通知
 
@@ -516,9 +522,9 @@ ms.locfileid: "100577364"
 
 - [如何设置 Azure 安全中心安全联系人](../security-center/security-center-provide-security-contact-details.md)
 
-**Azure 安全中心监视**：是
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10.5：将安全警报整合到事件响应系统中
 
@@ -528,9 +534,9 @@ ms.locfileid: "100577364"
 
 - [如何将警报流式传输到 Azure Sentinel](../sentinel/connect-azure-security-center.md)
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ### <a name="106-automate-the-response-to-security-alerts"></a>10.6：自动响应安全警报
 
@@ -538,9 +544,9 @@ ms.locfileid: "100577364"
 
 - [如何在安全中心配置工作流自动化](../security-center/workflow-automation.md)
 
-**Azure 安全中心监视**：不适用
-
 **责任**：客户
+
+**Azure 安全中心监视**：无
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>渗透测试和红队练习
 
@@ -554,11 +560,11 @@ ms.locfileid: "100577364"
 
 - [Microsoft 云红色组合](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
 
-**Azure 安全中心监视**：不适用
-
 **责任**：共享
+
+**Azure 安全中心监视**：无
 
 ## <a name="next-steps"></a>后续步骤
 
-- 请参阅 [Azure 安全基准](../security/benchmarks/overview.md)
-- 详细了解 [Azure 安全基线](../security/benchmarks/security-baselines-overview.md)
+- 参阅 [Azure 安全基准 V2 概述](/azure/security/benchmarks/overview)
+- 详细了解 [Azure 安全基线](/azure/security/benchmarks/security-baselines-overview)

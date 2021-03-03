@@ -4,12 +4,12 @@ description: 了解如何使用群集自动缩放程序自动缩放群集以满�
 services: container-service
 ms.topic: article
 ms.date: 07/18/2019
-ms.openlocfilehash: c0564dc3b394b4a65e70a487b6f6989cb306bdda
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 9caf56545efc6aefae525e28614d39705c00c21e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100373243"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101742562"
 ---
 # <a name="automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>自动缩放群集以满足 Azure Kubernetes 服务 (AKS) 中的应用程序需求
 
@@ -121,7 +121,7 @@ az aks update \
 
 还可以通过更改群集范围的自动缩放程序配置文件中的默认值，来配置群集自动缩放程序的更高粒度详细信息。 例如，在节点未充分利用 10 分钟后，将发生纵向缩减事件。 如果你的工作负荷每 15 分钟运行一次，则可能需要更改自动缩放程序配置文件，以便在 15 到 20 分钟后纵向缩减未充分利用的节点。 启用群集自动缩放程序后，除非指定不同的设置，否则将使用默认配置文件。 可以更新群集自动缩放程序配置文件中的以下设置：
 
-| 设置                          | 描述                                                                              | 默认值 |
+| 设置                          | 说明                                                                              | 默认值 |
 |----------------------------------|------------------------------------------------------------------------------------------|---------------|
 | scan-interval                    | 重新评估群集纵向扩展或缩减的频率                                    | 10 秒    |
 | scale-down-delay-after-add       | 纵向扩展后经过多长时间恢复评估纵向缩减                               | 10 分钟    |
@@ -288,7 +288,7 @@ az aks nodepool update \
 [aks-scale-apps]: tutorial-kubernetes-scale.md
 [aks-support-policies]: support-policies.md
 [aks-upgrade]: upgrade-cluster.md
-[aks-view-master-logs]: ./view-master-logs.md#enable-resource-logs
+[aks-view-master-logs]: ./view-control-plane-logs.md#enable-resource-logs
 [autoscaler-profile-properties]: #using-the-autoscaler-profile
 [azure-cli-install]: /cli/azure/install-azure-cli
 [az-aks-show]: /cli/azure/aks#az-aks-show

@@ -1,17 +1,16 @@
 ---
 title: 使用 Azure Monitor 优化 Active Directory 环境 | Microsoft Docs
 description: 可以使用 Active Directory 运行状况检查解决方案定期评估环境的风险和运行状况。
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/10/2019
-ms.openlocfilehash: 069f70d27bd7e721be2bf82f6ef64ce9c531ab8e
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: bff61ec9dfcb985ea0111ca58bfd58273e1fe432
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100577554"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723242"
 ---
 # <a name="optimize-your-active-directory-environment-with-the-active-directory-health-check-solution-in-azure-monitor"></a>使用 Azure Monitor 中的 Active Directory 运行状况检查解决方案优化 Active Directory 环境
 

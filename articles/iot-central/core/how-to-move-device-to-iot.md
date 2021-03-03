@@ -3,16 +3,16 @@ title: 如何从 IoT 中心将设备移到 Azure IoT Central
 description: 如何从 IoT 中心将设备移到 Azure IoT Central
 author: TheRealJasonAndrew
 ms.author: v-anjaso
-ms.date: 12/20/2020
+ms.date: 02/20/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 7898f842529b81b80febff444c97b199fbebba3c
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: f5a7693eeced1028d84598a6db3728776f845f7e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98146441"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101741610"
 ---
 # <a name="how-to-transfer-a-device-to-azure-iot-central-from-iot-hub"></a>如何从 IoT 中心将设备传输到 Azure IoT Central
 
@@ -24,7 +24,7 @@ ms.locfileid: "98146441"
 
 设备可以使用连接字符串或使用 DPS 直接连接到 IoT 中心。 [Azure IoT 中心设备预配服务 (DPS) ](../../iot-dps/about-iot-dps.md) 是 IoT Central 的路由。
 
-## <a name="to-move-the-device"></a>移动设备
+## <a name="to-move-the-device-to-azure-iot-central"></a>将设备移到 Azure IoT Central
 
 若要将设备连接到 IOT 中心的 IoT Central，需要使用以下内容更新设备：
 

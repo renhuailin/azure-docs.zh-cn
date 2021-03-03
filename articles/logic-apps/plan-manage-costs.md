@@ -6,16 +6,16 @@ ms.reviewer: estfan, logicappspm, azla
 ms.topic: how-to
 ms.custom: subject-cost-optimization
 ms.date: 01/29/2021
-ms.openlocfilehash: 58e12862cf00b500bced105d67fede8599c2a257
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 44351497ed58c8d49404c094f6800b52186edabb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99180432"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101709625"
 ---
 # <a name="plan-and-manage-costs-for-azure-logic-apps"></a>规划和管理 Azure 逻辑应用的成本
 
-本文可帮助你规划和管理 Azure 逻辑应用的成本。 使用此服务创建或添加任何资源之前，请使用 Azure 定价计算器估算成本。 开始使用逻辑应用资源后，可以使用 [Azure 成本管理](https://docs.microsoft.com/azure/cost-management-billing/cost-management-billing-overview?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)来设置预算和监视成本。 若要确定可能要执行的操作，还可以查看预测的成本并监视支出趋势。
+本文可帮助你规划和管理 Azure 逻辑应用的成本。 使用此服务创建或添加任何资源之前，请使用 Azure 定价计算器估算成本。 开始使用逻辑应用资源后，可以使用 [Azure 成本管理](../cost-management-billing/cost-management-billing-overview.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)来设置预算和监视成本。 若要确定可能要执行的操作，还可以查看预测的成本并监视支出趋势。
 
 请记住，逻辑应用的成本只是 Azure 帐单中每月成本的一部分。 尽管本文介绍了如何评估和管理逻辑应用的成本，但你需要为 Azure 订阅中使用的所有 Azure 服务和资源（包括任何第三方服务）付费。 熟悉管理逻辑应用的成本后，可以应用类似的方法来管理订阅中使用的所有 Azure 服务的成本。
 
@@ -23,9 +23,9 @@ ms.locfileid: "99180432"
 
 <!--Note for Azure service writer: This section covers prerequisites for the Cost Management's Cost Analysis feature. Add other prerequisites needed for your service after the Cost Management prerequisites. -->
 
-[Azure 成本管理](https://docs.microsoft.com/azure/cost-management-billing/cost-management-billing-overview?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) 支持大多数 Azure 帐户类型。 若要查看所有支持的帐户类型，请参阅 [了解成本管理数据](https://docs.microsoft.com/azure/cost-management-billing/costs/understand-cost-mgt-data?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。 若要查看成本数据，你至少需要对 Azure 帐户具有读取访问权限。
+[Azure 成本管理](../cost-management-billing/cost-management-billing-overview.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) 支持大多数 Azure 帐户类型。 若要查看所有支持的帐户类型，请参阅 [了解成本管理数据](../cost-management-billing/costs/understand-cost-mgt-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。 若要查看成本数据，你至少需要对 Azure 帐户具有读取访问权限。
 
-若要了解如何分配对 Azure 成本管理数据的访问权限，请参阅[分配对数据的访问权限](https://docs.microsoft.com/azure/cost-management/assign-access-acm-data?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。
+若要了解如何分配对 Azure 成本管理数据的访问权限，请参阅[分配对数据的访问权限](../cost-management-billing/costs/assign-access-acm-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。
 
 <!--Note for Azure service writer: If you have other prerequisites for your service, add them here -->
 
@@ -101,9 +101,9 @@ Azure 逻辑应用在 Azure 基础结构上运行，在部署新资源时，会�
 
 ## <a name="create-budgets-and-alerts"></a>创建预算和警报
 
-为了帮助你主动管理 Azure 帐户或订阅的成本，你可以使用[Azure 成本管理和计费](https://docs.microsoft.com/azure/cost-management-billing/cost-management-billing-overview?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)服务和功能来创建[预算](https://docs.microsoft.com/azure/cost-management/tutorial-acm-create-budgets?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)和[警报](https://docs.microsoft.com/azure/cost-management/cost-mgt-alerts-monitor-usage-spending?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。  预算和警报是针对 Azure 订阅和资源组创建的，作为总体成本监视策略的一部分，它们非常有用。
+为了帮助你主动管理 Azure 帐户或订阅的成本，你可以使用[Azure 成本管理和计费](../cost-management-billing/cost-management-billing-overview.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)服务和功能来创建[预算](../cost-management-billing/costs/tutorial-acm-create-budgets.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)和[警报](../cost-management-billing/costs/cost-mgt-alerts-monitor-usage-spending.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。  预算和警报是针对 Azure 订阅和资源组创建的，作为总体成本监视策略的一部分，它们非常有用。
 
-根据与预算和成本阈值相比的支出，警报会自动通知利益干系人有关支出异常和超支风险的信息。 如果需要在监视中获得更多粒度，还可以在 Azure 中创建对特定资源或服务使用筛选器的预算。 筛选器可帮助确保不会意外地创建新的资源，从而降低额外的费用。 有关筛选器选项的详细信息，请参阅 [组和筛选选项](https://docs.microsoft.com/azure/cost-management-billing/costs/group-filter?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。
+根据与预算和成本阈值相比的支出，警报会自动通知利益干系人有关支出异常和超支风险的信息。 如果需要在监视中获得更多粒度，还可以在 Azure 中创建对特定资源或服务使用筛选器的预算。 筛选器可帮助确保不会意外地创建新的资源，从而降低额外的费用。 有关筛选器选项的详细信息，请参阅 [组和筛选选项](../cost-management-billing/costs/group-filter.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。
 
 <a name="monitor-costs"></a>
 
@@ -115,7 +115,7 @@ Azure 逻辑应用在 Azure 基础结构上运行，在部署新资源时，会�
 
 * 使用 Azure Monitor[监视逻辑应用执行和存储](#monitor-billing-metrics)使用情况
 
-* 使用[Azure 成本管理和计费](https://docs.microsoft.com/azure/cost-management-billing/cost-management-billing-overview?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)运行[成本分析](https://docs.microsoft.com/azure/cost-management/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
+* 使用[Azure 成本管理和计费](../cost-management-billing/cost-management-billing-overview.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)运行[成本分析](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
 
 <a name="monitor-billing-metrics"></a>
 
@@ -170,7 +170,7 @@ Azure 逻辑应用在 Azure 基础结构上运行，在部署新资源时，会�
 
 ### <a name="run-cost-analysis-by-using-azure-cost-management-and-billing"></a>使用 Azure 成本管理和计费运行成本分析
 
-若要基于特定作用域（例如，Azure 订阅）查看逻辑应用服务的成本，可以使用[Azure 成本管理和计费](https://docs.microsoft.com/azure/cost-management-billing/cost-management-billing-overview?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)中的[成本分析](https://docs.microsoft.com/azure/cost-management/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)功能。
+若要基于特定作用域（例如，Azure 订阅）查看逻辑应用服务的成本，可以使用[Azure 成本管理和计费](../cost-management-billing/cost-management-billing-overview.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)中的[成本分析](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)功能。
 
 1. 在 Azure 门户中，打开所需的范围，例如 Azure 订阅。 从左侧菜单的 " **成本管理**" 下，选择 " **成本分析**"。
 
@@ -197,7 +197,7 @@ Azure 逻辑应用在 Azure 基础结构上运行，在部署新资源时，会�
 
 ### <a name="export-cost-data"></a>导出成本数据
 
-需要对成本进行更多数据分析时，可以将 [成本数据导出](https://docs.microsoft.com/azure/cost-management-billing/costs/tutorial-export-acm-data?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) 到存储帐户。 例如，财务团队可以使用 Excel 或 Power BI 来分析此数据。 您可以按每天、每周或每月计划导出您的成本，并设置自定义的日期范围。 建议使用导出成本数据来检索成本数据集。
+需要对成本进行更多数据分析时，可以将 [成本数据导出](../cost-management-billing/costs/tutorial-export-acm-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) 到存储帐户。 例如，财务团队可以使用 Excel 或 Power BI 来分析此数据。 您可以按每天、每周或每月计划导出您的成本，并设置自定义的日期范围。 建议使用导出成本数据来检索成本数据集。
 
 ## <a name="other-ways-to-manage-and-reduce-costs"></a>其他管理和降低成本的方法
 
@@ -228,9 +228,7 @@ Otherwise, if no other cost-saving recommendations or best practices exist to re
 
 ## <a name="next-steps"></a>后续步骤
 
-* [使用 Azure 成本管理优化云投资](https://docs.microsoft.com/azure/cost-management-billing/costs/cost-mgt-best-practices?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
-* [使用成本分析管理成本](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
-* [防止意外成本](https://docs.microsoft.com/azure/cost-management-billing/understand/analyze-unexpected-charges?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
-* 采用 [成本管理](https://docs.microsoft.com/learn/paths/control-spending-manage-bills?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) 引导式学习课程
-
-
+* [使用 Azure 成本管理优化云投资](../cost-management-billing/costs/cost-mgt-best-practices.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
+* [使用成本分析管理成本](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
+* [防止意外成本](../cost-management-billing/understand/analyze-unexpected-charges.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
+* 采用 [成本管理](/learn/paths/control-spending-manage-bills?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) 引导式学习课程

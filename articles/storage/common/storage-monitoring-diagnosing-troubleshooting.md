@@ -1,6 +1,6 @@
 ---
 title: 对 Azure 存储进行监视、诊断和故障排除 | Microsoft Docs
-description: 使用存储分析、客户端日志记录等功能及其他第三方工具，确定、诊断和排查与 Azure 存储相关的问题。
+description: 使用存储分析、客户端日志记录等功能及其他第三方工具来确定、诊断和排查与 Azure 存储相关的问题。
 author: normesta
 ms.service: storage
 ms.topic: troubleshooting
@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: 2f68452bed69e4e174f126d259e8df6d2283e6cf
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: d28cfd533caaef3fb80a63aea932e6418dff7e55
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100585225"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101724245"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>监视、诊断和排查 Microsoft Azure 存储问题
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -566,7 +566,7 @@ queueServicePoint.UseNagleAlgorithm = false;
 
 下表显示了存储日志记录日志文件中的示例服务器端日志消息：
 
-| 名称 | 值 |
+| 名称 | Value |
 | --- | --- |
 | 请求开始时间 | 2014-05-30T06:17:48.4473697Z |
 | 操作类型     | GetBlobProperties            |
@@ -732,7 +732,7 @@ sqllocaldb create v11.0
 启动 Fiddler 后，它会开始捕获你的本地计算机上的 HTTP 和 HTTPS 流量。 以下是一些用于控制 Fiddler 的有用命令：
 
 * 停止和启动捕获流量。 在主菜单上，转到“文件”，然后单击“捕获流量”在打开和关闭捕获之间进行切换。
-* 保存捕获的通信数据。 在主菜单上，转到“文件”，单击“保存”，然后单击“所有会话”，这样即可将流量保存在一个会话存档文件中。 以后可以重新加载会话存档以进行分析，或者将其发送到 Microsoft 技术支持（如有需要）。
+* 保存捕获的通信数据。 在主菜单上，转到“文件”，单击“保存”，并单击“所有会话”：可以将流量保存在一个会话存档文件中。 以后可以重新加载会话存档以进行分析，或者将其发送到 Microsoft 技术支持（如有需要）。
 
 若要限制 Fiddler 捕获的通信量，可以使用在“筛选器”选项卡中配置的筛选器。下面的屏幕截图显示了只捕获发送到 **contosoemaildist.table.core.windows.net** 存储终结点流量的筛选器：
 
@@ -789,7 +789,7 @@ WireShark 会在 **packetlist** 窗口中突出显示存在的任何错误。 �
 
 有关 Azure 存储中的分析的详细信息，请参阅以下资源：
 
-* [在 Azure 门户中监视存储帐户](storage-monitor-storage-account.md)
+* [在 Azure 门户中监视存储帐户](./manage-storage-analytics-logs.md)
 * [存储分析](storage-analytics.md)
 * [存储分析指标](storage-analytics-metrics.md)
 * [存储分析指标表架构](/rest/api/storageservices/storage-analytics-metrics-table-schema)

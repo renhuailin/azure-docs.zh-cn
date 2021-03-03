@@ -1,20 +1,20 @@
 ---
 title: 用于 SQL API 的 Spring Data Azure Cosmos DB v3 的发行说明和资源
-description: 了解 SQL API Azure Cosmos DB v3 的弹簧数据，其中包括发布日期、停用日期和 Azure Cosmos DB SQL Async Java SDK 各版本之间所做的更改。
+description: 了解用于 SQL API 的 Spring Data Azure Cosmos DB v3 的信息，包括发行日期、停用日期以及在 Azure Cosmos DB SQL Async Java SDK 各版本之间所做的更改。
 author: anfeldma-ms
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 08/18/2020
+ms.date: 02/28/2021
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 64054a2bb5c1f7e17eef87c3babb28137b6c912a
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 9c3209895902a11ad0b9f29ff28e9ac7f845b101
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097118"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101692719"
 ---
 # <a name="spring-data-azure-cosmos-db-v3-for-core-sql-api-release-notes-and-resources"></a>适用于 Core (SQL) API 的 Spring Data Azure Cosmos DB v3：发行说明和资源
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -57,56 +57,39 @@ Spring Data Azure Cosmos DB 依赖于 Spring Data 框架。 Azure Cosmos DB SDK 
 > * [将 Spring Data Gremlin 用于 Azure Cosmos DB](/azure/developer/java/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db)
 >
 
-## <a name="start-here"></a>从此处开始
+## <a name="get-started-fast"></a>快速入门
 
-# <a name="explore"></a>[探索](#tab/explore)
+  按照 [春季 Boot 入门指南](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db)，按弹簧数据 Azure Cosmos DB 启动并运行。 建议使用春季 Boot 入门方法开始使用春季 Data Azure Cosmos DB 连接器。
 
-<img src="media/sql-api-sdk-java-spring-v3/up-arrow.png" alt="explore the tabs above" width="80"/>
-
-#### <a name="these-tabs-contain-basic-spring-data-azure-cosmos-db-samples"></a>这些选项卡包含基本的 Spring Data Azure Cosmos DB 示例。
-
-# <a name="pomxml"></a>[pom.xml](#tab/pom)
-
-### <a name="configure-dependencies"></a>配置依赖项
+  或者，您可以将弹簧数据 Azure Cosmos DB 依赖项添加到文件中，如下 `pom.xml` 所示：
 
   ```xml
   <dependency>
       <groupId>com.azure</groupId>
       <artifactId>azure-spring-data-cosmos</artifactId>
-      <version>latest</version>
+      <version>latest-version</version>
   </dependency>
   ```
 
-# <a name="connect"></a>[“连接”](#tab/connect)
+## <a name="helpful-content"></a>帮助性内容
 
-### <a name="connect"></a>连接
-
-指定 Azure Cosmos DB 帐户和容器详细信息。 Spring Data Azure Cosmos DB 会自动创建客户端并连接到容器。
-
-[application.properties](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-getting-started/blob/main/azure-spring-data-cosmos-java-getting-started/src/main/resources/application.properties)：
-```
-cosmos.uri=${ACCOUNT_HOST}
-cosmos.key=${ACCOUNT_KEY}
-cosmos.secondaryKey=${SECONDARY_ACCOUNT_KEY}
-
-dynamic.collection.name=spel-property-collection
-# Populate query metrics
-cosmos.queryMetricsEnabled=true
-```
-
-# <a name="doc-ops"></a>[文档操作](#tab/docs)
-
-### <a name="document-operations"></a>文档操作
-
----
-
-## <a name="resources"></a>资源
-
-* **参与编写 SDK** ： [GitHub 上的 Spring Data Azure Cosmos DB 存储库](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos/azure-spring-data-cosmos)
-
-* **教程** ： [GitHub 上的 Spring Data Azure Cosmos DB 教程](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-getting-started) 
+| Content | 链接 |
+|---|---|
+|**SDK 下载**| [Maven](https://mvnrepository.com/artifact/com.azure/azure-spring-data-cosmos) |
+|**API 文档** | [Java API 参考文档](/java/api/com.azure.spring.data.cosmos) |
+|**参与 SDK** | [GitHub 上用于 Java 的 Azure SDK 中央存储库](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos/azure-spring-data-cosmos) | 
+|**入门** | [快速入门：生成用于管理 Azure Cosmos DB SQL API 数据的弹簧数据 Azure Cosmos DB 应用](./create-sql-api-spring-data.md) <br> [具有快速入门代码的 GitHub 存储库](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-getting-started) | 
+|**基本代码示例** | [Azure Cosmos DB： SQL API 的弹簧数据 Azure Cosmos DB 示例](sql-api-spring-data-sdk-samples.md) <br> [具有示例代码的 GitHub 存储库](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-samples)|
+| **性能提示**| [适用于弹簧数据的 Java SDK v4 (性能提示) ](performance-tips-java-sdk-v4-sql.md)| 
+| **疑难解答** | [排查适用于弹簧数据) 的 Java SDK v4 (](troubleshoot-java-sdk-v4-sql.md) | 
+| **Azure Cosmos DB 研讨会和实验室** |[Cosmos DB 研讨会主页](https://aka.ms/cosmosworkshop)
 
 [!INCLUDE[Release notes](~/azure-sdk-for-java-cosmos-db/sdk/cosmos/azure-spring-data-cosmos/CHANGELOG.md)]
+
+## <a name="additional-notes"></a>附加说明
+
+* 春季 Data Azure Cosmos DB 支持 Java JDK 8 和 Java JDK 11。
+* 当前支持春季 Data 2.3，当前不支持春季 Data 2.4。
 
 ## <a name="faq"></a>常见问题解答
 

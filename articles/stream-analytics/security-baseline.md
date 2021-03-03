@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: e37171fce5dd7fe625550c5f554f211cf148ea07
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 6e6ad96da5f5c7901fda1f041c55075552edecde
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100591427"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720335"
 ---
 # <a name="azure-security-baseline-for-stream-analytics"></a>适用于流分析的 Azure 安全基线
 
@@ -22,7 +22,7 @@ ms.locfileid: "100591427"
 
 有关详细信息，请参阅 [Azure 安全基线概述](../security/benchmarks/security-baselines-overview.md)。
 
-## <a name="network-security"></a>网络安全性
+## <a name="network-security"></a>网络安全
 
 有关详细信息，请参阅[安全控制：网络安全](../security/benchmarks/security-control-network-security.md)。
 
@@ -168,7 +168,7 @@ ms.locfileid: "100591427"
 
 * [Azure 流分析提供诊断日志和活动数据供审查](./stream-analytics-job-diagnostic-logs.md)
 
-* [如何为 Azure 存储帐户日志配置保留策略](../storage/common/storage-monitor-storage-account.md#configure-logging)
+* [如何为 Azure 存储帐户日志配置保留策略](../storage/common/manage-storage-analytics-logs.md#configure-logging)
 
 * [更改 Log Analytics 中的数据保留期](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 

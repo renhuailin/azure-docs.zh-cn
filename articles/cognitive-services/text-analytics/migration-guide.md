@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 01/22/2021
 ms.author: aahi
-ms.openlocfilehash: 0faa7a6f5a3d2efc8bbef11308b308e3305a00d5
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 416ef4ceddbb43e9f1606d44a66ffd5295cee4e6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99096315"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699889"
 ---
 # <a name="migrate-to-version-3x-of-the-text-analytics-api"></a>迁移到文本分析 API 版本 3.x
 
@@ -82,7 +82,7 @@ NER
 |组织 | 公司、政治团体、乐队、体育俱乐部、政府机构和公共组织。 民族和宗教不包括在此实体类型中。 |
 | PhoneNumber | 电话号码（仅限美国和欧洲电话号码）。 |
 | 电子邮件 | 电子邮件地址。 |
-| URL | 指向网站的 URL。 |
+| 代码 | 指向网站的 URL。 |
 | IP | 网络 IP 地址。 |
 | DateTime | 某天的日期和时间。| 
 | Date | 日历日期。 |
@@ -104,7 +104,7 @@ NER
 
 ### <a name="feature-changes"></a>功能更改 
 
-除了终结点版本之外，v3 中的语言检测功能没有更改，但是 JSON 响应会包含 `ConfidenceScore` 而非 `score`。 V3 在输出中也仅返回一种语言。 
+V3 中的语言检测功能输出已发生更改。 JSON 响应将包含 `ConfidenceScore` 而不是 `score` 。 V3 还只能  `detectedLanguage` 为每个文档返回特性中的一种语言。
 
 ### <a name="steps-to-migrate"></a>迁移步骤
 

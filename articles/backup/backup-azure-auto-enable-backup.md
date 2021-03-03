@@ -3,18 +3,18 @@ title: 使用 Azure Policy 在创建 VM 时自动启用备份
 description: 本文介绍如何使用 Azure Policy 为在给定范围内创建的所有 VM 自动启用备份
 ms.topic: conceptual
 ms.date: 11/08/2019
-ms.openlocfilehash: 7e8195d22f54f29b36549b966322623ed0987d72
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: dfa4364eeaa9f5b60af3f5d6a19aaeb188d4f65e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98896861"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101707296"
 ---
 # <a name="auto-enable-backup-on-vm-creation-using-azure-policy"></a>使用 Azure Policy 在创建 VM 时自动启用备份
 
 在一个组织中，备份或法规符合性管理员的主要职责之一是确保所有业务关键型计算机都以适当的保留期进行备份。
 
-如今，Azure 备份提供各种内置策略 (使用 [Azure 策略](https://docs.microsoft.com/azure/governance/policy/overview)) 来帮助你自动确保将 Azure 虚拟机配置为进行备份。 根据备份团队和资源的组织方式，可以使用以下任一策略：
+如今，Azure 备份提供各种内置策略 (使用 [Azure 策略](../governance/policy/overview.md)) 来帮助你自动确保将 Azure 虚拟机配置为进行备份。 根据备份团队和资源的组织方式，可以使用以下任一策略：
 
 ## <a name="policy-1---configure-backup-on-vms-without-a-given-tag-to-an-existing-recovery-services-vault-in-the-same-location"></a>策略 1-将无给定标记的 Vm 上的备份配置到相同位置的现有恢复服务保管库
 
@@ -29,7 +29,7 @@ ms.locfileid: "98896861"
 ## <a name="policy-4---preview-configure-backup-on-vms-with-a-given-tag-to-a-new-recovery-services-vault-with-a-default-policy"></a>策略 4-[预览] 使用默认策略将具有给定标记的 Vm 上的备份配置到新的恢复服务保管库
 此策略的工作方式与上述策略3相同，唯一的区别在于，您可以使用此策略将包含特定标记的 vm **包含** 在此策略的作用域中。 
 
-除此之外，Azure 备份还提供 [仅审核](https://docs.microsoft.com/azure/governance/policy/concepts/effects#audit) 策略- **应为虚拟机启用 Azure 备份**。 此策略标识哪些虚拟机未启用备份，但不会为这些 Vm 自动配置备份。 当你只想评估 Vm 的总体符合性，但不希望立即采取措施时，这非常有用。
+除此之外，Azure 备份还提供 [仅审核](../governance/policy/concepts/effects.md#audit) 策略- **应为虚拟机启用 Azure 备份**。 此策略标识哪些虚拟机未启用备份，但不会为这些 Vm 自动配置备份。 当你只想评估 Vm 的总体符合性，但不希望立即采取措施时，这非常有用。
 
 ## <a name="supported-scenarios"></a>支持的方案
 

@@ -7,12 +7,12 @@ ms.date: 01/18/2021
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 3f81ae72af48ec934d1c2c2567ebdd212d8e0499
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 735ad7ad9ded6baded59ab3f08e239d1c8376b74
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98763334"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702719"
 ---
 # <a name="migrate-your-v2-iot-central-application-to-v3"></a>将 V2 IoT Central 应用程序迁移到 V3
 
@@ -104,7 +104,7 @@ IoT Central 不支持迁移到现有的 V3 应用程序。 若要自动移动现
 验证所有内容在新的 V3 应用程序中按预期方式工作后，请删除旧的 V2 应用程序。 此步骤可确保不会对不再使用的应用程序计费。
 
 > [!Note]
-> 若要删除应用程序，你必须具有删除创建该应用程序时选择的 Azure 订阅中的资源的权限。 有关详细信息，请参阅[使用基于角色的访问控制来管理对 Azure 订阅资源的访问权限](../../active-directory/role-based-access-control-configure.md)。
+> 若要删除应用程序，你必须具有删除创建该应用程序时选择的 Azure 订阅中的资源的权限。 有关详细信息，请参阅[使用基于角色的访问控制来管理对 Azure 订阅资源的访问权限](../../role-based-access-control/role-assignments-portal.md)。
 
 1. 在 V2 应用程序中，选择菜单中的 " **管理** " 选项卡
 2. 选择 " **删除** " 以永久删除 IoT Central 的应用程序。 此选项永久删除与该应用程序关联的所有数据。

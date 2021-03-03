@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: c37693bc6c9ce1cc5fed6c06ecb7fe628c315176
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: f5855d7ab1f7ba8e11334f1373fb10166f47003a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100573585"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708248"
 ---
 # <a name="deploy-azure-monitor"></a>部署 Azure Monitor
 启用 Azure Monitor 来监视所有 Azure 资源时，既要配置 Azure Monitor 组件，也要配置 Azure 资源，这样才能生成供 Azure Monitor 收集的监视数据。 本文描述如何通过所需的不同步骤来完全实现使用常用配置的 Azure Monitor，以便监视 Azure 订阅中的所有资源。 本文为每个步骤提供了基本说明，其中包含介绍详细配置要求的其他文档的链接。
@@ -22,7 +22,7 @@ ms.locfileid: "100573585"
 ## <a name="configuration-goals"></a>配置目标
 完全实现 Azure Monitor 的目标是收集所有云资源和应用程序的所有可用数据，并根据该数据在 Azure Monitor 中启用尽可能多的功能。
 
-Azure Monitor 收集的数据会发送到 [Azure Monitor 指标](essentials/data-platform-metrics.md)或 [Azure Monitor 日志](logs/data-platform-logs.md)。 每个指标/日志存储不同类型的数据，并启用不同类型的分析和警报。 有关不同警报类型的说明，请参阅 [比较 Azure Monitor 度量值和日志](/data-platform.md) ，以比较 Microsoft Azure 中的两个和 [警报概述](alerts/alerts-overview.md) 。 
+Azure Monitor 收集的数据会发送到 [Azure Monitor 指标](essentials/data-platform-metrics.md)或 [Azure Monitor 日志](logs/data-platform-logs.md)。 每个指标/日志存储不同类型的数据，并启用不同类型的分析和警报。 有关不同警报类型的说明，请参阅 [比较 Azure Monitor 度量值和日志](data-platform.md) ，以比较 Microsoft Azure 中的两个和 [警报概述](alerts/alerts-overview.md) 。 
 
 某些数据可以同时发送到指标和日志，以便通过不同的功能来利用该数据。 在这些情况下，可能需要单独进行配置。 例如，Azure 资源会自动将指标数据发送到指标，该数据支持指标资源管理器和指标警报。 你必须为每个资源创建诊断设置，以便将该指标数据发送到日志，这样就可以使用 Log Analytics 分析其他日志数据的性能趋势。 以下部分标识了数据发送到的位置，并提供了将数据发送到所有可能的位置所需的每个步骤。
 
@@ -84,32 +84,32 @@ Azure 中的资源会自动生成[资源日志](essentials/platform-logs-overvie
 
 虚拟机生成的数据与其他 Azure 资源类似，但你需要一个代理来从来宾操作系统收集数据。 请参阅 [Azure Monitor 代理概述](agents/agents-overview.md) ，比较 Azure Monitor 使用的代理。 
 
-[用于 VM 的 Azure Monitor](vm/vminsights-overview.md) 使用 Log Analytics 代理和依赖项代理从虚拟机的来宾操作系统中收集数据，因此你可以将这些代理作为此见解的实现的一部分进行部署。 这会为使用它的其他服务（例如 Azure 安全中心）启用 Log Analytics 代理。
+[VM insights](vm/vminsights-overview.md) 使用 Log Analytics 代理和依赖项代理从虚拟机的来宾操作系统中收集数据，因此你可以将这些代理作为此见解的实现的一部分进行部署。 这会为使用它的其他服务（例如 Azure 安全中心）启用 Log Analytics 代理。
 
 
 [![部署 AZURE VM ](media/deploy/deploy-azure-vm.png)](media/deploy/deploy-azure-vm.png#lightbox)
 
 
-### <a name="configure-workspace-for-azure-monitor-for-vms"></a>为用于 VM 的 Azure Monitor 配置工作区
-用于 VM 的 Azure Monitor 需要一个 Log Analytics 工作区，该工作区通常与从其他 Azure 资源中收集数据时所创建的工作区相同。 启用任何虚拟机之前，必须将用于 VM 的 Azure Monitor 所需的解决方案添加到工作区。
+### <a name="configure-workspace-for-vm-insights"></a>配置 VM insights 的工作区
+VM insights 需要 Log Analytics 工作区，该工作区通常与从其他 Azure 资源中收集数据时所创建的工作区相同。 启用任何虚拟机之前，必须将 VM insights 所需的解决方案添加到工作区。
 
-若要详细了解如何配置用于 VM 的 Azure Monitor 的 Log Analytics 工作区，请参阅 [配置用于 VM 的 Azure Monitor Log Analytics 工作区](vm/vminsights-configure-workspace.md) 。
+有关为 VM insights 配置 Log Analytics 工作区的详细信息，请参阅 [配置 vm insights Log Analytics 工作区](vm/vminsights-configure-workspace.md) 。
 
-### <a name="enable-azure-monitor-for-vms-on-each-virtual-machine"></a>启用每个虚拟机上的用于 VM 的 Azure Monitor
-配置工作区后，可以通过安装 Log Analytics 代理和依赖项代理来启用每个虚拟机。 有多种方法可安装这些代理，其中包括 Azure 策略，允许你在创建每个虚拟机时自动配置这些代理。 用于 VM 的 Azure Monitor 收集的性能数据和进程详细信息存储在 Azure Monitor 日志中。
+### <a name="enable-vm-insights-on-each-virtual-machine"></a>在每个虚拟机上启用 VM insights
+配置工作区后，可以通过安装 Log Analytics 代理和依赖项代理来启用每个虚拟机。 有多种方法可安装这些代理，其中包括 Azure 策略，允许你在创建每个虚拟机时自动配置这些代理。 VM insights 收集的性能数据和进程详细信息存储在 Azure Monitor 日志中。
 
-请参阅 [启用用于 VM 的 Azure Monitor 概述](vm/vminsights-enable-overview.md) ，了解如何将代理部署到你的虚拟机，并使其能够进行监视。
+有关将代理部署到虚拟机并将其用于监视的选项，请参阅 [启用 VM insights 概述](vm/vminsights-enable-overview.md) 。
 
 ### <a name="configure-workspace-to-collect-events"></a>配置工作区以收集事件
-用于 VM 的 Azure Monitor 将从每个虚拟机的来宾操作系统中收集性能数据以及进程的详细信息和依赖项。 Log Analytics 代理还可以从来宾收集日志，包括来自 Windows 的事件日志和 Linux 中的 syslog。 它从其连接到的 Log Analytics 工作区中检索这些日志的配置。 只需配置工作区一次，每次代理连接时，它将下载任何配置更改。 
+VM insights 将从每个虚拟机的来宾操作系统中收集性能数据以及进程的详细信息和依赖项。 Log Analytics 代理还可以从来宾收集日志，包括来自 Windows 的事件日志和 Linux 中的 syslog。 它从其连接到的 Log Analytics 工作区中检索这些日志的配置。 只需配置工作区一次，每次代理连接时，它将下载任何配置更改。 
 
 有关配置 Log Analytics 工作区以从代理虚拟机收集额外数据的详细信息，请参阅 [中的代理数据源 Azure Monitor](agents/agent-data-sources.md) 。
 
 > [!NOTE]
-> 你还可以配置工作区以收集性能计数器，但这很可能是由用于 VM 的 Azure Monitor 收集的性能数据冗余的。 工作区收集的性能数据将存储在 *Perf* 表中，而用于 VM 的 Azure Monitor 收集的性能数据将存储在 *InsightsMetrics* 表中。 仅当需要用于 VM 的 Azure Monitor 尚未收集的计数器时，才在工作区中配置性能收集。
+> 你还可以配置工作区以收集性能计数器，但这对于 VM insights 收集的性能数据最有可能是冗余的。 工作区收集的性能数据将存储在 *Perf* 表中，而 VM insights 收集的性能数据将存储在 *InsightsMetrics* 表中。 仅当需要 VM insights 尚未收集的计数器时，才在工作区中配置性能收集。
 
 ### <a name="diagnostic-extension-and-telegraf-agent"></a>诊断扩展和 Telegraf 代理
-用于 VM 的 Azure Monitor 使用将性能数据发送到 Log Analytics 工作区但不 Azure Monitor 度量值的 Log Analytics 代理。 将此数据发送到度量值后，可以使用指标资源管理器分析该数据，并将其用于指标警报。 这需要 Windows 上的诊断扩展和 Linux 上的 Telegraf 代理。
+VM insights 使用将性能数据发送到 Log Analytics 工作区但不 Azure Monitor 指标的 Log Analytics 代理。 将此数据发送到度量值后，可以使用指标资源管理器分析该数据，并将其用于指标警报。 这需要 Windows 上的诊断扩展和 Linux 上的 Telegraf 代理。
 
 有关安装和配置这些代理的详细信息，请参阅 [安装和配置 Windows Azure 诊断扩展 (WAD) ](agents/diagnostics-extension-windows-install.md) 和 [使用 InfluxData Telegraf 代理收集 Linux VM 的自定义指标](essentials/collect-custom-metrics-linux-telegraf.md) 。
 

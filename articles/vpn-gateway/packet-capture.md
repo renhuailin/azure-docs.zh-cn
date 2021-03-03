@@ -2,17 +2,17 @@
 title: Azure VPN 网关：配置数据包捕获
 description: 了解可在 VPN 网关上使用的数据包捕获功能，以帮助缩小确定问题原因的范围。
 services: vpn-gateway
-author: radwiv
+author: anzaman
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 12/2/2020
-ms.author: radwiv
-ms.openlocfilehash: caa9a0869d7d4bca58b91a0c682177e1408f8300
-ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
+ms.date: 02/22/2021
+ms.author: alzam
+ms.openlocfilehash: 0983139d1c9af235eba4c9f99da7bc9dea3f231b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97733784"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726608"
 ---
 # <a name="configure-packet-capture-for-vpn-gateways"></a>为 VPN 网关配置数据包捕获
 
@@ -27,11 +27,12 @@ VPN 网关数据包捕获可在网关上运行，也可在特定的连接上运�
 查明高流量相关问题时，使用 5 元组筛选器（源子网、目标子网、源端口、目标端口、协议）和 TCP 标志（SYN、ACK、FIN、URG、PSH、RST）会很有帮助。
 
 以下 JSON 和 JSON 架构示例提供每个属性的说明。 运行数据包捕获时，请记住以下限制：
+
 - 在此处显示的架构中，筛选器是一个数组，但目前一次只能使用一个筛选器。
 - 无法同时运行多个网关范围的数据包捕获。
 - 无法在同一连接上同时运行多个数据包捕获。 可以同时在不同的连接上运行多个数据包捕获。
 - 每个网关最多可以并行运行 5 个数据包捕获。 这些数据包捕获可以是网关范围的数据包捕获和基于连接的数据包捕获的组合。
-- MaxPacketBufferSize 的单位为 bytes，MaxFileSize 为 mb
+- MaxPacketBufferSize 的单位为字节，MaxFileSize 的单位为 MB
 
 ### <a name="example-json"></a>示例 JSON
 ```JSON-interactive
@@ -317,7 +318,13 @@ VPN 网关数据包捕获可在网关上运行，也可在特定的连接上运�
 }
 ```
 
-## <a name="set-up-packet-capture-by-using-powershell"></a>通过使用 PowerShell 设置数据包捕获
+## <a name="packet-capture---portal"></a>数据包捕获-门户
+
+可以在 Azure 门户中设置数据包捕获。
+
+:::image type="content" source="./media/packet-capture/portal.jpg" alt-text="门户中的数据包捕获屏幕截图。" lightbox="./media/packet-capture/portal.jpg":::
+
+## <a name="packet-capture---powershell"></a>数据包捕获-PowerShell
 
 以下示例显示使用 PowerShell 命令启动和停止数据包捕获。 有关参数选项的详细信息，请参阅 [Start-AzVirtualnetworkGatewayPacketCapture](/powershell/module/az.network/start-azvirtualnetworkgatewaypacketcapture)。
 

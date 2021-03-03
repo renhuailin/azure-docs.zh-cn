@@ -1,18 +1,18 @@
 ---
 title: 如何停止监视混合 Kubernetes 群集 |Microsoft Docs
-description: 本文介绍如何通过 Azure Monitor 容器来停止监视混合 Kubernetes 群集。
+description: 本文介绍如何通过容器见解停止监视混合 Kubernetes 群集。
 ms.topic: conceptual
 ms.date: 06/16/2020
-ms.openlocfilehash: 2754649cd990b015162be158effa2b85aa1fe27e
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: e8708d6b860683cc96a806160ccc7c8e33949ab2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100608954"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713688"
 ---
 # <a name="how-to-stop-monitoring-your-hybrid-cluster"></a>如何停止监视混合群集
 
-启用 Kubernetes 群集的监视后，如果你决定不再想要监视群集，可以使用容器 Azure Monitor 停止监视群集。 本文介绍如何为以下环境实现此目的：
+启用 Kubernetes 群集的监视后，如果你决定不再想要对其进行监视，可以使用容器见解停止监视群集。 本文介绍如何为以下环境实现此目的：
 
 - Azure 上的 AKS 引擎和 Azure Stack
 - OpenShift 版本4及更高版本
@@ -25,7 +25,7 @@ ms.locfileid: "100608954"
 - Azure 上的 AKS 引擎和 Azure Stack
 - OpenShift 版本4及更高版本
 
-1. 若要首先确定群集上安装的 helm 图表版本的 Azure Monitor，请运行以下 helm 命令。
+1. 若要首先确定群集上安装的容器 insights helm 图表版本，请运行以下 helm 命令。
 
     ```
     helm list
@@ -38,7 +38,7 @@ ms.locfileid: "100608954"
     azmon-containers-release-1      default         3               2020-04-21 15:27:24.1201959 -0700 PDT   deployed        azuremonitor-containers-2.7.0   7.0.0-1
     ```
 
-    *azmon-版本-1* 表示容器 Azure Monitor 的 helm 图表版本。
+    *azmon-版本-1* 表示用于容器见解的 helm 图表版本。
 
 2. 若要删除图表版本，请运行以下 helm 命令。
 
@@ -157,4 +157,4 @@ bash disable-monitoring.sh --resource-id $azureArcClusterResourceId --kube-conte
 
 ## <a name="next-steps"></a>后续步骤
 
-如果 Log Analytics 工作区仅用于支持监视群集，并且不再需要它，则必须手动将其删除。 如果你不熟悉如何删除工作区，请参阅 [删除 Azure Log Analytics 工作区](../platform/delete-workspace.md)。
+如果 Log Analytics 工作区仅用于支持监视群集，并且不再需要它，则必须手动将其删除。 如果你不熟悉如何删除工作区，请参阅 [删除 Azure Log Analytics 工作区](../logs/delete-workspace.md)。

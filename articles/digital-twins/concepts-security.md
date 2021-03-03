@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: d129890cc63e5a0e4cbc6139e1de2df7a31f6f77
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 81a44d4d0025c841cf56e19d6afee5e95bd44a55
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101094556"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101730501"
 ---
 # <a name="secure-azure-digital-twins"></a>保护 Azure 数字孪生
 
@@ -92,7 +92,7 @@ Azure 支持两种类型的托管标识：系统分配和用户分配。 目前�
 
 你可以对 Azure 数字实例使用系统分配的托管标识，对 [自定义终结点](concepts-route-events.md#create-an-endpoint)进行身份验证。 Azure 数字孪生针对[事件中心](../event-hubs/event-hubs-about.md)和 [服务总线](../service-bus-messaging/service-bus-messaging-overview.md)目标的终结点   和用于死信事件的[azure 存储容器](../storage/blobs/storage-blobs-introduction.md)   终结点[](concepts-route-events.md#dead-letter-events)，支持系统分配的基于身份的身份验证。 [事件网格](../event-grid/overview.md)  托管标识当前不支持终结点。
 
-有关如何为 Azure 数字孪生启用系统管理的标识并使用它来路由事件的说明，请参阅 [*如何：启用托管标识以便路由事件 (预览)*](how-to-enable-managed-identities.md)。
+有关如何为 Azure 数字孪生启用系统管理的标识并使用它来路由事件的说明，请参阅 [*如何：启用托管标识以便路由事件 (预览)*](./how-to-enable-managed-identities-portal.md)。
 
 ## <a name="private-network-access-with-azure-private-link-preview"></a>使用 Azure Private Link (预览) 进行专用网络访问
 
@@ -106,7 +106,7 @@ Azure 支持两种类型的托管标识：系统分配和用户分配。 目前�
 
 为 Azure 数字孪生实例配置专用终结点可以保护 Azure 数字孪生实例，消除公开泄露，并避免从 VNet 渗透数据。
 
-有关如何为 Azure 数字孪生设置专用链接的说明，请参阅 how [*to： Enable private access With Private link (preview)*](how-to-enable-private-link.md)。
+有关如何为 Azure 数字孪生设置专用链接的说明，请参阅 how [*to： Enable private access With Private link (preview)*](./how-to-enable-private-link-portal.md)。
 
 ### <a name="design-considerations"></a>设计注意事项 
 

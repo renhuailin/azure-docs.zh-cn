@@ -3,13 +3,13 @@ title: 与 Azure Monitor 集成的合作伙伴
 description: 了解 Azure 监视器的合作伙伴，以及如何访问相关文档，以便与它们的产品集成。
 ms.subservice: ''
 ms.topic: conceptual
-ms.date: 09/21/2020
-ms.openlocfilehash: 5f97097d21beab12c5f58161751a1bc340fa6cf7
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.date: 02/19/2021
+ms.openlocfilehash: 8b4a30fb26a0b66d31fe16016e0a88fbfb9bbd03
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100607968"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710968"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure 监视器合作伙伴集成
 
@@ -101,6 +101,8 @@ Azure 使客户能够迁移其应用程序并将其现代化，以便与许多�
 -   通过 Azure 订阅发票获取 Datadog 服务的统一计费。
 
 注册使用 Azure 与 Datadog 的新集成的[公共预览版](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR4z3T2aGXUZPslUNJ3YpcapURFBHSUJIMVJTWDM5VUFPMVkyTVhMVlYzMS4u)。  从 2020 年 10 月开始，Azure 市场提供公共预览版。
+
+订阅[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/datadog1591740804488.dd_liftr_v2?tab=Overview)中提供的 "与 Azure 的 Datadog 集成" 的预览
 
 如果你仍在使用之前手动配置的集成，请参阅 [DataDog 网站上的文档](https://docs.datadoghq.com/integrations/azure/)。
 

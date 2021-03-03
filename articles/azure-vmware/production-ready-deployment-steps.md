@@ -2,13 +2,13 @@
 title: 规划 Azure VMware 解决方案部署
 description: 本文概述了 Azure VMware 解决方案部署工作流。  最终结果是一个就绪的可用于创建和迁移虚拟机 (VM) 的环境。
 ms.topic: tutorial
-ms.date: 10/16/2020
-ms.openlocfilehash: 8b1d69f3f953b43177a3b1d0611b51ca2cfb1a75
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.date: 02/22/2021
+ms.openlocfilehash: f9d49d7ff8109364c9fc1eee4388b30ccc1a61b6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98762858"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733648"
 ---
 # <a name="planning-the-azure-vmware-solution-deployment"></a>规划 Azure VMware 解决方案部署
 
@@ -51,12 +51,6 @@ ms.locfileid: "98762858"
 定义要部署到 Azure VMware 解决方案私有云的主机数。  最小主机数为 3 个，每个群集最多为 16 个。  有关详细信息，请参阅 [Azure VMware 解决方案私有云和群集](concepts-private-clouds-clusters.md#clusters)文档。
 
 如果你的需要超出初始部署数目，以后可以随时扩展群集。
-
-## <a name="vcenter-admin-password"></a>vCenter 管理员密码
-定义 vCenter 管理员密码。  在部署过程中，你将创建一个 vCenter 管理员密码。 此密码在 vCenter 生成过程中用于 cloudadmin@vsphere.local 管理员帐户。 你将使用它来登录到 vCenter。
-
-## <a name="nsx-t-admin-password"></a>NSX-T 管理员密码
-定义 NSX-T 管理员密码。  在部署过程中，你将创建一个 NSX-T 管理员密码。 在 NSX 生成过程中，此密码将分配给 NSX 帐户中的管理员用户。 你将使用它登录 NSX-T Manager。
 
 ## <a name="ip-address-segment"></a>IP 地址段
 

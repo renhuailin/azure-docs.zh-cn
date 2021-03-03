@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 07/27/2020
+ms.date: 02/26/2021
 ms.author: alkohli
-ms.openlocfilehash: 0c35bde40cac9629f084d69d52f119651b5655f7
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 6c9e8938feb3c3444d01f9d37476589776707425
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98784471"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703178"
 ---
 # <a name="return-your-azure-stack-edge-pro-device"></a>返回 Azure Stack Edge Pro 设备
 
@@ -30,26 +30,16 @@ ms.locfileid: "98784471"
 
 ## <a name="erase-data-from-the-device"></a>清除设备上的数据
 
-若要擦除设备上数据磁盘中的数据，需要重置设备。 可使用本地 Web UI 或 PowerShell 界面重置设备。
+若要擦除设备上数据磁盘中的数据，需要重置设备。
 
-重置之前，请根据需要创建设备上本地数据的副本。 可将设备中的数据复制到 Azure 存储容器。
+重置之前，请根据需要创建设备上本地数据的副本。 可将设备中的数据复制到 Azure 存储容器。 
 
-即使在重置设备之前，也可以重新启动设备。 
+即使在重置设备之前，也可以重新启动设备。
 
-若要使用本地 Web UI 重置设备，请执行以下步骤。
+可以在本地 web UI 或 PowerShell 中重置设备。 有关 PowerShell 说明，请参阅 [重置设备](./azure-stack-edge-connect-powershell-interface.md#reset-your-device)。
 
-1. 在本地 Web UI 中，转到“维护”>“设备重置”。
-2. 选择“重置设备”。
 
-    ![重置设备](media/azure-stack-edge-return-device/device-reset-1.png)
-
-3. 出现确认提示时，查看警告，并选择“是”以继续。
-
-    ![确认重置](media/azure-stack-edge-return-device/device-reset-2.png)  
-
-重置会清除设备数据磁盘中的数据。 此过程大约需要 30-40 分钟，具体取决于设备上的数据量。
-
-或者，连接到设备的 PowerShell 界面，使用 `Reset-HcsAppliance` cmdlet 清除数据磁盘中的数据。 有关详细信息，请参阅[重置设备](azure-stack-edge-connect-powershell-interface.md#reset-your-device)。
+[!INCLUDE] [重置设备中的数据](../../includes/azure-stack-edge-device-reset.md)
 
 > [!NOTE]
 > - 如果要更换或升级为新设备，建议仅在收到新设备后才重置自己的设备。
@@ -67,15 +57,15 @@ ms.locfileid: "98784471"
 
     1. 提供设备的序列号。 若要获取设备序列号，请转到设备的本地 web UI，然后转到 " **概述**"。  
     
-    ![设备序列号1](media/azure-stack-edge-return-device/device-serial-number-1.png) 
+       ![设备序列号1](media/azure-stack-edge-return-device/device-serial-number-1.png) 
 
-    2. 输入服务标记编号，该编号是设备独有的五个或更多字符标识符。 当你面对设备) 时，服务标记位于设备的右下角 (。 拖出信息标记 (是) 的 "滑出标签" 面板。 此面板包含系统信息，如服务标记、NIC、MAC 地址等。 
+    2. 输入服务标记编号。 服务标记号是一个标识符，其中包含五个或更多字符，这对于你的设备是唯一的。 在设备) 时，服务标记位于设备的右下角 (。 拖出信息标记 (是) 的 "滑出标签" 面板。 此面板包含系统信息，如服务标记、NIC、MAC 地址等。 
     
-    ![服务标记号1](media/azure-stack-edge-return-device/service-tag-number-1.png)
+       ![服务标记号1](media/azure-stack-edge-return-device/service-tag-number-1.png)
 
     3. 从下拉列表中，选择返回的原因。
 
-    ![返回设备2](media/azure-stack-edge-return-device/return-device-2.png) 
+       ![返回设备2](media/azure-stack-edge-return-device/return-device-2.png) 
 
 3. 在 " **发货详细信息**" 下：
 
@@ -84,7 +74,7 @@ ms.locfileid: "98784471"
 
     ![返回设备3](media/azure-stack-edge-return-device/return-device-3.png)
 
-4. 查看 **隐私条款** ，并根据说明选中此复选框，并同意隐私条款。
+4. 查看 **隐私条款**，并按笔记选中复选框，并同意隐私条款。
 
 5. 选择 " **启动返回**"。
 
@@ -109,7 +99,7 @@ ms.locfileid: "98784471"
 
     1. 给本地 UPS 打电话（特定于国家/地区的免费电话号码）。
     2. 在通话中，引用反向装运跟踪号码，如打印的标签上所示。
-    3. 如果未引用跟踪号码，UPS 将在取件时要求你支付额外费用。
+    3. 如果跟踪号未加引号，则 UPS 会要求你在装货期间支付额外费用。
 
     你还可以将 Azure Stack Edge Pro 置于最近的放置位置，而不是计划分拣。
 
@@ -123,8 +113,8 @@ ms.locfileid: "98784471"
 
 可以在以下时段从 Azure 门户删除设备：
 
-- 下订单后，在 Microsoft 准备好设备之前。
-- 将设备返回给 Microsoft 后，它会通过 Azure 数据中心的物理检测，并 Azure Stack Edge Pro 操作团队调用以确认是否返回了设备。
+- 订购后，在 Microsoft 准备好设备之前。
+- 将设备返还给 Microsoft 后，Azure Stack Edge Pro 运营团队已调用确认是否返回了设备。 直到返回的设备通过 Azure 数据中心的物理检查后，运营团队才会调用。
 
 如果你已针对其他订阅或位置激活了设备，Microsoft 将在一个工作日内将你的订单转移到新的订阅或位置。 移动订单后，可以删除此资源。
 

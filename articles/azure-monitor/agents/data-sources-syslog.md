@@ -6,18 +6,18 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/21/2020
-ms.openlocfilehash: 2d7406c1e801a07f10342c47e7334e6a12bfd449
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 0d9804d088e1f193e0adf1fa26adbbe5d3680097
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100607773"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101729192"
 ---
 # <a name="collect-syslog-data-sources-with-log-analytics-agent"></a>使用 Log Analytics 代理收集 Syslog 数据源
 Syslog 是普遍适用于 Linux 的事件日志记录协议。 应用程序将发送可能存储在本地计算机或传递到 Syslog 收集器的消息。 安装适用于 Linux 的 Log Analytics 代理后，它将配置本地 Syslog 后台程序，以将消息转发到此代理。 然后，此代理将消息发送到 Azure Monitor，将在后者中创建相应的记录。  
 
 > [!IMPORTANT]
-> 本文介绍使用 [Log Analytics 代理](../platform/log-analytics-agent.md)收集 Syslog 事件，这是 Azure Monitor 使用的代理之一。 其他代理收集的数据不同，且配置也不同。 有关可用代理及其可收集的数据的列表，请参阅 [Azure Monitor 代理概述](../agents/agents-overview.md)。
+> 本文介绍使用 [Log Analytics 代理](./log-analytics-agent.md)收集 Syslog 事件，这是 Azure Monitor 使用的代理之一。 其他代理收集的数据不同，且配置也不同。 有关可用代理及其可收集的数据的列表，请参阅 [Azure Monitor 代理概述](../agents/agents-overview.md)。
 
 > [!NOTE]
 > 当 rsyslog 为默认守护程序时，Azure Monitor 支持 rsyslog 或 syslog-ng 发送的消息集合。 不支持将 Red Hat Enterprise Linux 版本 5、CentOS 和 Oracle Linux 版本 (sysklog) 上的默认 syslog 守护程序用于 syslog 事件收集。 要从这些发行版的此版本中收集 syslog 数据，应安装并配置 [rsyslog 守护程序](http://rsyslog.com)以替换 sysklog。
@@ -57,7 +57,7 @@ Syslog 收集器支持以下功能：
 默认情况下，所有配置更改均会自动推送到所有代理。 如果想在每个 Linux 代理上手动配置 Syslog，则取消选中“将下面的配置应用到我的计算机”框。
 
 ### <a name="configure-syslog-on-linux-agent"></a>在 Linux 代理上配置 Syslog
-[Log Analytics 代理安装在 Linux 客户端上](../learn/quick-collect-linux-computer.md)后，它将安装可定义收集的消息的设施和严重级别的默认 syslog 配置文件。 可以修改此文件以更改配置。 此配置文件视客户端已安装的 Syslog 守护程序而异。
+[Log Analytics 代理安装在 Linux 客户端上](../vm/quick-collect-linux-computer.md)后，它将安装可定义收集的消息的设施和严重级别的默认 syslog 配置文件。 可以修改此文件以更改配置。 此配置文件视客户端已安装的 Syslog 守护程序而异。
 
 > [!NOTE]
 > 如果编辑 syslog 配置，必须重新启动 syslog 守护程序才能使更改生效。
@@ -230,7 +230,6 @@ record 记录的类型为 **Syslog**，并且具有下表中的属性。
 | Syslog &#124; summarize AggregatedValue = count() by Facility |按设施计算的 Syslog 记录数目。 |
 
 ## <a name="next-steps"></a>后续步骤
-* 了解[日志查询](../log-query/log-query-overview.md)以便分析从数据源和解决方案中收集的数据。
-* 使用[自定义字段](./../platform/custom-fields.md)将来自 syslog 记录的数据解析为单个字段。
-* [配置 Linux 代理](../learn/quick-collect-linux-computer.md)以收集其他类型的数据。
-
+* 了解[日志查询](../logs/log-query-overview.md)以便分析从数据源和解决方案中收集的数据。
+* 使用[自定义字段](../logs/custom-fields.md)将来自 syslog 记录的数据解析为单个字段。
+* [配置 Linux 代理](../vm/quick-collect-linux-computer.md)以收集其他类型的数据。

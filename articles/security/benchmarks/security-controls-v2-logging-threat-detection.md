@@ -4,19 +4,21 @@ description: Azure 安全基准 V2 日志记录和威胁检测
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/20/2020
+ms.date: 02/22/2021
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 2a0ce52c094739ffbbce2f93a41b2533222066b8
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 43119a51be2359ed2ddfb4e5d5fa629badedb054
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100576807"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720675"
 ---
 # <a name="security-control-v2-logging-and-threat-detection"></a>安全控制 V2：日志记录和威胁检测
 
-日志记录和威胁检测涵盖了相关控制措施用于检测 Azure 上的威胁以及启用、收集和存储 Azure 服务的审核日志。 这包括启用检测、调查和修正过程，使控件能够在 Azure 服务中生成具有本机威胁检测功能的高质量警报;它还包括 Azure Monitor 收集日志，通过 Azure Sentinel、时间同步和日志保留来集中进行安全分析。 
+日志记录和威胁检测涵盖了相关控制措施用于检测 Azure 上的威胁以及启用、收集和存储 Azure 服务的审核日志。 这包括启用检测、调查和修正过程，使控件能够在 Azure 服务中生成具有本机威胁检测功能的高质量警报;它还包括 Azure Monitor 收集日志，通过 Azure Sentinel、时间同步和日志保留来集中进行安全分析。
+
+若要查看适用的内置 Azure 策略，请参阅 [Azure 安全基准管理法规符合性内置计划的详细信息：日志记录和威胁检测](../../governance/policy/samples/azure-security-benchmark#logging-and-threat-detection)
 
 ## <a name="lt-1-enable-threat-detection-for-azure-resources"></a>LT-1：为 Azure 资源启用威胁检测
 
@@ -46,7 +48,7 @@ ms.locfileid: "100576807"
 
 - [安全操作](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
-- [状况管理](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)   
+- [状况管理](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)
 
 - [应用程序安全性和 DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
 
@@ -83,9 +85,9 @@ Azure 安全中心还可针对某些可疑活动发出警报，这些活动包�
 
 - [安全操作](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
-- [状况管理](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)   
+- [状况管理](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)
 
-- [应用程序安全性和 DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
+- [应用程序安全性和 DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
 - [威胁情报](/azure/cloud-adoption-framework/organize/cloud-security-threat-intelligence)
 
@@ -95,7 +97,9 @@ Azure 安全中心还可针对某些可疑活动发出警报，这些活动包�
 |--|--|--|--|
 | LT-3 | 9.3、12.2、12.5、12.8 | AU-3、AU-6、AU-12、SI-4 |
 
-启用并收集网络安全组 (NSG) 资源日志、NSG 流日志、Azure 防火墙日志和 Web 应用程序防火墙 (WAF) 日志进行安全分析，从而支持事件调查、威胁搜寻和安全警报生成。 可将流日志发送到 Azure Monitor Log Analytics 工作区，然后使用流量分析提供见解。 确保正在收集 DNS 查询日志，以帮助关联其他网络数据。
+启用并收集网络安全组 (NSG) 资源日志、NSG 流日志、Azure 防火墙日志和 Web 应用程序防火墙 (WAF) 日志进行安全分析，从而支持事件调查、威胁搜寻和安全警报生成。 可将流日志发送到 Azure Monitor Log Analytics 工作区，然后使用流量分析提供见解。
+
+确保收集 DNS 查询日志以帮助关联其他网络数据。
 
 - [如何启用网络安全组流日志](../../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
@@ -117,7 +121,7 @@ Azure 安全中心还可针对某些可疑活动发出警报，这些活动包�
 
 - [安全操作](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
-- [状况管理](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)   
+- [状况管理](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)
 
 - [应用程序安全性和 DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
 
@@ -131,7 +135,7 @@ Azure 安全中心还可针对某些可疑活动发出警报，这些活动包�
 
 为 Azure 资源启用日志记录，以满足合规性、威胁检测、搜寻和事件调查的要求。 
 
-可使用 Azure 安全中心和 Azure Policy 在 Azure 资源上实现资源日志和日志数据收集，以访问审核、安全性和资源日志。 活动日志自动可用，包括事件源、日期、用户、时间戳、源地址、目标地址和其他有用元素。 
+可使用 Azure 安全中心和 Azure Policy 在 Azure 资源上实现资源日志和日志数据收集，以访问审核、安全性和资源日志。 活动日志自动可用，包括事件源、日期、用户、时间戳、源地址、目标地址和其他有用元素。
 
 - [了解 Azure 中的日志记录和不同的日志类型](../../azure-monitor/essentials/platform-logs-overview.md)
 
@@ -145,7 +149,7 @@ Azure 安全中心还可针对某些可疑活动发出警报，这些活动包�
 
 基础结构和终结点安全性 
 
-- [应用程序安全性和 DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
+- [应用程序安全性和 DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
 - [威胁情报](/azure/cloud-adoption-framework/organize/cloud-security-threat-intelligence)
 
@@ -155,13 +159,13 @@ Azure 安全中心还可针对某些可疑活动发出警报，这些活动包�
 |--|--|--|--|
 | LT-5 | 6.5、6.6 | AU-3、SI-4 |
 
-集中记录存储和分析来实现关联。 对于每个日志源，请确保已分配数据所有者、访问指南、存储位置、用于处理和访问数据的工具以及数据保留要求。
+集中记录存储和分析来实现关联。 对于每个日志源，请确保已分配一个数据所有者、访问指南、存储位置、用于处理和访问数据的工具以及数据保留要求。
 
-确保正在将 Azure 活动日志集成到中央日志记录。 通过 Azure Monitor 引入日志，以聚合终结点设备、网络资源和其他安全系统生成的安全数据。 在 Azure Monitor 中，使用 Log Analytics 工作区来查询和执行分析，并使用 Azure 存储帐户进行长期存档存储。
+确保将 Azure 活动日志集成到中央日志记录。 通过 Azure Monitor 引入日志，以聚合终结点设备、网络资源和其他安全系统生成的安全数据。 在 Azure Monitor 中，使用 Log Analytics 工作区来查询和执行分析，并使用 Azure 存储帐户进行长期存档存储。
 
 另外，请启用 Azure Sentinel 或第三方 SIEM 并将数据载入其中。
 
-许多组织选择将 Azure Sentinel 用于频繁使用的“热”数据，并将 Azure 存储用于不太频繁使用的“冷”数据。 
+许多组织选择将 Azure Sentinel 用于“热”数据（使用频繁的数据），将 Azure 存储用于“冷”数据（使用不太频繁的数据）。
 
 - [如何使用 Azure Monitor 收集平台日志和指标](../../azure-monitor/essentials/diagnostic-settings.md)
 
@@ -189,7 +193,7 @@ Azure 安全中心还可针对某些可疑活动发出警报，这些活动包�
 
 - [更改 Log Analytics 中的数据保留期](../../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
-- [如何为 Azure 存储帐户日志配置保留策略](../../storage/common/storage-monitor-storage-account.md#configure-logging)
+- [如何为 Azure 存储帐户日志配置保留策略](../../storage/common/manage-storage-analytics-logs.md#configure-logging)
 
 - [Azure 安全中心警报和建议导出](../../security-center/continuous-export.md)
 
@@ -199,9 +203,9 @@ Azure 安全中心还可针对某些可疑活动发出警报，这些活动包�
 
 - [安全体系结构](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
-- [应用程序安全性和 DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
+- [应用程序安全性和 DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
-- [安全操作](/azure/cloud-adoption-framework/organize/cloud-security-operations-center) 
+- [安全操作](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 - [安全性和符合性管理](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)
 
@@ -211,7 +215,7 @@ Azure 安全中心还可针对某些可疑活动发出警报，这些活动包�
 |--|--|--|--|
 | LT-7 | 6.1 | AU-8 |
 
-Microsoft 会维护大多数 Azure PaaS 和 SaaS 服务的时间源。 对于虚拟机，除非有特定要求，否则请使用 Microsoft 默认 NTP 服务器进行时间同步。  如果需要建立自己的网络时间协议 (NTP) 服务器，请务必保护 UDP 服务端口 123 的安全。
+Microsoft 会维护大多数 Azure PaaS 和 SaaS 服务的时间源。 对于虚拟机，除非有特定要求，否则请使用 Microsoft 默认 NTP 服务器进行时间同步。 如果需要建立自己的网络时间协议 (NTP) 服务器，请务必保护 UDP 服务端口 123 的安全。
 
 Azure 中资源生成的所有日志都提供了时间戳，且默认指定时区。
 

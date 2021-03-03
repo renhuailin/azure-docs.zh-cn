@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/24/2019
-ms.openlocfilehash: 0374c7d304a40031919bae8816d31477e742b9c8
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 688adcf0012f8871c4034cbba6ce2ddcacdbcc43
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100608369"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717139"
 ---
 # <a name="using-service-map-solution-in-azure"></a>使用 Azure 中的服务映射解决方案
 
@@ -26,7 +26,7 @@ ms.locfileid: "100608369"
 * 安装在 Windows 计算机或 Linux 服务器上的 [依赖关系代理](vminsights-enable-overview.md#agents) 。
 
 >[!NOTE]
->如果已部署服务映射，现在还可以在面向 VM 的 Azure Monitor 中查看映射，其中包括监视 VM 运行状况和性能的附加功能。 若要了解详细信息，请参阅[面向 VM 的 Azure Monitor 概述](../vm/vminsights-overview.md)。 若要了解服务映射解决方案与用于 VM 的 Azure Monitor 映射功能之间的差异，请参阅以下[常见问题解答](../faq.md#azure-monitor-for-vms)。
+>如果已部署服务映射，你现在还可以在 VM insights 中查看映射，其中包括用于监视 VM 运行状况和性能的其他功能。 若要了解详细信息，请参阅 [VM insights 概述](../vm/vminsights-overview.md)。 若要了解服务映射解决方案与 VM insights 地图功能之间的差异，请参阅以下 [常见问题解答](../faq.md#azure-monitor-for-vms)。
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
@@ -241,7 +241,7 @@ ms.locfileid: "100608369"
 
 ## <a name="service-desk-integration"></a>服务台集成
 
-当在 Log Analytics 工作区中启用并配置了这两个解决方案时，服务映射会自动与 IT Service Management Connector 集成。 服务映射中的集成标记为“服务台”。 有关详细信息，请参阅[使用 IT Service Management Connector 集中管理 ITSM 工作项](../platform/itsmc-overview.md)。
+当在 Log Analytics 工作区中启用并配置了这两个解决方案时，服务映射会自动与 IT Service Management Connector 集成。 服务映射中的集成标记为“服务台”。 有关详细信息，请参阅[使用 IT Service Management Connector 集中管理 ITSM 工作项](../alerts/itsmc-overview.md)。
 
 “计算机服务台”窗格列出所选时间范围内选定服务器的所有 IT Service Management 事件。 如果当前存在项，服务器会显示一个图标，且“计算机服务台”窗格会列出存在的项。
 
@@ -304,7 +304,7 @@ Linux：
 
 ## <a name="log-analytics-records"></a>Log Analytics 记录
 
-服务映射的计算机和进程清单数据可在 Log Analytics 中[搜索](../log-query/log-query-overview.md)。 此数据可应用于包括迁移计划、容量分析、发现和按需性能故障排除在内的方案。
+服务映射的计算机和进程清单数据可在 Log Analytics 中[搜索](../logs/log-query-overview.md)。 此数据可应用于包括迁移计划、容量分析、发现和按需性能故障排除在内的方案。
 
 除了在进程或计算机启动或载入服务映射时生成的记录外，还针对每个唯一计算机和进程每小时生成一条记录。 这些记录的属性在下表中列出。 ServiceMapComputer_CL 事件中的字段和值映射到 ServiceMap Azure 资源管理器 API 中计算机资源的字段。 ServiceMapProcess_CL 事件中的字段和值映射到 ServiceMap Azure 资源管理器 API 中进程资源的字段。 ResourceName_s 字段与相应的 Azure Resource Manager 资源中的名称字段匹配。 
 
@@ -550,7 +550,7 @@ Microsoft 通过使用服务映射服务，自动收集使用情况和性能数�
 
 ## <a name="next-steps"></a>后续步骤
 
-详细了解 Log Analytics 中的[日志搜索](../log-query/log-query-overview.md)，以检索服务映射收集的数据。
+详细了解 Log Analytics 中的[日志搜索](../logs/log-query-overview.md)，以检索服务映射收集的数据。
 
 ## <a name="troubleshooting"></a>疑难解答
 

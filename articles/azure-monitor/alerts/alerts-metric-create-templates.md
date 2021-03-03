@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 10/7/2020
 ms.subservice: alerts
-ms.openlocfilehash: 304a7adf69ed3622cf2031cfbebb920bff5238cc
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 5589697771227c8105adcce61e4daeebdb315391
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100606204"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714334"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>使用 Resource Manager 模板创建指标警报
 
@@ -27,7 +27,7 @@ ms.locfileid: "100606204"
 
 1. 将以下某个模板用作描述如何创建警报的 JSON 文件。
 2. 编辑相应的参数文件并将其用作 JSON 来自定义警报。
-3. 有关 `metricName` 参数，请参阅 [Azure Monitor 支持的指标](../platform/metrics-supported.md)中提供的指标。
+3. 有关 `metricName` 参数，请参阅 [Azure Monitor 支持的指标](../essentials/metrics-supported.md)中提供的指标。
 4. 使用[任意部署方法](../../azure-resource-manager/templates/deploy-powershell.md)部署模板。
 
 ## <a name="template-for-a-simple-static-threshold-metric-alert"></a>用于简单静态阈值指标警报的模板
@@ -1247,7 +1247,7 @@ az deployment group create \
 
 可以使用以下模板创建基于自定义指标的更高级静态阈值指标警报规则。
 
-若要详细了解 Azure Monitor 中的自定义指标，请参阅 [Azure Monitor 中的自定义指标](../platform/metrics-custom-overview.md)。
+若要详细了解 Azure Monitor 中的自定义指标，请参阅 [Azure Monitor 中的自定义指标](../essentials/metrics-custom-overview.md)。
 
 基于自定义指标创建警报规则时，需要同时指定指标名称和指标命名空间。 还应确保已报告自定义指标，因为无法针对尚不存在的自定义指标创建警报规则。
 
@@ -1503,7 +1503,7 @@ az deployment group create \
 
 >[!NOTE]
 >
-> [通过 Azure 门户浏览自定义指标](../platform/metrics-custom-overview.md#browse-your-custom-metrics-via-the-azure-portal)可以查找特定的自定义指标的指标命名空间
+> [通过 Azure 门户浏览自定义指标](../essentials/metrics-custom-overview.md#browse-your-custom-metrics-via-the-azure-portal)可以查找特定的自定义指标的指标命名空间
 
 
 ## <a name="template-for-a-metric-alert-that-monitors-multiple-resources"></a>用于监视多个资源的指标警报的模板
@@ -3624,7 +3624,6 @@ az deployment group create \
 
 ## <a name="next-steps"></a>后续步骤
 
-- 详细了解 [Azure 中的警报](../platform/alerts-overview.md)
+- 详细了解 [Azure 中的警报](./alerts-overview.md)
 - 了解如何[使用资源管理器模板创建操作组](../alerts/action-groups-create-resource-manager-template.md)
 - 有关 JSON 语法和属性，请参阅 [Microsoft.Insights/metricAlerts](/azure/templates/microsoft.insights/metricalerts) 模板参考。
-

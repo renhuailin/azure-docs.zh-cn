@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 53763e62e8d7aa5b77ae451ef6427c1e09bff9f0
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: bb28f415b7d08b4c4430ed90a7ccbfe3a333416d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96742691"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101689039"
 ---
 # <a name="configure-mfa-server-settings"></a>配置 MFA 服务器设置
 
@@ -27,7 +27,7 @@ ms.locfileid: "96742691"
 
 以下 MFA 服务器设置可用：
 
-| Feature | 说明 |
+| 功能 | 说明 |
 | ------- | ----------- |
 | 服务器设置 | 下载 MFA 服务器并生成激活凭据，以便初始化环境 |
 | [免验证一次](#one-time-bypass) | 允许用户在有限时间无需执行多重身份验证的情况下进行身份验证。 |
@@ -44,7 +44,7 @@ ms.locfileid: "96742691"
 1. 搜索并选择 " **Azure Active Directory**"，然后浏览到 "**安全**  >  **MFA**  >  **一次性跳过**"。
 1. 选择 **添加** 。
 1. 如有必要，可选择要免验证的复制组。
-1. 以 `username\@domain.com` 格式输入用户名。 输入跳过的最近的秒数和绕过的原因。
+1. 以 `username@domain.com` 格式输入用户名。 输入跳过的最近的秒数和绕过的原因。
 1. 选择 **添加** 。 时间限制将立即生效。 用户需在免验证一次过期前登录。
 
 您还可以查看此同一窗口中的 "一次性跳过" 报告。

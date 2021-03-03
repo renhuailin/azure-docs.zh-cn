@@ -6,6 +6,8 @@
       href: overview.md
     - name: 发行说明
       href: release-notes.md
+    - name: 已知问题
+      href: known-issues.md
 - name: 快速入门
   items:
     - name: 创建数据控制器
@@ -180,6 +182,8 @@
               href: configure-managed-instance.md
             - name: 监视、日志分析、账单信息、Azure 门户
               href: monitoring-log-analytics-azure-portal-managed-instance.md
+            - name: 高可用性
+              href: managed-instance-high-availability.md
             - name: 删除
               href: delete-managed-instance.md
         - name: Migrate

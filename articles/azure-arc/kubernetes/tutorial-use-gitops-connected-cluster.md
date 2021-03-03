@@ -7,12 +7,12 @@ ms.service: azure-arc
 ms.topic: tutorial
 ms.date: 03/02/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: 0ff300a90876841e5a25e4e44ffdaecab2eaee95
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: cf079c009e5f6c3ef1ba6f8b22636b9a53b51348
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101658630"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101689226"
 ---
 # <a name="tutorial-deploy-configurations-using-gitops-on-an-azure-arc-enabled-kubernetes-cluster"></a>教程：在已启用 Azure Arc 的 Kubernetes 群集上使用 GitOps 部署配置 
 
@@ -26,7 +26,7 @@ ms.locfileid: "101658630"
 
 ## <a name="prerequisites"></a>先决条件
 
-- 具有活动订阅的 Azure 帐户。 [免费创建帐户] (https://azure.microsoft.com/free/?WT.mc_id=A261C142F) )。
+- 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - 一个现有的已启用 Azure Arc 的 Kubernetes 连接的群集。
     - 如果尚未连接群集，请参阅[连接已启用 Azure Arc 的 Kubernetes 群集快速入门](quickstart-connect-cluster.md)。
 - 了解此功能的好处和体系结构。 有关详细信息，请参阅[配置和 GitOps - 已启用 Azure Arc 的 Kubernetes 一文](conceptual-configurations.md)。
@@ -152,7 +152,7 @@ ms.locfileid: "101658630"
 | ------------- | ------------- |
 | `--enable-helm-operator`| 用于启用对 Helm 图表部署的支持的开关。 |
 | `--helm-operator-params` | Helm 运算符（若已启用）的图表值。 例如 `--set helm.versions=v3`。 |
-| `--helm-operator-version` | Helm 运算符（若已启用）的图表版本。 使用版本 1.2.0+。 默认值：“1.2.0”。 |
+| `--helm-operator-chart-version` | Helm 运算符（若已启用）的图表版本。 使用版本 1.2.0+。 默认值：“1.2.0”。 |
 | `--operator-namespace` | 运算符命名空间的名称。 默认值：“default”。 最大值：23 个字符。 |
 | `--operator-params` | 运算符的参数。 必须用单引号括起来。 例如： ```--operator-params='--git-readonly --sync-garbage-collection --git-branch=main'``` 
 

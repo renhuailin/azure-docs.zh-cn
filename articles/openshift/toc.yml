@@ -55,7 +55,7 @@
             - name: 为 ARO 4 配置适用于容器的 Azure Monitor（预览版）
               href: ../azure-monitor/insights/container-insights-azure-redhat4-setup.md
             - name: 在 ARO 4 中禁用适用于容器的 Azure Monitor（预览版）
-              href: ../azure-monitor/insights/container-insights-optout-openshift-v4.md
+              href: ../azure-monitor/containers/container-insights-optout-openshift-v4.md
     - name: 开发和运行应用程序
       items:
         - name: 部署 Open Liberty/WebSphere Liberty 应用
@@ -80,10 +80,10 @@
             - name: Azure Red Hat OpenShift 3.11 中适用于容器的 Azure Monitor（预览版）
               items:
                 - name: 在 Azure Red Hat OpenShift 3.11 中配置适用于容器的 Azure Monitor
-                  href: ../azure-monitor/insights/container-insights-azure-redhat-setup.md
+                  href: ../azure-monitor/containers/container-insights-azure-redhat-setup.md
                   maintainContext: true
                 - name: 在 Azure Red Hat OpenShift 3.11 中禁用适用于容器的 Azure Monitor
-                  href: ../azure-monitor/insights/container-insights-optout-openshift-v3.md
+                  href: ../azure-monitor/containers/container-insights-optout-openshift-v3.md
                   maintainContext: true
         - name: 在 Azure Red Hat OpenShift 3.11 中运行特权容器
           href: howto-run-privileged-containers.md

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: 33be57832d9364b859042cd38349c2437bcfcb18
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: a7735de9763f3924cd6baae6af1258f6448c874e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97358140"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690917"
 ---
 # <a name="failover-cluster-instances-with-sql-server-on-azure-virtual-machines"></a>Azure 虚拟机上的 SQL Server 故障转移群集实例 (FCI)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -47,7 +47,7 @@ Azure 虚拟机上的 SQL Server 故障转移群集实例支持对群集仲裁�
 
 Azure VM 上的 SQL Server 提供各种选项用作共享存储解决方案，它适用于 SQL Server 故障转移群集实例的部署： 
 
-||[Azure 共享磁盘](../../../virtual-machines/disks-shared.md)|[高级文件共享](../../../storage/files/storage-how-to-create-premium-fileshare.md) |[存储空间直通 (S2D)](/windows-server/storage/storage-spaces/storage-spaces-direct-overview)|
+||[Azure 共享磁盘](../../../virtual-machines/disks-shared.md)|[高级文件共享](../../../storage/files/storage-how-to-create-file-share.md) |[存储空间直通 (S2D)](/windows-server/storage/storage-spaces/storage-spaces-direct-overview)|
 |---------|---------|---------|---------|
 |**最低操作系统版本**| All |Windows Server 2012|Windows Server 2016|
 |**最低 SQL Server 版本**|All|SQL Server 2012|SQL Server 2016|
@@ -107,7 +107,7 @@ Azure VM 上的 SQL Server 提供各种选项用作共享存储解决方案，�
 
 ### <a name="premium-file-share"></a>高级文件共享
 
-[高级文件共享](../../../storage/files/storage-how-to-create-premium-fileshare.md)是 [Azure 文件存储](../../../storage/files/index.yml)的一项功能。 高级文件共享由 SSD 提供支持，始终具有低延迟。 它们完全支持在 Windows Server 2012 或更高版本上用于 SQL Server 2012 或更高版本的故障转移群集实例。 高级文件共享提供更高的灵活性，使你能在不停机的情况下对文件共享进行大小调整和缩放。
+[高级文件共享](../../../storage/files/storage-how-to-create-file-share.md)是 [Azure 文件存储](../../../storage/files/index.yml)的一项功能。 高级文件共享由 SSD 提供支持，始终具有低延迟。 它们完全支持在 Windows Server 2012 或更高版本上用于 SQL Server 2012 或更高版本的故障转移群集实例。 高级文件共享提供更高的灵活性，使你能在不停机的情况下对文件共享进行大小调整和缩放。
 
 **支持的操作系统**：Windows Server 2012 和更高版本   
 **支持的 SQL 版本**：SQL Server 2012 和更高版本   

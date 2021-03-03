@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: sstein
 ms.date: 1/29/2021
-ms.openlocfilehash: 95b721f12e4818a77f18d01c99a5c6d60b881169
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: d356cad1b4754875574e19be732fdf6481c61e22
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99089634"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691206"
 ---
 # <a name="quickstart-create-an-azure-sql-managed-instance"></a>快速入门：创建 Azure SQL 托管实例
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -113,7 +113,7 @@ ms.locfileid: "99089634"
 
 ### <a name="tags"></a>Tags
 
-- 将标记添加到 Azure 资源管理器模板（ARM 模板）中的资源。 可以通过[标记](/azure/azure-resource-manager/management/tag-resources)对资源进行逻辑组织。 标记值显示在成本报表中，可通过它们按标记执行其他管理活动。 
+- 将标记添加到 Azure 资源管理器模板（ARM 模板）中的资源。 可以通过[标记](../../azure-resource-manager/management/tag-resources.md)对资源进行逻辑组织。 标记值显示在成本报表中，可通过它们按标记执行其他管理活动。 
 
 - 请考虑至少使用“所有者”标记来标记新的 SQL 托管实例以确定创建者，并使用“环境”标记进行标记来确定此系统是生产环境还是开发环境等。有关详细信息，请参阅[为 Azure 资源开发命名和标记策略](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging)。
  

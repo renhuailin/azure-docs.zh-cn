@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/10/2019
 ms.author: jeedes
-ms.openlocfilehash: dada52dcf66db2f0d0e40f3dbf6d1a16560c2754
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 8915d780e79fa219428c54bad5458ab5966df6c1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92515020"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101688495"
 ---
 # <a name="tutorial-integrate-replicon-with-azure-active-directory"></a>教程：将 Replicon 与 Azure Active Directory 集成
 
@@ -47,8 +47,8 @@ ms.locfileid: "92515020"
 要配置 Replicon 与 Azure AD 的集成，需要从库中将 Replicon 添加到托管 SaaS 应用列表。
 
 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
-1. 在左侧导航窗格中，选择“Azure Active Directory”服务。
-1. 导航到“企业应用程序”，选择“所有应用程序” 。
+1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
+1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”。
 1. 在“从库中添加”部分的搜索框中，键入“Replicon” 。
 1. 从结果面板中选择“Replicon”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
@@ -72,7 +72,7 @@ ms.locfileid: "92515020"
 
 1. 在 [Azure 门户](https://portal.azure.com/)的“Replicon”应用程序集成页上，找到“管理”部分，选择“单一登录”  。
 1. 在“选择单一登录方法”页上选择“SAML” 。
-1. 在“设置 SAML 单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置 。
+1. 在“设置 SAML 单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置   。
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
@@ -109,7 +109,7 @@ ms.locfileid: "92515020"
 
     a. 要显示 **EnableSAML Authentication2** 对话框，请将以下内容追加到 URL 中的公司密钥后面：`/services/SecurityService1.svc/help/test/EnableSAMLAuthentication2`
 
-    * 下面显示完整 URL 的架构：`https://na2.replicon.com/\<YourCompanyKey\>/services/SecurityService1.svc/help/test/EnableSAMLAuthentication2`
+    * 下面显示完整 URL 的架构：`https://na2.replicon.com/<YourCompanyKey>/services/SecurityService1.svc/help/test/EnableSAMLAuthentication2`
 
    b. 单击 **+** 展开 **v20Configuration** 部分。
 

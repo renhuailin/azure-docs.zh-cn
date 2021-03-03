@@ -4,12 +4,12 @@ description: 本文介绍如何创建和配置用于存储备份和恢复点的�
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.custom: references_regions
-ms.openlocfilehash: 4022838575ca53608a802a6be95e150778db6ac7
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 1a20cd2b1245febea5fd18a9f6fe6e7a7bb6f04b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99525968"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101716748"
 ---
 # <a name="create-and-configure-a-recovery-services-vault"></a>创建和配置恢复服务保管库
 
@@ -71,7 +71,7 @@ Azure 备份会自动处理保管库的存储。 需要指定如何复制该存�
 >- 选择启用后，备份项最长可能需要在 48 小时后才出现在次要区域中。
 >- 目前仅支持 azure 资源管理器 Azure Vm 的 CRR。 不支持经典 Azure Vm。  如果其他管理类型支持 CRR，则会 **自动** 注册。
 >- 首次启动保护后， **不能** 再将跨区域还原恢复为 GRS 或 LRS。
->- 目前，从主要区域开始，辅助区域 [RPO](azure-backup-glossary.md#rpo-recovery-point-objective) 最多为12个小时，即使 [读取访问异地冗余存储 (GRS) ](https://docs.microsoft.com/azure/storage/common/storage-redundancy#redundancy-in-a-secondary-region) 复制为15分钟。
+>- 目前，从主要区域开始，辅助区域 [RPO](azure-backup-glossary.md#rpo-recovery-point-objective) 最多为12个小时，即使 [读取访问异地冗余存储 (GRS) ](../storage/common/storage-redundancy.md#redundancy-in-a-secondary-region) 复制为15分钟。
 
 ### <a name="configure-cross-region-restore"></a>配置跨区域还原
 

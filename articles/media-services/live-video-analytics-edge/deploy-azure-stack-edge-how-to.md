@@ -3,12 +3,12 @@ title: 在 Azure Stack Edge 上部署实时视频分析
 description: 本文列出了可帮助你在 Azure Stack 边缘部署实时视频分析的步骤。
 ms.topic: how-to
 ms.date: 09/09/2020
-ms.openlocfilehash: cc3dcfaa96034e807d3d82e75eedc0f6a82eff08
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: d49167890009d58b21c3678cb89f608bad665abd
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99551002"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101730263"
 ---
 # <a name="deploy-live-video-analytics-on-azure-stack-edge"></a>在 Azure Stack Edge 上部署实时视频分析
 
@@ -42,7 +42,7 @@ Azure Stack Edge 是一种硬件即服务解决方案，是一种支持 AI 的�
 * [Azure Stack 边缘/Data Box Gateway 资源创建](../../databox-online/azure-stack-edge-deploy-prep.md)
 * [安装和设置](../../databox-online/azure-stack-edge-deploy-install.md)
 * [连接和激活](../../databox-online/azure-stack-edge-deploy-connect-setup-activate.md)
-* [将 IoT 中心附加到 Azure Stack 边缘](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-gpu-deploy-configure-compute#configure-compute)
+* [将 IoT 中心附加到 Azure Stack 边缘](../../databox-online/azure-stack-edge-gpu-deploy-configure-compute.md#configure-compute)
 ### <a name="enable-compute-prerequisites-on-the-azure-stack-edge-local-ui"></a>在 Azure Stack Edge 本地 UI 上启用计算先决条件
 
 继续之前，请确保：
@@ -234,17 +234,22 @@ Azure Stack Edge 是一种硬件即服务解决方案，是一种支持 AI 的�
     
 ## <a name="troubleshooting"></a>疑难解答
 
-* Kubernetes API Access (kubectl) 。
+* **Kubernetes API Access (kubectl)**
 
-    * 按照文档配置计算机以 [访问 Kubernetes 群集](https://review.docs.microsoft.com/azure/databox-online/azure-stack-edge-j-series-create-kubernetes-cluster?toc=%2Fazure%2Fdatabox-online%2Fazure-stack-edge-gpu%2Ftoc.json&bc=%2Fazure%2Fdatabox-online%2Fazure-stack-edge-gpu%2Fbreadcrumb%2Ftoc.json&branch=release-tzl#debug-kubernetes-issues)。
-    * 所有已部署的 IoT Edge 模块都使用 `iotedge` 命名空间。 使用 kubectl 时，请确保包含该。
-* 模块日志
+    * 按照文档配置计算机以 [访问 Kubernetes 群集](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-gpu-create-kubernetes-cluster)。
+    * 所有已部署的 IoT Edge 模块都使用 `iotedge` 命名空间。 使用 kubectl 时，请确保包含该。  
 
-    `iotedge`获取日志时无法访问此工具。 必须使用 [kubectl 日志](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#logs)  来查看文件的日志或管道。 例如： <br/>  `kubectl logs deployments/mediaedge -n iotedge --all-containers`
-* Pod 和节点指标
+* **模块日志**
 
-    使用 [kubectl top](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#top)  查看 pod 和 node 指标。  (此功能将在下一次 Azure Stack 边缘版本中可用。 >v2007) <br/>`kubectl top pods -n iotedge`
-* 模块网络对于 Azure Stack Edge 上的模块发现，该模块必须在 createOptions 中具有主机端口绑定。 然后，就可以对该模块进行寻址 `moduleName:hostport` 。
+    `iotedge`获取日志时无法访问此工具。 必须使用 [kubectl 日志](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#logs)  来查看文件的日志或管道。 示例： <br/>  `kubectl logs deployments/mediaedge -n iotedge --all-containers`  
+
+* **Pod 和节点指标**
+
+    使用 [kubectl top](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#top)  查看 pod 和 node 指标。
+    <br/>`kubectl top pods -n iotedge` 
+
+* **模块网络**   
+对于 Azure Stack Edge 上的模块发现，该模块必须在 createOptions 中具有主机端口绑定。 然后，就可以对该模块进行寻址 `moduleName:hostport` 。
     
     ```json
     "createOptions": {
@@ -256,10 +261,11 @@ Azure Stack Edge 是一种硬件即服务解决方案，是一种支持 AI 的�
     }
     ```
     
-* 卷装入
+* **卷装入**
 
     如果容器尝试将卷装载到现有的和非空目录，模块将无法启动。
-* Shared Memory
+
+* **使用 gRPC 时的共享内存**
 
     任何命名空间中通过使用主机 IPC 跨 pod 支持 Azure Stack 边缘资源上的共享内存。
     通过 IoT 中心配置边缘模块上的共享内存以进行部署。
@@ -272,7 +278,7 @@ Azure Stack Edge 是一种硬件即服务解决方案，是一种支持 AI 的�
         }
     ...
         
-    (Advanced) Configuring shared memory on a K8s Pod or Deployment manifest for deployment via K8s API.
+    //(Advanced) Configuring shared memory on a K8s Pod or Deployment manifest for deployment via K8s API
     spec:
         ...
         template:
@@ -281,14 +287,14 @@ Azure Stack Edge 是一种硬件即服务解决方案，是一种支持 AI 的�
         ...
     ```
     
-*  (高级) Pod 共同位置
+* **(高级) Pod 共同位置**
 
     使用 K8s 部署通过 gRPC 与实时视频分析通信的自定义推理解决方案时，需要确保将 pod 部署在与实时视频分析模块相同的节点上。
 
-    * 选项 1-使用节点关联和内置节点标签作为共同位置。
+    * **选项 1** -使用节点关联和内置节点标签作为共同位置。
 
     当前 NodeSelector 的自定义配置似乎不是用户无权在节点上设置标签的选项。 但根据客户的拓扑和命名约定，它们可能能够使用 [内置节点标签](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#built-in-node-labels)。 通过实时视频分析来引用 Azure Stack 边缘资源的 nodeAffinity 部分可以添加到推理 pod 清单中，以实现归置。
-    * 选项 2-将 Pod 相关性用于归置 (建议) 。
+    * **选项 2** -将 Pod 相关性用于归置 (建议) 。
 Kubernetes 支持 [Pod 关联](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#inter-pod-affinity-and-anti-affinity)  ，可以在同一节点上计划 Pod。 可以将引用实时视频分析模块的 podAffinity 部分添加到推理 pod 清单以实现归置。
 
     ```json   
@@ -310,6 +316,31 @@ Kubernetes 支持 [Pod 关联](https://kubernetes.io/docs/concepts/scheduling-ev
                 values:
                 - mediaedge
             topologyKey: "kubernetes.io/hostname"
+    ```
+* **404使用模块时的错误代码 `rtspsim`**  
+容器只从容器内的一个文件夹读取视频。 如果将外部文件夹映射/绑定到容器映像中已存在的文件夹，docker 将隐藏容器映像中的文件。  
+ 
+    例如，如果不绑定，容器可能会包含以下文件：  
+    ```
+    root@rtspsim# ls /live/mediaServer/media  
+    /live/mediaServer/media/camera-300s.mkv  
+    /live/mediaServer/media/win10.mkv  
+    ```
+     
+    你的主机可能包含以下文件：
+    ```    
+    C:\MyTestVideos> dir
+    Test1.mkv
+    Test2.mkv
+    ```
+     
+    但在部署清单文件中添加以下绑定时，docker 将覆盖/live/mediaServer/media 的内容以匹配主机上的内容。
+    `C:\MyTestVideos:/live/mediaServer/media`
+    
+    ```
+    root@rtspsim# ls /live/mediaServer/media
+    /live/mediaServer/media/Test1.mkv
+    /live/mediaServer/media/Test2.mkv
     ```
 
 ## <a name="next-steps"></a>后续步骤

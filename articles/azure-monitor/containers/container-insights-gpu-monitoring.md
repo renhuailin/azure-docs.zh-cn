@@ -1,31 +1,31 @@
 ---
-title: 使用用于容器的 Azure Monitor 配置 GPU 监视 | Microsoft Docs
-description: 本文介绍如何使用用于容器的 Azure Monitor 配置具有 NVIDIA 和 AMD GPU 支持的节点的 Kubernetes 群集。
+title: 用 Container insights 配置 GPU 监视 |Microsoft Docs
+description: 本文介绍如何配置通过支持 NVIDIA 和 AMD GPU 的节点和容器 insights 来监视 Kubernetes 群集。
 ms.topic: conceptual
 ms.date: 03/27/2020
-ms.openlocfilehash: 11a9de0872fd3e7589332322b3f8fb855d2c88ec
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 2958b000ac0dabcd7fddf75a58f553b705a95e9a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100608721"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731861"
 ---
-# <a name="configure-gpu-monitoring-with-azure-monitor-for-containers"></a>使用用于容器的 Azure Monitor 配置 GPU 监视
+# <a name="configure-gpu-monitoring-with-container-insights"></a>用 Container insights 配置 GPU 监视
 
-从代理版本 ciprod03022019 开始，用于容器集成代理的 Azure Monitor 现已支持监视 GPU（图形处理单元）在 GPU 感知的 Kubernetes 集群节点上的使用情况，并监视请求和使用 GPU 资源的 Pod/容器。
+从代理版本 *ciprod03022019* 开始，Container insights 集成代理现在支持监视 gpu (图形处理单元) 使用 Gpu 感知 Kubernetes 群集节点，以及监视请求和使用 GPU 资源的 pod/容器。
 
 ## <a name="supported-gpu-vendors"></a>支持的 GPU 供应商
 
-用于容器的 Azure Monitor 支持监视以下 GPU 供应商提供的 GPU 群集：
+Container insights 支持监视以下 GPU 供应商提供的 GPU 群集：
 
 - [NVIDIA](https://developer.nvidia.com/kubernetes-gpu)
 
 - [AMD](https://github.com/RadeonOpenCompute/k8s-device-plugin)
 
-通过以 60 秒的间隔收集以下指标并将其存储在 InsightMetric 表中，用于容器的 Azure Monitor 会自动开始监视节点上的 GPU 使用情况以及 GPU 请求 Pod 和工作负载的情况。
+容器见解会自动开始监视节点上的 GPU 使用情况，并通过在60sec 间隔收集以下度量值并将其存储在 **InsightMetrics** 表中，来请求 pod 和工作负荷。
 
 >[!NOTE]
->预配具有 GPU 节点的群集后，请确保根据 AKS 的要求安装 [GPU 驱动程序](../../aks/gpu-cluster.md)以运行 GPU 工作负载。 用于容器的 Azure Monitor 通过节点中运行的 GPU 驱动程序 Pod 收集 GPU 指标。 
+>预配具有 GPU 节点的群集后，请确保根据 AKS 的要求安装 [GPU 驱动程序](../../aks/gpu-cluster.md)以运行 GPU 工作负载。 Container insights 通过节点中运行的 GPU 驱动程序箱收集 GPU 指标。 
 
 |指标名称 |指标维度（标记） |说明 |
 |------------|------------------------|------------|
@@ -39,7 +39,7 @@ ms.locfileid: "100608721"
 
 ## <a name="gpu-performance-charts"></a>GPU 性能图表 
 
-用于容器的 Azure Monitor 包含表中先前列出的指标的预配置图表，作为每个集群的 GPU 工作簿。 请参阅[用于容器的 Azure Monitor 中的工作簿](../insights/container-insights-reports.md)，获取有关适用于用于容器的 Azure Monitor 的工作簿的说明。
+容器见解包括表中前面列出的指标的预配置图表，作为每个群集的 GPU 工作簿。 有关可用于容器见解的工作簿的说明，请参阅 [容器见解中的工作簿](../insights/container-insights-reports.md) 。
 
 ## <a name="next-steps"></a>后续步骤
 

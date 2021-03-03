@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c4ed5dfee80c33009874361ae6b4d23ec00bc26
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 419823086fd7ba05ba5023216be302576350e30a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99573324"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687272"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>如何：规划混合 Azure Active Directory 加入的实施
 
@@ -95,6 +95,7 @@ ms.locfileid: "99573324"
 如果已加入 Windows 10 域的设备向租户[注册了 Azure AD](overview.md#getting-devices-in-azure-ad)，则可能会导致已加入混合 Azure AD 和已注册 Azure AD 设备的双重状态。 建议升级到 Windows 10 1803（应用了 KB4489894）或更高版本来自动处理此场景。 在 1803 之前的版本中，需要手动删除已注册 Azure AD 状态，然后才能启用混合 Azure AD 联接。 在 1803 及更高版本中，进行了以下更改来避免此双重状态：
 
 - 在设备已加入混合 Azure AD 且同一用户登录后，系统会自动删除用户的任何现有的已注册 Azure AD 状态<i></i>。 例如，如果用户 A 在设备上有已注册 Azure AD 的状态，则仅当用户 A 登录到设备时，才会清除用户 A 的双重状态。 如果同一设备上有多个用户，则当这些用户登录时，系统会单独清除双重状态。 除了删除已注册 Azure AD 状态外，如果注册是通过自动注册进行的 Azure AD 注册，Windows 10 还会从 Intune 或其他 MDM 取消注册该设备。
+- 设备上的任何本地帐户上 Azure AD 注册状态不受此更改的影响。 它仅适用于域帐户。 因此，即使在用户登录后，也不会自动删除本地帐户上 Azure AD 注册状态，因为该用户不是域用户。 
 - 可以通过将注册表值 "BlockAADWorkplaceJoin"=dword:00000001 添加到 HKLM\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin阻止将已加入域的设备注册到 Azure AD。
 - 在 Windows 10 1803 中，如果已配置 Windows Hello 企业版，则用户需要在清除双重状态后重新设置 Windows Hello 企业版。此问题已通过 KB4512509 解决
 

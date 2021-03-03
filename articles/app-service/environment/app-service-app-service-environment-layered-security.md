@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/30/2016
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: ab26ad08947a4a9929ae0d41b669160b3d159224
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 813160ee19c8447fdfcb705e7a9162a41a0c308c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150223"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101739502"
 ---
 # <a name="implementing-a-layered-security-architecture-with-app-service-environments"></a>使用应用服务环境实现分层的安全体系结构
 由于应用服务环境提供部署到虚拟网络的隔离运行时环境，因此开发人员能够创建分层的安全体系结构，针对每个物理应用层提供不同级别的网络访问权限。
@@ -30,7 +30,7 @@ ms.locfileid: "92150223"
 ## <a name="determining-the-network-behavior"></a>确定网络行为
 要知道需要哪些网络安全规则，需要确定哪些网络客户端能够访问包含 API 应用的应用服务环境，而哪些客户端会被阻止。
 
-由于[网络安全组 (NSG)][NetworkSecurityGroups] 将应用到子网，而应用服务环境部署在子网中，因此 NSG 中包含的规则将应用到**所有**在应用服务环境中运行的应用。  就本文的示例体系结构而言，将网络安全组应用到包含“apiase”的子网后，所有在“apiase”应用服务环境中运行的应用都将受到相同安全规则集的保护。 
+由于 [网络安全组 (NSG)][NetworkSecurityGroups] 将应用到子网，而应用服务环境部署在子网中，因此 NSG 中包含的规则将应用到 **所有** 在应用服务环境中运行的应用。  就本文的示例体系结构而言，将网络安全组应用到包含“apiase”的子网后，所有在“apiase”应用服务环境中运行的应用都将受到相同安全规则集的保护。 
 
 * **确定上游调用方的出站 IP 地址：** 上游调用方的 IP 地址是什么？  需要在 NSG 中显式允许访问这些地址。  由于应用服务环境之间的调用被视为“Internet”调用，因此分配到这三个上游应用服务环境的出站 IP 地址在“apiase”子网的 NSG 中需是允许访问的。   有关确定在应用服务环境中运行的应用的出站 IP 地址的详细信息，请参阅[网络体系结构][NetworkArchitecture]概述文章。
 * **后端 API 应用是否需要调用本身？**  后端应用程序有时候需要调用本身，这是常被忽略且难以察觉的情况。  如果应用服务环境中的后端 API 应用程序需要调用本身，这也被视为“Internet”调用。  在示例体系结构中，这还需要允许从“apiase”应用服务环境的出站 IP 地址进行访问。
@@ -66,7 +66,7 @@ Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecur
 -DestinationAddressPrefix '*' -DestinationPortRange '443' -Protocol TCP
 ```
 
-对第二个和第三个上游应用服务环境（“fe2ase”和“fe3ase”）重复上述步骤。
+对于第二个和第三个上游应用服务环境，请 ( "fe2ase" 和 "fe3ase" ) 的 Rinse 和重复。
 
 ```azurepowershell-interactive
 #Grant access to requests from the second upstream web front-end

@@ -4,14 +4,14 @@ description: 了解如何使用 Azure Active Directory 为 Azure Cosmos DB 帐�
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 02/22/2021
+ms.date: 03/02/2021
 ms.author: thweiss
-ms.openlocfilehash: 49bf67a6703147ed31279e7af8145192d996c1cb
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: d83109f380a3044073cf2dd8d10f29027ebb9f41
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101662056"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690900"
 ---
 # <a name="configure-role-based-access-control-with-azure-active-directory-for-your-azure-cosmos-db-account-preview"></a>使用 Azure Cosmos DB 帐户 (预览的 Azure Active Directory 配置基于角色的访问控制) 
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -101,6 +101,11 @@ Azure Cosmos DB 数据平面 RBAC 建立在其他 RBAC 系统（如 [AZURE RBAC]
     - `/` (帐户级) ，
     - `/dbs/<database-name>` (数据库级) ，
     - `/dbs/<database-name>/colls/<container-name>` (容器级) 。
+
+> [!NOTE]
+> 下面所述的操作当前在中可用：
+> - Azure PowerShell： [CosmosDB 2.0.1 版-预览版](https://www.powershellgallery.com/packages/Az.CosmosDB/2.0.1-preview)
+> - Azure CLI： ["cosmosdb" 扩展版本 0.4.0](https://github.com/Azure/azure-cli-extensions/tree/master/src/cosmosdb-preview)
 
 ### <a name="using-azure-powershell"></a>使用 Azure PowerShell
 
@@ -279,6 +284,11 @@ az cosmosdb sql role definition list --account-name $accountName --resource-grou
 > [!NOTE]
 > 若要创建服务主体的角色分配，请确保使用 **Azure Active Directory** 门户边栏选项卡的 "**企业应用程序**" 部分中的 "**对象 ID** "。
 
+> [!NOTE]
+> 下面所述的操作当前在中可用：
+> - Azure PowerShell： [CosmosDB 2.0.1 版-预览版](https://www.powershellgallery.com/packages/Az.CosmosDB/2.0.1-preview)
+> - Azure CLI： ["cosmosdb" 扩展版本 0.4.0](https://github.com/Azure/azure-cli-extensions/tree/master/src/cosmosdb-preview)
+
 ### <a name="using-azure-powershell"></a>使用 Azure PowerShell
 
 为标识分配角色：
@@ -354,6 +364,12 @@ CosmosAsyncClient Client = new CosmosClientBuilder()
 
 - `aadPrincipalId_g` 显示用于对请求进行身份验证的 AAD 标识的主体 ID。
 - `aadAppliedRoleAssignmentId_g` 显示在授权请求时接受的 [角色分配](#role-assignments) 。
+
+## <a name="limits"></a>限制
+
+- 对于每个 Azure Cosmos DB 帐户，最多可以创建100个角色定义和2000个角色分配。
+- 对于属于超过200个组的标识，目前不支持 Azure AD 组解析。
+- Azure AD 令牌当前以标头的形式传递，每个请求发送到 Azure Cosmos DB 服务，从而增加总体负载大小。
 
 ## <a name="frequently-asked-questions"></a>常见问题
 

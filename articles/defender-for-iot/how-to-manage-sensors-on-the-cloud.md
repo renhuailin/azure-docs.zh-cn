@@ -1,20 +1,20 @@
 ---
-title: 在用于 IoT 的 Defender 门户中载入和管理传感器
+title: 在用于 IoT 的 Defender 门户中载入和管理传感器和订阅
 description: 了解如何在用于 IoT 的 Defender 门户中加入、查看和管理传感器。
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 12/27/2020
+ms.date: 2/18/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 7cc4fe4e2b675fb1b46bb4404d892c02a1f00553
-ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
+ms.openlocfilehash: 63b3b450e289b40aa9acbfb0d5170e8eb57f9e58
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100526846"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733255"
 ---
-# <a name="onboard-and-manage-sensors-in-the-defender-for-iot-portal"></a>在用于 IoT 的 Defender 门户中载入和管理传感器
+# <a name="onboard-and-manage-sensors-and-subscriptions-in-the-defender-for-iot-portal"></a>在用于 IoT 的 Defender 门户中载入和管理传感器和订阅
 
 本文介绍如何在 [用于 IoT 的 Defender 门户](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started)中载入、查看和管理传感器。
 
@@ -64,7 +64,7 @@ ms.locfileid: "100526846"
 
 ## <a name="manage-onboarded-sensors"></a>管理载入传感器
 
-将 [Defender 用于 IoT 门户](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started) ，用于管理与传感器相关的任务。
+使用适用于 [IoT 门户的 Defender](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started) 管理任务与传感器相关的管理任务。
 
 可以在 " **站点和传感器** " 页上查看载入传感器。 你还可以在此页中编辑传感器信息。
 
@@ -78,9 +78,9 @@ ms.locfileid: "100526846"
 
 编辑：
 
-1. 右键单击要编辑的传感器的 **省略号 (") "。**
-1. 选择“编辑”。
-1. 更新传感器区域或创建新区域。
+1. 选择要编辑的传感器的 **省略号** **(") "。**
+1. 选择“编辑”  。
+1. 更新传感器区域，或创建新的区域。
 
 ### <a name="delete-a-sensor"></a>删除传感器
 
@@ -123,6 +123,24 @@ ms.locfileid: "100526846"
 
 9. 选择“激活”  。
 
-## <a name="see-also"></a>请参阅
+## <a name="offboard-a-subscription"></a>下架订阅
+
+每月管理一次订阅。 在下架订阅时，将对该订阅计费，直到月底结束。 
+
+在脱离订阅之前，卸载与该订阅关联的所有传感器。 有关如何删除传感器的详细信息，请参阅 [删除传感器](#delete-a-sensor)。 
+
+下架订阅：
+
+1. 导航到 " **定价** " 页。
+1. 选择订阅，然后选择 " **删除** " 图标 :::image type="icon" source="media/how-to-manage-sensors-on-the-cloud/delete-icon.png" border="false"::: 。
+1. 在确认弹出窗口中，选中相应的复选框以确认已删除与该订阅关联的所有传感器。
+
+    :::image type="content" source="media/how-to-manage-sensors-on-the-cloud/offboard-popup.png" alt-text="选中该复选框，然后选择 &quot;下架&quot; 下架传感器。":::
+
+1. 选择 " **下架** " 按钮。 
+
+本地环境不受影响，但你应该从本地环境中卸载传感器，或将传感器重新分配给另一个订阅，以便阻止任何相关数据流动到本地管理控制台。 
+
+## <a name="see-also"></a>另请参阅
 
 [激活和设置传感器](how-to-activate-and-set-up-your-sensor.md)

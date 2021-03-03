@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: allensu
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 8d14b8b83fd784956091e738a38d6851d5edacd9
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 1d505c8f363e908a43c751c6253ed0f3a14b3b51
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98927135"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101671553"
 ---
 # <a name="create-a-nat-gateway-using-azure-cli"></a>使用 Azure CLI 创建 NAT 网关
 
@@ -59,7 +59,7 @@ ms.locfileid: "98927135"
 
 ### <a name="create-a-public-ip-prefix"></a>创建公共 IP 前缀
 
-可对 NAT 网关使用一个或多个公共 IP 地址资源和/或公共 IP 前缀。 为方便演示，我们将一个公共 IP 前缀资源添加到此方案。   使用 [az network public-ip prefix create](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-create) 在 **myResourceGroupNAT** 中创建名为 **myPublicIPprefix** 的公共 IP 前缀资源。
+可对 NAT 网关使用一个或多个公共 IP 地址资源和/或公共 IP 前缀。 为方便演示，我们将一个公共 IP 前缀资源添加到此方案。 使用 [az network public-ip prefix create](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-create) 在 **myResourceGroupNAT** 中创建名为 **myPublicIPprefix** 的公共 IP 前缀资源。
 
 ```azurecli-interactive
   az network public-ip prefix create \

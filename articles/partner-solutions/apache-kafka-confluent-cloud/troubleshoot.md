@@ -3,15 +3,15 @@ title: Confluent 云的故障排除 Apache Kafka-Azure 合作伙伴解决方案
 description: 本文提供了有关 Azure 上的 Confluent Cloud () 常见问题的疑难解答和常见问题的信息。
 ms.service: partner-services
 ms.topic: conceptual
-ms.date: 01/15/2021
+ms.date: 02/18/2021
 author: tfitzmac
 ms.author: tomfitz
-ms.openlocfilehash: cbf166086a489165e8100dafd7c212ab6c298b41
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: b1e4b06fcbecf11d7d5f58a583fe3bd6643d99ec
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98253353"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101709387"
 ---
 # <a name="troubleshooting-apache-kafka-for-confluent-cloud-solutions"></a>Confluent 云解决方案的故障排除 Apache Kafka
 
@@ -28,6 +28,16 @@ ms.locfileid: "98253353"
 1. 选择 "应用程序" 磁贴。
 
 如果产品/服务未显示，请联系 [Confluent 支持](https://support.confluent.io)。 你的 Azure Active Directory 租户 ID 必须在允许的租户列表上。 若要了解如何查找你的租户 ID，请参阅 [如何查找你的 Azure Active Directory 租户 id](../../active-directory/fundamentals/active-directory-how-to-find-tenant.md)。
+
+## <a name="purchase-errors"></a>采购错误
+
+* 购买失败，因为有效的信用卡未连接到 Azure 订阅，或者付款方法与订阅无关。
+
+  使用其他 Azure 订阅。 或者，为订阅添加或更新信用卡或支付方法。 有关详细信息，请参阅 [更新信用和支付方法](../../cost-management-billing/manage/change-credit-card.md)。
+
+* EA 订阅不允许 Marketplace 购买。
+
+  使用其他订阅。 或者，检查是否为 Marketplace 购买启用了你的 EA 订阅。 有关详细信息，请参阅 [启用 Marketplace 购买](../../cost-management-billing/manage/ea-azure-marketplace.md#enabling-azure-marketplace-purchases)。 如果这些选项不能解决问题，请联系 [Confluent 支持](https://support.confluent.io)。
 
 ## <a name="conflict-error"></a>冲突错误
 

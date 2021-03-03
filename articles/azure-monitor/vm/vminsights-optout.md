@@ -1,25 +1,25 @@
 ---
-title: 在用于 VM 的 Azure Monitor 中禁用监视
-description: 本文介绍如何在用于 VM 的 Azure Monitor 中停止监视虚拟机。
+title: 在 VM insights 中禁用监视
+description: 本文介绍如何停止监视 VM insights 中的虚拟机。
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
-ms.openlocfilehash: 80473aa494b8fbcea5e43870b7717cd3472dd7d1
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 7eca08abf1ef3bed1aa7fdd806853b94d5615854
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100608652"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717054"
 ---
-# <a name="disable-monitoring-of-your-vms-in-azure-monitor-for-vms"></a>禁用用于 VM 的 Azure Monitor 中的 Vm 监视
+# <a name="disable-monitoring-of-your-vms-in-vm-insights"></a>禁用 VM insights 中的 Vm 监视
 
-在启用虚拟机 (VM) 监视后，可以选择在用于 VM 的 Azure Monitor 中禁用监视。 本文介绍如何针对一个或多个 VM 禁用监视。  
+ (Vm) 启用虚拟机监视之后，稍后可以选择在 VM insights 中禁用监视。 本文介绍如何针对一个或多个 VM 禁用监视。  
 
-目前，用于 VM 的 Azure Monitor 不支持选择性地禁用 VM 监视。 Log Analytics 工作区可能支持用于 VM 的 Azure Monitor 和其他解决方案。 它还可能收集其他监视数据。 如果 Log Analytics 工作区提供这些服务，则在开始之前，你需要了解下面所述的影响和方法。
+目前，VM insights 不支持选择禁用 VM 监视。 Log Analytics 工作区可能支持 VM insights 和其他解决方案。 它还可能收集其他监视数据。 如果 Log Analytics 工作区提供这些服务，则在开始之前，你需要了解下面所述的影响和方法。
 
-用于 VM 的 Azure Monitor 依赖于以下组件来提供其体验：
+VM insights 依赖于以下组件来提供其体验：
 
 * Log Analytics 工作区，用于存储来自 VM 和其他源的监视数据。
 * 性能计数器的集合在工作区中配置。 该集合会更新已连接到该工作区的所有 VM 上的监视配置。
@@ -34,19 +34,19 @@ ms.locfileid: "100608652"
 >[!NOTE]
 > 从工作区中删除解决方案组件后，可以继续查看 Azure Vm 的性能和映射数据。 数据最终会在“性能”和“映射”视图中停止显示。 **启用** 选项将从选定的 Azure VM 获得，因此你可以在将来重新启用监视。  
 
-## <a name="remove-azure-monitor-for-vms-completely"></a>完全删除用于 VM 的 Azure Monitor
+## <a name="remove-vm-insights-completely"></a>完全删除 VM insights
 
-如果你仍然需要 Log Analytics 工作区，请遵循以下步骤完全删除用于 VM 的 Azure Monitor。 将 `VMInsights` 从工作区中删除解决方案。  
+如果仍需要 Log Analytics 工作区，请执行以下步骤以完全删除 VM 见解。 将 `VMInsights` 从工作区中删除解决方案。  
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
 2. 在 Azure 门户中，选择“所有服务”。 在资源列表中，键入“Log Analytics”。 当你开始键入时，列表中会根据输入筛选建议。 选择“Log Analytics”。
-3. 在 Log Analytics 工作区列表中，选择启用用于 VM 的 Azure Monitor 时所选的工作区。
+3. 在 Log Analytics 工作区列表中，选择启用 VM insights 时选择的工作区。
 4. 在左侧选择“解决方案”。  
 5. 在解决方案列表中，选择 " **VMInsights (工作区名称")**。 在解决方案的“概述”页上选择“删除”。  出现确认提示时，请选择“是”。
 
 ## <a name="disable-monitoring-and-keep-the-workspace"></a>禁用监视并保留工作区  
 
-如果 Log Analytics 工作区仍需支持其他源的监视，请遵循以下步骤，在评估用于 VM 的 Azure Monitor 所用的 VM 上禁用监视。 对于 Azure VM，需要直接从 VM 中删除适用于 Windows 或 Linux 的依赖项代理 VM 扩展和 Log Analytics 代理 VM 扩展。 
+如果 Log Analytics 工作区仍需要支持其他源的监视，请遵循以下步骤在用于评估 VM insights 的 VM 上禁用监视。 对于 Azure VM，需要直接从 VM 中删除适用于 Windows 或 Linux 的依赖项代理 VM 扩展和 Log Analytics 代理 VM 扩展。 
 
 >[!NOTE]
 >如果存在以下情况，请不要删除 Log Analytics 代理： 

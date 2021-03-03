@@ -9,17 +9,17 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
-ms.openlocfilehash: bc80b7dfd433911ef13906db38f59a76827db258
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: e527cf5fa6a7caaeaf56ea19d684dd0830d5ca8a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905275"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708673"
 ---
 # <a name="use-the-azure-maps-indoor-maps-module"></a>使用 Azure Maps 室内定位模块
 
 > [!IMPORTANT]
-> Azure Maps Creator 服务目前为公共预览版。
+> Azure Maps Creator 服务目前处于公共预览状态。
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 Azure Maps Web SDK 包括“Azure Maps 室内”模块。 *Azure Maps 室内* 模块可用于呈现在 Azure Maps Creator 服务 (预览中创建的室内地图)  
@@ -27,7 +27,7 @@ Azure Maps Web SDK 包括“Azure Maps 室内”模块。 *Azure Maps 室内* �
 ## <a name="prerequisites"></a>先决条件
 
 1. [创建 Azure Maps 帐户](quick-demo-map-app.md#create-an-azure-maps-account)
-2. [ (预览创建创建者) 资源](how-to-manage-creator.md)
+2. [创建 Creator（预览版）资源](how-to-manage-creator.md)
 3. [获取主订阅密钥](quick-demo-map-app.md#get-the-primary-key-for-your-account)（亦称为“主密钥”或“订阅密钥”）。
 4. 通过完成[创建室内定位教程](tutorial-creator-indoor-maps.md)获取 `tilesetId` 和 `statesetId`。
  需要使用这些标识符通过“Azure Maps 室内定位”模块来呈现室内定位。
@@ -67,7 +67,7 @@ const subscriptionKey = "<Your Azure Maps Primary Subscription Key>";
 
 const map = new atlas.Map("map-id", {
   //use your facility's location
-  center: [-122.13315, 47.63637],
+  center: [-122.13203, 47.63645],
   //or, you can use bounds: [# west, # south, # east, # north] and replace # with your map's bounds
   style: "blank",
   view: 'Auto',
@@ -84,24 +84,24 @@ const map = new atlas.Map("map-id", {
 若要加载图块的室内图块集和定位样式，必须实例化室内管理器。 通过提供向定位对象和相应的 `tilesetId` 来实例化室内管理器。 如果希望支持[动态定位样式](indoor-map-dynamic-styling.md)，则必须传递 `statesetId`。 `statesetId` 变量名称区分大小写。 代码应类似于下面的 JavaScript。
 
 ```javascript
-const tilesetId = "";
-const statesetId = "";
+const tilesetId = "<tilesetId>";
+const statesetId = "<statesetId>";
 
 const indoorManager = new atlas.indoor.IndoorManager(map, {
-    tilesetId: "<tilesetId>",
-    statesetId: "<statesetId>" // Optional
+    tilesetId: tilesetId,
+    statesetId: statesetId // Optional
 });
 ```
 
 若要启用提供的状态数据轮询，必须提供 `statesetId` 并调用 `indoorManager.setDynamicStyling(true)`。 通过轮询状态数据，可以动态更新动态属性的状态或状态。 例如，房间等功能可以有一个称为 `occupancy` 的动态属性（状态）。 应用程序可能希望轮询任何状态变更，以反映可视定位内的变化。 下面的代码演示如何启用状态轮询：
 
 ```javascript
-const tilesetId = "";
-const statesetId = "";
+const tilesetId = "<tilesetId>";
+const statesetId = "<statesetId>";
 
 const indoorManager = new atlas.indoor.IndoorManager(map, {
-    tilesetId: "<tilesetId>",
-    statesetId: "<statesetId>" // Optional
+    tilesetId: tilesetId,
+    statesetId: statesetId // Optional
 });
 
 if (statesetId.length > 0) {
@@ -218,9 +218,9 @@ map.events.add("facilitychanged", indoorManager, (eventData) => {
         });
 
         const indoorManager = new atlas.indoor.IndoorManager(map, {
-          levelControl, //level picker
-          tilesetId,
-          statesetId, //optional
+          levelControl: levelControl, //level picker
+          tilesetId: tilesetId,
+          statesetId: statesetId // Optional
         });
 
         if (statesetId.length > 0) {
@@ -244,6 +244,8 @@ map.events.add("facilitychanged", indoorManager, (eventData) => {
 若要查看室内定位，请将其加载到 Web 浏览器中。 它应如下图所示。 如果单击楼梯井功能，则“楼层选取器”将显示在右上角。
 
   ![室内定位图像](media/how-to-use-indoor-module/indoor-map-graphic.png)
+
+[查看现场演示](https://azuremapscodesamples.azurewebsites.net/?sample=Creator%20indoor%20maps)
 
 ## <a name="next-steps"></a>后续步骤
 

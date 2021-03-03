@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/10/2020
-ms.openlocfilehash: 5c4cfe47fce07a09eeb48e2da76d3b10c1d204af
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: e4837de70e9f00308b440933e0cd433ad5b27cf9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100605968"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711529"
 ---
 # <a name="azure-monitor-agent-overview-preview"></a> (预览版 Azure Monitor 代理概述) 
 Azure Monitor 代理 (AMA) 从虚拟机的来宾操作系统收集监视数据，并将其传送到 Azure Monitor。 本文概述了 Azure Monitor 代理，包括如何安装它以及如何配置数据收集。
@@ -19,9 +19,9 @@ Azure Monitor 代理 (AMA) 从虚拟机的来宾操作系统收集监视数据�
 ## <a name="relationship-to-other-agents"></a>与其他代理的关系
 Azure Monitor 代理会将 Azure Monitor 当前使用的以下代理替换为从虚拟机收集来宾数据：
 
-- [Log Analytics 代理](../platform/log-analytics-agent.md) -将数据发送到 Log Analytics 工作区，并支持用于 VM 的 Azure Monitor 和监视解决方案。
-- [诊断扩展](../platform/diagnostics-extension-overview.md) -仅 (Windows) 、Azure 事件中心和 azure 存储中的 Azure Monitor 度量值发送数据。
-- [Telegraf 代理](../platform/collect-custom-metrics-linux-telegraf.md) -仅 (Linux) 将数据发送到 Azure Monitor 度量值。
+- [Log Analytics 代理](./log-analytics-agent.md) -将数据发送到 Log Analytics 工作区，并支持 VM insights 和监视解决方案。
+- [诊断扩展](./diagnostics-extension-overview.md) -仅 (Windows) 、Azure 事件中心和 azure 存储中的 Azure Monitor 度量值发送数据。
+- [Telegraf 代理](../essentials/collect-custom-metrics-linux-telegraf.md) -仅 (Linux) 将数据发送到 Azure Monitor 度量值。
 
 除了将此功能合并到单个代理外，Azure Monitor 代理还在现有代理上具有以下优势：
 
@@ -52,7 +52,7 @@ Azure Monitor 代理使用 Azure Monitor 的 [通用代理进行](agents-overvie
 ## <a name="current-limitations"></a>当前限制
 在 Azure Monitor 代理的公共预览版期间，有以下限制：
 
-- Azure Monitor 代理不支持用于 VM 的 Azure Monitor 和 Azure 安全中心等解决方案和见解。 当前支持的唯一方案是使用你配置的数据收集规则收集数据。 
+- Azure Monitor 代理不支持 VM insights 和 Azure 安全中心等解决方案和见解。 当前支持的唯一方案是使用你配置的数据收集规则收集数据。 
 - 数据收集规则必须与用作目标的任何 Log Analytics 工作区在同一区域中创建。
 - 目前支持 azure 虚拟机、虚拟机规模集和启用了 Azure Arc 的服务器。 当前不支持 Azure Kubernetes 服务和其他计算资源类型。
 - 虚拟机必须具有以下 HTTPS 终结点的访问权限：
@@ -64,7 +64,7 @@ Azure Monitor 代理使用 Azure Monitor 的 [通用代理进行](agents-overvie
 ## <a name="coexistence-with-other-agents"></a>与其他代理共存
 Azure Monitor 代理可以与现有代理共存，因此你可以在评估或迁移期间继续使用其现有功能。 这一点特别重要，因为在支持现有解决方案时公共预览版中有一些限制。 但在收集重复数据时应该小心，因为这可能会使查询结果歪斜，并导致数据引入和保留的额外费用。
 
-例如，用于 VM 的 Azure Monitor 使用 Log Analytics 代理将性能数据发送到 Log Analytics 工作区。 你还可以将工作区配置为从代理收集 Windows 事件和 Syslog 事件。 如果安装 Azure Monitor 代理，并为这些相同的事件和性能数据创建数据收集规则，则会导致数据重复。
+例如，VM insights 使用 Log Analytics 代理将性能数据发送到 Log Analytics 工作区。 你还可以将工作区配置为从代理收集 Windows 事件和 Syslog 事件。 如果安装 Azure Monitor 代理，并为这些相同的事件和性能数据创建数据收集规则，则会导致数据重复。
 
 
 ## <a name="costs"></a>成本

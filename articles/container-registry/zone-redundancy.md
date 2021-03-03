@@ -2,13 +2,14 @@
 title: 用于实现高可用性的区域冗余注册表
 description: 了解如何在 Azure 容器注册表中启用区域冗余。 在 Azure 可用性区域中创建容器注册表或复制。 区域冗余是高级服务层的一项功能。
 ms.topic: article
-ms.date: 01/07/2021
-ms.openlocfilehash: 7de8ed101d2df9e491c475f522a56580798c49a9
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.date: 02/23/2021
+ms.custom: references_regions
+ms.openlocfilehash: 931adcf8258c48d7df42bd5927e8789d7cc871db
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98696272"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738100"
 ---
 # <a name="enable-zone-redundancy-in-azure-container-registry-for-resiliency-and-high-availability"></a>启用 Azure 容器注册表中的区域冗余以实现复原和高可用性
 
@@ -20,7 +21,7 @@ ms.locfileid: "98696272"
 
 ## <a name="preview-limitations"></a>预览版限制
 
-* 目前在以下区域中受支持：美国东部、美国东部2、美国西部2。
+* 目前在以下区域中受支持：美国东部、美国东部2、美国西部2、北欧、西欧、日本东部。
 * 当前不支持区域转换到可用性区域。 若要在区域中启用可用性区域支持，必须在所需的区域中创建注册表，启用了可用性区域支持，或者必须添加已复制区域，并且启用了可用性区域支持。
 * 无法在区域中禁用区域冗余。
 * [ACR 任务](container-registry-tasks-overview.md) 尚不支持可用性区域。

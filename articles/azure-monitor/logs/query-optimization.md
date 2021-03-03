@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2019
-ms.openlocfilehash: 53f189921a44d63d7e344fb733519661f5b17dc6
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: e7ab83b2b16a1340b354b9333d00c8166b5cfdf9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100608625"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101722953"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>优化 Azure Monitor 中的日志查询
 Azure Monitor 日志使用 [Azure 数据资源管理器 (ADX)](/azure/data-explorer/) 来存储日志数据，并运行查询来分析这些数据。 它为你创建、管理和维护 ADX 群集，并针对你的日志分析工作负荷优化它们。 运行查询时，将对其进行优化，并将其路由到存储着工作区数据的相应 ADX 群集。 Azure Monitor 日志和 Azure 数据资源管理器都使用许多自动查询优化机制。 虽然自动优化可显著提高性能，但在某些情况下，你可以极大地提高查询性能。 本文介绍了性能注意事项和解决相关问题的几种方法。
@@ -322,7 +322,7 @@ Azure Monitor 日志中的所有日志都根据 **TimeGenerated** 列进行分�
 
 时间跨度超过 15 天的查询被视为消耗过多资源的查询。 时间跨度超过 90 天的查询被视为滥用查询，可能会受到限制。
 
-可以使用 Log Analytics 屏幕中的时间范围选择器设置时间范围，如 [Azure Monitor Log Analytics 中的日志查询范围和时间范围](../log-query/scope.md#time-range)中所述。 这是推荐使用的方法，因为选定的时间范围将使用查询元数据传递到后端。 
+可以使用 Log Analytics 屏幕中的时间范围选择器设置时间范围，如 [Azure Monitor Log Analytics 中的日志查询范围和时间范围](./scope.md#time-range)中所述。 这是推荐使用的方法，因为选定的时间范围将使用查询元数据传递到后端。 
 
 另一种方法是在查询中显式地包含针对 **TimeGenerated** 的 [where](/azure/kusto/query/whereoperator) 条件。 你应当使用此方法，因为它可以确保时间跨度是固定的，即使查询是从不同的接口使用的。
 你应确保查询的所有部分都具有 **TimeGenerated** 筛选器。 当查询有子查询从不同的表或同一个表中获取数据时，每个查询都必须包含自己的 [where](/azure/kusto/query/whereoperator) 条件。

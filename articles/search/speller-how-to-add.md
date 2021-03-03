@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/02/2021
 ms.custom: references_regions
-ms.openlocfilehash: cdc5de8153e8b2e0ea8bb8ea372fe8610ccb895b
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: da172e9a7605876711e4a4f32bf4fac698b35109
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101679175"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694795"
 ---
 # <a name="add-spell-check-to-queries-in-cognitive-search"></a>在认知搜索中向查询添加拼写检查
 
@@ -36,7 +36,7 @@ ms.locfileid: "101679175"
   QueryLanguage 是拼写检查器所必需的，当前 "en-us" 是唯一有效的值。
 
 > [!Note]
-> 拼写检查器参数在提供语义搜索的同一区域中的所有层上都可用。 有关详细信息，请参阅 [可用性和定价](semantic-search-overview.md#availability-and-pricing)。
+> 拼写检查器参数在提供语义搜索的同一区域中的所有层上都可用。 无需注册即可访问此预览功能。 有关详细信息，请参阅 [可用性和定价](semantic-search-overview.md#availability-and-pricing)。
 
 ## <a name="spell-correction-with-simple-search"></a>简单搜索的拼写更正
 
@@ -94,7 +94,13 @@ POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/
 
 ## <a name="language-considerations"></a>语言注意事项
 
-拼写检查器所需的 queryLanguage 参数必须与分配给索引架构中的字段定义的任何 [语言分析器](index-add-language-analyzers.md) 一致。 在查询请求中指定，queryLanguage 确定要用于拼写检查的字典，还可用作 [语义排名算法](semantic-how-to-query-response.md) 的输入（如果使用）。 在索引期间使用语言分析器，同时在搜索索引中检索匹配的文档。 若要保持一致，如果 queryLanguage 为 "en-us"，则任何语言分析器也必须是英语变体， ( "" 或 "en-us" ) 。 
+拼写检查器所需的 queryLanguage 参数必须与分配给索引架构中的字段定义的任何 [语言分析器](index-add-language-analyzers.md) 一致。 
+
++ queryLanguage 确定哪些词典用于拼写检查，如果使用的是 "queryType = 语义"，也可将其用作 [语义排名算法](semantic-how-to-query-response.md) 的输入。
+
++ 语言分析器在索引和查询执行过程中使用，以在搜索索引中查找匹配的文档。 使用语言分析器的字段定义的一个示例是 `"name": "Description", "type": "Edm.String", "analyzer": "en.microsoft"` 。
+
+若要在使用拼写检查器时获得最佳结果，如果 queryLanguage 为 "en-us"，则任何语言分析器也必须是英语变体， ( "" 或 "en-us" ) 。
 
 > [!NOTE]
 > 与语言无关的分析器 (例如关键字、简单、标准、停止、空白或 `standardasciifolding.lucene`) 不会与 queryLanguage 设置冲突。

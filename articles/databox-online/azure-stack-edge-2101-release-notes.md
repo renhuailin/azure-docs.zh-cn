@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 02/01/2021
 ms.author: alkohli
-ms.openlocfilehash: 7c1f78f405a67687168457448f62d46a39da165f
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: 5c95da8d6ee88786ff983b4963c1cb96394886cf
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99225118"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101727543"
 ---
 # <a name="azure-stack-edge-pro-with-fpga-2101-release-notes"></a>Azure Stack Edge Pro 与 FPGA 2101 发行说明
 
@@ -42,7 +42,7 @@ ms.locfileid: "99225118"
 
 ## <a name="known-issues-in-this-release"></a>本版本中的已知问题
 
-对于此版本，不会记录任何新问题。 所有已记录版本的问题已从以前的版本中继续执行。 若要查看已知问题的列表，请参阅 [GA 版本中的已知问题](data-box-gateway-release-notes.md#known-issues-in-ga-release)。
+对于此版本，不会记录任何新问题。 所有已记录版本的问题已从以前的版本中继续执行。 若要查看已知问题的列表，请参阅 [GA 版本中的已知问题](../databox-gateway/data-box-gateway-release-notes.md#known-issues-in-ga-release)。
 
 ## <a name="next-steps"></a>后续步骤
 

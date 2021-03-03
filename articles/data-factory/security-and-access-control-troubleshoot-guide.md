@@ -4,14 +4,14 @@ description: 了解如何对 Azure 数据工厂中的安全性和访问控制问
 author: lrtoyou1223
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 02/04/2021
+ms.date: 02/24/2021
 ms.author: lle
-ms.openlocfilehash: 0dac0dcb272b602be8b921bce0ffc68c05cb9cbd
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: fa410441203c50d96c0de1d9188fb73b6fd4d577
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100375164"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101706114"
 ---
 # <a name="troubleshoot-azure-data-factory-security-and-access-control-issues"></a>排查 Azure 数据工厂安全性和访问控制问题
 
@@ -107,7 +107,7 @@ ms.locfileid: "100375164"
 
 无法在自承载 VM 上注册 IR 身份验证密钥，因为已启用 "专用" 链接。 看到以下错误消息：
 
-"无法通过密钥 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 0.1250079 秒，错误代码为： InvalidGatewayKey，activityId 为： XXXXXXX-XXXX ...，详细的错误消息为" 客户端 IP 地址无效 "专用 ip 会导致数据工厂无法访问公用网络，因此无法连接到云以建立成功的连接。"
+"无法通过密钥 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 0.1250079 秒，错误代码为： InvalidGatewayKey，activityId 为： XXXXXXX-XXXX ...，详细的错误消息为" 客户端 IP 地址无效 "。由于专用 ip 地址无效，导致数据工厂无法访问公用网络，因此无法与云联系以建立成功的连接。"
 
 #### <a name="cause"></a>原因
 
@@ -142,7 +142,6 @@ ms.locfileid: "100375164"
 
 1. 在集成运行时中再次添加 IR 身份验证密钥。
 
-
 **解决方案 2**
 
 若要解决此问题，请参阅 azure [数据工厂的 Azure 专用链接](./data-factory-private-link.md)。
@@ -150,6 +149,45 @@ ms.locfileid: "100375164"
 尝试在用户界面上启用公用网络访问，如以下屏幕截图所示：
 
 !["已启用" 控件的屏幕截图，适用于 "网络" 窗格中的 "允许公共网络访问"。](media/self-hosted-integration-runtime-troubleshoot-guide/enable-public-network-access.png)
+
+### <a name="adf-private-dns-zone-overrides-azure-resource-manager-dns-resolution-causing-not-found-error"></a>ADF 专用 DNS 区域替代 Azure 资源管理器 DNS 解析导致 "找不到" 错误
+
+#### <a name="cause"></a>原因
+Azure 资源管理器和 ADF 均使用相同的专用区域，这种情况下，将找不到 Azure 资源管理器记录的情况下，在客户的专用 DNS 上创建潜在冲突。
+
+#### <a name="solution"></a>解决方案
+1. 查找 Azure 门户专用 DNS 区域 **privatelink.azure.com** 。
+![查找专用 DNS 区域的屏幕截图。](media/security-access-control-troubleshoot-guide/private-dns-zones.png)
+2. 检查是否有记录 **adf**。
+![记录的屏幕截图。](media/security-access-control-troubleshoot-guide/a-record.png)
+3.  请参阅 " **虚拟网络链接**"、"删除所有记录"。
+![虚拟网络链接的屏幕截图。](media/security-access-control-troubleshoot-guide/virtual-network-link.png)
+4.  在 Azure 门户中导航到数据工厂，并为 Azure 数据工厂门户重新创建专用终结点。
+![重新创建专用终结点的屏幕截图。](media/security-access-control-troubleshoot-guide/create-private-endpoint.png)
+5.  返回专用 DNS 区域，并检查是否有新的专用 DNS 区域 **privatelink.adf.azure.com**。
+![新 DNS 记录的屏幕截图。](media/security-access-control-troubleshoot-guide/check-dns-record.png)
+
+### <a name="connection-error-in-public-endpoint"></a>公用终结点中的连接错误
+
+#### <a name="symptoms"></a>症状
+
+使用 Azure Blob 存储帐户公共访问复制数据时，管道会随机运行失败并出现以下错误。
+
+例如： Azure Blob 存储接收器使用 (公有 Azure IR，而不是托管 VNet) ，而 Azure SQL 数据库源使用托管 VNet IR。 或源/接收器仅将托管 VNet IR 用于存储公共访问。
+
+`
+<LogProperties><Text>Invoke callback url with req:
+"ErrorCode=UserErrorFailedToCreateAzureBlobContainer,'Type=Microsoft.DataTransfer.Common.Shared.HybridDeliveryException,Message=Unable to create Azure Blob container. Endpoint: XXXXXXX/, Container Name: test.,Source=Microsoft.DataTransfer.ClientLibrary,''Type=Microsoft.WindowsAzure.Storage.StorageException,Message=Unable to connect to the remote server,Source=Microsoft.WindowsAzure.Storage,''Type=System.Net.WebException,Message=Unable to connect to the remote server,Source=System,''Type=System.Net.Sockets.SocketException,Message=A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond public ip:443,Source=System,'","Details":null}}</Text></LogProperties>.
+`
+
+#### <a name="cause"></a>原因
+
+ADF 仍可使用托管 VNet IR，但你可能会遇到此类错误，因为托管 VNet 中的 Azure Blob 存储的公共终结点不会基于测试结果可靠，并且不支持根据 [托管的虚拟网络 & 托管的专用终结点](https://docs.microsoft.com/azure/data-factory/managed-virtual-network-private-endpoint#outbound-communications-through-public-endpoint-from-adf-managed-virtual-network)，将 Azure blob 存储和 Azure Data Lake GEN2 从 ADF 托管的虚拟网络连接到公共终结点。
+
+#### <a name="solution"></a>解决方案
+
+- 使用托管 VNet IR 时，在源上启用专用终结点，同时在接收器端启用。
+- 如果仍想使用公用终结点，则只能切换到公共 IR，而不是使用源和接收器的托管 VNet IR。 即使切换回公共 IR，如果托管 VNet IR 仍然存在，ADF 仍可能会使用托管 VNet IR。
 
 ## <a name="next-steps"></a>后续步骤
 

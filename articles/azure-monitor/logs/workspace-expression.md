@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/10/2018
-ms.openlocfilehash: 9ce9957d348fc9d57ff688408d6aaade67e95465
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 34b1f850b262a0027d3a9cb2e926bcb2c8a49665
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100608600"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710900"
 ---
 # <a name="workspace-expression-in-azure-monitor-log-query"></a>Azure Monitor 日志查询中的 workspace() 表达式
 
@@ -20,11 +20,11 @@ ms.locfileid: "100608600"
 
 ## <a name="syntax"></a>语法
 
-`workspace(`标识符  `)`
+`workspace(`标识符`)`
 
 ## <a name="arguments"></a>参数
 
-- 标识符：使用下表中的某种格式标识工作区  。
+- 标识符：使用下表中的某种格式标识工作区。
 
 | 标识符 | 说明 | 示例
 |:---|:---|:---|
@@ -64,6 +64,6 @@ union
 
 ## <a name="next-steps"></a>后续步骤
 
-- 参阅[应用表达式](../log-query/app-expression.md)来引用 Application Insights 应用。
-- 了解 [Azure Monitor 数据是如何存储的](../log-query/log-query-overview.md)。
+- 参阅[应用表达式](./app-expression.md)来引用 Application Insights 应用。
+- 了解 [Azure Monitor 数据是如何存储的](./log-query-overview.md)。
 - 访问有关 [Kusto 查询语言](/azure/kusto/query/)的完整文档。

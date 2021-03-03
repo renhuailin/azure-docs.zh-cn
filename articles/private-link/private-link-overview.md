@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 01/28/2021
 ms.author: allensu
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: 34223298dbf0dad9d9214676a5190bef063a8228
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 34168a02b5a2d2dfe74e2a5839e0bfddcf684222
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100577031"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101712175"
 ---
 # <a name="what-is-azure-private-link"></a>什么是 Azure 专用链接？ 
 使用 Azure 专用链接，可以通过虚拟网络中的[专用终结点](private-endpoint-overview.md)访问 Azure PaaS 服务（例如，Azure 存储和 SQL 数据库）和 Azure 托管的客户拥有的服务/合作伙伴服务。
@@ -54,7 +54,7 @@ Azure 专用链接提供以下优势：
 |  Azure Database for PostgreSQL - 单一服务器         | 所有公共区域 <br/> 所有政府区域<br/>所有中国区域     | 在常规用途和内存优化定价层中受支持 | GA <br/> [了解如何为 Azure Database for PostgreSQL 创建专用终结点。](../postgresql/concepts-data-access-and-security-private-link.md)      |
 |  Azure Database for MySQL         | 所有公共区域<br/> 所有政府区域<br/>所有中国区域      |  | GA <br/> [了解如何为 Azure Database for MySQL 创建专用终结点。](../mysql/concepts-data-access-security-private-link.md)     |
 |  Azure Database for MariaDB         | 所有公共区域<br/> 所有政府区域<br/>所有中国区域     |  | GA <br/> [了解如何为 Azure Database for MariaDB 创建专用终结点。](../mariadb/concepts-data-access-security-private-link.md)      |
-|  Azure 数字孪生         | Azure 数字孪生支持的所有公共区域     |  | 预览 <br/> [了解如何为 Azure 数字孪生创建专用终结点。](../digital-twins/how-to-enable-private-link.md)      |
+|  Azure 数字孪生         | Azure 数字孪生支持的所有公共区域     |  | 预览 <br/> [了解如何为 Azure 数字孪生创建专用终结点。](../digital-twins/how-to-enable-private-link-portal.md)      |
 |  Azure Key Vault         | 所有公共区域<br/> 所有政府区域      |  | GA   <br/> [了解如何为 Azure Key Vault 创建专用终结点。](../key-vault/general/private-link-service.md)   |
 |Azure Kubernetes 服务 - Kubernetes API | 所有公共区域      |  | GA   <br/> [了解如何为 Azure Kubernetes 服务创建专用终结点。](../aks/private-clusters.md)   |
 |Azure 搜索 | 所有公共区域 <br/> 所有政府区域 | 在隐私模式下的服务中受支持 | GA   <br/> [了解如何为 Azure 搜索服务创建专用终结点。](../search/service-create-private-endpoint.md)    |

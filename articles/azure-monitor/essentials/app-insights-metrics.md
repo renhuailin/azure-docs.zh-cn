@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 07/03/2019
 ms.author: vitalyg
 ms.subservice: application-insights
-ms.openlocfilehash: 400f239f3e7b736196bf950e81148fa2e39aca96
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: ca19fdfa617b71b1465e4710d8ca52b18c9ebff5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100605948"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731674"
 ---
 # <a name="application-insights-log-based-metrics"></a>基于 Application Insights 日志的指标
 
@@ -21,31 +21,31 @@ ms.locfileid: "100605948"
 * [基于日志的指标](../app/pre-aggregated-metrics-log-metrics.md#log-based-metrics)在幕后转换为存储的事件中的 [Kusto 查询](/azure/kusto/query/)。
 * [标准指标](../app/pre-aggregated-metrics-log-metrics.md#pre-aggregated-metrics)存储为预先聚合的时序。
 
-由于标准指标在收集期间会预先聚合，因此它们在查询时具有更好的性能。  因此它们更适合在仪表板和实时警报中显示。 基于日志的指标具有更多的维度，因此，它们特别适合用于数据分析和即席诊断。  在[指标资源管理器](../platform/metrics-getting-started.md)中使用[命名空间选择器](../platform/metrics-getting-started.md#create-your-first-metric-chart)可以在基于日志的指标与标准指标之间切换。
+由于标准指标在收集期间会预先聚合，因此它们在查询时具有更好的性能。 因此它们更适合在仪表板和实时警报中显示。 基于日志的指标具有更多的维度，因此，它们特别适合用于数据分析和即席诊断。 在[指标资源管理器](./metrics-getting-started.md)中使用[命名空间选择器](./metrics-getting-started.md#create-your-first-metric-chart)可以在基于日志的指标与标准指标之间切换。
 
 ## <a name="interpret-and-use-queries-from-this-article"></a>本文中的查询的解释和用法
 
 本文列出了指标以及支持的聚合与维度。 基于日志的指标的详细信息包括底层 Kusto 查询语句。 为方便起见，每个查询对时间粒度、图表类型使用默认值，有时还会拆分维度，这简化了查询在 Log Analytics 中的使用，而无需进行任何修改。
 
-在[指标资源管理器](../platform/metrics-getting-started.md)中绘制同一指标的图表时，不会使用默认值 - 查询会根据图表设置动态调整：
+在[指标资源管理器](./metrics-getting-started.md)中绘制同一指标的图表时，不会使用默认值 - 查询会根据图表设置动态调整：
 
-- 所选的“时间范围”将转换为额外的 *where timestamp ...* 子句，以便仅选取所选时间范围内的事件。 例如，对于显示最近 24 小时数据的图表，查询将包含 *| where timestamp > ago(24 h)* 。
+- 所选的“时间范围”将转换为额外的 *where timestamp ...* 子句，以便仅选取所选时间范围内的事件。 例如，对于显示最近 24 小时数据的图表，查询将包含 *| where timestamp > ago(24 h)*。
 
 - 所选的“时间粒度”将放入最终的 *summarize ... by bin(timestamp, [time grain])* 子句。
 
 - 任何所选“筛选器”维度将转换为额外的 *where* 子句。
 
-- 所选的“拆分图表”维度将转换为额外的 summarize 属性。  例如，如果你按位置拆分图表，并使用 5 分钟时间粒度绘制图表，则 *summarize* 子句将由 *... by bin(timestamp, 5 m), location* 汇总。
+- 所选的“拆分图表”维度将转换为额外的 summarize 属性。 例如，如果你按位置拆分图表，并使用 5 分钟时间粒度绘制图表，则 *summarize* 子句将由 *... by bin(timestamp, 5 m), location* 汇总。
 
 > [!NOTE]
-> 如果你不熟悉 Kusto 查询语言，请先复制 Kusto 语句并将其粘贴到 Log Analytics 查询窗格，而无需进行任何修改。 单击“运行”查看基本图表。  对查询语言的语法有一定的了解后，可以开始进行少量的修改，并查看更改造成的影响。 探索自己的数据是开始实现 [Log Analytics](../log-query/log-analytics-tutorial.md) 和 [Azure Monitor](../overview.md) 的全部功能的好办法。
+> 如果你不熟悉 Kusto 查询语言，请先复制 Kusto 语句并将其粘贴到 Log Analytics 查询窗格，而无需进行任何修改。 单击“运行”查看基本图表。 对查询语言的语法有一定的了解后，可以开始进行少量的修改，并查看更改造成的影响。 探索自己的数据是开始实现 [Log Analytics](../logs/log-analytics-tutorial.md) 和 [Azure Monitor](../overview.md) 的全部功能的好办法。
 
 ## <a name="availability-metrics"></a>可用性指标
 
 参考“可用性”类别中的指标可以了解在世界各地预测到的 Web 应用程序运行状况。 [配置可用性测试](../app/monitor-web-app-availability.md)，以开始使用此类别中的任何指标。
 
 ### <a name="availability-availabilityresultsavailabilitypercentage"></a>可用性 (availabilityResults/availabilityPercentage)
-“可用性”指标显示未检测到任何问题的 Web 测试运行的百分比。  可能的最小值为 0，表示所有 Web 测试运行均失败。 值 100 表示所有 Web 测试运行都符合验证条件。
+“可用性”指标显示未检测到任何问题的 Web 测试运行的百分比。 可能的最小值为 0，表示所有 Web 测试运行均失败。 值 100 表示所有 Web 测试运行都符合验证条件。
 
 |度量单位|支持的聚合|支持的维度|
 |---|---|---|---|---|---|
@@ -59,7 +59,7 @@ availabilityResults
 
 ### <a name="availability-test-duration-availabilityresultsduration"></a>可用性测试持续时间 (availabilityResults/duration)
 
-“可用性测试持续时间”指标显示运行 Web 测试所花费的时间。  对于[多步骤 Web 测试](../app/availability-multistep.md)，该指标反映所有步骤的总执行时间。
+“可用性测试持续时间”指标显示运行 Web 测试所花费的时间。 对于[多步骤 Web 测试](../app/availability-multistep.md)，该指标反映所有步骤的总执行时间。
 
 |度量单位|支持的聚合|支持的维度|
 |---|---|---|---|---|---|
@@ -75,7 +75,7 @@ availabilityResults
 
 ### <a name="availability-tests-availabilityresultscount"></a>可用性测试 (availabilityResults/count)
 
-“可用性测试”指标反映 Azure Monitor 执行的 Web 测试运行计数。 
+“可用性测试”指标反映 Azure Monitor 执行的 Web 测试运行计数。
 
 |度量单位|支持的聚合|支持的维度|
 |---|---|---|---|---|---|
@@ -176,15 +176,15 @@ browserTimings
 
 ## <a name="failure-metrics"></a>失败指标
 
-“失败”中的指标显示处理请求、依赖项调用的问题，以及引发的异常。 
+“失败”中的指标显示处理请求、依赖项调用的问题，以及引发的异常。
 
 ### <a name="browser-exceptions-exceptionsbrowser"></a>浏览器异常数 (exceptions/browser)
 
 此指标反映浏览器中运行的应用程序代码引发的异常数。 该指标仅包含使用 ```trackException()``` Application Insights API 调用跟踪的异常。
 
-|度量单位|支持的聚合|预先聚合的维度|注释|
+|度量单位|支持的聚合|预先聚合的维度|说明|
 |---|---|---|---|
-|计数|计数|无|基于日志的版本使用 **Sum** 聚合|
+|计数|计数|None|基于日志的版本使用 **Sum** 聚合|
 
 ```Kusto
 exceptions
@@ -197,9 +197,9 @@ exceptions
 
 失败的依赖项调用数。
 
-|度量单位|支持的聚合|预先聚合的维度|注释|
+|度量单位|支持的聚合|预先聚合的维度|说明|
 |---|---|---|---|
-|计数|计数|无|基于日志的版本使用 **Sum** 聚合|
+|计数|计数|None|基于日志的版本使用 **Sum** 聚合|
 
 ```Kusto
 dependencies
@@ -212,7 +212,7 @@ dependencies
 
 每当你将异常记录到 Application Insights 时，都会调用 SDK 的 [trackException() 方法](../app/api-custom-events-metrics.md#trackexception)。 “异常数”指标显示记录的异常数。
 
-|度量单位|支持的聚合|预先聚合的维度|注释|
+|度量单位|支持的聚合|预先聚合的维度|说明|
 |---|---|---|---|
 |计数|计数|云角色名称、云角色实例、设备类型|基于日志的版本使用 **Sum** 聚合|
 
@@ -224,9 +224,9 @@ exceptions
 
 ### <a name="failed-requests-requestsfailed"></a>失败的请求数 (请求/失败)
 
-标记为失败的受跟踪服务器请求计数。  默认情况下，Application Insights SDK 会自动将返回 HTTP 响应代码 5xx 或 4xx 的每个服务器请求标记为失败的请求。 可以通过在 [自定义遥测初始化表达式](../app/api-filtering-sampling.md#addmodify-properties-itelemetryinitializer)中修改请求遥测项的 *success* 属性来自定义此逻辑。
+标记为失败的受跟踪服务器请求计数。 默认情况下，Application Insights SDK 会自动将返回 HTTP 响应代码 5xx 或 4xx 的每个服务器请求标记为失败的请求。 可以通过在 [自定义遥测初始化表达式](../app/api-filtering-sampling.md#addmodify-properties-itelemetryinitializer)中修改请求遥测项的 *success* 属性来自定义此逻辑。
 
-|度量单位|支持的聚合|预先聚合的维度|注释|
+|度量单位|支持的聚合|预先聚合的维度|说明|
 |---|---|---|---|
 |计数|计数|云角色实例、云角色名称、实际或综合流量、请求性能、响应代码|基于日志的版本使用 **Sum** 聚合|
 
@@ -241,7 +241,7 @@ requests
 
 此指标显示服务器异常数。
 
-|度量单位|支持的聚合|预先聚合的维度|注释|
+|度量单位|支持的聚合|预先聚合的维度|说明|
 |---|---|---|---|
 |计数|计数|云角色名称、云角色实例|基于日志的版本使用 **Sum** 聚合|
 
@@ -354,7 +354,7 @@ performanceCounters
 
 ### <a name="processor-time-performancecountersprocessorcpupercentage"></a>处理器时间 (performanceCounters/processorCpuPercentage)
 
-受监视服务器实例上运行的所有进程的 CPU 消耗量。 
+受监视服务器实例上运行的所有进程的 CPU 消耗量。
 
 |度量单位|支持的聚合|支持的维度|
 |---|---|---|
@@ -423,7 +423,7 @@ requests
 | render timechart
 ```
 
-## <a name="usage-metrics"></a>使用指标
+## <a name="usage-metrics"></a>使用情况指标
 
 ### <a name="page-view-load-time-pageviewsduration"></a>页面查看次数加载时间 (pageViews/duration)
 

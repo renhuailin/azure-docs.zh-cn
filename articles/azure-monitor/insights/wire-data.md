@@ -1,17 +1,16 @@
 ---
 title: Azure Monitor 中的 Wire Data 解决方案 | Microsoft Docs
 description: 线路数据是具有 Log Analytics 代理的计算机提供的整合网络和性能数据。 网络数据与日志数据结合在一起，可帮助将数据相关联。
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/29/2020
-ms.openlocfilehash: 563104a82da3b6b2263fce46792cf4f627c8f6ad
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 5981a5f136d613ffcedda86797d807d2eecfab0d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100572334"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713620"
 ---
 # <a name="wire-data-20-preview-solution-in-azure-monitor"></a>Azure Monitor 中的 Wire Data 2.0（预览版）解决方案
 
@@ -26,7 +25,7 @@ ms.locfileid: "100572334"
 > 
 >使用线路数据解决方案的现有客户可继续使用该解决方案。 对于迁移到服务映射的迁移时间线，我们将发布相关指导。
 >
->新客户应安装 [服务映射解决方案](../vm/service-map.md) 或 [用于 VM 的 Azure Monitor](../vm/vminsights-overview.md)。  服务映射数据集相当于线路数据。  用于 VM 的 Azure Monitor 包括服务映射数据集，其中包含用于分析的其他性能数据和功能。 
+>新客户应安装 [服务映射解决方案](../vm/service-map.md) 或 [VM 见解](../vm/vminsights-overview.md)。  服务映射数据集相当于线路数据。  VM insights 包含包含其他性能数据和分析功能的服务映射数据集。 
 
 
 默认情况下，Azure Monitor 从 Windows 和 Linux 中内置的计数器以及可以指定的其他性能计算器记录 CPU、内存和磁盘数据以及网络性能数据。 网络以及其他数据的收集针对每个代理实时执行，包括正在由计算机使用的子网和应用程序级协议。  Wire Data 查看应用程序层（而不是 TCP 传输层）的数据。  该解决方案不会查看单个 ACK 和 SYN。  完成握手后，该连接将被视作实时连接，并被标记为“已连接”。 只要双方同意开启套接字，并且数据可以在彼此之间来回传递，该实时连接就将保持不变。  只要有一方关闭连接，该连接就会被标记为“已断开连接”。  因此，它只对已成功完成数据包的带宽计数，而不会对重新发送或失败的数据包进行报告。

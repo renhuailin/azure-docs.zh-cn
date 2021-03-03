@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/14/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: f4f040288574a9ddfc5f7c56878c7f1e795b09a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5ca03336fc60abbb458615e922a2556dd21a79a5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88653845"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101739672"
 ---
 # <a name="prepare-azure-resources-for-hyper-v-disaster-recovery"></a>为 Hyper-V 灾难恢复准备 Azure 资源
 
@@ -56,7 +56,7 @@ ms.locfileid: "88653845"
 2. 在“创建存储帐户”中，输入帐户的名称。  选择的名称必须在 Azure 中唯一，长度为 3 到 24 个字符，且只能使用小写字母和数字。 本教程使用 **contosovmsacct1910171607**。
 3. 在“部署模型”中，选择“资源管理器”。 
 4. 在“帐户类型”中，选择“存储(常规用途 v1)” 。 请不要选择 blob 存储。
-5. 在“复制”中，选择默认的“读取访问异地冗余存储”作为存储冗余。  将“需要安全传输”设置保留为“已禁用”。
+5. 在“复制”中，选择默认的“读取访问异地冗余存储”作为存储冗余。 
 6. 在“性能”中，选择“标准”。 接下来，在“访问层级”中选择默认选项“热”。 
 7. 在“订阅”中，选择要在其中创建新存储帐户的订阅。
 8. 在“资源组”中，输入新的资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 本教程使用 **ContosoRG**。
@@ -70,7 +70,7 @@ ms.locfileid: "88653845"
 1. 在 Azure 门户中选择“+创建资源”，然后在 Azure 市场中搜索“恢复服务”。
 2. 选择“备份和站点恢复(OMS)”。 接下来，在“备份和站点恢复”页上，选择“创建”。 
 1. 在“恢复服务保管库”>“名称”中，输入一个易记名称用于标识该保管库。 在本教程中，请使用 ContosoVMVault。
-2. 在**资源组**中，选择现有资源组或创建新资源组。 本教程使用 **contosoRG**。
+2. 在 **资源组** 中，选择现有资源组或创建新资源组。 本教程使用 **contosoRG**。
 3. 在“位置”中，选择该保管库要放到的区域。 本教程使用“西欧”。
 4. 若要从仪表板快速访问保管库，请选择“固定到仪表板” > “创建”。
 

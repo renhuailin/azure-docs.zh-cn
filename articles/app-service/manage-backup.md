@@ -5,12 +5,12 @@ ms.assetid: 6223b6bd-84ec-48df-943f-461d84605694
 ms.topic: article
 ms.date: 10/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: 933ac96d0cf98e0068575e5a70b0f42a157eb611
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7c00205e2931400caa64f35db962d94a732f2524
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91827459"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714487"
 ---
 # <a name="back-up-your-app-in-azure"></a>在 Azure 中备份应用
 利用 [Azure App Service](overview.md) 中的备份和还原功能，可以轻松地手动或按计划创建应用备份。 可以将备份配置为无限期保留。 通过覆盖现有应用或还原为另一应用可将应用还原为先前状态的快照。
@@ -44,10 +44,10 @@ ms.locfileid: "91827459"
 * 备份和还原功能要求应用服务计划处于标准层、高级层或隔离层  。 有关缩放应用服务计划以使用更高层的详细信息，请参阅[增加 Azure 中的应用](manage-scale-up.md)。 与标准层相比，高级层和隔离层每日允许更多备份量  。
 * 在与要备份的应用相同的订阅中，需要有一个 Azure 存储帐户和容器。 有关 Azure 存储帐户的详细信息，请参阅 [Azure 存储帐户概述](../storage/common/storage-account-overview.md)。
 * 最多可备份 10 GB 的应用和数据库内容。 如果备份大小超过此限制，会出错。
-* 不支持备份启用了 TLS 的 Azure Database for MySQL。 如果配置备份，备份将失败。
-* 不支持备份启用了 TLS 的 Azure Database for PostgreSQL。 如果配置备份，备份将失败。
+* 不支持备份启用了 TLS 的 Azure Database for MySQL。 如果已配置备份，则会遇到备份失败。
+* 不支持备份启用了 TLS 的 Azure Database for PostgreSQL。 如果已配置备份，则会遇到备份失败。
 * 应用内 MySQL 数据库无需任何配置即可自动备份。 如果对应用内 MySQL 数据库进行手动设置，例如添加连接字符串，则备份可能无法正常工作。
-* 不支持将启用了防火墙的存储帐户用作备份目标。 如果配置备份，备份将失败。
+* 不支持将启用了防火墙的存储帐户用作备份目标。 如果已配置备份，则会遇到备份失败。
 
 
 <a name="manualbackup"></a>
@@ -60,7 +60,7 @@ ms.locfileid: "91827459"
     > [!NOTE]
     > 若显示以下消息，请单击该消息升级 应用服务计划，才能继续备份。
     > 有关详细信息，请参阅[增加 Azure 中的应用](manage-scale-up.md)。
-    > :::image type="content" source="./media/manage-backup/upgrade-plan.png" alt-text="带有用于升级应用服务计划以访问备份和还原功能的消息的横幅屏幕截图。":::
+    > :::image type="content" source="./media/manage-backup/upgrade-plan.png" alt-text="横幅屏幕截图，上面的消息显示请升级应用服务计划以使用“备份和还原”功能。":::
     > 
     > 
 
@@ -70,18 +70,18 @@ ms.locfileid: "91827459"
 
 3. 在“备份配置”页中，单击“未配置存储”来配置存储帐户 。
 
-    :::image type="content" source="./media/manage-backup/configure-storage.png" alt-text="带有用于升级应用服务计划以访问备份和还原功能的消息的横幅屏幕截图。":::
+    :::image type="content" source="./media/manage-backup/configure-storage.png" alt-text="“备份存储”部分的屏幕截图，其中已选择“未配置存储”设置。":::
 
 4. 选择“存储帐户”和“容器”来选择备份目标。 该存储帐户必须与要备份的应用属于同一订阅。 也可在各自的页面中新建存储帐户或容器。 完成后，单击“选择”。
 
 5. 在仍处于打开状态的“备份配置”页中，可配置“备份数据库”，接着选择要包含在备份中的数据库（SQL 数据库或 MySQL），然后单击“确定”  。
 
-    :::image type="content" source="./media/manage-backup/configure-database.png" alt-text="带有用于升级应用服务计划以访问备份和还原功能的消息的横幅屏幕截图。":::
+    :::image type="content" source="./media/manage-backup/configure-database.png" alt-text="“备份数据库”部分的屏幕截图，其中显示“加入备份”选择。":::
 
     > [!NOTE]
     > 若要使数据库显示在此列表中，其连接字符串必须位于应用中“应用程序设置”页的“连接字符串”部分中 。 
     >
-    > 应用内 MySQL 数据库无需任何配置即可自动备份。 如果对应用内 MySQL 数据库进行手动设置，例如添加连接字符串，则备份可能无法正常工作。
+    > 应用内 MySQL 数据库无需任何配置即可自动备份。 如果手动设置应用内 MySQL 数据库（如添加连接字符串），则备份可能无法正常工作。
     > 
     > 
 
@@ -141,7 +141,7 @@ ms.locfileid: "91827459"
 > [!NOTE]
 > 采用与[还原定期备份](web-sites-restore.md)相同的方式，还原站点的部分备份。 还原过程会执行正确的操作。
 > 
-> 还原完整备份后，站点上的所有内容都被替换为备份中的任何内容。 如果文件在站点上但不在备份中，则会将其删除。 但在还原部分备份时，位于其中一个受限制目录或任何受限制的文件中的任何内容都将保留原样。
+> 还原完整备份后，站点上的所有内容都被替换为备份中的任何内容。 如果文件在站点上但不在备份中，则会将其删除。 但在还原部分备份时，位于其中一个限制目录或任何限制文件中的任何内容保持不变。
 > 
 
 

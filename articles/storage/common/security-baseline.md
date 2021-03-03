@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: b484873f6c118c49712cbcd66eeb6a63d8aa05f6
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 5367fbcb88e19253eead58d8f99933fdadc41898
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100591556"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714708"
 ---
 # <a name="azure-security-baseline-for-azure-storage"></a>适用于 Azure 存储的 Azure 安全基线
 
@@ -190,7 +190,7 @@ ms.locfileid: "100591556"
 
 **指导**：Azure 存储分析提供 Blob、队列和表的日志。 可以使用 Azure 门户来配置要为帐户记录哪些日志。 
 
-- [如何为 Azure 存储帐户配置监视](./storage-monitor-storage-account.md#configure-monitoring-for-a-storage-account)
+- [如何为 Azure 存储帐户配置监视](./manage-storage-analytics-logs.md)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -208,7 +208,7 @@ ms.locfileid: "100591556"
 
 **指导**：在 Azure 存储帐户或 Log Analytics 工作区中存储安全事件日志时，可以根据组织的需求设置保留策略。 
 
-- [如何为 Azure 存储帐户日志配置保留策略](./storage-monitor-storage-account.md#configure-logging)
+- [如何为 Azure 存储帐户日志配置保留策略](./manage-storage-analytics-logs.md#configure-logging)
 
 - [更改 Log Analytics 中的数据保留期](../../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
@@ -414,7 +414,7 @@ ms.locfileid: "100591556"
 
 - [管理对容器和 Blob 的匿名读取访问](../blobs/anonymous-read-access-configure.md)
 
-- [在 Azure 门户中监视存储帐户](./storage-monitor-storage-account.md)
+- [在 Azure 门户中监视存储帐户](./manage-storage-analytics-logs.md)
 
 - [管理存储帐户访问密钥](./storage-account-keys-manage.md)
 
@@ -432,7 +432,7 @@ ms.locfileid: "100591556"
 
 - [如何将 Azure 活动日志集成到 Azure Monitor](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
-- [如何为 Azure 存储帐户配置指标警报](./storage-monitor-storage-account.md)
+- [如何为 Azure 存储帐户配置指标警报](./manage-storage-analytics-logs.md)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -576,7 +576,7 @@ ms.locfileid: "100591556"
 
 - [Azure 存储分析日志记录](./storage-analytics-logging.md)
 
-- [如何为 Azure 存储帐户配置指标警报](./storage-monitor-storage-account.md)
+- [如何为 Azure 存储帐户配置指标警报](./manage-storage-analytics-logs.md)
 
 **Azure 安全中心监视**：目前不可用
 

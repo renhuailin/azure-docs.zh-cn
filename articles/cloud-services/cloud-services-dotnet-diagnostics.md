@@ -8,19 +8,19 @@ ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: e4b5372a2b6e9b833f3a0213d69649b75ae2589b
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 97e68d338580132b6927c4cc8b206db60fe93ba2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100578190"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703501"
 ---
 # <a name="enabling-azure-diagnostics-in-azure-cloud-services-classic"></a>在 Azure 云服务（经典）中启用 Azure 诊断
 
 > [!IMPORTANT]
 > [Azure 云服务 (扩展支持) ](../cloud-services-extended-support/overview.md) 是适用于 Azure 云服务产品的新的基于 azure 资源管理器的部署模型。进行此更改后，基于 Azure Service Manager 的部署模型运行的 Azure 云服务已重命名为云服务 (经典) ，所有新部署应使用 [云服务 (扩展支持) ](../cloud-services-extended-support/overview.md)。
 
-有关 Azure 诊断的背景信息，请参阅 [Azure 诊断概述](../azure-diagnostics.md)。
+有关 Azure 诊断的背景信息，请参阅 [Azure 诊断概述](../azure-monitor/agents/diagnostics-extension-overview.md)。
 
 ## <a name="how-to-enable-diagnostics-in-a-worker-role"></a>如何在辅助角色中启用诊断
 本演练介绍如何实现使用 .NET EventSource 类发出遥测数据的 Azure 辅助角色。 Azure Diagnostics 用于收集遥测数据，并将其存储在一个 Azure 存储帐户中。 创建辅助角色时，Visual Studio 将在适用于 .NET 2.4 和更低版本的 Azure SDK 中，自动启用 Diagnostics 1.0 作为解决方案的一部分。 以下说明介绍了创建辅助角色、从解决方案禁用 Diagnostics 1.0，以及在辅助角色中部署 Diagnostics 1.2 或 1.3 的过程。

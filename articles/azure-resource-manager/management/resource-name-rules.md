@@ -3,16 +3,16 @@ title: 资源命名限制
 description: 说明 Azure 资源的命名规则和限制。
 ms.topic: conceptual
 ms.date: 01/27/2021
-ms.openlocfilehash: dbe19dae4509e1dd6aa95763e4d034c339bb0531
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 40e17e518baec40d31918d24ab5b61da741f540a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99220847"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101700467"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Azure 资源的命名规则和限制
 
-本文汇总了 Azure 资源的命名规则和限制。 有关如何命名资源的建议，请参阅[建议的命名和标记约定](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging)。
+本文总结了 Azure 资源的命名规则和限制。 有关如何命名资源的建议，请参阅[建议的命名和标记约定](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging)。
 
 本文按资源提供程序命名空间列出了资源。 有关资源提供程序如何匹配 Azure 服务的列表，请参阅[适用于 Azure 服务的资源提供程序](azure-services-resource-providers.md)。
 
@@ -173,7 +173,7 @@ ms.locfileid: "99220847"
 > | galleries | 资源组 | 1-80 | 字母数字和句点。<br><br>以字母数字开头和结尾。 |
 > | galleries / applications | 库 | 1-80 | 字母数字、连字符和句点。<br><br>以字母数字开头和结尾。 |
 > | galleries / applications/versions | application | 32-bit integer | 数字和句点。 |
-> | galleries/images | 库 | 1-80 | 字母数字、下划线、连字符和句点。<br><br>以字母数字开头和结尾。 |
+> | galleries/images | 库 | 1-80 | 字母数字、下划线字符、连字符和句点。<br><br>以字母数字开头和结尾。 |
 > | galleries/images/versions | image | 32-bit integer | 数字和句点。 |
 > | images | 资源组 | 1-80 | 字母数字、下划线、句点和连字符。<br><br>以字母数字开头。 以字母数字或下划线结尾。 |
 > | snapshots | 资源组 | 1-80 | 字母数字、下划线、句点和连字符。<br><br>以字母数字开头。 以字母数字或下划线结尾。 |
@@ -349,7 +349,7 @@ ms.locfileid: "99220847"
 ## <a name="microsoftdocumentdb"></a>Microsoft.DocumentDB
 
 > [!div class="mx-tableFixed"]
-> | 实体 | 作用域 | Length | 有效的字符 |
+> | 实体 | 范围 | 长度 | 有效的字符 |
 > | --- | --- | --- | --- |
 > | databaseAccounts | 全局 | 3-44 | 小写字母、数字和连字符。<br><br>以小写字母或数字开头。 |
 
@@ -397,6 +397,9 @@ ms.locfileid: "99220847"
 > | --- | --- | --- | --- |
 > | actionGroups | 资源组 | 1-260 | 不得使用：<br>`/&%\?` <br><br>不得以空格或句点结尾。  |
 > | components | 资源组 | 1-260 | 不得使用：<br>`%&\?/` <br><br>不得以空格或句点结尾。  |
+> | scheduledQueryRules | 资源组 | 1-260 | 不得使用：<br>`*<>%{}&:\\?/#` <br><br>不得以空格或句点结尾。  |
+> | metricAlerts | 资源组 | 1-260 | 不得使用：<br>`*#&+:<>?@%{}\/` <br><br>不得以空格或句点结尾。  |
+> | activityLogAlerts | 资源组 | 1-260 | 不得使用：<br>`<>*%{}&:\\?+/#` <br><br>不得以空格或句点结尾。  |
 
 ## <a name="microsoftiotcentral"></a>Microsoft.IoTCentral
 

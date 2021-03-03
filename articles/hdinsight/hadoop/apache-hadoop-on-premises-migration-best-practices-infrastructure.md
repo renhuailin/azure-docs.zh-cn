@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
-ms.openlocfilehash: f66e13046a34bddfd27912e23ce51f75006fd9fa
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 309053c2d7a0f9482016f1bd83e0c61dcd31bec5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98932142"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101740658"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---infrastructure-best-practices"></a>将本地 Apache Hadoop 群集迁移到 Azure HDInsight - 基础结构最佳做法
 
@@ -24,19 +24,19 @@ ms.locfileid: "98932142"
 Azure 区域确定群集的物理预配位置。 为了将读写延迟最小化，群集应与数据位于同一区域。
 
 **存储位置和大小**  
-默认存储必须位于群集所在区域中。  对于 48 节点群集，建议创建 4 到 8 个存储帐户。 尽管存储总量可能已足够，但每个存储帐户能够为计算节点提供额外的网络带宽。 如果有多个存储帐户，请为每个存储帐户使用不带前缀的随机名称。 使用随机名称的目的是降低出现存储瓶颈（限制）或所有帐户发生共模故障的可能性。 为提高性能，请对每个存储帐户仅使用一个容器。
+默认存储必须位于群集所在区域中。 对于 48 节点群集，建议创建 4 到 8 个存储帐户。 尽管存储总量可能已足够，但每个存储帐户能够为计算节点提供额外的网络带宽。 如果有多个存储帐户，请为每个存储帐户使用不带前缀的随机名称。 使用随机名称的目的是降低出现存储瓶颈（限制）或所有帐户发生共模故障的可能性。 为提高性能，请对每个存储帐户仅使用一个容器。
 
 **VM 大小和类型（现在支持 G 系列）**  
 每个群集类型具有一组节点类型，每个节点类型在 VM 大小和类型方面提供特定的选项。 VM 大小和类型由 CPU 处理能力、RAM 大小和网络延迟决定。 可以使用模拟工作负荷来确定每个节点类型的最佳 VM 大小和类型。
 
-**工作器节点数**  
+**辅助角色节点数**  
 可以使用模拟工作负荷来确定初始的工作器节点数。 以后可以通过添加更多工作节点来扩展群集，以满足峰值负载需求。 以后不需要额外的工作器节点时，可以重新缩放群集。
 
 有关详细信息，请参阅有关 [HDInsight 群集容量规划](../hdinsight-capacity-planning.md)的文章。
 
 ## <a name="use-recommended-virtual-machine-type-for-cluster"></a>对群集使用建议的虚拟机类型
 
-有关每种 HDInsight 群集的建议虚拟机类型，请参阅[群集的默认节点配置和虚拟机大小](../hdinsight-component-versioning.md#default-node-configuration-and-virtual-machine-sizes-for-clusters)。
+有关每种 HDInsight 群集的建议虚拟机类型，请参阅[群集的默认节点配置和虚拟机大小](../hdinsight-supported-node-configuration.md)。
 
 ## <a name="check-hadoop-components-availability-in-hdinsight"></a>检查 HDInsight 中 Hadoop 组件的可用性
 
@@ -73,7 +73,7 @@ Azure 区域确定群集的物理预配位置。 为了将读写延迟最小化�
 |Palantir|IaaS 
 |Sailpoint|Iaas 
 
-有关详细信息，请参阅[随不同 HDInsight 版本提供的 Apache Hadoop 组件](../hdinsight-component-versioning.md#apache-components-available-with-different-hdinsight-versions)一文
+有关详细信息，请参阅[随不同 HDInsight 版本提供的 Apache Hadoop 组件](../hdinsight-component-versioning.md)一文
 
 ## <a name="customize-hdinsight-clusters-using-script-actions"></a>使用脚本操作自定义 HDInsight 群集
 

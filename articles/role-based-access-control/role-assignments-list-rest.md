@@ -5,22 +5,18 @@ services: active-directory
 documentationcenter: na
 author: rolyon
 manager: mtillman
-editor: ''
-ms.assetid: 1f90228a-7aac-4ea7-ad82-b57d222ab128
 ms.service: role-based-access-control
 ms.workload: multiple
 ms.tgt_pltfrm: rest-api
-ms.devlang: na
 ms.topic: how-to
-ms.date: 05/06/2020
+ms.date: 02/27/2021
 ms.author: rolyon
-ms.reviewer: bagovind
-ms.openlocfilehash: 1d90e83405cf9c560f644277a04012571e1a5a9d
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 9780902a1c5f4a711e1abffa6b508c28efe269ac
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100556901"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101735874"
 ---
 # <a name="list-azure-role-assignments-using-the-rest-api"></a>使用 REST API 列出 Azure 角色分配
 
@@ -28,6 +24,8 @@ ms.locfileid: "100556901"
 
 > [!NOTE]
 > 如果你的组织对使用 [Azure 委托资源管理](../lighthouse/concepts/azure-delegated-resource-management.md)的服务提供商具有外包管理功能，则此处将不会显示该服务提供商授权的角色分配。
+
+[!INCLUDE [gdpr-dsr-and-stp-note](../../includes/gdpr-dsr-and-stp-note.md)]
 
 ## <a name="list-role-assignments"></a>列出角色分配
 

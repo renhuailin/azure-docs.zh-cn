@@ -8,24 +8,24 @@ ms.reviewer: sgilley
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.date: 01/29/2021
+ms.date: 02/26/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: a4be95561c097191803f2faa271c5d6bba875869
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 0212ed1378dbb1d2165e9333a38fa911598c4c6d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99430325"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691478"
 ---
-# <a name="hyperparameter-tuning-a-model-with-azure-machine-learning"></a>使用 Azure 机器学习优化模型超参数
+# <a name="hyperparameter-tuning-a-model-with-azure-machine-learning"></a>使用 Azure 机器学习对模型进行超参数优化
 
 使用 Azure 机器学习 [HyperDrive 程序包](/python/api/azureml-train-core/azureml.train.hyperdrive?preserve-view=true&view=azure-ml-py)自动执行高效的超参数优化。 了解如何完成通过 [Azure 机器学习 SDK](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py) 优化超参数所需的步骤：
 
 1. 定义参数搜索空间
 1. 指定要优化的主要指标  
 1. 为低性能运行指定提前终止策略
-1. 分配资源
+1. 创建和分配资源
 1. 使用所定义的配置启动试验
 1. 将训练运行可视化
 1. 为模型选择最佳配置
@@ -34,7 +34,7 @@ ms.locfileid: "99430325"
 
 **超参数** 是可调整的参数，可用于控制模型训练过程。 例如，使用神经网络时，你决定隐藏层的数目以及每个层中的节点数。 模型性能很大程度上取决于超参数。
 
- **超参数优化**（也称为 **超参数优化**）是查找超参数配置的过程，该过程会获得最佳性能。 通常，该过程在计算方面成本高昂，并且是手动的。
+ “超参数优化”（也称为“hyperparameter optimization”）是找到用于获得最佳性能的超参数配置的过程。 通常，该过程在计算方面成本高昂，并且是手动的。
 
 Azure 机器学习使你能够自动执行超参数优化，并且并行运行试验以有效地优化超参数。
 
@@ -119,7 +119,7 @@ param_sampling = RandomParameterSampling( {
 
 [网格采样](/python/api/azureml-train-core/azureml.train.hyperdrive.gridparametersampling?preserve-view=true&view=azure-ml-py)支持离散超参数。 如果你的预算允许在搜索空间中彻底进行搜索，请使用网格采样。 支持提前终止低性能运行。
 
-对所有可能的值执行简单的网格搜索。 网格采样只能与 `choice` 超参数一起使用。 例如，以下空间有 6 个样本：
+网格采样对所有可能的值执行简单的网格搜索。 网格采样只能与 `choice` 超参数一起使用。 例如，以下空间有 6 个样本：
 
 ```Python
 from azureml.train.hyperdrive import GridParameterSampling
@@ -133,7 +133,7 @@ param_sampling = GridParameterSampling( {
 
 #### <a name="bayesian-sampling"></a>贝叶斯采样
 
-[贝叶斯采样](/python/api/azureml-train-core/azureml.train.hyperdrive.bayesianparametersampling?preserve-view=true&view=azure-ml-py)基于贝叶斯优化算法。 它根据先前样本的表现情况来选取样本，以便新样本可以改善主要指标。
+[贝叶斯采样](/python/api/azureml-train-core/azureml.train.hyperdrive.bayesianparametersampling?preserve-view=true&view=azure-ml-py)基于贝叶斯优化算法。 它根据前面的示例的工作方式来选取样本，以便新示例提高主要指标。
 
 如果你有足够的预算来探索超参数空间，则建议使用贝叶斯采样。 为获得最佳结果，建议最大运行次数大于或等于正在优化的超参数数目的 20 倍。 
 
@@ -187,7 +187,7 @@ run_logger.log("accuracy", float(val_accuracy))
 
 ## <a name="specify-early-termination-policy"></a><a name="early-termination"></a> 指定提前终止策略
 
-使用提前终止策略自动终止性能不佳的运行。 提前终止提高了计算效率。
+使用早期终止策略，自动结束性能不佳的运行。 提前终止提高了计算效率。
 
 你可以配置以下参数来控制何时应用该策略：
 
@@ -203,7 +203,7 @@ Azure 机器学习支持以下提前终止策略：
 
 ### <a name="bandit-policy"></a>老虎机策略
 
-[老虎机策略](/python/api/azureml-train-core/azureml.train.hyperdrive.banditpolicy?preserve-view=true&view=azure-ml-py#&preserve-view=truedefinition)基于松驰因子/松驰数量和评估间隔。 与最佳性能运行相比，如果主要指标不在指定的松驰因子/松驰数量范围内，则老虎机会终止运行。
+[老虎机策略](/python/api/azureml-train-core/azureml.train.hyperdrive.banditpolicy?preserve-view=true&view=azure-ml-py#&preserve-view=truedefinition)基于松驰因子/松驰数量和评估间隔。 当主要指标不在最成功运行的指定可宽延时间系数/最小值时，Bandit 结束。
 
 > [!NOTE]
 > 贝叶斯采样不支持提前终止。 使用贝叶斯采样时，请设置 `early_termination_policy = None`。
@@ -226,7 +226,7 @@ early_termination_policy = BanditPolicy(slack_factor = 0.1, evaluation_interval=
 
 ### <a name="median-stopping-policy"></a>中间值停止策略
 
-[中值停止](/python/api/azureml-train-core/azureml.train.hyperdrive.medianstoppingpolicy?preserve-view=true&view=azure-ml-py)是基于运行报告的主要指标的运行平均值的提前终止策略。 此策略计算所有训练运行的运行平均值，并终止其主要指标值比平均值的中间值更差的运行。
+[中值停止](/python/api/azureml-train-core/azureml.train.hyperdrive.medianstoppingpolicy?preserve-view=true&view=azure-ml-py)是基于运行报告的主要指标的运行平均值的提前终止策略。 此策略计算所有定型运行的运行平均值，并停止其主要指标值低于平均值的中值的运行。
 
 此策略采用以下配置参数：
 * `evaluation_interval`：应用策略的频率（可选参数）。
@@ -238,7 +238,7 @@ from azureml.train.hyperdrive import MedianStoppingPolicy
 early_termination_policy = MedianStoppingPolicy(evaluation_interval=1, delay_evaluation=5)
 ```
 
-在此示例中，将在每个间隔应用提前终止策略，从评估间隔 5 开始。 如果某个运行的最佳主要指标比所有训练运行中间隔 1:5 的运行平均值的中间值更差，则会在间隔 5 处终止该运行。
+在此示例中，将在每个间隔应用提前终止策略，从评估间隔 5 开始。 如果在所有定型运行中，如果其最佳主指标比间隔1:5 的平均运行平均值差，则在时间间隔5停止运行。
 
 ### <a name="truncation-selection-policy"></a>截断选择策略
 
@@ -271,7 +271,7 @@ policy=None
 * 对于既可以节省成本又不会终止有前景的作业的保守策略，请考虑使用 `evaluation_interval` 为 1 且 `delay_evaluation` 为 5 的中间值停止策略。 这属于保守的设置，可以提供大约 25%-35% 的节省，且不会造成主要指标损失（基于我们的评估数据）。
 * 如果想节省更多成本，则可以使用老虎机策略或截断选择策略，因为前者的可用可宽延时间更短，后者的截断百分比更大。
 
-## <a name="allocate-resources"></a>分配资源
+## <a name="create-and-assign-resources"></a>创建和分配资源
 
 通过指定最大训练运行数来控制资源预算。
 
@@ -302,18 +302,28 @@ max_concurrent_runs=4
 * 你的提前终止策略
 * 主要指标
 * 资源分配设置
-* ScriptRunConfig `src`
+* ScriptRunConfig `script_run_config`
 
 ScriptRunConfig 是将通过采样的超参数运行的训练脚本。 它定义每个作业的资源（单节点或多节点）和要使用的计算目标。
 
 > [!NOTE]
->`src` 中指定的计算目标必须具有足够的资源来满足你的并发级别。 有关 ScriptRunConfig 的详细信息，请参阅[配置训练运行](how-to-set-up-training-targets.md)。
+>在中使用的计算目标 `script_run_config` 必须具有足够的资源来满足你的并发级别。 有关 ScriptRunConfig 的详细信息，请参阅[配置训练运行](how-to-set-up-training-targets.md)。
 
 配置超参数优化试验：
 
 ```Python
 from azureml.train.hyperdrive import HyperDriveConfig
-hd_config = HyperDriveConfig(run_config=src,
+from azureml.train.hyperdrive import RandomParameterSampling, BanditPolicy, uniform, PrimaryMetricGoal
+
+param_sampling = RandomParameterSampling( {
+        'learning_rate': uniform(0.0005, 0.005),
+        'momentum': uniform(0.9, 0.99)
+    }
+)
+
+early_termination_policy = BanditPolicy(slack_factor=0.15, evaluation_interval=1, delay_evaluation=10)
+
+hd_config = HyperDriveConfig(run_config=script_run_config,
                              hyperparameter_sampling=param_sampling,
                              policy=early_termination_policy,
                              primary_metric_name="accuracy",
@@ -321,6 +331,36 @@ hd_config = HyperDriveConfig(run_config=src,
                              max_total_runs=100,
                              max_concurrent_runs=4)
 ```
+
+`HyperDriveConfig`设置传递到的参数 `ScriptRunConfig script_run_config` 。 `script_run_config`反过来，将参数传递给定型脚本。 上面的代码片段摘自示例笔记本 [定型、超参数调谐和 PyTorch](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/pytorch/train-hyperparameter-tune-deploy-with-pytorch)。 在此示例中， `learning_rate` `momentum` 将优化和参数。 早停止运行将由确定 `BanditPolicy` ，后者停止其主要度量值超出 (的运行， `slack_factor` 请参阅 [BanditPolicy 类引用](python/api/azureml-train-core/azureml.train.hyperdrive.banditpolicy?view=azure-ml-py)) 。 
+
+示例中的以下代码演示如何接收、分析和传递到定型脚本的 `fine_tune_model` 函数：
+
+```python
+# from pytorch_train.py
+def main():
+    print("Torch version:", torch.__version__)
+
+    # get command-line arguments
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--num_epochs', type=int, default=25,
+                        help='number of epochs to train')
+    parser.add_argument('--output_dir', type=str, help='output directory')
+    parser.add_argument('--learning_rate', type=float,
+                        default=0.001, help='learning rate')
+    parser.add_argument('--momentum', type=float, default=0.9, help='momentum')
+    args = parser.parse_args()
+
+    data_dir = download_data()
+    print("data directory is: " + data_dir)
+    model = fine_tune_model(args.num_epochs, data_dir,
+                            args.learning_rate, args.momentum)
+    os.makedirs(args.output_dir, exist_ok=True)
+    torch.save(model, os.path.join(args.output_dir, 'model.pt'))
+```
+
+> [!Important]
+> 每个超参数运行都将从头开始重新启动培训，其中包括重新生成模型和 _所有数据加载加载_。 您可以通过使用 Azure 机器学习的管道或手动过程在训练运行之前执行尽可能多的数据准备来最大程度地降低这一成本。 
 
 ## <a name="submit-hyperparameter-tuning-experiment"></a>提交超参数优化试验
 
@@ -332,10 +372,9 @@ experiment = Experiment(workspace, experiment_name)
 hyperdrive_run = experiment.submit(hd_config)
 ```
 
-## <a name="warm-start-hyperparameter-tuning-optional"></a>热启动超参数优化 (可选) 
+## <a name="warm-start-hyperparameter-tuning-optional"></a>热启动超参数优化（可选）
 
 确定模型的最佳超参数值可能是一个迭代过程。 你可以重复使用从前五个运行中获得的知识来加速超参数优化。
-
 
 对热启动的处理方式不同，具体取决于采样方法：
 - **贝叶斯采样**：来自先前运行的试用将用作先验知识来选取新样本，并改善主要指标。
@@ -368,7 +407,7 @@ child_runs_to_resume = [resume_child_run_1, resume_child_run_2]
 ```Python
 from azureml.train.hyperdrive import HyperDriveConfig
 
-hd_config = HyperDriveConfig(run_config=src,
+hd_config = HyperDriveConfig(run_config=script_run_config,
                              hyperparameter_sampling=param_sampling,
                              policy=early_termination_policy,
                              resume_from=warmstart_parents_to_resume_from,

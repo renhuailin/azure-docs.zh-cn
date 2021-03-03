@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/23/2020
 ms.author: anvang
 ms.reviewer: jrasnick
-ms.openlocfilehash: d477693667c8d78687d27b291d2b3c15612a0f30
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: 6d71d9889701ec834747e4bec1dd111157c3206e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99989045"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694608"
 ---
 # <a name="enabling-synapse-workspace-features-on-an-existing-dedicated-sql-pool-formerly-sql-dw"></a> (以前的 SQL DW) 启用现有专用 SQL 池上的 Synapse 工作区功能
 

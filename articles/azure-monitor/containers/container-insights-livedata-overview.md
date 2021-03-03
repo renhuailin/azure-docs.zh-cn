@@ -1,26 +1,26 @@
 ---
-title: 使用适用于容器的 Azure Monitor 查看实时数据（预览版）| Microsoft Docs
-description: 本文介绍在适用于容器的 Azure Monitor 中，如何在不使用 kubectl 的情况下实时查看 Kubernetes 日志、事件和 Pod 指标。
+title: 查看具有容器见解的实时数据 (预览) |Microsoft Docs
+description: 本文介绍了 Kubernetes 日志、事件和 pod 指标的实时视图，而无需在 Container insights 中使用 kubectl。
 ms.topic: conceptual
 ms.date: 12/17/2020
 ms.custom: references_regions
-ms.openlocfilehash: 3655ff8e5879aa4113753b5529c1e484fb079401
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 7e644680916097bc453c30be63a7db324df5f8f6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100606128"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711223"
 ---
 # <a name="how-to-view-kubernetes-logs-events-and-pod-metrics-in-real-time"></a>如何实时查看 Kubernetes 日志、事件和 Pod 指标
 
-适用于容器的 Azure Monitor 包括实时数据（预览版）功能，这是一项高级诊断功能，可通过它直接访问 Azure Kubernetes 服务 (AKS) 容器日志 (stdout/stderror)、事件和 Pod 指标。 它公开对 `kubectl logs -c`、`kubectl get` 事件和 `kubectl top pods` 的直接访问。 控制台窗格显示由容器引擎生成的日志、事件和指标，可以进一步协助实时排查问题。
+容器见解包含实时数据 (预览) 功能，这是一项高级诊断功能，可让你直接访问 Azure Kubernetes 服务 (AKS) 容器日志 (stdout/stderror) 、事件和 pod 指标。 它公开对 `kubectl logs -c`、`kubectl get` 事件和 `kubectl top pods` 的直接访问。 控制台窗格显示由容器引擎生成的日志、事件和指标，可以进一步协助实时排查问题。
 
 本文详细介绍了此功能，并帮助你了解如何使用此功能。
 
 有关设置实时数据（预览版）功能或对其进行故障排除的帮助，请参阅[安装指南](container-insights-livedata-setup.md)。 该功能直接访问 Kubernetes API，有关身份验证模型的其他信息可以在[此处](https://kubernetes.io/docs/concepts/overview/kubernetes-api/)找到。
 
 ## <a name="view-deployment-live-logs-preview"></a> (预览查看部署实时日志) 
-使用以下过程来查看 AKS 群集中不受容器 Azure Monitor 监视的部署的实时日志。 如果群集使用 Azure Monitor 容器，请使用以下过程查看节点、控制器、容器和部署的实时数据。
+使用以下过程来查看作为 AKS 群集的一部分的部署的实时日志，这些群集不受容器见解监视。 如果群集使用 Container insights，请使用以下过程查看节点、控制器、容器和部署的实时数据。
 
 1. 在 Azure 门户中，浏览到 AKS 群集资源组，然后选择 AKS 资源。
 

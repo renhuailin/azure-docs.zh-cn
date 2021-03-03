@@ -1,6 +1,6 @@
 ---
 title: 计划内维护事件 (预览) 前进通知
-description: 在 Azure SQL 数据库或 Azure SQL 托管实例的计划内维护之前获取通知。
+description: 在 Azure SQL 数据库的计划内维护之前获得通知。
 services: sql-database
 ms.service: sql-db-mi
 ms.subservice: service
@@ -11,24 +11,26 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/02/2021
-ms.openlocfilehash: 3f63a8d2f75a58a771d837128c2b2498c28948ef
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 07f6267a14a4604e1a43dd1a1a9930d63a419336
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101662181"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690883"
 ---
 # <a name="advance-notifications-for-planned-maintenance-events-preview"></a> (预览版的计划内维护事件的提前通知) 
-[!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
+[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
  (预览) 的高级通知可用于为维护时段配置的数据库 [ (预览版) ](maintenance-window.md)。 使用提前通知，客户可以将通知配置为在任何计划事件提前发送到24小时。
 
 可以配置通知，以便你可以在计划的维护在接下来的24小时内开始时获取文本、电子邮件、Azure 推送通知和 voicemails。 在开始维护和维护结束时，将发送其他通知。
 
+> [!Note]
+> 虽然可选择维护时段的功能适用于 Azure SQL 托管实例，但高级通知当前不适用于 Azure SQL 托管实例。
 
 ## <a name="create-an-advance-notification"></a>创建提前通知
 
-提前通知适用于已配置维护时段的 Azure SQL 数据库和托管实例。 
+提前通知适用于已配置维护时段的 Azure SQL 数据库。 
 
 完成以下步骤以启用通知。  
 

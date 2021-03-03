@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 04/11/2020
-ms.openlocfilehash: 66a2bf17ac7cb94dc8e1429d662d7bfe14aa196a
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: d28c45b2d0fc1a123f44020f42c4d2c59c593cb2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101096311"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101709914"
 ---
 # <a name="tutorial-migrate-postgresql-to-azure-db-for-postgresql-online-using-dms-via-the-azure-portal"></a>教程：通过 Azure 门户使用 DMS 将 PostgreSQL 联机迁移到 Azure DB for PostgreSQL
 
@@ -63,7 +63,7 @@ ms.locfileid: "101096311"
 * 配置[针对数据库引擎访问的 Windows 防火墙](/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access)。
 * 打开 Windows 防火墙，使 Azure 数据库迁移服务能够访问源 PostgreSQL 服务器（默认情况下为 TCP 端口 5432）。
 * 在源数据库的前面使用了防火墙设备时，可能需要添加防火墙规则以允许 Azure 数据库迁移服务访问要迁移的源数据库。
-* 为 Azure Database for PostgreSQL 创建服务器级[防火墙规则](https://docs.microsoft.com/azure/postgresql/concepts-firewall-rules)，以允许 Azure 数据库迁移服务访问目标数据库。 提供用于 Azure 数据库迁移服务的虚拟网络子网范围。
+* 为 Azure Database for PostgreSQL 创建服务器级[防火墙规则](../postgresql/concepts-firewall-rules.md)，以允许 Azure 数据库迁移服务访问目标数据库。 提供用于 Azure 数据库迁移服务的虚拟网络子网范围。
 * 在 postgresql.config 文件中启用逻辑复制，并设置以下参数：
 
   * wal_level = **logical**

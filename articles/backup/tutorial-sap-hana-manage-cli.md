@@ -4,12 +4,12 @@ description: 在本教程中，了解如何使用 Azure CLI 管理 Azure VM 上�
 ms.topic: tutorial
 ms.date: 12/4/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 665dfc64e750f448fc4c1a2d7e18f0cb6552f223
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: e8baf7f2589cd7d9054911516253b49253397871
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100371764"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713280"
 ---
 # <a name="tutorial-manage-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>教程：使用 Azure CLI 管理 Azure VM 中的 SAP HANA 数据库
 
@@ -80,7 +80,7 @@ cb110094-9b15-4c55-ad45-6899200eb8dd  SAPHANA
 
 ## <a name="create-incremental-backup-policy"></a>创建增量备份策略
 
-若要创建增量备份策略，请使用以下参数执行 [az backup policy create](https://docs.microsoft.com/cli/azure/backup/policy#az_backup_policy_create) 命令：
+若要创建增量备份策略，请使用以下参数执行 [az backup policy create](/cli/azure/backup/policy#az_backup_policy_create) 命令：
 
 * **--backup-management-type** - Azure 工作负载
 * **--workload-type** - SAPHana
@@ -231,6 +231,7 @@ az backup policy create --resource-group saphanaResourceGroup --vault-name sapha
   "type": "Microsoft.RecoveryServices/vaults/backupPolicies"
 } 
 ```
+
 成功创建策略后，命令的输出将显示执行命令时作为参数传递的策略 JSON。
 
 可以修改策略的以下部分，以指定所需的备份频率和增量备份的保留时间。

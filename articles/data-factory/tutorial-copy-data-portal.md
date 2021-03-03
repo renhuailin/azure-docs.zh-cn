@@ -5,18 +5,18 @@ author: linda33wj
 ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 12/14/2020
+ms.date: 02/18/2021
 ms.author: jingwang
-ms.openlocfilehash: ca3250fb54440d6b68a808a3b1b3800bdcfd14eb
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 17f3c31334517ad560cd40fd22b4def031279ca5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100375759"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101741032"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-database-in-azure-sql-database-by-using-azure-data-factory"></a>使用 Azure 数据工厂，将数据从 Azure Blob 存储复制到 Azure SQL 数据库中的数据库
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 在本教程中，请使用 Azure 数据工厂用户界面 (UI) 创建数据工厂。 此数据工厂中的管道将数据从 Azure Blob 存储复制到 Azure SQL 数据库中的数据库。 本教程中的配置模式适用于从基于文件的数据存储复制到关系数据存储。 如需可以用作源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
 
@@ -130,15 +130,15 @@ ms.locfileid: "100375759"
 
 1. 在“选择格式”对话框中选择数据的格式类型，然后选择“继续”。 
 
-1. 在“设置属性”对话框中，输入 **SourceBlobDataset** 作为名称。 选中“第一行作为标题”复选框。 在“链接服务”文本框下，选择“+ 新建”。 
+1. 在“设置属性”对话框中，输入 **SourceBlobDataset** 作为名称。 选中“第一行作为标题”复选框。 在“链接服务”文本框下，选择“+ 新建”。
 
 1. 在“新建链接服务(Azure Blob 存储)”窗口中，输入 **AzureStorageLinkedService** 作为名称，从“存储帐户名称”列表中选择你的存储帐户。  测试连接，选择“创建”以部署该链接服务。
 
-1. 创建链接服务后，会导航回到“设置属性”页。 在“文件路径”旁边，选择“浏览”。 
+1. 创建链接服务后，会导航回到“设置属性”页。 在“文件路径”旁边，选择“浏览”。
 
 1. 导航到 adftutorial/input 文件夹，选择 emp.txt 文件，然后选择“确定”。
 
-1. 选择“确定”  。 将自动导航到管道页。 在“源”选项卡中，确认已选择“SourceBlobDataset”。  若要预览此页上的数据，请选择“预览数据”。
+1. 选择“确定”。 将自动导航到管道页。 在“源”选项卡中，确认已选择“SourceBlobDataset”。  若要预览此页上的数据，请选择“预览数据”。
 
     ![源数据集](./media/tutorial-copy-data-portal/source-dataset-selected.png)
 
@@ -171,7 +171,7 @@ ms.locfileid: "100375759"
 
     ![保存新建链接服务](./media/tutorial-copy-data-portal/new-azure-sql-linked-service-window.png)
 
-1. 将自动导航到“设置属性”对话框。 在“表”中选择“[dbo].[emp]”。  然后选择“确定”。
+1. 将自动导航到“设置属性”对话框。 在“表”中选择“[dbo].[emp]”。 然后选择“确定”。 
 
 1. 转到包含管道的选项卡。在“接收器数据集”中，确认已选中“OutputSqlDataset”。 
 
@@ -196,7 +196,7 @@ ms.locfileid: "100375759"
 ## <a name="trigger-the-pipeline-manually"></a>手动触发管道
 在此步骤中，请手动触发在前面的步骤中发布的管道。
 
-1. 选择工具栏中的“触发器”，然后选择“立即触发”。  在“管道运行”页上，选择“确定”。   
+1. 选择工具栏中的“触发器”，然后选择“立即触发”。   在“管道运行”页上，选择“确定”。   
 
 1. 转到左侧的“监视”选项卡。 此时会看到由手动触发器触发的管道运行。 可以使用“管道名称”列下的链接来查看活动详细信息以及重新运行该管道。
 

@@ -101,7 +101,7 @@
     - name: 参考
       items:
         - name: 文本翻译 API 参考
-          href: 'https://docs.microsoft.com/rest/api/cognitiveservices/translator/translation'
+          href: /rest/api/cognitiveservices/translator/documenttranslation
 - name: 自定义翻译
   items:
     - name: 概述

@@ -14,12 +14,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 2d83b114487f882b7ee38d3d71c84b6abec04a2b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 96f0c4d4ea7c32e2b58807204ef45b75feae7132
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89266912"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101727322"
 ---
 # <a name="filters-and-dynamic-manifests"></a>筛选器和动态清单
 
@@ -88,11 +88,11 @@ ms.locfileid: "89266912"
 
 包含筛选器的 MPEG DASH URL
 
-`http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=mpd-time-csf,filter=MyLocalFilter)`
+`http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=mpd-time-csf,filter=MyLocalFilter)`
 
 包含筛选器的平滑流 URL
 
-`http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(filter=MyLocalFilter)`
+`http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(filter=MyLocalFilter)`
 
 
 有关如何传送内容和构建流 URL 的详细信息，请参阅[传送内容概述](media-services-deliver-content-overview.md)。
@@ -111,7 +111,7 @@ ms.locfileid: "89266912"
 全局和本地筛选器类型具有完全相同的属性。 两者的主要差异在于它们更适合哪些方案。 全局筛选器通常适用于设备配置文件（再现内容筛选），而本地筛选器可用于修剪特定的资产。
 
 ## <a name="common-scenarios"></a><a id="scenarios"></a>常见方案
-如前所述，在将内容传送到客户（流式传输直播活动或视频点播）时，目标就是：将优质视频传递到处于不同网络条件下的各种设备。 此外，可能在筛选资产与使用**动态清单**方面具有其他的要求。 以下部分提供了不同筛选方案的简要概述。
+如前所述，在将内容传送到客户（流式传输直播活动或视频点播）时，目标就是：将优质视频传递到处于不同网络条件下的各种设备。 此外，可能在筛选资产与使用 **动态清单** 方面具有其他的要求。 以下部分提供了不同筛选方案的简要概述。
 
 * 仅指定某些设备可以处理的音频和视频再现内容子集（而不是与该资产关联的所有再现内容）。 
 * 仅播放视频的某个部分（而不是整个视频）。

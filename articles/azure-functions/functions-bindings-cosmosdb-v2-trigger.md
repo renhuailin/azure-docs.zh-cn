@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/24/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: a2f57fd6a369fba4a78799f768eb3fd2f3d27050
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: 6f4e43efeb1882f52bd335d83a3660a94040ab8a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98071470"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101729209"
 ---
 # <a name="azure-cosmos-db-trigger-for-azure-functions-2x-and-higher"></a>适用于 Azure Functions 2.x 及更高版本的 Azure Cosmos DB 触发器
 
@@ -143,7 +143,7 @@ JavaScript 代码如下所示：
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-下面的示例演示如何将函数作为 Cosmos DB 中的数据更改运行。
+下面的示例演示如何在 Cosmos DB 中的数据更改时运行函数。
 
 ```json
 {
@@ -158,12 +158,12 @@ JavaScript 代码如下所示：
 }
 ```
 
-在 _run.ps1_ 文件中，您可以访问通过参数触发函数的文档 `$Documents` 。
+在 run.ps1 文件中，可以通过 `$Documents` 参数访问触发函数的文档。
 
 ```powershell
 param($Documents, $TriggerMetadata) 
 
-Write-Host "First document Id modified : $($Documents[0].id)" 
+Write-Host "First document Id modified : $($Documents[0].id)" 
 ```
 
 # <a name="python"></a>[Python](#tab/python)
@@ -249,7 +249,7 @@ Python 不支持特性。
 |---------|---------|----------------------|
 |type | 不适用 | 必须设置为 `cosmosDBTrigger`。 |
 |**direction** | 不适用 | 必须设置为 `in`。 在 Azure 门户中创建触发器时，会自动设置该参数。 |
-|**name** | 不适用 | 函数代码中使用的变量名称，表示发生更改的文档列表。 |
+|name  | 不适用 | 函数代码中使用的变量名称，表示发生更改的文档列表。 |
 |**connectionStringSetting**|**ConnectionStringSetting** | 应用设置的名称，该应用设置包含用于连接到受监视的 Azure Cosmos DB 帐户的连接字符串。 |
 |**databaseName**|**DatabaseName**  | 带有受监视的集合的 Azure Cosmos DB 数据库的名称。 |
 |**collectionName** |**CollectionName** | 受监视的集合的名称。 |

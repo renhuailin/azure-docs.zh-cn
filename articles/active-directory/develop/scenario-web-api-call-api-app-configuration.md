@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/26/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: d1ab7da9753642093505fa91ea76b9327612a6ac
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 5072ae58d3a9412237e70a9bc98970296ce1e1fa
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99582360"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101686574"
 ---
 # <a name="a-web-api-that-calls-web-apis-code-configuration"></a>调用 Web API 的 Web API：代码配置
 
@@ -33,12 +33,12 @@ Microsoft 建议在调用下游 Web API 开发 ASP.NET Core 保护的 API 时，
 
 ## <a name="client-secrets-or-client-certificates"></a>客户端密码或客户端证书
 
-假设你的 web API 现在调用下游 web API，请在 *appsettings.js* 的文件中提供客户端密码或客户端证书。 还可添加一个部分来指定：
+假设你的 web API 现在调用下游 web API，请在 *appsettings.js* 的文件中提供客户端密码或客户端证书。 你还可以添加一个节来指定：
 
 - 下游 Web API 的 URL
 - 调用 API 所需的范围
 
-在下面的示例中，`GraphBeta` 部分指定了这些设置。
+在下面的示例中，`GraphBeta` 节指定了这些设置。
 
 ```JSON
 {
@@ -115,8 +115,8 @@ public class Startup
 
 如果要调用 Microsoft Graph，可通过 Microsoft.Identity.Web 在 API 操作中直接使用 `GraphServiceClient`（由 Microsoft Graph SDK 公开）。 若要公开 Microsoft Graph：
 
-1. 将 [Microsoft.Identity.Web.MicrosoftGraph](https://www.nuget.org/packages/Microsoft.Identity.Web.MicrosoftGraph) NuGet 包添加到项目中。
-1. 在 *Startup.cs* 文件中 `.EnableTokenAcquisitionToCallDownstreamApi()` 的后面添加 `.AddMicrosoftGraph()`。 `.AddMicrosoftGraph()` 具有多个重写。 如果使用将配置部分作为参数的重写，代码会变为：
+1. 将 [Microsoft.Identity.Web.MicrosoftGraph](https://www.nuget.org/packages/Microsoft.Identity.Web.MicrosoftGraph) NuGet 包添加到项目。
+1. 在 Startup.cs 文件的 `.EnableTokenAcquisitionToCallDownstreamApi()` 后面添加 `.AddMicrosoftGraph()`。 `.AddMicrosoftGraph()` 具有多个重写。 使用将配置部分作为参数的重写，代码变为：
 
 ```csharp
 using Microsoft.Identity.Web;
@@ -166,7 +166,7 @@ public class Startup
 
 下图显示 Microsoft.Identity.Web 的各种可能性以及它们对 Startup.cs 文件的影响 ：
 
-:::image type="content" source="media/scenarios/microsoft-identity-web-startup-cs.svg" alt-text="显示 Startup.cs 中的服务配置选项的框图，说明如何调用 Web API 和指定令牌缓存实现":::
+:::image type="content" source="media/scenarios/microsoft-identity-web-startup-cs.svg" alt-text="此框图显示了 Startup.cs 中的服务配置选项，用于调用 Web API 和指定令牌缓存实现":::
 
 > [!NOTE]
 > 若要完全了解此处的代码示例，请熟悉 [ASP.NET Core 基础知识](/aspnet/core/fundamentals)，并特别了解 [依赖关系注入](/aspnet/core/fundamentals/dependency-injection) 和 [选项](/aspnet/core/fundamentals/configuration/options)。
@@ -245,6 +245,8 @@ class MsalAuthHelper {
 代理 (OBO) 流用于获取所需的令牌来调用下游 Web API。 在此流中，Web API 从客户端应用程序接收拥有用户委托权限的持有者令牌，然后用此令牌交换另一个访问令牌来调用下游 Web API。
 
 Python Web API 需要使用一些中间件来验证从客户端接收的持有者令牌。 然后，Web API 可以通过调用 [`acquire_token_on_behalf_of`](https://msal-python.readthedocs.io/en/latest/?badge=latest#msal.ConfidentialClientApplication.acquire_token_on_behalf_of) 方法，使用 MSAL Python 库获取下游 API 的访问令牌。 有关使用此 API 的示例，请参阅 [GitHub 上 microsoft-authentication-library-for-python 的测试代码](https://github.com/AzureAD/microsoft-authentication-library-for-python/blob/1.2.0/tests/test_e2e.py#L429-L472)。 另请参阅在同一存储库中对[问题 53](https://github.com/AzureAD/microsoft-authentication-library-for-python/issues/53) 的讨论，以了解可以避免使用中间层应用程序的方法。
+
+你还可以在 OBO 中看到一个示例，其中显示了 [ms identity-python](https://github.com/Azure-Samples/ms-identity-python-on-behalf-of) 。
 
 ---
 

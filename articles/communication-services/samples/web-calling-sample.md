@@ -9,22 +9,20 @@ ms.author: mariusu
 ms.date: 10/15/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: fbd5d3c4489d124014e0d956359f64a8ec9c568a
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: 5752f20cb433a417a684076338214cd2ea80bc8b
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99592783"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101658091"
 ---
 # <a name="get-started-with-the-web-calling-sample"></a>开始了解 Web 呼叫示例
 
-Web 呼叫示例是一个 Web 应用程序，可分步演练由通信服务 Web 呼叫客户端库提供的各种功能。 
+Web 呼叫示例是一个 Web 应用程序，可分步演练由通信服务 Web 呼叫客户端库提供的各种功能。
 
 此示例是为开发人员构建的，可让你轻松开始使用通信服务。 它的用户界面分为多个部分，每个部分都带有一个“显示代码”按钮，可用于将代码直接从浏览器复制到你自己的通信服务应用程序。
 
 ## <a name="get-started-with-the-web-calling-sample"></a>开始了解 Web 呼叫示例
-
-[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
 > [!IMPORTANT]
 > [Github 上提供了此示例。](https://github.com/Azure-Samples/communication-services-web-calling-tutorial/)
@@ -36,7 +34,7 @@ Web 呼叫示例是一个 Web 应用程序，可分步演练由通信服务 Web 
 
 :::image type="content" source="./media/web-calling-tutorial-page-2.png" alt-text="Web 呼叫教程 2" lightbox="./media/web-calling-tutorial-page-2.png":::
 
-## <a name="user-provisioning-and-sdk-initialization"></a>用户预配和 SDK 初始化 
+## <a name="user-provisioning-and-sdk-initialization"></a>用户预配和 SDK 初始化
 
 单击“预配用户并初始化 SDK”，通过后端令牌预配服务预配的令牌初始化 SDK。 此后端服务位于 `/project/webpack.config.js` 中。
 
@@ -52,7 +50,7 @@ Web 呼叫示例是一个 Web 应用程序，可分步演练由通信服务 Web 
 
 通信服务 Web 呼叫 SDK 支持一对一，一对多和群组通话  。
 
-对于一对一或一对多传出呼叫，可以使用逗号分隔的值指定多个要呼叫的通信服务用户标识。 还可以使用逗号分隔的值来指定要呼叫的传统 (PSTN) 电话号码。 
+对于一对一或一对多传出呼叫，可以使用逗号分隔的值指定多个要呼叫的通信服务用户标识。 还可以使用逗号分隔的值来指定要呼叫的传统 (PSTN) 电话号码。
 
 呼叫 PSTN 电话号码时，请指定备用呼叫方 ID。 单击“拨打电话”按钮以拨打传出呼叫：
 
@@ -80,7 +78,7 @@ Web 呼叫示例是一个 Web 应用程序，可分步演练由通信服务 Web 
 
 ## <a name="next-steps"></a>后续步骤
 
->[!div class="nextstepaction"] 
+>[!div class="nextstepaction"]
 >[从 GitHub 下载示例](https://github.com/Azure-Samples/communication-services-web-calling-tutorial/)
 
 有关详细信息，请参阅以下文章：

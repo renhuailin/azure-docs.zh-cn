@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/21/2019
 ms.author: xpouyat
-ms.openlocfilehash: 8e2217c04f5c39ad93185273d537324f4b56e456
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: f6c43f943bb12e8230772f2d195589ecc4543030
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100099534"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101705307"
 ---
 # <a name="licensing-microsoftreg-smooth-streaming-client-porting-kit"></a>授权 Microsoft&reg; 平滑流式处理客户端移植工具包
 
@@ -46,7 +46,7 @@ Microsoft 平滑流式处理客户端移植工具包（简称 **SSPK**）是经�
   * 可与硬件 A/V 解码器（解码、绘制）交互的编程接口
 * 数字权限管理 (DRM) 接口 
   * 可通过 DRM 抽象层 (DAL) 处理 DRM 的编程接口
-  * Microsoft PlayReady 移植工具包是单独发售的，但可通过此接口集成。 有关 Microsoft PlayReady 设备许可的详细信息，请单击 [此处](https://www.microsoft.com/playready/licensing/device_technology.mspx#pddipdl)。
+  * Microsoft PlayReady 移植工具包是单独发售的，但可通过此接口集成。 [请参阅有关 Microsoft PlayReady 设备许可的更多详细信息](https://www.microsoft.com/playready/licensing/device_technology.mspx#pddipdl)。
 * 实现示例 
   * 适用于 Linux 的 PAL 实现示例
   * 适用于 GStreamer 的 HAL 实现示例
@@ -148,6 +148,7 @@ Microsoft 根据此许可证提供全部所需的知识产权，以便从其他�
 * Shenzhen Skyworth Digital Technology Co., Ltd
 * Sichuan Changhong Electric Co., Ltd.
 * Skardin Industrial Corp.
+* 天空 CP 有限公司
 * Sky Deutschland Fernsehen GmbH & Co. KG
 * SMARDTV GLOBAL SAS
 * SoftAtHome

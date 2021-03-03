@@ -3,16 +3,16 @@ title: 注册 Azure VMware 解决方案资源提供程序
 description: 注册 Azure VMware 解决方案资源提供程序的步骤。
 ms.topic: include
 ms.date: 02/17/2021
-ms.openlocfilehash: 80010a232f80865b20c2e3d953dc1d9d22ece1c6
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: cd4a6f3003945973f0fe5367eb198823595a412e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100653155"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750501"
 ---
 <!-- Used in deploy-azure-vmware-solution.md and tutorial-create-private-cloud.md -->
 
-若要使用 Azure VMware 解决方案，必须首先将资源提供程序注册到你的订阅。 有关资源提供程序的详细信息，请参阅 [Azure 资源提供程序和类型](/azure/azure-resource-manager/management/resource-providers-and-types)。
+若要使用 Azure VMware 解决方案，必须首先将资源提供程序注册到你的订阅。 有关资源提供程序的详细信息，请参阅 [Azure 资源提供程序和类型](../../azure-resource-manager/management/resource-providers-and-types.md)。
 
 ### <a name="azure-cli"></a>Azure CLI 
 

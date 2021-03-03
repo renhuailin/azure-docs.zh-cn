@@ -5,15 +5,15 @@ services: logic-apps
 ms.suite: integration
 author: dereklee
 ms.author: deli
-ms.reviewer: klam, estfan, logicappspm
-ms.date: 01/11/2020
+ms.reviewer: estfan, logicappspm, azla
+ms.date: 02/18/2021
 ms.topic: article
-ms.openlocfilehash: a0c8286b2fb36642723ae28b8bc88e9e49f8a8fb
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: fbe797937021763bb97ca09e1da792d9a7010f9a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100577946"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702498"
 ---
 # <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>在 Azure 逻辑应用中处理错误和异常
 
@@ -32,7 +32,7 @@ ms.locfileid: "100577946"
 | **Default** | 此策略可 *按指数级增长* 间隔发送最多 4 次重试，增幅为 7.5 秒，但范围限定在 5 到 45 秒之间。 |
 | **指数间隔**  | 此策略会等待从指数增长的范围中随机选定的时间间隔，然后再发送下一个请求。 |
 | **固定间隔**  | 此策略会等待指定的时间间隔，然后再发送下一个请求。 |
-| 无   | 不重新发送请求。 |
+| 无  | 不重新发送请求。 |
 |||
 
 要了解重试策略限制，请参阅[逻辑应用限制和配置](../logic-apps/logic-apps-limits-and-config.md#http-limits)。
@@ -43,9 +43,9 @@ ms.locfileid: "100577946"
 
 1. 在逻辑应用设计器中打开逻辑应用。
 
-1. 打开操作或触发器的“设置”  。
+1. 打开操作或触发器的“设置”。
 
-1. 如果操作或触发器支持重试策略，请在“重试策略”下选择所需类型  。
+1. 如果操作或触发器支持重试策略，请在“重试策略”下选择所需类型。
 
 或者，可以在支持重试策略的操作或触发器的 `inputs` 部分指定重试策略。 如果不指定重试策略，该操作将使用默认策略。
 
@@ -69,19 +69,19 @@ ms.locfileid: "100577946"
 
 *必需*
 
-| 值 | 类型 | 说明 |
+| Value | 类型 | 说明 |
 |-------|------|-------------|
-| <*retry-policy-type*> | String | 要使用的重试策略类型：`default`、`none`、`fixed` 或 `exponential` |
-| <*retry-interval*> | String | 其中值必须使用 [ISO 8601 格式](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)的重试时间间隔。 默认的最小时间间隔是 `PT5S`，而最大时间间隔是 `PT1D`。 如果使用指数式时间间隔策略，可更改最小值和最大值。 |
-| <*retry-attempts*> | Integer | 重试尝试次数，它必须介于 1 和 90 之间 |
+| <*重试-策略类型*> | 字符串 | 要使用的重试策略类型：`default`、`none`、`fixed` 或 `exponential` |
+| <*重试间隔*> | 字符串 | 其中值必须使用 [ISO 8601 格式](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)的重试时间间隔。 默认的最小时间间隔是 `PT5S`，而最大时间间隔是 `PT1D`。 如果使用指数式时间间隔策略，可更改最小值和最大值。 |
+| <*重试次数*> | Integer | 重试尝试次数，它必须介于 1 和 90 之间 |
 ||||
 
 *可选*
 
-| 值 | 类型 | 说明 |
+| Value | 类型 | 说明 |
 |-------|------|-------------|
-| <*minimum-interval*> | String | 对于指数式时间间隔策略，是指随机选定的时间间隔的最小时间间隔（采用 [ISO 8601 格式](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)） |
-| <*maximum-interval*> | String | 对于指数式时间间隔策略，是指随机选定的时间间隔的最大时间间隔（采用 [ISO 8601 格式](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)） |
+| <*最小间隔*> | 字符串 | 对于指数式时间间隔策略，是指随机选定的时间间隔的最小时间间隔（采用 [ISO 8601 格式](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)） |
+| <*最大间隔*> | 字符串 | 对于指数式时间间隔策略，是指随机选定的时间间隔的最大时间间隔（采用 [ISO 8601 格式](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)） |
 ||||
 
 下面详细介绍不同的策略类型。
@@ -112,7 +112,7 @@ ms.locfileid: "100577946"
 }
 ```
 
-### <a name="none"></a>无
+### <a name="none"></a>None
 
 要指定操作或触发器不重试失败的请求，请将 <retry-policy-type> 设置为 `none`。
 
@@ -151,48 +151,48 @@ ms.locfileid: "100577946"
 
 | 重试次数 | 最小间隔 | 最大间隔 |
 |--------------|------------------|------------------|
-| 1 | max(0, <minimum-interval>)  | min(interval, <maximum-interval>)  |
-| 2 | max(interval, <minimum-interval>)  | min(2 * interval, <maximum-interval>)  |
-| 3 | max(2 * interval, <minimum-interval>)  | min(4 * interval, <maximum-interval>)  |
-| 4 | max(4 * interval, <minimum-interval>)  | min(8 * interval, <maximum-interval>)  |
+| 1 | 最大 (0，<*最小间隔*>)  | 最小 (间隔，<*最大间隔*>)  |
+| 2 | 最大 (时间间隔，<*最小间隔*>)  | 最小 (2 * 间隔，<*最大间隔*>)  |
+| 3 | 最大 (2 * 时间间隔，<*最小间隔*>)  | 最小 (4 * 时间间隔，<*最大间隔*>)  |
+| 4 | 最大 (4 * 时间间隔，<*最小间隔*>)  | 最小 (8 * 时间间隔，<*最大间隔*>)  |
 | .... | .... | .... |
 ||||
 
 <a name="control-run-after-behavior"></a>
 
-## <a name="catch-and-handle-failures-by-changing-run-after-behavior"></a>通过更改“随后运行”行为来捕获和处理失败
+## <a name="catch-and-handle-failures-by-changing-run-after-behavior"></a>通过更改 "运行后的" 行为来捕获和处理故障
 
-在逻辑应用设计器中添加操作时，需隐式声明用于运行这些操作的顺序。 某个操作完成运行后，该操作将标记为 `Succeeded`、`Failed`、`Skipped` 或 `TimedOut` 等状态。 在每个操作定义中，`runAfter` 属性指定必须先完成的前置操作，以及在后继操作能够运行之前，该前置操作允许的状态。 默认情况下，在设计器中添加的操作只会在前置操作已完成并且状态为 `Succeeded` 之后才运行。
+在逻辑应用设计器中添加操作时，会隐式声明要用于运行这些操作的顺序。 操作完成运行后，该操作会标记为、、或等状态 `Succeeded` `Failed` `Skipped` `TimedOut` 。 在每个操作定义中， `runAfter` 属性指定必须首先完成的前置任务操作以及该前置任务操作可以运行前该前置操作允许的状态。 默认情况下，你在设计器中添加的操作仅在前置任务完成且状态为后运行 `Succeeded` 。
 
-当某个操作引发了未经处理的错误或异常时，该操作将标记为 `Failed`，而任何后继操作将标记为 `Skipped`。 如果具有并行分支的操作发生此行为，逻辑应用引擎将跟踪其他分支来确定其完成状态。 例如，如果某个分支以 `Skipped` 操作结束，该分支的完成状态基于该已跳过操作的前置操作的状态。 逻辑应用运行完成后，引擎将通过评估所有分支的状态来确定整个运行的状态。 如果任一分支失败，整个逻辑应用运行将标记为 `Failed`。
+当某个操作引发未处理的错误或异常时，将标记该操作 `Failed` 并标记任何后续操作 `Skipped` 。 如果对具有并行分支的操作发生此行为，则逻辑应用引擎将遵循其他分支来确定其完成状态。 例如，如果某个分支以 `Skipped` 操作结尾，则该分支的完成状态将基于该跳过的操作的前置状态。 逻辑应用运行完成后，通过评估所有分支状态，引擎确定整个运行的状态。 如果任何分支失败，将标记整个逻辑应用运行 `Failed` 。
 
-![演示如何评估运行状态的示例](./media/logic-apps-exception-handling/status-evaluation-for-parallel-branches.png)
+![显示如何计算运行状态的示例](./media/logic-apps-exception-handling/status-evaluation-for-parallel-branches.png)
 
-为了确保无论前置操作状态如何，某个操作都可运行，请[自定义操作的“随后运行”行为](#customize-run-after)，以处理前置操作的不成功状态。
+若要确保某个操作仍可以运行，而不管其前置状态如何，请 [自定义操作的 "后运行" 行为](#customize-run-after) ，以处理前置任务的不成功状态。
 
 <a name="customize-run-after"></a>
 
-### <a name="customize-run-after-behavior"></a>自定义“随后运行”行为
+### <a name="customize-run-after-behavior"></a>自定义 "运行后运行" 行为
 
-可以自定义某个操作的“随后运行”行为，使该操作在前置操作的状态为 `Succeeded`、`Failed`、`Skipped` 或 `TimedOut` 时均可运行。 例如，若要在 Excel Online `Add_a_row_into_a_table` 前置操作标记为 `Failed`（而不是 `Succeeded`）后发送电子邮件，请遵循以下任一步骤更改“随后运行”行为：
+您可以自定义操作的 "后运行" 行为，以便在前置任务状态为 `Succeeded` 、、 `Failed` `Skipped` 、 `TimedOut` 或任意状态时运行操作。 例如，若要在 Excel Online `Add_a_row_into_a_table` 前置任务操作被标记后发送电子邮件 `Failed` ，而不是 `Succeeded` 按以下任一步骤更改 "运行之后" 行为：
 
-* 在设计视图中，选择省略号 ( **...** ) 按钮，然后选择“配置随后运行”。 
+* 在 "设计" 视图中，选择 "省略号 (**...** ") 按钮，然后选择 " **配置在其后运行**"。
 
-  ![为操作配置“随后运行”行为](./media/logic-apps-exception-handling/configure-run-after-property-setting.png)
+  ![为操作配置 "运行后运行" 行为](./media/logic-apps-exception-handling/configure-run-after-property-setting.png)
 
-  操作形状将显示前置操作所需的默认状态，在本示例中为“在表中插入新行”： 
+  操作形状显示前置操作所需的默认状态，在此示例中，将 **行添加到表** 中：
 
-  ![操作的默认“随后运行”行为](./media/logic-apps-exception-handling/change-run-after-property-status.png)
+  ![操作的默认 "运行之后" 行为](./media/logic-apps-exception-handling/change-run-after-property-status.png)
 
-  将“随后运行”行为更改为所需状态，在本示例中为“失败”： 
+  将 "之后运行" 行为更改为所需的状态，在此示例中 **已失败** ：
 
-  ![将“随后运行”行为更改为“失败”](./media/logic-apps-exception-handling/run-after-property-status-set-to-failed.png)
+  ![将 "在此后运行" 行为更改为 "已失败"](./media/logic-apps-exception-handling/run-after-property-status-set-to-failed.png)
 
-  若要指定无论前置操作是标记为 `Failed`、`Skipped` 还是 `TimedOut`，该操作都会运行，请选择其他状态：
+  若要指定操作是在前置操作被标记为或时 `Failed` 运行 `Skipped` `TimedOut` ，请选择 "其他" 状态：
 
-  ![将“随后运行”行为更改为出现任何其他状态](./media/logic-apps-exception-handling/run-after-property-multiple-statuses.png)
+  ![将 "运行后运行" 行为更改为具有任何其他状态](./media/logic-apps-exception-handling/run-after-property-multiple-statuses.png)
 
-* 在代码视图中的操作 JSON 定义内，遵循以下语法编辑 `runAfter` 属性：
+* 在 "代码" 视图中，在操作的 JSON 定义中，编辑 `runAfter` 属性，该属性遵循以下语法：
 
   ```json
   "<action-name>": {
@@ -208,7 +208,7 @@ ms.locfileid: "100577946"
   }
   ```
 
-  对于本示例，请将 `runAfter` 属性从 `Succeeded` 更改为 `Failed`：
+  对于本示例，请将 `runAfter` 属性从更改 `Succeeded` 为 `Failed` ：
 
   ```json
   "Send_an_email_(V2)": {
@@ -235,7 +235,7 @@ ms.locfileid: "100577946"
   }
   ```
 
-  若要指定无论前置操作是标记为 `Failed`、`Skipped` 还是 `TimedOut`，该操作都会运行，请添加其他状态：
+  若要指定操作是在前置操作被标记为的情况 `Failed` 下运行， `Skipped` 还是要 `TimedOut` 添加其他状态：
 
   ```json
   "runAfter": {
@@ -251,11 +251,11 @@ ms.locfileid: "100577946"
 
 与在使用属性执行单独操作后运行步骤类似 `runAfter` ，你可以将操作组合到一个 [作用域](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md)内。 如果希望以逻辑方式将各个操作组合在一起，可以使用作用域，评估作用域的聚合状态，并基于该状态执行操作。 当某个作用域中的所有操作都完成运行后，该作用域本身也确定了其自己的状态。
 
-若要检查范围的状态，可以使用与用来检查逻辑应用运行状态（例如 `Succeeded`、`Failed` 等等）的条件相同的条件。
+若要检查作用域的状态，可以使用与检查逻辑应用的运行状态（例如、等）相同的条件 `Succeeded` `Failed` 。
 
-默认情况下，当范围的所有操作都成功时，范围的状态将标记为 `Succeeded`。 如果范围内最后一个操作的状态为 `Failed` 或 `Aborted`，则范围的状态将标记为 `Failed`。
+默认情况下，当作用域的所有操作都成功时，作用域的状态将被标记为 `Succeeded` 。 如果作用域中的最后一个操作结果为 `Failed` 或 `Aborted` ，则将对该作用域的状态进行标记 `Failed` 。
 
-若要捕获 `Failed` 范围内的异常并运行用来处理这些错误的操作，可对该 `Failed` 范围使用 `runAfter` 属性。 这样，如果范围内的任何操作失败并且为该范围使用了 `runAfter` 属性，则可以创建单个操作来捕获失败。
+若要在范围中捕获异常 `Failed` 并运行处理这些错误的操作，可以使用 `runAfter` 该范围的属性 `Failed` 。 这样，如果作用域中 *有任何* 操作失败，并且你使用 `runAfter` 该作用域的属性，则可以创建单个操作来捕获失败。
 
 有关作用域的限制，请参阅[限制和配置](../logic-apps/logic-apps-limits-and-config.md)。
 
@@ -263,13 +263,14 @@ ms.locfileid: "100577946"
 
 ### <a name="get-context-and-results-for-failures"></a>获取失败的上下文和结果
 
-尽管从作用域中捕获失败非常有用，但可能还需要借助上下文来确切了解失败的操作以及返回的任何错误或状态代码。
+尽管从作用域中捕获失败非常有用，但可能还需要借助上下文来确切了解失败的操作以及返回的任何错误或状态代码。 [ `result()` 函数](../logic-apps/workflow-definition-language-functions-reference.md#result)通过接受单个参数（作用域的名称）并返回包含来自这些第一级操作的结果的数组，来返回作用域操作中的顶级操作的结果。 这些操作对象包含与函数返回的属性相同的属性 `actions()` ，例如操作的开始时间、结束时间、状态、输入、相关 id 和输出。 
 
-[`result()`](../logic-apps/workflow-definition-language-functions-reference.md#result) 函数提供了有关作用域中所有操作的结果的上下文。 `result()` 函数接受单个参数（即作用域的名称），并返回一个数组，其中包含该作用域中的所有操作结果。 这些操作对象包括与 `actions()` 对象相同的属性，例如操作的开始时间、结束时间、状态、输入、相关 ID 和输出。 若要发送作用域内失败的任何操作的上下文，可以轻松将 `@result()` 表达式与 `runAfter` 属性配对。
+> [!NOTE]
+> `result()`函数 *仅* 返回第一级操作的结果，而不从更深的嵌套操作（如 switch 或 condition 操作）返回结果。
 
-若要为范围中具有 `Failed` 结果的每个操作运行操作，并将结果数组筛选到失败的操作，可将 `@result()` 表达式与 [**筛选器数组**](logic-apps-perform-data-operations.md#filter-array-action)操作和 [**For each**](../logic-apps/logic-apps-control-flow-loops.md) 循环配对。 可以采用筛选的结果数组并使用 `For_each` 循环对每个失败执行操作。
+若要获取作用域中失败操作的上下文，可以使用 `@result()` 具有作用域的名称和属性的表达式 `runAfter` 。 若要将返回的数组筛选为具有状态的操作 `Failed` ，可以添加 [**筛选器数组** 操作](logic-apps-perform-data-operations.md#filter-array-action)。 若要为返回的失败操作运行操作，请获取返回的筛选数组，并 [**对每个** 循环](../logic-apps/logic-apps-control-flow-loops.md)使用。
 
-以下示例（后附详细说明）发送一个 HTTP POST 请求，其中包含范围内“My_Scope”中失败的任何操作的响应正文：
+下面是一个示例，接下来是一个详细说明，它使用 "My_Scope" 作用域操作中失败的任何操作的响应正文发送 HTTP POST 请求：
 
 ```json
 "Filter_array": {

@@ -5,12 +5,12 @@ ms.date: 06/10/2019
 ms.topic: conceptual
 hide_comments: true
 hideEdit: true
-ms.openlocfilehash: 0eedd5ce67e96c9d732cf24cbe56a8c3c5e92aaa
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: aec26c0109b4aa8e0819e7f5e9b3c69db7f74648
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880485"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726897"
 ---
 # <a name="service-fabric-releases"></a>Service Fabric 版本
 
@@ -44,10 +44,11 @@ ms.locfileid: "98880485"
 | 发布日期 | 发布 | 更多信息 |
 |---|---|---|
 | 2020 年 10 月 21 日 | [Azure Service Fabric 7.2](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-7-2-release/ba-p/1805653)  | [发行说明](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-72-releasenotes.md)|
-| 2020年11月9日 | [Azure Service Fabric 7.2 秒刷新版本](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-7-2-second-refresh-release/ba-p/1874738) | [发行说明](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-72CU2-releasenotes.md) |
+| 2020 年 11 月 9 日 | [Azure Service Fabric 7.2 第二次刷新版本](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-7-2-second-refresh-release/ba-p/1874738) | [发行说明](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-72CU2-releasenotes.md) |
 | 2020 年 11 月 10 日  | Azure Service Fabric 7.2 第三次刷新版本 | [发行说明](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-72CU3-releasenotes.md) |
-| 2020年12月2日 | [Azure Service Fabric 7.2 四次刷新版本](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-7-2-fourth-refresh-release/ba-p/1950584) | [发行说明](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-72CU4.md)
+| 2020 年 12 月 2 日 | [Azure Service Fabric 7.2 第四次刷新版本](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-7-2-fourth-refresh-release/ba-p/1950584) | [发行说明](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-72CU4.md)
 | 2021年1月25日 | [Azure Service Fabric 7.2 第5次刷新版本](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-7-2-fifth-refresh-release/ba-p/2096575) | [发行说明](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-72CU5-ReleaseNotes.md)
+| 2021年2月17日 | [Azure Service Fabric 7.2 第六次刷新版本](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-sixth-refresh-release/ba-p/2144685) | [发行说明](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-72CU6-ReleaseNotes.md)
 
 ## <a name="previous-versions"></a>旧版
 
@@ -84,7 +85,7 @@ ms.locfileid: "98880485"
 - [**为服务运行至完成/运行一次**](./run-to-completion.md)**
 
 #### <a name="image-store-improvements"></a>映像存储改进
- - Service Fabric 7.1 使用可默认保护节点之间的文件传输的自定义传输。 版本 7.1 中移除了对 SMB 文件共享的依赖。 受保护的 SMB 文件共享仍然存在于包含客户选择映像存储服务副本的节点上，以便选择退出默认值和升级并降级到旧版本。
+ - Service Fabric 7.1 使用可默认保护节点之间的文件传输的自定义传输。 版本 7.1 中移除了对 SMB 文件共享的依赖。 受保护的 SMB 文件共享仍存在于包含映像存储服务副本的节点上，允许客户选择退出默认设置、进行升级以及降级到旧版本。
        
  #### <a name="reliable-collections-improvements"></a>Reliable Collections 改进
 
@@ -104,7 +105,7 @@ ms.locfileid: "98880485"
 | 2020 年 8 月 12 日 | [Microsoft Azure Service Fabric 7.1 第三次刷新](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-7-1-third-refresh-release/ba-p/1587586) | [发行说明](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-71CU3-releasenotes.md)
 | 2020 年 9 月 10 日 | [Microsoft Azure Service Fabric 7.1 第四次刷新](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-7-1-fourth-refresh-release/ba-p/1653859)  | [发行说明](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-71CU5-releasenotes.md)|
 | 2020 年 10 月 7 日 | Microsoft Azure Service Fabric 7.1 第六个刷新 | [发行说明](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-71CU6-releasenotes.md)|
-| 2020年11月23日 | Microsoft Azure Service Fabric 7.1 第8个刷新 | [发行说明](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-71CU8-releasenotes.md)|
+| 2020 年 11 月 23 日 | Microsoft Azure Service Fabric 7.1 第8个刷新 | [发行说明](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-71CU8-releasenotes.md)|
 
 
 ### <a name="service-fabric-70"></a>Service Fabric 7.0
@@ -140,8 +141,8 @@ Azure Service Fabric 7.0 现已推出！ 你可以通过 Azure 门户或 Azure �
 | 2020 年 1 月 30 日 | [Azure Service Fabric 7.0 刷新版本](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-7-0-second-refresh-release/ba-p/1137690)  | [发行说明](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-70CU2-releasenotes.md)|
 | 2020 年 2 月 6 日 | [Azure Service Fabric 7.0 刷新版本](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-7-0-third-refresh-release/ba-p/1156508)  | [发行说明](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-70CU3-releasenotes.md)|
 | 2020 年 3 月 2 日 | [Azure Service Fabric 7.0 刷新版本](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-7-0-fourth-refresh-release/ba-p/1205414)  | [发行说明](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-70CU4-releasenotes.md)
-| 5月6日，2020 | [Azure Service Fabric 7.0 第六次刷新版本](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-7-0-sixth-refresh-release/ba-p/1365709) | [发行说明](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-70CU6-releasenotes.md)|
-| 2020年10月9日 | Azure Service Fabric 7.0 第九次刷新版本 | [发行说明](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-70CU9-releasenotes.md)|
+| 2020 年 5 月 6 日 | [Azure Service Fabric 7.0 第六次刷新版本](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-7-0-sixth-refresh-release/ba-p/1365709) | [发行说明](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-70CU6-releasenotes.md)|
+| 2020 年 10 月 9 日 | Azure Service Fabric 7.0 第九次刷新版本 | [发行说明](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-70CU9-releasenotes.md)|
 
 ### <a name="service-fabric-65"></a>Service Fabric 6.5
 

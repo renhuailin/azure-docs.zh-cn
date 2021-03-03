@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 77d4a1cad4843578419be54465a06e87834dd186
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: 90d526a58f4223fc70be5414ce5722238ce2c735
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100104512"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733425"
 ---
 # <a name="best-practices-of-a-qna-maker-knowledge-base"></a>QnA Maker 知识库的最佳做法
 
@@ -18,7 +18,7 @@ ms.locfileid: "100104512"
 
 ## <a name="extraction"></a>提取
 
-QnA Maker 服务持续改进着从内容提取 QnA 的算法，并扩展支持的文件和 HTML 格式的列表。 按[指南](../index.yml)操作，根据文档类型进行数据提取。
+QnA Maker 服务持续改进着从内容提取 QnA 的算法，并扩展支持的文件和 HTML 格式的列表。 按[指南](../Concepts/data-sources-and-content.md)操作，根据文档类型进行数据提取。
 
 一般情况下，常见问题解答页面应单独存在，且不会与其他信息合并。 产品手册应该具备明确的标题，并且最好有一个索引页。
 

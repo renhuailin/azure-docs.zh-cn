@@ -1,19 +1,19 @@
 ---
-title: 使用工作簿创建用于 VM 的 Azure Monitor 的交互式报表
-description: 使用用于 VM 的 Azure Monitor 的预定义和自定义参数化工作簿简化复杂的报告。
+title: 创建交互式报表 VM insights 与工作簿
+description: 利用 VM insights 的预定义和自定义参数化工作簿，简化复杂报表。
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
-ms.openlocfilehash: 43cdb9de111bdea5486e49a56d58d38279b685c7
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 1e2f6c7a6b4a36eb1aa4230f62ee4b0c2a1c57c3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100608629"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731283"
 ---
-# <a name="create-interactive-reports-azure-monitor-for-vms-with-workbooks"></a>使用工作簿创建用于 VM 的 Azure Monitor 的交互式报表
+# <a name="create-interactive-reports-vm-insights-with-workbooks"></a>创建交互式报表 VM insights 与工作簿
 
 工作簿可将文本、 [日志查询](/azure/data-explorer/kusto/query/)、指标和参数合并到丰富的交互式报告中。 有权访问相同 Azure 资源的其他团队成员都可编辑工作簿。
 
@@ -24,7 +24,7 @@ ms.locfileid: "100608629"
 * 与团队的其他成员分享调整 VM 试验规模的结果。 可以用文本解释试验的目标，然后展示用于评估试验的每个使用情况指标和 Analytics 查询，以及说明每个指标是否高于或低于目标的标注。
 * 结合数据、文本说明和后续步骤讨论，报告故障对 VM 使用的影响，从而防止未来发生故障。
 
-下表总结了用于 VM 的 Azure Monitor 包括的工作簿的工作簿。
+下表总结了 VM insights 包含的工作簿以帮助你入门。
 
 | 工作簿 | 说明 | 作用域 |
 |----------|-------------|-------|
@@ -96,7 +96,7 @@ ms.locfileid: "100608629"
 
 此外，不仅限于在通过工作簿启动的虚拟机的上下文中进行查询。 可以跨多个虚拟机以及 Log Analytics 工作区查询，前提是你对这些资源拥有访问权限。
 
-使用 **工作区** 标识符包含其他 Log Analytics 工作区或特定 Application Insights 应用中的数据。 若要了解有关跨资源查询的详细信息，请参阅 [官方指导](../log-query/cross-workspace-query.md)。
+使用 **工作区** 标识符包含其他 Log Analytics 工作区或特定 Application Insights 应用中的数据。 若要了解有关跨资源查询的详细信息，请参阅 [官方指导](../logs/cross-workspace-query.md)。
 
 ### <a name="advanced-analytic-query-settings"></a>高级分析查询设置
 
@@ -137,7 +137,7 @@ VMConnection
 
 ## <a name="adding-metrics-sections"></a>添加指标部分
 
-指标部分提供完全访问权限，以将 Azure Monitor 指标数据纳入交互式报表。 在用于 VM 的 Azure Monitor 中，预生成的工作簿通常包含分析查询数据而不是指标数据。  可以选择创建包含指标数据的工作簿，以便在一个位置充分利用这两项功能。 此外，还能够从任何有权访问的订阅中的资源中提取指标数据。
+指标部分提供完全访问权限，以将 Azure Monitor 指标数据纳入交互式报表。 在 VM insights 中，预生成的工作簿通常包含分析查询数据，而不包含度量值数据。  可以选择创建包含指标数据的工作簿，以便在一个位置充分利用这两项功能。 此外，还能够从任何有权访问的订阅中的资源中提取指标数据。
 
 下例是关于被拉取到工作簿中以提供 CPU 性能的网格可视化效果的虚拟机数据：
 
@@ -155,7 +155,7 @@ VMConnection
 
 |                  |      |
 | ---------------- |:-----|
-| **Text**    | 允许用户编辑文本框，你可以选择提供一个查询用于填充默认值。 |
+| **文本**    | 允许用户编辑文本框，你可以选择提供一个查询用于填充默认值。 |
 | **下拉列表** | 允许用户从一组值中进行选择。 |
 | **时间范围选择器**| 允许用户从一组预定义的时间范围值中选择，或者从自定义时间范围内选择。|
 | **资源选取器** | 允许用户从为工作簿所选资源中选择。|
@@ -244,4 +244,4 @@ Perf
 
 - 若要了解限制和 VM 总体性能，请参阅[查看 Azure VM 性能](vminsights-performance.md)。
 
-- 若要了解已发现的应用程序依赖项，请参阅[查看用于 VM 的 Azure Monitor 映射](vminsights-maps.md)。
+- 若要了解已发现的应用程序依赖关系，请参阅 [查看 VM 见解 Map](vminsights-maps.md)。

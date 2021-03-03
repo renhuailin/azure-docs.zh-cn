@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 07/14/2020
 ms.author: v-demjoh
 ms.custom: devx-track-js
-ms.openlocfilehash: 25a3613f2aa45d31f47a8a4f288abbb1e9ee78fa
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 305536b8af9888e5fe3965cabd05f48ad4e93086
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98947347"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750037"
 ---
 语音服务的核心功能之一是能够识别人类语音并将其翻译成其他语言。 本快速入门介绍如何在应用和产品中使用语音 SDK 来执行高质量的语音翻译。 此快速入门介绍以下主题：
 
@@ -20,7 +20,7 @@ ms.locfileid: "98947347"
 
 ## <a name="skip-to-samples-on-github"></a>跳转到 GitHub 上的示例
 
-如果要直接跳到示例代码，请参阅 GitHub 上的 [JavaScript 快速入门示例](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript/node)。
+如果要直接跳到示例代码，请参阅 GitHub 上的 [JavaScript 快速入门示例](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript/browser/translate-speech-to-text)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -77,7 +77,7 @@ const sdk = require("microsoft-cognitiveservices-speech-sdk");
 * 使用主机：传入主机地址。 密钥或授权令牌是可选的。
 * 使用授权令牌：传入授权令牌和关联的区域。
 
-让我们看看如何使用密钥和区域创建 [`SpeechTranslationConfig`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechtranslationconfig)。 按照[免费试用语音服务](../../../overview.md#try-the-speech-service-for-free)中的以下步骤获取这些凭据。
+让我们看看如何使用密钥和区域创建 [`SpeechTranslationConfig`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechtranslationconfig)。 按照[免费试用语音服务](../../../overview.md#try-the-speech-service-for-free)中的步骤获取这些凭据。
 
 ```javascript
 const speechTranslationConfig = SpeechTranslationConfig.fromSubscription("YourSubscriptionKey", "YourServiceRegion");

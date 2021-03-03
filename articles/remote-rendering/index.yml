@@ -1,6 +1,6 @@
 ### YamlMime:Landing
 title: “Azure 远程渲染”文档
-summary: Azure 远程渲染 (ARR) 是一项服务，可用于在 HoloLens 2 等设备上实时渲染高度复杂的 3D 模型。 ARR 目前以公共预览版提供。
+summary: Azure 远程渲染 (ARR) 是一项服务，可用于在 HoloLens 2 等设备上实时渲染高度复杂的 3D 模型。
 metadata:
   title: “Azure 远程渲染”文档
   description: 了解如何使用 Azure 远程渲染 (ARR) 服务在 HoloLens 2 等设备上实时远程渲染高度复杂的 3D 模型并显示结果。
@@ -9,12 +9,12 @@ metadata:
   author: florianborn71
   ms.author: flborn
   ms.date: 03/26/2020
-  ms.openlocfilehash: e740fd08dc3e616b0768c6c15fd4191cb58e261a
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: c60dfe8febb76936a41be48e5e8749be7a0ef3e7
+  ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "85565421"
+  ms.lasthandoff: 03/03/2021
+  ms.locfileid: "101732694"
 landingContent:
 - title: 关于 Azure 远程渲染
   linkLists:

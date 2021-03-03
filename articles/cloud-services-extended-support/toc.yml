@@ -19,7 +19,7 @@
     - name: 部署云服务 - SDK
       href: deploy-sdk.md
     - name: 部署云服务 - Visual Studio
-      href: 'https://docs.microsoft.com/visualstudio/azure/cloud-services-extended-support?context=/azure/cloud-services-extended-support/context/context'
+      href: /visualstudio/azure/cloud-services-extended-support?context=%2fazure%2fcloud-services-extended-support%2fcontext%2fcontext
   expanded: true
 - name: 概念
   items:
@@ -75,20 +75,20 @@
       href: sample-get-cloud-service.md
     - name: 重置云服务
       href: sample-reset-cloud-service.md
-- name: 引用
+- name: 参考
   items:
     - name: 部署文件示例
       href: 'https://github.com/Azure-Samples/cloud-services-extended-support'
     - name: Az.CloudService 模块
       href: 'https://www.powershellgallery.com/packages/Az.CloudService/0.1.0'
     - name: PowerShell cmdlet
-      href: 'https://docs.microsoft.com/powershell/module/az.cloudservice/?view=azps-5.4.0#cloudservice'
+      href: /powershell/module/az.cloudservice/?view=azps-5.4.0#cloudservice
     - name: ARM 模板参考
-      href: 'https://docs.microsoft.com/azure/templates/microsoft.compute/cloudservices'
+      href: /azure/templates/microsoft.compute/cloudservices
     - name: REST
-      href: 'https://docs.microsoft.com/rest/api/compute/cloudservices'
+      href: /rest/api/compute/cloudservices
     - name: .NET
-      href: 'https://docs.microsoft.com/dotnet/api/overview/azure/virtualmachines/management?view=azure-dotnet-preview'
+      href: /dotnet/api/overview/azure/virtualmachines/management?view=azure-dotnet-preview
     - name: SDK 中 IsInRole 中的声明
       href: 'https://www.nuget.org/packages/Microsoft.Azure.Management.Compute/43.0.0-preview'
 - name: 资源
@@ -98,7 +98,7 @@
     - name: 学习路径
       href: /learn/paths/azure-fundamentals/
     - name: Microsoft 问答
-      href: 'https://docs.microsoft.com/answers/topics/azure-cloud-services.html'
+      href: /answers/topics/azure-cloud-services.html
     - name: 定价
       href: 'https://azure.microsoft.com/pricing/details/cloud-services/'
     - name: 定价计算器

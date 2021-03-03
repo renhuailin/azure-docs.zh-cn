@@ -3,12 +3,12 @@ title: 跨租户管理体验
 description: Azure 委派资源管理可实现跨租户管理体验。
 ms.date: 02/08/2021
 ms.topic: conceptual
-ms.openlocfilehash: 97b28409a7f180ffbf4f8766ee281710d6226019
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 644cac70ef6459a1b0be45e9ab8f2757fafddeed
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100573083"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699243"
 ---
 # <a name="cross-tenant-management-experiences"></a>跨租户管理体验
 
@@ -97,8 +97,8 @@ Azure PowerShell [AzSubscription cmdlet](/powershell/module/Az.Accounts/Get-AzSu
 
 - 查看委派的订阅的警报，能够查看和刷新所有订阅中的警报
 - 查看委派订阅的活动日志详细信息
-- [Log analytics](../../azure-monitor/platform/service-providers.md)：从多个租户中的远程工作区查询数据 (请注意，必须在同一租户中创建用于访问客户租户中工作区数据的自动化帐户) 
-- [创建、查看和管理](../../azure-monitor/platform/alerts-activity-log.md) 客户租户中的活动日志警报
+- [Log analytics](../../azure-monitor/logs/service-providers.md)：从多个租户中的远程工作区查询数据 (请注意，必须在同一租户中创建用于访问客户租户中工作区数据的自动化帐户) 
+- [创建、查看和管理](../../azure-monitor/alerts/alerts-activity-log.md) 客户租户中的活动日志警报
 - 在通过 webhook 管理租户中触发自动化的客户租户（如 Azure 自动化 runbook 或 Azure Functions）中创建警报
 - 在客户租户中创建 [诊断设置](../..//azure-monitor/essentials/diagnostic-settings.md) ，以将资源日志发送到管理租户中的工作区
 - 对于 SAP 工作负荷，请 [使用跨客户租户的聚合视图监视 Sap 解决方案指标](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/using-azure-lighthouse-and-azure-monitor-for-sap-solutions-to/ba-p/1537293)

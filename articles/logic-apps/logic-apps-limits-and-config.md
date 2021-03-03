@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
-ms.date: 02/05/2021
-ms.openlocfilehash: 19c7d37d62ec54e57127f5993e8bae4d4e9a2908
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 02/18/2021
+ms.openlocfilehash: b80c5cb469f881ee0950d618c3bae5fa1fc1e026
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100388526"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699039"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure 逻辑应用的限制和配置信息
 
@@ -23,12 +23,12 @@ ms.locfileid: "100388526"
 
 下面是针对单个逻辑应用定义的限制：
 
-| 名称 | 限制 | 注释 |
+| 名称 | 限制 | 说明 |
 | ---- | ----- | ----- |
 | 每个工作流的操作数 | 500 | 要对此限制进行扩展，可根据需要添加嵌套工作流。 |
 | 操作的允许嵌套深度 | 8 | 要对此限制进行扩展，可根据需要添加嵌套工作流。 |
 | 每个订阅每个区域的工作流数 | 1,000 | |
-| 每个工作流的触发数 | 10 个 | 在代码视图中工作时，而不是在设计器中工作时 |
+| 每个工作流的触发数 | 10 | 在代码视图中工作时，而不是在设计器中工作时 |
 | Switch 作用域事例限制 | 25 | |
 | 每个工作流的变量数 | 250 | |
 | `action` 或 `trigger` 的名称 | 80 个字符 | |
@@ -139,7 +139,7 @@ ms.locfileid: "100388526"
 
 | 名称 | 限制 | 说明 |
 | ---- | ----- | ----- |
-| 操作：每 5 分钟执行的次数 | 默认限制为 100,000，最大限制为 300,000。 | 若要将此默认限制增加到逻辑应用的最大值，请参阅处于预览阶段的[在高吞吐量模式下运行](#run-high-throughput-mode)。 也可根据需要[在多个逻辑应用之间分配工作负载](../logic-apps/handle-throttling-problems-429-errors.md#logic-app-throttling)。 |
+| 操作：每5分钟滚动时间间隔执行 | -100000 执行 (默认值)  <p><p>-300000 在高吞吐量模式下执行 (最大)   | 若要将默认限制提高到逻辑应用的最大限制，请参阅在 [高吞吐量模式下运行](#run-high-throughput-mode)，该模式处于预览状态。 也可根据需要[在多个逻辑应用之间分配工作负载](../logic-apps/handle-throttling-problems-429-errors.md#logic-app-throttling)。 |
 | 操作：并发出站调用 | ~2,500 | 你可减少并发请求数，或根据需要减少持续时间。 |
 | 运行时终结点：并发入站调用 | ~1,000 | 你可减少并发请求数，或根据需要减少持续时间。 |
 | 运行时终结点：每 5 分钟读取调用  | 60,000 | 此限制适用于从逻辑应用的运行历史记录获取原始输入和输出的调用。 可根据需要在多个应用中分发工作负荷。 |
@@ -151,7 +151,7 @@ ms.locfileid: "100388526"
 
 #### <a name="run-in-high-throughput-mode"></a>在高吞吐量模式下运行
 
-对于单个逻辑应用定义，每 5 分钟执行的操作数具有[默认限制](../logic-apps/logic-apps-limits-and-config.md#throughput-limits)。 若要将此默认限制增加到逻辑应用的最大值，可以启用高吞吐量模式（目前处于预览阶段）。 也可根据需要[在多个逻辑应用之间分配工作负载](../logic-apps/handle-throttling-problems-429-errors.md#logic-app-throttling)。
+对于单个逻辑应用定义，每 5 分钟执行的操作数具有[默认限制](../logic-apps/logic-apps-limits-and-config.md#throughput-limits)。 若要将默认限制提高到逻辑应用的 [最大限制](../logic-apps/logic-apps-limits-and-config.md#throughput-limits) （默认限制为三倍），可以启用高吞吐量模式（处于预览状态）。 也可根据需要[在多个逻辑应用之间分配工作负载](../logic-apps/handle-throttling-problems-429-errors.md#logic-app-throttling)。
 
 1. 在 Azure 门户的逻辑应用的菜单中，在“设置”下，选择“工作流设置” 。
 

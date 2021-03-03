@@ -4,12 +4,12 @@ description: 使用 Azure CLI 创建和管理 Azure 区块链服务的区块链�
 ms.date: 03/30/2020
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: f067f4413f6ad8541cd36a7581f9243bed4e195f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 867a51b60afa56005bbb297b345f8a9260160ab8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87023732"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101722630"
 ---
 # <a name="configure-blockchain-data-manager-using-azure-cli"></a>使用 Azure CLI 配置区块链数据管理器
 
@@ -23,11 +23,11 @@ ms.locfileid: "87023732"
 * 添加区块链应用程序
 * 启动实例
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * 安装最新的 [Azure CLI](/cli/azure/install-azure-cli) 并使用登录 `az login` 。
 * 完成 [快速入门：使用 Visual Studio Code 连接到 Azure 区块链 Service 联合会网络](connect-vscode.md)。 使用区块链数据管理器时，建议使用 Azure 区块链服务 *标准* 层。
-* 创建 [事件网格主题](../../event-grid/custom-event-quickstart-portal.md#create-a-custom-topic)
+* 创建[事件网格主题](../../event-grid/custom-event-quickstart-portal.md#create-a-custom-topic)
 * 了解 [Azure 事件网格中的事件处理程序](../../event-grid/event-handlers.md)
 
 ## <a name="launch-azure-cloud-shell"></a>启动 Azure Cloud Shell
@@ -63,7 +63,7 @@ az resource create \
 |-----------|-------------|
 | resource-group | 要在其中创建区块链数据管理器实例的资源组名称。 |
 | name | 区块链数据管理器实例的名称。 |
-| 资源类型 | 区块链数据管理器实例的资源类型是 **区块链/观察**程序。 |
+| 资源类型 | 区块链数据管理器实例的资源类型是 **区块链/观察** 程序。 |
 | is-full-object | 指示属性包含观察程序资源的选项。 |
 | properties | JSON 格式的字符串，其中包含观察程序资源的属性。 可以作为字符串或文件传递。  |
 
@@ -73,9 +73,9 @@ az resource create \
 
 ``` json
 {
-    "location": "eastus",
-    "properties": {
-    }
+    "location": "eastus",
+    "properties": {
+    }
 }
 ```
 
@@ -125,7 +125,7 @@ az resource create \
 |-----------|-------------|
 | resource-group | 要在其中创建输入资源的资源组名称。 |
 | name | 输入的名称。 |
-| 命名空间 | 使用 **区块链** 提供程序命名空间。 |
+| namespace | 使用 **区块链** 提供程序命名空间。 |
 | 资源类型 | 区块链数据管理器输入的资源类型为 **输入**。 |
 | 父级 (parent) | 与输入关联的观察程序的路径。 例如， **观察程序/mywatcher**。 |
 | is-full-object | 指示属性包含用于输入资源的选项。 |
@@ -137,11 +137,11 @@ az resource create \
 
 ``` json
 {
-    "location": "eastus",
-    "properties": {
-        "inputType": "Ethereum",
-        "dataSource": {
-            "resourceId": "/subscriptions/<Subscription ID>/resourceGroups/<Resource group>/providers/Microsoft.Blockchain/blockchainMembers/<Blockchain member>/transactionNodes/transaction-node"
+    "location": "eastus",
+    "properties": {
+        "inputType": "Ethereum",
+        "dataSource": {
+            "resourceId": "/subscriptions/<Subscription ID>/resourceGroups/<Resource group>/providers/Microsoft.Blockchain/blockchainMembers/<Blockchain member>/transactionNodes/transaction-node"
         }
     }
 }
@@ -153,7 +153,7 @@ az resource create \
 | #a2 | Azure 区块链服务成员的分类帐类型。 目前支持 **以太坊** 。 |
 | ResourceId | 输入连接到的事务节点。 将 \<Subscription ID\> 、 \<Resource group\> 和替换 \<Blockchain member\> 为事务节点资源的值。 输入连接到 Azure 区块链服务成员的默认事务节点。 |
 
-使用用于配置的 JSON 字符串为*mywatcher*创建名为*myInput*的输入。
+使用用于配置的 JSON 字符串为 *mywatcher* 创建名为 *myInput* 的输入。
 
 ``` azurecli-interactive
 az resource create \
@@ -166,7 +166,7 @@ az resource create \
                    --properties '{"location":"eastus", "properties":{"inputType":"Ethereum","dataSource":{"resourceId":"/subscriptions/<Subscription ID>/resourceGroups/<Resource group>/providers/Microsoft.Blockchain/BlockchainMembers/<Blockchain member>/transactionNodes/transaction-node"}}}'
 ```
 
-使用 JSON 配置文件为*mywatcher*创建名为*myInput*的输入。
+使用 JSON 配置文件为 *mywatcher* 创建名为 *myInput* 的输入。
 
 ``` azurecli
 az resource create \
@@ -197,7 +197,7 @@ az resource create \
 |-----------|-------------|
 | resource-group | 要在其中创建输出资源的资源组名称。 |
 | name | 输出的名称。 |
-| 命名空间 | 使用 **区块链** 提供程序命名空间。 |
+| namespace | 使用 **区块链** 提供程序命名空间。 |
 | 资源类型 | 区块链数据管理器输出的资源类型为 **输出**。 |
 | 父级 (parent) | 与输出关联的观察程序的路径。 例如， **观察程序/mywatcher**。 |
 | is-full-object | 指示属性包含用于输出资源的选项。 |
@@ -209,11 +209,11 @@ az resource create \
 
 ``` json
 {
-    "location": "eastus",
-    "properties": {
-        "outputType": "EventGrid",
-        "dataSource": {
-            "resourceId": "/subscriptions/<Subscription ID>/resourceGroups/<Resource group>/providers/Microsoft.EventGrid/topics/<event grid topic>"
+    "location": "eastus",
+    "properties": {
+        "outputType": "EventGrid",
+        "dataSource": {
+            "resourceId": "/subscriptions/<Subscription ID>/resourceGroups/<Resource group>/providers/Microsoft.EventGrid/topics/<event grid topic>"
         }
     }
 }
@@ -238,7 +238,7 @@ az resource create \
                    --properties '{"location":"eastus","properties":{"outputType":"EventGrid","dataSource":{"resourceId":"/subscriptions/<Subscription ID>/resourceGroups/<Resource group>/providers/Microsoft.EventGrid/topics/<event grid topic>"}}}'
 ```
 
-使用 JSON 配置文件为*mywatcher*创建连接到事件网格主题的名为*myoutput*的输出。
+使用 JSON 配置文件为 *mywatcher* 创建连接到事件网格主题的名为 *myoutput* 的输出。
 
 ``` azurecli
 az resource create \
@@ -274,7 +274,7 @@ az resource create \
 |-----------|-------------|
 | resource-group | 要在其中创建应用程序资源的资源组名称。 |
 | name | 应用程序的名称。 |
-| 命名空间 | 使用 **区块链** 提供程序命名空间。 |
+| namespace | 使用 **区块链** 提供程序命名空间。 |
 | 资源类型 | 区块链数据管理器应用程序的资源类型是 **项目**。 |
 | 父级 (parent) | 与应用程序关联的观察程序的路径。 例如， **观察程序/mywatcher**。 |
 | is-full-object | 指示属性包含应用程序资源的选项。 |
@@ -286,9 +286,9 @@ az resource create \
 
 ``` json
 {
-    "location": "eastus",
-    "properties": {
-        "artifactType": "EthereumSmartContract",
+    "location": "eastus",
+    "properties": {
+        "artifactType": "EthereumSmartContract",
         "content": {
             "abiFileUrl": "<ABI URL>",
             "bytecodeFileUrl": "<Bytecode URL>",
@@ -309,7 +309,7 @@ az resource create \
 | bytecodeFileUrl | 已部署的智能协定字节码 JSON 文件的 URL。 若要详细了解如何获取智能协定部署的字节码和创建 URL，请参阅 [获取协定 abi 和字节码](data-manager-portal.md#get-contract-abi-and-bytecode) ，并 [创建协定 abi 和字节码 URL](data-manager-portal.md#create-contract-abi-and-bytecode-url)。 注意：区块链数据管理器需要 **部署的字节码**。 |
 | queryTargetTypes | 已发布消息类型。 指定 **ContractProperties** 将发布 *ContractPropertiesMsg* 消息类型。 指定 **ContractEvents** 将发布 *DecodedContractEventsMsg* 消息类型。 注意：始终发布 *RawBlockAndTransactionMsg* 和 *RawTransactionContractCreationMsg* 消息类型。 |
 
-为*mywatcher*创建一个名为*myApplication*的应用程序，该应用程序监视 JSON 字符串定义的智能协定。
+为 *mywatcher* 创建一个名为 *myApplication* 的应用程序，该应用程序监视 JSON 字符串定义的智能协定。
 
 ``` azurecli-interactive
 az resource create \
@@ -322,7 +322,7 @@ az resource create \
                    --properties '{"location":"eastus","properties":{"artifactType":"EthereumSmartContract","content":{"abiFileUrl":"<ABI URL>","bytecodeFileUrl":"<Bytecode URL>","queryTargetTypes":["ContractProperties","ContractEvents"]}}}'
 ```
 
-为*mywatcher*创建一个名为*myApplication*的应用程序，该应用程序监视使用 JSON 配置文件定义的智能协定。
+为 *mywatcher* 创建一个名为 *myApplication* 的应用程序，该应用程序监视使用 JSON 配置文件定义的智能协定。
 
 ``` azurecli
 az resource create \
@@ -352,7 +352,7 @@ az resource invoke-action \
 
 ### <a name="start-instance-example"></a>启动实例示例
 
-启动名为 *mywatcher*的区块链数据管理器实例。
+启动名为 *mywatcher* 的区块链数据管理器实例。
 
 ``` azurecli-interactive
 az resource invoke-action \
@@ -377,7 +377,7 @@ az resource invoke-action \
 
 ### <a name="stop-watcher-example"></a>停止观察程序示例
 
-停止名为 *mywatcher*的实例。
+停止名为 *mywatcher* 的实例。
 
 ``` azurecli-interactive
 az resource invoke-action \
@@ -400,11 +400,11 @@ az resource delete \
 |-----------|-------------|
 | resource-group | 要删除的观察程序的资源组名称。 |
 | name | 要删除的观察程序的名称。 |
-| 资源类型 | 区块链数据管理器观察程序的资源类型是 **区块链/观察**程序。 |
+| 资源类型 | 区块链数据管理器观察程序的资源类型是 **区块链/观察** 程序。 |
 
 ### <a name="delete-instance-example"></a>删除实例示例
 
-在*myRG*资源组中删除名为*mywatcher*的实例。
+在 *myRG* 资源组中删除名为 *mywatcher* 的实例。
 
 ``` azurecli-interactive
 az resource delete \

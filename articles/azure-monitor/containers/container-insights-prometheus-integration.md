@@ -1,18 +1,18 @@
 ---
-title: 配置 Prometheus 集成的容器 Azure Monitor |Microsoft Docs
-description: 本文介绍了如何配置用于容器的 Azure Monitor 代理以从 Prometheus 抓取你的 Kubernetes 群集的指标。
+title: 配置 Container insights Prometheus 集成 |Microsoft Docs
+description: 本文介绍如何将 Container insights 代理配置为擦除 Prometheus 与 Kubernetes 群集的指标。
 ms.topic: conceptual
 ms.date: 04/22/2020
-ms.openlocfilehash: f5a9b364bc3e51307bd44d8338485f482bda6e1e
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 8affeb472b9452e4d234e99e5ea6bb4509770fac
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100608463"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731725"
 ---
-# <a name="configure-scraping-of-prometheus-metrics-with-azure-monitor-for-containers"></a>使用用于容器的 Azure Monitor 配置 Prometheus 指标的抓取
+# <a name="configure-scraping-of-prometheus-metrics-with-container-insights"></a>用 Container insights 配置 Prometheus 指标的抓取
 
-[Prometheus](https://prometheus.io/) 是一种常用的开源指标监视解决方案，是 [Cloud Native Compute Foundation](https://www.cncf.io/) 的一部分。 用于容器的 Azure Monitor 提供可收集 Prometheus 指标的无缝加入体验。 通常，若要使用 Prometheus，你需要通过一个存储来设置和管理 Prometheus 服务器。 与 Azure Monitor 集成后，不需要 Prometheus 服务器。 你只需要通过导出程序或 Pod（应用程序）公开 Prometheus 指标终结点，用于容器的 Azure Monitor 的容器化代理即可为你抓取指标。 
+[Prometheus](https://prometheus.io/) 是一种常用的开源指标监视解决方案，是 [Cloud Native Compute Foundation](https://www.cncf.io/) 的一部分。 Container insights 提供无缝载入体验来收集 Prometheus 指标。 通常，若要使用 Prometheus，你需要通过一个存储来设置和管理 Prometheus 服务器。 与 Azure Monitor 集成后，不需要 Prometheus 服务器。 你只需通过导出程序或 pod (应用程序) 公开 Prometheus 指标终结点，容器 insights 的容器化代理就可以擦除指标。 
 
 ![Prometheus 的容器监视体系结构](./media/container-insights-prometheus-integration/monitoring-kubernetes-architecture.png)
 
@@ -42,20 +42,20 @@ ms.locfileid: "100608463"
 | Kubernetes 服务 | 群集范围 | `http://my-service-dns.my-namespace:9100/metrics` <br>`https://metrics-server.kube-system.svc.cluster.local/metrics` |
 | URL/终结点 | 单节点和/或群集范围 | `http://myurl:9101/metrics` |
 
-指定 URL 后，用于容器的 Azure Monitor 仅擦除此终结点。 指定 Kubernetes 服务后，将使用群集 DNS 服务器来解析服务名称以获取 IP 地址，然后擦除已解析的服务。
+指定 URL 后，Container insights 只会擦除端点。 指定 Kubernetes 服务后，将使用群集 DNS 服务器来解析服务名称以获取 IP 地址，然后擦除已解析的服务。
 
 |范围 | 密钥 | 数据类型 | 值 | 描述 |
 |------|-----|-----------|-------|-------------|
 | 群集范围 | | | | 指定以下三种方法中的任何一种，以擦除指标的终结点。 |
-| | `urls` | String | 逗号分隔的数组 | HTTP 终结点（指定的 IP 地址或有效的 URL 路径）。 例如：`urls=[$NODE_IP/metrics]`。 （$NODE_IP 是容器参数的特定 Azure Monitor，可以使用它来代替节点 IP 地址。 必须全部大写。） |
+| | `urls` | String | 逗号分隔的数组 | HTTP 终结点（指定的 IP 地址或有效的 URL 路径）。 例如：`urls=[$NODE_IP/metrics]`。  ($NODE _IP 是特定的容器 insights 参数，可以使用而不是节点 IP 地址。 必须全部大写。） |
 | | `kubernetes_services` | String | 逗号分隔的数组 | 用于从 kube-state-metrics 擦除指标的 Kubernetes 服务数组。 例如：`kubernetes_services = ["https://metrics-server.kube-system.svc.cluster.local/metrics",http://my-service-dns.my-namespace:9100/metrics]`。|
-| | `monitor_kubernetes_pods` | Boolean | true 或 false | 如果在群集范围设置中将此项设置为 `true`，则容器代理的 Azure Monitor 将在整个群集中擦除以下 Prometheus 批注的 Kubernetes pod：<br> `prometheus.io/scrape:`<br> `prometheus.io/scheme:`<br> `prometheus.io/path:`<br> `prometheus.io/port:` |
+| | `monitor_kubernetes_pods` | Boolean | true 或 false | 如果 `true` 在群集范围的设置中设置为，则容器 insights 代理会在整个群集中擦除 Kubernetes pod，以获得以下 Prometheus 批注：<br> `prometheus.io/scrape:`<br> `prometheus.io/scheme:`<br> `prometheus.io/path:`<br> `prometheus.io/port:` |
 | | `prometheus.io/scrape` | Boolean | true 或 false | 启用 pod 擦除。 `monitor_kubernetes_pods` 必须设置为 `true`。 |
 | | `prometheus.io/scheme` | 字符串 | http 或 https | 默认为通过 HTTP 擦除。 必要时设置为 `https`。 | 
 | | `prometheus.io/path` | String | 逗号分隔的数组 | 要从中提取指标的 HTTP 资源路径。 如果指标路径不是 `/metrics`，请使用此批注定义它。 |
 | | `prometheus.io/port` | 字符串 | 9102 | 指定要从其擦除的端口。 如果未设置端口，则默认为 9102。 |
 | | `monitor_kubernetes_pods_namespaces` | String | 逗号分隔的数组 | 一个允许列表，其中的命名空间可以从 Kubernetes Pod 抓取指标。<br> 例如 `monitor_kubernetes_pods_namespaces = ["default1", "default2", "default3"]` |
-| 节点范围 | `urls` | String | 逗号分隔的数组 | HTTP 终结点（指定的 IP 地址或有效的 URL 路径）。 例如：`urls=[$NODE_IP/metrics]`。 （$NODE_IP 是容器参数的特定 Azure Monitor，可以使用它来代替节点 IP 地址。 必须全部大写。） |
+| 节点范围 | `urls` | String | 逗号分隔的数组 | HTTP 终结点（指定的 IP 地址或有效的 URL 路径）。 例如：`urls=[$NODE_IP/metrics]`。  ($NODE _IP 是特定的容器 insights 参数，可以使用而不是节点 IP 地址。 必须全部大写。） |
 | 节点范围或群集范围 | `interval` | 字符串 | 60s | 收集间隔默认为 1 分钟（60 秒）。 可将 *[prometheus_data_collection_settings.node]* 和/或 *[prometheus_data_collection_settings.cluster]* 的收集间隔设置为 s、m、h 等时间单位。 |
 | 节点范围或群集范围 | `fieldpass`<br> `fielddrop`| String | 逗号分隔的数组 | 可以通过设置允许 (`fieldpass`) 和禁止 (`fielddrop`) 列表，来指定要从终结点收集或不收集的特定指标。 必须先设置允许列表。 |
 
@@ -124,7 +124,7 @@ ConfigMap 是一个全局列表，只能将一个 ConfigMap 应用到代理。 �
         ```
 
         >[!NOTE]
-        >$NODE_IP 是容器参数的特定 Azure Monitor，可以使用它来代替节点 IP 地址。 它必须全部大写。 
+        >$NODE _IP 是特定的容器 insights 参数，可以使用而不是节点 IP 地址。 它必须全部大写。 
 
     - 若要通过指定 Pod 注释来配置擦除 Prometheus 指标的操作，请执行以下步骤：
 
@@ -241,7 +241,7 @@ container-azm-ms-agentconfig   4         56m
         ```
 
         >[!NOTE]
-        >$NODE_IP 是容器参数的特定 Azure Monitor，可以使用它来代替节点 IP 地址。 它必须全部大写。 
+        >$NODE _IP 是特定的容器 insights 参数，可以使用而不是节点 IP 地址。 它必须全部大写。 
 
     - 若要通过指定 Pod 注释来配置擦除 Prometheus 指标的操作，请执行以下步骤：
 
@@ -330,7 +330,7 @@ config::unsupported/missing config schema version - 'v21' , using defaults
 
 ## <a name="view-prometheus-metrics-in-grafana"></a>在 Grafana 中查看 Prometheus 指标
 
-用于容器的 Azure Monitor 支持在 Grafana 仪表板中查看 Log Analytics 工作区中存储的指标。 我们提供了一个模板，你可从 Grafana 的[仪表板存储库](https://grafana.com/grafana/dashboards?dataSource=grafana-azure-monitor-datasource&category=docker)中下载以供入门和参考，它可帮助你了解如何从受监视的群集查询其他数据，来在自定义 Grafana 仪表板中直观显示。 
+Container insights 支持查看存储在 Grafana 仪表板中的 Log Analytics 工作区中的度量值。 我们提供了一个模板，你可从 Grafana 的[仪表板存储库](https://grafana.com/grafana/dashboards?dataSource=grafana-azure-monitor-datasource&category=docker)中下载以供入门和参考，它可帮助你了解如何从受监视的群集查询其他数据，来在自定义 Grafana 仪表板中直观显示。 
 
 ## <a name="review-prometheus-data-usage"></a>查看 Prometheus 数据使用情况
 
@@ -364,8 +364,8 @@ InsightsMetrics
 
 ![数据引入量的日志查询结果](./media/container-insights-prometheus-integration/log-query-example-usage-02.png)
 
-[使用 Azure Monitor 日志管理使用情况和成本](../platform/manage-cost-storage.md)中提供了有关如何监视数据使用情况和分析成本的更多信息。
+[使用 Azure Monitor 日志管理使用情况和成本](../logs/manage-cost-storage.md)中提供了有关如何监视数据使用情况和分析成本的更多信息。
 
 ## <a name="next-steps"></a>后续步骤
 
-从[此处](container-insights-agent-config.md)详细了解如何为 stdout、stderr 和容器工作负荷中的环境变量配置代理收集设置。 
+从[此处](container-insights-agent-config.md)详细了解如何为 stdout、stderr 和容器工作负荷中的环境变量配置代理收集设置。
