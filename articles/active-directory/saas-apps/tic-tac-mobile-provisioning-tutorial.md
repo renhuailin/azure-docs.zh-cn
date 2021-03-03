@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/08/2020
 ms.author: Zhchia
-ms.openlocfilehash: a09594d1bc6037f252ba71855ae302208b4980d4
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 91ae51b9a2785dbc40c55fa58b26763916e8d16c
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182207"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101644538"
 ---
 # <a name="tutorial-configure-tic-tac-mobile-for-automatic-user-provisioning"></a>教程：为 Tic-Tac Mobile 配置自动用户预配
 
@@ -43,7 +43,7 @@ ms.locfileid: "96182207"
 * 具有超级管理员角色的 [Tic-Tac Mobile](https://www.tictacmobile.com/) 帐户。
 
 
-## <a name="step-1-plan-your-provisioning-deployment"></a>步骤 1。 规划预配部署
+## <a name="step-1-plan-your-provisioning-deployment"></a>步骤 1。 计划预配部署
 
 1. 了解[预配服务的工作原理](../app-provisioning/user-provisioning.md)。
 1. 确定谁在[预配范围](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中。
@@ -107,7 +107,7 @@ ms.locfileid: "96182207"
    |name.familyName|字符串|
    |externalId|字符串|
    |title|字符串|
-   |emails[type eq"work"].value|字符串|
+   |emails[type eq "work"].value|字符串|
    |preferredLanguage|字符串|
    |externalId|字符串|
    |userType|字符串|

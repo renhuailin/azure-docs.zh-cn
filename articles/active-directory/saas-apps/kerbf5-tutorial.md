@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 139366277feab0a04c47311b4f0210223b2bc8d9
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 2fd96c47e98a6f8a66a5fda555304c4448d772e0
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98891991"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101646089"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-f5"></a>教程：Azure Active Directory 单一登录 (SSO) 与 F5 的集成
 
@@ -68,7 +68,7 @@ ms.locfileid: "98891991"
     >[!NOTE]
     >下面的屏幕截图适用于最新的已发布版本（AGC 版本为 5.0 的 BIG-IP 15.0）。 对于 13.1.0.8 版到 BIG-IP 最新版本，以下配置步骤对此用例有效。
 
-1. 在 F5 BIG-IP Web UI 上，单击“访问”>>“引导式配置”。
+1. 在 F5 BIG-IP Web UI 上，单击“访问”>>“引导式配置”  。
 
 2. 在“引导式配置”页，单击左上角的“升级引导式配置” 。
 
@@ -114,9 +114,9 @@ ms.locfileid: "98891991"
 若要配置 F5 与 Azure AD 的集成，需要从库中将 F5 添加到托管 SaaS 应用列表。
 
 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
-1. 在左侧导航窗格中，选择“Azure Active Directory”服务。
-1. 导航到“企业应用程序”，选择“所有应用程序” 。
-1. 若要添加新的应用程序，请选择“新建应用程序”。
+1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
+1. 导航到“企业应用程序”，选择“所有应用程序”   。
+1. 若要添加新的应用程序，请选择“新建应用程序”  。
 1. 在“从库中添加”部分的搜索框中，键入 **F5**。
 1. 在结果面板中选择“F5”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
 
@@ -138,18 +138,18 @@ ms.locfileid: "98891991"
 按照下列步骤在 Azure 门户中启用 Azure AD SSO。
 
 1. 在 [Azure 门户](https://portal.azure.com/)中的“F5”应用程序集成页上，找到“管理”部分并选择“单一登录”。
-1. 在“选择单一登录方法”页上选择“SAML” 。
+1. 在“选择单一登录方法”页上选择“SAML”   。
 1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置 。
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
 1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值 ：
 
-    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<YourCustomFQDN>.f5.com/`
+    a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://<YourCustomFQDN>.f5.com/`
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<YourCustomFQDN>.f5.com/`
 
-1. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
+1. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
     在“登录 URL”文本框中，使用以下模式键入 URL：`https://<YourCustomFQDN>.f5.com/`
 
@@ -180,9 +180,9 @@ ms.locfileid: "98891991"
 
 在本部分，你将通过授予 B.Simon 访问 F5 的权限，使其能够使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。  
 1. 在“应用程序”列表中选择“F5”。
-1. 在应用的概述页中，找到“管理”部分，选择“用户和组” 。
+1. 在应用的概述页中，找到“管理”部分，选择“用户和组”   。
 
    ![“用户和组”链接](common/users-groups-blade.png)
 
@@ -192,7 +192,7 @@ ms.locfileid: "98891991"
 
 1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。
 1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。
-1. 在“添加分配”对话框中，单击“分配”按钮。
+1. 在“添加分配”对话框中，单击“分配”按钮。  
 1. 单击“条件访问”。
 1. 单击“新建策略”。
 1. 现在，可将 F5 应用视为条件访问策略的资源，并应用任何条件访问，包括多重身份验证、基于设备的访问控制或标识保护策略。
@@ -494,8 +494,8 @@ ms.locfileid: "98891991"
 
 - [为 Advanced Kerberos 应用程序配置 F5 单一登录](advance-kerbf5-tutorial.md)
 
-- [将 F5 BIG-IP APM 和 Azure AD 集成以实现安全混合访问](https://docs.microsoft.com/azure/active-directory/manage-apps/f5-aad-integration)
+- [将 F5 BIG-IP APM 和 Azure AD 集成以实现安全混合访问](../manage-apps/f5-aad-integration.md)
 
-- [在 Azure IaaS 中部署 F5 BIG-IP 虚拟版 VM 以实现安全混合访问的教程](https://docs.microsoft.com/azure/active-directory/manage-apps/f5-bigip-deployment-guide)
+- [关于在 Azure IaaS 中部署 F5 BIG-IP 虚拟版 VM 以实现安全混合访问的教程](../manage-apps/f5-bigip-deployment-guide.md)
 
-- [有关将 Azure Active Directory 单一登录与 F5 BIG-IP 集成来实现无密码 VPN 的教程](https://docs.microsoft.com/azure/active-directory/manage-apps/f5-aad-password-less-vpn)
+- [关于将 Azure Active Directory 单一登录与 F5 BIG-IP 集成以实现无密码 VPN 的教程](../manage-apps/f5-aad-password-less-vpn.md)

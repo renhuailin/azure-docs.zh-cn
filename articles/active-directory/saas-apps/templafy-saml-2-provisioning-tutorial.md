@@ -12,12 +12,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/19/2021
 ms.author: zhchia
-ms.openlocfilehash: 0e7275ee92431e791fec7bd2c9ec07dd623b0f9e
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 4cc89c1ad94ae738b25e4ea18d5fe687880969c1
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98696002"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101648197"
 ---
 # <a name="tutorial-configure-templafy-saml2-for-automatic-user-provisioning"></a>教程：为 Templafy SAML2 配置自动用户预配
 
@@ -36,10 +36,10 @@ ms.locfileid: "98696002"
 * [Templafy 租户](https://www.templafy.com/pricing/)。
 * Templafy 中具有管理员权限的用户帐户。
 
-## <a name="step-1-plan-your-provisioning-deployment"></a>步骤 1。 规划预配部署
-1. 了解[预配服务的工作原理](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)。
-2. 确定谁在[预配范围](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)中。
-3. 确定[在 Azure AD 与 Templafy SAML2 之间映射](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)哪些数据。 
+## <a name="step-1-plan-your-provisioning-deployment"></a>步骤 1。 计划预配部署
+1. 了解[预配服务的工作原理](../app-provisioning/user-provisioning.md)。
+2. 确定谁在[预配范围](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中。
+3. 确定[在 Azure AD 与 Templafy SAML2 之间映射](../app-provisioning/customize-application-attributes.md)哪些数据。 
 
 ## <a name="assigning-users-to-templafy-saml2"></a>将用户分配到 Templafy SAML2
 
@@ -186,9 +186,9 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 ## <a name="step-5-monitor-your-deployment"></a>步骤 5。 监视部署
 配置预配后，请使用以下资源来监视部署：
 
-* 通过[预配日志](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs)来确定哪些用户已预配成功或失败
-* 检查[进度栏](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user)来查看预配周期的状态以及完成进度
-* 如果怀疑预配配置处于非正常状态，则应用程序将进入隔离状态。 可在[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)了解有关隔离状态的详细信息。
+* 通过[预配日志](../reports-monitoring/concept-provisioning-logs.md)来确定哪些用户已预配成功或失败
+* 检查[进度栏](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)来查看预配周期的状态以及完成进度
+* 如果怀疑预配配置处于非正常状态，则应用程序将进入隔离状态。 可在[此处](../app-provisioning/application-provisioning-quarantine-status.md)了解有关隔离状态的详细信息。
 
 ## <a name="additional-resources"></a>其他资源
 

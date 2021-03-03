@@ -1,0 +1,41 @@
+### YamlMime:Landing
+title: Azure 路由服务器文档
+summary: 了解如何使用 Azure 路由服务器简化网络虚拟设备与虚拟网络之间的动态路由。
+metadata:
+  title: Azure 路由服务器文档
+  description: 了解 Azure 路由服务器
+  services: route-server
+  ms.service: route-server
+  ms.topic: landing-page
+  author: duongau
+  ms.author: duau
+  ms.date: 03/02/2021
+  ms.openlocfilehash: f235d7118ce207d793c4ba03d357e2db09662c1f
+  ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 03/02/2021
+  ms.locfileid: "101677941"
+landingContent:
+- title: 关于 Azure 路由服务器（预览版）
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 Azure 路由服务器（预览版）？
+      url: overview.md
+- title: 入门
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 创建和配置路由服务器 - PowerShell
+      url: quickstart-configure-route-server-powershell.md
+    - text: 创建和配置路由服务器 - CLI
+      url: quickstart-configure-route-server-cli.md
+- title: 规划
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: ExpressRoute 和 VPN 网关支持
+      url: expressroute-vpn-support.md
+    - text: 路由服务器常见问题解答
+      url: route-server-faq.md

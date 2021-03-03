@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 09/03/2020
 ms.author: cshoe
-ms.openlocfilehash: aab99721b61ababe218e509ab1078198b5f4152b
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: c54a56843be5121e16449d95fb18c24901a95a8d
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97030359"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100650553"
 ---
 # <a name="quickstart-building-your-first-static-site-in-the-azure-portal"></a>快速入门：在 Azure 门户中构建你的第一个静态站点
 
@@ -55,7 +55,7 @@ Azure Static Web Apps 通过从 GitHub 存储库生成应用来将网站发布�
 
 1. 选择首选组织
 1. 选择“存储库”下拉列表中的“my-first-web-static-app”
-1. 从“分支”下拉列表中选择“master”
+1. 从“分支”下拉列表中选择“主分支”
 
 > [!NOTE]
 > 如果看不到任何存储库，则可能需要在 GitHub 中授权 Azure Static Web Apps。 浏览到 GitHub 存储库，转到“设置”>“应用程序”>“授权 OAuth 应用”，选择“Azure Static Web Apps”，然后选择“授予”。 对于组织存储库，你必须是组织的所有者才能授予权限。

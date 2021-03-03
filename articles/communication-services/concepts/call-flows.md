@@ -9,26 +9,24 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 79382dde5780827d7b0393858fe8896c5da1b56d
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 5b1d24dc6056de0b8dd19d0d0e52c85055596a1d
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100559440"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101664138"
 ---
 # <a name="call-flow-basics"></a>呼叫流基础知识
-
-[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
 以下部分提供 Azure 通信服务中的呼叫流概述。 信号和媒体流取决于用户所进行的呼叫的类型。 呼叫类型的示例包括一对一 VoIP、一对一 PSTN 以及包含 VoIP 和 PSTN 连接的参与者组合的群呼。 查看[呼叫类型](./voice-video-calling/about-call-types.md)。
 
 ## <a name="about-signaling-and-media-protocols"></a>关于信号和媒体协议
 
-建立对等呼叫或群呼时，会在后台使用两种协议：HTTP (REST) 用于信号，SRTP 用于媒体。 
+建立对等呼叫或群呼时，会在后台使用两种协议：HTTP (REST) 用于信号，SRTP 用于媒体。
 
-客户端库之间或客户端库与通信服务信号控制器之间的信号使用 HTTP REST (TLS) 进行处理。 对于实时媒体流量 (RTP)，首选用户数据报协议 (UDP)。 如果防火墙阻止使用 UDP，则客户端库将对媒体使用传输控制协议 (TCP)。 
+客户端库之间或客户端库与通信服务信号控制器之间的信号使用 HTTP REST (TLS) 进行处理。 对于实时媒体流量 (RTP)，首选用户数据报协议 (UDP)。 如果防火墙阻止使用 UDP，则客户端库将对媒体使用传输控制协议 (TCP)。
 
-让我们来查看各种方案中的信号和媒体协议。 
+让我们来查看各种方案中的信号和媒体协议。
 
 ## <a name="call-flow-cases"></a>呼叫流事例
 
@@ -40,7 +38,7 @@ ms.locfileid: "100559440"
 
 ### <a name="case-2-voip-where-a-direct-connection-between-devices-is-not-possible-but-where-connection-between-nat-devices-is-possible"></a>事例 2：无法在设备之间实现直接连接，但是可以在 NAT 设备之间实现连接的 VoIP
 
-如果两个设备位于无法相互联系的子网中（例如，Alice 在咖啡店中工作，而 Bob 在家庭办公室中工作），但是可以在 NAT 设备之间实现连接，则客户端的客户端库会通过 NAT 设备建立连接。 
+如果两个设备位于无法相互联系的子网中（例如，Alice 在咖啡店中工作，而 Bob 在家庭办公室中工作），但是可以在 NAT 设备之间实现连接，则客户端的客户端库会通过 NAT 设备建立连接。
 
 对于 Alice，它会作为咖啡店的 NAT，而对于 Bob，它会作为家庭办公室的 NAT。 Alice 的设备会发送其 NAT 的外部地址，Bob 的设备会执行相同操作。 客户端库从 Azure 通信服务免费提供的 STUN（适用于 NAT 的会话遍历实用工具）服务了解外部地址。 处理 Alice 与 Bob 之间的握手的逻辑嵌入在 Azure 通信服务提供的客户端库中。 （无需任何其他配置）
 
@@ -51,7 +49,7 @@ ms.locfileid: "100559440"
 如果一个或两个客户端设备处于对称 NAT 后面，则需要用于在两个客户端库之间中继媒体的单独云服务。 此服务称为 TURN（围绕 NAT 使用中继进行遍历），也由通信服务提供。 通信服务呼叫客户端库会基于检测到的网络条件自动使用 TURN 服务。 使用 Microsoft 的 TURN 服务会单独计费。
 
 :::image type="content" source="./media/call-flows/about-voice-case-3.png" alt-text="显示利用 TURN 连接的 VOIP 呼叫的关系图。":::
- 
+
 ### <a name="case-4-group-calls-with-pstn"></a>事例 4：使用 PSTN 的群呼
 
 PSTN 呼叫的信号和媒体都使用 Azure 通信服务电话服务资源。 此资源与其他运营商互连。
@@ -78,7 +76,7 @@ PSTN 媒体流量会通过一个称为媒体处理器的组件进行流动。
 
 ### <a name="case-5-communication-services-client-library-and-microsoft-teams-in-a-scheduled-teams-meeting"></a>案例 5：计划的 Teams 会议中的通信服务客户端库和 Microsoft Teams
 
-信号流经信号控制器。 媒体流经媒体处理器。 信号控制器和媒体处理器在通信服务和 Microsoft Teams 之间共享。 
+信号流经信号控制器。 媒体流经媒体处理器。 信号控制器和媒体处理器在通信服务和 Microsoft Teams 之间共享。
 
 :::image type="content" source="./media/call-flows/teams-communication-services-meeting.png" alt-text="显示计划的 Teams 会议中的通信服务客户端库和 Teams 客户端的关系图。":::
 

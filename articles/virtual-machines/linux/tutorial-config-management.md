@@ -15,18 +15,18 @@ ms.workload: infrastructure
 ms.date: 09/27/2019
 ms.author: magoedte
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: c4dc7e4d3c19a341daaf8e75844e175451a91f03
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: de038fe087e479ef1e9212c21197fbe1844d5e3b
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100592980"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101670370"
 ---
 # <a name="tutorial-monitor-changes-and-update-a-linux-virtual-machine-in-azure"></a>教程：监视更改并更新 Azure 中的 Linux 虚拟机
 
 Azure [更改跟踪](../../automation/change-tracking/overview.md)允许你轻松识别更改，[更新管理](../../automation/update-management/overview.md)允许你管理 Azure Linux VM 的操作系统更新。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 管理 Linux 更新
@@ -191,7 +191,7 @@ az vm create \
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你配置并查看了 VM 的更改跟踪和更新管理。 你已了解如何：
+在本教程中，你配置并查看了 VM 的更改跟踪和更新管理。 你已了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建资源组和 VM
@@ -201,4 +201,4 @@ az vm create \
 请转到下一教程，了解如何监视 VM。
 
 > [!div class="nextstepaction"]
-> [监视虚拟机](tutorial-monitor.md)
+> [监视虚拟机](/previous-versions/azure/virtual-machines/linux/tutorial-monitor)

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/11/2020
 ms.author: Zhchia
-ms.openlocfilehash: 084592a8db47a94a0fcd683105f749f514c05ea3
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.openlocfilehash: 70766fd93f0a70ecf6b5ee54dbdba3571f783878
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98247567"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101646038"
 ---
 # <a name="tutorial-configure-cofense-recipient-sync-for-automatic-user-provisioning"></a>教程：为 Cofense Recipient Sync 配置自动用户预配
 
@@ -41,7 +41,7 @@ ms.locfileid: "98247567"
 * Azure AD 中[有权](../roles/permissions-reference.md)配置预配的用户帐户（例如应用管理员、云应用管理员、应用所有者或全局管理员）。 
 * Cofense PhishMe 中的标准操作员帐户。
 
-## <a name="step-1-plan-your-provisioning-deployment"></a>步骤 1。 规划预配部署
+## <a name="step-1-plan-your-provisioning-deployment"></a>步骤 1。 计划预配部署
 1. 了解[预配服务的工作原理](../app-provisioning/user-provisioning.md)。
 2. 确定谁在[预配范围](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中。
 3. 确定[在 Azure AD 与 Cofense Recipient Sync 之间映射](../app-provisioning/customize-application-attributes.md)的数据。 
@@ -60,11 +60,11 @@ ms.locfileid: "98247567"
 
 ## <a name="step-3-add-cofense-recipient-sync-from-the-azure-ad-application-gallery"></a>步骤 3. 从 Azure AD 应用程序库添加 Cofense Recipient Sync
 
-从 Azure AD 应用程序库添加 Cofense Recipient Sync，开始管理到 Cofense Recipient Sync 的预配。如果之前为 SSO 设置过 Cofense Recipient Sync，则可使用同一应用程序。 但建议你在最初测试集成时创建一个单独的应用。 可在[此处](../manage-apps/add-application-portal.md)详细了解如何从库中添加应用程序。 
+从 Azure AD 应用程序库添加 Cofense Recipient Sync，开始管理到 Cofense Recipient Sync 的预配。如果之前为 SSO 设置过 Cofense Recipient Sync，则可使用同一应用程序。 但建议你在最初测试集成时创建一个单独的应用。 若要详细了解如何从库中添加应用，可以单击[此处](../manage-apps/add-application-portal.md)。 
 
 ## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>步骤 4. 定义谁在预配范围中 
 
-使用 Azure AD 预配服务，可以根据对应用程序的分配和/或用户/组的属性来限定谁在预配范围内。 如果选择根据分配来查看要将谁预配到应用，则可以使用以下[步骤](../manage-apps/assign-user-or-group-access-portal.md)将用户和组分配给应用程序。 如果选择仅根据用户或组的属性来限定要对谁进行预配，可以使用[此处](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)所述的范围筛选器。 
+使用 Azure AD 预配服务，可以根据对应用的分配或用户/组的特性来限定谁在预配范围内。 如果选择根据分配来限定要将谁预配到应用，可以按照下面的[步骤](../manage-apps/assign-user-or-group-access-portal.md)操作，将用户和组分配到应用。 如果选择仅根据用户或组的属性来限定要对谁进行预配，可以使用[此处](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)所述的范围筛选器。 
 
 * 将用户和组分配到 Cofense Recipient Sync 时，必须选择“默认访问”以外的角色。 具有“默认访问”角色的用户将从预配中排除，并在预配日志中被标记为未有效授权。 如果应用程序上唯一可用的角色是默认访问角色，则可以[更新应用程序清单](../develop/howto-add-app-roles-in-azure-ad-apps.md)以添加其他角色。 
 
@@ -117,19 +117,19 @@ ms.locfileid: "98247567"
    |name.givenName|字符串|
    |name.familyName|字符串|
    |name.honorificSuffix|字符串|
-   |phoneNumbers[type eq"work"].value|字符串|
-   |phoneNumbers[type eq"home"].value|字符串|
-   |phoneNumbers[type eq"other"].value|字符串|
-   |phoneNumbers[type eq"pager"].value|字符串|
-   |phoneNumbers[type eq"mobile"].value|字符串|
-   |phoneNumbers[type eq"fax"].value|字符串|
-   |addresses[type eq"other"].formatted|字符串|
-   |addresses[type eq"work"].formatted|字符串|
-   |addresses[type eq"work"].streetAddress|字符串|
-   |addresses[type eq"work"].locality|字符串|
-   |addresses[type eq"work"].region|字符串|
-   |addresses[type eq"work"].postalCode|字符串|
-   |addresses[type eq"work"].country|字符串|
+   |phoneNumbers[type eq "work"].value|字符串|
+   |phoneNumbers[type eq "home"].value|字符串|
+   |phoneNumbers[type eq "other"].value|字符串|
+   |phoneNumbers[type eq "pager"].value|字符串|
+   |phoneNumbers[type eq "mobile"].value|字符串|
+   |phoneNumbers[type eq "fax"].value|字符串|
+   |addresses[type eq "other"].formatted|字符串|
+   |addresses[type eq "work"].formatted|字符串|
+   |addresses[type eq "work"].streetAddress|字符串|
+   |addresses[type eq "work"].locality|字符串|
+   |addresses[type eq "work"].region|字符串|
+   |addresses[type eq "work"].postalCode|字符串|
+   |addresses[type eq "work"].country|字符串|
    |title|字符串|
    |emails[type eq "work"].value|字符串|
    |emails[type eq "home"].value|字符串|

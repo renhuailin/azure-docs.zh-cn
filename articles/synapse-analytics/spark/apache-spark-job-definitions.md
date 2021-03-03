@@ -8,12 +8,12 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 10/16/2020
-ms.openlocfilehash: b8c7792a09dd86e7d4ac043c572f69fc47ee6e63
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 3f1e3fd360197310a89a67d43053649d904aeb18
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93307181"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101677617"
 ---
 # <a name="tutorial-create-apache-spark-job-definition-in-synapse-studio"></a>教程：在 Synapse Studio 中创建 Apache Spark 作业定义
 
@@ -32,7 +32,7 @@ ms.locfileid: "93307181"
 
 在开始学习本教程之前，请确保满足以下要求：
 
-* 一个 Azure Synapse Analytics 工作区。 有关说明，请参阅[创建 Azure Synapse Analytics 工作区](../../machine-learning/how-to-manage-workspace.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#create-a-workspace)。
+* 一个 Azure Synapse Analytics 工作区。 有关说明，请参阅[创建 Azure Synapse Analytics 工作区](../../machine-learning/how-to-manage-workspace.md)。
 * 无服务器 Apache Spark 池。
 * ADLS Gen2 存储帐户。 你需要是要使用的 ADLS Gen2 文件系统的存储 Blob 数据所有者。 如果还不是该所有者，则需要手动添加权限。
 * 如果不想使用工作区默认存储，请在 Synapse Studio 中链接所需的 ADLS Gen2 存储帐户。 
@@ -65,7 +65,7 @@ ms.locfileid: "93307181"
      | ----- | ----- |  
      |作业定义名称| 输入 Apache Spark 作业定义的名称。 在发布作业定义之前，随时可以更新此名称。 <br> 示例： `job definition sample`|
      |主定义文件| 用于作业的主文件。 从存储中选择一个 PY 文件。 可以选择“上传文件”以将文件上传到存储帐户。 <br> 示例： `abfss://…/path/to/wordcount.py`|
-     |命令行参数| 作业的可选参数。 <br> 示例： `abfss://…/path/to/shakespeare.txt``abfss://…/path/to/result` <br> *注意：* 示例作业定义的两个参数用空格分隔。|
+     |命令行参数| 作业的可选参数。 <br> 示例： `abfss://…/path/to/shakespeare.txt` `abfss://…/path/to/result` <br> *注意：* 示例作业定义的两个参数用空格分隔。|
      |引用文件| 用于主定义文件中的引用的其他文件。 可以选择“上传文件”以将文件上传到存储帐户。 |
      |Spark 池| 作业将提交到选定的 Apache Spark 池。|
      |Spark 版本| 正在运行 Apache Spark 池的 Apache Spark 版本。|
@@ -106,7 +106,7 @@ ms.locfileid: "93307181"
      |作业定义名称| 输入 Apache Spark 作业定义的名称。 在发布作业定义之前，随时可以更新此名称。 <br> 示例： `scala`|
      |主定义文件| 用于作业的主文件。 从存储中选择一个 JAR 文件。 可以选择“上传文件”以将文件上传到存储帐户。 <br> 示例： `abfss://…/path/to/wordcount.jar`|
      |主类名| 主定义文件中的完全限定标识符或主类。 <br> 示例： `WordCount`|
-     |命令行参数| 作业的可选参数。 <br> Sample: <ph id="ph1">`abfss://…/path/to/shakespeare.txt`</ph> <ph id="ph2">`abfss://…/path/to/result`</ph> <br> *注意：* 示例作业定义的两个参数用空格分隔。 |
+     |命令行参数| 作业的可选参数。 <br> 示例： `abfss://…/path/to/shakespeare.txt` `abfss://…/path/to/result` <br> *注意：* 示例作业定义的两个参数用空格分隔。 |
      |引用文件| 用于主定义文件中的引用的其他文件。 可以选择“上传文件”以将文件上传到存储帐户。|
      |Spark 池| 作业将提交到选定的 Apache Spark 池。|
      |Spark 版本| 正在运行 Apache Spark 池的 Apache Spark 版本。|

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/24/2020
 ms.author: allensu
-ms.openlocfilehash: 5010dc08b695a0376ace5dde935c63caf0c39633
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 98989a38a0c1a7f57fc8eba70e064e5d6f2cce8f
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96012063"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101671537"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-the-azure-portal"></a>教程：使用 Azure 门户创建 NAT 网关
 
@@ -30,7 +30,7 @@ ms.locfileid: "96012063"
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-登录到 [Azure 门户](https://portal.azure.com)。
+登录 [Azure 门户](https://portal.azure.com)。
 
 ## <a name="virtual-network-and-parameters"></a>虚拟网络和参数
 
@@ -43,9 +43,9 @@ ms.locfileid: "96012063"
 | **\<resource-group-name>**  | myResourceGroupNAT |
 | **\<virtual-network-name>** | myVNet          |
 | **\<region-name>**          | 美国东部 2      |
-| **\<IPv4-address-space>**   | 192.168.0.0\16          |
+| **\<IPv4-address-space>**   | 192.168.0.0/16          |
 | **\<subnet-name>**          | mySubnet        |
-| **\<subnet-address-range>** | 192.168.0.0\24          |
+| **\<subnet-address-range>** | 192.168.0.0/24          |
 
 [!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
@@ -100,7 +100,7 @@ ms.locfileid: "96012063"
     | 名称 | 输入 **myPublicIP**。 |
     | 订阅 | 选择订阅。|
     | 资源组 | 选择“myResourceGroupNAT”。 |
-    | 位置 | 选择“美国东部 2”。|
+    | 位置 | 选择“美国东部 2”。 |
 
 3. 将剩余的字段保留默认设置，然后选择 **“创建”** 。
 

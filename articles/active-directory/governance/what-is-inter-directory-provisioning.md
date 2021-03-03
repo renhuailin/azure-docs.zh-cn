@@ -11,12 +11,12 @@ ms.date: 10/30/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: df199afd85c788299334087321c3edac8482698d
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 4246bc4c62fd8e5e73ff18e383b8bf115d25ede8
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96168502"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101643825"
 ---
 # <a name="what-is-inter-directory-provisioning"></a>目录间预配是什么？
 
@@ -33,7 +33,7 @@ Azure AD 目前支持采用三种方法来完成目录间预配。 这些方法�
 
 - [Azure AD Connect](../hybrid/whatis-azure-ad-connect.md) - 一种 Microsoft 工具，旨在满足和实现混合标识，包括从 Active Directory 到 Azure AD 的目录间预配。
 
-- [Azure AD Connect 云配置](../cloud-provisioning/what-is-cloud-provisioning.md) - 一个新的 Microsoft 代理，旨在满足和实现混合标识目标。  它提供在 Active Directory 和 Azure AD 之间进行目录间预配的简单体验。
+- [Azure AD Connect 云配置](../cloud-sync/what-is-cloud-sync.md) - 一个新的 Microsoft 代理，旨在满足和实现混合标识目标。  它提供在 Active Directory 和 Azure AD 之间进行目录间预配的简单体验。
 
 - [Microsoft Identity Manager](/microsoft-identity-manager/microsoft-identity-manager-2016) - Microsoft 的本地标识和访问管理解决方案，可帮助管理组织内的用户、凭据、策略和访问权限。 此外，MIM 还提供高级目录间预配，以实现 Active Directory、Azure AD 和其他目录的混合标识环境。
 

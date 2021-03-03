@@ -9,17 +9,15 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-zone_pivot_groups: acs-js-csharp-java-python-swift
-ms.openlocfilehash: 97b9644b3d075a0d65826cbd38747ff0e45d51a4
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+zone_pivot_groups: acs-js-csharp-java-python-swift-android
+ms.openlocfilehash: d8b2edff432bdcbd21afdf81ffea2617b22b0452
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100379638"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101661611"
 ---
 # <a name="quickstart-add-chat-to-your-app"></a>快速入门：向应用中添加聊天
-
-[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
 通过使用通信服务聊天客户端库向应用程序添加实时聊天，开启 Azure 通信服务使用旅程。 在本快速入门中，我们将使用聊天客户端库创建聊天会话，使用户能够彼此进行对话。 若要了解有关聊天概念的详细信息，请访问[聊天概念文档](../../concepts/chat/concepts.md)。
 
@@ -33,6 +31,10 @@ ms.locfileid: "100379638"
 
 ::: zone pivot="programming-language-java"
 [!INCLUDE [Chat with Java client library](./includes/chat-java.md)]
+::: zone-end
+
+::: zone pivot="programming-language-android"
+[!INCLUDE [Chat with Android client library](./includes/chat-android.md)]
 ::: zone-end
 
 ::: zone pivot="programming-language-csharp"

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/02/2021
 ms.author: jeedes
-ms.openlocfilehash: 3d99ed71e284ae2e986a93591a61c3c9011857eb
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 81107b3655ae86d51e36445ce46661d553ab3b5a
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100371287"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101649846"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-splunk-enterprise-and-splunk-cloud"></a>教程：Azure Active Directory 与 Splunk Enterprise and Splunk Cloud 集成
 
@@ -127,8 +127,8 @@ ms.locfileid: "100371287"
 
 * 直接转到 Splunk Enterprise and Splunk Cloud 登陆 URL，并从此处启动登录流。
 
-* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 Splunk Enterprise and Splunk Cloud 磁贴时，将会重定向到 Splunk Enterprise and Splunk Cloud 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access)。
+* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 Splunk Enterprise and Splunk Cloud 磁贴时，将会重定向到 Splunk Enterprise and Splunk Cloud 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-配置 Splunk Enterprise and Splunk Cloud 后，就可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)
+配置 Splunk Enterprise and Splunk Cloud 后，就可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)

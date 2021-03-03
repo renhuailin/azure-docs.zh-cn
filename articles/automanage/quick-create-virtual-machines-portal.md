@@ -6,14 +6,14 @@ ms.service: virtual-machines
 ms.subservice: automanage
 ms.workload: infrastructure
 ms.topic: quickstart
-ms.date: 09/04/2020
+ms.date: 02/17/2021
 ms.author: jushiman
-ms.openlocfilehash: 69f43b626bb50171ceaca1b7a8761bec040d1dd6
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 6e0e582ed37230ba3f379f193a229cfec06f066c
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92897222"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101648027"
 ---
 # <a name="quickstart-enable-azure-automanage-for-virtual-machines-in-the-azure-portal"></a>快速入门：在 Azure 门户中启用适用于虚拟机的 Azure 自动管理
 
@@ -33,12 +33,25 @@ ms.locfileid: "92897222"
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-登录 [Azure 门户](https://portal.azure.com/)。
+登录 [Azure 门户](https://aka.ms/AutomanagePortal-Ignite21)。
 
+## <a name="enable-automanage-for-a-single-vm"></a>对单个 VM 启用 Automanage
 
-## <a name="enable-automanage-for-vms-on-an-existing-vm"></a>在现有 VM 上启用适用于 VM 的自动管理
+1. 浏览到要启用的虚拟机。
 
-1. 在搜索栏中，搜索并选择“自动管理 – Azure 虚拟机最佳做法”。
+2. 在“操作”下的目录中单击“Automanage (预览版)”项 。
+
+3. 选择“入门”。
+
+    :::image type="content" source="media\quick-create-virtual-machine-portal\VMManage-GetStarted.png" alt-text="启动单个 VM。":::
+
+4. 选择 Automanage 设置（环境、首选项、Automanage 帐户）并点击“启用”。
+
+    :::image type="content" source="media\quick-create-virtual-machine-portal\VMManage-Enable.png" alt-text="在单个 VM 上启用。":::
+
+## <a name="enable-automanage-for-multiple-vms"></a>对多个 VM 启用 Automanage
+
+1. 在搜索栏中，搜索并选择“Automanage - Azure 计算机最佳做法”。
 
 2. 选择“在现有 VM 上启用”。
 
@@ -64,31 +77,29 @@ ms.locfileid: "92897222"
 6. 单击“启用”按钮。
 
 
-## <a name="enable-automanage-for-vms-on-a-new-vm"></a>在新 VM 上启用适用于 VM 的自动管理
+## <a name="enable-automanage-for-a-new-vm"></a>对新 VM 启用 Automanage
 
-在[此处](https://aka.ms/automanageportalnextstep)登录到 Azure 门户，以创建新的 VM 并启用自动管理。
+在[此处](https://aka.ms/AutomanagePortal-Ignite21)登录到 Azure 门户，以创建新的 VM 并启用自动管理。
 
-1. 按照[快速入门 - 在 Azure 门户中创建 Windows VM](..\virtual-machines\windows\quick-create-portal.md) 中的创建步骤进行操作。
+1. 在 Azure 门户的左上角，选择“创建资源”。
 
-2. 部署 VM 之后，你会登录部署状态页，该页在底部推荐了“后续步骤”。
+2. 在 Azure 市场资源列表上方的搜索框中，搜索并选择要使用的映像，然后选择“创建”。
 
-    :::image type="content" source="media\quick-create-virtual-machine-portal\create-next-steps.png" alt-text="位于部署页底部的“后续步骤”部分。":::
+> [!NOTE]
+> 选中 Automanage 支持的 [Linux 发行版](automanage-linux.md#supported-linux-distributions-and-versions)和 [Windows Server 版本](automanage-windows-server.md#supported-windows-server-versions)。
 
-3. 在“后续步骤”下，选择“启用自动管理虚拟机最佳做法” 。
+3. 在“基本信息”选项卡中，填写 VM 详细信息。
 
-4. 在“自动管理 – Azure 虚拟机最佳做法”页上，“计算机”会自动由新创建的 VM 进行填充 。
+> [!NOTE]
+> 选中 Automanage [支持的区域](automanage-virtual-machines#supported-regions)。
 
-    :::image type="content" source="media\quick-create-virtual-machine-portal\create-new-enable-overview.png" alt-text="新创建的 VM 会显示为所选计算机。":::
+4. 浏览到“管理”选项卡，并选择“Automanage 环境” 。
 
-5. 在“配置文件”下，单击“浏览并更改配置文件和首选项” 。
+    :::image type="content" source="media\quick-create-virtual-machine-portal\VMCreate-Management-Tab.png" alt-text="在“管理”选项卡中启用 Automanage。":::
 
-6. 在“选择配置文件 + 首选项”边栏选项卡上：
-    1. 在左侧选择配置文件：“开发/测试”用于测试，“生产”用于生产 。
-    1. 单击“选择”按钮。
+5. 保留剩余的默认值，然后选择页面底部的“查看 + 创建”按钮。
 
-    :::image type="content" source="media\quick-create-virtual-machine-portal\browse-production-profile.png" alt-text="浏览生产配置文件。":::
-
-7. 单击“启用”按钮。
+6. 显示验证通过的消息时，选择“创建”。
 
 ## <a name="disable-automanage-for-vms"></a>禁用适用于 VM 的自动管理
 
@@ -115,9 +126,9 @@ Azure 自动管理会创建用于存储资源的默认资源组。 检查具有�
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，你启用了适用于 VM 的 Azure 自动管理。 
+在本快速入门中，你启用了适用于 VM 的 Azure 自动管理。
 
-了解如何在对虚拟机启用自动管理时创建和应用自定义首选项。 
+了解如何在对虚拟机启用自动管理时创建和应用自定义首选项。
 
 > [!div class="nextstepaction"]
-> [适用于 VM 的 Azure 自动管理 - 定义配置文件](virtual-machines-custom-preferences.md)
+> [适用于 VM 的 Azure Automanage - 自定义配置文件](virtual-machines-custom-preferences.md)

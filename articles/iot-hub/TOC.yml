@@ -349,6 +349,16 @@
           href: iot-hub-azure-service-health-integration.md
         - name: 订阅来自事件网格的设备连接状态事件
           href: iot-hub-how-to-order-connection-state-events.md
+    - name: 部署更新
+      items:
+        - name: 创建设备更新帐户
+          href: /iot-hub-device-update/create-device-update-account.md
+        - name: 导入更新
+          href: /iot-hub-device-update/import-update.md
+        - name: 创建更新组
+          href: /iot-hub-device-update/create-update-group.md
+        - name: 部署更新
+          href: /iot-hub-device-update/deploy-update.md
     - name: 使用真实设备
       items:
         - name: 使用联机模拟器

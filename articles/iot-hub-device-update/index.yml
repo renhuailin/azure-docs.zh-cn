@@ -1,0 +1,76 @@
+### YamlMime:Landing
+title: IoT 中心的设备更新文档
+summary: IoT 中心的设备更新是一项服务，可用于将无线更新 (OTA) 部署到 IoT 设备。
+metadata:
+  title: IoT 中心的设备更新文档
+  description: IoT 中心的设备更新是一项服务，可用于将无线更新 (OTA) 部署到 IoT 设备。
+  services: iot-hub
+  ms.service: iot-hub
+  ms.topic: landing-page
+  author: philmea
+  ms.author: philmea
+  manager: philmea
+  ms.date: 2/17/2021
+  ms.openlocfilehash: 2b47f8b51cf4150659c1d5b8ed1dc145997252ef
+  ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 03/02/2021
+  ms.locfileid: "101677937"
+landingContent:
+- title: 关于设备更新
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 IoT 中心的设备更新？
+      url: understand-device-update.md
+  - linkListType: concept
+    links:
+    - text: 设备更新如何使用即插即用
+      url: device-update-plug-and-play.md
+    - text: 了解设备更新身份验证和授权
+      url: device-update-control-access.md
+    - text: 了解设备更新代理
+      url: device-update-agent-overview.md
+    - text: 了解设备更新导入
+      url: import-concepts.md
+    - text: 了解设备更新组
+      url: device-update-groups.md
+- title: 通过教程进行了解
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Raspberry Pi 上的设备更新
+      url: device-update-raspberry-pi.md
+  - linkListType: tutorial
+    links:
+    - text: 模拟器上的设备更新
+      url: device-update-simulator.md
+  - linkListType: tutorial
+    links:
+    - text: Ubuntu 服务器 18.04 x64 包代理上的设备更新
+      url: device-update-ubuntu-agent.md
+- title: 了解如何更新设备
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 创建设备更新帐户
+      url: create-device-update-account.md
+  - linkListType: how-to-guide
+    links:
+    - text: 导入更新
+      url: import-update.md
+  - linkListType: how-to-guide
+    links:
+    - text: 创建更新组
+      url: create-update-group.md
+  - linkListType: how-to-guide
+    links:
+    - text: 部署更新
+      url: deploy-update.md
+- title: 开发人员指南
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 生成、运行和修改设备更新代理
+      url: device-update-agent-provisioning.md

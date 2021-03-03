@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 01/14/2021
 ms.author: jamesmantu
 ms.custom: aaddev, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: 0a4421ed548e6066338977260ed062e6ab14893f
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: 27064ecfce0114f7d80e464e2a51928a24919856
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100103696"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101653399"
 ---
 # <a name="quickstart-sign-in-and-get-an-access-token-in-an-angular-spa-using-the-auth-code-flow"></a>快速入门：使用授权代码流在 Angular SPA 中登陆并获取访问令牌
 
@@ -58,10 +58,10 @@ ms.locfileid: "100103696"
 > 1. 选择“注册”  。 在应用的“概述”页上，记下“应用程序(客户端) ID”值，供稍后使用 。
 > 1. 在“管理”下，选择“身份验证”。 
 > 1. 在“平台配置”下，选择“添加平台” 。 在打开的窗格中，选择“单页应用程序”。
-> 1. 将“重定向 URI”值设为 `http://localhost:4200/`。 这是将在本地计算机上侦听的默认端口 NodeJS。 在成功对用户进行身份验证后，我们会将身份验证响应返回到此 URl。 
-> 1. 选择“配置”，以应用更改。
+> 1. 将“重定向 URI”值设置为 `http://localhost:4200/`。 这是将在本地计算机上侦听的默认端口 NodeJS。 在成功对用户进行身份验证后，我们会将身份验证响应返回到此 URl。 
+> 1. 选择“配置”来应用更改。
 > 1. 在“平台配置”下，展开“单页应用程序” 。
-> 1. 确认在“授权类型”![已配置](media/quickstart-v2-javascript/green-check.png) 下，重定向 URI 符合带有 PKCE 的授权代码流的条件。
+> 1. 确认在授权类型![已配置](media/quickstart-v2-javascript/green-check.png)下，重定向 URI 符合带有 PKCE 的授权代码流的条件。
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>步骤 1：在 Azure 门户中配置应用程序
@@ -139,7 +139,7 @@ ms.locfileid: "100103696"
 >
 > 在同一文件中向下滚动并更新 `graphMeEndpoint`。 
 > - 将字符串 `Enter_the_Graph_Endpoint_Herev1.0/me` 替换为 `https://graph.microsoft.com/v1.0/me`
-> - `Enter_the_Graph_Endpoint_Herev1.0/me` 是将针对其进行 API 调用的终结点。 对于主要或全局 Microsoft Graph API 服务，请输入 `https://graph.microsoft.com/`（包括末尾的正斜杠）。 有关详细信息，请参阅[本文档](https://docs.microsoft.com/graph/deployments)。
+> - `Enter_the_Graph_Endpoint_Herev1.0/me` 是将针对其进行 API 调用的终结点。 对于主要或全局 Microsoft Graph API 服务，请输入 `https://graph.microsoft.com/`（包括末尾的正斜杠）。 有关详细信息，请参阅[本文档](/graph/deployments)。
 >
 >
 > ```javascript
@@ -178,7 +178,7 @@ ms.locfileid: "100103696"
 
 ### <a name="msaljs"></a>msal.js
 
-MSAL.js 库会让用户登陆并请求用于访问受 Microsoft 标识平台保护的 API 的令牌。 
+MSAL.js 库会让用户登录并请求用于访问受 Microsoft 标识平台保护的 API 的令牌。 
 
 如果已安装 Node.js，则可通过 Node.js 包管理器 (npm) 下载最新版本：
 
@@ -188,7 +188,7 @@ npm install @azure/msal-browser @azure/msal-angular@2
 
 ## <a name="next-steps"></a>后续步骤
 
-若要查看有关如何使用 vanilla JavaScript 生成授权代码流应用程序的详细分步指南，请参阅以下教程：
+若要查看详细的分步指南了解如何使用 Vanilla JavaScript 生成身份验证代码流应用程序，请查看以下教程：
 
 > [!div class="nextstepaction"]
 > [有关登录和调用 MS Graph 的教程](./tutorial-v2-javascript-auth-code.md)

@@ -11,12 +11,12 @@ ms.date: 11/23/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: 自动化数据处理, 文档处理, 自动化数据输入, 表单处理
-ms.openlocfilehash: 2d3a37165994a8c7ff9d46ac24e63b7f58404ce3
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 95bbc33035ca99a64242274570be5c9263029aef
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99584560"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101094372"
 ---
 # <a name="what-is-form-recognizer"></a>什么是表单识别器？
 
@@ -27,26 +27,27 @@ Azure 表单识别器是一种认知服务，可让你使用机器学习技术�
 表单识别器由自定义文档处理模型、预生成的发票、收据和名片模型以及布局模型组成。 可以使用 REST API 或客户端库 SDK 调用表单识别器模型，以降低复杂性，并将该模型集成到工作流或应用程序中。
 
 表单识别器包括下列服务：
+
 * **[布局 API](#layout-api)** - 从文档中提取文本、选择标记和表结构及其边界框坐标。
 * **[自定义模型](#custom-models)** - 从表单中提取文本、键/值对、选择标记和表数据。 这些模型都是用你自己的数据训练的，因此是针对你的表单量身定制的。
 * [预生成模型](#prebuilt-models) - 使用预生成模型从独特的表单类型中提取数据。 以下预生成模型当前可用
-    * [发票](./concept-invoices.md)
-    * [销售收据](./concept-receipts.md)
-    * [名片](./concept-business-cards.md)
-
+  * [发票](./concept-invoices.md)
+  * [销售收据](./concept-receipts.md)
+  * [名片](./concept-business-cards.md)
 
 ## <a name="try-it-out"></a>试试看
 
 若要试用表单识别器服务，请转到联机 UI 工具示例：
-
-
-# <a name="v20"></a>[v2.0](#tab/v2-0)
-> [!div class="nextstepaction"]
-> [尝试使用表单识别器](https://fott.azurewebsites.net/)
-
+<!-- markdownlint-disable MD025 -->
 # <a name="v21-preview"></a>[v2.1 预览版](#tab/v2-1)
+
 > [!div class="nextstepaction"]
 > [尝试使用表单识别器](https://fott-preview.azurewebsites.net/)
+
+# <a name="v20"></a>[v2.0](#tab/v2-0)
+
+> [!div class="nextstepaction"]
+> [尝试使用表单识别器](https://fott.azurewebsites.net/)
 
 ---
 
@@ -137,12 +138,11 @@ Azure 表单识别器是一种认知服务，可让你使用机器学习技术�
 | **分析收据** | 分析回执文档，以提取关键信息和其他回执文本。|
 | **分析名片** | 分析名片以提取关键信息和文本。|
 
+# <a name="v21-preview"></a>[v2.1 预览版](#tab/v2-1)
+请浏览 [REST API 参考文档](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeWithCustomForm)以了解详细信息。 如果熟悉旧版 API，请参阅[新增功能](./whats-new.md)一文，了解最近的变更。
 
 # <a name="v20"></a>[v2.0](#tab/v2-0)
 请浏览 [REST API 参考文档](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm)以了解详细信息。 如果熟悉旧版 API，请参阅[新增功能](./whats-new.md)一文，了解最近的变更。
-
-# <a name="v21"></a>[v2.1](#tab/v2-1)
-请浏览 [REST API 参考文档](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeWithCustomForm)以了解详细信息。 如果熟悉旧版 API，请参阅[新增功能](./whats-new.md)一文，了解最近的变更。
 
 ---
 

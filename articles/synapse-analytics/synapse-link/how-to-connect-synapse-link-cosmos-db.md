@@ -1,20 +1,20 @@
 ---
-title: 连接到 Azure Synapse Link for Azure Cosmos DB（预览版）
+title: 连接到 Azure Synapse Link for Azure Cosmos DB
 description: 了解如何通过 Azure Synapse Link 将 Azure Cosmos DB 数据库连接到 Azure Synapse 工作区。
 services: synapse-analytics
 author: ArnoMicrosoft
 ms.service: synapse-analytics
 ms.topic: quickstart
 ms.subservice: synapse-link
-ms.date: 04/21/2020
+ms.date: 03/02/2021
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5316f74ee38f597592ae4582aef31837f0f05fda
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 5850644aac9c3324d9ffb17817195cbaaa6020ae
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98119826"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101667548"
 ---
 # <a name="connect-to-azure-synapse-link-for-azure-cosmos-db"></a>连接到 Azure Synapse Link for Azure Cosmos DB
 
@@ -26,9 +26,6 @@ ms.locfileid: "98119826"
 
 * 现有的 Azure Cosmos DB 数据库或按照[快速入门：管理 Azure Cosmos DB 帐户](../../cosmos-db/how-to-manage-database-account.md)中的步骤创建一个新帐户。
 * 现有的 Azure Synapse 工作区，或按照[快速入门：创建 Synapse 工作区](../quickstart-create-workspace.md)中的步骤创建一个新工作区。
-
-> [!IMPORTANT]
-> 未启用托管虚拟网络的工作区当前支持 Azure Synapse Link for Azure Cosmos DB。
 
 ## <a name="enable-synapse-link-on-an-azure-cosmos-db-database-account"></a>在 Azure Cosmos DB 数据库帐户上启用 Synapse Link
 
@@ -70,4 +67,5 @@ Azure Cosmos DB 数据库会显示在 Azure Cosmos DB 部分下的“链接”�
 ## <a name="next-steps"></a>后续步骤
 
 * [了解 Azure Synapse 和 Azure Cosmos DB 均支持的功能](./concept-synapse-link-cosmos-db-support.md)
+* [为 Azure Cosmos DB 分析存储配置专用终结点](../cosmos-db/analytical-store-private-endpoints.md)
 * [了解如何使用 Spark 查询分析存储](./how-to-query-analytical-store-spark.md)

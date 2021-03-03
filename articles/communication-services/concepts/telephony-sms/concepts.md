@@ -9,16 +9,16 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 6f03195c801f241a79a6bf68ef9d398370b0d4c6
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: c66ca0b61e00ad8259b8d3e06366bfc58d304fe6
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100391807"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101660910"
 ---
 # <a name="sms-concepts"></a>短信概念
 
-[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
+[!INCLUDE [Regional Availability Notice](../../includes/regional-availability-include.md)]
 
 通过 Azure 通信服务，可以使用通信服务短信客户端库来发送和接收短信。 这些客户端库可用于支持客户服务方案、约会提醒、双重身份验证和其他实时通信需求。 通过通信服务短信，可以可靠发送消息，同时还能获得市场活动的可传送性和响应率的相关见解。
 

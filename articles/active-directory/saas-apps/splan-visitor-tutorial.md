@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/14/2020
 ms.author: jeedes
-ms.openlocfilehash: ed136d06f18190124abe4598d580f40e41bf8592
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 20f49c174dde90bc7f1a9b34f3dea3132e9b177e
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98704214"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101644674"
 ---
 # <a name="tutorial-integrate-azure-active-directory-single-sign-on-sso-with-splan-visitor"></a>Tutorial:将 Azure Active Directory 单一登录 (SSO) 与 Splan Visitor 集成
 
@@ -120,8 +120,8 @@ Splan Visitor 支持 IdP 发起的 SSO。
 使用以下选项之一测试 Azure AD 单一登录配置：
 
 * **Azure 门户**：选择“测试此应用程序”，以自动登录到为其设置了 SSO 的 Splan Visitor。
-* **Microsoft 的“我的应用”门户**：选择“Splan Visitor”磁贴，以自动登录到为其设置了 SSO 的 Splan Visitor。 有关“我的应用”门户的详细信息，请参阅[从“我的应用”门户登录和启动应用](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+* **Microsoft 的“我的应用”门户**：选择“Splan Visitor”磁贴，以自动登录到为其设置了 SSO 的 Splan Visitor。 有关“我的应用”门户的详细信息，请参阅[从“我的应用”门户登录和启动应用](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-配置 Splan Visitor 后，可[了解如何在 Microsoft Cloud App Security 中强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。 会话控制有助于实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。
+配置 Splan Visitor 后，可[了解如何在 Microsoft Cloud App Security 中强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。 会话控制有助于实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。

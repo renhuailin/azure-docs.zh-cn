@@ -8,22 +8,20 @@ ms.author: mikben
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: d680df0ec5e18cca4d7a42edf45dbd6a50be1472
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 45ce295ceee9d5bd1c2393eaed854e8f2c5643ba
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888600"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101659233"
 ---
 # <a name="what-is-azure-communication-services"></a>什么是 Azure 通信服务？
-
-[!INCLUDE [Public Preview Notice](./includes/public-preview-include.md)]
 
 Azure 通信服务使你可以轻松地将实时多媒体语音、视频和 IP 电话功能添加到应用程序。 通信服务客户端库还使你可以将聊天和短信功能添加到通信解决方案。
 
 <br>
 
-> [!VIDEO https://www.youtube.com/embed/49oshhgY6UQ]
+> [!VIDEO https://www.youtube.com/embed/apBX7ASurgM]
 
 <br>
 <br>
@@ -43,6 +41,7 @@ Azure 通信服务使你可以轻松地将实时多媒体语音、视频和 IP �
 
 | 资源                               |说明                           |
 |---                                    |---                                   |
+|**[在 Teams 会议中加入通话应用](./quickstarts/voice-video-calling/get-started-teams-interop.md)**|Azure 通信服务可用于构建与 Microsoft Teams 交互的自定义会议体验。 通信服务解决方案用户可以通过语音、视频、聊天和屏幕共享与 Teams 参与者进行交互。|
 |[创建通信服务资源](./quickstarts/create-communication-resource.md)|可以使用 Azure 门户或通信服务管理客户端库预配第一个通信服务资源，从而开始使用 Azure 通信服务。 具有通信服务资源连接字符串后，便可以预配第一个用户访问令牌。|
 |[创建第一个用户访问令牌](./quickstarts/access-tokens.md)|用户访问令牌用于针对 Azure 通信服务资源进行服务身份验证。 这些令牌使用通信服务管理客户端库进行预配和重新颁发。|
 |[获取电话号码](./quickstarts/telephony-sms/get-phone-number.md)|可以使用 Azure 通信服务预配和发布电话号码。 这些电话号码可以用于启动出站呼叫和构建短信通信解决方案。|

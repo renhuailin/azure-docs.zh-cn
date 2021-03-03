@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2020
 ms.author: blehr
-ms.openlocfilehash: ff768bceaba57c119aa88d5d4d99b11608917695
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: f61d45b6c46830064c3b58608e2eca0787d559c2
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99492019"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101675121"
 ---
 # <a name="quickstart-create-a-public-ip-address-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建公共 IP 地址
 
@@ -51,7 +51,7 @@ New-AzResourceGroup -Name $rg -Location $loc
 # <a name="standard-sku---using-zones"></a>[**标准 SKU-使用区域**](#tab/option-create-public-ip-standard-zones)
 
 >[!NOTE]
->以下命令适用于 Az. Network module 4.5.0 或更高版本。  有关当前正在使用的 Powershell 模块的详细信息，请参阅 [PowerShellGet 文档](https://docs.microsoft.com/powershell/module/powershellget/?view=powershell-7.1)。
+>以下命令适用于 Az. Network module 4.5.0 或更高版本。  有关当前正在使用的 Powershell 模块的详细信息，请参阅 [PowerShellGet 文档](/powershell/module/powershellget/?view=powershell-7.1)。
 
 使用 [AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress)在 **myResourceGroup** 中创建名为 **myStandardZRPublicIP** 的标准区域冗余公共 IP 地址。
 
@@ -89,7 +89,7 @@ New-AzPublicIpAddress -ResourceGroupName $rg -Name $pubIP -Location $loc -Alloca
 # <a name="standard-sku---no-zones"></a>[标准 SKU - 无区域](#tab/option-create-public-ip-standard)
 
 >[!NOTE]
->以下命令适用于 Az. Network module 4.5.0 或更高版本。  有关当前正在使用的 Powershell 模块的详细信息，请参阅 [PowerShellGet 文档](https://docs.microsoft.com/powershell/module/powershellget/?view=powershell-7.1)。
+>以下命令适用于 Az. Network module 4.5.0 或更高版本。  有关当前正在使用的 Powershell 模块的详细信息，请参阅 [PowerShellGet 文档](/powershell/module/powershellget/?view=powershell-7.1)。
 
 使用 [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) 在 myResourceGroup 中创建一个标准公共 IP 地址作为名为 myStandardPublicIP 的非区域性资源 。
 

@@ -9,16 +9,14 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 30cb023b8ca78f252dbf087a604a61b8aa5c6659
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 88948f757c41550124acf20ac1cf0e33cdb3e5ba
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100577387"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101660151"
 ---
 # <a name="communication-services-notifications"></a>通信服务通知
-
-[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
 Azure 通信服务聊天和呼叫客户端库会创建一个实时消息通道，允许以高效且可靠的方式将信号消息推送到连接的客户端。 这使你可以在应用程序中构建丰富的实时通信功能，而无需实现复杂的 HTTP 轮询逻辑。 但是，在移动应用程序中，此信号通道仅当应用程序在前台处于活动状态时才保持连接状态。 如果希望用户在应用程序处于后台时接收传入呼叫或聊天消息，则应使用推送通知。
 
@@ -34,7 +32,7 @@ Azure 通信服务与 [Azure 事件网格](https://azure.microsoft.com/services/
 
 ## <a name="deliver-push-notifications-via-azure-notification-hubs"></a>通过 Azure 通知中心传递推送通知
 
-可以将 Azure 通知中心连接到通信服务资源，以便在收到传入呼叫时自动向用户的移动设备发送推送通知。 你应使用这些推送通知从后台唤醒你的应用程序，并显示让用户接受或拒绝呼叫的 UI。 
+可以将 Azure 通知中心连接到通信服务资源，以便在收到传入呼叫时自动向用户的移动设备发送推送通知。 你应使用这些推送通知从后台唤醒你的应用程序，并显示让用户接受或拒绝呼叫的 UI。
 
 :::image type="content" source="./media/notifications/acs-anh-int.png" alt-text="显示通信服务如何与 Azure 通知中心集成的关系图。":::
 
@@ -43,13 +41,13 @@ Azure 通信服务与 [Azure 事件网格](https://azure.microsoft.com/services/
 > [!NOTE]
 > 目前仅支持调用推送通知。
 
-### <a name="notification-hub-provisioning"></a>通知中心预配 
+### <a name="notification-hub-provisioning"></a>通知中心预配
 
 若要使用通知中心将推送通知传递到客户端设备，请在与通信服务资源相同的订阅中[创建通知中心](../../notification-hubs/create-notification-hub-portal.md)。 必须为想要使用的平台通知系统配置 Azure 通知中心。 若要了解如何从通知中心获取客户端应用程序中的推送通知，请参阅[通知中心入门](../../notification-hubs/notification-hubs-android-push-notification-google-fcm-get-started.md)，并从页面顶部附近的下拉列表中选择目标客户端平台。
 
 > [!NOTE]
-> 目前支持 APN 和 FCM 平台。  
-APN 平台需要使用令牌身份验证模式进行配置。 目前不支持证书身份验证模式。 
+> 目前支持 APN 和 FCM 平台。
+APN 平台需要使用令牌身份验证模式进行配置。 目前不支持证书身份验证模式。
 
 通知中心配置完成后，便可以使用 Azure 资源管理器客户端或通过 Azure 门户为中心提供连接字符串，从而将它关联到通信服务资源。 连接字符串应包含 `Send` 权限。 建议专门为中心另外创建一个仅具有 `Send` 权限的访问策略。 详细了解[通知中心安全和访问策略](../../notification-hubs/notification-hubs-push-notification-security.md)
 
@@ -74,10 +72,10 @@ armclient POST /subscriptions/<sub_id>/resourceGroups/<resource_group>/providers
 :::image type="content" source="./media/notifications/acs-anh-portal-int.png" alt-text="显示 Azure 门户中的推送通知设置的屏幕截图。":::
 
 > [!NOTE]
-> 如果更新了 Azure 通知中心连接字符串，还必须更新通信服务资源。  
+> 如果更新了 Azure 通知中心连接字符串，还必须更新通信服务资源。
 对中心链接方式的任何更改将在最多 ``10`` 分钟内反映在数据平面（即发送通知时）中。 这也适用于之前发送过通知且中心第一次链接的情况。
 
-### <a name="device-registration"></a>设备注册 
+### <a name="device-registration"></a>设备注册
 
 请参阅[语音呼叫快速入门](../quickstarts/voice-video-calling/getting-started-with-calling.md)，以了解如何向通信服务注册设备句柄。
 

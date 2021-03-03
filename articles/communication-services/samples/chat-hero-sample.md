@@ -9,16 +9,14 @@ ms.author: dademath
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 80fdedb29f70c961431c987558a42d5fa46dfa7d
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 1a28ca967404bf6a5329f8d590a8f1f4f8715407
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98760796"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101657020"
 ---
 # <a name="get-started-with-the-group-chat-hero-sample"></a>群组聊天英雄示例入门
-
-[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
 <!----
 > [!WARNING]
@@ -36,13 +34,13 @@ Azure 通信服务的群组聊天英雄示例演示了如何使用通信服务�
 
 ## <a name="overview"></a>概述
 
-该示例同时包含了客户端应用程序和服务器端应用程序。 客户端应用程序是使用 Microsoft Fluent UI 框架的 React/Redux Web 应用程序。 此应用程序会将请求发送到 ASP.NET Core 服务器端应用程序，该服务器端应用程序会帮助客户端应用程序连接到 Azure。 
+该示例同时包含了客户端应用程序和服务器端应用程序。 客户端应用程序是使用 Microsoft Fluent UI 框架的 React/Redux Web 应用程序。 此应用程序会将请求发送到 ASP.NET Core 服务器端应用程序，该服务器端应用程序会帮助客户端应用程序连接到 Azure。
 
 示例如下所示：
 
 :::image type="content" source="./media/chat/landing-page.png" alt-text="屏幕截图显示示例应用程序登录页。":::
 
-当你按下“开始聊天”按钮时，Web 应用程序从服务器端应用程序获取用户访问令牌。 然后使用该令牌将客户端应用连接到 Azure 通信服务。 检索到令牌后，系统会提示你指定在聊天中代表你的名称和表情符号。 
+当你按下“开始聊天”按钮时，Web 应用程序从服务器端应用程序获取用户访问令牌。 然后使用该令牌将客户端应用连接到 Azure 通信服务。 检索到令牌后，系统会提示你指定在聊天中代表你的名称和表情符号。
 
 :::image type="content" source="./media/chat/pre-chat.png" alt-text="屏幕截图显示应用程序的聊天前屏幕。":::
 
@@ -54,7 +52,7 @@ Azure 通信服务的群组聊天英雄示例演示了如何使用通信服务�
 
 - **主要聊天区域**：这是用户可以发送和接收消息的核心聊天体验。 若要发送消息，可以使用输入区域，然后按 Enter（或使用发送按钮）。 发送方使用正确的名称和表情符号对收到的聊天消息进行分类。 聊天区域中会出现两种类型的通知：1) 用户键入信息时的键入通知 2) 消息的发送和读取通知。
 - **标头**：在这里，用户将看到聊天会话的标题、用于切换参与者和设置侧边栏的控件以及用于退出聊天会话的离开按钮。
-- **侧边栏**：使用标题中的控件进行切换时，将在此处显示参与者和设置信息。 参与者侧边栏包含聊天的参与者列表以及用于邀请参与者加入聊天会话的链接。 设置侧边栏用于配置聊天会话标题。 
+- **侧边栏**：使用标题中的控件进行切换时，将在此处显示参与者和设置信息。 参与者侧边栏包含聊天的参与者列表以及用于邀请参与者加入聊天会话的链接。 设置侧边栏用于配置聊天会话标题。
 
 下面你将找到有关设置该示例的先决条件和步骤的详细信息。
 
@@ -104,7 +102,7 @@ Azure 通信服务的群组聊天英雄示例演示了如何使用通信服务�
 
 ## <a name="next-steps"></a>后续步骤
 
->[!div class="nextstepaction"] 
+>[!div class="nextstepaction"]
 >[从 GitHub 下载示例](https://github.com/Azure-Samples/communication-services-web-chat-hero)
 
 有关详细信息，请参阅以下文章：

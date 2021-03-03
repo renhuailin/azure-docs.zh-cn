@@ -9,26 +9,25 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: d6409c005e006372f55e77aeb4d977e6b1c45832
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: b3bdbef5680561d60ab4db6ee42033553e691ed3
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96936263"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101660117"
 ---
 # <a name="quickstart-handle-sms-events"></a>快速入门：处理短信事件
 
-[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 [!INCLUDE [Regional Availability Notice](../../includes/regional-availability-include.md)]
 
-通过 Azure 事件网格处理通信服务短信事件，开始使用 Azure 通信服务。 
+通过 Azure 事件网格处理通信服务短信事件，开始使用 Azure 通信服务。
 
 ## <a name="about-azure-event-grid"></a>关于 Azure 事件网格
 
 [Azure 事件网格](../../../event-grid/overview.md)是一种基于云的事件处理服务。 在本文中，你将了解如何针对[通信服务事件](../../concepts/event-handling.md)订阅事件，以及触发事件以查看结果。 通常，你会将事件发送到处理事件数据并执行操作的终结点。 在本文中，我们会将事件发送到收集并显示消息的 Web 应用。
 
 ## <a name="prerequisites"></a>先决条件
-- 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
+- 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - Azure 通信服务资源。 可在[创建 Azure 通信资源](../create-communication-resource.md)快速入门中找到更多详细信息。
 - 启用短信的电话号码。 [获取电话号码](./get-phone-number.md)。
 
@@ -44,13 +43,13 @@ ms.locfileid: "96936263"
 2. 选择要用于事件网格的订阅。
 3. 在左侧菜单中的“设置”下，选择“资源提供程序”。  
 4. 找到 **Microsoft.EventGrid**。
-5. 如果尚未注册，请选择“注册”。  
+5. 如果尚未注册，请选择“注册”。 
 
 完成注册可能需要一些时间。 选择“刷新”可更新状态。  当“状态”为“已注册”后，即可继续。  
 
 ### <a name="event-grid-viewer-deployment"></a>事件网格查看器部署
 
-对于本快速入门，我们将使用 [Azure 事件网格查看器示例](/samples/azure-samples/azure-event-grid-viewer/azure-event-grid-viewer/)，以便几乎实时地查看事件。 这会为用户提供实时源体验。 此外，每个事件的有效负载还应该可进行检查。  
+对于本快速入门，我们将使用 [Azure 事件网格查看器示例](/samples/azure-samples/azure-event-grid-viewer/azure-event-grid-viewer/)，以便几乎实时地查看事件。 这会为用户提供实时源体验。 此外，每个事件的有效负载还应该可进行检查。
 
 ## <a name="subscribe-to-the-sms-events-using-web-hooks"></a>使用 Webhook 订阅短信事件
 
@@ -62,7 +61,7 @@ ms.locfileid: "96936263"
 
 在“创建事件订阅”页上，为事件订阅输入名称 。
 
-可以订阅特定事件，以告知事件网格要跟踪哪些短信事件，以及要将事件发送到何处。 从下拉菜单中选择要订阅的事件。 对于短信，可以选择 `SMS Received` 和 `SMS Delivery Report Received`。 
+可以订阅特定事件，以告知事件网格要跟踪哪些短信事件，以及要将事件发送到何处。 从下拉菜单中选择要订阅的事件。 对于短信，可以选择 `SMS Received` 和 `SMS Delivery Report Received`。
 
 如果系统提示输入系统主题名称，请随意输入唯一的字符串。 此字段不会对体验造成影响，适用于内部遥测。
 
@@ -70,7 +69,7 @@ ms.locfileid: "96936263"
 
 :::image type="content" source="./media/handle-sms-events/select-events-create-eventsub.png" alt-text="显示选择了“短信已收到”和“短信传递报告已收到”事件类型的屏幕截图。":::
 
-对于“终结点类型”，请选择“Web Hook”。  
+对于“终结点类型”，请选择“Web Hook”。 
 
 :::image type="content" source="./media/handle-sms-events/select-events-create-linkwebhook.png" alt-text="显示设置为 Webhook 的“终结点类型”字段的屏幕截图。":::
 
@@ -111,7 +110,7 @@ ms.locfileid: "96936263"
 
 在本快速入门中，你学习了如何使用短信事件。 可以通过创建事件网格订阅来接收短信。
 
-> [!div class="nextstepaction"] 
+> [!div class="nextstepaction"]
 > [发送短信](../telephony-sms/send.md)
 
 你可能还想要：

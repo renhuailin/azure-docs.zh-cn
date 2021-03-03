@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 87f592f0cff8504fbafba392d20f405640e2578a
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: e1a0f4f22411e506cab3b54e955a4cdc16986fe2
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98682964"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101667497"
 ---
 # <a name="serverless-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中的无服务器 SQL 池 
 
@@ -75,7 +75,7 @@ ms.locfileid: "98682964"
 
 支持的 T-SQL：
 
-- 支持完整的 [SELECT](/sql/t-sql/queries/select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 外围应用，包括大部分 SQL 函数
+- 支持完整的 [SELECT](/sql/t-sql/queries/select-transact-sql?view=azure-sqldw-latest&preserve-view=true) 外围应用，包括大部分 SQL 函数
 - CETAS - CREATE EXTERNAL TABLE AS SELECT
 - 仅与视图和安全性相关的 DDL 语句
 
@@ -89,7 +89,7 @@ ms.locfileid: "98682964"
 
 ### <a name="extensions"></a>扩展
 
-为了使就地查询 Data Lake 文件中驻留的数据的体验顺畅，无服务器 SQL 池添加了以下功能，以此扩展了现有的 [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 函数：
+为了使就地查询 Data Lake 文件中驻留的数据的体验顺畅，无服务器 SQL 池添加了以下功能，以此扩展了现有的 [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql?view=azure-sqldw-latest&preserve-view=true) 函数：
 
 [查询多个文件或文件夹](query-data-storage.md#query-multiple-files-or-folders)
 
@@ -113,7 +113,7 @@ ms.locfileid: "98682964"
 
 ### <a name="azure-active-directory-integration-and-multi-factor-authentication"></a>Azure Active Directory 集成和多重身份验证
 
-借助无服务器 SQL 池，可以使用 [Azure Active Directory 集成](../../azure-sql/database/authentication-aad-configure.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)集中管理数据库用户和其他 Microsoft 服务的标识。 此功能简化了权限管理，增强了安全性。 Azure Active Directory (Azure AD) 支持[多重身份验证](../../azure-sql/database/authentication-mfa-ssms-configure.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) (MFA)，以便在支持单一登录过程的同时提高数据和应用程序安全性。
+借助无服务器 SQL 池，可以使用 [Azure Active Directory 集成](../../azure-sql/database/authentication-aad-configure.md)集中管理数据库用户和其他 Microsoft 服务的标识。 此功能简化了权限管理，增强了安全性。 Azure Active Directory (Azure AD) 支持[多重身份验证](../../azure-sql/database/authentication-mfa-ssms-configure.md) (MFA)，以便在支持单一登录过程的同时提高数据和应用程序安全性。
 
 #### <a name="authentication"></a>身份验证
 
@@ -125,7 +125,7 @@ ms.locfileid: "98682964"
 
 - **Azure Active Directory 身份验证**：
 
-  此身份验证方法使用 Azure Active Directory 管理的标识。 对于 Azure AD 用户，可以启用多重身份验证。 请[尽可能](/sql/relational-databases/security/choose-an-authentication-mode?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)使用 Active Directory 身份验证（集成安全性）。
+  此身份验证方法使用 Azure Active Directory 管理的标识。 对于 Azure AD 用户，可以启用多重身份验证。 请[尽可能](/sql/relational-databases/security/choose-an-authentication-mode?view=azure-sqldw-latest&preserve-view=true)使用 Active Directory 身份验证（集成安全性）。
 
 #### <a name="authorization"></a>授权
 

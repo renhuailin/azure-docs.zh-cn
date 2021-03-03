@@ -6,14 +6,17 @@ ms.author: marobert
 ms.date: 08/11/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 02cf175fc0a29795428ce1b3651469532ff3867c
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: b4719fcf046ce7ef5d74ccf1863b0400c2c52845
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92438862"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101656600"
 ---
 本快速入门介绍如何使用适用于 Android 的 Azure 通信服务呼叫客户端库开始呼叫。
+
+> [!NOTE]
+> 本文档使用 1.0.0-beta.8 版的通话客户端库。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -32,11 +35,11 @@ ms.locfileid: "92438862"
 
 在“手机和平板电脑”下选择“空活动”项目模板。
 
-:::image type="content" source="../media/android/studio-blank-activity.png" alt-text="显示在 Android Studio 中选择了“启动新的 Android Studio 项目”按钮的屏幕截图。":::
+:::image type="content" source="../media/android/studio-blank-activity.png" alt-text="显示在“项目模板”屏幕中选择了“空活动”选项的屏幕截图。":::
 
 选择最低客户端库版本为“API 26:Android 8.0 (Oreo)”或更高版本。
 
-:::image type="content" source="../media/android/studio-calling-min-api.png" alt-text="显示在 Android Studio 中选择了“启动新的 Android Studio 项目”按钮的屏幕截图。":::
+:::image type="content" source="../media/android/studio-calling-min-api.png" alt-text="显示在“项目模板”屏幕中选择了“空活动”选项的屏幕截图 2。":::
 
 
 ### <a name="install-the-package"></a>安装包
@@ -78,7 +81,7 @@ android {
 
 dependencies {
     ...
-    implementation 'com.azure.android:azure-communication-calling:1.0.0-beta.2'
+    implementation 'com.azure.android:azure-communication-calling:1.0.0-beta.8'
     ...
 }
 ```
@@ -180,8 +183,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.azure.android.communication.common.CommunicationUser;
-import com.azure.android.communication.common.CommunicationUserCredential;
+import com.azure.android.communication.common.CommunicationUserIdentifier;
+import com.azure.android.communication.common.CommunicationTokenCredential;
 import com.azure.communication.calling.CallAgent;
 import com.azure.communication.calling.CallClient;
 import com.azure.communication.calling.StartCallOptions;
@@ -264,6 +267,7 @@ private void getAllPermissions() {
 | CallClient| CallClient 是呼叫客户端库的主入口点。|
 | CallAgent | CallAgent 用于启动和管理呼叫。 |
 | CommunicationUserCredential | CommunicationUserCredential 用作实例化 CallAgent 的令牌凭据。|
+| CommunicationIdentifier | CommunicationIdentifier 用作可参与通话的不同类型的参与者。|
 
 ## <a name="create-an-agent-from-the-user-access-token"></a>从用户访问令牌创建代理
 
@@ -278,7 +282,7 @@ private void createAgent() {
     String userToken = "<User_Access_Token>";
 
     try {
-        CommunicationUserCredential credential = new CommunicationUserCredential(userToken);
+        CommunicationTokenCredential credential = new CommunicationTokenCredential(userToken);
         callAgent = new CallClient().createCallAgent(getApplicationContext(), credential).get();
     } catch (Exception ex) {
         Toast.makeText(getApplicationContext(), "Failed to create call agent.", Toast.LENGTH_SHORT).show();
@@ -303,7 +307,7 @@ private void startCall() {
 
     callAgent.call(
         getApplicationContext(),
-        new CommunicationUser[] {new CommunicationUser(calleeId)},
+        new CommunicationUserIdentifier[] {new CommunicationUserIdentifier(calleeId)},
         options);
 }
 ```
@@ -313,7 +317,7 @@ private void startCall() {
 
 现在可以使用工具栏上的“运行应用”按钮 (Shift+F10) 启动应用。 通过呼叫 `8:echo123` 来验证是否能够进行呼叫。 将播放预先录制的消息，然后将你的消息重复回复给你。
 
-:::image type="content" source="../media/android/quickstart-android-call-echobot.png" alt-text="显示在 Android Studio 中选择了“启动新的 Android Studio 项目”按钮的屏幕截图。":::
+:::image type="content" source="../media/android/quickstart-android-call-echobot.png" alt-text="显示已完成应用程序的屏幕截图。":::
 
 ## <a name="sample-code"></a>代码示例
 

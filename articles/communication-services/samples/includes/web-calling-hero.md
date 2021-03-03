@@ -10,15 +10,13 @@ ms.date: 9/1/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 61b3b3abace5c7a1cd846c1e3c1e7ac166efd5c7
-ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
+ms.openlocfilehash: eb420a8d5242cb6a122e7f7062e457b64f1fb5db
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99475609"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101682387"
 ---
-[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
-
 Azure 通信服务的群组呼叫英雄示例演示了如何使用通信服务呼叫 Web 客户端库来构建群组呼叫体验。
 
 在本地计算机上运行该示例之前，我们将通过本示例快速入门了解其工作原理。 然后，使用你自己的 Azure 通信服务资源将此示例部署到 Azure。
@@ -29,7 +27,7 @@ Azure 通信服务的群组呼叫英雄示例演示了如何使用通信服务�
 
 ## <a name="overview"></a>概述
 
-该示例同时包含了客户端应用程序和服务器端应用程序。 客户端应用程序是使用 Microsoft Fluent UI 框架的 React/Redux Web 应用程序。 此应用程序会将请求发送到 ASP.NET Core 服务器端应用程序，该服务器端应用程序会帮助客户端应用程序连接到 Azure。 
+该示例同时包含了客户端应用程序和服务器端应用程序。 客户端应用程序是使用 Microsoft Fluent UI 框架的 React/Redux Web 应用程序。 此应用程序会将请求发送到 ASP.NET Core 服务器端应用程序，该服务器端应用程序会帮助客户端应用程序连接到 Azure。
 
 该示例如下所示：
 
@@ -91,7 +89,7 @@ Azure 通信服务的群组呼叫英雄示例演示了如何使用通信服务�
 
 ## <a name="next-steps"></a>后续步骤
 
->[!div class="nextstepaction"] 
+>[!div class="nextstepaction"]
 >[从 GitHub 下载示例](https://github.com/Azure-Samples/communication-services-web-calling-hero)
 
 有关详细信息，请参阅以下文章：

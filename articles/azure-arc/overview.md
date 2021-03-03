@@ -1,18 +1,18 @@
 ---
 title: Azure Arc 概述
 description: 了解什么是 Azure Arc，以及它如何帮助客户使用其他 Azure 服务和功能对混合资源进行管理和治理。
-ms.date: 09/23/2020
+ms.date: 03/02/2021
 ms.topic: overview
-ms.openlocfilehash: 8f39dff16037b5f52a050b7d07193b0ad7cab93d
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 33c9d6ca87c3d8d2d8920ff429902f5876bbdc59
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97672680"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101650186"
 ---
 # <a name="azure-arc-overview"></a>Azure Arc 概述
 
-如今，各公司都在努力控制和治理越来越复杂的环境。 这些环境跨数据中心、多个云和边缘扩展。 每个环境和云都具有自己的一组不相互连接的管理工具，你需要学习和操作这些工具。
+如今，公司正努力控制和管理日益复杂的环境。 这些环境跨数据中心、多个云和边缘扩展。 每个环境和云都具有自己的一组互不关联的管理工具，你需要学习和操作这些工具。
 
 新的 DevOps 和 ITOps 操作模型很难并行实现，因为现有工具无法为新的云本机模式提供支持。
 
@@ -36,11 +36,11 @@ Azure Arc 的主要功能包括：
 
 * 大规模管理和治理 Kubernetes 群集。
 
-* 使用基于 GitOps 的配置作为代码管理，直接从源代码管理（例如 GitHub）跨一个或多个群集部署应用程序和配置。
+* 使用 GitOps 跨 Git 存储库的一个或多个群集部署配置。
 
-* 使用 Azure Policy 实现 Kubernetes 群集的零接触合规性和配置。
+*  使用 Azure Policy 实现 Kubernetes 群集的零接触合规性和配置。
 
-* 在任何 Kubernetes 环境（特别是 Azure SQL 托管实例和 Azure Database for PostgreSQL 超大规模）上运行 Azure 数据服务，其中包含升级/更新、安全性和监视等权益，就像在 Azure 中运行一样。 利用弹性缩放，应用更新，而不会导致任何应用程序停机，即使没有持续连接到 Azure。
+* 在任何 Kubernetes 环境（特别是 Azure SQL 托管实例和 Azure Database for PostgreSQL 超大规模，其中包含升级/更新、安全性和监视等权益）上运行 Azure 数据服务，就像在 Azure 中运行一样。 使用弹性缩放，应用更新，而不会导致任何应用程序停机，即使没有持续连接到 Azure
 
 * 无论使用的是 Azure 门户、Azure CLI、Azure PowerShell 还是 Azure REST API，都可以查看已启用 Azure Arc 的资源的统一体验。
 
@@ -50,7 +50,7 @@ Azure Arc 的主要功能包括：
 
 ### <a name="arc-enabled-servers"></a>已启用 Arc 的服务器
 
-Azure Arc 控制平面功能无需额外付费。 这包括：
+提供以下 Azure Arc 控制平面功能，而无需额外费用：
 
 * 通过 Azure 管理组和标记来整理资源。
 
@@ -66,11 +66,11 @@ Azure Arc 控制平面功能无需额外付费。 这包括：
 
 ### <a name="azure-arc-enabled-kubernetes"></a>已启用 Azure Arc 的 Kubernetes
 
-在当前预览阶段，已启用 Azure Arc 的 Kubernetes 无需额外付费。
+在已启用 Arc 的 Kubernetes 上使用的任何 Azure 服务（例如 Azure 安全中心或 Azure Monitor）都将按照该服务的定价收费。 有关已启用 Azure Arc 的 Kubernetes 上的配置定价的详细信息，请参阅 [Azure 定价页](https://azure.microsoft.com/pricing/)。
 
 ### <a name="azure-arc-enabled-data-services"></a>已启用 Azure Arc 的数据服务
 
-在当前预览阶段，已启用 Azure Arc 的数据服务无需额外付费。
+在当前预览阶段，提供已启用 Azure Arc 的数据服务，而无需额外费用。
 
 ## <a name="next-steps"></a>后续步骤
 
