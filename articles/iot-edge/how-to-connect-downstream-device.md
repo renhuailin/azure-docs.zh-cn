@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 - devx-track-js
-ms.openlocfilehash: 35bb17a5cdfcc6aff4a513a594a08283ab1f1305
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 44fe128658b90d2327f17f22b2a33aaa1d4da1fc
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96437025"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102046119"
 ---
 # <a name="connect-a-downstream-device-to-an-azure-iot-edge-gateway"></a>将下游设备连接到 Azure IoT Edge 网关
 
@@ -176,7 +176,7 @@ var options = {
 ```
 
 >[!NOTE]
-> 如果使用 [托管](https://github.com/Azure/azure-iot-sdk-c#packages-and-libraries) 包或库，则在设置客户端时注册 CA 证书的方法可能会更改。 例如， [基于 ARDUINO IDE 的库](https://github.com/azure/azure-iot-arduino) 需要将 CA 证书添加 [到全局证书](https://github.com/Azure/azure-iot-sdk-c/blob/master/certs/certs.c) 文件中定义的证书数组，而不是使用 `IoTHubDeviceClient_LL_SetOption` 操作。  
+> 如果使用[托管的](https://github.com/Azure/azure-iot-sdk-c#packages-and-libraries)包或库，则在设置客户端时，注册 CA 证书的方法可能会更改。 例如，[基于 Arduino IDE 的库](https://github.com/azure/azure-iot-arduino)需要将 CA 证书添加到全局 [certs.c](https://github.com/Azure/azure-iot-sdk-c/blob/master/certs/certs.c) 文件中定义的证书数组，而不是使用 `IoTHubDeviceClient_LL_SetOption` 操作。  
 
 在 Windows 主机上，如果你不使用 OpenSSL 或其他 TLS 库，则 SDK 默认使用 Schannel。 要使 Schannel 正常工作，应在 Windows 证书存储中安装 IoT Edge 根 CA 证书，而不要使用 `IoTHubDeviceClient_SetOption` 操作进行设置。
 
@@ -214,7 +214,7 @@ openssl s_client -connect mygateway.contoso.com:8883 -CAfile <CERTDIR>/certs/azu
 
 如果叶设备与其网关设备之间的连接是断断续续的，请尝试执行以下步骤来解决问题。
 
-1. 连接字符串中的网关主机名是否与网关设备上 IoT Edge config.yaml 文件中的 hostname 值相同？
+1. 连接字符串中的网关主机名与网关设备上 IoT Edge 配置文件中的主机名值相同吗？
 2. 网关主机名是否可以解析为 IP 地址？ 可以通过使用 DNS 或通过在叶设备上添加一个主机文件条目来解决连接断断续续的问题。
 3. 防火墙中是否打开了通信端口？ 必须能够在下游设备和透明 IoT Edge 之间进行基于所用协议 (MQTTS:8883/AMQPS:5671/HTTPS:433) 的通信。
 

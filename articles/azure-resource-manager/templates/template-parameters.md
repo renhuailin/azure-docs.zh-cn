@@ -2,13 +2,13 @@
 title: 模板中的参数
 description: 介绍如何在 Azure 资源管理器模板中定义参数 (ARM 模板) 和 Bicep 文件。
 ms.topic: conceptual
-ms.date: 02/22/2021
-ms.openlocfilehash: 3b5da4b14fc338ba81be39d1e3ff6965294f0a0b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/03/2021
+ms.openlocfilehash: b23417766524204e490450568bb80b8c49e2d328
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101710628"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102043926"
 ---
 # <a name="parameters-in-arm-templates"></a>ARM 模板中的参数
 
@@ -215,6 +215,8 @@ param location string = resourceGroup().location
 param siteName string = 'site${uniqueString(resourceGroup().id)}'
 param hostingPlanName string = '${siteName}-plan'
 ```
+
+---
 
 ## <a name="length-constraints"></a>长度约束
 

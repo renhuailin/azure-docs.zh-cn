@@ -5,25 +5,25 @@ author: kgremban
 manager: philmea
 ms.author: kgremban
 ms.reviewer: mrohera
-ms.date: 4/3/2020
+ms.date: 03/01/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: bfb61a5434089fffab9d8ceb9c7b0fbca528cac5
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 73d1d873df58c672e9db6b9e4e17ed58e1a6397e
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99430605"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102046187"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-symmetric-key-attestation"></a>使用对称密钥证明创建和预配 IoT Edge 设备
 
 可以使用[设备预配服务](../iot-dps/index.yml)自动预配 Azure IoT Edge 设备，就像预配未启用 Edge 的设备一样。 如果你不熟悉自动预配过程，请在继续操作之前查看[预配](../iot-dps/about-iot-dps.md#provisioning-process)概述。
 
-本文介绍如何通过以下步骤，在 IoT Edge 设备上使用对称密钥证明创建设备预配服务的单个注册：
+本文介绍如何在 IoT Edge 设备上使用对称密钥证明创建设备预配服务个人或组注册，步骤如下：
 
 * 创建 IoT 中心设备预配服务 (DPS) 的实例。
-* 为设备创建个人注册。
+* 为设备创建注册。
 * 安装 IoT Edge 运行时并连接到 IoT 中心。
 
 对称密钥证明是一种通过设备预配服务实例对设备进行身份验证的简单方法。 此证明方法表示不熟悉设备预配或不具备严格安全要求的开发人员的“Hello world”体验。 使用 [TPM](../iot-dps/concepts-tpm-attestation.md) 或 [X.509 证书](../iot-dps/concepts-x509-attestation.md)的设备证明更加安全，且应该用于更严格的安全要求。
@@ -72,8 +72,8 @@ ms.locfileid: "99430605"
 
    1. 选择“True”，声明该注册适用于 IoT Edge 设备。  对于组注册，所有设备必须是 IoT Edge 设备，或者都不是 IoT Edge 设备。
 
-   > [!TIP]
-   > 在 Azure CLI 中，可以创建[注册](/cli/azure/ext/azure-iot/iot/dps/enrollment)或[注册组](/cli/azure/ext/azure-iot/iot/dps/enrollment-group)，并使用“支持 Edge”  标志来指定某个设备或设备组是 IoT Edge 设备。
+      > [!TIP]
+      > 在 Azure CLI 中，可以创建[注册](/cli/azure/ext/azure-iot/iot/dps/enrollment)或[注册组](/cli/azure/ext/azure-iot/iot/dps/enrollment-group)，并使用“支持 Edge”  标志来指定某个设备或设备组是 IoT Edge 设备。
 
    1. 接受设备预配服务分配策略中有关 **如何将设备分配到中心** 的默认值，或选择特定于此注册的其他值。
 
@@ -169,10 +169,12 @@ IoT Edge 运行时部署在所有 IoT Edge 设备上。 该运行时的组件在
 * 从 DPS 注册复制的 **主密钥**
 
 > [!TIP]
-> 对于组注册，需要每个设备的[派生密钥](#derive-a-device-key)，而不是 DPS 注册密钥。
+> 对于组注册，需要每个设备的 [派生密钥](#derive-a-device-key) ，而不是 DPS 注册主键。
 
 ### <a name="linux-device"></a>Linux 设备
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
 1. 在 IoT Edge 设备上打开配置文件。
 
    ```bash
@@ -197,15 +199,66 @@ IoT Edge 运行时部署在所有 IoT Edge 设备上。 该运行时的组件在
    #  dynamic_reprovisioning: false
    ```
 
-   （可选）使用 `always_reprovision_on_startup` 或 `dynamic_reprovisioning` 行配置设备的重新设置行为。 如果在启动时将设备设置为重新设置，它将始终首先尝试使用 DPS 进行预配，然后回退到预配备份（如果失败）。 如果设备设置为动态重新设置，则在检测到重新设置事件时，IoT Edge 将重新启动并重新设置。 有关详细信息，请参阅 [IoT 中心设备重新设置概念](../iot-dps/concepts-device-reprovision.md)。
-
 1. 将 `scope_id`、`registration_id` 和 `symmetric_key` 的值更新为你的 DPS 和设备信息。
+
+1. （可选）使用 `always_reprovision_on_startup` 或 `dynamic_reprovisioning` 行配置设备的重新设置行为。 如果在启动时将设备设置为重新设置，它将始终首先尝试使用 DPS 进行预配，然后回退到预配备份（如果失败）。 如果设备设置为动态重新设置，则在检测到重新设置事件时，IoT Edge 将重新启动并重新设置。 有关详细信息，请参阅 [IoT 中心设备重新设置概念](../iot-dps/concepts-device-reprovision.md)。
 
 1. 重启 IoT Edge 运行时，使之拾取你在设备上所做的所有配置更改。
 
    ```bash
    sudo systemctl restart iotedge
    ```
+
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+1. 根据 IoT Edge 安装中提供的模板文件创建设备的配置文件。
+
+   ```bash
+   sudo cp /etc/aziot/config.toml.edge.template /etc/aziot/config.toml
+   ```
+
+1. 在 IoT Edge 设备上打开配置文件。
+
+   ```bash
+   sudo nano /etc/aziot/config.toml
+   ```
+
+1. 查找文件的 " **预配** " 部分。 取消注释包含对称密钥的 DPS 预配的行，并确保注释掉任何其他预配行。
+
+   ```toml
+   # DPS provisioning with symmetric key
+   [provisioning]
+   source = "dps"
+   global_endpoint = "https://global.azure-devices-provisioning.net"
+   id_scope = "<SCOPE_ID>"
+   
+   [provisioning.attestation]
+   method = "symmetric_key"
+   registration_id = "<REGISTRATION_ID>"
+
+   symmetric_key = "<PRIMARY_KEY OR DERIVED_KEY>"
+   ```
+
+1. 将 `id_scope`、`registration_id` 和 `symmetric_key` 的值更新为你的 DPS 和设备信息。
+
+   对称密钥参数可以接受内联键、文件 URI 或 PKCS # 11 URI 的值。 根据所使用的格式，取消注释一条对称密钥行。
+
+   如果使用任何 PKCS # 11 Uri，请在配置文件中找到 **pkcs # 11** 部分，并提供有关 PKCS # 11 配置的信息。
+
+1. 保存并关闭 toml 文件。
+
+1. 应用对 IoT Edge 所做的配置更改。
+
+   ```bash
+   sudo iotedge config apply
+   ```
+
+:::moniker-end
+<!-- end 1.2 -->
 
 ### <a name="windows-device"></a>Windows 设备
 
@@ -228,6 +281,9 @@ IoT Edge 运行时部署在所有 IoT Edge 设备上。 该运行时的组件在
 
 ### <a name="linux-device"></a>Linux 设备
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+
 检查 IoT Edge 服务的状态。
 
 ```cmd/sh
@@ -245,6 +301,31 @@ journalctl -u iotedge --no-pager --no-full
 ```cmd/sh
 iotedge list
 ```
+
+:::moniker-end
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+检查 IoT Edge 服务的状态。
+
+```cmd/sh
+sudo iotedge system status
+```
+
+检查服务日志。
+
+```cmd/sh
+sudo iotedge system logs
+```
+
+列出正在运行的模块。
+
+```cmd/sh
+sudo iotedge list
+```
+
+:::moniker-end
 
 ### <a name="windows-device"></a>Windows 设备
 

@@ -13,14 +13,14 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 08/12/2020
+ms.date: 02/18/2021
 ms.author: radeltch
-ms.openlocfilehash: e8d58a74f9ce8489465934398014dd4af3309a9e
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: a4c4631a0a1263e5a5398c44a8570f92571102e8
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101669826"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102045830"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-windows-with-azure-netapp-filessmb-for-sap-applications"></a>适用于 Windows 上的 Azure 虚拟机上的 SAP NetWeaver 高可用性，适用于 SAP 应用程序 (SMB) 的 Azure Vm
 
@@ -82,6 +82,9 @@ ms.locfileid: "101669826"
 * [在故障转移群集上安装 () SCS 实例](https://www.sap.com/documents/2017/07/f453332f-c97c-0010-82c7-eda71af511fa.html)
 * [创建用于 Azure NetApp 文件的 SMB 卷](../../../azure-netapp-files/create-active-directory-connections.md#requirements-for-active-directory-connections)
 * [使用 Azure NetApp 文件的 Microsoft Azure 上的 NetApp SAP 应用程序][anf-sap-applications-azure]
+
+> [!IMPORTANT]
+> 注意：请注意，在 SMB 共享上，在 [Azure NetApp 文件][anf-azure-doc] smb 卷上托管的 SAP 系统的安装可能会失败，并出现权限不足（如 "warningPerm 未定义"）的安装错误。 若要避免此错误，执行上下文 SWPM 的用户需要在安装 SAP 系统期间提升权限 "域管理员"。  
 
 ## <a name="overview"></a>概述
 

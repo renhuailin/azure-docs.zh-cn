@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/11/2020
 ms.author: mohitku
 ms.reviewer: tyao
-ms.openlocfilehash: 4c710792dd7966fad76b33954fdf7c2253cf18f0
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 8752886bc5304de420083212d29ccd3e1cb14084
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96488232"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102043688"
 ---
 # <a name="tuning-web-application-firewall-waf-for-azure-front-door"></a>优化 Web 应用程序防火墙 (WAF) 用于 Azure 前门
  
@@ -38,9 +38,17 @@ UserId=20&captchaId=7&captchaId=15&comment="1=1"&rating=3
 
 如果尝试请求，WAF 将阻止任何参数或字段中包含 *1=1* 字符串的流量。 此字符串通常与 SQL 注入攻击相关。 可以浏览日志，查看请求的时间戳，以及阻止/匹配的规则。
  
-在下面的示例中，我们将浏览 `FrontdoorWebApplicationFirewallLog` 由于规则匹配而生成的日志。
+在下面的示例中，我们将浏览 `FrontdoorWebApplicationFirewallLog` 由于规则匹配而生成的日志。 以下 Log Analytics 查询可用于查找在过去24小时内被阻止的请求：
+
+```kusto
+AzureDiagnostics
+| where Category == 'FrontdoorWebApplicationFirewallLog'
+| where TimeGenerated > ago(1d)
+| where action_s == 'Block'
+
+```
  
-在 "requestUri" 字段中，你可以看到对特定请求的请求 `/api/Feedbacks/` 。 接下来，找到 `942110` "ruleName" 字段中的规则 ID。 知道规则 ID 后，可以使用 [OWASP ModSecurity Core 规则集官方存储库](https://github.com/coreruleset/coreruleset) ，并按该 [规则 id](https://github.com/coreruleset/coreruleset/blob/v3.1/dev/rules/REQUEST-942-APPLICATION-ATTACK-SQLI.conf) 搜索以查看其代码，并确切了解此规则的匹配项。 
+在 `requestUri` 字段中，你可以看到该请求是对的 `/api/Feedbacks/` 。 接下来，我们在 `942110` 该字段中找到规则 ID `ruleName` 。 知道规则 ID 后，可以使用 [OWASP ModSecurity Core 规则集官方存储库](https://github.com/coreruleset/coreruleset) ，并按该 [规则 id](https://github.com/coreruleset/coreruleset/blob/v3.1/dev/rules/REQUEST-942-APPLICATION-ATTACK-SQLI.conf) 搜索以查看其代码，并确切了解此规则的匹配项。 
  
 然后，通过检查该 `action` 字段，可以看到此规则设置为 "在匹配时阻止请求"，我们确认该请求确实被 WAF 阻止，因为 `policyMode` 设置为 `prevention` 。 
  
@@ -196,6 +204,9 @@ UserId=20&captchaId=7&captchaId=15&comment="1=1"&rating=3
 如果要使用 Azure PowerShell 禁用托管规则，请参阅 [`PSAzureManagedRuleOverride`](/powershell/module/az.frontdoor/new-azfrontdoorwafmanagedruleoverrideobject?preserve-view=true&view=azps-4.7.0) 对象文档。 如果要使用 Azure CLI，请参阅 [`az network front-door waf-policy managed-rules override`](/cli/azure/ext/front-door/network/front-door/waf-policy/managed-rules/override?preserve-view=true&view=azure-cli-latest) 文档。
 
 ![WAF 规则](../media/waf-front-door-tuning/waf-rules.png)
+
+> [!TIP]
+> 最好是记录对 WAF 策略所做的任何更改。 包括说明误报检测的示例请求，并清楚地说明添加自定义规则、禁用规则或规则集或添加例外的原因。 如果你在将来重新设计应用程序，并需要验证你的更改是否仍然有效，此文档可能会有所帮助。 如果你曾被审核，或者需要证明你已从其默认设置中重新配置了 WAF 策略，该方法也会有所帮助。
 
 ## <a name="finding-request-fields"></a>查找请求字段
 

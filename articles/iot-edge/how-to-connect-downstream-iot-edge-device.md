@@ -4,7 +4,7 @@ description: 如何将 IoT Edge 设备配置为连接到 Azure IoT Edge 网关�
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/10/2020
+ms.date: 03/01/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: 1258fd4b5c69b399b70d1f2db1be63765771e631
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 709b986cc06aada45a0f541142b89fc3537f8ba8
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98629397"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102046085"
 ---
 # <a name="connect-a-downstream-iot-edge-device-to-an-azure-iot-edge-gateway-preview"></a>将下游 IoT Edge 设备连接到 Azure IoT Edge 网关（预览版）
 
@@ -25,6 +25,8 @@ ms.locfileid: "98629397"
 
 >[!NOTE]
 >此功能要求运行 Linux 容器的 IoT Edge 1.2 版本，该版本为公共预览版。
+>
+>本文反映 IoT Edge 版本1.2 的最新预览版本。 确保设备运行的是版本 [1.2.0](https://github.com/Azure/azure-iotedge/releases/tag/1.2.0-rc4) 或更高版本。 有关在设备上获取最新预览版本的步骤，请参阅 [安装适用于 Linux (版本1.2 的 Azure IoT Edge) ](how-to-install-iot-edge.md) 或 [将 IoT Edge 更新到1.2 版](how-to-update-iot-edge.md#special-case-update-from-10-or-11-to-12)。
 
 在网关方案中，IoT Edge 设备既可以是网关，也可以是下游设备。 可以将多个 IoT Edge 网关分层，以创建设备的层次结构。 下游设备（或子设备）可以通过其网关设备（或父设备）进行身份验证以及发送或接收消息。
 
@@ -103,9 +105,6 @@ Azure CLI 的 [azure-iot](/cli/azure/ext/azure-iot) 扩展提供管理 IoT 资�
 * 要包括在根证书链中的任何中间证书。
 * 设备 CA 证书及其私钥，由根证书和中间证书生成。 网关层次结构中的每个 IoT Edge 设备都需要独一无二的设备 CA 证书。
 
->[!NOTE]
->目前存在一个 libiothsm 限制，会阻止使用在 2038 年 1 月 1 日或之后到期的证书。
-
 可以使用自签名证书颁发机构颁发的证书，也可以从 Baltimore、Verisign、DigiCert 或 GlobalSign 等受信任的商业证书颁发机构购买一个证书。
 
 如果没有自己的可用证书，可以[创建用于测试 IoT Edge 设备功能的演示证书](how-to-create-test-certificates.md)。 请按该文中的步骤创建一组根证书和中间证书，然后为每个设备创建 IoT Edge 设备 CA 证书。
@@ -118,13 +117,13 @@ Azure CLI 的 [azure-iot](/cli/azure/ext/azure-iot) 扩展提供管理 IoT 资�
 
 若要启用安全连接，需要为网关方案中的每个 IoT Edge 设备配置独一无二的设备 CA 证书以及由网关层次结构中的所有设备共享的根 CA 证书的副本。
 
-你应该已在设备上安装了 IoT Edge。 否则，请按照以下步骤 [在 IoT 中心注册 IoT Edge 设备](how-to-register-device.md) ，然后 [安装 Azure IoT Edge 运行时](how-to-install-iot-edge.md)。
+你应该已在设备上安装了 IoT Edge。 如果没有，请按照以下步骤[在 IoT 中心内注册 IoT Edge 设备](how-to-register-device.md)，然后[安装 Azure IoT Edge 运行时](how-to-install-iot-edge.md)。
 
 本部分的步骤引用了本文前面讨论的根 CA 证书与设备 CA 证书和私钥。 如果已在其他设备上创建了这些证书，请让这些证书在此设备上可用。 可通过物理方式（例如使用 U 盘）传输这些文件，还可以通过服务（例如 [Azure Key Vault](../key-vault/general/overview.md)）或功能（例如[安全文件复制](https://www.ssh.com/ssh/scp/)）这样做。
 
 使用以下步骤在设备上配置 IoT Edge。
 
-在 Linux 上，确保用户 iotedge 对保存证书和密钥的目录拥有读取权限。
+请确保用户 **iotedge** 对包含证书和密钥的目录具有读取权限。
 
 1. 在此 IoT Edge 设备上安装根 CA 证书。
 
@@ -140,19 +139,16 @@ Azure CLI 的 [azure-iot](/cli/azure/ext/azure-iot) 扩展提供管理 IoT 资�
 
    此命令应输出：已向 /etc/ssl/certs 添加一个证书。
 
-1. 打开 IoT Edge 安全守护程序配置文件。
+1. 打开 IoT Edge 配置文件。
 
    ```bash
-   sudo nano /etc/iotedge/config.yaml
+   sudo nano /etc/aziot/config.toml
    ```
 
-1. 在 config.yaml 文件中找到 certificates 节。 更新三个证书字段，使之指向你的证书。 提供采用 `file:///<path>/<filename>` 格式的文件 URI 路径。
+   >[!TIP]
+   >如果设备上不存在配置文件，请使用 `/etc/aziot/config.toml.edge.template` 作为模板来创建。
 
-   * device_ca_cert：此设备独有的设备 CA 证书的文件 URI 路径。
-   * device_ca_pk：此设备独有的设备 CA 私钥的文件 URI 路径。
-   * trusted_ca_certs：网关层次结构中所有设备共享的根 CA 证书的文件 URI 路径。
-
-1. 在 config.yaml 文件中找到 hostname 参数。 将 hostname 更新为 IoT Edge 设备的完全限定的域名 (FQDN) 或 IP 地址。
+1. 在配置文件中查找 " **主机名** " 部分。 取消注释包含参数的行 `hostname` ，并将值更新为完全限定的域名 (FQDN) 或 IoT Edge 设备的 IP 地址。
 
    此参数的值是下游设备用于连接到该网关的值。 hostname 默认使用计算机名称，但若要连接下游设备，则需使用 FQDN 或 IP 地址。
 
@@ -160,33 +156,38 @@ Azure CLI 的 [azure-iot](/cli/azure/ext/azure-iot) 扩展提供管理 IoT 资�
 
    与网关层次结构中的 hostname 模式保持一致。 请使用 FQDN 或 IP 地址，但不能同时使用这二者。
 
-1. 如果此设备是子设备，请查找 parent_hostname 参数。  将“parent_hostname”字段更新为父设备的 FQDN 或 IP 地址，使之与父设备的 config.yaml 文件中作为 hostname 提供的内容匹配。
+1. *如果此设备是子设备*，请找到 " **父主机名** " 部分。 取消注释并将 `parent_hostname` 参数更新为父设备的 FQDN 或 IP 地址，并将所提供的内容与父设备的配置文件中的主机名匹配。
+
+1. 找到 **信任捆绑证书** 部分。 取消注释并将 `trust_bundle_cert` 参数替换为设备上的根 CA 证书的文件 URI。
 
 1. 当此功能为公共预览版时，需要将 IoT Edge 设备配置为在启动时使用 IoT Edge 代理的公共预览版。
 
-   找到 agent yaml 节，将 image 值更新为公共预览版映像：
+   找到默认的 " **边缘代理** " 部分，将 "映像" 值更新为 "公共预览" 图像：
 
-   ```yml
-   agent:
-     name: "edgeAgent"
-     type: "docker"
-     env: {}
-     config:
-       image: "mcr.microsoft.com/azureiotedge-agent:1.2.0-rc2"
-       auth: {}
+   ```toml
+   [agent.config]
+   image: "mcr.microsoft.com/azureiotedge-agent:1.2.0-rc4"
    ```
 
-1. 保存 (`Ctrl+O`) 并关闭 (`Ctrl+X`) config.yaml 文件。
+1. 在配置文件中查找 " **边缘 CA 证书** " 部分。 取消对此部分中的行的注释，并提供 IoT Edge 设备上的证书和密钥文件的文件 URI 路径。
+
+   ```toml
+   [edge_ca]
+   cert = "file:///<path>/<device CA cert>"
+   pk = "file:///<path>/<device CA key>"
+   ```
+
+1. 保存 (`Ctrl+O`) 并关闭 (`Ctrl+X` 配置文件) 。
 
 1. 如果以前使用过 IoT Edge 的任何其他证书，请删除以下两个目录中的文件，以确保新证书得到应用：
 
-   * `/var/lib/iotedge/hsm/certs`
-   * `/var/lib/iotedge/hsm/cert_keys`
+   * `/var/lib/aziot/certd/certs`
+   * `/var/lib/aziot/keyd/keys`
 
-1. 重启 IoT Edge 服务以应用所做的更改。
+1. 单击“应用”以应用更改。
 
    ```bash
-   sudo systemctl restart iotedge
+   sudo iotedge config apply
    ```
 
 1. 检查配置中是否有任何错误。
@@ -202,7 +203,7 @@ Azure CLI 的 [azure-iot](/cli/azure/ext/azure-iot) 扩展提供管理 IoT 资�
 
 当此功能为公共预览版时，需要将 IoT Edge 设备配置为使用 IoT Edge 运行时模块的公共预览版。 上一部分提供了在启动时配置 edgeAgent 的步骤。 你还需要在设备的部署中配置运行时模块。
 
-1. 将 edgeHub 模块配置为使用公共预览版映像 `mcr.microsoft.com/azureiotedge-hub:1.2.0-rc2`。
+1. 将 edgeHub 模块配置为使用公共预览版映像 `mcr.microsoft.com/azureiotedge-hub:1.2.0-rc4`。
 
 1. 为 edgeHub 模块配置以下环境变量：
 
@@ -211,7 +212,7 @@ Azure CLI 的 [azure-iot](/cli/azure/ext/azure-iot) 扩展提供管理 IoT 资�
    | `experimentalFeatures__enabled` | `true` |
    | `experimentalFeatures__nestedEdgeEnabled` | `true` |
 
-1. 将 edgeAgent 模块配置为使用公共预览版映像 `mcr.microsoft.com/azureiotedge-hub:1.2.0-rc2`。
+1. 将 edgeAgent 模块配置为使用公共预览版映像 `mcr.microsoft.com/azureiotedge-hub:1.2.0-rc4`。
 
 ## <a name="network-isolate-downstream-devices"></a>网络隔离的下游设备
 
@@ -356,21 +357,20 @@ API 代理模块只能路由到一个注册表模块，每个注册表模块只�
 
 IoT Edge 代理是在任意 IoT Edge 设备上启动的第一个运行时组件。 需确保任何下游 IoT Edge 设备可以在启动时访问 edgeAgent 模块映像，然后可以访问部署并启动其余的模块映像。
 
-进入 IoT Edge 设备上的 config.yaml 文件提供其身份验证信息、证书和父主机名后，另请更新 edgeAgent 容器映像。
+当你进入 IoT Edge 设备上的配置文件以提供其身份验证信息、证书和父主机名时，还会更新 edgeAgent 容器映像。
 
 如果顶级网关设备配置为处理容器映像请求，请将 `mcr.microsoft.com` 替换为父主机名和 API 代理侦听端口。 在部署清单中，可以将 `$upstream` 用作快捷方式，但这需要 edgeHub 模块来处理路由，而该模块此时尚未启动。 例如：
 
-```yml
-agent:
-  name: "edgeAgent"
-  type: "docker"
-  env: {}
-  config:
-    image: "{Parent FQDN or IP}:443/azureiotedge-agent:1.2.0-rc2"
-    auth: {}
+```toml
+[agent]
+name = "edgeAgent"
+type = "docker"
+
+[agent.config]
+image: "{Parent FQDN or IP}:443/azureiotedge-agent:1.2.0-rc4"
 ```
 
-如果使用本地容器注册表，或在设备上手动提供容器映像，请相应地更新 config.yaml 文件。
+如果你使用的是本地容器注册表，或在设备上手动提供容器映像，请相应地更新配置文件。
 
 #### <a name="configure-runtime-and-deploy-proxy-module"></a>配置运行时和部署代理模块
 

@@ -9,12 +9,12 @@ ms.subservice: extensions
 ms.date: 02/12/2021
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 1a276915f8132f2941bfb4425011c2d34454093b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 3350ff7aa05232173e5fd3b21451a76a0a40683d
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101693877"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102043705"
 ---
 # <a name="preview-orchestration-modes-for-virtual-machine-scale-sets-in-azure"></a>预览： Azure 中虚拟机规模集的业务流程模式 
 
@@ -73,7 +73,7 @@ az vm create –vmss "myVMSS"  –-platform_fault_domain 1
 | order by resourceGroup desc, name desc 
 ```
 
-使用 [Azure 资源关系图](../governance/resource-graph/overview) 查询资源是一种方便且高效的方法，可用于查询 azure 资源并最大程度地减少对资源提供程序的 API 调用。 Azure 资源关系图是一个最终一致的缓存，其中的新资源或更新的资源可能不会反映最多60秒。 可以执行以下操作：
+使用 [Azure 资源关系图](../governance/resource-graph/overview.md) 查询资源是一种方便且高效的方法，可用于查询 azure 资源并最大程度地减少对资源提供程序的 API 调用。 Azure 资源关系图是一个最终一致的缓存，其中的新资源或更新的资源可能不会反映最多60秒。 可以：
 - 列出资源组或订阅中的 Vm。
 - 使用展开选项可以检索订阅中所有 Vm 的实例视图 (容错域分配、电源和预配状态) 。
 - 使用获取 VM API 和命令获取单个实例的模型和实例视图。

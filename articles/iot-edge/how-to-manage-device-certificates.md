@@ -4,16 +4,16 @@ description: 创建测试证书，并在 Azure IoT Edge 设备上安装和管理
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/02/2020
+ms.date: 03/01/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 1f07f9d481ca8ede29c8b8443dad81a442962a71
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 6a4cade6a740bffc33695c40663609df38ba6e7a
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92044133"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102044895"
 ---
 # <a name="manage-certificates-on-an-iot-edge-device"></a>管理 IoT Edge 设备上的证书
 
@@ -35,7 +35,7 @@ ms.locfileid: "92044133"
 
 * IoT Edge 设备。
 
-  如果未设置 IoT Edge 设备，则可以在 Azure 虚拟机中创建一个。 按照其中一篇快速入门文章中的步骤 [创建虚拟 Linux 设备](quickstart-linux.md) ，或 [创建虚拟 Windows 设备](quickstart.md)。
+  如果未设置 IoT Edge 设备，可在 Azure 虚拟机中创建一个。 按照[创建虚拟 Linux 设备](quickstart-linux.md)或[创建虚拟 Windows 设备](quickstart.md)快速入门文章（其中一篇）中的步骤进行操作。
 
 * 有一个根证书颁发机构 (CA) 证书，该证书是自签名证书，或者从 Baltimore、Verisign、DigiCert 或 GlobalSign 等可信商业证书颁发机构购买的证书。
 
@@ -51,8 +51,13 @@ ms.locfileid: "92044133"
 
 本文中所谓的“根 CA”并非组织的最顶层证书颁发机构。 它是 IoT Edge 方案的最顶层证书颁发机构，IoT Edge 中心模块、用户模块和任何下游设备使用该颁发机构来建立彼此之间的信任。
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+
 > [!NOTE]
 > 目前存在一个 libiothsm 限制，会阻止使用在 2038 年 1 月 1 日或之后到期的证书。
+
+:::moniker-end
 
 若要查看这些证书的示例，请查看[管理用于示例和教程的测试 CA 证书](https://github.com/Azure/iotedge/tree/master/tools/CACertificates)中用于创建演示证书的脚本。
 
@@ -60,15 +65,16 @@ ms.locfileid: "92044133"
 
 在 IoT Edge 设备上安装证书链，并将 IoT Edge 运行时配置为引用新证书。
 
+将三个证书和密钥文件复制到 IoT Edge 设备。 可以使用 [Azure Key Vault](../key-vault/index.yml) 之类的服务或[安全复制协议](https://www.ssh.com/ssh/scp/)之类的功能来移动证书文件。  如果在 IoT Edge 设备本身上生成了证书，则可以跳过此步骤，并使用工作目录的路径。
+
 例如，如果使用示例脚本[创建了演示证书](how-to-create-test-certificates.md)，请将以下文件复制到 IoT-Edge 设备：
 
 * 设备 CA 证书：`<WRKDIR>\certs\iot-edge-device-MyEdgeDeviceCA-full-chain.cert.pem`
 * 设备 CA 私钥：`<WRKDIR>\private\iot-edge-device-MyEdgeDeviceCA.key.pem`
 * 根 CA：`<WRKDIR>\certs\azure-iot-test-only.root.ca.cert.pem`
 
-1. 将三个证书和密钥文件复制到 IoT Edge 设备。
-
-   可以使用 [Azure Key Vault](../key-vault/index.yml) 之类的服务或[安全复制协议](https://www.ssh.com/ssh/scp/)之类的功能来移动证书文件。  如果在 IoT Edge 设备本身上生成了证书，则可以跳过此步骤，并使用工作目录的路径。
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
 
 1. 打开 IoT Edge 安全守护程序配置文件。
 
@@ -102,6 +108,41 @@ ms.locfileid: "92044133"
    * Windows：`C:\ProgramData\iotedge\hsm\certs` 和 `C:\ProgramData\iotedge\hsm\cert_keys`
 
    * Linux：`/var/lib/iotedge/hsm/certs` 和 `/var/lib/iotedge/hsm/cert_keys`
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+1. 打开 IoT Edge 安全守护程序配置文件： `/etc/aziot/config.toml`
+
+1. 查找 `trust_bundle_cert` 文件开头的参数。 取消注释此行，并向设备上的根 CA 证书提供文件 URI。
+
+   ```toml
+   trust_bundle_cert = "file:///<path>/<root CA cert>"
+   ```
+
+1. 查找 `[edge_ca]` toml 文件中的部分。 取消对此部分中的行的注释，并提供 IoT Edge 设备上的证书和密钥文件的文件 URI 路径。
+
+   ```toml
+   [edge_ca]
+   cert = "file:///<path>/<device CA cert>"
+   pk = "file:///<path>/<device CA key>"
+   ```
+
+1. 请确保用户 **iotedge** 对包含证书的目录具有读取权限。
+
+1. 如果以前在设备上使用过 IoT Edge 的任何其他证书，请在启动或重启 IoT Edge 之前删除以下两个目录中的文件：
+
+   * `/var/lib/aziot/certd/certs`
+   * `/var/lib/aziot/keyd/keys`
+
+:::moniker-end
+<!-- end 1.2 -->
+
+<!-- 1.1. -->
+<!-- Temporarily, customizable certificate lifetime not available in 1.2. Update before GA. -->
+:::moniker range="iotedge-2018-06"
 
 ## <a name="customize-certificate-lifetime"></a>自定义证书生存期
 
@@ -112,31 +153,29 @@ ms.locfileid: "92044133"
 
 有关 IoT Edge 设备上不同证书的功能的详细信息，请参阅[了解 Azure IoT Edge 如何使用证书](iot-edge-certs.md)。
 
-对于这两个自动生成的证书，可以选择在 config.yaml 中设置 auto_generated_ca_lifetime_days 标志，以配置证书生存期的天数。
+对于这两个自动生成的证书，你可以选择在配置文件中设置 **auto_generated_ca_lifetime_days** 标志，以配置证书生存期的天数。
 
 >[!NOTE]
 >IoT Edge 安全管理器还会创建第三个自动生成的证书：IoT Edge 中心服务器证书。 此证书的生存期始终为 90 天，但过期之前会自动续订。 auto_generated_ca_lifetime_days 值不会影响此证书。
 
-若要将证书到期时间配置为默认的 90 天以外的时间，请在 config.yaml 文件的 certificates 节中添加所需值（以天为单位）。 
+在指定天数后过期后，必须重新启动 IoT Edge 以重新生成设备 CA 证书。 设备 CA 证书不会自动续订。
 
-如果在指定的天数后到期，则必须重启 IoT Edge 安全守护程序以重新生成设备 CA 证书，该证书不会自动续订。
+1. 若要将证书过期配置为默认值90天以外的时间，请将值以天为单位，将配置文件的 " **证书** " 部分添加到其中。
 
-```yaml
-certificates:
-  device_ca_cert: "<ADD URI TO DEVICE CA CERTIFICATE HERE>"
-  device_ca_pk: "<ADD URI TO DEVICE CA PRIVATE KEY HERE>"
-  trusted_ca_certs: "<ADD URI TO TRUSTED CA CERTIFICATES HERE>"
-  auto_generated_ca_lifetime_days: <value>
-```
+   ```yaml
+   certificates:
+     device_ca_cert: "<ADD URI TO DEVICE CA CERTIFICATE HERE>"
+     device_ca_pk: "<ADD URI TO DEVICE CA PRIVATE KEY HERE>"
+     trusted_ca_certs: "<ADD URI TO TRUSTED CA CERTIFICATES HERE>"
+     auto_generated_ca_lifetime_days: <value>
+   ```
 
-> [!NOTE]
-> 目前存在一个 libiothsm 限制，会阻止使用在 2038 年 1 月 1 日或之后到期的证书。
+   > [!NOTE]
+   > 目前存在一个 libiothsm 限制，会阻止使用在 2038 年 1 月 1 日或之后到期的证书。
 
-在 config.yaml 文件中指定值后，请执行以下步骤：
+1. 删除该文件夹的内容 `hsm` 以删除任何以前生成的证书。
 
-1. 删除 `hsm` 文件夹的内容。
-
-   Windows:`C:\ProgramData\iotedge\hsm\certs and C:\ProgramData\iotedge\hsm\cert_keys` Linux：`/var/lib/iotedge/hsm/certs and /var/lib/iotedge/hsm/cert_keys`
+   Windows： `C:\ProgramData\iotedge\hsm\certs` 和 `C:\ProgramData\iotedge\hsm\cert_keys` Linux： `/var/lib/iotedge/hsm/certs` 和 `/var/lib/iotedge/hsm/cert_keys`
 
 1. 重启 IoT Edge 服务。
 
@@ -167,6 +206,42 @@ certificates:
    ```
 
    查看“生产就绪状态: 证书”检查的输出，其中列出了自动生成的设备 CA 证书在过期前的天数。
+
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 
+<!-- 1.2 --
+:::moniker range=">=iotedge-2020-11"
+
+1. To configure the certificate expiration to something other than the default 90 days, add the value in days to the **certificates** section of the config file.
+
+   ```toml
+   [certificates]
+   device_ca_cert = "<ADD URI TO DEVICE CA CERTIFICATE HERE>"
+   device_ca_pk = "<ADD URI TO DEVICE CA PRIVATE KEY HERE>"
+   trusted_ca_certs = "<ADD URI TO TRUSTED CA CERTIFICATES HERE>"
+   auto_generated_ca_lifetime_days = <value>
+   ```
+
+1. Delete the contents of the `certd` and `keyd` folders to remove any previously generated certificates: `/var/lib/aziot/certd/certs` `/var/lib/aziot/keyd/keys`
+
+1. Restart IoT Edge.
+
+   ```bash
+   sudo iotedge system restart
+   ```
+
+1. Confirm the new lifetime setting.
+
+   ```bash
+   sudo iotedge check --verbose
+   ```
+
+   Check the output of the **production readiness: certificates** check, which lists the number of days until the automatically generated device CA certificates expire.
+:::moniker-end
+<!-- end 1.2 --
+-->
 
 ## <a name="next-steps"></a>后续步骤
 

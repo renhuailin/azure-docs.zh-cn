@@ -3,14 +3,13 @@ title: Azure Monitor 中的警报架构定义
 description: 了解 Azure Monitor 的常见警报架构定义
 author: ofirmanor
 ms.topic: conceptual
-ms.subservice: alerts
 ms.date: 09/22/2020
-ms.openlocfilehash: e4ab05b595b9961960371d3e13e85ccffd0d9401
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 02092f5a241824d2a9aef242b544f8900af7ebec
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100606224"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102045388"
 ---
 # <a name="common-alert-schema-definitions"></a>常见警报架构定义
 

@@ -4,12 +4,12 @@ description: 使用 Application Insights 监视来自本地或 Microsoft Azure W
 ms.topic: conceptual
 ms.date: 08/26/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 05b6c29b121cbf42cf0ebe12b2879e50735db7ea
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 124b8d3de59d1645379d50360e69a5fdbd5587e5
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100651997"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102045286"
 ---
 # <a name="dependency-tracking-in-azure-application-insights"></a>在 Azure Application Insights 中跟踪依赖项 
 
@@ -88,6 +88,9 @@ ms.locfileid: "100651997"
 对于网页，Application Insights JavaScript SDK 以依赖项的形式自动收集 AJAX 调用。
 
 ## <a name="advanced-sql-tracking-to-get-full-sql-query"></a>使用高级 SQL 跟踪获取完整的 SQL 查询
+
+> [!NOTE]
+> Azure Functions 需要单独的设置才能启用 SQL 文本收集，请参阅为 [Azure Functions 配置监视](../../azure-functions/configure-monitoring.md) 以了解详细信息。
 
 对于 SQL 调用，始终会收集服务器和数据库的名称，并将其存储为收集的 `DependencyTelemetry` 的名称。 有一个名为“data”的附加字段，其中可以包含完整的 SQL 查询文本。
 

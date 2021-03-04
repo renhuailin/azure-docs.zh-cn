@@ -4,12 +4,12 @@ description: 了解如何使用 Pythong 开发函数
 ms.topic: article
 ms.date: 11/4/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 78965a1a09272663c52469b8ccd91988f30b53cc
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 0829ef9a6b63866c2527e521ed7edf48a3249392
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101708690"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102044249"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions Python 开发人员指南
 
@@ -22,7 +22,7 @@ ms.locfileid: "101708690"
 | <ul><li>[使用 Visual Studio Code 的 Python 函数](./create-first-function-vs-code-csharp.md?pivots=programming-language-python)</li><li>[具有终端/命令提示符的 Python 函数](./create-first-function-cli-csharp.md?pivots=programming-language-python)</li></ul> | <ul><li>[开发人员指南](functions-reference.md)</li><li>[托管选项](functions-scale.md)</li><li>[性能 &nbsp; 注意事项](functions-best-practices.md)</li></ul> | <ul><li>[图像分类与 PyTorch](machine-learning-pytorch.md)</li><li>[Azure 自动化示例](/samples/azure-samples/azure-functions-python-list-resource-groups/azure-functions-python-sample-list-resource-groups/)</li><li>[将机器学习与 TensorFlow 配合使用](functions-machine-learning-tensorflow.md)</li><li>[浏览 Python 示例](/samples/browse/?products=azure-functions&languages=python)</li></ul> |
 
 > [!NOTE]
-> 尽管可以 [在 Windows 本地开发基于 python 的 Azure Functions](./azure-functions/create-first-function-vs-code-python#run-the-function-locally)，但仅在 Azure 中运行时，才支持基于 Linux 的托管计划的 python。 请参阅支持的 [操作系统/运行时](./azure-functions/functions-scale#operating-systemruntime) 组合的列表。
+> 尽管可以 [在 Windows 本地开发基于 python 的 Azure Functions](create-first-function-vs-code-python.md#run-the-function-locally)，但仅在 Azure 中运行时，才支持基于 Linux 的托管计划的 python。 请参阅支持的 [操作系统/运行时](functions-scale.md#operating-systemruntime) 组合的列表。
 
 ## <a name="programming-model"></a>编程模型
 

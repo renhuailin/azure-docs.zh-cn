@@ -4,19 +4,19 @@ description: 将 Azure IoT Edge 用作可处理来自下游设备的消息的透
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 10/15/2020
+ms.date: 03/01/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 9ecb1c50fe99cc93417a37e892049e03585945a5
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 431c116fee22da27ed0487fc6d2fe3644575491f
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100370421"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102046017"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>将 IoT Edge 设备配置为充当透明网关
 
@@ -26,10 +26,9 @@ ms.locfileid: "100370421"
 ::: moniker range="iotedge-2018-06"
 
 >[!NOTE]
->当前：
+>在 IoT Edge 版本1.1 及更低版本中，IoT Edge 设备不能成为 IoT Edge 网关的下游。
 >
-> * 支持 Edge 的设备无法连接到 IoT Edge 网关。
-> * 下游设备不能使用文件上传。
+>下游设备不能使用文件上传。
 
 ::: moniker-end
 
@@ -37,9 +36,7 @@ ms.locfileid: "100370421"
 ::: moniker range=">=iotedge-2020-11"
 
 >[!NOTE]
->当前：
->
-> * 下游设备不能使用文件上传。
+>下游设备不能使用文件上传。
 
 ::: moniker-end
 
@@ -51,7 +48,17 @@ ms.locfileid: "100370421"
 
 充当网关的设备需要安全地连接到下游设备。 Azure IoT Edge 允许使用公钥基础结构 (PKI) 在设备之间建立安全连接。 在这种情况下，我们可以将下游设备连接到充当透明网关的 IoT Edge 设备。 要维持合理的安全性，下游设备应确认网关设备的标识。 此标识检查可防止设备连接到潜在的恶意网关。
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
 下游设备可以是包含通过 [Azure IoT 中心](../iot-hub/index.yml)云服务创建的标识的任何应用程序或平台。 这些应用程序通常使用 [Azure IoT 设备 SDK](../iot-hub/iot-hub-devguide-sdks.md)。 下游设备甚至可以是 IoT Edge 网关设备本身上运行的应用程序。 但是，IoT Edge 设备不能位于 IoT Edge 网关的下游。
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+下游设备可以是包含通过 [Azure IoT 中心](../iot-hub/index.yml)云服务创建的标识的任何应用程序或平台。 这些应用程序通常使用 [Azure IoT 设备 SDK](../iot-hub/iot-hub-devguide-sdks.md)。 下游设备甚至可以是 IoT Edge 网关设备本身上运行的应用程序。
+:::moniker-end
+<!-- end 1.2 -->
 
 可以创建任何启用设备网关拓扑所需的信任的证书基础结构。 在本文中，我们假设使用相同的证书设置来启用 IoT 中心的 [X.509 CA 安全性](../iot-hub/iot-hub-x509ca-overview.md)，其中涉及与特定 IoT 中心（IoT 中心根 CA）关联的 X.509 CA 证书，以及通过此 CA 签名的一系列证书和 IoT Edge 设备的 CA。
 
@@ -64,7 +71,7 @@ ms.locfileid: "100370421"
 
 安装了 IoT Edge 的 Linux 或 Windows 设备。
 
-如果设备均未就绪，可在 Azure 虚拟机中创建一个。 按照[将第一个 IoT Edge 模块部署到虚拟 Linux 设备](quickstart-linux.md)中的步骤，创建一个 IoT 中心、创建一个虚拟机并配置 IoT Edge 运行时。 
+如果设备均未就绪，可在 Azure 虚拟机中创建一个。 按照[将第一个 IoT Edge 模块部署到虚拟 Linux 设备](quickstart-linux.md)中的步骤，创建一个 IoT 中心、创建一个虚拟机并配置 IoT Edge 运行时。
 
 ## <a name="set-up-the-device-ca-certificate"></a>安装设备 CA 证书
 
@@ -72,7 +79,7 @@ ms.locfileid: "100370421"
 
 ![网关证书设置](./media/how-to-create-transparent-gateway/gateway-setup.png)
 
-根 CA 证书和设备 CA 证书（及其私钥）必须位于 IoT Edge 网关设备上，并在 IoT Edge 的 config.yaml 文件中配置。 请记住，在这种情况下，“根 CA 证书”表示此 IoT Edge 方案的最顶层证书颁发机构。 网关设备 CA 证书和下游设备证书需要汇总到同一根 CA 证书。
+根 CA 证书和设备 CA 证书 (其私钥) 需要在 IoT Edge 网关设备上提供，并在 IoT Edge 配置文件中进行配置。 请记住，在这种情况下，“根 CA 证书”表示此 IoT Edge 方案的最顶层证书颁发机构。 网关设备 CA 证书和下游设备证书需要汇总到同一根 CA 证书。
 
 >[!TIP]
 >在 IoT Edge 设备上安装根 CA 证书和设备 CA 证书的过程也在[管理 IoT Edge 设备上的证书](how-to-manage-device-certificates.md)中进行了更详细的介绍。
@@ -85,7 +92,7 @@ ms.locfileid: "100370421"
 
 对于生产方案，你应该通过自己的证书颁发机构生成这些文件。 对于开发和测试方案，可以使用演示证书。
 
-1. 如果使用的是演示证书，请使用[创建演示证书用于测试 IoT Edge 设备功能](how-to-create-test-certificates.md)中的说明来创建文件。 在该页上，需要执行以下步骤：
+如果没有自己的证书颁发机构，并且想要使用演示证书，请按照创建演示证书中的说明来 [测试 IoT Edge 设备功能](how-to-create-test-certificates.md) ，以创建文件。 在该页上，需要执行以下步骤：
 
    1. 首先在设备上设置生成证书的脚本。
    2. 创建根 CA 证书。 在完成这些说明后，你将有一个根 CA 证书文件：
@@ -94,24 +101,55 @@ ms.locfileid: "100370421"
       * `<path>/certs/iot-edge-device-<cert name>-full-chain.cert.pem` 和
       * `<path>/private/iot-edge-device-<cert name>.key.pem`
 
-2. 如果在另一计算机上创建了这些证书，请将它们复制到 IoT Edge 设备上。
+如果在其他计算机上创建了证书，请将它们复制到 IoT Edge 设备上，然后继续执行后续步骤。
 
-3. 在 IoT Edge 设备上，打开安全守护程序配置文件。
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+
+1. 在 IoT Edge 设备上，打开安全守护程序配置文件。
+
    * Windows： `C:\ProgramData\iotedge\config.yaml`
    * Linux：`/etc/iotedge/config.yaml`
 
-4. 找到文件的“证书设置”部分。 取消评论以“certificates:”开头的四行，并将你的三个文件的文件 URI 作为以下属性的值来提供：
+1. 找到文件的“证书设置”部分。 取消评论以“certificates:”开头的四行，并将你的三个文件的文件 URI 作为以下属性的值来提供：
    * **device_ca_cert**：设备 CA 证书
    * **device_ca_pk**：设备 CA 私钥
    * **trusted_ca_certs**：根 CA 证书
 
    确保“certificates:”行前面没有空格，并且其它行缩进了两个空格。
 
-5. 保存并关闭该文件。
+1. 保存并关闭该文件。
 
-6. 重启 IoT Edge。
+1. 重启 IoT Edge。
    * Windows： `Restart-Service iotedge`
    * Linux：`sudo systemctl restart iotedge`
+:::moniker-end
+<!-- end 1.1 -->
+
+<!--1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+1. 在 IoT Edge 设备上，打开配置文件： `/etc/aziot/config.toml`
+
+   >[!TIP]
+   >如果设备上尚不存在配置文件，请使用 `/etc/aziot/config.toml.edge.template` 作为模板来创建。
+
+1. 查找 `trust_bundle_cert` 参数。 取消注释此行，并向设备上的根 CA 证书文件提供文件 URI。
+
+1. 查找 `[edge_ca]` 文件的部分。 取消注释此部分中的三行，并将证书和密钥文件的文件 Uri 作为以下属性的值提供：
+   * **cert**：设备 CA 证书
+   * **pk**：设备 CA 私钥
+
+1. 保存并关闭该文件。
+
+1. 重启 IoT Edge。
+
+   ```bash
+   sudo iotedge system restart
+   ```
+
+:::moniker-end
+<!-- end 1.2 -->
 
 ## <a name="deploy-edgehub-and-route-messages"></a>部署 edgeHub 和路由消息
 

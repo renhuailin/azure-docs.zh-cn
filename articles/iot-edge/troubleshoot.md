@@ -8,12 +8,12 @@ ms.date: 11/12/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: c5f28e2c2d370329dbee0fb76284a4b76b2b945e
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: d46ad8238faa42ca657b18b3997407d91a224537
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100376503"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102045915"
 ---
 # <a name="troubleshoot-your-iot-edge-device"></a>排除 IoT Edge 设备故障
 
@@ -42,7 +42,7 @@ iotedge check
 
 故障排除工具将运行多个检查，这些检查分为以下三个类别：
 
-* “配置检查”将检查妨碍 IoT Edge 设备连接到云的详细情况，包括 config.yaml 和容器引擎出现的问题。 
+* *配置检查* 将检查可能阻止 IoT Edge 设备连接到云的详细信息，包括配置文件和容器引擎的问题。
 * “连接性检查”将验证 IoT Edge 运行时能否访问主机设备上的端口，以及所有 IoT Edge 组件能否连接到 IoT 中心。 如果 IoT Edge 设备位于代理后面，则这组检查将返回错误。
 * “生产准备情况检查”将寻找建议的生产最佳做法，例如设备证书颁发机构 (CA) 颁发证书的状态以及模块日志文件配置。
 
@@ -102,6 +102,9 @@ iotedge support-bundle --since 6h
 
 在 Linux 上：
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+
 * 查看 IoT Edge 安全管理器的状态：
 
    ```bash
@@ -110,32 +113,68 @@ iotedge support-bundle --since 6h
 
 * 查看 IoT Edge 安全管理器的日志：
 
-    ```bash
-    sudo journalctl -u iotedge -f
-    ```
+   ```bash
+   sudo journalctl -u iotedge -f
+   ```
 
 * 查看 IoT Edge 安全管理器的更详细日志：
 
-  * 编辑 IoT Edge 守护程序设置：
+  1. 编辑 IoT Edge 守护程序设置：
 
-      ```bash
-      sudo systemctl edit iotedge.service
-      ```
+     ```bash
+     sudo systemctl edit iotedge.service
+     ```
 
-  * 更新以下行：
+  2. 更新以下行：
 
-      ```bash
-      [Service]
-      Environment=IOTEDGE_LOG=edgelet=debug
-      ```
+     ```bash
+     [Service]
+     Environment=IOTEDGE_LOG=edgelet=debug
+     ```
 
-  * 重启 IoT Edge 安全守护程序：
+  3. 重新启动 IoT Edge 安全守护程序：
 
-      ```bash
-      sudo systemctl cat iotedge.service
-      sudo systemctl daemon-reload
-      sudo systemctl restart iotedge
-      ```
+     ```bash
+     sudo systemctl cat iotedge.service
+     sudo systemctl daemon-reload
+     sudo systemctl restart iotedge
+     ```
+<!--end 1.1 -->
+:::moniker-end
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+* 查看 IoT Edge 系统服务的状态：
+
+   ```bash
+   sudo iotedge system status
+   ```
+
+* 查看 IoT Edge 系统服务的日志：
+
+   ```bash
+   sudo iotedge system logs -- -f
+   ```
+
+* 启用调试级日志以查看更详细的 IoT Edge 系统服务日志：
+
+  1. 启用调试级日志。
+
+     ```bash
+     sudo iotedge system set-log-level debug
+     sudo iotedge system restart
+     ```
+
+  1. 调试后切换回默认的信息级日志。
+
+     ```bash
+     sudo iotedge system set-log-level info
+     sudo iotedge system restart
+     ```
+
+<!-- end 1.2 -->
+:::moniker-end
 
 在 Windows 上：
 
@@ -159,52 +198,17 @@ iotedge support-bundle --since 6h
 
 * 查看 IoT Edge 安全管理器的更详细日志：
 
-  * 添加系统级环境变量：
+  1. 添加系统级环境变量：
 
-      ```powershell
-      [Environment]::SetEnvironmentVariable("IOTEDGE_LOG", "debug", [EnvironmentVariableTarget]::Machine)
-      ```
+     ```powershell
+     [Environment]::SetEnvironmentVariable("IOTEDGE_LOG", "debug", [EnvironmentVariableTarget]::Machine)
+     ```
 
-  * 重启 IoT Edge 安全守护程序：
+  2. 重启 IoT Edge 安全守护程序：
 
-      ```powershell
-      Restart-Service iotedge
-      ```
-
-### <a name="if-the-iot-edge-security-manager-is-not-running-verify-your-yaml-configuration-file"></a>如果 IoT Edge 安全管理器未运行，请验证 yaml 配置文件
-
-> [!WARNING]
-> YAML 文件不能包含制表符作为缩进。 请改用 2 个空格。 顶级元素应该没有前导空格。
-
-在 Linux 上：
-
-   ```bash
-   sudo nano /etc/iotedge/config.yaml
-   ```
-
-在 Windows 上：
-
-   ```cmd
-   notepad C:\ProgramData\iotedge\config.yaml
-   ```
-
-### <a name="restart-the-iot-edge-security-manager"></a>重启 IoT Edge 安全管理器
-
-如果问题仍然存在，可以尝试重启 IoT Edge 安全管理器。
-
-在 Linux 上：
-
-   ```cmd
-   sudo systemctl restart iotedge
-   ```
-
-在 Windows 上：
-
-   ```powershell
-   Stop-Service iotedge -NoWait
-   sleep 5
-   Start-Service iotedge
-   ```
+     ```powershell
+     Restart-Service iotedge
+     ```
 
 ## <a name="check-container-logs-for-issues"></a>检查容器日志是否有问题
 
@@ -217,6 +221,9 @@ iotedge logs <container name>
 还可以对设备上的模块使用[直接方法](how-to-retrieve-iot-edge-logs.md#upload-module-logs)调用，将该模块的日志上传到 Azure Blob 存储。
 
 ## <a name="view-the-messages-going-through-the-iot-edge-hub"></a>查看通过 IoT Edge 中心的消息
+
+<!--1.1 -->
+:::moniker range="iotedge-2018-06"
 
 查看通过 IoT Edge 中心的消息，并通过来自运行时容器的详细日志收集见解。 若要在这些容器上启用详细日志，请在 yaml 配置文件中设置 `RuntimeLogLevel`。 若要打开该文件，请执行以下操作：
 
@@ -256,7 +263,29 @@ iotedge logs <container name>
 
 保存该文件并重启 IoT Edge 安全管理器。
 
-还可以检查在 IoT 中心与 IoT Edge 设备之间发送的消息。 使用[适用于 Visual Studio Code 的 Azure IoT 中心扩展](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit)查看这些消息。 有关详细信息，请参阅 [Handy tool when you develop with Azure IoT](https://blogs.msdn.microsoft.com/iotdev/2017/09/01/handy-tool-when-you-develop-with-azure-iot/)（通过 Azure IoT 进行开发时的顺手工具）。
+<!-- end 1.1 -->
+:::moniker-end
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+可以通过 IoT Edge 中心查看消息，并从运行时容器中收集详细日志中的见解。 若要在这些容器上启用详细日志，请 `RuntimeLogLevel` 在部署清单中设置环境变量。
+
+若要查看通过 IoT Edge 中心的消息，请将 `RuntimeLogLevel` edgeHub 模块的环境变量设置为 `debug` 。
+
+EdgeHub 和 edgeAgent 模块都具有此运行时日志环境变量，默认值设置为 `info` 。 此环境变量可采用以下值：
+
+* 出现
+* error
+* warning
+* info
+* debug
+* verbose
+
+<!-- end 1.2 -->
+:::moniker-end
+
+你还可以检查正在 IoT 中心和 IoT 设备之间发送的消息。 使用[适用于 Visual Studio Code 的 Azure IoT 中心扩展](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit)查看这些消息。 有关详细信息，请参阅 [Handy tool when you develop with Azure IoT](https://blogs.msdn.microsoft.com/iotdev/2017/09/01/handy-tool-when-you-develop-with-azure-iot/)（通过 Azure IoT 进行开发时的顺手工具）。
 
 ## <a name="restart-containers"></a>重启容器
 

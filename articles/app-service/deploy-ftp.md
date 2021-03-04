@@ -3,15 +3,15 @@ title: 使用 FTP/S 部署内容
 description: 了解如何使用 FTP 或 FTPS 将应用部署到 Azure 应用服务。 通过禁用未加密的 FTP 来提高网站安全性。
 ms.assetid: ae78b410-1bc0-4d72-8fc4-ac69801247ae
 ms.topic: article
-ms.date: 09/18/2019
+ms.date: 02/26/2021
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: cfec5ec5f14afc8c4eba5c21c5904687c9b187cc
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: c7427a1f8f528fdf405b22c4e91941ea7a915ffa
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98209247"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102045796"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>使用 FTP/S 将应用部署到 Azure 应用服务
 
@@ -19,35 +19,49 @@ ms.locfileid: "98209247"
 
 应用的 FTP/S 终结点已处于活动状态。 启用 FTP/S 部署不需要进行任何配置。
 
-## <a name="open-ftp-dashboard"></a>打开 FTP 仪表板
-
-1. 在 [Azure 门户](https://portal.azure.com)中，搜索并选择“应用服务”。
-
-    ![搜索应用服务。](media/app-service-continuous-deployment/search-for-app-services.png)
-
-2. 选择要部署的 Web 应用。
-
-    ![选择应用。](media/app-service-continuous-deployment/select-your-app.png)
-
-3. 选择“部署中心” > “FTP” > “仪表板”。
-
-    ![打开 FTP 仪表板](./media/app-service-deploy-ftp/open-dashboard.png)
-
-## <a name="get-ftp-connection-information"></a>获取 FTP 连接信息
-
-在 FTP 仪表板中，选择“复制”以复制 FTPS 终结点和应用凭据。
-
-![复制 FTP 信息](./media/app-service-deploy-ftp/ftp-dashboard.png)
-
-建议你使用 **应用凭据** 部署到应用，因为它对每个应用都是唯一的。 但是，如果单击“用户凭据”，会将可用于 FTP/S 登录的用户级凭据设置到订阅中的所有应用服务应用。
-
 > [!NOTE]
-> 使用用户级凭据对 FTP/FTPS 终结点进行身份验证时，需要使用以下格式的用户名： 
->
->`<app-name>\<user-name>`
->
-> 由于用户级凭据链接到用户而不是特定资源，因此用户名必须采用此格式才能将登录操作定向到正确的应用终结点。
->
+> Azure 门户的 **开发中心 (经典)** 页面，这是旧的部署经验，将于2021年3月弃用。 此更改不会影响你的应用中的任何现有部署设置，你可以继续在 " **部署中心** " 页中管理应用部署。
+
+## <a name="get-deployment-credentials"></a>获取部署凭据
+
+1. 按照 [配置 Azure App Service 的部署凭据](deploy-configure-credentials.md) 中的说明复制应用程序范围的凭据或设置用户范围凭据。 可以使用凭据连接到应用的 FTP/S 终结点。
+
+1. 根据所选的凭据范围，按以下格式创建 FTP 用户名：
+
+    | 应用程序-范围 | 用户范围 |
+    | - | - |
+    |`<app-name>\$<app-name>`|`<app-name>\<deployment-user>`|
+
+    ---
+
+    在应用服务中，FTP/S 终结点在应用之间共享。 由于用户范围凭据未链接到特定资源，因此需要在应用程序名称前面预置用户范围的用户名，如上所示。
+
+## <a name="get-ftps-endpoint"></a>获取 FTP/S 终结点
+    
+# <a name="azure-portal"></a>[Azure 门户](#tab/portal)
+
+在你的应用程序的同一管理页面中，你已将部署凭据复制 (**部署中心**  >  **FTP 凭据**) 中，请复制 **FTPS 终结点**。
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/cli)
+
+运行 [az webapp deployment list-发布-](/cli/azure/webapp/deployment#az_webapp_deployment_list_publishing_profiles) profile 命令。 下面的示例使用 [JMES 路径](https://jmespath.org/) 从输出中提取 FTP/S 终结点。
+
+```azurecli-interactive
+az webapp deployment list-publishing-profiles --name <app-name> --resource-group <group-name> --query "[?ends_with(profileName, 'FTP')].{profileName: profileName, publishUrl: publishUrl}"
+```
+
+每个应用都有两个 FTP/S 终结点，一个是读写的，另一个是只读的 (`profileName` 包含 `ReadOnly`) 并且用于数据恢复方案。 若要通过 FTP 部署文件，请复制读写终结点的 URL。
+
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/powershell)
+
+运行 [AzWebAppPublishingProfile](/powershell/module/az.websites/get-azwebapppublishingprofile) 命令。 下面的示例从 XML 输出中提取 FTP/S 终结点。
+
+```azurepowershell-interactive
+$xml = [xml](Get-AzWebAppPublishingProfile -Name <app-name> -ResourceGroupName <group-name> -OutputFile null)
+$xml.SelectNodes("//publishProfile[@publishMethod=`"FTP`"]/@publishUrl").value
+```
+
+-----
 
 ## <a name="deploy-files-to-azure"></a>将文件部署到 Azure
 
@@ -56,7 +70,7 @@ ms.locfileid: "98209247"
 3. 浏览到应用的 URL，以验证该应用是否正在正常运行。 
 
 > [!NOTE] 
-> 与[基于 Git 的部署](deploy-local-git.md)不同，FTP 部署不支持以下部署自动化： 
+> 与 [基于 Git 的部署](deploy-local-git.md) 和 [Zip 部署](deploy-zip.md)不同，FTP 部署不支持生成自动化，例如： 
 >
 > - 还原依赖项（如 NuGet、NPM、PIP 和 Composer 自动化）
 > - 编译 .NET 二进制文件
@@ -69,36 +83,45 @@ ms.locfileid: "98209247"
 
 为了增强安全性，只应允许基于 TLS/SSL 的 FTP。 如果不使用 FTP 部署，也可禁用 FTP 和 FTPS。
 
-在 [Azure 门户](https://portal.azure.com)的应用资源页中，从左侧导航中选择“配置” > “常规设置”。
+# <a name="azure-portal"></a>[Azure 门户](#tab/portal)
 
-若要禁用未加密的 FTP，请在“FTP 状态”中选择“仅 FTPS”。 若要完全禁用 FTP 和 FTPS，请选择“禁用”。 完成后，单击“保存”。 如果使用“仅 FTPS”，则必须通过导航到 Web 应用的“TLS/SSL 设置”边栏选项卡来强制实施 TLS 1.2 或更高版本。 TLS 1.0 和 1.1 不支持“仅 FTPS”。
+1. 在 [Azure 门户](https://portal.azure.com)的应用资源页中，从左侧导航中选择“配置” > “常规设置”。
 
-![禁用 FTP/S](./media/app-service-deploy-ftp/disable-ftp.png)
+2. 若要禁用未加密的 FTP，请在“FTP 状态”中选择“仅 FTPS”。 若要完全禁用 FTP 和 FTPS，请选择“禁用”。 完成后，单击“保存”。 如果使用“仅 FTPS”，则必须通过导航到 Web 应用的“TLS/SSL 设置”边栏选项卡来强制实施 TLS 1.2 或更高版本。 TLS 1.0 和 1.1 不支持“仅 FTPS”。
 
-## <a name="automate-with-scripts"></a>使用脚本自动执行
+    ![禁用 FTP/S](./media/app-service-deploy-ftp/disable-ftp.png)
 
-若要使用 [Azure CLI](/cli/azure) 进行 FTP 部署，请参阅[创建 Web 应用并使用 FTP (Azure CLI) 部署文件](./scripts/cli-deploy-ftp.md)。
+# <a name="azure-cli"></a>[Azure CLI](#tab/cli)
 
-若要使用 [Azure PowerShell](/cli/azure) 进行 FTP 部署，请参阅[使用 FTP (PowerShell) 将文件上传到 Web 应用](./scripts/powershell-deploy-ftp.md)。
+运行带有参数的 [az webapp config set](/cli/azure/webapp/deployment#az_webapp_deployment_list_publishing_profiles) 命令 `--ftps-state` 。
+
+```azurecli-interactive
+az webapp config set --name <app-name> --resource-group <group-name> --ftps-state FtpsOnly
+```
+
+的可能值 `--ftps-state` `AllAllowed` (启用了 FTP 和 ftps) 、 `Disabled` (禁用了 ftp 和 ftps) ， `FtpsOnly` (仅) FTPS。
+
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/powershell)
+
+运行带有参数的 [AzWebApp](/powershell/module/az.websites/set-azwebapp) 命令 `-FtpsState` 。
+
+```azurepowershell-interactive
+Set-AzWebApp -Name <app-name> -ResourceGroupName <group-name> -FtpsState FtpsOnly
+```
+
+的可能值 `--ftps-state` `AllAllowed` (启用了 FTP 和 ftps) 、 `Disabled` (禁用了 ftp 和 ftps) ， `FtpsOnly` (仅) FTPS。
+
+-----
 
 [!INCLUDE [What happens to my app during deployment?](../../includes/app-service-deploy-atomicity.md)]
 
 ## <a name="troubleshoot-ftp-deployment"></a>排查 FTP 部署问题
 
-- [使用 FTP/S 将应用部署到 Azure 应用服务](#deploy-your-app-to-azure-app-service-using-ftps)
-  - [打开 FTP 仪表板](#open-ftp-dashboard)
-  - [获取 FTP 连接信息](#get-ftp-connection-information)
-  - [将文件部署到 Azure](#deploy-files-to-azure)
-  - [强制实施 FTPS](#enforce-ftps)
-  - [使用脚本自动化](#automate-with-scripts)
-  - [排查 FTP 部署问题](#troubleshoot-ftp-deployment)
-    - [如何排查 FTP 部署问题？](#how-can-i-troubleshoot-ftp-deployment)
-    - [我无法通过 FTP 来发布代码。如何解决此问题？](#im-not-able-to-ftp-and-publish-my-code-how-can-i-resolve-the-issue)
-    - [如何在 Azure 应用服务中通过被动模式连接到 FTP？](#how-can-i-connect-to-ftp-in-azure-app-service-via-passive-mode)
-  - 后续步骤
-  - [更多资源](#more-resources)
+- [如何排查 FTP 部署问题？](#how-can-i-troubleshoot-ftp-deployment)
+- [我无法通过 FTP 来发布代码。如何解决此问题？](#im-not-able-to-ftp-and-publish-my-code-how-can-i-resolve-the-issue)
+- [如何在 Azure 应用服务中通过被动模式连接到 FTP？](#how-can-i-connect-to-ftp-in-azure-app-service-via-passive-mode)
 
-### <a name="how-can-i-troubleshoot-ftp-deployment"></a>如何排查 FTP 部署问题？
+#### <a name="how-can-i-troubleshoot-ftp-deployment"></a>如何排查 FTP 部署问题？
 
 若要排查 FTP 部署问题，第一步是厘清部署问题和运行时应用程序问题。
 
@@ -108,19 +131,18 @@ ms.locfileid: "98209247"
 
 若要确定问题是部署问题还是运行时问题，请参阅 [Deployment vs. runtime issues](https://github.com/projectkudu/kudu/wiki/Deployment-vs-runtime-issues)（部署问题和运行时问题）。
 
-### <a name="im-not-able-to-ftp-and-publish-my-code-how-can-i-resolve-the-issue"></a>我无法通过 FTP 来发布代码。 如何解决此问题？
-检查是否输入了正确的主机名和[凭据](#open-ftp-dashboard)。 另请检查计算机上的以下 FTP 端口是否未被防火墙阻止：
+#### <a name="im-not-able-to-ftp-and-publish-my-code-how-can-i-resolve-the-issue"></a>我无法通过 FTP 来发布代码。 如何解决此问题？
+检查是否输入了正确的 [主机名](#get-ftps-endpoint) 和 [凭据](#get-deployment-credentials)。 另请检查计算机上的以下 FTP 端口是否未被防火墙阻止：
 
-- FTP 控制连接端口：21，990
+- FTP 控制连接端口：21、990
 - FTP 数据连接端口：989、10001-10300
  
-### <a name="how-can-i-connect-to-ftp-in-azure-app-service-via-passive-mode"></a>如何在 Azure 应用服务中通过被动模式连接到 FTP？
+#### <a name="how-can-i-connect-to-ftp-in-azure-app-service-via-passive-mode"></a>如何在 Azure 应用服务中通过被动模式连接到 FTP？
 Azure 应用服务支持通过“主动”模式和“被动”模式进行连接。 首选“被动”模式，因为部署计算机通常位于防火墙后面（不管是在操作系统中，还是在家庭网络或企业网络中）。 请参阅 [WinSCP 文档中的示例](https://winscp.net/docs/ui_login_connection)。 
-
-## <a name="next-steps"></a>后续步骤
-
-有关更高级的部署方案，请参阅[使用 Git 部署到 Azure](deploy-local-git.md)。 通过基于 Git 的 Azure 部署可实现版本控制、包还原、MSBuild 等功能。
 
 ## <a name="more-resources"></a>更多资源
 
+* [从本地 Git 部署到 Azure 应用服务](deploy-local-git.md)
 * [ 部署凭据](deploy-configure-credentials.md)
+* [示例：创建 web 应用并使用 FTP (Azure CLI) 部署文件 ](./scripts/cli-deploy-ftp.md)。
+* [示例：使用 FTP (PowerShell) 将文件上传到 web 应用 ](./scripts/powershell-deploy-ftp.md)。

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: e80465cf8d43918e6ed6da8ebb3b96f3f197e887
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: 0af327f624d0fed648012ce1d12bacabca688cec
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97679955"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102044181"
 ---
 # <a name="clustering-point-data"></a>聚类点数据
 
@@ -26,17 +26,17 @@ ms.locfileid: "97679955"
 
 ## <a name="enabling-clustering-on-a-data-source"></a>对数据源启用聚类
 
-通过将 `cluster` 选项设置为 true，在 `DataSource` 类中启用聚类。 设置 `ClusterRadius` 以选择附近的点，并将它们合并为聚类。 `ClusterRadius` 的值以像素为单位。 使用 `clusterMaxZoom` 指定禁用聚类逻辑的缩放级别。 下面的示例演示如何在数据源中启用聚类。
+通过将 `cluster` 选项设置为 true，在 `DataSource` 类中启用聚类。 设置 `clusterRadius` 为选择附近点并将它们合并到一个群集。 `clusterRadius` 的值以像素为单位。 用于 `clusterMaxZoom` 指定禁用聚类分析逻辑的缩放级别。 下面的示例演示如何在数据源中启用聚类。
 
 ```javascript
 //Create a data source and enable clustering.
 var datasource = new atlas.source.DataSource(null, {
     //Tell the data source to cluster point data.
     cluster: true,
-
+    
     //The radius in pixels to cluster points together.
     clusterRadius: 45,
-
+    
     //The maximum zoom level in which clustering occurs.
     //If you zoom in more than this, all points are rendered as symbols.
     clusterMaxZoom: 15
@@ -46,7 +46,7 @@ var datasource = new atlas.source.DataSource(null, {
 > [!TIP]
 > 如果两个数据点在地面上紧挨着，则聚类可能永远不会分解，无论用户放大多少倍。 若要解决此情况，可以设置 `clusterMaxZoom` 选项以禁用聚类逻辑，只是显示所有内容。
 
-下面是 `DataSource` 类为聚类提供的其他方法：
+`DataSource`类还提供了与聚类分析相关的下列方法。
 
 | 方法 | 返回类型 | 说明 |
 |--------|-------------|-------------|

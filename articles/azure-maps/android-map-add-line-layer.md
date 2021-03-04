@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 3e68be79a4405af103512a9009187857a0d9af39
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: 62002b776262e97dd34db1d9ecd3b7b0e09f46f3
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97681447"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102044216"
 ---
 # <a name="add-a-line-layer-to-the-map-android-sdk"></a>向地图添加线条层 (Android SDK) 
 
@@ -110,20 +110,21 @@ map.layers.add(layer, "labels");
 
 ![使用在线条层中呈现的数据驱动器样式线条映射](media/android-map-add-line-layer/android-line-layer-data-drive-style.png)
 
-## <a name="add-symbols-along-a-line"></a>沿线条添加符号
+## <a name="add-a-stroke-gradient-to-a-line"></a>向线条添加笔划渐变
 
-此示例演示如何沿地图上的线条添加箭头图标。 使用符号层时，请将 `symbolPlacement` 选项设置为 `SymbolPlacement.LINE` 。 此选项会沿线条呈现符号并旋转图标（0 度 = 右）。
+可以将一种笔划颜色应用于线条。 还可以使用颜色渐变填充线条，以显示从一个线段到下一个线段的转换。 例如，线条渐变可用于表示随时间和距离推移的变化，或是一连串连接的对象间的不同温度。 为了将此功能应用到行，数据源必须将 `lineMetrics` 选项设置为 `true` ，然后可以将颜色渐变表达式传递到 `strokeColor` 行的选项。 笔划渐变表达式必须引用将计算线条指标公开给表达式的 `lineProgress` 数据表达式。
 
 ```java
 //Create a data source and add it to the map.
-DataSource source = new DataSource();
+source = new DataSource(
+    //Enable line metrics on the data source. This is needed to enable support for strokeGradient.
+    withLineMetrics(true)
+);
 map.sources.add(source);
 
-//Load a image of an arrow into the map image sprite and call it "arrow-icon".
-map.images.add("arrow-icon", R.drawable.purple-arrow-right);
-
-//Create and add a line to the data source.
-source.add(LineString.fromLngLats(Arrays.asList(
+//Create a line and add it to the data source.
+source.add(LineString.fromLngLats(
+    Arrays.asList(
         Point.fromLngLat(-122.18822, 47.63208),
         Point.fromLngLat(-122.18204, 47.63196),
         Point.fromLngLat(-122.17243, 47.62976),
@@ -139,7 +140,65 @@ source.add(LineString.fromLngLats(Arrays.asList(
         Point.fromLngLat(-122.11595, 47.66712),
         Point.fromLngLat(-122.11063, 47.66735),
         Point.fromLngLat(-122.10668, 47.67035),
-        Point.fromLngLat(-122.10565, 47.67498))));
+        Point.fromLngLat(-122.10565, 47.67498)
+    )
+));
+
+//Create a line layer and pass in a gradient expression for the strokeGradient property.
+map.layers.add(new LineLayer(source,
+    strokeWidth(6f),
+
+    //Pass an interpolate or step expression that represents a gradient.
+    strokeGradient(
+        interpolate(
+            linear(),
+            lineProgress(),
+            stop(0, color(Color.BLUE)),
+            stop(0.1, color(Color.argb(255, 65, 105, 225))), //Royal Blue
+            stop(0.3, color(Color.CYAN)),
+            stop(0.5, color(Color.argb(255,0, 255, 0))), //Lime
+            stop(0.7, color(Color.YELLOW)),
+            stop(1, color(Color.RED))
+        )
+    )
+));
+```
+
+以下屏幕截图显示了上面的代码，其中显示了使用渐变笔划颜色呈现的行。
+
+![使用在线条层中呈现为渐变路径的线条映射](media/android-map-add-line-layer/android-line-layer-gradient.jpg)
+
+## <a name="add-symbols-along-a-line"></a>沿线条添加符号
+
+此示例演示如何沿地图上的线条添加箭头图标。 使用符号层时，请将 `symbolPlacement` 选项设置为 `SymbolPlacement.LINE` 。 此选项会沿线条呈现符号并旋转图标（0 度 = 右）。
+
+```java
+//Create a data source and add it to the map.
+DataSource source = new DataSource();
+map.sources.add(source);
+
+//Load a image of an arrow into the map image sprite and call it "arrow-icon".
+map.images.add("arrow-icon", R.drawable.purple-arrow-right);
+
+//Create and add a line to the data source.
+source.add(LineString.fromLngLats(Arrays.asList(
+    Point.fromLngLat(-122.18822, 47.63208),
+    Point.fromLngLat(-122.18204, 47.63196),
+    Point.fromLngLat(-122.17243, 47.62976),
+    Point.fromLngLat(-122.16419, 47.63023),
+    Point.fromLngLat(-122.15852, 47.62942),
+    Point.fromLngLat(-122.15183, 47.62988),
+    Point.fromLngLat(-122.14256, 47.63451),
+    Point.fromLngLat(-122.13483, 47.64041),
+    Point.fromLngLat(-122.13466, 47.64422),
+    Point.fromLngLat(-122.13844, 47.65440),
+    Point.fromLngLat(-122.13277, 47.66515),
+    Point.fromLngLat(-122.12779, 47.66712),
+    Point.fromLngLat(-122.11595, 47.66712),
+    Point.fromLngLat(-122.11063, 47.66735),
+    Point.fromLngLat(-122.10668, 47.67035),
+    Point.fromLngLat(-122.10565, 47.67498)))
+);
 
 //Create a line layer and add it to the map.
 map.layers.add(new LineLayer(source,
@@ -175,7 +234,7 @@ map.layers.add(new SymbolLayer(source,
 |:-----------------------------------------------------------------------:|
 |                                                  |
 
-下面的屏幕截图显示了上面的代码，其中显示了一个带有箭头图标的行。
+下面的屏幕截图显示了上面的代码，其中显示了一条线条，其中显示了箭头图标。
 
 ![使用数据驱动器样式线条映射，线条图层中呈现箭头](media/android-map-add-line-layer/android-symbols-along-line-path.png)
 

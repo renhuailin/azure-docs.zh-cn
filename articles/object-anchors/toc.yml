@@ -14,7 +14,7 @@
   expanded: true
   items:
     - name: 创建模型
-      href: quickstarts/get-started-model-ingestion.md
+      href: quickstarts/get-started-model-conversion.md
     - name: 创建 Unity 应用
       expanded: true
       items:

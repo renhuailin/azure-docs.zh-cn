@@ -4,19 +4,19 @@ description: 本文介绍了部署 IoT Edge 解决方案时遇到的问题的常
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/10/2020
+ms.date: 03/01/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: e1605f45dc8a7a1c03b5481ea17478064414df59
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: a3e646f44978e8897c22d579639efcef0fcd2205
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100382202"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102045966"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Azure IoT Edge 的常见问题和解决方法
 
@@ -216,6 +216,9 @@ IoT Edge 运行时只支持短于 64 个字符的主机名。 物理计算机通
 
 看到此错误时，可以配置虚拟机的 DNS 名称，然后在设置命令中将 DNS 名称设置为主机名。
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+
 1. 在 Azure 门户中，导航到虚拟机的概述页面。
 2. 选择 DNS 名称下的“配置”。 如果你的虚拟机已配置 DNS 名称，则不需要再配置。
 
@@ -236,6 +239,39 @@ IoT Edge 运行时只支持短于 64 个字符的主机名。 物理计算机通
       ```cmd
       notepad C:\ProgramData\iotedge\config.yaml
       ```
+
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+1. 在 Azure 门户中，导航到虚拟机的概述页面。
+
+2. 选择 DNS 名称下的“配置”。 如果你的虚拟机已配置 DNS 名称，则不需要再配置。
+
+   ![配置虚拟机的 DNS 名称](./media/troubleshoot/configure-dns.png)
+
+3. 为“DNS 名称标签”提供一个值，然后选择“保存” 。
+
+4. 复制新的 DNS 名称，名称格式应为 \<DNSnamelabel\>.\<vmlocation\>.cloudapp.azure.com。
+
+5. 在 IoT Edge 设备上，打开配置文件。
+
+   ```bash
+   sudo nano /etc/aziot/config.toml
+   ```
+
+6. 将的值替换 `hostname` 为你的 DNS 名称。
+
+7. 保存并关闭该文件，然后将更改应用到 IoT Edge。
+
+   ```bash
+   sudo iotedge config apply
+   ```
+
+:::moniker-end
+<!-- end 1.2 -->
 
 ## <a name="cant-get-the-iot-edge-daemon-logs-on-windows"></a>无法在 Windows 上获取 IoT Edge 守护程序日志
 
@@ -343,7 +379,7 @@ Error: Time:Thu Jun  4 19:44:58 2018 File:/usr/sdk/src/c/provisioning_client/ada
 
 **根本原因：**
 
-网关后面的 IoT Edge 设备将从父 IoT Edge 设备（在 config.yaml 文件的 `parent_hostname` 字段中指定）获取其模块映像。 `Could not perform HTTP request` 错误表示子设备无法通过 HTTP 到访问父设备。
+网关后 IoT Edge 设备将从配置文件的字段中指定的父 IoT Edge 设备获取其模块映像 `parent_hostname` 。 `Could not perform HTTP request` 错误表示子设备无法通过 HTTP 到访问父设备。
 
 **解决方法：**
 

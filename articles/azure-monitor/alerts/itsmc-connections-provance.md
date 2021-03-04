@@ -1,17 +1,16 @@
 ---
 title: 将 Provance 连接 IT 服务管理连接器
 description: 本文提供了有关如何在 Azure Monitor 中 IT 服务管理连接器 Provance (ITSMC) 的信息，以集中监视和管理 ITSM 工作项的信息。
-ms.subservice: logs
 ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 12/21/2020
-ms.openlocfilehash: 38aff6bf0851e97558fb8870a08f33bb0bcb0392
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 542b127823a73058f319e6a39c001bd563f042ae
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100608311"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102045371"
 ---
 # <a name="connect-provance-with-it-service-management-connector"></a>将 Provance 连接 IT 服务管理连接器
 
