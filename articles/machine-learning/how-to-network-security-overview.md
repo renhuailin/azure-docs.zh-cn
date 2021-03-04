@@ -8,15 +8,15 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.author: peterlu
 author: peterclu
-ms.date: 10/06/2020
+ms.date: 03/02/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, references_regions, contperf-fy21q1
-ms.openlocfilehash: 1a73988b66ba7b47f18ecaaa07df59e9047a933b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: e3705be10cb540538464e6b1299d848bc9057c7c
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101691818"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102039914"
 ---
 # <a name="virtual-network-isolation-and-privacy-overview"></a>虚拟网络隔离和隐私概述
 
@@ -106,10 +106,7 @@ ms.locfileid: "101691818"
 
 1. Azure Batch 服务从工作区接收作业，并通过使用计算资源预配的公共负载均衡器将定型作业提交到计算环境。 
 
-1. 计算资源接收作业并开始定型。 计算资源访问安全存储帐户以下载培训文件和上传输出。 
-
-![显示如何在使用 VNet 时提交 Azure 机器学习培训作业的体系结构关系图](./media/how-to-network-security-overview/secure-training-job-submission.png)
-
+1. 计算资源接收作业并开始定型。 计算资源访问安全存储帐户以下载培训文件和上传输出。
 
 ### <a name="limitations"></a>限制
 

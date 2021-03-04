@@ -1,17 +1,16 @@
 ---
 title: Azure Monitor 代理概述
 description: Azure Monitor 代理概述 (AMA) ，该代理从虚拟机的来宾操作系统中收集监视数据。
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/10/2020
-ms.openlocfilehash: e4837de70e9f00308b440933e0cd433ad5b27cf9
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 0487e5bd8109c02605e785e74d45589dd5fde5b9
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101711529"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102039591"
 ---
 # <a name="azure-monitor-agent-overview-preview"></a> (预览版 Azure Monitor 代理概述) 
 Azure Monitor 代理 (AMA) 从虚拟机的来宾操作系统收集监视数据，并将其传送到 Azure Monitor。 本文概述了 Azure Monitor 代理，包括如何安装它以及如何配置数据收集。

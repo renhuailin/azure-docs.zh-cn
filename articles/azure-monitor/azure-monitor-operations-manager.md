@@ -1,17 +1,16 @@
 ---
 title: 现有 Operations Manager 客户 Azure Monitor
 description: Operations Manager 的现有用户的指南，用于将特定工作负荷的监视转移到 Azure Monitor 作为过渡到云的一部分。
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/11/2021
-ms.openlocfilehash: e9f0a285df6013334970b971e46079b9e78b19cb
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 6d92b7c2f01a7e9ef12bc2bb422cfb6ed0076f73
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101728954"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102039370"
 ---
 # <a name="azure-monitor-for-existing-operations-manager-customers"></a>现有 Operations Manager 客户 Azure Monitor
 本文为当前使用 [System Center Operations Manager](/system-center/scom/welcome) ，并在将业务应用程序和其他资源迁移到 Azure 时计划过渡到 [Azure Monitor](overview.md) 的客户提供指导。 它假定您的最终目标是完全转换到云，使用 Azure Monitor 尽可能多地替换 Operations Manager 功能，而不会影响业务和 IT 操作要求。 

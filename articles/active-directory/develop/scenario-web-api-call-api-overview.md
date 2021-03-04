@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 03/03/2021
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: a66f0a2de1d8239baffbe53dfb5d6f2dd275d448
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 376c61f6a5ba94492cac26950465c61e3d8fe4ed
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756332"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102038554"
 ---
 # <a name="scenario-a-web-api-that-calls-web-apis"></a>方案：调用 Web API 的 Web API
 
@@ -30,9 +30,7 @@ ms.locfileid: "98756332"
 ## <a name="overview"></a>概述
 
 - Web、桌面、移动或单页应用程序客户端（附图中未提供）调用受保护的 Web API 并在其“Authorization”HTTP 标头中提供 JSON Web 令牌 (JWT) 持有者令牌。
-- 受保护的 Web API 将验证该令牌并使用 Microsoft 身份验证库 (MSAL) `AcquireTokenOnBehalfOf` 方法来从 Azure Active Directory (Azure AD) 请求另一个令牌，以便受保护的 Web API 可以代表用户调用另一个 Web API 或下游 Web API。
-- 受保护的 Web API 稍后也可以代表同一用户调用 `AcquireTokenSilent` 来请求其他下游 API 的令牌。 `AcquireTokenSilent` 在需要时刷新令牌。
-
+- 受保护的 Web API 将验证该令牌并使用 Microsoft 身份验证库 (MSAL) `AcquireTokenOnBehalfOf` 方法来从 Azure Active Directory (Azure AD) 请求另一个令牌，以便受保护的 Web API 可以代表用户调用另一个 Web API 或下游 Web API。 `AcquireTokenOnBehalfOf` 在需要时刷新令牌。
 ![调用 Web API 的 Web API 的图示](media/scenarios/web-api.svg)
 
 ## <a name="specifics"></a>详情
@@ -41,4 +39,4 @@ ms.locfileid: "98756332"
 
 ## <a name="next-steps"></a>后续步骤
 
-转到此方案中的下一篇文章：[应用注册](scenario-web-api-call-api-app-registration.md)。
+转到此方案中的下一篇文章，[应用注册](scenario-web-api-call-api-app-registration.md)。

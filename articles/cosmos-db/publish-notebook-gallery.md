@@ -7,17 +7,17 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 03/02/2021
 ms.author: dech
-ms.openlocfilehash: c7c910c7162bde2209b07eb4f1d533328bae08c3
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 58ae61bc9e1736b13bb1802e2f39d5ada045cb6a
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101693026"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102039229"
 ---
 # <a name="publish-notebooks-to-the-azure-cosmos-db-notebook-gallery"></a>将笔记本发布到 Azure Cosmos DB 笔记本库
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-Azure Cosmos DB 内置 Jupyter 笔记本会直接集成到 Azure 门户中的 Azure Cosmos DB 帐户。 使用这些笔记本，可以从 Azure 门户分析和可视化数据。 适用于 Azure Cosmos DB 的内置笔记本目前在29个 [区域](#supported-regions)提供。 若要使用笔记本，请 [创建新的 Cosmos 帐户](#create-a-new-cosmos-account) ，或在其中一个区域中的 [现有帐户上启用笔记本](#enable-notebooks-in-an-existing-cosmos-account) 。
+Azure Cosmos DB 内置 Jupyter 笔记本会直接集成到 Azure 门户中的 Azure Cosmos DB 帐户。 使用这些笔记本，可以从 Azure 门户分析和可视化数据。 Azure Cosmos DB 的内置笔记本目前在 [许多地区](https://azure.microsoft.com/global-infrastructure/services/?products=cosmos-db&regions=all)都可用。 若要使用笔记本，请 [创建新的 Cosmos 帐户](create-cosmosdb-resources-portal.md) ，或在其中一个区域中的 [现有帐户上启用笔记本](enable-notebooks.md) 。
 
 Azure 门户中的笔记本环境包含 Azure Cosmos DB 团队发布的一些示例。 它还具有一个公共库，可在其中发布和共享自己的笔记本。 将笔记本发布到库后，可供所有 Azure Cosmos DB 用户查看和使用。 本文介绍如何使用公共库中的笔记本，并将笔记本发布到库。
 
@@ -53,7 +53,7 @@ Azure 门户中的笔记本环境包含 Azure Cosmos DB 团队发布的一些示
 
    通过选择 " **发布到库** " 选项，还可以选择 **...** 笔记本名称旁边的按钮：
 
-   :::image type="content" source="./media/publish-notebook-gallery/choose-notebook-publish.png" alt-text="选择要发布到库中的笔记本。":::
+   :::image type="content" source="./media/publish-notebook-gallery/choose-notebook-publish.png" alt-text="选择要发布到库中的笔记本的另一种方法。":::
 
 1. 填写 " **发布到库** " 窗体，其中包含以下详细信息：
 
@@ -61,11 +61,10 @@ Azure 门户中的笔记本环境包含 Azure Cosmos DB 团队发布的一些示
    * **说明：**  笔记本功能的简短说明。
    * **标记：** 标记为可选，用于在通过关键字搜索时筛选结果。
    * **封面图像：** 发布笔记本时封面上使用的图像。 你可以选择以下选项之一：
-
-     * **自定义映像** -可以从计算机上传图像。 选择具有纵横比的图像文件256x144。
-     * **URL** -提供映像所在的可公开访问的 url。
-     * **拍摄屏幕截图** -自动拍摄并上传到预览版的已打开笔记本的屏幕截图。
-     * 使用具有显示输出的第一个单元的 **第一个显示输出**。 仅显示 markdown/text 的单元不计为显示输出。
+   * **自定义映像** -可以从计算机上传图像。 选择具有纵横比的图像文件256x144。
+   * **URL** -提供映像所在的可公开访问的 url。
+   * **拍摄屏幕截图** -自动拍摄并上传到预览版的已打开笔记本的屏幕截图。
+   * 使用具有显示输出的第一个单元的 **第一个显示输出**。 仅显示 markdown/text 的单元不计为显示输出。
 
    :::image type="content" source="./media/publish-notebook-gallery/publish-notebook.png" alt-text="填写 &quot;发布到库&quot; 窗体。":::
 

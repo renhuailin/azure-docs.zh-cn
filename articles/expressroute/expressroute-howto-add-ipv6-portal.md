@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 2/9/2021
 ms.author: duau
-ms.openlocfilehash: 67f296c7584fcf25af79f9125137aca07c9906fd
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 640e13261fa76fe89c9f5fbd038f20766c509025
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101744569"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102038944"
 ---
 # <a name="add-ipv6-support-for-private-peering-using-the-azure-portal-preview"></a>使用 Azure 门户 (预览版添加对专用对等互连的 IPv6 支持) 
 
@@ -98,6 +98,7 @@ ms.locfileid: "101744569"
 * 通过非 AZ ExpressRoute 网关 SKU 连接到 Azure 中的部署
 * 与非 AZ 区域中的部署的连接
 * Global Reach ExpressRoute 线路之间的连接
+* 在 vWAN 中使用 ExpressRoute
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,93 +1,99 @@
 ---
-title: 同步多个 Azure Kinect DK 设备
-description: 本文探讨多设备同步的优势，以及如何设置要同步的设备。
+title: 同步多个 Azure Kinect 深色设备
+description: 本文探讨了多设备同步的优点，以及如何设置要同步的设备。
 author: tesych
 ms.author: tesych
 ms.prod: kinect-dk
 ms.date: 02/20/2020
 ms.topic: article
-keywords: azure, kinect, 规格, 硬件, DK, 功能, 深度, 彩色, RGB, IMU, 阵列, 多, 同步
-ms.openlocfilehash: 30961152b31a659cb27e91a99d6806490998d18d
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+keywords: azure，kinect，规范，硬件，深色，功能，深度，颜色，RGB，IMU，阵列，深度，多，同步
+ms.openlocfilehash: eabf77896777f39efcfd61adb3040bca8642716e
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97592273"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102039948"
 ---
-# <a name="synchronize-multiple-azure-kinect-dk-devices"></a>同步多个 Azure Kinect DK 设备
+# <a name="synchronize-multiple-azure-kinect-dk-devices"></a>同步多个 Azure Kinect 深色设备
 
-每个 Azure Kinect DK 设备附带 3.5 毫米同步端口（**输入同步** 和 **输出同步**），可将多个设备链接在一起。 连接设备后，软件可以协调设备之间的触发定时。 
+每个 Azure Kinect 深色设备包含 3.5 mm 同步端口 (**同步** 和 **同步输出**) ，你可以使用这些端口将多个设备链接在一起。 连接设备后，软件可以协调它们之间的触发器计时。 
 
-本文将介绍如何连接和同步设备。
+本文介绍如何连接和同步设备。
 
-## <a name="benefits-of-using-multiple-azure-kinect-dk-devices"></a>使用多个 Azure Kinect DK 设备的好处
+## <a name="benefits-of-using-multiple-azure-kinect-dk-devices"></a>使用多个 Azure Kinect 深色设备的优点
 
-使用多个 Azure Kinect DK 设备的原因有很多，包括：
+使用多个 Azure Kinect 深色设备的原因有很多，其中包括：
 
-- 填补遮挡区域。 尽管 Azure Kinect DK 数据转换生成的是单个图像，但两个相机（深度和 RGB 相机）实际上保持着较小的一段距离。 这种偏移使得遮挡成为可能。 遮挡是指前景对象阻挡了设备上两个相机之一的背景对象的部分视角。 在生成的彩色图像中，前景对象看上去像是在背景对象上投射了一个阴影。  
-   例如，在下图中，左侧相机可看到灰色像素“P2”。 但是，白色的前景对象阻挡了右侧相机的红外光束。 右侧相机无法获取“P2”的数据。  
+- 填写 occlusions。 尽管 Azure Kinect 深色数据转换会生成一个图像，但两个照相机 (深度和 RGB) 实际上是一小的距离。 偏移量使 occlusions 成为可能。 当前景对象阻止设备上两个照相机中某个相机的部分视图时，会发生封闭。 在生成的颜色图像中，前景对象似乎会在背景对象上转换阴影。  
+   例如，在下图中，左侧相机看到灰色像素 "P2"。 但是，白色前景对象会阻止右侧相机 IR 横梁。 右侧照相机没有 "P2" 的数据。  
    ![关系图显示两个照相机，其中一个已阻止。](./media/occlusion.png)  
-   附加的同步设备可以提供遮挡的数据。
-- 扫描三维对象。
-- 将有效帧速率提升至 30 帧/秒 (FPS) 以上的值。
-- 捕获同一场景的多个 4K 彩色图像，所有图像都在曝光中心时间点的 100 微秒 (&mu;s) 内对齐。
-- 增大相机的空间覆盖范围。
+   其他同步设备可以提供封闭像素数据。
+- 扫描三个维度中的对象。
+- 增加有效帧速率，使其值超过30帧/秒 (FPS) 。
+- 捕获同一场景的多个4K 彩色图像，所有在100微秒内对齐 (&mu;) 曝光中心。
+- 增加空间内的相机覆盖范围。
 
 ## <a name="plan-your-multi-device-configuration"></a>规划多设备配置
 
-在开始之前，请务必查看 [Azure Kinect DK 硬件规格](hardware-specification.md)和 [Azure Kinect DK 深度相机](depth-camera.md)。
+在开始之前，请确保查看 [Azure KINECT 深色硬件规范](hardware-specification.md) 和 [azure kinect 深色深度相机](depth-camera.md)。
+
+> [!NOTE]  
+> 卸下外部塑料护盖以公开同步和同步输出插孔。
 
 ### <a name="select-a-device-configuration"></a>选择设备配置
 
-可使用以下任一方法来完成设备配置：
+你可以为设备配置使用以下方法之一：
 
-- **菊花链配置**。 同步一个主设备以及最多八个从属设备。  
-   ![展示如何在菊花链配置中连接 Azure Kinect DK 设备的插图。](./media/multicam-sync-daisychain.png)
-- **星形配置**。 同步一个主设备以及最多两个从属设备。  
-   ![展示如何在星形配置中设置多个 Azure DK 设备的插图。](./media/multicam-sync-star.png)
+- **菊花链配置**。 同步一个主设备和最多八个从属设备。  
+   ![此图显示了如何在菊花链配置中连接 Azure Kinect 深色设备。](./media/multicam-sync-daisychain.png)
+- **星型配置**。 同步一个主设备和最多两个从属设备。  
+   ![此图显示了如何在星形配置中设置多个 Azure 深色设备。](./media/multicam-sync-star.png)
 
 #### <a name="using-an-external-sync-trigger"></a>使用外部同步触发器
 
-在两种配置中，主设备提供从属设备的触发信号。 但是，可将自定义的外部源用于同步触发器。 例如，可以使用此选项同步其他设备的图像捕获信号。 在菊花链配置或星形配置中，外部触发器源将连接到主设备。
+在这两种配置中，主设备都提供了从属设备的触发信号。 但是，可以将自定义外部源用于同步触发器。 例如，你可以使用此选项将图像捕获与其他设备同步。 在菊花链配置或星型配置中，外部触发器源连接到主设备。
 
-外部触发器源的工作方式必须与主设备相同。 它必须提供一个具有以下特征的同步信号：
+外部触发器源的工作方式必须与主设备相同。 它必须提供具有以下特征的同步信号：
 
-- 活动程度高
-- 脉冲宽度：大于 8&mu;s
+- 有效高
+- 脉冲宽度：大于 8 &mu; 秒
 - 5V TTL/CMOS
-- 最大驱动容量：不小于 8 毫安 (mA)
-- 频率支持：精确到 30 FPS、15 FPS 和 5 FPS（彩色相机主 VSYNC 信号的频率）
+- 最大驱动容量：不小于 8 milliamps (mA) 
+- 频率支持：正好 30 FPS、15 FPS 和 5 FPS (彩色照相机主机 VSYNC 信号的频率) 
 
-触发器源必须使用 3.5 毫米音频线将信号传送到主设备的 **输入同步** 端口。 可以使用立体声或单声道音频线。 Azure Kinect DK 会将音频线连接器的所有套管和套环短接到一起，并将其接地。 如下图所示，设备只从连接器尖端接收同步信号。
+触发器源必须使用 3.5 mm 音频电缆将信号传递到端口中的主设备 **同步** 。 可以使用立体声或单声道电缆。 Azure Kinect 会将音频电缆连接器的所有卷起和环放在一起，并将其作为地面。 如下图所示，设备仅从连接器提示接收同步信号。
 
-![外部触发器信号的线缆配置](./media/resources/camera-trigger-signal.jpg)
+![外部触发器信号的电缆配置](./media/resources/camera-trigger-signal.jpg)
 
-有关如何使用外部设备的详细信息，请参阅[将 Azure Kinect 录制器与外部同步设备配合使用](record-external-synchronized-units.md)
+有关如何使用外部设备的详细信息，请参阅 [将 Azure Kinect 录音机与外部同步设备配合使用](record-external-synchronized-units.md)
 
-### <a name="plan-your-camera-settings-and-software-configuration"></a>规划相机设置和软件配置
+> [!NOTE]  
+> Sync 是 RGB 照相机的 VSync。 所有设备的时间戳均设置为零，并计数。 Microsoft 并未确定同步脉冲的最小和最大宽度，并建议模拟通过从 Azure Kinect 深色同步而生成的脉冲。
 
-有关如何设置软件来控制相机以及如何使用图像数据的信息，请参阅 [Azure Kinect 传感器 SDK](about-sensor-sdk.md)。
+### <a name="plan-your-camera-settings-and-software-configuration"></a>规划照相机设置和软件配置
 
-本部分讨论影响已同步设备（而不是单独的设备）的多种因素。 软件应考虑到这些因素。
+有关如何设置软件来控制照相机和使用图像数据的信息，请参阅 [Azure Kinect 传感器 SDK](about-sensor-sdk.md)。
 
-#### <a name="exposure-considerations"></a>曝光考虑因素
-若要控制每个设备的精确定时，我们建议使用手动曝光设置。 使用自动曝光设置时，每个彩色相机可能会动态更改实际曝光。 由于曝光会影响定时，此类更改很快就会使相机失去同步。
+本部分讨论影响同步设备的几个因素，这些因素 (但不) 单一设备。 软件应考虑这些因素。
 
-避免在图像捕获循环中重复指定相同的曝光设置。 必要时，请只调用 API 一次。
+#### <a name="exposure-considerations"></a>公开注意事项
+如果要控制每个设备的精确时间，建议使用手动曝光设置。 在自动曝光设置下，每个彩色相机都可以动态地更改实际曝光。 由于曝光会影响计时，因此更改会快速推送不同步的相机。
 
-#### <a name="avoiding-interference-between-multiple-depth-cameras"></a>避免多个深度相机之间产生干扰
+在映像捕获循环中，避免重复设置相同的曝光设置。 仅在需要时调用一次 API。
 
-如果多个深度相机对重叠的视场成像，每个相机必须对其自身关联的激光成像。 为了防止激光相互干扰，相机捕获应相互偏离 160μs 或以上。
+#### <a name="avoiding-interference-between-multiple-depth-cameras"></a>避免在多个深度相机之间产生干扰
 
-对于每次深度相机捕获，激光会打开 9 次，每次只保持活动状态 125&mu;s。 然后，激光将空闲 14505&mu;s 或 23905&mu;s，具体取决于工作模式。 此行为意味着，偏移量计算的起点为 125&mu;s。
+如果多个深度照相机的图像与视图重叠，则每个照相机都必须图像其自己的关联激光。 若要防止鲨鱼相互干扰，照相机捕获应彼此之间偏移160μs 或更多。
 
-此外，相机时钟与设备固件时钟之差会将最小偏移量增大至 160&mu;s。 若要根据配置计算出更精确的偏移量，请注意所用的深度模式，并参考[深度传感器原始定时表](hardware-specification.md#depth-sensor-raw-timing)。 参考此表中的数据可以使用以下公式计算最小偏移量（每个相机的曝光时间）：
+对于每个深度相机捕获，激光会启用9次，每次仅适用于 125 &mu; 秒。 然后，对于 14505 &mu; s 或 23905 s，激光空闲一段 &mu; 时间，具体取决于操作模式。 此行为意味着偏移量计算的起始点为 125 &mu; 秒。
 
-> 曝光时间 = (红外脉冲 &times; 脉冲宽度) + (空闲周期 &times; 空闲时间)     
+此外，照相机时钟和设备固件时钟之间的差异增加了160秒的最小偏移量 &mu; 。 若要为配置计算更精确的偏移量，请注意正在使用的深度模式，并参考 [深度传感器原始计时表](hardware-specification.md#depth-sensor-raw-timing)。 通过使用此表中的数据，您可以使用以下公式来计算每个相机) 的曝光时间 (最小偏移量：
 
-使用 160&mu;s 偏移量时，最多可以配置 9 个额外的深度相机，以便在每束激光打开时，其他激光保持空闲状态。
+> *曝光时间* = (*IR 脉冲* &times; *脉冲宽度*) + (*空闲期间* &times; *空闲时间*) 
 
-在软件中，使用 ```depth_delay_off_color_usec``` 或 ```subordinate_delay_off_master_usec``` 来确保每束红外激光在其自身的 160&mu;s 时限内触发，或者提供不同的视场。
+使用160的偏移量时 &mu; ，最多可以配置9个额外的深度相机，使每个激光打开，而其他鲨鱼处于空闲状态。
+
+在软件中，使用 ```depth_delay_off_color_usec``` 或 ```subordinate_delay_off_master_usec``` 以确保每个 IR 激光都在其自己的 160 &mu; s 窗口中触发，或者具有不同的视图字段。
 
 > [!NOTE]  
 > 实际的脉冲宽度为125us，但我们将160us 为某些机动时间提供。 以 NFOV UNBINNED 为例，每个125us 脉冲后跟 1450us idle。 汇总这些 (9 x 125) + (8 x 1450) ，产生曝光度为 12.8 ms 的曝光时间。 可以交错两个设备的曝光，使第二个相机的第一次脉冲落在第一个相机的第一个空闲期间。 第一个和第二个摄像机之间的延迟可能会小到 125us (脉冲的宽度) 不过，我们建议机动时间160us。 给定的160us，你可以交错最多10个相机的曝光期限。

@@ -9,15 +9,15 @@ ms.custom: seodec18, cog-serv-seo-aug-2020
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/28/2020
+ms.date: 03/02/2021
 ms.author: aahi
 keywords: 本地, Docker, 容器
-ms.openlocfilehash: 2bef6aa4e624386750a4c989d7e56cc1b22aaa5e
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: e157e976186f03aa984877435c42b996ce476740
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97862007"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102040186"
 ---
 # <a name="install-and-run-docker-containers-for-luis"></a>安装并运行 LUIS 的 Docker 容器
 
@@ -281,7 +281,7 @@ ApiKey={API_KEY}
 |`staging`|boolean|设置为 true 时，返回过渡环境结果中的查询。 |
 |`log`|boolean|记录查询，以便以后用于[主动学习](luis-how-to-review-endpoint-utterances.md)。 默认为 true。|
 
-**_
+***
 
 ### <a name="query-the-luis-app"></a>查询 LUIS 应用
 
@@ -335,7 +335,7 @@ curl -X GET \
 ```
 版本名称最多包含 10 个字符，并且仅包含 URL 中允许的字符。
 
-**_
+***
 
 ## <a name="import-the-endpoint-logs-for-active-learning"></a>导入终结点日志以供主动学习
 

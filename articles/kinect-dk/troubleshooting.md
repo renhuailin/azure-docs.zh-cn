@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: 故障排除, 更新, bug, kinect, 反馈, 恢复, 日志记录, 提示
-ms.openlocfilehash: a6e00b6c5e9e4f82bb668769aade8311896bef32
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 5f13815b8f8b26f6a08da28181a4a6164b7b89a3
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97587275"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102038814"
 ---
 # <a name="azure-kinect-known-issues-and-troubleshooting"></a>Azure Kinect 已知问题和故障排除
 
@@ -174,6 +174,10 @@ Linux 上的 Azure Kinect 深度引擎使用 OpenGL。 OpenGL 需要一个窗口
 2. 关闭系统电源，断开显示器的连接并启动系统。 自动登录将强制创建 x 服务器会话。
 2. 通过 ssh 连接并设置显示环境变量 `export DISPLAY=:0`
 3. 启动 Azure Kinect 应用程序。
+
+[Xtrlock](http://manpages.ubuntu.com/manpages/xenial/man1/xtrlock.1x.html)实用程序可用于在自动登录后立即锁定屏幕。 将以下命令添加到启动应用程序或 systemd 服务：
+
+`bash -c “xtrlock -b”` 
 
 ## <a name="missing-c-documentation"></a>缺少 c # 文档
 

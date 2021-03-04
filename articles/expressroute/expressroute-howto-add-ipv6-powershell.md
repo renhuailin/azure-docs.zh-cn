@@ -5,14 +5,14 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: how-to
-ms.date: 2/9/2021
+ms.date: 03/02/2021
 ms.author: duau
-ms.openlocfilehash: 402714b55d7513e41458503b12c68768d0c6ad5e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 20b8e354d0c8e2e04cf22d1b8014f5b8e33a860c
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101744532"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102038860"
 ---
 # <a name="add-ipv6-support-for-private-peering-using-azure-powershell-preview"></a>使用 Azure PowerShell (预览版添加对专用对等互连的 IPv6 支持) 
 
@@ -60,8 +60,8 @@ ms.locfileid: "101744532"
 
 3. 将 IPv6 专用对等互连添加到现有的 IPv4 专用对等互连配置。 为主链接和辅助链接提供一对/126 IPv6 子网。 在每个子网中，当 Microsoft 将第二个可用的 IP 用于其路由器时，你需为路由器分配第一个可用的 IP 地址。
 
-> [!Note]
-> 对等 ASN 和 VlanId 应与 IPv4 专用对等互连配置中的相同。
+    > [!Note]
+    > 对等 ASN 和 VlanId 应与 IPv4 专用对等互连配置中的相同。
 
     ```azurepowershell-interactive
     Set-AzExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -ExpressRouteCircuit $ckt -PeeringType AzurePrivatePeering -PeerASN 100 -PrimaryPeerAddressPrefix "3FFE:FFFF:0:CD30::/126" -SecondaryPeerAddressPrefix "3FFE:FFFF:0:CD30::4/126" -VlanId 200 -PeerAddressType IPv6
@@ -175,6 +175,7 @@ ms.locfileid: "101744532"
 * 通过非 AZ ExpressRoute 网关 SKU 连接到 Azure 中的部署
 * 与非 AZ 区域中的部署的连接
 * Global Reach ExpressRoute 线路之间的连接
+* 在 vWAN 中使用 ExpressRoute
 
 ## <a name="next-steps"></a>后续步骤
 

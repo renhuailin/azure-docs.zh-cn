@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 04/30/2020
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: be5000b6f9153839b926932c82c9f8fa3ab93f5f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: a713d869a754f17f4030c531999c822a2cbb76ee
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101704831"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102039795"
 ---
 # <a name="secure-a-custom-dns-name-with-a-tlsssl-binding-in-azure-app-service"></a>在 Azure 应用服务中使用 TLS/SSL 绑定保护自定义 DNS 名称
 
@@ -42,7 +42,7 @@ ms.locfileid: "101704831"
 - [将专用证书添加到应用](configure-ssl-certificate.md)
 
 > [!NOTE]
-> 添加专用证书最简单的方法是[创建免费的应用服务托管证书](configure-ssl-certificate.md#create-a-free-certificate-preview)（预览版）。
+> 添加专用证书最简单的方法是[创建免费的应用服务托管证书](configure-ssl-certificate.md#create-a-free-managed-certificate-preview)（预览版）。
 
 [!INCLUDE [Prepare your web app](../../includes/app-service-ssl-prepare-app.md)]
 
@@ -73,7 +73,7 @@ ms.locfileid: "101704831"
 - **导入应用服务证书** - 遵循 [导入应用服务证书](configure-ssl-certificate.md#import-an-app-service-certificate)中的工作流，然后在此处选择此选项。
 
 > [!NOTE]
-> 还可以[创建免费证书](configure-ssl-certificate.md#create-a-free-certificate-preview)（预览版）或[导入 Key Vault 证书](configure-ssl-certificate.md#import-a-certificate-from-key-vault)，但必须单独执行，然后返回到“TLS/SSL 绑定”对话框  。
+> 还可以[创建免费证书](configure-ssl-certificate.md#create-a-free-managed-certificate-preview)（预览版）或[导入 Key Vault 证书](configure-ssl-certificate.md#import-a-certificate-from-key-vault)，但必须单独执行，然后返回到“TLS/SSL 绑定”对话框  。
 
 ### <a name="create-binding"></a>创建绑定
 

@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: conceptual
-ms.date: 02/17/2021
+ms.date: 03/02/2021
 ms.author: alkohli
 ms.custom: references_regions
-ms.openlocfilehash: 7212fc4113c1de0a7aee4c6c02e8fa65f9828680
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 88aedb7daa375ae6b4a9107dceed1d25ed72ed92
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101724823"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102039098"
 ---
 # <a name="azure-data-box-disk-frequently-asked-questions"></a>Azure Data Box Disk：常见问题
 
@@ -55,7 +55,7 @@ A. 对于5个磁盘，每个磁盘具有 8 TB 的容量 (7 TB 可用容量) ，�
 A.  若要查看目前提供 Data Box Disks 的区域，请转到[区域可用性](data-box-disk-overview.md#region-availability)。  
 
 ### <a name="q-which-regions-can-i-store-data-in-with-data-box-disks"></a>Q. 使用 Data Box 磁盘可在哪些区域存储数据？
-A. 美国、加拿大、澳大利亚、西欧和北欧、韩国和日本的所有区域均支持 Data Box Disk。 仅支持 Azure 公有云区域。 不支持 Azure 政府版或其他主权云。
+A. 美国、加拿大、欧盟、英国、澳大利亚、新加坡、印度、中国、香港特别行政区、日本、韩国和南非的所有区域均支持 Data Box Disk。 仅支持 Azure 公有云区域。 不支持 Azure 政府版或其他主权云。
 
 ### <a name="q-how-can-i-import-source-data-present-at-my-location-in-one-countryregion-to-an-azure-region-in-a-different-country"></a>Q. 如何将在一个国家/地区的位置存在的源数据导入到不同国家/地区的 Azure 区域？
 A. Data Box Disk 仅支持在与目标相同的国家/地区内进行数据引入，并且不会跨越任何国际界限。 唯一的例外情况是欧盟 (欧盟) 中的订单，其中 Data Box 个磁盘可以与任何欧盟国家/地区一起发运。
@@ -199,9 +199,9 @@ A.  若要加快复制过程：
 - 将文件复制到 VM 的磁盘。
 
 ### <a name="q-can-i-use-multiple-storage-accounts-with-data-box-disks"></a>Q. 是否可对 Data Box 磁盘使用多个存储帐户？
-A.  否。 Data Box 磁盘目前仅支持一个存储帐户（常规或经典帐户）。 支持热 Blob 和冷 Blob。 目前仅支持美国、西欧和北欧的 Azure 公有云中的存储帐户。
+A.  否。 Data Box 磁盘目前仅支持一个存储帐户（常规或经典帐户）。 支持热 Blob 和冷 Blob。
 
-### <a name="q-what-is-the-toolset-available-for-my-data-with-data-box-disks"></a>Q. Data Box Disk 提供了用于处理数据的什么工具集？
+### <a name="q-what-is-the-toolset-available-for-my-data-with-data-box-disks"></a>问： Data Box Disk 提供了用于处理数据的什么工具集？
 A. 随 Data Box Disk 提供的工具集包含三个工具：
  - **Data Box Disk 解锁工具**：可以使用此工具来解锁 Microsoft 寄送的已加密磁盘。 使用此工具解锁磁盘时，需要提供从 Azure 门户中的 Data Box Disk 订单中获得的密钥。 
  - **Data Box Disk 验证工具**：可以使用此工具根据 Azure 命名约定来验证大小、格式和 Blob 名称。 它还会生成复制的数据的校验和，然后使用校验和来验证上传到 Azure 的数据。

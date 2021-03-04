@@ -7,12 +7,12 @@ ms.service: route-server
 ms.topic: quickstart
 ms.date: 03/02/2021
 ms.author: duau
-ms.openlocfilehash: c56e7318e24b802ae9ad605a0c9ae5f88397ec8b
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 5b40cfcde7aa1771c8a4b9025d35b2dc0c728676
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101680552"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102039778"
 ---
 # <a name="quickstart-create-and-configure-route-server-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建并配置路由服务器
 
@@ -70,7 +70,7 @@ RouteServerSubnet ID 如下所示：
 使用此命令来创建路由服务器：
 
 ```azurepowershell-interactive 
-New-AzRouteServer -Name myRouteServer -ResourceGroupName RouteServerRG -Location "West US” -HostedSubnet “RouteServerSubnet_ID”
+New-AzRouteServer -RouteServerName myRouteServer -ResourceGroupName RouteServerRG -Location "West US” -HostedSubnet “RouteServerSubnet_ID”
 ```
 
 该位置需要与虚拟网络的位置匹配。 HostedSubnet 是在前一部分中获取的 RouteServerSubnet ID。
@@ -80,7 +80,7 @@ New-AzRouteServer -Name myRouteServer -ResourceGroupName RouteServerRG -Location
 请使用以下命令来建立从路由服务器到 NVA 的 BGP 对等互连：
 
 ```azurepowershell-interactive 
-Add-AzRouteServerPeer -PeerName "myNVA” -PeerIp “nva_ip” -PeerAsn “nva_asn” -RouteServerName "myRouteServer -ResourceGroupName ”RouteServerRG”
+Add-AzRouteServerPeer -PeerName "myNVA" -PeerIp "nva_ip" -PeerAsn "nva_asn" -RouteServerName myRouteServer -ResourceGroupName RouteServerRG
 ```
 
 “nva_ip”是分配到 NVA 的虚拟网络 IP。 “nva_asn”是在 NVA 中配置的自治系统编号 (ASN)。 该 ASN 可以是 65515-65520 范围之外的任意 16 位数字。 此 ASN 范围是 Microsoft 保留的。
@@ -88,7 +88,7 @@ Add-AzRouteServerPeer -PeerName "myNVA” -PeerIp “nva_ip” -PeerAsn “nva_a
 若要设置与不同 NVA 的对等互连或与同一 NVA 的另一实例的对等互连，以便实现冗余，请使用此命令：
 
 ```azurepowershell-interactive 
-Add-AzRouteServerPeer -PeerName “NVA2_name” -PeerIp “nva2_ip” -PeerAsn “nva2_asn” -RouteServerName “myRouteServer” -ResourceGroupName “RouteServerRG” 
+Add-AzRouteServerPeer -PeerName "NVA2_name" -PeerIp "nva2_ip" -PeerAsn "nva2_asn" -RouteServerName myRouteServer -ResourceGroupName RouteServerRG 
 ```
 
 ## <a name="complete-the-configuration-on-the-nva"></a>在 NVA 上完成配置
@@ -96,7 +96,7 @@ Add-AzRouteServerPeer -PeerName “NVA2_name” -PeerIp “nva2_ip” -PeerAsn �
 若要在 NVA 上完成配置并启用 BGP 会话，需要 Azure 路由服务器的 IP 和 ASN。 可以使用以下命令来获取此信息：
 
 ```azurepowershell-interactive 
-Get-AzRouteServer -RouterName “myRouteServer” -ResourceGroupName “RouteServerRG”
+Get-AzRouteServer -RouterServerName myRouteServer -ResourceGroupName RouteServerRG
 ```
 
 输出中会包含以下信息：
@@ -113,13 +113,13 @@ RouteServerIps : {10.5.10.4, 10.5.10.5}
 1. 若要在 Azure 路由服务器和网关之间启用路由交换，请使用此命令：
 
 ```azurepowershell-interactive 
-Update-AzRouteServer -RouteServerName “myRouteServer” -ResourceGroupName “RouteServerRG” -AllowBranchToBranchTraffic 
+Update-AzRouteServer -RouteServerName myRouteServer -ResourceGroupName RouteServerRG -AllowBranchToBranchTraffic 
 ```
 
 2. 若要在 Azure 路由服务器和网关之间禁用路由交换，请使用此命令：
 
 ```azurepowershell-interactive 
-Update-AzRouteServer -RouteServerName “myRouteServer” -ResourceGroupName “RouteServerRG” 
+Update-AzRouteServer -RouteServerName myRouteServer -ResourceGroupName RouteServerRG
 ```
 
 ## <a name="troubleshooting"></a>疑难解答
@@ -137,13 +137,13 @@ Get-AzRouteServerPeerLearnedRoute
 1. 使用此命令删除 Azure 路由服务器与 NVA 之间的 BGP 对等互连：
 
 ```azurepowershell-interactive 
-Remove-AzRouteServerPeer -PeerName “nva_name” -RouteServerName “myRouteServer” -ResourceGroupName “RouteServerRG” 
+Remove-AzRouteServerPeer -PeerName “nva_name” -RouteServerName myRouteServer -ResourceGroupName RouteServerRG 
 ```
 
 2. 使用此命令删除路由服务器：
 
 ```azurepowershell-interactive 
-Remove-AzRouteServer -RouteServerName “myRouteServer” -ResourceGroupName “RouteServerRG” 
+Remove-AzRouteServer -RouteServerName myRouteServer -ResourceGroupName RouteServerRG
 ```
 
 ## <a name="next-steps"></a>后续步骤

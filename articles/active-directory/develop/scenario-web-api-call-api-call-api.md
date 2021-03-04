@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/26/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: bbb42a4955ff0b4fbbac58830ec5c8aecf04915d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: f4dfd2c7f9dbdd111f70a5dd5a648c11eacbf7b0
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101686727"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102038537"
 ---
 # <a name="a-web-api-that-calls-web-apis-call-an-api"></a>调用 Web API 的 Web API：调用 API
 
@@ -29,15 +29,9 @@ ms.locfileid: "101686727"
 
 使用 Microsoft.Identity.Web 时，有 3 种使用方案：
 
-- [调用 Web API 的 Web API：调用 API](#a-web-api-that-calls-web-apis-call-an-api)
-  - [控制器代码](#controller-code)
-- [ASP.NET Core](#aspnet-core)
-      - [选项 1：使用 SDK 调用 Microsoft Graph](#option-1-call-microsoft-graph-with-the-sdk)
-      - [选项 2：使用帮助程序类调用下游 Web API](#option-2-call-a-downstream-web-api-with-the-helper-class)
-      - [选项 3：在不使用帮助程序类的情况下调用下游 Web API](#option-3-call-a-downstream-web-api-without-the-helper-class)
-- [Java](#java)
-- [Python](#python)
-  - 后续步骤
+- [选项 1：使用 SDK 调用 Microsoft Graph](#option-1-call-microsoft-graph-with-the-sdk)
+- [选项 2：使用帮助程序类调用下游 Web API](#option-2-call-a-downstream-web-api-with-the-helper-class)
+- [选项 3：在不使用帮助程序类的情况下调用下游 Web API](#option-3-call-a-downstream-web-api-without-the-helper-class)
 
 #### <a name="option-1-call-microsoft-graph-with-the-sdk"></a>选项 1：使用 SDK 调用 Microsoft Graph
 

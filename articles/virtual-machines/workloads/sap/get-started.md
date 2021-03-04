@@ -13,15 +13,15 @@ ms.assetid: ad8e5c75-0cf6-4564-ae62-ea1246b4e5f2
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 02/03/2021
+ms.date: 03/03/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0d759ad0ebb1aa4f1b6a5f404812ab8149ed69e2
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: a212975817eefe75443bad98ccb72e0a8c3bf58c
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101671846"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102038622"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>使用 Azure 托管和运行 SAP 工作负荷方案
 
@@ -83,6 +83,7 @@ SAP 应用程序层和 DBMS 的高可用性记录在有关[Sap NetWeaver 的 Azu
 
 ## <a name="change-log"></a>更改日志
 
+- 03/03/2021：在 [SAP ASCS/SCS 的 HA 指南中更改了 WSFC 和 Azure NetApp 文件 (SMB) ](./high-availability-guide-windows-netapp-files-smb.md) 添加采取警告语句，以便在安装 SAP 系统的过程中，运行 SWPM 的用户需要提升的权限
 - 02/11/2021： [Red Hat Enterprise Linux Server 上的 Azure vm 上的 IBM DB2 LUW 的高可用性](./high-availability-guide-rhel-ibm-db2-luw.md) 更改，用于修改 RHEL 2.x 的 pacemaker 群集命令
 - 02/03/2021：在 [Azure 中的 RHEL 上设置 Pacemaker](./high-availability-guide-rhel-pacemaker.md) 以更新 stonith create 命令中的 pcmk_host_map
 - 02/03/2021：在 [Azure 中将 Pacemaker 设置为在 SLES 中进行设置](./high-availability-guide-suse-pacemaker.md) ，以将 pcmk_host_map 添加到 stonith create 命令中 

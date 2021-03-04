@@ -413,7 +413,7 @@
         - name: 什么是灵活服务器？
           href: flexible-server/overview.md
         - name: 支持的版本
-          href: flexible-server/concepts-supported-versions.md
+          href: concepts-supported-versions.md
         - name: 计算和存储
           href: flexible-server/concepts-compute-storage.md
     - name: 快速入门

@@ -3,14 +3,14 @@ title: 如何使用浏览器查询预测 - LUIS
 description: 在本文中，你将在浏览器中使用可用的公共 LUIS 应用从会话文本中确定用户的意向。
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
+ms.topic: quickstart
 ms.date: 11/30/2020
-ms.openlocfilehash: 6aa681c8ea60cb57ac3e6d143c60cc46bc057719
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: a3bad4ab69f6950f83db9cf1f49cfa4cb7c7b5f0
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96436906"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102040118"
 ---
 # <a name="how-to-query-the-prediction-runtime-with-user-text"></a>如何使用用户文本查询预测运行时
 

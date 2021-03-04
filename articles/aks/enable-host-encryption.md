@@ -3,20 +3,20 @@ title: '在 Azure Kubernetes Service 上启用基于主机的加密 (AKS) '
 description: 了解如何在 Azure Kubernetes Service (AKS) 群集中配置基于主机的加密
 services: container-service
 ms.topic: article
-ms.date: 01/27/2021
-ms.openlocfilehash: ac28c698a766f1f3febaff582038906f658d58dd
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.date: 03/03/2021
+ms.openlocfilehash: 66e71dfd6a76fb4e6b464eb5c44dcc809fb9be38
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99071844"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102039727"
 ---
 # <a name="host-based-encryption-on-azure-kubernetes-service-aks-preview"></a>Azure Kubernetes Service 上基于主机的加密 (AKS)  (预览) 
 
 通过基于主机的加密，存储在 AKS 代理节点 Vm 的 VM 主机上的数据将静态加密，并加密为存储服务。 这意味着临时磁盘会以平台管理的密钥加密。 操作系统和数据磁盘的缓存会以平台管理的密钥或客户托管的密钥进行加密，具体取决于在这些磁盘上设置的加密类型。 默认情况下，使用 AKS 时，操作系统和数据磁盘使用平台管理的密钥进行静态加密，这意味着这些磁盘的缓存也会默认使用平台管理的密钥进行静态加密。  可以 [在 "自带密钥" 中指定自己的托管密钥， (在 Azure Kubernetes Service 中将 azure 磁盘与 azure 磁盘) ](azure-disk-customer-managed-keys.md)。 这些磁盘的缓存还将使用您在此步骤中指定的密钥进行加密。
 
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 
 此功能只能在创建群集或创建节点池时设置。
 
@@ -26,6 +26,13 @@ ms.locfileid: "99071844"
 ### <a name="prerequisites"></a>先决条件
 
 - 确保 `aks-preview` 安装了 CLI extension v 0.4.73 或更高版本。
+- 确保 `EnableEncryptionAtHostPreview` 功能标志处于 `Microsoft.ContainerService` 启用状态。
+
+为了能够为 VM 或虚拟机规模集使用主机加密，必须在订阅上启用该功能。 向你的订阅 Id 发送电子邮件 **encryptionAtHost@microsoft.com** ，以便为你的订阅启用该功能。 
+
+> [!IMPORTANT]
+> 你必须通过电子邮件发送 **encryptionAtHost@microsoft.com** 订阅 id 才能为计算资源启用该功能。 不能自行为计算资源启用。
+
 
 ### <a name="install-aks-preview-cli-extension"></a>安装 aks-preview CLI 扩展
 

@@ -3,12 +3,12 @@ title: Azure Functions 的应用设置参考
 description: 有关 Azure Functions 应用设置或环境变量的参考文档。
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: 8cb3e12c48adf1273c58f4914e34590e21b9d3cc
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 6f77efc877f210455be6716f8159ee000241c62f
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100378292"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102040339"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure Functions 的应用设置参考
 
@@ -80,7 +80,7 @@ Application Insights 的连接字符串。 在以下情况下使用 `APPLICATION
 
 ## <a name="azure_functions_environment"></a>AZURE_FUNCTIONS_ENVIRONMENT
 
-在 2.x 和更高版本的 Functions 运行时中，基于运行时环境配置应用行为。 [在初始化期间读取](https://github.com/Azure/azure-functions-host/blob/dev/src/WebJobs.Script.WebHost/Program.cs#L43)此值。 可以将 `AZURE_FUNCTIONS_ENVIRONMENT` 设置为任何值，但支持[三个值](/dotnet/api/microsoft.aspnetcore.hosting.environmentname)：[Development](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.development)、[Staging](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.staging) 和 [Production](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.production)。 如果未设置 `AZURE_FUNCTIONS_ENVIRONMENT`，则在本地环境中默认为 `Development`，在 Azure 中默认为 `Production`。 应使用此设置（而不是 `ASPNETCORE_ENVIRONMENT`）来设置运行时环境。 
+在 2.x 和更高版本的 Functions 运行时中，基于运行时环境配置应用行为。 此值在初始化期间是读取的，并且可以设置为任意值。 只有 `Development` 、和的值 `Staging` `Production` 由运行时接受。 如果此应用程序设置在 Azure 中运行时不存在，则假定环境为 `Production` 。 `ASPNETCORE_ENVIRONMENT`如果需要将 Azure 中的运行时环境更改为以外的其他内容，请使用此设置，而不是 `Production` 。 `AZURE_FUNCTIONS_ENVIRONMENT` `Development` 当在本地计算机上运行时，Azure Functions Core Tools 设置为，并且无法在文件中的 local.settings.js中重写。 若要了解详细信息，请参阅 [基于环境的启动类和方法](/aspnet/core/fundamentals/environments#environment-based-startup-class-and-methods)。
 
 ## <a name="azurefunctionsjobhost__"></a>AzureFunctionsJobHost__\*
 

@@ -122,8 +122,6 @@ items:
             href: how-to-create-import-export-glossary.md
           - name: 管理术语模板
             href: how-to-manage-term-templates.md
-          - name: 批量编辑资产以配置术语表术语
-            href: how-to-bulk-edit-assets.md
       - name: 批量编辑
         items:
           - name: 批量编辑资产以标记注释和联系人
