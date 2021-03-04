@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: allensu
 ms.custom: references_regions
-ms.openlocfilehash: 64432e2717057c1ff6bb09e0158ddb779d5b5373
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 272fb0a27cf57483af6c07373e35a30f7f6e1c4b
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101742596"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102101369"
 ---
 # <a name="cross-region-load-balancer-preview"></a>跨区域负载均衡器 (预览) 
 
@@ -143,7 +143,7 @@ Azure 跨区域负载均衡器使用异地邻近性负载平衡算法来做出�
 
 * 当前无法配置运行状况探测。 默认运行状况探测每隔20秒自动收集有关区域负载均衡器的可用性信息。 
 
-* 与 Azure Kubernetes Service (AKS) 的集成当前不可用。 使用 AKS 的公共负载均衡器部署跨区域负载均衡器时，将会失去连接。
+* 与 Azure Kubernetes Service (AKS) 的集成当前不可用。 使用在后端部署了 AKS 群集的标准负载均衡器部署跨区域负载均衡器时，将会发生连接断开。
 
 ## <a name="pricing-and-sla"></a>定价和 SLA
 跨区域负载均衡器共享标准负载均衡器的 [SLA](https://azure.microsoft.com/support/legal/sla/load-balancer/v1_0/ ) 。

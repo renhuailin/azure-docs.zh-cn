@@ -1,15 +1,16 @@
 ---
 title: 在 Azure Kubernetes Service 上部署 Hyperledger 结构联合会
 description: 如何在 Azure Kubernetes Service 上部署和配置 Hyperledger Fabric 联合会网络
-ms.date: 01/08/2021
+ms.date: 03/01/2021
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: c0e7f3e7ab83f64cebd990de57d48c97891edb7f
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.custom: contperf-fy21q3
+ms.openlocfilehash: 42d16adbc5e6396c8d5d38176ac7681c712f4555
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98897252"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102101097"
 ---
 # <a name="deploy-hyperledger-fabric-consortium-on-azure-kubernetes-service"></a>在 Azure Kubernetes Service 上部署 Hyperledger 结构联合会
 
@@ -31,34 +32,6 @@ ms.locfileid: "98897252"
 解决方案模板 | IaaS | 解决方案模板是 Azure 资源管理器模板，可用于预配完全配置的区块链网络拓扑。 模板为区块链网络类型部署和配置 Microsoft Azure 计算、网络和存储服务。 提供解决方案模板时没有服务级别协议。 使用 [Microsoft Q&支持页面](/answers/topics/azure-blockchain-workbench.html) 。
 [Azure 区块链服务](../service/overview.md) | PaaS | Azure 区块链服务预览版简化了联合会区块链网络的构成、管理和监管。 使用 Azure 区块链服务提供需要 PaaS、联合会管理或合同和事务隐私的解决方案。
 [Azure Blockchain Workbench](../workbench/overview.md) | IaaS 和 PaaS | Azure 区块链工作台预览版是 Azure 服务和功能的集合，可帮助你创建和部署区块链应用程序，以便与其他组织共享业务流程和数据。 使用 Azure 区块链工作台将区块链解决方案或概念证明用于区块链应用程序。 提供 Azure 区块链工作台，无需提供服务级别协议。 使用 [Microsoft Q&支持页面](/answers/topics/azure-blockchain-workbench.html) 。
-
-## <a name="hyperledger-fabric-consortium-architecture"></a>Hyperledger 结构联合会体系结构
-
-若要在 Azure 上构建 Hyperledger Fabric 网络，需要使用对等节点部署订购服务和组织。 通过使用 Azure Kubernetes 服务解决方案模板上的 Hyperledger Fabric，可以创建订单节点或对等节点。 需要为要创建的每个节点部署模板。
-
-作为模板部署的一部分创建的基本组件如下：
-
-- **Orderer 节点**：负责分类帐中的事务排序的节点。 有序节点与其他节点一起构成了 Hyperledger Fabric 网络的订购服务。
-
-- **对等节点**：主要托管分类帐和智能协定的节点，它们是网络的基本元素。
-
-- **FABRIC CA**：证书颁发机构 (CA) 用于 Hyperledger Fabric。 构造 CA 允许您初始化和启动承载证书颁发机构的服务器进程。 它允许您管理标识和证书。 默认情况下，每个作为模板的一部分部署的 AKS 群集都具有结构 CA pod。
-
-- **CouchDB 或 LevelDB**：对等节点的世界状态数据库。 LevelDB 是在对等节点中嵌入的默认状态数据库。 它将 chaincode 数据存储为简单的键/值对，并仅支持键、键范围和复合键查询。 CouchDB 是可选的备用状态数据库，在 chaincode 数据值建模为 JSON 时支持丰富的查询。
-
-部署中的模板会旋转订阅中的各种 Azure 资源。 部署的 Azure 资源是：
-
-- **AKS 群集**：根据客户提供的输入参数配置的 Azure Kubernetes Service 群集。 AKS 群集为运行 Hyperledger Fabric 网络组件配置了各种 pod。 创建的 pod 包括：
-
-  - **构造工具**：负责配置 Hyperledger 构造组件的工具。
-  - **Orderer/对等端**： Hyperledger Fabric 网络的节点。
-  - **代理**：一种 NGNIX 代理，客户端应用程序可以通过该 POD 与 AKS 群集进行通信。
-  - **FABRIC ca**：运行构造 ca 的 pod。
-- **PostgreSQL**：维护构造 CA 标识的数据库实例。
-
-- **Key vault**：部署的、用于保存构造 CA 凭据和客户提供的根证书的 Azure Key Vault 服务的实例。 在模板部署重试时使用保管库来处理模板的机制。
-- **托管磁盘**： Azure 托管磁盘服务的实例，它为分类帐和对等节点的环境状态数据库提供持久存储。
-- **公共 IP**：部署用于与群集通信的 AKS 群集的终结点。
 
 ## <a name="deploy-the-orderer-and-peer-organization"></a>部署 orderer 和对等组织
 
@@ -85,10 +58,10 @@ ms.locfileid: "98897252"
     - **组织名称**：输入 Hyperledger Fabric 组织的名称，该名称是各种数据平面操作所必需的。 每个部署中的组织名称必须是唯一的。
     - **构造网络组件**：根据要设置的区块链网络组件，选择 " **排序服务** " 或 " **对等节点**"。
     - **节点数**：以下是两种类型的节点：
-        - **订购服务**：选择用于提供网络容错能力的节点数。 支持的订单节点计数为3、5和7。
-        - **对等节点**：可以根据需求选择1到10个节点。
-    - **对等节点世界状态数据库**：在 LevelDB 和 CouchDB 之间进行选择。 当你在 "**构造网络组件**" 下拉列表中选择 **对等节点** 时，会显示此字段。
-    - **FABRIC ca 用户名**：输入用于构造 ca 身份验证的用户名。
+        - **订购服务**：负责分类帐中的事务排序的节点。 选择要为网络提供容错能力的节点数。 支持的订单节点计数为3、5和7。
+        - **对等节点**：托管分类帐和智能协定的节点。 你可以根据要求选择1到10个节点。
+    - **对等节点世界状态数据库**：对等节点的全球状态数据库。 LevelDB 是在对等节点中嵌入的默认状态数据库。 它将 chaincode 数据存储为简单的键/值对，并仅支持键、键范围和复合键查询。 CouchDB 是可选的备用状态数据库，在 chaincode 数据值建模为 JSON 时支持丰富的查询。 当你在 "**构造网络组件**" 下拉列表中选择 **对等节点** 时，会显示此字段。
+    - **FABRIC CA 用户名**：构造证书颁发机构允许初始化并启动托管证书颁发机构的服务器进程。 它允许您管理标识和证书。 默认情况下，每个作为模板的一部分部署的 AKS 群集都具有结构 CA pod。 输入用于构造 CA 身份验证的用户名。
     - **FABRIC ca 密码**：输入用于构造 ca 身份验证的密码。
     - **确认密码**：确认构造 CA 密码。
     - **证书**：如果想要使用自己的根证书初始化构造 ca，请选择 " **为 Fabric ca 上传根证书** " 选项。 否则，结构 CA 默认创建自签名证书。
@@ -96,11 +69,21 @@ ms.locfileid: "98897252"
     - **根证书私钥**：上传根证书的私钥。 如果你有一个包含公钥和私钥的 pem 证书，也可以在此处上传该证书。
 
 
-6. 选择 " **AKS 群集设置** " 选项卡以定义 Azure Kubernetes Service 群集配置，该配置是要在其上设置 Hyperledger 结构网络组件的底层基础结构。
+6. 选择 " **AKS 群集设置** " 选项卡以定义 Azure Kubernetes Service 群集配置。 AKS 群集为运行 Hyperledger Fabric 网络组件配置了各种 pod。 部署的 Azure 资源是：
+
+    - **构造工具**：负责配置 Hyperledger 构造组件的工具。
+    - **Orderer/对等端**： Hyperledger Fabric 网络的节点。
+    - **代理**：一种 NGNIX 代理，客户端应用程序可以通过该 POD 与 AKS 群集进行通信。
+    - **FABRIC ca**：运行构造 ca 的 pod。
+    - **PostgreSQL**：维护构造 CA 标识的数据库实例。
+    - **Key vault**：部署的、用于保存构造 CA 凭据和客户提供的根证书的 Azure Key Vault 服务的实例。 在模板部署重试时使用保管库来处理模板的机制。
+    - **托管磁盘**： Azure 托管磁盘服务的实例，它为分类帐和对等节点的环境状态数据库提供持久存储。
+    - **公共 IP**：部署用于与群集通信的 AKS 群集的终结点。
+
+    输入以下详细信息： 
 
     ![屏幕截图显示了一个 K S "群集设置" 选项卡。](./media/hyperledger-fabric-consortium-azure-kubernetes-service/create-for-hyperledger-fabric-aks-cluster-settings-1.png)
 
-7. 输入以下详细信息：
     - **Kubernetes 群集名称**：更改 AKS 群集的名称（如有必要）。 此字段根据提供的资源前缀预填充。
     - **Kubernetes 版本**：选择将部署在群集上的 Kubernetes 版本。 根据你在 " **基本** 信息" 选项卡上选择的区域，支持的可用版本可能会更改。
     - **Dns 前缀**：输入 AKS 群集的域名系统 (DNS) 名称前缀。 创建群集后，在管理容器时，你将使用 DNS 连接到 Kubernetes API。

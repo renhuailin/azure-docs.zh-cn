@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/03/2021
 ms.author: terrylan
-ms.openlocfilehash: 79262b85e9591ae4b41e8467abdcbccb3804d4ec
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 81b2227ac519de4d03bb63907d14c23b9c34dc64
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100590352"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102101029"
 ---
 # <a name="azure-threat-protection"></a>Azure 威胁防护
 
@@ -368,6 +368,6 @@ Web 应用程序防火墙提供以下优点：
 
 ## <a name="next-steps"></a>后续步骤
 
-- [应对当前的威胁](../../security-center/security-center-alerts-overview.md#respond-threats)：有助于确定以 Azure 资源为目标的活跃威胁，并提供快速响应所需的见解。
+- [应对当前的威胁](../../security-center/security-center-managing-and-responding-alerts.md)：有助于确定以 Azure 资源为目标的活跃威胁，并提供快速响应所需的见解。
 
 - [Azure SQL 数据库威胁检测](https://azure.microsoft.com/blog/azure-sql-database-threat-detection-your-built-in-security-expert/)：可帮助解决有关数据库潜在威胁的问题。

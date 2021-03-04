@@ -7,12 +7,12 @@ ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
 ms.custom: devx-track-python, devx-track-csharp
-ms.openlocfilehash: 50b858d0bf05aa46ea20a6cf9e088376be2996e3
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: beaeb0131a2c9b326d663f6fcbb8273a9b52b412
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98693420"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102100961"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Application Insights 中的遥测关联
 
@@ -48,7 +48,7 @@ Application Insights 定义了用于分配遥测关联的[数据模型](../../az
 
 | itemType   | name                      | ID           | operation_ParentId | operation_Id |
 |------------|---------------------------|--------------|--------------------|--------------|
-| pageView   | Stock page                |              | STYz               | STYz         |
+| pageView   | Stock page                | STYz         |                    | STYz         |
 | dependency | GET /Home/Stock           | qJSXU        | STYz               | STYz         |
 | request    | GET Home/Stock            | KqKwlrSt9PA= | qJSXU              | STYz         |
 | dependency | GET /api/stock/value      | bBrf2L7mm2g= | KqKwlrSt9PA=       | STYz         |
@@ -234,7 +234,7 @@ logger.warning('After the span')
 
 可以使用 `AzureLogHandler` 导出日志数据。 有关详细信息，请参阅[此文章](./opencensus-python.md#logs)。
 
-我们还可以将跟踪信息从一个组件传递到另一个组件，以便进行适当关联。 例如，假设有两个组件 `module1` 和 `module2` 。 Module1 调用 Module2 中的函数，并在单个跟踪中从和获取日志， `module1` `module2` 可以使用以下方法：
+我们还可以将跟踪信息从一个组件传递到另一个组件，以便进行适当关联。 例如，假设有两个组件：`module1` 和 `module2`。 Module1 调用 Module2 中的函数，并在单次跟踪中从 `module1` 和 `module2` 获取日志，我们可以使用以下方法：
 
 ```python
 # module1.py

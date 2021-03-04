@@ -5,12 +5,12 @@ author: noakup
 ms.author: noakuper
 ms.topic: conceptual
 ms.date: 10/05/2020
-ms.openlocfilehash: bf9ffe3640c704fb1da51f6f9c2fe42ca5d46851
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 65af5810152034fd7b6014041edd07835eebd194
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/04/2021
-ms.locfileid: "102047547"
+ms.locfileid: "102101471"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>使用 Azure 专用链接将网络安全地连接到 Azure Monitor
 
@@ -172,7 +172,8 @@ Azure Monitor 专用链接范围 (AMPLS) 将专用终结点连接 (，并将它�
 * privatelink-opinsights-azure com
 * privatelink-agentsvc-net
 
-其中每个区域将特定 Azure Monitor 终结点映射到专用终结点的 VNet Ip 池中的专用 Ip。
+> [!NOTE]
+> 其中每个区域将特定 Azure Monitor 终结点映射到 VNet 的 Ip 池中的专用 Ip。 以下图像中的 IP 地址 showns 只是示例。 你的配置应改为显示你自己的网络中的专用 Ip。
 
 #### <a name="privatelink-monitor-azure-com"></a>Privatelink-azure-com
 此区域涵盖 Azure Monitor 使用的全局终结点，这意味着，这些终结点为考虑所有资源而不是特定资源的请求提供服务。 此区域应为映射终结点：
@@ -218,7 +219,7 @@ Azure Monitor 专用链接范围 (AMPLS) 将专用终结点连接 (，并将它�
 
 ### <a name="exceptions"></a>异常
 如上所述的限制访问不适用于 Azure 资源管理器，因此具有以下限制：
-* 对数据的访问-同时阻止/允许来自公共网络的查询适用于大多数 Log Analytics 体验，一些经验通过 Azure 资源管理器查询数据，因此将无法查询数据，除非资源管理器) 不久就会将专用链接设置应用到 (。 例如，Azure Monitor 解决方案、工作簿和见解以及逻辑应用连接器。
+* 对数据的访问-同时阻止/允许来自公共网络的查询适用于大多数 Log Analytics 体验，一些经验通过 Azure 资源管理器查询数据，因此将无法查询数据，除非资源管理器) 不久就会将专用链接设置应用到 (。 例如 Azure Monitor 解决方案、工作簿和见解以及逻辑应用连接器。
 * 工作区管理-工作区设置和配置更改 (包括打开或关闭这些访问设置) 由 Azure 资源管理器管理。 使用适当的角色、权限、网络控制和审核限制对工作区管理的访问。 有关详细信息，请参阅 [Azure Monitor 角色、权限和安全性](../roles-permissions-security.md)。
 
 > [!NOTE]
@@ -248,17 +249,17 @@ Azure Monitor 专用链接范围 (AMPLS) 将专用终结点连接 (，并将它�
 > [!NOTE]
 > 非门户消耗体验还必须在包含受监视工作负荷的专用链接 VNET 上运行。
 
-需要将托管受监视工作负载的资源添加到专用链接中。 可在此[文档](../../app-service/networking/private-endpoint.md)中了解如何对应用服务执行此操作。
+需要将托管受监视工作负载的资源添加到专用链接中。 有关示例，请参阅 [使用 Azure Web 应用的专用终结点](../../app-service/networking/private-endpoint.md)。
 
 仅可以此方式限制对 Application Insights 资源中数据的访问。 但是，配置更改（包括打开或关闭这些访问设置）由 Azure 资源管理器管理。 因此，你应该使用适当的角色、权限、网络控制和审核来限制对资源管理器的访问。 有关详细信息，请参阅 [Azure Monitor 角色、权限和安全性](../roles-permissions-security.md)。
 
 > [!NOTE]
 > 若要完全保护基于工作区的 Application Insights，需要锁定对 Application Insights 资源和基础 Log Analytics 工作区的访问。
 >
-> 代码级诊断 (探查器/调试器) 需要你提供自己的存储帐户以支持专用链接。 下面是有关如何执行此操作的 [文档](../app/profiler-bring-your-own-storage.md) 。
+> 代码级诊断 (探查器/调试器) 需要你 [提供自己的存储帐户](../app/profiler-bring-your-own-storage.md) 以支持专用链接。
 
 ### <a name="handling-the-all-or-nothing-nature-of-private-links"></a>处理专用链接的全部或全部本质
-如 [规划专用链接设置](#planning-your-private-link-setup)中所述，即使针对单个资源设置专用链接也会影响该网络中的所有 Azure Monitor 资源，以及共享同一 DNS 的其他网络中的所有资源。 这可能会使你的载入过程变得困难。 请考虑以下选项：
+如 [规划专用链接设置](#planning-your-private-link-setup)中所述，即使针对单个资源设置专用链接也会影响该网络中的所有 Azure Monitor 资源，以及共享同一 DNS 的其他网络中的所有资源。 此行为会使你的载入过程变得困难。 请考虑以下选项：
 
 * 最简单且最安全的方法是将所有 Application Insights 组件添加到 AMPLS。 对于想要仍从其他网络访问的组件，请将 "允许引入/查询公共 internet 访问" 标志设置为 "是" (默认) 。
 * 隔离网络-如果你 (，或者可以使用辐射 vnet 与) 对齐，请按照 [Azure 中的中心辐射网络拓扑](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)中的指导进行操作。 然后，在相关辐射 Vnet 中设置单独的专用链接设置。 请确保分隔 DNS 区域，因为与其他辐射网络共享 DNS 区域将导致 [dns 覆盖](#the-issue-of-dns-overrides)。

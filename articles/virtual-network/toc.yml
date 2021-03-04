@@ -25,10 +25,8 @@
       href: tutorial-restrict-network-access-to-resources.md
     - name: 连接虚拟网络
       href: tutorial-connect-virtual-networks-portal.md
-    - name: 创建 NAT 网关
-      href: quickstart-create-nat-gateway-portal.md
     - name: 创建并验证 NAT 网关
-      href: tutorial-create-validate-nat-gateway-portal.md
+      href: tutorial-create-nat-gateway-portal.md
 - name: 示例
   items:
     - name: Azure CLI

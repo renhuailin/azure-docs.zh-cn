@@ -1,5 +1,5 @@
 ---
-title: 库管理
+title: 包管理
 description: 了解如何添加和管理 Azure Synapse 分析中 Apache Spark 使用的库。
 services: synapse-analytics
 author: midesa
@@ -9,12 +9,12 @@ ms.date: 03/01/2020
 ms.author: midesa
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: 955d7f8c2d2ce5ea126d4cce67b0e4e55152ac72
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 76d3bdc8a6eb133daa2d241bdf4c3b73271f0173
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101695084"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102100196"
 ---
 # <a name="manage-libraries-for-apache-spark-in-azure-synapse-analytics"></a>在 Azure Synapse 分析中管理 Apache Spark 的库
 库提供你可能想要包括在程序或项目中的可重用代码。 
@@ -38,17 +38,17 @@ Azure Synapse Analytics 中的 Apache Spark 具有完整的 Anacondas 安装和�
 在 Synapse 中，工作区包可以是自定义或专用鼠标轮或 jar 文件。 你可以将这些包上传到你的工作区，然后将它们分配给特定的 Spark 池。 分配后，这些工作区包会自动安装在所有 Spark 池会话上。
 
 若要了解有关如何管理工作区库的详细信息，请访问以下操作方法指南：
-- [Python 工作区包： ](./apache-spark-manage-python-packages.md#Install-wheel-files) 将 Python 轮文件作为工作区包上传，然后将这些包添加到特定的无服务器 Apache Spark 池。
-- [ (预览版的 Scala/Java 工作区包) ： ](./apache-spark-manage-scala-packages.md#Workspace-packages) 将 Scala 和 Java jar 文件作为工作区包上传，稍后将这些包添加到特定的无服务器 Apache Spark 池。
+- [ (预览) 的 Python 工作区包： ](./apache-spark-manage-python-packages.md#install-wheel-files) 将 Python 轮文件作为工作区包上传，然后将这些包添加到特定的无服务器 Apache Spark 池。
+- [ (预览版的 Scala/Java 工作区包) ： ](./apache-spark-manage-scala-packages.md#workspace-packages) 将 Scala 和 Java jar 文件作为工作区包上传，稍后将这些包添加到特定的无服务器 Apache Spark 池。
 
-## <a name="pool-management"></a>池管理
+## <a name="pool-packages"></a>池包
 在某些情况下，你可能想要标准化给定 Apache Spark 池上使用的包集。 如果团队中的多个用户通常都安装了相同的包，则这种标准化会很有用。 
 
 使用 Azure Synapse Analytics 池管理功能，你可以配置要在给定无服务器 Apache Spark 池上安装的默认库集。 这些库在 [基本运行时](./apache-spark-version-support.md)上安装。 
 
 目前，仅支持 Python 的池管理。 对于 Python，Synapse Spark 池使用 Conda 安装和管理 Python 包依赖项。 指定池级库时，现在可以提供 requirements.txt 或 docker-compose.override.yml。 每次从该 Spark 池中创建 Spark 实例时，都会使用此环境配置文件。 
 
-若要了解有关这些功能的详细信息，请访问有关 [Python 池管理](./apache-spark-manage-python-packages.md#Pool-libraries)的文档。
+若要了解有关这些功能的详细信息，请访问有关 [Python 池管理](./apache-spark-manage-python-packages.md#pool-libraries)的文档。
 
 > [!IMPORTANT]
 > - 如果要安装的包很大或需要很长时间才能安装，这会影响 Spark 实例的启动时间。
@@ -61,8 +61,8 @@ Azure Synapse Analytics 中的 Apache Spark 具有完整的 Anacondas 安装和�
 会话范围内的包允许用户在其会话开始时定义包依赖关系。 安装会话范围的包时，只有当前会话可以访问指定的包。 因此，这些会话范围的包将不会影响使用同一个 Apache Spark 池的其他会话或作业。 此外，这些库安装在基本运行时和池级别包之上。 
 
 若要了解有关如何管理会话范围的包的详细信息，请访问以下操作方法指南：
-- [ (预览版的 Python 会话包) ：](./apache-spark-manage-python-packages.md#Session-scoped-libraries-(preview)) 在会话开始时，提供一个 Conda *docker-compose.override.yml* ，以从常用存储库安装其他 Python 包。 
-- [Scala/Java 会话包： ](./apache-spark-manage-scala-packages.md#Workspace-packages) 在会话开始时，提供要使用安装的 jar 文件的列表 ```%%configure``` 。
+- [ (预览版的 Python 会话包) ：](./apache-spark-manage-python-packages.md) 在会话开始时，提供一个 Conda *docker-compose.override.yml* ，以从常用存储库安装其他 Python 包。 
+- [Scala/Java 会话包： ](./apache-spark-manage-scala-packages.md) 在会话开始时，提供要使用安装的 jar 文件的列表 ```%%configure``` 。
 
 ## <a name="next-steps"></a>后续步骤
 - 查看默认库： [Apache Spark 版本支持](apache-spark-version-support.md)

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/03/2018
 ms.author: memildin
-ms.openlocfilehash: fcaf427c2e0ab275a5a6e08306dda785bca690d6
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: e4f905b7a08564eadb20d65d651c137ef3741376
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92784161"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102100315"
 ---
 # <a name="azure-security-center-readiness-roadmap"></a>Azure 安全中心就绪情况路线图
 本文档提供的就绪情况路线图有助于 Azure 安全中心入门。
@@ -59,7 +59,6 @@ Azure 安全中心为 Azure、本地和其他云中运行的工作负载提供�
 若要管理安全警报和保护资源，请参考以下资源。
 
 项目    
-- [在 Azure 安全中心进行安全运行状况监视](./security-center-monitoring.md)
 - [保护 Azure 安全中心中的网络](./security-center-network-recommendations.md)
 - [在 Azure 安全中心保护 Azure SQL 服务和数据](./security-center-remediate-recommendations.md)
 

@@ -3,17 +3,18 @@ title: 向 Android 地图添加热度地图层 |Microsoft Azure 映射
 description: 了解如何创建热度地图。 请参阅如何使用 Azure MapsAndroid SDK 将热度地图层添加到地图。 了解如何自定义热度地图层。
 author: rbrundritt
 ms.author: richbrun
-ms.date: 12/01/2020
+ms.date: 02/26/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 4de59bd0b2a9dc9b11acf55a59b82724d2c7b862
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+zone_pivot_groups: azure-maps-android
+ms.openlocfilehash: fce2c2d007f92c43e763826f9345f773324e885e
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97681453"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102100179"
 ---
 # <a name="add-a-heat-map-layer-android-sdk"></a>Android SDK 添加热度地图层 () 
 
@@ -43,6 +44,8 @@ ms.locfileid: "97681453"
 若要将点的数据源呈现为热度地图，请将数据源传递到类的实例 `HeatMapLayer` 中，并将其添加到地图中。
 
 下面的代码示例从过去一周加载地震的 GeoJSON 源，并将其呈现为热度地图。 呈现每个数据点时，在所有缩放级别都有10个像素的半径。 为了确保更好的用户体验，热度地图位于标签层下方，因此标签保持清晰可见。 本示例中的数据来自 [USGS 地震危险计划](https://earthquake.usgs.gov/)。 此示例使用 [创建数据源](create-data-source-android-sdk.md) 文档中提供的数据导入实用工具代码块从 Web 加载 GeoJSON 数据。
+
+::: zone pivot="programming-language-java-android"
 
 ```java
 //Create a data source and add it to the map.
@@ -80,6 +83,49 @@ Utils.importData("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_
     });
 ```
 
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+//Create a data source and add it to the map.
+val source = DataSource()
+map.sources.add(source)
+
+//Create a heat map layer.
+val layer = HeatMapLayer(
+    source,
+    heatmapRadius(10f),
+    heatmapOpacity(0.8f)
+)
+
+//Add the layer to the map, below the labels.
+map.layers.add(layer, "labels")
+
+//Import the geojson data and add it to the data source.
+Utils.importData("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson",
+    this
+) { result: String? ->
+    //Parse the data as a GeoJSON Feature Collection.
+    val fc = FeatureCollection.fromJson(result!!)
+
+    //Add the feature collection to the data source.
+    source.add(fc)
+
+    //Optionally, update the maps camera to focus in on the data.
+    //Calculate the bounding box of all the data in the Feature Collection.
+    val bbox = MapMath.fromData(fc)
+
+    //Update the maps camera so it is focused on the data.
+    map.setCamera(
+        bounds(bbox),
+        padding(20)
+    )
+}
+```
+
+::: zone-end
+
 以下屏幕截图显示了使用上面的代码加载热度地图的地图。
 
 ![带最近地震的热度地图层的地图](media/map-add-heat-map-layer-android/android-heat-map-layer.png)
@@ -97,7 +143,7 @@ Utils.importData("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_
 
   | 内插颜色表达式 | 阶颜色表达式 |
   |--------------------------------|--------------------------|
-  | 内插 (<br/>&nbsp;&nbsp;&nbsp;&nbsp;线性 ( # A1， <br/>&nbsp;&nbsp;&nbsp;&nbsp;heatmapDensity ( # A1，<br/>&nbsp;&nbsp;&nbsp;&nbsp;停止 (0，颜色 (颜色。透明) # A3，<br/>&nbsp;&nbsp;&nbsp;&nbsp;stop (0.01，color (color。洋红色) # A3，<br/>&nbsp;&nbsp;&nbsp;&nbsp;stop (0.5，color (parseColor ( "#fb00fb" ) # A4 # A5，<br/>&nbsp;&nbsp;&nbsp;&nbsp;stop (1，color (parseColor ( "#00c3ff" ) # A4 # A5<br/>)` | 步骤 (<br/>&nbsp;&nbsp;&nbsp;&nbsp;heatmapDensity ( # A1，<br/>&nbsp;&nbsp;&nbsp;&nbsp;颜色 (颜色。透明) ，<br/>&nbsp;&nbsp;&nbsp;&nbsp;stop (0.01，color (parseColor ( "#000080" ) # A4 # A5，<br/>&nbsp;&nbsp;&nbsp;&nbsp;stop (0.25，color (parseColor ( "#000080" ) # A4 # A5，<br/>&nbsp;&nbsp;&nbsp;&nbsp;stop (0.5，color (color。绿色) # A3，<br/>&nbsp;&nbsp;&nbsp;&nbsp;stop (0.5，color (color。黄色) # A3，<br/>&nbsp;&nbsp;&nbsp;&nbsp;停止 (1，颜色 (颜色。红色) # A3<br/>) |
+  | 内插 (<br/>&nbsp;&nbsp;&nbsp;&nbsp;线性 () ， <br/>&nbsp;&nbsp;&nbsp;&nbsp;heatmapDensity () ，<br/>&nbsp;&nbsp;&nbsp;&nbsp;stop (0，color (color。透明) ) ，<br/>&nbsp;&nbsp;&nbsp;&nbsp;stop (0.01，color (color。洋红色) ) ，<br/>&nbsp;&nbsp;&nbsp;&nbsp;stop (0.5、color (parseColor ( "#fb00fb" ) ) ) <br/>&nbsp;&nbsp;&nbsp;&nbsp;stop (1、color (parseColor ( "#00c3ff" ) ) ) <br/>)` | 步骤 (<br/>&nbsp;&nbsp;&nbsp;&nbsp;heatmapDensity () ，<br/>&nbsp;&nbsp;&nbsp;&nbsp;颜色 (颜色。透明) ，<br/>&nbsp;&nbsp;&nbsp;&nbsp;stop (0.01、color (parseColor ( "#000080" ) ) ) <br/>&nbsp;&nbsp;&nbsp;&nbsp;stop (0.25、color (parseColor ( "#000080" ) ) ) <br/>&nbsp;&nbsp;&nbsp;&nbsp;stop (0.5，color (color。绿色) ) ，<br/>&nbsp;&nbsp;&nbsp;&nbsp;stop (0.5，color (color。黄色) ) ，<br/>&nbsp;&nbsp;&nbsp;&nbsp;停止 (1，颜色 (颜色。红色) ) <br/>) |
 
 - `heatmapOpacity`：指定热度地图层的不透明或透明程度。
 - `heatmapIntensity`：对每个数据点的权重应用乘数，以增加热度地图的总体亮度。 这会导致数据点的权重差别，使其更易于可视化。
@@ -110,6 +156,8 @@ Utils.importData("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_
 - `visible`：隐藏或显示层。
 
 下面是一个热度地图的示例，其中的 "内插" 表达式用于创建平滑颜色渐变。 `mag`在数据中定义的属性与指数内插一起使用，以设置每个数据点的权重或相关性。
+
+::: zone pivot="programming-language-java-android"
 
 ```java
 HeatMapLayer layer = new HeatMapLayer(source,
@@ -143,6 +191,44 @@ HeatMapLayer layer = new HeatMapLayer(source,
 );
 ```
 
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+val layer = HeatMapLayer(source,
+    heatmapRadius(10f),
+
+    //A linear interpolation is used to create a smooth color gradient based on the heat map density.
+    heatmapColor(
+        interpolate(
+            linear(),
+            heatmapDensity(),
+            stop(0, color(Color.TRANSPARENT)),
+            stop(0.01, color(Color.BLACK)),
+            stop(0.25, color(Color.MAGENTA)),
+            stop(0.5, color(Color.RED)),
+            stop(0.75, color(Color.YELLOW)),
+            stop(1, color(Color.WHITE))
+        )
+    ),
+
+    //Using an exponential interpolation since earthquake magnitudes are on an exponential scale.
+    heatmapWeight(
+       interpolate(
+            exponential(2),
+            get("mag"),
+            stop(0,0),
+
+            //Any earthquake above a magnitude of 6 will have a weight of 1
+            stop(6, 1)
+       )
+    )
+)
+```
+
+::: zone-end
+
 以下屏幕截图显示了使用上一热图示例中相同数据的上述自定义热度地图层。
 
 ![具有最近地震的自定义热度地图层的地图](media/map-add-heat-map-layer-android/android-custom-heat-map-layer.png)
@@ -156,6 +242,8 @@ HeatMapLayer layer = new HeatMapLayer(source,
 使用 `zoom` 表达式可缩放每个缩放级别的半径，使每个数据点都涵盖地图的同一物理区域。 此表达式使热度地图层的外观更具静态和一致性。 地图的每个缩放级别都具有两倍于与上一个缩放级别垂直和水平的像素。
 
 缩放半径，使每个缩放级别翻倍，从而创建一个在所有缩放级别上都保持一致的热度地图。 若要应用此缩放，请将 `zoom` 与基2表达式结合使用 `exponential interpolation` ，并为最小缩放级别设置像素半径，并为计算的最大缩放级别设置缩放半径， `2 * Math.pow(2, minZoom - maxZoom)` 如以下示例中所示。 缩放地图，查看热度地图如何随缩放级别一起缩放。
+
+::: zone pivot="programming-language-java-android"
 
 ```java
 HeatMapLayer layer = new HeatMapLayer(source,
@@ -174,6 +262,30 @@ HeatMapLayer layer = new HeatMapLayer(source,
   heatmapOpacity(0.75f)
 );
 ```
+
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+val layer = HeatMapLayer(source,
+  heatmapRadius(
+    interpolate(
+      exponential(2),
+      zoom(),
+
+      //For zoom level 1 set the radius to 2 pixels.
+      stop(1, 2f),
+
+      //Between zoom level 1 and 19, exponentially scale the radius from 2 pixels to 2 * (maxZoom - minZoom)^2 pixels.
+      stop(19, Math.pow(2.0, 19 - 1.0) * 2f)
+    )
+  ),
+  heatmapOpacity(0.75f)
+)
+```
+
+::: zone-end
 
 下图显示了一个运行上述代码的地图，该地图在放大地图时缩放半径，以创建跨缩放级别的一致热度地图。
 

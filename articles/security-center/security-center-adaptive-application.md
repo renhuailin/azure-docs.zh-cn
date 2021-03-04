@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/07/2021
 ms.author: memildin
-ms.openlocfilehash: b18b498f250e9ff62180ba21c3bcbda562b13b8c
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: be37f2d361b6bb164a3e01b9ac6f115294137dd0
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101735856"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102099533"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>使用自适应应用程序控制来减少计算机的攻击面
 
@@ -193,6 +193,12 @@ ms.locfileid: "101735856"
 
 1. 要查看更多详细信息以及受影响的计算机列表，请选择一个警报。
 
+    "警报" 页将显示警报的更多详细信息，并提供 " **拍摄操作** " 链接，并提供有关如何缓解威胁的建议。
+
+    :::image type="content" source="media/security-center-adaptive-application/adaptive-application-alerts-start-time.png" alt-text="自适应应用程序控制警报的开始时间是 ":::
+
+    > [!NOTE]
+    > 自适应应用程序控件每12小时计算一次事件。 "警报" 页面中显示的 "活动开始时间" 是自适应应用程序控制创建警报的时间，而 **不** 是可疑进程处于活动状态的时间。
 
 
 ## <a name="move-a-machine-from-one-group-to-another"></a>将计算机从一个组移动到另一个组

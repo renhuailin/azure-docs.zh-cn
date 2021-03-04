@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 79a428c322b65bfbb982be7a7e0c8b9fab7eed18
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 3f358bebc1cc4eb17b8c50b1e3a13366717ae98c
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98132720"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102100706"
 ---
 # <a name="introduction-to-azure-defender-for-container-registries"></a>适用于容器注册表的 Azure Defender 简介
 
@@ -76,7 +76,7 @@ Azure 容器注册表 (ACR) 是一种托管的专用 Docker 注册表服务，�
 是的。 结果位于[子评估 Rest API](/rest/api/securitycenter/subassessments/list/) 下。 此外，还可以对所有资源使用 Azure Resource Graph (ARG)，一个类似于 Kusto 的 API：查询可以提取特定扫描。
 
 ### <a name="what-registry-types-are-scanned-what-types-are-billed"></a>会扫描哪些类型的注册表？ 会对哪些类型计费？
-有关适用于容器注册表的 Azure Defender 支持的容器注册表类型的列表，请参阅[可用性](defender-for-container-registries-usage.md#availability)。
+有关适用于容器注册表的 Azure Defender 支持的容器注册表类型的列表，请参阅[可用性](#availability)。
 
 如果将不支持的注册表连接到 Azure 订阅，不会对其进行扫描，也不会收取扫描费。
 

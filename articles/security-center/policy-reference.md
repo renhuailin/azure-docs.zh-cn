@@ -7,12 +7,12 @@ author: memildin
 ms.author: memildin
 ms.service: security-center
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 3b5860cc4ada88e2e7c7813e3441db3ec89f31af
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: b80ceffe22c797d46b82ec33a47c726d68bf4cdb
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101729908"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102099822"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-security-center"></a>Azure 安全中心的 Azure Policy 内置定义
 
@@ -44,13 +44,4 @@ ms.locfileid: "101729908"
 
 ## <a name="next-steps"></a>后续步骤
 
-本文介绍了安全中心的 Azure Policy 安全策略定义。 若要了解详细信息，请参阅以下文章。
-
-- 在 [Azure Policy GitHub 存储库](https://github.com/Azure/azure-policy)中查看这些内置项。
-- 查看 [Azure Policy 定义结构](../governance/policy/concepts/definition-structure.md)。
-- 查看[了解策略效果](../governance/policy/concepts/effects.md)。
-- [Azure 安全中心规划和操作指南](./security-center-planning-and-operations-guide.md)：了解如何规划和理解 Azure 安全中心的设计考虑事项。
-- [在 Azure 安全中心进行安全运行状况监视](./security-center-monitoring.md)：了解如何监视 Azure 资源的运行状况。
-- [在 Azure 安全中心内管理和响应安全警报](./security-center-managing-and-responding-alerts.md)：了解如何管理和响应安全警报。
-- [通过 Azure 安全中心监视合作伙伴解决方案](./security-center-partner-integration.md)：了解如何监视合作伙伴解决方案的运行状况。
-- [Azure Policy](../governance/policy/overview.md)：了解如何审核和管理 Azure 资源。
+本文介绍了安全中心的 Azure Policy 安全策略定义。 若要详细了解计划、策略以及它们如何与安全中心的建议相关，请参阅 [什么是安全策略、计划和建议？](security-policy-concept.md)。

@@ -3,12 +3,12 @@ title: 与 Azure Monitor 集成的合作伙伴
 description: 了解 Azure 监视器的合作伙伴，以及如何访问相关文档，以便与它们的产品集成。
 ms.topic: conceptual
 ms.date: 02/19/2021
-ms.openlocfilehash: b971aa70411212e96c39e6bf824fa9e28bd8a1f1
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: ca58023510eb9329bc8ddf1339df4d8c27aae5e6
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/04/2021
-ms.locfileid: "102052358"
+ms.locfileid: "102101012"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure 监视器合作伙伴集成
 
@@ -291,8 +291,7 @@ Site24x7 提供高级和完整堆栈 Azure 监视解决方案，提供应用程�
 * 监视完整的 Microsoft ecosphere，包括 SQL、Exchange、Active Directory、Office 365、IIS 和 Hyper-v 应用程序。
 * 与 Microsoft 团队、PagerDuty、Zapier 等第三方服务无缝集成。
 
-[站点24X7 文档](https://www.site24x7.com/)
-
+[Site24X7 文档](https://www.site24x7.com/azure/?utm_source=microsoft-partner-page&utm_medium=webpage&utm_campaign=ms-partner)
 
 ## <a name="solarwinds"></a>SolarWinds
 

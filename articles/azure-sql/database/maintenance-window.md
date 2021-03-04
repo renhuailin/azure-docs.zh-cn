@@ -9,13 +9,13 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: sstein
 ms.custom: references_regions
-ms.date: 03/02/2021
-ms.openlocfilehash: 9dc4d17ea95362dd915bd1dfdfd82f4cdec611b8
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/04/2021
+ms.openlocfilehash: 0a9a4b2de03c62640bb1c643d3ff3da4139d42a4
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101692804"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102101199"
 ---
 # <a name="maintenance-window-preview"></a>维护时段 (预览) 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -32,29 +32,31 @@ Azure 定期在 Azure SQL 数据库和 SQL 托管实例资源上执行计划内�
 
 可以使用 Azure 门户、PowerShell、CLI 或 Azure API 配置维护时段。 它可在创建时配置，也可用于现有 SQL 数据库和 SQL 托管实例。
 
+> [!Important]
+> 配置维护时段是一种长时间运行的异步操作，类似于更改 Azure SQL 资源的服务层。 该资源在操作过程中可用，但在操作结束时会发生短暂的故障转移，并且即使在中断长时间运行的事务的情况下，也通常会持续到8秒。 若要将故障转移的影响降至最低，应在高峰时段执行操作。
+
 ### <a name="gain-more-predictability-with-maintenance-window"></a>通过维护时段提高可预测性
 
 默认情况下，所有 Azure SQL 数据库和托管实例数据库仅在下午5：早晨8点本地时间更新，以避免高峰工作时间中断。 本地时间由承载资源的 [Azure 区域](https://azure.microsoft.com/global-infrastructure/geographies/) 确定。 您可以通过从两个额外的维护时段槽中进行选择，将维护更新进一步调整到适合您的数据库的时间：
-
-* **默认** 窗口，从下午到早晨8点的本地时间星期一-星期日 
+ 
 * 工作日窗口，10PM 到早晨本地时间星期一–星期四
 * 周末窗口，10PM 到早晨本地时间星期五-星期日
 
-做出维护窗口选择后，所有计划内的维护更新将仅在您选择的窗口中发生。   
+做出维护时段选择并且服务配置完成后，所有计划内维护更新将仅在你选择的窗口中发生。   
 
 > [!Note]
 > 除了计划内维护更新外，在极少数情况下，计划外维护事件可能导致不可用。 
 
 ### <a name="cost-and-eligibility"></a>成本和资格
 
-对于以下订阅 [产品/服务类型](https://azure.microsoft.com/support/legal/offer-details/)，选择维护时段是免费的：即用即付、云解决方案提供商 (CSP) 、microsoft Enterprise 或 Microsoft 客户协议。
+配置和使用维护时段免费适用于所有合格的 [产品/服务类型](https://azure.microsoft.com/support/legal/offer-details/)：即用即付、云解决方案提供商 (CSP) 、microsoft Enterprise 或 Microsoft 客户协议。
 
 > [!Note]
 > Azure 套餐是用户拥有的 Azure 订阅类型。 例如，使用即用即 [付费率](https://azure.microsoft.com/offers/ms-azr-0003p/)、 [Azure 开放许可](https://azure.microsoft.com/en-us/offers/ms-azr-0111p/)和 [Visual Studio Enterprise](https://azure.microsoft.com/en-us/offers/ms-azr-0063p/) 的订阅均为 Azure 产品/服务。 每个产品/服务或计划都有不同的术语和权益。 你的产品/服务或计划显示在订阅概述上。 有关将订阅切换到其他产品/服务的详细信息，请参阅 [将 Azure 订阅更改为其他产品/服务](/azure/cost-management-billing/manage/switch-azure-offer)。
 
 ## <a name="advance-notifications"></a>提前通知
 
-可以将维护通知配置为提前提醒客户即将发生的计划内维护事件（在维护时）和维护时段完成。 有关详细信息，请参阅 [提前通知](advance-notifications.md)。
+维护通知可配置为提前向你发出警报，提醒你即将提前计划维护事件（在维护时）、维护时间和维护时段。 有关详细信息，请参阅 [提前通知](advance-notifications.md)。
 
 ## <a name="availability"></a>可用性
 
@@ -62,6 +64,7 @@ Azure 定期在 Azure SQL 数据库和 SQL 托管实例资源上执行计划内�
 
 选择除默认值以外的维护时段在所有 Slo 上可用，但以下情况 **除外**：
 * 超大规模 
+* 实例池
 * 旧 Gen4 vCore
 * 基本、S0 和 S1 
 * DC、Fsv2、M 系列
@@ -93,7 +96,7 @@ Azure 定期在 Azure SQL 数据库和 SQL 托管实例资源上执行计划内�
 
 * 在 Azure SQL 数据库中，使用代理连接策略的任何连接都可能会受到所选维护时段和网关节点维护时段的影响。 但是，使用建议的重定向连接策略的客户端连接不受网关节点维护故障转移的影响。 
 
-* 在 Azure SQL 托管实例中，网关节点位于 [虚拟群集内](../../azure-sql/managed-instance/connectivity-architecture-overview.md#virtual-cluster-connectivity-architecture) 并且与托管实例具有相同的维护时段，因此使用代理连接策略不可能会向其他维护时段公开连接。
+* 在 Azure SQL 托管实例中，网关节点托管在 [虚拟群集中](../../azure-sql/managed-instance/connectivity-architecture-overview.md#virtual-cluster-connectivity-architecture) ，并与托管实例具有相同的维护时段，但仍建议使用重定向连接策略，以最大程度地减少维护事件期间中断的次数。
 
 有关 Azure SQL 数据库中的客户端连接策略的详细信息，请参阅 [AZURE Sql 数据库连接策略](../database/connectivity-architecture.md#connection-policy)。 
 

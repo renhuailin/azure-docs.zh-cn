@@ -6,22 +6,25 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 12/03/2020
+ms.date: 02/25/2021
 ms.author: memildin
-ms.openlocfilehash: 8d2b43ab57ea7a3b1dc1d13bcdea9932ccecb9dc
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+zone_pivot_groups: manage-asc-initiatives
+ms.openlocfilehash: a39b79c6c209c0fc66edac846d5458475ec75810
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96559025"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102100859"
 ---
-# <a name="using-custom-security-policies"></a>使用自定义安全策略
+# <a name="create-custom-security-initiatives-and-policies"></a>创建自定义安全方案和策略
 
 为了帮助保护系统和环境，Azure 安全中心会生成安全建议。 这些建议基于行业最佳做法，并已合并在提供给所有客户的通用默认安全策略中。 此外，还可能会基于安全中心内有关行业和法规标准的知识来提供建议。
 
 你可以利用此功能添加自己的自定义计划。 如果环境未遵循所创建的策略，则你会收到建议。 你创建的任何自定义计划将连同内置计划一起显示在法规符合性仪表板中，如教程[改善法规符合性](security-center-compliance-dashboard.md)中所述。
 
 如 [Azure Policy 文档](../governance/policy/concepts/definition-structure.md#definition-location)中所述，当你为自定义计划指定位置时，该位置必须是某个管理组或订阅。 
+
+::: zone pivot="azure-portal"
 
 ## <a name="to-add-a-custom-initiative-to-your-subscription"></a>将自定义计划添加到订阅 
 
@@ -68,6 +71,113 @@ ms.locfileid: "96559025"
 1. 若要查看针对策略生成的建议，请在边栏中单击“建议”打开“建议”页。 显示的建议带有“自定义”标签，在大约一小时内会一直显示。
 
     [![自定义建议](media/custom-security-policies/custom-policy-recommendations.png)](media/custom-security-policies/custom-policy-recommendations-in-context.png#lightbox)
+
+::: zone-end
+
+::: zone pivot="rest-api"
+
+## <a name="configure-a-security-policy-in-azure-policy-using-the-rest-api"></a>使用 REST API 在 Azure Policy 中配置安全策略
+
+Azure 安全中心与 Azure Policy 实现了本机集成，借助它，可以利用 Azure Policy 的 REST API 来创建策略分配。 以下说明演示如何创建策略分配以及如何自定义现有的分配。 
+
+Azure Policy 中的重要概念： 
+
+- **策略定义** 是一种规则 
+
+- **计划** 是策略定义（规则）的集合 
+
+- **分配** 是将计划或策略应用于特定的范围（管理组、订阅等） 
+
+安全中心具有内置计划 Azure 安全基准，其中包括所有安全策略。 要评估对 Azure 资源的安全中心策略，应对管理组或希望评估的订阅创建一个分配。
+
+内置计划默认启用所有安全中心策略。 可以选择禁用内置计划中的某些策略。 例如，若要应用除 Web 应用程序防火墙之外的所有安全中心策略，请将策略的效果参数的值更改为“禁用” 。
+
+## <a name="api-examples"></a>API 示例
+
+在下面的示例中，替换以下三个变量：
+
+- **{scope}** 输入要将策略应用到的管理组或订阅的名称
+- **{policyAssignmentName}** 输入相关策略分配的名称
+- **{name}** 请输入你的姓名，或批准策略更改的管理员的姓名
+
+本示例演示如何对订阅或管理组分配内置的安全中心计划
+ 
+ ```
+    PUT  
+    https://management.azure.com/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}?api-version=2018-05-01 
+
+    Request Body (JSON) 
+
+    { 
+
+      "properties":{ 
+
+    "displayName":"Enable Monitoring in Azure Security Center", 
+
+    "metadata":{ 
+
+    "assignedBy":"{Name}" 
+
+    }, 
+
+    "policyDefinitionId":"/providers/Microsoft.Authorization/policySetDefinitions/1f3afdf9-d0c9-4c3d-847f-89da613e70a8", 
+
+    "parameters":{}, 
+
+    } 
+
+    } 
+ ```
+
+本示例演示如何对订阅分配内置的安全中心计划，且禁用以下策略： 
+
+- 系统更新 ("systemUpdatesMonitoringEffect") 
+
+- 安全配置 ("systemConfigurationsMonitoringEffect") 
+
+- 终结点保护 ("endpointProtectionMonitoringEffect") 
+
+ ```
+    PUT https://management.azure.com/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}?api-version=2018-05-01 
+    
+    Request Body (JSON) 
+    
+    { 
+    
+      "properties":{ 
+    
+    "displayName":"Enable Monitoring in Azure Security Center", 
+    
+    "metadata":{ 
+    
+    "assignedBy":"{Name}" 
+    
+    }, 
+    
+    "policyDefinitionId":"/providers/Microsoft.Authorization/policySetDefinitions/1f3afdf9-d0c9-4c3d-847f-89da613e70a8", 
+    
+    "parameters":{ 
+    
+    "systemUpdatesMonitoringEffect":{"value":"Disabled"}, 
+    
+    "systemConfigurationsMonitoringEffect":{"value":"Disabled"}, 
+    
+    "endpointProtectionMonitoringEffect":{"value":"Disabled"}, 
+    
+    }, 
+    
+     } 
+    
+    } 
+ ```
+此示例演示如何删除分配：
+ ```
+    DELETE   
+    https://management.azure.com/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}?api-version=2018-05-01 
+ ```
+
+::: zone-end
+
 
 ## <a name="enhance-your-custom-recommendations-with-detailed-information"></a>利用详细信息增强自定义建议
 
@@ -143,7 +253,7 @@ Azure 安全中心提供的内置建议包括严重性级别和修正说明等�
 
 在本文中，你已了解如何创建自定义安全策略。 
 
-如需其他相关材料，请参阅以下文章： 
+其他相关材料，请参阅以下文章： 
 
 - [安全策略概述](tutorial-security-policy.md)
 - [内置安全策略列表](./policy-reference.md)

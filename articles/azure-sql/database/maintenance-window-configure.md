@@ -8,13 +8,13 @@ ms.topic: how-to
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 03/02/2021
-ms.openlocfilehash: e8f7e5451b48066f52a4c1038e58b1efa99951e6
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.date: 03/04/2021
+ms.openlocfilehash: f5692f2bcaaadfc56084ec8db745eae48112ecf3
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/04/2021
-ms.locfileid: "102048585"
+ms.locfileid: "102101233"
 ---
 # <a name="configure-maintenance-window-preview"></a> (预览配置维护时段) 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -26,6 +26,8 @@ ms.locfileid: "102048585"
 
 更改为不同维护时段的功能不可用于每个服务级别或每个区域。 有关可用性的详细信息，请参阅 [维护时段可用性](maintenance-window.md#availability)。
 
+> [!Important]
+> 配置维护时段是一种长时间运行的异步操作，类似于更改 Azure SQL 资源的服务层。 该资源在操作过程中可用，但在操作结束时会发生短暂的故障转移，并且即使在中断长时间运行的事务的情况下，也通常会持续到8秒。 若要将故障转移的影响降至最低，应在高峰时段执行操作。
 
 ## <a name="configure-maintenance-window-during-database-creation"></a>在数据库创建期间配置维护时段 
 

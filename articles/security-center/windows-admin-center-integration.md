@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: memildin
-ms.openlocfilehash: ca3dd410474af0a42a3cd5b4217c3bba90b8ff1a
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: fc4207547a1f34fca1ef302626f1365572a236b9
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96511978"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102101301"
 ---
 # <a name="protect-windows-admin-center-resources-with-security-center"></a>利用安全中心保护 Windows 管理中心资源
 
@@ -21,7 +21,7 @@ Windows 管理中心是适用于 Windows 服务器的管理工具。 它在一�
 
 > [!NOTE]
 > 你的 Azure 订阅和关联的 Log Analytics 工作区都需要启用 Azure Defender 才能实现 Windows 管理中心集成。
-> 如果你之前未在订阅和工作区中使用，Azure Defender 将在前30天免费。 有关详细信息，请参阅[定价信息页](security-center-pricing.md)。
+> 如果你之前未在订阅和工作区中使用，Azure Defender 将在前30天免费。 若要根据你的选择货币和区域定价详细信息，请参阅 [安全中心定价](https://azure.microsoft.com/pricing/details/security-center/)。
 >
 
 成功将服务器从 Windows 管理中心加入到 Azure 安全中心后，你可以：

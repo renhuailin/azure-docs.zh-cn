@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2020
 ms.author: memildin
-ms.openlocfilehash: 754e9516c5fd47668cbff5bdc64b8dfdeed050d8
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: dc277d71f8f39b342095d0ac14b592eb866984d5
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101705122"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102100519"
 ---
 # <a name="faq---questions-about-data-collection-agents-and-workspaces"></a>常见问题解答 - 有关数据收集、代理和工作区的问题
 
@@ -33,7 +33,7 @@ ms.locfileid: "101705122"
 
 - **Azure Defender on** –安全中心在默认工作区中启用 "安全" 解决方案。
 
-有关详细信息，请参阅[安全中心 定价](https://azure.microsoft.com/pricing/details/security-center/)。
+若要根据你的选择货币和区域定价详细信息，请参阅 [安全中心定价](https://azure.microsoft.com/pricing/details/security-center/)。
 
 > [!NOTE]
 > 安全中心创建的工作区的 Log Analytics 定价层不会影响安全中心计费。

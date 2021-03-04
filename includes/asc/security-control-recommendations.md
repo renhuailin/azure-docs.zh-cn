@@ -2,15 +2,15 @@
 author: memildin
 ms.service: security-center
 ms.topic: include
-ms.date: 02/16/2021
+ms.date: 02/28/2021
 ms.author: memildin
 ms.custom: generated
-ms.openlocfilehash: 1a5d88243c54cadfeda7aea84561558795ee9a65
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 963dcc047f697d851677263d7dba6fd4988b9323
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100645389"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102099686"
 ---
 <table class="tg">
 <thead>
@@ -59,7 +59,7 @@ ms.locfileid: "100645389"
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">4</p></strong></td>
     <td class="tg-lboi"><strong><p style="font-size: 16px">管理访问权限和权限</p></strong>安全程序的核心是确保用户具有完成其工作（但仅限于此）所需的访问权限：<a href="/windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models">最小特权访问模型</a>。<br>通过使用 <a href="/azure/role-based-access-control/overview">AZURE RBAC)  (azure 基于角色的访问控制 </a>创建角色分配来控制对资源的访问权限。 角色分配由三个元素组成：<br>- <strong>安全主体</strong>：用户请求访问的对象<br>- <strong>角色定义</strong>：他们的权限<br>- <strong>作用域</strong>：权限适用于的资源集</td>
-    <td class="tg-lboi"; width=55%>- 应在群集上安装和启用适用于 Kubernetes 的 Azure 策略外接程序<br />- 应避免具有特权升级的容器<br />- 应避免共享敏感主机命名空间的容器<br />- 应从订阅中删除弃用的帐户<br />- 应从订阅中删除不推荐使用的具有所有者权限的帐户<br />- 应从订阅中删除具有所有者权限的外部帐户<br />- 应从订阅中删除具有写入权限的外部帐户<br />- 函数应用应具有客户端证书 (传入的客户端证书) 启用<br />- 相同的身份验证凭据<br />- 应为容器强制实施 (只读) 根文件系统<br />- 应为容器强制实施最低权限的 Linux 功能<br />- 应在 API 应用中使用托管标识<br />- 托管标识应在函数应用中使用<br />- 应在 web 应用中使用托管标识<br />- 应避免特权容器<br />- 应在 Kubernetes Services 上使用 Role-Based 访问控制<br />- 应避免以 root 用户身份运行容器<br />- Service Fabric 群集应仅使用 Azure Active Directory 进行客户端身份验证<br />- 应使用服务主体（而不是管理证书）来保护你的订阅<br />- 应禁止存储帐户公共访问<br />- 应向订阅分配多个所有者<br />- 应将 pod HostPath 卷装载的使用限制为已知列表，以限制节点对受攻击的容器的访问</td>
+    <td class="tg-lboi"; width=55%>- 对 Linux 计算机进行身份验证时，应要求 SSH 密钥<br />- 应在群集上安装和启用适用于 Kubernetes 的 Azure 策略外接程序<br />- 应避免具有特权升级的容器<br />- 应避免共享敏感主机命名空间的容器<br />- 应从订阅中删除弃用的帐户<br />- 应从订阅中删除不推荐使用的具有所有者权限的帐户<br />- 应从订阅中删除具有所有者权限的外部帐户<br />- 应从订阅中删除具有写入权限的外部帐户<br />- 函数应用应具有客户端证书 (传入的客户端证书) 启用<br />- 相同的身份验证凭据<br />- 应为容器强制实施 (只读) 根文件系统<br />- 应为容器强制实施最低权限的 Linux 功能<br />- 应在 API 应用中使用托管标识<br />- 托管标识应在函数应用中使用<br />- 应在 web 应用中使用托管标识<br />- 应避免特权容器<br />- 应在 Kubernetes Services 上使用 Role-Based 访问控制<br />- 应避免以 root 用户身份运行容器<br />- Service Fabric 群集应仅使用 Azure Active Directory 进行客户端身份验证<br />- 应使用服务主体（而不是管理证书）来保护你的订阅<br />- 应禁止存储帐户公共访问<br />- 应向订阅分配多个所有者<br />- 应将 pod HostPath 卷装载的使用限制为已知列表，以限制节点对受攻击的容器的访问</td>
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">4</p></strong></td>
@@ -84,12 +84,12 @@ ms.locfileid: "100645389"
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">2</p></strong></td>
     <td class="tg-lboi"><strong><p style="font-size: 16px">启用审核和日志记录</p></strong>日志记录数据可让你深入了解过去的问题，防止潜在的问题，可以提高应用程序的性能，并允许自动执行原本手动执行的操作。<br>- <strong>控制和管理日志</strong>提供有关 <a href="/azure/azure-resource-manager/management/overview">Azure 资源管理器</a>操作的信息。<br>- <strong>数据平面日志</strong>提供作为 Azure 资源使用情况的一部分引发的事件的相关信息。<br>- <strong>已处理的事件</strong>提供已处理的分析事件/警报的相关信息。</td>
-    <td class="tg-lboi"; width=55%>- 应对 SQL Server 启用审核<br />- 应启用 Azure Data Lake Store 的诊断日志<br />- 应启用 Azure 流分析的诊断日志<br />- 应启用 Batch 帐户的诊断日志<br />- 应启用 Data Lake Analytics 的诊断日志<br />- 应启用事件中心的诊断日志<br />- 应启用 IoT 中心的诊断日志<br />- 应启用密钥保管库的诊断日志<br />- 应启用逻辑应用的诊断日志<br />- 应启用搜索服务中的诊断日志<br />- 应启用服务总线的诊断日志<br />- 应启用虚拟机规模集的诊断日志<br />- 应在应用服务中启用诊断日志</td>
+    <td class="tg-lboi"; width=55%>- 应对 SQL Server 启用审核<br />- 应启用 Azure Data Lake Store 的诊断日志<br />- 应启用 Azure 流分析的诊断日志<br />- 应启用 Batch 帐户的诊断日志<br />- 应启用 Data Lake Analytics 的诊断日志<br />- 应启用事件中心的诊断日志<br />- 应启用 IoT 中心的诊断日志<br />- 应启用密钥保管库的诊断日志<br />- 应启用搜索服务中的诊断日志<br />- 应启用服务总线的诊断日志<br />- 应启用虚拟机规模集的诊断日志<br />- 应在逻辑应用中启用诊断日志<br />- 应在应用服务中启用诊断日志</td>
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">0</p></strong></td>
     <td class="tg-lboi"><strong><p style="font-size: 16px">实现安全最佳做法</p></strong>最新的安全做法 "假定违反" 网络外围网络。 因此，此控制中的许多最佳做法都集中在标识管理上。<br>丢失密钥和凭据是一个常见问题。 <a href="/azure/key-vault/key-vault-overview">Azure 密钥保管库</a>通过加密密钥、.pfx 文件和密码来保护密钥和机密。<br>虚拟专用网 (VPN) 是访问虚拟机的一种安全方法。 如果 Vpn 不可用，则使用复杂的密码和双因素身份验证，例如 <a href="/azure/active-directory/authentication/concept-mfa-howitworks">Azure AD 多重身份验证</a>。 双重身份验证避开了固有的仅依赖用户名和密码的弱点。<br>使用强身份验证和授权平台是另一种最佳做法。 组织可以使用联合标识来委派授权标识的管理。 当员工离职，需要撤销其访问权限时，这一点也很重要。</td>
-    <td class="tg-lboi"; width=55%>- 最多只能为订阅指定 3 个所有者<br />- 应限制对具有防火墙和虚拟网络配置的存储帐户的访问<br />- 应在面向内部的虚拟机上应用自适应网络强化建议<br />- 应在 SQL 托管实例的高级数据安全设置中启用所有高级威胁防护类型<br />- 应在 SQL Server 的高级数据安全设置中启用所有高级威胁防护类型<br />- 应为 SQL Server 预配 Azure Active Directory 管理员<br />- 应将 SQL Server 的审核保留设置为至少 90 天<br />- 应在订阅上启用 Log Analytics 代理的自动预配<br />- 应为虚拟机启用 Azure 备份<br />- 应启用高严重性警报的电子邮件通知<br />- 应启用高严重性警报的电子邮件通知订阅所有者<br />- 应从订阅中删除拥有读取权限的外部帐户<br />- 应为 Azure Database for MariaDB 启用异地冗余备份<br />- 应为 Azure Database for MySQL 启用异地冗余备份<br />- 应为 Azure Database for PostgreSQL 启用异地冗余备份<br />- 应在你的计算机上安装来宾配置扩展<br />- IoT 设备-发送不充分利用消息的代理<br />- 应将 Java 更新为 API 应用的最新版本<br />- 应将 Java 更新为函数应用的最新版本<br />- 应将 Java 更新为 Web 应用的最新版本<br />- Key Vault 密钥应具有到期日期<br />- Key Vault 机密应具有到期日期<br />- Key vault 应启用清除保护<br />- Key vault 应启用软删除<br />- 应在对订阅拥有读取权限的帐户上启用 MFA<br />- 网络流量数据收集代理应安装在 Linux 虚拟机上<br />- 应在 Windows 虚拟机上安装网络流量数据收集代理<br />- 应使用网络安全组来保护非面向 Internet 的虚拟机<br />- 应将 PHP 更新为 API 应用的最新版本<br />- 应将 PHP 更新为 Web 应用的最新版本<br />- 应将 Python 更新为 API 应用的最新版本<br />- 应将 Python 更新为函数应用的最新版本<br />- 应将 Python 更新为 Web 应用的最新版本<br />- 应为 API 应用禁用远程调试<br />- 应为函数应用禁用远程调试<br />- 对于 Web 应用程序，应关闭远程调试<br />- 应将存储帐户迁移到新的 Azure 资源管理器资源<br />- 子网应与网络安全组相关联<br />- 订阅应具有安全问题的联系人电子邮件地址<br />- 存储在 Azure Key Vault 中的证书的有效期不应超过12个月<br />- 应将虚拟机迁移到新的 Azure 资源管理器资源<br />- Web 应用应该请求一个用于所有传入请求的 SSL 证书<br />- 应在你的计算机上启用 Windows Defender 攻击防护</td>
+    <td class="tg-lboi"; width=55%>- 最多只能为订阅指定 3 个所有者<br />- 应限制对具有防火墙和虚拟网络配置的存储帐户的访问<br />- 应在面向内部的虚拟机上应用自适应网络强化建议<br />- 应在 SQL 托管实例的高级数据安全设置中启用所有高级威胁防护类型<br />- 应在 SQL Server 的高级数据安全设置中启用所有高级威胁防护类型<br />- 应为 SQL Server 预配 Azure Active Directory 管理员<br />- API 管理服务应使用虚拟网络<br />- 应将 SQL Server 的审核保留设置为至少 90 天<br />- 应在订阅上启用 Log Analytics 代理的自动预配<br />- 应为虚拟机启用 Azure 备份<br />- Azure Cosmos DB 帐户应有防火墙规则<br />- 认知服务帐户应启用数据加密<br />- 认知服务帐户应限制网络访问<br />- 认知服务帐户应使用客户拥有的存储或启用数据加密<br />- 应启用高严重性警报的电子邮件通知<br />- 应启用高严重性警报的电子邮件通知订阅所有者<br />- 确保 API 应用已将客户端证书传入客户端证书设置为 On<br />- 应从订阅中删除拥有读取权限的外部帐户<br />- 应为 Azure Database for MariaDB 启用异地冗余备份<br />- 应为 Azure Database for MySQL 启用异地冗余备份<br />- 应为 Azure Database for PostgreSQL 启用异地冗余备份<br />- 应在你的计算机上安装来宾配置扩展<br />- IoT 设备-发送不充分利用消息的代理<br />- 应将 Java 更新为 API 应用的最新版本<br />- 应将 Java 更新为函数应用的最新版本<br />- 应将 Java 更新为 Web 应用的最新版本<br />- Key Vault 密钥应具有到期日期<br />- Key Vault 机密应具有到期日期<br />- Key vault 应启用清除保护<br />- Key vault 应启用软删除<br />- Kubernetes 群集只能通过 HTTPS 访问<br />- 应在对订阅拥有读取权限的帐户上启用 MFA<br />- 网络流量数据收集代理应安装在 Linux 虚拟机上<br />- 应在 Windows 虚拟机上安装网络流量数据收集代理<br />- 应启用网络观察程序<br />- 应使用网络安全组来保护非面向 Internet 的虚拟机<br />- 应将 PHP 更新为 API 应用的最新版本<br />- 应将 PHP 更新为 Web 应用的最新版本<br />- 应启用 Azure SQL 数据库上的专用终结点连接<br />- 应禁用对 Azure SQL 数据库的公共网络访问<br />- 应为认知服务帐户禁用公共网络访问<br />- 应将 Python 更新为 API 应用的最新版本<br />- 应将 Python 更新为函数应用的最新版本<br />- 应将 Python 更新为 Web 应用的最新版本<br />- 应为 API 应用禁用远程调试<br />- 应为函数应用禁用远程调试<br />- 对于 Web 应用程序，应关闭远程调试<br />- 应将存储帐户迁移到新的 Azure 资源管理器资源<br />- 子网应与网络安全组相关联<br />- 订阅应具有安全问题的联系人电子邮件地址<br />- 存储在 Azure Key Vault 中的证书的有效期不应超过12个月<br />- 应将虚拟机迁移到新的 Azure 资源管理器资源<br />- Web 应用应该请求一个用于所有传入请求的 SSL 证书<br />- 应在你的计算机上启用 Windows Defender 攻击防护<br />- Windows web 服务器应配置为使用安全通信协议</td>
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">0</p></strong></td>

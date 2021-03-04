@@ -8,25 +8,34 @@ ms.topic: how-to
 ms.date: 12/14/2020
 ms.author: duau
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: aea51e56f2d96fa634b1ece2029c9ea5bf3f60fc
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: d68011afe044535783dd8a8c56ed5d950c6d06b1
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98011299"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102099873"
 ---
 # <a name="configure-expressroute-direct-by-using-the-azure-cli"></a>使用 Azure CLI 配置 ExpressRoute Direct
 
 使用 ExpressRoute Direct，可以直接连接到 Microsoft 战略性分布在全球的对等互连位置的的全球网络。 有关详细信息，请参阅[关于 ExpressRoute Direct Connect](expressroute-erdirect-about.md)。
 
-## <a name="before-you-begin"></a>在开始之前
+## <a name="before-you-begin"></a>准备阶段
 
-需要先注册订阅，然后才能使用 ExpressRoute Direct。 若要注册，请使用你的订阅 ID 向 <ExpressRouteDirect@microsoft.com> 发送一封电子邮件，其中包括以下详细信息：
+需要先注册订阅，然后才能使用 ExpressRoute Direct。 需要先注册订阅，然后才能使用 ExpressRoute Direct。 若要注册，请通过 Azure PowerShell 执行以下操作：
+1.  登录到 Azure 并选择要注册的订阅。
 
-* 需通过 **ExpressRoute Direct** 完成的方案
-* 位置首选项 - 请参阅[合作伙伴和对等互连位置](expressroute-locations-providers.md)，获取包含所有位置的完整列表
-* 实现的时间线
-* 其他问题
+    ```azurepowershell-interactive
+    Connect-AzAccount 
+
+    Select-AzSubscription -Subscription "<SubscriptionID or SubscriptionName>"
+    ```
+
+2. 使用以下命令注册公共预览版订阅：
+    ```azurepowershell-interactive
+    Register-AzProviderFeature -FeatureName AllowExpressRoutePorts -ProviderNamespace Microsoft.Network
+    ```
+
+注册后，验证 Microsoft.Network 资源提供程序是否已在你的订阅中注册。 通过注册资源提供程序来配置订阅，以供资源提供程序使用。
 
 ## <a name="create-the-resource"></a><a name="resources"></a>创建资源
 

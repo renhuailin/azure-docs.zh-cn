@@ -1,6 +1,6 @@
 ---
-title: 如何使用适用于 SQL 的 Azure Defender
-description: 了解如何使用 Azure 安全中心的可选 Azure Defender for SQL 计划
+title: 如何设置适用于 SQL 的 Azure Defender
+description: 了解如何启用 Azure 安全中心的可选 Azure Defender SQL 计划
 services: security-center
 documentationcenter: na
 author: memildin
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/11/2021
 ms.author: memildin
-ms.openlocfilehash: 96af34b5b68fca5ab8061c8c99f03bee094dc175
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: b82f0ca0624fcbd64f1c23f87f8f21f96d8e4d4c
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100590375"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102100570"
 ---
-# <a name="azure-defender-for-sql-servers-on-machines"></a>计算机上适用于 SQL server 的 Azure Defender 
+# <a name="enable-azure-defender-for-sql-servers-on-machines"></a>为计算机上的 SQL server 启用 Azure Defender 
 
 此 Azure Defender 计划可检测异常活动，指示对访问或利用数据库的异常和潜在有害尝试。
 
@@ -31,7 +31,7 @@ ms.locfileid: "100590375"
 |方面|详细信息|
 |----|:----|
 |发布状态：|正式发布版 (GA)|
-|定价：|**计算机上适用于 SQL server 的 Azure Defender** 按 [定价页](security-center-pricing.md)中所示的方式计费|
+|定价：|**计算机上适用于 SQL server 的 Azure Defender** 按 [安全中心定价](https://azure.microsoft.com/pricing/details/security-center/)计费|
 |受保护的 SQL 版本：|Azure SQL Server (Microsoft 支持涵盖的所有版本) |
 |云：|![是](./media/icons/yes-icon.png) 商业云<br>![是](./media/icons/yes-icon.png) US Gov<br>![否](./media/icons/no-icon.png) China Gov，其他 Gov|
 |||
@@ -40,11 +40,10 @@ ms.locfileid: "100590375"
 
 若要启用此计划：
 
-* 在 SQL server 的主机上预配 Log Analytics 代理。 这可提供到 Azure 的连接。
+[步骤1。在 SQL server 的主机上预配 Log Analytics 代理：](#step-1-provision-the-log-analytics-agent-on-your-sql-servers-host)
 
-* 在安全中心的 "定价和设置" 页中启用可选计划。
+[步骤2。在安全中心的 "定价和设置" 页中启用可选计划：](#step-2-enable-the-optional-plan-in-security-centers-pricing-and-settings-page)
 
-下面描述了这两种方法。
 
 ### <a name="step-1-provision-the-log-analytics-agent-on-your-sql-servers-host"></a>步骤 1。 在 SQL server 的主机上预配 Log Analytics 代理：
 
@@ -62,7 +61,7 @@ ms.locfileid: "100590375"
 
 1. 在安全中心的菜单中，打开 " **定价 & 设置** " 页。
 
-    - 如果使用的是 **Azure 安全中心的默认工作区** (名为 "形式 defaultworkspace-[订阅 id]-[region]" ) ，请选择相关 **订阅**。
+    - 如果使用的是 **Azure 安全中心的默认工作区** (名为 "形式 defaultworkspace-[订阅 ID]-[region]" ) ，请选择相关 **订阅**。
 
     - 如果使用 **非默认工作区**，请选择相关 **工作区** (在筛选器中输入工作区的名称（如有必要）) ：
 
@@ -81,31 +80,6 @@ ms.locfileid: "100590375"
 1. 还可以配置安全警报的电子邮件通知。 
     可设置在生成安全中心警报时接收电子邮件通知的收件人列表。 电子邮件包含指向 Azure 安全中心警报的直接链接，以及所有的相关详细信息。 有关详细信息，请参阅 [设置安全警报的电子邮件通知](security-center-provide-security-contact-details.md)。
 
-
-
-## <a name="explore-vulnerability-assessment-reports"></a>浏览漏洞评估报告
-
-漏洞评估服务每周扫描一次数据库。 扫描在启用服务的一周中的同一天运行。
-
-漏洞评估仪表板概述了所有数据库中的评估结果，以及正常和不正常的数据库的摘要，以及根据风险分布的失败检查的总体摘要。
-
-可以直接在安全中心查看漏洞评估结果。
-
-1. 在 "安全中心" 边栏中，打开 " **建议** " 页，然后选择 " **计算机上的 SQL server** 上的建议漏洞" (预览 ") 。 有关详细信息，请参阅[安全中心建议](security-center-recommendations.md)。 
-
-    :::image type="content" source="./media/security-center-advanced-iaas-data/data-and-storage-sqldb-vulns-on-vm.png" alt-text="计算机上的 SQL server 上的漏洞评估结果应 (预览版进行修正) ":::
-
-    此时显示此建议的详细视图。
-
-    :::image type="content" source="./media/security-center-advanced-iaas-data/all-servers-view.png" alt-text="建议的详细视图":::
-
-1. 有关更多详细信息，请向下钻取：
-
-    * 若要大致了解 (数据库的已扫描资源) 以及经过测试的安全检查列表，请选择相关服务器。
-
-    * 若要大致了解按特定 SQL 数据库分组的漏洞，请选择相关数据库。
-
-    在每个视图中，安全检查按照严重性排序。 单击特定安全检查即可查看详细信息窗格，其中包含说明、修正方法以及影响或基准等其他相关信息   。
 
 ## <a name="azure-defender-for-sql-alerts"></a>Azure Defender for SQL 警报
 警报由异常和可能有害的访问或利用 SQL 计算机的尝试生成。 这些事件可触发 [警报引用页面](alerts-reference.md#alerts-sql-db-and-warehouse)中显示的警报。

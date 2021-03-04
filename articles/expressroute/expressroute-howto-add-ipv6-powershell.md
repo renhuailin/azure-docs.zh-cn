@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 03/02/2021
 ms.author: duau
-ms.openlocfilehash: 20b8e354d0c8e2e04cf22d1b8014f5b8e33a860c
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: c0d153ff8125a6ef16a69aec72a27dd4b234eab5
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/04/2021
-ms.locfileid: "102038860"
+ms.locfileid: "102100043"
 ---
 # <a name="add-ipv6-support-for-private-peering-using-azure-powershell-preview"></a>使用 Azure PowerShell (预览版添加对专用对等互连的 IPv6 支持) 
 
@@ -175,7 +175,7 @@ ms.locfileid: "102038860"
 * 通过非 AZ ExpressRoute 网关 SKU 连接到 Azure 中的部署
 * 与非 AZ 区域中的部署的连接
 * Global Reach ExpressRoute 线路之间的连接
-* 在 vWAN 中使用 ExpressRoute
+* 将 ExpressRoute 用于虚拟 WAN
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -3,17 +3,18 @@ title: 向 Android 地图添加气泡层 |Microsoft Azure 映射
 description: 了解如何将地图上的点呈现为固定大小的圆圈。 若要实现此目的，请参阅如何使用 Azure Maps Android SDK 添加和自定义气泡图层。
 author: rbrundritt
 ms.author: richbrun
-ms.date: 12/07/2020
+ms.date: 2/26/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 7506a2083a34832ee3f6f6222f86d35d10228728
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+zone_pivot_groups: azure-maps-android
+ms.openlocfilehash: f3c175f30c5c0e6206f4fee274e0f3f000e55a74
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97681520"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102100162"
 ---
 # <a name="add-a-bubble-layer-to-a-map-android-sdk"></a>将气泡图层添加到地图 (Android SDK) 
 
@@ -29,6 +30,8 @@ ms.locfileid: "97681520"
 ## <a name="add-a-bubble-layer"></a>添加气泡层
 
 下面的代码将一个点数组加载到数据源中。 然后，它将数据点连接到气泡图层。 气泡图层用5个像素呈现每个气泡的半径，并使用白色填充颜色。 和，颜色为蓝色，笔划宽度为六个像素。
+
+::: zone pivot="programming-language-java-android"
 
 ```java
 //Create a data source and add it to the map.
@@ -58,6 +61,41 @@ BubbleLayer layer = new BubbleLayer(source,
 map.layers.add(layer);
 ```
 
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+//Create a data source and add it to the map.
+val source = DataSource()
+map.sources.add(source)
+
+//Create point locations.
+val points: Array<Point> = arrayOf<Point>(
+    Point.fromLngLat(-73.985708, 40.75773),
+    Point.fromLngLat(-73.985600, 40.76542),
+    Point.fromLngLat(-73.985550, 40.77900),
+    Point.fromLngLat(-73.975550, 40.74859),
+    Point.fromLngLat(-73.968900, 40.78859)
+)
+
+//Add multiple points to the data source.
+source.add(points)
+
+//Create a bubble layer to render the filled in area of the circle, and add it to the map.
+val layer = BubbleLayer(
+    source,
+    bubbleRadius(5f),
+    bubbleColor("white"),
+    bubbleStrokeColor("#4288f7"),
+    bubbleStrokeWidth(6f)
+)
+
+map.layers.add(layer)
+```
+
+::: zone-end
+
 以下屏幕截图显示了冒泡层中的上述代码呈现点。
 
 ![使用气泡图层呈现的点地图](media/map-add-bubble-layer-android/android-bubble-layer.png)
@@ -65,6 +103,8 @@ map.layers.add(layer);
 ## <a name="show-labels-with-a-bubble-layer"></a>显示具有气泡层的标签
 
 此代码演示如何使用气泡图层呈现地图上的点。 以及如何使用符号层呈现标签。 若要隐藏符号层的图标，请将 `iconImage` 选项设置为 `"none"` 。
+
+::: zone pivot="programming-language-java-android"
 
 ```java
 //Create a data source and add it to the map.
@@ -91,6 +131,43 @@ map.layers.add(new SymbolLayer(source,
     textOffset(new Float[]{0f, -2.2f})
 ));
 ```
+
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+//Create a data source and add it to the map.
+val source = DataSource()
+map.sources.add(source)
+
+//Add a data point to the map.
+source.add(Point.fromLngLat(-122.336641, 47.627631))
+
+//Add a bubble layer.
+map.layers.add(
+    BubbleLayer(
+        source,
+        bubbleRadius(5f),
+        bubbleColor("white"),
+        bubbleStrokeColor("#4288f7"),
+        bubbleStrokeWidth(6f)
+    )
+)
+
+//Add a symbol layer to display text, hide the icon image.
+map.layers.add(
+    SymbolLayer(
+        source,  //Hide the icon image.
+        iconImage("none"),
+        textField("Museum of History & Industry (MOHAI)"),
+        textColor("#005995"),
+        textOffset(arrayOf(0f, -2.2f))
+    )
+)
+```
+
+::: zone-end
 
 以下屏幕截图显示了上面的代码呈现气泡图层中的一个点和一个带有符号层的点的文本标签。
 

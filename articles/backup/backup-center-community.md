@@ -3,12 +3,12 @@ title: 使用备份中心访问社区资源
 description: 使用备份中心访问示例模板、脚本和功能请求
 ms.topic: conceptual
 ms.date: 02/18/2021
-ms.openlocfilehash: ee377ed393aa4afe1f41d243230686020f5825aa
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 23892c11df26bd3799ca247ef31a7d4c1b6e8bf5
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101744565"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102100026"
 ---
 # <a name="access-community-resources-using-backup-center"></a>使用备份中心访问社区资源
 
@@ -26,7 +26,7 @@ ms.locfileid: "101744565"
 
 - **功能请求**：可以导航到 UserVoice 和 file 功能请求。
 
-- **自动部署示例**：使用社区中心，你可以发现示例 Azure 资源管理器 (ARM) 模板和 Azure 策略，你可以使用这些模板。 你还可以找到示例 PowerShell 脚本、CLI 命令和 MSDB 脚本。
+- **自动部署示例**：使用社区中心，你可以发现示例 Azure 资源管理器 (ARM) 模板和 Azure 策略，你可以使用这些模板。 你还可以找到示例 PowerShell 脚本、CLI 命令和 Microsoft 数据库备份脚本。
 
 ## <a name="next-steps"></a>后续步骤
 

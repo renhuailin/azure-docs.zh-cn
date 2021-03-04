@@ -3,12 +3,12 @@ title: 备份中心概述
 description: 本文概述了 Azure 的备份中心。
 ms.topic: conceptual
 ms.date: 09/30/2020
-ms.openlocfilehash: 0acf3a17e41b89b462a7fb07c5d3ebd55d4052af
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: fee7bf41d0c72238231d9c4aba52a26cac9fb960
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101725367"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102099992"
 ---
 # <a name="overview-of-backup-center"></a>备份中心概述
 
@@ -27,7 +27,7 @@ ms.locfileid: "101725367"
 
 ## <a name="get-started"></a>入门
 
-若要开始使用备份中心，请在 Azure 门户中搜索 " **备份中心** "，并导航到 " **备份中心 (预览")** 仪表板。
+若要开始使用备份中心，请在 Azure 门户中搜索 " **备份中心** "，并导航到 " **备份中心** " 仪表板。
 
 ![备份中心搜索](./media/backup-center-overview/backup-center-search.png)
 
@@ -37,7 +37,7 @@ ms.locfileid: "101725367"
 
 在 " **作业** " 磁贴中，可以获得在过去24小时内通过备份空间触发的所有备份和还原相关作业的汇总视图。 你可以查看有关已完成、失败和正在进行中的作业数的信息。 选择此磁贴中的任何数字可查看有关特定数据源类型、操作类型和状态的详细信息。
 
-在 " **备份实例** " 磁贴中，可以获得备份空间内所有备份实例的汇总视图。 例如，与仍配置为要进行保护的实例数相比，可以看到处于软删除状态的备份实例数。 选择此磁贴中的任何数字可查看有关特定数据源类型和保护状态的备份实例的详细信息。
+在 " **备份实例** " 磁贴中，可以获得备份空间内所有备份实例的汇总视图。 例如，与仍配置为要进行保护的实例数相比，可以看到处于软删除状态的备份实例数。 选择此磁贴中的任何数字可查看有关特定数据源类型和保护状态的备份实例的详细信息。 你还可以查看找不到基础数据源的所有备份实例， (可能会删除数据源，或者你可能无权访问数据源) 。
 
 观看以下视频，了解备份中心的功能：
 

@@ -1,59 +1,57 @@
 ---
-title: 如何对容器注册表使用 Azure Defender
-description: 了解如何使用用于容器注册表的 Azure Defender 扫描 Linux 托管注册表中的 Linux 映像
+title: 如何使用适用于容器注册表的 Azure Defender
+description: 了解如何使用适用于容器注册表的 Azure Defender 扫描 Linux 托管注册表中的 Linux 映像
 author: memildin
 ms.author: memildin
 ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: a5d66e43485ec66b6297ef11ed382e8fb82b7cb3
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: ee4992e41e792b570d8937edfe31efb4c651d742
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96014562"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102100723"
 ---
 # <a name="use-azure-defender-for-container-registries-to-scan-your-images-for-vulnerabilities"></a>使用适用于容器注册表的 Azure Defender 来扫描映像是否存在漏洞
 
-本页说明如何使用内置漏洞扫描程序扫描 Azure 资源管理器 Azure 容器注册表中存储的容器映像。
+本页介绍如何使用内置漏洞扫描程序来扫描基于 Azure 资源管理器的 Azure 容器注册表中存储的容器映像。
 
-启用适用于容器注册表的 Azure Defender 时，会立即扫描推送到注册表的任何映像。 此外，还会扫描过去30天内提取的任何图像。 
+启用适用于容器注册表的 Azure Defender 时，会立即扫描推送到注册表的任何映像。 此外，还将扫描最近 30 天内拉取的所有映像。 
 
-当扫描程序向安全中心报告漏洞时，安全中心会将结果和相关信息显示为建议。 此外，这些发现还包括相关信息，如修正步骤、相关标识符、CVSS 评分等。 您可以查看一个或多个订阅或特定注册表的已识别漏洞。
-
-[!INCLUDE [Defender for container registries availability info](../../includes/security-center-availability-defender-for-container-registries.md)]
+当扫描程序向安全中心报告漏洞时，安全中心会提供结果和相关信息作为建议。 此外，这些结果还包括相关信息，如修正步骤、相关 CVE、CVSS 评分等。 你可以查看为一个或多个订阅或者为特定注册表识别出的漏洞。
 
 
 ## <a name="identify-vulnerabilities-in-images-in-azure-container-registries"></a>标识 Azure 容器注册表映像中的漏洞 
 
-若要对存储在 Azure 资源管理器 Azure 容器注册表中的映像启用漏洞扫描，请执行以下操作：
+若要对存储在基于 Azure 资源管理器的 Azure 容器注册表中的映像启用漏洞扫描，请执行以下操作：
 
-1. 为你的订阅启用 **容器注册表的 Azure Defender** 。 安全中心现已准备好扫描注册表中的映像。
+1. 为你的订阅启用适用于容器注册表的 Azure Defender。 安全中心现已准备就绪，可以扫描注册表中的映像。
 
     >[!NOTE]
     > 此功能按映像收费。
 
-1. 每次推送或导入都会触发映像扫描，如果在过去的30天内请求映像，则为。 
+1. 映像扫描在每次推送或导入时以及映像在最近 30 天内被拉取时触发。 
 
-    扫描完成后 (通常为大约2分钟后，但最多可以有15分钟) ，则可作为安全中心建议使用。
-
-1. [查看并修正结果，如下所述](#view-and-remediate-findings)。
-
-## <a name="identify-vulnerabilities-in-images-in-other-container-registries"></a>标识其他容器注册表中的映像中的漏洞 
-
-1. 使用 ACR 工具将映像从 Docker 中心或 Microsoft 容器注册表引入到注册表。  导入完成后，Azure Defender 将扫描导入的映像。 
-
-    在[将容器映像导入到容器注册表](../container-registry/container-registry-import-images.md)中了解详细信息
-
-    扫描完成后 (通常为大约2分钟后，但最多可以有15分钟) ，则可作为安全中心建议使用。
+    扫描完成后（通常在大约 2 分钟后，但可能长达 15 分钟），安全中心建议会提供结果。
 
 1. [查看并修正结果，如下所述](#view-and-remediate-findings)。
 
+## <a name="identify-vulnerabilities-in-images-in-other-container-registries"></a>标识其他容器注册表映像中的漏洞 
 
-## <a name="view-and-remediate-findings"></a>查看和修正发现
+1. 使用 ACR 工具将映像从 Docker Hub 或 Microsoft Container Registry 导入到注册表。  导入完成后，Azure Defender 将扫描导入的映像。 
 
-1. 若要查看发现结果，请访问“建议”页面。 如果发现问题，你将看到 **应修正 Azure 容器注册表映像中** 的建议漏洞
+    请参阅[将容器映像导入容器注册表](../container-registry/container-registry-import-images.md)，了解详细信息
+
+    扫描完成后（通常在大约 2 分钟后，但可能长达 15 分钟），安全中心建议会提供结果。
+
+1. [查看并修正结果，如下所述](#view-and-remediate-findings)。
+
+
+## <a name="view-and-remediate-findings"></a>查看和修正结果
+
+1. 若要查看发现结果，请访问“建议”页面。 如果发现问题，你将看到“应修正 Azure 容器注册表映像中的漏洞”的建议
 
     ![解决问题的建议 ](media/monitor-container-security/acr-finding.png)
 
