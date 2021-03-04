@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/17/2020
+ms.date: 03/02/2021
 ms.author: aahi
 ms.custom: cog-serv-seo-aug-2020
 keywords: 本地, Docker, 容器
-ms.openlocfilehash: 7bebaf7558de8ec5c1fcca3c9a4526330da1d695
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 4970b33d51ed7ef54727c1c15e2482ff10d70506
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99575782"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102032921"
 ---
 # <a name="install-and-run-docker-containers-for-the-speech-service-apis"></a>为语音服务 Api 安装并运行 Docker 容器 
 
@@ -43,7 +43,7 @@ ms.locfileid: "99575782"
 |--|--|--|
 | 语音转文本 | 利用中间结果分析情绪和转录连续实时语音或批处理音频记录。  | 2.9.0 |
 | 自定义语音转文本 | 使用 [自定义语音门户](https://speech.microsoft.com/customspeech)中的自定义模型，转录连续实时语音或批处理音频记录到带有中间结果的文本中。 | 2.9.0 |
-| 文本转语音 |  (SSML) ，以纯文本输入或语音合成标记语言将文本转换为自然声音。 | 1.11.0 |
+| 文本到语音转换 |  (SSML) ，以纯文本输入或语音合成标记语言将文本转换为自然声音。 | 1.11.0 |
 | 自定义文本到语音转换 | 使用 [自定义语音门户](https://aka.ms/custom-voice-portal)中的自定义模型，使用纯文本输入或语音合成标记语言 (SSML) 将文本转换为自然声音。 | 1.11.0 |
 | 语音语言检测 | 检测音频文件中的语言。 | 1.0 |
 | 神经文本转语音 | 使用 deep 神经网络技术将文本转换为自然声音，允许使用更自然的合成语音。 | 1.3.0 |
@@ -84,7 +84,7 @@ grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detect
 |-----------|---------|-------------|
 | 语音转文本 | 2核，2 GB 内存 | 4核，4 GB 内存 |
 | 自定义语音转文本 | 2核，2 GB 内存 | 4核，4 GB 内存 |
-| 文本转语音 | 单核，2-GB 内存 | 2核，3 GB 内存 |
+| 文本到语音转换 | 单核，2-GB 内存 | 2核，3 GB 内存 |
 | 自定义文本到语音转换 | 单核，2-GB 内存 | 2核，3 GB 内存 |
 | 语音语言检测 | 1个内核，1 GB 内存 | 1个内核，1 GB 内存 |
 | 神经文本转语音 | 6核，12 GB 内存 | 8核，16 GB 内存 |
@@ -119,11 +119,11 @@ grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detect
 |-----------|------------|
 | 自定义语音转文本 | `mcr.microsoft.com/azure-cognitive-services/speechservices/custom-speech-to-text:latest` |
 
-# <a name="text-to-speech"></a>[文本转语音](#tab/tts)
+# <a name="text-to-speech"></a>[文本到语音转换](#tab/tts)
 
 | 容器 | 存储库 |
 |-----------|------------|
-| 文本转语音 | `mcr.microsoft.com/azure-cognitive-services/speechservices/text-to-speech:latest` |
+| 文本到语音转换 | `mcr.microsoft.com/azure-cognitive-services/speechservices/text-to-speech:latest` |
 
 # <a name="neural-text-to-speech"></a>[神经文本转语音](#tab/ntts)
 
@@ -194,7 +194,7 @@ docker pull mcr.microsoft.com/azure-cognitive-services/speechservices/custom-spe
 > [!NOTE]
 > `locale` `voice` 自定义语音容器的和由容器的自定义模型引入确定。
 
-# <a name="text-to-speech"></a>[文本转语音](#tab/tts)
+# <a name="text-to-speech"></a>[文本到语音转换](#tab/tts)
 
 #### <a name="docker-pull-for-the-text-to-speech-container"></a>文本到语音容器的 Docker 拉取
 
@@ -455,7 +455,7 @@ ApiKey={API_KEY}
 * 从容器映像运行 *自定义语音到文本* 的容器。
 * 检查并返回目标区域设置的可用基本模型。
 
-输出提供了包含信息区域设置、模型 id 和创建日期时间的基本模型列表。 您可以使用模型 id 下载并使用您喜欢的特定基本模型。 例如：
+输出提供了包含信息区域设置、模型 ID 和创建日期时间的基本模型列表。 您可以使用模型 ID 下载并使用您喜欢的特定基本模型。 例如：
 ```
 Checking available base model for en-us
 2020/10/30 21:54:20 [Info] Searching available base models for en-us
@@ -477,7 +477,7 @@ Checking available base model for en-us
 从自定义语音到文本容器的 v 2.5.0 开始，你可以在输出中获取自定义发音结果。 你只需在自定义模型中设置自己的自定义发音规则并将模型装载到自定义语音到文本容器。
 
 
-# <a name="text-to-speech"></a>[文本转语音](#tab/tts)
+# <a name="text-to-speech"></a>[文本到语音转换](#tab/tts)
 
 若要运行标准 *文本到语音转换* 容器，请执行以下 `docker run` 命令。
 
@@ -771,7 +771,7 @@ speech_config.set_service_property(
 * 语音为 Docker 提供四个 Linux 容器，封装各种功能：
   * *语音到文本*
   * *自定义语音转文本*
-  * *文本转语音*
+  * *文本到语音转换*
   * *自定义文本到语音转换*
   * *神经文本转语音*
   * *语音语言检测*

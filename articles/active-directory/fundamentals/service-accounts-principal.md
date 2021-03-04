@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1c9df24a255d640c463bd62e8bdfe8a576df3b09
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: eaad4995abcf54e9ca7040d570c7a9abbdbc9cf5
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101693006"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102032379"
 ---
 # <a name="securing-service-principals"></a>保护服务主体
 
@@ -107,7 +107,7 @@ ApplicationID 表示全局应用程序，对所有租户中的所有应用程序
 ## <a name="move-from-a-user-account-to-a-service-principal"></a>从用户帐户移到服务主体  
 如果使用 Azure 用户帐户作为服务主体，请评估是否可以移动到 [托管标识](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet) 或服务主体。 如果无法使用托管标识，请预配具有足够权限和作用域的服务主体，以运行所需的任务。 可以通过 [注册应用程序](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)或 [PowerShell](https://docs.microsoft.com/azure/active-directory/develop/howto-authenticate-service-principal-powershell)来创建服务主体。
 
-使用 Microsoft Graph 时，请查看特定 API 的文档， [如本示例中所示](https://docs.microsoft.com/powershell/azure/create-azure-service-principal-azureps?view=azps-5.0.0)，确保应用程序的权限类型显示为 "受支持"。
+使用 Microsoft Graph 时，请查看特定 API 的文档， [如本示例中所示](/powershell/azure/create-azure-service-principal-azureps)，确保应用程序的权限类型显示为 "受支持"。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -115,7 +115,7 @@ ApplicationID 表示全局应用程序，对所有租户中的所有应用程序
 
 [创建服务主体](../develop/howto-create-service-principal-portal.md)
 
- [监视服务主体登录](../reports-monitoring/concept-all-sign-ins#sign-ins-report.md)
+ [监视服务主体登录](../reports-monitoring/concept-all-sign-ins.md#sign-ins-report)
 
 **若要详细了解如何保护服务帐户，请执行以下操作：**
 
@@ -125,4 +125,4 @@ ApplicationID 表示全局应用程序，对所有租户中的所有应用程序
 
 [管理 Azure 服务帐户](service-accounts-governing-azure.md)
 
-[本地服务帐户简介](service-accounts-on-poremises.md)
+[本地服务帐户简介](service-accounts-on-premises.md)

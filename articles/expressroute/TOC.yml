@@ -136,6 +136,12 @@
           href: expressroute-howto-set-global-reach.md
         - name: Azure CLI
           href: expressroute-howto-set-global-reach-cli.md
+    - name: 添加对专用对等互连的 IPv6 支持（预览版）
+      items:
+        - name: Azure 门户
+          href: expressroute-howto-add-ipv6-portal.md
+        - name: Azure PowerShell
+          href: expressroute-howto-add-ipv6-powershell.md
     - name: 监视
       items:
         - name: ExpressRoute 监视、指标和警报
@@ -186,7 +192,7 @@
           href: expressroute-asymmetric-routing.md
         - name: 用于 ExpressRoute 的 NAT
           href: expressroute-nat.md
-    - name: 疑难解答
+    - name: 故障排除
       items:
         - name: 验证 ExpressRoute 连接
           href: expressroute-troubleshooting-expressroute-overview.md

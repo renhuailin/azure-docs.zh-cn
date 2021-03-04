@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 02/26/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: 0212ed1378dbb1d2165e9333a38fa911598c4c6d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 768d2011ae3f2826b42befa8f0d40f0e56b993fd
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101691478"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102032681"
 ---
 # <a name="hyperparameter-tuning-a-model-with-azure-machine-learning"></a>使用 Azure 机器学习对模型进行超参数优化
 
@@ -332,7 +332,7 @@ hd_config = HyperDriveConfig(run_config=script_run_config,
                              max_concurrent_runs=4)
 ```
 
-`HyperDriveConfig`设置传递到的参数 `ScriptRunConfig script_run_config` 。 `script_run_config`反过来，将参数传递给定型脚本。 上面的代码片段摘自示例笔记本 [定型、超参数调谐和 PyTorch](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/pytorch/train-hyperparameter-tune-deploy-with-pytorch)。 在此示例中， `learning_rate` `momentum` 将优化和参数。 早停止运行将由确定 `BanditPolicy` ，后者停止其主要度量值超出 (的运行， `slack_factor` 请参阅 [BanditPolicy 类引用](python/api/azureml-train-core/azureml.train.hyperdrive.banditpolicy?view=azure-ml-py)) 。 
+`HyperDriveConfig`设置传递到的参数 `ScriptRunConfig script_run_config` 。 `script_run_config`反过来，将参数传递给定型脚本。 上面的代码片段摘自示例笔记本 [定型、超参数调谐和 PyTorch](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/pytorch/train-hyperparameter-tune-deploy-with-pytorch)。 在此示例中， `learning_rate` `momentum` 将优化和参数。 早停止运行将由确定 `BanditPolicy` ，后者停止其主要度量值超出 (的运行， `slack_factor` 请参阅 [BanditPolicy 类引用](/python/api/azureml-train-core/azureml.train.hyperdrive.banditpolicy)) 。 
 
 示例中的以下代码演示如何接收、分析和传递到定型脚本的 `fine_tune_model` 函数：
 

@@ -48,7 +48,7 @@
           href: tutorial-assess-gcp.md
         - name: 评估已导入的服务器以便迁移到 Azure VM
           href: tutorial-discover-import.md
-    - name: Migrate
+    - name: 迁移
       items:
         - name: 迁移 VMware VM
           items:
@@ -68,6 +68,12 @@
           href: tutorial-migrate-aws-virtual-machines.md
         - name: 迁移 GCP 实例
           href: tutorial-migrate-gcp-virtual-machines.md
+    - name: 容器化
+      items:
+        - name: 容器化 ASP.NET 应用并迁移到 AKS
+          href: tutorial-containerize-aspnet-kubernetes.md
+        - name: 容器化 Java Web 应用并迁移到 AKS
+          href: tutorial-containerize-java-kubernetes.md
 - name: 概念
   items:
     - name: 常规
@@ -100,7 +106,7 @@
           href: concepts-azure-vmware-solution-assessment-calculation.md
         - name: 评估最佳做法
           href: best-practices-assessment.md
-    - name: Migrate
+    - name: 迁移
       items:
         - name: 构建迁移计划
           href: concepts-migration-planning.md
@@ -166,7 +172,7 @@
               href: scale-hyper-v-assessment.md
             - name: 评估大量物理服务器
               href: scale-physical-assessment.md
-    - name: Migrate
+    - name: 迁移
       items:
         - name: 添加迁移工具
           href: how-to-migrate.md
@@ -180,6 +186,8 @@
               href: how-to-migrate-vmware-vms-with-cmk-disks.md
         - name: 缩放迁移
           items:
+            - name: 如何使用无代理复制方法大规模迁移 VMware VM
+              href: how-to-scale-out-for-migration.md
             - name: 自动执行大量 VM 的迁移
               href: how-to-migrate-at-scale.md
             - name: 如何自动执行 VMware 迁移
@@ -208,7 +216,7 @@
       items:
         - name: 排查评估/依赖项可视化问题
           href: troubleshoot-assessment.md
-    - name: Migrate
+    - name: 迁移
       items:
         - name: 排查无代理 VMware 迁移中的复制问题
           href: troubleshoot-changed-block-tracking-replication.md

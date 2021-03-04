@@ -85,7 +85,7 @@
               href: create-routebased-vpn-gateway-cli.md
         - name: 验证 VPN 网关连接
           href: vpn-gateway-verify-connection-resource-manager.md
-        - name: 重置 VPN 网关
+        - name: 重置 VPN 网关或连接
           href: reset-gateway.md
         - name: 删除 VPN 网关
           items:
@@ -177,6 +177,10 @@
               href: about-vpn-profile-download.md
             - name: Intune - 部署 VPN 客户端配置文件
               href: vpn-profile-intune.md
+        - name: 多种服务验证类型
+          items:
+            - name: Azure 门户
+              href: howto-point-to-site-multi-auth.md
         - name: OpenVPN
           items:
             - name: 配置 OpenVPN 隧道类型
@@ -205,6 +209,8 @@
               href: vpn-gateway-bgp-resource-manager-ps.md
             - name: Azure CLI
               href: bgp-how-to-cli.md
+        - name: BGP 诊断
+          href: bgp-diagnostics.md
         - name: 配置强制隧道
           items:
             - name: Azure PowerShell

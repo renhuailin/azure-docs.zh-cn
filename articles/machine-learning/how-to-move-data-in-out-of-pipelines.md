@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 02/26/2021
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy20q4, devx-track-python, data4ml
-ms.openlocfilehash: 5a83211654ad1abafff59d5968c191ec1fa63616
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 3bcbe846d102b0ef821394246e10d2af4d48cacf
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101692396"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102032613"
 ---
 # <a name="moving-data-into-and-between-ml-pipeline-steps-python"></a>将数据移入 ML 管道和在 ML 管道之间移动数据的步骤 (Python)
 
@@ -245,7 +245,7 @@ step1_output_ds = step1_output_data.register_on_complete(name='processed_data',
 Azure 不会自动删除用编写的中间数据 `OutputFileDatasetConfig` 。 若要避免大量不需要的数据的存储费用，应执行以下操作之一：
 
 * 当不再需要时，在管道运行结束时以编程方式删除中间数据
-* 将 blob 存储用于中间数据的短期存储策略 (参阅 [通过自动化 Azure Blob 存储访问层优化成本](../storage/blobs/storage/blobs/storage-lifecycle-management-concepts.md))  
+* 将 blob 存储用于中间数据的短期存储策略 (参阅 [通过自动化 Azure Blob 存储访问层优化成本](../storage/blobs/storage-lifecycle-management-concepts.md))  
 * 定期检查并删除不再需要的数据
 
 有关详细信息，请参阅 [计划和管理 Azure 机器学习的成本](concept-plan-manage-cost.md)。

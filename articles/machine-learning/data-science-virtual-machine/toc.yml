@@ -6,7 +6,7 @@
   items:
     - name: Data Science Virtual Machine (DSVM) 是什么？
       href: overview.md
-    - name: Data Science Virtual Machine 包含的工具
+    - name: Data Science Virtual Machine 中的工具
       href: tools-included.md
 - name: 快速入门
   expanded: true

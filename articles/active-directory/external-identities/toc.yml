@@ -86,8 +86,10 @@
               href: add-user-without-invite.md
             - name: 使用 API 自定义邀请
               href: customize-invitation-api.md
-        - name: 与外部标识提供者联合
+        - name: 标识提供者
           items:
+            - name: Microsoft 帐户（预览版）
+              href: microsoft-account.md
             - name: Google 联合身份验证
               href: google-federation.md
             - name: Facebook 联合身份验证

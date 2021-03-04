@@ -16,12 +16,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c767d114ad6a1b5cb8b9c6bf4c0fe4f2ccd1dae6
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 2e0315eda72681f650172117038ff5ede9f602cc
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101650118"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102032426"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory 中的新增功能
 
@@ -651,7 +651,7 @@ Azure Active Directory 将在2021年3月31日前弃用以下协议：
 
 你现在可以在 Azure 门户中查看每个 Azure AD 角色的模板 ID。 在 Azure AD 中，选择所选角色的 "  **说明** "。 
 
-建议客户在其 PowerShell 脚本和代码中使用角色模板 Id，而不是显示名称。 角色模板 ID 支持用于 [directoryRoles](/graph/api/resources/directoryrole) 和 [roleDefinition](/graph/api/resources/unifiedroledefinition?view=graph-rest-beta) 对象。 有关角色模板 Id 的详细信息，请参阅 [角色模板 id](../roles/permissions-reference.md#role-template-ids)。
+建议客户在其 PowerShell 脚本和代码中使用角色模板 Id，而不是显示名称。 角色模板 ID 支持用于 [directoryRoles](/graph/api/resources/directoryrole) 和 [roleDefinition](/graph/api/resources/unifiedroledefinition?view=graph-rest-beta) 对象。 有关角色模板 Id 的详细信息，请参阅 [Azure AD 内置角色](../roles/permissions-reference.md)。
 
 ---
 

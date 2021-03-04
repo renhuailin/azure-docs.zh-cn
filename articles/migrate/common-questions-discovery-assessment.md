@@ -6,12 +6,12 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: 40afa1d743b8d074fa46dde46163f6479ebf87c2
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 6c4dfed27a105fad951ae12ca053b6d86772717a
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100589064"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102032562"
 ---
 # <a name="discovery-assessment-and-dependency-analysis---common-questions"></a>发现、评估和依赖关系分析-常见问题
 
@@ -36,12 +36,17 @@ ms.locfileid: "100589064"
 
 - 若要评估本地 [VMware vm](how-to-set-up-appliance-vmware.md)、 [hyper-v vm](how-to-set-up-appliance-hyper-v.md)和 [物理服务器](how-to-set-up-appliance-physical.md)以迁移到 AZURE vm，请使用 **Azure VM 评估**。 [了解详细信息](concepts-assessment-calculation.md)
 
+- 如果要从 VMware 环境评估本地 SQL Server 以便迁移到 Azure SQL 数据库或 Azure SQL 托管实例，请使用评估类型 " **AZURE SQL** "。 [了解详细信息](concepts-assessment-calculation.md)
+
+    > [!Note]
+    > 在 VMware 环境中运行的 SQL Server 实例和数据库的发现和评估现在为预览版。 若要试用此功能，请使用 [**此链接**](https://aka.ms/AzureMigrate/SQL) 在 **澳大利亚东部** 区域中创建一个项目。 如果你已有一个澳大利亚东部的项目，并且想要尝试此功能，请确保已在门户上完成这些 [**先决条件**](how-to-discover-sql-existing-project.md) 。
+
 - 如果要评估本地 [VMware vm](how-to-set-up-appliance-vmware.md)以便迁移到 [Azure VMWARE 解决方案 (avs)](../azure-vmware/introduction.md)使用此评估类型，请使用 **Azure VMware 解决方案 (AVS)** 评估。 [了解详细信息](concepts-azure-vmware-solution-assessment-calculation.md)
 
 - 为了同时运行这两种类型的评估，可以使用具有 VMware 计算机的公共组。 请注意，如果是首次在 Azure Migrate 中运行 AVS 评估，建议创建一组新的 VMware 计算机。
  
 
-## <a name="why-is-performance-data-missing-for-someall-vms-in-my-assessment-report"></a>为什么评估报告中的某些/所有 VM 缺少性能数据？
+## <a name="why-is-performance-data-missing-for-someall-servers-in-my-azure-vm-andor-avs-assessment-report"></a>为什么 Azure VM 和/或 AVS 评估报表中的某些/所有服务器缺少性能数据？
 
 对于“基于性能”的评估，当 Azure Migrate 设备无法收集本地 VM 的性能数据时，评估报告导出会显示“PercentageOfCoresUtilizedMissing”或“PercentageOfMemoryUtilizedMissing”。 请检查：
 
@@ -50,24 +55,111 @@ ms.locfileid: "100589064"
 
 - 如果所有性能计数器都丢失，请确保端口443上的出站连接 (允许使用 HTTPS) 。
 
-请注意，如果缺少任何性能计数器，则 Azure Migrate：服务器评估会回退到本地分配的核心/内存，并相应地建议一个 VM 大小。
+    > [!Note]
+    > 如果缺少任何性能计数器，Azure Migrate：服务器评估将回退到本地分配的内核/内存，并相应地建议 VM 大小。
+
+
+## <a name="why-is-performance-data-missing-for-someall-sql-instancesdatabases-in-my-azure-sql-assessment"></a>为什么 Azure SQL 评估中的某些/所有 SQL 实例/数据库缺少性能数据？
+
+若要确保收集性能数据，请检查：
+
+- 如果在创建评估的持续时间内启动了 SQL Server，
+- 如果 Azure Migrate 中的 SQL 代理的连接状态为 "已连接"，则检查上一检测信号 
+- 如果 "已发现的 SQL 实例" 边栏选项卡中所有 SQL 实例 Azure Migrate 连接状态均为 "已连接"
+- 如果所有性能计数器都丢失，请确保端口443上的出站连接 (允许使用 HTTPS) 
+
+如果缺少任何性能计数器，Azure SQL 评估会为该实例/数据库推荐最小的 Azure SQL 配置。
 
 ## <a name="why-is-the-confidence-rating-of-my-assessment-low"></a>为什么我的评估的置信度分级较低？
 
 根据计算评估所需的[可用数据点](./concepts-assessment-calculation.md#ratings)的百分比，为“基于性能”的评估计算置信度评级。 下面是为什么评估可能会获得较低置信度分级的原因：
 
-- 在创建评估的过程中，你没有对环境进行分析。 例如，如果创建性能持续时间设置为一周的评估，则在对所有数据点启用发现之后，需要等待至少一周才能收集。 如果无法等待这么久，请将性能持续时间缩短，并“重新计算”评估。
+- 在创建评估的过程中，你没有对环境进行分析。 例如，如果创建性能持续时间设置为一周的评估，则在对所有数据点启用发现之后，需要等待至少一周才能收集。 如果无法等待持续时间，请将性能持续时间更改为较短的时间段，并 **重新计算** 评估。
  
-- 服务器评估无法在评估期内收集部分或全部 Vm 的性能数据。 若要获得更高的置信度，请确保： 
-    - Vm 在评估期间开机
+- 评估无法在评估期内收集部分或全部服务器的性能数据。 若要获得更高的置信度，请确保： 
+    - 服务器在评估期间开机
     - 允许端口443上的出站连接
-    - 对于 Hyper-v Vm，已启用动态内存 
+    - 为 Hyper-v 服务器启用动态内存 
+    - Azure Migrate 中代理的连接状态为 "已连接"，并检查上一检测信号
+    - 对于 Azure SQL 评估，在 "发现的 SQL 实例" 边栏选项卡中，所有 SQL 实例 Azure Migrate 连接状态均为 "已连接"
 
-    请重新计算评估以反映置信度评级的最新更改。
+    请 **重新计算** 评估，以反映置信度的最新更改。
 
-- 启动服务器评估中的发现之后，基本不再创建 VM。 例如，如果要针对最后一个月的性能历史记录创建评估，但仅仅在一周前，在环境中创建了一些 VM， 在这种情况下，新 VM 的性能数据在整个过程中都不可用，并且置信度分级会较低。
+- 对于 Azure VM 和 AVS 评估，启动发现后，很少有服务器都已创建。 例如，如果你要为最后一个月的性能历史记录创建评估，但在环境中仅创建了几个服务器。 在这种情况下，新服务器的性能数据将不可用于整个持续时间，置信度级别将会降低。 [了解详细信息](./concepts-assessment-calculation.md#confidence-ratings-performance-based)
 
-[详细了解](./concepts-assessment-calculation.md#confidence-ratings-performance-based)置信度分级。
+- 对于 Azure SQL 评估，启动发现后创建了很少的 SQL 实例或数据库。 例如，如果您正在为最后一个月的性能历史记录创建评估，但在环境中只创建了一个星期的 SQL 实例或数据库。 在这种情况下，新服务器的性能数据将不可用于整个持续时间，置信度级别将会降低。 [了解详细信息](./concepts-azure-sql-assessment-calculation.md#confidence-ratings)
+
+## <a name="i-want-to-try-out-the-new-azure-sql-assessment-feature-in-azure-migrate"></a>我想在 Azure Migrate 中试用新的 Azure SQL 评估功能
+若要试用此功能，请使用 [此链接](https://go.microsoft.com/fwlink/?linkid=2155668L) 在 **澳大利亚东部** 区域中创建一个项目。
+- 若要开始，请参阅 [发现](https://docs.microsoft.com/azure/migrate/tutorial-discover-vmware) 和 [评估](https://docs.microsoft.com/azure/migrate/tutorial-assess-sql) 教程。
+- 请注意，在 VMware 环境中运行的 SQL Server 实例和数据库的发现和评估目前处于预览状态。
+
+## <a name="i-cant-see-some-servers-when-i-am-creating-an-azure-sql-assessment"></a>创建 Azure SQL 评估时，无法看到某些服务器
+
+- 只能在运行 SQL 实例的服务器上执行 Azure SQL 评估。 如果看不到想要评估的服务器和 SQL 实例，请等待一段时间让发现完成，并创建评估。 
+- 如果在创建评估时无法看到之前创建的组，请从组中删除任何非 VMware 服务器或没有 SQL 实例的任何服务器。
+- 如果是首次在 Azure Migrate 中运行 Azure SQL 评估，则建议创建一组新的服务器。
+
+## <a name="i-want-to-understand-how-was-the-readiness-for-my-instance-computed"></a>我想了解如何计算实例的就绪性？
+在针对 Azure SQL 数据库或 Azure SQL 托管实例)  (的目标 Azure SQL 部署类型执行功能兼容性检查后，已计算 SQL 实例的准备情况。 [了解详细信息](./concepts-azure-sql-assessment-calculation.md#calculate-readiness)
+
+## <a name="why-is-the-readiness-for-all-my-sql-instances-marked-as-unknown"></a>为什么所有的 SQL 实例都标记为未知？
+如果你的发现是最近启动的，并且仍在进行，则你可能会看到某些或所有 SQL 实例的就绪状态为 "未知"。 建议你等待一段时间让设备对环境进行配置，然后重新计算评估。
+SQL 发现每24小时执行一次，可能需要等待最多一天，以反映最新的配置更改。 
+
+## <a name="why-is-the-readiness-for-some-of-my-sql-instances-marked-as-unknown"></a>为什么某些 SQL 实例的就绪标记为未知？
+出现这种情况的原因可能是： 
+- 发现仍在进行中。 建议你等待一段时间让设备对环境进行配置，然后重新计算评估。
+- 你需要在 "错误和通知" 边栏选项卡中解决一些发现问题。
+
+SQL 发现每24小时执行一次，可能需要等待最多一天，以反映最新的配置更改。
+
+## <a name="my-assessment-is-in-outdated-state"></a>我的评估处于过时状态
+
+### <a name="azure-vmavs-assessment"></a>Azure VM/AVS 评估
+如果对组中已评估的 Vm 进行本地更改，则将评估标记为过时。 由于以下属性中的一个或多个更改，可将评估标记为 "过时"：
+- 处理器核心数
+- 分配的内存
+- 启动类型或固件
+- 操作系统名称、版本和体系结构
+- 磁盘数目
+- 网络适配器的数目
+- 磁盘大小更改 (GB 已分配) 
+- Nic 属性更新。 示例： Mac 地址更改、IP 地址添加等。
+
+请 **重新计算** 评估，以反映评估中的最新更改。
+
+### <a name="azure-sql-assessment"></a>Azure SQL 评估
+如果对组中已评估的本地 SQL 实例和数据库进行了更改，则评估将标记为 **过时**：
+- 已在服务器中添加或删除 SQL 实例
+- 已在 SQL 实例中添加或删除 SQL 数据库
+- SQL 实例中数据库的总大小已更改，超过20%
+- 处理器核心数和/或分配的内存的变化
+
+请 **重新计算** 评估，以反映评估中的最新更改。
+
+## <a name="why-was-i-recommended-a-particular-target-deployment-type"></a>为什么建议使用特定目标部署类型？
+Azure Migrate 推荐与 SQL 实例兼容的特定 Azure SQL 部署类型。 迁移到 Microsoft 建议目标可减少总体迁移工作。 在考虑 SQL 实例及其管理的数据库的性能特征后，建议使用此 Azure SQL 配置 (SKU) 。 如果有多个 Azure SQL 配置有资格，我们建议采用这种配置，这是最具成本效益的。 [了解详细信息](./concepts-azure-sql-assessment-calculation.md#calculate-sizing)
+
+## <a name="what-deployment-target-should-i-choose-if-my-sql-instance-is-ready-for-azure-sql-db-and-azure-sql-mi"></a>如果我的 SQL 实例已准备好进行 Azure SQL DB 和 Azure SQL MI，应选择哪个部署目标？ 
+如果你的实例可用于 Azure SQL 数据库和 Azure SQL MI，则建议 Azure SQL 配置的估计成本低于此目标部署类型。
+
+## <a name="why-is-my-instance-marked-as-potentially-ready-for-azure-vm-in-my-azure-sql-assessment"></a>为什么我的实例在 Azure SQL 评估中被标记为可能已准备好 Azure VM？
+如果 **建议** 在 "评估" 属性中选择的目标部署类型为 "Azure sql 数据库" 和 "azure sql" 托管实例的 sql 实例，则可能会发生这种情况。 建议用户在 Azure 迁移中创建评估类型为 **AZURE vm** 的评估，以确定该实例正在运行的服务器是否已准备好迁移到 Azure vm。
+建议用户在评估类型为 **AZURE vm** 的 Azure Migrate 中创建评估，以确定该实例正在运行的服务器是否已准备好迁移到 Azure VM：
+- Azure Migrate 中的 Azure VM 评估目前为直接迁移，不考虑在 Azure 虚拟机上运行 SQL 实例和数据库的特定性能指标。 
+- 当你在服务器上运行 Azure VM 评估时，建议的大小和成本估计值将适用于服务器上运行的所有实例，并可使用服务器迁移工具迁移到 Azure VM。 在迁移之前，请查看 Azure 虚拟机上的 SQL Server 的 [性能指导原则](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/performance-guidelines-best-practices) 。
+
+## <a name="i-cant-see-some-databases-in-my-assessment-even-though-the-instance-is-part-of-the-assessment"></a>即使实例是评估的一部分，也无法在 "我的评估" 中看到一些数据库
+
+Azure SQL 评估只包含处于 "联机" 状态的数据库。 如果数据库处于任何其他状态，则评估将忽略此类数据库的准备情况、大小和成本计算。 如果你希望评估此类数据库，请在一段时间内更改数据库的状态并重新计算评估。
+
+## <a name="i-want-to-compare-costs-for-running-my-sql-instances-on-azure-vm-vs-azure-sql-databaseazure-sql-managed-instance"></a>我想比较在 Azure VM 上运行 SQL 实例的成本与 Azure SQL Database/Azure SQL 托管实例
+
+可以在 **AZURE SQL** 评估中使用的同一组上创建类型为 **azure VM** 的评估。 然后，可以并排比较这两个报表。 不过，Azure Migrate 中的 Azure VM 评估目前是直接的，并且不会考虑在 Azure 虚拟机上运行 SQL 实例和数据库的特定性能指标。 当你在服务器上运行 Azure VM 评估时，建议的大小和成本估计值将适用于服务器上运行的所有实例，并可使用服务器迁移工具迁移到 Azure VM。 在迁移之前，请查看 Azure 虚拟机上的 SQL Server 的 [性能指导原则](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/performance-guidelines-best-practices) 。
+
+## <a name="the-storage-cost-in-my-azure-sql-assessment-is-zero"></a>Azure SQL 评估中的存储成本为零
+对于 Azure SQL 托管实例，不会为第一个 32 GB/实例/月存储添加存储成本，而是以32GB 为增量增加额外的存储成本。 [了解详细信息](https://azure.microsoft.com/pricing/details/azure-sql/sql-managed-instance/single/)
 
 ## <a name="i-cant-see-some-groups-when-i-am-creating-an-azure-vmware-solution-avs-assessment"></a>创建 Azure VMware 解决方案时，无法看到某些组 (AVS) 评估
 
@@ -165,7 +257,7 @@ Log Analytics | 不需要。 | Azure Migrate 在 [Azure Monitor 日志](../azure
 
 ## <a name="do-i-pay-for-dependency-visualization"></a>我是否需要为依赖关系可视化付费？
 
-不是。 了解有关 [Azure Migrate 定价](https://azure.microsoft.com/pricing/details/azure-migrate/)的详细信息。
+否。 了解有关 [Azure Migrate 定价](https://azure.microsoft.com/pricing/details/azure-migrate/)的详细信息。
 
 ## <a name="what-do-i-install-for-agent-based-dependency-visualization"></a>对于基于代理的依赖项可视化，我应该安装什么？
 

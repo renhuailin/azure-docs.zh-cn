@@ -9,13 +9,13 @@ metadata:
   ms.topic: landing-page
   author: vhorne
   ms.author: victorh
-  ms.date: 08/30/2019
-  ms.openlocfilehash: 05898a0e0cd0dc5d97edca483d89f45960c26071
-  ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+  ms.date: 02/24/2021
+  ms.openlocfilehash: dfc3513dd98a6dc1feecd1f66efe34bc61c6a5d5
+  ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 01/08/2021
-  ms.locfileid: "98046298"
+  ms.lasthandoff: 03/03/2021
+  ms.locfileid: "101741372"
 landingContent:
 - title: 了解 Azure 防火墙
   linkLists:
@@ -33,6 +33,20 @@ landingContent:
     links:
     - text: 新增功能
       url: https://azure.microsoft.com/updates/?category=networking&query=Firewall
+- title: 了解 Azure 防火墙高级预览版
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure 防火墙高级预览版功能
+      url: premium-features.md
+  - linkListType: concept
+    links:
+    - text: Azure 防火墙高级预览版证书
+      url: premium-certificates.md
+  - linkListType: how-to-guide
+    links:
+    - text: 部署和配置 Azure 防火墙高级预览版
+      url: premium-deploy.md
 - title: 部署 Azure 防火墙
   linkLists:
   - linkListType: tutorial

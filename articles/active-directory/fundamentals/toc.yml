@@ -51,6 +51,14 @@
               href: 9-secure-access-teams-sharepoint.md
         - name: 保护服务帐户
           items:
+            - name: Azure 服务帐户简介
+              href: service-accounts-introduction-azure.md
+            - name: 保护托管标识
+              href: service-accounts-managed-identities.md
+            - name: 保护服务主体
+              href: service-accounts-principal.md
+            - name: 管控 Azure 服务帐户
+              href: service-accounts-governing-azure.md
             - name: 本地服务帐户简介
               href: service-accounts-on-premises.md
             - name: 保护组 MSA

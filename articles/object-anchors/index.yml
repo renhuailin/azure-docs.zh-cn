@@ -1,0 +1,45 @@
+### YamlMime:Landing
+title: Azure Object Anchors 文档
+summary: 可以使用 Object Anchors 来检测物质世界中的对象，并根据该对象的三维模型估计其 6 DoF 姿势。
+metadata:
+  title: Azure Object Anchors 文档
+  description: 使用 Object Anchors 来检测物质世界中的对象，并根据该对象的三维模型估计其 6 DoF 姿势。
+  services: azure-object-anchors
+  ms.service: azure-object-anchors
+  ms.topic: landing-page
+  author: craigktreasure
+  ms.author: crtreasu
+  ms.date: 04/01/2020
+  ms.openlocfilehash: 84ef8d771f4471c11dd77422444a5be98d5c8212
+  ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 03/03/2021
+  ms.locfileid: "101742690"
+landingContent:
+- title: 关于 Azure Object Anchors
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 Azure Object Anchors？
+      url: overview.md
+    - text: 在 GitHub 上查看发行说明
+      url: https://github.com/Azure/azure-object-anchors/releases
+- title: 了解重要概念
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: SDK 概述
+      url: ./concepts/sdk-overview.md
+- title: 快速入门
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 模型转换
+      url: ./quickstarts/get-started-model-conversion.md
+    - text: Unity HoloLens
+      url: ./quickstarts/get-started-unity-hololens.md
+    - text: Unity HoloLens 与 MRTK
+      url: ./quickstarts/get-started-unity-hololens-mrtk.md
+    - text: HoloLens DirectX
+      url: ./quickstarts/get-started-hololens-directx.md

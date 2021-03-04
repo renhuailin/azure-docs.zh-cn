@@ -18,6 +18,9 @@
           href: get-started-cli.md
 - name: 概念
   items:
+    - name: 配置
+      href: configuration.md
+      displayName: Routing
     - name: 通过 Azure Functions 提供 API 支持
       href: apis.md
     - name: 路由
@@ -42,6 +45,8 @@
       href: application-settings.md
     - name: 配置前端框架和库
       href: front-end-frameworks.md
+    - name: 重置部署令牌
+      href: deployment-token-management.md
 - name: 教程
   items:
     - name: 从静态站点生成器发布

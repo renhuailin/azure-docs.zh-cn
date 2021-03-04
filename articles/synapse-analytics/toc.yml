@@ -259,7 +259,7 @@
           items:
             - name: 概述
               href: ./sql-data-warehouse/design-elt-data-loading.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: 最佳实践
+            - name: 最佳做法
               href: sql/data-loading-best-practices.md
             - name: 列存储压缩
               href: sql/data-load-columnstore-compression.md
@@ -419,7 +419,7 @@
           items:
             - name: 创建还原点
               href: ./backuprestore/sqlpool-create-restore-point.md
-            - name: 还原 Synapse SQL 池
+            - name: 恢复专用 SQL 池
               href: ./backuprestore/restore-sql-pool.md
         - name: 管理和监视
           items:
@@ -552,6 +552,10 @@
           href: ./spark/apache-spark-machine-learning-mllib-notebook.md
         - name: 提交 Spark 作业定义
           href: ./spark/apache-spark-job-definitions.md
+        - name: 连接和监视 Azure Synapse Spark 应用程序级指标
+          href: ./spark/connect-monitor-azure-synapse-spark-application-level-metrics.md
+        - name: 通过 Prometheus 和 Grafana 监视 Apache Spark 应用程序级指标
+          href: ./spark/use-prometheus-grafana-to-monitor-apache-spark-application-level-metrics.md
     - name: 概念
       items:
         - name: Apache Spark
@@ -566,17 +570,21 @@
           href: ./spark/apache-spark-machine-learning-concept.md
         - name: 笔记本
           href: ./spark/apache-spark-notebook-concept.md
+        - name: 包管理
+          href: ./spark/apache-spark-azure-portal-add-libraries.md
         - name: 监视工具
           href: monitoring/how-to-monitor-spark-applications.md
     - name: 操作指南
       items:
         - name: 使用 Delta Lake
           href: ./spark/apache-spark-delta-lake-overview.md
-        - name: 管理库
+        - name: 管理包
           items:
-            - name: 添加和管理库
-              href: ./spark/apache-spark-azure-portal-add-libraries.md
-            - name: 排查库安装错误
+            - name: 管理 Python 包
+              href: ./spark/apache-spark-manage-python-packages.md
+            - name: 管理 Scala 包
+              href: ./spark/apache-spark-manage-scala-packages.md
+            - name: 排查 Python 包安装错误
               href: ./spark/apache-spark-troubleshoot-library-errors.md
         - name: 使用笔记本和 IDE 工具
           items:

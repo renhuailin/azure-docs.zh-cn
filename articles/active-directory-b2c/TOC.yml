@@ -122,9 +122,13 @@
         - name: 登录策略
           href: add-sign-in-policy.md
         - name: 密码重置策略
-          href: add-password-reset-policy.md
-        - name: 密码更改策略
-          href: add-password-change-policy.md
+          items:
+            - name: 自助式密码重置
+              href: add-password-reset-policy.md
+            - name: 自助式密码更改
+              href: add-password-change-policy.md
+            - name: 强制执行密码重置
+              href: force-password-reset.md
         - name: 个人资料编辑策略
           href: add-profile-editing-policy.md
         - name: 资源所有者密码凭据策略
@@ -520,4 +524,4 @@
       href: ../active-directory/fundamentals/active-directory-troubleshooting-support-howto.md?bc=%2fazure%2factive-directory-b2c%2fbread%2ftoc.json&toc=%2fazure%2factive-directory-b2c%2fTOC.json
       displayName: technical
     - name: 视频
-      href: 'https://azure.microsoft.com/documentation/videos/index/?services=active-directory-b2c'
+      href: azure-ad-external-identities-videos.md

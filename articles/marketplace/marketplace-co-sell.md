@@ -7,12 +7,12 @@ ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
 ms.date: 2/24/2021
-ms.openlocfilehash: 5d6b05b9656879f174d92d75ca8b188f7e74e5a1
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ef90a21ab8fad0e18542c1c88ee808237ff150c5
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101721134"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102032579"
 ---
 # <a name="co-sell-with-microsoft-sales-teams-and-partners-overview"></a>与 Microsoft 销售团队和合作伙伴共同销售概述
 
@@ -70,7 +70,7 @@ Biz 应用 ISV 连接高级激励状态适用于这些产品/服务类型：
 - Dynamics 365 for Customer Engagement & PowerApps
 - 用于操作的 Dynamics 365
 
-实现 _AZURE IP 共同销售 incentivized_ 或 _Biz APPS 的产品 ISV 连接高级激励_ 状态获得以下商业市场优势：
+实现 _AZURE IP 共同销售 incentivized_ 状态的产品/服务将获得以下商业市场优势：
 
 - Marketplace 服务费用从20% 减少到10%。 此折扣适用于你的基础结构即服务 (IaaS) 解决方案或软件即服务 (SaaS) 通过商业市场销售的解决方案。 有关详细信息，请参阅 [商业市场服务费用](marketplace-commercial-transaction-capabilities-and-considerations.md#commercial-marketplace-service-fees)。
 - 云解决方案提供商 (CSP) 合作伙伴获得10% 的激励，以销售 IaaS 解决方案或 SaaS 产品/服务。 若要详细了解 CSP 计划，请参阅[云解决方案提供商计划](cloud-solution-providers.md)。

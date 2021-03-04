@@ -7,14 +7,14 @@ metadata:
   author: mgoedtel
   ms.service: azure-arc
   ms.topic: landing-page
-  ms.date: 10/07/2020
+  ms.date: 02/26/2020
   ms.author: magoedte
-  ms.openlocfilehash: 3bdb85eea2f1227a566041badf11539923e7df44
-  ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+  ms.openlocfilehash: 0d0caca2d51781d899765820d691f88b7ab6f2e9
+  ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 12/18/2020
-  ms.locfileid: "97672468"
+  ms.lasthandoff: 03/03/2021
+  ms.locfileid: "101686370"
 landingContent:
 - title: 使用已启用 Azure Arc 的服务器将计算机连接到 Azure
   linkLists:
@@ -22,6 +22,10 @@ landingContent:
     links:
     - text: 什么是已启用 Azure Arc 的服务器？
       url: overview.md
+  - linkListType: architecture
+    links:
+    - text: 规划大规模部署
+      url: plan-at-scale-deployment.md
   - linkListType: get-started
     links:
     - text: 从 Azure 门户将计算机连接到 Azure Arc

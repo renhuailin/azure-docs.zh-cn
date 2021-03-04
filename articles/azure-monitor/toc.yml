@@ -97,9 +97,9 @@
           href: logs/resource-manager-log-queries.md
         - name: 工作簿
           href: visualize/resource-manager-workbooks.md
-        - name: 用于容器的 Azure Monitor
+        - name: 容器见解
           href: containers/resource-manager-container-insights.md
-        - name: 用于 VM 的 Azure Monitor
+        - name: VM 见解
           href: vm/resource-manager-vminsights.md
     - name: Azure CLI
       href: cli-samples.md
@@ -879,8 +879,6 @@
             - name: 概述
               displayname: 'user behavior analytics, user behavior, usage, behavioral analytics'
               href: app/usage-overview.md
-            - name: 发送用户上下文
-              href: app/usage-send-user-context.md
             - name: 用户、会话、事件
               href: app/usage-segmentation.md
             - name: 漏斗图
@@ -988,7 +986,7 @@
           href: app/change-analysis-visualizations.md
         - name: 疑难解答
           href: app/change-analysis-troubleshoot.md
-    - name: 用于 VM 的 Azure Monitor
+    - name: VM 见解
       items:
         - name: 概述
           href: vm/vminsights-overview.md
@@ -1042,7 +1040,7 @@
           href: vm/vminsights-workbooks.md
         - name: 禁用监视
           href: vm/vminsights-optout.md
-    - name: 用于容器的 Azure Monitor
+    - name: 容器见解
       items:
         - name: 概述
           href: containers/container-insights-overview.md

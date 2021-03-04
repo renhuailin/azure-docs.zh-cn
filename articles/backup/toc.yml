@@ -68,6 +68,8 @@
           href: azure-file-share-support-matrix.md
         - name: Azure 磁盘备份支持矩阵
           href: disk-backup-support-matrix.md
+        - name: Azure Blob 备份支持矩阵
+          href: blob-backup-support-matrix.md
         - name: Active Directory 域控制器
           href: active-directory-backup-restore.md
         - name: Azure Policy 支持的 VM SKU
@@ -132,11 +134,13 @@
           href: backup-center-govern-environment.md
         - name: 执行操作
           href: backup-center-actions.md
+        - name: 社区资源
+          href: backup-center-community.md
     - name: Azure VM 备份
       items:
         - name: 概述
           href: backup-azure-vms-introduction.md
-        - name: Backup
+        - name: 备份
           items:
             - name: 使用 Azure 备份即时还原来备份和还原 Azure VM
               href: backup-instant-restore-capability.md
@@ -200,7 +204,7 @@
               href: install-mars-agent.md
             - name: 升级 MARS 代理
               href: upgrade-mars-agent.md
-        - name: Backup
+        - name: 备份
           items:
             - name: 备份 Windows Server 文件和文件夹
               href: backup-windows-with-mars-agent.md
@@ -220,10 +224,18 @@
       items:
         - name: 概述
           href: disk-backup-overview.md
-        - name: Backup
+        - name: 备份
           href: backup-managed-disks.md
         - name: 还原
           href: restore-managed-disks.md
+    - name: Azure Blob 备份
+      items:
+        - name: 概述
+          href: blob-backup-overview.md
+        - name: 配置和管理
+          href: blob-backup-configure-manage.md
+        - name: 还原
+          href: blob-restore.md
     - name: Azure 文件共享备份
       items:
         - name: 概述
@@ -246,7 +258,7 @@
               href: manage-afs-backup-cli.md
         - name: 使用 PowerShell
           items:
-            - name: Backup
+            - name: 备份
               href: backup-azure-afs-automation.md
             - name: 还原
               href: restore-afs-powershell.md
@@ -264,7 +276,7 @@
       items:
         - name: 概述
           href: sap-hana-db-about.md
-        - name: Backup
+        - name: 备份
           href: backup-azure-sap-hana-database.md
         - name: 还原
           href: sap-hana-db-restore.md
@@ -404,7 +416,7 @@
               href: backup-azure-arm-userestapi-restoreazurevms.md
             - name: 管理 Azure 备份作业
               href: backup-azure-arm-userestapi-managejobs.md
-        - name: Resource Manager 模板
+        - name: 资源管理器模板
           href: backup-rm-template-samples.md
     - name: 安全性
       items:
@@ -437,6 +449,10 @@
           href: ./security-controls-policy.md
         - name: 安全基线
           href: security-baseline.md
+    - name: 访问层
+      items:
+        - name: 存档层
+          href: archive-tier-support.md
     - name: 故障排除
       items:
         - name: Azure VM

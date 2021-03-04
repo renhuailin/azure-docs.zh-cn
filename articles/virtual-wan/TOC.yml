@@ -74,10 +74,14 @@
           href: azure-monitor-insights.md
     - name: 站点到站点
       items:
-        - name: 关于 IPsec 策略
+        - name: 关于 S2S IPsec 策略
           href: virtual-wan-ipsec.md
         - name: 多个 ISP 链接 - Azure 路径选择
           href: path-selection-multiple-links.md
+    - name: 点到站点
+      items:
+        - name: 关于 P2S IPsec 策略
+          href: point-to-site-ipsec.md
     - name: 安全性
       items:
         - name: 安全基线
@@ -108,6 +112,8 @@
           href: connect-virtual-network-gateway-vwan.md
         - name: 配置自定义 IPsec 策略
           href: virtual-wan-custom-ipsec-portal.md
+        - name: 配置 NAT 规则
+          href: nat-rules-vpn-gateway.md
     - name: 用户 VPN（点到站点）
       items:
         - name: 创建用户 VPN 连接

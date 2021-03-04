@@ -1,15 +1,14 @@
 ---
 title: Azure Monitor 资源日志支持的服务和类别
 description: Azure Monitor 参考：了解 Azure 资源日志支持的服务和事件架构。
-ms.subservice: logs
 ms.topic: reference
 ms.date: 01/29/2021
-ms.openlocfilehash: 39ff78cd97682096fb284e137868c246dfdd7f14
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 9a04d0f470522dd4689d604756ffd25e70c5d456
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100607840"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102033140"
 ---
 # <a name="supported-categories-for-azure-resource-logs"></a>Azure 资源日志支持的类别
 

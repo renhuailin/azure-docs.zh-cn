@@ -1,27 +1,27 @@
 ### YamlMime:Landing
-title: IoT 设备和应用程序开发文档
-summary: 查看 Azure IoT 文档，了解如何开发嵌入式设备和构建支持设备的云应用程序。
+title: IoT 设备开发文档
+summary: 浏览 Azure IoT 文档，了解如何开发与云连接的嵌入式设备和设备应用程序。
 metadata:
-  title: IoT 设备和应用程序开发
-  description: 了解如何使用 Azure IoT 来开发嵌入式设备和构建支持设备的云应用程序。
+  title: IoT 设备开发
+  description: 了解如何将 Azure IoT 用于开发与云连接的嵌入式设备和设备应用程序。
   services: iot-develop
   ms.service: iot-develop
   ms.topic: landing-page
   author: timlt
   ms.author: timlt
   ms.date: 01/11/2021
-  ms.openlocfilehash: 98d3a7f3eb51ce9c2fddfe5b3ac6730d8ef3b3eb
-  ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+  ms.openlocfilehash: bb3bd1766e20fd16fa996eb66008140009f6bd5d
+  ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 02/18/2021
-  ms.locfileid: "100656267"
+  ms.lasthandoff: 03/03/2021
+  ms.locfileid: "101721440"
 landingContent:
-- title: 关于 IoT 设备和应用程序开发
+- title: 关于 IoT 设备开发
   linkLists:
   - linkListType: overview
     links:
-    - text: Azure IoT 设备和应用程序开发指的是什么？
+    - text: 什么是 IoT 设备开发？
       url: about-iot-develop.md
     - text: 我该使用哪一个 SDK？
       url: about-iot-sdks.md

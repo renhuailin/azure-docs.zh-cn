@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 02/17/2021
-ms.openlocfilehash: bb132baf3e93242c1b228f0ac7f0cfb7f41e1164
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 6287215233ae9baa220df37c6b820c1d1bec7720
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101679178"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102032511"
 ---
 # <a name="manage-your-azure-cognitive-search-service-with-the-azure-cli"></a>通过 Azure CLI 管理 Azure 认知搜索服务
 > [!div class="op_single_selector"]
@@ -47,7 +47,7 @@ ms.locfileid: "101679178"
 
 本文中的示例是交互式，需要提升的权限。 必须安装 Azure CLI。 有关详细信息，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
-你现在可以通过 `az` Windows 命令提示符、PowerShell 或 [Azure Cloud Shell](../cloud-shell/overview)中的命令运行 Azure CLI。 PowerShell 提供了 Windows 命令提示符所不能提供的一些 Tab 键补全功能。 
+你现在可以通过 `az` Windows 命令提示符、PowerShell 或 [Azure Cloud Shell](../cloud-shell/overview.md)中的命令运行 Azure CLI。 PowerShell 提供了 Windows 命令提示符所不能提供的一些 Tab 键补全功能。 
 
 ### <a name="check-the-azure-cli-version"></a>检查 Azure CLI 版本
 
@@ -152,7 +152,7 @@ az search service show --name <service-name> --resource-group <resource-group-na
 
 ## <a name="create-or-delete-a-service"></a>创建或删除服务
 
-若要 [创建新的搜索服务](search-create-service-portal)，请使用 [**az search service create**](/cli/azure/search/service#az_search_service_show) 命令。
+若要 [创建新的搜索服务](search-create-service-portal.md)，请使用 [**az search service create**](/cli/azure/search/service#az_search_service_show) 命令。
 
 ```azurecli-interactive
 az search service create \

@@ -99,6 +99,8 @@
           href: ipv6-public-ip-address-prefix.md
         - name: 路由首选项
           href: routing-preference-overview.md
+        - name: 不按流量计费的路由首选项
+          href: routing-preference-unmetered.md
         - name: 公共 IP 安全基线
           href: public-ip-security-baseline.md
     - name: 安全性
@@ -274,6 +276,10 @@
                       href: configure-routing-preference-virtual-machine-powershell.md
                     - name: Azure CLI
                       href: configure-routing-preference-virtual-machine-cli.md
+                - name: 为 VM 配置混合路由首选项
+                  href: routing-preference-mixed-network-adapter-portal.md
+                - name: 为 AKS 群集配置路由首选项
+                  href: routing-preference-azure-kubernetes-service-cli.md
     - name: 安全性
       items:
         - name: 筛选网络流量

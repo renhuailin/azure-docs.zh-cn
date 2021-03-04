@@ -31,6 +31,8 @@
       items:
         - name: Connected Machine 代理概述
           href: agent-overview.md
+        - name: 对大规模部署进行规划
+          href: plan-at-scale-deployment.md
         - name: 从 Azure 门户将计算机连接到 Azure Arc
           href: onboard-portal.md
         - name: 使用服务主体大规模连接计算机

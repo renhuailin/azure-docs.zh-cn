@@ -47,12 +47,19 @@
       items:
         - name: 市场权益
           href: gtm-your-marketplace-benefits.md
-        - name: 联合销售合作伙伴参与
-          href: marketplace-co-sell.md
-        - name: 合作伙伴中心的联合销售选项
-          href: commercial-marketplace-co-sell.md
-        - name: 从 OCP GTM 迁移联合销售解决方案
-          href: co-sell-solution-migration.md
+          items: null
+        - name: 与 Microsoft 联合销售
+          items:
+            - name: 联合销售概述
+              href: marketplace-co-sell.md
+            - name: 联合销售要求
+              href: co-sell-requirements.md
+            - name: 配置联合销售
+              href: commercial-marketplace-co-sell.md
+            - name: 验证联合销售状态
+              href: co-sell-status.md
+            - name: 从 OCP GTM 迁移联合销售解决方案
+              href: co-sell-solution-migration.md
         - name: 通过 CSP 合作伙伴转售
           href: cloud-solution-providers.md
         - name: 连接计划加入指南
@@ -203,6 +210,8 @@
           href: partner-center-portal/azure-iot-edge-module-creation.md
         - name: 准备 IoT Edge 模块技术资产
           href: partner-center-portal/create-iot-edge-module-asset.md
+        - name: 预认证清单
+          href: iot-edge-checklist.md
     - name: 托管服务产品
       items:
         - name: 规划托管服务套餐
@@ -395,6 +404,8 @@
       href: commercial-marketplace-co-sell-countries.md
     - name: 联合销售状态代码
       href: commercial-marketplace-co-sell-states.md
+    - name: 参考体系结构示意图
+      href: reference-architecture-diagram.md
     - name: 类别和子类别
       href: categories.md
     - name: 支持的 HTML 标记

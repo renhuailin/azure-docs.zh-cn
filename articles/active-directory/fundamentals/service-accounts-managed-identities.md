@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 32ba630d5e2f8e3e581f394af2ee687a971d3a7a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 88a7600239d6e960fa2e635c9e7d9049a7c02db3
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101693016"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102032343"
 ---
 # <a name="securing-managed-identities"></a>保护托管标识
 
@@ -100,7 +100,7 @@ Azure 具有控制面和数据平面。 在控制平面中，可以创建资源�
 
 `https://graph.microsoft.com/v1.0/servicePrincipals?$filter=(servicePrincipalType eq 'ManagedIdentity') `
 
-可以筛选这些请求。 有关详细信息，请参阅 [GET servicePrincipal](https://docs.microsoft.com/graph/api/serviceprincipal-get?view=graph-rest-1.0&tabs=http)的关系图文档。
+可以筛选这些请求。 有关详细信息，请参阅 [GET servicePrincipal](/graph/api/serviceprincipal-get?view=)的关系图文档。
 
 ## <a name="assess-the-security-of-managed-identities"></a>评估托管标识的安全性 
 
@@ -140,7 +140,7 @@ Azure 具有控制面和数据平面。 在控制平面中，可以创建资源�
 
 [管理 Azure 服务帐户](service-accounts-governing-azure.md)
 
-[本地服务帐户简介](service-accounts-on-poremises.md)
+[本地服务帐户简介](service-accounts-on-premises.md)
 
  
 

@@ -3,12 +3,12 @@ title: 如何规划启用了 Azure Arc 的服务器的大规模部署
 description: 了解如何为启用了 Azure Arc 的服务器启用大量计算机，以简化 Azure 中的基本安全、管理和监视功能的配置。
 ms.date: 02/23/2021
 ms.topic: conceptual
-ms.openlocfilehash: fd02e7c0b4d65efde13fbc428a15d60adab174d4
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 0e77fc00f94f2f46c60bb2c5dcecc10a4e2e3bc5
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101692980"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102032222"
 ---
 # <a name="planing-for-an-at-scale-deployment-of-azure-arc-enabled-servers"></a>适用于支持 Azure Arc 的服务器的大规模部署的 Planing
 
@@ -71,7 +71,7 @@ IT 基础结构服务或业务应用程序的部署对于任何公司都是一�
 
 |任务 |详细信息 |持续时间 |
 |-----|-------|---------|
-| 下载预定义的安装脚本 | 查看并自定义用于已连接计算机代理的大规模部署的预定义安装脚本，以支持自动部署要求。<br><br> 大规模载入资源示例：<br><br> * [大规模基本部署脚本](servers/onboard-service-principal.md)<br><br> * [Windows Server Vm VMware vSphere 的大规模载入](https://github.com/microsoft/azure_arc/blob/master/azure_arc_servers_jumpstart/docs/vmware_scaled_powercli_win.md)<br><br> * [Linux Vm VMware vSphere 的大规模载入](https://github.com/microsoft/azure_arc/blob/master/azure_arc_servers_jumpstart/docs/vmware_scaled_powercli_linux.md)<br><br> * [使用 Ansible 的大规模载入 AWS EC2 实例](https://github.com/microsoft/azure_arc/blob/master/azure_arc_servers_jumpstart/docs/aws_scale_ansible.md)<br><br> * [使用 PowerShell 远程处理进行大规模部署](https://docs.microsoft.com/azure/azure-arc/servers/onboard-powershell) (仅限 Windows) | 一天或多天，具体取决于要求、组织过程 (例如，更改和 Release Management) 以及使用的自动化方法。 |
+| 下载预定义的安装脚本 | 查看并自定义用于已连接计算机代理的大规模部署的预定义安装脚本，以支持自动部署要求。<br><br> 大规模载入资源示例：<br><br> <ul><li> [大规模基本部署脚本](onboard-service-principal.md)</ul></li> <ul><li>[Windows Server Vm VMware vSphere 的大规模载入](https://github.com/microsoft/azure_arc/blob/master/azure_arc_servers_jumpstart/docs/vmware_scaled_powercli_win.md)</ul></li> <ul><li>[Linux Vm VMware vSphere 的大规模载入](https://github.com/microsoft/azure_arc/blob/master/azure_arc_servers_jumpstart/docs/vmware_scaled_powercli_linux.md)</ul></li> <ul><li>[使用 Ansible 的大规模载入 AWS EC2 实例](https://github.com/microsoft/azure_arc/blob/master/azure_arc_servers_jumpstart/docs/aws_scale_ansible.md)</ul></li> <ul><li>[使用 PowerShell 远程处理进行大规模部署](https://docs.microsoft.com/azure/azure-arc/servers/onboard-powershell) (仅限 Windows) </ul></li>| 一天或多天，具体取决于要求、组织过程 (例如，更改和 Release Management) 以及使用的自动化方法。 |
 | [创建服务主体](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) |创建一个服务主体，以便使用 Azure PowerShell 或从门户以非交互方式连接计算机。| 一小时 |
 | 将连接的计算机代理部署到目标服务器和计算机 |使用自动化工具将脚本部署到服务器，并将其连接到 Azure。| 一天或多天，具体取决于你的发布计划，以及在分阶段推出的情况下。 |
 
@@ -83,7 +83,7 @@ IT 基础结构服务或业务应用程序的部署对于任何公司都是一�
 |-----|-------|---------|
 |创建资源运行状况警报 |如果服务器停止向 Azure 发送检测信号的时间超过15分钟，则可能表示它处于脱机状态，网络连接已被阻止，或者代理未在运行。 制定一套计划，说明你将如何做出响应并调查这些事件，并使用 [资源运行状况警报](../..//service-health/resource-health-alert-monitor-guide.md) 在开始时获得通知。<br><br> 配置警报时指定以下内容：<br> **资源类型**  = **启用了 Azure Arc 的服务器**<br> **当前资源状态**  = **不可用**<br> **以前的资源状态**  = **可用** | 一小时 |
 |创建 Azure 顾问警报 | 为了获得最佳体验和最新的安全性和 bug 修复，建议将 Azure Arc enabled 服务器代理保持为最新。 将使用 [Azure Advisor 警报](../../advisor/advisor-alerts-portal.md)确定过期的代理。<br><br> 配置警报时指定以下内容：<br> **建议类型**  = **升级到最新版本的 Azure 连接计算机代理** | 一小时 |
-|[将 Azure 策略分配](../../governance/policy/assign-policy-portal.md) 到订阅或资源组作用域 |将 " **启用用于 VM 的 Azure Monitor** 策略" 和 "满足你的需求的其他人" 作用域分配给订阅或资源组范围，以确保自动配置所有启用了 Arc 的服务器，以便使用用于 VM 的 Azure Monitor 进行监视。| 多种多样 |
+|[将 Azure 策略分配](../../governance/policy/assign-policy-portal.md) 到订阅或资源组作用域 |将 " **启用用于 VM 的 Azure Monitor** [策略](../../azure-monitor/vm/vminsights-enable-policy.md) " (和满足你的需求的其他) 分配到订阅或资源组作用域。 Azure 策略允许分配策略定义，用于在环境中安装用于 VM 的 Azure Monitor 所需的代理。| 多种多样 |
 |[启用启用了 Arc 的服务器的更新管理](../../automation/update-management/enable-from-automation-account.md) |在 Azure 自动化中配置更新管理，以便为在启用 Arc 的服务器上注册的 Windows 和 Linux 虚拟机管理操作系统更新。 | 15 分钟 |
 
 ## <a name="next-steps"></a>后续步骤

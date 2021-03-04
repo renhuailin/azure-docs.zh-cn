@@ -1,8 +1,8 @@
-- name: IoT 设备和应用程序开发
+- name: IoT 设备开发
   href: index.yml
 - name: 概述
   items:
-    - name: IoT 设备和应用程序开发指的是什么？
+    - name: 什么是 IoT 设备开发？
       href: about-iot-develop.md
     - name: 我该使用哪一个 SDK？
       href: about-iot-sdks.md
@@ -22,7 +22,7 @@
 - name: 教程
   items:
     - name: 安全地将 IoT 设备连接到云
-      href: 'https://docs.microsoft.com/learn/paths/securely-connect-iot-devices/'
+      href: /learn/paths/securely-connect-iot-devices/
 - name: 概念
   items:
     - name: 面向设备开发人员的连接选项

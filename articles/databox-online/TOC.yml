@@ -272,6 +272,8 @@
               href: azure-stack-edge-gpu-connect-powershell-interface.md
             - name: 应用更新
               href: azure-stack-edge-gpu-install-update.md
+            - name: 重置、重新激活设备
+              href: azure-stack-edge-reset-reactivate-device.md
             - name: 退回设备
               href: azure-stack-edge-return-device.md
             - name: 更换设备

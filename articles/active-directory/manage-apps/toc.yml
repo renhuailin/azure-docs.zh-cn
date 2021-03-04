@@ -150,8 +150,10 @@
           href: disable-user-sign-in-portal.md
         - name: 配置自助服务应用分配
           href: manage-self-service-access.md
-        - name: 主领域发现
+        - name: 通过“主领域发现”策略强制自动加速
           href: configure-authentication-for-federated-users-portal.md
+        - name: 使用“主领域发现”策略禁止登录自动加速
+          href: prevent-domain-hints-with-home-realm-discovery.md
     - name: 将标识管理迁移到 Azure AD
       items:
         - name: 迁移资源

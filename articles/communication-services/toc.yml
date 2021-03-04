@@ -5,6 +5,8 @@
   items:
     - name: 什么是 Azure 通信服务？
       href: overview.md
+    - name: 支持和帮助选项
+      href: support.md
 - name: 快速入门
   expanded: true
   items:
