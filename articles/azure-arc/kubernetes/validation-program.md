@@ -2,18 +2,18 @@
 title: 启用 Azure Arc Kubernetes 验证计划
 services: azure-arc
 ms.service: azure-arc
-ms.date: 03/02/2021
+ms.date: 03/03/2021
 ms.topic: article
 author: shashankbarsin
 ms.author: shasb
 description: 描述 Kubernetes 分布的 Arc 验证计划
 keywords: Kubernetes，Arc，Azure，K8s，验证
-ms.openlocfilehash: 0d7756f407a3a176c8913d99bdb45a5026300569
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 819df906add6275997e01fab310fe8dd57a87b51
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101689209"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102121365"
 ---
 # <a name="azure-arc-validation-program"></a>Azure Arc 验证计划
 
@@ -61,6 +61,6 @@ Azure Arc 团队还在以下公有云提供商上运行了一致性测试和已�
 
 ## <a name="next-steps"></a>后续步骤
 
-* [将群集连接到 Azure Arc](./connect-cluster.md)
-* [在启用了 Arc 的 Kubernetes 群集上创建配置](./use-gitops-connected-cluster.md)
-* [使用 Azure 策略大规模应用配置](./use-azure-policy.md)
+了解如何将群集连接到 Azure Arc。
+> [!div class="nextstepaction"]
+> [将群集连接到 Azure Arc](./quickstart-connect-cluster.md)

@@ -9,12 +9,12 @@ ms.service: azure-arc
 ms.subservice: azure-arc-data
 ms.date: 03/02/2021
 ms.topic: conceptual
-ms.openlocfilehash: d4667e8fa3a5624dddc3cb0dd792fc73ea812332
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 8100d9e12f107e0c4598876c46453b46c6ee4d0e
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101693000"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102121994"
 ---
 # <a name="known-issues---azure-arc-enabled-data-services-preview"></a>已知问题-启用了 Azure Arc 的数据服务 (预览) 
 
@@ -22,10 +22,7 @@ ms.locfileid: "101693000"
 
 ## <a name="february-2021"></a>2021 年 2 月
 
-
 - 已禁用连接群集模式
-- 如果启用了 Azure Arc 的 PostgreSQL 超大规模，则当其无法还原到指示的相对时间点时，它将返回不准确的错误消息。 例如，如果你指定了还原时间比你的备份包含的时间点，则还原将失败并出现类似于以下的错误消息： `ERROR: (404). Reason: Not found. HTTP response body: {"code":404, "internalStatus":"NOT_FOUND", "reason":"Failed to restore backup for server...}` 。 发生这种情况时，请在指示时间点处于备份的日期范围内时重新启动该命令。 若要确定此范围，请列出备份，并查看其创建日期。
-- 执行完整还原时需要备份 id。 默认情况下，如果不指示备份 id，将使用最新的备份。 这在此版本中不起作用。
 
 ## <a name="introduced-prior-to-february-2021"></a>2021年2月之前引入
 

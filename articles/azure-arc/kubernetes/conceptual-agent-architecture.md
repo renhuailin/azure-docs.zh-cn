@@ -2,18 +2,18 @@
 title: 已启用 Azure Arc Kubernetes 代理体系结构
 services: azure-arc
 ms.service: azure-arc
-ms.date: 02/19/2021
+ms.date: 03/03/2021
 ms.topic: conceptual
 author: shashankbarsin
 ms.author: shasb
 description: 本文提供支持 Azure Arc 的 Kubernetes 代理的体系结构概述
 keywords: Kubernetes、Arc、Azure、容器
-ms.openlocfilehash: b4fb836cc7782f4026a28f4af0ca372c76486a31
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 5e53e99c492f08deab8dea89ec95190782661012
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101650526"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102121892"
 ---
 # <a name="azure-arc-enabled-kubernetes-agent-architecture"></a>已启用 Azure Arc Kubernetes 代理体系结构
 
@@ -93,5 +93,5 @@ ms.locfileid: "101650526"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [将群集连接到 Azure Arc](./quickstart-connect-cluster.md)
-* [配置概念概述](./conceptual-configurations.md)
+* 逐步完成将 [Kubernetes 群集连接到 Azure Arc](./connect-cluster.md)的入门教程。
+* 详细了解如何在 [Azure Arc Enabled Kubernetes](./conceptual-configurations.md)中创建群集和 Git 存储库之间的连接作为配置资源。

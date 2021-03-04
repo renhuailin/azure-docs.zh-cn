@@ -7,17 +7,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 02/23/2021
+ms.date: 03/04/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: e0516c25a69f22f5e66dd3ed083805cd4a9f1a61
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 2d64e85576b35caa2262ad1d635fc72fc7e2d2b8
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/04/2021
-ms.locfileid: "102096133"
+ms.locfileid: "102120617"
 ---
 # <a name="configure-session-behavior-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中配置会话行为
 
@@ -71,7 +71,7 @@ ms.locfileid: "102096133"
 
 你可以配置 Azure AD B2C 会话行为，包括：
 
-- **Web 应用会话生存期 (分钟)** -身份验证成功后将 Azure AD B2C 会话 cookie 存储在用户浏览器上的时间量。 可以将会话生存期设置为介于15到720分钟之间的值。
+- **Web 应用会话生存期 (分钟)** -身份验证成功后将 Azure AD B2C 会话 cookie 存储在用户浏览器上的时间量。 最多可将会话生存期设置为24小时。
 
 - **Web 应用会话超时** -通过 "会话生存期" 设置或 "使我保持登录 (KMSI) " 设置来指示会话的扩展方式。
   - **滚动** - 指示每当用户执行基于 Cookie 的身份验证时都延长会话（默认值）。

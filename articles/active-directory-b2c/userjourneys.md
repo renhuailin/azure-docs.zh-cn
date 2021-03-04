@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 12/14/2020
+ms.date: 03/04/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ce41edd2c0048a20368dd02c2dd6101248e26c14
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: aac75e7876ce59b90e27f9e87c96240755d26235
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400007"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102120736"
 ---
 # <a name="userjourneys"></a>UserJourneys
 
@@ -48,21 +48,21 @@ UserJourney 元素包含以下元素：
 
 ## <a name="authorizationtechnicalprofiles"></a>AuthorizationTechnicalProfiles
 
-假设用户已完成 UserJourney 并获取访问权限或 ID 令牌。 若要管理其他资源（如用户 [信息终结点](userinfo-endpoint.md)），必须标识该用户。 若要开始此过程，用户必须提供先前颁发的访问令牌，证明它们最初由有效的 Azure AD B2C 策略进行身份验证。 在此过程中，用户的有效令牌必须始终存在，以确保允许用户发出此请求。 身份验证技术配置文件验证传入令牌并从令牌中提取声明。
+假设用户已完成 UserJourney，并获得了访问权限或 ID 令牌。 若要管理其他资源（例如 [UserInfo 终结点](userinfo-endpoint.md)），必须标识该用户。 若要开始此过程，用户必须提供先前发布的访问令牌，以证明他们最初已通过有效的 Azure AD B2C 策略进行了身份验证。 在此过程中，用户必须始终提供有效令牌，以确保可以发出此请求。 授权技术配置文件验证传入的令牌并从令牌中提取声明。
 
-**AuthorizationTechnicalProfiles** 元素包含以下元素：
+AuthorizationTechnicalProfiles 元素包含以下元素：
 
 | 元素 | 出现次数 | 说明 |
 | ------- | ----------- | ----------- |
 | AuthorizationTechnicalProfile | 0:1 | 授权技术配置文件的列表。 | 
 
-**AuthorizationTechnicalProfile** 元素包含以下属性：
+AuthorizationTechnicalProfile 元素包含以下属性：
 
 | 属性 | 必须 | 说明 |
 | --------- | -------- | ----------- |
 | TechnicalProfileReferenceId | 是 | 要执行的技术配置文件的标识符。 |
 
-下面的示例演示具有授权技术配置文件的用户旅程元素：
+以下示例显示了具有授权技术配置文件的用户旅程元素：
 
 ```xml
 <UserJourney Id="UserInfoJourney" DefaultCpimIssuerTechnicalProfileReferenceId="UserInfoIssuer">
@@ -80,7 +80,7 @@ UserJourney 元素包含以下元素：
 
 用户旅程表示为成功事务必须遵循的业务流程序列。 如果任何步骤失败，则事务将失败。 这些业务流程步骤引用策略文件中允许的构建基块和声明提供程序。 负责显示或呈现用户体验的任何业务流程步骤也具有对相应内容定义标识符的引用。
 
-业务流程步骤可以基于业务流程步骤元素中定义的前提条件有条件地执行。 例如，仅当存在特定声明或声明等于或未达到指定值时，才能检查执行业务流程步骤。
+业务流程步骤可以基于业务流程步骤元素中定义的前提条件有条件地执行。 例如，您可以仅在特定声明存在时或声明等于或不是指定值时，才检查以执行业务流程步骤。
 
 若要指定业务流程步骤的有序列表，请将 OrchestrationSteps 元素作为策略的一部分添加。 此元素是必需的。
 
@@ -189,9 +189,12 @@ Preconditions 可以检查多个前置条件。 以下示例检查是否存在�
 </OrchestrationStep>
 ```
 
-## <a name="claimsproviderselection"></a>ClaimsProviderSelection
+## <a name="identity-provider-selection"></a>标识提供者选项
 
-类型 `ClaimsProviderSelection` 或 `CombinedSignInAndSignUp` 的业务流程步骤可能包含用户可以登录的声明提供程序列表。 `ClaimsProviderSelections` 元素内的元素顺序控制提供给用户的标识提供程序的顺序。
+标识提供者选择允许用户从选项列表中选择操作。 标识提供者选择包含两个业务流程步骤对： 
+
+1. **按钮** -从的类型开始 `ClaimsProviderSelection` ，或 `CombinedSignInAndSignUp` 包含用户可以从中选择的选项列表。 元素内选项的顺序 `ClaimsProviderSelections` 控制向用户显示的按钮的顺序。
+2. **操作** -后跟类型 `ClaimsExchange` 。 ClaimsExchange 包含操作列表。 操作是对技术配置文件的引用，如 [OAuth2](oauth2-technical-profile.md)、 [OpenID connect](openid-connect-technical-profile.md)、 [声明转换](claims-transformation-technical-profile.md)或 [自断言](self-asserted-technical-profile.md)。 当用户单击其中一个按钮时，会执行相应的操作。
 
 **ClaimsProviderSelections** 元素包含以下元素：
 
@@ -242,7 +245,7 @@ ClaimsProviderSelection 元素包含以下属性：
   <ClaimsExchanges>
     <ClaimsExchange Id="FacebookExchange" TechnicalProfileReferenceId="Facebook-OAUTH" />
     <ClaimsExchange Id="SignUpWithLogonEmailExchange" TechnicalProfileReferenceId="LocalAccountSignUpWithLogonEmail" />
-  <ClaimsExchange Id="GoogleExchange" TechnicalProfileReferenceId="Google-OAUTH" />
+    <ClaimsExchange Id="GoogleExchange" TechnicalProfileReferenceId="Google-OAUTH" />
     <ClaimsExchange Id="LinkedInExchange" TechnicalProfileReferenceId="LinkedIn-OAUTH" />
     <ClaimsExchange Id="TwitterExchange" TechnicalProfileReferenceId="Twitter-OAUTH1" />
   </ClaimsExchanges>

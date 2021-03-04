@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/12/2021
+ms.date: 03/04/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 2956f0ffb562214477249da3198ebbe42ef9bb45
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: c84966f7b4dc1740235fe6414da2ba832a1334fd
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98660363"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102119903"
 ---
 # <a name="set-up-a-sign-in-flow-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中设置登录流
 
@@ -30,13 +30,13 @@ ms.locfileid: "98660363"
 * 用户可以使用 Azure AD B2C 本地帐户登录
 * 使用社交帐户注册或登录
 * 密码重置
-* 用户无法注册 Azure AD B2C 本地帐户-若要创建帐户，管理员可以使用 [MS 图形 API](microsoft-graph-operations.md)。
+* 用户无法注册 Azure AD B2C 本地帐户。 若要创建帐户，管理员可以使用 [Azure 门户](manage-users-portal.md#create-a-consumer-user)或 [MS 图形 API](microsoft-graph-operations.md)。
 
 ![配置文件编辑流](./media/add-sign-in-policy/sign-in-user-flow.png)
 
 ## <a name="prerequisites"></a>先决条件
 
-如果尚未这样做，请 [在 Azure Active Directory B2C 中注册 web 应用程序](tutorial-register-applications.md)。
+[在 Azure Active Directory B2C 中注册 Web 应用程序](tutorial-register-applications.md)（如果尚未这样做）。
 
 ::: zone pivot="b2c-user-flow"
 
@@ -44,7 +44,7 @@ ms.locfileid: "98660363"
 
 添加登录策略：
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 在门户工具栏中选择“目录 + 订阅”图标，然后选择包含 Azure AD B2C 租户的目录。
 1. 在 Azure 门户中，搜索并选择“Azure AD B2C”。
 1. 在“策略”下，依次选择“用户流”、“新建用户流”。
@@ -75,26 +75,34 @@ ms.locfileid: "98660363"
 1. 将以下声明提供程序添加到 `ClaimsProviders` 元素：
 
     ```xml
-    <ClaimsProvider>
-      <DisplayName>Local Account</DisplayName>
-      <TechnicalProfiles>
-        <TechnicalProfile Id="SelfAsserted-LocalAccountSignin-Email">
-          <Metadata>
-            <Item Key="setting.showSignupLink">false</Item>
-          </Metadata>
-        </TechnicalProfile>
-      </TechnicalProfiles>
-    </ClaimsProvider>
+    <!--
+    <ClaimsProviders> -->
+      <ClaimsProvider>
+        <DisplayName>Local Account</DisplayName>
+        <TechnicalProfiles>
+          <TechnicalProfile Id="SelfAsserted-LocalAccountSignin-Email">
+            <Metadata>
+              <Item Key="setting.showSignupLink">false</Item>
+            </Metadata>
+          </TechnicalProfile>
+        </TechnicalProfiles>
+      </ClaimsProvider>
+    <!--
+    </ClaimsProviders> -->
     ```
 
 1. 在 `<BuildingBlocks>` 元素中，添加以下 [ContentDefinition](contentdefinitions.md) 以引用版本1.2.0 或更新的数据 URI：
 
     ```XML
-    <ContentDefinitions>
-     <ContentDefinition Id="api.localaccountsignup">
-        <DataUri>urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:1.2.0</DataUri>
-      </ContentDefinition>
-    </ContentDefinitions>
+    <!-- 
+    <BuildingBlocks> 
+      <ContentDefinitions>-->
+        <ContentDefinition Id="api.localaccountsignup">
+          <DataUri>urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:1.2.0</DataUri>
+        </ContentDefinition>
+      <!--
+      </ContentDefinitions>
+    </BuildingBlocks> -->
     ```
 
 ## <a name="update-and-test-your-policy"></a>更新和测试策略
@@ -103,7 +111,7 @@ ms.locfileid: "98660363"
 1. 请确保使用包含 Azure AD 租户的目录，方法是选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含 Azure AD 租户的目录。
 1. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“应用注册” 。
 1. 选择“标识体验框架”。
-1. 选择“上传自定义策略”，然后上传已更改的两个策略文件。
+1. 选择 " **上传自定义策略**"，然后上传所更改的策略文件， *TrustFrameworkExtensions.xml*。
 1. 选择上传的登录策略，然后单击 " **立即运行** " 按钮。
 1. 你应该能够使用在不使用注册链接的情况下使用 MS 图形 API) 创建 (帐户进行登录。
 

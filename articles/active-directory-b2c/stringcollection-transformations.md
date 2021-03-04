@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/21/2020
+ms.date: 03/04/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1ad9cc3d6d07c8d744ec667e2fffb035848121b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c9104fb4598eb62ed96d0b21734053fa118b5237
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85203242"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102120276"
 ---
 # <a name="stringcollection-claims-transformations"></a>StringCollection 声明转换
 
@@ -28,10 +28,10 @@ ms.locfileid: "85203242"
 
 将 string 声明添加到新的唯一值 stringCollection 声明。
 
-| 项目 | TransformationClaimType | 数据类型 | 注释 |
+| 项目 | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | item | string | 要添加到输出声明的 ClaimType。 |
-| InputClaim | collection | stringCollection | [可选] 如果已指定，则声明转换会复制此集合中的项，并将该项添加到输出集合声明的末尾。 |
+| InputClaim | collection | stringCollection | 要添加到输出声明中的字符串集合。 如果集合包含项，则声明转换将复制项，并将该项添加到输出集合声明的末尾。 |
 | OutputClaim | collection | stringCollection | 调用此声明转换后生成的 ClaimType，其值在输入声明中指定。 |
 
 使用此声明转换将字符串添加到新的或现有的 stringCollection。 它通常用于 AAD-UserWriteUsingAlternativeSecurityId 技术配置文件。 在创建新的社交帐户之前，CreateOtherMailsFromEmail 声明转换会读取 ClaimType，并将值添加到 otherMails ClaimType。
@@ -62,9 +62,9 @@ ms.locfileid: "85203242"
 
 将字符串参数添加到新的唯一值 stringCollection 声明。
 
-| 项目 | TransformationClaimType | 数据类型 | 注释 |
+| 项目 | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | collection | stringCollection | [可选] 如果已指定，则声明转换会复制此集合中的项，并将该项添加到输出集合声明的末尾。 |
+| InputClaim | collection | stringCollection | 要添加到输出声明中的字符串集合。 如果集合包含项，则声明转换将复制项，并将该项添加到输出集合声明的末尾。 |
 | InputParameter | item | string | 要添加到输出声明的值。 |
 | OutputClaim | collection | stringCollection | 调用此声明转换后生成的 ClaimType，其值在输入参数中指定。 |
 
@@ -97,7 +97,7 @@ ms.locfileid: "85203242"
 
 从提供的字符串集合中获取第一项。
 
-| 项目 | TransformationClaimType | 数据类型 | 注释 |
+| 项目 | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | collection | stringCollection | 由声明转换用于获取项的 ClaimTypes。 |
 | OutputClaim | extractedItem | string | 调用此 ClaimsTransformation 后生成的 ClaimType。 集合中的第一项。 |
@@ -125,9 +125,9 @@ ms.locfileid: "85203242"
 
 ## <a name="stringcollectioncontains"></a>StringCollectionContains
 
-检查 StringCollection 声明类型是否包含元素
+检查 StringCollection 声明类型是否包含元素。
 
-| 项目 | TransformationClaimType | 数据类型 | 注释 |
+| 项目 | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim | stringCollection | 要搜索的声明类型。 |
 |InputParameter|item|string|要搜索的值。|
@@ -163,7 +163,7 @@ ms.locfileid: "85203242"
 
 检查 StringCollection 声明类型是否包含声明值。
 
-| 项目 | TransformationClaimType | 数据类型 | 注释 |
+| 项目 | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | collection | stringCollection | 要搜索的声明类型。 |
 | InputClaim | item|string| 包含要搜索的值的声明类型。|

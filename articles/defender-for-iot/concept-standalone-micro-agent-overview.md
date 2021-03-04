@@ -1,5 +1,5 @@
 ---
-title: '独立微代理概述 (预览) '
+title: 独立微代理概述
 titleSuffix: Azure Defender for IoT
 description: Azure Defender for IoT 安全代理可让你直接在新的 IoT 设备和 Azure IoT 项目中构建安全性。
 author: shhazam-ms
@@ -8,14 +8,14 @@ ms.author: shhazam
 ms.date: 1/19/2021
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: 84afa4205b57481efc3ed9df805cfa7a3657a6c8
-ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
+ms.openlocfilehash: a3f71860801c7f611a10acd4ec4e8f8ed03ab20a
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99809735"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102120073"
 ---
-# <a name="standalone-micro-agent-overview-preview"></a>独立微代理概述 (预览) 
+# <a name="standalone-micro-agent-overview"></a>独立微代理概述 
 
 安全对于 IoT 实施者来说是一个近乎普遍的问题。 IoT 设备对于终结点监视、安全状态管理和威胁检测具有独特的需求–所有这些都具有高度特定的性能要求。 
 
@@ -47,4 +47,4 @@ Azure Defender for IoT 微代理易于部署，对终结点的性能影响很小
 
 ## <a name="next-steps"></a>后续步骤
 
-[ (预览) 检查微代理身份验证方法](concept-security-agent-authentication.md)。
+检查 [微代理身份验证方法 ](concept-security-agent-authentication.md)。

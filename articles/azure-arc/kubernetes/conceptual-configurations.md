@@ -8,12 +8,12 @@ author: shashankbarsin
 ms.author: shasb
 description: 本文提供了有关启用了 Azure Arc 的 Kubernetes 的 GitOps 和配置功能的概念性概述。
 keywords: Kubernetes、Arc、Azure、容器、配置、GitOps
-ms.openlocfilehash: d016e2bae9fcef21642f00cf6f25a8b595d54710
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 88a30876b25730e4cb0b4b1e19fac94b9e556adc
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101650358"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102121790"
 ---
 # <a name="configurations-and-gitops-with-azure-arc-enabled-kubernetes"></a>启用了 Azure Arc 的配置和 GitOps Kubernetes
 
@@ -50,6 +50,6 @@ ms.locfileid: "101650358"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [将群集连接到 Azure Arc](./quickstart-connect-cluster.md)
-* [在启用了 Arc 的 Kubernetes 群集上创建配置](./use-gitops-connected-cluster.md)
-* [使用 Azure 策略大规模应用配置](./use-azure-policy.md)
+* 逐步完成将 [Kubernetes 群集连接到 Azure Arc](./connect-cluster.md)的入门教程。
+* Kubernetes 群集是否已连接 Azure Arc？ [在启用了 Arc 的 Kubernetes 群集上创建配置](./use-gitops-connected-cluster.md)。
+* 了解如何 [使用 Azure 策略来大规模应用配置](./use-azure-policy.md)。

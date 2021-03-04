@@ -2,13 +2,13 @@
 title: 模板结构和语法
 description: 介绍使用声明性 JSON 语法的 Azure 资源管理器模板的结构和属性。
 ms.topic: conceptual
-ms.date: 12/17/2020
-ms.openlocfilehash: 31576c72fb845677f132fd9cd6ee776db922d436
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/03/2021
+ms.openlocfilehash: da64eb8abeaf45f58933dfbddaf954cad8e66f4a
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101722698"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102120409"
 ---
 # <a name="understand-the-structure-and-syntax-of-arm-templates"></a>了解 ARM 模板的结构和语法
 
@@ -46,63 +46,7 @@ ms.locfileid: "101722698"
 
 每个元素均有可设置的属性。 本文稍后将更详细地介绍模板的各个节。
 
-## <a name="data-types"></a>数据类型
-
-在 ARM 模板中，可以使用以下数据类型：
-
-* string
-* securestring
-* int
-* 布尔
-* object
-* secureObject
-* array
-
-以下模板显示了数据类型的格式。 每种类型都有一个格式正确的默认值。
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "stringParameter": {
-      "type": "string",
-      "defaultValue": "option 1"
-    },
-    "intParameter": {
-      "type": "int",
-      "defaultValue": 1
-    },
-    "boolParameter": {
-      "type": "bool",
-      "defaultValue": true
-    },
-    "objectParameter": {
-      "type": "object",
-      "defaultValue": {
-        "one": "a",
-        "two": "b"
-      }
-    },
-    "arrayParameter": {
-      "type": "array",
-      "defaultValue": [ 1, 2, 3 ]
-    }
-  },
-  "resources": [],
-  "outputs": {}
-}
-```
-
-安全字符串使用与字符串相同的格式，安全对象使用与对象相同的格式。 将参数设置为安全字符串或安全对象时，参数的值不会保存到部署历史记录中，也不会记入日志。 但是，如果将该安全值设置为不应为安全值的属性，则该值不会受到保护。 例如，如果将安全字符串设置为标记，则该值将以纯文本的形式存储。 使用安全字符串作为密码和机密。
-
-对于作为内联参数传递的整数，值的范围可能受限于用于部署的 SDK 或命令行工具。 例如，使用 PowerShell 部署模板时，整数类型的范围可能为 -2147483648 到 2147483647。 为了避免此限制，请在[参数文件](parameter-files.md)中指定大的整数值。 资源类型会针对整数属性应用其自己的限制。
-
-在模板中指定布尔值和整数值时，请勿对值使用引号。 字符串值以双引号 (`"string value"`) 开头和结尾。
-
-对象以左大括号 (`{`) 开头，以右大括号 (`}`) 结尾。 数组以左中括号 (`[`) 开头，以右中括号 (`]`) 结尾。
-
-## <a name="parameters"></a>参数
+## <a name="parameters"></a>parameters
 
 在模板的 `parameters` 节中，可以指定在部署资源时能够输入的值。 一个模板中最多可以有 256 个参数。 可以通过使用包含多个属性的对象来减少参数的数目。
 
@@ -128,7 +72,7 @@ ms.locfileid: "101722698"
 | 元素名称 | 必须 | 说明 |
 |:--- |:--- |:--- |
 | parameter-name |是 |参数的名称。 必须是有效的 JavaScript 标识符。 |
-| type |是 |参数值的类型。 允许的类型和值为 **string**、**securestring**、**int**、**bool**、**object**、**secureObject** 和 **array**。 请参阅[数据类型](#data-types)。 |
+| type |是 |参数值的类型。 允许的类型和值为 **string**、**securestring**、**int**、**bool**、**object**、**secureObject** 和 **array**。 请参阅 [ARM 模板中的数据类型](data-types.md)。 |
 | defaultValue |否 |参数的默认值，如果没有为参数提供任何值。 |
 | allowedValues |否 |用来确保提供正确值的参数的允许值数组。 |
 | minValue |否 |int 类型参数的最小值，此值是包容性的。 |
@@ -141,7 +85,7 @@ ms.locfileid: "101722698"
 
 ## <a name="variables"></a>变量
 
-在 `variables` 节中，可以构造能够在整个模板中使用的值。 不需要定义变量，但使用变量可以减少复杂的表达式，从而简化模板。 每个变量的格式都与其中一种[数据类型](#data-types)匹配。
+在 `variables` 节中，可以构造能够在整个模板中使用的值。 不需要定义变量，但使用变量可以减少复杂的表达式，从而简化模板。 每个变量的格式都与其中一种[数据类型](data-types.md)匹配。
 
 以下示例演示了可用于定义变量的选项：
 

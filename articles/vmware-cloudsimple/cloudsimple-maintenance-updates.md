@@ -4,17 +4,17 @@ titleSuffix: Azure VMware Solution by CloudSimple
 description: 描述计划的维护和更新的 CloudSimple 服务进程
 author: sharaths-cs
 ms.author: dikamath
-ms.date: 08/20/2019
+ms.date: 03/04/2021
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 826fae1123b355a4143118b53ba649f0939acaf7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 814a901fba065e36ea3ba9e3a6fe1175365de6c5
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77025021"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102120702"
 ---
 # <a name="cloudsimple-maintenance-and-updates"></a>CloudSimple 维护和更新
 
@@ -38,8 +38,8 @@ CloudSimple 还会持续监视以下故障：
 * 硬盘
 * 物理 NIC 端口
 * 服务器
-* 转动
-* 电源
+* 风扇
+* 强力
 * 交换机
 * 交换机端口
 
@@ -100,7 +100,7 @@ CloudSimple 负责在私有云中对 VMware software (ESXi、vCenter、PSC 和 N
 * 更新。 VMware stack 组件的次要版本更改。
 * **升级**。 VMware stack 组件的主版本更改。
 
-CloudSimple 可从 VMware 获取关键安全修补程序后立即将其测试。 按照 SLA，CloudSimple 将安全修补程序推出到一周内的私有云环境中。
+CloudSimple 可从 VMware 获取关键安全修补程序后立即将其测试。 
 
 CloudSimple 提供对 VMware 软件组件的季度维护更新。 当 VMware 软件的新主要版本可用时，CloudSimple 与客户合作，协调适合升级的维护时段。
 

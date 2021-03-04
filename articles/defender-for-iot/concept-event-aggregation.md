@@ -1,5 +1,5 @@
 ---
-title: '事件聚合 (预览) '
+title: 事件聚合
 titleSuffix: Azure Defender for IoT
 description: 用于 IoT 的 Defender 安全代理从你的本地设备收集数据和系统事件，并将数据发送到 Azure 云进行处理和分析。
 author: shhazam-ms
@@ -8,14 +8,14 @@ ms.author: shhazam
 ms.date: 1/20/2021
 ms.topic: conceptual
 ms.service: azure
-ms.openlocfilehash: 9ce24a44e48f090a0dc7d355952b3cf50dd4318c
-ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
+ms.openlocfilehash: 53811c20330d96b279eeb24e1aa90248b60fcb32
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99809742"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102120039"
 ---
-# <a name="event-aggregation-preview"></a>事件聚合 (预览) 
+# <a name="event-aggregation"></a>事件聚合 
 
 用于 IoT 的 Defender 安全代理从你的本地设备收集数据和系统事件，并将数据发送到 Azure 云进行处理和分析。 用于 IoT 微代理的 Defender 收集许多类型的设备事件，包括新进程和所有新连接事件。 新进程和新连接事件可能会在一秒钟内发生在设备上。 此功能对于全面的安全性非常重要，但安全代理发送的消息数可能会很快达到或超出 IoT 中心配额和成本限制。 不过，这些事件包含非常重要的安全信息，这对于保护你的设备至关重要。 
 

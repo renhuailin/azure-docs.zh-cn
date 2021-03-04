@@ -2,18 +2,18 @@
 title: 在启用 Arc 的 Kubernetes 群集上使用 GitOps 部署 Helm 图表
 services: azure-arc
 ms.service: azure-arc
-ms.date: 03/02/2021
+ms.date: 03/03/2021
 ms.topic: article
 author: mlearned
 ms.author: mlearned
 description: 将 GitOps 与 Helm 配合使用，以启用启用了 Azure Arc 的群集配置
 keywords: GitOps, Kubernetes, K8s, Azure, Helm, Arc, AKS, Azure Kubernetes 服务, 容器
-ms.openlocfilehash: 0176d614a6bf44e2bf20cc7935521a6387a3b574
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 75e2fcb25680817fc3e2bddabbbdd9c52b7dd059
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101687273"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102121399"
 ---
 # <a name="deploy-helm-charts-using-gitops-on-an-arc-enabled-kubernetes-cluster"></a>在启用了 Arc 的 Kubernetes 群集上使用 GitOps 部署 Helm 图表
 
@@ -136,4 +136,4 @@ kubectl port-forward -n arc-k8s-demo svc/arc-k8s-demo 8080:8080
 
 ## <a name="next-steps"></a>后续步骤
 
-- [使用 Azure Policy 控制群集配置](./use-azure-policy.md)
+使用 [Azure 策略](./use-azure-policy.md)大规模应用群集配置。

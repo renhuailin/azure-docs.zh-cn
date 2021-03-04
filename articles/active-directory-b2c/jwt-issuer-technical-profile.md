@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 10/12/2020
+ms.date: 03/04/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b3ad9c5d19d5d24154a8a63bfc412d6bbfdc1d8b
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 4faa7e68b50b83368837b75cd04be566d816f6d3
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91949218"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102119801"
 ---
 # <a name="define-a-technical-profile-for-a-jwt-token-issuer-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义 JWT 令牌颁发者的技术配置文件
 
@@ -33,7 +33,7 @@ Azure Active Directory B2C (Azure AD B2C) 在处理每个身份验证流时颁�
 ```xml
 <TechnicalProfile Id="JwtIssuer">
   <DisplayName>JWT Issuer</DisplayName>
-  <Protocol Name="None" />
+  <Protocol Name="OpenIdConnect" />
   <OutputTokenFormat>JWT</OutputTokenFormat>
   <Metadata>
     <Item Key="client_id">{service:te}</Item>
@@ -54,7 +54,7 @@ Azure Active Directory B2C (Azure AD B2C) 在处理每个身份验证流时颁�
 
 ## <a name="metadata"></a>Metadata
 
-| 属性 | 必须 | 说明 |
+| Attribute | 必须 | 说明 |
 | --------- | -------- | ----------- |
 | issuer_refresh_token_user_identity_claim_type | 是 | 应在 OAuth2 授权代码和刷新令牌中用作用户标识声明的声明。 默认情况下，除非指定了不同的 SubjectNamingInfo 声明类型，否则应将其设置为 `objectId`。 |
 | SendTokenResponseBodyWithJsonNumbers | 否 | 始终设置为 `true`。 对于以字符串而不是 JSON 数字形式指定数字值的旧格式，请将此属性设置为 `false`。 依赖于以字符串形式返回此类属性的早期实现的客户端需要此属性。 |
@@ -71,7 +71,7 @@ Azure Active Directory B2C (Azure AD B2C) 在处理每个身份验证流时颁�
 
 CryptographicKeys 元素包含以下属性：
 
-| 属性 | 必须 | 说明 |
+| Attribute | 必须 | 说明 |
 | --------- | -------- | ----------- |
 | issuer_secret | 是 | 用于对 JWT 令牌进行签名的 X509 证书（RSA 密钥集）。 这是 `B2C_1A_TokenSigningKeyContainer` 你在 [自定义策略入门](custom-policy-get-started.md)中配置的密钥。 |
 | issuer_refresh_token_key | 是 | 用于加密刷新令牌的 X509 证书（RSA 密钥集）。 在[自定义策略入门](custom-policy-get-started.md)中已配置 `B2C_1A_TokenEncryptionKeyContainer` 密钥 |

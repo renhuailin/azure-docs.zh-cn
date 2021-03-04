@@ -7,12 +7,12 @@ ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
 ms.date: 12/07/2020
-ms.openlocfilehash: 84d98eedb3ea6f3faaeaecf832811f9f4c78c7c5
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 445810d5873bb935ded180a969e4612542bde5ed
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880349"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102120175"
 ---
 # <a name="migration-of-co-sell-solutions-from-ocp-gtm-to-the-commercial-marketplace"></a>将共同销售解决方案从 OCP 转移到商业应用商店
 
@@ -80,11 +80,11 @@ Microsoft 正在移动发布体验。 通过将产品/服务的创建和管理�
     1. 选择 **"我想要合并此解决方案与商业应用商店中的类似产品/服务"** (参阅 [上面) 上](#beginmigration)的 "**所需操作**" 映像。
     1. " **操作 1** " 选项卡显示了可与你的 OCP 联系解决方案相关联的实时商业市场。 从列表中选择活动产品/服务（如果有）。 如果没有可供选择的产品/服务列表，请输入 Microsoft AppSource 或 Azure Marketplace (URL) 的面向客户的地址。
         [![合并进程的 "操作 1" 选项卡。](media/co-sell-migrate/action-1-merge.png)](media/co-sell-migrate/action-1-merge.png#lightbox)
-    1. 选择“继续”。 
+    1. 选择“继续”。
 1. 请求合并。
     1. " **操作 2** " 选项卡显示了请求将 OCP 方向解决方案合并到所识别的解决方案的说明。 若要请求合并，请选择 " **保存 & 联系支持** 人员，这将在浏览器中打开合作伙伴支持页面。
     1. 选择 "**提供问题详细信息**"，然后输入以下内容： [ ![ 合并进程的 "操作 2" 选项卡。](media/co-sell-migrate/action-2-merge.png)](media/co-sell-migrate/action-2-merge.png#lightbox)
-    1. 选择“提交”。 合作伙伴支持团队将在两个工作日内与你联系。
+    1. 选择“提交”。  合作伙伴支持团队将在两个工作日内与你联系。
     1. 合作伙伴支持人员将与你合作，以确保成功合并此产品/服务，以便将其发布为实时产品/服务。
 
 ### <a name="migrate-this-solution-from-ocp-gtm"></a>从 OCP 转移迁移此解决方案
@@ -136,7 +136,7 @@ Microsoft 正在移动发布体验。 通过将产品/服务的创建和管理�
 
     :::image type="content" source="media/co-sell-migrate/offer-setup.png" alt-text="合作伙伴中心的产品概述设置选项卡。":::
 
-3. 某些 Microsoft 面向卖方的详细信息是从 OCP 转移解决方案中复制而来的。 完成 " **与 Microsoft 共同销售** " 选项卡中所需的剩余信息，使你的产品/服务共同销售就绪。 完成后，选择 " **查看并发布**"。 有关详细信息，请参阅 [如何在合作伙伴中心提交共同销售材料](marketplace-co-sell.md#how-to-submit-co-sell-materials-in-partner-center)。
+3. 某些 Microsoft 面向卖方的详细信息是从 OCP 转移解决方案中复制而来的。 完成 " **与 Microsoft 共同销售** " 选项卡中所需的剩余信息，使你的产品/服务共同销售就绪。 完成后，选择 " **查看并发布**"。 有关详细信息，请参阅 [如何在合作伙伴中心提交共同销售材料](marketplace-co-sell.md)。
 
     :::image type="content" source="media/co-sell-migrate/co-sell-page.png" alt-text="合作伙伴中心的 &quot;产品/服务&quot; 选项卡。":::
 
@@ -154,5 +154,5 @@ Microsoft 正在移动发布体验。 通过将产品/服务的创建和管理�
 ## <a name="next-steps"></a>后续步骤
 
 - [通过 CSP 合作伙伴转售](cloud-solution-providers.md)
-- [如何在合作伙伴中心提交共同销售材料](marketplace-co-sell.md#how-to-submit-co-sell-materials-in-partner-center)
+- [如何在合作伙伴中心提交共同销售材料](marketplace-co-sell.md)
 - 查看这些 [faq](https://partner.microsoft.com/resources/detail/co-sell-requirements-publish-commercial-marketplace-faq-pdf) (PDF) 

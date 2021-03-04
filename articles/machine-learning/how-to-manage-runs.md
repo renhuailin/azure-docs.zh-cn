@@ -9,15 +9,15 @@ ms.author: roastala
 author: rastala
 manager: cgronlun
 ms.reviewer: nibaccam
-ms.date: 12/04/2020
+ms.date: 03/04/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 3eaab31d3948e41a216eaa402c2a11e470a6545d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: fb877b208e6c9599347e2b45e140545e5815e695
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101691495"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102120804"
 ---
 # <a name="start-monitor-and-cancel-training-runs-in-python"></a>在 Python 中启动、监视和取消训练运行
 
@@ -113,6 +113,10 @@ ms.locfileid: "101691495"
     
         有关详细信息，请参阅 [az ml run submit-script](/cli/azure/ext/azure-cli-ml/ml/run?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-submit-script)。
 
+    # <a name="studio"></a>[工作室](#tab/azure-studio)
+
+    有关在 Azure 机器学习设计器中训练模型的示例，请参阅 [教程：使用设计器预测汽车价格](tutorial-designer-automobile-price-train-score.md)。
+
     ---
 
 * 监视运行的状态
@@ -195,8 +199,7 @@ ms.locfileid: "101691495"
 
 导航到运行的 " **运行详细信息** " 页，然后选择 "编辑" 或 "铅笔" 图标，为运行添加、编辑或删除说明。 若要将更改保存到 "运行" 列表中，请将所做的更改保存到现有的自定义视图或新的自定义视图。 允许对图像进行嵌入和深层链接的运行说明支持 Markdown 格式，如下所示。
 
-:::image type="content" source="media/how-to-manage-runs/rundescription.gif" alt-text="屏幕截图：创建运行说明"::: 
-    
+:::image type="content" source="media/how-to-manage-runs/run-description.gif" alt-text="屏幕截图：创建运行说明"::: 
 
 ## <a name="tag-and-find-runs"></a>标记和查找运行
 

@@ -8,12 +8,12 @@ author: shashankbarsin
 ms.author: shasb
 description: 本文包含与已启用 Azure Arc 相关的常见问题的列表 Kubernetes
 keywords: Kubernetes、Arc、Azure、容器、配置、GitOps、faq
-ms.openlocfilehash: dc12294b5d53372be5f2e1dd71436973fefbb194
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: d7facb842509bdf852957d46d91dfcb3912e99ba
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101647857"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102121705"
 ---
 # <a name="frequently-asked-questions---azure-arc-enabled-kubernetes"></a>常见问题-Azure Arc 已启用 Kubernetes
 
@@ -72,6 +72,6 @@ CI/CD 管道适用于事件驱动的部署到 Kubernetes 群集 (例如，推送
 
 ## <a name="next-steps"></a>后续步骤
 
-* [将群集连接到 Azure Arc](./quickstart-connect-cluster.md)
-* [在启用了 Arc 的 Kubernetes 群集上创建配置](./use-gitops-connected-cluster.md)
-* [使用 Azure 策略大规模应用配置](./use-azure-policy.md)
+* 逐步完成将 [Kubernetes 群集连接到 Azure Arc](./connect-cluster.md)的入门教程。
+* Kubernetes 群集是否已连接 Azure Arc？ [在启用了 Arc 的 Kubernetes 群集上创建配置](./use-gitops-connected-cluster.md)。
+* 了解如何 [使用 Azure 策略来大规模应用配置](./use-azure-policy.md)。

@@ -7,14 +7,14 @@ ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
 ms.date: 2/24/2021
-ms.openlocfilehash: 5d978410cae2b2de1a2f6711de82ae71a1da168c
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 9fb86b3d4a46a70d71aa0c3fe9fd1b4a1ea6f298
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101744379"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102120124"
 ---
-# <a name="co-sell-requirements"></a>共同销售要求
+# <a name="co-sell-requirements"></a>联合销售要求
 
 本文提供了不同级别的共同销售状态的要求。 有关支持共同销售的产品/服务类型的最新列表，请参阅  [配置商业 marketplace 产品/服务的共同销售](commercial-marketplace-co-sell.md)。 有关共同销售的概述，请参阅 [与 Microsoft 销售团队和合作伙伴共同销售概述](marketplace-co-sell.md)。
 
@@ -24,7 +24,7 @@ ms.locfileid: "101744379"
 | ------------ | ------------- |
 | 不合作销售 | 尚未满足 [共同销售就绪状态](#requirements-for-co-sell-ready-status) 的最低要求。 |
 | 合作销售就绪 | 已满足 [共同销售就绪状态的所有要求](#requirements-for-co-sell-ready-status) 。 |
-| Azure IP 共同销售 incentivized | 除了 [这些附加要求](#requirements-for-IP-Co-sell-incentivized-status)外，还满足共同销售的现成需求。 |
+| Azure IP 共同销售 incentivized | 除了 [这些附加要求](#requirements-for-ip-co-sell-incentivized-status)外，还满足共同销售的现成需求。 |
 | Biz 应用 ISV 连接高级激励  | 此状态适用于 Dynamics 365 和 Power Apps 产品/服务，并指示已满足 [此状态](#requirements-for-biz-apps-isv-connect-premium-incentive-status) 的所有要求。 |
 |||
 

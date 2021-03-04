@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 10/13/2020
+ms.date: 03/04/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 20480a252d7aedfd48a59bc05166f645e02e37e9
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: c5c8e21f2ce3f6907547bf1b2fe4681eb937864b
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91998438"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102119869"
 ---
 # <a name="json-claims-transformations"></a>JSON 声明转换
 
@@ -28,7 +28,7 @@ ms.locfileid: "91998438"
 
 使用声明值或常量生成 JSON 字符串。 点表示法后面的路径字符串用于指示将数据插入 JSON 字符串的位置。 按点拆分后，任何整数都解释为 JSON 数组的索引，而非整数则解释为 JSON 对象的索引。
 
-| 项目 | TransformationClaimType | 数据类型 | 注释 |
+| 项目 | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | 点表示法后面的任何字符串 | string | JSON 的 JsonPath，声明值将插入到其中。 |
 | InputParameter | 点表示法后面的任何字符串 | string | JSON 的 JsonPath，常量字符串值将插入到其中。 |
@@ -92,7 +92,7 @@ ms.locfileid: "91998438"
 
 ### <a name="example-2"></a>示例 2
 
-下面的示例基于声明值和常量字符串生成 JSON 字符串。
+以下示例基于声明值以及常量字符串生成 JSON 字符串。
 
 ```xml
 <ClaimsTransformation Id="GenerateRequestBody" TransformationMethod="GenerateJson">
@@ -112,15 +112,15 @@ ms.locfileid: "91998438"
 </ClaimsTransformation>
 ```
 
-以下声明转换输出 JSON 字符串声明，该声明将作为发送到 REST API 的请求的正文。 JSON 对象的结构由 InputClaims 的 InputParameters 和 TransformationClaimTypes 的点表示法中的 ID 定义。 值来自 InputClaims 的值和 InputParameters 的“Value”属性。
+以下声明转换输出一个 JSON 字符串声明，该声明将作为发送到 REST API 的请求的正文。 JSON 对象的结构由 InputClaims 的 InputParameters 和 TransformationClaimTypes 的点表示法中的 ID 定义。 值来自 InputClaims 的值和 InputParameters 的“Value”属性。
 
 - 输入声明：
-  - **电子邮件**，转换声明类型  **customerEntity**： " john.s@contoso.com "
-  - **objectId**，转换声明类型为 **customerEntity. userObjectId** "01234567-89ab-cdef-0123-456789abcdef"
-  - **objectId**，转换声明类型 **customerEntity** "John"
-  - **objectId**，转换声明类型 **customerEntity** "Smith"
+  - **email**,  transformation claim type  **customerEntity.email**: "john.s@contoso.com"
+  - **objectId**, transformation claim type **customerEntity.userObjectId** "01234567-89ab-cdef-0123-456789abcdef"
+  - **givenName**，转换声明类型 **customerEntity** "John"
+  - **姓**，转换声明类型 **customerEntity** "Smith"
 - 输入参数：
-  - **customerEntity.role.name**： "Administrator"
+  - **customerEntity.role.name**:“Administrator”
   - **customerEntity.role.id** 1
 - 输出声明：
   - **requestBody**:JSON 值

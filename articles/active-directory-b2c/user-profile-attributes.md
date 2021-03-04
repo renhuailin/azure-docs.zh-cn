@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/02/2021
+ms.date: 03/04/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: dcd0ccdc42a820f1e264b739cb0063516a0cb53e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: db2715f0827203dac505fa4dc15c22bdab953010
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101688546"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102120209"
 ---
 # <a name="user-profile-attributes"></a>用户配置文件属性
 
@@ -101,9 +101,9 @@ Azure Active Directory (Azure AD) B2C 目录用户配置文件附带了一组内
 - **本地** 标识 - 将用户名和密码存储在 Azure AD B2C 目录本地。 我们通常将此类标识称为“本地帐户”。
 - **联合** 身份（也称为 *社交* 或 *企业* 帐户），用户的标识由 Facebook、Microsoft、ADFS 或 Salesforce 等联合标识提供者进行管理。
 
-具有客户帐户的用户可以使用多个标识进行登录。 例如，使用用户名、电子邮件、员工 ID、政府 ID 等。 一个帐户可以有多个密码相同的本地和社交标识。
+具有客户帐户的用户可以使用多个标识进行登录。 例如，使用用户名、电子邮件、员工 ID、政府 ID 等。 一个帐户可以有多个密码相同的本地和社交标识。 
 
-在 Microsoft Graph API 中，本地标识和联合标识都存储在 [objectIdentity][graph-objectIdentity] 类型的用户 `identities` 属性中。 `identities` 集合表示用于登录到用户帐户的一组标识。 此集合使用户能够使用其关联的任何标识登录到用户帐户。
+在 Microsoft Graph API 中，本地标识和联合标识都存储在 [objectIdentity](/graph/api/resources/objectidentity) 类型的用户 `identities` 特性中。 `identities` 集合表示用于登录到用户帐户的一组标识。 此集合使用户能够使用其关联的任何标识登录到用户帐户。 标识属性最多可以包含10个 [objectIdentity](/graph/api/resources/objectidentity) 对象。 每个对象包含以下属性：
 
 | 名称   | 类型 |说明|
 |:---------------|:--------|:----------|

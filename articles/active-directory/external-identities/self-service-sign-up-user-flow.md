@@ -11,14 +11,14 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 883e658fd3f03eb50d54e548ffac49e23b340808
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: a59e573c9b24d9a8b5577b55d143fcaca67952f0
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101688607"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102120753"
 ---
-# <a name="add-a-self-service-sign-up-user-flow-to-an-app-preview"></a>向应用添加自助注册用户流（预览）
+# <a name="add-a-self-service-sign-up-user-flow-to-an-app"></a>向应用添加自助注册用户流
 
 > [!NOTE]
 > 本文中提到的某些功能是 Azure Active Directory 的公共预览功能。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。

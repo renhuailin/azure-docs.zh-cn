@@ -2,18 +2,18 @@
 title: 升级启用了 Azure Arc 的 Kubernetes 代理
 services: azure-arc
 ms.service: azure-arc
-ms.date: 03/02/2021
+ms.date: 03/03/2021
 ms.topic: article
 author: shashankbarsin
 ms.author: shasb
 description: 已启用 Azure Arc Kubernetes 的控件代理升级
 keywords: Kubernetes，Arc，Azure，K8s，容器，代理，升级
-ms.openlocfilehash: 3a5355269db4ccfc91612f661b464556b22c1d35
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 172654f655e594c295a8807b417c32d7849bd4b1
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101661838"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102121909"
 ---
 # <a name="upgrading-azure-arc-enabled-kubernetes-agents"></a>升级启用了 Azure Arc 的 Kubernetes 代理
 
@@ -84,6 +84,6 @@ az connectedk8s upgrade -g AzureArcTest1 -n AzureArcTest --agent-version 1.0.1
 
 ## <a name="next-steps"></a>后续步骤
 
-* [将群集连接到 Azure Arc](./connect-cluster.md)
-* [在启用了 Arc 的 Kubernetes 群集上创建配置](./use-gitops-connected-cluster.md)
-* [使用 Azure 策略大规模应用配置](./use-azure-policy.md)
+* 逐步完成将 [Kubernetes 群集连接到 Azure Arc](./connect-cluster.md)的入门教程。
+* Kubernetes 群集是否已连接 Azure Arc？ [在启用了 Arc 的 Kubernetes 群集上创建配置](./use-gitops-connected-cluster.md)。
+* 了解如何 [使用 Azure 策略来大规模应用配置](./use-azure-policy.md)。

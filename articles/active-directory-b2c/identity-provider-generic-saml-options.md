@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/03/2021
+ms.date: 03/04/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 44a084266a083b2cc7c0609e4bfedb10a018585d
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 075b04414c752ce87365d03212fcdabab6eaa7dd
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/04/2021
-ms.locfileid: "102107334"
+ms.locfileid: "102119818"
 ---
 # <a name="configure-saml-identity-provider-options-with-azure-active-directory-b2c"></a>配置 SAML 标识提供程序选项与 Azure Active Directory B2C
 
@@ -43,8 +43,8 @@ Azure Active Directory B2C (Azure AD B2C) 支持与 SAML 2.0 标识提供者联�
 输出声明元素包含以下属性：
 
 - ClaimTypeReferenceId 是对声明类型的引用。 
-- PartnerClaimType 是 Azure Insights 中显示的属性的名称。 使用语法 `{property:NAME}` ，其中， `NAME` 将属性添加到事件。
-- **DefaultValue** 是要记录的预定义值，例如事件名称。 用户旅程中使用的声明，如标识提供者名称。 如果声明为空，将使用默认值。 例如， `identityProvider` 声明由联合技术配置文件（如 Facebook）设置。 如果声明为空，则表示用户使用本地帐户进行登录。 因此，默认值设置为 " *本地*"。 你还可以使用上下文值（例如应用程序 ID 或用户 IP 地址）来记录 [声明解析](claim-resolver-overview.md) 程序。
+- **PartnerClaimType** 是显示 SAML 断言的属性的名称。 
+- **DefaultValue** 是预定义的默认值。 如果声明为空，将使用默认值。 你还可以使用具有上下文值（如相关性 ID 或用户 IP 地址）的 [声明解析](claim-resolver-overview.md) 程序。
 
 ### <a name="subject-name"></a>使用者名称
 
@@ -322,7 +322,7 @@ Azure AD B2C 要求对所有传入断言进行签名。 可以通过将 **WantsS
 
 若要加密 SAML 响应断言：
 
-1. 使用唯一标识符[创建策略密钥](identity-provider-generic-saml.md#create-a-policy-key)。 例如 `B2C_1A_SAMLEncryptionCert`。
+1. 使用唯一标识符[创建策略密钥](identity-provider-generic-saml.md#create-a-policy-key)。 例如，`B2C_1A_SAMLEncryptionCert`。
 2. 在 SAML 技术配置文件 **CryptographicKeys** 集合中。 将 **StorageReferenceId** 设置为你在第一步中创建的策略密钥的名称。 `SamlAssertionDecryption`ID 指示使用加密密钥来加密和解密 SAML 响应的断言。
 
     ```xml

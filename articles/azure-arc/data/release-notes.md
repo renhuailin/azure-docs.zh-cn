@@ -9,12 +9,12 @@ ms.service: azure-arc
 ms.subservice: azure-arc-data
 ms.date: 03/02/2021
 ms.topic: conceptual
-ms.openlocfilehash: d3eb4e4b45a13872a11515dd4f53fcbbc069a954
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 6b4d5c1372a8351f1fe5a6608aff38bf232aabd8
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101686676"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102121943"
 ---
 # <a name="release-notes---azure-arc-enabled-data-services-preview"></a>发行说明-启用了 Azure Arc 的数据服务 (预览) 
 
@@ -36,7 +36,7 @@ Azure 数据 CLI (`azdata`) 版本号：20.3.1。 下载位置 [https://aka.ms/a
 - 已启用 Azure Arc PostgreSQL 超大规模 Azure Data Studio： 
    - 概述页现在显示每个节点的服务器组的状态
    - 现在可以使用新的 "属性" 页显示有关服务器组的更多详细信息。
-   - 通过 **节点参数** 配置 Postgres 引擎参数页 =
+   - 从 **节点参数** 页配置 Postgres 引擎参数
 
 有关与此版本相关的问题，请参阅 [已知问题-启用了 Azure Arc 的数据服务 (预览) ](known-issues.md)
 

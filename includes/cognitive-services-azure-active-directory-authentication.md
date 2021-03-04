@@ -4,17 +4,17 @@ ms.author: erhopf
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/11/2020
-ms.openlocfilehash: 1085daca153431a28fdcc2583d0e31308214bf91
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: fcb4113a4dab1e3de17eb022b1ad386cbc6a9583
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95555834"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102109233"
 ---
 ## <a name="authenticate-with-azure-active-directory"></a>使用 Azure Active Directory 进行身份验证
 
 > [!IMPORTANT]
-> 1. 目前， **只有** 计算机视觉 API、人脸 API、文本分析 API、沉浸式读者、窗体识别器、异常探测器和所有必应服务，必应自定义搜索使用 AZURE ACTIVE DIRECTORY (AAD) 进行身份验证除外。
+> 1. 目前， **只有** 计算机视觉 API、人脸 API、文本分析 API、沉浸式读者、窗体识别器、异常探测器、QnA Maker 和所有 Bing 服务除外，必应自定义搜索使用 AZURE ACTIVE DIRECTORY (AAD) 进行身份验证。
 > 2. AAD 身份验证必须始终与 Azure 资源的自定义子域名一起使用。 [区域终结点](../articles/cognitive-services/cognitive-services-custom-subdomains.md#is-there-a-list-of-regional-endpoints)不支持 AAD 身份验证。
 
 在前面的部分中，我们演示了如何使用单一服务或多服务订阅密钥完成 Azure 认知服务的身份验证。 虽然这些密钥提供了一个快速而简单的开始开发的途径，但它们在需要 azure RBAC)  (Azure 基于角色的访问控制的更复杂方案中会短暂。 让我们来看看使用 Azure Active Directory (AAD) 进行身份验证所需的条件。

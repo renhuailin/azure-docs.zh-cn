@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 12/14/2020
+ms.date: 03/04/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ea23be06939d58b08516a00bbe8aba97c6ccc87d
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 488065b0a1865484e96ea574b3031f2bf61869dd
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/04/2021
-ms.locfileid: "102095266"
+ms.locfileid: "102120583"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -91,7 +91,7 @@ Endpoints 元素包含以下元素：
 
 Endpoint 元素包含以下属性：
 
-| 属性 | 必选 | 说明 |
+| 属性 | 必须 | 说明 |
 | --------- | -------- | ----------- |
 | ID | 是 | 终结点的唯一标识符。|
 | UserJourneyReferenceId | 是 | 策略中用户旅程的标识符。 有关详细信息，请参阅[用户旅程](userjourneys.md)  | 
@@ -129,7 +129,7 @@ B2C_1A_TrustFrameWorkBase 或 B2C_1A_TrustFrameworkExtensionPolicy：
 
 DefaultUserJourney 元素包含以下属性：
 
-| 属性 | 必选 | 说明 |
+| 属性 | 必须 | 说明 |
 | --------- | -------- | ----------- |
 | ReferenceId | 是 | 策略中用户旅程的标识符。 有关详细信息，请参阅[用户旅程](userjourneys.md) |
 
@@ -150,10 +150,10 @@ UserJourneyBehaviors 元素包含下列元素：
 
 SingleSignOn 元素包含在以下属性中：
 
-| 属性 | 必选 | 说明 |
+| 属性 | 必须 | 说明 |
 | --------- | -------- | ----------- |
 | 作用域 | 是 | 单一登录行为的范围。 可能的值：`Suppressed`、`Tenant`、`Application` 或 `Policy`。 `Suppressed` 值指示禁止此行为，并且系统会始终提示用户选择标识提供者。  `Tenant` 值指示该行为适用于租户中的所有策略。 例如，不会提示在两个策略旅程中导航租户的用户选择标识提供者。 `Application` 值指示该行为适用于发出请求的应用程序的所有策略。 例如，不会提示在应用程序的两个策略旅程中导航的用户选择标识提供者。 `Policy` 值指示该行为仅适用于一个策略。 例如，当在策略之间切换时，会提示在两个策略旅程中导航信任框架的用户选择标识提供者。 |
-| KeepAliveInDays | 是 | 控制用户保持登录状态的时间长短。 将此值设置为 0 会关闭 KMSI 功能。 有关详细信息，请参阅[使我保持登录状态](session-behavior.md?pivots=b2c-custom-policy#enable-keep-me-signed-in-kmsi)。 |
+| KeepAliveInDays | 否 | 控制用户保持登录状态的时间长短。 将此值设置为 0 会关闭 KMSI 功能。 有关详细信息，请参阅[使我保持登录状态](session-behavior.md?pivots=b2c-custom-policy#enable-keep-me-signed-in-kmsi)。 |
 |EnforceIdTokenHintOnLogout| 否|  强制将以前颁发的 ID 令牌传递到注销终结点，作为最终用户当前与客户端进行的身份验证会话的提示。 可能的值为 `false`（默认）或 `true`。 有关详细信息，请参阅[使用 OpenID Connect 进行 Web 登录](openid-connect.md)。  |
 
 
@@ -161,7 +161,7 @@ SingleSignOn 元素包含在以下属性中：
 
 JourneyInsights 元素包含以下属性：
 
-| 属性 | 必选 | 说明 |
+| 属性 | 必须 | 说明 |
 | --------- | -------- | ----------- |
 | TelemetryEngine | 是 | 值必须是 `ApplicationInsights`。 |
 | InstrumentationKey | 是 | 一个字符串，其中包含 application insights 元素的检测密钥。 |
@@ -188,7 +188,7 @@ ContentDefinitionParameters 元素包含以下元素：
 
 ContentDefinitionParameters 元素包含以下属性：
 
-| 属性 | 必选 | 说明 |
+| 属性 | 必须 | 说明 |
 | --------- | -------- | ----------- |
 | 名称 | 是 | 键值对的名称。 |
 
@@ -198,7 +198,7 @@ ContentDefinitionParameters 元素包含以下属性：
 
 **TechnicalProfile** 元素包含以下属性：
 
-| 属性 | 必选 | 说明 |
+| Attribute | 必须 | 说明 |
 | --------- | -------- | ----------- |
 | ID | 是 | 值必须是 `PolicyProfile`。 |
 
@@ -215,7 +215,7 @@ ContentDefinitionParameters 元素包含以下属性：
 
 Protocol 元素包含以下属性：
 
-| 属性 | 必选 | 说明 |
+| 属性 | 必须 | 说明 |
 | --------- | -------- | ----------- |
 | 名称 | 是 | Azure AD B2C 支持的有效协议的名称，用作技术配置文件的一部分。 可能的值：`OpenIdConnect` 或 `SAML2`。 `OpenIdConnect` 值表示根据 OpenID 基本规范的 OpenID Connect 1.0 协议标准。 `SAML2` 表示根据 OASIS 规范的 SAML 2.0 协议标准。 |
 
@@ -229,7 +229,7 @@ OutputClaims  元素包含以下元素：
 
 OutputClaim 元素包含以下属性：
 
-| 属性 | 必选 | 说明 |
+| Attribute | 必须 | 说明 |
 | --------- | -------- | ----------- |
 | ClaimTypeReferenceId | 是 | 对在策略文件的 ClaimsSchema 部分定义的 ClaimType 的引用。 |
 | DefaultValue | 否 | 一个默认值，如果声明值为空，则可以使用该值。 |
@@ -243,7 +243,7 @@ OutputClaim 元素包含以下属性：
 
 SubjectNamingInfo 元素包含以下属性：
 
-| 属性 | 必选 | 说明 |
+| 属性 | 必须 | 说明 |
 | --------- | -------- | ----------- |
 | ClaimType | 是 | 对输出声明的 PartnerClaimType 的引用。 输出声明必须在信赖方策略 OutputClaims 集合中定义。 |
 | 格式 | 否 | 用于 SAML 依赖方，以设置 SAML 断言中返回的 NameId 格式。 |

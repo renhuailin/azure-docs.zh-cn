@@ -1,21 +1,21 @@
 ---
-title: 部署 Azure IoT Edge 工作负载（预览版）
+title: 部署 Azure IoT Edge 工作负载
 services: azure-arc
 ms.service: azure-arc
-ms.date: 02/19/2021
+ms.date: 03/03/2021
 ms.topic: article
 author: mlearned
 ms.author: mlearned
 description: 部署 Azure IoT Edge 工作负载
 keywords: Kubernetes, Arc, Azure, K8s, 容器
-ms.openlocfilehash: c352455b69360df0b26f5aac38fc40ccb30fb9de
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: e77446170e5a6adac995394d66640fd183f453b8
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101650407"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102121722"
 ---
-# <a name="deploy-azure-iot-edge-workloads-preview"></a>部署 Azure IoT Edge 工作负载（预览版）
+# <a name="deploy-azure-iot-edge-workloads"></a>部署 Azure IoT Edge 工作负载
 
 ## <a name="overview"></a>概述
 
@@ -77,4 +77,4 @@ az k8s-configuration delete -g AzureArcTest --cluster-name AzureArcIotEdge --nam
 
 ## <a name="next-steps"></a>后续步骤
 
-[使用 Azure Policy 控制群集配置](./use-azure-policy.md)
+了解如何 [使用 Azure 策略来控制群集配置](./use-azure-policy.md)。
