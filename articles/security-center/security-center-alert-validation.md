@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/17/2021
 ms.author: memildin
-ms.openlocfilehash: 3bdc0af2ea581954cb5edd2c7d00d286f814506c
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: 74323c63ab8985dee2391a546d82258dcb8d0114
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100633591"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102099516"
 ---
 # <a name="alert-validation-in-azure-security-center"></a>Azure 安全中心的警报验证
 本文档介绍如何验证系统是否已针对 Azure 安全中心警报进行了适当的配置。
@@ -97,5 +97,4 @@ ms.locfileid: "100633591"
 
 * [Validating Azure Key Vault Threat Detection in Azure Security Center](https://techcommunity.microsoft.com/t5/azure-security-center/validating-azure-key-vault-threat-detection-in-azure-security/ba-p/1220336)（在 Azure 安全中心验证 Azure Key Vault 威胁检测）
 * [管理和响应 Azure 安全中心的安全警报](security-center-managing-and-responding-alerts.md) - 了解如何管理和响应安全中心的安全事件。
-* [Azure 安全中心的安全运行状况监视](security-center-monitoring.md) - 了解如何监视 Azure 资源的运行状况。
 * [了解 Azure 安全中心的安全警报](./security-center-alerts-overview.md) - 了解各种类型的安全警报。

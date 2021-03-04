@@ -15,19 +15,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/10/2020
 ms.author: yelevin
-ms.openlocfilehash: d388478fb3bc9b4e355d8c3cd3f16c0a785b8b27
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: da7d540a4b7982c7f743a7ae968515485b45aa5a
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100578925"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102035410"
 ---
 # <a name="use-logstash-to-connect-data-sources-to-azure-sentinel"></a>使用 Logstash 将数据源连接到 Azure Sentinel
 
 > [!IMPORTANT]
 > 使用 Logstash 输出插件的数据引入当前为公共预览版。 此功能不附带服务级别协议，不建议将其用于生产工作负载。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-对 **Logstash 数据收集引擎** 使用 Azure Sentinel 的新输出插件后，现在可以通过 Logstash 将所需的任何类型的日志直接发送到 Azure Sentinel 中的 Log Analytics 工作区。 日志将发送到将使用输出插件定义的自定义表。
+对 **Logstash 数据收集引擎** 使用 Azure Sentinel 的输出插件时，可以通过 Logstash 将所需的任何类型的日志直接发送到 Azure Sentinel 中的 Log Analytics 工作区。 日志将发送到将使用输出插件定义的自定义表。
 
 若要了解有关使用 Logstash 数据收集引擎的详细信息，请参阅 [Logstash](https://www.elastic.co/guide/en/logstash/current/getting-started-with-logstash.html)入门。
 
@@ -67,17 +67,19 @@ Logstash 集合中提供了 Azure Sentinel 输出插件。
 
 | 字段名称 | 数据类型 | 说明 |
 |----------------|---------------|-----------------|
-| `workspace_id` | string | 输入你的工作区 ID GUID。 * |
-| `workspace_key` | string | 输入工作区主键 GUID。 * |
-| `custom_log_table_name` | string | 设置要将日志引入到其中的表的名称。 只能为每个输出插件配置一个表名称。 日志表将显示在 "**日志**" 下的 "日志" 下的 "**自定义日志**" 类别中的 **表** 中，带有 `_CL` 后缀。 |
-| `endpoint` | string | 可选字段。 默认情况下，这是 Log Analytics 终结点。 使用此字段可设置备用终结点。 |
-| `time_generated_field` | string | 可选字段。 此属性将覆盖 Log Analytics 中的默认 **TimeGenerated** 字段。 在数据源中输入时间戳字段的名称。 该字段中的数据必须符合 ISO 8601 格式 (`YYYY-MM-DDThh:mm:ssZ`)  |
+| `workspace_id` | 字符串 | 输入你的工作区 ID GUID。 * |
+| `workspace_key` | 字符串 | 输入工作区主键 GUID。 * |
+| `custom_log_table_name` | 字符串 | 设置要将日志引入到其中的表的名称。 只能为每个输出插件配置一个表名称。 日志表将显示在 "**日志**" 下的 "日志" 下的 "**自定义日志**" 类别中的 **表** 中，带有 `_CL` 后缀。 |
+| `endpoint` | 字符串 | 可选字段。 默认情况下，这是 Log Analytics 终结点。 使用此字段可设置备用终结点。 |
+| `time_generated_field` | 字符串 | 可选字段。 此属性将覆盖 Log Analytics 中的默认 **TimeGenerated** 字段。 在数据源中输入时间戳字段的名称。 该字段中的数据必须符合 ISO 8601 格式 (`YYYY-MM-DDThh:mm:ssZ`)  |
 | `key_names` | array | 输入 Log Analytics 输出架构字段的列表。 每个列表项都应括在单引号中，并以逗号分隔项，并将整个列表括在方括号内。 请参阅以下示例。 |
-| `plugin_flush_interval` | number | 可选字段。 设置此项可定义消息传输 Log Analytics 之间的最大时间间隔 (秒) 。 默认值为 5。 |
+| `plugin_flush_interval` | 数字 | 可选字段。 设置此项可定义消息传输 Log Analytics 之间的最大时间间隔 (秒) 。 默认值为 5。 |
     | `amount_resizing` | boolean | True 或 False。 启用或禁用自动缩放机制，这会根据收到的日志数据量调整消息缓冲区大小。 |
-| `max_items` | number | 可选字段。 仅当 `amount_resizing` 设置为 "false" 时才适用。 用于在记录)  (中设置消息缓冲区大小的上限。 默认为 2000。  |
+| `max_items` | 数字 | 可选字段。 仅当 `amount_resizing` 设置为 "false" 时才适用。 用于在记录)  (中设置消息缓冲区大小的上限。 默认为 2000。  |
+| `azure_resource_id` | 字符串 | 可选字段。 定义数据所在的 Azure 资源的 ID。 <br>如果使用 [资源上下文 RBAC](resource-context-rbac.md) 仅提供对特定数据的访问，则资源 ID 值特别有用。 |
+| | | |
 
-\* 你可以在 " **代理管理**" 下的 "工作区资源" 中找到工作区 ID 和主密钥。
+* 你可以在 " **代理管理**" 下的 "工作区资源" 中找到工作区 ID 和主密钥。
 
 #### <a name="sample-configurations"></a>示例配置
 

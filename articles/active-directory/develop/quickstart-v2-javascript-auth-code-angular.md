@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 01/14/2021
 ms.author: jamesmantu
 ms.custom: aaddev, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: 27064ecfce0114f7d80e464e2a51928a24919856
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 2f43d2979ad9770c63504d46666dffd78f761a73
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101653399"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102097102"
 ---
 # <a name="quickstart-sign-in-and-get-an-access-token-in-an-angular-spa-using-the-auth-code-flow"></a>快速入门：使用授权代码流在 Angular SPA 中登陆并获取访问令牌
 
@@ -26,6 +26,8 @@ ms.locfileid: "101653399"
 有关说明，请参阅[示例工作原理](#how-the-sample-works)。
 
 本快速入门将 MSAL Angular v2 与授权代码流配合使用。 若要查看将 MSAL Angular 1.x 与隐式流结合使用的类似快速入门，请参阅[快速入门：在 JavaScript 单页应用中登录用户](./quickstart-v2-angular.md)。
+
+此功能 [!INCLUDE [active-directory-develop-preview](../../../includes/active-directory-develop-preview.md)]
 
 ## <a name="prerequisites"></a>先决条件
 

@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 02/16/2021
 ms.author: memildin
-ms.openlocfilehash: f024457ed9f20e6bab0852a53ab6a60ac85ed25a
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: 6d0e660ecce1d45dab4d6003cdba391ba2eb4ee9
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100546255"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102095589"
 ---
 # <a name="protect-your-kubernetes-workloads"></a>保护 Kubernetes 工作负载
 
@@ -21,7 +21,7 @@ ms.locfileid: "100546255"
 
 在工作负荷保护中了解有关这些功能的详细信息 [使用 Kubernetes 许可控制的最佳做法](container-security.md#workload-protection-best-practices-using-kubernetes-admission-control)
 
-如果启用 Azure Defender，安全中心会提供更多的容器安全功能。 具体来说：
+如果启用 Azure Defender，安全中心会提供更多的容器安全功能。 尤其是在下列情况下：
 
 - 针对[容器注册表的 Azure Defender](defender-for-container-registries-introduction.md) ，扫描容器注册表中的漏洞
 - 获取 K8s 群集的实时威胁检测警报 [Azure Defender For Kubernetes](defender-for-kubernetes-introduction.md)
@@ -51,7 +51,7 @@ Azure 安全中心包含一系列建议，这些建议可在安装 **适用于 K
 
 若要配置建议，请安装  **适用于 Kubernetes 的 Azure 策略外接程序**。 
 
-- 你可以自动部署此加载项，如 [启用自动预配扩展](security-center-enable-data-collection.md#enable-auto-provisioning-of-extensions)中所述。 将加载项的自动预配设置为“启用”时，默认情况下会在所有现有和未来的群集（满足加载项安装要求）中启用该扩展。
+- 你可以自动部署此加载项，如 [启用自动预配 Log Analytics 代理和扩展](security-center-enable-data-collection.md#auto-provision-mma)中所述。 将加载项的自动预配设置为“启用”时，默认情况下会在所有现有和未来的群集（满足加载项安装要求）中启用该扩展。
 
     :::image type="content" source="media/defender-for-kubernetes-usage/policy-add-on-auto-provision.png" alt-text="使用安全中心的自动预配工具为 Kubernetes 安装策略外接程序":::
 

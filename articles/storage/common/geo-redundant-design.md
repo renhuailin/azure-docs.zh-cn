@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 05/05/2020
+ms.date: 02/18/2021
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c16f8233a2800025a8c6f601e236b86d2fd044fd
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 1a07acedadfaf3d5158ba8e494d4527301655425
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92480677"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102035095"
 ---
 # <a name="use-geo-redundancy-to-design-highly-available-applications"></a>使用异地冗余设计高度可用的应用程序
 
@@ -24,7 +24,7 @@ ms.locfileid: "92480677"
 
 Azure 存储为异地冗余复制提供两个选项。 这两个选项之间的唯一差别在于如何在主要区域中复制数据：
 
-* 区域[冗余存储 (GZRS) ](storage-redundancy.md)：使用*区域冗余存储 (ZRS) *以同步方式跨主要区域的三个 Azure 可用性区域复制数据，并将其异步复制到次要区域。 若要对次要区域进行读取访问，可启用读取访问异地区域冗余存储 (RA-GZRS)。
+* 区域 [冗余存储 (GZRS)](storage-redundancy.md)：使用 *区域冗余存储 (ZRS)* 以同步方式跨主要区域的三个 Azure 可用性区域复制数据，并将其异步复制到次要区域。 若要对次要区域进行读取访问，可启用读取访问异地区域冗余存储 (RA-GZRS)。
 
     对于需要最大可用性和持久性的方案，Microsoft 建议使用 GZRS/RA-GZRS。
 
@@ -146,7 +146,13 @@ Azure 存储客户端库可帮助你确定可重试的错误。 例如，不会�
 
 可使用三个主要选项监视主要区域中的重试频率，以便确定何时切换到次要区域并将应用程序更改为在只读模式下运行。
 
-* 为传递到存储请求的 [**OperationContext**](/java/api/com.microsoft.applicationinsights.extensibility.context.operationcontext) 对象上的[**重试**](/dotnet/api/microsoft.azure.cosmos.table.operationcontext.retrying)事件添加处理程序 - 这是本文演示的方法，且在随附的示例中使用了该方法。 每当客户端重试请求时都会触发这些事件，以便跟踪客户端在主终结点上遇到可重试错误的频率。
+* 为传递到存储请求的 [**OperationContext**](/java/api/com.microsoft.applicationinsights.extensibility.context.operationcontext) 对象上的 [**重试**](/dotnet/api/microsoft.azure.cosmos.table.operationcontext.retrying)事件添加处理程序 - 这是本文演示的方法，且在随附的示例中使用了该方法。 每当客户端重试请求时都会触发这些事件，以便跟踪客户端在主终结点上遇到可重试错误的频率。
+
+    # <a name="net-v12"></a>[.NET v12](#tab/current)
+
+    我们当前正在创建的代码段反映了 Azure 存储客户端库的版本2.x。 有关详细信息，请参阅 [宣布 Azure 存储 V12 客户端库](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)。
+
+    # <a name="net-v11"></a>[.NET v11](#tab/legacy)
 
     ```csharp
     operationContext.Retrying += (sender, arguments) =>
@@ -156,8 +162,15 @@ Azure 存储客户端库可帮助你确定可重试的错误。 例如，不会�
             ...
     };
     ```
+    ---
 
 * 在自定义重试策略的 [**Evaluate**](/dotnet/api/microsoft.azure.cosmos.table.iextendedretrypolicy.evaluate) 方法中，每次重试时均可运行自定义代码。 除了在重试时进行记录外，还可利用此操作修改重试行为。
+
+    # <a name="net-v12"></a>[.NET v12](#tab/current)
+
+    我们当前正在创建的代码段反映了 Azure 存储客户端库的版本2.x。 有关详细信息，请参阅 [宣布 Azure 存储 V12 客户端库](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)。
+
+    # <a name="net-v11"></a>[.NET v11](#tab/legacy)
 
     ```csharp
     public RetryInfo Evaluate(RetryContext retryContext,
@@ -184,6 +197,7 @@ Azure 存储客户端库可帮助你确定可重试的错误。 例如，不会�
         return info;
     }
     ```
+    ---
 
 * 第三种方法是在应用程序中实现自定义监视组件，应用程序对具有虚拟读取请求（如读取小型 blob）的主存储终结点持续执行 ping 操作，以确定其运行状况。 这会占用一些资源，但占用量不大。 发现达到阈值的问题时，则切换到 **SecondaryOnly** 和只读模式。
 
@@ -195,7 +209,7 @@ Azure 存储客户端库可帮助你确定可重试的错误。 例如，不会�
 
 异地冗余存储的工作方式是将事务从主要区域复制到次要区域。 此复制过程可确保次要区域中的数据是 *最终一致的*。 这意味着，主要区域中的所有事务最终将都出现在次要区域中，但可能出现延迟，并且无法确保事物按主要区域中的相同原始顺序到达次要区域。 如果事务未按顺序到达次要区域，则在服务生效前， *可以* 认为次要区域中的数据处于不一致状态。
 
-下表显示了更新员工详细信息以使其成为“管理员”角色的成员时可能发生的情况的示例。 此示例要求更新**员工**条目实体和**管理员角色**实体的管理员总数。 请注意更新如何以无序方式在次要区域中应用。
+下表显示了更新员工详细信息以使其成为“管理员”角色的成员时可能发生的情况的示例。 此示例要求更新 **员工** 条目实体和 **管理员角色** 实体的管理员总数。 请注意更新如何以无序方式在次要区域中应用。
 
 | **时间** | **事务**                                            | **复制**                       | **上次同步时间** | **结果** |
 |----------|------------------------------------------------------------|---------------------------------------|--------------------|------------| 
@@ -207,9 +221,9 @@ Azure 存储客户端库可帮助你确定可重试的错误。 例如，不会�
 | *T5*     | 从次要区域 <br>读取实体                           |                                  | T1                 | 得到员工实体的过时值， <br> 因为事务 B <br> 尚未复制。 得到管理员角色实体<br> 的新值，因为 C<br> 已复制。 上次同步时间仍未更新，<br> 因为事务 B<br> 尚未复制。 可以判断出<br>管理员角色实体不一致， <br>因为实体日期/时间晚于 <br>上次同步时间。 |
 | *T6*     |                                                      | 事务 B<br> 已复制到<br> 次要区域。 | T6                 | *T6* - 通过 C 的所有事务都已 <br>复制，上次同步时间<br> 已更新。 |
 
-在此示例中，假设客户端切换为在 T5 从次要区域读取。 它此时能够成功读取**管理员角色**实体，但该实体包含的管理员数量值与次要区域中此时标记的**员工**数量不一致。 客户端只需显示此值，并且具有信息不一致的风险。 或者，客户端可能会尝试确定 **管理员角色** 可能是不一致的状态，因为更新是无序进行的，并随后告知用户这一事实。
+在此示例中，假设客户端切换为在 T5 从次要区域读取。 它此时能够成功读取 **管理员角色** 实体，但该实体包含的管理员数量值与次要区域中此时标记的 **员工** 数量不一致。 客户端只需显示此值，并且具有信息不一致的风险。 或者，客户端可能会尝试确定 **管理员角色** 可能是不一致的状态，因为更新是无序进行的，并随后告知用户这一事实。
 
-要识别它可能具有不一致的数据，客户端可以使用通过随时查询存储服务获取的 *上次同步时间* 的值。 借此可了解次要区域中的数据上一次一致的时间，以及服务在该时间点前应用所有事务的时间。 在上述示例中，服务在次要区域中插入**员工**实体后，上次同步时间设置为 *T1*。 在服务更新次要区域中的**员工**实体前，它仍然保持为 *T1*，之后则设置为 *T6*。 如果客户端在其读取 *T5*处的实体时检索上次同步时间，它会将其与实体上的时间戳进行对比。 如果实体上的时间戳晚于上次同步时间，则实体可能处于不一致状态，可对应用程序采取任何适当操作。 使用此字段要求了解到主要区域上次更新的时间。
+要识别它可能具有不一致的数据，客户端可以使用通过随时查询存储服务获取的 *上次同步时间* 的值。 借此可了解次要区域中的数据上一次一致的时间，以及服务在该时间点前应用所有事务的时间。 在上述示例中，服务在次要区域中插入 **员工** 实体后，上次同步时间设置为 *T1*。 在服务更新次要区域中的 **员工** 实体前，它仍然保持为 *T1*，之后则设置为 *T6*。 如果客户端在其读取 *T5* 处的实体时检索上次同步时间，它会将其与实体上的时间戳进行对比。 如果实体上的时间戳晚于上次同步时间，则实体可能处于不一致状态，可对应用程序采取任何适当操作。 使用此字段要求了解到主要区域上次更新的时间。
 
 若要了解如何检查上次同步时间，请参阅[检查存储帐户的“上次同步时间”属性](last-sync-time-get.md)。
 
@@ -218,6 +232,13 @@ Azure 存储客户端库可帮助你确定可重试的错误。 例如，不会�
 当应用程序遇到可重试错误时，请务必测试应用程序的行为是否与预期一致。 例如，需要测试应用程序在检测到问题时会切换到辅助数据库和只读模式，并在主要区域可用时再次切换回去。 若要执行此操作，需以某种方式模拟可重试错误并控制其出现的频率。
 
 可以使用 [Fiddler](https://www.telerik.com/fiddler) 在脚本中截获和修改 HTTP 响应。 此脚本可以标识来自主终结点的响应，并将 HTTP 状态代码更改为存储客户端库识别为可重试错误的代码。 此代码片段显示 Fiddler 脚本的简单示例，此脚本截获响应以读取对 **employeedata** 表的读取请求，并返回 502 状态：
+
+
+# <a name="java-v12"></a>[Java v12](#tab/current)
+
+我们当前正在创建的代码段反映了 Azure 存储客户端库的版本2.x。 有关详细信息，请参阅 [宣布 Azure 存储 V12 客户端库](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)。
+
+# <a name="java-v11"></a>[Java v11](#tab/legacy)
 
 ```java
 static function OnBeforeResponse(oSession: Session) {

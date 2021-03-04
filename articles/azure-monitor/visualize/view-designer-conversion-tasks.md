@@ -3,15 +3,14 @@ title: Azure Monitor 视图设计器到工作簿转换常见任务
 description: 从视图转换到 Azure Monitor 中的工作簿时的常见任务。
 author: austonli
 ms.author: aul
-ms.subservice: ''
 ms.topic: conceptual
 ms.date: 02/07/2020
-ms.openlocfilehash: 4e9d9e65dedae083138f3b29a2a609e124ce0fc8
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: d479e64620519491ba4847349ea33820747fcea7
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100608533"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102043467"
 ---
 # <a name="view-designer-to-workbooks-conversion-common-tasks"></a>视图设计器到工作簿转换常见任务
 [视图设计器](view-designer.md)是 Azure Monitor 的一项功能，它让你能够创建自定义视图，帮助你通过图表、列表和时间线将 Log Analytics 工作区中的数据可视化。 这些元素已逐步淘汰，取而代之的是除这些功能外还可提供其他功能的工作簿。 本文详细介绍将视图转换为工作簿时的常见任务。

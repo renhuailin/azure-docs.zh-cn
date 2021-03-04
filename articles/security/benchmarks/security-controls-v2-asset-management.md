@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 02/22/2021
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 32b0a7e31fc0d595eacc2bf5257f41e4ce35566b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: fbeb88b6aa542666481458fde97d7c63f467fa30
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101735805"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102051525"
 ---
 # <a name="security-control-v2-asset-management"></a>安全控制 V2：资产管理
 
 资产管理涵盖了各种控制，用于确保安全团队可以了解 Azure 资源的安全性以及对这些资源进行治理。 其中包括以下几方面的建议：安全人员的权限、对资产清单的安全访问，以及管理对服务和资源的审批（盘点、跟踪和更正）。
 
-若要查看适用的内置 Azure 策略，请参阅 [Azure 安全基准管理法规符合性内置计划的详细信息：网络安全](../../governance/policy/samples/azure-security-benchmark#asset-management)
+若要查看适用的内置 Azure 策略，请参阅 [Azure 安全基准管理法规符合性内置计划的详细信息：网络安全](../../governance/policy/samples/azure-security-benchmark.md#asset-management)
 
 ## <a name="am-1-ensure-security-team-has-visibility-into-risks-for-assets"></a>AM-1：确保安全团队可以了解与资产相关的风险
 
@@ -154,7 +154,7 @@ Azure 安全中心清单功能和 Azure Resource Graph 可以查询和发现订�
 
 - [了解 Azure 自动化更改跟踪和库存](../../automation/change-tracking/overview.md)
 
-- [如何在 Windows 环境中控制 PowerShell 脚本的执行](/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6)
+- [如何在 Windows 环境中控制 PowerShell 脚本的执行](/powershell/module/microsoft.powershell.security/set-executionpolicy)
 
 **责任**：客户
 

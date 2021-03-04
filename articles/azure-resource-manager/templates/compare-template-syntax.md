@@ -1,14 +1,14 @@
 ---
-title: 将 Azure 资源管理器模板转换为 JSON 和 Bicep
-description: 比较通过 JSON 和 Bicep 开发的 Azure 资源管理器模板。
+title: 在 JSON 和 Bicep 中比较 Azure 资源管理器模板的语法
+description: 比较通过 JSON 和 Bicep 开发的 Azure 资源管理器模板，并演示如何在语言之间进行转换。
 ms.topic: conceptual
-ms.date: 02/19/2021
-ms.openlocfilehash: 9388ed50f13d6885d0a0668b61a9141dae375244
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/03/2021
+ms.openlocfilehash: 29c2b9948957ebc10a26f22f0fe3daf383dfe5ba
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101744197"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102036208"
 ---
 # <a name="comparing-json-and-bicep-for-templates"></a>比较模板的 JSON 和 Bicep
 
@@ -18,40 +18,21 @@ ms.locfileid: "101744197"
 
 如果你熟悉如何使用 JSON 来开发 ARM 模板，请使用下表了解 Bicep 的等效语法。
 
-| 方案 | ARM 模板 | Bicep |
+| 方案 | Bicep | JSON |
 | -------- | ------------ | ----- |
-| 创作表达式 | `"[func()]"` | `func()` |
-| 获取参数值 | `[parameters('exampleParameter'))]` | `exampleParameter` |
-| 获取变量值 | `[variables('exampleVar'))]` | `exampleVar` |
-| 连接字符串 | `[concat(parameters('namePrefix'), '-vm')]` | `'${namePrefix}-vm'` |
-| 设置资源属性 | `"sku": "2016-Datacenter",` | `sku: '2016-Datacenter'` |
-| 返回逻辑 AND | `[and(parameter('isMonday'), parameter('isNovember'))]` | `isMonday && isNovember` |
-| 获取模板中资源的资源 ID | `[resourceId('Microsoft.Network/networkInterfaces', variables('nic1Name'))]` | `nic1.id` |
-| 从模板中的资源获取属性 | `[reference(resourceId('Microsoft.Storage/storageAccounts', variables('diagStorageAccountName'))).primaryEndpoints.blob]` | `diagsAccount.properties.primaryEndpoints.blob` |
-| 有条件地设置值 | `[if(parameters('isMonday'), 'valueIfTrue', 'valueIfFalse')]` | `isMonday ? 'valueIfTrue' : 'valueIfFalse'` |
-| 将解决方案分隔到多个文件中 | 使用链接模板 | 使用模块 |
-| 设置部署的目标范围 | `"$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#"` | `targetScope = 'subscription'` |
-| 设置依赖关系 | `"dependsOn": ["[resourceId('Microsoft.Storage/storageAccounts', 'parameters('storageAccountName'))]"]` | 依赖依赖项的自动检测或手动设置依赖项 `dependsOn: [ stg ]` |
-
-若要声明资源的类型和版本，请在 Bicep 中使用以下内容：
-
-```bicep
-resource vm 'Microsoft.Compute/virtualMachines@2020-06-01' = {
-  ...
-}
-```
-
-而不是 JSON 中的等效语法：
-
-```json
-"resources": [
-  {
-    "type": "Microsoft.Compute/virtualMachines",
-    "apiVersion": "2020-06-01",
-    ...
-  }
-]
-```
+| 创作表达式 | `func()` | `"[func()]"` |
+| 获取参数值 | `exampleParameter` | `[parameters('exampleParameter'))]` |
+| 获取变量值 | `exampleVar` | `[variables('exampleVar'))]` |
+| 连接字符串 | `'${namePrefix}-vm'` | `[concat(parameters('namePrefix'), '-vm')]` |
+| 设置资源属性 | `sku: '2016-Datacenter'` | `"sku": "2016-Datacenter",` |
+| 返回逻辑 AND | `isMonday && isNovember` | `[and(parameter('isMonday'), parameter('isNovember'))]` |
+| 获取模板中资源的资源 ID | `nic1.id` | `[resourceId('Microsoft.Network/networkInterfaces', variables('nic1Name'))]` |
+| 从模板中的资源获取属性 | `diagsAccount.properties.primaryEndpoints.blob` | `[reference(resourceId('Microsoft.Storage/storageAccounts', variables('diagStorageAccountName'))).primaryEndpoints.blob]` |
+| 有条件地设置值 | `isMonday ? 'valueIfTrue' : 'valueIfFalse'` | `[if(parameters('isMonday'), 'valueIfTrue', 'valueIfFalse')]` |
+| 将解决方案分隔到多个文件中 | 使用模块 | 使用链接模板 |
+| 设置部署的目标范围 | `targetScope = 'subscription'` | `"$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#"` |
+| 设置依赖关系 | 依赖依赖项的自动检测或手动设置依赖项 `dependsOn: [ stg ]` | `"dependsOn": ["[resourceId('Microsoft.Storage/storageAccounts', 'parameters('storageAccountName'))]"]` |
+| 资源声明 | `resource vm 'Microsoft.Compute/virtualMachines@2020-06-01' = {...}` | `"resources": [ { "type": "Microsoft.Compute/virtualMachines", "apiVersion": "2020-06-01", ... } ]` |
 
 ## <a name="recommendations"></a>建议
 
@@ -63,10 +44,7 @@ resource vm 'Microsoft.Compute/virtualMachines@2020-06-01' = {
 
 Bicep CLI 提供了一个命令，用于将任何现有 ARM 模板反编译为 Bicep 文件。 若要反编译 JSON 文件，请使用： `bicep decompile "path/to/file.json"`
 
-此命令提供 Bicep 创作的起点，但该命令不适用于所有模板。 此命令可能会失败，或者你可能需要在 ilspy 之后修复问题。 当前，该命令具有以下限制：
-
-* 使用复制循环的模板不能反编译。
-* 仅当嵌套模板使用 "内部" 表达式求值作用域时，才能对其进行反编译。
+此命令提供 Bicep 创作的起点，但该命令不适用于所有模板。 此命令可能会失败，或者你可能需要在 ilspy 之后修复问题。 目前，只有在嵌套模板使用 "内部" 表达式求值作用域时，才能对其进行反编译。
 
 可以导出资源组的模板，然后将其直接传递到 bicep 反编译命令。 下面的示例演示如何反编译已导出的模板。
 
@@ -100,4 +78,4 @@ Bicep CLI 还提供了一个命令，用于将 Bicep 转换为 JSON。 若要生
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Bicep 项目的信息，请参阅 [项目 Bicep](https://github.com/Azure/bicep)。
+有关 Bicep 的信息，请参阅 [Bicep 教程](./bicep-tutorial-create-first-bicep.md)。

@@ -6,13 +6,13 @@ ms.author: csugunan
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 11/22/2020
-ms.openlocfilehash: 010cfc307d2b2c10c31168fce73673fb1fb611b8
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.date: 03/03/2021
+ms.openlocfilehash: 6a71999f0896a5d056b7d0b38be4d494c347e9f9
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807642"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102049366"
 ---
 # <a name="how-to-connect-azure-data-factory-and-azure-purview"></a>如何连接 Azure 数据工厂和 Azure 监控范围
 
@@ -73,7 +73,7 @@ ms.locfileid: "99807642"
 
 当监控范围用户注册他们有权访问的数据工厂时，后端会发生以下情况：
 
-1. **数据工厂 MSI** 将添加到监控范围 RBAC Role：**监控范围 Data 陈列**。
+1. **数据工厂托管标识** 将添加到监控范围 RBAC Role：**监控范围 Data 陈列**。
 
     :::image type="content" source="./media/how-to-link-azure-data-factory/adf-msi.png" alt-text="显示 Azure 数据工厂 MSI 的屏幕截图。" lightbox="./media/how-to-link-azure-data-factory/adf-msi.png":::
      
@@ -88,76 +88,91 @@ ms.locfileid: "99807642"
 
     :::image type="content" source="./media/how-to-link-azure-data-factory/remove-data-factory-connection.png" alt-text="显示如何选择数据工厂以删除连接的屏幕截图。" lightbox="./media/how-to-link-azure-data-factory/remove-data-factory-connection.png":::
 
-## <a name="configure-a-self-hosted-ir-to-collect-lineage-from-on-prem-sql"></a>配置自承载 IR 以便从本地 SQL 中收集沿袭
+## <a name="configure-a-self-hosted-integration-runtime-to-collect-lineage"></a>配置自承载 Integration Runtime 以收集沿袭
 
-数据工厂复制活动的沿袭可用于本地 SQL 数据库。 如果运行自承载集成运行时与 Azure 数据工厂的数据移动，并且想要捕获 Azure 监控范围中的沿袭，请确保版本为4.8.7418.1 或更高版本。 有关自承载集成运行时的详细信息，请参阅 [创建和配置自承载集成运行时](../data-factory/create-self-hosted-integration-runtime.md)。
+数据工厂复制活动的沿袭可用于本地数据存储（如 SQL 数据库）。 如果运行自承载集成运行时与 Azure 数据工厂的数据移动，并且想要捕获 Azure 监控范围中的沿袭，请确保版本为5.0 或更高版本。 有关自承载集成运行时的详细信息，请参阅 [创建和配置自承载集成运行时](../data-factory/create-self-hosted-integration-runtime.md)。
 
 ## <a name="supported-azure-data-factory-activities"></a>支持的 Azure 数据工厂活动
 
 Azure 监控范围从以下 Azure 数据工厂活动中捕获运行时沿袭：
 
-- 复制数据
-- 数据流
-- 执行 SSIS 包
+- [复制数据](../data-factory/copy-activity-overview.md)
+- [数据流](../data-factory/concepts-data-flow-overview.md)
+- [执行 SSIS 包](../data-factory/how-to-invoke-ssis-package-ssis-activity.md)
 
 > [!IMPORTANT]
 > 如果源或目标使用不受支持的数据存储系统，Azure 监控范围会丢弃沿袭。
 
 数据工厂和监控范围之间的集成仅支持数据工厂支持的数据系统子集，如以下各节中所述。
 
-### <a name="data-factory-copy-data-support"></a>数据工厂复制数据支持
+### <a name="data-factory-copy-activity-support"></a>数据工厂复制活动支持
 
-| 数据存储系统 | 支持用作源 | 
+| 数据存储 | 支持 | 
 | ------------------- | ------------------- | 
-| ADLS Gen1 | 是 | 
-| ADLS Gen2 | 是 | 
-| Azure Blob | 是 |
-| Azure Cosmos DB (SQL API) | 是 | 
-| Azure Cosmos DB (Mongo API)  | 是 |
+| Azure Blob 存储 | 是 |
 | Azure 认知搜索 | 是 | 
-| Azure 数据资源管理器 | 是 | 
+| Azure Cosmos DB (SQL API) \* | 是 | 
+| Azure Cosmos DB 的适用于 MongoDB 的 API \* | 是 |
+| Azure 数据资源管理器 \* | 是 | 
+| Azure Data Lake Storage Gen1 | 是 | 
+| Azure Data Lake Storage Gen2 | 是 | 
 | 用于 Maria DB 的 Azure 数据库 \* | 是 | 
-| 用于 MYSQL 的 Azure 数据库 \* | 是 | 
+| Azure Database for MySQL \* | 是 | 
 | Azure Database for PostgreSQL \* | 是 |
 | Azure 文件存储 | 是 | 
-| Azure 表存储 | 是 |
 | Azure SQL 数据库 \* | 是 | 
-| Azure SQL MI \* | 是 | 
-| Azure Synapse Analytics (以前的 SQL DW) \* | 是 | 
-| SQL Server 本地  \* | 是 | 
+| Azure SQL 托管实例 \* | 是 | 
+| Azure Synapse 分析 \* | 是 | 
+| Azure 表存储 \* | 是 |
+| SQL Server \* | 是 | 
 | Amazon S3 | 是 | 
-| Teradata | 是 | 
-| SAP 表连接器 | 是 |
-| SAP ECC | 是 | 
-| Hive | 是 | 
+| 义项 \* | 是 | 
+| SAP ECC \* | 是 |
+| SAP 表 \* | 是 |
+| Teradata \* | 是 |
+
+*\* Azure 监控范围当前不支持沿袭或扫描的查询或存储过程。沿袭仅限于表和视图源。*
 
 > [!Note]
 > 沿袭功能在数据工厂复制活动中具有一定的性能开销。 对于在监控范围中设置数据工厂连接的用户，你可能会发现某些复制作业要花费更长时间才能完成。 大多数情况下，影响不会忽略。 如果复制作业的完成时间比平时长得多，请联系支持人员进行时间比较。
 
+#### <a name="known-limitations-on-copy-activity-lineage"></a>复制活动沿袭的已知限制
+
+目前，如果使用以下复制活动功能，则不支持沿袭：
+
+- 使用二进制格式将数据复制到 Azure Data Lake Storage Gen1。
+- 使用 PolyBase 或 COPY 语句将数据复制到 Azure Synapse Analytics 中。
+- 二进制、分隔文本、Excel、JSON 和 XML 文件的压缩设置。
+- 适用于 Azure SQL 数据库、Azure SQL 托管实例、Azure Synapse Analytics、SQL Server 和 SAP 表的源分区选项。
+- 将数据复制到基于文件的接收器，并为每个文件设置最大行数。
+- 在复制过程中添加其他列。
+
 ### <a name="data-factory-data-flow-support"></a>数据工厂数据流支持
 
-| 数据存储系统 | 支持 |
+| 数据存储 | 支持 |
 | ------------------- | ------------------- | 
-| ADLS Gen1 | 是 |
-| ADLS Gen2 | 是 |
-| Azure Blob | 是 |
+| Azure Blob 存储 | 是 |
+| Azure Data Lake Storage Gen1 | 是 |
+| Azure Data Lake Storage Gen2 | 是 |
 | Azure SQL 数据库 \* | 是 |
-| Azure Synapse Analytics (以前的 SQL DW) \* | 是 |
+| Azure Synapse 分析 \* | 是 |
+
+*\* Azure 监控范围当前不支持沿袭或扫描的查询或存储过程。沿袭仅限于表和视图源。*
 
 ### <a name="data-factory-execute-ssis-package-support"></a>数据工厂执行 SSIS 包支持
 
-| 数据存储系统 | 支持 |
+| 数据存储 | 支持 |
 | ------------------- | ------------------- |
-| Azure Blob | 是 |
-| ADLS Gen1 | 是 |
-| ADLS Gen2 | 是 |
-| Azure SQL 数据库 \* | 是 |
-| Azure SQL MI \*| 是 |
-| Azure Synapse Analytics (以前的 SQL DW) \* | 是 |
-| SQL Server 本地 \* | 是 |
+| Azure Blob 存储 | 是 |
+| Azure Data Lake Storage Gen1 | 是 |
+| Azure Data Lake Storage Gen2 | 是 |
 | Azure 文件存储 | 是 |
+| Azure SQL 数据库 \* | 是 |
+| Azure SQL 托管实例 \*| 是 |
+| Azure Synapse 分析 \* | 是 |
+| SQL Server \* | 是 |
 
-*\* 对于在 Azure 和本地) 方案中 (SQL，Azure 监控范围不支持沿袭或扫描存储过程或脚本。沿袭仅限于表和视图源。*
+*\* Azure 监控范围当前不支持沿袭或扫描的查询或存储过程。沿袭仅限于表和视图源。*
 
 > [!Note]
 > Azure Data Lake Storage Gen2 现已正式发布。 我们建议你立即开始使用它。 有关详细信息，请参阅[产品页](https://azure.microsoft.com/en-us/services/storage/data-lake-storage/)。
@@ -172,7 +187,7 @@ Azure 监控范围支持多种沿袭模式。 生成的沿袭数据基于数据�
 
 - 在 " **沿袭** " 选项卡中，将鼠标悬停在形状上，以在工具提示中预览有关资产的其他信息。
 - 选择节点或边缘以查看其所属的资产类型或切换资产。
-- 数据集的列将显示在 " **沿袭** " 选项卡的左侧。有关列级沿袭的详细信息，请参阅 [列级沿袭](catalog-lineage-user-guide.md#column-level-lineage)。
+- 数据集的列将显示在 " **沿袭** " 选项卡的左侧。有关列级沿袭的详细信息，请参阅 [数据集列沿袭](catalog-lineage-user-guide.md#dataset-column-lineage)。
 
 ### <a name="data-lineage-for-11-operations"></a>1:1 操作的数据沿袭
 

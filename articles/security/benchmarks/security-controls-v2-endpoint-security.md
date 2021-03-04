@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 02/22/2021
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 7672f4eb4530dbfb5d039b066fe7cf6eaf79e5a7
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 48b22ba913370b27cd01319a14a2a627d7589ce4
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101718635"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102051508"
 ---
 # <a name="security-control-v2-endpoint-security"></a>安全控制 V2：终结点安全性
 
 终结点安全性涵盖终结点检测和响应中的多个控制。 这包括在 Azure 环境中对终结点使用终结点检测和响应 (EDR) 和反恶意软件服务。
 
-若要查看适用的内置 Azure 策略，请参阅 [Azure 安全基准管理法规符合性内置计划的详细信息： Endpoint security](../../governance/policy/samples/azure-security-benchmark#endpoint-security)
+若要查看适用的内置 Azure 策略，请参阅 [Azure 安全基准管理法规符合性内置计划的详细信息： Endpoint security](../../governance/policy/samples/azure-security-benchmark.md#endpoint-security)
 
 ## <a name="es-1-use-endpoint-detection-and-response-edr"></a>ES-1：使用终结点检测和响应 (EDR)
 

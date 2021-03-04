@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos DB 时点还原功能的资源模型。
-description: 本文介绍 Azure Cosmos DB 时点还原功能的资源模型。 它介绍了一些参数，这些参数支持可以在 SQL 和 MongoDB 帐户 Azure Cosmos DB API 中还原的连续备份和资源。
+description: 本文介绍了 Azure Cosmos DB 时间点还原功能的资源模型。 它介绍了用于支持连续备份的参数，以及可以在用于 SQL 和 MongoDB 的 Azure Cosmos DB API 帐户中还原的资源。
 author: kanshiG
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 02/01/2021
+ms.date: 02/22/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: d838425583638aef5199b52df4869923c826553d
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: edf60a5c454d34a2424ef7981b02952ffbfd3bde
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100369962"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102097221"
 ---
 # <a name="resource-model-for-the-azure-cosmos-db-point-in-time-restore-feature-preview"></a>Azure Cosmos DB 时间点还原功能的资源模型 (预览版) 
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -22,7 +22,7 @@ ms.locfileid: "100369962"
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
 > 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-本文说明 Azure Cosmos DB 时点还原功能 (预览版) 的资源模型。 它介绍了一些参数，这些参数支持可以在 SQL 和 MongoDB 帐户 Azure Cosmos DB API 中还原的连续备份和资源。
+本文说明 Azure Cosmos DB 时点还原功能 (预览版) 的资源模型。 它介绍了用于支持连续备份的参数，以及可以在用于 SQL 和 MongoDB 的 Azure Cosmos DB API 帐户中还原的资源。
 
 ## <a name="database-accounts-resource-model"></a>数据库帐户的资源模型
 
@@ -128,7 +128,7 @@ ms.locfileid: "100369962"
 | restorableLocations： creationTime | 创建区域帐户时的 UTC 时间。|
 | restorableLocations: deletionTime | 删除区域帐户时的 UTC 时间。 如果区域帐户是活动的，则此值为空。|
 
-若要获取所有可恢复帐户的列表，请参阅可 [还原数据库帐户-列表](restorable-database-accounts-list.md) 或可 [还原的数据库帐户-按位置列出](restorable-database-accounts-list-by-location.md) 的文章。
+若要获取所有可恢复帐户的列表，请参阅可 [还原数据库帐户-列表](/rest/api/cosmos-db-resource-provider/2020-06-01-preview/restorabledatabaseaccounts/list) 或可 [还原的数据库帐户-按位置列出](/rest/api/cosmos-db-resource-provider/2020-06-01-preview/restorabledatabaseaccounts/listbylocation) 的文章。
 
 ### <a name="restorable-sql-database"></a>可还原的 SQL 数据库
 
@@ -142,7 +142,7 @@ ms.locfileid: "100369962"
 | operationType | 此数据库事件的操作类型。 下面是可能的值：<br/><ul><li>创建：数据库创建事件</li><li>删除：数据库删除事件</li><li>Replace：数据库修改事件</li><li>SystemOperation：由系统触发的数据库修改事件。 此事件不是由用户启动</li></ul> |
 | database |事件发生时的 SQL 数据库属性|
 
-若要获取所有数据库突变的列表，请参阅可恢复 [的 Sql 数据库-列表一](restorable-sql-databases-list.md) 文。
+若要获取所有数据库突变的列表，请参阅可恢复 [的 Sql 数据库-列表一](/rest/api/cosmos-db-resource-provider/2020-06-01-preview/restorablesqldatabases/list) 文。
 
 ### <a name="restorable-sql-container"></a>可还原 SQL 容器
 
@@ -156,7 +156,7 @@ ms.locfileid: "100369962"
 | operationType | 此容器事件的操作类型。 下面是可能的值： <br/><ul><li>创建：容器创建事件</li><li>删除：容器删除事件</li><li>Replace：容器修改事件</li><li>SystemOperation：由系统触发的容器修改事件。 此事件不是由用户启动</li></ul> |
 | container | 事件发生时的 SQL 容器属性。|
 
-若要获取同一数据库下所有容器突变的列表，请参阅可恢复的 [Sql 容器-列表一](restorable-sql-containers-list.md) 文。
+若要获取同一数据库下所有容器突变的列表，请参阅可恢复的 [Sql 容器-列表一](/rest/api/cosmos-db-resource-provider/2020-06-01-preview/restorablesqlcontainers/list) 文。
 
 ### <a name="restorable-sql-resources"></a>可还原的 SQL 资源
 
@@ -167,7 +167,7 @@ ms.locfileid: "100369962"
 | databaseName  | SQL 数据库的名称。
 | collectionNames   | 此数据库下的 SQL 容器列表。|
 
-若要获取位于给定时间戳和位置的帐户上的 SQL 数据库和容器组合列表，请参阅可恢复的 [Sql 资源-列表一](restorable-sql-resources-list.md) 文。
+若要获取位于给定时间戳和位置的帐户上的 SQL 数据库和容器组合列表，请参阅可恢复的 [Sql 资源-列表一](/rest/api/cosmos-db-resource-provider/2020-06-01-preview/restorablesqlresources/list) 文。
 
 ### <a name="restorable-mongodb-database"></a>可还原的 MongoDB 数据库
 
@@ -180,7 +180,7 @@ ms.locfileid: "100369962"
 | ownerResourceId   | MongoDB 数据库的资源 ID。 |
 | operationType |   此数据库事件的操作类型。 下面是可能的值：<br/><ul><li> 创建：数据库创建事件</li><li> 删除：数据库删除事件</li><li> Replace：数据库修改事件</li><li> SystemOperation：由系统触发的数据库修改事件。 此事件不是由用户启动 </li></ul> |
 
-若要获取所有数据库变化的列表，请参阅可恢复 [的 Mongodb 数据库-列表](restorable-mongodb-databases-list.md) 一文。
+若要获取所有数据库变化的列表，请参阅可恢复 [的 Mongodb 数据库-列表](/rest/api/cosmos-db-resource-provider/2020-06-01-preview/restorablemongodbdatabases/list) 一文。
 
 ### <a name="restorable-mongodb-collection"></a>可还原的 MongoDB 集合
 
@@ -193,7 +193,7 @@ ms.locfileid: "100369962"
 | ownerResourceId   | MongoDB 集合的资源 ID。 |
 | operationType |此集合事件的操作类型。 下面是可能的值：<br/><ul><li>创建：集合创建事件</li><li>删除：收集删除事件</li><li>Replace：集合修改事件</li><li>SystemOperation：由系统触发的集合修改事件。 此事件不是由用户启动</li></ul> |
 
-若要获取同一数据库下所有容器突变的列表，请参阅可恢复 [的 Mongodb 集合-列表](restorable-mongodb-collections-list.md) 一文。
+若要获取同一数据库下所有容器突变的列表，请参阅可恢复 [的 Mongodb 集合-列表](/rest/api/cosmos-db-resource-provider/2020-06-01-preview/restorablemongodbcollections/list) 一文。
 
 ### <a name="restorable-mongodb-resources"></a>可恢复的 MongoDB 资源
 
@@ -204,7 +204,7 @@ ms.locfileid: "100369962"
 | databaseName  |MongoDB 数据库的名称。 |
 | collectionNames | 此数据库下的 MongoDB 集合列表。 |
 
-若要获取在给定时间戳和位置帐户上存在的所有 MongoDB 数据库和集合组合的列表，请参阅可恢复的 [Mongodb 资源-列表一](restorable-mongodb-resources-list.md) 文。
+若要获取在给定时间戳和位置帐户上存在的所有 MongoDB 数据库和集合组合的列表，请参阅可恢复的 [Mongodb 资源-列表一](/rest/api/cosmos-db-resource-provider/2020-06-01-preview/restorablemongodbresources/list) 文。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,5 +1,5 @@
 ---
-title: Azure SQL 托管实例：长期备份保留 (PowerShell)
+title: Azure SQL 托管实例：长期备份保留
 description: 了解如何使用 PowerShell 为 Azure SQL 托管实例在单独的 Azure Blob 存储容器上存储和还原自动备份。
 services: sql-database
 ms.service: sql-managed-instance
@@ -7,28 +7,88 @@ ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
 ms.topic: how-to
-author: anosov1960
-ms.author: sashan
+author: shkale-msft
+ms.author: shkale
 ms.reviewer: mathoma, sstein
-ms.date: 04/29/2020
-ms.openlocfilehash: bb74a2e271473666332c627f6ad4324ca597e40c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.date: 02/25/2021
+ms.openlocfilehash: f298f0f9d76750be932db79b5a08b6385e984f88
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100593348"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102051991"
 ---
 # <a name="manage-azure-sql-managed-instance-long-term-backup-retention-powershell"></a>管理 Azure SQL 托管实例长期备份保留 (PowerShell)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-在 Azure SQL 托管实例中，可以配置[长期备份保留](../database/long-term-retention-overview.md#sql-managed-instance-support)策略 (LTR)，这是一项有限的公共预览版功能。 这样就可以在单独的 Azure Blob 存储容器中自动将数据库备份保留长达 10 年的时间。 然后，可以通过 PowerShell 使用这些备份来恢复数据库。
+在 Azure SQL 托管实例中，可以 (LTR) 为公共预览功能，配置 [长期备份保留](../database/long-term-retention-overview.md) 策略。 这样就可以在单独的 Azure Blob 存储容器中自动将数据库备份保留长达 10 年的时间。 然后，可以通过 PowerShell 使用这些备份来恢复数据库。
 
    > [!IMPORTANT]
-   > 对于托管实例，LTR 目前为功能有限的预览版，可根据具体情况用于 EA 和 CSP 订阅。 若要请求注册，请创建 [Azure 支持票证](https://azure.microsoft.com/support/create-ticket/)。 对于 "问题类型"，请选择 "服务" "服务"，选择 "SQL 数据库托管实例" 和 "对于问题类型"，选择 " **备份"、"还原" 和 "业务连续性/长期备份保留**。 在你的请求中，请陈述你希望在面向托管实例的按范围有限的公共预览版中进行注册。
+   > 对于托管实例，LTR 当前在 Azure 公共区域的公共预览版中提供。 
 
 以下各部分展示了如何使用 PowerShell 配置长期备份保留、查看 Azure SQL 存储中的备份，以及从 Azure SQL 存储中的备份进行还原。
 
-## <a name="azure-roles-to-manage-long-term-retention"></a>用于管理长期保留的 Azure 角色
+
+## <a name="using-the-azure-portal"></a>使用 Azure 门户
+
+以下部分说明了如何使用 Azure 门户来设置长期保留策略、管理可用的长期保留备份，并从可用备份中还原。
+
+### <a name="configure-long-term-retention-policies"></a>配置长期保留策略
+
+可以将 SQL 托管实例配置为 [保留自动备份](../database/long-term-retention-overview.md) ，使其保留时间长于服务层的保留期。
+
+1. 在 Azure 门户中，选择托管实例，并单击 " **备份**"。 在 " **保留策略** " 选项卡上，选择要在其上设置或修改长期备份保留策略的数据库 () 。 更改将不会应用于未选择的任何数据库。 
+
+   ![管理备份链接](./media/long-term-backup-retention-configure/ltr-configure-ltr.png)
+
+2. 在 " **配置策略** " 窗格中，为每周、每月或每年备份指定所需的保留期。 选择 "0" 的保留期，指示不应设置长期备份保留。
+
+   ![配置策略](./media/long-term-backup-retention-configure/ltr-configure-policies.png)
+
+3. 完成后，单击“应用”。
+
+> [!IMPORTANT]
+> 启用长期备份保留策略时，最长可能需要 7 天以后才能查看和还原第一个备份。 有关 LTR 备份频率的详细信息，请参阅[长期备份保留](../database/long-term-retention-overview.md)。
+
+### <a name="view-backups-and-restore-from-a-backup"></a>查看备份并从备份进行还原
+
+查看通过 LTR 策略为特定数据库保留的备份，并从这些备份进行还原。
+
+1. 在 Azure 门户中，选择托管实例，并单击 " **备份**"。 在“可用备份”选项卡上，选择要查看其可用备份的数据库。 单击“管理”。 
+
+   ![选择数据库](./media/long-term-backup-retention-configure/ltr-available-backups-select-database.png)
+
+1. 在 " **管理备份** " 窗格中，查看可用的备份。
+
+   ![查看备份](./media/long-term-backup-retention-configure/ltr-available-backups.png)
+
+1. 选择要从中还原的备份，单击 " **还原**"，然后在 "还原" 页上指定新的数据库名称。 备份和源将在此页上预填充。 
+
+   ![选择要还原的备份](./media/long-term-backup-retention-configure/ltr-available-backups-restore.png)
+   
+   ![还原](./media/long-term-backup-retention-configure/ltr-restore.png)
+
+1. 单击 " **查看 + 创建** " 以查看还原详细信息。 然后单击 " **创建** " 以从所选备份中还原数据库。
+
+1. 在工具栏上，单击通知图标可查看还原作业的状态。
+
+   ![还原作业进度](./media/long-term-backup-retention-configure/restore-job-progress-long-term.png)
+
+1. 还原作业完成后，打开 " **托管实例概述** " 页，查看新还原的数据库。
+
+> [!NOTE]
+> 可以在此处使用 SQL Server Management Studio 连接到还原的数据库以执行所需的任务，例如 [从还原的数据库提取一些数据，以便将其复制到现有的数据库中；或者删除现有的数据库，并将还原的数据库重命名为现有的数据库名称](../database/recovery-using-backups.md#point-in-time-restore)。
+
+
+## <a name="using-powershell"></a>使用 PowerShell
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
+> [!IMPORTANT]
+> Azure SQL 数据库仍支持 PowerShell Azure 资源管理器模块，但将来的开发将在 Az .Sql 模块中完成。 若要了解这些 cmdlet，请参阅 [AzureRM.Sql](/powershell/module/AzureRM.Sql/)。 Az 模块和 AzureRm 模块中的命令参数大体上是相同的。
+
+以下各部分展示了如何使用 PowerShell 配置长期备份保留、查看 Azure 存储中的备份，以及从 Azure 存储中的备份进行还原。
+
+### <a name="azure-rbac-roles-to-manage-long-term-retention"></a>用于管理长期保留的 Azure RBAC 角色
 
 对于 Get-AzSqlInstanceDatabaseLongTermRetentionBackup 和 Restore-AzSqlInstanceDatabase，你需要有以下角色之一：
 
@@ -52,7 +112,7 @@ ms.locfileid: "100593348"
 
 - `Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups/delete`
 
-## <a name="create-an-ltr-policy"></a>创建 LTR 策略
+### <a name="create-an-ltr-policy"></a>创建 LTR 策略
 
 ```powershell
 # get the Managed Instance
@@ -88,7 +148,7 @@ $LTRPolicy = @{
 Set-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy @LTRPolicy
 ```
 
-## <a name="view-ltr-policies"></a>查看 LTR 策略
+### <a name="view-ltr-policies"></a>查看 LTR 策略
 
 此示例演示如何在单个数据库的实例内列出 LTR 策略
 
@@ -119,7 +179,7 @@ foreach($database in $Databases.Name){
  }
 ```
 
-## <a name="clear-an-ltr-policy"></a>清除 LTR 策略
+### <a name="clear-an-ltr-policy"></a>清除 LTR 策略
 
 此示例展示了如何从数据库中清除 LTR 策略
 
@@ -134,7 +194,7 @@ $LTRPolicy = @{
 Set-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy @LTRPolicy
 ```
 
-## <a name="view-ltr-backups"></a>查看 LTR 备份
+### <a name="view-ltr-backups"></a>查看 LTR 备份
 
 此示例展示了如何列出实例内的 LTR 备份。
 
@@ -177,7 +237,7 @@ $LTRBackupParam = @{
 Get-AzSqlInstanceDatabaseLongTermRetentionBackup @LTRBackupParam 
 ```
 
-## <a name="delete-ltr-backups"></a>删除 LTR 备份
+### <a name="delete-ltr-backups"></a>删除 LTR 备份
 
 此示例展示了如何从备份列表中删除 LTR 备份。
 
@@ -197,7 +257,7 @@ Remove-AzSqlInstanceDatabaseLongTermRetentionBackup -ResourceId $ltrBackup.Resou
 > [!IMPORTANT]
 > 删除 LTR 备份操作是不可逆的。 若要在删除实例后删除 LTR 备份，必须有“订阅”范围权限。 可以通过筛选“删除长期保留备份”操作，在 Azure Monitor 中设置有关每次删除的通知。 活动日志包含有关发出请求的人员和时间的信息。 有关详细说明，请参阅[创建活动日志警报](../../azure-monitor/alerts/alerts-activity-log.md)。
 
-## <a name="restore-from-ltr-backups"></a>从 LTR 备份进行还原
+### <a name="restore-from-ltr-backups"></a>从 LTR 备份进行还原
 
 此示例展示了如何从 LTR 备份进行还原。 请注意，此接口没有更改，但是资源 ID 参数现在要求提供 LTR 备份资源 ID。
 

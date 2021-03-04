@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/28/2020
 ms.author: sideeksh
-ms.openlocfilehash: d207a5629647ef3582f1e0490ef6ccc407f935f7
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: beba8e1d8126818f142e4873d551ed077af869d2
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99584832"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102035231"
 ---
 # <a name="enable-azure-vm-disaster-recovery-between-availability-zones"></a>在可用性区域之间启用 Azure VM 灾难恢复
 
@@ -20,7 +20,7 @@ ms.locfileid: "99584832"
 
 >[!NOTE]
 >
->- 对区域到区域灾难恢复的支持当前限制为九个区域：东南亚、日本东部、澳大利亚东部、英国南部、西欧、北欧、美国中部、美国东部和美国西部2。  
+>- 对区域到区域灾难恢复的支持目前仅限于以下区域：东南亚、日本东部、澳大利亚东部、英国南部、西欧、北欧、美国中部、美国东部、美国东部2和美国西部2。  
 >- 如果客户使用区域进行灾难恢复，则 Site Recovery 不会将客户数据从其部署到的区域中移出或存储。 如果客户愿意，可以从其他地区选择恢复服务保管库。 恢复服务保管库包含元数据，但不包含实际的客户数据。
 
 Site Recovery 服务通过在计划内和计划外的停机期间保持业务应用程序的运行，来为业务连续性和灾难恢复策略提供贡献。 建议使用灾难恢复选项，使应用程序在发生区域性服务中断时能够正常运行。
@@ -71,7 +71,7 @@ Site Recovery 服务通过在计划内和计划外的停机期间保持业务应
 |---------|---------|
 |经典 VM   |     不支持    |
 |ARM Vm    |    支持    |
-|Azure 磁盘加密 v1 (双路，Azure Active Directory (Azure AD) # A3     |     支持   |
+|Azure 磁盘加密 v1 (双重 pass，Azure Active Directory (Azure AD) )      |     支持   |
 |Azure 磁盘加密 v2 (单个 pass，无需 Azure AD)     |    支持    |
 |非托管磁盘    |    不支持    |
 |托管磁盘    |    支持    |

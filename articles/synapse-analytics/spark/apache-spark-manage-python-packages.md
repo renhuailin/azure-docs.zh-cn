@@ -5,16 +5,16 @@ services: synapse-analytics
 author: midesa
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.date: 03/01/2020
+ms.date: 02/26/2020
 ms.author: midesa
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: 296bd3a4a75cdd7f5dab3b6eb5fdcb00a889703d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 4bb323e0e8f72456b6a522ede9a98d193e1c3c7e
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101695910"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102098768"
 ---
 # <a name="manage-python-libraries-for-apache-spark-in-azure-synapse-analytics"></a>在 Azure Synapse 分析中管理用于 Apache Spark 的 Python 库
 
@@ -42,7 +42,7 @@ Azure Synapse Analytics 中的 Apache Spark 包含一整套用于常见数据工
 > [!IMPORTANT]
 > - 如果要安装的包很大或需要很长时间才能安装，这会影响 Spark 实例的启动时间。
 > - 不支持更改 PySpark、Python、Scala/Java、.NET 或 Spark 版本。
-> - 启用 DEP 的工作区中不支持从 PyPI 安装包。
+> - 在启用 DEP 的工作区中不支持从外部存储库（如 PyPI、Conda 或默认 Conda 通道）安装包。
 
 ### <a name="install-python-packages"></a>安装 Python 包
 可以通过提供环境规范文件，从 PyPI 和 Conda-Forge 等存储库安装 Python 包。 
@@ -140,9 +140,6 @@ Python 轮文件是打包 Python 库的常用方法。 在 Azure Synapse Analyti
 
 ![突出显示工作区包的屏幕截图。](./media/apache-spark-azure-portal-add-libraries/studio-add-workspace-package.png "查看工作区包")
 
-> [!IMPORTANT]
-> 目前尚不支持在数据渗透 (DEP) 工作区中安装工作区包。
-
 ### <a name="storage-account"></a>存储帐户
 可以通过将所有轮文件上传到与 Synapse 工作区链接的 Azure Data Lake Storage (Gen2) 帐户，将自定义的轮包安装到 Apache Spark 池。 
 
@@ -160,8 +157,8 @@ abfss://<file_system>@<account_name>.dfs.core.windows.net/synapse/workspaces/<wo
 >[!WARNING]
 > 提供自定义滚轮文件时，用户无法在存储帐户和工作区库界面中提供滑轮文件。 如果同时提供两者，则只会安装在 "工作区包" 列表中指定的轮文件。 
 
-## <a name="session-scoped-libraries-preview"></a> (预览的会话作用域的库) 
-除了池级别库以外，还可以在笔记本会话开始时指定会话范围的库。  使用会话范围的库可以在笔记本会话中指定和使用自定义 Python 环境。 
+## <a name="session-scoped-packages-preview"></a> (预览版的会话范围包) 
+除了池级别包外，还可以在笔记本会话开始时指定会话范围的库。  使用会话范围的库可以在笔记本会话中指定和使用自定义 Python 环境。 
 
 使用会话范围的库时，请务必牢记以下几点：
    - 安装会话范围的库时，只有当前笔记本可以访问指定的库。 
@@ -187,3 +184,4 @@ for d in pkg_resources.working_set:
 ## <a name="next-steps"></a>后续步骤
 - 查看默认库： [Apache Spark 版本支持](apache-spark-version-support.md)
 - 库安装错误疑难解答： [库错误疑难解答](apache-spark-troubleshoot-library-errors.md)
+- 使用 Azure Data Lake Storage 帐户创建专用 Conda 通道： [Conda 专用通道](./spark/../apache-spark-custom-conda-channel.md)

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: 211bcbf27f3a9e885a4bc2c4e5edd27db7907edf
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 19675a92101ed1a13b07bc1a4039701cd029a020
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92890762"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102044079"
 ---
 # <a name="add-a-polygon-extrusion-layer-to-the-map"></a>向地图添加多边形延伸层
 
@@ -22,7 +22,7 @@ ms.locfileid: "92890762"
 
 ## <a name="use-a-polygon-extrusion-layer"></a>使用多边形延伸层
 
-将 [多边形延伸层](/javascript/api/azure-maps-control/atlas.layer.polygonextrusionlayer) 连接到数据源。 然后，将其加载到地图中。 多边形延伸层会将和功能的区域 `Polygon` 呈现 `MultiPolygon` 为延伸形状。 `height` `base` 多边形延伸层的和属性定义了与延伸形状的地面和高度的基准距离（以米为 **单位** ）。 下面的代码演示如何创建一个多边形，如何将其添加到数据源中，以及如何使用多边形延伸层类进行呈现。
+将 [多边形延伸层](/javascript/api/azure-maps-control/atlas.layer.polygonextrusionlayer) 连接到数据源。 然后，将其加载到地图中。 多边形延伸层会将和功能的区域 `Polygon` 呈现 `MultiPolygon` 为延伸形状。 `height` `base` 多边形延伸层的和属性定义了与延伸形状的地面和高度的基准距离（以米为 **单位**）。 下面的代码演示如何创建一个多边形，如何将其添加到数据源中，以及如何使用多边形延伸层类进行呈现。
 
 > [!Note]
 > `base`多边形延伸层中定义的值应小于或等于的值 `height` 。
@@ -30,17 +30,16 @@ ms.locfileid: "92890762"
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="突出多边形" src="https://codepen.io/azuremaps/embed/wvvBpvE?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
-通过在 CodePen 上 Azure Maps () ，查看笔<a href='https://codepen.io/azuremaps/pen/wvvBpvE'>延伸多边形</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> 。 <a href='https://codepen.io'>CodePen</a></iframe>
-
+通过在 CodePen 上 Azure Maps () ，查看笔<a href='https://codepen.io/azuremaps/pen/wvvBpvE'>延伸多边形</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> 。 <a href='https://codepen.io'></a></iframe>
 
 ## <a name="add-data-driven-polygons"></a>添加数据驱动多边形
 
-可以使用多边形延伸层来呈现等值线图地图。 将 `height` `fillColor` 延伸层的和属性设置为 `Polygon` 和特征几何中统计变量的度量值 `MultiPolygon` 。 下面的代码示例显示了等值线图的拉伸的映射，该映射基于按状态测量人口密度。
+可以使用多边形延伸层来呈现等值线图地图。 将 `height` `fillColor` 延伸层的和属性设置为 `Polygon` 和特征几何中统计变量的度量值 `MultiPolygon` 。 下面的代码示例根据状态的人口密度度量值显示美国的拉伸等值线图地图。
 
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="拉伸的等值线图映射" src="https://codepen.io/azuremaps/embed/eYYYNox?height=265&theme-id=0&default-tab=result&editable=true" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
-在 CodePen 上 Azure Maps () ，查看笔<a href='https://codepen.io/azuremaps/pen/eYYYNox'>拉伸的等值线图映射</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> 。 <a href='https://codepen.io'>CodePen</a>
+在 CodePen 上 Azure Maps () ，查看笔<a href='https://codepen.io/azuremaps/pen/eYYYNox'>拉伸的等值线图映射</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> 。 <a href='https://codepen.io'></a>
 </iframe>
 
 ## <a name="add-a-circle-to-the-map"></a>将圆添加到地图
@@ -75,7 +74,7 @@ Azure Maps Web SDK 将这些 `Point` 功能转换为 `Polygon` 其功能的功�
 
 <br/>
 
-<iframe height='700' scrolling='no' title='PoogBRJ' src='//codepen.io/azuremaps/embed/PoogBRJ/?height=700&theme-id=0&default-tab=result' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 CodePen 上的 " <a href='https://codepen.io/azuremaps/pen/PoogBRJ/'>PoogBRJ</a> " Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 。 <a href='https://codepen.io'>CodePen</a>
+<iframe height='700' scrolling='no' title='PoogBRJ' src='//codepen.io/azuremaps/embed/PoogBRJ/?height=700&theme-id=0&default-tab=result' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 CodePen 上的 " <a href='https://codepen.io/azuremaps/pen/PoogBRJ/'>PoogBRJ</a> " Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 。 <a href='https://codepen.io'></a>
 </iframe>
 
 ## <a name="next-steps"></a>后续步骤

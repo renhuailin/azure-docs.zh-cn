@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 02/22/2021
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: fbe71b0ae7bf711d740cbba38c84b68de553f031
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: b47f833a3b47dae145aa18eb6eda0c6bd95f6689
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101698546"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102042907"
 ---
 # <a name="security-control-v2-network-security"></a>安全控制 V2：网络安全
 
 网络安全涵盖了用于保护 Azure 网络的控制措施。 其中包括保护虚拟网络、建立专用连接、阻止和减少外部攻击以及保护 DNS。
 
-若要查看适用的内置 Azure 策略，请参阅 [Azure 安全基准管理法规符合性内置计划的详细信息：网络安全](../../governance/policy/samples/azure-security-benchmark#network-security)
+若要查看适用的内置 Azure 策略，请参阅 [Azure 安全基准管理法规符合性内置计划的详细信息：网络安全](../../governance/policy/samples/azure-security-benchmark.md#network-security)
 
 ## <a name="ns-1-implement-security-for-internal-traffic"></a>NS-1：实现内部流量的安全性
 

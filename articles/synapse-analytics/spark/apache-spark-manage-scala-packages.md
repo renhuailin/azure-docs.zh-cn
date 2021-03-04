@@ -5,16 +5,16 @@ services: synapse-analytics
 author: midesa
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.date: 03/01/2020
+ms.date: 02/26/2020
 ms.author: midesa
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: 8d5c18eaaa4065eac515f38557664ceb44262adf
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: c70ecc4fc5469d728bc12d47024585ccf00ff98e
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101695909"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102098700"
 ---
 # <a name="manage-scala-and-java-packages-for-apache-spark-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中管理 Apache Spark 的 Scala 和 Java 包
 
@@ -37,13 +37,10 @@ Azure Synapse Analytics 中的 Apache Spark 包含一整套用于常见数据工
 
 添加工作区包：
 1. 导航到 "**管理**  >  **工作区包**" 选项卡。
-2. 使用文件选择器上传轮文件。
-3. 将文件上传到 Azure Synapse 工作区后，可以将这些滚轮文件添加到给定 Apache Spark 池。
+2. 使用文件选择器上载 jar 文件。
+3. 文件上传到 Azure Synapse 工作区后，可以将这些 jar 文件添加到给定 Apache Spark 池。
 
 ![突出显示工作区包的屏幕截图。](./media/apache-spark-azure-portal-add-libraries/studio-add-workspace-package.png "查看工作区包")
-
-> [!IMPORTANT]
-> 目前尚不支持在数据渗透 (DEP) 工作区中安装工作区包。
 
 ## <a name="pool-libraries"></a>池库
 确定要用于 Spark 应用程序的 Scala 和 Java 包后，可以将它们安装到 Spark 池中。 池级库可用于在池中运行的所有笔记本和作业。

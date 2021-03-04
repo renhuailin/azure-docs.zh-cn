@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 11/12/2020
 ms.author: cynthn
 ms.reviewer: zivr
-ms.openlocfilehash: 4517c939e14f3157db606f087ef042c1ba7eba3e
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: ed6319d5374db56cfe85e7ef9413480e523d9a34
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101672263"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102050879"
 ---
 # <a name="deploy-vms-to-dedicated-hosts-using-the-azure-powershell"></a>使用 Azure PowerShell 将 VM 部署到专用主机
 
@@ -24,7 +24,6 @@ ms.locfileid: "101672263"
 
 ## <a name="limitations"></a>限制
 
-- 专用主机上目前不支持虚拟机规模集。
 - 专用主机可用的大小和硬件类型因区域而异。 请参阅主机[定价页](https://aka.ms/ADHPricing)来了解详细信息。
 
 ## <a name="create-a-host-group"></a>创建主机组

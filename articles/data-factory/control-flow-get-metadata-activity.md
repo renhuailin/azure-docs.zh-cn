@@ -6,12 +6,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/25/2021
 ms.author: jingwang
-ms.openlocfilehash: 91cb10d601f0a44cf9895fffe558c03fdbe06eef
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 151f4352ce7c845050c899792fd7285c97f844bc
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101710220"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102049978"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Azure 数据工厂中的“获取元数据”活动
 
@@ -160,7 +160,7 @@ ms.locfileid: "101710220"
 属性 | 说明 | 必须
 -------- | ----------- | --------
 fieldList | 所需元数据信息的类型。 有关支持的元数据的详细信息，请参阅本文的[元数据选项](#metadata-options)部分。 | 是 
-dataset | 引用数据集，其元数据将由“获取元数据”活动检索。 有关支持的连接器的信息，请参阅[功能](#capabilities)部分。 有关数据集语法详细信息，请参阅特定的连接器主题。 | 是
+dataset | 引用数据集，其元数据将由“获取元数据”活动检索。 有关支持的连接器的信息，请参阅[功能](#supported-capabilities)部分。 有关数据集语法详细信息，请参阅特定的连接器主题。 | 是
 formatSettings | 使用格式类型数据集时适用。 | 否
 storeSettings | 使用格式类型数据集时适用。 | 否
 

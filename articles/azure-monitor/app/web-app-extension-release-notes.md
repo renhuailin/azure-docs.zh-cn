@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: MS-jgol
 ms.author: jgol
 ms.date: 06/26/2020
-ms.openlocfilehash: b9da3b0647d5abe60dd8f6cb21163ff21f07205b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 07ba61f630b849a377f1c7ba881f95518eb73606
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86539714"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102042600"
 ---
 # <a name="release-notes-for-azure-web-app-extension-for-application-insights"></a>Application Insights 的 Azure Web 应用扩展发行说明
 
@@ -27,6 +27,24 @@ ms.locfileid: "86539714"
     - 卸载专用站点扩展，因为它不再受支持。
 
 ## <a name="release-notes"></a>发行说明
+
+### <a name="2838"></a>2.8.38
+
+- JAVA 扩展：从2.5.1 升级到 [Java Agent 3.0.2 (GA) ](https://github.com/microsoft/ApplicationInsights-Java/releases/tag/3.0.2) 。
+- Node.js 扩展：从1.8.7 更新 AI SDK 到 [1.8.8](https://github.com/microsoft/ApplicationInsights-node.js/releases/tag/1.8.8) 。
+- .NET Core： (2.0、2.2、3.0) 删除了支持的版本。 支持的版本为2.1 和3.1。
+
+### <a name="2837"></a>2.8.37
+
+- AppSvc Windows 扩展： .Net Core 适用于 System.Diagnostics.DiagnosticSource.dll 的任何版本。
+
+### <a name="2836"></a>2.8.36
+
+- AppSvc Windows 扩展：在 .NET Core 中通过 AI SDK 启用了互操作。
+
+### <a name="2835"></a>2.8.35
+
+- AppSvc Windows 扩展：添加了 .NET Core 3.1 支持。
 
 ### <a name="2833"></a>2.8.33
 

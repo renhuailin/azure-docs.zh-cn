@@ -244,6 +244,8 @@
           href: how-to-use-android-map-control-library.md
         - name: 更改地图的样式
           href: set-android-map-styles.md
+        - name: 将控件添加到地图
+          href: map-add-controls-android.md
         - name: 创建数据源
           href: create-data-source-android-sdk.md
         - name: 添加符号层
@@ -256,8 +258,12 @@
           href: android-map-add-line-layer.md
         - name: 添加多边形层
           href: how-to-add-shapes-to-android-map.md
+        - name: 添加多边形挤压层
+          href: map-extruded-polygon-android.md
         - name: 添加热度地图层
           href: map-add-heat-map-layer-android.md
+        - name: 添加图像层
+          href: map-add-image-layer-android.md
         - name: 添加图块层
           href: how-to-add-tile-layer-android-map.md
         - name: 显示交通情况数据

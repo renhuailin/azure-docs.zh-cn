@@ -1,17 +1,16 @@
 ---
 title: Azure Monitor 中的数据的来源 | Microsoft Docs
 description: 介绍用于监视 Azure 资源及其上运行的应用程序的运行状况和性能的数据。
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/06/2020
-ms.openlocfilehash: e03e31c342f90a0ea9f24e6be098a801410d4b72
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 537163b4a78954443eeb7799dc624837ba03e2bd
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101732082"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102036616"
 ---
 # <a name="sources-of-monitoring-data-for-azure-monitor"></a>Azure Monitor 的监视数据源
 Azure Monitor 基于包含[日志](../logs/data-platform-logs.md)和[指标](../essentials/data-platform-metrics.md)的[通用监视数据平台](../data-platform.md)。 将数据收集到此平台后，可以使用 Azure Monitor 中的一组通用工具统一分析来自多个资源的数据。 还可以将监视数据发送到其他位置以支持特定的方案，某些资源可能会将数据写入到其他位置，然后可以在日志或指标中收集数据。

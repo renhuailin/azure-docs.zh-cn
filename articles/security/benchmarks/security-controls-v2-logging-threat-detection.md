@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 02/22/2021
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 43119a51be2359ed2ddfb4e5d5fa629badedb054
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: a274ec1aab3f530700f89ef810fa667fdf4d08e6
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101720675"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102042974"
 ---
 # <a name="security-control-v2-logging-and-threat-detection"></a>安全控制 V2：日志记录和威胁检测
 
 日志记录和威胁检测涵盖了相关控制措施用于检测 Azure 上的威胁以及启用、收集和存储 Azure 服务的审核日志。 这包括启用检测、调查和修正过程，使控件能够在 Azure 服务中生成具有本机威胁检测功能的高质量警报;它还包括 Azure Monitor 收集日志，通过 Azure Sentinel、时间同步和日志保留来集中进行安全分析。
 
-若要查看适用的内置 Azure 策略，请参阅 [Azure 安全基准管理法规符合性内置计划的详细信息：日志记录和威胁检测](../../governance/policy/samples/azure-security-benchmark#logging-and-threat-detection)
+若要查看适用的内置 Azure 策略，请参阅 [Azure 安全基准管理法规符合性内置计划的详细信息：日志记录和威胁检测](../../governance/policy/samples/azure-security-benchmark.md#logging-and-threat-detection)
 
 ## <a name="lt-1-enable-threat-detection-for-azure-resources"></a>LT-1：为 Azure 资源启用威胁检测
 

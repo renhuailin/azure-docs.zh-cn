@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: overview
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 915f8675ffda0d70347905d11c7d93975b9d4526
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 1bf9a2cf7af8b18994ef2473c11176b8aea74f6e
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132731"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102042719"
 ---
 # <a name="quotas-in-azure-static-web-apps-preview"></a>Azure 静态 Web 应用预览中的配额
 
@@ -27,7 +27,7 @@ Azure 静态 Web 应用预览存在以下配额。
 | 超额带宽           | 不可用      |
 | 应用/Azure 订阅 | 10               |
 | 应用大小                    | 250 MB           |
-| 预生产环境 | 1                |
+| 预生产环境 | 3                |
 | 自定义域              | 1                |
 | 授权<br><br>具有自定义角色和路由规则 | 最多 25 个受邀的最终用户和分配的角色 |
 | Azure Functions             | 可用        |

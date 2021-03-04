@@ -7,23 +7,23 @@ author: tamram
 ms.service: storage
 ms.devlang: python
 ms.topic: how-to
-ms.date: 12/04/2019
+ms.date: 02/18/2021
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 511166e156591562b2120b58cc420f3fccd1d8c4
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: ffdfd4dc8a81587d757e3f9853f1bb34e0b93c0d
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96008918"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102043739"
 ---
 # <a name="client-side-encryption-with-python"></a>使用 Python 进行客户端加密
 
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
 
 ## <a name="overview"></a>概述
-[用于 Python 的 Azure 存储客户端库](https://pypi.python.org/pypi/azure-storage) 支持在上传到 Azure 存储之前加密客户端应用程序中的数据，以及在下载到客户端时解密数据。
+[用于 Python 的 Azure 存储客户端库](https://pypi.python.org/pypi/azure-storage)支持在上传到 Azure 存储之前加密客户端应用程序中的数据，并在下载到客户端时解密数据。
 
 > [!NOTE]
 > Azure 存储 Python 库目前以预览版提供。
@@ -54,31 +54,31 @@ ms.locfileid: "96008918"
 存储客户端库使用 [AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) 来加密用户数据。 具体而言，是使用 AES 的[加密块链接 (CBC)](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Cipher-block_chaining_.28CBC.29) 模式。 每个服务的工作方式都稍有不同，因此我们会在此讨论其中每个服务。
 
 ### <a name="blobs"></a>Blob
-目前，客户端库仅支持整个 Blob 的加密。 具体而言，当用户使用 **create** _ 方法时，支持加密。 对于下载，支持完整下载和范围下载，并且可以并行化上传和下载。
+目前，客户端库仅支持整个 Blob 的加密。 具体而言，用户使用 **create*** 方法时支持加密。 对于下载，支持完整下载和范围下载，并且可以并行化上传和下载。
 
-在加密过程中，客户端库生成 16 字节的随机初始化向量 (IV) 和 32 字节的随机内容加密密钥 (CEK) 并将使用此信息对 Blob 数据执行信封加密。 然后，已包装的 CEK 和一些附加加密元数据将与服务上的已加密 Blob 一起存储为 Blob 元数据。
+在加密过程中，客户端库将生成 16 字节的随机初始化向量 (IV) 和 32 字节的随机内容加密密钥 (CEK) 并将使用此信息对 Blob 数据执行信封加密。 然后，已包装的 CEK 和一些附加加密元数据将与服务上的已加密 Blob 一起存储为 Blob 元数据。
 
 > [!WARNING]
 > 若要针对 Blob 编辑或上传自己的元数据，需确保此元数据已保留。 如果在没有此元数据的情况下上传新元数据，则已包装的 CEK、IV 和其他元数据会丢失，而 Blob 内容永远无法再检索。
 > 
 > 
 
-下载已加密的 blob 涉及使用 _*获取* *_ 便利方法检索整个 blob 的内容。 将已包装的 CEK 解包，与 IV（在本示例中存储为 Blob 元数据）一起使用将解密后的数据返回给用户。
+下载已加密的 blob 需要使用 **get*** 便捷方法检索整个 blob 的内容。 将已包装的 CEK 解包，与 IV（在本示例中存储为 Blob 元数据）一起使用将解密后的数据返回给用户。
 
-下载任意范围 (_*get* *_ 方法时，如果在已加密的 blob 中传递) 的范围参数，则需要调整用户提供的范围以获取少量可用于成功解密所请求的范围的附加数据。
+下载已加密 blob 中的任意范围（传入了范围参数的 **get*** 方法）需要调整用户提供的范围以获取少量可用于成功解密所请求范围的附加数据。
 
 块 Blob 和页 Blob 只能使用此方案进行加密/解密。 目前不支持加密追加 Blob。
 
 ### <a name="queues"></a>队列
 由于队列消息可以采用任何格式，客户端库定义一个自定义格式，其在消息文本中包括初始化向量 (IV) 和已加密的内容加密密钥 (CEK)。
 
-在加密过程中，客户端库会生成 16 个字节的随机 IV 和 32 个字节的随机 CEK，并使用此信息对队列消息文本执行信封加密。 然后，将已包装的 CEK 和一些附加加密元数据添加到已加密的队列消息中。 此修改后的消息（如下所示）存储在服务中。
+在加密过程中，客户端库将生成 16 字节的随机 IV 和 32 字节的随机 CEK，并使用此信息对队列消息文本执行信封加密。 然后，将已包装的 CEK 和一些附加加密元数据添加到已加密的队列消息中。 此修改后的消息（如下所示）将存储在服务中。
 
 ```
 <MessageText>{"EncryptedMessageContents":"6kOu8Rq1C3+M1QO4alKLmWthWXSmHV3mEfxBAgP9QGTU++MKn2uPq3t2UjF1DO6w","EncryptionData":{…}}</MessageText>
 ```
 
-在解密过程中，将从队列消息中提取已包装的密钥并将其解包。 还会从队列消息中提取 IV，与解包的密钥一起使用来对队列消息数据进行解密。 请注意，加密元数据很少（不到 500 个字节），因此虽然它计入队列消息的 64KB 限制，但影响应是可管理的。
+在解密过程中，将从队列消息中提取已包装的密钥并将其解包。 还将从队列消息中提取 IV，与解包的密钥一起使用来对队列消息数据进行解密。 请注意，加密元数据很少（不到 500 个字节），因此虽然它计入队列消息的 64KB 限制，但影响应是可管理的。
 
 ### <a name="tables"></a>表
 客户端库支持对插入和替换操作的实体属性进行加密。
@@ -100,8 +100,8 @@ ms.locfileid: "96008918"
    对于表，除了加密策略以外，用户还必须指定要加密的属性。 为此，可将这些属性存储在 type 设置为 EdmType.STRING 且 encrypt 设置为 true 的 TableEntity 对象中，或者在 tableservice 对象中设置 encryption_resolver_function。 加密解析程序是一个函数，它接受分区键、行键和属性名称并返回一个布尔值以指示是否应加密该属性。 在加密过程中，客户端库会使用此信息来确定是否应在写入到网络时加密属性。 该委托还可以围绕如何加密属性实现逻辑的可能性。 （例如，如果 X，则加密属性 A，否则加密属性 A 和 B。）请注意，在读取或查询实体时，不需要提供此信息。
 
 ### <a name="batch-operations"></a>批处理操作
-一个加密策略应用到批中的所有行。 客户端库将为批中的每行在内部生成一个新的随机 IV 和随机 CEK。 用户还可以选择通过在加密解析程序中定义此行为来加密批中的每个操作的不同属性。
-如果某个批是通过 tableservice batch() 方法以上下文管理器形式创建的，则 tableservice 的加密策略自动应用到该批。 如果某个批是通过调用构造函数显式创建的，则必须将加密策略作为参数来传递，并且在该批的生存期内都不要修改加密策略。
+一个加密策略将应用到批中的所有行。 客户端库将为批中的每行在内部生成一个新的随机 IV 和随机 CEK。 用户还可以选择通过在加密解析程序中定义此行为来加密批处理中的每个操作的不同属性。
+如果某个批是通过 tableservice batch() 方法以上下文管理器形式创建的，则 tableservice 的加密策略会自动应用到该批。 如果某个批是通过调用构造函数显式创建的，则必须将加密策略作为参数来传递，并且在该批的生存期内都不要修改加密策略。
 请注意，使用批的加密策略将实例插入批时，会将实体加密（使用 tableservice 的加密策略提交批时不会加密实体）。
 
 ### <a name="queries"></a>查询
@@ -114,15 +114,15 @@ ms.locfileid: "96008918"
 > [!IMPORTANT]
 > 使用客户端加密时，请注意以下要点：
 > 
-> _ 当读取或写入到已加密的 blob 时，请使用完整 blob 上传命令和范围/完整 blob 下载命令。 避免使用协议操作（如“放置块”、“放置块列表”、“写入页”或“清除页”）写入到已加密的 Blob，否则可能会损坏已加密的 Blob 并使其不可读。
+> * 读取或写入到已加密的 Blob 时，请使用完整 Blob 上传命令和范围/完整 Blob 下载命令。 避免使用协议操作（如“放置块”、“放置块列表”、“写入页”或“清除页”）写入到已加密的 Blob，否则可能会损坏已加密的 Blob 并使其不可读。
 > * 对于表，存在类似的约束。 请注意，不要在未更新加密元数据的情况下更新已加密的属性。
 > * 如果在已加密的 Blob 上设置元数据，则可能会覆盖解密所需的与加密相关的元数据，因为设置元数据不是累加性的。 这也适用于快照；避免在创建已加密的 Blob 的快照时指定元数据。 如果必须设置元数据，务必调用 **get_blob_metadata** 方法首先获取当前加密元数据，并在设置元数据时避免并发写入。
 > * 对于只处理加密数据的用户，请在服务对象中启用 **require_encryption** 标志。 有关详细信息，请参阅下文。
 
-存储客户端库要求提供的 KEK 和密钥解析程序实现以下接口。 用于 Python KEK 管理的 [Azure 密钥保管库](https://azure.microsoft.com/services/key-vault/)支持正在筹备中，开发完成后会集成到此库中。
+存储客户端库要求提供的 KEK 和密钥解析程序实现以下接口。 用于 Python KEK 管理的 [Azure 密钥保管库](https://azure.microsoft.com/services/key-vault/)支持正在筹备中，开发完成后将集成到此库中。
 
 ## <a name="client-api--interface"></a>客户端 API/接口
-创建存储服务对象（例如 blockblobservice）后，用户可以向构成加密策略的字段赋值：key_encryption_key、key_resolver_function 和 require_encryption。 用户可仅提供 KEK 或解析程序，或同时提供两者。 key_encryption_key 是使用密钥标识符进行标识的基本密钥类型，它提供包装/解包逻辑。 key_resolver_function 用于在解密过程中解析密钥。 在指定了密钥标识符的情况下，它返回有效的 KEK。 由此，用户能够在多个位置中托管的多个密钥之间进行选择。
+创建存储服务对象（例如 blockblobservice）后，用户可以向构成加密策略的字段赋值：key_encryption_key、key_resolver_function 和 require_encryption。 用户可仅提供 KEK 或解析程序，或同时提供两者。 key_encryption_key 是使用密钥标识符进行标识的基本密钥类型，它提供包装/解包逻辑。 key_resolver_function 用于在解密过程中解析密钥。 在指定了密钥标识符的情况下，它将返回有效的 KEK。 由此，用户能够在多个位置中托管的多个密钥之间进行选择。
 
 KEK 必须实现以下方法才能成功加密数据：
 
@@ -130,12 +130,12 @@ KEK 必须实现以下方法才能成功加密数据：
 * get_key_wrap_algorithm()：返回用于包装密钥的算法。
 * get_kid()：返回此 KEK 的字符串密钥 ID。
   KEK 必须实现以下方法才能成功解密数据：
-* unwrap_key(cek, algorithm)：使用字符串指定的算法返回指定 CEK 的解包形式。
+* unwrap_key(cek, algorithm)：使用字符串指定的算法返回解包形式的指定 CEK。
 * get_kid()：返回此 KEK 的字符串密钥 ID。
 
 密钥解析程序必须至少实现一个方法，以便在指定密钥 ID 的情况下，返回用于实现上述接口的相应 KEK。 只会将此方法分配到服务对象中的 key_resolver_function 属性。
 
-* 对于加密，始终使用该密钥，而没有密钥会导致错误。
+* 对于加密，始终使用该密钥，而没有密钥将导致错误。
 * 对于解密：
 
   * 如果指定为获取密钥，则调用密钥解析程序。 如果指定了解析程序，但该解析程序不具有密钥标识符的映射，则会引发错误。
@@ -145,10 +145,16 @@ KEK 必须实现以下方法才能成功加密数据：
       KEK 和密钥解析程序的示例实现在示例文件中分别以 KeyWrapper 和 KeyResolver 提供。
 
 ### <a name="requireencryption-mode"></a>RequireEncryption 模式
-用户可以选择启用这样的操作模式，要求加密所有上传和下载行为。 在此模式下，尝试在没有加密策略的情况下上传数据或下载在服务中未加密的数据，会导致在客户端上失败。 服务对象中的 **require_encryption** 标志控制此行为。
+用户可以选择启用这样的操作模式，要求加密所有上传和下载行为。 在此模式下，尝试在没有加密策略的情况下上传数据或下载在服务中未加密的数据，将导致在客户端上失败。 服务对象中的 **require_encryption** 标志控制此行为。
 
 ### <a name="blob-service-encryption"></a>Blob 服务加密
 设置 blockblobservice 对象中的加密策略字段。 其他所有事项均由客户端库在内部处理。
+
+# <a name="python-v12"></a>[Python v12](#tab/python)
+
+我们当前正在创建的代码段反映了 Azure 存储客户端库的版本2.x。 有关详细信息，请参阅 [宣布 Azure 存储 V12 客户端库](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)。
+
+# <a name="python-v21"></a>[Python 2.1 版](#tab/python2)
 
 ```python
 # Create the KEK used for encryption.
@@ -171,9 +177,16 @@ my_block_blob_service.create_blob_from_stream(
 # Download and decrypt the encrypted contents from the blob.
 blob = my_block_blob_service.get_blob_to_bytes(container_name, blob_name)
 ```
+---
 
 ### <a name="queue-service-encryption"></a>队列服务加密
 设置 queueservice 对象中的加密策略字段。 其他所有事项均由客户端库在内部处理。
+
+# <a name="python-v12"></a>[Python v12](#tab/python)
+
+我们当前正在创建的代码段反映了 Azure 存储客户端库的版本2.x。 有关详细信息，请参阅 [宣布 Azure 存储 V12 客户端库](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)。
+
+# <a name="python-v21"></a>[Python 2.1 版](#tab/python2)
 
 ```python
 # Create the KEK used for encryption.
@@ -195,11 +208,18 @@ my_queue_service.put_message(queue_name, content)
 # Retrieve message
 retrieved_message_list = my_queue_service.get_messages(queue_name)
 ```
+---
 
 ### <a name="table-service-encryption"></a>表服务加密
 除了创建加密策略并在请求选项中设置它以外，还必须在 **tableservice** 中指定 **encryption_resolver_function**，或者在 EntityProperty 中设置 encrypt 属性。
 
 ### <a name="using-the-resolver"></a>使用解析程序
+
+# <a name="python-v12"></a>[Python v12](#tab/python)
+
+我们当前正在创建的代码段反映了 Azure 存储客户端库的版本2.x。 有关详细信息，请参阅 [宣布 Azure 存储 V12 客户端库](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)。
+
+# <a name="python-v21"></a>[Python 2.1 版](#tab/python2)
 
 ```python
 # Create the KEK used for encryption.
@@ -233,17 +253,25 @@ my_table_service.insert_entity(table_name, entity)
 my_table_service.get_entity(
     table_name, entity['PartitionKey'], entity['RowKey'])
 ```
+---
 
-### <a name="using-attributes"></a>使用属性
+### <a name="using-attributes"></a>使用特性
 如上所述，可能通过将某个属性存储在 EntityProperty 对象中并设置 encrypt 字段，将该属性标记为进行加密。
+
+# <a name="python-v12"></a>[Python v12](#tab/python)
+
+我们当前正在创建的代码段反映了 Azure 存储客户端库的版本2.x。 有关详细信息，请参阅 [宣布 Azure 存储 V12 客户端库](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)。
+
+# <a name="python-v21"></a>[Python 2.1 版](#tab/python2)
 
 ```python
 encrypted_property_1 = EntityProperty(EdmType.STRING, value, encrypt=True)
 ```
+---
 
 ## <a name="encryption-and-performance"></a>加密和性能
 注意，加密存储数据会导致额外的性能开销。 必须生成内容密钥和 IV，内容本身必须进行加密，并且其他元数据必须进行格式化并上传。 此开销将因所加密的数据量而有所变化。 我们建议客户在开发过程中始终测试其应用程序的性能。
 
 ## <a name="next-steps"></a>后续步骤
-* 下载 [适用于 Java 的 Azure 存储客户端库 PyPi 包](https://pypi.python.org/pypi/azure-storage)
-* [从 GitHub 下载适用于 Python 的 Azure 存储客户端库源代码](https://github.com/Azure/azure-storage-python)
+* 下载[适用于 Java 的 Azure 存储客户端库 PyPi 包](https://pypi.python.org/pypi/azure-storage)
+* 从 GitHub 下载[适用于 Python 的 Azure 存储客户端库源代码](https://github.com/Azure/azure-storage-python)

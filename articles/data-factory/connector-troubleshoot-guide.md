@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 02/08/2021
 ms.author: jingwang
 ms.custom: has-adal-ref
-ms.openlocfilehash: 574c4967c1e45ce1ae2be92d8648d654322e2244
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 9d8f940e3900c00b1c6f6623dfeff2d92ca85aa3
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101727815"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102042423"
 ---
 # <a name="troubleshoot-azure-data-factory-connectors"></a>排查 Azure 数据工厂连接器问题
 
@@ -831,7 +831,7 @@ ms.locfileid: "101727815"
 
     如果私钥内容来自你的密钥保管库，则在将其直接上传到 SFTP 链接服务时，原始密钥文件可以工作。
 
-    有关详细信息，请参阅 [使用 Azure 数据工厂将数据从复制到 SFTP 服务器](./connector-sftp.md#using-ssh-public-key-authentication)。 私钥内容是 base64 编码的 SSH 私钥内容。
+    有关详细信息，请参阅 [使用 Azure 数据工厂将数据从复制到 SFTP 服务器](./connector-sftp.md#use-ssh-public-key-authentication)。 私钥内容是 base64 编码的 SSH 私钥内容。
 
     用 base64 编码对 *整个* 原始私钥文件进行编码，并将编码的字符串存储在密钥保管库中。 如果从文件中选择 " **上传** "，则可以在 SFTP 链接服务上使用原来的私钥文件。
 
