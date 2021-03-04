@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 1712cedab9cef23108fcc48b8e09bdc3e33065c4
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: 25785ae7a214d6122fb90b80e8f0725a3468c48d
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97679467"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102047584"
 ---
 # <a name="add-a-polygon-layer-to-the-map-android-sdk"></a>向地图添加多边形层 (Android SDK) 
 
@@ -97,6 +97,47 @@ map.layers.add(new LineLayer(source,
 > [!TIP]
 > 当使用线条层来显示多边形的轮廓时，请确保在多边形中关闭所有环，使每个点数组具有相同的起点和终点。 如果未执行此操作，则线条层可能不会将多边形的最后一个点连接到第一个点。
 
+## <a name="fill-a-polygon-with-a-pattern"></a>使用图案填充多边形
+
+除了为多边形填充颜色之外，还可以使用图像图案来进行填充。 将图像模式加载到地图图像 sprite 资源，然后使用多边形层的选项引用此图像 `fillPattern` 。
+
+```java
+//Load an image pattern into the map image sprite.
+map.images.add("fill-checker-red", R.drawable.fill_checker_red);
+
+//Create a data source and add it to the map.
+DataSource source = new DataSource();
+map.sources.add(source);
+
+//Create a polygon.
+source.add(Polygon.fromLngLats(
+    Arrays.asList(
+        Arrays.asList(
+            Point.fromLngLat(-50, -20),
+            Point.fromLngLat(0, 40),
+            Point.fromLngLat(50, -20),
+            Point.fromLngLat(-50, -20)
+        )
+    )
+));
+
+//Create and add a polygon layer to render the polygon on the map, below the label layer.
+map.layers.add(new PolygonLayer(source,
+        fillPattern("fill-checker-red"),
+        fillOpacity(0.5f)
+), "labels");
+```
+
+对于本示例，以下图像已加载到应用程序的 "图形" 文件夹中。
+
+| ![紫色箭头图标图像](media/how-to-add-shapes-to-android-map/fill-checker-red.png)|
+|:-----------------------------------------------------------------------:|
+| fill_checker_red.png                                                    |
+
+下面是上面代码的屏幕截图，它在地图上呈现一个带有填充模式的多边形。
+
+![在地图上呈现填充模式的多边形](media/how-to-add-shapes-to-android-map/android-polygon-pattern.jpg)
+
 ## <a name="next-steps"></a>后续步骤
 
 有关可向地图添加的更多代码示例，请参阅以下文章：
@@ -109,3 +150,6 @@ map.layers.add(new LineLayer(source,
 
 > [!div class="nextstepaction"]
 > [添加线条层](android-map-add-line-layer.md)
+
+> [!div class="nextstepaction"]
+> [添加多边形挤压层](map-extruded-polygon-android.md)

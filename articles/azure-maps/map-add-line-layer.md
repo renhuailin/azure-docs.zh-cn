@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: 9cf2f4876d62572ace118562fe5760f2b4010fa5
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: fedf1bc37661100404106859d3aef52b3eddf06d
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92891153"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102048131"
 ---
 # <a name="add-a-line-layer-to-the-map"></a>向地图添加线条层
 
@@ -66,7 +66,7 @@ map.layers.add(new atlas.layer.LineLayer(dataSource, null, {
 
 ## <a name="add-a-stroke-gradient-to-a-line"></a>向线条添加笔划渐变
 
-可以将一种笔划颜色应用于线条。 还可以使用颜色渐变填充线条，以显示从一个线段到下一个线段的转换。 例如，线条渐变可用于表示随时间和距离推移的变化，或是一连串连接的对象间的不同温度。 若要将此特征应用于线条，数据源必须将 `lineMetrics` 选项设置为 true，随后可以将颜色渐变表达式传递到线条的 `strokeColor` 选项。 笔划渐变表达式必须引用将计算线条指标公开给表达式的 `['line-progress']` 数据表达式。
+可以将一种笔划颜色应用于线条。 还可以使用颜色渐变填充线条，以显示从一个线段到下一个线段的转换。 例如，线条渐变可用于表示随时间和距离推移的变化，或是一连串连接的对象间的不同温度。 为了将此功能应用到行，数据源必须将 `lineMetrics` 选项设置为 `true` ，然后可以将颜色渐变表达式传递到 `strokeColor` 行的选项。 笔划渐变表达式必须引用将计算线条指标公开给表达式的 `['line-progress']` 数据表达式。
 
 <br/>
 

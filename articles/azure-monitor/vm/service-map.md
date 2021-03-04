@@ -1,17 +1,16 @@
 ---
 title: 使用 Azure 中的服务映射解决方案 | Microsoft Docs
 description: 服务映射是 Azure 中的解决方案，可自动发现 Windows 和 Linux 系统上的应用程序组件并映射服务之间的通信。 本文提供了有关在环境中部署服务映射并在各种方案中使用它的详细信息。
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/24/2019
-ms.openlocfilehash: 688adcf0012f8871c4034cbba6ce2ddcacdbcc43
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ad3f8821189e6e7aabb5653e5f938bb73f57a34b
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101717139"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102046986"
 ---
 # <a name="using-service-map-solution-in-azure"></a>使用 Azure 中的服务映射解决方案
 
@@ -26,7 +25,7 @@ ms.locfileid: "101717139"
 * 安装在 Windows 计算机或 Linux 服务器上的 [依赖关系代理](vminsights-enable-overview.md#agents) 。
 
 >[!NOTE]
->如果已部署服务映射，你现在还可以在 VM insights 中查看映射，其中包括用于监视 VM 运行状况和性能的其他功能。 若要了解详细信息，请参阅 [VM insights 概述](../vm/vminsights-overview.md)。 若要了解服务映射解决方案与 VM insights 地图功能之间的差异，请参阅以下 [常见问题解答](../faq.md#azure-monitor-for-vms)。
+>如果已部署服务映射，你现在还可以在 VM insights 中查看映射，其中包括用于监视 VM 运行状况和性能的其他功能。 若要了解详细信息，请参阅 [VM insights 概述](../vm/vminsights-overview.md)。 若要了解服务映射解决方案与 VM insights 地图功能之间的差异，请参阅以下 [常见问题解答](../faq.md#vm-insights)。
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 

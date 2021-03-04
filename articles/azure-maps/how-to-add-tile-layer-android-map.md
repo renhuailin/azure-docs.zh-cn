@@ -3,17 +3,18 @@ title: 向 Android 地图添加图块层 |Microsoft Azure 映射
 description: 了解如何向地图添加图块层。 请参阅使用 Azure Maps Android SDK 将天气雷达图添加到地图的示例。
 author: rbrundritt
 ms.author: richbrun
-ms.date: 12/08/2020
+ms.date: 2/26/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 8ea6f44c47c5cd4d223b053640f65827f46db482
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+zone_pivot_groups: azure-maps-android
+ms.openlocfilehash: 6a920dc222cae4aedd77b667644de317637bbb69
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97679299"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102047496"
 ---
 # <a name="add-a-tile-layer-to-a-map-android-sdk"></a>向地图添加图块层 (Android SDK) 
 
@@ -36,6 +37,7 @@ ms.locfileid: "97679299"
 * `{quadkey}` - 基于必应地图图块系统命名约定的图块 quadkey 标识符。
 * `{bbox-epsg-3857}` - EPSG 3857 空间引用系统中格式为 `{west},{south},{east},{north}` 的边界框字符串。
 * `{subdomain}` -子域值的占位符（如果指定了子域值）。
+* `azmapsdomain.invalid` -一个占位符，用于对齐域并使用映射所用的相同值对磁贴请求进行身份验证。 在调用由 Azure Maps 承载的磁贴服务时使用此方法。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -44,6 +46,8 @@ ms.locfileid: "97679299"
 ## <a name="add-a-tile-layer-to-the-map"></a>向地图添加图块层
 
 此示例演示如何创建指向一组图块的图块层。 此示例使用 "x，y，zoom" 平铺系统。 此图块层的源是 [OpenSeaMap 项目](https://openseamap.org/index.php)，其中包含更有源的目标。 通常在查看图块层时，最好能够清楚地查看地图上的城市标签。 可以通过将图块层插入到地图标签层下方来实现此行为。
+
+::: zone pivot="programming-language-java-android"
 
 ```java
 TileLayer layer = new TileLayer(
@@ -57,16 +61,31 @@ TileLayer layer = new TileLayer(
 map.layers.add(layer, "labels");
 ```
 
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+val layer = TileLayer(
+    tileUrl("https://tiles.openseamap.org/seamark/{z}/{x}/{y}.png"),
+    opacity(0.8f),
+    tileSize(256),
+    minSourceZoom(7),
+    maxSourceZoom(17)
+)
+
+map.layers.add(layer, "labels")
+```
+
+::: zone-end
+
 以下屏幕截图显示了上面的代码，该代码在具有深色灰度样式的地图上显示海里信息的平铺层。
 
 ![显示图块层的 Android 地图](media/how-to-add-tile-layer-android-map/xyz-tile-layer-android.png)
 
 ## <a name="next-steps"></a>后续步骤
 
-请参阅以下文章，了解有关如何设置地图样式的详细信息
+请参阅以下文章，了解有关在地图上覆盖图像的方法的详细信息。
 
 > [!div class="nextstepaction"]
-> [更改地图样式](set-android-map-styles.md)
-
-> [!div class="nextstepaction"]
-> [添加热度地图](map-add-heat-map-layer-android.md)
+> [图像层](map-add-image-layer-android.md)

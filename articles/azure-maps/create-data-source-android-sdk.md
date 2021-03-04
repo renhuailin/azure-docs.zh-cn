@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 78b0cbbdccc7d6853d4ce2821bf659e888680a5f
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: fc68dc25aad3671a55e5c11cbee094b4027e7070
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98674637"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102047666"
 ---
 # <a name="create-a-data-source-android-sdk"></a> (Android SDK 创建数据源) 
 
@@ -360,14 +360,17 @@ Azure Maps 遵循 [Mapbox Vector 磁贴规范](https://github.com/mapbox/vector-
 - 流量流[文档](/rest/api/maps/traffic/gettrafficflowtile)  |  [数据格式详细信息](https://developer.tomtom.com/traffic-api/traffic-api-documentation-traffic-flow/vector-flow-tiles)
 - Azure Maps Creator 还允许通过[获取磁贴呈现 V2](/rest/api/maps/renderv2/getmaptilepreview)创建和访问自定义向量磁贴
 
+> [!TIP]
+> 使用 web SDK Azure Maps 呈现服务中的矢量或光栅图像磁贴时，可以 `atlas.microsoft.com` 将替换为占位符 `azmapsdomain.invalid` 。 此占位符将替换为映射所使用的相同域，并将自动附加相同的身份验证详细信息。 当使用 Azure Active Directory authentication 时，这大大简化了使用渲染服务进行的身份验证。
+
 若要在地图上显示 vector 磁贴源中的数据，请将源连接到数据呈现层之一。 使用矢量源的所有层都必须 `sourceLayer` 在选项中指定一个值。 下面的代码将 Azure Maps 流量向量磁贴服务作为矢量图块源加载，然后使用线条层在地图上显示它。 此向量磁贴源在源层中具有一组称为 "流量流" 的数据。 此数据集中的行数据具有一个名为的属性，该属性 `traffic_level` 在此代码中用于选择颜色并缩放线条大小。
 
 ```java
 //Formatted URL to the traffic flow vector tiles, with the maps subscription key appended to it.
-String trafficFlowUrl = "https://atlas.microsoft.com/traffic/flow/tile/pbf?api-version=1.0&style=relative&zoom={z}&x={x}&y={y}&subscription-key=" + AzureMaps.getSubscriptionKey();
+String trafficFlowUrl = "https://azmapsdomain.invalid/traffic/flow/tile/pbf?api-version=1.0&style=relative&zoom={z}&x={x}&y={y}";
 
 //Create a vector tile source and add it to the map.
-VectorTileSource source = new VectorTileSource("flowLayer",
+VectorTileSource source = new VectorTileSource(
     tiles(new String[] { trafficFlowUrl }),
     maxSourceZoom(22)
 );

@@ -7,13 +7,13 @@ ms.author: bagol
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
-ms.date: 02/22/2021
-ms.openlocfilehash: 887245bbbefa1c0232313b638203206b623d506b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/03/2021
+ms.openlocfilehash: c466d7717dd1dad0ea9ee3f44088d1400cee083f
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101729702"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102048176"
 ---
 # <a name="whats-new-in-azure-sentinel"></a>Azure Sentinel 中的新增功能
 
@@ -32,8 +32,44 @@ ms.locfileid: "101729702"
 
 ## <a name="february-2021"></a>2021 年 2 月
 
+- [第三方数据连接器](#third-party-data-connectors)
 - [实体页中的 UEBA insights](#ueba-insights-in-the-entity-page)
 - [改进的事件搜索](#improved-incident-search)
+
+### <a name="third-party-data-connectors"></a>第三方数据连接器
+
+第三方集成的集合继续增长，最后两个月内添加了三十个连接器。 下面是一个列表：
+
+- [Agari Phishing Defense 和 Agari Brand Protection](connect-agari-phishing-defense.md)
+- [Akamai 安全事件](connect-akamai-security-events.md)
+- [Alsid for Active Directory](connect-alsid-active-directory.md)
+- [Apache HTTP Server](connect-apache-http-server.md)
+- [Aruba ClearPass](connect-aruba-clearpass.md)
+- [Blackberry CylancePROTECT](connect-data-sources.md)
+- [Broadcom Symantec DLP](connect-broadcom-symantec-dlp.md)
+- [Cisco Firepower eStreamer](connect-data-sources.md)
+- [Cisco Meraki](connect-cisco-meraki.md)
+- [Cisco Umbrella](connect-cisco-umbrella.md)
+- [Cisco 统一计算系统 (UCS) ](connect-cisco-ucs.md)
+- [ESET 企业检查器](connect-data-sources.md)
+- [ESET 安全管理中心](connect-data-sources.md)
+- [Google Workspace (以前的 G Suite) ](connect-google-workspace.md)
+- [Imperva WAF 网关](connect-imperva-waf-gateway.md)
+- [Juniper SRX](connect-juniper-srx.md)
+- [Netskope](connect-data-sources.md)
+- [NXLog DNS 日志](connect-nxlog-dns.md)
+- [NXLog Linux 审核](connect-nxlog-linuxaudit.md)
+- [Onapsis 平台](connect-data-sources.md)
+- [Proofpoint on demand 请求电子邮件安全 (POD) ](connect-proofpoint-pod.md)
+- [Qualys 漏洞管理知识库](connect-data-sources.md)
+- [Salesforce 服务云](connect-salesforce-service-cloud.md)
+- [SonicWall 防火墙](connect-data-sources.md)
+- [Sophos Cloud Optix](connect-sophos-cloud-optix.md)
+- [Squid Proxy](connect-squid-proxy.md)
+- [Symantec Endpoint Protection](connect-data-sources.md)
+- [Thycotic Secret Server](connect-thycotic-secret-server.md)
+- [趋势微 XDR](connect-data-sources.md)
+- [VMWare ESXi](connect-vmware-esxi.md)
 
 ### <a name="ueba-insights-in-the-entity-page"></a>实体页中的 UEBA insights
 
@@ -66,6 +102,7 @@ Azure Sentinel 实体详细信息页提供了一个 " [见解" 窗格](identify-
 - [分析规则向导： (公开预览版，改进了查询编辑体验) ](#analytics-rule-wizard-improved-query-editing-experience-public-preview)
 - [SecurityInsights PowerShell 模块 (公开预览版) ](#azsecurityinsights-powershell-module-public-preview)
 - [SQL 数据库连接器](#sql-database-connector)
+- [Dynamics 365 连接器](#dynamics-365-connector)
 - [改进的事件评论](#improved-incident-comments)
 - [专用 Log Analytics 群集](#dedicated-log-analytics-clusters)
 - [逻辑应用托管标识](#logic-apps-managed-identities)
@@ -81,7 +118,7 @@ Azure Sentinel 计划分析规则向导现在提供了以下用于编写和编�
 -   扩展了自动完成支持。
 -   实时查询验证。 查询中的错误现在在滚动条中显示为红色块，并作为 " **设置规则逻辑** " 选项卡名称中的红点。 此外，不能保存带有错误的查询。
 
-有关详细信息，请参阅 [教程：就地检测到威胁](tutorial-detect-threats-built-in.md)。
+有关详细信息，请参阅 [教程：创建自定义分析规则以检测威胁](tutorial-detect-threats-custom.md)。
 ### <a name="azsecurityinsights-powershell-module-public-preview"></a>SecurityInsights PowerShell 模块 (公开预览版) 
 
 Azure Sentinel 现在支持新的 [Az SecurityInsights](https://www.powershellgallery.com/packages/Az.SecurityInsights/) PowerShell 模块。
@@ -99,6 +136,12 @@ Azure Sentinel 现在提供 Azure SQL 数据库连接器，可以将数据库审
 Azure SQL 是一种完全托管的平台即服务 (PaaS) 数据库引擎，可处理大多数数据库管理功能，例如升级、修补、备份和监视，无需用户参与。
 
 有关详细信息，请参阅 [连接 AZURE SQL 数据库诊断和审核日志](connect-azure-sql-logs.md)。
+
+### <a name="dynamics-365-connector"></a>Dynamics 365 连接器
+
+Azure Sentinel 现在提供了一个适用于 Microsoft Dynamics 365 的连接器，可让你将 Dynamics 365 应用程序的用户、管理员和支持活动日志收集到 Azure Sentinel 中。 您可以使用这些数据来帮助您审核发生的全部数据处理操作并对其进行分析，以应对可能的安全漏洞。
+
+有关详细信息，请参阅 [将 Dynamics 365 活动日志连接到 Azure Sentinel](connect-dynamics-365.md)。
 
 ### <a name="improved-incident-comments"></a>改进的事件评论
 
@@ -185,15 +228,14 @@ Azure Sentinel 使用 Log Analytics 代理向工作区发送事件，包括 Wind
 有关详细信息，请参阅 [Log Analytics 文档](../azure-monitor/agents/log-analytics-agent.md) 和 [Log Analytics 代理发行说明](https://github.com/microsoft/OMS-Agent-for-Linux/releases)。
 ## <a name="november-2020"></a>2020 年 11 月
 
-- [监视 Azure Sentinel 中的逻辑应用行动手册](#monitor-your-logic-apps-playbooks-in-azure-sentinel)
+- [在 Azure Sentinel 中监视行动手册的运行状况](#monitor-your-playbooks-health-in-azure-sentinel)
 - [Microsoft 365 Defender 连接器 (公共预览版) ](#microsoft-365-defender-connector-public-preview)
-### <a name="monitor-your-logic-apps-playbooks-in-azure-sentinel"></a>监视 Azure Sentinel 中的逻辑应用行动手册
 
-Azure Sentinel 现在集成了 [Azure 日志应用](../logic-apps/index.yml)（一种云服务，可帮助你计划、自动执行和协调任务、业务流程和工作流）。
+### <a name="monitor-your-playbooks-health-in-azure-sentinel"></a>在 Azure Sentinel 中监视行动手册的运行状况
 
-使用 Azure 中的 Azure 逻辑应用作为操作手册，可以在创建事件时或会审和使用事件时自动调用操作手册。 
+Azure Sentinel 行动手册基于 [Azure 日志应用](../logic-apps/index.yml)中内置的工作流，这是一项云服务，可帮助你计划、自动执行和协调任务、业务流程和工作流。 在创建事件时，或在会审和使用事件时，可以自动调用行动手册。 
 
-为了深入了解行动手册的运行状况、性能和使用情况（包括使用 Azure 逻辑应用添加的任何应用程序），我们添加了名为 "执行 **手册运行状况监视**" 的 [Azure 工作簿](../azure-monitor/visualize/workbooks-overview.md)。 
+为了深入了解行动手册的运行状况、性能和使用情况，我们添加了一个名为 "执行 **手册运行状况监视**" 的 [工作簿](../azure-monitor/visualize/workbooks-overview.md)。 
 
 使用 " **行动手册" 健康状况监视** 工作簿监视行动手册的运行状况，或查找成功或失败的运行量中的异常。 
 

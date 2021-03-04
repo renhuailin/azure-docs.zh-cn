@@ -1,6 +1,6 @@
 ---
 title: 使用存储空间直通创建 FCI
-description: 使用存储空间直通在 Azure 虚拟机上创建 (FCI) 与 SQL Server 的故障转移群集实例。
+description: 使用存储空间直通为 Azure 虚拟机上的 SQL Server 创建故障转移群集实例 (FCI)。
 services: virtual-machines
 documentationCenter: na
 author: MashaMSFT
@@ -14,28 +14,28 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/18/2020
 ms.author: mathoma
-ms.openlocfilehash: 6ed5e11a8492314e99b9f105d259fa910dcdb77d
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: aa19cf6b59b1efa4b14501fbf64e319da3e4c0b3
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97357800"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102048635"
 ---
-# <a name="create-an-fci-with-storage-spaces-direct-sql-server-on-azure-vms"></a>在 Azure Vm 上使用存储空间直通 (SQL Server 创建 FCI) 
+# <a name="create-an-fci-with-storage-spaces-direct-sql-server-on-azure-vms"></a>使用存储空间直通创建 FCI（Azure VM 上的 SQL Server）
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-本文介绍如何在 Azure 虚拟机 (Vm) 中使用 [存储空间直通](/windows-server/storage/storage-spaces/storage-spaces-direct-overview) 和 SQL Server 来创建 (FCI) 的故障转移群集实例。 存储空间直通充当基于软件的虚拟存储区域网络 (VSAN) ，它在 Windows 群集) Azure Vm (节点之间同步存储 (数据磁盘) 。 
+本文介绍了如何使用[存储空间直通](/windows-server/storage/storage-spaces/storage-spaces-direct-overview)为 Azure 虚拟机 (VM) 上的 SQL Server 创建故障转移群集实例 (FCI)。 存储空间直通充当基于软件的虚拟存储区域网络 (VSAN)，在 Windows 群集中的节点 (Azure VM) 之间同步存储（数据磁盘）。 
 
-若要了解详细信息，请参阅 [有关 Azure vm 的 SQL Server FCI](failover-cluster-instance-overview.md) 和 [群集最佳实践](hadr-cluster-best-practices.md)的概述。 
+若要了解详细信息，请参阅对 [Azure VM 上的 SQL Server 的 FCI](failover-cluster-instance-overview.md) 和[群集最佳做法](hadr-cluster-best-practices.md)的概述。 
 
 
 ## <a name="overview"></a>概述 
 
-[存储空间直通 (S2D) ](/windows-server/storage/storage-spaces/storage-spaces-direct-overview) 支持两种类型的体系结构：聚合和超聚合。 超聚合基础结构将存储放置在托管群集应用程序的相同服务器上，以便存储位于每个 SQL Server FCI "节点上。 
+[存储空间直通 (S2D)](/windows-server/storage/storage-spaces/storage-spaces-direct-overview) 支持两种类型的体系结构：融合与超融合。 超融合基础设施将存储放置在托管群集应用程序的服务器上，使存储位于每个 SQL Server FCI 节点上。 
 
-下图显示了在 Azure Vm 上使用超聚合存储空间直通与 SQL Server 的完整解决方案： 
+下图显示了完整的解决方案，该解决方案将超融合存储空间直通与 Azure VM 上的 SQL Server 配合使用： 
 
-![使用超聚合存储空间直通的完整解决方案示意图](./media/failover-cluster-instance-storage-spaces-direct-manually-configure/00-sql-fci-s2d-complete-solution.png)
+![使用超融合存储空间直通的完整解决方案的示意图](./media/failover-cluster-instance-storage-spaces-direct-manually-configure/00-sql-fci-s2d-complete-solution.png)
 
 上图显示了同一资源组中的以下资源：
 
@@ -48,12 +48,12 @@ ms.locfileid: "97357800"
 - Azure 可用性集保存所有资源。
 
    > [!NOTE]
-   > 可以在 Azure 中基于模板创建整个解决方案。 GitHub [Azure 快速入门模板](https://github.com/MSBrett/azure-quickstart-templates/tree/master/sql-server-2016-fci-existing-vnet-and-ad) 页上提供了一个模板示例。 此示例不是针对任何特定工作负荷设计的，也没有针对任何特定工作负荷进行测试。 运行该模板可以使用与域连接的存储空间直通存储创建 SQL Server FCI。 可以评估该模板，并根据用途对其进行修改。
+   > 可以在 Azure 中基于模板创建整个解决方案。 GitHub [Azure 快速入门模板](https://github.com/MSBrett/azure-quickstart-templates/tree/master/sql-server-2016-fci-existing-vnet-and-ad)页面上提供了一个模板示例。 此示例不是针对任何特定工作负荷设计的，也没有针对任何特定工作负荷进行测试。 运行该模板可以使用与域连接的存储空间直通存储创建 SQL Server FCI。 可以评估该模板，并根据用途对其进行修改。
 
 
 ## <a name="prerequisites"></a>先决条件
 
-在完成本文中的说明之前，你应该已经：
+在按本文中的说明操作之前，你应已具备以下条件：
 
 - Azure 订阅。 [免费试用](https://azure.microsoft.com/free/)。 
 - [可用性集中](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set)的[两个或更多个已准备的 Windows Azure 虚拟机](failover-cluster-instance-prepare-vm.md)。
@@ -63,14 +63,14 @@ ms.locfileid: "97357800"
 
 ## <a name="add-the-windows-cluster-feature"></a>添加 Windows 群集功能
 
-1. 使用远程桌面协议 (RDP) 连接到第一个虚拟机，该帐户是本地管理员的成员并且有权在 Active Directory 中创建对象的域帐户。 使用此帐户完成余下的配置。
+1. 使用属于本地管理员且有权在 Active Directory 中创建对象的域帐户，通过远程桌面协议 (RDP) 连接到第一个虚拟机。 使用此帐户完成余下的配置。
 
-1. 将故障转移群集添加到每个虚拟机。
+1. 向每个虚拟机添加故障转移群集。
 
-   若要从 UI 安装故障转移群集，请在两个虚拟机上执行以下操作：
+   若要通过 UI 安装故障转移群集，请在两个虚拟机上执行以下步骤：
 
    1. 在“服务器管理器”中选择“管理”，然后选择“添加角色和功能”。  
-   1. 在 " **添加角色和功能** 向导" 中，选择 " **下一步** "，直到你 **选择 "功能**"。
+   1. 在“添加角色和功能”向导中选择“下一步”，直到出现“选择功能”。  
    1. 在“选择功能”中，选择“故障转移群集”。  请包含所有所需的功能和管理工具。 
    1. 选择“添加功能”。
    1. 选择“下一步”，然后选择“完成”安装这些功能。 
@@ -82,14 +82,14 @@ ms.locfileid: "97357800"
    Invoke-Command  $nodes {Install-WindowsFeature Failover-Clustering -IncludeAllSubFeature -IncludeManagementTools}
    ```
 
-有关后续步骤的详细信息，请参阅 [使用 Windows Server 2016 中的存储空间直通超聚合解决方案](/windows-server/storage/storage-spaces/deploy-storage-spaces-direct#step-3-configure-storage-spaces-direct)的 "步骤3：配置存储空间直通" 部分中的说明。
+有关后续步骤的详细信息，请参阅[Windows Server 2016 中使用存储空间直通的超融合解决方案](/windows-server/storage/storage-spaces/deploy-storage-spaces-direct#step-3-configure-storage-spaces-direct)中的“步骤 3：配置存储空间直通”部分。
 
 
 ## <a name="validate-the-cluster"></a>验证群集
 
 使用 UI 或 PowerShell 验证群集。
 
-若要使用 UI 验证群集，请在其中一台虚拟机上执行以下操作：
+若要使用 UI 来验证群集，请在某个虚拟机中执行以下步骤：
 
 1. 在“服务器管理器”下，依次选择“工具”、“故障转移群集管理器”。  
 1. 在“故障转移群集管理器”下，依次选择“操作”、“验证配置”。  
@@ -104,7 +104,7 @@ ms.locfileid: "97357800"
 1. 选择“**下一页**”。
 1. 在“确认”下，选择“下一步”。 
 
-    " **验证配置** 向导" 将运行验证测试。
+    “验证配置”向导会运行验证测试。
 
 若要使用 PowerShell 验证群集，请在某个虚拟机上通过管理员 PowerShell 会话运行以下脚本：
 
@@ -147,11 +147,11 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 
 ## <a name="configure-quorum"></a>配置仲裁
 
-配置最适合你的业务需求的仲裁解决方案。 可以配置 [磁盘见证](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)、 [云见证](/windows-server/failover-clustering/deploy-cloud-witness)或 [文件共享见证](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)。 有关详细信息，请参阅 [SQL Server vm 的仲裁](hadr-cluster-best-practices.md#quorum)。 
+配置最符合业务需求的仲裁解决方案。 你可以配置[磁盘见证](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)、[云见证](/windows-server/failover-clustering/deploy-cloud-witness)或[文件共享见证](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)。 有关详细信息，请参阅 [SQL Server VM 上的仲裁](hadr-cluster-best-practices.md#quorum)。 
 
 ## <a name="add-storage"></a>添加存储
 
-存储空间直通的磁盘需是空的。 它们不能包含分区或其他数据。 若要清除磁盘，请按照 [部署存储空间直通](/windows-server/storage/storage-spaces/deploy-storage-spaces-direct#step-31-clean-drives)中的说明进行操作。
+存储空间直通的磁盘需是空的。 它们不能包含分区或其他数据。 若要清除磁盘，请按照[部署存储空间直通](/windows-server/storage/storage-spaces/deploy-storage-spaces-direct#step-31-clean-drives)中的说明进行操作。
 
 1. [启用存储空间直通](/windows-server/storage/storage-spaces/deploy-storage-spaces-direct#step-35-enable-storage-spaces-direct)。
 
@@ -165,23 +165,23 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 
 1. [创建卷](/windows-server/storage/storage-spaces/deploy-storage-spaces-direct#step-36-create-volumes)。
 
-   启用存储空间直通后，它会自动创建存储池。 接下来，可以创建卷。 PowerShell cmdlet `New-Volume` 自动完成卷的创建过程。 此过程包括格式化、将卷添加到群集，以及创建 CSV。 此示例将创建 800 gb (GB) CSV：
+   启用存储空间直通后，它会自动创建存储池。 接下来，可以创建卷。 PowerShell cmdlet `New-Volume` 自动完成卷的创建过程。 此过程包括格式设置、将卷添加到群集，以及创建 CSV。 此示例创建一个 800 千兆字节 (GB) 的 CSV：
 
    ```powershell
    New-Volume -StoragePoolFriendlyName S2D* -FriendlyName VDisk01 -FileSystem CSVFS_REFS -Size 800GB
    ```   
 
-   运行上述命令后，会将 800 GB 卷作为群集资源进行装载。 该卷位于 `C:\ClusterStorage\Volume1\`。
+   运行前面的命令后，一个 800 GB 的卷将装载为群集资源。 该卷位于 `C:\ClusterStorage\Volume1\`。
 
-   此屏幕截图显示了存储空间直通的 CSV：
+   此屏幕截图显示了一个采用存储空间直通的 CSV：
 
-   ![具有存储空间直通群集共享卷的屏幕截图](./media/failover-cluster-instance-storage-spaces-direct-manually-configure/15-cluster-shared-volume.png)
+   ![屏幕截图显示采用存储空间直通的群集共享卷](./media/failover-cluster-instance-storage-spaces-direct-manually-configure/15-cluster-shared-volume.png)
 
 
 
 ## <a name="test-cluster-failover"></a>测试群集故障转移
 
-测试群集的故障转移。 在 **故障转移群集管理器** 中，右键单击群集，选择 "**更多操作**" "  >  **移动核心群集资源**  >  " "**选择节点**"，然后选择群集的其他节点。 将核心群集资源移到群集的每个节点，再将它移回主节点。 如果可以成功将群集移到每个节点，则表示你已为安装 SQL Server 做好了准备。  
+测试你的群集的故障转移。 在“故障转移群集管理器”中，右键单击你的群集并选择“更多操作” > “移动核心群集资源” > “选择节点”，然后选择群集的其他节点。    将核心群集资源移到群集的每个节点，再将它移回主节点。 如果可以成功将群集移到每个节点，则表示你已为安装 SQL Server 做好了准备。  
 
 :::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/test-cluster-failover.png" alt-text="通过将核心资源移到其他节点来测试群集故障转移":::
 
@@ -191,7 +191,7 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 
 1. 使用 RDP 连接到第一个虚拟机。
 
-1. 在 **故障转移群集管理器** 中，请确保所有核心群集资源位于第一个虚拟机上。 如有必要，请将所有资源移到该虚拟机。
+1. 在“故障转移群集管理器”中，确保所有核心群集资源位于第一个虚拟机上。 如有必要，请将所有资源移到该虚拟机。
 
 1. 找到安装媒体。 如果虚拟机使用某个 Azure 市场映像，该媒体将位于 `C:\SQLServer_<version number>_Full`。 选择“设置”。
 
@@ -199,11 +199,11 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 
 1. 选择“新建 SQL Server 故障转移群集安装”。 遵照向导中的说明安装 SQL Server FCI。
 
-   FCI 数据目录需位于群集存储中。 使用存储空间直通，它不是共享磁盘，而是每个服务器上的卷的装入点。 存储空间直通在两个节点之间同步该卷。 卷作为 CSV 提供给群集。 使用数据目录的 CSV 装入点。
+   FCI 数据目录需位于群集存储中。 使用存储空间直通时，该存储不是共享磁盘，而是每个服务器上的卷的装入点。 存储空间直通在两个节点之间同步该卷。 该卷作为 CSV 提供给群集。 使用数据目录的 CSV 装入点。
 
    ![数据目录](./media/failover-cluster-instance-storage-spaces-direct-manually-configure/20-data-dicrectories.png)
 
-1. 完成向导中的说明之后，安装程序会在第一个节点上安装 SQL Server FCI。
+1. 根据向导中的说明完成操作后，安装程序会在第一个节点上安装 SQL Server FCI。
 
 1. 安装程序在第一个节点上安装 FCI 后，请使用 RDP 连接到第二个节点。
 
@@ -234,21 +234,23 @@ New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $v
 
 ## <a name="configure-connectivity"></a>配置连接 
 
-若要将流量正确路由到当前主节点，请配置适用于你的环境的连接选项。 你可以创建 [Azure 负载均衡器](failover-cluster-instance-vnn-azure-load-balancer-configure.md) ，或者，如果使用 SQL SERVER 2019 CU2 (或更高版本) 和 Windows Server 2016 (或更) 高版本，则可以改为使用 [分布式网络名称](failover-cluster-instance-distributed-network-name-dnn-configure.md) 功能。 
+若要将流量正确路由到当前主节点，请配置适用于你的环境的连接选项。 你可以创建 [Azure 负载均衡器](failover-cluster-instance-vnn-azure-load-balancer-configure.md)，也可以在使用 SQL Server 2019 CU2（或更高版本）和 Windows Server 2016（或更高版本）的情况下改用[分布式网络名称](failover-cluster-instance-distributed-network-name-dnn-configure.md)功能。 
+
+有关群集连接选项的更多详细信息，请参阅[将 HADR 连接路由到 Azure VM 上的 SQL Server](hadr-cluster-best-practices.md#connectivity)。 
 
 ## <a name="limitations"></a>限制
 
-- Azure 虚拟机支持 Windows Server 2019 上的 Microsoft 分布式事务处理协调器 (MSDTC) ，以及 Csv 上的存储和 [标准负载均衡器](../../../load-balancer/load-balancer-overview.md)。
-- 仅当在将存储添加到群集时，如果未选中或未选中，则已作为 NTFS 格式的磁盘附加的磁盘才能与存储空间直通一起使用。 
+- Azure 虚拟机支持 Windows Server 2019 上的 Microsoft 分布式事务处理协调器 (MSDTC)，其中的存储位于 CSV 和[标准负载均衡器](../../../load-balancer/load-balancer-overview.md)上。
+- 如果将存储添加到群集，则仅当未选中或清除了磁盘资格选项时，已作为 NTFS 格式的磁盘附加的磁盘才能与存储空间直通一起使用。 
 - 仅支持在 [轻型管理模式下](sql-server-iaas-agent-extension-automate-management.md#management-modes) 注册 SQL IaaS 代理扩展。
 
 ## <a name="next-steps"></a>后续步骤
 
-如果尚未执行此操作，请使用 [虚拟网络名称、Azure 负载均衡器](failover-cluster-instance-vnn-azure-load-balancer-configure.md) 或 [ (DNN) 的分布式网络名称 ](failover-cluster-instance-distributed-network-name-dnn-configure.md)配置到 FCI 的连接。 
+使用[虚拟网络名称和 Azure 负载均衡器](failover-cluster-instance-vnn-azure-load-balancer-configure.md)或[分布式网络名称 (DNN)](failover-cluster-instance-distributed-network-name-dnn-configure.md) 配置到 FCI 的连接（如果尚未执行此操作）。 
 
-如果存储空间直通不是合适的 FCI 存储解决方案，请考虑使用 [Azure 共享磁盘](failover-cluster-instance-azure-shared-disks-manually-configure.md) 或 [高级文件共享](failover-cluster-instance-premium-file-share-manually-configure.md) 来创建 FCI。 
+如果存储空间直通不是适合你的 FCI 存储解决方案，请考虑改用 [Azure 共享磁盘](failover-cluster-instance-azure-shared-disks-manually-configure.md)或[高级文件共享](failover-cluster-instance-premium-file-share-manually-configure.md)来创建 FCI。 
 
-若要了解详细信息，请参阅 [有关 Azure vm 的 SQL Server FCI](failover-cluster-instance-overview.md) 和 [群集配置最佳实践](hadr-cluster-best-practices.md)的概述。 
+若要了解详细信息，请参阅对 [Azure VM 上的 SQL Server 的 FCI](failover-cluster-instance-overview.md) 和[群集配置最佳做法](hadr-cluster-best-practices.md)的概述。 
 
 有关详细信息，请参阅： 
 - [Windows 群集技术](/windows-server/failover-clustering/failover-clustering-overview)   

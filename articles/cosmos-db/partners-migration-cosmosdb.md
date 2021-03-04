@@ -6,12 +6,12 @@ ms.author: sngun
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
-ms.openlocfilehash: 7fe0817abfac3070f77303bb0d2d662d18010862
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 66f26cfa14d51a985e2bb420bec294f7ef3a6cd1
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99090462"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102048125"
 ---
 # <a name="azure-cosmos-db-nosql-migration-and-application-development-partners"></a>Azure Cosmos DB NoSQL 迁移和应用程序开发合作伙伴
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -26,12 +26,11 @@ ms.locfileid: "99090462"
 | [10thMagnitude](https://www.10thmagnitude.com/) | IoT，零售 (清点) ，操作分析 (Spark) ，无服务器体系结构，应用开发 | USA |
 |[Altoros Development LLC](https://www.altoros.com/)  |  IoT，个性化零售 (清单) ，无服务器体系结构 NoSQL 迁移，应用开发|   USA |
 |[Avanade](https://www.avanade.com/) | IoT，零售 (清单) ，无服务器体系结构，应用开发 | 奥地利、德国、瑞士、意大利、挪威、西班牙、英国、加拿大 |
-|[Accenture](https://www.accenture.com/) | IoT，零售 (清单) ，无服务器体系结构，应用开发 |Global|
+|[Accenture](https://www.accenture.com/) | IoT，零售 (清单) ，无服务器体系结构，应用开发 |全球|
 |[Capax Global LLC](https://www.capaxglobal.com/) | IoT，个性化，零售 (库存) ，操作分析 (Spark) ，无服务器体系结构，应用开发|    USA     |  
 | [Capgemini](https://www.capgemini.com/) | 零售 (清单) ，IoT，操作分析 (Spark) ，应用开发 | 美国、法国、英国、荷兰、芬兰  |
 | [Cognizant](https://www.cognizant.com/) | IoT，个性化，零售 (库存) ，操作分析 (Spark) ，应用开发 |美国、加拿大、英国、丹麦、荷兰、瑞士、澳大利亚、日本 |
 |[Infosys](https://www.infosys.com/)     | 应用开发      |    USA    |  
-| [Lagash 系统](https://www.devex.com/organizations/lagash-systems-131346) | IoT，无服务器体系结构，应用开发 | 阿根廷、智利、哥伦比亚、墨西哥|
 | [Lambda3 Informatics](https://www.lambda3.com.br/) | 实时个性化，零售库存，应用开发 | 巴西|
 |[Neal Analytics](https://www.nealanalytics.com/)    |     个性化，零售 (库存) ，操作分析 (Spark) ，应用开发  |    USA     |  
 |[Pragmatic Works Software Inc](https://www.pragmaticworks.com/)    |   NoSQL 迁移      |   USA      |

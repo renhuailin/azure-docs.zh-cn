@@ -1,17 +1,16 @@
 ---
 title: 为混合环境启用 Azure Monitor
 description: 本文介绍如何为包含一个或多个虚拟机的混合云环境启用 VM insights。
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: 6518906f264077ac88a90513a237840f7f814247
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: c3c8495b7355ee5d9ee8c28b4e0097a0080964d4
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101731266"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102046630"
 ---
 # <a name="enable-vm-insights-for-a-hybrid-virtual-machine"></a>为混合虚拟机启用 VM insights
 本文介绍如何为 Azure 外部的虚拟机（包括本地和其他云环境）启用 VM insights。

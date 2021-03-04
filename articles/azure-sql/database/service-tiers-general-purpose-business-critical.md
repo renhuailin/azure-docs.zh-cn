@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake
 ms.date: 12/14/2020
-ms.openlocfilehash: b5a30846a6e2aaf85ded2e55641aa5fba9507a29
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.openlocfilehash: 95e11e98be8a58611a435de533ffcc16ec5ce357
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98165767"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102048550"
 ---
 # <a name="azure-sql-database-and-azure-sql-managed-instance-service-tiers"></a>Azure SQL 数据库和 Azure SQL 托管实例服务层级
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -42,7 +42,7 @@ Azure SQL 数据库还有一个服务层级：
 | **最适用于** | |  提供以预算导向的、均衡的计算和存储选项。 | 大多数业务工作负荷。 自动缩放存储大小，最大可达 100 TB，流畅的垂直和水平计算缩放，快速数据库还原。 | 事务率较高、IO 延迟较低的 OLTP 应用程序。 使用多个同步更新的副本提供最高故障复原能力和快速故障转移。|
 |  **在以下资源类型中可用：** ||SQL 数据库/ SQL 托管实例 | 单一 Azure SQL 数据库 | SQL 数据库/ SQL 托管实例 |
 | **计算大小**| SQL 数据库 | 1 - 80 个 vCore | 1 - 80 个 vCore | 1 - 80 个 vCore |
-| | SQL 托管实例 | 4、8、16、24、32、40、64、80 个 vCore | 空值 | 4、8、16、24、32、40、64、80 个 vCore |
+| | SQL 托管实例 | 4、8、16、24、32、40、64、80 个 vCore | 不适用 | 4、8、16、24、32、40、64、80 个 vCore |
 | | SQL 托管实例池 | 2，4，8，16，24，32，40，64，80 Vcore | 不适用 | 不适用 |
 | **存储类型** | 全部 | 高级远程存储（每个实例） | 具有本地 SSD 缓存的分离的存储（每个实例） | 超快的本地 SSD 存储（每个实例） |
 | **数据库大小** | SQL 数据库 | 5 GB – 4 TB | 最多 100 TB | 5 GB – 4 TB |
@@ -78,7 +78,7 @@ Azure SQL 数据库还有一个服务层级：
   - 对于“高级”或“业务关键”服务层级中的存储，按 250 GB 增量增减大小。
 - 在“常规用途”服务层级中，`tempdb` 使用附加的 SSD，此存储成本包含在 vCore 价格中。
 - 在“业务关键”服务层级中，`tempdb` 与 MDF 和 LDF 文件共享附加的 SSD，`tempdb` 存储成本已包含在 vCore 价格中。
-- 在 DTU 高级服务层中， `tempdb` 与 MDF 和 LDF 文件共享附加的 SSD。
+- 在 DTU 高级服务层级中，`tempdb` 与 MDF 和 LDF 文件共享附加的 SSD。
 - SQL 托管实例的存储大小必须指定为 32 GB 的倍数。
 
 
@@ -95,7 +95,7 @@ Azure SQL 数据库还有一个服务层级：
 为数据库备份分配存储，以支持 SQL 数据库和 SQL 托管实例的时间点还原 (PITR) 和[长期保留 (LTR)](long-term-retention-overview.md) 功能。 此存储空间针对每个数据库单独分配，并根据数据库费用分开计费。
 
 - **PITR**：自动将各个数据库备份复制到 [读取访问权限异地冗余存储 (RA-GRS)](../../storage/common/geo-redundant-design.md)。 创建新备份时，存储大小动态递增。 存储由每周完整备份、每日差异备份和 5 分钟复制一次的事务日志备份使用。 存储消耗量取决于数据库变化率和备份保留期。 可单独为每个数据库配置 7 到 35 天的保留期。 提供与 100%（1 倍）数据库大小相等的最小存储量，不收取额外费用。 对于大多数数据库而言，此容量足以将备份存储 7 天。
-- **LTR**：还可以选择将完整备份的长期保留时长配置为最长 10 年（此功能现通过 [SQL 托管实例的有限公共预览版](long-term-retention-overview.md#sql-managed-instance-support)提供。 如果设置了 LTR 策略，则这些备份将自动存储在 RA-GRS 存储中，但你可以控制备份的复制频率。 为了满足不同的符合性要求，可为每周、每月和/或每年备份选择不同的保留期。 所选配置决定了多少存储将用于 LTR 备份。 若要估算 LTR 存储成本，可以使用 LTR 定价计算器。 有关详细信息，请参阅 [SQL 数据库长期保留](long-term-retention-overview.md)。
+- **LTR**：你也可以选择将完整备份的长期保留配置为长达10年 [的 SQL 托管实例](long-term-retention-overview.md)。 如果设置了 LTR 策略，则这些备份将自动存储在 RA-GRS 存储中，但你可以控制备份的复制频率。 为了满足不同的符合性要求，可为每周、每月和/或每年备份选择不同的保留期。 所选配置决定了多少存储将用于 LTR 备份。 若要估算 LTR 存储成本，可以使用 LTR 定价计算器。 有关详细信息，请参阅 [SQL 数据库长期保留](long-term-retention-overview.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

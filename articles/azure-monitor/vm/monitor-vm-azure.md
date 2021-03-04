@@ -2,17 +2,16 @@
 title: 使用 Azure Monitor 监视 Azure 虚拟机
 description: 介绍如何使用 Azure Monitor 从 Azure 虚拟机中收集和分析监视数据。
 ms.service: azure-monitor
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/05/2020
-ms.openlocfilehash: 6209389843b19d933bdce2726b55946b8839a264
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 2c93471436030f9260f4fa0d95d656c27d382346
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101731368"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102047037"
 ---
 # <a name="monitoring-azure-virtual-machines-with-azure-monitor"></a>使用 Azure Monitor 监视 Azure 虚拟机
 本文介绍如何使用 Azure Monitor 从 Azure 虚拟机收集和分析监视数据以维护其运行状况。 可以使用 Azure Monitor 监视虚拟机的可用性和性能，就像监视任何[其他 Azure 资源](../essentials/monitor-azure-resource.md)一样，但是它们与其他资源不同，因为你还需要监视客户操作和系统以及在其中运行的工作负载。 
@@ -56,7 +55,7 @@ Azure 中的虚拟机为虚拟主机生成以下与其他 Azure 资源相同的�
 | 配置步骤 | 完成的操作 | 启用的功能 |
 |:---|:---|:---|
 | 无配置 | - 向指标收集的主机平台指标。<br>- 收集的活动日志。 | - 主机的指标资源管理器。<br>- 主机的指标警报。<br>- 活动日志警报。 |
-| [启用 VM insights](#enable-azure-monitor-for-vms) | - 已安装 Log Analytics 代理。<br>- 已安装 Dependency Agent。<br>- 向日志收集的来宾性能数据。<br>- 向日志收集的进程和依赖项详细信息。 | - 来宾性能数据的性能图表和工作簿。<br>- 来宾性能数据的日志查询。<br>- 来宾性能数据的日志警报。<br>- 依赖项映射。 |
+| [启用 VM insights](#enable-vm-insights) | - 已安装 Log Analytics 代理。<br>- 已安装 Dependency Agent。<br>- 向日志收集的来宾性能数据。<br>- 向日志收集的进程和依赖项详细信息。 | - 来宾性能数据的性能图表和工作簿。<br>- 来宾性能数据的日志查询。<br>- 来宾性能数据的日志警报。<br>- 依赖项映射。 |
 | [安装诊断扩展和 telegraf 代理](#enable-diagnostics-extension-and-telegraf-agent) | - 向指标收集的来宾性能数据。 | - 来宾的指标资源管理器。<br>- 来宾的指标警报。  |
 | [配置 Log Analytics 工作区](#configure-log-analytics-workspace) | - 从来宾收集的事件。 | - 来宾事件的日志查询。<br>- 来宾事件的日志警报。 |
 | [为虚拟机创建诊断设置](#collect-platform-metrics-and-activity-log) | - 向日志收集的平台指标。<br>- 向日志收集的活动日志。 | -记录主机指标的查询。<br>- 主机指标的日志警报。<br>- 活动日志的日志查询。

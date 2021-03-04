@@ -1,17 +1,16 @@
 ---
 title: 查看 VM insights 的应用依赖项
 description: Map 是 VM insights 的一项功能。 它可以自动发现 Windows 和 Linux 系统上的应用程序组件并映射服务之间的通信。 本文提供有关如何在各种方案中使用映射功能的详细信息。
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/20/2020
-ms.openlocfilehash: 19da3e3e02581ce9fad080bb23bc48dcb9a3ceb3
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 267ec0ed01fb85e9e29b0b8c9294d20d610db8fb
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101719638"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102046561"
 ---
 # <a name="use-the-map-feature-of-vm-insights-to-understand-application-components"></a>使用 VM insights 的地图功能了解应用程序组件
 在 VM insights 中，可以查看在 Windows 和 Linux 虚拟机上发现的应用程序组件 (在 Azure 或环境中运行的 Vm) 。 可通过两种方式观察 VM。 查看直接从 VM 建立的映射，或查看从 Azure Monitor 建立的映射，以查看各个 VM 组中的组件。 本文将帮助你了解这两种查看方法，以及如何使用映射功能。 

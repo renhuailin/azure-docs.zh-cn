@@ -1,17 +1,16 @@
 ---
 title: Azure Monitor 日志查询中的审核查询
 description: 日志查询审核日志的详细信息，这些审核日志提供有关在 Azure Monitor 中运行的日志查询的遥测。
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/03/2020
-ms.openlocfilehash: 70741e91830027e210afce75e93d931d70bdbed1
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 28dfac7de8e73adf577b0a13e5fbd8740b1e3b06
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100608200"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102047411"
 ---
 # <a name="audit-queries-in-azure-monitor-logs-preview"></a>Azure Monitor 日志中的审核查询（预览版）
 日志查询审核日志提供有关在 Azure Monitor 中运行的日志查询的遥测。 其中包括诸如运行查询的时间、运行查询的人、使用的工具、查询文本，以及描述查询执行的性能统计信息等。

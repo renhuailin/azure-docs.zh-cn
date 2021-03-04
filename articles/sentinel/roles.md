@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/28/2020
 ms.author: yelevin
-ms.openlocfilehash: f9b50c831b435a6189a9b9e4d79a934a2661b033
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 69f78f6e70fa4f0b04ca7527751085ec0265363a
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100570408"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102048210"
 ---
 # <a name="permissions-in-azure-sentinel"></a>Azure Sentinel 中的权限
 
@@ -89,12 +89,19 @@ Azure Sentinel 使用 azure [RBAC)  (azure 基于角色的访问控制 ](../role
 
 ## <a name="custom-roles-and-advanced-azure-rbac"></a>自定义角色和高级 Azure RBAC
 
-- 除了或使用 Azure 内置角色，你还可以为 Azure Sentinel 创建 Azure 自定义角色。 Azure Sentinel 的 azure 自定义角色的创建方式与创建其他[azure 自定义角色](../role-based-access-control/custom-roles-rest.md#create-a-custom-role)的方式相同，具体取决于 azure Sentinel 和[azure Log Analytics 资源](../role-based-access-control/resource-provider-operations.md#microsoftoperationalinsights)的[特定权限](../role-based-access-control/resource-provider-operations.md#microsoftsecurityinsights)。
+- **自定义角色**。 除了或使用 Azure 内置角色，你还可以为 Azure Sentinel 创建 Azure 自定义角色。 Azure Sentinel 的 azure 自定义角色的创建方式与创建其他[azure 自定义角色](../role-based-access-control/custom-roles-rest.md#create-a-custom-role)的方式相同，具体取决于 azure Sentinel 和[azure Log Analytics 资源](../role-based-access-control/resource-provider-operations.md#microsoftoperationalinsights)的[特定权限](../role-based-access-control/resource-provider-operations.md#microsoftsecurityinsights)。
 
-- 可以在 Azure Sentinel 工作区中的数据上使用基于 Log Analytics 高级 Azure 角色的访问控制。 这包括基于数据类型的 Azure RBAC 和以资源为中心的 Azure RBAC。 有关 Log Analytics 角色的详细信息，请参阅[ Azure Monitor 中的日志数据和工作区](../azure-monitor/logs/manage-access.md#manage-access-using-workspace-permissions)。
+- **LOG ANALYTICS RBAC**。 可以在 Azure Sentinel 工作区中的数据上使用基于 Log Analytics 高级 Azure 角色的访问控制。 这包括基于数据类型的 Azure RBAC 和资源上下文 Azure RBAC。 有关详细信息，请参阅：
+
+    - [管理 Azure Monitor 中的日志数据和工作区](../azure-monitor/logs/manage-access.md#manage-access-using-workspace-permissions)
+
+    - [Azure Sentinel 的资源上下文 RBAC](resource-context-rbac.md)
+    - [表级 RBAC](https://techcommunity.microsoft.com/t5/azure-sentinel/table-level-rbac-in-azure-sentinel/ba-p/965043)
+
+    资源上下文和表级 RBAC 是两种方法，可提供对 Azure Sentinel 工作区中特定数据的访问权限，而无需访问整个 Azure Sentinel 体验。
 
 ## <a name="next-steps"></a>后续步骤
 
 本文档介绍了如何使用 Azure Sentinel 用户角色，以及每个角色允许用户执行的操作。
 
-* [Azure Sentinel 博客](https://aka.ms/azuresentinelblog)。 查找关于 Azure 安全性及合规性的博客文章。
+在 [Azure Sentinel 博客](https://aka.ms/azuresentinelblog)上查找有关 azure 安全性和符合性的博客文章。

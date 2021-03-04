@@ -13,81 +13,52 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/27/2021
+ms.date: 03/03/2021
 ms.author: yelevin
-ms.openlocfilehash: c404aa93669cd95dccb0ad185d71d2ec16256d0d
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 30cd0181ff2c5fbb8918921be3515818128a98d0
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100570442"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102048227"
 ---
 # <a name="useful-resources-for-working-with-azure-sentinel"></a>使用 Azure Sentinel 的有用资源
 
-
-
 本文列出了可帮助你获取有关使用 Azure Sentinel 的详细信息的资源。
 
-- **Azure 逻辑应用连接器**： <https://docs.microsoft.com/connectors/>
+## <a name="learn-more-about-creating-queries"></a>了解有关创建查询的详细信息
 
+Azure Sentinel 使用 Azure Monitor Log Analytics 的 Kusto 查询语言 (KQL) 来生成查询。 有关详细信息，请参阅：
 
-## <a name="auditing-and-reporting"></a>审核和报告
-Azure Sentinel 的审核日志保留在 [Azure 活动日志](../azure-monitor/essentials/platform-logs-overview.md)中。
+- [KQL 概念](/azure/data-explorer/kusto/concepts/)
+- [KQL 查询](/azure/data-explorer/kusto/query/)
+- [KQL 快速参考指南](/azure/data-explorer/kql-quick-reference)。
+- [KQL 查询入门](../azure-monitor/logs/get-started-queries.md)
 
-可以审核以下受支持的操作。
+## <a name="learn-more-about-creating-automation"></a>详细了解如何创建自动化
 
-|操作名称|    资源类型|
-|----|----|
-|创建或更新工作簿  |Microsoft Insights/工作簿|
-|删除工作簿    |Microsoft Insights/工作簿|
-|设置工作流   |Microsoft.Logic/workflows|
-|删除工作流    |Microsoft.Logic/workflows|
-|创建保存的搜索    |Microsoft.operationalinsights/工作区/savedSearches|
-|删除保存的搜索    |Microsoft.operationalinsights/工作区/savedSearches|
-|更新警报规则 |Microsoft.SecurityInsights/alertRules|
-|删除警报规则 |Microsoft.SecurityInsights/alertRules|
-|更新警报规则响应操作 |SecurityInsights/alertRules/actions|
-|删除警报规则响应操作 |SecurityInsights/alertRules/actions|
-|更新书签   |Microsoft.SecurityInsights/bookmarks|
-|删除书签   |Microsoft.SecurityInsights/bookmarks|
-|更新事例   |SecurityInsights/事例|
-|更新案例调查  |SecurityInsights/案例/调查|
-|创建案例注释   |SecurityInsights/案例/注释|
-|更新数据连接器 |Microsoft.SecurityInsights/dataConnectors|
-|删除数据连接器 |Microsoft.SecurityInsights/dataConnectors|
-|更新设置    |Microsoft.SecurityInsights/settings|
+使用 Azure 逻辑应用在 Azure Sentinel 中创建自动化，同时提供一系列不断增长的内置行动手册。 
 
-### <a name="view-audit-and-reporting-data-in-azure-sentinel"></a>在 Azure Sentinel 中查看审核和报告数据
+有关详细信息，请参阅 [Azure 逻辑应用连接器](https://docs.microsoft.com/connectors/)。
 
-你可以查看此数据，方法是将其从 Azure 活动日志流式传输到 Azure Sentinel，然后你可以在其中对其执行研究和分析。
+## <a name="comment-on-our-blogs-and-forums"></a>对博客和论坛发表评论
 
-1. 连接 [Azure 活动](connect-azure-activity.md) 数据源。 执行此操作后，审核事件会在名为 AzureActivity 的 **日志** 屏幕上流式传输到新的表中。
+我们非常喜欢用户的来信。
 
-1. 然后，使用 KQL 查询数据，就像对任何其他表一样。
+在 Azure Sentinel 的 TechCommunity 空间中：
 
-    例如，若要找出上次编辑特定分析规则的用户，请使用以下查询 (替换 `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` 为要检查) 的规则的规则 ID：
+- [查看并评论最近的博客文章](https://techcommunity.microsoft.com/t5/Azure-Sentinel/bg-p/AzureSentinelBlog)
+- [发布你自己有关 Azure Sentinel 的问题](https://techcommunity.microsoft.com/t5/Azure-Sentinel/bd-p/AzureSentinel)
 
-    ```kusto
-    AzureActivity
-    | where OperationNameValue startswith "MICROSOFT.SECURITYINSIGHTS/ALERTRULES/WRITE"
-    | where Properties contains "alertRules/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-    | project Caller , TimeGenerated , Properties
-    ```
+你还可以通过我们的 [用户语音](https://feedback.azure.com/forums/920458-azure-sentinel) 计划发送有关改进的建议。
 
+## <a name="join-the-azure-sentinel-github-community"></a>加入 Azure Sentinel GitHub 社区
 
-## <a name="blogs-and-forums"></a>博客和论坛
+[Azure Sentinel GitHub 存储库](https://github.com/Azure/Azure-Sentinel)是一项功能强大的威胁检测和自动化资源。 
 
-我们非常乐意听取用户的意见！
+Microsoft 安全分析师会不断创建和添加新的工作簿、Playbook、搜寻式查询及其他资源，并将其发布到社区，供你在环境中使用。 
 
-- 将 **你的问题发布** 到 Azure Sentinel 的 [TechCommunity 空间](https://techcommunity.microsoft.com/t5/Azure-Sentinel/bd-p/AzureSentinel)。 
-
-- 通过我们的 [用户语音](https://feedback.azure.com/forums/920458-azure-sentinel)计划 **发送有关改进的建议**。
-
-- **查看并注释** 我们的 Azure Sentinel 博客文章：
-
-    - [TechCommunity](https://techcommunity.microsoft.com/t5/Azure-Sentinel/bg-p/AzureSentinelBlog) 
-    - [Microsoft Azure](https://azure.microsoft.com/blog/tag/azure-sentinel/)
-
+从专用社区 GitHub 存储库下载示例内容，为 Azure Sentinel 创建自定义工作簿、搜寻查询、笔记本和行动手册。
 
 ## <a name="next-steps"></a>后续步骤
 

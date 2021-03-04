@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 03/02/2021
 ms.author: anithaa
-ms.openlocfilehash: 9b07af72983931e0e1cab9e7d5093fd845b363bc
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 2f15b397fbceb9e097d94080ba03fba50a96ed06
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101692192"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102048499"
 ---
 # <a name="configure-private-endpoints-for-azure-cosmos-db-analytical-store"></a>为 Azure Cosmos DB 分析存储配置专用终结点
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -118,7 +118,8 @@ Synapse 无服务器 SQL 池使用未部署到托管虚拟网络中的多租户�
    az cosmosdb update --name MyCosmosDBDatabaseAccount --resource-group MyResourceGroup --network-acl-bypass AzureServices --network-acl-bypass-resource-ids "/subscriptions/subId/resourceGroups/rgName/providers/Microsoft.Synapse/workspaces/wsName"
    ```
 
-   > 纪录Azure Cosmos DB 帐户和 Azure Synapse Analytics 工作区应 Azure Active Directory (AD) 租户下。
+   > [!NOTE]
+   > Azure Cosmos DB 帐户和 Azure Synapse Analytics 工作区应 Azure Active Directory (AD) 租户下。
 
 2. 你现在可以使用 Azure Synapse 链接上的 T-sql 查询从无服务器 SQL 池中访问该帐户。 但是，若要确保对分析存储中的数据进行网络隔离，必须为此帐户添加一个 **分析** 托管专用终结点。 否则，分析存储中的数据将不会被阻止公共访问。
 

@@ -1,23 +1,22 @@
 ---
 title: 什么是 VM insights？
 description: VM insights 概述，它监视 Azure Vm 的运行状况和性能，并自动发现和映射应用程序组件及其依赖项。
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/22/2020
-ms.openlocfilehash: 967ff9672f55af3e9c5d2e7c3c3dbc7d2ff6cb3c
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 18e1fdcdee347a057c452f6170f36ec7f1f43244
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101707364"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102046408"
 ---
 # <a name="overview-of-vm-insights"></a>VM 见解概述
 
 VM insights 监视虚拟机和虚拟机规模集的性能和运行状况，其中包括其正在运行的进程以及对其他资源的依赖关系。 它可以通过识别性能瓶颈和网络问题来帮助提供重要应用程序的可预测性能和可用性，还可以帮助你了解问题是否与其他依赖关系相关。
 
-VM insights 支持 Windows 和 Linux 操作系统，如下所示：
+VM insights 支持以下计算机上的 Windows 和 Linux 操作系统：
 
 - Azure 虚拟机
 - Azure 虚拟机规模集
@@ -39,7 +38,7 @@ VM insights 不会直接收费，但你需要为 Log Analytics 工作区中的�
 - 基于日志和运行状况数据的警报规则。
 - 从警报规则发送的通知。
 
-日志大小因性能计数器的字符串长度而异，并且可能会随分配给 VM 的逻辑磁盘和网络适配器的数量而增大。 如果已在使用服务映射，则将看到的唯一更改是发送到 Azure Monitor 数据类型的其他性能数据 `InsightsMetrics` 。
+日志大小因性能计数器的字符串长度而异，并且可能会随分配给 VM 的逻辑磁盘和网络适配器的数量而增大。 如果已在使用服务映射，则将看到的唯一更改是发送到 Azure Monitor 数据类型的额外性能数据 `InsightsMetrics` 。
 
 
 ## <a name="configuring-vm-insights"></a>配置 VM insights

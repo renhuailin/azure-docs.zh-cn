@@ -5,13 +5,12 @@ author: noakup
 ms.author: noakuper
 ms.topic: conceptual
 ms.date: 10/05/2020
-ms.subservice: ''
-ms.openlocfilehash: e9431aac203b831a0ffe22b835acf4677061780c
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: bf9ffe3640c704fb1da51f6f9c2fe42ca5d46851
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101707701"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102047547"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>使用 Azure 专用链接将网络安全地连接到 Azure Monitor
 
@@ -155,7 +154,7 @@ Azure Monitor 专用链接范围 (AMPLS) 将专用终结点连接 (，并将它�
  
    d.    让验证通过。 
  
-   e.    选择“创建”。 
+   e.    选择“创建”  。 
 
     ![选择专用终结点详细信息的屏幕截图。](./media/private-link-security/ampls-select-private-endpoint-create-5.png)
 

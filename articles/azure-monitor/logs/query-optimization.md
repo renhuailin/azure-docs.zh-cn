@@ -1,17 +1,16 @@
 ---
 title: 优化 Azure Monitor 中的日志查询
 description: 用于优化 Azure Monitor 中的日志查询的最佳做法。
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2019
-ms.openlocfilehash: e7ab83b2b16a1340b354b9333d00c8166b5cfdf9
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 7b5412b2ca738f5d2099521062e37afcff90e938
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101722953"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102047326"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>优化 Azure Monitor 中的日志查询
 Azure Monitor 日志使用 [Azure 数据资源管理器 (ADX)](/azure/data-explorer/) 来存储日志数据，并运行查询来分析这些数据。 它为你创建、管理和维护 ADX 群集，并针对你的日志分析工作负荷优化它们。 运行查询时，将对其进行优化，并将其路由到存储着工作区数据的相应 ADX 群集。 Azure Monitor 日志和 Azure 数据资源管理器都使用许多自动查询优化机制。 虽然自动优化可显著提高性能，但在某些情况下，你可以极大地提高查询性能。 本文介绍了性能注意事项和解决相关问题的几种方法。

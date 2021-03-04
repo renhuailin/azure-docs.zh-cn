@@ -1,17 +1,16 @@
 ---
 title: 如何升级 VM insights 依赖关系代理
 description: 本文介绍如何使用命令行、安装向导和其他方法升级 VM insights 依赖项代理。
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/16/2020
-ms.openlocfilehash: 14ca614c1e108ce43f05f98520cff6ff215ec5cc
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: acd1b6c8e5c1be76b29c93fddc57c799aef0a526
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101722902"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102046697"
 ---
 # <a name="how-to-upgrade-the-vm-insights-dependency-agent"></a>如何升级 VM insights 依赖关系代理
 

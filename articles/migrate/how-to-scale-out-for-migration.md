@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 03/02/2021
-ms.openlocfilehash: fda9026adf46a26927912b9e1983a537470c37ee
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 6e81b3d62fb5b208c88257d7660f74ac25f099b8
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101744444"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102047916"
 ---
 # <a name="scale-agentless-migration-of-vmware-virtual-machines-to-azure"></a>将 VMware 虚拟机的无代理迁移到 Azure
 
@@ -153,7 +153,7 @@ ms.locfileid: "101744444"
 :::image type="content" source="./media/how-to-scale-out-for-migration/view-sources.png" alt-text="导入成功":::
 
 > [!IMPORTANT]
-> 如果在主要设备上编辑 vCenter Server 凭据，请确保将配置文件再次导入到横向扩展设备，以获取最新配置并继续任何正在进行的复制。<br/> 如果不再需要向外扩展设备，请确保禁用横向扩展设备。 了解有关如何在不需要时禁用横向扩展设备的 [**详细信息**](./common-questions-appliance)。
+> 如果在主要设备上编辑 vCenter Server 凭据，请确保将配置文件再次导入到横向扩展设备，以获取最新配置并继续任何正在进行的复制。<br/> 如果不再需要向外扩展设备，请确保禁用横向扩展设备。 了解有关如何在不需要时禁用横向扩展设备的 [**详细信息**](./common-questions-appliance.md)。
 
 ## <a name="replicate"></a>复制
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 040fcde35707074ffaf102ed6c224b2f47a084bb
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: 1706b60a61bd3b507d9fbcf555e478b388f51168
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97679353"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102047564"
 ---
 # <a name="add-a-symbol-layer-android-sdk"></a>Android SDK 添加符号层 () 
 
@@ -132,6 +132,52 @@ SymbolLayer layer = new SymbolLayer(source,
 
 > [!TIP]
 > 如果只希望使用符号层呈现文本，则可以通过将 `iconImage` 图标选项的属性设置为来隐藏该图标 `"none"` 。
+
+## <a name="modify-symbol-colors"></a>修改符号颜色
+
+Azure Maps Android SDK 附带了一组默认标记图标的预定义颜色变体。 例如， `marker-red` 可以将传递到 `iconImage` 符号层的选项，以呈现该层中标记图标的红色版本。 
+
+```java
+SymbolLayer layer = new SymbolLayer(source,
+    iconImage("marker-red")
+);
+```
+
+下表列出了所有可用的内置图标映像名称。 所有这些标记均从可以重写的颜色资源中提取其颜色。 除了覆盖此标记的主要填充颜色。 但请注意，重写其中一个标记的颜色将应用于所有使用该图标图像的层。
+
+| 图标图像名称 | 颜色资源名称 |
+|-----------------|---------------------|
+| `marker-default` | `mapcontrol_marker_default` |
+| `marker-black` | `mapcontrol_marker_black` |
+| `marker-blue` | `mapcontrol_marker_blue` |
+| `marker-darkblue` | `mapcontrol_marker_darkblue` |
+| `marker-red` | `mapcontrol_marker_red` |
+| `marker-yellow` | `mapcontrol_marker_yellow` |
+
+还可以使用颜色资源名称替代所有标记的边框颜色 `mapcontrol_marker_border` 。 可以通过在应用的文件中添加具有相同名称的颜色来重写这些标记的颜色 `colors.xml` 。 例如，以下 `colors.xml` 文件会使默认标记颜色为浅绿色。
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="mapcontrol_marker_default">#00FF00</color>
+</resources>
+```
+
+下面是默认标记矢量 XML 的修改版本，你可以修改该版本以创建默认标记的其他自定义版本。 可以将修改后的版本添加到 `drawable` 应用的文件夹，并使用将其添加到地图图像 sprite `map.images.add` ，然后将其与符号层一起使用。
+
+```xml
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24.5dp"
+    android:height="36.5dp"
+    android:viewportWidth="24.5"
+    android:viewportHeight="36.5">
+    <path
+        android:pathData="M12.25,0.25a12.2543,12.2543 0,0 0,-12 12.4937c0,6.4436 6.4879,12.1093 11.059,22.5641 0.5493,1.2563 1.3327,1.2563 1.882,0C17.7621,24.8529 24.25,19.1857 24.25,12.7437A12.2543,12.2543 0,0 0,12.25 0.25Z"
+        android:strokeWidth="0.5"
+        android:fillColor="@color/mapcontrol_marker_default"
+        android:strokeColor="@color/mapcontrol_marker_border"/>
+</vector>
+```
 
 ## <a name="next-steps"></a>后续步骤
 

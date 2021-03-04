@@ -1,18 +1,17 @@
 ---
 title: Azure Monitor PowerShell 示例
 description: 使用 PowerShell 访问 Azure Monitor 功能，如自动缩放、警报、webhook 和搜索活动日志。
-ms.subservice: ''
 ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 2/14/2018
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 9f43531e6b81b9bd4a294d70e9b8091463cf507a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 1aa0d44dcb73a925494c0bc4aae43dc93e5a33d0
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100597103"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102047054"
 ---
 # <a name="azure-monitor-powershell-samples"></a>Azure Monitor PowerShell 示例
 本文说明可帮助访问 Azure Monitor 功能的示例 PowerShell 命令。
@@ -149,7 +148,7 @@ Get-AzAlertRule -ResourceGroup montest -TargetResourceId /subscriptions/s1/resou
 
 下表描述了用于使用指标创建警报的参数和值。
 
-| 参数 | value |
+| 参数 | 值 |
 | --- | --- |
 | 名称 |simpletestdiskwrite |
 | 此警报规则的位置 |美国东部 |

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.author: mjbrown
-ms.openlocfilehash: 8f3e2e96a529ea3347f09729146e73d5517ed759
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 3a0f0f617e45834f1f205bcb4c8bcbc884b20d22
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101692141"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102048091"
 ---
 # <a name="azure-role-based-access-control-in-azure-cosmos-db"></a>Azure Cosmos DB 中的 Azure 基于角色的访问控制
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -72,7 +72,7 @@ Azure 门户中的“访问控制(IAM)”窗格用于针对 Azure Cosmos 资源�
 
 - 修改存储过程、触发器或用户定义的函数。
 
-如果应用程序（或者用户通过 Azure 门户）执行这些操作中的任何一种，则需要将它们迁移，以通过 [ARM 模板](./manage-with-templates.md)、[PowerShell](manage-with-powershell.md)、[Azure CLI](manage-with-cli.md)、REST 或 [Azure 管理库](https://github.com/Azure-Samples/cosmos-management-net)来执行。 请注意，可使用[多种语言](../index.yml?product=developer-tools#languages-and-tools)进行 Azure 管理。
+如果应用程序（或者用户通过 Azure 门户）执行这些操作中的任何一种，则需要将它们迁移，以通过 [ARM 模板](./manage-with-templates.md)、[PowerShell](manage-with-powershell.md)、[Azure CLI](manage-with-cli.md)、REST 或 [Azure 管理库](https://github.com/Azure-Samples/cosmos-management-net)来执行。 请注意，可使用[多种语言](/azure/?product=developer-tools#languages-and-tools)进行 Azure 管理。
 
 ### <a name="set-via-arm-template"></a>通过 ARM 模板进行设置
 

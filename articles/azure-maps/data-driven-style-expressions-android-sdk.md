@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 61d7a295d86fd7da74dee03cd35c79feea0218ed
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: 7e4af0647a2810a27001c15a5030fca660828147
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97681445"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102047734"
 ---
 # <a name="data-driven-style-expressions-android-sdk"></a>数据驱动样式表达式 (Android SDK) 
 
@@ -23,7 +23,7 @@ ms.locfileid: "97681445"
 
 Azure Maps Android SDK 支持几乎所有与 Azure Maps Web SDK 相同的样式表达式，因此， [ (WEB sdk) 的数据驱动样式表达式 ](data-driven-style-expressions-web-sdk.md) 中所述的所有概念都可以转移到 Android 应用中。 Azure Maps Android SDK 中的所有样式表达式都在 `com.microsoft.azure.maps.mapcontrol.options.Expression` 命名空间中可用。 有许多不同类型的样式表达式。
 
-| 表达式的类型 | 描述 |
+| 表达式的类型 | 说明 |
 |---------------------|-------------|
 | [布尔表达式](#boolean-expressions) | 布尔表达式提供一组用于计算布尔值比较的布尔运算符表达式。 |
 | [颜色表达式](#color-expressions) | 颜色表达式使您可以更轻松地创建和操作颜色值。 |
@@ -141,17 +141,17 @@ Expression exp = Expression.raw("['get','title']")
 
 数据表达式提供对功能中的属性数据的访问。
 
-| Expression | 返回类型 | 说明 |
+| 表达式 | 返回类型 | 说明 |
 |------------|-------------|-------------|
 | `accumulated()` | 数字 | 获取到目前为止累积的群集属性的值。 |
-| `at(number | Expression, Expression)` | value | 从数组中检索项。 |
-| `geometryType()` | string | 获取功能的几何图形类型： Point、MultiPoint、LineString、MultiLineString、多边形、MultiPolygon。 |
-| `get(string | Expression)` \| `get(string | Expression, Expression)` | value | 从提供的对象的属性获取属性值。 如果缺少请求的属性，则返回 null。 |
+| `at(number | Expression, Expression)` | 值 | 从数组中检索项。 |
+| `geometryType()` | 字符串 | 获取功能的几何图形类型： Point、MultiPoint、LineString、MultiLineString、多边形、MultiPolygon。 |
+| `get(string | Expression)` \| `get(string | Expression, Expression)` | 值 | 从提供的对象的属性获取属性值。 如果缺少请求的属性，则返回 null。 |
 | `has(string | Expression)` \| `has(string | Expression, Expression)` | boolean | 确定功能的属性是否具有指定的属性。 |
-| `id()` | value | 获取功能的 ID （如果有）。 |
+| `id()` | 值 | 获取功能的 ID （如果有）。 |
 | `in(string | number | Expression, Expression)` | boolean | 确定某一项是否存在于数组中 |
 | `length(string | Expression)` | 数字 | 获取字符串或数组的长度。 |
-| `properties()`| value | 获取功能属性对象。 |
+| `properties()`| 值 | 获取功能属性对象。 |
 
 Android SDK 中不支持以下 Web SDK 样式表达式：
 
@@ -233,7 +233,7 @@ has("fillColor", get("_style"))
 
 数学表达式提供数学运算符，用于在 expression framework 内执行数据驱动的计算。
 
-| Expression | 返回类型 | 说明 |
+| 表达式 | 返回类型 | 说明 |
 |------------|-------------|-------------|
 | `abs(number | Expression)` | 数字 | 计算指定数字的绝对值。 |
 | `acos(number | Expression)` | 数字 | 计算指定数字的反余弦值。 |
@@ -268,7 +268,7 @@ has("fillColor", get("_style"))
 
 比较值时，将严格类型化比较。 不同类型的值始终被视为不相等。 在分析时已知不同类型的情况被视为无效，并将生成分析错误。
 
-| Expression | 返回类型 | 说明 |
+| 表达式 | 返回类型 | 说明 |
 |------------|-------------|-------------|
 | `all(Expression...)` | boolean | `true`如果所有输入都为，则返回 `true` `false` ; 否则返回。 |
 | `any(Expression...)` | boolean | `true`如果任何输入为，则返回 `true` `false` ; 否则返回。 |
@@ -421,7 +421,7 @@ SymbolLayer layer = new SymbolLayer(dataSource,
 
 类型表达式提供了用于测试和转换不同数据类型（如字符串、数字和布尔值）的工具。
 
-| Expression | 返回类型 | 说明 |
+| 表达式 | 返回类型 | 说明 |
 |------------|-------------|-------------|
 | `array(Expression)` | Object [] | 断言输入为数组。 |
 | `bool(Expression)` | boolean | 断言输入值为布尔值。 |
@@ -429,18 +429,18 @@ SymbolLayer layer = new SymbolLayer(dataSource,
 | `literal(boolean \| number \| string \| Object \| Object[])` | 布尔 \| 数字 \| 字符串 \| 对象 \| 对象 [] | 返回文本数组或对象值。 使用此表达式可防止将数组或对象作为表达式进行计算。 当表达式需要返回数组或对象时，这是必需的。 |
 | `number(Expression)` | 数字 | 断言输入值是一个数字。 |
 | `object(Expression)` | 对象 | 断言输入值是一个对象。 |
-| `string(Expression)` | string | 断言输入值为字符串。 |
+| `string(Expression)` | 字符串 | 断言输入值为字符串。 |
 | `toArray(Expression)` | Object [] | 将表达式转换为 JSON 对象数组。 |
 | `toBool(Expression)` | boolean | 将输入值转换为布尔值。 |
 | `toNumber(Expression)` | 数字 | 如果可能，将输入值转换为数字。 |
-| `toString(Expression)` | string | 将输入值转换为字符串。 |
-| `typeoOf(Expression)` | string | 返回一个字符串，该字符串描述给定值的类型。 |
+| `toString(Expression)` | 字符串 | 将输入值转换为字符串。 |
+| `typeoOf(Expression)` | 字符串 | 返回一个字符串，该字符串描述给定值的类型。 |
 
 ## <a name="color-expressions"></a>颜色表达式
 
 颜色表达式使您可以更轻松地创建和操作颜色值。
 
-| Expression | 返回类型 | 说明 |
+| 表达式 | 返回类型 | 说明 |
 |------------|-------------|-------------|
 | `color(int)` | color | 将颜色整数值转换为颜色表达式。 |
 | `rgb(Expression red, Expression green, Expression blue)` \| `rgb(number red, number green, number blue)` | color | 从 *红色*、 *绿色* 和 *蓝色* 分量创建颜色值，该颜色值必须介于和之间， `0` `255` 并具有的 alpha 分量 `1` 。 如果任何组件超出范围，则表达式为错误。 |
@@ -498,13 +498,13 @@ BubbleLayer layer = new BubbleLayer(dataSource,
 
 字符串运算符表达式对字符串执行转换操作，例如连接和转换大小写。 
 
-| Expression | 返回类型 | 说明 |
+| 表达式 | 返回类型 | 说明 |
 |------------|-------------|-------------|
-| `concat(string...)` \| `concat(Expression...)` | string | 将多个字符串连接在一起。 每个值必须是字符串。 如果需要，请使用 `toString` 类型表达式将其他值类型转换为字符串。 |
-| `downcase(string)` \| `downcase(Expression)` | string | 将指定的字符串转换为小写。 |
+| `concat(string...)` \| `concat(Expression...)` | 字符串 | 将多个字符串连接在一起。 每个值必须是字符串。 如果需要，请使用 `toString` 类型表达式将其他值类型转换为字符串。 |
+| `downcase(string)` \| `downcase(Expression)` | 字符串 | 将指定的字符串转换为小写。 |
 | `isSupportedScript(string)` \| `isSupportedScript(Expression)`| boolean | 确定输入字符串是否使用当前字体堆栈支持的字符集。 例如：`isSupportedScript("ಗೌರವಾರ್ಥವಾಗಿ")` |
-| `resolvedLocale(Expression collator)` | string | 返回所提供的排序程序所使用的区域设置的 IETF 语言标记。 这可用于确定默认的系统区域设置，或确定是否已成功加载请求的区域设置。 |
-| `upcase(string)` \| `upcase(Expression)` | string | 将指定的字符串转换为大写。 |
+| `resolvedLocale(Expression collator)` | 字符串 | 返回所提供的排序程序所使用的区域设置的 IETF 语言标记。 这可用于确定默认的系统区域设置，或确定是否已成功加载请求的区域设置。 |
+| `upcase(string)` \| `upcase(Expression)` | 字符串 | 将指定的字符串转换为大写。 |
 
 **示例**
 
@@ -545,7 +545,7 @@ interpolate(Expression.Interpolator interpolation, Expression number, Expression
 
 可在表达式中使用三种类型的内插方法 `interpolate` ：
 
-| 名称 | 描述 | 
+| 名称 | 说明 | 
 |------|-------------|
 | `linear()` | 在停止对之间线性地进行内插。  |
 | `exponential(number)` \| `exponential(Expression)` | 停止之间以指数方式内插。 指定了 "base"，并控制输出的增加速度。 值越大，输出就会增加到范围的高端。 接近于1的 "基数" 值会生成输出，该输出将增加线性增长。|
@@ -662,7 +662,7 @@ HeatMapLayer layer = new HeatMapLayer(dataSource,
 
 除了使用平滑渐变来着色热度地图外，还可以使用表达式在一组范围内指定颜色 `step` 。 使用 `step` 用于着色热度地图的表达式直观地将密度分解为类似于等高线或雷达样式图的范围。  
 
-```java 
+```java
 HeatMapLayer layer = new HeatMapLayer(dataSource,
     heatmapColor(
         step(
@@ -679,6 +679,36 @@ HeatMapLayer layer = new HeatMapLayer(dataSource,
 ```
 
 有关详细信息，请参阅 [添加热度地图层](map-add-heat-map-layer-android.md) 文档。
+
+### <a name="line-progress-expression"></a>行进度表达式
+
+行进度表达式在直线层中沿渐变线检索进度，并将其定义为 `lineProgress()` 。 此值是一个介于0到1之间的数字。 它与 `interpolation` or 表达式结合使用 `step` 。 此表达式只能与 `strokeGradient` 线条层的选项一起使用。
+
+> [!NOTE]
+> `strokeGradient`线条层的选项要求将 `lineMetrics` 数据源的选项设置为 `true` 。
+
+**示例**
+
+此示例使用 `lineProgress()` 表达式对线条的笔划应用颜色渐变。
+
+```javascript
+LineLayer layer = new LineLayer(source,
+    strokeGradient(
+        interpolate(
+            linear(),
+            lineProgress(),
+            stop(0, color(Color.BLUE)),
+            stop(0.1, color(Color.argb(255, 65, 105, 225))), //Royal Blue
+            stop(0.3, color(Color.CYAN)),
+            stop(0.5, color(Color.argb(255,0, 255, 0))), //Lime
+            stop(0.7, color(Color.YELLOW)),
+            stop(1, color(Color.RED))
+        )
+    )
+);
+```
+
+[查看实时示例](map-add-line-layer.md#line-stroke-gradient)
 
 ### <a name="text-field-format-expression"></a>文本字段格式表达式
 
@@ -755,7 +785,7 @@ HeatMapLayer layer = new HeatMapLayer(dataSource,
 
 变量绑定表达式将计算结果存储在变量中。 因此，可以多次在表达式中的其他地方引用计算结果。 对于涉及许多计算的表达式，它是一个有用的优化。
 
-| Expression | 返回类型 | 说明 |
+| 表达式 | 返回类型 | 说明 |
 |--------------|---------------|--------------|
 | `let(Expression... input)` | | 将一个或多个值作为变量存储，以供 `var` 返回结果的子表达式中的表达式使用。 |
 | `var(Expression expression)` \| `var(string variableName)` | 对象 | 引用使用表达式创建的变量 `let` 。 |

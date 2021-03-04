@@ -8,12 +8,12 @@ ms.date: 10/15/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 13ac18abd0a557d02435c3805e1ab86bcbf1ff84
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: d9e3e0f96d235829928c1f7c79864b1dc732f9e4
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100391977"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102046340"
 ---
 # <a name="authenticate-a-downstream-device-to-azure-iot-hub"></a>通过 Azure IoT 中心对下游设备进行身份验证
 
@@ -21,7 +21,7 @@ ms.locfileid: "100391977"
 
 成功设置透明网关连接需要完成三个常规步骤。 本文将介绍其中的第二个步骤：
 
-1. 将网关设备配置为服务器，以便下游设备能够安全地连接到该设备。 设置网关以接收来自下游设备的消息，并将其路由到适当的目标。 有关这些步骤，请参阅[配置 IoT Edge 设备以充当透明网关](how-to-create-transparent-gateway.md)。
+1. 将网关设备配置为服务器，以便下游设备能够安全地连接到该设备。 设置网关以接收来自下游设备的消息，并将消息路由到适当的目标。 有关这些步骤，请参阅[配置 IoT Edge 设备以充当透明网关](how-to-create-transparent-gateway.md)。
 2. **为下游设备创建设备标识，以便它可以通过 IoT 中心进行身份验证。配置下游设备，使其通过网关设备发送消息。**
 3. 将下游设备连接到网关设备并开始发送消息。 有关这些步骤，请参阅[将下游设备连接到 Azure IoT Edge 网关](how-to-connect-downstream-device.md)。
 
@@ -35,7 +35,7 @@ ms.locfileid: "100391977"
 
 如果使用的是 X.509 身份验证，你将为下游设备生成证书。 准备再次使用在透明网关文章中使用的根 CA 证书和证书生成脚本。
 
-本文在多个位置提到了“网关主机名”。 网关主机名在 IoT Edge 网关设备上的 config.yaml 文件的 **hostname** 参数中声明。 下游设备的连接字符串中引用了它。 网关主机名必须能够解析为 IP 地址，不管是使用 DNS 还是使用下游设备上的主机文件条目。
+本文在多个位置提到了“网关主机名”。 网关主机名在 IoT Edge 网关设备上配置文件的 **hostname** 参数中声明。 下游设备的连接字符串中引用了它。 网关主机名必须能够解析为 IP 地址，不管是使用 DNS 还是使用下游设备上的主机文件条目。
 
 ## <a name="register-device-with-iot-hub"></a>将设备注册到 IoT 中心
 
@@ -192,7 +192,7 @@ az iot hub device-identity create -n {iothub name} -d {device ID} --pd {gateway 
 * 身份验证方法：对称密钥或 X.509 证书
   * 如果使用对称密钥身份验证，请提供主密钥或辅助密钥：`SharedAccessKey={key}`
   * 如果使用 X.509 证书身份验证，请提供标志：`x509=true`
-* 设备用来建立连接的网关设备。 请提供 IoT Edge 网关设备 config.yaml 文件中的 **hostname** 值：`GatewayHostName={gateway hostname}`
+* 设备用来建立连接的网关设备。 提供 IoT Edge 网关设备的配置文件中的 **主机名** 值： `GatewayHostName={gateway hostname}`
 
 所有这些组成部分共同构成了如下所示的完整连接字符串：
 

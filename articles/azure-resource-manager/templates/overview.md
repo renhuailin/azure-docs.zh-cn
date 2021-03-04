@@ -2,13 +2,13 @@
 title: 模板概述
 description: 介绍使用 Azure 资源管理器模板（ARM 模板）部署资源的好处。
 ms.topic: conceptual
-ms.date: 01/20/2021
-ms.openlocfilehash: dd9207ca1d0397b7dce63eb826567f07b1d0b892
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.date: 03/03/2021
+ms.openlocfilehash: 7f850d06066a6892db9f17ae86a6bba9496bad58
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98621833"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102046374"
 ---
 # <a name="what-are-arm-templates"></a>什么是 ARM 模板？
 
@@ -17,6 +17,8 @@ ms.locfileid: "98621833"
 为了解决这些难题，可将部署自动化，并运用基础结构即代码。 在代码中定义需要部署的基础结构。 基础结构代码将成为项目的一部分。 与应用程序代码一样，可将基础结构代码存储在源存储库中，并控制其版本。 团队中的任何人都可以运行该代码并部署类似的环境。
 
 若要针对 Azure 解决方案实现基础结构即代码，请使用 Azure 资源管理器模板（ARM 模板）。 该模板是一个定义项目基础结构和配置的 JavaScript 对象表示法 (JSON) 文件。 该模板使用声明性语法，使你可以指明要部署的内容，而不需要编写一系列编程命令来创建内容。 在该模板中，指定要部署的资源以及这些资源的属性。
+
+我们引入了一种用于开发 ARM 模板的新语言。 该语言的名称为 Bicep，当前为预览版。 Bicep 和 JSON 模板提供相同的功能。 可以在这两种语言之间转换模板。 Bicep 提供了一个更易于用于创建模板的语法。 有关详细信息，请参阅 [什么是 Bicep (Preview) ？](bicep-overview.md)。
 
 ## <a name="why-choose-arm-templates"></a>为什么选择 ARM 模板？
 
@@ -68,7 +70,7 @@ ms.locfileid: "98621833"
 
 * [用户定义的函数](template-user-defined-functions.md) - 创建自定义函数用于简化模板。
 
-* [资源](template-syntax.md#resources) - 指定要部署的资源。
+* [资源](resource-declaration.md) - 指定要部署的资源。
 
 * [输出](template-outputs.md) - 从已部署的资源返回值。
 
@@ -128,7 +130,7 @@ REQUEST BODY
 
 ## <a name="share-templates"></a>共享模板
 
-创建模板后，你可能希望将其与组织中的其他用户共享。 [模板规范](template-specs.md) 可让你将模板存储为资源类型。 使用基于角色的访问控制来管理对模板规范的访问。具有对模板规范的读取访问权限的用户可以对其进行部署，但不能更改模板。
+创建模板后，你可能希望与组织中的其他用户共享此模板。 [模板规格](template-specs.md)使你能够将模板存储为资源类型。 可使用基于角色的访问控制来管理对模板规格的访问。具有对模板规格的读取访问权限的用户可以部署它，但无法更改模板。
 
 此方法意味着可以安全地共享符合组织标准的模板。
 

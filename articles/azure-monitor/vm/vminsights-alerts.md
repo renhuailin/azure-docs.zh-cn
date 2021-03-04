@@ -1,17 +1,16 @@
 ---
 title: 来自 VM insights 的警报
 description: 描述如何从 VM insights 收集的性能数据创建警报规则。
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/10/2020
-ms.openlocfilehash: e3b5f49d9a4ed7af40afba5b267ba0c7bb9cd73a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 06c58b7081ed68724a3c907f8fe76dcf5f7b8057
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101704049"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102046799"
 ---
 # <a name="how-to-create-alerts-from-vm-insights"></a>如何从 VM insights 创建警报
 [Azure Monitor 中的警报在](../alerts/alerts-overview.md) 监视数据中主动通知你感兴趣的数据和模式。 VM insights 不包括预配置的警报规则，但你可以基于它收集的数据创建自己的警报规则。 本文提供了有关创建警报规则的指导，包括一组示例查询。
