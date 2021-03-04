@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 12/10/2020
 ms.author: banders
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: e8420f68fba40ddb61d06770f9f5bc2fafe5616a
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 1ceed171b0516e293ffe58bca0225d3d3dfdb414
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97560519"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101094668"
 ---
 # <a name="managing-azure-enterprise-agreement-roles"></a>管理 Azure 企业协议角色
 
@@ -191,18 +191,18 @@ Azure EA 管理员创建部门后，Azure 企业管理员可以添加部门管�
 
 |企业协议管理员角色|角色的视图费用策略|Azure 角色|定价视图|
 |---|---|---|---|
-|帐户所有者或部门管理员|✔ 已启用|所有者|组织的 EA 定价|
-|帐户所有者或部门管理员|✘ 已禁用|所有者|零售定价|
+|帐户所有者或部门管理员|✔ 已启用|“所有者”|组织的 EA 定价|
+|帐户所有者或部门管理员|✘ 已禁用|“所有者”|零售定价|
 |帐户所有者或部门管理员|✔ 已启用 |none|无定价|
 |帐户所有者或部门管理员|✘ 已禁用 |none|无定价|
-|无|不适用 |所有者|零售定价|
+|无|不适用 |“所有者”|零售定价|
 
-在企业门户中设置企业管理员角色和视图费用策略。 Azure 角色可以在 Azure 门户中更新。 有关详细信息，请参阅[使用 RBAC 和 Azure 门户管理访问权限](../../role-based-access-control/role-assignments-portal.md)。
+在企业门户中设置企业管理员角色和视图费用策略。 Azure 角色可以在 Azure 门户中更新。 有关详细信息，请参阅[使用 Azure 门户分配 Azure 角色](../../role-based-access-control/role-assignments-portal.md)。
 
 
 
 ## <a name="next-steps"></a>后续步骤
 
 - [管理对 Azure 账单信息的访问权限](manage-billing-access.md)
-- [使用 RBAC 和 Azure 门户管理访问权限](../../role-based-access-control/role-assignments-portal.md)
+- [使用 Azure 门户分配 Azure 角色](../../role-based-access-control/role-assignments-portal.md)
 - [Azure 内置角色](../../role-based-access-control/built-in-roles.md)
