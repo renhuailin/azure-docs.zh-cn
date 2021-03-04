@@ -1,39 +1,33 @@
 ---
-title: Azure Cosmos DB 的 API for MongoDB（3.6 版本）支持的功能和语法
-description: 了解 Azure Cosmos DB 的 API for MongoDB（3.6 版本）支持的功能和语法。
+title: MongoDB 的 Azure Cosmos DB API 中 4.0 版服务器支持的功能和语法
+description: 了解 Azure Cosmos DB 的 MongoDB API 4.0 版服务器支持的功能和语法。 了解数据库命令、查询语言支持、数据类型、聚合管道命令和支持的运算符。
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: overview
 ms.date: 03/02/2021
-author: sivethe
-ms.author: sivethe
-ms.openlocfilehash: 4d053e33b8751095be13a40446914033b31feeed
+author: gahl-levy
+ms.author: gahllevy
+ms.openlocfilehash: 4a7e80b77048d1853c9cb0d6e59c5bdd76e8d823
 ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/02/2021
-ms.locfileid: "101656408"
+ms.locfileid: "101664176"
 ---
-# <a name="azure-cosmos-dbs-api-for-mongodb-36-version-supported-features-and-syntax"></a>Azure Cosmos DB 的 API for MongoDB（3.6 版本）：支持的功能和语法
+# <a name="azure-cosmos-dbs-api-for-mongodb-40-server-version-supported-features-and-syntax"></a>MongoDB 的 Azure Cosmos DB API（4.0 版服务器）：支持的功能和语法
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服务。 可通过任何开源 MongoDB 客户端[驱动程序](https://docs.mongodb.org/ecosystem/drivers)与 Azure Cosmos DB's API for MongoDB 进行通信。 可以按照 MongoDB [有线协议](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol)规定，通过 Azure Cosmos DB 的 MongoDB API 来使用现有客户端驱动程序。
 
 通过使用 Azure Cosmos DB 的 MongoDB API，可以像以往一样从 MongoDB 中受益，并且可使用 Cosmos DB 提供的所有企业功能：[全局分发](distribute-data-globally.md)、[自动分片](partitioning-overview.md)、可用性和延迟保证、静态加密和备份等。
 
-> [!NOTE]
-> 本文适用于 Azure Cosmos DB 的 MongoDB API 3.6。 对于 MongoDB 4.0 版本，请参阅 [MongoDB 4.0 支持的功能和语法](mongodb-feature-support-40.md)。
-
 ## <a name="protocol-support"></a>协议支持
 
-默认情况下，对于新帐户，Azure Cosmos DB 的 API for MongoDB 与 MongoDB 服务器版本 **3.6** 兼容。 支持的运算符以及限制或例外已列在下面。 任何理解这些协议的客户端驱动程序应该都能够连接到 Azure Cosmos DB 的 MongoDB API。 请注意，使用 Azure Cosmos DB API for MongoDB 帐户时，3.6 版的帐户的终结点格式为 `*.mongo.cosmos.azure.com`，而 3.2 版的帐户的终结点格式为 `*.documents.azure.com`。
+支持的运算符以及限制或例外已列在下面。 任何理解这些协议的客户端驱动程序应该都能够连接到 Azure Cosmos DB 的 MongoDB API。 使用适用于 MongoDB 帐户的 Azure Cosmos DB API 时，3.6 版及更高版本的帐户采用 `*.mongo.cosmos.azure.com` 格式的终结点，而 3.2 版的帐户采用 `*.documents.azure.com` 格式的终结点。
 
 ## <a name="query-language-support"></a>查询语言支持
 
-Azure Cosmos DB 的 MongoDB API 全面支持 MongoDB 查询语言构造。 以下各节介绍 Azure Cosmos DB 当前支持的服务器操作、运算符、阶段、命令和选项的详细列表。
-
-> [!NOTE]
-> 本文仅列出受支持的服务器命令，并排除客户端包装器函数。 客户端包装器函数（如 `deleteMany()` 和 `updateMany()`）在内部利用 `delete()` 和 `update()` 服务器命令。 利用受支持的服务器命令的函数与 Azure Cosmos DB API for MongoDB 兼容。
+Azure Cosmos DB 的 MongoDB API 全面支持 MongoDB 查询语言构造。 可以在下面查找当前支持的操作、运算符、阶段、命令和选项的详细列表。
 
 ## <a name="database-commands"></a>数据库命令
 
@@ -55,6 +49,13 @@ Azure Cosmos DB 的 MongoDB API 支持以下数据库命令：
 | parallelCollectionScan | 否 |
 | resetError | 否 |
 | update | 是 |
+
+### <a name="transaction-commands"></a>事务命令
+
+| 命令 | 支持 |
+|---------|---------|
+| abortTransaction | 是 |
+| commitTransaction | 是 |
 
 ### <a name="authentication-commands"></a>身份验证命令
 
@@ -88,7 +89,6 @@ Azure Cosmos DB 的 MongoDB API 支持以下数据库命令：
 | reIndex | 是 |
 | renameCollection | 否 |
 
-
 ### <a name="diagnostics-commands"></a>诊断命令
 
 | Command | 支持 |
@@ -110,9 +110,7 @@ Azure Cosmos DB 的 MongoDB API 支持以下数据库命令：
 | top | 否 |
 | whatsmyuri | 是 |
 
-<a name="aggregation-pipeline"></a>
-
-## <a name="aggregation-pipelinea"></a>聚合管道</a>
+## <a name="aggregation-pipeline"></a><a name="aggregation-pipeline"></a>聚合管道
 
 ### <a name="aggregation-commands"></a>聚合命令
 
@@ -162,6 +160,20 @@ Azure Cosmos DB 的 MongoDB API 支持以下数据库命令：
 | $and | 是 |
 | $not | 是 |
 | $or | 是 |
+
+### <a name="conversion-expressions"></a>转换表达式
+
+| 命令 | 支持 |
+|---------|---------|
+| $convert | 是 |
+| $toBool | 是 |
+| $toDate | 是 |
+| $toDecimal | 是 |
+| $toDouble | 是 |
+| $toInt | 是 |
+| $toLong | 是 |
+| $toObjectId | 是 |
+| $toString | 是 |
 
 ### <a name="set-expressions"></a>集表达式
 
@@ -216,6 +228,9 @@ Azure Cosmos DB 的 MongoDB API 支持以下数据库命令：
 | $concat | 是 |
 | $indexOfBytes | 是 |
 | $indexOfCP | 是 |
+| $ltrim | 是 |
+| $rtrim | 是 |
+| $trim | 是 |
 | $split | 是 |
 | $strLenBytes | 是 |
 | $strLenCP | 是 |
@@ -334,7 +349,11 @@ Azure Cosmos DB 的 MongoDB API 支持以下数据库命令：
 
 ## <a name="data-types"></a>数据类型
 
-| Command | 支持 |
+适用于 MongoDB 的 Azure Cosmos DB API 支持以 MongoDB BSON 格式编码的文档。 4\.0 版的 API 扩大了此格式的内部使用来优化性能和降低成本。 这有利于通过运行 4.0 版本的终结点编写或更新的文档。
+ 
+在[升级方案](mongodb-version-upgrade.md)中，在升级到 4.0 版本之前编写的文档将不从增强的性能中受益，直到其通过 4.0 版本的终结点进行写入操作完成更新为止。
+
+| 命令 | 支持 |
 |---------|---------|
 | Double | 是 |
 | 字符串 | 是 |
@@ -412,11 +431,11 @@ Azure Cosmos DB 的 MongoDB API 支持以下数据库命令：
 
 在 $regex 查询中，左定位表达式允许索引搜索。 但是，使用“i”修饰符（不区分大小写）和“m”修饰符（多行）会导致在所有表达式中进行回收集合扫描。
 
-当需要包含“$”或“|”时，最好创建两个（或更多）正则表达式查询。 例如，给定以下原始查询：```find({x:{$regex: /^abc$/})```，必须按如下所示进行修改：
+当需要包含“$”或“|”时，最好创建两个（或更多）正则表达式查询。 例如，给定以下原始查询：`find({x:{$regex: /^abc$/})`，必须按如下所示进行修改：
 
-```find({x:{$regex: /^abc/, x:{$regex:/^abc$/}})```
+`find({x:{$regex: /^abc/, x:{$regex:/^abc$/}})`
 
-第一部分将使用索引将搜索限制为以 ^ abc 开头的文档，第二部分将匹配确切的条目。 竖条运算符“|”充当“or”函数 - 查询 ```find({x:{$regex: /^abc |^def/})``` 匹配字段“x”的值以“abc”或“def”开头的文档。 要使用索引，建议将查询分解为两个由 $or 运算符连接的不同查询：```find( {$or : [{x: $regex: /^abc/}, {$regex: /^def/}] })```。
+第一部分将使用索引将搜索限制为以 ^ abc 开头的文档，第二部分将匹配确切的条目。 竖条运算符“|”充当“or”函数 - 查询 `find({x:{$regex: /^abc |^def/})` 匹配字段“x”的值以“abc”或“def”开头的文档。 要使用索引，建议将查询分解为两个由 $or 运算符连接的不同查询：`find( {$or : [{x: $regex: /^abc/}, {$regex: /^def/}] })`。
 
 ### <a name="array-operators"></a>数组运算符
 
@@ -470,7 +489,6 @@ Azure Cosmos DB 的 MongoDB API 支持以下数据库命令：
 | $push | 是 |
 | $pushAll | 是 |
 
-
 #### <a name="update-modifiers"></a>更新修饰符
 
 | Command | 支持 |
@@ -512,48 +530,44 @@ $polygon | 否 |
 
 ## <a name="unique-indexes"></a>唯一索引
 
-[唯一索引](mongodb-indexing.md#unique-indexes)确保特定字段在一个集合的所有文档中都不会有重复值，类似于默认“_id”键上保持唯一性的方式。 可以通过将 `createIndex` 命令与 `unique` 约束参数一起使用，在 Cosmos DB 中创建唯一索引：
+[唯一索引](mongodb-indexing.md#unique-indexes)确保特定字段在一个集合的所有文档中都不会有重复值，类似于默认“_id”键上保持唯一性的方式。 可通过将 `createIndex` 命令与 `unique` 约束参数一起使用，在 Azure Cosmos DB 中创建唯一索引：
 
 ```javascript
 globaldb:PRIMARY> db.coll.createIndex( { "amount" : 1 }, {unique:true} )
 {
-        "_t" : "CreateIndexesResponse",
-        "ok" : 1,
-        "createdCollectionAutomatically" : false,
-        "numIndexesBefore" : 1,
-        "numIndexesAfter" : 4
+    "_t" : "CreateIndexesResponse",
+    "ok" : 1,
+    "createdCollectionAutomatically" : false,
+    "numIndexesBefore" : 1,
+    "numIndexesAfter" : 4
 }
 ```
 
 ## <a name="compound-indexes"></a>复合索引
 
-[复合索引](mongodb-indexing.md#compound-indexes-mongodb-server-version-36)提供一种为多达 8 个字段的字段组创建索引的方法。 此类型的索引不同于本机 MongoDB 复合索引。 在 Azure Cosmos DB 中，复合索引用于对应用于多个字段的操作进行排序。 若要创建复合索引，需要指定多个属性作为参数：
+通过[复合索引](mongodb-indexing.md#compound-indexes-mongodb-server-version-36)，可为几组字段（最多 8 个字段）创建索引。 此类型的索引不同于本机 MongoDB 复合索引。 在 Azure Cosmos DB 中，复合索引用于对应用于多个字段的操作进行排序。 若要创建复合索引，需要指定多个属性作为参数：
 
 ```javascript
 globaldb:PRIMARY> db.coll.createIndex({"amount": 1, "other":1})
 {
-        "createdCollectionAutomatically" : false, 
-        "numIndexesBefore" : 1,
-        "numIndexesAfter" : 2,
-        "ok" : 1
+    "createdCollectionAutomatically" : false, 
+    "numIndexesBefore" : 1,
+    "numIndexesAfter" : 2,
+    "ok" : 1
 }
 ```
 
 ## <a name="gridfs"></a>GridFS
 
-Azure Cosmos DB 通过任何与 GridFS 兼容的 MongoDB 驱动程序支持 GridFS。
+Azure Cosmos DB 通过任何与 GridFS 兼容的 Mongo 驱动程序支持 GridFS。
 
 ## <a name="replication"></a>复制
 
-Cosmos DB 支持在最低层进行自动本机复制。 此逻辑经过扩展，还可实现低延迟和全局复制。 它不支持手动复制命令。
-
-
-
-
+Azure Cosmos DB 支持在最低层进行自动本机复制。 此逻辑经过扩展，还可实现低延迟和全局复制。 它不支持手动复制命令。
 
 ## <a name="retryable-writes"></a>可重试写入
 
-Azure Cosmos DB 尚不支持可重试写入。 客户端驱动程序必须在其连接字符串中添加 `retryWrites=false`。
+Cosmos DB 尚不支持可重试写入。 客户端驱动程序必须向其连接字符串添加“retryWrites=false”URL 参数。 可添加更多 URL 参数，方法是使用“&”作为其前缀。 
 
 ## <a name="sharding"></a>分片
 
@@ -565,19 +579,22 @@ Azure Cosmos DB 尚不支持服务器端会话命令。
 
 ## <a name="time-to-live-ttl"></a>生存时间 (TTL)
 
-Azure Cosmos DB 支持基于文档时间戳的生存时间 (TTL)。 可在 [Azure 门户](https://portal.azure.com)中为集合启用 TTL。
+Azure Cosmos DB 支持基于文档时间戳的生存时间 (TTL)。 转到 [Azure 门户](https://portal.azure.com)便可以为集合启用 TTL。
+
+## <a name="transactions"></a>事务
+
+Azure Cosmos DB 支持未分片集合的事务。 事务超时固定为 5 秒。
 
 ## <a name="user-and-role-management"></a>用户和角色管理
 
-Azure Cosmos DB 尚不支持用户和角色。 不过，它支持 Azure 基于角色的访问控制 (Azure RBAC) 以及读写和只读密码/密钥，可通过 [Azure 门户](https://portal.azure.com)中的连接字符串窗格获取这些内容。
+Azure Cosmos DB 尚不支持用户和角色。 不过 Cosmos DB 支持 Azure 基于角色的访问控制 (Azure RBAC) 以及读写和只读密码/密钥，可通过 [Azure 门户](https://portal.azure.com)（连接字符串页面）获取这些内容。
 
 ## <a name="write-concern"></a>写关注
 
-某些应用程序依赖[写关注](https://docs.mongodb.com/manual/reference/write-concern/)，后者指定写入操作期间需要的响应数。 由于 Azure Cosmos DB 处理复制的方式，因此默认情况下在使用强一致性时，所有写入都将自动成为多数仲裁。 由客户端代码指定的任何写关注都会被系统忽略。 有关详细信息，请参阅[使用一致性级别尽量提高可用性和性能](consistency-levels.md)一文。
+某些应用程序依赖[写关注](https://docs.mongodb.com/manual/reference/write-concern/)，后者指定写入操作期间需要的响应数。 考虑到 Cosmos DB 在后台处理复制的方式，所有写入默认情况下都自动成为仲裁。 由客户端代码指定的任何写关注都会被系统忽略。 有关详细信息，请参阅[使用一致性级别最大化可用性和性能](consistency-levels.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关详细信息，请查看 [Mongo 3.6 版本功能](https://devblogs.microsoft.com/cosmosdb/azure-cosmos-dbs-api-for-mongodb-now-supports-server-version-3-6/)
 - 了解如何将 [Studio 3T](mongodb-mongochef.md) 与 Azure Cosmos DB 的用于 MongoDB 的 API 配合使用。
 - 了解如何将 [Robo 3T](mongodb-robomongo.md) 与 Azure Cosmos DB 的用于 MongoDB 的 API 配合使用。
 - 通过 Azure Cosmos DB 的用于 MongoDB 的 API 来浏览 MongoDB [示例](mongodb-samples.md)。

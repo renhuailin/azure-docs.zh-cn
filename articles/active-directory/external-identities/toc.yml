@@ -41,7 +41,7 @@
           href: b2b-fundamentals.md
         - name: B2B 和 Office 365 外部共享
           href: o365-external-user.md
-        - name: 邀请兑换
+        - name: 邀请兑换和登录
           href: redemption-experience.md
         - name: 邀请电子邮件
           href: invitation-email-elements.md
@@ -57,9 +57,9 @@
           href: hybrid-organizations.md
         - name: 外部标识的标识提供者
           href: identity-providers.md
-        - name: 自助注册用户流（预览版）
+        - name: 自助注册用户流
           href: self-service-sign-up-overview.md
-        - name: 自助注册 API 连接器（预览版）
+        - name: 自助注册 API 连接器
           href: api-connectors-overview.md
         - name: Azure AD 权利管理
           href: self-service-portal.md
@@ -68,23 +68,25 @@
     - name: 操作指南
       expanded: true
       items:
-        - name: 配置外部协作设置
-          href: delegate-invitations.md
+        - name: 设置 B2B 协作
+          items:
+            - name: 配置外部协作设置
+              href: delegate-invitations.md
+            - name: 允许或阻止域
+              href: allow-deny-list.md
         - name: 邀请来宾用户
           items:
-            - name: 管理员添加 B2B 用户
+            - name: 添加和邀请来宾用户（适用于管理员）
               href: add-users-administrator.md
-            - name: 信息工作者添加 B2B 用户
+            - name: 将来宾用户邀请到应用（适用于应用所有者）
               href: add-users-information-worker.md
             - name: 邀请内部用户使用 B2B 协作
               href: invite-internal-users.md
-            - name: 允许或阻止邀请
-              href: allow-deny-list.md
             - name: 在没有邀请的情况下添加 B2B 用户
               href: add-user-without-invite.md
-            - name: 邀请 API 和自定义
+            - name: 使用 API 自定义邀请
               href: customize-invitation-api.md
-        - name: 与标识提供者联合
+        - name: 与外部标识提供者联合
           items:
             - name: Google 联合身份验证
               href: google-federation.md
@@ -94,9 +96,9 @@
               href: direct-federation.md
             - name: 使用 AD FS 进行直接联合身份验证的示例
               href: direct-federation-adfs.md
-        - name: 一次性密码身份验证
+        - name: 启用一次性密码 (OTP)
           href: one-time-passcode.md
-        - name: 来宾用户的自助注册（预览）
+        - name: 为来宾用户添加自助注册
           items:
             - name: 添加自助注册用户流
               href: self-service-sign-up-user-flow.md
