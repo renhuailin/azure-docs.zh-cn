@@ -8,16 +8,16 @@ ms.date: 07/18/2018
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 7e618475d7d0160bce5aee39c267bb191a3a9f0a
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: d8694a715e53f820556231ae6a549e98b2963fa1
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98897133"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102035698"
 ---
 # <a name="how-to-detach-a-data-disk-from-a-linux-virtual-machine"></a>如何从 Linux 虚拟机中分离数据磁盘
 
-当不再需要附加到虚拟机的数据磁盘时，可以轻松地分离它。 这会从虚拟机中删除该磁盘，但不会从存储中删除它。 在本文中，我们使用的是 Ubuntu LTS 16.04 分发版。 如果使用的是其他分发版，则卸载磁盘的说明可能会有所不同。
+不再需要附加到虚拟机的数据磁盘时，可以轻松地分离它。 这会从虚拟机中删除磁盘，但不会从存储中删除它。 在本文中，我们使用的是 Ubuntu LTS 16.04 分发版。 如果使用的是其他分发版，则卸载磁盘的说明可能会有所不同。
 
 > [!WARNING]
 > 如果分离磁盘，它将不会自动删除。 如果用户订阅了高级存储，则将继续承担该磁盘的存储费用。 有关详细信息，请参阅[使用高级存储时的定价和计费方式](https://azure.microsoft.com/pricing/details/storage/page-blobs/)。
@@ -108,13 +108,10 @@ az vm disk detach \
 
 1. 在左侧菜单中，选择“虚拟机”。
 1. 在虚拟机边栏选项卡中，选择“磁盘”。
-1. 在“磁盘”边栏选项卡的顶部，选择“编辑”。
-1. 在“磁盘”边栏选项卡中，转到要分离的数据磁盘最右侧，并单击![分离按钮图像](./media/detach-disk/detach.png)分离按钮。
-1. 删除磁盘后，单击边栏选项卡顶部的“保存”。
+1. 在 " **磁盘** " 边栏选项卡中，选择要分离的数据磁盘最右侧的 " **X** " 按钮，以分离磁盘。
+1. 删除磁盘后，选择边栏选项卡顶部的 " **保存** "。
 
-磁盘保留在存储中，但不再附加到虚拟机。
-
-
+磁盘保留在存储中，但不再附加到虚拟机。 不会删除该磁盘。
 
 ## <a name="next-steps"></a>后续步骤
 要重新使用数据磁盘，只需[将其附加到其他 VM](add-disk.md) 即可。

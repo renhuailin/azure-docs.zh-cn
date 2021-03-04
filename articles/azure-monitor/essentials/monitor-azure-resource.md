@@ -1,17 +1,16 @@
 ---
 title: 使用 Azure Monitor 监视 Azure 资源 | Microsoft Docs
 description: 介绍如何使用 Azure Monitor 从 Azure 中的资源收集和分析监视数据。
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2019
-ms.openlocfilehash: 7d5fcd4da5ab8b8516794bf99b8aab69ada24644
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: af2803a945821a23ff59f196967d792a6593009f
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101708112"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102033378"
 ---
 # <a name="monitoring-azure-resources-with-azure-monitor"></a>使用 Azure Monitor 监视 Azure 资源
 当你的关键应用程序和业务流程依赖于 Azure 资源时，你需要监视这些资源的可用性、性能和操作。 本文描述了 Azure 资源生成的监视数据，介绍如何使用 Azure Monitor 的功能对此数据分析和发出警报。

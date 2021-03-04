@@ -1,17 +1,16 @@
 ---
 title: 在 Azure Monitor 中使用 Log Analytics 代理收集 Windows 事件日志数据源
 description: 介绍了如何通过 Azure Monitor 配置 Windows 事件日志的收集，以及它们创建的记录的详细信息。
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 10/21/2020
-ms.openlocfilehash: b747a4b58c9c460178d415d0b45ade814723d8fe
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 02/26/2021
+ms.openlocfilehash: a3baa83e2ae306f1e43aee52e29a151bad6f85d9
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101719859"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102036583"
 ---
 # <a name="collect-windows-event-log-data-sources-with-log-analytics-agent"></a>使用 Log Analytics 代理收集 Windows 事件日志数据源
 由于许多应用程序都会写入 Windows 事件日志，因此 Windows 事件日志是 Windows 虚拟机上 Log Analytics 代理最常见的[数据源](../agents/agent-data-sources.md)之一。  除了指定由需要监视的应用程序创建的任何自定义日志，还可以从标准日志（如系统和应用程序）中收集事件。
@@ -22,13 +21,13 @@ ms.locfileid: "101719859"
 ![Windows 事件](media/data-sources-windows-events/overview.png)     
 
 ## <a name="configuring-windows-event-logs"></a>配置 Windows 事件日志
-从 Log Analytics 工作区的[“高级设置”中的“数据”菜单](../agents/agent-data-sources.md#configuring-data-sources)配置 Windows 事件日志。
+从 "Log Analytics" 工作区的 " [代理配置" 菜单](../agents/agent-data-sources.md#configuring-data-sources) 中配置 Windows 事件日志。
 
 Azure Monitor 仅从在设置中指定的 Windows 事件日志收集事件。  可以通过键入日志名称并单击“+”添加事件日志。  对于每个日志，仅收集具有所选严重级别的事件。  检查要收集的特定日志的严重级别。  不能向筛选事件提供任何其他条件。
 
 键入事件日志名称时，Azure Monitor 会提供常见事件日志名称的建议。 如果要添加的日志未显示在列表中，仍可以通过键入日志全名添加。 可以使用事件查看器查找日志全名。 在事件查看器中，打开日志的“属性”页面，并从“全名”字段复制字符串。
 
-![配置 Windows 事件](media/data-sources-windows-events/configure.png)
+[![配置 Windows 事件](media/data-sources-windows-events/configure.png)](media/data-sources-windows-events/configure.png#lightbox)
 
 > [!NOTE]
 > Windows 事件日志中的严重事件在 Azure Monitor 日志中的严重性为“错误”。

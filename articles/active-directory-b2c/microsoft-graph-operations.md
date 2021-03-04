@@ -1,7 +1,7 @@
 ---
 title: 使用 Microsoft Graph 管理资源
 titleSuffix: Azure AD B2C
-description: 如何通过调用 Microsoft Graph API 并使用应用程序标识来自动处理 Azure AD B2C 租户中的资源。
+description: 如何通过调用 Microsoft Graph API 和使用应用程序标识来自动化流程以管理 Azure AD B2C 租户中的资源。
 services: B2C
 author: msmimart
 manager: celestedg
@@ -12,20 +12,20 @@ ms.date: 01/28/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a7e9e523d3aae7cf1444c048c023ca1d85fde41f
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: a8ff94acbd9ffd491bf628ae61ee87634a9c6dd6
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98952218"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102033616"
 ---
 # <a name="manage-azure-ad-b2c-with-microsoft-graph"></a>使用 Microsoft Graph 管理 Azure AD B2C
 
-Microsoft Graph 允许管理 Azure AD B2C 目录中的资源。 支持用于管理 Azure AD B2C 资源（包括用户、标识提供者、用户流、自定义策略和策略密钥）的下列 Microsoft Graph API 操作。 以下各部分中的每个链接对应于 Microsoft Graph API 参考中该操作的相应页面。 
+利用 Microsoft Graph，可以管理 Azure AD B2C 目录中的资源。 支持用于管理 Azure AD B2C 资源（包括用户、标识提供者、用户流、自定义策略和策略密钥）的下列 Microsoft Graph API 操作。 以下各部分中的每个链接对应于 Microsoft Graph API 参考中该操作的相应页面。 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
-若要使用 MS 图形 API，并与 Azure AD B2C 租户中的资源进行交互，你需要一个授予此操作权限的应用程序注册。 按照 [使用 Microsoft Graph 管理 Azure AD B2C](microsoft-graph-get-started.md) 一文中的步骤来创建管理应用程序可以使用的应用程序注册。 
+若要使用 MS Graph API 并与 Azure AD B2C 租户中的资源交互，需要进行应用程序注册来获取这样做的权限。 请执行[使用 Microsoft Graph 管理 Azure AD B2C](microsoft-graph-get-started.md) 一文中的步骤，以便创建供管理应用程序使用的应用程序注册。 
 
 ## <a name="user-management"></a>用户管理
 
@@ -138,6 +138,14 @@ Azure AD B2C 提供一个目录，其中可以保存每个用户的 100 个自�
 
 有关访问 Azure AD B2C 审核日志的详细信息，请参阅 [访问 Azure AD B2C 审核日志](view-audit-logs.md)。
 
+## <a name="conditional-access"></a>条件性访问
+
+- [列出所有条件访问策略](/graph/api/resources/conditionalaccessroot-list-policies)
+- [读取条件访问策略的属性和关系](/graph/api/conditionalaccesspolicy-get)
+- [创建新的条件访问策略](/graph/api/resources/application)
+- [更新条件性访问策略](/graph/api/conditionalaccesspolicy-update)
+- [删除条件性访问策略](/graph/api/conditionalaccesspolicy-delete)
+
 ## <a name="code-sample-how-to-programmatically-manage-user-accounts"></a>代码示例：如何以编程方式管理用户帐户
 
 此代码示例是一个 .NET Core 控制台应用程序，它使用 [Microsoft Graph SDK](/graph/sdks/sdks-overview) 来与 Microsoft Graph API 交互。 其中的代码演示了如何调用 API 来以编程方式管理 Azure AD B2C 租户中的用户。
@@ -151,7 +159,7 @@ git clone https://github.com/Azure-Samples/ms-identity-dotnetcore-b2c-account-ma
 
 1. 在 [Visual Studio](https://visualstudio.microsoft.com) 或 [Visual Studio Code](https://code.visualstudio.com) 中打开项目。
 1. 打开 `src/appsettings.json`。
-1. 在 `appSettings` 部分中，将替换 `your-b2c-tenant` 为你的租户的名称，将替换为 `Application (client) ID` 你的 `Client secret` 管理应用程序注册值。 有关详细信息，请参阅 [注册 Microsoft Graph 应用程序](microsoft-graph-get-started.md)。
+1. 在 `appSettings` 部分，将 `your-b2c-tenant` 替换为租户的名称，将 `Application (client) ID` 和 `Client secret` 替换为管理应用程序注册的值。 有关详细信息，请参阅[注册 Microsoft Graph 应用程序](microsoft-graph-get-started.md)。
 1. 在存储库的本地克隆中打开控制台窗口，切换到 `src` 目录，然后生成项目：
 
     ```console

@@ -4,21 +4,21 @@ description: Azure 安全基准 V2 事件响应
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 002/22/2021
+ms.date: 02/22/2021
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 40a88349040482b3325e63d7035dea35df444cdb
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: b9295482c2464eb80bc49fa707744f49a2fbebfd
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101698580"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102035371"
 ---
 # <a name="security-control-v2-incident-response"></a>安全控制 V2：事件响应
 
 事件响应涵盖事件响应生命周期中的控制 - 准备、检测和分析、遏制以及事件后活动。 这包括使用 azure 服务（如 Azure 安全中心和 Sentinel）自动执行事件响应过程。
 
-若要查看适用的内置 Azure 策略，请参阅 [Azure 安全基准管理法规符合性内置计划的详细信息：事件响应](../../governance/policy/samples/azure-security-benchmark#incident-response)
+若要查看适用的内置 Azure 策略，请参阅 [Azure 安全基准管理法规符合性内置计划的详细信息：事件响应](../../governance/policy/samples/azure-security-benchmark.md#incident-response)
 
 ## <a name="ir-1-preparation--update-incident-response-process-for-azure"></a>IR-1：准备 - 更新 Azure 的事件响应流程
 

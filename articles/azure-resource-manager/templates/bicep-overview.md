@@ -2,21 +2,19 @@
 title: 适用于 Azure 资源管理器模板的 Bicep 语言
 description: 介绍通过 Azure 资源管理器模板将基础结构部署到 Azure 的 Bicep 语言。
 ms.topic: conceptual
-ms.date: 03/02/2021
-ms.openlocfilehash: 6a2750dc99e82c9cf8c9b8b97d156d3a9fe30f31
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/03/2021
+ms.openlocfilehash: 2fb13bca9e9d456889185d512ee2fc9d4cbbe673
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101744567"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102036378"
 ---
 # <a name="what-is-bicep-preview"></a>什么是 Bicep (预览) ？
 
-Bicep 是用来以声明方式部署 Azure 资源的一种语言。 它通过提供简洁的语法简化了创作体验，并可更好地支持模块化和代码重用。 Bicep 是一种特定于域的语言 (DSL) ，这意味着它是为特定方案或域设计的。 Bicep 不是用于编写应用程序的常规编程语言。
+Bicep 是用来以声明方式部署 Azure 资源的一种语言。 它通过提供简洁的语法和更好的代码重用支持来简化创作体验。 Bicep 是一种特定于域的语言 (DSL) ，这意味着它是为特定方案或域设计的。 Bicep 不是用于编写应用程序的常规编程语言。
 
-Bicep 是基于 Azure 资源管理器模板的透明抽象 (ARM 模板) 。 每个 Bicep 文件都编译为标准 ARM 模板。 ARM 模板中有效的资源类型、API 版本和属性在 Bicep 文件中有效。
-
-[!INCLUDE [Bicep preview](../../../includes/resource-manager-bicep-preview.md)]
+过去，开发 Azure 资源管理器模板 (ARM 模板) JSON。 用于创建模板的 JSON 语法可能是详细的，需要复杂的表达式。 Bicep 改进了该体验，而不会丢失 JSON 模板的任何功能。 它是针对 ARM 模板的 JSON 的透明抽象。 每个 Bicep 文件都编译为标准 ARM 模板。 ARM 模板中有效的资源类型、API 版本和属性在 Bicep 文件中有效。
 
 ## <a name="get-started"></a>入门
 
@@ -30,7 +28,26 @@ Bicep 是基于 Azure 资源管理器模板的透明抽象 (ARM 模板) 。 每�
 
 ## <a name="bicep-improvements"></a>Bicep 改进
 
-与等效的 JSON 相比，Bicep 提供了更简单、更简洁的语法。 不使用 `[...]` 表达式。 相反，你可以直接调用函数、从参数和变量获取值以及引用资源。 有关语法的完整比较，请参阅 [比较 JSON 和模板的 Bicep](compare-template-syntax.md)。
+与等效的 JSON 相比，Bicep 提供了更简单、更简洁的语法。 不使用 `[...]` 表达式。 而是直接调用函数，并从参数和变量获取值。 为每个已部署的资源指定一个符号名称，这样就可以轻松地在模板中引用该资源。
+
+例如，以下 JSON 返回资源属性的输出值。
+
+```json
+"outputs": {
+  "hostname": {
+      "type": "string",
+      "value": "[reference(resourceId('Microsoft.Network/publicIPAddresses', variables('publicIPAddressName'))).dnsSettings.fqdn]"
+    },
+}
+```
+
+Bicep 中等效的输出表达式更易于编写。 下面的示例使用模板中定义的资源的符号名称 **publicIP** 返回相同的属性：
+
+```bicep
+output hostname string = publicIP.properties.dnsSettings.fqdn
+```
+
+有关语法的完整比较，请参阅 [比较 JSON 和模板的 Bicep](compare-template-syntax.md)。
 
 Bicep 自动管理资源之间的依赖关系。 `dependsOn`如果在其他资源声明中使用了资源的符号名称，则可以避免设置。
 

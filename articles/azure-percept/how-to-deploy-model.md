@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/12/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 6e1ed39edfd3c395fbc3e4d26a4aa358d48a1d5b
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 01bd3709050d8a2b57c1bf51920308188546fb31
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101662021"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102035477"
 ---
 # <a name="deploy-a-vision-ai-model-to-your-azure-percept-dk"></a>将远景 AI 模型部署到 Azure Percept 深色
 
@@ -40,13 +40,11 @@ ms.locfileid: "101662021"
 
 1. 如果要部署一个预先训练的示例构想模型，请在下一页上，单击 " **部署示例模型** "。 如果要部署现有的 [自定义无代码远景解决方案](./tutorial-nocode-vision.md)，请单击 " **部署自定义视觉项目**"。
 
-    :::image type="content" source="./media/how-to-deploy-model/deploy-model.png" alt-text="Percept 设备列表。":::
+    :::image type="content" source="./media/how-to-deploy-model/deploy-model.png" alt-text="部署的模型选项。":::
 
 1. 如果你选择部署无代码远景解决方案，请选择你的项目和你的首选模型迭代，然后单击 " **部署**"。
 
 1. 如果选择部署示例模型，请选择模型，然后单击 " **部署到设备**"。
-
-    :::image type="content" source="./media/how-to-deploy-model/select-sample-model.png" alt-text="Percept 设备列表。":::
 
 1. 模型部署成功后，屏幕右上角会显示一条状态消息。 若要查看推断的模型，请单击状态消息中的 " **查看流** " 链接，以查看 Devkit 的远景视频流。
 

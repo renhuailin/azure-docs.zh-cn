@@ -4,12 +4,12 @@ description: 了解如何与 Azure Kubernetes 服务 (AKS) 群集节点建立 SS
 services: container-service
 ms.topic: article
 ms.date: 07/31/2019
-ms.openlocfilehash: 96334985862c65000d783df3a205406f046be07a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 7455b98348f2b8c40f2ffc125abe1297af88fbd8
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101740539"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102034449"
 ---
 # <a name="connect-with-ssh-to-azure-kubernetes-service-aks-cluster-nodes-for-maintenance-or-troubleshooting"></a>使用 SSH 连接到 Azure Kubernetes 服务 (AKS) 群集节点以进行维护或故障排除
 
@@ -168,7 +168,7 @@ aks-nodepool1-79590246-0  10.240.0.4
 1. 返回到与容器建立的终端会话，更新复制的 `id_rsa` SSH 私钥中的权限，使其成为用户只读的密钥：
 
     ```console
-    chmod 0600 id_rsa
+    chmod 0400 id_rsa
     ```
 
 1. 与 AKS 节点建立 SSH 连接。 同样，AKS 节点的默认用户名为 *azureuser*。 遵照提示继续建立连接，因为一开始就信任 SSH 密钥。 然后，系统会提供 AKS 节点的 bash 提示：

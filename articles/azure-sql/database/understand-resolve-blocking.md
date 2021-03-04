@@ -13,13 +13,13 @@ ms.topic: conceptual
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: ''
-ms.date: 2/24/2021
-ms.openlocfilehash: b829d7045ac520cfe908c3c8809ae17702d6175d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 3/02/2021
+ms.openlocfilehash: 3d64336184450514d52095097343a4588213f111
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101691427"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102034891"
 ---
 # <a name="understand-and-resolve-azure-sql-database-blocking-problems"></a>了解并解决 Azure SQL 数据库阻塞问题
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -208,7 +208,7 @@ AND object_name(p.object_id) = '<table_name>';
 
 ## <a name="gather-information-from-extended-events"></a>从扩展事件中收集信息
 
-除了上述信息，通常还需要捕获服务器上活动的跟踪，以彻底调查 Azure SQL 数据库上的阻塞问题。 例如，如果一个会话在一个事务中执行多条语句，则只表示提交的最后一条语句。 但是，前面的语句之一可能是仍保留锁的原因。 跟踪将使你能够查看当前事务中会话执行的所有命令。
+除了上述信息之外，通常还需要捕获服务器上的活动跟踪，以彻底调查 Azure SQL 数据库上的阻塞问题。 例如，如果一个会话在一个事务中执行多条语句，则只表示提交的最后一条语句。 但是，前面的语句之一可能是仍保留锁的原因。 跟踪将使你能够查看当前事务中会话执行的所有命令。
 
 在 SQL Server 中捕获跟踪有两种方法：扩展事件 (XEvent) 和探查器跟踪。 但是，[SQL Server Profiler](/sql/tools/sql-server-profiler/sql-server-profiler) 是已被弃用的跟踪技术，Azure SQL 数据库不支持这种技术。 [扩展事件](/sql/relational-databases/extended-events/extended-events)是一种较新的跟踪技术，它支持更多的通用性，对观察到的系统的影响较小，并且它的接口集成到 SQL Server Management Studio (SSMS) 中。 
 
@@ -238,7 +238,7 @@ AND object_name(p.object_id) = '<table_name>';
 
 ## <a name="identify-and-resolve-common-blocking-scenarios"></a>发现并解决常见阻塞情况
 
-通过检查上述信息，你可以确定大多数阻塞问题的原因。 本文的其余部分将讨论如何使用这些信息来识别和解决一些常见的阻塞情况。 本讨论假设你已使用阻塞脚本（前面引用）捕获有关阻塞 SPID 的信息，并已使用 XEvent 会话捕获应用程序活动。
+通过检查前面的信息，您可以确定大多数阻碍性问题的原因。 本文的其余部分将讨论如何使用这些信息来识别和解决一些常见的阻塞情况。 本讨论假设你已使用阻塞脚本（前面引用）捕获有关阻塞 SPID 的信息，并已使用 XEvent 会话捕获应用程序活动。
 
 ## <a name="analyze-blocking-data"></a>分析阻塞数据 
 
@@ -334,7 +334,7 @@ AND object_name(p.object_id) = '<table_name>';
 | 5 | Null | \>0 | 回滚 | 是的。 | 在此 SPID 的扩展事件会话中可能会看到一个注意信号，表示已发生了查询超时或已取消，或者只是发出了一个回滚语句。 |  
 | 6 | Null | \>0 | 正在睡眠 | 最终， 当 Windows NT 确定会话不再处于活动状态时，Azure SQL 数据库连接将断开。 | sys.dm_exec_sessions 中的 `last_request_start_time` 值比当前时间早得多。 |
 
-以下情况将基于上述情况扩展。 
+## <a name="detailed-blocking-scenarios"></a>详细的阻塞方案
 
 1.  由执行时间长的正常运行查询引起的阻塞
 
@@ -366,7 +366,7 @@ AND object_name(p.object_id) = '<table_name>';
 
     第二个查询的输出指示事务嵌套级别为 1。 在提交或回滚事务之前，事务中获取的所有锁仍将保留。 如果应用程序显式打开并提交事务，则通信或其他错误可能会使会话及其事务处于打开状态。 
 
-    使用上面基于 sys.dm_tran_active_transactions 的脚本来确定当前未提交的事务。
+    在本文前面的示例中，根据 sys.dm_tran_active_transactions 来确定当前在实例中未提交的事务。
 
     **解决方法**：
 
@@ -377,6 +377,7 @@ AND object_name(p.object_id) = '<table_name>';
             *    在客户端应用程序的错误处理程序中，在出现任何错误后执行 `IF @@TRANCOUNT > 0 ROLLBACK TRAN`，即使客户端应用程序不认为某个事务已打开。 需要检查打开的事务，因为在批处理期间调用的存储过程可能在客户端应用程序不知情的情况下启动了事务。 某些条件（如取消查询）会阻止过程在当前语句之后执行，因此即使过程具有检查 `IF @@ERROR <> 0` 和中止事务的逻辑，在这种情况下也不会执行此回滚代码。  
             *    如果在应用程序中使用连接池打开连接并在将连接释放回池之前运行少量查询（例如基于 Web 的应用程序），则暂时禁用连接池可以帮助缓解这个问题，直到修改客户端应用程序来适当处理错误。 通过禁用连接池，释放连接将导致 Azure SQL 数据库连接的物理断开，从而导致服务器回滚任何打开的事务。  
             *    将 `SET XACT_ABORT ON` 用于连接，或用于开始事务且在出现错误后未进行清理的任何存储过程中。 如果发生运行时错误，此设置将中止任何打开的事务并将控制权返回给客户端。 有关详细信息，请查看 [SET XACT_ABORT (Transact-SQL)](/sql/t-sql/statements/set-xact-abort-transact-sql)。
+
     > [!NOTE]
     > 除非从连接池重新使用连接，否则不会重置连接，因此用户可以打开一个事务，然后释放与连接池的连接，但在几秒钟内可能不会重新使用连接，在此期间事务将保持打开状态。 如果不重用连接，则当连接超时并从连接池中删除时，事务将中止。 因此，客户端应用程序最好在错误处理程序中中止事务，或者使用 `SET XACT_ABORT ON` 来避免这种潜在的延迟。
 
@@ -385,14 +386,14 @@ AND object_name(p.object_id) = '<table_name>';
 
 1.  由 SPID 引起的阻塞，其对应的客户端应用程序没有将所有结果行提取到完成位置
 
-    向服务器发送查询后，所有应用程序必须立即将所有结果行提取到完成。 如果应用程序没有提取所有结果行，则表上可能会留下锁，从而阻塞其他用户。 如果你使用的应用程序透明地向服务器提交 SQL 语句，则应用程序必须提取所有结果行。 如果没有（如果无法配置为这样做），则可能无法解决阻塞问题。 若要避免此问题，你可以将性能不佳的应用程序限制在报表或决策支持数据库中。
+    向服务器发送查询后，所有应用程序必须立即将所有结果行提取到完成。 如果应用程序没有提取所有结果行，则表上可能会留下锁，从而阻塞其他用户。 如果你使用的应用程序透明地向服务器提交 SQL 语句，则应用程序必须提取所有结果行。 如果没有（如果无法配置为这样做），则可能无法解决阻塞问题。 若要避免此问题，可以将性能不佳的应用程序限制到与主 OLTP 数据库分离的报表或决策支持数据库。
     
     > [!NOTE]
     > 有关连接到 Azure SQL 数据库的应用程序，请参阅[重试逻辑指南](./troubleshoot-common-connectivity-issues.md#retry-logic-for-transient-errors)。 
     
     **解决方法**：必须重写应用程序才能将结果的所有行提取到完成。 这并不排除使用查询的 [ORDER BY 子句中的 OFFSET 和 FETCH](/sql/t-sql/queries/select-order-by-clause-transact-sql#using-offset-and-fetch-to-limit-the-rows-returned) 来执行服务器端分页。
 
-1.  由处于回滚状态的 SPID 导致的阻塞
+1.  由处于回滚状态的会话导致的阻塞
 
     在用户定义事务之外终止或取消的数据修改查询将回滚。 这也可能是客户端网络会话断开连接的副作用，或者请求被选为死锁牺牲品。 这种情况通常可以通过观察 sys.dm_exec_requests 的输出来识别，这可能表示 ROLLBACK 命令，percent_complete 列可能会显示进度 。 
 

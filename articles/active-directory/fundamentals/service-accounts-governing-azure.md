@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c43125edab0f5ed097b99798ca22e5543e15a2d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 4311d0acc7c417bf31c71f46e6c25c65312b894d
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101693009"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102034519"
 ---
 # <a name="governing-azure-ad-service-accounts"></a>管理 Azure AD 服务帐户
 
@@ -51,14 +51,14 @@ Azure Active Directory (Azure AD 中有三种类型的服务帐户) ： [托管�
 
 **权限**
 
-* 不要将内置角色分配给服务帐户。 相反，请使用 [Microsoft Graph 的 OAuth2 权限授予模型](https://docs.microsoft.com/graph/api/resources/oauth2permissiongrant?view=graph-rest-1.0)，
+* 不要将内置角色分配给服务帐户。 相反，请使用 [Microsoft Graph 的 OAuth2 权限授予模型](/graph/api/resources/oauth2permissiongrant)，
 
 * 如果必须为服务主体分配特权角色，请考虑以时间限制的方式将 [自定义角色](https://docs.microsoft.com/azure/active-directory/roles/custom-create) 分配给特定的、必需的特权。
 
 * 请勿将服务帐户包括为具有提升权限的任何组的成员。 
 
-* [使用 PowerShell 枚举特权角色的成员](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)，例如   
-`Get-AzureADDirectoryRoleMember`，并筛选 objectType "服务主体"。
+* [使用 PowerShell 枚举特权角色的成员](/powershell/module/azuread/get-azureaddirectoryrolemember)，例如   
+`Get-AzureADDirectoryRoleMember`和筛选 objectType "服务主体"。
 
    或使用  
 `Get-AzureADServicePrincipal | % { Get-AzureADServiceAppRoleAssignment -ObjectId $_ }`
@@ -117,7 +117,7 @@ Azure Active Directory (Azure AD 中有三种类型的服务帐户) ： [托管�
 
 定期查看服务帐户所授予的权限和范围，以确定是否可以减少这些权限。
 
-* 使用 [PowerShell](https://docs.microsoft.com/powershell/module/azuread/get-azureadserviceprincipaloauth2permissiongrant?view=azureadps-2.0) [构建自动化，以检查和记录](https://gist.github.com/psignoret/41793f8c6211d2df5051d77ca3728c09) 向服务帐户授予同意的作用域。
+* 使用 [PowerShell](/powershell/module/azuread/get-azureadserviceprincipaloauth2permissiongrant) [构建自动化，以检查和记录](https://gist.github.com/psignoret/41793f8c6211d2df5051d77ca3728c09) 向服务帐户授予同意的作用域。
 
 * 使用 PowerShell [查看现有服务主体的凭据](https://github.com/AzureAD/AzureADAssessment) 并检查其有效性。
 
@@ -172,7 +172,7 @@ Microsoft 的免费 PowerShell 示例收集了服务主体的 OAuth2 授权和�
 
 **取消预配的进程应包括以下任务。**
 
-1. 取消预配关联的应用程序或脚本后，可通过服务帐户 [监视登录](../reports-monitoring/concept-all-sign-ins#sign-ins-report.md) 和资源访问。
+1. 取消预配关联的应用程序或脚本后，可通过服务帐户 [监视登录](../reports-monitoring/concept-all-sign-ins.md#sign-ins-report) 和资源访问。
 
    * 如果帐户仍处于活动状态，则在执行后续步骤之前，确定其使用方式。
  

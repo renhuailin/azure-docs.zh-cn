@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
-ms.openlocfilehash: 3c0e348e62184f839ce38e4c364fb5c6b81f1131
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 90addb74811819dec563ba072e9a6aea2cf72ca4
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101726217"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102036531"
 ---
 # <a name="azure-diagnostics-extension-overview"></a>Azure 诊断扩展概述
 Azure 诊断扩展是 [Azure Monitor 中的代理](../agents/agents-overview.md)，可从 Azure 计算资源（包括虚拟机）的来宾操作系统中收集监视数据。 本文概述了 Azure 诊断扩展，其中包括它支持的具体功能以及用于安装和配置的选项。 
@@ -78,7 +78,7 @@ Windows 和 Linux 的 Azure 诊断扩展始终将数据收集到 Azure 存储帐
 | Azure 存储 Blob | 除了表以外，还会将数据写入 Azure 存储中的 blob。 |
 | Application Insights | 将数据从 VM 中运行的应用程序收集到可以与其他应用程序监视功能集成的 Application Insights。 请参阅[将诊断数据发送到 Application Insights](diagnostics-extension-to-application-insights.md)。 |
 
-还可以将存储中的 WAD 数据收集到 Log Analytics 工作区，以便使用 Azure Monitor 日志对其进行分析，尽管通常使用 Log Analytics 代理来执行此功能。 它可以将数据直接发送到 Log Analytics 工作区，并支持那些提供附加功能的解决方案和见解。  请参阅[从 Azure 存储收集 Azure 诊断日志](../essentials/diagnostics-extension-logs.md)。 
+还可以将存储中的 WAD 数据收集到 Log Analytics 工作区，以便使用 Azure Monitor 日志对其进行分析，尽管通常使用 Log Analytics 代理来执行此功能。 它可以将数据直接发送到 Log Analytics 工作区，并支持那些提供附加功能的解决方案和见解。  请参阅[从 Azure 存储收集 Azure 诊断日志](../agents/diagnostics-extension-logs.md)。 
 
 
 ### <a name="linux-diagnostics-extension-lad"></a>Linux 诊断扩展 (LAD)

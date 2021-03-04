@@ -3,12 +3,12 @@ title: 在 Azure 事件网格中使用 Azure AD 进行安全的 WebHook 传递
 description: 介绍如何将事件传递到受到 Azure Active Directory 通过 Azure 事件网格进行保护的 HTTPS 终结点
 ms.topic: how-to
 ms.date: 02/03/2021
-ms.openlocfilehash: b01f0342e185883c4d1552800ab9bdb30cea3040
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: be38edfb4edfee5b3a3b42d7b1c5a44c9d72ceef
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99549146"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102035439"
 ---
 # <a name="publish-events-to-azure-active-directory-protected-endpoints"></a>将事件发布到受 Azure Active Directory 保护的终结点
 
@@ -26,7 +26,7 @@ ms.locfileid: "99549146"
 本部分说明如何启用事件网格来使用 Azure AD 应用程序。 
 
 > [!NOTE]
-> 你必须是 [Azure AD 应用程序管理员角色](../active-directory/roles/permissions-reference.md#available-roles)的成员才能执行此脚本。
+> 你必须是 [Azure AD 应用程序管理员角色](../active-directory/roles/permissions-reference.md#all-roles)的成员才能执行此脚本。
 
 ### <a name="connect-to-your-azure-tenant"></a>连接到 Azure 租户
 首先，使用 `Connect-AzureAD` 命令连接到 Azure 租户。 

@@ -8,18 +8,18 @@ ms.date: 11/19/2020
 ms.topic: conceptual
 ms.service: digital-twins
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 742cff544886a1499bccfa575684edef708da7bd
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 9549e6ea30be0cd9eb1a8c200a5af4a4721793a6
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97028353"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102034670"
 ---
 # <a name="about-the-query-language-for-azure-digital-twins"></a>关于 Azure 数字孪生的查询语言
 
 回忆一下，Azure 数字孪生中心是从数字孪生和关系构建的 [双子图形](concepts-twins-graph.md)。 
 
-可以查询此关系图以获取有关它所包含的数字孪生和关系的信息。 这些查询使用类似于 SQL 的自定义查询语言编写，称为 **Azure 数字孪生查询语言**。 这类似于具有许多可比较功能的 [IoT 中心查询语言](../iot-hub/iot-hub-devguide-query-language.md) 。
+可以查询此关系图以获取有关它所包含的数字孪生和关系的信息。 这些查询是用类似于 SQL 的自定义查询语言编写的，称为 Azure 数字孪生查询语言。 这类似于具有许多可比较功能的 [IoT 中心查询语言](../iot-hub/iot-hub-devguide-query-language.md) 。
 
 本文介绍了查询语言及其功能的基础知识。 有关查询语法的详细信息以及如何运行查询请求的详细信息，请参阅 [*如何：查询双子图形*](how-to-query-graph.md)。
 
@@ -33,12 +33,17 @@ ms.locfileid: "97028353"
 
 若要从客户端应用将查询提交到服务，请使用 Azure 数字孪生 [**查询 API**](/rest/api/digital-twins/dataplane/query)。 使用 API 的一种方法是通过 Azure 数字孪生的一个 [sdk](how-to-use-apis-sdks.md#overview-data-plane-apis) 。
 
+### <a name="considerations-for-querying"></a>查询注意事项
+
+编写 Azure 数字孪生的查询时，请记住以下注意事项：
+* **请记住区分大小** 写：所有 Azure 数字孪生查询操作都区分大小写，因此请务必使用模型中定义的确切名称。 如果属性名称拼写错误或大小写不正确，则结果集为空，并且不返回任何错误。
+* **转义单引号**：如果查询文本中包含单引号字符，则需要使用字符对引号进行转义 `\` 。 下面是一个处理 *D'Souza* 属性值的示例：
+
+  :::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="EscapedSingleQuote":::
+
 ## <a name="reference-expressions-and-conditions"></a>参考：表达式和条件
 
 本部分介绍可用于写入 Azure 数字孪生查询的运算符和函数。 有关演示如何使用这些功能的示例查询，请参阅 [*如何：查询双子图形*](how-to-query-graph.md)。
-
-> [!NOTE]
-> 所有 Azure 数字孪生查询操作都区分大小写，因此请谨慎使用模型中定义的确切名称。 如果属性名称拼写错误或大小写不正确，则结果集为空，并且不返回任何错误。
 
 ### <a name="operators"></a>运算符
 
@@ -48,13 +53,13 @@ ms.locfileid: "97028353"
 | --- | --- |
 | 逻辑 |`AND`, `OR`, `NOT` |
 | 比较 | `=`, `!=`, `<`, `>`, `<=`, `>=` |
-| 包含 | `IN`, `NIN` |
+| Contains | `IN`, `NIN` |
 
 ### <a name="functions"></a>函数
 
 支持以下类型检查和强制转换函数：
 
-| 函数 | 描述 |
+| 函数 | 说明 |
 | -------- | ----------- |
 | `IS_DEFINED` | 返回一个布尔，它指示属性是否已经分配了值。 仅当该值为基元类型时才支持此功能。 基元类型包括字符串、布尔值、数字或 `null`。 `DateTime`不支持、对象类型和数组。 |
 | `IS_OF_MODEL` | 返回一个布尔值，该值指示指定的上值是否与指定的模型类型匹配 |
@@ -67,7 +72,7 @@ ms.locfileid: "97028353"
 
 支持以下字符串函数：
 
-| 函数 | 描述 |
+| 函数 | 说明 |
 | -------- | ----------- |
 | `STARTSWITH(x, y)` | 返回一个布尔值，指示第一个字符串表达式是否以第二个字符串表达式开头。 |
 | `ENDSWITH(x, y)` | 返回一个布尔值，指示第一个字符串表达式是否以第二个字符串表达式结尾。 |

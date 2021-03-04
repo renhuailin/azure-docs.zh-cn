@@ -1,18 +1,17 @@
 ---
 title: 删除 ITSM 连接器及其关联的操作
 description: 本文提供了有关如何删除 ITSM 连接器以及与其关联的操作组的说明。
-ms.subservice: logs
 ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 12/29/2020
 ms.custom: references_regions
-ms.openlocfilehash: 1fbaa48d104642984e604bc66a3aa914fbfed44c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: e73510b6c61c58f6f0b2b8067a240214ee35a46c
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100608291"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102036480"
 ---
 # <a name="deletion-of-unused-itsm-connectors"></a>删除未使用的 ITSM 连接器
 

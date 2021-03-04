@@ -1,20 +1,20 @@
 ---
-title: 将远景 AI 模型部署到 Azure Percept 深色
-description: 了解如何从 Azure Percept Studio 将视觉 AI 模型部署到 Azure Percept 深色
+title: 在 Azure Percept Studio 中捕获无代码远景解决方案的映像
+description: 了解如何在 Azure Percept Studio 中使用 Azure Percept 深色捕获图像，以获取无代码远景解决方案
 author: elqu20
 ms.author: v-elqu
 ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/12/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 5ad263f5ae3b0b8e91de30b620002e33086608b4
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 44bf498af52f4d8a0d880dc1f1d5874d5b444cae
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101661845"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102035528"
 ---
-# <a name="capture-images-for-a-vision-project"></a>捕获视觉项目的图像
+# <a name="capture-images-for-a-vision-project-in-azure-percept-studio"></a>在 Azure Percept Studio 中捕获视觉项目的映像
 
 遵循本指南，使用 azure Percept Studio 中现有远景项目的 Azure Percept 深色的视觉 SoM 捕获映像。 如果尚未创建远景项目，请参阅 [无代码构想教程](./tutorial-nocode-vision.md)。
 
@@ -56,7 +56,7 @@ ms.locfileid: "101661845"
         1. 选择首选的图像处理速率（ **捕获速率**）。
         1. 选择要在 " **目标**" 下收集的映像总数。
 
-    :::image type="content" source="./media/how-to-capture-images/take-photo.png" alt-text="列出可用操作的 Percept 设备页面。":::
+    :::image type="content" source="./media/how-to-capture-images/take-photo.png" alt-text="图像捕获屏幕。":::
 
 所有映像都可在 [自定义视觉](https://www.customvision.ai/)中访问。
 

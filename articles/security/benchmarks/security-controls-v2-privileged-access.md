@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 02/22/2021
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: a4f1c6e32bbc679a7ec946384903b2bda3887d05
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 29d4acc50ed872c37268a0b21c3e34837249a026
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101720573"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102035405"
 ---
 # <a name="security-control-v2-privileged-access"></a>安全控制 V2：特权访问
 
 特权访问包含用于保护对 Azure 租户和资源的特权访问的控制措施。 这包括一系列用于避免管理模型、管理帐户和特权访问工作站面临有意和无意的风险的控制措施。
 
-若要查看适用的内置 Azure 策略，请参阅 [Azure 安全基准管理法规符合性内置计划的详细信息：特权访问](../../governance/policy/samples/azure-security-benchmark#privileged-access)
+若要查看适用的内置 Azure 策略，请参阅 [Azure 安全基准管理法规符合性内置计划的详细信息：特权访问](../../governance/policy/samples/azure-security-benchmark.md#privileged-access)
 
 ## <a name="pa-1-protect-and-limit-highly-privileged-users"></a>PA-1：保护和限制具有较高权限的用户
 
@@ -160,8 +160,6 @@ ms.locfileid: "101720573"
 受保护的隔离工作站对于敏感角色（如管理员、开发人员和关键服务操作员）的安全性至关重要。 使用高度安全的用户工作站和/或 Azure Bastion 执行管理任务。 使用 Azure Active Directory、Microsoft Defender 高级威胁防护 (ATP) 和/或 Microsoft Intune 部署安全的托管用户工作站，用于执行管理任务。 可集中管理安全工作站，强制实施安全配置，包括强身份验证、软件和硬件基线，以及受限制的逻辑和网络访问。 
 
 - [了解特权访问工作站](/security/compass/privileged-access-deployment)
-
-- [部署特权访问工作站](../../active-directory/devices/howto-azure-managed-workstation)
 
 **责任**：客户
 

@@ -7,12 +7,12 @@ ms.author: sujie
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 09/10/2020
-ms.openlocfilehash: d1a0a6ad5b45af2157b960f8990574e47d10eeb2
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 2dbb491e77f132daf7b432f27705eba9e3e3cd3c
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101718414"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102036956"
 ---
 # <a name="automate-builds-tests-and-deployments-of-an-azure-stream-analytics-job-using-cicd-tools"></a>使用 CI/CD 工具自动执行 Azure 流分析作业的生成、测试和部署
 
@@ -122,6 +122,9 @@ azure-streamanalytics-cicd addtestcase -project <projectFullPath> [-testConfigPa
 |---|---|
 | `-project` | Visual Studio Code 项目的 **asaproj.js** 文件路径，或 **[项目名称]. Asaproj** for Visual Studio 项目。 |
 | `-testConfigPath` | 测试配置文件的路径。 如果未指定此值，则会在 **\test** 文件的当前 **asaproj.js** 目录下的文件中搜索文件，默认文件名 **testConfig.js为 on**。 如果不存在，则将创建新的文件。 |
+
+> [!NOTE]
+> `Script`生成的 **testConfig.js** 文件中的值仅用于提供上下文;它不用于测试逻辑。 
 
 #### <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 

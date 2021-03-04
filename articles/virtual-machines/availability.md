@@ -6,12 +6,12 @@ ms.author: cynthn
 ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/18/2021
-ms.openlocfilehash: 6601cd31cf6e332bf292cd887b498a92946d8af7
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: c336c1632cf206cdf2bf7151dc191c4de5ef820d
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101668293"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102036922"
 ---
 # <a name="availability-options-for-virtual-machines-in-azure"></a>Azure 中虚拟机的可用性选项
 
@@ -55,7 +55,7 @@ Azure 平台进行定期维护时，此方法可确保至少有一个应用程�
 
 **规模集的业务流程模式**
 
-利用虚拟机规模集业务流程模式，可以更好地控制规模集对虚拟机实例的管理方式。 可以在规模集上启用统一或灵活的业务流程模式。 统一业务流程针对具有相同实例的大规模无状态工作负荷进行了优化。 灵活的业务流程 (预览) 旨在实现规模相同或多种虚拟机的高可用性。 了解有关这些 [业务流程模式](./virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes.md) 及其启用方法的详细信息。
+利用虚拟机规模集业务流程模式，可以更好地控制规模集对虚拟机实例的管理方式。 可以在规模集上启用统一或灵活的业务流程模式。 统一业务流程针对具有相同实例的大规模无状态工作负荷进行了优化。 灵活的业务流程 (预览) 旨在实现规模相同或多种虚拟机的高可用性。 了解有关这些 [业务流程模式](../virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes.md) 及其启用方法的详细信息。
 
 
 ## <a name="availability-sets"></a>可用性集

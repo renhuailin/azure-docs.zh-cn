@@ -2,17 +2,16 @@
 title: 使用逻辑应用将数据从 Log Analytics 工作区存档到 Azure 存储
 description: 介绍一种使用 Azure 逻辑应用从 Log Analytics 工作区查询数据并将数据发送到 Azure 存储的方法。
 ms.service: azure-monitor
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/02/2020
-ms.openlocfilehash: ae95580a8c192f0815623461fb21ec9ecf52ae26
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: fd66aa1f10a32d94d515a1f0aa25c25331796a8d
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101700637"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102035681"
 ---
 # <a name="archive-data-from-log-analytics-workspace-to-azure-storage-using-logic-app"></a>使用逻辑应用将数据从 Log Analytics 工作区存档到 Azure 存储
 本文介绍一种使用 [Azure 逻辑应用](../../logic-apps/index.yml)从 Azure Monitor 中的 Log Analytics 工作区查询数据并将其发送到 Azure 存储的方法。 如果需要导出 Azure Monitor 日志数据用于审核和符合性场景或允许其他服务检索此数据，请使用此过程。  

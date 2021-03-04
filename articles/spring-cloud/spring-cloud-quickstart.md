@@ -8,12 +8,12 @@ ms.date: 10/23/2020
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 3c07d64fd046766521e030b6ee1b88a590246e24
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: 123be57566a31d9831bfd0172373d571be2bf294
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99226163"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102035163"
 ---
 # <a name="quickstart-deploy-your-first-azure-spring-cloud-application"></a>快速入门：部署第一个 Azure Spring Cloud 应用程序
 
@@ -242,7 +242,7 @@ az extension add --name spring-cloud
 1. 在 Azure Spring Cloud 实例中创建一个分配有公共终结点的应用。 使用在 appsettings.json 中指定的相同应用程序名称“hello-world”。
 
    ```console
-   az spring-cloud app create -n hello-world -s <service instance name> -g <resource group name> --is-public --runtime-version NetCore_31
+   az spring-cloud app create -n hello-world -s <service instance name> -g <resource group name> --assign-endpoint --runtime-version NetCore_31
    ```
 
 1. 将 .zip 文件部署到该应用。
@@ -416,7 +416,7 @@ https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.3.4
 1. 创建已分配公共终结点的应用：
 
     ```azurecli
-    az spring-cloud app create -n hellospring -s <service instance name> -g <resource group name> --is-public true
+    az spring-cloud app create -n hellospring -s <service instance name> -g <resource group name> --assign-endpoint true
     ```
 
 1. 为应用部署 Jar 文件（在 Windows 上为 `target\hellospring-0.0.1-SNAPSHOT.jar`）：

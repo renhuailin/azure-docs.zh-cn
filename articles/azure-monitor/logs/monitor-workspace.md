@@ -1,17 +1,16 @@
 ---
 title: 监视 Azure Monitor 中 Log Analytics 工作区的运行状况
 description: 介绍如何使用“操作”表中的数据监视 Log Analytics 工作区的运行状况。
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/20/2020
-ms.openlocfilehash: 09df1c2ecb94089f23a88dd36c5343bb4cf2feea
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 9eda0acc15badfe7bb2e754d887786aa990d6e24
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101710934"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102034959"
 ---
 # <a name="monitor-health-of-log-analytics-workspace-in-azure-monitor"></a>监视 Azure Monitor 中 Log Analytics 工作区的运行状况
 若要维持 Azure Monitor 中 Log Analytics 工作区的性能和可用性，你需要能够主动检测出现的任何问题。 本文介绍如何使用[操作](/azure/azure-monitor/reference/tables/operation)表中的数据监视 Log Analytics 工作区的运行状况。 此表存在于每个 Log Analytics 工作区中，并且包含工作区中发生的错误和警告。 你应定期查看这些数据，并创建警报，以便在工作区中发生任何重要事件时主动收到通知。

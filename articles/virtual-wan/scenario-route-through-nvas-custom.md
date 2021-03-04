@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/25/2021
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 8916fbc7c2a0b9789dcc73697324cee370f1fc1c
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 6291964aff7c215df7f738ab103947dcb9b1b1d4
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101704899"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102036843"
 ---
 # <a name="scenario-route-traffic-through-nvas-by-using-custom-settings"></a>方案：使用自定义设置通过 Nva 路由流量
 
@@ -176,7 +176,7 @@ ms.locfileid: "101704899"
    >
    > * 门户用户必须启用 "传播到默认路由" (VPN/ER/P2S/VNet) ，才能使 0.0.0.0/0 路由生效。
    > * PS/CLI/REST 用户必须将 "enableinternetsecurity" 标志设置为 true，以使 0.0.0.0/0 路由生效。
-   >
+   > * 虚拟网络连接不支持将 "多/唯一" 下一跃点 IP 连接到分支 VNet "中的同一网络虚拟设备"。如果 "下一跃点 IP 的路由是公共 IP 地址，则为 0.0.0.0/0 (internet) 
 
 ## <a name="next-steps"></a>后续步骤
 

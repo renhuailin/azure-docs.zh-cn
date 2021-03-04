@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 08/03/2020
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 173e6541b4113a5d2e71d76b3b939a69d5224b5a
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 7c37fbead3f7b87da16e77caeda8286d05ca628b
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92735584"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102035129"
 ---
 # <a name="quickstart-build-and-deploy-apps-to-azure-spring-cloud"></a>快速入门：生成应用并将其部署到 Azure Spring Cloud
 
@@ -22,7 +22,7 @@ ms.locfileid: "92735584"
 
 ## <a name="prerequisites"></a>必备知识
 
-* 完成此系列中的前一个快速入门：
+* 完成此系列中前面的快速入门：
 
   * [预配 Azure Spring Cloud 服务](spring-cloud-quickstart-provision-service-instance.md)。
   * [设置 Azure Spring Cloud 配置服务器](spring-cloud-quickstart-setup-config-server.md)。
@@ -143,7 +143,7 @@ ms.locfileid: "92735584"
 1. 若要分配终结点，请运行以下命令。
 
    ```azurecli
-   az spring-cloud app update -n solar-system-weather --is-public true
+   az spring-cloud app update -n solar-system-weather --assign-endpoint true
    ```
 
 1. 若要获取终结点的 URL，请运行以下命令。
@@ -245,7 +245,7 @@ https://servicename-solar-system-weather.azuremicroservices.io/weatherforecast
 1. 使用以下命令分配终结点：
 
     ```azurecli
-    az spring-cloud app update -n gateway --is-public true
+    az spring-cloud app update -n gateway --assign-endpoint true
     ```
 
 2. 查询 **网关** 应用程序的公共 IP，这样就可以验证该应用程序是否正在运行：

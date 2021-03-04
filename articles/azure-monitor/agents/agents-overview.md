@@ -2,17 +2,16 @@
 title: Azure 监视代理概述 | Microsoft Docs
 description: 本文提供可用于在 Azure 或混合环境中支持监视虚拟机的 Azure 代理的详细概述。
 services: azure-monitor
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/12/2021
-ms.openlocfilehash: af18356ef42f8796b972626da4567aac68a6de5a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: b8cfb483f2b06c072707c57ff45b7ad995a22eb4
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101719978"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102034432"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Azure Monitor 代理概述
 
@@ -35,7 +34,7 @@ ms.locfileid: "101719978"
 | | Azure Monitor 代理（预览版） | 诊断<br>扩展 (WAD) | Log Analytics<br>代理 | 依赖项<br>代理 |
 |:---|:---|:---|:---|:---|
 | **支持的环境** | Azure<br>其他云 (Azure Arc) <br>本地 (Azure Arc)   | Azure | Azure<br>其他云<br>本地 | Azure<br>其他云<br>本地 | 
-| **代理要求**  | 无 | None | 无 | 需要 Log Analytics 代理 |
+| **代理要求**  | 无 | 无 | 无 | 需要 Log Analytics 代理 |
 | **收集的数据** | 事件日志<br>性能 | 事件日志<br>ETW 事件<br>性能<br>基于文件的日志<br>IIS 日志<br>.NET 应用日志<br>故障转储<br>代理诊断日志 | 事件日志<br>性能<br>基于文件的日志<br>IIS 日志<br>见解和解决方案<br>其他服务 | 过程依赖项<br>网络连接指标 |
 | **数据发送目标** | Azure Monitor 日志<br>Azure Monitor 指标 | Azure 存储<br>Azure Monitor 指标<br>事件中心 | Azure Monitor 日志 | Azure Monitor 日志<br>（通过 Log Analytics 代理） |
 | **支持的**<br>**功能**<br>**支持** | Log Analytics<br>指标资源管理器 | 指标资源管理器 | VM insights<br>Log Analytics<br>Azure 自动化<br>Azure 安全中心<br>Azure Sentinel | VM insights<br>服务映射 |
@@ -45,7 +44,7 @@ ms.locfileid: "101719978"
 | | Azure Monitor 代理（预览版） | 诊断<br>扩展 (LAD) | Telegraf<br>代理 | Log Analytics<br>代理 | 依赖项<br>代理 |
 |:---|:---|:---|:---|:---|:---|
 | **支持的环境** | Azure<br>其他云 (Azure Arc) <br>本地 (Azure Arc)  | Azure | Azure<br>其他云<br>本地 | Azure<br>其他云<br>本地 | Azure<br>其他云<br>本地 |
-| **代理要求**  | 无 | None | None | 无 | 需要 Log Analytics 代理 |
+| **代理要求**  | 无 | 无 | 无 | 无 | 需要 Log Analytics 代理 |
 | **收集的数据** | Syslog<br>性能 | Syslog<br>性能 | 性能 | Syslog<br>性能| 过程依赖项<br>网络连接指标 |
 | **数据发送目标** | Azure Monitor 日志<br>Azure Monitor 指标 | Azure 存储<br>事件中心 | Azure Monitor 指标 | Azure Monitor 日志 | Azure Monitor 日志<br>（通过 Log Analytics 代理） |
 | **支持的**<br>**功能**<br>**支持** | Log Analytics<br>指标资源管理器 | | 指标资源管理器 | VM insights<br>Log Analytics<br>Azure 自动化<br>Azure 安全中心<br>Azure Sentinel | VM insights<br>服务映射 |

@@ -1,20 +1,20 @@
 ---
 title: ARM 模板常见问题解答
-description: 常见问题 (常见问题) 有关 Azure 资源管理器模板 (ARM 模板) 。
+description: 有关 Azure 资源管理器模板（ARM 模板）的常见问题解答 (FAQ)。
 ms.topic: conceptual
-ms.date: 09/17/2020
+ms.date: 03/03/2021
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 757dfa119649e21c6e1787671afa61ee18184300
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 24baa0dc7444f632040ddaf9fcc2266f9e4ccae5
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97561896"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102036134"
 ---
 # <a name="frequently-asked-questions-about-arm-templates"></a>有关 ARM 模板的常见问题解答
 
-本文解答了有关 Azure 资源管理器模板 (ARM 模板) 的常见问题。
+本文解答有关 Azure 资源管理器模板（ARM 模板）的常见问题。
 
 ## <a name="getting-started"></a>入门
 
@@ -26,7 +26,7 @@ ms.locfileid: "97561896"
 
 * **如何开始使用模板？**
 
-  若要简化 ARM 模板的创作，需要合适的工具。 我们建议安装 [Visual Studio Code](https://code.visualstudio.com/) 和 [Azure 资源管理器工具扩展](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)。 有关这些工具的快速介绍，请参阅 [快速入门：使用 Visual Studio Code 创建 ARM 模板](quickstart-create-templates-use-visual-studio-code.md)。
+  若要简化 ARM 模板的创作，需要合适的工具。 我们建议安装 [Visual Studio Code](https://code.visualstudio.com/) 和 [Azure 资源管理器工具扩展](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)。 有关这些工具的简要介绍，请参阅[快速入门：使用 Visual Studio Code 创建 ARM 模板](quickstart-create-templates-use-visual-studio-code.md)。
 
   准备好学习如何创建 ARM 模板时，请开始学习[有关 ARM 模板的初学者教程系列](template-tutorial-create-first-template.md)。 这些教程指导你逐步完成构造 ARM 模板的过程。 你将了解模板的不同部分以及它们的协作方式。 此内容也作为 [Microsoft Learn 模块](/learn/modules/authoring-arm-templates/)提供。
 
@@ -88,7 +88,7 @@ ms.locfileid: "97561896"
 
 * **我听说你正在研究一种新的模板语言。在哪里可以找到有关它的详细信息？**
 
-  若要预览新语言，请参阅 [Bicep 项目存储库](https://github.com/Azure/bicep)。 若要随时了解新语言，请[注册获取通知](https://aka.ms/armLangUpdates)。
+  若要了解有关新语言的信息，请参阅 [什么是 Bicep (Preview) ？](bicep-overview.md)。
 
 * **是否有支持在 YAML 中创建模板的计划？**
 
@@ -100,17 +100,17 @@ ms.locfileid: "97561896"
 
 * **是否会提供将我的 JSON 模板转换为新模板语言的工具？**
 
-  是的。
+  是的。 请参阅 [将 JSON 反编译为 Bicep](compare-template-syntax.md#decompile-json-to-bicep)。
 
 ## <a name="template-specs"></a>模板规格
 
-* **如何开始模板规范的预览版本？**
+* **如何开始使用模板规格的预览版本？**
 
   安装最新版本的 PowerShell 或 Azure CLI。 对于 Azure PowerShell，请使用[版本 5.0.0 或更高版本](/powershell/azure/install-az-ps)。 对于 Azure CLI，请使用[版本 2.14.2 或更高版本](/cli/azure/install-azure-cli)。
 
 * **模板规格和 Azure 蓝图有何关系？**
 
-  Azure 蓝图通过将 `blueprint definition` 资源替换为 `template spec` 资源在其实现中使用模板规格。 我们将提供迁移路径，将蓝图定义转换为模板规范，但仍支持蓝图定义 Api。 没有对 `blueprint assignment` 资源进行更改。 蓝图仍是在 Azure 中构建受治理环境的用户体验。
+  Azure 蓝图通过将 `blueprint definition` 资源替换为 `template spec` 资源在其实现中使用模板规格。 我们将提供迁移路径，以将蓝图定义转换为模板规格，但仍支持蓝图定义 API。 没有对 `blueprint assignment` 资源进行更改。 蓝图仍是在 Azure 中构建受治理环境的用户体验。
 
 * **模板规格是否会替换链接模板？**
 
@@ -182,11 +182,11 @@ ms.locfileid: "97561896"
 
 * **是否可以将 ARM 模板集成到 Azure Pipelines 中？**
 
-  是的。 有关如何使用模板和管道的说明，请参阅 [教程：使用 Azure Pipelines 持续集成 arm 模板](deployment-tutorial-pipeline.md) 并将 [arm 模板与 Azure Pipelines 集成](add-template-to-azure-pipelines.md)。
+  是的。 有关使用模板和管道的说明，请参阅[教程：使用 Azure Pipelines 持续集成 ARM 模板](deployment-tutorial-pipeline.md)和[将 ARM 模板与 Azure Pipelines 集成](add-template-to-azure-pipelines.md)。
 
 * **是否可以使用 GitHub 操作来部署模板？**
 
-  是，请参阅 [使用 GitHub 操作部署 ARM 模板](deploy-github-actions.md)。
+  可以，请参阅[使用 GitHub Actions 部署 ARM 模板](deploy-github-actions.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
