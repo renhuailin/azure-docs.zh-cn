@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/26/2019
+ms.date: 03/03/2021
 ms.author: duau
-ms.openlocfilehash: fa8dba12a050e42e258e4224f29e379ff53f09d8
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 163436ad82ea6f5067ad41b7fdd7e315db6dc29a
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100576673"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102095011"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>流量管理器常见问题解答 (FAQ)
 
@@ -447,7 +447,18 @@ Azure Resource Manager 要求所有资源组指定一个位置，这决定了部
 
 ### <a name="what-are-the-ip-addresses-from-which-the-health-checks-originate"></a>运行状况检查从哪些 IP 地址发起？
 
-单击[此处](https://azuretrafficmanagerdata.blob.core.windows.net/probes/azure/probe-ip-ranges.json)以查看列出从哪些流量管理器运行状况检查可能源自的 IP 地址的 JSON 文件。 查看在 JSON 文件中列出的 Ip，以确保在终结点允许从这些 IP 地址传入的连接是以检查其运行状况状态。
+单击 [此处](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview) 了解如何检索流量管理器运行状况检查可能源自的 IP 地址的列表。 您可以使用 REST API、Azure CLI 或 Azure PowerShell 来检索最新列表。 查看列出的 Ip，以确保终结点允许来自这些 IP 地址的传入连接检查其运行状况状态。
+
+使用 Azure PowerShell 的示例：
+
+```azurepowershell-interactive
+$serviceTags = Get-AzNetworkServiceTag -Location eastus
+$result = $serviceTags.Values | Where-Object { $_.Name -eq "AzureTrafficManager" }
+$result.Properties.AddressPrefixes
+```
+
+> [!NOTE]
+> 公共 IP 地址可能会更改，恕不另行通知。 请确保使用服务标记发现 API 或可下载的 JSON 文件检索最新信息。
 
 ### <a name="how-many-health-checks-to-my-endpoint-can-i-expect-from-traffic-manager"></a>流量管理器预期会对终结点执行多少次运行状况检查？
 

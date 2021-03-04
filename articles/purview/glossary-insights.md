@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/20/2020
-ms.openlocfilehash: f61d99a61cb50886d70489b586d948bfa751e196
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: eb1d59ae41b04be60dec90aaee4b2305b6d39ca6
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576768"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102095844"
 ---
 # <a name="glossary-insights-on-your-data-in-azure-purview"></a>有关 Azure 中数据的术语表见解监控范围
 
@@ -54,19 +54,27 @@ ms.locfileid: "96576768"
 
 1. 在 " **见解**" :::image type="icon" source="media/glossary-insights/ico-insights.png" border="false"::: 区域中，选择 " **术语表** " 以显示 "监控范围 **词汇表见解** 报表"。
 
-**术语表见解** 页显示以下区域：
-1. 用于显示术语表术语和目录用户的 **高级 kpi**
+**术语表见解** 为你的业务用户提供了一个重要信息，以便为你的组织维护一个完善定义的术语表。
 
-2. **最常见的术语表术语和资产计数** 显示附加了资产的前5个术语表术语。 所有其他资产都在关系图中的 "其他" 类别中进行。
+1. 该报表从 **高级 kpi** 开始，其中显示了 ***你的监控范围帐户中* 的 _所有条款_ _，_ _已获批准的条款，无资产_*_ 和 _* 已 _过期条款与资产_**。 其中每个值都有助于标识术语表的运行状况。
 
-3. 术语 "**词汇表** 术语" 按 "草稿"、"已批准"、"警报" 和 "过期" 等状态显示词汇表术语的分布情况。 
+   :::image type="content" source="./media/glossary-insights/glossary-kpi.png" alt-text="查看术语表见解 KPI"::: 
 
-1. 悬停或单击具有状态的关系图切片，并记下具有该状态的字词的计数。
 
-1. **按用户数量分配角色** 会显示在监控范围中按角色的用户数分配角色。
+2. 如上所示 (**术语的快照**) 将你的条款状态显示为 **_草稿_*_、_*_批准_ 的 *_、_*_Alert_*_ 和 _* 已 _过期_，** 但不包含资产的条款和条款。
 
-   :::image type="content" source="./media/glossary-insights/glossary-insights1.png" alt-text="查看术语表见解":::
+3. 单击 " **查看更多** " 可查看术语名称，其中包含各种状态以及有关 **_专员_*_ 和 _*_专家_** 的更多详细信息。 
+
+   :::image type="content" source="./media/glossary-insights/glossary-view-more.png" alt-text="具有和不包含资产的术语的快照":::  
+
+4. 当你单击 "查看更多" 以获取有关 "资产" 的 **批准的条款** 时，Insights 允许你导航到 _ *词汇表** 条款详细信息页，你可以在该页面上进一步导航到包含附加字词的资产列表。 
+
+   :::image type="content" source="./media/glossary-insights/navigate-to-glossary-detail.png" alt-text="见解到术语表"::: 
+
+4. 在 "词汇表见解" 页面中，按缺少的信息类型查看 **未完成条款** 的分布。 此图显示了 **_缺少定义_ 的字词计数 *_，*_缺少专家_*_ _，_*_缺少专员_*_ 和 _*_缺少多个_** 字段。
+
+1. 单击 "**查看详细** 信息" _ "不完整的字词 * *" 以查看缺少信息的字词。 你可以导航到术语表术语详细信息页来输入缺少的信息，并确保术语表术语已完成。
 
 ## <a name="next-steps"></a>后续步骤
 
-了解有关 Azure 监控范围洞察报表的详细信息，请参阅 [资产见解](./asset-insights.md)
+详细了解如何通过[词汇表](./how-to-create-import-export-glossary.md)创建词汇表术语

@@ -1,17 +1,16 @@
 ---
 title: Azure Monitor 中的 Log Analytics 概述
 description: 介绍 Log Analytics，它是 Azure 门户中的一种工具，用于编辑和运行日志查询，以便分析 Azure Monitor 日志中的数据。
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/04/2020
-ms.openlocfilehash: ef8be3d1fd815362971d5ae2beb27edf47766c94
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: d83cc4045f09ed0f704a0d61c6b303406835eb44
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101723157"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102052290"
 ---
 # <a name="overview-of-log-analytics-in-azure-monitor"></a>Azure Monitor 中的 Log Analytics 概述
 Log Analytics 是 Azure 门户中的一种工具，用于通过 Azure Monitor 日志中的数据编辑和运行日志查询。 可以编写简单查询，以返回记录集，然后使用 Log Analytics 的功能对它们进行排序、筛选和分析。 也可以编写更高级的查询来执行统计分析并在图表中显示结果，以确定特定趋势。 无论是以交互方式处理查询的结果，还是将它们与其他 Azure Monitor 功能（如日志查询警报或工作簿）一起使用，Log Analytics 都是要用于编写和测试它们的工具。 

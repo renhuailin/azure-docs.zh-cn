@@ -5,17 +5,20 @@ ms.topic: article
 ms.date: 02/11/2021
 ms.reviewer: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 2a53ecb1b3411561da50f7dbf3be79f9d70b42bc
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: c7d3c7c8b5da40a4e9ccd9085af5a850b9ebc3dd
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100560425"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102052341"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>为 Azure 应用服务配置部署凭据
 若要从本地计算机保护应用部署， [Azure App Service](./overview.md) 支持两种类型的凭据用于 [本地 Git 部署](deploy-local-git.md) 和 [FTP/S 部署](deploy-ftp.md)。 这些凭据与 Azure 订阅凭据不同。
 
 [!INCLUDE [app-service-deploy-credentials](../../includes/app-service-deploy-credentials.md)]
+
+> [!NOTE]
+> Azure 门户的 **开发中心 (经典)** 页面，这是旧的部署经验，将于2021年3月弃用。 此更改不会影响你的应用中的任何现有部署设置，你可以继续在 " **部署中心** " 页中管理应用部署。
 
 ## <a name="configure-user-scope-credentials"></a><a name="userscope"></a>配置用户范围凭据
 

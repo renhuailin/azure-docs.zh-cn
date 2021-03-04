@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 5eff20ecb1366114ead80877b684ef512742803b
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: bbb0c5617696347b566ba09a481afae4f52379aa
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99805388"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102096031"
 ---
 # <a name="technicalprofiles"></a>TechnicalProfiles
 
@@ -40,8 +40,8 @@ ms.locfileid: "99805388"
 - [OpenID Connect](openid-connect-technical-profile.md) - 与任何 OpenID Connect 协议标识提供者联合。
 - [电话因素](phone-factor-technical-profile.md) - 支持注册和验证电话号码。
 - [RESTful 提供程序](restful-technical-profile.md) - 调用 REST API 服务，例如验证用户输入、扩充用户数据或与业务线应用程序集成。
-- [SAML 标识提供者](saml-identity-provider-technical-profile.md) - 与任何 SAML 协议标识提供者联合。
-- [SAML 令牌颁发者](saml-issuer-technical-profile.md) - 发出返回给信赖方应用程序的 SAML 令牌。
+- [SAML 标识提供者](identity-provider-generic-saml.md) - 与任何 SAML 协议标识提供者联合。
+- [SAML 令牌颁发者](saml-service-provider.md) - 发出返回给信赖方应用程序的 SAML 令牌。
 - [自断言](self-asserted-technical-profile.md) - 与用户交互。 例如，收集用户的凭据进行登录、呈现注册页或密码重置。
 - [会话管理](custom-policy-reference-sso.md) - 处理不同类型的会话。
 
@@ -84,7 +84,7 @@ ms.locfileid: "99805388"
 
 **TechnicalProfile** 元素包含以下属性：
 
-| Attribute | 必须 | 说明 |
+| 属性 | 必选 | 说明 |
 |---------|---------|---------|
 | ID | 是 | 技术配置文件的唯一标识符。 可以使用此标识符从策略文件中的其他元素引用技术配置文件。 例如，**OrchestrationSteps** 和 **ValidationTechnicalProfile**。 |
 
@@ -118,7 +118,7 @@ ms.locfileid: "99805388"
 
 协议指定用于与另一方通信的协议。 Protocol  元素包含以下属性：
 
-| Attribute | 必须 | 说明 |
+| Attribute | 必选 | 说明 |
 | --------- | -------- | ----------- |
 | 名称 | 是 | Azure AD B2C 支持的有效协议的名称，用作技术配置文件的一部分。 可能的值：`OAuth1`、`OAuth2`、`SAML2`、`OpenIdConnect`、`Proprietary` 或 `None`。 |
 | Handler | 否 | 如果 "协议名称" 设置为 `Proprietary` ，则指定 Azure AD B2C 用来确定协议处理程序的程序集的名称。 |
@@ -135,7 +135,7 @@ Metadata 元素包含特定协议的相关配置选项。 相应的[技术配置
 
 Metadata 元素的 Item 元素包含以下属性 ：
 
-| 属性 | 必须 | 说明 |
+| 属性 | 必选 | 说明 |
 | --------- | -------- | ----------- |
 | 密钥 | 是 | 元数据密钥。 请参阅每种[技术配置文件类型](#type-of-technical-profiles)，了解元数据项的列表。 |
 
@@ -175,9 +175,9 @@ Metadata 元素的 Item 元素包含以下属性 ：
 
 为了与集成的服务建立信任，Azure AD B2C 以 [策略密钥](policy-keys-overview.md)的形式存储机密和证书。 在执行技术配置文件的过程中，Azure AD B2C 从 Azure AD B2C 策略密钥中检索加密密钥。 然后，使用密钥建立信任、加密或签名令牌。 这些信任包括：
 
-- 与 [OAuth1](oauth1-technical-profile.md#cryptographic-keys)、 [OAuth2](oauth2-technical-profile.md#cryptographic-keys)和 [SAML](saml-identity-provider-technical-profile.md#cryptographic-keys) 标识提供者联合
+- 与 [OAuth1](oauth1-technical-profile.md#cryptographic-keys)、 [OAuth2](oauth2-technical-profile.md#cryptographic-keys)和 [SAML](identity-provider-generic-saml.md) 标识提供者联合
 - 使用 [REST API 服务](secure-rest-api.md)保护连接
-- 对 [JWT](jwt-issuer-technical-profile.md#cryptographic-keys) 和 [SAML](saml-issuer-technical-profile.md#cryptographic-keys) 令牌进行签名和加密
+- 对 [JWT](jwt-issuer-technical-profile.md#cryptographic-keys) 和 [SAML](saml-service-provider.md) 令牌进行签名和加密
 
 **CryptographicKeys** 元素包含以下元素：
 
@@ -189,7 +189,7 @@ Metadata 元素的 Item 元素包含以下属性 ：
 
 **Key** 元素包含以下属性：
 
-| Attribute | 必须 | 说明 |
+| Attribute | 必选 | 说明 |
 | --------- | -------- | ----------- |
 | ID | 否 | 从策略文件中的其他元素引用的特定密钥对的唯一标识符。 |
 | StorageReferenceId | 是 | 从策略文件中的其他元素引用的存储密钥容器的标识符。 |
@@ -210,7 +210,7 @@ InputClaimsTransformations 元素可以包含一组输入声明转换元素，�
 
 **InputClaimsTransformation** 元素包含以下属性：
 
-| Attribute | 必须 | 说明 |
+| Attribute | 必选 | 说明 |
 | --------- | -------- | ----------- |
 | ReferenceId | 是 | 已在策略文件或父策略文件中定义的声明转换的标识符。 |
 
@@ -249,7 +249,7 @@ InputClaims  元素包含以下元素：
 
 InputClaim  元素包含以下属性：
 
-| Attribute | 必须 | 说明 |
+| 属性 | 必选 | 说明 |
 | --------- | -------- | ----------- |
 | ClaimTypeReferenceId | 是 | 声明类型的标识符。 声明已在策略文件或父策略文件的声明架构部分中定义。 |
 | DefaultValue | 否 | 当 ClaimTypeReferenceId 指示的声明不存在时用来创建声明的默认值。技术配置文件可将生成的声明用作 InputClaim。 |
@@ -323,7 +323,7 @@ PersistedClaims 元素包含 [Azure AD 技术配置文件](active-directory-tech
 
 **PersistedClaim** 元素包含以下属性：
 
-| Attribute | 必须 | 说明 |
+| Attribute | 必选 | 说明 |
 | --------- | -------- | ----------- |
 | ClaimTypeReferenceId | 是 | 已在策略文件或父策略文件的 ClaimsSchema 节中定义的声明类型的标识符。 |
 | DefaultValue | 否 | 要用于创建声明的默认值（如果声明不存在）。 |
@@ -354,7 +354,7 @@ OutputClaims 是在技术配置文件完成后返回到声明包的声明的集�
 
 OutputClaim 元素包含以下属性：
 
-| Attribute | 必须 | 说明 |
+| 属性 | 必选 | 说明 |
 | --------- | -------- | ----------- |
 | ClaimTypeReferenceId | 是 | 已在策略文件或父策略文件的 ClaimsSchema 节中定义的声明类型的标识符。 |
 | DefaultValue | 否 | 要用于创建声明的默认值（如果声明不存在）。 |
@@ -377,7 +377,7 @@ OutputClaim 元素包含以下属性：
 
 **OutputClaimsTransformation** 元素包含以下属性：
 
-| Attribute | 必须 | 说明 |
+| Attribute | 必选 | 说明 |
 | --------- | -------- | ----------- |
 | ReferenceId | 是 | 已在策略文件或父策略文件中定义的声明转换的标识符。 |
 
@@ -420,7 +420,7 @@ OutputClaim 元素包含以下属性：
 
 **ValidationTechnicalProfile** 元素包含以下属性：
 
-| Attribute | 必需 | 说明 |
+| Attribute | 必选 | 说明 |
 | --------- | -------- | ----------- |
 | ReferenceId | 是 | 已在策略文件或父策略文件中定义的技术配置文件的标识符。 |
 
@@ -428,7 +428,7 @@ OutputClaim 元素包含以下属性：
 
 SubjectNamingInfo 定义[依赖方策略](relyingparty.md#subjectnaminginfo)中的令牌中使用的使用者名称。 **SubjectNamingInfo** 包含以下属性：
 
-| Attribute | 必须 | 说明 |
+| Attribute | 必选 | 说明 |
 | --------- | -------- | ----------- |
 | ClaimType | 是 | 已在策略文件的 ClaimsSchema 节中定义的声明类型的标识符。 |
 
@@ -440,7 +440,7 @@ SubjectNamingInfo 定义[依赖方策略](relyingparty.md#subjectnaminginfo)中�
 
 **IncludeTechnicalProfile** 元素包含以下属性：
 
-| Attribute | 必须 | 说明 |
+| Attribute | 必选 | 说明 |
 | --------- | -------- | ----------- |
 | ReferenceId | 是 | 已在策略文件或父策略文件中定义的技术配置文件的标识符。 |
 
@@ -549,7 +549,7 @@ AAD-UserReadUsingAlternativeSecurityId 包括 `AAD-Common` 技术配置文件。
 
 UseTechnicalProfileForSessionManagement 元素引用了[单一登录会话技术配置文件](custom-policy-reference-sso.md)。 **UseTechnicalProfileForSessionManagement** 元素包含以下属性：
 
-| Attribute | 必须 | 说明 |
+| Attribute | 必选 | 说明 |
 | --------- | -------- | ----------- |
 | ReferenceId | 是 | 已在策略文件或父策略文件中定义的技术配置文件的标识符。 |
 

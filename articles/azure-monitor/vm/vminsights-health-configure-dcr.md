@@ -1,17 +1,16 @@
 ---
 title: '使用数据收集规则在 VM insights 来宾运行状况中配置监视 (预览) '
 description: 介绍如何使用资源管理器模板在大规模中修改 VM insights 来宾运行状况中的默认监视。
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/15/2020
-ms.openlocfilehash: 907aea16b018fb5dd3846db546787d132f8f5a9f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 0db6ed7566c53429f8b9798ac8cdafe76ca7bd5a
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101731215"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102052137"
 ---
 # <a name="configure-monitoring-in-vm-insights-guest-health-using-data-collection-rules-preview"></a>使用数据收集规则在 VM insights 来宾运行状况中配置监视 (预览) 
 [VM insights 来宾运行状况](vminsights-health-overview.md) 允许你查看按固定时间间隔采样的一组性能度量定义的虚拟机的运行状况。 本文介绍如何使用数据收集规则来修改多个虚拟机上的默认监视。
@@ -49,9 +48,9 @@ ms.locfileid: "101731215"
 
 | 监视 | 已启用 | 警报 | 警告 | 严重 | 评估频率 | Lookback | 计算类型 | 最小示例 | 最大示例 |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
-| CPU 使用率  | True | False | None | \> 90%    | 60 秒 | 240秒 | Min | 2 | 3 |
-| 可用内存 | True | False | None | \< 100 MB | 60 秒 | 240秒 | Max | 2 | 3 |
-| 文件系统      | True | False | None | \< 100 MB | 60 秒 | 120秒 | Max | 1 | 1 |
+| CPU 使用率  | True | False | 无 | \> 90%    | 60 秒 | 240秒 | Min | 2 | 3 |
+| 可用内存 | True | False | 无 | \< 100 MB | 60 秒 | 240秒 | Max | 2 | 3 |
+| 文件系统      | True | False | 无 | \< 100 MB | 60 秒 | 120秒 | Max | 1 | 1 |
 
 
 ## <a name="overrides"></a>替代

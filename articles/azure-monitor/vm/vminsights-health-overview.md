@@ -1,17 +1,16 @@
 ---
 title: 'VM insights 来宾运行状况 (预览) '
 description: VM insights 中的运行状况功能概述，包括如何查看虚拟机的运行状况，以及在虚拟机变得不正常时接收警报。
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/27/2020
-ms.openlocfilehash: 3db6c2f4da28bba2d12aacc90b2fa8e420aa6fbf
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 2922ca4068531c45e6acad0ce54aa96624c6238e
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101707449"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102052120"
 ---
 # <a name="vm-insights-guest-health-preview"></a>VM insights 来宾运行状况 (预览) 
 利用 VM insights 来宾运行状况，你可以根据一组性能度量来查看虚拟机的运行状况，该度量值是从来宾操作系统定期抽样的。 你可以快速检查订阅或资源组中所有虚拟机的运行状况、向下钻取特定虚拟机的详细运行状况，或在虚拟机变得不正常时主动通知。 
@@ -60,7 +59,7 @@ ms.locfileid: "101707449"
 | 严重 | 如果) 定义此监视器，则该监视器超出了严重阈值 (。 |
 | Unknown  | 未收集足够的数据来确定运行状况状态。 |
 | 已禁用 | 监视器当前已禁用。 |
-| None     | 监视器刚刚启动，尚未评估或监视的对象不再存在。 |
+| 无     | 监视器刚刚启动，尚未评估或监视的对象不再存在。 |
 
 
 

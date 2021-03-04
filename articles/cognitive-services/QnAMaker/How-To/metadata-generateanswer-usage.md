@@ -9,12 +9,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 18b70d60ade7cd40f7ed51aa7c219c8c046abfc3
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 1c2b608107beff2a4f34325f8a6e5be3a0551053
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99584733"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102051899"
 ---
 # <a name="get-an-answer-with-the-generateanswer-api-and-metadata"></a>使用 GenerateAnswer API 和元数据获取答案
 
@@ -273,11 +273,49 @@ var qnaResults = await this.qnaMaker.getAnswers(stepContext.context, qnaMakerOpt
 }
 ```
 
+## <a name="return-precise-answers"></a>返回准确的答案
+
+### <a name="generate-answer-api"></a>生成答案 API 
+
+使用 QnA Maker 托管资源时，用户可以启用 [准确的答案](../reference-precise-answering.md) 。 AnswerSpanRequest 参数必须针对相同的进行更新。
+
+```json
+{
+    "question": "How long it takes to charge surface pro 4?",
+    "top": 3,
+    "answerSpanRequest": {
+        "enable": true,
+        "topAnswersWithSpan": 1
+    }
+}
+```
+
+同样，用户可以通过不设置 answerSpanRequest 参数来选择禁用精确答案。
+
+```json
+{
+    "question": "How long it takes to charge surface pro 4?",
+    "top": 3
+}
+```
+### <a name="bot-settings"></a>机器人设置
+
+如果要为机器人服务配置确切的应答设置，请导航到机器人的应用服务资源。 然后，必须通过添加以下设置来更新配置。
+
+- EnablePreciseAnswer
+- DisplayPreciseAnswerOnly
+
+|显示器配置|EnablePreciseAnswer|DisplayPreciseAnswerOnly|
+|:--|--|--|
+|仅精确答案|true|true|
+|仅限长应答|false|false|
+|长答案和精确答案|true|false|
+
 ## <a name="common-http-errors"></a>常见 HTTP 错误
 
 |代码|说明|
 |:--|--|
-|2xx|Success|
+|2xx|成功|
 |400|请求的参数不正确，这意味着所需的参数缺失、格式错误或太大|
 |400|请求的正文不正确，这意味着 JSON 缺失、格式错误或太大|
 |401|密钥无效|

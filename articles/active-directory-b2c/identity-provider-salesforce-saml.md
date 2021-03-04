@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 9dce61817bdd6b42223028a624cd6e237be28bfe
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: cfdd96ffa9e7758fc594f7e7ae53c84495b8b2e8
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98953812"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102095402"
 ---
 # <a name="set-up-sign-in-with-a-salesforce-saml-provider-by-using-saml-protocol-in-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 中的 SAML 协议设置 Salesforce SAML 提供程序的登录
 
@@ -33,7 +33,7 @@ ms.locfileid: "98953812"
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-本文展示了如何在 Azure Active Directory B2C (Azure AD B2C) 中使用[自定义策略](custom-policy-overview.md)为来自 Salesforce 组织的用户实现登录。 可通过将 [SAML 标识提供者技术配置文件](saml-identity-provider-technical-profile.md)添加到自定义策略来实现登录。
+本文展示了如何在 Azure Active Directory B2C (Azure AD B2C) 中使用[自定义策略](custom-policy-overview.md)为来自 Salesforce 组织的用户实现登录。 可以通过将 [SAML 标识提供者](identity-provider-generic-saml.md) 添加到自定义策略来启用登录。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -100,7 +100,7 @@ ms.locfileid: "98953812"
 
 如果希望用户使用 Salesforce 帐户登录，需将该帐户定义为 Azure AD B2C 可通过终结点与其进行通信的声明提供程序。 该终结点将提供一组声明，Azure AD B2C 使用这些声明来验证特定的用户是否已完成身份验证。
 
-可以通过在策略的扩展文件中将 Salesforce 帐户添加到 **ClaimsProvider** 元素，将该帐户定义为声明提供程序。 有关详细信息，请参阅[定义 SAML 标识提供者技术配置文件](saml-identity-provider-technical-profile.md)。
+可以通过在策略的扩展文件中将 Salesforce 帐户添加到 **ClaimsProvider** 元素，将该帐户定义为声明提供程序。 有关详细信息，请参阅 [定义 SAML 标识提供者](identity-provider-generic-saml.md)。
 
 1. 打开 *TrustFrameworkExtensions.xml*。
 1. 找到 **ClaimsProviders** 元素。 如果该元素不存在，请在根元素下添加它。

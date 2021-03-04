@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 10/28/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 682b83d7016a89b27b5c936853abda1438f59c28
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: e4e90d91b8e6ae017f00e37304c4da56cd618732
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97508010"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102095300"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>关于 Azure Active Directory B2C 自定义策略中的声明解析程序
 
@@ -87,8 +87,9 @@ Azure Active Directory B2C (Azure AD B2C) [自定义策略](custom-policy-overvi
 | {Context:CorrelationId} | 相关 ID。  | 00000000-0000-0000-0000-000000000000 |
 | {Context:DateTimeInUtc} |UTC 格式的日期时间。  | 2018/10/10 中午 12:00 |
 | {Context:DeploymentMode} |策略部署模式。  | 生产 |
+| {Context： HostName} | 当前请求的主机名。  | contoso.b2clogin.com |
 | {Context:IPAddress} | 用户 IP 地址。 | 11.111.111.11 |
-| {Context:KMSI} | 指示是否选中 ["使我保持登录状态"](session-behavior.md?pivots=b2c-custom-policy#enable-keep-me-signed-in-kmsi) 复选框。 |  是 |
+| {Context:KMSI} | 指示是否选中了“[使我保持登录状态](session-behavior.md?pivots=b2c-custom-policy#enable-keep-me-signed-in-kmsi)”复选框。 |  是 |
 
 ### <a name="claims"></a>声明 
 
@@ -141,7 +142,7 @@ Azure Active Directory B2C (Azure AD B2C) [自定义策略](custom-policy-overvi
 |[OpenID Connect](openid-connect-technical-profile.md) 技术配置文件| `InputClaim`, `OutputClaim`| 1, 2|
 |[索赔转换](claims-transformation-technical-profile.md) 技术配置文件| `InputClaim`, `OutputClaim`| 1, 2|
 |[RESTful 提供程序](restful-technical-profile.md)技术配置文件| `InputClaim`| 1, 2|
-|[SAML 标识提供程序](saml-identity-provider-technical-profile.md)技术配置文件| `OutputClaim`| 1, 2|
+|[SAML 标识提供程序](identity-provider-generic-saml.md)技术配置文件| `OutputClaim`| 1, 2|
 |[自断言](self-asserted-technical-profile.md)技术配置文件| `InputClaim`, `OutputClaim`| 1, 2|
 |[ContentDefinition](contentdefinitions.md)| `LoadUri`| |
 |[ContentDefinitionParameters](relyingparty.md#contentdefinitionparameters)| `Parameter` | |

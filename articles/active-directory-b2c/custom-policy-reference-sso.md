@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/07/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 453042766c427b05ec1ee1090a0702f64065542d
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: f690f4a416e86b02de0d35fc673849c1293df577
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97508044"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102095759"
 ---
 # <a name="single-sign-on-session-management-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的单一登录会话管理
 
@@ -55,7 +55,7 @@ SSO 管理类是使用技术配置文件的 `<UseTechnicalProfileForSessionManag
 
 ### <a name="noopssosessionprovider"></a>NoopSSOSessionProvider
 
-顾名思义，此提供程序不执行任何操作。 此提供程序可用于抑制特定技术配置文件的 SSO 行为。 `SM-Noop`[自定义策略初学者包](custom-policy-get-started.md#custom-policy-starter-pack)中包含以下技术配置文件。
+顾名思义，此提供程序不执行任何操作。 此提供程序可用于抑制特定技术配置文件的 SSO 行为。 [自定义策略入门包](custom-policy-get-started.md#custom-policy-starter-pack)包含以下 `SM-Noop` 技术配置文件。
 
 ```xml
 <TechnicalProfile Id="SM-Noop">
@@ -66,7 +66,7 @@ SSO 管理类是使用技术配置文件的 `<UseTechnicalProfileForSessionManag
 
 ### <a name="defaultssosessionprovider"></a>DefaultSSOSessionProvider
 
-此提供程序可以用于在会话中存储声明。 此提供程序通常在用于管理本地和联合帐户的技术配置文件中引用。 `SM-AAD`[自定义策略初学者包](custom-policy-get-started.md#custom-policy-starter-pack)中包含以下技术配置文件。
+此提供程序可以用于在会话中存储声明。 此提供程序通常在用于管理本地和联合帐户的技术配置文件中引用。 [自定义策略入门包](custom-policy-get-started.md#custom-policy-starter-pack)包含以下 `SM-AAD` 技术配置文件。
 
 ```xml
 <TechnicalProfile Id="SM-AAD">
@@ -87,7 +87,7 @@ SSO 管理类是使用技术配置文件的 `<UseTechnicalProfileForSessionManag
 ```
 
 
-`SM-MFA`[自定义策略初学者包](custom-policy-get-started.md#custom-policy-starter-pack)中包含以下技术配置文件 `SocialAndLocalAccountsWithMfa` 。 此技术配置文件管理多重身份验证会话。
+[自定义策略入门包](custom-policy-get-started.md#custom-policy-starter-pack) `SocialAndLocalAccountsWithMfa` 包含以下 `SM-MFA` 技术配置文件。 此技术配置文件管理多重身份验证会话。
 
 ```xml
 <TechnicalProfile Id="SM-MFA">
@@ -104,7 +104,7 @@ SSO 管理类是使用技术配置文件的 `<UseTechnicalProfileForSessionManag
 
 ### <a name="externalloginssosessionprovider"></a>ExternalLoginSSOSessionProvider
 
-此提供程序用于禁止“选择标识提供者”屏幕并从联合标识提供者注销。 通常在为联合标识提供者（如 Facebook 或 Azure Active Directory）配置的技术配置文件中引用它。 `SM-SocialLogin`[自定义策略初学者包](custom-policy-get-started.md#custom-policy-starter-pack)中包含以下技术配置文件。
+此提供程序用于禁止“选择标识提供者”屏幕并从联合标识提供者注销。 通常在为联合标识提供者（如 Facebook 或 Azure Active Directory）配置的技术配置文件中引用它。 [自定义策略入门包](custom-policy-get-started.md#custom-policy-starter-pack)包含以下 `SM-SocialLogin` 技术配置文件。
 
 ```xml
 <TechnicalProfile Id="SM-SocialLogin">
@@ -118,7 +118,7 @@ SSO 管理类是使用技术配置文件的 `<UseTechnicalProfileForSessionManag
 
 #### <a name="metadata"></a>元数据
 
-| Attribute | 必须 | 说明|
+| 属性 | 必选 | 说明|
 | --- | --- | --- |
 | AlwaysFetchClaimsFromProvider | 否 | 当前未使用，可以忽略。 |
 
@@ -135,7 +135,7 @@ SSO 管理类是使用技术配置文件的 `<UseTechnicalProfileForSessionManag
 
 ### <a name="samlssosessionprovider"></a>SamlSSOSessionProvider
 
-此提供程序用于管理信赖方应用程序或联合 SAML 标识提供者之间的 Azure AD B2C SAML 会话。 使用 SSO 提供程序存储 SAML 标识提供者会话时，`RegisterServiceProviders` 必须设为 `false`。 以下 `SM-Saml-idp` 技术配置文件由 [SAML 标识提供者技术配置文件](saml-identity-provider-technical-profile.md)使用。
+此提供程序用于管理信赖方应用程序或联合 SAML 标识提供者之间的 Azure AD B2C SAML 会话。 使用 SSO 提供程序存储 SAML 标识提供者会话时，`RegisterServiceProviders` 必须设为 `false`。 `SM-Saml-idp` [SAML 标识提供者](identity-provider-generic-saml.md)使用以下技术配置文件。
 
 ```xml
 <TechnicalProfile Id="SM-Saml-idp">
@@ -149,7 +149,7 @@ SSO 管理类是使用技术配置文件的 `<UseTechnicalProfileForSessionManag
 
 使用提供程序存储 B2C SAML 会话时，`RegisterServiceProviders` 必须设为 `true`。 需要 `SessionIndex` 和 `NameID` 才能完成 SAML 会话注销。
 
-以下 `SM-Saml-issuer` 技术配置文件由 [SAML 颁发者技术配置文件](saml-issuer-technical-profile.md)使用
+以下 `SM-Saml-issuer` 技术配置文件由 [SAML 颁发者技术配置文件](saml-service-provider.md)使用
 
 ```xml
 <TechnicalProfile Id="SM-Saml-issuer">
@@ -160,7 +160,7 @@ SSO 管理类是使用技术配置文件的 `<UseTechnicalProfileForSessionManag
 
 #### <a name="metadata"></a>Metadata
 
-| Attribute | 必须 | 说明|
+| 属性 | 必选 | 说明|
 | --- | --- | --- |
 | IncludeSessionIndex | 否 | 当前未使用，可以忽略。|
 | RegisterServiceProviders | 否 | 指示提供程序应注册已颁发断言的所有 SAML 服务提供程序。 可能的值为 `true`（默认）或 `false`。|
@@ -168,4 +168,4 @@ SSO 管理类是使用技术配置文件的 `<UseTechnicalProfileForSessionManag
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何 [配置会话行为](session-behavior.md)。
+了解如何[配置会话行为](session-behavior.md)。

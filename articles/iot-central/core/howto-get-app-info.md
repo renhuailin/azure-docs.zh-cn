@@ -7,12 +7,12 @@ ms.author: v-anjaso
 ms.date: 02/26/2021
 ms.topic: how-to
 ms.service: iot-central
-ms.openlocfilehash: b4a44433a9761bd387b24164653c8ed1538713ba
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 80a35ab41b05609642667da9e8561921ecc20852
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101721577"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102051696"
 ---
 # <a name="about-your-application"></a>关于你的应用程序
 
@@ -33,7 +33,7 @@ ms.locfileid: "101721577"
 
 1. " **关于应用** 程序" 页显示有关应用程序的信息：  
 
-    :::image type="content" source="media/howto-get-app-info/about-your-app.png" alt-text="关于应用屏幕截图":::
+    :::image type="content" source="media/howto-get-app-info/about-your-app2.png" alt-text="关于应用屏幕截图":::
 
     使用 " **复制信息** " 按钮将信息复制到剪贴板。
 

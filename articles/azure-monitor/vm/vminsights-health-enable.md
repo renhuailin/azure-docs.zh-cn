@@ -1,18 +1,17 @@
 ---
 title: '启用 VM insights 来宾运行状况 (预览) '
 description: 介绍如何在你的订阅中启用 VM insights 来宾运行状况以及如何载入 Vm。
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/16/2020
 ms.custom: references_regions
-ms.openlocfilehash: 3747e9190010bd3c0b88dfdbe9da01009316c275
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 5d4ff622f69445880c0de8cb74dc1aeee422c89b
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101733714"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102052154"
 ---
 # <a name="enable-vm-insights-guest-health-preview"></a>启用 VM insights 来宾运行状况 (预览) 
 VM insights 来宾运行状况允许你查看按固定时间间隔采样的一组性能度量定义的虚拟机的运行状况。 本文介绍如何在你的订阅中启用此功能，以及如何为每个虚拟机启用来宾监视。

@@ -1,17 +1,16 @@
 ---
 title: 'VM insights 来宾运行状况警报 (预览) '
 description: 介绍由 VM insights 来宾运行状况创建的警报，包括如何启用和配置通知。
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/10/2020
-ms.openlocfilehash: a32ba9f1c4cf5d6bb9de69e1a6860c858e3ee2a6
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 1b5fd10b3e0bd84aa7d34a918f4f2376130d2e45
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101707500"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102052256"
 ---
 # <a name="vm-insights-guest-health-alerts-preview"></a>VM insights 来宾运行状况警报 (预览) 
 VM insights 来宾运行状况允许你查看按固定时间间隔采样的一组性能度量定义的虚拟机的运行状况。 当虚拟机或监视器更改为不正常状态时，可以创建警报。 你可以使用 [Azure Monitor 中的警报规则创建](../alerts/alerts-overview.md) 的警报来查看和管理这些警报，并选择在创建新警报时主动收到通知。

@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e36acb5a6a0984b003e4e8deb597bddfc43b064a
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 97517ad3ff260806108dc22686d49b43b0fc6609
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101647551"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102096014"
 ---
 # <a name="passwordless-authentication-options-for-azure-active-directory"></a>Azure Active Directory 的无密码 authentication 选项
 
@@ -89,6 +89,8 @@ FIDO2 安全密钥是基于 unphishable 标准的无密码身份验证方法，�
 用户可以进行注册，然后在登录界面选择 FIDO2 安全密钥作为主要的身份验证方式。 这些 FIDO2 安全密钥通常是 USB 设备，但也可以使用蓝牙或 NFC。 使用处理身份验证的硬件设备，由于不使用可能被公开或猜到的密码，帐户的安全性会提高。
 
 FIDO2 安全密钥可用于登录到其 Azure AD 或混合 Azure AD 加入 Windows 10 设备，并可在其云和本地资源上进行单一登录。 用户还可以登录到受支持的浏览器。 对于安全敏感的企业而言，FIDO2 安全密钥是一个不错的选择，或者不愿意或无法使用其电话作为第二个因素的方案或员工。
+
+我们有一个参考文档， [浏览器支持使用 Azure AD 进行 FIDO2 的身份验证](fido2-compatibility.md)，以及适用于开发人员 [在开发的应用程序中支持 FIDO2](../develop/support-fido2-authentication.md)authentication 的最佳实践。
 
 ![使用安全密钥登录 Microsoft Edge](./media/concept-authentication-passwordless/concept-web-sign-in-security-key.png)
 
