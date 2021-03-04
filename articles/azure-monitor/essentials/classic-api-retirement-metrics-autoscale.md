@@ -1,15 +1,14 @@
 ---
 title: 停用 Azure Monitor 度量值和自动缩放的部署 Api
 description: 指标和自动缩放经典 API（也称为 Azure 服务管理 (ASM) 或 RDFE 部署模型）即将停用
-ms.subservice: ''
 ms.topic: conceptual
 ms.date: 11/19/2018
-ms.openlocfilehash: d818e06b13454633199488ca94e1ff8fbe418360
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 0169de93b92de179c0ae9a36ff8dba3b7b1dc0fb
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100605945"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102049026"
 ---
 # <a name="azure-monitor-retirement-of-classic-deployment-model-apis-for-metrics-and-autoscale"></a>Azure Monitor 即将停用指标和自动缩放的经典部署模型 API
 
@@ -85,7 +84,7 @@ ms.locfileid: "100605945"
 
 如有任何疑问，请通过 MonitorClassicAPIhelp@microsoft.com 联系我们。  
 
-## <a name="references"></a>参考
+## <a name="references"></a>参考资料
 
 - [Azure Monitor 的新版 REST API](/rest/api/monitor/) 
 - [新版 Azure Monitor SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/)

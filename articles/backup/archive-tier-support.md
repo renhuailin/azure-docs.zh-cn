@@ -3,12 +3,12 @@ title: " (预览版的存档层支持) "
 description: 了解 Azure 备份的存档层支持
 ms.topic: conceptual
 ms.date: 02/18/2021
-ms.openlocfilehash: cd9cfc5722dc644dd257738be797f162ac6dc995
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 30a7915332d1d7ecab87b0db1ddc6dacc0fa69c9
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101744511"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102050596"
 ---
 # <a name="archive-tier-support-preview"></a> (预览版的存档层支持) 
 
@@ -35,6 +35,9 @@ ms.locfileid: "101744511"
 
 - 此功能是使用 PowerShell 提供的
 
+>[!NOTE]
+>Azure Vm 中的 Azure Vm 和 SQL Server 的存档层支持在有限个人注册的公共预览版中提供。 若要注册存档支持，请使用此 [链接](https://aka.ms/ArchivePreviewInterestForm)。
+
 ## <a name="get-started-with-powershell"></a>PowerShell 入门
 
 1. 下载 [最新的 PowerShell 模块](https://github.com/Azure/azure-powershell/tree/Az.RecoveryServices-preview) (预览) 。
@@ -43,12 +46,30 @@ ms.locfileid: "101744511"
 
    `Set-AzContext -Subscription "SubscriptionName"`
 
+1. 获取保管库：
+
+    `$vault =  Get-AzRecoveryServicesVault -ResourceGroupName "rgName" -Name "vaultName"`
+
+1. 获取备份项列表：
+
+    `$BackupItemList = Get-AzRecoveryServicesBackupItem -vaultId $vault.ID -BackupManagementType "AzureVM/AzureWorkload" -WorkloadType "AzureVM/MSSQL"`
+
+1. 获取备份项。
+
+    - 对于 Azure 虚拟机：
+
+        `$bckItm = $BackupItemList | Where-Object {$_.Name -match '<vmName>'}`
+
+    - 对于 Azure 虚拟机中的 SQL Server：
+
+        `$bckItm = $BackupItemList | Where-Object {$_.Name -match '<dbName>' -and $_.ContainerName -match '<vmName>'}`
+
 ## <a name="use-powershell"></a>使用 PowerShell
 
 ### <a name="check-archivable-recovery-points"></a>检查存档恢复点
 
 ```azurepowershell
-$rp = Get-AzRecoveryServicesBackupRecoveryPoint -StartDate (Get-Date).AddDays(-180).ToUniversalTime() -EndDate (Get-Date).AddDays(0).ToUniversalTime() -VaultId $vault.ID -Item $bckItm  -IsReadyForMove $true -TargetTier VaultArchive
+$rp = Get-AzRecoveryServicesBackupRecoveryPoint -VaultId $vault.ID -Item $bckItm  -IsReadyForMove $true -TargetTier VaultArchive
 ```
 
 这会列出与已准备好移动到存档的特定备份项相关联的所有恢复点。
@@ -56,7 +77,7 @@ $rp = Get-AzRecoveryServicesBackupRecoveryPoint -StartDate (Get-Date).AddDays(-1
 ### <a name="check-why-a-recovery-point-cannot-be-moved-to-archive"></a>检查无法将恢复点移到存档的原因
 
 ```azurepowershell
-$rp.RecoveryPointMoveReadinessInfo["ArchivedRP"]
+$rp[0].RecoveryPointMoveReadinessInfo["ArchivedRP"]
 ```
 
 其中 `$rp[0]` 是要检查其不存档的恢复点的位置。
@@ -79,13 +100,13 @@ False           Recovery-Point Type is not eligible for archive move as it is al
 >节省的成本取决于多种原因，对于任意两个实例可能不是相同的。
 
 ```azurepowershell
-$recommendedRPs = SGet-AzRecoveryServicesRecommendedArchivableRPGroup -Item $BackupItem -StartDate $Startdate.ToUniversalTime() -EndDate $Enddate.ToUniversalTime() -VaultId $vault.ID 
+$RecommendedRecoveryPointList = Get-AzRecoveryServicesBackupRecommendedArchivableRPGroup -Item $bckItm -VaultId $vault.ID
 ```
 
 ### <a name="move-to-archive"></a>移到存档
 
 ```azurepowershell
-Move-AzRecoveryServicesRecoveryPoint -VaultId $vault.ID - RecoveryPoint $RecoveryPoint[10] -SourceTier VaultStandard -DestinationTier VaultArchive 
+Move-AzRecoveryServicesBackupRecoveryPoint -VaultId $vault.ID -RecoveryPoint $rp[2] -SourceTier VaultStandard -DestinationTier VaultArchive
 ```
 
 此命令将存档恢复点移动到 archive。 它将返回一个作业，该作业可用于通过门户和 PowerShell 跟踪移动操作。
@@ -95,7 +116,7 @@ Move-AzRecoveryServicesRecoveryPoint -VaultId $vault.ID - RecoveryPoint $Recover
 此命令返回所有存档的恢复点。
 
 ```azurepowershell
-$rp = Get-AzRecoveryServicesBackupRecoveryPoint -StartDate (Get-Date).AddDays(-180).ToUniversalTime() -EndDate (Get-Date).AddDays(0).ToUniversalTime() -VaultId $vault.ID -Item $bckItm -Tier VaultArchive
+$rp = Get-AzRecoveryServicesBackupRecoveryPoint -VaultId $vault.ID -Item $bckItm -Tier VaultArchive
 ```
 
 ### <a name="restore-with-powershell"></a>通过 PowerShell 还原
@@ -122,7 +143,7 @@ Restore-AzRecoveryServicesBackupItem -VaultLocation $vault.Location -RehydratePr
 若要查看移动和还原作业，请使用以下 PowerShell cmdlet：
 
 ```azurepowershell
-Get-AzRecoveryservicesBackupJob -VaultId $targetVault.ID
+Get-AzRecoveryServicesBackupJob -VaultId $vault.ID
 ```
 
 ## <a name="use-the-portal"></a>使用门户

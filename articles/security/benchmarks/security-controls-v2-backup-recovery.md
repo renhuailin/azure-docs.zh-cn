@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 02/22/2021
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: fd9a01868230efd9e9078171359d81302b472cd3
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 39466ad621eff1a7d3490c936c90fbff6f63e0fc
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101724415"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102051542"
 ---
 # <a name="security-control-v2-backup-and-recovery"></a>安全控制 V2：备份和恢复
 
 备份和恢复包括用于确保在不同服务层执行、验证和保护数据和配置备份的控制措施。
 
-若要查看适用的内置 Azure 策略，请参阅 [Azure 安全基准管理法规符合性内置计划的详细信息：备份和恢复](../../governance/policy/samples/azure-security-benchmark#backup-and-recovery)
+若要查看适用的内置 Azure 策略，请参阅 [Azure 安全基准管理法规符合性内置计划的详细信息：备份和恢复](../../governance/policy/samples/azure-security-benchmark.md#backup-and-recovery)
 
 ## <a name="br-1-ensure-regular-automated-backups"></a>BR-1：确保定期执行自动备份
 
@@ -66,7 +66,7 @@ ms.locfileid: "101724415"
 
 - [使用客户托管密钥加密备份数据](../../backup/encryption-at-rest-with-cmk.md) 
 
-- [如何在 Azure 中备份 Key Vault 密钥](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
+- [如何在 Azure 中备份 Key Vault 密钥](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey)
 
 - [可帮助保护混合备份免受攻击的安全功能](../../backup/backup-azure-security-feature.md#prevent-attacks)
 
@@ -90,7 +90,7 @@ ms.locfileid: "101724415"
 
 - [如何从 Azure 虚拟机备份恢复文件](../../backup/backup-azure-restore-files-from-vm.md)
 
-- [如何在 Azure 中还原 Key Vault 密钥](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
+- [如何在 Azure 中还原 Key Vault 密钥](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey)
 
 **责任**：客户
 

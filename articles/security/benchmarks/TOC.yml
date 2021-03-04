@@ -242,4 +242,4 @@
     - name: Azure 安全中心
       href: ../../security-center/index.yml
     - name: Azure 安全基准基础蓝图示例
-      href: ../../governance/blueprints/samples/azure-security-benchmark-foundation/index.yml
+      href: ../../governance/blueprints/samples/azure-security-benchmark-foundation/index.md

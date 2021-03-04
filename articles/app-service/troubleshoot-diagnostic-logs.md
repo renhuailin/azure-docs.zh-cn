@@ -5,12 +5,12 @@ ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
 ms.topic: article
 ms.date: 09/17/2019
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 5fa729ae68d091d9810430bdc0ea55ce1c876b25
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 6008304ea7c1d17363587a4fa5bf6017cb0903f9
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100586262"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102049230"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>为 Azure 应用服务中的应用启用诊断日志记录
 ## <a name="overview"></a>概述
@@ -116,7 +116,7 @@ Azure 提供内置诊断功能，可帮助调试[应用服务应用](overview.md
     System.Diagnostics.Trace.TraceError("If you're seeing this, something bad happened");
     ```
 
-- 默认情况下，ASP.NET Core 使用 [Microsoft.Extensions.Logging.AzureAppServices](https://www.nuget.org/packages/Microsoft.Extensions.Logging.AzureAppServices) 日志记录提供程序。 有关详细信息，请参阅 [Azure 中的 ASP.NET Core 日志记录](/aspnet/core/fundamentals/logging/)。
+- 默认情况下，ASP.NET Core 使用 [Microsoft.Extensions.Logging.AzureAppServices](https://www.nuget.org/packages/Microsoft.Extensions.Logging.AzureAppServices) 日志记录提供程序。 有关详细信息，请参阅 [Azure 中的 ASP.NET Core 日志记录](/aspnet/core/fundamentals/logging/)。 有关 Web 作业 SDK 日志记录的信息，请参阅 [AZURE WEBJOBS SDK 入门](/azure/app-service/webjobs-sdk-get-started#enable-console-logging)
 
 ## <a name="stream-logs"></a>流式传输日志
 

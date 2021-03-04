@@ -1,17 +1,16 @@
 ---
 title: Log Analytics 代理概述
 description: 本主题可帮助你了解如何使用 Log Analytics 收集数据并监视托管在 Azure、本地或其他云环境中的计算机。
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/12/2021
-ms.openlocfilehash: c2a97e5e54fea8d80160c1df7007d51871501ef8
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 1dc8e3a78e681947a70ad96638d1d6e09f0bbc88
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101714385"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102050658"
 ---
 # <a name="log-analytics-agent-overview"></a>Log Analytics 代理概述
 

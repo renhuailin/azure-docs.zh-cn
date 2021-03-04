@@ -1,17 +1,16 @@
 ---
 title: 在 Azure Monitor 中使用 Log Analytics 代理收集 IIS 日志
 description: Internet 信息服务 (IIS) 会将用户活动存储在日志文件中，并可通过 Azure Monitor 进行收集。  本文介绍了如何配置 IIS 日志收集以及在 Azure Monitor 中创建的记录的详细信息。
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 11/13/2020
-ms.openlocfilehash: 96eab2d93ae0212568f8ef23e32a35016cb17248
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 02/26/2021
+ms.openlocfilehash: 484e49219b94f5974661b1e76f533236666ebcfb
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101732048"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102050726"
 ---
 # <a name="collect-iis-logs-with-log-analytics-agent-in-azure-monitor"></a>在 Azure Monitor 中使用 Log Analytics 代理收集 IIS 日志
 Internet Information Services (IIS) 会将用户活动存储在日志文件中，这些日志文件由 Log Analytics 代理收集并存储在 [Azure Monitor 日志](../data-platform.md)中。
@@ -26,7 +25,7 @@ Azure Monitor 会从 IIS 创建的日志文件中收集条目，因此，必须[
 
 Azure Monitor 仅支持以 W3C 格式存储的 IIS 日志文件，不支持自定义字段或 IIS 高级日志记录。 Azure Monitor 不会收集 NCSA 或 IIS 本机格式的日志。
 
-在 Azure Monitor 中通过[“高级设置”菜单](../agents/agent-data-sources.md#configuring-data-sources)为 Log Analytics 代理配置 IIS 日志。  只需选择 **收集 W3C 格式 IIS 日志文件**，即可完成配置。
+从 Log Analytics 代理的 [代理配置菜单](../agents/agent-data-sources.md#configuring-data-sources) Azure Monitor 中配置 IIS 日志。  只需选择 **收集 W3C 格式 IIS 日志文件**，即可完成配置。
 
 
 ## <a name="data-collection"></a>数据收集

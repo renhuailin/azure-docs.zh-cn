@@ -416,7 +416,7 @@
                 - name: 发送到事件中心
                   href: agents/diagnostics-extension-stream-event-hubs.md
                 - name: 发送到日志
-                  href: essentials/diagnostics-extension-logs.md
+                  href: agents/diagnostics-extension-logs.md
                 - name: 发送到 Application Insights
                   href: agents/diagnostics-extension-to-application-insights.md
                 - name: 版本历史记录
@@ -993,7 +993,7 @@
         - name: 正式版常见问题解答
           href: vm/vminsights-ga-release-faq.md
         - name: 常见问题解答
-          href: faq.md#azure-monitor-for-vms
+          href: faq.md#vm-insights
         - name: 配置工作区
           href: vm/vminsights-configure-workspace.md
         - name: 安装代理
@@ -1045,7 +1045,7 @@
         - name: 概述
           href: containers/container-insights-overview.md
         - name: 常见问题解答
-          href: faq.md#azure-monitor-for-containers
+          href: faq.md#container-insights
         - name: 启用监视
           items:
             - name: 启用监视概述

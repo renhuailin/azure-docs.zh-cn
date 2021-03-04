@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 9/1/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 924397c9c81d2a38ae74b95a8f7133ced8bde0d4
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 24dac044982d59e93da17ee75190f378d5e3cdea
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101736536"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102050913"
 ---
 # <a name="auto-manage-devices-in-azure-digital-twins-using-device-provisioning-service-dps"></a>使用设备预配服务 (DPS) 自动管理 Azure 数字孪生中的设备
 
@@ -85,7 +85,7 @@ az iot dps create --name <Device Provisioning Service name> --resource-group <re
 
 在新创建的函数代码文件中，粘贴以下代码。
 
-:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/adtIotHub_allocate.cs":::
+:::code language="csharp" source="~/digital-twins-docs-samples-dps/functions/DpsAdtAllocationFunc.cs":::
 
 保存该文件，然后重新发布函数应用。 有关发布 function app 的说明，请参阅端到端教程的 [*发布应用*](tutorial-end-to-end.md#publish-the-app) 部分。
 
@@ -182,7 +182,7 @@ az dt twin show -n <Digital Twins instance name> --twin-id <Device Registration 
 
 在已发布的函数应用中，添加 " *事件中心触发器*" 类型的新函数类，并粘贴以下代码。
 
-:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/adtIotHub_delete.cs":::
+:::code language="csharp" source="~/digital-twins-docs-samples-dps/functions/DeleteDeviceInTwinFunc.cs":::
 
 保存项目，然后再次发布函数应用。 有关发布 function app 的说明，请参阅端到端教程的 [*发布应用*](tutorial-end-to-end.md#publish-the-app) 部分。
 
@@ -223,7 +223,7 @@ az functionapp config appsettings set --settings "EVENTHUB_CONNECTIONSTRING=<Eve
 
 在本文的前半 [部分](#auto-provision-device-using-device-provisioning-service)，已在 IoT 中心创建了一个设备，并在相应的数字克隆中创建了一个。 
 
-现在，请前往 IoT 中心，删除该设备 (你可以使用 [Azure CLI 命令](/cli/azure/ext/azure-iot/iot/hub/module-identity?view=azure-cli-latest#ext_azure_iot_az_iot_hub_module_identity_delete) 或在 [Azure 门户](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Devices%2FIotHubs)) 中执行此操作。 
+现在，请前往 IoT 中心，删除该设备 (你可以使用 [Azure CLI 命令](/cli/azure/ext/azure-iot/iot/hub/module-identity?view=azure-cli-latest&preserve-view=true#ext_azure_iot_az_iot_hub_module_identity_delete) 或在 [Azure 门户](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Devices%2FIotHubs)) 中执行此操作。 
 
 设备将自动从 Azure 数字孪生中删除。 
 

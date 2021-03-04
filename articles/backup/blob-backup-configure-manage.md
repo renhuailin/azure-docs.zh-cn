@@ -3,12 +3,12 @@ title: 为 Azure Blob 配置操作备份
 description: '了解如何在预览版中配置和管理 Azure Blob 的操作备份 () '
 ms.topic: conceptual
 ms.date: 02/16/2021
-ms.openlocfilehash: 7fe302de0e93575e7bb62f7c5cdefd7acc0720c3
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 0dc490842389ba9286799aef5d37c1cf7c1ba64e
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101744486"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102051066"
 ---
 # <a name="configure-operational-backup-for-azure-blobs-in-preview"></a>在预览版中配置 Azure Blob 的操作备份 () 
 
@@ -170,4 +170,4 @@ Blob 的备份是在存储帐户级别配置的。 因此，存储帐户中的�
 
 ## <a name="next-steps"></a>后续步骤
 
-- [还原 Azure Blob](blob-backup-support-matrix.md)
+- [还原 Azure Blob](blob-restore.md)

@@ -3,14 +3,14 @@ title: Azure 自动化数据安全性
 description: 本文介绍 Azure 自动化如何保护你的隐私并保护数据。
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 01/08/2021
+ms.date: 03/02/2021
 ms.topic: conceptual
-ms.openlocfilehash: f2ce8d482231b4a95c322e9d495a75f89953c32a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 2bdf25ef24f1fbf4aaf4dec154ea6af3421b915a
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100581110"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102050811"
 ---
 # <a name="management-of-azure-automation-data"></a>管理 Azure 自动化数据
 
@@ -41,7 +41,7 @@ ms.locfileid: "100581110"
 
 ## <a name="data-retention"></a>数据保留
 
-在删除 Azure 自动化中的某个资源时，该资源在被永久删除之前将保留若干天以供审核。 在此期间，无法查看或使用该资源。 此策略也适用于属于已删除的自动化帐户的资源。
+在删除 Azure 自动化中的某个资源时，该资源在被永久删除之前将保留若干天以供审核。 在此期间，无法查看或使用该资源。 此策略也适用于属于已删除的自动化帐户的资源。 保留策略应用于所有用户并且当前无法自定义。 但是，如果需要将数据保留更长时间，则可以[将 Azure 自动化作业数据转发到 Azure Monitor 日志](automation-manage-send-joblogs-log-analytics.md)。
 
 下表汇总了各种资源的保留策略。
 
@@ -54,9 +54,9 @@ ms.locfileid: "100581110"
 | 模块 |在模块被用户删除 30 天后或者在包含该模块的帐户被用户删除 30 天后将其永久删除。 |
 | 节点配置/MOF 文件 |生成新节点配置 30 天后，将永久删除旧节点配置。 |
 | 节点报告 |在生成该节点的新报告 90 天后永久删除节点报告。 |
-| Runbook |在 runbook 被用户删除资源 30 天后或者在包含该资源的帐户被用户删除 30 天后将其永久删除。 |
+| Runbook |在用户删除资源30天后，或在用户删除保存资源<sup>1</sup>的帐户后的30天后，将永久删除 runbook。 |
 
-保留策略应用于所有用户并且当前无法自定义。 但是，如果需要将数据保留更长时间，则可以[将 Azure 自动化作业数据转发到 Azure Monitor 日志](automation-manage-send-joblogs-log-analytics.md)。
+<sup>1</sup>可以通过将 Azure 支持事件与 Microsoft Azure 支持结合使用来恢复30天内的 runbook。 请参阅 [Azure 支持站点](/support/options) 并选择 " **提交支持请求**"。
 
 ## <a name="data-backup"></a>数据备份
 

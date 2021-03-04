@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 11/03/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: b713a19cbe572998bb6e5050ab2d7721a844f07a
-ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
+ms.openlocfilehash: a2732c3979998ea3429833f96056b88bc2dccf75
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100530444"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102050930"
 ---
 # <a name="manage-a-graph-of-digital-twins-using-relationships"></a>使用关系管理数字孪生图
 
@@ -30,7 +30,7 @@ Azure 数字孪生的核心是代表您的整个环境的克隆 [图](concepts-t
 
 [!INCLUDE [digital-twins-ways-to-manage.md](../../includes/digital-twins-ways-to-manage.md)]
 
-你还可以使用 Azure 数字孪生 (ADT) 资源管理器示例对图形进行更改，这将允许你可视化孪生和 graph，并在幕后使用 SDK。 下一部分将详细介绍此示例。
+你还可以使用 Azure 数字孪生资源管理器示例对图形进行更改，这使你能够可视化孪生和 graph，并在幕后使用 SDK。 下一部分将详细介绍此示例。
 
 [!INCLUDE [visualizing with Azure Digital Twins explorer](../../includes/digital-twins-visualization.md)]
 
@@ -188,8 +188,8 @@ Azure 数字孪生还提供了一个 API，用于查找到给定克隆的所有 
 
 |  模型 ID    | 克隆 ID (必须唯一)  | 关系名  | 目标克隆 ID  | 克隆初始化数据 |
 | --- | --- | --- | --- | --- |
-| dtmi：示例：楼层; 1    | 楼层 1 | 包含 | Room1 | |
-| dtmi：示例：楼层; 1    | 楼层 0 | 包含 | Room0 | |
+| dtmi：示例：楼层; 1    | 楼层 1 | contains | Room1 | |
+| dtmi：示例：楼层; 1    | 楼层 0 | contains | Room0 | |
 | dtmi：示例：房间; 1    | Room1 | | | {"温度"： 80} |
 | dtmi：示例：房间; 1    | Room0 | | | {"温度"： 70} |
 

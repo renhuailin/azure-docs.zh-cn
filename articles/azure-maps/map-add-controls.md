@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: devx-track-js
-ms.openlocfilehash: 2a225d4ea19cccea114e47cc61a8055d28e8cd99
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: bbcfe4935843a00bc5274273e79f4ffc72dc25ed
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895284"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102051049"
 ---
 # <a name="add-controls-to-a-map"></a>向地图添加控件
 
@@ -58,11 +58,11 @@ map.controls.add(new atlas.control.PitchControl(), {
 
 ## <a name="add-compass-control"></a>添加指南针控件
 
-指南针控件添加了用于旋转地图的按钮。 下面的代码示例创建一个 [罗盘控件](/javascript/api/azure-maps-control/atlas.control.compasscontrol) 类的实例，并将其添加到地图的左下角。
+指南针控件添加了用于旋转地图的按钮。 下面的代码示例创建 [CompassControl](/javascript/api/azure-maps-control/atlas.control.compasscontrol) 类的一个实例，并将其添加到地图的左下角。
 
 ```javascript
 //Construct a compass control and add it to the map.
-map.controls.add(new atlas.control.Compass(), {
+map.controls.add(new atlas.control.CompassControl(), {
     position: 'bottom-left'
 });
 ```
@@ -105,7 +105,7 @@ map.controls.add([
 <br/>
 
 <iframe height="700" style="width: 100%;" scrolling="no" title="导航控件选项" src="//codepen.io/azuremaps/embed/LwBZMx/?height=700&theme-id=0&default-tab=result" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
-请参阅 CodePen 上的 () ，查看笔<a href='https://codepen.io/azuremaps/pen/LwBZMx/'>导航控件 Azure Maps 选项</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> 。 <a href='https://codepen.io'>CodePen</a>
+请参阅 CodePen 上的 () ，查看笔<a href='https://codepen.io/azuremaps/pen/LwBZMx/'>导航控件 Azure Maps 选项</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> 。 <a href='https://codepen.io'></a>
 </iframe>
 
 如果要创建自定义的导航控件，请创建一个从类扩展的类， `atlas.Control` 或创建一个 HTML 元素，并将其放置在地图 div 上方。 使此 UI 控件调用 maps `setCamera` 函数以移动地图。 

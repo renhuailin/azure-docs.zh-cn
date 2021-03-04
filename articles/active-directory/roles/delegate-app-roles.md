@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b5cb7e1521c649be4abc155d9f28a49b43a11e6d
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: fea9662b6f5890c6240e91b26cf641d6166d560a
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99071252"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102051185"
 ---
 # <a name="delegate-app-registration-permissions-in-azure-active-directory"></a>在 Azure Active Directory 中委托应用注册权限
 
@@ -77,7 +77,7 @@ Azure AD 提供一组内置的管理员角色，用于授予 Azure AD 中所有�
 - 应用程序管理员：此角色中的用户可以创建和管理企业应用程序、应用程序注册和应用程序代理设置的所有方面。 此角色还授予同意委派权限和应用程序权限（不包括 Microsoft Graph）的能力。 在创建新应用程序注册或企业应用程序时，不会将分配到此角色的用户添加为所有者。
 - 云应用程序管理员：此角色中的用户具有与应用程序管理员角色相同的权限，但不包括管理应用程序代理的权限。 在创建新应用程序注册或企业应用程序时，不会将分配到此角色的用户添加为所有者。
 
-有关详细信息以及如何查看这些角色的说明，请参阅[可用的角色](permissions-reference.md#available-roles)。
+有关详细信息以及查看这些角色的说明，请参阅 [Azure AD 内置角色](permissions-reference.md)。
 
 遵照[使用 Azure Active Directory 向用户分配角色](../fundamentals/active-directory-users-assign-role-azure-portal.md)操作指南中的说明分配“应用程序管理员”或“云应用程序管理员”角色。
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/09/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 141daa485fae5aba2db23647fada30ba5b621cd0
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 9194f38ddea5570d94ba6c87ea6a537cb41fb98c
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96854608"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102051372"
 ---
 # <a name="data-encryption-models"></a>数据加密模型
 
@@ -199,8 +199,8 @@ Azure 中支持的加密模型分为两大类：“客户端加密”和“服�
 | Azure Databricks                 | 是                | 是                | -                  |
 | Azure 数据库迁移服务 | 是                | 暂无\*              | -                  |
 | **DevOps**                       |                    |                    |                    |
-| Azure DevOps Services            | 是                | -                  | 是                |
-| Azure Repos                      | 是                | -                  | 是                |
+| Azure DevOps Services            | 是                | -                  | -                  |
+| Azure Repos                      | 是                | -                  | -                  |
 | **标识**                     |                    |                    |                    |
 | Azure Active Directory           | 是                | -                  | -                  |
 | Azure Active Directory 域服务 | 是          | 是                | -                  |

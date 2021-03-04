@@ -1,17 +1,16 @@
 ---
 title: 使用 PowerShell 创建和配置 Log Analytics
 description: Azure Monitor 中的 Log Analytics 工具区会将服务器中的数据存储在本地或云基础结构。 当由 Azure 诊断生成时，可从 Azure 存储收集计算机数据。
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/26/2020
-ms.openlocfilehash: 378967657a487d27a9fdae16fe783bc0a3865d0d
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: d876a380bfc2d318cddc0964266cc3f0a870aa16
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100608784"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102050981"
 ---
 # <a name="create-and-configure-a-log-analytics-workspace-in-azure-monitor-using-powershell"></a>使用 PowerShell 在 Azure Monitor 中创建和配置 Log Analytics 工作区
 本文提供两个代码示例，它们展示了如何在 Azure Monitor 中创建和配置 Log Analytics 工作区。  

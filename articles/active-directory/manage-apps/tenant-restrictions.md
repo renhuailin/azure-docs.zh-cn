@@ -12,12 +12,12 @@ ms.date: 2/23/2021
 ms.author: kenwith
 ms.reviewer: hpsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b545afb370b84404d3e15f885464aabf00d2eaf2
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: bdcdd387575faec87656430860e24fee56387775
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101687067"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102050896"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>使用租户限制管理对 SaaS 云应用程序的访问
 
@@ -29,7 +29,7 @@ ms.locfileid: "101687067"
 
 本文重点介绍 Microsoft 365 的租户限制，但该功能保护所有将用户发送到 Azure AD 进行单一登录的应用。 如果将 SaaS 应用与 Microsoft 365 使用的租户不同 Azure AD 租户，请确保允许所有必需的租户 (例如，在 B2B 协作方案) 中。 有关 SaaS 云应用的详细信息，请参阅 [Active Directory 市场](https://azuremarketplace.microsoft.com/marketplace/apps)。
 
-此外，租户限制功能现在支持阻止使用 (MSA 应用 [的所有 Microsoft 使用者应用程序](#blocking-consumer-applications)) 例如 OneDrive、Hotmail 和 Xbox.com。  这会对终结点使用单独的标头 `login.live.com` ，并在文档末尾详细说明。
+此外，租户限制功能现在支持阻止使用 (MSA 应用 [的所有 Microsoft 使用者应用程序](#blocking-consumer-applications-public-preview)) 例如 OneDrive、Hotmail 和 Xbox.com。  这会对终结点使用单独的标头 `login.live.com` ，并在文档末尾详细说明。
 
 ## <a name="how-it-works"></a>工作原理
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/27/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: ecbf07c1a85c708d4117c83bca546cd8bd6ccd2b
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: b37277c660562721273ff9ae86dd677ee7ac7d55
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100546068"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102049995"
 ---
 # <a name="connect-function-apps-in-azure-for-processing-data"></a>连接 Azure 中的函数应用以处理数据
 
@@ -36,7 +36,7 @@ ms.locfileid: "100546068"
 
 ## <a name="create-a-function-app-in-visual-studio"></a>在 Visual Studio 中创建函数应用
 
-在 Visual Studio 2019 中，选择 " _文件" > 新建 > 项目_ "，然后搜索 _Azure Functions_ 模板。 选择“下一步”。
+在 Visual Studio 2019 中，选择 " _文件" > 新建 > 项目_ "，然后搜索 _Azure Functions_ 模板。 选择“_下一页_”。
 
 :::image type="content" source="media/how-to-create-azure-function/create-azure-function-project.png" alt-text="显示 &quot;新建项目&quot; 对话框的 Visual Studio 屏幕截图。将突出显示 &quot;Azure Functions 项目&quot; 模板。":::
 
@@ -65,7 +65,7 @@ ms.locfileid: "100546068"
 * `Azure.DigitalTwins.Core`
 * `Azure.Identity`
 * `System.Net.Http`
-* `Azure.Core`
+* `Azure.Core.Pipeline`
 
 **选项2。使用 `dotnet` 命令行工具添加包：**
 
@@ -75,7 +75,7 @@ ms.locfileid: "100546068"
 dotnet add package Azure.DigitalTwins.Core
 dotnet add package Azure.Identity
 dotnet add package System.Net.Http
-dotnet add package Azure.Core
+dotnet add package Azure.Core.Pipeline
 ```
 
 接下来，在 Visual Studio 解决方案资源管理器中，打开 _Function1.cs_ 文件，其中包含示例代码，并将以下 `using` 语句添加到函数。 

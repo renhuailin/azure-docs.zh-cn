@@ -1,14 +1,14 @@
 ---
 title: 跨租户管理体验
 description: Azure 委派资源管理可实现跨租户管理体验。
-ms.date: 02/08/2021
+ms.date: 03/02/2021
 ms.topic: conceptual
-ms.openlocfilehash: 644cac70ef6459a1b0be45e9ab8f2757fafddeed
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 844ac637f9fcaed5d78520923e5f7184fcde0d25
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101699243"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102050386"
 ---
 # <a name="cross-tenant-management-experiences"></a>跨租户管理体验
 
@@ -113,9 +113,11 @@ Azure PowerShell [AzSubscription cmdlet](/powershell/module/Az.Accounts/Get-AzSu
 [Azure Policy](../../governance/policy/index.yml)：
 
 - 在委派的订阅中创建和编辑策略定义
+- 跨多个租户部署策略定义和策略分配
 - 在委派的订阅中分配客户定义的策略定义
 - 客户将看到由服务提供商和自己创建的策略
 - 可以 [修正 deployIfNotExists 或修改托管租户内的分配](../how-to/deploy-policy-remediation.md)
+- 请注意，当前不支持查看客户租户中不符合资源的符合性详细信息
 
 [Azure Resource Graph](../../governance/resource-graph/index.yml)：
 

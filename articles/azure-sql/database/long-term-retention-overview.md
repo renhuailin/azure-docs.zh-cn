@@ -8,25 +8,28 @@ ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: anosov1960
-ms.author: sashan
+author: shkale-msft
+ms.author: shkale-msft
 ms.reviewer: mathoma, sstein
-ms.date: 05/18/2019
-ms.openlocfilehash: 8250fc39fe58168ddc13b7bcf5c040b57d5e92fb
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.date: 02/25/2021
+ms.openlocfilehash: cd1ba0516d8cb7fdaf3b8d4786cfe68240231303
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92782614"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102050964"
 ---
 # <a name="long-term-retention---azure-sql-database-and-azure-sql-managed-instance"></a>长期保留 - Azure SQL 数据库和 Azure SQL 托管实例
 
-出于法规要求、符合性或其他商业目的，许多应用程序要求保留 Azure SQL 数据库和 Azure SQL 托管实例的[自动备份](automated-backups-overview.md)功能提供的过去 7-35 天的数据库备份。 通过使用 (LTR) 功能的长期保留，你可以在 Azure Blob 存储中存储指定的 SQL 数据库和 SQL 托管实例完整备份，并将 [配置的冗余](automated-backups-overview.md#backup-storage-redundancy) 设置为长达10年。 然后，可以将任何备份还原为新数据库。
+出于法规要求、符合性或其他商业目的，许多应用程序要求保留 Azure SQL 数据库和 Azure SQL 托管实例的[自动备份](automated-backups-overview.md)功能提供的过去 7-35 天的数据库备份。 通过使用 (LTR) 功能的长期保留，你可以在 Azure Blob 存储中存储指定的 SQL 数据库和 SQL 托管实例完整备份，并将 [配置的冗余](automated-backups-overview.md#backup-storage-redundancy) 设置为长达10年。 然后，可以将 LTR 备份还原为新数据库。
 
-可以为 Azure SQL 数据库启用长时间保留。Azure SQL 托管实例的长期保留功能以有限的公共预览版形式提供。 本文提供长期保留的概念概述。 要配置长期保留，请参阅[配置 Azure SQL 数据库 LTR](long-term-backup-retention-configure.md) 和[配置 Azure SQL 托管实例 LTR](../managed-instance/long-term-backup-retention-configure.md)。 
+对于 Azure SQL 数据库，可以启用长期保留，适用于 Azure SQL 托管实例的公共预览版。 本文提供长期保留的概念概述。 要配置长期保留，请参阅[配置 Azure SQL 数据库 LTR](long-term-backup-retention-configure.md) 和[配置 Azure SQL 托管实例 LTR](../managed-instance/long-term-backup-retention-configure.md)。 
 
 > [!NOTE]
 > 可以使用 SQL 代理作业来安排[仅复制数据库备份](/sql/relational-databases/backup-restore/copy-only-backups-sql-server)作为超过 35 天的 LTR 的替代方案。
+
+> [!IMPORTANT]
+> 托管实例上的长期保留目前仅在 Azure 公共区域的公共预览版中提供。 
 
 
 ## <a name="how-long-term-retention-works"></a>长期保留的工作原理
@@ -77,25 +80,20 @@ W=12 周（84 天）、M=12 个月（365 天）、Y=10 年（3650 天）、WeekO
 > [!NOTE]
 > 在发生导致故障转移的服务中断问题后恢复原始的主数据库时，该数据库将变成新的辅助数据库。 因此，在该数据库重新变成主数据库之前，备份创建操作不会恢复，并且现有的 LTR 策略不会生效。 
 
-## <a name="sql-managed-instance-support"></a>SQL 托管实例支持
-
-在 Azure SQL 托管实例中使用长期备份保留存在以下限制：
-
-- **受限公共预览版** - 此预览版仅适用于 EA 订阅和云解决方案提供商订阅，并受到有限可用性的限制。  
-- [仅限 PowerShell](../managed-instance/long-term-backup-retention-configure.md) - 目前不支持 Azure 门户。 必须使用 PowerShell 启用 LTR。 
-
-若要请求注册，请创建 [Azure 支持票证](https://azure.microsoft.com/support/create-ticket/)。 对于 "问题类型"，请选择 "服务" "服务" "SQL 托管实例"，对于 "问题类型"，请选择 " **备份"、"还原" 和 "业务连续性/长期备份保留"** 。 在你的请求中，请陈述你希望注册到托管实例的 LTR 公共预览中，以便进行 SQL。
 
 ## <a name="configure-long-term-backup-retention"></a>配置长期备份保留
 
-可以使用 Azure 门户、适用于 Azure SQL 数据库的 PowerShell 和适用于 Azure SQL 托管实例的 PowerShell 来配置长期备份保留。 若要从 LTR 存储还原数据库，可以根据时间戳选择一个特定备份。 数据库可以还原到原始数据库所在的订阅中的任何现有服务器或托管实例。
+可以使用适用于 Azure SQL 数据库和 Azure SQL 托管实例的 Azure 门户和 PowerShell 配置长期备份保留。 若要从 LTR 存储还原数据库，可以根据时间戳选择一个特定备份。 数据库可以还原到原始数据库所在的订阅中的任何现有服务器或托管实例。
 
-若要了解如何使用 Azure 门户或 PowerShell 配置长期保留或从 SQL 数据库的备份还原数据库，请参阅[管理 Azure SQL 数据库长期备份保留](long-term-backup-retention-configure.md)
+若要了解如何使用 Azure 门户或 PowerShell 配置长期保留或从 SQL 数据库的备份还原数据库，请参阅 [管理 AZURE SQL 数据库长期备份保留](long-term-backup-retention-configure.md)。
 
 若要了解如何使用 PowerShell 为 SQL 托管实例配置长期保留或从备份还原数据库，请参阅[管理 Azure SQL 托管实例长期备份保留](../managed-instance/long-term-backup-retention-configure.md)。
 
-若要从 LTR 存储还原数据库，可以根据时间戳选择一个特定备份。 数据库可以还原到原始数据库所在的订阅中的任何现有服务器。 若要了解如何使用 Azure 门户或 PowerShell 从 LTR 备份还原数据库，请参阅[管理 Azure SQL 数据库长期备份保留](long-term-backup-retention-configure.md)。 在你的请求中，请说明你希望为 SQL 托管实例注册 LTR 的受限公共预览版。
+若要从 LTR 存储还原数据库，可以根据时间戳选择一个特定备份。 数据库可以还原到原始数据库所在的订阅中的任何现有服务器。 若要了解如何使用 Azure 门户或 PowerShell 从 LTR 备份还原数据库，请参阅[管理 Azure SQL 数据库长期备份保留](long-term-backup-retention-configure.md)。 
 
 ## <a name="next-steps"></a>后续步骤
 
-数据库备份可保护数据免遭意外损坏或删除，因此数据库备份是任何业务连续性和灾难恢复策略不可或缺的组成部分。 若要了解其他 SQL 数据库业务连续性解决方案，请参阅[业务连续性概述](business-continuity-high-availability-disaster-recover-hadr-overview.md)。
+数据库备份可保护数据免遭意外损坏或删除，因此数据库备份是任何业务连续性和灾难恢复策略不可或缺的组成部分。 
+
+- 若要了解其他 SQL 数据库业务连续性解决方案，请参阅[业务连续性概述](business-continuity-high-availability-disaster-recover-hadr-overview.md)。
+- 若要了解服务生成的自动备份，请参阅 [自动备份](../database/automated-backups-overview.md)

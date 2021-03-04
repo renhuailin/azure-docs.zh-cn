@@ -438,14 +438,6 @@
           href: manage/review-subscription-billing.md
         - name: 查看资源使用情况
           href: manage/review-service-usage-api.md
-    - name: .NET 示例
-      items:
-        - name: 发票 API 代码示例
-          href: 'https://github.com/Azure-Samples/billing-dotnet-core-invoice-download'
-        - name: 使用情况 API 代码示例
-          href: 'https://github.com/Azure-Samples/billing-dotnet-usage-api'
-        - name: RateCard API 代码示例
-          href: 'https://github.com/Azure-Samples/billing-dotnet-ratecard-api'
 - name: Cloudyn
   items:
     - name: 概述

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 03/02/2021
 ms.author: caya
-ms.openlocfilehash: 4b5cb9abe53cdb29cbc1b4c9711fb8efcf0348d6
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: e83834fd5f8ca95826118c952f7884a494c7abbb
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101744381"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102050828"
 ---
 # <a name="migrate-from-agic-helm-to-agic-add-on"></a>从 AGIC Helm 迁移到 AGIC 外接程序 
 
@@ -46,7 +46,7 @@ az aks enable-addons -n myCluster -g myResourceGroup -a ingress-appgw --appgw-id
 
 或者，可以使用此 [链接](https://portal.azure.com/?feature.aksagic=true) 在门户中导航到 AKS 群集，并在群集的 "网络" 选项卡中启用 AGIC 外接程序。 选择外接程序的目标应用程序网关时，从下拉菜单中选择现有的应用程序网关。 
 
-![应用程序网关入口控制器门户](./media/tutorial-ingress-controller-add-on-existing/portal_ingress_controller_addon.png)
+![应用程序网关入口控制器门户](./media/tutorial-ingress-controller-add-on-existing/portal-ingress-controller-add-on.png)
 
 ## <a name="next-steps"></a>后续步骤
 - [**应用程序网关入口控制器故障排除**](ingress-controller-troubleshoot.md)： AGIC 的故障排除指南 

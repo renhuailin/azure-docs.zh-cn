@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
 ms.date: 03/02/2021
-ms.openlocfilehash: 43dd047738538b0dcc76904e951eccea3a327c19
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 0850830e6f8101feae80154a0e245196a690f276
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101715783"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102050233"
 ---
 # <a name="create-stateful-and-stateless-workflows-in-visual-studio-code-with-the-azure-logic-apps-preview-extension"></a>在 Azure 逻辑应用 Visual Studio Code 中创建有状态和无状态工作流 (预览版) 扩展
 
@@ -140,7 +140,8 @@ ms.locfileid: "101715783"
 
 * 若要使用运行 JavaScript 的 [内联代码操作操作](../logic-apps/logic-apps-add-run-inline-code.md) ，请安装 [Node.js 版本2.x、11.](https://nodejs.org/en/download/releases/)x. x. x. x. x. x. x. x. x. x. x. x. x。
 
-  > [!TIP] 对于 Windows，请下载 MSI 版本。 如果你改用 ZIP 版本，则必须使用适用于你的操作系统的 PATH 环境变量手动使 Node.js 可用。
+  > [!TIP] 
+  > 对于 Windows，请下载 MSI 版本。 如果你改用 ZIP 版本，则必须使用适用于你的操作系统的 PATH 环境变量手动使 Node.js 可用。
 
 * 若要在 Visual Studio Code 中本地运行基于 webhook 的触发器和操作，例如 [内置 HTTP webhook 触发器](../connectors/connectors-native-webhook.md)，需要为 [回调 URL 设置转发](#webhook-setup)。
 

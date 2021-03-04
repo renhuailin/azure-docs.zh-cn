@@ -9,12 +9,12 @@ ms.subservice: extensions
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 0558513d88eb5ffb03484e9d3bd8e37b2c9a0dcf
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: 73bd2ac3159b674dd01c853bb540989fa10c8c28
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97895013"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102051355"
 ---
 # <a name="key-vault-virtual-machine-extension-for-linux"></a>适用于 Linux 的 Key Vault 虚拟机扩展
 
@@ -56,7 +56,7 @@ Key Vault VM 扩展支持以下 Linux 发行版：
 
 ## <a name="extension-schema"></a>扩展架构
 
-以下 JSON 显示 Key Vault VM 代理扩展的架构。 该扩展不需要受保护的设置 - 其所有设置都被视为没有安全影响的信息。 该扩展需要受监视的密钥列表、轮询频率和目标证书存储。 具体而言：  
+以下 JSON 显示 Key Vault VM 代理扩展的架构。 该扩展不需要受保护的设置 - 其所有设置都被视为没有安全影响的信息。 该扩展需要受监视的密钥列表、轮询频率和目标证书存储。 具体来说：  
 ```json
     {
       "type": "Microsoft.Compute/virtualMachines/extensions",
@@ -154,16 +154,16 @@ Key Vault VM 扩展支持以下 Linux 发行版：
 ```
 
 ### <a name="extension-dependency-ordering"></a>扩展依赖项排序
-如果已配置，Key Vault VM 扩展支持扩展排序。 默认情况下，扩展会在它开始轮询后立即报告已成功启动。 但是，可以将其配置为等待，直到成功下载证书的完整列表，然后再报告成功的启动。 如果其他扩展依赖于在开始之前安装整套证书，则启用此设置将允许这些扩展声明对 Key Vault 扩展的依赖项。 这会阻止这些扩展开始，直到安装了它们所依赖的所有证书。 扩展会无限期地重试初始下载并保持 `Transitioning` 状态。
+Key Vault VM 扩展支持扩展排序（如果已配置）。 默认情况下，扩展在开始轮询后会立即报告它已成功启动。 但是，可以将其配置为等到成功下载证书的完整列表之后再报告成功启动。 如果其他扩展依赖于在启动之前安装全套证书，则启用此设置将使那些扩展可以声明 Key Vault 扩展的依赖项。 这将阻止启动那些扩展，直到安装了其所依赖的所有证书为止。 扩展将一直重试初始下载，并保持 `Transitioning` 状态。
 
-若要启用此设置，请执行以下操作：
+若要启用此功能，请设置以下项：
 ```
 "secretsManagementSettings": {
     "requireInitialSync": true,
     ...
 }
 ```
-> 纪录使用此功能与创建系统分配的标识并使用该标识更新 Key Vault 访问策略的 ARM 模板不兼容。 这样做会导致死锁，因为在所有扩展开始之前都无法更新保管库访问策略。 应改为使用 *单个用户分配的 MSI 标识* ，并在部署之前使用该标识预 ACL 保管库。
+> 纪录使用此功能与创建系统分配的标识并使用该标识更新 Key Vault 访问策略的 ARM 模板不兼容。 这样做将导致死锁，因为在所有扩展启动之前，无法更新保管库访问策略。 应改为在部署之前使用单个用户分配的 MSI 标识，并使用该标识对你的保管库进行预 ACL 操作。
 
 ## <a name="azure-powershell-deployment"></a>Azure PowerShell 部署
 > [!WARNING]
@@ -235,7 +235,7 @@ Key Vault VM 扩展支持以下 Linux 发行版：
         az vmss extension set -n "KeyVaultForLinux" `
         --publisher Microsoft.Azure.KeyVault `
         -g "<resourcegroup>" `
-        --vm-name "<vmName>" `
+        --vmss-name "<vmssName>" `
         --settings '{\"secretsManagementSettings\": { \"pollingIntervalInS\": \"<pollingInterval>\", \"certificateStoreName\": \"<certStoreName>\", \"certificateStoreLocation\": \"<certStoreLoc>\", \"observedCertificates\": [\" <observedCert1> \", \" <observedCert2> \"] }}'
     ```
 请注意以下限制/要求：
@@ -249,7 +249,7 @@ Key Vault VM 扩展支持以下 Linux 发行版：
   没有，Key Vault VM 扩展对 observedCertificates 数没有限制。
 
 
-### <a name="troubleshoot"></a>疑难解答
+### <a name="troubleshoot"></a>故障排除
 
 有关扩展部署状态的数据可以从 Azure 门户和使用 Azure PowerShell 进行检索。 若要查看给定 VM 的扩展部署状态，请使用 Azure PowerShell 运行以下命令。
 
@@ -269,9 +269,9 @@ Get-AzVMExtension -VMName <vmName> -ResourceGroupname <resource group name>
 /var/log/azure/Microsoft.Azure.KeyVault.KeyVaultForLinux/*
 /var/lib/waagent/Microsoft.Azure.KeyVault.KeyVaultForLinux-<most recent version>/config/*
 ```
-### <a name="using-symlink"></a>使用符号符号
+### <a name="using-symlink"></a>使用符号链接
 
-符号链接或符号链接基本上是高级快捷方式。 若要避免监视文件夹和自动获取最新证书，可以使用此符号链接 `([VaultName].[CertificateName])` 在 Linux 上获取最新版本的证书。
+符号链接是基本的高级快捷方式。 若要避免监视文件夹和自动获取最新证书，可以使用此符号链接 `([VaultName].[CertificateName])` 获取 Linux 上最新版本的证书。
 
 ### <a name="frequently-asked-questions"></a>常见问题
 
