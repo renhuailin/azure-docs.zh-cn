@@ -11,12 +11,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: f95068b66fdd7907bf06086f855473b156738847
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: ec0bf6330b7b2268db84d86dc5a0d141fc24ce74
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100371086"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102040645"
 ---
 # <a name="how-an-iot-edge-device-can-be-used-as-a-gateway"></a>如何将 IoT Edge 设备用作网关
 
@@ -95,7 +95,7 @@ IoT Edge 设备在透明网关关系中可以是父级，也可以是子级。 �
 
 <!-- 1.2.0 -->
 ::: moniker range=">=iotedge-2020-11"
-在下游 IoT Edge 设备上，使用 config.yaml 文件中的 parent_hostname 参数指向父设备。
+在下游 IoT Edge 设备上，使用配置文件中的 **parent_hostname** 参数指向父设备。
 ::: moniker-end
 
 #### <a name="secure-connection"></a>安全连接

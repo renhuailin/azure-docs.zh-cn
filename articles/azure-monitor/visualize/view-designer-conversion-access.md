@@ -3,15 +3,14 @@ title: Azure Monitor 视图设计器到工作簿的转换摘要和访问
 description: 从 Azure Monitor 中的视图转换时访问工作簿所需的权限。
 author: austonli
 ms.author: aul
-ms.subservice: ''
 ms.topic: conceptual
 ms.date: 02/07/2020
-ms.openlocfilehash: c5b3096c4eb8cf71ff1d13476fa09cc65ef413a7
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 42cb8db0f67d3a01b2e8443e6cb7c47f0fc44c4b
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100605898"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102043384"
 ---
 # <a name="view-designer-to-workbooks-conversion-summary-and-access"></a>视图设计器到工作簿的转换摘要和访问
 [视图设计器](view-designer.md)是 Azure Monitor 的一项功能，它让你能够创建自定义视图，帮助你通过图表、列表和时间线将 Log Analytics 工作区中的数据可视化。 这些元素已逐步淘汰，取而代之的是除这些功能外还可提供其他功能的工作簿。 本文详细介绍如何创建访问工作簿所需的概述摘要和权限。

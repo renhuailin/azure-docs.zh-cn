@@ -3,12 +3,12 @@ title: Azure 服务总线 - 消息到期时间
 description: 本文介绍 Azure 服务总线消息的到期时间和生存时间。 此截止时间过后，将不再传递该消息。
 ms.topic: conceptual
 ms.date: 02/17/2021
-ms.openlocfilehash: 505a041d2f6129b159166e9f99ce7fef779e1e66
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 74df8909633c2fa048c23c559ffdd315a8616e11
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101698359"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102042821"
 ---
 # <a name="message-expiration-time-to-live"></a>消息过期时间（生存时间）
 消息中的有效负载，或者由消息传递给接收方的命令或查询，几乎总是附带了某种形式的应用程序级过期截止时间。 此截止时间过后，便不再传送内容，或不再执行请求的操作。
@@ -21,7 +21,7 @@ ms.locfileid: "101698359"
 
 消息被锁定时，应用程序可以拥有已过期的消息。 应用程序是要继续处理还是选择丢弃消息，则由实施者决定。
 
-建议将消息的 **生存时间** 值设置为小时或天。 如果将其设置为低值（以秒或毫秒为单位），则在使用者有机会使用它之前，消息可能会过期。 
+在接收方应用程序收到消息之前，毫秒或秒的顺序中的 TTL 极低可能会导致消息过期。 请考虑适用于你的应用程序的最高 TTL。
 
 ## <a name="entity-level-expiration"></a>实体级过期时间
 发送到队列或主题中的所有消息都服从在实体级别设置的默认过期时间。 还可以在创建期间在门户中设置它，以后再进行调整。 默认的过期时间用于发送到实体的所有消息，其中不会显式设置生存时间。 默认的过期时间也充当生存时间值的上限。 比默认值长的生存时间比默认值长的消息在排队之前会自动调整为默认的消息生存时间值。

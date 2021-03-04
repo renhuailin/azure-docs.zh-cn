@@ -1,17 +1,16 @@
 ---
 title: 在 Linux 计算机上安装 Log Analytics 代理
 description: 本文介绍如何使用适用于 Linux 的 Log Analytics 代理将在其他云中或本地托管的 Linux 计算机连接到 Azure Monitor。
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/21/2020
-ms.openlocfilehash: 06b59aa1fe6b51bf237c0cd64117166ca4ece10b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 2c86086a636ea667cff4fc8a853c4ef20fa6ae04
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101734921"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102041835"
 ---
 # <a name="install-log-analytics-agent-on-linux-computers"></a>在 Linux 计算机上安装 Log Analytics 代理
 本文详细介绍如何使用以下方法在 Linux 计算机上安装 Log Analytics 代理：

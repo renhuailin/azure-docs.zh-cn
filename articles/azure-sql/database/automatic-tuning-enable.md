@@ -10,17 +10,16 @@ ms.topic: how-to
 author: danimir
 ms.author: danil
 ms.reviewer: wiassaf, sstein
-ms.date: 12/03/2019
-ms.openlocfilehash: 35e2a73b0cfae104cee417e7d4a159e7fd169a17
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.date: 03/03/2021
+ms.openlocfilehash: d60810c291984e0f57df1968f69678de8179273c
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500897"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102042515"
 ---
 # <a name="enable-automatic-tuning-in-the-azure-portal-to-monitor-queries-and-improve-workload-performance"></a>在 Azure 门户中启用自动优化以监视查询并提高工作负载性能
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
-
 
 Azure SQL 数据库是自动托管的数据服务，可持续监视查询并识别可为改善工作负载性能执行的操作。 可以查看建议并手动应用这些建议，或者让 Azure SQL 数据库自动应用纠正措施 - 这称为 **自动优化模式**。
 
@@ -111,11 +110,26 @@ ALTER DATABASE current SET AUTOMATIC_TUNING (FORCE_LAST_GOOD_PLAN = ON, CREATE_I
 
 了解有关用于配置自动优化的 T-SQL 选项的详细信息，请参阅 [ALTER DATABASE SET 选项 (Transact-SQL)](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current&preserve-view=true)。
 
-## <a name="disabled-by-the-system"></a>已被系统禁用
+## <a name="troubleshooting"></a>疑难解答
 
-自动优化监视着自身在数据库上进行的一切操作，在某些情况下，它可以判断自身在数据库中无法正常运行。 在此情况下，系统将禁用自动优化。 造成此情况的主要原因是未启用查询数据存储，或在指定数据库中查询数据存储处于只读状态。
+### <a name="automated-recommendation-management-is-disabled"></a>已禁用自动建议管理
 
-## <a name="permissions"></a>权限
+如果错误消息已禁用自动建议管理，或只是由系统禁用，最常见的原因如下：
+- 查询存储未启用或
+- 对于指定的数据库，查询存储处于只读模式，或
+- 查询存储停止运行，因为它使用了分配的存储空间。
+
+可以考虑以下步骤来纠正此问题：
+- 清理查询存储，或使用 T-sql 将数据保持期修改为 "自动"。 请参阅如何为 [查询存储配置建议的保留和捕获策略](/azure/azure-sql/database/query-performance-insight-use#recommended-retention-and-capture-policy)。
+- 使用 SQL Server Management Studio (SSMS) ，然后执行以下步骤：
+  - 连接到 Azure SQL 数据库
+  - 右键单击数据库
+  - 中转到 "属性"，然后单击查询存储
+  - 将操作模式更改为 Read-Write
+  - 将存储捕获模式更改为自动
+  - 将基于大小的清理模式更改为自动
+
+### <a name="permissions"></a>权限
 
 由于自动调整是 Azure 功能，因此若要使用它，需使用 Azure 的内置角色。 若要使用 Azure 门户中的功能，仅使用 SQL 身份验证还不够。
 
@@ -123,7 +137,7 @@ ALTER DATABASE current SET AUTOMATIC_TUNING (FORCE_LAST_GOOD_PLAN = ON, CREATE_I
 
 ## <a name="configure-automatic-tuning-e-mail-notifications"></a>配置自动优化电子邮件通知
 
-请参阅 [自动优化电子邮件通知](automatic-tuning-email-notifications-configure.md) 指南。
+若要接收有关自动优化建议的自动电子邮件通知，请参阅 [自动优化电子邮件通知](automatic-tuning-email-notifications-configure.md) 指南。
 
 ## <a name="next-steps"></a>后续步骤
 

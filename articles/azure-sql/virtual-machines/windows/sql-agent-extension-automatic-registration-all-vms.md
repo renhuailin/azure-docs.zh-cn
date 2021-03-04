@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 11/07/2020
-ms.openlocfilehash: 1ef7943586123a1870ed9a2d0c21aa8b5fd38c1c
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 139852949a3744fd603cb197b2e27fa32679aae0
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97359993"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102042413"
 ---
 # <a name="automatic-registration-with-sql-iaas-agent-extension"></a>自动注册 SQL IaaS 代理扩展
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -30,7 +30,7 @@ ms.locfileid: "97359993"
 
 启用自动注册后，作业将每天运行，检测是否在订阅中的所有未注册 Vm 上安装了 SQL Server。 完成此操作的方法是：将 SQL IaaS 代理扩展二进制文件复制到 VM，然后运行一个用于检查 SQL Server 注册表配置单元的一次性实用程序。 如果检测到 SQL Server 配置单元，则虚拟机将以轻型模式注册到扩展。 如果注册表中不存在任何 SQL Server 配置单元，则将删除二进制文件。
 
-为订阅启用自动注册后，所有当前和未来安装了 SQL Server 的 Vm 将在轻型模式下注册到 SQL IaaS 代理扩展。 你仍需要 [手动升级到完整的可管理性模式](sql-agent-extension-manually-register-single-vm.md#upgrade-to-full) ，才能利用完整的功能集。 
+为订阅启用了自动注册后，所有当前和未来安装了 SQL Server 的 Vm 将在轻型模式下以轻型模式注册 SQL IaaS 代理扩展 **，且不会重新启动 SQL Server 服务**。 你仍需要 [手动升级到完整的可管理性模式](sql-agent-extension-manually-register-single-vm.md#upgrade-to-full) ，才能利用完整的功能集。 
 
 > [!IMPORTANT]
 > SQL IaaS 代理扩展收集数据，以便在 Azure 虚拟机中使用 SQL Server 时，为客户提供可选的权益。 在未经客户的事先同意的情况下，Microsoft 不会将此数据用于许可审核。 有关详细信息，请参阅 [SQL Server 隐私补充](/sql/sql-server/sql-server-privacy#non-personal-data) 。
@@ -47,7 +47,7 @@ ms.locfileid: "97359993"
 
 若要在 Azure 门户中启用 SQL Server Vm 的自动注册，请按照以下步骤操作：
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 1. 导航到 [**SQL 虚拟机**](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.SqlVirtualMachine%2FSqlVirtualMachines) 资源页。 
 1. 选择 " **自动 SQL Server VM 注册** " 打开 **自动注册** 页面。 
 

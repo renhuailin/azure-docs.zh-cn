@@ -3,15 +3,14 @@ title: Azure Monitor 视图设计器到工作簿磁贴转换
 description: 在从 Azure Monitor 中的视图转换时将磁贴转换为工作簿的详细信息。
 author: austonli
 ms.author: aul
-ms.subservice: ''
 ms.topic: conceptual
 ms.date: 02/07/2020
-ms.openlocfilehash: 0fe1c5a4e6da1cb2955542c2651fcaf2d015b8f8
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 9b8d1840c0b1cea4c03312d38ed892fde94faa4c
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100608515"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102043331"
 ---
 # <a name="azure-monitor-view-designer-tile-conversions"></a>Azure Monitor 视图设计器磁贴转换
 [视图设计器](view-designer.md)是 Azure Monitor 的一项功能，它让你能够创建自定义视图，帮助你通过图表、列表和时间线将 Log Analytics 工作区中的数据可视化。 这些元素已逐步淘汰，取而代之的是除这些功能外还可提供其他功能的工作簿。 本文详细介绍如何将不同的磁贴转换为工作簿。

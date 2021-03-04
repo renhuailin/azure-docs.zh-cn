@@ -1,17 +1,16 @@
 ---
 title: Log Analytics 教程
 description: 本教程介绍如何使用 Azure Monitor 中 Log Analytics 的功能生成运行日志查询并在 Azure 门户中分析其结果。
-ms.subservice: logs
 ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 10/07/2020
-ms.openlocfilehash: a7a6ba395769677fe46ddfff675640f6e15060a0
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 06a73b495cefc361db88d80413f4f4be50e105d1
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101723174"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102041138"
 ---
 # <a name="log-analytics-tutorial"></a>Log Analytics 教程
 Log Analytics 是 Azure 门户中的工具，用于根据 Azure Monitor 日志收集的数据编辑和运行日志查询，并交互式分析其结果。 可以使用 Log Analytics 查询来检索符合特定条件的记录、确定趋势、分析模式，并提供对数据的各种见解。 

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: f4b0642ce54b862b4d4c7b9663cf10e74b206281
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: 7f3d32a782c653b3be8b3d6f6714bc9065a73518
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97680476"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102042889"
 ---
 # <a name="tutorial-migrate-an-android-app-from-google-maps"></a>教程：从 Google Maps 迁移 Android 应用
 
@@ -187,7 +187,7 @@ Azure Maps Android SDK 支持 API 21 的最低 Android 版本：Android 5.0.0 (L
     3. 更新 dependencies 块。 为最新 Azure Maps Android SDK 添加新的实现依赖项行：
 
         ```Java
-        implementation "com.microsoft.azure.maps:mapcontrol:0.6"
+        implementation "com.microsoft.azure.maps:mapcontrol:0.7"
         ```
 
         > [!Note]

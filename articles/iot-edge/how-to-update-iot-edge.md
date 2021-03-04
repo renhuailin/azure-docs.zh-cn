@@ -5,16 +5,16 @@ keywords: ''
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 01/20/2021
+ms.date: 03/01/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 0adcbf49ff2128fdbe623121838058c5ed89dce2
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 9c311826c2b17f8e9f95d1ef31980922154635b9
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100378020"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102042311"
 ---
 # <a name="update-the-iot-edge-security-daemon-and-runtime"></a>更新 IoT Edge 安全守护程序和运行时
 
@@ -29,6 +29,9 @@ ms.locfileid: "100378020"
 IoT Edge 安全守护程序是一个本机组件，需要使用 IoT Edge 设备上的包管理器进行更新。
 
 使用命令 `iotedge version` 检查设备上运行的安全守护程序的版本。
+
+>[!IMPORTANT]
+>如果要将设备从版本1.0 或1.1 更新到版本1.2，则需要执行额外步骤的安装和配置过程有不同之处。 有关详细信息，请参阅本文后面的步骤： [特殊情况：从1.0 或1.1 更新为 1.2](#special-case-update-from-10-or-11-to-12)。
 
 # <a name="linux"></a>[Linux](#tab/linux)
 
@@ -67,6 +70,9 @@ IoT Edge 安全守护程序是一个本机组件，需要使用 IoT Edge 设备�
    sudo apt-get update
    ```
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+
 查看哪些 IoT Edge 版本可用。
 
    ```bash
@@ -91,17 +97,41 @@ IoT Edge 安全守护程序是一个本机组件，需要使用 IoT Edge 设备�
 curl -L <libiothsm-std link> -o libiothsm-std.deb && sudo dpkg -i ./libiothsm-std.deb
 curl -L <iotedge link> -o iotedge.deb && sudo dpkg -i ./iotedge.deb
 ```
+<!-- end 1.1 -->
+:::moniker-end
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+查看可用的 IoT Edge 版本。
+
+   ```bash
+   apt list -a aziot-edge
+   ```
+
+如果要更新到最新版本的 IoT Edge，请使用以下命令，该命令还会将标识服务更新到最新版本：
+
+   ```bash
+   sudo apt-get install aziot-edge
+   ```
+<!-- end 1.2 -->
+:::moniker-end
 
 # <a name="windows"></a>[Windows](#tab/windows)
 
 <!-- 1.1 -->
-::: moniker range="iotedge-2018-06"
-
+:::moniker range="iotedge-2018-06"
 借助 IoT Edge for Linux on Windows，IoT Edge 可以在 Windows 设备上托管的 Linux 虚拟机中运行。 此虚拟机已预安装 IoT Edge，并通过 Microsoft 更新进行管理，以使组件保持最新。 目前没有可用的更新。
 
-::: moniker-end
-
 借助适用于 Windows 的 IoT Edge，IoT Edge 可直接在 Windows 设备上运行。 有关使用 PowerShell 脚本的更新说明，请参阅[安装和管理适用于 Windows 的 Azure IoT Edge](how-to-install-iot-edge-windows-on-windows.md)。
+:::moniker-end
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+目前，Windows 设备上运行的 IoT Edge 版本1.2 不支持。
+
+:::moniker-end
 
 ---
 
@@ -158,7 +188,79 @@ IoT Edge 服务将提取最新版本的运行时映像，并自动在设备上�
 
 1. 选择“查看 + 创建”，检查部署，然后选择“创建”   。
 
-## <a name="update-to-a-release-candidate-version"></a>更新到候选发布版本
+## <a name="special-case-update-from-10-or-11-to-12"></a>特殊情况：从1.0 或1.1 更新到1。2
+
+从1.2 版开始，IoT Edge 服务使用新的包名称，并且在安装和配置过程中存在一些差异。 如果有运行版本1.0 或1.1 的 IoT Edge 设备，请使用这些说明了解如何更新到1.2。
+
+>[!NOTE]
+>目前，不支持在 Windows 设备上运行 IoT Edge 1.2 版。
+
+1.2 及更早版本之间的一些主要差异包括：
+
+* 包名称从 **iotedge** 更改为 **aziot**。
+* 不再使用 **libiothsm** 包。 如果你使用的是 IoT Edge 版本中提供的标准包，则可以将你的配置传输到新版本。 如果使用的是 libiothsm 的不同实现，则需要重新配置任何用户提供的证书，如设备标识证书、设备 CA 和信任捆绑。
+* 1.2 版本中引入了新的标识服务 **aziot** 。 此服务处理 IoT Edge 的身份预配和管理，以及需要与 IoT 中心通信的其他设备组件（如 Azure IoT 中心设备更新）。 <!--TODO: add link to ADU when available -->
+* 默认配置文件具有新的名称和位置。 以前 `/etc/iotedge/config.yaml` ，设备配置信息现在默认情况下应处于中 `/etc/aziot/congig.toml` 。 `iotedge config import`命令可用于帮助将配置信息从旧位置和语法迁移到新的位置和语法。
+* 在更新后，任何使用 IoT Edge 工作负荷 API 来加密或解密永久性数据的模块都无法解密。 IoT Edge 动态生成用于内部使用的主标识密钥和加密密钥。 此密钥不会传输到新服务。 IoT Edge 1.2 版将生成一个新的。
+
+在自动执行任何更新过程之前，请验证它是否适用于测试计算机。
+
+准备就绪后，请按照以下步骤更新设备上的 IoT Edge：
+
+1. 从 Microsoft 获取最新的存储库配置：
+
+   * **Ubuntu Server 18.04**：
+
+     ```bash
+     curl https://packages.microsoft.com/config/ubuntu/18.04/multiarch/prod.list > ./microsoft-prod.list
+     ```
+
+   * **Raspberry Pi OS Stretch**：
+
+     ```bash
+     curl https://packages.microsoft.com/config/debian/stretch/multiarch/prod.list > ./microsoft-prod.list
+     ```
+
+2. 复制生成的列表。
+
+   ```bash
+   sudo cp ./microsoft-prod.list /etc/apt/sources.list.d/
+   ```
+
+3. 安装 Microsoft GPG 公钥。
+
+   ```bash
+   curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+   sudo cp ./microsoft.gpg /etc/apt/trusted.gpg.d/
+   ```
+
+4. 更新 apt。
+
+   ```bash
+   sudo apt-get update
+   ```
+
+5. 卸载以前版本的 IoT Edge，使配置文件保持不变。
+
+   ```bash
+   sudo apt-get remove iotedge
+   ```
+
+6. 安装最新版本的 IoT Edge 以及 IoT 标识服务。
+
+   ```bash
+   sudo apt-get install aziot-edge
+   ```
+
+7. 将旧的 yaml 文件导入到新格式中，并应用配置信息。
+
+   ```bash
+   sudo iotedge config import
+   ```
+
+现在，在设备上运行的 IoT Edge 服务已更新，请按照本文中的步骤操作，同时 [更新运行时容器](#update-the-runtime-containers)。
+
+## <a name="special-case-update-to-a-release-candidate-version"></a>特例：更新为候选发布版本
 
 Azure IoT Edge 定期发布新版 IoT Edge 服务。 在发布每个稳定版本之前，会有一个或多个候选发布 (RC) 版本。 RC 版本包括发布版的所有计划内功能，但仍需进行测试和验证。 若要提前测试某项新功能，可以安装 RC 版本，然后通过 GitHub 提供反馈。
 

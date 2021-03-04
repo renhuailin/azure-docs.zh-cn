@@ -1,21 +1,24 @@
 ---
-title: Azure Functions C# developer reference（Azure Functions C# 开发人员参考）
-description: '了解如何开发使用 C # 的 Azure 功能。'
+title: '使用 Azure Functions 开发 c # 函数'
+description: '了解如何使用 c # 开发和发布使用 Azure Functions 运行时在进程中运行的代码。'
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 07/24/2020
-ms.openlocfilehash: 335cc3017e7b016666324306181c90a0e405a956
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: e29b250b25bdafb2b3af26f5669f2ae5ed485457
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98806325"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102041189"
 ---
-# <a name="azure-functions-c-developer-reference"></a>Azure Functions C# developer reference（Azure Functions C# 开发人员参考）
+# <a name="develop-c-functions-using-azure-functions"></a>使用 Azure Functions 开发 c # 函数
 
 <!-- When updating this article, make corresponding changes to any duplicate content in functions-reference-csharp.md -->
 
 本文介绍了如何在 .NET 类库中使用 C# 开发 Azure Functions。
+
+>[!IMPORTANT]
+>本文支持在运行时进程内运行的 .NET 类库函数。 函数还支持 .NET 1.x，方法是在进程外运行 c # 函数，并将其与运行时隔离。 若要了解详细信息，请参阅 [.net 独立进程函数](dotnet-isolated-process-guide.md)。
 
 作为 C# 开发人员，你可能还会对以下文章之一感兴趣：
 
@@ -31,9 +34,11 @@ Functions 运行时版本使用特定版本的 .NET。 下表显示了可与项�
 
 | Functions 运行时版本 | 最大 .NET 版本 |
 | ---- | ---- |
-| Functions 3.x | .NET Core 3.1 |
+| Functions 3.x | .NET Core 3.1<br/>.NET 5。0<sup>*</sup> |
 | Functions 2.x | .NET Core 2.2 |
 | Functions 1.x | .NET Framework 4.7 |
+
+<sup>*</sup> 必须在 [进程外](dotnet-isolated-process-guide.md)运行。
 
 若要了解详细信息，请参阅 [Azure Functions 运行时版本概述](functions-versions.md)
 
@@ -94,9 +99,11 @@ public static class SimpleExample
 
 函数签名中的参数顺序并不重要。 例如，可以在其他绑定之前或之后放置触发器参数，也可以在触发器或绑定参数之前或之后添加记录器参数。
 
-### <a name="output-binding-example"></a>输出绑定示例
+### <a name="output-bindings"></a>输出绑定
 
-以下示例对上一个示例进行了修改，它添加了一个输出队列绑定。 该函数将触发函数的队列消息写入到另一个队列中的一条新队列消息。
+函数可以有零个或一个使用 output 参数定义的输出绑定。 
+
+下面的示例通过添加一个名为的输出队列绑定来修改前面的示例 `myQueueItemCopy` 。 函数将触发函数的消息的内容写入其他队列中的新消息。
 
 ```csharp
 public static class SimpleExampleWithOutput
@@ -112,6 +119,8 @@ public static class SimpleExampleWithOutput
     }
 }
 ```
+
+当函数退出时，将写入分配给输出绑定的值。 只需将值分配给多个输出参数，即可在一个函数中使用多个输出绑定。 
 
 绑定参考文章（例如，[存储队列](functions-bindings-storage-queue.md)）说明了可用于触发器、输入或输出绑定特性的参数类型。
 
@@ -361,7 +370,7 @@ logger.LogInformation("partitionKey={partitionKey}, rowKey={rowKey}", partitionK
 }
 ```
 
-## <a name="log-custom-telemetry-in-c-functions"></a>在 C# 函数中记录自定义遥测
+### <a name="log-custom-telemetry"></a><a name="log-custom-telemetry-in-c-functions"></a>记录自定义遥测数据
 
 Functions 特定版本的 Application Insights SDK 可用于将自定义遥测数据从函数发送到 Application Insights：[Microsoft.Azure.WebJobs.Logging.ApplicationInsights](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Logging.ApplicationInsights)。 在命令提示符中使用以下命令来安装此包：
 

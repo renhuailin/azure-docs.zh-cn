@@ -2,7 +2,6 @@
 title: API 身份验证和授权 - Azure 时序见解 | Microsoft Docs
 description: 本文介绍如何为调用 Azure 时序见解 API 的自定义应用程序配置身份验证和授权。
 ms.service: time-series-insights
-services: time-series-insights
 author: deepakpalled
 ms.author: shresha
 manager: dpalled
@@ -12,16 +11,16 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 02/23/2021
 ms.custom: seodec18, has-adal-ref
-ms.openlocfilehash: 58c0f408e3ad80109efd3db79d6e4a0d881aed78
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 02d9edd555566f86fd8bb09cf4acef4956ae53e4
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101724162"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102041206"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Azure 时序见解 API 的身份验证和授权
 
-根据你的业务需要，你的解决方案可能包括一个或多个用于与 Azure 时序见解环境的 [api](https://docs.microsoft.com/en-us/rest/api/time-series-insights/reference-data-access-overview)进行交互的客户端应用程序。 Azure 时序见解使用 [基于 OAUTH 2.0 Azure AD 安全令牌](../active-directory/develop/security-tokens.md#json-web-tokens-and-claims)执行身份验证。 若要对客户端 () 进行身份验证，你需要获取具有适当权限的持有者令牌，并将其传递给你的 API 调用。 本文档介绍了几种凭据获取方法，你可以使用这些方法来获取持有者令牌并进行身份验证。
+根据你的业务需要，你的解决方案可能包括一个或多个用于与 Azure 时序见解环境的 [api](/rest/api/time-series-insights/reference-data-access-overview)进行交互的客户端应用程序。 Azure 时序见解使用 [基于 OAUTH 2.0 Azure AD 安全令牌](../active-directory/develop/security-tokens.md#json-web-tokens-and-claims)执行身份验证。 若要对客户端 () 进行身份验证，你需要获取具有适当权限的持有者令牌，并将其传递给你的 API 调用。 本文档介绍了几种凭据获取方法，你可以使用这些方法来获取持有者令牌并进行身份验证。
 
 
   如何使用新的 Azure Active Directory 边栏选项卡在 Azure Active Directory 中注册应用。 在 Azure Active Directory 中注册的应用可让用户进行身份验证，并有权使用与 Azure 时序见解环境关联的 Azure 时序见解 API。
@@ -34,7 +33,7 @@ ms.locfileid: "101724162"
 - 可以使用托管标识向支持 Azure AD 身份验证的任何 Azure 服务（包括 Azure Key Vault）进行身份验证。
 - 无需额外付费也可使用托管标识。
 
-有关这两种类型的托管标识的详细信息，请参阅 [Azure 资源的托管标识是什么？](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
+有关这两种类型的托管标识的详细信息，请参阅 [Azure 资源的托管标识是什么？](../active-directory/managed-identities-azure-resources/overview.md)
 
 你可以使用中的托管标识：
 
@@ -44,7 +43,7 @@ ms.locfileid: "101724162"
 - Azure 容器实例
 - 更多 .。。
 
-有关完整列表，请参阅 [支持 azure 资源的托管标识的 Azure 服务](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities#azure-services-that-support-managed-identities-for-azure-resources) 。
+有关完整列表，请参阅 [支持 azure 资源的托管标识的 Azure 服务](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-managed-identities-for-azure-resources) 。
 
 ## <a name="azure-active-directory-app-registration"></a>Azure Active Directory 应用注册
 
@@ -54,9 +53,9 @@ ms.locfileid: "101724162"
 
 如果在门户中注册应用程序，会在主租户中自动创建应用程序对象以及服务主体对象。 如果使用 Microsoft Graph API 注册/创建应用程序，则通过一个单独步骤创建服务主体对象。 请求令牌需要服务主体对象。
 
-确保查看应用程序的 [安全](https://docs.microsoft.com/azure/active-directory/develop/identity-platform-integration-checklist#security) 清单。 最佳做法是，应该使用 [证书凭据](https://docs.microsoft.com/azure/active-directory/develop/active-directory-certificate-credentials)，而不是密码凭据 (客户端机密) 。
+确保查看应用程序的 [安全](../active-directory/develop/identity-platform-integration-checklist.md#security) 清单。 最佳做法是，应该使用 [证书凭据](../active-directory/develop/active-directory-certificate-credentials.md)，而不是密码凭据 (客户端机密) 。
 
-有关更多详细信息，请参阅 [Azure Active Directory 中的应用程序和服务主体对象](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals) 。
+有关更多详细信息，请参阅 [Azure Active Directory 中的应用程序和服务主体对象](../active-directory/develop/app-objects-and-service-principals.md) 。
 
 ## <a name="step-1-create-your-managed-identity-or-app-registration"></a>步骤1：创建托管标识或应用注册
 
@@ -64,16 +63,16 @@ ms.locfileid: "101724162"
 
 ### <a name="managed-identity"></a>托管标识
 
-用于创建托管标识的步骤会因代码所在的位置以及是否要创建系统分配的或用户分配的标识而有所不同。 读取 [管理的标识类型](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview#managed-identity-types) 以了解不同之处。 选择标识类型后，请在 "Azure AD 管理的标识" [文档](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/)中找到并遵循正确的教程。 在这里，你将找到有关如何为配置托管标识的说明：
+用于创建托管标识的步骤会因代码所在的位置以及是否要创建系统分配的或用户分配的标识而有所不同。 读取 [管理的标识类型](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) 以了解不同之处。 选择标识类型后，请在 "Azure AD 管理的标识" [文档](../active-directory/managed-identities-azure-resources/index.yml)中找到并遵循正确的教程。 在这里，你将找到有关如何为配置托管标识的说明：
 
-- [Azure VM](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm#enable-system-assigned-managed-identity-during-creation-of-a-vm)
-- [应用服务和 Azure Functions](https://docs.microsoft.com/azure/app-service/overview-managed-identity)
-- [Azure 容器实例](https://docs.microsoft.com/azure/container-instances/container-instances-managed-identity)
+- [Azure VM](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#enable-system-assigned-managed-identity-during-creation-of-a-vm)
+- [应用服务和 Azure Functions](../app-service/overview-managed-identity.md)
+- [Azure 容器实例](../container-instances/container-instances-managed-identity.md)
 - 更多 .。。
 
 ### <a name="application-registration"></a>应用程序注册
 
-按照 [注册应用程序](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app#register-an-application)中列出的步骤进行操作。
+按照 [注册应用程序](../active-directory/develop/quickstart-register-app.md#register-an-application)中列出的步骤进行操作。
 
 [!INCLUDE [Azure Active Directory app registration](../../includes/time-series-insights-aad-registration.md)]
 
@@ -81,16 +80,16 @@ ms.locfileid: "101724162"
 
 当 Azure 时序见解环境收到请求时，首先会验证调用方的持有者令牌。 如果验证通过，则调用方已经过身份验证，然后进行了另一次检查，以确保调用方有权执行请求的操作。 若要对任何用户或服务主体授权，必须首先向其授予对该环境的访问权限，方法是将其分配到 "读取者" 或 "参与者" 角色。
 
-- 若要通过 [Azure 门户](https://portal.azure.com/) UI 授予访问权限，请按照 [授予对环境的数据访问权限一](https://docs.microsoft.com/azure/time-series-insights/concepts-access-policies) 文中列出的说明进行操作。 选择用户时，可以按名称或 ID 搜索托管标识或应用注册。
+- 若要通过 [Azure 门户](https://portal.azure.com/) UI 授予访问权限，请按照 [授予对环境的数据访问权限一](concepts-access-policies.md) 文中列出的说明进行操作。 选择用户时，可以按名称或 ID 搜索托管标识或应用注册。
 
-- 若要使用 Azure CLI 授予访问权限，请运行以下命令。 查看 [此处](https://docs.microsoft.com/cli/azure/ext/timeseriesinsights/tsi/access-policy?view=azure-cli-latest) 的文档，以获取可用于管理访问权限的完整命令列表。
+- 若要使用 Azure CLI 授予访问权限，请运行以下命令。 查看 [此处](/cli/azure/ext/timeseriesinsights/tsi/access-policy) 的文档，以获取可用于管理访问权限的完整命令列表。
 
    ```azurecli-interactive
    az tsi access-policy create --name "ap1" --environment-name "env1" --description "some description" --principal-object-id "aGuid" --roles Reader Contributor --resource-group "rg1"
    ```
 
 > [!Note]
-> 用于 Azure CLI 的 timeseriesinsights-environment-with-eventhub 扩展需要版本2.11.0 或更高版本。 首次运行 az tsi 访问策略命令时，扩展将自动安装。 [了解](https://docs.microsoft.com/cli/azure/azure-cli-extensions-overview) 有关扩展的详细信息。
+> 用于 Azure CLI 的 timeseriesinsights-environment-with-eventhub 扩展需要版本2.11.0 或更高版本。 首次运行 az tsi 访问策略命令时，扩展将自动安装。 [了解](/cli/azure/azure-cli-extensions-overview) 有关扩展的详细信息。
 
 ## <a name="step-3-requesting-tokens"></a>步骤3：请求令牌
 
@@ -107,37 +106,37 @@ ms.locfileid: "101724162"
 
 ### <a name="managed-identities"></a>托管标识
 
-从 Azure App Service 或函数进行访问时，请按照 [获取 Azure 资源的令牌](https://docs.microsoft.com/azure/app-service/overview-managed-identity)中的指南进行操作。
+从 Azure App Service 或函数进行访问时，请按照 [获取 Azure 资源的令牌](../app-service/overview-managed-identity.md)中的指南进行操作。
 
 > [!TIP]
-> 对于 .NET 应用程序和函数，使用托管标识的最简单方法是通过适用于 .NET 的 [Azure 标识客户端库](https://docs.microsoft.com/dotnet/api/overview/azure/identity-readme) 。 
+> 对于 .NET 应用程序和函数，使用托管标识的最简单方法是通过适用于 .NET 的 [Azure 标识客户端库](/dotnet/api/overview/azure/identity-readme) 。 
 
-对于 .NET 应用程序和函数，使用托管标识最简单的方法是通过 Microsoft.Azure.Services.AppAuthentication 包。 由于此包简单易用，因此很普遍。 开发人员可以编写代码一次，并让客户端库确定如何基于应用程序环境进行身份验证，无论是在开发人员工作站上使用开发人员的帐户还是在 Azure 中使用托管服务标识部署的。 有关前置 Microsoft.azure.services.appauthentication 库中的迁移指南，请参阅 [microsoft.azure.services.appauthentication 到 Azure。标识迁移指南](https://docs.microsoft.com/dotnet/api/overview/azure/app-auth-migration?view=azure-dotnet)。
+对于 .NET 应用程序和函数，使用托管标识最简单的方法是通过 Microsoft.Azure.Services.AppAuthentication 包。 由于此包简单易用，因此很普遍。 开发人员可以编写代码一次，并让客户端库确定如何基于应用程序环境进行身份验证，无论是在开发人员工作站上使用开发人员的帐户还是在 Azure 中使用托管服务标识部署的。 有关前置 Microsoft.azure.services.appauthentication 库中的迁移指南，请参阅 [microsoft.azure.services.appauthentication 到 Azure。标识迁移指南](/dotnet/api/overview/azure/app-auth-migration)。
 
 使用 c # 和适用于 .NET 的 Azure 标识客户端库请求 Azure 时序见解的令牌：
 
-    ```csharp
-    using Azure.Identity;
-    // ...
-    var credential = new DefaultAzureCredential();
-    var token = credential.GetToken(
-    new Azure.Core.TokenRequestContext(
-        new[] { "https://api.timeseries.azure.com/" }));
-   var accessToken = token。令牌
-    ```
+   ```csharp
+   using Azure.Identity;
+   // ...
+   var credential = new DefaultAzureCredential();
+   var token = credential.GetToken(
+   new Azure.Core.TokenRequestContext(
+       new[] { "https://api.timeseries.azure.com/" }));
+   var accessToken = token.Token;
+   ```
 
 ### <a name="app-registration"></a>应用注册
 
-* 开发人员可以使用 [Microsoft 身份验证库](https://docs.microsoft.com/azure/active-directory/develop/msal-overview) (MSAL) 获取应用注册令牌。
+* 开发人员可以使用 [Microsoft 身份验证库](../active-directory/develop/msal-overview.md) (MSAL) 获取应用注册令牌。
 
 MSAL 可用于许多应用程序方案中，包括但不限于：
 
-* [单页应用程序 (JavaScript)](https://docs.microsoft.com/azure/active-directory/develop/scenario-spa-overview.md)
-* [Web 应用程序登录用户并代表用户调用 web API](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-call-api-overview.md)
-* [Web API 代表已登录用户调用其他下游 Web API](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-api-call-api-overview.md)
-* [桌面应用程序代表已登录用户调用 Web API](https://docs.microsoft.com/azure/active-directory/develop/scenario-desktop-overview.md)
-* [代表以交互方式登录的用户调用 Web API 的移动应用程序](https://docs.microsoft.com/azure/active-directory/develop/scenario-mobile-overview.md)。
-* [桌面/服务守护程序应用程序代表自己调用 Web API](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-overview.md)
+* [单页应用程序 (JavaScript)](../active-directory/develop/scenario-spa-overview.md)
+* [Web 应用程序登录用户并代表用户调用 web API](../active-directory/develop/scenario-web-app-call-api-overview.md)
+* [Web API 代表已登录用户调用其他下游 Web API](../active-directory/develop/scenario-web-api-call-api-overview.md)
+* [桌面应用程序代表已登录用户调用 Web API](../active-directory/develop/scenario-desktop-overview.md)
+* [代表以交互方式登录的用户调用 Web API 的移动应用程序](../active-directory/develop/scenario-mobile-overview.md)。
+* [桌面/服务守护程序应用程序代表自己调用 Web API](../active-directory/develop/scenario-daemon-overview.md)
 
 有关演示如何获取令牌作为应用注册并从 Gen2 环境查询数据的示例 c # 代码，请查看[GitHub](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/gen2-sample/csharp-tsi-gen2-sample/DataPlaneClientSampleApp/Program.cs)上的示例应用
 

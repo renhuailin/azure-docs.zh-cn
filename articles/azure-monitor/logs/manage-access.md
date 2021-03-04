@@ -1,17 +1,16 @@
 ---
 title: 管理 Azure Monitor 中的 Log Analytics 工作区 | Microsoft Docs
 description: 可以使用资源、工作区或表级权限来管理对 Azure Monitor 的 Log Analytics 工作区中存储的数据的访问。 本文详细介绍如何完成这些操作。
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/10/2019
-ms.openlocfilehash: bc03d8cdcaf0079ef15e648d16fd5656d9da368c
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 79bcca688146b2c2382876b6a61bc0eee34382a1
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101725673"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102040951"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>管理对 Azure Monitor 中的日志数据和工作区的访问
 

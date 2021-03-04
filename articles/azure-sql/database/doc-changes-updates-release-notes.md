@@ -11,12 +11,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: sstein
-ms.openlocfilehash: 607b588d3371b20c2b3fa9854e27a7ccdfe2e551
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 86687e8259e7abcb9ff0e97f8cb75d96c0abfca8
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98703761"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102042498"
 ---
 # <a name="whats-new-in-azure-sql-database--sql-managed-instance"></a>Azure SQL 数据库和 SQL 托管实例中的新增功能有哪些？
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -89,7 +89,7 @@ Azure SQL 数据库和 Azure SQL 托管实例的相关文档已拆分为单独�
   - 支持 <a href="/sharepoint/administration/deploy-azure-sql-managed-instance-with-sharepoint-servers-2016-2019"> SharePoint 2016 和 SharePoint 2019 </a> 以及 <a href="/business-applications-release-notes/october18/dynamics365-business-central/support-for-azure-sql-database-managed-instance"> Dynamics 365 Business Central。</a>
   - 使用所选的<a href="/azure/azure-sql/managed-instance/scripts/create-powershell-azure-resource-manager-template">实例级排序规则</a>和<a href="https://azure.microsoft.com/updates/managed-instance-time-zone-ga/">时区</a>创建托管实例。
   - 托管实例现在使用[内置防火墙](../managed-instance/management-endpoint-verify-built-in-firewall.md)进行保护。
-  - 配置 SQL 托管实例以使用[公共终结点](../managed-instance/public-endpoint-configure.md)、[代理覆盖](connectivity-architecture.md#connection-policy)连接以获得更好的网络性能，<a href="https://aka.ms/four-cores-sql-mi-update">Gen5 硬件代系有 4 个 vCore</a> 或<a href="/azure/azure-sql/database/automated-backups-overview">将备份保留期配置为最多 35 天</a>以便进行时间点还原。 [长期备份保留](long-term-retention-overview.md#sql-managed-instance-support)（最长 10 年）目前处于有限公共预览版状态。  
+  - 配置 SQL 托管实例以使用[公共终结点](../managed-instance/public-endpoint-configure.md)、[代理覆盖](connectivity-architecture.md#connection-policy)连接以获得更好的网络性能，<a href="https://aka.ms/four-cores-sql-mi-update">Gen5 硬件代系有 4 个 vCore</a> 或<a href="/azure/azure-sql/database/automated-backups-overview">将备份保留期配置为最多 35 天</a>以便进行时间点还原。 长期[备份保留](long-term-retention-overview.md) (最多10年) 目前为公共预览版。  
   - 利用新功能，可以<a href="https://medium.com/@jocapc/geo-restore-your-databases-on-azure-sql-instances-1451480e90fa">使用 PowerShell 将数据库异地还原到另一个数据中心</a>、[重命名数据库](https://azure.microsoft.com/updates/azure-sql-database-managed-instance-database-rename-is-supported/)、[删除虚拟群集](../managed-instance/virtual-cluster-delete.md)。
   - 新的内置[实例参与者角色](../../role-based-access-control/built-in-roles.md#sql-managed-instance-contributor)使职责分离 (SoD) 遵从安全原则并符合企业标准。
   - 以下 Azure 政府版中提供了 SQL 托管实例 (US Gov 德克萨斯州，US Gov 亚利桑那州) 和中国北部2和中国东部2。 它还在以下公共区域中提供：澳大利亚中部、澳大利亚中部2、巴西南部、法国南部、阿拉伯联合酋长国中部、阿拉伯联合酋长国北部、南非北部、南非西北部。
@@ -130,11 +130,11 @@ Azure SQL 数据库和 Azure SQL 托管实例的相关文档已拆分为单独�
 |使用具有安全连接的外部（非 Azure）邮件服务器时出现数据库邮件功能问题||已解决|2019 年 10 月|
 |SQL 托管实例不支持包含的数据库||已解决|2019 年 8 月|
 
-### <a name="procedure-sp_send_dbmail-may-transiently-fail-when-query-parameter-is-used"></a>使用参数时，Procedure sp_send_dbmail transiently 可能失败 @query
+### <a name="procedure-sp_send_dbmail-may-transiently-fail-when-query-parameter-is-used"></a>使用 @query 参数时，过程 sp_send_dbmail 可能会暂时失败
 
-使用参数时，Procedure sp_send_dbmail transiently 可能会失败 `@query` 。 发生此问题时，每次执行过程 sp_send_dbmail 都将失败并出现错误 `Msg 22050, Level 16, State 1` 和消息 `Failed to initialize sqlcmd library with error number -2147467259` 。 若要能够正确地看到此错误，应在参数的默认值为0的情况下调用该过程 `@exclude_query_output` ，否则将不会传播此错误。
-此问题是由与 sp_send_dbmail 使用模拟和连接池的方式相关的已知 bug 引起的。
-若要解决此问题，请将电子邮件发送到依赖于 output 参数的重试逻辑 `@mailitem_id` 。 如果执行失败，则参数值将为 NULL，指示应再次调用 sp_send_dbmail 以成功发送电子邮件。 下面是此重试逻辑的示例。
+使用 `@query` 参数时，过程 sp_send_dbmail 可能会暂时失败。 发生此问题时，每秒执行一次 sp_send_dbmail 过程都会失败，并显示错误 `Msg 22050, Level 16, State 1` 和消息 `Failed to initialize sqlcmd library with error number -2147467259`。 为了能够正确看到此错误，应使用参数 `@exclude_query_output` 的默认值 0 调用该过程，否则错误将不会传播。
+此问题是由与 sp_send_dbmail 如何使用模拟和连接池相关的已知 bug 引起的。
+若要解决此问题，请将用于发送电子邮件的代码包装到依赖于输出参数 `@mailitem_id` 的重试逻辑中。 如果执行失败，则参数值将为 NULL，表示应该再次调用 sp_send_dbmail 以成功发送电子邮件。 下面是此重试逻辑的示例。
 ```sql
 CREATE PROCEDURE send_dbmail_with_retry AS
 BEGIN
@@ -180,7 +180,7 @@ BULK INSERT Sales.Invoices FROM 'inv-2017-12-08.csv' WITH (DATA_SOURCE = 'MyAzur
 
 在某些情况下，用于访问 Azure AD 和 Azure Key Vault (AKV) 服务的服务主体可能存在问题。 此问题最终会对使用 Azure AD 身份验证和 SQL 托管实例的透明数据库加密 (TDE) 产生影响。 这可能是一个间歇性连接问题，或者无法运行诸如 CREATE LOGIN/USER FROM EXTERNAL PROVIDER 或 EXECUTE AS LOGIN/USER 之类的语句。 在某些情况下，在新的 Azure SQL 托管实例上使用客户托管密钥设置 TDE 也可能不起作用。
 
-**解决方法**：为了防止在执行任何更新命令之前 SQL 托管实例出现此问题，或者你已在更新命令后遇到此问题，请转到 Azure 门户，访问 SQL 托管实例 [“Active Directory 管理员”边栏选项卡](./authentication-aad-configure.md?tabs=azure-powershell#azure-portal)。 验证是否可以看到错误消息“托管实例需要服务主体才能访问 Azure Active Directory。 单击此处创建服务主体”。 如果你遇到此错误消息，请单击它，然后按照提供的分步说明操作，直到此错误得以解决。
+**解决方法**：为了防止在执行任何更新命令之前 SQL 托管实例出现此问题，或者你已在更新命令后遇到此问题，请转到 Azure 门户，访问 SQL 托管实例 [“Active Directory 管理员”边栏选项卡](./authentication-aad-configure.md?tabs=azure-powershell#azure-portal)。 验证是否可以看到错误消息“托管实例需要服务主体才能访问 Azure Active Directory。 单击此处创建服务主体”。 如果看到此错误消息，请单击它，然后按照提供的分步说明操作，直到解决此错误为止。
 
 ### <a name="restoring-manual-backup-without-checksum-might-fail"></a>没有使用 CHECKSUM 的手动备份可能无法还原
 
@@ -240,7 +240,7 @@ SQL Server 和 SQL 托管实例[不允许用户删除不为空的文件](/sql/re
 
 正在运行的 `RESTORE` 语句、数据迁移服务的迁移过程以及内置的时间点还原都会阻止对服务层的更新操作或者对现有实例的重设大小操作以及创建新实例的操作，直至还原过程完成为止。 
 
-还原过程会阻止其运行时所在的子网的托管实例和实例池中的这些操作。 实例池中的实例不受影响。 创建或更改服务层操作不会失败或超时。还原过程完成或取消后，它们将继续进行。
+还原过程会阻止其运行时所在的子网的托管实例和实例池中的这些操作。 实例池中的实例不受影响。 服务层级创建或更改操作不会失败或超时。还原过程完成或取消后，将继续执行这些操作。
 
 **解决方法**：请等待还原过程完成，或者，如果创建或更新服务层级的操作的优先级更高，可取消还原过程。
 

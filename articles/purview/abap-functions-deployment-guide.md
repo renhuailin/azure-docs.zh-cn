@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/13/2020
-ms.openlocfilehash: 1d9f1c5beafb7b54c5fd0189dd738ff8e346a3e8
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 911238efafb948b304455cf75cc4ec2c3c605c76
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101695922"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102042030"
 ---
 # <a name="deploy-the-metadata-extraction-abap-function-module-for-the-sap-r3-family-of-bridges"></a>部署适用于 SAP R3 系列桥的元数据提取 ABAP 函数模块 
 本文概述了在 SAP Server 中部署 ABAP 函数模块的步骤
@@ -74,7 +74,7 @@ SAP Business Suite 4 HANA (S/4HANA) 、ECC 和 R/3 ERP 桥可用于从 SAP 服�
 
 3.  导航到 " \" 源代码 \" " 选项卡。可以通过两种方式来部署函数的代码：
 
-    a.  在主菜单中，选择 " \_ \_ 实用工具 = \> 更多实用工具 = \> 上传/下载 = \> 上传" 以上传 Z MITIDOWNLOAD.txt 文件。
+    a.  在主菜单上，通过选择 "实用工具 = 更多实用工具 = 上传/下载 = 上传"，上传文本文件 [Z \_ MITI \_ 下载](https://github.com/Azure/Purview-Samples/tree/master/connectors/sap) 文件 \> \> \> 。
 
     b.  或者，打开文件，复制其内容并粘贴到 \" 源代码 \" 区域。
 

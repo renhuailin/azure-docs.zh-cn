@@ -183,6 +183,8 @@
       href: core/concepts-telemetry-properties-commands.md
     - name: 连接 IoT Edge 设备
       href: core/concepts-iot-edge.md
+    - name: 最佳做法
+      href: core/concepts-best-practices.md
 - name: 操作指南
   items:
     - name: 开发和连接设备

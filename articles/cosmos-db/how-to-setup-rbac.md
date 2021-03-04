@@ -4,14 +4,14 @@ description: 了解如何使用 Azure Active Directory 为 Azure Cosmos DB 帐�
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 03/02/2021
+ms.date: 03/03/2021
 ms.author: thweiss
-ms.openlocfilehash: d83109f380a3044073cf2dd8d10f29027ebb9f41
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: acb82a66c8ef4adcfeef0fcb527c44512ad4feaf
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101690900"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102040866"
 ---
 # <a name="configure-role-based-access-control-with-azure-active-directory-for-your-azure-cosmos-db-account-preview"></a>使用 Azure Cosmos DB 帐户 (预览的 Azure Active Directory 配置基于角色的访问控制) 
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -370,6 +370,7 @@ CosmosAsyncClient Client = new CosmosClientBuilder()
 - 对于每个 Azure Cosmos DB 帐户，最多可以创建100个角色定义和2000个角色分配。
 - 对于属于超过200个组的标识，目前不支持 Azure AD 组解析。
 - Azure AD 令牌当前以标头的形式传递，每个请求发送到 Azure Cosmos DB 服务，从而增加总体负载大小。
+- 尚不支持通过 [Azure Cosmos DB 资源管理器](data-explorer.md) Azure AD 访问数据。 使用 Azure Cosmos DB 资源管理器仍要求用户有权访问帐户的主密钥。
 
 ## <a name="frequently-asked-questions"></a>常见问题
 

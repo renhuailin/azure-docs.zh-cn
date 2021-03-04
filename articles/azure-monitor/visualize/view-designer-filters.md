@@ -1,17 +1,16 @@
 ---
 title: Azure Monitor 视图中的筛选器 | Microsoft Docs
 description: 使用 Azure Monitor 视图中的筛选器用户可以在不修改视图本身的情况下，以特定属性的值筛选视图中的数据。  本文介绍如何使用筛选器并添加一个筛选器到自定义视图。
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/22/2018
-ms.openlocfilehash: d428382493e15d2e0571f4cb4b6f090cf9056fe4
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 988bb1467e7bf2cca31151d85c57677b235cab30
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100608508"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102043297"
 ---
 # <a name="filters-in-azure-monitor-views"></a>Azure Monitor 视图中的筛选器
 [Azure Monitor 视图](view-designer.md)中的 **筛选器** 使得用户可以在不修改视图本身的情况下，以特定属性的值筛选视图中的数据。  例如，可以允许视图的用户在视图中筛选仅来自特定计算机或特定计算器组的数据。  可以在单个视图上创建多个筛选器，以便用户按多个属性筛选数据。  本文介绍如何使用筛选器并添加一个筛选器到自定义视图。

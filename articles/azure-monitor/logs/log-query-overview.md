@@ -1,17 +1,16 @@
 ---
 title: Azure Monitor 中的日志查询
 description: Azure Monitor 使用的 Kusto 查询语言的参考信息。 包括特定于 Azure Monitor 的附加元素以及 Azure Monitor 日志查询中不支持的元素。
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/09/2020
-ms.openlocfilehash: 7ce73fc69ac0ff88c6048aad39fd07ae802b978d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 529fc432bf8777ef7e2b527f08e9cb59e42bf156
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101704219"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102041019"
 ---
 # <a name="log-queries-in-azure-monitor"></a>Azure Monitor 中的日志查询
 Azure Monitor 日志基于 Azure 数据资源管理器，日志查询是使用相同的 Kusto 查询语言 (KQL) 编写的。 这是一种旨在方便阅读和创作的丰富语言，你只需接受一些基本指导，便可开始编写查询。

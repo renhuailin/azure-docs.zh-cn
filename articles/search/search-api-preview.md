@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/02/2021
-ms.openlocfilehash: a03707133b384f7717a624e810d0f7a41267969d
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 596113f9fcb7326010090e67b3a52ca03faa25d0
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101670883"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102041971"
 ---
 # <a name="preview-features-in-azure-cognitive-search"></a>Azure 认知搜索中的预览版功能
 
@@ -25,7 +25,7 @@ ms.locfileid: "101670883"
 |---------|------------------|-------------|---------------|
 | [**语义搜索**](semantic-search-overview.md) | 相关性（评分） | 语义排名算法、查询类型和查询响应。 | [搜索 REST API 2020-06-30-Preview](/rest/api/searchservice/) |
 | [**拼写**](cognitive-search-aml-skill.md) | 查询 | 简单、完整和语义查询的查询字词输入的可选拼写更正。 | [搜索 REST API 2020-06-30-Preview](/rest/api/searchservice/) |
-| SharePoint Online 索引器 | 索引器数据源 | 用于 SharePoint 内容的基于索引器索引的新数据源。 | [搜索 REST API 2020-06-30-Preview](/rest/api/searchservice/) |
+| [**SharePoint Online 索引器**](search-howto-index-sharepoint-online.md) | 索引器数据源 | 用于 SharePoint 内容的基于索引器索引的新数据源。 | [搜索 REST API 2020-06-30-Preview](/rest/api/searchservice/) |
 | [**Azure 机器学习 (AML) 技能**](cognitive-search-aml-skill.md) | AI 扩充| 用于将推断终结点与 Azure 机器学习集成的一种新技术类型。 请先查看[此教程](cognitive-search-tutorial-aml-custom-skill.md)。 | 使用 [Search REST API 2020-06-30-preview](/rest/api/searchservice/) 或 2019-05-06-preview。 如果在同一订阅中部署了认知搜索和 Azure ML 服务，则门户中也会提供此功能。 |
 | [featuresMode 参数](/rest/api/searchservice/preview-api/search-documents#query-parameters) | 相关性（评分） | 展开相关性分数以显示详细信息：单字段相似度得分、单字段术语频率，以及单字段匹配的唯一标记数。 你可以在[自定义评分解决方案](https://github.com/Azure-Samples/search-ranking-tutorial)中使用这些数据点。 | 使用 api-version 为 2020-06-30-Preview 或 2019-05-06-Preview 的[搜索文档 (REST)](/rest/api/searchservice/preview-api/search-documents) 添加此查询参数。 |
 | [**调试会话**](cognitive-search-debug-session.md) | 门户、AI 扩充 (技能组合)  | 用于调查和解决技能组合问题的会话中技能组合编辑器。 在调试会话期间应用的修复可以保存到服务中的技能组合。 | 仅门户，使用 "概述" 页上的中页链接打开调试会话。 |

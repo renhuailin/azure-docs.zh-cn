@@ -1,17 +1,16 @@
 ---
 title: 在 Azure Monitor 中使用 Log Analytics 代理收集自定义日志
 description: Azure Monitor 可以从 Windows 和 Linux 计算机上的文本文件中收集事件。  本文介绍如何定义新的自定义日志，以及这些日志在 Azure Monitor 中创建的记录的详细信息。
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/21/2020
-ms.openlocfilehash: 9ea33c7dca55e22687bd1db873c281caa1a3c4cb
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: b66011ff41e1dd4a7439105862ca61355a95bd71
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101719927"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102042702"
 ---
 # <a name="collect-custom-logs-with-log-analytics-agent-in-azure-monitor"></a>在 Azure Monitor 中使用 Log Analytics 代理收集自定义日志
 

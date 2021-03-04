@@ -6,12 +6,12 @@ author: vikram1988
 ms.author: vibansa
 ms.manager: abhemraj
 ms.date: 04/16/2020
-ms.openlocfilehash: 38db1e68adde21d0e566256e9393f6fa4fc58824
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: abf34a5ea83e74b0bd2a074108c5ef1014941093
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96753784"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102041325"
 ---
 # <a name="set-up-an-appliance-with-a-script"></a>使用脚本设置设备
 
@@ -23,13 +23,13 @@ ms.locfileid: "96753784"
 - 若要为物理服务器设置设备，只能使用脚本。 请参阅 [此文](how-to-set-up-appliance-physical.md)。
 - 若要在 Azure 政府版云中设置设备，请遵循 [此文](deploy-appliance-script-government.md)。
 
-## <a name="prerequisites"></a>必备知识
+## <a name="prerequisites"></a>先决条件
 
 此脚本在现有物理计算机或 VM 上设置 Azure Migrate 设备。
 
 - 用作设备的计算机必须满足以下硬件和操作系统要求：
 
-场景 | 要求
+方案 | 要求
 --- | ---
 VMware | Windows Server 2016，含 32 GB 内存，8个个 vcpu，大约为 80 GB 的磁盘存储
 Hyper-V | Windows Server 2016，具有 16 GB 内存，8个个 vcpu，大约 80 GB 的磁盘存储
@@ -136,5 +136,5 @@ Hyper-V | Windows Server 2016，具有 16 GB 内存，8个个 vcpu，大约 80 G
 
 部署设备后，需首次配置该设备，并将其注册到 Azure Migrate 项目。
 
-- 为 [VMware](how-to-set-up-appliance-vmware.md#configure-the-appliance)设置设备。
+- 为 [VMware](how-to-set-up-appliance-vmware.md#4-configure-the-appliance)设置设备。
 - 为 [hyper-v](how-to-set-up-appliance-hyper-v.md#configure-the-appliance)设置设备。

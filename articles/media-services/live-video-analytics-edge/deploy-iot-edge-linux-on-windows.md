@@ -3,12 +3,12 @@ title: 部署到 Windows 上的 Linux IoT Edge-Azure
 description: 本文提供了有关如何部署到 Windows 设备上的 Linux IoT Edge 的指导。
 ms.topic: how-to
 ms.date: 02/18/2021
-ms.openlocfilehash: 5cf4184857f12065d808d7b528dbfe8258950cd8
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: b635070d6a4834da2c6d82cc768684b6cde9cd71
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101744420"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102042175"
 ---
 # <a name="deploy-to-an-iot-edge-for-linux-on-windows-eflow-device"></a>部署到 Windows 上的 IoT Edge Linux (EFLOW) 设备
 
@@ -107,7 +107,7 @@ ms.locfileid: "101744420"
 ## <a name="next-steps"></a>后续步骤
 
 * 尝试运动检测，并在云中录制相关视频。 按照检测动作中的步骤 [，将视频剪辑录制到媒体服务](detect-motion-record-video-clips-media-services-quickstart.md#review-the-sample-video) 快速入门。
-* [在直播视频上运行 AI](use-your-model-quickstart#overview) (可以跳过先决条件设置，因为它已在上面完成) 
+* [在直播视频上运行 AI](use-your-model-quickstart.md#overview) (可以跳过先决条件设置，因为它已在上面完成) 
 * 使用我们的 [VS Code 扩展](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.live-video-analytics-edge) 来查看其他媒体关系图。
 * 使用支持 RTSP 的 [IP 照相机](https://en.wikipedia.org/wiki/IP_camera)  ，而不是使用 rtsp 模拟器。 可以在 [ONVIF 一致性](https://www.onvif.org/conformant-products/)产品页上找到支持 RTSP 的 IP 相机。 查找符合配置文件 G、S 或 T 的设备。
 

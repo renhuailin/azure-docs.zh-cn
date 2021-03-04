@@ -113,12 +113,12 @@
             - name: 确定所需设备
               displayName: 'virtual, Dell, HPE, SMB, certified, hardware, deployment'
               href: how-to-identify-required-appliances.md
-            - name: 安装软件
-              displayName: 'virtual, Dell, HPE, SMB, certified, hardware, port mirroring, ESXi, install, deploy'
-              href: how-to-install-software.md
             - name: 设置网络
               displayName: 'passive, browsers, network access, TAP, switch, mirroring, firewall, SPAN, monitoring, tuning'
               href: how-to-set-up-your-network.md
+            - name: 安装软件
+              displayName: 'virtual, Dell, HPE, SMB, certified, hardware, port mirroring, ESXi, install'
+              href: how-to-install-software.md
         - name: 准备传感器
           items:
             - name: 加入传感器
@@ -155,7 +155,7 @@
         - name: 管理云中的传感器
           href: how-to-manage-sensors-on-the-cloud.md
         - name: 管理本地管理控制台
-          displayName: 'upgrade, activation, certificate, SSL, TLS, connect, sync, backup, restore, software update, failure'
+          displayName: 'upgrade, activation, certificate, software update, backup, restore, proxy, password recovery'
           href: how-to-manage-the-on-premises-management-console.md
         - name: 使用威胁情报包
           href: how-to-work-with-threat-intelligence-packages.md

@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 02/10/2021
 ms.author: jodowns
 ms.custom: fasttrack-new
-ms.openlocfilehash: 9dc44b4b898603df88d1bdd8c36ddfb6449335ac
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: 55951f288314d92cf5057e7d5c1e988f65cb3e14
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100547190"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102040373"
 ---
 # <a name="versions-in-azure-api-management"></a>Azure API 管理中的版本
 
@@ -42,7 +42,7 @@ ms.locfileid: "100547190"
 
 例如，`https://apis.contoso.com/products/v1` 和 `https://apis.contoso.com/products/v2` 可以引用相同的 `products` API，但需要分别引用版本 `v1` 和 `v2`。
 
-使用基于标头的版本控制时，API 请求 URL 的格式为：`https://{yourDomain}/{apiName}/{versionIdentifier}/{operationId}`。
+使用基于路径的版本控制时 API 请求 URL 的格式为： `https://{yourDomain}/{apiName}/{versionIdentifier}/{operationId}` 。
 
 ### <a name="header-based-versioning"></a>基于标头的版本控制
 

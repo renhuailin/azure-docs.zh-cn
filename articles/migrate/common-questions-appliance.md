@@ -6,12 +6,12 @@ ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 09/15/2020
-ms.openlocfilehash: 9badbfe6cfe12d67e07f0889d175ed32bc455321
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 5a050d9aab9e8665c6048391488e57c9b4af10a5
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96753869"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102043059"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Azure Migrate 设备：常见问题
 
@@ -36,21 +36,20 @@ Azure Migrate 设备是一个轻型设备，Azure Migrate 服务器评估工具�
 
 ## <a name="how-can-i-deploy-the-appliance"></a>如何部署设备？
 
-可按如下所示部署设备：
+可以使用几种方法来部署设备：
 
-- 使用用于发现 VMware Vm ( 的模板。.OVA 文件) 和 Hyper-v Vm (。VHD 文件) 创建托管设备的新 VM。
-- 如果你不想使用模板，则可以在现有物理或虚拟机上部署设备，以便使用 PowerShell 安装程序脚本发现 VMware Vm 或 Hyper-v Vm，并从门户下载 zip 文件。
-- 对于本地或任何云上的物理服务器或虚拟服务器，你始终使用现有服务器上的脚本来部署该设备。
-- 对于 Azure 政府版，只能使用 PowerShell 安装程序脚本部署这三个设备。
+- 可以使用在 VMware 或 Hyper-v 环境中运行的服务器的模板来部署该设备 (适用于 [vmware 的 .ova 模板](how-to-set-up-appliance-vmware.md) 或 [Hyper-v) 的 VHD](how-to-set-up-appliance-hyper-v.md) 。
+- 如果你不想使用模板，则可以使用 [PowerShell 安装程序脚本](deploy-appliance-script.md)为 VMware 或 hyper-v 环境部署该设备。
+- 在 Azure 政府版中，应使用 PowerShell 安装程序脚本部署设备。 请参阅 [此处](deploy-appliance-script-government.md)的部署步骤。
+- 对于本地或任何其他云上的物理服务器或虚拟服务器，你始终使用 PowerShell 安装程序脚本来部署该设备。请参阅 [此处](how-to-set-up-appliance-physical.md)的部署步骤。
 
 ## <a name="how-does-the-appliance-connect-to-azure"></a>设备如何连接到 Azure？
 
 设备可以通过 internet 或使用 Azure ExpressRoute 进行连接。 
 
 - 请确保设备可以连接到这些 [Azure url](./migrate-appliance.md#url-access)。 
-- 可以将 ExpressRoute 用于 Microsoft 对等互连。  已弃用公共对等互连，不适用于新的 ExpressRoute 线路。
+- 可以将 ExpressRoute 用于 Microsoft 对等互连。 已弃用公共对等互连，不适用于新的 ExpressRoute 线路。
 - 仅不支持专用对等互连。
-
 
 
 ## <a name="does-appliance-analysis-affect-performance"></a>设备分析是否会影响性能？
@@ -109,7 +108,7 @@ Azure Migrate 设备收集的数据存储在创建 Azure Migrate 项目的 Azure
 
 ## <a name="can-an-azure-migrate-project-have-multiple-appliances"></a>Azure Migrate 项目可以有多个设备吗？
 
-一个项目可以附加多个设备。 但是，一个设备只能与一个项目关联。 
+一个项目可以有多个注册到它的设备。 但是，一个设备只能注册到一个项目中。
 
 ## <a name="can-the-azure-migrate-appliancereplication-appliance-connect-to-the-same-vcenter"></a>Azure Migrate 设备/复制设备是否可以连接到同一 vCenter？
 
@@ -135,7 +134,7 @@ Azure Migrate 设备收集的数据存储在创建 Azure Migrate 项目的 Azure
 
 ## <a name="can-i-set-up-the-appliance-on-an-azure-vm"></a>能否在 Azure VM 上设置设备？
 
-否。 当前不支持此选项。 
+否。 当前不支持此选项。
 
 ## <a name="can-i-discover-on-an-esxi-host"></a>是否可以在 ESXi 主机上发现？
 
@@ -150,6 +149,19 @@ Azure Migrate 设备收集的数据存储在创建 Azure Migrate 项目的 Azure
 ## <a name="can-i-check-agent-health"></a>能否检查代理运行状况？
 
 是的。 在门户中，前往 Azure Migrate： Server 评估或 Azure Migrate： Server 迁移工具的 " **代理运行状况** " 页。 可以在 Azure 与设备上的 "发现" 和 "评估" 代理之间检查连接状态。
+
+## <a name="can-i-add-multiple-server-credentials-on-vmware-appliance"></a>能否在 VMware 设备上添加多个服务器凭据？
+
+是的，我们现在支持多个服务器凭据来执行软件清单 (发现已安装的应用程序，) 、无代理依赖项分析和 SQL Server 实例和数据库的发现。 [详细了解](tutorial-discover-vmware.md#provide-server-credentials) 如何在设备配置管理器上提供凭据。
+
+## <a name="what-type-of-server-credentials-can-i-add-on-the-vmware-appliance"></a>哪些类型的服务器凭据可以添加到 VMware 设备上？
+你可以在设备配置管理器上提供域/Windows (非域) /Linux (非域) /SQL Server 身份验证凭据。 [了解](add-server-credentials.md) 有关如何提供凭据的详细信息以及如何处理凭据的详细信息。
+
+## <a name="what-type-of-sql-server-connection-properties-are-supported-by-azure-migrate-for-sql-discovery"></a>Azure Migrate 为 SQL 发现支持哪种类型的 SQL Server 连接属性？
+Azure Migrate 会对 Azure Migrate 设备与源 SQL Server 实例之间的通信进行加密， (将 "加密连接" 属性设置为 "TRUE) "。 这些连接通过 [TrustServerCertificate](https://docs.microsoft.com/dotnet/api/system.data.sqlclient.sqlconnectionstringbuilder.trustservercertificate) (设置为 TRUE) 进行加密;传输层将使用 SSL 来加密通道并跳过证书链以验证信任。 设备服务器必须设置为 [信任证书的根证书颁发机构](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine)。
+
+如果在服务器启动时未在服务器上预配证书，SQL Server 将生成用于对登录数据包进行加密的自签名证书。 [了解详细信息](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine)。
+
 
 ## <a name="next-steps"></a>后续步骤
 
