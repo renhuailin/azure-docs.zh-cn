@@ -8,12 +8,13 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/18/2020
-ms.openlocfilehash: 09e7a39a2d97626dd01a00fdaef9bc4d711d557b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: references_regions
+ms.openlocfilehash: 22d7c1bbe03d8b3c0e3b6026c9bac039f0651548
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91828092"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102037245"
 ---
 # <a name="ai-enrichment-in-azure-cognitive-search"></a>Azure 认知搜索中的 AI 扩充
 
@@ -32,6 +33,17 @@ AI 扩充是[索引器](search-indexer-overview.md)的扩展，可用于从图�
 Azure 认知搜索中的内置技能基于认知服务 API 中预先训练的机器学习模型：[计算机视觉](../cognitive-services/computer-vision/index.yml)和[文本分析](../cognitive-services/text-analytics/overview.md)。 若要在内容处理期间利用这些资源，可以附加认知服务资源。
 
 数据引入阶段应用了自然语言和图形处理，其结果会成为 Azure 认知搜索的可搜索索引中文档撰写内容的一部分。 数据作为 Azure 数据集的来源，然后使用任意所需的[内置技能](cognitive-search-predefined-skills.md)通过索引管道进行推送。  
+
+## <a name="feature-availability"></a>功能可用性
+
+AI 扩充在 Azure 认知服务也可用的区域中提供。  可以在 " [Azure 产品（按区域](https://azure.microsoft.com/global-infrastructure/services/?products=search) ）" 页上检查 AI 扩充当前的可用性。  AI 扩充适用于所有受支持的区域，但以下情况除外：
+
++ 澳大利亚东南部
++ 中国北部 2
++ 挪威东部
++ 德国中西部
+
+如果搜索服务位于其中一个区域，您将无法创建和使用技能集，但所有其他搜索服务功能都可用且完全受支持。
 
 ## <a name="when-to-use-ai-enrichment"></a>何时使用 AI 扩充
 

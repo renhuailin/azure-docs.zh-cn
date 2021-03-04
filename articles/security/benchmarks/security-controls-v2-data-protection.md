@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 02/22/2021
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: c8d907062835f18393946b04f1f1e9d5ec345411
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 50358eed580bbd83f25386feb0068a252060672b
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101735754"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102037109"
 ---
 # <a name="security-control-v2-data-protection"></a>安全控制 V2：数据保护
 
 数据保护包括对静态数据保护、传输中数据保护以及通过授权访问机制进行的数据保护进行控制。 这包括使用 Azure 中的访问控制、加密和日志记录对敏感数据资产进行发现、分类、保护和监视操作。
 
-若要查看适用的内置 Azure 策略，请参阅 [Azure 安全基准管理法规符合性内置计划的详细信息：数据保护](../../governance/policy/samples/azure-security-benchmark#data-protection)
+若要查看适用的内置 Azure 策略，请参阅 [Azure 安全基准管理法规符合性内置计划的详细信息：数据保护](../../governance/policy/samples/azure-security-benchmark.md#data-protection)
 
 ## <a name="dp-1-discovery-classify-and-label-sensitive-data"></a>DP-1：对敏感数据进行发现、分类和标记
 

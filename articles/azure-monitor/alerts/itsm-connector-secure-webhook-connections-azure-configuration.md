@@ -1,24 +1,23 @@
 ---
 title: IT 服务管理连接器-安全导出 Azure Monitor-Azure 配置
 description: 本文介绍如何配置 Azure 以便使用 Azure Monitor 中的安全导出来连接 ITSM 产品/服务，以集中监视和管理 ITSM 工作项。
-ms.subservice: logs
 ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 01/03/2021
-ms.openlocfilehash: 62167b8fd72c660e50378a9492528aa5b70bbee7
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 8eb9430e3d280c52cf84c61f0a44cb12152ac054
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100608877"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102037534"
 ---
 # <a name="configure-azure-to-connect-itsm-tools-using-secure-export"></a>使用安全导出配置 Azure 以连接 ITSM 工具
 
 本文介绍如何配置 Azure 以便使用 "安全导出"。
 若要使用 "安全导出"，请执行以下步骤：
 
-1. [将应用注册到 Azure AD。](./itsm-connector-secure-webhook-connections-azure-configuration.md#register-with-azure-active-directory)
+1. [将你的应用程序注册到 Azure AD。](./itsm-connector-secure-webhook-connections-azure-configuration.md#register-with-azure-active-directory)
 1. [定义服务主体。](./itsm-connector-secure-webhook-connections-azure-configuration.md#define-service-principal)
 1. [创建安全 Webhook 操作组。](./itsm-connector-secure-webhook-connections-azure-configuration.md#create-a-secure-webhook-action-group)
 1. 配置合作伙伴环境。
@@ -30,7 +29,7 @@ ms.locfileid: "100608877"
 
 请按照以下步骤将应用程序注册到 Azure AD：
 
-1. 按照 [向 Microsoft 标识平台注册应用程序](../../active-directory/develop/quickstart-register-app.md)中的步骤操作。
+1. 按照[将应用程序注册到 Microsoft 标识平台](../../active-directory/develop/quickstart-register-app.md)中的步骤进行操作。
 2. 在 Azure AD 中，选择 " **公开应用程序**"。
 3. 选择 "为 **应用程序 ID URI****设置**"。
 

@@ -2,14 +2,13 @@
 title: 如何将常见警报架构与逻辑应用集成
 description: 了解如何创建一个逻辑应用，以利用常见警报架构来处理所有警报。
 ms.topic: conceptual
-ms.subservice: alerts
 ms.date: 05/27/2019
-ms.openlocfilehash: 4824c5ab1826260ee1eb3639712d7138c7c85bfe
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 459ac43a6260e046befbe58d3531bac494903d51
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101738661"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102038333"
 ---
 # <a name="how-to-integrate-the-common-alert-schema-with-logic-apps"></a>如何将常见警报架构与逻辑应用集成
 
