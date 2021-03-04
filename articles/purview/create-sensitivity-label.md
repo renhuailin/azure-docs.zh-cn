@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 01/19/2021
-ms.openlocfilehash: b86414758c3b644725e5aa29ca3b314f489508aa
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: bcfe26bc6f637dd140776df98f8267c4c43684ba
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101693520"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102049522"
 ---
 # <a name="automatically-label-your-data-in-azure-purview"></a>在 Azure 监控范围中自动标记数据
 
@@ -120,7 +120,10 @@ ms.locfileid: "101693520"
 
     :::image type="content" source="media/create-sensitivity-label/create-sensitivity-label-full-small.png" alt-text="在 Microsoft 365 安全性和符合性中心创建敏感度标签" lightbox="media/create-sensitivity-label/create-sensitivity-label-full.png":::
 
-1. 命名标签。 然后，在 " **定义此标签的作用域**" 下，选择 " **文件和电子邮件** 和 **Azure 监控范围资产**"。
+1. 命名标签。 然后，在 " **定义此标签的作用域**" 下：
+
+    - 在所有情况下，选择 " **Azure 监控范围资产**"。
+    - 若要标记文件，还请选择 " **文件" & 电子邮件**。 仅标记数据库资产不需要此选项。 
     
     :::image type="content" source="media/create-sensitivity-label/create-label-scope-small.png" alt-text="在 Microsoft 365 安全性和符合性中心创建标签" lightbox="media/create-sensitivity-label/create-label-scope.png":::
 

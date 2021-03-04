@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/28/2021
 ms.author: allensu
-ms.openlocfilehash: 5c1f52fda2edfa0a03caa72fcd7fa8dc02d0a607
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 5c70c575464d82f714022291406418cdd1ca0f8d
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954658"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102094960"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources"></a>使用 NAT 网关资源设计虚拟网络
 
@@ -224,7 +224,7 @@ NAT 网关优先于子网的出站方案。 无法通过适当的转换来调整
 >NAT 网关资源的区域属性不可变。  使用所需的区域或局部区域首选项重新部署 NAT 网关资源。
 
 >[!NOTE] 
->如果未指定局部区域，则 IP 地址本身不是局部区域冗余的。  如果 IP 地址不是在特定局部区域中创建的，则[标准负载均衡器的前端是局部区域冗余的](../load-balancer/load-balancer-standard-availability-zones.md#frontend)。  此规则不适用于 NAT。  仅支持区域隔离或局部区域隔离。
+>如果未指定局部区域，则 IP 地址本身不是局部区域冗余的。  如果 IP 地址不是在特定局部区域中创建的，则[标准负载均衡器的前端是局部区域冗余的](../load-balancer/load-balancer-standard-availability-zones.md)。  此规则不适用于 NAT。  仅支持区域隔离或局部区域隔离。
 
 ## <a name="performance"></a>性能
 
@@ -323,7 +323,7 @@ NAT 网关资源与 UDP 和 TCP 流的 IP 和 IP 传输标头交互，对应用�
 
 以下计时器用于 SNAT 端口释放：
 
-| Timer | 值 |
+| Timer | Value |
 |---|---|
 | TCP FIN | 60 秒 |
 | TCP RST | 10 秒 |
@@ -350,20 +350,3 @@ NAT 网关资源与 UDP 和 TCP 流的 IP 和 IP 传输标头交互，对应用�
 * 了解[虚拟网络 NAT](nat-overview.md)。
 * 了解 [NAT 网关资源的指标和警报](nat-metrics.md)。
 * 了解如何[排查 NAT 网关资源问题](troubleshoot-nat.md)。
-* 有关验证 NAT 网关的教程
-  - [Azure CLI](tutorial-create-validate-nat-gateway-cli.md)
-  - [PowerShell](tutorial-create-validate-nat-gateway-powershell.md)
-  - [门户](tutorial-create-validate-nat-gateway-portal.md)
-* 有关部署 NAT 网关资源的快速入门
-  - [Azure CLI](./quickstart-create-nat-gateway-cli.md)
-  - [PowerShell](./quickstart-create-nat-gateway-powershell.md)
-  - [门户](./quickstart-create-nat-gateway-portal.md)
-  - [模板](./quickstart-create-nat-gateway-template.md)
-* 了解 NAT 网关资源 API
-  - [REST API](/rest/api/virtualnetwork/natgateways)
-  - [Azure CLI](/cli/azure/network/nat/gateway)
-  - [PowerShell](/powershell/module/az.network/new-aznatgateway)
-* 了解[可用性区域](../availability-zones/az-overview.md)。
-* 了解[标准负载均衡器](../load-balancer/load-balancer-overview.md)。
-* 了解[可用性区域和标准负载均衡器](../load-balancer/load-balancer-standard-availability-zones.md)。
-* [在 UserVoice 中告诉我们接下来想要为虚拟网络 NAT 开发什么功能](https://aka.ms/natuservoice)。

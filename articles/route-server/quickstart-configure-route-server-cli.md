@@ -7,12 +7,12 @@ ms.service: route-server
 ms.topic: quickstart
 ms.date: 03/02/2021
 ms.author: duau
-ms.openlocfilehash: 518baa47fd16d69bf935cd3253f5bebeb413b513
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: c24d88e47569da430153dedfd1ff68a584083775
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101680551"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101695237"
 ---
 # <a name="quickstart-create-and-configure-route-server-using-azure-cli"></a>快速入门：使用 Azure CLI 创建并配置路由服务器 
 
@@ -33,7 +33,23 @@ ms.locfileid: "101680551"
 
 ###  <a name="sign-in-to-your-azure-account-and-select-your-subscription"></a>登录到 Azure 帐户，并选择订阅。 
 
-[!INCLUDE [sign in](../../includes/expressroute-cloud-shell-connect.md)] 
+要开始配置，请登录到 Azure 帐户。 如果使用 Cloud Shell“试用”，则会自动登录。 使用下面的示例来帮助你连接：
+
+```azurecli-interactive
+az login
+```
+
+检查该帐户的订阅。
+
+```azurecli-interactive
+az account list
+```
+
+选择要为其创建 ExpressRoute 线路的订阅。
+
+```azurecli-interactive
+az account set --subscription "<subscription ID>"
+```
 
 ### <a name="create-a-resource-group-and-virtual-network"></a>创建资源组和虚拟网络 
 

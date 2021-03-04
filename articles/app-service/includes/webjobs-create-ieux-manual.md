@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 10/16/2018
 ms.title: include
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 5ef61502d0b2fccc92ca606992e965b45764baa0
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 5687fb99c27b8b2141e0a2a817327cfbb124951a
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101744463"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102109047"
 ---
 ## <a name="create-a-manually-triggered-webjob"></a><a name="CreateOnDemand"></a>创建手动触发的 Web 作业
 
@@ -28,8 +28,8 @@ ms.locfileid: "101744463"
 
     ![显示创建手动触发的 Web 作业所需设置的设置项的屏幕截图。](../media/web-sites-create-web-jobs/addwjtriggered.png)
     
-    | 设置      | 示例值   | 说明  |
-    | ------------ | ----------------- | ------------ |
+    | 设置      | 示例值   | 
+    | ------------ | ----------------- | 
    | <abbr title="在应用服务应用中唯一的名称。 必须以字母或数字开头，并且不能包含和以外的特殊 `-` 字符 `_` 。">名称</abbr> | myTriggeredWebJob | 
     | <abbr title="一个 *.zip* 文件，其中包含可执行文件或脚本文件，以及运行程序或脚本所需的所有支持文件。">文件上传</abbr> | ConsoleApp.zip |
     | <abbr title="类型包括连续、触发。">类型</abbr> | 触发 | 

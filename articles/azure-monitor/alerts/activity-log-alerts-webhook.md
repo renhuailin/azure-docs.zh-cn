@@ -3,13 +3,12 @@ title: 了解活动日志警报中使用的 Webhook 架构
 description: 了解有关活动日志警报激活时发布到 webhook URL 的 JSON 架构。
 ms.topic: conceptual
 ms.date: 03/31/2017
-ms.subservice: alerts
-ms.openlocfilehash: 9f5fbc6b0c7ae77181c8c5afdbaffb4e62dccd12
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 31b9f4b41d741475a031efd4392c7df2fd2260c4
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101701138"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102034330"
 ---
 # <a name="webhooks-for-azure-activity-log-alerts"></a>Azure 活动日志警报的 Webhook
 作为操作组定义的一部分，可以配置 webhook 终结点以接收活动日志警报通知。 通过 webhook 可以将这些通知路由到其他系统，以便进行后续处理或自定义操作。 本文介绍针对 webhook 发出的 HTTP POST 的有效负载的大致形式。

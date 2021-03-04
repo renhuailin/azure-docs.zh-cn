@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: conceptual
 ms.date: 02/18/2021
 ms.custom: template-concept
-ms.openlocfilehash: c7ee2289680bb50fabb8e6eb2a3ea0466bd58afb
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 1d956e33a84b5509c16400c8f5f8e813d116411a
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101662144"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102095742"
 ---
 # <a name="azure-percept-audio-button-and-led-behavior"></a>Azure Percept 音频按钮和 LED 行为
 
@@ -25,7 +25,7 @@ ms.locfileid: "101662144"
 |按钮状态|  行为|
 |------------|----------|
 |静音|  按向麦克风数组静音/取消静音。 按钮事件在按下时触发。|
-|PTT/磅|   按 PTT，绕过关键字发现状态并激活命令侦听状态。 再次按，停止代理的活动对话框并还原为关键字发现状态。|
+|PTT/磅|   按 PTT，绕过关键字发现状态并激活命令侦听状态。 再次按，停止代理的活动对话框并还原为关键字发现状态。 按钮事件在按下时触发。 仅当在代理正在通话时（而不是在代理正在侦听或使用时）按下按钮时，才可以使用磅。|
 
 ## <a name="led-behavior"></a>LED 行为
 
@@ -35,7 +35,7 @@ ms.locfileid: "101662144"
 |---|------------|----------------| 
 |L02|   1x 白色，静态打开 |开机 |
 |L02|   1x 白色，0.5 Hz 闪烁|  正在进行身份验证 |
-|L01 & L02 & L03|   3倍速，静态开启|     已检测关键字|
+|L01 & L02 & L03|   3倍速，静态开启|     正在等待关键字|
 |L01 & L02 & L03|   LED 阵列闪烁，20fps | 正在侦听或讲述|
 |L01 & L02 & L03|   LED 阵列赛车，20fps|    想法|
 |L01 & L02 & L03|   3倍速，静态开启 | 静音|

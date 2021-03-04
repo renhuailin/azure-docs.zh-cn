@@ -8,12 +8,12 @@ ms.date: 4/24/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: devx-track-js
-ms.openlocfilehash: e0c0d18dbb3596733d02430554fd40ec16180c64
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: e7239bfdca1dc464048c0db08488029b0868deb5
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99980654"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102049791"
 ---
 # <a name="create-custom-sdks-for-azure-digital-twins-using-autorest"></a>使用 AutoRest 创建 Azure 数字孪生的自定义 Sdk
 
@@ -44,10 +44,10 @@ npm install -g autorest@2.0.4413
 3. 在以下命令中运行 AutoRest。 将 `<language>` 占位符替换为你选择的语言： `python` 、 `java` 、 `go` 等。  (可以在 [AUTOREST 自述文件](https://github.com/Azure/autorest)中找到选项的完整列表。 ) 
 
 ```cmd/sh
-autorest --input-file=digitaltwins.json --<language> --output-folder=ADTApi --add-credentials --azure-arm --namespace=ADTApi
+autorest --input-file=digitaltwins.json --<language> --output-folder=DigitalTwinsApi --add-credentials --azure-arm --namespace=DigitalTwinsApi
 ```
 
-因此，你将在工作目录中看到一个名为 *ADTApi* 的新文件夹。 生成的 SDK 文件将具有命名空间 *ADTApi*。 您将继续使用该命名空间，这篇文章中的其他用法示例。
+因此，你将在工作目录中看到一个名为 *DigitalTwinsApi* 的新文件夹。 生成的 SDK 文件将具有命名空间 *DigitalTwinsApi*。 您将继续使用该命名空间，这篇文章中的其他用法示例。
 
 AutoRest 支持多种语言代码生成器。
 
@@ -57,11 +57,11 @@ AutoRest 支持多种语言代码生成器。
 
 本部分提供有关如何将 SDK 构建为类库的说明，它是其自己的项目，可以包含在其他项目中。 这些步骤依赖于 **Visual Studio** (你可以从 [此处](https://visualstudio.microsoft.com/downloads/)) 安装最新版本。
 
-步骤如下：
+下面是相关步骤：
 
 1. 为类库创建新的 Visual Studio 解决方案
-2. 使用 *ADTApi* 作为项目名称
-3. 在 "解决方案资源管理器" 中，右键选择生成的解决方案的 *ADTApi* 项目，然后选择 "*添加 > 现有项 ...* "
+2. 使用 *DigitalTwinsApi* 作为项目名称
+3. 在 "解决方案资源管理器" 中，右键选择生成的解决方案的 *DigitalTwinsApi* 项目，然后选择 "*添加 > 现有项 ...* "
 4. 找到生成 SDK 的文件夹，然后选择根级别的文件
 5. 按 "确定"
 6. 将文件夹添加到项目 (在解决方案资源管理器中右键选择项目，然后选择 " *添加 > 新文件夹* ") 

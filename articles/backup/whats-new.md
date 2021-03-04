@@ -3,12 +3,12 @@ title: Azure 备份中的新增功能
 description: 了解 Azure 备份中的新增功能。
 ms.topic: conceptual
 ms.date: 11/11/2020
-ms.openlocfilehash: dd9546002e63072ce9631f5b8e7ac09ab0f5352b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 48c8c189d956c4003d24511a54975fe86a982832
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101728172"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102095708"
 ---
 # <a name="whats-new-in-azure-backup"></a>Azure 备份中的新增功能
 
@@ -18,6 +18,9 @@ Azure 备份不断改进和发布新功能，增强了 Azure 中数据的保护�
 
 ## <a name="updates-summary"></a>更新摘要
 
+- 2021 年 3 月
+  - [备份中心现已正式发布](#backup-center-is-now-generally-available)
+  - [预览版中的 Azure 备份 (存档层支持) ](#archive-tier-support-for-azure-backup-in-preview)
 - 2021 年 2 月
   - [预览版中的 Azure Blob (备份) ](#backup-for-azure-blobs-in-preview)
 - 2021 年 1 月
@@ -36,6 +39,18 @@ Azure 备份不断改进和发布新功能，增强了 Azure 中数据的保护�
   - [RHEL Azure 虚拟机中的备份 SAP HANA (预览版) ](#backup-sap-hana-in-rhel-azure-virtual-machines-in-preview)
   - [区域冗余存储 (ZRS) 用于备份数据 (预览) ](#zone-redundant-storage-zrs-for-backup-data-in-preview)
   - [Azure Vm 中的 SQL Server 和 SAP HANA 工作负荷的软删除](#soft-delete-for-sql-server-and-sap-hana-workloads)
+
+## <a name="backup-center-is-now-generally-available"></a>备份中心现已正式发布
+
+备份中心通过使你能够从一个中央控制台发现、管理、监视、操作和优化备份管理，从而简化了数据保护管理。
+
+有关详细信息，请参阅 [备份中心概述](backup-center-overview.md)。
+
+## <a name="archive-tier-support-for-azure-backup-in-preview"></a>预览版中的 Azure 备份 (存档层支持) 
+
+Azure 备份现在允许通过 azure 虚拟机中的 Azure 虚拟机和 SQL Server 的存档层可用性，降低长期保留备份的成本。
+
+有关详细信息，请参阅 [存档层支持 (预览) ](archive-tier-support.md)。
 
 ## <a name="backup-for-azure-blobs-in-preview"></a>预览版中的 Azure Blob (备份) 
 

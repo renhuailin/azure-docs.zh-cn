@@ -1,14 +1,14 @@
 ---
 title: 将 Azure Policy 大规模部署到委托订阅
 description: 了解 Azure Lighthouse 如何允许跨多个租户部署策略定义和策略分配。
-ms.date: 11/09/2020
+ms.date: 03/02/2021
 ms.topic: how-to
-ms.openlocfilehash: 5af938c61ad3e42e36360a15c6011b54fa1e823d
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 48354c3cca7574b1d5acf71865218564591bc23e
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94412062"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102049774"
 ---
 # <a name="deploy-azure-policy-to-delegated-subscriptions-at-scale"></a>将 Azure Policy 大规模部署到委托订阅
 
@@ -51,6 +51,9 @@ foreach ($ManagedSub in $ManagedSubscriptions)
 }
 ```
 
+> [!NOTE]
+> 虽然可以跨多个租户部署策略，但目前无法查看这些租户中不符合资源的 [符合性详细信息](../../governance/policy/how-to/determine-non-compliance.md#compliance-details) 。
+
 ## <a name="validate-the-policy-deployment"></a>验证策略部署
 
 部署 Azure 资源管理器模板之后，可以通过尝试在某个委派的订阅中创建 **EnableHttpsTrafficOnly** 设置为 **false** 的存储帐户来确认策略定义已成功应用。 由于策略分配，你应该无法创建此存储帐户。  
@@ -90,9 +93,6 @@ foreach ($ManagedSub in $ManagedSubscriptions)
     }
 }
 ```
-
-> [!NOTE]
-> 虽然可以跨多个租户部署策略，但目前无法查看这些租户中不符合资源的 [符合性详细信息](../../governance/policy/how-to/determine-non-compliance.md#compliance-details) 。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,17 +1,16 @@
 ---
 title: 使用 Azure 门户将 Azure 活动日志发送到 Log Analytics 工作区
 description: 使用 Azure 门户创建 Log Analytics 工作区和诊断设置，从而将活动日志发送到 Azure Monitor 日志。
-ms.subservice: logs
 ms.topic: quickstart
 author: bwren
 ms.author: bwren
 ms.date: 06/25/2020
-ms.openlocfilehash: 1316512badd69b545e39a47ea5da3ca6a0902482
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: fec1f4f3ae13f6c9ed5fdd7ffbcd143e5c5e5f52
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101734275"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102033242"
 ---
 # <a name="send-azure-activity-log-to-log-analytics-workspace-using-azure-portal"></a>使用 Azure 门户将 Azure 活动日志发送到 Log Analytics 工作区
 活动日志是 Azure 中的一种平台日志，可用于深入了解订阅级别事件。 这包括何时修改了资源或何时启动了虚拟机等信息。 可以在 Azure 门户中查看活动日志，或在 PowerShell 和 CLI 中检索条目。 本快速入门演示如何使用 Azure 门户创建 Log Analytics 工作区和诊断设置，从而将活动日志发送到 Azure Monitor 日志，从中可以使用[日志查询](../logs/log-query-overview.md)对活动日志进行分析，并启用其他功能，例如[日志警报](../alerts/alerts-log-query.md)和[工作簿](../visualize/workbooks-overview.md)。 

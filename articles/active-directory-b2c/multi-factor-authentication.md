@@ -12,12 +12,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: d7bc92af31eb179155fd473356c741f365a07a35
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: b7b7f1c5fb0a7991707a26b4a7f54fb3ffaf7bab
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99525138"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102033514"
 ---
 # <a name="enable-multi-factor-authentication-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中启用多重身份验证
 
@@ -43,7 +43,7 @@ Azure Active Directory B2C (Azure AD B2C) 直接集成了 [Azure AD 多重身份
 1. 在 " **多重身份验证** " 部分中，选择所需的 **MFA 方法**，然后在 " **MFA 强制** " 下选择 " **始终打开**" 或 " **建议的条件 (")**。
    > [!NOTE]
    >
-   > - 如果选择 " **条件 (建议)**"，则还需要 [添加一个条件性访问策略](conditional-access-identity-protection-setup.md#add-a-conditional-access-policy) ，并指定要将策略应用到的应用。
+   > - 如果选择 " **条件 (建议)**"，则还需要 [添加对用户流的条件性访问](conditional-access-user-flow.md)，并指定要应用策略的应用。
    > - 默认情况下，为注册用户流禁用多重身份验证 (MFA) 。 你可以通过电话注册在用户流中启用 MFA，但由于使用电话号码作为主标识符，因此第二个身份验证因素只提供电子邮件一次性密码。
 
 1. 选择“保存”。 现在已为此用户流启用 MFA。

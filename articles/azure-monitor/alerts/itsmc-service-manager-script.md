@@ -1,17 +1,16 @@
 ---
 title: 为服务管理连接器创建 web 应用
 description: 使用自动化脚本创建要与 Azure 中的 IT 服务管理连接器连接的 Service Manager Web 应用，集中监视和管理 ITSM 工作项。
-ms.subservice: logs
 ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 01/23/2018
-ms.openlocfilehash: 3d9360b167a246e257d8c0b2ec4cb88f1ae39dcd
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 16b48ac213168eaa58de5b0603025b2d48bb5ed5
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100606144"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102041648"
 ---
 # <a name="create-service-manager-web-app-using-the-automated-script"></a>使用自动化脚本创建 Service Manager Web 应用
 

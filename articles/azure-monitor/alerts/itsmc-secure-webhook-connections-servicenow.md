@@ -1,17 +1,16 @@
 ---
 title: Azure Monitor-配置与 ServiceNow 的 IT 服务管理连接器安全导出
 description: 本文介绍如何在 Azure Monitor 中通过 ServiceNow 将 ITSM 产品/服务连接到安全导出。
-ms.subservice: logs
 ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 12/31/2020
-ms.openlocfilehash: 02b167219a4f1604d340d72f9dc47e67919c2542
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: f296037a56b25255c7f7c7d48a8e8b7d4889052f
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101714130"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102041631"
 ---
 # <a name="connect-servicenow-to-azure-monitor"></a>将 ServiceNow 连接到 Azure Monitor
 

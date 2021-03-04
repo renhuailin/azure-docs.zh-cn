@@ -7,12 +7,12 @@ ms.reviewer: maghan
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: f0d14760ce3e6403c9b6fe8cc7a2100aeb3f39a6
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: bef8706d9dcef966397dcddc64ffbd567a8431f6
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100372903"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102034398"
 ---
 # <a name="azure-data-factory---naming-rules"></a>Azure 数据工厂 - 命名规则
 
@@ -27,6 +27,8 @@ ms.locfileid: "100372903"
 | Integration Runtime |在数据工厂中唯一。 名称不区分大小写。 |<ul><li>集成运行时名称只能包含字母、数字和短划线 (-) 字符。</li><li>第一个字符和最后一个字符必须是字母或数字。 每个短划线 (-) 字符的前后必须紧接字母或数字。</li><li>集成运行时名称中不允许使用连续短划线。 </li></ul> |
 | 数据流转换 | 在数据流中是唯一的。 名称不区分大小写 | <ul><li>数据流转换名称只能包含字母和数字</li><li>第一个字符必须是字母。 </li></ul> |
 | 资源组 |在 Microsoft Azure 内唯一。 名称不区分大小写。 | 有关详细信息，请参阅 [Azure 命名规则和限制](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#resource-naming)。 |
+| 管道参数 & 变量  |在管道中是唯一的。 名称不区分大小写。 | <ul><li>由于向后兼容性原因，对参数名称和变量名称进行的验证检查限制为唯一。</li><li>当使用参数或变量引用实体名称（例如，链接服务）时，将应用实体命名规则。</li><li>一种很好的做法是遵循数据流转换命名规则来命名管道参数和变量。</li></ul> |
 
 ## <a name="next-steps"></a>后续步骤
+
 了解如何按照[快速入门：创建数据工厂](quickstart-create-data-factory-powershell.md)一文中的分步说明创建数据工厂。 

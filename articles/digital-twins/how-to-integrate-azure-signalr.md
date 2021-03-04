@@ -7,12 +7,12 @@ ms.author: aymarqui
 ms.date: 02/12/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 8828b2dc48a8865e43a176757dc973a5cf85b784
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: a39b91304c4123b216a0b508dcea0547cae5ab43
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101702962"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102041495"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-signalr-service"></a>将 Azure 数字孪生与 Azure SignalR 服务集成
 
@@ -51,7 +51,7 @@ ms.locfileid: "101702962"
 
     这会将示例存储库的副本下载到计算机， **digital-twins-samples-master.zip**。 解压缩文件夹。
 * [**SignalR integration web 应用示例**](/samples/azure-samples/digitaltwins-signalr-webapp-sample/digital-twins-samples/)：这是一个示例响应 web 应用，它将使用 Azure SignalR 服务中的 Azure 数字孪生遥测数据。
-    -  导航到示例链接并按 " *下载 ZIP* " 按钮，将示例副本下载到计算机，如 _**Azure_Digital_Twins_SignalR_integration_web_app_sample.zip**_。 解压缩文件夹。
+    -  导航到示例链接，并使用相同的下载过程将示例副本下载到计算机，如 _**digitaltwins-signalr-webapp-sample-main.zip**_。 解压缩文件夹。
 
 [!INCLUDE [Create instance](../azure-signalr/includes/signalr-quickstart-create-instance.md)]
 
@@ -139,7 +139,7 @@ ms.locfileid: "101702962"
 
     :::image type="content" source="media/how-to-integrate-azure-signalr/get-function-url.png" alt-text="&quot;Negotiate&quot; 函数的 Azure 门户视图。&quot;获取函数 URL&quot; 按钮将突出显示，并从开头到 &quot;/api&quot; 的 URL 部分":::
 
-1. 使用 Visual Studio 或所选的任何代码编辑器，打开在 [*下载示例应用程序*](#download-the-sample-applications)部分中下载的解压缩 _**Azure_Digital_Twins_SignalR_integration_web_app_sample**_ 文件夹。
+1. 使用 Visual Studio 或所选的任何代码编辑器，打开在 [*下载示例应用程序*](#download-the-sample-applications)部分中下载的已解压缩 _**digitaltwins-signalr-webapp-main**_ 文件夹。
 
 1. 打开 *src/App.js* 文件，并将中的函数 URL 替换 `HubConnectionBuilder` 为在上一步中保存的 **negotiate** 函数的 HTTP 终结点 url：
 
@@ -148,7 +148,7 @@ ms.locfileid: "101702962"
             .withUrl('<Function URL>')
             .build();
     ```
-1. 在 Visual Studio 的 " *开发人员命令提示* " 或计算机上的任何命令窗口中，导航到 *Azure_Digital_Twins_SignalR_integration_web_app_sample \src* "文件夹。 运行以下命令以安装依赖节点包：
+1. 在 Visual Studio 的 *开发人员命令提示* 或计算机上的任何命令窗口中，导航到 *digitaltwins-signalr-webapp-sample-main\src* 文件夹。 运行以下命令以安装依赖节点包：
 
     ```cmd
     npm install
@@ -175,7 +175,7 @@ ms.locfileid: "101702962"
 
 ### <a name="see-the-results"></a>查看结果
 
-若要查看操作结果，请启动 **SignalR integration web 应用示例**。 可以通过运行以下命令，从 *Azure_Digital_Twins_SignalR_integration_web_app_sample \src* 位置的任何控制台窗口执行此操作：
+若要查看操作结果，请启动 **SignalR integration web 应用示例**。 可以通过运行以下命令，从 *digitaltwins-signalr-webapp-sample-main\src* 位置处的任何控制台窗口执行此操作：
 
 ```cmd
 npm start
@@ -203,7 +203,7 @@ npm start
 az group delete --name <your-resource-group>
 ```
 
-最后，删除已下载到本地计算机的项目示例文件夹 (*digital-twins-samples-master.zip* 并 *Azure_Digital_Twins_SignalR_integration_web_app_sample.zip*) 。
+最后，删除已下载到本地计算机的项目示例文件夹 (*digital-twins-samples-master.zip*、 *digitaltwins-signalr-webapp-sample-main.zip*，以及它们的解压缩对应项) 。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: b609d8389504eb10dd35a5ab74b0c198d3da57a6
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: f69fe97c33a17ade39f67078d5b035dac4d0bfaf
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99090486"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102034160"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure 标识管理和访问控制安全最佳实践
 
@@ -102,7 +102,7 @@ ms.locfileid: "99090486"
 > 你需要选择关键帐户将驻留在哪些目录中，以及所使用的管理工作站是由新的云服务托管，还是由现有进程托管。 使用现有的管理和标识预配流程可以降低一些风险，但也可能会造成攻击者入侵本地帐户并转向云的风险。 不妨对不同的角色（例如，IT 管理员与业务部门管理员）使用不同的策略。 您有两种选择： 第一种选择是，创建不与本地 Active Directory 实例同步的 Azure AD 帐户。 将管理工作站加入到 Azure AD，这样可以使用 Microsoft Intune 进行管理和修补。 第二种选择是，通过同步到本地 Active Directory 实例来使用现有的管理员帐户。 使用 Active Directory 域中的现有工作站来实现管理和安全性。
 
 ## <a name="manage-connected-tenants"></a>管理已连接的租户
-你的安全组织需要能够查看订阅来评估风险，并确定是否遵循了组织的策略和任何法规要求。 你应确保安全组织能够查看所有（通过 [Azure ExpressRoute](../../expressroute/expressroute-introduction.md) 或[站点到站点 VPN](../../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)）连接到生产环境和网络的订阅。 Azure AD 中的 [全局管理员](../../active-directory/roles/permissions-reference.md#global-administrator-permissions) 可以将其访问权限提升到 " [用户访问管理员](../../role-based-access-control/built-in-roles.md#user-access-administrator) " 角色，并查看连接到你的环境的所有订阅和管理组。
+你的安全组织需要能够查看订阅来评估风险，并确定是否遵循了组织的策略和任何法规要求。 你应确保安全组织能够查看所有（通过 [Azure ExpressRoute](../../expressroute/expressroute-introduction.md) 或[站点到站点 VPN](../../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)）连接到生产环境和网络的订阅。 Azure AD 中的 [全局管理员](../../active-directory/roles/permissions-reference.md#global-administrator) 可以将其访问权限提升到 " [用户访问管理员](../../role-based-access-control/built-in-roles.md#user-access-administrator) " 角色，并查看连接到你的环境的所有订阅和管理组。
 
 请参阅[提升访问权限以管理所有 Azure 订阅和管理组](../../role-based-access-control/elevate-access-global-admin.md)，以确保你和你的安全组可以查看所有连接到环境的订阅或管理组。 你应该在评估风险后撤消此提升的访问权限。
 
@@ -170,14 +170,14 @@ ms.locfileid: "99090486"
 此方法可用于所有许可层，但不能与现有的条件访问策略混合使用。 你可以在 [Azure AD 安全默认值](../../active-directory/fundamentals/concept-fundamentals-security-defaults.md)中找到更多信息
 
 **选项 2**：[通过更改用户状态启用多重身份验证](../../active-directory/authentication/howto-mfa-userstates.md)。   
-**优势**：这是要求进行双重验证的传统方法。 它适用于 [云中的 Azure AD 多重身份验证和 Azure 多重身份验证服务器](../../active-directory/authentication/concept-mfa-howitworks.md)。 使用此方法要求用户在每次登录时都执行双重验证，并且会替代条件访问策略。
+**优势**：这是要求进行双重验证的传统方法。 它适用于[云中的 Azure AD 多重身份验证和 Azure 多重身份验证服务器](../../active-directory/authentication/concept-mfa-howitworks.md)。 使用此方法要求用户在每次登录时都执行双重验证，并且会替代条件访问策略。
 
-若要确定需要启用多因素身份验证的位置，请参阅 [哪个版本的 AZURE AD MFA 适用于组织？](../../active-directory/authentication/concept-mfa-howitworks.md)。
+若要确定需要在哪里启用多重身份验证，请参阅 [Azure AD MFA 的哪个版本适合我的组织？](../../active-directory/authentication/concept-mfa-howitworks.md)。
 
 **选项 3**：[使用条件访问策略启用多重身份验证](../../active-directory/authentication/howto-mfa-getstarted.md)。
 **优势**：借助此选项，可以使用 [条件访问](../../active-directory/conditional-access/concept-conditional-access-policy-common.md)在特定条件下提示进行双重验证。 特定条件可以是用户从不同位置、不受信任的设备或你认为存在风险的应用程序登录。 定义要求双重验证的特定条件可以避免不断提示用户这种令人不快的用户体验。
 
-这是为用户启用双重验证最灵活的方式。 启用条件性访问策略仅适用于云中 Azure AD 多重身份验证，并且是 Azure AD 的高级功能。 可以在 [部署基于云的 Azure AD 多重身份验证](../../active-directory/authentication/howto-mfa-getstarted.md)中找到有关此方法的详细信息。
+这是为用户启用双重验证最灵活的方式。 启用条件访问策略的功能只适用于云中的 Azure AD 多重身份验证，是 Azure AD 的一项高级功能。 有关此方法的详细信息，可参阅[部署基于云的 Azure AD 多重身份验证](../../active-directory/authentication/howto-mfa-getstarted.md)。
 
 选项 4：通过评估[基于风险的条件访问策略](../../active-directory/conditional-access/howto-conditional-access-policy-risk.md)，使用条件访问策略启用多重身份验证。   
 **优势**：此选项使你能够：
@@ -240,7 +240,7 @@ ms.locfileid: "99090486"
 **详细信息**：从关键管理员角色中删除所有使用者帐户（例如，hotmail.com、live.com 和 outlook.com 等 Microsoft 帐户）。
 
 **最佳做法**：确保所有关键管理员角色都有一个单独的帐户来执行管理任务，以免发生网络钓鱼和其他入侵管理权限的攻击。
-**详细信息**：创建一个单独的管理员帐户，向其分配执行管理任务所需的权限。 阻止使用这些管理帐户进行 Microsoft 365 电子邮件或任意 web 浏览等日常生产力工具。
+**详细信息**：创建一个单独的管理员帐户，向其分配执行管理任务所需的权限。 禁止将这些管理帐户用于日常效率提升工具（如 Microsoft 365 电子邮件）或任意 Web 浏览。
 
 **最佳做法**：对特许权限高的角色中的帐户进行标识和分类。   
 **详细信息**：启用 Azure AD Privileged Identity Management 后，请查看角色为全局管理员、特权角色管理员和其他高特权角色的用户。 请删除在这些角色中不再需要的任何帐户，并对剩余的分配给管理员角色的帐户分类：
@@ -269,7 +269,7 @@ ms.locfileid: "99090486"
 **最佳做法**：要求所有关键管理员帐户都是无密码的（首选），或要求进行多重身份验证。
 **详细信息**：使用 [Microsoft Authenticator 应用](../../active-directory/authentication/howto-authentication-passwordless-phone.md)登录任何 Azure AD 帐户，而不需要使用密码。 与 [Windows Hello for Business](/windows/security/identity-protection/hello-for-business/hello-identity-verification) 一样，Microsoft Authenticator 使用基于密钥的身份验证来启用与设备绑定的用户凭据，并使用生物识别身份验证或 PIN。
 
-对于永久分配给一个或多个 Azure AD 管理员角色的单个用户，要求在登录时进行 Azure AD 多重身份验证：全局管理员、特权角色管理员、Exchange Online 管理员和 SharePoint Online 管理员。 [为管理员帐户启用多重身份验证](../../active-directory/authentication/howto-mfa-userstates.md)，并确保管理员帐户用户已注册。
+对于为其永久分配了一个或多个 Azure AD 管理员角色的所有个人用户，要求其在登录时进行 Azure AD 多重身份验证：全局管理员、特权角色管理员、Exchange Online 管理员和 SharePoint Online 管理员。 [为管理员帐户启用多重身份验证](../../active-directory/authentication/howto-mfa-userstates.md)，并确保管理员帐户用户已注册。
 
 **最佳做法**：对于关键管理员帐户，需要有不允许执行生产任务（例如，浏览和电子邮件）的管理工作站。 这会保护你的管理员帐户免受使用浏览和电子邮件的攻击途径的侵害，并大大降低发生重大事件的风险。
 **详细信息**：使用管理工作站。 选择工作站安全级别：
@@ -281,7 +281,7 @@ ms.locfileid: "99090486"
 **详细信息**：准备一个流程，在员工离开组织时禁用或删除管理员帐户。
 
 **最佳做法**：使用最新的攻击技术定期测试管理员帐户。
-**详细信息**：使用 Microsoft 365 攻击模拟器或第三方产品/服务在你的组织中运行现实的攻击方案。 这样有助于在真正攻击发生之前发现易受攻击的用户。
+**详细信息**：使用 Microsoft 365 攻击模拟器或第三方产品/服务在组织中运行逼真的攻击方案。 这样有助于在真正攻击发生之前发现易受攻击的用户。
 
 **最佳做法**：采取措施来缓解最常用的攻击技术的冲击。  
 **详细信息**：[确定管理角色中那些需要切换到工作或学校帐户的 Microsoft 帐户](../../active-directory/roles/security-planning.md#identify-microsoft-accounts-in-administrative-roles-that-need-to-be-switched-to-work-or-school-accounts)  
@@ -296,7 +296,7 @@ ms.locfileid: "99090486"
 
 [获取 Microsoft 365 安全分数（如果使用 Microsoft 365）](../../active-directory/roles/security-planning.md#obtain-your-microsoft-365-secure-score-if-using-microsoft-365)  
 
-[查看 Microsoft 365 安全指导 (如果使用 Microsoft 365) ](../../active-directory/roles/security-planning.md#review-the-microsoft-365-security-and-compliance-guidance-if-using-microsoft-365)  
+[查看 Microsoft 365 安全指南（如果使用 Microsoft 365）](../../active-directory/roles/security-planning.md#review-the-microsoft-365-security-and-compliance-guidance-if-using-microsoft-365)  
 
 [配置 Microsoft 365 活动监视（如果使用 Microsoft 365）](../../active-directory/roles/security-planning.md#configure-microsoft-365-activity-monitoring-if-using-microsoft-365)  
 

@@ -6,12 +6,12 @@ ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 04/16/2020
-ms.openlocfilehash: f31211c4448ad5bbe8d839b2ec86b0b61970f568
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 6778c8e5e1e4fa83d34141fd13ba21d483ab76e9
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96752186"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102041342"
 ---
 # <a name="set-up-an-appliance-in-azure-government"></a>在 Azure 政府版中设置设备 
 
@@ -22,7 +22,7 @@ ms.locfileid: "96752186"
 > Azure 政府版不支持使用模板 (为 VMware Vm 和 Hyper-v Vm 部署设备) 。
 
 
-## <a name="prerequisites"></a>必备知识
+## <a name="prerequisites"></a>先决条件
 
 此脚本在现有物理计算机或 VM 上设置 Azure Migrate 设备。
 
@@ -196,6 +196,6 @@ ms.locfileid: "96752186"
 
 部署设备后，需首次配置该设备，并将其注册到 Azure Migrate 项目。
 
-- 为 [VMware](how-to-set-up-appliance-vmware.md#configure-the-appliance)设置设备。
+- 为 [VMware](how-to-set-up-appliance-vmware.md#4-configure-the-appliance)设置设备。
 - 为 [hyper-v](how-to-set-up-appliance-hyper-v.md#configure-the-appliance)设置设备。
 - 为 [物理服务器](how-to-set-up-appliance-physical.md)设置设备。

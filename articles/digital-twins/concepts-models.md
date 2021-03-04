@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 9abf389eb7f8862440f860c53a0dbd8b10315c67
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: d33634c08b85ad633fdad3f709b2b2182571d7de
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100558153"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102034755"
 ---
 # <a name="understand-twin-models-in-azure-digital-twins"></a>了解 Azure 数字孪生中的孪生模型
 
@@ -65,7 +65,7 @@ Azure 数字孪生模型的属性和遥测的区别如下：
 
 因此，在 Azure 数字孪生中设计模型时，可能会在大多数情况下使用 **属性** 来为孪生建模。 这使你可以使用后备存储和读取和查询数据字段的功能。
 
-遥测和属性通常协同工作以处理来自设备的数据入口。 由于所有入口都是通过 [api](how-to-use-apis-sdks.md)进行的，因此你通常会使用入口函数从设备读取遥测数据或属性事件，并在 ADT 中将属性设置为 "响应"。 
+遥测和属性通常协同工作以处理来自设备的数据入口。 由于所有入口都是通过 [api](how-to-use-apis-sdks.md)进行的，因此你通常会使用入口函数从设备读取遥测数据或属性事件，并在 Azure 数字孪生中设置属性以响应。 
 
 还可以从 Azure 数字孪生 API 发布遥测事件。 与其他遥测一样，这是一个生存期较短的事件，需要侦听器才能处理。
 
@@ -154,7 +154,7 @@ _**用于将模型上载到 Azure 数字孪生**_
 
 _**用于可视化模型**_
 
-将模型上传到 Azure 数字孪生实例后，即可使用 [**ADT 模型可视化工具**](https://github.com/Azure/opendigitaltwins-building-tools/tree/master/AdtModelVisualizer)查看 Azure 数字孪生实例中的模型，包括任何继承和模型关系。 此示例当前处于草稿状态。 我们鼓励数字孪生开发社区扩展并参与该示例。 
+将模型上载到 Azure 数字孪生实例后，可以使用 [**Azure 数字孪生模型可视化工具**](https://github.com/Azure/opendigitaltwins-building-tools/tree/master/AdtModelVisualizer)查看 Azure 数字孪生实例中的模型，包括任何继承和模型关系。 此示例当前处于草稿状态。 我们鼓励数字孪生开发社区扩展并参与该示例。 
 
 ## <a name="next-steps"></a>后续步骤
 

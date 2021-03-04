@@ -12,12 +12,12 @@ ms.date: 03/02/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: d7f597010f86e0f962f250dcd87d6c78f401a73d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 8e4926fb228837c3ec0573af8ee5b15da5fd7431
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101688978"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102033873"
 ---
 # <a name="set-up-a-password-reset-flow-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中设置密码重置流
 
@@ -206,7 +206,7 @@ ms.locfileid: "101688978"
 
 ### <a name="set-the-user-journey-to-be-executed"></a>设置要执行的用户旅程
 
-修改或创建用户旅程后，请在 " **信赖方** " 部分指定将为此自定义策略执行 Azure AD B2C 的旅程。 在 [RelyingParty](../articles/active-directory-b2c/relyingparty.md) 元素中，找到 **DefaultUserJourney** 元素。 更新  **DefaultUserJourney ReferenceId** ，使其与添加 **ClaimsProviderSelections** 的用户旅程的 ID 匹配。
+修改或创建用户旅程后，请在 " **信赖方** " 部分指定将为此自定义策略执行 Azure AD B2C 的旅程。 在 [RelyingParty](relyingparty.md) 元素中，找到 **DefaultUserJourney** 元素。 更新  **DefaultUserJourney ReferenceId** ，使其与添加 **ClaimsProviderSelections** 的用户旅程的 ID 匹配。
 
 ```xml
 <RelyingParty>

@@ -6,12 +6,12 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 810ea58c5d88dec53463b9a2b04750169c70e137
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: f3331504540e8c23c3a83fe245bae27ca6c49385
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97704021"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102041274"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>排查 Azure Migrate 设备和发现问题
 
@@ -167,6 +167,19 @@ ms.locfileid: "97704021"
 
 如果删除 Vm 并且它们仍显示在门户中，请等待30分钟。 如果它们仍出现，请按如上所述进行刷新。
 
+## <a name="discovered-applications-and-sql-server-instances-and-databases-not-in-portal"></a>已发现的应用程序和 SQL Server 不在门户中的实例和数据库
+
+在设备上启动发现后，可能需要长达24小时才能开始在门户中显示清单数据。
+
+如果未在设备配置管理器上提供 Windows 身份验证或 SQL Server 身份验证凭据，请添加凭据，以便设备可以使用这些凭据连接到相应 SQL Server 实例。
+
+连接后，设备会收集 SQL Server 实例和数据库的配置和性能数据。 SQL Server 配置数据每24小时更新一次，每隔30秒捕获一次性能数据。 因此，对 SQL Server 实例的属性和数据库状态、兼容级别等数据库的属性进行任何更改可能需要长达24小时的时间才能在门户中更新。
+
+## <a name="sql-server-instance-is-showing-up-in-not-connected-state-on-portal"></a>门户上的 "未连接" 状态中显示了 SQL Server 实例
+若要查看 SQL Server 实例和数据库的发现期间遇到的问题，请单击项目中 "发现的服务器" 页上的 "连接状态" 列中的 "未连接" 状态。
+
+对于包含未完全发现或处于未连接状态的 SQL 实例的服务器，在其上创建评估可能会导致将就绪标记为 "unknown"。
+
 ## <a name="i-do-not-see-performance-data-for-some-network-adapters-on-my-physical-servers"></a>我看不到物理服务器上的某些网络适配器的性能数据
 
 如果物理服务器启用了 Hyper-v 虚拟化，则会发生这种情况。 由于产品缺口，会在发现的虚拟网络适配器上捕获网络吞吐量。
@@ -199,9 +212,9 @@ Azure Migrate 使用 Azure Migrate：服务器评估支持应用程序、角色�
 
 | **错误** | **原因** | **操作** |
 |--|--|--|
-| 9000：无法检测到 VMware 工具状态。 | VMWare 工具可能未安装或已损坏。 | 确保已在 VM 上安装并运行 VMware 工具。 |
-| 9001：未安装 VMware 工具。 | VMWare 工具可能未安装或已损坏。 | 确保已在 VM 上安装并运行 VMware 工具。 |
-| 9002： VMware 工具未运行。 | VMWare 工具可能未安装或已损坏。 | 确保已在 VM 上安装并运行 VMware 工具。 |
+| 9000：无法检测到 VMware 工具状态。 | VMware 工具可能未安装或已损坏。 | 确保已在 VM 上安装并运行 VMware 工具。 |
+| 9001：未安装 VMware 工具。 | VMware 工具可能未安装或已损坏。 | 确保已在 VM 上安装并运行 VMware 工具。 |
+| 9002： VMware 工具未运行。 | VMware 工具可能未安装或已损坏。 | 确保已在 VM 上安装并运行 VMware 工具。 |
 | 9003：来宾 VM 发现不支持操作系统类型。 | 服务器上运行的操作系统既不是 Windows 也不是 Linux。 | 受支持的操作系统类型仅为 Windows 和 Linux。 如果服务器确实为 Windows 或 Linux，请检查 vCenter Server 中指定的操作系统类型。 |
 | 9004： VM 未在运行。 | VM 已关机。 | 确保 VM 已通电。 |
 | 9005：来宾 VM 发现不支持操作系统类型。 | 来宾 VM 发现不支持的操作系统类型。 | 受支持的操作系统类型仅为 Windows 和 Linux。 |
@@ -215,12 +228,12 @@ Azure Migrate 使用 Azure Migrate：服务器评估支持应用程序、角色�
 | 9013：为每个登录名创建了一个新的临时配置文件。 | 为 VMware VM 的每个登录名都创建一个新的临时配置文件。 | 若要解决此问题，请联系 Microsoft 支持部门。 |
 | 9014：无法从来宾 VM 文件系统中检索元数据。 | 无连接到 ESXi 主机 | 确保设备可以连接到运行 VM 的 ESXi 主机上的端口443 |
 | 9015： vCenter 用户帐户上未启用来宾操作角色 | VCenter 用户帐户上未启用来宾操作角色。 | 确保在 vCenter 用户帐户上启用了来宾操作角色。 |
-| 9016：无法发现，因为来宾操作代理已过时。 | Vmware 工具未正确安装或不是最新版本。 | 请确保 VMware 工具安装正确并处于最新状态。 |
+| 9016：无法发现，因为来宾操作代理已过时。 | VMware 工具未正确安装或不是最新版本。 | 请确保 VMware 工具安装正确并处于最新状态。 |
 | 9017：在 VM 上找不到带有发现的元数据的文件。 | 此问题可能是由于内部错误引起的。 | 若要解决此问题，请联系 Microsoft 支持部门。 |
 | 9018：未在来宾 Vm 中安装 PowerShell。 | PowerShell 在来宾 VM 中不可用。 | 在来宾 VM 中安装 PowerShell。 |
 | 9019：由于来宾 VM 操作失败，无法发现。 | VM 上的 VMware 来宾操作失败。 | 请确保 VM 凭据有效，并且来宾 VM 凭据中提供的用户名采用 UPN 格式。 |
 | 9020：文件创建权限被拒绝。 | 与用户或组策略关联的角色限制用户在文件夹中创建文件 | 检查来宾用户是否提供了对文件夹中的文件的 create 权限。 请参阅服务器评估中的 **通知** ，了解文件夹的名称。 |
-| 9021：无法在系统临时路径中创建文件。 | VMware 工具报告系统临时路径而不是用户临时路径。 | 将 vmware 工具10287版本 (NGC/VI 客户端格式) 升级。 |
+| 9021：无法在系统临时路径中创建文件。 | VMware 工具报告系统临时路径而不是用户临时路径。 | 将 VMware 工具10287版本 (NGC/VI 客户端格式) 升级。 |
 | 9022：对 WMI 对象的访问被拒绝。 | 与用户或组策略关联的角色限制用户访问 WMI 对象。 | 请联系 Microsoft 支持。 |
 | 9023：无法运行 PowerShell，因为 SystemRoot 环境变量值为空。 | 对于来宾 VM，SystemRoot 环境变量的值为空。 | 若要解决此问题，请联系 Microsoft 支持部门。 |
 | 9024：无法发现，因为 TEMP 环境变量值为空。 | 对于来宾 VM，TEMP 环境变量的值为空。 | 请联系 Microsoft 支持。 |
@@ -228,13 +241,13 @@ Azure Migrate 使用 Azure Migrate：服务器评估支持应用程序、角色�
 | 9026：无法在虚拟机上运行来宾操作。 | VM 状态不允许在 VM 上运行来宾操作。 | 若要解决此问题，请联系 Microsoft 支持部门。 |
 | 9027：来宾操作代理未在 VM 中运行。 | 无法联系在虚拟机中运行的来宾操作代理。 | 若要解决此问题，请联系 Microsoft 支持部门。 |
 | 9028：无法创建文件，因为 VM 中的磁盘存储不足。 | 磁盘空间不足。 | 确保 VM 的磁盘存储中有足够的可用空间。 |
-| 9029：在提供的来宾 VM 凭据上没有对 powershell 的访问权限。 | 对 Powershell 的访问权限不适用于用户。 | 确保在设备上添加的用户可以访问来宾 VM 上的 PowerShell。 |
+| 9029：在提供的来宾 VM 凭据上没有对 PowerShell 的访问权限。 | 对 PowerShell 的访问权限不适用于用户。 | 确保在设备上添加的用户可以访问来宾 VM 上的 PowerShell。 |
 | 9030：无法收集发现的元数据，因为 ESXi 主机已断开连接。 | ESXi 主机处于断开连接状态。 | 确保运行 VM 的 ESXi 主机已连接。 |
 | 9031：无法收集发现的元数据，因为 ESXi 主机未响应。 | 远程主机处于无效状态。 | 确保运行 VM 的 ESXi 主机正在运行并已连接。 |
 | 9032：由于内部错误，无法发现。 | 此问题可能是由于内部错误引起的。 | 若要解决此问题，请联系 Microsoft 支持部门。 |
 | 9033：无法发现，因为 VM 用户名包含无效字符。 | 在用户名中检测到无效字符。 | 请再次提供 VM 凭据，确保不存在无效字符。 |
 | 9034：提供的用户名不是 UPN 格式。 | 用户名不是 UPN 格式。 | 确保用户名 (UPN) 格式为用户主体名称。 |
-| 9035：无法发现，因为 Powershell 语言模式未设置为 "完全语言"。 | 来宾 VM 中的 Powershell 的语言模式未设置为 "完全语言"。 | 确保将 PowerShell 语言模式设置为 "完整语言"。 |
+| 9035：无法发现，因为 PowerShell 语言模式未设置为 "完全语言"。 | 来宾 VM 中的 PowerShell 的语言模式未设置为 "完全语言"。 | 确保将 PowerShell 语言模式设置为 "完整语言"。 |
 | 9037：数据收集暂时暂停，因为 VM 响应时间太高。 | 发现的 VM 的响应时间太长 | 无需采取措施。 将在24小时内尝试进行一次重试，以便进行应用程序发现，使用3小时进行依赖关系分析 (无代理) 。 |
 | 10000：不支持操作系统类型。 | 服务器上运行的操作系统既不是 Windows 也不是 Linux。 | 受支持的操作系统类型仅为 Windows 和 Linux。 |
 | 10001：在设备上找不到服务器发现脚本。 | 发现未按预期方式工作。 | 若要解决此问题，请联系 Microsoft 支持部门。 |

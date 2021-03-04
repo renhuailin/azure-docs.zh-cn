@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 061b190af6e66cf0c7e8095251a3ef77d9aaf247
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 3a8429d9dc6820b1f79c49d325872b61833f988d
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341679"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102095538"
 ---
 # <a name="faq---general-questions-about-azure-security-center"></a>常见问题解答 - 关于 Azure 安全中心的一般问题
 
@@ -38,7 +38,7 @@ Azure 安全中心监视以下 Azure 资源：
 * 虚拟机 (VM)（包括 [云服务](../cloud-services/cloud-services-choose-me.md)）
 * 虚拟机规模集
 * 与 Azure 订阅集成的合作伙伴解决方案，例如 VM 和应用服务环境上的 Web 应用程序防火墙
-* [产品概述中列出的众多 Azure PaaS 服务](features-paas.md)
+* [产品概述中列出的许多 Azure PaaS 服务](features-paas.md)
 
 
 ## <a name="how-can-i-see-the-current-security-state-of-my-azure-resources"></a>如何查看 Azure 资源当前安的全状态？
@@ -46,14 +46,14 @@ Azure 安全中心监视以下 Azure 资源：
 
 
 
-## <a name="what-is-a-security-policy"></a>什么是安全策略？
-安全策略定义一组控件，这些控件是针对指定订阅中的资源建议的。 在 Azure 安全中心，用户需根据公司安全要求和应用程序类型或每个订阅中数据的敏感性，为 Azure 订阅定义策略。
+## <a name="what-is-a-security-initiative"></a>什么是安全计划？
+安全计划将定义一组控件，这些控件 (策略) 为指定订阅中的资源建议的。 在 Azure 安全中心，根据公司的安全要求和应用程序类型或每个订阅中数据的敏感性，为 Azure 订阅分配计划。
 
-Azure 安全中心中启用的安全策略将使用安全建议和监视。 若要了解有关安全策略的详细信息，请参阅[在 Azure 安全中心进行安全运行状况监视](security-center-monitoring.md)。
+Azure 安全中心中启用的安全策略将使用安全建议和监视。 有关详细信息 [，请参阅什么是安全策略、计划和建议？](security-policy-concept.md)。
 
 
 ## <a name="who-can-modify-a-security-policy"></a>哪些用户可以修改安全策略？
-若要修改安全策略，你必须是 **安全管理员** 或该订阅的 **所有者** 。
+若要修改安全策略，必须是安全管理员或是该订阅的所有者 。
 
 若要了解如何配置安全策略，请参阅[在 Azure 安全中心设置安全策略](tutorial-security-policy.md)。
 

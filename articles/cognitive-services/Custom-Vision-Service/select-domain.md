@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/06/2020
 ms.author: shono
-ms.openlocfilehash: 2259d0114d91af2e688df66ff8dc4e8d293c2b03
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 0b1358f67e2b10078e24168bdb779cd708ac2403
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624821"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102095657"
 ---
 # <a name="select-a-domain-for-a-custom-vision-project"></a>为自定义视觉项目选择域
 
@@ -23,7 +23,7 @@ ms.locfileid: "98624821"
 
 ## <a name="image-classification"></a>图像分类
 
-|域|目的|
+|Domain|目的|
 |---|---|
 |__常规__| 针对各种图像分类任务进行优化。 如果其他域均不合适，或者如果不确定要选择哪个域，请选择 "常规" 域。 ID：`ee85a74c-405e-4adc-bb47-ffa8ca0c9f31`|
 |__常规 [A1]__| 通过与常规域相同的推理时间进行优化，以实现更好的准确性。 建议用于更大的数据集或更难的用户方案。 此域需要更多训练时间。 ID：`a8e3c40f-fb4a-466f-832a-5e457ae4a344`|
@@ -34,10 +34,10 @@ ms.locfileid: "98624821"
 
 ## <a name="object-detection"></a>对象检测
 
-|域|目的|
+|Domain|目的|
 |---|---|
 |__常规__| 已针对各种对象检测任务进行优化。 如果其他域均不合适，或者您不确定要选择哪个域，请选择 "常规" 域。 ID：`da2e3a8a-40a5-4171-82f4-58522f70fbc1`|
-|__常规 [A1]__| 通过与常规域相同的推理时间进行优化，以实现更好的准确性。 建议用于更精确的区域位置需要、更大的数据集或更多的用户方案。 此域需要更多定型时间，结果也不确定：预期与所提供的相同定型数据之间有 +-1% 的映射差异。 ID：`9c616dff-2e7d-ea11-af59-1866da359ce6`|
+|__常规 [A1]__| 通过与常规域相同的推理时间进行优化，以实现更好的准确性。 建议用于更精确的区域位置需要、更大的数据集或更多的用户方案。 此域需要更多培训时间，结果并不确定：预期为 +-1% 的平均精度 (映射与所提供的相同定型数据) 差异。 ID：`9c616dff-2e7d-ea11-af59-1866da359ce6`|
 |__徽标__|已针对在图像中查找品牌徽标进行优化。 ID：`1d8ffafe-ec40-4fb2-8f90-72b3b6cecea4`|
 |__货架上的产品__|已针对检测和分类货架上的产品进行优化。 ID：`3780a898-81c3-4516-81ae-3a139614e1f3`|
 |__压缩域__| 针对边缘设备上的实时对象检测的约束进行了优化。|
@@ -48,7 +48,7 @@ ms.locfileid: "98624821"
 
 根据所选的域，模型性能会有所不同。 在下表中，我们报告了有关 Intel 桌面 CPU 和 NVidia GPU 1 的模型大小和推断时间 \[ \] 。 这些数字不包括预处理和后处理时间。
 
-|任务|域|ID|模型大小|CPU 推导时间|GPU 推导时间|
+|任务|Domain|ID|模型大小|CPU 推导时间|GPU 推导时间|
 |---|---|---|---|---|---|
 |分类|常规(精简)|`0732100f-1a38-4e49-a514-c9b44c697ab5`|6 MB|10 毫秒|5 ms|
 |分类|常规 (compact) [S1]|`a1db07ca-a19a-4830-bae8-e004a42dc863`|43 MB|50 ms|5 ms|

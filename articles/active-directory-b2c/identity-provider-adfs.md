@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 6dda65be98934ce90e985b241078ae8019afb7e0
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: e344d85bbdac92aa372fc5d5e59ef90b11dfac6c
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100361258"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102095725"
 ---
 # <a name="add-ad-fs-as-a-saml-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 中的自定义策略将 AD FS 添加为 SAML 标识提供者
 
@@ -34,7 +34,7 @@ ms.locfileid: "100361258"
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-本文说明如何使用 Azure Active Directory B2C (Azure AD B2C) 中的 [自定义策略](custom-policy-overview.md) 来启用 AD FS 用户帐户的登录。 可通过将 [SAML 标识提供者技术配置文件](saml-identity-provider-technical-profile.md)添加到自定义策略来实现登录。
+本文说明如何使用 Azure Active Directory B2C (Azure AD B2C) 中的 [自定义策略](custom-policy-overview.md) 来启用 AD FS 用户帐户的登录。 可以通过将 [SAML 标识提供者](identity-provider-generic-saml.md) 添加到自定义策略来启用登录。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -62,7 +62,7 @@ ms.locfileid: "100361258"
 
 如果希望用户使用 AD FS 帐户登录，则需要将该帐户定义为 Azure AD B2C 可以通过终结点进行通信的声明提供程序。 该终结点将提供一组声明，Azure AD B2C 使用这些声明来验证特定的用户是否已完成身份验证。
 
-可以通过将 AD FS 帐户添加到策略扩展文件中的 **ClaimsProviders** 元素来将其定义为声明提供程序。 有关详细信息，请参阅[定义 SAML 标识提供者技术配置文件](saml-identity-provider-technical-profile.md)。
+可以通过将 AD FS 帐户添加到策略扩展文件中的 **ClaimsProviders** 元素来将其定义为声明提供程序。 有关详细信息，请参阅 [定义 SAML 标识提供者](identity-provider-generic-saml.md)。
 
 1. 打开 *TrustFrameworkExtensions.xml*。
 1. 找到 **ClaimsProviders** 元素。 如果该元素不存在，请在根元素下添加它。
@@ -193,7 +193,7 @@ https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/your-poli
 ## <a name="test-your-custom-policy"></a>测试自定义策略
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
-1. 在门户工具栏中选择“目录 + 订阅”，然后选择包含 Azure AD B2C 租户的目录。
+1. 在门户工具栏中选择“目录 + 订阅”图标，然后选择包含 Azure AD B2C 租户的目录。
 1. 在 Azure 门户中，搜索并选择“Azure AD B2C”。
 1. 在 "**策略**" 下，选择 "**标识体验框架**"
 1. 选择信赖方策略，例如 `B2C_1A_signup_signin` 。
@@ -217,7 +217,7 @@ AD FS 配置为使用 Windows 应用程序日志。 如果在 Azure AD B2C 中�
 
 #### <a name="option-1-set-the-signature-algorithm-in-azure-ad-b2c"></a>选项1：在 Azure AD B2C 中设置签名算法  
 
-可以在 Azure AD B2C 中配置如何对 SAML 请求进行签名。 [XmlSignatureAlgorithm](saml-identity-provider-technical-profile.md#metadata)元数据控制 `SigAlg` SAML 请求中 (查询字符串或 post 参数) 参数的值。 下面的示例将 Azure AD B2C 配置为使用 `rsa-sha256` 签名算法。
+可以在 Azure AD B2C 中配置如何对 SAML 请求进行签名。 [XmlSignatureAlgorithm](identity-provider-generic-saml.md)元数据控制 `SigAlg` SAML 请求中 (查询字符串或 post 参数) 参数的值。 下面的示例将 Azure AD B2C 配置为使用 `rsa-sha256` 签名算法。
 
 ```xml
 <Metadata>

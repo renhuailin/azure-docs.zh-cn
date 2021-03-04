@@ -5,15 +5,15 @@ author: craigktreasure
 manager: vriveras
 services: azure-object-anchors
 ms.author: crtreasu
-ms.date: 02/19/2021
+ms.date: 03/02/2021
 ms.topic: conceptual
 ms.service: azure-object-anchors
-ms.openlocfilehash: 020f727674449523a57a608e8930d67e0f239cf6
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 74663f05c5ff995a090c7cd35e4edf46a754da17
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101744553"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102034602"
 ---
 # <a name="runtime-sdk-overview"></a>运行时 SDK 概述
 
@@ -25,7 +25,7 @@ ms.locfileid: "101744553"
 
 ### <a name="objectmodel"></a>ObjectModel
 
-[System.collections.objectmodel.collection](https://docs.microsoft.com/dotnet/api/microsoft.azure.objectanchors.objectmodel)表示物理对象的几何，并为检测和姿势估算的必要参数编码。 必须使用 [对象锚定服务](../quickstarts/get-started-model-ingestion.md)来创建它。 然后，应用程序可以使用对象锚点 API 加载生成的模型文件，并在该模型中查询嵌入的网格以进行可视化。
+[System.collections.objectmodel.collection](https://docs.microsoft.com/dotnet/api/microsoft.azure.objectanchors.objectmodel)表示物理对象的几何，并为检测和姿势估算的必要参数编码。 必须使用 [对象锚定服务](../quickstarts/get-started-model-conversion.md)来创建它。 然后，应用程序可以使用对象锚点 API 加载生成的模型文件，并在该模型中查询嵌入的网格以进行可视化。
 
 ### <a name="objectsearcharea"></a>ObjectSearchArea
 
@@ -103,7 +103,7 @@ if(status != ObjectObserverStatus.Allowed)
 }
 ```
 
-接下来，该应用程序将创建一个对象观察器并加载由 [对象定位点引入服务](../quickstarts/get-started-model-ingestion.md)生成的必要模型。
+接下来，该应用程序将创建一个对象观察器并加载由 [对象锚模型转换服务](../quickstarts/get-started-model-conversion.md)生成的必要模型。
 
 ```cs
 var observer = new ObjectObserver();

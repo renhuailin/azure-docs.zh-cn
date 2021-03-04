@@ -14,12 +14,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0b42ac7b4e379559d86942279eaa19fe58533840
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 8809f8c168e7095f05587c7a572e08287637dc5a
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101651881"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102034585"
 ---
 # <a name="reset-a-users-password-using-azure-active-directory"></a>使用 Azure Active Directory 重置用户的密码
 
@@ -33,7 +33,7 @@ ms.locfileid: "101651881"
 
 ## <a name="to-reset-a-password"></a>重置密码
 
-1. 以用户管理员或密码管理员身份登录到 [Azure 门户](https://portal.azure.com/)。 有关可用角色的详细信息，请参阅[在 Azure Active Directory 中分配管理员角色](../roles/permissions-reference.md#available-roles)
+1. 以用户管理员或密码管理员身份登录到 [Azure 门户](https://portal.azure.com/)。 有关可用角色的详细信息，请参阅 [Azure AD 内置角色](../roles/permissions-reference.md)
 
 2. 选择“Azure Active Directory”，选择“用户”，搜索并选择需要重置的用户，然后选择“重置密码”。
 

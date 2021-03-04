@@ -1,17 +1,16 @@
 ---
 title: 解决 ITSMC 中的问题
 description: 了解如何解决 IT 服务管理连接器中的常见问题。
-ms.subservice: alerts
 ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 04/12/2020
-ms.openlocfilehash: a01005231b5d775f79555ec10dedeb3f30b3426a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 7094bf07453c06831fecfa2056480bf498b26a72
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101737199"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102041614"
 ---
 # <a name="troubleshoot-problems-in-it-service-management-connector"></a>解决 IT 服务管理连接器中的问题
 

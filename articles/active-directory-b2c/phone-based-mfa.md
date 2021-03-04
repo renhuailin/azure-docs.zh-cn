@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 02/01/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 3ca73e020009817001f309ddf29c2984a8541026
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: cc9e0be90c138ba33e1b4dfe11ea6f9c8b7da297
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99527249"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102033548"
 ---
 # <a name="securing-phone-based-multi-factor-authentication-mfa"></a>保护基于电话的多重身份验证 (MFA) 
 
@@ -24,7 +24,7 @@ ms.locfileid: "99527249"
 
 使用 Azure Active Directory (Azure AD) 多重身份验证 (MFA) ，用户可以选择在注册进行验证的电话号码接收自动语音呼叫。 恶意用户可以通过以下方式利用此方法：创建多个帐户并拨打电话，无需完成 MFA 注册过程。 这种失败的登录可能会耗尽允许的注册尝试，阻止其他用户注册 Azure AD B2C 租户中的新帐户。 为了帮助防范这些攻击，你可以使用 Azure Monitor 来监视手机身份验证失败并缓解欺诈性登录。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在开始之前，请创建 [Log Analytics 工作区](azure-monitor.md)。
 
@@ -89,7 +89,7 @@ GitHub 中的 [Azure AD B2C 报表 & 警报](https://github.com/azure-ad-b2c/sie
 - 使用 **建议** 的用户流版本来执行以下操作：
      
    - [启用电子邮件一次性密码功能 (OTP) ](phone-authentication-user-flows.md) 用于 MFA (同时适用于注册和登录流) 。
-   - [将条件性访问策略配置](conditional-access-identity-protection-setup.md) 为基于位置阻止登录 (仅适用于登录流，而不是) 注册流。
+   - [将条件性访问策略配置](conditional-access-user-flow.md) 为基于位置阻止登录 (仅适用于登录流，而不是) 注册流。
    - 使用 API 连接器 [与防机器人解决方案集成，例如 reCAPTCHA](https://github.com/Azure-Samples/active-directory-b2c-node-sign-up-user-flow-captcha) (适用于) 的注册流。
 
 - 从下拉菜单中删除与你的组织不相关的国家/地区代码，用户在此下拉菜单中验证其电话号码 (此更改将应用于将来的登录) ：

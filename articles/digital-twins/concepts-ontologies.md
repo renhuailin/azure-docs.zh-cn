@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 2/12/2021
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: b53cac6e732fb568ba799534d9ad9168fd65eab1
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 3393856b25040cff603ea2ef51e8adbcba78dc26
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100561286"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102034687"
 ---
 # <a name="what-is-an-ontology"></a>什么是 ontology？ 
 
@@ -58,7 +58,7 @@ Azure 数字孪生解决方案的词汇是使用模型定义的，这些 [模型
 
 此后，你应该能够在 Azure 数字孪生实例中使用模型。 
 
-可以使用 [Azure 数字孪生 (ADT) 资源管理器](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) 或 [ADT 模型可视化工具](https://github.com/Azure/opendigitaltwins-building-tools/tree/master/AdtModelVisualizer)等示例对它们进行可视化，或继续使用它们来创建 [数字孪生](concepts-twins-graph.md)。
+可以使用 [Azure 数字孪生资源管理器](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) 或 [Azure 数字孪生模型可视化工具](https://github.com/Azure/opendigitaltwins-building-tools/tree/master/AdtModelVisualizer)等示例对它们进行可视化，或继续使用它们来创建 [数字孪生](concepts-twins-graph.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

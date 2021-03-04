@@ -1,10 +1,23 @@
 ---
-标题：本地化 Azure Active Directory B2C 说明：在 Azure Active Directory B2C 中指定自定义策略的本地化元素。
-服务： active directory-b2c 作者： msmimart manager： celestedg
-
-ms. service： active directory ms。工作负荷：标识毫秒。主题：引用毫秒。日期：10/15/2020： mimart：% ms. 作者：
+title: Localization - Azure Active Directory B2C
+description: 在 Azure Active Directory B2C 中指定自定义策略的 Localization 元素。
+services: active-directory-b2c
+author: msmimart
+manager: celestedg
+ms.service: active-directory
+ms.workload: identity
+ms.topic: reference
+ms.date: 10/15/2020
+ms.author: mimart
+ms.subservice: B2C
+ms.custom: b2c-support
+ms.openlocfilehash: c12a171faaf069cc81aa5f467642dba6616a866f
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102033718"
 ---
-
 # <a name="localization-element"></a>本地化元素
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]

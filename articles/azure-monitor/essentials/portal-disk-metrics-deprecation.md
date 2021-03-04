@@ -2,17 +2,16 @@
 title: Azure 门户中已弃用的磁盘指标 | Microsoft Docs
 description: 了解哪些已弃用磁盘指标，以及如何更新指标警报以使用新指标。
 services: azure-monitor
-ms.subservice: metrics
 ms.topic: conceptual
 author: albecker1
 ms.author: albecker
 ms.date: 03/12/2020
-ms.openlocfilehash: 623d9385b9ae6b13c8964f655fb973fe67a0918a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 607ccacbfff86decaecaad0a869c8c0fe7500680
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100607853"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102033395"
 ---
 # <a name="disk-metrics-deprecation-in-the-azure-portal"></a>Azure 门户中已弃用的磁盘指标
 
