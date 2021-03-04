@@ -2,23 +2,18 @@
 title: 在 Azure 安全中心集成安全解决方案 | Microsoft Docs
 description: 了解如何将 Azure 安全中心与合作伙伴集成，以增强 Azure 资源的总体安全性。
 services: security-center
-documentationcenter: na
 author: memildin
 manager: rkarlin
-ms.assetid: 6af354da-f27a-467a-8b7e-6cbcf70fdbcb
 ms.service: security-center
 ms.topic: conceptual
-ms.devlang: na
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 12/10/2020
 ms.author: memildin
-ms.openlocfilehash: ecfb4bdbd523dd1514333a2185186eab0a7e4aaa
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: ff23a1fa4b631fc10163f22d94ccdbd8cbe657c2
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032671"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102099244"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>在 Azure 安全中心集成安全解决方案
 本文档介绍如何管理已连接到 Azure 安全中心的安全解决方案，以及如何添加新的安全解决方案。
@@ -39,7 +34,7 @@ ms.locfileid: "97032671"
 
 安全中心还为以下内容提供漏洞分析：
 
-* SQL 数据库 - 请参阅[在漏洞评估仪表板中浏览漏洞评估报告](defender-for-sql-usage.md#explore-vulnerability-assessment-reports)
+* SQL 数据库 - 请参阅[在漏洞评估仪表板中浏览漏洞评估报告](defender-for-sql-on-machines-vulnerability-assessment.md#explore-vulnerability-assessment-reports)
 * Azure 容器注册表映像-请参阅 [使用 Azure Defender 容器注册表扫描映像中的漏洞](defender-for-container-registries-usage.md)
 
 ## <a name="how-security-solutions-are-integrated"></a>安全中心如何集成
@@ -88,8 +83,7 @@ ms.locfileid: "97032671"
 安全中心会自动发现在 Azure 中运行但未连接到安全中心的安全解决方案，并在“发现的解决方案”部分中显示这些解决方案。 这些解决方案包括 Azure 解决方案，例如 [Azure AD Identity Protection](../active-directory/identity-protection/overview-identity-protection.md)和合作伙伴解决方案。
 
 > [!NOTE]
-> 在订阅级别为发现的解决方案功能启用 Azure Defender。 若要详细了解定价层，请参阅[定价](security-center-pricing.md)。
->
+> 在订阅级别为发现的解决方案功能启用 Azure Defender。 在 [快速入门：启用 Azure Defender](enable-azure-defender.md)中了解详细信息。
 
 在解决方案下选择“连接”，以便与安全中心集成，并获得安全警报通知。
 
@@ -103,7 +97,4 @@ ms.locfileid: "97032671"
 
 ## <a name="next-steps"></a>后续步骤
 
-本文介绍了如何在安全中心集成合作伙伴的解决方案。 有关更多信息，请参阅以下文章：
-
-* [连续导出安全中心数据](continuous-export.md)。 了解如何设置与 Azure Sentinel 或任何其他 SIEM 的集成。
-* [在安全中心进行安全运行状况监视](security-center-monitoring.md)。 了解如何监视 Azure 资源的运行状况。
+本文介绍了如何在安全中心集成合作伙伴的解决方案。 若要了解如何设置与 Azure Sentinel 或任何其他 SIEM 的集成，请参阅 [持续导出安全中心数据](continuous-export.md)。

@@ -6,12 +6,12 @@ ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: 9a7a3a603944970a5e78a24ca4042f97b1c43fcc
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: d695758849fd4f7e6f595820221f6b8606fe7cf1
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/04/2021
-ms.locfileid: "102047853"
+ms.locfileid: "102096184"
 ---
 # <a name="azure-migrate-appliance-architecture"></a>Azure Migrate 设备体系结构
 
@@ -62,7 +62,7 @@ Azure Migrate 设备用于以下应用场景。
 
 **处理** | **VMware 设备** | **Hyper-v 设备** | **物理设备**
 ---|---|---|---
-**开始发现**| 默认情况下，设备会与 TCP 端口443上的 vCenter 服务器进行通信。 如果 vCenter 服务器侦听其他端口，则可以在 "设备配置管理器" 中对其进行配置。 | 设备与 WinRM 端口5985上的 Hyper-v 主机通信 (HTTP) 。 | 设备通过 WinRM 端口5985上的 Windows 服务器 (HTTP) 通过端口 22 (TCP) 与 Linux 服务器进行通信。
+**开始发现** | 默认情况下，设备会与 TCP 端口443上的 vCenter 服务器进行通信。 如果 vCenter 服务器侦听其他端口，则可以在 "设备配置管理器" 中对其进行配置。 | 设备与 WinRM 端口5985上的 Hyper-v 主机通信 (HTTP) 。 | 设备通过 WinRM 端口5985上的 Windows 服务器 (HTTP) 通过端口 22 (TCP) 与 Linux 服务器进行通信。
 **收集配置和性能元数据** | 设备通过连接端口 443 (默认端口) 或 vCenter Server 侦听的任何其他端口，收集 vCenter Server 上运行的服务器的元数据。 | 设备使用与端口5985上的主机通用信息模型 (CIM) 会话，收集 Hyper-v 主机上运行的服务器的元数据。| 设备使用与端口5985上的服务器通用信息模型 (CIM) 会话，以及在端口22上使用 SSH 连接从 Linux 服务器收集来自 Windows 服务器的元数据。
 **发送发现数据** | 设备会将收集的数据发送到 Azure Migrate：服务器评估和 Azure Migrate：通过 SSL 端口443迁移服务器。<br/><br/> 设备可以通过 internet 或 ExpressRoute 连接到 Azure (需要 Microsoft 对等互连) 。 | 设备将收集的数据发送到 Azure Migrate：通过 SSL 端口443的服务器评估。<br/><br/> 设备可以通过 internet 或 ExpressRoute 连接到 Azure (需要 Microsoft 对等互连) 。| 设备将收集的数据发送到 Azure Migrate：通过 SSL 端口443的服务器评估。<br/><br/> 设备可以通过 internet 或 ExpressRoute 连接到 Azure (需要 Microsoft 对等互连) 。
 **数据收集频率** | 每30分钟收集一次配置元数据并发送。 <br/><br/> 每隔20秒收集一次性能元数据，并将其聚合起来，每10分钟发送一次数据点到 Azure。 <br/><br/> 软件清单数据每12小时发送到 Azure 一次。 <br/><br/> 无代理依赖项数据每5分钟收集一次，并聚合在设备上，每隔6小时发送到 Azure。 <br/><br/> SQL Server 配置数据每24小时更新一次，每隔30秒捕获一次性能数据。| 每30分钟收集一次配置元数据并发送。 <br/><br/> 每隔30秒收集一次性能元数据，并将其聚合起来，每10分钟发送一次数据点到 Azure。|  每30分钟收集一次配置元数据并发送。 <br/><br/> 性能元数据每5分钟收集一次，并聚合为每10分钟发送一次数据点到 Azure。

@@ -6,20 +6,25 @@ author: matjazl
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
-ms.date: 10/12/2020
-ms.author: matjazl
-ms.openlocfilehash: cdb41f12e8f050e3c74fccddb392d7a816c15b2f
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.date: 03/03/2021
+ms.author: zxue
+ms.openlocfilehash: 5e24c7666fd2ece7d284b7705bc481866d7604de
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98621872"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102097034"
 ---
 # <a name="configure-private-link"></a>配置专用链接
 
 专用链接使你可以通过专用终结点访问 Azure API for FHIR，这是一个网络接口，该接口通过你的虚拟网络从专用 IP 地址进行私下连接和安全连接。 借助专用链接，你可以从 Vnet 安全地将服务作为第一方服务来访问，而无需经过公共 DNS。 本文逐步讲解如何创建、测试和管理用于 FHIR 的 Azure API 的专用终结点。
 
-## <a name="prerequisites"></a>必备条件
+>[!Note]
+>启用 "专用" 链接后，不能将专用链接或 Azure API for FHIR 从一个资源组移动到另一个资源组或订阅。 若要移动，请先删除专用链接，然后移动 Azure API for FHIR，并在移动完成后创建新的专用链接。 删除私有链接之前，请评估潜在的安全措施。
+>
+>如果为 FHIR 的 Azure API 启用了导出审核日志和/度量值，请通过门户中的诊断设置更新导出设置。
+
+## <a name="prerequisites"></a>先决条件
 
 创建专用终结点之前，需要先创建一些 Azure 资源：
 

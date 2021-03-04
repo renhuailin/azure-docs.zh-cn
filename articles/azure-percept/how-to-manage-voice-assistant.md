@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/15/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 593d2ccadf814cb5af27a4bb738f28132f39ab7d
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 5e41dea3b47c608b9e82ac57fa1cfe5247ea6cc2
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101661883"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102099006"
 ---
 # <a name="managing-your-voice-assistant"></a>管理语音助手
 
@@ -28,7 +28,7 @@ ms.locfileid: "101661883"
 
 1. 单击 "演示" 页上的 "**自定义关键字**" 旁边的 "**更改**"。
 
-    :::image type="content" source="./media/manage-voice-assistant/hospitality-demo.png" alt-text="影像.":::
+    :::image type="content" source="./media/manage-voice-assistant/hospitality-demo.png" alt-text="酒店餐饮演示窗口的屏幕截图。":::
 
     如果未打开演示页面，请导航到 "设备" 页， (参见下面的 ") 并单击"**操作**"下的"**测试语音助手**"以访问演示。
 
@@ -40,17 +40,17 @@ ms.locfileid: "101661883"
 
 1. 在 [Azure Percept Studio](https://go.microsoft.com/fwlink/?linkid=2135819)的 "概述" 页上，单击左侧菜单窗格中的 " **设备** "。
 
-    :::image type="content" source="./media/manage-voice-assistant/portal-overview-devices.png" alt-text="影像.":::
+    :::image type="content" source="./media/manage-voice-assistant/portal-overview-devices.png" alt-text="已突出显示设备的 Azure Percept Studio 概述页的屏幕截图。":::
 
 1. 选择您的语音助手应用程序部署到的设备。
 
 1. 打开 " **语音** " 选项卡。
 
-    :::image type="content" source="./media/manage-voice-assistant/device-page.png" alt-text="影像.":::
+    :::image type="content" source="./media/manage-voice-assistant/device-page.png" alt-text="突出显示 &quot;语音&quot; 选项卡的 &quot;边缘设备&quot; 页面的屏幕截图。":::
 
 1. 单击 "**关键字**" 旁边的 "**更改**"。
 
-    :::image type="content" source="./media/manage-voice-assistant/change-keyword-device.png" alt-text="影像.":::
+    :::image type="content" source="./media/manage-voice-assistant/change-keyword-device.png" alt-text="可用语音解决方案操作的屏幕截图。":::
 
 1. 选择一个可用关键字，并单击 " **保存** " 以应用更改。
 

@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: tutorial
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 0868c99a29b8da4376b639a54988fc821433e26d
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: a8b285ca0b8d0dae88bfe8dd19ac7e1bc8372e32
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100576984"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102099193"
 ---
 # <a name="planning-and-operations-guide"></a>规划和操作指南
 本指南适用于计划使用 Azure 安全中心的信息技术 (IT) 专业人员、IT 架构师、信息安全分析师和云管理员。
@@ -137,9 +137,9 @@ Azure 安全中心使用 Log Analytics 代理（Azure Monitor 服务同样使用
 
 在安全策略中启用自动预配后，Log Analytics 代理（适用于 [Windows](../azure-monitor/agents/agent-windows.md) 或 [Linux](../azure-monitor/vm/quick-collect-linux-computer.md)）会安装在所有支持的 Azure VM 和新建的任何 VM 上。 如果 VM 或计算机已安装 Log Analytics 代理，Azure 安全中心会利用当前的已安装代理。 代理的过程设计为非入侵性，对 VM 性能的影响非常小。
 
-适用于 Windows 的 Log Analytics 代理要求使用 TCP 端口 443。 有关其他详细信息，请参阅[故障排除文章](security-center-troubleshooting-guide.md)。
+适用于 Windows 的 Log Analytics 代理需要使用 TCP 端口 443。 有关其他详细信息，请参阅[故障排除文章](security-center-troubleshooting-guide.md)。
 
-如需在某个时候禁用数据收集功能，可在安全策略中将其关闭。 然而，由于其他 Azure 管理和监视服务可能使用 Log Analytics 代理，因此关闭安全中心的数据收集功能后不会自动卸载代理。 必要时可手动卸载代理。
+如需在某个时候禁用数据收集功能，可在安全策略中将其关闭。 然而，由于其他 Azure 管理和监视服务可能使用 Log Analytics 代理，因此关闭安全中心数据收集后不会自动卸载代理。 必要时可手动卸载代理。
 
 > [!NOTE]
 > 若要查找受支持 VM 的列表，请阅读 [Azure 安全中心常见问题解答 (FAQ)](faq-vms.md)。
@@ -175,7 +175,7 @@ Azure 安全中心使用 Log Analytics 代理（Azure Monitor 服务同样使用
 > [!NOTE]
 > 安全中心不会干扰正常的操作过程，而是被动监视部署，根据启用的安全策略提供建议。
 
-如果首次选择为当前 Azure 环境使用安全中心，请务必查看所有建议，此操作可在“建议”页中进行进行。
+如果首次选择为当前 Azure 环境使用安全中心，请务必查看所有建议，此操作可在“建议”页中进行。
 
 计划访问威胁智能选项，将其作为日常安全操作的一部分。 可以在其中确定对环境的安全威胁，例如，确定特定计算机是否为僵尸网络的一部分。
 
@@ -224,7 +224,7 @@ Azure 安全中心使用 Log Analytics 代理（Azure Monitor 服务同样使用
 在[如何利用 Azure 安全中心和 Microsoft Operations Management Suite 进行事件响应](https://channel9.msdn.com/Blogs/Taste-of-Premier/ToP1703)视频中，你可查看一些演示，了解如何在每个这样的阶段发挥安全中心的作用。
 
 > [!NOTE]
-> 参阅[管理和响应 Azure 安全中心的安全警报](security-center-managing-and-responding-alerts.md)，详细了解在事件响应过程中如何使用安全中心功能进行协助。
+> 请参阅[管理和响应 Azure 安全中心的安全警报](security-center-managing-and-responding-alerts.md)，详细了解在事件响应过程中如何使用安全中心功能进行协助。
 >
 >
 
@@ -232,7 +232,6 @@ Azure 安全中心使用 Log Analytics 代理（Azure Monitor 服务同样使用
 本文档介绍如何进行规划，为采用安全中心做准备。 若要了解有关安全中心的详细信息，请参阅以下文章：
 
 * [Managing and responding to security alerts in Azure Security Center](security-center-managing-and-responding-alerts.md)
-* [Security health monitoring in Azure Security Center](security-center-monitoring.md) （Azure 安全中心的安全运行状况监视）- 了解如何监视 Azure 资源的运行状况。
 * [通过 Azure 安全中心监视合作伙伴解决方案](./security-center-partner-integration.md) - 了解如何监视合作伙伴解决方案的运行状态。
 * [Azure Security Center FAQ](faq-general.md) （Azure 安全中心常见问题）- 查找有关如何使用服务的常见问题。
 * [Azure 安全性博客](/archive/blogs/azuresecurity/) - 查找关于 Azure 安全性及合规性的博客文章。

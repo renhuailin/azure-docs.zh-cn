@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.reviewer: dseven
 ms.author: cavoeg
 author: zxue
-ms.date: 02/24/2021
-ms.openlocfilehash: 73e1db2754749e1fb1142231e7179771bcce8e76
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/03/2021
+ms.openlocfilehash: 8dde5c6206087c8bb1c1f456a0c858abbccf0cc4
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101712769"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102096303"
 ---
 # <a name="enable-diagnostic-logging-in-azure-api-for-fhir"></a>在 Azure API for FHIR 中启用诊断日志记录
 
@@ -50,7 +50,7 @@ ms.locfileid: "101712769"
 
 
 > [!Note] 
-> 最多可能需要15分钟才能在 Log Analytics 中显示第一个日志。  
+> 最多可能需要15分钟才能在 Log Analytics 中显示第一个日志。 此外，如果将 FHIR 的 Azure API 从一个资源组或订阅移动到另一个资源组或订阅，请在移动完成后更新设置。 
  
 有关如何使用诊断日志的详细信息，请参阅 [Azure 资源日志文档](../azure-monitor/essentials/platform-logs-overview.md)
 
@@ -60,24 +60,24 @@ ms.locfileid: "101712769"
 |字段名称  |类型  |说明  |
 |---------|---------|---------|
 |CallerIdentity|动态|包含标识信息的泛型属性包
-|CallerIdentityIssuer|字符串|颁发者 
-|CallerIdentityObjectId|字符串|Object_Id 
-|CallerIPAddress|字符串|调用方的 IP 地址 
-|CorrelationId|字符串| 相关性 ID
-|FhirResourceType|字符串|已对其执行操作的资源类型
-|LogCategory|字符串|日志类别 (我们当前返回的是 "AuditLogs" LogCategory) 
-|位置|字符串|处理请求的服务器的位置 (例如，美国中南部) 
+|CallerIdentityIssuer|String|颁发者 
+|CallerIdentityObjectId|String|Object_Id 
+|CallerIPAddress|String|调用方的 IP 地址 
+|CorrelationId|String| 相关性 ID
+|FhirResourceType|String|已对其执行操作的资源类型
+|LogCategory|String|日志类别 (我们当前返回的是 "AuditLogs" LogCategory) 
+|位置|String|处理请求的服务器的位置 (例如，美国中南部) 
 |OperationDuration|int|完成此请求所需的时间（秒）
 |OperationName|String| 描述操作类型 (例如更新、搜索类型) 
-|RequestUri|字符串|请求 URI 
-|ResultType|字符串|当前 **已启动**、**成功** 或 **失败** 的可用值
+|RequestUri|String|请求 URI 
+|ResultType|String|当前 **已启动**、**成功** 或 **失败** 的可用值
 |StatusCode|int|HTTP 状态代码。  (，例如 200)  
 |TimeGenerated|DateTime|事件的日期和时间|
-|属性|字符串| 介绍 fhirResourceType 的属性
-|SourceSystem|字符串| 在这种情况下，源系统 (总是 Azure) 
-|TenantId|字符串|租户 ID
+|属性|String| 介绍 fhirResourceType 的属性
+|SourceSystem|String| 在这种情况下，源系统 (总是 Azure) 
+|TenantId|String|租户 ID
 |类型|字符串|在这种情况下，日志类型 (始终 MicrosoftHealthcareApisAuditLog) 
-|_ResourceId|字符串|有关资源的详细信息
+|_ResourceId|String|有关资源的详细信息
 
 ## <a name="sample-queries"></a>示例查询
 

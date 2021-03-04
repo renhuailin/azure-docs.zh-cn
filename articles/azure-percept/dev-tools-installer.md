@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/18/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 02292d4559697bc38d47811fe392dc86427515b4
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: d684311ef959ac13f3be8bac7ffbbb06a741962a
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101661861"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102097697"
 ---
 # <a name="dev-tools-pack-installer-overview"></a>开发工具包安装程序概述
 
@@ -84,6 +84,8 @@ ms.locfileid: "101661861"
 
         > [!NOTE]
         > Docker 在最新版本的 macOS 中支持 Docker 桌面。 也就是说，当前版本的 macOS 和之前的两个版本。 随着 macOS 的新主要版本公开发布，Docker 将停止支持最早版本，并支持最新版本的 macOS (除了之前的两个版本) 。 Docker Desktop 目前支持 macOS Mojave、macOS Catalina 和 macOS Big .Sur。
+        > 
+        - Apple M1 上不支持安装程序。
 
 ## <a name="instructions"></a>说明
 
@@ -99,7 +101,7 @@ ms.locfileid: "101661861"
     
         1. 下载后，将 Dev-Tools-Pack-Installer 文件移动到 "应用程序" 文件夹。
         
-        1. 单击 "Dev-Tools-Pack-Installer" 打开安装向导。
+        1. 单击 " **Dev-Tools-Pack-Installer** " 以打开安装向导。
         
         1. 如果收到 "无法识别的开发人员" 安全对话框：
         
@@ -123,7 +125,7 @@ ms.locfileid: "101661861"
                 
             1. 在终端中键入以下各项，使 AppImage 可执行文件
             
-                1. chmod + x 开发工具-AppImage
+                1. chmod + x **开发工具-AppImage**
                 
             1. 在终端中键入以下各项以运行安装程序
             
@@ -141,11 +143,11 @@ ms.locfileid: "101661861"
 
 1. 在 " **安装开发工具包安装程序** " 页上，单击 " **查看许可证** " 以查看安装程序中包含的每个软件包的许可协议。 如果接受许可协议中的条款，请选中此框，然后单击 " **下一步**"。
 
-    ![安装程序中的 "许可协议" 屏幕。](https://github.com/microsoft/Project-Santa-Cruz-Private-Preview/blob/main/user-guides/prototyping/article_images/dev_tools_license_agreements.png)
+    :::image type="content" source="./media/dev-tools-installer/dev-tools-license-agreements.png" alt-text="安装程序中的 &quot;许可协议&quot; 屏幕。":::
 
 1. 单击 " **隐私声明** " 查看 Microsoft 隐私声明。 如果你同意隐私声明条款，并且想要将诊断数据发送给 Microsoft，请选择 **"是"** ，然后单击 " **下一步**"。 否则，选择 " **否** "，然后单击 " **下一步**"。
 
-    ![安装程序中的 "隐私声明协议" 屏幕。](https://github.com/microsoft/Project-Santa-Cruz-Private-Preview/blob/main/user-guides/prototyping/article_images/dev_tools_privacy_statement.png)
+    :::image type="content" source="./media/dev-tools-installer/dev-tools-privacy-statement.png" alt-text="安装程序中的 &quot;隐私声明协议&quot; 屏幕。":::
 
 1. 在 " **配置组件** " 页上，选择要安装的可选工具 (默认情况下将安装) 。
 
@@ -153,11 +155,11 @@ ms.locfileid: "101661861"
 
     1. 单击 " **安装** " 以继续安装。
 
-    ![显示可用软件包的安装程序屏幕。](https://github.com/microsoft/Project-Santa-Cruz-Private-Preview/blob/main/user-guides/prototyping/article_images/dev_tools_configure_components.png)
+    :::image type="content" source="./media/dev-tools-installer/dev-tools-configure-components.png" alt-text="显示可用软件包的安装程序屏幕。":::
 
 1. 在成功安装所有选择的组件后，向导将转到 " **完成安装向导** " 页。 单击 " **完成** " 退出安装程序。
 
-    ![安装程序完成屏幕。](https://github.com/microsoft/Project-Santa-Cruz-Private-Preview/blob/main/user-guides/prototyping/article_images/dev_tools_finish.png)
+    :::image type="content" source="./media/dev-tools-installer/dev-tools-finish.png" alt-text="安装程序完成屏幕。":::
 
 ## <a name="docker-status-check"></a>Docker 状态检查
 
@@ -168,12 +170,12 @@ ms.locfileid: "101661861"
       1. 展开系统托盘隐藏图标：
       
          1. 如果隐藏，则展开系统托盘隐藏图标：
-         
-            * ![系统托盘](https://github.com/microsoft/Project-Santa-Cruz-Preview/blob/main/Sample-Scripts-and-Notebooks/Official/Machine%20Learning%20Notebooks/article_images/SystemTray.png)
+
+            :::image type="content" source="./media/dev-tools-installer/system-tray.png" alt-text="系统托盘。":::
          
          1. 验证 Docker 桌面图标是否显示 "Docker Desktop 正在运行"：
-         
-            * ![Docker 状态](https://github.com/microsoft/Project-Santa-Cruz-Preview/blob/main/Sample-Scripts-and-Notebooks/Official/Machine%20Learning%20Notebooks/article_images/DockerStatusRunning.png)
+
+            :::image type="content" source="./media/dev-tools-installer/docker-status-running.png" alt-text="Docker 状态。":::
          
          1. 如果看不到系统托盘中列出的上述图标，请从 "开始" 菜单启动 Docker Desktop。
          
@@ -181,4 +183,4 @@ ms.locfileid: "101661861"
 
 ## <a name="next-steps"></a>后续步骤
 
-请查看 [高级开发教程 (本地) ](./advanced-development-local.md)，开始学习 AZURE Percept 深色的高级开发。
+请查看 [Azure Percept 高级开发存储库](https://github.com/microsoft/azure-percept-advanced-development) ，了解 AZURE Percept 深色的高级开发入门。

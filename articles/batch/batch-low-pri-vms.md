@@ -3,14 +3,14 @@ title: 在经济高效的低优先级 VM 上运行工作负载
 description: 了解如何预配低优先级 VM，以降低 Azure Batch 工作负载的成本。
 author: mscurrell
 ms.topic: how-to
-ms.date: 02/02/2021
+ms.date: 03/03/2021
 ms.custom: seodec18
-ms.openlocfilehash: 9214ef83ec9b8bef4fb7bc7489aa0ab388f67c0d
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: cafc7216e8112640f823ecee1aea055ab78b3fc6
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99507260"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102098462"
 ---
 # <a name="use-low-priority-vms-with-batch"></a>将低优先级 VM 与 Batch 配合使用
 
@@ -25,9 +25,9 @@ Azure Batch 可提供低优先级虚拟机 (VM) 来降低 Batch 工作负载的�
 > [!NOTE]
 > [现成 VM](https://azure.microsoft.com/pricing/spot/) 现可用于[单实例 VM](../virtual-machines/spot-vms.md) 和 [VM 规模集](../virtual-machine-scale-sets/use-spot.md)。 现成 VM 是低优先级 VM 的进化版，区别在于定价可能不同，而且在分配现成 VM 时可设置价格上限（可选）。
 >
-> Azure Batch 池在正式发布后几个月内就将开始支持现成 VM，其中有新版本的 [Batch API 和工具](./batch-apis-tools.md)。 在对现成 VM 的支持推出后，我们将弃用低优先级 VM。为了让用户有足够的时间迁移到现成 VM，我们将使用现有 API 和工具版本继续支持低优先级 VM 至少 12 个月。
+>Azure Batch 池以后会开始支持新版本的 [批处理 api 和工具](./batch-apis-tools.md)。 提供点 VM 支持后，低优先级 Vm 将被弃用-将继续使用最新的 Api 和工具版本来支持至少12个月，以留出足够的时间迁移到虚拟机。
 >
-> [云服务配置](/rest/api/batchservice/pool/add#cloudserviceconfiguration)池将不支持现成 VM。 若要使用现成 VM，云服务池需要迁移到[虚拟机配置](/rest/api/batchservice/pool/add#virtualmachineconfiguration)池。
+> 仅虚拟机配置池支持点机。 要使用专色 Vm，需要将任何云服务配置池 [迁移到虚拟机配置池](batch-pool-cloud-service-to-virtual-machine-configuration.md)。
 
 ## <a name="batch-support-for-low-priority-vms"></a>低优先级 VM 的 Batch 支持
 

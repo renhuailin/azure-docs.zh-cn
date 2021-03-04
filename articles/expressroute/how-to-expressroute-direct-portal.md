@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 12/14/2020
 ms.author: duau
-ms.openlocfilehash: acbd5c3aa88c2c8c14407ebda0c42d228aa6c9e3
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: b133f1cce4af07d8d5e50e04670741fcf7c936a4
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98018932"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102097068"
 ---
 # <a name="create-expressroute-direct-using-the-azure-portal"></a>使用 Azure 门户创建 ExpressRoute Direct
 
@@ -21,14 +21,21 @@ ms.locfileid: "98018932"
 
 ## <a name="before-you-begin"></a><a name="before"></a>准备工作
 
-需要先注册订阅，然后才能使用 ExpressRoute Direct。 若要注册，请使用你的订阅 ID 向 <ExpressRouteDirect@microsoft.com> 发送一封电子邮件，其中包括以下详细信息：
+需要先注册订阅，然后才能使用 ExpressRoute Direct。 若要注册，请通过 Azure PowerShell 执行以下操作：
+1.  登录到 Azure 并选择要注册的订阅。
 
-* 需通过 **ExpressRoute Direct** 完成的方案
-* 位置首选项 - 请参阅[合作伙伴和对等互连位置](expressroute-locations-providers.md)，获取包含所有位置的完整列表
-* 实现的时间线
-* 其他问题
+    ```azurepowershell-interactive
+    Connect-AzAccount 
 
-注册后，验证是否已将 **Microsoft 网络** 资源提供程序注册到你的订阅。 通过注册资源提供程序来配置订阅，以供资源提供程序使用。
+    Select-AzSubscription -Subscription "<SubscriptionID or SubscriptionName>"
+    ```
+
+2. 使用以下命令注册公共预览版订阅：
+    ```azurepowershell-interactive
+    Register-AzProviderFeature -FeatureName AllowExpressRoutePorts -ProviderNamespace Microsoft.Network
+    ```
+
+注册后，验证 Microsoft.Network 资源提供程序是否已在你的订阅中注册。 通过注册资源提供程序来配置订阅，以供资源提供程序使用。
 
 1. 按照 [Azure 资源提供程序和类型](../azure-resource-manager/management/resource-providers-and-types.md)中所述访问你的订阅设置。
 1. 在你的订阅中，对于“资源提供程序”，请验证 **Microsoft.Network** 提供程序是否显示为“已注册”状态。 如果已注册的提供程序的列表中不存在 Microsoft.Network 资源提供程序，请添加该提供程序。

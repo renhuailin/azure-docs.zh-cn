@@ -3,21 +3,24 @@ title: 显示 Android maps 中的功能信息 |Microsoft Azure 映射
 description: 了解如何在用户与地图功能交互时显示信息。 使用 Azure Maps Android SDK 显示 toast 消息和其他类型的消息。
 author: rbrundritt
 ms.author: richbrun
-ms.date: 08/08/2019
+ms.date: 2/26/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 4e84bd821d53048b134db635c7ec541db74fbf11
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+zone_pivot_groups: azure-maps-android
+ms.openlocfilehash: b9926d5d6a70d959c0baacd9602341bb69abe924
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/04/2021
-ms.locfileid: "102047701"
+ms.locfileid: "102097238"
 ---
 # <a name="display-feature-information"></a>显示功能信息
 
 空间数据通常使用点、线条和多边形来表示。 此数据通常具有与之关联的元数据信息。 例如，点可能代表餐馆的位置，而有关该餐馆的元数据可能是其所服务的食品的名称、地址和类型。 此元数据可作为 GeoJSON 的属性添加 `Feature` 。 下面的代码使用 `title` 值为 "Hello World！" 的属性创建一个简单的点功能。
+
+::: zone pivot="programming-language-java-android"
 
 ```java
 //Create a data source and add it to the map.
@@ -34,9 +37,32 @@ feature.addStringProperty("title", "Hello World!");
 source.add(feature);
 ```
 
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+//Create a data source and add it to the map.
+val source = DataSource()
+map.sources.add(source)
+
+//Create a point feature.
+val feature = Feature.fromGeometry(Point.fromLngLat(-122.33, 47.64))
+
+//Add a property to the feature.
+feature.addStringProperty("title", "Hello World!")
+
+//Create a point feature, pass in the metadata properties, and add it to the data source.
+source.add(feature)
+```
+
+::: zone-end
+
 有关创建数据源并将数据添加到地图的方法，请参阅 [创建数据源](create-data-source-android-sdk.md) 文档。
 
 当用户与地图上的功能交互时，可以使用事件来响应这些操作。 常见的情况是显示一条消息，该消息由用户与之交互的功能的元数据属性组成。 `OnFeatureClick`事件是用于检测用户在地图上点击功能时所使用的主要事件。 还有一个 `OnLongFeatureClick` 事件。 向映射添加 `OnFeatureClick` 事件时，可以将该事件限制为单个层，方法是传入层的 ID 以将其限制为。 如果未传入任何层 ID，请在映射上点击任意功能，而不考虑它所在的层，将触发此事件。 下面的代码创建一个符号层，用于在地图上呈现点数据，然后添加一个 `OnFeatureClick` 事件并将其限制为此符号层。
+
+::: zone pivot="programming-language-java-android"
 
 ```java
 //Create a symbol and add it to the map.
@@ -52,9 +78,31 @@ map.events.add((OnFeatureClick) (features) -> {
 }, layer.getId());    //Limit this event to the symbol layer.
 ```
 
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+//Create a symbol and add it to the map.
+val layer = SymbolLayer(source)
+map.layers.add(layer)
+
+//Add a feature click event to the map.
+map.events.add(OnFeatureClick { features: List<Feature> ->
+    //Retrieve the title property of the feature as a string.
+    val msg = features[0].getStringProperty("title")
+
+    //Do something with the message.
+}, layer.getId()) //Limit this event to the symbol layer.
+```
+
+::: zone-end
+
 ## <a name="display-a-toast-message"></a>显示 toast 消息
 
 Toast 消息是向用户显示信息的最简单方法之一，在 Android 的所有版本中都提供。 它不支持任何类型的用户输入，只会在短时间内显示。 如果你想要快速让用户了解他们点击的内容，则 toast 消息可能是一个不错的选择。 下面的代码演示如何在事件中使用 toast 消息 `OnFeatureClick` 。
+
+::: zone pivot="programming-language-java-android"
 
 ```java
 //Add a feature click event to the map.
@@ -67,7 +115,24 @@ map.events.add((OnFeatureClick) (features) -> {
 }, layer.getId());    //Limit this event to the symbol layer.
 ```
 
-![正在点击的功能的动画和正在显示的 toast 消息](./media/display-feature-information-android/symbol-layer-click-toast-message.gif)
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+//Add a feature click event to the map.
+map.events.add(OnFeatureClick { features: List<Feature> ->
+    //Retrieve the title property of the feature as a string.
+    val msg = features[0].getStringProperty("title")
+
+    //Display a toast message with the title information.
+    Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
+}, layer.getId()) //Limit this event to the symbol layer.
+```
+
+::: zone-end
+
+![正在点击的功能的动画和正在显示的 toast 消息](media/display-feature-information-android/symbol-layer-click-toast-message.gif)
 
 除了 toast 消息以外，还有很多其他方法可以提供功能的元数据属性，例如：
 
@@ -104,6 +169,8 @@ Azure Maps Android SDK 提供了一个 `Popup` 类，使用户可以轻松地创
 ```
 
 假设以上布局存储在应用的文件夹中名为的文件中 `popup_text.xml` `res -> layout` ，以下代码将创建一个弹出窗口，并将其添加到地图中。 单击某个功能时，将 `title` 使用布局显示该属性 `popup_text.xml` ，并将布局的底部中心定位到地图上的指定位置。
+
+::: zone pivot="programming-language-java-android"
 
 ```java
 //Create a popup and add it to the map.
@@ -144,8 +211,54 @@ map.events.add((OnFeatureClick)(feature) -> {
     //Open the popup.
     popup.open();
 });
-
 ```
+
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+//Create a popup and add it to the map.
+val popup = Popup()
+map.popups.add(popup)
+
+map.events.add(OnFeatureClick { feature: List<Feature> ->
+    //Get the first feature and it's properties.
+    val f = feature[0]
+    val props = f.properties()
+
+    //Retrieve the custom layout for the popup.
+    val customView: View = LayoutInflater.from(this).inflate(R.layout.popup_text, null)
+
+    //Access the text view within the custom view and set the text to the title property of the feature.
+    val tv: TextView = customView.findViewById(R.id.message)
+    tv.text = props!!["title"].asString
+
+    //Get the coordinates from the clicked feature and create a position object.
+    val c: List<Double> = (f.geometry() as Point?).coordinates()
+    val pos = Position(c[0], c[1])
+
+    //Set the options on the popup.
+    popup.setOptions( 
+        //Set the popups position.
+        position(pos),  
+
+        //Set the anchor point of the popup content.
+        anchor(AnchorType.BOTTOM),  
+
+        //Set the content of the popup.
+        content(customView) 
+
+        //Optionally, hide the close button of the popup.
+        //, closeButton(false)
+    )
+
+    //Open the popup.
+    popup.open()
+})
+```
+
+::: zone-end
 
 下面的屏幕截图显示当功能被单击时显示的弹出窗口，并在移动时保持定位到其在地图上指定的位置。
 

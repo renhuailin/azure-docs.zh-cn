@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/03/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 8d150228be2cf6deff3bc2fd0a0599cca70d24ac
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 8dda18271de9b7d65246f0882ee7a68191031c05
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101661877"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102096609"
 ---
 # <a name="connect-to-your-azure-percept-dk-over-ssh"></a>通过 SSH 连接到 Azure Percept 深色
 
@@ -24,7 +24,8 @@ ms.locfileid: "101661877"
 - SSH 客户端
     - 如果您的主计算机运行的是 Windows，则 [PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html) 是有效的 SSH 客户端，并将在本指南中使用。
     - 如果您的主计算机运行 Linux 或 OS X，则 SSH 服务将包含在这些操作系统中，并且无需单独的客户端应用程序即可运行。 有关如何运行 SSH 服务的详细信息，请查看操作系统产品文档。
-- Azure Percept 深色
+- Azure Percept DK
+- 在[Azure PERCEPT 深色的入职体验](./quickstart-percept-dk-set-up.md)期间设置 SSH 登录帐户
 
 ## <a name="initiate-the-ssh-connection"></a>启动 SSH 连接
 
@@ -48,15 +49,8 @@ ms.locfileid: "101661877"
 
     :::image type="content" source="./media/how-to-ssh-into-percept-dk/ssh-putty.png" alt-text="影像.":::
 
-1. 登录到 PuTTY 终端。 如果在 OOBE 期间设置了 SSH 用户名和密码，请在出现提示时输入这些登录凭据。 否则，请输入以下内容：  
-
-    1. 登录身份： root
-    1. 密码：p@ssw0rd
-
-    :::image type="content" source="./media/how-to-ssh-into-percept-dk/putty-terminal.png" alt-text="PuTTY 终端窗口。":::  
+1. 登录到 PuTTY 终端，其中包含在进行中体验时创建的 SSH 用户名和密码。
 
 ## <a name="next-steps"></a>后续步骤
 
 成功通过 SSH 连接到 Azure Percept 深色后，你可以执行各种任务，包括故障排除、USB 更新以及运行 DiagTool 或 SoftAP 工具。
-
-

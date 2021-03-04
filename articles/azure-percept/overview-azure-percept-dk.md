@@ -7,26 +7,27 @@ ms.service: azure-percept
 ms.topic: conceptual
 ms.date: 02/18/2021
 ms.custom: template-concept
-ms.openlocfilehash: 4fd0a7cb575a109d1393527b48de3fa4e3446167
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 4c2ace609d67cc48d1b73bdb044e7048ebda21e7
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101662156"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102098326"
 ---
 # <a name="azure-percept-dk-overview"></a>Azure Percept DK 概述
 
-Azure Percept 深色是一种面向开发视觉 AI 概念证明的边缘 AI 开发工具包。 与 [Azure Percept Studio](./overview-azure-percept-studio.md)结合使用时，它成为一个功能强大且易于使用的平台，可用于构建面向各种视觉 ai 应用程序的边缘 ai 解决方案。 它可在 [Microsoft 在线商店](https://go.microsoft.com/fwlink/p/?LinkId=2155270)购买。
+Azure Percept 深色是一种边缘 AI 和 IoT 开发工具包，旨在开发视觉和音频 AI 概念证明。 与 [Azure Percept Studio](./overview-azure-percept-studio.md) 和 [azure Percept 音频](./overview-azure-percept-audio.md)结合使用时，它成为一个功能强大但易于使用的平台，可用于构建面向各种视觉或音频 ai 应用程序的边缘 AI 解决方案。 它可在 [Microsoft 在线商店](https://go.microsoft.com/fwlink/p/?LinkId=2155270)购买。
 
-:::image type="content" source="./media/overview-azure-percept-dk/dk-image.png" alt-text="影像.":::
+:::image type="content" source="./media/overview-azure-percept-dk/dk-image.png" alt-text="Azure Percept 深色设备。":::
 
 ## <a name="key-features"></a>关键功能
 
 - 能够 **在边缘运行 AI**。 使用内置的硬件加速，无需连接到云即可运行视觉 AI 模型。
 - **内置信任安全的硬件根**。 有关更多详细信息，请参阅 [Azure Percept 安全性](./overview-percept-security.md) 概述。
 - **与 [Azure Percept Studio](./overview-azure-percept-studio.md)** 和其他 azure 服务无缝集成。 例如，Azure IoT 中心、Azure 认知服务和 [实时视频分析](https://docs.microsoft.com/azure/media-services/live-video-analytics-edge/overview)
+- **与可选的 [Azure Percept 音频](./overview-azure-percept-audio.md)无缝集成**
 - **支持顶级 AI 平台**。 例如 "ONNX" 和 "TensorFlow"。
-- **与 80/20 railing 系统集成**。 更轻松地在生产环境中生成原型。 了解有关 [8/20 集成](./overview-8020-integration.md)的详细信息。
+- **与 80/20 railing 系统集成**。 更轻松地在生产环境中生成原型。 了解有关 [80/20 集成](./overview-8020-integration.md)的详细信息。
 
 ## <a name="hardware-components"></a>硬件组件
 

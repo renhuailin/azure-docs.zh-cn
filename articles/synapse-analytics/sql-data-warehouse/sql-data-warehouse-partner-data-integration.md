@@ -11,12 +11,12 @@ ms.date: 03/27/2019
 ms.author: procha
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 6221d6fc80c3bab4ff08c6df155feb8ebc10f928
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: f2599c76c25f8c8335b9f2a4fd6292b1a71467dc
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100373498"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102098938"
 ---
 # <a name="azure-synapse-analytics-data-integration-partners"></a>Azure Synapse Analytics 数据集成合作伙伴
 
@@ -31,6 +31,7 @@ ms.locfileid: "100373498"
 | ![Alteryx](./media/sql-data-warehouse-partner-data-integration/alteryx_logo.png) |**Alteryx**<br> Alteryx Designer 通过可重复的工作流进行自助性数据分析，在数小时内即可获得深入的见解，这与传统方法动辄需数周的时间形成鲜明的对比！ Alteryx Designer 使用同一种直观的用户界面将数据准备、数据混合和分析组合在一起，有助于数据分析师进行预测、统计和空间分析。 |[产品页面](https://www.alteryx.com/partners/microsoft/)<br>[Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/alteryx.alteryx-designer)<br>|
 | ![Attunity](./media/sql-data-warehouse-partner-data-integration/attunity_logo.png) |**Attunity (CloudBeam)**<br>Attunity CloudBeam 提供一种自动化的解决方案，可将数据加载到 Azure Synapse 数据仓库。 通过它，可更轻松地从多个源（SQL Server、Oracle、DB2、Sybase 和 MySQL 等）批量加载和增量复制数据。 |[产品页面](http://www.attunity.com/attunity-cloudbeam-for-azure/)<br>[Azure 市场](https://aws.amazon.com/marketplace/pp/Attunity-Attunity-CloudBeam/B00B5PB8IM) <br> |
 | ![CData](./media/sql-data-warehouse-partner-data-integration/cdata-logo.png) |**CData 同步-云数据管道**<br>在数分钟内为 Microsoft Azure Synapse 生成高性能数据管道。 CData "同步" 是一种易于使用的可从任意位置使用的 ETL/ELT 管道，可简化从200多个以上的企业数据源到 Azure Synapse 的数据流。  借助 CData Sync，用户可以轻松地在会计、CRM、ERP、市场营销自动化、本地和云数据之间创建自动连续数据复制。|[产品页面](https://www.cdata.com/sync/to/azuresynapse/?utm_source=azuresynapse&utm_medium=partner)<br>[Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/cdatasoftware.cdatasync?tab=Overview)<br>|
+| ![Datometry](./media/sql-data-warehouse-partner-data-integration/datometry-logo.png) |**Datometry**<br>Datometry hyper-q 将为 Teradata 编写的现有应用程序以本机方式在 Azure Synapse 上运行。 Datometry hyper-q 模拟常用的 Teradata SQL，包括分析 SQL 和高级操作概念，如存储过程、宏、设置表等。 由于 Hyper-v 返回的结果与 Teradata 的结果相同，因此可以将现有应用程序 replatformed 到 Azure Synapse，无需进行任何重大修改。 使用 Datometry hyper-q，企业可以快速移动到 Azure，并立即充分利用 Synapse。|[产品页面](https://datometry.com/solutions/replatforming/migrate-teradata-to-azure/)<br>[Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/datometry1601339937807.dtm-hyperq-azure-101?tab=Overview)<br>
 | ![Denodo](./media/sql-data-warehouse-partner-data-integration/denodo_logo.png) |**Denodo**<br>Denodo 跨组织的众多数据源提供对数据的实时访问。 它通过数据虚拟化，不用复制就跨多个源将数据桥接在一起。 Denodo 提供对驻留在企业、大数据和云源中的结构化和非结构化数据的广泛访问，同时还包括批处理时间和实时数据。|[产品页面](https://www.denodo.com/en)<br>[Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/denodo.denodo-platform-7_0-app-byol?tab=Overview)<br> |
 | ![Dimodelo](./media/sql-data-warehouse-partner-data-integration/dimodelo-logo.png) |**Dimodelo**<br>Dimodelo 数据仓库工作室是适用于 Azure 数据平台的数据仓库自动化工具。 Dimodelo 通过专用的数据仓库建模和 ETL 设计工具、基于模式的最佳做法代码生成、一键式部署和 ETL 业务流程，提高开发人员的工作效率。 Dimodelo 增强了可维护性和更改传播，使开发人员能够关注业务成果，并跨数据平台实现可移植性。|[产品页面](https://www.dimodelo.com/data-warehouse-studio-for-azure-synapse/)<br>[Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/dimodelosolutions.dimodeloazurevs)<br> |
 | ![Fivetran](./media/sql-data-warehouse-partner-data-integration/fivetran_logo.png) |**Fivetran**<br>Fivetran 可帮助你集中管理来自不同来源的数据。 它提供一项零维护、零配置的数据管道产品，还有不断扩增的面向各种常用数据源的内置连接器。 在对数据源和目标数据仓库进行身份验证后，需要用 5 分钟时间进行设置。|[产品页面](https://fivetran.com/)<br> |

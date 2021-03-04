@@ -6,13 +6,13 @@ ms.service: marketplace
 ms.topic: article
 author: vikrambmsft
 ms.author: vikramb
-ms.date: 01/28/2021
-ms.openlocfilehash: 786ecbf553ace6a90515347e8138eeb6e022589b
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.date: 02/22/2021
+ms.openlocfilehash: 7c02c41379cfb886fd7e6f84486d815d3cdbfb5b
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99063090"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102097170"
 ---
 # <a name="private-offers-in-the-microsoft-commercial-marketplace"></a>Microsoft 商业应用商店中的专用产品/服务
 
@@ -24,9 +24,9 @@ ms.locfileid: "99063090"
 
 - 议价：让发布者进一步开放公开销售套餐的折扣和还价。
 - 专属条款和条件：让发布者针对特定的客户定制条款和条件。
-- 通过 _专用配置_，发布者可以将其虚拟机、Azure 应用程序和软件即服务作为服务 (SaaS) 到单个客户的需求。 在将新产品功能启动到所有客户之前，此选项还允许发布者提供对新产品功能的预览访问权限。
+- 通过 *专用配置*，发布者可以将其虚拟机、Azure 应用程序和软件即服务作为服务 (SaaS) 到单个客户的需求。 在将新产品功能启动到所有客户之前，此选项还允许发布者提供对新产品功能的预览访问权限。
 
-专用产品/服务允许发布者利用公有 marketplace 的规模和全球可用性，并提供所需的灵活性和控制度来协商和交付自定义交易和配置。 企业现在可以按预期方式购买和销售 
+专用产品/服务允许发布者利用公有 marketplace 的规模和全球可用性，并提供所需的灵活性和控制度来协商和交付自定义交易和配置。 企业现在可以按预期方式购买和销售。
 
 ## <a name="create-private-offers-using-plans"></a>使用计划创建专用产品/服务
 
@@ -41,7 +41,7 @@ ms.locfileid: "99063090"
 - 托管服务
 - SaaS 产品/服务
 
-私人计划是产品/服务的组成部分，只由目标客户可购买。 专用计划仅供目标客户查看和可购买。  在 Azure Global 和 Azure 政府版中，客户可以使用私有计划。
+私人计划是产品/服务的组成部分，只由目标客户可购买。 专用计划仅供目标客户查看和可购买。 在 Azure Global 和 Azure 政府版中，客户可以使用私有计划。
 
 私有计划可以重复使用基本映像和/或提供已为公用计划发布的元数据。 此选项可让发布者创建公共产品/服务的多个专用变体，而无需发布同一基础映像的多个版本并提供元数据。 仅对于 Azure 虚拟机和 Azure 应用程序提供，当专用计划与公共计划共享基本映像时，对产品/服务的基本映像所做的任何更改都将使用该基本映像传播到所有公用和专用计划。
 
@@ -70,13 +70,12 @@ ms.locfileid: "99063090"
 
 专用产品/服务还将显示在搜索结果中，并可通过命令行和 Azure 资源管理器模板进行部署，就像任何其他产品。
 
-![[专用套餐]](./media/marketplace-publishers-guide/private-offer.png)
+[![[在搜索结果中出现的专用产品/服务。]](media/marketplace-publishers-guide/private-offer.png)](media/marketplace-publishers-guide/private-offer.png#lightbox)
 
 专用套餐也会显示在搜索结果中。 只需查找 **专用** 徽章即可。
 
 >[!Note]
 >通过云解决方案提供商的经销商 (CSP) program 建立的订阅不支持专用产品/服务。
-
 
 <!---
 ## Next steps

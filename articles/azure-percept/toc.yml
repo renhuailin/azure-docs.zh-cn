@@ -38,12 +38,6 @@
           href: tutorial-nocode-vision.md
         - name: 生成并部署无代码语音解决方案
           href: tutorial-no-code-speech.md
-    - name: 高级开发
-      items:
-        - name: 高级开发教程（云）
-          href: advanced-development-cloud.md
-        - name: 高级开发教程（本地）
-          href: advanced-development-local.md
 - name: 概念
   items:
     - name: Azure Percept 音频
@@ -106,5 +100,3 @@
           href: azure-percept-vision-datasheet.md
         - name: Azure Percept 音频数据表
           href: azure-percept-audio-datasheet.md
-- name: 资源
-  items: null

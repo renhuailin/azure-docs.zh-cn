@@ -4,17 +4,17 @@ description: 了解如何使用日志重播服务将数据库从 SQL Server 迁�
 services: sql-database
 ms.service: sql-managed-instance
 ms.custom: seo-lt-2019, sqldbrb=1
-ms.devlang: ''
 ms.topic: how-to
 author: danimir
+ms.author: danil
 ms.reviewer: sstein
 ms.date: 03/01/2021
-ms.openlocfilehash: bc0dc72c7547c8f74aec53b7153fc5384c6b634b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 74403b7ec1469ce7cdaadc9931eb5ac95f55f6f5
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101690781"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102096830"
 ---
 # <a name="migrate-databases-from-sql-server-to-sql-managed-instance-using-log-replay-service-preview"></a>使用日志重播服务 (预览将数据库从 SQL Server 迁移到 SQL 托管实例) 
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -56,7 +56,7 @@ LRS 不需要特定的备份文件命名约定，因为它会扫描放置在 Azu
 
 LRS 停止后（自动完成时自动执行或切换时），将无法恢复 SQL 托管实例上联机的数据库的还原过程。 若要在通过自动完成完成迁移后还原其他备份文件，或者在切换时手动还原，则需要删除数据库，并重新启动 LRS，以从头开始整个备份链。
 
-![针对 SQL 托管实例说明的日志重播服务协调步骤](./media/log-replay-service-migrate/log-replay-service-conceptual.png)
+   :::image type="content" source="./media/log-replay-service-migrate/log-replay-service-conceptual.png" alt-text="针对 SQL 托管实例说明的日志重播服务协调步骤" border="false":::
     
 | Operation | 详细信息 |
 | :----------------------------- | :------------------------- |
@@ -193,18 +193,30 @@ WITH COMPRESSION, CHECKSUM
 Azure Blob 存储用作 SQL Server 与 SQL 托管实例之间备份文件的中间存储。 需要生成包含 List 和 Read only 权限的 SAS 身份验证令牌，才能使用 LRS 服务。 这将使 LRS 服务能够访问 Azure Blob 存储，并使用备份文件将它们还原到 SQL 托管实例上。 请按照以下步骤为 LRS 使用生成 SAS 身份验证：
 
 1. 从 Azure 门户访问存储资源管理器
+
 2. 展开“Blob 容器”
-3. 右键单击 blob 容器，然后选择 "获取共享访问签名  ![ 日志重播服务生成 SAS 身份验证令牌"](./media/log-replay-service-migrate/lrs-sas-token-01.png)
+
+3. 右键单击 blob 容器，然后选择 "获取共享访问签名"
+
+   :::image type="content" source="./media/log-replay-service-migrate/lrs-sas-token-01.png" alt-text="日志重播服务-获取共享访问签名":::
+
 4. 选择令牌过期时间范围。 确保令牌在迁移期间有效。
+
 5. 选择标记-UTC 或本地时间的时区
-    - 令牌的时区和 SQL 托管实例可能不匹配。 请确保 SAS 令牌具有适当的时间有效性，同时考虑时区。 如果可能，请将时区设置为之前和之后的计划迁移时段。
+
+   - 令牌的时区和 SQL 托管实例可能不匹配。 请确保 SAS 令牌具有适当的时间有效性，同时考虑时区。 如果可能，请将时区设置为之前和之后的计划迁移时段。
+
 6. 选择 "读取" 和 "仅列出权限"
-    - 必须选择其他权限，否则 LRS 将无法启动。 此安全要求是设计的。
-7. 单击 "创建" 按钮  ![ 日志重播服务生成 SAS 身份验证令牌](./media/log-replay-service-migrate/lrs-sas-token-02.png)
 
-将使用前面指定的时间有效性生成 SAS 身份验证。 需要生成的令牌的 URI 版本-如以下屏幕截图中所示。
+   - 必须选择其他权限，否则 LRS 将无法启动。 此安全要求是设计的。
 
-![日志重播服务生成的 SAS 身份验证 URI 示例](./media/log-replay-service-migrate/lrs-generated-uri-token.png)
+7. 单击 "创建" 按钮
+
+   :::image type="content" source="./media/log-replay-service-migrate/lrs-sas-token-02.png" alt-text="日志重播服务-生成 SAS 身份验证令牌":::
+
+   将使用前面指定的时间有效性生成 SAS 身份验证。 需要生成的令牌的 URI 版本-如以下屏幕截图中所示。
+
+   :::image type="content" source="./media/log-replay-service-migrate/lrs-generated-uri-token.png" alt-text="日志重播服务-复制 URI 共享访问签名":::
 
 ### <a name="copy-parameters-from-sas-token-generated"></a>从生成的 SAS 令牌复制参数
 
@@ -212,7 +224,7 @@ Azure Blob 存储用作 SQL Server 与 SQL 托管实例之间备份文件的中�
 - StorageContainerUri 和 
 - StorageContainerSasToken，用问号分隔 (？ ) ，如下图所示。
 
-    ![日志重播服务生成的 SAS 身份验证 URI 示例](./media/log-replay-service-migrate/lrs-token-structure.png)
+   :::image type="content" source="./media/log-replay-service-migrate/lrs-token-structure.png" alt-text="日志重播服务生成的 SAS 身份验证 URI 示例" border="false":::
 
 - 第一部分以 "https://" 开始，直到问号 (？ ) 用于作为 LRS 输入的 StorageContainerURI 参数。 这会提供有关存储数据库备份文件的文件夹的 LRS 信息。
 - 第二部分是在问号后开始 (？ ) ，在示例 "sp =" 中，一直到该字符串的末尾都是 StorageContainerSasToken 参数。 这是实际的签名身份验证令牌，在指定的时间内有效。 此部分不一定需要以 "sp =" 开头，如图所示，你的情况可能有所不同。
@@ -221,11 +233,11 @@ Azure Blob 存储用作 SQL Server 与 SQL 托管实例之间备份文件的中�
 
 1. 从 https://开始复制令牌的第一部分，直到问号 (？ ) 并在 PowerShell 或 CLI 中将其用作 StorageContainerUri 参数，以启动 LRS，如以下屏幕截图所示。
 
-    ![日志重播服务复制 StorageContainerUri 参数](./media/log-replay-service-migrate/lrs-token-uri-copy-part-01.png)
+   :::image type="content" source="./media/log-replay-service-migrate/lrs-token-uri-copy-part-01.png" alt-text="日志重播服务复制 StorageContainerUri 参数":::
 
 2. 从问号开始，将标记的第二部分从问号开始 (？ ) ，直到字符串的末尾，并在 PowerShell 或 CLI 中将其用作 LRS 参数，如以下屏幕截图所示。
 
-    ![日志重播服务复制 StorageContainerSasToken 参数](./media/log-replay-service-migrate/lrs-token-uri-copy-part-02.png)
+   :::image type="content" source="./media/log-replay-service-migrate/lrs-token-uri-copy-part-02.png" alt-text="日志重播服务复制 StorageContainerSasToken 参数":::
 
 > [!IMPORTANT]
 > - 需要读取和列出 Azure Blob 存储的 SAS 令牌的权限。 如果为 SAS 身份验证令牌授予了其他任何权限，则启动 LRS 服务将会失败。 这些安全要求是由设计决定的。

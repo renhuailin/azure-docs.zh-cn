@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2020
 ms.author: memildin
-ms.openlocfilehash: ca3a1083b512709ad5ef070b6f5bd0e363baf80b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 432729417a65376533d9ecc201f2f6f52376cc58
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101720743"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102099397"
 ---
 # <a name="sql-information-protection-policy-in-azure-security-center"></a>Azure 安全中心中的 SQL 信息保护策略
  
@@ -32,7 +32,7 @@ SQL 信息保护的 [数据发现和分类机制](../azure-sql/database/data-dis
 安全中心内的信息保护策略选项提供了一组预定义的标签和信息类型，用作分类引擎的默认值。 你可以根据组织的需求自定义策略，如下所述。
 
 > [!IMPORTANT]
-> 若要为你的 Azure 租户自定义信息保护策略，你将需要租户的根管理组的管理权限。 若要深入了解 [Azure 安全中心，请参阅获取租户范围的可见性](security-center-management-groups.md)。
+> 若要为你的 Azure 租户自定义信息保护策略，你将需要租户的根管理组的管理权限。 有关详细信息 [，请参阅授予和请求租户范围的可见性](tenant-wide-permissions-management.md)。
 
 :::image type="content" source="./media/security-center-info-protection-policy/sql-information-protection-policy-page.png" alt-text="显示 SQL 信息保护策略的页面":::
  
@@ -58,7 +58,7 @@ SQL 信息保护的 [数据发现和分类机制](../azure-sql/database/data-dis
 在安全中心的 " **定价和设置** " 页中，选择 " **SQL 信息保护**"。
 
 > [!NOTE]
-> 此选项仅对具有租户级别权限的用户显示。 [向自己授予租户范围的权限](./security-center-management-groups.md#grant-tenant-wide-permissions-to-yourself)。
+> 此选项仅对具有租户级别权限的用户显示。 [向自己授予租户范围的权限](tenant-wide-permissions-management.md#grant-tenant-wide-permissions-to-yourself)。
 
 :::image type="content" source="./media/security-center-info-protection-policy/pricing-settings-link-to-information-protection.png" alt-text="从 Azure 安全中心的 &quot;定价和设置&quot; 页访问 SQL 信息保护策略":::
 

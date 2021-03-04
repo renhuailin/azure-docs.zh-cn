@@ -3,17 +3,18 @@ title: 显示 Android 地图上的流量数据 |Microsoft Azure 映射
 description: 在本文中，你将学习如何使用 Microsoft Azure map Android SDK 来显示地图上的流量数据。
 author: rbrundritt
 ms.author: richbrun
-ms.date: 12/04/2020
+ms.date: 2/26/2021
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 113f39ac2976b870c9e07851cdd0919e2578940f
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+zone_pivot_groups: azure-maps-android
+ms.openlocfilehash: 36b3666f12b48468467e76f4c281d58d8018478c
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97680458"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102098530"
 ---
 # <a name="show-traffic-data-on-the-map-android-sdk"></a>Android SDK (显示地图上的流量数据) 
 
@@ -39,6 +40,8 @@ Azure Maps 中提供了两种类型的交通数据：
 
 下面的代码演示如何在地图上显示交通数据。
 
+::: zone pivot="programming-language-java-android"
+
 ```java
 //Show traffic on the map using the traffic options.
 map.setTraffic(
@@ -47,6 +50,19 @@ map.setTraffic(
 );
 ```
 
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+map.setTraffic(
+    incidents(true),
+    flow(TrafficFlow.RELATIVE)
+)
+```
+
+::: zone-end
+
 以下屏幕截图显示了上面的代码呈现地图上的实时流量信息。
 
 ![显示实时流量信息的地图](media/how-to-show-traffic-android/android-show-traffic.png)
@@ -54,6 +70,8 @@ map.setTraffic(
 ## <a name="get-traffic-incident-details"></a>获取流量事件详细信息
 
 有关流量事件的详细信息可在用于在地图上显示事件的功能的属性中找到。 使用 Azure Maps 流量事件向量磁贴服务将流量事件添加到映射。 这些矢量磁贴中的数据格式（如 [此处所述](https://developer.tomtom.com/traffic-api/traffic-api-documentation-traffic-incidents/vector-incident-tiles)）。 以下代码将单击事件添加到地图中，并检索已单击的流量事件功能，并显示带有一些详细信息的 toast 消息。
+
+::: zone pivot="programming-language-java-android"
 
 ```java
 //Show traffic information on the map.
@@ -107,6 +125,59 @@ map.events.add((OnFeatureClick) (features) -> {
     }
 });
 ```
+
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+//Show traffic information on the map.
+map.setTraffic(
+    incidents(true),
+    flow(TrafficFlow.RELATIVE)
+)
+
+//Add a click event to the map.
+map.events.add(OnFeatureClick { features: List<Feature>? ->
+    if (features != null && features.size > 0) {
+        val incident = features[0]
+
+        //Ensure that the clicked feature is an traffic incident feature.
+        if (incident.properties() != null && incident.hasProperty("incidentType")) {
+            val sb = StringBuilder()
+            val incidentType = incident.getStringProperty("incidentType")
+
+            if (incidentType != null) {
+                sb.append(incidentType)
+            }
+
+            if (sb.length > 0) {
+                sb.append("\n")
+            }
+
+            //If the road is closed, find out where it is closed from.
+            if ("Road Closed" == incidentType) {
+                val from = incident.getStringProperty("from")
+                if (from != null) {
+                    sb.append(from)
+                }
+            } else { //Get the description of the traffic incident.
+                val description = incident.getStringProperty("description")
+                if (description != null) {
+                    sb.append(description)
+                }
+            }
+
+            val message = sb.toString()
+            if (message.length > 0) {
+                Toast.makeText(this, message, Toast.LENGTH_LONG).show()
+            }
+        }
+    }
+})
+```
+
+::: zone-end
 
 以下屏幕截图显示了上面的代码呈现地图上的实时流量信息，以及显示事件详细信息的 toast 消息。
 

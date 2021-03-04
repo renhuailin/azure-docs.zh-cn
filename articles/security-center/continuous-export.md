@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 12/24/2020
 ms.author: memildin
-ms.openlocfilehash: 9b8dc635781c96dcbd7aa423c77f60ff0556bd71
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: fc3774a01665b88ccae2e25ae8382497f8010c35
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100634051"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102096966"
 ---
 # <a name="continuously-export-security-center-data"></a>连续导出安全中心数据
 
@@ -44,7 +44,7 @@ Azure 安全中心会生成详细的安全警报和建议。 可以通过门户�
 |发布状态：|正式发布版 (GA)|
 |定价：|免费|
 |所需角色和权限：|<ul><li>资源组的安全管理员或所有者 </li><li>对目标资源的写入权限</li><li>如果使用的是下面所述的 Azure Policy“DeployIfNotExist”策略，则还需要分配策略的权限</li></ul>|
-|云：|![是](./media/icons/yes-icon.png) 商业云<br>![是](./media/icons/yes-icon.png) US Gov，其他政府<br>![是](./media/icons/yes-icon.png) 中国 Gov (到事件中心) |
+|云：|![是](./media/icons/yes-icon.png) 商业云<br>![是](./media/icons/yes-icon.png) US Gov，其他政府<br>![是](./media/icons/yes-icon.png) China Gov|
 |||
 
 
@@ -171,7 +171,7 @@ API 提供了 Azure 门户中没有的其他功能，例如：
 
 ### <a name="log-analytics-tables-and-schemas"></a>Log Analytics 表和架构
 
-安全警报和建议分别存储在 SecurityAlert 和 SecurityRecommendations 表中 。 
+安全警报和建议分别存储在 *SecurityAlert* 和 *SecurityRecommendation* 表中。 
 
 包含这些表的 Log Analytics 解决方案的名称取决于是否启用了 Azure Defender：Security（“安全和审核”）或 SecurityCenterFree。 
 

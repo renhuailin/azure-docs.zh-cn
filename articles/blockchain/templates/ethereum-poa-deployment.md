@@ -1,16 +1,16 @@
 ---
 title: 在 Azure 上部署以太坊证书颁发机构协会解决方案模板
 description: 使用以太坊的证书颁发机构协会解决方案在 Azure 上部署和配置多成员协会以太坊网络
-ms.date: 07/23/2020
+ms.date: 03/01/2021
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.custom: devx-track-js
-ms.openlocfilehash: e680bc601b7f230314c1063523a003e95a849c0a
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.custom: contperf-fy21q3
+ms.openlocfilehash: 70c9498bae9117585963e111bea4f1e127cab232
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024392"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102097935"
 ---
 # <a name="deploy-ethereum-proof-of-authority-consortium-solution-template-on-azure"></a>在 Azure 上部署以太坊证书颁发机构协会解决方案模板
 
@@ -48,9 +48,7 @@ ms.locfileid: "95024392"
 * 用于聚合日志和性能统计信息的 Azure Monitor
 * VNet 网关（可选），允许跨专用 VNet 的 VPN 连接
 
-默认情况下，可以通过公共 IP 访问 RPC 和对等终结点，以便能够在
-
-订阅和云。 对于应用程序级访问控制，可以使用 [奇偶校验的权限协定](https://openethereum.github.io/Permissioning.html)。 支持在 Vpn 后面部署的网络，这些网络利用 VNet 网关实现跨订阅连接。 由于 VPN 和 VNet 部署更复杂，因此在原型设计解决方案时，您可能希望从公共 IP 模型开始。
+默认情况下，可以通过公共 IP 访问 RPC 和对等互连终结点，以简化订阅和云之间的连接。 对于应用程序级访问控制，可以使用 [奇偶校验的权限协定](https://openethereum.github.io/Permissioning.html)。 支持在 Vpn 后面部署的网络，这些网络利用 VNet 网关实现跨订阅连接。 由于 VPN 和 VNet 部署更复杂，因此在原型设计解决方案时，您可能希望从公共 IP 模型开始。
 
 Docker 容器用于可靠性和模块化。 Azure 容器注册表用于作为每个部署的一部分承载和提供版本控制映像。 容器映像包括：
 
@@ -86,11 +84,11 @@ Docker 容器用于可靠性和模块化。 Azure 容器注册表用于作为每
 
 选择 **区块链**  >  **以太坊 (preview)**。
 
-### <a name="basics"></a>基础
+### <a name="basics"></a>基本知识
 
 在 " **基本** 信息" 下，指定任何部署的标准参数的值。
 
-![基础](./media/ethereum-poa-deployment/basic-blade.png)
+![基本知识](./media/ethereum-poa-deployment/basic-blade.png)
 
 参数 | 说明 | 示例值
 ----------|-------------|--------------
@@ -100,7 +98,7 @@ VM 用户名 | 部署的每个 VM 的管理员用户名 | 1-64 字母数字字�
 身份验证类型 | 对虚拟机进行身份验证的方法。 | 密码
 密码 | 部署的每个虚拟机的管理员帐户密码。 所有 Vm 最初都具有相同的密码。 你可以在设置后更改密码。 | 12-72 个字符 
 订阅 | 部署联盟网络的订阅 |
-资源组| 部署联盟网络的资源组。 | MyResourceGroup
+资源组| 部署联盟网络的资源组。 | myResourceGroup
 位置 | 资源组的 Azure 区域。 | 美国西部 2
 
 选择“确定”。
@@ -180,7 +178,7 @@ F16s|高级·SSD|high|high|low
 
 单击摘要以查看指定的输入，并运行基本的部署前验证。 在部署之前，您可以下载模板和参数。
 
-选择 " **创建** " 以进行部署。
+选择“创建”以进行部署。
 
 如果部署包括 VNet 网关，部署可能需要45到50分钟。
 
@@ -273,231 +271,6 @@ $MyGateway = Get-AzVirtualNetworkGateway -Name $MyGatewayName -ResourceGroupName
 New-AzVirtualNetworkGatewayConnection -Name $ConnectionName -ResourceGroupName $MyResourceGroup -VirtualNetworkGateway1 $MyGateway -VirtualNetworkGateway2 $OtherGateway -Location $MyGateway.Location -ConnectionType Vnet2Vnet -SharedKey $SharedKey -EnableBgp $True
 ```
 
-## <a name="service-monitoring"></a>服务监视
-
-您可以通过使用部署电子邮件中的链接，或在部署输出 [OMS_PORTAL_URL] 中查找参数来找到您的 Azure Monitor 门户。
-
-门户首先显示高级网络统计信息和节点概述。
-
-![监视类别](./media/ethereum-poa-deployment/monitor-categories.png)
-
-选择 " **节点概述**  " 会显示每个节点的基础结构统计信息。
-
-![节点统计信息](./media/ethereum-poa-deployment/node-stats.png)
-
-选择 " **网络统计** 信息" 会显示以太坊的网络统计信息。
-
-![网络统计信息](./media/ethereum-poa-deployment/network-stats.png)
-
-### <a name="sample-kusto-queries"></a>示例 Kusto 查询
-
-可以查询监视日志来调查故障或设置阈值警报。 下面的查询是可在 " *日志搜索* " 工具中运行的示例：
-
-由多个验证程序查询报告的列表块可用于帮助查找链分叉。
-
-```sql
-MinedBlock_CL
-| summarize DistinctMiners = dcount(BlockMiner_s) by BlockNumber_d, BlockMiner_s
-| where DistinctMiners > 1
-```
-
-获取指定验证器节点的平均对等计数，该节点平均超过5分钟的存储桶。
-
-```sql
-let PeerCountRegex = @"Syncing with peers: (\d+) active, (\d+) confirmed, (\d+)";
-ParityLog_CL
-| where Computer == "vl-devn3lgdm-reg1000001"
-| project RawData, TimeGenerated
-| where RawData matches regex PeerCountRegex
-| extend ActivePeers = extract(PeerCountRegex, 1, RawData, typeof(int))
-| summarize avg(ActivePeers) by bin(TimeGenerated, 5m)
-```
-
-## <a name="ssh-access"></a>SSH 访问权限
-
-出于安全因素，默认情况下，网络组安全规则拒绝 SSH 端口访问。 若要访问 PoA 网络中的虚拟机实例，需要将以下安全规则更改为 " *允许*"。
-
-1. 在 Azure 门户中，请参阅已部署资源组的 " **概述** " 部分。
-
-    ![ssh 概述](./media/ethereum-poa-deployment/ssh-overview.png)
-
-1. 选择要访问的 VM 的区域的 **网络安全组** 。
-
-    ![ssh nsg](./media/ethereum-poa-deployment/ssh-nsg.png)
-
-1. 选择 " **允许-ssh** " 规则。
-
-    ![屏幕捕获显示了 ssh 允许选择的 "概述" 窗口。](./media/ethereum-poa-deployment/ssh-allow.png)
-
-1. 更改 **操作** 以 **允许**
-
-    ![ssh 启用允许](./media/ethereum-poa-deployment/ssh-enable-allow.png)
-
-1. 选择“保存”。 应用更改可能需要几分钟时间。
-
-你可以通过 SSH 通过 SSH 与提供的管理员用户名和密码/SSH 密钥远程连接到虚拟机。 用于访问第一个验证器节点的 SSH 命令在模板部署输出中列出。 例如：
-
-``` bash
-ssh -p 4000 poaadmin\@leader4vb.eastus.cloudapp.azure.com.
-```
-
-若要转到其他事务节点，请将端口号递增1。
-
-如果部署到多个区域，请将命令更改为该区域中的负载均衡器的 DNS 名称或 IP 地址。 若要查找其他区域的 DNS 名称或 IP 地址，请查找命名约定为 **\* \* \* \* \* lbpip \#** 的资源，并查看其 "DNS 名称" 和 "IP 地址" 属性。
-
-## <a name="azure-traffic-manager-load-balancing"></a>Azure 流量管理器负载均衡
-
-Azure 流量管理器可通过路由不同区域中多个部署间的传入流量，帮助减少故障时间并加快 PoA 网络的响应速度。 内置运行状况检查和自动重新路由可帮助确保 RPC 终结点和管理 DApp 的高可用性。 如果已部署到多个区域并且已准备好投入生产，则此功能非常有用。
-
-使用流量管理器通过自动故障转移提高 PoA 网络的可用性。 你还可以使用流量管理器，通过将最终用户路由到网络延迟最低的 Azure 位置，提高网络的响应能力。
-
-如果决定创建流量管理器配置文件，可以使用配置文件的 DNS 名称来访问网络。 将其他联盟成员添加到网络中之后，流量管理器也可用于跨其部署的验证程序进行负载均衡。
-
-### <a name="creating-a-traffic-manager-profile"></a>创建流量管理器配置文件
-
-1. 在 [Azure 门户](https://portal.azure.com)中，选择左上角的 " **创建资源** "。
-1. 搜索 " **流量管理器配置文件**"。
-
-    ![搜索 Azure 流量管理器](./media/ethereum-poa-deployment/traffic-manager-search.png)
-
-    为配置文件指定一个唯一名称，并选择用于 PoA 部署的资源组。
-
-1. 选择 " **创建** " 以进行部署。
-
-    ![创建流量管理器](./media/ethereum-poa-deployment/traffic-manager-create.png)
-
-1. 部署后，选择资源组中的实例。 访问流量管理器的 DNS 名称可以在 "概述" 选项卡中找到。
-
-    ![查找流量管理器 DNS](./media/ethereum-poa-deployment/traffic-manager-dns.png)
-
-1. 选择 " **终结点** " 选项卡，然后选择 " **添加** " 按钮。
-1. 为终结点提供唯一名称。
-1. 对于 " **目标资源类型**"，请选择 " **公共 IP 地址**"。
-1. 选择第一个区域负载均衡器的公共 IP 地址。
-
-    ![路由流量管理器](./media/ethereum-poa-deployment/traffic-manager-routing.png)
-
-对已部署网络中的每个区域重复此操作。 终结点处于 " **已启用** " 状态后，它们会自动加载，并将在流量管理器的 DNS 名称上平衡区域。 你现在可以使用此 DNS 名称来代替本文其他步骤中的 [CONSORTIUM_DATA_URL] 参数。
-
-## <a name="data-api"></a>数据 API
-
-每个联盟成员都拥有其他成员连接到网络所需的信息。 为了实现轻松连接，每个成员都在数据 API 终结点上托管一组连接信息。
-
-现有成员在成员部署之前提供 [CONSORTIUM_DATA_URL]。 部署后，加入的成员可从以下终结点的 JSON 接口检索信息：
-
-`<CONSORTIUM_DATA_URL>/networkinfo`
-
-响应包含的信息有助于联接 (Genesis 块、验证程序集协定 ABI、bootnodes) 的成员，以及对现有成员 (验证程序地址) 有用的信息。 可以使用这种标准化来跨云提供商扩展联合会。 此 API 使用以下结构返回 JSON 格式的响应：
-
-```json
-{
-  "$id": "",
-  "type": "object",
-  "definitions": {},
-  "$schema": "https://json-schema.org/draft-07/schema#",
-  "properties": {
-    "majorVersion": {
-      "$id": "/properties/majorVersion",
-      "type": "integer",
-      "title": "This schema’s major version",
-      "default": 0,
-      "examples": [
-        0
-      ]
-    },
-    "minorVersion": {
-      "$id": "/properties/minorVersion",
-      "type": "integer",
-      "title": "This schema’s minor version",
-      "default": 0,
-      "examples": [
-        0
-      ]
-    },
-    "bootnodes": {
-      "$id": "/properties/bootnodes",
-      "type": "array",
-      "items": {
-        "$id": "/properties/bootnodes/items",
-        "type": "string",
-        "title": "This member’s bootnodes",
-        "default": "",
-        "examples": [
-          "enode://a348586f0fb0516c19de75bf54ca930a08f1594b7202020810b72c5f8d90635189d72d8b96f306f08761d576836a6bfce112cfb6ae6a3330588260f79a3d0ecb@10.1.17.5:30300",
-          "enode://2d8474289af0bb38e3600a7a481734b2ab19d4eaf719f698fe885fb239f5d33faf217a860b170e2763b67c2f18d91c41272de37ac67386f80d1de57a3d58ddf2@10.1.17.4:30300"
-        ]
-      }
-    },
-    "valSetContract": {
-      "$id": "/properties/valSetContract",
-      "type": "string",
-      "title": "The ValidatorSet Contract Source",
-      "default": "",
-      "examples": [
-        "pragma solidity 0.4.21;\n\nimport \"./SafeMath.sol\";\nimport \"./Utils.sol\";\n\ncontract ValidatorSet …"
-      ]
-    },
-    "adminContract": {
-      "$id": "/properties/adminContract",
-      "type": "string",
-      "title": "The AdminSet Contract Source",
-      "default": "",
-      "examples": [
-        "pragma solidity 0.4.21;\nimport \"./SafeMath.sol\";\nimport \"./SimpleValidatorSet.sol\";\nimport \"./Admin.sol\";\n\ncontract AdminValidatorSet is SimpleValidatorSet { …"
-      ]
-    },
-    "adminContractABI": {
-      "$id": "/properties/adminContractABI",
-      "type": "string",
-      "title": "The Admin Contract ABI",
-      "default": "",
-      "examples": [
-        "[{\"constant\":false,\"inputs\":[{\"name\":\"proposedAdminAddress\",\"type\":\"address\"},…"
-      ]
-    },
-    "paritySpec": {
-      "$id": "/properties/paritySpec",
-      "type": "string",
-      "title": "The Parity client spec file",
-      "default": "",
-      "examples": [
-        "\n{\n \"name\": \"PoA\",\n \"engine\": {\n \"authorityRound\": {\n \"params\": {\n \"stepDuration\": \"2\",\n \"validators\" : {\n \"safeContract\": \"0x0000000000000000000000000000000000000006\"\n },\n \"gasLimitBoundDivisor\": \"0x400\",\n \"maximumExtraDataSize\": \"0x2A\",\n \"minGasLimit\": \"0x2FAF080\",\n \"networkID\" : \"0x9a2112\"\n }\n }\n },\n \"params\": {\n \"gasLimitBoundDivisor\": \"0x400\",\n \"maximumExtraDataSize\": \"0x2A\",\n \"minGasLimit\": \"0x2FAF080\",\n \"networkID\" : \"0x9a2112\",\n \"wasmActivationTransition\": \"0x0\"\n },\n \"genesis\": {\n \"seal\": {\n \"authorityRound\": {\n \"step\": \"0x0\",\n \"signature\": \"0x0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000\"\n }\n },\n \"difficulty\": \"0x20000\",\n \"gasLimit\": \"0x2FAF080\"\n },\n \"accounts\": {\n \"0x0000000000000000000000000000000000000001\": { \"balance\": \"1\", \"builtin\": { \"name\": \"ecrecover\", \"pricing\": { \"linear\": { \"base\": 3000, \"word\": 0 } } } },\n \"0x0000000000000000000000000000000000000002\": { \"balance\": \"1\", \"builtin\": { \"name\": \"sha256\", \"pricing\": { \"linear\": { \"base\": 60, \"word\": 12 } } } },\n \"0x0000000000000000000000000000000000000003\": { \"balance\": \"1\", \"builtin\": { \"name\": \"ripemd160\", \"pricing\": { \"linear\": { \"base\": 600, \"word\": 120 } } } },\n \"0x0000000000000000000000000000000000000004\": { \"balance\": \"1\", \"builtin\": { \"name\": \"identity\", \"pricing\": { \"linear\": { \"base\": 15, \"word\": 3 } } } },\n \"0x0000000000000000000000000000000000000006\": { \"balance\": \"0\", \"constructor\" : \"…\" }\n }\n}"
-      ]
-    },
-    "errorMessage": {
-      "$id": "/properties/errorMessage",
-      "type": "string",
-      "title": "Error message",
-      "default": "",
-      "examples": [
-        ""
-      ]
-    },
-    "addressList": {
-      "$id": "/properties/addressList",
-      "type": "object",
-      "properties": {
-        "addresses": {
-          "$id": "/properties/addressList/properties/addresses",
-          "type": "array",
-          "items": {
-            "$id": "/properties/addressList/properties/addresses/items",
-            "type": "string",
-            "title": "This member’s validator addresses",
-            "default": "",
-            "examples": [
-              "0x00a3cff0dccc0ecb6ae0461045e0e467cff4805f",
-              "0x009ce13a7b2532cbd89b2d28cecd75f7cc8c0727"
-            ]
-          }
-        }
-      }
-    }
-  }
-}
-
-```
-
 ## <a name="governance-dapp"></a>Governance DApp
 
 权威证明的核心是分散式治理。 由于证书颁发机构依赖于允许的网络颁发机构列表来使网络保持正常运行，因此提供一种公平机制来对此权限列表进行修改非常重要。 每个部署都附带一组智能协定和门户，适用于此允许列表的链间管理。 一旦提议的更改获得联盟成员的多数票，就会执行更改。 投票允许将新的共识参与者添加到或被侵害，以一种可鼓励诚实网络的透明方式删除参与者。
@@ -553,181 +326,7 @@ Azure 流量管理器可通过路由不同区域中多个部署间的传入流�
 
 ![帐户](./media/ethereum-poa-deployment/governance-dapp-account.png)
 
-## <a name="ethereum-development"></a>以太坊开发<a id="tutorials"></a>
-
-若要编译、部署和测试智能协定，可以考虑使用以下几个选项进行以太坊开发：
-* [Truffle Suite](https://www.trufflesuite.com/docs/truffle/overview) -基于客户端的以太坊开发环境
-* [以太坊 Remix](https://remix-ide.readthedocs.io/en/latest/index.html ) -基于浏览器和本地以太坊开发环境
-
-### <a name="compile-deploy-and-execute-smart-contract"></a>编译、部署和执行智能协定
-
-在下面的示例中，您将创建一个简单的智能协定。 使用 Truffle 将智能协定编译并部署到区块链网络。 部署后，通过事务调用智能协定函数。
-
-#### <a name="prerequisites"></a>先决条件
-
-* 安装 [Python 2.7.15](https://www.python.org/downloads/release/python-2715/)。 Truffle 和 Web3 需要 Python。 选择 "安装" 选项以在路径中包含 Python。
-* 安装 Truffle v 5.0.5 `npm install -g truffle@v5.0.5` 。 Truffle 要求安装多个工具，包括 [Node.js](https://nodejs.org)、[Git](https://git-scm.com/)。 有关详细信息，请参阅 [Truffle 文档](https://github.com/trufflesuite/truffle)。
-
-### <a name="create-truffle-project"></a>创建 Truffle 项目
-
-在编译和部署智能协定之前，需要先创建一个 Truffle 项目。
-
-1. 打开命令提示符或 shell。
-1. 创建名为 `HelloWorld` 的文件夹。
-1. 将目录更改为新 `HelloWorld` 文件夹。
-1. 使用命令初始化新的 Truffle 项目 `truffle init` 。
-
-    ![创建新的 Truffle 项目](./media/ethereum-poa-deployment/create-truffle-project.png)
-
-### <a name="add-a-smart-contract"></a>添加智能协定
-
-在 Truffle 项目的 " **协定** " 子目录中创建智能协定。
-
-1. 在 `postBox.sol` Truffle 项目的 " **协定** " 子目录中的指定文件中创建一个文件。
-1. 将以下 PostBox 代码添加到 " **postBox.sol**"。
-
-    ```javascript
-    pragma solidity ^0.5.0;
-    
-    contract postBox {
-        string message;
-        function postMsg(string memory text) public {
-            message = text;
-        }
-        function getMsg() public view returns (string memory) {
-            return message;
-        }
-    }
-    ```
-
-### <a name="deploy-smart-contract-using-truffle"></a>使用 Truffle 部署智能协定
-
-Truffle 项目包含区块链网络连接详细信息的配置文件。 修改配置文件以包括网络的连接信息。
-
-> [!WARNING]
-> 永远不要通过网络发送以太坊私钥。 首先确保在本地对每个事务进行签名，然后通过网络发送已签名的事务。
-
-1. 在 [部署区块链网络时，需要使用以太坊管理员帐户](#ethereum-settings)的助记短语。 如果使用 MetaMask 创建了帐户，则可以从 MetaMask 检索助记键。 选择 MetaMask 扩展的右上方的 "管理员帐户" 图标，然后选择 " **设置" > 安全性 & 隐私 > 显示种子单词**"。
-1. 将 `truffle-config.js` Truffle 项目中的内容替换为以下内容。 替换占位符终结点和助记键值。
-
-    ```javascript
-    const HDWalletProvider = require("truffle-hdwallet-provider");
-    const rpc_endpoint = "<Ethereum RPC endpoint>";
-    const mnemonic = "Twelve words you can find in MetaMask > Security & Privacy > Reveal Seed Words";
-
-    module.exports = {
-      networks: {
-        development: {
-          host: "localhost",
-          port: 8545,
-          network_id: "*" // Match any network id
-        },
-        poa: {
-          provider: new HDWalletProvider(mnemonic, rpc_endpoint),
-          network_id: 10101010,
-          gasPrice : 0
-        }
-      }
-    };
-    ```
-
-1. 由于我们使用的是 Truffle HD 钱包提供程序，因此请使用命令在项目中安装该模块 `npm install truffle-hdwallet-provider --save` 。
-
-Truffle 使用迁移脚本将智能协定部署到区块链网络。 需要使用迁移脚本来部署新的智能协定。
-
-1. 添加新的迁移以部署新的协定。 `2_deploy_contracts.js`在 Truffle 项目的 **迁移** 子目录中创建文件。
-
-    ``` javascript
-    var postBox = artifacts.require("postBox");
-    
-    module.exports = deployer => {
-        deployer.deploy(postBox);
-    };
-    ```
-
-1. 使用 Truffle 迁移命令部署到 PoA 网络。 在 Truffle 项目目录中的命令提示符处，运行：
-
-    ```javascript
-    truffle migrate --network poa
-    ```
-
-### <a name="call-a-smart-contract-function"></a>调用智能协定函数
-
-部署智能协定后，可以发送事务来调用函数。
-
-1. 在 Truffle 项目目录中，创建一个名为的新文件 `sendtransaction.js` 。
-1. 将以下内容添加到 **sendtransaction.js**。
-
-    ``` javascript
-    var postBox = artifacts.require("postBox");
-    
-    module.exports = function(done) {
-      console.log("Getting the deployed version of the postBox smart contract")
-      postBox.deployed().then(function(instance) {
-        console.log("Calling postMsg function for contract ", instance.address);
-        return instance.postMsg("Hello, blockchain!");
-      }).then(function(result) {
-        console.log("Transaction hash: ", result.tx);
-        console.log("Request complete");
-        done();
-      }).catch(function(e) {
-        console.log(e);
-        done();
-      });
-    };
-    ```
-
-1. 使用 Truffle execute 命令执行该脚本。
-
-    ```javascript
-    truffle exec sendtransaction.js --network poa
-    ```
-
-    ![执行脚本以通过事务调用函数](./media/ethereum-poa-deployment/send-transaction.png)
-
-## <a name="webassembly-wasm-support"></a>WebAssembly (WASM) 支持
-
-新部署的 PoA 网络上已启用了 WebAssembly 支持。 它允许以任何转换为 Web-Assembly (Rust、C、C++) 的语言进行智能合同开发。 有关详细信息，请参阅： [WebAssembly 的奇偶校验概述](https://openethereum.github.io/WebAssembly-Home.html) 和 [奇偶校验技术教程](https://github.com/paritytech/pwasm-tutorial)
-
-## <a name="faq"></a>常见问题解答
-
-### <a name="i-notice-there-are-many-transactions-on-the-network-that-i-didnt-send-where-are-these-coming-from"></a>我注意到，网络上存在许多未发送的事务。 这些事务来自哪里？
-
-解锁[个人 API](https://web3js.readthedocs.io/en/v1.2.0/web3-eth-personal.html) 是不安全的操作。 机器人将侦听解锁的 Ethereum 帐户并尝试耗尽资金。 机器人假设这些帐户包含真实的以太，并试图第一个转走余额。 请勿在网络上启用个人 API。 改为使用 MetaMask 或以编程方式手动使用钱包来对事务进行预先签名。
-
-### <a name="how-to-ssh-onto-a-vm"></a>如何在 VM 上启用 SSH？
-
-出于安全因素，未公开 SSH 端口。 请按照[本指南启用 SSH 端口](#ssh-access)。
-
-### <a name="how-do-i-set-up-an-audit-member-or-transaction-nodes"></a>如何设置审核成员或事务节点？
-
-事务节点是一组与网络对等互连但不参与共识的奇偶校验客户端。 这些节点仍可用于提交 Ethereum 事务并读取智能合同状态。 此机制适用于向网络上的非授权机构成员提供可审核性。 若要实现此目的，请按照 [扩大联盟](#growing-the-consortium)中的步骤操作。
-
-### <a name="why-are-metamask-transactions-taking-a-long-time"></a>为什么 MetaMask 事务需要花费很长时间？
-
-为了确保以正确的顺序接收事务，每个 Ethereum 事务都带有递增的 nonce。 如果已在其他网络上的 MetaMask 中使用了帐户，则需要重置 nonce 值。 单击 "设置" 图标 (三个栏) 、"设置"、"重置帐户"。 事务历史记录随即清除，现在可以重新提交事务。
-
-### <a name="do-i-need-to-specify-gas-fee-in-metamask"></a>是否需要在 MetaMask 中指定燃料费用？
-
-Ether 在权威证明联盟中没有用处。 因此，在 MetaMask 中提交事务时，无需指定充气费。
-
-### <a name="what-should-i-do-if-my-deployment-fails-due-to-failure-to-provision-azure-oms"></a>如果因无法预配 Azure OMS 而使我的部署失败，我该怎么办？
-
-监视是一个可选功能。 在某些极少数情况下，由于无法成功设置 Azure Monitor 资源，你可以重新部署而无需 Azure Monitor。
-
-### <a name="are-public-ip-deployments-compatible-with-private-network-deployments"></a>公共 IP 部署是否与专用网络部署兼容？
-
-不是。 对等互连需要双向通信，以便整个网络必须是公共的或私有的。
-
-### <a name="what-is-the-expected-transaction-throughput-of-proof-of-authority"></a>权威证明的预期事务吞吐量是多少？
-
-事务吞吐量高度依赖于事务类型和网络拓扑。 使用简单的事务，我们已通过跨多个区域部署的网络，以平均每秒 400 个事务为基准进行评估。
-
-### <a name="how-do-i-subscribe-to-smart-contract-events"></a>如何订阅智能合同事件？
-
-Ethereum 权威证明现在支持 Web 套接字。  检查部署输出，找到 web 套接字 URL 和端口。
-
-## <a name="support-and-feedback"></a>支持和反馈
+## <a name="support-and-feedback"></a>支持和反馈<a id="tutorials"></a>
 
 对于 Azure 区块链新闻，请访问 [Azure 区块链博客](https://azure.microsoft.com/blog/topics/blockchain/)，以随时了解 Azure 区块链工程团队提供的区块链服务产品和信息。
 

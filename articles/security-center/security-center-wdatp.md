@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/15/2021
 ms.author: memildin
-ms.openlocfilehash: b9095d78d902bf5e44bffaba5db19bf2c26e0845
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: a659ea897f013e504668789a7d5671420ff70a9f
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101726999"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102099074"
 ---
 # <a name="protect-your-endpoints-with-security-centers-integrated-edr-solution-microsoft-defender-for-endpoint"></a>利用安全中心的集成 EDR 解决方案保护终结点： Microsoft Defender for Endpoint
 
@@ -41,7 +41,7 @@ Microsoft Defender for Endpoint 是提供的一个全面的云终结点安全解
 | 方面                          | 详细信息                                                                                                                                                                                                                                                                                                       |
 |---------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 发布状态：                  | 正式发布 (GA)                                                                                                                                                                                                                                                                                      |
-| 定价：                        | 需要[用于服务器的 Azure Defender](security-center-pricing.md)                                                                                                                                                                                                                                             |
+| 定价：                        | 需要[用于服务器的 Azure Defender](defender-for-servers-introduction.md)                                                                                                                                                                                                                                             |
 | 支持的平台：            |  •运行 Windows 的 Azure 计算机<br> •运行 Windows 的 Azure Arc 计算机|
 | 受支持的 Windows 版本：  |   •公开 **上市 (GA) -** 在 Windows Server 2016、2012 r2 和 2008 r2 SP1 上检测<br> •在 Windows Server 2019、 [Windows 虚拟桌面 (WVD)](../virtual-desktop/overview.md)和 [windows 10 企业多会话](../virtual-desktop/windows-10-multisession-faq.md) (以前面向虚拟桌面 (EVD 的企业多会话 **检测功能)**<br>已为 Office 365 GCC 客户禁用使用这些集成的服务器终结点监视|
 | 不受支持的操作系统：  |  • Windows 10 (，而不是 EVD 或 WVD) <br> • Linux|
@@ -83,8 +83,7 @@ Microsoft Defender for Endpoint 提供：
         - 如果要将 Defender to Endpoint 部署到本地计算机，请按照[将混合计算机连接到启用了 Azure Arc 的服务器](../azure-arc/servers/learn/quick-enable-hybrid-vm.md)中所述，将其连接到 azure arc
     - 此外，对于 **Windows Server 2019 计算机**，请确认它们正在运行有效的代理，并且具有 MicrosoftMonitoringAgent 扩展
 
-1. **为服务器启用 Azure Defender**。 请参阅 [Azure 安全中心的定价](security-center-pricing.md#enable-azure-defender)。
-
+1. **为服务器启用 Azure Defender**。 请参阅 [快速入门：启用 Azure Defender](enable-azure-defender.md)。
 
 1. 如果已在服务器上授权并部署了 Microsoft Defender for 终结点，请使用 [下架 Windows server](/windows/security/threat-protection/microsoft-defender-atp/configure-server-endpoints#offboard-windows-servers)中所述的过程将其删除。
 1. 在安全中心的菜单中，选择“定价和设置”。

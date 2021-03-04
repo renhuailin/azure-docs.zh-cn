@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 12/09/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: fe427150b15c6bccb97172ae751235d388c95c7b
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: dbeb3cd4fccf80f434e6c7ac08c658632f64b135
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98675020"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102096847"
 ---
 # <a name="tutorial-configure-zscaler-private-access-with-azure-active-directory-b2c"></a>教程：使用 Azure Active Directory B2C 配置 Zscaler 专用访问
 
@@ -78,7 +78,7 @@ ZPA 集成包括以下组件：
    b. 在 " **单一登录**" 下，选择 " **用户**"。  
    c. 在 " **域** " 下拉列表中，选择要与此 IdP 相关联的身份验证域。
 
-1. 选择“下一步”。
+1. 选择“**下一页**”。
 
 1. 选择 " **SP 元数据** " 选项卡，然后执行以下操作：
 
@@ -100,11 +100,11 @@ ZPA 集成包括以下组件：
 
 ### <a name="step-3-register-zpa-as-a-saml-application-in-azure-ad-b2c"></a>步骤3：在 Azure AD B2C 中将 ZPA 注册为 SAML 应用程序
 
-若要在 Azure AD B2C 中配置 SAML 应用程序，请参阅 [在 Azure AD B2C 中注册 saml 应用程序](./connect-with-saml-service-providers.md)。 
+若要在 Azure AD B2C 中配置 SAML 应用程序，请参阅 [在 Azure AD B2C 中注册 saml 应用程序](./saml-service-provider.md)。 
 
-在步骤 ["3.2 上传并测试策略元数据"](./connect-with-saml-service-providers.md#32-upload-and-test-your-policy-metadata)中，复制或记下 Azure AD B2C 使用的 IdP SAML 元数据 URL。 稍后需要用到此信息。
+在 ["上传策略"](./saml-service-provider.md#upload-your-policy)步骤中，复制或记下 Azure AD B2C 使用的 IdP SAML 元数据 URL。 稍后需要用到此信息。
 
-按照说明步骤 ["4.2 更新应用程序清单"](./connect-with-saml-service-providers.md#42-update-the-app-manifest)。 在步骤4.2 中，按如下所示更新应用程序清单属性：
+按照说明步骤 ["在 Azure AD B2C 中配置应用程序"](./saml-service-provider.md#configure-your-application-in-azure-ad-b2c)。 在步骤4.2 中，按如下所示更新应用程序清单属性：
 
 - 对于 **identifierUris**：使用之前在 "步骤 1.6. b" 中复制或记录的服务提供程序实体 ID。  
 - 对于 **samlMetadataUrl**：跳过此属性，因为 ZPA 不托管 SAML 元数据 URL。  
@@ -150,6 +150,6 @@ ZPA 集成包括以下组件：
 有关详细信息，请查看以下文章：
 
 - [Azure AD B2C 中的自定义策略入门](./custom-policy-get-started.md)
-- [在 Azure AD B2C 中注册 SAML 应用程序](./connect-with-saml-service-providers.md)
+- [在 Azure AD B2C 中注册 SAML 应用程序](./saml-service-provider.md)
 - [ZPA 的分步配置指南](https://help.zscaler.com/zpa/step-step-configuration-guide-zpa)
 - [配置 IdP 以进行单一登录](https://help.zscaler.com/zpa/configuring-idp-single-sign)

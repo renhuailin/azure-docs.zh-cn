@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: conceptual
 ms.date: 02/16/2021
 ms.custom: template-concept
-ms.openlocfilehash: 28a8de231f179cf69342da81e6a2ae1989d2a5d6
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 8a9ed564012e8b530436152d931f5a5f6470ff98
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/04/2021
-ms.locfileid: "102041580"
+ms.locfileid: "102098360"
 ---
 # <a name="azure-percept-ai-models"></a>Azure Percept AI 模型
 
@@ -52,6 +52,8 @@ Azure Percept Studio 包含以下应用程序的示例模型：
 
 ## <a name="advanced-development"></a>高级开发
 
-对于高级开发人员，可用的 [Jupyter 笔记本](https://github.com/microsoft/Project-Santa-Cruz-Preview/blob/main/Sample-Scripts-and-Notebooks/Official/Machine%20Learning%20Notebooks/Transferlearningusing_SSDLiteV2%20Model.ipynb) 使用预先训练的 TensorFlow 模型 (MobileNetSSDV2Lite) 在 Python 中使用自定义数据集进行对象检测。 该笔记本通过 [Azure 机器学习](https://azure.microsoft.com/services/machine-learning/#product-overview) 利用远程计算实例，可以使用 AzureML 门户在云中运行，也可以在 [Visual Studio Code](https://code.visualstudio.com/)本地运行。
+如需了解最新的指南、教程和示例，请参阅 [Azure PERCEPT 深色高级开发 GitHub](https://github.com/microsoft/azure-percept-advanced-development) ：
 
-其中还包含一些有用的 Python [脚本](https://github.com/microsoft/Project-Santa-Cruz-Preview/tree/main/Sample-Scripts-and-Notebooks/Official/Scripts) ，用于管理数据集和 [开发工具包安装程序](https://github.com/microsoft/Project-Santa-Cruz-Preview/blob/main/Sample-Scripts-and-Notebooks/Official/Machine%20Learning%20Notebooks/dev-tools-installer.md)，开发人员可以使用它来安装和配置开发高级 AI 解决方案所需的所有工具。
+* 将自定义 AI 模型引入设备
+* 更新已支持传输学习的模型
+* 及其他信息
