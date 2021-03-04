@@ -11,12 +11,12 @@ metadata:
   manager: eliotgra
   ms.date: 03/23/2020
   ms.custom: amqp
-  ms.openlocfilehash: 5e26ebb2bd19806e23c9c044021df97200da21ea
-  ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+  ms.openlocfilehash: 391d4372e71241854c3a9920c35ce0711fe6634e
+  ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/02/2021
-  ms.locfileid: "101658378"
+  ms.lasthandoff: 03/04/2021
+  ms.locfileid: "102030658"
 landingContent:
 - title: 入门
   linkLists:
@@ -83,19 +83,19 @@ landingContent:
   - linkListType: overview
     links:
     - text: IoT 中心的设备更新概述
-      url: /iot-hub-device-update/understand-device-update.md
+      url: ../iot-hub-device-update/understand-device-update.md
   - linkListType: how-to-guide
     links:
     - text: 导入更新
-      url: /iot-hub-device-update/import-update.md
+      url: ../iot-hub-device-update/import-update.md
   - linkListType: how-to-guide
     links:
     - text: 创建更新组
-      url: /iot-hub-device-update/create-update-group.md
+      url: ../iot-hub-device-update/create-update-group.md
   - linkListType: how-to-guide
     links:
     - text: 部署更新
-      url: /iot-hub-device-update/deploy-update.md
+      url: ../iot-hub-device-update/deploy-update.md
 - title: Azure Stack Hub 上的 IoT 中心（预览）
   linkLists:
   - linkListType: overview

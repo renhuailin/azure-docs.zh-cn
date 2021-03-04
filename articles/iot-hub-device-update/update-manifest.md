@@ -1,17 +1,17 @@
 ---
 title: IoT 中心更新清单的设备更新 |Microsoft Docs
 description: 了解如何在更新过程中将属性从设备更新服务发送到设备
-author: andbrown
+author: andrewbrownmsft
 ms.author: andbrown
 ms.date: 2/17/2021
 ms.topic: conceptual
 ms.service: iot-hub-device-update
-ms.openlocfilehash: ea438a4a8db8dce9cf2acb0b5b3ff4e250c3cf39
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: bbd39f7752a1a482350a7231a0bb5a3710591b1d
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101662096"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102030675"
 ---
 # <a name="device-update-for-iot-hub-update-manifest"></a>IoT 中心更新清单的设备更新
 

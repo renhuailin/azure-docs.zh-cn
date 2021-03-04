@@ -40,8 +40,18 @@
           href: 'https://azure.microsoft.com/resources/samples/?service=hdinsight'
     - name: 概念
       items:
-        - name: HDInsight 上的 Apache 组件
-          href: ./hdinsight-component-versioning.md
+        - name: 版本控制
+          items:
+            - name: 版本控制简介
+              href: ./hdinsight-overview-versioning.md
+            - name: HDInsight 版本
+              href: ./hdinsight-component-versioning.md
+            - name: HDInsight 版本 4.0
+              href: ./hdinsight-40-component-versioning.md
+            - name: HDInsight 版本 3.6
+              href: ./hdinsight-36-component-versioning.md
+            - name: 已停用的 HDInsight 版本
+              href: ./hdinsight-retired-versions.md
         - name: 企业安全性套餐
           href: ./enterprise-security-package.md
         - name: Hortonworks 发行说明
@@ -246,7 +256,7 @@
               href: ./hdinsight-cluster-availability.md
             - name: 群集可用性 - Azure Monitor 日志
               href: ./cluster-availability-monitor-logs.md
-        - name: 疑难解答
+        - name: 故障排除
           items:
             - name: CPU 核心配额增加请求
               href: ./quota-increase-request.md
@@ -343,7 +353,7 @@
           href: ./spark/spark-best-practices.md
         - name: 配置 Apache Spark 设置
           href: ./spark/apache-spark-settings.md
-        - name: Optimization
+        - name: 优化
           items:
             - name: 优化 Apache Spark 作业
               href: ./spark/apache-spark-perf.md
@@ -650,7 +660,7 @@
             - name: 将 Apache Kafka 与 IoT 中心配合使用
               href: ./kafka/apache-kafka-connector-iot-hub.md
             - name: Confluent 架构注册表
-              href: ./kafka/schema-registry.md
+              href: ./kafka/apache-kafka-producer-consumer-api.md
             - name: 创建流式处理管道
               items:
                 - name: Apache Spark、Apache Kafka 和 Azure Cosmos DB
@@ -669,7 +679,7 @@
               href: ./kafka/apache-kafka-log-analytics-operations-management.md
             - name: SSL 加密和身份验证
               href: ./kafka/apache-kafka-ssl-encryption-authentication.md
-        - name: 疑难解答
+        - name: 故障排除
           items:
             - name: 容错域不足
               href: ./kafka/kafka-troubleshoot-insufficient-domains.md
@@ -726,7 +736,7 @@
               href: ./hbase/apache-hbase-phoenix-performance.md
             - name: 在 Azure VNet 中创建 Apache HBase 群集
               href: ./hbase/apache-hbase-provision-vnet.md
-        - name: 疑难解答
+        - name: 故障排除
           items:
             - name: 排查 Apache HBase 性能问题
               href: ./hbase/troubleshoot-hbase-performance-issues.md
@@ -817,11 +827,15 @@
               href: ./interactive-query/apache-hive-query-odbc-driver-powershell.md
         - name: 管理
           items:
+            - name: 跨存储帐户复制 Hive 表
+              href: ./interactive-query/hive-migration-across-storage-accounts.md
+            - name: 将默认 Hive 元存储迁移到 Azure HDInsight 上的外部元存储
+              href: ./interactive-query/hive-default-metastore-export-import.md
             - name: 将 Hive 工作负荷迁移到 HDInsight 4.0
               href: ./interactive-query/apache-hive-migrate-workloads.md
             - name: 优化 Apache Hive 查询
               href: ./hdinsight-hadoop-optimize-hive-query.md
-        - name: 疑难解答
+        - name: 故障排除
           items:
             - name: 通过 Apache Hive 设置解决内存不足错误
               href: ./hdinsight-hadoop-hive-out-of-memory-error-oom.md
@@ -934,7 +948,7 @@
           items:
             - name: 监视拓扑
               href: ./storm/apache-storm-deploy-monitor-topology-linux.md
-        - name: 疑难解答
+        - name: 故障排除
           items:
             - name: Apache STORM 故障排除
               href: ./storm/apache-troubleshoot-storm.md

@@ -66,10 +66,8 @@
     - name: 行业特定解决方案
       items:
         - name: Retail
-          href: retail/overview-iot-central-retail.md
           items:
             - name: 存储内分析签出
-              href: retail/store-analytics-architecture.md
               items:
                 - name: 1 - 创建零售应用程序
                   href: retail/tutorial-in-store-analytics-create-app.md
@@ -77,28 +75,15 @@
                   href: retail/tutorial-in-store-analytics-customize-dashboard.md
                 - name: 3 - 导出数据并直观呈现见解
                   href: retail/tutorial-in-store-analytics-export-data-visualize-insights.md
-            - name: 智能库存管理
-              href: retail/architecture-smart-inventory-management.md
-              items:
-                - name: 创建智能库存管理应用程序
-                  href: retail/tutorial-iot-central-smart-inventory-management.md
-            - name: 互联物流
-              href: retail/architecture-connected-logistics.md
-              items:
-                - name: 创建互联物流应用程序
-                  href: retail/tutorial-iot-central-connected-logistics.md
-            - name: 数字分发中心
-              href: retail/architecture-digital-distribution-center.md
-              items:
-                - name: 创建数字分发中心应用程序
-                  href: retail/tutorial-iot-central-digital-distribution-center.md
-            - name: 微履行中心
-              href: retail/architecture-micro-fulfillment-center.md
-              items:
-                - name: 创建微履行中心应用程序
-                  href: retail/tutorial-micro-fulfillment-center.md
+            - name: 创建智能库存管理应用程序
+              href: retail/tutorial-iot-central-smart-inventory-management.md
+            - name: 创建互联物流应用程序
+              href: retail/tutorial-iot-central-connected-logistics.md
+            - name: 创建数字分发中心应用程序
+              href: retail/tutorial-iot-central-digital-distribution-center.md
+            - name: 创建微履行中心应用程序
+              href: retail/tutorial-micro-fulfillment-center.md
             - name: 视频分析 - 对象和运动检测
-              href: retail/architecture-video-analytics.md
               items:
                 - name: 0 - 部署对象和运动检测应用程序
                   href: retail/tutorial-video-analytics-deploy.md
@@ -119,38 +104,21 @@
                 - name: 4 - 修改和生成实时视频分析网关模块
                   href: retail/tutorial-video-analytics-build-module.md
         - name: 能源
-          href: energy/overview-iot-central-energy.md
           items:
-            - name: 智能计量应用体系结构
-              href: energy/concept-iot-central-smart-meter-app.md
             - name: 创建智能计量监视应用
               href: energy/tutorial-smart-meter-app.md
-            - name: 太阳能板应用体系结构
-              href: energy/concept-iot-central-solar-panel-app.md
             - name: 创建太阳能板监视应用
               href: energy/tutorial-solar-panel-app.md
         - name: 政府机关
-          href: government/overview-iot-central-government.md
           items:
-            - name: 连接的废弃物检测参考体系结构
-              href: government/concepts-connectedwastemanagement-architecture.md
             - name: 创建连接的废弃物管理应用
               href: government/tutorial-connected-waste-management.md
-            - name: 水消耗量检测参考体系结构
-              href: government/concepts-waterconsumptionmonitoring-architecture.md
             - name: 创建水消耗量监测应用
               href: government/tutorial-water-consumption-monitoring.md
-            - name: 水质检测参考体系结构
-              href: government/concepts-waterqualitymonitoring-architecture.md
             - name: 创建水质监测应用
               href: government/tutorial-water-quality-monitoring.md
-            - name: 使用 Dynamics 365 Field Service 连接 Azure IoT Central 应用程序
-              href: government/how-to-configure-connected-field-services.md
         - name: 医疗保健
-          href: healthcare/overview-iot-central-healthcare.md
           items:
-            - name: 持续患者监视体系结构
-              href: healthcare/concept-continuous-patient-monitoring-architecture.md
             - name: 创建持续患者监视解决方案
               href: healthcare/tutorial-continuous-patient-monitoring.md
             - name: 创建健康状况数据分类仪表板
@@ -162,9 +130,51 @@
     - name: 设备开发人员指南
       href: core/overview-iot-central-developer.md
     - name: 解决方案构建者指南
-      href: core/overview-iot-central-developer.md
+      href: core/overview-iot-central-solution-builder.md
     - name: 什么是应用程序模板？
       href: core/concepts-app-templates.md
+    - name: 行业特定应用程序模板
+      items:
+        - name: 零售
+          items:
+            - name: 概述
+              href: retail/overview-iot-central-retail.md
+            - name: 店内分析结帐体系结构
+              href: retail/store-analytics-architecture.md
+            - name: 智能库存管理体系结构
+              href: retail/architecture-smart-inventory-management.md
+            - name: 互联物流体系结构
+              href: retail/architecture-connected-logistics.md
+            - name: 数字分发中心
+              href: retail/architecture-digital-distribution-center.md
+            - name: 微履行中心体系结构
+              href: retail/architecture-micro-fulfillment-center.md
+            - name: 视频分析 - 对象和运动检测
+              href: retail/architecture-video-analytics.md
+        - name: 能源
+          items:
+            - name: 概述
+              href: energy/overview-iot-central-energy.md
+            - name: 智能计量应用体系结构
+              href: energy/concept-iot-central-smart-meter-app.md
+            - name: 太阳能板应用体系结构
+              href: energy/concept-iot-central-solar-panel-app.md
+        - name: 政府机关
+          items:
+            - name: 概述
+              href: government/overview-iot-central-government.md
+            - name: 联网废弃物监视体系结构
+              href: government/concepts-connectedwastemanagement-architecture.md
+            - name: 用水量监测体系结构
+              href: government/concepts-waterconsumptionmonitoring-architecture.md
+            - name: 水质监测体系结构
+              href: government/concepts-waterqualitymonitoring-architecture.md
+        - name: 医疗保健
+          items:
+            - name: 概述
+              href: healthcare/overview-iot-central-healthcare.md
+            - name: 持续患者监视体系结构
+              href: healthcare/concept-continuous-patient-monitoring-architecture.md
     - name: 什么是设备模板？
       href: core/concepts-device-templates.md
     - name: 设备连接
@@ -221,6 +231,8 @@
           href: core/howto-create-custom-analytics.md
         - name: 在 Power BI 中直观显示数据
           href: core/howto-connect-powerbi.md
+        - name: 将应用程序与 Dynamics 365 Field Services 连接
+          href: government/how-to-configure-connected-field-services.md
     - name: 管理设备
       items:
         - name: 添加和删除设备

@@ -66,6 +66,8 @@
           href: create-profile-container-adds.md
         - name: 使用 Azure 文件存储和 AD DS
           href: create-file-share.md
+        - name: 安装 Office 和 FSLogix 应用容器
+          href: fslogix-office-app-rule-editor.md
     - name: 配置主机池设置
       items:
         - name: RDP 属性
@@ -104,6 +106,8 @@
           href: app-attach-image-prep.md
         - name: 设置文件共享
           href: app-attach-file-share.md
+        - name: 设置 MSIXMGR 工具
+          href: app-attach-msixmgr.md
     - name: 使用 Microsoft Teams
       href: teams-on-wvd.md
     - name: 设置 Azure AD 多重身份验证

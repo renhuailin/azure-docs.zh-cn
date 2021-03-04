@@ -1,17 +1,17 @@
 ---
 title: 如何导入新的更新 |Microsoft Docs
 description: How-To 指南，用于将新的更新导入到 IoT 中心的 IoT 中心设备更新。
-author: andbrown
+author: andrewbrownmsft
 ms.author: andbrown
 ms.date: 2/11/2021
 ms.topic: how-to
 ms.service: iot-hub-device-update
-ms.openlocfilehash: d8757f3076f784576f95bbdfc30abf578446c776
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: c83221743e0566d783c38c40aaf92111a0cd80f7
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101662097"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102030726"
 ---
 # <a name="import-new-update"></a>导入新更新
 了解如何将新的更新导入到 IoT 中心的设备更新。
@@ -53,7 +53,7 @@ ms.locfileid: "101662097"
     $importManifest | Out-File '.\importManifest.json' -Encoding UTF8
     ```
 
-    有关快速参考，请参阅上述参数的一些示例值。 有关完整文档，请参阅下面的完整导入清单架构。
+    有关快速参考，请参阅上述参数的一些示例值。 您还可以查看完整的 [导入清单架构](import-schema.md) 以了解更多详细信息。
 
     | 参数 | 说明 |
     | --------- | ----------- |
@@ -66,19 +66,6 @@ ms.locfileid: "101662097"
     | installedCriteria | <ul><li>为更新类型指定 SWVersion 值 `microsoft/swupdate:1`</li><li>指定更新类型的推荐值 `microsoft/apt:1` 。
     | updateFilePath (s)  | 计算机上) 的更新文件的路径 (
 
-    完整导入清单架构
-
-    | 名称 | 类型 | 说明 | 限制 |
-    | --------- | --------- | --------- | --------- |
-    | UpdateId | （属于`UpdateId` 对象）的父级。 | 更新标识。 |
-    | UpdateType | 字符串 | 更新类型： <ul><li>`microsoft/apt:1`使用引用代理执行基于包的更新时指定。</li><li>`microsoft/swupdate:1`使用引用代理执行基于映像的更新时指定。</li><li>`microsoft/simulator:1`使用示例代理模拟器时指定。</li><li>如果要开发自定义代理，请指定自定义类型。</li></ul> | <ul><li>格式：`{provider}/{type}:{typeVersion}`</li><li>最大值为32个字符</li></ul> |
-    | InstalledCriteria | 字符串 | 由代理解释的字符串，用于确定是否已成功应用更新：  <ul><li>为 "更新类型" 指定 SWVersion 的 **值** `microsoft/swupdate:1` 。</li><li>指定 `{name}-{version}` 更新类型 `microsoft/apt:1` ，其中的名称和版本是从 APT 文件中获取的。</li><li>指定更新类型的更新文件的哈希 `microsoft/simulator:1` 。</li><li>如果要开发自定义代理，请指定自定义字符串。</li></ul> | 最多 64 个字符 |
-    | 兼容性 | 对象数组 `CompatibilityInfo` | 与此更新兼容的设备的兼容性信息。 | 最多10个项目 |
-    | CreatedDateTime | 日期/时间 | 创建更新的日期和时间。 | 用 UTC 分隔的 ISO 8601 日期和时间格式 |
-    | ManifestVersion | 字符串 | 导入清单架构版本。 指定 `2.0` ，它将与 `urn:azureiot:AzureDeviceUpdateCore:1` 接口和接口兼容 `urn:azureiot:AzureDeviceUpdateCore:4` 。</li></ul> | 必须是 `2.0` |
-    | 文件 | 对象数组 `File` | 更新有效负载文件 | 最多5个文件 |
-
-注意：所有字段都是必填字段。
 
 ## <a name="review-generated-import-manifest"></a>查看生成的导入清单
 

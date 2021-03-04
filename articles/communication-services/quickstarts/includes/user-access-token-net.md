@@ -10,16 +10,16 @@ ms.date: 08/20/2020
 ms.topic: include
 ms.custom: include file
 ms.author: tchladek
-ms.openlocfilehash: 4c05b654b6714c5317e1334d3a3ea5c327a5ff18
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: 49c4179432c0b57dfe68de563621807b1141fc67
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97770803"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101657042"
 ---
 ## <a name="prerequisites"></a>先决条件
 
-- 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
+- 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - 适用于你的操作系统的最新版本 [.NET Core 客户端库](https://dotnet.microsoft.com/download/dotnet-core)。
 - 活动的通信服务资源和连接字符串。 [创建通信服务资源](../create-communication-resource.md)。
 
@@ -42,10 +42,10 @@ dotnet build
 
 ### <a name="install-the-package"></a>安装包
 
-仍在应用程序目录中时，使用 `dotnet add package` 命令安装适用于 .NET 包的 Azure 通信服务管理库。
+仍在应用程序目录中时，使用 `dotnet add package` 命令安装适用于 .NET 包的 Azure 通信服务标识库。
 
 ```console
-dotnet add package Azure.Communication.Administration --version 1.0.0-beta.3
+dotnet add package Azure.Communication.Identity --version 1.0.0
 ```
 
 ### <a name="set-up-the-app-framework"></a>设置应用框架
@@ -53,7 +53,7 @@ dotnet add package Azure.Communication.Administration --version 1.0.0-beta.3
 从项目目录中执行以下操作：
 
 1. 在文本编辑器中打开 Program.cs 文件
-1. 添加 `using` 指令以包括 `Azure.Communication.Administration` 命名空间
+1. 添加 `using` 指令以包括 `Azure.Communication.Identity` 命名空间
 1. 更新 `Main` 方法声明以支持异步代码
 
 使用以下代码以开始执行以下操作：
@@ -61,7 +61,7 @@ dotnet add package Azure.Communication.Administration --version 1.0.0-beta.3
 ```csharp
 using System;
 using Azure.Communication;
-using Azure.Communication.Administration;
+using Azure.Communication.Identity;
 
 namespace AccessTokensQuickstart
 {
@@ -89,6 +89,21 @@ string connectionString = Environment.GetEnvironmentVariable("COMMUNICATION_SERV
 var client = new CommunicationIdentityClient(connectionString);
 ```
 
+或者，也可以将终结点和访问密钥分开。
+```csharp
+// This code demonstrates how to fetch your endpoint and access key
+// from an environment variable.
+string endpoint = Environment.GetEnvironmentVariable("COMMUNICATION_SERVICES_ENDPOINT");
+string accessKey = Environment.GetEnvironmentVariable("COMMUNICATION_SERVICES_ACCESSKEY");
+var client = new CommunicationIdentityClient(new Uri(endpoint), new AzureKeyCredential(accessKey));
+```
+
+如果已设置托管标识，请参阅[使用托管标识](../managed-identity.md)，也可以使用托管标识进行身份验证。
+```csharp
+TokenCredential tokenCredential = new DefaultAzureCredential();
+var client = new CommunicationIdentityClient(endpoint, tokenCredential);
+```
+
 ## <a name="create-an-identity"></a>创建标识
 
 Azure 通信服务维护轻量级标识目录。 使用 `createUser` 方法在目录中创建具有唯一 `Id` 的新项。存储收到的标识，并映射到应用程序的用户。 例如，将它们存储在应用程序服务器的数据库中。 稍后颁发访问令牌时需要该标识。
@@ -101,34 +116,34 @@ Console.WriteLine($"\nCreated an identity with ID: {identity.Id}");
 
 ## <a name="issue-identity-access-tokens"></a>颁发标识访问令牌
 
-使用 `issueToken` 方法为已存在的通信服务标识颁发访问令牌。 参数 `scopes` 定义一组基元，用于授权此访问令牌。 请参阅[受支持的操作列表](../../concepts/authentication.md)。 参数 `communicationUser` 的新实例可以基于 Azure 通信服务标识的字符串表示形式构造。
+使用 `GetToken` 方法为已存在的通信服务标识颁发访问令牌。 参数 `scopes` 定义一组基元，用于授权此访问令牌。 请参阅[受支持的操作列表](../../concepts/authentication.md)。 参数 `communicationUser` 的新实例可以基于 Azure 通信服务标识的字符串表示形式构造。
 
 ```csharp
 // Issue an access token with the "voip" scope for an identity
-var tokenResponse = await client.IssueTokenAsync(identity, scopes: new [] { CommunicationTokenScope.VoIP });
+var tokenResponse = await client.GetTokenAsync(identity, scopes: new [] { CommunicationTokenScope.VoIP });
 var token =  tokenResponse.Value.Token;
 var expiresOn = tokenResponse.Value.ExpiresOn;
 Console.WriteLine($"\nIssued an access token with 'voip' scope that expires at {expiresOn}:");
 Console.WriteLine(token);
 ```
 
-访问令牌是短期凭据，需要重新颁发。 如果不重新颁发，可能会导致应用程序用户的体验中断。 `expiresOn` 响应属性指示访问令牌的生存期。 
+访问令牌是短期凭据，需要重新颁发。 如果不重新颁发，可能会导致应用程序用户的体验中断。 `expiresOn` 响应属性指示访问令牌的生存期。
 
 ## <a name="refresh-access-tokens"></a>刷新访问令牌
 
-若要刷新访问令牌，请将 `CommunicationUser` 对象的实例传递到 `IssueTokenAsync`。 如果已存储此 `Id` 并且需要新建 `CommunicationUser`，可以通过将存储的 `Id` 传递到 `CommunicationUser` 构造函数中来实现，如下所示：
+若要刷新访问令牌，请将 `CommunicationUserIdentifier` 对象的实例传递到 `GetTokenAsync`。 如果已存储此 `Id` 并且需要新建 `CommunicationUserIdentifier`，可以通过将存储的 `Id` 传递到 `CommunicationUserIdentifier` 构造函数中来实现，如下所示：
 
-```csharp  
+```csharp
 // In this example, userId is a string containing the Id property of a previously-created CommunicationUser
-identityToRefresh = new CommunicationUser(userId);
-tokenResponse = await client.IssueTokenAsync(identityToRefresh, scopes: new [] { CommunicationTokenScope.VoIP });
+var identityToRefresh = new CommunicationUserIdentifier(userId);
+var tokenResponse = await client.GetTokenAsync(identityToRefresh, scopes: new [] { CommunicationTokenScope.VoIP });
 ```
 
 ## <a name="revoke-access-tokens"></a>撤销访问令牌
 
 在某些情况下可能会显式撤销访问令牌。 例如，当应用程序的用户更改在向服务进行身份验证时所使用的密码时。 `RevokeTokensAsync` 方法使颁发给标识的所有活动访问令牌无效。
 
-```csharp  
+```csharp
 await client.RevokeTokensAsync(identity);
 Console.WriteLine($"\nSuccessfully revoked all access tokens for identity with ID: {identity.Id}");
 ```

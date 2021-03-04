@@ -13,12 +13,12 @@ metadata:
   ms.date: 01/29/2021
   featureFlags:
   - clicktale
-  ms.openlocfilehash: 58b5b8917aeeefb918914a598655da962019de34
-  ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+  ms.openlocfilehash: 2503d6f54efaa32ab76a9321543815e36f37cdcb
+  ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 02/10/2021
-  ms.locfileid: "100102965"
+  ms.lasthandoff: 03/03/2021
+  ms.locfileid: "101709951"
 highlightedContent:
   items:
   - title: Azure 开发人员入门指南
@@ -36,6 +36,12 @@ highlightedContent:
 productDirectory:
   title: 浏览 Azure 产品
   items:
+  - title: Azure Percept
+    summary: 从硅到服务的边缘智能
+    imageSrc: ./media/index/azure-percept.svg
+    azureCategories:
+    - iot
+    url: azure-percept/index.yml
   - title: 异常检测器
     summary: 将异常情况检测功能轻松添加到应用
     imageSrc: https://static.docs.com/ui/media/product/azure/anomaly-detector.svg
@@ -174,7 +180,7 @@ productDirectory:
     imageSrc: https://static.docs.com/ui/media/product/azure/custom-vision.svg
     azureCategories:
     - ai-machine-learning
-    url: cognitive-services/Custom-Vision-Service/index.yml
+    url: cognitive-services/custom-vision-service/index.yml
   - title: 数据科学虚拟机
     summary: 用于 AI 开发的丰富预配置环境
     imageSrc: https://static.docs.com/ui/media/product/azure/virtual-machine.svg
@@ -204,7 +210,7 @@ productDirectory:
     imageSrc: https://static.docs.com/ui/media/product/azure/cognitive-services.svg
     azureCategories:
     - ai-machine-learning
-    url: cognitive-services/ink-recognizer/index.yml
+    url: /previous-versions/azure/cognitive-services/Ink-Recognizer/
   - title: Kinect DK
     summary: 使用带有高级 AI 传感器的开发人员工具包构建计算机视觉和语音模型
     imageSrc: ./media/index/kinect-viewer.svg
@@ -408,6 +414,12 @@ productDirectory:
     - databases
     - iot
     url: cosmos-db/index.yml
+  - title: 适用于 Apache Cassandra 的 Azure 托管实例
+    summary: 自动部署和缩放托管的开源 Apache Cassandra 数据中心
+    imageSrc: ./media/index/managed-instance-apache-cassandra.svg
+    azureCategories:
+    - databases
+    url: managed-instance-apache-cassandra/index.yml
   - title: 逻辑应用
     summary: 无需编写代码，自动化访问和使用跨云数据
     imageSrc: https://static.docs.com/ui/media/product/azure/logic-apps.svg
@@ -507,7 +519,7 @@ productDirectory:
     azureCategories:
     - featured
     - compute
-    url: virtual-machines/linux/index.yml
+    url: ./virtual-machines/index.yml
   - title: Service Fabric
     summary: 在 Windows 或 Linux 上开发微服务和协调容器
     imageSrc: https://static.docs.com/ui/media/product/azure/service-fabric-clusters.svg
@@ -557,7 +569,7 @@ productDirectory:
     azureCategories:
     - featured
     - compute
-    url: virtual-machines/windows/index.yml
+    url: ./virtual-machines/index.yml
   - title: Azure Dev Spaces
     summary: 在 Azure AKS 中测试并以迭代方式开发微服务应用
     imageSrc: ./media/index/AzureDevSpaceController_50x.svg
@@ -1192,6 +1204,12 @@ productDirectory:
     azureCategories:
     - networking
     url: load-balancer/index.yml
+  - title: Azure 路由服务器（预览版）
+    summary: 简化网络设备的操作管理
+    imageSrc: ./media/index/azure-route-server.svg
+    azureCategories:
+    - networking
+    url: route-server/index.yml
   - title: 虚拟网络
     summary: 预配专用网络，根据需要连接到本地数据中心
     imageSrc: https://static.docs.com/ui/media/product/azure/virtual-networks.svg

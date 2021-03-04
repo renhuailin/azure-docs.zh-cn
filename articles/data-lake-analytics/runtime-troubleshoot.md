@@ -5,12 +5,12 @@ ms.reviewer: jasonh
 ms.service: data-lake-analytics
 ms.topic: troubleshooting
 ms.date: 10/10/2019
-ms.openlocfilehash: 41b7c80c85331f288343351749e6b2e5292b30c6
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 1236b83b410057e55015391772e37bd461a448d0
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95241601"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102030607"
 ---
 # <a name="learn-how-to-troubleshoot-u-sql-runtime-failures-due-to-runtime-changes"></a>了解如何排查由运行时更改引起的 SQL 运行时故障
 
@@ -55,7 +55,7 @@ release_YYYYMMDD_adl_buildno [_modifier]
 
 ## <a name="known-issues"></a>已知问题
 
-* 在 SCRIPT.USQL 脚本中引用12.0.3 或文件版本的 Newtonsoft.Js将导致以下编译失败：
+1. 在 SCRIPT.USQL 脚本中引用12.0.3 或文件版本的 Newtonsoft.Js将导致以下编译失败：
 
     *"很抱歉;在 Data Lake Analytics 帐户中运行的作业可能会运行得更慢或无法完成。出现意外问题，导致我们无法自动将此功能还原到 Azure Data Lake Analytics 帐户。已与 Azure Data Lake 工程师联系调查。 "*  
 
@@ -65,6 +65,10 @@ release_YYYYMMDD_adl_buildno [_modifier]
     `...`
 
     **解决方案**：请 Newtonsoft.Js使用12.0.2 或更低版本的文件。
+2. 客户可能会看到其存储区中的临时文件和文件夹。 它们是在正常作业执行过程中生成的，但通常会在客户看到它们之前删除。 在某些情况下，这种情况并不常见，它们可能会在一段时间内保持可见。 它们最终会被删除，并且永远不会计为用户存储的一部分，也不会生成任何形式的收费。 根据客户的作业逻辑，它们可能会导致问题。 例如，如果作业枚举文件夹中的所有文件，然后对文件列表进行比较，则可能会由于出现意外的临时文件而失败。 同样，如果下游作业枚举给定文件夹中的所有文件进行进一步处理，则它还可能会枚举临时文件。  
+
+    **解决方案**：在运行时中标识了一个修补程序，临时文件将存储在与当前输出文件夹不同的帐户级别 temp 文件夹中。 临时文件将写入此新临时文件夹中，并将在作业执行结束时被删除。  
+    由于此修补程序正在处理客户数据，因此，在 MSFT 中充分验证此修补程序，这一点非常重要。 此修补程序应在2021年年底提供此修补程序，作为 beta 运行时提供，在第半年2021中作为默认运行时提供。 
 
 
 ## <a name="see-also"></a>另请参阅

@@ -1,17 +1,16 @@
 ---
 title: Azure Monitor API 停用
 description: 介绍旧版 Microsoft.operationalinsights 资源提供程序 API 的停用信息。
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/29/2020
-ms.openlocfilehash: 03e534564b4a32f112c2aaff44a187b10eb2a537
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 7b5d105f6a93102ff1b9142fbdf690c3873d872f
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101723106"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102032018"
 ---
 # <a name="operationalinsights-api-version-retirement"></a>OperationalInsights API 版本停用
 Microsoft 至少会在停用 API 前提前 12 个月发出通知，以便顺利转换为更高版本/受支持版本。 我们发布了 OperationalInsights 资源提供程序 API 新版本 (2020-08-01)，并将于 2024 年 2 月 29 日停用任何早期的 API 版本。

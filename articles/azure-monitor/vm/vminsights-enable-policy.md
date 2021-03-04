@@ -1,17 +1,16 @@
 ---
 title: 使用 Azure 策略启用 VM insights
 description: 介绍如何使用 Azure 策略为多个 Azure 虚拟机或虚拟机规模集启用 VM 见解。
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: a63a647f3d76e3cc2616f05fe96d86dbdd36e74d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 51baf009543208fbbfe091238d0215a24761641d
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101707534"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102031950"
 ---
 # <a name="enable-vm-insights-by-using-azure-policy"></a>使用 Azure 策略启用 VM insights
 本文介绍如何使用 Azure 策略为使用 azure Arc (preview) 连接的 Azure 虚拟机或混合虚拟机启用 VM insights。 Azure 策略允许你分配策略定义，以便在 Azure 环境中安装 VM insights 所需的代理，并在创建每个虚拟机时自动为 Vm 启用监视。 VM insights 提供了一项功能，使你能够在你的环境中发现并修正不相容的 Vm。 使用此功能，而不是直接使用 Azure 策略。
@@ -19,7 +18,7 @@ ms.locfileid: "101707534"
 如果你不熟悉 Azure 策略，请参阅 [使用 Azure 策略大规模部署 Azure Monitor](../deploy-scale.md)。
 
 > [!NOTE]
-> 若要通过 Azure 虚拟机规模集使用 Azure 策略，或直接使用 Azure 策略来启用 Azure 虚拟机，请参阅 [使用 Azure 策略大规模部署 Azure Monitor](../deploy-scale.md#azure-monitor-for-vms)。
+> 若要通过 Azure 虚拟机规模集使用 Azure 策略，或直接使用 Azure 策略来启用 Azure 虚拟机，请参阅 [使用 Azure 策略大规模部署 Azure Monitor](../deploy-scale.md#vm-insights)。
 
 ## <a name="prerequisites"></a>先决条件
 - [创建并配置 Log Analytics 工作区](./vminsights-configure-workspace.md)。

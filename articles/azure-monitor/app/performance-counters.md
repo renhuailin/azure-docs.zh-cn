@@ -4,12 +4,12 @@ description: 监视 Application Insights 中的系统和自定义的 .NET 性能
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5f1bd3ac4542dcce0d41f69a9c1664b747214554
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 423e17ef2b44286c28b464836075284929d8644c
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100583885"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102031355"
 ---
 # <a name="system-performance-counters-in-application-insights"></a>Application Insights 中的系统性能计数器
 
@@ -21,7 +21,7 @@ Windows 提供了各种[性能计数器](/windows/desktop/perfctrs/about-perform
 
 ![Application Insights 中报告的性能计数器](./media/performance-counters/performance-counters.png)
 
-根据配置要为 ASP.NET/ASP.NET Core Web 应用程序收集的当前默认计数器包括：
+为 ASP.NET web 应用程序配置的当前默认计数器为：
 - % Process\\Processor Time
 - % Process\\Processor Time Normalized
 - Memory\\Available Bytes
@@ -31,6 +31,14 @@ Windows 提供了各种[性能计数器](/windows/desktop/perfctrs/about-perform
 - Process\\Private Bytes
 - Process\\IO Data Bytes/sec
 - ASP.NET Applications\\Requests In Application Queue
+- Processor(_Total)\\% Processor Time
+
+为 ASP.NET Core web 应用程序配置的当前默认计数器为：
+- % Process\\Processor Time
+- % Process\\Processor Time Normalized
+- Memory\\Available Bytes
+- Process\\Private Bytes
+- Process\\IO Data Bytes/sec
 - Processor(_Total)\\% Processor Time
 
 ## <a name="add-counters"></a>添加计数器

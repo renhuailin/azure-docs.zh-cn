@@ -29,6 +29,8 @@
           href: azure-netapp-files-performance-metrics-volumes.md
         - name: Linux 性能基准
           href: performance-benchmarks-linux.md
+        - name: NFSv 4.1 上的 Kerberos 对性能的影响
+          href: performance-impact-kerberos.md
         - name: Azure NetApp 文件单卷上的 Oracle 数据库性能
           href: performance-oracle-single-volumes.md
         - name: 有关 SMB 性能的常见问题解答

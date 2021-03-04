@@ -1,17 +1,16 @@
 ---
 title: Azure Monitor 日志记录中的标准列 | Microsoft Docs
 description: 介绍 Azure Monitor 日志中多种数据类型共有的列。
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/25/2021
-ms.openlocfilehash: c479f525435139b2f92838bf15edf4563aeed4e2
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 3e12bef7569110084cd059b0dfde8562bd914823
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101704117"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102030760"
 ---
 # <a name="standard-columns-in-azure-monitor-logs"></a>Azure Monitor 日志中的标准列
 Azure Monitor 日志中的数据[作为一组记录存储在 Log Analytics 工作区或 Application Insights 应用程序](../logs/data-platform-logs.md)中，每条记录都具有特定的数据类型，该数据类型包含一组惟一的列。 许多数据类型都具有在多种类型中通用的标准列。 本文介绍这些列，并提供如何在查询中使用它们的示例。

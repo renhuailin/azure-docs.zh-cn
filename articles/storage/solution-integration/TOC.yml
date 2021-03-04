@@ -1,0 +1,31 @@
+- name: Azure 存储认证合作伙伴解决方案
+  href: /azure/storage/solution-integration
+- name: Azure 存储分析和大数据合作伙伴
+  items:
+    - name: 认证合作伙伴概述
+      href: .\validated-partners\analytics\partner-overview.md
+  expanded: false
+- name: Azure 存储存储、备份和 BCDR 合作伙伴
+  items:
+    - name: 认证合作伙伴概述
+      href: .\validated-partners\backup-archive-disaster-recovery\partner-overview.md
+    - name: Commvault 快速入门指南
+      href: .\validated-partners\backup-archive-disaster-recovery\commvault\commvault-solution-guide.md
+    - name: Veeam 快速入门指南
+      href: .\validated-partners\backup-archive-disaster-recovery\veeam\veeam-solution-guide.md
+  expanded: false
+- name: Azure 存储容器解决方案合作伙伴
+  items:
+    - name: 认证合作伙伴概述
+      href: .\validated-partners\container-solutions\partner-overview.md
+  expanded: false
+- name: Azure 存储数据管理和迁移合作伙伴
+  items:
+    - name: 认证合作伙伴概述
+      href: .\validated-partners\data-management\partner-overview.md
+  expanded: false
+- name: Azure 主要存储和辅助存储合作伙伴
+  items:
+    - name: 认证合作伙伴概述
+      href: .\validated-partners\primary-secondary-storage\partner-overview.md
+  expanded: false

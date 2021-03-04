@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/20/2019
-ms.openlocfilehash: ed9690a750ad6e1167ba0a0ae4a87b603c4a1f15
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: a889275782388781eadffb7cf0a24771bf6e9e4f
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101717394"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102030828"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>设计 Azure Monitor 日志部署
 
@@ -87,9 +87,9 @@ Log Analytics 工作区可提供：
 
     > [!NOTE]
     > 仅当日志已适当地关联到相关资源时，才能对日志进行资源上下文查询。 目前，以下资源存在限制：
-    > - Azure 外部的计算机
+    > - Azure 之外的计算机-仅通过[Azure Arc For Server](../../azure-arc/servers/index.yml)支持资源上下文
     > - Service Fabric
-    > - Application Insights
+    > - Application Insights-仅当使用[基于工作区的 Application Insights 资源](../app/create-workspace-resource.md)时才支持资源上下文
     >
     > 可以通过运行一个查询并检查所需的记录，来测试日志是否已适当关联到其资源。 如果 [_ResourceId](./log-standard-columns.md#_resourceid) 属性中包含正确的资源 ID，则可以对数据进行以资源为中心的查询。
 

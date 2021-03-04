@@ -6,22 +6,22 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 02/01/2021
+ms.date: 03/03/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 1df2f12d6947734314609dc50787a59a2fa88731
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: 4e6dac1ab7350caeb29e23b21eace433568b38ea
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99980502"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102031627"
 ---
 # <a name="point-in-time-restore-for-block-blobs"></a>块 blob 的时间点还原
 
 时间点还原通过使你能够将块 blob 数据还原到更早的状态来防止意外删除或损坏。 当用户或应用程序意外删除数据或应用程序错误损坏数据的情况下，时间点还原非常有用。 时间点还原还支持测试方案，这些方案需要在运行其他测试之前将数据集还原到已知状态。
 
-仅限常规用途 v2 存储帐户支持时间点还原。 只有热访问层和冷访问层中的数据才能使用时间点还原进行还原。
+仅标准性能层中的常规用途 v2 存储帐户支持时间点还原。 只有热访问层和冷访问层中的数据才能使用时间点还原进行还原。
 
 若要了解如何对存储帐户启用时间点还原，请参阅 [在块 blob 数据上执行时点还原](point-in-time-restore-manage.md)。
 

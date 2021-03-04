@@ -10,12 +10,12 @@ ms.date: 08/20/2020
 ms.topic: include
 ms.custom: include file
 ms.author: tchladek
-ms.openlocfilehash: 472129be5baa865365b49894b705d84c23e9cd04
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: b4a5dcbd6bc0a6468e8ac8cc7edc8589ea380b28
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97506282"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101657045"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -37,7 +37,7 @@ ms.locfileid: "97506282"
 
    ```python
    import os
-   from azure.communication.administration import CommunicationIdentityClient
+   from azure.communication.identity import CommunicationIdentityClient
 
    try:
       print('Azure Communication Services - Access Tokens Quickstart')
@@ -49,10 +49,10 @@ ms.locfileid: "97506282"
 
 ### <a name="install-the-package"></a>安装包
 
-仍在应用程序目录中时，使用 `pip install` 命令安装适用于 Python 包的 Azure 通信服务管理客户端库。
+仍在应用程序目录中时，使用 `pip install` 命令安装适用于 Python 包的 Azure 通信服务标识客户端库。
 
 ```console
-pip install azure-communication-administration
+pip install azure-communication-identity
 ```
 
 ## <a name="authenticate-the-client"></a>验证客户端
@@ -70,6 +70,12 @@ connection_string = os.environ['COMMUNICATION_SERVICES_CONNECTION_STRING']
 client = CommunicationIdentityClient.from_connection_string(connection_string)
 ```
 
+或者，如果已设置托管标识，请参阅[使用托管标识](../managed-identity.md)，也可以使用托管标识进行身份验证。
+```python
+const endpoint = os.environ["COMMUNICATION_SERVICES_ENDPOINT"];
+var client = new CommunicationIdentityClient(endpoint, DefaultAzureCredential());
+```
+
 ## <a name="create-an-identity"></a>创建标识
 
 Azure 通信服务维护轻量级标识目录。 使用 `create_user` 方法可在目录中创建具有唯一 `Id` 的新项。 存储收到的标识，并映射到应用程序的用户。 例如，将它们存储在应用程序服务器的数据库中。 稍后颁发访问令牌时需要该标识。
@@ -81,11 +87,11 @@ print("\nCreated an identity with ID: " + identity.identifier + ":")
 
 ## <a name="issue-access-tokens"></a>颁发访问令牌
 
-使用 `issue_token` 方法为已存在的通信服务标识颁发访问令牌。 参数 `scopes` 定义一组基元，用于授权此访问令牌。 请参阅[受支持的操作列表](../../concepts/authentication.md)。 参数 `communicationUser` 的新实例可以基于 Azure 通信服务标识的字符串表示形式构造。
+使用 `get_token` 方法为已存在的通信服务标识颁发访问令牌。 参数 `scopes` 定义一组基元，用于授权此访问令牌。 请参阅[受支持的操作列表](../../concepts/authentication.md)。 参数 `CommunicationUserIdentifier` 的新实例可以基于 Azure 通信服务标识的字符串表示形式构造。
 
 ```python
 # Issue an access token with the "voip" scope for an identity
-token_result = client.issue_token(identity, ["voip"])
+token_result = client.get_token(identity, ["voip"])
 expires_on = token_result.expires_on.strftime('%d/%m/%y %I:%M %S %p')
 print("\nIssued an access token with 'voip' scope that expires at " + expires_on + ":")
 print(token_result.token)
@@ -95,19 +101,19 @@ print(token_result.token)
 
 ## <a name="refresh-access-tokens"></a>刷新访问令牌
 
-若要刷新访问令牌，请使用 `CommunicationUser` 对象重新颁发：
+若要刷新访问令牌，请使用 `CommunicationUserIdentifier` 对象重新颁发：
 
-```python  
+```python
 # Value existingIdentity represents identity of Azure Communication Services stored during identity creation
-identity = CommunicationUser(existingIdentity)
-token_result = client.issue_token( identity, ["voip"])
+identity = CommunicationUserIdentifier(existingIdentity)
+token_result = client.get_token( identity, ["voip"])
 ```
 
 ## <a name="revoke-access-tokens"></a>撤销访问令牌
 
 在某些情况下可能会显式撤销访问令牌。 例如，当应用程序的用户更改在向服务进行身份验证时所使用的密码时。 `revoke_tokens` 方法使颁发给标识的所有活动访问令牌无效。
 
-```python  
+```python
 client.revoke_tokens(identity)
 print("\nSuccessfully revoked all access tokens for identity with ID: " + identity.identifier)
 ```

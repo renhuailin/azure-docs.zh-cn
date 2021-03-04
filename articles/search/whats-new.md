@@ -6,18 +6,26 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 02/09/2021
+ms.date: 03/02/2021
 ms.custom: references_regions
-ms.openlocfilehash: 6de91d51f3700c25ba1e0f361c948dc8ab338c43
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 606b102b1922d382f479235ffc4c61b68e7db766
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100590550"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101676395"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure 认知搜索中的新增功能
 
-了解服务中的新增功能。 请将本页加入书签，以随时了解该服务的最新信息。 查看[预览功能列表](search-api-preview.md)，以查看公共预览版中的功能。
+了解服务中的新增功能。 请将本页加入书签，以随时了解该服务的最新信息。 访问[预览功能列表](search-api-preview.md)，查看尚未正式发布的功能的完整列表。
+
+## <a name="march-2021"></a>2021 年 3 月
+
+|功能&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |  说明 | 可用性  |
+|------------------------------|---------------|---------------|
+| [语义搜索](semantic-search-overview.md) | 查询相关功能的集合，这些功能可修改搜索结果以生成更相关的结果。 只需略微更改搜索请求，即可对现有索引试用这些功能。</br></br>[语义查询](semantic-how-to-query-request.md)是一种新的查询类型，它利用自然语言处理方面的改进功能来提高排名，以及理解查询意图以提供答案、标题和语义要点。</br></br>[语义排名和响应（答案、标题和要点）](semantic-how-to-query-response.md)指定义语义查询的算法和响应的结构。 | 公开预览版（[根据要求提供](https://aka.ms/SemanticSearchPreviewSignup)）。 </br></br>在 Azure 门户中使用[搜索文档 (REST)](/rest/api/searchservice/preview-api/search-documents) api-version=2020-06-30-Preview 和[搜索资源管理器](search-explorer.md)。 </br></br>需遵守区域和层级限制。 |
+| [检查查询词的拼写](speller-how-to-add.md) | 在查询词到达搜索引擎之前，你可检查其是否存在拼写错误。 `speller` 选项适用于任何查询类型（简单、完整或语义查询）。 |  公共预览版，仅限 REST，api-version=2020-06-30-Preview|
+| [SharePoint Online 索引器](search-howto-index-sharepoint-online.md) | 此索引器可将你连接到 SharePoint Online 网站，这样你即可索引文档库中的内容。 | 公共预览版，仅限 REST，api-version=2020-06-30-Preview |
 
 ## <a name="february-2021"></a>2021 年 2 月
 

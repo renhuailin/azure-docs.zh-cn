@@ -1,17 +1,16 @@
 ---
 title: Azure Monitor（预览版）中的自定义字段 | Microsoft Docs
 description: Azure Monitor 的“自定义字段”功能，使你可以基于添加到已收集记录的属性的 Log Analytics 工作区中的记录创建自己的可搜索字段。  本文介绍了创建自定义字段的过程，并通过示例事件提供详细的演练。
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/23/2019
-ms.openlocfilehash: f35100d703e56d1fda731aab5e6a96c791c8f0d9
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: e7ddeaf1273a9e3b5608336b24c07fad3c3f4525
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101713671"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102031032"
 ---
 # <a name="create-custom-fields-in-a-log-analytics-workspace-in-azure-monitor-preview"></a>在 Azure Monitor（预览版）的 Log Analytics 工作区中创建自定义字段
 

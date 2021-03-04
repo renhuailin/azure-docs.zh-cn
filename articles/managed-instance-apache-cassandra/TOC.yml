@@ -1,0 +1,28 @@
+- name: 适用于 Apache Cassandra 的 Azure 托管实例文档
+  href: index.yml
+- name: 概述
+  items:
+    - name: 什么是适用于 Apache Cassandra 的 Azure 托管实例？
+      href: introduction.md
+- name: 概念
+  items:
+    - name: 常见问题解答
+      href: faq.md
+    - name: 托管实例与 Azure Cosmos DB Cassandra API
+      href: compare-cosmosdb-managed-instance.md
+- name: 快速入门
+  items:
+    - name: 创建群集 - 门户
+      href: create-cluster-portal.md
+    - name: 创建群集- CLI
+      href: create-cluster-cli.md
+    - name: 配置混合群集
+      href: configure-hybrid-cluster.md
+    - name: 通过 Databricks 部署 Spark 群集
+      href: deploy-cluster-databricks.md
+- name: 操作指南
+  items:
+    - name: 使用 Azure CLI 进行管理
+      href: manage-resources-cli.md
+    - name: 在 Prometheus 中通过 Grafana 可视化指标
+      href: visualize-prometheus-grafana.md

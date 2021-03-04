@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 11/09/2020
+ms.date: 03/02/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 226601eadf922a9d834ab84520fd1edf964348fa
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 2b6855d72b644a3fe1fa46c883eb7414383a1a57
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98762932"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102031695"
 ---
 # <a name="configure-object-replication-for-block-blobs"></a>为块 blob 配置对象复制
 
@@ -238,10 +238,10 @@ az storage account or-policy show \
 
 下表总结了每个方案中的 JSON 文件中的策略 ID 和规则 Id 要使用的值。
 
-| 为此帐户创建 JSON 文件时 .。。 | 将策略 ID 和规则 Id 设置为此值 .。。 |
-|-|-|
-| 目标帐户 | 字符串值 *默认* 值。 Azure 存储将为你创建策略 ID 和规则 Id。 |
-| 源帐户 | 当你将在目标帐户上定义的策略作为 JSON 文件下载时，将返回策略 ID 和规则 Id 的值。 |
+| 为此帐户创建 JSON 文件时 .。。 | 将策略 ID 设置为此值 | 将规则 Id 设置为此值 |
+|-|-|-|
+| 目标帐户 | 字符串值 *默认* 值。 Azure 存储将为你创建策略 ID 值。 | 空字符串。 Azure 存储将为你创建规则 ID 值。 |
+| 源帐户 | 在将目标帐户上定义的策略下载为 JSON 文件时返回的策略 ID 的值。 | 在将目标帐户上定义的策略下载为 JSON 文件时返回的规则 Id 的值。 |
 
 下面的示例定义了一个目标帐户的复制策略，该策略包含一个与前缀 *b* 匹配的规则，并为要复制的 blob 设置最小创建时间。 请注意将尖括号中的值替换为你自己的值：
 
@@ -253,7 +253,7 @@ az storage account or-policy show \
     "destinationAccount": "<dest-account>",
     "rules": [
       {
-        "ruleId": "default",
+        "ruleId": "",
         "sourceContainer": "<source-container>",
         "destinationContainer": "<destination-container>",
         "filters": {
@@ -272,7 +272,7 @@ az storage account or-policy show \
 
 若要使用 Azure 门户中的 JSON 文件在目标帐户上配置对象复制，请执行以下步骤：
 
-1. 创建一个本地 JSON 文件，用于定义针对目标帐户的复制策略。 将 **policyId** 字段设置为 **默认值** ，以便 Azure 存储区将定义策略 ID。
+1. 创建一个本地 JSON 文件，用于定义针对目标帐户的复制策略。 将 **policyId** 字段设置为 *默认值* ，以便 Azure 存储区将定义策略 ID。
 
     若要创建定义复制策略的 JSON 文件，一种简单的方法是先在 Azure 门户中的两个存储帐户之间创建测试复制策略。 然后，你可以下载复制规则并根据需要修改 JSON 文件。
 

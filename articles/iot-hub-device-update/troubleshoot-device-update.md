@@ -6,12 +6,12 @@ ms.author: lichris
 ms.date: 2/17/2021
 ms.topic: troubleshooting
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 6329e93bb5e628d68afbb2700ce0b9e3a2a711ad
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 3c1f60b214397b1f97e0157b5beca32d504102d6
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101679094"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102030624"
 ---
 # <a name="device-update-for-iot-hub-troubleshooting-guide"></a>IoT 中心的设备更新疑难解答指南
 
@@ -46,7 +46,7 @@ _刷新设备符合性状态最多可能需要5分钟。请稍候，然后再次
 ### <a name="q-my-devices-deployment-status-shows-incompatible-what-should-i-do"></a>问：我的设备的部署状态显示不兼容，我该怎么办？
 _将设备连接到 IoT 中心后，目标设备的制造商和型号属性可能已更改，导致设备现在被视为与当前部署的更新内容不兼容。_
 
-_检查 [ADU 核心接口](./device-update-plug-and-play) ，查看设备向设备更新服务报告的制造商和型号，并确保它与在要部署的更新内容的 [导入清单](./import-concepts.md) 中指定的制造商和型号匹配。你可以使用 [设备更新配置文件](./device-update-cofiguration-file.md)更改给定设备的这些属性。_
+_检查 [ADU 核心接口](./device-update-plug-and-play.md) ，查看设备向设备更新服务报告的制造商和型号，并确保它与在要部署的更新内容的 [导入清单](./import-concepts.md) 中指定的制造商和型号匹配。你可以使用 [设备更新配置文件](./device-update-configuration-file.md)更改给定设备的这些属性。_
 
 ### <a name="q-i-see-my-deployment-is-in-active-stage-but-none-of-my-devices-are-in-progress-with-the-update-what-should-i-do"></a>问：我看到我的部署处于 "活动" 阶段，但没有 "正在进行" 更新。 应采取何种操作？
 _确保你的部署开始日期在将来未设置。当你创建新部署时，除非你显式更改，否则部署开始日期将默认为下一天。你可以等待部署开始日期到达，或取消正在进行的部署并使用所需的开始日期创建新的部署。_

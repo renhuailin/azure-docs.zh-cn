@@ -51,6 +51,9 @@
         - name: 通过 HTTP 扩展使用 OVMS
           displayName: 'intel, OpenVINO'
           href: use-intel-openvino-tutorial.md
+        - name: 通过 gRPC 扩展使用 OV DL Streamer
+          displayName: 'intel, OpenVINO DL Streamer'
+          href: use-intel-grpc-vas-tutorial.md
         - name: 使用自定义视觉
           href: custom-vision-tutorial.md
         - name: 使用空间分析
@@ -90,6 +93,8 @@
       href: create-custom-azure-resource-manager-role-how-to.md
     - name: 部署到 IoT Edge 设备
       href: deploy-iot-edge-device.md
+    - name: 部署到 IoT Edge for Linux on Windows
+      href: deploy-iot-edge-linux-on-windows.md
     - name: 监视和日志记录
       href: monitoring-logging.md
     - name: 播放录制内容

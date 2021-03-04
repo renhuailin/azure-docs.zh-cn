@@ -1,17 +1,16 @@
 ---
 title: 使用资源管理器模板启用 VM insights
 description: 本文介绍如何使用 Azure PowerShell 或 Azure 资源管理器模板为一个或多个 Azure 虚拟机或虚拟机规模集启用 VM insights。
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: 57e2649dfe651bfa1e2ef18ff52ca611c122d696
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: fc0c304a3fea81f44e01d3e815f34e44728ea42e
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101707483"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102031851"
 ---
 # <a name="enable-vm-insights-using-resource-manager-templates"></a>使用资源管理器模板启用 VM insights
 本文介绍如何使用资源管理器模板为虚拟机或虚拟机规模集启用 VM 见解。 此过程可用于以下操作：

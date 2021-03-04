@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 01/13/2021
-ms.openlocfilehash: 29ac0c5991964de48cedd15622d15e929bc9d733
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: d5a013fc4e4ef931579da4fa13f400d5f4fcff0d
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101709540"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102030743"
 ---
 # <a name="how-to-configure-azure-database-for-mysql-data-in-replication"></a>如何配置 Azure Database for MySQL 的数据传入复制
 
@@ -102,7 +102,7 @@ ms.locfileid: "101709540"
 
    如果返回了值为“ON”的变量 [`log_bin`](https://dev.mysql.com/doc/refman/8.0/en/replication-options-binary-log.html#sysvar_log_bin)，则表示已在服务器上启用了二进制日志记录。
    
-   如果 `log_bin` 返回值为 "OFF" 的， 
+    如果 `log_bin` 返回的值为 "OFF"，并且源服务器在本地或虚拟机上运行，而您可以 (.cnf) 访问配置文件，则可以执行以下步骤：
    1. 在源服务器中 (".cnf") 找到 MySQL 配置文件。 例如：/etc/my.cnf
    2. 打开配置文件进行编辑，并在文件中找到 **mysqld** 节。
    3.  在 mysqld 节中，添加以下行

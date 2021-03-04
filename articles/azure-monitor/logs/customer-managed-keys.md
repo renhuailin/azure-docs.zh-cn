@@ -1,17 +1,16 @@
 ---
 title: Azure Monitor 客户管理的密钥
 description: 使用 Azure Key Vault 密钥配置客户管理的密钥以加密 Log Analytics 工作区中的数据的信息和步骤。
-ms.subservice: logs
 ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 01/10/2021
-ms.openlocfilehash: fa826e951b9fe34eb27481718b8f026747011e4e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 9fdaf42f18c320bf841e710b7066451fca24eaae
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101717411"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102030981"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure Monitor 客户管理的密钥 
 

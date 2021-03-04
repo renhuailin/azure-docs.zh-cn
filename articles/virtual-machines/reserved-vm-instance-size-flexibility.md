@@ -6,14 +6,14 @@ ms.service: virtual-machines
 ms.subservice: reserved-instances
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 02/02/2021
+ms.date: 03/01/2021
 ms.author: yashar
-ms.openlocfilehash: 6b04caec380a481569de4a33ea0159fd641c000f
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 9270b7fb135eddd78a7aeb30cf88af4d704e176e
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101673953"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102030693"
 ---
 # <a name="virtual-machine-size-flexibility-with-reserved-vm-instances"></a>虚拟机预留实例的虚拟机大小灵活性
 
@@ -48,7 +48,13 @@ ms.locfileid: "101673953"
 
 [实例大小灵活性比率](https://isfratio.blob.core.windows.net/isfratio/ISFRatio.csv)
 
-我们会保持文件 URL 和架构是固定的，以便可以通过编程方式使用此文件。 此外，还可以通过 API 获取数据。
+Azure 会保持链接和架构的更新，以便你可以通过编程方式使用文件。
+
+## <a name="view-vm-size-recommendations"></a>查看 VM 大小建议
+
+Azure 会在购买体验中显示 VM 大小建议。 若要查看最小大小建议，请选择 " **按最小大小分组**"。
+
+:::image type="content" source="./media/reserved-vm-instance-size-flexibility/select-product-recommended-quantity.png" alt-text="显示推荐数量的屏幕截图。" lightbox="./media/reserved-vm-instance-size-flexibility/select-product-recommended-quantity.png" :::
 
 ## <a name="next-steps"></a>后续步骤
 

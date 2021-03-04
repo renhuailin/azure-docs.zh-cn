@@ -2,13 +2,13 @@
 title: 为 Azure 事件网格主题或域配置 IP 防火墙
 description: 本文介绍如何配置事件网格主题或域的防火墙设置。
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: fd190a13a177b6b6d0f6b0dbcaa35d63dccd93c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 03/02/2021
+ms.openlocfilehash: 178b9d84ea8b2e0f764f7584526db8dbcf5284f3
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91324155"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102031831"
 ---
 # <a name="configure-ip-firewall-for-azure-event-grid-topics-or-domains"></a>为 Azure 事件网格主题或域配置 IP 防火墙 
 默认情况下，只要请求附带有效的身份验证和授权，就可以从 Internet 访问主题和域。 有了 IP 防火墙，就可以使用 [CIDR（无类别域间路由）](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)表示法将其进一步限制为仅一组 IPv4 地址或 IPv4 地址范围。 来自任何其他 IP 地址的发布者都将被拒绝，并将收到 403（禁止）响应。 有关事件网格支持的网络安全功能的详细信息，请参阅 [事件网格的网络安全](network-security.md)。
@@ -16,7 +16,7 @@ ms.locfileid: "91324155"
 本文介绍如何为 Azure 事件网格主题或域配置 IP 防火墙设置。
 
 ## <a name="use-azure-portal"></a>使用 Azure 门户
-本部分说明如何使用 Azure 门户创建入站 IP 防火墙规则。 本部分中所示的步骤适用于主题。 你可以使用类似的步骤为 **域**创建入站 IP 规则。 
+本部分说明如何使用 Azure 门户创建入站 IP 防火墙规则。 本部分中所示的步骤适用于主题。 你可以使用类似的步骤为 **域** 创建入站 IP 规则。 
 
 1. 在 [Azure 门户](https://portal.azure.com)中，导航到事件网格主题或域，并切换到 " **网络** " 选项卡。
 2. 选择 " **公用网络** " 以允许所有网络（包括 internet）访问资源。 
@@ -24,7 +24,7 @@ ms.locfileid: "91324155"
     可以使用基于 IP 的防火墙规则限制流量。 在无类别的域间路由 (CIDR) 表示法中指定单个 IPv4 地址或一系列 IP 地址。 
 
     ![屏幕截图，显示 "公用网络访问" 页面并选中 "公用网络"。](./media/configure-firewall/public-networks-page.png)
-3. **仅**允许专用终结点连接访问此资源。 使用此页上的 " **专用终结点连接** " 选项卡可管理连接。 
+3. **仅** 允许专用终结点连接访问此资源。 使用此页上的 " **专用终结点连接** " 选项卡可管理连接。 
 
     ![公用网络页面](./media/configure-firewall/private-endpoints-page.png)
 4. 在工具栏上选择“保存”。 
@@ -32,21 +32,8 @@ ms.locfileid: "91324155"
 
 
 ## <a name="use-azure-cli"></a>使用 Azure CLI
-本部分说明如何使用 Azure CLI 命令创建具有入站 IP 规则的主题。 本部分中所示的步骤适用于主题。 你可以使用类似的步骤为 **域**创建入站 IP 规则。 
+本部分说明如何使用 Azure CLI 命令创建具有入站 IP 规则的主题。 本部分中所示的步骤适用于主题。 你可以使用类似的步骤为 **域** 创建入站 IP 规则。 
 
-
-### <a name="prerequisites"></a>必备条件
-通过运行以下命令更新适用于 CLI 的 Azure 事件网格扩展： 
-
-```azurecli-interactive
-az extension update -n eventgrid
-```
-
-如果未安装该扩展，请运行以下命令进行安装： 
-
-```azurecli-interactive
-az extension add -n eventgrid
-```
 
 ### <a name="enable-or-disable-public-network-access"></a>启用或禁用公共网络访问
 默认情况下，将为主题和域启用公共网络访问。 还可以显式启用或禁用该方法。 可以通过配置入站 IP 防火墙规则来限制流量。 
@@ -160,9 +147,9 @@ az eventgrid topic update \
 
 
 ## <a name="use-powershell"></a>使用 PowerShell
-本部分演示如何使用 Azure PowerShell 命令通过入站 IP 防火墙规则创建 Azure 事件网格主题。 本部分中所示的步骤适用于主题。 你可以使用类似的步骤为 **域**创建入站 IP 规则。 
+本部分演示如何使用 Azure PowerShell 命令通过入站 IP 防火墙规则创建 Azure 事件网格主题。 本部分中所示的步骤适用于主题。 你可以使用类似的步骤为 **域** 创建入站 IP 规则。 
 
-### <a name="prerequisites"></a>必备条件
+### <a name="prerequisites"></a>先决条件
 按照 [如何：使用门户创建可访问资源的 Azure AD 应用程序和服务主体](../active-directory/develop/howto-create-service-principal-portal.md) 中的说明来创建 Azure Active Directory 应用程序，并记下以下值：
 
 - 目录（租户）ID

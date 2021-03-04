@@ -4,15 +4,14 @@ description: 若要在同一位置加入和分析所有数据，请通过 Azure 
 author: osalzberg
 ms.author: bwren
 ms.reviewer: bwren
-ms.subservice: logs
 ms.topic: conceptual
 ms.date: 06/12/2020
-ms.openlocfilehash: 1ab0f4f0baede20b035dfa15ba5319333d0f7bb1
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 7a259af17943643e722633592e53f219726c4437
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100608431"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102031202"
 ---
 # <a name="cross-service-query---azure-monitor-and-azure-data-explorer-preview"></a>跨服务查询-Azure Monitor 和 Azure 数据资源管理器 (预览) 
 在 [Azure 数据资源管理器](/azure/data-explorer/)、 [Application Insights](../app/app-insights-overview.md)和 [Log Analytics](../logs/data-platform-logs.md)之间创建跨服务查询。

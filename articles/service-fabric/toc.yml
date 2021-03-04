@@ -448,12 +448,14 @@
           href: how-to-managed-cluster-vmss-extension.md
         - name: 配置托管群集
           href: how-to-managed-cluster-configuration.md
+        - name: 添加 NSG 规则和其他托管群集网络选项
+          href: how-to-managed-cluster-networking.md
         - name: 使用 ARM 模板部署托管群集应用程序
           href: how-to-managed-cluster-app-deployment-template.md
-        - name: 将托管群集配置为启用托管标识
-          href: how-to-managed-identity-managed-cluster-virtual-machine-scale-sets.md
         - name: 为托管的群集节点启用磁盘加密
           href: how-to-enable-managed-cluster-disk-encryption.md
+        - name: 将托管标识用于托管群集节点
+          href: how-to-managed-identity-managed-cluster-virtual-machine-scale-sets.md
     - name: 规划和准备
       items:
         - name: 规划群集容量
