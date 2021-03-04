@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/20/2021
 ms.author: v-tcassi
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: ba1401696092f5a16ffa21859a9b485e94c5d792
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: c12dbeb81fd2b3d67863b5b84fa30cf77e165549
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101736502"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102123184"
 ---
 # <a name="install-and-provision-azure-iot-edge-for-linux-on-a-windows-device-preview"></a>在 Windows 设备上安装和预配 Azure IoT Edge for Linux（预览版）
 
@@ -174,7 +174,7 @@ Azure IoT Edge for Linux on Windows 支持以下预配方法：
    ```
 
    > [!NOTE]
-   > 你可以在不使用参数的情况下运行此命令，也可以选择使用参数来自定义部署。 若要查看其含义，请参阅 [Windows PowerShell 脚本参考上的适用于 Linux 的 IoT Edge](reference-iot-edge-for-linux-on-windows-scripts.md#Deploy-Eflow) 。
+   > 你可以在不使用参数的情况下运行此命令，也可以选择使用参数来自定义部署。 若要查看其含义，请参阅 [Windows PowerShell 脚本参考上的适用于 Linux 的 IoT Edge](reference-iot-edge-for-linux-on-windows-scripts.md#deploy-eflow) 。
 
 1. 输入“Y”接受许可条款。
 
@@ -340,8 +340,6 @@ Azure IoT Edge for Linux on Windows 支持以下预配方法：
        ```bash
        sudo iotedge check
        ```
-
----
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 

@@ -6,12 +6,12 @@ author: mlearned
 ms.topic: conceptual
 ms.date: 07/01/2020
 ms.author: mlearned
-ms.openlocfilehash: 1adf8370f55a0f6131eb4140c58fa4618e08127b
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 6c69e46ea3510476089cd932b1cd1bdf14254021
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686015"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102122368"
 ---
 # <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中应用程序和群集的安全性相关概念
 
@@ -36,11 +36,14 @@ ms.locfileid: "94686015"
 
 默认情况下，Kubernetes API 服务器使用公共 IP 地址和完全限定域名 (FQDN)。 可以使用[经授权的 IP 范围][authorized-ip-ranges]将访问范围限制为 API 服务器终结点。 还可以创建完整的[专用群集][private-clusters]，以限制 API 服务器对虚拟网络的访问。
 
-可以使用 Kubernetes 的基于角色的访问控制 (Kubernetes RBAC) 和 Azure RBAC 来控制对 API 服务器的访问。 有关详细信息，请参阅 [Azure AD 与 AKS 集成][aks-aad]。
+可使用 Kubernetes 基于角色的访问控制 (Kubernetes RBAC) 和 Azure RBAC 控制对 API 服务器的访问。 有关详细信息，请参阅 [Azure AD 与 AKS 集成][aks-aad]。
 
 ## <a name="node-security"></a>节点安全性
 
-AKS 节点是由你管理和维护的 Azure 虚拟机。 Linux 节点通过 Moby 容器运行时运行经过优化的 Ubuntu 发行版。 Windows Server 节点运行已优化的 Windows Server 2019 版本，并使用 Moby 容器运行时。 创建或纵向扩展了 AKS 群集时，会自动使用最新的 OS 安全更新和配置来部署节点。
+AKS 节点是由你管理和维护的 Azure 虚拟机。 Linux 节点使用 `containerd` 或小鲸鱼容器运行时运行优化的 Ubuntu 分发版。 Windows Server 节点运行优化的 Windows Server 2019 版本，并使用 `containerd` 或小鲸鱼容器运行时。 创建或纵向扩展了 AKS 群集时，会自动使用最新的 OS 安全更新和配置来部署节点。
+
+> [!NOTE]
+> 使用 Kubernetes 1.19 版节点池及更高版节点池的 AKS 群集使用 `containerd` 作为其容器运行时。 将早于 v1.19 的 Kubernetes 版本用于节点池的 AKS 群集使用 [Moby](https://mobyproject.org/)（上游 docker）作为其容器运行时。
 
 Azure 平台会在夜间自动将 OS 安全修补程序应用于 Linux 节点。 如果 Linux OS 安全更新需要重启主机，系统不会自动执行重启操作。 可以手动重启 Linux 节点，或使用常用的方法，即使用 [Kured][kured]，这是一个适用于 Kubernetes 的开源重启守护程序。 Kured 作为 [DaemonSet][aks-daemonsets] 运行并监视每个节点，用于确定指示需要重启的文件是否存在。 通过使用相同的 [cordon 和 drain 进程](#cordon-and-drain)作为群集升级，来跨群集管理重启。
 
@@ -50,7 +53,7 @@ Azure 平台会在夜间自动将 OS 安全修补程序应用于 Linux 节点。
 
 为提供存储，节点使用 Azure 托管磁盘。 这些是由高性能固态硬盘支持的高级磁盘，适用于大多数规模的 VM 节点。 托管磁盘上存储的数据在 Azure 平台内会自动静态加密。 为提高冗余，还会在 Azure 数据中心内安全复制这些磁盘。
 
-目前，在恶意的多租户使用情况下，AKS 或其他位置中的 Kubernetes 环境并不完全安全。 其他安全功能（如 *Pod 安全策略*）或更细粒度的 Kubernetes 基于角色的访问控制 (Kubernetes RBAC) 对于节点，使得攻击更加困难。 但是，为了在运行恶意多租户工作负荷时获得真正的安全性，虚拟机监控程序应是你唯一信任的安全级别。 Kubernetes 的安全域成为整个群集，而不是单个节点。 对于这些类型的恶意多租户工作负荷，应使用物理隔离的群集。 有关如何隔离工作负载的详细信息，请参阅 [AKS 中的群集隔离最佳做法][cluster-isolation]。
+目前，在恶意的多租户使用情况下，AKS 或其他位置中的 Kubernetes 环境并不完全安全。 用于节点的其他安全功能（例如 Pod 安全策略或更细化的 Kubernetes 基于角色的访问控制 [Kubernetes RBAC]）可增加攻击的难度。 但是，为了在运行恶意多租户工作负荷时获得真正的安全性，虚拟机监控程序应是你唯一信任的安全级别。 Kubernetes 的安全域成为整个群集，而不是单个节点。 对于这些类型的恶意多租户工作负荷，应使用物理隔离的群集。 有关如何隔离工作负载的详细信息，请参阅 [AKS 中的群集隔离最佳做法][cluster-isolation]。
 
 ### <a name="compute-isolation"></a>计算隔离
 

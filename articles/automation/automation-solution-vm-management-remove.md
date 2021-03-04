@@ -3,14 +3,14 @@ title: 删除 Azure 自动化在空闲时间启动/停止 VM 概述
 description: 本文介绍如何删除在空闲时间启动/停止 VM 功能，以及如何从 Log Analytics 工作区取消关联自动化帐户。
 services: automation
 ms.subservice: process-automation
-ms.date: 02/04/2021
+ms.date: 03/04/2021
 ms.topic: conceptual
-ms.openlocfilehash: a201274bf0c06382da790dd051bf5023337970b8
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 0bab5d8e82ce432e9b3834fe4c003316545eb338
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101723837"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102122079"
 ---
 # <a name="remove-startstop-vms-during-off-hours-from-automation-account"></a>从自动化帐户中删除在空闲时间启动/停止 VM
 
@@ -24,21 +24,7 @@ ms.locfileid: "101723837"
 
 ## <a name="delete-the-dedicated-resource-group"></a>删除专用资源组
 
-1. 登录到 Azure [https://portal.azure.com](https://portal.azure.com) 。
-
-2. 导航到自动化帐户，并在 "**相关资源**" 下选择 "**链接的工作区**"。
-
-3. 选择“转到工作区”。
-
-4. 单击“常规”下的“解决方案” 。
-
-5. 在“解决方案”页上，选择“Start-Stop-VM[Workspace]”。
-
-6. 在 " **VMManagementSolution [Workspace]** " 页上，从菜单中选择 " **删除** "。
-
-    ![删除 VM 管理功能](media/automation-solution-vm-management/vm-management-solution-delete.png)
-
-7. 若要删除创建的只支持在空闲时间启动/停止 VM 的资源组，请按照 [Azure 资源管理器资源组和资源删除](../azure-resource-manager/management/delete-resource-group.md) 一文中所述的步骤进行操作。
+若要删除资源组，请按照 [Azure 资源管理器资源组和资源删除](../azure-resource-manager/management/delete-resource-group.md) 一文中所述的步骤进行操作。
 
 ## <a name="delete-the-automation-account"></a>删除 Automation 帐户
 

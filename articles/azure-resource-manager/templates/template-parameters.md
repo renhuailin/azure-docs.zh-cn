@@ -3,12 +3,12 @@ title: 模板中的参数
 description: 介绍如何在 Azure 资源管理器模板中定义参数 (ARM 模板) 和 Bicep 文件。
 ms.topic: conceptual
 ms.date: 03/03/2021
-ms.openlocfilehash: b23417766524204e490450568bb80b8c49e2d328
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: a8608e4733960d7f5ba7e5f548c47f16a2b244bb
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/04/2021
-ms.locfileid: "102043926"
+ms.locfileid: "102123388"
 ---
 # <a name="parameters-in-arm-templates"></a>ARM 模板中的参数
 
@@ -16,7 +16,7 @@ ms.locfileid: "102043926"
 
 资源管理器会在启动部署操作之前解析参数值。 只要在模板中使用参数，资源管理器就会将其替换为解析的值。
 
-每个参数都必需设置为[数据类型](template-syntax.md#data-types)之一。
+每个参数都必需设置为[数据类型](data-types.md)之一。
 
 [!INCLUDE [Bicep preview](../../../includes/resource-manager-bicep-preview.md)]
 

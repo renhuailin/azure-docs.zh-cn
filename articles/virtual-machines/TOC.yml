@@ -493,7 +493,7 @@
           href: ./extensions/update-linux-agent.md
         - name: 导出扩展
           href: ./extensions/export-templates.md
-        - name: 故障排除
+        - name: 疑难解答
           href: ./extensions/troubleshoot.md
         - name: 启用了 Python 3 的 Linux 系统的问题
           href: ./extensions/issues-using-vm-extensions-python-3.md
@@ -1331,7 +1331,7 @@
                   href: ../azure-monitor/agents/data-sources-custom-logs.md?context=/azure/virtual-machines/context/context
                 - name: 自定义字段
                   href: ../azure-monitor/logs/custom-fields.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
-        - name: 故障排除
+        - name: 疑难解答
           items:
             - name: Log Analytics VM 扩展
               href: ../azure-monitor/visualize/vmext-troubleshoot.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
@@ -1346,7 +1346,7 @@
             - name: 正式版常见问题解答
               href: ../azure-monitor/vm/vminsights-ga-release-faq.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: 常见问题解答
-              href: ../azure-monitor/faq.md?context=/azure/virtual-machines/context/context#azure-monitor-for-vms
+              href: ../azure-monitor/faq.md
             - name: 启用监视
               items:
                 - name: 启用监视概述

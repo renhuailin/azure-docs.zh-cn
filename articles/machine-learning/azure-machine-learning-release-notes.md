@@ -9,18 +9,36 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 02/18/2021
-ms.openlocfilehash: b19c5e8ca1f7984f33a5cedf37a2774532c79350
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 69313b48b505bd0b53df6f15f636e2903f41ebfd
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101661097"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102124000"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure 机器学习发行说明
 
 本文介绍 Azure 机器学习的版本。  有关完整的 SDK 参考内容，请访问 Azure 机器学习的[适用于 Python 的主要 SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) 参考页。
 
 __RSS 源__：通过将以下 URL 复制并粘贴到源阅读器中，可以在页面更新时收到通知：`https://docs.microsoft.com/api/search/rss?search=%22Azure+machine+learning+release+notes%22&locale=en-us`
+
+## <a name="2021-02-28"></a>2021-02-28
+### <a name="azure-machine-learning-studio-notebooks-experience-february-update"></a>Azure 机器学习 Studio 笔记本体验 (2 月更新版) 
++ **新功能**
+  + [本机终端 (GA) ](https://docs.microsoft.com/azure/machine-learning/how-to-access-terminal)。 用户现在可以访问集成终端，并可以通过集成终端访问 Git 操作。
+  + [笔记本片段 (预览) ](https://azure.github.io/azureml-web/docs/vs-code-snippets/snippets)。 常见的 Azure ML 代码摘录现在随时可用。 导航到 "代码片段" 面板，通过工具栏访问，或使用 Ctrl + Space 激活 "代码片段" 菜单。  
+  + [键盘快捷方式](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#shortcut-keys)。 使用 Jupyter 中提供的键盘快捷方式进行完整的奇偶校验。 
+  + 指示单元参数。 显示笔记本中包含单元格的用户是参数单元，可以通过 [Papermill](https://github.com/nteract/papermill) 在计算实例上运行参数化的笔记本。
+  + 终端和内核会话管理器：用户能够管理在计算上运行的所有内核和终端会话。
+  + 共享按钮。 用户现在可以通过右键单击文件并使用 "共享" 按钮，共享笔记本文件资源管理器中的任何文件。
+
+
++ **Bug 修复与改进**
+  + 改进了页面加载时间
+  + 提高了性能 
+  + 提高了速度和内核可靠性
+  + 添加了旋转轮以显示所有正在进行的 [计算实例操作](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#status-indicators)的进度。
+  + 在文件资源管理器中右键单击。 右键单击任何文件都将打开 "文件操作"。 
 
 ## <a name="2021-02-16"></a>2021-02-16
 

@@ -6,16 +6,16 @@ ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
 ms.topic: article
 ms.date: 12/07/2020
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: ec9e3b6ca4b07003852681523a21b87ab7b8671b
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.openlocfilehash: a865c1070150b31399b5b738a0a469a07e0b13de
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97825966"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102122351"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>在 Azure 门户中配置应用服务应用
 
-本文介绍如何使用 [Azure 门户]配置 web 应用、移动后端或 API 应用的常见设置。
+本文介绍如何使用 [Azure 门户]配置 Web 应用、移动后端或 API 应用的常用设置。
 
 ## <a name="configure-app-settings"></a>配置应用设置
 
@@ -29,7 +29,7 @@ ms.locfileid: "97825966"
 
 ![应用程序设置](./media/configure-common/open-ui.png)
 
-对于 ASP.NET 和 ASP.NET Core 开发人员而言，在应用服务中设置应用设置类似于在 Web.config  或 appsettings.json  中的 `<appSettings>` 内进行设置，但应用服务中的值会替代 Web.config  或 appsettings.json  中的值。 你可以保留开发设置 (例如， *Web.config* 或 *appsettings.js* 中的本地 MySQL 密码) 和生产机密 (例如，在应用服务中安全) Azure MySQL 数据库密码。 相同的代码在本地调试时使用开发设置，部署到 Azure 时使用生产机密。
+对于 ASP.NET 和 ASP.NET Core 开发人员而言，在应用服务中设置应用设置类似于在 Web.config  或 appsettings.json  中的 `<appSettings>` 内进行设置，但应用服务中的值会替代 Web.config  或 appsettings.json  中的值。 可以在 Web.config 或 appsettings.json 中保留开发设置（例如本地 MySQL 密码），并在应用服务中安全地保留生产机密（例如 Azure MySQL 数据库密码） 。 相同的代码在本地调试时使用开发设置，部署到 Azure 时使用生产机密。
 
 同样，其他语言堆栈也会在运行时获取应用设置作为环境变量。 有关特定的语言堆栈步骤，请参阅：
 
@@ -121,7 +121,7 @@ ms.locfileid: "97825966"
 对于其他语言堆栈，最好是改用[应用设置](#configure-app-settings)，因为连接字符串需要在变量键中使用特殊的格式才能访问值。 
 
 > [!NOTE]
-> 在这种情况下，你可能想要对 non-.NET 语言使用连接字符串而不是应用设置：仅当你在应用服务应用中为数据库配置连接字符串时， _才_ 会将某些 Azure 数据库类型与应用一起备份。 有关详细信息，请参阅[备份的内容](manage-backup.md#what-gets-backed-up)。 如果不需要这种自动化备份，请使用应用设置。
+> 有一种情况你需要使用连接字符串而不是非 .NET 语言的应用设置：仅当你在应用服务应用中为数据库配置连接字符串时，某些 Azure 数据库类型才会与应用一起备份。 有关详细信息，请参阅[备份的内容](manage-backup.md#what-gets-backed-up)。 如果不需要这种自动化备份，请使用应用设置。
 
 在运行时，连接字符串可用作环境变量，其前缀为以下连接类型：
 
@@ -232,7 +232,7 @@ ms.locfileid: "97825966"
 ![路径映射](./media/configure-common/open-path.png)
 
 > [!NOTE] 
-> " **路径映射** " 选项卡可能显示特定于操作系统的设置，这些设置与此处显示的示例不同。
+> “路径映射”选项卡可能会显示特定于 OS 的设置，该设置与此处所示示例不同。
 
 ### <a name="windows-apps-uncontainerized"></a>Windows 应用（未容器化）
 
@@ -271,8 +271,6 @@ ms.locfileid: "97825966"
 有关详细信息，请参阅 [从应用服务中的容器访问 Azure 存储为网络共享](configure-connect-to-azure-storage.md)。
 
 ## <a name="configure-language-stack-settings"></a>配置语言堆栈设置
-
-对于 Linux 应用，请参阅：
 
 - [ASP.NET Core](configure-language-dotnetcore.md)
 - [Node.js](configure-language-nodejs.md)

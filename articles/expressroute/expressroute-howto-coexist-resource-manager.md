@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 12/11/2019
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: edbd36ad3444795ade4b3f8d29d8473b21a2fda8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b20bb4df7524c179766a2b2f7f090fccbddd7f37
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91651507"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102122606"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections-using-powershell"></a>使用 PowerShell 配置 ExpressRoute 和站点到站点共存连接
 > [!div class="op_single_selector"]
@@ -42,6 +42,7 @@ ms.locfileid: "91651507"
 * **应该为 VPN 网关配置静态路由。** 如果本地网络同时连接到 ExpressRoute 和站点到站点 VPN，则必须在本地网络中配置静态路由，以便将站点到站点 VPN 连接路由到公共 Internet。
 * **如果未指定，则 VPN 网关将默认为 ASN 65515。** Azure VPN 网关支持 BGP 路由协议。 通过添加 -Asn 开关，可为虚拟网络指定 ASN（AS 编号）。 如果未指定此参数，则默认 AS 编号为 65515。 可以将任何 ASN 用于配置，但如果选择 65515 以外的其他 ASN，则必须重置网关才能使设置生效。
 * 网关子网必须是 /27 或更短的前缀（例如 /26、/25），否则，添加 ExpressRoute 虚拟网络网关时将收到错误消息。
+* **不支持双堆栈 vnet 中的共存。** 如果使用的是 ExpressRoute IPv6 支持和双堆栈 ExpressRoute 网关，则无法使用 VPN 网关。
 
 ## <a name="configuration-designs"></a>配置设计
 ### <a name="configure-a-site-to-site-vpn-as-a-failover-path-for-expressroute"></a>将站点到站点 VPN 配置为 ExpressRoute 的故障转移路径
@@ -121,7 +122,7 @@ ms.locfileid: "91651507"
    ```azurepowershell-interactive
    $vnet = Set-AzVirtualNetwork -VirtualNetwork $vnet
    ```
-4. <a name="vpngw"></a>接下来，创建站点到站点 VPN 网关。 有关 VPN 网关配置的详细信息，请参阅[使用站点到站点连接配置 VNet](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)。 只有 *VpnGw1*、*VpnGw2*、*VpnGw3*、*标准*和*高性能* VPN 网关支持 GatewaySku。 基本 SKU 不支持 ExpressRoute-VPN 网关共存配置。 VpnType 必须为 *RouteBased*。
+4. <a name="vpngw"></a>接下来，创建站点到站点 VPN 网关。 有关 VPN 网关配置的详细信息，请参阅[使用站点到站点连接配置 VNet](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)。 只有 *VpnGw1*、*VpnGw2*、*VpnGw3*、*标准* 和 *高性能* VPN 网关支持 GatewaySku。 基本 SKU 不支持 ExpressRoute-VPN 网关共存配置。 VpnType 必须为 *RouteBased*。
 
    ```azurepowershell-interactive
    $gwSubnet = Get-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet

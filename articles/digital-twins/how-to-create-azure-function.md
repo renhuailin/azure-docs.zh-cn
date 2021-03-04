@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/27/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: b37277c660562721273ff9ae86dd677ee7ac7d55
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 2419761c195258c60561e284abf0227b915ed4f6
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/04/2021
-ms.locfileid: "102049995"
+ms.locfileid: "102123626"
 ---
 # <a name="connect-function-apps-in-azure-for-processing-data"></a>连接 Azure 中的函数应用以处理数据
 
@@ -86,7 +86,7 @@ dotnet add package Azure.Core.Pipeline
 
 现在，你将声明类级别变量并添加允许函数访问 Azure 数字孪生的身份验证代码。 将以下项添加到 _Function1.cs_ 文件中的函数。
 
-* 用于读取 Azure 数字孪生服务 URL 作为环境变量的代码。 最好从环境变量中读取服务 URL，而不是在函数中对其进行硬编码。
+* 用于读取 Azure 数字孪生服务 URL 作为 **环境变量** 的代码。 最好从环境变量中读取服务 URL，而不是在函数中对其进行硬编码。 [在本文的后面部分中](#set-up-security-access-for-the-function-app)，您将设置此环境变量的值。 有关环境变量的详细信息，请参阅 [*管理 function app*](../azure-functions/functions-how-to-use-azure-function-app-settings.md?tabs=portal)。
 
     :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/adtIngestFunctionSample.cs" id="ADT_service_URL":::
 
@@ -134,7 +134,7 @@ az functionapp identity assign -g <your-resource-group> -n <your-App-Service-(fu
 ```azurecli-interactive 
 az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<principal-ID>" --role "Azure Digital Twins Data Owner"
 ```
-最后，可以通过设置环境变量，使 Azure 数字孪生实例的 URL 可供函数访问。 有关设置环境变量的详细信息，请参阅 [*环境变量*](/sandbox/functions-recipes/environment-variables)。 
+最后，通过为你的函数设置 **环境变量** ，使你的 Azure 数字孪生实例的 URL 可供你使用。 有关环境变量的详细信息，请参阅 [*管理 function app*](../azure-functions/functions-how-to-use-azure-function-app-settings.md?tabs=portal)。 
 
 > [!TIP]
 > Azure 数字孪生实例的 URL 是通过将 *https://* 添加到 Azure 数字孪生实例的 *主机名* 的开头来完成的。 若要查看主机名以及实例的所有属性，可以运行 `az dt show --dt-name <your-Azure-Digital-Twins-instance>` 。
@@ -183,7 +183,7 @@ az functionapp config appsettings set -g <your-resource-group> -n <your-App-Serv
 
 ### <a name="configure-application-settings-using-azure-portal"></a>使用 Azure 门户配置应用程序设置
 
-通过设置环境变量，可以使你的函数能够访问 Azure 数字孪生实例的 URL。 有关此内容的详细信息，请参阅 [*环境变量*](/sandbox/functions-recipes/environment-variables)。 应用程序设置公开为环境变量以访问数字孪生实例。 
+若要使 Azure 数字孪生实例的 URL 可供函数访问，可以为其设置 **环境变量** 。 有关环境变量的详细信息，请参阅 [*管理 function app*](../azure-functions/functions-how-to-use-azure-function-app-settings.md?tabs=portal)。 应用程序设置公开为环境变量以访问 Azure 数字孪生实例。 
 
 若要使用实例的 URL 设置环境变量，请首先通过查找 Azure 数字孪生实例的主机名来获取 URL。 在 [Azure 门户](https://portal.azure.com) 搜索栏中搜索实例。 然后，在左侧导航栏中选择 " _概述_ " 以查看 _主机名_。 复制此值。
 

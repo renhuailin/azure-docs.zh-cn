@@ -11,12 +11,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviwer: vanto
 ms.date: 01/15/2021
-ms.openlocfilehash: 664733f3d4c4e4bf17440db0323580c5d2c8c2ce
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: fb42a0428f0439053375027481d38977b068e356
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100555660"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102122572"
 ---
 # <a name="configure-azure-attestation-for-your-azure-sql-logical-server"></a>配置 Azure SQL 逻辑服务器的 Azure 证明
 
@@ -66,10 +66,14 @@ authorizationrules
 
 上述策略验证：
 
-- Azure SQL 数据库中的 enclave 不支持调试 (这会降低 enclave 提供) 的保护级别。
-- Enclave 中库的产品 ID 是分配给安全 enclaves (4639) Always Encrypted 的产品 ID。
-- 库的版本 ID (svn) 大于0。
+- Azure SQL 数据库中的 enclave 不支持调试。 
+  > 已禁用或启用调试，可以加载 Enclaves。 调试支持旨在允许开发人员对 enclave 中运行的代码进行故障排除。 在生产系统中，调试可以让管理员检查 enclave 的内容，这将减少 enclave 提供的保护级别。 建议的策略禁用调试，以确保如果恶意管理员通过接管 enclave 计算机来尝试启用调试支持，则证明会失败。 
+- Enclave 的产品 ID 与分配到安全 enclaves Always Encrypted 的产品 ID 匹配。
+  > 每个 enclave 都有一个唯一的产品 ID，它将 enclave 与其他 enclaves 区分开来。 分配给 Always Encrypted enclave 的产品 ID 是4639。 
+- 库的 (SVN) 的安全版本号大于0。
+  > SVN 允许 Microsoft 响应 enclave 代码中标识的潜在安全问题。 如果安全问题发现和修复，Microsoft 将部署新版本的 enclave，新的 () SVN 增加。 上述建议策略将更新以反映新的 SVN。 通过更新策略来匹配推荐的策略，你可以确保在恶意管理员尝试加载较旧且不安全的 enclave 时，证明将会失败。
 - Enclave 中的库已使用 Microsoft 签名密钥进行签名 (x mrsigner 声明的值是签名密钥) 的哈希。
+  > 证明的主要目标之一是说服客户端，enclave 中运行的二进制文件是应该运行的二进制文件。 证明策略为此目的提供了两种机制。 一个是 **mrenclave** 声明，它是应在 enclave 中运行的二进制文件的哈希。 **Mrenclave** 的问题是，即使对代码进行了重大更改，二进制哈希也会更改，这使得难以处理在 enclave 中运行的代码。 因此，建议使用 **mrsigner**，它是用于对 enclave 二进制文件进行签名的密钥的哈希。 当 Microsoft revs enclave 时，只要签名密钥不变， **mrsigner** 就会保持不变。 这样，就可以在不中断客户应用程序的情况下部署更新的二进制文件。 
 
 > [!IMPORTANT]
 > 使用 Intel SGX enclaves 的默认策略创建证明提供者，它不会验证在 enclave 内运行的代码。 Microsoft 强烈建议你为安全 enclaves 的 Always Encrypted 设置上述建议策略，而不是使用默认策略。

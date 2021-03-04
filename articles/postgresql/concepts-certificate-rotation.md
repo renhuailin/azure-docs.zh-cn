@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: c9bc6e3822ac6c014b9ff00e9cd81bbe707628fe
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 6dc687879eb646b4abd081b40bce292d20ff3186
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101736060"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102123983"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-database-for-postgresql-single-server"></a>了解 Azure Database for PostgreSQL 单一服务器的根 CA 更改中的更改
 
@@ -83,7 +83,7 @@ Azure database for PostgreSQL 用户只能使用预定义的证书来连接到 [
 
 ## <a name="what-if-we-removed-the-baltimorecybertrustroot-certificate"></a>如果删除了 Baltimorecybertrustroot.crt.pem 证书，会怎么样？
 
-连接到 Azure Database for PostgreSQL 服务器时，会开始连接错误。 你将需要再次 [配置 SSL](howto-configure-ssl.md) 与 [baltimorecybertrustroot.crt.pem](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) 证书以维护连接。
+连接到 Azure Database for PostgreSQL 服务器时，会开始连接错误。 你将需要再次配置 SSL 与 [baltimorecybertrustroot.crt.pem](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) 证书以维护连接。
 
 
 ## <a name="frequently-asked-questions"></a>常见问题

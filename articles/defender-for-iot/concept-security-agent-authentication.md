@@ -1,5 +1,5 @@
 ---
-title: " (预览版的安全代理身份验证) "
+title: 安全代理身份验证
 titleSuffix: Azure Defender for IoT
 description: 通过两种可能的方法执行微代理身份验证。
 author: shhazam-ms
@@ -8,14 +8,14 @@ ms.author: shhazam
 ms.date: 1/20/2021
 ms.topic: conceptual
 ms.service: azure
-ms.openlocfilehash: 018da32b90c7730f82eaa5aa2cd2b5c7a64719a6
-ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
+ms.openlocfilehash: b0304bd191626adb71041fb0561862b988ee25cd
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99809739"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102124578"
 ---
-# <a name="micro-agent-authentication-methods-preview"></a> (预览版的微代理身份验证方法) 
+# <a name="micro-agent-authentication-methods"></a>微代理身份验证方法 
 
 用于 IoT 微代理的 Defender 的身份验证有两个选项： 
 
@@ -25,7 +25,7 @@ ms.locfileid: "99809739"
 
 ## <a name="authentication-using-a-connection-string"></a>使用连接字符串进行身份验证 
 
-若要使用连接字符串，你需要添加一个文件，该文件使用以 utf-8 格式编码的连接字符串（在名为的文件中的 defender 代理目录中） `connection_string.txt` 。 例如，应用于对象的
+若要使用连接字符串，你需要添加一个文件，该文件使用以 utf-8 格式编码的连接字符串（在名为的文件中的 defender 代理目录中） `connection_string.txt` 。 例如，
 
 ```azurecli
 echo “<connection string>” > connection_string.txt 
@@ -44,7 +44,7 @@ sudo systemctl restart defender-iot-micro-agent.service
 
 1. 将证书的 PEM 编码的公共部分放入到名为的文件中的 defender 代理目录 `certificate_public.pem` 。
 1. 在名为的文件中将 PEM 编码的私钥放入 defender 代理目录 `certificate_private.pem` 。
-1. 将适当的连接字符串放在名为的文件中 `connection_string.txt` 。 例如，应用于对象的
+1. 将适当的连接字符串放在名为的文件中 `connection_string.txt` 。 例如，
 
     ```azurecli
     HostName=<the host name of the iot hub>;DeviceId=<the id of the device>;ModuleId=<the id of the module>;x509=true 

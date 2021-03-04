@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eaad4995abcf54e9ca7040d570c7a9abbdbc9cf5
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: fff9f9e809c61761ae22bc64cb0810b6e8b98f07
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/04/2021
-ms.locfileid: "102032379"
+ms.locfileid: "102122691"
 ---
 # <a name="securing-service-principals"></a>保护服务主体
 
@@ -115,7 +115,7 @@ ApplicationID 表示全局应用程序，对所有租户中的所有应用程序
 
 [创建服务主体](../develop/howto-create-service-principal-portal.md)
 
- [监视服务主体登录](../reports-monitoring/concept-all-sign-ins.md#sign-ins-report)
+ [监视服务主体登录](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins#sign-ins-report)
 
 **若要详细了解如何保护服务帐户，请执行以下操作：**
 
@@ -123,6 +123,6 @@ ApplicationID 表示全局应用程序，对所有租户中的所有应用程序
 
 [保护托管标识](service-accounts-managed-identities.md)
 
-[管理 Azure 服务帐户](service-accounts-governing-azure.md)
+[管控 Azure 服务帐户](service-accounts-governing-azure.md)
 
 [本地服务帐户简介](service-accounts-on-premises.md)

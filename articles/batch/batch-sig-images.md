@@ -2,14 +2,14 @@
 title: 使用共享映像库创建自定义映像池
 description: 自定义映像池是配置计算节点以运行 Batch 工作负载的高效方法。
 ms.topic: conceptual
-ms.date: 11/18/2020
+ms.date: 03/04/2021
 ms.custom: devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 98dbb965d77da43d937dccbc0f99abf12c195929
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 8623c47952540717ae50538fd7b0282c9c8629bb
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98731355"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102124238"
 ---
 # <a name="use-the-shared-image-gallery-to-create-a-custom-image-pool"></a>使用共享映像库创建自定义映像池
 
@@ -69,12 +69,15 @@ ms.locfileid: "98731355"
 > [!NOTE]
 > 不能使用具有附加许可和购买条款的第三方映像作为基础映像。 有关这些市场映像的信息，请参阅 [Linux](../virtual-machines/linux/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms) 或 [Windows](../virtual-machines/windows/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms) VM 指南。
 
+创建 Vm 时，请遵循以下准则：
+
 - 确保使用托管磁盘创建 VM。 这是创建 VM 时的默认存储设置。
 - 不要在 VM 上安装自定义脚本扩展等 Azure 扩展。 如果映像包含预装的扩展，在部署 Batch 池时 Azure 可能会遇到问题。
 - 使用附加的数据磁盘时，需要从 VM 中装载和格式化磁盘，才能使用它们。
 - 确保所提供的基础 OS 映像使用默认临时驱动器。 Batch 节点代理目前需要使用默认的临时驱动器。
 - 确保 OS 磁盘未加密。
-- VM 开始运行后，请通过 RDP（适用于 Windows）或 SSH（适用于 Linux）进行连接。 安装所需的任何软件，或复制所需的数据。  
+- VM 开始运行后，请通过 RDP（适用于 Windows）或 SSH（适用于 Linux）进行连接。 安装所需的任何软件，或复制所需的数据。
+- 为获得更快的池预配，请对 VM 的 OS 磁盘使用 [ReadWrite 磁盘缓存设置](../virtual-machines/premium-storage-performance.md#disk-caching) 。
 
 ### <a name="create-a-vm-snapshot"></a>创建 VM 快照
 
@@ -211,7 +214,7 @@ client.pool.add(new_pool)
 1. 选择“池”，然后选择“添加”，以便创建新池。 
 1. 在“映像类型”部分，选择“共享映像库”。 
 1. 使用托管映像的相关信息完成剩余部分。
-1. 选择“确定” 。
+1. 选择“确定”。
 
 ![通过门户使用共享映像创建池。](media/batch-sig-images/create-custom-pool.png)
 

@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 03/02/2021
 ms.author: duau
-ms.openlocfilehash: c0d153ff8125a6ef16a69aec72a27dd4b234eab5
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 253fce7d47d694c03d470fefdf81318a6bff77b3
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/04/2021
-ms.locfileid: "102100043"
+ms.locfileid: "102123048"
 ---
 # <a name="add-ipv6-support-for-private-peering-using-azure-powershell-preview"></a>使用 Azure PowerShell (预览版添加对专用对等互连的 IPv6 支持) 
 
@@ -165,7 +165,7 @@ ms.locfileid: "102100043"
 
 2. [创建双堆栈网关子网](https://docs.microsoft.com/azure/expressroute/expressroute-howto-add-gateway-resource-manager#add-a-gateway)。
 
-3. 使用区域冗余 SKU (ErGw1AZ，ErGw2AZ，ErGw3AZ) [创建虚拟网络网关](https://docs.microsoft.com/azure/expressroute/expressroute-howto-add-gateway-resource-manager#add-a-gateway)。 如果计划使用 FastPath，请使用 ErGw3AZ。
+3. 使用区域冗余 SKU (ErGw1AZ，ErGw2AZ，ErGw3AZ) [创建虚拟网络网关](https://docs.microsoft.com/azure/expressroute/expressroute-howto-add-gateway-resource-manager#add-a-gateway)。 如果计划使用 FastPath，请使用 ErGw3AZ (请注意，这仅适用于使用 ExpressRoute Direct) 的线路。
 
 4. 将[虚拟网络链接到 ExpressRoute 线路](https://docs.microsoft.com/azure/expressroute/expressroute-howto-linkvnet-arm)。
 
@@ -176,6 +176,8 @@ ms.locfileid: "102100043"
 * 与非 AZ 区域中的部署的连接
 * Global Reach ExpressRoute 线路之间的连接
 * 将 ExpressRoute 用于虚拟 WAN
+* FastPath 与非 ExpressRoute 直接线路的连接
+* 与 VPN 网关共存
 
 ## <a name="next-steps"></a>后续步骤
 

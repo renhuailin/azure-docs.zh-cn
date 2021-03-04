@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 2/26/2021
-ms.openlocfilehash: c57ac9ddbebcf02cb0118705b63f97fd1880b0f2
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 098f62365971fd634001706ab99fd414a6b25056
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101695930"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102123558"
 ---
 # <a name="register-and-scan-azure-multiple-sources"></a>注册并扫描 Azure 多个源
 
@@ -95,12 +95,12 @@ Azure 多源支持扫描，以便捕获监控范围支持的大多数 Azure 资�
     1. 你可以选择作为 MSI 的 **父级别的凭据** ，也可以选择特定的服务主体类型凭据，你可以选择对订阅或资源组下的所有资源类型使用该凭据
     1. 你还可以专门 **选择资源类型，并** 为该资源类型应用不同的凭据
     1. 每个凭据将被视为针对特定类型的所有资源进行身份验证的方法
-    1. 必须对资源设置所选的凭据才能成功扫描这些资源，如以上 [部分](#Setting-up-authentication-to-scan-resources-under-a-subscription-or-resource-group) 所述
+    1. 必须对资源设置所选的凭据才能成功扫描这些资源，如以上 [部分](#setting-up-authentication-to-scan-resources-under-a-subscription-or-resource-group) 所述
 1. 在每个类型中，你可以选择扫描所有资源，也可以选择按名称扫描它们的子集。
     1. 如果保留该选项，则将来的扫描运行中也将扫描该类型的 **所有** 资源，
     1. 如果选择特定存储帐户或 SQL 数据库，则不会包括在此订阅或资源组中为该类型创建的将来资源用于扫描，除非将来显式编辑扫描
  
-1.  单击“继续”以继续。 我们将测试访问权限，以检查是否已将监控范围 MSI 作为订阅或资源组的读取器应用。 如果引发错误消息，请按照[此处](#Setting-up-authentication-for-enumerating-resources-under-a-subscription-or-resource-group)的说明进行操作
+1.  单击“继续”以继续。 我们将测试访问权限，以检查是否已将监控范围 MSI 作为订阅或资源组的读取器应用。 如果引发错误消息，请按照[此处](#setting-up-authentication-for-enumerating-resources-under-a-subscription-or-resource-group)的说明进行操作
 
 1.  为在上一步中选择的每种资源类型选择 " **扫描规则集** "。 你还可以创建内联扫描规则集。
   :::image type="content" source="media/register-scan-azure-multiple-sources/multiple-scan-rule-set.png" alt-text="Azure 多重扫描规则集选择":::

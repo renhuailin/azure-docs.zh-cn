@@ -10,12 +10,12 @@ ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 08/03/2020
 ms.author: avgupta
-ms.openlocfilehash: ee262c0eb2431085e71d8ee0035bcdab9833d1cf
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 19de46bc87b72ada221c63e36e87d0545304d344
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94565766"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102122147"
 ---
 # <a name="leverage-content-type-to-store-json-key-values-in-app-configuration"></a>利用内容类型在应用程序配置中存储 JSON 密钥值
 
@@ -25,9 +25,9 @@ ms.locfileid: "94565766"
 ## <a name="overview"></a>概述
 
 在应用程序配置中，可将 JSON 媒体类型用作键值的内容类型，以获得如下好处：
-- **更简单的数据管理** ：在 Azure 门户中，管理键值（如数组）将变得更加容易。
-- **增强的数据导出** ：在数据导出过程中将保留基元类型、数组和 JSON 对象。
-- **提供应用程序配置提供程序本机支持** ：当应用程序中的“应用程序配置提供程序库”使用具有 JSON 内容类型的键值时，这些键值能够正常运行。
+- **更简单的数据管理**：在 Azure 门户中，管理键值（如数组）将变得更加容易。
+- **增强的数据导出**：在数据导出过程中将保留基元类型、数组和 JSON 对象。
+- **提供应用程序配置提供程序本机支持**：当应用程序中的“应用程序配置提供程序库”使用具有 JSON 内容类型的键值时，这些键值能够正常运行。
 
 #### <a name="valid-json-content-type"></a>有效的 JSON 内容类型
 
@@ -67,7 +67,7 @@ ms.locfileid: "94565766"
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-- 本教程需要 Azure CLI 版本的2.10.0 或更高版本。 如果使用 Azure Cloud Shell，则最新版本已安装。
+- 本教程需要 Azure CLI 2.10.0 或更高版本。 如果使用 Azure Cloud Shell，则最新版本已安装。
 
 ## <a name="create-an-app-configuration-store"></a>创建应用配置存储区
 
@@ -175,12 +175,28 @@ az appconfig kv export -d file --format json --path "~/Export.json" --separator 
 
 ## <a name="consuming-json-key-values-in-applications"></a>在应用程序中使用 JSON 键值
 
-在应用程序中使用 JSON 键值的最简单方法是通过应用程序配置提供程序库来使用。 借助提供程序库，无需在应用程序中实现 JSON 键值的特殊处理。 对于应用程序，它们反序列化的方式始终与其他 JSON 配置提供程序库相同。 
+在应用程序中使用 JSON 键值的最简单方法是通过应用程序配置提供程序库来使用。 借助提供程序库，无需在应用程序中实现 JSON 键值的特殊处理。 将对其进行分析和转换，使其与应用程序的本地配置匹配。
+
+例如，如果在 "应用配置" 中具有以下键-值：
+
+| 键 | 值 | 内容类型 |
+|---|---|---|
+| 设置 | {"FontSize"：24，"UseDefaultRouting"： false} | application/json |
+
+.NET 应用程序配置将包含以下键值：
+
+| 键 | “值” |
+|---|---|
+| Settings:FontSize | 24 |
+| Settings:UseDefaultRouting | false |
+
+您可以直接访问新密钥，也可以选择将 [配置值绑定到 .net 对象的实例](/aspnet/core/fundamentals/configuration/#bind-hierarchical-configuration-data-using-the-options-pattern)。
+
 
 > [!Important]
 > .NET 配置提供程序版本 4.0.0（或更高版本）中提供了对 JSON 键值的本机支持。 有关更多详细信息，请参阅[后续步骤](#next-steps)。
 
-如果使用 SDK 或 REST API 从应用程序配置中读取键值（基于内容类型），则由应用程序负责使用标准 JSON 反序列化程序对 JSON 键值的值进行反序列化。
+如果使用 SDK 或 REST API 从应用配置读取键值（基于 content-type），则应用程序将负责分析 JSON 键值的值（& e）。
 
 
 ## <a name="clean-up-resources"></a>清理资源

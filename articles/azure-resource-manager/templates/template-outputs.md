@@ -3,18 +3,18 @@ title: 模板中的输出
 description: 介绍如何在 Azure 资源管理器模板中定义输出值 (ARM 模板) 和 Bicep 文件。
 ms.topic: conceptual
 ms.date: 02/19/2021
-ms.openlocfilehash: 91feb1a0b653e4b6e96e38df57f87af27e4676f5
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 2b6a6afa127bf43102103baadae576233843f00d
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101703828"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102123405"
 ---
 # <a name="outputs-in-arm-templates"></a>ARM 模板中的输出
 
 本文介绍如何在 Azure 资源管理器模板中定义输出值 (ARM 模板) 和 Bicep 文件。 需要从部署的资源返回值时，可以使用输出。
 
-每个输出值的格式必须解析为其中一种 [数据类型](template-syntax.md#data-types)。
+每个输出值的格式必须解析为其中一种 [数据类型](data-types.md)。
 
 [!INCLUDE [Bicep preview](../../../includes/resource-manager-bicep-preview.md)]
 

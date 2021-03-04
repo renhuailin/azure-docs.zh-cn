@@ -3,184 +3,164 @@ title: 配置持续部署
 description: 了解如何启用从 GitHub、BitBucket、Azure Repos 或其他存储库 Azure App Service 的 CI/CD。 选择满足你的需求的生成管道。
 ms.assetid: 6adb5c84-6cf3-424e-a336-c554f23b4000
 ms.topic: article
-ms.date: 03/20/2020
+ms.date: 03/03/2021
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: 799699662b738804790e3fe18ce9bd579027808d
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 8dc290ed59a7738a1e2263b4203ab0d5be338ec8
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97616309"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102122266"
 ---
 # <a name="continuous-deployment-to-azure-app-service"></a>持续部署到 Azure 应用服务
 
-[Azure App Service](overview.md) 可以通过拉取最新的更新，从 GitHub、BitBucket 和 [Azure Repos](https://azure.microsoft.com/services/devops/repos/) 存储库进行连续部署。 本文介绍如何使用 Azure 门户通过 Kudu 生成服务或 [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/)持续部署应用。 
+[Azure App Service](overview.md) 可以通过拉取最新的更新，从 [GitHub](https://help.github.com/articles/create-a-repo)、 [BitBucket](https://confluence.atlassian.com/get-started-with-bitbucket/create-a-repository-861178559.html)和 [Azure Repos](/azure/devops/repos/git/creatingrepo) 存储库进行连续部署。
 
-有关源代码管理服务的详细信息，请参阅 [ (GitHub) 中创建 ]存储库、创建存储库 [ (BitBucket) ]，或 [创建新的 Git ]存储库 (Azure Repos) 。
+> [!NOTE]
+> Azure 门户的 **开发中心 (经典)** 页面，这是旧的部署经验，将于2021年3月弃用。 此更改不会影响你的应用中的任何现有部署设置，你可以继续在 " **部署中心** " 页中管理应用部署。
 
 [!INCLUDE [Prepare repository](../../includes/app-service-deploy-prepare-repo.md)]
 
-## <a name="authorize-azure-app-service"></a>授权 Azure App Service 
+## <a name="configure-deployment-source"></a>配置部署源
 
-若要使用 Azure Repos，请确保 Azure DevOps 组织已链接到 Azure 订阅。 有关详细信息，请参阅 [设置 Azure DevOps Services 帐户，以便它可以部署到 web 应用](/azure/devops/pipelines/apps/cd/deploy-webdeploy-webapps?view=azure-devops&preserve-view=true)。
+1. 在 [Azure 门户](https://portal.azure.com)中，导航到应用服务应用的 "管理" 页。
 
-对于 Bitbucket 或 GitHub，授权 Azure App Service 连接到存储库。 只需使用源代码管理服务进行一次授权。 
+1. 在左侧菜单中，单击 "**部署中心**  >  **设置**"。 
 
-1. 在 [Azure 门户](https://portal.azure.com)中，搜索 "  **应用服务** " 并选择。
+1. 在 " **源**" 中，选择一个 CI/CD 选项。
 
-   ![搜索应用服务。](media/app-service-continuous-deployment/search-for-app-services.png)
+    ![演示如何在部署中心为 Azure App Service 选择部署源](media/app-service-continuous-deployment/choose-source.png)
 
-1. 选择要部署的应用服务。
+选择对应于所选步骤的选项卡。
 
-   ![选择应用。](media/app-service-continuous-deployment/select-your-app.png)
+# <a name="github"></a>[GitHub](#tab/github)
+
+4. [GitHub 操作](#how-the-github-actions-build-provider-works) 是默认的生成提供程序。 若要更改它，请单击 "**更改提供** 程序  >  **应用服务生成服务** (Kudu) **" > "确定"**。
+
+    > [!NOTE]
+    > 若要使用 Azure Pipelines 作为应用服务应用的生成提供程序，请不要在应用服务中配置它。 改为直接从 Azure Pipelines 配置 CI/CD。 **Azure Pipelines** 选项仅指向正确的方向。
+
+1. 如果是第一次从 GitHub 部署，请单击 " **授权** "，并按照授权提示进行操作。 如果要从另一个用户的存储库进行部署，请单击 " **更改帐户**"。
+
+1. 向 GitHub 授权 Azure 帐户后，选择 " **组织**"、" **存储库**" 和 " **分支** "，为配置 CI/CD。
+
+1. 当 GitHub 操作是所选的生成提供程序时，可以在 **运行时堆栈** 和 **版本** 下拉列表中选择所需的工作流文件。 Azure 会将此工作流文件提交到选定的 GitHub 存储库，以处理生成和部署任务。 若要在保存更改之前查看文件，请单击 " **预览文件**"。
+
+    > [!NOTE]
+    > 应用服务检测应用的 [语言堆栈设置](configure-common.md#configure-language-stack-settings) ，并选择最合适的工作流模板。 如果选择其他模板，则可能会部署不能正常运行的应用。 有关详细信息，请参阅 [GitHub 操作生成提供程序的工作原理](#how-the-github-actions-build-provider-works)。
+
+1. 单击“ **保存**”。
    
-1. 在应用页的左侧菜单中，选择 " **部署中心** "。
+    选定存储库和分支中的新提交现在将持续部署到应用服务应用中。 您可以在 " **日志** " 选项卡中跟踪提交和部署。
+
+# <a name="bitbucket"></a>[BitBucket](#tab/bitbucket)
+
+BitBucket 集成使用应用服务生成服务 (Kudu) 用于生成自动化。
+
+4. 如果是第一次从 BitBucket 部署，请单击 " **授权** "，并按照授权提示进行操作。 如果要从另一个用户的存储库进行部署，请单击 " **更改帐户**"。
+
+1. 对于 Bitbucket，选择要连续部署的 Bitbucket **团队**、 **存储库** 和 **分支** 。
+
+1. 单击“ **保存**”。
    
-1. 在 " **部署中心** " 页上，选择 " **GitHub** " 或 " **Bitbucket**"，然后选择 " **授权**"。 
+    选定存储库和分支中的新提交现在将持续部署到应用服务应用中。 您可以在 " **日志** " 选项卡中跟踪提交和部署。
    
-   ![选择 "源代码管理" 服务，然后选择 "授权"。](media/app-service-continuous-deployment/github-choose-source.png)
-   
-1. 如有必要，请登录到服务，并按照授权提示进行操作。 
+# <a name="local-git"></a>[本地 Git](#tab/local)
 
-## <a name="enable-continuous-deployment"></a>启用持续部署 
+请参阅 [本地 Git 部署以 Azure App Service](deploy-local-git.md)。
 
-授权源代码管理服务后，通过内置的 [Kudu 应用服务](#option-1-kudu-app-service) 生成服务器或 [Azure Pipelines](#option-2-azure-pipelines)，将应用配置为连续部署。 
+# <a name="azure-repos"></a>[Azure Repos](#tab/repos)
 
-### <a name="option-1-kudu-app-service"></a>选项1： Kudu 应用服务
+> [!NOTE]
+> 作为部署源的 Azure Repos 是对 Windows 应用的支持。
+>
 
-你可以使用内置的 Kudu 应用服务生成服务器从 GitHub、Bitbucket 或 Azure Repos 持续进行部署。 
+4. 应用服务生成服务 (Kudu) 是默认生成提供程序。
 
-1. 在 [Azure 门户](https://portal.azure.com)中，搜索 " **应用服务**"，然后选择要部署的应用服务。 
-   
-1. 在应用页的左侧菜单中，选择 " **部署中心** "。
-   
-1. 在 " **部署中心** " 页上选择授权的源代码管理提供程序，并选择 " **继续**"。 对于 GitHub 或 Bitbucket，还可以选择 " **更改帐户** " 以更改授权帐户。 
-   
-   > [!NOTE]
-   > 若要使用 Azure Repos，请确保 Azure DevOps Services 组织已链接到 Azure 订阅。 有关详细信息，请参阅 [设置 Azure DevOps Services 帐户，以便它可以部署到 web 应用](/azure/devops/pipelines/apps/cd/deploy-webdeploy-webapps?view=azure-devops&preserve-view=true)。
-   
-1. 对于 GitHub 或 Azure Repos，请在 " **生成提供程序** " 页上选择 " **应用服务生成服务**"，然后选择 " **继续**"。 Bitbucket 始终使用应用服务生成服务。
-   
-   ![选择 "应用服务生成服务"，并选择 "继续"。](media/app-service-continuous-deployment/choose-kudu.png)
-   
-1. 在 " **配置** " 页上：
-   
-   - 对于 GitHub，请下拉菜单，然后选择要连续部署的 **组织**、 **存储库** 和 **分支** 。
-     
-     > [!NOTE]
-     > 如果看不到任何存储库，可能需要在 GitHub 中授权 Azure App Service。 浏览到 GitHub 存储库，转到 "**设置**" "  >  **应用程序**" "已  >  **授权 OAuth 应用**"。 选择 " **Azure App Service**"，然后选择 " **授予**"。 对于组织存储库，你必须是组织的所有者才能授予权限。
-     
-   - 对于 Bitbucket，选择要连续部署的 Bitbucket **团队**、 **存储库** 和 **分支** 。
-     
-   - 对于 "Azure Repos"，请选择要连续部署的 **Azure DevOps 组织**、 **项目**、 **存储库** 和 **分支** 。
-     
-     > [!NOTE]
-     > 如果未列出 Azure DevOps 组织，请确保已将它链接到 Azure 订阅。 有关详细信息，请参阅 [设置 Azure DevOps Services 帐户，以便它可以部署到 web 应用](/azure/devops/pipelines/apps/cd/deploy-webdeploy-webapps?view=azure-devops&preserve-view=true)。
-     
-1. 选择“继续”。
-   
-   ![填写 "存储库信息"，然后选择 "继续"。](media/app-service-continuous-deployment/configure-kudu.png)
-   
-1. 配置生成提供程序之后，查看 " **摘要** " 页上的设置，然后选择 " **完成**"。
-   
-1. 选定存储库和分支中的新提交现在将持续部署到应用服务应用中。 可以在“部署中心”页上跟踪提交和部署。
-   
-   ![在部署中心跟踪提交和部署](media/app-service-continuous-deployment/github-finished.png)
+    > [!NOTE]
+    > 若要使用 Azure Pipelines 作为应用服务应用的生成提供程序，请不要在应用服务中配置它。 改为直接从 Azure Pipelines 配置 CI/CD。 **Azure Pipelines** 选项仅指向正确的方向。
 
-### <a name="option-2-azure-pipelines"></a>选项2： Azure Pipelines 
+1. 选择要连续部署的 **Azure DevOps 组织**、 **项目**、 **存储库** 和 **分支** 。 
 
-如果帐户具有所需的权限，则可以设置 Azure Pipelines 从 GitHub 或 Azure Repos 持续部署。 有关通过 Azure Pipelines 部署的详细信息，请参阅 [将 web 应用部署到 Azure 应用服务](/azure/devops/pipelines/apps/cd/deploy-webdeploy-webapps)。
+    如果你的 DevOps 组织未列出，则尚未链接到你的 Azure 订阅。 有关详细信息，请参阅 [创建 Azure 服务连接](/azure/devops/pipelines/library/connect-to-azure)。
 
-#### <a name="prerequisites"></a>先决条件
-
-若要 Azure App Service 使用 Azure Pipelines 创建持续交付，Azure DevOps 组织应具有以下权限： 
-
-- 你的 Azure 帐户必须具有写入 Azure Active Directory 和创建应用注册的权限。 
-  
-- 你的 Azure 帐户必须拥有 Azure 订阅中的 " **所有者** " 角色。
-
-- 你必须是要使用的 Azure DevOps 项目中的管理员。
-
-#### <a name="github--azure-pipelines"></a>GitHub + Azure Pipelines
-
-1. 在 [Azure 门户](https://portal.azure.com)中，搜索 " **应用服务**"，然后选择要部署的应用服务。 
-   
-1. 在应用页的左侧菜单中，选择 " **部署中心** "。
-
-1. 选择 " **GitHub** " 作为 " **部署中心** " 页上的源代码管理提供程序，然后选择 " **继续**"。 对于 **GitHub**，你可以选择 " **更改帐户** " 以更改授权帐户。
-
-    :::image type="content" source="media/app-service-continuous-deployment/deployment-center-src-control.png" alt-text="应用服务部署中心页的屏幕截图。":::
-   
-1. 在 " **生成提供程序** " 页上，选择 " **Azure Pipelines (预览")**，然后选择 " **继续**"。
-
-    :::image type="content" source="media/app-service-continuous-deployment/select-build-provider.png" alt-text="显示 &quot;部署中心&quot; 页面的屏幕截图，) 选择 &quot;Azure Pipelines (预览&quot;。":::
-   
-1. 在 " **配置** " 页上的 " **代码** " 部分中，选择要连续部署的 **组织**、 **存储库** 和 **分支** ，然后选择 " **继续**"。
-     
-     > [!NOTE]
-     > 如果看不到任何存储库，可能需要在 GitHub 中授权 Azure App Service。 浏览到 GitHub 存储库，转到 "**设置**" "  >  **应用程序**" "已  >  **授权 OAuth 应用**"。 选择 " **Azure App Service**"，然后选择 " **授予**"。 对于组织存储库，你必须是组织的所有者才能授予权限。
-       
-    在 " **生成** " 部分中，指定 Azure Pipelines 应用于运行生成任务的 Azure DevOps 组织、项目、语言框架，然后选择 " **继续**"。
-
-   :::image type="content" source="media/app-service-continuous-deployment/build-configure.png" alt-text="&quot;生成&quot; 部分的屏幕截图，其中包含字段中的示例文本。":::
-
-1. 配置生成提供程序之后，查看 " **摘要** " 页上的设置，然后选择 " **完成**"。
-
-   :::image type="content" source="media/app-service-continuous-deployment/summary.png" alt-text="显示提交和部署的 &quot;部署中心&quot; 页面的屏幕截图，其中突出显示了 &quot;刷新&quot; 按钮。":::
-   
-1. 所选存储库和分支中的新提交现在会连续部署到应用服务中。 可以在“部署中心”页上跟踪提交和部署。
-   
-   ![在部署中心跟踪提交和部署](media/app-service-continuous-deployment/github-finished.png)
-
-#### <a name="azure-repos--azure-pipelines"></a>Azure Repos + Azure Pipelines
-
-1. 在 [Azure 门户](https://portal.azure.com)中，搜索 " **应用服务**"，然后选择要部署的应用服务。 
-   
-1. 在应用页的左侧菜单中，选择 " **部署中心** "。
-
-1. 选择 " **Azure Repos** 作为" **部署中心** "页上的源代码管理提供程序，然后选择" **继续**"。
-
-    :::image type="content" source="media/app-service-continuous-deployment/deployment-center-src-control.png" alt-text="&quot;部署中心&quot; 页面的屏幕截图，显示 (CI/CD) 选择的持续部署。":::
-
-1. 在 " **生成提供程序** " 页上，选择 " **Azure Pipelines (预览")**，然后选择 " **继续**"。
-
-    :::image type="content" source="media/app-service-continuous-deployment/azure-pipelines.png" alt-text="显示 Azure Pipelines (预览版) 的部署中心的屏幕截图。":::
-
-1. 在 " **配置** " 页上的 " **代码** " 部分中，选择要连续部署的 **组织**、 **存储库** 和 **分支** ，然后选择 " **继续**"。
-
-   > [!NOTE]
-   > 如果未列出现有的 Azure DevOps 组织，可能需要将其链接到 Azure 订阅。 有关详细信息，请参阅 [定义 CD 发布管道](/azure/devops/pipelines/apps/cd/deploy-webdeploy-webapps#cd)。
-
-   在 " **生成** " 部分中，指定 Azure Pipelines 应用于运行生成任务的 Azure DevOps 组织、项目、语言框架，然后选择 " **继续**"。
-
-   :::image type="content" source="media/app-service-continuous-deployment/build-configure.png" alt-text="&quot;生成&quot; 部分的屏幕截图，其中显示了用示例填充的 Azure DevOps 组织和 Project 字段。":::
-
-1. 配置生成提供程序之后，查看 " **摘要** " 页上的设置，然后选择 " **完成**"。  
-     
-   :::image type="content" source="media/app-service-continuous-deployment/summary-azure-pipelines.png" alt-text="显示 &quot;摘要&quot; 页上所选设置的屏幕截图。":::
-
-1. 所选存储库和分支中的新提交现在会连续部署到应用服务中。 可以在“部署中心”页上跟踪提交和部署。
+-----
 
 ## <a name="disable-continuous-deployment"></a>禁用持续部署
 
-若要禁用连续部署，请在应用的 **部署中心** 页面顶部选择 "**断开连接**"。
+1. 在 [Azure 门户](https://portal.azure.com)中，导航到应用服务应用的 "管理" 页。
 
-![禁用持续部署](media/app-service-continuous-deployment/disable.png)
+1. 在左侧菜单中，单击 "**部署中心**  >  **设置**" "  >  **断开连接**"。 
+
+    ![演示如何将云文件夹同步与 Azure 门户中的应用服务应用断开连接。](media/app-service-continuous-deployment/disable.png)
+
+1. 默认情况下，GitHub 操作工作流文件将保留在你的存储库中，但它将继续触发对你的应用的部署。 若要将其从存储库中删除，请选择 " **删除工作流文件**"。
+
+1. 单击“确定”。 
 
 [!INCLUDE [What happens to my app during deployment?](../../includes/app-service-deploy-atomicity.md)]
 
-## <a name="use-unsupported-repos"></a>使用不支持的存储库
+## <a name="how-the-github-actions-build-provider-works"></a>GitHub 操作生成提供程序的工作原理
 
-对于 Windows 应用，你可以从门户不直接支持的云 Git 或 Mercurial 存储库手动配置连续部署，如 [GitLab](https://gitlab.com/)。 可以通过在 " **部署中心** " 页中选择 "外部" 框来执行此操作。 有关详细信息，请参阅 [使用手动步骤设置连续部署](https://github.com/projectkudu/kudu/wiki/Continuous-deployment#setting-up-continuous-deployment-using-manual-steps)。
+GitHub 操作构建提供程序是适用于 [github 的 CI/cd](#configure-deployment-source)的选项，用于设置 CI/cd 的步骤如下：
 
-## <a name="additional-resources"></a>其他资源
+- 将 GitHub 操作工作流文件储蓄到 GitHub 存储库，以处理应用服务的生成和部署任务。
+- 添加应用的发布配置文件作为 GitHub 机密。 工作流文件使用此密码对应用服务进行身份验证。
+- 捕获 [工作流运行日志](https://docs.github.com/actions/managing-workflow-runs/using-workflow-run-logs)中的信息，并将其显示在应用的 **部署中心** 中的 "**日志**" 选项卡中。
 
+可以通过以下方式自定义 GitHub 操作生成提供程序：
+
+- 在 GitHub 存储库中生成工作流文件后，对其进行自定义。 有关详细信息，请参阅 [GitHub 操作的工作流语法](https://docs.github.com/actions/reference/workflow-syntax-for-github-actions)。 只需确保工作流通过 [azure/webapps](https://github.com/Azure/webapps-deploy) 操作部署到应用服务。
+- 如果所选分支受到保护，则仍可在不保存配置的情况下预览工作流文件，然后将其手动添加到存储库中。 此方法并不提供与 Azure 门户的日志集成。
+- 使用 Azure Active Directory 中的 [服务主体](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) 部署，而不是发布配置文件。
+
+#### <a name="authenticate-with-a-service-principal"></a>使用服务主体进行身份验证
+
+1. 使用[Azure CLI](/cli/azure/)中的[az ad sp 创建-rbac](/cli/azure/ad/sp#az-ad-sp-create-for-rbac)命令生成服务主体。 在下面的示例中， *\<subscription-id>* 请 *\<group-name>* 将、和替换 *\<app-name>* 为你自己的值：
+
+    ```azurecli-interactive
+    az ad sp create-for-rbac --name "myAppDeployAuth" --role contributor \
+                                --scopes /subscriptions/<subscription-id>/resourceGroups/<group-name>/providers/Microsoft.Web/sites/<app-name> \
+                                --sdk-auth
+    ```
+    
+    > [!IMPORTANT]
+    > 为安全，请授予服务主体所需的最低访问权限。 上一个示例中的范围仅限于特定的应用服务应用而不是整个资源组。
+    
+1. 保存执行下一步（包括顶级）的整个 JSON 输出 `{}` 。
+
+1. 在 [GitHub](https://github.com/) 中，浏览存储库，选择“设置”>“机密”>“添加新机密”。
+
+1. 将 Azure CLI 命令的整个 JSON 输出粘贴到机密的值字段中。 为机密指定一个名称，如 `AZURE_CREDENTIALS` 。
+
+1. 在 **部署中心** 生成的工作流文件中， `azure/webapps-deploy` 使用如下所示的代码（如以下示例中所示的代码）修改步骤， (从 Node.js 工作流文件中修改了该步骤) ：
+
+    ```yaml
+    - name: Sign in to Azure 
+    # Use the GitHub secret you added
+    - uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+    - name: Deploy to Azure Web App
+    # Remove publish-profile
+    - uses: azure/webapps-deploy@v2
+      with:
+        app-name: '<app-name>'
+        slot-name: 'production'
+        package: .
+    - name: Sign out of Azure
+      run: |
+        az logout
+    ```
+    
+## <a name="deploy-from-other-repositories"></a>从其他存储库部署
+
+对于 Windows 应用，你可以从门户不直接支持的云 Git 或 Mercurial 存储库手动配置连续部署，如 [GitLab](https://gitlab.com/)。 为此，请在 " **源** " 下拉列表中选择 "外部 Git"。 有关详细信息，请参阅 [使用手动步骤设置连续部署](https://github.com/projectkudu/kudu/wiki/Continuous-deployment#setting-up-continuous-deployment-using-manual-steps)。
+
+## <a name="more-resources"></a>更多资源
+
+* [从 Azure Pipelines 部署到 Azure 应用服务](/azure/devops/pipelines/apps/cd/deploy-webdeploy-webapps?view=azure-devops&preserve-view=true)
 * [调查连续部署的常见问题](https://github.com/projectkudu/kudu/wiki/Investigating-continuous-deployment)
 * [使用 Azure PowerShell](/powershell/azure/)
-* [Git 文档](https://git-scm.com/documentation)
 * [项目 Kudu](https://github.com/projectkudu/kudu/wiki)
-
-[创建存储库 (GitHub)]: https://help.github.com/articles/create-a-repo
-[创建存储库 (BitBucket)]: https://confluence.atlassian.com/get-started-with-bitbucket/create-a-repository-861178559.html
-[创建新的 Git 存储库 (Azure Repos) ]: /azure/devops/repos/git/creatingrepo

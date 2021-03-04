@@ -4,15 +4,15 @@ description: 了解如何配置 IP 访问控制策略，以为 Azure Cosmos 帐�
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 12/15/2020
+ms.date: 03/03/2021
 ms.author: mjbrown
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: b4e01375388f12b828d9adcb1e2ed8851061a0bf
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: a7796b70d4d32e7023fbc88086a737dd76ae7723
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97560723"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102122708"
 ---
 # <a name="configure-ip-firewall-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中配置 IP 防火墙
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -21,7 +21,7 @@ ms.locfileid: "97560723"
 
 ## <a name="ip-access-control"></a><a id="ip-access-control-overview"></a>IP 访问控制
 
-默认情况下，只要请求附有有效的授权令牌，即可从 Internet 访问你的 Azure Cosmos 帐户。 若要配置基于 IP 策略的访问控制，用户必须提供 CIDR（无类域间路由）格式的、要作为客户端 IP 允许列表包含的 IP 地址或 IP 地址范围集，这样才能访问给定的 Azure Cosmos 帐户。 应用此配置后，源自此允许列表外部的计算机的所有请求将收到 403（禁止访问）响应。 使用 IP 防火墙时，我们建议允许 Azure 门户访问你的帐户。 需有相应的访问权限才能允许使用数据资源管理器，以及检索 Azure 门户中显示的帐户指标。 使用数据资源管理器时，除了要允许 Azure 门户访问你的帐户，还需更新防火墙设置，将当前 IP 地址添加到防火墙规则中。 请注意，可能需要长达15分钟的时间才能传播防火墙更改，在此期间，防火墙可能会出现不一致的行为。
+默认情况下，只要请求附有有效的授权令牌，即可从 Internet 访问你的 Azure Cosmos 帐户。 若要配置基于 IP 策略的访问控制，用户必须提供 CIDR（无类域间路由）格式的、要作为客户端 IP 允许列表包含的 IP 地址或 IP 地址范围集，这样才能访问给定的 Azure Cosmos 帐户。 应用此配置后，源自此允许列表外部的计算机的所有请求将收到 403（禁止访问）响应。 使用 IP 防火墙时，我们建议允许 Azure 门户访问你的帐户。 需有相应的访问权限才能允许使用数据资源管理器，以及检索 Azure 门户中显示的帐户指标。 使用数据资源管理器时，除了要允许 Azure 门户访问你的帐户，还需更新防火墙设置，将当前 IP 地址添加到防火墙规则中。 请注意，防火墙更改可能需要多达 15 分钟才能传播，在此期间防火墙可能会呈现出不一致的行为。
 
 可将基于 IP 的防火墙与子网和 VNET 访问控制结合使用。 将这两种策略相结合，可以限制访问具有某个公共 IP 的任何源，和/或从 VNET 中的特定子网访问任何源。 若要详细了解如何使用基于子网和 VNET 的访问控制，请参阅[从虚拟网络访问 Azure Cosmos DB 资源](./how-to-configure-vnet-service-endpoint.md)。
 
@@ -33,11 +33,11 @@ ms.locfileid: "97560723"
 * 通过使用 Azure 资源管理器模板来以声明方式进行配置
 * 通过更新 **ipRangeFilter** 属性并借助 Azure CLI 或 Azure PowerShell 来以编程方式进行配置
 
-## <a name="configure-an-ip-firewall-by-using-the-azure-portal"></a><a id="configure-ip-policy"></a> 使用 Azure 门户配置 IP 防火墙
+## <a name="configure-an-ip-firewall-by-using-the-azure-portal"></a><a id="configure-ip-policy"></a>使用 Azure 门户配置 IP 防火墙
 
 若要在 Azure 门户中设置 IP 访问控制策略，请转到 Azure Cosmos DB 帐户页，然后在导航菜单中选择“防火墙和虚拟网络”。  将“允许从以下位置访问”值更改为“选定的网络”，然后选择“保存”。   
 
-:::image type="content" source="./media/how-to-configure-firewall/azure-portal-firewall.png" alt-text="此屏幕截图显示了如何在 Azure 门户中打开“防火墙”页":::
+![此屏幕截图显示了如何在 Azure 门户中打开“防火墙”页](./media/how-to-configure-firewall/azure-portal-firewall.png)
 
 启用 IP 访问控制后，可在 Azure 门户中指定 IP 地址、IP 地址范围和开关。 使用开关可以访问其他 Azure 服务和 Azure 门户。 以下部分提供了有关这些开关的详细信息。
 
@@ -57,13 +57,13 @@ ms.locfileid: "97560723"
 
 可以通过选择“允许从 Azure 门户访问”  选项，允许请求访问 Azure 门户，如以下屏幕截图所示：
 
-:::image type="content" source="./media/how-to-configure-firewall/enable-azure-portal.png" alt-text="此屏幕截图显示了如何启用对 Azure 门户的访问":::
+![此屏幕截图显示了如何启用对 Azure 门户的访问](./media/how-to-configure-firewall/enable-azure-portal.png)
 
 ### <a name="allow-requests-from-global-azure-datacenters-or-other-sources-within-azure"></a>允许来自全球的 Azure 数据中心或 Azure 中的其他源的请求
 
 如果通过不提供静态 IP 的服务（例如 Azure 流分析和 Azure Functions）访问 Azure Cosmos DB 帐户，仍可使用 IP 防火墙来限制访问。 要想允许从 Azure 中的其他源进行访问，可以选择“接受来自 Azure 数据中心内部的连接”选项，如以下屏幕截图所示  ：
 
-:::image type="content" source="./media/how-to-configure-firewall/enable-azure-services.png" alt-text="屏幕截图，演示如何接受来自 Azure 数据中心的连接":::
+![屏幕截图，演示如何接受来自 Azure 数据中心的连接](./media/how-to-configure-firewall/enable-azure-services.png)
 
 如果启用此选项，则会将 IP 地址 `0.0.0.0` 添加到允许的 IP 地址列表中。 `0.0.0.0` IP 地址仅限从 Azure 数据中心 IP 范围向 Azure Cosmos DB 帐户发送请求。 此设置不允许任何其他 IP 范围访问 Azure Cosmos DB 帐户。
 
@@ -103,6 +103,12 @@ ms.locfileid: "97560723"
 ### <a name="requests-from-the-internet"></a>来自 Internet 的请求
 
 从 Internet 上的计算机访问 Azure Cosmos DB 帐户时，必须将客户端 IP 地址或计算机的 IP 地址范围添加到帐户 IP 地址的允许列表中。
+
+### <a name="add-outbound-rules-to-the-firewall"></a>向防火墙添加出站规则
+
+若要访问要添加到防火墙设置中的出站 IP 范围的当前列表，请参阅 [下载 AZURE IP 范围和服务标记](https://www.microsoft.com/download/details.aspx?id=56519)。
+
+若要自动执行此列表，请参阅 [使用服务标记发现 API (公共预览版) ](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#use-the-service-tag-discovery-api-public-preview)。
 
 ## <a name="configure-an-ip-firewall-by-using-a-resource-manager-template"></a><a id="configure-ip-firewall-arm"></a>使用资源管理器模板配置 IP 防火墙
 
@@ -226,7 +232,7 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
 
 ### <a name="requests-from-a-subnet-with-a-service-endpoint-for-azure-cosmos-db-enabled"></a>来自已启用 Azure Cosmos DB 服务终结点的子网的请求
 
-来自虚拟网络中已启用 Azure Cosmos DB 服务终结点的子网的请求向 Azure Cosmos DB 帐户发送虚拟网络和子网标识。 这些请求不包含源的公共 IP，因此 IP 筛选器将拒绝它们。 若要允许从虚拟网络中的特定子网进行访问，请添加[如何为 Azure Cosmos DB 帐户配置基于虚拟网络和子网的访问](how-to-configure-vnet-service-endpoint.md)中所述的访问控制列表。 应用防火墙规则最长可能需要15分钟，在此期间，防火墙可能会出现不一致的行为。
+来自虚拟网络中已启用 Azure Cosmos DB 服务终结点的子网的请求向 Azure Cosmos DB 帐户发送虚拟网络和子网标识。 这些请求不包含源的公共 IP，因此 IP 筛选器将拒绝它们。 若要允许从虚拟网络中的特定子网进行访问，请添加[如何为 Azure Cosmos DB 帐户配置基于虚拟网络和子网的访问](how-to-configure-vnet-service-endpoint.md)中所述的访问控制列表。 应用防火墙规则可能需要多达 15 分钟，在此期间防火墙可能会呈现出不一致的行为。
 
 ### <a name="private-ip-addresses-in-list-of-allowed-addresses"></a>允许的地址列表中的专用 IP 地址
 

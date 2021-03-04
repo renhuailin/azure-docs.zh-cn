@@ -3,47 +3,52 @@ title: TextBox UI 元素
 description: 介绍了 Azure 门户的 Microsoft.Common.TextBox UI 元素。 用于添加无格式文本。
 author: tfitzmac
 ms.topic: conceptual
-ms.date: 06/27/2018
+ms.date: 03/03/2021
 ms.author: tomfitz
-ms.openlocfilehash: c89bc434d9d67144a95b5c2f23e7664078fe7825
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8e4cfcc7fe46c19bf1e58ee5eadf1e0bb8c7bd8e
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87474302"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102124323"
 ---
 # <a name="microsoftcommontextbox-ui-element"></a>Microsoft.Common.TextBox UI 元素
 
-一个可用来编辑无格式文本的控件。
+用户界面 (UI) 元素，可用于添加无格式文本。 `Microsoft.Common.TextBox`元素是单行输入字段，但使用属性支持多行输入 `multiLine` 。
 
 ## <a name="ui-sample"></a>UI 示例
 
-![Microsoft.Common.TextBox](./media/managed-application-elements/microsoft-common-textbox.png)
+`TextBox`元素使用单行或多行文本框。
+
+:::image type="content" source="media/managed-application-elements/microsoft-common-textbox.png" alt-text="&quot;Microsoft Common TextBox 元素&quot; 单行文本框。":::
+
+:::image type="content" source="media/managed-application-elements/microsoft-common-textbox-multi-line.png" alt-text="&quot;Microsoft Common TextBox 元素&quot; 多行文本框。":::
 
 ## <a name="schema"></a>架构
 
 ```json
 {
-    "name": "nameInstance",
-    "type": "Microsoft.Common.TextBox",
-    "label": "Name",
-    "defaultValue": "contoso123",
-    "toolTip": "Use only allowed characters",
-    "placeholder": "",
-    "constraints": {
-        "required": true,
-        "validations": [
-            {
-                "regex": "^[a-z0-9A-Z]{1,30}$",
-                "message": "Only alphanumeric characters are allowed, and the value must be 1-30 characters long."
-            },
-            {
-                "isValid": "[startsWith(steps('resourceConfig').nameInstance, 'contoso')]",
-                "message": "Must start with 'contoso'."
-            }
-        ]
-    },
-    "visible": true
+  "name": "nameInstance",
+  "type": "Microsoft.Common.TextBox",
+  "label": "Name",
+  "defaultValue": "contoso123",
+  "toolTip": "Use only allowed characters",
+  "placeholder": "",
+  "multiLine": false,
+  "constraints": {
+    "required": true,
+    "validations": [
+      {
+        "regex": "^[a-z0-9A-Z]{1,30}$",
+        "message": "Only alphanumeric characters are allowed, and the value must be 1-30 characters long."
+      },
+      {
+        "isValid": "[startsWith(steps('resourceConfig').nameInstance, 'contoso')]",
+        "message": "Must start with 'contoso'."
+      }
+    ]
+  },
+  "visible": true
 }
 ```
 
@@ -55,46 +60,91 @@ ms.locfileid: "87474302"
 
 ## <a name="remarks"></a>备注
 
-- 如果 `constraints.required` 设置为 true，则文本框必须包含值才能成功通过验证  。 默认值是 **false**秒。
-- `validations` 属性是一个数组，可在其中添加条件，用于检查文本框中提供的值。
-- `regex` 属性是一个 JavaScript 正则表达式模式。 如果指定，则文本框的值必须与模式完全匹配才能成功通过验证。 默认值为 **null**。
-- `isValid` 属性包含计算结果为 true 或 false 的表达式。 在表达式中，定义确定文本框是否有效的条件。
-- `message` 属性是当文本框的值未通过验证时会显示的一个字符串。
-- 当 `required` 设置为 **false** 时可以为 `regex` 指定值。 在这种情况下，文本框并非必须具有值才能成功通过验证。 如果指定了一个值，则它必须与正则表达式模式匹配。
+- `toolTip`当鼠标光标悬停在信息符号上方时，使用属性显示有关元素的文本。
 - `placeholder` 属性是帮助文本，当用户开始编辑后会消失。 如果同时定义了 `placeholder` 和 `defaultValue`，会优先显示 `defaultValue`。
+- `multiLine`属性为布尔值， `true` 或 `false` 。 若要使用多行文本框，请将属性设置为 `true` 。 如果不需要多行文本框，请将属性设置为 `false` 或排除属性。 对于新行，JSON 输出显示 `\n` 为换行符。 多行文本框接受 `\r` 回车符 (CR) 和 `\n` 换行符 (LF) 。 例如，默认值可以包含 `\r\n` 以指定 CRLF。
+- 如果 `constraints.required` 设置为 `true` ，则文本框必须有一个值才能成功验证。 默认值为 `false`。
+- `validations` 属性是一个数组，可在其中添加条件，用于检查文本框中提供的值。
+- `regex` 属性是一个 JavaScript 正则表达式模式。 如果已指定，文本框的值必须与模式匹配才能成功验证。 默认值为 `null`。 有关 regex 语法的详细信息，请参阅 [正则表达式快速参考](/dotnet/standard/base-types/regular-expression-language-quick-reference)。
+- `isValid`属性包含计算结果为或的表达式 `true` `false` 。 在表达式中，定义确定文本框是否有效的条件。
+- `message` 属性是当文本框的值未通过验证时会显示的一个字符串。
+- `regex`当设置为时，可以为指定值 `required` `false` 。 在这种情况下，文本框并非必须具有值才能成功通过验证。 如果指定了一个值，则它必须与正则表达式模式匹配。
 
-## <a name="example"></a>示例
+## <a name="examples"></a>示例
+
+这些示例演示如何使用单行文本框和多行文本框。
+
+### <a name="single-line"></a>单行
 
 以下实例结合使用 [Microsoft.Solutions.ArmApiControl](microsoft-solutions-armapicontrol.md) 控件和文本框来检查资源名称的可用性。
 
 ```json
-"basics": [
-    {
-        "name": "nameApi",
-        "type": "Microsoft.Solutions.ArmApiControl",
-        "request": {
-            "method": "POST",
-            "path": "[concat(subscription().id, '/providers/Microsoft.Storage/checkNameAvailability?api-version=2019-06-01')]",
-            "body": "[parse(concat('{\"name\": \"', basics('txtStorageName'), '\", \"type\": \"Microsoft.Storage/storageAccounts\"}'))]"
-        }
-    },
-    {
-        "name": "txtStorageName",
-        "type": "Microsoft.Common.TextBox",
-        "label": "Storage account name",
-        "constraints": {
-            "validations": [
-                {
-                    "isValid": "[not(equals(basics('nameApi').nameAvailable, false))]",
-                    "message": "[concat('Name unavailable: ', basics('txtStorageName'))]"
-                }
-            ]
-        }
-    }
+"basics": [
+  {
+    "name": "nameApi",
+    "type": "Microsoft.Solutions.ArmApiControl",
+    "request": {
+      "method": "POST",
+      "path": "[concat(subscription().id, '/providers/Microsoft.Storage/checkNameAvailability?api-version=2019-06-01')]",
+      "body": "[parse(concat('{\"name\": \"', basics('txtStorageName'), '\", \"type\": \"Microsoft.Storage/storageAccounts\"}'))]"
+    }
+  },
+  {
+    "name": "txtStorageName",
+    "type": "Microsoft.Common.TextBox",
+    "label": "Storage account name",
+    "constraints": {
+      "validations": [
+        {
+          "isValid": "[not(equals(basics('nameApi').nameAvailable, false))]",
+          "message": "[concat('Name unavailable: ', basics('txtStorageName'))]"
+        }
+      ]
+    }
+  }
 ]
+```
+
+### <a name="multi-line"></a>多行
+
+此示例使用 `multiLine` 属性创建包含占位符文本的多行文本框。
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/0.1.2-preview/CreateUIDefinition.MultiVm.json#",
+  "handler": "Microsoft.Azure.CreateUIDef",
+  "version": "0.1.2-preview",
+  "parameters": {
+    "basics": [
+      {
+        "name": "demoTextBox",
+        "type": "Microsoft.Common.TextBox",
+        "label": "Multi-line text box",
+        "defaultValue": "",
+        "toolTip": "Use 1-60 alphanumeric characters, hyphens, spaces, periods, and colons.",
+        "placeholder": "This is a multi-line text box:\nLine 1.\nLine 2.\nLine 3.",
+        "multiLine": true,
+        "constraints": {
+          "required": true,
+          "validations": [
+            {
+              "regex": "^[a-z0-9A-Z -.:\n]{1,60}$",
+              "message": "Only 1-60 alphanumeric characters, hyphens, spaces, periods, and colons are allowed."
+            }
+          ]
+        },
+        "visible": true
+      }
+    ],
+    "steps": [],
+    "outputs": {
+      "textBox": "[basics('demoTextBox')]"
+    }
+  }
+}
 ```
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关创建 UI 定义的简介，请参阅 [CreateUiDefinition 入门](create-uidefinition-overview.md)。
-* 有关 UI 元素中的公用属性的说明，请参阅 [CreateUiDefinition 元素](create-uidefinition-elements.md)。
+- 有关创建 UI 定义的简介，请参阅 [ 有关 Azure 托管应用程序的创建体验的CreateUiDefinition.js](create-uidefinition-overview.md)。
+- 有关 UI 元素中的公用属性的说明，请参阅 [CreateUiDefinition 元素](create-uidefinition-elements.md)。

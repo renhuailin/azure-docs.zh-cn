@@ -10,12 +10,12 @@ services: iot-central
 ms.custom:
 - device-developer
 - iot-edge
-ms.openlocfilehash: 91869614aef03b819a5f7fbb355004f6e802d673
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 1a464b9e039f256fae52c32d828b1ec39a20a228
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101733001"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102123269"
 ---
 # <a name="connect-azure-iot-edge-devices-to-an-azure-iot-central-application"></a>将 Azure IoT Edge 设备连接到 Azure IoT Central 应用程序
 
@@ -87,6 +87,20 @@ IoT Central 使用 [设备模板](concepts-device-templates.md) 来定义 IoT Ce
 * 设备响应的命令，以便 IoT Central 可以显示用于调用命令的操作员的 UI。
 
 IoT Edge 设备可以发送遥测，同步属性值，并以与标准设备相同的方式响应命令。 因此，IoT Edge 设备需要 IoT Central 中的设备模板。
+
+### <a name="iot-edge-device-templates"></a>IoT Edge 设备模板
+
+IoT Central 设备模板使用模型来描述设备的功能。 下图显示了 IoT Edge 设备的模型的结构：
+
+:::image type="content" source="media/concepts-iot-edge/iot-edge-model.png" alt-text="连接到 IoT Central IoT Edge 设备的模型结构" border="false":::
+
+IoT Central 对 IoT Edge 设备建模，如下所示：
+
+* 每个 IoT Edge 设备模板都有一个功能模型。
+* 对于部署清单中列出的每个自定义模块，都将生成一个模块功能模型。
+* 在每个模块功能模型和设备模型之间建立关系。
+* 模块功能模型实现一个或多个模块接口。
+* 每个模块接口都包含遥测、属性和命令。
 
 ### <a name="iot-edge-deployment-manifests-and-iot-central-device-templates"></a>IoT Edge 部署清单和 IoT Central 设备模板
 

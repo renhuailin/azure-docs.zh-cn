@@ -8,14 +8,14 @@ ms.author: heidist
 ms.devlang: java
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 01/25/2021
+ms.date: 03/04/2021
 ms.custom: devx-track-java
-ms.openlocfilehash: 9e05e41ca0c293e31a29dc25a7b4ec7b87734246
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: f833c0539d4aa28033cd6f76c1ca7cec7f11f6b5
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99509412"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102124561"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-java"></a>快速入门：在 Java 中创建 Azure 认知搜索索引
 > [!div class="op_single_selector"]
@@ -27,7 +27,7 @@ ms.locfileid: "99509412"
 > * [Python](search-get-started-python.md)
 > * [REST](search-get-started-rest.md)
 
-创建一个 Java 控制台应用程序，该应用程序使用 [IntelliJ](https://www.jetbrains.com/idea/)、[Java 11 SDK](/java/azure/jdk/) 和 [Azure 认知搜索 REST API](/rest/api/searchservice/) 创建、加载和查询搜索索引。 本文提供了有关创建应用程序的分步说明。 此外，还可以[下载并运行完整的应用程序](https://developers.google.com/sheets/api/quickstart/java)。
+创建一个 Java 控制台应用程序，该应用程序使用 [IntelliJ](https://www.jetbrains.com/idea/)、[Java 11 SDK](/java/azure/jdk/) 和 [Azure 认知搜索 REST API](/rest/api/searchservice/) 创建、加载和查询搜索索引。 本文提供了有关创建应用程序的分步说明。 此外，还可以[下载并运行完整的应用程序](hhttps://github.com/Azure-Samples/azure-search-java-samples)。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 

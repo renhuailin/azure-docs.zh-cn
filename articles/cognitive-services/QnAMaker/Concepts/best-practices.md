@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 90d526a58f4223fc70be5414ce5722238ce2c735
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: b09c36f1dce3c394ff24e3e601d773279a6ac510
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101733425"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102123303"
 ---
 # <a name="best-practices-of-a-qna-maker-knowledge-base"></a>QnA Maker 知识库的最佳做法
 
@@ -43,7 +43,7 @@ QnA Maker 服务持续改进着从内容提取 QnA 的算法，并扩展支持�
 
 最好的答案是简单答案，但并不简单。 不要使用诸如和之类的 `yes` 答案 `no` 。 如果你的答案应链接到其他源或提供丰富的媒体和链接体验，请使用 [元数据标记](../how-to/edit-knowledge-base.md#add-metadata) 来区分答案，然后使用属性中的元数据标记 [提交查询](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration) `strictFilters` 以获取正确的答案版本。
 
-|答案|Follup 提示|
+|答案|跟进提示|
 |--|--|
 |用键盘上的电源按钮关闭 Surface 笔记本电脑。|* 用于休眠、关闭和重新启动的组合键。<br>* 如何硬启动 Surface 便携机<br>* 如何更改 Surface 便携机的 BIOS<br>* 睡眠、关机和重启之间的差异|
 |客户服务可通过手机、Skype 和短信24小时提供。|* 销售的联系人信息。<br> * 办公地点和商店地点和营业时间。<br> * 适用于 Surface 便携机的附件。|

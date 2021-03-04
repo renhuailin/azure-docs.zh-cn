@@ -8,12 +8,12 @@ ms.date: 02/16/2021
 ms.topic: reference
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: f0af571f67862c91371b01bee6227d5fb6b291be
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 0881363a3f13f0ddf34157a1fffe6c26d0c0b692
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101744573"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102122844"
 ---
 # <a name="powershell-scripts-for-iot-edge-for-linux-on-windows"></a>适用于 Windows 上的 Linux IoT Edge 的 PowerShell 脚本
 
@@ -149,4 +149,4 @@ EflowVm 命令是一 **项** 公开的功能，用于检查 Windows 虚拟机上
 
 * [在 Windows 上安装适用于 Linux 的 Azure IoT Edge](how-to-install-iot-edge-windows.md)
 
-* 有关通过 PowerShell 提供的所有命令，请参阅 [Windows PowerShell 上的适用于 Linux 的 IoT Edge 脚本参考](reference-iot-edge-for-linux-on-windows-scripts.md#Deploy-Eflow) 。
+* 有关通过 PowerShell 提供的所有命令，请参阅 [Windows PowerShell 上的适用于 Linux 的 IoT Edge 脚本参考](reference-iot-edge-for-linux-on-windows-scripts.md#deploy-eflow) 。

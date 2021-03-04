@@ -1,5 +1,5 @@
 ---
-title: 'Defender IoT 微代理 (预览版的疑难解答) '
+title: Defender IoT 微代理疑难解答
 titleSuffix: Azure Defender for IoT
 description: 了解如何处理意外或不解释的错误。
 author: shhazam-ms
@@ -8,14 +8,14 @@ ms.author: shhazam
 ms.date: 1/24/2021
 ms.topic: reference
 ms.service: azure
-ms.openlocfilehash: 07198a5d0ef5d0a6c9eed97523c61826e451b7f5
-ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
+ms.openlocfilehash: dade0d0d5dc4d690ea94f20deaf956b1e079bad7
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99809699"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102124170"
 ---
-# <a name="defender-iot-micro-agent-troubleshooting-preview"></a>Defender IoT 微代理 (预览版的疑难解答) 
+# <a name="defender-iot-micro-agent-troubleshooting"></a>Defender IoT 微代理疑难解答 
 
 如果出现意外错误或未解释的错误，请使用以下故障排除方法尝试解决问题。 你还可以在需要时与 Azure Defender for IoT 产品团队联系以获取帮助。   
 

@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 09/04/2020
 ms.author: deanwe
-ms.openlocfilehash: 1bcf9009a039a10017d53ca6fe9e78acec1efd55
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 5cdc0080c0d8b06bd0b7e19566b54b4f105648e5
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100581237"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102122096"
 ---
 # <a name="azure-automanage-for-virtual-machines-best-practices"></a>适用于虚拟机的 Azure Automanage 最佳实践
 
@@ -38,7 +38,7 @@ ms.locfileid: "100581237"
 |Log Analytics 工作区    |Azure Monitor 将日志数据存储在 Log Analytics 工作区中。该工作区是一个 Azure 资源，也是一个用于收集和聚合数据的容器，充当管理边界。 了解[详细信息](../azure-monitor/logs/design-logs-deployment.md)。    |Azure VM 最佳做法-生产、Azure VM 最佳做法-开发/测试    |否    |
 
 
-启用 Automanage 时，可以使用<sup>1</sup>个配置文件。 了解[详细信息](automanage-virtual-machines.md#configuration-profiles)。 你还可以调整配置文件的默认设置，并在最佳方案约束内设置你自己的首选项。
+启用 Automanage 时，可以使用<sup>1</sup>个配置文件。 了解[详细信息](automanage-virtual-machines.md)。 你还可以调整配置文件的默认设置，并在最佳方案约束内设置你自己的首选项。
 
 
 ## <a name="next-steps"></a>后续步骤

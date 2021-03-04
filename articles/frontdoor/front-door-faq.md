@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/20/2020
 ms.author: duau
-ms.openlocfilehash: 77cc509a9fac2a24b3cd70675c1ee4160ecdb24d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 06ad8bf169e2b4b44f4f6a8ec5155aa6722a038c
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101741848"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102124051"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door"></a>Azure 前门常见问题
 
@@ -99,7 +99,7 @@ Azure 前门是全球分布的多租户服务。 因此，前门的基础结构�
 
 - `Front Door ID`在前门门户页面的 "概述" 部分下查找值。 然后，你可以使用此值来筛选由前门发送到后端的传入标头 "**X-FDID**"，以确保仅允许你自己的特定前门实例 (因为以上 IP 范围与其他客户) 的其他前门实例共享。
 
-- 应用后端 web 服务器中的规则筛选，基于生成的 "FDID" 标头值限制流量。 请注意，有些服务（如 Azure App Service）提供了 [基于此标头的筛选](../app-service/app-service-ip-restrictions#restrict-access-to-a-specific-azure-front-door-instance-preview) 功能，而无需更改应用程序或主机。
+- 应用后端 web 服务器中的规则筛选，基于生成的 "FDID" 标头值限制流量。 请注意，有些服务（如 Azure App Service）提供了 [基于此标头的筛选](../app-service/app-service-ip-restrictions.md#restrict-access-to-a-specific-azure-front-door-instance-preview) 功能，而无需更改应用程序或主机。
 
   下面是 [Microsoft Internet Information Services (IIS) ](https://www.iis.net/)的示例：
 

@@ -12,12 +12,12 @@ ms.date: 2/23/2021
 ms.author: kenwith
 ms.reviewer: hpsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bdcdd387575faec87656430860e24fee56387775
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: a9a884cbe9ad30ce298318d217aa9ed1947c8f21
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/04/2021
-ms.locfileid: "102050896"
+ms.locfileid: "102123014"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>使用租户限制管理对 SaaS 云应用程序的访问
 
@@ -178,9 +178,9 @@ Fiddler 是一个免费 Web 调试代理，可用于捕获和修改 HTTP/HTTPS �
       }
    ```
 
-如果需要允许多个租户，请使用逗号分隔租户名称。 例如：
+   如果需要允许多个租户，请使用逗号分隔租户名称。 例如：
 
-      `oSession.oRequest["Restrict-Access-To-Tenants"] = "contoso.onmicrosoft.com,fabrikam.onmicrosoft.com";`
+   `oSession.oRequest["Restrict-Access-To-Tenants"] = "contoso.onmicrosoft.com,fabrikam.onmicrosoft.com";`
 
 4. 保存并关闭 CustomRules 文件。
 

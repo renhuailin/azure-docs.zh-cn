@@ -5,14 +5,14 @@ author: MikeDodaro
 ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 02/05/2021
-ms.author: brendanm
+ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: e846da81444ae1632cb7f9a4cd413bc3f9b7b232
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 844530c6d1650b5fddd27b10c775c4364a3f5147
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101701937"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102124459"
 ---
 # <a name="structured-application-log-for-azure-spring-cloud"></a>适用于 Azure 春季云的结构化应用程序日志
 
@@ -23,7 +23,7 @@ ms.locfileid: "101701937"
 
 **JSON 架构要求：**
 
-| Json 密钥      | Json 值类型|  必选 | 列 Log Analytics| 说明 |
+| Json 密钥      | Json 值类型|  必须 | 列 Log Analytics| 说明 |
 | --------------| ------------|-----------|-----------------|--------------------------|
 | timestamp     | string      |     是   | AppTimestamp    | UTC 格式的时间戳  |
 | logger        | string      |     否    | 记录器          | logger                   |

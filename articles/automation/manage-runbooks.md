@@ -3,14 +3,14 @@ title: 在 Azure 自动化中管理 Runbook
 description: 本文介绍如何在 Azure 自动化中管理 Runbook。
 services: automation
 ms.subservice: process-automation
-ms.date: 10/23/2020
+ms.date: 02/24/2021
 ms.topic: conceptual
-ms.openlocfilehash: ed5eda668f6bd52ba144aa664119ab613fdb7742
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: af767ab37e8e77195b7d13b24ea78f4fb88485fb
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183577"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102122130"
 ---
 # <a name="manage-runbooks-in-azure-automation"></a>在 Azure 自动化中管理 Runbook
 
@@ -23,6 +23,7 @@ ms.locfileid: "96183577"
 * [在 Azure 自动化中编辑文本 Runbook](automation-edit-textual-runbook.md)
 * [了解自动化 Runbook 的关键 Windows PowerShell 工作流概念](automation-powershell-workflow.md)
 * [在 Azure 自动化中管理 Python 2 包](python-packages.md)
+* [在 Azure 自动化中管理 Python 3 包 (预览) ](python-3-packages.md)
 
 ### <a name="create-a-runbook-in-the-azure-portal"></a>在 Azure 门户中创建 Runbook
 
@@ -45,7 +46,7 @@ New-AzAutomationRunbook -AutomationAccountName MyAccount `
 
 ## <a name="import-a-runbook"></a>导入 Runbook
 
-可导入 PowerShell 或 PowerShell 工作流脚本 (.ps1)、图形 Runbook (.graphrunbook) 或 Python 2 脚本 (.py) 来创建自己的 Runbook  。 必须指定在导入期间创建的 [Runbook 类型](automation-runbook-types.md)，并考虑以下注意事项。
+你可以导入 PowerShell 或 PowerShell 工作流 (**ps1**) 脚本、图形 runbook (**. .graphrunbook**) ，或 python 2 或 python 3 脚本 (**py**) 来创建你自己的 runbook。 必须指定在导入期间创建的 [Runbook 类型](automation-runbook-types.md)，并考虑以下注意事项。
 
 * 可将不含工作流的 .ps1 文件导入 [PowerShell Runbook](automation-runbook-types.md#powershell-runbooks) 或 [PowerShell 工作流 Runbook](automation-runbook-types.md#powershell-workflow-runbooks)。 如果将其导入 PowerShell 工作流 Runbook，它将转换为工作流。 这样的话，Runbook 会包含注释来描述所作的更改。
 
@@ -187,7 +188,7 @@ Runbook 必须可靠且能够处理[错误](automation-runbook-execution.md#erro
 如果你的 Runbook 通常在一定时间内运行，请让脚本实现逻辑来检查执行时间。 该项检查可确保仅在特定的时间内运行诸如启动、关闭或横向扩展之类的操作。
 
 > [!NOTE]
-> Azure 沙盒上的本地时间被设置为 UTC。 Runbook 中的日期和时间计算需要考虑到这一点。
+> Azure 沙盒上的本地时间被设置为 UTC。 计算 Runbook 中的日期和时间时，必须考虑到这一事实。
 
 ## <a name="work-with-multiple-subscriptions"></a>使用多个订阅
 

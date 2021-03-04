@@ -8,12 +8,12 @@ ms.date: 01/04/2021
 ms.author: chhenk
 ms.reviewer: azmetadatadev
 ms.custom: references_regions
-ms.openlocfilehash: fcdccf6701afe73ab0f11a7a907072b01a9d5aa4
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: b720e98fc83fd12744c289cb99814748b469b15d
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100373295"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102123677"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure 实例元数据服务
 
@@ -42,13 +42,13 @@ IMDS 是一个 REST API，在已知的、不可路由的 IP 地址 (`169.254.169
 #### <a name="windows"></a>[Windows](#tab/windows/)
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance?api-version=2020-09-01" | ConvertTo-Json -Depth 64
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Proxy $Null -Uri "http://169.254.169.254/metadata/instance?api-version=2020-09-01" | ConvertTo-Json -Depth 64
 ```
 
 #### <a name="linux"></a>[Linux](#tab/linux/)
 
 ```bash
-curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance?api-version=2020-09-01"
+curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance?api-version=2020-09-01" | jq
 ```
 
 ---
@@ -196,7 +196,7 @@ http://169.254.169.254/metadata/instance/network/interface/0?api-version=<versio
 #### <a name="windows"></a>[Windows](#tab/windows/)
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance?api-version=2017-08-01&format=text" | ConvertTo-Json
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Proxy $Null -Uri "http://169.254.169.254/metadata/instance?api-version=2017-08-01&format=text"
 ```
 
 #### <a name="linux"></a>[Linux](#tab/linux/)
@@ -248,9 +248,7 @@ IMDS 进行了版本控制，在 HTTP 请求中指定 API 版本是必需的。 
 - 2020-07-15
 - 2020-09-01
 - 2020-10-01
-
-> [!NOTE]
-> 当前正在推出版本 2020-10-01，它在某些区域可能尚不可用。
+- 2020-12-01
 
 ### <a name="swagger"></a>Swagger
 
@@ -273,6 +271,7 @@ IMDS API 包含多个表示不同数据源的终结点类别，每一个都包�
 | `/metadata/attested` | 请参阅[证明数据](#attested-data) | 2018-10-01
 | `/metadata/identity` | 请参阅[通过 IMDS 托管的托管标识](#managed-identity) | 2018-02-01
 | `/metadata/instance` | 请参阅[实例元数据](#instance-metadata) | 2017-04-02
+| `/metadata/loadbalancer` | 请参阅 [通过 IMDS 检索负载均衡器元数据](#load-balancer-metadata) | 2020-10-01
 | `/metadata/scheduledevents` | 请参阅[通过 IMDS 计划的计划事件](#scheduled-events) | 2017-08-01
 | `/metadata/versions` | 请参阅[版本](#versions) | 不适用
 
@@ -336,6 +335,7 @@ GET /metadata/instance
 |------|-------------|--------------------|
 | `azEnvironment` | VM 运行时所在的 Azure 环境 | 2018-10-01
 | `customData` | 此功能目前已禁用。 当该功能可用时，我们将更新此文档 | 2019-02-01
+| `evictionPolicy` | 设置如何逐出 [专色 VM](../articles/virtual-machines/spot-vms.md) 。 | 2020-12-01
 | `isHostCompatibilityLayerVm` | 标识 VM 是否在主机兼容性层上运行 | 2020-06-01
 | `licenseType` | [Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-benefit)许可证的类型。 这仅适用于启用了 AHB 的 VM | 2020-09-01
 | `location` | VM 在其中运行的 Azure 区域 | 2017-04-02
@@ -349,6 +349,7 @@ GET /metadata/instance
 | `plan` | 包含 VM 的名称、产品和发布者（如果是 Azure 市场映像）的[计划](/rest/api/compute/virtualmachines/createorupdate#plan) | 2018-04-02
 | `platformUpdateDomain` |  正在运行 VM 的[更新域](../articles/virtual-machines/manage-availability.md) | 2017-04-02
 | `platformFaultDomain` | 正在运行 VM 的[容错域](../articles/virtual-machines/manage-availability.md) | 2017-04-02
+| `priority` | VM 的优先级。 有关详细信息，请参阅[污点 vm](../articles/virtual-machines/spot-vms.md) | 2020-12-01
 | `provider` | VM 的提供商 | 2018-10-01
 | `publicKeys` | [公钥的集合](/rest/api/compute/virtualmachines/createorupdate#sshpublickey)，已分配给 VM 和路径 | 2018-04-02
 | `publisher` | VM 映像的发布者 | 2017-04-02
@@ -423,13 +424,6 @@ OS 磁盘对象包含有关 VM 所用 OS 磁盘的以下信息：
 | `ipv6.ipAddress` | VM 的本地 IPv6 地址 | 2017-04-02
 | `macAddress` | VM mac 地址 | 2017-04-02
 
-VM 标记
-
-VM 标记包含在实例/计算/标记终结点下的实例 API。
-标记可能已应用到 Azure VM 中，以逻辑方式将其归入一个分类。 可使用以下请求检索分配给 VM 的标记。
-
-`tags` 字段是带有用分号分隔的标记的字符串。 如果标记本身使用了分号，则此输出可能会出现问题。 如果编写分析程序以编程方式提取标记，则应该依赖于 `tagsList` 字段。 `tagsList` 字段是不带分隔符的 JSON 数组，因此更易于分析。
-
 
 #### <a name="sample-1-tracking-vm-running-on-azure"></a>示例 1：跟踪 Azure 上正在运行的 VM
 
@@ -440,7 +434,7 @@ VM 标记包含在实例/计算/标记终结点下的实例 API。
 #### <a name="windows"></a>[Windows](#tab/windows/)
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance/compute/vmId?api-version=2017-08-01&format=text"| ConvertTo-Json
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Proxy $Null -Uri "http://169.254.169.254/metadata/instance/compute/vmId?api-version=2017-08-01&format=text"
 ```
 
 #### <a name="linux"></a>[Linux](#tab/linux/)
@@ -468,7 +462,7 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/co
 #### <a name="windows"></a>[Windows](#tab/windows/)
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance/compute/platformFaultDomain?api-version=2017-08-01&format=text" | ConvertTo-Json
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Proxy $Null -Uri "http://169.254.169.254/metadata/instance/compute/platformFaultDomain?api-version=2017-08-01&format=text"
 ```
 
 #### <a name="linux"></a>[Linux](#tab/linux/)
@@ -485,7 +479,98 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/co
 0
 ```
 
-#### <a name="sample-3-get-more-information-about-the-vm-during-support-case"></a>示例 3：在支持案例期间获取有关 VM 的详细信息
+#### <a name="sample-3-get-vm-tags"></a>示例3：获取 VM 标记
+
+VM 标记包含在实例/计算/标记终结点下的实例 API。
+标记可能已应用到 Azure VM 中，以逻辑方式将其归入一个分类。 可使用以下请求检索分配给 VM 的标记。
+
+**请求**
+
+#### <a name="windows"></a>[Windows](#tab/windows/)
+
+```powershell
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Proxy $Null -Uri "http://169.254.169.254/metadata/instance/compute/tags?api-version=2017-08-01&format=text"
+```
+
+#### <a name="linux"></a>[Linux](#tab/linux/)
+
+```bash
+curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/compute/platformFaultDomain?api-version=2017-08-01&format=text"
+```
+
+---
+
+**响应**
+
+```
+Department:IT;ReferenceNumber:123456;TestStatus:Pending
+```
+
+`tags` 字段是带有用分号分隔的标记的字符串。 如果标记本身使用了分号，则此输出可能会出现问题。 如果编写分析程序以编程方式提取标记，则应该依赖于 `tagsList` 字段。 `tagsList` 字段是不带分隔符的 JSON 数组，因此更易于分析。 可以使用以下请求检索分配给 VM 的 tagsList。
+
+**请求**
+
+#### <a name="windows"></a>[Windows](#tab/windows/)
+
+```powershell
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Proxy $Null -Uri "http://169.254.169.254/metadata/instance/compute/tagsList?api-version=2019-06-04" | ConvertTo-Json -Depth 64
+```
+
+#### <a name="linux"></a>[Linux](#tab/linux/)
+
+```bash
+curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/compute/tagsList?api-version=2019-06-04" | jq
+```
+
+---
+
+**响应**
+
+#### <a name="windows"></a>[Windows](#tab/windows/)
+
+```json
+{
+    "value":  [
+                  {
+                      "name":  "Department",
+                      "value":  "IT"
+                  },
+                  {
+                      "name":  "ReferenceNumber",
+                      "value":  "123456"
+                  },
+                  {
+                      "name":  "TestStatus",
+                      "value":  "Pending"
+                  }
+              ],
+    "Count":  3
+}
+```
+
+#### <a name="linux"></a>[Linux](#tab/linux/)
+
+```json
+[
+  {
+    "name": "Department",
+    "value": "IT"
+  },
+  {
+    "name": "ReferenceNumber",
+    "value": "123456"
+  },
+  {
+    "name": "TestStatus",
+    "value": "Pending"
+  }
+]
+```
+
+---
+
+
+#### <a name="sample-4-get-more-information-about-the-vm-during-support-case"></a>示例4：在支持案例期间获取有关 VM 的详细信息
 
 作为服务提供商，你可能会接到支持电话，了解有关 VM 的详细信息。 请求客户共享计算元数据可以提供基本信息，以支持专业人员了解有关 Azure 上的 VM 类型。
 
@@ -494,7 +579,7 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/co
 #### <a name="windows"></a>[Windows](#tab/windows/)
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance/compute?api-version=2020-09-01" | ConvertTo-Json -Depth 64
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Proxy $Null -Uri "http://169.254.169.254/metadata/instance/compute?api-version=2020-09-01" | ConvertTo-Json -Depth 64
 ```
 
 #### <a name="linux"></a>[Linux](#tab/linux/)
@@ -510,6 +595,7 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/co
 > [!NOTE]
 > 此响应是 JSON 字符串。 以下示例响应显示清晰，可供阅读。
 
+#### <a name="windows"></a>[Windows](#tab/windows/)
 ```json
 {
     "azEnvironment": "AZUREPUBLICCLOUD",
@@ -517,13 +603,13 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/co
     "licenseType":  "Windows_Client",
     "location": "westus",
     "name": "examplevmname",
-    "offer": "Windows",
+    "offer": "WindowsServer",
     "osProfile": {
         "adminUsername": "admin",
         "computerName": "examplevmname",
         "disablePasswordAuthentication": "true"
     },
-    "osType": "linux",
+    "osType": "Windows",
     "placementGroupId": "f67c14ab-e92c-408c-ae2d-da15866ec79a",
     "plan": {
         "name": "planName",
@@ -548,7 +634,108 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/co
         "secureBootEnabled": "true",
         "virtualTpmEnabled": "false"
     },
-    "sku": "Windows-Server-2012-R2-Datacenter",
+    "sku": "2019-Datacenter",
+    "storageProfile": {
+        "dataDisks": [{
+            "caching": "None",
+            "createOption": "Empty",
+            "diskSizeGB": "1024",
+            "image": {
+                "uri": ""
+            },
+            "lun": "0",
+            "managedDisk": {
+                "id": "/subscriptions/xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/macikgo-test-may-23/providers/Microsoft.Compute/disks/exampledatadiskname",
+                "storageAccountType": "Standard_LRS"
+            },
+            "name": "exampledatadiskname",
+            "vhd": {
+                "uri": ""
+            },
+            "writeAcceleratorEnabled": "false"
+        }],
+        "imageReference": {
+            "id": "",
+            "offer": "WindowsServer",
+            "publisher": "MicrosoftWindowsServer",
+            "sku": "2019-Datacenter",
+            "version": "latest"
+        },
+        "osDisk": {
+            "caching": "ReadWrite",
+            "createOption": "FromImage",
+            "diskSizeGB": "30",
+            "diffDiskSettings": {
+                "option": "Local"
+            },
+            "encryptionSettings": {
+                "enabled": "false"
+            },
+            "image": {
+                "uri": ""
+            },
+            "managedDisk": {
+                "id": "/subscriptions/xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/macikgo-test-may-23/providers/Microsoft.Compute/disks/exampleosdiskname",
+                "storageAccountType": "Standard_LRS"
+            },
+            "name": "exampleosdiskname",
+            "osType": "Windows",
+            "vhd": {
+                "uri": ""
+            },
+            "writeAcceleratorEnabled": "false"
+        }
+    },
+    "subscriptionId": "xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
+    "tags": "baz:bash;foo:bar",
+    "version": "15.05.22",
+    "vmId": "02aab8a4-74ef-476e-8182-f6d2ba4166a6",
+    "vmScaleSetName": "crpteste9vflji9",
+    "vmSize": "Standard_A3",
+    "zone": ""
+}
+```
+
+#### <a name="linux"></a>[Linux](#tab/linux/)
+```json
+{
+    "azEnvironment": "AZUREPUBLICCLOUD",
+    "isHostCompatibilityLayerVm": "true",
+    "licenseType":  "Windows_Client",
+    "location": "westus",
+    "name": "examplevmname",
+    "offer": "UbuntuServer",
+    "osProfile": {
+        "adminUsername": "admin",
+        "computerName": "examplevmname",
+        "disablePasswordAuthentication": "true"
+    },
+    "osType": "Linux",
+    "placementGroupId": "f67c14ab-e92c-408c-ae2d-da15866ec79a",
+    "plan": {
+        "name": "planName",
+        "product": "planProduct",
+        "publisher": "planPublisher"
+    },
+    "platformFaultDomain": "36",
+    "platformUpdateDomain": "42",
+    "publicKeys": [{
+            "keyData": "ssh-rsa 0",
+            "path": "/home/user/.ssh/authorized_keys0"
+        },
+        {
+            "keyData": "ssh-rsa 1",
+            "path": "/home/user/.ssh/authorized_keys1"
+        }
+    ],
+    "publisher": "Canonical",
+    "resourceGroupName": "macikgo-test-may-23",
+    "resourceId": "/subscriptions/xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/macikgo-test-may-23/providers/Microsoft.Compute/virtualMachines/examplevmname",
+    "securityProfile": {
+        "secureBootEnabled": "true",
+        "virtualTpmEnabled": "false"
+    },
+    "sku": "18.04-LTS",
     "storageProfile": {
         "dataDisks": [{
             "caching": "None",
@@ -593,7 +780,7 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/co
                 "storageAccountType": "Standard_LRS"
             },
             "name": "exampleosdiskname",
-            "osType": "Linux",
+            "osType": "linux",
             "vhd": {
                 "uri": ""
             },
@@ -610,7 +797,9 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/co
 }
 ```
 
-#### <a name="sample-4-get-the-azure-environment-where-the-vm-is-running"></a>示例 4：获取运行 VM 的 Azure 环境
+---
+
+#### <a name="sample-5-get-the-azure-environment-where-the-vm-is-running"></a>示例5：获取运行 VM 的 Azure 环境
 
 Azure 具有各种主权云，如 [Azure 政府](https://azure.microsoft.com/overview/clouds/government/)。 有时你需要使用 Azure 环境来做出一些运行时决策。 以下示例显示了如何实现此行为。
 
@@ -619,7 +808,7 @@ Azure 具有各种主权云，如 [Azure 政府](https://azure.microsoft.com/ove
 #### <a name="windows"></a>[Windows](#tab/windows/)
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance/compute/azEnvironment?api-version=2018-10-01&format=text" | ConvertTo-Json
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Proxy $Null -Uri "http://169.254.169.254/metadata/instance/compute/azEnvironment?api-version=2018-10-01&format=text"
 ```
 
 #### <a name="linux"></a>[Linux](#tab/linux/)
@@ -646,14 +835,14 @@ AzurePublicCloud
 | [Azure 德国](https://azure.microsoft.com/overview/clouds/germany/) | AzureGermanCloud
 
 
-#### <a name="sample-5-retrieve-network-information"></a>示例 5：检索网络信息
+#### <a name="sample-6-retrieve-network-information"></a>示例6：检索网络信息
 
 **请求**
 
 #### <a name="windows"></a>[Windows](#tab/windows/)
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance/network?api-version=2017-08-01" | ConvertTo-Json  -Depth 64
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Proxy $Null -Uri "http://169.254.169.254/metadata/instance/network?api-version=2017-08-01" | ConvertTo-Json  -Depth 64
 ```
 
 #### <a name="linux"></a>[Linux](#tab/linux/)
@@ -693,12 +882,12 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/ne
 }
 ```
 
-#### <a name="sample-6-retrieve-public-ip-address"></a>示例 6：检索公共 IP 地址
+#### <a name="sample-7-retrieve-public-ip-address"></a>示例7：检索公共 IP 地址
 
 #### <a name="windows"></a>[Windows](#tab/windows/)
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance/network/interface/0/ipv4/ipAddress/0/publicIpAddress?api-version=2017-08-01&format=text" | ConvertTo-Json
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Proxy $Null -Uri "http://169.254.169.254/metadata/instance/network/interface/0/ipv4/ipAddress/0/publicIpAddress?api-version=2017-08-01&format=text"
 ```
 
 #### <a name="linux"></a>[Linux](#tab/linux/)
@@ -792,7 +981,7 @@ Azure 市场供应商希望确保其软件仅获许在 Azure 中运行。 如果
 
 ```powershell
 # Get the signature
-$attestedDoc = Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri http://169.254.169.254/metadata/attested/document?api-version=2020-09-01
+$attestedDoc = Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Proxy $Null -Uri http://169.254.169.254/metadata/attested/document?api-version=2020-09-01
 # Decode the signature
 $signature = [System.Convert]::FromBase64String($attestedDoc.signature)
 ```
@@ -913,8 +1102,12 @@ openssl verify -verbose -CAfile /etc/ssl/certs/Baltimore_CyberTrust_Root.pem -un
 
 有关启用此功能的详细步骤，请参阅[获取访问令牌](../articles/active-directory/managed-identities-azure-resources/how-to-use-vm-token.md)。
 
+## <a name="load-balancer-metadata"></a>负载均衡器元数据
+将虚拟机或虚拟机集实例置于 Azure 标准负载均衡器后面时，可以使用 IMDS 检索与负载均衡器和实例相关的元数据。 有关详细信息，请参阅 [检索负载平衡器信息](../articles/load-balancer/instance-metadata-service-load-balancer.md)。
+
 ## <a name="scheduled-events"></a>计划事件
 可以使用 IMDS 获取计划事件的状态。 然后，用户可以指定一组在发生这些事件时要运行的操作。 有关详细信息，请参阅 [Linux 计划事件](../articles/virtual-machines/linux/scheduled-events.md)或 [Windows 计划事件](../articles/virtual-machines/windows/scheduled-events.md)。
+
 
 ## <a name="sample-code-in-different-languages"></a>不同语言的示例代码
 

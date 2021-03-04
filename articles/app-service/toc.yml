@@ -187,8 +187,6 @@
               href: deploy-ci-cd-custom-container.md
             - name: 从本地 Git 进行部署
               href: deploy-local-git.md
-            - name: GitHub 操作
-              href: deploy-github-actions.md
             - name: 适用于容器的 GitHub 操作
               href: deploy-container-github-action.md
             - name: 使用模板进行部署

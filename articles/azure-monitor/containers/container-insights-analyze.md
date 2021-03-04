@@ -3,12 +3,12 @@ title: Kubernetes monitoring with Container insights |Microsoft Docs
 description: 本文介绍如何使用容器见解查看和分析 Kubernetes 群集的性能。
 ms.topic: conceptual
 ms.date: 03/26/2020
-ms.openlocfilehash: 432de02d22a418e92a7487001ae8c128323f3685
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 865a21e8c54d2cf569e04534fab6ec14f5519f34
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101711342"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102124306"
 ---
 # <a name="monitor-your-kubernetes-cluster-performance-with-container-insights"></a>利用 Container insights 监视 Kubernetes 群集性能
 
@@ -20,7 +20,7 @@ ms.locfileid: "101711342"
 
 Azure Monitor 提供一个多群集视图，显示在订阅中跨资源组部署的所有运行 Linux 和 Windows Server 2019 的受监视 Kubernetes 群集的运行状况。 它显示跨所有环境发现的不受解决方案监视的群集。 可以即时了解群集运行状况，并且可以从这里向下钻取到节点和控制器性能页，或者进行导航来查看群集的性能图表。 对于发现的标识为“不受监视”的 AKS 群集，可以随时为该群集启用监视功能。
 
-与 Linux 群集相比，使用容器 insights 监视 Windows Server 群集的主要区别在本文的概述文章中进行[了介绍。](container-insights-overview.md#what-does-azure-monitor-for-containers-provide)
+与 Linux 群集相比，使用容器 insights 监视 Windows Server 群集的主要区别在本文的概述文章中进行[了介绍。](container-insights-overview.md#what-does-container-insights-provide)
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 

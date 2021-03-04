@@ -7,20 +7,20 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 05/29/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 9d572545f589475dc2b460db90329fe8b0a838c2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c262ba87698c04da69728f7a370040c0679ec44e
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90904307"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102122861"
 ---
 # <a name="how-to-self-diagnose-and-solve-problems-in-azure-spring-cloud"></a>如何在 Azure 春季云中自行诊断和解决问题
 
 本文适用于：✔️ Java ✔️ C#
 
-Azure 春季云诊断是一种交互式体验，可帮助你对应用进行故障排除。 不需要任何配置。 当你发现问题时，Azure 春季云诊断会指出问题所在，并指导你获取有助于排查和解决此问题的信息。
+Azure 春季云诊断是一种交互式体验，无需配置即可对应用进行故障排除。 Azure 春季云诊断可识别问题并指导你了解有助于排查和解决问题的信息。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 要完成本教程，需要：
 
 * Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
@@ -30,7 +30,7 @@ Azure 春季云诊断是一种交互式体验，可帮助你对应用进行故�
 ## <a name="navigate-to-the-diagnostics-page"></a>导航到 "诊断" 页
 1. 登录到 Azure 门户。
 2. 转到 Azure Spring Cloud 的“概览”页。
-3. 在页面左侧的菜单中打开 " **诊断并解决问题** "。
+3. 选择左侧导航窗格中的 " **诊断和解决问题** "。
 
  ![诊断，求解对话框](media/spring-cloud-diagnose/diagnose-solve-dialog.png)
 

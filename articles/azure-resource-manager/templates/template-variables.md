@@ -3,12 +3,12 @@ title: 模板中的变量
 description: 介绍如何在 Azure 资源管理器模板中定义变量 (ARM 模板) 和 Bicep 文件。
 ms.topic: conceptual
 ms.date: 02/19/2021
-ms.openlocfilehash: e00a9e8e1801725707bac2abdc67512477e2cf07
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 3ab14c9acfcc2d6c9edd23fb3bc4d876cd5ac756
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101700331"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102123371"
 ---
 # <a name="variables-in-arm-templates"></a>ARM 模板中的变量
 
@@ -20,7 +20,7 @@ ms.locfileid: "101700331"
 
 ## <a name="define-variable"></a>定义变量
 
-定义变量时，不会为变量指定 [数据类型](template-syntax.md#data-types) 。 而是提供一个值或模板表达式。 变量类型是从解析的值推断出来的。 下面的示例将一个变量设置为一个字符串。
+定义变量时，不会为变量指定 [数据类型](data-types.md) 。 而是提供一个值或模板表达式。 变量类型是从解析的值推断出来的。 下面的示例将一个变量设置为一个字符串。
 
 # <a name="json"></a>[JSON](#tab/json)
 

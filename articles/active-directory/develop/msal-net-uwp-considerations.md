@@ -9,22 +9,22 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 07/16/2019
+ms.date: 03/03/2021
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 6451368baf9c047f0318eb74d53ffac075d4a184
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 8a8aab447007eb574a7a4bc532d8177bd0d8b345
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98063444"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102122470"
 ---
 # <a name="considerations-for-using-universal-windows-platform-with-msalnet"></a>将通用 Windows 平台与 MSAL.NET 配合使用时的注意事项
 将通用 Windows 平台 (UWP) 与 MSAL.NET 配合使用的应用程序的开发人员应当考虑本文中所述的概念。
 
 ## <a name="the-usecorporatenetwork-property"></a>UseCorporateNetwork 属性
-在 Windows 运行时 (WinRT) 平台上，`PublicClientApplication` 具有布尔属性 `UseCorporateNetwork`。 使用此属性，Windows 8.1 应用程序和 UWP 应用程序在用户登录到具有联合 Azure Active Directory (Azure AD) 租户的帐户时可以利用集成 Windows 身份验证 (IWA)。 已登录到操作系统的用户还可以使用单一登录 (SSO)。 设置 `UseCorporateNetwork` 属性后，MSAL.NET 将使用 Web 身份验证代理 (WAB)。
+在 Windows 运行时 (WinRT) 平台上，`PublicClientApplication` 具有布尔属性 `UseCorporateNetwork`。 如果用户登录到具有联合 Azure Active Directory (Azure AD) 租户的帐户，则通过此属性，Windows 10 应用程序和 UWP 应用程序可以受益于集成的 Windows 身份验证 (IWA) 。 已登录到操作系统的用户还可以使用单一登录 (SSO)。 设置 `UseCorporateNetwork` 属性后，MSAL.NET 将使用 Web 身份验证代理 (WAB)。
 
 > [!IMPORTANT]
 > 将 `UseCorporateNetwork` 属性设置为 true 时，将假定应用程序开发人员已在应用程序中启用了 IWA。 若要启用 IWA，请执行以下操作：

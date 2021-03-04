@@ -13,12 +13,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a204db8453ec8126e1aa9033e10f739a6f8a0d43
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: 5df7088551e7e7f616077342b762baca179f8640
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100095131"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102123354"
 ---
 # <a name="use-cloud-groups-to-manage-role-assignments-in-azure-active-directory-preview"></a>使用云组来管理 Azure Active Directory（预览版）中的角色分配
 
@@ -56,10 +56,10 @@ Azure Active Directory (Azure AD) 即将引入公共预览，可在其中向 Azu
 
 ## <a name="known-issues"></a>已知问题
 
-- “为托管用户登录名启用分阶段推出”功能不支持通过组分配。
 - *仅限 Azure AD P2 授权客户*：不要通过 Azure AD 和 Privileged Identity Management (PIM) 为角色分配活动组。 具体而言，在创建一个可分配角色的组时，不要将角色分配给该组，也不要在以后使用 PIM 时将角色分配给该组。 这将导致用户无法在 PIM 中看到其活动角色分配以及无法删除该 PIM 分配的问题。 符合条件的分配在此方案中不受影响。 如果尝试进行此分配，可能会出现意外的行为，例如：
   - 角色分配的结束时间可能显示错误。
   - 在 PIM 门户中，“我的角色”只能显示一个角色分配，而不管通过多少方法授予分配（通过一个或多个组直接进行）。
+- “为托管用户登录名启用分阶段推出”功能不支持通过组分配。
 - 仅限 Azure AD P2 授权客户。即使删除该组，它仍会在 PIM UI 中显示该角色的合格成员。 在功能上没有问题；这只是 Azure 门户中的缓存问题。  
 - 通过组成员身份将新的 [Exchange 管理中心](https://admin.exchange.microsoft.com/) 用于角色分配。 旧的 Exchange 管理中心目前尚不支持此功能。 Exchange PowerShell cmdlet 将按预期方式工作。
 - Azure 信息保护门户 (经典门户) 不通过组识别角色成员身份。 你可以 [迁移到统一的灵敏度标签平台](/azure/information-protection/configure-policy-migrate-labels) ，然后使用 Office 365 Security & 相容性中心来使用组分配来管理角色。
