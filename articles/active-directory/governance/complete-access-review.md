@@ -16,12 +16,12 @@ ms.date: 02/08/2021
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f1abbabb9197011b826e58d518ddff4364edab7
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: e31b9ce115ebe0723a9d082aaddd8056e486ed27
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100008179"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102176971"
 ---
 # <a name="complete-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>在 Azure AD 访问评审中完成对组和应用程序的访问评审
 
@@ -59,7 +59,7 @@ ms.locfileid: "100008179"
     ![查看跨 Microsoft 365 组的来宾访问权限](./media/complete-access-review/all-company-group-results.png)
 
 
-    如果正在查看评审来宾跨 Microsoft 365 组（预览版）访问的访问评审，“概述”边栏选项卡会列出评审中的每个组。 
+    如果你查看的是查看跨 Microsoft 365 组的来宾访问权限的访问评审，则 "概述" 边栏选项卡会列出评审中的每个组。 
    
     ![跨 Microsoft 365 组的评审来宾访问](./media/complete-access-review/review-guest-access-across-365-groups.png)
 

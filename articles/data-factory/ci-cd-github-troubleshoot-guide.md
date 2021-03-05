@@ -7,12 +7,12 @@ ms.reviewer: susabat
 ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 12/03/2020
-ms.openlocfilehash: 5c33ef9559d9ce67eea62ee7f78425d18010c1cb
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: d96c467807af868c07be12f52d913f881b82f732
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101727951"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175866"
 ---
 # <a name="troubleshoot-ci-cd-azure-devops-and-github-issues-in-adf"></a>在 ADF 中排查 CI CD、Azure DevOps 和 GitHub 问题 
 
@@ -190,7 +190,7 @@ Azure 资源管理器将模板大小限制为4mb。 将模板大小限制为 4 M
 
 ##### <a name="resolution"></a>解决方法
 
-首先授予对 ADF 的 Oauth 访问权限。 然后，必须使用正确的 URL 连接到 GIT 企业。 该配置必须设置为客户组织 () ，因为 ADF 服务将首先尝试 https://hostname/api/v3/search/repositories?q=user%3 <customer credential> ...。和失败。 然后，它将尝试 https://hostname/api/v3/orgs/ <vaorg> / <repo> 并成功。 
+首先授予对 ADF 的 Oauth 访问权限。 然后，必须使用正确的 URL 连接到 GIT 企业。 该配置必须设置为客户组织 (s) 。 例如，ADF 将首先尝试 *https://hostname/api/v3/search/repositories?q=user%3 <customer credential> ...* ，并失败。 然后，它将尝试 *https://hostname/api/v3/orgs/ <org> / <repo> ...*，并成功。 
  
 ### <a name="recover-from-a-deleted-data-factory"></a>从已删除的数据工厂恢复
 
@@ -203,7 +203,8 @@ Azure 资源管理器将模板大小限制为4mb。 将模板大小限制为 4 M
 
 如果没有源代码管理，则不可能从后端恢复已删除的数据工厂，因为一旦服务收到删除的命令，就会删除该实例，并且不会存储任何备份。
 
-#### <a name="resoloution"></a>Resoloution
+#### <a name="resolution"></a>解决方法
+
 若要恢复包含源代码管理的已删除数据工厂，请参阅以下步骤：
 
  * 创建新的 Azure 数据工厂。

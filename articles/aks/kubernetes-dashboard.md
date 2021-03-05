@@ -6,12 +6,12 @@ author: mlearned
 ms.topic: article
 ms.date: 06/03/2020
 ms.author: mlearned
-ms.openlocfilehash: 85f0a42cdfcbea2223d202a9dc35f58746580e85
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: acaeaa2e5338c86fa59d0e2941719f8fa2708ef1
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350120"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102176815"
 ---
 # <a name="access-the-kubernetes-web-dashboard-in-azure-kubernetes-service-aks"></a>访问 Azure Kubernetes 服务 (AKS) 中的 Kubernetes Web 仪表板
 
@@ -106,7 +106,7 @@ After you choose a method to sign in, the Kubernetes dashboard is displayed. If 
 ## <a name="sign-in-to-the-dashboard-kubernetes-116"></a>登录到仪表板 (kubernetes 1.16+)
 
 > [!IMPORTANT]
-> 从 [Kubernetes 仪表板 v1.10.1](https://github.com/kubernetes/dashboard/releases/tag/v1.10.1) 或 kubernetes v1.16 + 开始，由于[该版本中的安全修补程序](https://github.com/kubernetes/dashboard/pull/3400)，服务帐户“kubernetes-dashboard”不再能够用于检索资源。 因此，没有身份验证信息的请求会返回 [401 未经授权的错误](https://github.com/Azure/AKS/issues/1573#issuecomment-703040998)。 从服务帐户检索的持有者令牌仍可通过此 [Kubernetes 仪表板示例](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/#accessing-the-dashboard-ui)中的方式使用，但与早期版本相比，这会影响仪表板加载项的登录流。
+> 从 [Kubernetes 仪表板 v1.10.1](https://github.com/kubernetes/dashboard/releases/tag/v1.10.1) 或 kubernetes v1.16 + 开始，由于[该版本中的安全修补程序](https://github.com/kubernetes/dashboard/pull/3400)，服务帐户“kubernetes-dashboard”不再能够用于检索资源。 因此，没有身份验证信息的请求会返回 [401 未授权错误](https://github.com/Azure/AKS/issues/1573#issuecomment-703040998)。 从服务帐户检索的持有者令牌仍可通过此 [Kubernetes 仪表板示例](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/#accessing-the-dashboard-ui)中的方式使用，但与早期版本相比，这会影响仪表板加载项的登录流。
 >
 >如果仍运行 1.16 之前的版本，则仍可向“kubernetes-dashboard”服务帐户授予权限，但不建议这样做：
 > ```console
@@ -209,8 +209,8 @@ Kubernetes 仪表板可以提供基本的监视指标和故障排除信息，例
 [aad-cluster]: ./azure-ad-integration-cli.md
 [aks-quickstart]: ./kubernetes-walkthrough.md
 [aks-service-accounts]: ./concepts-identity.md#kubernetes-service-accounts
-[az-account-get-access-token]: /cli/azure/account?view=azure-cli-latest#az-account-get-access-token
+[az-account-get-access-token]: /cli/azure/account#az-account-get-access-token
 [az-aks-browse]: /cli/azure/aks#az-aks-browse
-[az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
+[az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
 [install-azure-cli]: /cli/azure/install-azure-cli
 [kubernetes-portal]: ./kubernetes-portal.md

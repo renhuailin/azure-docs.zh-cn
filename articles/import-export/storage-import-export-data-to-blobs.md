@@ -5,16 +5,16 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: how-to
-ms.date: 02/24/2021
+ms.date: 03/03/2021
 ms.author: alkohli
 ms.subservice: common
-ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 2acc3d104786be330e3e799ad7bd96d703587581
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.custom: devx-track-azurepowershell, devx-track-azurecli, contperf-fy21q3
+ms.openlocfilehash: 77a1c02c1ec59778521104e57f3bf3de8e52fa44
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101738984"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102177353"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>使用 Azure 导入/导出服务将数据导入到 Azure Blob 存储
 
@@ -104,46 +104,57 @@ ms.locfileid: "101738984"
 1. 登录到 https://portal.azure.com/ 。
 2. 搜索 **导入/导出作业**。
 
-    ![搜索导入/导出作业](./media/storage-import-export-data-to-blobs/import-to-blob-1.png)
+   ![搜索导入/导出作业](./media/storage-import-export-data-to-blobs/import-to-blob-1.png)
 
 3. 选择“+ 新建”  。
 
-    ![选择 "新建" 创建新的 ](./media/storage-import-export-data-to-blobs/import-to-blob-2.png)
+   ![选择 "新建" 创建新的 ](./media/storage-import-export-data-to-blobs/import-to-blob-2.png)
 
 4. 在“基本信息”中：
 
-   * 选择“导入到 Azure”。
-   * 输入导入作业的描述性名称。 可使用此名称来跟踪作业进度。
-       * 此名称只能包含小写字母、数字和连字符。
-       * 此名称必须以字母开头，并且不得包含空格。
-   * 选择一个订阅。
-   * 输入或选择一个资源组。
+   1. 选择一个订阅。
+   1. 选择一个资源组，或选择 " **新建** " 并创建一个新的资源组。
+   1. 输入导入作业的描述性名称。 可使用此名称来跟踪作业进度。
+      * 此名称只能包含小写字母、数字和连字符。
+      * 此名称必须以字母开头，并且不得包含空格。
 
-     ![创建导入作业 - 步骤 1](./media/storage-import-export-data-to-blobs/import-to-blob-3.png)
+   1. 选择“导入到 Azure”。
+
+    ![创建导入作业 - 步骤 1](./media/storage-import-export-data-to-blobs/import-to-blob-3.png)
+
+    选择 " **下一步：作业详细信息" >** 继续。
 
 5. 在“作业详细信息”中：
 
-   * 上传你在驱动器准备步骤中获取的驱动器日志文件。 如果使用了 `waimportexport.exe version1`，请为你准备的每个驱动器上传一个文件。 如果日志文件大小超过了 2 MB，则可以使用随日志文件创建的 `<Journal file name>_DriveInfo_<Drive serial ID>.xml`。
-   * 选择将用来存放数据的目标存储帐户。
-   * 放置位置会根据选定存储帐户所属的区域自动进行填充。
+   1. 上传你在前面的[步骤 1：准备驱动器](#step-1-prepare-the-drives)中创建的日志文件。 如果使用了 `waimportexport.exe version1`，请为你准备的每个驱动器上传一个文件。 如果日志文件大小超过了 2 MB，则可以使用随日志文件创建的 `<Journal file name>_DriveInfo_<Drive serial ID>.xml`。
+   1. 选择订单的目标 Azure 区域。
+   1. 选择用于导入的存储帐户。
+      
+      放置位置会根据选定存储帐户所属的区域自动进行填充。
+   1. 如果不想保存详细日志，请 **在 "waimportexport" blob 容器选项中清除 "保存详细日志** "。
 
-   ![创建导入作业 - 步骤 2](./media/storage-import-export-data-to-blobs/import-to-blob-4.png)
+   ![创建导入作业 - 步骤 2](./media/storage-import-export-data-to-blobs/import-to-blob-4.png).
 
-6. 在“回寄信息”中：
+   选择 **下一步：送货 >** 继续。
 
-   * 从下拉列表中选择承运商。 如果要使用 FedEx/DHL 以外的电信公司，请从下拉列表中选择现有的选项。 请与 Azure Data Box 运营团队联系， `adbops@microsoft.com`  并提供有关计划使用的电信公司的信息。
-   * 输入你已在该承运商那里创建的有效承运商帐户编号。 导入作业完成后，Microsoft 使用此帐户寄回驱动器。 如果还没有帐户编号，请创建一个 [FedEx](https://www.fedex.com/us/oadr/) 或 [DHL](https://www.dhl.com/) 承运商帐户。
-   * 提供完整且有效的联系人姓名、电话、电子邮件、街道地址、城市、邮政编码、省/自治区/直辖市和国家/地区。
+6. **装运**：
+
+   1. 从下拉列表中选择承运商。 如果要使用 FedEx/DHL 以外的电信公司，请从下拉列表中选择现有的选项。 请与 Azure Data Box 运营团队联系， `adbops@microsoft.com`  并提供有关计划使用的电信公司的信息。
+   1. 输入你已在该承运商那里创建的有效承运商帐户编号。 导入作业完成后，Microsoft 使用此帐户寄回驱动器。 如果还没有帐户编号，请创建一个 [FedEx](https://www.fedex.com/us/oadr/) 或 [DHL](https://www.dhl.com/) 承运商帐户。
+   1.  提供完整、有效的联系人姓名、电话号码、电子邮件地址、街道地址、城市、邮政编码、省/自治区/直辖市和国家/地区。
 
        > [!TIP]
        > 请提供组电子邮件，而非为单个用户指定电子邮件地址。 这可确保即使管理员离开也会收到通知。
 
-     ![创建导入作业 - 步骤 3](./media/storage-import-export-data-to-blobs/import-to-blob-5.png)
+   ![创建导入作业 - 步骤 3](./media/storage-import-export-data-to-blobs/import-to-blob-5.png)
 
-7. 在“摘要”中：
+   选择“查看 + 创建”以继续。
 
-   * 在摘要中复查提供的作业信息。 记下作业名称和 Azure 数据中心送货地址，以便将将磁盘寄回 Azure。 稍后将在发货标签中使用此信息。
-   * 单击“确定”以创建导入作业。
+7. 在订单摘要中：
+
+   1. 查看 **条款**，然后选择 "我确认提供的所有信息都正确，并同意条款和条件"。 然后，将执行验证。
+   1. 在摘要中复查提供的作业信息。 记下作业名称和 Azure 数据中心送货地址，以便将将磁盘寄回 Azure。 稍后将在发货标签中使用此信息。
+   1. 选择“创建”。
 
      ![创建导入作业 - 步骤 4](./media/storage-import-export-data-to-blobs/import-to-blob-6.png)
 

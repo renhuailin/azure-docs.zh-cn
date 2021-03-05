@@ -1,5 +1,5 @@
 ---
-title: Azure IoT 中心的数据 inline.frm 实时数据可视化– Power BI
+title: Azure IoT 中心数据的实时数据可视化– Power BI
 description: 使用 Power BI 可视化从传感器收集的温度和湿度数据并将其发送到 Azure IoT 中心。
 author: robinsh
 keywords: 实时数据可视化, 即时数据可视化, 传感器数据可视化
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 6/08/2020
 ms.author: robinsh
-ms.openlocfilehash: 6d10d0202e9e4c813cffe6373acfb5200ebb3266
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 82caf13618fe8483ab8d3a622c6c0d51ab05a206
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92146778"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102177328"
 ---
 # <a name="visualize-real-time-sensor-data-from-azure-iot-hub-using-power-bi"></a>使用 Power BI 可视化 Azure IoT 中心的实时传感器数据
 
@@ -34,9 +34,9 @@ ms.locfileid: "92146778"
 
 * 创建并发布实现数据可视化的 Power BI 报表。
 
-## <a name="what-you-need"></a>需要什么
+## <a name="what-you-need"></a>所需条件
 
-* 完成 [Raspberry Pi 联机模拟器](iot-hub-raspberry-pi-web-simulator-get-started.md)教程或其中一个设备教程；例如，[将 Raspberry Pi 与 Node.js 配合使用](iot-hub-raspberry-pi-kit-node-get-started.md)。 这些文章涵盖以下要求：
+* 完成 [Raspberry Pi 联机模拟器](iot-hub-raspberry-pi-web-simulator-get-started.md)教程或其中一个设备教程；例如[将 Raspberry Pi 与 Node.js 配合使用](iot-hub-raspberry-pi-kit-node-get-started.md)。 这些文章涵盖以下要求：
   
   * 一个有效的 Azure 订阅。
   * 已在订阅中创建一个 Azure IoT 中心。
@@ -64,7 +64,7 @@ ms.locfileid: "92146778"
 
    ![在 Azure 中创建流分析作业](./media/iot-hub-live-data-visualization-in-power-bi/create-stream-analytics-job.png)
 
-3. 选择“创建”。
+3. 选择“创建” 。
 
 ### <a name="add-an-input-to-the-stream-analytics-job"></a>将输入添加到流分析作业
 
@@ -134,7 +134,7 @@ ms.locfileid: "92146778"
 
 ### <a name="run-the-stream-analytics-job"></a>运行流分析作业
 
-在流分析作业中，选择 "**概述**"，然后选择 "立即**启动**"  >  **Now**  >  **Start**。 成功启动作业后，作业状态将从“已停止”  更改为“正在运行”  。
+在流分析作业中，选择 "**概述**"，然后选择 "立即 **启动**"  >    >  。 成功启动作业后，作业状态将从“已停止”  更改为“正在运行”  。
 
 ![在 Azure 中运行流分析作业](./media/iot-hub-live-data-visualization-in-power-bi/run-stream-analytics-job.png)
 
@@ -174,7 +174,7 @@ ms.locfileid: "92146778"
 
    ![向 Microsoft Power BI 报表添加湿度折线图](./media/iot-hub-live-data-visualization-in-power-bi/power-bi-add-humidity.png)
 
-8. 选择“保存”以保存报表。****
+8. 选择“保存”以保存报表。
 
 9. 在左侧窗格中选择 " **报表** "，然后选择您刚创建的报表。
 

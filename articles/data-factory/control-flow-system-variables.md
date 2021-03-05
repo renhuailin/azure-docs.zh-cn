@@ -7,12 +7,12 @@ ms.reviewer: maghan
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 06/12/2018
-ms.openlocfilehash: cb19b7e8c5271e1106e69c98d5bd17a1bcb822bf
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 3da450ce1130b693fa346b4a6f4b42f6a0fd60a3
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100385279"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102174200"
 ---
 # <a name="system-variables-supported-by-azure-data-factory"></a>Azure 数据工厂支持的系统变量
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -20,6 +20,7 @@ ms.locfileid: "100385279"
 本文介绍了 Azure 数据工厂支持的系统变量。 定义数据工厂实体时，可以在表达式中使用这些变量。
 
 ## <a name="pipeline-scope"></a>管道范围
+
 可以在管道 JSON 中的任何位置引用这些系统变量。
 
 | 变量名 | 说明 |
@@ -36,6 +37,7 @@ ms.locfileid: "100385279"
 >与触发器相关的日期/时间系统变量（在管道和触发器作用域内）以 ISO 8601 格式返回 UTC 日期，例如 `2017-06-01T22:20:00.4061448Z`。
 
 ## <a name="schedule-trigger-scope"></a>计划触发器作用域
+
 如果触发器的类型为 [ScheduleTrigger](concepts-pipeline-execution-triggers.md#schedule-trigger)，则可以在触发器 JSON 中的任何位置引用这些系统变量。
 
 | 变量名 | 说明 |
@@ -44,6 +46,7 @@ ms.locfileid: "100385279"
 | @trigger().startTime |触发器实际触发以调用管道运行的时间。 这可能与触发器的计划时间略有不同。 |
 
 ## <a name="tumbling-window-trigger-scope"></a>翻转窗口触发器作用域
+
 如果触发器的类型为 [TumblingWindowTrigger](concepts-pipeline-execution-triggers.md#tumbling-window-trigger)，则可以在触发器 JSON 中的任何位置引用这些系统变量。
 
 | 变量名 | 说明 |
@@ -53,7 +56,8 @@ ms.locfileid: "100385279"
 | @trigger().scheduledTime |触发器计划调用管道运行的时间。 |
 | @trigger().startTime |触发器实际触发以调用管道运行的时间。 这可能与触发器的计划时间略有不同。 |
 
-## <a name="event-based-trigger-scope"></a>基于事件的触发器作用域
+## <a name="storage-event-trigger-scope"></a>存储事件触发器范围
+
 如果触发器的类型为 [BlobEventsTrigger](concepts-pipeline-execution-triggers.md#event-based-trigger)，则可以在触发器 JSON 中的任何位置引用这些系统变量。
 
 | 变量名 | 说明 |
@@ -63,4 +67,5 @@ ms.locfileid: "100385279"
 | @trigger().startTime |触发器触发以调用管道运行的时间。 |
 
 ## <a name="next-steps"></a>后续步骤
+
 有关这些变量如何用于表达式的信息，请参阅[表达式语言和函数](control-flow-expression-language-functions.md)。

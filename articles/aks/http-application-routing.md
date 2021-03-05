@@ -6,12 +6,12 @@ author: lachie83
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: laevenso
-ms.openlocfilehash: bbedb20d9e5c75fd49c08950bbf5d459130206ce
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 25fc021a48e8936f242df35f7485fc59a93bba13
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93125863"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102172794"
 ---
 # <a name="http-application-routing"></a>HTTP 应用程序路由
 
@@ -26,8 +26,8 @@ ms.locfileid: "93125863"
 
 外接程序部署两个组件：一个 [Kubernetes 入口控制器][ingress] 和一个 [外部 DNS][external-dns] 控制器。
 
-- **入口控制器** ：入口控制器通过类型为 LoadBalancer 的 Kubernetes 服务公开给 Internet。 入口控制器监视并实现 [Kubernetes 入口资源][ingress-resource]，这些资源创建指向应用程序终结点的路由。
-- **External-DNS 控制器** ：监视 Kubernetes 入口资源并在特定于群集的 DNS 区域中创建 DNS A 记录。
+- **入口控制器**：入口控制器通过类型为 LoadBalancer 的 Kubernetes 服务公开给 Internet。 入口控制器监视并实现 [Kubernetes 入口资源][ingress-resource]，这些资源创建指向应用程序终结点的路由。
+- **External-DNS 控制器**：监视 Kubernetes 入口资源并在特定于群集的 DNS 区域中创建 DNS A 记录。
 
 ## <a name="deploy-http-routing-cli"></a>部署 HTTP 路由：CLI
 
@@ -40,7 +40,7 @@ az aks create --resource-group myResourceGroup --name myAKSCluster --enable-addo
 > [!TIP]
 > 如果要启用多个加载项，请以逗号分隔列表的形式提供。 例如，要启用 HTTP 应用程序路由和监视，请使用格式 `--enable-addons http_application_routing,monitoring`。
 
-还可以使用 [az aks enable-addons][az-aks-enable-addons] 命令在现有 AKS 群集上启用 HTTP 路由。 若要在现有群集上启用 HTTP 路由，请添加 `--addons` 参数并指定 *http_application_routing* ，如以下示例所示：
+还可以使用 [az aks enable-addons][az-aks-enable-addons] 命令在现有 AKS 群集上启用 HTTP 路由。 若要在现有群集上启用 HTTP 路由，请添加 `--addons` 参数并指定 *http_application_routing*，如以下示例所示：
 
 ```azurecli
 az aks enable-addons --resource-group myResourceGroup --name myAKSCluster --addons http_application_routing
@@ -163,7 +163,7 @@ service/aks-helloworld created
 ingress.networking.k8s.io/aks-helloworld created
 ```
 
-打开 web 浏览器以 *aks-helloworld \<CLUSTER_SPECIFIC_DNS_ZONE\>* ，例如 *aks-helloworld.9f9c1fe7-21a1-416d-99cd-3543bb92e4c3.eastus.aksapp.io* 并验证你是否看到了演示应用程序。 应用程序可能需要几分钟时间才能显示。
+打开 web 浏览器以 *aks-helloworld \<CLUSTER_SPECIFIC_DNS_ZONE\>*，例如 *aks-helloworld.9f9c1fe7-21a1-416d-99cd-3543bb92e4c3.eastus.aksapp.io* 并验证你是否看到了演示应用程序。 应用程序可能需要几分钟时间才能显示。
 
 ## <a name="remove-http-routing"></a>删除 HTTP 路由
 
@@ -173,7 +173,7 @@ ingress.networking.k8s.io/aks-helloworld created
 az aks disable-addons --addons http_application_routing --name myAKSCluster --resource-group myResourceGroup --no-wait
 ```
 
-当禁用了 HTTP 应用程序路由加载项时，某些 Kubernetes 资源可能会保留在群集中。 这些资源包括 *configMap* 和 *secret* ，并且是在 *kube-system* 命名空间中创建的。 为了维护一个干净的群集，你可能想要删除这些资源。
+当禁用了 HTTP 应用程序路由加载项时，某些 Kubernetes 资源可能会保留在群集中。 这些资源包括 *configMap* 和 *secret*，并且是在 *kube-system* 命名空间中创建的。 为了维护一个干净的群集，你可能想要删除这些资源。
 
 使用以下 [kubectl get][kubectl-get] 命令查找 *addon-http-application-routing* 资源：
 
@@ -257,7 +257,7 @@ I0426 21:51:58.042932       9 controller.go:179] ingress backend successfully re
 167.220.24.46 - [167.220.24.46] - - [26/Apr/2018:21:53:20 +0000] "GET / HTTP/1.1" 200 234 "" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0)" 197 0.001 [default-aks-helloworld-80] 10.244.0.13:8080 234 0.004 200
 ```
 
-## <a name="clean-up"></a>清理
+## <a name="clean-up"></a>清除
 
 使用删除在本文中创建的关联的 Kubernetes 对象 `kubectl delete` 。
 
@@ -280,8 +280,8 @@ ingress "aks-helloworld" deleted
 有关如何在 AKS 中安装受 HTTPS 保护的入口控制器的信息，请参阅 [Azure Kubernetes 服务 (AKS) 中的 HTTPS 入口][ingress-https]。
 
 <!-- LINKS - internal -->
-[az-aks-create]: /cli/azure/aks?view=azure-cli-latest#az-aks-create
-[az-aks-show]: /cli/azure/aks?view=azure-cli-latest#az-aks-show
+[az-aks-create]: /cli/azure/aks#az-aks-create
+[az-aks-show]: /cli/azure/aks#az-aks-show
 [ingress-https]: ./ingress-tls.md
 [az-aks-enable-addons]: /cli/azure/aks#az-aks-enable-addons
 [az aks install-cli]: /cli/azure/aks#az-aks-install-cli

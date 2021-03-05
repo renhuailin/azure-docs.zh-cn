@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: yolasors
-ms.openlocfilehash: 78d2f3b399e26ca0c6036fd74fa1fba49d1f21f4
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 1cb5f2f9ac941001efb18301f4a54bd0092920ba
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102042770"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102172734"
 ---
 # <a name="review-pull-requests-in-pre-production-environments-in-azure-static-web-apps-preview"></a>在 Azure 静态 Web 应用预览中查看预生产环境中的拉取请求
 
@@ -109,7 +109,7 @@ Azure 静态 Web 应用会在存储库中生成 GitHub 操作工作流。 针对
 > [!WARNING]
 > 将敏感内容发布到暂存版本时要小心，因为不会限制对预生产环境的访问。
 
-适用于使用静态 Web 应用部署的每个应用的预生产环境数取决于所使用的 SKU 层。 例如，使用免费层时，除了生产环境之外，还可以有 1 个预生产环境。
+适用于使用静态 Web 应用部署的每个应用的预生产环境数取决于所使用的 SKU 层。 例如，使用免费层时，除了生产环境外，还可以有3种预生产环境。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -6,12 +6,12 @@ ms.author: v-elqu
 ms.service: azure-percept
 ms.topic: reference
 ms.date: 02/16/2021
-ms.openlocfilehash: 54dae3341910bf863de7e2a2cef832ae670ca09a
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 7bbb3a88bbc3011ec5dd917cdb0c1e49f7556aab
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102097561"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102177158"
 ---
 # <a name="azure-percept-vision-datasheet"></a>Azure Percept Vision 数据表
 
@@ -26,7 +26,7 @@ ms.locfileid: "102097561"
 |支持的软件和服务 |[Azure IoT 中心](https://azure.microsoft.com/services/iot-hub/) <br> [Azure IoT Edge](https://azure.microsoft.com/services/iot-edge/) <br> [Azure 机器学习](https://azure.microsoft.com/services/machine-learning/) <br> [ONNX 运行时](https://www.onnxruntime.ai/) <br> [OpenVINO](https://docs.openvinotoolkit.org/latest/index.html) <br> Azure 设备更新 |
 |AI 加速                 |Intel Movidius 无数 X (MA2085) 视觉处理单元 (VPU) 与 Intel 相机 ISP 集成，0.7 顶部 |
 |传感器和视觉指示器   |索尼 IMX219 相机传感器与周一至镜头<br>解决方法：在30FPS 上的8MP，距离： 50cm-无限大<br>FoV：120度对角线，颜色：宽动态范围，固定焦点滚动百叶窗|
-|照相机支持                  |RGB (当前在将来) 和 IR ()  <br> 2个照相机可以同时运行 |
+|照相机支持                  |RGB <br> 2个照相机可以同时运行 |
 |安全 Crypto-Controller      |ST-Micro STM32L462CE      |
 |版本控制/ID 组件       |64kb EEPROM |
 |内存                          |LPDDR4 2GB     |

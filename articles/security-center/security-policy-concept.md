@@ -6,13 +6,13 @@ ms.author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: conceptual
-ms.date: 02/28/2021
-ms.openlocfilehash: a5aae4013067ba37334e3e85a9e7ef882efd1dd2
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.date: 03/04/2021
+ms.openlocfilehash: 4dc29c8b52a3d0953445666672a716af013ee408
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102107361"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102176427"
 ---
 # <a name="what-are-security-policies-initiatives-and-recommendations"></a>什么是安全策略、计划和建议？
 
@@ -25,6 +25,7 @@ Azure 策略定义是在 Azure 策略中创建的，它是有关要控制的特�
 
 若要实现这些策略定义 (内置或自定义) ，需要对其进行分配。 可通过 Azure 门户、PowerShell 或 Azure CLI 来分配上述任意策略。
 
+Azure 策略中有不同类型的策略。 安全中心主要使用 "审核" 策略来检查特定条件和配置，然后报告符合性。 还可以使用 "强制" 策略来应用安全设置。
 
 ## <a name="what-is-a-security-initiative"></a>什么是安全计划？
 
@@ -38,7 +39,7 @@ Azure 计划是一组按特定目标或用途分组的 Azure 策略定义或规�
 
 安全中心提供以下用于处理安全方案和策略的选项：
 
-- **查看和编辑内置默认计划** -启用安全中心时，名为 "Azure 安全基准测试" 的计划会自动分配到所有安全中心注册的订阅。 若要自定义此计划，可在其中启用或禁用单个策略。 要了解现成可用的选项，请参阅[内置安全策略](./policy-reference.md)列表。
+- **查看和编辑内置默认计划** -启用安全中心时，名为 "Azure 安全基准测试" 的计划会自动分配到所有安全中心注册的订阅。 若要自定义此计划，可以通过编辑策略的参数在其中启用或禁用单个策略。 要了解现成可用的选项，请参阅[内置安全策略](./policy-reference.md)列表。
 
 - **添加你自己的自定义计划** -如果要自定义适用于你的订阅的安全计划，可以在安全中心执行此操作。 如果计算机不遵循创建的策略，则你会收到建议。 有关生成和分配自定义策略的说明，请参阅 [使用自定义安全计划和策略](custom-security-policies.md)。
 
@@ -46,9 +47,9 @@ Azure 计划是一组按特定目标或用途分组的 Azure 策略定义或规�
 
 ## <a name="what-is-a-security-recommendation"></a>什么是安全建议？
 
-Azure 安全中心会定期分析 Azure 资源的安全状态，以识别潜在的安全漏洞。 然后会提供有关如何消除这些安全漏洞的建议。 建议针对相关策略评估资源，并确定不满足定义的要求的资源。
+使用策略，安全中心会定期分析资源的符合性状态，以确定潜在的安全错误配置和弱点。 然后，提供有关如何修正这些问题的建议。 建议是根据相关策略评估资源，并确定不满足定义的要求的资源。
 
-Azure 安全中心根据所选的计划做出安全建议。 
+安全中心根据所选的计划做出安全建议。 当你的计划中的策略与你的资源进行比较并找到一个或多个不符合的策略时，它将在安全中心显示为建议。
 
 建议是用于保护和强化资源的操作。 每项建议都提供以下信息：
 

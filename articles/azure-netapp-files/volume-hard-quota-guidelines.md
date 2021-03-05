@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/05/2021
 ms.author: b-juche
-ms.openlocfilehash: b25d312e6710a07f523c4acdb0fd4b970ce4a2d7
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 12807e83f7841bc67999ce385d0cb82bf15f4c71
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101740080"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175985"
 ---
 # <a name="what-changing-to-volume-hard-quota-means-for-your-azure-netapp-files-service"></a>对于 Azure NetApp 文件服务，对批量硬配额的更改
 
@@ -185,8 +185,8 @@ ANFCapacityManager 是一个 Azure 逻辑应用，用于管理基于容量的警
 
 可以使用 [Azure NetApp 文件 CLI 工具](azure-netapp-files-sdk-cli.md#cli-tools)（包括 Azure CLI 和 Azure PowerShell）手动更改卷或容量池大小。  以下两个命令可用于管理 Azure NetApp 文件卷和池资源：  
 
-* [`az netappfiles pool`](/cli/azure/netappfiles/pool?preserve-view=true&view=azure-cli-latest)
-* [`az netappfiles volume`](/cli/azure/netappfiles/volume?preserve-view=true&view=azure-cli-latest)
+* [`az netappfiles pool`](/cli/azure/netappfiles/pool)
+* [`az netappfiles volume`](/cli/azure/netappfiles/volume)
 
 若要使用 Azure CLI 管理 Azure NetApp 文件资源，可以打开 Azure 门户并在菜单栏顶部选择 "Azure **Cloud Shell** " 链接： 
 
@@ -196,13 +196,13 @@ ANFCapacityManager 是一个 Azure 逻辑应用，用于管理基于容量的警
 
 [![显示 Cloud Shell 窗口的屏幕截图。 ](../media/azure-netapp-files/hard-quota-update-cloud-shell-window.png)](../media/azure-netapp-files/hard-quota-update-cloud-shell-window.png#lightbox)
 
-以下示例使用命令 [显示](/cli/azure/netappfiles/volume?preserve-view=true&view=azure-cli-latest#az-netappfiles-volume-show) 和 [更新](/cli/azure/netappfiles/volume?preserve-view=true&view=azure-cli-latest#az-netappfiles-volume-update) 卷的大小：
+以下示例使用命令 [显示](/cli/azure/netappfiles/volume#az-netappfiles-volume-show) 和 [更新](/cli/azure/netappfiles/volume#az-netappfiles-volume-update) 卷的大小：
  
 [![显示使用 PowerShell 显示卷大小的屏幕截图。 ](../media/azure-netapp-files/hard-quota-update-powershell-volume-show.png)](../media/azure-netapp-files/hard-quota-update-powershell-volume-show.png#lightbox)
 
 [![显示使用 PowerShell 更新卷大小的屏幕截图。 ](../media/azure-netapp-files/hard-quota-update-powershell-volume-update.png)](../media/azure-netapp-files/hard-quota-update-powershell-volume-update.png#lightbox)
 
-以下示例使用命令 [显示](/cli/azure/netappfiles/pool?preserve-view=true&view=azure-cli-latest#az-netappfiles-pool-show) 和 [更新](/cli/azure/netappfiles/pool?preserve-view=true&view=azure-cli-latest#az-netappfiles-pool-update) 容量池的大小：
+以下示例使用命令 [显示](/cli/azure/netappfiles/pool#az-netappfiles-pool-show) 和 [更新](/cli/azure/netappfiles/pool#az-netappfiles-pool-update) 容量池的大小：
 
 [![显示使用 PowerShell 显示容量池大小的屏幕截图。 ](../media/azure-netapp-files/hard-quota-update-powershell-pool-show.png)](../media/azure-netapp-files/hard-quota-update-powershell-pool-show.png#lightbox) 
 

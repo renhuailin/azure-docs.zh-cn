@@ -5,25 +5,36 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/14/2021
+ms.date: 03/04/2021
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 8333745b802f41b5a1b3dc07663870299800e3f6
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.custom: contperf-fy21q3
+ms.openlocfilehash: 8ef18ea663f3a77589d61ed89c50df38f5cf0d0e
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98706231"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102176125"
 ---
 # <a name="view-the-status-of-azure-importexport-jobs"></a>查看 Azure 导入/导出作业的状态
 
 本文提供有关如何查看 Azure 导入/导出作业的驱动器和作业状态的信息。 Azure 导入/导出服务用于将大量数据安全地传输到 Azure Blob 和 Azure文件。 该服务还用于从 Azure Blob 存储导出数据。  
 
 ## <a name="view-job-and-drive-status"></a>查看作业和驱动器状态
-可以从 Azure 门户通过选择“导入/导出”选项卡来跟踪导入或导出作业的状态。随即页面上显示作业列表。
+你可以在 Azure 门户的 " **导入/导出** " 选项卡上跟踪导入或导出作业的状态。
+1. 登录到 https://portal.azure.com/ 。
+2. 搜索 **导入/导出作业**。
 
-![查看作业状态](./media/storage-import-export-service/jobstate.png)
+    ![搜索导入/导出作业](./media/storage-import-export-view-drive-status/open-import-export-tab.png)
 
+ 3. 导入/导出作业的列表将出现在该页上。
+
+    ![查看作业状态](./media/storage-import-export-view-drive-status/job-state.png)
+
+4. 选择并单击一个作业以查看作业详细信息。
+
+   ![查看详细作业状态](./media/storage-import-export-view-drive-status/job-detail.png)
+  
 ## <a name="view-job-status"></a>查看作业状态
 
 会看到以下作业状态之一，具体取决于驱动器处于哪个处理阶段。
@@ -56,13 +67,13 @@ ms.locfileid: "98706231"
 
 Azure 门户中的此映像会显示示例作业的驱动器状态：
 
-![查看驱动器状态](./media/storage-import-export-service/drivestate.png)
+![查看驱动器状态](./media/storage-import-export-view-drive-status/drive-state.png)
 
 下表描述了驱动器故障状态以及针对每种状态采取的措施。
 
 | 驱动器状态 | 事件 | 解决方法/后续步骤 |
 |:--- |:--- |:--- |
-| NeverReceived | 标记为“NeverReceived”的驱动器（因为在作业寄送过程中未收到）通过另一次寄送送达。 | 运营团队将驱动器转换为“Received”状态  。 |
+| 从未收到 | 标记为“NeverReceived”的驱动器（因为在作业寄送过程中未收到）通过另一次寄送送达。 | 运营团队将驱动器转换为“Received”状态  。 |
 | 不适用 | 不属于任何作业的驱动器将作为其他作业的一部分送至数据中心。 | 完成与原始包裹关联的作业后， 驱动器将标记为额外驱动器寄回给你。 |
 
 ## <a name="time-to-process-job"></a>处理作业的时间

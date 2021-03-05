@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 891991fa938ad3dcfacae6d02e40efd6d6e9689e
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.openlocfilehash: eb6d82019cccd1da327461cb0a0635aea4f3647f
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97386844"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102174965"
 ---
 # <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义 RESTful 技术配置文件
 
@@ -112,10 +112,10 @@ Azure Active Directory B2C (Azure AD B2C) 为集成你自己的 RESTful 服务�
 
 ## <a name="metadata"></a>Metadata
 
-| 属性 | 必须 | 说明 |
+| Attribute | 必须 | 说明 |
 | --------- | -------- | ----------- |
 | ServiceUrl | 是 | REST API 终结点的 URL。 |
-| AuthenticationType | 是 | RESTful 声明提供程序所执行的身份验证类型。 可能的值： `None` 、 `Basic` 、 `Bearer` 、  `ClientCertificate` 或 `ApiKeyHeader` 。 <br /><ul><li>`None`值指示 REST API 是匿名的。 </li><li>`Basic` 值表示使用 HTTP 基本身份验证保护 REST API。 只有经验证的用户（包括 Azure AD B2C）可以访问你的 API。 </li><li>`ClientCertificate`（建议）值表示 REST API 使用客户端证书身份验证来限制访问。 只有包含相应证书的服务（例如 Azure AD B2C）才能访问你的 API。 </li><li>`Bearer` 值表示 REST API 使用客户端 OAuth2 持有者令牌来限制访问。 </li><li>`ApiKeyHeader`值指示 REST API 受 API 密钥 HTTP 标头（例如 *x 函数-key*）的保护。 </li></ul> |
+| AuthenticationType | 是 | RESTful 声明提供程序所执行的身份验证类型。 可能的值： `None` 、 `Basic` 、 `Bearer` 、  `ClientCertificate` 或 `ApiKeyHeader` 。 <br /><ul><li>`None` 值指示 REST API 是匿名的。 </li><li>`Basic` 值表示使用 HTTP 基本身份验证保护 REST API。 只有经验证的用户（包括 Azure AD B2C）可以访问你的 API。 </li><li>`ClientCertificate`（建议）值表示 REST API 使用客户端证书身份验证来限制访问。 只有包含相应证书的服务（例如 Azure AD B2C）才能访问你的 API。 </li><li>`Bearer` 值表示 REST API 使用客户端 OAuth2 持有者令牌来限制访问。 </li><li>`ApiKeyHeader` 值指示 REST API 已通过 API 密钥 HTTP 标头（例如 x-functions-key）进行保护。 </li></ul> |
 | AllowInsecureAuthInProduction| 否| 指示是否可以在生产环境中将 `AuthenticationType` 设置为 `none`（将 [TrustFrameworkPolicy](trustframeworkpolicy.md) 的 `DeploymentMode` 设为 `Production` 或未指定）。 可能的值：true 或 false（默认值）。 |
 | SendClaimsIn | 否 | 指定如何将输入声明发送到 RESTful 声明提供程序。 可能的值：`Body`（默认值）、`Form`、`Header`、`Url` 或 `QueryString`。 `Body` 值是在请求正文中以 JSON 格式发送的输入声明。 `Form` 值是在请求正文中以“&”分隔键值格式发送的输入声明。 `Header` 值是在请求标头中发送的输入声明。 `Url` 值是在 URL 中发送的输入声明，例如 https://{claim1}.example.com/{claim2}/{claim3}?{claim4}={claim5}。 `QueryString` 值是在请求查询字符串中发送的输入声明。 每个输入声明调用的 HTTP 谓词如下所示：<br /><ul><li>`Body`：POST</li><li>`Form`：POST</li><li>`Header`：GET</li><li>`Url`：GET</li><li>`QueryString`：GET</li></ul> |
 | ClaimsFormat | 否 | 当前未使用，可以忽略。 |
@@ -223,7 +223,10 @@ Azure Active Directory B2C (Azure AD B2C) 为集成你自己的 RESTful 服务�
 
 | 属性 | 必须 | 说明 |
 | --------- | -------- | ----------- |
-| HTTP 标头的名称，如 `x-functions-key` 或 `x-api-key` 。 | 是 | 用于进行身份验证的密钥。 |
+| HTTP 标头的名称，如 `x-functions-key` 或 `x-api-key`。 | 是 | 用于身份验证的密钥。 |
+
+> [!NOTE]
+> 目前，Azure AD B2C 仅支持一个用于身份验证的 HTTP 标头。 如果 RESTful 调用需要多个标头（例如客户端 ID 和客户端密码），则需要以某种方式对请求进行代理。
 
 ```xml
 <TechnicalProfile Id="REST-API-SignUp">
@@ -290,4 +293,3 @@ public class ResponseContent
 - [演练：在 Azure AD B2C 用户旅程中以用户输入验证的形式集成 REST API 声明交换](custom-policy-rest-api-claims-validation.md)
 - [演练：在 Azure Active Directory B2C 中将 REST API 声明交换添加到自定义策略](custom-policy-rest-api-claims-validation.md)
 - [保护 REST API 服务](secure-rest-api.md)
-

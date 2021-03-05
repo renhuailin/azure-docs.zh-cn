@@ -3,12 +3,12 @@ title: 从 Durable Functions 发布到 Azure 事件网格（预览）
 description: 了解如何配置 Durable Functions 的自动 Azure 事件网格发布。
 ms.topic: conceptual
 ms.date: 04/25/2020
-ms.openlocfilehash: e4651dd7548ba76380bfc2d1b314e67d7abe63d9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 44df100a5c794abf918a09dea0f94d30ddf916d3
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87081740"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175951"
 ---
 # <a name="durable-functions-publishing-to-azure-event-grid-preview"></a>从 Durable Functions 发布到 Azure 事件网格（预览）
 
@@ -16,7 +16,7 @@ ms.locfileid: "87081740"
 
 此功能在以下场景中非常有用：
 
-* **蓝/绿部署等 DevOps 场景**：在实施[并列部署策略](durable-functions-versioning.md#side-by-side-deployments)之前，你可能想要了解是否有任何任务正在运行。
+* **蓝/绿部署等 DevOps 场景**：在实施 [并列部署策略](durable-functions-versioning.md#side-by-side-deployments)之前，你可能想要了解是否有任何任务正在运行。
 
 * **高级监视和诊断支持**：可以在已针对查询优化的外部存储（例如 Azure SQL 数据库或 Azure Cosmos DB）中跟踪业务流程状态信息。
 
@@ -26,7 +26,7 @@ ms.locfileid: "87081740"
 
 * 在 Durable Functions 项目中安装 [Microsoft.Azure.WebJobs.Extensions.DurableTask](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask)。
 * 安装 [Azure 存储模拟器](../../storage/common/storage-use-emulator.md)（仅限 Windows）或使用现有的 Azure 存储帐户。
-* 安装 [Azure CLI ](/cli/azure/?view=azure-cli-latest) 或使用 [Azure Cloud Shell](../../cloud-shell/overview.md)
+* 安装 [Azure CLI ](/cli/azure/) 或使用 [Azure Cloud Shell](../../cloud-shell/overview.md)
 
 ## <a name="create-a-custom-event-grid-topic"></a>创建自定义事件网格主题
 
@@ -126,17 +126,17 @@ az eventgrid topic key list --name <topic_name> -g eventResourceGroup --query "k
 
 ### <a name="create-an-event-grid-trigger-function"></a>创建事件网格触发器函数
 
-1. 在函数应用中，选择“函数”****，然后选择“+ 添加”**** 
+1. 在函数应用中，选择“函数”，然后选择“+ 添加” 
 
    :::image type="content" source="./media/durable-functions-event-publishing/function-add-function.png" alt-text="在 Azure 门户中添加函数。" border="true":::
 
-1. 搜索“事件网格”****，然后选择“Azure 事件网格触发器”**** 模板。 
+1. 搜索“事件网格”，然后选择“Azure 事件网格触发器”模板。 
 
-    :::image type="content" source="./media/durable-functions-event-publishing/function-select-event-grid-trigger.png" alt-text="在 Azure 门户中添加函数。" border="true":::
+    :::image type="content" source="./media/durable-functions-event-publishing/function-select-event-grid-trigger.png" alt-text="在 Azure 门户中选择事件网格触发器模板。" border="true":::
 
-1. 为新触发器命名，然后选择“创建函数”****。
+1. 为新触发器命名，然后选择“创建函数”。
 
-    :::image type="content" source="./media/durable-functions-event-publishing/function-name-event-grid-trigger.png" alt-text="在 Azure 门户中添加函数。" border="true":::
+    :::image type="content" source="./media/durable-functions-event-publishing/function-name-event-grid-trigger.png" alt-text="在 Azure 门户中为事件网格触发器命名。" border="true":::
 
 
     创建包含以下代码的函数：
@@ -170,21 +170,21 @@ az eventgrid topic key list --name <topic_name> -g eventResourceGroup --query "k
 
 现在可以为创建的事件网格主题添加事件网格订阅。 有关详细信息，请参阅 [Azure 事件网格中的概念](../../event-grid/concepts.md)。
 
-1. 在新函数中，选择“集成”****，然后选择“事件网格触发器(eventGridEvent)”****。 
+1. 在新函数中，选择“集成”，然后选择“事件网格触发器(eventGridEvent)”。 
 
-    :::image type="content" source="./media/durable-functions-event-publishing/eventgrid-trigger-link.png" alt-text="在 Azure 门户中添加函数。" border="true":::
+    :::image type="content" source="./media/durable-functions-event-publishing/eventgrid-trigger-link.png" alt-text="选择“事件网格触发器”链接。" border="true":::
 
-1. 选择“创建事件网格描述”****。
+1. 选择“创建事件网格描述”。
 
-    :::image type="content" source="./media/durable-functions-event-publishing/create-event-grid-subscription.png" alt-text="在 Azure 门户中添加函数。" border="true":::
+    :::image type="content" source="./media/durable-functions-event-publishing/create-event-grid-subscription.png" alt-text="创建事件网格订阅。" border="true":::
 
-1. 为事件订阅命名，并选择“事件网格主题”**** 主题类型。 
+1. 为事件订阅命名，并选择“事件网格主题”主题类型。 
 
 1. 选择订阅。 然后，选择为事件网格主题创建的资源组和资源。 
 
-1. 选择“创建” ****。
+1. 选择“创建” 。
 
-    :::image type="content" source="./media/durable-functions-event-publishing/event-grid-subscription-details.png" alt-text="在 Azure 门户中添加函数。" border="true":::
+    :::image type="content" source="./media/durable-functions-event-publishing/event-grid-subscription-details.png" alt-text="创建事件网格订阅。" border="true":::
 
 现已准备好接收生命周期事件。
 
@@ -237,7 +237,7 @@ az eventgrid topic key list --name <topic_name> -g eventResourceGroup --query "k
 以下列表解释了生命周期事件架构：
 
 * **`id`** ：事件网格事件的唯一标识符。
-* **`subject`** ：事件主题的路径。 `durable/orchestrator/{orchestrationRuntimeStatus}`。 `{orchestrationRuntimeStatus}` 为 `Running`、`Completed`、`Failed` 和 `Terminated`。  
+* **`subject`** ：事件主题的路径。 `durable/orchestrator/{orchestrationRuntimeStatus}`. `{orchestrationRuntimeStatus}` 为 `Running`、`Completed`、`Failed` 和 `Terminated`。  
 * **`data`** ：Durable Functions 特定的参数。
   * **`hubName`** ：[任务中心](durable-functions-task-hubs.md)名称。
   * **`functionName`** ：业务流程协调程序函数名称。

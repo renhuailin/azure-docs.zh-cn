@@ -9,12 +9,12 @@ ms.date: 03/01/2020
 ms.author: midesa
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: 38826451bbb8ec9303f61db53544cfe8ca2fcd41
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: c6d720c3feec29eb32b1cfa9c31ea45839c98ec7
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102123082"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102176410"
 ---
 # <a name="manage-libraries-for-apache-spark-in-azure-synapse-analytics"></a>在 Azure Synapse 分析中管理 Apache Spark 的库
 库提供你可能想要包括在程序或项目中的可重用代码。 
@@ -61,10 +61,14 @@ Azure Synapse Analytics 中的 Apache Spark 具有完整的 Anacondas 安装和�
 
 会话范围内的包允许用户在其会话开始时定义包依赖关系。 安装会话范围的包时，只有当前会话可以访问指定的包。 因此，这些会话范围的包将不会影响使用同一个 Apache Spark 池的其他会话或作业。 此外，这些库安装在基本运行时和池级别包之上。 
 
+这些包会自动添加到 Python 环境中。 *requirements.txt* 文件中不得提及包。
+
+请注意，此方法当前仅支持 `*.whl` 文件。 不要将任何 `*.tar.gz` 文件添加到容器中。
+
 若要了解有关如何管理会话范围的包的详细信息，请访问以下操作方法指南：
 
 - [ (预览版的 Python 会话包) ：](./apache-spark-manage-python-packages.md) 在会话开始时，提供一个 Conda *docker-compose.override.yml* ，以从常用存储库安装其他 Python 包。 
-- [Scala/Java 会话包： ](./apache-spark-manage-scala-packages.md) 在会话开始时，提供要使用安装的 jar 文件的列表 ```%%configure``` 。
+- [Scala/Java 会话包： ](./apache-spark-manage-scala-packages.md) 在会话开始时，提供要使用安装的 jar 文件的列表 `%%configure` 。
 
 ## <a name="next-steps"></a>后续步骤
 - 查看默认库： [Apache Spark 版本支持](apache-spark-version-support.md)

@@ -11,12 +11,12 @@ author: peterclu
 ms.date: 03/02/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, references_regions, contperf-fy21q1
-ms.openlocfilehash: e3705be10cb540538464e6b1299d848bc9057c7c
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 1309ad1b3e3f6bd6f9b543959220bf71c569f083
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102039914"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102174999"
 ---
 # <a name="virtual-network-isolation-and-privacy-overview"></a>虚拟网络隔离和隐私概述
 
@@ -34,7 +34,7 @@ ms.locfileid: "102039914"
 + [Azure 虚拟网络](../virtual-network/virtual-networks-overview.md)
 + [IP 网络](../virtual-network/public-ip-addresses.md)
 + [Azure 专用链接](how-to-configure-private-link.md)
-+ [网络安全组 (NSG)](../virtual-network/network-security-groups-overview.md)
++ [ (NSG 的网络安全组) ](../virtual-network/network-security-groups-overview.md)
 + [网络防火墙](../firewall/overview.md)
 
 ## <a name="example-scenario"></a>示例方案
@@ -175,9 +175,9 @@ ms.locfileid: "102039914"
 
 ## <a name="next-steps"></a>后续步骤
 
-本文是由四部分构成的虚拟网络系列中的第一部分。 若要了解如何保护虚拟网络，请参阅其余文章：
+本文是由五部分组成的虚拟网络系列中的第一部分。 若要了解如何保护虚拟网络，请参阅其余文章：
 
 * [第2部分：虚拟网络概述](how-to-secure-workspace-vnet.md)
 * [第 3 部分：保护训练环境](how-to-secure-training-vnet.md)
 * [第 4 部分：保护推理环境](how-to-secure-inferencing-vnet.md)
-* [第 5 部分：启用工作室功能](how-to-enable-studio-virtual-network.md)
+* [第5部分：启用 studio 功能](how-to-enable-studio-virtual-network.md)

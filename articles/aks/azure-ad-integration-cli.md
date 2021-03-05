@@ -6,27 +6,27 @@ author: TomGeske
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: thomasge
-ms.openlocfilehash: 4aa63493bb14db69821ac04db1d2c5a846de7dbe
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 055afe24cb72b331e64e1a2b3d786503ef31a105
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94682462"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102176393"
 ---
-# <a name="integrate-azure-active-directory-with-azure-kubernetes-service-using-the-azure-cli-legacy"></a>使用 Azure CLI (旧) 将 Azure Active Directory 与 Azure Kubernetes 服务集成
+# <a name="integrate-azure-active-directory-with-azure-kubernetes-service-using-the-azure-cli-legacy"></a>使用 Azure CLI 将 Azure Active Directory 与 Azure Kubernetes 服务集成（旧版）
 
-可将 Azure Kubernetes Service (AKS) 配置为使用 Azure Active Directory (AD) 进行用户身份验证。 在此配置中，可以使用 Azure AD 身份验证令牌登录到 AKS 群集。 群集操作员还可以根据用户的标识或目录组成员身份，配置 Kubernetes 基于角色的访问控制 (Kubernetes RBAC) 。
+可将 Azure Kubernetes Service (AKS) 配置为使用 Azure Active Directory (AD) 进行用户身份验证。 在此配置中，可以使用 Azure AD 身份验证令牌登录到 AKS 群集。 群集操作员还可以根据用户标识或目录组成员身份来配置 Kubernetes 基于角色的访问控制 (Kubernetes RBAC)。
 
-本文介绍了如何创建所需的 Azure AD 组件，然后部署已启用 Azure AD 的群集并在 AKS 群集中创建基本 Kubernetes 角色。
+本文介绍如何创建所需的 Azure AD 组件，然后部署支持 Azure AD 的群集，并在 AKS 群集中创建一个基本的 Kubernetes 角色。
 
 有关本文中使用的完整示例脚本，请参阅 [Azure CLI 示例 - AKS 与 Azure AD 集成][complete-script]。
 
 > [!Important]
-> AKS 提供了一个经过改进的新 [AKS Azure AD][managed-aad] 体验，无需管理服务器或客户端应用程序。 如果要迁移，请按照 [此处][managed-aad-migrate]的说明进行操作。
+> AKS 提供全新的改进 [AKS 管理 Azure AD][managed-aad] 体验，让你无需管理服务器或客户端应用程序。 请遵照[此处][managed-aad-migrate]的说明进行迁移。
 
 ## <a name="the-following-limitations-apply"></a>以下限制适用：
 
-- 只能在启用 RBAC 的 Kubernetes 群集上启用 Azure AD。
+- Azure AD 只能在支持 Kubernetes RBAC 的群集上启用。
 - Azure AD 传统集成只能在创建群集期间启用。
 
 ## <a name="before-you-begin"></a>准备阶段
@@ -166,7 +166,7 @@ az aks get-credentials --resource-group myResourceGroup --name $aksname --admin
 
 ## <a name="create-kubernetes-rbac-binding"></a>创建 Kubernetes RBAC 绑定
 
-在对 AKS 群集使用 Azure Active Directory 帐户之前，需要创建角色绑定或群集角色绑定。 “角色”定义要授予的权限，“绑定”将这些权限应用于目标用户 。 这些分配可应用于特定命名空间或整个群集。 有关详细信息，请参阅 [Using KUBERNETES RBAC authorization][rbac-authorization]。
+在对 AKS 群集使用 Azure Active Directory 帐户之前，需要创建角色绑定或群集角色绑定。 “角色”定义要授予的权限，“绑定”将这些权限应用于目标用户 。 这些分配可应用于特定命名空间或整个群集。 请参阅[使用 Kubernetes RBAC 授权][rbac-authorization]了解详细信息。
 
 使用 [az ad signed-in-user show][az-ad-signed-in-user-show] 命令获取用户当前登录用户的用户主体名称 (UPN)。 在下一步骤中，将为 Azure AD 集成启用此用户帐户。
 
@@ -175,7 +175,7 @@ az ad signed-in-user show --query userPrincipalName -o tsv
 ```
 
 > [!IMPORTANT]
-> 如果为其授予 Kubernetes RBAC 绑定的用户在同一 Azure AD 租户中，请根据 *userPrincipalName* 分配权限。 如果该用户位于不同的 Azure AD 租户中，请查询并改用 *objectId* 属性。
+> 如果你为其授予 Kubernetes RBAC 绑定的用户在同一个 Azure AD 租户中，请根据 userPrincipalName 分配权限。 如果该用户位于不同的 Azure AD 租户中，请查询并改用 *objectId* 属性。
 
 创建名为 `basic-azure-ad-binding.yaml` 的 YAML 清单并粘贴以下内容。 在最后一行中，将 *userPrincipalName_or_objectId*  替换为前一命令中的 UPN 或对象 ID 输出：
 
@@ -251,7 +251,7 @@ error: You must be logged in to the server (Unauthorized)
 
 有关包含本文中所示命令的完整脚本，请参阅 [AKS 中的 Azure AD 集成脚本示例存储库][complete-script]。
 
-若要使用 Azure AD 用户和组来控制对群集资源的访问，请参阅 [使用基于角色的 Kubernetes 访问控制 Azure AD 和 AKS 中的标识来控制对群集资源的访问权限][azure-ad-rbac]。
+请参阅[在 AKS 中使用 Kubernetes 基于角色的访问控制和 Azure AD 标识来控制对群集资源的访问][azure-ad-rbac]，了解如何使用 Azure AD 用户和组来控制对群集资源的访问。
 
 有关如何保护 Kubernetes 群集的详细信息，请参阅 [AKS 的访问和标识选项][rbac-authorization]。
 
@@ -264,8 +264,8 @@ error: You must be logged in to the server (Unauthorized)
 [complete-script]: https://github.com/Azure-Samples/azure-cli-samples/tree/master/aks/azure-ad-integration/azure-ad-integration.sh
 
 <!-- LINKS - internal -->
-[az-aks-create]: /cli/azure/aks?view=azure-cli-latest#az-aks-create
-[az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
+[az-aks-create]: /cli/azure/aks#az-aks-create
+[az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
 [az-group-create]: /cli/azure/group#az-group-create
 [open-id-connect]: ../active-directory/develop/v2-protocols-oidc.md
 [az-ad-user-show]: /cli/azure/ad/user#az-ad-user-show

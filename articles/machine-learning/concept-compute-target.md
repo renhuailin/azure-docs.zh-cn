@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 09/29/2020
-ms.openlocfilehash: 1ff20ab19390dcdadb9a4aa79822f7ace3d31989
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: bd83ccc4f834d6b52e1c2db15000eb695be85f30
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98791166"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102177192"
 ---
 # <a name="what-are-compute-targets-in-azure-machine-learning"></a>什么是 Azure 机器学习中的计算目标?
 
@@ -101,15 +101,21 @@ Azure 机器学习为不同的计算目标提供不同的支持。 典型的模�
 | **支持的 VM 系列**  | **限制** |
 |------------|------------|
 | D | 无。 |
+| DDSv4 | 无。 |
 | Dv2 | 无。 |  
 | Dv3 | 无。|
 | DSv2 | 无。 | 
 | DSv3 | 无。|
+| EAv4 | 无。 |
+| Ev3 | 无。 |
 | FSv2 | 无。 | 
+| H | 无。 |
+| HB | 需要审批。 |
 | HBv2 | 需要审批。 |  
 | HCS | 需要审批。 |  
 | M | 需要审批。 |
-| NC | 无。 |    
+| NC | 无。 |  
+| NC 促销 | 无。 |
 | NCsv2 | 需要审批。 |
 | NCsv3 | 需要审批。 |  
 | NDs | 需要审批。 |

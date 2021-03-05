@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 02/20/2021
 ms.author: b-juche
-ms.openlocfilehash: 2da2ae01e92ae2751f9f26e005579bad9911330a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: a18c53d972fbb38dc0b0e557d14b2fbffbff15fa
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101738729"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102174353"
 ---
 # <a name="manage-snapshots-by-using-azure-netapp-files"></a>使用 Azure NetApp 文件管理快照
 
@@ -68,7 +68,7 @@ Azure NetApp 文件支持创建按需快照，并使用快照策略来计划自�
     ```azurepowershell-interactive
     Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFSnapshotPolicy
     ```
-你还可以使用 [Azure CLI 命令](/cli/azure/feature?preserve-view=true&view=azure-cli-latest) `az feature register` 并 `az feature show` 注册功能并显示注册状态。 
+你还可以使用 [Azure CLI 命令](/cli/azure/feature) `az feature register` 并 `az feature show` 注册功能并显示注册状态。 
 
 ### <a name="create-a-snapshot-policy"></a>创建快照策略 
 

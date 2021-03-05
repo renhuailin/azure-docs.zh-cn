@@ -10,12 +10,12 @@ ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c9e0a645bc580ab3a0794ca6ded1e60159df7d92
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: 2038587aebe8fe98bd1adcccef6b895ec7370656
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100090592"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102176852"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout-preview"></a>使用分阶段推出迁移到云身份验证（预览）
 
@@ -184,7 +184,7 @@ ms.locfileid: "100090592"
 
    >[!NOTE]
    >将自动为组中成员启用分阶段推出。 分阶段推出不支持嵌套和动态组。
-   >添加新组时， (组中的用户将更新为新组的最多200个用户) 将更新为使用托管身份验证 immidiatly。 编辑组 (在) 添加或删除用户时，更改可能需要长达24小时才能生效。
+   >添加新组时，组中的用户 (最多为200个新组的用户) 将更新为使用托管身份验证。 编辑组 (在) 添加或删除用户时，更改可能需要长达24小时才能生效。
    >仅当用户在无缝 SSO 组中以及 PTA 或 PHS 组中时，才会应用无缝 SSO。
 
 ## <a name="auditing"></a>审核

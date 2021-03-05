@@ -3,7 +3,7 @@ title: 使用 Azure AD Identity Governance 查看并删除不再具有资源访�
 description: 使用访问评审来扩展或删除合作伙伴组织成员的访问权限
 services: active-directory
 documentationcenter: ''
-author: barclayn
+author: ajburnle
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
 ms.date: 09/06/2020
-ms.author: barclayn
-ms.openlocfilehash: 19f88da6a678221cde66bf61668d16ba9ab998a4
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.author: ajburnle
+ms.openlocfilehash: fe68ec498d17ec20778c8f34fc6ffa1f0964c44e
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92677320"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102176954"
 ---
 # <a name="use-azure-active-directory-azure-ad-identity-governance-to-review-and-remove-external-users-who-no-longer-have-resource-access"></a>使用 Azure Active Directory (Azure AD) Identity Governance 查看并删除不再具有资源访问权限的外部用户
 
@@ -65,14 +65,15 @@ ms.locfileid: "92677320"
 
 评审完成后，“结果”页会显示每个外部标识提供的响应的概览。 可以选择自动应用结果，让访问评审禁用并删除它们。 也可在查看给定的响应后决定是要删除用户的访问权限，还是要对用户进行跟进并获取更多信息，然后再做决定。 如果某些用户仍有权访问你尚未评审的资源，你可以在发现过程中使用评审，并强化你的下一评审和证明周期。
 
-## <a name="disable-and-delete-external-identities-with-azure-ad-access-reviews-preview"></a>使用 Azure AD 访问评审（预览版）禁用并删除外部标识
+## <a name="disable-and-delete-external-identities-with-azure-ad-access-reviews"></a>使用 Azure AD 访问评审禁用和删除外部标识
 
-除了提供用于从资源（例如组或应用程序）中删除不需要的外部标识的选项以外，Azure AD 访问评审还可以阻止外部标识登录你的租户，并可以在 30 天后删除你的租户中的外部标识。 选择 " **阻止用户登录30天后"，然后从租户中删除用户** 后，评审会处于 "正在应用" 状态30天。 在此期间，当前评审下的 "设置"、"结果"、"审阅者" 或 "审核日志" 不可查看或配置。 
+除了提供用于从资源（例如组或应用程序）中删除不需要的外部标识的选项以外，Azure AD 访问评审还可以阻止外部标识登录你的租户，并可以在 30 天后删除你的租户中的外部标识。 选择“在 30 天内阻止用户登录，然后从租户中删除用户”后，评审会保持“正在申请”状态 30 天。 在此期间，当前评审下的“设置”、“结果”、“审阅者”或“审核日志”不可查看或配置。 
 
 ![完成后的设置](media/access-reviews-external-users/upon-completion-settings.png)
 
 在创建新的访问评审时，可以在“完成后的设置”部分针对“对已遭拒绝的用户执行的操作”定义“在 30 天内阻止用户登录，然后从租户中删除用户”。 
-此设置（当前为预览版）可用于识别、阻止和删除 Azure AD 租户中的外部标识。 经审阅者评审后被拒绝进行持续访问的外部标识会被阻止和删除，无论其拥有的资源访问权限或组成员身份如何。 如果你已验证评审中的外部用户不再具有资源访问权限，因而可以安全地从租户中删除，或者你想要确保删除这些用户，而不考虑它们现有的访问权限如何，则最好使用此设置作为最后一步。 “禁用并删除”功能首先会阻止外部用户，使他们不能登录到租户并访问资源。 不会在此阶段撤销资源访问权限。如果你想要重新实例化该外部用户，则可以通过重新配置使其能够登录。 如果没有进一步的操作，则会在 30 天后从目录中删除被阻止的外部标识，并删除帐户及其访问权限。
+
+此设置允许你确定、阻止和删除 Azure AD 租户中的外部标识。 经审阅者评审后被拒绝进行持续访问的外部标识会被阻止和删除，无论其拥有的资源访问权限或组成员身份如何。 如果你已验证评审中的外部用户不再具有资源访问权限，因而可以安全地从租户中删除，或者你想要确保删除这些用户，而不考虑它们现有的访问权限如何，则最好使用此设置作为最后一步。 “禁用并删除”功能首先会阻止外部用户，使他们不能登录到租户并访问资源。 不会在此阶段撤销资源访问权限。如果你想要重新实例化该外部用户，则可以通过重新配置使其能够登录。 如果没有进一步的操作，则会在 30 天后从目录中删除被阻止的外部标识，并删除帐户及其访问权限。
 
 ## <a name="next-steps"></a>后续步骤
 

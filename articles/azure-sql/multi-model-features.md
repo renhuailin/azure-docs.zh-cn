@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 12/17/2018
-ms.openlocfilehash: d5a067272caf9b072117ba57b7b16f8d78a8b456
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: b16a2fc9f107a8420fb7d05667807a869fa3e00a
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791641"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102172751"
 ---
 # <a name="multi-model-capabilities-of-azure-sql-database--sql-managed-instance"></a>Azure SQL 数据库和 SQL 托管实例的多模型功能
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -87,7 +87,7 @@ JSON 是用于在新式 Web 与移动应用程序中交换数据的流行数据�
 
 在某些特定的情况下，可以使用文档模型而不使用关系模型：
 
-- 架构高度规范化不能带来明显的好处，因为你要一次性访问对象的所有字段，或者永远不更新对象的规范化部分。 但是，规范化模型会增大查询的复杂性，因为需要联接大量的表才能获取数据。
+- 由于你一次访问对象的所有字段，或者从不更新对象的规范化部分，因此架构的高规范化不会带来明显的好处。 但是，规范化模型会增大查询的复杂性，因为需要联接大量的表才能获取数据。
 - 原生使用 JSON 文档的应用程序采用通信或数据模型，而你不想要引入附加的层来将关系数据转换为 JSON，或反之。
 - 需要通过取消规范化子表或“实体-对象-值”模式来简化数据模型。
 - 需要加载或导出以 JSON 格式存储的数据，且不使用其他某种用于分析数据的工具。
@@ -124,7 +124,7 @@ SQL Server 数据库引擎提供一个强大平台用于开发丰富的半结构
 
 在某些特定的情况下，可以使用文档模型而不使用关系模型：
 
-- 架构高度规范化不能带来明显的好处，因为你要一次性访问对象的所有字段，或者永远不更新对象的规范化部分。 但是，规范化模型会增大查询的复杂性，因为需要联接大量的表才能获取数据。
+- 由于你一次访问对象的所有字段，或者从不更新对象的规范化部分，因此架构的高规范化不会带来明显的好处。 但是，规范化模型会增大查询的复杂性，因为需要联接大量的表才能获取数据。
 - 原生使用 XML 文档的应用程序采用通信或数据模型，而你不想要引入附加的层来将关系数据转换为 XML，或反之。
 - 需要通过取消规范化子表或“实体-对象-值”模式来简化数据模型。
 - 需要加载或导出以 XML 格式存储的数据，且不使用其他某种用于分析数据的工具。

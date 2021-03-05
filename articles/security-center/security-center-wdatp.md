@@ -1,23 +1,18 @@
 ---
 title: 使用 Azure 安全中心随附的 Microsoft Defender for Endpoint license
 description: 了解 Microsoft Defender for Endpoint 并从 Azure 安全中心部署。
-services: security-center
-documentationcenter: na
 author: memildin
 manager: rkarlin
 ms.service: security-center
-ms.devlang: na
 ms.topic: how-to
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 02/15/2021
 ms.author: memildin
-ms.openlocfilehash: a659ea897f013e504668789a7d5671420ff70a9f
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 475c7671636d3aac036e3da1392fc2da9b0a001f
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102099074"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102176461"
 ---
 # <a name="protect-your-endpoints-with-security-centers-integrated-edr-solution-microsoft-defender-for-endpoint"></a>利用安全中心的集成 EDR 解决方案保护终结点： Microsoft Defender for Endpoint
 
@@ -43,10 +38,10 @@ Microsoft Defender for Endpoint 是提供的一个全面的云终结点安全解
 | 发布状态：                  | 正式发布 (GA)                                                                                                                                                                                                                                                                                      |
 | 定价：                        | 需要[用于服务器的 Azure Defender](defender-for-servers-introduction.md)                                                                                                                                                                                                                                             |
 | 支持的平台：            |  •运行 Windows 的 Azure 计算机<br> •运行 Windows 的 Azure Arc 计算机|
-| 受支持的 Windows 版本：  |   •公开 **上市 (GA) -** 在 Windows Server 2016、2012 r2 和 2008 r2 SP1 上检测<br> •在 Windows Server 2019、 [Windows 虚拟桌面 (WVD)](../virtual-desktop/overview.md)和 [windows 10 企业多会话](../virtual-desktop/windows-10-multisession-faq.md) (以前面向虚拟桌面 (EVD 的企业多会话 **检测功能)**<br>已为 Office 365 GCC 客户禁用使用这些集成的服务器终结点监视|
+| 受支持的 Windows 版本：  |  •公开 **上市 (GA) -** 在 Windows Server 2016、2012 r2 和 2008 r2 SP1 上检测<br> •在 Windows Server 2019、 [Windows 虚拟桌面 (WVD)](../virtual-desktop/overview.md)和 [windows 10 企业多会话](../virtual-desktop/windows-10-multisession-faq.md) (以前面向虚拟桌面 (EVD 的企业多会话 **检测功能)**<br>已为 Office 365 GCC 客户禁用使用这些集成的服务器终结点监视|
 | 不受支持的操作系统：  |  • Windows 10 (，而不是 EVD 或 WVD) <br> • Linux|
 | 所需角色和权限： | 启用/禁用集成： **安全管理员** 或 **所有者**<br>在安全中心内查看 MDATP 警报： **安全读者**、 **读者**、 **资源组参与者**、 **资源组所有者**、 **安全管理员**、 **订阅所有者** 或 **订阅参与者**|
-| 云：                         | ![是](./media/icons/yes-icon.png) 商业云<br>![是](./media/icons/yes-icon.png) US Gov<br>![否](./media/icons/no-icon.png) China Gov，其他 Gov<br>![否](./media/icons/no-icon.png) 在全球 Azure 云中运行工作负荷的 GCC 客户                                                        |
+| 云：                         | ![是](./media/icons/yes-icon.png) 商业云<br>![是](./media/icons/yes-icon.png) US Gov<br>![否](./media/icons/no-icon.png) China Gov，其他 Gov                                                        |
 |                                 |                                                                                                                                                                                                                                                                                                               |
 
 ## <a name="microsoft-defender-for-endpoint-features-in-security-center"></a>安全中心的 Microsoft Defender for Endpoint 功能

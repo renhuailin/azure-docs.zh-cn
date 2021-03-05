@@ -5,24 +5,24 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/18/2019
-ms.openlocfilehash: 6037ef9c539c3c57f2ba5a19f371237159d1bf69
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 3bba9dbf40fe6893a06c21d7f6b5475cfa8552cb
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102030879"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102176648"
 ---
 # <a name="log-data-ingestion-time-in-azure-monitor"></a>Azure Monitor 中的日志数据引入时间
 Azure Monitor 是一种大规模数据服务，每月为成千上万的客户发送数 TB 的数据，并且此数据仍在不断增长。 关于日志数据在收集后需要多长时间才可供使用，大家通常存有疑问。 本文将对影响此延迟的不同因素进行说明。
 
 ## <a name="typical-latency"></a>典型延迟
-延迟是指在受监视系统上创建数据的时间以及可在 Azure Monitor 中使用该数据进行分析的时间。 引入日志数据时的典型延迟时间为 2 到 5 分钟。 任何特定数据的特定延迟将根据下面介绍的各种因素而变化。
+延迟是指在受监视系统上创建数据的时间以及可在 Azure Monitor 中使用该数据进行分析的时间。 引入日志数据的典型延迟介于20秒到3分钟之间。 但是，任何特定数据的特定滞后时间将因下述各种因素而异。
 
 
 ## <a name="factors-affecting-latency"></a>影响延迟的因素
 特定数据集的总引入时间可以细分为以下几个高级别区域。 
 
-- 代理时间：发现事件、收集事件，然后将其作为日志记录发送到 Azure Monitor 引入点的时间。 大多数情况下，此过程由代理处理。
+- 代理时间-发现事件、收集事件并将其发送到 Azure Monitor 日志引入点作为日志记录的时间。 大多数情况下，此过程由代理处理。 网络可能会引入额外的延迟。
 - 管道时间：引入管道处理日志记录的时间。 包括解析事件属性，并且可能会添加计算信息。
 - 索引时间：将日志记录引入到 Azure Monitor 大数据存储所花费的时间。
 
@@ -36,16 +36,17 @@ Azure Monitor 是一种大规模数据服务，每月为成千上万的客户发
 - Active Directory 复制解决方案每五天执行一次评估，而 Active Directory 评估解决方案每周对 Active Directory 基础结构进行一次评估。 只有在评估完成后，代理才会收集这些日志。
 
 ### <a name="agent-upload-frequency"></a>代理上传频率
-为确保 Log Analytics 代理保持轻型，代理会缓冲日志并定期将其上传到 Azure Monitor。 上传频率在 30 秒到 2 分钟之间变化，具体取决于数据类型。 大多数数据可在 1 分钟内上传。 网络状况可能会对数据抵达 Azure Monitor 引入点的延迟产生负面影响。
+为确保 Log Analytics 代理保持轻型，代理会缓冲日志并定期将其上传到 Azure Monitor。 上传频率在 30 秒到 2 分钟之间变化，具体取决于数据类型。 大多数数据可在 1 分钟内上传。 
+
+### <a name="network"></a>网络
+网络条件可能会对此数据的延迟造成不利影响，以达到 Azure Monitor 日志引入点。
 
 ### <a name="azure-activity-logs-resource-logs-and-metrics"></a>Azure 活动日志、资源日志和指标
-Azure 数据增加了额外的时间，以便在 Log Analytics 引入点处可用于处理：
+在 Azure Monitor 日志引入点进行处理时，Azure 数据会增加额外的时间：
 
-- 资源日志中的数据需要 2 到 15 分钟，具体取决于 Azure 服务。 请参阅[下面的查询](#checking-ingestion-time)，以便在你的环境中检查此延迟
-- 将 Azure 平台指标发送到 Log Analytics 引入点需要 3 分钟。
-- 将活动日志数据发送到 Log Analytics 引入点大约需要 10 到 15 分钟。
-
-数据在引入点处可用后，还需要 2 到 5 分钟才能进行查询。
+- 资源日志通常会在30-90 秒内增加，具体取决于 Azure 服务。 某些 Azure 服务 (具体而言，Azure SQL 数据库和 Azure 虚拟网络) 目前以5分钟的时间间隔报告其日志。 正在努力改进此操作。 请参阅[下面的查询](#checking-ingestion-time)，以便在你的环境中检查此延迟
+- Azure 平台指标需要额外3分钟的时间才能导出到 Azure Monitor 日志引入点。
+- 如果使用旧集成，则活动日志数据可能需要额外10-15 分钟。 建议使用订阅级诊断设置将活动日志引入 Azure Monitor 日志，这会产生大约30秒的额外延迟。
 
 ### <a name="management-solutions-collection"></a>管理解决方案收集
 某些解决方案不从代理收集其数据，并且可能使用会引入额外延迟的收集方法。 一些解决方案以固定时间间隔收集数据，而不尝试近实时收集。 具体示例包括：
@@ -56,6 +57,9 @@ Azure 数据增加了额外的时间，以便在 Log Analytics 引入点处可�
 请参阅各解决方案的文档，确定其收集频率。
 
 ### <a name="pipeline-process-time"></a>管道处理时间
+
+在引入点提供后，数据将需要额外30-60 秒才能进行查询。
+
 将日志记录引入到 Azure Monitor 管道（如 [_TimeReceived](./log-standard-columns.md#_timereceived) 属性中所标识）后，会将其写入临时存储，以确保租户隔离并确保数据不会丢失。 此过程通常会花费 5-15 秒的时间。 一些管理解决方案实施了更复杂的算法来聚合数据，并在数据流入时获得见解。 例如，网络性能监视器以 3 分钟的时间间隔聚合传入数据，有效地增加了 3 分钟的延迟。 处理自定义日志是另一个增加延迟的过程。 在某些情况下，此过程可能会为代理从文件收集的日志增加几分钟延迟。
 
 ### <a name="new-custom-data-types-provisioning"></a>新的自定义数据类型预配

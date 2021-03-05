@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: allensu
 ms.custom: references_regions
-ms.openlocfilehash: 272fb0a27cf57483af6c07373e35a30f7f6e1c4b
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: b0e51d11797bc5767f19b25a92a2d29a66ea1bb2
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102101369"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102176716"
 ---
 # <a name="cross-region-load-balancer-preview"></a>跨区域负载均衡器 (预览) 
 
@@ -28,7 +28,7 @@ Azure 标准负载均衡器支持跨区域负载均衡，支持异地冗余 HA �
 
 * 来自多个区域的传入流量。
 * [即时全局故障转移](#regional-redundancy) 到下一个最佳区域部署。
-* 将跨区域的负载分布到最接近的 Azure 区域，具有 [超延迟](#ultra-low-latency)。
+* 将跨区域的负载分布到最接近的 Azure 区域，且 [延迟非常低](#ultra-low-latency)。
 * 能够在单个终结点后 [扩展/缩减](#ability-to-scale-updown-behind-a-single-endpoint) 。
 * [静态 IP](#static-ip)
 * [客户端 IP 保留](#client-ip-preservation)

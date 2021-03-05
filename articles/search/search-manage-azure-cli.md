@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 02/17/2021
-ms.openlocfilehash: 6287215233ae9baa220df37c6b820c1d1bec7720
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: ee6b0e1b745e86c72843af88c0f6d17f91512e15
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102032511"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102176750"
 ---
 # <a name="manage-your-azure-cognitive-search-service-with-the-azure-cli"></a>通过 Azure CLI 管理 Azure 认知搜索服务
 > [!div class="op_single_selector"]
@@ -41,48 +41,7 @@ ms.locfileid: "102032511"
 
 在服务中，内容创建和管理通过 [搜索服务 REST API](/rest/api/searchservice/) 或 [.net SDK](/dotnet/api/overview/azure/search.documents-readme)来完成。 尽管没有专用于内容的 PowerShell 命令，但可以编写脚本来调用 REST 或 .NET Api 来创建和加载索引。
 
-<a name="check-versions-and-load"></a>
-
-## <a name="check-versions-and-upgrade"></a>检查版本和升级
-
-本文中的示例是交互式，需要提升的权限。 必须安装 Azure CLI。 有关详细信息，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
-
-你现在可以通过 `az` Windows 命令提示符、PowerShell 或 [Azure Cloud Shell](../cloud-shell/overview.md)中的命令运行 Azure CLI。 PowerShell 提供了 Windows 命令提示符所不能提供的一些 Tab 键补全功能。 
-
-### <a name="check-the-azure-cli-version"></a>检查 Azure CLI 版本
-
-如果不确定是否安装了 Azure CLI，请运行以下命令作为验证步骤。 
-
-```azurecli-interactive
-az --version
-```
-如果此命令不起作用，请参阅 [安装 Azure CLI](/cli/azure/install-azure-cli) 以获取安装 Azure CLI。
-
-如果版本为2.11.0 或更高，则可以运行 `az upgrade` 命令将 CLI 更新到最新版本。
-
-```azurecli-interactive
-az upgrade
-```
-
-### <a name="connect-to-azure-with-a-browser-sign-in-token"></a>使用浏览器登录令牌连接到 Azure
-
-你可以使用门户登录凭据连接到 Azure CLI 中的订阅。 或者，可以[使用服务主体以非交互方式进行身份验证](/cli/azure/authenticate-azure-cli#sign-in-with-a-service-principal)。
-
-```azurecli-interactive
-az login
-```
-
-如果你持有多个 Azure 订阅，请设置 Azure 订阅。 若要查看当前订阅的列表，请运行以下命令。
-
-```azurecli-interactive
-az account list --output table
-```
-
-若要指定订阅，请运行以下命令。 在以下示例中，订阅名为 `ContosoSubscription`。
-
-```azurecli-interactive
-az account set --subscription "ContosoSubscription"
-```
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
 <a name="list-search-services"></a>
 
@@ -262,7 +221,7 @@ az network vnet subnet update \
 id=$(az search service show \
     --resource-group <resource-group-name> \
     --name <service-name> \
-    --query [id]' \
+    --query [id] \
     --output tsv)
 
 # Create the private endpoint
