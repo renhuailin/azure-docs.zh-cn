@@ -4,14 +4,14 @@ description: 本文介绍如何引入历史遥测数据。
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
-ms.author: v-umha
+ms.author: v-ummehabiba
 ms.custom: has-adal-ref
-ms.openlocfilehash: 603f14d2076b5b74dde0b92a732f8fe816f6dd10
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: e4182f3718422be3a0aa99c980d33026df4ce9af
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97656778"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102173743"
 ---
 # <a name="ingest-historical-telemetry-data"></a>引入历史遥测数据
 
@@ -19,7 +19,7 @@ ms.locfileid: "97656778"
 
 FarmBeats 中常见的方案是物联网 (IoT) 资源，如设备和传感器等。 为设备和传感器创建元数据，然后将历史数据以规范格式引入 FarmBeats。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 
 在继续阅读本文之前，请确保已安装 FarmBeats 并从 IoT 设备收集的历史数据。 还需要启用合作伙伴访问权限，如以下步骤中所述。
 
@@ -33,7 +33,7 @@ FarmBeats 中常见的方案是物联网 (IoT) 资源，如设备和传感器等
 - 客户端机密
 - EventHub 连接字符串
 
-执行以下步骤:
+执行以下步骤：
 
 > [!NOTE]
 > 您必须是管理员才能执行以下步骤。

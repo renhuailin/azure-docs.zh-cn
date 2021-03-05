@@ -7,12 +7,12 @@ ms.date: 07/07/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 7d33811dc056baa3d205d7d86c1bdd7bff74ae54
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: eef8179567d83e3727c3ab949eef2706ce2a9b16
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92329996"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175798"
 ---
 # <a name="iot-plug-and-play-components-in-models"></a>模型中的 IoT 即插即用组件
 
@@ -64,7 +64,7 @@ ms.locfileid: "92329996"
 
 模型 ID 存储在设备的克隆属性中，如以下屏幕截图所示：
 
-:::image type="content" source="media/concepts-components/twin-model-id.png" alt-text="Azure IoT 浏览器中的默认组件":::
+:::image type="content" source="media/concepts-components/twin-model-id.png" alt-text="数字克隆属性中的模型 ID":::
 
 对于具有一组遥测、属性和命令的设备或 IoT Edge 模块，不含组件的 DTDL 模型是非常有用的。 不使用组件的模型使你可以轻松地将现有设备或模块迁移为 IoT 即插即用设备或模块-创建 DTDL 模型来描述你的实际设备或模块，而无需定义任何组件。
 

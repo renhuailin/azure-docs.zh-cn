@@ -7,16 +7,16 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 12/28/2020
 ms.author: jgao
-ms.openlocfilehash: 574dcf50111c14f4924f009a74ed6f2ac2bb31e9
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 9d045fb75838ac016f3e9b04cd2519d8a8530a4b
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98733834"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175645"
 ---
-# <a name="use-deployment-scripts-in-arm-templates"></a>使用 ARM 模板中的部署脚本
+# <a name="use-deployment-scripts-in-arm-templates"></a>在 ARM 模板中使用部署脚本
 
-了解如何在 (ARM 模板) 使用 Azure 资源模板中的部署脚本。 使用名为的新资源类型 `Microsoft.Resources/deploymentScripts` ，用户可以在模板部署中执行脚本并查看执行结果。 这些脚本可用于执行自定义步骤，如：
+了解如何使用 Azure 资源模板（ARM 模板）中的部署脚本。 使用名为 `Microsoft.Resources/deploymentScripts` 的新资源类型，用户可以在模板部署中执行脚本并查看执行结果。 这些脚本可用于执行自定义步骤，如：
 
 - 将用户添加到目录
 - 执行数据平面操作，例如，复制 blob 或种子数据库
@@ -38,12 +38,12 @@ ms.locfileid: "98733834"
 > 脚本执行和故障排除需要一个存储帐户和一个容器实例。 可以选择指定现有存储帐户，如果不指定，脚本服务会自动创建存储帐户和容器实例。 当部署脚本执行达到某个最终状态时，脚本服务通常会删除这两个自动创建的资源。 在这些资源删除之前，这些资源会一直向你收费。 若要了解详细信息，请参阅[清理部署脚本资源](#clean-up-deployment-script-resources)。
 
 > [!IMPORTANT]
-> DeploymentScripts 资源 API 版本2020-10-01 支持 [OnBehalfofTokens (OBO) ](../../active-directory/develop/v2-oauth2-on-behalf-of-flow.md)。 通过使用 OBO，部署脚本服务将使用部署主体的令牌来创建用于运行部署脚本的基础资源，其中包括 Azure 容器实例、Azure 存储帐户和托管标识的角色分配。 在较旧的 API 版本中，托管标识用于创建这些资源。
-> Azure 登录的重试逻辑现在内置于包装脚本中。 如果在运行部署脚本的同一模板中授予权限。 部署脚本服务将以10秒的时间间隔重试登录10分钟，直到复制托管标识角色分配。
+> deploymentScripts 资源 API 版本 2020-10-01 支持 [OnBehalfofTokens(OBO)](../../active-directory/develop/v2-oauth2-on-behalf-of-flow.md)。 通过使用 OBO，部署脚本服务使用部署主体的令牌创建用于运行部署脚本的基础资源，其中包括 Azure 容器实例、Azure 存储帐户和托管标识的角色分配。 在较旧的 API 版本中，托管标识用于创建这些资源。
+> Azure 登录的重试逻辑现在内置于包装脚本中。 如果在运行部署脚本的同一模板中授予权限。 部署脚本服务将以 10 秒的间隔重试登录 10 分钟，直到托管标识角色分配被复制。
 
-## <a name="configure-the-minimum-permissions"></a>配置最小权限
+## <a name="configure-the-minimum-permissions"></a>配置最低权限
 
-对于部署脚本 API 版本2020-10-01 或更高版本，部署主体用于创建在执行部署脚本资源时所需的基础资源，即存储帐户和 Azure 容器实例。 如果脚本需要对 Azure 进行身份验证并执行特定于 Azure 的操作，我们建议使用用户分配的托管标识提供该脚本。 托管标识必须具有在脚本中完成操作所需的访问权限。
+对于部署脚本 API 版本2020-10-01 或更高版本，部署主体用于创建在执行部署脚本资源时所需的基础资源，即存储帐户和 Azure 容器实例。 如果脚本需要对 Azure 进行身份验证并执行特定于 Azure 的操作，建议为脚本提供用户分配的托管标识。 托管标识必须具有完成脚本中操作所需的访问权限。
 
 若要配置最小特权权限，你需要：
 
@@ -71,9 +71,9 @@ ms.locfileid: "98733834"
   }
   ```
 
-  如果 Azure 存储和 Azure 容器实例资源提供程序尚未注册，还需要添加 `Microsoft.Storage/register/action` 和 `Microsoft.ContainerInstance/register/action` 。
+  如果尚未注册 Azure 存储和 Azure 容器实例资源提供程序，则你还需要添加 `Microsoft.Storage/register/action` 和 `Microsoft.ContainerInstance/register/action`。
 
-- 如果使用托管标识，则部署主体需要 **托管标识运算符** 角色 () 分配给托管标识资源的内置角色。
+- 如果使用托管标识，则部署主体需要分配给托管标识资源的“托管的标识操作员”角色（内置角色）。
 
 ## <a name="sample-templates"></a>示例模板
 
@@ -129,44 +129,44 @@ ms.locfileid: "98733834"
 ```
 
 > [!NOTE]
-> 示例用于演示目的。 `scriptContent`模板中的属性和 `primaryScriptUri` 不能共存。
+> 此示例用于演示目的。 `scriptContent` 和 `primaryScriptUri` 属性不能在模板中共存。
 
 属性值详细信息：
 
-- `identity`：对于部署脚本 API 版本2020-10-01 或更高版本，用户分配的托管标识是可选的，除非你需要在脚本中执行任何特定于 Azure 的操作。  对于 API 版本 2019-10-01-preview，需要使用托管标识，因为部署脚本服务使用它来执行脚本。 当前，仅支持用户分配的托管标识。
-- `kind`：指定脚本类型。 目前支持 Azure PowerShell 和 Azure CLI 脚本。 值为 AzurePowerShell 和 AzureCLI 。
-- `forceUpdateTag`：在模板部署之间更改此值会强制重新执行部署脚本。 如果使用 `newGuid()` 或 `utcNow()` 函数，则这两个函数只能在参数的默认值中使用。 若要了解详细信息，请参阅[多次运行脚本](#run-script-more-than-once)。
-- `containerSettings`：指定用于自定义 Azure 容器实例的设置。  `containerGroupName` 用于指定容器组名称。 如果未指定，将自动生成组名。
-- `storageAccountSettings`：指定用于使用现有存储帐户的设置。 如果未指定，将自动创建存储帐户。 请参阅[使用现有的存储帐户](#use-existing-storage-account)。
+- `identity`：对于部署脚本 API 版本 2020-10-01 或更高版本，用户分配的托管标识是可选的，除非你需要在脚本中执行任何特定于 Azure 的操作。  对于 API 版本 2019-10-01 预览版，需要托管标识，因为部署脚本服务使用该托管标识来执行脚本。 当前，仅支持用户分配的托管标识。
+- `kind`：指定脚本类型。 当前，支持 Azure PowerShell 和 Azure CLI 脚本。 值为 AzurePowerShell 和 AzureCLI 。
+- `forceUpdateTag`：在模板部署之间更改此值将强制重新执行部署脚本。 如果使用 `newGuid()` 或 `utcNow()` 函数，则这两个函数只能在参数的默认值中使用。 若要了解详细信息，请参阅[多次运行脚本](#run-script-more-than-once)。
+- `containerSettings`：指定该设置，用于自定义 Azure 容器实例。  containerGroupName 用于指定容器组名称`containerGroupName`。 如果未指定，将自动生成组名。
+- `storageAccountSettings`：指定设置以使用现有的存储帐户。 如果未指定，将自动创建存储帐户。 请参阅[使用现有的存储帐户](#use-existing-storage-account)。
 - `azPowerShellVersion`/`azCliVersion`：指定要使用的模块版本。 查看[支持的 Azure PowerShell 版本](https://mcr.microsoft.com/v2/azuredeploymentscripts-powershell/tags/list)的列表。 查看[支持的 Azure CLI 版本](https://mcr.microsoft.com/v2/azure-cli/tags/list)的列表。
 
   >[!IMPORTANT]
-  > 部署脚本使用 Microsoft 容器注册表 (MCR) 中的可用 CLI 映像。 认证部署脚本的 CLI 映像大约需要一个月的时间。 不要使用 30 天内发布的 CLI 版本。 若要查找映像的发行日期，请参阅 [Azure CLI 发行说明](/cli/azure/release-notes-azure-cli?view=azure-cli-latest&preserve-view=true)。 如果使用不受支持的版本，错误消息会列出受支持的版本。
+  > 部署脚本使用 Microsoft Container Registry (MCR) 中可用的 CLI 映像。 认证部署脚本的 CLI 映像大约需要一个月的时间。 不要使用 30 天内发布的 CLI 版本。 若要查找映像的发行日期，请参阅 [Azure CLI 发行说明](/cli/azure/release-notes-azure-cli)。 如果使用了不受支持的版本，错误消息中会列出受支持的版本。
 
 - `arguments`：指定参数值。 请以空格分隔这些值。
 
-  部署脚本通过发出 [CommandLineToArgvW ](/windows/win32/api/shellapi/nf-shellapi-commandlinetoargvw) 系统调用，将参数拆分为字符串数组。 此步骤是必需的，因为参数作为 [命令属性](/rest/api/container-instances/containergroups/createorupdate#containerexec) 传递到 Azure 容器实例，而 command 属性是字符串数组。
+  部署脚本通过发出 [CommandLineToArgvW ](/windows/win32/api/shellapi/nf-shellapi-commandlinetoargvw) 系统调用，将参数拆分为字符串数组。 此步骤是必要的，因为参数作为[命令属性](/rest/api/container-instances/containergroups/createorupdate#containerexec)传递给 Azure 容器实例，而命令属性是字符串数组。
 
-  如果参数包含转义字符，请使用 [JsonEscaper](https://www.jsonescaper.com/) 对字符进行双重转义。 将最初已转义的字符串粘贴到工具中，然后选择“转义”。  该工具会输出一个经过双重转义处理的字符串。 例如，在前面的示例模板中，参数是 `-name \"John Dole\"` 。 转义字符串为 `-name \\\"John Dole\\\"` 。
+  如果参数包含转义字符，请使用 [JsonEscaper](https://www.jsonescaper.com/) 对字符进行双重转义。 将最初已转义的字符串粘贴到工具中，然后选择“转义”。  该工具会输出一个经过双重转义处理的字符串。 例如，在前面的示例模板中，参数是 `-name \"John Dole\"`。 转义字符串是 `-name \\\"John Dole\\\"`。
 
-  若要将 object 类型的 ARM 模板参数作为参数传递，请使用 [字符串 ( # B1 ](./template-functions-string.md#string) 函数将该对象转换为字符串，然后使用 [Replace ( # B3 ](./template-functions-string.md#replace) 函数将任何替换 `\"` 为 `\\\"` 。 例如：
+  若要将 object 类型的 ARM 模板参数作为参数传递，请使用 [string()](./template-functions-string.md#string) 函数将对象转换为字符串，然后使用 [replace()](./template-functions-string.md#replace) 函数将任何 `\"` 替换为 `\\\"`。 例如：
 
   ```json
   replace(string(parameters('tables')), '\"', '\\\"')
   ```
 
-  有关详细信息，请参阅 [示例模板](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-jsonEscape.json)。
+  有关详细信息，请参阅[示例模板](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-jsonEscape.json)。
 
-- `environmentVariables`：指定要传递到脚本的环境变量。 有关详细信息，请参阅[开发部署脚本](#develop-deployment-scripts)。
+- `environmentVariables`：指定环境变量以传递到脚本。 有关详细信息，请参阅[开发部署脚本](#develop-deployment-scripts)。
 - `scriptContent`：指定脚本内容。 若要运行外部脚本，请改用 `primaryScriptUri`。 有关示例，请参阅[使用内联脚本](#use-inline-scripts)和[使用外部脚本](#use-external-scripts)。
   > [!NOTE]
-  > Azure 门户无法解析包含多行的部署脚本。 若要使用 Azure 门户中的部署脚本来部署模板，可以通过使用分号将 PowerShell 命令链接到一行，或将 `primaryScriptUri` 属性与外部脚本文件一起使用。
+  > Azure 门户无法分析具有多行的部署脚本。 若要从 Azure 门户部署具有部署脚本的模板，可以使用分号将 PowerShell 命令链接到一行中，也可以将 `primaryScriptUri` 属性与外部脚本文件一起使用。
 
-- `primaryScriptUri`：使用受支持的文件扩展名为主部署脚本指定可公开访问的 Url。
-- `supportingScriptUris`：指定一个可公开访问的 Url 数组，以支持在或中调用的支持文件 `scriptContent` `primaryScriptUri` 。
+- `primaryScriptUri`：为具有受支持的文件扩展名的主部署脚本指定一个可公开访问的 Url。
+- `supportingScriptUris`：指定一个可公开访问的 Url 数组，它们指向在 `scriptContent` 或 `primaryScriptUri` 中调用的支持性文件。
 - `timeout`：指定 [ISO 8601 格式](https://en.wikipedia.org/wiki/ISO_8601)中指定的脚本执行最大允许时间。 默认值为 **P1D**。
 - `cleanupPreference`. 指定在脚本执行达到最终状态时清理部署资源的首选项。 默认设置为 Always，这意味着不管最终状态如何（成功、失败、已取消），都会删除资源。 若要了解详细信息，请参阅[清理部署脚本资源](#clean-up-deployment-script-resources)。
-- `retentionInterval`：指定在部署脚本执行达到终端状态之后服务保留部署脚本资源的时间间隔。 在此持续时间到期时，将删除部署脚本资源。 持续时间基于 [ISO 8601 模式](https://en.wikipedia.org/wiki/ISO_8601)。 保留时间间隔为 1 到 26 小时 (PT26H)。 当 `cleanupPreference` 设置为 **OnExpiration** 时将使用此属性。 当前未启用 **OnExpiration** 属性。 若要了解详细信息，请参阅[清理部署脚本资源](#clean-up-deployment-script-resources)。
+- `retentionInterval`：指定在部署脚本执行达到最终状态后，服务保留部署脚本资源的时间间隔。 在此持续时间到期时，将删除部署脚本资源。 持续时间基于 [ISO 8601 模式](https://en.wikipedia.org/wiki/ISO_8601)。 保留时间间隔为 1 到 26 小时 (PT26H)。 当 `cleanupPreference` 设置为 **OnExpiration** 时将使用此属性。 当前未启用 OnExpiration 属性。 若要了解详细信息，请参阅[清理部署脚本资源](#clean-up-deployment-script-resources)。
 
 ### <a name="additional-samples"></a>其他示例
 
@@ -181,9 +181,9 @@ ms.locfileid: "98733834"
 :::code language="json" source="~/resourcemanager-templates/deployment-script/deploymentscript-helloworld.json" range="1-44" highlight="24-30":::
 
 > [!NOTE]
-> 因为内联部署脚本用双引号引起来，所以需要使用反斜杠 (**&#92;**) 或用单引号括起来来转义部署脚本内的字符串。 还可以考虑使用字符串替换，如先前的 JSON 示例所示。
+> 由于内联部署脚本是用双引号括起来的，因此部署脚本内的字符串需要使用反斜杠 (&#92;) 进行转义或者使用单引号括起来。 还可以考虑使用字符串替换，如先前的 JSON 示例所示。
 
-该脚本采用一个参数，并输出参数值。 `DeploymentScriptOutputs` 用于存储输出。 在 "输出" 部分中， `value` 该行显示了如何访问存储的值。 `Write-Output` 用于调试目的。 若要了解如何访问输出文件，请参阅[对部署脚本进行监视和故障排除](#monitor-and-troubleshoot-deployment-scripts)。 有关属性说明，请参阅[示例模板](#sample-templates)。
+该脚本采用一个参数，并输出参数值。 DeploymentScriptOutputs 用于存储输出`DeploymentScriptOutputs`。 在输出部分，值行显示了如何访问存储的值`value`。 `Write-Output` 用于调试目的。 若要了解如何访问输出文件，请参阅[对部署脚本进行监视和故障排除](#monitor-and-troubleshoot-deployment-scripts)。 有关属性说明，请参阅[示例模板](#sample-templates)。
 
 若要运行脚本，请选择“尝试”以打开 Cloud Shell，然后将以下代码粘贴到 Shell 窗格中。
 
@@ -210,11 +210,11 @@ Write-Host "Press [ENTER] to continue ..."
 "primaryScriptUri": "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-helloworld.ps1",
 ```
 
-有关详细信息，请参阅 [示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/deployment-script/deploymentscript-helloworld-primaryscripturi.json)。
+有关详细信息，请参阅[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/deployment-script/deploymentscript-helloworld-primaryscripturi.json)。
 
 外部脚本文件必须是可访问的。 若要保护存储在 Azure 存储帐户中的脚本文件，请参阅[使用 SAS 令牌部署专用 ARM 模板](./secure-template-with-sas-token.md)。
 
-你负责确保部署脚本引用的脚本的完整性，无论是 `primaryScriptUri` 还是 `supportingScriptUris` 。 仅引用你信任的脚本。
+你负责确保部署脚本（`primaryScriptUri` 或 `supportingScriptUris`）所引用的脚本的完整性。 仅引用你信任的脚本。
 
 ## <a name="use-supporting-scripts"></a>使用支持脚本
 
@@ -234,15 +234,15 @@ Write-Host "Press [ENTER] to continue ..."
 
 可从内联脚本和主脚本文件中调用支持脚本文件。 支持脚本文件对文件扩展名没有限制。
 
-支持文件将复制到 `azscripts/azscriptinput` 运行时。 使用相对路径从内联脚本和主脚本文件中引用支持文件。
+支持文件在运行时复制到 `azscripts/azscriptinput`。 使用相对路径从内联脚本和主脚本文件中引用支持文件。
 
 ## <a name="work-with-outputs-from-powershell-script"></a>处理 PowerShell 脚本的输出
 
-以下模板演示了如何在两个资源之间传递值 `deploymentScripts` ：
+以下模板显示了如何在两个 `deploymentScripts` 资源之间传递值：
 
 :::code language="json" source="~/resourcemanager-templates/deployment-script/deploymentscript-basic.json" range="1-68" highlight="30-31,50":::
 
-在第一个资源中，定义一个名为的变量 `$DeploymentScriptOutputs` ，并使用它来存储输出值。 若要访问模板内另一个资源的输出值，请使用：
+在第一个资源中，定义一个名为 $DeploymentScriptOutputs 的变量，并使用它来存储输出值`$DeploymentScriptOutputs`。 若要访问模板内另一个资源的输出值，请使用：
 
 ```json
 reference('<ResourceName>').output.text
@@ -250,9 +250,9 @@ reference('<ResourceName>').output.text
 
 ## <a name="work-with-outputs-from-cli-script"></a>使用 CLI 脚本的输出
 
-与 PowerShell 部署脚本不同的是，CLI/bash 支持不公开公用变量来存储脚本输出，而是一个名为的环境变量， `AZ_SCRIPTS_OUTPUT_PATH` 用于存储脚本输出文件所在的位置。 如果从资源管理器模板运行部署脚本，则 Bash shell 会自动设置此环境变量。
+与 PowerShell 部署脚本不同，CLI/bash 支持不通过公开常见变量来存储脚本输出，而使用名为 `AZ_SCRIPTS_OUTPUT_PATH` 的环境变量来存储脚本输出文件所在的位置。 如果从资源管理器模板运行部署脚本，则 Bash shell 会自动设置此环境变量。
 
-部署脚本输出必须保存在该 `AZ_SCRIPTS_OUTPUT_PATH` 位置，并且输出必须为有效的 JSON 字符串对象。 必须将该文件的内容保存为键值对。 例如，字符串数组存储为 `{ "MyResult": [ "foo", "bar"] }` 。  例如，仅存储数组结果 `[ "foo", "bar" ]` 是无效的。
+部署脚本输出必须保存在 `AZ_SCRIPTS_OUTPUT_PATH` 位置，并且输出必须是有效的 JSON 字符串对象。 必须将该文件的内容保存为键值对。 例如，字符串数组存储为 `{ "MyResult": [ "foo", "bar"] }`。  仅存储数组结果是无效的，例如 `[ "foo", "bar" ]`。
 
 :::code language="json" source="~/resourcemanager-templates/deployment-script/deploymentscript-basic-cli.json" range="1-44" highlight="32":::
 
@@ -278,9 +278,9 @@ reference('<ResourceName>').output.text
     这些组合支持文件共享。 有关详细信息，请参阅[创建 Azure 文件共享](../../storage/files/storage-how-to-create-file-share.md)和[存储帐户类型](../../storage/common/storage-account-overview.md)。
 
 - 尚不支持存储帐户防火墙规则。 有关详细信息，请参阅[配置 Azure 存储防火墙和虚拟网络](../../storage/common/storage-network-security.md)。
-- 部署主体必须有权管理存储帐户，其中包括读取、创建和删除文件共享。
+- 部署主体必须具有管理存储帐户的权限，包括读取、创建和删除文件共享。
 
-若要指定现有存储帐户，请将以下 JSON 添加到的属性元素中 `Microsoft.Resources/deploymentScripts` ：
+若要指定现有存储帐户，请将以下 JSON 添加到 `Microsoft.Resources/deploymentScripts` 的属性元素中：
 
 ```json
 "storageAccountSettings": {
@@ -290,7 +290,7 @@ reference('<ResourceName>').output.text
 ```
 
 - `storageAccountName`：指定存储帐户的名称。
-- `storageAccountKey`：指定存储帐户密钥之一。 可以使用 [listKeys ( # B1 ](./template-functions-resource.md#listkeys) 函数来检索密钥。 例如：
+- `storageAccountKey`：指定存储帐户密钥之一。 可以使用 [listKeys()](./template-functions-resource.md#listkeys) 函数检索密钥。 例如：
 
     ```json
     "storageAccountSettings": {
@@ -307,9 +307,9 @@ reference('<ResourceName>').output.text
 
 ### <a name="handle-non-terminating-errors"></a>处理非终止错误
 
-可以通过 `$ErrorActionPreference` 在部署脚本中使用变量来控制 PowerShell 如何响应非终止错误。 如果未在部署脚本中设置变量，则脚本服务将使用默认值 **Continue**。
+可通过在部署脚本中使用 $ErrorActionPreference 变量来控制 PowerShell 响应非终止错误的方式`$ErrorActionPreference`。 如果未在部署脚本中设置该变量，则脚本服务将使用默认值“Continue”。
 
-脚本服务在遇到错误时将资源预配状态设置为 " **失败** "，因为设置为 `$ErrorActionPreference` 。
+不管为 `$ErrorActionPreference` 设置了什么值，当脚本遇到错误时，脚本服务会将资源预配状态设置为“失败”。
 
 ### <a name="pass-secured-strings-to-deployment-script"></a>将安全字符串传递到部署脚本
 
@@ -319,17 +319,17 @@ reference('<ResourceName>').output.text
 
 ## <a name="monitor-and-troubleshoot-deployment-scripts"></a>对部署脚本进行监视和故障排除
 
-脚本服务将创建一个[存储帐户](../../storage/common/storage-account-overview.md)（除非指定一个现有的存储帐户）和一个[容器实例](../../container-instances/container-instances-overview.md)以执行脚本。 如果这些资源由脚本服务自动创建，则这两个资源的 `azscripts` 资源名称中包含后缀。
+脚本服务将创建一个[存储帐户](../../storage/common/storage-account-overview.md)（除非指定一个现有的存储帐户）和一个[容器实例](../../container-instances/container-instances-overview.md)以执行脚本。 如果这些资源是由脚本服务自动创建的，则两个资源的资源名称后缀均为 azscripts`azscripts`。
 
 ![资源管理器模板部署脚本资源名称](./media/deployment-script-template/resource-manager-template-deployment-script-resources.png)
 
-用户脚本、执行结果和 stdout 文件存储在存储帐户的文件共享中。 有一个名为的文件夹 `azscripts` 。 在该文件夹中，输入和输出文件有两个文件夹： `azscriptinput` 和 `azscriptoutput` 。
+用户脚本、执行结果和 stdout 文件存储在存储帐户的文件共享中。 有一个名为 `azscripts` 的文件夹。 在该文件夹中，还有两个用于输入文件和输出文件的文件夹：azscriptinput 和 azscriptoutput`azscriptinput` `azscriptoutput`。
 
 输出文件夹包含 _executionresult.json_ 和脚本输出文件。 可以在 executionresult.json 中看到脚本执行错误消息。 仅当成功执行脚本时，才会创建输出文件。 输入文件夹包含一个系统 PowerShell 脚本文件和一些用户部署脚本文件。 可以使用修订后的文件替换用户部署脚本文件，然后从 Azure 容器实例重新运行部署脚本。
 
 ### <a name="use-the-azure-portal"></a>使用 Azure 门户
 
-部署好部署脚本资源后，该资源会在 Azure 门户中的资源组下列出。 以下屏幕截图显示了部署脚本资源的 " **概述** " 页：
+部署好部署脚本资源后，该资源会在 Azure 门户中的资源组下列出。 以下屏幕截图显示了部署脚本资源的“概述”页面：
 
 ![资源管理器模板部署脚本门户概述](./media/deployment-script-template/resource-manager-deployment-script-portal.png)
 
@@ -346,7 +346,7 @@ reference('<ResourceName>').output.text
 - [Remove-AzDeploymentScript](/powershell/module/az.resources/remove-azdeploymentscript)：删除部署脚本及其关联资源。
 - [Save-AzDeploymentScriptLog](/powershell/module/az.resources/save-azdeploymentscriptlog)：将部署脚本执行的日志保存到磁盘。
 
-`Get-AzDeploymentScript`输出类似于：
+`Get-AzDeploymentScript` 输出类似于：
 
 ```output
 Name                : runPowerShellInlineWithOutput
@@ -377,10 +377,10 @@ Timeout             : PT1H
 
 通过 Azure CLI，可在订阅或资源组范围管理部署脚本：
 
-- [az deployment-scripts delete](/cli/azure/deployment-scripts?view=azure-cli-latest&preserve-view=true#az-deployment-scripts-delete)：删除部署脚本。
-- [az deployment-scripts list](/cli/azure/deployment-scripts?view=azure-cli-latest&preserve-view=true#az-deployment-scripts-list)：列出所有部署脚本。
-- [az deployment-script show](/cli/azure/deployment-scripts?view=azure-cli-latest&preserve-view=true#az-deployment-scripts-show)：检索部署脚本。
-- [az deployment-script show-log](/cli/azure/deployment-scripts?view=azure-cli-lates&preserve-view=truet#az-deployment-scripts-show-log)：显示部署脚本日志。
+- [az deployment-scripts delete](/cli/azure/deployment-scripts#az-deployment-scripts-delete)：删除部署脚本。
+- [az deployment-scripts list](/cli/azure/deployment-scripts#az-deployment-scripts-list)：列出所有部署脚本。
+- [az deployment-scripts show](/cli/azure/deployment-scripts#az-deployment-scripts-show)：检索部署脚本。
+- [az deployment-scripts show-log](/cli/azure/deployment-scripts#az-deployment-scripts-show-log)：显示部署脚本日志。
 
 list 命令输出如下所示：
 
@@ -531,27 +531,27 @@ armclient get /subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourcegroups
 
 这些资源的生命周期由模板中的以下属性控制：
 
-- `cleanupPreference`：当脚本执行处于终端状态时，清理首选项。 支持的值包括：
+- `cleanupPreference`：当脚本执行达到最终状态时清理首选项。 支持的值包括：
 
-  - **Always**：脚本执行达到最终状态后，将删除自动创建的资源。 如果使用现有存储帐户，脚本服务将删除在存储帐户中创建的文件共享。 由于在 `deploymentScripts` 清理资源后资源可能仍然存在，因此，在删除资源之前，脚本服务会将脚本执行结果（例如，stdout、输出和返回值）保留。
+  - **Always**：脚本执行达到最终状态后，将删除自动创建的资源。 如果使用现有存储帐户，脚本服务将删除在存储帐户中创建的文件共享。 由于在清理资源后，`deploymentScripts` 资源可能仍然存在，因此在删除资源之前，脚本服务将保留脚本执行结果，例如 stdout、输出和返回值。
   - **OnSuccess**：仅当脚本执行成功时才删除自动创建的资源。 如果使用现有存储帐户，则脚本服务仅在脚本执行成功时才删除文件共享。 你仍可以访问资源来查找调试信息。
-  - **OnExpiration**：仅当 `retentionInterval` 设置为 "已过期" 时才删除自动创建的资源。 如果使用现有的存储帐户，则脚本服务将删除文件共享，但将保留存储帐户。
+  - **OnExpiration**：仅当 `retentionInterval` 设置过期时，才删除自动创建的资源。 如果使用现有存储帐户，脚本服务将删除文件共享，但保留存储帐户。
 
-- `retentionInterval`：指定将保留脚本资源的时间间隔，在此时间间隔后将过期并删除。
+- `retentionInterval`：指定将保留脚本资源的时间间隔，超过此时间间隔后，脚本资源将过期并被删除。
 
 > [!NOTE]
 > 不建议将脚本服务生成的存储帐户和容器实例用于其他目的。 根据脚本的生命周期，可能会删除这两个资源。
 
-根据，删除容器实例和存储帐户 `cleanupPreference` 。 但是，如果脚本失败并且 `cleanupPreference` 未设置为 " **始终**"，则部署过程会自动使容器运行一小时。 您可以使用此小时来对脚本进行故障排除。 如果要在成功部署后让容器保持运行状态，请将睡眠步骤添加到脚本。 例如，将 [开始-睡眠](/powershell/module/microsoft.powershell.utility/start-sleep) 添加到脚本的末尾。 如果未添加 "睡眠" 步骤，则会将该容器设置为终端状态，并且即使还没有删除，也不能对其进行访问。
+容器实例和存储帐户根据 `cleanupPreference` 被删除。 但是，如果脚本失败，并且 `cleanupPreference` 未设置为“始终”，则部署过程会自动使容器运行一小时。 可以使用这一小时对脚本进行故障排除。 如果要在成功部署后保持容器运行，请向脚本添加睡眠步骤。 例如，将 [Start-Sleep](/powershell/module/microsoft.powershell.utility/start-sleep) 添加到脚本的末尾。 如果你未添加睡眠步骤，则容器将被设置为终端状态，即使其尚未被删除，你也无法访问该容器。
 
 ## <a name="run-script-more-than-once"></a>多次运行脚本
 
-部署脚本执行操作是一个幂等操作。 如果未 `deploymentScripts` 更改包含内联脚本) 的任何资源属性 (，则在重新部署该模板时，脚本不会执行。 部署脚本服务将模板中的资源名称与同一资源组中的现有资源进行比较。 如果要多次执行相同的部署脚本，有两个选项可供选择：
+部署脚本执行操作是一个幂等操作。 如果未更改 `deploymentScripts` 资源属性（包括内联脚本），则在重新部署模板时不会执行该脚本。 部署脚本服务将模板中的资源名称与同一资源组中的现有资源进行比较。 如果要多次执行相同的部署脚本，有两个选项可供选择：
 
-- 更改资源的名称 `deploymentScripts` 。 例如，使用 [utcNow](./template-functions-date.md#utcnow) 模板函数作为资源名称或资源名称的一部分。 更改资源名称会创建一个新的 `deploymentScripts` 资源。 它适用于保留脚本执行的历史记录。
+- 更改 `deploymentScripts` 资源的名称。 例如，使用 [utcNow](./template-functions-date.md#utcnow) 模板函数作为资源名称或资源名称的一部分。 更改资源名称将创建一个新的 `deploymentScripts` 资源。 这对于保留脚本执行历史记录很有帮助。
 
     > [!NOTE]
-    > `utcNow`函数只能在参数的默认值中使用。
+    > `utcNow` 函数只能在参数的默认值中使用。
 
 - 在 `forceUpdateTag` 模板属性中指定其他值。 例如，使用 `utcNow` 作为值。
 
@@ -569,20 +569,20 @@ armclient get /subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourcegroups
 | 错误代码 | 说明 |
 |------------|-------------|
 | DeploymentScriptInvalidOperation | 模板中的部署脚本资源定义包含无效的属性名。 |
-| DeploymentScriptResourceConflict | 无法删除处于非终端状态的部署脚本资源，执行操作未超过1小时。 或者，无法重新运行同一资源标识符相同的部署脚本 (相同的订阅、资源组名称和资源名称) 但同时不同的脚本正文内容。 |
+| DeploymentScriptResourceConflict | 无法删除处于非终端状态且执行未超过 1 小时的部署脚本资源。 或者，无法同时重新运行资源标识符相同（订阅、资源组名称和资源名称相同）但脚本正文内容不同的同一部署脚本。 |
 | DeploymentScriptOperationFailed | 部署脚本操作在内部失败。 联系 Microsoft 支持部门。 |
 | DeploymentScriptStorageAccountAccessKeyNotSpecified | 尚未为现有存储帐户指定访问密钥。|
 | DeploymentScriptContainerGroupContainsInvalidContainers | 由部署脚本服务创建的容器组已从外部修改，并且添加了无效的容器。 |
-| DeploymentScriptContainerGroupInNonterminalState | 两个或多个部署脚本资源在同一资源组中使用相同的 Azure 容器实例名称，其中一个资源尚未完成其执行。 |
+| DeploymentScriptContainerGroupInNonterminalState | 两个或更多部署脚本资源在同一资源组中使用相同的 Azure 容器实例名称，其中一个尚未完成其执行。 |
 | DeploymentScriptStorageAccountInvalidKind | BlobBlobStorage 或 BlobStorage 类型的现有存储帐户不支持文件共享，因此无法使用。 |
-| DeploymentScriptStorageAccountInvalidKindAndSku | 现有的存储帐户不支持文件共享。 有关支持的存储帐户类型的列表，请参阅[使用现有存储帐户](#use-existing-storage-account)。 |
+| DeploymentScriptStorageAccountInvalidKindAndSku | 现有存储帐户不支持文件共享。 有关支持的存储帐户类型的列表，请参阅[使用现有存储帐户](#use-existing-storage-account)。 |
 | DeploymentScriptStorageAccountNotFound | 存储帐户不存在，或者已被外部进程或工具删除。 |
 | DeploymentScriptStorageAccountWithServiceEndpointEnabled | 指定的存储帐户包含一个服务终结点。 不支持具有服务终结点的存储帐户。 |
 | DeploymentScriptStorageAccountInvalidAccessKey | 为现有存储帐户指定的访问密钥无效。 |
 | DeploymentScriptStorageAccountInvalidAccessKeyFormat | 存储帐户密钥格式无效。 请参阅[管理存储帐户访问密钥](../../storage/common/storage-account-keys-manage.md)。 |
 | DeploymentScriptExceededMaxAllowedTime | 部署脚本执行时间超过了部署脚本资源定义中指定的超时值。 |
 | DeploymentScriptInvalidOutputs | 部署脚本输出不是有效的 JSON 对象。 |
-| DeploymentScriptContainerInstancesServiceLoginFailure | 用户分配的托管标识在尝试10分钟后无法登录。 |
+| DeploymentScriptContainerInstancesServiceLoginFailure | 用户分配的托管标识在间隔 1 分钟的 10 次尝试后无法登录。 |
 | DeploymentScriptContainerGroupNotFound | 部署脚本服务创建的容器组已被外部工具或进程删除。 |
 | DeploymentScriptDownloadFailure | 未能下载支持脚本。 请参阅[使用支持脚本](#use-supporting-scripts)。|
 | DeploymentScriptError | 用户脚本引发错误。 |

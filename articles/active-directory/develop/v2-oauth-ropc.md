@@ -13,12 +13,12 @@ ms.date: 05/18/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: d0282e4f52db8557364cdabe197fa0da63204e42
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: bf469b79fa532978e904a54f32c80280706ee7cb
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98752640"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102174574"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-resource-owner-password-credentials"></a>Microsoft 标识平台和 OAuth 2.0 资源所有者密码凭据
 
@@ -34,6 +34,7 @@ Microsoft 标识平台支持 [OAuth 2.0 资源所有者密码凭据 (ROPC) grant
 > * 没有密码的帐户不能通过 ROPC 登录。 对于这种情况，建议改用适合应用的其他流。
 > * 如果用户需使用[多重身份验证 (MFA)](../authentication/concept-mfa-howitworks.md) 来登录应用程序，则系统会改为阻止用户。
 > * [混合联合身份验证](../hybrid/whatis-fed.md)方案（例如，用于对本地帐户进行身份验证的 Azure AD 和 ADFS）不支持 ROPC。 如果用户被整页重定向到本地标识提供程序，Azure AD 无法针对该标识提供程序测试用户名和密码。 不过，ROPC 支持[传递身份验证](../hybrid/how-to-connect-pta.md)。
+> * 混合身份联合身份验证方案的例外情况如下：在将本地密码同步到云时，将 AllowCloudPasswordValidation 设置为 TRUE 时，将启用 ROPC 流来处理联合用户。 有关详细信息，请参阅 [为旧版应用程序启用联合用户的直接 ROPC 身份验证](../manage-apps/configure-authentication-for-federated-users-portal.md#enable-direct-ropc-authentication-of-federated-users-for-legacy-applications)。
 
 ## <a name="protocol-diagram"></a>协议图
 

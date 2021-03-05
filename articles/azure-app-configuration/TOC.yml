@@ -139,7 +139,7 @@
     - name: 配置
       items:
         - name: Azure CLI
-          href: /cli/azure/appconfig?view=azure-cli-latest
+          href: /cli/azure/appconfig
         - name: .NET Core 提供程序
           href: /dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration
         - name: .NET Framework 生成器

@@ -4,13 +4,13 @@ description: 本文介绍如何在 Azure FarmBeats 中生成地图。
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
-ms.author: v-umha
-ms.openlocfilehash: 92228c691c323bc0b9621dfc7413d86c5c2669e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: v-ummehabiba
+ms.openlocfilehash: d0176fd337abd37f97a6dbe5cf7c68ccf94114d0
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84709056"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102173858"
 ---
 # <a name="generate-maps"></a>生成地图
 
@@ -26,7 +26,7 @@ FarmBeats 传感器放置图可帮助放置土料湿度传感器。 地图输出
 
 此地图是通过将 canopy 划分为一年中的多个日期来进行的。 即使是 canopy 的一部分， 您可以删除该位置上不需要的传感器。 此地图适用于指南，你可以根据自己的自定义知识略微改变位置和数量。 添加传感器不会回退土湿度热度地图的结果，但如果传感器号降低，就有可能有损坏的热度地图准确性。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 
 在尝试生成传感器放置图之前，请满足以下先决条件：
 
@@ -69,7 +69,7 @@ FarmBeats 传感器放置图可帮助放置土料湿度传感器。 地图输出
 7. 选择 " **生成映射**"。
  此时会显示包含作业详细信息的确认消息。
 
-  有关作业状态的信息，请参阅 **查看作业**部分。 如果作业状态显示 " *失败*"，则会在 " *失败* " 状态的工具提示上出现详细的错误消息。 在这种情况下，请重复前面的步骤，然后重试。
+  有关作业状态的信息，请参阅 **查看作业** 部分。 如果作业状态显示 " *失败*"，则会在 " *失败* " 状态的工具提示上出现详细的错误消息。 在这种情况下，请重复前面的步骤，然后重试。
 
   如果问题仍然存在，请参阅 [故障排除](troubleshoot-azure-farmbeats.md) 部分，或与 [Azure FarmBeats 论坛联系以获得](https://aka.ms/FarmBeatsMSDN) 相关日志支持。
 
@@ -117,7 +117,7 @@ FarmBeats 使你能够生成 NDVI、增强的 Vegetation 索引 (EVI) ，以及�
 
     ![从下拉菜单中选择 "附属索引"](./media/get-sensor-data-from-sensor-partner/create-maps-drop-down-satellite-indices-1.png)
 
-3. 选择 " **附属**索引" 后，将显示 " **附属索引** " 窗口。
+3. 选择 " **附属** 索引" 后，将显示 " **附属索引** " 窗口。
 
     ![附属索引窗口](./media/get-sensor-data-from-sensor-partner/satellitte-indices-1.png)
 
@@ -130,7 +130,7 @@ FarmBeats 使你能够生成 NDVI、增强的 Vegetation 索引 (EVI) ，以及�
 
     ![卫星索引映射确认消息](./media/get-sensor-data-from-sensor-partner/successful-satellitte-indices-1.png)
 
-    有关作业状态的信息，请参阅 **查看作业**部分。 如果作业状态显示 " *失败*"，则会在 " *失败* " 状态的工具提示上出现详细的错误消息。 在这种情况下，请重复前面的步骤，然后重试。
+    有关作业状态的信息，请参阅 **查看作业** 部分。 如果作业状态显示 " *失败*"，则会在 " *失败* " 状态的工具提示上出现详细的错误消息。 在这种情况下，请重复前面的步骤，然后重试。
 
     如果问题仍然存在，请参阅 [故障排除](troubleshoot-azure-farmbeats.md) 部分，或与 [Azure FarmBeats 论坛联系以获得](https://aka.ms/FarmBeatsMSDN) 相关日志支持。
 
@@ -150,7 +150,7 @@ FarmBeats 使你能够生成 NDVI、增强的 Vegetation 索引 (EVI) ，以及�
   创建作业的日期以格式显示，格式为 type_farmname_YYYY-MM-DD。
 
 4. 在页面末尾使用导航栏，滚动浏览可用地图的列表。
-5. 对于 **场名称** 和 **日期**的每个组合，可以使用以下三个映射：
+5. 对于 **场名称** 和 **日期** 的每个组合，可以使用以下三个映射：
     - NDVI
     - EVI
     - NDWI
@@ -163,7 +163,7 @@ FarmBeats 使你能够生成 NDVI、增强的 Vegetation 索引 (EVI) ，以及�
 
 土料湿气指的是在两个上料粒子之间的空格。在您的场中，您可以在任何深度以高分辨率了解土里湿气数据。 若要生成准确且可用的土料湿气热度地图，需要对传感器进行统一部署。 所有传感器都必须来自同一个提供程序。 不同的提供程序的测量方式与上料湿气的测量方式不同，而校准的差别也不同。 使用在该深度部署的传感器为特定深度生成热度地图。
 
-### <a name="before-you-begin"></a>开始之前
+### <a name="before-you-begin"></a>准备阶段
 
 在尝试生成土潮湿热度地图之前，应满足以下先决条件：
 
@@ -182,7 +182,7 @@ FarmBeats 使你能够生成 NDVI、增强的 Vegetation 索引 (EVI) ，以及�
 
     ![从下拉菜单中选择 "土料湿气"](./media/get-sensor-data-from-sensor-partner/create-maps-drop-down-soil-moisture-1.png)
 
-3. 选择 " **土料" 湿气**后，出现 " **土料湿气** " 窗口。
+3. 选择 " **土料" 湿气** 后，出现 " **土料湿气** " 窗口。
 
     ![土料湿气窗口](./media/get-sensor-data-from-sensor-partner/soil-moisture-1.png)
 
@@ -190,14 +190,14 @@ FarmBeats 使你能够生成 NDVI、增强的 Vegetation 索引 (EVI) ，以及�
    若要搜索并选择你的场，你可以从下拉列表中滚动，或在 " **选择场** " 下拉菜单中输入场的名称。
 5. 在 " **选择土料湿度传感器度量值** " 下拉菜单上，选择要为其生成地图的 "土料湿度传感器" 度量值 (深度) 。
 若要找到传感器测量值，请参阅 **传感器**，并选择任何泥土湿度传感器。 然后，在 " **传感器属性** " 部分的 "度量值 **名称**" 中使用值。
-6. 若要生成 **当前** 或 **本周**的地图，请选择其中一个选项。
+6. 若要生成 **当前** 或 **本周** 的地图，请选择其中一个选项。
 7. 若要生成自定义日期范围的映射，请选择 " **选择日期范围**" 选项。 输入要为其生成土料湿度热度地图的开始和结束日期。
 8. 选择 " **生成映射**"。
  此时会显示包含作业详细信息的确认消息。
 
    ![土料湿气地图确认消息](./media/get-sensor-data-from-sensor-partner/successful-soil-moisture-1.png)
 
-    有关作业状态的信息，请参阅 **查看作业**部分。 如果作业状态显示 " *失败*"，则会在 " *失败* " 状态的工具提示上出现详细的错误消息。 在这种情况下，请重复前面的步骤，然后重试。
+    有关作业状态的信息，请参阅 **查看作业** 部分。 如果作业状态显示 " *失败*"，则会在 " *失败* " 状态的工具提示上出现详细的错误消息。 在这种情况下，请重复前面的步骤，然后重试。
 
     如果问题仍然存在，请参阅 [故障排除](troubleshoot-azure-farmbeats.md) 部分，或与 [Azure FarmBeats 论坛联系以获得](https://aka.ms/FarmBeatsMSDN) 相关日志支持。
 
@@ -214,7 +214,7 @@ FarmBeats 使你能够生成 NDVI、增强的 Vegetation 索引 (EVI) ，以及�
     ![从左侧导航栏中选择 "筛选器"](./media/get-sensor-data-from-sensor-partner/view-download-filter-1.png)
 
 3.  从下拉菜单中选择 " **类型**"、" **日期**" 和 " **名称** " 值。 然后选择 " **应用** " 以搜索要查看的地图。 创建作业的日期以格式显示，格式为 type_farmname_YYYY-MM-DD。
-4. 选择表标题旁边的 **排序** 图标，按 **场**、 **日期**、 **创建时间**、 **作业 ID**和 **作业类型**进行排序。
+4. 选择表标题旁边的 **排序** 图标，按 **场**、 **日期**、 **创建时间**、 **作业 ID** 和 **作业类型** 进行排序。
 5. 使用页面末尾的导航按钮，滚动浏览可用地图的列表。
 6. 选择要查看的地图。 弹出窗口显示所选地图的预览。
 7. 从下拉菜单中选择 " **下载** " 以选择下载格式。 映射将下载并存储在指定的文件夹中。

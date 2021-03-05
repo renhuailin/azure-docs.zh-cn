@@ -11,12 +11,12 @@ ms.custom:
 - cli-validate
 - devx-track-python
 - devx-track-azurecli
-ms.openlocfilehash: 6112247a99c519aad8aadf7946c7707480b3b491
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: a9f8fe10c5ffa787a6c170a29188cba21427b602
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99558415"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175152"
 ---
 # <a name="tutorial-deploy-a-django-web-app-with-postgresql-in-azure-app-service"></a>教程：在 Azure 应用服务中部署使用 PostgreSQL 的 Django Web 应用
 
@@ -231,7 +231,7 @@ Django 数据库迁移会确保 Azure 数据库上的 PostgreSQL 中的架构与
 
     将 `<app-name>` 替换为之前在 `az webapp up` 命令中使用的名称。
 
-    可以使用 [`az webapp ssh`](/cli/azure/webapp?view=azure-cli-latest&preserve-view=true#az_webapp_ssh) 命令以其他方式连接到 SSH 会话。 在 Windows 上，此命令需要 Azure CLI 2.18.0 或更高版本。
+    可以使用 [`az webapp ssh`](/cli/azure/webapp#az_webapp_ssh) 命令以其他方式连接到 SSH 会话。 在 Windows 上，此命令需要 Azure CLI 2.18.0 或更高版本。
 
     如果你无法连接到 SSH 会话，则表示应用本身已启动失败。 [请查看诊断日志](#6-stream-diagnostic-logs)以了解详细信息。 例如，如果你没有在上一部分中创建必要的应用设置，则日志将指示 `KeyError: 'DBNAME'`。
 

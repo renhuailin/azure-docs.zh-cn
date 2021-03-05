@@ -11,12 +11,12 @@ author: knicholasa
 manager: martinco
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 039dd8b6fa0769b6798630e666bfbf6de48ccf14
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 7e5eb77a27a7c74ad9738a0e1784066a6a859e43
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101649234"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175362"
 ---
 # <a name="browser-support-of-fido2-passwordless-authentication"></a>FIDO2 无密码 authentication 的浏览器支持
 
@@ -26,12 +26,14 @@ Azure Active Directory 允许将 [FIDO2 安全密钥](./concept-authentication-p
 
 此表显示了对 Azure Active Directory (Azure AD) 和 Microsoft 帐户 (MSA) 进行身份验证的支持。 Microsoft 帐户由使用者为 Xbox、Skype 或 Outlook.com 等服务创建。 支持的设备类型包括 **USB**、近乎现场通信 (**NFC**) 和蓝牙低能耗 (**BLE**) 。
 
-|  | Chrome |  |  | Edge |  |  | Firefox |  |  |
+| (OS) | Chrome | Chrome  | Chrome | Edge | Edge | Edge | Firefox | Firefox | Firefox |
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 | | USB | NFC | BLE | USB | NFC | BLE | USB | NFC | BLE |
 | **Windows**  | ![适用于 AAD 帐户的 Chrome 支持 Windows 上的 USB。][y] | ![Chrome 在 Windows 上支持 AAD 帐户的 NFC。][y] | ![Chrome 支持 Windows 上的 BLE 用于 AAD 帐户。][y] | ![边缘支持 AAD 帐户的 Windows 上的 USB。][y] | ![边缘支持 Windows 上的 NFC 帐户的 NFC。][y] | ![边缘支持适用于 AAD 帐户的 Windows 上的 BLE。][y] | ![Firefox 支持 AAD 帐户的 Windows 上的 USB。][y] | ![Firefox 支持在 Windows 上启用用于 AAD 帐户的 NFC。][y] | ![Firefox 支持 Windows 上的 BLE 用于 AAD 帐户。][y] |
 | **macOS**  | ![Chrome 支持 AAD 帐户的 macOS 上的 USB。][y] | ![Chrome 在 macOS 上不支持 AAD 帐户的 NFC。][n] | ![Chrome 不支持 AAD 帐户的 macOS 上的 BLE。][n] | ![边缘支持 AAD 帐户的 macOS 上的 USB。][y] | ![Edge 不支持 AAD 帐户的 macOS 上的 NFC。][n] | ![Edge 不支持 AAD 帐户的 macOS 上的 BLE。][n] | ![Firefox 不支持 AAD 帐户的 macOS 上的 USB。][n] | ![在 macOS 上，Firefox 不支持 AAD 帐户的 NFC。][n] | ![Firefox 不支持 AAD 帐户的 macOS 上的 BLE。][n] |
 | **Linux**  | ![Chrome 支持在 Linux 上为 AAD 帐户启用 USB。][y] | ![Chrome 不支持在 Linux 上用于 AAD 帐户的 NFC。][n] | ![Chrome 不支持 Linux 上的 BLE 用于 AAD 帐户。][n] | ![Edge 不支持在 Linux 上为 AAD 帐户启用 USB。][n] | ![Edge 不支持 Linux 上的 NFC 帐户的 NFC。][n] | ![对于 AAD 帐户，Edge 不支持 Linux 上的 BLE。][n] | ![Firefox 不支持在 Linux 上为 AAD 帐户启用 USB。][n] | ![在 Linux 上，Firefox 不支持 AAD 帐户的 NFC。][n] | ![在 Linux 上，Firefox 不支持 AAD 帐户的 BLE。][n] |
+
+
 
 ## <a name="unsupported-browsers"></a>不受支持的浏览器
 

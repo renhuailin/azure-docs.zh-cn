@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: overview
 ms.date: 06/08/2020
 ms.author: justinha
-ms.openlocfilehash: 479cc036ed3231d970d46eef9d89daa39a0b0876
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 48ce982a6d6d7a3ed12d6e3b4711d111dec4d6f8
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96620182"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102174625"
 ---
 # <a name="compare-self-managed-active-directory-domain-services-azure-active-directory-and-managed-azure-active-directory-domain-services"></a>自我管理型 Azure Active Directory 域服务、Azure Active Directory 和托管型 Azure Active Directory 域服务的比较
 
@@ -78,7 +78,7 @@ Azure AD DS 提供传统自我管理型 AD DS 环境的一小部分功能，这�
 | **安全 LDAP (LDAPS)**                           | **&#x2713;** | **&#x2713;** |
 | **LDAP 读取**                                     | **&#x2713;** | **&#x2713;** |
 | **LDAP 写入**                                    | **&#x2713;** （在托管域中） | **&#x2713;** |
-| **地理分布式部署**                   | **&#x2715;** | **&#x2713;** |
+| **地理分布式部署**                   | **&#x2713;** | **&#x2713;** |
 
 ## <a name="azure-ad-ds-and-azure-ad"></a>Azure AD DS 和 Azure AD
 

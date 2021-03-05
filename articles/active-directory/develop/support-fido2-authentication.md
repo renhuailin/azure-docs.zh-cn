@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 1/29/2021
 ms.author: nichola
 ms.custom: aaddev
-ms.openlocfilehash: e7193ee5d076538689078ce634b8170926df20b6
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: f63d7aed75b14f5f008a639d667d8806b233b9fa
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101653246"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102174592"
 ---
 # <a name="support-passwordless-authentication-with-fido2-keys-in-apps-you-develop"></a>支持在开发的应用中通过 FIDO2 密钥进行无密码身份验证
 
@@ -52,7 +52,7 @@ RequestedAuthnContext 元素是可选的，因此，若要解决此问题，可�
 
 ### <a name="mobile"></a>移动电话
 
-从2020年2月开始，本机 iOS 或 Android 应用当前不支持 FIDO2，但正在开发中。
+从2021年2月开始，本机 iOS 或 Android 应用当前不支持 FIDO2，但正在开发中。
 
 若要为应用程序准备可用性，并作为常规最佳做法，iOS 和 Android 应用程序应将 MSAL 与默认配置结合使用系统 web 浏览器。
 

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 01/19/2021
-ms.openlocfilehash: 82c11b913d38695c8738de88f3ce69b198ee099e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: fe6fa5c9b05afd5479818fe9bb25e471665cb867
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101691869"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102171460"
 ---
 # <a name="run-jupyter-notebooks-in-your-workspace"></a>在工作区中运行 Jupyter 笔记本
 
@@ -185,6 +185,89 @@ ms.locfileid: "101691869"
 ## <a name="find-compute-details"></a>查找计算详细信息
 
 有关计算实例的详细信息，可以访问[工作室](https://ml.azure.com)的“计算”页。
+
+## <a name="useful-keyboard-shortcuts"></a>有用的键盘快捷方式
+与 Jupyter Notebook 类似，Azure 机器学习工作室笔记本有一个模式化用户界面。 键盘根据笔记本单元格的具体模式执行不同的任务。 对于给定的代码单元格，Azure 机器学习工作室笔记本支持以下两种模式：命令模式和编辑模式。
+
+### <a name="command-mode-shortcuts"></a>命令模式快捷方式
+
+当没有文本光标提示你键入时，单元格处于命令模式。 当单元格处于命令模式时，可以将笔记本作为一个整体进行编辑，但不能键入单独的单元格。 按 `ESC` 或使用鼠标选择单元格编辑器区域外部，进入命令模式。  活动单元格的左边框为蓝色且为实线，其“运行”按钮为蓝色。
+
+   :::image type="content" source="media/how-to-run-jupyter-notebooks/command-mode.png" alt-text="命令模式下的笔记本单元格":::
+
+| 快捷键                      | 描述                          |
+| ----------------------------- | ------------------------------------|
+| Enter                         | 进入编辑模式             |        
+| Shift+Enter                 | 运行单元格，选择下方         |     
+| Control/Command + Enter       | 运行单元格                            |
+| Alt + Enter                   | 运行单元格，在下方插入代码单元格    |
+| Control/Command + Alt + Enter | 运行单元格，在下方插入 Markdown 单元格|
+| Alt + R                       | 全部运行      |                       
+| Y                             | 将单元格转换为代码    |                         
+| M                             | 将单元格转换为 Markdown  |                       
+| Up/K                          | 选择上方的单元格    |               
+| Down/J                        | 选择下方的单元格    |               
+| A                             | 在上方插入代码单元格  |            
+| B                             | 在下方插入代码单元格   |           
+| Control/Command + Shift + A   | 在上方插入 Markdown 单元格    |      
+| Control/Command + Shift + B   | 在下方插入 Markdown 单元格   |       
+| X                             | 剪切所选单元格    |               
+| C                             | 复制所选单元格   |               
+| Shift + V                     | 在上方粘贴所选单元格           |
+| V                             | 在下方粘贴所选单元格    |       
+| D D                           | 删除所选单元格|                
+| O                             | 切换输出         |              
+| Shift + O                     | 打开/关闭输出滚动   |          
+| I I                           | 中断内核 |                   
+| 0 0                           | 重启内核 |                     
+| Shift + 空格键                 | 向上滚动  |                         
+| Space                         | 向下滚动|
+| 选项卡                           | 将焦点更改到下一个可聚焦的项（当 Tab 陷阱被禁用时）|
+| Control/Command + S           | 保存笔记本 |                      
+| 1                             | 更改到 h1|                       
+| 2                             | 更改到 h2|                        
+| 3                             | 更改到 h3|                        
+| 4                             | 更改到 h4 |                       
+| 5                             | 更改到 h5 |                       
+| 6                             | 更改到 h6 |                       
+
+### <a name="edit-mode-shortcuts"></a>编辑模式快捷方式
+
+编辑模式由文本光标指示，提示你在编辑器区域中键入内容。 当单元格处于编辑模式时，可以在单元格中键入。 按 `Enter` 或使用鼠标选择单元格的编辑器区域，进入编辑模式。 活动单元格的左边框为绿色且为交错线，其“运行”按钮为绿色。 在“编辑”模式下，还会在单元格中看到光标提示。
+
+   :::image type="content" source="media/how-to-run-jupyter-notebooks/edit-mode.png" alt-text="编辑模式下的笔记本单元格":::
+
+使用以下击键快捷方式，可以在“编辑”模式下更轻松地在 Azure 机器学习笔记本中导航并运行代码。
+
+| 快捷键                      | 描述|                                     
+| ----------------------------- | ----------------------------------------------- |
+| Escape                        | 进入命令模式|  
+| Control/Command + 空格键       | 激活 IntelliSense |
+| Shift+Enter                 | 运行单元格，选择下方 |                         
+| Control/Command + Enter       | 运行单元格  |                                      
+| Alt + Enter                   | 运行单元格，在下方插入代码单元格  |              
+| Control/Command + Alt + Enter | 运行单元格，在下方插入 Markdown 单元格  |          
+| Alt + R                       | 运行所有单元格     |                              
+| 向上                            | 将光标上移或移到上一个单元格    |             
+| 向下                          | 将光标下移或移到下一个单元格 |                  
+| Control/Command + S           | 保存笔记本   |                                
+| Control/Command + 向上箭头键          | 转到单元格开头   |                             
+| Control/Command + 向下箭头键        | 转到单元格末尾 |                                 
+| 选项卡                           | 代码完成或缩进（如果启用了 Tab 陷阱） |
+| Control/Command + M           | 启用/禁用 Tab 陷阱  |                       
+| Control/Command + ]           | 缩进 |                                         
+| Control/Command + [           | 取消缩进  |                                        
+| Control/Command + A           | 全选|                                      
+| Control/Command + Z           | 撤消 |                                           
+| Control/Command + Shift + Z   | 重做 |                                           
+| Control/Command + Y           | 重做 |                                           
+| Control/Command + Home        | 转到单元格开头|                                
+| Control/Command + End         | 转到单元格末尾   |                               
+| Control/Command + 向左箭头键        | 左移一个字 |                               
+| Control/Command + 向右箭头键       | 右移一个字 |                              
+| Control/Command + Backspace   | 删除插入提示之前的字 |                             
+| Control/Command + Delete      | 删除插入提示之后的字 |                              
+| Control/Command + /           | 切换单元格上的注释
 
 ## <a name="troubleshooting"></a>疑难解答
 

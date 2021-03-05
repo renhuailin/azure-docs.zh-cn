@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/10/2020
+ms.date: 03/04/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: eb7cba1de280793a1ca98687c71355c1ea702d4c
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: e76fe1c26f428403a79a3605b7a41f761fe2a4bb
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97585218"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102171614"
 ---
 #  <a name="add-user-attributes-and-customize-user-input-in-azure-active-directory-b2c"></a>添加用户属性和自定义 Azure Active Directory B2C 中的用户输入
 
@@ -142,7 +142,7 @@ ms.locfileid: "97585218"
 
 ## <a name="define-a-claim"></a>定义声明
 
-声明在 Azure AD B2C 策略执行过程中提供数据的临时存储。 [声明架构](claimsschema.md)是发出声明的位置。 以下元素用于定义声明：
+声明可在 Azure AD B2C 策略执行过程中提供数据的临时存储。 [声明架构](claimsschema.md)是发出声明的位置。 以下元素用于定义声明：
 
 - **DisplayName** - 一个字符串，用于定义面向用户的标签。
 - [DataType](claimsschema.md#datatype) -声明的类型。
@@ -176,7 +176,7 @@ ms.locfileid: "97585218"
 - **SelfAsserted-** 联合帐户首次用户登录。
 - **SelfAsserted-self-asserted-profileupdate** -编辑配置文件流。
 
-若要在注册期间收集城市声明，则必须将其作为输出声明添加到 `LocalAccountSignUpWithLogonEmail` 技术配置文件中。 覆盖扩展文件中的此技术配置文件。 指定输出声明的完整列表，以控制声明在屏幕上的显示顺序。 找到 **ClaimsProviders** 元素。 添加新的 ClaimsProviders，如下所示：
+若要在注册期间收集城市声明，则必须将其作为输出声明添加到 `LocalAccountSignUpWithLogonEmail` 技术配置文件中。 覆盖扩展文件中的此技术配置文件。 指定输出声明的整个列表，以控制声明在屏幕上的显示顺序。 找到 **ClaimsProviders** 元素。 添加新的 ClaimsProviders，如下所示：
 
 ```xml
 <ClaimsProvider>
@@ -198,7 +198,7 @@ ms.locfileid: "97585218"
 </ClaimsProvider>
 ```
 
-若要在使用联合帐户初次登录后收集 city 声明，必须将其作为输出声明添加到 `SelfAsserted-Social` 技术配置文件。 为了使本地和联合帐户用户以后能够编辑其配置文件数据，请将输出声明添加到 `SelfAsserted-ProfileUpdate` 技术配置文件中。 覆盖扩展文件中的这些技术配置文件。 指定输出声明的完整列表，以控制声明在屏幕上的显示顺序。 找到 **ClaimsProviders** 元素。 添加新的 ClaimsProviders，如下所示：
+若要在使用联合帐户初次登录后收集 city 声明，必须将其作为输出声明添加到 `SelfAsserted-Social` 技术配置文件。 为了使本地和联合帐户用户以后能够编辑其配置文件数据，请将输入和输出声明添加到 `SelfAsserted-ProfileUpdate` 技术配置文件中。 覆盖扩展文件中的这些技术配置文件。 指定输出声明的完整列表，以控制声明在屏幕上的显示顺序。 找到 **ClaimsProviders** 元素。 添加新的 ClaimsProviders，如下所示：
 
 ```xml
 <ClaimsProvider>
@@ -206,6 +206,9 @@ ms.locfileid: "97585218"
   <TechnicalProfiles>
     <!--Federated account first-time sign-in page-->
     <TechnicalProfile Id="SelfAsserted-Social">
+      <InputClaims>
+        <InputClaim ClaimTypeReferenceId="city" />
+      </InputClaims>
       <OutputClaims>
         <OutputClaim ClaimTypeReferenceId="displayName"/>
         <OutputClaim ClaimTypeReferenceId="givenName"/>
@@ -215,6 +218,9 @@ ms.locfileid: "97585218"
     </TechnicalProfile>
     <!--Edit profile page-->
     <TechnicalProfile Id="SelfAsserted-ProfileUpdate">
+      <InputClaims>
+        <InputClaim ClaimTypeReferenceId="city" />
+      </InputClaims>
       <OutputClaims>
         <OutputClaim ClaimTypeReferenceId="displayName"/>
         <OutputClaim ClaimTypeReferenceId="givenName" />

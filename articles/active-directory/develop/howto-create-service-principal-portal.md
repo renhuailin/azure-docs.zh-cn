@@ -12,12 +12,12 @@ ms.date: 06/26/2020
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
-ms.openlocfilehash: 5dd960dde72b879515bd948c4731ead135bef4b0
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 6adc3a8af90f6f05f640de97b8fa74c8d40e0329
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102035044"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175528"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>如何：使用门户创建可访问资源的 Azure AD 应用程序和服务主体
 
@@ -84,6 +84,9 @@ ms.locfileid: "102035044"
    ![键入应用程序的名称](./media/howto-create-service-principal-portal/create-app.png)
 
 现已创建了 Azure AD 应用程序和服务主体。
+
+> [!NOTE]
+> 可以在 Azure AD 中注册多个同名的应用程序，但应用程序必须具有不同的应用程序 (客户端) Id。
 
 ## <a name="assign-a-role-to-the-application"></a>将角色分配给应用程序
 

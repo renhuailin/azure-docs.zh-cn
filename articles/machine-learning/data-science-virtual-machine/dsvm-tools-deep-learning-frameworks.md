@@ -10,12 +10,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.openlocfilehash: 3c720e2b033d07397f3b13c37e1b4e15251b0a17
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: 0bfdea6c0bbbe40e4c72ab9da70a1b16d4bc4d3a
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100519484"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175662"
 ---
 # <a name="deep-learning-and-ai-frameworks-for-the-azure-data-science-vm"></a>适用于 Azure Data Science VM 的深度学习和人工智能框架
 下面列出了 DSVM 上的深度学习框架。
@@ -115,9 +115,9 @@ ms.locfileid: "100519484"
 
 | 类别 | 值 |
 | ------------- | ------------- |
-| 支持的版本 | 1.2.0 (Ubuntu 16.04)、1.4.0（Ubuntu 18.04、Windows 2019） |
+| 支持的版本 | 1.2.0 (Ubuntu 16.04) ，1.7.1 (Ubuntu 18.04，Windows 2019)  |
 | 支持的 DSVM 版本      | Windows Server 2019<br>Ubuntu 18.04<br> Ubuntu 16.04 |
-| 如何在 DSVM 上配置/安装它？  | 安装在 [Python 3.5](dsvm-tools-languages.md#python-linux-edition) 中。 示例 Jupyter 笔记本包含在内，并且示例位于 /dsvm/samples/pytorch 中。 |
+| 如何在 DSVM 上配置/安装它？  | 在 py37_pytorch conda 环境下的 [Python 3.7](dsvm-tools-languages.md#python-linux-edition) 中安装。 示例 Jupyter 笔记本包含在内，并且示例位于 /dsvm/samples/pytorch 中。 |
 | 运行方式      | 终端：激活正确的环境，然后运行 Python。<br/>* [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine)：进行连接，然后打开 PyTorch 目录获取示例。  |
 
 ## <a name="tensorflow"></a>[TensorFlow](https://www.tensorflow.org/)

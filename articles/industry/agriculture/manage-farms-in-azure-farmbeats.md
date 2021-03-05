@@ -4,13 +4,13 @@ description: 描述如何管理服务器场
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
-ms.author: v-umha
-ms.openlocfilehash: dc06f7c75e27d831994b97b97f3d20bb34c3a6c5
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.author: v-ummehabiba
+ms.openlocfilehash: 050b3b4d67eda9b6c9b4621c014e3e6baad34053
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167927"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102173794"
 ---
 # <a name="manage-farms"></a>管理场
 
@@ -58,7 +58,7 @@ ms.locfileid: "92167927"
 " **服务器场** " 页显示已创建的场的列表。
 
 1.  选择场以查看和编辑场。
-2.  选择 " **编辑场** " 以编辑场信息。 在 " **服务器场详细信息** " 窗口中，您可以编辑 **名称**、 **裁剪**、 **地址**和定义 **场边界** 字段。
+2.  选择 " **编辑场** " 以编辑场信息。 在 " **服务器场详细信息** " 窗口中，您可以编辑 **名称**、 **裁剪**、 **地址** 和定义 **场边界** 字段。
 
     ![FarmBeats 项目](./media/create-farms-in-azure-farmbeats/edit-farm-1.png)
 

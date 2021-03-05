@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 03/04/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: aac75e7876ce59b90e27f9e87c96240755d26235
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: 05307fe2ad9e0a59fa11c30f2dc7154ba5076603
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102120736"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102174656"
 ---
 # <a name="userjourneys"></a>UserJourneys
 
@@ -119,18 +119,23 @@ Preconditions 元素包含以下元素：
 
 #### <a name="precondition"></a>Precondition
 
+业务流程步骤可基于业务流程步骤中定义的前提条件有条件地执行。 有两种类型的前提条件：
+ 
+- **声明存在** -如果指定的声明存在于用户的当前声明包中，则指定应执行的操作。
+- **声明等于** -指定在指定的声明存在并且其值等于指定的值时应执行的操作。 该检查执行区分大小写的序号比较。 检查布尔声明类型时，请使用 `True` 或 `False` 。
+
 Precondition 元素包含以下属性：
 
 | 属性 | 必须 | 说明 |
 | --------- | -------- | ----------- |
 | `Type` | 是 | 要对此前置条件执行的检查或查询的类型。 值可以是 ClaimsExist（指定在用户当前声明集中存在指定声明时应执行操作）或 ClaimEquals（指定当指定声明存在且其值等于指定值时应执行操作）。 |
-| `ExecuteActionsIf` | 是 | 使用 true 或 false 测试确定是否应执行前置条件中的操作。 |
+| `ExecuteActionsIf` | 是 | 使用 `true` 或 `false` 测试来确定是否应执行预处理中的操作。 |
 
 Precondition 元素包含以下元素：
 
 | 元素 | 出现次数 | 说明 |
 | ------- | ----------- | ----------- |
-| Value | 1:n | 要查询的 ClaimTypeReferenceId。 另一个值元素包含要检查的值。</li></ul>|
+| “值” | 1:2 | 声明类型的标识符。 声明已在策略文件或父策略文件的声明架构部分中定义。 当前提条件为类型时 `ClaimEquals` ，第二个 `Value` 元素包含要检查的值。 |
 | 操作 | 1:1 | 在业务流程步骤中的前置条件检查为 true 时应执行的操作。 如果 `Action` 的值设置为 `SkipThisOrchestrationStep`，则不应执行相关联的 `OrchestrationStep`。 |
 
 #### <a name="preconditions-examples"></a>Preconditions 示例
@@ -189,7 +194,7 @@ Preconditions 可以检查多个前置条件。 以下示例检查是否存在�
 </OrchestrationStep>
 ```
 
-## <a name="identity-provider-selection"></a>标识提供者选项
+## <a name="claims-provider-selection"></a>声明提供程序选择
 
 标识提供者选择允许用户从选项列表中选择操作。 标识提供者选择包含两个业务流程步骤对： 
 
@@ -215,7 +220,7 @@ ClaimsProviderSelection 元素包含以下属性：
 | TargetClaimsExchangeId | 否 | 声明交换的标识符，在声明提供程序选择的下一个业务流程步骤中执行。 必须指定此属性或 ValidationClaimsExchangeId 属性，但不能同时指定这两个属性。 |
 | ValidationClaimsExchangeId | 否 | 声明交换的标识符，在当前业务流程步骤中执行以验证声明提供程序选择。 必须指定此属性或 TargetClaimsExchangeId 属性，但不能同时指定这两个属性。 |
 
-### <a name="claimsproviderselection-example"></a>ClaimsProviderSelection 示例
+### <a name="claims-provider-selection-example"></a>声明提供程序选择示例
 
 在下面的业务流程步骤中，用户可以选择使用 Facebook、LinkedIn、Twitter、Google 或本地帐户进行登录。 如果用户选择其中一个社交标识提供者，则第二个业务流程步骤将使用 `TargetClaimsExchangeId` 属性中指定的所选声明交换执行。 第二个业务流程步骤将用户重定向到社交标识提供者以完成登录过程。 如果用户选择使用本地帐户登录，Azure AD B2C 将保持相同的业务流程步骤（相同的注册页面或登录页面），并跳过第二个业务流程步骤。
 

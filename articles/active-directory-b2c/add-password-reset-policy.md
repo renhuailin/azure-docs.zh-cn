@@ -12,12 +12,12 @@ ms.date: 03/02/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 8e4926fb228837c3ec0573af8ee5b15da5fd7431
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: b82d573b7d8a65447d75aa8f017c87795bbef6cd
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102033873"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102171648"
 ---
 # <a name="set-up-a-password-reset-flow-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中设置密码重置流
 
@@ -186,7 +186,7 @@ ms.locfileid: "102033873"
 2. 找到并复制包含 `Id="SignUpOrSignIn"` 的 **UserJourney** 元素的完整内容。
 3. 打开 *TrustFrameworkExtensions.xml* 并找到 **UserJourneys** 元素。 如果该元素不存在，请添加一个。
 4. 通过粘贴在步骤2中复制的 **UserJourney** 元素的全部内容，创建 **UserJourneys** 元素的子元素。
-5. 重命名用户旅程的 Id。 例如 `Id="CustomSignUpSignIn"`。
+5. 重命名用户旅程的 Id。 例如，`Id="CustomSignUpSignIn"`。
 
 ### <a name="connect-the-forgot-password-link-to-the-forgot-password-sub-journey"></a>将忘记的密码链接连接到忘记的密码 sub 旅程 
 
@@ -301,5 +301,3 @@ ms.locfileid: "102033873"
 ## <a name="next-steps"></a>后续步骤
 
 设置 [强制密码重置](force-password-reset.md)。
-
-

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 01/05/2021
 ms.author: jgao
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: db4a938d2f773ed24d4c7a48d747dd5cc22c0bd2
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: e28b66844eaa0b73c2654175dea2e31d3cd75f5d
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97900274"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102172090"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-azure-cli"></a>使用 Azure CLI 管理 Azure 资源管理器资源组
 
@@ -24,7 +24,7 @@ ms.locfileid: "97900274"
 
 ## <a name="what-is-a-resource-group"></a>什么是资源组
 
-资源组是用于保存 Azure 解决方案相关资源的容器。 资源组可以包含解决方案的所有资源，也可以只包含以组的形式进行管理的资源。 根据对组织有利的原则，决定如何将资源分配到资源组。 通常可将共享相同生命周期的资源添加到同一资源组，以便将其作为一个组轻松部署、更新和删除。
+资源组是用于保存 Azure 解决方案相关资源的容器。 资源组可以包含解决方案的所有资源，也可以只包含想要作为组来管理的资源。 根据对组织有利的原则，决定如何将资源分配到资源组。 通常可将共享相同生命周期的资源添加到同一资源组，以便将其作为一个组轻松部署、更新和删除。
 
 ” 资源组存储有关资源的元数据。 因此，当指定资源组的位置时，也就指定了元数据的存储位置。 出于合规性原因，可能需要确保数据存储在某一特定区域。
 
@@ -125,7 +125,7 @@ az lock delete --name $lockName --resource-group $resourceGroupName
 - 由于模板包含整个基础结构，因此将来可以自动完成解决方案的部署。
 - 通过查看代表解决方案的 JavaScript 对象表示法 (JSON)，了解模板语法。
 
-若要导出资源组中的所有资源，请使用 [az group export](/cli/azure/group?view=azure-cli-latest#az_group_export&preserve-view=true) ，并提供资源组名称。
+若要导出资源组中的所有资源，请使用 [az group export](/cli/azure/group#az_group_export) 并提供资源组名称。
 
 ```azurecli-interactive
 echo "Enter the Resource Group name:" &&
@@ -148,7 +148,7 @@ storageAccount=$(az resource show --resource-group $resourceGroupName --name $st
 az group export --resource-group $resourceGroupName --resource-ids $storageAccount
 ```
 
-若要导出多个资源，请传递以空格分隔的资源 Id。 若要导出所有资源，请不要指定此参数或提供 "*"。
+若要导出多个资源，请传递以空格分隔的资源 ID。 若要导出所有资源，请不要指定此参数或提供“*”。
 
 ```azurecli-interactive
 az group export --resource-group <resource-group-name> --resource-ids $storageAccount1 $storageAccount2

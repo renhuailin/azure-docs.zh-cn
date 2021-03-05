@@ -4,13 +4,13 @@ description: 介绍如何在 Azure FarmBeats 中生成土料湿气热度地图
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
-ms.author: v-umha
-ms.openlocfilehash: 2887e7c5fd875942c3d19391267ddbb9b73ccfec
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.author: v-ummehabiba
+ms.openlocfilehash: dd8d688355e0f71ce77cdbc6012d788c7b16d825
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92165547"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102173777"
 ---
 # <a name="generate-soil-moisture-heatmap"></a>生成土潮湿热度地图
 
@@ -51,7 +51,7 @@ ms.locfileid: "92165547"
 将传感器帐户链接到 Azure FarmBeats 后，需要将土潮湿传感器分配给感兴趣的场。
 
 1.  在主页中，从菜单中选择 " **服务器场** "，随即会显示 " **服务器场** " 列表页。
-2.  选择**MyFarm**  >  **添加设备**。
+2.  选择 **MyFarm**  >  **添加设备**。
 3.  将显示 " **添加设备** " 窗口。 选择链接到场的 "土料湿气传感器" 的任何设备。
 
     ![显示 "添加设备" 屏幕的屏幕截图。](./media/get-sensor-data-from-sensor-partner/add-devices-1.png)
@@ -67,7 +67,7 @@ ms.locfileid: "92165547"
 3.  在 **场详细信息** 页中，选择 " **生成精度映射**"。
 4.  从下拉菜单中，选择 " **土料湿气**"。
 5.  在 " **土里湿气** " 窗口中选择 " **本周**"。
-6.  在 "**选择土料湿度****传感器" 度量值**中，输入要用于地图的度量值。
+6.  在 "**选择土料湿度****传感器" 度量值** 中，输入要用于地图的度量值。
     若要查找传感器度量值，请在 " **传感器**" 中选择任何泥土湿度传感器。 在 " **传感器属性**" 中，使用 " **度量值名称** " 值。
 
     ![显示泥土湿气屏幕的屏幕截图。](./media/get-sensor-data-from-sensor-partner/soil-moisture-1.png)
@@ -93,4 +93,4 @@ ms.locfileid: "92165547"
 
 ## <a name="next-steps"></a>后续步骤
 
-现在，你已成功生成了土料湿气热度地图，接下来了解如何 [生成传感器位置](generate-maps-in-azure-farmbeats.md#sensor-placement-map) 并引入 [历史遥测数据](ingest-historical-telemetry-data-in-azure-farmbeats.md)。 
+现在，你已成功生成了土料湿气热度地图，接下来了解如何 [生成传感器位置](generate-maps-in-azure-farmbeats.md#sensor-placement-map) 并引入 [历史遥测数据](ingest-historical-telemetry-data-in-azure-farmbeats.md)。 

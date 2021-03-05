@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 02/25/2021
+ms.date: 03/04/2021
 ms.author: justinha
 author: sopand
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fbe69967d84777091aec0bbbf1626b98f5018d0e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: b0865fb2bda04f5a7e9ba2ef73a717946fa656a5
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101693020"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175305"
 ---
 # <a name="authentication-methods-activity"></a>身份验证方法活动 
 
@@ -26,10 +26,17 @@ ms.locfileid: "101693020"
 
 ## <a name="permissions-and-licenses"></a>权限和许可证
 
-以下角色可以访问使用情况和见解：
+具有以下权限的内置角色和自定义角色可以访问身份验证方法活动边栏选项卡和 Api：
+
+- AuditLogs/allProperties/read
+- SignInReports/allProperties/read
+
+以下角色具有所需的权限：
 
 - 报告读者
 - 安全读取者
+- 全局读取者
+- 安全操作员
 - 安全管理员
 - 全局管理员角色
 
@@ -122,11 +129,12 @@ ms.locfileid: "101693020"
 - 状态 (成功，失败) 
 - 失败的原因 (说明) 
 
-  !["使用情况" 页的屏幕截图](media/how-to-authentication-methods-usage-insights/registration-and-reset-logs.png)
+  ![注册和重置事件的屏幕截图](media/how-to-authentication-methods-usage-insights/registration-and-reset-logs.png)
 
 ## <a name="limitations"></a>限制
 
-临时访问 Pass (点击) 注册不会反映在报表的 "注册" 选项卡中，因为它们仅在短时间内有效。
+- 报表中的数据不会实时更新，可能会反映长达几个小时的延迟。
+- 临时访问 Pass 注册不会反映在报表的 "注册" 选项卡中，因为它们仅在短时间内有效。
 
 ## <a name="next-steps"></a>后续步骤
 

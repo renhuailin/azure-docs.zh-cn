@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: ecf0f54913f980d879b562eb4aa8063acf6c4772
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 6f42f712ecca77c00020304b63f5a1b0dbd77ad0
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92320250"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102172314"
 ---
 # <a name="install-client-tools-for-deploying-and-managing-azure-arc-enabled-data-services"></a>安装用于部署和管理已启用 Azure Arc 的数据服务的客户端工具
 
@@ -36,7 +36,7 @@ ms.locfileid: "92320250"
 | [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] Azure Data Studio 的扩展 | 是 | 将安装的 Azure Data Studio 的扩展（ [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] 如果尚未安装）。| 从 Azure Data Studio 中的扩展库安装。|
 | 适用于 Azure Data Studio 的 Azure Arc 扩展 | 是 | 为启用了 Azure Arc 的数据服务提供管理体验的 Azure Data Studio 扩展。 Azure Data Studio 的扩展存在依赖关系 [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] 。 | 从 Azure Data Studio 中的扩展库安装。|
 | Azure Data Studio 中的 PostgreSQL 扩展 | 否 | 为 PostgreSQL 提供管理功能的 Azure Data Studio 的 PostgreSQL 扩展。 | <!--{need link} [Install](../azure-data-studio/data-virtualization-extension.md) --> 从 Azure Data Studio 中的扩展库安装。|
-| Azure CLI (az) <sup>1</sup> | 是 | 用于管理 Azure 服务的新式命令行接口。 与 AKS 部署一起使用，并将启用了 Azure Arc 的数据服务清单和计费数据上传到 Azure。  ([详细信息](/cli/azure/?view=azure-cli-latest&preserve-view=true)) 。 | [安装](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) |
+| Azure CLI (az) <sup>1</sup> | 是 | 用于管理 Azure 服务的新式命令行接口。 与 AKS 部署一起使用，并将启用了 Azure Arc 的数据服务清单和计费数据上传到 Azure。  ([详细信息](/cli/azure/)) 。 | [安装](/cli/azure/install-azure-cli) |
 | Kubernetes CLI (kubectl) <sup>2</sup> | 是 | 用于管理 Kubernetes 群集的命令行工具 ([详细信息](https://kubernetes.io/docs/tasks/tools/install-kubectl/)) 。 | [Windows](https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-with-powershell-from-psgallery) \| [Linux](https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-using-native-package-management) |
 | 卷 <sup>3</sup> | 对于某些示例脚本是必需的。 | 使用 URL 传输数据的命令行工具。 | [Windows](https://curl.haxx.se/windows/) \| Linux：安装 curl 包 |
 | oc | 是 Red Hat OpenShift 和 Azure Redhat OpenShift 部署所必需的。 |`oc` 是 Open Shift 命令行接口 (CLI)。 | [安装 CLI](https://docs.openshift.com/container-platform/4.4/cli_reference/openshift_cli/getting-started-cli.html#installing-the-cli)

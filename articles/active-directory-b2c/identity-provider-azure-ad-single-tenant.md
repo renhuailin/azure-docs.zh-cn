@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/27/2021
+ms.date: 03/04/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit, project-no-code
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 9e315812f7e281cf281cad9e052ab4546bde05f9
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: da12955606062e6cfc0e6bf17eeedcaed0aac1ff
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101645834"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102171678"
 ---
 # <a name="set-up-sign-in-for-a-specific-azure-active-directory-organization-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中设置登录特定 Azure Active Directory 组织
 
@@ -90,7 +90,7 @@ ms.locfileid: "101645834"
 
 1. 对于“客户端 ID”，输入之前记录的应用程序 ID。
 1. 对于“客户端密码”，输入之前记录的客户端密码。
-1. 对于 **作用域**，请输入 `openid profile` 。
+1. 对于 " **作用域**"，请输入 `openid profile` 。
 1. 对于“响应类型”和“响应模式” ，请保留默认值。
 1. （可选）对于“域提示”，请输入 `contoso.com`。 有关详细信息，请参阅[使用 Azure Active Directory B2C 设置直接登录](direct-signin.md#redirect-sign-in-to-a-social-provider)。
 1. 在“标识提供者声明映射”下，选择以下声明：
