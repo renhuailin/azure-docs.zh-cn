@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc, devx-track-csharp
 manager: philmea
-ms.openlocfilehash: 824308b66803d2dfa05383ff06ce97c48626619d
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 6146676121bac0089d5f520d60a97d74567a32bc
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100557577"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102179334"
 ---
 # <a name="extend-azure-iot-central-with-custom-rules-using-stream-analytics-azure-functions-and-sendgrid"></a>使用流分析、Azure Functions 和 SendGrid 通过自定义规则扩展 Azure IoT Central
 
@@ -24,11 +24,11 @@ ms.locfileid: "100557577"
 
 本操作指南的内容：
 
-* 使用“连续数据导出”从 IoT Central 应用程序流式传输遥测数据。 
+* 使用“连续数据导出”从 IoT Central 应用程序流式传输遥测数据。
 * 创建一个流分析查询用于检测设备何时已停止发送数据。
 * 使用 Azure Functions 和 SendGrid 服务发送电子邮件通知。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 完成本操作方法指南中的步骤需要有效的 Azure 订阅。
 
@@ -38,7 +38,7 @@ ms.locfileid: "100557577"
 
 在 [Azure IoT Central 应用程序管理器](https://aka.ms/iotcentral)网站上使用以下设置创建一个 IoT Central 应用程序：
 
-| 设置 | 值 |
+| 设置 | “值” |
 | ------- | ----- |
 | 定价计划 | Standard |
 | 应用程序模板 | 店内分析 – 条件监视 |
@@ -48,7 +48,7 @@ ms.locfileid: "100557577"
 | Azure 订阅 | Azure 订阅 |
 | 区域 | 离你最近的区域 |
 
-本文中的示例和屏幕截图使用“美国”区域。  选择靠近你的位置，并确保在同一区域中创建所有资源。
+本文中的示例和屏幕截图使用“美国”区域。 选择靠近你的位置，并确保在同一区域中创建所有资源。
 
 此应用程序模板包含两个可发送遥测数据的模拟恒温器设备。
 
@@ -64,7 +64,7 @@ ms.locfileid: "100557577"
 | ------- | ----- |
 | 名称    | 选择命名空间名称 |
 | 定价层 | 基本 |
-| 订阅 | 订阅 |
+| 订阅 | 你的订阅 |
 | 资源组 | DetectStoppedDevices |
 | 位置 | 美国东部 |
 | 吞吐量单位 | 1 |
@@ -76,7 +76,7 @@ ms.locfileid: "100557577"
 | 设置 | 值 |
 | ------- | ----- |
 | 名称    | 选择作业名称 |
-| 订阅 | 订阅 |
+| 订阅 | 你的订阅 |
 | 资源组 | DetectStoppedDevices |
 | 位置 | 美国东部 |
 | 宿主环境 | 云 |
@@ -88,8 +88,8 @@ ms.locfileid: "100557577"
 
 | 设置 | 值 |
 | ------- | ----- |
-| 应用程序名称    | 选择函数应用名称 |
-| 订阅 | 订阅 |
+| 应用名称    | 选择函数应用名称 |
+| 订阅 | 你的订阅 |
 | 资源组 | DetectStoppedDevices |
 | OS | Windows |
 | 托管计划 | 消耗计划 |
@@ -119,26 +119,28 @@ ms.locfileid: "100557577"
 
 事件中心命名空间如以下屏幕截图所示： 
 
-```:::image type="content" source="media/howto-create-custom-rules/event-hubs-namespace.png" alt-text="Screenshot of Event Hubs namespace." border="false":::
+:::image type="content" source="media/howto-create-custom-rules/event-hubs-namespace.png" alt-text="事件中心命名空间的屏幕截图。" border="false":::
 
-## Define the function
 
-This solution uses an Azure Functions app to send an email notification when the Stream Analytics job detects a stopped device. To create your function app:
+## <a name="define-the-function"></a>定义函数
 
-1. In the Azure portal, navigate to the **App Service** instance in the **DetectStoppedDevices** resource group.
-1. Select **+** to create a new function.
-1. Select **HTTP Trigger**.
-1. Select **Add**.
+当流分析作业检测到已停止的设备时，此解决方案将使用 Azure Functions 应用来发送电子邮件通知。 若要创建函数应用：
 
-    :::image type="content" source="media/howto-create-custom-rules/add-function.png" alt-text="Image of the Default HTTP trigger function"::: 
+1. 在 Azure 门户中，导航到“DetectStoppedDevices”资源组中的“应用服务”实例。
+1. 选择此 **+** 功能可创建新函数。
+1. 选择 " **HTTP 触发器**"。
+1. 选择“添加”。
 
-## Edit code for HTTP Trigger
+    :::image type="content" source="media/howto-create-custom-rules/add-function.png" alt-text="默认 HTTP 触发器函数的图像"::: 
 
-The portal creates a default function called **HttpTrigger1**:
+## <a name="edit-code-for-http-trigger"></a>编辑 HTTP 触发器的代码
 
-```:::image type="content" source="media/howto-create-custom-rules/default-function.png" alt-text="Screenshot of Edit HTTP trigger function.":::
+门户将创建名为 **HttpTrigger1** 的默认函数：
 
-1. Replace the C# code with the following code:
+:::image type="content" source="media/howto-create-custom-rules/default-function.png" alt-text="编辑 HTTP 触发器函数的屏幕截图。":::
+
+
+1. 将 c # 代码替换为以下代码：
 
     ```csharp
     #r "Newtonsoft.Json"
@@ -177,50 +179,50 @@ The portal creates a default function called **HttpTrigger1**:
     }
     ```
 
-    You may see an error message until you save the new code.
-1. Select **Save** to save the function.
+    在保存新代码之前，可能一直会出现一条错误消息。
+1. 选择“保存”以保存函数。
 
-## Add SendGrid Key
+## <a name="add-sendgrid-key"></a>添加 SendGrid 项
 
-To add your SendGrid API Key, you need to add it to your **Function Keys** as follows:
+若要添加 SendGrid API 密钥，需将其添加到 **函数密钥** ，如下所示：
 
-1. Select **Function Keys**.
-1. Choose **+ New Function Key**.
-1. Enter the *Name* and *Value* of the API Key you created before.
-1. Click **OK.**
+1. 选择 " **功能键**"。
+1. 选择 " **+ 新建功能键**"。
+1. 输入你之前创建的 API 密钥的 *名称* 和 *值* 。
+1. 单击“确定” **。**
 
-    :::image type="content" source="media/howto-create-custom-rules/add-key.png" alt-text="Screenshot of Add Sangrid Key.":::
+    :::image type="content" source="media/howto-create-custom-rules/add-key.png" alt-text="添加 Sangrid 键的屏幕截图。":::
 
 
-## Configure HttpTrigger function to use SendGrid
+## <a name="configure-httptrigger-function-to-use-sendgrid"></a>配置 HttpTrigger 函数以使用 SendGrid
 
-To send emails with SendGrid, you need to configure the bindings for your function as follows:
+若要使用 SendGrid 发送电子邮件，需按如下所述配置函数的绑定：
 
-1. Select **Integrate**.
-1. Choose **Add Output** under **HTTP ($return)**.
-1. Select **Delete.**
-1. Choose **+ New Output**.
-1. For Binding Type, then choose **SendGrid**.
-1. For SendGrid API Key Setting Type, click New.
-1. Enter the *Name* and *Value* of your SendGrid API key.
-1. Add the following information:
+1. 选择“集成”。
+1. 选择 " **HTTP ($return)** 下的"**添加输出**"。
+1. 选择 " **删除"。**
+1. 选择 " **+ 新建输出**"。
+1. 对于 "绑定类型"，请选择 " **SendGrid**"。
+1. 对于 "SendGrid API 密钥设置类型"，请单击 "新建"。
+1. 输入 SendGrid API 密钥的 *名称* 和 *值* 。
+1. 添加以下信息：
 
-| Setting | Value |
+| 设置 | “值” |
 | ------- | ----- |
-| Message parameter name | Choose your name |
-| To address | Choose the name of your To Address |
-| From address | Choose the name of your From Address |
-| Message subject | Enter your subject header |
-| Message text | Enter the message from your integration |
+| 消息参数名称 | 选择你的名称 |
+| 解决 | 选择要寻址的名称 |
+| 发件人地址 | 选择 "发件人地址" 的名称 |
+| 消息主题 | 输入主题标头 |
+| 消息正文 | 输入来自你的集成的消息 |
 
-1. Select **OK**.
+1. 选择“确定”。
 
-    :::image type="content" source="media/howto-create-custom-rules/add-output.png" alt-text="Screenshot of Add SandGrid Output.":::
+    :::image type="content" source="media/howto-create-custom-rules/add-output.png" alt-text="添加 SandGrid 输出的屏幕截图。":::
 
 
-### Test the function works
+### <a name="test-the-function-works"></a>测试函数的运行情况
 
-To test the function in the portal, first choose **Logs** at the bottom of the code editor. Then choose **Test** to the right of the code editor. Use the following JSON as the **Request body**:
+若要在门户中测试函数，请先选择代码编辑器底部的“日志”。 然后选择代码编辑器右侧的“测试”。 使用以下 JSON 作为 **请求正文**：
 
 ```json
 [{"deviceid":"test-device-1","time":"2019-05-02T14:23:39.527Z"},{"deviceid":"test-device-2","time":"2019-05-02T14:23:50.717Z"},{"deviceid":"test-device-3","time":"2019-05-02T14:24:28.919Z"}]
@@ -228,9 +230,9 @@ To test the function in the portal, first choose **Logs** at the bottom of the c
 
 函数日志消息将显示在“日志”面板中：
 
-```:::image type="content" source="media/howto-create-custom-rules/function-app-logs.png" alt-text="Function log output":::
+:::image type="content" source="media/howto-create-custom-rules/function-app-logs.png" alt-text="函数日志输出":::
 
-After a few minutes, the **To** email address receives an email with the following content:
+几分钟后，“收件人”电子邮件地址将收到包含以下内容的电子邮件：
 
 ```txt
 The following device(s) have stopped sending telemetry:
@@ -263,7 +265,7 @@ test-device-3    2019-05-02T14:24:28.919Z
     | 输出别名 | emailnotification |
     | 订阅 | 你的订阅 |
     | 函数应用 | 你的函数应用 |
-    | 功能  | HttpTrigger1 |
+    | 函数  | HttpTrigger1 |
 
 1. 在“作业拓扑”下选择“查询”，并将现有查询替换为以下 SQL：
 
@@ -323,7 +325,7 @@ test-device-3    2019-05-02T14:24:28.919Z
     | 设置 | 值 |
     | ------- | ----- |
     | 显示名称 | 导出到事件中心 |
-    | 已启用 | 开 |
+    | 已启用 | 启用 |
     | 要导出的数据类型 | 遥测 |
     | 根据 | 输入想要如何组织导出数据的所需键/值 | 
     | 目标 | 新建并输入用于导出数据的信息 |

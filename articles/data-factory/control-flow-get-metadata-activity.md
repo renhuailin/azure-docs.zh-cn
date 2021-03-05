@@ -6,12 +6,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/25/2021
 ms.author: jingwang
-ms.openlocfilehash: 151f4352ce7c845050c899792fd7285c97f844bc
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: bd8fc3383d6d9a0afb7733cb94643623e6879d23
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102049978"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102178535"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Azure 数据工厂中的“获取元数据”活动
 
@@ -83,8 +83,14 @@ ms.locfileid: "102049978"
 | columnCount | 文件或关系表中的列数。 |
 | exists| 是否存在某个文件、文件夹或表。 如果在“获取元数据”字段列表中指定了 `exists`，那么，即使不存在该文件、文件夹或表，该活动也不会失败， 而是在输出中返回 `exists: false`。 |
 
->[!TIP]
->若要验证是否存在某个文件、文件夹或表，请在“获取元数据”活动字段列表中指定 `exists`。 然后可以检查活动输出中的 `exists: true/false` 结果。 如果未在该字段列表中指定 `exists`，那么，在找不到对象时，“获取元数据”活动将会失败。
+> [!TIP]
+> 若要验证是否存在某个文件、文件夹或表，请在“获取元数据”活动字段列表中指定 `exists`。 然后可以检查活动输出中的 `exists: true/false` 结果。 如果未在该字段列表中指定 `exists`，那么，在找不到对象时，“获取元数据”活动将会失败。
+
+> [!NOTE]
+> 当从文件存储区中获取元数据并配置 `modifiedDatetimeStart` 或时 `modifiedDatetimeEnd` ， `childItems` 输出中仅包含在指定范围内具有最后修改时间的指定路径中的文件。 子文件夹中的项目不包括在内。
+
+> [!NOTE]
+> 要使 **结构** 字段列表为分隔文本和 Excel 格式数据集提供实际的数据结构，您必须启用 `First Row as Header` 属性，该属性仅支持这些数据源。
 
 ## <a name="syntax"></a>语法
 

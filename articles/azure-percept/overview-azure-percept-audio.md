@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: conceptual
 ms.date: 02/18/2021
 ms.custom: template-concept
-ms.openlocfilehash: 8884663b3f0e861e62f48c3aab680f0f31e74428
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 8f84fb6bf37a3d3b61f4cad2c89745447aa88a36
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102098377"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102179385"
 ---
 # <a name="introduction-to-azure-percept-audio"></a>Azure Percept 音频简介
 
@@ -65,7 +65,7 @@ Azure Percept Audio passes the audio input to the Azure Percept DK carrier board
 
 ## <a name="build-a-no-code-prototype"></a>生成无代码原型
 
-使用 Azure Percept voice 助手模板构建 [无代码语音解决方案](./tutorial-no-code-speech.md) ，用于宾馆、医疗保健、库存和汽车方案。
+使用 Azure Percept 语音助手模板在[Azure Percept Studio](https://go.microsoft.com/fwlink/?linkid=2135819)中生成[无代码语音解决方案](./tutorial-no-code-speech.md)，用于宾馆、医疗保健、库存和汽车方案。
 
 ### <a name="manage-your-no-code-speech-solution"></a>管理你的无代码语音解决方案
 

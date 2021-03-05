@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: joncole
-ms.openlocfilehash: 1b62777ec647efc6d5aded573e681cadd6475b47
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 9754a043c90c01f889be9639d2d045fb1929de17
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97654789"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102178110"
 ---
 # <a name="best-practices-for-azure-cache-for-redis"></a>Azure Redis 缓存的最佳做法 
 遵循这些最佳做法可帮助最大化性能并在 Azure 中经济、高效地利用 Azure Redis 缓存实例。
@@ -51,7 +51,7 @@ ms.locfileid: "97654789"
 ## <a name="client-library-specific-guidance"></a>特定于客户端库的指南
  * [StackExchange.Redis (.NET)](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-stackexchange-redis-md)
  * [Java - 应使用哪种客户端？](https://gist.github.com/warrenzhu25/1beb02a09b6afd41dff2c27c53918ce7#file-azure-redis-java-best-practices-md)
- * [Lettuce (Java)](https://gist.github.com/warrenzhu25/181ccac7fa70411f7eb72aff23aa8a6a#file-azure-redis-lettuce-best-practices-md)
+ * [Lettuce (Java)](https://github.com/Azure/AzureCacheForRedis/blob/main/Lettuce%20Best%20Practices.md)
  * [Jedis (Java)](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-java-jedis-md)
  * [Node.js](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-node-js-md)
  * [PHP](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-php-md)
@@ -73,6 +73,8 @@ ms.locfileid: "97654789"
  * 用于测试的客户端 VM 应与 Redis 缓存实例位于 **同一区域**。
  * **建议为客户端使用 Dv2 VM 系列**，因为它们具有更好的硬件，会提供最佳的结果。
  * 确保所用客户端 VM 的计算和带宽资源 *至少与要测试的缓存相同。 
+ * 在缓存上的 **故障转移条件下进行测试**。 务必确保不在稳定状态条件下对缓存进行性能测试。 同时，在故障转移条件下进行测试，并在该时间测量缓存上的 CPU/服务器负载。 可以通过 [重新启动主节点](cache-administration.md#reboot)来启动故障转移。 这将允许你查看应用程序在故障转移情况下的吞吐量和延迟方面的行为， (在更新过程中发生，并在计划外事件) 期间发生。 理想情况下，即使在故障转移期间，即使在故障转移期间，don't't 的 CPU/服务器负载峰值超过80%，也不会影响性能。
+ * **高级 P2 及更高** 版本托管在具有4个或更多内核的 vm 上。 这对于跨多个内核分发 TLS 加密/解密工作负荷以降低总体 CPU 使用率很有用。  [有关 VM 大小和内核的详细信息，请参阅此处](cache-planning-faq.md#azure-cache-for-redis-performance)
  * 如果是在 Windows 设备上操作，请在客户端计算机上 **启用 VRSS**。  [请参阅此处了解详细信息](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn383582(v=ws.11))。  PowerShell 脚本示例：
      >PowerShell -ExecutionPolicy Unrestricted Enable-NetAdapterRSS -Name (    Get-NetAdapter).Name 
 

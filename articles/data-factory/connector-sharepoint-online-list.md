@@ -6,12 +6,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: jingwang
-ms.openlocfilehash: 3f05c90ba3c7e6b47009cbb597c56dac8a01427a
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: f8074b69b97a6ef96837e73a1082d2deb67084d9
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100393422"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102177855"
 ---
 # <a name="copy-data-from-sharepoint-online-list-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 SharePoint Online 列表复制数据
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -107,7 +107,7 @@ SharePoint Online 列表链接的服务支持以下属性：
 
 有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集和链接服务](concepts-datasets-linked-services.md)。 以下部分提供 SAP 表数据集支持的属性列表。
 
-| properties | 说明 | 必选 |
+| properties | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为 SharePointOnlineLResource。  | 是 |
 | listName | SharePoint Online 列表的名称。 | 是 |
@@ -140,7 +140,7 @@ SharePoint Online 列表链接的服务支持以下属性：
 
 若要从 SharePoint Online 列表复制数据，复制活动“源”部分支持以下属性：
 
-| properties | 说明 | 必选 |
+| properties | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为 SharePointOnlineListSource。  | 是 |
 | query | 用于筛选数据的自定义 OData 查询选项。 示例：`"$top=10&$select=Title,Number"`。 | 否 |
@@ -233,7 +233,10 @@ SharePoint Online 列表链接的服务支持以下属性：
         - 其他标头：使用以下表达式`@{concat('Authorization: Bearer ', activity('<Web-activity-name>').output.access_token)}`，该表达式将上游 Web 活动生成的持有者令牌用作授权标头。 替换 Web 活动名称。
     - 照常配置复制活动接收器。
 
-## <a name="lookup-activity-properties"></a>“查找”活动属性
+> [!NOTE]
+> 即使 Azure AD 应用程序具有 `FullControl` SharePoint Online 的权限，也不能从启用了 IRM 的文档库中复制文件。
+
+## <a name="lookup-activity-properties"></a>查找活动属性
 
 若要了解有关属性的详细信息，请查看 [Lookup 活动](control-flow-lookup-activity.md)。
 

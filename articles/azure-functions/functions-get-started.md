@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 11/19/2020
 ms.author: cshoe
 zone_pivot_groups: programming-languages-set-functions-lang-workers
-ms.openlocfilehash: e969cc4bee9f09f4279d137abb33b75ca0672ffc
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 77d370b895c777278d3136c7d2c511e7f9e23b36
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100364709"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102179249"
 ---
 # <a name="getting-started-with-azure-functions"></a>Azure Functions 入门
 
@@ -46,7 +46,7 @@ ms.locfileid: "100364709"
 ::: zone pivot="programming-language-javascript"
 | 操作 | 资源 |
 | --- | --- |
-| **创建第一个函数** | 使用以下工具之一：<br><br><li>[Visual Studio Code](./create-first-function-vs-code-node.md)<li>[Node.js 终端/命令提示符](./create-first-function-cli-java.md) |
+| **创建第一个函数** | 使用以下工具之一：<br><br><li>[Visual Studio Code](./create-first-function-vs-code-node.md)<li>[Node.js 终端/命令提示符](./create-first-function-cli-node.md) |
 | **查看正在运行的函数** | <li>[Azure 示例浏览器](/samples/browse/?expanded=azure&languages=javascript%2ctypescript&products=azure-functions)<li>[Azure 社区库](https://www.serverlesslibrary.net/?technology=Functions%202.x&language=JavaScript%2CTypeScript) |
 | **了解交互式教程** | <li>[为业务场景选择最佳的 Azure 无服务器技术](/learn/modules/serverless-fundamentals/)<li>[结构良好的框架 - 性能效率](/learn/modules/azure-well-architected-performance-efficiency/)<li>[使用 Azure Functions 构建无服务器 API](/learn/modules/build-api-azure-functions/)<li>[使用 Azure Functions 创建无服务器逻辑](/learn/modules/create-serverless-logic-with-azure-functions/)<li>[使用 Azure Functions 将 Node.js 和 Express API 重构到无服务器 API](/learn/modules/shift-nodejs-express-apis-serverless/) <br><br>请参阅 Microsoft Learn，查看[一系列完整的交互式教程](/learn/browse/?expanded=azure&products=azure-functions)。|
 | **查看最佳实践** |<li>[性能和可靠性](./functions-best-practices.md)<li>[管理连接](./manage-connections.md)<li>[错误处理和函数重试](./functions-bindings-error-pages.md?tabs=javascript)<li>[安全性](./security-concepts.md)|

@@ -7,12 +7,12 @@ ms.author: chez
 ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 10/18/2018
-ms.openlocfilehash: 7dde05e02421ef8d2ea46fd0d50687ede6e5d884
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ff8c549f74b59706de5203f2d2e46867d6cb1d0a
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101727767"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102177773"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-a-storage-event"></a>创建一个触发器，以便在响应存储事件时运行管道
 
@@ -26,7 +26,6 @@ ms.locfileid: "101727767"
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Event-based-data-integration-with-Azure-Data-Factory/player]
 
-
 > [!NOTE]
 > 本文中所介绍的集成依赖于 [Azure 事件网格](https://azure.microsoft.com/services/event-grid/)。 请确保订阅已注册事件网格资源提供程序。 有关详细信息，请参阅[资源提供程序和类型](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)。 你必须能够执行 Microsoft.EventGrid/eventSubscriptions/* 操作。 此操作属于 EventGrid EventSubscription 参与者内置角色。
 
@@ -34,11 +33,11 @@ ms.locfileid: "101727767"
 
 本部分介绍如何在 Azure 数据工厂用户界面中创建存储事件触发器。
 
-1. 转到“创作画布”
+1. 切换到“编辑”选项卡（显示为铅笔符号）。 
 
-1. 在左下角单击“触发器”按钮
+1. 在菜单上选择“触发器”，然后选择“新建/编辑” 。 
 
-1. 单击“+ 新建”会打开“创建触发器”边侧导航栏
+1. 在“添加触发器”页上，选择“选择触发器...”，然后选择“+新建”  。 
 
 1. 选择触发器类型 **存储事件**
 
@@ -95,7 +94,7 @@ ms.locfileid: "101727767"
 > [!IMPORTANT]
 > 每当指定容器和文件夹、容器和文件或容器、文件夹和文件时，都必须包含路径的 `/blobs/` 段，如以下示例所示。 对于 **blobPathBeginsWith**，数据工厂 UI 将自动在触发器 JSON 中的文件夹与容器名称之间添加 `/blobs/`。
 
-| 属性 | 示例 | 说明 |
+| properties | 示例 | 说明 |
 |---|---|---|
 | **Blob 路径开头** | `/containername/` | 接收容器中任何 blob 事件。 |
 | **Blob 路径开头** | `/containername/blobs/foldername/` | 接收 `containername` 容器和 `foldername` 文件夹中的任何 blob 事件。 |
@@ -107,4 +106,5 @@ ms.locfileid: "101727767"
 
 ## <a name="next-steps"></a>后续步骤
 
-有关触发器的详细信息，请参阅[管道执行和触发器](concepts-pipeline-execution-triggers.md#trigger-execution)。
+* 有关触发器的详细信息，请参阅[管道执行和触发器](concepts-pipeline-execution-triggers.md#trigger-execution)。
+* 了解如何在管道中引用触发器元数据，请参阅 [在管道运行中引用触发器元数据](how-to-use-trigger-parameterization.md)

@@ -6,12 +6,12 @@ ms.service: azure-functions
 ms.topic: quickstart
 ms.date: 03/25/2020
 ms.author: dglover
-ms.openlocfilehash: 0207e4af9f845343866714ec207ca306cb327b36
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: f02643ee28d76d4f90206a1aa2879b4672da2a38
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98035166"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102179436"
 ---
 # <a name="create-your-first-kotlin-function-in-azure-using-intellij"></a>在 Azure 中使用 IntelliJ 创建第一个 Kotlin 函数
 
@@ -81,7 +81,7 @@ Maven 在新文件夹中创建项目文件，文件名称与 _ArtifactId_ 值相
 
 ## <a name="deploy-the-project-to-azure"></a>将项目部署到 Azure
 
-1. 必须先[使用 Azure CLI 登录](/cli/azure/authenticate-azure-cli?view=azure-cli-latest)，然后才能将项目部署到 Azure 中的函数应用。
+1. 必须先[使用 Azure CLI 登录](/cli/azure/authenticate-azure-cli)，然后才能将项目部署到 Azure 中的函数应用。
 
    ``` azurecli
    az login

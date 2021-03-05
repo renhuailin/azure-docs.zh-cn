@@ -1,17 +1,17 @@
 ---
 title: Azure 流分析地理空间函数的简介
 description: 本文介绍了 Azure 流分析作业中使用的地理空间函数。
-author: krishna0815
-ms.author: krishmam
 ms.service: stream-analytics
+author: jasonwhowell
+ms.author: jasonh
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.openlocfilehash: dc590593b9bff8f646ee6155d32a2ce3f9790f6e
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 2835918cf381cb0fbd917ce9bf4650730878d711
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98625242"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102178489"
 ---
 # <a name="introduction-to-stream-analytics-geospatial-functions"></a>流分析地理空间函数的简介
 
@@ -110,7 +110,7 @@ FROM input
 
 
 ## <a name="st_distance"></a>ST_DISTANCE
-`ST_DISTANCE`函数返回两个几何图形之间的距离（以米为单位）。 
+`ST_DISTANCE` 函数返回两个几何图形之间的距离（以米为单位）。 
 
 下面的查询使用 `ST_DISTANCE` 在加油站距离汽车不足 10 千米时生成事件。
 
@@ -123,7 +123,7 @@ JOIN Station s ON ST_DISTANCE(c.Location, s.Location) < 10 * 1000
 若要了解详细信息，请访问 [ST_DISTANCE](/stream-analytics-query/st-distance) 引用。
 
 ## <a name="st_overlaps"></a>ST_OVERLAPS
-`ST_OVERLAPS`函数比较两个几何图形。 如果几何图形重叠，则函数返回1。 如果几何图形不重叠，则函数返回0。 
+`ST_OVERLAPS` 函数比较两个几何图形。 如果这两个几何图形重叠，则函数返回 1。 如果这两个几何图形不重叠，则函数返回 0。 
 
 下面的查询使用 `ST_OVERLAPS` 在某建筑位于可能发生洪灾的区域内时生成事件。
 
@@ -144,7 +144,7 @@ JOIN Storm s ON ST_OVERLAPS(c.Location, s.Course)
 若要了解详细信息，请访问 [ST_OVERLAPS](/stream-analytics-query/st-overlaps) 引用。
 
 ## <a name="st_intersects"></a>ST_INTERSECTS
-`ST_INTERSECTS`函数比较两个几何图形。 如果几何图形相交，则函数返回1。 如果几何图形不彼此相交，则该函数返回0。
+`ST_INTERSECTS` 函数比较两个几何图形。 如果这两个几何图形相交，则函数返回 1。 如果这两个几何图形不彼此相交，则函数返回 0。
 
 下面的示例查询使用 `ST_INTERSECTS` 来确定柏油路是否与泥路相交。
 
@@ -170,7 +170,7 @@ FROM input
 若要了解详细信息，请访问 [ST_INTERSECTS](/stream-analytics-query/st-intersects) 引用。
 
 ## <a name="st_within"></a>ST_WITHIN
-`ST_WITHIN`函数确定几何图形是否在另一个几何图形内。 如果第一个包含在最后一个中，则函数将返回1。 如果第一个几何图形不位于最后一个几何图形内，则该函数将返回0。
+`ST_WITHIN` 函数确定一个几何图形是否在另一个几何图形内。 如果第一个几何图形包含在后一个几何图形内，则函数将返回 1。 如果第一个几何图形不位于后一个几何图形内，则函数将返回 0。
 
 下面的示例查询使用 `ST_WITHIN` 来确定交付目标点是否位于给定的仓库多边形内。
 

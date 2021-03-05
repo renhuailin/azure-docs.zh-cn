@@ -7,16 +7,16 @@ ms.service: azure-percept
 ms.topic: conceptual
 ms.date: 02/18/2021
 ms.custom: template-concept
-ms.openlocfilehash: d850b47078f504b8ccb23d8c0a43811e99dc71d8
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 7650e80273567a693c3566fede068678b3cc5b17
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102098343"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102179402"
 ---
 # <a name="azure-percept-studio-overview"></a>Azure Percept Studio 概述
 
-Azure Percept Studio 是创建边缘 AI 模型和解决方案的单一启动点。 Azure Percept Studio 允许你发现并完成引导式工作流，使你可以轻松地集成支持边缘 AI 的硬件和强大的 Azure AI 和 IoT 云服务。
+[Azure Percept Studio](https://go.microsoft.com/fwlink/?linkid=2135819) 是创建边缘 AI 模型和解决方案的单一启动点。 Azure Percept Studio 允许你发现并完成引导式工作流，使你可以轻松地集成支持边缘 AI 的硬件和强大的 Azure AI 和 IoT 云服务。
 
 在工作室中，可以查看支持边缘 AI 的设备，作为用于收集初始和正在进行的定型数据以及模型迭代的部署目标的终结点。 通过访问设备和定型数据，可以为 [视觉](./tutorial-nocode-vision.md) 和 [语音](./tutorial-no-code-speech.md) 方案进行快速原型设计和迭代边缘 AI 模型开发。
 
@@ -32,8 +32,7 @@ Azure Percept Studio 中的工作流集成了许多基础 Azure AI 和 IoT 服�
 
 ## <a name="next-steps"></a>后续步骤
 
-<!-- [here](https://go.microsoft.com/fwlink/?linkid=2135819). -->
-
+- [在此处](https://go.microsoft.com/fwlink/?linkid=2135819)查看 Azure Percept Studio
 - 获取[Microsoft 在线商店](https://go.microsoft.com/fwlink/p/?LinkId=2155270)中的 AZURE Percept 深色和 Azure Percept 音频附件
 - 完成 Azure Percept 深色设置 [快速入门指南](./quickstart-percept-dk-set-up.md)
 - 尝试用于构建无代码 [远景](./tutorial-nocode-vision.md) 和 [语音](./tutorial-no-code-speech.md) 解决方案的教程

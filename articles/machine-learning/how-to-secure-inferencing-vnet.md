@@ -11,12 +11,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 10/23/2020
 ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1, devx-track-azurecli
-ms.openlocfilehash: 80abe036ef4a08f7ed6f0f19cffc2abde70a6ea9
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: 190f44e95c96a2aee60e1b28f8817a74d3e06e3f
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99981300"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102178654"
 ---
 # <a name="secure-an-azure-machine-learning-inferencing-environment-with-virtual-networks"></a>使用虚拟网络保护 Azure 机器学习推理环境
 
@@ -34,7 +34,6 @@ ms.locfileid: "99981300"
 > - 专用 AKS 群集
 > - 具有专用链接的 AKS 群集
 > - Azure 容器实例 (ACI)
-
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -58,7 +57,6 @@ ms.locfileid: "99981300"
 > [!div class="checklist"]
 > * 遵循[在 Azure Kubernetes 服务 (AKS) 中配置高级网络](../aks/configure-azure-cni.md#prerequisites)中的先决条件。
 > * AKS 实例和虚拟网络必须位于同一区域。 如果在虚拟网络中保护工作区使用的 Azure 存储帐户，这些帐户还必须与 AKS 实例位于同一虚拟网络中。
-
 
 若要将虚拟网络中的 AKS 添加到工作区，请执行以下步骤：
 
@@ -274,9 +272,9 @@ Azure 容器实例在部署模型时动态创建。 你必须为部署使用的�
 
 ## <a name="next-steps"></a>后续步骤
 
-本文是由四部分构成的虚拟网络系列文章中的第三部分。 若要了解如何保护虚拟网络，请参阅其余文章：
+本文是由五部分组成的虚拟网络系列中的第四部分。 若要了解如何保护虚拟网络，请参阅其余文章：
 
 * [第1部分：虚拟网络概述](how-to-network-security-overview.md)
 * [第 2 部分：保护工作区资源](how-to-secure-workspace-vnet.md)
 * [第 3 部分：保护训练环境](how-to-secure-training-vnet.md)
-* [第 5 部分：启用工作室功能](how-to-enable-studio-virtual-network.md)
+* [第5部分：启用 studio 功能](how-to-enable-studio-virtual-network.md)

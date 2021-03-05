@@ -5,15 +5,15 @@ services: virtual-machines
 author: albecker1
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 02/12/2021
+ms.date: 03/04/2021
 ms.author: albecker1
 ms.custom: include file
-ms.openlocfilehash: 54c29d76757916a8eea54af16babdae21b809a19
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: a2f6a3fd8d36bb54773db21e3d36dab0060bae57
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101749966"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102178307"
 ---
 ## <a name="disk-level-bursting"></a>磁盘级突发
 
@@ -63,15 +63,14 @@ ms.locfileid: "101749966"
 
 基于信用的突发适用于 Azure 公共、政府和中国云的所有区域中 P20 和更小的磁盘大小。 默认情况下，在支持的磁盘大小的所有新的和现有部署上启用磁盘突发。 VM 级突发只使用基于信用额度的突发。
 
-### <a name="virtual-machine-level-bursting"></a>虚拟机级突发
-在公有云中的所有区域中，已根据这些支持的大小启用了 VM 级突发支持： 
-- [Lsv2 系列](../articles/virtual-machines/lsv2-series.md)
+## <a name="virtual-machine-level-bursting"></a>虚拟机级突发
 
-对于以下受支持的大小，还可以在美国西部提供 VM 级别的突发：
+VM 级别突发只使用基于信用额度的突发模型进行突发，默认情况下，它为支持它的所有 Vm 启用。
+
+在 Azure 公有云中的所有区域中，根据这些支持的大小启用了 VM 级突发功能： 
+- [Lsv2 系列](../articles/virtual-machines/lsv2-series.md)
 - [Dv3 和 Dsv3 系列](../articles/virtual-machines/dv3-dsv3-series.md)
 - [Ev3 和 Esv3 系列](../articles/virtual-machines/ev3-esv3-series.md)
-
-默认情况下，为支持的虚拟机启用了突发。
 
 ## <a name="bursting-flow"></a>突发流
 

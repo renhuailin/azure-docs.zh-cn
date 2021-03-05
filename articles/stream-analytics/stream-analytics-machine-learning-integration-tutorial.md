@@ -1,18 +1,18 @@
 ---
 title: Azure 流分析与 Azure 机器学习工作室（经典）的集成
 description: 本文介绍如何使用用户定义的函数快速设置集成了 Azure 机器学习工作室（经典）的简单 Azure 流分析作业。
-author: krishna0815
-ms.author: krishmam
 ms.service: stream-analytics
+author: jasonwhowell
+ms.author: jasonh
 ms.topic: how-to
 ms.date: 08/12/2020
 ms.custom: seodec18
-ms.openlocfilehash: d7d74887b4b4e205645a45fa7e07768a1af73940
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 89b1b91270d1fe30ffcb5ae0caa5f319aa616683
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98015294"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102178518"
 ---
 # <a name="do-sentiment-analysis-with-azure-stream-analytics-and-azure-machine-learning-studio-classic"></a>使用 Azure 流分析和 Azure 机器学习工作室（经典）执行情绪分析
 
@@ -46,7 +46,7 @@ ms.locfileid: "98015294"
 
 2. 使用以下详细信息填写“基础”选项卡，并为其余字段保留默认值：
 
-   |字段  |Value  |
+   |字段  |值  |
    |---------|---------|
    |订阅|选择订阅。|
    |资源组|选择资源组。|

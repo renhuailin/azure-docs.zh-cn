@@ -2,13 +2,13 @@
 title: Azure 服务总线 - 自动更新消息传送单元
 description: 本文介绍如何使用自动更新 Service Bus 命名空间的消息传送单元。
 ms.topic: how-to
-ms.date: 09/15/2020
-ms.openlocfilehash: 594f9987bfa5a7a439fb862a0345d0004785b189
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/03/2021
+ms.openlocfilehash: 7fc3aca82b8f01d70dec4fc2dac7842895417ec9
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101720590"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102177949"
 ---
 # <a name="automatically-update-messaging-units-of-an-azure-service-bus-namespace"></a>自动更新 Azure 服务总线命名空间的消息传送单元。 
 自动缩放是指在处理应用程序负载时让适当数量的资源运行。 当负载增加时，它可以添加资源来处理增加的负载；当资源空闲时，它可以删除资源以节省资金。 请参阅 [Microsoft Azure 中的自动缩放概述](../azure-monitor/autoscale/autoscale-overview.md) ，了解有关 Azure Monitor 的自动缩放功能的详细信息。 
@@ -136,8 +136,14 @@ ms.locfileid: "101720590"
     
     :::image type="content" source="./media/automate-update-messaging-units/repeat-specific-days-2.png" alt-text="缩放到特定消息传送单元-重复特定天数":::
 
-> [!IMPORTANT]
-> 若要详细了解自动缩放设置的工作原理，尤其是它如何选择配置文件或条件并评估多个规则的详细信息，请参阅 [了解自动缩放设置](../azure-monitor/autoscale/autoscale-understanding-settings.md)。          
+    
+    若要详细了解自动缩放设置的工作原理，尤其是它如何选择配置文件或条件并评估多个规则的详细信息，请参阅 [了解自动缩放设置](../azure-monitor/autoscale/autoscale-understanding-settings.md)。          
+
+    > [!NOTE]
+    > - 针对自动缩放做出的决定的指标可能为5-10 分钟。 当你处理高峰工作负荷时，我们建议你的持续时间较短，增加时间延长 (> 10 分钟) ，以确保有足够的消息传递单元来处理高峰工作负荷。 
+    > 
+    > - 如果出现由于缺少容量而导致的故障 (没有可用的消息传递单元) ，请向我们提出支持票证。  
+
 
 ## <a name="next-steps"></a>后续步骤
 若要了解消息传送单元，请参阅[高级消息传送](service-bus-premium-messaging.md)

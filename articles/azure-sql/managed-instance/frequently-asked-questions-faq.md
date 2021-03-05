@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 09/21/2020
-ms.openlocfilehash: f58811411a447eae4ff9a5c0fd2a9888b4a39a34
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 9e8ef5bf9d5d8000bfdd581cd7e9ae1a1a775fc9
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99428667"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102178127"
 ---
 # <a name="azure-sql-managed-instance-frequently-asked-questions-faq"></a>Azure SQL 托管实例常见问题解答 (FAQ)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -94,7 +94,7 @@ SQL 托管实例部署是否有配额限制？
 
 如何缩放托管实例？
 
-可以通过 [Azure 门户](../database/service-tiers-vcore.md?tabs=azure-portal#selecting-a-hardware-generation)、[PowerShell](/archive/blogs/sqlserverstorageengine/change-size-azure-sql-managed-instance-using-powershell)、[Azure CLI](/cli/azure/sql/mi?view=azure-cli-latest#az-sql-mi-update&preserve-view=true) 或 [ARM 模板](/archive/blogs/sqlserverstorageengine/updating-azure-sql-managed-instance-properties-using-arm-templates)来缩放托管实例。
+可以通过 [Azure 门户](../database/service-tiers-vcore.md?tabs=azure-portal#selecting-a-hardware-generation)、[PowerShell](/archive/blogs/sqlserverstorageengine/change-size-azure-sql-managed-instance-using-powershell)、[Azure CLI](/cli/azure/sql/mi#az-sql-mi-update) 或 [ARM 模板](/archive/blogs/sqlserverstorageengine/updating-azure-sql-managed-instance-properties-using-arm-templates)来缩放托管实例。
 
 是否可以将托管实例从一个区域移动到另一个区域？
 
@@ -102,7 +102,7 @@ SQL 托管实例部署是否有配额限制？
 
 如何删除托管实例？
 
-可以通过 Azure 门户、[PowerShell](/powershell/module/az.sql/remove-azsqlinstance?preserve-view=true&view=azps-4.3.0)、[Azure CLI](/cli/azure/sql/mi?view=azure-cli-latest#az-sql-mi-delete&preserve-view=true) 或[资源管理器 REST API](/rest/api/sql/managedinstances/delete) 来删除托管实例。
+可以通过 Azure 门户、[PowerShell](/powershell/module/az.sql/remove-azsqlinstance?preserve-view=true&view=azps-4.3.0)、[Azure CLI](/cli/azure/sql/mi#az-sql-mi-delete) 或[资源管理器 REST API](/rest/api/sql/managedinstances/delete) 来删除托管实例。
 
 创建或更新实例或还原数据库需要多长时间？
 
@@ -363,7 +363,7 @@ SQL 托管实例负责对管理端口设置规则。 这通过名为[服务辅�
 
 **是否可以执行 DNS 刷新？**
 
-可以。 请参阅 [在 SQL 托管实例虚拟群集上同步虚拟网络 DNS 服务器设置](./synchronize-vnet-dns-servers-setting-on-virtual-cluster.md)。
+是的。 请参阅 [在 SQL 托管实例虚拟群集上同步虚拟网络 DNS 服务器设置](./synchronize-vnet-dns-servers-setting-on-virtual-cluster.md)。
 
 ## <a name="change-time-zone"></a>更改时区
 

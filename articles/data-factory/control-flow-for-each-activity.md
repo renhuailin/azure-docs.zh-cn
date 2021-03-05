@@ -7,12 +7,12 @@ ms.reviewer: maghan
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/23/2019
-ms.openlocfilehash: c59108752677fc33e28578c3c679be24108806d5
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: aeabd74117f99c7cac9bde0eda02b9627caf0804
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100385602"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102177770"
 ---
 # <a name="foreach-activity-in-azure-data-factory"></a>Azure 数据工厂中的 ForEach 活动
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -66,7 +66,7 @@ ForEach 活动在管道中定义重复的控制流。 此活动用于循环访�
 
 ## <a name="type-properties"></a>Type 属性
 
-属性 | 说明 | 允许的值 | 必须
+properties | 说明 | 允许的值 | 必须
 -------- | ----------- | -------------- | --------
 name | For-Each 活动的名称。 | String | 是
 type | 必须设置为 **ForEach** | String | 是
@@ -483,6 +483,7 @@ Items | 返回要循环访问的 JSON 数组的表达式。 | 表达式（返回
 |---|---|
 | 不能将 ForEach 循环嵌套在另一个 ForEach 循环（或 Until 循环）中。 | 设计一个两级管道，其中具有外部 ForEach 循环的外部管道使用嵌套循环对内部管道进行迭代。 |
 | 对于并行处理，ForEach 活动的最大 `batchCount` 为 50，最大项数为 100,000 个。 | 设计一个两级管道，其中具有 ForEach 活动的外部管道对内部管道进行迭代。 |
+| SetVariable 不能在并发运行的 ForEach 活动中使用，因为变量在整个管道中是全局性的，它们的作用域不是 ForEach 或任何其他活动。 | 请考虑使用顺序 ForEach，或在 ForEach (变量/参数中) 的子管道内使用 Execute 管道。|
 | | |
 
 ## <a name="next-steps"></a>后续步骤

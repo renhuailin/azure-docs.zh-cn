@@ -4,18 +4,18 @@ description: 了解如何启用和配置 Azure Kubernetes Service 中的 Ultra �
 services: container-service
 ms.topic: article
 ms.date: 07/10/2020
-ms.openlocfilehash: 049c2682a8f61bb658083b0418a4fcf99dc477a5
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: d66b806adb7285e0ce2a21d8fe9254b3dbe89bcb
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900037"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102178841"
 ---
 # <a name="use-azure-ultra-disks-on-azure-kubernetes-service-preview"></a>使用 Azure 上的 Azure Kubernetes 服务 (预览) 
 
 [Azure ultra 磁盘](../virtual-machines/disks-enable-ultra-ssd.md) 为有状态应用程序提供高吞吐量、高 IOPS 和一致的低延迟磁盘存储。 超磁盘的一个主要优点是能够在不重新启动代理节点的情况下动态更改 SSD 的性能和工作负荷。 超磁盘适用于数据密集型工作负荷。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 
 此功能只能在创建群集或创建节点池时设置。
 
@@ -32,7 +32,7 @@ ms.locfileid: "92900037"
 az feature register --namespace "Microsoft.ContainerService" --name "EnableUltraSSD"
 ```
 
-状态显示为“已注册”需要几分钟时间  。 可以使用 [az feature list][az-feature-list] 命令检查注册状态：
+状态显示为“已注册”需要几分钟时间。 可以使用 [az feature list][az-feature-list] 命令检查注册状态：
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnableUltraSSD')].{Name:name,State:properties.state}"
@@ -246,8 +246,8 @@ Events:
 [operator-best-practices-storage]: operator-best-practices-storage.md
 [concepts-storage]: concepts-storage.md
 [storage-class-concepts]: concepts-storage.md#storage-classes
-[az-extension-add]: /cli/azure/extension?view=azure-cli-latest#az-extension-add
-[az-extension-update]: /cli/azure/extension?view=azure-cli-latest#az-extension-update
-[az-feature-register]: /cli/azure/feature?view=azure-cli-latest#az-feature-register
-[az-feature-list]: /cli/azure/feature?view=azure-cli-latest#az-feature-list
-[az-provider-register]: /cli/azure/provider?view=azure-cli-latest#az-provider-register
+[az-extension-add]: /cli/azure/extension#az-extension-add
+[az-extension-update]: /cli/azure/extension#az-extension-update
+[az-feature-register]: /cli/azure/feature#az-feature-register
+[az-feature-list]: /cli/azure/feature#az-feature-list
+[az-provider-register]: /cli/azure/provider#az-provider-register

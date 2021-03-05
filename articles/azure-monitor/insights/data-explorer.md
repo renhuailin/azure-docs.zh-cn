@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 01/05/2021
 author: lgayhardt
 ms.author: lagayhar
-ms.openlocfilehash: 6276527230cf889b471887fdb3da70e06a2fc8d6
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: dcfe12b30e336863c8e112d9ad675a2f57fe48f4
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100582347"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102179130"
 ---
 # <a name="azure-monitor-for-azure-data-explorer-preview"></a>Azure 数据资源管理器 (预览版的 Azure Monitor) 
 
@@ -103,10 +103,10 @@ Azure 数据资源管理器 Azure Monitor 结合了日志和指标来提供全�
 
 " **使用情况** " 选项卡允许用户深入了解群集的命令和查询的性能。 在此页上，您可以：
  
- - 查看哪些用户和应用程序正在发送最多查询或消耗最多的 CPU 和内存 (以便您可以了解哪些用户正在提交最繁忙的查询以便群集处理) 。
- - 通过失败的查询识别顶级用户和应用程序。
- -  (与过去16天) ，按用户和应用程序相比，确定查询数量最近的更改。
- - 按用户、应用程序和命令类型识别查询、内存和 CPU 使用率的趋势和高峰。
+ - 查看哪些工作负荷组、用户和应用程序正在发送最多查询或消耗最多的 CPU 和内存 (以便您可以了解哪些工作负荷正在提交最繁忙的查询，以便群集处理) 。
+ - 通过失败的查询识别顶级工作负荷组、用户和应用程序。
+ - 与过去16天) ，按工作负荷组、用户和应用程序相比，与历史记录每日平均 (进行比较。
+ - 按工作负荷组、用户、应用程序和命令类型识别查询数量、内存和 CPU 消耗情况的趋势和高峰。
 
 [![带有环形图的操作视图的屏幕截图，按命令和查询计数显示的顶级应用程序](./media/data-explorer/usage.png)](./media/data-explorer/usage.png#lightbox)
 
