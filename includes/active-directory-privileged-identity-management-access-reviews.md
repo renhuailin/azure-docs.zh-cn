@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/07/2020
 ms.author: barclayn
 ms.custom: include file
-ms.openlocfilehash: cbcd4b459faa3bf67f591cc7afab0bf0027062e1
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 0b1606e4506e7a1781426632d1f22221f7028b88
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96842358"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102193773"
 ---
 ## <a name="create-one-or-more-access-reviews"></a>创建一个或多个访问评审
 
@@ -53,7 +53,7 @@ ms.locfileid: "96842358"
 
     - 所选用户 - 如果不知道谁需要访问，请使用此选项。 使用此选项，可以将审阅分配给资源所有者或组管理员完成。
     - 成员(自我) - 使用此选项可让用户评审其自己的角色分配。
-    - **(预览) 经理** –使用此选项可让用户的经理查看其角色分配。 选择 (预览版) Manager 时，还可以选择指定回退审阅者。 当用户未在目录中指定任何管理员时，系统将要求回退审阅者检查用户。
+    - **经理** –使用此选项可让用户的经理查看其角色分配。 选择 "管理器" 后，还可以选择指定回退审阅者。 当用户未在目录中指定任何管理员时，系统会要求后备审阅者评审用户。
 
 ### <a name="upon-completion-settings"></a>完成后的设置
 
@@ -83,6 +83,6 @@ ms.locfileid: "96842358"
 1. 将“邮件通知”设置为“启用”，以便在访问评审开始时让 Azure AD 向评审者发送电子邮件通知，并在评审完成时向管理员发送电子邮件通知。  
 
 1. 将“提醒”设置为“启用”，让 Azure AD 向尚未完成其审阅的审阅者发送访问评审正在进行的提醒。  
-1. 发送给审阅者的电子邮件的内容根据查看详细信息（如审阅名称、资源名称、截止日期等）自动生成。如果你需要一种方式来传达其他信息（如其他说明或联系人信息），则可以在 **审阅者电子邮件的其他内容** 中指定这些详细信息，该电子邮件将包含在发送给分配的审阅者的邀请和提醒电子邮件中。 下面突出显示的部分是将要显示此信息的位置。
+1. 发送给审阅者的电子邮件的内容是根据审阅详细信息（如审阅名称、资源名称、截止日期等）自动生成的。如果你需要一种方式来传达其他信息（例如其他说明或联系人信息），则可在审阅者电子邮件的“其他内容”中指定这些详细信息，这些信息将包含在发送给分配的审阅者的邀请和提醒电子邮件中。 下面突出显示的部分是将要显示此信息的位置。
 
-    ![用突出显示发送给审阅者的电子邮件内容](./media/active-directory-privileged-identity-management-access-reviews/email-info.png)
+    ![突出显示发送给审阅者的电子邮件内容](./media/active-directory-privileged-identity-management-access-reviews/email-info.png)

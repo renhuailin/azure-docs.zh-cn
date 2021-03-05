@@ -1,0 +1,68 @@
+---
+title: 使用专用链接将 Azure 前门 Premium 连接到存储帐户源
+titleSuffix: Azure Private Link
+description: 了解如何私下将 Azure 前门高级版连接到存储帐户。
+services: frontdoor
+author: duongau
+ms.service: frontdoor
+ms.topic: how-to
+ms.date: 03/04/2021
+ms.author: tyao
+ms.openlocfilehash: 885582481e3783bdd4fbad40a24499f42a40ce24
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102193396"
+---
+# <a name="connect-azure-front-door-premium-to-a-storage-account-origin-with-private-link"></a>使用专用链接将 Azure 前门 Premium 连接到存储帐户源
+
+本文将指导你如何配置 Azure 前门 Premium SKU，以使用 Azure 专用链接服务来专用连接到你的存储帐户源。
+
+## <a name="sign-in-to-azure"></a>登录 Azure
+
+登录 [Azure 门户](https://portal.azure.com)。
+
+## <a name="enable-private-link-to-a-storage-account-in-azure-front-door-premium"></a>在 Azure 前门 Premium 中启用到存储帐户的专用链接
+ 
+在本部分中，将专用链接服务映射到在 Azure 前门专用网络中创建的专用终结点。 
+
+1. 在 Azure 前门 Premium 配置文件中的 " *设置*" 下，选择 " **源组**"。
+
+1. 选择包含要为其启用专用链接的存储帐户源的源组。
+
+1. 选择 " **+ 添加源** " 以添加新的存储帐户源，或从列表中选择以前创建的存储帐户源。
+
+    :::image type="content" source="../media/how-to-enable-private-link-storage-account/private-endpoint-storage-account.png" alt-text="启用存储帐户的专用链接的屏幕截图。":::
+
+1. 对于 " **选择 Azure 资源**"，请 **在 "我的目录" 中** 选择。 选择或输入以下设置，以配置希望 Azure 前端高级版能够私下连接的站点。
+
+    | 设置 | 值 |
+    | ------- | ----- |
+    | 区域 | 选择与源相同或最近的区域。 |
+    | 资源类型 | 选择 " **storageAccounts**"。 |
+    | 资源 | 选择存储帐户。 |
+    | 目标子资源 | 可以选择 " *blob* " 或 " *web*"。 |
+    | 请求消息 | 自定义消息或选择默认值。 |
+
+1. 然后选择 " **添加** " 以保存配置。
+
+## <a name="approve-azure-front-door-premium-private-endpoint-connection-from-the-storage-account"></a>从存储帐户批准 Azure 前门高级专用终结点连接
+
+1. 在上一节中，请前往你为其配置专用链接的存储帐户。 选择 "**设置**" 下的 "**网络**"。
+
+1. 在 " **网络**" 中，选择 " **专用终结点连接**"。 
+
+    :::image type="content" source="../media/how-to-enable-private-link-storage-account/storage-account-configure-endpoint.png" alt-text="Web 应用中的网络设置的屏幕截图。":::
+
+1. 选择 " *挂起* 的专用终结点请求"，然后选择 " **批准**"。
+
+    :::image type="content" source="../media/how-to-enable-private-link-storage-account/private-endpoint-pending-approval.png" alt-text="挂起存储专用终结点请求的屏幕截图。":::
+
+1. 批准后，它应类似于下面的屏幕截图。 完全建立连接需要几分钟时间。 你现在可以从 Azure 前门 Premium 访问你的存储帐户。
+
+    :::image type="content" source="../media/how-to-enable-private-link-storage-account/private-endpoint-approved.png" alt-text="已批准的存储终结点请求的屏幕截图。":::
+
+## <a name="next-steps"></a>后续步骤
+
+了解有关 [存储帐户的私有链接服务](../../storage/common/storage-private-endpoints.md)。

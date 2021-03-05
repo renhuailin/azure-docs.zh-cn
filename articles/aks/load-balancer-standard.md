@@ -7,16 +7,16 @@ ms.topic: article
 ms.date: 11/14/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 5da7f2a11be7562313b709a8af72ccd709165cfa
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: e37c5a748a8e99f49e3535946268427139bbbf44
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96000855"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102184417"
 ---
 # <a name="use-a-public-standard-load-balancer-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中使用公共标准负载均衡器
 
-Azure 负载均衡器位于支持入站和出站方案 (OSI) 型号的开放系统互连。 负载均衡器将抵达负载均衡器前端的入站流量分配到后端池实例。
+Azure 负载均衡器是开放式系统互连 (OSI) 模型的 L4，支持入站和出站场景。 负载均衡器将抵达负载均衡器前端的入站流量分配到后端池实例。
 
 公共负载均衡器与 AKS 集成时有两个用途：
 
@@ -88,7 +88,7 @@ default       public-svc    LoadBalancer   10.0.39.110    52.156.88.187   80:320
 * 为空闲连接配置超时设置
 
 > [!IMPORTANT]
-> 只有一个出站 IP 选项 (托管 ip，自带 IP 或 IP 前缀) 可在给定时间使用。
+> 在给定时间只能使用一个出站 IP 选项（托管 IP、自带 IP 或 IP 前缀）。
 
 ### <a name="scale-the-number-of-managed-outbound-public-ips"></a>缩放受管理出站公共 IP 的数量
 
@@ -96,13 +96,13 @@ default       public-svc    LoadBalancer   10.0.39.110    52.156.88.187   80:320
 
 与所有负载均衡器规则一样，出站规则遵循负载均衡和入站 NAT 规则的类似语法：
 
-***前端 IP + 参数 + 后端池**
+***前端 IP + 参数 + 后端池***
 
 出站规则为后端池识别的、要转换为前端的所有虚拟机配置出站 NAT。 参数针对出站 NAT 算法提供更精细的控制。
 
 尽管出站规则只能配合单个公共 IP 地址使用，但出站规则减轻了缩放出站 NAT 的负担。 规划大规模部署场景时可以使用多个 IP 地址，并可以使用出站规则来缓解容易出现 SNAT 耗尽的模式。 前端提供的每个附加 IP 地址可提供 64,000 个临时端口，供负载均衡器用作 SNAT 端口。 
 
-使用具有默认创建的托管出站公共 IP 的标准 SKU 负载均衡器时，可以使用 `load-balancer-managed-ip-count` 参数缩放托管出站公共 IP 的数量。
+结合默认创建的受管理出站公共 IP 使用标准 SKU 负载均衡器时，可以使用 `load-balancer-managed-ip-count` 参数来调整受管理出站公共 IP 的数量。
 
 若要更新现有群集，请运行以下命令。 还可以在创建群集时设置此参数，以获得多个托管出站公共 IP。
 
@@ -126,8 +126,8 @@ AKS 创建的公共 IP 被视为受 AKS 管理的资源。 这意味着该公共
 使用自己的公共 IP 或前缀的要求：
 
 - 自定义公共 IP 地址必须由用户创建和拥有。 由 AKS 创建的托管公共 IP 地址不能重新用于自带的自定义 IP，因为它可能会导致管理冲突。
-- 必须确保 AKS 群集标识 (服务主体或托管标识) 有权访问出站 IP。 根据 [所需的公共 IP 权限列表](kubernetes-service-principal.md#networking)。
-- 请确保满足配置出站 IP 或出站 IP 前缀所需的 [先决条件和限制](../virtual-network/public-ip-address-prefix.md#constraints) 。
+- 必须确保 AKS 群集标识（服务主体或托管标识）有权访问出站 IP。 依据[必需的公共 IP 权限列表](kubernetes-service-principal.md#networking)。
+- 确保满足配置出站 IP 或出站 IP 前缀所需的[先决条件和限制](../virtual-network/public-ip-address-prefix.md#constraints)。
 
 #### <a name="update-the-cluster-with-your-own-outbound-public-ip"></a>使用自己的出站公共 IP 更新群集
 
@@ -403,17 +403,17 @@ spec:
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
 [aks-sp]: kubernetes-service-principal.md#delegate-access-to-other-azure-resources
 [az-aks-show]: /cli/azure/aks#az-aks-show
-[az-aks-create]: /cli/azure/aks?view=azure-cli-latest#az-aks-create
-[az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
-[az-aks-install-cli]: /cli/azure/aks?view=azure-cli-latest#az-aks-install-cli
+[az-aks-create]: /cli/azure/aks#az-aks-create
+[az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
+[az-aks-install-cli]: /cli/azure/aks#az-aks-install-cli
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-feature-list]: /cli/azure/feature#az-feature-list
 [az-feature-register]: /cli/azure/feature#az-feature-register
 [az-group-create]: /cli/azure/group#az-group-create
 [az-provider-register]: /cli/azure/provider#az-provider-register
-[az-network-lb-outbound-rule-list]: /cli/azure/network/lb/outbound-rule?view=azure-cli-latest#az-network-lb-outbound-rule-list
-[az-network-public-ip-show]: /cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-show
-[az-network-public-ip-prefix-show]: /cli/azure/network/public-ip/prefix?view=azure-cli-latest#az-network-public-ip-prefix-show
+[az-network-lb-outbound-rule-list]: /cli/azure/network/lb/outbound-rule#az-network-lb-outbound-rule-list
+[az-network-public-ip-show]: /cli/azure/network/public-ip#az-network-public-ip-show
+[az-network-public-ip-prefix-show]: /cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-show
 [az-role-assignment-create]: /cli/azure/role/assignment#az-role-assignment-create
 [azure-lb]: ../load-balancer/load-balancer-overview.md
 [azure-lb-comparison]: ../load-balancer/skus.md
