@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/01/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 0e1ce841f6da8f15bd977437bca6b835a7b0d745
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
+ms.openlocfilehash: 9ec1e59a5599ca2e95578eacc1484932956ebf16
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98108732"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102204008"
 ---
 # <a name="how-to-enable-key-vault-logging"></a>如何启用 Key Vault 日志记录
 
@@ -34,7 +34,7 @@ ms.locfileid: "98108732"
 
 设置密钥日志记录的第一步是连接到包含密钥保管库的订阅。 这在有多个订阅与帐户相关联的情况下特别重要。
 
-在 Azure CLI 中，可以使用 [az account list](/cli/azure/account?view=azure-cli-latest#az_account_list) 命令查看所有订阅，然后使用 [az account set](/cli/azure/account?view=azure-cli-latest#az_account_set) 连接一个订阅：
+在 Azure CLI 中，可以使用 [az account list](/cli/azure/account#az_account_list) 命令查看所有订阅，然后使用 [az account set](/cli/azure/account#az_account_set) 连接一个订阅：
 
 ```azurecli-interactive
 az account list
@@ -58,7 +58,7 @@ Set-AzContext -SubscriptionId "<subscriptionID>"
 
 我们还需要提供存储帐户名称。 存储帐户名称必须唯一的，长度介于 3 到 24 个字符，只能使用数字和小写字母。  最后，我们将创建“Standard_LRS”SKU 的存储帐户。
 
-在 Azure CLI 中，使用 [az storage account create](/cli/azure/storage/account?view=azure-cli-latest#az_storage_account_create) 命令。
+在 Azure CLI 中，使用 [az storage account create](/cli/azure/storage/account#az_storage_account_create) 命令。
 
 ```azurecli-interactive
 az storage account create --name "<your-unique-storage-account-name>" -g "myResourceGroup" --sku "Standard_LRS"
@@ -84,9 +84,9 @@ $sa.id
 
 ## <a name="obtain-your-key-vault-resource-id"></a>获取密钥保管库资源 ID
 
-在 [CLI 快速入门](quick-create-cli.md)和 [PowerShell 快速入门](quick-create-powershell.md)中，你创建了具有唯一名称的密钥。  在以下步骤中再次使用该名称。  如果忘记密钥保管库的名称，可以使用 Azure CLI [az keyvault list](/cli/azure/keyvault?view=azure-cli-latest#az_keyvault_list) 命令或 Azure PowerShell [Get-AzKeyVault](/powershell/module/az.keyvault/get-azkeyvault?view=azps-4.7.0) cmdlet 将其列出。
+在 [CLI 快速入门](quick-create-cli.md)和 [PowerShell 快速入门](quick-create-powershell.md)中，你创建了具有唯一名称的密钥。  在以下步骤中再次使用该名称。  如果忘记密钥保管库的名称，可以使用 Azure CLI [az keyvault list](/cli/azure/keyvault#az_keyvault_list) 命令或 Azure PowerShell [Get-AzKeyVault](/powershell/module/az.keyvault/get-azkeyvault?view=azps-4.7.0) cmdlet 将其列出。
 
-使用密钥保管库的名称查找其资源 ID。  在 Azure CLI 中，使用 [az keyvault show](/cli/azure/keyvault?view=azure-cli-latest#az_keyvault_show) 命令。
+使用密钥保管库的名称查找其资源 ID。  在 Azure CLI 中，使用 [az keyvault show](/cli/azure/keyvault#az_keyvault_show) 命令。
 
 ```azurecli-interactive
 az keyvault show --name "<your-unique-keyvault-name>"
@@ -102,7 +102,7 @@ Get-AzKeyVault -VaultName "<your-unique-keyvault-name>"
 
 ## <a name="enable-logging-using-azure-powershell"></a>使用 Azure PowerShell 启用日志记录
 
-为启用 Key Vault 日志记录，我们将使用 Azure CLI [az monitor diagnostic-settings create](/cli/azure/monitor/diagnostic-settings?view=azure-cli-latest) 命令或 [Set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting?view=azps-4.7.0) cmdlet，以及存储帐户 ID 和密钥保管库资源 ID。
+为启用 Key Vault 日志记录，我们将使用 Azure CLI [az monitor diagnostic-settings create](/cli/azure/monitor/diagnostic-settings) 命令或 [Set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting?view=azps-4.7.0) cmdlet，以及存储帐户 ID 和密钥保管库资源 ID。
 
 ```azurecli-interactive
 az monitor diagnostic-settings create --storage-account "<storage-account-id>" --resource "<key-vault-resource-id>" --name "Key vault logs" --logs '[{"category": "AuditEvent","enabled": true}]' --metrics '[{"category": "AllMetrics","enabled": true}]'
@@ -116,7 +116,7 @@ Set-AzDiagnosticSetting -ResourceId "<key-vault-resource-id>" -StorageAccountId 
 
 可以根据需要为日志设置保留策略，确保在指定时间后自动删除较旧的日志。 例如，可以将保留策略设置为自动删除超过 90 天的日志。
 
-<!-- With the Azure CLI, use the [az monitor diagnostic-settings update](/cli/azure/monitor/diagnostic-settings?view=azure-cli-latest#az_monitor_diagnostic_settings_update) command. 
+<!-- With the Azure CLI, use the [az monitor diagnostic-settings update](/cli/azure/monitor/diagnostic-settings#az_monitor_diagnostic_settings_update) command. 
 
 ```azurecli-interactive
 az monitor diagnostic-settings update 
@@ -143,7 +143,7 @@ Set-AzDiagnosticSetting "<key-vault-resource-id>" -StorageAccountId $sa.id -Enab
 
 Key Vault 日志存储在提供的存储帐户的“insights-logs-auditevent”容器中。 若要查看这些日志，必须下载 Blob。
 
-首先，列出容器中的所有 Blob。  在 Azure CLI 中，使用 [az storage blob list](/cli/azure/storage/blob?view=azure-cli-latest#az_storage_blob_list) 命令。
+首先，列出容器中的所有 Blob。  在 Azure CLI 中，使用 [az storage blob list](/cli/azure/storage/blob#az_storage_blob_list) 命令。
 
 ```azurecli-interactive
 az storage blob list --account-name "<your-unique-storage-account-name>" --container-name "insights-logs-auditevent"
@@ -159,7 +159,7 @@ Get-AzStorageBlob -Container "insights-logs-auditevent" -Context $sa.Context
 
 由于可以使用相同的存储帐户来收集多个资源的日志，Blob 名称中的完整资源 ID 适合用于仅访问或下载所需 Blob。 但在这样做之前，让我们先了解如何下载所有 Blob。
 
-在 Azure CLI 中，使用 [az storage blob download](/cli/azure/storage/blob?view=azure-cli-latest#az_storage_blob_download) 命令，向其传递 Blob 名称以及打算用于保存结果的文件的路径。
+在 Azure CLI 中，使用 [az storage blob download](/cli/azure/storage/blob#az_storage_blob_download) 命令，向其传递 Blob 名称以及打算用于保存结果的文件的路径。
 
 ```azurecli-interactive
 az storage blob download --container-name "insights-logs-auditevent" --file <path-to-file> --name "<blob-name>" --account-name "<your-unique-storage-account-name>"

@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.custom: mvc, devx-track-azurecli
 ms.date: 04/16/2020
 ms.author: sebansal
-ms.openlocfilehash: 626d7f161d23e6105eea0ca160cd2c9be0ed0ea0
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: b7b15c1c4952f6e0a606b1ed46f1588c536b4ae2
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97935931"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102204076"
 ---
 # <a name="tutorial-import-a-certificate-in-azure-key-vault"></a>教程：在 Azure Key Vault 中导入证书
 
@@ -45,13 +45,13 @@ Azure Key Vault 是一项云服务，它为机密提供了安全的存储。 可
 2. 在“搜索”框中输入“Key Vault”。
 3. 从结果列表中选择“Key Vault”。
 4. 在“Key Vault”部分，选择“创建”。
-5. 在“创建密钥保管库”部分，提供以下信息：
+5. 在“创建密钥保管库”部分，提供以下信息： 
     - 名称：必须提供唯一的名称。 在本快速入门中，我们使用 Example-Vault。 
     - 订阅：选择订阅。
     - 在“资源组”下选择“新建”，然后输入资源组名称。
     - 在“位置”下拉菜单中选择一个位置。
     - 让其他选项保留默认值。
-6. 提供上述信息后，选择“创建”。
+6. 提供上述信息后，选择“创建”  。
 
 请记下下面列出的两个属性：
 
@@ -104,9 +104,9 @@ az keyvault certificate import --file
                                [--tags]
 ```
 
-详细了解[参数](/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-import)。
+详细了解[参数](/cli/azure/keyvault/certificate#az-keyvault-certificate-import)。
 
-导入证书后，可以使用 [certificate show](/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-show) 来查看证书
+导入证书后，可以使用 [certificate show](/cli/azure/keyvault/certificate#az-keyvault-certificate-show) 来查看证书
 
 
 ```azurecli

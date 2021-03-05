@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: JenCook
-ms.openlocfilehash: 8d5ce3cde8c86d66bec025c778318a192ef60b73
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: de7eaf40271965d48dc0507e0335e6924bdfb73f
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94560837"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102204178"
 ---
 # <a name="solutions-on-azure-virtual-machines"></a>Azure 虚拟机上的解决方案
 
@@ -29,7 +29,7 @@ Azure 机密计算虚拟机旨在保护云中处理的数据和代码的机密�
 
 ### <a name="current-available-sizes-and-regions"></a>当前可用大小和区域
 
-若要获取可用区域和可用性区域中所有正式版机密计算 VM 大小的列表，请在 [Azure CLI](/cli/azure/install-azure-cli-windows?view=azure-cli-latest) 中运行以下命令：
+若要获取可用区域和可用性区域中所有正式版机密计算 VM 大小的列表，请在 [Azure CLI](/cli/azure/install-azure-cli-windows) 中运行以下命令：
 
 ```azurecli-interactive
 az vm list-skus `
@@ -88,7 +88,7 @@ Azure 资源管理器是 Azure 的部署和管理服务。 它提供一个管理
 
 ### <a name="vm-size"></a>VM 大小
 
-在虚拟机资源的 ARM 模板中指定以下大小之一。 此字符串用作 **properties** 中的 **vmSize** 。
+在虚拟机资源的 ARM 模板中指定以下大小之一。 此字符串用作 **properties** 中的 **vmSize**。
 
 ```json
   [
@@ -101,7 +101,7 @@ Azure 资源管理器是 Azure 的部署和管理服务。 它提供一个管理
 
 ### <a name="gen2-os-image"></a>Gen2 OS 映像
 
-在 **properties** 下，还必须在 **storageProfile** 下引用一个映像。 请仅将以下某一映像用于 **imageReference** 。
+在 **properties** 下，还必须在 **storageProfile** 下引用一个映像。 请仅将以下某一映像用于 **imageReference**。
 
 ```json
       "2019-datacenter-gensecond": {

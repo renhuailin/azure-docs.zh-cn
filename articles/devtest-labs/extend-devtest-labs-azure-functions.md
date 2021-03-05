@@ -3,12 +3,12 @@ title: 使用 Azure Functions 扩展 Azure 开发测试实验室 |Microsoft Docs
 description: 了解如何使用 Azure Functions 扩展 Azure 开发测试实验室。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: bcd12d77065d231198e992fa5c459f0fc210855a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7a51f0935540df18cfb8805902bbe2c4ec365291
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85476302"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102203668"
 ---
 # <a name="use-azure-functions-to-extend-devtest-labs"></a>使用 Azure Functions 扩展开发测试实验室
 您可以使用 Azure Functions 来支持开发测试实验室已支持的方案以外的其他方案。 Azure Functions 可用于扩展服务的内置功能，以满足特定于业务的需求。 以下列表提供了一些可能的方案。 本文介绍如何实现这些示例方案之一。
@@ -44,9 +44,9 @@ ms.locfileid: "85476302"
 本部分提供了有关设置更新 **内部支持** 页面所需的 Azure 资源的分步说明。 本演练提供了一个扩展开发测试实验室的示例。 对于其他方案，可使用此模式。
 
 ### <a name="step-1-create-a-service-principal"></a>步骤1：创建服务主体 
-第一步是获取有权访问包含实验室的订阅的服务主体。 服务主体必须使用基于密码的身份验证。 可以通过 [Azure CLI](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest)、 [Azure PowerShell](/powershell/azure/create-azure-service-principal-azureps?view=azps-2.5.0)或 [Azure 门户](../active-directory/develop/howto-create-service-principal-portal.md)来完成此操作。 如果你已有要使用的服务主体，则可以跳过此步骤。
+第一步是获取有权访问包含实验室的订阅的服务主体。 服务主体必须使用基于密码的身份验证。 可以通过 [Azure CLI](/cli/azure/create-an-azure-service-principal-azure-cli)、 [Azure PowerShell](/powershell/azure/create-azure-service-principal-azureps?view=azps-2.5.0)或 [Azure 门户](../active-directory/develop/howto-create-service-principal-portal.md)来完成此操作。 如果你已有要使用的服务主体，则可以跳过此步骤。
 
-记下服务主体的 **应用程序 id**、 **密钥**和 **租户 id** 。 稍后在本演练中将需要它们。 
+记下服务主体的 **应用程序 id**、 **密钥** 和 **租户 id** 。 稍后在本演练中将需要它们。 
 
 ### <a name="step-2-download-the-sample-and-open-in-visual-studio-2019"></a>步骤2：下载该示例，并在 Visual Studio 2019 中打开
 通过克隆存储库或从) [此处](https://github.com/Azure/azure-devtestlab/archive/master.zip)下载存储库，在本地 (下载[c # Azure Functions 示例](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/AzureFunctions/CSharp)的副本。  

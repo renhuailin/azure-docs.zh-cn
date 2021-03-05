@@ -12,12 +12,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 02/16/2021
 ms.author: juliako
-ms.openlocfilehash: 3a64bb261db39efb63b35004f1daa0452b4f0672
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 618617d3602e45ebb15314c7cc5f6898a73bb71f
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101715150"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102203719"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure 媒体服务视频索引器发行说明
 
@@ -29,6 +29,12 @@ ms.locfileid: "101715150"
 * 已知问题
 * Bug 修复
 * 已弃用的功能
+
+## <a name="march-2021"></a>2021 年 3 月
+
+音频分析现已在不同价格的音频功能的其他新捆绑中提供。 新的 " **基本音频** 分析" 预设提供一种低成本的选项，只需提取语音脚本、翻译和格式输出标题和副标题。 **基本的音频** 预设将在你的帐单上产生两个单独的计量仪，其中包含一条用于脚本的行，另外一行用于标题和副标题格式。 有关定价的详细信息，请参阅 [媒体服务定价](https://azure.microsoft.com/pricing/details/media-services/) 页。
+
+通过选择 "   ->  **视频 + 音频索引**" 下拉框) 下的 "高级选项" "**基本音频** 预设" (为文件编制索引或重新创建索引时，新添加的捆绑包可用。
 
 ## <a name="february-2021"></a>2021 年 2 月
 

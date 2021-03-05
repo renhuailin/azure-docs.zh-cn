@@ -7,12 +7,12 @@ ms.author: aymarqui
 ms.date: 02/12/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: a39b91304c4123b216a0b508dcea0547cae5ab43
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 89bd77c30ec52a72087598b86f22e85659fa1b0e
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102041495"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102203889"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-signalr-service"></a>将 Azure 数字孪生与 Azure SignalR 服务集成
 
@@ -88,7 +88,7 @@ ms.locfileid: "102041495"
 
     :::image type="content" source="media/how-to-integrate-azure-signalr/signalr-keys.png" alt-text="显示 SignalR 实例的密钥页的 Azure 门户屏幕截图。主连接字符串旁边的 &quot;复制到剪贴板&quot; 图标将突出显示。" lightbox="media/how-to-integrate-azure-signalr/signalr-keys.png":::
 
-1. 最后，使用以下 Azure CLI 命令将 Azure SignalR **连接字符串** 添加到该函数的应用设置中。 此外， [请将占位符](how-to-integrate-azure-signalr.md#prerequisites)替换为你的资源组和应用服务/函数应用名称。 如果[计算机上安装](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)了 Azure CLI，则可在[Azure Cloud Shell](https://shell.azure.com)中或在本地运行该命令：
+1. 最后，使用以下 Azure CLI 命令将 Azure SignalR **连接字符串** 添加到该函数的应用设置中。 此外， [请将占位符](how-to-integrate-azure-signalr.md#prerequisites)替换为你的资源组和应用服务/函数应用名称。 如果[计算机上安装](/cli/azure/install-azure-cli)了 Azure CLI，则可在[Azure Cloud Shell](https://shell.azure.com)中或在本地运行该命令：
  
     ```azurecli-interactive
     az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "AzureSignalRConnectionString=<your-Azure-SignalR-ConnectionString>"
@@ -189,7 +189,7 @@ npm start
 
 如果不再需要本文中创建的资源，请按照以下步骤将其删除。 
 
-使用 Azure Cloud Shell 或本地 Azure CLI，可以使用 [az group delete](/cli/azure/group?view=azure-cli-latest&preserve-view=true#az-group-delete) 命令删除资源组中的所有 Azure 资源。 删除资源组也会删除 .。。
+使用 Azure Cloud Shell 或本地 Azure CLI，可以使用 [az group delete](/cli/azure/group#az-group-delete) 命令删除资源组中的所有 Azure 资源。 删除资源组也会删除 .。。
 * 从端到端教程 (Azure 数字孪生实例) 
 * IoT 中心和中心设备注册 (从端到端教程) 
 * 事件网格主题和关联的订阅

@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/02/2021
 ms.custom: references_regions
-ms.openlocfilehash: eedb3dfeafbd378cfff7afb04fcc2b9aa6e791d6
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: e9cbb7daf61397064bd79f30d851d96fdf63f5a0
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101679174"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102203226"
 ---
 # <a name="semantic-search-in-azure-cognitive-search"></a>Azure 认知搜索中的语义搜索
 
@@ -27,7 +27,7 @@ ms.locfileid: "101679174"
 
 公共预览功能包括：
 
-+ 语义排名算法，根据搜索查询词的上下文或语义含义检索相关文档
++ 语义排名模型，根据搜索查询词的上下文或语义含义对结果进行评分
 + 突出显示相关章节的语义标题
 + 查询的语义答案，还从结果制定
 + 拼写检查，在查询字词到达搜索引擎之前更正拼写错误
@@ -44,7 +44,9 @@ ms.locfileid: "101679174"
 
 ## <a name="availability-and-pricing"></a>可用性和定价
 
-语义排名可通过 [注册注册](https://aka.ms/SemanticSearchPreviewSignup)获得，该搜索服务在以下某个区域的标准层 (S1，S2，S3) 上创建：美国中北部、美国西部、美国西部2、美国东部2、北欧西欧。 拼写更正在同一区域中可用，但没有层限制。 如果现有服务满足层和地区标准，则只需注册。
+语义排名可通过 [注册注册](https://aka.ms/SemanticSearchPreviewSignup)获得，该搜索服务在以下某个区域的标准层 (S1，S2，S3) 上创建：美国中北部、美国西部、美国西部2、美国东部2、北欧西欧。 位于所述区域中 S1 或更高版本的现有搜索服务符合预览版 (无需) 创建新服务。
+
+拼写更正在同一区域中可用，但没有层限制，且无需注册。 
 
 在3月2日到4月1日从预览版开始，拼写更正和语义排名免费提供。 在4月1日之后，运行此功能的计算成本将成为计费事件。 预期成本为250000个查询大约 USD $ 500/月。 可以在 " [认知搜索定价" 页](https://azure.microsoft.com/pricing/details/search/) 和 " [估计和管理成本](search-sku-manage-costs.md)" 中找到详细的成本信息。
 

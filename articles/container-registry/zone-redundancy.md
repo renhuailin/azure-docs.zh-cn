@@ -4,12 +4,12 @@ description: 了解如何在 Azure 容器注册表中启用区域冗余。 在 A
 ms.topic: article
 ms.date: 02/23/2021
 ms.custom: references_regions
-ms.openlocfilehash: 931adcf8258c48d7df42bd5927e8789d7cc871db
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: a190ea68f41196fb11c20259b9953f516d6f5370
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101738100"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102203855"
 ---
 # <a name="enable-zone-redundancy-in-azure-container-registry-for-resiliency-and-high-availability"></a>启用 Azure 容器注册表中的区域冗余以实现复原和高可用性
 
@@ -48,7 +48,7 @@ az group create --name <resource-group-name> --location <location>
 
 ### <a name="create-zone-enabled-registry"></a>创建启用区域的注册表
 
-运行 [az acr create](/cli/azure/acr?view=azure-cli-latest#az_acr_create) 命令，在高级服务层中创建区域冗余注册表。 选择支持 Azure 容器注册表的 [可用性区域](../availability-zones/az-region.md) 的区域。 在以下示例中，在 *eastus* 区域中启用区域冗余。 `az acr create`有关更多注册表选项，请参阅命令帮助。
+运行 [az acr create](/cli/azure/acr#az_acr_create) 命令，在高级服务层中创建区域冗余注册表。 选择支持 Azure 容器注册表的 [可用性区域](../availability-zones/az-region.md) 的区域。 在以下示例中，在 *eastus* 区域中启用区域冗余。 `az acr create`有关更多注册表选项，请参阅命令帮助。
 
 ```azurecli
 az acr create \
@@ -70,7 +70,7 @@ az acr create \
 
 ### <a name="create-zone-redundant-replication"></a>创建区域冗余复制
 
-运行 [az acr replication create](/cli/azure/acr/replication?view=azure-cli-latest#az_acr_replication_create)命令，以在支持 Azure 容器注册表（如 *westus2*）的 [可用性区域](../availability-zones/az-region.md)的区域中创建区域冗余的注册表副本。 
+运行 [az acr replication create](/cli/azure/acr/replication#az_acr_replication_create)命令，以在支持 Azure 容器注册表（如 *westus2*）的 [可用性区域](../availability-zones/az-region.md)的区域中创建区域冗余的注册表副本。 
 
 ```azurecli
 az acr replication create \
@@ -220,7 +220,7 @@ az group create --name <resource-group-name> --location eastus
   }
 ```
 
-运行以下 [az deployment group create](/cli/azure/group/deployment?view=azure-cli-latest#az_group_deployment_create) 命令，以使用前面的模板文件创建注册表。 如果指示，请提供：
+运行以下 [az deployment group create](/cli/azure/group/deployment#az_group_deployment_create) 命令，以使用前面的模板文件创建注册表。 如果指示，请提供：
 
 * 唯一的注册表名称，或者不使用参数部署模板，它将为你创建一个唯一的名称
 * 支持可用性区域的副本的位置，例如 *westus2*

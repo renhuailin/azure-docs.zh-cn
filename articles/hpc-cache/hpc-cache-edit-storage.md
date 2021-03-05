@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: v-erkel
-ms.openlocfilehash: 7b7bc87f83925baed15bc6a411f5b4e4f78df6cc
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: f97ff1c20b7edbf24e5a2c58e22097f88883ae4f
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94654501"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102204025"
 ---
 # <a name="edit-storage-targets"></a>编辑存储目标
 
@@ -127,7 +127,7 @@ $ az hpc-cache storage-target remove --resource-group cache-rg --cache-name doc-
 * ``nfs-export`` -与面向客户端的路径关联的存储系统导出
 * ``target-path`` (可选) -导出的子目录（如果需要）
 
-示例：``--junction namespace-path="/nas-1" nfs-export="/datadisk1" target-path="/test"``
+示例： ``--junction namespace-path="/nas-1" nfs-export="/datadisk1" target-path="/test"``
 
 您必须为语句中的每个路径提供所有三个值 ``--junction`` 。 对于不想更改的任何值，请使用现有值。
 
@@ -161,11 +161,11 @@ az hpc-cache nfs-storage-target update --cache-name mycache \
 
 [设置 AZURE HPC 缓存的 Azure CLI](./az-cli-prerequisites.md)。
 
-使用 [az hpc-cache nfs 存储更新](/cli/azure/ext/hpc-cache/hpc-cache/nfs-storage-target?view=azure-cli-latest#ext-hpc-cache-az-hpc-cache-nfs-storage-target-update) 命令。
+使用 [az hpc-cache nfs 存储更新](/cli/azure/ext/hpc-cache/hpc-cache/nfs-storage-target#ext-hpc-cache-az-hpc-cache-nfs-storage-target-update) 命令。
 
 Update 命令与用于添加 NFS 存储目标的命令几乎完全相同。 有关详细信息和示例，请参阅 [创建 NFS 存储目标](hpc-cache-add-storage.md#create-an-nfs-storage-target) 。
 
-若要更改使用模型，请更新 ``--nfs3-usage-model`` 选项。 示例：``--nfs3-usage-model WRITE_WORKLOAD_15``
+若要更改使用模型，请更新 ``--nfs3-usage-model`` 选项。 示例： ``--nfs3-usage-model WRITE_WORKLOAD_15``
 
 还需要缓存名称、存储目标名称和资源组值。
 

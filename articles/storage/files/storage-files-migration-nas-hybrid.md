@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 2d531edeeae9e0dd7e392cae66d9e4d41c68dfa2
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 73dc2520fbe970123a52133cb00909fea190610a
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98882257"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102202665"
 ---
 # <a name="migrate-from-network-attached-storage-nas-to-a-hybrid-cloud-deployment-with-azure-file-sync"></a>使用 Azure 文件同步从网络附加存储迁移 (NAS) 到混合云部署
 
@@ -45,7 +45,7 @@ Azure 文件同步适用于直接附加存储 (DAS) 位置，并且不支持 (NA
 * 创建 Windows Server 2019-以最小2012R2 为虚拟机或物理服务器。 还支持 Windows Server 故障转移群集。
 * 与 NAS 相比，预配或添加直接附加存储 (DAS，这在) 不受支持。
 
-    如果使用 Azure 文件同步 [云分层](storage-sync-cloud-tiering.md) 功能，预配的存储量可能会小于你当前在 NAS 设备上使用的存储量。
+    如果使用 Azure 文件同步 [云分层](storage-sync-cloud-tiering-overview.md) 功能，预配的存储量可能会小于你当前在 NAS 设备上使用的存储量。
     但是，当你将文件从较大的 NAS 空间复制到较小的 Windows 服务器卷时，你将需要批量工作：
 
     1. 移动一组容纳在磁盘上的文件
@@ -105,7 +105,7 @@ Azure 文件同步适用于直接附加存储 (DAS) 位置，并且不支持 (NA
 
 以下 RoboCopy 命令会将文件从 NAS 存储复制到 Windows Server 目标文件夹。 Windows Server 会将其同步到 Azure 文件共享 (s) 。 
 
-如果在 Windows Server 上预配的存储空间少于 NAS 设备上的文件占用的存储空间，则已配置云分层。 当本地 Windows Server 卷已满时， [云分层](storage-sync-cloud-tiering.md) 将开始，并且已成功同步的层文件已成功同步。 云分层将生成足够的空间，以便从 NAS 设备继续复制。 云分层检查一小时以查看已同步的内容，并释放磁盘空间以达到99% 的可用空间。
+如果在 Windows Server 上预配的存储空间少于 NAS 设备上的文件占用的存储空间，则已配置云分层。 当本地 Windows Server 卷已满时， [云分层](storage-sync-cloud-tiering-overview.md) 将开始，并且已成功同步的层文件已成功同步。 云分层将生成足够的空间，以便从 NAS 设备继续复制。 云分层检查一小时以查看已同步的内容，并释放磁盘空间以达到99% 的可用空间。
 此 RoboCopy 可以更快地移动文件，而不能在本地同步到云和层，从而用尽了本地磁盘空间。 RoboCopy 将失败。 建议你按阻止该操作的顺序浏览共享。 例如，不是同时为所有共享启动 RoboCopy 作业，或者只是在 Windows Server 上移动适合当前可用空间量的共享来提几个。
 
 ```console
@@ -208,13 +208,13 @@ Robocopy /MT:32 /UNILOG:<file name> /TEE /B /MIR /COPYALL /DCOPY:DAT <SourcePath
 可以尝试并行运行其中几个副本。 建议一次处理一个 Azure 文件共享的作用域。
 
 > [!WARNING]
-> 将所有数据从 NAS 移动到 Windows Server 并完成迁移后：返回到 Azure 门户中的 **所有** _ 同步组，并将云分层卷可用空间百分比值调整为更适合缓存利用率的内容，例如20%。 
+> 将所有数据从 NAS 移动到 Windows Server 并完成迁移后：返回到 Azure 门户中的 ***所有***  同步组，并将云分层可用空间百分比值调整为更适合缓存利用率的内容（如20%）。 
 
 云分层卷可用空间策略作用于可能有多个服务器终结点从中同步的卷级别。 如果忘记调整甚至一个服务器终结点上的可用空间，同步将继续应用最严格的规则，并尝试保留99% 的可用磁盘空间，从而使本地缓存不会像预期的那样运行。 除非您的目标只是只包含很少访问的卷的命名空间、存档数据，并且您保留另一方案的存储空间的剩余部分。
 
 ## <a name="troubleshoot"></a>疑难解答
 
-最可能遇到的问题是，RoboCopy 命令在 Windows Server 端上出现 "卷已满" * 的情况下失败。 云分层每小时进行一次，用于从已同步的本地 Windows Server 磁盘撤走内容。 其目标是在卷上达到99% 的可用空间。
+最可能遇到的问题是 RoboCopy 命令在 Windows Server 端上失败并出现 *"卷已满"* 。 云分层每小时进行一次，用于从已同步的本地 Windows Server 磁盘撤走内容。 其目标是在卷上达到99% 的可用空间。
 
 让同步进度和云分层释放磁盘空间。 您可以在 Windows Server 上的文件资源管理器中观察。
 

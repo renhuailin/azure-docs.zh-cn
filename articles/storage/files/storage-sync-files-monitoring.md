@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 09/28/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: d1e51552acdd869a3f304a6d48e18e9d2aa6c782
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 272a642f70849b85be00d2507109eb97935c0dde
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100576779"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102202495"
 ---
 # <a name="monitor-azure-file-sync"></a>监视 Azure 文件同步
 
@@ -111,7 +111,7 @@ Azure Monitor 提供了下列 Azure 文件同步指标：
 
 - 门户中的 **服务器终结点运行状况** 和 **同步活动** 基于服务器上的遥测事件日志中记录的同步事件， (ID 9102 和 9302) 。 如果同步会话由于暂时性错误（例如 "错误已取消"）而失败，则只要当前同步会话正在进行，就会在门户中显示为 " **正常" 状态** ，前提是当前同步会话正在 (文件) 应用。 事件 ID 9302 是同步会话完成后记录的同步进度事件和事件 ID 9102。  有关详细信息，请参阅 [同步运行状况](./storage-sync-files-troubleshoot.md?tabs=server%252cazure-portal#broken-sync) 和 [同步进度](./storage-sync-files-troubleshoot.md?tabs=server%252cazure-portal#how-do-i-monitor-the-progress-of-a-current-sync-session)。 如果服务器终结点运行状况显示 **错误** 或 **无活动**，请参阅 [疑难解答文档](./storage-sync-files-troubleshoot.md?tabs=portal1%252cazure-portal#common-sync-errors) 以获取指导。
 - 门户中的 " **文件未同步** 计数" 基于在服务器的遥测事件日志中记录的事件 ID 9121。 同步会话完成后，每个项的错误都会记录此事件。 若要解决每个项的错误，请参阅[如何实现查看是否存在不同步的特定文件或文件夹？](./storage-sync-files-troubleshoot.md?tabs=server%252cazure-portal#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing)
-- 若要在门户中查看 **云分层效率** ，请转到 **服务器终结点属性** ，然后导航到 **云分层** 部分。 为云分层效率提供的数据基于事件 ID 9071，该事件记录在服务器上的遥测事件日志中。 若要了解详细信息，请参阅[云分层概述](./storage-sync-cloud-tiering.md)。
+- 若要在门户中查看 **云分层效率** ，请转到 **服务器终结点属性** ，然后导航到 **云分层** 部分。 为云分层效率提供的数据基于事件 ID 9071，该事件记录在服务器上的遥测事件日志中。 若要了解详细信息，请参阅 [监视云分层](./storage-sync-monitor-cloud-tiering.md)。
 - 若要查看未在门户中 **分层** 和 **撤回错误** 的文件，请转到 **服务器终结点属性** ，然后导航到 **云分层** 部分。 **不分层的文件** 基于事件 id 9003，该事件记录在服务器上的遥测事件日志中，并且 **撤回错误** 基于事件 id 9006。 若要调查无法进行分层或召回的文件，请参阅 [如何对无法进行层级处理的文件进行故障排除](./storage-sync-files-troubleshoot.md?tabs=portal1%252cazure-portal#how-to-troubleshoot-files-that-fail-to-tier) ，以及如何对无法 [召回的文件进行故障排除](./storage-sync-files-troubleshoot.md?tabs=portal1%252cazure-portal#how-to-troubleshoot-files-that-fail-to-be-recalled)。
 
 ### <a name="metric-charts"></a>指标图表

@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019, devx-track-azurecli
 ms.topic: tutorial
 ms.date: 04/11/2020
-ms.openlocfilehash: 87b3ecd9b77fcf07e6c41bce0a38ef4f99da1006
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: bb4dd08b4f30982ec4572fd4e130a89112578175
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101740930"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102203549"
 ---
 # <a name="tutorial-migrate-postgresql-to-azure-db-for-postgresql-online-using-dms-via-the-azure-cli"></a>教程：通过 Azure CLI 使用 DMS 将 PostgreSQL 联机迁移到 Azure DB for PostgreSQL
 
@@ -71,7 +71,7 @@ ms.locfileid: "101740930"
 
   * 在本地安装并运行 CLI。 CLI 2.0 是用于管理 Azure 资源的命令行工具。
 
-       若要下载 CLI，请按照[安装 Azure CLI 2.0](/cli/azure/install-azure-cli?view=azure-cli-latest) 一文中的说明操作。 本文还列出了支持 CLI 2.0 的平台。
+       若要下载 CLI，请按照[安装 Azure CLI 2.0](/cli/azure/install-azure-cli) 一文中的说明操作。 本文还列出了支持 CLI 2.0 的平台。
 
        若要设置适用于 Linux 的 Windows 子系统 (WSL)，请按照 [Windows 10 Installation Guide](/windows/wsl/install-win10)（Windows 10 安装指南）中的说明操作
 

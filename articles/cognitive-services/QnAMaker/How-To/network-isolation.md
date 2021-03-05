@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 4e9b45c72e5fb4cbd9e548727faf8946e3e5ba8f
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: 8fe8c07866b23e5d990b71bfc9cd556c338634d3
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102125031"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102203362"
 ---
 # <a name="recommended-settings-for-network-isolation"></a>用于网络隔离的推荐设置
 
@@ -57,6 +57,8 @@ ms.locfileid: "102125031"
    1. 下载 [所有服务标记的 IP 范围](https://www.microsoft.com/download/details.aspx?id=56519)。
    2. 选择 "CognitiveServicesManagement" 的 Ip。
    3. 导航到应用服务资源的 "网络" 部分，然后单击 "配置访问限制" 选项，将 Ip 添加到允许列表。
+
+    ![入站端口例外](../media/inbound-ports.png)
 
 此外，我们还提供了一个自动化脚本，为你的应用服务执行相同的操作。 可在 GitHub 上找到 [用于配置允许列表的 PowerShell 脚本](https://github.com/pchoudhari/QnAMakerBackupRestore/blob/master/AddRestrictedIPAzureAppService.ps1) 。 需要输入订阅 id、资源组和实际应用服务名称作为脚本参数。 运行脚本会自动将 Ip 添加到应用服务允许列表中。
 

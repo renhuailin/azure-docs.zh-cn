@@ -9,17 +9,17 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 03/02/2021
 ms.topic: how-to
-ms.openlocfilehash: 16546432c8c0a23d5c9dc471fe8c62ced5eca993
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 7ef1cd43d2efbc5ab92cc2b4cba4d237805d8921
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101687526"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102202648"
 ---
 # <a name="upload-billing-data-to-azure-and-view-it-in-the-azure-portal"></a>将计费数据上传到 Azure 并在 Azure 门户中查看
 
 > [!IMPORTANT] 
->  预览期间使用启用了 Azure Arc 的数据服务不会产生费用。 尽管计费系统的工作结束，但计费计量器设置为 $0。  如果遵循此方案，你将在你的帐单中看到一个当前命名为 **混合数据服务** 的服务以及一个名为 microsoft 的类型的资源的条目 **。AzureData/ `<resource type>`**。 你将能够看到你创建的每个数据服务的记录-Azure Arc，但每个记录将按 $0 计费。
+>  预览期间使用启用了 Azure Arc 的数据服务不会产生费用。 尽管计费系统的工作结束，但计费计量器设置为 $0。  如果遵循此方案，你将在你的帐单中看到一个当前命名为 **混合数据服务** 的服务以及一个名为 **`<resource type>` AzureArcData/** 的类型资源的条目。 你将能够看到你创建的每个数据服务的记录-Azure Arc，但每个记录将按 $0 计费。
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
@@ -119,7 +119,7 @@ azdata arc dc upload -p usage.json
 1. 确保你的作用域设置为在其中创建了数据服务资源的订阅。
 1. 在视图顶部附近的 "范围" 选择器旁的 "视图" 下拉菜单中选择 " **按资源成本** "。
 1. 请确保日期筛选器设置为 **本月** ，或在给定创建数据服务资源的时间时有意义的其他时间范围。
-1.    =  `microsoft.azuredata/<data service type>` 如果要仅筛选到一种类型的支持 Azure Arc 的数据服务，请单击 "添加筛选器" 以按资源类型添加筛选器。
+1.    =  `Microsoft.AzureArcData/<data service type>` 如果要仅筛选到一种类型的支持 Azure Arc 的数据服务，请单击 "添加筛选器" 以按资源类型添加筛选器。
 1. 现在，你将看到已创建并上载到 Azure 的所有资源的列表。 由于计费指标为 $0，你会看到成本始终为 $0。
 
 ## <a name="download-billing-data"></a>下载计费数据
@@ -159,5 +159,5 @@ azdata arc dc upload -p usage.json
 7. 向下钻取生成的文件夹和文件，然后单击其中一个生成的 .csv 文件。
 8. 单击 " **下载** " 按钮，该按钮会将文件保存到本地下载文件夹。
 9. 使用 .csv 文件查看器（如 Excel）打开该文件。
-10. 筛选结果以仅显示 **资源类型** 为的行  =  `Microsoft.AzureData/<data service resource type` 。
+10. 筛选结果以仅显示 **资源类型** 为的行  =  `Microsoft.AzureArcData/<data service resource type` 。
 11. 你将在 UsageQuantity 列中看到当前24小时内使用实例的小时数。

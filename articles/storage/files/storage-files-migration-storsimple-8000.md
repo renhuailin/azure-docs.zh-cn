@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 502776e85eaafa46fb2b5ce45ca3bd937e303566
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: a512151dce336de42da78232ca30845dae754db3
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100366204"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102202716"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>StorSimple 8100 和8600迁移到 Azure 文件同步
 
@@ -167,7 +167,7 @@ StorSimple 在卷级别上提供差异备份。 Azure 文件共享还具有这�
 * 如果需要 [高级 Azure 文件共享的性能](understanding-billing.md#provisioned-model)，请选择 "高级存储"。
 * 为常规用途文件服务器工作负荷（包括热数据和存档数据）选择 "标准存储"。 如果在云中共享中的唯一工作负荷将 Azure 文件同步，请选择 "标准存储"。
 
-#### <a name="account-kind"></a>帐户类型
+#### <a name="account-kind"></a>帐户种类
 
 * 对于标准存储，请选择 *StorageV2 (常规用途 v2)*。
 * 对于高级文件共享，请选择 " *FileStorage*"。
@@ -213,7 +213,7 @@ StorSimple 在卷级别上提供差异备份。 Azure 文件共享还具有这�
         :::image type="content" source="media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-new-share.png" alt-text="显示新文件共享 UI 的 Azure 门户屏幕截图。":::
     :::column-end:::
     :::column:::
-        </br>**名称**</br>支持小写字母、数字和连字符。</br></br>**配额**</br>此处的配额相当于 Windows Server 实例上的 SMB 硬配额。 最佳做法是不要在此处设置配额，因为在达到配额时，迁移和其他服务将会失败。</br></br>**层级**</br>为新的文件共享选择 " **事务优化** "。 在迁移过程中，将发生许多事务。 将层更改为最适合你的工作负荷的层会更经济高效。
+        </br>名称 - **</br>支持小写字母、数字和连字符。</br></br>**配额**</br>此处的配额相当于 Windows Server 实例上的 SMB 硬配额。 最佳做法是不要在此处设置配额，因为在达到配额时，迁移和其他服务将会失败。</br></br>**层级**</br>为新的文件共享选择 " **事务优化** "。 在迁移过程中，将发生许多事务。 将层更改为最适合你的工作负荷的层会更经济高效。
     :::column-end:::
 :::row-end:::
 
@@ -637,6 +637,6 @@ Robocopy /MT:16 /UNILOG:<file name> /TEE /NP /B /MIR /IT /COPYALL /DCOPY:DAT <So
 ## <a name="next-steps"></a>后续步骤
 
 * 更熟悉 [Azure 文件同步： aka.ms/AFS](./storage-sync-files-planning.md)。
-* 了解 [云分层](storage-sync-cloud-tiering.md) 策略的灵活性。
+* 了解 [云分层](storage-sync-cloud-tiering-overview.md) 策略的灵活性。
 * 在 Azure 文件共享上[启用 Azure 备份](../../backup/backup-afs.md#configure-backup-from-the-file-share-pane)，以安排快照并定义备份保留计划。
 * 如果在 Azure 门户中看到某些文件未同步，请参阅 [故障排除指南](storage-sync-files-troubleshoot.md) 以获取解决这些问题的步骤。

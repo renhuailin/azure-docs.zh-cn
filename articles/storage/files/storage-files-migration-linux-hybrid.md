@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 0ef4faf14ec01a25419fd22ba8c73a8a033b4172
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: f95585237bbee743083b855dd78cc850c4daffe8
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879976"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102202682"
 ---
 # <a name="migrate-from-linux-to-a-hybrid-cloud-deployment-with-azure-file-sync"></a>使用 Azure 文件同步从 Linux 迁移到混合云部署
 
@@ -39,7 +39,7 @@ Azure 文件同步适用于带有直接附加存储 (DAS) 的 Windows Server 实
 * 创建作为虚拟机或物理服务器的 Windows Server 2019 实例。 Windows Server 2012 R2 是最低要求。 还支持 Windows Server 故障转移群集。
 *  (DAS) 预配或添加直接附加存储。 不支持网络附加存储 (NAS)。
 
-  如果你使用 Azure 文件同步 [云分层](storage-sync-cloud-tiering.md) 功能，则你预配的存储量可能会小于你当前在 Linux Samba 服务器上使用的存储量。 但是，在稍后的阶段，当你将文件从较大的 Linux Samba 服务器空间复制到较小的 Windows 服务器卷时，你将需要批量工作：
+  如果你使用 Azure 文件同步 [云分层](storage-sync-cloud-tiering-overview.md) 功能，则你预配的存储量可能会小于你当前在 Linux Samba 服务器上使用的存储量。 但是，在稍后的阶段，当你将文件从较大的 Linux Samba 服务器空间复制到较小的 Windows 服务器卷时，你将需要批量工作：
 
   1. 移动一组适合该磁盘的文件。
   2. 让文件同步和云分层参与。
@@ -98,7 +98,7 @@ Azure 文件同步适用于带有直接附加存储 (DAS) 的 Windows Server 实
 
 以下 Robocopy 命令会将文件从 Linux Samba 服务器的存储复制到 Windows Server 目标文件夹。 Windows Server 会将其同步到 Azure 文件共享。 
 
-如果在 Windows Server 实例上预配的存储空间小于 Linux Samba 服务器上的文件占用的存储空间，则已配置云分层。 当本地 Windows Server 卷已满时，将启动 [云分层](storage-sync-cloud-tiering.md) ，并对已成功同步的文件进行分层。 云分层将生成足够的空间，以从 Linux Samba 服务器继续复制。 云分层检查一小时以查看已同步的内容，并释放磁盘空间以达到卷的99% 可用空间的策略。
+如果在 Windows Server 实例上预配的存储空间小于 Linux Samba 服务器上的文件占用的存储空间，则已配置云分层。 当本地 Windows Server 卷已满时，将启动 [云分层](storage-sync-cloud-tiering-overview.md) ，并对已成功同步的文件进行分层。 云分层将生成足够的空间，以从 Linux Samba 服务器继续复制。 云分层检查一小时以查看已同步的内容，并释放磁盘空间以达到卷的99% 可用空间的策略。
 
 由于 Robocopy 可以更快地移动文件，因此它可以比本地同步到云和层，从而导致用尽本地磁盘空间。 Robocopy 随后会失败。 建议你按阻止问题的顺序处理共享。 例如，请考虑不同时为所有共享启动 Robocopy 作业。 或考虑移动适合 Windows Server 实例上当前可用空间量的共享。 如果你的 Robocopy 作业失败，则只要你使用以下镜像/清除选项，你始终可以重新运行该命令：
 

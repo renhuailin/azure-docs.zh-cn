@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/29/2020
-ms.openlocfilehash: cd4bba1bacbdb21a6bff4fcc5d3c1f3b2166ec35
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 47c5ad18f50bd25dd3bf351090ffc9ef5d54f0b2
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102039967"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102202903"
 ---
 # <a name="azure-purview-data-catalog-lineage-user-guide"></a>Azure 监控范围数据目录沿袭用户指南
 
@@ -49,6 +49,8 @@ Azure 监控范围的平台功能之一是能够显示数据进程创建的数�
 | Power BI | [数据集、数据流、报表 & 面板](register-scan-power-bi-tenant.md)
 
 ## <a name="get-started-with-lineage"></a>沿袭入门
+
+> [!VIDEO https://www.microsoft.com/videoplayer/embed/RE1XVQS]
 
 监控范围中的沿袭包括数据集和进程。 数据集也称为节点，而进程也可称为边缘：
 

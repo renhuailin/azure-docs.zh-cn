@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 2/5/2021
-ms.openlocfilehash: 3cc29e0bd806ab76c4980128df5a89761e465fe7
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: d1a0873552ac9043d8f584f38ecd41c5e8543489
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99988387"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102202751"
 ---
 # <a name="custom-classifications-in-azure-purview"></a>Azure 监控范围中的自定义分类 
 
@@ -91,24 +91,50 @@ Contoso 可以通过创建自定义分类规则将扫描系统配置为查找这
 
     :::image type="content" source="media/create-a-custom-classification-and-classification-rule/newclassificationrule.png" alt-text="添加新的分类规则" border="true":::
 
-5. 此时将打开 " **新建分类规则** " 对话框。 填写新规则的配置信息。
+5. 此时将打开 " **新建分类规则** " 对话框。 填写字段并决定是创建 **正则表达式规则** 还是 **字典规则**。
 
-    :::image type="content" source="media/create-a-custom-classification-and-classification-rule/createclassificationrule.png" alt-text="创建新的分类规则" border="true":::
+    |字段     |说明  |
+    |---------|---------|
+    |名称   |    必需。 最大值为100个字符。    |
+    |说明      |可选。 最大值为256个字符。    |
+    |分类名称    | 必需。 从下拉列表中选择分类的名称，以指示扫描程序在找到匹配项时应用该分类。        |
+    |状态   |  必需。 启用或禁用这些选项。 默认值为 "已启用"。    |
 
-|字段     |描述  |
-|---------|---------|
-|名称   |    必需。 最大值为100个字符。    |
-|描述      |可选。 最大值为256个字符。    |
-|分类名称    | 必需。 从下拉列表中选择分类的名称，以指示扫描程序在找到匹配项时应用该分类。        |
-|状态   |  必需。 启用或禁用这些选项。 默认值为 "已启用"。    |
-|数据模式    |可选。 表示存储在数据字段中的数据的正则表达式。 此限制非常大。 在上面的示例中，数据模式测试了原义词的雇员 ID `Employee{GUID}` 。  |
-|列模式    |可选。 表示要匹配的列名称的正则表达式。 此限制非常大。          |
+    :::image type="content" source="media/create-a-custom-classification-and-classification-rule/create-new-classification-rule.png" alt-text="创建新的分类规则" border="true":::
 
-在 " **数据模式**" 下有两个选项：
+### <a name="creating-a-regular-expression-rule"></a>创建正则表达式规则
 
-- **Distinct match 阈值**：在扫描程序运行数据模式之前，需要在列中找到的不同数据值的总数。 建议值为8。 可以手动调整此值，范围为2到32。 系统需要此值以确保列包含足够的数据，以便扫描程序准确地分类。 例如，包含多个包含值1的行的列不会进行分类。 如果列包含一个值，并且行的其余部分具有 null 值，则不会对这些列进行分类。 如果指定多种模式，此值将应用于每个模式。
+1. 如果创建正则表达式规则，将看到以下屏幕。 你可以选择上传一个文件，该文件将用于为你的规则 **生成建议的正则表达式模式** 。
 
-- **最小匹配阈值**：可以使用此设置来设置要应用分类的扫描程序必须找到的列中的数据值匹配的最小百分比。 建议值为60%。 需要注意此设置。 如果降低低于60% 的级别，则可能会向目录中引入误报分类。 如果指定多个数据模式，此设置将被禁用，并且值固定为60%。
+    :::image type="content" source="media/create-a-custom-classification-and-classification-rule/create-new-regex-rule.png" alt-text="创建新的 regex 规则" border="true":::
+
+1. 如果决定生成建议的正则表达式模式，请在上传文件后，选择建议的模式之一，并单击 " **添加到模式** " 以使用建议的数据和列模式。 您可以调整建议的模式，也可以键入自己的模式而不上载文件。
+
+    :::image type="content" source="media/create-a-custom-classification-and-classification-rule/suggested-regex.png" alt-text="生成建议的正则表达式" border="true":::
+
+    |字段     |说明  |
+    |---------|---------|
+    |数据模式    |可选。 表示存储在数据字段中的数据的正则表达式。 此限制非常大。 在上面的示例中，数据模式测试了原义词的雇员 ID `Employee{GUID}` 。  |
+    |列模式    |可选。 表示要匹配的列名称的正则表达式。 此限制非常大。          |
+
+1. 在 **数据模式** 下，可以设置以下两个阈值：
+
+    - **Distinct match 阈值**：在扫描程序运行数据模式之前，需要在列中找到的不同数据值的总数。 建议值为8。 可以手动调整此值，范围为2到32。 系统需要此值以确保列包含足够的数据，以便扫描程序准确地分类。 例如，包含多个包含值1的行的列不会进行分类。 如果列包含一个值，并且行的其余部分具有 null 值，则不会对这些列进行分类。 如果指定多种模式，此值将应用于每个模式。
+
+    - **最小匹配阈值**：可以使用此设置来设置要应用分类的扫描程序必须找到的列中的非重复数据值匹配项的最小百分比。 建议值为60%。 需要注意此设置。 如果降低低于60% 的级别，则可能会向目录中引入误报分类。 如果指定多个数据模式，此设置将被禁用，并且值固定为60%。
+
+1. 你现在可以验证规则并 **创建** 它。
+    :::image type="content" source="media/create-a-custom-classification-and-classification-rule/verify-rule.png" alt-text="创建前验证规则" border="true":::
+
+### <a name="creating-a-dictionary-rule"></a>创建字典规则
+
+1.  如果创建字典规则，则会看到以下屏幕。 上传一个文件，其中包含要在单个列中创建的分类的所有可能值。
+
+    :::image type="content" source="media/create-a-custom-classification-and-classification-rule/dictionary-rule.png" alt-text="创建字典规则" border="true":::
+
+1.  生成字典后，可以调整 distinct match 和最小匹配阈值，并提交规则。
+
+    :::image type="content" source="media/create-a-custom-classification-and-classification-rule/dictionary-generated.png" alt-text="创建字典规则" border="true":::
 
 ## <a name="next-steps"></a>后续步骤
 

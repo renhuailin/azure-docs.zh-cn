@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 6c628d93c112a770c85a10d0eff958614a7cf4cb
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: 59c5ca9ce9e95319b36e002da0b5d1438ef3fdd1
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97814153"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102203770"
 ---
 # <a name="quickstart-create-and-configure-azure-ddos-protection-standard-using-azure-cli"></a>快速入门：使用 Azure CLI 创建和配置 Azure DDoS 保护标准
 
@@ -39,7 +39,7 @@ DDoS 防护计划在订阅中定义一组已启用 DDoS 防护标准的虚拟网
 
 在 Azure 中，可将相关的资源分配到资源组。 可以使用现有资源组，也可以创建新组。
 
-若要创建资源组，请使用 [az group create](/cli/azure/group?preserve-view=true&view=azure-cli-latest#az-group-create)。 在此示例中，我们将命名资源组 _MyResourceGroup_ ，并使用 _美国东部_ 位置：
+若要创建资源组，请使用 [az group create](/cli/azure/group#az-group-create)。 在此示例中，我们将命名资源组 _MyResourceGroup_ ，并使用 _美国东部_ 位置：
 
 ```azurecli-interactive
 az group create \
@@ -67,6 +67,7 @@ az network vnet create \
     --name MyVnet \
     --location eastus \
     --ddos-protection true
+    --ddos-protection-plan MyDdosProtectionPlan
 ```
 
 如果已为虚拟网络启用 DDoS 防护，无法将虚拟网络移到其他资源组或订阅。 如果需要移动已启用 DDoS 标准的虚拟网络，请先禁用该标准并移动虚拟网络，然后启用 DDoS 标准。 移动后，适用于虚拟网络所有受保护的公共 IP 地址的自动优化策略阈值都将重置。
@@ -83,7 +84,7 @@ az group create \
 az network ddos-protection create \
     --resource-group MyResourceGroup \
     --name MyDdosProtectionPlan
-    --vnet MyVnet
+    --vnets MyVnet
 ```
 
 或者，可以为给定的虚拟网络启用 DDoS 保护：
@@ -91,11 +92,12 @@ az network ddos-protection create \
 ```azurecli-interactive
 az network vnet update \
     --resource-group MyResourceGroup \
-    --vnet MyVnet \
+    --name MyVnet \
     --ddos-protection true
+    --ddos-protection-plan MyDdosProtectionPlan
 ```
 
-## <a name="validate-and-test"></a>验证和测试
+## <a name="validate-and-test"></a>验证并测试
 
 首先，请查看 DDoS 保护计划的详细信息：
 
@@ -111,7 +113,7 @@ az network ddos-protection show \
 
 可在下一教程中保留资源。 如果不再需要，请删除 _MyResourceGroup_ 资源组。 删除资源组时，还会删除 DDoS 保护计划及其所有相关资源。 
 
-若要删除资源组，请使用 [az group delete](/cli/azure/group?preserve-view=true&view=azure-cli-latest#az_group_delete)：
+若要删除资源组，请使用 [az group delete](/cli/azure/group#az_group_delete)：
 
 ```azurecli-interactive
 az group delete \
@@ -123,15 +125,16 @@ az group delete \
 ```azurecli-interactive
 az network vnet update \
     --resource-group MyResourceGroup \
-    --vnet MyVnet \
+    --name MyVnet \
     --ddos-protection false
+    --ddos-protection-plan ""
 ```
 
 如果要删除 DDoS 保护计划，必须先取消关联所有虚拟网络的关联。 
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解如何查看和配置 DDoS 防护计划的遥测，请继续阅读教程。
+要了解如何查看和配置 DDoS 防护计划的遥测，请继续阅读教程。
 
 > [!div class="nextstepaction"]
 > [查看和配置 DDoS 防护遥测](telemetry.md)

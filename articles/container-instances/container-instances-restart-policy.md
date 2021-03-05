@@ -3,18 +3,18 @@ title: 为运行一次的任务重启策略
 description: 了解如何使用 Azure 容器实例来执行一直要运行到完成的任务，例如生成、测试渲染作业或制作其映像。
 ms.topic: article
 ms.date: 08/11/2020
-ms.openlocfilehash: 336a31a03cdc9dfdfebe79ef47b59ef90053f523
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 49280549fa834b82574f81494f1cf44817d8be5d
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88798935"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102203821"
 ---
 # <a name="run-containerized-tasks-with-restart-policies"></a>使用重启策略运行容器化任务
 
 在 Azure 容器实例中部署容器的简便性和速度，使该服务成了可用于执行一次性任务（例如，在容器实例中生成、测试渲染作业并制作其映像）的引人注目的平台。
 
-使用可配置的重启策略，可将容器指定为在完成其进程后停止。 由于容器实例按秒计费，我们只需针对执行任务的容器在运行时所用的计算资源付费。
+借助可配置的重启策略，可指定容器在完成进程后停止。 由于容器实例按秒计费，只需针对执行任务的容器在运行时所用的计算资源付费。
 
 本文演示的示例使用 Azure CLI。 必须在[本地安装][azure-cli-install] Azure CLI 2.0.21 或更高版本，或使用 [Azure Cloud Shell](../cloud-shell/overview.md) 中的 CLI。
 
@@ -24,15 +24,15 @@ ms.locfileid: "88798935"
 
 | 重启策略   | 说明 |
 | ---------------- | :---------- |
-| `Always` | 始终重启容器组中的容器。 如果在创建容器时未指定重启策略，则会应用此**默认**设置。 |
+| `Always` | 始终重启容器组中的容器。 如果在创建容器时未指定重启策略，则会应用此默认设置。 |
 | `Never` | 永远不重启容器组中的容器。 容器最多运行一次。 |
-| `OnFailure` | 仅当容器中执行的进程失败（终止且返回非零退出代码）时，才重启容器组中的容器。 容器至少运行一次。 |
+| `OnFailure` | 仅当容器中执行的进程失败（它以非零退出代码终止）时，才重启容器组中的容器。 容器至少运行一次。 |
 
 [!INCLUDE [container-instances-restart-ip](../../includes/container-instances-restart-ip.md)]
 
 ## <a name="specify-a-restart-policy"></a>指定重启策略
 
-重启策略的指定方式取决于容器实例的创建方式，例如，是使用 Azure CLI、Azure PowerShell cmdlet 还是 Azure 门户。 在 Azure CLI 中，在调用 [az container create][az-container-create] 时指定 `--restart-policy` 参数。
+重启策略的指定方式取决于容器实例的创建方式，例如，是使用 Azure CLI、Azure PowerShell cmdlet 还是 Azure 门户。 在 Azure CLI 中，请在调用 [az container create][az-container-create] 时指定 `--restart-policy` 参数。
 
 ```azurecli-interactive
 az container create \
@@ -104,7 +104,7 @@ az container logs --resource-group myResourceGroup --name mycontainer
 [aci-wordcount-image]: https://hub.docker.com/_/microsoft-azuredocs-aci-wordcount
 
 <!-- LINKS - Internal -->
-[az-container-create]: /cli/azure/container?view=azure-cli-latest#az-container-create
-[az-container-logs]: /cli/azure/container?view=azure-cli-latest#az-container-logs
-[az-container-show]: /cli/azure/container?view=azure-cli-latest#az-container-show
+[az-container-create]: /cli/azure/container#az-container-create
+[az-container-logs]: /cli/azure/container#az-container-logs
+[az-container-show]: /cli/azure/container#az-container-show
 [azure-cli-install]: /cli/azure/install-azure-cli

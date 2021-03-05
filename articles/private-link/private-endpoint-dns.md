@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 01/14/2021
 ms.author: allensu
-ms.openlocfilehash: edb6748009ef9660c020c77e411ce55f60b45791
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: 3cb5dd88572fda7a939aa529a5372d72575ffdbb
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102124595"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102203277"
 ---
 # <a name="azure-private-endpoint-dns-configuration"></a>Azure 专用终结点 DNS 配置
 
@@ -43,8 +43,8 @@ Azure 会在公共 DNS 上 (CNAME) 创建规范名称 DNS 记录。 CNAME 记录
 | 专用链接资源类型/子资源 |专用 DNS 区域名称 | 公共 DNS 区域转发器 |
 |---|---|---|
 | Azure 自动化 /(Microsoft.Automation/automationAccounts)/Webhook、DSCAndHybridWorker | privatelink.azure-automation.net | azure-automation.net |
-| Azure SQL 数据库 (Microsoft.Sql/servers)/SQL Server | privatelink.database.windows.net | database.windows.net |
-| Azure Synapse Analytics (Microsoft.Sql/servers)/SQL Server  | privatelink.database.windows.net | database.windows.net |
+| Azure SQL Database (.Sql/服务器) /sqlServer | privatelink.database.windows.net | database.windows.net |
+| Azure Synapse Analytics (.Sql/服务器) /sqlServer  | privatelink.database.windows.net | database.windows.net |
 | 存储帐户 (Microsoft.Storage/storageAccounts)/Blob (blob, blob_secondary) | privatelink.blob.core.windows.net | blob.core.windows.net |
 | 存储帐户 (Microsoft.Storage/storageAccounts)/表 (table, table_secondary) | privatelink.table.core.windows.net | table.core.windows.net |
 | 存储帐户 (Microsoft.Storage/storageAccounts)/队列 (queue, queue_secondary) | privatelink.queue.core.windows.net | queue.core.windows.net |

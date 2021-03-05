@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/20/2020
 ms.author: mbaldwin
 ms.custom: mvc, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: ae62bf353f8a92c4408d4a38a91771ad60a13107
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 2fc77d0cdfb6bd8a62555951c0b6dc7e9b732f93
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93285304"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102203532"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-virtual-machine-in-python"></a>教程：将 Azure Key Vault 与通过 Python 编写的虚拟机配合使用
 
@@ -66,7 +66,7 @@ az login
 | [PowerShell](../../virtual-machines/linux/quick-create-powershell.md) | [PowerShell](../../virtual-machines/windows/quick-create-powershell.md) |
 | [Azure 门户](../../virtual-machines/linux/quick-create-portal.md) | [Azure 门户](../../virtual-machines/windows/quick-create-portal.md) |
 
-若要使用 Azure CLI 创建 Linux VM，请使用 [az vm create](/cli/azure/vm) 命令。  以下示例添加一个名为 azureuser 的用户帐户。 `--generate-ssh-keys` 参数用来自动生成一个 SSH 密钥，并将其放置在默认密钥位置 ( *~/.ssh* ) 中。 
+若要使用 Azure CLI 创建 Linux VM，请使用 [az vm create](/cli/azure/vm) 命令。  以下示例添加一个名为 azureuser 的用户帐户。 `--generate-ssh-keys` 参数用来自动生成一个 SSH 密钥，并将其放置在默认密钥位置 ( *~/.ssh*) 中。 
 
 ```azurecli-interactive
 az vm create \
@@ -81,7 +81,7 @@ az vm create \
 
 ## <a name="assign-an-identity-to-the-vm"></a>为 VM 分配标识
 
-使用 Azure CLI [az vm identity assign](/cli/azure/vm/identity?view=azure-cli-latest#az-vm-identity-assign) 命令为虚拟机创建系统分配的标识：
+使用 Azure CLI [az vm identity assign](/cli/azure/vm/identity#az-vm-identity-assign) 命令为虚拟机创建系统分配的标识：
 
 ```azurecli
 az vm identity assign --name "myVM" --resource-group "myResourceGroup"

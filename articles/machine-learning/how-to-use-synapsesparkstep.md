@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 03/04/2021
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: f52686f991e3d14a8cde82c602b182874305f27d
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: ea7dc30d0aed1350a8c9275d786ea22fa52c77bf
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/05/2021
-ms.locfileid: "102184094"
+ms.locfileid: "102203685"
 ---
 # <a name="how-to-use-apache-spark-powered-by-azure-synapse-analytics-in-your-machine-learning-pipeline-preview"></a>如何在机器学习管道中使用 Azure Synapse Analytics) Apache Spark ( (预览) 
 
@@ -90,8 +90,6 @@ synapse_compute.wait_for_completion()
 创建配置后，可以 `ComputeTarget` 通过传入 `Workspace` 、 `ComputeTargetAttachConfiguration` 和名称，并在机器学习工作区内引用计算来创建机器学习。 对的调用 `ComputeTarget.attach()` 是异步的，因此在调用完成之前，示例会被阻止。
 
 ## <a name="create-a-synapsesparkstep-that-uses-the-linked-apache-spark-pool"></a>创建一个 `SynapseSparkStep` 使用链接 Apache Spark 池的。
-
-[Apache spark 池上](https://github.com/azure/machinelearningnotebooks)的示例笔记本 Spark 作业定义了一个简单的机器学习管道。 首先，笔记本定义由 `synapse_compute` 上一步中定义的所提供的数据准备步骤。 然后，笔记本定义一个由计算目标提供支持的培训步骤，该步骤更适合于培训。 示例笔记本使用 Titanic 生存数据库来演示数据输入和输出;它实际上不会清理数据或生成预测模型。 由于本示例中没有实际的训练，因此定型步骤使用基于 CPU 的廉价计算资源。
 
 数据通过对象传递到机器学习管道 `DatasetConsumptionConfig` ，这些对象可以容纳表格数据或文件集。 数据通常来自工作区的数据存储中的 blob 存储中的文件。 下面的代码演示了一些用于创建机器学习管道输入的典型代码：
 
@@ -228,7 +226,7 @@ step_2 = PythonScriptStep(script_name="train.py",
 
 定义完所有步骤后，可以创建并运行管道。 
 
-```
+```python
 from azureml.pipeline.core import Pipeline
 
 pipeline = Pipeline(workspace=ws, steps=[step_1, step_2])

@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 739e1dea23f87403a4aded50d5c9f254a55c64cc
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 2d4286cc8bc08eaf7d0b376a8b7789c8c8db183d
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101737607"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102202631"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>有关 Azure 文件的常见问题解答 (FAQ)
 [Azure 文件](storage-files-introduction.md) 在云中提供完全托管的文件共享，这些共享可通过行业标准的 [服务器消息块进行访问， (SMB) 协议](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) 和 [网络文件系统 (NFS) 协议](https://en.wikipedia.org/wiki/Network_File_System) (预览版) 。 你可以在云或 Windows、Linux 和 macOS 的本地部署同时装载 Azure 文件共享。 另外，你也可以使用 Azure 文件同步在 Windows Server 计算机上缓存 Azure 文件共享，以在靠近使用数据的位置实现快速访问。
@@ -119,26 +119,38 @@ ms.locfileid: "101737607"
 
 * <a id="sizeondisk-versus-size"></a>
   **使用 Azure 文件共享后，为什么文件的占用空间属性与大小属性不一致？**  
-  请参阅[了解云分层](storage-sync-cloud-tiering.md#sizeondisk-versus-size)。
+  请参阅 [了解 Azure 文件同步云分层](storage-sync-cloud-tiering-overview.md#tiered-vs-locally-cached-file-behavior)。
 
 * <a id="is-my-file-tiered"></a>
   **如何分辨文件是否已被分层？**  
-  请参阅[了解云分层](storage-sync-cloud-tiering.md#is-my-file-tiered)。
+  请参阅 [如何管理 Azure 文件同步分层文件](storage-sync-how-to-manage-tiered-files.md#how-to-check-if-your-files-are-being-tiered)。
 
 * <a id="afs-recall-file"></a>**我想要使用的一个文件已被分层。如何将文件召回到磁盘以在本地使用？**  
-  请参阅[了解云分层](storage-sync-cloud-tiering.md#afs-recall-file)。
+  请参阅 [如何管理 Azure 文件同步分层文件](storage-sync-how-to-manage-tiered-files.md#how-to-recall-a-tiered-file-to-disk)。
 
 * <a id="afs-force-tiering"></a>
   **如何强制将文件或目录分层？**  
-  请参阅[了解云分层](storage-sync-cloud-tiering.md#afs-force-tiering)。
+  请参阅 [如何管理 Azure 文件同步分层文件](storage-sync-how-to-manage-tiered-files.md#how-to-force-a-file-or-directory-to-be-tiered)。
 
 * <a id="afs-effective-vfs"></a>
   **当卷上有多个服务器终结点时，如何解释卷可用空间？**  
-  请参阅[了解云分层](storage-sync-cloud-tiering.md#afs-effective-vfs)。
+  请参阅 [选择 Azure 文件同步云分层策略](storage-sync-cloud-tiering-policy.md#multiple-server-endpoints-on-a-local-volume)。
   
 * <a id="afs-tiered-files-tiering-disabled"></a>
   **我禁用了云分层，为什么服务器终结点位置中存在分层文件？**  
-  请参阅[了解云分层](storage-sync-cloud-tiering.md#afs-tiering-disabled)。
+    有两个原因会导致分层文件存在于服务器终结点位置：
+
+    - 向现有同步组添加新的服务器终结点时，如果选择 "仅调用命名空间第一选项" 或 "仅调用命名空间" 选项作为 "初始下载" 模式，则文件在本地下载之前将显示为已分层。 为避免出现这种情况，请在初始下载模式下选择 "避免分层文件" 选项。 若要手动撤回文件，请使用 [StorageSyncFileRecall](storage-sync-how-to-manage-tiered-files.md#how-to-recall-a-tiered-file-to-disk) cmdlet。
+
+    - 如果已在服务器终结点上启用云分层，然后禁用，则文件在被访问之前将保持分层。
+
+* <a id="afs-tiered-files-not-showing-thumbnails"></a>
+  **为什么分层文件在 Windows 资源管理器中未显示缩略图或预览？**  
+    对于分层文件，不会在服务器终结点显示缩略图和预览。 此行为是预期行为，因为 Windows 中的缩略图缓存功能有意跳过读取具有脱机属性的文件。 启用云分层后，通过分层文件读取将导致下载 (撤回) 。
+
+    此行为并不特定于 Azure 文件同步，Windows 资源管理器会为设置了脱机属性的任何文件显示 "灰色 X"。 通过 SMB 访问文件时，你将看到 X 图标。 有关此行为的详细说明，请参阅 [https://blogs.msdn.microsoft.com/oldnewthing/20170503-00/?p=96105](https://blogs.msdn.microsoft.com/oldnewthing/20170503-00/?p=96105)
+
+    有关如何管理分层文件的问题，请参阅 [如何管理分层文件](storage-sync-how-to-manage-tiered-files.md)。
 
 * <a id="afs-files-excluded"></a>
   **会被 Azure 文件同步自动排出的文件或文件夹有哪些？**  
@@ -274,7 +286,7 @@ ms.locfileid: "101737607"
     2.  打开 "Active Directory 域和信任" 控制台
     3.  右键单击要访问文件共享的域，然后单击 "信任" 选项卡，然后选择 "林 B 域" "传出信任"。 如果你尚未在两个林之间配置信任，则需要先设置信任
     4.  单击 "属性 ..."then "名称后缀路由"
-    5.  检查 "*. file.core.windows.net" surffix 是否显示。 如果没有，请单击 "刷新"
+    5.  检查 "*. file.core.windows.net" 后缀是否显示。 如果没有，请单击 "刷新"
     6.  选择 "file.core.windows.net"，然后单击 "启用" 和 "应用"
 
 * <a id=""></a>

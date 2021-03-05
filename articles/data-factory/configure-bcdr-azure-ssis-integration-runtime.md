@@ -11,13 +11,13 @@ manager: mflasko
 ms.reviewer: douglasl
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 02/25/2021
-ms.openlocfilehash: 73c27204ee8730c95d1cbeecf8777767173e73d9
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/05/2021
+ms.openlocfilehash: 2744d51b6d68ed494050be10a9f0e4d1f59cdc49
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101710238"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102204059"
 ---
 # <a name="configure-azure-ssis-integration-runtime-for-business-continuity-and-disaster-recovery-bcdr"></a>配置 Azure SSIS 集成运行时，以实现业务连续性和灾难恢复 (BCDR)  
 
@@ -35,13 +35,19 @@ Azure 数据工厂中的 azure SQL 数据库/托管实例和 SQL Server Integrat
 
 若要配置与 Azure SQL 数据库故障转移组同步的双备用 Azure-SSIS IR 对，请完成以下步骤。
 
-1. 使用 Azure 门户/ADF UI，你可以创建一个新的 Azure-SSIS IR，其中包含主要的 Azure SQL 数据库服务器，以在主要区域中托管 SSISDB。 如果现有 Azure-SSIS IR 已附加到你的 Azure SQL 数据库服务器托管的 SSIDB，但它仍在运行，则需要先将其停止才能重新配置它。 这将是主 Azure-SSIS IR。 在 "**集成运行时设置**" 窗格的 "**部署设置**" 页上 [选择 "使用 SSISDB](./tutorial-deploy-ssis-packages-azure.md#creating-ssisdb) " 时，请选择 "**使用双重备用 Azure-SSIS Integration Runtime 对 ssisdb 故障转移**" 复选框。 对于 " **双重备用对名称**"，请输入一个名称以标识主要和辅助 AZURE-SSIS IRs 对。 完成主 Azure-SSIS IR 的创建后，它将启动并附加到将用读写访问权限创建的主要 SSISDB。 如果刚重新配置了它，则需要重新启动。
+1. 使用 Azure 门户/ADF UI，你可以创建一个新的 Azure-SSIS IR，其中包含主要的 Azure SQL 数据库服务器，以在主要区域中托管 SSISDB。 如果现有 Azure-SSIS IR 已附加到你的 Azure SQL 数据库服务器托管的 SSIDB，但它仍在运行，则需要先将其停止才能重新配置它。 这将是主 Azure-SSIS IR。
+
+   在 "**集成运行时设置**" 窗格的 "**部署设置**" 页上 [选择 "使用 SSISDB](./tutorial-deploy-ssis-packages-azure.md#creating-ssisdb) " 时，请选择 "**使用双重备用 Azure-SSIS Integration Runtime 对 ssisdb 故障转移**" 复选框。 对于 " **双重备用对名称**"，请输入一个名称以标识主要和辅助 AZURE-SSIS IRs 对。 完成主 Azure-SSIS IR 的创建后，它将启动并附加到将用读写访问权限创建的主要 SSISDB。 如果刚重新配置了它，则需要重新启动。
 
 1. 使用 Azure 门户，可以检查是否已在主 Azure SQL 数据库服务器的 " **概述** " 页上创建了主要 SSISDB。 创建后，可以 [为主和辅助 AZURE SQL 数据库服务器创建故障转移组，并](https://docs.microsoft.com/azure/azure-sql/database/failover-group-add-single-database-tutorial?tabs=azure-portal#2---create-the-failover-group) 在 " **故障转移组** " 页上向其添加 SSISDB。 创建故障转移组后，可以检查是否已使用辅助 Azure SQL 数据库服务器的 " **概述** " 页上的 "只读访问权限" 将主要 SSISDB 复制到辅助数据库。
 
-1. 使用 Azure 门户/ADF UI，你可以通过辅助 Azure SQL 数据库服务器创建另一个 Azure-SSIS IR 来托管次要区域中的 SSISDB。 这将是你的辅助 Azure-SSIS IR。 对于完整的 BCDR，请确保还会在次要区域中创建它所依赖的所有资源，例如，用于存储自定义安装程序脚本/文件的 Azure 存储、业务流程/计划包执行的 ADF 等。在 "**集成运行时设置**" 窗格的 "**部署设置**" 页上 [选择 "使用 SSISDB](./tutorial-deploy-ssis-packages-azure.md#creating-ssisdb) " 时，请选择 "**使用双重备用 Azure-SSIS Integration Runtime 对 ssisdb 故障转移**" 复选框。 对于 " **双重备用对名称**"，请输入同一名称以标识主要和辅助 AZURE-SSIS IRs 对。 完成辅助 Azure-SSIS IR 的创建后，它将启动并附加到辅助 SSISDB。
+1. 使用 Azure 门户/ADF UI，你可以通过辅助 Azure SQL 数据库服务器创建另一个 Azure-SSIS IR 来托管次要区域中的 SSISDB。 这将是你的辅助 Azure-SSIS IR。 对于完整的 BCDR，请确保还会在次要区域中创建它所依赖的所有资源，例如，用于存储自定义安装程序脚本/文件的 Azure 存储、业务流程/计划包执行的 ADF 等。
 
-1. 如果要在发生 SSISDB 故障转移时出现近乎零的停机时间，请将 Azure SSIS IRs 保持运行状态。 只有主 Azure-SSIS IR 可以访问主要 SSISDB 来提取和执行包，还可以写入包执行日志，而辅助 Azure-SSIS IR 只能对部署在其他位置的包（例如在 Azure 文件中）执行相同操作。 如果要最大程度地降低运行成本，可以在创建辅助 Azure-SSIS IR 后将其停止。 发生 SSISDB 故障转移时，主要和辅助 Azure-SSIS IRs 将交换角色。 如果主 Azure-SSIS IR 停止，则需要重新启动。 根据它是否注入到虚拟网络和使用的注入方法，它将在5分钟内完成，在大约 20-30 分钟后运行。
+   在 "**集成运行时设置**" 窗格的 "**部署设置**" 页上 [选择 "使用 SSISDB](./tutorial-deploy-ssis-packages-azure.md#creating-ssisdb) " 时，请选择 "**使用双重备用 Azure-SSIS Integration Runtime 对 ssisdb 故障转移**" 复选框。 对于 " **双重备用对名称**"，请输入同一名称以标识主要和辅助 AZURE-SSIS IRs 对。 完成辅助 Azure-SSIS IR 的创建后，它将启动并附加到辅助 SSISDB。
+
+1. 如果要在发生 SSISDB 故障转移时出现近乎零的停机时间，请将 Azure SSIS IRs 保持运行状态。 只有主 Azure-SSIS IR 可以访问主要 SSISDB 来提取和执行包，还可以写入包执行日志，而辅助 Azure-SSIS IR 只能对部署在其他位置的包（例如在 Azure 文件中）执行相同操作。
+
+   如果要最大程度地降低运行成本，可以在创建辅助 Azure-SSIS IR 后将其停止。 发生 SSISDB 故障转移时，主要和辅助 Azure-SSIS IRs 将交换角色。 如果主 Azure-SSIS IR 停止，则需要重新启动。 根据它是否注入到虚拟网络和使用的注入方法，它将在5分钟内完成，在大约 20-30 分钟后运行。
 
 1. 如果你 [使用 ADF 进行业务流程/计划包的](./how-to-invoke-ssis-package-ssis-activity.md)执行，请确保将执行 SSIS 包活动和关联触发器的所有相关 ADF 管道复制到辅助 ADF，并在最初禁用触发器的情况下将其复制到辅助 adf。 发生 SSISDB 故障转移时，需要启用它们。
 
@@ -53,9 +59,13 @@ Azure 数据工厂中的 azure SQL 数据库/托管实例和 SQL Server Integrat
 
 1. 使用 Azure 门户，可以在主 Azure SQL 托管实例的 "**故障转移组**" 页上 [为主要和辅助 Azure sql 托管实例创建故障转移组](https://docs.microsoft.com/azure/azure-sql/managed-instance/failover-group-add-instance-tutorial?tabs=azure-portal)。
 
-1. 使用 Azure 门户/ADF UI，你可以创建一个新的 Azure-SSIS IR，其中包含主要的 Azure SQL 托管实例，以便在主要区域中托管 SSISDB。 如果现有 Azure-SSIS IR 已附加到你的 Azure SQL 托管实例托管的 SSIDB，但它仍在运行，则需要先将其停止才能重新配置它。 这将是主 Azure-SSIS IR。 在 "**集成运行时设置**" 窗格的 "**部署设置**" 页上 [选择 "使用 SSISDB](./create-azure-ssis-integration-runtime.md#creating-ssisdb) " 时，请选择 "**使用双重备用 Azure-SSIS Integration Runtime 对 ssisdb 故障转移**" 复选框。 对于 " **双重备用对名称**"，请输入一个名称以标识主要和辅助 AZURE-SSIS IRs 对。 完成主 Azure-SSIS IR 的创建后，它将启动并附加到将用读写访问权限创建的主要 SSISDB。 如果刚重新配置了它，则需要重新启动。 你还可以在辅助 Azure SQL 托管实例的 " **概述** " 页上，检查是否已将主要 SSISDB 复制到具有只读访问权限的辅助数据库。
+1. 使用 Azure 门户/ADF UI，你可以创建一个新的 Azure-SSIS IR，其中包含主要的 Azure SQL 托管实例，以便在主要区域中托管 SSISDB。 如果现有 Azure-SSIS IR 已附加到你的 Azure SQL 托管实例托管的 SSIDB，但它仍在运行，则需要先将其停止才能重新配置它。 这将是主 Azure-SSIS IR。
 
-1. 使用 Azure 门户/ADF UI，你可以通过辅助 Azure SQL 托管实例创建另一个 Azure-SSIS IR 来托管次要区域中的 SSISDB。 这将是你的辅助 Azure-SSIS IR。 对于完整的 BCDR，请确保还会在次要区域中创建它所依赖的所有资源，例如，用于存储自定义安装程序脚本/文件的 Azure 存储、业务流程/计划包执行的 ADF 等。在 "**集成运行时设置**" 窗格的 "**部署设置**" 页上 [选择 "使用 SSISDB](./create-azure-ssis-integration-runtime.md#creating-ssisdb) " 时，请选择 "**使用双重备用 Azure-SSIS Integration Runtime 对 ssisdb 故障转移**" 复选框。 对于 " **双重备用对名称**"，请输入同一名称以标识主要和辅助 AZURE-SSIS IRs 对。 完成辅助 Azure-SSIS IR 的创建后，它将启动并附加到辅助 SSISDB。
+   在 "**集成运行时设置**" 窗格的 "**部署设置**" 页上 [选择 "使用 SSISDB](./create-azure-ssis-integration-runtime.md#creating-ssisdb) " 时，请选择 "**使用双重备用 Azure-SSIS Integration Runtime 对 ssisdb 故障转移**" 复选框。 对于 " **双重备用对名称**"，请输入一个名称以标识主要和辅助 AZURE-SSIS IRs 对。 完成主 Azure-SSIS IR 的创建后，它将启动并附加到将用读写访问权限创建的主要 SSISDB。 如果刚重新配置了它，则需要重新启动。 你还可以在辅助 Azure SQL 托管实例的 " **概述** " 页上，检查是否已将主要 SSISDB 复制到具有只读访问权限的辅助数据库。
+
+1. 使用 Azure 门户/ADF UI，你可以通过辅助 Azure SQL 托管实例创建另一个 Azure-SSIS IR 来托管次要区域中的 SSISDB。 这将是你的辅助 Azure-SSIS IR。 对于完整的 BCDR，请确保还会在次要区域中创建它所依赖的所有资源，例如，用于存储自定义安装程序脚本/文件的 Azure 存储、业务流程/计划包执行的 ADF 等。
+
+   在 "**集成运行时设置**" 窗格的 "**部署设置**" 页上 [选择 "使用 SSISDB](./create-azure-ssis-integration-runtime.md#creating-ssisdb) " 时，请选择 "**使用双重备用 Azure-SSIS Integration Runtime 对 ssisdb 故障转移**" 复选框。 对于 " **双重备用对名称**"，请输入同一名称以标识主要和辅助 AZURE-SSIS IRs 对。 完成辅助 Azure-SSIS IR 的创建后，它将启动并附加到辅助 SSISDB。
 
 1. Azure SQL 托管实例可以通过使用数据库主密钥 (DMK) 加密数据库中的敏感数据，例如 SSISDB。 默认情况下，DMK 本身 (SMK) 使用服务主密钥进行加密。 撰写本文时，Azure SQL 托管实例故障转移组不会从主 Azure SQL 托管实例复制 SMK，因此，在发生故障转移后，DMK 和中无法在辅助 Azure SQL 托管实例上解密 SSISDB。 若要解决此情况，可以添加要在辅助 Azure SQL 托管实例上解密的 DMK 的密码加密。 使用 SSMS 完成以下步骤。
 
@@ -71,7 +81,9 @@ Azure 数据工厂中的 azure SQL 数据库/托管实例和 SQL Server Integrat
       EXEC sp_control_dbmasterkey_password @db_name = N'SSISDB', @password = N'YourPassword', @action = N'add'
       ```
 
-1. 如果要在发生 SSISDB 故障转移时出现近乎零的停机时间，请将 Azure SSIS IRs 保持运行状态。 只有主 Azure-SSIS IR 可以访问主要 SSISDB 来提取和执行包，还可以写入包执行日志，而辅助 Azure-SSIS IR 只能对部署在其他位置的包（例如在 Azure 文件中）执行相同操作。 如果要最大程度地降低运行成本，可以在创建辅助 Azure-SSIS IR 后将其停止。 发生 SSISDB 故障转移时，主要和辅助 Azure-SSIS IRs 将交换角色。 如果主 Azure-SSIS IR 停止，则需要重新启动。 根据它是否注入到虚拟网络和使用的注入方法，它将在5分钟内完成，在大约 20-30 分钟后运行。
+1. 如果要在发生 SSISDB 故障转移时出现近乎零的停机时间，请将 Azure SSIS IRs 保持运行状态。 只有主 Azure-SSIS IR 可以访问主要 SSISDB 来提取和执行包，还可以写入包执行日志，而辅助 Azure-SSIS IR 只能对部署在其他位置的包（例如在 Azure 文件中）执行相同操作。
+
+   如果要最大程度地降低运行成本，可以在创建辅助 Azure-SSIS IR 后将其停止。 发生 SSISDB 故障转移时，主要和辅助 Azure-SSIS IRs 将交换角色。 如果主 Azure-SSIS IR 停止，则需要重新启动。 根据它是否注入到虚拟网络和使用的注入方法，它将在5分钟内完成，在大约 20-30 分钟后运行。
 
 1. 如果 [使用 AZURE SQL 托管实例代理进行业务流程/计划包执行](./how-to-invoke-ssis-package-managed-instance-agent.md)，请确保将所有相关的 SSIS 作业及其作业步骤和关联的计划复制到辅助 Azure SQL 托管实例，其计划最初处于禁用状态。 使用 SSMS 完成以下步骤。
 

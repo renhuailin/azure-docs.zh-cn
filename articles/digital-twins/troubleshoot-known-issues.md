@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.service: digital-twins
 ms.date: 07/14/2020
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 49c790ae92537ab72fb9848ed4e57e222ef11d79
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: d7d97ca1eb590fb96789d439243dd04d6143a960
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100545677"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102203141"
 ---
 # <a name="known-issues-in-azure-digital-twins"></a>Azure 数字孪生中的已知问题
 
@@ -24,7 +24,7 @@ ms.locfileid: "100545677"
 
 | 这是否会影响我？ | 原因 | 解决方法 |
 | --- | --- | --- |
-| 在 &nbsp; Azure &nbsp; 数字 &nbsp; 孪生中，这会影响以下命令组：<br><br>`az dt route`<br><br>`az dt model`<br><br>`az dt twin` | 这是 Cloud Shell 中的已知问题的结果： [*从 Cloud Shell 中获取令牌间歇性失败，并出现400客户端错误：错误的请求*](https://github.com/Azure/azure-cli/issues/11749)。<br><br>这会给 Azure 数字孪生实例身份验证令牌和 Cloud Shell 默认的基于 [管理身份](../active-directory/managed-identities-azure-resources/overview.md) 的身份验证提供问题。 <br><br>这不会影响或命令组中的 Azure 数字孪生命令 `az dt` `az dt endpoint` ，因为它们使用不同类型的身份验证令牌 (基于 Azure 资源管理器) ，这不会对 Cloud Shell 的托管标识身份验证产生问题。 | 解决此问题的一种方法是 `az login` 在 Cloud Shell 中重新运行该命令并完成后续的登录步骤。 这会将会话切换到托管标识身份验证，从而避免了根本问题。 此后，你应该能够重新运行该命令。<br><br>或者，您可以打开 Azure 门户中的 "Cloud Shell" 窗格，并从该处完成 Cloud Shell 工作。<br>:::image type="content" source="media/troubleshoot-known-issues/portal-launch-icon.png" alt-text="Azure 门户图标栏中的 &quot;Cloud Shell&quot; 图标的图像" lightbox="media/troubleshoot-known-issues/portal-launch-icon.png":::<br><br>最后，另一个解决方案是在您的计算机上 [安装 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) ，以便您可以在本地运行 Azure CLI 命令。 本地 CLI 不会遇到此问题。 |
+| 在 &nbsp; Azure &nbsp; 数字 &nbsp; 孪生中，这会影响以下命令组：<br><br>`az dt route`<br><br>`az dt model`<br><br>`az dt twin` | 这是 Cloud Shell 中的已知问题的结果： [*从 Cloud Shell 中获取令牌间歇性失败，并出现400客户端错误：错误的请求*](https://github.com/Azure/azure-cli/issues/11749)。<br><br>这会给 Azure 数字孪生实例身份验证令牌和 Cloud Shell 默认的基于 [管理身份](../active-directory/managed-identities-azure-resources/overview.md) 的身份验证提供问题。 <br><br>这不会影响或命令组中的 Azure 数字孪生命令 `az dt` `az dt endpoint` ，因为它们使用不同类型的身份验证令牌 (基于 Azure 资源管理器) ，这不会对 Cloud Shell 的托管标识身份验证产生问题。 | 解决此问题的一种方法是 `az login` 在 Cloud Shell 中重新运行该命令并完成后续的登录步骤。 这会将会话切换到托管标识身份验证，从而避免了根本问题。 此后，你应该能够重新运行该命令。<br><br>或者，您可以打开 Azure 门户中的 "Cloud Shell" 窗格，并从该处完成 Cloud Shell 工作。<br>:::image type="content" source="media/troubleshoot-known-issues/portal-launch-icon.png" alt-text="Azure 门户图标栏中的 &quot;Cloud Shell&quot; 图标的图像" lightbox="media/troubleshoot-known-issues/portal-launch-icon.png":::<br><br>最后，另一个解决方案是在您的计算机上 [安装 Azure CLI](/cli/azure/install-azure-cli) ，以便您可以在本地运行 Azure CLI 命令。 本地 CLI 不会遇到此问题。 |
 
 
 ## <a name="missing-role-assignment-after-scripted-setup"></a>编写脚本后缺少角色分配

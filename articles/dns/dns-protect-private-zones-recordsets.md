@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: how-to
 ms.date: 02/18/2020
 ms.author: allensu
-ms.openlocfilehash: a36b37c1f0118055d931f785f570a10041e2dbfc
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: d5a81a56e6b29bb0cad681876b9476809bd9f3cb
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965691"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102203430"
 ---
 # <a name="how-to-protect-private-dns-zones-and-records"></a>如何保护专用 DNS 区域和记录
 
@@ -24,7 +24,7 @@ ms.locfileid: "94965691"
 
 ## <a name="azure-role-based-access-control"></a>Azure 基于角色的访问控制
 
-Azure 基于角色的访问控制 (Azure RBAC) 可用于对 Azure 用户、组和资源进行精细的访问管理。 使用 Azure RBAC，可以授予用户所需的访问级别。 有关 Azure RBAC 如何帮助你管理访问权限的详细信息，请参阅 [什么是 AZURE rbac) 的 azure 基于角色的访问控制 (](../role-based-access-control/overview.md)。
+Azure 基于角色的访问控制 (Azure RBAC) 可用于对 Azure 用户、组和资源进行精细的访问管理。 使用 Azure RBAC，可以授予用户所需的访问权限级别。 如需详细了解 Azure RBAC 如何帮助你管理访问权限，请参阅[什么是 Azure 基于角色的访问控制 (Azure RBAC)](../role-based-access-control/overview.md)。
 
 ### <a name="the-private-dns-zone-contributor-role"></a>“专用 DNS 区域参与者”角色
 
@@ -32,11 +32,11 @@ Azure 基于角色的访问控制 (Azure RBAC) 可用于对 Azure 用户、组�
 
 资源组 *myPrivateDNS* 包含 Contoso Corporation 的五个区域。 授予 DNS 管理员对该资源组的“专用 DNS 区域参与者”权限，让其可以完全控制这些 DNS 区域。 它可以避免授予不必要的权限。 DNS 管理员无法创建或停止虚拟机。
 
-分配 Azure RBAC 权限的最简单方法是 [通过 Azure 门户](../role-based-access-control/role-assignments-portal.md)。  
+分配 Azure RBAC 权限的最简单方法是[使用 Azure 门户](../role-based-access-control/role-assignments-portal.md)。  
 
 打开资源组的“访问控制(标识和访问管理)”，选择“添加”，然后选择“专用 DNS 区域参与者”角色。    选择所需用户或组来授予权限。
 
-![通过 Azure 门户的资源组级别 Azure RBAC](./media/dns-protect-private-zones-recordsets/rbac1.png)
+![使用 Azure 门户的资源组级别 Azure RBAC](./media/dns-protect-private-zones-recordsets/rbac1.png)
 
 也可以[使用 Azure PowerShell](../role-based-access-control/role-assignments-powershell.md)授予权限：
 
@@ -69,7 +69,7 @@ Azure RBAC 规则可应用于订阅，资源组或单个资源。 该资源可�
 
 可以通过 Azure 门户授予区域级别的 Azure RBAC 权限。  打开区域的“访问控制(标识和访问管理)”，选择“添加”，然后选择“专用 DNS 区域参与者”角色。    选择所需用户或组来授予权限。
 
-![DNS 区域级 Azure RBAC via Azure 门户](./media/dns-protect-private-zones-recordsets/rbac2.png)
+![使用 Azure 门户的 DNS 区域级别 Azure RBAC](./media/dns-protect-private-zones-recordsets/rbac2.png)
 
 也可以[使用 Azure PowerShell](../role-based-access-control/role-assignments-powershell.md)授予权限：
 
@@ -100,13 +100,13 @@ az role assignment create \
 
 在记录集级别应用权限。  用户有权对其所需的条目进行控制，但无法进行任何其他更改。
 
-可以使用 "记录集" 页中的 " **访问控制 (IAM)** " 按钮，通过 Azure 门户配置记录集级别的 Azure RBAC 权限：
+记录集级别的 Azure RBAC 权限可在 Azure 门户中使用记录集页中的“访问控制(IAM)”按钮进行配置：
 
 ![屏幕截图显示了“访问控制(标识和访问管理)”按钮。](./media/dns-protect-private-zones-recordsets/rbac3.png)
 
 ![屏幕截图显示了已选中“添加角色分配”的“访问控制”。](./media/dns-protect-private-zones-recordsets/rbac4.png)
 
-还可以 [使用 Azure PowerShell 授予](../role-based-access-control/role-assignments-powershell.md)记录集级别的 Azure RBAC 权限：
+还可以[使用 Azure PowerShell 授予](../role-based-access-control/role-assignments-powershell.md)记录集级别 Azure RBAC 权限：
 
 ```azurepowershell-interactive
 # Grant permissions to a specific record set
@@ -188,7 +188,7 @@ az role create -inputfile <file path>
 
 如本文前面部分所述，该角色可由与内置角色相同的方式进行分配。
 
-有关如何创建、管理和分配自定义角色的详细信息，请参阅 [Azure 自定义角色](../role-based-access-control/custom-roles.md)。
+如需详细了解如何创建、管理和分配自定义角色，请参阅 [Azure 自定义角色](../role-based-access-control/custom-roles.md)。
 
 ## <a name="resource-locks"></a>资源锁
 
@@ -218,7 +218,7 @@ $rsg = "<resource group name>"
 New-AzResourceLock -LockLevel $lvl -LockName $lnm -ResourceName $rsc -ResourceType $rty -ResourceGroupName $rsg
 ```
 
-也可[通过 Azure CLI](/cli/azure/lock?view=azure-cli-latest#az-lock-create) 提供等效命令：
+也可[通过 Azure CLI](/cli/azure/lock#az-lock-create) 提供等效命令：
 
 ```azurecli-interactive
 # Lock a DNS zone
@@ -287,5 +287,5 @@ New-AzResourceLock -LockLevel $lvl -LockName $lnm -ResourceName $rnm -ResourceTy
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关使用 Azure RBAC 的详细信息，请参阅 [什么是 AZURE rbac) 的 azure 基于角色的访问控制 (](../role-based-access-control/overview.md)。
+* 有关如何使用 Azure RBAC 的详细信息，请参阅[什么是 Azure 基于角色的访问控制 (Azure RBAC)](../role-based-access-control/overview.md)。
 * 有关使用资源锁的详细信息，请参阅[使用 Azure 资源管理器锁定资源](../azure-resource-manager/management/lock-resources.md)。
