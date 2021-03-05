@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.custom: mvc, devx-track-azurecli
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: b3ba007f03b3aa4883d9455dc43b2bc19676da59
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: 43a568149ccf85579b4f8190974fff872d6e09ea
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97803963"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102199639"
 ---
 # <a name="how-to-certify-iot-plug-and-play-devices"></a>如何认证 IoT 即插即用设备
 
@@ -51,13 +51,13 @@ IoT 即插即用设备认证计划包含用于检查设备是否符合 IoT 即�
 
 ## <a name="test-with-the-azure-iot-extension-cli"></a>使用 Azure IoT 扩展 CLI 进行测试
 
-使用 [Azure IOT CLI 扩展](/cli/azure/ext/azure-iot/iot/product?preserve-view=true&view=azure-cli-latest) ，可以在提交设备以通过 Azure 认证的设备门户提交设备之前，验证设备实现是否与该模型匹配。
+使用 [Azure IOT CLI 扩展](/cli/azure/ext/azure-iot/iot/product) ，可以在提交设备以通过 Azure 认证的设备门户提交设备之前，验证设备实现是否与该模型匹配。
 
 以下步骤演示了如何使用 CLI 准备和运行证书测试：
 
 ### <a name="install-the-azure-iot-extension-for-the-azure-cli"></a>安装适用于 Azure CLI 的 Azure IoT 扩展
 
-请参阅安装说明，以在你的环境中设置 [Azure CLI](/cli/azure/?preserve-view=true&view=azure-cli-latest) 。
+请参阅安装说明，以在你的环境中设置 [Azure CLI](/cli/azure) 。
 
 若要安装 Azure IoT 扩展，请运行以下命令：
 
@@ -65,7 +65,7 @@ IoT 即插即用设备认证计划包含用于检查设备是否符合 IoT 即�
 az extension add --name azure-iot
 ```
 
-若要了解详细信息，请参阅 [Azure IoT Azure CLI](/cli/azure/azure-cli-reference-for-iot?preserve-view=true&view=azure-cli-latest)。
+若要了解详细信息，请参阅 [Azure IoT Azure CLI](/cli/azure/azure-cli-reference-for-iot)。
 
 ### <a name="create-a-new-product-test"></a>创建新的产品测试
 
@@ -79,7 +79,7 @@ az iot product test create --badge-type Pnp --at SymmetricKey --device-type Fini
 ```
 
 > [!NOTE]
-> 使用 CLI 时，需要 [登录](/cli/azure/authenticate-azure-cli?preserve-view=true&view=azure-cli-latest) 到订阅。
+> 使用 CLI 时，需要 [登录](/cli/azure/authenticate-azure-cli) 到订阅。
 
 命令的 JSON 输出包含在 `primaryKey` `registrationId` `scopeID` 连接设备时要使用的、和。
 

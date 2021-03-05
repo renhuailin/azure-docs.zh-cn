@@ -10,12 +10,12 @@ ms.subservice: keys
 ms.topic: tutorial
 ms.date: 02/04/2021
 ms.author: ambapat
-ms.openlocfilehash: 1e7ea0dc929fdbb4ca306405e6ed8993ed2e4afe
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 4a3eaddd160acb8d4d2ae9f0da43ce6cb0236055
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "100386095"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102198143"
 ---
 # <a name="import-hsm-protected-keys-to-key-vault-byok"></a>将受 HSM 保护的密钥导入 Key Vault (BYOK)
 
@@ -52,7 +52,7 @@ ms.locfileid: "100386095"
 | Azure 订阅 |若要在 Azure Key Vault 中创建密钥保管库，需要 Azure 订阅。 [注册免费试用版](https://azure.microsoft.com/pricing/free-trial/)。 |
 | 用于导入受 HSM 保护的密钥的 Key Vault 高级 SKU |有关 Azure Key Vault 的服务层级和功能的详细信息，请参阅 [Key Vault 定价](https://azure.microsoft.com/pricing/details/key-vault/)。 |
 | 受支持的 HSM 列表中的 HSM 以及 HSM 供应商提供的 BYOK 工具和说明 | 必须具有 HSM 的权限并掌握如何使用 HSM 的基本知识。 请参阅[支持的 HSM](#supported-hsms)。 |
-| Azure CLI 2.1.0 或更高版本 | 请参阅[安装 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)。|
+| Azure CLI 2.1.0 或更高版本 | 请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。|
 
 ## <a name="supported-hsms"></a>支持的 HSM
 
@@ -101,7 +101,7 @@ KEK 必须满足以下条件：
 > [!NOTE]
 > KEK 必须将“import”作为唯一允许的密钥操作。 “import”与所有其他密钥操作是互斥的。
 
-使用 [az keyvault key create](/cli/azure/keyvault/key?view=azure-cli-latest&preserve-view=true#az-keyvault-key-create) 命令创建将密钥操作设置为 `import` 的 KEK。 记录从以下命令返回的密钥标识符 (`kid`)。 （你将使用[步骤 3](#step-3-generate-and-prepare-your-key-for-transfer) 中的 `kid` 值。）
+使用 [az keyvault key create](/cli/azure/keyvault/key#az-keyvault-key-create) 命令创建将密钥操作设置为 `import` 的 KEK。 记录从以下命令返回的密钥标识符 (`kid`)。 （你将使用[步骤 3](#step-3-generate-and-prepare-your-key-for-transfer) 中的 `kid` 值。）
 
 ```azurecli
 az keyvault key create --kty RSA-HSM --size 4096 --name KEKforBYOK --ops import --vault-name ContosoKeyVaultHSM
@@ -109,7 +109,7 @@ az keyvault key create --kty RSA-HSM --size 4096 --name KEKforBYOK --ops import 
 
 ### <a name="step-2-download-the-kek-public-key"></a>步骤 2：下载 KEK 公钥
 
-使用 [az keyvault key download](/cli/azure/keyvault/key?view=azure-cli-latest&preserve-view=true#az-keyvault-key-download) 将 KEK 公钥下载到 .pem 文件。 导入的目标密钥是使用 KEK 公钥进行加密的。
+使用 [az keyvault key download](/cli/azure/keyvault/key#az-keyvault-key-download) 将 KEK 公钥下载到 .pem 文件。 导入的目标密钥是使用 KEK 公钥进行加密的。
 
 ```azurecli
 az keyvault key download --name KEKforBYOK --vault-name ContosoKeyVaultHSM --file KEKforBYOK.publickey.pem
@@ -130,7 +130,7 @@ az keyvault key download --name KEKforBYOK --vault-name ContosoKeyVaultHSM --fil
 
 ### <a name="step-4-transfer-your-key-to-azure-key-vault"></a>步骤 4：将密钥传输到 Azure Key Vault
 
-若要完成密钥导入，请将密钥传输包（BYOK 文件）从断开连接的计算机传输到连接到 Internet 的计算机。 使用 [az keyvault key import](/cli/azure/keyvault/key?view=azure-cli-latest&preserve-view=true#az-keyvault-key-import) 命令将 BYOK 文件上传到 Key Vault HSM。
+若要完成密钥导入，请将密钥传输包（BYOK 文件）从断开连接的计算机传输到连接到 Internet 的计算机。 使用 [az keyvault key import](/cli/azure/keyvault/key#az-keyvault-key-import) 命令将 BYOK 文件上传到 Key Vault HSM。
 
 若要导入 RSA 密钥，请使用以下命令。 --kty 参数可选，默认值为“RSA-HSM”。
 ```azurecli

@@ -5,13 +5,13 @@ ms.service: data-factory
 ms.topic: conceptual
 author: dcstwh
 ms.author: weetok
-ms.date: 08/31/2020
-ms.openlocfilehash: fb9439bc37fcecf1cb5299a09916ebe21c5bc1cb
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 03/04/2021
+ms.openlocfilehash: 06d04eb8679b4484f330b69a8cffb263d353bdcd
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100393813"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197828"
 ---
 # <a name="global-parameters-in-azure-data-factory"></a>Azure 数据工厂中的全局参数
 
@@ -46,7 +46,10 @@ ms.locfileid: "100393813"
 * 在 ARM 模板中包含全局参数
 * 通过 PowerShell 脚本部署全局参数
 
-对于大多数用例，建议在 ARM 模板中包含全局参数。 这将与 [CI/CD 文档](continuous-integration-deployment.md)中所述的解决方案进行本机集成。默认情况下，全局参数将作为 ARM 模板参数添加到环境中。 你可以从管理中心启用 ARM 模板中的全局参数。
+对于大多数用例，建议在 ARM 模板中包含全局参数。 这将与 [CI/CD 文档](continuous-integration-deployment.md)中所述的解决方案进行本机集成。默认情况下，全局参数将作为 ARM 模板参数添加到环境中。 你可以从 **管理** 中心启用 ARM 模板中的全局参数。
+
+> [!NOTE]
+> **ARM 模板** 配置中包含的仅在 "Git 模式" 下提供。 当前它在 "实时模式" 或 "数据工厂" 模式下处于禁用状态。
 
 ![在 ARM 模板中包含](media/author-global-parameters/include-arm-template.png)
 

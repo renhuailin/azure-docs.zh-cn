@@ -4,12 +4,12 @@ description: 本文提供了一个 Azure CLI 脚本，该脚本在 Azure 开发�
 ms.devlang: azurecli
 ms.topic: sample
 ms.date: 08/11/2020
-ms.openlocfilehash: 45d5b3453e29571760d47d52a1a21288be31ea90
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3f3802837685281339f0ca355c677e1a0ceac067
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88136111"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102198194"
 ---
 # <a name="use-azure-cli-to-stop-and-delete-a-virtual-machine-in-a-lab-in-azure-devtest-labs"></a>使用 Azure CLI 在 Azure 开发测试实验室的实验室中停止并删除虚拟机
 
@@ -29,8 +29,8 @@ ms.locfileid: "88136111"
 
 | Command | 说明 |
 |---|---|
-| [az lab vm stop](/cli/azure/lab/vm?view=azure-cli-latest#az-lab-vm-stop) | 在实验室中停止虚拟机 (VM)。 此操作可能需要一段时间才能完成。 |
-| [az lab vm delete](/cli/azure/lab/vm?view=azure-cli-latest#az-lab-vm-delete) | 在实验室中删除虚拟机 (VM)。 此操作可能需要一段时间才能完成。 |
+| [az lab vm stop](/cli/azure/lab/vm#az-lab-vm-stop) | 在实验室中停止虚拟机 (VM)。 此操作可能需要一段时间才能完成。 |
+| [az lab vm delete](/cli/azure/lab/vm#az-lab-vm-delete) | 在实验室中删除虚拟机 (VM)。 此操作可能需要一段时间才能完成。 |
 
 
 ## <a name="next-steps"></a>后续步骤

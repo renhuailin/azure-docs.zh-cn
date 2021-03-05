@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/03/2021
+ms.date: 03/04/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: b9a491b639cd1b960ffe3b7164a0940770792148
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: adfe5318949ffa624ebe3548944b558bd0dda9e1
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102107324"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102198466"
 ---
 # <a name="options-for-registering-a-saml-application-in-azure-ad-b2c"></a>用于在 Azure AD B2C 中注册 SAML 应用程序的选项
 
@@ -60,6 +60,54 @@ Azure AD B2C 使用服务提供商的公钥证书来加密 SAML 断言。 公钥
     <Protocol Name="SAML2"/>
     <Metadata>
       <Item Key="WantsEncryptedAssertions">true</Item>
+    </Metadata>
+   ..
+  </TechnicalProfile>
+</RelyingParty>
+```
+
+### <a name="encryption-method"></a>加密方法
+
+若要配置用于加密 SAML 断言数据的加密方法，请在 `DataEncryptionMethod` 依赖方内设置元数据密钥。 可能的值是 `Aes256` (默认值) 、 `Aes192` 、 `Sha512` 或 `Aes128` 。 此元数据控制 SAML 响应中 `<EncryptedData>` 元素的值。
+
+若要配置用于加密 SAML 断言数据的密钥副本所使用的加密方法，请在 `KeyEncryptionMethod` 依赖方内设置元数据密钥。 可能的值为 `Rsa15` (默认) -Rsa 公钥加密标准 (PKCS) 版本1.5 算法，以及 `RsaOaep` -Rsa 最佳非对称加密填充 (OAEP) 加密算法。  此元数据控制 SAML 响应中 `<EncryptedKey>` 元素的值。
+
+下面的示例演示 `EncryptedAssertion` SAML 断言的部分。 加密的数据方法为 `Aes128` ，并且加密密钥方法为 `Rsa15` 。
+
+```xml
+<saml:EncryptedAssertion>
+  <xenc:EncryptedData xmlns:xenc="http://www.w3.org/2001/04/xmlenc#"
+    xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" Type="http://www.w3.org/2001/04/xmlenc#Element">
+    <xenc:EncryptionMethod Algorithm="http://www.w3.org/2001/04/xmlenc#aes128-cbc" />
+    <dsig:KeyInfo>
+      <xenc:EncryptedKey>
+        <xenc:EncryptionMethod Algorithm="http://www.w3.org/2001/04/xmlenc#rsa-1_5" />
+        <xenc:CipherData>
+          <xenc:CipherValue>...</xenc:CipherValue>
+        </xenc:CipherData>
+      </xenc:EncryptedKey>
+    </dsig:KeyInfo>
+    <xenc:CipherData>
+      <xenc:CipherValue>...</xenc:CipherValue>
+    </xenc:CipherData>
+  </xenc:EncryptedData>
+</saml:EncryptedAssertion>
+```
+
+您可以更改加密断言的格式。 若要配置加密格式，请在 `UseDetachedKeys` 信赖方中设置元数据密钥。 可能的值：`true` 或 `false`（默认值）。 如果将值设置为 `true` ，则已分离的键会将加密断言添加为的子级， `EncrytedAssertion` 而不是 `EncryptedData` 。
+
+配置加密方法和格式，使用 [信赖方技术配置文件](relyingparty.md#technicalprofile)中的元数据密钥：
+
+```xml
+<RelyingParty>
+  <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
+  <TechnicalProfile Id="PolicyProfile">
+    <DisplayName>PolicyProfile</DisplayName>
+    <Protocol Name="SAML2"/>
+    <Metadata>
+      <Item Key="DataEncryptionMethod">Aes128</Item>
+      <Item Key="KeyEncryptionMethod">Rsa15</Item>
+      <Item Key="UseDetachedKeys">false</Item>
     </Metadata>
    ..
   </TechnicalProfile>
@@ -114,7 +162,7 @@ https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/<policy-name>/g
 
 你可以配置用于对 SAML 断言进行签名的签名算法。 可能的值为 `Sha256`、`Sha384`、`Sha512` 或 `Sha1`。 请确保技术配置文件和应用程序使用相同的签名算法。 仅使用证书支持的算法。
 
-使用 `XmlSignatureAlgorithm` RelyingParty 元数据节点中的元数据密钥配置签名算法。
+使用 `XmlSignatureAlgorithm` 信赖方 metadata 元素中的元数据密钥配置签名算法。
 
 ```xml
 <RelyingParty>
@@ -132,7 +180,7 @@ https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/<policy-name>/g
 
 ## <a name="saml-response-lifetime"></a>SAML 响应生存期
 
-你可以配置 SAML 响应保持有效的时间长度。 使用 `TokenLifeTimeInSeconds` SAML 令牌颁发者技术配置文件中的元数据项设置生存期。 此值是 `NotBefore` 在令牌颁发时间计算的时间戳可以经过的秒数。 自动，为此选择的时间为当前时间。 默认生存期为300秒 (5 分钟) 。
+你可以配置 SAML 响应保持有效的时间长度。 使用 `TokenLifeTimeInSeconds` SAML 令牌颁发者技术配置文件中的元数据项设置生存期。 此值是 `NotBefore` 在令牌颁发时间计算的时间戳可以经过的秒数。 默认生存期为300秒 (5 分钟) 。
 
 ```xml
 <ClaimsProvider>
@@ -170,6 +218,26 @@ https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/<policy-name>/g
       <OutputTokenFormat>SAML2</OutputTokenFormat>
       <Metadata>
         <Item Key="TokenNotBeforeSkewInSeconds">120</Item>
+      </Metadata>
+      ...
+    </TechnicalProfile>
+```
+
+## <a name="remove-milliseconds-from-date-and-time"></a>删除日期和时间的毫秒
+
+您可以指定是否要在 SAML 响应中从 datetime 值中删除毫秒， (包括 IssueInstant、NotBefore、NotOnOrAfter 和 AuthnInstant) 。 若要删除毫秒，请在 `RemoveMillisecondsFromDateTime
+` 依赖方内设置元数据密钥。 可能的值：`false`（默认值）或 `true`。
+
+```xml
+<ClaimsProvider>
+  <DisplayName>Token Issuer</DisplayName>
+  <TechnicalProfiles>
+    <TechnicalProfile Id="Saml2AssertionIssuer">
+      <DisplayName>Token Issuer</DisplayName>
+      <Protocol Name="SAML2"/>
+      <OutputTokenFormat>SAML2</OutputTokenFormat>
+      <Metadata>
+        <Item Key="RemoveMillisecondsFromDateTime">true</Item>
       </Metadata>
       ...
     </TechnicalProfile>

@@ -2,13 +2,13 @@
 title: Azure 事件网格事件筛选
 description: 介绍如何在创建 Azure 事件网格订阅时筛选事件。
 ms.topic: conceptual
-ms.date: 02/26/2021
-ms.openlocfilehash: 7253c4a38660b0041f27918309efae21675fdc8f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/04/2021
+ms.openlocfilehash: 94445341891149d5d02c7f33caef20bf45123e9b
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101721950"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197769"
 ---
 # <a name="understand-event-filtering-for-event-grid-subscriptions"></a>了解事件网格订阅的事件筛选
 
@@ -58,13 +58,27 @@ ms.locfileid: "101721950"
 * 值 - 要与键进行比较的值。
 
 ## <a name="key"></a>键
-Key 是用于筛选的事件数据中的字段。 它可以是数字、布尔值、字符串或数组。 对于 **事件网格架构** 中的事件，请将以下值用于键： `ID` 、 `Topic` 、、 `Subject` 、 `EventType` `DataVersion` 或事件数据 (如 `data.key1`) 。
+Key 是用于筛选的事件数据中的字段。 它可以是以下类型之一：
+
+- Number
+- 布尔
+- 字符串
+- 数组。 需要将 `enableAdvancedFilteringOnArrays` 属性设置为 true 才能使用此功能。 目前，Azure 门户不支持启用此功能。 
+
+    ```json
+    "filter":
+    {
+        "subjectBeginsWith": "/blobServices/default/containers/mycontainer/log",
+        "subjectEndsWith": ".jpg",
+        "enableAdvancedFilteringOnArrays": true
+    }
+    ```
+
+对于 **事件网格架构** 中的事件，请将以下值用于键： `ID` 、 `Topic` 、、 `Subject` 、 `EventType` `DataVersion` 或事件数据 (如 `data.key1`) 。
 
 对于 **云事件架构** 中的事件，请将以下值用于键： `eventid` 、 `source` 、 `eventtype` 、 `eventtypeversion` 或事件数据 (如 `data.key1`) 。
 
-对于 **自定义输入架构**，请使用 "事件数据" 字段 (如 `data.key1`) 。
-
-若要访问 data 节中的字段，请使用 `.` (点) 表示法。 例如， `data.sitename` `data.appEventTypeDetail.action` 若要访问 `sitename` 或 `action` 以下示例事件，则为。
+对于 **自定义输入架构**，请使用 "事件数据" 字段 (如 `data.key1`) 。 若要访问 data 节中的字段，请使用 `.` (点) 表示法。 例如， `data.sitename` `data.appEventTypeDetail.action` 若要访问 `sitename` 或 `action` 以下示例事件，则为。
 
 ```json
     "data": {
@@ -80,10 +94,8 @@ Key 是用于筛选的事件数据中的字段。 它可以是数字、布尔值
     },
 ```
 
-
 ## <a name="values"></a>值
 值可以是： number、string、boolean 或 array
-
 
 ## <a name="operators"></a>运算符
 

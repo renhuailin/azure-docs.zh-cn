@@ -3,12 +3,12 @@ title: 按 Azure 服务列出的资源提供程序
 description: 列出 Azure 资源管理器的所有资源提供程序命名空间，并显示该命名空间的 Azure 服务。
 ms.topic: conceptual
 ms.date: 12/01/2020
-ms.openlocfilehash: 581c25b384bf6e2865a21f083ba12eef2e5e8bcd
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: cc9793bfc0ca6cc0afbede241534453209685d94
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98733781"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102198925"
 ---
 # <a name="resource-providers-for-azure-services"></a>Azure 服务的资源提供程序
 
@@ -16,13 +16,13 @@ ms.locfileid: "98733781"
 
 ## <a name="match-resource-provider-to-service"></a>将资源提供程序匹配到服务
 
-默认情况下，标记为 " **已注册** " 的资源提供程序将注册到你的订阅。 有关详细信息，请参阅 [注册](#registration)。
+默认情况下，标记为“- 已注册”的资源提供程序已针对你的订阅注册。 有关详细信息，请参阅[注册](#registration)。
 
 | 资源提供程序命名空间 | Azure 服务 |
 | --------------------------- | ------------- |
 | Microsoft.AAD | [Azure Active Directory 域服务](../../active-directory-domain-services/index.yml) |
 | Microsoft.Addons | core |
-| ADHybridHealthService- [已注册](#registration) | [Azure Active Directory](../../active-directory/index.yml) |
+| ADHybridHealthService- [已注册](#registration) | Azure Active Directory |
 | Microsoft.Advisor | [Azure 顾问](../../advisor/index.yml) |
 | Microsoft.AlertsManagement | [Azure Monitor](../../azure-monitor/index.yml) |
 | Microsoft.AnalysisServices | [Azure Analysis Services](../../analysis-services/index.yml) |
@@ -35,7 +35,7 @@ ms.locfileid: "98733781"
 | Microsoft.AutonomousSystems | [自治系统](https://www.microsoft.com/ai/autonomous-systems) |
 | Microsoft.AVS | [Azure VMware 解决方案](../../azure-vmware/index.yml) |
 | Microsoft.AzureActiveDirectory | [Azure Active Directory B2C](../../active-directory-b2c/index.yml) |
-| AzureArcData | 启用了 Azure Arc 的数据服务注册表 |
+| AzureArcData | 已启用 Azure Arc 的数据服务 |
 | Microsoft.AzureData | SQL Server 注册表 |
 | Microsoft.AzureStack | core |
 | Microsoft.AzureStackHCI | [Azure Stack HCI](/azure-stack/hci/overview) |
@@ -95,7 +95,7 @@ ms.locfileid: "98733781"
 | Microsoft.EventHub | [事件中心](../../event-hubs/index.yml) |
 | Microsoft.Features - [已注册](#registration) | [Azure 资源管理器](../index.yml) |
 | Microsoft.GuestConfiguration | [Azure Policy](../../governance/policy/index.yml) |
-| Microsoft.HanaOnAzure | [Azure 上的 SAP HANA 大型实例](../../virtual-machines/workloads/sap/hana-overview-architecture.md) |
+| Microsoft.HanaOnAzure | [Azure SAP HANA 大型实例](../../virtual-machines/workloads/sap/hana-overview-architecture.md) |
 | Microsoft.HardwareSecurityModules | [Azure 专用 HSM](../../dedicated-hsm/index.yml) |
 | Microsoft.HDInsight | [HDInsight](../../hdinsight/index.yml) |
 | Microsoft.HealthcareApis | [适用于 FHIR 的 Azure API](../../healthcare-apis/index.yml) |
@@ -174,7 +174,7 @@ ms.locfileid: "98733781"
 | microsoft. 支持- [已注册](#registration) | core |
 | Microsoft.Synapse | [Azure Synapse Analytics](/azure/sql-data-warehouse/) |
 | Microsoft.TimeSeriesInsights | [Azure 时序见解](../../time-series-insights/index.yml) |
-| Microsoft.Token | 令牌 |
+| Microsoft.Token | 标记 |
 | Microsoft.VirtualMachineImages | [Azure 映像生成器](../../virtual-machines/image-builder-overview.md) |
 | microsoft.visualstudio | [Azure DevOps](/azure/devops/) |
 | Microsoft.VMware | [Azure VMware 解决方案](../../azure-vmware/index.yml) |

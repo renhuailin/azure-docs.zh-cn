@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: how-to
 ms.date: 11/10/2020
-ms.openlocfilehash: d99ec80308152ce9e4870da809acaa25c663d98d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: c6b9cfab4256c72118a65f7fb0c8e672e2082ffe
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101715694"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102199656"
 ---
 # <a name="how-to-use-postman-to-send-requests-to-the-azure-digital-twins-apis"></a>如何使用 Postman 将请求发送到 Azure 数字孪生 Api
 
@@ -21,7 +21,7 @@ ms.locfileid: "101715694"
 
 本文介绍了如何配置 [POSTMAN REST 客户端](https://www.getpostman.com/) ，以便与 Azure 数字孪生 api 交互，步骤如下：
 
-1. 使用 [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) 获取将用于在 Postman 中发出 API 请求的持有者令牌。
+1. 使用 [Azure CLI](/cli/azure/install-azure-cli) 获取将用于在 Postman 中发出 API 请求的持有者令牌。
 1. 设置 Postman 集合，并将 Postman REST 客户端配置为使用持有者令牌进行身份验证。
 1. 使用已配置的 Postman 创建请求并将其发送到 Azure 数字孪生 Api。
 
@@ -41,9 +41,9 @@ ms.locfileid: "101715694"
 
 现在，你已设置了 Postman 和 Azure 数字孪生实例，你需要获取一个持有人令牌，Postman 请求可使用该令牌向 Azure 数字孪生 Api 授权。
 
-可以通过多种方式来获取此令牌。 本文使用 [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) 登录到 Azure 帐户，并以这种方式获取令牌。
+可以通过多种方式来获取此令牌。 本文使用 [Azure CLI](/cli/azure/install-azure-cli) 登录到 Azure 帐户，并以这种方式获取令牌。
 
-如果 [本地安装](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)了 Azure CLI，则可以在计算机上启动命令提示符以运行以下命令。
+如果 [本地安装](/cli/azure/install-azure-cli)了 Azure CLI，则可以在计算机上启动命令提示符以运行以下命令。
 否则，可以在浏览器中打开 [Azure Cloud Shell](https://shell.azure.com) 窗口，并在其中运行命令。
 
 1. 首先，请通过运行以下命令，确保你已使用相应的凭据登录到 Azure：
@@ -52,7 +52,7 @@ ms.locfileid: "101715694"
     az login
     ```
 
-1. 接下来，使用 [az account get-help](/cli/azure/account?preserve-view=true&view=azure-cli-latest#az_account_get_access_token) 命令获取持有 Azure 数字孪生服务访问权限的持有者令牌。
+1. 接下来，使用 [az account get-help](/cli/azure/account#az_account_get_access_token) 命令获取持有 Azure 数字孪生服务访问权限的持有者令牌。
 
     ```azurecli-interactive
     az account get-access-token --resource 0b07f429-9f4b-4714-9392-cc5e8e80c8b0

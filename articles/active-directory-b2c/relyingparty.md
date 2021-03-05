@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 03/04/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 488065b0a1865484e96ea574b3031f2bf61869dd
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: bcdc8c448a348bf067995bf92615ceab1ac19fb4
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102120583"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102198432"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -109,7 +109,7 @@ Endpoint 元素包含以下属性：
 
 ## <a name="defaultuserjourney"></a>DefaultUserJourney
 
-`DefaultUserJourney` 元素指定对通常在基本或扩展策略中定义的用户旅程标识符的引用。 下面的示例演示在 RelyingParty 元素中指定的注册或登录用户旅程：
+`DefaultUserJourney`元素指定对在基本或扩展策略中定义的用户旅程的标识符的引用。 下面的示例演示在 RelyingParty 元素中指定的注册或登录用户旅程：
 
 B2C_1A_signup_signin 策略：
 
@@ -198,7 +198,7 @@ ContentDefinitionParameters 元素包含以下属性：
 
 **TechnicalProfile** 元素包含以下属性：
 
-| Attribute | 必须 | 说明 |
+| 属性 | 必须 | 说明 |
 | --------- | -------- | ----------- |
 | ID | 是 | 值必须是 `PolicyProfile`。 |
 
@@ -219,6 +219,21 @@ Protocol 元素包含以下属性：
 | --------- | -------- | ----------- |
 | 名称 | 是 | Azure AD B2C 支持的有效协议的名称，用作技术配置文件的一部分。 可能的值：`OpenIdConnect` 或 `SAML2`。 `OpenIdConnect` 值表示根据 OpenID 基本规范的 OpenID Connect 1.0 协议标准。 `SAML2` 表示根据 OASIS 规范的 SAML 2.0 协议标准。 |
 
+### <a name="metadata"></a>Metadata
+
+如果协议是 `SAML`，则元数据元素包含以下元素。 有关详细信息，请参阅 [在 Azure AD B2C 中注册 SAML 应用程序的选项](saml-service-provider-options.md)。
+
+| 属性 | 必须 | 说明 |
+| --------- | -------- | ----------- |
+| IdpInitiatedProfileEnabled | 否 | 指示是否支持 IDP 发起的流。 可能的值：`true` 或 `false`（默认值）。 | 
+| XmlSignatureAlgorithm | 否 | Azure AD B2C 用于对 SAML 响应进行签名的方法。 可能的值：`Sha256`、`Sha384`、`Sha512` 或 `Sha1`。 确保在两端配置具有相同值的签名算法。 仅使用证书支持的算法。 若要配置 SAML 断言，请参阅 [SAML 颁发者技术配置文件元数据](saml-issuer-technical-profile.md#metadata)。 |
+| DataEncryptionMethod | 否 | 指示 Azure AD B2C 在使用高级加密标准 (AES) 算法时用来加密数据的方法。 此元数据控制 SAML 响应中 `<EncryptedData>` 元素的值。 可能的值：`Aes256`（默认值）、`Aes192`、`Sha512` 或 ` Aes128`。 |
+| KeyEncryptionMethod| 否 | 指示 Azure AD B2C 对用来加密数据的密钥副本进行加密时使用的方法。 此元数据控制 SAML 响应中 `<EncryptedKey>` 元素的值。 可能的值：` Rsa15`（默认值）- RSA 公钥加密标准 (PKCS) 版本 1.5 算法；` RsaOaep` - RSA 最佳非对称加密填充 (OAEP) 加密算法。 |
+| UseDetachedKeys | 否 |  可能的值：`true` 或 `false`（默认值）。 如果将值设置为 `true`，则 Azure AD B2C 会更改已加密断言的格式。 使用分离的密钥会将加密的断言添加为 EncrytedAssertion 的子元素而不是 EncryptedData 的子元素。 |
+| WantsSignedResponses| 否 | 指示 Azure AD B2C 是否对 SAML 响应的 `Response` 部分进行签名。 可能的值：`true`（默认值）或 `false`。  |
+| RemoveMillisecondsFromDateTime| 否 | 指示是否将从 SAML 响应中的日期时间值中删除毫秒， (包括 IssueInstant、NotBefore、NotOnOrAfter 和 AuthnInstant) 。 可能的值：`false`（默认值）或 `true`。  |
+
+
 ### <a name="outputclaims"></a>OutputClaims
 
 OutputClaims  元素包含以下元素：
@@ -229,7 +244,7 @@ OutputClaims  元素包含以下元素：
 
 OutputClaim 元素包含以下属性：
 
-| Attribute | 必须 | 说明 |
+| 属性 | 必须 | 说明 |
 | --------- | -------- | ----------- |
 | ClaimTypeReferenceId | 是 | 对在策略文件的 ClaimsSchema 部分定义的 ClaimType 的引用。 |
 | DefaultValue | 否 | 一个默认值，如果声明值为空，则可以使用该值。 |
@@ -238,8 +253,9 @@ OutputClaim 元素包含以下属性：
 ### <a name="subjectnaminginfo"></a>SubjectNamingInfo
 
 使用 SubjectNameingInfo 元素，可以控制令牌使用者的值：
+
 - **JWT 令牌** - `sub` 声明。 这是令牌针对其断言信息的主体，例如应用程序的用户。 此值固定不变，无法重新分配或重复使用。 可使用它安全地执行授权检查，例如，使用令牌访问资源时。 默认情况下，将使用目录中用户的对象 ID 填充使用者声明。 有关详细信息，请参阅[令牌、会话和单一登录配置](session-behavior.md)。
-- SAML 令牌 - 标识使用者元素的 `<Subject><NameID>` 元素。 可以修改 NameId 格式。
+- **SAML 令牌** - `<Subject><NameID>` 用于标识 subject 元素的元素。 可以修改 NameId 格式。
 
 SubjectNamingInfo 元素包含以下属性：
 

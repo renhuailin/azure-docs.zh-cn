@@ -8,37 +8,37 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/05/2020
+ms.date: 03/04/2021
 ms.author: kenwith
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 8f5a4d3695722aae14b73bf6bba5f2e38593e08d
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 0334f52b87071c8f363a0dfcc793170316747096
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99255791"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102198500"
 ---
 # <a name="reference-for-writing-expressions-for-attribute-mappings-in-azure-ad"></a>用于在 Azure AD 中编写属性映射的表达式的参考
 
-将预配配置到 SaaS 应用程序时，表达式映射是可指定的属性映射类型之一。 为此，必须编写一个类似于脚本的表达式，允许将用户的数据转换为 SaaS 应用程序更可接受的格式。
+将预配配置到 SaaS 应用程序时，表达式映射是可指定的属性映射类型之一。 为此，必须编写一个类似脚本的表达式，以便将用户的数据转换为 SaaS 应用程序更易接受的格式。
 
 ## <a name="syntax-overview"></a>语法概述
 
 属性映射的表达式语法让人联想到 Visual Basic for Applications (VBA) 函数。
 
 * 整个表达式必须按函数定义，其中包含名称后跟括号中的参数： *FunctionName (`<<argument 1>>` ， `<<argument N>>`)*
-* 函数之间可以相互嵌套。 例如：  *FunctionOne (FunctionTwo (`<<argument1>>`) # B3*
+* 函数之间可以相互嵌套。 例如：  *FunctionOne (FunctionTwo (`<<argument1>>`) )*
 * 可以将三种不同类型的参数传递给函数：
   
   1. 属性，必须括在方括号中。 例如：[attributeName]
   2. 字符串常量必须括在双引号内。 例如："美国"
-  3. 其他函数。 例如： FunctionOne (`<<argument1>>` ，FunctionTwo (`<<argument2>>`) # A3
+  3. 其他函数。 例如： FunctionOne (`<<argument1>>` ，FunctionTwo (`<<argument2>>`) ) 
 * 对于字符串常量，如果字符串中需要反斜杠 ( \ ) 或引号 ( " )，则必须使用反斜杠 ( \ ) 符号进行转义。 例如： "公司名称： \\ " Contoso \\ ""
 * 语法区分大小写，在函数中将它们键入为字符串时必须考虑该语法，与从源直接复制它们。 
 
 ## <a name="list-of-functions"></a>函数列表
 
-[](#append) &nbsp; &nbsp; 追加 &nbsp; &nbsp;[](#bitand) &nbsp; &nbsp; BitAnd &nbsp; &nbsp;[](#cbool) &nbsp; &nbsp; CBool &nbsp; &nbsp;[](#coalesce) &nbsp; &nbsp; 合并 &nbsp; &nbsp;[](#converttobase64) &nbsp; &nbsp; ConvertToBase64 &nbsp; &nbsp;[](#converttoutf8hex) &nbsp; &nbsp; ConvertToUTF8Hex &nbsp; &nbsp;[](#count) &nbsp; &nbsp; 计数 &nbsp; &nbsp;[](#cstr) &nbsp; &nbsp; CStr &nbsp; &nbsp;[DateFromNum](#datefromnum) &nbsp;[](#formatdatetime) &nbsp; &nbsp; FormatDateTime &nbsp; &nbsp;[](#guid) &nbsp; &nbsp; Guid &nbsp; &nbsp;[](#iif) &nbsp; &nbsp; IIF &nbsp; &nbsp;[](#instr) &nbsp; &nbsp; InStr &nbsp; &nbsp;[](#isnull) &nbsp; &nbsp; IsNull &nbsp; &nbsp;[](#isnullorempty) &nbsp; &nbsp; IsNullOrEmpty &nbsp; &nbsp;[](#ispresent) &nbsp; &nbsp; IsPresent &nbsp; &nbsp;[](#isstring) &nbsp; &nbsp; IsString &nbsp; &nbsp;[](#item) &nbsp; &nbsp; 项 &nbsp; &nbsp;[](#join) &nbsp; &nbsp; 联接 &nbsp; &nbsp;[](#left) &nbsp; &nbsp; 左 &nbsp; &nbsp;[Mid](#mid) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [NormalizeDiacritics](#normalizediacritics) [Not](#not) &nbsp; &nbsp; &nbsp; &nbsp; [RemoveDuplicates](#removeduplicates) &nbsp; &nbsp; &nbsp; &nbsp; [Replace](#replace) &nbsp; &nbsp; &nbsp; &nbsp; [SelectUniqueValue](#selectuniquevalue) &nbsp; &nbsp; &nbsp; &nbsp; [SingleAppRoleAssignment](#singleapproleassignment) &nbsp; &nbsp; &nbsp; &nbsp; [Split](#split) &nbsp; &nbsp; &nbsp; &nbsp; [](#stripspaces) &nbsp; &nbsp; &nbsp; &nbsp; [](#switch) &nbsp; &nbsp; &nbsp; &nbsp; [](#tolower) &nbsp; &nbsp; &nbsp; &nbsp; [](#toupper) &nbsp; &nbsp; &nbsp; &nbsp; [](#word) StripSpaces ToLower ToUpper Word
+[](#append) &nbsp; &nbsp; 追加 &nbsp; &nbsp;[](#bitand) &nbsp; &nbsp; BitAnd &nbsp; &nbsp;[](#cbool) &nbsp; &nbsp; CBool &nbsp; &nbsp;[](#coalesce) &nbsp; &nbsp; 合并 &nbsp; &nbsp;[](#converttobase64) &nbsp; &nbsp; ConvertToBase64 &nbsp; &nbsp;[](#converttoutf8hex) &nbsp; &nbsp; ConvertToUTF8Hex &nbsp; &nbsp;[](#count) &nbsp; &nbsp; 计数 &nbsp; &nbsp;[](#cstr) &nbsp; &nbsp; CStr &nbsp; &nbsp;[DateFromNum](#datefromnum) &nbsp;[](#formatdatetime) &nbsp; &nbsp; FormatDateTime &nbsp; &nbsp;[](#guid) &nbsp; &nbsp; Guid &nbsp; &nbsp;[](#iif) &nbsp; &nbsp; IIF &nbsp; &nbsp;[](#instr) &nbsp; &nbsp; InStr &nbsp; &nbsp;[](#isnull) &nbsp; &nbsp; IsNull &nbsp; &nbsp;[](#isnullorempty) &nbsp; &nbsp; IsNullOrEmpty &nbsp; &nbsp;[](#ispresent) &nbsp; &nbsp; IsPresent &nbsp; &nbsp;[](#isstring) &nbsp; &nbsp; IsString &nbsp; &nbsp;[](#item) &nbsp; &nbsp; 项 &nbsp; &nbsp;[](#join) &nbsp; &nbsp; 联接 &nbsp; &nbsp;[](#left) &nbsp; &nbsp; 左 &nbsp; &nbsp;[Mid](#mid) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [NormalizeDiacritics](#normalizediacritics) [Not](#not) &nbsp; &nbsp; &nbsp; &nbsp; [NumFromDate](#numfromdate) &nbsp; &nbsp; &nbsp; &nbsp; [RemoveDuplicates](#removeduplicates) &nbsp; &nbsp; &nbsp; &nbsp; [Replace](#replace) &nbsp; &nbsp; &nbsp; &nbsp; [SelectUniqueValue](#selectuniquevalue) &nbsp; &nbsp; &nbsp; &nbsp; [SingleAppRoleAssignment](#singleapproleassignment) &nbsp; &nbsp; &nbsp; &nbsp; [Split](#split) &nbsp; &nbsp; &nbsp; &nbsp; [StripSpaces](#stripspaces) &nbsp; &nbsp; &nbsp; &nbsp; [](#switch) &nbsp; &nbsp; &nbsp; &nbsp; [](#tolower) &nbsp; &nbsp; &nbsp; &nbsp; [](#toupper) &nbsp; &nbsp; &nbsp; &nbsp; [](#word) ToLower ToUpper Word
 
 ---
 ### <a name="append"></a>追加
@@ -53,6 +53,19 @@ ms.locfileid: "99255791"
 | --- | --- | --- | --- |
 | **source** |必须 |String |通常是来自源对象的属性的名称。 |
 | **suffix** |必须 |String |要附加到源值末尾的字符串。 |
+
+
+### <a name="append-constant-suffix-to-user-name"></a>将常量后缀附加到用户名
+示例：如果使用的是 Salesforce 沙盒，则在同步之前，可能需要在所有用户名之前附加一个后缀。
+
+**表达式** 
+`Append([userPrincipalName], ".test")`
+
+**示例输入/输出：** 
+
+* **输入**：(userPrincipalName)：“John.Doe@contoso.com”
+* **输出**： " John.Doe@contoso.com.test "
+
 
 ---
 ### <a name="bitand"></a>BitAnd
@@ -69,8 +82,8 @@ ms.locfileid: "99255791"
 
 | 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| **value1** |必需 |num |应与 value2 一起个的数值|
-| **value2** |必需 |num |应为 value1 个的数字值|
+| **value1** |必须 |num |应与 value2 一起个的数值|
+| **value2** |必须 |num |应为 value1 个的数字值|
 
 **实例**
 `BitAnd(&HF, &HF7)`
@@ -89,7 +102,7 @@ ms.locfileid: "99255791"
 
 | 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| **expression** |必需 | 表达式 | 任何有效的表达式 |
+| **expression** |必须 | 表达式 | 任何有效的表达式 |
 
 示例：  
 `CBool([attribute1] = [attribute2])`                                                                    
@@ -106,7 +119,20 @@ ms.locfileid: "99255791"
 | 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
 | **source1 .。。sourceN** | 必须 | String |必需，次数可变。 通常是来自源对象的属性的名称。 |
-| **defaultValue** | 可选 | 字符串 | 所有源值为 NULL 时要使用的默认值。 可以是空字符串 ("")。
+| **defaultValue** | 可选 | String | 所有源值为 NULL 时要使用的默认值。 可以是空字符串 ("")。
+
+### <a name="flow-mail-value-if-not-null-otherwise-flow-userprincipalname"></a>流邮件值（如果不为 NULL），否则为流 userPrincipalName
+示例：如果邮件存在，则需要对其进行流式传输。 如果不是，则您希望改为流式传输 userPrincipalName 的值。
+
+**表达式** 
+`Coalesce([mail],[userPrincipalName])`
+
+**示例输入/输出：** 
+
+* **输入** (mail) ： NULL
+* **输入** (userPrincipalName) ： " John.Doe@contoso.com "
+* **输出**： " John.Doe@contoso.com "
+
 
 ---
 ### <a name="converttobase64"></a>ConvertToBase64
@@ -152,7 +178,7 @@ ms.locfileid: "99255791"
 
 | 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| **attribute** |必需 |attribute |将计算元素的多值属性|
+| **attribute** |必须 |attribute |将计算元素的多值属性|
 
 ---
 ### <a name="cstr"></a>CStr
@@ -181,7 +207,7 @@ ms.locfileid: "99255791"
 
 | 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| value  |必须 | 日期 | 要转换为 DateTime 类型的广告日期 |
+| value  |必须 | Date | 要转换为 DateTime 类型的广告日期 |
 
 **实例**
 `DateFromNum([lastLogonTimestamp])`
@@ -192,7 +218,7 @@ ms.locfileid: "99255791"
 
 ---
 ### <a name="formatdatetime"></a>FormatDateTime
-**函数：** FormatDateTime (source、inputFormat、outputFormat) 
+**函数：** FormatDateTime (source、dateTimeStyles、inputFormat、outputFormat) 
 
 **说明：** 从一种格式获取日期字符串，并将其转换为其他格式。
 
@@ -201,12 +227,28 @@ ms.locfileid: "99255791"
 | 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
 | **source** |必须 |String |通常是来自源对象的属性的名称。 |
+| **dateTimeStyles** | 可选 | String | 使用此选项可以指定格式设置选项，这些选项可自定义一些日期和时间分析方法的字符串分析。 有关支持的值，请参阅 [DateTimeStyles 文档](/dotnet/api/system.globalization.datetimestyles)。如果留空，则使用的默认值为 DateTimeStyles，Datetimestyles.roundtripkind，DateTimeStyles，Numberstyles.allowleadingwhite，DateTimeStyles。 AllowTrailingWhite  |
 | **inputFormat** |必须 |String |源值的预期格式。 有关支持的格式，请参阅 [/dotnet/standard/base-types/custom-date-and-time-format-strings](/dotnet/standard/base-types/custom-date-and-time-format-strings)。 |
 | **outputFormat** |必须 |String |输出日期的格式。 |
 
+
+
+### <a name="output-date-as-a-string-in-a-certain-format"></a>输出日期是一种特定格式的字符串
+示例：你想要以特定格式将日期发送到具有特定格式的应用程序（如 ServiceNow）。 可以考虑使用以下表达式。 
+
+**表达式** 
+
+`FormatDateTime([extensionAttribute1], , "yyyyMMddHHmmss.fZ", "yyyy-MM-dd")`
+
+**示例输入/输出：**
+
+* **输入** (extensionAttribute1)：“20150123105347.1Z”
+* **输出**：“2015-01-23”
+
+
 ---
-### <a name="guid"></a>GUID
-**函数：** Guid ( # A1
+### <a name="guid"></a>Guid
+**函数：** Guid () 
 
 **说明：** 函数 Guid 生成新的随机 GUID
 
@@ -220,9 +262,9 @@ ms.locfileid: "99255791"
 
 | 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| **状态** |必需 |变量或表达式 |计算结果为 true 或 false 的任何值或表达式。 |
-| **valueIfTrue** |必需 |变量或字符串 | 如果条件计算结果为 true，则为返回值。 |
-| **valueIfFalse** |必需 |变量或字符串 |如果条件计算结果为 false，则为返回值。|
+| **条件** |必须 |变量或表达式 |计算结果为 true 或 false 的任何值或表达式。 |
+| **valueIfTrue** |必须 |变量或字符串 | 如果条件计算结果为 true，则为返回值。 |
+| **valueIfFalse** |必须 |变量或字符串 |如果条件计算结果为 false，则为返回值。|
 
 **实例**
 `IIF([country]="USA",[country],[department])`
@@ -240,7 +282,7 @@ ms.locfileid: "99255791"
 | **value1** |必须 |String |要搜索的字符串 |
 | **value2** |必须 |String |要查找的字符串 |
 | **start** |可选 |整数 |用于查找子字符串的起始位置|
-| **compareType** |可选 |Enum |可以是 vbTextCompare 或 vbBinaryCompare |
+| **compareType** |可选 |枚举 |可以是 vbTextCompare 或 vbBinaryCompare |
 
 **实例**
 `InStr("The quick brown fox","quick")`
@@ -261,7 +303,7 @@ ms.locfileid: "99255791"
 
 | 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| **expression** |必需 |表达式 |要计算的表达式 |
+| **expression** |必须 |表达式 |要计算的表达式 |
 
 **实例**
 `IsNull([displayName])`
@@ -279,7 +321,7 @@ ms.locfileid: "99255791"
 
 | 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| **expression** |必需 |表达式 |要计算的表达式 |
+| **expression** |必须 |表达式 |要计算的表达式 |
 
 **实例**
 `IsNullOrEmpty([displayName])`
@@ -296,7 +338,7 @@ ms.locfileid: "99255791"
 
 | 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| **expression** |必需 |表达式 |要计算的表达式 |
+| **expression** |必须 |表达式 |要计算的表达式 |
 
 **实例**
 `Switch(IsPresent([directManager]),[directManager], IsPresent([skiplevelManager]),[skiplevelManager], IsPresent([director]),[director])`
@@ -311,10 +353,10 @@ ms.locfileid: "99255791"
 
 | 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| **expression** |必需 |表达式 |要计算的表达式 |
+| **expression** |必须 |表达式 |要计算的表达式 |
 
 ---
-### <a name="item"></a>项目
+### <a name="item"></a>项
 **函数：** Item (属性，index) 
 
 **说明：** Item 函数返回多值字符串/属性中的一个项。
@@ -323,7 +365,7 @@ ms.locfileid: "99255791"
 
 | 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| **attribute** |必需 |属性 |要搜索的多值属性 |
+| **attribute** |必须 |属性 |要搜索的多值属性 |
 | **index** |必需 |整数 | 多值字符串中的项的索引|
 
 **示例：** 
@@ -333,7 +375,7 @@ ms.locfileid: "99255791"
 ### <a name="join"></a>联接
 **函数：** 联接 (separator，source1，source2，... ) 
 
-**说明：** 联接 ( # A1 类似于追加 ( # A3，只不过它可以将多个 **源** 字符串值组合成单个字符串，每个值将由一个 **分隔符** 字符串分隔。
+**说明：** 联接 () 类似于追加 () ，只不过它可以将多个 **源** 字符串值组合成单个字符串，每个值都由一个 **分隔符** 字符串分隔。
 
 如果其中一个源值是多值属性，那么该属性中的每个值都将联接在一起，由分隔符值分隔。
 
@@ -342,10 +384,10 @@ ms.locfileid: "99255791"
 | 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
 | separator  |必须 |String |用于在将源值连接为一个字符串时分隔源值的字符串。 如果不需要分隔符，则可以是 ""。 |
-| **source1 .。。sourceN** |必选，次数可变 |字符串 |要联接在一起的字符串值。 |
+| **source1 .。。sourceN** |必选，次数可变 |String |要联接在一起的字符串值。 |
 
 ---
-### <a name="left"></a>左
+### <a name="left"></a>Left
 **函数：** Left (String，NumChars) 
 
 **说明：** Left 函数从字符串左侧起返回指定数目的字符。 如果 numChar = 0，则返回空字符串。
@@ -357,7 +399,7 @@ ms.locfileid: "99255791"
 
 | 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| **字符串** |必需 |属性 | 要从其返回字符的字符串 |
+| **字符串** |必须 |属性 | 要从其返回字符的字符串 |
 | **NumChars** |必需 |整数 | 标识从字符串的开头开始)  (的字符数的数字|
 
 **实例**
@@ -376,8 +418,8 @@ ms.locfileid: "99255791"
 | 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
 | **source** |必须 |String |通常是属性的名称。 |
-| **start** |必需 |integer |**source** 字符串中的索引，子字符串应从这里开始。 字符串中第一个字符的索引为 1，第二个字符的索引为 2，依此类推。 |
-| **length** |必需 |integer |子字符串的长度。 如果长度超出 **source** 字符串，则函数将返回从 **start** 索引到 **source** 字符串末尾的子字符串。 |
+| **start** |必须 |整型 |**source** 字符串中的索引，子字符串应从这里开始。 字符串中第一个字符的索引为 1，第二个字符的索引为 2，依此类推。 |
+| **length** |必须 |整型 |子字符串的长度。 如果长度超出 **source** 字符串，则函数将返回从 **start** 索引到 **source** 字符串末尾的子字符串。 |
 
 ---
 ### <a name="normalizediacritics"></a>NormalizeDiacritics
@@ -391,6 +433,18 @@ ms.locfileid: "99255791"
 | --- | --- | --- | --- |
 | **source** |必须 |String | 通常是名字或姓氏属性。 |
 
+
+### <a name="remove-diacritics-from-a-string"></a>从字符串中删除音调符号
+示例：需要将包含重音标记的字符替换为不包含重音符号的等效字符。
+
+**表达式：** NormalizeDiacritics ( [givenName] ) 
+
+**示例输入/输出：** 
+
+* **输入** (givenName)：“Zoë”
+* **输出**： "Zoe"
+
+
 ---
 ### <a name="not"></a>Not
 **函数：** 不 (源) 
@@ -401,7 +455,7 @@ ms.locfileid: "99255791"
 
 | 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| **source** |必需 |布尔型字符串 |预期的 **source** 值为“True”或“False”。 |
+| **source** |必须 |布尔型字符串 |预期的 **source** 值为“True”或“False”。 |
 
 ---
 ### <a name="numfromdate"></a>NumFromDate
@@ -417,10 +471,10 @@ ms.locfileid: "99255791"
 
 **示例：**
 * Workday 示例假设你想要将 *ContractEndDate* 中的属性（格式为 *2020-12-31-08:00* 到 accountExpires 字段）映射到 AD 中的字段，则可以使用此函数并更改时区偏移量以匹配你的区域设置。 
-  `NumFromDate(Join("", FormatDateTime([ContractEndDate], "yyyy-MM-ddzzz", "yyyy-MM-dd"), "T23:59:59-08:00"))`
+  `NumFromDate(Join("", FormatDateTime([ContractEndDate], ,"yyyy-MM-ddzzz", "yyyy-MM-dd"), "T23:59:59-08:00"))`
 
 * SuccessFactors 示例假设你想要将属性 *结束* 时间从 SuccessFactors （格式为 *M/d/yyyy hh： mm： ss tt* ）映射到 AD 中的 *accountExpires* 字段，以下是你如何使用此函数并更改时区偏移量以匹配你的区域设置。
-  `NumFromDate(Join("",FormatDateTime([endDate],"M/d/yyyy hh:mm:ss tt","yyyy-MM-dd"),"T23:59:59-08:00"))`
+  `NumFromDate(Join("",FormatDateTime([endDate], ,"M/d/yyyy hh:mm:ss tt","yyyy-MM-dd"),"T23:59:59-08:00"))`
 
 
 ---
@@ -433,7 +487,7 @@ ms.locfileid: "99255791"
 
 | 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| **attribute** |必需 |多值属性 |将删除重复项的多值属性|
+| **attribute** |必须 |多值属性 |将删除重复项的多值属性|
 
 **示例：** 
  `RemoveDuplicates([proxyAddresses])`返回净化的 proxyAddress 属性，其中所有重复值均已删除。
@@ -466,12 +520,25 @@ ms.locfileid: "99255791"
 | 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
 | **source** |必须 |String |通常是来自 **源** 对象的属性的名称。 |
-| **oldValue** |可选 |字符串 |要在 **source** 或 **template** 中替换的值。 |
-| **regexPattern** |可选 |字符串 |**source** 中要替换的值的正则表达式模式。 或者，当使用 **replacementPropertyName** 时，从 **replacementPropertyName** 中提取值的模式。 |
-| **regexGroupName** |可选 |字符串 |**regexPattern** 中的组名称。 仅当使用 **replacementPropertyName** 时，才会从 **replacementPropertyName** 中以 **replacementValue** 的形式提取此组的值。 |
-| **replacementValue** |可选 |字符串 |用于替换旧值的新值。 |
-| **replacementAttributeName** |可选 |字符串 |用于替换值的属性的名称 |
-| **模版** |可选 |字符串 |提供 **模板** 值后，我们将在模板中查找 **oldValue** ，并将其替换为 **source** 值。 |
+| **oldValue** |可选 |String |要在 **source** 或 **template** 中替换的值。 |
+| **regexPattern** |可选 |String |**source** 中要替换的值的正则表达式模式。 或者，当使用 **replacementPropertyName** 时，从 **replacementPropertyName** 中提取值的模式。 |
+| **regexGroupName** |可选 |String |**regexPattern** 中的组名称。 仅当使用 **replacementPropertyName** 时，才会从 **replacementPropertyName** 中以 **replacementValue** 的形式提取此组的值。 |
+| **replacementValue** |可选 |String |用于替换旧值的新值。 |
+| **replacementAttributeName** |可选 |String |用于替换值的属性的名称 |
+| **模版** |可选 |String |提供 **模板** 值后，我们将在模板中查找 **oldValue** ，并将其替换为 **source** 值。 |
+
+### <a name="replace-characters-using-a-regular-expression"></a>使用正则表达式替换字符
+示例：你需要查找与正则表达式值匹配的字符并将其删除。
+
+**表达式** 
+
+Replace([mailNickname], , "[a-zA-Z_]*", , "", , )
+
+**示例输入/输出：**
+
+* **INPUT** (mailNickname: "john_doe72"
+* **输出**： "72"
+
 
 ---
 ### <a name="selectuniquevalue"></a>SelectUniqueValue
@@ -481,7 +548,7 @@ ms.locfileid: "99255791"
 
 
  - 这是一个顶级函数，不能嵌套。
- - 此函数不能应用到具有匹配优先级的属性。   
+ - 此函数不能应用到具有匹配优先级的属性。     
  - 此函数仅供用于创建条目。 将其与属性一起使用时，请将“应用映射”属性设置为“仅在创建对象期间”。
  - 目前仅支持 "Workday 到 Active Directory 用户预配" 和 "SuccessFactors to Active Directory User 预配" 这一功能。 此函数不可用于其他预配应用程序。 
 
@@ -490,7 +557,29 @@ ms.locfileid: "99255791"
 
 | 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| **uniqueValueRule1  … uniqueValueRuleN** |需要至少 2 个，没有上限 |字符串 | 要评估的唯一值生成规则的列表。 |
+| **uniqueValueRule1  … uniqueValueRuleN** |需要至少 2 个，没有上限 |String | 要评估的唯一值生成规则的列表。 |
+
+### <a name="generate-unique-value-for-userprincipalname-upn-attribute"></a>为 userPrincipalName (UPN) 属性生成唯一值
+示例：根据用户的名字、中间名和姓氏，需要在将值分配给 UPN 属性之前，为 UPN 属性生成值并检查其在目标 AD 目录中的唯一性。
+
+**表达式** 
+
+```ad-attr-mapping-expr
+    SelectUniqueValue( 
+        Join("@", NormalizeDiacritics(StripSpaces(Join(".",  [PreferredFirstName], [PreferredLastName]))), "contoso.com"), 
+        Join("@", NormalizeDiacritics(StripSpaces(Join(".",  Mid([PreferredFirstName], 1, 1), [PreferredLastName]))), "contoso.com"),
+        Join("@", NormalizeDiacritics(StripSpaces(Join(".",  Mid([PreferredFirstName], 1, 2), [PreferredLastName]))), "contoso.com")
+    )
+```
+
+**示例输入/输出：**
+
+* **输入** (PreferredFirstName)："John"
+* **输入** (PreferredLastName)："Smith"
+* **输出**： " John.Smith@contoso.com " 如果 UPN 值 John.Smith@contoso.com 在目录中不存在
+* **输出**： " J.Smith@contoso.com " John.Smith@contoso.com ，如果目录中已存在 UPN 值
+* **输出**： " Jo.Smith@contoso.com " 如果此目录中已存在上述两个 UPN 值
+
 
 
 ---
@@ -516,7 +605,18 @@ ms.locfileid: "99255791"
 | 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
 | **source** |必须 |String |要更新的 **source** 值。 |
-| **delimiter** |必须 |String |指定将用来拆分字符串的字符（示例：“,”） |
+| **后面** |必须 |String |指定将用来拆分字符串的字符（示例：“,”） |
+
+### <a name="split-a-string-into-a-multi-valued-array"></a>将字符串拆分为多值数组
+例如：需要采用逗号分隔的字符串列表，并将它们拆分为一个数组，该数组可以插入到多值属性中，如 Salesforce 的 PermissionSets 属性。 在此示例中，Azure AD 中的 extensionAttribute5 中填充了一个权限集列表。
+
+**表达式：** Split ( [extensionAttribute5]，"，" ) 
+
+**示例输入/输出：** 
+
+* **输入** (extensionAttribute5) ： "PermissionSetOne，PermissionSetTwo"
+* **OUTPUT**:  ["PermissionSetOne", "PermissionSetTwo"]
+
 
 ---
 ### <a name="stripspaces"></a>StripSpaces
@@ -531,7 +631,7 @@ ms.locfileid: "99255791"
 | **source** |必须 |String |要更新的 **source** 值。 |
 
 ---
-### <a name="switch"></a>交换机
+### <a name="switch"></a>开关
 **函数：** Switch (source，defaultValue，key1，value1，key2，value2，... ) 
 
 **说明：** 当 **source** 值与某个 **键** 匹配时，将返回 **该项** 的 **值**。 当 **source** 值未与任何 key 匹配时，则返回 **defaultValue**。  **Key** 和 **value** 参数必须始终成对出现。 该函数始终需要偶数个参数。 函数不应用于管理器等引用属性。 
@@ -541,9 +641,21 @@ ms.locfileid: "99255791"
 | 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
 | **source** |必须 |String |要更新的 **source** 值。 |
-| **defaultValue** |可选 |字符串 |当 source 不匹配任何 key 时使用的默认值。 可以是空字符串 ("")。 |
+| **defaultValue** |可选 |String |当 source 不匹配任何 key 时使用的默认值。 可以是空字符串 ("")。 |
 | key  |必须 |String |用来比较 **source** 值的 **key**。 |
 | value  |必须 |String |与该 key 匹配的 **source** 的替换值。 |
+
+### <a name="replace-a-value-based-on-predefined-set-of-options"></a>根据预定义的选项集替换值
+示例：你需要根据存储在 Azure AD 中的状态代码来定义用户的时区。 如果状态代码与任何预定义选项都不匹配，则使用默认值“澳大利亚/悉尼”。
+
+**表达式** 
+`Switch([state], "Australia/Sydney", "NSW", "Australia/Sydney","QLD", "Australia/Brisbane", "SA", "Australia/Adelaide")`
+
+**示例输入/输出：**
+
+* **输入** (state)：“QLD”
+* **输出**：“澳大利亚/布里斯班”
+
 
 ---
 ### <a name="tolower"></a>ToLower
@@ -556,7 +668,19 @@ ms.locfileid: "99255791"
 | 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
 | **source** |必须 |String |通常是来自源对象的属性的名称 |
-| **culture** |可选 |字符串 |基于 RFC 4646 的区域性名称格式是 languagecode2-country/regioncode2，其中 languagecode2 是两个字母的语言代码，country/regioncode2 是两个字母的子区域性代码。 示例包括代表日语（日本）的 ja-JP 和代表英语（美国）的 en-US。 在双字母语言代码不可用的情况下，使用派生自 ISO 639-2 的三字母代码。|
+| **culture** |可选 |String |基于 RFC 4646 的区域性名称格式是 languagecode2-country/regioncode2，其中 languagecode2 是两个字母的语言代码，country/regioncode2 是两个字母的子区域性代码。 示例包括代表日语（日本）的 ja-JP 和代表英语（美国）的 en-US。 在双字母语言代码不可用的情况下，使用派生自 ISO 639-2 的三字母代码。|
+
+### <a name="convert-generated-userprincipalname-upn-value-to-lower-case"></a>将生成的 userPrincipalName (UPN) 值转换为小写
+示例：要生成 UPN 值，请将 PreferredFirstName 和 PreferredLastName 源字段连接起来，并将所有字符转换为小写。 
+
+`ToLower(Join("@", NormalizeDiacritics(StripSpaces(Join(".",  [PreferredFirstName], [PreferredLastName]))), "contoso.com"))`
+
+**示例输入/输出：**
+
+* **输入** (PreferredFirstName)："John"
+* **输入** (PreferredLastName)："Smith"
+* **输出**： " john.smith@contoso.com "
+
 
 ---
 ### <a name="toupper"></a>ToUpper
@@ -569,7 +693,7 @@ ms.locfileid: "99255791"
 | 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
 | **source** |必须 |String |通常是来自源对象的属性的名称。 |
-| **culture** |可选 |字符串 |基于 RFC 4646 的区域性名称格式是 languagecode2-country/regioncode2，其中 languagecode2 是两个字母的语言代码，country/regioncode2 是两个字母的子区域性代码。 示例包括代表日语（日本）的 ja-JP 和代表英语（美国）的 en-US。 在双字母语言代码不可用的情况下，使用派生自 ISO 639-2 的三字母代码。|
+| **culture** |可选 |String |基于 RFC 4646 的区域性名称格式是 languagecode2-country/regioncode2，其中 languagecode2 是两个字母的语言代码，country/regioncode2 是两个字母的子区域性代码。 示例包括代表日语（日本）的 ja-JP 和代表英语（美国）的 en-US。 在双字母语言代码不可用的情况下，使用派生自 ISO 639-2 的三字母代码。|
 
 ---
 ### <a name="word"></a>Word
@@ -585,7 +709,7 @@ ms.locfileid: "99255791"
 
 | 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| **字符串** |必需 |多值属性 |要从中返回单词的字符串。|
+| **字符串** |必须 |多值属性 |要从中返回单词的字符串。|
 | **WordNumber** |必需 | 整数 | 标识应返回的单词编号的数字|
 | **限定符** |必须 |String| 一个字符串，表示应用于标识单词的分隔符 (s) |
 
@@ -601,8 +725,10 @@ ms.locfileid: "99255791"
 ---
 
 ## <a name="examples"></a>示例
+本部分提供了更多 expression 函数使用示例。 
+
 ### <a name="strip-known-domain-name"></a>删除已知域名
-需要从用户的电子邮件中删除已知域名，以便获取用户名。 例如，如果域为“contoso.com”，则可以使用以下表达式：
+需要从用户的电子邮件中去除已知域名，才能获取用户名。 例如，如果域为“contoso.com”，则可以使用以下表达式：
 
 **表达式** 
 `Replace([mail], "@contoso.com", , ,"", ,)`
@@ -612,16 +738,6 @@ ms.locfileid: "99255791"
 * **输入** (mail)：“john.doe@contoso.com”
 * **输出**：“john.doe”
 
-### <a name="append-constant-suffix-to-user-name"></a>将常量后缀附加到用户名
-如果使用 Salesforce 沙箱，则可能需要在进行同步之前向所有用户名附加额外后缀。
-
-**表达式** 
-`Append([userPrincipalName], ".test")`
-
-**示例输入/输出：** 
-
-* **输入**：(userPrincipalName)：“John.Doe@contoso.com”
-* **输出**： " John.Doe@contoso.com.test "
 
 ### <a name="generate-user-alias-by-concatenating-parts-of-first-and-last-name"></a>通过连接名字和姓氏部分来生成用户别名
 需要使用用户名字的前 3 个字母和用户姓氏的前 5 个字母来生成用户别名。
@@ -635,105 +751,6 @@ ms.locfileid: "99255791"
 * **输入** (surname)：“Doe”
 * **输出**：“JohDoe”
 
-### <a name="remove-diacritics-from-a-string"></a>从字符串中删除音调符号
-需要将包含重音符号的字符替换为不包含重音符号的等效字符。
-
-**表达式：** NormalizeDiacritics ( [givenName] ) 
-
-**示例输入/输出：** 
-
-* **输入** (givenName)：“Zoë”
-* **输出**： "Zoe"
-
-### <a name="split-a-string-into-a-multi-valued-array"></a>将字符串拆分为多值数组
-你需要获取一个以逗号分隔的字符串列表，将它们拆分为一个数组，可以将该数组插入到多值属性中，例如 Salesforce 的 PermissionSets 属性。 在此示例中，Azure AD 中的 extensionAttribute5 中填充了一个权限集列表。
-
-**表达式：** Split ( [extensionAttribute5]，"，" ) 
-
-**示例输入/输出：** 
-
-* **输入** (extensionAttribute5) ： "PermissionSetOne，PermissionSetTwo"
-* **OUTPUT**:  ["PermissionSetOne", "PermissionSetTwo"]
-
-### <a name="output-date-as-a-string-in-a-certain-format"></a>输出日期是一种特定格式的字符串
-需要以某种格式将日期发送到 SaaS 应用程序。 例如，需要为 ServiceNow 设置日期格式。
-
-**表达式** 
-
-`FormatDateTime([extensionAttribute1], "yyyyMMddHHmmss.fZ", "yyyy-MM-dd")`
-
-**示例输入/输出：**
-
-* **输入** (extensionAttribute1)：“20150123105347.1Z”
-* **输出**：“2015-01-23”
-
-### <a name="replace-a-value-based-on-predefined-set-of-options"></a>根据预定义的选项集替换值
-
-需要根据存储在 Azure AD 中的状态代码来定义用户的时区。 如果状态代码与任何预定义选项都不匹配，则使用默认值“澳大利亚/悉尼”。
-
-**表达式** 
-`Switch([state], "Australia/Sydney", "NSW", "Australia/Sydney","QLD", "Australia/Brisbane", "SA", "Australia/Adelaide")`
-
-**示例输入/输出：**
-
-* **输入** (state)：“QLD”
-* **输出**：“澳大利亚/布里斯班”
-
-### <a name="replace-characters-using-a-regular-expression"></a>使用正则表达式替换字符
-你需要查找与正则表达式匹配的值并将其删除。
-
-**表达式** 
-
-Replace([mailNickname], , "[a-zA-Z_]*", , "", , )
-
-**示例输入/输出：**
-
-* **INPUT** (mailNickname: "john_doe72"
-* **输出**： "72"
-
-### <a name="convert-generated-userprincipalname-upn-value-to-lower-case"></a>将生成的 userPrincipalName (UPN) 值转换为小写
-在下面的示例中，通过串联 PreferredFirstName 和 PreferredLastName 源字段生成 UPN 值，ToLower 函数对生成的字符串进行运算，将所有字符都转换为小写形式。 
-
-`ToLower(Join("@", NormalizeDiacritics(StripSpaces(Join(".",  [PreferredFirstName], [PreferredLastName]))), "contoso.com"))`
-
-**示例输入/输出：**
-
-* **输入** (PreferredFirstName)："John"
-* **输入** (PreferredLastName)："Smith"
-* **输出**： " john.smith@contoso.com "
-
-### <a name="generate-unique-value-for-userprincipalname-upn-attribute"></a>为 userPrincipalName (UPN) 属性生成唯一值
-你需要根据用户的名字、中间名和姓氏为 UPN 属性生成值，并在将该值分配给 UPN 属性之前在目标 AD 目录中检查其唯一性。
-
-**表达式** 
-
-```ad-attr-mapping-expr
-    SelectUniqueValue( 
-        Join("@", NormalizeDiacritics(StripSpaces(Join(".",  [PreferredFirstName], [PreferredLastName]))), "contoso.com"), 
-        Join("@", NormalizeDiacritics(StripSpaces(Join(".",  Mid([PreferredFirstName], 1, 1), [PreferredLastName]))), "contoso.com"),
-        Join("@", NormalizeDiacritics(StripSpaces(Join(".",  Mid([PreferredFirstName], 1, 2), [PreferredLastName]))), "contoso.com")
-    )
-```
-
-**示例输入/输出：**
-
-* **输入** (PreferredFirstName)："John"
-* **输入** (PreferredLastName)："Smith"
-* **输出**： " John.Smith@contoso.com " 如果 UPN 值 John.Smith@contoso.com 在目录中不存在
-* **输出**： " J.Smith@contoso.com " John.Smith@contoso.com ，如果目录中已存在 UPN 值
-* **输出**： " Jo.Smith@contoso.com " 如果此目录中已存在上述两个 UPN 值
-
-### <a name="flow-mail-value-if-not-null-otherwise-flow-userprincipalname"></a>流邮件值（如果不为 NULL），否则为流 userPrincipalName
-如果邮件属性存在，则需要对其进行流式传输。 如果不是，则您希望改为流式传输 userPrincipalName 的值。
-
-**表达式** 
-`Coalesce([mail],[userPrincipalName])`
-
-**示例输入/输出：** 
-
-* **输入** (mail) ： NULL
-* **输入** (userPrincipalName) ： " John.Doe@contoso.com "
-* **输出**： " John.Doe@contoso.com "
 
 ## <a name="related-articles"></a>相关文章
 * [在 SaaS 应用中自动预配和取消预配用户](../app-provisioning/user-provisioning.md)

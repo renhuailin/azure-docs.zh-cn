@@ -91,7 +91,7 @@
 - name: 参考
   items:
     - name: CLI 参考
-      href: /cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list
+      href: /cli/azure/cognitiveservices#az_cognitiveservices_list
     - name: PowerShell 参考
       href: /powershell/module/azurerm.cognitiveservices/
     - name: 文本分析 API

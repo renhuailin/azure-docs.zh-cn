@@ -15,12 +15,12 @@ ms.custom:
 - contperf-fy21q1
 - fasttrack-edit
 - iot
-ms.openlocfilehash: df706a83c4892c15140e5d5c827a248156b66069
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 728014c53ab019f25bdc9b097c8b493411833aaa
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101095687"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102198840"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>使用 MQTT 协议与 IoT 中心通信
 
@@ -160,7 +160,7 @@ device_client = IoTHubDeviceClient.create_from_connection_string(deviceConnectio
 
   有关如何生成 SAS 令牌的详细信息，请参阅[使用 IoT 中心安全令牌](iot-hub-devguide-security.md#use-sas-tokens-in-a-device-app)的设备部分。
 
-  测试时，还可以使用跨平台的 [Azure IoT 工具进行 Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) 或使用 CLI 扩展命令 [az IoT 中心生成-sas 令牌](/cli/azure/ext/azure-iot/iot/hub?view=azure-cli-latest#ext-azure-iot-az-iot-hub-generate-sas-token&preserve-view=true) ，快速生成可复制并粘贴到自己的代码中的 sas 令牌。
+  测试时，还可以使用跨平台的 [Azure IoT 工具进行 Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) 或使用 CLI 扩展命令 [az IoT 中心生成-sas 令牌](/cli/azure/ext/azure-iot/iot/hub#ext-azure-iot-az-iot-hub-generate-sas-token) ，快速生成可复制并粘贴到自己的代码中的 sas 令牌。
 
 ### <a name="for-azure-iot-tools"></a>对于 Azure IoT Tools
 

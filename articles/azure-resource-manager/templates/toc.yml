@@ -328,6 +328,8 @@
       items:
         - name: 比较 JSON 与 Bicep
           href: compare-template-syntax.md
+    - name: 数据类型
+      href: data-types.md
     - name: 常见问题
       href: frequently-asked-questions.md
     - name: 用于提供云一致性的模板

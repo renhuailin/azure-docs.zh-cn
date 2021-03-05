@@ -5,18 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 03/02/2021
+ms.date: 03/04/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
-ms.reviewer: elisol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 95c7ca826eaf7d72cb35985b154458f149ef4a0e
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: df867059a7d4020952f71ca8d663a644ee2428fd
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101649303"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102199622"
 ---
 # <a name="azure-active-directory-b2b-collaboration-invitation-redemption"></a>Azure Active Directory B2B 协作邀请兑换
 
@@ -35,6 +34,7 @@ ms.locfileid: "101649303"
 ![公共终结点登录](media/redemption-experience/common-endpoint-flow-small.png)
 
 然后，将用户重定向到你的租户终结点，用户可以使用其电子邮件地址登录，或者选择已配置的标识提供者。
+
 ## <a name="redemption-through-a-direct-link"></a>通过直接链接兑换
 
 作为邀请电子邮件或应用程序公用 URL 的替代方法，你可以为来宾授予指向你的应用或门户的直接链接。 首先需要通过 [Azure 门户](./b2b-quickstart-add-guest-users-portal.md)或 [PowerShell](./b2b-quickstart-invite-powershell.md) 将来宾用户添加到目录。 然后，可以使用[将应用程序部署到用户的可自定义方式](../manage-apps/end-user-experiences.md)（包括直接登录链接）。 当来宾使用直接链接而不是邀请电子邮件时，仍将指导他们完成首次同意体验。
@@ -73,7 +73,7 @@ ms.locfileid: "101649303"
 
 3. 如果管理员已启用 [Google 联合](./google-federation.md)，Azure AD 会检查用户的域后缀是 gmail.com 还是 googlemail.com，并将用户重定向到 Google。
 
-4. 兑换过程会检查用户是否具有现有个人 [Microsoft 帐户 (MSA)](https://support.microsoft.com/help/4026324/microsoft-account-how-to-create)。
+4. 兑换过程会检查用户是否具有现有的个人 [Microsoft 帐户 (MSA) ](https://support.microsoft.com/help/4026324/microsoft-account-how-to-create) 用于实时 (JIT) 兑换次数，但不适用于邀请电子邮件链接兑换。 如果用户已有一个 MSA，则他们将使用现有 MSA 登录。
 
 5. 标识用户的主目录后，用户将发送到相应的标识提供程序进行登录。  
 

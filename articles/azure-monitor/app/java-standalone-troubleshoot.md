@@ -4,12 +4,12 @@ description: 了解如何对 Azure Monitor Application Insights 的 Java 代理�
 ms.topic: conceptual
 ms.date: 11/30/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 286354ecf508dec7b9ba7633bf3b5c7ddc6bfd91
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 45f45e71546909b71c71c66303c1459edd74548f
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101737051"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102199605"
 ---
 # <a name="troubleshooting-guide-azure-monitor-application-insights-for-java"></a>故障排除指南：适用于 Java 的 Azure Monitor Application Insights
 
@@ -45,7 +45,7 @@ ms.locfileid: "101737051"
 
 若要了解某个特定的日志记录语句是否满足日志记录框架的已配置阈值，最好的方法是确认它是否显示在正常的应用程序日志（例如文件或控制台）中。
 
-另请注意，如果异常被传递到记录器，则日志消息 (和异常) 将显示在表中的 Azure 门户下， `exceptions` 而不是显示在 `traces` 表中。
+另请注意，如果异常对象传递到记录器，则日志消息 (和异常对象详细信息) 将显示在表中的 Azure 门户下， `exceptions` 而不是显示在 `traces` 表中。
 
 有关更多详细信息，请参阅[自动收集的日志记录配置](./java-standalone-config.md#auto-collected-logging)。
 

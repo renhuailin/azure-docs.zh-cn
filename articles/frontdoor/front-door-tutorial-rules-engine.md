@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 09/09/2020
 ms.author: duau
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: c15b6115c2b07503320cd7b5f3c790be03aeea94
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 5d26d36c9f4ecb4aa0c7114b1ebef066e104f175
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92278125"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102198857"
 ---
 # <a name="tutorial-configure-your-rules-engine"></a>教程：配置规则引擎
 
@@ -58,7 +58,7 @@ ms.locfileid: "92278125"
 
 ## <a name="configure-rules-engine-in-azure-cli"></a>在 Azure CLI 中配置规则引擎
 
-1. 安装 [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)（如果尚未安装）。 添加“front-door”扩展：- az extension add --name front-door。 然后，登录并切换到你的订阅：az account set --subscription <name_or_Id>。
+1. 安装 [Azure CLI](/cli/azure/install-azure-cli)（如果尚未安装）。 添加“front-door”扩展：- az extension add --name front-door。 然后，登录并切换到你的订阅：az account set --subscription <name_or_Id>。
 
 1. 首先创建规则引擎 - 此示例显示的规则包含一个基于标头的操作和一个匹配条件。 
 
@@ -96,7 +96,7 @@ ms.locfileid: "92278125"
     az network front-door routing-rule update -g {rg} -f {front_door} -n {routing_rule_name} --remove rulesEngine # case sensitive word ‘rulesEngine’
     ```
 
-如需详细信息，可在[此处](/cli/azure/ext/front-door/network/front-door/rules-engine?preserve-view=true&view=azure-cli-latest)查找 AFD 规则引擎命令的完整列表。   
+如需详细信息，可在[此处](/cli/azure/ext/front-door/network/front-door/rules-engine)查找 AFD 规则引擎命令的完整列表。   
 
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -108,11 +108,11 @@ ms.locfileid: "92278125"
 
 1. 取消选中此规则引擎配置所关联的所有传递规则，然后单击“保存”。
 
-    :::image type="content" source="./media/front-door-rules-engine/front-door-routing-rule-association.png" alt-text="关联传递规则":::
+    :::image type="content" source="./media/front-door-rules-engine/front-door-routing-rule-association.png" alt-text="传递规则关联":::
 
 1. 现在，可以删除 Front Door 中的规则引擎配置。
 
-    :::image type="content" source="./media/front-door-rules-engine/front-door-delete-rule-engine-configuration.png" alt-text="关联传递规则":::
+    :::image type="content" source="./media/front-door-rules-engine/front-door-delete-rule-engine-configuration.png" alt-text="删除规则引擎配置":::
 
 ## <a name="next-steps"></a>后续步骤
 

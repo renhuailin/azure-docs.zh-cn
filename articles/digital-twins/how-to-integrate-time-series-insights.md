@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 1/19/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 951c52cdba191aa291061259e1c15b9190513770
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 6aeb7489b455840eeca0a8e1967c7e6e2ed50b7a
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99092697"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102199894"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-time-series-insights"></a>将 Azure 数字孪生与 Azure 时序见解集成
 
@@ -56,7 +56,7 @@ Azure 数字孪生 [*教程：连接端到端解决方案*](./tutorial-end-to-en
     az eventhubs eventhub create --name <name for your Twins event hub> --resource-group <resource group name> --namespace-name <Event Hubs namespace from above>
     ```
 
-3. 使用发送和接收权限创建 [授权规则](/cli/azure/eventhubs/eventhub/authorization-rule?view=azure-cli-latest&preserve-view=true#az-eventhubs-eventhub-authorization-rule-create) 。 指定规则的名称。
+3. 使用发送和接收权限创建 [授权规则](/cli/azure/eventhubs/eventhub/authorization-rule#az-eventhubs-eventhub-authorization-rule-create) 。 指定规则的名称。
 
     ```azurecli-interactive
         az eventhubs eventhub authorization-rule create --rights Listen Send --resource-group <resource group name> --namespace-name <Event Hubs namespace from above> --eventhub-name <Twins event hub name from above> --name <name for your Twins auth rule>
@@ -73,7 +73,7 @@ Azure 数字孪生 [*教程：连接端到端解决方案*](./tutorial-end-to-en
     >[!NOTE]
     >目前，Cloud Shell 中存在一个已知问题，该问题会影响以下命令组：`az dt route`、`az dt model` 和 `az dt twin`。
     >
-    >若要解决此问题，请在运行命令之前在 Cloud Shell 中运行 `az login`，或者使用[本地 CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) 而不使用 Cloud Shell。 有关此操作的详细信息，请参阅 [*故障排除：Azure 数字孪生中的已知问题*](troubleshoot-known-issues.md#400-client-error-bad-request-in-cloud-shell)。
+    >若要解决此问题，请在运行命令之前在 Cloud Shell 中运行 `az login`，或者使用[本地 CLI](/cli/azure/install-azure-cli) 而不使用 Cloud Shell。 有关此操作的详细信息，请参阅 [*故障排除：Azure 数字孪生中的已知问题*](troubleshoot-known-issues.md#400-client-error-bad-request-in-cloud-shell)。
 
     ```azurecli-interactive
     az dt route create -n <your Azure Digital Twins instance name> --endpoint-name <Event Hub endpoint from above> --route-name <name for your route> --filter "type = 'Microsoft.DigitalTwins.Twin.Update'"
@@ -117,7 +117,7 @@ Azure 数字孪生 [*教程：连接端到端解决方案*](./tutorial-end-to-en
     ```azurecli-interactive
     az eventhubs eventhub create --name <name for your TSI event hub> --resource-group <resource group name from earlier> --namespace-name <Event Hubs namespace from earlier>
     ```
-3. 使用发送和接收权限创建 [授权规则](/cli/azure/eventhubs/eventhub/authorization-rule?view=azure-cli-latest&preserve-view=true#az-eventhubs-eventhub-authorization-rule-create) 。 指定规则的名称。
+3. 使用发送和接收权限创建 [授权规则](/cli/azure/eventhubs/eventhub/authorization-rule#az-eventhubs-eventhub-authorization-rule-create) 。 指定规则的名称。
 
     ```azurecli-interactive
     az eventhubs eventhub authorization-rule create --rights Listen Send --resource-group <resource group name> --namespace-name <Event Hubs namespace from earlier> --eventhub-name <TSI event hub name from above> --name <name for your TSI auth rule>
@@ -173,7 +173,7 @@ Azure 数字孪生 [*教程：连接端到端解决方案*](./tutorial-end-to-en
 
 ## <a name="begin-sending-iot-data-to-azure-digital-twins"></a>开始将 IoT 数据发送到 Azure 数字孪生
 
-若要开始将数据发送到时序见解，需要开始更新 Azure 数字孪生中的数字克隆属性，并更改数据值。 使用 [az dt 双子端更新](/cli/azure/ext/azure-iot/dt/twin?view=azure-cli-latest&preserve-view=true#ext-azure-iot-az-dt-twin-update) 命令。
+若要开始将数据发送到时序见解，需要开始更新 Azure 数字孪生中的数字克隆属性，并更改数据值。 使用 [az dt 双子端更新](/cli/azure/ext/azure-iot/dt/twin#ext-azure-iot-az-dt-twin-update) 命令。
 
 如果你使用的是端到端教程 ([*教程：连接端到端解决方案*](tutorial-end-to-end.md)) 来帮助进行环境设置，你可以通过从示例运行 *devicesimulator.exe* 项目来开始发送模拟 IoT 数据。 本教程的 [*配置和运行模拟*](tutorial-end-to-end.md#configure-and-run-the-simulation) 部分介绍了相关说明。
 

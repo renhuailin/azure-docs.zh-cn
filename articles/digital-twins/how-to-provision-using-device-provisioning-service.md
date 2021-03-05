@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 9/1/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 24dac044982d59e93da17ee75190f378d5e3cdea
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: c2e7c9c96f237512d7f28f7243707b097c034aab
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102050913"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102198448"
 ---
 # <a name="auto-manage-devices-in-azure-digital-twins-using-device-provisioning-service-dps"></a>使用设备预配服务 (DPS) 自动管理 Azure 数字孪生中的设备
 
@@ -69,7 +69,7 @@ ms.locfileid: "102050913"
 
 创建将用于预配 IoT 设备的设备预配服务实例。 你可以使用以下 Azure CLI 说明，或使用 Azure 门户： [*快速入门：使用 Azure 门户设置 IoT 中心设备预配服务*](../iot-dps/quick-setup-auto-provision.md)。
 
-以下 Azure CLI 命令将创建设备预配服务。 你将需要指定名称、资源组和区域。 如果[计算机上安装](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)了 Azure CLI，则可在[Cloud Shell](https://shell.azure.com)中或在本地运行该命令。
+以下 Azure CLI 命令将创建设备预配服务。 你将需要指定名称、资源组和区域。 如果[计算机上安装](/cli/azure/install-azure-cli)了 Azure CLI，则可在[Cloud Shell](https://shell.azure.com)中或在本地运行该命令。
 
 ```azurecli-interactive
 az iot dps create --name <Device Provisioning Service name> --resource-group <resource group name> --location <region; for example, eastus>
@@ -190,7 +190,7 @@ az dt twin show -n <Digital Twins instance name> --twin-id <Device Registration 
 
 接下来，需要在函数应用中设置环境变量，并在其中包含对已创建的 Azure 数字孪生实例的引用以及事件中心。 如果你使用的是端到端教程 ([*教程：连接端到端解决方案*](./tutorial-end-to-end.md)) ，将已配置第一个设置。
 
-将此设置添加 Azure CLI 命令。 如果[计算机上安装](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)了 Azure CLI，则可在[Cloud Shell](https://shell.azure.com)中或在本地运行该命令。
+将此设置添加 Azure CLI 命令。 如果[计算机上安装](/cli/azure/install-azure-cli)了 Azure CLI，则可在[Cloud Shell](https://shell.azure.com)中或在本地运行该命令。
 
 ```azurecli-interactive
 az functionapp config appsettings set --settings "ADT_SERVICE_URL=https://<Azure Digital Twins instance _host name_>" -g <resource group> -n <your App Service (function app) name>
@@ -223,7 +223,7 @@ az functionapp config appsettings set --settings "EVENTHUB_CONNECTIONSTRING=<Eve
 
 在本文的前半 [部分](#auto-provision-device-using-device-provisioning-service)，已在 IoT 中心创建了一个设备，并在相应的数字克隆中创建了一个。 
 
-现在，请前往 IoT 中心，删除该设备 (你可以使用 [Azure CLI 命令](/cli/azure/ext/azure-iot/iot/hub/module-identity?view=azure-cli-latest&preserve-view=true#ext_azure_iot_az_iot_hub_module_identity_delete) 或在 [Azure 门户](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Devices%2FIotHubs)) 中执行此操作。 
+现在，请前往 IoT 中心，删除该设备 (你可以使用 [Azure CLI 命令](/cli/azure/ext/azure-iot/iot/hub/module-identity#ext_azure_iot_az_iot_hub_module_identity_delete) 或在 [Azure 门户](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Devices%2FIotHubs)) 中执行此操作。 
 
 设备将自动从 Azure 数字孪生中删除。 
 
@@ -240,7 +240,7 @@ az dt twin show -n <Digital Twins instance name> --twin-id <Device Registration 
 
 如果不再需要本文中创建的资源，请按照以下步骤将其删除。
 
-使用 Azure Cloud Shell 或本地 Azure CLI，可以使用 [az group delete](/cli/azure/group?view=azure-cli-latest&preserve-view=true#az-group-delete) 命令删除资源组中的所有 Azure 资源。 这将删除资源组;Azure 数字孪生实例;IoT 中心和中心设备注册;事件网格主题和关联的订阅;事件中心命名空间以及这两个 Azure Functions 应用，包括存储等关联资源。
+使用 Azure Cloud Shell 或本地 Azure CLI，可以使用 [az group delete](/cli/azure/group#az-group-delete) 命令删除资源组中的所有 Azure 资源。 这将删除资源组;Azure 数字孪生实例;IoT 中心和中心设备注册;事件网格主题和关联的订阅;事件中心命名空间以及这两个 Azure Functions 应用，包括存储等关联资源。
 
 > [!IMPORTANT]
 > 删除资源组的操作不可逆。 资源组以及包含在其中的所有资源将被永久删除。 请确保不会意外删除错误的资源组或资源。 

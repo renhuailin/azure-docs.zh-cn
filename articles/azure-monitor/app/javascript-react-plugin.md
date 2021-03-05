@@ -6,12 +6,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/28/2020
-ms.openlocfilehash: 4970cacb0995678bdad87f14ba971b8fb88ffa09
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 44554434eee51c11e7f89007c532f1a142fc998c
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100593649"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102199333"
 ---
 # <a name="react-plugin-for-application-insights-javascript-sdk"></a>适用于 Application Insights JavaScript SDK 的 React 插件
 
@@ -161,7 +161,11 @@ export default MyComponent;
 
 ### `useTrackEvent`
 
-`useTrackEvent` 挂钩用于跟踪应用程序可能需要跟踪的任何自定义事件，例如按钮单击或其他 API 调用。 它采用两个参数，一个是 Application Insights 实例（可从 `useAppInsightsContext` 挂钩获取），另一个是事件的名称。
+`useTrackEvent` 挂钩用于跟踪应用程序可能需要跟踪的任何自定义事件，例如按钮单击或其他 API 调用。 它采用四个参数：
+-   Application Insights 实例 (可从挂钩) 获取该实例 `useAppInsightsContext` 。
+-   事件的名称。
+-   事件数据对象，该对象封装了必须跟踪的更改。
+-   skipFirstRun (可选的) 标志来跳过 `trackEvent` 初始化调用。 默认值设置为 `true`。
 
 ```javascript
 import React, { useState, useEffect } from "react";

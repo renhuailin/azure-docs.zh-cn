@@ -4,12 +4,12 @@ description: 此 Azure CLI 脚本在实验室中创建虚拟机，并验证其�
 ms.devlang: azurecli
 ms.topic: sample
 ms.date: 08/11/2020
-ms.openlocfilehash: b64b6fa13bd0d320707dc279cb554d5c23f1d80d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c7625f62d7897d61903f864b216ccf9aa13648ea
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88136161"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102198415"
 ---
 # <a name="use-azure-cli-to-create-and-verify-availability-of-a-virtual-machine-in-a-lab-in-azure-devtest-labs"></a>使用 Azure CLI 在 Azure 开发测试实验室的实验室中创建虚拟机并验证其可用性
 
@@ -38,8 +38,8 @@ az group delete --name myResourceGroup
 | Command | 说明 |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | 创建用于存储所有资源的资源组。 |
-| [az lab vm create](/cli/azure/lab/vm?view=azure-cli-latest#az-lab-vm-create) | 在实验室中创建虚拟机 (VM)。 |
-| [az lab vm show](/cli/azure/lab/vm?view=azure-cli-latest#az-lab-vm-show) | 显示实验室中 VM 的状态。 |
+| [az lab vm create](/cli/azure/lab/vm#az-lab-vm-create) | 在实验室中创建虚拟机 (VM)。 |
+| [az lab vm show](/cli/azure/lab/vm#az-lab-vm-show) | 显示实验室中 VM 的状态。 |
 
 ## <a name="next-steps"></a>后续步骤
 

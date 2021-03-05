@@ -8,15 +8,15 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 11/12/2020
+ms.date: 03/04/2021
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a0b7330485d3152a588d43added7d9feaa5c2a14
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 3a3c2812a4ecfa1a80539804122042bc2dc2f3a2
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "95994480"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102199180"
 ---
 # <a name="upload-and-index-your-videos"></a>上传视频和编制视频索引  
 
@@ -83,18 +83,22 @@ ms.locfileid: "95994480"
 
 #### <a name="indexingpreset"></a>indexingPreset
 
-如果原始的或外部的记录包含背景噪音，请使用此参数。 此参数用于配置索引编制过程。 你可以指定以下值：
+使用此参数可以定义要应用于音频或视频文件的 AI 捆绑包。 此参数用于配置索引编制过程。 你可以指定以下值：
 
-- `AudioOnly` - 仅使用音频（忽略视频）编制见解的索引和提取见解
-- `VideoOnly` -仅使用视频对见解进行索引和提取 (忽略音频) 
-- `Default` - 使用音频和视频编制见解的索引和提取见解
-- `DefaultWithNoiseReduction` - 通过音频和视频编制见解的索引和提取见解，同时对音频流应用降噪算法
+- `AudioOnly` –只使用音频索引和提取见解 (忽略视频) 。
+- `VideoOnly` -使用仅视频 (忽略音频) 来索引和提取见解。
+- `Default` –使用音频和视频编制索引并提取见解。
+- `DefaultWithNoiseReduction` –在音频流上应用降噪算法，同时从音频和视频中提取见解并从中提取见解。
+
+    `DefaultWithNoiseReduction`该值现在映射到默认预设 (弃用) 。
+- `BasicAudio` -使用 "仅音频" 索引和提取见解 (忽略视频) ，仅包括基本音频功能， (脚本、翻译、格式输出标题和副标题) 。
+ - `AdvancedAudio` -使用 "仅音频" 索引和提取见解 (忽略视频) ，包括高级音频功能 (音频事件检测) 以及标准音频分析。
 
 > [!NOTE]
 > 视频索引器最多包含两个音频轨道。 如果文件中有更多的音频曲目，它们将被视为一个轨迹。<br/>
 如果要单独为曲目编制索引，则需要提取相关音频文件并将其作为索引 `AudioOnly` 。
 
-价格取决于所选索引编制选项。  
+价格取决于所选索引编制选项。 有关详细信息，请参阅 [媒体服务定价](https://azure.microsoft.com/pricing/details/media-services/)。
 
 #### <a name="priority"></a>priority
 

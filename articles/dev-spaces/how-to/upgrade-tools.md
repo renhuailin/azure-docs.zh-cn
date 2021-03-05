@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.custom: devx-track-azurecli
 description: 了解如何升级 Azure Dev Spaces 命令行工具、Visual Studio Code 扩展和 Visual Studio 扩展
 keywords: Docker, Kubernetes, Azure, AKS, Azure 容器服务, 容器
-ms.openlocfilehash: 2c2878f71deedd8df39316290735df734b97b92a
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: f17643e6130abbc9d5da8b484144c95b0e803f33
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91960280"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102199231"
 ---
 # <a name="how-to-upgrade-azure-dev-spaces-tools"></a>如何升级 Azure Dev Spaces 工具
 
@@ -23,7 +23,7 @@ ms.locfileid: "91960280"
 
 更新最新的 Azure CLI 时，还可以获取最新版本的 Dev Spaces CLI 扩展。
 
-无需卸载以前的版本，只需在 [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) 查找相应的下载。
+无需卸载以前的版本，只需在 [Azure CLI](/cli/azure/install-azure-cli) 查找相应的下载。
 
 
 ## <a name="update-the-dev-spaces-cli-extension-and-command-line-tools"></a>更新 Dev Spaces CLI 扩展和命令行工具

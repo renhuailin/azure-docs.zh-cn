@@ -5,12 +5,12 @@ ms.date: 09/25/2019
 ms.topic: troubleshooting
 description: 了解如何排查和解决在启用和使用 Azure Dev Spaces 时遇到的常见问题
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s '
-ms.openlocfilehash: bf8c4d2040445fa3417fce02fb4b66216b21f3b5
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 14ced0c66b42b6f18c946d0c75091be1af5598f5
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96548862"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197786"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Azure Dev Spaces 故障排除
 
@@ -26,7 +26,7 @@ ms.locfileid: "96548862"
 
 对于 Visual Studio，请将 `MS_VS_AZUREDEVSPACES_TOOLS_LOGGING_ENABLED` 环境变量设置为 1。 请务必重新启动 Visual Studio 以使环境变量生效。 启用后，详细日志将写入到 `%TEMP%\Microsoft.VisualStudio.Azure.DevSpaces.Tools` 目录。
 
-在 CLI 中，可以通过使用 `--verbose` 切换在命令执行过程中输出更多信息。 还可以在 `%TEMP%\Azure Dev Spaces` 中浏览更详细的日志。 在 Mac 上，可以通过在终端窗口中运行 `echo $TMPDIR` 来找到 TEMP 目录。 在 Linux 计算机上，TEMP 目录通常为 `/tmp`。 此外，还请验证是否已在 [Azure CLI 配置文件](/cli/azure/azure-cli-configuration?view=azure-cli-latest#cli-configuration-values-and-environment-variables)中启用了日志记录。
+在 CLI 中，可以通过使用 `--verbose` 切换在命令执行过程中输出更多信息。 还可以在 `%TEMP%\Azure Dev Spaces` 中浏览更详细的日志。 在 Mac 上，可以通过在终端窗口中运行 `echo $TMPDIR` 来找到 TEMP 目录。 在 Linux 计算机上，TEMP 目录通常为 `/tmp`。 此外，还请验证是否已在 [Azure CLI 配置文件](/cli/azure/azure-cli-configuration#cli-configuration-values-and-environment-variables)中启用了日志记录。
 
 Azure Dev Spaces 在调试单个实例或 Pod 时也能发挥最佳效果。 `azds.yaml` 文件包含 replicaCount 设置，它指明了 Kubernetes 针对服务运行的 Pod 数。 如果你通过更改 replicaCount 将应用程序配置为针对给定服务运行多个 Pod，调试程序会附加到按字母顺序列出的第一个 Pod。 如果回收原始 Pod，调试程序会附加到其他 pod，这可能会导致意外行为发生。
 
@@ -91,7 +91,7 @@ azure-cli                         2.0.60 *
 
 尽管在使用低于版本 2.0.63 的 Azure CLI 运行 `az aks use-dev-spaces` 时看到此错误消息，但安装还是成功了。 可以继续毫无问题地使用 `azds`。
 
-若要修复此问题，请将 [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) 安装更新为 2.0.63 或更高版本。 在执行此更新后，就不会在运行 `az aks use-dev-spaces` 时看到这一错误消息了。 或者，也可以继续使用当前版本的 Azure CLI 和 Azure Dev Spaces CLI。
+若要修复此问题，请将 [Azure CLI](/cli/azure/install-azure-cli) 安装更新为 2.0.63 或更高版本。 在执行此更新后，就不会在运行 `az aks use-dev-spaces` 时看到这一错误消息了。 或者，也可以继续使用当前版本的 Azure CLI 和 Azure Dev Spaces CLI。
 
 ### <a name="error-unable-to-reach-kube-apiserver"></a>错误“无法访问 kube-apiserver”
 

@@ -25,7 +25,7 @@ ms.locfileid: "91812647"
    * **名称** - 输入要用于称呼虚拟中心的名称。
    * **中心专用地址空间** - 用 CIDR 表示法来表示的中心地址范围。
 
-   :::image type="content" source="media/virtual-wan-p2s-hub/create-hub.jpg" alt-text="新中心":::
+   :::image type="content" source="media/virtual-wan-p2s-hub/create-hub.jpg" alt-text="创建虚拟中心":::
 
 1. 在“点到站点”选项卡上填写以下字段：
 
@@ -34,7 +34,7 @@ ms.locfileid: "91812647"
    * **客户端地址池** - 用于远程用户。
    * **自定义 DNS 服务器 IP**。
 
-   :::image type="content" source="media/virtual-wan-p2s-hub/hub-with-p2s.png" alt-text="新中心":::
+   :::image type="content" source="media/virtual-wan-p2s-hub/hub-with-p2s.png" alt-text="包含点到站点的中心":::
 
 1. 选择“查看 + 创建”。
 1. 在“验证已通过”页上，选择“创建” 。

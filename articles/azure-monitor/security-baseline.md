@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: eba05ce7e7575ec773a4796d87bdd82168fe5b1d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 39dff9b48fb292d8a1c145ae3e592786ddb027a4
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101725611"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102198823"
 ---
 # <a name="azure-security-baseline-for-azure-monitor"></a>适用于 Azure Monitor 的 Azure 安全基线
 
@@ -431,9 +431,9 @@ Application Insights 和 Log Analytics 仍将允许引入 TLS 1.1 和 TLS 1.0 �
 
 **指导**：使用 Azure CLI 查询和发现订阅中的 Azure Monitor 资源。 确保租户中具有适当的（读取）权限，并枚举所有 Azure 订阅以及订阅中的资源。
 
-- [Azure Monitor CLI](https://docs.microsoft.com/cli/azure/monitor?view=azure-cli-latest&amp;preserve-view=true)
+- [Azure Monitor CLI](https://docs.microsoft.com/cli/azure/monitor)
 
-- [如何查看 Azure 订阅](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-4.8.0&amp;preserve-view=true)
+- [如何查看 Azure 订阅](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-4.8.0&preserve-view=true)
 
 - [了解 Azure RBAC](../role-based-access-control/overview.md)
 

@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 11/18/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: d25a429873ccf8b546c0919456c97e64445f184c
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: 40cf83b0ca9e4c794979f2b20ddb73360758abc5
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99071692"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102198534"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-apis-and-cli"></a>在 Azure 数字孪生中管理终结点和路由 (Api 和 CLI) 
 
@@ -48,7 +48,7 @@ ms.locfileid: "99071692"
 
 ### <a name="create-the-endpoint"></a>创建终结点
 
-创建终结点资源后，可将其用于 Azure 数字孪生终结点。 下面的示例演示如何使用适用于[Azure 数字孪生 CLI](how-to-use-cli.md)的[az dt endpoint create](/cli/azure/ext/azure-iot/dt/endpoint/create?view=azure-cli-latest&preserve-view=true)命令创建终结点。 将命令中的占位符替换为你自己的资源的详细信息。
+创建终结点资源后，可将其用于 Azure 数字孪生终结点。 下面的示例演示如何使用适用于[Azure 数字孪生 CLI](how-to-use-cli.md)的[az dt endpoint create](/cli/azure/ext/azure-iot/dt/endpoint/create)命令创建终结点。 将命令中的占位符替换为你自己的资源的详细信息。
 
 创建事件网格端点：
 
@@ -119,7 +119,7 @@ az resource create --id <Azure-Digital-Twins-instance-Azure-resource-ID>/endpoin
     
 #### <a name="create-the-dead-letter-endpoint"></a>创建死信终结点
 
-若要创建启用了死信的终结点，请将以下死信参数添加到[Azure 数字孪生 CLI](how-to-use-cli.md)的[az dt endpoint create](/cli/azure/ext/azure-iot/dt/endpoint/create?view=azure-cli-latest&preserve-view=true)命令。
+若要创建启用了死信的终结点，请将以下死信参数添加到[Azure 数字孪生 CLI](how-to-use-cli.md)的[az dt endpoint create](/cli/azure/ext/azure-iot/dt/endpoint/create)命令。
 
 参数的值是由 [上一部分](#set-up-storage-resources)收集的存储帐户名称、容器名称和 SAS 令牌组成的 **死信 SAS URI** 。 此参数创建具有基于密钥的身份验证的终结点。
 
@@ -204,7 +204,7 @@ az resource create --id <Azure-Digital-Twins-instance-Azure-resource-ID>/endpoin
 
 一个路由应该允许选择多个通知和事件类型。 
 
-可以通过 Azure 数字孪生 [ **EventRoutes** 数据平面 api](/rest/api/digital-twins/dataplane/eventroutes)或 [ **az dt route** CLI 命令](/cli/azure/ext/azure-iot/dt/route?view=azure-cli-latest&preserve-view=true)创建事件路由。 本部分的其余部分将演练创建过程。
+可以通过 Azure 数字孪生 [ **EventRoutes** 数据平面 api](/rest/api/digital-twins/dataplane/eventroutes)或 [ **az dt route** CLI 命令](/cli/azure/ext/azure-iot/dt/route)创建事件路由。 本部分的其余部分将演练创建过程。
 
 ### <a name="create-routes-with-the-apis-and-c-sdk"></a>通过 Api 和 c # SDK 创建路由
 
@@ -225,7 +225,7 @@ az resource create --id <Azure-Digital-Twins-instance-Azure-resource-ID>/endpoin
 
 ### <a name="create-routes-with-the-cli"></a>用 CLI 创建路由
 
-还可以使用 Azure 数字孪生 CLI 的 [az dt 路由](/cli/azure/ext/azure-iot/dt/route?view=azure-cli-latest&preserve-view=true) 命令管理路由。 
+还可以使用 Azure 数字孪生 CLI 的 [az dt 路由](/cli/azure/ext/azure-iot/dt/route) 命令管理路由。 
 
 有关使用 CLI 以及哪些命令可用的详细信息，请参阅 [*操作方法：使用 Azure 数字孪生 CLI*](how-to-use-cli.md)。
 
