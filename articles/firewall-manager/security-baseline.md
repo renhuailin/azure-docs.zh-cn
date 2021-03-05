@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/24/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: ec746a5c347db8cb92c95b1d76f3622498f0039f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: bec5cafaf7d506d9ab25228c680d00af91dbf3d0
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101742375"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102200132"
 ---
 # <a name="azure-security-baseline-for-azure-firewall-manager"></a>适用于 Azure 防火墙管理器的 Azure 安全基线
 
@@ -338,7 +338,7 @@ Azure 防火墙管理器支持使用 TLS 1.2 或更高版本进行的传输中�
 
 **指导**：当不再需要 Azure 防火墙管理器资源时，请将其删除以最大限度地减小攻击面。 用户可以通过 Azure 门户、CLI 或 REST API 来管理其 Azure 防火墙管理器资源。
 
-- [Azure 防火墙策略 CLI](/cli/azure/ext/azure-firewall/network/firewall/policy?preserve-view=true&view=azure-cli-latest)
+- [Azure 防火墙策略 CLI](/cli/azure/ext/azure-firewall/network/firewall/policy)
 
 - [Azure 网络 CLI](/powershell/module/az.network/?preserve-view=true&view=azps-5.1.0#networking)
 
@@ -557,7 +557,7 @@ Azure 安全中心为每条警报分配严重性，方便你根据优先级来�
 
 - [Azure 防火墙策略模板参考](/azure/templates/microsoft.network/firewallpolicies)
 
-- [Azure 防火墙策略 CLI](/cli/azure/ext/azure-firewall/network/firewall/policy?preserve-view=true&view=azure-cli-latest)
+- [Azure 防火墙策略 CLI](/cli/azure/ext/azure-firewall/network/firewall/policy)
 
 - [企业级缩放登陆区域中护栏实现的插图](/azure/cloud-adoption-framework/ready/enterprise-scale/architecture#landing-zone-expanded-definition)
 

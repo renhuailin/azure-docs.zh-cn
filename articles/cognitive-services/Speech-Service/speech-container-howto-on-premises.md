@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/30/2020
 ms.author: aahi
-ms.openlocfilehash: c3791a9049a3eab3ddd6fc70073629c38830dbc7
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 78ac9ae4aa8611f50caa94c84d3e6c95e58fc91c
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "96002252"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102200727"
 ---
 # <a name="use-speech-service-containers-with-kubernetes-and-helm"></a>在 Kubernetes 和 Helm 中使用语音服务容器
 
@@ -27,7 +27,7 @@ ms.locfileid: "96002252"
 
 | 必须 | 目的 |
 |----------|---------|
-| Azure 帐户 | 如果没有 Azure 订阅，请在开始之前先创建一个[免费帐户][free-azure-account]。 |
+| Azure 帐户 | 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户][free-azure-account]。 |
 | 容器注册表访问权限 | Kubernetes 需要有权访问容器注册表才能将 Docker 映像提取到群集中。 |
 | Kubernetes CLI | 需要使用 [Kubernetes CLI][kubernetes-cli] 来管理容器注册表中的共享凭据。 在安装 Helm（Kubernetes 包管理器）之前，也需要有 Kubernetes。 |
 | Helm CLI | 安装 [Helm CLI][helm-install]，它可用于安装 Helm 图表（容器包定义）。 |
@@ -229,7 +229,7 @@ Helm 图表是分层的。 分层结构可以实现图表继承，同时还与�
 <!-- LINKS - external -->
 [free-azure-account]: https://azure.microsoft.com/free
 [git-download]: https://git-scm.com/downloads
-[azure-cli]: /cli/azure/install-azure-cli?view=azure-cli-latest
+[azure-cli]: /cli/azure/install-azure-cli
 [docker-engine]: https://www.docker.com/products/docker-engine
 [kubernetes-cli]: https://kubernetes.io/docs/tasks/tools/install-kubectl
 [helm-install]: https://helm.sh/docs/intro/install/

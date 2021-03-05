@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 3/18/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 995ae176a8eec58f8dc9522e6fac6fd78170014d
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 4a874e6f1e026a1888b9039799be71c95f040ac6
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94628911"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102202342"
 ---
 # <a name="migrate-to-azure-file-shares"></a>迁移到 Azure 文件共享
 
@@ -35,7 +35,7 @@ Azure 有多种可用的云存储类型。 文件迁移到 Azure 的一个重要
 下面是文件的两个基本组件：
 
 - **数据流：文件** 的数据流存储文件内容。
-- **文件元数据** ：文件元数据具有以下子组件：
+- **文件元数据**：文件元数据具有以下子组件：
    * 文件属性，如只读
    * 文件权限，可称为 *NTFS 权限* 或 *文件和文件夹 acl*
    * 时间戳，最值得注意的是创建和上次修改的时间戳
@@ -111,7 +111,7 @@ Microsoft 和其他工具提供了多个文件复制工具。 若要为迁移方
 
     首次运行该工具时，它会复制大量数据。 此初始运行可能会持续一段时间。 它通常比您为业务流程使数据源脱机所需的时间要长。
 
-    通过将源镜像到目标 (与 **robocopy/MIR** ) 一样，你可以在该相同源和目标上再次运行该工具。 运行速度要快得多，因为它只需要传输在上一次运行之后发生的源更改。 通过这种方式重新运行复制工具可显著减少停机时间。
+    通过将源镜像到目标 (与 **robocopy/MIR**) 一样，你可以在该相同源和目标上再次运行该工具。 运行速度要快得多，因为它只需要传输在上一次运行之后发生的源更改。 通过这种方式重新运行复制工具可显著减少停机时间。
 
 下表对 Microsoft 工具及其当前适用于 Azure 文件共享的适用性进行分类：
 
@@ -153,4 +153,4 @@ Azure 文件同步 (文件和) 文件夹的数目，而不是总存储量。 Dat
 
 * [Azure 文件共享概述](storage-files-introduction.md)
 * [规划 Azure 文件同步部署](storage-sync-files-planning.md)
-* [Azure 文件同步：云分层](storage-sync-cloud-tiering.md)
+* [Azure 文件同步：云分层](storage-sync-cloud-tiering-overview.md)

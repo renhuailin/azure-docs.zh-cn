@@ -3,21 +3,25 @@ title: 使用 Azure CLI 配置 Azure 映像生成器服务权限
 description: 使用 Azure CLI 配置 Azure VM 映像生成器服务的要求，包括权限和特权
 author: cynthn
 ms.author: danis
-ms.date: 03/02/2021
+ms.date: 04/02/2021
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: image-builder
 ms.collection: linux
-ms.openlocfilehash: f9b60af2c9fe16f834ce3098266c03afe2b99667
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 4b6154a18cf4e08bf59dad91350160a1f83c49ed
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101695424"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102201475"
 ---
 # <a name="configure-azure-image-builder-service-permissions-using-azure-cli"></a>使用 Azure CLI 配置 Azure 映像生成器服务权限
 
-Azure 映像生成器服务需要在生成映像之前配置权限和特权。 以下部分详细说明了如何使用 Azure CLI 配置可能的方案。
+注册 (AIB) 时，这会授予 AIB 服务创建、管理和删除暂存资源组 (IT_*) 以及向其添加资源的权限，映像生成需要这些权限。 这是通过在成功注册期间在订阅中提供的 AIB 服务主体名称 (SPN) 来实现的。
+
+若要允许 Azure VM 映像生成器将映像分发到托管映像或共享映像库，则需要创建一个拥有读取和写入映像权限的 Azure 用户分配的标识。 如果要访问 Azure 存储，则这将需要权限才能读取私有或公共容器。
+
+在生成映像之前，必须设置权限和特权。 以下部分详细说明了如何使用 Azure CLI 配置可能的方案。
 
 > [!IMPORTANT]
 > Azure 映像生成器目前提供公共预览版。

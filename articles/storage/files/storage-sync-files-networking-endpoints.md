@@ -8,12 +8,12 @@ ms.date: 5/11/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 64d66e1b9eab225b38ee21306fea6f9534a708f3
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: f307380114acd4f98d68b580333c4dccc2a7340b
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98673836"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102201594"
 ---
 # <a name="configuring-azure-file-sync-network-endpoints"></a>配置 Azure 文件同步网络终结点
 Azure 文件存储和 Azure 文件同步提供两种主要类型的终结点用于访问 Azure 文件共享： 
@@ -125,7 +125,7 @@ Address: 192.168.0.5
 
 ---
 
-### <a name="create-the-storage-sync-private-endpoint"></a>创建存储同步专用终结点
+### <a name="create-the-storage-sync-service-private-endpoint"></a>创建存储同步服务专用终结点
 > [!Important]  
 > 为了使用存储同步服务资源上的专用终结点，必须使用 Azure 文件同步代理 10.1 或更高版本。 10.1 之前的代理版本不支持存储同步服务上的专用终结点。 所有以前的代理版本都支持存储帐户资源上的专用终结点。
 
@@ -597,19 +597,44 @@ Azure 文件同步让你可限制为，仅通过专用终结点访问特定的�
 $storageSyncServiceResourceGroupName = "<storage-sync-service-resource-group>"
 $storageSyncServiceName = "<storage-sync-service>"
 
-$storageSyncService = Get-AzResource `
-        -ResourceGroupName $storageSyncServiceResourceGroupName `
-        -ResourceName $storageSyncServiceName `
-        -ResourceType "Microsoft.StorageSync/storageSyncServices"
-
-$storageSyncService.Properties.incomingTrafficPolicy = "AllowVirtualNetworksOnly"
-$storageSyncService = $storageSyncService | Set-AzResource -Confirm:$false -Force -UsePatchSemantics
+Set-AzStorageSyncService `
+    -ResourceGroupName $storageSyncServiceResourceGroupName `
+    -Name $storageSyncServiceName `
+    -IncomingTrafficPolicy AllowVirtualNetworksOnly
 ```
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 Azure CLI 不支持在 `incomingTrafficPolicy` 存储同步服务上设置属性。 请选择 "Azure PowerShell" 选项卡，以获取有关如何禁用存储同步服务公共终结点的说明。
 
 ---
+
+## <a name="azure-policy"></a>Azure Policy
+Azure 策略可帮助实施组织标准并根据这些标准大规模评估符合性。 Azure 文件和 Azure 文件同步公开几个有用的审核和修正网络策略，这些策略可帮助你监视和自动执行部署。
+
+策略审核您的环境，并在您的存储帐户或存储同步服务与定义的行为分离时向您发出警报。 例如，如果在策略设置为禁用公共终结点时启用了公共终结点，则为。 修改/部署策略会进一步并主动修改资源 (例如存储同步服务) 或部署资源 (如专用终结点) ，以与策略一致。
+
+以下预定义策略可用于 Azure 文件和 Azure 文件同步：
+
+| 操作 | 服务 | 条件 | 策略名称 |
+|-|-|-|-|
+| 审核 | Azure 文件 | 已启用存储帐户的公共终结点。 有关详细信息，请参阅 [禁止访问存储帐户公共终结点](#disable-access-to-the-storage-account-public-endpoint) 。 | 存储帐户应限制网络访问 |
+| 审核 | Azure 文件同步 | 已启用存储同步服务的公共终结点。 有关详细信息，请参阅 [禁用对存储同步服务公共终结点的访问权限](#disable-access-to-the-storage-sync-service-public-endpoint) 。 | 应为 Azure 文件同步禁用公共网络访问 |
+| 审核 | Azure 文件 | 存储帐户需要至少一个专用终结点。 有关详细信息，请参阅 [创建存储帐户专用终结点](#create-the-storage-account-private-endpoint) 。 | 存储帐户应使用专用链接连接 |
+| 审核 | Azure 文件同步 | 存储同步服务至少需要一个专用终结点。 有关详细信息，请参阅 [创建存储同步服务专用终结点](#create-the-storage-sync-service-private-endpoint) 。 | Azure 文件同步应使用专用链接 |
+| 修改 | Azure 文件同步 | 禁用存储同步服务的公共终结点。 | 修改-配置 Azure 文件同步以禁用公共网络访问 |
+| 部署 | Azure 文件同步 | 为存储同步服务部署专用终结点。 | 配置具有专用终结点的 Azure 文件同步 |
+| 部署 | Azure 文件同步 | 将 A 记录部署到 privatelink.afs.azure.net DNS 区域。 | 将 Azure 文件同步配置为使用专用 DNS 区域 |
+
+### <a name="set-up-a-private-endpoint-deployment-policy"></a>设置专用终结点部署策略
+若要设置专用终结点部署策略，请参阅 " [Azure 门户](https://portal.azure.com/)"，然后搜索 " **策略**"。 Azure 策略中心应是最重要的结果。 导航到  >  策略中心目录中的 "创作 **定义**"。 生成的 **定义** 窗格包含跨所有 Azure 服务的预定义策略。 若要查找特定策略，请在类别筛选器中选择 " **存储** " 类别，或搜索 " **配置具有专用终结点的 Azure 文件同步**"。 选择 " **...** "， **然后从** 定义创建新策略。
+
+使用 "**分配策略** 向导" 的 "**基本** 信息" 边栏选项卡，可以设置作用域、资源或资源组排除列表，并为策略提供一个友好名称以帮助你将其区分开来。 无需修改这些策略即可正常运行，但可以进行修改。 选择 " **下一步** " 转到 " **参数** " 页。 
+
+在 "**参数**" 边栏选项卡中，选择 " **privateEndpointSubnetId** " 下拉列表旁边的 " **...** "，以选择要在其中部署你的存储同步服务资源的专用终结点的虚拟网络和子网。 生成的向导可能需要几秒钟才能加载订阅中的可用虚拟网络。 选择适合你的环境的虚拟网络/子网，并单击 " **选择**"。 选择 " **下一步** " 以转到 " **更新** " 边栏选项卡。
+
+若要在找不到专用终结点的存储同步服务的情况下部署专用终结点，则必须在 "**修正**" 页上选择 "**创建修正任务**"。 最后，选择 " **查看** " 和 "创建" 以查看策略分配并 **创建** 它。
+
+生成的策略分配将定期执行，并且在创建后可能不会立即运行。
 
 ## <a name="see-also"></a>另请参阅
 - [规划 Azure 文件同步部署](storage-sync-files-planning.md)

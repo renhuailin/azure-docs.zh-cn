@@ -3,12 +3,12 @@ title: 更新容器组
 description: 了解如何更新 Azure 容器实例容器组中正在运行的容器。
 ms.topic: article
 ms.date: 04/17/2020
-ms.openlocfilehash: cfc27de8caae98dd1c3065b5ed06433c4baaa5d2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fb31eeda83532c408a303e879439006bcd7d4e45
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82928714"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102200642"
 ---
 # <a name="update-containers-in-azure-container-instances"></a>更新 Azure 容器实例中的容器
 
@@ -78,7 +78,7 @@ az container create --resource-group myResourceGroup --name mycontainer \
 
 ## <a name="next-steps"></a>后续步骤
 
-本文中多次提到了**容器组**。 Azure 容器实例中的每个容器部署在容器组中，容器组可以包含多个容器。
+本文中多次提到了 **容器组**。 Azure 容器实例中的每个容器部署在容器组中，容器组可以包含多个容器。
 
 [Azure 容器实例中的容器组](./container-instances-container-groups.md)
 
@@ -89,6 +89,6 @@ az container create --resource-group myResourceGroup --name mycontainer \
 <!-- LINKS - External -->
 
 <!-- LINKS - Internal -->
-[az-container-create]: /cli/azure/container?view=azure-cli-latest#az-container-create
+[az-container-create]: /cli/azure/container#az-container-create
 [azure-cli-install]: /cli/azure/install-azure-cli
 [az-container-export]: /cli/azure/container#az-container-export

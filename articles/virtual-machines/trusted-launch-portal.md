@@ -7,14 +7,14 @@ ms.reviewer: cynthn
 ms.service: virtual-machines
 ms.subservice: security
 ms.topic: how-to
-ms.date: 03/02/2021
+ms.date: 03/03/2021
 ms.custom: template-how-to
-ms.openlocfilehash: f8a6758cdf0a6da709a564c1e17c56a2fe5625b0
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: fca11ce1cfa09fb680c2b288e40fa5f51337bdb8
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102124646"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102200778"
 ---
 # <a name="deploy-a-vm-with-trusted-launch-enabled-preview"></a>使用启用了可信启动 (预览部署 VM) 
 
@@ -37,7 +37,7 @@ ms.locfileid: "102124646"
 1. 在 " **虚拟机** " 页上，选择 " **添加**"，然后选择 " **虚拟机**"。
 1. 在 " **项目详细信息**" 下，确保选择了正确的订阅。
 1. 在 " **资源组**" 下，选择 " **新建** " 并键入资源组的名称，或从下拉列表中选择现有的资源组。
-1. 在 " **实例详细信息**" 下，键入虚拟机名称的名称，并选择支持可信启动的区域。
+1. 在 " **实例详细信息**" 下，键入虚拟机名称的名称，并选择支持 [可信启动](trusted-launch.md#public-preview-limitations)的区域。
 1. 在 " **映像**" 下，选择 [支持可信启动的映像](trusted-launch.md#public-preview-limitations)。 你可能只能看到映像的第1代版本，那就可以继续下一步。
 1. 通过在页面顶部选择 "高级" 选项卡切换到 " **高级** " 选项卡。
 1. 向下滚动到 " **VM 生成** " 部分，然后选择 " **第2代**"。
@@ -140,7 +140,7 @@ ls: cannot access '/dev/tpm0': No such file or directory
 
 在某些情况下，可能需要为 UEFI 安全启动签名。  例如，你可能需要了解如何对 Ubuntu [的安全启动进行签名](https://ubuntu.com/blog/how-to-sign-things-for-secure-boot) 。 在这些情况下，需要输入 VM 的 MOK 实用程序注册密钥。 要执行此操作，需要使用 Azure 串行控制台来访问 MOK 实用程序。
 
-1. 启用适用于 Linux 的 Azure 串行控制台。
+1. 启用适用于 Linux 的 Azure 串行控制台。 有关详细信息，请参阅 [适用于 Linux 的串行控制台](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/serial-console-linux)。
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 1. 搜索 " **虚拟机** "，并从列表中选择你的 VM。
 1. 在左侧菜单中的 " **支持 + 故障排除**" 下，选择 **串行控制台**。 将使用串行控制台向右打开一个页面。

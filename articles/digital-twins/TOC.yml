@@ -168,7 +168,7 @@
             - name: Python SDK
               href: /python/api/azure-digitaltwins-core/azure.digitaltwins.core?view=azure-python
     - name: 数字孪生 CLI
-      href: /cli/azure/ext/azure-iot/dt?view=azure-cli-latest&preserve-view=true
+      href: /cli/azure/ext/azure-iot/dt
 - name: 资源
   items:
     - name: 数字孪生服务限制

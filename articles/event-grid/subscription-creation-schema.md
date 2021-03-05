@@ -3,12 +3,12 @@ title: Azure 事件网格订阅架构
 description: 本文介绍使用 Azure 事件网格订阅事件的属性。 事件网格订阅架构。
 ms.topic: reference
 ms.date: 07/07/2020
-ms.openlocfilehash: 21016627e545cc4935b4ac213df675e894c12d95
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f6e33171cbba65cfeaca49ab6a8954be8bb89acb
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86119066"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102199945"
 ---
 # <a name="event-grid-subscription-schema"></a>事件网格订阅架构
 
@@ -25,13 +25,13 @@ PUT /subscriptions/{subscription-id}/resourceGroups/examplegroup/providers/Micro
 ``` 
 
 事件订阅名称的长度必须为 3-64 个字符，并且只能包含 a-z、A-Z、0-9 和“-”。 本文介绍请求正文的属性和架构。
- 
+ 
 ## <a name="event-subscription-properties"></a>事件订阅属性
 
-| properties | 类型 | 说明 |
+| properties | 类型 | 描述 |
 | -------- | ---- | ----------- |
-| 目标 | 对象 (object) | 定义终结点的对象。 |
-| filter | 对象 (object) | 用于筛选事件类型的可选字段。 |
+| destination | 对象 | 定义终结点的对象。 |
+| filter | 对象 | 用于筛选事件类型的可选字段。 |
 
 ### <a name="destination-object"></a>目标对象
 
@@ -48,6 +48,7 @@ PUT /subscriptions/{subscription-id}/resourceGroups/examplegroup/providers/Micro
 | subjectBeginsWith | 字符串 | 事件消息中使用者字段的前缀匹配筛选器。 默认或空字符串匹配所有类型。 | 
 | subjectEndsWith | 字符串 | 事件消息中使用者字段的后缀匹配筛选器。 默认或空字符串匹配所有类型。 |
 | isSubjectCaseSensitive | 字符串 | 用于筛选器的区分大小写匹配的控件。 |
+| enableAdvancedFilteringOnArrays | boolean | 支持在高级筛选中对键使用数组。 有关详细信息，请参阅 [高级筛选](event-filtering.md#advanced-filtering)。 |
 
 
 ## <a name="example-subscription-schema"></a>订阅架构示例

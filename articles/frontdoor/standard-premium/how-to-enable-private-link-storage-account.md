@@ -8,12 +8,12 @@ ms.service: frontdoor
 ms.topic: how-to
 ms.date: 03/04/2021
 ms.author: tyao
-ms.openlocfilehash: 885582481e3783bdd4fbad40a24499f42a40ce24
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 885b4d132208ab6f8b470d147438e26a5fd4bab7
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/05/2021
-ms.locfileid: "102193396"
+ms.locfileid: "102201662"
 ---
 # <a name="connect-azure-front-door-premium-to-a-storage-account-origin-with-private-link"></a>使用专用链接将 Azure 前门 Premium 连接到存储帐户源
 
@@ -23,7 +23,7 @@ ms.locfileid: "102193396"
 
 登录 [Azure 门户](https://portal.azure.com)。
 
-## <a name="enable-private-link-to-a-storage-account-in-azure-front-door-premium"></a>在 Azure 前门 Premium 中启用到存储帐户的专用链接
+## <a name="enable-private-link-to-a-storage-account"></a>启用到存储帐户的专用链接
  
 在本部分中，将专用链接服务映射到在 Azure 前门专用网络中创建的专用终结点。 
 
@@ -47,7 +47,7 @@ ms.locfileid: "102193396"
 
 1. 然后选择 " **添加** " 以保存配置。
 
-## <a name="approve-azure-front-door-premium-private-endpoint-connection-from-the-storage-account"></a>从存储帐户批准 Azure 前门高级专用终结点连接
+## <a name="approve-private-endpoint-connection-from-the-storage-account"></a>从存储帐户批准专用终结点连接
 
 1. 在上一节中，请前往你为其配置专用链接的存储帐户。 选择 "**设置**" 下的 "**网络**"。
 

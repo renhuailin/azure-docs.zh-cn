@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/01/2020
 ms.author: duau
-ms.openlocfilehash: a5d51a77b1da0ae44c76d0187113105c4e53c9b4
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: f894fd5ca7bb98c48b106c13b8fe6130b2c76c6e
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92279224"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102201050"
 ---
 # <a name="tutorial-quickly-scale-and-protect-a-web-application-by-using-azure-front-door-and-azure-web-application-firewall-waf"></a>教程：使用 Azure Front Door 和 Azure Web 应用程序防火墙 (WAF) 快速缩放和保护 Web 应用程序
 
@@ -36,7 +36,7 @@ ms.locfileid: "92279224"
 
 ## <a name="prerequisites"></a>先决条件
 
-- 本教程中的说明使用 Azure CLI。 [查看本指南](/cli/azure/get-started-with-azure-cli?preserve-view=true&view=azure-cli-latest)以开始使用 Azure CLI。
+- 本教程中的说明使用 Azure CLI。 [查看本指南](/cli/azure/get-started-with-azure-cli)以开始使用 Azure CLI。
 
   > [!TIP] 
   > 快速且轻松地开始使用 Azure CLI 的方法是利用 [Azure Cloud Shell 中的 Bash](../cloud-shell/quickstart.md)。
@@ -48,7 +48,7 @@ ms.locfileid: "92279224"
    ```
 
 > [!NOTE] 
-> 有关本教程中使用的命令的详细信息，请参阅 [适用于 Azure Front Door 的 Azure CLI 参考](/cli/azure/ext/front-door/?preserve-view=true&view=azure-cli-latest)。
+> 有关本教程中使用的命令的详细信息，请参阅 [适用于 Azure Front Door 的 Azure CLI 参考](/cli/azure/ext/front-door)。
 
 ## <a name="create-an-azure-front-door-resource"></a>创建 Azure Front Door 资源
 
@@ -144,7 +144,7 @@ Web 应用的自定义域名是客户用来引用应用程序的域名。 例如
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果不再需要本教程中使用的资源，请使用 [az group delete](/cli/azure/group?view=azure-cli-latest#az-group-delete&preserve-view=true) 命令删除资源组、Front Door 和 WAF 策略：
+如果不再需要本教程中使用的资源，请使用 [az group delete](/cli/azure/group#az-group-delete) 命令删除资源组、Front Door 和 WAF 策略：
 
 ```azurecli-interactive
   az group delete \

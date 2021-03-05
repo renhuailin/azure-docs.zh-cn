@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/20/2020
 ms.author: mbaldwin
 ms.custom: mvc, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: e69e5d9b94a47bf7db21ef3732a4ddcba7c2cf5c
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 5d78299c4583251180b3fb9a902561406b849b4a
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/05/2021
-ms.locfileid: "102181544"
+ms.locfileid: "102201169"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-virtual-machine-in-net"></a>教程：将 Azure Key Vault 与通过 .NET 编写的虚拟机配合使用
 
@@ -42,7 +42,7 @@ Azure Key Vault 可以帮助保护机密，例如访问应用程序、服务和 
 对于 Windows、Mac 和 Linux：
   * [Git](https://git-scm.com/downloads)
   * [.NET Core 3.1 SDK 或更高版本](https://dotnet.microsoft.com/download/dotnet-core/3.1)。
-  * [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。
+  * [Azure CLI](/cli/azure/install-azure-cli)。
 
 ## <a name="create-resources-and-assign-permissions"></a>创建资源并分配权限
 
@@ -74,7 +74,7 @@ az login
 | [Azure 门户](../../virtual-machines/windows/quick-create-portal.md) | [Azure 门户](../../virtual-machines/linux/quick-create-portal.md) |
 
 ## <a name="assign-an-identity-to-the-vm"></a>为 VM 分配标识
-使用 [az vm identity assign](/cli/azure/vm/identity?view=azure-cli-latest#az-vm-identity-assign) 命令为虚拟机创建系统分配的标识：
+使用 [az vm identity assign](/cli/azure/vm/identity#az-vm-identity-assign) 命令为虚拟机创建系统分配的标识：
 
 ```azurecli
 az vm identity assign --name <NameOfYourVirtualMachine> --resource-group <YourResourceGroupName>
@@ -90,7 +90,7 @@ az vm identity assign --name <NameOfYourVirtualMachine> --resource-group <YourRe
 ```
 
 ## <a name="assign-permissions-to-the-vm-identity"></a>为 VM 标识分配权限
-使用 [az keyvault set-policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) 命令将以前创建的标识权限分配给密钥保管库：
+使用 [az keyvault set-policy](/cli/azure/keyvault#az-keyvault-set-policy) 命令将以前创建的标识权限分配给密钥保管库：
 
 ```azurecli
 az keyvault set-policy --name '<your-unique-key-vault-name>' --object-id <VMSystemAssignedIdentity> --secret-permissions get list

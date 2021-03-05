@@ -9,12 +9,12 @@ ms.service: industrial-iot
 ms.custom: devx-track-azurecli
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 1c12b1c7fd393227cb22d011f8b88f914cfded59
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 38235f9b01b321e27664ee837763732971f0b85c
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96445495"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102201492"
 ---
 # <a name="deploy-opc-twin-module-and-dependencies-from-scratch"></a>从头开始部署 OPC 克隆模块和依赖项
 
@@ -182,7 +182,7 @@ OPC 克隆模块在 IoT Edge 上运行，并向 OPC 设备克隆和注册表服�
 
 ### <a name="prerequisites"></a>先决条件
 
-1. 从[此处](/cli/azure/install-azure-cli?view=azure-cli-latest)安装最新版本的[Azure 命令行界面 (AZ) ](/cli/azure/?view=azure-cli-latest) 。
+1. 从[此处](/cli/azure/install-azure-cli)安装最新版本的[Azure 命令行界面 (AZ) ](/cli/azure/) 。
 
 ### <a name="quickstart"></a>快速入门
 

@@ -8,12 +8,12 @@ ms.date: 01/29/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 65293df5fae523bff36240273afb93c4dd8485df
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 197bd1ab63093a18bd7838349acb3aed11a98e16
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99219470"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102202376"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>规划 Azure 文件同步部署
 
@@ -30,7 +30,7 @@ ms.locfileid: "99219470"
 
 文件将存储在云中的 [Azure 文件共享](storage-files-introduction.md)中。 可以通过两种方式使用 Azure 文件共享：直接装载这些无服务器 Azure 文件共享 (SMB)，或使用 Azure 文件同步功能在本地缓存 Azure 文件共享。所选择的部署方式决定了规划部署时需要考虑的事项。 
 
-- **直接装载 Azure 文件共享**：由于 Azure 文件存储提供 SMB 访问权限，可以使用 Windows、macOS 和 Linux 中提供的标准 SMB 客户端在本地或在云中装载 Azure 文件共享。 由于 Azure 文件共享是无服务器式的，因此在部署生产方案时不需要管理文件服务器或 NAS 设备。 这意味着无需应用软件修补程序或换出物理磁盘。 
+- **直接装载 Azure 文件共享**：由于 Azure 文件存储提供 SMB 访问权限，可以使用 Windows、macOS 和 Linux 中提供的标准 SMB 客户端在本地或在云中装载 Azure 文件共享。 由于 Azure 文件共享是无服务器的，因此针对生产方案进行部署不需要管理文件服务器或 NAS 设备。 这意味着无需应用软件修补程序或换出物理磁盘。 
 
 - **使用 Azure 文件同步在本地缓存 Azure 文件共享**：借助 Azure 文件同步，可以在 Azure 文件存储中集中管理组织的文件共享，同时又能保留本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将本地（或云中的）Windows Server 转换为 Azure 文件共享的快速缓存。 
 
@@ -52,16 +52,19 @@ Azure 文件同步部署有三个基本管理对象：
 同步组包含一个云终结点或 Azure 文件共享，以及至少一个服务器终结点。 服务器终结点对象包含用于配置云分层功能的设置，该功能可实现 Azure 文件同步的缓存功能。为了与 Azure 文件共享进行同步，包含 Azure 文件共享的存储帐户必须与存储同步服务位于同一 Azure 区域。
 
 > [!Important]  
-> 可对同步组中的任何云终结点或服务器终结点进行更改，并将文件同步到同步组中的其他终结点。 如果直接对云终结点（Azure 文件分享）进行更改，首先需要通过 Azure 文件同步更改检测作业来发现更改。 每 24 小时仅针对云终结点启动一次更改检测作业。 有关详细信息，请参阅 [Azure 文件常见问题解答](storage-files-faq.md#afs-change-detection)。
+> 你可以更改同步组中的任何云终结点或服务器终结点的命名空间，并将文件同步到同步组中的其他终结点。 如果直接对云终结点（Azure 文件分享）进行更改，首先需要通过 Azure 文件同步更改检测作业来发现更改。 每 24 小时仅针对云终结点启动一次更改检测作业。 有关详细信息，请参阅 [Azure 文件常见问题解答](storage-files-faq.md#afs-change-detection)。
 
-### <a name="management-guidance"></a>管理指南
-部署 Azure 文件同步时，建议执行以下操作：
+### <a name="consider-the-count-of-storage-sync-services-needed"></a>考虑需要的存储同步服务的计数
+上一部分讨论要为 Azure 文件同步配置的核心资源： *存储同步服务*。 Windows Server 只能注册到一个存储同步服务。 因此，通常最好只部署一个存储同步服务，并注册它的所有服务器。 
 
-- 部署的 Azure 文件共享与 Windows 文件共享的比例应为 1:1。 通过使用服务器终结点对象，能够在具有同步关系的服务器端非常灵活地设置同步拓扑。 为了简化管理，请使服务器终结点的路径与 Windows 文件共享的路径匹配。 
+仅在以下情况中创建多个存储同步服务：
+* 必须从不彼此交换数据的不同服务器集。 在这种情况下，你需要设计系统以排除某些服务器集，使其与 Azure 文件共享同步，该共享已在另一个存储同步服务中用作同步组中的云终结点。 另一种方法是，注册到不同存储同步服务的 Windows 服务器无法与相同的 Azure 文件共享进行同步。
+* 需要的服务器或同步组数超过单个存储同步服务可以支持的数量。 有关更多详细信息，请查看 [Azure 文件同步缩放目标](storage-files-scale-targets.md#azure-file-sync-scale-targets) 。
 
-- 尽可能少地使用存储同步服务。 这在配置了包含多个服务器终结点的同步组的情况下可以简化管理，因为 Windows Server 一次只能注册一个存储同步服务。 
+## <a name="plan-for-balanced-sync-topologies"></a>规划平衡同步拓扑
+在部署任何资源之前，请务必规划要在本地服务器上同步的内容，并使用 Azure 文件共享。 制定计划将帮助你确定所需的存储帐户、Azure 文件共享和同步资源的数量。 即使您的数据当前不在 Windows Server 或您要使用长期的服务器上，这些注意事项仍是相关的。 " [迁移" 部分](#migration) 可帮助确定适用于你的情况的适当迁移路径。
 
-- 部署 Azure 文件共享时，应注意存储帐户的 IOPS 限制。 理想情况下，应该以 1:1 的形式将文件共享与存储帐户相映射，但由于组织和 Azure 施加的各种限制和制约，不一定总能实现这种映射。 如果无法做到在一个存储帐户中只部署一个文件共享，可以考虑哪些共享会非常活跃，哪些共享不会那么活跃，以此确保不会将使用率最高的那些文件共享放置在同一存储帐户中。
+[!INCLUDE [storage-files-migration-namespace-mapping](../../../includes/storage-files-migration-namespace-mapping.md)]
 
 ## <a name="windows-file-server-considerations"></a>Windows 文件服务器注意事项
 若要在 Windows Server 上启用同步功能，需要安装可下载的 Azure 文件同步代理。 Azure 文件同步代理提供两个主要组件：`FileSyncSvc.exe`，这是负责监视服务器终结点上所做更改和启动同步会话的后台 Windows 服务，以及 `StorageSync.sys`，这是可实现云分层功能和快速灾难恢复的文件系统筛选器。  
@@ -203,7 +206,7 @@ Azure 文件同步不支持在 Windows Server 2012 R2 上的同一卷上启用�
 - 如果重复数据删除是在启用云分层之后在卷上启用的，则初始重复数据删除优化作业将优化卷上尚未分层的的文件，这会对云分层产生以下影响：
     - 可用空间策略将使用热度地图，根据卷上的可用空间，继续对文件进行分层。
     - 由于重复数据删除优化作业会访问文件，日期策略会跳过对本来可能有资格进行分层的文件进行分层。
-- 对于正在进行的重复数据删除优化作业，如果文件尚未分层，启用了日期策略的云分层操作会因“重复数据删除”的 [MinimumFileAgeDays](/powershell/module/deduplication/set-dedupvolume?view=win10-ps) 设置而延迟执行。 
+- 对于正在进行的重复数据删除优化作业，如果文件尚未分层，启用了日期策略的云分层操作会因“重复数据删除”的 [MinimumFileAgeDays](/powershell/module/deduplication/set-dedupvolume?view=win10-ps&preserve-view=true) 设置而延迟执行。 
     - 示例：如果 MinimumFileAgeDays 设置为 7 天，而云分层日期策略设置为 30 天，则日期策略将在 37 天后对文件分层。
     - 注意：一旦 Azure 文件同步对某个文件进行分层后，重复数据删除优化作业将立即跳过该文件。
 - 如果某个服务器正在运行 Windows Server 2012 R2 且安装了 Azure 文件同步代理，当它升级到 Windows Server 2016 或 Windows Server 2019 后，需要执行以下步骤，才能支持在同一卷上启用重复数据删除和云分层：  
@@ -320,15 +323,9 @@ Azure 存储帐户包含一个用于要求在传输过程中加密的开关，�
 > 如果使用异地冗余存储和异地区域冗余存储，可以将存储手动故障转移到次要区域。 当使用 Azure 文件同步时，建议不要在未发生灾难的情况下执行此操作，因为这样会增加数据丢失的可能性。 如果发生了灾难且需要启动对存储的手动故障转移，需要向 Microsoft 开立支持事例，以使 Azure 文件同步能够继续使用辅助终结点进行同步。
 
 ## <a name="migration"></a>迁移
-如果已有 Windows 文件服务器，可以直接就地安装 Azure 文件同步，而无需将数据转移到新服务器。 如果计划在采用 Azure 文件同步的过程中迁移到新的 Windows 文件服务器，可以使用以下几种方法来移动数据：
+如果现有 Windows 文件服务器2012R2 或更高版本，Azure 文件同步可以直接安装在原位，无需将数据移到新服务器。 如果打算迁移到新的 Windows 文件服务器作为采用 Azure 文件同步的一部分，或者数据当前位于网络附加存储 (NAS) ，则可以使用几种可能的迁移方法将 Azure 文件同步用于此数据。 你应选择哪种迁移方法，具体取决于你的数据当前所在的位置。 
 
-- 为旧文件共享和新文件共享创建服务器终结点，并让 Azure 文件同步在服务器终结点之间同步数据。 这种方法的优点在于，通过它可以非常轻松地超额订阅新文件服务器上的存储，因为 Azure 文件同步可以感知云分层。 准备就绪后，可以将最终用户转换为使用新服务器上的文件共享，并删除旧文件共享的服务器终结点。
-
-- 仅在新文件服务器上创建服务器终结点，并使用 `robocopy` 将旧文件共享中的数据复制到其中。 根据新服务器上文件共享的拓扑（每个卷上有多少共享空间，每个卷上有多少可用空间等），可能需要临时预配额外的存储空间，因为预期在本地数据中心内从旧服务器 `robocopy` 到新服务器的速度要快于 Azure 文件同步将数据移动到 Azure 的速度。
-
-还可以使用 Data Box 将数据迁移到 Azure 文件同步部署。 大多数情况下，当客户想使用 Data Box 引入数据时，他们会这样做，因为他们认为这样会提高部署的速度，或者因为这样做有助于实施带宽受限的方案。 尽管使用 Data Box 将数据引入到 Azure 文件同步部署中会降低带宽利用率，但大多数情况下，使用上述方法之一来实现联机数据上传可能会更快。 若要详细了解如何使用 Data Box 将数据引入 Azure 文件同步部署，请参阅[使用 Azure Data Box 将数据迁移到 Azure 文件同步](storage-sync-offline-data-transfer.md)。
-
-客户在将数据迁移到新的 Azure 文件同步部署时常犯的一个错误是直接将数据复制到 Azure 文件共享，而不是复制到其 Windows 文件服务器上。 尽管 Azure 文件同步会标识 Azure 文件共享上的所有新文件，并将它们同步回 Windows 文件共享，但这通常比通过 Windows 文件服务器加载数据的速度要慢得多。 使用 Azure 复制工具（如 AzCopy）时，请务必使用最新版本。 检查 " [文件复制工具" 表](storage-files-migration-overview.md#file-copy-tools) 以获取 Azure copy 工具的概述，以确保可以复制文件的所有重要元数据，例如时间戳和 acl。
+查看 [Azure 文件同步和 Azure 文件共享迁移概述](storage-files-migration-overview.md) 一文，其中提供了有关方案的详细指南。
 
 ## <a name="antivirus"></a>防病毒
 由于防病毒通过扫描文件中的已知恶意代码进行工作，因此防病毒产品可能导致重新调用分层文件，从而导致大量出口费用。 在 Azure 文件同步代理 4.0 及更高版本中，分层文件已设置安全 Windows 属性 FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS。 我们建议你咨询软件供应商，以了解如何配置其解决方案以跳过读取已设置此属性的文件（许多解决方案会自动执行此操作）。 
@@ -342,6 +339,9 @@ Microsoft 的内部防病毒解决方案 Windows Defender 和 System Center Endp
 如果启用了云分层，则不应使用直接备份服务器终结点的解决方案或服务器终结点所在的 VM。 云分层仅导致在服务器终结点上存储数据的一个子集，并将完整的数据集驻留在 Azure 文件共享中。 根据所使用的备份解决方案，将跳过或不备份分层文件 (因为它们 FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS 属性集) ，或者它们将被召回到磁盘，导致大量出口费用。 建议使用云备份解决方案直接备份 Azure 文件共享。 有关详细信息，请参阅 [关于 azure 文件共享备份](../../backup/azure-file-share-backup-overview.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) 或与备份提供商联系，查看他们是否支持备份 Azure 文件共享。
 
 如果希望使用本地备份解决方案，则应在禁用云分层的同步组中的服务器上执行备份。 执行还原时，使用卷级别或文件级还原选项。 使用文件级别还原选项还原的文件将同步到同步组中的所有终结点，现有文件将被替换为从备份还原的版本。  卷级别的还原不会替换 Azure 文件共享或其他服务器终结点中较新的文件版本。
+
+> [!WARNING]
+> Azure 文件同步不支持 Robocopy/B 开关。将 Robocopy/B 开关与作为源的 Azure 文件同步服务器终结点一起使用可能会导致文件损坏。
 
 > [!Note]  
 > 祼机 (BMR) 还原可能会导致意外的结果且当前不受支持。

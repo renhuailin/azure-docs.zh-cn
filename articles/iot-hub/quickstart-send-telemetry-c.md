@@ -14,12 +14,12 @@ ms.custom:
 - devx-track-azurecli
 ms.date: 04/10/2019
 ms.author: wesmc
-ms.openlocfilehash: 89b872557275db8651f3b55502d340ff55b7e626
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: aad28c704ba8c46f4c2d0111e545dc4d2381250d
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624280"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102201934"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-c"></a>快速入门：将遥测数据从设备发送到 IoT 中心并使用后端应用程序读取该数据 (C)
 
@@ -114,7 +114,7 @@ IoT 中心是一项 Azure 服务，用于将大量遥测数据从 IoT 设备引�
 
 ## <a name="register-a-device"></a>注册设备
 
-必须先将设备注册到 IoT 中心，然后该设备才能进行连接。 在本部分中，我们将使用具有 [IoT 扩展](/cli/azure/ext/azure-iot/iot?view=azure-cli-latest&preserve-view=true)的 Azure Cloud Shell 注册模拟设备。
+必须先将设备注册到 IoT 中心，然后该设备才能进行连接。 在本部分中，我们将使用具有 [IoT 扩展](/cli/azure/ext/azure-iot/iot)的 Azure Cloud Shell 注册模拟设备。
 
 1. 在 Azure Cloud Shell 中运行以下命令，以创建设备标识。
 
@@ -183,7 +183,7 @@ IoT 中心是一项 Azure 服务，用于将大量遥测数据从 IoT 设备引�
 
 ## <a name="read-the-telemetry-from-your-hub"></a>从中心读取遥测数据
 
-在本部分中，你将使用具有 [IoT 扩展](/cli/azure/ext/azure-iot/iot?view=azure-cli-latest&preserve-view=true)的 Azure Cloud Shell 监视模拟设备发送的设备消息。
+在本部分中，你将使用具有 [IoT 扩展](/cli/azure/ext/azure-iot/iot)的 Azure Cloud Shell 监视模拟设备发送的设备消息。
 
 1. 通过 Azure Cloud Shell 运行以下命令以建立连接并从 IoT 中心读取消息：
 

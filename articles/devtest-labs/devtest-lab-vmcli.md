@@ -3,12 +3,12 @@ title: 通过 Azure CLI 在开发测试实验室中创建和管理虚拟机
 description: 了解如何通过 Azure 开发测试实验室，使用 Azure CLI 创建和管理虚拟机
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 57510a722ab6a34b9d498e74a140d6f350c8fc02
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 22ee6bf607fe1b66cece0e7ddb25a2da2830258b
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85482830"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102201458"
 ---
 # <a name="create-and-manage-virtual-machines-with-devtest-labs-using-the-azure-cli"></a>使用 Azure CLI 通过开发测试实验室创建和管理虚拟机
 本快速入门介绍如何在实验室中创建、启动、连接、更新和清理开发计算机。 
@@ -40,7 +40,7 @@ az lab vm create --resource-group DtlResourceGroup --lab-name MyLab --name 'MyTe
 az lab vm create --resource-group DtlResourceGroup --lab-name MyLab --name 'MyTestVm' --image "My Custom Image" --image-type custom --size 'Standard_D2s_v3' --admin-username 'AdminUser' --admin-password 'Password1!'
 ```
 
-**图像类型**参数已从**库**更改为**自定义**。 如果要在 Azure 门户中创建虚拟机，则映像的名称与你看到的内容相匹配。
+**图像类型** 参数已从 **库** 更改为 **自定义**。 如果要在 Azure 门户中创建虚拟机，则映像的名称与你看到的内容相匹配。
 
 以下命令使用 ssh 身份验证从 marketplace 映像创建 VM：
 
@@ -48,7 +48,7 @@ az lab vm create --resource-group DtlResourceGroup --lab-name MyLab --name 'MyTe
 az lab vm create --lab-name sampleLabName --resource-group sampleLabResourceGroup --name sampleVMName --image "Ubuntu Server 16.04 LTS" --image-type gallery --size Standard_DS1_v2 --authentication-type  ssh --generate-ssh-keys --ip-configuration public 
 ```
 
-还可以通过将 **图像类型** 参数设置为 **公式**来创建基于公式的虚拟机。 如果需要为虚拟机选择特定虚拟网络，请使用 **vnet 名称** 和 **子网** 参数。 有关详细信息，请参阅 [az lab vm create](/cli/azure/lab/vm#az-lab-vm-create)。
+还可以通过将 **图像类型** 参数设置为 **公式** 来创建基于公式的虚拟机。 如果需要为虚拟机选择特定虚拟网络，请使用 **vnet 名称** 和 **子网** 参数。 有关详细信息，请参阅 [az lab vm create](/cli/azure/lab/vm#az-lab-vm-create)。
 
 ## <a name="verify-that-the-vm-is-available"></a>验证 VM 是否可用。
 使用 `az lab vm show` 命令验证 VM 是否可用，然后再开始连接。 
@@ -153,4 +153,4 @@ az lab vm delete --lab-name sampleLabName --name sampleVMName --resource-group s
 ```
 
 ## <a name="next-steps"></a>后续步骤
-请参阅以下内容： [Azure 开发测试实验室 Azure CLI 文档](/cli/azure/lab?view=azure-cli-latest)。 
+请参阅以下内容： [Azure 开发测试实验室 Azure CLI 文档](/cli/azure/lab)。 

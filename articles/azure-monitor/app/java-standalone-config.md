@@ -6,12 +6,12 @@ ms.date: 11/04/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 3806578f5d1af61329e2e32fa3e8eceb9afa4d42
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 32b1558bf4af2ee151fef33a8c0cbe7df82f1e84
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101713960"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102201747"
 ---
 # <a name="configuration-options---azure-monitor-application-insights-for-java"></a>配置选项 - 适用于 Java 的 Azure Monitor Application Insights
 
@@ -219,7 +219,7 @@ ms.locfileid: "101713960"
 | ALL               | ALL    | ALL     | ALL     |
 
 > [!NOTE]
-> 如果异常被传递到记录器，则日志消息 (和异常) 将显示在表中的 Azure 门户下， `exceptions` 而不是显示在 `traces` 表中。
+> 如果异常对象传递到记录器，则日志消息 (和异常对象详细信息) 将显示在表中的 Azure 门户， `exceptions` 而不是 `traces` 表下。
 
 ## <a name="auto-collected-micrometer-metrics-including-spring-boot-actuator-metrics"></a>自动收集的 Micrometer 指标（包括 Spring Boot Actuator 指标）
 

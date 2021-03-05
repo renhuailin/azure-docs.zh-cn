@@ -12,12 +12,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
 - devx-track-azurecli
-ms.openlocfilehash: 7753c6c118d763163e6bc8f69f5b4eee13fe2393
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 53b5add7526b0c20487e8fe3adb0b8ebe207a2ce
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97588788"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102200044"
 ---
 # <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-in-a-web-application"></a>在 Web 应用程序中可视化 Azure IoT 中心的实时传感器数据
 
@@ -153,7 +153,7 @@ set EventHubConsumerGroup=YourConsumerGroupName
 
 [Azure 应用服务的 Web 应用功能](../app-service/overview.md)提供用于托管 Web 应用程序的平台即服务 (PAAS)。 托管在 Azure 应用服务中的 Web 应用程序可受益于强大的 Azure 功能（例如更高的安全性、负载均衡和可伸缩性）以及 Azure 和合作伙伴 DevOps 解决方案（例如持续部署、包管理等）。 Azure 应用服务支持以多种流行语言开发并部署在 Windows 或 Linux 基础结构上的 Web 应用程序。
 
-在本部分中，你将在应用服务中预配一个 Web 应用，然后使用 Azure CLI 命令将代码部署到该应用。 可以在 [az webapp](/cli/azure/webapp?view=azure-cli-latest) 文档中查找所用命令的详细信息。 在开始之前，请确保已完成[将资源组添加到 IoT 中心](#add-a-consumer-group-to-your-iot-hub)、[获取 IoT 中心的服务连接字符串](#get-a-service-connection-string-for-your-iot-hub)以及[从 GitHub 下载 Web 应用](#download-the-web-app-from-github)的步骤。
+在本部分中，你将在应用服务中预配一个 Web 应用，然后使用 Azure CLI 命令将代码部署到该应用。 可以在 [az webapp](/cli/azure/webapp) 文档中查找所用命令的详细信息。 在开始之前，请确保已完成[将资源组添加到 IoT 中心](#add-a-consumer-group-to-your-iot-hub)、[获取 IoT 中心的服务连接字符串](#get-a-service-connection-string-for-your-iot-hub)以及[从 GitHub 下载 Web 应用](#download-the-web-app-from-github)的步骤。
 
 1. [应用服务计划](../app-service/overview-hosting-plans.md)为应用服务中托管的应用定义一组计算资源，使其能够运行。 本教程使用开发人员/免费层来托管 Web 应用。 使用免费层时，你的 Web 应用将在与其他应用服务应用（包括其他客户的应用）共享的 Windows 资源上运行。 Azure 还提供用于在 Linux 计算资源上部署 Web 应用的应用服务计划。 如果已有要使用的应用服务计划，则可以跳过此步骤。
 
@@ -202,7 +202,7 @@ set EventHubConsumerGroup=YourConsumerGroupName
    git remote add webapp <Git clone URL>
    ```
 
-8. 若要将代码部署到应用服务，请在命令窗口中输入以下命令。 系统提示输入凭据时，请输入在步骤 5 中创建的用户级部署凭据。 请确保推送到应用服务远程的主要分支。
+8. 若要将代码部署到应用服务，请在命令窗口中输入以下命令。 系统提示输入凭据时，请输入在步骤 5 中创建的用户级部署凭据。 确保推送到应用服务远程库的主分支。
 
     ```cmd
     git push webapp main:main

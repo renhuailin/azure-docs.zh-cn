@@ -40,7 +40,7 @@
     - name: 指标顾问 API
       href: 'https://go.microsoft.com/fwlink/?linkid=2141634'
     - name: Azure CLI 参考
-      href: /cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list
+      href: /cli/azure/cognitiveservices#az_cognitiveservices_list
     - name: PowerShell 参考
       href: /powershell/module/azurerm.cognitiveservices/
 - name: 资源

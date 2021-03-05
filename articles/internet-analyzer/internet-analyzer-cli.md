@@ -7,12 +7,12 @@ ms.service: internet-analyzer
 ms.topic: tutorial
 ms.date: 10/16/2019
 ms.author: mebeatty
-ms.openlocfilehash: 23a76e4007965c263671554bbcd937dbf3b4b0a6
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: a9a9fe93ebe302a76d69249dc56933e1bcc924d1
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92676216"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102200081"
 ---
 # <a name="create-an-internet-analyzer-test-using-cli-preview"></a>使用 CLI（预览版）创建 Internet 分析器测试
 
@@ -37,7 +37,7 @@ Internet 分析器 CLI 将公开以下类型的资源：
 
 ## <a name="profile-and-test-creation"></a>配置文件和测试创建
 1. 按照 [Azure Internet 分析器常见问题解答](internet-analyzer-faq.md)的“如何参与预览？”中的说明获得 Internet 分析器的预览版访问权限。
-2. [安装 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。
+2. [安装 Azure CLI](/cli/azure/install-azure-cli)。
 3. 运行 `login` 命令以启动 CLI 会话：
     ```azurecli-interactive
     az login
@@ -50,9 +50,9 @@ Internet 分析器 CLI 将公开以下类型的资源：
 
 5. 选择已获得 Internet 分析器公共预览版访问权限的订阅 ID。
 
-    登录后，你将看到与你的 Azure 帐户关联的订阅列表。 在使用 `isDefault: true` 的情况下显示的订阅信息是登录后当前已激活的订阅。 若要选择另一个订阅，请将 [az account set](/cli/azure/account#az-account-set) 命令与要切换到的订阅 ID 配合使用。 有关订阅选择的详细信息，请参阅[使用多个 Azure 订阅](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest)。
+    登录后，你将看到与你的 Azure 帐户关联的订阅列表。 在使用 `isDefault: true` 的情况下显示的订阅信息是登录后当前已激活的订阅。 若要选择另一个订阅，请将 [az account set](/cli/azure/account#az-account-set) 命令与要切换到的订阅 ID 配合使用。 有关订阅选择的详细信息，请参阅[使用多个 Azure 订阅](/cli/azure/manage-azure-subscriptions-azure-cli)。
 
-    有多种方法可用来以非交互方式登录，[使用 Azure CLI 登录](/cli/azure/authenticate-azure-cli?view=azure-cli-latest)中详细介绍了这些方法。
+    有多种方法可用来以非交互方式登录，[使用 Azure CLI 登录](/cli/azure/authenticate-azure-cli)中详细介绍了这些方法。
 
 6.  [可选] 创建新的 Azure 资源组：
     ```azurecli-interactive
@@ -132,6 +132,6 @@ Internet 分析器 CLI 将公开以下类型的资源：
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关支持的命令和用法示例的完整列表，请浏览 [Internet 分析器 CLI 参考](/cli/azure/ext/internet-analyzer/internet-analyzer?view=azure-cli-latest)。
+* 有关支持的命令和用法示例的完整列表，请浏览 [Internet 分析器 CLI 参考](/cli/azure/ext/internet-analyzer/internet-analyzer)。
 * 阅读 [Internet 分析器常见问题解答](internet-analyzer-faq.md)。
 * 了解有关嵌入 [Internet 分析器客户端](internet-analyzer-embed-client.md)和创建[自定义终结点](internet-analyzer-custom-endpoint.md)的详细信息。

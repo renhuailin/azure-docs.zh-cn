@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: how-to
 ms.date: 07/20/2020
 ms.author: sebansal
-ms.openlocfilehash: e75786c42b54882c249b5ed7100ebd12f3f78e78
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 78ec0af0acbb74436af16abba75d64de061d5268
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99254353"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102202159"
 ---
 # <a name="importing-azure-key-vault-certificates-faq"></a>导入 Azure Key Vault 证书常见问题解答
 
@@ -43,7 +43,7 @@ ms.locfileid: "99254353"
 
 ### <a name="when-i-import-a-certificate-via-the-azure-portal-i-get-a-something-went-wrong-error-how-can-i-investigate-further"></a>通过 Azure 门户导入证书时，我遇到了“出现问题”错误。 如何进一步进行调查？
     
-若要查看更详细描述的错误，请通过 [Azure CLI](/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-import) 或 [PowerShell](/powershell/module/azurerm.keyvault/import-azurekeyvaultcertificate?view=azurermps-6.13.0) 导入证书文件。
+若要查看更详细描述的错误，请通过 [Azure CLI](/cli/azure/keyvault/certificate#az-keyvault-certificate-import) 或 [PowerShell](/powershell/module/azurerm.keyvault/import-azurekeyvaultcertificate?view=azurermps-6.13.0) 导入证书文件。
 
 ### <a name="how-can-i-resolve-error-type-access-denied-or-user-is-unauthorized-to-import-certificate"></a>如何解决“错误类型:访问被拒绝或用户无权导入证书”错误？
     

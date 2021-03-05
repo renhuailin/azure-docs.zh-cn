@@ -5,14 +5,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/22/2019
-author: iqshahmicrosoft
-ms.author: iqshah
-ms.openlocfilehash: 814a4012ace95e84e75bcb4071c549822b2b0633
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+author: kriti-ms
+ms.author: krsh
+ms.openlocfilehash: e3d20b5e9206cf05d749f75982a07937a8caf078
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89182422"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102201084"
 ---
 # <a name="were-moving-virtual-machine-vm-images-on-azure-marketplace-to-managed-disk-storage"></a>正在将 Azure Marketplace 中的虚拟机 (VM) 映像移动到托管磁盘存储
 
@@ -30,19 +30,17 @@ ms.locfileid: "89182422"
 
 VM 映像的用户将不会遇到中断。 
 
-在第一个阶段中，只会移动没有运行的 Vm 的 VM 映像。 由于这些映像没有用户，因此不会有任何影响。 对于后续阶段，用户不会有任何影响。
-
 ### <a name="how-long-does-it-take-for-the-process-to-complete"></a>完成此过程需要多长时间？
 
 完成迁移可能需要长达24小时。
 
 ### <a name="do-i-need-to-take-any-action"></a>是否需要执行任何操作？
 
-不是。 发布者或使用者不需要执行任何操作。
+否。 发布者或使用者不需要执行任何操作。
 
 ### <a name="do-i-have-to-update-my-system-to-call-the-cloud-portal-apis-in-a-different-way-after-they-are-moved-to-managed-disk-storage"></a>是否必须将系统更新为以不同方式调用云门户 Api，然后再将其移动到托管磁盘存储？
 
-不是。 你的现有 API 调用将继续工作。
+否。 你的现有 API 调用将继续工作。
 
 ### <a name="would-all-my-vm-images-be-moved-to-managed-disk-at-the-same-time"></a>是否所有 VM 映像都同时移动到托管磁盘？
 

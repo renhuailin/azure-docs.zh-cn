@@ -14,12 +14,12 @@ ms.custom:
 - devx-track-azurecli
 ms.date: 06/21/2019
 ms.author: wesmc
-ms.openlocfilehash: 6b5df6d6eaedd4d7d1793c35db37e06b4478f2b8
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: 361317729ecf868465d498cf3fcedd45d8c979db
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99072062"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102200999"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-android"></a>快速入门：控制连接到 IoT 中心的设备 (Android)
 
@@ -133,7 +133,7 @@ az iot hub connection-string show --policy-name service --name {YourIoTHubName} 
 
 ## <a name="read-the-telemetry-from-your-hub"></a>从中心读取遥测数据
 
-在本部分中，将使用具有 [IoT 扩展](/cli/azure/ext/azure-iot/iot?view=azure-cli-latest&preserve-view=true)的 Azure Cloud Shell 监视 Android 设备发送的消息。
+在本部分中，将使用具有 [IoT 扩展](/cli/azure/ext/azure-iot/iot)的 Azure Cloud Shell 监视 Android 设备发送的消息。
 
 1. 通过 Azure Cloud Shell 运行以下命令以建立连接并从 IoT 中心读取消息：
 
