@@ -4,12 +4,12 @@ description: Batch 支持 Azure AD 在 Batch 服务中进行身份验证。 了�
 ms.topic: how-to
 ms.date: 10/20/2020
 ms.custom: has-adal-ref
-ms.openlocfilehash: 784e92eaa2cd672d511177066befcfd7effc7ca4
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 2ceefa538c44208750da8986fcf3d161f0c0865f
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95252634"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102180014"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>使用 Active Directory 对 Batch 服务解决方案进行身份验证
 
@@ -41,7 +41,7 @@ Azure Batch 支持使用 [Azure Active Directory](../active-directory/fundamenta
 >
 > 使用集成身份验证进行验证时，虽然特定于租户的终结点为可选，但仍推荐。 然而，还可以使用 Azure AD 常用终结点。 未提供特定租户时，该常用终结点可提供泛型凭据收集接口。 常用终结点为 `https://login.microsoftonline.com/common`。
 
-有关 Azure AD 终结点的详细信息，请参阅 [身份验证与授权]()。/active-directory/develop/authentication-vs-authorization.md) 。
+有关 Azure AD 终结点的详细信息，请参阅 [身份验证与授权](../active-directory/develop/authentication-vs-authorization.md)。
 
 ### <a name="batch-resource-endpoint"></a>Batch 资源终结点
 
@@ -69,7 +69,7 @@ Azure Batch 资源终结点用于获取对 Batch 服务的请求进行身份验�
 1. 选择“属性”。
 1. 复制为“目录 ID”提供的 GUID 值。 该值也称为租户 ID。
 
-![Azure 门户中目录 ID 的屏幕截图。](./media/batch-aad-auth/aad-directory-id.png)
+![Azure 门户中“目录 ID”的屏幕截图。](./media/batch-aad-auth/aad-directory-id.png)
 
 ## <a name="use-integrated-authentication"></a>使用集成身份验证
 
@@ -77,14 +77,14 @@ Azure Batch 资源终结点用于获取对 Batch 服务的请求进行身份验�
 
 注册了应用程序后，请按照 Azure 门户中的以下步骤来向其授予对 Batch 服务的访问权限：
 
-1. 在 Azure 门户中，选择 " **所有服务**"，然后选择 " **应用注册**"。
+1. 在 Azure 门户中选择“所有服务”，然后选择“应用注册”。
 1. 在应用注册列表中搜索应用程序名称。
 1. 选择应用程序，并选择“API 权限”。
 1. 在“API 权限”部分中，选择“添加权限” 。
 1. 在“选择 API”中，搜索 Batch API。 搜索每一条字符串，直到找到此 API：
     1. Microsoft Azure Batch
     1. ddbf3205-c6bd-46ae-8127-60eb93363864 是此 Batch API 的 ID。
-1. 找到批处理 API 后，将其选中，然后选择 " **选择**"。
+1. 找到此 Batch API 后，将其选中，然后选择“选择”。
 1. 在“选择权限”中，选中“访问 Azure Batch 服务”旁边的复选框，然后选择“添加权限”  。
 
 现在，“API 权限”部分表明 Azure AD 应用程序已有对 Microsoft Graph 和 Batch 服务 API 的访问权限。 首次将应用注册到 Azure AD 时，系统会自动向 Microsoft Graph 授予权限。
@@ -102,10 +102,10 @@ Azure Batch 资源终结点用于获取对 Batch 服务的请求进行身份验�
 
 在 Azure 门户中执行以下步骤：
 
-1. 在 Azure 门户中，选择 " **所有服务**"。 选择“应用注册”。
+1. 在 Azure 门户中，选择“所有服务”。 选择“应用注册”。
 1. 从应用注册列表中选择你的应用程序。
 1. 选择应用程序，然后选择“证书和机密”。 在“客户端密码”部分中，选择“新建客户端密码” 。
-1. 若要创建机密，请输入机密的说明。 然后选择一年、两年或无过期密码的有效期。
+1. 若要创建机密，请输入机密的说明。 然后，选择机密的过期时间：一年、两年或不过期。
 1. 选择“添加”以创建并显示机密。 将机密值复制到安全的位置，因为离开该页后将无法再次访问它。
 
 ### <a name="assign-azure-rbac-to-your-application"></a>将 Azure RBAC 分配到应用程序
@@ -147,7 +147,7 @@ Azure Batch 资源终结点用于获取对 Batch 服务的请求进行身份验�
 自定义角色适用于通过 Azure AD 进行身份验证的用户，而不是批处理帐户凭据（共享密钥）。 请注意，批处理帐户凭据为批处理帐户提供完全权限。 另请注意，使用 [autopool](nodes-and-pools.md#autopools) 的作业需要池级别权限。
 
 > [!NOTE]
-> 需要在 "操作" 字段中指定某些角色分配，而其他角色分配需要在 DataAction 字段中指定。 有关详细信息，请参阅 [Azure 资源提供程序操作](../role-based-access-control/resource-provider-operations.md#microsoftbatch)。
+> 需要在“操作”字段中指定某些角色分配，而其他角色分配需要在 DataAction 字段中指定。 有关详细信息，请参阅 [Azure 资源提供程序操作](../role-based-access-control/resource-provider-operations.md#microsoftbatch)。
 
 下面是一个自定义角色定义的示例：
 
@@ -185,7 +185,7 @@ Azure Batch 资源终结点用于获取对 Batch 服务的请求进行身份验�
 }
 ```
 
-有关创建自定义角色的详细信息，请参阅 [Azure 自定义角色](../role-based-access-control/custom-roles.md)。
+有关如何创建自定义角色的更多信息，请参阅 [Azure 自定义角色](../role-based-access-control/custom-roles.md)。
 
 ### <a name="get-the-tenant-id-for-your-azure-active-directory"></a>获取 Azure Active Directory 的租户 ID
 
@@ -204,7 +204,7 @@ Azure Batch 资源终结点用于获取对 Batch 服务的请求进行身份验�
 > [!NOTE]
 > Azure AD 身份验证令牌在一小时后过期。 使用生存期较长的 **BatchClient** 对象时，我们建议每次发出请求都从 ADAL 中检索令牌，确保始终获得有效的令牌。
 >
-> 要在 .NET 中实现此目的，可编写一个方法从 Azure AD 中检索令牌，然后将该方法作为委派传递给 **BatchTokenCredentials** 对象。 这样，每次批处理服务发出请求都会调用该委派方法，确保提供有效的令牌。 默认情况下，ADAL 会缓存令牌，以便只在必要时，才从 Azure AD 中检索新令牌。 有关 Azure AD 中的令牌的详细信息，请参阅 [安全令牌](../active-directory/develop/security-tokens.md)。
+> 要在 .NET 中实现此目的，可编写一个方法从 Azure AD 中检索令牌，然后将该方法作为委派传递给 **BatchTokenCredentials** 对象。 这样，每次批处理服务发出请求都会调用该委派方法，确保提供有效的令牌。 默认情况下，ADAL 会缓存令牌，以便只在必要时，才从 Azure AD 中检索新令牌。 有关 Azure AD 中的令牌的详细信息，请参阅[安全令牌](../active-directory/develop/security-tokens.md)。
 
 ### <a name="code-example-using-azure-ad-integrated-authentication-with-batch-net"></a>代码示例：将 Azure AD 集成身份验证与 Batch .NET 一起使用
 
@@ -409,7 +409,7 @@ credentials = ServicePrincipalCredentials(
 ## <a name="next-steps"></a>后续步骤
 
 - 查看 [Azure Active Directory 文档](../active-directory/index.yml)。 演示如何使用 [Azure 代码示例](https://azure.microsoft.com/resources/samples/?service=active-directory)库中提供的 ADAL 的深度讲解示例。
-- 了解 [Azure Active Directory 中的应用程序和服务主体对象](../active-directory/develop/app-objects-and-service-principals.md) ，以及 [如何创建可访问资源的 Azure AD 应用程序和服务主体](../active-directory/develop/howto-create-service-principal-portal.md)。
-- 了解如何 [通过 Active Directory 对 Batch 管理解决方案进行身份验证](batch-aad-auth-management.md)。
+- 了解 [Azure Active Directory 中的应用程序对象和服务主体对象](../active-directory/develop/app-objects-and-service-principals.md)和[如何创建可访问资源的 Azure AD 应用程序和服务主体](../active-directory/develop/howto-create-service-principal-portal.md)。
+- 了解如何[使用 Active Directory 对 Batch 管理解决方案进行身份验证](batch-aad-auth-management.md)。
 - 有关如何创建使用 Azure AD 令牌进行身份验证的 Batch 客户端的 Python 示例，请参阅[使用 Python 脚本部署 Azure Batch 自定义映像](https://github.com/azurebigcompute/recipes/blob/master/Azure%20Batch/CustomImages/CustomImagePython.md)示例。
 

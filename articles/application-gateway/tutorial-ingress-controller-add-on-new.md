@@ -1,58 +1,38 @@
 ---
-title: 教程：使用新的 Azure 应用程序网关实例为新的 AKS 群集启用入口控制器加载项
-description: 本教程介绍如何通过 Azure CLI 使用新的应用程序网关实例，为新的 AKS 群集启用入口控制器加载项。
+title: 教程：使用新的 Azure 应用程序网关为新的 AKS 群集启用入口控制器加载项
+description: 本教程介绍如何使用新的应用程序网关实例为新的 AKS 群集启用入口控制器加载项。
 services: application-gateway
 author: caya
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 09/24/2020
+ms.date: 03/02/2021
 ms.author: caya
-ms.openlocfilehash: 775dc2133473354a1e534275fb0d813f299217d1
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: c37168c5165f5402dd4f57c8557bc2b7b3603533
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99593803"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720182"
 ---
-# <a name="tutorial-enable-the-ingress-controller-add-on-preview-for-a-new-aks-cluster-with-a-new-application-gateway-instance"></a>教程：使用新的应用程序网关实例为新的 AKS 群集启用入口控制器加载项（预览版）
+# <a name="tutorial-enable-the-ingress-controller-add-on-for-a-new-aks-cluster-with-a-new-application-gateway-instance"></a>教程：使用新的应用程序网关实例为新的 AKS 群集启用入口控制器加载项
 
-你可以使用 Azure CLI 为 [Azure Kubernetes 服务 (AKS)](https://azure.microsoft.com/services/kubernetes-service/) 群集启用[应用程序网关入口控制器 (AGIC)](ingress-controller-overview.md) 加载项。 此加载项目前以预览版提供。
+你可以使用 Azure CLI 为新的 [Azure Kubernetes 服务 (AKS)](https://azure.microsoft.com/services/kubernetes-service/) 群集启用[应用程序网关入口控制器 (AGIC)](ingress-controller-overview.md) 加载项。
 
 在本教程中，你将创建一个启用 AGIC 加载项的 AKS 群集。 创建群集时，将自动创建要使用的 Azure 应用程序网关实例。 然后将部署一个示例应用程序，该应用程序将利用该加载项通过应用程序网关公开应用程序。 
 
-此加载项为 AKS 群集提供了一种比[之前通过 Helm 进行部署](ingress-controller-overview.md#difference-between-helm-deployment-and-aks-add-on)快得多的 AGIC 部署方法。 它还提供了完全托管体验。    
+此加载项为 AKS 群集提供了一种比[之前通过 Helm 进行部署](ingress-controller-overview.md#difference-between-helm-deployment-and-aks-add-on)快得多的 AGIC 部署方法。 它还提供了完全托管体验。
 
 本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 创建资源组。 
-> * 创建启用 AGIC 加载项的新 AKS 群集。 
+> * 创建启用 AGIC 加载项的新 AKS 群集。
 > * 在 AKS 群集上部署将 AGIC 用于入口的示例应用程序。
 > * 检查是否可以通过应用程序网关访问应用程序。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
-
- - 本教程需要 Azure CLI 版本 2.0.4 或更高版本。 如果使用 Azure Cloud Shell，则最新版本已安装。 如果使用的是 Azure CLI，则必须使用以下命令在 CLI 上安装预览扩展（如果尚未安装）：
-    ```azurecli-interactive
-    az extension add --name aks-preview
-    ```
-
- - 若要注册 AKS-IngressApplicationGatewayAddon 功能标志，请使用 [az feature register](/cli/azure/feature#az-feature-register) 命令，如以下示例所示： 当该加载项仍处于预览阶段时，对于每个订阅，只需执行此操作一次。
-    ```azurecli-interactive
-    az feature register --name AKS-IngressApplicationGatewayAddon --namespace Microsoft.ContainerService
-    ```
-
-   可能需要花费几分钟时间，状态才会显示为“`Registered`”。 可以使用 [az feature list](/cli/azure/feature#az-feature-register) 命令来检查注册状态：
-    ```azurecli-interactive
-    az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKS-IngressApplicationGatewayAddon')].{Name:name,State:properties.state}"
-    ```
-
- - 准备就绪后，使用 [az provider register](/cli/azure/provider#az-provider-register) 命令刷新 Microsoft.ContainerService 资源提供程序的注册状态：
-    ```azurecli-interactive
-    az provider register --namespace Microsoft.ContainerService
-    ```
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
@@ -74,10 +54,10 @@ az group create --name myResourceGroup --location canadacentral
 
 下面的示例将使用 [Azure CNI](../aks/concepts-network.md#azure-cni-advanced-networking) 和[托管标识](../aks/use-managed-identity.md)部署名为 myCluster 的新 AKS 群集。 还将在创建的 myResourceGroup 资源组中启用 AGIC 加载项。 
 
-如果在未指定现有应用程序网关实例的情况下部署启用 AGIC 加载项的新 AKS 群集，则将自动创建 Standard_v2 SKU 应用程序网关实例。 因此还需要指定应用程序网关实例的名称和子网地址空间。 应用程序网关实例的名称将是 myApplicationGateway，将要使用的子网地址空间是 10.2.0.0/16。 请确保你已在本教程开头添加或更新了 aks-preview 扩展。 
+如果在未指定现有应用程序网关实例的情况下部署启用 AGIC 加载项的新 AKS 群集，则将自动创建 Standard_v2 SKU 应用程序网关实例。 因此还需要指定应用程序网关实例的名称和子网地址空间。 应用程序网关实例的名称将是 myApplicationGateway，将要使用的子网地址空间是 10.2.0.0/16。
 
 ```azurecli-interactive
-az aks create -n myCluster -g myResourceGroup --network-plugin azure --enable-managed-identity -a ingress-appgw --appgw-name myApplicationGateway --appgw-subnet-prefix "10.2.0.0/16" --generate-ssh-keys
+az aks create -n myCluster -g myResourceGroup --network-plugin azure --enable-managed-identity -a ingress-appgw --appgw-name myApplicationGateway --appgw-subnet-cidr "10.2.0.0/16" --generate-ssh-keys
 ```
 
 若要为 `az aks create` 命令配置其他参数，请参阅[这些参考](/cli/azure/aks#az-aks-create)。 

@@ -12,16 +12,16 @@ ms.date: 02/15/2021
 ms.author: lajanuar
 ms.custom: cog-serv-seo-aug-2020
 keywords: translator, 文本翻译, 机器翻译, 翻译服务
-ms.openlocfilehash: 12f6d22f263747a8c43b2d98e6ade1de78aea1ce
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 72df700d38cad3ee31ef438d7df1c890acde9e6b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100556252"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101727968"
 ---
 # <a name="what-is-the-translator-service"></a>什么是 Translator 服务？
 
-Translator 是一种基于云的机器翻译服务，是用于构建智能应用的 [Azure 认知服务](../../index.yml?panel=ai&pivot=products)系列认知 API 的一部分。 “翻译”可以轻松地集成到应用程序、网站、工具和解决方案中。 通过该服务可添加[超过 70 种语言](./language-support.md)的多语言用户体验。 可以在任何操作系统的任何硬件平台上使用该服务进行文本转换。
+Translator 是一种基于云的机器翻译服务，是用于构建智能应用的 [Azure 认知服务](../../index.yml?panel=ai&pivot=products)系列认知 API 的一部分。 “翻译”可以轻松地集成到应用程序、网站、工具和解决方案中。 通过该服务可添加 [90 种语言和方言](./language-support.md)的多语言用户体验。 可以在任何操作系统的任何硬件平台上使用该服务进行文本转换。
 
 ## <a name="about-microsoft-translator"></a>关于 Microsoft Translator
 

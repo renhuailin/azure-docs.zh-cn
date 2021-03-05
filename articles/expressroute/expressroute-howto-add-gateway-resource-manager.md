@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 10/05/2020
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 9f01961ec7c7f8e0a4e2d72e28e6def50e93ad5d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b75e6e0a8b79f374900e6cb2dfc49680d3d0190
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91854301"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101739052"
 ---
 # <a name="tutorial-configure-a-virtual-network-gateway-for-expressroute-using-powershell"></a>教程：使用 PowerShell 配置 ExpressRoute 的虚拟网络网关
 > [!div class="op_single_selector"]
@@ -53,6 +53,11 @@ ms.locfileid: "91854301"
 | 类型 | *ExpressRoute* |
 | 网关公共 IP 名称  | *gwpip* |
 
+> [!IMPORTANT]
+> 对专用对等互连的 IPv6 支持目前为公共预览版。 如果要将虚拟网络连接到配置了基于 IPv6 的专用对等互连的 ExpressRoute 线路，请确保虚拟网络为双重堆栈，并遵循[此处](https://docs.microsoft.com/azure/virtual-network/ipv6-overview)所述的指南。
+> 
+> 
+
 ## <a name="add-a-gateway"></a>添加网关
 
 1. 若要连接到 Azure，请运行 `Connect-AzAccount`。
@@ -76,6 +81,11 @@ ms.locfileid: "91854301"
 
    ```azurepowershell-interactive
    Add-AzVirtualNetworkSubnetConfig -Name GatewaySubnet -VirtualNetwork $vnet -AddressPrefix 192.168.200.0/26
+   ```
+    如果你使用的是双重堆栈虚拟网络，并且计划通过 ExpressRoute 使用基于 IPv6 的专用对等互连，请改为创建双重堆栈网关子网。
+
+   ```azurepowershell-interactive
+   Add-AzVirtualNetworkSubnetConfig -Name GatewaySubnet -VirtualNetwork $vnet -AddressPrefix "10.0.0.0/26","ace:daa:daaa:deaa::/64"
    ```
 1. 设置配置。
 
@@ -102,6 +112,10 @@ ms.locfileid: "91854301"
    ```azurepowershell-interactive
    New-AzVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG -Location $Location -IpConfigurations $ipconf -GatewayType Expressroute -GatewaySku Standard
    ```
+> [!IMPORTANT]
+> 如果你计划通过 ExpressRoute 使用基于 IPv6 的专用对等互连，请确保为“-GatewaySku”选择“AZ SKU (ErGw1AZ、ErGw2AZ、ErGw3AZ)”。
+> 
+> 
 
 ## <a name="verify-the-gateway-was-created"></a>验证是否已创建网关
 使用以下命令来验证是否已创建网关：

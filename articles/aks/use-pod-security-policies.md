@@ -4,21 +4,26 @@ description: 了解如何在 Azure Kubernetes 服务 (AKS) 中使用 PodSecurity
 services: container-service
 ms.topic: article
 ms.date: 02/12/2021
-ms.openlocfilehash: 23c436cb3ddf970939ab9d7b936a4e03e1fbb7ff
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: cb317e5e0d1f558121e675f569bad37811768ca6
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100371220"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102180303"
 ---
 # <a name="preview---secure-your-cluster-using-pod-security-policies-in-azure-kubernetes-service-aks"></a>预览 - 在 Azure Kubernetes 服务 (AKS) 中使用 Pod 安全策略保护群集
 
 > [!WARNING]
-> **本文档中所述的功能，pod 安全策略 (预览) ，已设置为弃用，并且将不再在2021年6月30日之后提供** ，以支持 [AKS 的 Azure 策略](use-pod-security-on-azure-policy.md)。 弃用日期已在原来日期（2020 年 10 月 15 日）的基础上延长。
+> **本文档中所述的功能，pod 安全策略 (预览) ，已设置为弃用，并且将不再在2021年6月30日之后提供** ，以支持 [AKS 的 Azure 策略](use-azure-policy.md)。 弃用日期已在原来日期（2020 年 10 月 15 日）的基础上延长。
 >
 > 弃用 Pod 安全策略（预览版）之后，必须在使用已弃用功能的任何现有群集上禁用该功能，以执行将来的群集升级并保留在 Azure 支持范围内。
 >
-> 强烈建议使用适用于 AKS 的 Azure Policy 开始测试方案，这提供用于保护 Pod 的内置策略以及映射到 Pod 安全策略的内置计划。 单击此处了解有关 [从 pod 迁移到 Azure 策略 (预览) ](use-pod-security-on-azure-policy.md#migrate-from-kubernetes-pod-security-policy-to-azure-policy)的信息。
+> 强烈建议使用适用于 AKS 的 Azure Policy 开始测试方案，这提供用于保护 Pod 的内置策略以及映射到 Pod 安全策略的内置计划。 若要从 pod 安全策略迁移，需要在群集上执行以下操作。
+> 
+> 1. 在群集上[禁用 pod 安全策略](#clean-up-resources)
+> 1. 启用 [Azure 策略外接程序][kubernetes-policy-reference]
+> 1. 从[可用的内置策略][policy-samples]中启用所需的 Azure 策略
+> 1. 查看 [pod 安全策略与 Azure 策略的行为更改](#behavior-changes-between-pod-security-policy-and-azure-policy)
 
 若要提高 AKS 群集的安全性，可以限制可进行计划的 Pod。 请求不允许的资源的 Pod 无法在 AKS 群集中运行。 可使用 Pod 安全策略定义此访问权限。 本文介绍如何在 AKS 中使用 Pod 安全策略来限制 Pod 的部署。
 
@@ -77,6 +82,26 @@ PodSecurityPolicy 是一种许可控制器，用于验证 Pod 规范是否满足
 * 启用 Pod 安全策略功能
 
 若要显示默认策略限制 Pod 部署的方式，在本文中，我们首先启用 Pod 安全策略功能，然后创建自定义策略。
+
+### <a name="behavior-changes-between-pod-security-policy-and-azure-policy"></a>Pod 安全策略与 Azure 策略之间的行为更改
+
+下面概述了 pod 安全策略与 Azure 策略之间的行为更改。
+
+|方案| Pod 安全策略 | Azure Policy |
+|---|---|---|
+|安装|启用 pod 安全策略功能 |启用 Azure 策略外接程序
+|部署策略| 部署 pod 安全策略资源| 将 Azure 策略分配到订阅或资源组作用域。 Azure 策略外接程序是 Kubernetes 资源应用程序所必需的。
+| 默认策略 | 当在 AKS 中启用 pod 安全策略时，将应用默认的特权和无限制策略。 | 启用 Azure 策略外接程序不会应用默认策略。 必须在 Azure 策略中显式启用策略。
+| 谁可以创建和分配策略 | 群集管理创建 pod 安全策略资源 | 对于 AKS 群集资源组，用户必须至少具有 "所有者" 角色或 "资源策略参与者" 权限。 -通过 API，用户可以在 AKS 群集资源范围内分配策略。 用户应在 AKS 群集资源上至少具有 "所有者" 或 "资源策略参与者" 权限。 -在 Azure 门户中，可以在管理组/订阅/资源组级别分配策略。
+| 授权策略| 用户和服务帐户需要显式权限才能使用 pod 安全策略。 | 不需要对策略进行其他分配。 将策略分配到 Azure 后，所有群集用户都可以使用这些策略。
+| 策略适用性 | 管理员用户绕过 pod 安全策略的实施。 |  (管理员 & 非管理员) 的所有用户都将看到相同的策略。 没有基于用户的特殊大小写。 可在命名空间级别排除策略应用程序。
+| 策略作用域 | Pod 安全策略不带命名空间 | Azure 策略使用的约束模板不可带命名空间。
+| 拒绝/审核/变化操作 | Pod 安全策略仅支持拒绝操作。 可以在 create 请求上对默认值进行转变。 可以在更新请求期间完成验证。| Azure 策略支持审核 & 拒绝操作。 目前尚不支持转变，但计划了。
+| Pod 安全策略符合性 | 启用 pod 安全策略之前，不会看到已存在的有关 pod 的符合性。 启用 pod 安全策略后，创建不符合的 pod。 | 应用 Azure 策略之前存在的不兼容的 pod 将显示在 "策略冲突" 中。 如果策略设置为 "拒绝" 效果，则会拒绝启用 Azure 策略后创建的不符合的 pod。
+| 如何查看群集上的策略 | `kubectl get psp` | `kubectl get constrainttemplate` -返回所有策略。
+| Pod 安全策略标准版-特权 | 启用该功能时，默认情况下会创建特权 pod 安全策略资源。 | 特权模式意味着无限制，因此它等效于没有 Azure 策略分配。
+| [Pod 安全策略标准-基线/默认值](https://kubernetes.io/docs/concepts/security/pod-security-standards/#baseline-default) | 用户安装 pod 安全策略基线资源。 | Azure 策略提供了一个映射到基准箱安全策略的 [内置基线计划](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicySetDefinitions%2Fa8640138-9b0a-4a28-b8cb-1666c838647d) 。
+| [Pod 安全策略标准-受限](https://kubernetes.io/docs/concepts/security/pod-security-standards/#restricted) | 用户安装 pod 安全策略限制资源。 | Azure 策略提供了一种 [内置限制计划](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicySetDefinitions%2F42b8ef37-b724-4e24-bbc8-7a7708edfe00) ，该计划映射到受限箱安全策略。
 
 ## <a name="enable-pod-security-policy-on-an-aks-cluster"></a>对 AKS 群集启用 Pod 安全策略
 
@@ -453,3 +478,4 @@ kubectl delete namespace psp-aks
 [aks-faq]: faq.md
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
+[policy-samples]: ./policy-reference.md#microsoftcontainerservice

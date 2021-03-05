@@ -1,30 +1,30 @@
 ---
 title: Azure 应用服务访问限制
-description: 了解如何通过设置访问限制，在 Azure App Service 中保护应用。
+description: 了解如何通过设置访问限制在 Azure 应用服务中保护应用。
 author: ccompy
 ms.assetid: 3be1f4bd-8a81-4565-8a56-528c037b24bd
 ms.topic: article
 ms.date: 12/17/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 1bcd0ea253db01d626ef1887ef0983d30ca794b9
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 93fd682f252ac3f85c642633484a9c4eb6c2fb4b
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98209934"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102180847"
 ---
 # <a name="set-up-azure-app-service-access-restrictions"></a>设置 Azure 应用服务访问限制
 
 通过设置访问限制可以定义一个按优先级排序的允许/拒绝列表，用于控制在网络中对应用的访问。 该列表可以包含 IP 地址或 Azure 虚拟网络子网。 如果存在一个或多个条目，则列表末尾会存在一个隐式的“全部拒绝”。
 
-访问限制功能适用于所有 Azure App Service 托管的工作负载。 工作负荷可以包括 web 应用、API 应用、Linux 应用、Linux 容器应用和功能。
+访问限制功能适用于所有 Azure 应用服务托管的工作负载。 工作负载可包括 Web 应用、API 应用、Linux 应用、Linux 容器应用和函数。
 
-向你的应用程序发出请求时，将根据访问限制列表中的规则对 "发件人" 地址进行评估。 如果 "发件人" 地址在配置了 "服务终结点到 Microsoft" 的子网中，则会将源子网与访问限制列表中的虚拟网络规则进行比较。 如果不允许根据列表中的规则访问该地址，服务会使用 [HTTP 403](https://en.wikipedia.org/wiki/HTTP_403) 状态代码进行答复。
+向你的应用程序发出请求时，将根据访问限制列表中的规则对 "发件人" 地址进行评估。 如果 FROM 地址位于配置为使用 Microsoft.Web 服务终结点的子网中，则会根据访问限制列表中的虚拟网络规则比较源子网。 如果不允许根据列表中的规则访问该地址，服务会使用 [HTTP 403](https://en.wikipedia.org/wiki/HTTP_403) 状态代码进行答复。
 
-访问限制功能在应用服务前端角色中实现，这些角色是运行代码的辅助角色主机的上游。 因此，访问限制是有效的网络访问控制列表 (ACL)。
+访问限制功能是在应用服务前端角色（即代码运行所在的辅助角色主机中的上游）中实现的。 因此，访问限制是有效的网络访问控制列表 (ACL)。
 
-限制从 Azure 虚拟网络访问 Web 应用的功能通过[服务终结点][serviceendpoints]启用。 使用服务终结点，你可以限制从所选子网对多租户服务的访问。 对托管在应用服务环境中的应用的流量进行限制不起作用。 如果处于应用服务环境中，可应用 IP 地址规则控制对应用的访问。
+限制从 Azure 虚拟网络访问 Web 应用的功能通过[服务终结点][serviceendpoints]启用。 使用服务终结点，可以限制从选定的子网对多租户服务进行访问。 对托管在应用服务环境中的应用的流量进行限制不起作用。 如果处于应用服务环境中，可应用 IP 地址规则控制对应用的访问。
 
 > [!NOTE]
 > 必须在网络端以及要对其启用服务终结点的 Azure 服务上同时启用服务终结点。 有关支持服务终结点的 Azure 服务列表，请参阅[虚拟网络服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)。
@@ -32,7 +32,7 @@ ms.locfileid: "98209934"
 
 :::image type="content" source="media/app-service-ip-restrictions/access-restrictions-flow.png" alt-text="访问限制流程图。":::
 
-## <a name="manage-access-restriction-rules-in-the-portal"></a>管理门户中的访问限制规则
+## <a name="manage-access-restriction-rules-in-the-portal"></a>在门户中管理访问限制规则
 
 若要向应用添加访问限制规则，请执行以下操作：
 
@@ -44,7 +44,7 @@ ms.locfileid: "98209934"
 
     :::image type="content" source="media/app-service-ip-restrictions/access-restrictions.png" alt-text="Azure 门户中的“应用服务网络选项”窗格的屏幕截图。":::
 
-1. 在 " **访问限制** " 页上，查看为应用定义的访问限制规则的列表。
+1. 在“访问限制”页上查看为应用定义的访问限制规则列表。
 
    :::image type="content" source="media/app-service-ip-restrictions/access-restrictions-browse.png" alt-text="Azure 门户中的 &quot;访问限制&quot; 页的屏幕截图，显示为所选应用定义的访问限制规则的列表。":::
 
@@ -52,7 +52,7 @@ ms.locfileid: "98209934"
 
 ### <a name="add-an-access-restriction-rule"></a>添加访问限制规则
 
-若要向应用添加访问限制规则，请在 " **访问限制** " 窗格中选择 " **添加规则**"。 规则在添加后会立即生效。 
+若要向应用添加访问限制规则，请在“访问限制”窗格中选择“添加规则” 。 规则在添加后会立即生效。 
 
 规则会从“优先级”列中最小的数字开始，按优先级顺序强制执行。 即使只添加了一条规则，一个隐式的“全部拒绝”也会立即生效。
 
@@ -66,17 +66,17 @@ ms.locfileid: "98209934"
 1. 在“优先级”框中，输入一个优先级值。
 1. 在“类型”下拉列表中选择规则类型。
 
-以下各节介绍了不同类型的规则。
+将在下面各部分介绍这些类型的规则。
 
 > [!NOTE]
-> - 访问限制规则限制为512。 如果需要512个以上的访问限制规则，我们建议你考虑安装独立的安全产品，如 Azure 前门、Azure 应用网关或 WAF。
+> - 限制为 512 条访问限制规则。 如果需要的访问限制规则数超出 512 条，建议考虑安装独立的安全产品，如 Azure Front Door、Azure 应用程序网关或替换 WAF。
 >
 #### <a name="set-an-ip-address-based-rule"></a>设置基于 IP 地址的规则
 
-按照上一部分中所述的过程进行操作，但要添加以下内容：
-* 在步骤4中，在 " **类型** " 下拉列表中选择 " **IPv4** " 或 " **IPv6**"。 
+按照上一部分所述的过程操作，但有以下新增内容：
+* 在步骤 4 的“类型”下拉列表中，选择“IPv4”或“IPv6”  。 
 
-在无类别 Inter-Domain 路由 (CIDR) 表示法中指定 IPv4 和 IPv6 地址的 **IP 地址块** 。 若要指定地址，可以使用类似 1.2.3.4/32 的格式，其中前四个八位字节代表自己的 IP 地址，/32 为掩码 。 所有地址的 IPv4 CIDR 表示法都为 0.0.0.0/0。 若要了解有关 CIDR 表示法的详细信息，请参阅无 [类别 Inter-Domain 路由](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)。 
+以无类别域际路由选择 (CIDR) 表示法为 IPv4 和 IPv6 地址指定 IP 地址块。 若要指定地址，可以使用类似 1.2.3.4/32 的格式，其中前四个八位字节代表自己的 IP 地址，/32 为掩码 。 所有地址的 IPv4 CIDR 表示法都为 0.0.0.0/0。 若要了解有关 CIDR 表示法的详细信息，请参阅无 [类别 Inter-Domain 路由](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)。 
 
 #### <a name="set-a-service-endpoint-based-rule"></a>设置基于服务终结点的规则
 
@@ -120,7 +120,7 @@ ms.locfileid: "98209934"
 
 ### <a name="edit-a-rule"></a>编辑规则
 
-1. 若要开始编辑现有访问限制规则，请在 " **访问限制** " 页上，选择要编辑的规则。
+1. 若要开始编辑现有的访问限制规则，请在“访问限制”页上选择要编辑的规则。
 
 1. 在 " **编辑访问限制** " 窗格中进行更改，然后选择 " **更新规则**"。 编辑的内容会立即生效，包括在优先级排序方面的更改。
 
@@ -164,9 +164,9 @@ ms.locfileid: "98209934"
     ```
 ## <a name="manage-access-restriction-rules-programmatically"></a>以编程方式管理访问限制规则
 
-可以通过执行以下任一操作以编程方式添加访问限制： 
+可通过以下任一方法以编程方式添加访问限制： 
 
-* 使用 [Azure CLI](/cli/azure/webapp/config/access-restriction?view=azure-cli-latest&preserve-view=true)。 例如：
+* 使用 [Azure CLI](/cli/azure/webapp/config/access-restriction)。 例如：
    
   ```azurecli-interactive
   az webapp config access-restriction add --resource-group ResourceGroup --name AppName \
@@ -181,7 +181,7 @@ ms.locfileid: "98209934"
       -Name "Ip example rule" -Priority 100 -Action Allow -IpAddress 122.133.144.0/24
   ```
    > [!NOTE]
-   > 使用服务标记、http 标头或多源规则至少需要5.1.0 版本。 可以通过以下方式验证已安装模块的版本： **get-installedmodule-Name Az**
+   > 使用服务标记、http 头或多源规则至少需要版本 5.1.0。 可以通过以下方式来验证已安装模块的版本：Get-InstalledModule -Name Az
 
 还可通过以下任一方法手动设置值：
 
@@ -207,7 +207,7 @@ ms.locfileid: "98209934"
     }
   }
   ```
-  使用服务标记和 http 标头限制的高级示例的 JSON 语法为：
+  使用服务标记和 http 头限制的高级示例的 JSON 语法为：
   ```json
   {
     "properties": {

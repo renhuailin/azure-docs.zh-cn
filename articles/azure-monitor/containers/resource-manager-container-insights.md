@@ -1,26 +1,26 @@
 ---
-title: 适用于容器的 Azure Monitor 的资源管理器模板示例
-description: Azure 资源管理器模板示例，用于部署和配置适用于容器的 Azure Monitor。
+title: 容器见解资源管理器模板示例
+description: 用于部署和配置容器见解的 Azure 资源管理器模板示例。
 ms.subservice: logs
 ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 05/18/2020
-ms.openlocfilehash: e33bb6ae04f0b11a25a7ab87362bc243ee19c79c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: f75278663abde8d4b0f47c8df1dbbdbc298bcafb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100597095"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723327"
 ---
-# <a name="resource-manager-template-samples-for-azure-monitor-for-containers"></a>适用于容器的 Azure Monitor 的资源管理器模板示例
+# <a name="resource-manager-template-samples-for-container-insights"></a>容器见解资源管理器模板示例
 本文包括 [Azure 资源管理器模板](../../azure-resource-manager/templates/template-syntax.md)示例，用于在 Azure Monitor 中部署和配置虚拟机的 Log Analytics 代理。 每个示例都包含模板文件和参数文件，其中包含要提供给模板的示例值。
 
 [!INCLUDE [azure-monitor-samples](../../../includes/azure-monitor-resource-manager-samples.md)]
 
 
 ## <a name="enable-for-aks-cluster"></a>为 AKS 群集启用
-以下示例为某个 AKS 群集上的容器启用 Azure Monitor。
+以下示例为某个 AKS 群集启用容器见解。
 
 
 ### <a name="template-file"></a>模板文件
@@ -357,4 +357,4 @@ ms.locfileid: "100597095"
 ## <a name="next-steps"></a>后续步骤
 
 * [获取 Azure Monitor 的其他示例模板](../resource-manager-samples.md)。
-* [了解适用于容器的 Azure Monitor](../containers/container-insights-overview.md)。
+* [详细了解容器见解](../containers/container-insights-overview.md)。

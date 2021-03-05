@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: da1acc6316d7af87ffe35b9560919c324373591a
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: b2471ccd2a412c7cbae9d4e59412ac055697e3d7
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96484594"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102180354"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>静态数据的 Azure 存储加密
 
-在数据保存到云时，Azure 存储会自动加密数据。 Azure 存储加密可以保护数据，并帮助组织履行在安全性与合规性方面做出的承诺。
+Azure 存储 (SSE) 使用服务器端加密，在将数据保存到云中时自动对数据进行加密。 Azure 存储加密可以保护数据，并帮助组织履行在安全性与合规性方面做出的承诺。
 
 ## <a name="about-azure-storage-encryption"></a>关于 Azure 存储加密
 
@@ -32,7 +32,7 @@ Azure 存储中的数据将使用 256 位 [AES 加密法](https://en.wikipedia.o
 
 有关 Azure 存储加密的底层加密模块的详细信息，请参见[加密 API：下一代](/windows/desktop/seccng/cng-portal)。
 
-有关 Azure 托管磁盘的加密和密钥管理的信息，请参阅适用于 Windows VM 的 [Azure 托管磁盘的服务器端加密](../../virtual-machines/disk-encryption.md)或适用于 Linux VM 的 [Azure 托管磁盘的服务器端加密](../../virtual-machines/disk-encryption.md)。
+有关 Azure 托管磁盘的加密和密钥管理的信息，请参阅 [azure 托管磁盘的服务器端加密](../../virtual-machines/disk-encryption.md)。
 
 ## <a name="about-encryption-key-management"></a>关于加密密钥管理
 

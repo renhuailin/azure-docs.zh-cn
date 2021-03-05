@@ -6,23 +6,24 @@ services: container-service
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: a655c8c145b4f3812dae9f1a4ec1e5eebbe44809
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: af8403f80f7282207ee1bc6b2f81da0d83d264e0
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348468"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102180932"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-using-the-azure-cli"></a>创建 Azure Kubernetes 服务 (AKS) 群集并将其配置为通过 Azure CLI 使用虚拟节点
 
 本文介绍如何使用 Azure CLI 创建和配置虚拟网络资源和 AKS 群集，然后启用虚拟节点。
 
-> [!NOTE]
-> [本文](virtual-nodes.md) 概述了使用虚拟节点的区域可用性和限制。
 
 ## <a name="before-you-begin"></a>开始之前
 
 Azure 容器实例 (ACI) 和 AKS 群集中运行的 Pod 可以借助虚拟节点进行网络通信。 若要提供此通信，应创建虚拟网络子网并分配委派的权限。 虚拟节点仅适用于使用 *高级* 网络 (Azure CNI) 创建的 AKS 群集。 默认情况下，使用 *基本* 网络 (kubenet) 创建 AKS 群集。 本文介绍如何创建虚拟网络和子网，然后部署使用高级网络的 AKS 群集。
+
+> [!IMPORTANT]
+> 在将虚拟节点用于 AKS 之前，请查看 [AKS 虚拟节点的限制][virtual-nodes-aks] 和 [ACI 的虚拟网络限制][virtual-nodes-networking-aci]。 这些限制会影响 AKS 群集和虚拟节点的位置、网络配置和其他配置详细信息。
 
 如果以前没有使用过 ACI，请在订阅中注册服务提供程序。 你可以使用 [az provider list][az-provider-list] 命令检查 ACI 提供程序注册的状态，如下面的示例所示：
 
@@ -105,7 +106,7 @@ az ad sp create-for-rbac --skip-assignment
 }
 ```
 
-记下 *appId* 和 *password* 。 后续步骤会用到这些值。
+记下 *appId* 和 *password*。 后续步骤会用到这些值。
 
 ## <a name="assign-permissions-to-the-virtual-network"></a>分配对虚拟网络的权限
 
@@ -352,3 +353,5 @@ az network vnet subnet update --resource-group $RES_GROUP --vnet-name $AKS_VNET 
 [aks-basic-ingress]: ingress-basic.md
 [az-provider-list]: /cli/azure/provider#az-provider-list
 [az-provider-register]: /cli/azure/provider#az-provider-register
+[virtual-nodes-aks]: virtual-nodes.md
+[virtual-nodes-networking-aci]: ../container-instances/container-instances-virtual-network-concepts.md

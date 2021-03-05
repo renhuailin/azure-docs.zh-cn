@@ -1,5 +1,5 @@
 ---
-title: Azure 流分析群集概述（预览版）
+title: Azure 流分析群集概述
 description: 了解流分析群集的单租户专用产品/服务。
 author: sidramadoss
 ms.author: sidram
@@ -7,14 +7,14 @@ ms.service: stream-analytics
 ms.topic: overview
 ms.custom: mvc
 ms.date: 09/22/2020
-ms.openlocfilehash: 75a95fa4ad36b69ca920f527060644dcc5264ce8
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: e5157a02f97370b20db85bf5e3e8aae98a2d8668
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98019527"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101709285"
 ---
-# <a name="overview-of-azure-stream-analytics-cluster-preview"></a>Azure 流分析群集概述（预览版）
+# <a name="overview-of-azure-stream-analytics-cluster"></a>Azure 流分析群集概述
 
 Azure 流分析群集为复杂且要求苛刻的流式处理场景提供单租户部署。 完整规模的流分析群集的实时处理速度超过 200 MB/秒。 在专用群集上运行的流分析作业可以利用标准产品/服务中的所有功能，并支持与输入和输出的私有链接连接。
 

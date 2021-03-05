@@ -4,12 +4,12 @@ description: 了解如何针对不同情况自定义应用服务中的身份验�
 ms.topic: article
 ms.date: 07/08/2020
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 4f2f43b142b290d29a4a90e504422b6c9ba2739c
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 50587feff29e1c02a639d63d0c99156dcec4f68e
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98630321"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102180864"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Azure 应用服务中的身份验证和授权的高级用法
 
@@ -24,7 +24,7 @@ ms.locfileid: "98630321"
 * [How to configure your app to use Microsoft Account login](configure-authentication-provider-microsoft.md)
 * [如何将应用配置为使用 Twitter 登录](configure-authentication-provider-twitter.md)
 * [如何将应用配置为使用 OpenID Connect 提供程序（预览版）进行登录](configure-authentication-provider-openid-connect.md)
-* [如何将应用配置为使用 Apple (Preview 的登录名登录) ](configure-authentication-provider-apple.md)
+* [如何将应用配置为使用“Apple 登录”（预览版）进行登录](configure-authentication-provider-apple.md)
 
 ## <a name="use-multiple-sign-in-providers"></a>使用多个登录提供程序
 
@@ -170,7 +170,7 @@ az webapp config appsettings set --name <app_name> --resource-group <group_name>
 
 ## <a name="refresh-identity-provider-tokens"></a>刷新标识提供程序令牌
 
-当提供程序的访问令牌（而不是[会话令牌](#extend-session-token-expiration-grace-period)）到期时，需要在再次使用该令牌之前重新验证用户。 向应用程序的 `/.auth/refresh` 终结点发出 `GET` 调用可以避免令牌过期。 调用后，应用服务会自动刷新经过身份验证的用户的 [令牌存储](overview-authentication-authorization.md#token-store) 中的访问令牌。 应用代码发出的后续令牌请求将获取刷新的令牌。 但是，若要正常刷新令牌，令牌存储必须包含提供程序的[刷新令牌](https://auth0.com/learn/refresh-tokens/)。 每个提供程序会阐述获取刷新令牌的方式。以下列表提供了简短摘要：
+当提供程序的访问令牌（而不是[会话令牌](#extend-session-token-expiration-grace-period)）到期时，需要在再次使用该令牌之前重新验证用户。 向应用程序的 `/.auth/refresh` 终结点发出 `GET` 调用可以避免令牌过期。 调用应用服务时，应用服务会自动刷新已经过身份验证用户的[令牌存储](overview-authentication-authorization.md#token-store)中的访问令牌。 应用代码发出的后续令牌请求将获取刷新的令牌。 但是，若要正常刷新令牌，令牌存储必须包含提供程序的[刷新令牌](https://auth0.com/learn/refresh-tokens/)。 每个提供程序会阐述获取刷新令牌的方式。以下列表提供了简短摘要：
 
 - **Google**：将一个 `access_type=offline` 查询字符串参数追加到 `/.auth/login/google` API 调用。 如果使用移动应用 SDK，可将该参数添加到 `LogicAsync` 重载之一（请参阅 [Google 刷新令牌](https://developers.google.com/identity/protocols/OpenIDConnect#refresh-tokens)）。
 - **Facebook**：不提供刷新令牌。 生存期较长的令牌在 60 天后过期（请参阅 [Facebook 访问令牌的过期和延期](https://developers.facebook.com/docs/facebook-login/access-tokens/expiration-and-extension)）。
@@ -280,12 +280,12 @@ Microsoft 帐户和 Azure Active Directory 都允许从多个域登录。 例如
 
 如果其他任何级别不提供所需的授权，或者平台或标识提供者不受支持，则必须编写自定义代码，以基于[用户声明](#access-user-claims)为用户授权。
 
-## <a name="updating-the-configuration-version-preview"></a>更新 (预览版的配置版本) 
+## <a name="updating-the-configuration-version-preview"></a>更新配置版本（预览版）
 
-身份验证/授权功能有两个版本的管理 API。 预览 V2 版本是 Azure 门户中 "身份验证 (预览") 体验所必需的。 已使用 V1 API 的应用可以在进行一些更改后升级到 V2 版本。 特别要注意的是，必须将机密配置移至槽-粘滞应用程序设置。 目前还不支持 Microsoft 帐户提供程序的配置。
+对于身份验证/授权功能，管理 API 具有两种版本。 V2 预览版本是 Azure 门户“身份验证（预览版）”体验的必备项。 已在使用 V1 API 的应用可在进行一些更改后升级到 V2 版本。 具体而言，必须将机密配置移至槽粘滞应用程序设置。 目前，V2 中也不支持配置 Microsoft 帐户提供程序。
 
 > [!WARNING]
-> 迁移到 V2 预览版后，将对应用程序禁用应用服务身份验证/授权功能的管理，例如，其在 Azure 门户、Azure CLI 和 Azure PowerShell 的现有体验。 这不可逆。 在预览期间，不鼓励或支持生产工作负荷的迁移。 对于测试应用程序，只应遵循此部分中的步骤。
+> 迁移到 V2 预览版后，将禁止通过某些客户端（例如 Azure 门户、Azure CLI 和 Azure PowerShell 中的现有体验）管理应用程序的应用服务身份验证/授权功能。 此更改无法撤消。 在预览版期间，不建议也不支持迁移生产工作负载。 你只需按照本部分中测试应用程序的步骤操作即可。
 
 ### <a name="moving-secrets-to-application-settings"></a>将机密移动到应用程序设置
 
@@ -301,18 +301,18 @@ Microsoft 帐户和 Azure Active Directory 都允许从多个域登录。 例如
 
    在生成的 JSON 有效负载中，记下已配置的每个提供程序所用的机密值：
 
-   * ADD `clientSecret`
+   * AAD：`clientSecret`
    * Google `googleClientSecret`
    * Facebook `facebookAppSecret`
    * Twitter `twitterConsumerSecret`
-   * Microsoft 帐户： `microsoftAccountClientSecret`
+   * Microsoft 帐户：`microsoftAccountClientSecret`
 
    > [!IMPORTANT]
-   > 机密值是重要的安全凭据，应谨慎处理。 不要共享这些值或将其保留在本地计算机上。
+   > 机密值是重要的安全凭据，应谨慎处理。 请勿共享这些值或将其保留在本地计算机。
 
-1. 为每个机密值创建槽-粘滞应用程序设置。 你可以选择每个应用程序设置的名称。 它的值应该与你在上一步中获得的值匹配，或引用你使用该值创建的 [Key Vault 机密](./app-service-key-vault-references.md?toc=/azure/azure-functions/toc.json) 。
+1. 应为每个机密值创建槽粘滞应用程序设置。 可以选择每个应用程序设置的名称。 其值应与上一步中获取的值匹配，也可能[引用使用该值创建的密钥保管库机密](./app-service-key-vault-references.md?toc=/azure/azure-functions/toc.json)。
 
-   若要创建此设置，可以使用 Azure 门户或针对每个提供程序运行以下各项的变体：
+   若要创建此设置，可使用 Azure 门户或对每个提供程序运行以下命令（应进行相应更改）：
 
    ```azurecli
    # For Web Apps, Google example    
@@ -323,19 +323,19 @@ Microsoft 帐户和 Azure Active Directory 都允许从多个域登录。 例如
    ```
 
    > [!NOTE]
-   > 此配置的应用程序设置应标记为槽粘滞，这意味着它们不会在 [槽交换操作](./deploy-staging-slots.md)期间在环境之间移动。 这是因为身份验证配置本身与环境相关联。 
+   > 此配置的应用程序设置应标记为槽粘滞，这意味着它们不会在[槽交换操作](./deploy-staging-slots.md)期间在各环境之间移动。 这是因为身份验证配置本身与环境相关联。 
 
-1. 创建一个名为的新 JSON 文件 `authsettings.json` 。获取之前接收的输出，并删除其中的每个机密值。 将剩余的输出写入文件，确保不包含任何机密。 在某些情况下，配置可能包含包含空字符串的数组。 请确保不是 `microsoftAccountOAuthScopes` ，如果存在，则将该值切换到 `null` 。
+1. 创建名为 `authsettings.json` 的新 JSON 文件。采用之前接收的输出，并删除其中的每个机密值。 将其余的输出写入该文件，确保不包含任何机密。 在某些情况下，配置中可能有包含空字符串的数组。 请确保 `microsoftAccountOAuthScopes` 不包含这类数组，如有，请将值切换为 `null`。
 
-1. 添加一个属性， `authsettings.json` 该属性指向你之前为每个提供程序创建的应用程序设置名称：
+1. 向 `authsettings.json` 添加一个属性，该属性指向之前为每个提供程序创建的应用程序设置名称：
  
-   * ADD `clientSecretSettingName`
+   * AAD：`clientSecretSettingName`
    * Google `googleClientSecretSettingName`
    * Facebook `facebookAppSecretSettingName`
    * Twitter `twitterConsumerSecretSettingName`
-   * Microsoft 帐户： `microsoftAccountClientSecretSettingName`
+   * Microsoft 帐户：`microsoftAccountClientSecretSettingName`
 
-   此操作后的示例文件看起来可能类似于以下内容，在这种情况下，仅针对 AAD 进行配置：
+   完成这一操作后的示例文件可能类似于以下内容，本例中仅对 AAD 进行了配置：
 
    ```json
    {
@@ -391,32 +391,32 @@ Microsoft 帐户和 Azure Active Directory 都允许从多个域登录。 例如
    az rest --method PUT --url "/subscriptions/<subscription_id>/resourceGroups/<group_name>/providers/Microsoft.Web/sites/<site_name>/config/authsettings?api-version=2020-06-01" --body @./authsettings.json
    ```
 
-1. 验证您的应用程序是否仍按预期运行。
+1. 验证应用程序在此操作后是否仍按预期运行。
 
-1. 删除在前面的步骤中使用的文件。
+1. 删除前面的步骤中使用的文件。
 
-你现在已迁移应用以将标识提供者机密存储为应用程序设置。
+现在，你已迁移应用，以将标识提供者机密存储为应用程序设置。
 
 ### <a name="support-for-microsoft-account-registrations"></a>支持 Microsoft 帐户注册
 
 V2 API 目前不支持将 Microsoft 帐户作为不同的提供程序。 相反，它利用汇聚 [Microsoft 标识平台](../active-directory/develop/v2-overview.md) 通过个人 microsoft 帐户登录用户。 切换到 V2 API 时，V1 Azure Active Directory 配置用于配置 Microsoft 标识平台提供程序。
 
-如果现有配置包含 Microsoft 帐户提供程序，并且不包含 Azure Active Directory 提供程序，则可以将配置切换到 Azure Active Directory 提供程序，然后执行迁移。 要执行此操作：
+如果现有配置包含 Microsoft 帐户提供程序而不包含 Azure Active Directory 提供程序，则可以将配置切换到 Azure Active Directory 提供程序，然后执行迁移。 要执行此操作：
 
-1. 中转到 Azure 门户中的 [**应用注册**](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) ，并找到与你的 Microsoft 帐户提供商关联的注册。 它可能位于 "个人帐户应用程序" 标题下。
-1. 导航到注册的 "身份验证" 页。 在 "重定向 Uri" 下，应会看到以结尾的条目 `/.auth/login/microsoftaccount/callback` 。 复制此 URI。
-1. 添加与刚刚复制的 URI 匹配的新 URI，但会将其结束 `/.auth/login/aad/callback` 。 这将允许应用服务身份验证/授权配置使用注册。
+1. 转到 Azure 门户中的[应用注册](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)，并找到与你的 Microsoft 帐户提供程序关联的注册。 该注册可能位于“来自个人帐户的应用程序”标题下。
+1. 导航到该注册的“身份验证”页。 在“重定向 URI”下，你应会看到以 `/.auth/login/microsoftaccount/callback` 结尾的条目。 复制此 URI。
+1. 添加一个与刚刚复制的 URI 匹配的新 URI，但要将其结尾改为 `/.auth/login/aad/callback`。 这样，应用服务身份验证/授权配置便可以使用注册。
 1. 导航到应用的应用服务身份验证/授权配置。
 1. 收集 Microsoft 帐户提供程序的配置。
-1. 使用 "高级" 管理模式配置 Azure Active Directory 提供程序，同时提供你在上一步骤中收集的客户端 ID 和客户端密钥值。 对于 "颁发者 URL"，请使用 `<authentication-endpoint>/<tenant-id>/v2.0` ，将替换为 *\<authentication-endpoint>* [云环境的身份验证终结点](../active-directory/develop/authentication-national-cloud.md#azure-ad-authentication-endpoints) ， (例如，" https://login.microsoftonline.com " （适用于全局 Azure) ，还 *\<tenant-id>* 将替换为 **目录 (租户) ID**。
-1. 保存配置后，可以通过在浏览器中导航到 `/.auth/login/aad` 站点上的终结点并完成登录流，来测试登录流。
-1. 此时，你已成功地复制了配置，但仍保留了现有的 Microsoft 帐户提供程序配置。 删除之前，请确保应用程序的所有部分都通过登录链接（等等）引用 Azure Active Directory 提供程序。验证应用的所有部分是否按预期方式工作。
-1. 验证了一切是否适用于 AAD Azure Active Directory 提供程序后，可以删除 Microsoft 帐户提供程序配置。
+1. 使用“高级”管理模式配置 Azure Active Directory 提供程序，同时提供你在上一步中收集的客户端 ID 和客户端密码值。 对于证书颁发者 URL，请使用 `<authentication-endpoint>/<tenant-id>/v2.0`，然后将 \<authentication-endpoint> 替换为[云环境的身份验证终结点](../active-directory/develop/authentication-national-cloud.md#azure-ad-authentication-endpoints)（例如全球 Azure 的“https://login.microsoftonline.com”），同时将 \<tenant-id> 替换为你的 Directory（租户）ID 。
+1. 保存配置后，请在浏览器中导航到站点上的 `/.auth/login/aad` 终结点，以测试登录流，然后完成登录流。
+1. 至此，你已成功复制配置，但现有 Microsoft 帐户提供程序配置仍然存在。 在将其删除之前，请确保应用程序的所有部分都通过登录链接等引用 Azure Active Directory 提供程序。验证应用的所有部分是否按预期工作。
+1. 验证 AAD Azure Active Directory 提供程序能够正常运作后，即可删除 Microsoft 帐户提供程序配置。
 
-某些应用可能已有 Azure Active Directory 和 Microsoft 帐户的单独注册。 此时不能迁移这些应用。 
+某些应用可能已对 Azure Active Directory 和 Microsoft 帐户拥有单独的注册。 此时不能迁移这些应用。 
 
 > [!WARNING]
-> 可以通过修改 AAD 应用注册 [支持的帐户类型](../active-directory/develop/supported-accounts-validation.md) 来聚合两个注册。 但是，这会强制为 Microsoft 帐户用户提供新的同意提示，并且这些用户的标识声明可能不同于结构， `sub` 因为在使用新的应用 ID 后更改值。 除非全面了解，否则不建议使用此方法。 应等待 V2 API 图面中的两个注册的支持。
+> 可通过修改 AAD 应用注册[支持的帐户类型](../active-directory/develop/supported-accounts-validation.md)来聚合两个注册。 但这样会强制向 Microsoft 帐户用户显示新的同意提示，并且这些用户的标识声明在结构上可能不同，同时由于正在使用新的应用 ID，`sub` 值会发生明显变化。 除非完全理解此方法，否则不建议使用该方法。 应等待 V2 API 表面提供对两个注册的支持。
 
 ### <a name="switching-to-v2"></a>切换到 V2
 
@@ -648,7 +648,7 @@ V2 API 目前不支持将 Microsoft 帐户作为不同的提供程序。 相反�
 
 ##### <a name="from-the-azure-cli"></a>通过 Azure CLI
 
-使用 Azure CLI 通过 [az webapp auth show](/cli/azure/webapp/auth?view=azure-cli-latest&preserve-view=true#az-webapp-auth-show) 命令查看当前中间件版本。
+使用 Azure CLI 通过 [az webapp auth show](/cli/azure/webapp/auth#az-webapp-auth-show) 命令查看当前中间件版本。
 
 ```azurecli-interactive
 az webapp auth show --name <my_app_name> \
@@ -679,7 +679,7 @@ az webapp auth show --name <my_app_name> \
 
 #### <a name="update-the-current-runtime-version"></a>更新当前运行时版本
 
-使用 Azure CLI，可以通过 [az webapp auth update](/cli/azure/webapp/auth?view=azure-cli-latest&preserve-view=true#az-webapp-auth-update) 命令更新应用中的 `runtimeVersion` 设置。
+使用 Azure CLI，可以通过 [az webapp auth update](/cli/azure/webapp/auth#az-webapp-auth-update) 命令更新应用中的 `runtimeVersion` 设置。
 
 ```azurecli-interactive
 az webapp auth update --name <my_app_name> \

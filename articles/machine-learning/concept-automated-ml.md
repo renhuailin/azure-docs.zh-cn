@@ -1,7 +1,7 @@
 ---
-title: 什么是自动 ML？ 自动化 ML
+title: 什么是自动化 ML？ 自动化 ML
 titleSuffix: Azure Machine Learning
-description: 了解 Azure 机器学习如何使用您提供的参数和标准来自动生成模型。
+description: 了解 Azure 机器学习如何使用你提供的参数和条件来自动生成模型。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,16 +10,16 @@ author: cartacioS
 ms.author: sacartac
 ms.date: 10/27/2020
 ms.custom: automl
-ms.openlocfilehash: ee9267637c5e3250bfcd543ca46c39d513725819
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: 6ed9b316fceeb30a775e2e0d90e7bbb0a07278cd
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98072218"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102180491"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>什么是自动化机器学习 (AutoML)？
 
-自动化机器学习也称为自动化 ML 或 AutoML，是将机器学习模型开发过程中耗时的反复性任务自动化的过程。 数据科学家、分析师和开发人员可以使用它来生成高度可缩放、高效且高产能的 ML 模型，同时保证模型的质量。 Azure 机器学习中的自动 ML 基于我们的 [Microsoft 研究部门](https://www.microsoft.com/research/project/automl/)的一项突破。
+自动化机器学习也称为自动化 ML 或 AutoML，是将机器学习模型开发过程中耗时的反复性任务自动化的过程。 数据科学家、分析师和开发人员可以使用它来生成高度可缩放、高效且高产能的 ML 模型，同时保证模型的质量。 Azure 机器学习中的自动化 ML 基于 [Microsoft Research 部门](https://www.microsoft.com/research/project/automl/)的突破性技术。
 
 传统的机器学习模型开发是资源密集型的，需要具备丰富的领域知识，并需要花费大量的时间来生成和比较数十个模型。 使用自动化机器学习可以缩减生成生产就绪型 ML 模型所需的时间，同时使工作变得更轻松高效。
 
@@ -116,7 +116,7 @@ ms.locfileid: "98072218"
 
 在每个自动化机器学习试验中，数据将自动缩放或规范化，以帮助确保算法的良好性能。 在模型训练过程中，将对每个模型应用以下缩放或规范化技术之一。 了解 AutoML 如何帮助[防止模型中出现过度拟合与数据不平衡](concept-manage-ml-pitfalls.md)。
 
-|缩放和规范化| 说明 |
+|缩放 &nbsp; & &nbsp; 处理| 说明 |
 | ------------- | ------------- |
 | [StandardScaleWrapper](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html)  | 通过删除平均值并缩放到单位差异来标准化特征  |
 | [MinMaxScalar](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html)  | 通过按该列的最小值和最大值缩放每个特征来转换特征  |
@@ -158,21 +158,21 @@ ms.locfileid: "98072218"
 选择计算目标时请考虑以下因素：
 
  * **选择本地计算**：如果你的方案涉及到使用小数据和短训练（即，每个子运行持续几秒或几分钟）进行初始探索或演示，则可能更适合在本地计算机上进行训练。  这样就无需进行设置，并且可以直接使用基础结构资源（电脑或 VM）。
- * **选择远程 ML 计算群集**：如果你要使用较大的数据集（例如在生产培训中创建需要更长训练的模型）进行培训，则远程计算将提供更好的端到端时间性能，因为 `AutoML` 将在群集的节点上并行进行定型。 在远程计算中，内部基础结构的启动时间大约增加了每个子运行1.5 分钟，还增加了群集基础结构的分钟数（如果尚未启动并运行这些 Vm）。
+ * **选择远程 ML 计算群集**：如果使用较大的数据集进行训练（例如，在生产训练中创建需要较长时间训练的模型），则远程计算可以提供好得多的端到端时间性能，因为 `AutoML` 会在群集节点之间并行化训练。 在远程计算上，内部基础结构的启动时间大约会根据每个子运行增加 1.5 分钟，如果 VM 尚未启动并运行，则群集基础结构的启动时间也会额外增加几分钟。
 
 ### <a name="pros-and-cons"></a>优点和缺点
 选择是要使用本地还是远程计算时，请考虑两者的以下优点和缺点。
 
 |  | 优点（优势）  |缺点（劣势）  |
 |---------|---------|---------|---------|
-|**本地计算目标** |  <li> 无环境启动时间   | <li>  特征子集<li>  无法并行化运行 <li> 对于大数据表现较差。 <li>训练时无数据流式处理 <li>  没有基于 DNN 的特征化 <li> 仅限 Python SDK |
-|**远程 ML 计算群集**|  <li> 完整的特征集 <li> 并行化子运行 <li>   大数据支持<li>  基于 DNN 的特征化 <li>  计算群集的按需动态可伸缩性 <li> 还提供无代码体验 (Web UI)  |  <li> 群集节点的启动时间 <li> 每个子运行的启动时间    |
+|**本地计算目标** |  <li> 无需花费时间来启动环境   | <li>  特征子集<li>  无法并行化运行 <li> 对于大数据表现较差。 <li>训练时无数据流式处理 <li>  没有基于 DNN 的特征化 <li> 仅限 Python SDK |
+|**远程 ML 计算群集**|  <li> 完整的特征集 <li> 并行化子运行 <li>   大数据支持<li>  基于 DNN 的特征化 <li>  计算群集的按需动态可伸缩性 <li> 还提供无代码体验 (Web UI)  |  <li> 需要花费时间来启动群集节点 <li> 需要花费时间来启动每个子运行    |
 
 ### <a name="feature-availability"></a>功能可用性 
 
  使用远程计算时，有更多的功能可用，如下表中所示。 
 
-| Feature                                                    | Remote | Local | 
+| 功能                                                    | Remote | Local | 
 |------------------------------------------------------------|--------|-------|
 | 数据流式处理（最高 100 GB 的大数据支持）          | ✓      |       | 
 | 基于 DNN-BERT 的文本特征化和训练             | ✓      |       |

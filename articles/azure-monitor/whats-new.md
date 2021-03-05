@@ -6,12 +6,12 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 02/10/2021
-ms.openlocfilehash: 45cbd0fc2a3a6a059274f33e25b577fde1f4a4ab
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: b21e5ea8e25844e3e025915b0b9f15162c642f25
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100585542"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713433"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Azure Monitor 文档中有哪些新增内容？
 
@@ -22,15 +22,15 @@ ms.locfileid: "100585542"
 ### <a name="general"></a>常规 
 - [Azure Monitor 常见问题解答](faq.md) - 添加了有关 Application Insights 设备信息的条目。
 ### <a name="agents"></a>代理  
-- [收集 Windows 事件跟踪 (ETW) 事件以在 Azure Monitor 日志中进行分析](platform/data-sources-event-tracing-windows.md) - 新文章。
-- [Azure Monitor 中的数据收集规则（预览版）](platform/data-collection-rule-overview.md) - 添加了 PowerShell 和 CLI 示例的链接。
+- [收集 Windows 事件跟踪 (ETW) 事件以在 Azure Monitor 日志中进行分析](./agents/data-sources-event-tracing-windows.md) - 新文章。
+- [Azure Monitor 中的数据收集规则（预览版）](./agents/data-collection-rule-overview.md) - 添加了 PowerShell 和 CLI 示例的链接。
 
 ### <a name="alerts"></a>警报  
-- [配置 Azure 以使用安全导出连接 ITSM 工具](platform/itsm-connector-secure-webhook-connections-azure-configuration.md) - 新文章。
-- [ITSMC 仪表板中的连接器状态错误](platform/itsmc-dashboard-errors.md) - 新文章。
-- [使用 ITSMC 仪表板调查错误](platform/itsmc-dashboard.md) - 新文章。
-- [排查 Azure 指标警报](platform/alerts-troubleshoot-metric.md) - 添加了针对动态阈值的部分。
-- [排查 IT 服务管理连接器中的问题](platform/itsmc-troubleshoot-overview.md) - 新文章。
+- [配置 Azure 以使用安全导出连接 ITSM 工具](./alerts/itsm-connector-secure-webhook-connections-azure-configuration.md) - 新文章。
+- [ITSMC 仪表板中的连接器状态错误](./alerts/itsmc-dashboard-errors.md) - 新文章。
+- [使用 ITSMC 仪表板调查错误](./alerts/itsmc-dashboard.md) - 新文章。
+- [排查 Azure 指标警报](./alerts/alerts-troubleshoot-metric.md) - 添加了针对动态阈值的部分。
+- [排查 IT 服务管理连接器中的问题](./alerts/itsmc-troubleshoot-overview.md) - 新文章。
 
 ### <a name="application-insights"></a>Application Insights
 - [Azure Application Insights 遥测关联](app/correlation.md) - 添加了一个模块在 OpenCensus Python 中调用另一个模块时的跟踪关联。
@@ -47,25 +47,25 @@ ms.locfileid: "100585542"
 - [适用于 Azure 数据资源管理器的 Azure Monitor（预览版）](insights/data-explorer.md)- 新文章。
 
 ### <a name="logs"></a>日志    
-- [Azure Monitor 客户管理的密钥](platform/customer-managed-keys.md) - 引入用户分配的托管标识。
-- [Azure Monitor 日志专用群集](log-query/logs-dedicated-clusters.md) - 更新了响应代码。
-- [跨服务查询 - Azure Monitor 和 Azure 数据资源管理器（预览版）](platform/azure-monitor-troubleshooting-logs.md)- 新文章。
+- [Azure Monitor 客户管理的密钥](./logs/customer-managed-keys.md) - 引入用户分配的托管标识。
+- [Azure Monitor 日志专用群集](./logs/logs-dedicated-clusters.md) - 更新了响应代码。
+- [跨服务查询 - Azure Monitor 和 Azure 数据资源管理器（预览版）](/azure/azure-monitor/platform/azure-data-explorer-monitor-cross-service-query)- 新文章。
 
 ### <a name="metrics"></a>指标
-- [Azure Monitor 指标的指标聚合和显示说明](platform/metrics-aggregation-explained.md) - 新文章。
+- [Azure Monitor 指标的指标聚合和显示说明](./essentials/metrics-aggregation-explained.md) - 新文章。
 
 ### <a name="platform-logs"></a>平台日志
-- [Azure Monitor 资源日志支持的服务和类别](platform/resource-logs-categories.md) - 新文章。
+- [Azure Monitor 资源日志支持的服务和类别](./essentials/resource-logs-categories.md) - 新文章。
 
 ### <a name="visualizations"></a>可视化效果
-- [Azure Monitor 工作簿数据源](platform/workbooks-data-sources.md) - 添加了合并和更改分析。
+- [Azure Monitor 工作簿数据源](./visualize/workbooks-data-sources.md) - 添加了合并和更改分析。
 
 
 ## <a name="december-2020"></a>2020 年 12 月
 
 ### <a name="general"></a>常规
 - [Azure Monitor 客户管理的密钥](logs/customer-managed-keys.md) - 添加了错误消息。
-- [与 Azure Monitor 集成的合作伙伴](/partners.md) - 添加了有关事件中心集成的部分。
+- [与 Azure Monitor 集成的合作伙伴](partners.md) - 添加了有关事件中心集成的部分。
 
 ### <a name="agents"></a>代理
 - [使用 Azure Monitor 跨资源查询 Azure 数据资源管理器](logs/azure-monitor-data-explorer-proxy.md) -新文章。
@@ -96,7 +96,7 @@ ms.locfileid: "100585542"
 - [排查适用于 Java 的 Azure Monitor Application Insights](app/java-standalone-troubleshoot.md) - 新文章。
 
 ### <a name="containers"></a>容器
-- [Azure Monitor 中的容器报告](insights/container-insights-reports.md) - 新文章。
+- [容器见解报表](insights/container-insights-reports.md) - 新文章。
 
 ### <a name="logs"></a>日志
 - [Azure Monitor 日志专用群集](logs/logs-dedicated-clusters.md) - 添加了自动化命令、取消链接和删除的方法以及故障排除。
@@ -168,16 +168,16 @@ ms.locfileid: "100585542"
 
 ### <a name="virtual-machines"></a>虚拟机
 
-- [启用用于 VM 的 Azure Monitor 概述](vm/vminsights-enable-overview.md) - 添加了支持的区域。
+- [启用 VM 见解概述](vm/vminsights-enable-overview.md) - 添加支持的区域。
 
-用于 VM 的 Azure Monitor 来宾运行状况（预览）的新文章
+有关 VM 见解来宾运行状况的新文章（预览）
 
-- [用于 VM 的 Azure Monitor 来宾运行状况（预览）](vm/vminsights-health-overview.md)
-- [用于 VM 的 Azure Monitor 来宾运行状况警报（预览）](vm/vminsights-health-alerts.md)
-- [在用于 VM 的 Azure Monitor 来宾运行状况中配置监视（预览）](vm/vminsights-health-configure.md)
-- [使用数据收集规则在用于 VM 的 Azure Monitor 来宾运行状况中配置监视（预览）](vm/vminsights-health-configure-dcr.md)
-- [启用用于 VM 的 Azure Monitor 来宾运行状况（预览）](vm/vminsights-health-enable.md)
-- [用于 VM 的 Azure Monitor 来宾运行状况的故障排除（预览）](vm/vminsights-health-troubleshoot.md)
+- [VM 见解来宾运行状况（预览）](vm/vminsights-health-overview.md)
+- [VM 见解来宾运行状况警报（预览）](vm/vminsights-health-alerts.md)
+- [在 VM 见解来宾运行状况中配置监视（预览）](vm/vminsights-health-configure.md)
+- [使用数据收集规则在 VM 见解来宾运行状况中配置监视（预览）](vm/vminsights-health-configure-dcr.md)
+- [启用 VM 见解来宾运行状况（预览）](vm/vminsights-health-enable.md)
+- [VM 见解来宾运行状况疑难解答（预览）](vm/vminsights-health-troubleshoot.md)
 
 
 
@@ -210,9 +210,9 @@ ms.locfileid: "100585542"
 - [Azure 中的自动缩放入门](autoscale/autoscale-get-started.md) - 添加了有关将自动缩放移动到不同区域的部分。
 
 ### <a name="containers"></a>容器
-- [使用用于容器的 Azure Monitor 配置 PV 监视](containers/container-insights-persistent-volumes.md) - 新文章。
-- [如何管理用于容器的 Azure Monitor 代理](containers/container-insights-manage-agent.md) - 添加了对已启用 Azure Arc 的 Kubernetes 群集的支持。
-- [用于容器的 Azure Monitor 中的指标警报](containers/container-insights-metric-alerts.md) - 添加了对已启用 Azure Arc 的 Kubernetes 群集的支持。
+- [使用容器见解配置 PV 监视](containers/container-insights-persistent-volumes.md) - 新文章。
+- [如何管理容器见解代理](containers/container-insights-manage-agent.md) - 添加了对已启用 Azure Arc 的 Kubernetes 群集的支持。
+- [来自容器见解的指标警报](containers/container-insights-metric-alerts.md) - 添加了对已启用 Azure Arc 的 Kubernetes 群集的支持。
 
 ### <a name="insights-and-solutions"></a>见解和解决方案
 - [IT 服务管理连接器 - Azure Monitor 中的安全导出](alerts/it-service-management-connector-secure-webhook-connections.md) - 添加了有关 ServiceNow 部分。
@@ -234,7 +234,7 @@ ms.locfileid: "100585542"
 ### <a name="virtual-machines"></a>虚拟机
 - [更改用于 VM 的 Azure Monitor 中的分析](vm/vminsights-change-analysis.md) - 新文章。
 - [启用用于 VM 的 Azure Monitor 概述](vm/vminsights-enable-overview.md) - 添加了支持的区域。
-- [如何为指标更新用于容器的 Azure Monitor](containers/container-insights-update-metrics.md) - 添加了对已启用 Azure Arc 的 Kubernetes 群集的支持。
+- [如何为指标更新容器见解](containers/container-insights-update-metrics.md) - 添加了对已启用 Azure Arc 的 Kubernetes 群集的支持。
 
 
 
@@ -265,8 +265,8 @@ ms.locfileid: "100585542"
 
 
 ### <a name="containers"></a>容器
-- [使用适用于容器的 Azure Monitor 配置启用 Azure Arc 的 Kubernetes 群集](containers/container-insights-enable-arc-enabled-clusters.md) - 添加了有关使用服务主体启用监视功能的指南。
-- [用于容器的 Azure Monitor 中的部署和 HPA 指标](containers/container-insights-deployment-hpa-metrics.md) - 新文章。
+- [使用容器见解配置已启用 Azure Arc 的 Kubernetes 群集](containers/container-insights-enable-arc-enabled-clusters.md) - 添加了有关使用服务主体启用监视功能的指南。
+- [带有容器见解的部署和 HPA 指标](containers/container-insights-deployment-hpa-metrics.md) - 新文章。
 
 ### <a name="insights-and-solutions"></a>见解和解决方案
 - [适用于 Azure Cache for Redis 的 Azure Monitor](insights/redis-cache-insights-overview.md) - 删除了预览名称。
@@ -319,7 +319,7 @@ ms.locfileid: "100585542"
 
 
 #### <a name="new-and-updated-articles-from-restructure-of-agent-content"></a>有关代理内容重构的新文章和更新的文章
-- [启用用于 VM 的 Azure Monitor 概述](vm/vminsights-enable-overview.md)
+- [启用 VM 见解概述](vm/vminsights-enable-overview.md)
 - [在 Linux 计算机上安装 Log Analytics 代理](agents/agent-linux.md)
 - [在 Windows 计算机上安装 Log Analytics 代理](agents/agent-windows.md)
 - [Log Analytics 代理概述](agents/log-analytics-agent.md)
@@ -344,7 +344,7 @@ ms.locfileid: "100585542"
 
 
 ### <a name="containers"></a>容器
-- [用于容器的 Azure Monitor 中的部署和 HPA 指标](containers/container-insights-deployment-hpa-metrics.md) - 新文章。
+- [带有容器见解的部署和 HPA 指标](containers/container-insights-deployment-hpa-metrics.md) - 新文章。
 
 ### <a name="insights"></a>洞察力
 - [Azure Monitor 中的监视解决方案](insights/solutions.md) - 更新了新 UI
@@ -372,7 +372,7 @@ ms.locfileid: "100585542"
 ## <a name="july-2020"></a>2020 年 7 月
 
 ### <a name="general"></a>常规
-- [部署 Azure Monitor](deploy-scale.md) - 用于 VM 的 Azure Monitor 加入内容的重构。
+- [部署 Azure Monitor](deploy-scale.md) - VM 见解载入内容重构。
 - [使用 Azure 专用链接将网络安全地连接到 Azure Monitor](logs/private-link-security.md) - 增加了有关限制的部分。
 
 ### <a name="alerts"></a>警报
@@ -389,8 +389,8 @@ ms.locfileid: "100585542"
 - [排除 Azure Application Insights Profiler 的问题](app/profiler-troubleshooting.md) - 增加了有关在 Azure 应用服务上运行 ASP.NET Core 应用探查器时出现的 bug 的注释。 
 
 ### <a name="containers"></a>容器
-- [Azure Monitor 中的容器日志警报](containers/container-insights-log-alerts.md) - 新文章。
-- [Azure Monitor 中的容器指标警报](containers/container-insights-metric-alerts.md) - 新文章。
+- [来自容器见解的日志警报](containers/container-insights-log-alerts.md) - 新文章。
+- [来自容器见解的指标警报](containers/container-insights-metric-alerts.md) - 新文章。
 
 ### <a name="logs"></a>日志
 - [Azure Monitor 客户托管的密钥](logs/customer-managed-keys.md) - 增加了错误消息和用于查询的 CMK 配置部分。
@@ -408,18 +408,18 @@ ms.locfileid: "100585542"
 
 ### <a name="virtual-machines"></a>虚拟机
 
-用于 VM 的 Azure Monitor 内容重构的新文章和更新的文章
+有关 VM 见解内容重构的新文章和更新的文章
 
-- [什么是用于 VM 的 Azure Monitor？](vm/vminsights-overview.md)
-- [为用于 VM 的 Azure Monitor 配置 Log Analytics 工作区](vm/vminsights-configure-workspace.md)
+- [什么是 VM 见解？](vm/vminsights-overview.md)
+- [配置 VM 见解的 Log Analytics 工作区](vm/vminsights-configure-workspace.md)
 - [将 Linux 计算机连接到 Azure Monitor](agents/agent-linux.md)
 - [为混合环境启用 Azure Monitor](vm/vminsights-enable-hybrid.md)
 - [在 Azure 门户中为单个虚拟机或虚拟机规模集启用 Azure Monitor](vm/vminsights-enable-portal.md)
-- [使用 Azure Policy 启用用于 VM 的 Azure Monitor](./vm/vminsights-enable-policy.md)
-- [启用用于 VM 的 Azure Monitor 概述](vm/vminsights-enable-overview.md)
-- [使用 PowerShell 启用用于 VM 的 Azure Monitor](vm/vminsights-enable-powershell.md)
-- [使用资源管理器模板启用用于 VM 的 Azure Monitor](vm/vminsights-enable-resource-manager.md)
-- [使用 PowerShell 或模板启用用于 VM 的 Azure Monitor](./vm/vminsights-enable-powershell.md)
+- [使用 Azure Policy 启用 VM 见解](./vm/vminsights-enable-policy.md)
+- [启用 VM 见解概述](vm/vminsights-enable-overview.md)
+- [使用 PowerShell 启用 VM 见解](vm/vminsights-enable-powershell.md)
+- [使用资源管理器模板启用 VM 见解](vm/vminsights-enable-resource-manager.md)
+- [使用 PowerShell 或模板启用 VM 见解](./vm/vminsights-enable-powershell.md)
 
 
 ### <a name="visualizations"></a>可视化效果
@@ -453,9 +453,9 @@ ms.locfileid: "100585542"
 
 ### <a name="containers"></a>容器
 - [如何停止监视混合 Kubernetes 群集](containers/container-insights-optout-hybrid.md) - 添加了有关已启用 Arc 的 Kubernetes 的部分。
-- [使用用于容器的 Azure Monitor 配置已启用 Azure Arc 的 Kubernetes 群集](containers/container-insights-enable-arc-enabled-clusters.md) - 新文章。
-- [使用用于容器的 Azure Monitor 配置 Azure Red Hat OpenShift v4.x](containers/container-insights-azure-redhat4-setup.md) - 已更新先决条件。
-- [为容器实时数据设置 Azure Monitor（预览版）](containers/container-insights-livedata-setup.md) - 删除了关于 Azure 美国政府不提供此功能的说明。
+- [使用容器见解配置已启用 Azure Arc 的 Kubernetes 群集](containers/container-insights-enable-arc-enabled-clusters.md) - 新文章。
+- [使用容器见解配置 Azure Red Hat OpenShift v4.x](containers/container-insights-azure-redhat4-setup.md) - 已更新先决条件。
+- [设置容器见解实时数据（预览）](containers/container-insights-livedata-setup.md) - 删除了关于 Azure 美国政府不提供此功能的说明。
 
 ### <a name="insights"></a>洞察力
 - [常见问题解答 - Azure 中的网络性能监视器解决方案](insights/network-performance-monitor-faq.md) - 添加了 ExpressRoute 监视器的常见问题解答。
@@ -495,9 +495,9 @@ ms.locfileid: "100585542"
 - [在 Azure Monitor 中查看 Azure 活动日志事件](./essentials/activity-log.md#view-the-activity-log)
 
 ### <a name="virtual-machines"></a>虚拟机
-- [在 Azure 门户中启用用于 VM 的 Azure Monitor](./vm/vminsights-enable-portal.md) - 更新为包含 Azure Arc。
-- [启用用于 VM 的 Azure Monitor 概述](vm/vminsights-enable-overview.md) - 更新为包含 Azure Arc。
-- [什么是用于 VM 的 Azure Monitor？](vm/vminsights-overview.md) - 更新为包含 Azure Arc。
+- [在 Azure 门户中启用 VM 见解](./vm/vminsights-enable-portal.md) - 更新为包含 Azure Arc。
+- [启用 VM 见解概述](vm/vminsights-enable-overview.md) - 更新为包含 Azure Arc。
+- [什么是 VM 见解？](vm/vminsights-overview.md) - 更新为包含 Azure Arc。
 
 
 ### <a name="visualizations"></a>可视化效果
@@ -523,8 +523,8 @@ ms.locfileid: "100585542"
 - [用于 Azure Monitor 的资源管理器模板示例](/resource-manager-samples.md)
 - [用于操作组的资源管理器模板示例](alerts/resource-manager-action-groups.md)
 - [用于代理的资源管理器模板示例](agents/resource-manager-agent.md)
-- [用于容器的 Azure Monitor 的资源管理器模板示例](containers/resource-manager-container-insights.md)
-- [用于 VM 的 Azure Monitor 的资源管理器模板示例](vm/resource-manager-vminsights.md)
+- [容器见解资源管理器模板示例](containers/resource-manager-container-insights.md)
+- [VM 见解资源管理器模板示例](vm/resource-manager-vminsights.md)
 - [用于诊断设置的资源管理器模板示例](essentials/resource-manager-diagnostic-settings.md)
 - [用于 Log Analytics 工作区的资源管理器模板示例](logs/resource-manager-workspace.md)
 - [用于日志查询的资源管理器模板示例](logs/resource-manager-log-queries.md)
@@ -559,10 +559,10 @@ ms.locfileid: "100585542"
 
 
 ### <a name="containers"></a>容器
-- [如何启用用于容器的 Azure Monitor](containers/container-insights-onboard.md) - 更新了防火墙配置表。
-- [如何为指标更新用于容器的 Azure Monitor](containers/container-insights-update-metrics.md) - 使用托管标识收集指标的更新。
-- [用于容器的 Azure Monitor 的监视成本](containers/container-insights-cost.md) - 新文章。
-- [设置用于容器实时数据（预览版）的 Azure Monitor](containers/container-insights-livedata-setup.md) - 支持新的群集角色绑定。
+- [如何启用容器见解](containers/container-insights-onboard.md) - 更新了防火墙配置表。
+- [如何为指标更新容器见解](containers/container-insights-update-metrics.md) - 使用托管标识收集指标的更新。
+- [容器见解的监视成本](containers/container-insights-cost.md) - 新文章。
+- [设置容器见解实时数据（预览）](containers/container-insights-livedata-setup.md) - 支持新的群集角色绑定。
 
 ### <a name="insights"></a>洞察力
 - [适用于 Azure Cache for Redis（预览版）的 Azure Monitor](insights/redis-cache-insights-overview.md) - 新文章。
@@ -588,12 +588,12 @@ ms.locfileid: "100585542"
 
 
 ### <a name="virtual-machines"></a>虚拟机
-- [启用用于 VM 的 Azure Monitor 概述](vm/vminsights-enable-overview.md) - 添加到了支持的 Ubuntu Server 版本。 为 Log Analytics 工作区添加了支持的区域。
-- [如何使用用于 VM 的 Azure Monitor 绘制性能图表](vm/vminsights-performance.md) - 为不可用的指标添加了限制部分。
+- [启用 VM 见解概述](vm/vminsights-enable-overview.md) - 添加到了支持的 Ubuntu Server 版本。 为 Log Analytics 工作区添加了支持的区域。
+- [如何使用 VM 见解绘制性能图表](vm/vminsights-performance.md) - 为不可用的指标添加了限制部分。
 
 ### <a name="visualizations"></a>可视化效果
 - [Azure Monitor 工作簿和 Azure 资源管理器模板](visualize/workbooks-automate.md) - 添加了用于部署工作簿模板的资源管理器更新。
-- [Azure Monitor 工作簿组](platform/workbooks-groups.md) - 新文章。
+- [Azure Monitor 工作簿组](./visualize/workbooks-groups.md) - 新文章。
 - [Azure Monitor 工作簿 - 使用 JSONPath 转换 JSON 数据](visualize/workbooks-jsonpath.md) - 新文章。
 
 
@@ -623,7 +623,7 @@ ms.locfileid: "100585542"
 
 ### <a name="containers"></a>容器
 
-- [使用用于容器的 Azure Monitor 配置 Azure Red Hat OpenShift v4.x](containers/container-insights-azure-redhat4-setup.md) - 新文章。
+- [使用容器见解配置 Azure Red Hat OpenShift v4.x](containers/container-insights-azure-redhat4-setup.md) - 新文章。
 - [如何手动修复 ServiceNow 同步问题](alerts/itsmc-resync-servicenow.md) - 新文章。
 - [如何停止监视 Azure 和 Red Hat OpenShift v4 群集](containers/container-insights-optout-openshift-v4.md) - 新文章。
 - [如何停止监视 Azure Red Hat OpenShift v3 群集](containers/container-insights-optout-openshift-v3.md) - 新文章。
@@ -671,8 +671,8 @@ ms.locfileid: "100585542"
 
 ### <a name="containers"></a>容器
 
-- [Azure Monitor 常见问题解答](faq.md) - 更新了用于容器的 Azure Monitor 的内容。
-- [使用用于容器的 Azure Monitor 配置 GPU 监视](containers/container-insights-gpu-monitoring.md) - 新文章。
+- [Azure Monitor 常见问题解答](faq.md) - 容器见解更新。
+- [使用容器见解配置 GPU 监视](containers/container-insights-gpu-monitoring.md) - 新文章。
 
 ### <a name="insights"></a>洞察力
 
@@ -696,18 +696,18 @@ ms.locfileid: "100585542"
 ### <a name="virtual-machines"></a>虚拟机
 
 - [使用 Azure Monitor 监视 Azure 虚拟机](vm/monitor-vm-azure.md) - 新文章。
-- [快速入门：使用 Azure Monitor 监视 Azure 虚拟机](vm/quick-monitor-azure-vm.md) - 更新了该文章，在其中添加了用于 VM 的 Azure Monitor 的内容。
-- [用于 VM 的 Azure Monitor 发出的警报](vm/vminsights-alerts.md) - 新文章。
-- [启用用于 VM 的 Azure Monitor 概述](vm/vminsights-enable-overview.md) - 更新了代理下载链接。
+- [快速入门：使用 Azure Monitor 监视 Azure 虚拟机](vm/quick-monitor-azure-vm.md) - 更新了该文章，在其中添加了 VM 见解的内容。
+- [来自 VM 见解的警报](vm/vminsights-alerts.md) - 新文章。
+- [启用 VM 见解概述](vm/vminsights-enable-overview.md) - 更新了代理下载链接。
 
-用于 VM 的 Azure Monitor 正式版常规更新
+VM 见解正式版常规更新
 
-- [什么是用于 VM 的 Azure Monitor？](vm/vminsights-overview.md)
-- [用于 VM 的 Azure Monitor（正式版）常见问题解答](vm/vminsights-ga-release-faq.md) 
-- [使用 Azure Policy 启用用于 VM 的 Azure Monitor](./vm/vminsights-enable-policy.md) 
-- [如何使用用于 VM 的 Azure Monitor 绘制性能图表](vm/vminsights-performance.md)
-- [如何从用于 VM 的 Azure Monitor 查询日志](vm/vminsights-log-search.md)
-- [使用用于 VM 的 Azure Monitor 查看应用依赖项](vm/vminsights-maps.md) 
+- [什么是 VM 见解？](vm/vminsights-overview.md)
+- [VM 见解 (GA) 常见问题](vm/vminsights-ga-release-faq.md) 
+- [使用 Azure Policy 启用 VM 见解](./vm/vminsights-enable-policy.md) 
+- [如何利用 VM 见解绘制性能图表](vm/vminsights-performance.md)
+- [如何从 VM 见解查询日志](vm/vminsights-log-search.md)
+- [使用 VM 见解查看应用依赖项](vm/vminsights-maps.md) 
 
 ### <a name="visualizations"></a>可视化效果
 
@@ -735,13 +735,13 @@ ms.locfileid: "100585542"
 
 ### <a name="insights-and-solutions"></a>见解和解决方案
 
-#### <a name="azure-monitor-for-containers"></a>用于容器的 Azure Monitor
+#### <a name="container-insights"></a>容器见解
 
-- [将 Azure Active Directory 与 Azure Kubernetes 服务集成](../aks/azure-ad-integration-cli.md) - 添加了有关以下事项的说明：创建客户端应用程序来支持启用了 Kubernetes RBAC 的群集以支持将 Azure Monitor 用于容器。
+- [将 Azure Active Directory 与 Azure Kubernetes 服务集成](../aks/azure-ad-integration-cli.md) - 添加了有关以下事项的说明：创建客户端应用程序来支持启用了 Kubernetes RBAC 的群集以支持容器见解。
 
-#### <a name="azure-monitor-for-vms"></a>用于 VM 的 Azure Monitor
+#### <a name="vm-insights"></a>VM 见解
 
-- [用于 VM 的 Azure Monitor（正式版）常见问题解答](vm/vminsights-ga-release-faq.md) - 对性能数据的存储方式相关内容进行了更改。
+- [VM 见解（正式版）常见问题解答](vm/vminsights-ga-release-faq.md) - 对性能数据的存储方式相关内容进行了更改。
 
 #### <a name="office-365"></a>Office 365
 
@@ -796,20 +796,20 @@ ms.locfileid: "100585542"
 
 ### <a name="insights-and-solutions"></a>见解和解决方案
 
-#### <a name="azure-monitor-for-containers"></a>用于容器的 Azure Monitor
+#### <a name="container-insights"></a>容器见解
 
-- [配置用于容器的 Azure Monitor 代理数据收集](containers/container-insights-agent-config.md) - 添加了有关在 Azure Red Hat OpenShift 上升级代理的详细信息，并添加了更多信息来区分代理的升级方法。
-- [为用于容器的 Azure Monitor 创建性能警报](./containers/container-insights-log-alerts.md) - 修订了信息，并更新了使用工作区上下文警报针对工作区中存储的性能数据创建警报的步骤。
-- [使用用于容器的 Azure Monitor 监视 Kubernetes](containers/container-insights-analyze.md) - 更新了概述文章，以及有关 Windows Kubernetes 群集支持的分析文章。
-- [使用用于容器的 Azure Monitor 配置 Azure Red Hat OpenShift 群集](containers/container-insights-azure-redhat-setup.md) - 添加了有关在 Azure Red Hat OpenShift 上升级代理的详细信息，并添加了更多信息来区分代理的升级方法。
-- [使用用于容器的 Azure Monitor 配置混合 Kubernetes 群集](containers/container-insights-hybrid-setup.md) - 更新了此文章，以反映 Kubelet cAdvisor 中添加的对安全端口 10250 的支持。
-- [如何管理用于容器的 Azure Monitor 代理](containers/container-insights-manage-agent.md) - 更新了有关在 Azure Red Hat OpenShift 与其他类型的 Kubernetes 群集中进行指标擦除的行为和配置的详细信息。
-- [配置用于容器的 Azure Monitor Prometheus 集成](containers/container-insights-prometheus-integration.md) - 更新了有关在 Azure Red Hat OpenShift 与其他类型的 Kubernetes 群集中进行指标擦除的行为和配置的详细信息。
-- [如何更新用于容器的 Azure Monitor 以启用指标](containers/container-insights-update-metrics.md) - 更新了有关在 Azure Red Hat OpenShift 与其他类型的 Kubernetes 群集中进行指标擦除的行为和配置的详细信息。
+- [配置容器见解代理数据收集](containers/container-insights-agent-config.md) - 添加了有关在 Azure Red Hat OpenShift 上升级代理的详细信息，并添加了更多信息来区分代理的升级方法。
+- [为容器见解创建性能警报](./containers/container-insights-log-alerts.md) - 修订了信息，并更新了使用工作区上下文警报针对工作区中存储的性能数据创建警报的步骤。
+- [使用容器见解监视 Kubernetes](containers/container-insights-analyze.md) - 更新了概述文章，以及有关 Windows Kubernetes 群集支持的分析文章。
+- [使用容器见解配置 Azure Red Hat OpenShift 群集](containers/container-insights-azure-redhat-setup.md) - 添加了有关在 Azure Red Hat OpenShift 上升级代理的详细信息，并添加了更多信息来区分代理的升级方法。
+- [使用容器见解配置混合 Kubernetes 群集](containers/container-insights-hybrid-setup.md) - 更新了此文章，以反映 Kubelet cAdvisor 中添加的对安全端口 10250 的支持。
+- [如何管理容器见解代理](containers/container-insights-manage-agent.md) - 更新了有关在 Azure Red Hat OpenShift 与其他类型的 Kubernetes 群集中进行指标擦除的行为和配置的详细信息。
+- [配置容器见解 Prometheus 集成](containers/container-insights-prometheus-integration.md) - 更新了有关在 Azure Red Hat OpenShift 与其他类型的 Kubernetes 群集中进行指标擦除的行为和配置的详细信息。
+- [如何更新指标的容器见解](containers/container-insights-update-metrics.md) - 更新了有关在 Azure Red Hat OpenShift 与其他类型的 Kubernetes 群集中进行指标擦除的行为和配置的详细信息。
 
-#### <a name="azure-monitor-for-vms"></a>用于 VM 的 Azure Monitor
+#### <a name="vm-insights"></a>VM 见解
 
-- [用于 VM 的 Azure Monitor（正式版）常见问题解答](vm/vminsights-ga-release-faq.md) - 添加了有关将工作区和代理升级到新版本的信息。
+- [VM 见解（正式版）常见问题解答](vm/vminsights-ga-release-faq.md) - 添加了有关将工作区和代理升级到新版本的信息。
 
 #### <a name="office-365"></a>Office 365
 
@@ -860,10 +860,10 @@ ms.locfileid: "100585542"
 
 ### <a name="insights-and-solutions"></a>见解和解决方案
 
-- [用于容器的 Azure Monitor 常见问题解答](./faq.md) - 添加了有关“映像”和“名称”字段的问题。
+- [容器见解常见问题解答](./faq.md) - 添加了有关“映像”和“名称”字段的问题。
 - [Azure Monitor 中的 Azure SQL Analytics 解决方案](insights/azure-sql.md) - 更新了数据库等待托管实例支持。
-- [配置用于容器的 Azure Monitor 代理数据收集](containers/container-insights-agent-config.md) - 添加了 enrich_container_logs 的设置。
-- [使用用于容器的 Azure Monitor 配置混合 Kubernetes 群集](containers/container-insights-hybrid-setup.md) - 添加了故障排除部分。
+- [配置容器见解代理数据收集](containers/container-insights-agent-config.md) - 添加了 enrich_container_logs 的设置。
+- [使用容器见解配置混合 Kubernetes 群集](containers/container-insights-hybrid-setup.md) - 添加了故障排除部分。
 - [使用 Azure Monitor 监视 Active Directory 复制状态](insights/ad-replication-status.md) - 更新了.NET Framework 先决条件。
 - [Azure 中的网络性能监视器解决方案](insights/network-performance-monitor.md) - 添加了支持的区域。
 - [使用 Azure Monitor 优化 Active Directory 环境](insights/ad-assessment.md) - 更新了 .NET Framework 先决条件。

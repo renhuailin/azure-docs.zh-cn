@@ -5,14 +5,14 @@ ms.subservice: ''
 ms.topic: overview
 author: mgoedtel
 ms.author: magoedte
-ms.date: 01/21/2021
+ms.date: 02/23/2021
 ms.custom: references_regions
-ms.openlocfilehash: 8b412fffdda1ce6a2023a8b9ae459a52986cd93d
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 899249c98c3ce0fdf061b1e689182f71c120aa13
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98690823"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101729381"
 ---
 # <a name="whats-new-in-azure-automation"></a>Azure 自动化有哪些新增功能？
 
@@ -24,7 +24,55 @@ Azure 自动化会不断改进。 为了让大家随时了解最新的开发成�
 
 本页面每月更新，请不时回来查看。
 
+## <a name="february-2021"></a>2021 年 2 月
+
+### <a name="support-for-automation-and-state-configuration-declared-ga-in-japan-west"></a>已在日本西部正式发布对自动化和 State Configuration 的支持声明
+
+**类型：** 新功能
+
+现可在日本西部区域使用自动化帐户和 State Configuration。 有关详细信息，请阅读[公告](https://azure.microsoft.com/updates/azure-automation-in-japan-west-region/)。
+
+### <a name="introduced-custom-azure-policy-compliance-to-enforce-runbook-execution-on-hybrid-worker"></a>引入了自定义 Azure Policy 合规性，以对混合辅助角色强制执行 runbook
+
+类型：新功能
+
+可以使用新的 Azure Policy 合规性规则来允许创建作业、Webhook 和作业计划，以使其仅在混合辅助角色组上运行。
+
+### <a name="update-management-availability-in-east-us-france-central-and-north-europe-regions"></a>现可在美国东部、法国中部和北欧地区使用更新管理
+
+**类型：** 新功能
+
+在美国东部、法国中部和北欧地区提供自动化更新管理功能。 请参阅[受支持的区域映射](how-to/region-mappings.md)，获取反映此更改的文档更新。
+
 ## <a name="january-2021"></a>2021 年 1 月
+
+### <a name="support-for-automation-and-state-configuration-declared-ga-in-switzerland-west"></a>已在瑞士西部正式发布对自动化和 State Configuration 的支持声明
+
+**类型：** 新功能
+
+现可在瑞士西部区域使用自动化帐户和 State Configuration。 有关详细信息，请阅读[公告](https://azure.microsoft.com/updates/azure-automation-in-switzerland-west-region/)。
+
+### <a name="added-python-3-script-to-import-module-with-multiple-dependencies"></a>添加了 Python 3 脚本以导入具有多个依赖项的模块
+
+**类型：** 新功能
+
+可从我们的 [GitHub 存储库](https://github.com/azureautomation/runbooks/blob/master/Utility/Python/import_py3package_from_pypi.py)下载该脚本。 
+ 
+### <a name="hybrid-runbook-worker-role-support-for-centos-8xrhel-8xsles-15"></a>混合 Runbook 辅助角色支持 Centos 8.x/RHEL 8.x/SLES 15
+
+类型。 新功能
+
+混合 Runbook 辅助角色功能支持 CentOS 8.x、REHL 8.x 和 SLES 15 分发版，仅用于对混合 Runbook 辅助角色的进程自动化。  请参阅[受支持的操作系统](automation-linux-hrw-install.md#supported-linux-operating-systems)，获取反映这些更改的文档更新。
+
+### <a name="update-management--change-tracking-availability-in-australia-east-east-asia-west-us--central-us-regions"></a>现可在澳大利亚东部、东亚、美国西部和美国中部地区使用更新管理和更改跟踪
+
+**类型：** 新功能
+
+在澳大利亚东部、东亚、美国西部和美国中部区域提供自动化帐户、更改跟踪和清单，以及更新管理。 
+
+### <a name="introduced-public-preview-of-python-3-runbooks-in-us-government-cloud"></a>在美国政府云中引入了 Python 3 runbook 公共预览版
+
+类型：新功能 Azure 自动化在美国政府云区域中引入了对 Python 3 云和混合 runbook 执行的公共预览版支持。  有关详细信息，请参阅[公告](https://azure.microsoft.com/updates/azure-automation-python-3-public-preview/)。
 
 ### <a name="azure-automation-runbooks-moved-from-technet-script-center-to-github"></a>Azure 自动化 runbook 从 TechNet 脚本中心移到了 GitHub
 

@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: a8ab7195958a6c2d5a730c38232eb348d505deda
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: d1310e3c4b4a56a27219cce613e8f6109d32c8c2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99593597"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101729380"
 ---
 # <a name="quickstart-set-up-azure-attestation-by-using-the-azure-portal"></a>快速入门：使用 Azure 门户设置 Azure 证明
 
@@ -90,7 +90,7 @@ ms.locfileid: "99593597"
 1. 转到 Azure 门户菜单或主页，然后选择“所有资源”。
 1. 在筛选器框中，输入证明提供程序名称。
 1. 选择证明提供程序并转到概述页面。
-1. 在下窗格中或在窗口左侧的“资源”菜单上，选择“策略签名者证书”。
+1. 在下窗格中或在窗口左侧的“资源”菜单上，选择“策略签名者证书”。 将显示一条提示消息，要求选择证书进行身份验证。 请选择适当的选项以继续。
 1. 选择“下载策略签名者证书”。 如果创建的证明提供程序没有策略签名要求，该按钮将被禁用。
 1. 下载的文本文件将具有 JWS 格式的所有证书。
 1. 验证证书计数和下载的证书。
@@ -122,7 +122,7 @@ ms.locfileid: "99593597"
 1.  转到 Azure 门户菜单或主页，然后选择“所有资源”。
 1.  在筛选器框中，输入证明提供程序名称。
 1.  选择证明提供程序并转到概述页面。
-1.  在下窗格中或在窗口左侧的“资源”菜单上选择“策略”。
+1.  在下窗格中或在窗口左侧的“资源”菜单上选择“策略”。 将显示一条提示消息，要求选择证书进行身份验证。 请选择适当的选项以继续。
 1.  选择首选的证明类型并查看当前策略 。
 
 ### <a name="configure-an-attestation-policy"></a>配置证明策略
@@ -144,6 +144,7 @@ ms.locfileid: "99593597"
    对于文件上传选项，可按文本格式查看策略预览，且此预览不可编辑。
 
 1. 若要查看已配置的策略，请在顶部菜单中选择“刷新”。
+
 
 如果创建的证明提供程序具有策略签名要求，请按照以下步骤采用 JWT 格式上传策略。
 

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/20/2018
-ms.openlocfilehash: 59e28e4a3d630aac0954802e8777058c00261006
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: ee15bfaa1d69e2e5047e7d24986f8e4e7d5b8b31
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791437"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102180235"
 ---
 # <a name="best-practices-for-azure-sql-data-sync"></a>Azure SQL 数据同步最佳做法 
 
@@ -51,6 +51,10 @@ Azure SQL 数据库仅支持单组凭据。 若要在此约束内完成这些任
 
 -   针对不同阶段更改凭据（例如 credential1 用于安装，credential2 用于正在运行）。  
 -   更改凭据的权限（即，在设置同步后更改权限）。
+
+### <a name="auditing"></a>审核
+
+建议在同步组中的数据库级别启用审核。 
 
 ## <a name="setup"></a>设置
 

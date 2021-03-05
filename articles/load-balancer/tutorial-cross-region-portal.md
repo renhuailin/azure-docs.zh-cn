@@ -6,13 +6,13 @@ author: asudbring
 ms.author: allensu
 ms.service: load-balancer
 ms.topic: tutorial
-ms.date: 11/24/2020
-ms.openlocfilehash: d94736656f691da9e893e4619a2299a061acd8e8
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.date: 02/24/2021
+ms.openlocfilehash: 7fc964abf7e6832341ad8b1ad55711b3a9993506
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98611196"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101712499"
 ---
 # <a name="tutorial-create-a-cross-region-azure-load-balancer-using-the-azure-portal"></a>教程：使用 Azure 门户创建跨区域 Azure 负载均衡器
 
@@ -41,28 +41,29 @@ ms.locfileid: "98611196"
 
 ## <a name="sign-in-to-azure-portal"></a>登录到 Azure 门户
 
-[登录](https://portal.azure.com)到 Azure 预览门户。
+[登录](https://preview.portal.azure.com)到 Azure 预览门户。
 
 ## <a name="create-cross-region-load-balancer"></a>创建跨区域负载均衡器
 
 在本部分中，你将创建跨区域负载均衡器和公共 IP 地址。
 
-1. 在屏幕的左上方选择“创建资源”>“网络”>“负载均衡器”，或者在搜索框中搜索“负载均衡器” 。
+1. 选择“创建资源”。  
+2. 在搜索框中，输入“负载均衡器”。 在搜索结果中选择“负载均衡器”。
+3. 在“负载均衡器”页上，选择“创建” 。
+4. 在“创建负载均衡器”页的“基本信息”选项卡中，输入或选择以下信息： 
 
-2. 在“创建负载均衡器”页的“基本信息”选项卡中，输入或选择以下信息： 
-
-    | 设置                 | 值                                              |
+    | 设置                 | “值”                                              |
     | ---                     | ---                                                |
     | 订阅               | 选择订阅。    |    
     | 资源组         | 选择“新建”并在文本框中输入“CreateCRLBTutorial-rg” 。|
     | 名称                   | 输入“myLoadBalancer-CR”                                   |
-    | 区域         | 选择“美国西部”。                                        |
+    | 区域         | 选择“(US) 美国西部”。                                        |
     | 类型          | 选择“公共”。                                        |
-    | SKU           | 选择“标准” |
+    | SKU           | 保留默认值“标准”。 |
     | 层           | 选择“全局” |
     | 公共 IP 地址 | 选择“新建”。|
     | 公共 IP 地址名称 | 在文本框中键入 myPublicIP-CR。|
-    | 路由首选项| 选择“Microsoft 网络” |
+    | 路由首选项| 选择“Microsoft 网络”。 </br> 有关路由首选项的详细信息，请参阅[什么是路由首选项（预览）？](../virtual-network/routing-preference-overview.md)。 |
 
     > [!NOTE]
     > 跨区域负载均衡器只能部署在以下主区域中：美国东部 2、美国西部、西欧、东南亚、美国中部、北欧、东亚。 有关详细信息，请参阅 **https://aka.ms/homeregionforglb**。
@@ -120,7 +121,7 @@ ms.locfileid: "98611196"
 
 3. 使用以下值配置运行状况探测：
 
-    | 设置 | 值 |
+    | 设置 | Value |
     | ------- | ----- |
     | 名称 | 输入 **myHealthProbe**。 |
     | 协议 | 选择“TCP”。 |
@@ -151,7 +152,7 @@ ms.locfileid: "98611196"
 
 3. 使用以下值配置负载均衡规则：
     
-    | 设置 | 值 |
+    | 设置 | Value |
     | ------- | ----- |
     | 名称 | 输入 **myHTTPRule**。 |
     | IP 版本 | 选择“IPv4” |

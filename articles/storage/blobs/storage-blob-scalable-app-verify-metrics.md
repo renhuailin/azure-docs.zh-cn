@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 02/20/2018
 ms.author: rogarana
 ms.subservice: blobs
-ms.openlocfilehash: 708a2369e5ba21f47f3d3fea509654b0385363f7
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 1bec42dabde64fed8126e47e39f19536b28014f1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95912308"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714827"
 ---
 # <a name="verify-throughput-and-latency-metrics-for-a-storage-account"></a>验证存储帐户的吞吐量和延迟指标
 
@@ -28,7 +28,7 @@ ms.locfileid: "95912308"
 
 ## <a name="configure-metrics"></a>配置指标
 
-导航到存储帐户中“设置”下的“指标(预览)”   。
+导航到存储帐户中“设置”下的“指标” 。
 
 从“子服务”  下拉列表中选择 Blob。
 
@@ -44,7 +44,7 @@ ms.locfileid: "95912308"
 |**流入量**|流入数据量。 此数字包括从外部客户端到 Azure 存储流入的数据量，以及流入 Azure 中的数据量。 |
 |**流出量**|流出数据量。 此数字包括从外部客户端到 Azure 存储流出的数据量，以及流出 Azure 中的数据量。 因此，此数字不反映计费的流出量。 |
 
-在“时间”旁边选择“过去 24 小时(自动)”。 针对“时间粒度”选择“过去一小时”和“分钟”，然后单击“应用”。
+在“时间”  旁边选择“过去 24 小时(自动)”  。 针对“时间粒度”  选择“过去一小时”  和“分钟”  ，然后单击“应用”  。
 
 ![存储帐户指标](./media/storage-blob-scalable-app-verify-metrics/figure1.png)
 
