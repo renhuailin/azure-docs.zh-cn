@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 02/02/2021
 ms.author: tisande
-ms.openlocfilehash: 9e6777a082dcda76c7c7df6bd1b55611cf5cdf84
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
-ms.translationtype: MT
+ms.openlocfilehash: dfa6b8eaa5f4ce8b2ebfb24a280e048ed3b19dda
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99493153"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102211509"
 ---
 # <a name="getting-started-with-sql-queries"></a>SQL 查询入门
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -24,8 +24,8 @@ ms.locfileid: "99493153"
 以下是一些如何使用各个 SDK 进行点读取的示例：
 
 - [.NET SDK](/dotnet/api/microsoft.azure.cosmos.container.readitemasync?preserve-view=true&view=azure-dotnet)
-- [Java SDK](/java/api/com.azure.cosmos.cosmoscontainer.readitem?preserve-view=true&view=azure-java-stable#com_azure_cosmos_CosmosContainer__T_readItem_java_lang_String_com_azure_cosmos_models_PartitionKey_com_azure_cosmos_models_CosmosItemRequestOptions_java_lang_Class_T__)
-- [Node.js SDK](/javascript/api/@azure/cosmos/item?preserve-view=true&view=azure-node-latest#read-requestoptions-)
+- [Java SDK](/java/api/com.azure.cosmos.cosmoscontainer.readitem#com_azure_cosmos_CosmosContainer__T_readItem_java_lang_String_com_azure_cosmos_models_PartitionKey_com_azure_cosmos_models_CosmosItemRequestOptions_java_lang_Class_T__)
+- [Node.js SDK](/javascript/api/@azure/cosmos/item#read-requestoptions-)
 - [Python SDK](/python/api/azure-cosmos/azure.cosmos.containerproxy?preserve-view=true&view=azure-python#read-item-item--partition-key--populate-query-metrics-none--post-trigger-include-none----kwargs-)
 
 **SQL 查询** - 可以使用结构化查询语言 (SQL) 作为 JSON 查询语言来编写查询，以查询数据。 查询始终至少花费 2.3 个请求单位，并且与点读取相比，查询的延迟通常更高且变化更大。 查询可以返回许多项。

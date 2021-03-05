@@ -1,6 +1,6 @@
 ---
-title: Azure AD 权限管理中更改访问包的请求设置-Azure Active Directory
-description: 了解如何在 Azure Active Directory 权限管理中更改访问包的请求设置。
+title: 在 Azure AD 权利管理中更改访问包的请求设置 - Azure Active Directory
+description: 了解如何在 Azure Active Directory 权利管理中更改访问包的请求设置。
 services: active-directory
 documentationCenter: ''
 author: ajburnle
@@ -16,24 +16,24 @@ ms.date: 09/16/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7b70e8a408c22be0331bfd0dcbe01830b072ab8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: c4a1aa737b1f671c08d51d780fa98db50f2869a1
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91449971"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102211645"
 ---
-# <a name="change-request-settings-for-an-access-package-in-azure-ad-entitlement-management"></a>Azure AD 权限管理中更改访问包的请求设置
+# <a name="change-request-settings-for-an-access-package-in-azure-ad-entitlement-management"></a>在 Azure AD 权利管理中更改访问包的请求设置
 
 访问包管理者可以通过编辑策略或添加新策略随时更改可以请求访问包的用户， 本文介绍如何更改现有访问包的请求设置。
 
-## <a name="choose-between-one-or-multiple-policies"></a>在一个或多个策略之间进行选择
+## <a name="choose-between-one-or-multiple-policies"></a>在一种或多种策略之间进行选择
 
 指定谁可以请求访问包的方式是使用策略。 在创建新策略或编辑访问包中的现有策略之前，需要确定访问包需要多少个策略。 
 
 创建访问包时，请指定用于创建策略的请求设置。 大多数访问包将具有单个策略，但单个访问包可以具有多个策略。 如果希望允许使用不同的请求和审批设置为不同的用户组授予分配，可为单个访问包创建多个策略。 
 
-例如，单个策略不可用于将内部和外部用户分配到同一个访问包。 但是，你可以在同一个访问包中创建两个策略，一个用于内部用户，另一个用于外部用户。 如果对某个用户应用了多个策略，当用户请求选择要分配到的策略时，系统会提示他们。 下图显示了具有两个策略的访问包。
+例如，单个策略不可用于将内部和外部用户分配到同一个访问包。 但是，可在同一个访问包中创建两个策略，一个用于内部用户，一个用于外部用户。 如果对某个用户应用了多个策略，当用户请求选择要分配到的策略时，系统会提示他们。 下图显示了具有两个策略的访问包。
 
 ![访问包中的多个策略](./media/entitlement-management-access-package-request-policy/access-package-policy.png)
 
@@ -50,34 +50,34 @@ ms.locfileid: "91449971"
 有关多个策略适用时使用的优先级逻辑的信息，请参阅[多个策略](entitlement-management-troubleshoot.md#multiple-policies
 )。
 
-## <a name="open-an-existing-access-package-and-add-a-new-policy-of-request-settings"></a>打开现有的访问包，并添加新的请求设置策略
+## <a name="open-an-existing-access-package-and-add-a-new-policy-of-request-settings"></a>打开现有的访问包，添加新的请求设置策略
 
-如果有一组用户应具有不同的请求和审批设置，则可能需要创建新策略。 按照以下步骤开始将新策略添加到现有的访问包：
+如果有一组用户应具有不同的请求和审批设置，则可能需要创建新策略。 按照以下步骤开始向现有访问包添加新策略：
 
 **必备角色：** 全局管理员、用户管理员、目录所有者或访问包管理员
 
 1. 在 Azure 门户中，依次单击“Azure Active Directory”、“标识监管”。  
 
-1. 在左侧菜单中单击“访问包”，然后打开访问包。****
+1. 在左侧菜单中单击“访问包”，然后打开访问包。
 
-1. 依次单击“策略”、“添加策略”。********
+1. 依次单击“策略”、“添加策略”。
 
-1. 你将从 " **基本** 信息" 选项卡开始。键入策略的名称和描述。
+1. 你将从“基本信息”选项卡开始。键入策略的名称和说明。
 
     ![创建策略并输入名称和说明](./media/entitlement-management-access-package-request-policy/policy-name-description.png)
 
 1. 单击“下一步”，打开“请求”选项卡   。
 
-1. 更改 **可以请求访问** 设置的用户。 使用以下部分中的步骤将设置更改为以下选项之一： 
+1. 更改“可请求访问的用户”设置。 按照以下部分中的步骤将设置更改为以下选项之一： 
     - [适用于目录中的用户](#for-users-in-your-directory) 
     - [适用于不在目录中的用户](#for-users-not-in-your-directory)
     - [无(仅限管理员直接分配)](#none-administrator-direct-assignments-only)
 
 ## <a name="for-users-in-your-directory"></a>适用于目录中的用户
 
-如果你希望目录中的用户可请求此访问包，请执行以下步骤。 定义请求策略时，可以指定单个用户，也可以指定用户组（通常做法）。 例如，组织可能已经有一个组（例如“所有员工”）。****  如果将该组添加到可以请求访问权限的用户的策略中，则该组的任何成员都可以请求访问权限。
+如果你希望目录中的用户可请求此访问包，请执行以下步骤。 定义请求策略时，可以指定单个用户，也可以指定用户组（通常做法）。 例如，组织可能已经有一个组（例如“所有员工”）。  如果将该组添加到可以请求访问权限的用户的策略中，则该组的任何成员都可以请求访问权限。
 
-1. 在“可以请求访问的用户”部分，单击“你目录中的用户”。********
+1. 在“可以请求访问的用户”部分，单击“你目录中的用户”。
 
     选择此选项后，会出现新的选项以进一步优化目录中哪些用户可以请求此访问包。
 
@@ -99,11 +99,11 @@ ms.locfileid: "91449971"
 
     ![访问包 - 请求 - 选择用户和组](./media/entitlement-management-access-package-request-policy/select-users-groups.png)
 
-1. 单击“选择”以添加用户和组。****
+1. 单击“选择”以添加用户和组。
 
-1. 如果需要批准，请使用 [Azure AD 授权管理 "中的访问包的更改审批设置中](entitlement-management-access-package-approval-policy.md) 的步骤来配置审批设置。
+1. 如果需要审批，请按照[在 Azure AD 权利管理中更改访问包的审批设置](entitlement-management-access-package-approval-policy.md)中的步骤来配置审批设置。
 
-1. 请参阅 [Enable requests](#enable-requests) 部分。
+1. 转到[启用请求](#enable-requests)部分。
  
 ## <a name="for-users-not-in-your-directory"></a>适用于不在目录中的用户
 
@@ -125,7 +125,7 @@ ms.locfileid: "91449971"
     |  |  |
     | --- | --- |
     | **特定的已连接的组织** | 如果要从管理员之前添加的组织列表中选择，请选择此选项。 来自选定组织的所有用户都可以请求此访问包。 |
-    | **所有已配置的已连接组织** | 如果所有已配置连接的组织中的所有用户都可以请求此访问包，请选择此选项。 只有已配置的连接的组织中的用户可以请求从所有配置的组织向用户显示的访问包。 |
+    | **所有配置的已连接组织** | 如果所有已配置连接的组织中的所有用户都可以请求此访问包，请选择此选项。 只有已配置的连接的组织中的用户可以请求从所有配置的组织向用户显示的访问包。 |
     | **所有用户（所有已连接的组织 + 任何新外部用户）** | 如果 internet 上的任何用户应该能够请求此访问包，请选择此选项。  如果用户不属于目录中的已连接组织，则在请求包时将自动为其创建连接的组织。 自动创建的连接的组织将处于 "已 **建议** " 状态。 有关建议状态的详细信息，请参阅 [已连接组织的状态属性](entitlement-management-organization.md#state-properties-of-connected-organizations)。 |
 
     已连接的组织是与你有关系的外部 Azure AD 目录或域。
@@ -143,9 +143,9 @@ ms.locfileid: "91449971"
     > [!NOTE]
     > 来自选定已连接的组织的所有用户都将可以请求此访问包。 这包括来自与组织关联的所有子域的 Azure AD 中的用户，除非这些域被 Azure B2B 允许或拒绝列表阻止。 有关详细信息，请参阅[允许或阻止向特定组织中的 B2B 用户发送邀请](../external-identities/allow-deny-list.md)。
 
-1. 如果需要批准，请使用 [Azure AD 授权管理 "中的访问包的更改审批设置中](entitlement-management-access-package-approval-policy.md) 的步骤来配置审批设置。
+1. 如果需要审批，请按照[在 Azure AD 权利管理中更改访问包的审批设置](entitlement-management-access-package-approval-policy.md)中的步骤来配置审批设置。
  
-1. 请参阅 [Enable requests](#enable-requests) 部分。
+1. 转到[启用请求](#enable-requests)部分。
 
 ## <a name="none-administrator-direct-assignments-only"></a>无(仅限管理员直接分配)
 
@@ -157,7 +157,7 @@ ms.locfileid: "91449971"
 
     创建访问包后，可以直接将特定的内部和外部用户分配到该访问包。 如果指定外部用户，将在目录中创建来宾用户帐户。 有关直接分配用户的详细信息，请参阅[查看、添加和删除访问包的分配](entitlement-management-access-package-assignments.md)。
 
-1. 跳到 " [启用请求](#enable-requests) " 部分。
+1. 跳到[启用请求](#enable-requests)部分。
 
 
 ## <a name="open-and-edit-an-existing-policy-of-request-settings"></a>打开和编辑请求设置的现有策略
@@ -168,23 +168,23 @@ ms.locfileid: "91449971"
 
 1. 在 Azure 门户中，依次单击“Azure Active Directory”、“标识监管”。  
 
-1. 在左侧菜单中单击“访问包”，然后打开访问包。****
+1. 在左侧菜单中单击“访问包”，然后打开访问包。
 
-1. 单击“策略”，然后单击要编辑的策略。****
+1. 单击“策略”，然后单击要编辑的策略。
 
     页面底部会打开“策略详细信息”窗格。
 
     ![访问包 -“策略详细信息”窗格](./media/entitlement-management-shared/policy-details.png)
 
-1. 单击“编辑”以编辑策略。****
+1. 单击“编辑”以编辑策略。
 
     ![访问包 - 编辑策略](./media/entitlement-management-shared/policy-edit.png)
 
-1. 单击 " **请求** " 选项卡以打开请求设置。
+1. 单击“请求”选项卡以打开请求设置。
 
-1. 使用之前部分中的步骤，根据需要更改请求设置。
+1. 按照前面部分中的步骤，根据需要更改请求设置。
 
-1. 请参阅 [Enable requests](#enable-requests) 部分。
+1. 转到[启用请求](#enable-requests)部分。
 
 ## <a name="enable-requests"></a>启用请求
 
@@ -197,8 +197,6 @@ ms.locfileid: "91449971"
     ![访问包 - 策略 - 启用策略设置](./media/entitlement-management-access-package-approval-policy/enable-requests.png)
 
 1. 单击“下一步”  。
-
-1. 如果希望在请求访问访问包时要求请求程序提供其他信息，请使用 []() 配置请求程序信息 (预览版) 中的步骤。
 
 1. 配置生命周期设置。
 

@@ -8,20 +8,20 @@ ms.topic: include
 ms.date: 10/06/2019
 ms.author: mbaldwin
 ms.custom: include file, devx-track-azurecli
-ms.openlocfilehash: 1c1d438f0322942a1e68c0af74de8d5e2d77c77a
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
-ms.translationtype: MT
+ms.openlocfilehash: be6de283ed230a6e6a6b4986abb0a36386e36925
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95553677"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102211985"
 ---
 可以通过 [Azure CLI](/cli/azure) 和 [Azure PowerShell](/powershell/azure/new-azureps-module-az) 启用和管理 Azure 磁盘加密。 为此，必须在本地安装工具并连接到 Azure 订阅。
 
 ### <a name="azure-cli"></a>Azure CLI
 
-[Azure CLI 2.0](/cli/azure) 是用于管理 Azure 资源的命令行工具。 CLI 旨在提高数据查询灵活性、支持非阻塞进程形式的长时间操作，以及简化脚本编写。 可以按照[安装 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) 中的步骤在本地安装它。
+[Azure CLI 2.0](/cli/azure) 是用于管理 Azure 资源的命令行工具。 CLI 旨在提高数据查询灵活性、支持非阻塞进程形式的长时间操作，以及简化脚本编写。 可以按照[安装 Azure CLI](/cli/azure/install-azure-cli) 中的步骤在本地安装它。
 
-若要[使用 Azure CLI 登录 Azure 帐户](/cli/azure/authenticate-azure-cli)，请使用 [az login](/cli/azure/reference-index?view=azure-cli-latest#az-login) 命令。
+若要[使用 Azure CLI 登录 Azure 帐户](/cli/azure/authenticate-azure-cli)，请使用 [az login](/cli/azure/reference-index#az-login) 命令。
 
 ```azurecli
 az login
@@ -43,7 +43,7 @@ az account set --subscription "<subscription name or ID>"
 有关详细信息，请参阅 [Azure CLI 2.0 入门](/cli/azure/get-started-with-azure-cli)。 
 
 ### <a name="azure-powershell"></a>Azure PowerShell
-[Azure PowerShell az 模块](/powershell/azure/new-azureps-module-az)提供了一组使用 [Azure 资源管理器](../articles/azure-resource-manager/management/overview.md)模型管理 Azure 资源的 cmdlet。 可以在浏览器中将它与 [Azure Cloud Shell](../articles/cloud-shell/overview.md) 结合使用，也可以按照[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)中的说明操作，将它安装在本地计算机上。 
+[Azure PowerShell az 模块](/powershell/azure/new-azureps-module-az)提供了一组 cmdlet，它们使用 [Azure 资源管理器](../articles/azure-resource-manager/management/overview.md)模型来管理 Azure 资源。 可以在浏览器中将它与 [Azure Cloud Shell](../articles/cloud-shell/overview.md) 结合使用，也可以按照[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)中的说明操作，将它安装在本地计算机上。 
 
 如果已在本地安装 PowerShell，请确保使用最新版本的 Azure PowerShell SDK 来配置 Azure 磁盘加密。 下载最新版本的 [Azure PowerShell 版本](https://github.com/Azure/azure-powershell/releases)。
 
@@ -53,7 +53,7 @@ az account set --subscription "<subscription name or ID>"
 Connect-AzAccount
 ```
 
-如果有多个订阅并想要指定一个，请使用 [Get-AzSubscription](/powershell/module/Az.Accounts/Get-AzSubscription) cmdlet 列出这些订阅，然后使用 [Set-AzContext](/powershell/module/az.accounts/set-azcontext?view=azps-2.5.0) cmdlet：
+如果有多个订阅并要指定一个，请先运行 [Get-AzSubscription](/powershell/module/Az.Accounts/Get-AzSubscription) cmdlet 列出订阅，再运行 [Set-AzContext](/powershell/module/az.accounts/set-azcontext?view=azps-2.5.0) cmdlet：
 
 ```powershell
 Set-AzContext -Subscription -Subscription <SubscriptionId>

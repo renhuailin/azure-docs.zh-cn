@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 4af29df27a109a9e1e26a720c190ab9d119fc4d1
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
-ms.translationtype: MT
+ms.openlocfilehash: 825a336b5ad07f50d96b19036d70c759b907bd07
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98033789"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102209673"
 ---
 # <a name="azure-table-storage-output-bindings-for-azure-functions"></a>适用于 Azure Functions 的 Azure 表存储输出绑定
 
@@ -227,9 +227,9 @@ module.exports = function (context) {
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-下面的示例演示如何将多个实体从一个函数写入一个表。
+以下示例演示如何通过一个函数向表中写入多个实体。
 
-_function.js上的_ 绑定配置：
+function.json 中的绑定配置：
 
 ```json
 {
@@ -418,7 +418,7 @@ Python 不支持特性。
 
 # <a name="java"></a>[Java](#tab/java)
 
-有两个选项可用于使用 [TableStorageOutput](/java/api/com.microsoft.azure.functions.annotation.tableoutput?view=azure-java-stablet&preserve-view=true) 注释从函数来输出表存储行：
+有两个选项可用于使用 [TableStorageOutput](/java/api/com.microsoft.azure.functions.annotation.tableoutput) 注释从函数来输出表存储行：
 
 - **返回值**：通过将注释应用于函数本身，函数的返回值将持久保存为表存储行。
 
@@ -430,7 +430,7 @@ Python 不支持特性。
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-若要写入表数据，请使用 `Push-OutputBinding` cmdlet，将 `-Name TableBinding` 参数和 `-Value` 参数设置为等于行数据。 有关更多详细信息，请参阅 [PowerShell 示例](#example) 。
+若要写入到表数据，请使用 `Push-OutputBinding` cmdlet，将 `-Name TableBinding` 参数和 `-Value` 参数设置为等于行数据。 有关更多详细信息，请参阅 [PowerShell 示例](#example)。
 
 # <a name="python"></a>[Python](#tab/python)
 

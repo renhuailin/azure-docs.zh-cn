@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: f75b8055757557eadeb98a45196a116e56c5aa35
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
-ms.translationtype: MT
+ms.openlocfilehash: 54e99c645b93bfcb3aee4e81cef3b2b5d6589d95
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101093445"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102211458"
 ---
 # <a name="creating-filters-with-cli"></a>使用 CLI 创建筛选器
 
@@ -29,7 +29,7 @@ ms.locfileid: "101093445"
 
 有关此功能及其使用方案的详细说明，请参阅[动态清单](filters-dynamic-manifest-overview.md)和[筛选器](filters-concept.md)。
 
-本主题说明如何为点播视频资产配置筛选器，并使用适用于媒体服务 v3 的 CLI 创建[帐户筛选器](/cli/azure/ams/account-filter?view=azure-cli-latest)和[资产筛选器](/cli/azure/ams/asset-filter?view=azure-cli-latest)。
+本主题说明如何为点播视频资产配置筛选器，并使用适用于媒体服务 v3 的 CLI 创建[帐户筛选器](/cli/azure/ams/account-filter)和[资产筛选器](/cli/azure/ams/asset-filter)。
 
 > [!NOTE]
 > 请确保查看 [presentationTimeRange](filters-concept.md#presentationtimerange)。
@@ -80,7 +80,7 @@ ms.locfileid: "101093445"
 
 ## <a name="create-account-filters"></a>创建帐户筛选器
 
-以下 [az ams account-filter](/cli/azure/ams/account-filter?view=azure-cli-latest) 命令创建帐户筛选器，其中包含[之前定义的](#define-a-filter)筛选器曲目选项。
+以下 [az ams account-filter](/cli/azure/ams/account-filter) 命令创建帐户筛选器，其中包含[之前定义的](#define-a-filter)筛选器曲目选项。
 
 该命令允许你传递一个可选 `--tracks` 参数，该参数包含表示曲目选择的 JSON。  使用 @{file} 从文件加载 JSON。 如果在本地使用 Azure CLI，请指定整个文件路径：
 
@@ -92,7 +92,7 @@ az ams account-filter create -a amsAccount -g resourceGroup -n filterName --trac
 
 ## <a name="create-asset-filters"></a>创建资产筛选器
 
-以下 [az ams asset-filter](/cli/azure/ams/asset-filter?view=azure-cli-latest) 命令创建资产筛选器，其中包含[之前定义的](#define-a-filter)筛选器曲目选项。 
+以下 [az ams asset-filter](/cli/azure/ams/asset-filter) 命令创建资产筛选器，其中包含[之前定义的](#define-a-filter)筛选器曲目选项。 
 
 ```azurecli
 az ams asset-filter create -a amsAccount -g resourceGroup -n filterName --asset-name assetName --tracks @tracks.json
@@ -132,4 +132,4 @@ az ams streaming-locator create -a amsAccount -g resourceGroup -n streamingLocat
 
 ## <a name="see-also"></a>另请参阅
 
-[Azure CLI](/cli/azure/ams?view=azure-cli-latest)
+[Azure CLI](/cli/azure/ams)

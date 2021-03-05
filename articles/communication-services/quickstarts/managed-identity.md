@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 12/04/2020
 ms.author: gistefan
 ms.reviewer: mikben
-ms.openlocfilehash: ee691d4809a68a0ba60f60a2240b76a1e53104bc
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
-ms.translationtype: MT
+ms.openlocfilehash: 9571d13537b504b4d48685e879a379b08df3110d
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/05/2021
-ms.locfileid: "102171567"
+ms.locfileid: "102211475"
 ---
 # <a name="use-managed-identities-net"></a>使用托管标识 (.NET)
 
@@ -24,8 +24,9 @@ ms.locfileid: "102171567"
 
 ## <a name="prerequisites"></a>先决条件
 
- - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free)
+ - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free)。
  - 活动的通信服务资源和连接字符串。 [创建通信服务资源](./create-communication-resource.md?pivots=platform-azp&tabs=windows)。
+ -  托管标识。 [创建托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal)。
 
 ## <a name="setting-up"></a>设置
 
@@ -59,10 +60,9 @@ ms.locfileid: "102171567"
 ### <a name="install-the-client-library-packages"></a>安装客户端库包
 
 ```console
-dotnet add package Azure.Communication.Identity
-dotnet add package Azure.Communication.Configuration
-dotnet add package Azure.Communication.Sms
 dotnet add package Azure.Identity
+dotnet add package Azure.Communication.Identity
+dotnet add package Azure.Communication.Sms
 ```
 
 ### <a name="use-the-client-library-packages"></a>使用客户端库包
@@ -70,9 +70,11 @@ dotnet add package Azure.Identity
 向代码添加以下 `using` 指令，以便使用 Azure 标识和 Azure 存储客户端库。
 
 ```csharp
+using Azure;
+using Azure.Core;
 using Azure.Identity;
+using Azure.Communication;
 using Azure.Communication.Identity;
-using Azure.Communication.Configuration;
 using Azure.Communication.Sms;
 ```
 
@@ -89,6 +91,7 @@ using Azure.Communication.Sms;
      
           var client = new CommunicationIdentityClient(resourceEndpoint, credential);
           var identityResponse = await client.CreateUserAsync();
+          var identity = identityResponse.Value;
      
           var tokenResponse = await client.IssueTokenAsync(identity, scopes: new [] { CommunicationTokenScope.VoIP });
 
@@ -101,7 +104,6 @@ using Azure.Communication.Sms;
 下面的代码示例演示如何创建具有 Azure Active Directory 令牌的服务客户端对象，然后使用客户端发送短信：
 
 ```csharp
-
      public async Task SendSmsAsync(Uri resourceEndpoint, PhoneNumber from, PhoneNumber to, string message)
      {
           TokenCredential credential = new DefaultAzureCredential();

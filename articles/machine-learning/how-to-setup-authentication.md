@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 11/05/2020
 ms.topic: conceptual
 ms.custom: how-to, has-adal-ref, devx-track-js, devx-track-azurecli, contperf-fy21q2
-ms.openlocfilehash: 27c8a0b80068124613af15565f387f15ac6b8e57
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
-ms.translationtype: MT
+ms.openlocfilehash: 30e4fede72df8eaf922745e7781c9e0d11f7ddb4
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97027248"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102210812"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>为 Azure 机器学习资源和工作流设置身份验证
 
@@ -27,7 +27,7 @@ ms.locfileid: "97027248"
 
 * __服务主体__：在 Azure Active Directory 中创建一个服务主体帐户，并使用它来进行身份验证或获取令牌。 当需要使用自动化过程向服务进行身份验证时，将使用服务主体，无需用户交互。 例如连续集成和部署脚本，它可以在训练代码每次发生更改时对模型进行训练和测试。
 
-* __托管标识__：在 _azure 虚拟机上_ 使用 Azure 机器学习 SDK 时，可以使用 azure 的托管标识。 此工作流允许 VM 使用托管标识连接到工作区，无需在 Python 代码中存储凭据或提示用户进行身份验证。 训练模型时，还可配置 Azure 机器学习计算群集来使用托管标识访问工作区。
+* __托管标识__：在 Azure 虚拟机上使用 Azure 机器学习 SDK 时，可使用 Azure 的托管标识。 此工作流允许 VM 使用托管标识连接到工作区，无需在 Python 代码中存储凭据或提示用户进行身份验证。 训练模型时，还可配置 Azure 机器学习计算群集来使用托管标识访问工作区。
 
 > [!IMPORTANT]
 > 无论使用何种身份验证工作流，都可使用 Azure 基于角色的访问控制 (Azure RBAC) 来限定允许拥有的资源访问权限（授权）级别。 例如，管理员或自动化过程可能具有创建计算实例的权限，但不使用它，而数据科学家可能会使用它，但不能删除或创建它。 有关详细信息，请参阅[管理对 Azure 机器学习工作区的访问权限](how-to-assign-roles.md)。
@@ -54,7 +54,7 @@ ms.locfileid: "97027248"
 >
 > 授予最低访问权限的原因是服务主体使用密码进行身份验证，并且该密码可以存储为自动化脚本的一部分。 如果密码泄漏，由于用户仅拥有执行特定任务所需的最低访问权限，因此可最大程度地减少对 SP 的恶意使用。
 
-创建 SP 并向其授予对工作区的访问权限的最简单方法是使用 [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)。 若要创建服务主体并向其授予对工作区的访问权限，请执行以下步骤：
+创建 SP 并向其授予对工作区的访问权限的最简单方法是使用 [Azure CLI](/cli/azure/install-azure-cli)。 若要创建服务主体并向其授予对工作区的访问权限，请执行以下步骤：
 
 > [!NOTE]
 > 你必须是订阅的管理员才能执行所有这些步骤。
@@ -67,9 +67,9 @@ ms.locfileid: "97027248"
 
     如果 CLI 可以打开默认的浏览器，则它会打开该浏览器并加载登录页。 否则，需要打开浏览器并按照命令行中的说明操作。 按说明操作时，需要浏览到 [https://aka.ms/devicelogin](https://aka.ms/devicelogin) 并输入授权代码。
 
-    如果你拥有多个 Azure 订阅，可使用 `az account set -s <subscription name or ID>` 命令设置订阅。 有关详细信息，请参阅[使用多个 Azure 订阅](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest)。
+    如果你拥有多个 Azure 订阅，可使用 `az account set -s <subscription name or ID>` 命令设置订阅。 有关详细信息，请参阅[使用多个 Azure 订阅](/cli/azure/manage-azure-subscriptions-azure-cli)。
 
-    有关其他身份验证方法，请参阅[使用 Azure CLI 登录](/cli/azure/authenticate-azure-cli?preserve-view=true&view=azure-cli-latest)。
+    有关其他身份验证方法，请参阅[使用 Azure CLI 登录](/cli/azure/authenticate-azure-cli)。
 
 1. 安装 Azure 机器学习扩展：
 
@@ -236,7 +236,7 @@ ws.get_details()
 
 ### <a name="use-a-service-principal-from-the-azure-cli"></a>从 Azure CLI 中使用服务主体
 
-可以将服务主体用于 Azure CLI 命令。 有关详细信息，请参阅[使用服务主体登录](/cli/azure/create-an-azure-service-principal-azure-cli?preserve-view=true&view=azure-cli-latest#sign-in-using-a-service-principal)。
+可以将服务主体用于 Azure CLI 命令。 有关详细信息，请参阅[使用服务主体登录](/cli/azure/create-an-azure-service-principal-azure-cli#sign-in-using-a-service-principal)。
 
 ### <a name="use-a-service-principal-with-the-rest-api-preview"></a>将服务主体用于 REST API（预览版）
 

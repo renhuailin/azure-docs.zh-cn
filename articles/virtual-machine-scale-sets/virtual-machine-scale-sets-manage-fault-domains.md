@@ -9,12 +9,12 @@ ms.subservice: availability
 ms.date: 12/18/2018
 ms.reviewer: jushiman
 ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: 4df340fa80ac4b9c4ff2a5e560580e09e01237e1
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
-ms.translationtype: MT
+ms.openlocfilehash: 5a71a6bce6d0e1a41201e0d7395110a6ac64db8c
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92745928"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102209741"
 ---
 # <a name="choosing-the-right-number-of-fault-domains-for-virtual-machine-scale-set"></a>为虚拟机规模集选择适当数量的容错域
 默认情况下，系统会在没有区域的 Azure 区域中创建具有五个容错域的虚拟机规模集。 对于支持虚拟机规模集分区部署等等区域，如果已选中此选项，则每个区域的容错域计数的默认值为 1。 在这种情况下，FD = 1 意味着尽最大努力将属于规模集的 VM 实例分布在多个机架上。
@@ -25,7 +25,7 @@ ms.locfileid: "92745928"
 `properties.platformFaultDomainCount`如果未指定) ，则可以将属性设置为1、2或 3 (默认值为3。 请参阅[此处](/rest/api/compute/virtualmachinescalesets/createorupdate)的 REST API 文档。
 
 ## <a name="azure-cli"></a>Azure CLI
-`--platform-fault-domain-count`如果未指定) ，则可以将参数设置为1、2或 3 (默认值为3。 请参阅[此处](/cli/azure/vmss?view=azure-cli-latest#az-vmss-create)的 Azure CLI 文档。
+`--platform-fault-domain-count`如果未指定) ，则可以将参数设置为1、2或 3 (默认值为3。 请参阅[此处](/cli/azure/vmss#az-vmss-create)的 Azure CLI 文档。
 
 ```azurecli-interactive
 az vmss create \

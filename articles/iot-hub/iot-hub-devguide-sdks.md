@@ -12,12 +12,12 @@ ms.custom:
 - mqtt
 - 'Role: IoT Device'
 - 'Role: Cloud Development'
-ms.openlocfilehash: 173e6e125387ba7d2755d9fff9387af0be21fffc
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
-ms.translationtype: MT
+ms.openlocfilehash: 13598925702aeca4a06135a910e3be540083a2b6
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101095238"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102211747"
 ---
 # <a name="understand-and-use-azure-iot-hub-sdks"></a>了解和使用 Azure IoT 中心 SDK
 
@@ -78,14 +78,14 @@ Microsoft Azure IoT 设备 SDK 包含的代码可帮助构建连接到 Azure IoT
 * 添加到 [Maven](https://github.com/Azure/azure-iot-sdk-java/blob/master/doc/java-devbox-setup.md#for-the-device-sdk) 项目
 * [源代码](https://github.com/Azure/azure-iot-sdk-java)
 * [API 参考](/java/api/com.microsoft.azure.sdk.iot.device)
-* [模块参考](/java/api/com.microsoft.azure.sdk.iot.device.moduleclient?view=azure-java-stable&preserve-view=true)
+* [模块参考](/java/api/com.microsoft.azure.sdk.iot.device.moduleclient)
 
 适用于 Node.js 的 Azure IoT 中心设备 SDK：
 
 * 通过 [npm](https://www.npmjs.com/package/azure-iot-device) 安装
 * [源代码](https://github.com/Azure/azure-iot-sdk-node)
 * [API 参考](/javascript/api/azure-iot-device/?view=azure-iot-typescript-latest&preserve-view=true)
-* [模块参考](/javascript/api/azure-iot-device/moduleclient?view=azure-node-latest&preserve-view=true)
+* [模块参考](/javascript/api/azure-iot-device/moduleclient)
 
 适用于 Python 的 Azure IoT 中心设备 SDK：
 
@@ -165,12 +165,12 @@ Azure IoT 服务 SDK 包含的代码可帮助生成直接与 IoT 中心进行交
 
 * 添加到 [Maven](https://github.com/Azure/azure-iot-sdk-java/blob/master/doc/java-devbox-setup.md#for-the-service-sdk) 项目
 * [源代码](https://github.com/Azure/azure-iot-sdk-java/blob/master/provisioning)
-* [API 参考](/java/api/com.microsoft.azure.sdk.iot.provisioning.device?view=azure-java-stable&preserve-view=true)
+* [API 参考](/java/api/com.microsoft.azure.sdk.iot.provisioning.device)
 
 适用于 Node.js 的 Azure 预配设备和服务 SDK：
 
 * [源代码](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning)
-* [API 参考](/javascript/api/overview/azure/iothubdeviceprovisioning?view=azure-node-latest&preserve-view=true)
+* [API 参考](/javascript/api/overview/azure/iothubdeviceprovisioning)
 * 通过 npm 下载[设备 SDK](https://badge.fury.io/js/azure-iot-provisioning-device) 和[服务 SDK](https://badge.fury.io/js/azure-iot-provisioning-service)
 
 适用于 Python 的 Azure 预配设备和服务 SDK：

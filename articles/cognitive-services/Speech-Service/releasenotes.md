@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/27/2021
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: 10b36ac53b6d70c8f165f92764a69c5503caaeb4
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: d7fede4fb94c683a8d221d6d93a3e9b18274d83b
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101739452"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102211951"
 ---
 # <a name="speech-service-release-notes"></a>语音服务发行说明
 
@@ -44,13 +44,13 @@ ms.locfileid: "101739452"
 
 **新功能**
 - **All**：通过 TTS 语音合成 API 的自定义神经语音的专用预览的新的48KHz 输出格式： Audio48Khz192KBitRateMonoMp3、48KHz-192kbitrate-Mono、Audio48Khz96KBitRateMonoMp3、48KHz、96kbitrate、Raw48Khz16BitMonoPcm、48KHz、16位、Riff48Khz16BitMonoPcm、riff、48KHz-16 位---。
-- **所有**：自定义语音也更易于使用。 添加了对通过 `EndpointId` ([c + +](/cpp/cognitive-services/speech/speechconfig#setendpointid)、 [c #](/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.endpointid?view=azure-dotnet#Microsoft_CognitiveServices_Speech_SpeechConfig_EndpointId)、 [Java](/java/api/com.microsoft.cognitiveservices.speech.speechconfig.setendpointid?view=azure-java-stable#com_microsoft_cognitiveservices_speech_SpeechConfig_setEndpointId_String_)、 [JavaScript](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest#endpointId)、 [目标-c](/objectivec/cognitive-services/speech/spxspeechconfiguration#endpointid)、 [Python](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python#endpoint-id)) 设置自定义语音的支持。 在进行此更改之前，自定义语音用户需要通过方法设置终结点 URL `FromEndpoint` 。 现在，客户可以 `FromSubscription` 像公开语音一样使用方法，然后通过设置提供部署 id `EndpointId` 。 这可以简化自定义语音的设置。 
+- **所有**：自定义语音也更易于使用。 添加了对通过 `EndpointId` ([c + +](/cpp/cognitive-services/speech/speechconfig#setendpointid)、 [c #](/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.endpointid?view=azure-dotnet#Microsoft_CognitiveServices_Speech_SpeechConfig_EndpointId)、 [Java](/java/api/com.microsoft.cognitiveservices.speech.speechconfig.setendpointid#com_microsoft_cognitiveservices_speech_SpeechConfig_setEndpointId_String_)、 [JavaScript](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig#endpointId)、 [目标-c](/objectivec/cognitive-services/speech/spxspeechconfiguration#endpointid)、 [Python](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python#endpoint-id)) 设置自定义语音的支持。 在进行此更改之前，自定义语音用户需要通过方法设置终结点 URL `FromEndpoint` 。 现在，客户可以 `FromSubscription` 像公开语音一样使用方法，然后通过设置提供部署 id `EndpointId` 。 这可以简化自定义语音的设置。 
 - **C + +/c #/Java/Objective-C/Python**：从中获取多个 top 目的 `IntentRecognizer` 。 它现在支持使用 uri 参数配置包含所有意图的 JSON 结果，而不是仅支持通过方法进行的最高分评分 `LanguageUnderstandingModel FromEndpoint` `verbose=true` 。 这解决了 [GitHub 问题 #880](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/880)。 请参阅 [此处](./quickstarts/intent-recognition.md#add-a-languageunderstandingmodel-and-intents)的更新文档。
-- **C + +/c #/Java**：使语音助手或机器人停止侦听 immediatedly。 `DialogServiceConnector` ([c + +](/cpp/cognitive-services/speech/dialog-dialogserviceconnector)、 [c #](/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconnector?view=azure-dotnet)、 [Java](/java/api/com.microsoft.cognitiveservices.speech.dialog.dialogserviceconnector?view=azure-java-stable)) 现在提供了一个 `StopListeningAsync()` 方法 `ListenOnceAsync()` 。 这会立即停止音频捕获并正常等待结果，使其完美地用于 "立即停止" 按钮按方案。
-- **C + +/c #/Java/JavaScript**：使语音助手或 bot 更好地响应底层系统错误。 `DialogServiceConnector` ([c + +](/cpp/cognitive-services/speech/dialog-dialogserviceconnector)、 [c #](/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconnector?view=azure-dotnet)、 [Java](/java/api/com.microsoft.cognitiveservices.speech.dialog.dialogserviceconnector?view=azure-java-stable)、 [JavaScript](/javascript/api/microsoft-cognitiveservices-speech-sdk/dialogserviceconnector?view=azure-node-latest)) 现在有一个新的 `TurnStatusReceived` 事件处理程序。 这些可选事件对应于 [`ITurnContext`](/dotnet/api/microsoft.bot.builder.iturncontext?view=botbuilder-dotnet-stable) 机器人上的每个解决方法，并且在发生故障时将报告执行失败，例如，在直接线路语音与机器人之间发生未经处理的异常、超时或网络断开。 `TurnStatusReceived` 可更轻松地响应故障条件。 例如，如果机器人数据库查询所用的时间太长 (例如，查找产品) ， `TurnStatusReceived` 则允许客户端了解以下内容： "抱歉，我不能再重试" 或类似的内容。
+- **C + +/c #/Java**：使语音助手或机器人停止侦听 immediatedly。 `DialogServiceConnector` ([c + +](/cpp/cognitive-services/speech/dialog-dialogserviceconnector)、 [c #](/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconnector?view=azure-dotnet)、 [Java](/java/api/com.microsoft.cognitiveservices.speech.dialog.dialogserviceconnector)) 现在提供了一个 `StopListeningAsync()` 方法 `ListenOnceAsync()` 。 这会立即停止音频捕获并正常等待结果，使其完美地用于 "立即停止" 按钮按方案。
+- **C + +/c #/Java/JavaScript**：使语音助手或 bot 更好地响应底层系统错误。 `DialogServiceConnector` ([c + +](/cpp/cognitive-services/speech/dialog-dialogserviceconnector)、 [c #](/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconnector?view=azure-dotnet)、 [Java](/java/api/com.microsoft.cognitiveservices.speech.dialog.dialogserviceconnector)、 [JavaScript](/javascript/api/microsoft-cognitiveservices-speech-sdk/dialogserviceconnector)) 现在有一个新的 `TurnStatusReceived` 事件处理程序。 这些可选事件对应于 [`ITurnContext`](/dotnet/api/microsoft.bot.builder.iturncontext?view=botbuilder-dotnet-stable) 机器人上的每个解决方法，并且在发生故障时将报告执行失败，例如，在直接线路语音与机器人之间发生未经处理的异常、超时或网络断开。 `TurnStatusReceived` 可更轻松地响应故障条件。 例如，如果机器人数据库查询所用的时间太长 (例如，查找产品) ， `TurnStatusReceived` 则允许客户端了解以下内容： "抱歉，我不能再重试" 或类似的内容。
 - **C + +/c #**：将语音 SDK 用于更多平台。 [语音 sdk nuget 包](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech)现在支持 Windows ARM/ARM64 desktop native 二进制 (UWP 已) ，使语音 SDK 更适用于更多的计算机类型。
-- **Java**： [`DialogServiceConnector`](/java/api/com.microsoft.cognitiveservices.speech.dialog.dialogserviceconnector?view=azure-java-stable) 目前有一个 `setSpeechActivityTemplate()` 方法，该方法在以前无意中从语言中排除。 这相当于设置 `Conversation_Speech_Activity_Template` 属性，并请求由 "直接 Line Speech" 服务产生的所有未来 Bot Framework 活动将提供的内容合并到其 JSON 有效负载中。
-- **Java**：改进了低级别调试。 [`Connection`](/java/api/com.microsoft.cognitiveservices.speech.connection?view=azure-java-stable)类现在具有一个 `MessageReceived` 事件，类似于其他编程语言 (c + +、c # ) 。 此事件提供对来自服务的传入数据的低级别访问权限，可用于诊断和调试。
+- **Java**： [`DialogServiceConnector`](/java/api/com.microsoft.cognitiveservices.speech.dialog.dialogserviceconnector) 目前有一个 `setSpeechActivityTemplate()` 方法，该方法在以前无意中从语言中排除。 这相当于设置 `Conversation_Speech_Activity_Template` 属性，并请求由 "直接 Line Speech" 服务产生的所有未来 Bot Framework 活动将提供的内容合并到其 JSON 有效负载中。
+- **Java**：改进了低级别调试。 [`Connection`](/java/api/com.microsoft.cognitiveservices.speech.connection)类现在具有一个 `MessageReceived` 事件，类似于其他编程语言 (c + +、c # ) 。 此事件提供对来自服务的传入数据的低级别访问权限，可用于诊断和调试。
 - **JavaScript**：使用语音助手和 bot 的设置更简单 [`BotFrameworkConfig`](/javascript/api/microsoft-cognitiveservices-speech-sdk/botframeworkconfig) ，现在提供了 `fromHost()` 和 `fromEndpoint()` 工厂方法，可简化自定义服务位置与手动设置属性的使用。 我们还将的可选规范标准化 `botId` ，以便在配置工厂中使用非默认机器人。
 - **JavaScript**：通过添加 websocket 压缩的字符串控制属性，改进了设备性能。 出于性能原因，我们默认禁用 websocket 压缩。 对于低带宽方案，可以重新启用此方案。 [此处](/javascript/api/microsoft-cognitiveservices-speech-sdk/propertyid)提供了更多详细信息。 这解决了 [GitHub 问题 #242](https://github.com/microsoft/cognitive-services-speech-sdk-js/issues/242)。
 - **JavaScript**：添加了对发音评估的支持，以便对语音发音进行评估。 请参阅 [此处](./how-to-pronunciation-assessment.md?pivots=programming-language-javascript)的快速入门。

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: traffic-manager
 ms.date: 09/18/2019
 ms.author: duau
-ms.openlocfilehash: 7a448afb85a35674921ce74a25eaf2a97430dc61
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
-ms.translationtype: MT
+ms.openlocfilehash: 2e289728c7fde9b98256d079d45067aba1d4d805
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201410"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102211322"
 ---
 # <a name="traffic-manager-subnet-override-using-azure-cli"></a>使用 Azure CLI 的流量管理器子网替代
 
@@ -39,7 +39,7 @@ ms.locfileid: "98201410"
 - 本文需要 Azure CLI 2.0.28 或更高版本。 如果使用 Azure Cloud Shell，则最新版本已安装。
 
 ## <a name="update-the-traffic-manager-endpoint-with-subnet-override"></a>使用子网替代更新流量管理器终结点。
-使用 Azure CLI 通过 [az network traffic-manager endpoint update](/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-update) 更新终结点。
+使用 Azure CLI 通过 [az network traffic-manager endpoint update](/cli/azure/network/traffic-manager/endpoint#az-network-traffic-manager-endpoint-update) 更新终结点。
 
 ```azurecli-interactive
 ### Add a range of IPs ###
@@ -59,7 +59,7 @@ az network traffic-manager endpoint update \
     --type AzureEndpoints
 ```
 
-可以在运行 [az network traffic-manager endpoint update](/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-update) 时使用 **--remove** 选项，以便删除 IP 地址范围。
+可以在运行 [az network traffic-manager endpoint update](/cli/azure/network/traffic-manager/endpoint#az-network-traffic-manager-endpoint-update) 时使用 **--remove** 选项，以便删除 IP 地址范围。
 
 ```azurecli-interactive
 az network traffic-manager endpoint update \

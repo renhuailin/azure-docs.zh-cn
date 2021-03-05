@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/13/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: f29e6f0de3286b04321207b4c469f34aeaee8ef5
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: ae6b4f38772cd6c6755ece78fb5c47834a616204
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101737403"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102211628"
 ---
 # <a name="azure-security-baseline-for-azure-web-application-firewall"></a>Azure Web 应用程序防火墙的 azure 安全基线
 
@@ -81,9 +81,9 @@ ms.locfileid: "101737403"
 
 基于应用的标记元数据将规则和规则组应用于 Azure Web 应用程序防火墙 (WAF) 策略。
 
-- [应用程序网关上的 WAF 策略](/cli/azure/network/application-gateway/waf-policy?view=azure-cli-latest) 
+- [应用程序网关上的 WAF 策略](/cli/azure/network/application-gateway/waf-policy) 
 
-- [前门上的 WAF 策略](/cli/azure/ext/front-door/network/front-door/waf-policy?view=azure-cli-latest)
+- [前门上的 WAF 策略](/cli/azure/ext/front-door/network/front-door/waf-policy)
 
 **Azure 安全中心监视**：不适用
 

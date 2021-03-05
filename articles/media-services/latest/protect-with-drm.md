@@ -14,19 +14,19 @@ ms.topic: tutorial
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: a4f5810f76af7116421bac3953b4eb65370055e3
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: af6933ecadb4d008ad45c284f5182158dda68877
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98955167"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102211077"
 ---
 # <a name="tutorial-use-drm-dynamic-encryption-and-license-delivery-service"></a>教程：使用 DRM 动态加密和许可证传送服务
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 > [!NOTE]
-> 尽管本教程使用了 [.NET SDK](/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet) 示例，但 [REST API](/rest/api/media/liveevents)、[CLI](/cli/azure/ams/live-event?view=azure-cli-latest) 或其他受支持的 [SDK](media-services-apis-overview.md#sdks) 的常规步骤是相同的。
+> 尽管本教程使用了 [.NET SDK](/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet) 示例，但 [REST API](/rest/api/media/liveevents)、[CLI](/cli/azure/ams/live-event) 或其他受支持的 [SDK](media-services-apis-overview.md#sdks) 的常规步骤是相同的。
 
 可以使用 Azure 媒体服务来传送通过 Microsoft PlayReady、Google Widevine 或 Apple FairPlay 许可证加密的流。 如需深入说明，请参阅[使用动态加密保护内容](content-protection-overview.md)。
 
@@ -38,7 +38,7 @@ ms.locfileid: "98955167"
 
 ![Azure Media Player 中的具有 DRM 保护视频的 AMS](./media/protect-with-drm/ams_player.png)
 
-本教程介绍了如何：
+本教程演示如何：
 
 > [!div class="checklist"]
 > * 创建编码转换。

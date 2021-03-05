@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 11/16/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, deploy, devx-track-azurecli
-ms.openlocfilehash: 1ff4d7693a7e493ccb736ab9363fd26c93017c79
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
-ms.translationtype: MT
+ms.openlocfilehash: 4a9e374923f6317f7a325979dca1810fad91aeb6
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94695344"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102209457"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>使用自定义 Docker 基础映像部署模型
 
@@ -43,7 +43,7 @@ ms.locfileid: "94695344"
 
 * Azure 机器学习工作区。 有关详细信息，请参阅[创建工作区](how-to-manage-workspace.md)一文。
 * [Azure 机器学习 SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)。 
-* [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)。
+* [Azure CLI](/cli/azure/install-azure-cli)。
 * [用于 Azure 机器学习的 CLI 扩展](reference-azure-machine-learning-cli.md)。
 * 可在 Internet 上访问的 [Azure 容器注册表](../container-registry/index.yml)或其他 Docker 注册表。
 * 本文档中的步骤假设你熟悉如何创建和使用“推理配置”对象作为模型部署的一部分。 有关详细信息，请参阅[部署位置及方式](how-to-deploy-and-where.md)。

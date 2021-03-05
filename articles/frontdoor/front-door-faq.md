@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/20/2020
 ms.author: duau
-ms.openlocfilehash: ba859a0ad8edacfa2e51486b150f94b3dea37a16
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
-ms.translationtype: MT
+ms.openlocfilehash: 6fdcedd19c02251035a838d34ba51e786595134b
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/05/2021
-ms.locfileid: "102182887"
+ms.locfileid: "102212442"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door"></a>Azure 前门常见问题
 
@@ -87,7 +87,8 @@ Azure 前门是全球分布的多租户服务。 因此，前门的基础结构�
 
 ### <a name="how-do-i-lock-down-the-access-to-my-backend-to-only-azure-front-door"></a>如何实现锁定对我的后端的访问仅限于 Azure 前门？
 
-> [!注意] 新的 SKU 前门高级版提供更多建议的方法来通过专用终结点锁定您的应用程序。 [了解有关专用终结点的详细信息](./standard-premium/concept-private-link.md)
+> [!NOTE]
+> 新的 SKU 前门高级版提供更多建议的方法来通过专用终结点锁定您的应用程序。 [了解有关专用终结点的详细信息](./standard-premium/concept-private-link.md)
 
 若要将应用程序锁定为仅接受来自特定前门的流量，需要为后端设置 IP Acl，然后将后端的流量限制为前门发送的标头 "FDID" 的特定值。 下面详细说明了这些步骤：
 
@@ -256,7 +257,7 @@ Azure 前门是全球分布的多租户平台，具有巨大的容量，可满�
 
 ### <a name="can-i-use-clientmutual-authentication-with-azure-front-door"></a>能否对 Azure 前门使用客户端/相互身份验证？
 
-否。 尽管 Azure 前门支持 TLS 1.2，后者引入了 [RFC 5246](https://tools.ietf.org/html/rfc5246)中的客户端/相互身份验证，但目前，azure 前门不支持客户端/相互身份验证。
+不能。 尽管 Azure 前门支持 TLS 1.2，后者引入了 [RFC 5246](https://tools.ietf.org/html/rfc5246)中的客户端/相互身份验证，但目前，azure 前门不支持客户端/相互身份验证。
 
 ## <a name="diagnostics-and-logging"></a>诊断和日志记录
 

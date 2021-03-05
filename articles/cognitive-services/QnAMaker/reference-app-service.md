@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 11/9/2020
-ms.openlocfilehash: c35306d3e0d874218b9ea03fbfeaaff722eacf76
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
-ms.translationtype: MT
+ms.openlocfilehash: da46084c8c2616284c31ef155927e8dbcbd19e0e
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98896454"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102209353"
 ---
 # <a name="service-configuration"></a>服务配置
 
@@ -52,7 +52,7 @@ QnA Maker 服务为以下用户提供了配置，以便在单个 QnA Maker 服�
 
 ## <a name="change-azure-cognitive-search"></a>更改 Azure 认知搜索
 
-了解如何更改链接到 QnA Maker 服务 [的认知搜索服务](./how-to/set-up-qnamaker-service-azure.md#configure-qna-maker-to-use-different-cognitive-search-resource) 。
+了解如何更改链接到 QnA Maker 服务 [的认知搜索服务](./how-to/configure-QnA-Maker-resources.md#configure-qna-maker-to-use-different-cognitive-search-resource) 。
 
 ## <a name="change-default-answer"></a>更改默认答案
 

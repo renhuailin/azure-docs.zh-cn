@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 02/08/2021
+ms.date: 03/05/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: references_regions
-ms.openlocfilehash: 674a336e79f118d543590fb7514b6bebef72cf47
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.openlocfilehash: f157b44e92289d0e9c5b88108550c144344c5206
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100390175"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102211135"
 ---
 # <a name="soft-delete-for-containers-preview"></a>容器的软删除 (预览) 
 
@@ -27,8 +27,8 @@ ms.locfileid: "100390175"
 - Blob 版本控制，用于自动维护以前版本的 blob。 启用 blob 版本控制后，如果错误地修改或删除了数据，则可以还原该 blob 的早期版本以恢复数据。 若要了解如何启用 blob 版本控制，请参阅 [启用和管理 blob 版本控制](versioning-enable.md)。
 - Blob 软删除，用于还原已删除的 blob 或版本。 若要了解如何启用 blob 软删除，请参阅 [为 Blob 启用和管理软删除](soft-delete-blob-enable.md)。
 
-> [!WARNING]
-> 无法撤消删除存储帐户。 容器软删除无法防止删除存储帐户，而只会删除该帐户中的容器。 若要防止存储帐户被删除，请在存储帐户资源上配置一个锁定。 有关锁定 Azure 资源管理器资源的详细信息，请参阅 [锁定资源以防止意外更改](../../azure-resource-manager/management/lock-resources.md)。
+> [!IMPORTANT]
+> 容器软删除目前处于 **预览阶段**。 请参阅 [Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) ，它们适用于适用于 beta、preview 或其他尚未公开上市的 Azure 功能的法律条款。
 
 ## <a name="how-container-soft-delete-works"></a>容器软删除的工作原理
 
@@ -46,14 +46,14 @@ ms.locfileid: "100390175"
 
 禁用容器软删除不会永久删除以前软删除的容器。 任何软删除的容器将在删除容器时生效的保留期到期时永久删除。
 
+> [!IMPORTANT]
+> 容器软删除无法防止删除存储帐户，而只会删除该帐户中的容器。 若要防止存储帐户被删除，请在存储帐户资源上配置一个锁定。 有关锁定 Azure 资源管理器资源的详细信息，请参阅 [锁定资源以防止意外更改](../../azure-resource-manager/management/lock-resources.md)。
+
 ## <a name="about-the-preview"></a>关于此预览版
 
 容器软删除在所有 Azure 区域中均以预览版提供。
 
-> [!IMPORTANT]
-> 容器软删除预览版仅供非生产使用。 生产服务级别协议 (SLA) 当前不可用。
-
-Azure 存储 REST API 版本2019-12-12 及更高版本支持容器软删除。
+版本2019-12-12 或更高版本的 Azure 存储 REST API 支持容器软删除。
 
 ### <a name="storage-account-support"></a>存储帐户支持
 

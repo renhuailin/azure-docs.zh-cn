@@ -9,12 +9,12 @@ ms.subservice: management
 ms.date: 11/12/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: 85e4b6a4d0ff1c3bd7e634311a36396a74408419
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.openlocfilehash: b4c705e65b5b8c4f9e34dc5ff1474e87da5bee02
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100594441"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102209776"
 ---
 # <a name="planned-maintenance-notifications-for-virtual-machine-scale-sets"></a>虚拟机规模集的计划内维护通知
 
@@ -81,7 +81,7 @@ Azure 定期执行更新，以提高虚拟机 (VM) 的主机基础结构的可�
 
 现在，“自助维护”列将显示在虚拟机规模集的列表中  。 每个虚拟机规模集可以具有以下自助维护列的值之一：
 
-| Value | 说明 |
+| Value | 描述 |
 |-------|-------------|
 | 是 | 虚拟机规模集中至少有一个 VM 处于自助时段。 你可以在此自助时段随时启动维护。 | 
 | 否 | 受影响的虚拟机规模集中的自助时段中没有任何 VM。 | 
@@ -143,7 +143,7 @@ Set-AzVmss -ResourceGroupName rgName -VMScaleSetName vmssName -InstanceId id -Pe
 
 ## <a name="check-maintenance-status-by-using-the-cli"></a>使用 CLI 查看维护状态
 
-可以使用 [az vmss list-instances](/cli/azure/vmss?view=azure-cli-latest#az-vmss-list-instances) 查看计划内维护信息。
+可以使用 [az vmss list-instances](/cli/azure/vmss#az-vmss-list-instances) 查看计划内维护信息。
  
 仅当有计划内维护时，才会返回维护信息。 如果未计划影响 VM 实例的维护，则该命令不会返回任何维护信息。 
 

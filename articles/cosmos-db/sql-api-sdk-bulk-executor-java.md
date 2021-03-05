@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 6f5993826c7d8c39f4e062c0a84ffd95eaf9cf2d
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
-ms.translationtype: MT
+ms.openlocfilehash: d0d8dfe43d8d51107b226277918bb4ab9925a1da
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93098597"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102211815"
 ---
 # <a name="java-bulk-executor-library-download-information"></a>Java 批量执行程序库：下载信息
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -45,7 +45,7 @@ ms.locfileid: "93098597"
 |**GitHub 中的批量执行程序库**|[GitHub](https://github.com/Azure/azure-cosmosdb-bulkexecutor-java-getting-started)|
 | **API 文档**| [Java API 参考文档](/java/api/com.microsoft.azure.documentdb.bulkexecutor)|
 |**入门**|[批量执行程序库 Java SDK 入门](bulk-executor-java.md)|
-|受支持的最小运行时|[Java 开发工具包 (JDK) 7+](/java/azure/jdk/?view=azure-java-stable&preserve-view=true)|
+|受支持的最小运行时|[Java 开发工具包 (JDK) 7+](/java/azure/jdk/)|
 
 ## <a name="release-notes"></a>发行说明
 

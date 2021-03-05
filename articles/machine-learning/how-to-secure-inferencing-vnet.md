@@ -11,12 +11,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 10/23/2020
 ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1, devx-track-azurecli
-ms.openlocfilehash: 190f44e95c96a2aee60e1b28f8817a74d3e06e3f
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
-ms.translationtype: MT
+ms.openlocfilehash: 8c47478f1fccfac0c59b4a58a2767013490f869d
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/05/2021
-ms.locfileid: "102178654"
+ms.locfileid: "102209489"
 ---
 # <a name="secure-an-azure-machine-learning-inferencing-environment-with-virtual-networks"></a>使用虚拟网络保护 Azure 机器学习推理环境
 
@@ -221,7 +221,7 @@ az ml computetarget create aks -n myaks --load-balancer-type InternalLoadBalance
 > [!IMPORTANT]
 > 使用 CLI，只能创建带有内部负载均衡器的 AKS 群集。 没有可以升级现有群集以使用内部负载均衡器的 az ml 命令。
 
-有关详细信息，请参阅 [az ml computetarget create aks](/cli/azure/ext/azure-cli-ml/ml/computetarget/create?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-computetarget-create-aks) 参考文档。
+有关详细信息，请参阅 [az ml computetarget create aks](/cli/azure/ext/azure-cli-ml/ml/computetarget/create#ext-azure-cli-ml-az-ml-computetarget-create-aks) 参考文档。
 
 ---
 

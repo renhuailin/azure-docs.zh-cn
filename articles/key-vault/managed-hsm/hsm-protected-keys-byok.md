@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 02/04/2021
 ms.author: ambapat
-ms.openlocfilehash: 71cc36541b8809d93c84225edf771400d2878b4f
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.openlocfilehash: dd5b38a858ceba12f5d48f1782da5b85228c4b06
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100376048"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102212104"
 ---
 # <a name="import-hsm-protected-keys-to-managed-hsm-byok"></a>将受 HSM 保护的密钥导入到托管 HSM (BYOK) 
 
@@ -56,7 +56,7 @@ ms.locfileid: "100376048"
 az login
 ```
 
-若要详细了解通过 CLI 使用的登录选项，请参阅[使用 Azure CLI 登录](/cli/azure/authenticate-azure-cli?view=azure-cli-latest&preserve-view=true)
+若要详细了解通过 CLI 使用的登录选项，请参阅[使用 Azure CLI 登录](/cli/azure/authenticate-azure-cli)
 
 ## <a name="supported-hsms"></a>支持的 HSM
 
@@ -70,7 +70,7 @@ az login
 |Securosys SA|制造商，HSM 即服务|Primus HSM 系列，Securosys Clouds HSM|[Primus BYOK 工具和文档](https://www.securosys.com/primus-azure-byok)|
 |StorMagic|ISV（企业密钥管理系统）|多个 HSM 品牌和型号，包括<ul><li>Utimaco</li><li>Thales</li><li>nCipher</li></ul>请参阅 [StorMagic 站点](https://stormagic.com/doc/svkms/Content/Integrations/Azure_KeyVault_BYOK.htm)以了解详细信息|[SvKMS 和 Azure Key Vault BYOK](https://stormagic.com/doc/svkms/Content/Integrations/Azure_KeyVault_BYOK.htm)|
 |IBM|制造商|IBM 476x, CryptoExpress|[IBM Enterprise Key Management Foundation](https://www.ibm.com/security/key-management/ekmf-bring-your-own-key-azure)|
-|Utimaco|制造商，<br/>HSM 即服务|手杖信锚，CryptoServer|[Utimaco BYOK 工具和集成指南](https://support.hsm.utimaco.com/support/downloads/byok)|
+|Utimaco|制造商，<br/>HSM 即服务|u.trust Anchor, CryptoServer|[Utimaco BYOK 工具和集成指南](https://support.hsm.utimaco.com/support/downloads/byok)|
 ||||
 
 
@@ -82,7 +82,7 @@ az login
 |目标密钥|
 ||RSA|2,048 位<br />3,072 位<br />4,096 位|供应商 HSM|要传输到托管 HSM 的密钥|
 ||EC|P-256<br />P-384<br />P-521|供应商 HSM|要传输到托管 HSM 的密钥|
-||对称密钥 (10 月-HSM) |128位<br />192位<br />256位|供应商 HSM|要传输到托管 HSM 的密钥|
+||对称密钥 (10 月-HSM) |128 位<br />192位<br />256位|供应商 HSM|要传输到托管 HSM 的密钥|
 ||||
 ## <a name="generate-and-transfer-your-key-to-the-managed-hsm"></a>生成密钥并将其传输到托管 HSM
 
@@ -105,7 +105,7 @@ KEK 必须满足以下条件：
 > [!NOTE]
 > KEK 必须将“import”作为唯一允许的密钥操作。 “import”与所有其他密钥操作是互斥的。
 
-使用 [az keyvault key create](/cli/azure/keyvault/key?view=azure-cli-latest&preserve-view=true#az-keyvault-key-create) 命令创建将密钥操作设置为 `import` 的 KEK。 记录从以下命令返回的密钥标识符 (`kid`)。 （你将使用[步骤 3](#step-3-generate-and-prepare-your-key-for-transfer) 中的 `kid` 值。）
+使用 [az keyvault key create](/cli/azure/keyvault/key#az-keyvault-key-create) 命令创建将密钥操作设置为 `import` 的 KEK。 记录从以下命令返回的密钥标识符 (`kid`)。 （你将使用[步骤 3](#step-3-generate-and-prepare-your-key-for-transfer) 中的 `kid` 值。）
 
 ```azurecli-interactive
 az keyvault key create --kty RSA-HSM --size 4096 --name KEKforBYOK --ops import --hsm-name ContosoKeyVaultHSM
@@ -115,7 +115,7 @@ az keyvault key create --kty RSA-HSM --size 4096 --name KEKforBYOK --ops import 
 
 ### <a name="step-2-download-the-kek-public-key"></a>步骤 2：下载 KEK 公钥
 
-使用 [az keyvault key download](/cli/azure/keyvault/key?view=azure-cli-latest&preserve-view=true#az-keyvault-key-download) 将 KEK 公钥下载到 .pem 文件。 导入的目标密钥是使用 KEK 公钥进行加密的。
+使用 [az keyvault key download](/cli/azure/keyvault/key#az-keyvault-key-download) 将 KEK 公钥下载到 .pem 文件。 导入的目标密钥是使用 KEK 公钥进行加密的。
 
 ```azurecli-interactive
 az keyvault key download --name KEKforBYOK --hsm-name ContosoKeyVaultHSM --file KEKforBYOK.publickey.pem
@@ -137,7 +137,7 @@ az keyvault key download --name KEKforBYOK --hsm-name ContosoKeyVaultHSM --file 
 
 ### <a name="step-4-transfer-your-key-to-managed-hsm"></a>步骤4：将密钥传输到托管 HSM
 
-若要完成密钥导入，请将密钥传输包（BYOK 文件）从断开连接的计算机传输到连接到 Internet 的计算机。 使用 [az keyvault key import](/cli/azure/keyvault/key?view=azure-cli-latest&preserve-view=true#az-keyvault-key-import) 命令将 BYOK 文件上传到托管 HSM。
+若要完成密钥导入，请将密钥传输包（BYOK 文件）从断开连接的计算机传输到连接到 Internet 的计算机。 使用 [az keyvault key import](/cli/azure/keyvault/key#az-keyvault-key-import) 命令将 BYOK 文件上传到托管 HSM。
 
 ```azurecli-interactive
 az keyvault key import --hsm-name ContosoKeyVaultHSM --name ContosoFirstHSMkey --byok-file KeyTransferPackage-ContosoFirstHSMkey.byok

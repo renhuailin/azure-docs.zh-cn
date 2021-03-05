@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.topic: article
 ms.date: 12/22/2020
 ms.author: tyao
-ms.openlocfilehash: 60a4ef47bc30955c918983d54f613cbdb5cbed73
-ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
-ms.translationtype: MT
+ms.openlocfilehash: 65e378c0380804c13e4b42d855aede7781b93592
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97746756"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102211662"
 ---
 # <a name="configure-an-ip-restriction-rule-with-a-web-application-firewall-for-azure-front-door"></a>使用 Azure 前门的 Web 应用程序防火墙配置 IP 限制规则
 
@@ -31,7 +31,7 @@ ms.locfileid: "97746756"
 ### <a name="create-a-waf-policy"></a>创建 WAF 策略
 
 1. 在 Azure 门户上，选择 " **创建资源**"，在搜索框中键入 "  **web 应用程序防火墙** "，然后选择 " **WEB 应用程序防火墙 (WAF)**"。
-2. 选择“创建”  。
+2. 选择“创建”。
 3. 在 " **创建 WAF 策略** " 页上，使用以下值完成 " **基本** 信息" 选项卡：
    
    |设置  |值  |
@@ -95,7 +95,7 @@ ms.locfileid: "97746756"
 
 ### <a name="create-a-waf-policy"></a>创建 WAF 策略
 
-使用 [az network 前门 WAF create](/cli/azure/ext/front-door/network/front-door/waf-policy?view=azure-cli-latest#ext-front-door-az-network-front-door-waf-policy-create) 命令创建 WAF 策略。 在下面的示例中，使用唯一策略名称替换策略名称 *IPAllowPolicyExampleCLI* 。
+使用 [az network 前门 WAF create](/cli/azure/ext/front-door/network/front-door/waf-policy#ext-front-door-az-network-front-door-waf-policy-create) 命令创建 WAF 策略。 在下面的示例中，使用唯一策略名称替换策略名称 *IPAllowPolicyExampleCLI* 。
 
 ```azurecli-interactive 
 az network front-door waf-policy create \
@@ -105,7 +105,7 @@ az network front-door waf-policy create \
   ```
 ### <a name="add-a-custom-ip-access-control-rule"></a>添加自定义 IP 访问控制规则
 
-使用 [az network 前门 waf create](/cli/azure/ext/front-door/network/front-door/waf-policy/rule?view=azure-cli-latest#ext-front-door-az-network-front-door-waf-policy-rule-create) 命令为刚创建的 waf 策略添加自定义 IP 访问控制规则。
+使用 [az network 前门 waf create](/cli/azure/ext/front-door/network/front-door/waf-policy/rule#ext-front-door-az-network-front-door-waf-policy-rule-create) 命令为刚创建的 waf 策略添加自定义 IP 访问控制规则。
 
 在以下示例中：
 -  将 *IPAllowPolicyExampleCLI* 替换为前面创建的唯一策略。
@@ -138,7 +138,7 @@ az network front-door waf-policy rule match-condition add \
   ```
                                                    
 ### <a name="find-the-id-of-a-waf-policy"></a>查找 WAF 策略的 ID 
-使用 [az network 前门 WAF show](/cli/azure/ext/front-door/network/front-door/waf-policy?view=azure-cli-latest#ext-front-door-az-network-front-door-waf-policy-show) 命令查找 WAF 策略的 ID。 将以下示例中的 *IPAllowPolicyExampleCLI* 替换为之前创建的唯一策略。
+使用 [az network 前门 WAF show](/cli/azure/ext/front-door/network/front-door/waf-policy#ext-front-door-az-network-front-door-waf-policy-show) 命令查找 WAF 策略的 ID。 将以下示例中的 *IPAllowPolicyExampleCLI* 替换为之前创建的唯一策略。
 
    ```azurecli
    az network front-door  waf-policy show \
@@ -148,7 +148,7 @@ az network front-door waf-policy rule match-condition add \
 
 ### <a name="link-a-waf-policy-to-an-azure-front-door-front-end-host"></a>将 WAF 策略链接到 Azure 前门前端主机
 
-使用 [az network 前门 update](/cli/azure/ext/front-door/network/front-door?view=azure-cli-latest#ext-front-door-az-network-front-door-update)命令将 Azure 前门 *WebApplicationFirewallPolicyLink* ID 设置为策略 ID。 将 *IPAllowPolicyExampleCLI* 替换为之前创建的唯一策略。
+使用 [az network 前门 update](/cli/azure/ext/front-door/network/front-door#ext-front-door-az-network-front-door-update)命令将 Azure 前门 *WebApplicationFirewallPolicyLink* ID 设置为策略 ID。 将 *IPAllowPolicyExampleCLI* 替换为之前创建的唯一策略。
 
    ```azurecli
    az network front-door update \

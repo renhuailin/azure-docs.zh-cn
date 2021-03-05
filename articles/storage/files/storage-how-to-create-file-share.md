@@ -9,12 +9,12 @@ ms.date: 1/20/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli, references_regions
-ms.openlocfilehash: 5a27f38e92955c0aa240f6be394aacd187c3a8b8
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.openlocfilehash: 24bee926d84c7a5be3f19c39d39285c2cd486824
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100370897"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102211016"
 ---
 # <a name="create-an-azure-file-share"></a>创建 Azure 文件共享
 若要创建 Azure 文件共享，需要回答有关你将如何使用它的三个问题：
@@ -35,7 +35,7 @@ ms.locfileid: "100370897"
 ## <a name="prerequisites"></a>先决条件
 - 本文假设已创建一个 Azure 订阅。 如果还没有订阅，则请在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - 如果你打算使用 Azure PowerShell，请[安装最新版本](/powershell/azure/install-az-ps)。
-- 如果你打算使用 Azure CLI，请[安装最新版本](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)。
+- 如果你打算使用 Azure CLI，请[安装最新版本](/cli/azure/install-azure-cli)。
 
 ## <a name="create-a-storage-account"></a>创建存储帐户
 Azure 文件共享将部署到存储帐户。存储帐户是代表存储共享池的顶级对象。 此存储池可用于部署多个文件共享。 
@@ -51,7 +51,7 @@ Azure 文件共享将部署到存储帐户。存储帐户是代表存储共享�
 
 ![浏览器中存储帐户快速创建选项的屏幕截图](media/storage-how-to-create-file-share/create-storage-account-0.png)
 
-#### <a name="basics"></a>基础知识
+#### <a name="basics"></a>基础
 创建存储帐户所要完成的第一部分是标有“基本信息”的部分。 此部分包含创建存储帐户所需填写的所有字段。 若要创建 GPv2 存储帐户，请确保将“性能”单选按钮设置为“标准”，并在“帐户类型”下拉列表中选择“StorageV2 (常规用途 v2)”。
 
 ![一个屏幕截图，其中“性能”单选按钮已选择为“标准”，“帐户类型”已选择为“StorageV2”](media/storage-how-to-create-file-share/create-storage-account-1.png)
@@ -213,7 +213,7 @@ New-AzRmStorageShare `
 ```
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-可以使用 [`az storage share-rm create`](/cli/azure/storage/share-rm?preserve-view=true&view=azure-cli-latest#az_storage_share_rm_create) 命令创建 Azure 文件共享。 以下 Azure CLI 命令假设你已根据前面“使用 Azure CLI 创建存储帐户”部分中的定义，设置了变量 `$resourceGroupName` 和 `$storageAccountName`。
+可以使用 [`az storage share-rm create`](/cli/azure/storage/share-rm#az_storage_share_rm_create) 命令创建 Azure 文件共享。 以下 Azure CLI 命令假设你已根据前面“使用 Azure CLI 创建存储帐户”部分中的定义，设置了变量 `$resourceGroupName` 和 `$storageAccountName`。
 
 > [!Important]  
 > 对于高级文件共享，`--quota` 参数指的是文件共享的预配大小。 文件共享的预配大小是将要对你计费的数量，与使用情况无关。 标准文件共享按使用情况计费，而不是按预配大小计费。
@@ -238,7 +238,7 @@ az storage share-rm create \
 ### <a name="changing-the-tier-of-an-azure-file-share"></a>更改 Azure 文件共享的层
 部署在常规用途 v2 中的文件共享 **(GPv2) 存储帐户** 可以在事务优化、热或冷层中。 你可以随时更改 Azure 文件共享层，如上文所述，受事务成本的限制。
 
-# <a name="portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 在 "主存储帐户" 页上，选择 " **文件共享**  " 选择标记为 **文件共享** 的磁贴 (你也可以通过存储帐户) 的目录导航到 **文件共享** 。
 
 ![“文件共享”磁贴的屏幕截图](media/storage-how-to-create-file-share/create-file-share-1.png)

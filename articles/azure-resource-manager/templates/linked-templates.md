@@ -3,12 +3,12 @@ title: 用于部署的链接模板
 description: 介绍如何使用 Azure 资源管理器模板（ARM 模板）中的链接模板创建一个模块化的模板解决方案。 演示如何传递参数值、指定参数文件和动态创建的 URL。
 ms.topic: conceptual
 ms.date: 01/26/2021
-ms.openlocfilehash: ac987b1390e939ad2b081745396245b432bb836b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: 3636ea64227a7c013134d96647144d4f1e2ae31e
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101740998"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102211305"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>部署 Azure 资源时使用链接模版和嵌套模版
 
@@ -106,9 +106,9 @@ ms.locfileid: "101740998"
   "apiVersion": "2019-10-01",
   "name": "nestedTemplate1",
   "properties": {
-  "expressionEvaluationOptions": {
-    "scope": "inner"
-  },
+    "expressionEvaluationOptions": {
+      "scope": "inner"
+    },
   ...
 ```
 

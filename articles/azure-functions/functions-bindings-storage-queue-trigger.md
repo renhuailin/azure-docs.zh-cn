@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, cc996988-fb4f-47, devx-track-python
-ms.openlocfilehash: 59cedb25295770ba4ae4a33aac3287c5fed1297d
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.openlocfilehash: 8c2ea69d38f354455b7957ddc7b6ff41da30100b
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100381488"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102210761"
 ---
 # <a name="azure-queue-storage-trigger-for-azure-functions"></a>适用于 Azure Functions 的 Azure 队列存储触发器
 
@@ -353,7 +353,7 @@ Python 不支持特性。
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|type  | 不适用| 必须设置为 `queueTrigger`。 在 Azure 门户中创建触发器时，会自动设置此属性。|
+|type | 不适用| 必须设置为 `queueTrigger`。 在 Azure 门户中创建触发器时，会自动设置此属性。|
 |**direction**| 不适用 | 只能在 *function.json* 文件中设置。 必须设置为 `in`。 在 Azure 门户中创建触发器时，会自动设置此属性。 |
 |**name** | 不适用 |函数代码中包含队列项有效负载的变量的名称。  |
 |**queueName** | **QueueName**| 要轮询的队列的名称。 |
@@ -378,11 +378,11 @@ Python 不支持特性。
 
 ### <a name="additional-types"></a>其他类型
 
-使用 [存储扩展插件的5.0.0 或更高版本](./functions-bindings-storage-queue.md#storage-extension-5x-and-higher) 的应用程序也可以使用 [Azure SDK for .net](/dotnet/api/overview/azure/storage.queues-readme)中的类型。 此版本支持旧 `CloudQueueMessage` 类型，以支持以下类型：
+应用如果使用 [5.0.0 版或更高版本的存储扩展](./functions-bindings-storage-queue.md#storage-extension-5x-and-higher)，还可以使用[用于 .NET 的 Azure SDK](/dotnet/api/overview/azure/storage.queues-readme) 中的类型。 此版本支持旧 `CloudQueueMessage` 类型，以支持以下类型：
 
 - [QueueMessage](/dotnet/api/azure.storage.queues.models.queuemessage)
  
-有关使用这些类型的示例，请参阅 [GitHub 存储库](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Microsoft.Azure.WebJobs.Extensions.Storage.Queues#examples)中的扩展。
+有关使用这些类型的示例，请参阅[扩展的 GitHub 存储库](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Microsoft.Azure.WebJobs.Extensions.Storage.Queues#examples)。
 
 # <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
 
@@ -399,15 +399,15 @@ Python 不支持特性。
 
 ### <a name="additional-types"></a>其他类型
 
-使用 [存储扩展插件的5.0.0 或更高版本](./functions-bindings-storage-queue.md#storage-extension-5x-and-higher) 的应用程序也可以使用 [Azure SDK for .net](/dotnet/api/overview/azure/storage.queues-readme)中的类型。 此版本支持旧 `CloudQueueMessage` 类型，以支持以下类型：
+应用如果使用 [5.0.0 版或更高版本的存储扩展](./functions-bindings-storage-queue.md#storage-extension-5x-and-higher)，还可以使用[用于 .NET 的 Azure SDK](/dotnet/api/overview/azure/storage.queues-readme) 中的类型。 此版本支持旧 `CloudQueueMessage` 类型，以支持以下类型：
 
 - [QueueMessage](/dotnet/api/azure.storage.queues.models.queuemessage)
 
-有关使用这些类型的示例，请参阅 [GitHub 存储库](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Microsoft.Azure.WebJobs.Extensions.Storage.Queues#examples)中的扩展。
+有关使用这些类型的示例，请参阅[扩展的 GitHub 存储库](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Microsoft.Azure.WebJobs.Extensions.Storage.Queues#examples)。
 
 # <a name="java"></a>[Java](#tab/java)
 
-使用 [QueueTrigger](/java/api/com.microsoft.azure.functions.annotation.queuetrigger?view=azure-java-stable&preserve-view=true) 注释可以访问触发函数的队列消息。
+使用 [QueueTrigger](/java/api/com.microsoft.azure.functions.annotation.queuetrigger) 注释可以访问触发函数的队列消息。
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 

@@ -7,12 +7,12 @@ ms.date: 02/20/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: f5a7693eeced1028d84598a6db3728776f845f7e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: 543c3f1c72857098540cc2a77e8a0093b907b799
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101741610"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102210829"
 ---
 # <a name="how-to-transfer-a-device-to-azure-iot-central-from-iot-hub"></a>如何从 IoT 中心将设备传输到 Azure IoT Central
 
@@ -26,7 +26,7 @@ ms.locfileid: "101741610"
 
 ## <a name="to-move-the-device-to-azure-iot-central"></a>将设备移到 Azure IoT Central
 
-若要将设备连接到 IOT 中心的 IoT Central，需要使用以下内容更新设备：
+若要将设备连接到 IoT 中心的 IoT Central，需要使用以下内容更新设备：
 
 * IoT Central 应用程序的 [作用域 ID](../../iot-dps/concepts-service.md) 。
 * 派生自[组 SAS](concepts-get-connected.md)密钥或[x.509 证书](../../iot-hub/iot-hub-x509ca-overview.md)的密钥

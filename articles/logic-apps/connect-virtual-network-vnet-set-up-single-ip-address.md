@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 05/06/2020
-ms.openlocfilehash: 40f4845ecc21d05ca5e8394dccba080f8a1f8936
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
-ms.translationtype: MT
+ms.openlocfilehash: e88c4bf05d88007a6e19b568f1bc1085e24b0325
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98049705"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102211050"
 ---
 # <a name="set-up-a-single-ip-address-for-one-or-more-integration-service-environments-in-azure-logic-apps"></a>为 Azure 逻辑应用中的一个或多个 integration services 环境设置单个 IP 地址
 
@@ -49,7 +49,7 @@ ms.locfileid: "98049705"
 
    ![设置用于定向出站流量的规则](./media/connect-virtual-network-vnet-set-up-single-ip-address/add-rule-to-route-table.png)
 
-   | 属性 | “值” | 描述 |
+   | 属性 | 值 | 描述 |
    |----------|-------|-------------|
    | **路由名称** | <*唯一路由名称*> | 路由表中的路由的唯一名称 |
    | **地址前缀** | <*目标地址*> | 要在其中发送出站流量的目标系统的地址前缀。 请确保对此地址使用无 [类别 Inter-Domain 路由 (CIDR) 表示法](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) 。 在此示例中，此地址前缀用于 SFTP 服务器，这在 " [设置网络规则](#set-up-network-rule)" 一节中进行了介绍。 |
@@ -73,19 +73,19 @@ ms.locfileid: "98049705"
 
    **网络规则集合属性**
 
-   | 属性 | “值” | 描述 |
+   | 属性 | 值 | 描述 |
    |----------|-------|-------------|
-   | **名称** | <*网络规则-集合名称*> | 网络规则集合的名称 |
+   | 名称 - ** | <*网络规则-集合名称*> | 网络规则集合的名称 |
    | **Priority** | <*优先级别*> | 用于运行规则集合的优先级顺序。 有关详细信息，请参阅 [什么是 Azure 防火墙概念](../firewall/firewall-faq.yml#what-are-some-azure-firewall-concepts)？ |
    | **操作** | **允许** | 要为此规则执行的操作类型 |
    |||
 
    **网络规则属性**
 
-   | 属性 | “值” | 描述 |
+   | 属性 | 值 | 描述 |
    |----------|-------|-------------|
-   | **名称** | <*网络规则-名称*> | 网络规则的名称 |
-   | **协议** | <*连接-协议*> | 要使用的连接协议。 例如，如果使用 NSG 规则，请同时选择 **tcp** 和 **UDP**，而不是仅选择 **tcp**。 |
+   | 名称 - ** | <*网络规则-名称*> | 网络规则的名称 |
+   | 协议  | <*连接-协议*> | 要使用的连接协议。 例如，如果使用 NSG 规则，请同时选择 **tcp** 和 **UDP**，而不是仅选择 **tcp**。 |
    | **源地址** | <*ISE-子网地址*> | 运行 ISE 的子网 IP 地址，以及来自逻辑应用的流量的来源 |
    | **目标地址** | <*目标 IP 地址*> | 要在其中发送出站流量的目标系统的 IP 地址。 在此示例中，此 IP 地址用于 SFTP 服务器。 |
    | **目标端口** | <*目标-端口*> | 目标系统用于入站通信的任何端口 |
@@ -97,7 +97,7 @@ ms.locfileid: "98049705"
    * [Azure 防火墙规则处理逻辑](../firewall/rule-processing.md#network-rules-and-applications-rules)
    * [Azure 防火墙常见问题解答](../firewall/firewall-faq.yml)
    * [Azure PowerShell： AzFirewallNetworkRule](/powershell/module/az.network/new-azfirewallnetworkrule)
-   * [Azure CLI： az 网络防火墙网络规则](/cli/azure/ext/azure-firewall/network/firewall/network-rule?view=azure-cli-latest#ext-azure-firewall-az-network-firewall-network-rule-create)
+   * [Azure CLI： az 网络防火墙网络规则](/cli/azure/ext/azure-firewall/network/firewall/network-rule#ext-azure-firewall-az-network-firewall-network-rule-create)
 
 ## <a name="next-steps"></a>后续步骤
 

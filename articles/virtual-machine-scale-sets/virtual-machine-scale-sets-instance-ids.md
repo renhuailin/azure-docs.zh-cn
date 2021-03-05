@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: management
 ms.date: 02/22/2018
 ms.reviewer: jushiman
-ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: a32a5a04c5c71cc06d60f3d2f21946f5361a2afd
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
-ms.translationtype: MT
+ms.custom: mimckitt
+ms.openlocfilehash: a62c9bbde0726c8dec8fba1f69e221bd4e4b63bc
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843241"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102209843"
 ---
 # <a name="understand-instance-ids-for-azure-vm-scale-set-vms"></a>了解 Azure VM 规模集 VM 的实例 ID
 本文介绍规模集的实例 ID 和显示这些 ID 的各种方法。
@@ -27,7 +27,7 @@ REST API：`POST https://management.azure.com/subscriptions/{subscriptionId}/res
 
 PowerShell：`Set-AzVmssVM -ResourceGroupName {resourceGroupName} -VMScaleSetName {vmScaleSetName} -InstanceId {instanceId} -Reimage`（有关详细信息，请参阅 [PowerShell 文档](/powershell/module/az.compute/set-azvmssvm)）
 
-CLI：`az vmss reimage -g {resourceGroupName} -n {vmScaleSetName} --instance-id {instanceId}`（有关详细信息，请参阅 [CLI 文档](/cli/azure/vmss?view=azure-cli-latest)）。
+CLI：`az vmss reimage -g {resourceGroupName} -n {vmScaleSetName} --instance-id {instanceId}`（有关详细信息，请参阅 [CLI 文档](/cli/azure/vmss)）。
 
 可以通过列出规模集中的所有实例来获取实例 ID 的列表：
 
@@ -35,7 +35,7 @@ REST API：`GET https://management.azure.com/subscriptions/{subscriptionId}/reso
 
 PowerShell：`Get-AzVmssVM -ResourceGroupName {resourceGroupName} -VMScaleSetName {vmScaleSetName}`（有关详细信息，请参阅 [PowerShell 文档](/powershell/module/az.compute/get-azvmssvm)）
 
-CLI：`az vmss list-instances -g {resourceGroupName} -n {vmScaleSetName}`（有关详细信息，请参阅 [CLI 文档](/cli/azure/vmss?view=azure-cli-latest)）。
+CLI：`az vmss list-instances -g {resourceGroupName} -n {vmScaleSetName}`（有关详细信息，请参阅 [CLI 文档](/cli/azure/vmss)）。
 
 也可以使用 [resources.azure.com](https://resources.azure.com) 或 [Azure SDK](https://azure.microsoft.com/downloads/) 列出规模集中的 VM。
 

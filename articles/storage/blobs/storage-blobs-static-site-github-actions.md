@@ -9,12 +9,12 @@ ms.reviewer: dineshm
 ms.date: 01/11/2021
 ms.subservice: blobs
 ms.custom: devx-track-javascript, github-actions-azure, devx-track-azurecli
-ms.openlocfilehash: 8e5bb7bffddaedbf6349611c17e8d9cbec3c4139
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
-ms.translationtype: MT
+ms.openlocfilehash: 2192cdb3072edba2e5597a697feef99ba4d2070d
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/05/2021
-ms.locfileid: "102172674"
+ms.locfileid: "102210251"
 ---
 # <a name="set-up-a-github-actions-workflow-to-deploy-your-static-website-in-azure-storage"></a>在 Azure 存储中设置 GitHub Actions 工作流以部署静态网站
 
@@ -37,7 +37,7 @@ Azure 订阅和 GitHub 帐户。
 
 ## <a name="generate-deployment-credentials"></a>生成部署凭据
 
-可以使用 [Azure CLI](/cli/azure/) 中的 [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac&preserve-view=true) 命令创建[服务主体](../../active-directory/develop/app-objects-and-service-principals.md#service-principal-object)。 请使用 Azure 门户中的 [Azure Cloud Shell](https://shell.azure.com/) 或选择“试用”按钮运行此命令。
+可以使用 [Azure CLI](/cli/azure/) 中的 [az ad sp create-for-rbac](/cli/azure/ad/sp#az-ad-sp-create-for-rbac) 命令创建[服务主体](../../active-directory/develop/app-objects-and-service-principals.md#service-principal-object)。 请使用 Azure 门户中的 [Azure Cloud Shell](https://shell.azure.com/) 或选择“试用”按钮运行此命令。
 
 将占位符替换 `myStaticSite` 为 Azure 存储中托管的网站的名称。 
 

@@ -3,12 +3,12 @@ title: 创建自定义 Azure 资源管理器角色并将其分配给服务主体
 description: 本文提供有关如何使用 Azure CLI 创建自定义 Azure 资源管理器角色，并将其分配给 IoT Edge 上实时视频分析的服务主体的指南。
 ms.topic: how-to
 ms.date: 05/27/2020
-ms.openlocfilehash: 40bf0f60a718d512e02481d977b8208112ed1a55
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
-ms.translationtype: MT
+ms.openlocfilehash: 80974c111dd451314635d06334766322bc68e437
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425733"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102210438"
 ---
 # <a name="create-custom-azure-resource-manager-role-and-assign-to-service-principal"></a>创建自定义 Azure 资源管理器角色并将其分配给服务主体
 
@@ -49,7 +49,7 @@ IoT Edge 模块实例上的实时视频分析需要可用的 Azure 媒体服务�
     ```
     az account set --subscription " <yourSubscriptionName or yourSubscriptionId>"
     ```
-1. 创建[资源组](/cli/azure/group?view=azure-cli-latest#az-group-create)和[存储帐户](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create)。
+1. 创建[资源组](/cli/azure/group#az-group-create)和[存储帐户](/cli/azure/storage/account#az-storage-account-create)。
 1. 现在，通过在 Cloud Shell 中使用以下命令模板来创建 Azure 媒体服务帐户：
 
     ```
@@ -85,8 +85,8 @@ az ams account sp create --account-name < yourAMSAccountName > --resource-group 
 ```
 1. 带有密码身份验证的服务主体的输出包含 password 密钥，在此示例中为 "AadSecret" 参数。 
 
-    请确保复制此值 - 它不可检索。 如果忘记了密码，请[重置服务主体凭据](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest#reset-credentials)。
-1. AppId 和租户密钥分别显示为 "AadClientId" 和 "AadTenantId"。 它们用于服务主体身份验证。 请记录其值，但它们随时可以通过 [az ad sp list](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-list) 检索。
+    请确保复制此值 - 它不可检索。 如果忘记了密码，请[重置服务主体凭据](/cli/azure/create-an-azure-service-principal-azure-cli#reset-credentials)。
+1. AppId 和租户密钥分别显示为 "AadClientId" 和 "AadTenantId"。 它们用于服务主体身份验证。 请记录其值，但它们随时可以通过 [az ad sp list](/cli/azure/ad/sp#az-ad-sp-list) 检索。
 
 ### <a name="create-a-custom-role-definition"></a>创建自定义角色定义  
 
@@ -171,7 +171,7 @@ az ad sp show --id "<appId>" | Select-String "objectId"
 “objectId” : “<yourObjectId>”,
 ```
 
-使用 [az role assignment create 命令](/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create)模板将自定义角色与服务主体关联：
+使用 [az role assignment create 命令](/cli/azure/role/assignment#az-role-assignment-create)模板将自定义角色与服务主体关联：
 
 ```
 az role assignment create --role “LVAEdge User” --assignee-object-id < objectId>    

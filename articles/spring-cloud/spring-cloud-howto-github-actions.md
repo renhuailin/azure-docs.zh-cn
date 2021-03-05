@@ -8,19 +8,19 @@ ms.topic: how-to
 ms.date: 09/08/2020
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 95a97d3f5104891ef5e23a03ffe1477f9b6ad036
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
-ms.translationtype: MT
+ms.openlocfilehash: 8400fcacbfa4c76aceb079b788255e3d3b83ce33
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97561607"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102210404"
 ---
 # <a name="azure-spring-cloud-cicd-with-github-actions"></a>Azure Spring Cloud CI/CD 与 GitHub Actions
 
 GitHub Actions 支持自动化的软件开发生命周期工作流。 通过适用于 Azure Spring Cloud 的 GitHub Actions，可以在存储库中创建工作流来生成、测试、打包、发布并部署到 Azure。 
 
 ## <a name="prerequisites"></a>先决条件
-此示例需要 [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)。
+此示例需要 [Azure CLI](/cli/azure/install-azure-cli)。
 
 ::: zone pivot="programming-language-csharp"
 ## <a name="set-up-github-repository-and-authenticate"></a>设置 GitHub 存储库并进行身份验证
@@ -340,5 +340,5 @@ jobs:
 ## <a name="next-steps"></a>后续步骤
 
 * [用于 Spring Cloud GitHub Actions 的 Key Vault](./spring-cloud-github-actions-key-vault.md)
-* [Azure Active Directory 服务主体](/cli/azure/ad/sp?preserve-view=true&view=azure-cli-latest#az-ad-sp-create-for-rbac)
+* [Azure Active Directory 服务主体](/cli/azure/ad/sp#az-ad-sp-create-for-rbac)
 * [适用于 Azure 的 GitHub Actions](https://github.com/Azure/actions/)

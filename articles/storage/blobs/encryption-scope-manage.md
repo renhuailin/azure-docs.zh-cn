@@ -4,23 +4,28 @@ description: 了解如何创建加密范围以在容器或 blob 级别隔离 blo
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 09/17/2020
+ms.date: 03/05/2021
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: e77b58f7741af42f00b2a1831157405b12fa24ff
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.openlocfilehash: d5590ff275ce821c81f5751f4d92972c49adaafc
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96017400"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102209585"
 ---
 # <a name="create-and-manage-encryption-scopes-preview"></a>创建和管理加密范围（预览）
 
 通过加密范围（预览），可在单个 blob 或容器级别管理加密。 加密范围将 blob 数据隔离在存储帐户内的安全 enclave 中。 可以使用加密范围在驻留在同一存储帐户中但属于不同客户的数据之间创建安全边界。 有关加密范围的详细信息，请参阅 [Blob 存储（预览）的加密范围](encryption-scope-overview.md)。
 
 本文介绍如何创建加密范围。 本文还介绍如何在创建 blob 或容器时指定加密范围。
+
+> [!IMPORTANT]
+> 加密范围目前为 **预览版**。 请参阅 [Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) ，它们适用于适用于 beta、preview 或其他尚未公开上市的 Azure 功能的法律条款。
+>
+> 为避免意外费用，请确保禁用当前不需要的任何加密范围。
 
 [!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 

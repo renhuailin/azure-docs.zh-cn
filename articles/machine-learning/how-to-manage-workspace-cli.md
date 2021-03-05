@@ -10,12 +10,12 @@ author: Blackmist
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-azurecli
-ms.openlocfilehash: 4c457ef2c4957308735c222488ad04dac80235df
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
-ms.translationtype: MT
+ms.openlocfilehash: 8ea3f36d4e63b3439691772c25e7b3af77dcdb02
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97740379"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102210030"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>使用 Azure CLI 创建 Azure 机器学习工作区
 
@@ -26,7 +26,7 @@ ms.locfileid: "97740379"
 
 * 一个 **Azure 订阅**。 如果没有订阅，可试用 [Azure 机器学习免费版或付费版](https://aka.ms/AMLFree)。
 
-* 若要从本地环境使用本文档中的 CLI 命令，需要使用 [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)。
+* 若要从本地环境使用本文档中的 CLI 命令，需要使用 [Azure CLI](/cli/azure/install-azure-cli)。
 
     如果使用的是 [Azure Cloud Shell](https://azure.microsoft.com//features/cloud-shell/)，则可通过浏览器访问 CLI（它位于云端）。
 
@@ -49,7 +49,7 @@ az login
 
 [!INCLUDE [select-subscription](../../includes/machine-learning-cli-subscription.md)] 
 
-有关其他身份验证方法，请参阅[使用 Azure CLI 登录](/cli/azure/authenticate-azure-cli?preserve-view=true&view=azure-cli-latest)。
+有关其他身份验证方法，请参阅[使用 Azure CLI 登录](/cli/azure/authenticate-azure-cli)。
 
 ## <a name="install-the-machine-learning-extension"></a>安装机器学习扩展
 
@@ -80,7 +80,7 @@ Azure 机器学习工作区依赖于以下 Azure 服务或实体：
 | **Azure Key Vault** | `--keyvault <service-id>` |
 | **Azure 容器注册表** | `--container-registry <service-id>` |
 
-Azure 容器注册表 (ACR) 当前不支持资源组名称中的 unicode 字符。 若要缓解此问题，请使用不包含这些字符的资源组。
+Azure 容器注册表 (ACR) 当前不支持在资源组名称中使用 unicode 字符。 若要缓解此问题，请使用不包含这些字符的资源组。
 
 ### <a name="create-a-resource-group"></a>创建资源组
 
@@ -109,7 +109,7 @@ az group create --name <resource-group-name> --location <location>
 }
 ```
 
-要详细了解如何使用资源组，请参阅 [az group](/cli/azure/group?preserve-view=true&view=azure-cli-latest)。
+要详细了解如何使用资源组，请参阅 [az group](/cli/azure/group)。
 
 ### <a name="automatically-create-required-resources"></a>自动创建所需的资源
 
@@ -156,7 +156,7 @@ az ml workspace create -w <workspace-name> -g <resource-group-name>
 * `--pe-auto-approval`：是否应自动批准与工作区的专用终结点连接。
 * `--pe-resource-group`：要在其中创建专用终结点的资源组。 必须是包含虚拟网络的同一个组。
 * `--pe-vnet-name`：要在其中创建专用终结点的现有虚拟网络。
-* `--pe-subnet-name`：要在其中创建专用终结点的子网的名称。 默认值是 `default`。
+* `--pe-subnet-name`：要在其中创建专用终结点的子网的名称。 默认值为 `default`。
 
 有关将专用终结点和虚拟网络与工作区结合使用的详细信息，请参阅 [虚拟网络隔离和隐私概述](how-to-network-security-overview.md)。
 
@@ -291,7 +291,7 @@ az ml workspace list
 ]
 ```
 
-有关详细信息，请参阅 [az ml workspace list](/cli/azure/ext/azure-cli-ml/ml/workspace?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-list) 文档。
+有关详细信息，请参阅 [az ml workspace list](/cli/azure/ext/azure-cli-ml/ml/workspace#ext-azure-cli-ml-az-ml-workspace-list) 文档。
 
 ## <a name="get-workspace-information"></a>获取工作区信息
 
@@ -324,7 +324,7 @@ az ml workspace show -w <workspace-name> -g <resource-group-name>
 }
 ```
 
-有关详细信息，请参阅 [az ml workspace show](/cli/azure/ext/azure-cli-ml/ml/workspace?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-show) 文档。
+有关详细信息，请参阅 [az ml workspace show](/cli/azure/ext/azure-cli-ml/ml/workspace#ext-azure-cli-ml-az-ml-workspace-show) 文档。
 
 ## <a name="update-a-workspace"></a>更新工作区
 
@@ -357,7 +357,7 @@ az ml workspace update -w <workspace-name> -g <resource-group-name>
 }
 ```
 
-有关详细信息，请参阅 [az ml workspace update](/cli/azure/ext/azure-cli-ml/ml/workspace?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-update) 文档。
+有关详细信息，请参阅 [az ml workspace update](/cli/azure/ext/azure-cli-ml/ml/workspace#ext-azure-cli-ml-az-ml-workspace-update) 文档。
 
 ## <a name="share-a-workspace-with-another-user"></a>与另一用户共享工作区
 
@@ -369,7 +369,7 @@ az ml workspace share -w <workspace-name> -g <resource-group-name> --user <user>
 
 如需详细了解 Azure 机器学习的 Azure 基于角色的访问控制 (Azure RBAC)，请参阅[管理用户和角色](how-to-assign-roles.md)。
 
-有关详细信息，请参阅 [az ml workspace share](/cli/azure/ext/azure-cli-ml/ml/workspace?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-share) 文档。
+有关详细信息，请参阅 [az ml workspace share](/cli/azure/ext/azure-cli-ml/ml/workspace#ext-azure-cli-ml-az-ml-workspace-share) 文档。
 
 ## <a name="sync-keys-for-dependent-resources"></a>同步依赖资源的密钥
 
@@ -381,7 +381,7 @@ az ml workspace sync-keys -w <workspace-name> -g <resource-group-name>
 
 有关更改密钥的详细信息，请参阅[重新生成存储访问密钥](how-to-change-storage-access-key.md)。
 
-有关详细信息，请参阅 [az ml workspace sync-keys](/cli/azure/ext/azure-cli-ml/ml/workspace?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-sync-keys) 文档。
+有关详细信息，请参阅 [az ml workspace sync-keys](/cli/azure/ext/azure-cli-ml/ml/workspace#ext-azure-cli-ml-az-ml-workspace-sync-keys) 文档。
 
 ## <a name="delete-a-workspace"></a>创建工作区
 
@@ -400,7 +400,7 @@ az ml workspace delete -w <workspace-name> -g <resource-group-name>
 az group delete -g <resource-group-name>
 ```
 
-有关详细信息，请参阅 [az ml workspace delete](/cli/azure/ext/azure-cli-ml/ml/workspace?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-delete) 文档。
+有关详细信息，请参阅 [az ml workspace delete](/cli/azure/ext/azure-cli-ml/ml/workspace#ext-azure-cli-ml-az-ml-workspace-delete) 文档。
 
 ## <a name="troubleshooting"></a>疑难解答
 
@@ -421,4 +421,4 @@ Azure 机器学习工作区使用 Azure 容器注册表 (ACR) 执行某些操作
 
 ## <a name="next-steps"></a>后续步骤
 
-有关适用于机器学习的 Azure CLI 扩展的详细信息，请参阅 [az ml](/cli/azure/ext/azure-cli-ml/ml?preserve-view=true&view=azure-cli-latest) 文档。
+有关适用于机器学习的 Azure CLI 扩展的详细信息，请参阅 [az ml](/cli/azure/ext/azure-cli-ml/ml) 文档。
