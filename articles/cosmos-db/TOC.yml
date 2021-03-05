@@ -78,6 +78,18 @@
           href: synapse-link-use-cases.md
         - name: Synapse Link 常见问题解答
           href: synapse-link-frequently-asked-questions.md
+    - name: 备份和还原
+      items:
+        - name: 备份和还原简介
+          href: online-backup-and-restore.md
+        - name: 连续备份
+          items:
+            - name: 连续备份 - 简介
+              href: continuous-backup-restore-introduction.md
+            - name: 连续备份 - FAQ
+              href: continuous-backup-restore-frequently-asked-questions.md
+            - name: 连续备份 - 资源模型
+              href: continuous-backup-restore-resource-model.md
     - name: 优化 Azure Cosmos DB 成本
       items:
         - name: 计划和管理成本
@@ -112,34 +124,6 @@
       href: concepts-limits.md
     - name: 企业就绪情况
       items:
-        - name: 备份和还原简介
-          href: online-backup-and-restore.md
-        - name: 连续备份
-          items:
-            - name: 连续备份 - 简介
-              href: continuous-backup-restore-introduction.md
-            - name: 连续备份 - FAQ
-              href: continuous-backup-restore-frequently-asked-questions.md
-            - name: 连续备份 - 资源模型
-              items:
-                - name: 资源模型概述
-                  href: continuous-backup-restore-resource-model.md
-                - name: 可还原帐户 - 列表
-                  href: restorable-database-accounts-list.md
-                - name: 可还原帐户 - 按位置显示的列表
-                  href: restorable-database-accounts-list-by-location.md
-                - name: 可还原的 SQL 资源 - 列表
-                  href: restorable-sql-resources-list.md
-                - name: 可还原的 SQL 数据库 - 列表
-                  href: restorable-sql-databases-list.md
-                - name: 可还原的 SQL 容器 - 列表
-                  href: restorable-sql-containers-list.md
-                - name: 可还原的 MongoDB 资源 - 列表
-                  href: restorable-mongodb-resources-list.md
-                - name: 可还原的 MongoDB 集合 - 列表
-                  href: restorable-mongodb-collections-list.md
-                - name: 可还原的 MongoDB 数据库 - 列表
-                  href: restorable-mongodb-databases-list.md
         - name: 合规性
           href: compliance.md
     - name: 自动建议
@@ -1391,6 +1375,22 @@
           href: ../synapse-analytics/sql/query-cosmos-db-analytical-store.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: 将 Power BI 与 Synapse Link 一起使用
           href: synapse-link-power-bi.md
+    - name: 备份和还原
+      items:
+        - name: 管理连续备份
+          items:
+            - name: 连续备份 - 权限和角色
+              href: continuous-backup-restore-permissions.md
+            - name: 连续备份 - 门户
+              href: continuous-backup-restore-portal.md
+            - name: 连续备份 - PowerShell
+              href: continuous-backup-restore-powershell.md
+            - name: 连续备份 - CLI
+              href: continuous-backup-restore-command-line.md
+            - name: 连续备份 - 资源管理器
+              href: continuous-backup-restore-template.md
+        - name: 管理定期备份
+          href: configure-periodic-backup-restore.md
     - name: 安全性
       items:
         - name: 配置 IP 防火墙
@@ -1410,20 +1410,6 @@
           href: how-to-setup-cmk.md
     - name: 企业就绪情况
       items:
-        - name: 管理连续备份
-          items:
-            - name: 连续备份 - 权限和角色
-              href: continuous-backup-restore-permissions.md
-            - name: 连续备份 - 门户
-              href: continuous-backup-restore-portal.md
-            - name: 连续备份 - PowerShell
-              href: continuous-backup-restore-powershell.md
-            - name: 连续备份 - CLI
-              href: continuous-backup-restore-command-line.md
-            - name: 连续备份 - ARM
-              href: continuous-backup-restore-template.md
-        - name: 管理定期备份
-          href: configure-periodic-backup-restore.md
         - name: 请求增加配额
           href: create-support-request-quota-increase.md
     - name: 监视
