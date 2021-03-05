@@ -3,12 +3,12 @@ title: 策略定义结构的详细信息
 description: 介绍如何使用策略定义为组织中的 Azure 资源建立约定。
 ms.date: 02/17/2021
 ms.topic: conceptual
-ms.openlocfilehash: 741cfce56554e05d0c5f5a9242a33502b8a6fbe6
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: cebba214671cfab75a3f44720578b51febacdfcd
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101699413"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102215062"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy 定义结构
 
@@ -150,7 +150,7 @@ Azure Policy 内置和模式位于 [Azure Policy 示例](../samples/index.md)。
   - `assignPermissions`：（可选）设置为“true”，使 Azure 门户在策略分配过程中创建角色分配。 如果希望在分配范围之外分配权限，此属性会很有用。 策略中的每个角色定义都有一个角色分配， (或每个角色定义中的策略) 。 参数值必须是有效的资源或范围。
 - `defaultValue`：（可选）设置分配的参数的值（如果值未给定）。
   在更新已分配的现有策略定义时必须使用此项。
-- `allowedValues`：（可选）提供参数在分配过程中所接受值的数组。
+- `allowedValues`：（可选）提供参数在分配过程中所接受值的数组。 允许的值比较区分大小写。 
 
 例如，可以定义策略定义来限制资源的部署位置。 **allowedLocations** 可以是该策略定义的一个参数。 每次分配策略定义来限制接受的值时，会使用此参数。 使用 **strongType** 可以在通过门户完成分配时提供增强的体验：
 

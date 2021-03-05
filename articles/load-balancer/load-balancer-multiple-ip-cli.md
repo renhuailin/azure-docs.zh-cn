@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/25/2018
 ms.author: allensu
-ms.openlocfilehash: 06dfa65236bf1aa5cfde626c5574ffdf487eb045
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
-ms.translationtype: MT
+ms.openlocfilehash: d928a86f958e54552f5cc8d030b0fb74fa3bd3c2
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94698353"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102214501"
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-using-azure-cli"></a>使用 Azure CLI 在多个 IP 配置上进行负载均衡
 
@@ -30,7 +30,7 @@ ms.locfileid: "94698353"
 
 若要实现本文中所述的方案，请完成以下步骤：
 
-1. 按照所链接的文章中的步骤[安装和配置 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)，然后登录到 Azure 帐户。
+1. 按照所链接的文章中的步骤[安装和配置 Azure CLI](/cli/azure/install-azure-cli)，然后登录到 Azure 帐户。
 2. 如下所述 [创建一个资源组](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-resource-group)并将其命名为 *contosofabrikam*，如下所示：
 
     ```azurecli

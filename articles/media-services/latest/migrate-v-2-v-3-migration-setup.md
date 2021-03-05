@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 1/14/2021
 ms.author: inhenkel
-ms.openlocfilehash: 779a52b44a5dc4e81dc7910da12c5cfb91c1c3ca
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: 1f3be34c6488b977a0b03237025ba0f0ab1af7ec
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101705375"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102214450"
 ---
 # <a name="step-3---set-up-to-migrate-to-the-v3-rest-api-or-client-sdk"></a>步骤 3 - 进行设置，以迁移到 V3 REST API 或客户端 SDK
 
@@ -50,8 +50,8 @@ V3 API 基于 Azure 资源管理 (ARM)。 它使用 Azure Active Directory (Azur
 
 ## <a name="download-client-sdk-of-your-choice-and-set-up-your-environment"></a>下载所选的客户端 SDK 并设置环境
 
-- 适用于  [.NET](/dotnet/api/overview/azure/mediaservices/management?preserve-view=true&view=azure-dotnet)、.NET Core、 [Node.js](/javascript/api/overview/azure/mediaservices/management?preserve-view=true&view=azure-node-latest)、 [Python](/python/api/overview/azure/mediaservices/management?preserve-view=true&view=azure-python)、 [Java](/java/api/overview/azure/mediaservices/management?preserve-view=true&view=azure-java-stable)、 [Go](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/mediaservices/mgmt/2018-07-01/media) 和 [Ruby](https://github.com/Azure/azure-sdk-for-ruby/blob/master/README.md) 的 SDK。
-- 用于简化脚本支持的 [Azure CLI](/cli/azure/ams?preserve-view=true&view=azure-cli-latest)  集成。
+- 适用于  [.NET](/dotnet/api/overview/azure/mediaservices/management?preserve-view=true&view=azure-dotnet)、.NET Core、 [Node.js](/javascript/api/overview/azure/mediaservices/management)、 [Python](/python/api/overview/azure/mediaservices/management?preserve-view=true&view=azure-python)、 [Java](/java/api/overview/azure/mediaservices/management)、 [Go](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/mediaservices/mgmt/2018-07-01/media) 和 [Ruby](https://github.com/Azure/azure-sdk-for-ruby/blob/master/README.md) 的 SDK。
+- 用于简化脚本支持的 [Azure CLI](/cli/azure/ams)  集成。
 
 > [!NOTE]
 > 社区 PHP SDK 无法再用于 V3 上的 Azure 媒体服务。 如果正在 V2 中使用 PHP，应直接在代码中迁移到 REST API。

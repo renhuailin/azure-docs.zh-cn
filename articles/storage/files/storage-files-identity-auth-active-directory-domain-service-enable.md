@@ -8,12 +8,12 @@ ms.date: 01/03/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: contperf-fy21q1, devx-track-azurecli
-ms.openlocfilehash: d75b60c715a758684e6f3a4b331c0b12d17eaf21
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: 6d8402f5e8a1a9af1f84ff6beff7324d1675e441
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101705103"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102214399"
 ---
 # <a name="enable-azure-active-directory-domain-services-authentication-on-azure-files"></a>启用 Azure 文件上 Azure Active Directory 域服务身份验证
 
@@ -123,9 +123,9 @@ Set-AzStorageAccount -ResourceGroupName "<resource-group-name>" `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-若要启用 Azure CLI 通过 SMB 进行 Azure AD 身份验证，请安装最新的 CLI 版本 (版本2.0.70 或更高版本) 。 有关安装 Azure CLI 的详细信息，请参阅 [安装 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。
+若要启用 Azure CLI 通过 SMB 进行 Azure AD 身份验证，请安装最新的 CLI 版本 (版本2.0.70 或更高版本) 。 有关安装 Azure CLI 的详细信息，请参阅 [安装 Azure CLI](/cli/azure/install-azure-cli)。
 
-若要创建新的存储帐户，请调用 [az storage account create](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create)，并将 `--enable-files-aadds` 属性设置为 **true**。 在下面的示例中，请记住将占位符值替换为自己的值。  (如果你使用的是以前的预览模块，则功能启用参数为 **文件-aad**。 ) 
+若要创建新的存储帐户，请调用 [az storage account create](/cli/azure/storage/account#az-storage-account-create)，并将 `--enable-files-aadds` 属性设置为 **true**。 在下面的示例中，请记住将占位符值替换为自己的值。  (如果你使用的是以前的预览模块，则功能启用参数为 **文件-aad**。 ) 
 
 ```azurecli-interactive
 # Create a new storage account
@@ -149,4 +149,4 @@ az storage account update -n <storage-account-name> -g <resource-group-name> --e
 若要详细了解 Azure 文件以及如何通过 SMB 使用 Azure AD，请参阅以下资源：
 
 - [支持 SMB 访问的 Azure 文件存储基于标识的身份验证概述](storage-files-active-directory-overview.md)
-- [常见问题](storage-files-faq.md)
+- [常见问题解答](storage-files-faq.md)

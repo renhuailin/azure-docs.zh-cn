@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 02/09/2021
-ms.openlocfilehash: 7a6213528f204ac31fbcf8a29625787fc73d5153
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.openlocfilehash: 34b37fde83ca957e7c90302561589e2568beb59b
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101656799"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102215045"
 ---
 # <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace"></a>为 Azure 机器学习工作区配置 Azure 专用链接
 
@@ -66,7 +66,7 @@ ws = Workspace.create(name='myworkspace',
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[机器学习的 Azure CLI 扩展](reference-azure-machine-learning-cli.md)提供了[az ml workspace create](/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest#ext_azure_cli_ml_az_ml_workspace_create)命令。 此命令的以下参数可用于创建具有专用网络的工作区，但它需要现有虚拟网络：
+[机器学习的 Azure CLI 扩展](reference-azure-machine-learning-cli.md)提供了[az ml workspace create](/cli/azure/ext/azure-cli-ml/ml/workspace#ext_azure_cli_ml_az_ml_workspace_create)命令。 此命令的以下参数可用于创建具有专用网络的工作区，但它需要现有虚拟网络：
 
 * `--pe-name`：创建的专用终结点的名称。
 * `--pe-auto-approval`：是否应自动批准与工作区的专用终结点连接。
@@ -116,7 +116,7 @@ ws.add_private_endpoint(private_endpoint_config=pe, private_endpoint_auto_approv
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[机器学习的 Azure CLI 扩展](reference-azure-machine-learning-cli.md)提供了[az ml workspace private-endpoint add](/cli/azure/ext/azure-cli-ml/ml/workspace/private-endpoint?view=azure-cli-latest#ext_azure_cli_ml_az_ml_workspace_private_endpoint_add)命令。
+[机器学习的 Azure CLI 扩展](reference-azure-machine-learning-cli.md)提供了[az ml workspace private-endpoint add](/cli/azure/ext/azure-cli-ml/ml/workspace/private-endpoint#ext_azure_cli_ml_az_ml_workspace_private_endpoint_add)命令。
 
 ```azurecli
 az ml workspace private-endpoint add -w myworkspace  --pe-name myprivateendpoint --pe-auto-approval true --pe-vnet-name myvnet
@@ -153,7 +153,7 @@ ws.delete_private_endpoint_connection(private_endpoint_connection_name=connectio
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[机器学习的 Azure CLI 扩展](reference-azure-machine-learning-cli.md)提供了[az ml workspace private-endpoint delete](/cli/azure/ext/azure-cli-ml/ml/workspace/private-endpoint?view=azure-cli-latest#ext_azure_cli_ml_az_ml_workspace_private_endpoint_delete)命令。
+[机器学习的 Azure CLI 扩展](reference-azure-machine-learning-cli.md)提供了[az ml workspace private-endpoint delete](/cli/azure/ext/azure-cli-ml/ml/workspace/private-endpoint#ext_azure_cli_ml_az_ml_workspace_private_endpoint_delete)命令。
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -192,7 +192,7 @@ ws.update(allow_public_access_when_behind_vnet=True)
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[机器学习的 Azure CLI 扩展](reference-azure-machine-learning-cli.md)提供了[az ml workspace update](/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest#ext_azure_cli_ml_az_ml_workspace_update)命令。 若要启用工作区公共访问权限，请添加参数 `--allow-public-access true` 。
+[机器学习的 Azure CLI 扩展](reference-azure-machine-learning-cli.md)提供了[az ml workspace update](/cli/azure/ext/azure-cli-ml/ml/workspace#ext_azure_cli_ml_az_ml_workspace_update)命令。 若要启用工作区公共访问权限，请添加参数 `--allow-public-access true` 。
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 

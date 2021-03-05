@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: bf5582016f74e67926c38111a3d8d2f468f3ac79
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
-ms.translationtype: MT
+ms.openlocfilehash: e20679c3999f7ece1f6d3ed47a241cfd9dab9236
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99987983"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102214739"
 ---
 # <a name="plan-your-qna-maker-app"></a>规划 QnA Maker 应用
 
@@ -177,7 +177,7 @@ QnA Maker 使用 _活动学习_ ，通过向答案建议替代问题来改善您
 
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA（稳定版本）](#tab/v1)
 
-应用 [最新的运行时更新](../how-to/set-up-qnamaker-service-azure.md#get-the-latest-runtime-updates) 以自动管理服务更新。
+应用 [最新的运行时更新](../how-to/configure-QnA-Maker-resources.md#get-the-latest-runtime-updates) 以自动管理服务更新。
 
 # <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/v2)
 
@@ -187,7 +187,7 @@ QnA Maker 使用 _活动学习_ ，通过向答案建议替代问题来改善您
 
 ### <a name="scaling-throughput-and-resiliency"></a>缩放、吞吐量和复原
 
-缩放、吞吐量和复原能力取决于 [Azure 资源](../how-to/set-up-qnamaker-service-azure.md)、其定价层和任何围绕 [流量管理器](../how-to/set-up-qnamaker-service-azure.md#business-continuity-with-traffic-manager)的体系结构。
+缩放、吞吐量和复原能力取决于 [Azure 资源](../how-to/set-up-qnamaker-service-azure.md)、其定价层和任何围绕 [流量管理器](../how-to/configure-QnA-Maker-resources.md#business-continuity-with-traffic-manager)的体系结构。
 
 ### <a name="analytics-with-application-insights"></a>分析与 Application Insights
 

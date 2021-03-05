@@ -8,12 +8,12 @@ ms.date: 01/22/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: dc23dec8a8d59a7762e93cdfaa2a39d824506e7b
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.openlocfilehash: 2ff669d0ff3bde791de9bc7773e13d880762f898
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100382117"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102214416"
 ---
 # <a name="how-to-create-an-nfs-share"></a>如何创建 NFS 共享
 Azure 文件共享是位于云中的完全托管文件共享。 本文介绍如何创建使用 NFS 协议的文件共享。 有关这两种协议的详细信息，请参阅 [Azure 文件共享协议](storage-files-compare-protocols.md)。
@@ -31,12 +31,12 @@ Azure 文件共享是位于云中的完全托管文件共享。 本文介绍如�
     - [配置站点到站点 VPN 以用于 Azure 文件](storage-files-configure-s2s-vpn.md)。
     - 配置 [ExpressRoute](../../expressroute/expressroute-introduction.md)。
 
-- 如果你打算使用 Azure CLI，请[安装最新版本](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)。
+- 如果你打算使用 Azure CLI，请[安装最新版本](/cli/azure/install-azure-cli)。
 
 ## <a name="register-the-nfs-41-protocol"></a>注册 NFS 4.1 协议
 如果使用的是 Azure PowerShell 模块或 Azure CLI，请使用以下命令注册功能：
 
-# <a name="portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 使用 Azure PowerShell 或 Azure CLI 为 Azure 文件注册 NFS 4.1 功能。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
@@ -79,7 +79,7 @@ az provider register \
 
 注册批准最多可能需要一小时。 若要验证注册是否完成，请使用以下命令：
 
-# <a name="portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 使用 Azure PowerShell 或 Azure CLI 来检查 Azure 文件的 NFS 4.1 功能的注册。 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
@@ -102,7 +102,7 @@ az feature show \
 ## <a name="create-a-filestorage-storage-account"></a>创建 FileStorage 存储帐户
 目前，NFS 4.1 共享仅可用作高级文件共享。 若要部署具有 NFS 4.1 协议支持的高级文件共享，必须先创建 FileStorage 存储帐户。 存储帐户是 Azure 中的顶级对象，表示可用于部署多个 Azure 文件共享的共享存储池。
 
-# <a name="portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 若要创建 FileStorage 存储帐户，请导航到 Azure 门户。
 
 1. 在 Azure 门户中，选择左侧菜单中的“存储帐户”。
@@ -164,7 +164,7 @@ az storage account create \
 
 ## <a name="create-an-nfs-share"></a>创建 NFS 共享
 
-# <a name="portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 现在，你已创建 FileStorage 帐户并配置了网络，接下来可以创建一个 NFS 文件共享。 此过程类似于创建 SMB 共享，在创建共享时选择 **NFS** 而不是 **smb** 。
 

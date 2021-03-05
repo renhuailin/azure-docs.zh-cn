@@ -16,12 +16,12 @@ ms.date: 10/30/2014
 ms.author: erikre
 ms.reviewer: vibhork;dominic.may@sendgrid.com;elmer.thomas@sendgrid.com
 ms.custom: devx-track-java
-ms.openlocfilehash: 57daf9170a7f97c6c141532dafe759cde9d1c77b
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
-ms.translationtype: MT
+ms.openlocfilehash: 7a857b887b53ccb2288507742ca52d72d90ff548
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95519058"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102214348"
 ---
 # <a name="how-to-send-email-using-sendgrid-from-java-in-an-azure-deployment"></a>如何在 Azure 部署中通过 Java 使用 SendGrid 发送电子邮件
 以下示例演示如何能够使用 SendGrid 从在 Azure 中托管的网页上发送电子邮件。 生成的应用程序将提示用户提供电子邮件值，如以下屏幕截图所示。
@@ -40,7 +40,7 @@ ms.locfileid: "95519058"
 
 还必须有自己的 SendGrid 用户名和密码，才能发送电子邮件。 若要开始使用 SendGrid，请参阅[如何通过 Java 使用 SendGrid 发送电子邮件](store-sendgrid-java-how-to-send-email.md)。
 
-此外，强烈建议熟悉[在 Eclipse 中为 Azure 创建 Hello World 应用程序](/java/azure/eclipse/azure-toolkit-for-eclipse-create-hello-world-web-app?view=azure-java-stable)上的信息，如果不使用 Eclipse，则强烈建议熟悉在 Azure 中托管 Java 应用程序的其他方法。
+此外，强烈建议熟悉[在 Eclipse 中为 Azure 创建 Hello World 应用程序](/azure/developer/java/toolkit-for-eclipse/create-hello-world-web-app)上的信息，如果不使用 Eclipse，则强烈建议熟悉在 Azure 中托管 Java 应用程序的其他方法。
 
 ## <a name="create-a-web-form-for-sending-email"></a>创建用于发送电子邮件的 Web 窗体
 以下代码演示如何创建 Web 窗体以检索用于发送电子邮件的用户数据。 在此内容中，JSP 文件的名称为 **emailform.jsp**。
