@@ -9,12 +9,12 @@ ms.subservice: security
 ms.topic: how-to
 ms.date: 03/02/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 4c4ad2a1350632d381cc258049ee85c87766f9b5
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: f8a6758cdf0a6da709a564c1e17c56a2fe5625b0
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101694115"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102124646"
 ---
 # <a name="deploy-a-vm-with-trusted-launch-enabled-preview"></a>使用启用了可信启动 (预览部署 VM) 
 
@@ -140,7 +140,7 @@ ls: cannot access '/dev/tpm0': No such file or directory
 
 在某些情况下，可能需要为 UEFI 安全启动签名。  例如，你可能需要了解如何对 Ubuntu [的安全启动进行签名](https://ubuntu.com/blog/how-to-sign-things-for-secure-boot) 。 在这些情况下，需要输入 VM 的 MOK 实用程序注册密钥。 要执行此操作，需要使用 Azure 串行控制台来访问 MOK 实用程序。
 
-1. 启用适用于 Linux 的 Azure 串行控制台。 有关详细信息，请参阅 [适用于 Linux 的串行控制台](serial-console-linux.md)。
+1. 启用适用于 Linux 的 Azure 串行控制台。
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 1. 搜索 " **虚拟机** "，并从列表中选择你的 VM。
 1. 在左侧菜单中的 " **支持 + 故障排除**" 下，选择 **串行控制台**。 将使用串行控制台向右打开一个页面。

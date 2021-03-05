@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/23/2020
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 62f89106538ab7f57047e211fc8715878f889af1
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 9c13a914a002f63f3c0d5bd988b0d76b951586dd
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98684553"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102124680"
 ---
 # <a name="ephemeral-os-disks-for-azure-vms"></a>用于 Azure VM 的临时 OS 磁盘
 
@@ -244,6 +244,11 @@ foreach($vmSize in $vmSizes)
 - Azure 备份
 - Azure Site Recovery  
 - OS 磁盘交换 
+
+> [!NOTE]
+> 
+> 临时磁盘将无法通过门户访问。 访问临时磁盘时，可能会收到 "找不到资源" 或 "404" 错误。
+> 
  
 ## <a name="next-steps"></a>后续步骤
 可以使用 [Azure CLI](/cli/azure/vm#az-vm-create) 创建具有临时 OS 磁盘的 VM。

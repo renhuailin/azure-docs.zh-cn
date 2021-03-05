@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/12/2020
 ms.author: labattul
-ms.openlocfilehash: ba7c2a37d58f20ac4ff1f49a46a406d1b1f70106
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 3b4d66525ec52ef2382dfbe97bc09278e35b31fb
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97704412"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102124663"
 ---
 # <a name="set-up-dpdk-in-a-linux-virtual-machine"></a>在 Linux 虚拟机中设置 DPDK
 
@@ -58,7 +58,7 @@ DPDK 可以在支持多个操作系统分发版的 Azure 虚拟机中运行。 D
 
 ## <a name="prerequisites"></a>先决条件
 
-必须在 Linux 虚拟机上启用加速网络。 虚拟机应至少有两个网络接口，其中一个接口用于管理。 了解如何[创建启用加速网络的 Linux 虚拟机](create-vm-accelerated-networking-cli.md)。
+必须在 Linux 虚拟机上启用加速网络。 虚拟机应至少有两个网络接口，其中一个接口用于管理。 不建议在管理界面上启用加速网络。 了解如何[创建启用加速网络的 Linux 虚拟机](create-vm-accelerated-networking-cli.md)。
 
 ## <a name="install-dpdk-dependencies"></a>安装 DPDK 依赖项
 
