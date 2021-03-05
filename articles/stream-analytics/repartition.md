@@ -1,18 +1,18 @@
 ---
-title: 通过重新分区优化 Azure 流分析作业
+title: 使用重新分区优化 Azure 流分析作业
 description: 本文介绍如何使用重新分区优化无法并行化的 Azure 流分析作业。
 ms.service: stream-analytics
 author: sidramadoss
 ms.author: sidram
-ms.date: 09/19/2019
+ms.date: 03/04/2021
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 72f81a0eac81acdca71c8ed81695789c417898ca
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 95749f2acea6b605cfdba5a4f3d4f5526e751c5a
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98014189"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102182530"
 ---
 # <a name="use-repartitioning-to-optimize-processing-with-azure-stream-analytics"></a>通过重新分区优化使用 Azure 流分析进行的处理
 
@@ -23,25 +23,47 @@ ms.locfileid: "98014189"
 * 你无法控制输入流的分区键。
 * 你的源“散布”的输入跨多个以后需要合并的分区。
 
-当你处理的数据所在的流不是按照自然的输入方案（例如事件中心的 **PartitionId**）分片时，需要重新分区或重新组织。 如果重新分区，则每个分片都可以独立处理，这样就可以通过线性方式横向扩展流式处理管道。
+当你处理的数据所在的流不是按照自然的输入方案（例如事件中心的 **PartitionId**）分片时，需要重新分区或重新组织。 如果重新分区，则每个分片都可以独立处理，这样就可以通过线性方式横向扩展流式处理管道。 
 
 ## <a name="how-to-repartition"></a>如何重新分区
+您可以通过两种方式对您的输入进行重新分区：
+1. 使用单独的流分析作业进行重新分区
+2. 使用单个作业，但首先进行重新分区，然后再执行自定义分析逻辑
 
-若要重新分区，请在查询中的 **PARTITION BY** 语句后使用关键字 **INTO**。 以下示例按 **DeviceID** 将数据分区，分区数目为 10。 使用 **DeviceID** 的哈希来确定哪个分区应该接受哪个子流。 将针对每个分区的流独立刷新数据，假定输出支持分区的写入并有 10 个分区。
-
+### <a name="creating-a-separate-stream-analytics-job-to-repartition-input"></a>创建单独的流分析作业以重新分区输入
+可以使用分区键创建一个作业，用于读取输入并写入事件中心输出。 然后，此事件中心可以充当用于实现分析逻辑的另一个流分析作业的输入。 在作业中配置此事件中心输出时，必须指定流分析用于对数据进行重新分区的分区键。 
 ```sql
+-- For compat level 1.2 or higher
 SELECT * 
 INTO output
 FROM input
-PARTITION BY DeviceID 
-INTO 10
+
+--For compat level 1.1 or lower
+SELECT *
+INTO output
+FROM input PARTITION BY PartitionId
+```
+
+### <a name="repartition-input-within-a-single-stream-analytics-job"></a>在单个流分析作业中重新分区输入
+你还可以在查询中引入首次对输入的步骤，然后，你的查询中的其他步骤可以使用此步骤。 例如，如果想要基于 **DeviceId** 对输入重新分区，则查询将为：
+```sql
+WITH RepartitionedInput AS 
+( 
+SELECT * 
+FROM input PARTITION BY DeviceID
+)
+
+SELECT DeviceID, AVG(Reading) as AvgNormalReading  
+INTO output
+FROM RepartitionedInput  
+GROUP BY DeviceId, TumblingWindow(minute, 1)  
 ```
 
 以下示例查询联接两个其数据已重新分区的流。 联接两个其数据已重新分区的流时，这两个流必须有相同的分区键和计数。 结果就是一个具有相同分区方案的流。
 
 ```sql
-WITH step1 AS (SELECT * FROM input1 PARTITION BY DeviceID INTO 10),
-step2 AS (SELECT * FROM input2 PARTITION BY DeviceID INTO 10)
+WITH step1 AS (SELECT * FROM input1 PARTITION BY DeviceID),
+step2 AS (SELECT * FROM input2 PARTITION BY DeviceID)
 
 SELECT * INTO output FROM step1 PARTITION BY DeviceID UNION step2 PARTITION BY DeviceID
 ```

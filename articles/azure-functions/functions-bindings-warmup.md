@@ -10,16 +10,16 @@ ms.topic: reference
 ms.custom: devx-track-csharp
 ms.date: 11/08/2019
 ms.author: cshoe
-ms.openlocfilehash: 7cefe75eefb746c150b051a7bd1f4513c103d205
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: ea418576ab8fe06964a61e48f16393e1a0566ce8
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97655852"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102182241"
 ---
 # <a name="azure-functions-warm-up-trigger"></a>Azure Functions 预热触发器
 
-本文介绍了如何在 Azure Functions 中使用预热触发器。 添加实例以缩放正在运行的函数应用时，将调用预热触发器。 你可以在[预热过程](./functions-premium-plan.md#pre-warmed-instances)中使用预热触发器来预加载自定义依赖项，使你的函数能够准备就绪，以便立即开始处理请求。 
+本文介绍了如何在 Azure Functions 中使用预热触发器。 当添加实例来缩放正在运行的函数应用时，会调用预热触发器。 你可以在[预热过程](./functions-premium-plan.md#pre-warmed-instances)中使用预热触发器来预加载自定义依赖项，使你的函数能够准备就绪，以便立即开始处理请求。 
 
 > [!NOTE]
 > 在消耗计划中运行的函数应用不支持预热触发器。
@@ -28,7 +28,7 @@ ms.locfileid: "97655852"
 
 ## <a name="packages---functions-2x-and-higher"></a>包 - Functions 2.x 及更高版本
 
-需要 [Microsoft.Azure.WebJobs.Extensions](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions) NuGet 包版本 **3.0.5 或更高版本**。 [azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Http/) GitHub 存储库中提供了此包的源代码。 
+需要 [Microsoft.Azure.WebJobs.Extensions](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions) NuGet 包版本 **3.0.5 或更高版本**。 [azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/tree/main/src/WebJobs.Extensions/Extensions/Warmup) GitHub 存储库中提供了此包的源代码。 
 
 [!INCLUDE [functions-package](../../includes/functions-package-auto.md)]
 
@@ -230,9 +230,9 @@ Java 中不支持将预热触发器用作属性。
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-| **type** | 不适用| 必需 - 必须设置为 `warmupTrigger`。 |
+| type | 不适用| 必需 - 必须设置为 `warmupTrigger`。 |
 | **direction** | 不适用| 必需 - 必须设置为 `in`。 |
-| **name** | 不适用| 必需 - 函数代码中使用的变量名称。|
+| name | 不适用| 必需 - 函数代码中使用的变量名称。|
 
 ## <a name="trigger---usage"></a>触发器 - 用法
 

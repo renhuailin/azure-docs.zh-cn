@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
-ms.date: 12/07/2020
-ms.openlocfilehash: 445810d5873bb935ded180a969e4612542bde5ed
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.date: 3/04/2021
+ms.openlocfilehash: 92702f38b6143c5dac2111c57fadeba7d9142992
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102120175"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102181051"
 ---
 # <a name="migration-of-co-sell-solutions-from-ocp-gtm-to-the-commercial-marketplace"></a>将共同销售解决方案从 OCP 转移到商业应用商店
 
@@ -136,7 +136,7 @@ Microsoft 正在移动发布体验。 通过将产品/服务的创建和管理�
 
     :::image type="content" source="media/co-sell-migrate/offer-setup.png" alt-text="合作伙伴中心的产品概述设置选项卡。":::
 
-3. 某些 Microsoft 面向卖方的详细信息是从 OCP 转移解决方案中复制而来的。 完成 " **与 Microsoft 共同销售** " 选项卡中所需的剩余信息，使你的产品/服务共同销售就绪。 完成后，选择 " **查看并发布**"。 有关详细信息，请参阅 [如何在合作伙伴中心提交共同销售材料](marketplace-co-sell.md)。
+3. 某些 Microsoft 面向卖方的详细信息是从 OCP 转移解决方案中复制而来的。 完成 " **与 Microsoft 共同销售** " 选项卡中所需的剩余信息，使你的产品/服务共同销售就绪。 完成后，选择 " **查看并发布**"。 有关详细信息，请参阅 [配置商业 marketplace 产品/服务的共同销售](commercial-marketplace-co-sell.md)。
 
     :::image type="content" source="media/co-sell-migrate/co-sell-page.png" alt-text="合作伙伴中心的 &quot;产品/服务&quot; 选项卡。":::
 
@@ -154,5 +154,5 @@ Microsoft 正在移动发布体验。 通过将产品/服务的创建和管理�
 ## <a name="next-steps"></a>后续步骤
 
 - [通过 CSP 合作伙伴转售](cloud-solution-providers.md)
-- [如何在合作伙伴中心提交共同销售材料](marketplace-co-sell.md)
+- [配置商业 marketplace 产品/服务的共同销售](commercial-marketplace-co-sell.md)
 - 查看这些 [faq](https://partner.microsoft.com/resources/detail/co-sell-requirements-publish-commercial-marketplace-faq-pdf) (PDF) 

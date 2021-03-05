@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: conceptual
-ms.date: 01/14/2021
+ms.date: 03/04/2021
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 6dd2c7fcef6860cb5a2eaf88d141f8567955ed25
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: b1f1560fc1a00577e1e4b30d922fc7d4cae0ab92
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98706242"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102181823"
 ---
 # <a name="what-is-azure-importexport-service"></a>什么是 Azure 导入/导出服务？
 
@@ -79,7 +79,7 @@ Azure“导入/导出”服务通过创建作业，将数据传输到 Azure Blob
 >
 > 对于国外 (数据中心国家/地区外) 发货，请分享国际运营商帐户。
 
- ![图 1：导入作业流](./media/storage-import-export-service/importjob.png)
+ ![图 1：导入作业流](./media/storage-import-export-service/import-job.png)
 
 有关数据导入分步说明，请转到：
 
@@ -108,7 +108,7 @@ Azure“导入/导出”服务通过创建作业，将数据传输到 Azure Blob
 >
 > 对于国外 (数据中心国家/地区外) 发货，请分享国际运营商帐户。
   
- ![图 2：导出作业流](./media/storage-import-export-service/exportjob.png)
+ ![图 2：导出作业流](./media/storage-import-export-service/export-job.png)
 
 有关数据导出的分步说明，请转到[从 Azure Blob 导出数据](storage-import-export-data-from-blobs.md)。
 
@@ -125,7 +125,7 @@ Azure 导入/导出服务支持将数据复制到所有 Azure 存储帐户，以
 |美国东部 2    | 东亚        |  印度西部        | US DoD 中部        |
 |美国西部 2     | 东南亚        | 加拿大中部        | 中国东部         |
 |美国中部     | 澳大利亚东部        | 加拿大东部        | 中国北部        |
-|美国中北部     |  澳大利亚东南部       | 巴西南部        | 英国南部        |
+|美国中北部     |  澳大利亚东南部       | Brazil South        | 英国南部        |
 |美国中南部     | 日本西部        |韩国中部         | 德国中部        |
 |美国中西部     |  日本东部       | US Gov 弗吉尼亚州        | 德国东北部        |
 |南非西部   |  南非北部 |

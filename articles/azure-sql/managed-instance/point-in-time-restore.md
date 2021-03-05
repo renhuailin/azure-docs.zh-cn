@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, mathoma
 ms.date: 08/25/2019
-ms.openlocfilehash: d3414cb31192211c1663a84e1541f56b63674660
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 0a56cfc147d4fb5cbdccf13363ad28bc602d8216
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99525375"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102182751"
 ---
 # <a name="restore-a-database-in-azure-sql-managed-instance-to-a-previous-point-in-time"></a>将 Azure SQL 托管实例中的数据库还原到之前的某个时间点
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -110,7 +110,7 @@ Restore-AzSqlInstanceDatabase -FromPointInTimeBackup `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-如果尚未安装 Azure CLI，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。
+如果尚未安装 Azure CLI，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
 若要使用 Azure CLI 还原数据库，请在以下命令中指定参数值。 然后运行该命令：
 
@@ -128,7 +128,7 @@ az sql midb restore -g mygroupname --mi myinstancename -n mymanageddbname |
        --dest-mi mytargetinstancename
 ```
 
-要详细了解可用参数，请参阅[介绍如何在 SQL 托管实例中还原数据库的 CLI 文档](/cli/azure/sql/midb?view=azure-cli-latest#az-sql-midb-restore)。
+要详细了解可用参数，请参阅[介绍如何在 SQL 托管实例中还原数据库的 CLI 文档](/cli/azure/sql/midb#az-sql-midb-restore)。
 
 ---
 

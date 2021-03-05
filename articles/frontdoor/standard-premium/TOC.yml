@@ -57,8 +57,12 @@
       href: how-to-cache-purge.md
     - name: 压缩
       href: how-to-compression.md
-    - name: 对 Web 应用启用专用链接
-      href: how-to-enable-private-link-web-app.md
+    - name: 启用专用链接
+      items:
+        - name: 连接到存储帐户
+          href: how-to-enable-private-link-storage-account.md
+        - name: 连接到 Web 应用
+          href: how-to-enable-private-link-web-app.md
     - name: Logging
       href: how-to-logs.md
     - name: 监视和警报

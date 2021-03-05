@@ -5,19 +5,19 @@ services: container-service
 ms.topic: article
 ms.date: 08/27/2020
 author: palma21
-ms.openlocfilehash: 2af4f9e2ea1dc0fcb8e5f40e0024297124292b49
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: fa40ab22f0c1ebf47bb490a50f782a848d1441e1
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92074815"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102182105"
 ---
 # <a name="enable-container-storage-interface-csi-drivers-for-azure-disks-and-azure-files-on-azure-kubernetes-service-aks-preview"></a>为 azure Kubernetes Service 上的 Azure 磁盘和 Azure 文件 (CSI) 驱动程序启用容器存储接口 (AKS)  (预览版) 
 
  (CSI) 的容器存储接口是一种将任意块和文件存储系统公开给 Kubernetes 上容器化工作负荷的标准。 通过采用和使用 CSI，Azure Kubernetes Service (AKS) 可以编写、部署和循环访问插件以在 Kubernetes 中公开新的或改进现有存储系统，而无需接触核心 Kubernetes 代码并等待其发布周期。
 
 AKS 上的 CSI 存储驱动程序支持使你能够以本机方式使用：
-- 可用于创建 Kubernetes *DataDisk*资源的[*Azure 磁盘*](azure-disk-csi.md)。 磁盘可以使用 Azure 高级存储，支持高性能 Ssd 或 Azure 标准存储，由常规 Hdd 或标准 Ssd 支持。 对于大多数生产和开发工作负荷，请使用高级存储。 Azure 磁盘装载为 *ReadWriteOnce*，因此仅适用于单个 pod。 对于可同时由多个 Pod 访问的存储卷，请使用 Azure 文件存储。
+- 可用于创建 Kubernetes *DataDisk* 资源的 [*Azure 磁盘*](azure-disk-csi.md)。 磁盘可以使用 Azure 高级存储，支持高性能 Ssd 或 Azure 标准存储，由常规 Hdd 或标准 Ssd 支持。 对于大多数生产和开发工作负荷，请使用高级存储。 Azure 磁盘装载为 *ReadWriteOnce*，因此仅适用于单个 pod。 对于可同时由多个 Pod 访问的存储卷，请使用 Azure 文件存储。
 - [*Azure 文件*](azure-files-csi.md)，可用于将 azure 存储帐户支持的 SMB 3.0 共享装载到 pod。 借助 Azure 文件，你可以跨多个节点和盒共享数据。 Azure 文件可使用由通过高性能 Ssd 支持的常规 Hdd 或 Azure 高级存储支持的 Azure 标准存储。
 
 > [!IMPORTANT]
@@ -44,13 +44,13 @@ AKS 上的 CSI 存储驱动程序支持使你能够以本机方式使用：
 az feature register --namespace "Microsoft.ContainerService" --name "EnableAzureDiskFileCSIDriver"
 ```
 
-状态显示为“已注册”需要几分钟时间**。 使用 [az feature list][az-feature-list] 命令验证注册状态：
+状态显示为“已注册”需要几分钟时间。 使用 [az feature list][az-feature-list] 命令验证注册状态：
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnableAzureDiskFileCSIDriver')].{Name:name,State:properties.state}"
 ```
 
-准备就绪后，请使用[az provider register][az-provider-register]命令刷新*ContainerService*资源提供程序的注册：
+准备就绪后，请使用 [az provider register][az-provider-register]命令刷新 *ContainerService* 资源提供程序的注册：
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerService
@@ -60,7 +60,7 @@ az provider register --namespace Microsoft.ContainerService
 
 ### <a name="install-aks-preview-cli-extension"></a>安装 aks-preview CLI 扩展
 
-若要创建可使用 CSI 存储驱动程序的 AKS 群集或节点池，需要使用最新的 *AKS* Azure CLI 扩展。 使用[az extension add][az-extension-add]命令安装*aks-preview* Azure CLI 扩展。 或使用 [az extension update][az-extension-update] 命令安装任何可用的更新。
+若要创建可使用 CSI 存储驱动程序的 AKS 群集或节点池，需要使用最新的 *AKS* Azure CLI 扩展。 使用 [az extension add][az-extension-add]命令安装 *aks-preview* Azure CLI 扩展。 或使用 [az extension update][az-extension-update] 命令安装任何可用的更新。
 
 ```azurecli-interactive
 # Install the aks-preview extension
@@ -132,8 +132,8 @@ $ echo $(kubectl get CSINode <NODE NAME> -o jsonpath="{.spec.drivers[1].allocata
 [operator-best-practices-storage]: operator-best-practices-storage.md
 [concepts-storage]: concepts-storage.md
 [storage-class-concepts]: concepts-storage.md#storage-classes
-[az-extension-add]: /cli/azure/extension?view=azure-cli-latest#az-extension-add&preserve-view=true
-[az-extension-update]: /cli/azure/extension?view=azure-cli-latest#az-extension-update&preserve-view=true
-[az-feature-register]: /cli/azure/feature?view=azure-cli-latest#az-feature-register&preserve-view=true
-[az-feature-list]: /cli/azure/feature?view=azure-cli-latest#az-feature-list&preserve-view=true
-[az-provider-register]: /cli/azure/provider?view=azure-cli-latest#az-provider-register&preserve-view=true
+[az-extension-add]: /cli/azure/extension#az-extension-add
+[az-extension-update]: /cli/azure/extension#az-extension-update
+[az-feature-register]: /cli/azure/feature#az-feature-register
+[az-feature-list]: /cli/azure/feature#az-feature-list
+[az-provider-register]: /cli/azure/provider#az-provider-register

@@ -8,12 +8,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 02/18/2021
 ms.author: amsriva
-ms.openlocfilehash: 0f5ecef1716a503b7d27d0f5cdde15a4560c0e61
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 1753f2bb649e73d7a5fe6c1cc32361a418ea7f63
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101098801"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102181799"
 ---
 # <a name="overview-of-azure-front-door-standardpremium-sku-preview"></a>Azure 前门标准/高级 SKU 概述 (预览) 
 
@@ -59,7 +59,7 @@ Azure 前门为3个不同 Sku 提供， [Azure 前门](../front-door-overview.md
 | URL 重写 | 是 | 是 |
 | 规则引擎 | 是 | 是 |
 | 私有源 (专用链接)  | 否 | 是 |
-| WAF | 否 | 是 |
+| WAF | 仅自定义规则 | 是 |
 | 机器人保护 | 否 | 是 |
 | 增强的指标和诊断 | 是 | 是 |
 | 流量报表 | 是 | 是 |

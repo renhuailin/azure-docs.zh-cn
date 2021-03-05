@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/20/2020
-ms.openlocfilehash: ac93d835b8dbdd5a12d031825dcb879160df5e95
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: b9a207ffa14a18a5f4421fd21cebed28290b5ea6
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96575340"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183074"
 ---
 # <a name="asset-insights-on-your-data-in-azure-purview"></a>Azure 监控范围中的数据资产见解
 
@@ -40,7 +40,7 @@ ms.locfileid: "96575340"
 在 Azure 监控范围中，可以注册和扫描源类型。 扫描完成后，可以在资产见解中查看资产分布，这会告诉你数据的分类和资源集的状态。 它还会告诉您数据大小是否有任何变化。
 
 > [!NOTE]
-> 在扫描了源类型后，请将资产见解最多为一小时以反映新资产。
+> 在扫描了源类型后，请为资产见解3-8 小时，以反映新资产。 延迟的原因可能是部署区域中的流量较高或工作负荷的大小太大。 有关详细信息，请联系现场支持团队。
 
 1. 在 Azure 门户中导航到 Azure 监控范围资源。
 
@@ -94,7 +94,7 @@ ms.locfileid: "96575340"
 
 1. 选择要查看资产列表的路径。
 
-基于文件的源类型中的第二个关系图是 **_不与资源集关联的文件_**。 如果希望所有文件都应汇总到资源集中，此图可以帮助你了解哪些资产尚未汇总。 缺少的资产可以指示文件夹中的文件模式错误。 按照其他关系图中的相同步骤查看有关文件的更多详细信息。
+基于文件的源类型中的第二个关系图是 ***不与资源集关联的文件***。 如果希望所有文件都应汇总到资源集中，此图可以帮助你了解哪些资产尚未汇总。 缺少的资产可以指示文件夹中的文件模式错误。 按照其他关系图中的相同步骤查看有关文件的更多详细信息。
 
    :::image type="content" source="./media/asset-insights/file-based-assets.png" alt-text="查看基于文件的资产":::  
 

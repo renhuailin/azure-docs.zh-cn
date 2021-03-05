@@ -7,12 +7,12 @@ ms.author: crtreasu
 ms.date: 02/02/2021
 ms.topic: quickstart
 ms.service: azure-object-anchors
-ms.openlocfilehash: 7e71719d83426a3444435ed78d0d63a2599a9157
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 8a02bb7c70df4fed55c354638fe6662b85e6c164
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101747484"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102049610"
 ---
 # <a name="quickstart-create-a-hololens-app-with-azure-object-anchors-in-cwinrt-and-directx"></a>快速入门：在 C++/WinRT 和 DirectX 中使用 Azure Object Anchors 创建 HoloLens 应用
 
@@ -23,7 +23,6 @@ ms.locfileid: "101747484"
 > [!div class="checklist"]
 > * 创建和旁加载 HoloLens 应用程序
 > * 检测对象并将其模型可视化
-> * 捕获运行时诊断
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -64,7 +63,7 @@ ms.locfileid: "101747484"
 
 ## <a name="ingest-object-model-and-detect-its-instance"></a>引入对象模型并检测其实例
 
-需要创建一个对象模型来运行示例应用。 假设你已在空间中获得对象的 CAD 或扫描的 3D 网格模型。 请参阅[快速入门：引入 3D 模型](./get-started-model-ingestion.md)了解如何创建模型。
+需要创建一个对象模型来运行示例应用。 假设你已在空间中获得对象的 CAD 或扫描的 3D 网格模型。 请参阅[快速入门：引入 3D 模型](./get-started-model-conversion.md)了解如何创建模型。
 
 在本例中，将模型 chair.ou 下载到你的计算机。 然后，从 HoloLens 设备门户选择“系统”>“文件资源管理器”>“LocalAppData”>“AoaSampleApp”>“LocalState”，然后选择“浏览...” 。然后，选择模型文件，例如 chair.ou，再选择“上传” 。 随后你应该会在本地缓存中看到该模型文件。
 
@@ -86,7 +85,7 @@ ms.locfileid: "101747484"
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [快速入门：引入 3D 模型](./get-started-model-ingestion.md)
+> [快速入门：引入 3D 模型](./get-started-model-conversion.md)
 
 > [!div class="nextstepaction"]
 > [概念：SDK 概述](../concepts/sdk-overview.md)

@@ -3,12 +3,12 @@ title: 从 Azure 门户将混合计算机连接到 Azure
 description: 本文介绍如何使用 Azure 门户中的启用了 Azure Arc 的服务器安装代理并将计算机连接到 Azure。
 ms.date: 11/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: 97962f7fd9816e398f017555d7043cf65db00ed8
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: d7a89db7b8a42476a312a8f9a96c5ad230b140a2
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100584953"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183142"
 ---
 # <a name="connect-hybrid-machines-to-azure-from-the-azure-portal"></a>从 Azure 门户将混合计算机连接到 Azure
 
@@ -22,7 +22,7 @@ ms.locfileid: "100584953"
 
 ## <a name="generate-the-installation-script-from-the-azure-portal"></a>从 Azure 门户生成安装脚本
 
-Azure 门户中提供了用于自动下载和安装以及与 Azure Arc 建立连接的脚本。 若要完成该过程，请执行以下操作：
+Azure 门户中提供了用于自动下载和安装以及与 Azure Arc 建立连接的脚本。 若要完成此过程，请执行以下步骤：
 
 1. 在浏览器中转到 [Azure 门户](https://portal.azure.com)。
 
@@ -38,7 +38,7 @@ Azure 门户中提供了用于自动下载和安装以及与 Azure Arc 建立连
 
     1. 在“资源组”下拉列表中，选择要从中管理计算机的资源组。
     1. 在“区域”下拉列表中，选择用于存储服务器元数据的 Azure 区域。
-    1. 在“操作系统”下拉列表中，选择要在其上运行脚本的操作系统。
+    1. 在 " **操作系统** " 下拉列表中，选择要在其中运行脚本的操作系统。
     1. 如果计算机是通过代理服务器连接到 Internet 进行通信的，请指定计算机用来与代理服务器通信的代理服务器 IP 地址或名称以及端口号。 按格式 `http://<proxyURL>:<proxyport>` 输入值。
     1. 在完成时选择“下一步:  标记”。
 
@@ -164,8 +164,8 @@ bash ~/Install_linux_azcmagent.sh
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关疑难解答信息，请参阅 [连接计算机代理疑难解答指南](troubleshoot-agent-onboard.md)。
+- 有关疑难解答信息，请参阅 [连接计算机代理疑难解答指南](troubleshoot-agent-onboard.md)。
 
-* 了解如何使用 [Azure Policy](../../governance/policy/overview.md) 管理计算机，例如，进行 VM [来宾配置](../../governance/policy/concepts/guest-configuration.md)，验证计算机是否向预期的 Log Analytics 工作区报告，使用[用于 VM 的 Azure Monitor](../../azure-monitor/vm/vminsights-enable-policy.md) 启用监视等。
+- 了解如何使用 [Azure 策略](../../governance/policy/overview.md)管理计算机，例如 VM [来宾配置](../../governance/policy/concepts/guest-configuration.md)，验证计算机是否已向预期的 Log Analytics 工作区进行报告，使用 [vm Azure Monitor](../../azure-monitor/vm/vminsights-enable-policy.md)启用监视等操作。
 
-* 详细了解 [Log Analytics 代理](../../azure-monitor/agents/log-analytics-agent.md)。 需要收集操作系统和工作负荷监视数据、使用自动化 runbook 或功能（如更新管理）管理该数据，或使用 [Azure 安全中心](../../security-center/security-center-introduction.md)之类的其他 azure 服务时，需要使用适用于 Windows 和 Linux 的 Log Analytics 代理。
+- 详细了解 [Log Analytics 代理](../../azure-monitor/agents/log-analytics-agent.md)。 如果要使用用于 VM 的 Azure Monitor 收集操作系统和工作负荷监视数据，请使用 Log Analytics agent for Windows 和 Linux，并使用自动化 runbook 或功能（如更新管理）管理它，或使用 [Azure 安全中心](../../security-center/security-center-introduction.md)之类的其他 azure 服务。

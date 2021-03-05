@@ -4,13 +4,13 @@ description: 本文介绍如何获取合作伙伴提供的传感器数据。
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
-ms.author: v-umha
-ms.openlocfilehash: 57baa00f7f9b64212d0aee8b0a2efeca814abeb3
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.author: v-ummehabiba
+ms.openlocfilehash: 474b6f8356724546105d902a15427f483f656317
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168522"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102182768"
 ---
 # <a name="get-sensor-data-from-sensor-partners"></a>从传感器合作伙伴获取传感器数据
 
@@ -46,7 +46,7 @@ Azure FarmBeats 可帮助你将 IoT 设备和传感器中的流数据引入 Data
 
 2. **如果你使用的是 FarmBeats 版本1.2.7 或更高版本，请跳过步骤 a、b 和 c，然后转到步骤3。** 可以通过选择 FarmBeats UI 右上角的 " **设置** " 图标来检查 FarmBeats 版本。
 
-      a.  中转到**Azure Active Directory**  >  **应用注册**
+      a.  中转到 **Azure Active Directory**  >  **应用注册**
 
       b. 选择在 FarmBeats 部署过程中创建的 **应用注册** 。 它的名称与你的 FarmBeats datahub 相同。
 
@@ -80,7 +80,7 @@ Azure FarmBeats 可帮助你将 IoT 设备和传感器中的流数据引入 Data
 
     ```
 
-8. 运行以下脚本。 该脚本要求提供租户 ID，该 ID 可从**Azure Active Directory**  >  **概述**"页获取。
+8. 运行以下脚本。 该脚本要求提供租户 ID，该 ID 可从 **Azure Active Directory**  >  **概述**"页获取。
 
     ```azurepowershell-interactive
 
@@ -92,7 +92,7 @@ Azure FarmBeats 可帮助你将 IoT 设备和传感器中的流数据引入 Data
 > 1. Datahub API 终结点名称必须为小写。
 > 2. 如果要复制 Datahub API 终结点的 farmbeats 网站名称 url，请确保没有尾随斜杠 (/) 。
 
-9. 按照屏幕上的说明来捕获 **API 终结点**、 **租户 ID**、 **客户端 ID**、 **客户端密钥**和 **EventHub 连接字符串**的值。
+9. 按照屏幕上的说明来捕获 **API 终结点**、 **租户 ID**、 **客户端 ID**、 **客户端密钥** 和 **EventHub 连接字符串** 的值。
 
 ### <a name="integrate-device-data-by-using-the-generated-credentials"></a>使用生成的凭据集成设备数据
 
@@ -124,7 +124,7 @@ Azure FarmBeats 可帮助你将 IoT 设备和传感器中的流数据引入 Data
 - **Node**：连接了一个或多个传感器的设备。
 - **网关**：一个或多个节点附加到的设备。
 
-请执行下列步骤：
+执行以下步骤：
 
 1. 在主页上，从菜单中选择 " **设备** "。
   " **设备** " 页显示设备类型、型号、状态、它所在的场和元数据的上次更新日期。 默认情况下，场列设置为 *NULL*。 你可以选择将设备分配到场。 有关详细信息，请参阅 [分配设备](#assign-devices)。
@@ -134,7 +134,7 @@ Azure FarmBeats 可帮助你将 IoT 设备和传感器中的流数据引入 Data
 
 ### <a name="view-sensors"></a>查看传感器
 
-请执行下列步骤：
+执行以下步骤：
 
 1. 在主页上，从菜单中选择 " **传感器** "。
   " **传感器** " 页显示有关传感器类型、其连接到的服务器、父设备、端口名称、端口类型和上次更新状态的详细信息。
@@ -163,7 +163,7 @@ Azure FarmBeats 可帮助你将 IoT 设备和传感器中的流数据引入 Data
 
 ### <a name="visualize-sensor-data"></a>可视化传感器数据
 
-请执行下列步骤：
+执行以下步骤：
 
 1. 在主页上，从菜单中选择 " **服务器场** " 以查看 " **服务器场** " 页。
 2. 选择要查看其传感器数据的 **场** 。
@@ -173,7 +173,7 @@ Azure FarmBeats 可帮助你将 IoT 设备和传感器中的流数据引入 Data
 
 ## <a name="delete-a-sensor"></a>删除传感器
 
-请执行下列步骤：
+执行以下步骤：
 
 1. 在 "主页" 页上，从菜单中选择 " **传感器** " 以查看 **传感器** 页面。
 2. 选择要删除的设备，然后在确认窗口中选择 " **删除** "。
@@ -184,7 +184,7 @@ Azure FarmBeats 可帮助你将 IoT 设备和传感器中的流数据引入 Data
 
 ## <a name="delete-devices"></a>删除设备
 
-请执行下列步骤：
+执行以下步骤：
 
 1. 在主页上，从菜单中选择 " **设备** " 以查看 " **设备** " 页。
 2. 选择要删除的设备，然后在确认窗口中选择 " **删除** "。

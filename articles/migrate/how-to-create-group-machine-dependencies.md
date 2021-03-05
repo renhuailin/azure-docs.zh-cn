@@ -6,30 +6,30 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 11/25/2020
-ms.openlocfilehash: 1a3f2ae4829c7f4ae41d31e2a2fc35d79adf3d4c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 772602a11878276da3b81b84e7f4016997375077
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100596697"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183057"
 ---
 # <a name="set-up-dependency-visualization"></a>设置依赖项可视化
 
 本文介绍如何在 Azure Migrate：服务器评估中设置基于代理的依赖项分析。 [依赖关系分析](concepts-dependency-visualization.md) 有助于识别和了解要评估并迁移到 Azure 的计算机之间的依赖关系。
 
-## <a name="before-you-start"></a>开始之前
+## <a name="before-you-start"></a>准备工作
 
 - 查看对以下项的基于代理的依赖项分析的支持和部署要求：
     - [VMware VM](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agent-based)
     - [物理服务器](migrate-support-matrix-physical.md#agent-based-dependency-analysis-requirements)
-    - [Hyper-v vm](migrate-support-matrix-hyper-v.md#agent-based-dependency-analysis-requirements)。
+    - [Hyper-V VM](migrate-support-matrix-hyper-v.md#agent-based-dependency-analysis-requirements)
 - 确保：
     - 具有 Azure Migrate 项目。 如果没有，请立即 [创建](./create-manage-projects.md) 一个。
     - 检查是否已将 Azure Migrate： Server 评估工具 [添加](how-to-assess.md) 到项目。
     - 设置 [Azure Migrate 设备](migrate-appliance.md) ，以发现本地计算机。 设备将发现本地计算机，并将元数据和性能数据发送到 Azure Migrate：服务器评估。 为以下设备设置设备：
-        - [VMware](how-to-set-up-appliance-vmware.md) 机.
-        - [Hyper-v](how-to-set-up-appliance-hyper-v.md) 机.
-        - [物理服务器](how-to-set-up-appliance-physical.md)。
+        - [VMware](how-to-set-up-appliance-vmware.md) 机
+        - [Hyper-v](how-to-set-up-appliance-hyper-v.md) 机
+        - [物理服务器](how-to-set-up-appliance-physical.md)
 - 若要使用依赖关系可视化，请将 [Log Analytics 工作区](../azure-monitor/logs/manage-access.md) 与 Azure Migrate 项目关联：
     - 仅在设置了 Azure Migrate 设备并在 Azure Migrate 项目中发现计算机后才能附加工作区。
     - 请确保订阅中具有包含 Azure Migrate 项目的工作区。

@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: tutorial
 ms.date: 12/31/2020
-ms.openlocfilehash: 2feabda5ea3f0c0748b92de9fcb7ef05abbdcf4c
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 7410fcbc890780281763a91f33525562e9de1853
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98209434"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102182479"
 ---
 # <a name="analyze-with-apache-spark"></a>使用 Apache Spark 进行分析
 
@@ -33,16 +33,16 @@ ms.locfileid: "98209434"
     from azureml.opendatasets import NycTlcYellow
 
     data = NycTlcYellow()
-    data_df = data.to_spark_dataframe()
+    df = data.to_spark_dataframe()
     # Display 10 rows
-    display(data_df.limit(10))
+    display(df.limit(10))
     ```
 1. 在笔记本的“附加到”菜单中，选择之前创建的 Spark1 无服务器 Spark 池 。
 1. 选择单元上的“运行”
 1. 如果只想查看数据帧的架构，请通过以下代码运行单元：
     ```
 
-    data_df.printSchema()
+    df.printSchema()
     ```
 
 ## <a name="load-the-nyc-taxi-data-into-the-spark-nyctaxi-database"></a>将纽约市出租车数据加载到 Spark nyctaxi 数据库

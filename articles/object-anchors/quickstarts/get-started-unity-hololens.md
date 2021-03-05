@@ -4,15 +4,15 @@ description: 此快速入门介绍如何使用 Object Anchors 生成 HoloLens Un
 author: craigktreasure
 manager: virivera
 ms.author: crtreasu
-ms.date: 02/02/2021
+ms.date: 03/02/2021
 ms.topic: quickstart
 ms.service: azure-object-anchors
-ms.openlocfilehash: caf64883635d7fa1746d12caf24333a22ba2fa98
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 4f85a258042430d58690ef578db6d21a6c831d50
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101747315"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102044555"
 ---
 # <a name="quickstart-create-a-hololens-app-with-azure-object-anchors-in-unity"></a>快速入门：在 Unity 中使用 Azure Object Anchors 创建 HoloLens 应用
 
@@ -38,8 +38,6 @@ ms.locfileid: "101747315"
 在 Unity 中，打开 `quickstarts/apps/unity/basic` 项目。
 
 [!INCLUDE [Import Unity Package](../../../includes/object-anchors-quickstart-unity-import-package.md)]
-
-[!INCLUDE [Unity build and run](../../../includes/object-anchors-quickstart-unity-build-run.md)]
 
 [!INCLUDE [Unity build sample scene 1](../../../includes/object-anchors-quickstart-unity-build-sample-scene-1.md)]
 

@@ -5,20 +5,20 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: azfuncdf
-ms.openlocfilehash: 34c70f4305ebb2c45757d982ab558aea6450003f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 82108ae0b2cabaab6dfa47c8bb5e893a44df38af
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86506360"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102182054"
 ---
 # <a name="eternal-orchestrations-in-durable-functions-azure-functions"></a>Durable Functions 中的永久业务流程 (Azure Functions)
 
-*永久业务流程*是永远不会结束的业务流程协调程序函数。 当希望将 [Durable Functions](durable-functions-overview.md) 用于聚合器和需要无限循环的任何方案时，永久业务流程非常有用。
+*永久业务流程* 是永远不会结束的业务流程协调程序函数。 当希望将 [Durable Functions](durable-functions-overview.md) 用于聚合器和需要无限循环的任何方案时，永久业务流程非常有用。
 
 ## <a name="orchestration-history"></a>业务流程历史记录
 
-如[业务流程历史记录](durable-functions-orchestrations.md#orchestration-history)主题中所述，Durable Task Framework 会跟踪每个函数业务流程的历史记录。 只要业务流程协调程序函数继续计划新工作，此历史记录就会不断增长。 如果业务流程协调程序函数进入无限循环并持续计划工作，则此历史记录可能会变得非常大并导致明显的性能问题。 *永久业务流程*概念是为了减轻需要无限循环的应用程序的此类问题而设计的。
+如[业务流程历史记录](durable-functions-orchestrations.md#orchestration-history)主题中所述，Durable Task Framework 会跟踪每个函数业务流程的历史记录。 只要业务流程协调程序函数继续计划新工作，此历史记录就会不断增长。 如果业务流程协调程序函数进入无限循环并持续计划工作，则此历史记录可能会变得非常大并导致明显的性能问题。 *永久业务流程* 概念是为了减轻需要无限循环的应用程序的此类问题而设计的。
 
 ## <a name="resetting-and-restarting"></a>重置和重启
 
@@ -66,7 +66,7 @@ module.exports = df.orchestrator(function*(context) {
     const nextCleanup = moment.utc(context.df.currentUtcDateTime).add(1, "h");
     yield context.df.createTimer(nextCleanup.toDate());
 
-    context.df.continueAsNew(undefined);
+    yield context.df.continueAsNew(undefined);
 });
 ```
 
@@ -152,9 +152,9 @@ async def main(req: func.HttpRequest, starter: str) -> func.HttpResponse:
 
 ## <a name="exit-from-an-eternal-orchestration"></a>从永久业务流程退出
 
-如果业务流程协调程序函数需要最终完成，则你需要做的全部工作“不是”调用 `ContinueAsNew` 而是让函数退出。**
+如果业务流程协调程序函数需要最终完成，则你需要做的全部工作“不是”调用 `ContinueAsNew` 而是让函数退出。
 
-如果业务流程协调程序函数处于无限循环并且需要停止，请使用 `TerminateAsync` ( .net) ， `terminate` (JavaScript) ，或 `terminate` (Python) 方法，以将其[orchestration client binding](durable-functions-bindings.md#orchestration-client)停止。 有关详细信息，请参阅[实例管理](durable-functions-instance-management.md)。
+如果业务流程协调程序函数处于无限循环并且需要停止，请使用 `TerminateAsync` ( .net) ， `terminate` (JavaScript) ，或 `terminate` (Python) 方法，以将其[](durable-functions-bindings.md#orchestration-client)停止。 有关详细信息，请参阅[实例管理](durable-functions-instance-management.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

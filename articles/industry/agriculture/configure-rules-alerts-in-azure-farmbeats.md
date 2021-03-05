@@ -4,13 +4,13 @@ description: 介绍如何在 FarmBeats 中配置规则和管理警报
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
-ms.author: v-umha
-ms.openlocfilehash: 5e6a5d414c341f482c3fddf95a2f8bb8e55a3ca2
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.author: v-ummehabiba
+ms.openlocfilehash: a04f973cbfa3a68016065f50e9e2ff4f7566da94
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168539"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102182921"
 ---
 # <a name="configure-rules-and-manage-alerts"></a>配置规则并管理警报
 
@@ -28,7 +28,7 @@ ms.locfileid: "92168539"
 
     ![突出显示条件部分的屏幕截图。](./media/configure-rules-and-alerts-in-azure-farmbeats/new-rule-condition-1.png)
 
-5. 在 " **条件**" 中，输入 " **度量**值"、" **运算符** " 和 " **值**" 值。
+5. 在 " **条件**" 中，输入 " **度量** 值"、" **运算符** " 和 " **值**" 值。
 6. 在 " **度量值** " 下拉菜单中键入度量值名称。
 7. 选择 " **+ 添加条件** "，将更多条件添加到规则。
 8. 选择 **严重性级别**。
@@ -69,9 +69,9 @@ ms.locfileid: "92168539"
 
     ![显示 "编辑规则" 屏幕的屏幕截图。](./media/configure-rules-and-alerts-in-azure-farmbeats/edit-rule-one-1.png)
 
-4. 更改 **规则名称**和 **规则说明** ，然后从 " **选择场** " 下拉菜单中选择场。
+4. 更改 **规则名称** 和 **规则说明** ，然后从 " **选择场** " 下拉菜单中选择场。
 5. 键入场名称以选择场，并在同一窗口中显示 **条件** 。  
-6. 在 " **条件**" 中，编辑 **度量**值、 **运算符** 和 **值**。
+6. 在 " **条件**" 中，编辑 **度量** 值、 **运算符** 和 **值**。
 7. 在 " **度量值** " 下拉菜单中键入度量值名称。
 8. 选择 " **+ 添加条件** " 可向规则中添加/编辑条件。
 

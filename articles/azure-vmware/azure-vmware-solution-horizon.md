@@ -3,12 +3,12 @@ title: 在 Azure VMware 解决方案上部署地平线
 description: 了解如何在 Azure VMware 解决方案上部署 VMware 地平线。
 ms.topic: how-to
 ms.date: 09/29/2020
-ms.openlocfilehash: 2cf6fc5cb7662188650365cb019774d6c778d405
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: c34d0ac7806f8284e893cf3ad4f3c82dd404ff41
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98684869"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102181391"
 ---
 # <a name="deploy-horizon-on-azure-vmware-solution"></a>在 Azure VMware 解决方案上部署地平线 
 
@@ -212,6 +212,10 @@ Azure 私有云在概念上与 VMware SDDC 相同，后者通常用于地平线�
 ### <a name="azure-instance-types"></a>Azure 实例类型
 
 若要了解要在其基础结构中需要的 Azure 虚拟机大小，请参阅可在 [此处](https://techzone.vmware.com/resource/horizon-on-azure-vmware-solution-configuration#horizon-installation-on-azure-vmware-solution)找到的 VMware 指导原则。
+
+## <a name="references"></a>参考资料
+[适用于 Linux 的地平线代理的系统要求](https://docs.vmware.com/en/VMware-Horizon/2012/linux-desktops-setup/GUID-E268BDBF-1D89-492B-8563-88936FD6607A.html)
+
 
 ## <a name="next-steps"></a>后续步骤
 若要了解有关 Azure VMware 解决方案中 VMware 范围的详细信息，请阅读 [Vmware 地平线常见问题解答](https://www.vmware.com/content/dam/digitalmarketing/vmware/en/pdf/products/horizon/vmw-horizon-on-microsoft-azure-vmware-solution-faq.pdf)。

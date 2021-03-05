@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/18/2021
 ms.author: duau
-ms.openlocfilehash: a42601b696f292e9d2a9da90070fea3662acae87
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 6f6d71dec9726f009ab9a56e0a49ba21f5d218fd
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101098681"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102181017"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door-standardpremium-preview"></a>Azure 前门标准/高级 (预览版常见问题解答) 
 
@@ -81,11 +81,15 @@ Azure 前门是全球分布的多租户服务。 前门的基础结构在其所�
 
 ### <a name="is-http-https-redirection-supported"></a>是否支持 HTTP 到 HTTPS 的重定向？
 
-是。 事实上，Azure 前门支持主机、路径、查询字符串重定向和 URL 重定向的一部分。 了解有关 [URL 重定向](concept-rule-set-url-redirect-and-rewrite.md)的详细信息。 
+是的。 事实上，Azure 前门支持主机、路径、查询字符串重定向和 URL 重定向的一部分。 了解有关 [URL 重定向](concept-rule-set-url-redirect-and-rewrite.md)的详细信息。 
 
 ### <a name="how-do-i-lock-down-the-access-to-my-backend-to-only-azure-front-door"></a>如何实现锁定对我的后端的访问仅限于 Azure 前门？
 
-若要将应用程序锁定为仅接受来自特定前门的流量，需要为后端设置 IP Acl。 然后将后端的流量限制为前门发送的标头 "FDID" 的特定值。 下面详细说明了这些步骤：
+锁定应用程序以仅接受来自特定前门实例的流量的最佳方式是通过私有终结点发布应用程序。 前门与应用程序之间的网络流量通过 VNet 和 Microsoft 主干网络上的专用链接进行遍历，从而消除了公共 internet 的泄露。
+
+了解有关 [带专用链接的前门的保护源](concept-private-link.md)的详细信息。  
+
+锁定应用程序的另一种方法是仅接受来自特定前门的流量，需要为后端设置 IP Acl。 然后将后端的流量限制为前门发送的标头 "FDID" 的特定值。 下面详细说明了这些步骤：
 
 * 为后端配置 IP Acl，以接受来自 Azure 前门的后端 IP 地址空间和 Azure 的基础结构服务的流量。 有关 Acl 后端的信息，请参阅以下 IP 详细信息：
  
@@ -249,7 +253,7 @@ Azure 前门是全球分布的多租户平台，具有巨大的容量，可满�
 
 ### <a name="can-i-use-clientmutual-authentication-with-azure-front-door"></a>能否对 Azure 前门使用客户端/相互身份验证？
 
-不是。 尽管 Azure 前门支持 TLS 1.2，后者引入了 [RFC 5246](https://tools.ietf.org/html/rfc5246)中的客户端/相互身份验证，但目前，azure 前门不支持客户端/相互身份验证。
+否。 尽管 Azure 前门支持 TLS 1.2，后者引入了 [RFC 5246](https://tools.ietf.org/html/rfc5246)中的客户端/相互身份验证，但目前，azure 前门不支持客户端/相互身份验证。
 
 ## <a name="diagnostics-and-logging"></a>诊断和日志记录
 

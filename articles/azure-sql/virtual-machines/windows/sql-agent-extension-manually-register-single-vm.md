@@ -15,12 +15,12 @@ ms.date: 11/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: devx-track-azurecli, devx-track-azurepowershell, contperf-fy21q2
-ms.openlocfilehash: 393d0c69201f87ad7c96bd2f9a1f9f57df512e31
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: 983cdab0c5f5b856537c661c7427a83099f30ed4
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97964518"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102181425"
 ---
 # <a name="register-sql-server-vm-with-sql-iaas-agent-extension"></a>向 SQL IaaS 代理扩展注册 SQL Server VM
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -282,7 +282,7 @@ $sqlvm.SqlManagementType
 
 若要使用 Azure 门户从扩展中注销 SQL Server VM，请执行以下步骤：
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 1. 导航到 SQL VM 资源。 
   
    ![SQL 虚拟机资源](./media/sql-agent-extension-manually-register-single-vm/sql-vm-manage.png)
@@ -304,7 +304,7 @@ $sqlvm.SqlManagementType
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-若要使用 Azure CLI 从扩展中注销 SQL Server VM，请使用 [az SQL VM delete](/cli/azure/sql/vm?view=azure-cli-latest&preserve-view=true#az-sql-vm-delete) 命令。 这会删除 SQL Server VM *资源* ，但不会删除虚拟机。 
+若要使用 Azure CLI 从扩展中注销 SQL Server VM，请使用 [az SQL VM delete](/cli/azure/sql/vm#az-sql-vm-delete) 命令。 这会删除 SQL Server VM *资源* ，但不会删除虚拟机。 
 
 
 ```azurecli-interactive

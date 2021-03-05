@@ -3,14 +3,14 @@ title: 在 Azure 自动化中部署 Linux 混合 Runbook 辅助角色
 description: 本文介绍如何安装 Azure 自动化混合 Runbook 辅助角色，以便在本地数据中心或云环境中基于 Linux 的计算机上运行 Runbook。
 services: automation
 ms.subservice: process-automation
-ms.date: 02/18/2021
+ms.date: 02/26/2021
 ms.topic: conceptual
-ms.openlocfilehash: 543ae640871699c7e1fffda46463752483ff6a4e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: d4d9bcd16e36e76808f19f7fbd43dd0d3e7550c3
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101708911"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102182326"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>部署 Linux 混合 Runbook 辅助角色
 
@@ -48,7 +48,7 @@ Linux 混合 Runbook 辅助角色以特殊用户身份执行 Runbook，该用户
 * Red Hat Enterprise Linux Server 5、6、7和8
 * Debian GNU/Linux 6、7 和 8
 * Ubuntu 12.04 LTS、14.04 LTS、16.04 LTS 和 18.04 LTS
-* SUSE Linux Enterprise Server 12 和15
+* SUSE Linux Enterprise Server 12 和 15 (SUSE 未发布编号为13或14的版本) 
 
 > [!IMPORTANT]
 > 在启用依赖于系统混合 Runbook 辅助角色的更新管理功能之前，请在 [此处](update-management/overview.md#supported-operating-systems)确认它支持的分发。
@@ -66,7 +66,7 @@ Linux 系统和用户混合 Runbook 辅助角色的最低要求如下：
 |Glibc |GNU C 库| 2.5-12 |
 |Openssl| OpenSSL 库 | 1.0（支持 TLS 1.1 和 TLS 1.2）|
 |Curl | cURL Web 客户端 | 7.15.5|
-|Python-ctype | 需要 Python 2.x |
+|Python-ctype | 需要 python 3.x 或 Python 3。x |
 |PAM | 可插入验证模块|
 | **可选包** | **说明** | **最低版本**|
 | PowerShell Core | 若要运行 PowerShell runbook，需要安装 PowerShell Core。 请参阅[在 Linux 上安装 PowerShell Core](/powershell/scripting/install/installing-powershell-core-on-linux) 了解如何安装。 | 6.0.0 |
@@ -90,13 +90,16 @@ Linux 混合 Runbook 辅助角色支持 Azure 自动化中有限的一组 Runboo
 
 |Runbook 类型 | 支持 |
 |-------------|-----------|
-|Python 2 |是 |
-|PowerShell |是<sup>1</sup> |
+|Python 3 (预览) |是，仅对这些发行版是必需的： SUSE LES 15、RHEL 8 和 CentOS 8|
+|Python 2 |是，适用于不需要 Python 3<sup>1</sup>的任何发行版 |
+|PowerShell |是<sup>2</sup> |
 |PowerShell 工作流 |否 |
 |图形 |否 |
 |图形 PowerShell 工作流 |否 |
 
-<sup>1</sup>PowerShell Runbook 要求在 Linux 计算机上安装 PowerShell Core。 请参阅[在 Linux 上安装 PowerShell Core](/powershell/scripting/install/installing-powershell-core-on-linux) 了解如何安装。
+<sup>1</sup>请参阅 [支持的 Linux 操作系统](#supported-linux-operating-systems)。
+
+<sup>2</sup>PowerShell runbook 要求在 Linux 计算机上安装 PowerShell Core。 请参阅[在 Linux 上安装 PowerShell Core](/powershell/scripting/install/installing-powershell-core-on-linux) 了解如何安装。
 
 ### <a name="network-configuration"></a>网络配置
 

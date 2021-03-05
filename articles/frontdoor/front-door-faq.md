@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/20/2020
 ms.author: duau
-ms.openlocfilehash: 06ad8bf169e2b4b44f4f6a8ec5155aa6722a038c
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: ba859a0ad8edacfa2e51486b150f94b3dea37a16
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102124051"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102182887"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door"></a>Azure 前门常见问题
 
@@ -86,6 +86,8 @@ Azure 前门是全球分布的多租户服务。 因此，前门的基础结构�
 不会对前门的路由进行排序，并根据最佳匹配选择特定的路由。 详细了解 [前门如何匹配路由规则请求](front-door-route-matching.md)。
 
 ### <a name="how-do-i-lock-down-the-access-to-my-backend-to-only-azure-front-door"></a>如何实现锁定对我的后端的访问仅限于 Azure 前门？
+
+> [!注意] 新的 SKU 前门高级版提供更多建议的方法来通过专用终结点锁定您的应用程序。 [了解有关专用终结点的详细信息](./standard-premium/concept-private-link.md)
 
 若要将应用程序锁定为仅接受来自特定前门的流量，需要为后端设置 IP Acl，然后将后端的流量限制为前门发送的标头 "FDID" 的特定值。 下面详细说明了这些步骤：
 

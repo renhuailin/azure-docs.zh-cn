@@ -7,18 +7,18 @@ ms.topic: article
 ms.date: 08/05/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 077d200dcaf957f636acecebb441ff99a68eb96f
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: 4666f03e529c568177ff56a2db84e226bc906132
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97963581"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102182904"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>将应用与 Azure 虚拟网络集成
 
-本文介绍 Azure 应用服务 VNet 集成功能，并介绍如何为 [Azure 应用服务](./overview.md)中的应用设置此功能。 使用 [Azure 虚拟网络][VNETOverview] (VNet) 可将多个 Azure 资源置于无法通过 Internet 路由的网络中。 使用 VNet 集成功能，你的应用可通过 VNet 访问中的资源。 VNet 集成不允许私下访问应用。
+本文介绍 Azure 应用服务 VNet 集成功能，并介绍如何为 [Azure 应用服务](./overview.md)中的应用设置此功能。 使用 [Azure 虚拟网络][VNETOverview] (VNet) 可将多个 Azure 资源置于无法通过 Internet 路由的网络中。 使用 VNet 集成功能，你的应用可以在 VNet 中访问资源，或者通过 VNet 来访问资源。 VNet 集成不允许以私密方式访问应用。
 
-Azure App Service 在 VNet 集成功能上有两种变化形式：
+Azure 应用服务包含 VNet 集成功能的两种变体：
 
 [!INCLUDE [app-service-web-vnet-types](../../includes/app-service-web-vnet-types.md)]
 
@@ -55,7 +55,7 @@ Azure App Service 在 VNet 集成功能上有两种变化形式：
 启用区域 VNet 集成后，应用通过往常所用的通道对 Internet 进行出站调用。 应用属性门户中列出的出站地址是应用仍然在使用的地址。 就应用而言，变化在于：对服务终结点保护服务的调用或者 RFC 1918 地址进入 VNet 中。 如果 WEBSITE_VNET_ROUTE_ALL 设置为 1，所有出站流量都可以被发送到 VNet 中。
 
 > [!NOTE]
-> `WEBSITE_VNET_ROUTE_ALL` Windows 容器当前不支持。
+> Windows 容器目前不支持 `WEBSITE_VNET_ROUTE_ALL`。
 > 
 
 此功能仅支持每个辅助角色一个虚拟接口。 每个辅助角色一个虚拟接口意味着每个应用服务计划一个区域 VNet 集成。 同一个应用服务计划中的所有应用都可以使用相同的 VNet 集成。 如果需要使用一个应用来连接其他 VNet，你需要另外创建一个应用服务计划。 使用的虚拟接口不是客户可直接访问的资源。
@@ -76,7 +76,7 @@ Azure App Service 在 VNet 集成功能上有两种变化形式：
 需要网关的 VNet 集成不可用于：
 
 * 通过 Azure ExpressRoute 连接的 VNet。
-* 从 Linux 应用程序。
+* Linux 应用中。
 * 从 [Windows 容器](quickstart-custom-container.md)。
 * 访问服务终结点保护的资源。
 * 既支持 ExpressRoute，也支持点到站点 VPN 或站点到站点 VPN 的共存网关。
@@ -131,10 +131,10 @@ Azure App Service 在 VNet 集成功能上有两种变化形式：
 * **同步网络**：同步网络操作仅用于网关相关的 VNet 集成功能。 执行同步网络操作确保了证书与网络信息是同步的。如果添加或更改 VNet 的 DNS，请执行同步网络操作。 此操作重启使用此 VNet 的任何应用。 如果你使用的是属于不同订阅的应用和 VNet，此操作无效。
 * **添加路由**：添加路由会促使出站流量进入 VNet。
 
-分配给实例的专用 IP 通过环境变量 **WEBSITE_PRIVATE_IP** 公开。 Kudu 控制台 UI 还显示了可用于 Web 应用的环境变量的列表。 此 IP 是从集成子网的地址范围中分配的。 对于区域 VNet 集成，WEBSITE_PRIVATE_IP 的值是来自委派子网的地址范围中的 IP，对于网关必需的 VNet 集成，此值是在虚拟网络网关上配置的点到站点地址池的地址范围中的 IP。 这是 Web 应用通过虚拟网络连接到资源时将使用的 IP。 
+分配给实例的专用 IP 是通过环境变量 WEBSITE_PRIVATE_IP 公开的。 Kudu 控制台 UI 也显示了可用于 Web 应用的环境变量的列表。 此 IP 是从集成子网的地址范围中分配的。 对于区域性 VNet 集成，WEBSITE_PRIVATE_IP 的值是委托子网的地址范围中的一个 IP；对于需要网关的 VNet 集成，此值是在虚拟网络网关上配置的点到站点地址池的地址范围中的一个 IP。 这是 Web 应用通过虚拟网络连接到资源时将使用的 IP。 
 
 > [!NOTE]
-> WEBSITE_PRIVATE_IP 的值绑定到 change。 但是，它将是集成子网的地址范围内的 IP 或点到站点地址范围内的 IP 地址，因此你将需要允许从整个地址范围进行访问。
+> WEBSITE_PRIVATE_IP 的值必然会变化。 但是，它将是集成子网的地址范围或点到站点地址范围内的一个 IP，因此你需要允许从整个地址范围进行访问。
 >
 
 ### <a name="gateway-required-vnet-integration-routing"></a>需要网关的 VNet 集成路由
@@ -158,7 +158,7 @@ Azure App Service 在 VNet 集成功能上有两种变化形式：
 
 > [!NOTE]
 > 应用服务中的 Docker Compose 方案不支持 VNET 集成。
-> 如果存在私有终结点，则将忽略 Azure Functions 访问限制。
+> 如果存在专用终结点，则会忽略 Azure Functions 访问限制。
 >
 
 [!INCLUDE [app-service-web-vnet-troubleshooting](../../includes/app-service-web-vnet-troubleshooting.md)]
@@ -189,7 +189,7 @@ Commands:
     list : List the virtual network integrations used in an appservice plan.
 ```
 
-还提供了对区域 VNet 集成的 PowerShell 支持，但你必须使用子网 resourceID 的属性数组创建通用资源
+还提供了对区域性 VNet 集成的 PowerShell 支持，但你必须使用子网 resourceID 的属性数组创建通用资源
 
 ```azurepowershell
 # Parameters
@@ -243,5 +243,5 @@ New-AzResource @vNetParams
 [creategateway]: ../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md#creategw
 [setp2saddresses]: ../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md#addresspool
 [VNETRouteTables]: ../virtual-network/manage-route-table.md
-[installCLI]: /cli/azure/install-azure-cli?view=azure-cli-latest%2f
+[installCLI]: /cli/azure/install-azure-cli
 [privateendpoints]: networking/private-endpoint.md

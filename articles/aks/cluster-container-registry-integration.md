@@ -5,12 +5,12 @@ services: container-service
 manager: gwallace
 ms.topic: article
 ms.date: 01/08/2021
-ms.openlocfilehash: 0d61cccb6b70091194d407eda056060d1fa3623c
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: fd599c69b3072831461acc94827d97c4520292e9
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99053884"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102182445"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>使用 Azure 容器注册表从 Azure Kubernetes 服务进行身份验证
 
@@ -19,7 +19,7 @@ ms.locfileid: "99053884"
 可以使用 Azure CLI 通过几个简单的命令设置 AKS 与 ACR 的集成。 此集成会将 AcrPull 角色分配给关联到 AKS 群集的服务主体。
 
 > [!NOTE]
-> 本文介绍了 AKS 和 ACR 之间的自动身份验证。 如果需要从专用外部注册表拉取映像，请使用 [映像请求机密][Image Pull Secret]。
+> 本文介绍了 AKS 和 ACR 之间的自动身份验证。 如果需要从专用外部注册表拉取映像，请使用[映像拉取机密][Image Pull Secret]。
 
 ## <a name="before-you-begin"></a>准备阶段
 
@@ -155,5 +155,5 @@ nginx0-deployment-669dfc4d4b-xdpd6   1/1     Running   0          20s
 * 详细了解 [ACR 运行状况](../container-registry/container-registry-check-health.md)
 
 <!-- LINKS - external -->
-[AKS AKS CLI]: /cli/azure/aks?view=azure-cli-latest#az-aks-create
+[AKS AKS CLI]: /cli/azure/aks#az-aks-create
 [Image Pull secret]: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/

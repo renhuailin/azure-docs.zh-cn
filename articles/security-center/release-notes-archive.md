@@ -1,23 +1,18 @@
 ---
 title: Azure 安全中心的新增功能存档
 description: 介绍 Azure 安全中心在六个月以前的新增功能和已更改的功能。
-services: security-center
-documentationcenter: na
 author: memildin
 manager: rkarlin
 ms.service: security-center
-ms.devlang: na
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 02/02/2020
+ms.date: 03/04/2021
 ms.author: memildin
-ms.openlocfilehash: f24785336642570ae3f21d96462317890526a4c9
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 3766f29f26a6b2ffeb385cffc971b1ac7a1556cb
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100578957"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102182570"
 ---
 # <a name="archive-for-whats-new-in-azure-security-center"></a>Azure 安全中心的新增功能存档
 
@@ -28,6 +23,225 @@ ms.locfileid: "100578957"
 - 新增功能
 - Bug 修复
 - 已弃用的功能
+
+
+
+## <a name="september-2020"></a>2020 年 9 月
+
+9 月的更新包括：
+- [安全中心获得新的外观！](#security-center-gets-a-new-look)
+- [Azure Defender 已发布](#azure-defender-released)
+- [适用于 Key Vault 的 Azure Defender 已正式发布](#azure-defender-for-key-vault-is-generally-available)
+- [适用于存储的 Azure Defender 针对文件存储和 ADLS Gen2 的保护已正式发布](#azure-defender-for-storage-protection-for-files-and-adls-gen2-is-generally-available)
+- [资产清单工具现已正式发布](#asset-inventory-tools-are-now-generally-available)
+- [对容器注册表和虚拟机的扫描禁用特定漏洞发现结果](#disable-a-specific-vulnerability-finding-for-scans-of-container-registries-and-virtual-machines)
+- [从建议中免除资源](#exempt-a-resource-from-a-recommendation)
+- [安全中心的 AWS 和 GCP 连接器引入了多云体验](#aws-and-gcp-connectors-in-security-center-bring-a-multi-cloud-experience)
+- [Kubernetes 工作负载保护建议捆绑](#kubernetes-workload-protection-recommendation-bundle)
+- [漏洞评估发现结果现已可以连续导出](#vulnerability-assessment-findings-are-now-available-in-continuous-export)
+- [在创建新资源时通过强制执行建议来防止安全性配置错误](#prevent-security-misconfigurations-by-enforcing-recommendations-when-creating-new-resources)
+- [改进了网络安全组建议](#network-security-group-recommendations-improved)
+- [弃用了预览 AKS 建议“应在 Kubernetes 服务上定义 Pod 安全策略”](#deprecated-preview-aks-recommendation-pod-security-policies-should-be-defined-on-kubernetes-services)
+- [优化了 Azure 安全中心内的电子邮件通知](#email-notifications-from-azure-security-center-improved)
+- [安全功能分数不包括预览建议](#secure-score-doesnt-include-preview-recommendations)
+- [建议现在包含严重性指标和新鲜度间隔](#recommendations-now-include-a-severity-indicator-and-the-freshness-interval)
+
+
+### <a name="security-center-gets-a-new-look"></a>安全中心获得新的外观！
+
+我们已发布安全中心门户页面的更新 UI。 新页面中有一个新的概述页面，还有安全功能分数、资产清单和 Azure Defender 的面板。
+
+重新设计的概述页面现在包含一个磁贴，用于访问安全分数、资产清单和 Azure Defender 的面板。 它还包含一个可以链接到合规性面板的磁贴。
+
+详细了解[概述页面](overview-page.md)。
+
+
+### <a name="azure-defender-released"></a>Azure Defender 已发布
+
+Azure Defender 是集成到安全中心内部的云工作负载保护平台 (CWPP)，用于为 Azure 和混合工作负载提供高级智能的保护。 它取代了安全中心的标准定价层选项。 
+
+从 Azure 安全中心的“定价和设置”区域启用 Azure Defender 时，将同时启用以下 Defender 计划，并为环境的计算、数据和服务层提供全面防护：
+
+- [适用于服务器的 Azure Defender](defender-for-servers-introduction.md)
+- [适用于应用服务的 Azure Defender](defender-for-app-service-introduction.md)
+- [适用于存储的 Azure Defender](defender-for-storage-introduction.md)
+- [Azure Defender for SQL](defender-for-sql-introduction.md)
+- [适用于 Key Vault 的 Azure Defender](defender-for-key-vault-introduction.md)
+- [适用于 Kubernetes 的 Azure Defender](defender-for-kubernetes-introduction.md)
+- [适用于容器注册表的 Azure Defender](defender-for-container-registries-introduction.md)
+
+安全中心的文档对其中每个计划单独进行了介绍。
+
+借助其专用面板，Azure Defender 为虚拟机、SQL 数据库、容器、Web 应用程序、网络等提供安全警报和高级威胁防护。
+
+[详细了解 Azure Defender](azure-defender.md)
+
+### <a name="azure-defender-for-key-vault-is-generally-available"></a>适用于 Key Vault 的 Azure Defender 已正式发布
+
+Azure 密钥保管库是一种云服务，用于保护加密密钥和机密（例如证书、连接字符串和密码）。 
+
+适用于 Key Vault 的 Azure Defender 提供针对 Azure Key Vault 的 Azure 原生高级威胁防护，从而提供额外的安全情报层。 因此，适用于 Key Vault 的 Azure Defender 可保护依赖于 Key Vault 帐户的多个资源。
+
+可选计划现已正式发布。 此功能在预览版中为“Azure Key Vault 的高级威胁防护”。
+
+此外，Azure 门户中的 Key Vault 页面现在添加了一个专门的“安全性”页面，用于提供安全中心的建议和警报 。
+
+有关详细信息，请参阅[适用于 Key Vault 的 Azure Defender](defender-for-key-vault-introduction.md)。
+
+
+### <a name="azure-defender-for-storage-protection-for-files-and-adls-gen2-is-generally-available"></a>适用于存储的 Azure Defender 针对文件存储和 ADLS Gen2 的保护已正式发布 
+
+适用于存储的 Azure Defender 会检测 Azure 存储帐户上可能存在的有害活动。 无论数据是存储为 blob 容器、文件共享还是数据湖，都可以为其提供保护。
+
+[Azure 文件存储](../storage/files/storage-files-introduction.md)和[Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md) 的支持现已正式发布。
+
+从 2020 年 10 月 1 日起，我们将开始有偿保护这些服务上的资源。
+
+有关详细信息，请参阅[适用于存储的 Azure Defender](defender-for-storage-introduction.md)。
+
+
+### <a name="asset-inventory-tools-are-now-generally-available"></a>资产清单工具现已正式发布
+
+Azure 安全中心的资产清单页提供了一个页面，用于查看已连接到安全中心的资源的安全状况。
+
+安全中心会定期分析 Azure 资源的安全状态，以识别潜在的安全漏洞。 然后会提供有关如何消除这些安全漏洞的建议。
+
+当任何资源具有未完成的建议时，它们将显示在清单中。
+
+有关详细信息，请参阅[利用资产清单浏览和管理资源](asset-inventory.md)。
+
+
+
+### <a name="disable-a-specific-vulnerability-finding-for-scans-of-container-registries-and-virtual-machines"></a>对容器注册表和虚拟机的扫描禁用特定漏洞发现结果
+
+Azure Defender 包含漏洞扫描程序，用于扫描 Azure 容器注册表和虚拟机中的映像。
+
+如果组织需要忽略发现结果，而不是修正漏洞，则可以选择禁用发现结果。 禁用发现结果不会影响安全分数，也不会产生有害的噪音。
+
+当发现结果与在禁用规则中定义的条件相匹配时，它不会显示在发现结果列表中。
+
+此选项在建议详细信息页中提供，用于：
+
+- **应修正 Azure 容器注册表映像中的漏洞**
+- **应修正虚拟机中的漏洞**
+
+有关详细信息，请参阅[禁用容器映像的特定发现结果](defender-for-container-registries-usage.md#disable-specific-findings-preview)和[禁用虚拟机的特定发现结果](remediate-vulnerability-findings-vm.md#disable-specific-findings-preview)。
+
+
+### <a name="exempt-a-resource-from-a-recommendation"></a>从建议中免除资源
+
+有时，某个资源就某个特定建议而言会被列为不正常（因而会降低安全分数），尽管你认为不应是这样。 它可能已被安全中心未跟踪的进程修正。 或者，你的组织可能已决定接受该特定资源的风险。 
+
+在这种情况下，可以创建免除规则，确保将来不会将该资源列为不正常资源。 这些规则可以包括下文所述的书面理由。
+
+有关详细信息，请参阅[从建议和安全分数中免除资源](exempt-resource.md)。
+
+
+### <a name="aws-and-gcp-connectors-in-security-center-bring-a-multi-cloud-experience"></a>安全中心的 AWS 和 GCP 连接器引入了多云体验
+
+由于云工作负载通常跨多个云平台分布，因此云安全服务也需要如此。
+
+Azure 安全中心现在可保护 Azure、Amazon Web Services (AWS) 和 Google Cloud Platform (GCP) 中的工作负载。
+
+将 AWS 和 GCP 帐户加入安全中心，并将 AWS 安全中心、GCP 安全命令和 Azure 安全中心相集成。 
+
+有关详细信息，请参阅[将 AWS 帐户连接到 Azure 安全中心](quickstart-onboard-aws.md)和[将 GCP 帐户连接到 Azure 安全中心](quickstart-onboard-gcp.md)。
+
+
+### <a name="kubernetes-workload-protection-recommendation-bundle"></a>Kubernetes 工作负载保护建议捆绑
+
+为了确保 Kubernetes 工作负载在默认情况下是安全的，安全中心将添加 Kubernetes 级别强化建议，其中包括具有 Kubernetes 准入控制的执行选项。
+
+在 AKS 群集上安装了适用于 Kubernetes 的 Azure Policy 加载项后，将按照预先定义的一组最佳做法监视对 Kubernetes API 服务器的每个请求，然后再将其保存到群集。 然后，可以配置为强制实施最佳做法，并规定将其用于未来的工作负载。
+
+例如，可以规定不应创建特权容器，并且阻止以后的任何请求。
+
+有关详细信息，请参阅[使用 Kubernetes 准入控制实现工作负载保护最佳做法](container-security.md#workload-protection-best-practices-using-kubernetes-admission-control)。
+
+
+### <a name="vulnerability-assessment-findings-are-now-available-in-continuous-export"></a>漏洞评估发现结果现已可以连续导出
+
+使用连续导出将警报和建议实时流式传输到 Azure 事件中心、Log Analytics 工作区或 Azure Monitor。 在此处可以将此数据与 SIEM（如 Azure Sentinel、Power BI、Azure 数据资源管理器等）集成。
+
+安全中心的集成漏洞评估工具在“父”建议中将有关资源的发现结果作为可操作性建议返回，例如“应修正虚拟机中的漏洞”。 
+
+现在选择建议并启用“包括安全性结果”选项时，可以通过连续导出来导出安全性结果。
+
+:::image type="content" source="./media/continuous-export/include-security-findings-toggle.png" alt-text="在连续导出配置中包括安全结果开关" :::
+
+相关页面：
+
+- [Azure 虚拟机安全中心的集成漏洞评估解决方案](deploy-vulnerability-assessment-vm.md)
+- [用于 Azure 容器注册表映像的安全中心集成漏洞评估解决方案](defender-for-container-registries-usage.md)
+- [连续导出](continuous-export.md)
+
+### <a name="prevent-security-misconfigurations-by-enforcing-recommendations-when-creating-new-resources"></a>在创建新资源时通过强制执行建议来防止安全性配置错误
+
+安全性配置错误是造成安全事件的主要原因。 安全中心现在能够帮助阻止新资源在特定建议方面的错误配置。 
+
+此功能可帮助保护工作负载的安全和稳定安全分数。
+
+根据特定建议，有两种方式可以强制实施安全配置：
+
+- 利用 Azure Policy 的“拒绝”效果，可以阻止创建不正常的资源
+
+- 通过“强制执行”选项，可以利用 Azure Policy 的“不存在时部署”效果，在创建时自动修正不合规的资源 
+ 
+这适用于所选的安全建议，位于资源详细信息页的顶部。
+
+有关详细信息，请参阅[使用“强制执行/拒绝”建议防止错误配置](prevent-misconfigurations.md)。
+
+###  <a name="network-security-group-recommendations-improved"></a>改进了网络安全组建议
+
+以下与网络安全组相关的安全建议已得到优化，可减少误报。
+
+- 应在与 VM 关联的 NSG 上限制所有网络端口
+- 应关闭虚拟机上的管理端口
+- 面向 Internet 的虚拟机应使用网络安全组进行保护
+- 子网应与网络安全组关联
+
+
+### <a name="deprecated-preview-aks-recommendation-pod-security-policies-should-be-defined-on-kubernetes-services"></a>弃用了预览 AKS 建议“应在 Kubernetes 服务上定义 Pod 安全策略”
+
+如 [Azure Kubernetes 服务](../aks/use-pod-security-policies.md)文档中所述，弃用了预览建议“应在 Kubernetes Services 上定义 Pod 安全策略”。
+
+Pod 安全策略（预览版）功能已设置为弃用，并且在 2020 年 10 月 15 日之后将不再提供，以支持 AKS 的 Azure Policy。
+
+弃用 Pod 安全策略（预览版）之后，必须在使用已弃用功能的任何现有群集上禁用该功能，以执行将来的群集升级并保留在 Azure 支持范围内。
+
+
+### <a name="email-notifications-from-azure-security-center-improved"></a>优化了 Azure 安全中心内的电子邮件通知
+
+电子邮件中与安全警报相关的以下部分已得到优化： 
+
+- 添加了发送针对所有严重性级别的电子邮件警报通知的功能
+- 添加了在订阅上通知具有不同 Azure 角色的用户的功能
+- 默认情况下，我们会主动向订阅所有者通知高严重性警报（这些警报很可能表示真正的漏洞）
+- 我们已从电子邮件通知配置页面中删除了电话号码字段
+
+有关详细信息，请参阅[设置安全警报的电子邮件通知](security-center-provide-security-contact-details.md)。
+
+
+### <a name="secure-score-doesnt-include-preview-recommendations"></a>安全功能分数不包括预览建议 
+
+安全中心会持续评估资源、订阅和组织的安全问题。 然后，它将所有调查结果汇总成一个分数，让你可以一目了然地了解当前的安全状况：分数越高，识别出的风险级别就越低。
+
+发现新的威胁后，安全中心会通过提出新的建议来提供新的安全建议。 为避免安全功能分数出现意外变化，以及为了提供一个宽限期（可以在新建议影响分数之前在此宽限期内了解新建议），安全功能分数的计算中将不再包括标记为“预览”的建议。 但仍应尽可能按这些建议进行修正，这样在预览期结束时，它们会有助于提升分数。
+
+此外，“预览”建议不会使资源“运行不正常”。
+
+预览建议示例如下：
+
+:::image type="content" source="./media/secure-score-security-controls/example-of-preview-recommendation.png" alt-text="带有预览标志的建议":::
+
+[详细了解安全功能分数](secure-score-security-controls.md)。
+
+
+### <a name="recommendations-now-include-a-severity-indicator-and-the-freshness-interval"></a>建议现包含严重性指示器和刷新时间间隔
+
+现在，建议的详细信息页面包括一个刷新时间间隔指示器（如相关），并且清楚显示了建议的严重性。
+
+:::image type="content" source="./media/release-notes/recommendations-severity-freshness-indicators.png" alt-text="显示刷新频率和严重性的建议页面":::
 
 
 ## <a name="august-2020"></a>2020 年 8 月
@@ -259,6 +473,7 @@ Azure 存储的威胁防护可检测 Azure 存储帐户上的潜在有害活动�
 ## <a name="june-2020"></a>2020 年 6 月
 
 6 月的更新包括以下内容：
+
 - [安全分数 API（预览）](#secure-score-api-preview)
 - [ (Azure、其他云和本地)  (预览版的 SQL 计算机的高级数据安全) ](#advanced-data-security-for-sql-machines-azure-other-clouds-and-on-premises-preview)
 - [将 Log Analytics 代理部署到 Azure Arc 计算机的两条新建议（预览）](#two-new-recommendations-to-deploy-the-log-analytics-agent-to-azure-arc-machines-preview)

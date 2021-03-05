@@ -4,15 +4,15 @@ description: 了解 Azure Object Anchors 如何帮助你检测物理世界中的
 author: craigktreasure
 manager: vriveras
 ms.author: crtreasu
-ms.date: 02/18/2021
+ms.date: 03/02/2021
 ms.topic: overview
 ms.service: azure-object-anchors
-ms.openlocfilehash: 099307ba1085ff6d24bc6bb4000a592aabc8f8f6
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: cbe52004dddbe74aa02347c026028a8ffd4cf8d7
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101747485"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102034179"
 ---
 # <a name="azure-object-anchors-overview"></a>Azure Object Anchors 概述
 
@@ -37,7 +37,7 @@ Azure Object Anchors 支持的一些示例用例包括：
 以下部分提供有关通过 Azure Object Anchors 开始使用和构建应用的信息。
 
 > [!div class="nextstepaction"]
-> [模型引入](quickstarts/get-started-model-ingestion.md)
+> [模型引入](quickstarts/get-started-model-conversion.md)
 
 > [!div class="nextstepaction"]
 > [Unity HoloLens](quickstarts/get-started-unity-hololens.md)

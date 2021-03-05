@@ -5,12 +5,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 03/01/2021
 ms.custom: template-concept
-ms.openlocfilehash: 13dd2f81aa7714c37e329d3a9e63a3cfcfd43cb0
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: b13c19aea3c3d36bd1cb4237278e5f0edbb8ed54
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102054547"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102181714"
 ---
 # <a name="guide-for-running-functions-on-net-50-in-azure"></a>在 Azure 中的 .NET 5.0 上运行函数的指南
 
@@ -114,7 +114,7 @@ _.NET 5.0 支持目前以预览版提供。_
 
 绑定是通过对方法、参数和返回类型使用特性来定义的。 函数方法是具有 `Function` 和触发器特性的方法，它应用于输入参数，如以下示例中所示：
 
-:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/SampleApp/Queue/QueueFunction.cs" range="13-16" :::
+:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/SampleApp/Queue/QueueFunction.cs" range="11-14" :::
 
 触发器属性指定触发器类型并将输入数据绑定到一个方法参数。 上一个示例函数由队列消息触发，队列消息传递给参数中的方法 `myQueueItem` 。
 
@@ -132,7 +132,7 @@ _.NET 5.0 支持目前以预览版提供。_
 
 若要写入到输出绑定，必须将输出绑定特性应用到函数方法，该方法定义了如何向绑定的服务写入。 方法返回的值将写入到输出绑定。 例如，下面的示例使用输出绑定将一个字符串值写入名为 `functiontesting2` 的消息队列：
 
-:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/SampleApp/Queue/QueueFunction.cs" range="13-23" :::
+:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/SampleApp/Queue/QueueFunction.cs" range="11-21" :::
 
 ### <a name="multiple-output-bindings"></a>多个输出绑定
 
@@ -148,15 +148,15 @@ HTTP 触发器将传入的 HTTP 请求消息转换为 `HttpRequestData` 传递�
 
 下面的代码是一个 HTTP 触发器 
 
-:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/SampleApp/Http/HttpFunction.cs" range="15-30" :::
+:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/SampleApp/Http/HttpFunction.cs" range="13-27" :::
 
-## <a name="logging"></a>日志记录
+## <a name="logging"></a>Logging
 
 在独立 .NET 中，可以使用 [`ILogger`](/dotnet/api/microsoft.extensions.logging.ilogger?view=dotnet-plat-ext-5.0&preserve-view=true) 从传递给函数的对象获取的实例来写入日志 `FunctionContext` 。 调用 `GetLogger` 方法，传递一个字符串值，该值是写入日志的类别的名称。 类别通常是从中写入日志的特定函数的名称。 若要了解有关类别的详细信息，请参阅 [监视一文](functions-monitoring.md#log-levels-and-categories)。 
 
 下面的示例演示如何 `ILogger` 在函数中获取和写入日志：
 
-:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/SampleApp/Http/HttpFunction.cs" range="19-20" ::: 
+:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/SampleApp/Http/HttpFunction.cs" range="17-18" ::: 
 
 使用的各种方法 `ILogger` 来编写各种日志级别，例如 `LogWarning` 或 `LogError` 。 若要了解有关日志级别的详细信息，请参阅 [监视一文](functions-monitoring.md#log-levels-and-categories)。
 
@@ -171,7 +171,7 @@ HTTP 触发器将传入的 HTTP 请求消息转换为 `HttpRequestData` 传递�
 | .NET 版本 | LTS ( .NET Core 3.1)  | 当前 ( .NET 5.0)  |
 | 核心包 | [Microsoft.NET.Sdk.Functions](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions/) | [Microsoft.Azure.Functions.Worker](https://www.nuget.org/packages/Microsoft.Azure.Functions.Worker/)<br/>[Microsoft.Azure.Functions.Worker](https://www.nuget.org/packages/Microsoft.Azure.Functions.Worker.Sdk) | 
 | 绑定扩展包 | [`Microsoft.Azure.WebJobs.Extensions.*`](https://www.nuget.org/packages?q=Microsoft.Azure.WebJobs.Extensions)  | 下 [`Microsoft.Azure.Functions.Worker.Extensions.*`](https://www.nuget.org/packages?q=Microsoft.Azure.Functions.Worker.Extensions) | 
-| 日志记录 | [`ILogger`](/dotnet/api/microsoft.extensions.logging.ilogger?view=dotnet-plat-ext-5.0&preserve-view=true) 传递给函数 | [`ILogger`](/dotnet/api/microsoft.extensions.logging.ilogger?view=dotnet-plat-ext-5.0&preserve-view=true) 获取自 `FunctionContext` |
+| Logging | [`ILogger`](/dotnet/api/microsoft.extensions.logging.ilogger?view=dotnet-plat-ext-5.0&preserve-view=true) 传递给函数 | [`ILogger`](/dotnet/api/microsoft.extensions.logging.ilogger?view=dotnet-plat-ext-5.0&preserve-view=true) 获取自 `FunctionContext` |
 | 取消令牌 | [支持](functions-dotnet-class-library.md#cancellation-tokens) | 不支持 |
 | 输出绑定 | Out 参数 | 返回值 |
 | 输出绑定类型 |  `IAsyncCollector`、 [DocumentClient](/dotnet/api/microsoft.azure.documents.client.documentclient?view=azure-dotnet&preserve-view=true)、 [BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet&preserve-view=true)和其他客户端特定类型 | 简单类型、JSON 可序列化类型和数组。 |

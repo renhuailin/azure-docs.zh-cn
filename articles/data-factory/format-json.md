@@ -6,12 +6,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/29/2020
 ms.author: jingwang
-ms.openlocfilehash: f19f8fb3811435e9bbc207d2d130c0655a6dee02
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ebac108388071ed3dc0eb2b7bfc0494f2f7bb481
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101706057"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102181357"
 ---
 # <a name="json-format-in-azure-data-factory"></a>Azure 数据工厂中的 JSON 格式
 
@@ -25,7 +25,7 @@ ms.locfileid: "101706057"
 
 有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 JSON 数据集支持的属性列表。
 
-| 属性         | 说明                                                  | 必选 |
+| 属性         | 说明                                                  | 必须 |
 | ---------------- | ------------------------------------------------------------ | -------- |
 | type             | 数据集的 type 属性必须设置为 **Json**。 | 是      |
 | location         | 文件的位置设置。 每个基于文件的连接器在 `location` 下都有其自己的位置类型和支持的属性。 **请在连接器文章 -> 数据集属性部分中查看详细信息**。 | 是      |
@@ -70,7 +70,7 @@ ms.locfileid: "101706057"
 
 复制活动的 ***\*source\**** 节支持以下属性。
 
-| 属性      | 说明                                                  | 必选 |
+| 属性      | 说明                                                  | 必须 |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | 复制活动源的 type 属性必须设置为 **JSONSource**。 | 是      |
 | formatSettings | 一组属性。 请参阅下面的“JSON 读取设置”表。 | 否       |
@@ -78,7 +78,7 @@ ms.locfileid: "101706057"
 
 `formatSettings` 下支持的“JSON 读取设置”：
 
-| 属性      | 说明                                                  | 必选 |
+| 属性      | 说明                                                  | 必须 |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | formatSettings 的 type 必须设置为“JsonReadSettings”。 | 是      |
 | compressionProperties | 一组属性，指示如何为给定的压缩编解码器解压缩数据。 | 否       |
@@ -89,7 +89,7 @@ ms.locfileid: "101706057"
 
 复制活动的 ***\*sink\**** 节支持以下属性。
 
-| 属性      | 说明                                                  | 必选 |
+| 属性      | 说明                                                  | 必须 |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | 复制活动源的 type 属性必须设置为 **JSONSink**。 | 是      |
 | formatSettings | 一组属性。 请参阅下面的“JSON 写入设置”表。 | 否       |
@@ -97,7 +97,7 @@ ms.locfileid: "101706057"
 
 `formatSettings` 下支持的 **JSON 写入设置**：
 
-| 属性      | 说明                                                  | 必选                                              |
+| 属性      | 说明                                                  | 必须                                              |
 | ------------- | ------------------------------------------------------------ | ----------------------------------------------------- |
 | type          | formatSettings 的类型必须设置为 **JsonWriteSettings**。 | 是                                                   |
 | filePattern |指示每个 JSON 文件中存储的数据模式。 允许的值为：setOfObjects (JSON Lines) 和 arrayOfObjects。 **默认** 值为 **setOfObjects**。 请参阅 [JSON 文件模式](#json-file-patterns)部分，详细了解这些模式。 |否 |
@@ -249,6 +249,52 @@ File3.json
 {
     "json": "record 3"
 }
+```
+如果选择了 " **文档每行** "，则映射数据流将从文件中的每一行读取一个 JSON 文档。 
+
+``` json
+File1.json
+{"json": "record 1 }
+
+File2.json
+ {"time":"2015-04-29T07:12:20.9100000Z","callingimsi":"466920403025604","callingnum1":"678948008","callingnum2":"567834760","switch1":"China","switch2":"Germany"}
+ {"time":"2015-04-29T07:13:21.0220000Z","callingimsi":"466922202613463","callingnum1":"123436380","callingnum2":"789037573","switch1":"US","switch2":"UK"}
+
+File3.json
+ {"time":"2015-04-29T07:12:20.9100000Z","callingimsi":"466920403025604","callingnum1":"678948008","callingnum2":"567834760","switch1":"China","switch2":"Germany"}
+ {"time":"2015-04-29T07:13:21.0220000Z","callingimsi":"466922202613463","callingnum1":"123436380","callingnum2":"789037573","switch1":"US","switch2":"UK"}
+ {"time":"2015-04-29T07:13:21.4370000Z","callingimsi":"466923101048691","callingnum1":"678901578","callingnum2":"345626404","switch1":"Germany","switch2":"UK"}
+```
+如果选择了 **文档的数组** ，则映射数据流会从文件中读取一个文档数组。 
+
+``` json
+File.json
+[
+        {
+            "time": "2015-04-29T07:12:20.9100000Z",
+            "callingimsi": "466920403025604",
+            "callingnum1": "678948008",
+            "callingnum2": "567834760",
+            "switch1": "China",
+            "switch2": "Germany"
+        },
+        {
+            "time": "2015-04-29T07:13:21.0220000Z",
+            "callingimsi": "466922202613463",
+            "callingnum1": "123436380",
+            "callingnum2": "789037573",
+            "switch1": "US",
+            "switch2": "UK"
+        },
+        {
+            "time": "2015-04-29T07:13:21.4370000Z",
+            "callingimsi": "466923101048691",
+            "callingnum1": "678901578",
+            "callingnum2": "345626404",
+            "switch1": "Germany",
+            "switch2": "UK"
+        }
+    ]
 ```
 > [!NOTE]
 > 如果预览你的 JSON 数据时数据流引发了“corrupt_record”错误，则你的数据可能在 JSON 文件中包含单个文档。 设置“单个文档”应当能够清除该错误。
