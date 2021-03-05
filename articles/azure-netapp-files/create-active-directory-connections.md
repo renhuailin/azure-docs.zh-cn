@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 02/16/2021
 ms.author: b-juche
-ms.openlocfilehash: 756bf1cd7a7e9435130a3ad2d3b530b7f2e5b1b4
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 44959b2f60f9aafd7d9430c9c19baea72344293f
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100605887"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183873"
 ---
 # <a name="create-and-manage-active-directory-connections-for-azure-netapp-files"></a>为 Azure NetApp 文件创建和管理 Active Directory 连接
 
@@ -183,7 +183,7 @@ Azure NetApp 文件支持用于 AD 连接的 [Active Directory 域服务](/windo
         Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFAesEncryption
         ```
         
-        你还可以使用 [Azure CLI 命令](/cli/azure/feature?preserve-view=true&view=azure-cli-latest) `az feature register` 并 `az feature show` 注册功能并显示注册状态。 
+        你还可以使用 [Azure CLI 命令](/cli/azure/feature) `az feature register` 并 `az feature show` 注册功能并显示注册状态。 
 
     * **LDAP 签名**   
         选中此复选框可启用 LDAP 签名。 此功能在 Azure NetApp 文件服务和用户指定的 [Active Directory 域服务域控制器](/windows/win32/ad/active-directory-domain-services)之间启用安全 LDAP 查找。 有关详细信息，请参阅 [ADV190023 |用于启用 LDAP 通道绑定和 LDAP 签名的 Microsoft 指导](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV190023)。  
@@ -205,7 +205,7 @@ Azure NetApp 文件支持用于 AD 连接的 [Active Directory 域服务](/windo
         Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFLdapSigning
         ```
         
-        你还可以使用 [Azure CLI 命令](/cli/azure/feature?preserve-view=true&view=azure-cli-latest) `az feature register` 并 `az feature show` 注册功能并显示注册状态。 
+        你还可以使用 [Azure CLI 命令](/cli/azure/feature) `az feature register` 并 `az feature show` 注册功能并显示注册状态。 
 
      * **备份策略用户**  
         你可以包含其他帐户，这些帐户要求对创建用于 Azure NetApp 文件的计算机帐户具有提升的权限。 将允许指定的帐户在文件或文件夹级别更改 NTFS 权限。 例如，你可以指定一个非特权服务帐户，用于将数据迁移到 Azure NetApp 文件中的 SMB 文件共享。  
@@ -227,7 +227,7 @@ Azure NetApp 文件支持用于 AD 连接的 [Active Directory 域服务](/windo
         Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFBackupOperator
         ```
         
-        你还可以使用 [Azure CLI 命令](/cli/azure/feature?preserve-view=true&view=azure-cli-latest) `az feature register` 并 `az feature show` 注册功能并显示注册状态。 
+        你还可以使用 [Azure CLI 命令](/cli/azure/feature) `az feature register` 并 `az feature show` 注册功能并显示注册状态。 
 
     * 凭证，包括“用户名”和“密码” 
 

@@ -3,12 +3,12 @@ title: Azure Batch 中的节点和池
 description: 从开发的角度来了解计算节点和池及其在 Azure Batch 工作流中的运用。
 ms.topic: conceptual
 ms.date: 11/20/2020
-ms.openlocfilehash: e55be57968eae2a371a21b214dbd15921641e31f
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: be38d4f91afcaa1ac31e9b9bbc6d2547da2ee99e
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98741768"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183652"
 ---
 # <a name="nodes-and-pools-in-azure-batch"></a>Azure Batch 中的节点和池
 
@@ -65,7 +65,7 @@ Azure Batch 池构建在核心 Azure 计算平台的顶层。 它们提供大规
 Batch 中提供了两种类型的池配置。
 
 > [!IMPORTANT]
-> 应使用 "虚拟机配置" 而不是 "云服务配置" 来配置池。 "虚拟机配置" 池支持所有批处理功能，并且正在添加新功能。 "云服务配置" 池不支持所有功能，并且未计划任何新功能。
+> 应使用“虚拟机配置”而不是“云服务配置”来配置池。 “虚拟机配置”池支持所有 Batch 功能，并且正在添加新功能。 “云服务配置”池不支持所有功能，也没有计划任何新功能。
 
 ### <a name="virtual-machine-configuration"></a>虚拟机配置
 
@@ -74,6 +74,9 @@ Batch 中提供了两种类型的池配置。
 [Batch 节点代理](https://github.com/Azure/Batch/blob/master/changelogs/nodeagent/CHANGELOG.md)是一个程序，它在池中的每个节点上运行，并在节点与 Batch 服务之间提供命令和控制接口。 节点代理对于不同操作系统有不同的实现（称为 SKU）。 基于虚拟机配置创建池时，不仅要指定节点大小和用于创建它们的映像源，还必须指定要安装在节点上的“虚拟机映像引用”和批处理“节点代理 SKU”。 有关指定这些池属性的详细信息，请参阅 [Provision Linux compute nodes in Azure Batch pools](batch-linux-nodes.md)（在 Azure Batch 池中预配 Linux 计算节点）。 可选选择性地将一个或多个空数据磁盘附加到从市场映像创建的池 VM，也可将数据磁盘包括在用于创建 VM 的自定义映像中。 如果包括数据磁盘，需要在 VM 中装载并格式化这些磁盘，然后才能使用。
 
 ### <a name="cloud-services-configuration"></a>云服务配置
+
+> [!WARNING]
+> 不推荐使用云服务配置池。 请改用虚拟机配置池。
 
 云服务配置指定池由 Azure 云服务节点组成。 云服务只提供 Windows 计算节点。
 
@@ -114,7 +117,7 @@ Batch 中提供了两种类型的池配置。
 
 ## <a name="node-size"></a>节点大小
 
-创建 Azure Batch 池时，可以在 Azure 提供的几乎所有 VM 系列和大小中进行选择。 Azure 提供一系列适用于不同工作负荷的 VM 大小，包括专用 [HPC](../virtual-machines/sizes-hpc.md) 或[启用了 GPU](../virtual-machines/sizes-gpu.md) 的 VM 大小。 请注意，只能在创建池时选择节点大小。 换句话说，创建池后，无法更改其节点大小。
+创建 Azure Batch 池时，可以在 Azure 提供的几乎所有 VM 系列和大小中进行选择。 Azure 提供一系列适用于不同工作负荷的 VM 大小，包括专用 [HPC](../virtual-machines/sizes-hpc.md) 或[启用了 GPU](../virtual-machines/sizes-gpu.md) 的 VM 大小。 请注意，只能在创建池时选择节点大小。 换句话说，创建池后，便无法更改其节点大小。
 
 有关详细信息，请参阅[在 Azure Batch 池中选择适用于计算节点的 VM 大小](batch-pool-vm-sizes.md)。
 

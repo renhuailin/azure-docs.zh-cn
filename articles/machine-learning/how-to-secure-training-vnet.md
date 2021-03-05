@@ -11,12 +11,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 07/16/2020
 ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1
-ms.openlocfilehash: 6a89d225b747f116ed75bbe2e6928ec2a74f9c5e
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: cb034c42ceee870ed7be72eb5ff7d29c42b72f36
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101655949"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183584"
 ---
 # <a name="secure-an-azure-machine-learning-training-environment-with-virtual-networks"></a>使用虚拟网络保护 Azure 机器学习训练环境
 
@@ -321,9 +321,9 @@ except ComputeTargetException:
 
 ## <a name="next-steps"></a>后续步骤
 
-本文是由四部分构成的虚拟网络系列文章中的第三部分。 若要了解如何保护虚拟网络，请参阅其余文章：
+本文是由五部分组成的虚拟网络系列中的第三部分。 若要了解如何保护虚拟网络，请参阅其余文章：
 
 * [第1部分：虚拟网络概述](how-to-network-security-overview.md)
 * [第 2 部分：保护工作区资源](how-to-secure-workspace-vnet.md)
 * [第 4 部分：保护推理环境](how-to-secure-inferencing-vnet.md)
-* [第 5 部分：启用工作室功能](how-to-enable-studio-virtual-network.md)
+* [第5部分：启用 studio 功能](how-to-enable-studio-virtual-network.md)

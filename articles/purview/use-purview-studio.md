@@ -7,18 +7,18 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/12/2020
-ms.openlocfilehash: d8e6c4b2addf9745b2ddabe8f6fdad9d82dce59f
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: ca25bbb72ff853f819f3e8ce4e0092ddb762b156
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97503944"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183805"
 ---
 # <a name="use-purview-studio"></a>使用 Purview Studio
 
 本文概述了 Azure 监控范围的一些主要功能。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * 已在 Azure 门户中创建了一个活动的监控范围帐户，并且该用户有权访问监控范围 Studio。
 
@@ -26,7 +26,7 @@ ms.locfileid: "97503944"
 
 * 若要启动你的监控范围帐户，请在 Azure 门户中中转到监控范围帐户，选择要启动的帐户，然后启动该帐户。
 
-   :::image type="content" source="./media/use-purview-studio/launch-from-portal.png" alt-text="用于启动 Azure 监控范围帐户目录的选择屏幕截图。":::
+   :::image type="content" source="./media/use-purview-studio/launch-from-portal.png" alt-text="选择启动 Azure Purview 帐户目录的屏幕截图。":::
 
 * 启动监控范围帐户的另一种方法是 `https://web.purview.azure.com` ：选择 " **Azure Active Directory** " 和 "帐户名称" 以启动帐户。
 
@@ -38,7 +38,7 @@ ms.locfileid: "97503944"
 
 下面的列表总结了 **主页** 的主要功能。 列表中的每个数字对应于前面屏幕截图中突出显示的数字。
 
-1. 目录的友好名称。 你可以在 **管理中心** > "*帐户信息*" 中设置目录名称。
+1. 目录的友好名称。 你可以在 **管理中心**  >  **帐户信息** 中设置目录名称。
 
 2. 目录分析显示以下内容的数目：
     - 用户、组和应用程序

@@ -2,34 +2,34 @@
 title: 容器映像存储
 description: 有关容器映像和其他项目在 Azure 容器注册表中的存储方式的详细信息，包括安全、冗余和容量。
 ms.topic: article
-ms.date: 03/02/2021
+ms.date: 03/03/2021
 ms.custom: references_regions
-ms.openlocfilehash: 4bdffd111273e00b796e45f4e09bfac9ba6713e4
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: ec4328b44d5493b8d765fa30c548adc3d747d446
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102036004"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183261"
 ---
 # <a name="container-image-storage-in-azure-container-registry"></a>Azure 容器注册表中的容器映像存储
 
-每个[基本、标准和高级](container-registry-skus.md) Azure 容器注册表均受益于高级 Azure 存储功能，如静态加密（以确保映像数据安全）和地域冗余（以实现映像数据保护）。 以下部分介绍 Azure 容器注册表 (ACR) 中映射存储的功能和限制。
+每个 [基本、标准和高级](container-registry-skus.md) azure 容器注册表都受益于高级 azure 存储功能，包括静态加密。 以下部分介绍 Azure 容器注册表 (ACR) 中的映像存储的功能和限制。
 
 ## <a name="encryption-at-rest"></a>静态加密
 
 注册表中的所有容器映像和其他项目都静态加密。 Azure 在存储映像之前自动对其进行加密，当应用程序和服务请求映像时即时对其进行解密。 （可选）使用 [客户管理的密钥](container-registry-customer-managed-keys.md)应用额外的加密层。
 
-## <a name="geo-redundant-storage"></a>异地冗余存储
+## <a name="regional-storage"></a>区域存储
 
-对于在大多数区域中部署的容器注册表，Azure 使用异地冗余存储方案来帮助防止丢失容器映像和其他项目。 Azure 容器注册表会自动将容器映像复制到多个地理位置较远的数据中心，以防在出现区域存储故障时丢失它们。
+Azure 容器注册表将数据存储在创建注册表的区域，以帮助客户满足数据驻留和符合性要求。
 
-> [!IMPORTANT]
-> * 如果发生区域存储故障，只能通过联系 Azure 支持人员恢复注册表数据。 
-> * 由于巴西南部和东南亚的数据派驻要求，这些区域中的 Azure 容器注册表数据仅存储在 [本地地域](https://azure.microsoft.com/global-infrastructure/geographies/)。 对于东南亚，所有数据都存储在新加坡。 对于巴西南部，所有数据都存储在巴西。 当区域由于严重的灾难而丢失时，Microsoft 将无法恢复 Azure 容器注册表数据。
+为了帮助防止数据中心中断，某些区域提供了 [区域冗余](zone-redundancy.md)，其中的数据在特定区域的多个数据中心之间进行复制。
+
+如果客户想要将其数据存储在多个区域，以便在不同的地理位置获得更好的性能，或者在发生区域性服务中断时希望具有复原能力的客户，则应启用 [异地复制](container-registry-geo-replication.md)。
 
 ## <a name="geo-replication"></a>异地复制
 
-对于需要更高可用性保证的方案，请考虑使用高级注册表的[异地复制](container-registry-geo-replication.md)功能。 异地复制可帮助在全部区域失败（而不仅仅是一个存储失败）时，防止丢失对注册表的访问权限。 异地复制还提供了其他好处，如临近网络映像存储，以便在分布式开发或部署方案中实现更快地推送和拉取。
+对于需要高可用性保证的方案，请考虑使用高级注册表的 [异地复制](container-registry-geo-replication.md) 功能。 异地复制有助于防止在发生区域性故障时对注册表的访问权限。 异地复制还提供了其他好处，如临近网络映像存储，以便在分布式开发或部署方案中实现更快地推送和拉取。
 
 ## <a name="zone-redundancy"></a>区域冗余
 

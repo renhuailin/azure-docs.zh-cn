@@ -10,16 +10,23 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 12/11/2020
 ms.author: pafarley
-ms.openlocfilehash: 49d8eeaa8d1160659a456f147a6a5e27f923af33
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: a66f65d48a14853ec1da08f5d83b777f4fdac846
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101733459"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183311"
 ---
 # <a name="whats-new-in-face-service"></a>人脸服务中有哪些新功能？
 
 Azure 人脸服务会不断更新。 使用本文可了解最新的功能增强、修复和文档更新。
+
+## <a name="february-2021"></a>2021 年 2 月
+
+* 新人脸 API 检测模型：新的检测03模型是当前可用的最准确检测模型。 如果你是新客户，建议使用此模型。 检测2003提高了)  (64x64 像素的图像中找到的较小面部的召回度和精度。 其他改进包括误报的整体缩减和对旋转面方向的改进检测。 将检测03与新的识别04相结合，还可以提供改进的识别准确性。 有关更多详细信息，请参阅 [指定面部检测模型](https://docs.microsoft.com/azure/cognitive-services/face/face-api-how-to-topics/specify-detection-model) 。
+* 人脸掩码属性： "人脸掩码" 属性可用于最新的检测03模型，同时还提供了其他属性，该属性 `"noseAndMouthCovered"` 检测到鼻子和嘴是否磨损了人脸掩码。 若要使用最新的掩码检测功能，用户需要在 API 请求中指定检测模型：将具有 _detectionModel_ 参数的模型版本分配给 `detection_03` 。 有关更多详细信息，请参阅 [指定面部检测模型](https://docs.microsoft.com/azure/cognitive-services/face/face-api-how-to-topics/specify-detection-model) 。
+* 新人脸 API 识别模式：新的识别04模型是当前可用的最准确的识别模式。 如果你是新客户，我们建议使用此模型进行验证和确定。 此功能改进了识别2003的准确性，包括已注册用户的认可，其中涉及的已注册用户的认知面涉及 (外科) 的外科。 现在，客户可以构建安全且无缝的用户体验，以检测已注册用户是否正在使用最新的检测03模型，并识别他们使用最新的识别04模型。 有关更多详细信息，请参阅 [指定面部识别模型](https://docs.microsoft.com/azure/cognitive-services/face/face-api-how-to-topics/specify-recognition-model) 。
+
 
 ## <a name="january-2021"></a>2021 年 1 月
 * 使用人脸 API 时减少延迟：人脸团队发布了一篇新文章，其中详细介绍了使用该服务时的可能的延迟原因和可能的缓解策略。 请参阅 [在使用人脸服务时减少延迟](./face-api-how-to-topics/how-to-mitigate-latency.md)。

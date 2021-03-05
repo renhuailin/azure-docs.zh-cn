@@ -9,12 +9,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/04/2021
-ms.openlocfilehash: f5692f2bcaaadfc56084ec8db745eae48112ecf3
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 210f0c52a2b27492bfa2181473043df3537157d2
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102101233"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183193"
 ---
 # <a name="configure-maintenance-window-preview"></a> (预览配置维护时段) 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -178,7 +178,7 @@ Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中�
 
 ### <a name="discover-sql-database-and-elastic-pool-maintenance-windows"></a>发现 SQL 数据库和弹性池维护时段
 
-下面的示例使用 [az 维护公共-configuration list](/cli/azure/ext/maintenance/maintenance/public-configuration?view=azure-cli-latest&preserve-view=true#ext_maintenance_az_maintenance_public_configuration_list)命令返回 *eastus2* 区域的可用维护时段。 对于数据库和弹性池，将设置 `maintenanceScope` 为 `SQLDB` 。
+下面的示例使用 [az 维护公共-configuration list](/cli/azure/ext/maintenance/maintenance/public-configuration#ext_maintenance_az_maintenance_public_configuration_list)命令返回 *eastus2* 区域的可用维护时段。 对于数据库和弹性池，将设置 `maintenanceScope` 为 `SQLDB` 。
 
    ```azurecli
    location="eastus2"
@@ -188,7 +188,7 @@ Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中�
 
 ### <a name="discover-sql-managed-instance-maintenance-windows"></a>发现 SQL 托管实例维护时段
 
-下面的示例使用 [az 维护公共-configuration list](/cli/azure/ext/maintenance/maintenance/public-configuration?view=azure-cli-latest&preserve-view=true#ext_maintenance_az_maintenance_public_configuration_list)命令返回 *eastus2* 区域的可用维护时段。 对于托管实例，将设置 `maintenanceScope` 为 `SQLManagedInstance` 。
+下面的示例使用 [az 维护公共-configuration list](/cli/azure/ext/maintenance/maintenance/public-configuration#ext_maintenance_az_maintenance_public_configuration_list)命令返回 *eastus2* 区域的可用维护时段。 对于托管实例，将设置 `maintenanceScope` 为 `SQLManagedInstance` 。
 
    ```azurecli
    az maintenance public-configuration list --query "[?location=='eastus2'&&contains(maintenanceScope,'SQLManagedInstance')]"

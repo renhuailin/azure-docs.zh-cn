@@ -2,21 +2,21 @@
 title: Azure 服务总线中事务处理概述
 description: 本文概要介绍了 Azure 服务总线中的事务处理和“发送方式”功能。
 ms.topic: article
-ms.date: 10/28/2020
+ms.date: 03/03/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9a95a200b57d348109884a319b5433f0ffd5dde1
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: e2848f41d5557584b0f1a197b548a00a4aef1564
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98684785"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183737"
 ---
 # <a name="overview-of-service-bus-transaction-processing"></a>服务总线事务处理概述
 
 本文将讨论 Microsoft Azure 服务总线的事务功能。 很多讨论已在[服务总线中的 AMQP 事务示例](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/TransactionsAndSendVia/TransactionsAndSendVia/AMQPTransactionsSendVia)中进行了说明。 本文仅限于概述服务总线中的事务处理和发送方式  功能，虽然原子事务示例在作用域内更广泛且更复杂。
 
 > [!NOTE]
-> 服务总线的基本层不支持事务。 标准层和高级层支持事务。 有关这些层之间的差异，请参阅[服务总线定价](https://azure.microsoft.com/pricing/details/service-bus/)。
+> 基本层的服务总线不支持事务。 标准层和高级层支持事务。 有关这些层之间的差异，请参阅[服务总线定价](https://azure.microsoft.com/pricing/details/service-bus/)。
 
 ## <a name="transactions-in-service-bus"></a>服务总线中的事务
 
@@ -42,6 +42,8 @@ ms.locfileid: "98684785"
 若要启用将数据从队列或主题到处理器，然后到另一个队列或主题的事务性移交，服务总线支持传输。 在传输操作中，发送方先将消息发送到“传输队列或主题”，然后传输队列或主题立即使用自动转发功能所依赖的同一强大传输实现将消息移到预期的目标队列或主题。 消息永远不会以对传输队列或主题的使用者可见的方式提交到传输队列或主题的日志中。
 
 当传输队列或主题本身是发送方的输入消息的源时，此事务功能的优势越明显。 换而言之，服务总线可以“通过”传输队列或主题将消息传输到目标队列或主题中，同时对输入消息执行完成（或延迟/死信）操作，所有这一切都通过一个原子操作完成。 
+
+如果需要从主题订阅接收，然后将其发送到相同事务中的队列或主题，则传输实体必须是主题。 在此方案中，启动主题上的事务范围，从包含在事务范围内的订阅接收，并通过传输主题发送到队列或主题目标。 
 
 ### <a name="see-it-in-code"></a>在代码中查看它
 

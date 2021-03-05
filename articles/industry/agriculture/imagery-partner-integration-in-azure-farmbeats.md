@@ -4,14 +4,14 @@ description: 本文介绍了图像合作伙伴集成。
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
-ms.author: v-umha
+ms.author: v-ummehabiba
 ms.custom: has-adal-ref
-ms.openlocfilehash: 40e17a9f73d98f24c6c7fbb55ef38cc2bc088861
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 1bc723892e29ccc24a7612cfbe50d4b274cdacdf
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675934"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183788"
 ---
 # <a name="imagery-partner-integration"></a>图像合作伙伴集成
 
@@ -138,10 +138,10 @@ JSON 是一种与语言无关的常见数据格式，该格式提供任意数据
 
 1.  根据要上传的图像的类型，为以下字段创建新的扩展类型：
 
-    - **场景源** ：例如，drone_partner_name
-    - **场景类型** ：例如，无人机
-    - **场景文件类型** ：例如，chlorophyll index
-    - **场景文件内容类型** ：例如，image/tiff
+    - **场景源**：例如，drone_partner_name
+    - **场景类型**：例如，无人机
+    - **场景文件类型**：例如，chlorophyll index
+    - **场景文件内容类型**：例如，image/tiff
 
 2.  调用/Farms API，从 Azure FarmBeats 系统中获取场列表。
 3.  让客户能够从场列表中选择单个场。

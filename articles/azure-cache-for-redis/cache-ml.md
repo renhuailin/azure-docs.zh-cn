@@ -6,12 +6,12 @@ ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 09/30/2020
-ms.openlocfilehash: c2241d738a43c6891ee4bea0829400fdc51a664b
-ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
+ms.openlocfilehash: 83fc88a57a1cdbec35a8f939a81698799d290d70
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97734226"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183618"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-functions-with-azure-cache-for-redis"></a>使用 Azure Cache for Redis 将机器学习模型部署到 Azure Functions 
 
@@ -26,7 +26,7 @@ ms.locfileid: "97734226"
 ## <a name="prerequisites"></a>先决条件
 * Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/)。
 * Azure 机器学习工作区。 有关详细信息，请参阅[创建工作区](../machine-learning/how-to-manage-workspace.md)一文。
-* [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)。
+* [Azure CLI](/cli/azure/install-azure-cli)。
 * 工作区中注册的已训练的机器学习模型。 如果没有模型，请使用[图像分类教程：训练模型](../machine-learning/tutorial-train-models-with-aml.md)来训练和注册模型。
 
 > [!IMPORTANT]
@@ -151,7 +151,7 @@ def run(data):
 > [!IMPORTANT]
 > 部署到 Azure Functions 时，无需创建部署配置。
 
-## <a name="install-the-sdk-preview-package-for-functions-support"></a>安装 SDK preview 包以提供函数支持
+## <a name="install-the-sdk-preview-package-for-functions-support"></a>安装 SDK 预览版包以获取 Functions 支持
 
 若要为 Azure Functions 生成包，需要安装 SDK 预览版包。
 
@@ -178,7 +178,7 @@ print(model_package.location)
 当 `show_output=True` 时，将显示 Docker 生成过程的输出。 此过程完成后，即在 Azure 容器注册表中为工作区创建了映像。 映像生成后，会显示其在 Azure 容器注册表中的位置。 返回的位置采用 `<acrinstance>.azurecr.io/package@sha256:<imagename>` 格式。
 
 > [!NOTE]
-> 函数的打包当前支持 HTTP 触发器、Blob 触发器和服务总线触发器。 有关触发器的详细信息，请参阅 [Azure Functions 绑定](../azure-functions/functions-bindings-storage-blob-trigger.md#blob-name-patterns)。
+> Functions 打包当前支持 HTTP 触发器、Blob 触发器和服务总线触发器。 有关触发器的详细信息，请参阅 [Azure Functions 绑定](../azure-functions/functions-bindings-storage-blob-trigger.md#blob-name-patterns)。
 
 > [!IMPORTANT]
 > 保存位置信息，因为会在部署映像时使用。
@@ -285,12 +285,12 @@ print(model_package.location)
 
 ## <a name="test-azure-functions-http-trigger"></a>测试 Azure Functions HTTP 触发器 
 
-现在，我们将运行并测试 Azure Functions 的 HTTP 触发器。
+现在，我们将运行并测试 Azure Functions HTTP 触发器。
 
-1. 在 Azure 门户中转到 function app。
+1. 在 Azure 门户中转到函数应用。
 1. 在“开发人员”下，选择“代码 + 测试”。 
 1. 在右侧，选择“输入”选项卡。 
-1. 单击 " **运行** " 按钮以测试 Azure Functions HTTP 触发器。 
+1. 单击“运行”按钮，以测试 Azure Functions HTTP 触发器。 
 
 现在，你已使用 Azure Cache for Redis 实例成功地将 Azure 机器学习中的模型部署为函数应用。 通过导航到以下部分中的链接，详细了解 Azure Cache for Redis。
 

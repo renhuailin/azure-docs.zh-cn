@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: troubleshooting
 ms.date: 07/08/2020
-ms.openlocfilehash: cc3323a3ae2d604557d7e09b38252d63f17c5470
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: d51de526205e8ef663dcfd682ec5858e4bc2f645
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92319910"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183975"
 ---
 # <a name="status-of-migration-scenarios-supported-by-azure-database-migration-service"></a>Azure 数据库迁移服务支持的迁移方案的状态
 
@@ -29,7 +29,7 @@ Azure 数据库迁移服务旨在支持脱机（一次性）和联机（连续�
 
 ## <a name="migration-scenario-status"></a>迁移方案状态
 
-Azure 数据库迁移服务支持的迁移方案的状态随时间而变化。 一般而言，方案首先在**个人预览版**中发布。 参与个人预览需要客户通过 [DMS 预览站点](https://aka.ms/dms-preview)提交提名。 个人预览完成后，方案状态将更改为**公共预览版**。 Azure 数据库迁移服务用户可以直接从用户界面试用公共预览版的迁移方案。 不需要注册。  但是，公共预览版的迁移方案不一定在所有区域中都可用，并且可能会在最终版本发布之前进行其他更改。 经过公共预览后，方案状态将更改为**正式版**。 正式版 (GA) 是最终发布状态，其功能是完整的且可供所有用户访问。
+Azure 数据库迁移服务支持的迁移方案的状态随时间而变化。 一般而言，方案首先在 **个人预览版** 中发布。 参与个人预览需要客户通过 [DMS 预览站点](https://aka.ms/dms-preview)提交提名。 个人预览完成后，方案状态将更改为 **公共预览版**。 Azure 数据库迁移服务用户可以直接从用户界面试用公共预览版的迁移方案。 不需要注册。  但是，公共预览版的迁移方案不一定在所有区域中都可用，并且可能会在最终版本发布之前进行其他更改。 经过公共预览后，方案状态将更改为 **正式版**。 正式版 (GA) 是最终发布状态，其功能是完整的且可供所有用户访问。
 
 ## <a name="migration-scenario-support"></a>迁移方案支持
 
@@ -60,7 +60,7 @@ Azure 数据库迁移服务支持的迁移方案的状态随时间而变化。 �
 |   | RDS MySQL | X |   |
 | **Azure DB for PostgreSQL（单一服务器）** | PostgreSQL | X |
 |  | RDS PostgreSQL | X |   |
-| **Azure DB for PostgreSQL-超大规模 (Citus) ** | PostgreSQL | X |
+| **Azure DB for PostgreSQL-超大规模 (Citus)** | PostgreSQL | X |
 |  | RDS PostgreSQL | X |   |
 
 ### <a name="online-continuous-sync-migration-support"></a>联机（连续同步）迁移支持
@@ -69,11 +69,11 @@ Azure 数据库迁移服务支持的迁移方案的状态随时间而变化。 �
 
 | 目标  | Source | 支持 | 状态 |
 | ------------- | ------------- |:-------------:|:-------------:|
-| **Azure SQL DB** | SQL Server | ✔ | GA |
-|   | RDS SQL | ✔ | GA |
+| **Azure SQL DB** | SQL Server | X | GA |
+|   | RDS SQL | X | GA |
 |   | Oracle | X |  |
 | **Azure SQL DB MI** | SQL Server | ✔ | GA |
-|   | RDS SQL | ✔ | GA |
+|   | RDS SQL | X | GA |
 |   | Oracle | X |  |
 | **Azure SQL VM** | SQL Server | X |   |
 |   | Oracle  | X |  |
@@ -81,10 +81,10 @@ Azure 数据库迁移服务支持的迁移方案的状态随时间而变化。 �
 | **Azure DB for MySQL** | MySQL | ✔ | GA |
 |   | RDS MySQL | ✔ | GA |
 | **Azure DB for PostgreSQL（单一服务器）** | PostgreSQL | ✔ | GA |
-|   | Azure DB for PostgreSQL-单一服务器 | ✔ | GA |
+|   | Azure DB for PostgreSQL - 单一服务器 | ✔ | GA |
 |   | RDS PostgreSQL | ✔ | GA |
 |   | Oracle | ✔ | 公共预览版 |
-| **Azure DB for PostgreSQL-超大规模 (Citus) ** | PostgreSQL | ✔ | GA |
+| **Azure DB for PostgreSQL-超大规模 (Citus)** | PostgreSQL | ✔ | GA |
 |   | RDS PostgreSQL | ✔ | GA |
 
 

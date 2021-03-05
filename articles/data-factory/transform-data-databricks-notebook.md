@@ -6,12 +6,12 @@ author: nabhishek
 ms.author: abnarain
 ms.topic: conceptual
 ms.date: 03/15/2018
-ms.openlocfilehash: 486dc2ab3a14917e8c7bdddf8b5b9c6f9da1a1dc
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: fea572c2e75f62b5e7e7b4634e37da348bdcdaf1
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100373991"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183482"
 ---
 # <a name="transform-data-by-running-a-databricks-notebook"></a>通过运行 Databricks Notebook 转换数据
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -114,10 +114,10 @@ ms.locfileid: "100373991"
 
 1. 在笔记本中，可以调用 [dbutils ( "returnValue" ) ](/azure/databricks/notebooks/notebook-workflows#notebook-workflows-exit) 并将相应的 "returnValue" 返回到数据工厂。
 
-2. 可以通过表达式（如 `'@activity('databricks notebook activity name').output.runOutput'`）在数据工厂中使用输出。
+2. 可以通过表达式（如 `@{activity('databricks notebook activity name').output.runOutput}`）在数据工厂中使用输出。 
 
    > [!IMPORTANT]
-   > 如果要传递 JSON 对象，可以通过追加属性名称来检索值。 示例：`'@activity('databricks notebook activity name').output.runOutput.PropertyName'`
+   > 如果要传递 JSON 对象，可以通过追加属性名称来检索值。 示例：`@{activity('databricks notebook activity name').output.runOutput.PropertyName}`
 
 ## <a name="how-to-upload-a-library-in-databricks"></a>如何上传 Databricks 中的库
 
