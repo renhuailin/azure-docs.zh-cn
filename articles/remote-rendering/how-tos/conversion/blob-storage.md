@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/04/2020
 ms.topic: how-to
-ms.openlocfilehash: cfc10658463888e43ea1a24dfefd3f8939ec8ef7
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
-ms.translationtype: MT
+ms.openlocfilehash: 889c25fd1402c4438ff648afce64905de112c8db
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98762770"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102215538"
 ---
 # <a name="use-azure-blob-storage-for-model-conversion"></a>将 Azure Blob 存储用于模型转换
 
@@ -28,7 +28,7 @@ ms.locfileid: "98762770"
 可以通过以下工具之一来创建存储帐户和 blob 容器：
 
 - [Azure 门户](https://portal.azure.com)
-- [az 命令行](/cli/azure/install-azure-cli?view=azure-cli-latest)
+- [az 命令行](/cli/azure/install-azure-cli)
 - [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)
 - Sdk (c #、Python ... ) 
 
@@ -52,7 +52,7 @@ Azure 远程呈现需要从存储帐户检索模型数据，并将数据写回�
 
 - az PowerShell module
   - 请参阅 [PowerShell 脚本示例](../../samples/powershell-example-scripts.md)
-- [az 命令行](/cli/azure/install-azure-cli?view=azure-cli-latest)
+- [az 命令行](/cli/azure/install-azure-cli)
 - [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)
   - 右键单击 "获取共享访问签名" 容器 (读取、列出输入容器的访问权限、对输出容器的写访问权限) 
 - Sdk (c #、Python ... ) 

@@ -3,12 +3,12 @@ title: 为客户端身份验证设置 Azure Active Directory
 description: 了解如何设置 Azure Active Directory (Azure AD) 来对 Service Fabric 群集的客户端进行身份验证。
 ms.topic: conceptual
 ms.date: 6/28/2019
-ms.openlocfilehash: 537a81a090828d3fcc9dde6032f1d4eb2df9b4e4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: a1f89e144f9cef12c5bff87befb00a88bad8d7d9
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86258770"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102215963"
 ---
 # <a name="set-up-azure-active-directory-for-client-authentication"></a>为客户端身份验证设置 Azure Active Directory
 
@@ -138,7 +138,7 @@ FabricClient 和 FabricGateway 执行相互身份验证。 使用 Azure AD 身�
 
 
 <!-- Links -->
-[azure-CLI]:https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest
+[azure-CLI]:https://docs.microsoft.com/cli/azure/get-started-with-azure-cli
 [azure-portal]: https://portal.azure.com/
 [service-fabric-cluster-security]: service-fabric-cluster-security.md
 [active-directory-howto-tenant]:../active-directory/develop/quickstart-create-new-tenant.md

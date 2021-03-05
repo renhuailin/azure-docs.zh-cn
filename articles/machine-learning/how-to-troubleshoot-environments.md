@@ -10,12 +10,12 @@ ms.author: sagopal
 ms.date: 12/3/2020
 ms.topic: troubleshooting
 ms.custom: devx-track-python
-ms.openlocfilehash: 5b2f62e8e04bddadc7068eb75405bcf1568f5713
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.openlocfilehash: da3e5bd9efcdd7d82dd3d3937918c4a64f69edbd
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101657292"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102215640"
 ---
 # <a name="troubleshoot-environment-image-builds"></a>对环境映像生成进行故障排除
 
@@ -25,7 +25,7 @@ ms.locfileid: "101657292"
 
 * Azure 订阅。 试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
 * [Azure 机器学习 SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)。
-* [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)。
+* [Azure CLI](/cli/azure/install-azure-cli)。
 * [用于 Azure 机器学习的 CLI 扩展](reference-azure-machine-learning-cli.md)。
 * 若要在本地调试，则必须在本地系统上安装一个有效的 Docker。
 

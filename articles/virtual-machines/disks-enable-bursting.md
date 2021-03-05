@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 402c22052325349231090eb4cf4826159231fefe
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.openlocfilehash: f5865646200a783e7139bb5e22576ea404f58203
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101679135"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102216643"
 ---
 # <a name="enable-on-demand-bursting"></a>启用按需突发
 
@@ -61,7 +61,7 @@ New-AzDiskUpdateConfig -BurstingEnabled $true | Update-AzDisk -ResourceGroupName
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[Azure CLI 模块](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)的版本2.19.0 和更高版本中提供按需突发 cmdlet。 或者，您可以使用 [Azure Cloud Shell](https://shell.azure.com/)。
+[Azure CLI 模块](https://docs.microsoft.com/cli/azure/install-azure-cli)的版本2.19.0 和更高版本中提供按需突发 cmdlet。 或者，您可以使用 [Azure Cloud Shell](https://shell.azure.com/)。
 
 ### <a name="create-and-attach-a-on-demand-bursting-data-disk"></a>创建并附加按需突发数据磁盘
 

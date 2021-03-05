@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: troubleshooting
 ms.date: 07/08/2020
-ms.openlocfilehash: d51de526205e8ef663dcfd682ec5858e4bc2f645
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
-ms.translationtype: MT
+ms.openlocfilehash: 719dcecf3091e03fbcbe6a82d4c618f54243c4e1
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/05/2021
-ms.locfileid: "102183975"
+ms.locfileid: "102215334"
 ---
 # <a name="status-of-migration-scenarios-supported-by-azure-database-migration-service"></a>Azure 数据库迁移服务支持的迁移方案的状态
 
@@ -83,9 +83,12 @@ Azure 数据库迁移服务支持的迁移方案的状态随时间而变化。 �
 | **Azure DB for PostgreSQL（单一服务器）** | PostgreSQL | ✔ | GA |
 |   | Azure DB for PostgreSQL - 单一服务器 | ✔ | GA |
 |   | RDS PostgreSQL | ✔ | GA |
-|   | Oracle | ✔ | 公共预览版 |
+|   | Oracle | ✔ | 公开预览版 (在5月 1 2021 日后弃用)  |
 | **Azure DB for PostgreSQL-超大规模 (Citus)** | PostgreSQL | ✔ | GA |
 |   | RDS PostgreSQL | ✔ | GA |
+
+> [!IMPORTANT]
+> 目前处于预览) 阶段的 "Oracle 到 Azure Database for PostgreSQL" 迁移方案 (在5月 1 2021 日之后将不再可用。 我们将继续通过备用工具提供支持 (例如 Ora2pg) ，并为 Oracle 到 PostgreSQL 迁移提供最佳迁移体验。 有关迁移的最佳实践，请参阅 [Oracle to Azure Database for PostgreSQL 迁移指南] (https://aka.ms/OracletoPGguide) 。
 
 
 ## <a name="next-steps"></a>后续步骤

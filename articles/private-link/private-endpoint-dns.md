@@ -2,17 +2,17 @@
 title: Azure 专用终结点 DNS 配置
 description: 了解 Azure 专用终结点 DNS 配置
 services: private-link
-author: allensu
+author: asudbring
 ms.service: private-link
 ms.topic: conceptual
 ms.date: 01/14/2021
 ms.author: allensu
-ms.openlocfilehash: 3cb5dd88572fda7a939aa529a5372d72575ffdbb
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
-ms.translationtype: MT
+ms.openlocfilehash: 42c5b315c9c3560c400c685448a11dc61bf64eb6
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/05/2021
-ms.locfileid: "102203277"
+ms.locfileid: "102215606"
 ---
 # <a name="azure-private-endpoint-dns-configuration"></a>Azure 专用终结点 DNS 配置
 
@@ -79,7 +79,7 @@ Azure 会在公共 DNS 上 (CNAME) 创建规范名称 DNS 记录。 CNAME 记录
 | 认知服务 (Microsoft.CognitiveServices/accounts)/account | privatelink.cognitiveservices.azure.com  | cognitiveservices.azure.com  |
 | Azure 文件同步 (Storagesync.sys/storageSyncServices) /afs |  privatelink.afs.azure.net  |  afs.azure.net  |
 | Azure 数据工厂 (DataFactory/工厂) /dataFactory |  privatelink.datafactory.azure.net  |  datafactory.azure.net  |
-| Azure 数据工厂 (DataFactory/工厂) /门户 |  privatelink.azure.com  |  azure.com  |
+| Azure 数据工厂 (DataFactory/工厂) /门户 |  privatelink.adf.azure.com  |  adf.azure.com  |
 | 适用于 Redis 的 Azure Cache (Redis) /redisCache | privatelink.redis.cache.windows.net | redis.cache.windows.net |
 
 <sup>1</sup>用于 IoT 中心内置的与事件中心兼容的终结点。 若要了解详细信息，请参阅 [IoT 中心内置终结点的私有链接支持](../iot-hub/virtual-network-support.md#built-in-event-hub-compatible-endpoint)
@@ -97,7 +97,6 @@ Azure 会在公共 DNS 上 (CNAME) 创建规范名称 DNS 记录。 CNAME 记录
 | Azure Database for PostgreSQL - 单一服务器 (Microsoft.DBforPostgreSQL/servers)/postgresqlServer | privatelink.postgres.database.chinacloudapi.cn | postgres.database.chinacloudapi.cn |
 | Azure Database for MySQL (Microsoft.DBforMySQL/servers)/mysqlServer | privatelink.mysql.database.chinacloudapi.cn  | mysql.database.chinacloudapi.cn  |
 | Azure Database for MariaDB (Microsoft.DBforMariaDB/servers)/mariadbServer | privatelink.mariadb.database.chinacloudapi.cn | mariadb.database.chinacloudapi.cn |
-
 
 ## <a name="dns-configuration-scenarios"></a>DNS 配置方案
 

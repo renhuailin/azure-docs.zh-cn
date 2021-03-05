@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: 9ee5c8dcfb23b758a92e7b50f33a905852948e5a
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
-ms.translationtype: MT
+ms.openlocfilehash: be8b11b6ddf715e5d6226372e8d03b42dec5fc7d
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98877469"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102215980"
 ---
 # <a name="plan-and-manage-costs-for-azure-machine-learning"></a>计划和管理 Azure 机器学习成本
 
@@ -70,7 +70,7 @@ Azure 机器学习在 Azure 基础结构上运行，该基础结构在部署新�
 
 * Azure 容器注册表
 * Azure 块 Blob 存储
-* 密钥保管库
+* Key Vault
 * Application Insights
 
 若要删除工作区以及这些从属资源，请使用 SDK：
@@ -121,7 +121,7 @@ AmlCompute 群集的设计旨在根据工作负载动态进行缩放。 群集�
 + 如果执行迭代较少的试验，请缩短此时间以节省成本。
 + 如果迭代较多的开发/测试试验，可能需要增加此时间，这样就不用在每次更改训练脚本或环境后为纵向扩展或纵向缩减付费。
 
-可以使用 [AmlCompute SDK 类](/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?preserve-view=true&view=azure-ml-py)、[AmlCompute CLI](/cli/azure/ext/azure-cli-ml/ml/computetarget/create?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-create-amlcompute) 以及 [REST API](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable) 来配置 AmlCompute 群集，以适应 Azure 门户中不断变化的工作负载要求。
+可以使用 [AmlCompute SDK 类](/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?preserve-view=true&view=azure-ml-py)、[AmlCompute CLI](/cli/azure/ext/azure-cli-ml/ml/computetarget/create#ext-azure-cli-ml-az-ml-computetarget-create-amlcompute) 以及 [REST API](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable) 来配置 AmlCompute 群集，以适应 Azure 门户中不断变化的工作负载要求。
 
 ```azurecli
 az ml computetarget create amlcompute --name testcluster --vm-size Standard_NC6 --min-nodes 0 --max-nodes 5 --idle-seconds-before-scaledown 300

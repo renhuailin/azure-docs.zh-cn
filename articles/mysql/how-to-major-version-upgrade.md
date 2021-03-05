@@ -6,12 +6,12 @@ ms.author: bahusse
 ms.service: mysql
 ms.topic: how-to
 ms.date: 1/28/2021
-ms.openlocfilehash: 471ccd6176bd8821ce7e40fde6d961bd9bcf7f0c
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: 13cf315291cdf788951e352e430976851b30ce0c
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101702141"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102216711"
 ---
 # <a name="major-version-upgrade-in-azure-database-for-mysql-single-server"></a>Azure Database for MySQL 单一服务器中的主版本升级
 
@@ -59,7 +59,7 @@ ms.locfileid: "101702141"
  
    此升级需要 2.16.0 或更高版本的 Azure CLI。 如果使用 Azure Cloud Shell，则最新版本已安装。 运行 az version 以查找安装的版本和依赖库。 若要升级到最新版本，请运行 az upgrade。
 
-2. 在登录之后，请运行 [az mysql server upgrade](/cli/azure/mysql/server?preserve-view=true&view=azure-cli-latest#az_mysql_server_upgrade) 命令：
+2. 在登录之后，请运行 [az mysql server upgrade](/cli/azure/mysql/server#az_mysql_server_upgrade) 命令：
 
    ```azurecli
    az mysql server upgrade --name testsvr --resource-group testgroup --subscription MySubscription --target-server-version 5.7"

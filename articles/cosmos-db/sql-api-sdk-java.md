@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 12/18/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 59acbc545e6bb37ebd090ec458d98586de882133
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
-ms.translationtype: MT
+ms.openlocfilehash: 96640e55d1ad71bc0e448976b2c9f1fa85b2ab62
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97696278"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102216592"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>适用于 SQL API 的 Azure Cosmos DB Java SDK：发行说明和资源
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -50,12 +50,12 @@ ms.locfileid: "97696278"
 |**参与 SDK**|[GitHub](https://github.com/Azure/azure-documentdb-java/)|
 |**入门**|[Java SDK 入门](./create-sql-api-java.md)|
 |**Web 应用教程**|[使用 Azure Cosmos DB 开发 Web 应用程序](sql-api-java-application.md)|
-|受支持的最小运行时|[Java 开发工具包 (JDK) 7+](/java/azure/jdk/?view=azure-java-stable&preserve-view=true)|
+|受支持的最小运行时|[Java 开发工具包 (JDK) 7+](/java/azure/jdk/)|
 
 ## <a name="release-notes"></a>发行说明
 
 ### <a name="261"></a><a name="2.6.1"></a>2.6.1
-* 修复了通过服务互操作处理查询时的错误。
+* 修复了通过服务互操作处理查询时的 bug。
 
 ### <a name="260"></a><a name="2.6.0"></a>2.6.0
 * 添加了对从时间点查询更改源的支持。

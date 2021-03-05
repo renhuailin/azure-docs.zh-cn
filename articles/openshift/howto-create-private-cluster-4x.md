@@ -8,12 +8,12 @@ author: sakthi-vetrivel
 ms.author: suvetriv
 keywords: aro、openshift、az aro、red hat、cli
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 633b8e6b0d9694119b5371f921af90c524936926
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
-ms.translationtype: MT
+ms.openlocfilehash: 5a6eafa6b2380ee61c0de2e329a1751ec7d59c1f
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100633608"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102216065"
 ---
 # <a name="create-an-azure-red-hat-openshift-4-private-cluster"></a>创建 Azure Red Hat OpenShift 4 专用群集
 
@@ -23,9 +23,9 @@ ms.locfileid: "100633608"
 > * 安装必备组件并创建所需的虚拟网络和子网
 > * 使用专用 API 服务器终结点和专用入口控制器来部署群集
 
-如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 2.6.0 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)。
+如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 2.6.0 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 
 ### <a name="register-the-resource-providers"></a>注册资源提供程序
 

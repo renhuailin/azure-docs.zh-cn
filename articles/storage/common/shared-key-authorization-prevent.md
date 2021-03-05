@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/21/2021
+ms.date: 03/05/2021
 ms.author: tamram
 ms.reviewer: fryu
-ms.openlocfilehash: 944e233fafc4cf5c8c90041e18f94d0e53b7bb46
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.openlocfilehash: 2ed6c0c20869e31c0ef664d15305c5aa85ca4c6c
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100591542"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102215572"
 ---
 # <a name="prevent-shared-key-authorization-for-an-azure-storage-account-preview"></a>阻止对 Azure 存储帐户进行共享密钥授权 (预览) 
 
@@ -22,12 +22,8 @@ ms.locfileid: "100591542"
 
 如果你不允许对存储帐户进行共享密钥授权，Azure 存储将拒绝对该帐户的所有后续请求，这些请求使用帐户访问密钥获得授权。 仅授权有 Azure AD 的安全请求将会成功。 有关使用 Azure AD 的详细信息，请参阅 [使用 Azure Active Directory 授予对 blob 和队列的访问权限](storage-auth-aad.md)。
 
-> [!WARNING]
-> Azure 存储支持 Azure AD 仅向 Blob 和队列存储请求授权。 如果你不允许对存储帐户使用共享密钥授权，则使用共享密钥授权的 Azure 文件或表存储的请求将失败。 由于 Azure 门户始终使用共享密钥授权来访问文件和表数据，因此，如果你不允许对存储帐户使用共享密钥进行授权，则将无法访问 Azure 门户中的文件或表数据。
->
-> Microsoft 建议你在禁止通过共享密钥访问帐户之前将任何 Azure 文件或表存储数据迁移到单独的存储帐户，或者不将此设置应用于支持 Azure 文件或表存储工作负荷的存储帐户。
->
-> 禁止对存储帐户进行共享密钥访问不会影响与 Azure 文件的 SMB 连接。
+> [!IMPORTANT]
+> 禁用共享密钥授权目前处于 **预览阶段**。 请参阅 [Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) ，它们适用于适用于 beta、preview 或其他尚未公开上市的 Azure 功能的法律条款。
 
 本文介绍如何检测通过共享密钥授权发送的请求，以及如何修正存储帐户的共享密钥授权。 若要了解如何注册预览版，请参阅 [关于预览](#about-the-preview)。
 
@@ -133,11 +129,23 @@ StorageBlobLogs
 
     :::image type="content" source="media/shared-key-authorization-prevent/shared-key-access-portal.png" alt-text="显示如何禁止帐户共享密钥访问的屏幕截图":::
 
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+若要使用 PowerShell 为存储帐户禁用共享密钥授权，请安装 [Az PowerShell 模块](https://www.powershellgallery.com/packages/Az.Storage)版本3.4.0 或更高版本。 接下来，为新的或现有的存储帐户配置 **AllowSharedKeyAccess** 属性。
+
+下面的示例演示如何使用 PowerShell 对现有存储帐户禁用共享密钥访问。 请记得将括号中的占位符值替换为你自己的值：
+
+```powershell
+Set-AzStorageAccount -ResourceGroupName <resource-group> `
+    -AccountName <storage-account> `
+    -AllowSharedKeyAccess $false
+```
+
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 若要为具有 Azure CLI 的存储帐户禁用共享密钥授权，请安装 Azure CLI 2.9.1 或更高版本。 有关详细信息，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。 接下来，为新的或现有的存储帐户配置 **allowSharedKeyAccess** 属性。
 
-下面的示例演示如何设置 **allowSharedKeyAccess** 属性和 Azure CLI。 请记得将括号中的占位符值替换为你自己的值：
+下面的示例演示如何禁止 Azure CLI 的现有存储帐户使用共享密钥访问。 请记得将括号中的占位符值替换为你自己的值：
 
 ```azurecli-interactive
 $storage_account_id=$(az resource show \
@@ -228,20 +236,25 @@ resources
 
 | Azure 工具 | 向 Azure 存储 Azure AD 授权 |
 |-|-|
-| Azure 门户 | 。 有关使用 Azure AD 帐户从 Azure 门户进行授权的信息，请参阅 [选择如何授予对 Azure 门户中 blob 数据的访问权限](../blobs/authorize-data-operations-portal.md)。 |
+| Azure 门户 | 支持。 有关使用 Azure AD 帐户从 Azure 门户进行授权的信息，请参阅 [选择如何授予对 Azure 门户中 blob 数据的访问权限](../blobs/authorize-data-operations-portal.md)。 |
 | AzCopy | 支持 Blob 存储。 有关授权 AzCopy 操作的信息，请参阅 AzCopy 文档中的 [选择如何提供授权凭据](storage-use-azcopy-v10.md#choose-how-youll-provide-authorization-credentials) 。 |
 | Azure 存储资源管理器 | 仅支持 Blob 存储和 Azure Data Lake Storage Gen2。 Azure AD 不支持对队列存储的访问。 请确保选择正确的 Azure AD 租户。 有关详细信息，请参阅 [存储资源管理器入门](../../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows#sign-in-to-azure) |
-| Azure PowerShell | 。 有关如何使用 Azure AD 为 blob 或队列操作授权 PowerShell 命令的信息，请参阅 [使用 Azure AD 凭据运行 powershell 命令以访问 blob 数据](../blobs/authorize-data-operations-powershell.md) 或 [使用 Azure AD 凭据运行 powershell 命令以访问队列数据](../queues/authorize-data-operations-powershell.md)。 |
-| Azure CLI | 。 有关如何使用 Azure AD Azure CLI 命令来访问 blob 和队列数据的信息，请参阅 [使用 Azure AD 凭据运行 Azure CLI 命令以访问 blob 或队列数据](../blobs/authorize-data-operations-cli.md)。 |
-| Azure IoT 中心 | 。 有关详细信息，请参阅 [IoT 中心对虚拟网络的支持](../../iot-hub/virtual-network-support.md)。 |
+| Azure PowerShell | 支持。 有关如何使用 Azure AD 为 blob 或队列操作授权 PowerShell 命令的信息，请参阅 [使用 Azure AD 凭据运行 powershell 命令以访问 blob 数据](../blobs/authorize-data-operations-powershell.md) 或 [使用 Azure AD 凭据运行 powershell 命令以访问队列数据](../queues/authorize-data-operations-powershell.md)。 |
+| Azure CLI | 支持。 有关如何使用 Azure AD Azure CLI 命令来访问 blob 和队列数据的信息，请参阅 [使用 Azure AD 凭据运行 Azure CLI 命令以访问 blob 或队列数据](../blobs/authorize-data-operations-cli.md)。 |
+| Azure IoT 中心 | 支持。 有关详细信息，请参阅 [IoT 中心对虚拟网络的支持](../../iot-hub/virtual-network-support.md)。 |
 | Azure Cloud Shell | Azure Cloud Shell 是 Azure 门户中的集成外壳。 Azure Cloud Shell 在存储帐户中的 Azure 文件共享中保存持久性的文件。 如果该存储帐户不允许进行共享密钥授权，则这些文件将无法访问。 有关详细信息，请参阅 [连接 Microsoft Azure 文件存储](../../cloud-shell/overview.md#connect-your-microsoft-azure-files-storage)。 <br /><br /> 若要运行 Azure Cloud Shell 中的命令以管理不允许进行共享密钥访问的存储帐户，请首先确保已通过 Azure RBAC 向你授予这些帐户所需的权限。 有关详细信息，请参阅 [什么是 AZURE RBAC) 的 azure 基于角色的访问控制 (？](../../role-based-access-control/overview.md)。 |
+
+## <a name="transition-azure-files-and-table-storage-workloads"></a>转换 Azure 文件和表存储工作负荷
+
+Azure 存储支持 Azure AD 仅向 Blob 和队列存储请求授权。 如果你不允许对存储帐户使用共享密钥授权，则使用共享密钥授权的 Azure 文件或表存储的请求将失败。 由于 Azure 门户始终使用共享密钥授权来访问文件和表数据，因此，如果你不允许对存储帐户使用共享密钥进行授权，则将无法访问 Azure 门户中的文件或表数据。
+
+Microsoft 建议你在禁止通过共享密钥访问帐户之前将任何 Azure 文件或表存储数据迁移到单独的存储帐户，或者不将此设置应用于支持 Azure 文件或表存储工作负荷的存储帐户。
+
+禁止对存储帐户进行共享密钥访问不会影响与 Azure 文件的 SMB 连接。
 
 ## <a name="about-the-preview"></a>关于此预览版
 
 Azure 公有云中提供禁止使用共享密钥授权的预览。 仅支持使用 Azure 资源管理器部署模型的存储帐户。 有关哪些存储帐户使用 Azure 资源管理器部署模型的信息，请参阅 [存储帐户的类型](storage-account-overview.md#types-of-storage-accounts)。
-
-> [!IMPORTANT]
-> 此预览版仅用于非生产用途。
 
 预览版包括以下各节所述的限制。
 

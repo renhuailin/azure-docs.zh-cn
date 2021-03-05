@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 02/17/2021
 ms.author: inhenkel
 ms.custom: devx-track-js
-ms.openlocfilehash: ab0113823bb5751828a71a9afd8c474091272e16
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: 33d84ca86ac3cd4696dce3797b015b861884182a
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101724619"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102216422"
 ---
 # <a name="connect-to-media-services-v3-api---nodejs"></a>连接到媒体服务 v3 API - Node.js
 
@@ -222,15 +222,15 @@ main().catch((err) => {
 |StreamFilesWithDRMSample/index。 ts| 演示如何使用 Widevine 和 PlayReady DRM 进行编码和流式处理 |
 |VideoIndexerSample/index。 ts| 使用视频和音频分析器预设生成视频或音频文件中的元数据和见解的示例 |
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
-- [适用于 Node.js的 Azure 媒体服务模块的参考文档 ](https://docs.microsoft.com/javascript/api/overview/azure/media-services?view=azure-node-latest)
-- [适用于 JavaScript & Node.js 开发人员的 Azure](https://docs.microsoft.com/azure/developer/javascript/?view=azure-node-latest)
+- [适用于 Node.js的 Azure 媒体服务模块的参考文档 ](/javascript/api/overview/azure/media-services)
+- [适用于 JavaScript & Node.js 开发人员的 Azure](/azure/developer/javascript/)
 - [Git 中心存储库中的媒体服务源代码 @azure/azure-sdk-for-js](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/mediaservices/arm-mediaservices)
-- [面向 Node.js 开发人员的 Azure 包文档](https://docs.microsoft.com/javascript/api/overview/azure/?view=azure-node-latest)
+- [面向 Node.js 开发人员的 Azure 包文档](/javascript/api/overview/azure/)
 - [媒体服务概念](concepts-overview.md)
 - [npm 安装 @azure/arm-mediaservices](https://www.npmjs.com/package/@azure/arm-mediaservices)
-- [适用于 JavaScript & Node.js 开发人员的 Azure](https://docs.microsoft.com/azure/developer/javascript/?view=azure-node-latest)
+- [适用于 JavaScript & Node.js 开发人员的 Azure](/azure/developer/javascript/)
 - [存储库中的媒体服务源代码 @azure/azure-sdk-for-js](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/mediaservices/arm-mediaservices)
 
 ## <a name="next-steps"></a>后续步骤
