@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 06/12/2020
-ms.openlocfilehash: a0e9401842284cad29b297be5ce572fa53cfe774
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
-ms.translationtype: MT
+ms.openlocfilehash: a41af6e949dc568a263d4b1d62aa99e8a1c9ece5
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96188082"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102215249"
 ---
 # <a name="deploy-a-model-to-azure-container-instances"></a>将模型部署到 Azure 容器实例
 
@@ -94,7 +94,7 @@ az ml model deploy -m mymodel:1 -n myservice -ic inferenceconfig.json -dc deploy
 
 [!INCLUDE [deploymentconfig](../../includes/machine-learning-service-aci-deploy-config.md)]
 
-有关详细信息，请参阅 [az ml model deploy](/cli/azure/ext/azure-cli-ml/ml/model?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-deploy) 参考文档。 
+有关详细信息，请参阅 [az ml model deploy](/cli/azure/ext/azure-cli-ml/ml/model#ext-azure-cli-ml-az-ml-model-deploy) 参考文档。 
 
 ## <a name="using-vs-code"></a>使用 VS Code
 
@@ -104,7 +104,7 @@ az ml model deploy -m mymodel:1 -n myservice -ic inferenceconfig.json -dc deploy
 > 无需事先创建 ACI 容器即可进行测试。 将据需要创建 ACI 容器。
 
 > [!IMPORTANT]
-> 我们将哈希工作区 id 追加到创建的所有基础 ACI 资源，同一工作区中的所有 ACI 名称将具有相同的后缀。 Azure 机器学习服务名称仍为同一客户提供的 "service_name"，而 Azure 机器学习 SDK Api 的所有用户都不需要进行任何更改。 我们不会对所创建的基础资源的名称做出任何保证。
+> 我们会将经哈希处理的工作区 ID 追加到所有已创建的基础 ACI 资源。同一工作区中的所有 ACI 名称将具有相同的后缀。 Azure 机器学习服务名称仍然是客户提供的同一“service_name”，所有面向 Azure 机器学习 SDK API 的用户都不需要任何更改。 我们不会对所创建的基础资源的名称提供任何保证。
 
 ## <a name="next-steps"></a>后续步骤
 

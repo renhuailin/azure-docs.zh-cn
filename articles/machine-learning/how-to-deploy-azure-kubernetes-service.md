@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 09/01/2020
-ms.openlocfilehash: 7ba01139e365b2f0023ef0784b6ed83e7bde609a
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
-ms.translationtype: MT
+ms.openlocfilehash: 342ae2f590f4bf4ce88f64d6d545defff358ad72
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97831715"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102215215"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>将模型部署到 Azure Kubernetes 服务群集
 
@@ -92,54 +92,54 @@ Azureml-fe 会纵向（垂直）扩展以使用更多的核心，并会横向（
 
 在纵向和横向缩减时，将使用 CPU 使用率。 如果满足 CPU 使用率阈值，则前端会首先纵向缩减。 如果 CPU 使用率下降到了横向缩减阈值，则会进行横向缩减操作。 仅当有足够的群集资源可用时，才会进行纵向扩展和横向扩展。
 
-## <a name="understand-connectivity-requirements-for-aks-inferencing-cluster"></a>了解 AKS 推断群集的连接要求
+## <a name="understand-connectivity-requirements-for-aks-inferencing-cluster"></a>了解 AKS 推理集群的连接要求
 
-Azure 机器学习创建或附加 AKS 群集时，AKS 群集使用以下两种网络模型之一进行部署：
+当 Azure 机器学习创建或附加 AKS 群集时，将使用以下两种网络模型之一部署 AKS 群集：
 * Kubenet 网络 - 通常在部署 AKS 群集时创建和配置网络资源。
 * Azure 容器网络接口 (CNI) 网络 - AKS 群集连接到现有的虚拟网络资源和配置。
 
-对于第一个网络模式，为 Azure 机器学习服务创建并正确配置网络。 对于第二个网络模式，由于群集连接到现有虚拟网络，特别是将自定义 DNS 用于现有虚拟网络时，客户需要特别注意 AKS 推断群集的连接要求，并确保 DNS 解析和 AKS 推断的出站连接。
+对于第一种网络模式，已为 Azure 机器学习服务正确创建和配置了网络。 对于第二种网络模式，由于群集已连接到现有虚拟网络（尤其是在将自定义 DNS 用于现有虚拟网络时），因此客户需要特别注意 AKS 推理群集的连接要求，并确保 DNS 解析和 AKS 推理的出站连接。
 
-以下关系图捕获 AKS 推断的所有连接要求。 黑色箭头表示实际通信，蓝色箭头表示客户控制的 DNS 应该解析的域名。
+下图捕获了 AKS 推理的所有连接要求。 黑色箭头代表实际的通信，蓝色箭头代表客户控制的 DNS 应该解析的域名。
 
- ![AKS 推断的连接要求](./media/how-to-deploy-aks/aks-network.png)
+ ![AKS 推理的连接要求](./media/how-to-deploy-aks/aks-network.png)
 
 ### <a name="overall-dns-resolution-requirements"></a>总体 DNS 解析要求
-现有 VNET 中的 DNS 解析在客户控制下。 以下 DNS 条目应可解析：
-* AKS API 服务器，格式为 " \<cluster\> hcp ..." \<region\> 。azmk8s.io
-* Microsoft 容器注册表 (MCR) ： mcr.microsoft.com
+现有 VNET 中的 DNS 解析由客户控制。 以下 DNS 条目应该是可解析的：
+* AKS API 服务器，格式为 \<cluster\>.hcp.\<region\>.azmk8s.io
+* Microsoft Container Registry (MCR)：mcr.microsoft.com
 * 客户的 Azure 容器注册表 (ARC) ，格式为 \<ACR name\> . azurecr.io
 * Azure 存储帐户，格式为 \<account\> . table.core.windows.net 和 \<account\> . blob.core.windows.net
-* AAD 身份验证 (可选) ： api.azureml.ms
-* 评分终结点域名，可由 Azure ML 或自定义域名自动生成。 自动生成的域名如下所 \<leaf-domain-label \+ auto-generated suffix\> 示： .. \<region\>cloudapp.azure.com
+* （可选）对于 AAD 身份验证：api.azureml.ms
+* 评分终结点域名，由 Azure ML 自动生成或自定义域名。 自动生成的域名如下所 \<leaf-domain-label \+ auto-generated suffix\> 示： .. \<region\>cloudapp.azure.com
 
-### <a name="connectivity-requirements-in-chronological-order-from-cluster-creation-to-model-deployment"></a>按时间顺序排列的连接要求：从群集创建到模型部署
+### <a name="connectivity-requirements-in-chronological-order-from-cluster-creation-to-model-deployment"></a>按时间顺序排列的连接性要求：从群集创建到模型部署
 
-在创建或附加 AKS 的过程中，会将 Azure ML 路由器 (azureml-fe) 部署到 AKS 群集中。 为了部署 Azure ML 路由器，AKS 节点应能够：
-* 解析 DNS for AKS API 服务器
-* 解析 DNS for MCR，以便下载 Azure ML 路由器的 docker 映像
-* 从 MCR 下载映像，其中需要出站连接
+在 AKS 创建或附加过程中，将 Azure ML 路由器 (azureml-fe) 部署到 AKS 群集中。 为了部署 Azure ML 路由器， AKS 节点应该能够：
+* 解析 AKS API 服务器的 DNS
+* 解析 MCR 的 DNS，以便为 Azure ML 路由器下载 docker 映像
+* 从需要出站连接的 MCR 下载映像
 
-已部署 azureml-fe 后，它会尝试启动，此操作需要：
-* 解析 DNS for AKS API 服务器
-* 查询 AKS API 服务器，以便发现其自身 (的其他实例，) 
+在部署 azureml-fe 之后，它将立即尝试启动，这需要：
+* 解析 AKS API 服务器的 DNS
+* 查询 AKS API 服务器以发现自身的其他实例（这是一个多 Pod 服务）
 * 连接到其自身的其他实例
 
 启动 azureml 后，需要更多的连接才能正常工作：
 * 连接到 Azure 存储以下载动态配置
-* 在部署的服务使用 AAD 身份验证时，为 AAD 身份验证服务器 api.azureml.ms 解析 DNS，并与之通信。
-* 查询 AKS API 服务器以发现部署的模型
-* 与部署的模型盒通信
+* 为 AAD 身份验证服务器 api.azureml.ms 解析 DNS，并在部署的服务使用 AAD 身份验证时与其通信。
+* 查询 AKS API 服务器以发现已部署的模型
+* 与已部署的模型 Pod 进行通信
 
-部署模型时，模型部署 AKS 节点应能够： 
+在模型部署时，要成功进行模型部署，AKS 节点应能够： 
 * 为客户的 ACR 解析 DNS
-* 从客户的 ACR 下载图像
-* 为存储模型的 Azure Blob 解析 DNS
+* 从客户的 ACR 下载映像
+* 为存储模型的 Azure BLOB 解析 DNS
 * 从 Azure Blob 下载模型
 
-部署模型并启动服务后，azureml-fe 将使用 AKS API 自动发现它，并准备好将请求路由到该模型。 它必须能够与模型盒通信。
+部署模型并启动服务后，azureml-fe 将使用 AKS API 自动发现它，并准备将请求路由到该模型。 它必须能够与模型 Pod 通信。
 >[!Note]
->如果部署的模型需要任何连接 (例如，查询外部数据库或其他 REST 服务、下载博客等) ，则应启用这些服务的 DNS 解析和出站通信。
+>如果部署的模型需要任何连接（例如查询外部数据库或其他 REST 服务，下载 BLOG 等），则应启用这些服务的 DNS 解析和出站通信。
 
 ## <a name="deploy-to-aks"></a>部署到 AKS
 
@@ -184,7 +184,7 @@ az ml model deploy -ct myaks -m mymodel:1 -n myservice -ic inferenceconfig.json 
 
 [!INCLUDE [deploymentconfig](../../includes/machine-learning-service-aks-deploy-config.md)]
 
-有关详细信息，请参阅 [az ml model deploy](/cli/azure/ext/azure-cli-ml/ml/model?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-deploy) 参考文档。
+有关详细信息，请参阅 [az ml model deploy](/cli/azure/ext/azure-cli-ml/ml/model#ext-azure-cli-ml-az-ml-model-deploy) 参考文档。
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
@@ -372,7 +372,7 @@ print(token)
 >
 > Microsoft 强烈建议在 Azure Kubernetes 服务群集所在的相同区域中创建 Azure 机器学习工作区。 要使用令牌进行身份验证，Web 服务将调用创建 Azure 机器学习工作区的区域。 如果工作区区域不可用，即使群集和工作区不在同一区域，也将无法获取 Web 服务的令牌。 这实际上会导致在工作区的区域再次可用之前，基于令牌的身份验证不可用。 此外，群集区域和工作区区域的距离越远，获取令牌所需的时间就越长。
 >
-> 若要检索令牌，必须使用 Azure 机器学习 SDK 或 [az ml service get-access-token](/cli/azure/ext/azure-cli-ml/ml/service?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-service-get-access-token) 命令。
+> 若要检索令牌，必须使用 Azure 机器学习 SDK 或 [az ml service get-access-token](/cli/azure/ext/azure-cli-ml/ml/service#ext-azure-cli-ml-az-ml-service-get-access-token) 命令。
 
 
 ### <a name="vulnerability-scanning"></a>漏洞扫描
