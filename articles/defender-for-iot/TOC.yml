@@ -27,12 +27,12 @@
         - name: 载入 Defender for IoT 基于代理的解决方案
           displayName: 'IoT Hub, existing, enable'
           href: quickstart-onboard-iot-hub.md
-        - name: 安装 Defender for IoT 微代理（预览）
+        - name: 安装 Defender for IoT 微代理
           displayName: 'package, authentication, methods, certificate, authenticate, version'
           href: quickstart-standalone-agent-binary-installation.md
-        - name: 创建 Defender IoT 微代理模块孪生（预览）
+        - name: 创建 Defender IoT 微代理模块孪生
           href: quickstart-create-micro-agent-module-twin.md
-        - name: 从源代码生成 Defender for IoT 微代理（预览）
+        - name: 从源代码生成 Defender for IoT 微代理
           displayName: 'baseline, configuration, customize, distribution'
           href: quickstart-building-the-defender-micro-agent-from-source.md
         - name: 配置 Azure RTOS 安全模块
@@ -56,18 +56,18 @@
           href: concept-key-concepts.md
     - name: 适用于设备构建者的基于代理的解决方案
       items:
-        - name: 代理组合概述和操作系统支持（预览）
+        - name: 代理项目组合概述和操作系统支持
           displayName: 'standalone agent, micro agent, RTOS'
           href: concept-agent-portfolio-overview-os-support.md
-        - name: 独立微代理概述（预览）
+        - name: 独立微代理概述
           displayName: 'endpoint, posture, distribution, flexible, model'
           href: concept-standalone-micro-agent-overview.md
-        - name: 安全代理身份验证（预览）
+        - name: 安全代理身份验证
           displayName: 'connection string, certificate, authentication'
           href: concept-security-agent-authentication.md
         - name: 安全状况 - CIS 基准
           href: concept-security-posture.md
-        - name: 事件聚合（预览）
+        - name: 事件聚合
           displayName: 'process events, network connection'
           href: concept-event-aggregation.md
         - name: IoT 中心的内置警报
@@ -249,9 +249,6 @@
           displayName: 'data, collection, geolocation, log analytics, raw events'
           href: how-to-configure-agent-based-solution.md
         - name: 调查 CIS 基准建议
-          displayName: 'investigation, queries, investigate'
-          href: how-to-configure-agent-based-solution.md
-        - name: 调查 CIS 基准建议
           href: how-to-investigate-cis-benchmark.md
         - name: 创建自定义警报
           displayName: security group
@@ -300,7 +297,7 @@
               href: how-to-investigate-device.md
 - name: 疑难解答
   items:
-    - name: Defender IoT 微代理故障排除（预览）
+    - name: Defender IoT 微代理故障排除
       displayName: 'service status, review logs'
       href: troubleshoot-defender-micro-agent.md
 - name: 功能支持和停用

@@ -337,6 +337,8 @@
               href: migration-guides/database/sql-server-to-sql-database-overview.md
             - name: Migrate
               href: migration-guides/database/sql-server-to-sql-database-guide.md
+            - name: 评估规则
+              href: migration-guides/database/sql-server-to-sql-database-assessment-rules.md
     - name: 概念
       items:
         - name: 连接体系结构
@@ -757,6 +759,8 @@
               href: migration-guides/managed-instance/sql-server-to-managed-instance-guide.md
             - name: 性能基线
               href: migration-guides/managed-instance/sql-server-to-managed-instance-performance-baseline.md
+            - name: 评估规则
+              href: migration-guides/managed-instance/sql-server-to-sql-managed-instance-assessment-rules.md
     - name: 概念
       items:
         - name: 资源限制
@@ -1319,7 +1323,7 @@
       href: 'https://social.msdn.microsoft.com/Forums/home?forum=ssdsgetstarted'
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/sql-azure'
-    - name: 疑难解答
+    - name: 故障排除
       items:
         - name: 连接错误
           href: database/troubleshoot-common-errors-issues.md

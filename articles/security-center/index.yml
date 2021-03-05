@@ -11,12 +11,12 @@ metadata:
   author: memildin
   ms.author: memildin
   ms.date: 08/17/2020
-  ms.openlocfilehash: 0ee97ba1d0190cfb3331372329677b8ffe740439
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: 3049f7598990a97e6647011012bae0ddd2651944
+  ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "90883845"
+  ms.lasthandoff: 03/04/2021
+  ms.locfileid: "102095521"
 landingContent:
 - title: 关于安全中心
   linkLists:
@@ -24,38 +24,38 @@ landingContent:
     links:
     - text: 安全中心的主要功能是什么？
       url: security-center-introduction.md
+    - text: Azure Defender 的主要功能是什么？
+      url: azure-defender.md
     - text: 哪些版本的 Windows Server 和 Linux 受支持？
       url: security-center-os-coverage.md
-    - text: 什么是 Azure Defender？
-      url: azure-defender.md
 - title: 了解最新功能
   linkLists:
   - linkListType: whats-new
     links:
     - text: 安全中心的发行说明
       url: release-notes.md
-    - text: 浏览新的概述页面
+    - text: 浏览“概述”仪表板
       url: overview-page.md
-    - text: 保护 Kubernetes 工作负载
-      url: kubernetes-workload-protections.md
+    - text: 使用集成工作簿报表
+      url: custom-dashboards-azure-workbooks.md
     - text: 响应适用于 Key Vault 的 Azure Defender 警报
       url: defender-for-key-vault-usage.md
     - text: 安全分数 API
-      url: secure-score-security-controls.md#get-your-secure-score-from-the-rest-api
+      url: secure-score-access-and-track.md#get-your-secure-score-from-the-rest-api
 - title: 入门
   linkLists:
   - linkListType: get-started
     links:
-    - text: 安全中心入门
+    - text: 在订阅中启用安全中心
       url: security-center-get-started.md
-    - text: 配置安全策略
-      url: tutorial-security-policy.md
-    - text: 评估安全状况
-      url: secure-score-security-controls.md
-    - text: 连接到你的 AWS 帐户
-      url: quickstart-onboard-aws.md
-    - text: 连接到你的 GCP 帐户
-      url: quickstart-onboard-gcp.md
+    - text: 启用 Azure Defender
+      url: enable-azure-defender.md
+    - text: 配置自动预配
+      url: security-center-enable-data-collection.md
+    - text: 设置电子邮件通知
+      url: security-center-provide-security-contact-details.md
+    - text: 连接非 Azure 计算机
+      url: quickstart-onboard-machines.md
 - title: 提高安全分数
   linkLists:
   - linkListType: how-to-guide
@@ -66,10 +66,8 @@ landingContent:
       url: security-center-remediate-recommendations.md
     - text: 从建议中免除资源
       url: exempt-resource.md
-    - text: 使用建议增强安全性
-      url: security-center-using-recommendations.md
-    - text: 使用安全分数 API 进行跟踪
-      url: secure-score-security-controls.md#get-your-secure-score-from-the-rest-api
+    - text: 随时间跟踪分数
+      url: custom-dashboards-azure-workbooks.md#use-the-secure-score-over-time-report
 - title: 缓解威胁
   linkLists:
   - linkListType: how-to-guide
@@ -80,7 +78,5 @@ landingContent:
       url: security-center-adaptive-application.md
     - text: 实现自适应网络强化
       url: security-center-adaptive-network-hardening.md
-    - text: 免费试用 Azure Defender 30 天
-      url: security-center-pricing.md#try-azure-defender-free-for-30-days
     - text: 使用 Azure Defender 仪表板
       url: azure-defender-dashboard.md

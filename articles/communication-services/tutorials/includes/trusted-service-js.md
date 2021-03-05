@@ -8,12 +8,12 @@ ms.author: dademath
 ms.date: 07/28/2020
 ms.topic: include
 ms.service: azure-communication-services
-ms.openlocfilehash: a16846b8859f93a2d376691115e4b2dd0a7163b6
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 6790335e5aa63f515cd125f31a8ccd7877132c10
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98633408"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101661320"
 ---
 ## <a name="download-code"></a>下载代码
 
@@ -23,8 +23,8 @@ ms.locfileid: "98633408"
 
 - 具有活动订阅的 Azure 帐户。 有关详细信息，请参阅[创建免费账户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - 安装在某个[受支持的平台](https://code.visualstudio.com/docs/supporting/requirements#_platforms)上的 [Visual Studio Code](https://code.visualstudio.com/)。
-- [Node.js](https://nodejs.org/)，活动 LTS 和维护 LTS 版本（建议使用 10.14.1）。 可以使用 `node --version` 命令检查你的版本。 
-- Visual Studio Code 的 [Azure Functions 扩展](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions)。 
+- [Node.js](https://nodejs.org/)，活动 LTS 和维护 LTS 版本（建议使用 10.14.1）。 可以使用 `node --version` 命令检查你的版本。
+- Visual Studio Code 的 [Azure Functions 扩展](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions)。
 - 活动的通信服务资源和连接字符串。 [创建通信服务资源](../../quickstarts/create-communication-resource.md)。
 
 ## <a name="overview"></a>概述
@@ -74,13 +74,13 @@ module.exports = async function (context, req) {
 
 ### <a name="install-communication-services-libraries"></a>安装通信服务库
 
-我们将使用 `Administration` 库生成 `User Access Tokens`。
+我们将使用 `Identity` 库生成 `User Access Tokens`。
 
-使用 `npm install` 命令安装适用于 JavaScript 的 Azure 通信服务管理客户端库。
+使用 `npm install` 命令安装适用于 JavaScript 的 Azure 通信服务标识客户端库。
 
 ```console
 
-npm install @azure/communication-administration --save
+npm install @azure/communication-identity --save
 
 ```
 
@@ -89,7 +89,7 @@ npm install @azure/communication-administration --save
 在 `index.js` 文件的顶部，导入 `CommunicationIdentityClient` 的接口
 
 ```javascript
-const { CommunicationIdentityClient } = require('@azure/communication-administration');
+const { CommunicationIdentityClient } = require('@azure/communication-identity');
 ```
 
 ## <a name="access-token-generation"></a>访问令牌生成
@@ -102,7 +102,7 @@ const { CommunicationIdentityClient } = require('@azure/communication-administra
 const connectionString = 'INSERT YOUR RESOURCE CONNECTION STRING'
 ```
 
-接下来，我们将修改原始函数以生成 `User Access Tokens`。 
+接下来，我们将修改原始函数以生成 `User Access Tokens`。
 
 `User Access Tokens` 通过从 `createUser` 方法创建用户来生成。 创建用户后，便可以使用 `issueToken` 方法为该用户生成 Azure 函数返回的令牌。
 
@@ -136,7 +136,7 @@ module.exports = async function (context, req) {
 
 若要部署 Azure 函数，可以按照[分布说明](../../../azure-functions/create-first-function-vs-code-csharp.md?pivots=programming-language-javascript#sign-in-to-azure)进行操作
 
-一般而言，需要：
+总的来说，你需要：
 1. 从 Visual Studio 登录 Azure
 2. 将项目发布到 Azure 帐户。 此处需要选择现有订阅。
 3. 使用 Visual Studio 向导创建新 Azure 函数资源，或是使用现有资源。 对于新资源，需要将其配置到所需区域、运行时和唯一标识符。

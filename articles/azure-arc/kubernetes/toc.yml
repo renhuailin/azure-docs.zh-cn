@@ -10,6 +10,8 @@
   items:
     - name: 使用 GitOps 部署配置
       href: tutorial-use-gitops-connected-cluster.md
+    - name: 通过 GitOps 实现 CI/CD
+      href: tutorial-gitops-ci-cd.md
 - name: 快速入门
   items:
     - name: 将群集连接到 Azure Arc
@@ -20,6 +22,8 @@
       href: conceptual-agent-architecture.md
     - name: 配置和 GitOps
       href: conceptual-configurations.md
+    - name: 使用 GitOps 的 CI/CD 工作流
+      href: conceptual-gitops-ci-cd.md
     - name: 常见问题
       href: faq.md
 - name: 操作指南

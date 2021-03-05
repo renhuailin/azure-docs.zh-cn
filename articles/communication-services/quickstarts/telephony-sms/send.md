@@ -11,20 +11,20 @@ ms.topic: overview
 ms.service: azure-communication-services
 ms.custom: tracking-python, devx-track-js
 zone_pivot_groups: acs-js-csharp-java-python
-ms.openlocfilehash: 60c51de4e4549649c681c961c6ddc1acdb12e698
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 061a7787183918aaee529b686c1478cd4d4b396b
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94659686"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101661590"
 ---
 # <a name="quickstart-send-an-sms-message"></a>快速入门：发送短信
 
-[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
+[!INCLUDE [Regional Availability Notice](../../includes/regional-availability-include.md)]
 
 > [!IMPORTANT]
 > 可以将短信发送到美国电话号码，也可以从美国电话号码接收短信。 通信服务短信尚不支持其他地理位置的电话号码。
-> 有关详细信息，请参阅[规划电话服务和短信解决方案](../../concepts/telephony-sms/plan-solution.md)。
+> 有关详细信息，请参阅[电话号码类型](../../concepts/telephony-sms/plan-solution.md)。
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [Send SMS with .NET client library](./includes/send-sms-net.md)]
@@ -58,7 +58,7 @@ ms.locfileid: "94659686"
 > [订阅短信事件](./handle-sms-events.md)
 
 > [!div class="nextstepaction"]
-> [规划 PSTN 解决方案](../../concepts/telephony-sms/plan-solution.md)
+> [电话号码类型](../../concepts/telephony-sms/plan-solution.md)
 
 > [!div class="nextstepaction"]
 > [了解有关短信的详细信息](../../concepts/telephony-sms/concepts.md)

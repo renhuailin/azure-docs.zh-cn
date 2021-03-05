@@ -1,6 +1,6 @@
 - name: 专用 SQL 池（之前称为 SQL DW）
   href: sql-data-warehouse-overview-what-is.md
-- name: 切换到 Azure Synapse
+- name: 切换到 Azure Synapse >
   href: ../overview-what-is.md
 - name: 概述
   items:
@@ -120,7 +120,7 @@
               href: ../../azure-sql/database/logins-create-manage.md?bc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2ftoc.json
             - name: 行级别安全性
               href: column-level-security.md
-            - name: 行级别安全性
+            - name: 行级安全性
               href: /sql/relational-databases/security/row-level-security?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json
         - name: 数据保护
           items:
@@ -268,7 +268,7 @@
           href: backup-and-restore.md
         - name: 建议
           href: sql-data-warehouse-concept-recommendations.md
-        - name: 疑难解答
+        - name: 故障排除
           href: sql-data-warehouse-troubleshoot.md
     - name: 维护计划
       href: maintenance-scheduling.md
@@ -384,7 +384,7 @@
           items:
             - name: 使用 Power BI 进行可视化
               href: /power-bi/service-azure-sql-data-warehouse-with-direct-connect
-    - name: 疑难解答
+    - name: 故障排除
       items:
         - name: 连接
           href: sql-data-warehouse-troubleshoot-connectivity.md

@@ -34,7 +34,13 @@
       href: application-proxy-add-on-premises-application.md
 - name: 示例
   items:
-    - name: 适用于应用程序代理的 Azure PowerShell 示例
+    - name: 应用管理 PowerShell 示例
+      items:
+        - name: 应用管理示例概述
+          href: app-management-powershell-samples.md
+        - name: 导出所有应用注册、机密和证书
+          href: ./scripts/powershell-export-all-app-registrations-secrets-and-certs.md
+    - name: 应用代理 PowerShell 示例
       href: application-proxy-powershell-samples.md
 - name: 概念
   expanded: true

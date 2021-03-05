@@ -4,6 +4,8 @@
   items:
     - name: 什么是 ARM 模板？
       href: overview.md
+    - name: Bicep 概述
+      href: bicep-overview.md
 - name: 快速入门
   items:
     - name: 创建模板 - 门户
@@ -324,9 +326,7 @@
       href: template-best-practices.md
     - name: Bicep
       items:
-        - name: 概述
-          href: bicep-overview.md
-        - name: 从 JSON 转到 Bicep
+        - name: 比较 JSON 与 Bicep
           href: compare-template-syntax.md
     - name: 常见问题
       href: frequently-asked-questions.md

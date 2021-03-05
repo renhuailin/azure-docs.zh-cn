@@ -150,6 +150,8 @@
           displayName: 'AD-FS, ADFS'
         - name: Amazon
           href: identity-provider-amazon.md
+        - name: Apple（预览版）
+          href: identity-provider-apple-id.md
         - name: Azure AD（单租户）
           href: identity-provider-azure-ad-single-tenant.md
         - name: Azure AD（多租户）
@@ -217,11 +219,11 @@
           href: configure-tokens.md
     - name: 定义自定义属性
       href: user-flow-custom-attributes.md
-    - name: 标识保护和条件访问
+    - name: 基于风险的身份验证
       items:
-        - name: 设置标识保护和条件访问
-          href: conditional-access-identity-protection-setup.md
-        - name: 添加条件访问
+        - name: 通过标识保护调查风险
+          href: identity-protection-investigate-risk.md
+        - name: 配置条件访问
           href: conditional-access-user-flow.md
     - name: 配置年龄限制
       href: basic-age-gating.md
@@ -278,7 +280,7 @@
                 - name: ClaimsTransformations
                   href: claimstransformations.md
                   items:
-                    - name: Boolean
+                    - name: 布尔
                       href: boolean-transformations.md
                     - name: Date
                       href: date-transformations.md
@@ -294,7 +296,7 @@
                       href: social-transformations.md
                     - name: StringCollection
                       href: stringcollection-transformations.md
-                    - name: 字符串
+                    - name: String
                       href: string-transformations.md
                 - name: 谓词
                   href: predicates.md
@@ -327,9 +329,6 @@
                       href: aad-sspr-technical-profile.md
                     - name: 声明转换
                       href: claims-transformation-technical-profile.md
-                    - name: 条件性访问
-                      href: conditional-access-technical-profile.md
-                      displayName: ca
                     - name: ID 令牌提示
                       href: id-token-hint.md
                     - name: JWT 令牌颁发者

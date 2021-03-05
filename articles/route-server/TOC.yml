@@ -6,6 +6,8 @@
       href: overview.md
 - name: 快速入门
   items:
+    - name: 配置路由服务器 - 门户
+      href: quickstart-configure-route-server-portal.md
     - name: 配置路由服务器 - PowerShell
       href: quickstart-configure-route-server-powershell.md
     - name: 配置路由服务器 - CLI

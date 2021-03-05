@@ -7,12 +7,12 @@ ms.service: route-server
 ms.topic: overview
 ms.date: 03/02/2021
 ms.author: duau
-ms.openlocfilehash: 98527ea5227fcdc2c35dbe3579657368e30fcdaa
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 099f9b3769179076491c7c2098ec56faff9847dd
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101680554"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102039829"
 ---
 # <a name="what-is-azure-route-server-preview"></a>什么是 Azure 路由服务器（预览版）？ 
 
@@ -49,5 +49,5 @@ Azure 路由服务器简化了虚拟网络中 NVA 的配置、管理和部署。
 
 ## <a name="next-steps"></a>后续步骤
 
-- [了解如何配置 Azure 路由服务器。](quickstart-configure-route-server-portal.md)
+- [了解如何配置 Azure 路由服务器](quickstart-configure-route-server-powershell.md)
 - [了解 Azure 路由服务器如何与 Azure ExpressRoute 和 Azure VPN 配合使用](expressroute-vpn-support.md)

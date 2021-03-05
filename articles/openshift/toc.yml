@@ -28,6 +28,8 @@
           href: dns-forwarding.md
     - name: 存储
       items:
+        - name: 通过客户管理的密钥来加密 PVC（预览）
+          href: howto-encrypt-data-disks.md
         - name: 创建 Azure 文件存储存储类
           href: howto-create-a-storageclass.md
         - name: 使用内置容器注册表

@@ -1,6 +1,6 @@
 - name: Azure Synapse Analytics
   href: index.yml
-- name: 切换到专用 SQL 池（之前称为 SQL DW）
+- name: 切换到专用 SQL 池（之前称为 SQL DW）>
   href: ./sql-data-warehouse/sql-data-warehouse-overview-what-is.md
 - name: 概述
   items:
@@ -48,17 +48,19 @@
   items:
     - name: 快速入门
       items:
-        - name: 使用 Azure 门户创建工作区
-          href: quickstart-create-workspace.md
-          displayName: quickstart
-        - name: 使用 Azure CLI 创建工作区
-          href: quickstart-create-workspace-cli.md
-          displayName: quickstart
-        - name: 使用 Azure PowerShell 创建工作区
-          href: quickstart-create-workspace-powershell.md
-          displayName: quickstart
-        - name: 使用模板进行部署
-          href: quickstart-deployment-template-workspaces.md
+        - name: 创建工作区
+          items:
+            - name: Azure 门户
+              href: quickstart-create-workspace.md
+              displayName: quickstart
+            - name: Azure CLI
+              href: quickstart-create-workspace-cli.md
+              displayName: quickstart
+            - name: Azure PowerShell
+              href: quickstart-create-workspace-powershell.md
+              displayName: quickstart
+            - name: ARM 模板
+              href: quickstart-deployment-template-workspaces.md
           displayName: quickstart
         - name: 链接 Power BI 工作区
           href: quickstart-power-bi.md

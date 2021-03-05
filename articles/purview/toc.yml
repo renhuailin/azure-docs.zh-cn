@@ -94,7 +94,7 @@ items:
               - name: Azure Data Lake Storage Gen 2
                 href: register-scan-adls-gen2.md
                 displayName: Register and scan Azure Data Lake Storage Gen 2 ADLS
-              - name: Azure SQL 数据库
+              - name: Azure SQL Database
                 href: register-scan-azure-sql-database.md
                 displayName: Register and scan Azure SQL DB
               - name: Azure SQL 数据库托管实例
@@ -166,6 +166,10 @@ items:
             href: sensitivity-insights.md
           - name: 查看文件扩展见解
             href: file-extension-insights.md
+      - name: 安全性和网络
+        items:
+          - name: 管理专用终结点
+            href: catalog-private-link.md
   - name: 参考
     items:
       - name: 支持的分类

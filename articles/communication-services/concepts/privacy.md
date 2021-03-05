@@ -8,22 +8,24 @@ ms.author: chpalm
 ms.date: 10/03/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: a047761669920d6460c3d6fb6d74b970effa7846
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 8e08c531cd46d5112138a3feedf97b27307e3dca
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100572038"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101656187"
 ---
 # <a name="region-availability-and-data-residency"></a>区域可用性和数据驻留
-
-[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
 Azure 通信服务致力于帮助我们的客户满足他们的隐私和个人数据需求。 若使用通信服务的开发人员与使用该应用程序的人有直接关系，便可成为其数据的控制者。 由于 Azure 通信服务代表你存储了这些数据，因此我们很可能成为这些数据的处理者。 本页概述该服务如何保留数据以及你如何识别、导出和删除此数据。
 
 ## <a name="data-residency"></a>数据驻留
 
-创建通信服务资源时，需要指定一个地理位置（非 Azure 数据中心）。 通信服务静态存储的所有数据都将保留在该地理位置中，数据中心由通信服务在内部选择。 但数据可在其他地理位置传输或处理，因此，必需使用这些全局终结点来向最终用户提供高性能、低延迟的体验，无论他们位于何处。
+创建通信服务资源时，需要指定一个地理位置（非 Azure 数据中心）。 通信服务静态存储的所有数据都将保留在该地理位置中，数据中心由通信服务在内部选择。 数据可在异地传输或处理。 必需使用这些全局终结点来向最终用户提供高性能、低延迟的体验，无论他们位于何处。
+
+## <a name="data-residency-and-events"></a>数据驻留和事件
+
+使用 Azure 通信服务配置的任何事件网格系统主题都将在全局位置中创建。 为了支持可靠交付，全局事件网格系统主题可能会将事件数据存储到任何 Microsoft 数据中心。 使用 Azure 通信服务配置事件网格时，会将事件数据传递到事件网格，该事件网格是由你控制的 Azure 资源。 虽然可以将 Azure 通信服务配置为使用 Azure 事件网格，但你需要负责管理事件网格资源和其中存储的数据。
 
 ## <a name="relating-humans-to-azure-communication-services-identities"></a>将人类与 Azure 通信服务标识关联起来
 
@@ -61,7 +63,7 @@ Azure 通信服务维护与通信服务资源关联的电话号码目录。 使�
 
 ### <a name="sms"></a>SMS
 
-发出和收到的短信由服务临时处理，不会保留。 
+发出和收到的短信由服务临时处理，不会保留。
 
 ### <a name="pstn-voice-calling"></a>PSTN 语音呼叫
 

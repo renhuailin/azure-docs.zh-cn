@@ -23,12 +23,10 @@
           href: access-api-howto.md
         - name: 设置 Azure Cloud Shell
           href: ../../cloud-shell/overview.md
-        - name: 使用 REST 进行开发
+        - name: 连接到媒体服务
           items:
-            - name: 使用 Postman 进行连接
+            - name: 使用 REST 和 Postman 进行连接
               href: media-rest-apis-with-postman.md
-        - name: 使用 SDK 进行开发
-          items:
             - name: 通过 Java 进行连接
               href: configure-connect-java-howto.md
             - name: 使用 .NET 进行连接
@@ -51,6 +49,8 @@
       items:
         - name: 通过 ARM 创建帐户
           href: quickstart-arm-template-account.md
+    - name: Python 基本编码快速入门
+      href: quickstart-basic-encoding-python.md
 - name: 教程
   items:
     - name: .NET

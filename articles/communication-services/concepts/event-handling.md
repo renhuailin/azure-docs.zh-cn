@@ -9,16 +9,14 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: e661b99e3c5028f40ea69ddedc22c7ee2895acec
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: cb253ebfd8269779adf02dcbc01d7998590ce78c
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888719"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101657156"
 ---
 # <a name="event-handling-in-azure-communication-services"></a>Azure 通信服务中的事件处理
-
-[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
 Azure 通信服务与 [Azure 事件网格](https://azure.microsoft.com/services/event-grid/)集成，从而以可靠、可缩放且安全的方式提供实时事件通知。 本文旨在帮助你将应用程序配置为侦听通信服务事件。 例如，你可能要更新数据库、创建工作项以及在每次通过与通信服务资源关联的电话号码收到短信时传递推送通知。
 
@@ -26,9 +24,12 @@ Azure 事件网格是一种完全托管的事件路由服务，它使用发布-�
 
 :::image type="content" source="https://docs.microsoft.com/azure/event-grid/media/overview/functional-model.png" alt-text="显示 Azure 事件网格的事件模型的关系图。":::
 
+> [!NOTE]
+> 要详细了解数据驻留与事件处理有何关系，请访问[数据驻留概念文档](./privacy.md)
+
 ## <a name="events-types"></a>事件类型
 
-事件网格使用[事件订阅](../../event-grid/concepts.md#event-subscriptions)将事件消息路由到订阅方。 
+事件网格使用[事件订阅](../../event-grid/concepts.md#event-subscriptions)将事件消息路由到订阅方。
 
 Azure 通信服务发出以下事件类型：
 
@@ -204,7 +205,7 @@ Azure 通信服务发出以下事件类型：
 }]
 ```
 
-### <a name="microsoftcommunicationchatthreadcreatedwithuser-event"></a>Microsoft.Communication.ChatThreadCreatedWithUser 事件 
+### <a name="microsoftcommunicationchatthreadcreatedwithuser-event"></a>Microsoft.Communication.ChatThreadCreatedWithUser 事件
 
 ```json
 [{
@@ -262,7 +263,7 @@ Azure 通信服务发出以下事件类型：
 }]
 ```
 
-### <a name="microsoftcommunicationchatthreadpropertiesupdatedperuser-event"></a>Microsoft.Communication.ChatThreadPropertiesUpdatedPerUser 事件 
+### <a name="microsoftcommunicationchatthreadpropertiesupdatedperuser-event"></a>Microsoft.Communication.ChatThreadPropertiesUpdatedPerUser 事件
 
 ```json
 [{

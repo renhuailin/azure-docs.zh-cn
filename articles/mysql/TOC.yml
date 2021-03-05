@@ -553,6 +553,9 @@
     - name: 通过 mysqldump 或 phpmyadmin 迁移数据
       href: concepts-migrate-dump-restore.md
       displayName: 'migrate, mysqldump'
+    - name: 通过 dbForge Studio for MySQL 迁移数据
+      href: concepts-migrate-dbforge-studio-for-mysql.md
+      displayName: 'migrate, dbforge'
     - name: 通过 MySQL Workbench 迁移数据
       href: concepts-migrate-import-export.md
       displayName: 'import , migrate, export'

@@ -958,6 +958,14 @@ groups:
     title: Azure Arc
   - id: azure-portal
     title: 安全中心的门户页面
+- id: manage-asc-initiatives
+  title: 管理安全中心计划
+  prompt: 你将如何管理安全中心计划？
+  pivots:
+  - id: azure-portal
+    title: 在 Azure 门户中
+  - id: rest-api
+    title: 通过 REST API
 - id: client-operating-system-macos-and-linux-windows-powershell
   title: 操作系统/控制台
   prompt: 选择操作系统和控制台
@@ -1045,9 +1053,9 @@ groups:
   - id: programming-language-kotlin
     title: Kotlin (Android)
 metadata:
-  ms.openlocfilehash: cd30fa892e20dc82c0e314c76d72c2c8d3583bd1
-  ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+  ms.openlocfilehash: 3e17c3c00f5df915394ee81646d8bc3883a8e1ee
+  ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
   ms.translationtype: HT
   ms.contentlocale: zh-CN
   ms.lasthandoff: 03/04/2021
-  ms.locfileid: "102032443"
+  ms.locfileid: "102097506"

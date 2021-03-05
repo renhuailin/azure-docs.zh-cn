@@ -40,6 +40,8 @@
       href: connected-cache-disconnected-device-update.md
     - name: 为 IoT 中心的设备更新配置 Microsoft 联网缓存
       href: connected-cache-configure.md
+    - name: 与导入相关的架构和其他信息
+      href: import-schema.md
 - name: 操作指南
   items:
     - name: 创建设备更新帐户

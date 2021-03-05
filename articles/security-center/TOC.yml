@@ -5,6 +5,14 @@
   items:
     - name: 什么是 Azure 安全中心？
       href: security-center-introduction.md
+    - name: 什么是 Azure Defender？
+      href: azure-defender.md
+    - name: 新增功能
+      displayName: 'changelog, news, release notes'
+      href: release-notes.md
+    - name: 即将推出的重要更改
+      displayName: 'release notes, changelog, news'
+      href: upcoming-changes.md
     - name: 可用性
       items:
         - name: 支持的平台
@@ -14,71 +22,22 @@
           href: security-center-services.md
         - name: 适用于 Azure PaaS 资源的功能覆盖范围
           href: features-paas.md
-    - name: 新增功能
-      items:
-        - name: 发行说明
-          displayName: 'changelog, news'
-          href: release-notes.md
-        - name: 即将推出的重要更改
-          displayName: 'release notes, changelog, news'
-          href: upcoming-changes.md
-        - name: 已存档的发行说明（超过 6 个月）
-          displayName: 'changelog, news'
-          href: release-notes-archive.md
-    - name: 安全中心基础知识
-      items:
-        - name: 安全中心概述页面
-          href: overview-page.md
-        - name: 安全建议
-          href: recommendations-reference.md
-        - name: 安全警报和意向攻击链
-          href: alerts-reference.md
-        - name: Microsoft 如何保护客户数据
-          href: security-center-data-security.md
-        - name: 权限
+        - name: 用户角色和权限
+          displayName: RBAC
           href: security-center-permissions.md
-    - name: Azure Defender 的高级安全
-      items:
-        - name: Azure Defender 概述
-          href: azure-defender.md
-        - name: 适用于服务器的 Azure Defender
-          displayName: VM
-          href: defender-for-servers-introduction.md
-        - name: 适用于应用服务的 Azure Defender
-          href: defender-for-app-service-introduction.md
-        - name: 适用于存储的 Azure Defender
-          displayName: 'blob, adls, files'
-          href: defender-for-storage-introduction.md
-        - name: 适用于 SQL 的 Azure Defender
-          displayName: database
-          href: defender-for-sql-introduction.md
-        - name: 适用于 Key Vault 的 Azure Defender
-          displayName: 'KV, akv'
-          href: defender-for-key-vault-introduction.md
-        - name: 适用于资源管理器的 Azure Defender
-          displayName: ARM
-          href: defender-for-resource-manager-introduction.md
-        - name: 适用于 DNS 的 Azure Defender
-          displayName: domain
-          href: defender-for-dns-introduction.md
-        - name: 适用于 Kubernetes 的 Azure Defender
-          displayName: 'clusters, k8s, aks'
-          href: defender-for-kubernetes-introduction.md
-        - name: 适用于容器注册表的 Azure Defender
-          displayName: 'ACR, registry, images'
-          href: defender-for-container-registries-introduction.md
-        - name: 其他威胁防护
-          href: other-threat-protections.md
-    - name: 安全中心的容器安全功能
-      displayName: 'kubernetes, aks, acr, registries, k8s'
-      href: container-security.md
-    - name: 定价
-      href: security-center-pricing.md
+        - name: 安全中心免费版与已启用 Azure Defender
+          href: security-center-pricing.md
 - name: 快速入门
   items:
-    - name: 入门
+    - name: 1. 在订阅中启用安全中心
       href: security-center-get-started.md
-    - name: 设置混合环境
+    - name: 2. 启用 Azure Defender
+      href: enable-azure-defender.md
+    - name: 3. 配置自动预配
+      href: security-center-enable-data-collection.md
+    - name: 4. 设置电子邮件通知
+      href: security-center-provide-security-contact-details.md
+    - name: 5. 连接混合和多云计算机
       items:
         - name: 连接非 Azure 计算机
           displayName: 'azure stack, ash, windows, linux, hybrid, arc'
@@ -89,17 +48,12 @@
         - name: 连接 GCP 帐户
           displayName: 'hybrid, multicloud, google'
           href: quickstart-onboard-gcp.md
-    - name: 使用 PowerShell 自动加入
-      href: security-center-powershell-onboarding.md
-    - name: 为管理组启用安全中心
-      href: onboard-management-group.md
-    - name: 配置自动预配
-      href: security-center-enable-data-collection.md
-    - name: 设置电子邮件通知
-      href: security-center-provide-security-contact-details.md
-    - name: 使用 ARM 模板创建对警报的自动响应
-      displayName: Resource Manager
+    - name: 6. 创建针对警报的自动响应
+      displayName: 'Resource Manager, ARM'
       href: quickstart-automation-alert.md
+    - name: 7. 为符合性仪表板选择标准
+      displayName: 'regulatory, regulation, CIS, PCI DSS, ISO, SOC, ASB, Benchmark, Azure Security Benchmark, HIPAA'
+      href: update-regulatory-compliance-packages.md
 - name: 教程
   items:
     - name: 规划和操作指南
@@ -114,74 +68,59 @@
       href: tutorial-security-policy.md
 - name: 概念
   items:
-    - name: 云安全状态管理
+    - name: 云安全态势管理概念
       items:
-        - name: 使用资产清单管理资源
-          href: asset-inventory.md
-        - name: 安全功能分数
+        - name: 策略、计划和建议
+          href: security-policy-concept.md
+        - name: 安全分数和安全控制
           href: secure-score-security-controls.md
-        - name: 安全性建议的概述
-          href: security-center-recommendations.md
-        - name: 使用建议增强安全性
-          href: security-center-using-recommendations.md
-        - name: 安全基线
-          href: security-baseline.md
-        - name: 跨租户管理
-          href: security-center-cross-tenant-management.md
-        - name: 保护 Windows 管理中心服务器
-          href: windows-admin-center-integration.md
-        - name: 集成安全解决方案和数据源
-          href: security-center-partner-integration.md
+        - name: 建议的参考列表
+          href: recommendations-reference.md
+    - name: 云工作负载保护概念
+      items:
+        - name: 安全警报和事件
+          href: security-center-alerts-overview.md
+        - name: 警报参考列表
+          href: alerts-reference.md
+- name: 操作指南
+  items:
+    - name: 使用“概述”仪表板
+      displayName: 'overview, compliance, inventory'
+      href: overview-page.md
+    - name: 使用 Azure Defender 仪表板
+      href: azure-defender-dashboard.md
+    - name: 访问和跟踪安全分数
+      href: secure-score-access-and-track.md
+    - name: 使用资产清单管理资源
+      href: asset-inventory.md
+    - name: 构建安全中心数据的交互式报表
+      displayName: 'workbooks, Secure Score Over Time, Vulnerability Assessment Findings'
+      href: custom-dashboards-azure-workbooks.md
     - name: 使用安全建议来提高安全性
       items:
+        - name: 查看安全建议
+          href: security-center-recommendations.md
         - name: 修正建议
           href: security-center-remediate-recommendations.md
         - name: 通过强制/拒绝防止错误配置
           displayName: recommendations
           href: prevent-misconfigurations.md
-        - name: 加强安全态势
-          href: security-center-monitoring.md
-        - name: 建议的参考列表
-          href: recommendations-reference.md
-        - name: 管理安全建议
-          items:
-            - name: 自动响应建议
-              displayName: workflow
-              href: workflow-automation.md
-            - name: 从建议中免除资源
-              href: exempt-resource.md
-        - name: 保护网络资源
-          href: security-center-network-recommendations.md
-        - name: 保护标识和访问权限
-          href: security-center-identity-access.md
-    - name: 了解安全警报
-      items:
-        - name: 安全警报概述
-          href: security-center-alerts-overview.md
-        - name: 警报参考列表
-          href: alerts-reference.md
-        - name: 警报架构
-          href: alerts-schemas.md
-        - name: 安全事件概述
-          href: security-center-alerts-cloud-smart.md
-- name: 操作指南
-  items:
-    - name: 使用 Azure Defender 仪表板
-      href: azure-defender-dashboard.md
-    - name: 配置安全策略和符合性标准
-      items:
-        - name: 创建自定义安全策略
+        - name: 自动响应建议
+          displayName: workflow
+          href: workflow-automation.md
+        - name: 从建议中免除资源
+          href: exempt-resource.md
+        - name: 创建自定义安全计划和策略
           href: custom-security-policies.md
-        - name: 使用 Azure 策略 REST API 管理策略
-          href: configure-security-policy-azure-policy.md
-        - name: 为符合性仪表板选择标准
-          displayName: 'regulatory, regulation, CIS, PCI DSS, ISO, SOC, Benchmark, Azure Security Benchmark, HIPAA'
-          href: update-regulatory-compliance-packages.md
-    - name: 使用适用于服务器的 Azure Defender
+    - name: 通过适用于服务器的 Azure Defender 保护计算机
+      displayName: 'hybrid, arc, Azure Defender for machines'
       items:
+        - name: 适用于服务器的 Azure Defender 的概述
+          displayName: VM
+          href: defender-for-servers-introduction.md
         - name: 漏洞扫描
           items:
-            - name: 适用于计算机的集成 VA 扫描程序
+            - name: 通过集成 VA 扫描程序扫描计算机
               displayName: 'qualys, vulnerability, arc, hybrid'
               href: deploy-vulnerability-assessment-vm.md
             - name: 通过 BYOL VA 解决方案扫描 VM
@@ -204,58 +143,131 @@
         - name: 使用集成的 Microsoft Defender for Endpoint 许可证
           displayName: 'ATP, mdatp, wdatp'
           href: security-center-wdatp.md
-        - name: 管理自适应应用程序控制
-          displayName: 'aac, whitelist, allowlist, reviewgroup'
+        - name: 定义计算机的安全应用程序列表
+          displayName: 'aac, whitelist, allowlist, reviewgroup, adaptive application controls'
           href: security-center-adaptive-application.md
-        - name: 使用文件完整性监视
+        - name: 通过文件完整性监视，跟踪对文件和注册表的更改
           items:
             - name: 文件完整性监视概述
               displayName: 'fim, change'
               href: security-center-file-integrity-monitoring.md
-            - name: 使用文件完整性监视比较基线
+            - name: 使用文件完整性监视来比较基线
               displayName: 'fim, change'
               href: security-center-file-integrity-monitoring-baselines.md
-        - name: 管理自适应网络强化
+        - name: 通过自适应网络强化，改进网络安全状况
           displayName: anh
           href: security-center-adaptive-network-hardening.md
         - name: 强化 Docker 主机
           displayName: containers
           href: harden-docker-hosts.md
-    - name: 使用适用于 SQL 的 Azure Defender
-      href: defender-for-sql-usage.md
-      displayName: 'hybrid, arc'
-    - name: 使用适用于容器注册表的 Azure Defender
+    - name: 保护 SQL 资源
       items:
+        - name: Azure Defender for SQL 的概述
+          displayName: database
+          href: defender-for-sql-introduction.md
+        - name: 在计算机上启用 Defender for SQL 服务器
+          href: defender-for-sql-usage.md
+          displayName: 'hybrid, arc, Azure Defender'
+        - name: 扫描 SQL 资源是否存在漏洞
+          href: defender-for-sql-on-machines-vulnerability-assessment.md
+          displayName: 'hybrid, arc, Azure Defender'
+        - name: 禁用对 SQL Server 的漏洞查找
+          displayName: 'VA, registry, vulnerabilities'
+          href: defender-for-sql-on-machines-vulnerability-assessment.md#disable-specific-findings-preview
+        - name: 自定义 SQL 信息保护策略
+          displayName: 'sql, database, data discovery'
+          href: security-center-info-protection-policy.md
+    - name: 保护容器化环境
+      displayName: Azure Defender
+      items:
+        - name: 安全中心的容器安全功能
+          displayName: 'kubernetes, aks, acr, registries, k8s'
+          href: container-security.md
+        - name: Defender for Kubernetes 的概述
+          displayName: 'clusters, k8s, aks'
+          href: defender-for-kubernetes-introduction.md
+        - name: 适用于容器注册表的 Defender 的概述
+          displayName: 'ACR, registry, images'
+          href: defender-for-container-registries-introduction.md
         - name: 扫描注册表映像是否存在漏洞
           displayName: 'ACR, registry, images, qualys'
           href: defender-for-container-registries-usage.md
         - name: 禁止显示特定映像漏洞结果
           displayName: 'ACR, registry, images, qualys'
           href: defender-for-container-registries-usage.md#disable-specific-findings-preview
-    - name: 导出警报和建议
+        - name: 保护 Kubernetes 工作负载
+          displayName: 'k8s, containers, aks'
+          href: kubernetes-workload-protections.md
+    - name: 保护 Azure 应用服务 web 应用和 API
+      displayName: 'Azure Defender for App Service, defender for app'
+      href: defender-for-app-service-introduction.md
+    - name: 保护 Azure 存储帐户
+      displayName: 'blob, adls, files, Azure Defender for Storage, Defender for Storage'
+      href: defender-for-storage-introduction.md
+    - name: 保护 Key Vault 密钥和机密
       items:
-        - name: 导出到 SIEM、SOAR 或 ITSM
-          displayName: 'continuous, SIEM, SOAR, Splunk, QRadar, ServiceNow, ArcSight, Monitor, Graph, Sentinel,'
-          href: export-to-siem.md
-        - name: 导出到 Log Analytics 工作区或 Azure 事件中心
-          displayName: continuous
-          href: continuous-export.md
-        - name: 下载所有警报的 CSV 报告
-          href: continuous-export.md#manual-one-time-export-of-alerts-and-recommendations
-    - name: 处理安全警报
-      items:
-        - name: 管理安全警报
-          href: security-center-managing-and-responding-alerts.md
-        - name: 创建和管理警报抑制规则
-          href: alerts-suppression-rules.md
+        - name: 适用于 Key Vault 的 Azure Defender 的概述
+          displayName: 'KV, akv'
+          href: defender-for-key-vault-introduction.md
         - name: 响应适用于 Key Vault 的 Azure Defender 警报
           displayName: 'akv, kv'
           href: defender-for-key-vault-usage.md
-        - name: 响应适用于 DNS 的 Azure Defender 警报
-          href: defender-for-dns-usage.md
+    - name: 监视资源管理操作
+      items:
+        - name: 适用于资源管理器的 Azure Defender 的概述
+          displayName: ARM
+          href: defender-for-resource-manager-introduction.md
         - name: 响应适用于资源管理器的 Azure Defender 警报
           displayName: arm
           href: defender-for-resource-manager-usage.md
+    - name: 监视来自 Azure 资源的 DNS 查询
+      items:
+        - name: 适用于 DNS 的 Azure Defender 的概述
+          displayName: 'domain, Defender for DNS'
+          href: defender-for-dns-introduction.md
+        - name: 响应适用于 DNS 的 Azure Defender 警报
+          href: defender-for-dns-usage.md
+    - name: 保护 Windows 管理中心服务器
+      href: windows-admin-center-integration.md
+    - name: 集成安全解决方案和数据源
+      href: security-center-partner-integration.md
+    - name: 保护网络资源
+      href: security-center-network-recommendations.md
+    - name: 保护标识和访问权限
+      href: security-center-identity-access.md
+    - name: 使用安全中心的其他威胁防护
+      href: other-threat-protections.md
+    - name: 管理订阅、用户和权限
+      items:
+        - name: 组织管理组和订阅
+          href: security-center-management-groups.md
+        - name: 授予和请求租户范围的权限
+          displayName: 'global admin, Azure Active Directory (AD), AAD'
+          href: tenant-wide-permissions-management.md
+        - name: 为管理组启用安全中心
+          href: onboard-management-group.md
+        - name: 设置跨租户管理
+          href: security-center-cross-tenant-management.md
+        - name: 使用 PowerShell 自动加入
+          href: security-center-powershell-onboarding.md
+    - name: 管理警报、事件和威胁报告
+      items:
+        - name: 响应安全警报
+          href: security-center-managing-and-responding-alerts.md
+        - name: 创建和管理警报抑制规则
+          href: alerts-suppression-rules.md
+        - name: 导出警报和建议
+          items:
+            - name: 导出到 SIEM、SOAR 或 ITSM
+              displayName: 'continuous, SIEM, SOAR, Splunk, QRadar, ServiceNow, ArcSight, Monitor, Graph, Sentinel,'
+              href: export-to-siem.md
+            - name: 导出到 Log Analytics 工作区或 Azure 事件中心
+              displayName: continuous
+              href: continuous-export.md
+            - name: 下载所有警报的 CSV 报告
+              href: continuous-export.md#manual-one-time-export-of-alerts-and-recommendations
+            - name: 警报架构
+              href: alerts-schemas.md
         - name: 管理安全事件
           href: security-center-incident.md
         - name: 生成威胁情报报表
@@ -266,18 +278,17 @@
         - name: 自动响应警报
           displayName: workflow
           href: workflow-automation.md
-    - name: 保护 Kubernetes 工作负载
-      displayName: 'k8s, containers, aks'
-      href: kubernetes-workload-protections.md
-    - name: 获取租户范围内的可见性
-      href: security-center-management-groups.md
-    - name: 自定义 SQL 信息保护策略
-      displayName: 'sql, database, data discovery'
-      href: security-center-info-protection-policy.md
 - name: 参考
   items:
-    - name: REST API
+    - name: 已存档的发行说明（超过 6 个月）
+      displayName: 'changelog, news'
+      href: release-notes-archive.md
+    - name: Microsoft 如何保护客户数据
+      href: security-center-data-security.md
+    - name: REST API 文档
       href: /rest/api/securitycenter/
+    - name: 安全基线
+      href: security-baseline.md
     - name: Azure 安全中心常见问题解答
       items:
         - name: 一般问题

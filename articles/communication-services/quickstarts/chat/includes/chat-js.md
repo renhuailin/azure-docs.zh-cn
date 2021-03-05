@@ -10,17 +10,17 @@ ms.date: 9/1/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 4d3781c7a3894429cb5daccb334655543e3eea01
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: 18282bbe902599c471775a853704e459ea44bac1
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100551957"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101661612"
 ---
 ## <a name="prerequisites"></a>先决条件
 在开始之前，请务必：
 
-- 创建活动订阅的 Azure 帐户。 有关详细信息，请参阅[创建免费账户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
+- 创建活动订阅的 Azure 帐户。 有关详细信息，请参阅[创建免费账户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - 安装[Node.js](https://nodejs.org/en/download/)活动 LTS 和维护 LTS 版本（建议使用 8.11.1 和 10.14.1）。
 - 创建 Azure 通信服务资源。 有关详细信息，请参阅[创建 Azure 通信服务资源](../../create-communication-resource.md)。 为完成此快速入门，需要记录资源终结点。
 - 创建 3 个 ACS 用户，并向他们颁发用户访问令牌[用户访问令牌](../../access-tokens.md)。 请确保将范围设置为“聊天”，并记下令牌字符串和 userId 字符串 。 完整的演示将创建一个具有两个初始参与者的会话，然后将第三个参与者添加到该会话。
@@ -34,7 +34,7 @@ ms.locfileid: "100551957"
 ```console
 mkdir chat-quickstart && cd chat-quickstart
 ```
-   
+
 运行 `npm init -y` 以使用默认设置创建 package.json 文件。
 
 ```console
@@ -48,7 +48,7 @@ npm init -y
 ```console
 npm install @azure/communication-common --save
 
-npm install @azure/communication-administration --save
+npm install @azure/communication-identity --save
 
 npm install @azure/communication-signaling --save
 
@@ -86,26 +86,9 @@ npm install webpack webpack-cli webpack-dev-server --save-dev
 
 ### <a name="create-a-chat-client"></a>创建聊天客户端
 
-若要在 Web 应用中创建聊天客户端，需使用通信服务终结点和在前提步骤中生成的访问令牌 。 
+若要在 Web 应用中创建聊天客户端，需使用通信服务终结点和在前提步骤中生成的访问令牌 。
 
-用户访问令牌使你可以构建直接对 Azure 通信服务进行身份验证的客户端应用程序。
-
-##### <a name="server-vs-client-side"></a>服务器与客户端
-
-建议使用将访问令牌传递到客户端应用程序的服务器端组件生成访问令牌。 在此方案中，服务器端负责创建和管理用户并为其颁发令牌。 然后，客户端可以接收来自服务的访问令牌，并使用这些令牌对 Azure 通信服务客户端库进行身份验证。
-
-还可以使用适用于 JavaScript 的 Azure 通信管理库在客户端颁发令牌。 在这种情况下，客户端需要知晓用户才能为其颁发令牌。
-
-有关详细信息，请参阅以下文档 - [客户端和服务器体系结构](../../../concepts/client-and-server-architecture.md)
-
-在下图中，客户端应用程序接收来自受信任服务层的访问令牌。 然后，应用程序使用该令牌对通信服务库进行身份验证。 通过身份验证后，应用程序即可使用通信服务客户端库执行操作，例如与其他用户聊天。
-
-:::image type="content" source="../../../media/scenarios/archdiagram-access.png" alt-text="显示用户访问令牌体系结构的关系图。":::
-
-##### <a name="instructions"></a>说明
-此演示不涉及为聊天应用程序创建服务层的内容。 
-
-如果尚未生成用户及其令牌，请按照此处的说明进行操作：[用户访问令牌](../../access-tokens.md)。 请记住将范围设置为“聊天”而不是“voip”。
+用户访问令牌使你可以构建直接对 Azure 通信服务进行身份验证的客户端应用程序。 本快速入门不介绍如何创建服务层来管理聊天应用程序的令牌。 有关聊天体系结构的详细信息，请参阅[聊天概念](../../../concepts/chat/concepts.md)，有关访问令牌的详细信息，请参阅[用户访问令牌](../../access-tokens.md)。
 
 在 client.js 内，使用下面的代码中的终结点和访问令牌，以使用适用于 JavaScript 的 Azure 通信聊天客户端库添加聊天功能。
 
@@ -139,7 +122,7 @@ npx webpack-dev-server --entry ./client.js --output bundle.js --debug --devtool 
 Azure Communication Chat client created!
 ```
 
-## <a name="object-model"></a>对象模型 
+## <a name="object-model"></a>对象模型
 以下类和接口处理适用于 JavaScript 的 Azure 通信服务聊天客户端库的某些主要功能。
 
 | 名称                                   | 说明                                                                                                                                                                           |
@@ -154,7 +137,7 @@ Azure Communication Chat client created!
 
 `createThreadRequest` 用于描述会话请求：
 
-- 使用 `topic` 为该聊天提供一个主题；在创建聊天会话后可使用 `UpdateThread` 函数更新主题。 
+- 使用 `topic` 为此聊天指定主题。 在创建聊天会话后可使用 `UpdateThread` 函数更新主题。
 - 使用 `participants` 列出要添加到聊天会话的参与者。
 
 解析时，`createChatThread` 方法返回 `CreateChatThreadResponse`。 此模型包含 `chatThread` 属性，可在其中访问新创建会话的 `id`。 然后可使用 `id` 获取 `ChatThreadClient` 的实例。 接下来可使用 `ChatThreadClient` 在会话中执行操作，如发送消息或列出参与者。
@@ -220,7 +203,7 @@ Chat Thread client for threadId: <threadId>
 
 `sendMessageOptions` 描述聊天消息请求的可选字段：
 
-- 使用 `priority` 指定聊天消息优先级别，如“正常”或“高”，此属性可用于在应用中为接收人用户提供 UI 指示器，以凸显消息或执行自定义业务逻辑。   
+- 使用 `priority` 指定聊天消息优先级别，如“正常”或“高”。 此属性可用于在应用中为收件人用户显示 UI 指示器，以凸显消息或执行自定义业务逻辑。
 - 使用 `senderDisplayName` 指定发送方的显示名称；
 
 响应 `sendChatMessageResult` 包含“ID”，它是该消息的唯一 ID。
@@ -263,7 +246,7 @@ chatClient.on("chatMessageReceived", (e) => {
 添加此代码以代替 client.js 中的 `<RECEIVE A CHAT MESSAGE FROM A CHAT THREAD>` 注释。
 刷新浏览器选项卡，控制台中应会显示消息 `Notification chatMessageReceived`；
 
-或者可以通过按指定间隔轮询 `listMessages` 方法来检索聊天消息。 
+或者可以通过按指定间隔轮询 `listMessages` 方法来检索聊天消息。
 
 ```JavaScript
 

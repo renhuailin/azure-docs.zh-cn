@@ -8,12 +8,12 @@ ms.service: cognitive-search
 ms.topic: overview
 ms.date: 03/02/2021
 ms.custom: references_regions
-ms.openlocfilehash: 606b102b1922d382f479235ffc4c61b68e7db766
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 36f10bebfc42ae5e9e75206392e8a5f8ccef563a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101676395"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694591"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure 认知搜索中的新增功能
 
@@ -23,7 +23,7 @@ ms.locfileid: "101676395"
 
 |功能&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |  说明 | 可用性  |
 |------------------------------|---------------|---------------|
-| [语义搜索](semantic-search-overview.md) | 查询相关功能的集合，这些功能可修改搜索结果以生成更相关的结果。 只需略微更改搜索请求，即可对现有索引试用这些功能。</br></br>[语义查询](semantic-how-to-query-request.md)是一种新的查询类型，它利用自然语言处理方面的改进功能来提高排名，以及理解查询意图以提供答案、标题和语义要点。</br></br>[语义排名和响应（答案、标题和要点）](semantic-how-to-query-response.md)指定义语义查询的算法和响应的结构。 | 公开预览版（[根据要求提供](https://aka.ms/SemanticSearchPreviewSignup)）。 </br></br>在 Azure 门户中使用[搜索文档 (REST)](/rest/api/searchservice/preview-api/search-documents) api-version=2020-06-30-Preview 和[搜索资源管理器](search-explorer.md)。 </br></br>需遵守区域和层级限制。 |
+| [语义搜索](semantic-search-overview.md) | 与查询相关的功能集合，只需很少的工作量便可提高搜索结果的相关性。 只需略微更改搜索请求，即可对现有索引试用这些功能。</br></br>[语义查询](semantic-how-to-query-request.md)是一种新的查询类型，它利用自然语言处理方面的改进功能来提高排名，以及理解查询意图以提供答案、标题和语义要点。</br></br>[语义排名和响应（回答、标题和突出显示）](semantic-how-to-query-response.md)涉及用于评估结果的模型，以及模型将结构添加到响应的能力。 | 公开预览版（[根据要求提供](https://aka.ms/SemanticSearchPreviewSignup)）。 </br></br>在 Azure 门户中使用[搜索文档 (REST)](/rest/api/searchservice/preview-api/search-documents) api-version=2020-06-30-Preview 和[搜索资源管理器](search-explorer.md)。 </br></br>需遵守区域和层级限制。 |
 | [检查查询词的拼写](speller-how-to-add.md) | 在查询词到达搜索引擎之前，你可检查其是否存在拼写错误。 `speller` 选项适用于任何查询类型（简单、完整或语义查询）。 |  公共预览版，仅限 REST，api-version=2020-06-30-Preview|
 | [SharePoint Online 索引器](search-howto-index-sharepoint-online.md) | 此索引器可将你连接到 SharePoint Online 网站，这样你即可索引文档库中的内容。 | 公共预览版，仅限 REST，api-version=2020-06-30-Preview |
 
@@ -46,7 +46,7 @@ ms.locfileid: "101676395"
 | 月份 | 功能 | 说明 |
 |-------|---------|-------------|
 | 11 月 | [客户管理的密钥加密（已扩展）](search-security-manage-encryption-keys.md) | 将客户管理的加密扩展到由搜索服务创建和管理的全范围资产。 正式发布。|
-| 9 月 | [适用于 Azure 认知搜索的 Visual Studio Code 扩展](search-get-started-vs-code.md) | 添加用于创建索引、索引器、数据源和技能组的工作区、导航、IntelliSense 和模板。 | 公共预览版 |
+| 9 月 | [适用于 Azure 认知搜索的 Visual Studio Code 扩展](search-get-started-vs-code.md) | 添加用于创建索引、索引器、数据源和技能组的工作区、导航、IntelliSense 和模板。 此功能目前处于公开预览状态。| 
 | 9 月 | [托管服务标识（索引器）](search-howto-managed-identities-data-sources.md) | 正式发布。  |
 | 9 月 | [使用专用链接的出站请求](search-indexer-howto-access-private.md) | 正式发布。  |
 | 9 月 | [管理 REST API (2020-08-01)](/rest/api/searchmanagement/management-api-versions) | 正式发布。 |

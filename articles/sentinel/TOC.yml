@@ -25,8 +25,12 @@
       href: tutorial-respond-threats-playbook.md
 - name: 概念
   items:
-    - name: 使用角色分配权限
-      href: roles.md
+    - name: 管理访问权限
+      items:
+        - name: Azure Sentinel 中的权限
+          href: roles.md
+        - name: 管理资源的访问权限
+          href: resource-context-rbac.md
     - name: 高级多阶段攻击检测
       href: fusion.md
     - name: 自带机器学习平台
@@ -248,6 +252,8 @@
       href: create-incidents-from-alerts.md
     - name: 利用事件指标更好地管理 SOC
       href: manage-soc-with-incident-metrics.md
+    - name: 审核 Azure Sentinel 查询和活动
+      href: audit-sentinel-data.md
     - name: 搜寻
       href: hunting.md
       items:
@@ -259,6 +265,8 @@
           href: livestream.md
     - name: 删除 Azure Sentinel
       href: offboard.md
+    - name: 实现高级 RBAC
+      items: null
 - name: 参考
   items:
     - name: Azure RBAC 角色
@@ -293,8 +301,8 @@
   items:
     - name: 有用的资源
       href: resources.md
-    - name: Azure 安全性、隐私性与合规性博客
-      href: /archive/blogs/azuresecurity/
+    - name: Azure Sentinel 博客
+      href: 'https://techcommunity.microsoft.com/t5/azure-sentinel/bg-p/AzureSentinelBlog'
     - name: 区域可用性
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=azure-sentinel'
     - name: 定价

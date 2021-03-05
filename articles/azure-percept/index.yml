@@ -10,12 +10,12 @@ metadata:
   author: elqu20
   ms.author: v-elqu
   ms.date: 02/11/2021
-  ms.openlocfilehash: 6c7479b33a78432d5b6aea2c02656e8b250b70c7
-  ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+  ms.openlocfilehash: b979f147c67e8e877b5bb0e9d3dc557317c7aa50
+  ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/02/2021
-  ms.locfileid: "101658160"
+  ms.lasthandoff: 03/04/2021
+  ms.locfileid: "102097489"
 landingContent:
 - title: 什么是 Azure Percept？
   linkLists:
@@ -45,8 +45,22 @@ landingContent:
       url: azure-percept-dk-datasheet.md
     - text: Azure Percept Vision 数据表
       url: azure-percept-vision-datasheet.md
+    - text: 疑难解答
+      url: troubleshoot-dev-kit.md
+- title: Azure Percept 音频入门
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 设置 Azure Percept Audio
+      url: quickstart-percept-audio-setup.md
+  - linkListType: reference
+    links:
     - text: Azure Percept 音频数据表
       url: azure-percept-audio-datasheet.md
+    - text: Azure Percept Audio 故障排除
+      url: troubleshoot-audio-accessory-speech-module.md
+    - text: Azure Percept Audio LED 和按钮
+      url: audio-button-led-behavior.md
 - title: 生成无代码视觉 AI 原型
   linkLists:
   - linkListType: tutorial
@@ -63,20 +77,10 @@ landingContent:
       url: how-to-capture-images.md
     - text: 查看开发工具包的遥测数据
       url: how-to-view-telemetry.md
-- title: Azure Percept 音频入门
-  linkLists:
-  - linkListType: quickstart
+  - linkListType: concept
     links:
-    - text: 设置 Azure Percept Audio
-      url: quickstart-percept-audio-setup.md
-  - linkListType: reference
-    links:
-    - text: Azure Percept 音频数据表
-      url: azure-percept-audio-datasheet.md
-    - text: Azure Percept Audio 故障排除
-      url: troubleshoot-audio-accessory-speech-module.md
-    - text: Azure Percept Audio LED 和按钮
-      url: audio-button-led-behavior.md
+    - text: 使用 AI 解决方案
+      url: overview-ai-models.md
 - title: 生成无代码语音助理解决方案
   linkLists:
   - linkListType: tutorial
@@ -85,22 +89,20 @@ landingContent:
       url: tutorial-no-code-speech.md
   - linkListType: how-to-guide
     links:
-    - text: 配置语音助理
-      url: how-to-configure-voice-assistant.md
     - text: 管理语音助理
       url: how-to-manage-voice-assistant.md
+    - text: 使用 IoT 中心配置语音助理
+      url: how-to-configure-voice-assistant.md
 - title: 使用 Azure Percept 进行高级开发
   linkLists:
   - linkListType: overview
     links:
     - text: 高级开发概述
       url: overview-advanced-code.md
-  - linkListType: tutorial
+  - linkListType: how-to-guide
     links:
-    - text: 使用云服务进行高级开发
-      url: advanced-development-cloud.md
-    - text: 使用本地工具进行高级开发
-      url: advanced-development-local.md
+    - text: 开发工具包安装程序
+      url: dev-tools-installer.md
 - title: 将 Azure Percept DK 更新为最新版本
   linkLists:
   - linkListType: overview
@@ -109,7 +111,7 @@ landingContent:
       url: overview-update-experience.md
   - linkListType: how-to-guide
     links:
-    - text: 设置更新
+    - text: 设置无线更新
       url: how-to-set-up-over-the-air-updates.md
     - text: 无线更新
       url: how-to-update-over-the-air.md

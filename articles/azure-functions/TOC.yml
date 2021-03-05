@@ -197,6 +197,9 @@
           href: supported-languages.md
         - name: C#（类库）
           href: functions-dotnet-class-library.md
+        - name: C#（隔离进程）
+          displayName: '.NET isolated, .NET 5'
+          href: dotnet-isolated-process-guide.md
         - name: C# 脚本 (.csx)
           href: functions-reference-csharp.md
         - name: F#
@@ -432,7 +435,7 @@
           href: functions-create-serverless-api.md
         - name: 管理本地资源
           href: functions-hybrid-powershell.md
-    - name: 疑难解答
+    - name: 故障排除
       items:
         - name: 排查存储问题
           href: functions-recover-storage-account.md

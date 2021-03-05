@@ -8,12 +8,12 @@ ms.author: manoskow
 ms.date: 10/23/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 88ad060c1ba28285051a91bd928a2a7116dff1ce
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: ef1c4d87be39b6af90ed07cba9249cca4cf8bd6a
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96937536"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102036021"
 ---
 # <a name="troubleshooting-in-azure-communication-services"></a>Azure 通信服务中的故障排除
 
@@ -21,12 +21,7 @@ ms.locfileid: "96937536"
 
 ## <a name="getting-help"></a>获取帮助
 
-我们鼓励开发人员在通信服务 [GitHub 存储库](https://github.com/Azure/communication)中提交问题、建议功能以及报告问题。 其他论坛包括：
-
-* [Microsoft Q&A](/answers/questions/topics/single/101418.html)
-* [StackOverflow](https://stackoverflow.com/questions/tagged/azure+communication)
-
-根据 Azure 订阅[支持计划](https://azure.microsoft.com/support/plans/)，你可以通过 [Azure 门户](https://azure.microsoft.com/support/create-ticket/)直接提交支持工单。
+我们鼓励开发人员提交问题、建议功能以及报告问题。 为帮助实现此目的，我们提供了一个[专用的支持和帮助选项页](../support.md)，其中列出了支持选项。
 
 为了帮助你对某些类型的问题进行故障排除，系统可能会要求你提供以下信息：
 
@@ -107,7 +102,6 @@ Log.d(call.getCallId())
 ```
 ---
 
-
 ## <a name="access-your-sms-message-id"></a>获取短信 ID
 
 对于短信问题，可以从响应对象中收集消息 ID。
@@ -130,9 +124,6 @@ console.log(result); // your message ID will be in the result
 ---
 
 ## <a name="enable-and-access-call-logs"></a>启用和访问调用日志
-
-
-
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -166,7 +157,6 @@ callClient = new CallClient({logger: AzureLogger});
 
 ---
 
-
 ## <a name="calling-client-library-error-codes"></a>呼叫客户端库错误代码
 
 Azure 通信服务呼叫客户端库使用以下错误代码来帮助解决呼叫问题。 呼叫结束后，这些错误代码通过 `call.callEndReason` 属性公开。
@@ -184,7 +174,6 @@ Azure 通信服务呼叫客户端库使用以下错误代码来帮助解决呼�
 | 490、491、496、487、498 | 本地终结点网络问题。 | 检查网络。 |
 | 500、503、504 | 通信服务基础结构错误。 | 通过 Azure 门户提交支持请求。 |
 | 603 | 全球呼叫被远程通信服务参与者拒绝 | 预期行为。 |
-
 
 ## <a name="related-information"></a>相关信息
 - [日志和诊断](logging-and-diagnostics.md)
