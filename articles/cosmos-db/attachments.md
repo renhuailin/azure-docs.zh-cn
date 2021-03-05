@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 08/07/2020
 ms.reviewer: sngun
-ms.openlocfilehash: b6504c0521328edc356dea1c146fe9aeb6bde55f
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
-ms.translationtype: MT
+ms.openlocfilehash: 0a2ff0f24e3fe4711e0d2f1c306ae2eaa0fda5e0
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93092732"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102217238"
 ---
 # <a name="azure-cosmos-db-attachments"></a>Azure Cosmos DB 附件
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -22,8 +22,8 @@ Azure Cosmos DB 附件是特殊项，它们包含对与外部 blob 或媒体文�
 
 Azure Cosmos DB 支持两种类型的附件：
 
-* **非托管附件** ：是一个包装器，用于包装存储在外部服务（例如 Azure 存储、OneDrive 等）中的 blob 的 URI 引用。 此方法类似于将 URI 属性存储在标准 Azure Cosmos DB 项中。
-* **托管附件** ：是由 Azure Cosmos DB 在内部管理并存储并通过系统生成的 mediaLink 公开的 blob。
+* **非托管附件**：是一个包装器，用于包装存储在外部服务（例如 Azure 存储、OneDrive 等）中的 blob 的 URI 引用。 此方法类似于将 URI 属性存储在标准 Azure Cosmos DB 项中。
+* **托管附件**：是由 Azure Cosmos DB 在内部管理并存储并通过系统生成的 mediaLink 公开的 blob。
 
 
 > [!NOTE]
@@ -163,5 +163,5 @@ namespace attachments
 
 - 开始使用 [Azure Blob 存储](../storage/blobs/storage-quickstart-blobs-dotnet.md)
 - 通过[Azure Cosmos DB 的 .NET SDK v2](/dotnet/api/microsoft.azure.documents.attachment?preserve-view=true&view=azure-dotnet)获取有关使用附件的参考
-- 通过[Azure Cosmos DB 的 JAVA SDK v2](/java/api/com.microsoft.azure.documentdb.attachment?preserve-view=true&view=azure-java-stable)获取有关使用附件的参考
+- 通过[Azure Cosmos DB 的 JAVA SDK v2](/java/api/com.microsoft.azure.documentdb.attachment)获取有关使用附件的参考
 - 获取有关通过[Azure Cosmos DB 的 REST API](/rest/api/cosmos-db/attachments)使用附件的参考

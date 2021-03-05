@@ -6,17 +6,54 @@ author: cweining
 ms.author: cweining
 ms.date: 03/07/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: c9813108c05cabbd071a9d919452682bd6ad69e7
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: a285f26a406caa88d91da5647b3b79cffc9b614f
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101731946"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102217408"
 ---
 # <a name="troubleshoot-problems-enabling-application-insights-snapshot-debugger-or-viewing-snapshots"></a><a id="troubleshooting"></a> 排查启用 Application Insights Snapshot Debugger 或查看快照时遇到的问题
 如果为应用程序启用了 Application Insights Snapshot Debugger，但未看到出现异常的快照，则可以使用以下说明进行故障排除。
 
 可能有许多不同的原因导致未生成快照。 可以先运行快照运行状况检查，确定一些可能的常见原因。
+
+## <a name="make-sure-youre-using-the-appropriate-snapshot-debugger-endpoint"></a>请确保使用适当的 Snapshot Debugger 终结点
+
+目前唯一需要修改终结点的区域是 [Azure 政府](https://docs.microsoft.com/azure/azure-government/compare-azure-government-global-azure#application-insights)和 [Azure 中国](https://docs.microsoft.com/azure/china/resources-developer-guide)。
+
+对于使用 Application Insights SDK 的应用服务和应用程序，必须使用以下定义的 Snapshot Debugger 支持的替代来更新连接字符串：
+
+|连接字符串属性    | 美国政府云 | 中国云 |   
+|---------------|---------------------|-------------|
+|SnapshotEndpoint         | `https://snapshot.monitor.azure.us`    | `https://snapshot.monitor.azure.cn` |
+
+有关其他连接替代的详细信息，请参阅 [Application Insights 文档](https://docs.microsoft.com/azure/azure-monitor/app/sdk-connection-string?tabs=net#connection-string-with-explicit-endpoint-overrides)。
+
+若要 Function App，必须 `host.json` 使用以下支持的替代更新：
+
+|属性    | 美国政府云 | 中国云 |   
+|---------------|---------------------|-------------|
+|AgentEndpoint         | `https://snapshot.monitor.azure.us`    | `https://snapshot.monitor.azure.cn` |
+
+下面是 `host.json` 使用美国政府云代理终结点更新的示例：
+```json
+{
+  "version": "2.0",
+  "logging": {
+    "applicationInsights": {
+      "samplingExcludedTypes": "Request",
+      "samplingSettings": {
+        "isEnabled": true
+      },
+      "snapshotConfiguration": {
+        "isEnabled": true,
+        "agentEndpoint": "https://snapshot.monitor.azure.us"
+      }
+    }
+  }
+}
+```
 
 ## <a name="use-the-snapshot-health-check"></a>使用快照运行状况检查
 几个常见问题会导致不显示“打开调试快照”。 例如，使用过时的快照收集器；达到每日上传限制；或者可能快照只是需要很长时间上传。 使用“快照运行状况检查”解决常见问题。

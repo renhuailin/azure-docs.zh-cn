@@ -6,12 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: b743b5be195f44c03adbee75c3108f4908d8d4e8
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: 2a5ba6cb0778e0c013f150d787d694b23f0497bd
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101717751"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102218003"
 ---
 # <a name="profile-live-azure-app-service-apps-with-application-insights"></a>使用 Application Insights 探查实时 Azure 应用服务应用
 
@@ -47,7 +47,7 @@ Application Insights Profiler 是作为应用服务运行时的一部分预先�
 可以通过为 Azure 应用服务创建应用设置来启用 Application Insights Profiler。 包含如上所示选项的页面将为你创建这些应用设置。 但是，也可以使用模板或其他方式自动创建这些设置。 如果 Application Insights 资源与 Azure 应用服务位于不同的订阅中，这些设置也将起作用。
 下面是启用 Profiler 所需的设置：
 
-|应用设置    | Value    |
+|应用设置    | 值    |
 |---------------|----------|
 |APPINSIGHTS_INSTRUMENTATIONKEY         | Application Insights 资源的 iKey    |
 |APPINSIGHTS_PROFILERFEATURE_VERSION | 1.0.0 |
@@ -56,11 +56,11 @@ Application Insights Profiler 是作为应用服务运行时的一部分预先�
 
 可以使用 [Azure 资源管理器模板](./azure-web-apps.md#app-service-application-settings-with-azure-resource-manager)、[Azure PowerShell](/powershell/module/az.websites/set-azwebapp)、[Azure CLI](/cli/azure/webapp/config/appsettings) 设置这些值。
 
-### <a name="enabling-profiler-for-other-clouds-manually"></a>手动为其他云启用 Profiler
+## <a name="enable-profiler-for-other-clouds"></a>为其他云启用探查器
 
-如果要为其他云启用 Profiler，可以使用以下应用设置。
+目前唯一需要修改终结点的区域是 [Azure 政府](https://docs.microsoft.com/azure/azure-government/compare-azure-government-global-azure#application-insights)和 [Azure 中国](https://docs.microsoft.com/azure/china/resources-developer-guide)。
 
-|应用设置    | 美国政府云的值| 中国云 |   
+|应用设置    | 美国政府云 | 中国云 |   
 |---------------|---------------------|-------------|
 |ApplicationInsightsProfilerEndpoint         | `https://profiler.monitor.azure.us`    | `https://profiler.monitor.azure.cn` |
 |ApplicationInsightsEndpoint | `https://dc.applicationinsights.us` | `https://dc.applicationinsights.azure.cn` |

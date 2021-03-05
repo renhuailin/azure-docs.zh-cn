@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 652489e8de68d61707fd419843f0dbb2ffd83754
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
-ms.translationtype: MT
+ms.openlocfilehash: 49bfca118e53bbe3e4287b2ce25e5baffa717175
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99987943"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102217323"
 ---
 # <a name="manage-qna-maker-app"></a>管理 QnA Maker 应用
 
@@ -29,7 +29,7 @@ QnA Maker 允许多人在同一 QnA Maker 资源中协作处理所有知识库�
 
 ### <a name="add-a-user-account-to-the-qna-maker-resource"></a>将用户帐户添加到 QnA Maker 资源
 
-以下步骤使用 "协作者" 角色，但可以使用以下步骤添加任何[角色](../reference-role-based-access-control.md)
+以下步骤使用 "协作者" 角色，但可以使用以下步骤添加任何角色
 
 1. 登录到 [Azure](https://portal.azure.com/) 门户，并中转到 QnA Maker 资源。
 
@@ -47,7 +47,7 @@ QnA Maker 允许多人在同一 QnA Maker 资源中协作处理所有知识库�
 
     |角色|
     |--|
-    |所有者|
+    |“所有者”|
     |参与者|
     |认知服务 QnA Maker 读者|
     |认知服务 QnA Maker 编辑器|

@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: adca35567499452cf35b9541d3a7caac27b45a0a
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
-ms.translationtype: MT
+ms.openlocfilehash: 1a9add42026dddeb5ce5ac5fcbcd5b93d109b594
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96545479"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102216800"
 ---
 # <a name="azure-cosmos-db-async-java-sdk-for-sql-api-release-notes-and-resources"></a>适用于 SQL API 的 Azure Cosmos DB Async Java SDK：发行说明和资源
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -47,12 +47,12 @@ SQL API Async Java SDK 与 SQL API Java SDK 的区别在于，前者通过支持
 | |  |
 |---|---|
 | **SDK 下载** | [Maven](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb) |
-|**API 文档** |[Java API 参考文档](/java/api/com.microsoft.azure.cosmosdb.rx.asyncdocumentclient?preserve-view=true&view=azure-java-stable) | 
+|**API 文档** |[Java API 参考文档](/java/api/com.microsoft.azure.cosmosdb.rx.asyncdocumentclient) | 
 |**参与 SDK** | [GitHub](https://github.com/Azure/azure-cosmosdb-java) | 
 |**入门** | [Async Java SDK 入门](https://github.com/Azure-Samples/azure-cosmos-db-sql-api-async-java-getting-started) | 
 |**代码示例** | [GitHub](https://github.com/Azure/azure-cosmosdb-java#usage-code-sample)| 
 | **性能提示**| [GitHub 自述文件](https://github.com/Azure/azure-cosmosdb-java#guide-for-prod)| 
-| 受支持的最小运行时|[JDK 8](/java/azure/jdk/?view=azure-java-stable&preserve-view=true) | 
+| 受支持的最小运行时|[JDK 8](/java/azure/jdk/) | 
 
 [!INCLUDE [Release notes](~/azure-cosmosdb-java-v2/changelog/README.md)]
 ## <a name="faq"></a>常见问题解答

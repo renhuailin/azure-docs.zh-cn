@@ -12,12 +12,12 @@ ms.reviewer: nibaccam
 ms.date: 03/04/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: fb877b208e6c9599347e2b45e140545e5815e695
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
-ms.translationtype: MT
+ms.openlocfilehash: e3aa5d5b97342d81562b3296b71a5a58a3ffadf5
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102120804"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102218229"
 ---
 # <a name="start-monitor-and-cancel-training-runs-in-python"></a>在 Python 中启动、监视和取消训练运行
 
@@ -50,7 +50,7 @@ ms.locfileid: "102120804"
     print(azureml.core.VERSION)
     ```
 
-* [Azure CLI](/cli/azure/?preserve-view=true&view=azure-cli-latest) 和 [Azure 机器学习的 CLI 扩展](reference-azure-machine-learning-cli.md)。
+* [Azure CLI](/cli/azure/) 和 [Azure 机器学习的 CLI 扩展](reference-azure-machine-learning-cli.md)。
 
 ## <a name="monitor-run-performance"></a>监视运行性能
 
@@ -96,7 +96,7 @@ ms.locfileid: "102120804"
     
         此命令创建包含示例 runconfig 和 conda 环境文件的 `.azureml` 子目录。 此子目录还包含用来与 Azure 机器学习工作区通信的 `config.json` 文件。
     
-        有关详细信息，请参阅 [az ml folder attach](/cli/azure/ext/azure-cli-ml/ml/folder?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-folder-attach)。
+        有关详细信息，请参阅 [az ml folder attach](/cli/azure/ext/azure-cli-ml/ml/folder#ext-azure-cli-ml-az-ml-folder-attach)。
     
     2. 若要启动运行，请使用以下命令。 使用此命令时，请为 -c 参数指定 runconfig 文件的名称（如果查看的是文件系统，此名称为 \*.runconfig 前面的文本）。
     
@@ -111,7 +111,7 @@ ms.locfileid: "102120804"
         >
         > 有关更多示例 runconfig 文件，请参阅 [https://github.com/MicrosoftDocs/pipelines-azureml/](https://github.com/MicrosoftDocs/pipelines-azureml/)。
     
-        有关详细信息，请参阅 [az ml run submit-script](/cli/azure/ext/azure-cli-ml/ml/run?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-submit-script)。
+        有关详细信息，请参阅 [az ml run submit-script](/cli/azure/ext/azure-cli-ml/ml/run#ext-azure-cli-ml-az-ml-run-submit-script)。
 
     # <a name="studio"></a>[工作室](#tab/azure-studio)
 
@@ -162,7 +162,7 @@ ms.locfileid: "102120804"
     
         此命令返回一个 JSON 文档，其中列出了有关此试验的运行的信息。
     
-        有关详细信息，请参阅 [az ml experiment list](/cli/azure/ext/azure-cli-ml/ml/experiment?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-experiment-list)。
+        有关详细信息，请参阅 [az ml experiment list](/cli/azure/ext/azure-cli-ml/ml/experiment#ext-azure-cli-ml-az-ml-experiment-list)。
     
     * 若要查看有关特定运行的信息，请使用以下命令。 请将 `runid` 替换为运行的 ID：
     
@@ -172,7 +172,7 @@ ms.locfileid: "102120804"
     
         此命令返回一个 JSON 文档，其中列出了有关运行的信息。
     
-        有关详细信息，请参阅 [az ml run show](/cli/azure/ext/azure-cli-ml/ml/run?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-show)。
+        有关详细信息，请参阅 [az ml run show](/cli/azure/ext/azure-cli-ml/ml/run#ext-azure-cli-ml-az-ml-run-show)。
     
     
     # <a name="studio"></a>[工作室](#tab/azure-studio)
@@ -253,7 +253,7 @@ ms.locfileid: "102120804"
     az ml run update -r runid --add-tag quality='fantastic run'
     ```
     
-    有关详细信息，请参阅 [az ml run update](/cli/azure/ext/azure-cli-ml/ml/run?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-update)。
+    有关详细信息，请参阅 [az ml run update](/cli/azure/ext/azure-cli-ml/ml/run#ext-azure-cli-ml-az-ml-run-update)。
     
     # <a name="studio"></a>[工作室](#tab/azure-studio)
     
@@ -287,7 +287,7 @@ ms.locfileid: "102120804"
     az ml run list --experiment-name experiment [?properties.author=='azureml-user' && tags.quality=='fantastic run']
     ```
     
-    有关查询 Azure CLI 结果的详细信息，请参阅[查询 Azure CLI 命令输出](/cli/azure/query-azure-cli?preserve-view=true&view=azure-cli-latest)。
+    有关查询 Azure CLI 结果的详细信息，请参阅[查询 Azure CLI 命令输出](/cli/azure/query-azure-cli)。
     
     # <a name="studio"></a>[工作室](#tab/azure-studio)
     
@@ -331,7 +331,7 @@ print(local_run.get_status())
 az ml run cancel -r runid -w workspace_name -e experiment_name
 ```
 
-有关详细信息，请参阅 [az ml run cancel](/cli/azure/ext/azure-cli-ml/ml/run?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-cancel)。
+有关详细信息，请参阅 [az ml run cancel](/cli/azure/ext/azure-cli-ml/ml/run#ext-azure-cli-ml-az-ml-run-cancel)。
 
 # <a name="studio"></a>[工作室](#tab/azure-studio)
 

@@ -7,16 +7,16 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.custom: mvc, devx-track-azurecli
 ms.date: 07/30/2020
-ms.openlocfilehash: e66edb1325d1c603e89f877f1d34f60c136eb1db
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
-ms.translationtype: MT
+ms.openlocfilehash: a4553ceee482fb232e9ab56deca650be93f9dc6b
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92740732"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102218037"
 ---
 # <a name="azure-cli-script-sample---create-a-logic-app"></a>Azure CLI 脚本示例-创建逻辑应用
 
-此脚本通过 () 的 [Azure CLI 逻辑应用扩展](/cli/azure/ext/logic/logic?view=azure-cli-latest)创建一个示例逻辑应用 `az logic` 。 有关通过 Azure CLI 创建和管理逻辑应用的详细指南，请参阅 Azure CLI 的 [逻辑应用快速入门](quickstart-logic-apps-azure-cli.md)。
+此脚本通过 () 的 [Azure CLI 逻辑应用扩展](/cli/azure/ext/logic/logic)创建一个示例逻辑应用 `az logic` 。 有关通过 Azure CLI 创建和管理逻辑应用的详细指南，请参阅 Azure CLI 的 [逻辑应用快速入门](quickstart-logic-apps-azure-cli.md)。
 
 > [!WARNING]
 > Azure CLI 逻辑应用扩展当前是试验性的，未涵盖在客户支持中 。 请谨慎使用此 CLI 扩展，尤其是在生产环境中选择使用扩展时。
@@ -24,8 +24,8 @@ ms.locfileid: "92740732"
 ## <a name="prerequisites"></a>先决条件
 
 * 具有活动订阅的 Azure 帐户。 如果没有 Azure 订阅，可以[创建一个免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-* 在本地计算机上安装的 [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。
-* 在计算机上安装的[逻辑应用 Azure CLI 扩展](/cli/azure/azure-cli-extensions-list?view=azure-cli-latest)。 若要安装此扩展，请使用此命令：`az extension add --name logic`
+* 在本地计算机上安装的 [Azure CLI](/cli/azure/install-azure-cli)。
+* 在计算机上安装的[逻辑应用 Azure CLI 扩展](/cli/azure/azure-cli-extensions-list)。 若要安装此扩展，请使用此命令：`az extension add --name logic`
 * 逻辑应用的 [工作流定义](quickstart-logic-apps-azure-cli.md#workflow-definition) 。 此 JSON 文件必须遵循 [工作流定义语言架构](logic-apps-workflow-definition-language.md)。
 * 通过与逻辑应用相同的资源组中支持的 [逻辑应用连接器](../connectors/apis-list.md) 连接到电子邮件帐户的 API。 此示例使用 [Office 365 Outlook](../connectors/connectors-create-api-office365-outlook.md) connector，但你也可以使用其他连接器（如 [Outlook.com](../connectors/connectors-create-api-outlook.md)）。
 
@@ -35,9 +35,9 @@ ms.locfileid: "92740732"
 
 * 登录 Azure 门户，并通过运行 `az login` 来检查订阅是否处于活动状态。
 
-* 通过运行 `az --version` 在终端或命令窗口中检查 Azure CLI 版本。 有关最新版本，请参阅[最新发行说明](/cli/azure/release-notes-azure-cli?tabs=azure-cli&view=azure-cli-latest)。
+* 通过运行 `az --version` 在终端或命令窗口中检查 Azure CLI 版本。 有关最新版本，请参阅[最新发行说明](/cli/azure/release-notes-azure-cli)。
 
-  * 如果没有最新版本，请按照[适用于你操作系统或平台的安装指南](/cli/azure/install-azure-cli?view=azure-cli-latest)来更新安装。
+  * 如果没有最新版本，请按照[适用于你操作系统或平台的安装指南](/cli/azure/install-azure-cli)来更新安装。
 
 ### <a name="sample-workflow-explanation"></a>示例工作流说明
 
@@ -195,14 +195,14 @@ az group delete --name testResourceGroup --yes
 
 此示例脚本使用以下命令创建新的资源组和逻辑应用。
 
-| 命令 | 说明 |
+| Command | 说明 |
 | ------- | ----- |
-| [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | 创建一个资源组，其中存储了逻辑应用的资源。 |
-| [`az logic workflow create`](/cli/azure/ext/logic/logic/workflow?view=azure-cli-latest#ext-logic-az-logic-workflow-create) | 基于参数中定义的工作流创建逻辑应用 `--definition` 。 |
-| [`az group delete`](/cli/azure/vm/extension?view=azure-cli-latest) | 删除资源组及其所有嵌套的资源。 |
+| [`az group create`](/cli/azure/group#az-group-create) | 创建一个资源组，其中存储了逻辑应用的资源。 |
+| [`az logic workflow create`](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-create) | 基于参数中定义的工作流创建逻辑应用 `--definition` 。 |
+| [`az group delete`](/cli/azure/vm/extension) | 删除资源组及其所有嵌套的资源。 |
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](/cli/azure/?view=azure-cli-latest)。
+有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](/cli/azure/)。
 
 可以在 [Microsoft 代码示例浏览器](/samples/browse/?products=azure-logic-apps)中找到其他逻辑应用 CLI 脚本示例。

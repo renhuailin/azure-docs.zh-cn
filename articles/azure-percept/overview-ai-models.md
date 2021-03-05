@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: conceptual
 ms.date: 02/16/2021
 ms.custom: template-concept
-ms.openlocfilehash: 8a9ed564012e8b530436152d931f5a5f6470ff98
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
-ms.translationtype: MT
+ms.openlocfilehash: d0cdabb3b22d642a7903810181106b09c549e1a2
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102098360"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102218156"
 ---
 # <a name="azure-percept-ai-models"></a>Azure Percept AI 模型
 
@@ -29,9 +29,9 @@ Azure Percept Studio 包含以下应用程序的示例模型：
 
 对于预先训练的模型，不需要进行编码或定型数据收集。 只需在门户中将所需的模型部署到 Azure Percept 深色，并打开 devkit 的视频流即可查看模型推断。 还可以通过 [Azure IoT 浏览器](https://github.com/Azure/azure-iot-explorer/releases) 工具访问模型推断遥测。
 
-## <a name="pre-built-solutions"></a>预先生成的解决方案
+## <a name="reference-solutions"></a>参考解决方案
 
-还提供了 [用于人员检测的空间分析预构建解决方案](https://github.com/george-moore/Santa-Cruz-AI-App) 。 预生成的解决方案是一种开源 AI 应用程序，可提供基于边缘的人员，并使用用户定义的区域入口/出口事件进行计数。 从本地边缘设备进行视频和 AI 输出的出口为 [Azure Data Lake](https://azure.microsoft.com/solutions/data-lake/)，用户界面作为 Azure 网站运行。 AI 推断由开源 AI 模型提供，用于人员检测。
+还提供了一种 [计算引用解决方案的人](https://github.com/microsoft/Azure-Percept-Reference-Solutions/tree/main/people-detection-app) 。 此参考解决方案是一种开源 AI 应用程序，提供基于边缘的人员，并使用用户定义的区域入口/出口事件进行计数。 从本地边缘设备进行视频和 AI 输出的出口为 [Azure Data Lake](https://azure.microsoft.com/solutions/data-lake/)，用户界面作为 Azure 网站运行。 AI 推断由开源 AI 模型提供，用于人员检测。
 
 :::image type="content" source="./media/overview-ai-models/people-detector.gif" alt-text="空间分析预生成的解决方案 gif。":::
 

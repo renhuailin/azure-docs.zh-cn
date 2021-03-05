@@ -9,12 +9,12 @@ ms.date: 01/02/2019
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: 42d388aed618a5a92212152166573719c9e973c6
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.openlocfilehash: 4f615ed44594379c79f179a467888652c597e286
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100371016"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102217170"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Azure Key Vault 的虚拟网络服务终结点
 
@@ -43,7 +43,6 @@ ms.locfileid: "100371016"
 | --- | --- |
 |Azure 虚拟机部署服务|[将证书从客户托管的 Key Vault 部署到 VM](/archive/blogs/kv/updated-deploy-certificates-to-vms-from-customer-managed-key-vault)。|
 |Azure 资源管理器模板部署服务|[在部署期间传递安全值](../../azure-resource-manager/templates/key-vault-parameter.md)。|
-|Azure 应用程序网关 v2 SKU|[使用 Key Vault 证书进行 TLS 终止](../../application-gateway/key-vault-certs.md)|
 |Azure 磁盘加密卷加密服务|允许在虚拟机部署期间访问 BitLocker 密钥 (Windows VM) 或 DM 密码 (Linux VM) 和密钥加密密钥。 这将启用 [Azure 磁盘加密](../../security/fundamentals/encryption-overview.md)。|
 |Azure 备份|允许使用 [Azure 备份](../../backup/backup-overview.md)在 Azure 虚拟机备份期间备份和还原相关密钥和机密。|
 |Exchange Online 和 SharePoint Online|允许使用[客户密钥](/microsoft-365/compliance/customer-key-overview)访问 Azure 存储服务加密的客户密钥。|
