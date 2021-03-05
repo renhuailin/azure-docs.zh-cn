@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: f5a248b8701c71b2dcf0415c6656b9b565535232
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
-ms.translationtype: MT
+ms.openlocfilehash: 2427fbdaa497ccb6d9a46330dcc6eb872e1d28ac
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101096525"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102214161"
 ---
 # <a name="azure-resources-for-qna-maker"></a>适用于 QnA Maker 的 Azure 资源
 
@@ -66,7 +66,7 @@ QnA Maker 使用多个 Azure 源，每个都有不同的用途。 了解如何�
 | -------------------------- | -------------------- | ----------- | ------------ | -------------------------------- |
 | **试验**        | 免费 SKU             | 免费层   | 免费层    | 分别最多发布 2 KB、50 MB 大小  |
 | **开发/测试环境**   | 标准 SKU         | 共享      | 基本        | 分别最多发布 14 KB、2 GB 大小    |
-| **生产环境** | 标准 SKU         | 基本       | Standard     | 分别最多发布 49 KB、25 GB 大小 |
+| **生产环境** | 标准 SKU         | 基本       | 标准     | 分别最多发布 49 KB、25 GB 大小 |
 
 # <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/v2)
 
@@ -94,7 +94,7 @@ QnA Maker 使用多个 Azure 源，每个都有不同的用途。 了解如何�
 | -------------------------- |------------ | -------------------------------- |
 | **试验**        |免费层    | 分别最多发布 2 KB、50 MB 大小  |
 | **开发/测试环境**   |基本        | 分别最多发布 14 KB、2 GB 大小    |
-| **生产环境** |Standard     | 分别最多发布 49 KB、25 GB 大小 |
+| **生产环境** |标准     | 分别最多发布 49 KB、25 GB 大小 |
 
 ---
 
@@ -126,7 +126,7 @@ QnA Maker 托管是一项免费服务，吞吐量当前每秒上限为10个事�
 |[升级](../How-to/set-up-qnamaker-service-azure.md#upgrade-app-service) 应用服务 SKU 和检查认知搜索层并 [创建认知搜索副本](../../../search/search-capacity-planning.md)|您的知识库需要提供客户端应用程序的更多请求，例如聊天机器人。|
 |[升级](../How-to/set-up-qnamaker-service-azure.md#upgrade-the-azure-cognitive-search-service) Azure 认知搜索服务|你计划有多个知识库。|
 
-通过 [在 Azure 门户中更新应用服务](../how-to/set-up-qnamaker-service-azure.md#get-the-latest-runtime-updates)来获取最新的运行时更新。
+通过 [在 Azure 门户中更新应用服务](../how-to/configure-QnA-Maker-resources.md#get-the-latest-runtime-updates)来获取最新的运行时更新。
 
 # <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/v2)
 
@@ -307,7 +307,7 @@ QnA Maker 资源提供对创作和发布 Api 的访问，以及自然语言处�
 
 如果通过门户创建 QnA 服务及其依赖项 (如搜索) ，系统会为您创建一个搜索服务并将其链接到 QnA Maker 服务。 创建这些资源后，你可以更新应用服务设置，以使用以前存在的搜索服务，并删除刚刚创建的搜索服务。
 
-了解 [如何将 QnA Maker 配置](../How-To/set-up-qnamaker-service-azure.md#configure-qna-maker-to-use-different-cognitive-search-resource) 为使用不同的认知服务资源，而不是创建 QnA Maker 资源创建过程的一部分。
+了解 [如何将 QnA Maker 配置](../How-To/configure-QnA-Maker-resources.md#configure-qna-maker-to-use-different-cognitive-search-resource) 为使用不同的认知服务资源，而不是创建 QnA Maker 资源创建过程的一部分。
 
 ### <a name="app-service-and-app-service-plan"></a>应用服务和应用服务计划
 

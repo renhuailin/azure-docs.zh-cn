@@ -7,12 +7,12 @@ ms.service: azure-redhat-openshift
 ms.topic: conceptual
 ms.date: 10/30/2020
 keywords: java、jakartaee、javaee、microprofile、开放式-自由、websphere-、aro、openshift、red hat
-ms.openlocfilehash: acb448a9662daa58b5d2ff42861e238e23586b33
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
-ms.translationtype: MT
+ms.openlocfilehash: 08fd3ab112498a983b438d5ba1f1f100816cbf5d
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100633880"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102212988"
 ---
 # <a name="deploy-a-java-application-with-open-libertywebsphere-liberty-on-an-azure-red-hat-openshift-4-cluster"></a>在 Azure Red Hat OpenShift 4 群集上使用开放式自由/WebSphere 自由部署 Java 应用程序
 
@@ -31,7 +31,7 @@ ms.locfileid: "100633880"
 1. 安装 Java SE 实现 (例如， [AdoptOpenJDK OpenJDK 8 LTS/OpenJ9](https://adoptopenjdk.net/?variant=openjdk8&jvmVariant=openj9)) 。
 1. 安装 [Maven](https://maven.apache.org/download.cgi) 3.5.0 或更高版本。
 1. 安装适用于你的操作系统的 [Docker](https://docs.docker.com/get-docker/) 。
-1. 安装 [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest) 2.0.75 或更高版本。
+1. 安装 [Azure CLI](/cli/azure/install-azure-cli) 2.0.75 或更高版本。
 1. [`envsubst`](https://command-not-found.com/envsubst)如果未在操作系统中预先安装，请检查并安装。
 1. 在本地系统上克隆此示例的代码。 该示例位于 [GitHub](https://github.com/Azure-Samples/open-liberty-on-aro)上。
 1. 按照 [创建 Azure Red Hat OpenShift 4 群集](./tutorial-create-cluster.md)中的说明进行操作。
@@ -40,7 +40,7 @@ ms.locfileid: "100633880"
 
    如果打算在群集上运行内存密集型应用程序，请使用参数为辅助角色节点指定适当的虚拟机大小 `--worker-vm-size` 。 例如， `Standard_E4s_v3` 是在群集上安装 Elasticsearch 操作员的最小虚拟机大小。 有关详细信息，请参阅：
 
-   * [Azure CLI 创建群集](/cli/azure/aro?preserve-view=true&view=azure-cli-latest#az-aro-create)
+   * [Azure CLI 创建群集](/cli/azure/aro#az-aro-create)
    * [内存优化支持的虚拟机大小](./support-policies-v4.md#memory-optimized)
    * [安装 Elasticsearch 运算符的先决条件](https://docs.openshift.com/container-platform/4.3/logging/cluster-logging-deploying.html#cluster-logging-deploy-eo-cli_cluster-logging-deploying)
 

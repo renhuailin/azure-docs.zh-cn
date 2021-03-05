@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 07/17/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, deploy
-ms.openlocfilehash: 46b8f153e65f436fa1062a0606e0fb0136d972a5
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
-ms.translationtype: MT
+ms.openlocfilehash: 0a536781f3218807c36f6eefe738b9a375de8d4b
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97824621"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102213124"
 ---
 # <a name="deploy-your-existing-model-with-azure-machine-learning"></a>使用 Azure 机器学习部署现有模型
 
@@ -34,7 +34,7 @@ ms.locfileid: "97824621"
 
 * [Azure 机器学习 Python SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)。  
 
-* [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest) 和[机器学习 CLI 扩展](reference-azure-machine-learning-cli.md)。
+* [Azure CLI](/cli/azure/install-azure-cli) 和[机器学习 CLI 扩展](reference-azure-machine-learning-cli.md)。
 
 * 定型的模型。 必须将模型保留到开发环境中的一个或多个文件中。 <br><br>为了演示如何注册训练的模型，本文中的示例代码使用 [Paolo Ripamonti 的 Twitter 情绪分析项目](https://www.kaggle.com/paoloripamonti/twitter-sentiment-analysis)中的模型。
 
@@ -61,7 +61,7 @@ az ml model register -p ./models -n sentiment -w myworkspace -g myresourcegroup
 > [!TIP]
 > 还可以设置为向已注册的模型添加 `tags` 和 `properties` 字典对象。 以后可以使用这些值来帮助识别特定的模型。 例如使用的框架、训练参数等。
 
-有关详细信息，请参阅 [az ml model register](/cli/azure/ext/azure-cli-ml/ml/model?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-register) 参考。
+有关详细信息，请参阅 [az ml model register](/cli/azure/ext/azure-cli-ml/ml/model#ext-azure-cli-ml-az-ml-model-register) 参考。
 
 
 有关一般情况下模型注册的详细信息，请参阅[管理、部署和监视机器学习模型](concept-model-management-and-deployment.md)。
@@ -268,7 +268,7 @@ print("scoring URI: " + service.scoring_uri)
 az ml model deploy -n myservice -m sentiment:1 --ic inferenceConfig.json --dc deploymentConfig.json
 ```
 
-有关详细信息，请参阅 [az ml model deploy](/cli/azure/ext/azure-cli-ml/ml/model?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-deploy) 参考文档。
+有关详细信息，请参阅 [az ml model deploy](/cli/azure/ext/azure-cli-ml/ml/model#ext-azure-cli-ml-az-ml-model-deploy) 参考文档。
 
 有关部署的详细信息，请参阅[部署模型的方式和位置](how-to-deploy-and-where.md)。
 

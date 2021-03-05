@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: sudbalas
-ms.openlocfilehash: 552aad3e3b41bcfd55d1b57a53d8dff2080a6210
-ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
-ms.translationtype: MT
+ms.openlocfilehash: 94034edfa1a5c6ffccd022b4cbf7bae42cc0bae3
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100534696"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102212461"
 ---
 # <a name="secure-access-to-a-key-vault"></a>保护对密钥保管库的访问
 
@@ -36,7 +36,7 @@ Azure 密钥保管库是一种云服务，用于保护加密密钥和机密（�
 
 * 组安全主体标识在 Azure Active Directory 中创建的一组用户。 分配给组的任何角色或权限都将授予组内的所有用户。
 
-* 服务主体是一类安全主体，它标识应用程序或服务，即一段代码，而不是用户或组。 服务主体的对象 ID 称为其客户端 ID，作用类似于其用户名。 服务主体的客户端密码或证书的作用类似于其密码 。 许多 Azure 服务支持分配带有 **客户端 ID** 和 **证书** 自动管理功能的 [托管标识](../../active-directory/managed-identities-azure-resources/overview.md)。 对于在 Azure 中进行身份验证而言，托管标识是最安全的，建议选择这种方式。
+* **服务主体** 是一种安全主体，用于标识应用程序或服务，即一段代码，而不是用户或组。 服务主体的对象 ID 称为其客户端 ID，作用类似于其用户名。 服务主体的客户端密码或证书的作用类似于其密码 。 许多 Azure 服务支持分配带有 **客户端 ID** 和 **证书** 自动管理功能的 [托管标识](../../active-directory/managed-identities-azure-resources/overview.md)。 对于在 Azure 中进行身份验证而言，托管标识是最安全的，建议选择这种方式。
 
 若要详细了解如何对 Key Vault 进行身份验证，请参阅[对 Azure Key Vault 进行身份验证](authentication.md)
 

@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 04/05/2020
 ms.author: haroldw
-ms.openlocfilehash: 054fb2ffc65b44d5436282eab5327f0facf39c06
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.openlocfilehash: ce3f56530a7bad6eecd4c2edd3b21debe8c75a24
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101671190"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102214144"
 ---
 # <a name="deploy-openshift-container-platform-311-in-azure"></a>在 Azure 中部署 OpenShift 容器平台3.11
 
@@ -244,7 +244,7 @@ ms.locfileid: "101671190"
 
 ### <a name="azuredeployparametersjson-file-explained"></a>说明的文件 azuredeploy.Parameters.js
 
-| 属性 | 说明 | 有效选项 | 默认值 |
+| 属性 | 描述 | 有效选项 | 默认值 |
 |----------|-------------|---------------|---------------|
 | `_artifactsLocation`  |  (json、脚本等项目的 URL )  |  |  https： \/ /raw.githubusercontent.com/Microsoft/openshift-container-platform/master  |
 | `location` | 要将资源部署到的 Azure 区域 |  |  |
@@ -308,7 +308,7 @@ ms.locfileid: "101671190"
 ### <a name="deploy-using-azure-cli"></a>使用 Azure CLI 进行部署
 
 > [!NOTE] 
-> 以下命令需要 Azure CLI 2.0.8 或更高版本。 可以使用 `az --version` 命令检查 CLI 版本。 若要更新 CLI 版本，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latesti)。
+> 以下命令需要 Azure CLI 2.0.8 或更高版本。 可以使用 `az --version` 命令检查 CLI 版本。 若要更新 CLI 版本，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
 以下示例使用名为 myOpenShiftCluster 的部署将 OpenShift 群集和所有相关资源部署到名为 openshiftrg 的资源组中。 它直接从 GitHub 存储库引用模板并使用名为 azuredeploy.parameters.json 的本地参数文件。
 

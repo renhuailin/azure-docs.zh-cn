@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 03/30/2020
 ms.author: prtyag
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4a9b3d534e74ccd44dfaa35ec5bf3b65f50641c7
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.openlocfilehash: e4b06cbcbef79e243116bddb33adbcf6476fac8a
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101666648"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102213362"
 ---
 # <a name="kdump-for-sap-hana-on-azure-large-instances-hli"></a>用于 Azure SAP HANA 大型实例 (，) 的 Kdump
 
@@ -67,7 +67,7 @@ ms.locfileid: "101666648"
 
 ## <a name="setup-details"></a>设置详细信息
 
-- 可在[此处](https://github.com/Azure/sap-hana/blob/master/tools/enable-kdump.sh)找到用于启用 Kdump 的脚本
+- 可在[此处](https://github.com/Azure/sap-hana-tools/blob/master/tools/enable-kdump.sh)找到用于启用 Kdump 的脚本
 > [!NOTE]
 > 此脚本基于实验室设置进行，客户应与操作系统供应商联系以获得进一步的优化。
 > 将为新的和现有的服务器预配单独的 LUN，以便保存转储，脚本将负责将文件系统配置在 LUN 外。

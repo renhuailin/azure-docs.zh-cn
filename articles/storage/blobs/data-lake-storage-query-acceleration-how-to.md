@@ -9,12 +9,12 @@ ms.date: 01/06/2021
 ms.author: normesta
 ms.reviewer: jamsbak
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 5d5278c33c24c7f95459b9c121bca9e960615b9c
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
-ms.translationtype: MT
+ms.openlocfilehash: a925d3f55395d094c7f19f65de4b72fd20a11a41
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99260174"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102213668"
 ---
 # <a name="filter-data-by-using-azure-data-lake-storage-query-acceleration"></a>使用 Azure Data Lake Storage 查询加速来筛选数据
 
@@ -40,7 +40,7 @@ ms.locfileid: "99260174"
 
   ### <a name="java"></a>[Java](#tab/java)
 
-  - [Java 开发工具包 (JDK)](/java/azure/jdk/?view=azure-java-stable&preserve-view=true) 8 或更高版本
+  - [Java 开发工具包 (JDK)](/java/azure/jdk/) 8 或更高版本
 
   - [Apache Maven](https://maven.apache.org/download.cgi) 
 
@@ -51,7 +51,7 @@ ms.locfileid: "99260174"
 
   [Python](https://www.python.org/downloads/) 3.8 或更高版本。
 
-  ### <a name="nodejs"></a>Node.js
+  ### <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
   使用 Node.js SDK 不需要额外的先决条件。
 
@@ -152,7 +152,7 @@ az provider register --namespace 'Microsoft.Storage'
 
 ---
 
-## <a name="set-up-your-environment"></a>设置环境
+## <a name="set-up-your-environment"></a>设置你的环境
 
 ### <a name="step-1-install-packages"></a>步骤1：安装包 
 
@@ -221,7 +221,7 @@ Update-Module -Name Az
 pip install azure-storage-blob==12.4.0
 ```
 
-#### <a name="nodejs"></a>Node.js
+#### <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
 打开一个终端窗口，然后键入以下命令来安装适用于 JavaScript 的 Data Lake 客户端库。
 
@@ -286,7 +286,7 @@ import sys, csv
 from azure.storage.blob import BlobServiceClient, ContainerClient, BlobClient, DelimitedTextDialect, BlobQueryError
 ```
 
-### <a name="nodejs"></a>Node.js
+### <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
 将 `storage-blob` 此语句放置在代码文件的顶部，以包含模块。 
 

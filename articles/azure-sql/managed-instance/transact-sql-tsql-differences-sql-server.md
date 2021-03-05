@@ -9,14 +9,14 @@ ms.topic: reference
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, bonova, danil
-ms.date: 1/12/2021
+ms.date: 3/5/2021
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: a182ca3ba70b9faa1ba67fdb6c91a4eaf8e766ef
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: 014140b9b9832bab3de4f71c0b5f164b564b3fe5
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101691189"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102212716"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>SQL Server 与 Azure SQL 托管实例之间的 T-SQL 差异
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -252,7 +252,7 @@ WITH PRIVATE KEY (<private_key_options>)
 默认会设置以下选项，无法更改这些选项：
 
 - `MULTI_USER`
-- `ENABLE_BROKER ON`
+- `ENABLE_BROKER`
 - `AUTO_CLOSE OFF`
 
 无法修改以下选项：
@@ -471,6 +471,10 @@ SQL 托管实例中的链接服务器支持有限数量的目标：
 - `sys.routes`：作为先决条件，必须从 sys.routes 中选择地址。 该地址必须在每个路由的本地。 请参阅 [sys.routes](/sql/relational-databases/system-catalog-views/sys-routes-transact-sql)。
 - `CREATE ROUTE`：不能将 `CREATE ROUTE` 与除 `LOCAL` 以外的 `ADDRESS` 配合使用。 请参阅 [CREATE ROUTE](/sql/t-sql/statements/create-route-transact-sql)。
 - `ALTER ROUTE`：不能将 `ALTER ROUTE` 与除 `LOCAL` 以外的 `ADDRESS` 配合使用。 请参阅 [ALTER ROUTE](/sql/t-sql/statements/alter-route-transact-sql)。 
+
+Service broker 默认处于启用状态，并且无法禁用。 不支持下列 ALTER database 选项：
+- `ENABLE_BROKER`
+- `DISABLE_BROKER`
 
 ### <a name="stored-procedures-functions-and-triggers"></a>存储过程、函数和触发器
 

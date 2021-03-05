@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/7/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 5a7cfec6acb4cd8735c039f5eab30bac4ccf55b0
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
-ms.translationtype: MT
+ms.openlocfilehash: 6a0676418e951b84c9b973bd93c2750e410392d1
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100556139"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102212803"
 ---
 # <a name="write-client-app-authentication-code"></a>编写客户端应用身份验证代码
 
@@ -33,8 +33,8 @@ Azure 数字孪生使用 [基于 OAUTH 2.0 Azure AD 安全令牌](../active-dire
 `Azure.Identity` 是一个客户端库，提供若干凭据获取方法，你可以使用这些方法来获取持有者令牌并使用 SDK 进行身份验证。 尽管本文提供了 c # 中的示例，但你可以查看 `Azure.Identity` 多种语言，其中包括 .。。
 
 * [.NET (C#)](/dotnet/api/azure.identity?preserve-view=true&view=azure-dotnet)
-* [Java](/java/api/overview/azure/identity-readme?preserve-view=true&view=azure-java-stable)
-* [JavaScript](/javascript/api/overview/azure/identity-readme?preserve-view=true&view=azure-node-latest)
+* [Java](/java/api/overview/azure/identity-readme)
+* [JavaScript](/javascript/api/overview/azure/identity-readme)
 * [Python](/python/api/overview/azure/identity-readme?preserve-view=true&view=azure-python)
 
 中有三个常见的凭据获取方法 `Azure.Identity` ：

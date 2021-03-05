@@ -7,12 +7,12 @@ ms.date: 07/23/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 5f82206a7c86c5ae1e6477419faee0dca88ef883
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
-ms.translationtype: MT
+ms.openlocfilehash: 7e0d93d3fd179d672b49967c575bbfb9c0fc5de0
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95495281"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102213685"
 ---
 # <a name="use-iot-plug-and-play-models-in-an-iot-solution"></a>在 IoT 解决方案中使用 IoT 即插即用模型
 
@@ -40,10 +40,10 @@ IoT 中心将设备型号 ID 作为设备连接流的一部分，通知解决方
 
 ### <a name="get-device-twin-api"></a>获取设备克隆 API
 
-解决方案可以使用 [获取设备](/java/api/com.microsoft.azure.sdk.iot.device.deviceclient.getdevicetwin?preserve-view=true&view=azure-java-stable) 克隆 API 来检索 IoT 即插即用设备的型号 ID。
+解决方案可以使用 [获取设备](/java/api/com.microsoft.azure.sdk.iot.device.deviceclient.getdevicetwin) 克隆 API 来检索 IoT 即插即用设备的型号 ID。
 
 > [!TIP]
-> 对于模块和 IoT Edge 模块，请使用 [getTwin](/java/api/com.microsoft.azure.sdk.iot.device.moduleclient.gettwin?preserve-view=true&view=azure-java-stable)。
+> 对于模块和 IoT Edge 模块，请使用 [getTwin](/java/api/com.microsoft.azure.sdk.iot.device.moduleclient.gettwin)。
 
 在以下设备克隆的响应代码段中， `modelId` 包含 IoT 即插即用设备的型号 ID：
 

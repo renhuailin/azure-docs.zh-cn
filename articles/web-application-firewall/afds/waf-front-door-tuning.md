@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/11/2020
 ms.author: mohitku
 ms.reviewer: tyao
-ms.openlocfilehash: 8752886bc5304de420083212d29ccd3e1cb14084
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.openlocfilehash: 21550cc34b21756186ea607c3efd2ebd10cbf979
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102043688"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102214246"
 ---
 # <a name="tuning-web-application-firewall-waf-for-azure-front-door"></a>优化 Web 应用程序防火墙 (WAF) 用于 Azure 前门
  
@@ -144,7 +144,7 @@ AzureDiagnostics
  
 考虑排除是全局设置，这一点很重要。 这意味着，配置的排除将应用于通过 WAF 传递的所有流量，而不只是特定的 web 应用或 URI。 例如，如果 *1 = 1* 是特定 web 应用的正文中的有效请求，而不是同一 WAF 策略下的其他请求，则可能需要考虑这一点。 如果对不同的应用程序使用不同的排除列表是有意义的，请考虑对每个应用程序使用不同的 WAF 策略，并将它们应用于每个应用程序的前端。
  
-为托管规则配置排除列表时，可以选择排除规则集内的所有规则、规则组中的所有规则或单个规则。 可以使用 [PowerShell](/powershell/module/az.frontdoor/New-AzFrontDoorWafManagedRuleExclusionObject?view=azps-4.7.0&viewFallbackFrom=azps-3.5.0)、 [AZURE CLI](/cli/azure/ext/front-door/network/front-door/waf-policy/managed-rules/exclusion?view=azure-cli-latest#ext_front_door_az_network_front_door_waf_policy_managed_rules_exclusion_add)、 [Rest API](/rest/api/frontdoorservice/webapplicationfirewall/policies/createorupdate)或 Azure 门户配置排除列表。
+为托管规则配置排除列表时，可以选择排除规则集内的所有规则、规则组中的所有规则或单个规则。 可以使用 [PowerShell](/powershell/module/az.frontdoor/New-AzFrontDoorWafManagedRuleExclusionObject?view=azps-4.7.0&viewFallbackFrom=azps-3.5.0)、 [AZURE CLI](/cli/azure/ext/front-door/network/front-door/waf-policy/managed-rules/exclusion#ext_front_door_az_network_front_door_waf_policy_managed_rules_exclusion_add)、 [Rest API](/rest/api/frontdoorservice/webapplicationfirewall/policies/createorupdate)或 Azure 门户配置排除列表。
 
 * 规则级别的排除项
   * 如果在规则级别应用排除项，则意味着不会针对单个规则对指定的排除项进行分析，而规则集中的所有其他规则仍将对其进行分析。 这是最细化的排除级别，可用于根据在对事件进行故障排除时在 WAF 日志中找到的信息来微调托管规则集。
@@ -201,7 +201,7 @@ AzureDiagnostics
  
 但是，禁用规则是适用于所有与 WAF 策略关联的前端主机的全局设置。 当你选择禁用规则时，可能会在没有保护或检测到与 WAF 策略关联的任何其他前端主机的情况下，留下公开的漏洞。
  
-如果要使用 Azure PowerShell 禁用托管规则，请参阅 [`PSAzureManagedRuleOverride`](/powershell/module/az.frontdoor/new-azfrontdoorwafmanagedruleoverrideobject?preserve-view=true&view=azps-4.7.0) 对象文档。 如果要使用 Azure CLI，请参阅 [`az network front-door waf-policy managed-rules override`](/cli/azure/ext/front-door/network/front-door/waf-policy/managed-rules/override?preserve-view=true&view=azure-cli-latest) 文档。
+如果要使用 Azure PowerShell 禁用托管规则，请参阅 [`PSAzureManagedRuleOverride`](/powershell/module/az.frontdoor/new-azfrontdoorwafmanagedruleoverrideobject?preserve-view=true&view=azps-4.7.0) 对象文档。 如果要使用 Azure CLI，请参阅 [`az network front-door waf-policy managed-rules override`](/cli/azure/ext/front-door/network/front-door/waf-policy/managed-rules/override) 文档。
 
 ![WAF 规则](../media/waf-front-door-tuning/waf-rules.png)
 

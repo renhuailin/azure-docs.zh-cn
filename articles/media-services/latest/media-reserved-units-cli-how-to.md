@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: inhenkel
-ms.openlocfilehash: 98e87cf9d1f46ddb8ee1d433bd0b0ba8806fac89
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
-ms.translationtype: MT
+ms.openlocfilehash: a07c4a20b854e09daf3b320b8c99757ca99b2578
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101091932"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102213804"
 ---
 # <a name="how-to-scale-media-reserved-units"></a>如何缩放媒体保留单位
 
@@ -36,7 +36,7 @@ ms.locfileid: "101091932"
 
 运行 `mru` 命令。
 
-以下 [az ams account mru](/cli/azure/ams/account/mru?view=azure-cli-latest) 命令使用 **count** 和 **type** 参数在“amsaccount”帐户上设置媒体预留单位。
+以下 [az ams account mru](/cli/azure/ams/account/mru) 命令使用 **count** 和 **type** 参数在“amsaccount”帐户上设置媒体预留单位。
 
 ```azurecli
 az ams account mru set -n amsaccount -g amsResourceGroup --count 10 --type S3

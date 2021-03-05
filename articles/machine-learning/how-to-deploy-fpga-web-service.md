@@ -11,12 +11,12 @@ author: jpe316
 ms.date: 09/24/2020
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy21q2, devx-track-python, deploy
-ms.openlocfilehash: 9e43291325510f92f2e5fd6c07cdb9257fdede9d
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
-ms.translationtype: MT
+ms.openlocfilehash: 39c7d980bf9a90e5f72dfc9366d0ec44204b1ed2
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033062"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102212784"
 ---
 # <a name="deploy-ml-models-to-field-programmable-gate-arrays-fpgas-with-azure-machine-learning"></a>向现场可编程的入口阵列部署 ML 模型 (Fpga) 与 Azure 机器学习 
 
@@ -68,7 +68,7 @@ Azure VM 的 PBS 系列包含 Intel Arria 10 FPGA。 查看 Azure 配额分配�
  
 - 硬件加速模型包：  `pip install --upgrade azureml-accel-models[cpu]`    
     
-- [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)
+- [Azure CLI](/cli/azure/install-azure-cli)
 
 - FPGA 配额。 提交 [配额请求](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2nac9-PZhBDnNSV2ITz0LNUN0U5S0hXRkNITk85QURTWk9ZUUFUWkkyTC4u)，或运行此 CLI 命令以检查配额： 
 
