@@ -5,17 +5,17 @@ description: 可以使用自己的加密密钥来保护存储帐户中的数据�
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 09/15/2020
+ms.date: 03/05/2021
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 9afce964652d2bedbe105a8a750a93d2f37eef85
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
-ms.translationtype: MT
+ms.openlocfilehash: 92a83e03d486d0bf9344fbdcf705703ea788528c
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98179025"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102218564"
 ---
 # <a name="customer-managed-keys-for-azure-storage-encryption"></a>客户管理的密钥（用于 Azure 存储加密）
 
@@ -25,7 +25,10 @@ ms.locfileid: "98179025"
 
 有关 Azure Key Vault 的详细信息，请参阅[什么是 Azure Key Vault？](../../key-vault/general/overview.md)。
 
-> [!NOTE]
+> [!IMPORTANT]
+>
+> Azure Key Vault 托管 HSM 中存储的客户托管密钥的加密当前为 **预览版**。 请参阅 [Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) ，它们适用于适用于 beta、preview 或其他尚未公开上市的 Azure 功能的法律条款。
+>
 > Azure Key Vault 和 Azure Key Vault 托管 HSM 支持相同的 Api 和管理接口进行配置。
 
 ## <a name="about-customer-managed-keys"></a>关于客户托管密钥
@@ -78,7 +81,7 @@ Azure 存储加密支持2048、3072和4096大小的 RSA 和 RSA-HSM 密钥。 �
 
     显式指定密钥版本后，必须手动更新存储帐户，以便在创建新版本时使用新密钥版本 URI。 若要了解如何将存储帐户更新为使用新的密钥版本，请参阅使用 [Azure Key Vault 中存储的客户托管密钥配置加密](customer-managed-keys-configure-key-vault.md) 或使用 [存储在 Azure Key Vault 托管 HSM (预览) 中的客户托管密钥配置加密 ](customer-managed-keys-configure-key-vault-hsm.md)。
 
-更新密钥版本时，将更改根加密密钥的保护，但不会重新加密 Azure 存储帐户中的数据。 用户无需执行任何其他操作。
+更新密钥版本时，根加密密钥的保护会更改，但是 Azure 存储帐户中的数据不会重新加密。 用户无需执行任何其他操作。
 
 > [!NOTE]
 > 若要轮换密钥，请根据你的符合性策略，在密钥保管库或托管 HSM 中创建密钥的新版本。 可以手动轮换密钥，或创建一个函数以便按计划轮换密钥。

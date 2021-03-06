@@ -6,30 +6,33 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/21/2020
+ms.date: 03/05/2021
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 2f57e801720c6b546a58b216422629d192e8d2e6
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
-ms.translationtype: MT
+ms.openlocfilehash: f9be9272a898ad48f3553d4c5e48952e1fcdde81
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843309"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102218632"
 ---
 # <a name="configure-encryption-with-customer-managed-keys-stored-in-azure-key-vault-managed-hsm-preview"></a>用 Azure Key Vault 托管 HSM (预览版中存储的客户托管密钥配置加密) 
 
-Azure 存储对静态存储帐户中的所有数据进行加密。 默认情况下，数据使用 Microsoft 管理的密钥进行加密。 为了进一步控制加密密钥，你可以管理自己的密钥。 客户托管的密钥必须存储在 Azure Key Vault 或 Key Vault 托管硬件安全模型 (HSM)  (预览版) 中。 Azure Key Vault 托管 HSM 是经过 FIPS 140-2 第3级验证的 HSM。
+Azure 存储对静态存储帐户中的所有数据进行加密。 默认情况下，数据使用 Microsoft 管理的密钥进行加密。 为了更进一步控制加密密钥，你可以管理自己的密钥。 客户托管的密钥必须存储在 Azure Key Vault 或 Key Vault 托管硬件安全模型 (HSM)  (预览版) 中。 Azure Key Vault 托管 HSM 是经过 FIPS 140-2 第3级验证的 HSM。
 
 本文介绍如何使用 Azure CLI 通过存储在托管 HSM 中的客户托管密钥配置加密。 若要了解如何使用存储在密钥保管库中的客户托管密钥配置加密，请参阅 [使用 Azure Key Vault 中存储的客户托管密钥配置加密](customer-managed-keys-configure-key-vault.md)。
 
-> [!NOTE]
+> [!IMPORTANT]
+>
+> Azure Key Vault 托管 HSM 中存储的客户托管密钥的加密当前为 **预览版**。 请参阅 [Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) ，它们适用于适用于 beta、preview 或其他尚未公开上市的 Azure 功能的法律条款。
+>
 > Azure Key Vault 和 Azure Key Vault 托管 HSM 支持相同的 Api 和管理接口进行配置。
 
 ## <a name="assign-an-identity-to-the-storage-account"></a>将标识分配到存储帐户
 
-首先，将系统分配的托管标识分配给存储帐户。 你将使用此托管标识向存储帐户授予访问托管 HSM 的权限。 有关系统分配的托管标识的详细信息，请参阅 [Azure 资源的托管标识是什么？](../../active-directory/managed-identities-azure-resources/overview.md)。
+首先，将系统分配的托管标识分配给存储帐户。 你将使用此托管标识向存储帐户授予访问托管 HSM 的权限。 有关系统分配的托管标识的详细信息，请参阅[什么是 Azure 资源托管标识？](../../active-directory/managed-identities-azure-resources/overview.md)。
 
 若要使用 Azure CLI 分配托管标识，请调用 [az storage account update](/cli/azure/storage/account#az-storage-account-update)。 请记得将括号中的占位符值替换为你自己的值：
 
@@ -97,4 +100,4 @@ az storage account update
 ## <a name="next-steps"></a>后续步骤
 
 - [静态数据的 Azure 存储加密](storage-service-encryption.md)
-- [用于 Azure 存储加密的客户托管密钥](customer-managed-keys-overview.md)
+- [用于 Azure 存储加密的客户管理的密钥](customer-managed-keys-overview.md)

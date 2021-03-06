@@ -8,12 +8,12 @@ ms.date: 5/11/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: f307380114acd4f98d68b580333c4dccc2a7340b
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
-ms.translationtype: MT
+ms.openlocfilehash: 97ccbd0858a7b85c4b5d1e460f67416d8139e49a
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/05/2021
-ms.locfileid: "102201594"
+ms.locfileid: "102218598"
 ---
 # <a name="configuring-azure-file-sync-network-endpoints"></a>配置 Azure 文件同步网络终结点
 Azure 文件存储和 Azure 文件同步提供两种主要类型的终结点用于访问 Azure 文件共享： 
@@ -34,7 +34,7 @@ Azure 文件存储和 Azure 文件同步提供两种主要类型的终结点用�
 
 此外：
 - 如果你打算使用 Azure PowerShell，请[安装最新版本](/powershell/azure/install-az-ps)。
-- 如果你打算使用 Azure CLI，请[安装最新版本](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)。
+- 如果你打算使用 Azure CLI，请[安装最新版本](/cli/azure/install-azure-cli)。
 
 ## <a name="create-the-private-endpoints"></a>创建专用终结点
 为 Azure 资源创建专用终结点时，将部署以下资源：

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/29/2020
 ms.author: irenehua
-ms.openlocfilehash: 952889777e4236d7fa03fad5b1bdbf98499f7066
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: 52f2a2ed301bf734ad605a2ee68a0ab672a97014
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101721304"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102218717"
 ---
 # <a name="update-or-delete-a-load-balancer-used-by-virtual-machine-scale-sets"></a>更新或删除虚拟机规模集使用的负载均衡器
 
@@ -30,7 +30,7 @@ ms.locfileid: "101721304"
 
 ## <a name="set-up-a-load-balancer-for-scaling-out-virtual-machine-scale-sets"></a>设置用于扩展虚拟机规模集的负载均衡器
 
-请确保 Azure 负载均衡器实例已设置 [入站 NAT 池](/cli/azure/network/lb/inbound-nat-pool?view=azure-cli-latest) ，并且虚拟机规模集已放入负载均衡器的后端池中。 将新的虚拟机实例添加到虚拟机规模集时，负载均衡器会自动在入站 NAT 池中创建新的入站 NAT 规则。
+请确保 Azure 负载均衡器实例已设置 [入站 NAT 池](/cli/azure/network/lb/inbound-nat-pool) ，并且虚拟机规模集已放入负载均衡器的后端池中。 将新的虚拟机实例添加到虚拟机规模集时，负载均衡器会自动在入站 NAT 池中创建新的入站 NAT 规则。
 
 若要检查是否正确设置了入站 NAT 池：
 
@@ -44,7 +44,7 @@ ms.locfileid: "101721304"
 
 若要为虚拟机规模集添加一组完整的入站 NAT 规则，请先在负载均衡器中创建一个入站 NAT 池。 然后从虚拟机规模集的网络配置文件中引用入站 NAT 池。 显示了使用 CLI 的完整示例。
 
-新的入站 NAT 池的前端端口范围不应与现有的入站 NAT 池重叠。 若要查看设置的现有入站 NAT 池，请使用以下 [CLI 命令](/cli/azure/network/lb/inbound-nat-pool?view=azure-cli-latest#az_network_lb_inbound_nat_pool_list)：
+新的入站 NAT 池的前端端口范围不应与现有的入站 NAT 池重叠。 若要查看设置的现有入站 NAT 池，请使用以下 [CLI 命令](/cli/azure/network/lb/inbound-nat-pool#az_network_lb_inbound_nat_pool_list)：
   
 ```azurecli-interactive
   az network lb inbound-nat-pool create 

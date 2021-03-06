@@ -11,12 +11,12 @@ ms.date: 02/16/2020
 ms.topic: conceptual
 ms.reviewer: larryfr
 ms.custom: deploy
-ms.openlocfilehash: 3d2e01b645c1661d4b44520193b9c4557cbc1ea0
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
-ms.translationtype: MT
+ms.openlocfilehash: 47d2c8865109e8ef43317b3c4a19c36e692aff91
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100652153"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102218836"
 ---
 # <a name="high-performance-serving-with-triton-inference-server-preview"></a>利用 Triton 推理服务器实现的高性能服务（预览） 
 
@@ -36,7 +36,7 @@ Triton 是针对推理进行了优化的框架。 它提供更好的 GPU 利用�
 
 * 一个 **Azure 订阅**。 如果没有订阅，可试用 [Azure 机器学习免费版或付费版](https://aka.ms/AMLFree)。
 * 熟悉[如何使用 Azure 机器学习部署模型以及部署到的位置](how-to-deploy-and-where.md)。
-* [适用于 Python 的 Azure 机器学习 SDK](/python/api/overview/azure/ml/?view=azure-ml-py) 或 [Azure CLI](/cli/azure/?view=azure-cli-latest) 和[机器学习扩展](reference-azure-machine-learning-cli.md)。
+* [适用于 Python 的 Azure 机器学习 SDK](/python/api/overview/azure/ml/?view=azure-ml-py) 或 [Azure CLI](/cli/azure/) 和[机器学习扩展](reference-azure-machine-learning-cli.md)。
 * 用于本地测试的 Docker 的工作安装。 有关安装和验证 Docker 的信息，请参阅 docker 文档中的[方向和设置](https://docs.docker.com/get-started/)。
 
 ## <a name="architectural-overview"></a>体系结构概述
@@ -331,7 +331,7 @@ print(local_service.scoring_uri)
 
 ---
 
-部署完成后将显示评分 URI。 对于此本地部署，则为 `http://localhost:6789/score`。 如果部署到云，则可以使用 [az ml service show](/cli/azure/ext/azure-cli-ml/ml/service?view=azure-cli-latest#ext_azure_cli_ml_az_ml_service_show) CLI 命令来获取评分 URI。
+部署完成后将显示评分 URI。 对于此本地部署，则为 `http://localhost:6789/score`。 如果部署到云，则可以使用 [az ml service show](/cli/azure/ext/azure-cli-ml/ml/service#ext_azure_cli_ml_az_ml_service_show) CLI 命令来获取评分 URI。
 
 有关如何创建将推理请求发送到评分 URI 的客户端的信息，请参阅[使用部署为 Web 服务的模型](how-to-consume-web-service.md)。
 

@@ -7,13 +7,13 @@ ms.service: static-web-apps
 ms.topic: how-to
 ms.date: 05/08/2020
 ms.author: buhollan
-ms.custom: devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 00502c97e3fc06972c27cedf565d77b52f558795
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
-ms.translationtype: MT
+ms.custom: devx-track-js
+ms.openlocfilehash: 2886cb6433c4f8a65eb0661eded0ddd08248e137
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844806"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102219176"
 ---
 # <a name="configure-application-settings-for-azure-static-web-apps-preview"></a>为 Azure 静态 Web 应用预览版配置应用程序设置
 
@@ -34,7 +34,7 @@ ms.locfileid: "94844806"
 ## <a name="prerequisites"></a>先决条件
 
 - Azure 静态 Web 应用应用程序
-- [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)
+- [Azure CLI](/cli/azure/install-azure-cli)
 
 ## <a name="types-of-application-settings"></a>应用程序设置的类型
 

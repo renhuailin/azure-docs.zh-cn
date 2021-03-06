@@ -4,12 +4,12 @@ description: 了解如何为 Azure Kubernetes 服务 (AKS) 中的群集创建和
 services: container-service
 ms.topic: article
 ms.date: 04/08/2020
-ms.openlocfilehash: 07c4628a17d2c76e8e4608c9c6d059a81a9c378f
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
-ms.translationtype: MT
+ms.openlocfilehash: 3e029695e9dce79473ada0bae3e7f0bbfd30db89
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/05/2021
-ms.locfileid: "102182853"
+ms.locfileid: "102218479"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>为 Azure Kubernetes 服务 (AKS) 中的群集创建和管理多个节点池
 
@@ -130,9 +130,11 @@ az aks nodepool list --resource-group myResourceGroup --cluster-name myAKSCluste
 #### <a name="limitations"></a>限制
 
 * 分配给节点池的所有子网都必须属于同一虚拟网络。
-* 系统 Pod 必须有权访问群集中的所有节点以提供关键功能，例如通过 coreDNS 进行 DNS 解析。
-* 在预览版期间，为每个节点池分配唯一子网仅限于 Azure CNI。
-* 预览期间不支持将网络策略与每个节点池的唯一子网一起使用。
+* 系统盒必须有权访问群集中的所有节点/pod，才能提供重要功能，例如 DNS 解析和隧道 kubectl 日志/exec/端口转发代理。
+* 如果在创建群集后扩展 VNET，则必须更新群集 (执行任何托管 clster 操作，但节点池操作不会计数) ，然后将子网添加到原始 cidr 之外。 即使我们最初允许，AKS 也会在代理池添加错误。 如果你不知道如何协调群集文件 a 支持票证。 
+* 不支持 Calico 网络策略。 
+* 不支持 Azure 网络策略。
+* Kube 需要单个连续 cidr，并将其用于三个 optmizations。 查看此 [K.E.P.](https://github.com/kubernetes/enhancements/blob/master/keps/sig-network/20191104-iptables-no-cluster-cidr.md ) [有关详细信息，请](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-proxy/)参阅。 在 azure cni 中，第一个节点池的子网将被提供给 kube-proxy。 
 
 若要创建具有专用子网的节点池，请在创建节点池时将子网资源 ID 作为附加参数传递。
 

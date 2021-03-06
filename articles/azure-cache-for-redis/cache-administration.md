@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/05/2017
 ms.author: yegu
-ms.openlocfilehash: 156dfd1d9553e369357eb68225e722222a59d847
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: 0a79b0b5b5f21d1c75fec6b062f1ca91cfe9dd1f
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91838664"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102219193"
 ---
 # <a name="how-to-administer-azure-cache-for-redis"></a>如何管理 Azure Redis 缓存
 本主题介绍如何为 Azure Redis 缓存实例执行管理任务，如[重启](#reboot)和[计划更新](#schedule-updates)。
@@ -21,11 +21,11 @@ ms.locfileid: "91838664"
 ## <a name="reboot"></a>重新启动
 可通过“重新启动”边栏选项卡重新启动缓存的一个或多个节点。 如果有缓存节点发生故障，此重新启动功能可用于测试应用程序的复原能力。
 
-![突出显示重启菜单选项的屏幕截图。](./media/cache-administration/redis-cache-administration-reboot.png)
+![突出显示“重启”菜单选项的屏幕截图。](./media/cache-administration/redis-cache-administration-reboot.png)
 
 选择要重新启动的节点，并单击“重新启动” 。
 
-![屏幕截图，显示可以重新启动的节点。](./media/cache-administration/redis-cache-reboot.png)
+![显示可以重启的节点的屏幕截图。](./media/cache-administration/redis-cache-reboot.png)
 
 如果高级缓存启用了群集功能，则可选择要重新启动的缓存分片。
 
@@ -57,6 +57,8 @@ ms.locfileid: "91838664"
 > 
 > 
 
+
+
 ### <a name="will-i-lose-data-from-my-cache-if-i-do-a-reboot"></a>如果执行重新启动，是否会丢失缓存中的数据？
 如果同时重新启动主节点和副本节点，则缓存中或该分片中（如果使用已启用群集的高级缓存）的所有数据都可能会丢失，但这种情况也不一定会发生。 如果已配置[数据持久性](cache-how-to-premium-persistence.md)，则在缓存重新联机时会还原最新备份，但在进行该备份后发生的所有缓存写入都将丢失。
 
@@ -69,8 +71,9 @@ ms.locfileid: "91838664"
 使用“计划更新”边栏选项卡可以为缓存实例指定维护时段。 借助维护时段，可以控制在一周中的哪一天和哪个时间点更新托管缓存的 VM。 Azure Cache for Redis 将尽最大努力在定义的指定时间范围内启动和完成 Redis 服务器软件的更新。
 
 > [!NOTE] 
-> 维护时段仅适用于 Redis 服务器更新，不适用于任何 Azure 更新或托管缓存的 VM 的操作系统更新。
+> 维护时段适用于 Redis 服务器更新以及托管缓存的 Vm 的操作系统更新。 维护时段不适用于承载缓存 Vm 或其他 Azure 网络组件的主机的主机操作系统更新。 在极少数情况下，缓存驻留在较旧的模型上 (如果缓存的 DNS 名称解析为后缀 "cloudapp.net"、"chinacloudapp.cn"、"usgovcloudapi.net" 或 "cloudapi.de" ) ，则可以判断缓存是否在旧的模型上，也不会将维护时段应用于来宾 OS 更新。
 >
+
 
 ![计划更新](./media/cache-administration/redis-schedule-updates.png)
 

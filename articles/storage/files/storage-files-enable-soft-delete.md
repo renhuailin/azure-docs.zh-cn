@@ -8,12 +8,12 @@ ms.date: 12/01/2020
 ms.author: rogarana
 ms.subservice: files
 services: storage
-ms.openlocfilehash: 22e4d0998cde14d4461141a53f05cbc19d1ab671
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
-ms.translationtype: MT
+ms.openlocfilehash: 77381700f4257006b50e56ab7ffc037ef99d297c
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878963"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102218547"
 ---
 # <a name="enable-soft-delete-on-azure-file-shares"></a>在 Azure 文件共享上启用软删除
 
@@ -35,7 +35,7 @@ Azure 存储为文件共享提供软删除，以便在应用程序或其他存�
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-在 2.1.3 版及更新版本的 [Azure CLI 模块](/cli/azure/install-azure-cli?view=azure-cli-latest)中提供了软删除 cmdlet。
+在 2.1.3 版及更新版本的 [Azure CLI 模块](/cli/azure/install-azure-cli)中提供了软删除 cmdlet。
 
 ## <a name="getting-started-with-cli"></a>CLI 入门
 

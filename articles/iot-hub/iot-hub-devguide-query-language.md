@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: robinsh
 ms.custom: devx-track-csharp
-ms.openlocfilehash: dbdc1c079f7ef2a06ece553e9fec542cbc05ea54
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
-ms.translationtype: MT
+ms.openlocfilehash: cae2bcb1a3302814a426fa0cb2dfb36ba1b013fa
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92147663"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102218360"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>用于设备和模块孪生、作业和消息路由的 IoT 中心查询语言
 
@@ -82,7 +82,7 @@ IoT 中心提供类似于 SQL 的强大语言，用于检索有关[设备孪生]
 
 ### <a name="device-twin-queries"></a>设备孪生查询
 
-IoT 中心将设备孪生公开为名为**设备**的文档集合。 例如，以下查询将检索设备孪生的整个集：
+IoT 中心将设备孪生公开为名为 **设备** 的文档集合。 例如，以下查询将检索设备孪生的整个集：
 
 ```sql
 SELECT * FROM devices
@@ -160,7 +160,7 @@ SELECT LastActivityTime FROM devices WHERE status = 'enabled'
 
 ### <a name="module-twin-queries"></a>模块孪生查询
 
-对模块孪生进行查询类似于对设备孪生进行查询，但使用不同的集合/命名空间，即不从**设备**进行查询，而是从 **devices.modules** 进行查询：
+对模块孪生进行查询类似于对设备孪生进行查询，但使用不同的集合/命名空间，即不从 **设备** 进行查询，而是从 **devices.modules** 进行查询：
 
 ```sql
 SELECT * FROM devices.modules
@@ -234,13 +234,13 @@ query.nextAsTwin(onResults);
 ### <a name="limitations"></a>限制
 
 > [!IMPORTANT]
-> 关于设备孪生中的最新值，查询结果可能有几分钟的延迟。 如果按 ID 查询单个设备孪生，请使用[获取孪生 REST API](/java/api/com.microsoft.azure.sdk.iot.device.devicetwin?view=azure-java-stable)。 此 API 始终返回最新值，并具有更高的节流限制。 可以直接发出 REST API 或使用 [Azure IoT 中心服务 SDK](iot-hub-devguide-sdks.md#azure-iot-hub-service-sdks) 之一中的等效功能。
+> 关于设备孪生中的最新值，查询结果可能有几分钟的延迟。 如果按 ID 查询单个设备孪生，请使用[获取孪生 REST API](/java/api/com.microsoft.azure.sdk.iot.device.devicetwin)。 此 API 始终返回最新值，并具有更高的节流限制。 可以直接发出 REST API 或使用 [Azure IoT 中心服务 SDK](iot-hub-devguide-sdks.md#azure-iot-hub-service-sdks) 之一中的等效功能。
 
 目前，仅支持在基元类型（无对象）之间进行比较，例如，仅在这些属性具有基元值时才支持 `... WHERE properties.desired.config = properties.reported.config`。
 
 ## <a name="get-started-with-jobs-queries"></a>作业查询入门
 
-使用[作业](iot-hub-devguide-jobs.md)可对一组设备执行操作。 每个设备孪生包含名为 **作业**的集合中该设备参与的作业的信息。
+使用[作业](iot-hub-devguide-jobs.md)可对一组设备执行操作。 每个设备孪生包含名为 **作业** 的集合中该设备参与的作业的信息。
 
 ```json
 {
@@ -398,7 +398,7 @@ GROUP BY <group_by_element>
 
 ## <a name="expressions-and-conditions"></a>表达式和条件
 
-从较高层面讲，*表达式*可以：
+从较高层面讲，*表达式* 可以：
 
 * 求值结果为 JSON 类型的实例（例如布尔值、数字、字符串、数组或对象）。
 * 由设备 JSON 文档中的操作数据以及使用内置运算符和函数的常量定义。
