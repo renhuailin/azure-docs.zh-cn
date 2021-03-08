@@ -1,5 +1,5 @@
 ---
-title: 快速入门 - 使用 CLI 创建 Azure API 管理实例（预览版）
+title: 快速入门 - 使用 CLI 创建 Azure API 管理实例
 description: 使用 Azure CLI 创建新的 Azure API 管理服务实例。
 author: dlepow
 ms.service: api-management
@@ -7,18 +7,18 @@ ms.topic: quickstart
 ms.custom: ''
 ms.date: 09/10/2020
 ms.author: apimpm
-ms.openlocfilehash: 863cb6cd10664e14966898045cb2b1861ef75b9f
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 72d1faac02a21f23d46eb992af1d501bca89e71f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94887444"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101688070"
 ---
-# <a name="quickstart-create-a-new-azure-api-management-service-instance-by-using-the-azure-cli-preview"></a>快速入门：使用 Azure CLI 创建新的 Azure API 管理服务实例（预览版）
+# <a name="quickstart-create-a-new-azure-api-management-service-instance-by-using-the-azure-cli"></a>快速入门：使用 Azure CLI 创建新的 Azure API 管理服务实例
 
 Azure API 管理 (APIM) 可帮助组织将 API 发布给外部、合作伙伴和内部开发人员，以充分发挥其数据和服务的潜力。 API 管理通过开发人员参与、商业洞察力、分析、安全性和保护提供了核心竞争力以确保成功的 API 程序。 使用 APIM 可以为在任何位置托管的现有后端服务创建和管理新式 API 网关。 有关详细信息，请参阅[概述](api-management-key-concepts.md)。
 
-本快速入门介绍了在 Azure CLI 中使用 [az apim](/cli/azure/apim) 命令创建新的 API 管理实例的步骤。 `az apim` 命令组中的命令当前为预览版，在将来的版本中可能会更改或删除。
+本快速入门介绍了在 Azure CLI 中使用 [az apim](/cli/azure/apim) 命令创建新的 API 管理实例的步骤。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 

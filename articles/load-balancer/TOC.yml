@@ -39,6 +39,8 @@
           href: tutorial-cross-region-portal.md
         - name: 创建跨区域负载均衡器 - PowerShell
           href: tutorial-cross-region-powershell.md
+        - name: 创建跨区域负载均衡器 - Azure CLI
+          href: tutorial-cross-region-cli.md
 - name: 示例
   items:
     - name: Azure CLI
