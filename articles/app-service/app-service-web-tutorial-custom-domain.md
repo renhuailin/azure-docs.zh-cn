@@ -11,12 +11,12 @@ adobe-target: true
 adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
 adobe-target-experience: Experience B
 adobe-target-content: ./app-service-web-tutorial-custom-domain-uiex
-ms.openlocfilehash: b3ff1b344852d57f0effbd978c06aa617682ea4f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 79599ce04b93409c67342be73cf88d5e20621c1d
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101720303"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102182564"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>教程：将现有的自定义 DNS 名称映射到 Azure 应用服务
 
@@ -131,7 +131,7 @@ ms.locfileid: "101720303"
 
 将子域映射到应用的默认域名（`<app-name>.azurewebsites.net`，其中 `<app-name>` 是应用的名称）。 若要为 `www` 子域创建 CNAME 映射，请创建两条记录：
 
-| 记录类型 | 主机 | Value | 注释 |
+| 记录类型 | 主机 | 值 | 注释 |
 | - | - | - |
 | CNAME | `www` | `<app-name>.azurewebsites.net` | 域映射本身。 |
 | TXT | `asuid.www` | [之前获得的验证 ID](#get-a-domain-verification-id) | 应用服务访问 `asuid.<subdomain>` TXT 记录以验证你对自定义域的所有权。 |
@@ -199,7 +199,7 @@ ms.locfileid: "101720303"
 
 若要将 A 记录映射到应用（通常是根域），请创建两条记录：
 
-| 记录类型 | 主机 | Value | 注释 |
+| 记录类型 | 主机 | 值 | 注释 |
 | - | - | - |
 | A | `@` | 通过[复制应用的 IP 地址](#info)获得的 IP 地址 | 域映射本身（`@` 通常表示根域）。 |
 | TXT | `asuid` | [之前获得的验证 ID](#get-a-domain-verification-id) | 应用服务访问 `asuid.<subdomain>` TXT 记录以验证你对自定义域的所有权。 对于根域，请使用 `asuid`。 |
@@ -207,7 +207,7 @@ ms.locfileid: "101720303"
 > [!NOTE]
 > 若要使用 A 记录（而不是建议的 [CNAME 记录](#map-a-cname-record)）添加子域（如 `www.contoso.com`），A 记录和 TXT 记录应如下表所示：
 >
-> | 记录类型 | 主机 | Value |
+> | 记录类型 | 主机 | 值 |
 > | - | - | - |
 > | A | `www` | 通过[复制应用的 IP 地址](#info)获得的 IP 地址 |
 > | TXT | `asuid.www` | [之前获得的验证 ID](#get-a-domain-verification-id) |
@@ -260,7 +260,7 @@ ms.locfileid: "101720303"
 
 将通配符名称 `*` 映射到应用的默认域名（`<app-name>.azurewebsites.net`，其中 `<app-name>` 是应用的名称）。 若要映射通配符名称，请创建两条记录：
 
-| 记录类型 | 主机 | Value | 注释 |
+| 记录类型 | 主机 | 值 | 注释 |
 | - | - | - |
 | CNAME | `*` | `<app-name>.azurewebsites.net` | 域映射本身。 |
 | TXT | `asuid` | [之前获得的验证 ID](#get-a-domain-verification-id) | 应用服务访问 `asuid` TXT 记录以验证你对自定义域的所有权。 |
@@ -308,10 +308,7 @@ ms.locfileid: "101720303"
 
 ## <a name="resolve-404-not-found"></a>解决 404“未找到”错误
 
-如果在浏览到自定义域的 URL 时收到 HTTP 404（未找到）错误，请验证域是否使用 <a href="https://www.whatsmydns.net/" target="_blank">WhatsmyDNS.net</a> 对应用的 IP 地址进行解析。 如果未使用，则可能是由于以下原因之一：
-
-- 配置的自定义域缺少 A 记录或 CNAME 记录。
-- 浏览器客户端已缓存域的旧 IP 地址。 清除缓存并再次测试 DNS 解析。 在 Windows 计算机上，使用 `ipconfig /flushdns` 清除缓存。
+如果在浏览到自定义域的 URL 时收到 HTTP 404（未找到）错误，请验证域是否使用 <a href="https://www.nslookup.io/" target="_blank">nslookup.io</a> 对应用的 IP 地址进行解析。 如果不是，请使用同一站点验证是否正确配置了 A 和 CNAME 记录。 如果它正确解析了 IP，但你仍收到 404，说明你的浏览器可能已缓存域的旧 IP 地址。 清除缓存并再次测试 DNS 解析。 在 Windows 计算机上，使用 `ipconfig /flushdns` 清除缓存。
 
 ## <a name="migrate-an-active-domain"></a>迁移活动域
 
