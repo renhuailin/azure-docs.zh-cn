@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 10/05/2020
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 843d0b8cfd75e8cbdf45ac535cc9486aa42442d6
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 56e35c23eacdf98db283ba5d8c2e32687cbe0ea8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "91761766"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101740896"
 ---
 # <a name="tutorial-configure-a-virtual-network-gateway-for-expressroute-using-the-azure-portal"></a>教程：使用 Azure 门户配置 ExpressRoute 的虚拟网络网关
 > [!div class="op_single_selector"]
@@ -42,13 +42,18 @@ ms.locfileid: "91761766"
     * 子网地址范围 =“192.168.1.0/24”
 * 资源组 = “TestRG”
 * 位置 =“美国东部”
-* 网关子网名称：“GatewaySubnet”必须始终将网关子网命名为 *GatewaySubnet* 。
+* 网关子网名称：“GatewaySubnet”必须始终将网关子网命名为 *GatewaySubnet*。
     * 网关子网地址空间 = “192.168.200.0/26”
 * 网关名称 =“ERGW”
 * 网关公共 IP 名称 =“MyERGWVIP”
 * 网关类型 =“ExpressRoute” ExpressRoute 配置需要此类型。
 
 可以先观看这些步骤的[视频](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-vpn-gateway-for-your-virtual-network)，再开始配置。
+
+> [!IMPORTANT]
+> 对专用对等互连的 IPv6 支持目前为公共预览版。 如果要将虚拟网络连接到配置了基于 IPv6 的专用对等互连的 ExpressRoute 线路，请确保虚拟网络为双重堆栈，并遵循[适用于 Azure VNet 的 IPv6](https://docs.microsoft.com/azure/virtual-network/ipv6-overview) 中的指南。
+> 
+> 
 
 ## <a name="create-the-gateway-subnet"></a>创建网关子网
 
@@ -58,16 +63,20 @@ ms.locfileid: "91761766"
    
     :::image type="content" source="./media/expressroute-howto-add-gateway-portal-resource-manager/add-gateway-subnet.png" alt-text="添加网关子网":::
 
-1. 子网的“名称”自动填充为值“GatewaySubnet”。 Azure 需要此值才能识别作为网关子网的子网。 调整自动填充的地址范围值，使其符合配置要求。 建议使用 /27 或更大（/26、/25 等）创建网关子网。 然后，单击“确定”来保存这些值并创建网关子网。
+1. 子网的“名称”自动填充为值“GatewaySubnet”。 Azure 需要此值才能识别作为网关子网的子网。 调整自动填充的地址范围值，使其符合配置要求。 建议使用 /27 或更大（/26、/25 等）创建网关子网。
 
-    :::image type="content" source="./media/expressroute-howto-add-gateway-portal-resource-manager/add-subnet-gateway.png" alt-text="添加子网":::
+    如果使用的是双重堆栈虚拟网络，并且计划通过 ExpressRoute 使用基于 IPv6 的专用对等互连，请单击“添加 IP6 地址空间”并输入“IPv6 地址范围”值 。
+
+然后，单击“确定”来保存这些值并创建网关子网。
+
+    :::image type="content" source="./media/expressroute-howto-add-gateway-portal-resource-manager/add-subnet-gateway.png" alt-text="Adding the subnet":::
 
 ## <a name="create-the-virtual-network-gateway"></a>创建虚拟网络网关
 
 1. 在门户左侧选择“创建资源”，然后在搜索框中键入“虚拟网络网关”。 在搜索返回的结果中找到“虚拟网关”，并选择该条目  。 在“虚拟网关”页上，选择“创建”   。
 1. 在“创建虚拟网络网关”页面上，输入或选择以下设置：
 
-    | 设置 | 值 |
+    | 设置 | “值” |
     | --------| ----- |
     | 订阅 | 确保选择正确的订阅。 |
     | 资源组 | 选择虚拟网络后，将自动选择资源组。 | 
@@ -78,6 +87,11 @@ ms.locfileid: "91761766"
     | 虚拟网络 | 选择 TestVNet。 |
     | 公共 IP 地址 | 选择“新建”。|
     | 公共 IP 地址名称 | 为公共 IP 地址提供一个名称。 |
+
+    > [!IMPORTANT]
+    > 如果计划通过 ExpressRoute 使用基于 IPv6 的专用对等互连，请确保为“SKU”选择 AZ SKU (ErGw1AZ、ErGw2AZ、ErGw3AZ)。
+    > 
+    > 
 
 1. 依次选择“查看 + 创建”和“创建”，开始创建网关 。 此时会验证设置并部署网关。 创建虚拟网络网关可能需要多达 45 分钟才能完成。
 

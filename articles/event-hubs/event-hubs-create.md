@@ -3,19 +3,19 @@ title: Azure 快速入门 - 使用 Azure 门户创建事件中心
 description: 本快速入门介绍如何使用 Azure 门户创建 Azure 事件中心。
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: c1244317655815da91429585eff9ffbcc16662d4
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 6bd9d247db6cd5a956ff4bce9b70f1f8a5a7499a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96435495"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101742035"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-portal"></a>快速入门：使用 Azure 门户创建事件中心
 Azure 事件中心是一个大数据流式处理平台和事件引入服务，每秒能够接收和处理数百万个事件。 事件中心可以处理和存储分布式软件和设备生成的事件、数据或遥测。 可以使用任何实时分析提供程序或批处理/存储适配器转换和存储发送到数据中心的数据。 有关事件中心的详细概述，请参阅[事件中心概述](event-hubs-about.md)和[事件中心功能](event-hubs-features.md)。
 
 在本快速入门中，请使用 [Azure 门户](https://portal.azure.com)创建事件中心。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要完成本快速入门，请确保具备以下项：
 
@@ -87,7 +87,7 @@ Azure 事件中心是一个大数据流式处理平台和事件引入服务，�
 
     通过“分区计数”设置可以在多个使用者之间并行使用。 有关详细信息，请参阅[分区](event-hubs-scalability.md#partitions)。
 
-    “消息保留”设置指定事件中心服务保留数据的时长。 有关此设置的最大限制，请参阅[配额和限制](event-hubs-quotas.md)。
+    “消息保留”设置指定事件中心服务保留数据的时长。 有关详细信息，请参阅[事件保留](event-hubs-features.md#event-retention)。
 1. 可以在警报中检查事件中心的创建状态。 创建事件中心后，事件中心列表中会显示该事件中心。
 
     ![已创建事件中心](./media/event-hubs-quickstart-portal/event-hub-created.png)

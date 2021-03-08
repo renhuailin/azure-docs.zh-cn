@@ -2,20 +2,20 @@
 title: 配置 Azure 密钥保管库防火墙和虚拟网络 - Azure 密钥保管库
 description: 配置 Key Vault 防火墙和虚拟网络的分步说明
 services: key-vault
-author: ShaneBala-keyvault
-manager: ravijan
+author: msmbaldwin
+manager: rkarlin
 ms.service: key-vault
 ms.subservice: general
 ms.topic: tutorial
 ms.date: 10/01/2020
-ms.author: sudbalas
+ms.author: mbaldwin
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 3639237a0dc34c521fd3fa52631fdb19c26ec284
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 13ead70f278f12866dbe00b53c487aebcc43304f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936339"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101742630"
 ---
 # <a name="configure-azure-key-vault-firewalls-and-virtual-networks"></a>配置 Azure Key Vault 防火墙和虚拟网络
 
@@ -39,7 +39,7 @@ ms.locfileid: "97936339"
 
 ### <a name="key-vault-firewall-enabled-ipv4-addresses-and-ranges---static-ips"></a>启用 Key Vault 防火墙（IPv4 地址和范围 - 静态 IP）
 
-如果你想要授权特定服务通过 Key Vault 防火墙访问密钥保管库，可将其 IP 地址添加到密钥保管库防火墙允许列表中。 此配置最适合使用静态 IP 地址或已知范围的服务。
+如果你想要授权特定服务通过 Key Vault 防火墙访问密钥保管库，可将其 IP 地址添加到密钥保管库防火墙允许列表中。 此配置最适合使用静态 IP 地址或已知范围的服务。 这种情况下，CIDR 范围数量限制为 1000。
 
 若要允许某个 Azure 资源（例如 Web 应用或逻辑应用）的某个 IP 地址或范围，请执行以下步骤。
 

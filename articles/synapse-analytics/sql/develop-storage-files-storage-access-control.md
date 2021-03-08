@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: c9a5be358c40c3411115d8c2ee3f9471c68771b8
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 1ee631e3e4a13a18bb61ee6237ff67a49f663179
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99576204"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101693894"
 ---
 # <a name="control-storage-account-access-for-serverless-sql-pool-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中控制无服务器 SQL 池对存储帐户的访问
 
@@ -83,7 +83,7 @@ ms.locfileid: "99576204"
 
 | 授权类型  | Blob 存储   | ADLS Gen1        | ADLS Gen2     |
 | ------------------- | ------------   | --------------   | -----------   |
-| [SAS](?tabs=shared-access-signature#supported-storage-authorization-types)    | 支持\*      | 不支持   | 支持\*     |
+| SAS    | 支持\*      | 不支持   | 支持\*     |
 | [托管标识](?tabs=managed-identity#supported-storage-authorization-types) | 支持      | 支持        | 支持     |
 | [用户标识](?tabs=user-identity#supported-storage-authorization-types)    | 支持\*      | 支持\*        | 支持\*     |
 
@@ -122,7 +122,7 @@ ms.locfileid: "99576204"
     Connect-AzAccount
     ```
 4. 在 PowerShell 中定义变量： 
-    - 资源组名称 - 可以在 Azure 门户中的“Synapse 工作区概述”中找到此内容。
+    - 资源组名称 - 可以在 Azure 门户中的存储帐户概述中找到此内容。
     - 帐户名称 - 受防火墙规则保护的存储帐户的名称。
     - 租户 ID - 可在 Azure 门户中的“租户中的 Azure Active Directory 信息”中找到此内容。
     - 工作区名称 - Synapse 工作区的名称。
@@ -192,16 +192,14 @@ GRANT ALTER ANY CREDENTIAL TO [user_name];
 GRANT REFERENCES ON CREDENTIAL::[storage_credential] TO [specific_user];
 ```
 
-为了确保顺畅的 Azure AD 直通体验，默认情况下，所有用户都拥有使用 `UserIdentity` 凭据的权限。
-
 ## <a name="server-scoped-credential"></a>服务器范围的凭据
 
-当 SQL 登录名在未指定 `DATA_SOURCE` 的情况下调用 `OPENROWSET` 函数来读取某个存储帐户上的文件时，将使用服务器范围的凭据。 服务器范围的凭据的名称必须与 Azure 存储的 URL 匹配。 可通过运行 [CREATE CREDENTIAL](/sql/t-sql/statements/create-credential-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 来添加凭据。 需要提供 CREDENTIAL NAME 参数。 该参数必须匹配存储中数据的一部分路径或完整路径（参阅下文）。
+当 SQL 登录名在未指定 `DATA_SOURCE` 的情况下调用 `OPENROWSET` 函数来读取某个存储帐户上的文件时，将使用服务器范围的凭据。 服务器范围的凭据的名称必须与 Azure 存储的基 URL 相匹配（可以选择后跟容器名称）。 可通过运行 [CREATE CREDENTIAL](/sql/t-sql/statements/create-credential-transact-sql?view=azure-sqldw-latest&preserve-view=true) 来添加凭据。 需要提供 CREDENTIAL NAME 参数。
 
 > [!NOTE]
 > 不支持参数 `FOR CRYPTOGRAPHIC PROVIDER`。
 
-服务器级 CREDENTIAL 名称必须与存储帐户（以及可选容器）的完整路径匹配，格式如下：`<prefix>://<storage_account_path>/<storage_path>`。 下表描述了存储帐户路径：
+服务器级 CREDENTIAL 名称必须与存储帐户（以及可选容器）的完整路径匹配，格式如下：`<prefix>://<storage_account_path>[/<container_name>]`。 下表描述了存储帐户路径：
 
 | 外部数据源       | 前缀 | 存储帐户路径                                |
 | -------------------------- | ------ | --------------------------------------------------- |
@@ -224,11 +222,13 @@ SQL 用户无法使用 Azure AD 身份验证来访问存储。
 请将 <mystorageaccountname> 替换为实际存储帐户名称，并将 <mystorageaccountcontainername> 替换为实际容器名称：
 
 ```sql
-CREATE CREDENTIAL [https://<storage_account>.dfs.core.windows.net/<container>]
+CREATE CREDENTIAL [https://<mystorageaccountname>.dfs.core.windows.net/<mystorageaccountcontainername>]
 WITH IDENTITY='SHARED ACCESS SIGNATURE'
 , SECRET = 'sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-04-18T20:42:12Z&st=2019-04-18T12:42:12Z&spr=https&sig=lQHczNvrk1KoYLCpFdSsMANd0ef9BrIPBNJ3VYEIq78%3D';
 GO
 ```
+
+或者，可以只使用存储帐户的基 URL，而不使用容器名称。
 
 ### <a name="managed-identity"></a>[托管标识](#tab/managed-identity)
 
@@ -238,6 +238,8 @@ GO
 CREATE CREDENTIAL [https://<storage_account>.dfs.core.windows.net/<container>]
 WITH IDENTITY='Managed Identity'
 ```
+
+或者，可以只使用存储帐户的基 URL，而不使用容器名称。
 
 ### <a name="public-access"></a>[公共访问权限](#tab/public-access)
 

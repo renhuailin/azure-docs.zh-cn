@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 05/26/2020
 ms.author: lajanuar
 ms.custom: devx-track-csharp
-ms.openlocfilehash: dd5b83908ae7c6d62acd3391933028685facf755
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 0665dcbc8de518c5759c52a8fc3aec26859566d6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98927478"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728002"
 ---
 # <a name="tutorial-create-a-translation-app-with-wpf"></a>教程：使用 WPF 创建翻译应用
 
@@ -38,10 +38,10 @@ ms.locfileid: "98927478"
 
 以下列表包含本教程中使用的认知服务。 请单击链接浏览每项功能的 API 参考。
 
-| 服务 | Feature | 说明 |
+| 服务 | 功能 | 说明 |
 |---------|---------|-------------|
 | 转换器 | [获取语言](./reference/v3-0-languages.md) | 检索文本翻译支持的语言的完整列表。 |
-| 转换器 | [Translate](./reference/v3-0-translate.md) | 将文本翻译成 70 多种语言。 |
+| 转换器 | [Translate](./reference/v3-0-translate.md) | 将文本翻译成 90 种语言和方言。 |
 | 转换器 | [Detect](./reference/v3-0-detect.md) | 检测输入文本的语言。 包含检测置信度评分。 |
 | 必应拼写检查 | [拼写检查](/rest/api/cognitiveservices/bing-spell-check-api-v7-reference) | 更正拼写错误以提高翻译准确度。 |
 
@@ -264,7 +264,7 @@ ms.locfileid: "98927478"
 
 ## <a name="get-supported-languages"></a>获取支持的语言
 
-“翻译”目前支持 70 多种语言。 由于支持的新语言会不断增加，建议调用“翻译”公开的语言资源，而不要对应用中的语言列表进行硬编码。
+翻译器当前支持 90 种语言和方言。 由于支持的新语言会不断增加，建议调用“翻译”公开的语言资源，而不要对应用中的语言列表进行硬编码。
 
 在本部分，我们将对语言资源创建 `GET` 请求，并指定我们希望提供可用于翻译的语言列表。
 

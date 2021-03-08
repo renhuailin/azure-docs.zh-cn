@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: quickstart
 ms.date: 02/15/2021
 ms.custom: template-quickstart
-ms.openlocfilehash: 77ccf09903b6cff83b52d60d43d0c52533c9c1ad
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 49bf89d38edef6a9186cbdb5bb89a763339385b4
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102041682"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175815"
 ---
 # <a name="set-up-your-azure-percept-dk-and-deploy-your-first-ai-model"></a>设置 Azure Percept DK 并部署你的第一个 AI 模型
 
@@ -25,7 +25,7 @@ ms.locfileid: "102041682"
 - Azure Percept DK。
 - 基于 Windows、Linux 或 OS X 的主机计算机，具有 Wi-Fi 功能和 Web 浏览器。
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-- Azure 帐户必须对订阅拥有“所有者”或“参与者”角色。 详细了解 Azure 角色定义
+- Azure 帐户必须对订阅拥有“所有者”或“参与者”角色。 详细了解 [Azure 角色定义](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles#azure-roles)。
 
 ### <a name="prerequisite-check"></a>先决条件检查
 
@@ -182,7 +182,7 @@ ms.locfileid: "102041682"
 
 ## <a name="view-your-device-in-the-azure-percept-studio-and-deploy-common-prebuilt-sample-apps"></a>在 Azure Percept Studio 中查看设备，并部署常见的预生成的示例应用
 
-1. 在 Azure Percept 概述页面查看设备列表。 可在 Azure Percept 概述页面开始访问不同的工作流来进行入门级和高级 AI 边缘模型和解决方案开发
+1. 在 [Azure Percept Studio](https://go.microsoft.com/fwlink/?linkid=2135819) 概述页面查看设备列表。 可在 Azure Percept 概述页面开始访问不同的工作流来进行入门级和高级 AI 边缘模型和解决方案开发
 
     :::image type="content" source="./media/quickstart-percept-dk-setup/portal-01-get-device-list.png" alt-text="查看你的设备列表。":::
     

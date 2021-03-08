@@ -5,13 +5,13 @@ author: rahulg1190
 ms.author: rahugup
 manager: bsiva
 ms.topic: tutorial
-ms.date: 02/10/2021
-ms.openlocfilehash: 006b2838a4e593397f8968e53ba2364d16753a40
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.date: 03/02/2021
+ms.openlocfilehash: 24dd33495915a9f4d47a00fbbfe9e894df839d4d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100547054"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101715065"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless---powershell"></a>将 VMware VM 迁移到 Azure（使用无代理方法）- PowerShell
 
@@ -37,22 +37,18 @@ ms.locfileid: "100547054"
 开始学习本教程之前，应做好以下准备：
 
 1. 在开始本教程之前完成[教程：使用服务器评估发现 VMware VM](tutorial-discover-vmware.md)，将 Azure 和 VMware 做好迁移准备。
-1. 在开始本教程之前完成[教程：评估 VMware VM 以迁移到 Azure VM](./tutorial-assess-vmware-azure-vm.md)，然后再将这些虚拟机迁移到 Azure。
-1. [安装 Az PowerShell 模块](/powershell/azure/install-az-ps)
+2. 在开始本教程之前完成[教程：评估 VMware VM 以迁移到 Azure VM](./tutorial-assess-vmware-azure-vm.md)，然后再将这些虚拟机迁移到 Azure。
+3. [安装 Az PowerShell 模块](/powershell/azure/install-az-ps)
 
 ## <a name="2-install-azure-migrate-powershell-module"></a>2.安装 Azure Migrate PowerShell 模块
 
-Azure Migrate PowerShell 模块以预览版提供。 需要使用以下命令安装 PowerShell 模块。
-
-```azurepowershell-interactive
-Install-Module -Name Az.Migrate
-```
+Azure Migrate PowerShell 模块作为 Azure PowerShell (`Az`) 的一部分提供。 运行 `Get-InstalledModule -Name Az.Migrate` 命令，检查计算机上是否已安装 Azure Migrate PowerShell 模块。  
 
 ## <a name="3-sign-in-to-your-microsoft-azure-subscription"></a>3.登录到 Microsoft Azure 订阅
 
 使用 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) cmdlet 登录到 Azure 订阅。
 
-```azurepowershell
+```azurepowershell-interactive
 Connect-AzAccount
 ```
 
@@ -88,12 +84,10 @@ Azure Migrate 使用轻型 [Azure Migrate 设备](migrate-appliance-architecture
 
 若要在 Azure Migrate 项目中检索特定的 VMware VM，请指定 Azure Migrate 项目的名称 (`ProjectName`)、Azure Migrate 项目的资源组 (`ResourceGroupName`) 和 VM 名称 (`DisplayName`)。
 
-> [!IMPORTANT]
-> VM 名称 (`DisplayName`) 参数值区分大小写。
 
 ```azurepowershell-interactive
 # Get a specific VMware VM in an Azure Migrate project
-$DiscoveredServer = Get-AzMigrateDiscoveredServer -ProjectName $MigrateProject.Name -ResourceGroupName $ResourceGroup.ResourceGroupName -DisplayName MyTestVM
+$DiscoveredServer = Get-AzMigrateDiscoveredServer -ProjectName $MigrateProject.Name -ResourceGroupName $ResourceGroup.ResourceGroupName -DisplayName MyTestVM | Format-Table DisplayName, Name, Type
 
 # View discovered server details
 Write-Output $DiscoveredServer
@@ -101,14 +95,14 @@ Write-Output $DiscoveredServer
 
 我们将迁移此 VM，作为本教程的一部分内容。
 
-还可以使用 ProjectName 和 ResourceGroupName 参数检索 Azure Migrate 项目中的所有 VMware VM 。
+还可以使用 (`ProjectName`) 和 (`ResourceGroupName`) 参数检索 Azure Migrate 项目中的所有 VMware VM。
 
 ```azurepowershell-interactive
 # Get all VMware VMs in an Azure Migrate project
 $DiscoveredServers = Get-AzMigrateDiscoveredServer -ProjectName $MigrateProject.Name -ResourceGroupName $ResourceGroup.ResourceGroupName
 ```
 
-如果 Azure Migrate 项目中有多个设备，可以使用 ProjectName、ResourceGroupName 和 ApplianceName 参数检索使用特定 Azure Migrate 设备发现的所有 VM  。
+如果在 Azure Migrate 项目中有多个设备，则可以使用 (`ProjectName`)、(`ResourceGroupName`) 和 (`ApplianceName`) 参数检索使用特定 Azure Migrate 设备发现的所有 VM。
 
 ```azurepowershell-interactive
 # Get all VMware VMs discovered by an Azure Migrate Appliance in an Azure Migrate project
@@ -125,41 +119,42 @@ $DiscoveredServers = Get-AzMigrateDiscoveredServer -ProjectName $MigrateProject.
 - **日志存储帐户**：Azure Migrate 设备将 VM 的复制日志上传到日志存储帐户。 Azure Migrate 将复制信息应用到副本托管磁盘。
 - **Key Vault**：Azure Migrate 设备使用 Key Vault 管理服务总线的连接字符串，以及复制中使用的存储帐户的访问密钥。
 
-在复制 Azure Migrate 项目中的第一个 VM 之前，请运行以下脚本来预配复制基础结构。 此脚本预配并配置上述资源，以便你可以开始迁移 VMware VM。
+在 Azure Migrate 项目中复制第一个 VM 之前，请运行以下命令来预配复制基础结构。 此命令将预配并配置上述资源，以便你可以开始迁移 VMware VM。
 
 > [!NOTE]
 > 一个 Azure Migrate 项目只支持迁移到一个 Azure 区域。 运行此脚本后，就不能更改要将 VMware VM 迁移到的目标区域。
-> 如果在 Azure Migrate 项目中配置新设备，需要运行 `Initialize-AzMigrateReplicationInfrastructure` 脚本。
+> 如果在 Azure Migrate 项目中配置新设备，需要运行 `Initialize-AzMigrateReplicationInfrastructure` 命令。
 
-在本文中，我们将初始化复制基础结构，以便可以将 VM 迁移到 `Central US` 区域。 可以从 GitHub 存储库[下载文件](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/migrate-at-scale-vmware-agentles)，或者使用以下代码段运行它。
+在本文中，我们将初始化复制基础结构，以便可以将 VM 迁移到 `Central US` 区域。
 
 ```azurepowershell-interactive
-# Download the script from Azure Migrate GitHub repository
-Invoke-WebRequest https://raw.githubusercontent.com/Azure/azure-docs-powershell-samples/master/azure-migrate/migrate-at-scale-vmware-agentles/Initialize-AzMigrateReplicationInfrastructure.ps1 -OutFile .\AzMigrateReplicationinfrastructure.ps1
+# Initialize replication infrastructure for the current Migrate project
+Initialize-AzMigrateReplicationInfrastructure -ResourceGroupName $ResourceGroup.ResourceGroupName -ProjectName $MigrateProject. Name -Scenario agentlessVMware -TargetRegion "CentralUS" 
 
-# Run the script for initializing replication infrastructure for the current Migrate project
-.\AzMigrateReplicationInfrastructure.ps1 -ResourceGroupName $ResourceGroup.ResourceGroupName -ProjectName $MigrateProject.Name -Scenario agentlessVMware -TargetRegion CentralUS
 ```
 
 ## <a name="7-replicate-vms"></a>7.复制 VM
 
-完成发现并初始化复制基础结构后，可以开始将 VMware VM 复制到 Azure。 最多可以同时运行 300 个复制。
+完成发现并初始化复制基础结构后，可以开始将 VMware VM 复制到 Azure。 最多可以同时运行 500 个复制。
 
 可以按如下所示指定复制属性。
 
-- **目标订阅和资源组** - 通过使用 `TargetResourceGroupId` 参数提供资源组 ID，指定 VM 应该迁移到的订阅和资源组。
-- **目标虚拟网络和子网** - 分别使用 `TargetNetworkId` 和 `TargetSubnetName` 参数指定 Azure 虚拟网络的 ID 和 VM 应迁移到的子网的名称。
-- **目标 VM 名称** - 使用 `TargetVMName` 参数指定要创建的 Azure VM 的名称。
-- **目标 VM 大小** - 使用 `TargetVMSize` 参数指定要用于复制 VM 的 Azure VM 大小。 例如，要将 VM 迁移到 Azure 中的 D2_v2 VM 虚拟机，请将 `TargetVMSize` 的值指定为“Standard_D2_v2”。
-- **许可证** - 若要为活动软件保障或 Windows Server 订阅涵盖的 Windows Server 计算机使用 Azure 混合权益，请将 `LicenseType` 参数的值指定为“WindowsServer”。 否则，请将 `LicenseType` 参数的值指定为“NoLicenseType”。
-- **OS 磁盘** - 指定载有操作系统引导加载程序和安装程序的磁盘的唯一标识符。 要使用的磁盘 ID 是使用 `Get-AzMigrateServer` cmdlet 检索到的磁盘的唯一标识符 (UUID) 属性。
-- **磁盘类型** - 指定 `DiskType` 参数的值，如下所示。
-    - 若要使用高级托管磁盘，请指定“Premium_LRS”作为 `DiskType` 参数的值。
-    - 若要使用标准 SSD 盘，请指定“StandardSSD_LRS”作为 `DiskType` 参数的值。
-    - 若要使用标准 HDD 磁盘，请指定“Standard_LRS”作为 `DiskType` 参数的值。
+- 目标订阅和资源组 - 通过使用 (`TargetResourceGroupId`) 参数提供资源组 ID，指定 VM 应该迁移到的订阅和资源组。
+- 目标虚拟网络和子网 - 分别使用 (`TargetNetworkId`) 和 (`TargetSubnetName`) 参数指定 VM 应迁移到的 Azure 虚拟网络的 ID 和子网的名称。
+- 目标 VM 名称 - 使用 (`TargetVMName`) 参数指定要创建的 Azure VM 的名称。
+- 目标 VM 大小 - 使用 (`TargetVMSize`) 参数指定要用于复制 VM 的 Azure VM 大小。 例如，要将 VM 迁移到 Azure 中的 D2_v2 VM，请将 (`TargetVMSize`) 的值指定为“Standard_D2_v2”。
+- 许可证 - 若要为活动软件保障或 Windows Server 订阅涵盖的 Windows Server 计算机使用 Azure 混合权益，请将 (`LicenseType`) 参数的值指定为“WindowsServer” 。 否则，请将 (`LicenseType`) 参数的值指定为“NoLicenseType”。
+- **OS 磁盘** - 指定载有操作系统引导加载程序和安装程序的磁盘的唯一标识符。 要使用的磁盘 ID 是使用 [Get-AzMigrateDiscoveredServer](/powershell/module/az.migrate/get-azmigratediscoveredserver) cmdlet 检索到的磁盘的唯一标识符 (UUID) 属性。
+- 磁盘类型 - 指定 (`DiskType`) 参数的值，如下所示。
+    - 若要使用高级托管磁盘，请指定“Premium_LRS”作为 (`DiskType`) 参数的值。
+    - 若要使用标准 SSD 盘，请指定“StandardSSD_LRS”作为 (`DiskType`) 参数的值。
+    - 若要使用标准 HDD 磁盘，请指定“Standard_LRS”作为 (`DiskType`) 参数的值。
 - **基础结构冗余** - 指定基础结构冗余选项，如下所示。
-    - 可用性区域，将迁移的计算机固定到区域中的特定可用性区域。 使用此选项可跨可用性区域分配形成多节点应用程序层的服务器。 仅当为迁移选择的目标区域支持可用性区域时，此选项才可用。 若要使用可用区域，请为 `TargetAvailabilityZone` 参数指定可用区域值。
-    - 可用性集，将迁移的计算机放入可用性集。 若要使用此选项，所选的目标资源组必须具有一个或多个可用性集。 若要使用可用性集，请为 `TargetAvailabilitySet` 参数指定可用性集 ID。
+    - 可用性区域，将迁移的计算机固定到区域中的特定可用性区域。 使用此选项可跨可用性区域分配形成多节点应用程序层的服务器。 仅当为迁移选择的目标区域支持可用性区域时，此选项才可用。 若要使用可用性区域，请为 (`TargetAvailabilityZone`) 参数指定可用性区域值。
+    - 可用性集，将迁移的计算机放入可用性集。 若要使用此选项，所选的目标资源组必须具有一个或多个可用性集。 若要使用可用性集，请为 (`TargetAvailabilitySet`) 参数指定可用性集 ID。
+ - 启动诊断存储帐户 - 若要使用启动诊断存储帐户，请为 (`TargetBootDiagnosticStorageAccount`) 参数指定 ID。
+    -  用于启动诊断的存储帐户应位于要将 VM 迁移到的同一订阅中。  
+    - 默认情况下，没有为此参数设置值。 
 
 ### <a name="replicate-vms-with-all-disks"></a>使用所有磁盘复制 VM
 
@@ -187,11 +182,11 @@ Write-Output $MigrateJob.State
 
 ### <a name="replicate-vms-with-select-disks"></a>使用所选磁盘复制 VM
 
-还可以选择性复制发现的 VM 的磁盘 - 通过使用 [New-AzMigrateDiskMapping](/powershell/module/az.migrate/new-azmigratediskmapping) cmdlet ，并将其作为 [New-AzMigrateServerReplication](/powershell/module/az.migrate/new-azmigrateserverreplication) cmdlet 中的 DiskToInclude 参数的输入。 还可以使用 `New-AzMigrateDiskMapping` cmdlet 为要复制的每个磁盘指定不同的目标磁盘类型。
+还可以选择性地复制发现的 VM 的磁盘，方法是使用 [New-AzMigrateDiskMapping](/powershell/module/az.migrate/new-azmigratediskmapping) cmdlet ，并将其作为 [New-AzMigrateServerReplication](/powershell/module/az.migrate/new-azmigrateserverreplication) cmdlet 中 (`DiskToInclude`) 参数的输入。 还可以使用 [New-AzMigrateDiskMapping](/powershell/module/az.migrate/new-azmigratediskmapping) cmdlet 为要复制的每个磁盘指定不同的目标磁盘类型。
 
-为 `New-AzMigrateDiskMapping` cmdlet 的以下参数指定值。
+为 [New-AzMigrateDiskMapping](/powershell/module/az.migrate/new-azmigratediskmapping) cmdlet 的以下参数指定值。
 
-- **DiskId** - 指定要迁移的磁盘的唯一标识符。 要使用的磁盘 ID 是使用 `Get-AzMigrateServer` cmdlet 检索到的磁盘的唯一标识符 (UUID) 属性。
+- **DiskId** - 指定要迁移的磁盘的唯一标识符。 要使用的磁盘 ID 是使用 [Get-AzMigrateDiscoveredServer](/powershell/module/az.migrate/get-azmigratediscoveredserver) cmdlet 检索到的磁盘的唯一标识符 (UUID) 属性。
 - **IsOSDisk** - 如果要迁移的磁盘是 VM 的操作系统磁盘，则指定“true”，否则为“false”。
 - **DiskType** - 指定要在 Azure 中使用的磁盘类型。
 
@@ -224,7 +219,7 @@ while (($MigrateJob.State -eq 'InProgress') -or ($MigrateJob.State -eq 'NotStart
         sleep 10;
         $MigrateJob = Get-AzMigrateJob -InputObject $MigrateJob
 }
-#Check if the Job completed successfully. The updated job state of a successfully completed job should be "Succeeded".
+# Check if the Job completed successfully. The updated job state of a successfully completed job should be "Succeeded".
 Write-Output $MigrateJob.State
 ```
 
@@ -238,24 +233,13 @@ Write-Output $MigrateJob.State
 
 使用 [Get-AzMigrateServerReplication](/powershell/module/az.migrate/get-azmigrateserverreplication) cmdlet 跟踪复制的状态。
 
-> [!NOTE]
-> 发现的 VM ID 和复制的 VM ID 是两个不同的惟一标识符。 这两个标识符都可用于检索复制服务器的详细信息。
 
-### <a name="monitor-replication-using-discovered-vm-identifier"></a>使用发现的 VM 标识符监视复制
 
 ```azurepowershell-interactive
-# Retrieve the replicating VM details by using the discovered VM identifier
-$ReplicatingServer = Get-AzMigrateServerReplication -DiscoveredMachineId $DiscoveredServer.ID
-```
+# List replicating VMs and filter the result for selecting a replicating VM. This cmdlet will not return all properties of the replicating VM.
+$ReplicatingServer = Get-AzMigrateServerReplication -ProjectName $MigrateProject.Name -ResourceGroupName $ResourceGroup.ResourceGroupName -MachineName MyTestVM
 
-### <a name="monitor-replication-using-replicating-vm-identifier"></a>使用复制 VM 标识符监视复制
-
-```azurepowershell-interactive
-# List all replicating VMs in an Azure Migrate project and filter the result for selecting the replication VM. This cmdlet will not return all properties of the replicating VM.
-$ReplicatingServer = Get-AzMigrateServerReplication -ProjectName $MigrateProject.Name -ResourceGroupName $ResourceGroup.ResourceGroupName |
-                     Where-Object MachineName -eq $DiscoveredServer.DisplayName
-
-# Retrieve replicating VM details using replicating VM identifier
+# Retrieve all properties of a replicating VM 
 $ReplicatingServer = Get-AzMigrateServerReplication -TargetObjectID $ReplicatingServer.Id
 ```
 
@@ -336,25 +320,28 @@ $job = Get-AzMigrateJob -InputObject $job
 
 可以为 VM 更新以下属性。
 
-- VM 名称 - 使用 TargetVMName 参数指定要创建的 Azure VM 的名称 。
-- VM 大小 - 使用 TargetVMSize 参数指定要用于复制 VM 的 Azure VM 大小 。 例如，要将 VM 迁移到 Azure 中的 D2_v2 VM，请将 TargetVMSize 的值指定为 `Standard_D2_v2`。
-- 虚拟网络 - 通过使用 TargetNetworkId 参数指定 VM 应迁移到的 Azure 虚拟网络的 ID 。
-- 资源组 - 通过使用 TargetResourceGroupId 参数提供资源组 ID 来指定 VM 应该迁移到的资源组的 ID 。
-- 网络接口 - 可以使用 [New-AzMigrateNicMapping](/powershell/module/az.migrate/new-azmigratenicmapping) cmdlet 指定 NIC 配置。 系统随后会将对象的输入传递给 [Set-AzMigrateServerReplication](/powershell/module/az.migrate/set-azmigrateserverreplication) cmdlet 中的 NicToUpdate 参数。
+- VM 名称 - 使用 [`TargetVMName`] 参数指定要创建的 Azure VM 的名称。
+- VM 大小 - 使用 [`TargetVMSize`] 参数指定要用于复制 VM 的 Azure VM 大小。 例如，要将 VM 迁移到 Azure 中的 D2_v2 VM，请将 [`TargetVMSize`] 的值指定为 `Standard_D2_v2`。
+- 虚拟网络 - 使用 [`TargetNetworkId`] 参数指定 VM 应迁移到的 Azure 虚拟网络的 ID。
+- 资源组 - 通过使用 [`TargetResourceGroupId`] 参数提供资源组 ID，指定 VM 应迁移到的资源组的 ID。
+- 网络接口 - 可以使用 [New-AzMigrateNicMapping](/powershell/module/az.migrate/new-azmigratenicmapping) cmdlet 指定 NIC 配置。 然后对象的输入将传递给 [Set-AzMigrateServerReplication](/powershell/module/az.migrate/set-azmigrateserverreplication) cmdlet 中的 [`NicToUpdate`] 参数。
 
-    - 更改 IP 分配 - 若要为 NIC 指定静态 IP，请使用 TargetNicIP 参数提供要用作 VM 静态 IP 的 IPv4 地址 。 若要为 NIC 动态分配 IP，请提供 `auto` 作为 TargetNicIP 参数的值。
-    - 为 TargetNicSelectionType 参数使用值 `Primary`、`Secondary` 或 `DoNotCreate` 来指定 NIC 应该是主要的、次要的还是不在迁移的 VM 上创建。 只能将一个 NIC 指定为 VM 的主要的 NIC。
+    - 更改 IP 分配 - 若要为 NIC 指定静态 IP，请使用 [`TargetNicIP`] 参数提供要用作 VM 静态 IP 的 IPv4 地址。 若要为 NIC 动态分配 IP，请提供 `auto` 作为 TargetNicIP 参数的值。
+    - 为 [`TargetNicSelectionType`] 参数使用值 `Primary`、`Secondary` 或 `DoNotCreate` 来指定 NIC 应该是主要的、次要的还是不在迁移的 VM 上创建。 只能将一个 NIC 指定为 VM 的主要的 NIC。
     - 要使 NIC 成为主要 NIC，还需要指定其他应设为次要的 NIC 或不在迁移的 VM 上创建的 NIC。
-    - 若要更改 NIC 的子网，请使用 TargetNicSubnet 参数指定子网的名称。
+    - 若要更改 NIC 的子网，请使用 [`TargetNicSubnet`] 参数指定子网的名称。
 
- - 可用性区域 - 若要使用可用性区域，请为 TargetAvailabilityZone 参数指定可用性区域值 。
- - 可用性集 - 若要使用可用性集，请为 TargetAvailabilitySet 参数指定可用性集 ID 。
+ - 可用性区域 - 若要使用可用性区域，请为 [`TargetAvailabilityZone`] 参数指定可用性区域值。
+ - 可用性集 - 若要使用可用性集，请为 [`TargetAvailabilitySet`] 参数指定可用性集 ID。
 
-`Get-AzMigrateServerReplication` cmdlet 将返回一个作业，跟踪该作业可监视操作的状态。
+[Get-AzMigrateServerReplication](/powershell/module/az.migrate/get-azmigrateserverreplication) cmdlet 将返回一个作业，跟踪该作业可监视操作的状态。
 
 ```azurepowershell-interactive
-# Retrieve the replicating VM details by using the discovered VM identifier
-$ReplicatingServer = Get-AzMigrateServerReplication -DiscoveredMachineId $DiscoveredServer.ID
+# List replicating VMs and filter the result for selecting a replicating VM. This cmdlet will not return all properties of the replicating VM.
+$ReplicatingServer = Get-AzMigrateServerReplication -ProjectName $MigrateProject.Name -ResourceGroupName $ResourceGroup.ResourceGroupName -MachineName MyTestVM
+
+# Retrieve all properties of a replicating VM 
+$ReplicatingServer = Get-AzMigrateServerReplication -TargetObjectID $ReplicatingServer.Id
 
 # View NIC details of the replicating server
 Write-Output $ReplicatingServer.ProviderSpecificDetail.VMNic
@@ -380,20 +367,11 @@ while (($UpdateJob.State -eq 'InProgress') -or ($UpdateJob.State -eq 'NotStarted
         sleep 10;
         $UpdateJob = Get-AzMigrateJob -InputObject $UpdateJob
 }
-#Check if the Job completed successfully. The updated job state of a successfully completed job should be "Succeeded".
+# Check if the Job completed successfully. The updated job state of a successfully completed job should be "Succeeded".
 Write-Output $UpdateJob.State
 ```
 
-还可以列出 Azure Migrate 项目中的所有复制服务器，然后使用复制 VM 标识符更新 VM 属性。
 
-```azurepowershell-interactive
-# List all replicating VMs in an Azure Migrate project and filter the result for selecting the replication VM. This cmdlet will not return all properties of the replicating VM.
-$ReplicatingServer = Get-AzMigrateServerReplication -ProjectName $MigrateProject.Name -ResourceGroupName $ResourceGroup.ResourceGroupName |
-                     Where-Object MachineName -eq $DiscoveredServer.DisplayName
-
-# Retrieve replicating VM details using replicating VM identifier
-$ReplicatingServer = Get-AzMigrateServerReplication -TargetObjectID $ReplicatingServer.Id
-```
 
 ## <a name="11-run-a-test-migration"></a>11.运行测试迁移
 
@@ -403,7 +381,7 @@ $ReplicatingServer = Get-AzMigrateServerReplication -TargetObjectID $Replicating
 - 测试迁移通过使用复制的数据创建一个 Azure VM 来模拟迁移（通常是迁移到 Azure 订阅中的非生产 VNet）。
 - 可以使用复制的测试 Azure VM 来验证迁移、执行应用测试，并解决完整迁移之前出现的任何问题。
 
-通过使用 TestNetworkID 参数指定虚拟网络的 ID，选择要用于测试的 Azure 虚拟网络。
+通过使用 [`TestNetworkID`] 参数指定虚拟网络的 ID，来选择要用于测试的 Azure 虚拟网络。
 
 ```azurepowershell-interactive
 # Retrieve the Azure virtual network created for testing
@@ -418,7 +396,7 @@ while (($TestMigrationJob.State -eq 'InProgress') -or ($TestMigrationJob.State -
         sleep 10;
         $TestMigrationJob = Get-AzMigrateJob -InputObject $TestMigrationJob
 }
-#Check if the Job completed successfully. The updated job state of a successfully completed job should be "Succeeded".
+# Check if the Job completed successfully. The updated job state of a successfully completed job should be "Succeeded".
 Write-Output $TestMigrationJob.State
 ```
 
@@ -434,7 +412,7 @@ while (($CleanupTestMigrationJob.State -eq "InProgress") -or ($CleanupTestMigrat
         sleep 10;
         $CleanupTestMigrationJob = Get-AzMigrateJob -InputObject $CleanupTestMigrationJob
 }
-#Check if the Job completed successfully. The updated job state of a successfully completed job should be "Succeeded".
+# Check if the Job completed successfully. The updated job state of a successfully completed job should be "Succeeded".
 Write-Output $CleanupTestMigrationJob.State
 ```
 
@@ -442,7 +420,7 @@ Write-Output $CleanupTestMigrationJob.State
 
 验证测试迁移是否按预期方式工作后，可以使用以下 cmdlet 迁移复制服务器。 cmdlet 将返回一个作业，跟踪该作业可监视操作的状态。
 
-如果不想关闭源服务器，则不要使用 TurnOffSourceServer 参数。
+如果不想关闭源服务器，则不要使用 [`TurnOffSourceServer`] 参数。
 
 ```azurepowershell-interactive
 # Start migration for a replicating server and turn off source server as part of migration
@@ -472,7 +450,7 @@ Write-Output $MigrateJob.State
            sleep 10;
            $StopReplicationJob = Get-AzMigrateJob -InputObject $StopReplicationJob
    }
-   #Check if the Job completed successfully. The updated job state of a successfully completed job should be "Succeeded".
+   # Check if the Job completed successfully. The updated job state of a successfully completed job should be "Succeeded".
    Write-Output $StopReplicationJob.State
    ```
 

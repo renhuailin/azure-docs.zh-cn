@@ -5,13 +5,14 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: overview
-ms.date: 10/30/2020
-ms.openlocfilehash: b9fb5d6537d2c8dffef397c56128dd4891c939b7
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.date: 02/23/2021
+ms.custom: references_regions
+ms.openlocfilehash: 3a7c73e4a5ba00155ab905f28edbcb0eb42c0539
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578121"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101724857"
 ---
 # <a name="what-is-azure-data-share"></a>什么是 Azure Data Share？
 
@@ -47,7 +48,7 @@ Azure Data Share 目前提供基于快照的共享和就地共享。
 
 数据使用者在接受数据共享以后，即可在所选数据存储中接收数据。 例如，如果数据提供者使用 Azure Blob 存储共享数据，数据使用者可以在 Azure Data Lake Store 中接收该数据。 同样，如果数据提供者共享 Azure Synapse Analytics 中的数据，则数据使用者可以选择是在 Azure Data Lake Store、Azure SQL 数据库还是 Azure Synapse Analytics 中接收数据。 如果从基于 SQL 的源进行共享，数据使用者还可以选择是在 parquet 还是 csv 中接收数据。 
 
-通过就地共享，数据提供程序可以共享其所在位置的数据而无需复制数据。 在通过邀请流建立共享关系之后，将在数据提供程序的源数据存储和数据使用者的目标数据存储之间创建一个符号链接。 数据使用者可以使用自己的数据存储实时读取和查询数据。 对源数据存储的更改可立即供数据使用者使用。 Azure 数据资源管理器的就地共享目前为预览版。
+通过就地共享，数据提供程序可以共享其所在位置的数据而无需复制数据。 在通过邀请流建立共享关系之后，将在数据提供程序的源数据存储和数据使用者的目标数据存储之间创建一个符号链接。 数据使用者可以使用自己的数据存储实时读取和查询数据。 对源数据存储的更改可立即供数据使用者使用。 Azure 数据资源管理器的就地共享目前可用。
 
 ## <a name="key-capabilities"></a>关键功能
 
@@ -81,7 +82,7 @@ Azure Data Share 目前提供基于快照的共享和就地共享。
 
 如需提供 Azure Data Share 的 Azure区域的列表，请参阅[可用产品（按区域）](https://azure.microsoft.com/global-infrastructure/services/?products=data-share)页并搜索 Azure Data Share。 
 
-Azure Data Share 本身不存储数据本身的副本。 数据存储在共享的基础数据存储中。 例如，如果数据生成者将其数据存储在美国西部的 Azure Data Lake Store 帐户中，则该帐户就是存储数据的位置。 如果数据生成者通过快照将数据与西欧的 Azure 存储帐户共享，则通常情况下，数据会直接传输到西欧的 Azure 存储帐户。
+对于由 Azure Data Share 存储的元数据，在东南亚（新加坡），它存储在该区域内，对于所有其他受支持的区域，它存储在异地。 Azure Data Share 本身不存储共享数据的副本。 数据存储在共享的基础数据存储中。 例如，如果数据提供程序将其数据存储在美国西部的 Azure Data Lake Storage 帐户中，则数据存储在该位置。 如果数据生成者通过快照将数据与西欧的 Azure 存储帐户共享，则通常情况下，数据会直接传输到西欧的 Azure 存储帐户。 
 
 Azure Data Share 服务不需在你的区域可用即可利用此服务。 例如，如果将数据存储在某个 Azure 存储帐户中，而该帐户所在的区域尚不提供 Azure Data Share，则仍然可以利用该服务来共享数据。 
 

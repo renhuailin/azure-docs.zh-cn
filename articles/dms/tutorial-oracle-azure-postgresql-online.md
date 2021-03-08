@@ -12,14 +12,17 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 01/24/2020
-ms.openlocfilehash: ab280bbab71926a6ffb70605fdbf463164469623
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 09bcc85c0640bf0061ec0c872161cbc9afe51da6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101096344"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101742120"
 ---
 # <a name="tutorial-migrate-oracle-to-azure-database-for-postgresql-online-using-dms-preview"></a>教程：使用 DMS（预览版）将 Oracle 联机迁移到 Azure Database for PostgreSQL
+
+> [!IMPORTANT]
+> 2021 年 5 月 1 日后，“Oracle 到 Azure Database for PostgreSQL”迁移方案（当前为预览版）将不再可用。 我们将继续通过替代工具（例如 Ora2pg）提供支持，并为 Oracle 到 PostgreSQL 的迁移提供最佳迁移体验。 有关迁移的最佳实践，请参阅 [Oracle 到 Azure Database for PostgreSQL 迁移指南] (https://aka.ms/OracletoPGguide) 。 
 
 可以使用 Azure 数据库迁移服务在尽量缩短停机时间的情况下，将本地或虚拟机中的 Oracle 数据库迁移到 [Azure Database for PostgreSQL](../postgresql/index.yml)。 换而言之，完成这种迁移只会对应用程序造成极短暂的停机。 本教程介绍如何使用 Azure 数据库迁移服务中的联机迁移活动，将 **HR** 示例数据库从 Oracle 11g 的本地或虚拟机实例迁移到 Azure Database for PostgreSQL。
 

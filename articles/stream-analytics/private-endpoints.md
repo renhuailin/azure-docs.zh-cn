@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 流分析群集中创建和删除专用终结点
+title: 在 Azure 流分析群集中创建和删除托管的专用终结点
 description: 了解如何在 Azure 流分析群集中管理专用终结点。
 author: sidramadoss
 ms.author: sidram
@@ -7,28 +7,28 @@ ms.service: stream-analytics
 ms.topic: overview
 ms.custom: mvc
 ms.date: 09/22/2020
-ms.openlocfilehash: cff02bb4b7d0f7e969589a9977a89f89e2674ffc
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 9939130782594c03a497d98ce6cd9b33b28eadec
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98019408"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101718397"
 ---
-# <a name="create-and-delete-private-endpoints-in-an-azure-stream-analytics-cluster"></a>在 Azure 流分析群集中创建和删除专用终结点
+# <a name="create-and-delete-managed-private-endpoints-in-an-azure-stream-analytics-cluster"></a>在 Azure 流分析群集中创建和删除托管的专用终结点
 
-可以将群集上运行的 Azure 流分析作业连接到防火墙或 Azure 虚拟网络 (VNet) 后面的输入和输出资源。 首先，在流分析群集中创建资源（例如 Azure 事件中心或 Azure SQL 数据库）的专用终结点。 然后，批准从输入或输出中连接专用终结点。
+可以将群集上运行的 Azure 流分析作业连接到防火墙或 Azure 虚拟网络 (VNet) 后面的输入和输出资源。 首先，在流分析群集中创建资源（例如 Azure 事件中心或 Azure SQL 数据库）的托管专用终结点。 然后，批准从输入或输出中连接专用终结点。
 
 批准连接后，在流分析群集中运行的任何作业都可以通过专用终结点访问资源。 本文介绍如何在流分析群集中创建和删除专用终结点。 可以为 Azure SQL 数据库、Azure 存储、Azure Data Lake Storage Gen2、Azure 事件中心和 Azure 服务总线创建专用终结点。 即将添加其他服务的专用终结点。 
 
-## <a name="create-private-endpoint-in-stream-analytics-cluster"></a>在流分析群集中创建专用终结点
+## <a name="create-managed-private-endpoint-in-stream-analytics-cluster"></a>在流分析群集中创建托管的专用终结点
 
 本部分介绍如何在流分析群集中创建专用终结点。
 
 1. 在 Azure 门户中，找到并选择流分析群集。
 
-1. 在“设置”下选择“专用终结点” 。
+1. 在“设置”下选择“托管的专用终结点” 。
 
-1. 选择“添加专用终结点”并输入以下信息，以选择要通过专用终结点安全访问的资源。
+1. 选择“新建”并输入以下信息，以选择要通过专用终结点安全访问的资源。
 
    |设置|Value|
    |---|---|
@@ -47,11 +47,11 @@ ms.locfileid: "98019408"
 
 1. 可以返回流分析群集查看状态的变化：会从“等待客户批准”变为“等待 DNS 设置”，然后变成“设置完成”，这将在几分钟内完成  。
 
-## <a name="delete-a-private-endpoint-in-a-stream-analytics-cluster"></a>在流分析群集中删除专用终结点
+## <a name="delete-a-managed-private-endpoint-in-a-stream-analytics-cluster"></a>在流分析群集中删除托管的专用终结点
 
 1. 在 Azure 门户中，找到并选择流分析群集。
 
-1. 在“设置”下选择“专用终结点” 。
+1. 在“设置”下选择“托管的专用终结点” 。
 
 1. 选择要删除的专用终结点，然后选择“删除”。
 
