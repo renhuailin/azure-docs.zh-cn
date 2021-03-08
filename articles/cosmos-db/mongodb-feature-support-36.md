@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 03/02/2021
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: 4d053e33b8751095be13a40446914033b31feeed
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: ce79b450e5eaed04150ffafd88528a131417044a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101656408"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101692294"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-36-version-supported-features-and-syntax"></a>Azure Cosmos DB 的 API for MongoDB（3.6 版本）：支持的功能和语法
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -22,7 +22,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 通过使用 Azure Cosmos DB 的 MongoDB API，可以像以往一样从 MongoDB 中受益，并且可使用 Cosmos DB 提供的所有企业功能：[全局分发](distribute-data-globally.md)、[自动分片](partitioning-overview.md)、可用性和延迟保证、静态加密和备份等。
 
 > [!NOTE]
-> 本文适用于 Azure Cosmos DB 的 MongoDB API 3.6。 对于 MongoDB 4.0 版本，请参阅 [MongoDB 4.0 支持的功能和语法](mongodb-feature-support-40.md)。
+> 用于 MongoDB 的 Cosmos DB API 版本 3.6 目前没有生命周期终止 (EOL) 计划。 未来 EOL 的最短期限是 3 年。
 
 ## <a name="protocol-support"></a>协议支持
 

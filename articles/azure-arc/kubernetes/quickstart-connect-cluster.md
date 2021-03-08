@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 02/24/2021
 ms.custom: template-quickstart
 keywords: Kubernetes, Arc, Azure, 群集
-ms.openlocfilehash: 8eb177f0c80d7ed2df70c75ca476a1dfe33c8425
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: c50266ce0afd6dd3f5860e3259d2b22af817834c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101664174"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101689243"
 ---
 # <a name="quickstart-connect-an-existing-kubernetes-cluster-to-azure-arc"></a>快速入门：将现有 Kubernetes 群集连接到 Azure Arc 
 
@@ -25,7 +25,7 @@ ms.locfileid: "101664174"
 
 * 验证是否具有：
     * 已启动并正在运行的 Kubernetes 群集。
-    * `kubeconfig` 文件。
+    * 一个 `kubeconfig` 文件，指向要连接到 Azure Arc 的群集。
     * 用户或服务主体连接和创建已启用 Azure Arc 的 Kubernetes 资源类型 (`Microsoft.Kubernetes/connectedClusters`) 的“读取”和“写入”权限。
 * 安装[最新版本的 Helm 3](https://helm.sh/docs/intro/install)。
 * 安装以下版本 >= 1.0.0 的已启用 Azure Arc 的 Kubernetes CLI 扩展：
@@ -68,16 +68,6 @@ ms.locfileid: "101664174"
 | `https://login.microsoftonline.com`                                                                            | 提取和更新 Azure 资源管理器令牌所需的终结点。                                                                                    |  
 | `https://mcr.microsoft.com`                                                                            | 拉取 Azure Arc 代理的容器映像所需的终结点。                                                                  |  
 | `https://eus.his.arc.azure.com`, `https://weu.his.arc.azure.com`, `https://wcus.his.arc.azure.com`, `https://scus.his.arc.azure.com`, `https://sea.his.arc.azure.com`, `https://uks.his.arc.azure.com`, `https://wus2.his.arc.azure.com`, `https://ae.his.arc.azure.com`, `https://eus2.his.arc.azure.com`, `https://ne.his.arc.azure.com` |  拉取系统分配的托管服务标识 (MSI) 证书所需的终结点。                                                                  |
-
-
-## <a name="install-the-azure-arc-enabled-kubernetes-cli-extensions"></a>安装已启用 Azure Arc 的 Kubernetes CLI 扩展
-
-输入以下命令：  
-
-    ```azurecli
-    az extension add --name connectedk8s
-    az extension add --name k8s-configuration
-    ```
 
 ## <a name="register-the-two-providers-for-azure-arc-enabled-kubernetes"></a>为已启用 Azure Arc 的 Kubernetes 注册两个提供程序
 
@@ -147,6 +137,9 @@ eastus      AzureArcTest
       "type": "Microsoft.Kubernetes/connectedClusters"
     }
     ```
+
+> [!TIP]
+> 上面未指定位置参数的命令会在资源组所在位置创建启用了 Azure Arc 的 Kubernetes 资源。 若要在其他位置创建启用了 Azure Arc 的 Kubernetes 资源，请在运行 `az connectedk8s connect` 命令时指定 `--location <region>` 或 `-l <region>`。
 
 ## <a name="verify-cluster-connection"></a>验证群集连接
 

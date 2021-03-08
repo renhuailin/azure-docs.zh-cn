@@ -10,21 +10,21 @@ ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
 zone_pivot_groups: acs-plat-azp-net
-ms.openlocfilehash: d861f6bfbe38ad73715ef521a36cc097b8538c9b
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: f40da8b2c9f64da424d43a6679977cda5bf111df
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99819992"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691767"
 ---
 # <a name="quickstart-create-and-manage-communication-services-resources"></a>快速入门：创建和管理通信服务资源
  
 [!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
-通过预配第一个通信服务资源来开始使用 Azure 通信服务。 可以通过 Azure 门户或使用 .NET 管理客户端库预配通信服务资源。 管理客户端库使你可以通过 [Azure 资源管理器](../../azure-resource-manager/management/overview.md)（Azure 的部署和管理服务）创建、配置、更新和删除资源和接口。 客户端库中提供的所有功能都可在 Azure 门户中使用。 
+通过预配第一个通信服务资源来开始使用 Azure 通信服务。 可以通过 [Azure 门户](https://portal.azure.com)或 .NET 管理客户端库预配通信服务资源。 利用管理客户端库和 Azure 门户，可以通过 [Azure 资源管理器](../../azure-resource-manager/management/overview.md)（Azure 的部署和管理服务）创建、配置、更新和删除资源和接口。 客户端库中提供的所有功能都可在 Azure 门户中使用。 
 
 > [!WARNING]
-> 请注意，在公共预览版期间，通信服务仅限美国地区使用。 另请注意，在公共预览版期间，通信资源无法转移到其他订阅。
+> 请注意，虽然在多个地理区域提供通信服务，但若要获得电话号码，资源必须有一个设置为“美国”的数据位置。 另请注意，在公共预览版期间，通信资源无法转移到其他订阅。
 
 ::: zone pivot="platform-azp"
 [!INCLUDE [Azure portal](./includes/create-resource-azp.md)]

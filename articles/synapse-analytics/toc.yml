@@ -588,6 +588,8 @@
               href: ./spark/apache-spark-manage-scala-packages.md
             - name: 排查 Python 包安装错误
               href: ./spark/apache-spark-troubleshoot-library-errors.md
+            - name: 创建 Conda 专用通道
+              href: ./spark/apache-spark-custom-conda-channel.md
         - name: 使用笔记本和 IDE 工具
           items:
             - name: 管理笔记本
@@ -748,7 +750,7 @@
               href: ../data-factory/connector-azure-databricks-delta-lake.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Azure 文件存储
               href: ../data-factory/connector-azure-file-storage.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: Azure SQL 数据库
+            - name: Azure SQL Database
               href: ../data-factory/connector-azure-sql-database.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Azure SQL 托管实例
               href: ../data-factory/connector-azure-sql-managed-instance.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json

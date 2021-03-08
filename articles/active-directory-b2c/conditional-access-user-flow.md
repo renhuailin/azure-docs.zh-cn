@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: overview
-ms.date: 12/14/2020
+ms.date: 02/23/2021
 ms.custom: project-no-code
 ms.author: mimart
 author: msmimart
 manager: celested
 ms.collection: M365-identity-device-management
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: d6d5ab13c8997dffee42a053ba498376ccbcb6d8
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: e87899010660eac11166275bdfd61151bb12c10f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97585252"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101686931"
 ---
 # <a name="add-conditional-access-to-user-flows-in-azure-active-directory-b2c"></a>向 Azure Active Directory B2C 中的用户流添加条件访问
 
@@ -129,6 +129,8 @@ ms.locfileid: "97585252"
 ## <a name="add-conditional-access-to-your-policy"></a>向策略添加条件访问
 
 可以在 [GitHub](https://github.com/azure-ad-b2c/samples/tree/master/policies/conditional-access) 上找到条件访问策略的示例。
+
+你还可以详细了解如何[在自定义策略中定义条件访问技术配置文件](conditional-access-technical-profile.md)。
 
 ::: zone-end
 

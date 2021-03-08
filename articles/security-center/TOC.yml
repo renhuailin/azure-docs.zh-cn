@@ -112,7 +112,7 @@
           href: exempt-resource.md
         - name: 创建自定义安全计划和策略
           href: custom-security-policies.md
-    - name: 通过适用于服务器的 Azure Defender 保护计算机
+    - name: 通过适用于服务器的 Defender 保护计算机
       displayName: 'hybrid, arc, Azure Defender for machines'
       items:
         - name: 适用于服务器的 Azure Defender 的概述
@@ -146,7 +146,7 @@
         - name: 定义计算机的安全应用程序列表
           displayName: 'aac, whitelist, allowlist, reviewgroup, adaptive application controls'
           href: security-center-adaptive-application.md
-        - name: 通过文件完整性监视，跟踪对文件和注册表的更改
+        - name: 跟踪对文件和注册表的更改
           items:
             - name: 文件完整性监视概述
               displayName: 'fim, change'
@@ -154,8 +154,8 @@
             - name: 使用文件完整性监视来比较基线
               displayName: 'fim, change'
               href: security-center-file-integrity-monitoring-baselines.md
-        - name: 通过自适应网络强化，改进网络安全状况
-          displayName: anh
+        - name: 改善网络安全状况
+          displayName: 'anh, adaptive network hardening'
           href: security-center-adaptive-network-hardening.md
         - name: 强化 Docker 主机
           displayName: containers
@@ -209,7 +209,7 @@
         - name: 适用于 Key Vault 的 Azure Defender 的概述
           displayName: 'KV, akv'
           href: defender-for-key-vault-introduction.md
-        - name: 响应适用于 Key Vault 的 Azure Defender 警报
+        - name: 处理适用于 Key Vault 的 Defender 警报
           displayName: 'akv, kv'
           href: defender-for-key-vault-usage.md
     - name: 监视资源管理操作
@@ -217,7 +217,7 @@
         - name: 适用于资源管理器的 Azure Defender 的概述
           displayName: ARM
           href: defender-for-resource-manager-introduction.md
-        - name: 响应适用于资源管理器的 Azure Defender 警报
+        - name: 处理适用于资源管理器的 Defender 警报
           displayName: arm
           href: defender-for-resource-manager-usage.md
     - name: 监视来自 Azure 资源的 DNS 查询

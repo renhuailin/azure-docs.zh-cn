@@ -2,39 +2,38 @@
 title: 使用 Azure Monitor 监视 Azure 虚拟机
 description: 了解如何在 Azure Monitor 中收集和分析 Azure 虚拟机的数据。
 ms.service: azure-monitor
-ms. subservice: logs
 ms.topic: quickstart
 author: bwren
 ms.author: bwren
 ms.date: 03/10/2020
-ms.openlocfilehash: defeeb42340cbc3203141561aa33a2b4b7b00bb1
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 7efd8baf54aeacbd2f55640240a15f2517dcd904
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100626090"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102046918"
 ---
 # <a name="quickstart-monitor-an-azure-virtual-machine-with-azure-monitor"></a>使用 Azure Monitor 监视 Azure 虚拟机。
-创建 Azure 虚拟机后，[Azure Monitor](../overview.md) 会立即开始从这些虚拟机收集数据。 本快速入门简要说明自动收集的 Azure VM 数据，以及如何在 Azure 门户中查看这些数据。 然后，为 VM 启用[用于 VM 的 Azure Monitor](../vm/vminsights-overview.md)，使 VM 上的代理能够从来宾操作系统（包括进程及其依赖项）收集数据并对其进行分析。
+创建 Azure 虚拟机后，[Azure Monitor](../overview.md) 会立即开始从这些虚拟机收集数据。 本快速入门简要说明自动收集的 Azure VM 数据，以及如何在 Azure 门户中查看这些数据。 然后，为 VM 启用 [VM 见解](../vm/vminsights-overview.md)，使 VM 上的代理能够从来宾操作系统（包括进程及其依赖项）收集数据并对其进行分析。
 
 本快速入门假定你拥有现有 Azure 虚拟机。 如果没有，可根据 VM 快速入门创建 [Windows VM](../../virtual-machines/windows/quick-create-portal.md) 或创建 [Linux VM](../../virtual-machines/linux/quick-create-cli.md)。
 
-有关监视从 Azure 资源收集的数据的更详细说明，请参阅[使用 Azure Monitor 监视 Azure 虚拟机](../insights/monitor-vm-azure.md)。
+有关监视从 Azure 资源收集的数据的更详细说明，请参阅[使用 Azure Monitor 监视 Azure 虚拟机](./monitor-vm-azure.md)。
 
 
 ## <a name="complete-the-monitor-an-azure-resource-quickstart"></a>完成“监视 Azure 资源”快速入门。
-完成[使用 Azure Monitor 监视 Azure 资源](../learn/quick-monitor-azure-resource.md)，以查看订阅中 VM 的概述页、活动日志和指标。 Azure VM 收集的监视数据与任何其他 Azure 资源相同，但这一点仅适用于主机 VM。 本快速入门的余下内容将重点介绍如何监视来宾操作系统及其工作负荷。
+完成[使用 Azure Monitor 监视 Azure 资源](../essentials/quick-monitor-azure-resource.md)，以查看订阅中 VM 的概述页、活动日志和指标。 Azure VM 收集的监视数据与任何其他 Azure 资源相同，但这一点仅适用于主机 VM。 本快速入门的余下内容将重点介绍如何监视来宾操作系统及其工作负荷。
 
 
-## <a name="enable-azure-monitor-for-vms"></a>启用用于 VM 的 Azure Monitor
-尽管系统会收集主机 VM 的指标和活动日志，但你需要安装一个代理并完成一些配置，才能从来宾操作系统及其工作负荷收集监视数据并分析这些数据。 用于 VM 的 Azure Monitor 将安装这些代理，并提供用于监视虚拟机的其他强大功能。
+## <a name="enable-vm-insights"></a>启用 VM 见解
+尽管系统会收集主机 VM 的指标和活动日志，但你需要安装一个代理并完成一些配置，才能从来宾操作系统及其工作负荷收集监视数据并分析这些数据。 VM 见解会安装这些代理，并提供用于监视虚拟机的其他强大功能。
 
 1. 转到虚拟机的菜单。
 2. 在“概述”页上的磁贴中单击“转到 Insights”，或者在“监视”菜单中单击“Insights”。
 
     ![概述页](media/quick-monitor-azure-vm/overview-insights.png)
 
-3. 如果尚未为虚拟机启用用于 VM 的 Azure Monitor，请单击“启用”。 
+3. 如果尚未为虚拟机启用 VM 见解，请单击“启用”。 
 
     ![启用 Insights](media/quick-monitor-azure-vm/enable-insights.png)
 
@@ -42,7 +41,7 @@ ms.locfileid: "100626090"
 
     ![选择工作区](media/quick-monitor-azure-vm/select-workspace.png)
 
-5. 加入过程将会花费几分钟时间，因为这需要启用扩展，并在虚拟机上安装代理。 完成此过程后，会出现一条消息，指出已成功部署 Insights。 单击“Azure Monitor”打开用于 VM 的 Azure Monitor。
+5. 加入过程将会花费几分钟时间，因为这需要启用扩展，并在虚拟机上安装代理。 完成此过程后，会出现一条消息，指出已成功部署 Insights。 单击“Azure Monitor”，以打开 VM 见解。
 
     ![打开 Azure Monitor](media/quick-monitor-azure-vm/azure-monitor.png)
 
@@ -65,7 +64,7 @@ ms.locfileid: "100626090"
 
 2. 选择“数据”，然后选择“Windows 事件日志”。
 
-3. 键入日志名称来添加事件日志。  键入“System”，然后选择加号 (**+**)。
+3. 键入日志名称来添加事件日志。  键入“System”，然后选择加号 ( **+** )。
 
 4. 在表中，选中严重性“错误”和“警告”。
 
@@ -75,7 +74,7 @@ ms.locfileid: "100626090"
 
 1. 选择“数据”，然后选择 **Syslog**。
 
-2. 键入日志名称来添加事件日志。  键入“Syslog”，然后选择加号 (**+**)。  
+2. 键入日志名称来添加事件日志。  键入“Syslog”，然后选择加号 ( **+** )。  
 
 3. 在表中，取消选中严重性“信息”、“通知”和“调试”。 
 
@@ -104,7 +103,7 @@ ms.locfileid: "100626090"
     ![Log Analytics](media/quick-monitor-azure-vm/log-analytics.png)
 
 ## <a name="next-steps"></a>后续步骤
-在本快速入门中，你为虚拟机启用了用于 VM 的 Azure Monitor，并配置了 Log Analytics 工作区以收集来宾操作系统的事件。 若要了解如何查看和分析数据，请继续本教程。
+在这篇快速入门文章中，你为虚拟机启用了 VM 见解，并配置了 Log Analytics 工作区，以收集来宾操作系统的事件。 若要了解如何查看和分析数据，请继续本教程。
 
 > [!div class="nextstepaction"]
-> [在 Log Analytics 中查看或分析数据](../log-query/log-analytics-tutorial.md)
+> [在 Log Analytics 中查看或分析数据](../logs/log-analytics-tutorial.md)

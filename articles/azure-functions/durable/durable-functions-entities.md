@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: overview
 ms.date: 12/17/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 496b315e23beeb97d08befca13e05c4797268f36
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 8b1c4077c036cbb75738115437d29ffd14b160ff
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85341554"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723667"
 ---
 # <a name="entity-functions"></a>实体函数
 
@@ -24,7 +24,10 @@ ms.locfileid: "85341554"
 
 实体的行为有点类似于通过消息进行通信的微型服务。 每个实体具有唯一的标识和内部状态（如果存在）。 与服务或对象一样，实体会根据提示执行操作。 执行的操作可能会更新实体的内部状态。 它还可能会调用外部服务并等待响应。 实体使用通过可靠队列隐式发送的消息来与其他实体、业务流程和客户端通信。 
 
-为了防止冲突，系统会保证针对单个实体的所有操作按顺序执行，即，一个接一个地执行。 
+为了防止冲突，系统会保证针对单个实体的所有操作按顺序执行，即，一个接一个地执行。
+
+> [!NOTE]
+> 在调用实体时，该实体会处理其有效负载直至完成，然后计划新的执行，以便在将来的输入到达后进行激活。 因此，实体执行日志可能会在每次实体调用后显示额外的执行，这是正常情况。
 
 ### <a name="entity-id"></a>实体 ID
 可通过唯一标识符（实体 ID）访问实体。 实体 ID 只是用于唯一标识实体实例的一对字符串。 它包括：
@@ -149,7 +152,48 @@ module.exports = df.entity(function(context) {
     }
 });
 ```
+# <a name="python"></a>[Python](#tab/python)
 
+### <a name="example-python-entity"></a>示例：Python 实体
+
+以下代码是作为持久函数（以 Python 编写）实现的 `Counter` 实体。
+
+**Counter/function.json**
+```json
+{
+  "scriptFile": "__init__.py",
+  "bindings": [
+    {
+      "name": "context",
+      "type": "entityTrigger",
+      "direction": "in"
+    }
+  ]
+}
+```
+
+**Counter/__init__.py**
+```Python
+import azure.functions as func
+import azure.durable_functions as df
+
+
+def entity_function(context: df.DurableEntityContext):
+    current_value = context.get_state(lambda: 0)
+    operation = context.operation_name
+    if operation == "add":
+        amount = context.get_input()
+        current_value += amount
+    elif operation == "reset":
+        current_value = 0
+    elif operation == "get":
+        context.set_result(current_value)
+    context.set_state(current_value)
+
+
+
+main = df.Entity.create(entity_function)
+```
 ---
 
 ## <a name="access-entities"></a>访问实体
@@ -201,6 +245,19 @@ module.exports = async function (context) {
 };
 ```
 
+# <a name="python"></a>[Python](#tab/python)
+
+```Python
+from azure.durable_functions import DurableOrchestrationClient
+import azure.functions as func
+
+
+async def main(req: func.HttpRequest, starter: str, message):
+    client = DurableOrchestrationClient(starter)
+    entityId = df.EntityId("Counter", "myCounter")
+    await client.signal_entity(entityId, "add", 1)
+```
+
 ---
 
 术语“信号”是指实体 API 调用是单向、异步的。 客户端函数无法知道实体何时处理了操作。 另外，客户端函数无法观察到任何结果值或异常。 
@@ -235,6 +292,11 @@ module.exports = async function (context) {
     return stateResponse.entityState;
 };
 ```
+
+# <a name="python"></a>[Python](#tab/python)
+
+> [!NOTE]
+> Python 目前不支持从客户端读取实体状态。 请改用业务流程协调程序的 `callEntity`。
 
 ---
 
@@ -279,6 +341,21 @@ module.exports = df.orchestrator(function*(context){
 > [!NOTE]
 > JavaScript 目前不支持从业务流程协调程序向实体发送信号。 请改用 `callEntity`。
 
+# <a name="python"></a>[Python](#tab/python)
+
+```Python
+import azure.functions as func
+import azure.durable_functions as df
+
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    entityId = df.EntityId("Counter", "myCounter")
+    current_value = yield context.call_entity(entityId, "get")
+    if current_value < 10:
+        context.signal_entity(entityId, "add", 1)
+    return state
+```
+
 ---
 
 只有业务流程能够调用实体和获取响应，该响应可能是返回值或异常。 使用[客户端绑定](durable-functions-bindings.md#entity-client)的客户端函数只能发送实体的信号。
@@ -318,6 +395,11 @@ module.exports = df.orchestrator(function*(context){
         context.df.setState(currentValue + amount);
         break;
 ```
+
+# <a name="python"></a>[Python](#tab/python)
+
+> [!NOTE]
+> Python 目前不支持实体到实体的信号。 请改用业务流程协调程序向实体发出信号。
 
 ---
 
@@ -421,7 +503,6 @@ public static async Task<bool> TransferFundsAsync(
 * 实体中的请求-响应模式限制为业务流程。 在实体内部，仅允许单向消息传送（也称为“发出信号”），原始执行组件模型中也是如此，但 Orleans 的粒度中不是如此。 
 * 持久实体不会死锁。 在 Orleans 中，可能会发生死锁，并且在消息超时之前不会解决死锁。
 * 持久实体可与持久业务流程结合使用，支持分布式锁定机制。 
-
 
 ## <a name="next-steps"></a>后续步骤
 

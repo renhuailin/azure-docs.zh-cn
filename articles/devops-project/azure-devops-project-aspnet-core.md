@@ -12,15 +12,15 @@ ms.assetid: ''
 ms.workload: web
 ms.tgt_pltfrm: na
 ms.topic: quickstart
-ms.date: 03/24/2020
+ms.date: 02/23/2021
 ms.author: mlearned
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 63d3ac356e4f2c1d17e1511227f5089b7ff4266f
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 59f8d721c23cbb033f295f2ef3045fc96f08ba96
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97589151"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733171"
 ---
 # <a name="create-a-cicd-pipeline-for-net-with-azure-devops-starter"></a>通过 Azure DevOps Starter 创建用于 .NET 的 CI/CD 管道
 
@@ -43,7 +43,9 @@ DevOps Starter 在 Azure DevOps 中创建 CI/CD 管道。 可以创建新的 Azu
 1. 选择 **.NET** 示例应用程序。 .NET 示例包括选择开源 ASP.NET 框架或跨平台 .NET Core 框架。
 
    ![.NET Framework](_img/azure-devops-project-aspnet-core/select-dotnet.png)
-
+   
+   > [!NOTE]
+   > 设置 DevOps 入门版的默认选项是使用 GitHub，但可以从向导中更改此设置。
 2. 此示例是一个 ASP.NET Core MVC 应用程序。 选择 **.NET Core** 应用程序框架，然后选择“下一步”  。    
     
 3. 选择“Windows Web 应用”  作为部署目标，然后选择“下一步”  。 （可选）可以为部署选择其他 Azure 服务。 以前选择的应用程序框架规定了此处提供的 Azure 服务部署目标的类型。
@@ -98,12 +100,12 @@ DevOps Starter 在 Azure Repos 或 GitHub 中创建了 Git 存储库。 若要�
 
 1. 将生成管道的名称更改为更具描述性的名称，选择“保存并排队”，然后选择“保存”。  
 
-1. 在生成管道名称下，选择“历史记录”。    
+1. 在生成管道名称下，选择“历史记录”。   
 在“历史记录”窗格中，此时会看到最近针对生成所做的更改的审核线索。   Azure Pipelines 会跟踪对生成管道所做的任何更改，并允许进行版本比较。
 
-1. 选择“触发器”。  DevOps Starter 将自动创建一个 CI 触发器，每次向存储库提交内容都会启动新的生成。 可以选择在 CI 过程中包括或排除分库。
+1. 选择“触发器”。 DevOps Starter 将自动创建一个 CI 触发器，每次向存储库提交内容都会启动新的生成。 可以选择在 CI 过程中包括或排除分库。
 
-1. 选择“保留期”。  可以根据方案指定策略，以保留或删除特定数目的生成。
+1. 选择“保留期”。 可以根据方案指定策略，以保留或删除特定数目的生成。
 
 1. 选择“生成和发布”，然后选择“发布”。    
 DevOps Starter 会创建一个发布管道，用于管理到 Azure 的部署。
@@ -120,7 +122,7 @@ DevOps Starter 会创建一个发布管道，用于管理到 Azure 的部署。
 
 1. 选择某个发布旁边的省略号 (...)，然后选择“打开”。  可以浏览多个菜单，例如“发布摘要”、“关联的工作项”、“测试”。
 
-1. 选择“提交”。  此视图显示与特定部署相关联的代码提交。 
+1. 选择“提交”。 此视图显示与特定部署相关联的代码提交。 
 
 1. 选择“日志”。  日志包含有关部署过程的有用信息。 日志可以在部署过程中以及部署以后查看。
 

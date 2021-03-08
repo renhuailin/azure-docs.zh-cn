@@ -6,14 +6,14 @@ author: v-dalc
 ms.service: databox
 ms.subservice: gateway
 ms.topic: tutorial
-ms.date: 10/15/2020
+ms.date: 03/01/2021
 ms.author: alkohli
-ms.openlocfilehash: 40de216a9bcb173d9dfebf39d05fb9cb12579301
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: ceda5015770ad0b9898def181fa7199f119920db
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98937341"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101706089"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-data-box-gateway"></a>教程：准备部署 Azure Data Box Gateway
 
@@ -65,7 +65,7 @@ ms.locfileid: "98937341"
 - 主机系统能够将以下资源专用于预配 Data Box 虚拟设备：
   
   - 至少 4 个虚拟处理器。
-  - 至少 8 GB 的 RAM。
+  - 至少 8 GB 的 RAM。 强烈建议至少配置 16 GB 的 RAM。
   - 一个网络接口。
   - 一个 250 GB 的 OS 磁盘。
   - 一个 2 TB 的用于系统数据的虚拟磁盘。
@@ -112,14 +112,14 @@ ms.locfileid: "98937341"
 
     输入或选择以下项目详细信息。
     
-    |设置  |值  |
+    |设置  |“值”  |
     |---------|---------|
     |订阅    |选择用于 Data Box Gateway 设备的订阅。 该订阅将链接到计费帐户。|
     |资源组  |选择现有的组，或创建新组。<br>详细了解 [Azure 资源组](../azure-resource-manager/management/overview.md)。|
 
-   输入或选择以下“实例详细信息”。 
+   输入或选择以下“实例详细信息”。
 
-    |设置  |值  |
+    |设置  |Value  |
     |---------|---------|
     |名称   |用于标识资源的友好名称。<br>该名称的长度必须介于 2 和 50 个字符之间，只能包含字母、数字和连字符。 <br> 名称必须以字母或数字开头和结尾。 |
     |区域  |选择要在其中部署资源的区域。 选择离要部署设备的地理区域较近的位置。 <br> 有关可使用 Data Base Gateway/Azure Stack Edge 资源的所有区域的列表，请参阅[可用 Azure 产品（按区域）](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)。 <br> 对于 Azure 政府版，可以选择 [Azure 区域](https://azure.microsoft.com/global-infrastructure/regions/)中所列的所有政府区域。|

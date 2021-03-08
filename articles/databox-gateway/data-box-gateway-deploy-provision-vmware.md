@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: tutorial
-ms.date: 10/16/2020
+ms.date: 03/01/2021
 ms.author: alkohli
-ms.openlocfilehash: dfbc63ccbdf6f0a8abe1e955b43240d799d6783d
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 948005942be193c8b15c363282aa06c006eb244e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96580052"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101727611"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-vmware"></a>教程：在 VMware 中预配 Azure Data Box Gateway
 
@@ -55,7 +55,7 @@ ms.locfileid: "96580052"
 * 主机系统能够将以下资源专用于预配虚拟设备：
 
   * 至少 4 个核心。
-  * 至少 8 GB 的 RAM。
+  * 至少 8 GB 的 RAM。 强烈建议至少配置 16 GB 的 RAM。
   * 一个网络接口。
   * 一个 250 GB 的 OS 磁盘。
   * 一个 2 TB 的用于系统数据的虚拟磁盘。

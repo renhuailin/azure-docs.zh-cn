@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 02/01/2021
 ms.reviewer: astay; kraigb
 ms.custom: mvc, seodec18, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 83c49eea8bda10d665c0a08666276e905c60c584
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: cfbbb7064fcadc06714b237066bb6a009246baac
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99493696"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101709081"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>为 Azure 应用服务配置 Linux Python 应用
 
@@ -372,6 +372,7 @@ if 'X-Forwarded-Proto' in request.headers and request.headers['X-Forwarded-Proto
 - [应用未显示 - 显示默认应用](#app-doesnt-appear)
 - [应用未显示 -“服务不可用”消息](#service-unavailable)
 - [找不到 setup.py 或 requirements.txt](#could-not-find-setuppy-or-requirementstxt)
+- [启动时出现 ModuleNotFoundError](#modulenotfounderror-when-app-starts)
 - [在 SSH 会话中键入密码时，密码不显示](#other-issues)
 - [SSH 会话中的命令似乎已被截断](#other-issues)
 - [静态资产未在 Django 应用中显示](#other-issues)
@@ -404,6 +405,10 @@ if 'X-Forwarded-Proto' in request.headers and request.headers['X-Forwarded-Proto
 - 日志流显示“找不到 setup.py 或 requirements.txt；未运行 pip install。”：Oryx 生成过程找不到 requirements.txt 文件。
 
     - 通过 [SSH](#open-ssh-session-in-browser) 连接到 Web 应用的容器，并验证 requirements.txt 的命名是否正确，以及是否就在 site/wwwroot 下。 如果该文件不存在，请使该文件存在于存储库中，并包含在部署中。 如果它存在于单独的文件夹中，请将其移到根文件夹下。
+
+#### <a name="modulenotfounderror-when-app-starts"></a>应用启动时出现 ModuleNotFoundError
+
+如果看到类似于 `ModuleNotFoundError: No module named 'example'` 的错误，则意味着在应用程序启动时，Python 找不到一个或多个模块。 使用代码来部署虚拟环境时最常发生这种情况。 虚拟环境不是可移植的，因此不应使用应用程序代码来部署虚拟环境， 而应利用 Oryx 来创建虚拟环境，然后创建应用设置 `SCM_DO_BUILD_DURING_DEPLOYMENT` 并将其设置为 `1`，通过这种方法在 Web 应用上安装包。 这样就会强制 Oryx 安装你的包（无论何时部署到应用服务）。 有关详细信息，请参阅[这篇有关虚拟环境可移植性的文章](https://azure.github.io/AppService/2020/12/11/cicd-for-python-apps.html)。
 
 #### <a name="other-issues"></a>其他问题
 

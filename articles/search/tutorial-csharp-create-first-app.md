@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 01/26/2021
+ms.date: 02/26/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 961e30cf17bf385647f4482c6f767641c6b891af
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 0a57e45b264badffd0305eb6ac5b3c8f7c42adf3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98791672"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101695118"
 ---
 # <a name="tutorial-create-your-first-search-app-using-the-net-sdk"></a>教程：使用 .NET SDK 创建你的第一个搜索应用
 
@@ -49,9 +49,11 @@ model.resultList = searchResult.Value.GetResults().ToList();
 
 ## <a name="overview"></a>概述
 
-本教程使用现有的托管示例索引，以便你可以专注于构建可收集相关请求的查询字符串并返回结果的搜索页面。 索引包含虚构的酒店数据。 有了基本页面后，可以在后续课程中对其进行增强，以添加分页、facet 和提前键入体验。
+本教程使用 hotels-sample-index，你可以通过逐步执行[导入数据快速入门](search-get-started-portal.md)中的步骤，在你自己的搜索服务中快速创建此索引。 该索引包含虚拟酒店数据，可用作每个搜索服务中的内置数据源。
 
-可以在以下项目中找到本教程中代码的完成版本：
+本教程中的第一课将创建基本查询结构和搜索页面，你将在后续课程中增强其功能，使之包括分页、facet 和预先输入体验。
+
+可以在以下项目中找到代码的完成版本：
 
 * [1-basic-search-page (GitHub)](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v11/1-basic-search-page)
 
@@ -59,7 +61,9 @@ model.resultList = searchResult.Value.GetResults().ToList();
 
 ## <a name="prerequisites"></a>先决条件
 
-由于你使用的是 Microsoft 托管的公共示例搜索索引，因此在本教程中无需使用搜索服务或 Azure 帐户。
+* [创建搜索服务](search-create-service-portal.md)或[查找现有的搜索服务](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。
+
+* 根据[快速入门：创建搜索索引](search-get-started-portal.md)中的说明创建 hotels-sample-index。
 
 * [Visual Studio](https://visualstudio.microsoft.com/)
 
@@ -103,12 +107,12 @@ model.resultList = searchResult.Value.GetResults().ToList();
 
 在此示例中，将使用公开可用的酒店数据。 此数据是 50 个虚构的酒店名称和说明的任意集合，专门为提供演示数据而创建。 若要访问此数据，请指定名称和 API 密钥。
 
-1. 打开 appsettings.json，并用以下名称和密钥替换默认行。 此处显示的 API 密钥不是密钥示例，而是  访问酒店数据所需的密钥。 文件现在应如下所示。
+1. 打开 appsettings.json，将默认行替换为搜索服务的搜索服务 URL（格式为 `https://<service-name>.search.windows.net`）和[管理员或查询 API 密钥](search-security-api-keys.md)。 由于不需要创建或更新索引，因此在本教程中可以使用查询密钥。
 
     ```csharp
     {
-        "SearchServiceName": "azs-playground",
-        "SearchServiceQueryApiKey": "EA4510A6219E14888741FCFC19BFBB82"
+        "SearchServiceName": "<YOUR-SEARCH-SERVICE-URI>",
+        "SearchServiceQueryApiKey": "<YOUR-SEARCH-SERVICE-API-KEY>"
     }
     ```
 

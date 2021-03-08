@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/25/2021
 ms.author: jeedes
-ms.openlocfilehash: 1b65191e97402f2fb352c56664dad085c448242c
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 84d50d19a8356418a5cbf1f93784e5b8816d4be5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101650614"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101689345"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-talentlms"></a>教程：Azure Active Directory 与 TalentLMS 集成
 
@@ -170,11 +170,11 @@ ms.locfileid: "101650614"
 
     ![添加用户](./media/talentlms-tutorial/IC777299.png "添加用户")  
 
-    a. 在“名字”文本框中，输入用户的名字（如“Britta”）   。
+    a. 在“名字”文本框中，输入用户的名字（如“`Britta`”）。
 
     b. 在“姓氏”文本框中，输入用户的姓氏（如“Simon”）   。
  
-    c. 在“电子邮件地址”文本框中，输入用户的电子邮件地址（例如 ）`brittasimon\@contoso.com`。
+    c. 在“电子邮件地址”文本框中，输入用户的电子邮件地址（例如 ）`brittasimon@contoso.com`。
 
     d. 单击“添加用户”  。
 

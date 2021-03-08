@@ -10,18 +10,18 @@ ms.date: 9/1/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: a76c6467dac69fd3d21aa659c52227046c166938
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: ca6ef57db062ff22b20a8e968eaac39388b9551f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94816891"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750882"
 ---
 ## <a name="prerequisites"></a>先决条件
 在开始之前，请务必：
 - 创建活动订阅的 Azure 帐户。 有关详细信息，请参阅[创建免费账户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
 - 安装 [Visual Studio](https://visualstudio.microsoft.com/downloads/) 
-- 创建 Azure 通信服务资源。 有关详细信息，请参阅[创建 Azure 通信服务资源](../../create-communication-resource.md)。 为完成此快速入门，需要记录资源终结点。
+- 创建 Azure 通信服务资源。 有关详细信息，请参阅[创建 Azure 通信服务资源](../../create-communication-resource.md)。 需要为此快速入门记录资源终结点。
 - [用户访问令牌](../../access-tokens.md)。 请确保将范围设置为“聊天”，并记下令牌字符串和 userId 字符串。
 
 ## <a name="setting-up"></a>设置
@@ -46,7 +46,7 @@ dotnet build
 安装适用于 .NET 的 Azure 通信聊天客户端库
 
 ```PowerShell
-dotnet add package Azure.Communication.Chat --version 1.0.0-beta.3
+dotnet add package Azure.Communication.Chat --version 1.0.0-beta.4
 ``` 
 
 ## <a name="object-model"></a>对象模型
@@ -56,37 +56,44 @@ dotnet add package Azure.Communication.Chat --version 1.0.0-beta.3
 | 名称                                  | 说明                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
 | ChatClient | 聊天功能需要此类。 使用订阅信息实例化此类，并使用它来创建、获取和删除会话。 |
-| ChatThreadClient | 聊天会话功能需要此类。 通过 ChatClient 获取实例，并使用它来发送/接收/更新/删除消息、添加/删除/获取用户、发送键入通知和阅读回执。 |
+| ChatThreadClient | 聊天会话功能需要此类。 通过 ChatClient 获取实例，并使用它来发送/接收/更新/删除消息、添加/删除/获取参与者、发送键入通知和阅读回执。 |
 
 ## <a name="create-a-chat-client"></a>创建聊天客户端
 
-为创建聊天客户端，需要使用通信服务终结点和作为前提步骤的一部分而生成的访问令牌。 需要使用 `Administration` 客户端库的 `CommunicationIdentityClient` 类来创建用户，并颁发要传递到聊天客户端的令牌。 详细了解[用户访问令牌](../../access-tokens.md)。
+若要创建聊天客户端，你需要使用通信服务终结点以及在先决条件步骤中生成的访问令牌。 需要使用 `Administration` 客户端库的 `CommunicationIdentityClient` 类来创建用户，并颁发要传递到聊天客户端的令牌。
+
+详细了解[用户访问令牌](../../access-tokens.md)。
+
+本快速入门不介绍如何创建服务层来管理聊天应用程序的令牌，尽管我们建议你这样做。 详细了解[聊天体系结构](../../../concepts/chat/concepts.md)
 
 ```csharp
 using Azure.Communication.Identity;
 using Azure.Communication.Chat;
+using Azure;
+using Azure.Communication
 
 // Your unique Azure Communication service endpoint
 Uri endpoint = new Uri("https://<RESOURCE_NAME>.communication.azure.com");
 
-CommunicationUserCredential communicationUserCredential = new CommunicationUserCredential(<Access_Token>);
-ChatClient chatClient = new ChatClient(endpoint, communicationUserCredential);
+CommunicationTokenCredential communicationTokenCredential = new CommunicationTokenCredential(<Access_Token>);
+ChatClient chatClient = new ChatClient(endpoint, communicationTokenCredential);
 ```
 
 ## <a name="start-a-chat-thread"></a>启动聊天会话
 
-使用 `createChatThread` 方法创建聊天会话。
-- 使用 `topic` 为该聊天提供一个主题；在创建聊天会话后可使用 `UpdateThread` 函数更新主题。
-- 使用 `members` 属性传递要添加到聊天会话的 `ChatThreadMember` 对象的列表。 使用 `CommunicationUser` 对象初始化 `ChatThreadMember` 对象。 若要获取 `CommunicationUser` 对象，需要传递一个按照[创建用户](../../access-tokens.md#create-an-identity)中的说明创建的访问 ID
+在 chatClient 上使用 `createChatThread` 方法创建聊天会话
+- 使用 `topic` 为该聊天提供一个主题；在创建聊天会话后可使用 `UpdateTopic` 函数更新主题。
+- 使用 `participants` 属性传递要添加到聊天会话的 `ChatParticipant` 对象的列表。 使用 `CommunicationIdentifier` 对象初始化 `ChatParticipant` 对象。 `CommunicationIdentifier` 可以是 `CommunicationUserIdentifier`、`MicrosoftTeamsUserIdentifier` 或 `PhoneNumberIdentifier` 类型。 例如，若要获取 `CommunicationIdentifier` 对象，需要传递一个已按照[创建用户](../../access-tokens.md#create-an-identity)中的说明创建的访问 ID
 
-响应 `chatThreadClient` 用于在创建的聊天会话上执行操作：将成员添加到聊天会话、发送消息、删除消息等。它包含 `Id` 属性（聊天会话的唯一 ID）。 
+来自 CreateChatThread 方法的响应对象包含 chatThread 详细信息。 若要与聊天会话操作（例如添加参与者、发送消息、删除消息，等等）进行交互，需要在 ChatClient 客户端上使用 GetChatThreadClient 方法将 chatThreadClient 客户端实例实例化。 
 
 ```csharp
-var chatThreadMember = new ChatThreadMember(new CommunicationUser("<Access_ID>"))
+var chatParticipant = new ChatParticipant(communicationIdentifier: new CommunicationUserIdentifier(id: "<Access_ID>"))
 {
     DisplayName = "UserDisplayName"
 };
-ChatThreadClient chatThreadClient = await chatClient.CreateChatThreadAsync(topic: "Chat Thread topic C# sdk", members: new[] { chatThreadMember });
+CreateChatThreadResult createChatThreadResult = await chatClient.CreateChatThreadAsync(topic: "Hello world!", participants: new[] { chatParticipant });
+ChatThreadClient chatThreadClient = chatClient.GetChatThreadClient(createChatThreadResult.ChatThread.Id);
 string threadId = chatThreadClient.Id;
 ```
 
@@ -100,21 +107,24 @@ ChatThreadClient chatThreadClient = chatClient.GetChatThreadClient(threadId);
 
 ## <a name="send-a-message-to-a-chat-thread"></a>向聊天会话发送消息
 
-使用 `SendMessage` 方法将消息发送到由 threadId 标识的会话。
+使用 `SendMessage` 向会话发送消息。
 
-- 使用 `content` 提供聊天消息内容，这是必需的。
-- 使用 `priority` 指定消息优先级，如“普通”或“高”，如果未指定，将使用“普通”。
-- 使用 `senderDisplayName` 指定发送方的显示名称，如果未指定，将使用空名称。
-
-`SendChatMessageResult` 是发送消息后返回的响应，它包含一个 ID，该 ID 是消息的唯一 ID。
+- 使用 `content` 提供消息的内容，它是必需的。
+- 使用 `type` 表示消息的内容类型，例如 'Text' 或 'Html'。 如果未指定，则会将其设置为 'Text'。
+- 使用 `senderDisplayName` 指定发送方的显示名称。 如果未指定，则会将其设置为空字符串。
 
 ```csharp
-var content = "hello world";
-var priority = ChatMessagePriority.Normal;
-var senderDisplayName = "sender name";
+var messageId = await chatThreadClient.SendMessageAsync(content:"hello world", type: ChatMessageType.Text);
+```
+## <a name="get-a-message"></a>获取消息
 
-SendChatMessageResult sendChatMessageResult = await chatThreadClient.SendMessageAsync(content, priority, senderDisplayName);
-string messageId = sendChatMessageResult.Id;
+使用 `GetMessage` 从服务中检索消息。
+`messageId` 是消息的唯一 ID。
+
+`ChatMessage` 是获取消息后返回的响应。它包含一个 ID（消息的唯一标识符）和其他字段。 请参阅 Azure.Communication.Chat.ChatMessage
+
+```csharp
+ChatMessage chatMessage = await chatThreadClient.GetMessageAsync(messageId);
 ```
 
 ## <a name="receive-chat-messages-from-a-chat-thread"></a>从聊天会话接收聊天消息
@@ -125,23 +135,25 @@ string messageId = sendChatMessageResult.Id;
 AsyncPageable<ChatMessage> allMessages = chatThreadClient.GetMessagesAsync();
 await foreach (ChatMessage message in allMessages)
 {
-    Console.WriteLine($"{message.Id}:{message.Sender.Id}:{message.Content}");
+    Console.WriteLine($"{message.Id}:{message.Id}:{message.Content}");
 }
 ```
 
 `GetMessages` 采用可选的 `DateTimeOffset` 参数。 如果指定了该偏移量，你将收到在其之后接收、更新或删除的消息。 请注意，还会返回在偏移时间之前收到但在该时间之后编辑过或删除的消息。
 
-`GetMessages` 返回最新版本的消息，包括使用 `UpdateMessage` 和 `DeleteMessage` 对消息执行的任何编辑或删除。 对于已删除的消息，`chatMessage.DeletedOn` 返回日期/时间值，该值指示该消息删除的时间。 对于已编辑的消息，`chatMessage.EditedOn` 返回指示编辑该消息的日期/时间。 可以使用 `chatMessage.CreatedOn` 访问消息创建的原始时间，还可使用它对消息进行排序。
+`GetMessages` 返回最新版本的消息，包括使用 `UpdateMessage` 和 `DeleteMessage` 对消息执行的任何编辑或删除。 对于已删除的消息，`chatMessage.DeletedOn` 返回日期/时间值，该值指示该消息删除的时间。 对于已编辑的消息，`chatMessage.EditedOn` 返回一个日期/时间值，指示编辑该消息的时间。 可以使用 `chatMessage.CreatedOn` 访问消息创建的原始时间，还可使用它对消息进行排序。
 
 `GetMessages` 返回可使用 `chatMessage.Type` 标识的不同类型的消息。 这些类型包括：
 
 - `Text`：会话成员发送的普通聊天消息。
 
-- `ThreadActivity/TopicUpdate`：指示主题已更新的系统消息。
+- `Html`：格式化文本消息。 请注意，通信服务用户当前无法发送 RichText 消息。 在 Teams Interop 方案中，此消息类型支持将消息从 Teams 用户传递到通信服务用户。
 
-- `ThreadActivity/AddMember`：指示一个或多个成员已添加到聊天会话的系统消息。
+- `TopicUpdated`：指示主题已更新的系统消息。 （只读）
 
-- `ThreadActivity/DeleteMember`：指示已从聊天会话中删除成员的系统消息。
+- `ParticipantAdded`：系统消息，指示一个或多个参与者已添加到聊天会话。（只读）
+
+- `ParticipantRemoved`：指示已从聊天会话中删除参与者的系统消息。
 
 有关详细信息，请参阅[消息类型](../../../concepts/chat/concepts.md#message-types)。
 
@@ -164,31 +176,77 @@ string id = "id-of-message-to-delete";
 await chatThreadClient.DeleteMessageAsync(id);
 ```
 
-## <a name="add-a-user-as-member-to-the-chat-thread"></a>将用户作为成员添加到聊天会话
+## <a name="add-a-user-as-a-participant-to-the-chat-thread"></a>将用户作为参与者添加到聊天会话
 
-创建会话后，可以在其中添加和删除用户。 通过添加用户，可以向他们授予访问权限，使其能够在会话中发送消息，以及添加/删除其他成员。 在调用 `AddMembers` 之前，请确保已获取该用户的新访问令牌和标识。 用户需要使用该访问令牌才能初始化其聊天客户端。
+创建会话后，可以在其中添加和删除用户。 通过添加用户，可以向他们授予访问权限，使其能够向会话发送消息，以及添加/删除其他参与者。 在调用 `AddParticipants` 之前，请确保已获取该用户的新访问令牌和标识。 用户需要使用该访问令牌才能初始化其聊天客户端。
 
-使用 `AddMembers` 方法将会话成员添加到由 threadId 标识的会话中。
-
- - 使用 `members` 列出要添加到聊天会话的成员；
- - `User`（必需）是为此新用户获取的标识。
- - `DisplayName`（可选）是会话成员的显示名称。
- - `ShareHistoryTime`（可选）是开始与成员共享聊天历史记录的时间。 若要在聊天会话开始后共享历史记录，请将其设置为 DateTime.MinValue。 若不共享任何历史记录，请在添加成员之前将其设置为当前时间。 若要共享部分历史记录，请将其设置为会话创建时间和当前时间之间的时间点。
+使用 `AddParticipants` 将一个或多个参与者添加到聊天会话。 下面是对每个会话参与者支持的属性：
+- `communicationUser`，必需，是会话参与者的标识。
+- `displayName`（可选）是会话参与者的显示名称。
+- `shareHistoryTime`，可选，是开始与参与者共享聊天历史记录的时间。
 
 ```csharp
-ChatThreadMember member = new ChatThreadMember(communicationUser);
-member.DisplayName = "display name member 1";
-member.ShareHistoryTime = DateTime.MinValue; // share all history
-await chatThreadClient.AddMembersAsync(members: new[] {member});
+var josh = new CommunicationUserIdentifier(id: "<Access_ID_For_Josh>");
+var gloria = new CommunicationUserIdentifier(id: "<Access_ID_For_Gloria>");
+var amy = new CommunicationUserIdentifier(id: "<Access_ID_For_Amy>");
+
+var participants = new[]
+{
+    new ChatParticipant(josh) { DisplayName = "Josh" },
+    new ChatParticipant(gloria) { DisplayName = "Gloria" },
+    new ChatParticipant(amy) { DisplayName = "Amy" }
+};
+
+await chatThreadClient.AddParticipantsAsync(participants);
 ```
 ## <a name="remove-user-from-a-chat-thread"></a>从聊天会话中删除用户
 
-与将用户添加到会话类似，可以从聊天会话中删除用户。 若要执行此操作，需要跟踪已添加的成员的标识 (CommunicationUser)。
+与将用户添加到会话类似，可以从聊天会话中删除用户。 为此，你需要跟踪已添加的参与者的标识 `CommunicationUser`。
 
 ```csharp
-await chatThreadClient.RemoveMemberAsync(communicationUser);
+var gloria = new CommunicationUserIdentifier(id: "<Access_ID_For_Gloria>");
+await chatThreadClient.RemoveParticipantAsync(gloria);
 ```
 
+## <a name="get-thread-participants"></a>获取会话参与者
+
+使用 `GetParticipants` 检索聊天会话的参与者。
+
+```csharp
+AsyncPageable<ChatParticipant> allParticipants = chatThreadClient.GetParticipantsAsync();
+await foreach (ChatParticipant participant in allParticipants)
+{
+    Console.WriteLine($"{((CommunicationUserIdentifier)participant.User).Id}:{participant.DisplayName}:{participant.ShareHistoryTime}");
+}
+```
+
+## <a name="send-typing-notification"></a>发送键入通知
+
+使用 `SendTypingNotification` 指示用户正在会话中键入响应。
+
+```csharp
+await chatThreadClient.SendTypingNotificationAsync();
+```
+
+## <a name="send-read-receipt"></a>发送阅读回执
+
+使用 `SendReadReceipt` 通知其他参与者：用户已阅读该消息。
+
+```csharp
+await chatThreadClient.SendReadReceiptAsync(messageId);
+```
+
+## <a name="get-read-receipts"></a>获取阅读回执
+
+使用 `GetReadReceipts` 检查消息的状态，看看聊天会话的其他参与者阅读了哪些消息。
+
+```csharp
+AsyncPageable<ChatMessageReadReceipt> allReadReceipts = chatThreadClient.GetReadReceiptsAsync();
+await foreach (ChatMessageReadReceipt readReceipt in allReadReceipts)
+{
+    Console.WriteLine($"{readReceipt.ChatMessageId}:{((CommunicationUserIdentifier)readReceipt.Sender).Id}:{readReceipt.ReadOn}");
+}
+```
 ## <a name="run-the-code"></a>运行代码
 
 从应用程序目录使用 `dotnet run` 命令运行应用程序。

@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 644635d1ab7b0a43c8df3e10bbbd02d1ea67a94a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e1bd521e9798b09f7930b43ab95c7cd7ef9e693d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91297226"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737913"
 ---
 # <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-with-the-azure-portal"></a>快速入门：使用 Azure 门户设置 IoT 中心设备预配服务
 
@@ -25,8 +25,9 @@ IoT 中心设备预配服务可以与 IoT 中心配合使用，无需人为干�
 * 使用 Azure 门户创建 IoT 中心设备预配服务并获取 ID 范围
 * 将 IoT 中心链接到设备预配服务
 
+## <a name="prerequisites"></a>先决条件
 
-如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+在开始执行本文中的操作之前，你需要有 Azure 订阅。 如果还没有帐户，可以创建[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 
 ## <a name="create-an-iot-hub"></a>创建 IoT 中心
@@ -59,7 +60,7 @@ IoT 中心设备预配服务可以与 IoT 中心配合使用，无需人为干�
 
 1. 在 Azure 门户的左侧菜单中选择“所有资源”按钮  。 选择在上一部分创建的设备预配服务实例。 
 
-    如果菜单是使用**浮出控件**而不是门户设置中的**停靠**模式配置的，则需要单击左上角的 3 行才能打开左侧的门户菜单。  
+    如果菜单是使用 **浮出控件** 而不是门户设置中的 **停靠** 模式配置的，则需要单击左上角的 3 行才能打开左侧的门户菜单。  
 
 2. 在设备预配服务的菜单中，选择“链接的 IoT 中心”  。 点击顶部的“+ 添加”按钮  。 
 

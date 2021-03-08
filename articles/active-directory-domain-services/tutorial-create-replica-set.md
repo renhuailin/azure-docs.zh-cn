@@ -8,24 +8,22 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/16/2020
+ms.date: 02/26/2021
 ms.author: justinha
-ms.openlocfilehash: 059f711269fd5f1eea9675f238a6003eaf1a0534
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: e8887cc39b48f090ff223e5e83c13d65b921dc0b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96618104"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687492"
 ---
-# <a name="tutorial-create-and-use-replica-sets-for-resiliency-or-geolocation-in-azure-active-directory-domain-services-preview"></a>教程：在 Azure Active Directory 域服务（预览版）中创建和使用针对复原能力或地理位置的副本集
+# <a name="tutorial-create-and-use-replica-sets-for-resiliency-or-geolocation-in-azure-active-directory-domain-services"></a>教程：在 Azure Active Directory 域服务中创建和使用针对复原能力或地理位置的副本集
 
 若要提高 Azure Active Directory 域服务 (Azure AD DS) 托管域的复原能力，或部署到靠近应用程序的其他地理位置，可以使用副本集。 每个 Azure AD DS 托管域命名空间（如 aaddscontoso.com）都包含一个初始副本集。 在其他 Azure 区域中创建附加副本集的功能可为托管域提供地理复原能力。
 
 可以将副本集添加到支持 Azure AD DS 的任何 Azure 区域中的任何对等互连虚拟网络。
 
-副本集是 Azure AD 域服务中的公共预览功能。 请注意对于仍处于预览版的功能所存在的支持差异。 有关预览版的详细信息，请参阅 [Azure Active Directory 预览版 SLA](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
-
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 了解虚拟网络要求
@@ -78,7 +76,7 @@ ms.locfileid: "96618104"
 
 1. 在 Azure 门户中，搜索并选择“Azure AD 域服务”。
 1. 选择你的托管域，例如 *aaddscontoso.com*。
-1. 在左侧，选择“副本集(预览版)”。 每个托管域在所选区域中都包含一个初始副本集，如以下示例屏幕截图所示：
+1. 在左侧，选择“副本集”。 每个托管域在所选区域中都包含一个初始副本集，如以下示例屏幕截图所示：
 
     ![在 Azure 门户中查看和添加副本集的示例屏幕截图](./media/tutorial-create-replica-set/replica-set-list.png)
 
@@ -86,7 +84,7 @@ ms.locfileid: "96618104"
 
 1. 在“添加副本集”窗口中，选择目标区域，如“美国东部”。
 
-    选择目标区域中的虚拟网络（例如 vnet-eastus），然后选择子网（如 aadds-subnet）。 如果需要，请选择“新建”以在目标区域中添加虚拟网络，然后选择“管理”以创建 Azure AD DS 的子网 。
+    选择目标区域中的虚拟网络（例如 vnet-eastus），然后选择子网（如 aadds-subnet）。 如果需要，请选择“新建”以在目标区域中添加虚拟网络，然后选择“管理”以创建 Azure AD DS 的子网。
 
     如果它们尚不存在，则会在现有托管域的虚拟网络与目标虚拟网络之间自动创建 Azure 虚拟网络对等互连。
 
@@ -113,7 +111,7 @@ ms.locfileid: "96618104"
 
 1. 在 Azure 门户中，搜索并选择“Azure AD 域服务”。
 1. 选择你的托管域，例如 *aaddscontoso.com*。
-1. 在左侧，选择“副本集(预览版)”。 从副本集列表中，选择要删除的副本集旁的“…”上下文菜单。
+1. 在左侧，选择“副本集”。 从副本集列表中，选择要删除的副本集旁的“…”上下文菜单。
 1. 从上下文菜单中选择“删除”，然后确认要删除的副本集。
 
 > [!NOTE]

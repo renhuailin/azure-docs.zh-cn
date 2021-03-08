@@ -1,17 +1,16 @@
 ---
 title: Azure Monitor 文档中的新增内容
 description: Azure Monitor 文档每月都有重大更新。
-ms.subservice: ''
 ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 02/10/2021
-ms.openlocfilehash: b21e5ea8e25844e3e025915b0b9f15162c642f25
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: dd6c44587ce3f4e2b5de940ef831a20a4079c4ef
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101713433"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102051916"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Azure Monitor 文档中有哪些新增内容？
 
@@ -721,7 +720,7 @@ VM 见解正式版常规更新
 
 - [Azure 监视代理概述](agents/agents-overview.md) - 重新构造了各个表格来更好地阐明每个代理的特有功能。
 - [Azure 诊断扩展概述](agents/diagnostics-extension-overview.md) - 全部进行了重新编写。
-- [在 Azure Monitor 中使用适用于 IIS 的 Blob 存储和适用于事件的表存储](essentials/diagnostics-extension-logs.md) - 针对更新和澄清进行了常规重新编写。
+- [在 Azure Monitor 中使用适用于 IIS 的 Blob 存储和适用于事件的表存储](agents/diagnostics-extension-logs.md) - 针对更新和澄清进行了常规重新编写。
 - [安装并配置 Windows Azure 诊断扩展 (WAD)](agents/diagnostics-extension-windows-install.md) - 新文章。 
 - [Windows 诊断扩展架构](agents/diagnostics-extension-schema-windows.md) - 已重新组织。
 - [将数据从 Windows Azure 诊断扩展发送到 Azure 事件中心](agents/diagnostics-extension-stream-event-hubs.md) - 全部进行了重新编写和更新。

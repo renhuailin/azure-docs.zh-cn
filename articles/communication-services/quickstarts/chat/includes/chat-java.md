@@ -10,12 +10,12 @@ ms.date: 9/1/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 6a075ae721d767faf25e4774dd545d36eedfaef4
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: b402dec76f88bfdb0bc4758f94cc6e8e279d8040
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100379640"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750719"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -84,6 +84,8 @@ mvn archetype:generate -DgroupId=com.communication.quickstart -DartifactId=commu
 ## <a name="create-a-chat-client"></a>创建聊天客户端
 若要创建聊天客户端，需使用通信服务终结点以及在前提步骤中生成的访问令牌。 使用用户访问令牌可以生成直接对 Azure 通信服务进行身份验证的客户端应用程序。 在服务器上生成这些令牌后，将它们传回客户端设备。 需要使用 Common 客户端库中的 CommunicationTokenCredential 类将令牌传递到聊天客户端。 
 
+详细了解[聊天体系结构](../../../concepts/chat/concepts.md)
+
 添加导入语句时，请确保仅从 com.azure.communication.chat 和 com.azure.communication.chat.models 命名空间中添加，而不要从 com.azure.communication.chat.implementation 命名空间中添加。 在通过 Maven 生成的 App.java 文件中，可以使用以下代码开始操作：
 
 ```Java
@@ -139,11 +141,11 @@ public class App
 List<ChatParticipant> participants = new ArrayList<ChatParticipant>();
 
 ChatParticipant firstThreadParticipant = new ChatParticipant()
-    .setUser(firstUser)
+    .setCommunicationIdentifier(firstUser)
     .setDisplayName("Participant Display Name 1");
     
 ChatParticipant secondThreadParticipant = new ChatParticipant()
-    .setUser(secondUser)
+    .setCommunicationIdentifier(secondUser)
     .setDisplayName("Participant Display Name 2");
 
 participants.add(firstThreadParticipant);
@@ -205,13 +207,15 @@ chatThreadClient.listMessages().iterableByPage().forEach(resp -> {
 
 `listMessages` 返回可使用 `chatMessage.getType()` 标识的不同类型的消息。 这些类型包括：
 
-- `Text`：会话参与者发送的普通聊天消息。
+- `text`：会话参与者发送的普通聊天消息。
 
-- `ThreadActivity/TopicUpdate`：指示主题已更新的系统消息。
+- `html`：会话参与者发送的 HTML 聊天消息。
 
-- `ThreadActivity/AddMember`：指示已在聊天会话中添加一个或多个成员的系统消息。
+- `topicUpdated`：指示主题已更新的系统消息。
 
-- `ThreadActivity/DeleteMember`：指示已从聊天会话中删除某个成员的系统消息。
+- `participantAdded`：指示一个或多个参与者已添加到聊天会话的系统消息。
+
+- `participantRemoved`：指示已从聊天会话中删除参与者的系统消息。
 
 有关详细信息，请参阅[消息类型](../../../concepts/chat/concepts.md#message-types)。
 
@@ -222,19 +226,19 @@ chatThreadClient.listMessages().iterableByPage().forEach(resp -> {
 使用 `addParticipants` 方法将参与者添加到由 threadId 标识的会话中。
 
 - 使用 `listParticipants` 列出要添加到聊天会话的参与者。
-- `user`（必需）是[用户访问令牌](../../access-tokens.md)快速入门中通过 CommunicationIdentityClient 创建的 CommunicationUserIdentifier。
+- `communicationIdentifier`，必需，是你已在[用户访问令牌](../../access-tokens.md)快速入门中通过 CommunicationIdentityClient 创建的 CommunicationIdentifier。
 - `display_name`（可选）是会话参与者的显示名称。
-- `share_history_time`（可选）是开始与参与者共享聊天历史记录的时间。 若要在聊天会话开始后共享历史记录，请将此属性设置为等于或早于会话创建时间的任何日期。 若在添加参与者之前不共享任何历史记录，请将其设置为当前日期。 若要共享部分历史记录，请将其设置为所需日期。
+- `share_history_time`（可选）是开始与参与者共享聊天历史记录的时间。 若要在聊天会话开始后共享历史记录，请将此属性设置为等于或小于会话创建时间的任何日期。 若在添加参与者之前不共享任何历史记录，请将其设置为当前日期。 若要共享部分历史记录，请将其设置为所需日期。
 
 ```Java
 List<ChatParticipant> participants = new ArrayList<ChatParticipant>();
 
 ChatParticipant firstThreadParticipant = new ChatParticipant()
-    .setUser(user1)
+    .setCommunicationIdentifier(identity1)
     .setDisplayName("Display Name 1");
 
 ChatParticipant secondThreadParticipant = new ChatParticipant()
-    .setUser(user2)
+    .setCommunicationIdentifier(identity2)
     .setDisplayName("Display Name 2");
 
 participants.add(firstThreadParticipant);
@@ -245,14 +249,14 @@ AddChatParticipantsOptions addChatParticipantsOptions = new AddChatParticipantsO
 chatThreadClient.addParticipants(addChatParticipantsOptions);
 ```
 
-## <a name="remove-user-from-a-chat-thread"></a>从聊天会话中删除用户
+## <a name="remove-participant-from-a-chat-thread"></a>删除聊天会话中的参与者
 
-与将用户添加到会话类似，可以从聊天会话中删除用户。 若要执行此操作，需要跟踪已添加的参与者的用户标识。
+与添加会话参与者类似，可从聊天会话中删除参与者。 为此，你需要跟踪已添加的参与者的标识。
 
-使用 `removeParticipant`，其中 `user` 是已创建的 CommunicationUserIdentifier。
+使用 `removeParticipant`，其中 `identifier` 是已创建的 CommunicationIdentifier。
 
 ```Java
-chatThreadClient.removeParticipant(user);
+chatThreadClient.removeParticipant(identity);
 ```
 
 ## <a name="run-the-code"></a>运行代码

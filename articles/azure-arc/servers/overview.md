@@ -2,18 +2,18 @@
 title: 已启用 Azure Arc 的服务器概述
 description: 了解如何使用已启用 Azure Arc 的服务器像管理 Azure 资源一样，管理托管在 Azure 外部的服务器。
 keywords: azure automation, DSC, powershell, desired state configuration, update management, change tracking, inventory, runbooks, python, graphical, hybrid
-ms.date: 11/12/2020
+ms.date: 02/18/2021
 ms.topic: overview
-ms.openlocfilehash: be5955e9bf02e591fdbba3f080d034c126379c2f
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 5692dfaceb15086b04ee951b8ecdf88f73c7d122
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100584790"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101686217"
 ---
 # <a name="what-is-azure-arc-enabled-servers"></a>什么是已启用 Azure Arc 的服务器？
 
-使用已启用 Azure Arc 的服务器，你可以按照管理本地 Azure 虚拟机的方式，管理在 Azure 外部、在企业网络上或其他云提供商中托管的 Windows 和 Linux 计算机。 当混合计算机连接到 Azure 时，它将成为一台联网计算机，被视为 Azure 中的资源。 每台联网计算机都有一个资源 ID，包含在一个资源组中，可受益于标准的 Azure 构造，例如 Azure Policy 和应用标记。 为客户管理本地基础结构的服务提供商可以通过结合使用 Azure Arc 和 [Azure Lighthouse](../../lighthouse/how-to/manage-hybrid-infrastructure-arc.md) 来管理其混合计算机，与当前跨多个客户环境管理本机 Azure 资源一样。
+利用启用了 Azure Arc 的服务器，可以管理 Windows 和 Linux 物理服务器和虚拟机，这些服务器和虚拟机托管在 Azure（或其他云提供商）外部的企业网络中。 这种管理体验旨在与原生 Azure 虚拟机的管理方式保持一致。 当混合计算机连接到 Azure 时，它将成为一台联网计算机，被视为 Azure 中的资源。 每台联网计算机都有一个资源 ID，包含在一个资源组中，可受益于标准的 Azure 构造，例如 Azure Policy 和应用标记。 为客户管理本地基础结构的服务提供商可以通过结合使用 Azure Arc 和 [Azure Lighthouse](../../lighthouse/how-to/manage-hybrid-infrastructure-arc.md) 来管理其混合计算机，与当前跨多个客户环境管理本机 Azure 资源一样。
 
 若要为托管在 Azure 外部的混合计算机提供此体验，需要在打算连接到 Azure 的每台计算机上安装 Azure Connected Machine 代理。 此代理不提供任何其他功能，而且不会取代 Azure [Log Analytics 代理](../../azure-monitor/agents/log-analytics-agent.md)。 若要主动监视计算机上运行的 OS 和工作负荷、使用自动化 Runbook 或更新管理等解决方案对其进行管理，或使用其他 Azure 服务（例如 [Azure 安全中心](../../security-center/security-center-introduction.md)），需要安装适用于 Windows 和 Linux 的 Log Analytics 代理。
 
@@ -44,7 +44,7 @@ ms.locfileid: "100584790"
 
 有关启用了 Azure Arc 的服务器的支持区域的最终列表，请参见[按区域划分的 Azure 产品](https://azure.microsoft.com/global-infrastructure/services/?products=azure-arc)页。
 
-在大多数情况下，创建安装脚本时选择的位置应该是在地理位置上最接近你的计算机位置的 Azure 区域。 静态数据存储在包含你指定区域的 Azure 地理区域中，如果你有数据驻留要求，这可能也会影响你对区域的选择。 如果你的计算机连接到的 Azure 区域受中断影响，则已连接的计算机不受影响，但使用 Azure 的管理操作可能无法完成。 发生区域性服务中断时，如果你有可支持异地冗余服务的多个位置，最好将每个位置的计算机连接到不同的 Azure 区域。
+在大多数情况下，创建安装脚本时选择的位置应该是在地理位置上最接近你的计算机位置的 Azure 区域。 静态数据存储在包含你指定区域的 Azure 地理区域中，如果你有数据驻留要求，这可能也会影响你对区域的选择。 如果你的计算机连接到的 Azure 区域受中断影响，则已连接的计算机不受影响，但使用 Azure 的管理操作可能无法完成。 如果发生区域性服务中断，而你有多个支持异地冗余服务的位置，则最好将各个位置的计算机连接到另一个 Azure 区域。
 
 以下有关已连接计算机的元数据信息将被收集并存储在配置 Azure Arc 计算机资源的区域中：
 
@@ -54,6 +54,13 @@ ms.locfileid: "100584790"
 - Connected Machine 代理版本
 
 例如，如果计算机在美国东部区域注册了 Azure Arc，则此数据存储在美国区域中。
+
+### <a name="supported-environments"></a>支持的环境
+
+启用了 Arc 的服务器支持管理在 Azure 外部托管的物理服务器和虚拟机。 若要详细了解哪些托管 VM 的混合云环境是受支持的，请参阅 [Connected Machine 代理先决条件](agent-overview.md#supported-environments)。
+
+> [!NOTE]
+> 不能通过启用了 Arc 的服务器来管理 Azure 中运行的虚拟机，这是设计使然，本身不支持这种功能。
 
 ### <a name="agent-status"></a>代理状态
 
