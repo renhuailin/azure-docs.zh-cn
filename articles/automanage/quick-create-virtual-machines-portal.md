@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: quickstart
 ms.date: 02/17/2021
 ms.author: jushiman
-ms.openlocfilehash: 6e0e582ed37230ba3f379f193a229cfec06f066c
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 5f5f1e70d9ae309c90291ccac1e6dd61e7a9d056
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101648027"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102038358"
 ---
 # <a name="quickstart-enable-azure-automanage-for-virtual-machines-in-the-azure-portal"></a>快速入门：在 Azure 门户中启用适用于虚拟机的 Azure 自动管理
 
@@ -43,11 +43,11 @@ ms.locfileid: "101648027"
 
 3. 选择“入门”。
 
-    :::image type="content" source="media\quick-create-virtual-machine-portal\VMManage-GetStarted.png" alt-text="启动单个 VM。":::
+    :::image type="content" source="media\quick-create-virtual-machine-portal\vmmanage-getstartedbutton.png" alt-text="启动单个 VM。":::
 
 4. 选择 Automanage 设置（环境、首选项、Automanage 帐户）并点击“启用”。
 
-    :::image type="content" source="media\quick-create-virtual-machine-portal\VMManage-Enable.png" alt-text="在单个 VM 上启用。":::
+    :::image type="content" source="media\quick-create-virtual-machine-portal\vmmanage-enablepane.png" alt-text="在单个 VM 上启用。":::
 
 ## <a name="enable-automanage-for-multiple-vms"></a>对多个 VM 启用 Automanage
 
@@ -64,42 +64,39 @@ ms.locfileid: "101648027"
 
     :::image type="content" source="media\quick-create-virtual-machine-portal\existing-vm-select-machine.png" alt-text="从可用 VM 列表中选择现有 VM。":::
 
-4. 在“配置文件”下，单击“浏览并更改配置文件和首选项” 。
+4. 在“环境”下，选择环境类型：“开发/测试”或“生产”  。 
 
-    :::image type="content" source="media\quick-create-virtual-machine-portal\existing-vm-quick-create.png" alt-text="浏览并更改配置文件和首选项。":::
+    :::image type="content" source="media\quick-create-virtual-machine-portal\existing-vm-quick-create.png" alt-text="选择环境。":::
 
-5. 在“选择配置文件 + 首选项”边栏选项卡上：
-    1. 在左侧选择配置文件：“开发/测试”用于测试，“生产”用于生产 。
-    1. 单击“选择”按钮。
+   单击“比较环境详细信息”，以查看环境之间的差异。
+    1. 在下拉列表中选择环境：“开发/测试”环境用于测试，“生产”环境用于生产 。
+    1. 单击“确定”按钮。
 
-    :::image type="content" source="media\quick-create-virtual-machine-portal\browse-production-profile.png" alt-text="浏览生产配置文件。":::
+    :::image type="content" source="media\quick-create-virtual-machine-portal\browse-production-profile.png" alt-text="浏览生产环境。":::
+
+5. 默认情况下会选择“Azure 最佳做法”首选项作为配置首选项。 若要更改此选择，请创建新的首选项或选择现有的首选项。 
+
+    :::image type="content" source="media\quick-create-virtual-machine-portal\create-preference.png" alt-text="创建首选项。":::
 
 6. 单击“启用”按钮。
 
 
 ## <a name="enable-automanage-for-a-new-vm"></a>对新 VM 启用 Automanage
 
-在[此处](https://aka.ms/AutomanagePortal-Ignite21)登录到 Azure 门户，以创建新的 VM 并启用自动管理。
+在[此处](https://aka.ms/AzureAutomanagePreview)登录到 Azure 门户，以创建新的 VM 并启用自动管理。
 
-1. 在 Azure 门户的左上角，选择“创建资源”。
-
-2. 在 Azure 市场资源列表上方的搜索框中，搜索并选择要使用的映像，然后选择“创建”。
+1. 在“基本信息”选项卡中，填写 VM 详细信息。
 
 > [!NOTE]
-> 选中 Automanage 支持的 [Linux 发行版](automanage-linux.md#supported-linux-distributions-and-versions)和 [Windows Server 版本](automanage-windows-server.md#supported-windows-server-versions)。
+> 请查看 Automanage [支持的区域](automanage-virtual-machines.md#supported-regions)以及 Automanage 支持的 [Linux 发行版](automanage-linux.md#supported-linux-distributions-and-versions)和 [Windows Server 版本](automanage-windows-server.md#supported-windows-server-versions)。
 
-3. 在“基本信息”选项卡中，填写 VM 详细信息。
+2. 浏览到“管理”选项卡，并选择“Automanage 环境” 。
 
-> [!NOTE]
-> 选中 Automanage [支持的区域](automanage-virtual-machines#supported-regions)。
+    :::image type="content" source="media\quick-create-virtual-machine-portal\vmcreate-managementtab.png" alt-text="在“管理”选项卡中启用 Automanage。":::
 
-4. 浏览到“管理”选项卡，并选择“Automanage 环境” 。
+3. 保留剩余的默认值，然后选择页面底部的“查看 + 创建”按钮。
 
-    :::image type="content" source="media\quick-create-virtual-machine-portal\VMCreate-Management-Tab.png" alt-text="在“管理”选项卡中启用 Automanage。":::
-
-5. 保留剩余的默认值，然后选择页面底部的“查看 + 创建”按钮。
-
-6. 显示验证通过的消息时，选择“创建”。
+4. 显示验证通过的消息时，选择“创建”。
 
 ## <a name="disable-automanage-for-vms"></a>禁用适用于 VM 的自动管理
 
@@ -131,4 +128,4 @@ Azure 自动管理会创建用于存储资源的默认资源组。 检查具有�
 了解如何在对虚拟机启用自动管理时创建和应用自定义首选项。
 
 > [!div class="nextstepaction"]
-> [适用于 VM 的 Azure Automanage - 自定义配置文件](virtual-machines-custom-preferences.md)
+> [适用于 VM 的 Azure Automanage - 自定义配置首选项](virtual-machines-custom-preferences.md)

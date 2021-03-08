@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: tutorial
 ms.date: 02/17/2021
 ms.custom: template-how-to
-ms.openlocfilehash: de85c4f8cdcd9781345ee1488549aab23e38ec5c
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 3c5e6fd62e4f4db9ccc1306d32d09b8338cbf963
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101678033"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102098020"
 ---
 # <a name="create-a-voice-assistant-with-azure-percept-dk-and-azure-percept-audio"></a>使用 Azure Percept DK 和 Azure Percept 音频创建语音助理
 
@@ -24,30 +24,11 @@ ms.locfileid: "101678033"
 
 - Azure Percept DK (devkit)
 - Azure Percept 音频
-- 扬声器或耳机（可选）
+- 可以连接到 3.5 毫米音频插孔的扬声器或耳机（可选）
 - [Azure 订阅](https://azure.microsoft.com/free/)
 - [Azure Percept DK 设置体验](./quickstart-percept-dk-set-up.md)：你已将 devkit 连接到 Wi-Fi 网络，创建了 IoT 中心，并已将 devkit 连接到 IoT 中心
+- [Azure Percept 音频设置](./quickstart-percept-audio-setup.md)
 
-## <a name="device-setup"></a>设备设置
-
-1. （可选）通过耳机插孔（标记为“输出线”）将扬声器或耳机连接到音频 SoM。 这样即可听到语音助理的音频响应。 如果未连接扬声器或耳机，你仍可在演示窗口中查看文本形式的响应。
-
-1. 使用随附的 USB-A 转 Micro B 线缆将音频 SoM 连接到 devkit 的载板。
-
-1. 开启 devkit。
-
-    - 音频 SoM 上的 LED L01 将变为稳定的绿色，表示设备已通电。
-    - LED L02 将变为绿色闪烁，表示音频 SoM 正在进行身份验证。
-
-1. 等待身份验证过程完成，最多可能需要 3 分钟。
-
-1. 如果看到以下任一情形，请转到下一节：
-
-    - LED L01 熄灭，L02 变为白色。 这表示身份验证已完成，且 devkit 尚未配置关键字。
-    - 所有三个 LED 均变为蓝色。 这表示身份验证已完成，且 devkit 已配置关键字。
-
-    > [!NOTE]
-    > 如果 devkit 未进行身份验证，请联系支持人员。
 
 ## <a name="create-a-voice-assistant-using-an-available-template"></a>使用可用模板创建语音助理
 
@@ -119,6 +100,7 @@ ms.locfileid: "101678033"
 * “将温度设置为 X 度。” （X 是所需的温度，例如 75。）
 * “将温度提高/降低 Y 度。”
 
+
 :::image type="content" source="./media/tutorial-no-code-speech/auto-demo.png" alt-text="汽车演示窗口的屏幕截图。":::
 
 ### <a name="inventory-demo-commands"></a>库存演示命令
@@ -131,19 +113,30 @@ ms.locfileid: "101678033"
 * “数一下 Y 箱子。” （Y 是箱子的颜色，如黄色。）
 * “运送全部库存。”
 
+
 :::image type="content" source="./media/tutorial-no-code-speech/inventory-demo.png" alt-text="库存演示窗口的屏幕截图。":::
 
 ## <a name="configure-your-keyword"></a>配置关键字
 
-若要更改关键字，请在演示窗口中单击“自定义关键字”旁边的“更改” 。 选择一个可用关键字，然后单击“保存”。 可从一系列预生成的关键字和你创建的任何自定义关键字中进行选择。
+可以为你的语音助理应用程序自定义关键字。
 
-:::image type="content" source="./media/tutorial-no-code-speech/change-keyword.png" alt-text="选择可用关键字的屏幕截图。":::
+1. 请在演示窗口中单击“自定义关键字”旁边的“更改” 。
+
+1. 选择可用的关键字之一。 可从一系列示例关键字和你创建的任何自定义关键字中进行选择。
+
+1. 单击“ **保存**”。
 
 ### <a name="create-a-custom-keyword"></a>创建自定义关键字
 
-若要创建自定义关键字，请单击演示窗口顶部附近的“+ 创建自定义关键字”。 输入所需的关键字（可以是单个词语，也可以是短语），选择“语音资源”（此项位于演示窗口中的“自定义命令”旁边，其中包含应用程序前缀），然后单击“保存”  。 自定义关键字的训练只需几秒即可完成。
+可以为你的语音应用程序创建你自己的关键字。 自定义关键字的训练只需几分钟即可完成。
 
-:::image type="content" source="./media/tutorial-no-code-speech/custom-keyword.png" alt-text="自定义关键字创建窗口的屏幕截图。":::
+1. 请单击演示窗口顶部附近的“+ 创建自定义关键字”。 
+
+1. 输入所需的关键字（可以是单个词语或短语）。
+
+1. 选择“语音资源”（此项在演示窗口中的“自定义命令”旁边列出，并且包含你的应用程序前缀） 。
+
+1. 单击“ **保存**”。 
 
 ## <a name="create-a-custom-command"></a>创建自定义命令
 
@@ -185,13 +178,13 @@ ms.locfileid: "101678033"
 
 ### <a name="voice-assistant-was-created-but-does-not-respond-to-commands"></a>已创建语音助理，但它不响应命令
 
-检查音频 SoM 上的 LED 指示灯：
+检查内插板上的 LED 指示灯：
 
 * 三个纯蓝色指示灯表示语音助理已就绪，正在等待关键字。
 * 如果中间的 LED (L02) 为白色，则 devkit 已完成初始化，需要配置关键字。
-* 绿色指示灯的任意组合指示音频 SoM 尚未完成初始化。 初始化可能需要几分钟才能完成。
+* 如果中间的 LED (L02) 闪烁白色，则 Audio SoM 尚未完成初始化。 初始化可能需要几分钟才能完成。
 
-有关音频 SoM LED 指示灯的详细信息，请参阅 LED 文章。
+有关 LED 指示灯的详细信息，请参阅 [LED 文章](./audio-button-led-behavior.md)。
 
 ### <a name="voice-assistant-does-not-respond-to-a-custom-keyword-created-in-speech-studio"></a>语音助理不响应在 Speech Studio 中创建的自定义关键字
 
@@ -207,22 +200,20 @@ ms.locfileid: "101678033"
 
 1. 检查语音模块版本。 如果可更新，版本号旁边会出现“更新”按钮。
 
-    :::image type="content" source="./media/tutorial-no-code-speech/devkit.png" alt-text="Devkit 语音设置窗口的屏幕截图。":::
-
 1. 单击“更新”以部署语音模块更新。 更新过程通常需要 2-3 分钟才能完成。
 
 ## <a name="clean-up-resources"></a>清理资源
 
 使用完语音助理应用程序后，请按照以下步骤清理在本教程中部署的语音资源：
 
-1. 在 [Azure 门户](https://ms.portal.azure.com/#home)的左侧菜单面板中选择“资源组”，或在搜索栏中键入“资源组”。
+1. 在 [Azure 门户](https://portal.azure.com)的左侧菜单面板中选择“资源组”，或在搜索栏中键入“资源组”。
 
     :::image type="content" source="./media/tutorial-no-code-speech/azure-portal.png" alt-text="显示左侧菜单面板和资源组的 Azure 门户主页的屏幕截图。":::
 
 1. 选择你的资源组。
 
 1. 选择包含应用程序前缀的所有六项资源，然后单击顶部菜单面板上的“删除”图标。
-
+\
     :::image type="content" source="./media/tutorial-no-code-speech/select-resources.png" alt-text="已选中待删除的语音资源的屏幕截图。":::
 
 1. 若要确认删除，请在确认框中键入“yes”，验证你选择了正确的资源，然后单击“删除” 。

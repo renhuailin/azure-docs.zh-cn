@@ -5,15 +5,15 @@ author: mgoedtel
 ms.author: magoedte
 ms.service: azure-arc
 ms.topic: quickstart
-ms.date: 02/24/2021
+ms.date: 03/03/2021
 ms.custom: template-quickstart
 keywords: Kubernetes, Arc, Azure, 群集
-ms.openlocfilehash: c50266ce0afd6dd3f5860e3259d2b22af817834c
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 3fc522c4bdda9eb1047d5258bcc431d0268990b9
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101689243"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102121637"
 ---
 # <a name="quickstart-connect-an-existing-kubernetes-cluster-to-azure-arc"></a>快速入门：将现有 Kubernetes 群集连接到 Azure Arc 
 
@@ -238,4 +238,4 @@ az connectedk8s delete --name AzureArcTest1 --resource-group AzureArcTest
 
 继续阅读下一篇文章，了解如何使用 GitOps 将配置部署到连接的 Kubernetes 群集。
 > [!div class="nextstepaction"]
-> [使用 GitOps 部署配置](use-gitops-connected-cluster.md)
+> [使用 GitOps 部署配置](tutorial-use-gitops-connected-cluster.md)
