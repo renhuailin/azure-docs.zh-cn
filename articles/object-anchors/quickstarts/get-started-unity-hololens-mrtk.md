@@ -5,19 +5,19 @@ author: craigktreasure
 manager: virivera
 services: azure-object-anchors
 ms.author: crtreasu
-ms.date: 02/02/2021
+ms.date: 03/02/2021
 ms.topic: quickstart
 ms.service: azure-object-anchors
-ms.openlocfilehash: 78a8136c3f66d0c790f6fd7508ca37b55a1541fd
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 1fd42f7b2da82da17dc19f2a57ea9b64f78f3fe0
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101747408"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102049680"
 ---
 # <a name="quickstart-create-a-hololens-app-with-azure-object-anchors-in-unity-with-mrtk"></a>快速入门：通过 MRTK 在 Unity 中创建具有 Azure Object Anchors 的 HoloLens 应用
 
-此快速入门介绍如何创建使用 [Azure Object Anchors](../overview.md) 的 Unity HoloLens 应用。 Azure Object Anchors 是一项托管的云服务，它将 3D 资产转换为 AI 模型，以便为 HoloLens 启用物体感知混合现实体验。 完成本教程后，你将拥有一个使用 Unity 生成的 HoloLens 应用，该应用可检测到物理世界中的物体。
+此快速入门介绍如何创建使用 [Azure Object Anchors](../overview.md) 的 Unity HoloLens 应用。 Azure Object Anchors 是一项托管的云服务，它将 3D 资产转换为 AI 模型，以便为 HoloLens 启用对象感知混合现实体验。 完成本教程后，你将拥有一个使用 Unity 生成的 HoloLens 应用，该应用可检测到物理世界中的物体。
 
 将了解如何执行以下操作：
 
@@ -39,8 +39,6 @@ ms.locfileid: "101747408"
 在 Unity 中，打开 `quickstarts/apps/unity/mrtk` 项目。
 
 [!INCLUDE [Import Unity Package](../../../includes/object-anchors-quickstart-unity-import-package.md)]
-
-[!INCLUDE [Unity build and run](../../../includes/object-anchors-quickstart-unity-build-run.md)]
 
 [!INCLUDE [Unity build sample scene 1](../../../includes/object-anchors-quickstart-unity-build-sample-scene-1.md)]
 

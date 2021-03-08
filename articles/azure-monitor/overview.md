@@ -1,17 +1,16 @@
 ---
 title: Azure Monitor 概述 | Microsoft Docs
 description: 适用于 Azure 服务和应用程序的完整监视策略所涉及的 Microsoft 服务及功能的概述。
-ms.subservice: ''
 ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 11/17/2019
-ms.openlocfilehash: 00f1bec4d4117d9ccebb4440e3649dd9dff32058
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 544d6937e412e3e1cfc2cf4e520c02f3f804fc8c
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101717343"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102047156"
 ---
 # <a name="azure-monitor-overview"></a>Azure Monitor 概述
 
@@ -145,7 +144,7 @@ Azure Monitor 中的警报规则使用[操作组](alerts/action-groups.md)，其
 ## <a name="next-steps"></a>后续步骤
 了解有关以下方面的详细信息：
 
-* [指标和日志](data-platform.md)，以了解由 Azure Monitor 收集的数据。
+* [指标和日志](https://docs.microsoft.com/azure/azure-monitor/data-platform#metrics)，以了解由 Azure Monitor 收集的数据。
 * [数据源](agents/data-sources.md)，了解应用程序的不同组件如何发送遥测数据。
 * [日志查询](logs/log-query-overview.md)，以便分析所收集的数据。
 * 用于监视云应用程序和服务的[最佳做法](/azure/architecture/best-practices/monitoring)。
