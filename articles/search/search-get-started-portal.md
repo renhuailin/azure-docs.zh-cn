@@ -1,39 +1,37 @@
 ---
 title: 使用 Azure 门户创建搜索索引
 titleSuffix: Azure Cognitive Search
-description: 在此 Azure 门户快速入门中，将使用“导入数据”向导在 Azure 认知搜索中创建、加载和查询第一个搜索索引。
+description: 使用 Azure 门户中的导入数据向导创建、加载和查询首个搜索索引。 这篇快速入门文章使用虚拟酒店数据集作为示例数据。
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 12/12/2020
-ms.openlocfilehash: 1e9d63c88cf0cd6f65db99b2bc878797770d53cd
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.date: 03/02/2021
+ms.openlocfilehash: 1be165bfe7cca44e8a928933c3c8fe926ad7d4c9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97368624"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694829"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建 Azure 认知搜索索引
 
-使用“导入数据”向导和由虚拟酒店数据构成的内置示例数据源创建首个索引。 该向导指导你完成搜索索引 (hotels-sample-index) 的创建过程，以便你可以在几分钟内编写有趣查询。 
+使用导入数据向导和由虚拟酒店数据构成的内置示例数据源来创建首个搜索索引。 该向导指导你完成搜索索引 (hotels-sample-index) 的创建过程，以便你可以在几分钟内编写有趣查询。 
 
 尽管本快速入门中不会使用这些选项，但该向导包含用于 AI 扩充的页面，以便你从图像文件和非结构化文本中提取文本和结构。 有关包括 AI 扩充的类似演练，请参阅[快速入门：创建认知技能组](cognitive-search-quickstart-blob.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
-在开始之前，必须满足以下条件：
-
 + 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/)。
 
-+ Azure 认知搜索服务。 [创建服务](search-create-service-portal.md)或在当前订阅下[查找现有服务](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 可以使用本快速入门的免费服务。 
++ Azure 认知搜索服务（任意层，任意区域）。 [创建服务](search-create-service-portal.md)或在当前订阅下[查找现有服务](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 可以使用本快速入门的免费服务。 
 
 ### <a name="check-for-space"></a>检查空间
 
-很多客户开始使用免费服务。 此版本限制为三个索引、三个数据源和三个索引器。 在开始之前，请确保有空间存储额外的项目。 本教程会创建每个对象的一个实例。
+很多客户开始使用免费服务。 免费层限制为三个索引、三个数据源和三个索引器。 在开始之前，请确保有空间存储额外的项目。 本教程会创建每个对象的一个实例。
 
-服务仪表板上的部分显示你已有多少个索引、索引器和数据源。 
+请查看服务概述页，以了解你已有多少索引、索引器和数据源。 
 
 :::image type="content" source="media/search-get-started-portal/tiles-indexers-datasources.png" alt-text="索引、索引器和数据源的列表":::
 
@@ -70,14 +68,18 @@ ms.locfileid: "97368624"
 
 ### <a name="step-3---configure-index"></a>步骤 3 - 配置索引
 
-通常情况下，索引创建是基于代码的练习，在加载数据之前完成。 但是，如本教程所示，向导可以针对它能够爬网的任何数据源生成基本索引。 索引至少需要一个名称和一个字段集合；其中一个字段应该标记为文档键，用于唯一标识每个文档。 此外，如果需要自动完成或建议查询，可以指定语言分析器或建议器。
+对于内置的酒店示例索引，系统会为你定义一个默认的索引架构。 除了一些高级筛选器示例之外，针对酒店示例索引的文档和示例中的查询将会根据此索引定义运行：
+
+:::image type="content" source="media/search-get-started-portal/hotelsindex.png" alt-text="生成的 hotels 索引":::
+
+通常，在基于代码的练习中，创建索引是在加载数据之前完成的。 导入数据向导会通过为任何它可以抓取的数据源生成基本索引来精简这些步骤。 索引至少需要一个名称和一个字段集合；其中一个字段应该标记为文档键，用于唯一标识每个文档。 此外，如果需要自动完成或建议查询，可以指定语言分析器或建议器。
 
 字段包含数据类型和属性。 顶部的复选框为 *索引属性*，用于控制如何使用字段。
 
-* **可检索** 意味着该字段将显示在搜索结果列表中。 清除此复选框即可将单个字段标记为关闭搜索结果限制，例如 for 字段仅用在筛选器表达式中。
-* “密钥”是唯一的文档标识符。 它始终是一个字符串，而且是必需的字符串。
-* “可筛选”、“可排序”和“可查找”确定字段是否可用于筛选器、排序或方面导航结构  。
-* **可搜索** 意味着该字段将包括在全文搜索中。 字符串可搜索。 数值字段和布尔字段通常标记为不可搜索。
++ **可检索** 意味着该字段将显示在搜索结果列表中。 清除此复选框即可将单个字段标记为关闭搜索结果限制，例如 for 字段仅用在筛选器表达式中。
++ “密钥”是唯一的文档标识符。 它始终是一个字符串，而且是必需的字符串。
++ “可筛选”、“可排序”和“可查找”确定字段是否可用于筛选器、排序或方面导航结构  。
++ **可搜索** 意味着该字段将包括在全文搜索中。 字符串可搜索。 数值字段和布尔字段通常标记为不可搜索。
 
 存储要求不会因你的选择而发生更改。 例如，如果你在多个字段上设置“可检索”属性，则存储需求不会增加。
 
@@ -87,10 +89,7 @@ ms.locfileid: "97368624"
 
    如果使用现有的 hotels 数据源再次重新运行向导，则不会使用默认属性配置索引。 以后导入时，你必须手动选择属性。 
 
-   :::image type="content" source="media/search-get-started-portal/hotelsindex.png" alt-text="生成的 hotels 索引":::
-
-2. 继续转到下一页。
-
+1. 继续转到下一页。
 
 ### <a name="step-4---configure-indexer"></a>步骤 4 - 配置索引器
 
@@ -104,7 +103,7 @@ ms.locfileid: "97368624"
 
 ## <a name="monitor-progress"></a>监视进度
 
-该向导应转到索引器列表，你可在其中监视进度。 若要进行自导航，请转到“概述”页，然后单击“索引器”。
+该向导应转到索引器列表，你可在其中监视进度。 若要进行自导航，请转到“概述”页，然后单击“索引器”选项卡。
 
 门户网站可能需要几分钟才能更新页面，但列表中应会出现新建的索引器，其状态指示“正在进行”或“成功”，此外还会列出已编制索引的文档数。
 
@@ -112,7 +111,7 @@ ms.locfileid: "97368624"
 
 ## <a name="view-the-index"></a>查看索引
 
-主服务页提供指向 Azure 认知搜索服务中创建的资源的链接。  若要查看刚刚创建的索引，请单击链接列表中的 **索引**。 
+服务概述页提供了指向 Azure 认知搜索服务中创建的资源的链接。  若要查看刚刚创建的索引，请单击链接列表中的 **索引**。 
 
 等待门户页刷新。 几分钟后，应该会看到具有文档计数和存储大小的索引。
 
@@ -120,7 +119,9 @@ ms.locfileid: "97368624"
 
 从此列表中，可以单击刚刚创建的 *hotels-sample* 索引，查看索引架构， 并可以选择添加新字段。 
 
-“字段”选项卡显示索引架构。 滚动到列表底部可输入新字段。 在大多数情况下，不能更改现有字段。 现有字段在 Azure 认知搜索中具有实际的表示形式，因此不可修改，即使在代码中也是如此。 若要从根本上更改现有字段，请创建新索引并丢弃原始索引。
+“字段”选项卡显示索引架构。 如果你在编写查询，需要检查某个字段是否可筛选或可排序，可以在此选项卡上查看属性。
+
+滚动到列表底部可输入新字段。 虽然始终可以创建新字段，但在大多数情况下，无法更改现有字段。 现有字段在搜索服务中具有实际的表示形式，因此是不可修改的，即使在代码中也是如此。 若要从根本上更改现有字段，请创建新索引并丢弃原始索引。
 
    :::image type="content" source="media/search-get-started-portal/sample-index-def.png" alt-text="示例索引定义":::
 
@@ -142,11 +143,11 @@ ms.locfileid: "97368624"
 
    :::image type="content" source="media/search-get-started-portal/search-explorer-cmd.png" alt-text="搜索浏览器命令":::
 
-2. 在“索引”下拉列表中，选择“hotels-sample-index”。 单击“API 版本”下拉列表，查看有哪些 REST API 可用。 对于以下查询，请使用正式发行版 (2020-06-30)。
+1. 在“索引”下拉列表中，选择“hotels-sample-index”。 单击“API 版本”下拉列表，查看有哪些 REST API 可用。 对于以下查询，请使用正式发行版 (2020-06-30)。
 
    :::image type="content" source="media/search-get-started-portal/search-explorer-changeindex.png" alt-text="索引和 API 命令":::
 
-3. 在搜索栏中粘贴以下查询字符串，并单击“搜索”。
+1. 在搜索栏中粘贴以下查询字符串，并单击“搜索”。
 
    :::image type="content" source="media/search-get-started-portal/search-explorer-query-string-example.png" alt-text="查询字符串和搜索按钮":::
 
@@ -158,19 +159,19 @@ ms.locfileid: "97368624"
 
 #### <a name="example-string-query-searchspa"></a>示例（字符串查询）：`search=spa`
 
-* **search** 参数用于输入关键字来执行全文搜索，在本例中，将返回在文档的任何可搜索字段中包含 *spa* 的酒店数据。
++ **search** 参数用于输入关键字来执行全文搜索，在本例中，将返回在文档的任何可搜索字段中包含 *spa* 的酒店数据。
 
-* **搜索浏览器** 以 JSON 格式返回结果，如果文档采用密集结构，这种结果将很冗长且难以阅读。 这是有意而为的；整个文档的可见性对于开发来说很重要，尤其是在测试期间。 为了改善用户体验，需要编写代码用于[处理搜索结果](search-pagination-page-layout.md)，以提供重要元素。
++ **搜索浏览器** 以 JSON 格式返回结果，如果文档采用密集结构，这种结果将很冗长且难以阅读。 这是有意而为的；整个文档的可见性对于开发来说很重要，尤其是在测试期间。 为了改善用户体验，需要编写代码用于[处理搜索结果](search-pagination-page-layout.md)，以提供重要元素。
 
-* 文档由标记为在索引中“可检索”的所有字段构成。 若要在门户中查看索引属性，请在“索引”列表中单击“hotels-sample”。
++ 文档由标记为在索引中“可检索”的所有字段构成。 若要在门户中查看索引属性，请在“索引”列表中单击“hotels-sample”。
 
 #### <a name="example-parameterized-query-searchspacounttruetop10"></a>示例（参数化查询）：`search=spa&$count=true&$top=10`
 
-* **&** 符号用于追加可以按任意顺序指定的搜索参数。
++ **&** 符号用于追加可以按任意顺序指定的搜索参数。
 
-* **$count=true** 参数返回所有已返回文档的总计数。 此值显示在搜索结果顶部附近。 可以通过监视 **$count=true** 报告的更改来验证筛选器查询。 如果计数较小，则表示筛选器正在工作。
++ **$count=true** 参数返回所有已返回文档的总计数。 此值显示在搜索结果顶部附近。 可以通过监视 **$count=true** 报告的更改来验证筛选器查询。 如果计数较小，则表示筛选器正在工作。
 
-* **$top=10** 返回所有文档中排名最高的 10 个文档。 默认情况下，Azure 认知搜索返回前 50 个最佳匹配项。 可以通过 **$top** 增加或减少返回的结果。
++ **$top=10** 返回所有文档中排名最高的 10 个文档。 默认情况下，Azure 认知搜索返回前 50 个最佳匹配项。 可以通过 **$top** 增加或减少返回的结果。
 
 ### <a name="filter-the-query"></a><a name="filter-query"></a> 筛选查询
 
@@ -178,9 +179,9 @@ ms.locfileid: "97368624"
 
 #### <a name="example-filtered-searchbeachfilterrating-gt-4"></a>示例（已筛选）：`search=beach&$filter=Rating gt 4`
 
-* **$filter** 参数返回与提供的条件匹配的结果。 在本例中，条件为评分大于 4。
++ **$filter** 参数返回与提供的条件匹配的结果。 在本例中，条件为评分大于 4。
 
-* 筛选器语法是一种 OData 构造。 有关详细信息，请参阅 [Filter OData syntax](/rest/api/searchservice/odata-expression-syntax-for-azure-search)（筛选器 OData 语法）。
++ 筛选器语法是一种 OData 构造。 有关详细信息，请参阅 [Filter OData syntax](/rest/api/searchservice/odata-expression-syntax-for-azure-search)（筛选器 OData 语法）。
 
 ### <a name="facet-the-query"></a><a name="facet-query"></a> 分面查询
 
@@ -188,19 +189,18 @@ ms.locfileid: "97368624"
 
 #### <a name="example-faceted-with-scope-reduction-searchfacetcategorytop2"></a>示例（使用范围缩减进行分面）：`search=*&facet=Category&$top=2`
 
-* **search=** _ 是空搜索。 空搜索会搜索所有内容。 提交空查询的原因之一是针对整个文档集进行筛选器或分面。 例如，你希望某个分面导航结构由索引中的所有酒店组成。
-_ **facet** 返回可传递给 UI 控件的导航结构。 它将返回类别和计数。 在本例中，类别基于可以方便地称为“类别”的字段。 Azure 认知搜索中没有聚合，但可以通过 `facet` 进行近似聚合，提供每个类别中的文档计数。
++ **search=** * 是空搜索。 空搜索会搜索所有内容。 提交空查询的原因之一是针对整个文档集进行筛选器或分面。 例如，你希望某个分面导航结构由索引中的所有酒店组成。
++ **facet** 返回可传递给 UI 控件的导航结构。 它将返回类别和计数。 在本例中，类别基于可以方便地称为“类别”的字段。 Azure 认知搜索中没有聚合，但可以通过 `facet` 进行近似聚合，提供每个类别中的文档计数。
 
-* **$top=2** 返回两个文档，演示如何使用 `top` 来减少或增加结果。
++ **$top=2** 返回两个文档，演示如何使用 `top` 来减少或增加结果。
 
 #### <a name="example-facet-on-numeric-values-searchspafacetrating"></a>示例（包含数字值的分面）：`search=spa&facet=Rating`
 
-* 此查询针对 *spa* 执行文本搜索后返回的评分分面。 可将“评分”一词指定为分面，因为该字段已标记为可在索引中检索、筛选和分面，并且它包含的值（数字 1 到 5）适合用于将列表分类为组。
++ 此查询针对 *spa* 执行文本搜索后返回的评分分面。 可将“评分”一词指定为分面，因为该字段已标记为可在索引中检索、筛选和分面，并且它包含的值（数字 1 到 5）适合用于将列表分类为组。
 
-* 只有可筛选的字段才可分面。 结果中只返回仅可检索的字段。
++ 只有可筛选的字段才可分面。 结果中只返回仅可检索的字段。
 
-* “评分”字段为双精度浮点，将按精度值分组。 若要详细了解如何按间隔来分组（例如，“3 星评分”、“4 星评分”等），请参阅[如何在 Azure 认知搜索中实现分面导航](./search-faceted-navigation.md#filter-based-on-a-range)。
-
++ “评分”字段为双精度浮点，将按精度值分组。 若要详细了解如何按间隔来分组（例如，“3 星评分”、“4 星评分”等），请参阅[如何在 Azure 认知搜索中实现分面导航](./search-faceted-navigation.md#filter-based-on-a-range)。
 
 ### <a name="highlight-search-results"></a><a name="highlight-query"></a> 突出显示搜索结果
 
@@ -208,13 +208,13 @@ _ **facet** 返回可传递给 UI 控件的导航结构。 它将返回类别和
 
 #### <a name="example-highlighter-searchbeachhighlightdescription"></a>示例（突出显示）：`search=beach&highlight=Description`
 
-* 在此示例中，格式化单词 *beach* 更容易在说明字段中发现。
++ 在此示例中，格式化单词 *beach* 更容易在说明字段中发现。
 
 #### <a name="example-linguistic-analysis-searchbeacheshighlightdescription"></a>示例（语言分析）：`search=beaches&highlight=Description`
 
-* 全文搜索可识别单词形式中的基本差异。 在本例中，在进行“beaches”关键字搜索后，会获得包含“beach”突出显示文本的结果，可以从这些结果中搜索那些在其可搜索字段中包含该单词的酒店。 由于执行了语言分析，同一单词的不同形式可能会显示在结果中。 
++ 全文搜索可识别单词形式中的基本差异。 在本例中，在进行“beaches”关键字搜索后，会获得包含“beach”突出显示文本的结果，可以从这些结果中搜索那些在其可搜索字段中包含该单词的酒店。 由于执行了语言分析，同一单词的不同形式可能会显示在结果中。 
 
-* Azure 认知搜索支持 Lucene 和 Microsoft 提供的 56 种分析器。 Azure 认知搜索使用的默认分析器是标准的 Lucene 分析器。
++ Azure 认知搜索支持 Lucene 和 Microsoft 提供的 56 种分析器。 Azure 认知搜索使用的默认分析器是标准的 Lucene 分析器。
 
 ### <a name="try-fuzzy-search"></a><a name="fuzzy-search"></a> 试用模糊搜索
 

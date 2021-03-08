@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: afb0e04d6f8a34d844df382081d53a32899e9a5c
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 70416daced2cbdebb70fb8e1defbcbcb599710f1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97934758"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101705477"
 ---
 # <a name="quickstart-azure-key-vault-secret-client-library-for-javascript-version-4"></a>快速入门：适用于 JavaScript 的 Azure Key Vault 机密客户端库（版本 4）
 
@@ -56,13 +56,13 @@ Key Vault 客户端库资源：
 
 1. 在命令外壳中，创建一个名为 `key-vault-node-app` 的文件夹：
 
-```azurecli
+```terminal
 mkdir key-vault-node-app
 ```
 
 1. 切换到新创建的 key-vault-node-app 目录，然后运行 init 命令以初始化节点项目：
 
-```azurecli
+```terminal
 cd key-vault-node-app
 npm init -y
 ```
@@ -71,13 +71,13 @@ npm init -y
 
 在控制台窗口中，安装适用于 Node.js 的 Azure Key Vault [机密库](https://www.npmjs.com/package/@azure/keyvault-secrets)。
 
-```azurecli
+```terminal
 npm install @azure/keyvault-secrets
 ```
 
 安装 [azure.identity](https://www.npmjs.com/package/@azure/identity) 包以对 Key Vault 进行身份验证
 
-```azurecli
+```terminal
 npm install @azure/identity
 ```
 
@@ -154,7 +154,7 @@ const { SecretClient } = require("@azure/keyvault-secrets");
 
 本快速入门使用登录用户向 Key Vault 进行身份验证，这是本地开发的首选方法。 对于部署到 Azure 的应用程序，应将托管标识分配给应用服务或虚拟机。有关详细信息，请参阅[托管标识概述](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)。
 
-在下面的示例中，Key Vault 的名称将扩展为 Key Vault URI，格式为“https://\<your-key-vault-name\>.vault.azure.net”。 此示例使用 [Azure 标识库](https://docs.microsoft.com/javascript/api/overview/azure/identity-readme)的[“DefaultAzureCredential()”](https://docs.microsoft.com/javascript/api/@azure/identity/defaultazurecredential)类，该类允许在具有不同选项的不同环境中使用相同代码提供标识。 有关向 Key Vault 进行身份验证的详细信息，请参阅[开发人员指南](https://docs.microsoft.com/azure/key-vault/general/developers-guide#authenticate-to-key-vault-in-code)。
+在下面的示例中，Key Vault 的名称将扩展为 Key Vault URI，格式为“https://\<your-key-vault-name\>.vault.azure.net”。 此示例使用 [Azure 标识库](https://docs.microsoft.com/javascript/api/overview/azure/identity-readme)中的[“DefaultAzureCredential()”](https://docs.microsoft.com/javascript/api/@azure/identity/defaultazurecredential)类。利用该类，我们可以在具有不同选项的不同环境中使用相同的代码来提供标识。 有关向密钥保管库进行身份验证的详细信息，请参阅[开发人员指南](https://docs.microsoft.com/azure/key-vault/general/developers-guide#authenticate-to-key-vault-in-code)。
 
 将以下代码添加到“main()”函数
 
@@ -168,7 +168,7 @@ const client = new SecretClient(KVUri, credential);
 
 ### <a name="save-a-secret"></a>保存机密
 
-应用程序通过身份验证后，你可以使用 [setSecret 方法](/javascript/api/@azure/keyvault-secrets/secretclient?#setsecret-string--string--setsecretoptions-)将机密放入密钥保管库。此操作需要使用机密的名称，本示例中使用“mySecret”。  
+应用程序通过身份验证后，你可以使用 [setSecret 方法](/javascript/api/@azure/keyvault-secrets/secretclient?view=azure-node-latest#setSecret_string__string__SetSecretOptions_)将机密放入密钥保管库。此操作需要使用机密的名称，本示例中使用“mySecret”。  
 
 ```javascript
 await client.setSecret(secretName, secretValue);
@@ -176,7 +176,7 @@ await client.setSecret(secretName, secretValue);
 
 ### <a name="retrieve-a-secret"></a>检索机密
 
-现在，你可以使用 [getSecret 方法](/javascript/api/@azure/keyvault-secrets/secretclient?#getsecret-string--getsecretoptions-)检索以前设置的值。
+现在，你可以使用 [getSecret 方法](/javascript/api/@azure/keyvault-secrets/secretclient?view=azure-node-latest#getSecret_string__GetSecretOptions_)检索以前设置的值。
 
 ```javascript
 const retrievedSecret = await client.getSecret(secretName);
@@ -258,9 +258,9 @@ main().then(() => console.log('Done')).catch((ex) => console.log(ex.message));
 
 1. 执行以下命令来运行应用。
 
-    ```azurecli
+    ```terminal
     npm install
-    npm index.js
+    node index.js
     ```
 
 1. 出现提示时，输入一个密码值。 例如，mySecretPassword。

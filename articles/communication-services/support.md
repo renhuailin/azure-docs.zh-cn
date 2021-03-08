@@ -1,19 +1,19 @@
 ---
 title: Azure 通信服务的支持和帮助选项
 description: 了解适用于 Azure 通信服务的各种帮助和支持选项。
-author: rifox
+author: ProbablePrime
 manager: chpalm
 services: azure-communication-services
 ms.author: rifox
 ms.date: 02/23/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: fb53fb98d36250c3cfa161180208ed8c6ce96315
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 4d34f816a89091ecbdf3893a377c999a3c46869c
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101693332"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102043807"
 ---
 # <a name="help-and-support-options-for-azure-communication-services"></a>Azure 通信服务的帮助和支持选项
 

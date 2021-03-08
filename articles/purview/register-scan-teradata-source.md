@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: overview
 ms.date: 2/25/2021
-ms.openlocfilehash: 0885870497ef3488d78fe899c96ee2a82a5b84fc
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 2008e014e9f160b643ed5f591fff81c0b215e24a
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101696060"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175022"
 ---
 # <a name="register-and-scan-teradata-source-preview"></a>注册并扫描 Teradata 源（预览版）
 
@@ -94,13 +94,13 @@ Teradata 源支持完全扫描，以从 Teradata 数据库中提取元数据，�
 
 6.  **架构**：列出要导入的架构的子集，以分号分隔的列表形式表示。 例如，schema1; schema2。 如果该列表为空，则会导入所有用户架构。 默认情况下，所有系统架构（例如 SysAdmin）和对象都将被忽略。 当列表为空时，将导入所有可用的架构。
 
-        Acceptable schema name patterns using SQL LIKE expressions syntax include using %, e.g. A%; %B; %C%; D
-        - start with A or    
-        - end with B or    
-        - contain C or    
-        - equal D
+    使用 SQL LIKE 表达式语法的可接受架构名称模式包括使用 %，例如 A%; %B; %C%; D
+    - 以 A 开头或    
+    - 以 B 结尾或    
+    - 包含 C 或    
+    - 等于 D
 
-        Usage of NOT and special characters are not acceptable
+    不能使用 NOT 和特殊字符
 
 7.  **驱动程序位置**：指定运行自承载集成运行时的 VM 中 JDBC 驱动程序位置的路径。 这应当是指向有效 JAR 文件夹位置的路径。
 

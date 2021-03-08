@@ -11,12 +11,12 @@ ms.author: sacartac
 ms.reviewer: nibaccam
 ms.date: 12/21/2020
 ms.custom: automl
-ms.openlocfilehash: f0bb354bce0c4696f60e2be5c6186760518c7431
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: ad8a9f7af9ddabe969d090f80378ba5ff891d7f1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99549180"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691937"
 ---
 # <a name="tutorial-create-a-classification-model-with-automated-ml-in-azure-machine-learning"></a>教程：使用 Azure 机器学习中的自动化 ML 创建分类模型
 
@@ -168,7 +168,7 @@ Azure 机器学习工作区是云中的基础资源，用于试验、训练和�
         验证 | 选择交叉验证类型和测试数。|验证类型：<br>k-折交叉验证&nbsp;&nbsp; <br> <br> 验证次数：2
         并发| 每次迭代执行的并行迭代的最大数目| 最大并发迭代次数：&nbsp;&nbsp;5
         
-        选择“保存”。 
+        选择“保存”。
     
 1. 选择“完成”以运行试验。 当试验准备开始时，将打开“运行详细信息”屏幕并且会在顶部显示“运行状态”。 此状态随着试验的进行而更新。 通知也会显示在工作室的右上角，以告知你试验的状态。
 
@@ -186,6 +186,30 @@ Azure 机器学习工作区是云中的基础资源，用于试验、训练和�
 以下示例将浏览“详细信息”和“指标”选项卡，以查看选定模型的属性、指标和性能图表。  
 
 ![运行迭代详细信息](./media/tutorial-first-experiment-automated-ml/run-detail.gif)
+
+## <a name="model-explanations"></a>模型说明
+
+在等待模型完成时，你还可以查看模型说明，了解哪些数据特征（原始的或经过工程处理的）影响特定模型的预测。 
+
+可以按需生成这些模型说明，“说明(预览版)”选项卡的模型说明仪表板中汇总了这些模型说明。
+
+若要生成模型说明，请执行以下操作： 
+ 
+1. 选择顶部的“运行 1”导航回“模型”屏幕。 
+1. 选择“模型”选项卡。
+1. 对于本教程，请选择第一个“MaxAbsScaler, LightGBM”模型。
+1. 选择顶部的“说明模型”按钮。 此时右侧会显示“说明模型”窗格。 
+1. 选择你之前创建的“automl-compute”。 此计算群集会启动一个子运行来生成模型说明。
+1. 选择底部的“创建”。 屏幕顶部会出现一条绿色的成功消息。 
+    >[!NOTE]
+    > 模型说明运行需要大约 2-5 分钟才能完成。
+1. 选择“说明(预览版)”按钮。 在模型说明运行完成后，此选项卡就会进行填充。
+1. 在左侧展开该窗格，然后在“特征”下选择显示了“原始”的行。 
+1. 选择右侧的“聚合特征重要性”选项卡。 此图表显示了影响所选模型的预测的数据特征。 
+
+    在此示例中，“持续时间”看起来对此模型的预测影响最大。
+    
+    ![模型说明仪表板](media/tutorial-first-experiment-automated-ml/model-explanation-dashboard.png)
 
 ## <a name="deploy-the-best-model"></a>部署最佳模型
 
@@ -205,7 +229,7 @@ Azure 机器学习工作区是云中的基础资源，用于试验、训练和�
 
 1. 按如下所示填充“部署模型”窗格：
 
-    字段| 值
+    字段| Value
     ----|----
     部署名称| my-automl-deploy
     部署说明| 我的第一个自动化机器学习试验部署

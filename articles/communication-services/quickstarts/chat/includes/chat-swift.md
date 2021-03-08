@@ -10,19 +10,19 @@ ms.date: 2/11/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 7833656b9b9be45aa3a0f0a8aa45cd70f925ce73
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 5c79ea68e648cd3d78f94eb2272b6f32e3c4806f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100379641"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750596"
 ---
 ## <a name="prerequisites"></a>先决条件
 在开始之前，请务必：
 
 - 创建活动订阅的 Azure 帐户。 有关详细信息，请参阅[创建免费账户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
 - 安装 [Xcode](https://developer.apple.com/xcode/) 和 [Cocoapods](https://cocoapods.org/)，我们将使用 Xcode 创建用于快速入门的 iOS 应用程序，并使用 Cocoapods 来安装依赖项。
-- 创建 Azure 通信服务资源。 有关详细信息，请参阅[创建 Azure 通信资源](../../create-communication-resource.md)。 为完成此快速入门，需要记录资源终结点。
+- 创建 Azure 通信服务资源。 有关详细信息，请参阅[创建 Azure 通信服务资源](../../create-communication-resource.md)。 为完成此快速入门，需要记录资源终结点。
 - 创建 2 个 ACS 用户，并向他们颁发用户访问令牌[用户访问令牌](../../access-tokens.md)。 请确保将范围设置为“聊天”，并记下令牌字符串和 userId 字符串 。 在本快速入门中，我们将创建一个包含初始参与者的会话，然后将第二个参与者添加到该会话。
 
 ## <a name="setting-up"></a>设置
@@ -53,9 +53,11 @@ pod 'AzureCommunicationChat', '~> 1.0.0-beta.8'
 
 安装依赖项，这还将创建 Xcode 工作区：`pod install`
 
+**运行 pod install 后，通过选择新创建的 `.xcworkspace` 来重新在 Xcode 中打开项目。**
+
 ### <a name="setup-the-placeholders"></a>设置占位符
 
-在 Xcode 中打开工作区文件 `ChatQuickstart.xcworkspace`，然后打开 `ViewController.swift`。
+在 Xcode 中打开工作区 `ChatQuickstart.xcworkspace`，然后打开 `ViewController.swift`。
 
 在本快速入门中，我们要将代码添加到 `viewController`，并在 Xcode 控制台中查看输出。 此快速入门不涉及在 iOS 中构建 UI。 
 
@@ -120,6 +122,10 @@ let endpoint = "<ACS_RESOURCE_ENDPOINT>"
 
 将 `<ACS_RESOURCE_ENDPOINT>` 替换为 ACS 资源的终结点。
 将 `<ACCESS_TOKEN>` 替换为有效的 ACS 访问令牌。
+
+本快速入门不介绍如何创建服务层来管理聊天应用程序的令牌，尽管我们建议你这样做。 有关详细信息，请参阅以下文档：[聊天体系结构](../../../concepts/chat/concepts.md)
+
+详细了解[用户访问令牌](../../access-tokens.md)。
 
 ## <a name="object-model"></a>对象模型 
 以下类和接口处理适用于 JavaScript 的 Azure 通信服务聊天客户端库的某些主要功能。

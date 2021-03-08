@@ -1078,7 +1078,7 @@
           href: insights/container-insights-reports.md
         - name: 查看实时数据
           items:
-            - name: 实时数据（预览版）概述
+            - name: 实时数据概述
               href: containers/container-insights-livedata-overview.md
             - name: 设置
               href: containers/container-insights-livedata-setup.md

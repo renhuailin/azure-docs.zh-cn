@@ -26,8 +26,6 @@
     - name: 创建数据工厂 - ARM 模板
       displayName: Resource Manager
       href: quickstart-create-data-factory-resource-manager-template.md
-    - name: 安全性 - 启用客户管理的密钥加密
-      href: enable-customer-managed-key.md
     - name: 创建数据流
       href: data-flow-create.md
 - name: 教程
@@ -36,7 +34,7 @@
       items:
         - name: 从 Azure Blob 存储到 Azure SQL 数据库
           items:
-            - name: 复制数据工具
+            - name: “复制数据”工具
               href: tutorial-copy-data-tool.md
             - name: 用户界面 (UI)
               href: tutorial-copy-data-portal.md
@@ -44,7 +42,7 @@
               href: tutorial-copy-data-dot-net.md
         - name: 从 SQL Server 数据库到 Azure Blob 存储
           items:
-            - name: 复制数据工具
+            - name: “复制数据”工具
               href: tutorial-hybrid-copy-data-tool.md
             - name: 用户界面 (UI)
               href: tutorial-hybrid-copy-portal.md
@@ -173,10 +171,6 @@
       href: concepts-pipeline-execution-triggers.md
     - name: 集成运行时
       href: concepts-integration-runtime.md
-    - name: 安全性
-      items:
-        - name: 安全基线
-          href: security-baseline.md
     - name: 数据流
       items:
         - name: 使用映射数据流转换数据
@@ -433,13 +427,13 @@
           href: connector-zoho.md
     - name: 移动数据
       items:
-        - name: 通过复制活动复制数据
+        - name: 使用“复制”活动复制数据
           href: copy-activity-overview.md
         - name: 监视复制活动
           href: copy-activity-monitoring.md
-        - name: 使用“删除活动”删除文件
+        - name: 使用“删除”活动删除文件
           href: delete-activity.md
-        - name: 复制数据工具
+        - name: “复制数据”工具
           href: copy-data-tool.md
         - name: 格式和压缩支持
           href: supported-file-formats-and-compression-codecs.md
@@ -510,13 +504,13 @@
           href: control-flow-append-variable-activity.md
         - name: 执行管道活动
           href: control-flow-execute-pipeline-activity.md
-        - name: 筛选器活动
+        - name: 筛选活动
           href: control-flow-filter-activity.md
         - name: For Each 活动
           href: control-flow-for-each-activity.md
         - name: 获取元数据活动
           href: control-flow-get-metadata-activity.md
-        - name: If Condition 活动
+        - name: If 条件活动
           href: control-flow-if-condition-activity.md
         - name: 查找活动
           href: control-flow-lookup-activity.md
@@ -608,12 +602,14 @@
           href: encrypt-credentials-self-hosted-integration-runtime.md
         - name: 数据工厂的托管标识
           href: data-factory-service-identity.md
-        - name: 客户托管密钥加密
+        - name: 使用客户管理的密钥加密数据工厂
           href: enable-customer-managed-key.md
-        - name: 托管的虚拟网络
+        - name: 托管虚拟网络
           href: managed-virtual-network-private-endpoint.md
         - name: 用于数据工厂的 Azure 专用链接
           href: data-factory-private-link.md
+        - name: Azure 安全基线
+          href: security-baseline.md
     - name: 监视和管理
       items:
         - name: 直观地监视

@@ -212,6 +212,10 @@
           href: diagnostic-logs.md
         - name: 指标
           href: metrics.md
+    - name: 用例
+      items:
+        - name: 域的用例
+          href: event-domains-use-cases.md
 - name: 操作指南
   items:
     - name: 创建、查看和管理系统主题

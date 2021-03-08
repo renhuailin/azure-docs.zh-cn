@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9fd10d6a4fb748a61b5e1d9e27777c2fa1134039
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: d45b2ec8814ec2b7f02da99500aa1e72ec525d65
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99225607"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101695696"
 ---
 # <a name="how-to-use-openrowset-using-serverless-sql-pool-in-azure-synapse-analytics"></a>如何在 Azure Synapse Analytics 中通过无服务器 SQL 池使用 OPENROWSET
 
@@ -97,6 +97,7 @@ WITH ( {'column_name' 'column_type' [ 'column_ordinal' | 'json_path'] })
 [ , PARSER_VERSION = 'parser_version' ]
 [ , HEADER_ROW = { TRUE | FALSE } ]
 [ , DATAFILETYPE = { 'char' | 'widechar' } ]
+[ , CODEPAGE = { 'ACP' | 'OEM' | 'RAW' | 'code_page' } ]
 ```
 
 ## <a name="arguments"></a>参数
@@ -238,6 +239,10 @@ DATAFILETYPE = { 'char' | 'widechar' }
 
 指定编码：char 用于 UTF8，widechar 用于 UTF16 文件。
 
+CODEPAGE = { 'ACP' | 'OEM' | 'RAW' | 'code_page' }
+
+指定该数据文件中数据的代码页。 默认值为 65001（UTF-8 编码）。 [此处](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql?view=sql-server-ver15#codepage)有关于此选项的更多详细信息。
+
 ## <a name="fast-delimited-text-parsing"></a>带分隔符的文本的快速分析
 
 可以使用两种带分隔符的文本分析器版本。 CSV 分析器版本 1.0 是默认版本且功能丰富，而分析器版本 2.0 是为提高性能而构建的。 分析器 2.0 的性能改进来自高级分析技术和多线程处理。 随着文件大小的增大，速度差异会更大。
@@ -261,7 +266,7 @@ Parquet 文件包含每一列的类型说明。 下表介绍了如何将 Parquet
 | --- | --- | --- |
 | BOOLEAN | | bit |
 | BINARY/BYTE_ARRAY | | varbinary |
-| DOUBLE | | float |
+| DOUBLE | | FLOAT |
 | FLOAT | | real |
 | INT32 | | int |
 | INT64 | | bigint |

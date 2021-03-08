@@ -4,17 +4,17 @@ description: 本教程演示如何使用网关创建 IoT Edge 设备的层次结
 author: v-tcassi
 manager: philmea
 ms.author: v-tcassi
-ms.date: 11/10/2020
+ms.date: 2/26/2021
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: a7f82ec5a4ef918b1bc7ab0fd6813199c0a1d772
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: f1b1a94dc1d96e625947eef5730c24f080fc155a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100366386"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101721406"
 ---
 # <a name="tutorial-create-a-hierarchy-of-iot-edge-devices-preview"></a>教程：创建 IoT Edge 设备的层次结构（预览版）
 
@@ -35,15 +35,17 @@ ms.locfileid: "100366386"
 > * 在层次结构中的设备上配置 IoT Edge 运行时。
 > * 在设备层次结构中安装一致的证书。
 > * 向层次结构中的设备添加工作负载。
-> * 使用 API 代理模块，通过下层设备上的单个端口安全地路由 HTTP 流量。
+> * 使用 [IoT Edge API 代理模块](https://azuremarketplace.microsoft.com/marketplace/apps/azure-iot.azureiotedge-api-proxy?tab=Overview)，通过下层设备中的单个端口安全地路由 HTTP 流量。
 
 在本教程中，定义了以下网络层：
 
 * **顶层**：此层的 IoT Edge 设备可直接连接到云。
 
-* **下层**：此层的 IoT Edge 设备无法直接连接到云。 它们需要通过一个或多个中间 IoT Edge 设备来发送和接收数据。
+* **下层**：位于顶层下面的层的 IoT Edge 设备无法直接连接到云。 它们需要通过一个或多个中间 IoT Edge 设备来发送和接收数据。
 
-为简单起见，本教程使用双设备层次结构。 一台设备是 topLayerDevice，表示位于层次结构顶层的设备，该设备可以直接连接到云。 此设备也称为“父设备”。 另一台设备是 lowerLayerDevice，表示位于层次结构下层的设备，该设备无法直接连接到云。 此设备也称为“子设备”。 可添加额外的下层设备来表示生产环境。 任何额外下层设备的配置都将遵循 lowerLayerDevice 的配置。
+为简单起见，本教程使用双设备层次结构（见下图）。 一台设备是顶层设备，表示位于层次结构顶层的设备，该设备可以直接连接到云。 此设备也称为“父设备”。 另一台设备是下层设备，表示位于层次结构下层的设备，该设备无法直接连接到云。 可以根据需要添加额外的下层设备来表示生产环境。 下层设备也称为“子设备”。 任何额外下层设备的配置都将遵循 **下层设备** 的配置。
+
+![教程层次结构，其中包含两个设备：顶层设备和下层设备](./media/tutorial-nested-iot-edge/tutorial-hierarchy-diagram.png)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -53,7 +55,8 @@ ms.locfileid: "100366386"
 * 含有效订阅的 Azure 帐户。 如果还没有 [Azure 订阅](../guides/developer/azure-developer-guide.md#understanding-accounts-subscriptions-and-billing)，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/)。
 * Azure 中的免费或标准层 [IoT 中心](../iot-hub/iot-hub-create-through-portal.md)。
 * 安装了 Azure IoT 扩展 v0.10.6 或更高版本的 Azure CLI v2.3.1。 本教程使用 [Azure Cloud Shell](../cloud-shell/overview.md)。 如果你不熟悉 Azure Cloud Shell，[请查看快速入门以了解详细信息](./quickstart-linux.md#prerequisites)。
-* 两台要配置为 IoT Edge 设备的 Linux 设备。 如果没有可用设备，可以通过替换以下命令中的占位符文本并运行两次来创建两个 Azure 虚拟机：
+  * 若要查看 Azure CLI 模块和扩展的当前版本，请运行 [az version](/cli/azure/reference-index?#az_version)。
+* 一个要为层次结构中的每个设备配置为 IoT Edge 设备的 Linux 设备。 本教程使用两个设备。 如果没有可用设备，可以替换以下命令中的占位符文本，然后运行它，以便为层次结构中的每个设备创建 Azure 虚拟机：
 
    ```azurecli-interactive
    az vm create \
@@ -71,13 +74,18 @@ ms.locfileid: "100366386"
 
   有关详细信息，请参阅[如何使用 Azure 门户向虚拟机开放端口](../virtual-machines/windows/nsg-quickstart-portal.md)。
 
-还可遵循已编写脚本的[适用于工业 IoT 的 Azure IoT Edge 示例](https://aka.ms/iotedge-nested-sample)来试用此方案，该示例将 Azure 虚拟机部署为预配置设备以模拟工厂环境。
+>[!TIP]
+>若要自动查看 IoT Edge 设备的层次结构的设置方式，可以遵循已编写了脚本的[适用于工业 IoT 的 Azure IoT Edge 示例](https://aka.ms/iotedge-nested-sample)。 这一已编写了脚本的方案将 Azure 虚拟机部署为预配置设备以模拟工厂环境。
+>
+>若要继续逐步创建示例层次结构，请继续完成以下教程步骤。
 
 ## <a name="configure-your-iot-edge-device-hierarchy"></a>配置 IoT Edge 设备层次结构
 
 ### <a name="create-a-hierarchy-of-iot-edge-devices"></a>创建 IoT Edge 设备的层次结构
 
-第一步是创建 IoT Edge 设备，可通过 Azure 门户或 Azure CLI 完成。 本教程将创建只有以下两个 IoT Edge 设备的层次结构：topLayerDevice 及其子 lowerLayerDevice 。
+IoT Edge 设备构成层次结构的各个层。 本教程将创建包含以下两个 IoT Edge 设备的层次结构：顶层设备及其子设备（下层设备） 。 可根据需要创建更多的子设备。
+
+若要创建 IoT Edge 设备，可以使用 Azure 门户或 Azure CLI。
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -87,7 +95,7 @@ ms.locfileid: "100366386"
 
 1. 选择“+ 添加 IoT Edge 设备”。 此设备将为顶层设备，因此请输入适当的唯一设备 ID。 选择“保存”。
 
-1. 再次选择“+ 添加 IoT Edge 设备”。 此设备将为 Edge 下层设备，因此请输入适当的唯一设备 ID。
+1. 再次选择“+ 添加 IoT Edge 设备”。 此设备将是一个下层设备，因此请输入一个适当且独一无二的设备 ID。
 
 1. 选择“设置父设备”，从设备列表中选择顶层设备，然后选择“确定” 。 选择“保存”。
 
@@ -101,15 +109,27 @@ ms.locfileid: "100366386"
    az iot hub device-identity create --device-id {top_layer_device_id} --edge-enabled --hub-name {hub_name}
    ```
 
-1. 输入以下命令来创建子 IoT Edge 设备，并在设备之间创建父子关系：
+   如果成功创建设备，则会输出设备的 JSON 配置。
 
-    ```azurecli-interactive
-    az iot hub device-identity create --device-id {lower_layer_device_id} --edge-enabled --pd {top_layer_device_id} --hub-name {iothub_name}
-    ```
+   ![成功创建设备后的 JSON 输出](./media/tutorial-nested-iot-edge/json-success-output.png)
+
+1. 输入以下命令，以便创建一个下层 Edge 设备。 如果希望层次结构中有更多的层，则可创建多个下层设备。 请确保为每个设备提供独一无二的设备标识。
+
+   ```azurecli-interactive
+   az iot hub device-identity create --device-id {lower_layer_device_id} --edge-enabled --hub-name {hub_name}
+   ```
+
+1. 输入以下命令，定义 **顶层设备** 与每个 **下层设备** 之间的父子关系。 请确保为层次结构中的每个下层设备运行此命令。
+
+   ```azurecli-interactive
+   az iot hub device-identity parent set --device-id {lower_layer_device_id} --parent-device-id {top_layer_device_id} --hub-name {hub_name}
+   ```
+
+   此命令没有显式输出。
 
 ---
 
-请记下每个 IoT Edge 设备的连接字符串。 稍后将用到它们。
+接下来，请记下每个 IoT Edge 设备的连接字符串。 稍后将用到它们。
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -130,6 +150,48 @@ ms.locfileid: "100366386"
    ```
 
 ---
+
+如果已正确完成上述步骤，则可使用以下步骤，在 Azure 门户或 Azure CLI 中检查父子关系是否正确。
+
+# <a name="portal"></a>[Portal](#tab/azure-portal)
+
+1. 在 [Azure 门户](https://ms.portal.azure.com/)中，导航到 IoT 中心的“IoT Edge”部分。
+
+1. 在设备列表中单击下层设备的设备 ID。
+
+1. 在设备的详细信息页上，应会看到“父设备”字段旁边列出了 **顶层设备** 的标识。
+
+   [子设备确认的父设备](./media/tutorial-nested-iot-edge/lower-layer-device-parent.png)
+
+还可以通过 **顶层设备** 确认层次结构关系中的子设备。
+
+1. 在设备列表中单击顶层设备的设备 ID。
+
+1. 选择顶部的“管理子设备”选项卡。
+
+1. 在设备列表下，你应该会看到你的 **下层设备**。
+
+   [父设备确认的子设备](./media/tutorial-nested-iot-edge/top-layer-device-child.png)
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+1. 在 [Azure Cloud Shell](https://shell.azure.com/) 中，可以通过获取父设备确认的子设备的标识，来验证子设备是否已成功建立与父设备的关系。 这会输出父设备的 JSON 配置，如下图所示：
+
+   ```azurecli-interactive
+   az iot hub device-identity parent show --device-id {lower_layer_device_id} --hub-name {hub_name}
+   ```
+
+还可以通过查询 **顶层设备** 来确认层次结构关系中的子设备。
+
+1. 列出父设备知道的子设备：
+
+    ```azurecli-interactive
+    az iot hub device-identity children list --device-id {top_layer_device_id} --hub-name {hub_name}
+    ```
+
+---
+
+确认层次结构正确以后，便可继续操作。
 
 ### <a name="create-certificates"></a>创建证书
 
@@ -165,11 +227,11 @@ ms.locfileid: "100366386"
 1. 使用以下命令创建两组 IoT Edge 设备 CA 证书和私钥：一组用于顶层设备，另一组用于下层设备。 为 CA 证书提供易记的名称以区分它们。
 
    ```bash
-   ./certGen.sh create_edge_device_ca_certificate "top-layer-device"
-   ./certGen.sh create_edge_device_ca_certificate "lower-layer-device"
+   ./certGen.sh create_edge_device_ca_certificate "{top_layer_certificate_name}"
+   ./certGen.sh create_edge_device_ca_certificate "{lower_layer_certificate_name}"
    ```
 
-   此脚本命令会创建多个证书和密钥文件，但我们将在每个 IoT Edge 设备上使用以下证书和密钥对，并在 config.yaml 文件中引用它们：
+   此脚本命令会创建多个证书和密钥文件，但我们将在每个 IoT Edge 设备上使用以下证书和密钥对，并在 config 文件中引用它们：
 
    * `<WRKDIR>/certs/iot-edge-device-<CA cert name>-full-chain.cert.pem`
    * `<WRKDIR>/private/iot-edge-device-<CA cert name>.key.pem`
@@ -183,11 +245,35 @@ ms.locfileid: "100366386"
    sudo update-ca-certificates
    ```
 
-   此命令应输出：已在 /etc/ssl/certs 中添加了一个证书。
+   此命令的输出应显示已在 `/etc/ssl/certs` 中添加一个证书。
+
+   [指出成功安装证书的消息](./media/tutorial-nested-iot-edge/certificates-success-output.png)
+
+如果已正确完成上述步骤，则可检查是否已在 `/etc/ssl/certs` 中安装证书，具体方法是导航到该目录并搜索已安装的证书。
+
+1. 导航到 `/etc/ssl/certs`：
+
+   ```bash
+   cd /etc/ssl/certs
+   ```
+
+1. 列出已安装的证书，针对 `azure` 执行 `grep`：
+
+   ```bash
+   ll | grep azure
+   ```
+
+   应该会看到关联到根 CA 证书的证书哈希，以及关联到 `usr/local/share` 目录中的副本的根 CA 证书。
+
+   [进行 Azure 证书搜索的结果](./media/tutorial-nested-iot-edge/certificate-list-results.png)
+
+确认证书已安装在每个设备上以后，便可继续操作。
 
 ### <a name="install-iot-edge-on-the-devices"></a>在设备上安装 IoT Edge
 
-在两个设备上执行以下步骤来安装 IoT Edge。
+安装 IoT Edge 版本 1.2 运行时映像以后，设备便可访问要按设备的层次结构形式运行时所需的功能。
+
+若要安装 IoT Edge，需要安装相应的存储库配置、必备组件和必要的版本资产。
 
 1. 安装与设备操作系统匹配的存储库配置。
 
@@ -215,7 +301,7 @@ ms.locfileid: "100366386"
    curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
    sudo cp ./microsoft.gpg /etc/apt/trusted.gpg.d/
    ```
-   
+
 1. 更新设备上的包列表。
 
    ```bash
@@ -228,111 +314,142 @@ ms.locfileid: "100366386"
    sudo apt-get install moby-engine
    ```
 
-1. 安装 hsmlib 和 IoT Edge 守护程序。 要查看其他 Linux 发行版的资产，[请访问 GitHub 版本](https://github.com/Azure/azure-iotedge/releases/tag/1.2.0-rc1)。 <!-- Update with proper image links on release -->
+1. 安装 IoT Edge 和 IoT 标识服务。
 
    ```bash
-   curl -L https://github.com/Azure/azure-iotedge/releases/download/1.2.0-rc1/libiothsm-std_1.2.0_rc1-1-1_debian9_amd64.deb -o libiothsm-std.deb
-   curl -L https://github.com/Azure/azure-iotedge/releases/download/1.2.0-rc1/iotedge_1.2.0_rc1-1_debian9_amd64.deb -o iotedge.deb
-   sudo dpkg -i ./libiothsm-std.deb
-   sudo dpkg -i ./iotedge.deb
+   sudo apt-get install aziot-edge
    ```
+
+如果已正确完成上述步骤，则会看到 Azure IoT Edge 横幅消息，其中要求你在层次结构中的每个设备上更新 Azure IoT Edge 配置文件 `/etc/aziot/config.toml`。 如果是这样，则可继续操作。
 
 ### <a name="configure-the-iot-edge-runtime"></a>配置 IoT Edge 运行时
 
-在两个设备上执行以下步骤来配置 IoT Edge 运行时。 为设备配置 IoT Edge 运行时包含四个步骤，所有步骤均通过编辑 IoT Edge 配置文件来完成：
+除了预配你的设备之外，配置步骤还使用你之前创建的证书在层次结构中的设备之间建立受信任的通信。 这些步骤还会开始建立层次结构的网络结构。 顶层设备会保持 Internet 连接，以便从云中拉取其运行时的映像，而下层设备则会通过顶层设备进行路由，以便访问这些映像。
 
-1. 通过将设备的连接字符串添加到配置文件，手动预配每个设备。
+若要配置 IoT Edge 运行时，需要修改配置文件的多个组件。 配置在 **顶层设备** 和 **下层设备** 之间稍有不同，因此，对于每个步骤，要注意你是在编辑哪个设备的配置文件。 为设备配置 IoT Edge 运行时包含四个步骤，所有步骤均通过编辑 IoT Edge 配置文件来完成：
 
-1. 通过将配置文件指向设备 CA 证书、设备 CA 私钥和根 CA 证书，完成设备证书的设置。
+* 通过将设备的连接字符串添加到配置文件，手动预配每个设备。
 
-1. 使用 IoT Edge 代理启动系统。
+* 通过将配置文件指向设备 CA 证书、设备 CA 私钥和根 CA 证书，完成设备证书的设置。
 
-1. 更新顶层设备的 hostname 参数，并更新下层设备的 hostname 参数和 parent_hostname 参数    。
+* 使用 IoT Edge 代理启动系统。
+
+* 更新顶层设备的 hostname 参数，并更新下层设备的 hostname 参数和 parent_hostname 参数    。
 
 完成这些步骤，然后重启 IoT Edge 服务来配置设备。
 
-1. 在每个设备上，打开 IoT Edge 配置文件。
+>[!TIP]
+>在 Nano 中浏览该配置文件时，可以使用 **Ctrl + W** 在文件中搜索关键字。
+
+1. 在每个设备上，根据包含的模板创建配置文件。
 
    ```bash
-   sudo nano /etc/iotedge/config.yaml
+   sudo cp /etc/aziot/config.toml.edge.template /etc/aziot/config.toml
+
+1. On each device, open the IoT Edge configuration file.
+
+   ```bash
+   sudo nano /etc/aziot/config.toml
    ```
 
-1. 找到文件的预配配置，并取消注释“使用连接字符串手动预配配置”部分。
+1. 对于顶层设备，请查找 Hostname 节 。 对包含 `hostname` 参数的行取消注释，并将值更新为 IoT Edge 设备的完全限定的域名 (FQDN) 或 IP 地址。 在层次结构中的设备之间一致使用你选择的任何值。
 
-1. 使用 IoT Edge 设备的连接字符串更新 **device_connection_string** 的值。 请确保注释掉任何其他预配部分。请确保 **provisioning:** 行前面没有空格，并且嵌套项缩进了两个空格。
-
-   ```yml
-   # Manual provisioning configuration using a connection string
-   provisioning:
-     source: "manual"
-     device_connection_string: "<ADD DEVICE CONNECTION STRING HERE>"
-     dynamic_reprovisioning: false
+   ```toml
+   hostname = "<device fqdn or IP>"
    ```
 
    >[!TIP]
    >将剪贴板内容粘贴到 Nano `Shift+Right Click` 或按 `Shift+Insert`。
 
-1. 找到“证书”部分。 取消注释并更新三个证书字段，使这些字段指向你在上一节中创建并移动到 IoT Edge 设备的证书。 提供采用 `file:///<path>/<filename>` 格式的文件 URI 路径。
+1. 对于 **下层** 中的任何 IoT Edge 设备，请找到“Parent hostname”节。 对包含 `parent_hostname` 参数的行取消注释，并将值更新，使之指向父设备的 FQDN 或 IP。 使用置于父设备的 hostname 字段中的确切值。 对于顶层的 IoT Edge 设备，请将此参数保持已被注释禁止。
 
-   ```yml
-   certificates:
-     device_ca_cert: "<File URI path to the device CA certificate unique to this device.>"
-     device_ca_pk: "<File URI path to the device CA private key unique to this device.>"
-     trusted_ca_certs: "<File URI path to the root CA certificate shared by all devices in the gateway hierarchy.>"
-   ```
-
-1. 对于顶层设备，查找 hostname 参数 。 将值更新为 IoT Edge 设备的完全限定的域名 (FQDN) 或 IP 地址。 在层次结构中的设备之间一致使用你选择的任何值。
-
-   ```yml
-   hostname: <device fqdn or IP>
-   ```
-
-1. 对于下层的 IoT Edge 设备，请更新配置文件以指向父设备的 FQDN 或 IP，与父设备 hostname 字段中的内容相匹配 。 对于顶层的 IoT Edge 设备，请注释禁止此参数。
-
-   ```yml
-   parent_hostname: <parent device fqdn or IP>
+   ```toml
+   parent_hostname = "<parent device fqdn or IP>"
    ```
 
    > [!NOTE]
    > 对于具有多个下层的层次结构，请将 parent_hostname 字段更新为直接上层设备的 FQDN。
 
-1. 对于顶层设备，查找“代理”yaml 部分，并将映像值更新为 IoT Edge 代理的正确版本 。 在本例中，我们会将顶层 IoT Edge 代理指向 Azure 容器注册表，其中提供 IoT Edge 代理映像的公共预览版。
+1. 找到文件的“Trust bundle cert”节。 对包含 `trust_bundle_cert` 参数的行取消注释，并将值更新为指向网关层次结构中所有设备共享的根 CA 证书的文件 URI 路径。
 
-   ```yml
-   agent:
-     name: "edgeAgent"
-     type: "docker"
-     env: {}
-     config:
-       image: "mcr.microsoft.com/azureiotedge-agent:1.2.0-rc2"
-       auth: {}
+   ```toml
+   trust_bundle_cert = "<root CA certificate>"
    ```
 
-1. 对于下层的 IoT Edge 设备，请更新映像值的域名以指向父设备的 FQDN 或 IP，后跟 API 代理端口 8000。 你将在下一节中添加 API 代理模块。
+1. 找到文件的 **Provisioning** 节。 将 **Manual provisioning with connection string** 所对应的行取消注释。 对于层次结构中的每个设备，请使用 IoT Edge 设备的连接字符串更新 **connection_string** 的值。
+
+   ```toml
+   # Manual provisioning with connection string
+   [provisioning]
+   source = "manual"
+   connection_string: "<Device connection string>"
+   ```
+
+1. 找到 **Default Edge Agent** 节。
+
+   * 对于 **顶层** 设备，请将 edgeAgent 映像值更新为 Azure 容器注册表中的模块的公共预览版本。
+   
+     ```toml
+     [agent.config]
+     image = "mcr.microsoft.com/azureiotedge-agent:1.2.0-rc4"
+     ```
+
+   * 对于 **下层** 中的每个 IoT Edge 设备，请更新 edgeAgent 映像，使之指向父设备，父设备后跟 API 代理所侦听的端口。 在下一部分，你将向父设备部署 API 代理模块。
+   
+     ```toml
+     [agent.config]
+     image = "<parent hostname value>:8000/azureiotedge-agent:1.2.0-rc4"
+     ```
+
+1. 找到 **Edge CA certificate** 节。 将此节的前三行取消注释。 然后，更新两个参数，使之指向你在上一部分创建并移至 IoT Edge 设备的设备 CA 证书和设备 CA 私钥文件。 提供采用 `file:///<path>/<filename>` 格式的文件 URI 路径，例如 `file:///certs/iot-edge-device-ca-top-layer-device.key.pem`。
 
    ```yml
-   agent:
-     name: "edgeAgent"
-     type: "docker"
-     env: {}
-     config:
-       image: "<parent_device_fqdn_or_ip>:8000/azureiotedge-agent:1.2.0-rc2"
-       auth: {}
+   [edge_ca]
+   cert = "<File URI path to the device full chain CA certificate unique to this device.>"
+   pk = "<File URI path to the device CA private key unique to this device.>"
    ```
+
+   >[!NOTE]
+   >请确保使用 **完整链** CA 证书路径和文件名填充 `device_ca_cert` 字段。
 
 1. 保存并关闭该文件。
 
    `CTRL + X`, `Y`, `Enter`
 
-1. 在配置文件中输入预配信息后，重启守护程序：
+1. 在配置文件中输入预配信息后，应用所做的更改：
 
    ```bash
-   sudo systemctl restart iotedge
+   sudo iotedge config apply
    ```
+
+继续操作之前，请确保已更新层次结构中每个设备的配置文件。 你已根据自己的层次结构配置了一个 **顶层设备**，以及一个或多个 **下层设备**。
+
+如果已正确完成上述步骤，可以检查设备是否已正确配置。
+
+1. 在设备上运行配置和连接性检查：
+
+   ```bash
+   sudo iotedge check
+   ```
+
+在 **顶层设备** 上，应会看到一个输出，其中包含多个“通过”评估和至少一个警告。 检查是否存在 `latest security daemon` 时，系统会发出警告，告知你另一个 IoT Edge 版本是最新的稳定版本，因为 IoT Edge 版本 1.2 是公开预览版。 可能会显示有关日志策略的其他警告，并根据你的网络的情况显示有关 DNS 策略的其他警告。
+
+在 **下层设备** 上，应该会显示类似于顶层设备的输出，但会显示一条额外的警告，指示无法从上游拉取 EdgeAgent 模块。 这是可以接受的，因为 IoT Edge API 代理模块和 Docker 容器注册表模块（将由下层设备用来拉取映像）尚未部署到 **顶层设备**。
+
+下面显示了 `iotedge check` 的示例输出：
+
+[示例配置和连接性结果](./media/tutorial-nested-iot-edge/configuration-and-connectivity-check-results.png)
+
+确认每个设备上的配置都正确以后，便可继续操作。
 
 ## <a name="deploy-modules-to-the-top-layer-device"></a>将模块部署到顶层设备
 
-可通过 Azure 门户或 Azure CLI，在云中完成 IoT Edge 运行时的配置和部署工作负载的剩余步骤。
+模块用于完成将 IoT Edge 运行时部署到设备，并进一步对层次结构进行结构定义。 IoT Edge API 代理模块可以通过下层设备中的单个端口安全地路由 HTTP 流量。 通过将映像请求路由到顶层设备，Docker 注册表模块使得下层设备可以访问 Docker 映像的存储库。
+
+若要将模块部署到顶层设备，可以使用 Azure 门户或 Azure CLI。
+
+>[!NOTE]
+>剩余步骤（配置 IoT Edge 运行时和部署工作负荷）不在 IoT Edge 设备上完成。
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -348,7 +465,7 @@ ms.locfileid: "100366386"
 
 1. 选择齿轮图标旁边的“运行时设置”。
 
-1. 在“Edge 中心”下的映像字段中输入 `mcr.microsoft.com/azureiotedge-hub:1.2.0-rc2`。
+1. 在“Edge 中心”下的映像字段中输入 `mcr.microsoft.com/azureiotedge-hub:1.2.0-rc4`。
 
    ![编辑 Edge 中心的映像](./media/tutorial-nested-iot-edge/edge-hub-image.png)
 
@@ -361,7 +478,7 @@ ms.locfileid: "100366386"
 
    ![编辑 Edge 中心的环境变量](./media/tutorial-nested-iot-edge/edge-hub-environment-variables.png)
 
-1. 在“Edge 代理”下的映像字段中输入 `mcr.microsoft.com/azureiotedge-agent:1.2.0-rc2`。 选择“保存”。
+1. 在“Edge 代理”下的映像字段中输入 `mcr.microsoft.com/azureiotedge-agent:1.2.0-rc4`。 选择“保存”。
 
 1. 将 Docker 注册表模块添加到顶层设备。 选择“+ 添加”，然后从下拉列表中选择“IoT Edge 模块” 。 为 Docker 注册表模块提供名称 `registry`，并为映像 URI 输入 `registry:latest`。 接下来，添加环境变量并创建选项，以将本地注册表模块指向 Microsoft 容器注册表，以便从中下载容器映像并在 registry:5000 中提供这些映像。
 
@@ -456,14 +573,14 @@ ms.locfileid: "100366386"
                    "systemModules": {
                        "edgeAgent": {
                            "settings": {
-                               "image": "mcr.microsoft.com/azureiotedge-agent:1.2.0-rc2",
+                               "image": "mcr.microsoft.com/azureiotedge-agent:1.2.0-rc4",
                                "createOptions": ""
                            },
                            "type": "docker"
                        },
                        "edgeHub": {
                            "settings": {
-                               "image": "mcr.microsoft.com/azureiotedge-hub:1.2.0-rc2",
+                               "image": "mcr.microsoft.com/azureiotedge-hub:1.2.0-rc4",
                                "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"443/tcp\":[{\"HostPort\":\"443\"}],\"5671/tcp\":[{\"HostPort\":\"5671\"}],\"8883/tcp\":[{\"HostPort\":\"8883\"}]}}}"
                            },
                            "type": "docker",
@@ -504,9 +621,13 @@ ms.locfileid: "100366386"
 
 ---
 
+如果你已正确完成上述步骤，则 **顶层设备** 应该会报告以下四个模块：IoT Edge API 代理模块、Docker 容器注册表模块和两个系统模块，正如 **部署中指定的那样**。 设备接收其新部署并启动模块可能需要数分钟。 请刷新页面，直至看到温度传感器模块以“由设备报告”方式列出。 设备报告了模块后，你就可以继续操作了。
+
 ## <a name="deploy-modules-to-the-lower-layer-device"></a>将模块部署到下层设备
 
-可使用 Azure 门户和 Azure CLI 将工作负载从云部署到下层设备。
+模块还可用作下层设备的工作负荷。 模拟温度传感器模块可创建示例遥测数据，以便通过设备层次结构提供正常的数据流。
+
+若要将模块部署到下层设备，可以使用 Azure 门户或 Azure CLI。
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -522,7 +643,7 @@ ms.locfileid: "100366386"
 
 1. 选择齿轮图标旁边的“运行时设置”。
 
-1. 在“Edge 中心”下的映像字段中输入 `$upstream:8000/azureiotedge-hub:1.2.0-rc2`。
+1. 在“Edge 中心”下的映像字段中输入 `$upstream:8000/azureiotedge-hub:1.2.0-rc4`。
 
 1. 将以下环境变量添加到 Edge 中心模块：
 
@@ -531,7 +652,7 @@ ms.locfileid: "100366386"
     | `experimentalFeatures__enabled` | `true` |
     | `experimentalFeatures__nestedEdgeEnabled` | `true` |
 
-1. 在“Edge 代理”下的映像字段中输入 `$upstream:8000/azureiotedge-agent:1.2.0-rc2`。 选择“保存”。
+1. 在“Edge 代理”下的映像字段中输入 `$upstream:8000/azureiotedge-agent:1.2.0-rc4`。 选择“保存”。
 
 1. 添加温度传感器模块。 选择“+ 添加”，然后从下拉列表中选择“市场模块” 。 搜索 `Simulated Temperature Sensor` 并选择该模块。
 
@@ -578,14 +699,14 @@ ms.locfileid: "100366386"
                    "systemModules": {
                        "edgeAgent": {
                            "settings": {
-                               "image": "$upstream:8000/azureiotedge-agent:1.2.0-rc2",
+                               "image": "$upstream:8000/azureiotedge-agent:1.2.0-rc4",
                                "createOptions": ""
                            },
                            "type": "docker"
                        },
                        "edgeHub": {
                            "settings": {
-                               "image": "$upstream:8000/azureiotedge-hub:1.2.0-rc2",
+                               "image": "$upstream:8000/azureiotedge-hub:1.2.0-rc4",
                                "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"443/tcp\":[{\"HostPort\":\"443\"}],\"5671/tcp\":[{\"HostPort\":\"5671\"}],\"8883/tcp\":[{\"HostPort\":\"8883\"}]}}}"
                            },
                            "type": "docker",
@@ -627,9 +748,9 @@ ms.locfileid: "100366386"
 
 Notice that the image URI that we used for the simulated temperature sensor module pointed to `$upstream:8000` instead of to a container registry. We configured this device to not have direct connections to the cloud, because it's in a lower layer. To pull container images, this device requests the image from its parent device instead. At the top layer, the API proxy module routes this container request to the registry module, which handles the image pull.
 
-On the device details page for your lower layer IoT Edge device, you should now see the temperature sensor module listed along the system modules as **Specified in deployment**. It may take a few minutes for the device to receive its new deployment, request the container image, and start the module. Refresh the page until you see the temperature sensor module listed as **Reported by device**.
+If you completed the above steps correctly, your **lower layer device** should report three modules: the temperature sensor module and the system modules, as **Specified in Deployment**. It may take a few minutes for the device to receive its new deployment, request the container image, and start the module. Refresh the page until you see the temperature sensor module listed as **Reported by Device**. Once the modules are reported by the device, you are ready to continue.
 
-## IotEdge check
+## Troubleshooting
 
 Run the `iotedge check` command to verify the configuration and to troubleshoot errors.
 
@@ -640,17 +761,17 @@ When you run `iotedge check` from the lower layer, the program tries to pull the
 In this tutorial, we use port 8000, so we need to specify it:
 
 ```bash
-sudo iotedge check --diagnostics-image-name <parent_device_fqdn_or_ip>:8000/azureiotedge-diagnostics:1.2.0-rc2
+sudo iotedge check --diagnostics-image-name <parent_device_fqdn_or_ip>:8000/azureiotedge-diagnostics:1.2.0-rc4
 ```
-   
+
 `azureiotedge-diagnostics` 值是从与注册表模块链接的容器注册表中拉取的。 本教程将其默认设置为 https://mcr.microsoft.com:
 
 | 名称 | Value |
 | - | - |
 | `REGISTRY_PROXY_REMOTEURL` | `https://mcr.microsoft.com` |
 
-如果使用的是专用容器注册表，请确保容器注册表中包含所有映像（例如 IoTEdgeAPIProxy、edgeAgent、edgeHub 和诊断）。    
-    
+如果使用的是专用容器注册表，请确保容器注册表中包含所有映像（例如 IoTEdgeAPIProxy、edgeAgent、edgeHub 和诊断）。
+
 ## <a name="view-generated-data"></a>查看生成的数据
 
 你推送的模拟温度传感器模块会生成示例环境数据。 它将发送包含环境温度和湿度、机器温度和压力以及时间戳的消息。

@@ -8,10 +8,12 @@
       href: whats-new.md
 - name: 快速入门
   items:
-    - name: 在 QnA Maker 门户上创建和查询知识库
-      href: Quickstarts/create-publish-knowledge-base.md
-    - name: 使用客户端库或 REST API 创建和查询知识库
-      href: Quickstarts/quickstart-sdk.md
+    - name: 创建和查询知识库
+      items:
+        - name: QnA Maker 门户
+          href: Quickstarts/create-publish-knowledge-base.md
+        - name: 客户端库或 REST API
+          href: Quickstarts/quickstart-sdk.md
     - name: 使用 REST API 查询知识库
       href: Quickstarts/get-answer-from-knowledge-base-using-url-tool.md
 - name: 教程
@@ -48,6 +50,8 @@
     - name: 管理 Azure 资源
       href: How-To/set-up-qnamaker-service-azure.md
       displayName: 'azure, resource, key, upgrade, pricing, tier,'
+    - name: Azure 资源的网络隔离
+      href: How-To/network-isolation.md
     - name: 管理 QnA Maker 资源访问
       href: How-To/manage-qna-maker-app.md
     - name: 管理知识库
@@ -108,7 +112,7 @@
     - name: 批量测试格式
       href: reference-tsv-format-batch-testing.md
     - name: 加密
-      href: qna-maker-encryption-of-data-at-rest.md
+      href: encrypt-data-at-rest.md
     - name: REST API 参考
       items:
         - name: QnA Maker 4.0

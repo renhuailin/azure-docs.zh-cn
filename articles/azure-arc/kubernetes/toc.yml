@@ -2,20 +2,20 @@
   href: index.yml
 - name: 概述
   items:
-    - name: 关于已启用 Arc 的 Kubernetes
+    - name: 关于已启用 Azure Arc 的 Kubernetes
       href: overview.md
     - name: Azure Arc 验证计划
       href: validation-program.md
+- name: 快速入门
+  items:
+    - name: 将群集连接到 Azure Arc
+      href: quickstart-connect-cluster.md
 - name: 教程
   items:
     - name: 使用 GitOps 部署配置
       href: tutorial-use-gitops-connected-cluster.md
     - name: 通过 GitOps 实现 CI/CD
       href: tutorial-gitops-ci-cd.md
-- name: 快速入门
-  items:
-    - name: 将群集连接到 Azure Arc
-      href: quickstart-connect-cluster.md
 - name: 概念
   items:
     - name: 代理体系结构

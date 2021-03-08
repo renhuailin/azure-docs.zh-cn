@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 11/03/2020
 ms.custom: devx-track-csharp
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 69a057f92009fd712d39666be223f1cfd99d73b5
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 2848ce6214d59ba2732dcfc148ccaf9936497f17
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101747307"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102121025"
 ---
 # <a name="quickstart-create-a-c-function-in-azure-using-visual-studio-code"></a>快速入门：在 Azure 中使用 Visual Studio Code 创建 C# 函数
 
@@ -33,7 +33,7 @@ ms.locfileid: "101747307"
 
 在开始之前，请确保已满足下列要求：
 
-+ Azure <abbr title="用于维护 Azure 使用情况计费信息的配置文件。">account</abbr> 具有有效 <abbr title="在 Azure 中管理资源的基本组织结构，通常与组织中的个人或部门相关联。">订阅</abbr>. [免费创建帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
++ 具有有效订阅的 Azure <abbr title="用于维护 Azure 使用情况计费信息的配置文件。">account</abbr> 帐户 <abbr title="在 Azure 中管理资源的基本组织结构，通常与组织中的个人或部门关联。">订阅</abbr>. [免费创建帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
 + [Azure Functions Core Tools](functions-run-local.md#install-the-azure-functions-core-tools) 版本 3.x。
 
@@ -87,7 +87,7 @@ ms.locfileid: "101747307"
 
 1. 在活动栏中选择“Azure”图标，然后在“Azure:函数”区域中，选择“部署到函数应用...”按钮。
 
-    ![将项目发布到 Azure](./media/functions-create-first-function-vs-code/function-app-publish-project.png)
+    
 
 1. 根据提示提供以下信息：
 
@@ -137,7 +137,7 @@ ms.locfileid: "101747307"
 
 ## <a name="5-clean-up-resources"></a>5.清理资源
 
-继续到[下一步](#next-steps)并 <abbr title="一种将函数与存储队列关联的方法，确保其可在队列上创建消息。">向函数添加 Azure 存储队列输出绑定，</abbr> 此时需要将所有资源保存到正确位置，以便根据已完成的工作进行操作。
+继续到[下一步](#next-steps)并 <abbr title="一种将函数与存储队列关联，以确保函数可在队列上创建消息的方法。">Azure 存储队列输出绑定</abbr> 时，需要将所有资源保存到正确位置，以便根据已完成的工作进行操作。
 
 否则，可以使用以下步骤删除函数应用及其相关资源，以免产生任何额外的费用。
 
@@ -147,7 +147,7 @@ ms.locfileid: "101747307"
 
 ## <a name="next-steps"></a>后续步骤
 
-你已使用 Visual Studio Code 通过简单的 HTTP 触发函数创建了函数应用。 在下一篇文章中，你将添加输出绑定来扩展该函数 <abbr title="函数和其他资源之间的声明性连接。 输入绑定为函数提供数据；输出绑定将函数中的数据提供给其他资源。">binding</abbr>. 此绑定将 HTTP 请求中的字符串写入 Azure 队列存储队列中的消息。 
+你已使用 Visual Studio Code 通过简单的 HTTP 触发函数创建了函数应用。 在下一篇文章中，你将添加输出绑定来扩展该函数 <abbr title="函数和其他资源之间的声明性连接。 输入绑定为函数提供数据；输出绑定向其他资源提供来自函数的数据。">binding</abbr>. 此绑定将 HTTP 请求中的字符串写入 Azure 队列存储队列中的消息。 
 
 > [!div class="nextstepaction"]
 > [连接到 Azure 存储队列](functions-add-output-binding-storage-queue-vs-code.md?pivots=programming-language-csharp)

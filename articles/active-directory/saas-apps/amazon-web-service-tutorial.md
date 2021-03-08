@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/08/2020
 ms.author: jeedes
-ms.openlocfilehash: 286dc20ba70c78f8248f611abd75e0acc303c068
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 81b57563899fe4babecbdb66cf1dbd876ec5bdf9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736182"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101689005"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-amazon-web-services-aws"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Amazon Web Services (AWS) 集成
 
@@ -26,9 +26,26 @@ ms.locfileid: "98736182"
 * 让用户可以使用其 Azure AD 帐户自动登录到 Amazon Web Services (AWS)。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-> [!Note]
-> Azure AD 不支持与 AWS SSO 的单一登录集成，后者与 AWS 是不同的产品。 尽管 AWS 在[这里](https://docs.aws.amazon.com/singlesignon/latest/userguide/azure-ad-idp.html)提到了这一点，但 Azure AD 建议客户改用 AWS IAM 集成，这样便可以在单个帐户上使用条件访问策略来实现更好的安全控制，并可以更好地治理这些应用程序。
+## <a name="understanding-the-different-aws-applications-in-the-azure-ad-application-gallery"></a>了解 Azure AD 应用程序库中的各种 AWS 应用程序
+根据以下信息来决定是使用 Azure AD 应用程序库中的 AWS 单一登录应用程序还是使用其中的 AWS 单一帐户访问应用程序。
 
+**AWS 单一登录**
+
+[AWS 单一登录](https://docs.microsoft.com/azure/active-directory/saas-apps/aws-single-sign-on-tutorial)是在 2021 年 2 月添加到 Azure AD 应用程序库中的。 使用它，通过 Microsoft Azure AD 进行登录时就可以轻松地集中管理对多个 AWS 帐户和 AWS 应用程序的访问。 将 Microsoft Azure AD 与 AWS SSO 联合一次，然后便可使用 AWS SSO 从一个位置管理所有 AWS 帐户的权限。 AWS SSO 会自动预配权限，并在你更新策略和访问权限分配时使权限保持最新状态。 最终用户可以使用其 Azure AD 凭据进行身份验证，以访问 AWS 控制台、命令行界面和 AWS SSO 集成应用程序。
+
+**AWS 单一帐户访问**
+
+[AWS 单一帐户访问](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial)在过去几年中一直被客户使用，它允许你将 Azure AD 联合到单个 AWS 帐户，并使用 Azure AD 管理对 AWS IAM 角色的访问。 AWS IAM 管理员在每个 AWS 帐户中定义角色和策略。 对于每个 AWS 帐户，Azure AD 管理员会联合到 AWS IAM，将用户或组分配给该帐户，并配置 Azure AD 来发送对角色访问进行授权的断言。  
+
+| 功能 | AWS 单一登录 | AWS 单一帐户访问 |
+|:--- |:---:|:---:|
+|条件性访问| 支持对所有 AWS 帐户使用单个条件访问策略。 | 支持对所有帐户使用单个条件访问策略，或对每个帐户使用自定义策略|
+| CLI 访问 | 支持 | 支持|
+| Privileged Identity Management | 尚不支持 | 尚不支持 |
+| 集中化帐户管理 | 在 AWS 中进行集中化帐户管理。 | 在 Azure AD 中进行集中化帐户管理（可能每个帐户都需要一个 Azure AD 企业应用程序）。 |
+| SAML 证书| 单个证书| 每个应用/帐户使用单独的证书 | 
+
+## <a name="aws-single-account-access-architecture"></a>AWS 单一帐户访问体系结构
 ![Azure AD 和 AWS 的关系示意图](./media/amazon-web-service-tutorial/tutorial_amazonwebservices_image.png)
 
 可以为多个实例配置多个标识符。 例如：

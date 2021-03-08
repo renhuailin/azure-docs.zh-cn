@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: vin-yu
 ms.author: vinsonyu
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 03/02/2021
 ms.topic: overview
-ms.openlocfilehash: 331d4a36e2e466ea4103bda4a7f8c9f443751beb
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 65f61324c496d4b76e6f599966a780c735114870
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90944096"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101686659"
 ---
 # <a name="azure-arc-enabled-sql-managed-instance-overview"></a>已启用 Azure Arc 的 SQL 托管实例概述
 
@@ -26,11 +26,11 @@ ms.locfileid: "90944096"
 
 已启用 Azure Arc 的 SQL 托管实例与最新的 SQL Server 数据库引擎几乎 100% 兼容，并使现有的 SQL Server 客户能够在保持数据主权的同时以最少的应用程序和数据库更改将其应用程序直接迁移到 Azure Arc 数据服务。 同时，SQL 托管实例包含可大幅降低管理开销的内置管理功能。 
 
-已启用 Azure Arc 的 SQL 托管实例目前处于预览状态。
-
 ## <a name="next-steps"></a>后续步骤
 
 了解有关[已启用 Azure Arc 的 SQL 托管实例的特性和功能](managed-instance-features.md)的详细信息
+
+[启用了 Azure Arc 的托管实例高可用性](managed-instance-high-availability.md)
 
 [首先创建数据控制器](create-data-controller.md)
 
