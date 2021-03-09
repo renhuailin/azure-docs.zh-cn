@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: tutorial
 ms.date: 02/10/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: 54d4f1fe983cf20b734351754bb8eba191894dbc
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 6de86cbc065b5352b3b643708dd55c6856b37dd7
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101678026"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102097901"
 ---
 # <a name="create-a-no-code-vision-solution-in-azure-percept-studio"></a>在 Azure Percept Studio 中创建无代码视觉解决方案
 
@@ -23,6 +23,7 @@ ms.locfileid: "101678026"
 - 在[自定义视觉](https://www.customvision.ai/)中标记训练图像
 - 对自定义对象检测或分类模型进行训练
 - 将模型部署到开发工具包
+- 通过设置重新训练来改善模型
 
 本教程适合几乎没有 AI 经验和刚开始使用 Azure Percept 的开发人员。
 
@@ -30,15 +31,13 @@ ms.locfileid: "101678026"
 
 - Azure Percept DK (devkit)
 - [Azure 订阅](https://azure.microsoft.com/free/)
-- 全新体验 (OOBE)：你已将开发工具包连接到 Wi-Fi 网络、创建了一个 IoT 中心，还将开发工具包连接到了该 IoT 中心
+- Azure Percept DK 设置体验：你已将 devkit 连接到 Wi-Fi 网络，创建了 IoT 中心，并已将 devkit 连接到 IoT 中心
 
 ## <a name="create-a-vision-prototype"></a>创建视觉原型
 
 1. 启动浏览器并转到 [Azure Percept Studio](https://go.microsoft.com/fwlink/?linkid=2135819)。
 
-1. 在概述页面上单击“演示和教程”选项卡。
-
-    :::image type="content" source="./media/tutorial-nocode-vision/percept-studio-overview-inline.png" alt-text="Azure Percept Studio 概述屏幕。" lightbox="./media/tutorial-nocode-vision/percept-studio-overview.png":::
+1. 在“概述”页上，单击“演示和教程”选项卡。:::image type="content" source="./media/tutorial-nocode-vision/percept-studio-overview-inline.png" alt-text="Azure Percept Studio“概述”屏幕。" lightbox="./media/tutorial-nocode-vision/percept-studio-overview.png":::
 
 1. 在“视觉教程和演示”下，单击“创建视觉原型” 。
 
@@ -142,11 +141,23 @@ ms.locfileid: "101678026"
 
 :::image type="content" source="./media/tutorial-nocode-vision/vision-project-inline.png" alt-text="视觉项目页面。" lightbox="./media/tutorial-nocode-vision/vision-project.png":::
 
+## <a name="improve-your-model-by-setting-up-retraining"></a>通过设置重新训练来改善模型
+
+在对模型进行训练并将其部署到设备后，可以通过设置重新训练参数来捕获更多训练数据，从而提高模型的性能。 此功能可让你基于概率范围捕获图像，从而改善经过训练的模型的性能。 例如，可以将设备设置为仅在概率较低时捕获训练图像。 下面是有关如何添加更多图像以及如何平衡训练数据的一些[附加指导](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-improving-your-classifier)。
+
+1. 若要设置重新训练，请返回到“项目”，然后返回到“项目摘要”
+1. 在“图像捕获”选项卡中，选择“自动图像捕获”和“设置重新训练”。
+1. 选中“自动图像捕获”框来设置自动图像捕获，以便一次收集大量图像。
+1. 在“捕获速率”下选择首选拍照速率，在“目标”下选择想要收集的图像总数 。
+1. 在“设置重新训练”部分中，选择要为其捕获更多训练数据的迭代，然后选择概率范围。 仅会将满足概率要求的图像上传到你的项目。
+
+    :::image type="content" source="./media/tutorial-nocode-vision/vision-image-capture.png" alt-text="捕获图像。":::
+
 ## <a name="clean-up-resources"></a>清理资源
 
 如果为本教程创建了新的 Azure 资源，但不再想要开发或使用视觉解决方案，请执行以下步骤来删除资源：
 
-1. 转到 [Azure 门户](https://ms.portal.azure.com/#home)。
+1. 转到 [Azure 门户](https://ms.portal.azure.com/)。
 1. 单击“所有资源”。
 1. 单击在本教程中创建的资源旁边的复选框。 资源类型将作为“认知服务”列出。
 1. 单击屏幕顶部附近的“删除”图标。
