@@ -3,18 +3,18 @@ title: Azure Enterprise 注册发票
 description: 本文介绍如何管理和处理 Azure 企业发票。
 author: bandersmsft
 ms.author: banders
-ms.date: 01/19/2021
+ms.date: 03/05/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
-ms.reviewer: boalcsva
+ms.reviewer: ruturajd
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 90ae9bdcee5f5f4c4281f2c3f931389b2ebf9486
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 71ba1d6e1e45c5c2e72e2be620158b1aa4b71582
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98598081"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102430797"
 ---
 # <a name="azure-enterprise-enrollment-invoices"></a>Azure Enterprise 注册发票
 
@@ -98,29 +98,41 @@ Azure Enterprise 门户会从视图中筛选出非活动的注册。 需要取�
 
 ## <a name="change-a-po-number-for-an-upcoming-overage-invoice"></a>更改即将推出的超额发票的 PO 编号
 
-Azure Enterprise 门户会自动生成默认的采购订单 (PO) 编号，除非企业管理员在开票日期之前设置一个编号。 在收到自动发送的发票通知电子邮件后的最多 7 天内，企业管理员可以更新 PO 编号。
+Azure Enterprise 门户会自动生成默认的采购订单 (PO) 编号，除非企业管理员在开票日期之前设置一个编号。 在收到自动发送的发票通知电子邮件后的最多 7 天内，企业管理员可以更新 PO 编号。 
 
-### <a name="to-update-the-azure-services-purchase-order-number"></a>更新 Azure 服务采购订单编号：
+若要防止每月自动生成 PO 编号，可以锁定 PO 编号。 请参阅[锁定 PO 编号](#lock-po-number-to-prevent-automatic-update-in-upcoming-billing-cycles)。
+
+### <a name="update-the-azure-services-purchase-order-number"></a>更新 Azure 服务采购订单编号
 
 1. 在 Azure Enterprise 门户中，选择“报表” > “使用情况摘要”。
 1. 在右上角选择“编辑 PO 编号”。
 1. 选择“Azure 服务”单选按钮。
 1. 从日期范围下拉菜单中选择一个“发票期间”。
-
    在收到发票通知之后、支付发票金额之前的 7 天内可以编辑 PO 编号。
 1. 在“PO 编号”字段中输入新的 PO 编号。
 1. 选择“保存”以提交更改。
 
-### <a name="to-update-the-azure-marketplace-purchase-order-number"></a>若要更新 Azure 市场采购订单编号：
+### <a name="update-the-azure-marketplace-purchase-order-number"></a>更新 Azure 市场采购订单编号
 
 1. 在 Azure Enterprise 门户中，选择“报表” > “使用情况摘要”。
 1. 在右上角选择“编辑 PO 编号”。
 1. 选中“市场”单选按钮。
-1. 从日期范围下拉菜单中选择一个“发票期间”。
-
-   在收到发票通知之后、支付发票金额之前的 7 天内可以编辑 PO 编号。
+1. 从日期范围下拉菜单中选择一个“发票期间”。  
+    在收到发票通知之后、支付发票金额之前的 7 天内可以编辑 PO 编号。
 1. 在“PO 编号”字段中输入新的 PO 编号。
 1. 选择“保存”以提交更改。
+
+### <a name="lock-po-number-to-prevent-automatic-update-in-upcoming-billing-cycles"></a>锁定 PO 编号以防止在即将到来的计费周期中自动更新
+
+锁定 PO 编号后，它将对所有新发票保持锁定，你无需更新 PO 编号。
+
+1.  在 Azure Enterprise 门户中，选择“报表” > “使用情况摘要”。 
+2.  在右上角选择“编辑 PO 编号”。
+3.  在“PO 编号”字段中键入新的 PO 编号。
+4.  选择“锁定 PO 编号”框。
+5.  选择“保存”以提交更改。  
+    :::image type="content" source="./media/ea-portal-enrollment-invoices/lock-po.png" alt-text="显示“查看/编辑 PO 编号”框的屏幕截图。" lightbox="./media/ea-portal-enrollment-invoices/lock-po.png" :::
+
 
 ## <a name="azure-enterprise-billing-frequency"></a>Azure 企业计费频率
 
