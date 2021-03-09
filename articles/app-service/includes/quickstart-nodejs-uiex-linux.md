@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.date: 08/01/2020
 ms.custom: mvc, devcenter, seodec18
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: a6c580f7d6bc03f298621b1a33fcb9f3f461e802
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 59a2c96987762e6b56cc7b453877cebe3124e443
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101747323"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102109206"
 ---
 <!-- default for linux -->
 
@@ -67,10 +67,14 @@ ms.locfileid: "101747323"
 
 1. 部署完成后，选择提示中的“浏览网站”以查看全新部署的 Web 应用。 
 
-<br>
+<br/>
 <details>
-<summary>疑难解答</summary>
+<summary><strong>故障排除</strong></summary>
+
+如果无法完成这些步骤，请检查以下内容：
+
 * 确保应用程序正在侦听 PORT 环境变量 `process.env.PORT` 提供的端口。
+
 * 如果看到错误“你无权查看此目录或页面”，则表示应用程序可能无法正常启动。  查看日志输出以查找并修复错误。 
 
 </details>
@@ -80,7 +84,7 @@ ms.locfileid: "101747323"
 [报告问题](https://www.research.net/r/PWZWZ52?tutorial=node-deployment-azure-app-service&prepare-your-environment)
 
 
-<br>
+<br/>
 <hr/>
 
 

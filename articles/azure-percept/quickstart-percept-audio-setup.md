@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: quickstart
 ms.date: 02/18/2021
 ms.custom: template-quickstart
-ms.openlocfilehash: 588ebde85b6012ddbfb88ca8305fc735b7a0ba41
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 660f03ce248a27a00fdd443964fbdba2fe3adeb0
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102097986"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102179266"
 ---
 # <a name="azure-percept-audio-setup"></a>Azure Percept 音频设置
 
@@ -42,4 +42,4 @@ Azure Percept 音频可直接与 Azure Percept DK 一起使用。 无需进行�
 
 ## <a name="next-steps"></a>后续步骤
 
-创建[无代码语音解决方案](./tutorial-no-code-speech.md)。
+在 [Azure Percept Studio](https://go.microsoft.com/fwlink/?linkid=2135819) 中创建[无代码语音解决方案](./tutorial-no-code-speech.md)。

@@ -4,12 +4,12 @@ description: 了解如何使用已启用 Azure Arc 的服务器像管理 Azure �
 keywords: azure automation, DSC, powershell, desired state configuration, update management, change tracking, inventory, runbooks, python, graphical, hybrid
 ms.date: 02/18/2021
 ms.topic: overview
-ms.openlocfilehash: 5692dfaceb15086b04ee951b8ecdf88f73c7d122
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 92de3b1a9cf07c25b13e2d038534e93318882bb1
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101686217"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175968"
 ---
 # <a name="what-is-azure-arc-enabled-servers"></a>什么是已启用 Azure Arc 的服务器？
 
@@ -23,7 +23,7 @@ ms.locfileid: "101686217"
 
 - 使用与适用于 Azure 虚拟机的策略分配相同的体验，分配 [Azure Policy 来宾配置](../../governance/policy/concepts/guest-configuration.md)。 目前，大多数来宾配置策略不会应用配置，它们仅审核计算机内部的设置。 若要了解将 Azure Policy 来宾配置策略用于启用了 Arc 的服务器的成本，请参阅 Azure Policy [定价指南](https://azure.microsoft.com/pricing/details/azure-policy/)。
 
-- 使用 Azure 自动化的“[更改跟踪和库存](../../automation/change-tracking/overview.md)”功能，报告有关在受监视的服务器上安装的软件、Microsoft 服务、Windows 注册表和文件以及 Linux 守护程序的配置更改。
+- 使用 Azure 自动化的[更改跟踪和清单](../../automation/change-tracking/overview.md)功能和 [Azure 安全中心文件集成监视](https://docs.microsoft.com/azure/security-center/security-center-file-integrity-monitoring)功能，报告有关在受监视的服务器上安装的软件、Microsoft 服务、Windows 注册表和文件以及 Linux 守护程序的配置更改（适用于启用了[适用于服务器的 Azure Defender](https://docs.microsoft.com/azure/security-center/defender-for-servers-introduction) 的服务器）。
 
 - 监视已连接的计算机来宾操作系统性能，并发现应用程序组件，以使用[用于 VM 的 Azure Monitor](../../azure-monitor/vm/vminsights-overview.md) 来监视其进程以及与应用程序通信的其他资源的依赖项。
 

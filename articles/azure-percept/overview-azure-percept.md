@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: overview
 ms.date: 02/18/2021
 ms.custom: template-overview
-ms.openlocfilehash: 85b7f3a62324bc93cd78649cd39e0f4dc7d0baed
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 3b09253d779679e5a0c4ccd11b4cbd98ee386adc
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102098190"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102179283"
 ---
 # <a name="introduction-to-azure-percept"></a>Azure Percept 简介
 
@@ -38,7 +38,7 @@ Azure Percept 的主要组件包括：
 
 3. 用于加速边缘 AI 模型和解决方案开发的服务和工作流。
 
-    - 可从 Azure Percept Studio 访问开发工作流和预生成模型。
+    - 可从 [Azure Percept Studio](https://go.microsoft.com/fwlink/?linkid=2135819) 访问的开发工作流和预生成模型。
     - 模型开发服务。
     - 可缩放的设备管理服务。
     - 端对端安全。
