@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 09/28/2020
 ms.custom: seodec18, devx-track-python
-ms.openlocfilehash: 6aa39709a82b01367463f0128af4223446710a1c
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 3191987ea2d110487321beb0b11428f446f2b7a6
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98183636"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102503872"
 ---
 # <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn"></a>教程：使用 MNIST 数据和 scikit-learn 训练图像分类模型 
 
@@ -37,7 +37,7 @@ ms.locfileid: "98183636"
 如果没有 Azure 订阅，请在开始操作前先创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
 
 >[!NOTE]
-> 本文中的代码已使用 [Azure 机器学习 SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) 版本 1.13.0 进行测试。
+> 本文中的代码已使用 [Azure 机器学习 SDK](/python/api/overview/azure/ml/intro) 版本 1.13.0 进行测试。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -309,7 +309,7 @@ joblib.dump(value=clf, filename='outputs/sklearn_mnist_model.pkl')
 
 ### <a name="configure-the-training-job"></a>配置训练作业
 
-创建一个 [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py) 对象，以指定训练作业的配置详细信息，包括训练脚本、要使用的环境，以及要在其上运行的计算目标。 通过指定以下内容配置 ScriptRunConfig：
+创建一个 [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig) 对象，以指定训练作业的配置详细信息，包括训练脚本、要使用的环境，以及要在其上运行的计算目标。 通过指定以下内容配置 ScriptRunConfig：
 
 * 包含脚本的目录。 此目录中的所有文件都上传到群集节点以便执行。
 * 计算目标。 在此示例中，将使用所创建的 Azure 机器学习计算群集。
@@ -382,7 +382,7 @@ run
 
 ### <a name="jupyter-widget"></a>Jupyter 小组件
 
-使用 [Jupyter 小组件](/python/api/azureml-widgets/azureml.widgets?preserve-view=true&view=azure-ml-py)查看运行进度。 和运行提交一样，该小组件采用异步方式，并每隔 10 到 15 秒提供实时更新，直到完成作业：
+使用 [Jupyter 小组件](/python/api/azureml-widgets/azureml.widgets)查看运行进度。 和运行提交一样，该小组件采用异步方式，并每隔 10 到 15 秒提供实时更新，直到完成作业：
 
 ```python
 from azureml.widgets import RunDetails
