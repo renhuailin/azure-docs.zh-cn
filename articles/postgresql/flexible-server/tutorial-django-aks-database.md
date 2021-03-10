@@ -7,12 +7,12 @@ ms.author: sumuth
 ms.topic: tutorial
 ms.date: 12/10/2020
 ms.custom: mvc
-ms.openlocfilehash: b4aa23079661150f40b39ff65117b7f4229a67e2
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 6e8effee91eed73193319238c2ad2f6eaf6d0473
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880889"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102211271"
 ---
 # <a name="tutorial-deploy-django-app-on-aks-with-azure-database-for-postgresql---flexible-server"></a>教程：使用 Azure Database for PostgreSQL 灵活服务器在 AKS 上部署 Django 应用
 
@@ -67,7 +67,7 @@ az group create --name django-project --location eastus
 
 ## <a name="create-aks-cluster"></a>创建 AKS 群集
 
-使用 [az aks create](/cli/azure/aks?view=azure-cli-latest&preserve-view=true#az-aks-create) 命令创建 AKS 群集。 以下示例创建一个具有一个节点的名为 myAKSCluster 的群集。 此操作将需要几分钟才能完成。
+使用 [az aks create](/cli/azure/aks#az-aks-create) 命令创建 AKS 群集。 以下示例创建一个具有一个节点的名为 myAKSCluster 的群集。 此操作将需要几分钟才能完成。
 
 ```azurecli-interactive
 az aks create --resource-group django-project --name djangoappcluster --node-count 1 --generate-ssh-keys
@@ -80,13 +80,13 @@ az aks create --resource-group django-project --name djangoappcluster --node-cou
 
 ## <a name="connect-to-the-cluster"></a>连接到群集
 
-若要管理 Kubernetes 群集，请使用 Kubernetes 命令行客户端 [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/)。 如果使用的是 Azure Cloud Shell，则 `kubectl` 已安装。 若要在本地安装 `kubectl`，请使用 [az aks install-cli](/cli/azure/aks?view=azure-cli-latest&preserve-view=true#az-aks-install-cli) 命令：
+若要管理 Kubernetes 群集，请使用 Kubernetes 命令行客户端 [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/)。 如果使用的是 Azure Cloud Shell，则 `kubectl` 已安装。 若要在本地安装 `kubectl`，请使用 [az aks install-cli](/cli/azure/aks#az-aks-install-cli) 命令：
 
 ```azurecli-interactive
 az aks install-cli
 ```
 
-若要将 `kubectl` 配置为连接到 Kubernetes 群集，请使用 [az aks get-credentials](/cli/azure/aks?view=azure-cli-latest&preserve-view=true#az-aks-get-credentials) 命令。 此命令将下载凭据，并将 Kubernetes CLI 配置为使用这些凭据。
+若要将 `kubectl` 配置为连接到 Kubernetes 群集，请使用 [az aks get-credentials](/cli/azure/aks#az-aks-get-credentials) 命令。 此命令将下载凭据，并将 Kubernetes CLI 配置为使用这些凭据。
 
 ```azurecli-interactive
 az aks get-credentials --resource-group django-project --name djangoappcluster
@@ -109,7 +109,7 @@ aks-nodepool1-31718369-0   Ready    agent   6m44s   v1.12.8
 ```
 
 ## <a name="create-an-azure-database-for-postgresql---flexible-server"></a>创建 Azure Database for PostgreSQL 灵活服务器
-使用 [az postgreSQL flexible-server create](./index.yml?preserve-view=true&view=azure-cli-latest) 命令创建灵活服务器。 以下命令使用服务默认值和 Azure CLI 本地上下文中的值创建服务器：
+使用 [az postgreSQL flexible-server create](/cli/azure/postgres/flexible-server#az_postgres_flexible_server_create) 命令创建灵活服务器。 以下命令使用服务默认值和 Azure CLI 本地上下文中的值创建服务器：
 
 ```azurecli-interactive
 az postgres flexible-server create --public-access <YOUR-IP-ADDRESS>
@@ -378,7 +378,7 @@ Quit the server with CONTROL-C.
 
 ## <a name="clean-up-the-resources"></a>清理资源
 
-若要避免 Azure 费用，应清除不需要的资源。  如果不再需要群集，可以使用 [az group delete](/cli/azure/group?view=azure-cli-latest&preserve-view=true#az_group_delete) 命令删除资源组、容器服务及所有相关资源。
+若要避免 Azure 费用，应清除不需要的资源。  如果不再需要群集，可以使用 [az group delete](/cli/azure/group&preserve-view=true#az_group_delete) 命令删除资源组、容器服务及所有相关资源。
 
 ```azurecli-interactive
 az group delete --name django-project --yes --no-wait

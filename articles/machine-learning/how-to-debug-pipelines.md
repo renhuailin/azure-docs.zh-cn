@@ -1,7 +1,7 @@
 ---
-title: ML 管道疑难解答
+title: 排查 ML 管道问题
 titleSuffix: Azure Machine Learning
-description: 如何在出现运行机器学习管道的错误时进行故障排除。 在远程执行前后帮助调试脚本的常见缺陷和技巧。
+description: 如何在出现运行机器学习管道的错误时进行故障排除。 常见陷阱，以及有助于在远程执行之前和期间调试脚本的提示。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,16 +10,16 @@ ms.author: laobri
 ms.date: 10/22/2020
 ms.topic: troubleshooting
 ms.custom: troubleshooting, devx-track-python, contperf-fy21q2
-ms.openlocfilehash: 0f27688e31f772cc8d784371aa570d55c41f5695
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
-ms.translationtype: MT
+ms.openlocfilehash: 195942d1787cdef51ee480fa5c5595db99bc7c78
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131808"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102522081"
 ---
-# <a name="troubleshooting-machine-learning-pipelines"></a>机器学习管道疑难解答
+# <a name="troubleshooting-machine-learning-pipelines"></a>排查机器学习管道问题
 
-本文介绍如何在[AZURE 机器学习 SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)和[Azure 机器学习设计器](./concept-designer.md)中出现运行[机器学习管道](concept-ml-pipelines.md)错误时进行故障排除。 
+在本文中，你将了解如何在 [Azure 机器学习 SDK](/python/api/overview/azure/ml/intro) 和 [Azure 机器学习设计器](./concept-designer.md)中对在运行[机器学习管道](concept-ml-pipelines.md)时出现的错误进行故障排除。 
 
 ## <a name="troubleshooting-tips"></a>故障排除提示
 
@@ -33,7 +33,7 @@ ms.locfileid: "98131808"
 | 管道未重复使用步骤 | 默认已启用步骤重复使用，但是，请确保未在管道步骤中禁用它。 如果已禁用重复使用，则步骤中的 `allow_reuse` 参数将设置为 `False`。 |
 | 管道不必要地重新运行 | 为了确保步骤只在其基础数据或脚本发生更改时才重新运行，请分离每个步骤的源代码目录。 如果对多个步骤使用同一个源目录，则可能会遇到不必要的重新运行。 在管道步骤对象中使用 `source_directory` 参数以指向该步骤的隔离目录，并确保未对多个步骤使用同一个 `source_directory` 路径。 |
 | 在训练时期或其他循环行为中逐步减速 | 尝试将任何文件写入操作（包括日志记录）从 `as_mount()` 切换到 `as_upload()`。 “装载”模式使用远程虚拟化文件系统，在每次将文件追加到该系统时上传整个文件。 |
-| 计算目标需要很长时间才能启动 | 计算目标的 Docker 映像是从 Azure 容器注册表 (ACR) 加载的。 默认情况下，Azure 机器学习创建使用 *基本* 服务层的 ACR。 将工作区的 ACR 更改为 "标准" 或 "高级" 级别可能会减少生成和加载图像所用的时间。 有关详细信息，请参阅 [Azure 容器注册表服务层级](../container-registry/container-registry-skus.md)。 |
+| 计算目标启动时间过长 | 用于计算目标的 Docker 映像是从 Azure 容器注册表 (ACR) 加载的。 在默认情况下，Azure 机器学习会创建一个使用“基本”服务层级的 ACR。 将工作区的 ACR 更改为“标准”或“高级”层级可能会减少生成和加载映像所需的时间。 有关详细信息，请参阅 [Azure 容器注册表服务层级](../container-registry/container-registry-skus.md)。 |
 
 ### <a name="authentication-errors"></a>身份验证错误
 
@@ -139,7 +139,7 @@ file_path = os.path.join(script_dir, "<file_name>")
 - `parallel_run_config`：`ParallelRunConfig` 对象，如前文所述。
 - `inputs`：要分区以进行并行处理的一个或多个单类型 Azure 机器学习数据集。
 - `side_inputs`：无需分区就可以用作辅助输入的一个或多个参考数据或数据集。
-- `output`： `OutputFileDatasetConfig` 与输出目录相对应的对象。
+- `output`：与输出目录相对应的 `OutputFileDatasetConfig` 对象。
 - `arguments`：传递给用户脚本的参数列表。 使用 unknown_args 在入口脚本中检索它们（可选）。
 - `allow_reuse`：当使用相同的设置/输入运行时，该步骤是否应重用以前的结果。 如果此参数为 `False`，则在管道执行过程中将始终为此步骤生成新的运行。 （可选；默认值为 `True`。）
 
@@ -192,7 +192,7 @@ parallelrun_step = ParallelRunStep(
 
 | 库                    | 类型   | 示例                                                          | 目标                                  | 资源                                                                                                                                                                                                                                                                                                                    |
 |----------------------------|--------|------------------------------------------------------------------|----------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Azure 机器学习 SDK | 指标 | `run.log(name, val)`                                             | Azure 机器学习门户 UI             | [如何跟踪试验](how-to-track-experiments.md)<br>[azureml.core.Run 类](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py)                                                                                                                                                 |
+| Azure 机器学习 SDK | 指标 | `run.log(name, val)`                                             | Azure 机器学习门户 UI             | [如何跟踪试验](how-to-track-experiments.md)<br>[azureml.core.Run 类](/python/api/azureml-core/azureml.core.run%28class%29)                                                                                                                                                 |
 | Python 打印/日志记录    | 日志    | `print(val)`<br>`logging.info(message)`                          | 驱动程序日志、Azure 机器学习设计器 | [如何跟踪试验](how-to-track-experiments.md)<br><br>[Python 日志记录](https://docs.python.org/2/library/logging.html)                                                                                                                                                                       |
 | OpenCensus Python          | 日志    | `logger.addHandler(AzureLogHandler())`<br>`logging.log(message)` | Application Insights - 跟踪                | [在 Application Insights 中调试管道](./how-to-log-pipelines-application-insights.md)<br><br>[OpenCensus Azure Monitor Exporters](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-azure)（OpenCensus Azure Monitor 导出程序）<br>[Python 日志记录指南](https://docs.python.org/3/howto/logging-cookbook.html) |
 
@@ -244,7 +244,7 @@ logger.error("I am an OpenCensus error statement with custom dimensions", {'step
 1. 在模块的右窗格中，转到“输出 + 日志”选项卡。
 1. 展开右窗格，然后选择 70_driver_log.txt 并在浏览器中查看该文件。 还可以在本地下载日志。
 
-    ![设计器中展开的输出窗格](./media/how-to-debug-pipelines/designer-logs.png)？ view = azure-ml-py&preserve = true) ？ view = azure ml py&preserve = true) 
+    ![设计器中展开的输出窗格](./media/how-to-debug-pipelines/designer-logs.png)
 
 ### <a name="get-logs-from-pipeline-runs"></a>从管道运行获取日志
 
@@ -274,6 +274,6 @@ logger.error("I am an OpenCensus error statement with custom dimensions", {'step
 
 * 有关显示 ML 管道中自动化机器学习的完整示例，请参阅[在 Python 的 Azure 机器学习管道中使用自动化 ML](how-to-use-automlstep-in-pipelines.md)。
 
-* 有关 [azureml-pipelines-core](/python/api/azureml-pipeline-core/?preserve-view=true&view=azure-ml-py) 包和 [azureml-pipelines-steps](/python/api/azureml-pipeline-steps/?preserve-view=true&view=azure-ml-py) 包的帮助信息，请参阅 SDK 参考。
+* 有关 [azureml-pipelines-core](/python/api/azureml-pipeline-core/) 包和 [azureml-pipelines-steps](/python/api/azureml-pipeline-steps/) 包的帮助信息，请参阅 SDK 参考。
 
 * 请参阅[设计器异常和错误代码](algorithm-module-reference/designer-error-codes.md)的列表。

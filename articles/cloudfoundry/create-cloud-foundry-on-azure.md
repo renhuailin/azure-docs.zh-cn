@@ -14,12 +14,12 @@ ms.service: azure
 ms.tgt_pltfrm: multiple
 ms.topic: tutorial
 ms.workload: web
-ms.openlocfilehash: 735c0955a25a3995c94c73bd6471643ce2783df3
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 3444d6c62b5e36b7e68cfaf6da1ec534e2ea4ec6
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98682608"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102551447"
 ---
 # <a name="create-a-pivotal-cloud-foundry-cluster-on-azure"></a>在 Azure 上创建 Pivotal Cloud Foundry 群集
 
@@ -112,8 +112,8 @@ ssh-keygen -t rsa -b 2048
 ## <a name="get-the-pivotal-network-token"></a>获取 Pivotal Network 令牌
 
 1. 注册或登录到 [Pivotal Network](https://network.pivotal.io) 帐户。
-2. 在页面右上角选择配置文件名称。 选择“编辑配置文件”。 
-3. 滚动到页面底部并复制“旧 API 令牌”值。  此值是稍后要使用的“Pivotal Network 令牌”值。 
+2. 在页面右上角选择配置文件名称。 选择“编辑配置文件”。
+3. 滚动到页面底部并复制“旧 API 令牌”值。 此值是稍后要使用的“Pivotal Network 令牌”值。
 
 ## <a name="provision-your-cloud-foundry-cluster-on-azure"></a>在 Azure 上预配 Cloud Foundry 群集
 
@@ -126,8 +126,8 @@ ssh-keygen -t rsa -b 2048
 
     ![Azure 部署状态](media/deploy/deployment.png )
 
-2. 在左侧导航中选择“部署”链接，以便获取 PCF Ops Manager 的凭据。  在下一页中选择“部署名称”。 
-3. 在左侧导航中选择“输出”链接，以便显示 PCF Ops Manager 的 URL、用户名和密码。  “OPSMAN-FQDN”值是 URL。
+2. 在左侧导航中选择“部署”链接，以便获取 PCF Ops Manager 的凭据。 在下一页中选择“部署名称”。
+3. 在左侧导航中选择“输出”链接，以便显示 PCF Ops Manager 的 URL、用户名和密码。 “OPSMAN-FQDN”值是 URL。
  
     ![Cloud Foundry 部署输出](media/deploy/deploy-outputs.png )
  
@@ -137,7 +137,7 @@ ssh-keygen -t rsa -b 2048
          
     > [!NOTE]
     >
-    > 如果 Internet Explorer 浏览器因出现“站点不安全”警告消息而发生故障，请选择“详细信息”，然后转到相关网页。  对于 Firefox，请选择“继续”，然后添加证书以继续。 
+    > 如果 Internet Explorer 浏览器因出现“站点不安全”警告消息而发生故障，请选择“详细信息”，然后转到相关网页。 对于 Firefox，请选择“继续”，然后添加证书以继续。
 
 5. PCF Ops Manager 会显示已部署的 Azure 实例。 现在可在此处部署并管理应用程序。
                

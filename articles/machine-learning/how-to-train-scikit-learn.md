@@ -1,7 +1,7 @@
 ---
 title: 训练 scikit-learn 机器学习模型
 titleSuffix: Azure Machine Learning
-description: 了解 Azure 机器学习如何使用弹性云计算资源横向扩展 scikit-learn 的培训作业。
+description: 了解如何通过 Azure 机器学习使用弹性云计算资源横向扩展 scikit-learn 训练作业。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ author: jpe316
 ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: e80f33e6c36e1525eff954376d17c8a8b76204cb
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
-ms.translationtype: MT
+ms.openlocfilehash: 807174fdbede2e4631b3ca1df7220904038da4c8
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97796017"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102518290"
 ---
 # <a name="train-scikit-learn-models-at-scale-with-azure-machine-learning"></a>使用 Azure 机器学习大规模训练 scikit-learn 模型
 
@@ -35,7 +35,7 @@ ms.locfileid: "97796017"
 
  - 你自己的 Jupyter 笔记本服务器
 
-    - [安装 Azure 机器学习 SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py) (>= 1.13.0)。
+    - [安装 Azure 机器学习 SDK](/python/api/overview/azure/ml/install) (>= 1.13.0)。
     - [创建工作区配置文件](how-to-configure-environment.md#workspace)。
 
 ## <a name="set-up-the-experiment"></a>设置试验
@@ -44,7 +44,7 @@ ms.locfileid: "97796017"
 
 ### <a name="initialize-a-workspace"></a>初始化工作区
 
-[Azure 机器学习工作区](concept-workspace.md)是服务的顶级资源。 它提供了一个集中的位置来处理创建的所有项目。 在 Python SDK 中，可以通过创建 [`workspace`](/python/api/azureml-core/azureml.core.workspace.workspace?preserve-view=true&view=azure-ml-py) 对象来访问工作区项目。
+[Azure 机器学习工作区](concept-workspace.md)是服务的顶级资源。 它提供了一个集中的位置来处理创建的所有项目。 在 Python SDK 中，可以通过创建 [`workspace`](/python/api/azureml-core/azureml.core.workspace.workspace) 对象来访问工作区项目。
 
 根据在[先决条件部分](#prerequisites)中创建的 `config.json` 文件创建工作区对象。
 
@@ -162,7 +162,7 @@ import joblib
 joblib.dump(svm_model_linear, 'model.joblib')
 ```
 
-使用以下代码将模型注册到工作区。 通过指定参数 `model_framework`、`model_framework_version` 和 `resource_configuration`，无代码模型部署将可供使用。 无代码模型部署允许你通过已注册模型直接将模型部署为 Web 服务，[`ResourceConfiguration`](/python/api/azureml-core/azureml.core.resource_configuration.resourceconfiguration?preserve-view=true&view=azure-ml-py) 对象定义 Web 服务的计算资源。
+使用以下代码将模型注册到工作区。 通过指定参数 `model_framework`、`model_framework_version` 和 `resource_configuration`，无代码模型部署将可供使用。 无代码模型部署允许你通过已注册模型直接将模型部署为 Web 服务，[`ResourceConfiguration`](/python/api/azureml-core/azureml.core.resource_configuration.resourceconfiguration) 对象定义 Web 服务的计算资源。
 
 ```Python
 from azureml.core import Model
@@ -181,7 +181,7 @@ model = run.register_model(model_name='sklearn-iris',
 
 ### <a name="preview-no-code-model-deployment"></a>（预览版）无代码模型部署
 
-还可以为 scikit-learn 使用无代码部署功能（预览版）来代替传统的部署路线。 所有内置 scikit-learn 模型类型都支持无代码模型部署。 通过使用 `model_framework`、`model_framework_version` 和 `resource_configuration` 参数注册你的模型（如上所示），可以简单地使用 [`deploy()`](/python/api/azureml-core/azureml.core.model%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) 静态函数来部署模型。
+还可以为 scikit-learn 使用无代码部署功能（预览版）来代替传统的部署路线。 所有内置 scikit-learn 模型类型都支持无代码模型部署。 通过使用 `model_framework`、`model_framework_version` 和 `resource_configuration` 参数注册你的模型（如上所示），可以简单地使用 [`deploy()`](/python/api/azureml-core/azureml.core.model%28class%29#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) 静态函数来部署模型。
 
 ```python
 web_service = Model.deploy(ws, "scikit-learn-service", [model])

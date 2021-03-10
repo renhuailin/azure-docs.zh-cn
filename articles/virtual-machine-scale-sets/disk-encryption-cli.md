@@ -9,12 +9,12 @@ ms.subservice: disks
 ms.date: 10/15/2019
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: 6edfa1beb568bb05bd0f3f1ef9e7792ac3c3cbe2
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: 302f53bd218a2e01a039be4780a0e2ff5974e7b4
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94515738"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102215946"
 ---
 # <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set-with-the-azure-cli"></a>使用 Azure CLI 对虚拟机规模集中的 OS 和附加数据磁盘进行加密
 
@@ -166,7 +166,7 @@ az vmss encryption show --resource-group myResourceGroup --name myScaleSet
 
 ## <a name="disable-encryption"></a>禁用加密功能
 
-如果不再想要使用加密的 VM 实例磁盘，可以使用 [az vmss encryption disable](/cli/azure/vmss/encryption?view=azure-cli-latest#az-vmss-encryption-disable) 禁用加密，如下所示：
+如果不再想要使用加密的 VM 实例磁盘，可以使用 [az vmss encryption disable](/cli/azure/vmss/encryption#az-vmss-encryption-disable) 禁用加密，如下所示：
 
 ```azurecli-interactive
 az vmss encryption disable --resource-group myResourceGroup --name myScaleSet

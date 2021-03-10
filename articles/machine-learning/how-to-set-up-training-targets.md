@@ -11,16 +11,16 @@ ms.subservice: core
 ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: 55e618a7e4e0d21f6d4afab270e257c26fa15634
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
-ms.translationtype: MT
+ms.openlocfilehash: f38fe7d847754247f8c1510527b3ffe026c20be5
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251108"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102518494"
 ---
 # <a name="configure-and-submit-training-runs"></a>配置和提交训练运行
 
-本文介绍如何配置和提交 Azure 机器学习运行以训练模型。 代码片段说明了配置和提交训练脚本的关键部分。  然后使用其中一个 [示例笔记本](#notebooks) 查找完整的端到端工作示例。
+本文介绍如何配置和提交 Azure 机器学习运行以训练模型。 代码片段说明了配置和提交训练脚本的关键部分。  然后，使用其中一个[示例笔记本](#notebooks)查找完整的端到端工作示例。
 
 训练时，通常先在本地计算机上启动，然后再横向扩展到基于云的群集。 使用 Azure 机器学习，你可以在各种计算目标上运行脚本，而无需更改训练脚本。
 
@@ -29,12 +29,12 @@ ms.locfileid: "98251108"
 ## <a name="prerequisites"></a>先决条件
 
 * 如果没有 Azure 订阅，请在开始操作前先创建一个免费帐户。 立即试用 [Azure 机器学习的免费版或付费版](https://aka.ms/AMLFree)
-* [适用于 Python 的 Azure 机器学习 SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py) (>= 1.13.0)
+* [适用于 Python 的 Azure 机器学习 SDK](/python/api/overview/azure/ml/install) (>= 1.13.0)
 * [Azure 机器学习工作区](how-to-manage-workspace.md) `ws`
 * 计算目标 `my_compute_target`。  [创建计算目标](how-to-create-attach-compute-studio.md) 
 
 ## <a name="whats-a-script-run-configuration"></a><a name="whats-a-run-configuration"></a>什么是脚本运行配置？
-[ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py) 用于配置在试验中提交训练运行所需的信息。
+[ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig) 用于配置在试验中提交训练运行所需的信息。
 
 使用 ScriptRunConfig 对象提交训练实验。  此对象包含：
 
@@ -42,7 +42,7 @@ ms.locfileid: "98251108"
 * **script**：要运行的训练脚本
 * **compute_target**：要在其上运行的计算目标
 * **environment**：运行脚本时要使用的环境
-* 一些其他的可配置选项（有关详细信息，请参阅[参考文档](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py)）
+* 一些其他的可配置选项（有关详细信息，请参阅[参考文档](/python/api/azureml-core/azureml.core.scriptrunconfig)）
 
 ## <a name="train-your-model"></a><a id="submit"></a>训练模型
 
@@ -77,7 +77,7 @@ experiment = Experiment(workspace=ws, name=experiment_name)
 本文中的示例代码假设你已创建了“先决条件”部分的计算目标 `my_compute_target`。
 
 >[!Note]
->不支持将 Azure Databricks 用作模型定型的计算目标。 您可以使用 Azure Databricks 进行数据准备和部署任务。 
+>不支持将 Azure Databricks 作为用于模型训练的计算目标。 可以使用 Azure Databricks 执行数据准备和部署任务。 
 
 ## <a name="create-an-environment"></a>创建环境
 Azure 机器学习[环境](concept-environments.md)是（机器学习训练发生于其中的）环境的封装。 此类学习环境会指定与训练和评分脚本有关的 Python 包、Docker 映像、环境变量和软件设置。 它们还指定运行时（Python、Spark 或 Docker）。
@@ -133,7 +133,7 @@ script_run_config.run_config.target = my_compute_target
 如果要替代允许用于运行的默认最长时间，可以通过 `max_run_duration_seconds`  参数来实现。 如果运行时间超过此值，系统会尝试自动取消运行。
 
 ### <a name="specify-a-distributed-job-configuration"></a>指定分布式作业配置
-如果要运行分布式训练作业，请为 `distributed_job_config` 参数提供分布式作业特定配置。 支持的配置类型包括 [MpiConfiguration](/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?preserve-view=true&view=azure-ml-py)、[TensorflowConfiguration](/python/api/azureml-core/azureml.core.runconfig.tensorflowconfiguration?preserve-view=true&view=azure-ml-py) 和 [PyTorchConfiguration](/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration?preserve-view=true&view=azure-ml-py)。 
+如果要运行分布式训练作业，请为 `distributed_job_config` 参数提供分布式作业特定配置。 支持的配置类型包括 [MpiConfiguration](/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration)、[TensorflowConfiguration](/python/api/azureml-core/azureml.core.runconfig.tensorflowconfiguration) 和 [PyTorchConfiguration](/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration)。 
 
 有关运行 Horovod、TensorFlow 和 PyTorch 分布式作业的详细信息和示例，请参阅：
 
@@ -176,31 +176,31 @@ run.wait_for_completion(show_output=True)
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-clone-for-examples.md)]
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 
-* **运行失败， `jwt.exceptions.DecodeError`** 出现错误：准确的错误消息： `jwt.exceptions.DecodeError: It is required that you pass in a value for the "algorithms" argument when calling decode()` 。 
+* 运行失败并出现 `jwt.exceptions.DecodeError`：确切的错误消息：`jwt.exceptions.DecodeError: It is required that you pass in a value for the "algorithms" argument when calling decode()`。 
     
-    请考虑升级到最新版本的 azureml 核心： `pip install -U azureml-core` 。
+    请考虑升级到 azureml-core 的最新版本：`pip install -U azureml-core`。
     
-    如果在本地运行时遇到此问题，请检查在启动运行的环境中安装的 PyJWT 版本。 受支持的 PyJWT 版本为 2.0.0 <。 如果版本 >= 2.0.0，则从环境中卸载 PyJWT。 你可以检查 PyJWT 的版本，并按如下所示卸载和安装正确的版本：
-    1. 启动命令行界面，激活安装了 azureml 核心的 conda 环境。
-    2. 输入 `pip freeze` 并查找 `PyJWT` ，如果找到，则列出的版本应 < 2.0。0
-    3. 如果列出的版本不是受支持的版本，请 `pip uninstall PyJWT` 在命令行界面中输入 y 进行确认。
+    如果在本地运行时遇到此问题，请检查在启动运行的环境中安装的 PyJWT 的版本。 受支持的 PyJWT 的版本是低于 2.0.0 的版本。 如果版本不低于 2.0.0，请从环境中卸载 PyJWT。 可以检查 PyJWT 的版本，按如下所述进行卸载，然后安装正确的版本：
+    1. 启动命令 shell，激活安装了 azureml-core 的 conda 环境。
+    2. 输入 `pip freeze` 并查找 `PyJWT`，如果找到，则列出的版本应低于 2.0.0
+    3. 如果列出的版本不受支持，请在命令行界面中使用 `pip uninstall PyJWT`，并输入 y 进行确认。
     4. 使用 `pip install 'PyJWT<2.0.0'` 进行安装
     
-    如果要在运行时提交用户创建的环境，请考虑在该环境中使用最新版本的 azureml 核心。 版本 >= azureml 核心 < 2.0.0 的 pin PyJWT。 如果需要在提交的环境中使用 azureml 核心 < 1.18.0 的版本，请确保在 pip 依赖项中指定 PyJWT < 2.0.0。
+    如果要随运行提交用户创建的环境，请考虑在该环境中使用 azureml-core 的最新版本。 不低于 1.18.0 版的 azureml-core 已经固定为使用低于 2.0.0 的 PyJWT。 如果需要在提交的环境中使用低于 1.18.0 版的 azureml-core，请确保在 pip 依赖项中指定低于 2.0.0 版的 PyJWT。
 
 
- * **ModuleErrors (没有名为) 的模块**：如果在 Azure ML 中提交试验时运行到 ModuleErrors 中，则训练脚本需要安装一个包，但不会添加它。 你提供包名称后，Azure ML 在用于训练运行的环境中安装该包。
+ * **ModuleErrors（没有名为“xxx”的模块）** ：如果在 Azure ML 中提交试验时遇到 ModuleErrors，则训练脚本需要安装某个包，但并未添加该包。 你提供包名称后，Azure ML 在用于训练运行的环境中安装该包。
 
     如果使用估算器提交试验，则可以根据要从哪个源安装包，通过估算器中的 `pip_packages` 或 `conda_packages` 参数指定包名称。 还可以使用 `conda_dependencies_file` 指定包含所有依赖项的 yml 文件，或使用 `pip_requirements_file` 参数列出 txt 文件中的所有 pip 要求。 如果你有自己的 Azure ML 环境对象，并且希望替代估算器使用的默认映像，则可以通过估算器构造函数的 `environment` 参数来指定该环境。
     
     可以在 [AzureML 容器](https://github.com/Azure/AzureML-Containers)中看到 Azure ML 维护的 Docker 映像及其内容。
-    特定于框架的依赖项在各自的框架文档中列出：
-    *  [Chainer](/python/api/azureml-train-core/azureml.train.dnn.chainer?preserve-view=true&view=azure-ml-py#&preserve-view=trueremarks)
-    * [PyTorch](/python/api/azureml-train-core/azureml.train.dnn.pytorch?preserve-view=true&view=azure-ml-py#&preserve-view=trueremarks)
-    * [TensorFlow](/python/api/azureml-train-core/azureml.train.dnn.tensorflow?preserve-view=true&view=azure-ml-py#&preserve-view=trueremarks)
-    *  [Spark-sklearn](/python/api/azureml-train-core/azureml.train.sklearn.sklearn?preserve-view=true&view=azure-ml-py#&preserve-view=trueremarks)
+    框架特定的依赖项列在相应的框架文档中：
+    *  [Chainer](/python/api/azureml-train-core/azureml.train.dnn.chainer#remarks)
+    * [PyTorch](/python/api/azureml-train-core/azureml.train.dnn.pytorch#remarks)
+    * [TensorFlow](/python/api/azureml-train-core/azureml.train.dnn.tensorflow#remarks)
+    *  [SKLearn](/python/api/azureml-train-core/azureml.train.sklearn.sklearn#remarks)
     
     > [!Note]
     > 如果你认为某个特定的包比较常用，需要添加到 Azure ML 维护的映像和环境中，请在 [AzureML 容器](https://github.com/Azure/AzureML-Containers)中提出 GitHub 问题。 
@@ -208,7 +208,7 @@ run.wait_for_completion(show_output=True)
 * **NameError（未定义名称）、AttributeError（对象没有属性）** ：此异常应该是训练脚本引发的。 可以在 Azure 门户中查看日志文件，以获取有关未定义特定名称或属性错误的详细信息。 在 SDK 中，可以使用 `run.get_details()` 来查看错误消息。 这还会列出针对运行生成的所有日志文件。 在重新提交运行之前，请务必检查训练脚本并修复错误。 
 
 
-* **运行或试验删除**：可以通过以下方式将试验存档：使用 [Experiment.archive](/python/api/azureml-core/azureml.core.experiment%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truearchive--) 方法，或者从 Azure 机器学习工作室客户端中的“试验”选项卡视图中使用“存档试验”按钮。 执行此操作后，在列出查询和视图时将隐藏该试验，但不会将其删除。
+* **运行或试验删除**：可以通过以下方式将试验存档：使用 [Experiment.archive](/python/api/azureml-core/azureml.core.experiment%28class%29#archive--) 方法，或者从 Azure 机器学习工作室客户端中的“试验”选项卡视图中使用“存档试验”按钮。 执行此操作后，在列出查询和视图时将隐藏该试验，但不会将其删除。
 
     目前不支持永久删除个体试验或运行。 有关删除工作区资产的详细信息，请参阅[导出或删除机器学习服务工作区数据](how-to-export-delete-data.md)。
 
@@ -221,7 +221,7 @@ run.wait_for_completion(show_output=True)
 
     在内部，Azure ML 会将具有相同指标名称的块串联到一个连续列表中。
 
-* **计算目标需要很长时间才能启动**：计算目标的 Docker 映像是从 Azure 容器注册表 (ACR) 加载的。 默认情况下，Azure 机器学习创建使用 *基本* 服务层的 ACR。 将工作区的 ACR 更改为 "标准" 或 "高级" 级别可能会减少生成和加载图像所用的时间。 有关详细信息，请参阅 [Azure 容器注册表服务层级](../container-registry/container-registry-skus.md)。
+* **计算目标启动时间过长**：用于计算目标的 Docker 映像是从 Azure 容器注册表 (ACR) 加载的。 在默认情况下，Azure 机器学习会创建一个使用“基本”服务层级的 ACR。 将工作区的 ACR 更改为“标准”或“高级”层级可能会减少生成和加载映像所需的时间。 有关详细信息，请参阅 [Azure 容器注册表服务层级](../container-registry/container-registry-skus.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -229,5 +229,5 @@ run.wait_for_completion(show_output=True)
 * 了解如何使用特定的 ML 框架（如 [Scikit-learn](how-to-train-scikit-learn.md)、[TensorFlow](how-to-train-tensorflow.md) 和 [PyTorch](how-to-train-pytorch.md)）来训练模型。
 * 若要构建更好的模型，请了解如何[高效地优化超参数](how-to-tune-hyperparameters.md)。
 * 训练模型后，了解[如何以及在何处部署模型](how-to-deploy-and-where.md)。
-* 查看 [ScriptRunConfig 类](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py) SDK 参考。
+* 查看 [ScriptRunConfig 类](/python/api/azureml-core/azureml.core.scriptrunconfig) SDK 参考。
 * [通过 Azure 虚拟网络使用 Azure 机器学习](./how-to-network-security-overview.md)

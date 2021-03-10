@@ -9,12 +9,12 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: tutorial
 ms.date: 12/06/2018
 ms.custom: seodec18, devx-track-java
-ms.openlocfilehash: fe452f61d17f0b2014957e3b458ef1ad1b3c539d
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: ca1fdbd9aa2c98358489d91fe0839c98adec293b
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97357617"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102212699"
 ---
 # <a name="tutorial-create-a-cassandra-api-account-in-azure-cosmos-db-by-using-a-java-application-to-store-keyvalue-data"></a>教程：使用 Java 应用程序在 Azure Cosmos DB 中创建 Cassandra API 帐户，以便存储键/值数据
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -34,7 +34,7 @@ ms.locfileid: "97357617"
 
 * 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。 
 
-* 获取最新版本的 [Java 开发工具包 (JDK)](/java/azure/jdk/?view=azure-java-stable&preserve-view=true)。 
+* 获取最新版本的 [Java 开发工具包 (JDK)](/java/azure/jdk/)。 
 
 * [下载](https://maven.apache.org/download.cgi)和[安装](https://maven.apache.org/install.html)[Maven](https://maven.apache.org/) 二进制存档。 
   - 在 Ubuntu 上，可以通过运行 `apt-get install maven` 来安装 Maven。 
@@ -51,7 +51,7 @@ ms.locfileid: "97357617"
    |---------|---------|---------|
    |ID   |   输入唯一的名称    | 输入标识此 Azure Cosmos 帐户的唯一名称。 <br/><br/>由于 cassandra.cosmosdb.azure.com 将追加到所提供的用于创建接触点的 ID 后面，因此，请使用唯一但可识别的 ID。         |
    |API    |  Cassandra   |  API 确定要创建的帐户的类型。 <br/> 选择“Cassandra”，因为在本文中，你将创建可使用 Cassandra 查询语言 (CQL) 语法查询的宽列数据库。  |
-   |订阅    |  订阅        |  选择要用于此 Azure Cosmos 帐户的 Azure 订阅。        |
+   |订阅    |  你的订阅        |  选择要用于此 Azure Cosmos 帐户的 Azure 订阅。        |
    |资源组   | 输入名称    |  选择“新建”，然后输入帐户的新资源组名称。 为简单起见，可以使用与 ID 相同的名称。    |
    |位置    |  选择离用户最近的区域    |  选择要在其中托管 Azure Cosmos 帐户的地理位置。 使用离用户最近的位置，使他们能够以最快的速度访问数据。    |
 

@@ -9,12 +9,12 @@ ms.subservice: machine-learning
 ms.date: 06/30/2020
 ms.author: midesa
 ms.reviewer: jrasnick
-ms.openlocfilehash: fc9909614a9d557c19a22e215b7513a038f88c33
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 89309cfe427183d594a5cc2f76332ae150d4f803
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98942336"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102498670"
 ---
 # <a name="tutorial-train-a-model-in-python-with-automated-machine-learning"></a>教程：使用 Python 通过自动化机器学习训练模型
 
@@ -144,7 +144,7 @@ ws = Workspace(workspace_name = workspace_name,
 ```
 
 ## <a name="convert-a-dataframe-to-an-azure-machine-learning-dataset"></a>将数据帧转换为 Azure 机器学习数据集
-若要提交远程试验，请将数据集转换为 Azure 机器学习 ```TabularDatset``` 实例。 [TabularDataset](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py) 通过分析提供的文件，以表格格式表示数据。
+若要提交远程试验，请将数据集转换为 Azure 机器学习 ```TabularDatset``` 实例。 [TabularDataset](/python/api/azureml-core/azureml.data.tabulardataset) 通过分析提供的文件，以表格格式表示数据。
 
 以下代码获取现有工作区和默认 Azure 机器学习数据存储。 然后它将数据存储和文件位置传递给 path 参数，以创建新的 ```TabularDataset``` 实例。 
 

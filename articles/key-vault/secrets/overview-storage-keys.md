@@ -10,12 +10,12 @@ ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/18/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 8473d3a19a86027b5b01af59d24833dc40cd1fe9
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: e89716d0560cbf7960cb7bde67156c8df0045a31
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95242349"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102499214"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-the-azure-cli"></a>使用 Key Vault 和 Azure CLI 管理存储帐户密钥
 > [!IMPORTANT]
@@ -56,7 +56,7 @@ Key Vault 是已在所有 Azure AD 租户中预先注册的 Microsoft 应用程�
 
 ### <a name="connect-to-your-azure-account"></a>连接到 Azure 帐户
 
-使用 [az login](/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) 命令对 Azure CLI 会话进行身份验证。
+使用 [az login](/powershell/module/az.accounts/connect-azaccount) 命令对 Azure CLI 会话进行身份验证。
 
 ```azurecli-interactive
 az login

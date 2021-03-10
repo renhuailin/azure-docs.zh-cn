@@ -1,8 +1,8 @@
 ### YamlMime:Landing
 title: 意向识别文档
-summary: 借助语音和语言理解（LUIS）服务的意向识别，可在识别意向和实体的同时，将音频流实时传输到文本中。
+summary: 借助语音和语言理解 (LUIS) 服务进行意向识别，可以将音频流实时转写为文本，同时识别意向和实体。
 metadata:
-  title: 意向识别文档-教程、API 参考-Azure 认知服务 |Microsoft Docs
+  title: 意向识别文档 - 教程和 API 参考 - Azure 认知服务 | Microsoft Docs
   titleSuffix: Azure Cognitive Services
   services: cognitive-services
   author: trevorbye
@@ -11,12 +11,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 03/10/2020
   ms.author: trbye
-  ms.openlocfilehash: 65b3f2322c4683eedef8cdfbc328664d4597df58
-  ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-  ms.translationtype: MT
+  ms.openlocfilehash: 6bc467ad0120c8e251eee39be2bcef001a497cad
+  ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+  ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 04/29/2020
-  ms.locfileid: "81401488"
+  ms.lasthandoff: 10/22/2020
+  ms.locfileid: "102234363"
 landingContent:
 - title: 关于意向识别
   linkLists:
@@ -24,7 +24,7 @@ landingContent:
     links:
     - text: 识别语音、意向和实体
       url: quickstarts/intent-recognition.md
-- title: 通过意向识别进行开发
+- title: 使用意向识别进行开发
   linkLists:
   - linkListType: how-to-guide
     links:
@@ -42,3 +42,9 @@ landingContent:
       url: ../luis/luis-language-support.md#languages-supported
     - text: 意向识别定价
       url: https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services
+- title: 帮助和反馈
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: 支持和帮助选项
+      url: ../cognitive-services-support-options.md?context=/azure/cognitive-services/speech-service/context/context

@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 12/18/2020
 ms.author: mbullwin
-ms.openlocfilehash: a75962105a7640f4a3c73df80f5ba516565c7076
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: a7579bb53f82dfdfe82c4eba64d2c6984152c875
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97705025"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102444338"
 ---
 在本快速入门中，你将学习如何使用异常检测器服务和 cURL 在一批时序数据中检测异常。
 
@@ -18,7 +18,7 @@ ms.locfileid: "97705025"
 ## <a name="prerequisites"></a>先决条件
 
 - Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/cognitive-services)
-- 拥有 Azure 订阅后，可在 Azure 门户中<a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector"  title="创建异常检测器资源"  target="_blank">创建异常检测器资源<span class="docon docon-navigate-external x-hidden-focus"></span></a>来获取密钥和终结点。 等待其部署并选择“转到资源”按钮。
+- 拥有 Azure 订阅后，可在 Azure 门户中<a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector"  title="创建异常检测器资源"  target="_blank">创建异常检测器资源</a>来获取密钥和终结点。 等待其部署并选择“转到资源”按钮。
     - 你将需要使用创建的资源中的密钥和终结点地址来使用 REST API。 
     可以使用免费定价层 (`F0`) 试用该服务，然后再升级到付费层进行生产。
 

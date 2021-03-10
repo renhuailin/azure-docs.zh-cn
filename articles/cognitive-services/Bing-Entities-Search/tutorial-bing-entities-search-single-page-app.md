@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: f725a4095103a7dcfc3dcdbdcefdc84d16501632
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: f2c15221268635ca1892a9292d5b0c208c13dd34
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94366527"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102426801"
 ---
 # <a name="tutorial-single-page-web-app"></a>教程：单页 Web 应用
 
@@ -68,8 +68,8 @@ ms.locfileid: "94366527"
 
 * Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/cognitive-services/)
 * 拥有 Azure 订阅后：
-  * 在 Azure 门户中<a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title="创建必应搜索资源"  target="_blank">创建必应搜索资源<span class="docon docon-navigate-external x-hidden-focus"></span></a>来获取密钥和终结点。 部署后，单击“转到资源”。
-  * 在 Azure 门户中<a href="https://www.microsoft.com/maps/create-a-bing-maps-key.aspx"  title="创建计算机视觉资源"  target="_blank">创建必应地图资源<span class="docon docon-navigate-external x-hidden-focus"></span></a>来获取密钥和终结点。 部署后，单击“转到资源”。
+  * 在 Azure 门户中<a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title="创建必应搜索资源"  target="_blank">创建必应搜索资源</a>来获取密钥和终结点。 部署后，单击“转到资源”。
+  * 在 Azure 门户中<a href="https://www.microsoft.com/maps/create-a-bing-maps-key.aspx"  title="创建计算机视觉资源"  target="_blank">创建必应地图资源</a>来获取密钥和终结点。 部署后，单击“转到资源”。
 
 ## <a name="app-components"></a>应用组件
 
@@ -262,7 +262,7 @@ function bingMapsCallback(response) {
 }
 ```
 
-除了纬度和经度，必应实体搜索查询还需要一个 *radius* （半径），用于指示位置信息的精确度。 我们使用在必应地图响应中提供的边界框来计算半径。 边界框是一个将整个位置包围住的矩形。 例如，如果用户输入 `NYC`，则结果大致包含纽约市的中心坐标以及一个围绕该市的边界框。 
+除了纬度和经度，必应实体搜索查询还需要一个 *radius*（半径），用于指示位置信息的精确度。 我们使用在必应地图响应中提供的边界框来计算半径。 边界框是一个将整个位置包围住的矩形。 例如，如果用户输入 `NYC`，则结果大致包含纽约市的中心坐标以及一个围绕该市的边界框。 
 
 首先使用函数 `haversineDistance()`（未显示）计算从主坐标分别到边界框的四个角的距离。 在这四个距离中，使用最大的一个作为半径。 最小半径为一公里。 如果响应中未提供边界框，则此值也会用作默认值。
 

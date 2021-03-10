@@ -14,12 +14,12 @@ metadata:
   author: aahill
   ms.author: aahi
   ms.date: 11/06/2019
-  ms.openlocfilehash: 5a158da6465c8f881febbf01019a1f10362b3ac4
-  ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+  ms.openlocfilehash: cf7d3b916006990e9b13d0afc60d1d72cf2474dd
+  ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/05/2021
-  ms.locfileid: "102183465"
+  ms.lasthandoff: 03/09/2021
+  ms.locfileid: "102499027"
 highlightedContent:
   items:
   - title: 比较必应搜索 API
@@ -287,23 +287,23 @@ additionalContent:
     - title: Java SDK
       links:
       - text: 必应 Web 搜索
-        url: /java/api/overview/azure/cognitiveservices/client/bingwebsearchapi?view=azure-java-stable
+        url: /java/api/overview/azure/cognitiveservices/client/bingwebsearchapi
       - text: 必应自定义搜索
-        url: /java/api/overview/azure/cognitiveservices/client/bingcustomsearch?view=azure-java-stable
+        url: /java/api/overview/azure/cognitiveservices/client/bingcustomsearch
       - text: 必应实体搜索
-        url: /java/api/overview/azure/cognitiveservices/client/bingentitysearchapi?view=azure-java-stable
+        url: /java/api/overview/azure/cognitiveservices/client/bingentitysearchapi
       - text: 必应图像搜索
-        url: /java/api/overview/azure/cognitiveservices/client/bingimagesearch?view=azure-java-stable
+        url: /java/api/overview/azure/cognitiveservices/client/bingimagesearch
       - text: 必应新闻搜索
-        url: /java/api/overview/azure/cognitiveservices/client/bingnewssearch?view=azure-java-stable
+        url: /java/api/overview/azure/cognitiveservices/client/bingnewssearch
       - text: 必应视频搜索
-        url: /java/api/overview/azure/cognitiveservices/client/bingvideosearch?view=azure-java-stable
+        url: /java/api/overview/azure/cognitiveservices/client/bingvideosearch
       - text: 必应视觉搜索
-        url: /java/api/overview/azure/cognitiveservices/client/bingvisualsearch?view=azure-java-stable
+        url: /java/api/overview/azure/cognitiveservices/client/bingvisualsearch
       - text: 必应拼写检查
-        url: /java/api/overview/azure/cognitiveservices/client/bingspellcheck?view=azure-java-stable
+        url: /java/api/overview/azure/cognitiveservices/client/bingspellcheck
       - text: 必应自动建议
-        url: /java/api/overview/azure/cognitiveservices/client/bingautosuggest?view=azure-java-stable
+        url: /java/api/overview/azure/cognitiveservices/client/bingautosuggest
     - title: Python SDK
       links:
       - text: 必应 Web 搜索
@@ -323,27 +323,27 @@ additionalContent:
       - text: 必应视觉搜索
         url: /python/api/overview/azure/cognitiveservices/bing-visual-search-readme
       - text: 必应拼写检查
-        url: /python/api/overview/azure/cognitiveservices/spellcheck?view=azure-python
+        url: /python/api/overview/azure/cognitiveservices/spellcheck
     - title: Node.js SDK
       links:
       - text: 必应 Web 搜索
-        url: /javascript/api/@azure/cognitiveservices-websearch/?view=azure-node-latest
+        url: /javascript/api/@azure/cognitiveservices-websearch/
       - text: 必应自定义搜索
-        url: /javascript/api/@azure/cognitiveservices-customsearch/?view=azure-node-latest
+        url: /javascript/api/@azure/cognitiveservices-customsearch/
       - text: 必应实体搜索
-        url: /javascript/api/@azure/cognitiveservices-entitysearch/?view=azure-node-latest
+        url: /javascript/api/@azure/cognitiveservices-entitysearch/
       - text: 必应图像搜索
-        url: /javascript/api/@azure/cognitiveservices-imagesearch/?view=azure-node-latest
+        url: /javascript/api/@azure/cognitiveservices-imagesearch/
       - text: 必应新闻搜索
-        url: /javascript/api/@azure/cognitiveservices-newssearch/?view=azure-node-latest
+        url: /javascript/api/@azure/cognitiveservices-newssearch/
       - text: 必应视频搜索
-        url: /javascript/api/@azure/cognitiveservices-videosearch/?view=azure-node-latest
+        url: /javascript/api/@azure/cognitiveservices-videosearch/
       - text: 必应视觉搜索
-        url: /javascript/api/@azure/cognitiveservices-visualsearch/?view=azure-node-latest
+        url: /javascript/api/@azure/cognitiveservices-visualsearch/
       - text: 必应拼写检查
-        url: /javascript/api/@azure/cognitiveservices-spellcheck/?view=azure-node-latest
+        url: /javascript/api/@azure/cognitiveservices-spellcheck/
       - text: 必应自动建议
-        url: /javascript/api/@azure/cognitiveservices-autosuggest/?view=azure-node-latest
+        url: /javascript/api/@azure/cognitiveservices-autosuggest/
     - title: Go SDK
       links:
       - text: 必应 Web 搜索

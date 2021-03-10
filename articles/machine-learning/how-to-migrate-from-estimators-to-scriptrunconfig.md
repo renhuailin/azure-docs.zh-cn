@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 12/14/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: d603a12f851dac5b7cefc5bad728d42967bb27dc
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
-ms.translationtype: MT
+ms.openlocfilehash: ae0623a11b940a4d142f6bfae02d4b20727a6f55
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878589"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102518866"
 ---
 # <a name="migrating-from-estimators-to-scriptrunconfig"></a>从 Estimators 迁移到 ScriptRunConfig
 
@@ -30,7 +30,7 @@ Python SDK 的 1.19.0 版本弃用了 Estimators。 你通常还应避免自行�
 > 若要从 Estimators 迁移到 ScriptRunConfig，请确保使用的 Python SDK 版本 >= 1.15.0。
 
 ## <a name="scriptrunconfig-documentation-and-samples"></a>ScriptRunConfig 文档和示例
-Azure 机器学习文档和示例已更新为使用 [ScriptRunConfig](/python/api/azureml-core/azureml.core.script_run_config.scriptrunconfig?preserve-view=true&view=azure-ml-py) 进行作业配置和提交。
+Azure 机器学习文档和示例已更新为使用 [ScriptRunConfig](/python/api/azureml-core/azureml.core.script_run_config.scriptrunconfig) 进行作业配置和提交。
 
 有关使用 ScriptRunConfig 的信息，请参阅以下文档：
 * [配置和提交训练运行](how-to-set-up-training-targets.md)
@@ -107,7 +107,7 @@ src.run_config.data_references = {data_ref.data_reference_name: data_ref.to_conf
 * [使用 Azure ML 中的数据集进行训练](./how-to-train-with-datasets.md)
 
 ## <a name="distributed-training"></a>分布式训练
-如果需要配置用于训练的分布式作业，请在 ScriptRunConfig 构造函数中指定 `distributed_job_config` 参数。 传入 [MpiConfiguration](/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?preserve-view=true&view=azure-ml-py)、[PyTorchConfiguration](/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration?preserve-view=true&view=azure-ml-py) 或 [TensorflowConfiguration](/python/api/azureml-core/azureml.core.runconfig.tensorflowconfiguration?preserve-view=true&view=azure-ml-py)（适用于相应类型的分布式作业）。
+如果需要配置用于训练的分布式作业，请在 ScriptRunConfig 构造函数中指定 `distributed_job_config` 参数。 传入 [MpiConfiguration](/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration)、[PyTorchConfiguration](/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration) 或 [TensorflowConfiguration](/python/api/azureml-core/azureml.core.runconfig.tensorflowconfiguration)（适用于相应类型的分布式作业）。
 
 以下示例将 PyTorch 训练作业配置为对 MPI/Horovod 使用分布式训练：
 ```python

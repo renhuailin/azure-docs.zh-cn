@@ -1,22 +1,22 @@
 ---
 title: Azure Monitor 的 Azure Policy 法规符合性控制
 description: 列出可用于 Azure Monitor 的 Azure Policy 法规符合性控制。 这些内置的策略定义提供了管理 Azure 资源符合性的常用方法。
-ms.date: 02/09/2021
+ms.date: 03/05/2021
 ms.topic: sample
 author: rboucher
 ms.author: robb
 ms.service: azure-monitor
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 899540c0050684b038138db70ca7faa633ad7133
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: a9681ed9ce2a49fc2e12d603e4a9e8958b53b8d1
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100597393"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102439012"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-monitor"></a>Azure Monitor 的 Azure Policy 法规符合性控制
 
-[Azure Policy 中的法规遵从性](../governance/policy/concepts/regulatory-compliance.md)为与不同合规性标准相关的“合规性域”和“安全控制”提供由 Microsoft 创建和管理的计划定义，称为“内置项” 。 此页列出 Azure Monitor 的“符合域”和“安全控件”。 可以分别为“安全控件”分配内置项，以帮助 Azure 资源符合特定的标准。
+[Azure Policy 中的法规符合性](../governance/policy/concepts/regulatory-compliance.md)为与不同符合性标准相关的“符合域”和“安全控件”提供 Microsoft 创建和管理的计划定义，称为“内置”。 此页列出 Azure Monitor 的“符合域”和“安全控件”。 可以分别为“安全控件”分配内置项，以帮助 Azure 资源符合特定的标准。
 
 [!INCLUDE [azure-policy-compliancecontrols-introwarning](../../includes/policy/standards/intro-warning.md)]
 

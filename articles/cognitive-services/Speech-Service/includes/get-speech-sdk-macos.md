@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/27/2020
 ms.author: trbye
-ms.openlocfilehash: e7714dcc3e14e3659ca1943507d55d20dfb28fa6
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
-ms.translationtype: MT
+ms.openlocfilehash: 4a4705647b90d29f47e37b88531f3432c6a2f448
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99214890"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102434434"
 ---
 针对 macOS 开发时，有三个语音 SDK 可用。
 
@@ -18,7 +18,7 @@ ms.locfileid: "99214890"
 - Python 语音 SDK 以 PyPI 模块的形式提供
 
 > [!TIP]
-> 有关在 Swift 中使用 Objective-C 语音 SDK 的详细信息，请参阅<a href="https://developer.apple.com/documentation/swift/imported_c_and_objective-c_apis/importing_objective-c_into_swift" target="_blank">将 Objective-C 导入 Swift <span class="docon docon-navigate-external x-hidden-focus"></span></a>。
+> 有关在 Swift 中使用 Objective-C 语音 SDK 的详细信息，请参阅<a href="https://developer.apple.com/documentation/swift/imported_c_and_objective-c_apis/importing_objective-c_into_swift" target="_blank">将 Objective-C 导入 Swift </a>。
 
 ### <a name="system-requirements"></a>系统要求
 
@@ -28,7 +28,7 @@ ms.locfileid: "99214890"
 
 :::row:::
     :::column span="3":::
-        macOS CocoaPod 包可供下载并在 <a href="https://apps.apple.com/us/app/xcode/id497799835" target="_blank">Xcode 9.4.1（或更高版本）<span class="docon docon-navigate-external x-hidden-focus"></span></a>集成开发环境 (IDE) 中使用。 首先，<a href="https://aka.ms/csspeech/macosbinary" target="_blank">下载二进制 CocoaPod <span class="docon docon-navigate-external x-hidden-focus"></span></a>。 将 Pod 提取到同一目录中以供使用，创建一个 Podfile  并将 `pod` 作为 `target` 列出。
+        macOS CocoaPod 包可供下载并在 <a href="https://apps.apple.com/us/app/xcode/id497799835" target="_blank">Xcode 9.4.1（或更高版本）</a>集成开发环境 (IDE) 中使用。 首先，<a href="https://aka.ms/csspeech/macosbinary" target="_blank">下载二进制 CocoaPod </a>。 将 Pod 提取到同一目录中以供使用，创建一个 Podfile  并将 `pod` 作为 `target` 列出。
     :::column-end:::
     :::column:::
         <br>
@@ -51,7 +51,7 @@ end
 
 :::row:::
     :::column span="3":::
-        Xamarin.Mac 向 .NET 开发人员公开了完整的 macOS SDK，以供其使用 C# 构建本机 Mac 应用程序。 有关详细信息，请参阅 <a href="https://docs.microsoft.com/xamarin/mac/" target="_blank">Xamarin.Mac <span class="docon docon-navigate-external x-hidden-focus"></span></a>。
+        Xamarin.Mac 向 .NET 开发人员公开了完整的 macOS SDK，以供其使用 C# 构建本机 Mac 应用程序。 有关详细信息，请参阅 <a href="https://docs.microsoft.com/xamarin/mac/" target="_blank">Xamarin.Mac </a>。
     :::column-end:::
     :::column:::
         <br>
@@ -71,5 +71,5 @@ end
 
 #### <a name="additional-resources"></a>其他资源
 
-- <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/objectivec/macos" target="_blank">macOS 语音 SDK 快速入门 Objective-C 源代码 <span class="docon docon-navigate-external x-hidden-focus"></span></a>
-- <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/swift/macos" target="_blank">macOS 语音 SDK 快速入门 Swift 源代码 <span class="docon docon-navigate-external x-hidden-focus"></span></a>
+- <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/objectivec/macos" target="_blank">macOS 语音 SDK 快速入门 Objective-C 源代码 </a>
+- <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/swift/macos" target="_blank">macOS 语音 SDK 快速入门 Swift 源代码 </a>

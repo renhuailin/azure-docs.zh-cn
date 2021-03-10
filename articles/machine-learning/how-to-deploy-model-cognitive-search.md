@@ -1,7 +1,7 @@
 ---
 title: 部署用于认知搜索的模型
 titleSuffix: Azure Machine Learning
-description: 了解如何使用 Azure 机器学习部署用于认知搜索的模型。 模型用作一种自定义技能来丰富搜索体验。
+description: 了解如何使用 Azure 机器学习部署用于认知搜索的模型。 该模型用作一种自定义技能来丰富搜索体验。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ author: cjgronlund
 ms.reviewer: larryfr
 ms.date: 06/11/2020
 ms.custom: deploy
-ms.openlocfilehash: e1eebf88b72c87ce9db02760c5c44a0aa25c57cc
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
-ms.translationtype: MT
+ms.openlocfilehash: 9336dbd4d5615a93bbc029ba51b561b18f5a1c15
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93305916"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102521979"
 ---
 # <a name="deploy-a-model-for-use-with-cognitive-search"></a>部署用于认知搜索的模型
 
@@ -46,7 +46,7 @@ Azure 机器学习可以将经过训练的模型部署为 Web 服务。 然后�
 
 * Azure 机器学习工作区。 有关详细信息，请参阅[创建 Azure 机器学习工作区](how-to-manage-workspace.md)。
 
-* 安装了 Azure 机器学习 SDK 的 Python 开发环境。 有关详细信息，请参阅 [Azure 机器学习 SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)。  
+* 安装了 Azure 机器学习 SDK 的 Python 开发环境。 有关详细信息，请参阅 [Azure 机器学习 SDK](/python/api/overview/azure/ml/install)。  
 
 * 已注册的模型。 如果没有模型，请使用 [https://github.com/Azure-Samples/azure-search-python-samples/tree/master/AzureML-Custom-Skill](https://github.com/Azure-Samples/azure-search-python-samples/tree/master/AzureML-Custom-Skill) 上的示例笔记本。
 
@@ -75,7 +75,7 @@ except:
 
 ## <a name="create-a-kubernetes-cluster"></a>创建 Kubernetes 群集
 
-**时间估计** ：大约 20 分钟。
+**时间估计**：大约 20 分钟。
 
 Kubernetes 群集是用于运行容器化应用程序的一组虚拟机实例（称为节点）。
 
@@ -241,7 +241,7 @@ aks_config = AksWebservice.deploy_configuration(autoscale_enabled=True,
                                                        max_request_wait_time=5000)
 ```
 
-有关详细信息，请参阅 [AksService.deploy_configuration](/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py&preserve-view=true#&preserve-view=truedeploy-configuration-autoscale-enabled-none--autoscale-min-replicas-none--autoscale-max-replicas-none--autoscale-refresh-seconds-none--autoscale-target-utilization-none--collect-model-data-none--auth-enabled-none--cpu-cores-none--memory-gb-none--enable-app-insights-none--scoring-timeout-ms-none--replica-max-concurrent-requests-none--max-request-wait-time-none--num-replicas-none--primary-key-none--secondary-key-none--tags-none--properties-none--description-none--gpu-cores-none--period-seconds-none--initial-delay-seconds-none--timeout-seconds-none--success-threshold-none--failure-threshold-none--namespace-none--token-auth-enabled-none--compute-target-name-none-) 的参考文档。
+有关详细信息，请参阅 [AksService.deploy_configuration](/python/api/azureml-core/azureml.core.webservice.akswebservice#deploy-configuration-autoscale-enabled-none--autoscale-min-replicas-none--autoscale-max-replicas-none--autoscale-refresh-seconds-none--autoscale-target-utilization-none--collect-model-data-none--auth-enabled-none--cpu-cores-none--memory-gb-none--enable-app-insights-none--scoring-timeout-ms-none--replica-max-concurrent-requests-none--max-request-wait-time-none--num-replicas-none--primary-key-none--secondary-key-none--tags-none--properties-none--description-none--gpu-cores-none--period-seconds-none--initial-delay-seconds-none--timeout-seconds-none--success-threshold-none--failure-threshold-none--namespace-none--token-auth-enabled-none--compute-target-name-none-) 的参考文档。
 
 ## <a name="define-the-inference-configuration"></a>定义推理配置
 
@@ -252,7 +252,7 @@ from azureml.core.model import InferenceConfig
 inf_config = InferenceConfig(entry_script='score.py', environment=myenv)
 ```
 
-有关详细信息，请参阅 [InferenceConfig](/python/api/azureml-core/azureml.core.model.inferenceconfig?preserve-view=true&view=azure-ml-py) 的参考文档。
+有关详细信息，请参阅 [InferenceConfig](/python/api/azureml-core/azureml.core.model.inferenceconfig) 的参考文档。
 
 ## <a name="deploy-the-model"></a>部署模型
 
@@ -277,7 +277,7 @@ aks_service.wait_for_deployment(show_output = True)
 print(aks_service.state)
 ```
 
-有关详细信息，请参阅[模型](/python/api/azureml-core/azureml.core.model.model?preserve-view=true&view=azure-ml-py)的参考文档。
+有关详细信息，请参阅[模型](/python/api/azureml-core/azureml.core.model.model)的参考文档。
 
 ## <a name="issue-a-sample-query-to-your-service"></a>向服务发出示例查询
 

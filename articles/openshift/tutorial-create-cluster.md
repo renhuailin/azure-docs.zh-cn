@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: azure-redhat-openshift
 ms.date: 10/26/2020
-ms.openlocfilehash: b690d3b3c29d2943e28a0992730d932b35c20734
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 55c1b6f6c6690f0c8f00a8a2469834781f35fb3c
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100653034"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102449792"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-4-cluster"></a>教程：创建 Azure Red Hat OpenShift 4 群集
 
@@ -23,7 +23,7 @@ ms.locfileid: "100653034"
 
 ## <a name="before-you-begin"></a>开始之前
 
-如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 2.6.0 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。
+如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 2.6.0 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
 Azure Red Hat OpenShift 至少需要 40 个核心才能创建和运行 OpenShift 群集。 新 Azure 订阅的默认 Azure 资源配额不满足此要求。 若要请求提高资源上限，请参阅[标准配额：按 VM 系列提高上限](../azure-portal/supportability/per-vm-quota-requests.md)中所述。
 
@@ -59,6 +59,12 @@ ARO 拉取机密不会改变 ARO 的 RH OpenShift 许可证的成本。
 
     ```azurecli-interactive
     az provider register -n Microsoft.Storage --wait
+    ```
+    
+1. 注册 `Microsoft.Authorization` 资源提供程序：
+
+    ```azurecli-interactive
+    az provider register -n Microsoft.Authorization --wait
     ```
 
 ### <a name="get-a-red-hat-pull-secret-optional"></a>获取 Red Hat 拉取机密（可选）
@@ -106,7 +112,7 @@ Red Hat 拉取机密使群集能够访问 Red Hat 容器注册表以及其他内
 
 2. **创建资源组。**
 
-   Azure 资源组是一个逻辑组，用于部署和管理 Azure 资源。 创建资源组时，系统会要求你指定一个位置， 此位置是资源组元数据的存储位置，如果你在创建资源期间未指定另一个区域，则它还是你的资源在 Azure 中的运行位置。 使用 [az group create](/cli/azure/group?view=azure-cli-latest#az-group-create) 命令创建资源组。
+   Azure 资源组是一个逻辑组，用于部署和管理 Azure 资源。 创建资源组时，系统会要求你指定一个位置， 此位置是资源组元数据的存储位置，如果你在创建资源期间未指定另一个区域，则它还是你的资源在 Azure 中的运行位置。 使用 [az group create](/cli/azure/group#az-group-create) 命令创建资源组。
     
    > [!NOTE] 
    > Azure Red Hat OpenShift 并非在可以创建 Azure 资源组的所有区域中可用。 有关支持 Azure Red Hat OpenShift 的位置的信息，请参阅[可用区域](https://azure.microsoft.com/en-gb/global-infrastructure/services/?products=openshift)。

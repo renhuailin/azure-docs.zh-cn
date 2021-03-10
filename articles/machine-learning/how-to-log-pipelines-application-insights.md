@@ -10,12 +10,12 @@ ms.subservice: core
 ms.date: 08/11/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 58e604eccaca4630a235f4ae83724df20d6b1e26
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.openlocfilehash: 7ed27eba66b3d18bed8017934fce85928b961392
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100592518"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102520041"
 ---
 # <a name="collect-machine-learning-pipeline-log-files-in-application-insights-for-alerts-and-debugging"></a>在 Application Insights 中收集用于警报和调试的机器学习管道日志文件
 
@@ -38,7 +38,7 @@ ms.locfileid: "100592518"
 
 本部分的简介内容与通过 Azure 机器学习管道使用 OpenCensus 的操作相关。 有关详细教程，请参阅 [OpenCensus Azure Monitor 导出程序](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-azure)
 
-将 PythonScriptStep 添加到 Azure 机器学习管道。 使用 opencensus-ext-azure 中的依赖项配置 [RunConfiguration](/python/api/azureml-core/azureml.core.runconfiguration?preserve-view=true&view=azure-ml-py)。 配置 `APPLICATIONINSIGHTS_CONNECTION_STRING` 环境变量。
+将 PythonScriptStep 添加到 Azure 机器学习管道。 使用 opencensus-ext-azure 中的依赖项配置 [RunConfiguration](/python/api/azureml-core/azureml.core.runconfiguration)。 配置 `APPLICATIONINSIGHTS_CONNECTION_STRING` 环境变量。
 
 ```python
 from azureml.core.conda_dependencies import CondaDependencies

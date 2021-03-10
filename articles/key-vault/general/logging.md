@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 12/18/2020
 ms.author: mbaldwin
-ms.openlocfilehash: bc9601dbea5c73c6909bd658f322c345143a526c
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 99313cf1248ef5e90d7cd60d528a58c7925298d0
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98790268"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102499520"
 ---
 # <a name="azure-key-vault-logging"></a>Azure Key Vault 日志记录
 
@@ -197,4 +197,4 @@ ms.locfileid: "98790268"
 - [Azure Monitor](../../azure-monitor/index.yml)
 - 有关在 .NET Web 应用程序中使用 Azure Key Vault 的教程，请参阅[从 Web 应用程序使用 Azure Key Vault](tutorial-net-create-vault-azure-web-app.md)。
 - 有关编程参考，请参阅 [Azure 密钥保管库开发人员指南](developers-guide.md)。
-- 有关 Azure Key Vault 的 Azure PowerShell 1.0 cmdlet 列表，请参阅 [Azure Key Vault cmdlet](/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault)。
+- 有关 Azure Key Vault 的 Azure PowerShell 1.0 cmdlet 列表，请参阅 [Azure Key Vault cmdlet](/powershell/module/az.keyvault/#key_vault)。

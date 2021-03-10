@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.custom: subject-monitoring
 ms.date: 10/02/2020
-ms.openlocfilehash: f9f25ec2dd8fb8b859f7863c1e695e22cb9a9cec
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.openlocfilehash: f130fc0c65c49c33c838812fc2758619e0d1bca0
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100575078"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102521333"
 ---
 # <a name="monitoring-azure-machine-learning-data-reference"></a>监视 Azure 机器学习数据引用
 
@@ -88,7 +88,7 @@ Azure 机器学习具有以下与指标关联的维度。
 | NodeId | 作业运行时所在的已创建节点的 ID。 仅适用于 CpuUtilization 和 GpuUtilization。 |
 | RunId | 运行/作业的 ID。 仅适用于 CpuUtilization 和 GpuUtilization。 |
 | ComputeType | 运行时使用的计算类型。 仅适用于已完成的运行数、失败运行数和已启动的运行数。 |
-| PipelineStepType | 运行时使用的 [PipelineStep](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinestep?preserve-view=true&view=azure-ml-py) 类型。 仅适用于已完成的运行数、失败运行数和已启动的运行数。 |
+| PipelineStepType | 运行时使用的 [PipelineStep](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinestep) 类型。 仅适用于已完成的运行数、失败运行数和已启动的运行数。 |
 | PublishedPipelineId | 运行时使用的已发布管道的 ID。 仅适用于已完成的运行数、失败运行数和已启动的运行数。 |
 | RunType | 运行的类型。 仅适用于已完成的运行数、失败运行数和已启动的运行数。 |
 

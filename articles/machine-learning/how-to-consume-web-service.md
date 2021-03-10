@@ -11,19 +11,19 @@ ms.reviewer: larryfr
 ms.date: 10/12/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, devx-track-csharp
-ms.openlocfilehash: d23d6cb5a43de4ccf0d10287b8cf8f597797b893
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: e9fb801fce3e47fc83febeddd6f331ce2af207e6
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102214977"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102506967"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>使用部署为 Web 服务的 Azure 机器学习模型
 
 
 将 Azure 机器学习模型部署为 Web 服务可创建 REST API 终结点。 可将数据发送到此终结点，并接收模型返回的预测。 本文档介绍了如何使用 C#、Go、Java 和 Python 为 Web 服务创建客户端。
 
-将模型部署到本地环境、Azure 容器实例、Azure Kubernetes 服务或现场可编程门阵列 (FPGA) 时，你将创建一个 Web 服务。 你将使用 [Azure 机器学习 SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) 检索用来访问 Web 服务的 URI。 如果启用了身份验证，则还可以使用该 SDK 来获取身份验证密钥或令牌。
+将模型部署到本地环境、Azure 容器实例、Azure Kubernetes 服务或现场可编程门阵列 (FPGA) 时，你将创建一个 Web 服务。 你将使用 [Azure 机器学习 SDK](/python/api/overview/azure/ml/intro) 检索用来访问 Web 服务的 URI。 如果启用了身份验证，则还可以使用该 SDK 来获取身份验证密钥或令牌。
 
 用于创建使用机器学习 Web 服务的客户端的常规工作流为：
 
@@ -39,7 +39,7 @@ ms.locfileid: "102214977"
 > [!NOTE]
 > 使用 Azure 机器学习 SDK 获取 Web 服务信息。 这是一个 Python SDK。 可以使用任何语言来为服务创建客户端。
 
-[azureml.core.Webservice](/python/api/azureml-core/azureml.core.webservice%28class%29?preserve-view=true&view=azure-ml-py) 类提供了创建客户端所需的信息。 创建客户端应用程序时，以下 `Webservice` 属性非常有用：
+[azureml.core.Webservice](/python/api/azureml-core/azureml.core.webservice%28class%29) 类提供了创建客户端所需的信息。 创建客户端应用程序时，以下 `Webservice` 属性非常有用：
 
 * `auth_enabled` - 如果启用了密钥身份验证，则为 `True`；否则为 `False`。
 * `token_auth_enabled` - 如果启用了令牌身份验证，则为 `True`；否则为 `False`。
@@ -59,7 +59,7 @@ ms.locfileid: "102214977"
     print(service.swagger_uri)
     ```
 
-* 可以使用 `Webservice.list` 检索工作区中为模型部署的 Web 服务列表。 可以添加筛选器，以缩小返回的信息列表范围。 有关可以筛选的对象的详细信息，请参阅 [Webservice.list](/python/api/azureml-core/azureml.core.webservice.webservice.webservice?preserve-view=true&view=azure-ml-py) 参考文档。
+* 可以使用 `Webservice.list` 检索工作区中为模型部署的 Web 服务列表。 可以添加筛选器，以缩小返回的信息列表范围。 有关可以筛选的对象的详细信息，请参阅 [Webservice.list](/python/api/azureml-core/azureml.core.webservice.webservice.webservice) 参考文档。
 
     ```python
     services = Webservice.list(ws)
@@ -139,7 +139,7 @@ print(primary)
 ```
 
 > [!IMPORTANT]
-> 如需重新生成密钥，请使用 [`service.regen_key`](/python/api/azureml-core/azureml.core.webservice%28class%29?preserve-view=true&view=azure-ml-py)。
+> 如需重新生成密钥，请使用 [`service.regen_key`](/python/api/azureml-core/azureml.core.webservice%28class%29)。
 
 #### <a name="authentication-with-tokens"></a>使用令牌进行身份验证
 
@@ -527,7 +527,7 @@ print(resp.text)
 
 ## <a name="web-service-schema-openapi-specification"></a>Web 服务架构（OpenAPI 规范）
 
-如果在部署中使用了自动生成架构，则可以通过使用 [swagger_uri 属性](/python/api/azureml-core/azureml.core.webservice.local.localwebservice?preserve-view=true&view=azure-ml-py#&preserve-view=trueswagger-uri)获取服务的 OpenAPI 规范的地址。 （例如 `print(service.swagger_uri)`。）使用 GET 请求，或在浏览器中打开 URI 以检索规范。
+如果在部署中使用了自动生成架构，则可以通过使用 [swagger_uri 属性](/python/api/azureml-core/azureml.core.webservice.local.localwebservice#swagger-uri)获取服务的 OpenAPI 规范的地址。 （例如 `print(service.swagger_uri)`。）使用 GET 请求，或在浏览器中打开 URI 以检索规范。
 
 以下 JSON 文档是为部署生成的架构（OpenAPI 规范）示例：
 
@@ -669,7 +669,7 @@ print(resp.text)
 
 
 > [!TIP]
-> 部署服务后，可以检索架构 JSON 文档。 使用部署的 Web 服务中的 [swagger_uri 属性](/python/api/azureml-core/azureml.core.webservice.local.localwebservice?preserve-view=true&view=azure-ml-py#&preserve-view=trueswagger-uri)（例如 `service.swagger_uri`）获取本地 Web 服务的 Swagger 文件的 URI。
+> 部署服务后，可以检索架构 JSON 文档。 使用部署的 Web 服务中的 [swagger_uri 属性](/python/api/azureml-core/azureml.core.webservice.local.localwebservice#swagger-uri)（例如 `service.swagger_uri`）获取本地 Web 服务的 Swagger 文件的 URI。
 
 ## <a name="consume-the-service-from-power-bi"></a>通过 Power BI 使用服务
 

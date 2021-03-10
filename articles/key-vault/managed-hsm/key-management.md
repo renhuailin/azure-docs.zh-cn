@@ -8,12 +8,12 @@ ms.subservice: managed-hsm
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: 3f054638e09061c652946c9c2db1a32db73c23d9
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 8d0cbd35b53bc8460ac8a19e5197d1f560657263
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92521027"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102212036"
 ---
 # <a name="manage-a-managed-hsm-using-the-azure-cli"></a>使用 Azure CLI 管理托管 HSM
 
@@ -42,7 +42,7 @@ ms.locfileid: "92521027"
 az login
 ```
 
-若要详细了解通过 CLI 使用的登录选项，请参阅[使用 Azure CLI 登录](/cli/azure/authenticate-azure-cli?view=azure-cli-latest&preserve-view=true)
+若要详细了解通过 CLI 使用的登录选项，请参阅[使用 Azure CLI 登录](/cli/azure/authenticate-azure-cli)
 
 > [!NOTE]
 > 下面所有命令都显示了两种使用方法。 一种使用 --hsm-name 和 --name（对于密钥名称）参数，而另一种使用 --id 参数，你可在其中指定整个 URL，包括密钥名称（如果适用）  。 如果调用方（用户或应用程序）没有控制平面的读取访问权限，而且只有数据平面的受限访问权限，则后一种方法非常有用。

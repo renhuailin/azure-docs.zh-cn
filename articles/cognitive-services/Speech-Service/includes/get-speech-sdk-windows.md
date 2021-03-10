@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 03/27/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 33cc9b52c4b687ca8147867b99dc70e8d71a9223
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: fc4cc5063f72ff3f0db62cde79f7908add86166e
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88944460"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102434437"
 ---
 :::row:::
     :::column span="3":::
@@ -26,11 +26,11 @@ ms.locfileid: "88944460"
 
 ### <a name="system-requirements"></a>系统要求
 
-Windows 版语音 SDK 要求系统上安装有 <a href="https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads" target="_blank">Microsoft Visual C++ Redistributable for Visual Studio 2019 <span class="docon docon-navigate-external x-hidden-focus"></span></a>。
+Windows 版语音 SDK 要求系统上安装有 <a href="https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads" target="_blank">Microsoft Visual C++ Redistributable for Visual Studio 2019 </a>。
 
-- <a href="https://aka.ms/vs/16/release/vc_redist.x86.exe" target="_blank">为 x86 安装 <span class="docon docon-navigate-external x-hidden-focus"></span></a>
-- <a href="https://aka.ms/vs/16/release/vc_redist.x64.exe" target="_blank">为 x64 安装 <span class="docon docon-navigate-external x-hidden-focus"></span></a>
-- <a href="https://aka.ms/vs/16/release/vc_redist.arm64.exe" target="_blank">为 ARMx64 安装 <span class="docon docon-navigate-external x-hidden-focus"></span></a>
+- <a href="https://aka.ms/vs/16/release/vc_redist.x86.exe" target="_blank">为 x86 安装 </a>
+- <a href="https://aka.ms/vs/16/release/vc_redist.x64.exe" target="_blank">为 x64 安装 </a>
+- <a href="https://aka.ms/vs/16/release/vc_redist.arm64.exe" target="_blank">为 ARMx64 安装 </a>
 
 ### <a name="c"></a>C#
 

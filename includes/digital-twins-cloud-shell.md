@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 7/17/2020
 ms.author: baanders
-ms.openlocfilehash: c1d1efce656bea02385cb20ac11ab90ca5664e60
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: e61b6b9a09d759571029db4f01dd8f9d707ca518
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96026759"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102234325"
 ---
 要在打开的 [Azure Cloud Shell](https://shell.azure.com) 窗口中开始处理 Azure 数字孪生，首先需要登录，并为此会话将 shell 上下文设置为你的订阅。 在 Cloud Shell 中运行以下命令：
 
@@ -27,7 +27,7 @@ az account set --subscription "<your-Azure-subscription-ID>"
 az provider register --namespace 'Microsoft.DigitalTwins'
 ```
 
-接下来，将[适用于 Azure CLI 的 Microsoft Azure IoT 扩展](/cli/azure/ext/azure-iot/iot?preserve-view=true&view=azure-cli-latest)添加到 Cloud Shell 以支持用于与 Azure 数字孪生和其他 IoT 服务进行交互的命令。 
+接下来，将[适用于 Azure CLI 的 Microsoft Azure IoT 扩展](/cli/azure/ext/azure-iot/iot)添加到 Cloud Shell 以支持用于与 Azure 数字孪生和其他 IoT 服务进行交互的命令。 
 
 [!INCLUDE [digital-twins-cloud-shell-extensions.md](digital-twins-cloud-shell-extensions.md)]
 

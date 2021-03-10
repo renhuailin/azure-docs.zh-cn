@@ -1,7 +1,7 @@
 ---
 title: 什么是分布式训练？
 titleSuffix: Azure Machine Learning
-description: 了解哪种类型的分布式培训 Azure 机器学习支持以及可用于分布式培训的开源 framework 集成。
+description: 了解 Azure 机器学习支持哪种类型的分布式训练，以及可用于分布式训练的开源框架集成。
 services: machine-learning
 ms.service: machine-learning
 author: nibaccam
@@ -9,12 +9,12 @@ ms.author: nibaccam
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/27/2020
-ms.openlocfilehash: 4e1972e0530656bf6cc0e6319191ab4ebbfbfddb
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
-ms.translationtype: MT
+ms.openlocfilehash: f87175500fcf5bdbcf9a5c2f499f6bab96b37b63
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93358569"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102498959"
 ---
 # <a name="distributed-training-with-azure-machine-learning"></a>Azure 机器学习的分布式训练
 
@@ -24,7 +24,7 @@ ms.locfileid: "93358569"
 
 ## <a name="deep-learning-and-distributed-training"></a>深度学习和分布式训练 
 
-分布式训练有两种主要类型：[数据并行](#data-parallelism)和[模型并行](#model-parallelism)。 对于深度学习模型上的分布式训练，[Python 中的 Azure 机器学习 SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) 支持与常用框架 PyTorch 和 TensorFlow 进行集成。 两种框架都采用数据并行方式进行分布式训练，并且可以利用 [horovod](https://horovod.readthedocs.io/en/latest/summary_include.html) 来优化计算速度。 
+分布式训练有两种主要类型：[数据并行](#data-parallelism)和[模型并行](#model-parallelism)。 对于深度学习模型上的分布式训练，[Python 中的 Azure 机器学习 SDK](/python/api/overview/azure/ml/intro) 支持与常用框架 PyTorch 和 TensorFlow 进行集成。 两种框架都采用数据并行方式进行分布式训练，并且可以利用 [horovod](https://horovod.readthedocs.io/en/latest/summary_include.html) 来优化计算速度。 
 
 * [使用 PyTorch 进行分布式训练](how-to-train-pytorch.md#distributed-training)
 

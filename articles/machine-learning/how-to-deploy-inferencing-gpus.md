@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 06/17/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, deploy
-ms.openlocfilehash: 8480a0b8722fbfff0f1d8a8fafc1a64f38d21d6e
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
-ms.translationtype: MT
+ms.openlocfilehash: 6797c32ded5c12bbac3fafa1eabd1e6f74d28e07
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93307215"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102519242"
 ---
 # <a name="deploy-a-deep-learning-model-for-inference-with-gpu"></a>使用 GPU 为推理部署深度学习模型
 
@@ -26,7 +26,7 @@ ms.locfileid: "93307215"
 推理（模型评分）是使用部署的模型进行预测的阶段。 使用 GPU 代替 CPU 可为高度并行化的计算提供性能优势。
 
 > [!IMPORTANT]
-> 对于 Web 服务部署，只有 Azure Kubernetes 服务支持 GPU 推理。 对于使用机器学习管道进行的推理，只有 Azure 机器学习计算支持 GPU。 有关使用 ML 管道的详细信息，请参阅 [教程：生成用于批处理评分的 Azure 机器学习管道](tutorial-pipeline-batch-scoring-classification.md)。 
+> 对于 Web 服务部署，只有 Azure Kubernetes 服务支持 GPU 推理。 对于使用机器学习管道进行的推理，只有 Azure 机器学习计算支持 GPU。 有关使用 ML 管道的详细信息，请参阅[教程：生成 Azure 机器学习管道以用于批量评分](tutorial-pipeline-batch-scoring-classification.md)中的说明操作。 
 
 > [!TIP]
 > 尽管本文中的代码片段使用了 TensorFlow 模型，但你可以将这些信息应用于任何支持 GPU 的机器学习框架。
@@ -38,7 +38,7 @@ ms.locfileid: "93307215"
 
 * Azure 机器学习工作区。 有关详细信息，请参阅[创建 Azure 机器学习工作区](how-to-manage-workspace.md)。
 
-* 安装了 Azure 机器学习 SDK 的 Python 开发环境。 有关详细信息，请参阅 [Azure 机器学习 SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)。  
+* 安装了 Azure 机器学习 SDK 的 Python 开发环境。 有关详细信息，请参阅 [Azure 机器学习 SDK](/python/api/overview/azure/ml/install)。  
 
 * 使用 GPU 的已注册的模型。
 
@@ -176,7 +176,7 @@ gpu_aks_config = AksWebservice.deploy_configuration(autoscale_enabled=False,
                                                     memory_gb=4)
 ```
 
-有关详细信息，请参阅 [AksService.deploy_configuration](/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py&preserve-view=true#&preserve-view=truedeploy-configuration-autoscale-enabled-none--autoscale-min-replicas-none--autoscale-max-replicas-none--autoscale-refresh-seconds-none--autoscale-target-utilization-none--collect-model-data-none--auth-enabled-none--cpu-cores-none--memory-gb-none--enable-app-insights-none--scoring-timeout-ms-none--replica-max-concurrent-requests-none--max-request-wait-time-none--num-replicas-none--primary-key-none--secondary-key-none--tags-none--properties-none--description-none--gpu-cores-none--period-seconds-none--initial-delay-seconds-none--timeout-seconds-none--success-threshold-none--failure-threshold-none--namespace-none--token-auth-enabled-none--compute-target-name-none-) 的参考文档。
+有关详细信息，请参阅 [AksService.deploy_configuration](/python/api/azureml-core/azureml.core.webservice.akswebservice#deploy-configuration-autoscale-enabled-none--autoscale-min-replicas-none--autoscale-max-replicas-none--autoscale-refresh-seconds-none--autoscale-target-utilization-none--collect-model-data-none--auth-enabled-none--cpu-cores-none--memory-gb-none--enable-app-insights-none--scoring-timeout-ms-none--replica-max-concurrent-requests-none--max-request-wait-time-none--num-replicas-none--primary-key-none--secondary-key-none--tags-none--properties-none--description-none--gpu-cores-none--period-seconds-none--initial-delay-seconds-none--timeout-seconds-none--success-threshold-none--failure-threshold-none--namespace-none--token-auth-enabled-none--compute-target-name-none-) 的参考文档。
 
 ## <a name="define-the-inference-configuration"></a>定义推理配置
 
@@ -192,7 +192,7 @@ inference_config = InferenceConfig(entry_script="score.py", environment=myenv)
 ```
 
 有关环境的详细信息，请参阅[创建和管理用于训练和部署的环境](how-to-use-environments.md)。
-有关详细信息，请参阅 [InferenceConfig](/python/api/azureml-core/azureml.core.model.inferenceconfig?preserve-view=true&view=azure-ml-py) 的参考文档。
+有关详细信息，请参阅 [InferenceConfig](/python/api/azureml-core/azureml.core.model.inferenceconfig) 的参考文档。
 
 ## <a name="deploy-the-model"></a>部署模型
 
@@ -217,7 +217,7 @@ aks_service.wait_for_deployment(show_output=True)
 print(aks_service.state)
 ```
 
-有关详细信息，请参阅[模型](/python/api/azureml-core/azureml.core.model.model?preserve-view=true&view=azure-ml-py)的参考文档。
+有关详细信息，请参阅[模型](/python/api/azureml-core/azureml.core.model.model)的参考文档。
 
 ## <a name="issue-a-sample-query-to-your-service"></a>向服务发出示例查询
 
