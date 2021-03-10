@@ -10,12 +10,12 @@ ms.subservice: metrics-advisor
 ms.topic: quickstart
 ms.date: 09/30/2020
 ms.author: mbullwin
-ms.openlocfilehash: 5dbf98d363429e6d22a0b7719cdc669deebd21a0
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: f853dca12b6a5855dc0603259ab534fa9933cd5b
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348630"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102432292"
 ---
 # <a name="quickstart-monitor-your-first-metric-using-the-web-portal"></a>快速入门：使用 Web 门户监视你的首个指标
 
@@ -30,7 +30,7 @@ ms.locfileid: "96348630"
 ## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/cognitive-services)
-* 获得 Azure 订阅后，<a href="https://go.microsoft.com/fwlink/?linkid=2142156"  title="“创建指标顾问”资源"  target="_blank">在 Azure 门户中创建“指标顾问”资源 <span class="docon docon-navigate-external x-hidden-focus"></span></a>，以部署“指标顾问”实例。  
+* 获得 Azure 订阅后，<a href="https://go.microsoft.com/fwlink/?linkid=2142156"  title="“创建指标顾问”资源"  target="_blank">在 Azure 门户中创建“指标顾问”资源 </a>，以部署“指标顾问”实例。  
 
     
 > [!TIP]

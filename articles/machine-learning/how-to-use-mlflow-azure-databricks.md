@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 09/22/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 9e0102cdb7e8494a8540b1970932f0d9f7f39fde
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
-ms.translationtype: MT
+ms.openlocfilehash: a894a46ce7c78b65dde80c52f9516fcbe4d27bcb
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97912911"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102520993"
 ---
 # <a name="track-azure-databricks-ml-experiments-with-mlflow-and-azure-machine-learning-preview"></a>使用 MLflow 和 Azure 机器学习跟踪 Azure Databricks ML 试验（预览版）
 
@@ -24,7 +24,7 @@ ms.locfileid: "97912911"
 
 [MLflow](https://www.mlflow.org) 是一个开放源代码库，用于管理机器学习试验的生命周期。 MLflow 跟踪是 MLflow 的一个组件，用于记录和跟踪训练运行指标和模型项目。 详细了解 [Azure Databricks 和 MLflow](/azure/databricks/applications/mlflow/)。 
 
-请参阅 [跟踪试验运行与 MLflow 和 Azure 机器学习](how-to-use-mlflow.md) ，以获取其他 MLflow 和 Azure 机器学习功能集成。
+有关其他 MLflow 和 Azure 机器学习功能集成，请参阅[使用 MLflow 和 Azure 机器学习跟踪试验运行](how-to-use-mlflow.md)。
 
 >[!NOTE]
 > 作为开放源代码库，MLflow 会经常更改。 因此，通过 Azure 机器学习和 MLflow 集成提供的功能应视为预览版，Microsoft 并不完全支持它。
@@ -35,10 +35,10 @@ ms.locfileid: "97912911"
 ## <a name="prerequisites"></a>先决条件
 
 * 安装 `azureml-mlflow` 包。 
-    * 此包会自动引入 [Azure 机器学习 Python SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py) 的 `azureml-core`，它为 MLflow 访问工作区提供了连接。
+    * 此包会自动引入 [Azure 机器学习 Python SDK](/python/api/overview/azure/ml/install) 的 `azureml-core`，它为 MLflow 访问工作区提供了连接。
 * [Azure Databricks 工作区和群集](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal)。
 * [创建 Azure 机器学习工作区](how-to-manage-workspace.md)。
-    * 查看 [在工作区中执行 MLflow 操作所需的访问权限](how-to-assign-roles.md#mlflow-operations)。
+    * 查看[使用工作区执行 MLflow 操作所需的访问权限](how-to-assign-roles.md#mlflow-operations)。
 
 ## <a name="track-azure-databricks-runs"></a>跟踪 Azure Databricks 运行
 
@@ -232,7 +232,7 @@ display(preds)
 [将 MLflow 与 Azure 机器学习笔记本配合使用](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/track-and-monitor-experiments/using-mlflow)演示了本文中所述的概念，并在这些概念的基础上有所延伸。
 
 ## <a name="next-steps"></a>后续步骤
-* [将 MLflow 模型部署为 Azure web 服务](how-to-deploy-mlflow-models.md)。 
+* [将 MLflow 模型部署为 Azure Web 服务](how-to-deploy-mlflow-models.md)。 
 * [管理模型](concept-model-management-and-deployment.md)。
-* [跟踪试验运行 MLflow 和 Azure 机器学习](how-to-use-mlflow.md)。 
+* [使用 MLflow 和 Azure 机器学习跟踪试验运行](how-to-use-mlflow.md)。 
 * 详细了解 [Azure Databricks 和 MLflow](/azure/databricks/applications/mlflow/)。

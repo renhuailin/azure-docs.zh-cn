@@ -2,22 +2,22 @@
 title: 教程 - 为 Azure Linux 虚拟机配置 Canary 部署
 description: 本教程介绍如何设置持续部署 (CD) 管道。 此管道使用 Canary 部署策略更新一组 Azure Linux 虚拟机。
 author: moala
-manager: jpconnock
 tags: azure-devops-pipelines
 ms.assetid: ''
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.topic: tutorial
 ms.tgt_pltfrm: azure-pipelines
 ms.workload: infrastructure
 ms.date: 4/10/2020
 ms.author: moala
 ms.custom: devops
-ms.openlocfilehash: fafe2ba9ae65f95d8a2258ead5715cc0630202ba
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: bbfe6571cf075b2ce4930eea91bfd1e239470c5a
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91963476"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102552501"
 ---
 # <a name="tutorial---configure-the-canary-deployment-strategy-for-azure-linux-virtual-machines"></a>教程 - 为 Azure Linux 虚拟机配置 Canary 部署策略
 
@@ -29,7 +29,7 @@ Azure Pipelines 提供了一组功能完备的 CI/CD 自动化工具，用于目
 
 ### <a name="configure-cicd-on-virtual-machines"></a>在虚拟机上配置 CI/CD
 
-可以将虚拟机作为目标添加到[部署组](/azure/devops/pipelines/release/deployment-groups)。 然后，可以将它们作为目标进行多计算机更新。 部署到计算机后，请查看部署组中的**部署历史记录**。 使用此视图可以从 VM 跟踪到管道，然后再跟踪到提交。
+可以将虚拟机作为目标添加到[部署组](/azure/devops/pipelines/release/deployment-groups)。 然后，可以将它们作为目标进行多计算机更新。 部署到计算机后，请查看部署组中的 **部署历史记录**。 使用此视图可以从 VM 跟踪到管道，然后再跟踪到提交。
 
 ### <a name="canary-deployments"></a>Canary 部署
 
