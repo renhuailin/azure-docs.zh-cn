@@ -11,12 +11,12 @@ ms.reviewer: peterlu
 ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: d9bad49b7c3d71304a33691cf5004c853228f8e8
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
-ms.translationtype: MT
+ms.openlocfilehash: 2b4af9dec2bf397ad2766c68d547eeac85a9a9a3
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97797224"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102518358"
 ---
 # <a name="train-keras-models-at-scale-with-azure-machine-learning"></a>使用 Azure 机器学习大规模训练 Keras 模型
 
@@ -42,7 +42,7 @@ Keras 是一种高级神经网络 API，能够基于其他常用 DNN 框架运�
 
  - 你自己的 Jupyter 笔记本服务器
 
-    - [安装 Azure 机器学习 SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py) (>= 1.15.0)。
+    - [安装 Azure 机器学习 SDK](/python/api/overview/azure/ml/install) (>= 1.15.0)。
     - [创建工作区配置文件](how-to-configure-environment.md#workspace)。
     - [下载示例脚本文件](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/keras/train-hyperparameter-tune-deploy-with-keras) `keras_mnist.py` 和 `utils.py`
 
@@ -68,7 +68,7 @@ from azureml.core.compute_target import ComputeTargetException
 
 ### <a name="initialize-a-workspace"></a>初始化工作区
 
-[Azure 机器学习工作区](concept-workspace.md)是服务的顶级资源。 它提供了一个集中的位置来处理创建的所有项目。 在 Python SDK 中，可以通过创建 [`workspace`](/python/api/azureml-core/azureml.core.workspace.workspace?preserve-view=true&view=azure-ml-py) 对象来访问工作区项目。
+[Azure 机器学习工作区](concept-workspace.md)是服务的顶级资源。 它提供了一个集中的位置来处理创建的所有项目。 在 Python SDK 中，可以通过创建 [`workspace`](/python/api/azureml-core/azureml.core.workspace.workspace) 对象来访问工作区项目。
 
 根据在[先决条件部分](#prerequisites)中创建的 `config.json` 文件创建工作区对象。
 
@@ -192,11 +192,11 @@ src = ScriptRunConfig(source_directory=script_folder,
 若要详细了解如何使用 ScriptRunConfig 配置作业，请参阅[配置并提交训练运行](how-to-set-up-training-targets.md)。
 
 > [!WARNING]
-> 如果你以前使用 TensorFlow 估计器来配置 Keras 培训作业，请注意，在 1.19.0 SDK 版本中，估算已弃用。 使用 Azure ML SDK >= 1.15.0，建议使用 ScriptRunConfig 方法配置训练作业，包括使用深度学习框架的培训。 有关常见的迁移问题，请参阅 [估计器 To ScriptRunConfig 迁移指南](how-to-migrate-from-estimators-to-scriptrunconfig.md)。
+> 如果你以前使用 TensorFlow 估算器来配置 Keras 训练作业，请注意，自 1.19.0 SDK 发行版起，该估算器已弃用。 对于不低于 1.15.0 版本的 Azure ML SDK，建议使用 ScriptRunConfig 作为配置训练作业（包括使用深度学习框架的作业）的方法。 有关常见的迁移问题，请参阅[估算器到 ScriptRunConfig 迁移指南](how-to-migrate-from-estimators-to-scriptrunconfig.md)。
 
 ### <a name="submit-your-run"></a>提交运行
 
-[运行对象](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py)在作业运行时和运行后提供运行历史记录的接口。
+[运行对象](/python/api/azureml-core/azureml.core.run%28class%29)在作业运行时和运行后提供运行历史记录的接口。
 
 ```Python
 run = Experiment(workspace=ws, name='Tutorial-Keras-Minst').submit(src)

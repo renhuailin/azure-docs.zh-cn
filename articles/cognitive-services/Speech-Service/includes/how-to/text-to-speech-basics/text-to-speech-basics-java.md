@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 03/25/2020
 ms.custom: devx-track-java
 ms.author: trbye
-ms.openlocfilehash: bf28d0abbd20cb170fa7adb6f13aefba8d2238c1
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: bb2d9b04e6366b17cfb0ee4b8586359035be910d
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98948447"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102428170"
 ---
 本快速入门介绍使用语音 SDK 进行文本到语音合成的常见设计模式。 首先，请进行基本的配置和合成，然后通过更高级的示例来了解自定义应用程序开发，其中包括：
 
@@ -31,8 +31,8 @@ ms.locfileid: "98948447"
 
 你需要先安装语音 SDK，然后才能执行任何操作。 根据你的平台，使用以下说明：
 
-* <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?tabs=jre&pivots=programming-language-java" target="_blank">Java 运行时 <span class="docon docon-navigate-external x-hidden-focus"></span></a>
-* <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?tabs=android&pivots=programming-language-java" target="_blank">Android <span class="docon docon-navigate-external x-hidden-focus"></span></a>
+* <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?tabs=jre&pivots=programming-language-java" target="_blank">Java 运行时 </a>
+* <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?tabs=android&pivots=programming-language-java" target="_blank">Android </a>
 
 ## <a name="import-dependencies"></a>导入依赖项
 
@@ -157,7 +157,7 @@ public static void main(String[] args) {
 可根据要求对不同的文件类型使用不同的选项。 请注意，根据定义，`Raw24Khz16BitMonoPcm` 等原始格式不包括音频标头。 仅当你知道下游实现可以解码原始位流，或者你打算基于位深度、采样率、通道数等属性手动生成标头时，才使用原始格式。
 
 > [!NOTE]
-> 语音 en-US-AriaRUS 和 en-US-GuyRUS 由 `Riff24Khz16BitMonoPcm` 采样率编码的示例创建 。
+> 语音 en-US-AriaRUS 和 en-US-GuyRUS 是通过 `Riff24Khz16BitMonoPcm` 采样率编码的样本创建的 。
 
 此示例通过对 `SpeechConfig` 对象设置 `SpeechSynthesisOutputFormat` 来指定高保真 RIFF 格式 `Riff24Khz16BitMonoPcm`。 类似于上一部分中的示例，可以使用 [`AudioDataStream`](/java/api/com.microsoft.cognitiveservices.speech.audiodatastream) 获取结果的内存中流，然后将其写入文件。
 

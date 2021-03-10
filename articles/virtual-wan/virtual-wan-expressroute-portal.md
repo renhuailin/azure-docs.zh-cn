@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 10/07/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my corporate on-premises network(s) to my VNets using Virtual WAN and ExpressRoute.
-ms.openlocfilehash: 07053c096ce001b322e5f05556bd041519ca9d2e
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 080136b8fc25b08a6b96464f0a61115a4bb2f3f8
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92102470"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102426599"
 ---
 # <a name="tutorial-create-an-expressroute-association-using-azure-virtual-wan"></a>教程：使用 Azure 虚拟 WAN 创建 ExpressRoute 关联
 
@@ -48,8 +48,8 @@ ms.locfileid: "92102470"
 
 从浏览器导航到 [Azure 门户](https://portal.azure.com)并使用 Azure 帐户登录。
 
-1. 导航到“虚拟 WAN”页。 在门户中，单击“+创建资源”  。 在搜索框中键入“虚拟 WAN”  ，然后选择 Enter。
-2. 从结果中选择“虚拟 WAN”  。 在“虚拟 WAN”页上，单击“创建”以打开“创建 WAN”页  。
+1. 导航到“虚拟 WAN”页。 在门户中，单击“+创建资源”。 在搜索框中键入“虚拟 WAN”，然后选择 Enter。
+2. 从结果中选择“虚拟 WAN”。 在“虚拟 WAN”页上，单击“创建”以打开“创建 WAN”页。
 3. 在“创建 WAN”页的“基本信息”选项卡上，填写以下字段   ：
 
    ![创建 WAN](./media/virtual-wan-expressroute-portal/createwan.png)
@@ -96,7 +96,7 @@ ExpressRoute 网关以 2 Gbps 为单位进行预配。 1 个缩放单元= 2 Gbps
 
 1. 在虚拟 WAN 的页面上，单击“虚拟网络连接”。 
 2. 在虚拟网络连接页上，单击“+添加连接”。 
-3. 在“添加连接”页上填写以下字段  ：
+3. 在“添加连接”页上填写以下字段：
 
     * **连接名称** - 为连接命名。
     * **中心** - 选择要与此连接关联的中心。
@@ -155,11 +155,9 @@ ExpressRoute 网关以 2 Gbps 为单位进行预配。 1 个缩放单元= 2 Gbps
 
 ## <a name="clean-up-resources"></a><a name="cleanup"></a>清理资源
 
-如果不再需要这些资源，可以使用 [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) 删除资源组及其包含的所有资源。 将“myResourceGroup”替换为资源组的名称，并运行以下 PowerShell 命令：
+当不再需要所创建的资源时，请将其删除。 由于存在依赖关系，必须按特定顺序删除某些虚拟 WAN 资源。 大约需要 30 分钟才能完成删除。
 
-```azurepowershell-interactive
-Remove-AzResourceGroup -Name myResourceGroup -Force
-```
+[!INCLUDE [Delete resources](../../includes/virtual-wan-resource-cleanup.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

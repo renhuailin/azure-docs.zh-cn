@@ -9,12 +9,12 @@ ms.subservice: disks
 ms.date: 10/10/2019
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: b8697e64eac69af8b8552f01fb6a03da0488a7cc
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 3d30d506ae3b49b2e247ee77ef17d101f94854c7
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102210082"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102501000"
 ---
 # <a name="create-and-configure-a-key-vault-for-azure-disk-encryption"></a>为 Azure 磁盘加密创建和配置密钥保管库
 
@@ -36,7 +36,7 @@ Azure Disk Encryption 使用 Azure Key Vault 来控制和管理磁盘加密密�
 
 ### <a name="connect-to-your-azure-account"></a>连接到 Azure 帐户
 
-使用 Azure CLI 或 Azure PowerShell 之前，必须先连接到 Azure 订阅。 为此，可以[使用 Azure CLI 登录](/cli/azure/authenticate-azure-cli)、[使用 Azure PowerShell 登录](/powershell/azure/authenticate-azureps?view=azps-2.5.0)或在出现提示时向 Azure 门户提供凭据。
+使用 Azure CLI 或 Azure PowerShell 之前，必须先连接到 Azure 订阅。 为此，可以[使用 Azure CLI 登录](/cli/azure/authenticate-azure-cli)、[使用 Azure PowerShell 登录](/powershell/azure/authenticate-azureps)或在出现提示时向 Azure 门户提供凭据。
 
 ```azurecli-interactive
 az login

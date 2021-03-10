@@ -7,12 +7,12 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 12/10/2018
 ms.custom: mvc, seodec18, seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 2c4fbefc1bb801ab4a9387054ac91e5fca14ec18
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 5a481e7ef37e36578b7f71a7afe70dcad737de89
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98185591"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102217459"
 ---
 # <a name="tutorial-build-a-java-spring-boot-web-app-with-azure-app-service-on-linux-and-azure-cosmos-db"></a>教程：使用 Linux 上的 Azure 应用服务和 Azure Cosmos DB 生成 Java Spring Boot Web 应用
 
@@ -310,7 +310,7 @@ az group delete --name <your-azure-group-name>
 ## <a name="next-steps"></a>后续步骤
 
 [面向 Java 开发人员的 Azure](/java/azure/)
-[Spring Boot](https://spring.io/projects/spring-boot)，[Spring Data for Cosmos DB](/java/azure/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db?view=azure-java-stable)，[Azure Cosmos DB](../cosmos-db/introduction.md) 和 [Linux 版应用服务](overview.md)。
+[Spring Boot](https://spring.io/projects/spring-boot)，[Spring Data for Cosmos DB](/azure/developer/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db)，[Azure Cosmos DB](../cosmos-db/introduction.md) 和 [Linux 版应用服务](overview.md)。
 
 在开发人员指南中详细了解在 Linux 上的应用服务中运行 Java 应用。
 

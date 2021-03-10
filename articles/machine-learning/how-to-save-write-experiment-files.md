@@ -1,7 +1,7 @@
 ---
 title: 保存和写入试验文件的位置
 titleSuffix: Azure Machine Learning
-description: 了解保存输入和输出文件的位置，以防止出现存储限制错误和试验延迟。
+description: 了解保存输入文件以及输出文件的位置，以防止出现存储限制错误和试验延迟。
 services: machine-learning
 author: rastala
 ms.author: roastala
@@ -12,12 +12,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 03/10/2020
-ms.openlocfilehash: 49e1e9efbd6f59bd037a8033f83836bf7fc71c43
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
-ms.translationtype: MT
+ms.openlocfilehash: ad641c2270f94b9d902a25e8d061fb1137a0cdb7
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94630322"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102518596"
 ---
 # <a name="where-to-save-and-write-files-for-azure-machine-learning-experiments"></a>保存和写入 Azure 机器学习试验文件的位置
 
@@ -30,13 +30,13 @@ ms.locfileid: "94630322"
 
 在对计算目标或本地计算机启动试验之前，必须确保所需文件对该计算目标可用，例如需要运行的代码的依赖项文件和数据文件。
 
-Azure 机器学习通过复制整个源目录来运行训练脚本。 如果你有不想上传的敏感数据，请使用 [.ignore 文件](how-to-save-write-experiment-files.md#storage-limits-of-experiment-snapshots)或不将其包含在源目录中。 改为使用[数据存储](/python/api/azureml-core/azureml.data?preserve-view=true&view=azure-ml-py)来访问数据。
+Azure 机器学习通过复制整个源目录来运行训练脚本。 如果你有不想上传的敏感数据，请使用 [.ignore 文件](how-to-save-write-experiment-files.md#storage-limits-of-experiment-snapshots)或不将其包含在源目录中。 改为使用[数据存储](/python/api/azureml-core/azureml.data)来访问数据。
 
 试验快照的存储空间上限为 300 MB 和/或 2000 个文件。
 
 因此，我们建议：
 
-* 将文件存储在 Azure 机器学习[数据存储](/python/api/azureml-core/azureml.data?preserve-view=true&view=azure-ml-py)中。 这样能防止出现试验延迟问题，并具有从远程计算目标访问数据的优点，这意味着身份验证和装载工作都由 Azure 机器学习管理。 请参阅[访问数据存储中的数据](how-to-access-data.md)一文，详细了解如何将数据存储指定为源目录，以及如何将文件上传到数据存储。
+* 将文件存储在 Azure 机器学习[数据存储](/python/api/azureml-core/azureml.data)中。 这样能防止出现试验延迟问题，并具有从远程计算目标访问数据的优点，这意味着身份验证和装载工作都由 Azure 机器学习管理。 请参阅[访问数据存储中的数据](how-to-access-data.md)一文，详细了解如何将数据存储指定为源目录，以及如何将文件上传到数据存储。
 
 * 如果只需要几个数据文件和依赖项脚本且无法使用数据存储，请将文件放在与训练脚本相同的文件夹目录中。 在训练脚本或者调用训练脚本的代码中直接将此文件夹指定为 `source_directory`。
 

@@ -11,12 +11,12 @@ ms.date: 09/17/2020
 ms.author: gopalv
 ms.reviewer: larryfr
 ms.custom: deploy
-ms.openlocfilehash: de0a62ead6e1f40755daa068bf779b5391cf66a0
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.openlocfilehash: f88b6bd79e1004c108ef868f910a4e5a974cc08a
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100371968"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102508531"
 ---
 # <a name="advanced-entry-script-authoring"></a>高级入口脚本创作
 
@@ -76,27 +76,27 @@ def init():
     model = joblib.load(model_path)
 
 
-    # providing 3 sample inputs for schema generation
-    numpy_sample_input = NumpyParameterType(np.array([[1,2,3,4,5,6,7,8,9,10],[10,9,8,7,6,5,4,3,2,1]],dtype='float64'))
-    pandas_sample_input = PandasParameterType(pd.DataFrame({'name': ['Sarah', 'John'], 'age': [25, 26]}))
-    standard_sample_input = StandardPythonParameterType(0.0)
+# providing 3 sample inputs for schema generation
+numpy_sample_input = NumpyParameterType(np.array([[1,2,3,4,5,6,7,8,9,10],[10,9,8,7,6,5,4,3,2,1]],dtype='float64'))
+pandas_sample_input = PandasParameterType(pd.DataFrame({'name': ['Sarah', 'John'], 'age': [25, 26]}))
+standard_sample_input = StandardPythonParameterType(0.0)
 
-    # This is a nested input sample, any item wrapped by `ParameterType` will be described by schema
-    sample_input = StandardPythonParameterType({'input1': numpy_sample_input, 
-                                            'input2': pandas_sample_input, 
-                                            'input3': standard_sample_input})
+# This is a nested input sample, any item wrapped by `ParameterType` will be described by schema
+sample_input = StandardPythonParameterType({'input1': numpy_sample_input, 
+                                        'input2': pandas_sample_input, 
+                                        'input3': standard_sample_input})
 
-    sample_global_parameters = StandardPythonParameterType(1.0) # this is optional
-    sample_output = StandardPythonParameterType([1.0, 1.0])
-    outputs = StandardPythonParameterType({'Results':sample_output}) # 'Results' is case sensitive
+sample_global_parameters = StandardPythonParameterType(1.0) # this is optional
+sample_output = StandardPythonParameterType([1.0, 1.0])
+outputs = StandardPythonParameterType({'Results':sample_output}) # 'Results' is case sensitive
 
-    @input_schema('Inputs', sample_input) 
-    # 'Inputs' is case sensitive
-    
-    @input_schema('GlobalParameters', sample_global_parameters) 
-    # this is optional, 'GlobalParameters' is case sensitive
+@input_schema('Inputs', sample_input) 
+# 'Inputs' is case sensitive
 
-    @output_schema(outputs)
+@input_schema('GlobalParameters', sample_global_parameters) 
+# this is optional, 'GlobalParameters' is case sensitive
+
+@output_schema(outputs)
 
 def run(Inputs, GlobalParameters): 
     # the parameters here have to match those in decorator, both 'Inputs' and 
@@ -291,7 +291,7 @@ second_model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), second_model_na
 
 ### <a name="get_model_path"></a>get_model_path
 
-注册模型时，请提供用于在注册表中管理该模型的模型名称。 将此名称与 [Model.get_model_path()](/python/api/azureml-core/azureml.core.model.model?preserve-view=true&view=azure-ml-py#&preserve-view=trueget-model-path-model-name--version-none---workspace-none-) 方法结合使用，以检索本地文件系统上一个或多个模型文件的路径。 如果注册文件夹或文件集合，此 API 会返回包含这些文件的目录的路径。
+注册模型时，请提供用于在注册表中管理该模型的模型名称。 将此名称与 [Model.get_model_path()](/python/api/azureml-core/azureml.core.model.model#get-model-path-model-name--version-none---workspace-none-) 方法结合使用，以检索本地文件系统上一个或多个模型文件的路径。 如果注册文件夹或文件集合，此 API 会返回包含这些文件的目录的路径。
 
 注册模型时，请为其指定一个名称。 该名称对应于模型的放置位置（本地位置或在服务部署过程中指定的位置）。
 

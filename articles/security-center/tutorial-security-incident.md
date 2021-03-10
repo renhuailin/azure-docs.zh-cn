@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/17/2021
 ms.author: memildin
-ms.openlocfilehash: aeabfb42d378f22ff660214517fea031d678b208
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: 41f96202bffc0169be9705cd7e67c1eedbecbc05
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100635568"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102453438"
 ---
 # <a name="tutorial-triage-investigate-and-respond-to-security-alerts"></a>教程：会审、调查和响应安全警报
 安全中心使用高级分析和威胁情报来持续分析混合云工作负载，在云资源中出现潜在恶意活动时发出警报。 你还可以将其他安全产品和服务中的警报集成到安全中心。 发出警报后，需采取快速行动进行调查和修正潜在安全问题。 
@@ -112,7 +112,7 @@ ms.locfileid: "100635568"
 1. 选择相关订阅。
 1. 若要降级，请选择“Azure Defender”。
 1. 若要禁用自动预配功能，请打开“数据收集”页，并将“自动预配”设置为“关”  。
-4. 选择“保存”。
+1. 选择“保存”。
 
 >[!NOTE]
 > 禁用自动预配不会从已有 Log Analytics 代理的 Azure VM 中删除该代理。 禁用自动设置会限制对资源的安全监视。

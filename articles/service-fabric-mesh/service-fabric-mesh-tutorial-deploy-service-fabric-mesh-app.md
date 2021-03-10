@@ -6,17 +6,17 @@ ms.topic: tutorial
 ms.date: 09/18/2018
 ms.author: gwallace
 ms.custom: mvc, devcenter
-ms.openlocfilehash: be1e477bf3f11d487b8a6705535c09ff6e2b9c3e
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: 713f8dcb3d3b3d30fecbea4bb6b50cc4e47d451d
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99626727"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102216745"
 ---
 # <a name="tutorial-deploy-a-service-fabric-mesh-application"></a>教程：部署 Service Fabric 网格应用程序
 
 > [!IMPORTANT]
-> Azure Service Fabric 网格的预览版已停用。 不允许再通过 Service Fabric 网格 API 进行新的部署。 对现有部署的支持会持续到 2021 年 4 月 28 日。
+> Azure Service Fabric 网格的预览版已停用。 不允许再通过 Service Fabric 网格 API 进行新的部署。 对现有部署的支持将会持续到 2021 年 4 月 28 日。
 > 
 > 有关详细信息，请参阅 [Azure Service Fabric 网格预览版停用](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/)。
 
@@ -144,4 +144,4 @@ az mesh app list --output table
 > [!div class="nextstepaction"]
 > [升级 Service Fabric 网格应用](service-fabric-mesh-tutorial-upgrade.md)
 
-[azure-cli-install]: /cli/azure/install-azure-cli?view=azure-cli-latest
+[azure-cli-install]: /cli/azure/install-azure-cli

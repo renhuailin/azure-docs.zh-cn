@@ -1,6 +1,6 @@
 ### YamlMime:Landing
 title: 语音转文本文档
-summary: 使用语音服务提供的语音转文本（也称为语音识别）功能，可将音频流实时听录为文本和批量听录为文本。 通过其他参考文本输入，它还可实现实时发音评估，并为演讲音频提供精确和熟练的反馈。
+summary: 使用语音服务提供的语音转文本（也称为语音识别）功能，可将音频流实时听录为文本和批量听录为文本。 借助附加的参考文本输入，它还可以进行实时发音评估，并向说话人提供有关语音准确性和流畅性的反馈。
 metadata:
   title: 语音转文本文档 - 教程和 API 参考 - Azure 认知服务 | Microsoft Docs
   titleSuffix: Azure Cognitive Services
@@ -11,12 +11,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 03/19/2020
   ms.author: trbye
-  ms.openlocfilehash: c1f4b6b43f661251f764e65e5d5378952ab99d10
-  ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
-  ms.translationtype: MT
+  ms.openlocfilehash: c4a765c14815015bcf70a4718fe8d189fe0d0c49
+  ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+  ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 05/22/2020
-  ms.locfileid: "83800858"
+  ms.lasthandoff: 12/05/2020
+  ms.locfileid: "102234383"
 landingContent:
 - title: 关于语音转文本
   linkLists:
@@ -26,41 +26,37 @@ landingContent:
       url: speech-to-text.md
     - text: 什么是批量语音转文本？
       url: batch-transcription.md
-    - text: 语音识别基础知识
-      url: speech-to-text-basics.md
-    - text: 将语音 CLI 用于语音到文本，无代码
+    - text: 什么是自定义语音识别？
+      url: custom-speech-overview.md
+    - text: 使用语音 CLI 无需代码即可将语音转换为文本
       url: spx-overview.md
   - linkListType: quickstart
     links:
-    - text: 识别来自麦克风输入的语音
-      url: quickstarts/speech-to-text-from-microphone.md
-    - text: 识别音频文件中的语音
-      url: quickstarts/speech-to-text-from-file.md
-    - text: 识别存储在 Blob 存储中的语音
-      url: quickstarts/from-blob.md
-    - text: 通过参考输入进行发音评估
-      url: rest-speech-to-text.md#pronunciation-assessment-parameters
+    - text: 语音转文本入门
+      url: get-started-speech-to-text.md
 - title: 使用语音转文本进行开发
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: 选择语音识别模式
-      url: how-to-choose-recognition-mode.md
+      url: ./get-started-speech-to-text.md
     - text: 更改语音识别源语言
       url: how-to-specify-source-language.md
     - text: 使用自定义语音识别提高准确性
-      url: how-to-custom-speech.md
+      url: ./custom-speech-overview.md
     - text: 使用压缩的音频输入格式
       url: how-to-use-codec-compressed-audio-input-streams.md
+    - text: 从 v2.0 迁移到 v3.0
+      url: migrate-v2-to-v3.md
   - linkListType: tutorial
     links:
     - text: 使用租户模型提高准确性
       url: tutorial-tenant-model.md
   - linkListType: concept
     links:
-    - text: 准备自定义语音的数据
+    - text: 准备自定义语音识别的数据
       url: how-to-custom-speech-test-and-train.md
-    - text: 训练自定义语音的模型
+    - text: 训练自定义语音识别模型
       url: how-to-custom-speech-train-model.md
     - text: 创建用户标记的听录内容
       url: how-to-custom-speech-human-labeled-transcriptions.md
@@ -74,3 +70,9 @@ landingContent:
       url: faq-stt.md
     - text: 语音转文本定价
       url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services
+- title: 帮助和反馈
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: 支持和帮助选项
+      url: ../cognitive-services-support-options.md?context=/azure/cognitive-services/speech-service/context/context

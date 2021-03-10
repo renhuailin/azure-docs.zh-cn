@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-js
-ms.openlocfilehash: dbf2331dc6bcd3187175554b61d347e8bb2c04a4
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 5e7f38e4bbc95e04bf54f8f7a2dd80e21891e8df
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624993"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102215487"
 ---
 # <a name="tutorial-find-and-display-routes-for-different-modes-of-travel-using-azure-maps"></a>教程：使用 Azure Maps 查找和显示不同出行模式的路线
 
@@ -117,7 +117,7 @@ ms.locfileid: "98624993"
     });
     ```
 
-    在地图 `ready` 事件处理程序中，地图上的交通流设置已设置为 `relative`，这是相对于自由流动的道路速度。 有关更多交通选项，请参阅 [TrafficOptions 接口](/javascript/api/azure-maps-control/atlas.trafficoptions?preserve-view=false&view=azure-maps-typescript-latest)。
+    在地图 `ready` 事件处理程序中，地图上的交通流设置已设置为 `relative`，这是相对于自由流动的道路速度。 有关更多交通选项，请参阅 [TrafficOptions 接口](/javascript/api/azure-maps-control/atlas.trafficoptions)。
 
 2. 保存“MapTruckRoute.html”文件并刷新浏览器中的页  。 如果放大地图并显示任何城市（如洛杉矶），你可看到显示了当前交通流数据的街道。
 
@@ -193,7 +193,7 @@ ms.locfileid: "98624993"
 
     此代码创建两个 [GeoJSON 点对象](https://en.wikipedia.org/wiki/GeoJSON)来表示起点和终点，这两个对象随后添加到数据源中。
 
-    最后一个代码块使用起点和终点的纬度和经度来设置相机视图。 起点和终点会添加到数据源。 起点和终点的边框使用 `atlas.data.BoundingBox.fromData` 函数计算。 此边框用于通过 `map.setCamera` 函数设置基于整个路线的地图相机视图。 将会添加一个填充来弥补符号图标的像素尺寸。 有关地图控件的 setCamera 属性的详细信息，请参阅 [setCamera(CameraOptions | CameraBoundsOptions & AnimationOptions)](/javascript/api/azure-maps-control/atlas.map?view=azure-maps-typescript-latest#setcamera-cameraoptions---cameraboundsoptions---animationoptions-&preserve-view=false) 属性。
+    最后一个代码块使用起点和终点的纬度和经度来设置相机视图。 起点和终点会添加到数据源。 起点和终点的边框使用 `atlas.data.BoundingBox.fromData` 函数计算。 此边框用于通过 `map.setCamera` 函数设置基于整个路线的地图相机视图。 将会添加一个填充来弥补符号图标的像素尺寸。 有关地图控件的 setCamera 属性的详细信息，请参阅 [setCamera(CameraOptions | CameraBoundsOptions & AnimationOptions)](/javascript/api/azure-maps-control/atlas.map#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) 属性。
 
 3. 保存 TruckRoute.html 并刷新浏览器。 现在，地图以西雅图为中心。 泪珠形蓝色图钉标记起点。 圆形蓝色图钉标记终点。
 

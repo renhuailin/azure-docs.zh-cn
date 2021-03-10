@@ -1,7 +1,7 @@
 ---
-title: 将 MLflow 模型部署为 web 服务
+title: 将 MLflow 模型部署为 Web 服务
 titleSuffix: Azure Machine Learning
-description: 使用 Azure 机器学习设置 MLflow，以将 ML 模型部署为 Azure web 服务。
+description: 使用 Azure 机器学习设置 MLflow，以将 ML 模型部署为 Azure Web 服务。
 services: machine-learning
 author: shivp950
 ms.author: shipatel
@@ -11,27 +11,27 @@ ms.reviewer: nibaccam
 ms.date: 12/23/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: aaa7dbf2ae7c8acb3b3beeb3e9098c5058af26a7
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
-ms.translationtype: MT
+ms.openlocfilehash: c45b819f9fc02fae40c2bf7fc5c2247c8c0a6147
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97918086"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102517474"
 ---
-# <a name="deploy-mlflow-models-as-azure-web-services-preview"></a>将 MLflow 模型部署为 Azure web 服务 (预览版) 
+# <a name="deploy-mlflow-models-as-azure-web-services-preview"></a>将 MLflow 模型部署为 Azure Web 服务（预览版）
 
-在本文中，了解如何将 [MLflow](https://www.mlflow.org) 模型部署为 Azure web 服务，以便你可以利用 Azure 机器学习的模型管理和数据偏差检测功能，并将其应用到生产模型。
+本文介绍如何将 [MLflow](https://www.mlflow.org) 模型部署为 Azure Web 服务，以便你可以利用 Azure 机器学习模型管理和数据偏移检测功能，并将它们应用于生产模型。
 
-Azure 机器学习提供的部署配置：
-* Azure 容器实例 (ACI) 这是一种适用于快速开发测试部署的合适选择。
-* Azure Kubernetes Service (AKS) 建议用于可缩放的生产部署。
+Azure 机器学习提供用于以下项的部署配置：
+* Azure 容器实例 (ACI)，适用于快速开发测试部署。
+* Azure Kubernetes 服务 (AKS)，建议用于可缩放的生产部署。
 > [!TIP]
-> 本文档中的信息主要面向需要将 MLflow 模型部署到 Azure 机器学习 web 服务终结点的数据科学家和开发人员。 如果你是一名管理员并想要了解如何监视 Azure 机器学习的资源使用情况和事件（例如配额、已完成的训练运行或已完成的模型部署），请参阅[监视 Azure 机器学习](monitor-azure-machine-learning.md)。
-## <a name="mlflow-with-azure-machine-learning-deployment"></a>Azure 机器学习部署的 MLflow
+> 本文档中的信息主要面向想要将其 MLflow 模型部署到 Azure 机器学习 Web 服务终结点的数据科学家和开发人员。 如果你是一名管理员并想要了解如何监视 Azure 机器学习的资源使用情况和事件（例如配额、已完成的训练运行或已完成的模型部署），请参阅[监视 Azure 机器学习](monitor-azure-machine-learning.md)。
+## <a name="mlflow-with-azure-machine-learning-deployment"></a>MLflow 与 Azure 机器学习部署
 
-MLflow 是一个开放源代码库，用于管理机器学习试验的生命周期。 它与 Azure 机器学习的集成使你可以将此管理扩展到你的生产模型部署阶段以外的模型定型。
+MLflow 是一个开放源代码库，用于管理机器学习试验的生命周期。 它与 Azure 机器学习的集成使你可以将此管理从模型训练扩展到生产模型的部署阶段。
 
-下图演示了通过 MLflow 部署 API 和 Azure 机器学习，你可以将创建的模型（如 PyTorch、Tensorflow、scikit-learn，等等）部署为 Azure web 服务，并在工作区中对其进行管理。 
+下图演示了通过 MLflow 部署 API 和 Azure 机器学习，你可以将使用常用框架（如 PyTorch、Tensorflow、scikit-learn 等）创建的模型部署为 Azure Web 服务，并在工作区中对其进行管理。 
 
 ![ 使用 Azure 机器学习部署 mlflow 模型](./media/how-to-deploy-mlflow-models/mlflow-diagram-deploy.png)
 
@@ -41,17 +41,17 @@ MLflow 是一个开放源代码库，用于管理机器学习试验的生命周�
 
 ## <a name="prerequisites"></a>先决条件
 
-* 机器学习模型。 如果没有训练的模型，请在 [此](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/using-mlflow) 存储库中找到最适合计算方案的笔记本示例，并按照说明进行操作。 
+* 一个机器学习模型。 如果没有训练的模型，请在[此存储库](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/using-mlflow)中找到最适合你的计算场景的笔记本示例，并按照其说明进行操作。 
 * [设置 MLflow 跟踪 URI 以连接 Azure 机器学习](how-to-use-mlflow.md#track-local-runs)。
 * 安装 `azureml-mlflow` 包。 
-    * 此包会自动引入 [Azure 机器学习 Python SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py) 的 `azureml-core`，它为 MLflow 访问工作区提供了连接。
-* 查看 [在工作区中执行 MLflow 操作所需的访问权限](how-to-assign-roles.md#mlflow-operations)。 
+    * 此包会自动引入 [Azure 机器学习 Python SDK](/python/api/overview/azure/ml/install) 的 `azureml-core`，它为 MLflow 访问工作区提供了连接。
+* 查看[在工作区中执行 MLflow 操作所需的访问权限](how-to-assign-roles.md#mlflow-operations)。 
 
-## <a name="deploy-to-azure-container-instance-aci"></a>部署到 Azure 容器实例 (ACI) 
+## <a name="deploy-to-azure-container-instance-aci"></a>部署到 Azure 容器实例 (ACI)
 
-若要将 MLflow 模型部署到 Azure 机器学习 web 服务，必须使用 MLflow 跟踪 URI 设置模型， [以便与 Azure 机器学习连接](how-to-use-mlflow.md)。 
+若要将 MLflow 模型部署到 Azure 机器学习 Web 服务，必须使用 [MLflow 跟踪 URI 设置模型以连接 Azure 机器学习](how-to-use-mlflow.md)。 
 
-使用 [deploy_configuration()](/python/api/azureml-core/azureml.core.webservice.aciwebservice?preserve-view=true&view=azure-ml-py#&preserve-view=truedeploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none-) 方法设置部署配置。 你还可以添加标记和说明来帮助跟踪你的 Web 服务。
+使用 [deploy_configuration()](/python/api/azureml-core/azureml.core.webservice.aciwebservice#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none-) 方法设置部署配置。 你还可以添加标记和说明来帮助跟踪你的 Web 服务。
 
 ```python
 from azureml.core.webservice import AciWebservice, Webservice
@@ -67,7 +67,7 @@ aci_config = AciWebservice.deploy_configuration(cpu_cores=1,
                                                 location='eastus2')
 ```
 
-然后，通过 MLflow 的 Azure 机器学习 [部署](https://www.mlflow.org/docs/latest/python_api/mlflow.azureml.html#mlflow.azureml.deploy) 方法，在一步中注册并部署模型。 
+然后，使用 Azure 机器学习的 MLflow [deploy](https://www.mlflow.org/docs/latest/python_api/mlflow.azureml.html#mlflow.azureml.deploy) 方法一步注册和部署模型。 
 
 ```python
 (webservice,model) = mlflow.azureml.deploy( model_uri='runs:/{}/{}'.format(run.id, model_path),
@@ -82,9 +82,9 @@ webservice.wait_for_deployment(show_output=True)
 
 ## <a name="deploy-to-azure-kubernetes-service-aks"></a>部署到 Azure Kubernetes 服务 (AKS)
 
-若要将 MLflow 模型部署到 Azure 机器学习 web 服务，必须使用 MLflow 跟踪 URI 设置模型， [以便与 Azure 机器学习连接](how-to-use-mlflow.md)。 
+若要将 MLflow 模型部署到 Azure 机器学习 Web 服务，必须使用 [MLflow 跟踪 URI 设置模型以连接 Azure 机器学习](how-to-use-mlflow.md)。 
 
-若要部署到 AKS，请先创建 AKS 群集。 使用 [ComputeTarget.create()](/python/api/azureml-core/azureml.core.computetarget?preserve-view=true&view=azure-ml-py#&preserve-view=truecreate-workspace--name--provisioning-configuration-) 方法创建 AKS 群集。 创建新群集可能需要 20-25 分钟。
+若要部署到 AKS，请先创建 AKS 群集。 使用 [ComputeTarget.create()](/python/api/azureml-core/azureml.core.computetarget#create-workspace--name--provisioning-configuration-) 方法创建 AKS 群集。 创建新群集可能需要 20-25 分钟。
 
 ```python
 from azureml.core.compute import AksCompute, ComputeTarget
@@ -104,7 +104,7 @@ aks_target.wait_for_completion(show_output = True)
 print(aks_target.provisioning_state)
 print(aks_target.provisioning_errors)
 ```
-使用 [deploy_configuration()](/python/api/azureml-core/azureml.core.webservice.aciwebservice?preserve-view=true&view=azure-ml-py#&preserve-view=truedeploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none-) 方法设置部署配置。 你还可以添加标记和说明来帮助跟踪你的 Web 服务。
+使用 [deploy_configuration()](/python/api/azureml-core/azureml.core.webservice.aciwebservice#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none-) 方法设置部署配置。 你还可以添加标记和说明来帮助跟踪你的 Web 服务。
 
 ```python
 from azureml.core.webservice import Webservice, AksWebservice
@@ -114,7 +114,7 @@ aks_config = AksWebservice.deploy_configuration(enable_app_insights=True, comput
 
 ```
 
-然后，通过 MLflow 的 Azure 机器学习 [部署](https://www.mlflow.org/docs/latest/python_api/mlflow.azureml.html#mlflow.azureml.deploy) 方法，在一步中注册并部署模型。 
+然后，使用 Azure 机器学习的 MLflow [deploy](https://www.mlflow.org/docs/latest/python_api/mlflow.azureml.html#mlflow.azureml.deploy) 方法一步注册和部署模型。 
 
 ```python
 
@@ -139,7 +139,7 @@ webservice.wait_for_deployment()
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果不打算使用已部署的 web 服务，请使用 `service.delete()` 将其从笔记本中删除。  有关详细信息，请参阅 [WebService ( # B1 ](/python/api/azureml-core/azureml.core.webservice%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truedelete--)的文档。
+如果不打算使用已部署的 Web 服务，请使用 `service.delete()` 将其从笔记本中删除。  有关详细信息，请参阅 [WebService.delete()](/python/api/azureml-core/azureml.core.webservice%28class%29#delete--) 的文档。
 
 ## <a name="example-notebooks"></a>示例笔记本
 

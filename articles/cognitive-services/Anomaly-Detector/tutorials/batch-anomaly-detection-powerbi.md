@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: mbullwin
-ms.openlocfilehash: a17301e0807877662ae1bf34ade48e90a1d30c0c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b122765a3d77428008c91dda471706cad53a5616
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96006194"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102430592"
 ---
 # <a name="tutorial-visualize-anomalies-using-batch-detection-and-power-bi"></a>教程：使用批量检测和 Power BI 将异常可视化
 
@@ -32,7 +32,7 @@ ms.locfileid: "96006194"
 * [Azure 订阅](https://azure.microsoft.com/free/cognitive-services)
 * 免费提供的 [Microsoft Power BI Desktop](https://powerbi.microsoft.com/get-started/)。
 * 一个 Excel 文件 (.xlsx)，其中包含时序数据点。 可在 [GitHub](https://go.microsoft.com/fwlink/?linkid=2090962) 上找到本快速入门的示例数据
-* 拥有 Azure 订阅后，可在 Azure 门户中<a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector"  title="创建异常检测器资源"  target="_blank">创建异常检测器资源<span class="docon docon-navigate-external x-hidden-focus"></span></a>来获取密钥和终结点。
+* 拥有 Azure 订阅后，可在 Azure 门户中<a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector"  title="创建异常检测器资源"  target="_blank">创建异常检测器资源</a>来获取密钥和终结点。
     * 需要从创建的资源获取密钥和终结点，以便将应用程序连接到异常检测器 API。 稍后会在本快速入门中执行此操作。
 
 [!INCLUDE [cognitive-services-anomaly-detector-data-requirements](../../../../includes/cognitive-services-anomaly-detector-data-requirements.md)]

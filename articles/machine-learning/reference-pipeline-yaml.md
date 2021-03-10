@@ -11,12 +11,12 @@ ms.author: nilsp
 author: NilsPohlmann
 ms.date: 07/31/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: bfeab990c841f6b65e665b4a8aabdfd8b251da60
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
-ms.translationtype: MT
+ms.openlocfilehash: e2b5a3322f633ca8301357c2186d78d3ac437ae2
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323916"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102521962"
 ---
 # <a name="define-machine-learning-pipelines-in-yaml"></a>在 YAML 中定义机器学习管道
 
@@ -40,7 +40,7 @@ ms.locfileid: "93323916"
 
 ## <a name="pipeline-definition"></a>管道定义
 
-管道定义使用以下对应于 [Pipelines](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline.pipeline?preserve-view=true&view=azure-ml-py) 类的键：
+管道定义使用以下对应于 [Pipelines](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline.pipeline) 类的键：
 
 | YAML 键 | 说明 |
 | ----- | ----- |
@@ -52,7 +52,7 @@ ms.locfileid: "93323916"
 
 ## <a name="parameters"></a>parameters
 
-`parameters` 节使用以下对应于 [PipelineParameter](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelineparameter?preserve-view=true&view=azure-ml-py) 类的键：
+`parameters` 节使用以下对应于 [PipelineParameter](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelineparameter) 类的键：
 
 | YAML 键 | 说明 |
 | ---- | ---- |
@@ -80,7 +80,7 @@ pipeline:
 
 ## <a name="data-reference"></a>数据引用
 
-`data_references` 节使用以下对应于 [DataReference](/python/api/azureml-core/azureml.data.data_reference.datareference?preserve-view=true&view=azure-ml-py) 的键：
+`data_references` 节使用以下对应于 [DataReference](/python/api/azureml-core/azureml.data.data_reference.datareference) 的键：
 
 | YAML 键 | 说明 |
 | ----- | ----- |
@@ -108,12 +108,12 @@ pipeline:
 
 | 步骤类型 | 说明 |
 | ----- | ----- |
-| `AdlaStep` | 使用 Azure Data Lake Analytics 运行 U-SQL 脚本。 对应于 [AdlaStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.adlastep?preserve-view=true&view=azure-ml-py) 类。 |
-| `AzureBatchStep` | 使用 Azure Batch 运行作业。 对应于 [AzureBatchStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.azurebatchstep?preserve-view=true&view=azure-ml-py) 类。 |
-| `DatabricsStep` | 添加 Databricks 笔记本、Python 脚本或 JAR。 对应于 [DatabricksStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricksstep?preserve-view=true&view=azure-ml-py) 类。 |
-| `DataTransferStep` | 在存储选项之间传输数据。 对应于 [DataTransferStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?preserve-view=true&view=azure-ml-py) 类。 |
-| `PythonScriptStep` | 运行 Python 脚本。 对应于 [PythonScriptStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?preserve-view=true&view=azure-ml-py) 类。 |
-| `ParallelRunStep` | 运行 Python 脚本，以异步方式并行处理大量数据。 对应于 [ParallelRunStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallel_run_step.parallelrunstep?preserve-view=true&view=azure-ml-py) 类。 |
+| `AdlaStep` | 使用 Azure Data Lake Analytics 运行 U-SQL 脚本。 对应于 [AdlaStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.adlastep) 类。 |
+| `AzureBatchStep` | 使用 Azure Batch 运行作业。 对应于 [AzureBatchStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.azurebatchstep) 类。 |
+| `DatabricsStep` | 添加 Databricks 笔记本、Python 脚本或 JAR。 对应于 [DatabricksStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricksstep) 类。 |
+| `DataTransferStep` | 在存储选项之间传输数据。 对应于 [DataTransferStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep) 类。 |
+| `PythonScriptStep` | 运行 Python 脚本。 对应于 [PythonScriptStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep) 类。 |
+| `ParallelRunStep` | 运行 Python 脚本，以异步方式并行处理大量数据。 对应于 [ParallelRunStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallel_run_step.parallelrunstep) 类。 |
 
 ### <a name="adla-step"></a>ADLA 步骤
 
@@ -122,8 +122,8 @@ pipeline:
 | `script_name` | U-SQL 脚本的名称（相对于 `source_directory`）。 |
 | `compute_target` | 用于此步骤的 Azure Data Lake 计算目标。 |
 | `parameters` | 管道的[参数](#parameters)。 |
-| `inputs` | 输入可以是 [InputPortBinding](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.inputportbinding?preserve-view=true&view=azure-ml-py)、[DataReference](#data-reference)、[PortDataReference](/python/api/azureml-pipeline-core/azureml.pipeline.core.portdatareference?preserve-view=true&view=azure-ml-py)、[PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?preserve-view=true&view=azure-ml-py)、[Dataset](/python/api/azureml-core/azureml.core.dataset%28class%29?preserve-view=true&view=azure-ml-py)、[DatasetDefinition](/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition?preserve-view=true&view=azure-ml-py) 或 [PipelineDataset](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset?preserve-view=true&view=azure-ml-py)。 |
-| `outputs` | 输出可以是 [PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?preserve-view=true&view=azure-ml-py) 或 [OutputPortBinding](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.outputportbinding?preserve-view=true&view=azure-ml-py)。 |
+| `inputs` | 输入可以是 [InputPortBinding](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.inputportbinding)、[DataReference](#data-reference)、[PortDataReference](/python/api/azureml-pipeline-core/azureml.pipeline.core.portdatareference)、[PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata)、[Dataset](/python/api/azureml-core/azureml.core.dataset%28class%29)、[DatasetDefinition](/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition) 或 [PipelineDataset](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset)。 |
+| `outputs` | 输出可以是 [PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata) 或 [OutputPortBinding](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.outputportbinding)。 |
 | `source_directory` | 包含脚本、程序集等的目录。 |
 | `priority` | 用于当前作业的优先级值。 |
 | `params` | 名称/值对的字典。 |
@@ -171,8 +171,8 @@ pipeline:
 | YAML 键 | 说明 |
 | ----- | ----- |
 | `compute_target` | 用于此步骤的 Azure Batch 计算目标。 |
-| `inputs` | 输入可以是 [InputPortBinding](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.inputportbinding?preserve-view=true&view=azure-ml-py)、[DataReference](#data-reference)、[PortDataReference](/python/api/azureml-pipeline-core/azureml.pipeline.core.portdatareference?preserve-view=true&view=azure-ml-py)、[PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?preserve-view=true&view=azure-ml-py)、[Dataset](/python/api/azureml-core/azureml.core.dataset%28class%29?preserve-view=true&view=azure-ml-py)、[DatasetDefinition](/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition?preserve-view=true&view=azure-ml-py) 或 [PipelineDataset](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset?preserve-view=true&view=azure-ml-py)。 |
-| `outputs` | 输出可以是 [PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?preserve-view=true&view=azure-ml-py) 或 [OutputPortBinding](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.outputportbinding?preserve-view=true&view=azure-ml-py)。 |
+| `inputs` | 输入可以是 [InputPortBinding](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.inputportbinding)、[DataReference](#data-reference)、[PortDataReference](/python/api/azureml-pipeline-core/azureml.pipeline.core.portdatareference)、[PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata)、[Dataset](/python/api/azureml-core/azureml.core.dataset%28class%29)、[DatasetDefinition](/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition) 或 [PipelineDataset](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset)。 |
+| `outputs` | 输出可以是 [PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata) 或 [OutputPortBinding](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.outputportbinding)。 |
 | `source_directory` | 包含模块二进制文件、可执行文件、程序集等的目录。 |
 | `executable` | 要作为此作业的一部分运行的命令/可执行文件的名称。 |
 | `create_pool` | 布尔标志，指示在运行作业之前是否创建池。 |
@@ -225,12 +225,12 @@ pipeline:
 | YAML 键 | 说明 |
 | ----- | ----- |
 | `compute_target` | 用于此步骤的 Azure Databricks 计算目标。 |
-| `inputs` | 输入可以是 [InputPortBinding](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.inputportbinding?preserve-view=true&view=azure-ml-py)、[DataReference](#data-reference)、[PortDataReference](/python/api/azureml-pipeline-core/azureml.pipeline.core.portdatareference?preserve-view=true&view=azure-ml-py)、[PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?preserve-view=true&view=azure-ml-py)、[Dataset](/python/api/azureml-core/azureml.core.dataset%28class%29?preserve-view=true&view=azure-ml-py)、[DatasetDefinition](/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition?preserve-view=true&view=azure-ml-py) 或 [PipelineDataset](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset?preserve-view=true&view=azure-ml-py)。 |
-| `outputs` | 输出可以是 [PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?preserve-view=true&view=azure-ml-py) 或 [OutputPortBinding](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.outputportbinding?preserve-view=true&view=azure-ml-py)。 |
+| `inputs` | 输入可以是 [InputPortBinding](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.inputportbinding)、[DataReference](#data-reference)、[PortDataReference](/python/api/azureml-pipeline-core/azureml.pipeline.core.portdatareference)、[PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata)、[Dataset](/python/api/azureml-core/azureml.core.dataset%28class%29)、[DatasetDefinition](/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition) 或 [PipelineDataset](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset)。 |
+| `outputs` | 输出可以是 [PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata) 或 [OutputPortBinding](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.outputportbinding)。 |
 | `run_name` | 此运行在 Databricks 中的名称。 |
 | `source_directory` | 包含脚本和其他文件的目录。 |
 | `num_workers` | Databricks 运行群集的辅助角色的静态编号。 |
-| `runconfig` | `.runconfig` 文件的路径。 此文件是 [RunConfiguration](/python/api/azureml-core/azureml.core.runconfiguration?preserve-view=true&view=azure-ml-py) 类的 YAML 表示形式。 有关此文件的结构的详细信息，请参阅 [runconfigschema.json](https://github.com/microsoft/MLOps/blob/b4bdcf8c369d188e83f40be8b748b49821f71cf2/infra-as-code/runconfigschema.json)。 |
+| `runconfig` | `.runconfig` 文件的路径。 此文件是 [RunConfiguration](/python/api/azureml-core/azureml.core.runconfiguration) 类的 YAML 表示形式。 有关此文件的结构的详细信息，请参阅 [runconfigschema.json](https://github.com/microsoft/MLOps/blob/b4bdcf8c369d188e83f40be8b748b49821f71cf2/infra-as-code/runconfigschema.json)。 |
 | `allow_reuse` | 确定当使用相同的设置再次运行时，该步骤是否应重用以前的结果。 |
 
 以下示例包含 Databricks 步骤：
@@ -279,8 +279,8 @@ pipeline:
 | YAML 键 | 说明 |
 | ----- | ----- |
 | `compute_target` | 用于此步骤的 Azure 数据工厂计算目标。 |
-| `source_data_reference` | 充当数据传输操作的源的输入连接。 支持的值为 [InputPortBinding](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.inputportbinding?preserve-view=true&view=azure-ml-py)、[DataReference](#data-reference)、[PortDataReference](/python/api/azureml-pipeline-core/azureml.pipeline.core.portdatareference?preserve-view=true&view=azure-ml-py)、[PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?preserve-view=true&view=azure-ml-py)、[Dataset](/python/api/azureml-core/azureml.core.dataset%28class%29?preserve-view=true&view=azure-ml-py)、[DatasetDefinition](/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition?preserve-view=true&view=azure-ml-py) 或 [PipelineDataset](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset?preserve-view=true&view=azure-ml-py)。 |
-| `destination_data_reference` | 充当数据传输操作的目标的输入连接。 支持的值为 [PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?preserve-view=true&view=azure-ml-py) 和 [OutputPortBinding](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.outputportbinding?preserve-view=true&view=azure-ml-py)。 |
+| `source_data_reference` | 充当数据传输操作的源的输入连接。 支持的值为 [InputPortBinding](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.inputportbinding)、[DataReference](#data-reference)、[PortDataReference](/python/api/azureml-pipeline-core/azureml.pipeline.core.portdatareference)、[PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata)、[Dataset](/python/api/azureml-core/azureml.core.dataset%28class%29)、[DatasetDefinition](/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition) 或 [PipelineDataset](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset)。 |
+| `destination_data_reference` | 充当数据传输操作的目标的输入连接。 支持的值为 [PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata) 和 [OutputPortBinding](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.outputportbinding)。 |
 | `allow_reuse` | 确定当使用相同的设置再次运行时，该步骤是否应重用以前的结果。 |
 
 以下示例包含数据传输步骤：
@@ -322,11 +322,11 @@ pipeline:
 
 | YAML 键 | 说明 |
 | ----- | ----- |
-| `inputs` | 输入可以是 [InputPortBinding](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.inputportbinding?preserve-view=true&view=azure-ml-py)、[DataReference](#data-reference)、[PortDataReference](/python/api/azureml-pipeline-core/azureml.pipeline.core.portdatareference?preserve-view=true&view=azure-ml-py)、[PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?preserve-view=true&view=azure-ml-py)、[Dataset](/python/api/azureml-core/azureml.core.dataset%28class%29?preserve-view=true&view=azure-ml-py)、[DatasetDefinition](/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition?preserve-view=true&view=azure-ml-py) 或 [PipelineDataset](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset?preserve-view=true&view=azure-ml-py)。 |
-| `outputs` | 输出可以是 [PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?preserve-view=true&view=azure-ml-py) 或 [OutputPortBinding](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.outputportbinding?preserve-view=true&view=azure-ml-py)。 |
+| `inputs` | 输入可以是 [InputPortBinding](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.inputportbinding)、[DataReference](#data-reference)、[PortDataReference](/python/api/azureml-pipeline-core/azureml.pipeline.core.portdatareference)、[PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata)、[Dataset](/python/api/azureml-core/azureml.core.dataset%28class%29)、[DatasetDefinition](/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition) 或 [PipelineDataset](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset)。 |
+| `outputs` | 输出可以是 [PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata) 或 [OutputPortBinding](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.outputportbinding)。 |
 | `script_name` | Python 脚本的名称（相对于 `source_directory`）。 |
 | `source_directory` | 包含脚本、Conda 环境等的目录。 |
-| `runconfig` | `.runconfig` 文件的路径。 此文件是 [RunConfiguration](/python/api/azureml-core/azureml.core.runconfiguration?preserve-view=true&view=azure-ml-py) 类的 YAML 表示形式。 有关此文件的结构的详细信息，请参阅 [runconfig.json](https://github.com/microsoft/MLOps/blob/b4bdcf8c369d188e83f40be8b748b49821f71cf2/infra-as-code/runconfigschema.json)。 |
+| `runconfig` | `.runconfig` 文件的路径。 此文件是 [RunConfiguration](/python/api/azureml-core/azureml.core.runconfiguration) 类的 YAML 表示形式。 有关此文件的结构的详细信息，请参阅 [runconfig.json](https://github.com/microsoft/MLOps/blob/b4bdcf8c369d188e83f40be8b748b49821f71cf2/infra-as-code/runconfigschema.json)。 |
 | `allow_reuse` | 确定当使用相同的设置再次运行时，该步骤是否应重用以前的结果。 |
 
 以下示例包含 Python 脚本步骤：
@@ -369,11 +369,11 @@ pipeline:
 
 | YAML 键 | 说明 |
 | ----- | ----- |
-| `inputs` | 输入可以是 [Dataset](/python/api/azureml-core/azureml.core.dataset%28class%29?preserve-view=true&view=azure-ml-py)、[DatasetDefinition](/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition?preserve-view=true&view=azure-ml-py) 或 [PipelineDataset](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset?preserve-view=true&view=azure-ml-py)。 |
-| `outputs` | 输出可以是 [PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?preserve-view=true&view=azure-ml-py) 或 [OutputPortBinding](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.outputportbinding?preserve-view=true&view=azure-ml-py)。 |
+| `inputs` | 输入可以是 [Dataset](/python/api/azureml-core/azureml.core.dataset%28class%29)、[DatasetDefinition](/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition) 或 [PipelineDataset](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset)。 |
+| `outputs` | 输出可以是 [PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata) 或 [OutputPortBinding](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.outputportbinding)。 |
 | `script_name` | Python 脚本的名称（相对于 `source_directory`）。 |
 | `source_directory` | 包含脚本、Conda 环境等的目录。 |
-| `parallel_run_config` | `parallel_run_config.yml` 文件的路径。 此文件是 [ParallelRunConfig](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallelrunconfig?preserve-view=true&view=azure-ml-py) 类的 YAML 表示形式。 |
+| `parallel_run_config` | `parallel_run_config.yml` 文件的路径。 此文件是 [ParallelRunConfig](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallelrunconfig) 类的 YAML 表示形式。 |
 | `allow_reuse` | 确定当使用相同的设置再次运行时，该步骤是否应重用以前的结果。 |
 
 以下示例包含并行运行步骤：

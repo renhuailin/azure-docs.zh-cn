@@ -6,19 +6,19 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 02/03/2021
+ms.date: 02/22/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: 44265efd4d125bb2701742a490fc883c48f1877b
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 6c067fb5f39e82bb1601ce7b4d9dc5e2ce4ac624
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99550986"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102440133"
 ---
 # <a name="tutorial-run-a-compute-workload-with-iot-edge-module-on-azure-stack-edge-pro-gpu"></a>Tutorial:使用 IoT Edge 模块在 Azure Stack Edge Pro GPU 上运行计算工作负载
 
-<!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
+[!INCLUDE [applies-to-GPU-and-pro-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-sku.md)]
 
 本教程介绍如何在 Azure Stack Edge Pro GPU 设备上使用 IoT Edge 模块运行计算工作负载。 配置计算后，设备可在将数据发送到 Azure 之前先转换数据。
 
@@ -75,7 +75,7 @@ ms.locfileid: "99550986"
 
     `rsync <source file path> < destination file path>`
 
-    有关 `rsync` 命令的详细信息，请参阅 [Rsync 文档](https://www.computerhope.com/unix/rsync.htm)。
+    有关 `rsync` 命令的详细信息，请转到 [`Rsync` 文档](https://www.computerhope.com/unix/rsync.htm)。
  
 3. 转到“云存储空间网关”>“共享”，以查看更新的共享列表。
 

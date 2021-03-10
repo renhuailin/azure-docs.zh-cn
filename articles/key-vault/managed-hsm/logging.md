@@ -9,12 +9,12 @@ ms.subservice: managed-hsm
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 22abd38ead1257b49eeae98acfcd74349f563811
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7420ffbe5b365c635c1eac2620cfd54ceb649ebf
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90992070"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102211764"
 ---
 # <a name="managed-hsm-logging"></a>托管 HSM 日志记录 
 
@@ -22,7 +22,7 @@ ms.locfileid: "90992070"
 
 最多在执行托管 HSM 操作 10 分钟后，就能访问其日志记录信息。 但大多数情况下不用等待这么长时间。  存储帐户中的日志完全由你管理：
 
-* 请使用标准的 Azure 访问控制方法限制可访问日志的人员，以此保护日志。
+* 使用标准 Azure 访问控制方法，通过限制访问你的日志的人员来保护日志的安全。
 * 删除不想继续保留在存储帐户中的日志。
 
 借助本教程开始使用托管 HSM 日志记录。 你将创建一个存储帐户，启用日志记录，并解释收集的日志信息。  
@@ -48,7 +48,7 @@ ms.locfileid: "90992070"
 az login
 ```
 
-若要详细了解通过 CLI 使用的登录选项，请参阅[使用 Azure CLI 登录](/cli/azure/authenticate-azure-cli?view=azure-cli-latest&preserve-view=true)
+若要详细了解通过 CLI 使用的登录选项，请参阅[使用 Azure CLI 登录](/cli/azure/authenticate-azure-cli)
 
 可能需要指定用于创建托管 HSM 的订阅。 输入以下命令以查看帐户的订阅：
 
