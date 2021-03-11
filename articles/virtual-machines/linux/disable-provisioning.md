@@ -2,19 +2,20 @@
 title: 禁用或删除预配代理
 description: 了解如何禁用或删除 Linux VM 和映像中的预配代理。
 author: danielsollondon
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.subservice: imaging
 ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 07/06/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 0fea82c376a178de0be8ede6c0393e1de21de614
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
-ms.translationtype: MT
+ms.openlocfilehash: 7c797957c292b9859ca41951b15f58c3d0be40b2
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98675798"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102561054"
 ---
 # <a name="disable-or-remove-the-linux-agent-from-vms-and-images"></a>禁用或删除 VM 和映像中的 Linux 代理
 
@@ -31,7 +32,7 @@ Azure 平台可承载许多扩展，其中包括 VM 配置、监视、安全性�
 
 ## <a name="disabling-extension-processing"></a>禁用扩展处理
 
-有多种方法可以根据需要禁用扩展处理，但在继续之前， **必须** 删除部署到 VM 的所有扩展，例如使用 Azure CLI，可以 [列出](/cli/azure/vm/extension#az-vm-extension-list) 和 [删除](/cli/azure/vm/extension#az-vm-extension-delete)：
+可以通过多种方式来禁用扩展处理（具体取决于你的需求），但在继续之前，**必须** 删除部署到 VM 的所有扩展，例如，可以使用 Azure CLI 执行 [列出](/cli/azure/vm/extension#az-vm-extension-list)和 [删除](/cli/azure/vm/extension#az-vm-extension-delete)操作：
 
 ```azurecli
 az vm extension delete -g MyResourceGroup --vm-name MyVm -n extension_name

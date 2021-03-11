@@ -2,17 +2,19 @@
 title: 在 Azure 门户中通过专用 VHD 创建 Windows VM
 description: 在 Azure 门户的 VHD 中创建新的 Windows VM。
 author: cynthn
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.subservice: imaging
+ms.collection: windows
 ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 01/18/2019
 ms.author: cynthn
-ms.openlocfilehash: 31677482660a48e2bb4c71b81b04681eba725fcd
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
-ms.translationtype: MT
+ms.openlocfilehash: a93ab207960133ecbf5a68927c5d16a6daf94fd4
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96455135"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102562208"
 ---
 # <a name="create-a-vm-from-a-vhd-by-using-the-azure-portal"></a>使用 Azure 门户在 VHD 中创建 VM
 
@@ -28,8 +30,8 @@ ms.locfileid: "96455135"
 
 > [!IMPORTANT]
 > 
-> 使用专用磁盘创建新的 VM 时，新 VM 将保留原始 VM 的计算机名。 还会保留其他特定于计算机的信息 (例如 CMID) ，在某些情况下，这种重复信息可能会导致问题。 复制 VM 时，请注意应用程序依赖哪些类型的计算机特定信息。  
-> 因此，如果想要创建多个 Vm，请不要使用专用磁盘。 对于较大的部署，应先[创建映像](capture-image-resource.md)，然后[使用该映像创建多个 VM](create-vm-generalized-managed.md)。
+> 使用专用磁盘创建新 VM 时，新 VM 会保留原始 VM 的计算机名。 还会保留其他计算机特定信息（例如 CMID），在某些情况下，这种重复信息可能会导致问题。 复制 VM 时，请注意应用程序依赖哪些类型的计算机特定信息。  
+> 因此，如果想创建多个 VM，请勿使用专用磁盘。 对于较大的部署，应先[创建映像](capture-image-resource.md)，然后[使用该映像创建多个 VM](create-vm-generalized-managed.md)。
 
 我们建议你将单个快照或 VHD 的并发部署数限制为 20 个 VM。 
 

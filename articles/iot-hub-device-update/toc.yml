@@ -32,7 +32,7 @@
       href: device-update-agent-overview.md
     - name: 设备更新配置文件
       href: device-update-configuration-file.md
-    - name: 设备更新清单
+    - name: 更新清单
       href: update-manifest.md
     - name: 如何保护设备更新
       href: device-update-security.md
@@ -40,7 +40,9 @@
       href: connected-cache-disconnected-device-update.md
     - name: 为 IoT 中心的设备更新配置 Microsoft 联网缓存
       href: connected-cache-configure.md
-    - name: 与导入相关的架构和其他信息
+    - name: 设备更新导入
+      href: import-concepts.md
+    - name: 与导入相关的架构
       href: import-schema.md
 - name: 操作指南
   items:

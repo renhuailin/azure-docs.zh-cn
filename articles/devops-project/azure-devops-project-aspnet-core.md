@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 02/23/2021
 ms.author: mlearned
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 59f8d721c23cbb033f295f2ef3045fc96f08ba96
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 75531b9a75c2d28ad665748a9be4e37e2056b451
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101733171"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102547962"
 ---
 # <a name="create-a-cicd-pipeline-for-net-with-azure-devops-starter"></a>通过 Azure DevOps Starter 创建用于 .NET 的 CI/CD 管道
 
@@ -135,7 +135,7 @@ DevOps Starter 会创建一个发布管道，用于管理到 Azure 的部署。
 若要详细了解如何根据团队的需求修改生成和发布管道，请参阅以下教程：
 
 > [!div class="nextstepaction"]
-> [自定义 CD 过程](/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)
+> [自定义 CD 过程](/azure/devops/pipelines/release/define-multistage-release-process)
 
 ## <a name="videos"></a>视频
 

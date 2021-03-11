@@ -2,16 +2,17 @@
 title: 创建和上传基于 CentOS 的 Linux VHD
 description: 了解如何创建和上传包含基于 CentOS 的 Linux 操作系统的 Azure 虚拟硬盘 (VHD)。
 author: danielsollondon
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.topic: how-to
 ms.date: 12/01/2020
 ms.author: danis
-ms.openlocfilehash: 018df112c344fc08f2839752fcda3dfd9370af4e
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
-ms.translationtype: MT
+ms.openlocfilehash: 4745e631bd92675f8dd1ef0d390baa88f7666552
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98682575"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102554660"
 ---
 # <a name="prepare-a-centos-based-virtual-machine-for-azure"></a>为 Azure 准备基于 CentOS 的虚拟机
 
@@ -356,7 +357,7 @@ ms.locfileid: "98682575"
     sudo dracut -f -v
     ```
 
-11. 安装 azure Linux 代理和 Azure VM 扩展的依赖项：
+11. 为 Azure VM 扩展安装 Azure Linux 代理和依赖项：
 
     ```bash
     sudo yum install python-pyasn1 WALinuxAgent
@@ -405,18 +406,18 @@ ms.locfileid: "98682575"
     ```
 
 
-13. 交换配置不在操作系统磁盘上创建交换空间。
+13. 交换配置：不要在操作系统磁盘上创建交换空间。
 
-    以前，在 Azure 上预配虚拟机后，Azure Linux 代理使用连接到虚拟机的本地资源磁盘自动配置交换空间。 但是，这现在由云初始化来处理，你 **不能** 使用 Linux 代理来格式化资源磁盘创建交换文件，相应地修改以下参数 `/etc/waagent.conf` ：
+    以前，Azure Linux 代理用于使用在 Azure 上预配虚拟机后附加到虚拟机的本地资源磁盘自动配置交换空间。 但是，现在这由 cloud-init 处理，你不能使用 Linux 代理来格式化资源磁盘以创建交换文件，请在 `/etc/waagent.conf` 中相应地修改以下参数：
 
     ```console
     sed -i 's/ResourceDisk.Format=y/ResourceDisk.Format=n/g' /etc/waagent.conf
     sed -i 's/ResourceDisk.EnableSwap=y/ResourceDisk.EnableSwap=n/g' /etc/waagent.conf
     ```
 
-    如果需要装载、格式化和创建交换，可以执行以下任一操作：
-    * 每次创建 VM 时，将此作为云初始化配置传入
-    * 在每次创建 VM 时，使用融入中的映像执行此操作：
+    如果需要装载、格式化和创建交换文件，可以使用以下任一方法：
+    * 每次创建 VM 时，将此代码作为 cloud-init 配置传入
+    * 使用融入到映像的 cloud-init 指令，从而在每次创建 VM 时执行此操作：
 
         ```console
         cat > /etc/cloud/cloud.cfg.d/00-azure-swap.cfg << EOF

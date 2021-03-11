@@ -9,12 +9,13 @@ ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 5ace6017ce66bbaa8be71e23196823c1c1318902
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.collection: windows
+ms.openlocfilehash: 1bc69d56fc4cfb900dc45e01b298feb3e4c7a616
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81869482"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102554354"
 ---
 # <a name="back-up-azure-unmanaged-vm-disks-with-incremental-snapshots"></a>通过递增快照备份 Azure 非托管 VM 磁盘
 [!INCLUDE [virtual-machines-incremental-snapshots](../../../includes/virtual-machines-incremental-snapshots.md)]

@@ -13,6 +13,9 @@
         - name: 任意位置到任意位置的路由
           displayName: Resource Manager Any-to-any routing
           href: quickstart-any-to-any-template.md
+        - name: 路由到共享服务 VNet
+          displayName: Resource Manager route to shared services VNets
+          href: quickstart-route-shared-services-vnet-template.md
 - name: 教程
   expanded: true
   items:

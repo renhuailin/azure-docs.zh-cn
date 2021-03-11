@@ -3,19 +3,19 @@ title: 在 Azure 虚拟机上使用 Visual Studio
 description: 在 Azure 虚拟机上使用 Visual Studio。
 author: cathysull
 manager: cathys
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.custom: vs-azure
 ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: cathys
 keywords: visualstudio
-ms.openlocfilehash: 315987060b96312c666bd5aa928588e27d13173b
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
-ms.translationtype: MT
+ms.openlocfilehash: a6acf27743f17941e14adc3f6deea903f4f5ca87
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96938097"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102562072"
 ---
 # <a name="visual-studio-images-on-azure"></a>Azure 上的 Visual Studio 映像
 使用预配置的 Azure 虚拟机 (VM) 中的 Visual Studio 是从无到启动并运行的开发环境的简单快捷方法。 具有不同 Visual Studio 配置的系统映像位于 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/category/compute?filters=virtual-machine-images%3Bmicrosoft%3Bwindows&page=1&subcategories=application-infrastructure)。
@@ -31,7 +31,7 @@ ms.locfileid: "96938097"
 | 发行版本                                                                                                                                                | 版本              | 产品版本   |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------:|:-----------------:|
 | [Visual Studio 2019：最新（版本 16.8）](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio2019latest?tab=Overview) | Enterprise、Community | 版本 16.8.0    |
-| Visual Studio 2019：RTW                         | Enterprise | 版本 16.0.20    |
+| Visual Studio 2019：RTW                         | 企业 | 版本 16.0.20    |
 | Visual Studio 2017：最新（版本 15.9）           | Enterprise、Community | 版本 15.9.29   |
 | Visual Studio 2017：RTW                             | Enterprise、Community | 版本 15.0.28  |
 | Visual Studio 2015：最新 (Update 3)               | Enterprise、Community | 版本 14.0.25431.01 |

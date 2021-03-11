@@ -2,16 +2,17 @@
 title: 准备 Debian Linux VHD
 description: 了解如何创建 Debian VHD 映像，以便在 Azure 中进行 VM 部署。
 author: gbowerman
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.topic: how-to
 ms.date: 11/13/2018
 ms.author: guybo
-ms.openlocfilehash: d822aa30926c473d08bc5d785211c82d038ef652
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
-ms.translationtype: MT
+ms.openlocfilehash: 7dcb6dbc62513535c562a430f5958a62dae9d005
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98203178"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102554507"
 ---
 # <a name="prepare-a-debian-vhd-for-azure"></a>为 Azure 准备 Debian VHD
 ## <a name="prerequisites"></a>必备条件

@@ -1,19 +1,19 @@
 ---
 title: Azure 虚拟机的内置策略定义
 description: 列出 Azure 虚拟机的 Azure Policy 内置策略定义。 这些内置的策略定义提供了管理 Azure 资源的常用方法。
-ms.date: 02/09/2021
+ms.date: 03/05/2021
 ms.topic: reference
 author: cynthn
 ms.author: cynthn
 ms.service: virtual-machines
 ms.subservice: security
 ms.custom: subject-policy-reference
-ms.openlocfilehash: add4a59aba821eaee23a7096f7f8dc183a3906c3
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
-ms.translationtype: MT
+ms.openlocfilehash: 35008d117dd4d12b95416af9540c3dedc09c6921
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100090885"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102435337"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-virtual-machines"></a>Azure 虚拟机的 Azure Policy 内置定义
 

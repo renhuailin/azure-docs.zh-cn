@@ -2,18 +2,19 @@
 title: 快速入门：使用资源管理器模板创建 Windows VM
 description: 本快速入门介绍了如何使用资源管理器模板创建 Windows 虚拟机
 author: cynthn
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.collection: windows
 ms.topic: quickstart
 ms.workload: infrastructure
 ms.date: 06/04/2020
 ms.author: cynthn
 ms.custom: subject-armqs
-ms.openlocfilehash: ded59b2f517c5b109dfd00bde2fb73f8351bf821
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b2856c51ccc31b57ea567c5d0940cd260797f770
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88649663"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102560746"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-using-an-arm-template"></a>快速入门：使用 ARM 模板创建 Windows 虚拟机
 
