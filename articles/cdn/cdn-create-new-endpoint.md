@@ -1,26 +1,19 @@
 ---
 title: 快速入门 - 创建 Azure CDN 配置文件和终结点
 description: 本快速入门介绍如何通过创建新 CDN 配置文件和 CDN 终结点启用 Azure CDN。
-services: cdn
-documentationcenter: ''
 author: asudbring
-manager: danielgi
-editor: ''
 ms.assetid: 4ca51224-5423-419b-98cf-89860ef516d2
 ms.service: azure-cdn
-ms.workload: media
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 04/30/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 45edf57ed41f8cf7be839edade5038a0787424a4
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: e8b3b5c28d00b4d7c81fa3e245113119ae3134ad
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100367277"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102555697"
 ---
 # <a name="quickstart-create-an-azure-cdn-profile-and-endpoint"></a>快速入门：创建 Azure CDN 配置文件和终结点
 
@@ -82,6 +75,3 @@ ms.locfileid: "100367277"
 
 > [!div class="nextstepaction"]
 > [教程：从 Web 应用使用 CDN 提供静态内容](cdn-add-to-web-app.md)
-
-> [!div class="nextstepaction"]
-> [教程：将自定义域添加到 Azure CDN 终结点](cdn-map-content-to-custom-domain.md)

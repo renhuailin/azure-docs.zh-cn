@@ -1,5 +1,5 @@
 ---
-title: 创建安全模块孪生
+title: 快速入门：创建安全模块孪生
 description: 在本快速入门中，了解如何创建适用于 IoT 的 Defender 模块孪生以用于 Azure Defender for IoT。
 services: defender-for-iot
 ms.service: defender-for-iot
@@ -13,16 +13,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/21/2021
 ms.author: shhazam
-ms.openlocfilehash: 68d137caeed91e9dea2dbf3883929d85c25382aa
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 832c8e426b57e6b447ef805f2868a6d42abe3d9d
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100523254"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102449690"
 ---
-# <a name="create-an-azureiotsecurity-module-twin"></a>创建 azureiotsecurity 模块孪生
+# <a name="quickstart-create-an-azureiotsecurity-module-twin"></a>快速入门：创建 azureiotsecurity 模块孪生
 
 本快速入门介绍如何为新设备创建单个 _azureiotsecurity_ 模块孪生，或者为 IoT 中心内的所有设备批量创建模块孪生。
+
+## <a name="prerequisites"></a>先决条件
+
+无
 
 ## <a name="understanding-azureiotsecurity-module-twins"></a>了解 azureiotsecurity 模块孪生
 

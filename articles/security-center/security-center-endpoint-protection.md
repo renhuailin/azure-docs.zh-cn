@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/29/2019
 ms.author: memildin
-ms.openlocfilehash: 778feda8d72101d4ae2a0f0c27549701dfb53340
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
-ms.translationtype: MT
+ms.openlocfilehash: 1ce20deed8b26dc5f5bebf4656dd3f1c370d766f
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341407"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102561222"
 ---
 # <a name="endpoint-protection-assessment-and-recommendations-in-azure-security-center"></a>Azure 安全中心中的 Endpoint Protection 评估和建议
 
@@ -29,9 +29,9 @@ Azure 安全中心提供[支持的](security-center-services.md#endpoint-support
 
 ## <a name="windows-defender"></a>Windows Defender
 
-* 安全中心建议在运行 [MpComputerStatus](/powershell/module/defender/get-mpcomputerstatus?preserve-view=true&view=win10-ps) 且结果为“AMServiceEnabled: False”时，在虚拟机上安装 Endpoint Protection 解决方案 
+* 安全中心建议在运行 [MpComputerStatus](/powershell/module/defender/get-mpcomputerstatus) 且结果为“AMServiceEnabled: False”时，在虚拟机上安装 Endpoint Protection 解决方案 
 
-* 安全中心建议在运行 [MpComputerStatus](/powershell/module/defender/get-mpcomputerstatus?preserve-view=true&view=win10-ps) 且发生以下任何情况时，解决计算机上的 Endpoint Protection 运行状况问题：
+* 安全中心建议在运行 [MpComputerStatus](/powershell/module/defender/get-mpcomputerstatus) 且发生以下任何情况时，解决计算机上的 Endpoint Protection 运行状况问题：
 
   * 以下任一属性为 false：
 
@@ -42,14 +42,14 @@ Azure 安全中心提供[支持的](security-center-services.md#endpoint-support
     - **IoavProtectionEnabled**
     - **OnAccessProtectionEnabled**
 
-  * 如果以下一个或两个属性为7或更大：
+  * 如果下列一个或两个属性大于或等于 7：
 
     - **AntispywareSignatureAge**
     - **AntivirusSignatureAge**
 
 ## <a name="microsoft-system-center-endpoint-protection"></a>Microsoft System Center Endpoint Protection
 
-* 导入 SCEPMpModule 时，安全中心建议你 **"在虚拟机上安装 endpoint protection 解决方案"** ** ( "$Env:P rogramfiles\microsoft Security Client\MpProvider\MpProvider.psd1" ) **并运行**AMServiceEnabled = false**的**MProtComputerStatus**结果。
+* 安全中心建议在导入 SCEPMpModule ("$env:ProgramFiles\Microsoft Security Client\MpProvider\MpProvider.psd1") 并运行 AMServiceEnabled = false 中的 Get-MProtComputerStatus 结果时，在虚拟机上安装 Endpoint Protection 解决方案   。
 
 * 安全中心建议在运行 MprotComputerStatus 且发生以下任何情况时，解决计算机上的 Endpoint Protection 运行状况问题 ：
 
@@ -62,7 +62,7 @@ Azure 安全中心提供[支持的](security-center-services.md#endpoint-support
     - **IoavProtectionEnabled**
     - **OnAccessProtectionEnabled**
 
-  * 如果以下一个或两个签名更新大于或等于7：
+  * 如果以下一个或两个签名更新大于或等于 7：
 
     * **AntispywareSignatureAge**
     * **AntivirusSignatureAge**
@@ -89,7 +89,7 @@ Azure 安全中心提供[支持的](security-center-services.md#endpoint-support
 安全中心建议在不符合以下任何检查时，解决计算机上的 Endpoint Protection 运行状况问题：
 
 - 检查 Symantec 版本  >= 12：注册表位置：HKLM:\Software\Symantec\Symantec Endpoint Protection\CurrentVersion" -Value "PRODUCTVERSION"
-- 检查 Real-Time 保护状态： **HKLM： \ Software\Wow6432Node\Symantec\Symantec Endpoint Protection\AV\Storages\Filesystem\RealTimeScan\OnOff = = 1**
+- 检查实时保护状态：HKLM:\Software\Wow6432Node\Symantec\Symantec Endpoint Protection\AV\Storages\Filesystem\RealTimeScan\OnOff == 1
 - 检查签名更新状态：HKLM\Software\Symantec\Symantec Endpoint Protection\CurrentVersion\public-opstate\LatestVirusDefsDate <= 7 天
 - 检查完全扫描状态：HKLM:\Software\Symantec\Symantec Endpoint Protection\CurrentVersion\public-opstate\LastSuccessfulScanDateTime <= 7 天
 - 查找 Symantec 12 的签名版本的签名版本号路径：Registry Paths+ "CurrentVersion\SharedDefs" -Value "SRTSP" 
@@ -117,7 +117,7 @@ Azure 安全中心提供[支持的](security-center-services.md#endpoint-support
 
 安全中心建议在不符合以下任何检查时，在虚拟机上安装 Endpoint Protection 解决方案：
 
-- 文件 **/opt/isec/ens/threatprevention/bin/isecav** 存在
+- 存在文件 /opt/isec/ens/threatprevention/bin/isecav
 - /opt/isec/ens/threatprevention/bin/isecav --version 输出为：McAfee 名称 = 适用于 Linux 威胁防护的 McAfee 终结点安全性，并且 McAfee 版本 >= 10
 
 安全中心建议在不符合以下任何检查时，解决计算机上的 Endpoint Protection 运行状况问题：

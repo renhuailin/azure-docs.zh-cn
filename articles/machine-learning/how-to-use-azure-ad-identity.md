@@ -1,7 +1,7 @@
 ---
-title: 在 web 服务中使用 Azure AD 标识
+title: 对 Web 服务使用 Azure AD 标识
 titleSuffix: Azure Machine Learning
-description: 使用 Azure Kubernetes 服务中的 web 服务 Azure AD 标识，在评分期间访问云资源。
+description: 对 Azure Kubernetes 服务中的 Web 服务使用 Azure AD 标识，以便在评分期间访问云资源。
 services: machine-learning
 ms.author: larryfr
 author: BlackMist
@@ -11,20 +11,20 @@ ms.subservice: core
 ms.date: 11/16/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: bcf5f75cf5cabe42f530a6a179c2cafd43b5520d
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
-ms.translationtype: MT
+ms.openlocfilehash: b6e6288f125da2a29a8eff56b64f327914f90cb4
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94952533"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102520466"
 ---
 # <a name="use-azure-ad-identity-with-your-machine-learning-web-service-in-azure-kubernetes-service"></a>对 Azure Kubernetes 服务中的机器学习 Web 服务使用 Azure AD 标识
 
-在本操作方法指南中，你将了解如何为 Azure Kubernetes 服务中的已部署机器学习模型分配 Azure Active Directory (Azure AD) 标识。 [Azure AD Pod 标识](https://github.com/Azure/aad-pod-identity)项目允许应用程序使用[托管标识](../active-directory/managed-identities-azure-resources/overview.md)和 Kubernetes 基元，通过 Azure AD 安全地访问云资源。 这样，Web 服务就可以安全访问你的 Azure 资源，而无需在 `score.py` 脚本中嵌入凭据或直接在其中管理令牌。 本文解释在 Azure Kubernetes 服务群集中创建和安装 Azure 标识，并将该标识分配到已部署的 Web 服务的步骤。
+本操作指南介绍如何将 Azure Active Directory (Azure AD) 标识分配到 Azure Kubernetes 服务中部署的机器学习模型。 [Azure AD Pod 标识](https://github.com/Azure/aad-pod-identity)项目允许应用程序使用[托管标识](../active-directory/managed-identities-azure-resources/overview.md)和 Kubernetes 基元通过 Azure AD 安全访问云资源。 这样，Web 服务就可以安全访问你的 Azure 资源，而无需在 `score.py` 脚本中嵌入凭据或直接在其中管理令牌。 本文解释在 Azure Kubernetes 服务群集中创建和安装 Azure 标识，并将该标识分配到已部署的 Web 服务的步骤。
 
 ## <a name="prerequisites"></a>先决条件
 
-- [机器学习服务的 Azure CLI 扩展](reference-azure-machine-learning-cli.md)、[用于 Python 的 Azure 机器学习 SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) 或 [Azure 机器学习 Visual Studio Code 扩展](tutorial-setup-vscode-extension.md)。
+- [机器学习服务的 Azure CLI 扩展](reference-azure-machine-learning-cli.md)、[用于 Python 的 Azure 机器学习 SDK](/python/api/overview/azure/ml/intro) 或 [Azure 机器学习 Visual Studio Code 扩展](tutorial-setup-vscode-extension.md)。
 
 - 使用 `kubectl` 命令访问 AKS 群集。 有关详细信息，请参阅[连接到群集](../aks/kubernetes-walkthrough.md#connect-to-the-cluster)
 
@@ -32,25 +32,25 @@ ms.locfileid: "94952533"
 
 ## <a name="create-and-install-an-azure-identity"></a>创建并安装 Azure 标识
 
-1. 若要确定 AKS 群集是否启用了 Kubernetes RBAC，请使用以下命令：
+1. 若要确定是否为 AKS 群集启用了 Kubernetes RBAC，请使用以下命令：
 
     ```azurecli-interactive
     az aks show --name <AKS cluster name> --resource-group <resource group name> --subscription <subscription id> --query enableRbac
     ```
 
-    `true`如果启用了 KUBERNETES RBAC，则此命令将返回值。 此值确定了要在下一步骤中使用的命令。
+    如果启用了 Kubernetes RBAC，此命令将返回 `true` 值。 此值确定了要在下一步骤中使用的命令。
 
-1. 在 AKS 群集中安装 [Azure AD Pod 标识](https://azure.github.io/aad-pod-identity/docs/getting-started/installation/) 。
+1. 在 AKS 群集上安装 [Azure AD Pod 标识](https://azure.github.io/aad-pod-identity/docs/getting-started/installation/)。
 
-1. 按照 Azure AD Pod 标识项目 "页中所示的步骤在[Azure 上创建一个标识](https://azure.github.io/aad-pod-identity/docs/demo/standard_walkthrough/#2-create-an-identity-on-azure)。
+1. 按照 Azure AD Pod 标识项目页中所述的步骤[创建 Azure 标识](https://azure.github.io/aad-pod-identity/docs/demo/standard_walkthrough/#2-create-an-identity-on-azure)。
 
-1. 按照 Azure AD Pod 标识项目 "页中所示的步骤[部署 AzureIdentity](https://azure.github.io/aad-pod-identity/docs/demo/standard_walkthrough/#3-deploy-azureidentity) 。
+1. 按照 Azure AD Pod 标识项目页中所述的步骤[部署 Azure 标识](https://azure.github.io/aad-pod-identity/docs/demo/standard_walkthrough/#3-deploy-azureidentity)。
 
-1. 按照 Azure AD Pod 标识项目 "页中所示的步骤[部署 AzureIdentityBinding](https://azure.github.io/aad-pod-identity/docs/demo/standard_walkthrough/#5-deploy-azureidentitybinding) 。
+1. 按照 Azure AD Pod 标识项目页中所述的步骤[部署 Azure 标识绑定](https://azure.github.io/aad-pod-identity/docs/demo/standard_walkthrough/#5-deploy-azureidentitybinding)。
 
-1. 如果在上一步中创建的 Azure 标识不在 AKS 群集的同一节点资源组中，请按照 Azure AD Pod 标识项目 "页中所示的 [角色分配](https://azure.github.io/aad-pod-identity/docs/getting-started/role-assignment/#user-assigned-identities-that-are-not-within-the-node-resource-group) 步骤进行操作。
+1. 如果在上一步骤中创建的 Azure 标识不在 AKS 群集所在的节点资源组中，请遵循 Azure AD Pod 标识项目页中所述的[角色分配](https://azure.github.io/aad-pod-identity/docs/getting-started/role-assignment/#user-assigned-identities-that-are-not-within-the-node-resource-group)步骤。
 
-## <a name="assign-azure-identity-to-web-service"></a>将 Azure 标识分配给 web 服务
+## <a name="assign-azure-identity-to-web-service"></a>将 Azure 标识分配到 Web 服务
 
 以下步骤使用上一部分中创建的 Azure 标识，并通过 **选择器标签** 将其分配到 AKS Web 服务。
 
@@ -60,7 +60,7 @@ ms.locfileid: "94952533"
 kubectl get deployment --selector=isazuremlapp=true --all-namespaces --show-labels
 ```
 
-通过编辑部署规范将 Azure 标识选择器标签添加到部署。选择器值应为在 [部署 AzureIdentityBinding](https://azure.github.io/aad-pod-identity/docs/demo/standard_walkthrough/#5-deploy-azureidentitybinding)的步骤5中定义的值。
+通过编辑部署规范将 Azure 标识选择器标签添加到部署。选择器值应是在[部署 Azure 标识绑定](https://azure.github.io/aad-pod-identity/docs/demo/standard_walkthrough/#5-deploy-azureidentitybinding)的步骤 5 中定义的值。
 
 ```yaml
 apiVersion: "aadpodidentity.k8s.io/v1"
@@ -87,7 +87,7 @@ spec:
       ...
 ```
 
-若要验证是否正确添加了该标签，请运行以下命令。 还应看到新创建的 pod 的状态。
+若要验证是否正确添加了该标签，请运行以下命令。 还应看到新创建的 Pod 的状态。
 
 ```azurecli-interactive
    kubectl get pod -n azureml-<name of workspace> --show-labels
@@ -95,11 +95,11 @@ spec:
 
 启动并运行 Pod 后，此部署的 Web 服务现在可以通过 Azure 标识访问 Azure 资源，而无需在代码中嵌入凭据。
 
-## <a name="assign-roles-to-your-azure-identity"></a>将角色分配给 Azure 标识
+## <a name="assign-roles-to-your-azure-identity"></a>将角色分配到 Azure 标识
 
 [为 Azure 托管标识分配适当的角色](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)，以访问其他 Azure 资源。 确保分配的角色具有正确的 **数据操作**。 例如，[存储 Blob 数据读取者角色](../role-based-access-control/built-in-roles.md#storage-blob-data-reader)对存储 Blob 拥有读取权限，而普通的[读取者角色](../role-based-access-control/built-in-roles.md#reader)可能没有这些权限。
 
-## <a name="use-azure-identity-with-your-web-service"></a>将 Azure 标识用于 web 服务
+## <a name="use-azure-identity-with-your-web-service"></a>对 Web 服务使用 Azure 标识
 
 将模型部署到 AKS 群集。 `score.py` 脚本可以包含指向 Azure 标识有权访问的 Azure 资源的操作。 确保为你要尝试访问的资源安装了所需的客户端库依赖项。 下面几个示例演示如何使用 Azure 标识从服务访问不同的 Azure 资源。
 

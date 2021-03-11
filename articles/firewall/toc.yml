@@ -99,6 +99,8 @@
       href: firewall-workbook.md
     - name: 部署和配置防火墙高级版
       href: premium-deploy.md
+    - name: 为高级版部署企业 CA 证书
+      href: premium-deploy-certificates-enterprise-ca.md
     - name: 迁移到 Azure 防火墙高级版
       href: premium-migrate.md
 - name: 参考

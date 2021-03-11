@@ -2,26 +2,27 @@
 title: 在 Azure 中创建和上传 SUSE Linux VHD
 description: 了解如何创建和上传包含 SUSE Linux 操作系统的 Azure 虚拟硬盘 (VHD)。
 author: danielsollondon
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.subservice: imaging
+ms.collection: linux
 ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 12/01/2020
 ms.author: danis
-ms.openlocfilehash: 3d6a981db93cd84f0dbe5ab229ba1e90ee0bd1e7
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
-ms.translationtype: MT
+ms.openlocfilehash: 276f5f4542ecea42c665764b8c4e5f66f2531126
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98200730"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102552705"
 ---
 # <a name="prepare-a-sles-or-opensuse-virtual-machine-for-azure"></a>为 Azure 准备 SLES 或 openSUSE 虚拟机
 
 
-本文假定已在虚拟硬盘中安装了 SUSE 或 openSUSE Linux 操作系统。 存在多个用于创建 .vhd 文件的工具，例如 Hyper-V 等虚拟化解决方案。 有关说明，请参阅 [安装 Hyper-V 角色和配置虚拟机](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh846766(v=ws.11))。
+本文假定已在虚拟硬盘中安装了 SUSE 或 openSUSE Linux 操作系统。 存在多个用于创建 .vhd 文件的工具，例如 Hyper-V 等虚拟化解决方案。 有关说明，请参阅[安装 Hyper-V 角色和配置虚拟机](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh846766(v=ws.11))。
 
 ## <a name="sles--opensuse-installation-notes"></a>SLES/openSUSE 安装说明
-* 另请参阅[常规 Linux 安装说明](create-upload-generic.md#general-linux-installation-notes)，了解更多有关如何为 Azure 准备 Linux 的提示。
+* 另请参阅[常规 Linux 安装说明](create-upload-generic.md#general-linux-installation-notes)，获取更多有关如何为 Azure 准备 Linux 的提示。
 * Azure 不支持 VHDX 格式，仅支持 **固定大小的 VHD**。  可使用 Hyper-V 管理器或 convert-vhd cmdlet 将磁盘转换为 VHD 格式。
 * 在安装 Linux 系统时，建议使用标准分区而不是 LVM（通常是许多安装的默认值）。 这会避免 LVM 与克隆 VM 发生名称冲突，特别是在 OS 磁盘需要连接到另一台 VM 以进行故障排除的情况下。 如果需要，可以在数据磁盘上使用 [LVM](/previous-versions/azure/virtual-machines/linux/configure-lvm) 或 [RAID](/previous-versions/azure/virtual-machines/linux/configure-raid)。
 * 不要在操作系统磁盘上配置交换分区。 可以配置 Linux 代理，以在临时资源磁盘上创建交换文件。  可以在下面的步骤中找到有关此内容的详细信息。
@@ -30,11 +31,11 @@ ms.locfileid: "98200730"
 ## <a name="use-suse-studio"></a>使用 SUSE Studio
 [SUSE Studio](https://studioexpress.opensuse.org/) 可以轻松地创建和管理 Azure 和 Hyper-V 的 SLES 和 openSUSE 映像。 这是自定义用户自己的 SUSE 和 openSUSE 映像的推荐方法。
 
-除了构建你自己的 VHD 外，SUSE 还发布了 BYOS (为 [VM 仓库](https://www.microsoft.com/research/wp-content/uploads/2016/04/using-and-contributing-vms-to-vm-depot.pdf)中的 SLES 自带订阅) 映像。
+作为一种构建你自己的 VHD 的替代方法，SUSE 也会在 [VM Depot](https://www.microsoft.com/research/wp-content/uploads/2016/04/using-and-contributing-vms-to-vm-depot.pdf) 上发布 SLES 的 BYOS（自带订阅）映像。
 
 ## <a name="prepare-suse-linux-enterprise-server-for-azure"></a>准备 SUSE Linux Enterprise Server for Azure
 1. 在 Hyper-V 管理器的中间窗格中，选择虚拟机。
-2. 单击“连接”  打开虚拟机窗口。
+2. 单击“连接”打开虚拟机窗口。
 3. 注册 SUSE Linux Enterprise 系统以允许其下载更新并安装程序包。
 4. 使用最新修补程序更新系统：
 
@@ -108,16 +109,16 @@ ms.locfileid: "98200730"
  
     不要在操作系统磁盘上创建交换空间。
 
-    以前，在 Azure 上预配虚拟机后，Azure Linux 代理使用连接到虚拟机的本地资源磁盘自动配置交换空间。 但是，这现在由云初始化来处理，你 **不能** 使用 Linux 代理来格式化资源磁盘创建交换文件，相应地修改以下参数 `/etc/waagent.conf` ：
+    以前，Azure Linux 代理用于使用在 Azure 上预配虚拟机后附加到虚拟机的本地资源磁盘自动配置交换空间。 但是，现在这由 cloud-init 处理，你不能使用 Linux 代理来格式化资源磁盘以创建交换文件，请在 `/etc/waagent.conf` 中相应地修改以下参数：
 
     ```console
     # sed -i 's/ResourceDisk.Format=y/ResourceDisk.Format=n/g' /etc/waagent.conf
     # sed -i 's/ResourceDisk.EnableSwap=y/ResourceDisk.EnableSwap=n/g' /etc/waagent.conf
     ```
 
-    如果需要装载、格式化和创建交换，可以执行以下任一操作：
-    * 每次创建 VM 时，请将此作为云初始化配置传递。
-    * 在每次创建 VM 时，使用融入中的映像执行此操作：
+    如果需要装载、格式化和创建交换文件，可以使用以下任一方法：
+    * 每次创建 VM 时，将此代码作为 cloud-init 配置传入。
+    * 使用融入到映像的 cloud-init 指令，从而在每次创建 VM 时执行此操作：
 
         ```console
         cat > /etc/cloud/cloud.cfg.d/00-azure-swap.cfg << EOF
@@ -158,7 +159,7 @@ ms.locfileid: "98200730"
 ---
 ## <a name="prepare-opensuse-131"></a>准备 openSUSE 13.1+
 1. 在 Hyper-V 管理器的中间窗格中，选择虚拟机。
-2. 单击 **“连接”** 以打开虚拟机窗口。
+2. 单击“连接”打开虚拟机窗口。
 3. 在 shell 上，运行命令“`zypper lr`”。 如果此命令返回了类似于下面的输出，则表示已按预期配置了存储库 - 不需要进行任何调整（请注意版本号可能有所不同）：
 
    | # | Alias                 | “属性”                  | 已启用 | 刷新
@@ -199,7 +200,7 @@ ms.locfileid: "98200730"
     # sudo zypper install WALinuxAgent
     ```
 
-6. 在 grub 配置中修改内核引导行，使其包含 Azure 的其他内核参数。 为此，请在文本编辑器中打开“/boot/grub/menu.lst”，并确保默认内核包含以下参数：
+6. 在 grub 配置中修改内核引导行，以使其包含 Azure 的其他内核参数。 为此，请在文本编辑器中打开“/boot/grub/menu.lst”，并确保默认内核包含以下参数：
 
     ```config-grub
      console=ttyS0 earlyprintk=ttyS0 rootdelay=300

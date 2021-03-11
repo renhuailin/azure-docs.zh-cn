@@ -2,16 +2,17 @@
 title: 创建并上传 OpenBSD 映像
 description: 了解如何创建和上传包含 OpenBSD 操作系统的虚拟硬盘 (VHD)，以便通过 Azure CLI 创建 Azure 虚拟机
 author: gbowerman
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.topic: how-to
 ms.date: 05/24/2017
 ms.author: guybo
-ms.openlocfilehash: efa38384778bb63857d3c867d74ace7f4f199118
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
-ms.translationtype: MT
+ms.openlocfilehash: 3437fcd2d1d521aad237ecf6d3f7937b4835d376
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98685083"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102554592"
 ---
 # <a name="create-and-upload-an-openbsd-disk-image-to-azure"></a>创建 OpenBSD 磁盘映像并将其上传到 Azure
 本文介绍如何创建和上传包含 OpenBSD 操作系统的虚拟硬盘 (VHD)。 上传后，可将其用作自己的映像，通过 Azure CLI 在 Azure 中创建虚拟机 (VM)。
@@ -87,7 +88,7 @@ ms.locfileid: "98685083"
 
 
 ## <a name="prepare-the-vhd"></a>准备 VHD
-Azure 不支持 VHDX 格式，仅支持 **固定大小的 VHD**。 可使用 Hyper-V 管理器或 Powershell [convert-vhd](/powershell/module/hyper-v/convert-vhd?view=win10-ps) cmdlet 将磁盘转换为固定 VHD 格式。 示例如下。
+Azure 不支持 VHDX 格式，仅支持 **固定大小的 VHD**。 可使用 Hyper-V 管理器或 Powershell [convert-vhd](/powershell/module/hyper-v/convert-vhd) cmdlet 将磁盘转换为固定 VHD 格式。 示例如下。
 
 ```powershell
 Convert-VHD OpenBSD61.vhdx OpenBSD61.vhd -VHDType Fixed

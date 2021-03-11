@@ -10,18 +10,21 @@ ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
 zone_pivot_groups: acs-plat-azp-net
-ms.openlocfilehash: f40da8b2c9f64da424d43a6679977cda5bf111df
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 9324ca3b347550c2514a506c5a143b6e963e116f
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101691767"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102487315"
 ---
 # <a name="quickstart-create-and-manage-communication-services-resources"></a>快速入门：创建和管理通信服务资源
- 
+
 [!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
 通过预配第一个通信服务资源来开始使用 Azure 通信服务。 可以通过 [Azure 门户](https://portal.azure.com)或 .NET 管理客户端库预配通信服务资源。 利用管理客户端库和 Azure 门户，可以通过 [Azure 资源管理器](../../azure-resource-manager/management/overview.md)（Azure 的部署和管理服务）创建、配置、更新和删除资源和接口。 客户端库中提供的所有功能都可在 Azure 门户中使用。 
+
+
+通过预配第一个通信服务资源来开始使用 Azure 通信服务。 可以通过 [Azure 门户](https://portal.azure.com)或 .NET 管理客户端库预配通信服务资源。 利用管理客户端库和 Azure 门户，可以通过 [Azure 资源管理器](../../azure-resource-manager/management/overview.md)（Azure 的部署和管理服务）创建、配置、更新和删除资源和接口。 客户端库中提供的所有功能都可在 Azure 门户中使用。
 
 > [!WARNING]
 > 请注意，虽然在多个地理区域提供通信服务，但若要获得电话号码，资源必须有一个设置为“美国”的数据位置。 另请注意，在公共预览版期间，通信资源无法转移到其他订阅。
@@ -40,7 +43,7 @@ ms.locfileid: "101691767"
 
 ## <a name="access-your-connection-strings-and-service-endpoints"></a>访问连接字符串和服务终结点
 
-连接字符串使通信服务客户端库可以连接到 Azure 并向其进行身份验证。 你可以从 Azure 门户或使用 Azure 资源管理器 API 以编程方式访问通信服务连接字符串和服务终结点。 
+连接字符串使通信服务客户端库可以连接到 Azure 并向其进行身份验证。 你可以从 Azure 门户或使用 Azure 资源管理器 API 以编程方式访问通信服务连接字符串和服务终结点。
 
 导航到通信服务资源之后，从导航菜单中选择“密钥”并复制“连接字符串”或“终结点”值以供通信服务客户端库使用  。 请注意，你可以访问主密钥和辅助密钥。 在你希望向第三方或过渡环境提供对通信服务资源的临时访问权限的方案中，这可能会十分有用。
 
@@ -49,7 +52,7 @@ ms.locfileid: "101691767"
 还可以使用 Azure CLI 访问密钥信息：
 
 ```azurecli
-az communication list --resource-group "<resourceGroup>"    
+az communication list --resource-group "<resourceGroup>"
 
 az communication list-key --name "<communicationName>" --resource-group "<resourceGroup>"
 ```
@@ -103,7 +106,7 @@ export COMMUNICATION_SERVICES_CONNECTION_STRING="<yourconnectionstring>"
 
 如果想要清理并删除通信服务订阅，可以删除资源或资源组。 删除资源组同时也会删除与之相关联的任何其他资源。
 
-如果在删除资源时已为资源分配了任何电话号码，则会同时自动从资源释放电话号码。 
+如果在删除资源时已为资源分配了任何电话号码，则会同时自动从资源释放电话号码。
 
 ## <a name="next-steps"></a>后续步骤
 

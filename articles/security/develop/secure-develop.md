@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 8e69803f4740a58adb4230bd82cc723221762cb4
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
-ms.translationtype: MT
+ms.openlocfilehash: 52c93bef4529f27ad38677f17209e7b48e997368
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99576610"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102548438"
 ---
 # <a name="develop-secure-applications-on-azure"></a>在 Azure 上开发安全的应用程序
 本文介绍开发云应用程序时要考虑的安全活动和控制措施， 并涵盖 Microsoft [安全开发生命周期 (SDL)](/previous-versions/windows/desktop/cc307891(v=msdn.10)) 的实现和验证阶段要考虑的安全问题和概念。 目标在于帮助定义可用于开发更安全的应用程序的活动和 Azure 服务。
@@ -34,7 +34,7 @@ ms.locfileid: "99576610"
 
 ### <a name="perform-code-reviews"></a>执行代码评审
 
-在签入代码前，执行[代码评审](/azure/devops/learn/devops-at-microsoft/code-reviews-not-primarily-finding-bugs)可提高整体代码质量并降低创建 bug 的风险。 可使用 [Visual Studio](/azure/devops/repos/tfvc/get-code-reviewed-vs?view=vsts) 来管理代码评审过程。
+在签入代码前，执行[代码评审](/azure/devops/learn/devops-at-microsoft/code-reviews-not-primarily-finding-bugs)可提高整体代码质量并降低创建 bug 的风险。 可使用 [Visual Studio](/azure/devops/repos/tfvc/get-code-reviewed-vs) 来管理代码评审过程。
 
 ### <a name="perform-static-code-analysis"></a>执行静态代码分析
 
@@ -48,15 +48,15 @@ Azure 市场提供[开发人员工具](https://azuremarketplace.microsoft.com/ma
 
 在数据流的早期阶段验证输入可确保仅格式正确的数据才能进入工作流。 你不会希望格式不正确的数据保留在数据库中或在下游组件中触发故障。
 
-列入阻止列表和 allowlisting 是执行输入语法验证的两种常规方法：
+阻止列表和允许列表是执行输入语法验证的两种常规方法：
 
-  - 列入阻止列表尝试检查给定的用户输入是否未包含 "已知为恶意" 内容。
+  - 阻止列表会尝试检查给定的用户输入是否不包含“已知恶意”内容。
 
-  - Allowlisting 尝试检查给定的用户输入是否与一组 "已知良好" 的输入匹配。 基于字符的 allowlisting 是 allowlisting 的一种形式，其中，应用程序检查用户输入是否只包含 "已知良好" 字符，或输入是否与已知的格式匹配。
+  - 允许列表会尝试检查给定的用户输入是否与一组“已知良好”输入匹配。 基于字符的允许列表是一种允许列表形式，其中应用程序会检查用户输入是否只包含“已知良好”字符或输入是否匹配已知格式。
     例如，这可能会涉及检查用户名是否仅包含字母数字字符或是否仅包含两个数字。
 
-Allowlisting 是构建安全软件的首选方法。
-列入阻止列表很容易出现错误，因为不可能考虑可能不正确的输入的完整列表。
+允许列表是构建安全软件的首选方法。
+阻止列表很容易出错，因为不可能考虑到一个完整的潜在错误输入列表。
 
 在服务器上而不是在客户端（或在服务器上和客户端）执行此任务。
 

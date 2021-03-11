@@ -8,12 +8,12 @@ ms.technology: devops-cicd
 ms.topic: tutorial
 ms.date: 03/24/2020
 author: mlearned
-ms.openlocfilehash: 6a1af644bbd88af5c513ed9a43ce154f285c06df
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7e85b698e1b3c3a1c3e8730ab85e8b72b7b0d9f6
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91856001"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102548472"
 ---
 # <a name="tutorial-deploy-your-aspnet-app-and-azure-sql-database-code-by-using-azure-devops-starter"></a>教程：使用 Azure DevOps Starter 部署 ASP.NET 应用和 Azure SQL 数据库代码
 
@@ -82,7 +82,7 @@ DevOps Starter 会自动在 Azure Repos 中配置一个完整的 CI/CD 管道。
 
 1. 在生成管道的顶部，选择生成管道名称。
 
-1. 将生成管道的名称更改为更具描述性的名称，选择“保存并排队”，然后选择“保存”。 
+1. 将生成管道的名称更改为更具描述性的名称，选择“保存并排队”，然后选择“保存”。  
 
 1. 在生成管道名称下，选择“历史记录”。 此窗格显示最近针对生成所做的更改的审核线索。 Azure Pipelines 会跟踪对生成管道所做的任何更改，并允许进行版本比较。
 
@@ -96,7 +96,7 @@ DevOps Starter 会自动创建并配置从 Azure DevOps 组织部署到 Azure �
 
 1. 选择“生成和发布”，然后选择“发布”。  DevOps Starter 会创建一个发布管道，用于管理到 Azure 的部署。
 
-1. 选择发布管道旁边的省略号 (...)，然后选择“编辑”。 发布管道包含一个*管道*，用于定义发布过程。
+1. 选择发布管道旁边的省略号 (...)，然后选择“编辑”。 发布管道包含一个 *管道*，用于定义发布过程。
 
 1. 在“项目”下选择“删除” 。 在前述步骤中检查过的生成管道会生成用于项目的输出。 
 
@@ -190,7 +190,7 @@ DevOps Starter 会自动创建并配置从 Azure DevOps 组织部署到 Azure �
 若要详细了解 CI/CD 管道，请参阅：
 
 > [!div class="nextstepaction"]
-> [Define your multi-stage continuous deployment (CD) pipeline](/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)（定义多阶段持续部署 (CD) 管道）
+> [Define your multi-stage continuous deployment (CD) pipeline](/azure/devops/pipelines/release/define-multistage-release-process)（定义多阶段持续部署 (CD) 管道）
 
 ## <a name="videos"></a>视频
 

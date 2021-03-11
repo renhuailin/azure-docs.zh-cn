@@ -14,6 +14,8 @@
       href: tutorial-move-region-virtual-machines.md
     - name: 将加密的 Azure VM 移到另一个区域
       href: tutorial-move-region-encrypted-virtual-machines.md
+    - name: 使用 PowerShell 在区域之间移动资源
+      href: tutorial-move-region-powershell.md
     - name: 将 SQL 资源移动到另一个区域
       href: tutorial-move-region-sql.md
 - name: 概念
@@ -28,8 +30,6 @@
   items:
     - name: 跨区域移动
       items:
-        - name: 使用 PowerShell 跨区域移动
-          href: move-region-powershell.md
         - name: 将 Azure VM 移动到可用性区域
           href: move-region-availability-zone.md
         - name: （从资源组）跨区域移动

@@ -8,12 +8,12 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.date: 10/16/2020
-ms.openlocfilehash: 7118ff589e580fd3aa1f693e72152f1ad4c18e10
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: 47b4f36aec9a906317a9704a7d73bf66385d9e88
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99979872"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102552110"
 ---
 # <a name="tutorial-sign-in-users-and-call-a-protected-api-from-a-blazor-webassembly-app"></a>教程：从 Blazor WebAssembly 应用让用户登录并调用受保护的 API
 
@@ -49,7 +49,7 @@ ms.locfileid: "99979872"
 若要创建应用，需要使用最新的 Blazor 模板。 可以通过以下命令为 .NET Core CLI 安装这些模板：
 
 ```dotnetcli
-dotnet new --install Microsoft.AspNetCore.Components.WebAssembly.Templates::3.2.1
+dotnet new -i Microsoft.Identity.Web.ProjectTemplates::1.6.0
 ```
 
 然后，运行以下命令来创建应用程序。 将命令中的占位符替换为你的应用的概览页面中的正确信息，然后在命令行界面中执行该命令。 使用 `-o|--output` 选项指定的输出位置将创建一个项目文件夹（如果该文件夹不存在）并成为应用程序名称的一部分。

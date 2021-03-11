@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 11/17/2020
 ms.author: inhenkel
 ms.custom: has-adal-ref, devx-track-csharp
-ms.openlocfilehash: 3d4f232d87209a3a5676cac22e67a38b17af6917
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
-ms.translationtype: MT
+ms.openlocfilehash: 8946f6e94dd26db45622bc7609fb2375d59bb57e
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844312"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102455376"
 ---
 # <a name="connect-to-media-services-v3-api---net"></a>连接到媒体服务 v3 API - .NET
 
@@ -54,9 +54,9 @@ ms.locfileid: "94844312"
 
 ### <a name="other-required-assemblies"></a>其他必需的程序集
 
-- Azure. Blob
+- Azure.Storage.Blobs
 - Microsoft.Extensions.Configuration
-- Microsoft.Extensions.Configu。EnvironmentVariables
+- Microsoft.Extensions.Configuration.EnvironmentVariables
 - Microsoft.Extensions.Configuration.Json
 - Microsoft.Rest.ClientRuntime.Azure.Authentication
 
@@ -249,5 +249,5 @@ namespace ConsoleApp1
 
 ## <a name="see-also"></a>另请参阅
 
-* [.NET 参考](/dotnet/api/overview/azure/mediaservices/management?view=azure-dotnet&preserve-view=true)
+* [.NET 参考](/dotnet/api/overview/azure/mediaservices/management)
 * 有关更多代码示例，请参阅 [.NET SDK 示例](https://github.com/Azure-Samples/media-services-v3-dotnet)存储库。

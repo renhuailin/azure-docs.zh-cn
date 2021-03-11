@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 07/09/2018
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 2f968bfd0c3d2884c123b82ccf132d77b117ac9a
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 6d6181686eaeb90d4fcdae0231430623b84e2c1c
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97589026"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102548506"
 ---
 # <a name="create-a-cicd-pipeline-for-go-using-azure-devops-starter"></a>使用 Azure DevOps Starter 创建适用于 Go 的 CI/CD 管道
 
@@ -123,4 +123,4 @@ DevOps Starter 会自动在 Azure Repos 中配置一个完整的 CI/CD 管道。
 若要详细了解如何根据团队的需求修改生成和发布管道，请参阅：
 
 > [!div class="nextstepaction"]
-> [Define your multi-stage continuous deployment (CD) pipeline](/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)（定义多阶段持续部署 (CD) 管道）
+> [Define your multi-stage continuous deployment (CD) pipeline](/azure/devops/pipelines/release/define-multistage-release-process)（定义多阶段持续部署 (CD) 管道）

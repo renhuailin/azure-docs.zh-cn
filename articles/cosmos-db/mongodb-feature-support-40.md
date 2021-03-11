@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 03/02/2021
 author: gahl-levy
 ms.author: gahllevy
-ms.openlocfilehash: 41293f96246dd4badab000c4e7f936d825e7665a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 9eebc77c5b3d9402c766320fddfdaf05d50b574f
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101691121"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102485395"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-40-server-version-supported-features-and-syntax"></a>MongoDB 的 Azure Cosmos DB API（4.0 版服务器）：支持的功能和语法
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -25,6 +25,9 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
 支持的运算符以及限制或例外已列在下面。 任何理解这些协议的客户端驱动程序应该都能够连接到 Azure Cosmos DB 的 MongoDB API。 使用适用于 MongoDB 帐户的 Azure Cosmos DB API 时，3.6 版及更高版本的帐户采用 `*.mongo.cosmos.azure.com` 格式的终结点，而 3.2 版的帐户采用 `*.documents.azure.com` 格式的终结点。
 
+> [!NOTE]
+> 本文仅列出受支持的服务器命令，并排除客户端包装器函数。 客户端包装器函数（如 `deleteMany()` 和 `updateMany()`）在内部利用 `delete()` 和 `update()` 服务器命令。 利用受支持的服务器命令的函数与 Azure Cosmos DB API for MongoDB 兼容。
+
 ## <a name="query-language-support"></a>查询语言支持
 
 Azure Cosmos DB 的 MongoDB API 全面支持 MongoDB 查询语言构造。 可以在下面查找当前支持的操作、运算符、阶段、命令和选项的详细列表。
@@ -35,7 +38,7 @@ Azure Cosmos DB 的 MongoDB API 支持以下数据库命令：
 
 ### <a name="query-and-write-operation-commands"></a>查询和写入操作命令
 
-| Command | 支持 |
+| 命令 | 支持 |
 |---------|---------|
 | [更改流](mongodb-change-streams.md) | 是 |
 | delete | 是 |
@@ -59,7 +62,7 @@ Azure Cosmos DB 的 MongoDB API 支持以下数据库命令：
 
 ### <a name="authentication-commands"></a>身份验证命令
 
-| Command | 支持 |
+| 命令 | 支持 |
 |---------|---------|
 | authenticate | 是 |
 | getnonce | 是 |
@@ -67,7 +70,7 @@ Azure Cosmos DB 的 MongoDB API 支持以下数据库命令：
 
 ### <a name="administration-commands"></a>管理命令
 
-| Command | 支持 |
+| 命令 | 支持 |
 |---------|---------|
 | cloneCollectionAsCapped | 否 |
 | collMod | 否 |
@@ -91,7 +94,7 @@ Azure Cosmos DB 的 MongoDB API 支持以下数据库命令：
 
 ### <a name="diagnostics-commands"></a>诊断命令
 
-| Command | 支持 |
+| 命令 | 支持 |
 |---------|---------|
 | buildInfo | 是 |
 | collStats | 是 |
@@ -114,7 +117,7 @@ Azure Cosmos DB 的 MongoDB API 支持以下数据库命令：
 
 ### <a name="aggregation-commands"></a>聚合命令
 
-| Command | 支持 |
+| 命令 | 支持 |
 |---------|---------|
 | aggregate | 是 |
 | count | 是 |
@@ -123,7 +126,7 @@ Azure Cosmos DB 的 MongoDB API 支持以下数据库命令：
 
 ### <a name="aggregation-stages"></a>聚合阶段
 
-| Command | 支持 |
+| 命令 | 支持 |
 |---------|---------|
 | $addFields | 是 |
 | $bucket | 否 |
@@ -155,7 +158,7 @@ Azure Cosmos DB 的 MongoDB API 支持以下数据库命令：
 
 ### <a name="boolean-expressions"></a>布尔表达式
 
-| Command | 支持 |
+| 命令 | 支持 |
 |---------|---------|
 | $and | 是 |
 | $not | 是 |
@@ -177,7 +180,7 @@ Azure Cosmos DB 的 MongoDB API 支持以下数据库命令：
 
 ### <a name="set-expressions"></a>集表达式
 
-| Command | 支持 |
+| 命令 | 支持 |
 |---------|---------|
 | $setEquals | 是 |
 | $setIntersection | 是 |
@@ -189,7 +192,7 @@ Azure Cosmos DB 的 MongoDB API 支持以下数据库命令：
 
 ### <a name="comparison-expressions"></a>比较表达式
 
-| Command | 支持 |
+| 命令 | 支持 |
 |---------|---------|
 | $cmp | 是 |
 | $eq | 是 | 
@@ -203,7 +206,7 @@ Azure Cosmos DB 的 MongoDB API 支持以下数据库命令：
 
 ### <a name="arithmetic-expressions"></a>算术表达式
 
-| Command | 支持 |
+| 命令 | 支持 |
 |---------|---------|
 | $abs | 是 |
 | $add | 是 |
@@ -223,7 +226,7 @@ Azure Cosmos DB 的 MongoDB API 支持以下数据库命令：
 
 ### <a name="string-expressions"></a>字符串表达式
 
-| Command | 支持 |
+| 命令 | 支持 |
 |---------|---------|
 | $concat | 是 |
 | $indexOfBytes | 是 |
@@ -243,13 +246,13 @@ Azure Cosmos DB 的 MongoDB API 支持以下数据库命令：
 
 ### <a name="text-search-operator"></a>文本搜索运算符
 
-| Command | 支持 |
+| 命令 | 支持 |
 |---------|---------|
 | $meta | 否 |
 
 ### <a name="array-expressions"></a>数组表达式
 
-| Command | 支持 |
+| 命令 | 支持 |
 |---------|---------|
 | $arrayElemAt | 是 |
 | $arrayToObject | 是 |
@@ -268,14 +271,14 @@ Azure Cosmos DB 的 MongoDB API 支持以下数据库命令：
 
 ### <a name="variable-operators"></a>变量运算符
 
-| Command | 支持 |
+| 命令 | 支持 |
 |---------|---------|
 | $map | 是 |
 | $let | 是 |
 
 ### <a name="system-variables"></a>系统变量
 
-| Command | 支持 |
+| 命令 | 支持 |
 |---------|---------|
 | $$CURRENT | 是 |
 | $$DESCEND | 是 |
@@ -286,13 +289,13 @@ Azure Cosmos DB 的 MongoDB API 支持以下数据库命令：
 
 ### <a name="literal-operator"></a>文本运算符
 
-| Command | 支持 |
+| 命令 | 支持 |
 |---------|---------|
 | $literal | 是 |
 
 ### <a name="date-expressions"></a>日期表达式
 
-| Command | 支持 |
+| 命令 | 支持 |
 |---------|---------|
 | $dayOfYear | 是 |
 | $dayOfMonth | 是 |
@@ -314,7 +317,7 @@ Azure Cosmos DB 的 MongoDB API 支持以下数据库命令：
 
 ### <a name="conditional-expressions"></a>条件表达式
 
-| Command | 支持 |
+| 命令 | 支持 |
 |---------|---------|
 | $cond | 是 |
 | $ifNull | 是 |
@@ -322,13 +325,13 @@ Azure Cosmos DB 的 MongoDB API 支持以下数据库命令：
 
 ### <a name="data-type-operator"></a>数据类型运算符
 
-| Command | 支持 |
+| 命令 | 支持 |
 |---------|---------|
 | $type | 是 |
 
 ### <a name="accumulator-expressions"></a>累加器表达式
 
-| Command | 支持 |
+| 命令 | 支持 |
 |---------|---------|
 | $sum | 是 |
 | $avg | 是 |
@@ -343,7 +346,7 @@ Azure Cosmos DB 的 MongoDB API 支持以下数据库命令：
 
 ### <a name="merge-operator"></a>合并运算符
 
-| Command | 支持 |
+| 命令 | 支持 |
 |---------|---------|
 | $mergeObjects | 是 |
 
@@ -371,7 +374,7 @@ Azure Cosmos DB 的 MongoDB API 支持以下数据库命令：
 | MaxKey | 是 |
 | Decimal128 | 是 | 
 | Regular Expression | 是 |
-| JavaScript | 是 |
+| Javascript | 是 |
 | JavaScript（带范围）| 是 |
 | Undefined | 是 |
 
@@ -379,7 +382,7 @@ Azure Cosmos DB 的 MongoDB API 支持以下数据库命令：
 
 ### <a name="indexes"></a>索引
 
-| Command | 支持 |
+| 命令 | 支持 |
 |---------|---------|
 | 单字段索引 | 是 |
 | 复合索引 | 是 |
@@ -391,7 +394,7 @@ Azure Cosmos DB 的 MongoDB API 支持以下数据库命令：
 
 ### <a name="index-properties"></a>索引属性
 
-| Command | 支持 |
+| 命令 | 支持 |
 |---------|---------|
 | TTL | 是 |
 | 唯一 | 是 |
@@ -404,7 +407,7 @@ Azure Cosmos DB 的 MongoDB API 支持以下数据库命令：
 
 ### <a name="logical-operators"></a>逻辑运算符
 
-| Command | 支持 |
+| 命令 | 支持 |
 |---------|---------|
 | $or | 是 |
 | $and | 是 |
@@ -413,14 +416,14 @@ Azure Cosmos DB 的 MongoDB API 支持以下数据库命令：
 
 ### <a name="element-operators"></a>元素运算符
 
-| Command | 支持 |
+| 命令 | 支持 |
 |---------|---------|
 | $exists | 是 |
 | $type | 是 |
 
 ### <a name="evaluation-query-operators"></a>评估查询运算符
 
-| Command | 支持 |
+| 命令 | 支持 |
 |---------|---------|
 | $expr | 否 |
 | $jsonSchema | 否 |
@@ -439,7 +442,7 @@ Azure Cosmos DB 的 MongoDB API 支持以下数据库命令：
 
 ### <a name="array-operators"></a>数组运算符
 
-| Command | 支持 | 
+| 命令 | 支持 | 
 |---------|---------|
 | $all | 是 | 
 | $elemMatch | 是 | 
@@ -447,13 +450,13 @@ Azure Cosmos DB 的 MongoDB API 支持以下数据库命令：
 
 ### <a name="comment-operator"></a>注释运算符
 
-| Command | 支持 | 
+| 命令 | 支持 | 
 |---------|---------|
 | $comment | 是 | 
 
 ### <a name="projection-operators"></a>投影运算符
 
-| Command | 支持 |
+| 命令 | 支持 |
 |---------|---------|
 | $elemMatch | 是 |
 | $meta | 否 |
@@ -463,7 +466,7 @@ Azure Cosmos DB 的 MongoDB API 支持以下数据库命令：
 
 #### <a name="field-update-operators"></a>字段更新运算符
 
-| Command | 支持 |
+| 命令 | 支持 |
 |---------|---------|
 | $inc | 是 |
 | $mul | 是 |
@@ -477,7 +480,7 @@ Azure Cosmos DB 的 MongoDB API 支持以下数据库命令：
 
 #### <a name="array-update-operators"></a>数组更新运算符
 
-| Command | 支持 |
+| 命令 | 支持 |
 |---------|---------|
 | $ | 是 |
 | $[]| 是 |
@@ -491,7 +494,7 @@ Azure Cosmos DB 的 MongoDB API 支持以下数据库命令：
 
 #### <a name="update-modifiers"></a>更新修饰符
 
-| Command | 支持 |
+| 命令 | 支持 |
 |---------|---------|
 | $each | 是 |
 | $slice | 是 |
@@ -500,7 +503,7 @@ Azure Cosmos DB 的 MongoDB API 支持以下数据库命令：
 
 #### <a name="bitwise-update-operator"></a>位更新运算符
 
-| Command | 支持 |
+| 命令 | 支持 |
 |---------|---------|
 | $bit | 是 | 
 | $bitsAllSet | 否 |

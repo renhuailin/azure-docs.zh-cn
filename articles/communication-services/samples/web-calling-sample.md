@@ -9,12 +9,12 @@ ms.author: mariusu
 ms.date: 10/15/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 5752f20cb433a417a684076338214cd2ea80bc8b
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: aadecd3c57f5a145efd43058a5113205d7517c0b
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101658091"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102486397"
 ---
 # <a name="get-started-with-the-web-calling-sample"></a>开始了解 Web 呼叫示例
 
@@ -23,6 +23,9 @@ Web 呼叫示例是一个 Web 应用程序，可分步演练由通信服务 Web 
 此示例是为开发人员构建的，可让你轻松开始使用通信服务。 它的用户界面分为多个部分，每个部分都带有一个“显示代码”按钮，可用于将代码直接从浏览器复制到你自己的通信服务应用程序。
 
 ## <a name="get-started-with-the-web-calling-sample"></a>开始了解 Web 呼叫示例
+
+[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
+
 
 > [!IMPORTANT]
 > [Github 上提供了此示例。](https://github.com/Azure-Samples/communication-services-web-calling-tutorial/)

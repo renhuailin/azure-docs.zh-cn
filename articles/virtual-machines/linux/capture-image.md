@@ -8,18 +8,19 @@ ms.topic: how-to
 ms.date: 10/08/2018
 ms.author: cynthn
 ms.custom: legacy, devx-track-azurecli
-ms.openlocfilehash: 53fb11216e65ebead43c02a7153d937c37b841a0
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
-ms.translationtype: MT
+ms.collection: linux
+ms.openlocfilehash: 6b345f159ca30d93e43aae8fe34e7d469c57795b
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98681054"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102556649"
 ---
 # <a name="how-to-create-a-managed-image-of-a-virtual-machine-or-vhd"></a>如何创建虚拟机或 VHD 的托管映像
 
 若要创建虚拟机 (VM) 的多个副本以便在 Azure 中用于开发和测试，请捕获 VM 或 OS VHD 的托管映像。 若要大规模创建、存储和共享映像，请参阅[共享映像库](../shared-images-cli.md)。
 
-一个托管映像最多支持 20 个同时部署。 尝试从同一托管映像同时创建超过 20 个 VM 可能会由于单个 VHD 的存储性能限制而导致预配超时。 若要同时创建超过 20 个 VM，请使用通过 1 个副本为每 20 个并发 VM 部署配置的[共享映像库](../shared-image-galleries.md)映像。
+一个托管映像最多支持 20 个同时部署。 如果尝试从同一托管映像同时创建超过 20 个 VM，则可能会由于单个 VHD 的存储性能限制而导致预配超时。 若要同时创建超过 20 个 VM，请使用通过 1 个副本为每 20 个并发 VM 部署配置的[共享映像库](../shared-image-galleries.md)映像。
 
 若要创建托管映像，需要删除个人帐户信息。 执行下列步骤可取消预配现有 VM、将其解除分配，然后创建映像。 可以使用此映像，在订阅内的任何资源组中创建 VM。
 
