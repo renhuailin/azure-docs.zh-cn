@@ -10,12 +10,12 @@ ms.author: vanto
 ms.reviewer: ''
 ms.date: 09/21/2020
 ms.custom: seoapril2019 sqldbrb=1
-ms.openlocfilehash: f42db48e0fa0e85d919d6894e5476b7ef5380698
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 8cdf95dd3c0e801896328136b15e4bd4efe53005
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99089286"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102563806"
 ---
 # <a name="tutorial-secure-a-database-in-azure-sql-database"></a>教程：保护 Azure SQL 数据库中的数据库
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -82,7 +82,7 @@ SQL 数据库中的数据库受 Azure 中防火墙的保护。 默认情况下�
 
 1. 在“概览”页上，选择“设置服务器防火墙” 。 此时会打开服务器的“防火墙设置”页面。
 
-   1. 在工具栏上选择“添加客户端 IP”，将当前的 IP 地址添加到新的防火墙规则。 此规则可以针对单个 IP 地址或一系列 IP 地址打开端口 1433。 选择“保存” 。
+   1. 在工具栏上选择“添加客户端 IP”，将当前的 IP 地址添加到新的防火墙规则。 此规则可以针对单个 IP 地址或一系列 IP 地址打开端口 1433。 选择“保存”。
 
       ![设置服务器防火墙规则](./media/secure-database-tutorial/server-firewall-rule2.png)
 
@@ -146,7 +146,7 @@ SQL 数据库中的数据库受 Azure 中防火墙的保护。 默认情况下�
 - [将自己的域名添加到 Azure AD](../../active-directory/fundamentals/add-custom-domain.md)
 - [Microsoft Azure now supports federation with Windows Server AD](https://azure.microsoft.com/blog/20../../windows-azure-now-supports-federation-with-windows-server-active-directory/)（Microsoft Azure 现在支持与 Windows Server AD 联合）
 - [管理 Azure AD 目录](../../active-directory/fundamentals/active-directory-whatis.md)
-- [使用 PowerShell 管理 Azure AD](/powershell/azure/?view=azureadps-2.0)
+- [使用 PowerShell 管理 Azure AD](/powershell/azure/)
 - [混合标识所需的端口和协议](../../active-directory/hybrid/reference-connect-ports.md)
 
 ## <a name="manage-database-access"></a>管理数据库访问
@@ -292,7 +292,7 @@ Azure Defender for SQL 功能可检测出现的可能威胁，并提供有关异
 
        - **事件中心**，可以路由需要在其他应用程序中使用的事件
 
-   1. 选择“保存” 。
+   1. 选择“保存”。
 
       ![审核设置](./media/secure-database-tutorial/audit-settings.png)
 
@@ -317,7 +317,7 @@ Azure Defender for SQL 功能可检测出现的可能威胁，并提供有关异
 
     ![掩码设置](./media/secure-database-tutorial/mask-settings.png)
 
-1. 选择“保存” 。 现在会对所选信息进行掩码处理以维护隐私。
+1. 选择“保存”。 现在会对所选信息进行掩码处理以维护隐私。
 
     ![掩码示例](./media/secure-database-tutorial/mask-query.png)
 
@@ -331,7 +331,7 @@ Azure Defender for SQL 功能可检测出现的可能威胁，并提供有关异
 
 1. 在“安全性”部分，选择“透明数据加密”。 
 
-1. 必要时，将“数据加密”设置为“打开”。 选择“保存” 。
+1. 必要时，将“数据加密”设置为“打开”。 选择“保存”。
 
     ![透明数据加密](./media/secure-database-tutorial/encryption-settings.png)
 
@@ -340,7 +340,7 @@ Azure Defender for SQL 功能可检测出现的可能威胁，并提供有关异
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了如何通过简单的几个步骤增强数据库的安全性。 你已了解如何：
+本教程介绍了如何通过简单的几个步骤增强数据库的安全性。 你已了解如何执行以下操作：
 
 > [!div class="checklist"]
 >

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/03/2018
 ms.author: damaerte
-ms.openlocfilehash: 109067899884c04cbd283b5eef1d7e0089556b07
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
-ms.translationtype: MT
+ms.openlocfilehash: 8cc1934cc97ecf821de8644dda45d867b3ca3e85
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96301724"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102508940"
 ---
 # <a name="powershell-in-azure-cloud-shell-for-windows-users"></a>适用于 Windows 用户的 Azure Cloud Shell 中的 PowerShell
 
@@ -36,7 +36,7 @@ PowerShell 特定体验（例如 `tab-completing` cmdlet 名称、参数和值�
 
 ## <a name="windows-powershell-aliases-vs-linux-utilities"></a>Windows PowerShell 别名与 Linux 实用程序
 
-一些现有的 PowerShell 别名与内置 Linux 命令具有相同的名称，如 `cat` 、、、 `ls` 等 `sort` `sleep` 。在 PowerShell Core 6 中，与内置 Linux 命令发生冲突的别名已删除。
+某些现有 PowerShell 别名与内置 Linux 命令具有相同的名称，例如 `cat`、`ls`、`sort`、`sleep`，等等。PowerShell Core 6 中已删除了与内置 Linux 命令冲突的别名。
 下面是已删除的常用别名及其等效命令：  
 
 |已删除的别名   |等效命令   |
@@ -69,4 +69,4 @@ mkdir (Split-Path $profile.CurrentUserAllHosts)
 
 ## <a name="whats-new-in-powershell-core-6"></a>PowerShell Core 6 中的新增功能
 
-有关 PowerShell Core 6 中的新增功能的详细信息，请参考 [PowerShell 文档](/powershell/scripting/whats-new/what-s-new-in-powershell-70?view=powershell-7.1)和 [PowerShell Core 入门](https://blogs.msdn.microsoft.com/powershell/2017/06/09/getting-started-with-powershell-core-on-windows-mac-and-linux/)博客文章。
+有关 PowerShell Core 6 中的新增功能的详细信息，请参考 [PowerShell 文档](/powershell/scripting/whats-new/what-s-new-in-powershell-70)和 [PowerShell Core 入门](https://blogs.msdn.microsoft.com/powershell/2017/06/09/getting-started-with-powershell-core-on-windows-mac-and-linux/)博客文章。

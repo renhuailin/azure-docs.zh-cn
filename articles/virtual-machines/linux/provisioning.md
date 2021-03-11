@@ -2,19 +2,20 @@
 title: Linux 预配概述
 description: 概述如何将 Linux VM 映像引入到 Azure 或新建映像以在 Azure 中使用。
 author: danielsollondon
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.subservice: imaging
+ms.collection: linux
 ms.topic: overview
 ms.workload: infrastructure
 ms.date: 06/22/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: a7d9aa7de8bb75a22acc85c77924765eaa1b6b3b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6dafa400f2ce2421db6775084befc0abeab70a04
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87080142"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102563211"
 ---
 # <a name="azure-linux-vm-provisioning"></a>Azure Linux VM 预配
 使用通用映像（共享映像库或托管映像）创建 VM 时，通过控制平面可以创建 VM 并将参数和设置传递到 VM。 此过程称为 VM 预配。 在预配过程中，该平台会在 VM 启动时将所需的 VM Create 参数值（主机名、用户名、密码、SSH 密钥 和 customData）提供给 VM。 

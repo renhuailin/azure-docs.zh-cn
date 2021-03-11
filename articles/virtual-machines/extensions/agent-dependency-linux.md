@@ -1,26 +1,19 @@
 ---
 title: 适用于 Linux 的 Azure Monitor 依赖项虚拟机扩展
 description: 使用虚拟机扩展在 Linux 虚拟机上部署 Azure Monitor 依赖项代理。
-services: virtual-machines-linux
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
-ms.service: virtual-machines-linux
-ms.subservice: extensions
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure-services
-ms.date: 03/29/2019
+ms.service: virtual-machines
+ms.subservice: extensions
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: 9e75b159f994a869a2bbd4498332a1e160bf5462
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.collection: linux
+ms.date: 03/29/2019
+ms.openlocfilehash: d28f0a34f47942bba8776a0acd0bfe3aaf25df12
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100580319"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102566289"
 ---
 # <a name="azure-monitor-dependency-virtual-machine-extension-for-linux"></a>适用于 Linux 的 Azure Monitor 依赖项虚拟机扩展
 

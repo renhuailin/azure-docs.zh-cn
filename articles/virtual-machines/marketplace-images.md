@@ -3,18 +3,18 @@ title: 使用 Azure PowerShell 指定市场购买计划信息
 description: 了解如何在共享映像库中创建映像时指定 Azure 市场购买计划详细信息。
 author: cynthn
 ms.service: virtual-machines
-ms.subservice: imaging
+ms.subservice: shared-image-gallery
 ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 07/07/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 2a971f6e56f441ab05a6a9b483eeef990d3ea31f
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
-ms.translationtype: MT
+ms.openlocfilehash: 9df1f6b02e6572c8f2153016c0142912e24fcfe8
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96903745"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102562531"
 ---
 # <a name="supply-azure-marketplace-purchase-plan-information-when-creating-images"></a>在创建映像时提供 Azure 市场购买计划信息
 
@@ -24,7 +24,7 @@ ms.locfileid: "96903745"
 
 
 ## <a name="get-the-source-vm-information"></a>获取源 VM 信息
-如果仍有原始 VM，可以使用 New-azvm 从其获取计划名称、发布者和产品信息。 此示例在 *myResourceGroup* 资源组中获取名为 *myVM* 的 VM，并显示 vm 的购买计划信息。
+如果仍有原始 VM，可使用 Get-AzVM 从该 VM 中获取计划名称、发布者和产品信息。 此示例获取 myResourceGroup 资源组中名为 myVM 的 VM，然后显示 VM 的购买计划信息 。
 
 ```azurepowershell-interactive
 $vm = Get-azvm `

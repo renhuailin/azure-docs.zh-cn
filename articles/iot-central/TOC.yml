@@ -209,6 +209,8 @@
           href: core/howto-connect-rigado-cascade-500.md
         - name: 连接其他 IoT 云
           href: core/howto-build-iotc-device-bridge.md
+        - name: 管理设备
+          href: core/how-to-move-device-to-iot.md
     - name: 生成集成的解决方案
       items:
         - name: 向仪表板添加磁贴

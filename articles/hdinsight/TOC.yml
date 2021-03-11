@@ -256,7 +256,7 @@
               href: ./hdinsight-cluster-availability.md
             - name: 群集可用性 - Azure Monitor 日志
               href: ./cluster-availability-monitor-logs.md
-        - name: 故障排除
+        - name: 疑难解答
           items:
             - name: CPU 核心配额增加请求
               href: ./quota-increase-request.md
@@ -273,9 +273,9 @@
         - name: Azure PowerShell
           href: /powershell/module/az.hdinsight
         - name: 用于 .NET 的 SDK
-          href: /dotnet/api/overview/azure/hdinsight?view=azure-dotnet&preserve-view=true
+          href: /dotnet/api/overview/azure/hdinsight
         - name: 用于 Python 的 SDK
-          href: /python/api/overview/azure/hdinsight?view=azure-python&preserve-view=true
+          href: /python/api/overview/azure/hdinsight
         - name: 用于 Java 的 SDK
           href: /java/api/overview/azure/hdinsight
         - name: 用于 Go 的 SDK
@@ -679,7 +679,7 @@
               href: ./kafka/apache-kafka-log-analytics-operations-management.md
             - name: SSL 加密和身份验证
               href: ./kafka/apache-kafka-ssl-encryption-authentication.md
-        - name: 故障排除
+        - name: 疑难解答
           items:
             - name: 容错域不足
               href: ./kafka/kafka-troubleshoot-insufficient-domains.md
@@ -736,7 +736,7 @@
               href: ./hbase/apache-hbase-phoenix-performance.md
             - name: 在 Azure VNet 中创建 Apache HBase 群集
               href: ./hbase/apache-hbase-provision-vnet.md
-        - name: 故障排除
+        - name: 疑难解答
           items:
             - name: 排查 Apache HBase 性能问题
               href: ./hbase/troubleshoot-hbase-performance-issues.md
@@ -835,7 +835,7 @@
               href: ./interactive-query/apache-hive-migrate-workloads.md
             - name: 优化 Apache Hive 查询
               href: ./hdinsight-hadoop-optimize-hive-query.md
-        - name: 故障排除
+        - name: 疑难解答
           items:
             - name: 通过 Apache Hive 设置解决内存不足错误
               href: ./hdinsight-hadoop-hive-out-of-memory-error-oom.md
@@ -948,7 +948,7 @@
           items:
             - name: 监视拓扑
               href: ./storm/apache-storm-deploy-monitor-topology-linux.md
-        - name: 故障排除
+        - name: 疑难解答
           items:
             - name: Apache STORM 故障排除
               href: ./storm/apache-troubleshoot-storm.md

@@ -55,7 +55,7 @@
         - name: 许可证
           href: concept-mfa-licensing.md
         - name: 用于 Office 365 的 MFA
-          href: /office365/admin/security-and-compliance/set-up-multi-factor-authentication?view=o365-worldwide
+          href: /office365/admin/security-and-compliance/set-up-multi-factor-authentication
         - name: 常见问题解答
           href: multi-factor-authentication-faq.md
     - name: 密码保护

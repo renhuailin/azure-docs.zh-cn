@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: 8e97a2f077efd4d00eec4a91645dc1b65057ebd9
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
-ms.translationtype: MT
+ms.openlocfilehash: 3dbdfb461bc2ae79439f39df3efbc2c564782110
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94565001"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102548387"
 ---
 # <a name="configure-a-vpn-client-for-p2s-openvpn-protocol-connections-azure-ad-authentication"></a>配置用于 P2S OpenVPN 协议连接的 VPN 客户端：Azure AD 身份验证
 
@@ -56,65 +56,65 @@ ms.locfileid: "94565001"
 
 1. 突出显示要导出的 VPN 客户端配置文件，然后依次选择“...”、“导出”。  
 
-    ![屏幕截图显示从菜单选择的导出。](./media/openvpn-azure-ad-client/export/export1.jpg)
+    ![屏幕截图显示从菜单中选择了“导出”。](./media/openvpn-azure-ad-client/export/export1.jpg)
 
 2. 选择要将此配置文件保存到的位置，保留默认的文件名，然后选择“保存”以保存 xml 文件。 
 
-    ![屏幕截图显示 "另存为" 对话框，你可以在其中输入文件名。](./media/openvpn-azure-ad-client/export/export2.jpg)
+    ![屏幕截图显示可在其中输入文件名的“另存为”对话框。](./media/openvpn-azure-ad-client/export/export2.jpg)
 
 ### <a name="to-import-a-client-profile"></a><a name="import"></a>导入客户端配置文件
 
 1. 在页面上，选择“导入”。 
 
-    ![屏幕截图显示从 plus 菜单中选择的导入。](./media/openvpn-azure-ad-client/import/import1.jpg)
+    ![屏幕截图显示从加号菜单选择了“导入”。](./media/openvpn-azure-ad-client/import/import1.jpg)
 
 2. 浏览到 XML 配置文件并将其选中。 选择该文件后，选择“打开”。 
 
-    ![屏幕截图显示 "打开" 对话框，你可以在其中选择文件。](./media/openvpn-azure-ad-client/import/import2.jpg)
+    ![屏幕截图显示了“打开”对话框，你可在其中选择文件。](./media/openvpn-azure-ad-client/import/import2.jpg)
 
 3. 指定配置文件的名称，并选择“保存”。 
 
-    ![屏幕截图显示添加的连接名称，并选择 "保存" 按钮。](./media/openvpn-azure-ad-client/import/import3.jpg)
+    ![屏幕截图显示已添加“连接名称”并且已选择“保存”按钮。](./media/openvpn-azure-ad-client/import/import3.jpg)
 
 4. 选择“连接”以连接到 VPN。 
 
-    ![屏幕截图显示刚刚创建的连接的 "连接" 按钮。](./media/openvpn-azure-ad-client/import/import4.jpg)
+    ![屏幕截图显示了刚刚创建的连接的“连接”按钮。](./media/openvpn-azure-ad-client/import/import4.jpg)
 
 5. 连接后，图标将变为绿色并指示“已连接”。 
 
-    ![屏幕截图显示连接状态与 "断开连接" 选项。](./media/openvpn-azure-ad-client/import/import5.jpg)
+    ![屏幕截图显示了处于“已连接”状态的连接以及用于断开连接的选项。](./media/openvpn-azure-ad-client/import/import5.jpg)
 
 ### <a name="to-delete-a-client-profile"></a><a name="delete"></a>删除客户端配置文件
 
 1. 选择要删除的客户端配置文件旁边的省略号图标。 然后选择“删除”  。
 
-    ![屏幕截图显示从菜单中选择 "删除"。](./media/openvpn-azure-ad-client/delete/delete1.jpg)
+    ![屏幕截图显示从菜单选择了“删除”。](./media/openvpn-azure-ad-client/delete/delete1.jpg)
 
 2. 选择“删除”以删除配置文件。 
 
-    ![屏幕截图显示了一个确认对话框，其中包含删除或取消选项。](./media/openvpn-azure-ad-client/delete/delete2.jpg)
+    ![屏幕截图显示了确认对话框，其中包含“删除”或“取消”选项。](./media/openvpn-azure-ad-client/delete/delete2.jpg)
 
 ## <a name="create-a-connection"></a><a name="connection"></a>创建连接
 
 1. 在页面上，依次选择 **+** 、“+ 添加”。 
 
-    ![屏幕截图显示在加号菜单中选择了 "添加"。](./media/openvpn-azure-ad-client/create/create1.jpg)
+    ![屏幕截图显示从加号菜单中选择了“添加”。](./media/openvpn-azure-ad-client/create/create1.jpg)
 
 2. 填写连接信息。 如果你不确定要输入哪些值，请与管理员联系。 填写值后，选择“保存”。 
 
-    ![屏幕截图显示窗格，你可以在其中输入所需的值。](./media/openvpn-azure-ad-client/create/create2.jpg)
+    ![屏幕截图显示了可在其中输入所需值的窗格。](./media/openvpn-azure-ad-client/create/create2.jpg)
 
 3. 选择“连接”以连接到 VPN。 
 
-    ![屏幕截图显示连接的 "连接" 按钮。](./media/openvpn-azure-ad-client/create/create3.jpg)
+    ![屏幕截图显示了用于连接的“连接”按钮。](./media/openvpn-azure-ad-client/create/create3.jpg)
 
 4. 选择正确的凭据，然后选择“继续”。 
 
-    ![屏幕截图显示 "登录" 对话框。](./media/openvpn-azure-ad-client/create/create4.jpg)
+    ![屏幕截图显示了“登录”对话框。](./media/openvpn-azure-ad-client/create/create4.jpg)
 
 5. 成功连接后，图标将变为绿色并指示“已连接”。 
 
-    ![屏幕截图显示连接处于连接状态。](./media/openvpn-azure-ad-client/create/create5.jpg)
+    ![屏幕截图显示了处于“已连接”状态的连接。](./media/openvpn-azure-ad-client/create/create5.jpg)
 
 ### <a name="to-connect-automatically"></a><a name="autoconnect"></a>自动连接
 
@@ -122,37 +122,37 @@ ms.locfileid: "94565001"
 
 1. 在 VPN 客户端的主页上，选择“VPN 设置”。 
 
-    ![屏幕截图显示了 V P N 连接，可在其中选择 "V P N" 设置。](./media/openvpn-azure-ad-client/auto/auto1.jpg)
+    ![屏幕截图显示了“VPN 连接”，在其中可以选择“VPN 设置”。](./media/openvpn-azure-ad-client/auto/auto1.jpg)
 
 2. 在切换应用对话框中选择“是”。 
 
-    ![屏幕截图显示有关切换应用的验证消息。](./media/openvpn-azure-ad-client/auto/auto2.jpg)
+    ![屏幕截图显示了有关切换应用的验证消息。](./media/openvpn-azure-ad-client/auto/auto2.jpg)
 
 3. 请确保要设置的连接尚未建立连接，然后突出显示该配置文件并选中“自动连接”复选框。 
 
-    ![屏幕截图显示 "设置" 对话框，可在其中选择 "自动连接"。](./media/openvpn-azure-ad-client/auto/auto3.jpg)
+    ![屏幕截图显示了“设置”对话框，在其中可以选择“自动连接”。](./media/openvpn-azure-ad-client/auto/auto3.jpg)
 
 4. 选择“连接”启动 VPN 连接。 
 
-    ![屏幕截图显示连接按钮。](./media/openvpn-azure-ad-client/auto/auto4.jpg)
+    ![屏幕截图显示了“连接”按钮。](./media/openvpn-azure-ad-client/auto/auto4.jpg)
 
 ## <a name="diagnose-connection-issues"></a><a name="diagnose"></a>诊断连接问题
 
 1. 若要诊断连接问题，可以使用“诊断”工具。  选择要诊断的 VPN 连接旁边的“...”以显示菜单。  然后选择“诊断”。 
 
-    ![屏幕截图显示从菜单中选择的诊断。](./media/openvpn-azure-ad-client/diagnose/diagnose1.jpg)
+    ![屏幕截图显示从菜单选择了“诊断”。](./media/openvpn-azure-ad-client/diagnose/diagnose1.jpg)
 
 2. 在“连接属性”页上，选择“运行诊断”。  
 
-    ![屏幕截图显示连接的 "运行诊断" 按钮。](./media/openvpn-azure-ad-client/diagnose/diagnose2.jpg)
+    ![屏幕截图显示连接的“运行诊断”按钮。](./media/openvpn-azure-ad-client/diagnose/diagnose2.jpg)
 
 3. 使用凭据登录。
 
-    ![屏幕截图显示此操作的 "登录" 对话框。](./media/openvpn-azure-ad-client/diagnose/diagnose3.jpg)
+    ![屏幕截图显示此操作的“登录”对话框。](./media/openvpn-azure-ad-client/diagnose/diagnose3.jpg)
 
 4. 查看诊断结果。
 
-    ![屏幕截图显示诊断结果。](./media/openvpn-azure-ad-client/diagnose/diagnose4.jpg)
+    ![屏幕截图显示了诊断结果。](./media/openvpn-azure-ad-client/diagnose/diagnose4.jpg)
 
 ## <a name="faq"></a>常见问题
 
@@ -192,7 +192,7 @@ ms.locfileid: "94565001"
 ```
 
 > [!NOTE]
-> OpenVPN Azure AD 客户端使用 DNS 名称解析策略表 (NRPT) 条目，这意味着不会在 `ipconfig /all` 的输出下列出 DNS 服务器。 若要确认使用中的 DNS 设置，请使用 PowerShell 中的 [Get-DnsClientNrptPolicy](/powershell/module/dnsclient/get-dnsclientnrptpolicy?view=win10-ps)。
+> OpenVPN Azure AD 客户端使用 DNS 名称解析策略表 (NRPT) 条目，这意味着不会在 `ipconfig /all` 的输出下列出 DNS 服务器。 若要确认使用中的 DNS 设置，请使用 PowerShell 中的 [Get-DnsClientNrptPolicy](/powershell/module/dnsclient/get-dnsclientnrptpolicy)。
 >
 
 ### <a name="how-do-i-add-custom-routes-to-the-vpn-client"></a>如何将自定义路由添加到 VPN 客户端？
