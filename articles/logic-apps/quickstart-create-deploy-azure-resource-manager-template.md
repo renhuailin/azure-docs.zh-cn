@@ -7,12 +7,12 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: quickstart
 ms.custom: mvc, subject-armqs, devx-track-azurecli
 ms.date: 06/30/2020
-ms.openlocfilehash: 689582d73e29cb60cc2ee5294b568b5db2f73244
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 8cee79efd9be53ddb9d450f643c04f21ae5e7fca
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92739332"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102213991"
 ---
 # <a name="quickstart-create-and-deploy-a-logic-app-workflow-by-using-an-arm-template"></a>快速入门：使用 ARM 模板创建和部署逻辑应用工作流
 
@@ -22,7 +22,7 @@ ms.locfileid: "92739332"
 
 如果你的环境满足先决条件，并且你熟悉如何使用 ARM 模板，请选择“部署到 Azure”按钮。 Azure 门户中会打开模板。
 
-[![“部署到 Azure”](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-logic-app-create%2fazuredeploy.json)
+[![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-logic-app-create%2fazuredeploy.json)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -49,14 +49,14 @@ ms.locfileid: "92739332"
 | 选项 | 说明 |
 |--------|-------------|
 | [Azure 门户](../logic-apps/quickstart-create-deploy-azure-resource-manager-template.md?tabs=azure-portal#deploy-template) | 如果你的 Azure 环境满足先决条件并且你能够熟练地使用 ARM 模板，那么这些步骤可帮助你直接登录到 Azure 并在 Azure 门户中打开快速入门模板。 有关详细信息，请参阅[使用 ARM 模板和 Azure 门户部署资源](../azure-resource-manager/templates/deploy-portal.md)。 |
-| [Azure CLI](../logic-apps/quickstart-create-deploy-azure-resource-manager-template.md?tabs=azure-cli#deploy-template) | Azure 命令行接口 (Azure CLI) 是一组用于创建和管理 Azure 资源的命令。 若要运行这些命令，需要 Azure CLI 版本 2.6 或更高版本。 若要检查 CLI 版本，请键入 `az --version`。 有关详细信息，请参阅以下主题： <p><p>- [什么是 Azure CLI](/cli/azure/what-is-azure-cli?view=azure-cli-latest) <br>- [Azure CLI 入门](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) |
+| [Azure CLI](../logic-apps/quickstart-create-deploy-azure-resource-manager-template.md?tabs=azure-cli#deploy-template) | Azure 命令行接口 (Azure CLI) 是一组用于创建和管理 Azure 资源的命令。 若要运行这些命令，需要 Azure CLI 版本 2.6 或更高版本。 若要检查 CLI 版本，请键入 `az --version`。 有关详细信息，请参阅以下主题： <p><p>- [什么是 Azure CLI](/cli/azure/what-is-azure-cli) <br>- [Azure CLI 入门](/cli/azure/get-started-with-azure-cli) |
 | [Azure PowerShell](../logic-apps/quickstart-create-deploy-azure-resource-manager-template.md?tabs=azure-powershell#deploy-template) | Azure PowerShell 提供一组使用 Azure 资源管理器模型来管理 Azure 资源的 cmdlet。 有关详细信息，请参阅以下主题： <p><p>- [Azure PowerShell 概述](/powershell/azure/azurerm/overview) <br>- [Azure PowerShell Az 模块简介](/powershell/azure/new-azureps-module-az) <br>- [Azure PowerShell 入门](/powershell/azure/get-started-azureps) |
 | [Azure 资源管理 REST API](../logic-apps/quickstart-create-deploy-azure-resource-manager-template.md?tabs=rest-api#deploy-template) | Azure 提供表述性状态转移 (REST) API，这些 API 是支持 HTTP 操作（方法）的服务终结点，用于创建、检索、更新或删除对服务资源的访问权限。 有关详细信息，请参阅 [Azure REST API 入门](/rest/api/azure/)。 |
 |||
 
 <a name="deploy-azure-portal"></a>
 
-#### <a name="portal"></a>[门户](#tab/azure-portal)
+#### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. 选择以下图像以通过 Azure 帐户登录到 Azure 门户，并从中打开快速入门模板：
 
@@ -64,12 +64,12 @@ ms.locfileid: "92739332"
 
 1. 在门户中的“使用模板创建逻辑应用”页面上，输入或选择这些值：
 
-   | 属性 | “值” | 描述 |
+   | 属性 | “值” | 说明 |
    |----------|-------|-------------|
    | **订阅** | <*Azure-subscription-name*> | 要使用的 Azure 订阅的名称 |
-   | **资源组** | <*Azure-resource-group-name*> | 新的或现有的 Azure 资源组的名称。 此示例使用 `Check-Azure-Status-RG`。 |
-   | **区域** | <*Azure-region*> | 要使用逻辑应用的 Azure 数据中心区域。 此示例使用 `West US`。 |
-   | **逻辑应用名称** | <*logic-app-name*> | 用于逻辑应用的名称。 此示例使用 `Check-Azure-Status-LA`。 |
+   | **资源组** | <*Azure-resource-group-name*> | 新的或现有的 Azure 资源组的名称。 本示例使用 `Check-Azure-Status-RG`。 |
+   | **区域** | <*Azure-region*> | 要使用逻辑应用的 Azure 数据中心区域。 本示例使用 `West US`。 |
+   | **逻辑应用名称** | <*logic-app-name*> | 用于逻辑应用的名称。 本示例使用 `Check-Azure-Status-LA`。 |
    | **测试 Uri** | <*test-URI*> | 根据特定计划要调用的服务的 URI。 此示例使用 `https://status.azure.com/en-us/status/`，这是 Azure 状态页面。 |
    | **位置** |  <*Azure-region-for-all-resources*> | 用于所有资源的 Azure 区域（如果不同于默认值）。 此示例使用默认值 `[resourceGroup().location]`，这是资源组位置。 |
    ||||
@@ -129,7 +129,7 @@ Read-Host -Prompt "Press [ENTER] to continue ..."
    PUT https://management.azure.com/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}?api-version=2019-10-01
    ```
 
-   | 值 | 描述 |
+   | 值 | 说明 |
    |-------|-------------|
    | `subscriptionId`| 要使用的 Azure 订阅的 GUID |
    | `resourceGroupName` | 要创建的 Azure 资源组的名称。 本示例使用 `Check-Azure-Status-RG`。 |
@@ -152,10 +152,10 @@ Read-Host -Prompt "Press [ENTER] to continue ..."
    PUT https://management.azure.com/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2019-10-01
    ```
 
-   | 值 | 描述 |
+   | 值 | 说明 |
    |-------|-------------|
    | `subscriptionId`| 要使用的 Azure 订阅的 GUID |
-   | `resourceGroupName` | 要使用的 Azure 资源组的名称。 此示例使用 `Check-Azure-Status-RG`。 |
+   | `resourceGroupName` | 要使用的 Azure 资源组的名称。 本示例使用 `Check-Azure-Status-RG`。 |
    | `deploymentName` | 用于部署的名称。 本示例使用 `Check-Azure-Status-LA`。 |
    |||
 
@@ -188,7 +188,7 @@ Read-Host -Prompt "Press [ENTER] to continue ..."
 
    | 属性 | “值” | 说明 |
    |----------|-------|-------------|
-   | `location`| <*Azure-region*> | 用于部署的 Azure 区域。 此示例使用 `West US`。 |
+   | `location`| <*Azure-region*> | 用于部署的 Azure 区域。 本示例使用 `West US`。 |
    | `templateLink` : `uri` | <*quickstart-template-URL*> | 用于部署的快速入门模板的 URL 位置： <p><p>`https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-logic-app-create/azuredeploy.json`. |
    | `parametersLink` : `uri` | <*quickstart-template-parameter-file-URL*> | 用于部署的快速入门模板的参数文件的 URL 位置： <p><p>`https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-logic-app-create/azuredeploy.parameters.json` <p><p>有关资源管理器参数文件的详细信息，请参阅这些主题： <p><p>- [创建资源管理器参数文件](../azure-resource-manager/templates/parameter-files.md) <br>- [教程：使用参数文件部署 ARM 模板](../azure-resource-manager/templates/template-tutorial-use-parameter-file.md) |
    | `mode` | <*deployment-mode*> | 运行增量更新或完成更新。 此示例使用 `Incremental`，这是默认值。 有关详细信息，请参阅 [Azure 资源管理部署模式](../azure-resource-manager/templates/deployment-modes.md)。 |
@@ -226,7 +226,7 @@ Read-Host -Prompt "Press [ENTER] to continue ..."
 
 若要查看逻辑应用，可以使用 Azure 门户、运行使用 Azure CLI 或 Azure PowerShell 创建的脚本，或者使用逻辑应用 REST API。
 
-### <a name="portal"></a>[门户](#tab/azure-portal)
+### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. 在 Azure 门户搜索框中，输入逻辑应用的名称，在此示例中为 `Check-Azure-Status-LA`。 从结果列表中，选择逻辑应用。
 
@@ -245,7 +245,7 @@ az logic workflow show --name $logicAppName &&
 echo "Press [ENTER] to continue ..."
 ```
 
-有关详细信息，请参阅 [Azure CLI：az 逻辑工作流展示](/cli/azure/ext/logic/logic/workflow?view=azure-cli-latest#ext-logic-az-logic-workflow-show)。
+有关详细信息，请参阅 [Azure CLI：az 逻辑工作流展示](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-show)。
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -284,7 +284,7 @@ GET https://management.azure.com/subscriptions/xxxxXXXXxxxxXXXXX/resourceGroups/
 
 如果打算继续使用后续的快速入门和教程，则可能需要保留这些资源。 当不再需要逻辑应用时，可以通过使用 Azure 门户、Azure CLI、Azure PowerShell 或资源管理 REST API 删除资源组。
 
-### <a name="portal"></a>[门户](#tab/azure-portal)
+### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. 在 Azure 门户中，找到并选择要删除的资源组，在此示例中为 `Check-Azure-Status-RG`。
 
@@ -303,7 +303,7 @@ az group delete --name $resourceGroupName &&
 echo "Press [ENTER] to continue ..."
 ```
 
-有关详细信息。请参阅 [Azure CLI：az 组删除](/cli/azure/group?view=azure-cli-latest#az-group-delete)。
+有关详细信息。请参阅 [Azure CLI：az 组删除](/cli/azure/group#az-group-delete)。
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -324,7 +324,7 @@ DELETE https://management.azure.com/subscriptions/{subscriptionId}/resourcegroup
 | 值 | 说明 |
 |-------|-------------|
 | `subscriptionId`| 部署了快速入门模板的 Azure 订阅的 GUID。 |
-| `resourceGroupName` | 部署了快速入门模板的 Azure 资源组的名称。 此示例使用 `Check-Azure-Status-RG`。 |
+| `resourceGroupName` | 部署了快速入门模板的 Azure 资源组的名称。 本示例使用 `Check-Azure-Status-RG`。 |
 |||
 
 例如：

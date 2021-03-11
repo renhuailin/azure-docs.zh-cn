@@ -366,7 +366,7 @@
           href: monitor-azure-backup-with-backup-explorer.md
         - name: 使用 Azure 门户
           href: backup-azure-monitoring-built-in-monitor.md
-        - name: 使用 Azure Monitor
+        - name: 使用 Azure Monitor 日志
           href: backup-azure-monitoring-use-azuremonitor.md
     - name: 报表
       items:
@@ -374,10 +374,14 @@
           items:
             - name: 配置 Azure 备份报表
               href: configure-reports.md
+            - name: 通过电子邮件发送 Azure 备份报表
+              href: backup-reports-email.md
         - name: 配置恢复服务保管库的诊断事件
           items:
             - name: 使用恢复服务保管库的诊断设置
               href: backup-azure-diagnostic-events.md
+            - name: 使用系统函数
+              href: backup-reports-system-functions.md
             - name: 资源特定诊断事件的 Log Analytics 数据模型
               href: backup-azure-reports-data-model.md
             - name: Azure 备份的 Log Analytics 数据模型（Azure 诊断模式）

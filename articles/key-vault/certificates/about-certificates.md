@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 66f077028b9f9f7a7644a318d4447eeaaab19e98
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: b410dc89b286ef830f0d5b6a9c33fe77d380f5d1
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94919924"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102507205"
 ---
 # <a name="about-azure-key-vault-certificates"></a>关于 Azure Key Vault 证书
 
@@ -91,7 +91,7 @@ Key Vault 证书具有以下属性：
 
 从零开始创建 Key Vault 证书时，需要提供策略。 该策略指定如何创建此 Key Vault 证书版本或下一个 Key Vault 证书版本。 建立策略后，便不需要使用连续创建操作创建将来的版本。 所有版本的 Key Vault 证书只有一个策略实例。  
 
-概括而言，证书策略包含以下信息（可在[此处](/powershell/module/az.keyvault/set-azkeyvaultcertificatepolicy?view=azps-4.4.0)找到其定义）：  
+概括而言，证书策略包含以下信息（可在[此处](/powershell/module/az.keyvault/set-azkeyvaultcertificatepolicy)找到其定义）：  
 
 -   X509 证书属性：包含主题名称、主题备用名称以及用于创建 x509 证书请求的其他属性。  
 -   密钥属性：包含密钥类型、密钥长度、可导出字段和 ReuseKeyOnRenewal 字段。 这些字段指示密钥保管库如何生成密钥。 

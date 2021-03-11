@@ -8,12 +8,12 @@ ms.technology: devops-cicd
 ms.topic: tutorial
 ms.date: 03/24/2020
 author: mlearned
-ms.openlocfilehash: 723f46652643883dc8e718468a9ca9eead50e1aa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 078331c35c76a3cda97398b1a487933a3f0f5ab8
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91856018"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102559301"
 ---
 # <a name="tutorial-deploy-your-aspnet-core-app-to-azure-service-fabric-by-using-azure-devops-starter"></a>教程：使用 Azure DevOps Starter 将 ASP.NET Core 应用部署到 Azure Service Fabric
 
@@ -100,7 +100,7 @@ DevOps Starter 会自动创建并配置从 Azure DevOps 组织部署到 Azure �
 
 1. 选择“生成和发布”，然后选择“发布”。  DevOps Starter 会创建一个发布管道，用于管理到 Azure 的部署。
 
-1. 选择发布管道旁边的省略号 (...)，然后选择“编辑”。 发布管道包含一个*管道*，用于定义发布过程。
+1. 选择发布管道旁边的省略号 (...)，然后选择“编辑”。 发布管道包含一个 *管道*，用于定义发布过程。
 
 1. 在“项目”下选择“删除” 。 前面检查过的生成管道将生成用于项目的输出。 
 
@@ -158,4 +158,4 @@ DevOps Starter 会自动创建并配置从 Azure DevOps 组织部署到 Azure �
 若要详细了解 Service Fabric 和微服务，请参阅：
 
 > [!div class="nextstepaction"]
-> [使用微服务方法生成应用程序](/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)
+> [使用微服务方法生成应用程序](/azure/devops/pipelines/release/define-multistage-release-process)

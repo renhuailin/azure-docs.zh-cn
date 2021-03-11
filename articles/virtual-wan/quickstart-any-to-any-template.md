@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 02/02/2021
 ms.author: cherylmc
 ms.custom: subject-armqs
-ms.openlocfilehash: bf892a45ee6df2ab29a1b326a663dc41057c7ea6
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: d31f490baec49e8e0b6fcf89caa8c19202fdf763
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99509730"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102431374"
 ---
 # <a name="quickstart-create-an-any-to-any-configuration-using-an-arm-template"></a>快速入门：使用 ARM 模板创建任意对任意配置
 
@@ -24,7 +24,7 @@ ms.locfileid: "99509730"
 
 如果你的环境满足先决条件，并且你熟悉如何使用 ARM 模板，请选择“部署到 Azure”按钮。 Azure 门户中会打开模板。
 
-[![“部署到 Azure”](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f201-virtual-wan-with-all-gateways%2fazuredeploy.json)
+[![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f201-virtual-wan-with-all-gateways%2fazuredeploy.json)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -125,13 +125,7 @@ ms.locfileid: "99509730"
 
 当不再需要所创建的资源时，请将其删除。 由于存在依赖关系，必须按特定顺序删除某些虚拟 WAN 资源。 大约需要 30 分钟才能完成删除。
 
-1. 打开所创建的虚拟 WAN。
-1. 选择与虚拟 WAN 关联的虚拟中心来打开中心页面。
-1. 单击 **“删除”** 。 删除中心内的所有实体（连接、网关等）。 此步骤可能需要 30 分钟才能完成。
-1. 你可在此时删除中心，也可稍后在删除资源组时删除它。
-1. 对与虚拟 WAN 关联的所有中心重复此操作。
-1. 在 Azure 门户中，导航到资源组。
-1. 选择“删除资源组”。 这将删除资源组中的所有内容，包括中心和虚拟 WAN。
+[!INCLUDE [Delete resources](../../includes/virtual-wan-resource-cleanup.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

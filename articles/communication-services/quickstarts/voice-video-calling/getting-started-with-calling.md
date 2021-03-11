@@ -8,14 +8,17 @@ ms.date: 07/24/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
 zone_pivot_groups: acs-plat-web-ios-android
-ms.openlocfilehash: 7d183be69b83f324d56e6977c55e973b02d8f9a0
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 48745662b8fbed2d4b72187bcf5c055643e222e8
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101656599"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102489186"
 ---
 # <a name="quickstart-add-voice-calling-to-your-app"></a>快速入门：在应用中添加语音呼叫
+
+[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
+
 
 通过使用通信服务呼叫客户端库向应用添加语音和视频呼叫，开启 Azure 通信服务使用旅程。
 

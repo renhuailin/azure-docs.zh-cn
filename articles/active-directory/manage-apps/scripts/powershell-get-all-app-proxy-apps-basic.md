@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 12/05/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: db23d2381d0532c760df8ca38d823a71225a1af5
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 0a5ee23a16c10a579c9b39ce3589028603ea7a3c
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99258399"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102550614"
 ---
 # <a name="get-all-application-proxy-apps-and-list-basic-information"></a>获取所有应用程序代理应用并列出基本信息
 
@@ -28,7 +28,7 @@ ms.locfileid: "99258399"
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
-此示例需要[适用于 Graph 的 AzureAD V2 PowerShell 模块](/powershell/azure/active-directory/install-adv2) (AzureAD) 或[适用于 Graph 的 AzureAD V2 PowerShell 模块预览版](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview) (AzureADPreview)。
+此示例需要[适用于 Graph 的 AzureAD V2 PowerShell 模块](/powershell/azure/active-directory/install-adv2) (AzureAD) 或[适用于 Graph 的 AzureAD V2 PowerShell 模块预览版](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview&preserve-view=true) (AzureADPreview)。
 ## <a name="sample-script"></a>示例脚本
 
 [!code-azurepowershell[main](~/powershell_scripts/application-proxy/get-all-appproxy-apps-basic.ps1 "Get all Application Proxy apps")]

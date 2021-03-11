@@ -11,12 +11,12 @@ ms.author: anumamah
 ms.reviewer: nibaccam
 ms.date: 08/14/2020
 ms.custom: devx-track-python, automl
-ms.openlocfilehash: f4d26ba6bec8f3e63ba89ed9abae789704a0828b
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 04e50f5a990624aa01c845c82658639b8450f57d
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98184095"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102503855"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-predict-taxi-fares"></a>教程：使用自动化机器学习预测出租车费
 
@@ -175,7 +175,7 @@ final_df.describe()
 
 ## <a name="configure-workspace"></a>配置工作区
 
-从现有工作区创建工作区对象。 [工作区](/python/api/azureml-core/azureml.core.workspace.workspace?preserve-view=true&view=azure-ml-py)是可接受 Azure 订阅和资源信息的类。 它还可创建云资源来监视和跟踪模型运行。 `Workspace.from_config()` 读取文件 **config.json** 并将身份验证详细信息加载到名为 `ws` 的对象。 在本教程中，`ws` 在代码的其余部分使用。
+从现有工作区创建工作区对象。 [工作区](/python/api/azureml-core/azureml.core.workspace.workspace)是可接受 Azure 订阅和资源信息的类。 它还可创建云资源来监视和跟踪模型运行。 `Workspace.from_config()` 读取文件 **config.json** 并将身份验证详细信息加载到名为 `ws` 的对象。 在本教程中，`ws` 在代码的其余部分使用。
 
 ```python
 from azureml.core.workspace import Workspace
@@ -302,7 +302,7 @@ BEST: The best observed score thus far.
 
 ## <a name="explore-the-results"></a>浏览结果
 
-通过 [Jupyter 小组件](/python/api/azureml-widgets/azureml.widgets?preserve-view=true&view=azure-ml-py)浏览自动训练的结果。 使用该小组件可以查看每个运行迭代的图形和表，以及训练准确度指标和元数据。 此外，可以筛选不同于下拉选择器中的主要指标的准确度指标。
+通过 [Jupyter 小组件](/python/api/azureml-widgets/azureml.widgets)浏览自动训练的结果。 使用该小组件可以查看每个运行迭代的图形和表，以及训练准确度指标和元数据。 此外，可以筛选不同于下拉选择器中的主要指标的准确度指标。
 
 ```python
 from azureml.widgets import RunDetails

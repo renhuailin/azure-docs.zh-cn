@@ -1,18 +1,18 @@
 ---
 title: Azure 文件存储参考
-description: 查找 Azure 文件 API 参考、自述文件和客户端库包。
+description: 查找 Azure 文件存储 API 参考、自述文件和客户端库包。
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 07/14/2020
 ms.service: storage
 ms.topic: conceptual
 ms.reviewer: ripohane
-ms.openlocfilehash: 4fe6befbfc3c6f12cf804841052795647cd1f76a
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
-ms.translationtype: MT
+ms.openlocfilehash: 828bb909aeb5d34f087a3173f792b325dc7cfd55
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629829"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102504808"
 ---
 # <a name="azure-files-reference"></a>Azure 文件存储参考
 
@@ -106,7 +106,7 @@ ms.locfileid: "94629829"
 
 | 版本 | 平台 |
 | ------- | -------- |
-|  4.x  | [PowerShell](/powershell/module/az.storage/?view=azps-4.6.1&preserve-view=true) |
+|  4.x  | [PowerShell](/powershell/module/az.storage/?view=azps-4.8.0&preserve-view=true) |
 |  3.x  | [PowerShell](/powershell/module/az.storage/?view=azps-3.8.0&preserve-view=true) |
 |  2.x  | [PowerShell](/powershell/module/az.storage/?view=azps-2.8.0&preserve-view=true) |
 

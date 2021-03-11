@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 04/29/2020
-ms.openlocfilehash: 9bb981b5a1d6ecb9e0c20748983a36ef3acfa001
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 102bb1a7bf1bd3cb799d52ce13045e01a2a34297
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98932905"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102505250"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-azure-portal"></a>快速入门：使用 Azure 门户在 Azure HDInsight 中创建 Apache Kafka 群集
 
@@ -32,13 +32,13 @@ SSH 客户端。 有关详细信息，请参阅[使用 SSH 连接到 HDInsight (
 
 若要创建基于 HDInsight 的 Apache Kafka 群集，请使用以下步骤：
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 
-1. 在顶部菜单中，选择“+ 创建资源”。
+1. 在顶部菜单中，选择“+ 创建资源”  。
 
     ![Azure 门户创建资源 HDInsight](./media/apache-kafka-get-started/azure-portal-create-resource.png)
 
-1. 选择“分析” > “Azure HDInsight”，转到“创建 HDInsight 群集”页。
+1. 选择“分析”   >   “Azure HDInsight”，转到“创建 HDInsight 群集”  页。
 
 1. 在“基本信息”选项卡中提供以下信息：
 
@@ -50,7 +50,7 @@ SSH 客户端。 有关详细信息，请参阅[使用 SSH 连接到 HDInsight (
     |区域    | 从下拉列表中，选择在其中创建群集的区域。  选择的区域与你越靠近，性能就越好。 |
     |群集类型| 选择“选择群集类型”，打开一个列表。 从列表中选择“Kafka”作为群集类型。|
     |版本|将指定群集类型的默认版本。 若要指定不同的版本，请从下拉列表中选择。|
-    |群集登录用户名和密码    | 默认登录名为“admin”。密码长度不得少于 10 个字符，且至少必须包含一个数字、一个大写字母和一个小写字母、一个非字母数字字符（' " ` \)字符除外）。 请确保不提供常见密码，如“Pass@word1”。|
+    |群集登录用户名和密码    | 默认登录名为“admin”  。密码长度不得少于 10 个字符，且至少必须包含一个数字、一个大写字母和一个小写字母、一个非字母数字字符（' " ` \)字符除外）。 请确保不提供常见密码，如“Pass@word1”  。|
     |安全外壳 (SSH) 用户名 | 默认用户名为“sshuser”。  可以提供其他名称作为 SSH 用户名。 |
     |对 SSH 使用群集登录密码| 选中此复选框，让 SSH 用户使用与提供给群集登录用户的密码相同的密码。|
 
@@ -58,22 +58,22 @@ SSH 客户端。 有关详细信息，请参阅[使用 SSH 连接到 HDInsight (
 
     每个 Azure 区域（位置）均提供 _容错域_。 容错域是 Azure 数据中心基础硬件的逻辑分组。 每个容错域共享公用电源和网络交换机。 在 HDInsight 群集中实现节点的虚拟机和托管磁盘跨这些容错域分布。 此体系结构可限制物理硬件故障造成的潜在影响。
 
-    为实现数据的高可用性，请选择包含三个容错域的区域（位置）。 有关区域中容错域数的信息，请参阅 [Linux 虚拟机的可用性](../../virtual-machines/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set)文档。
+    为实现数据的高可用性，请选择包含三个容错域的区域（位置）。 有关区域中容错域数的信息，请参阅 [Linux 虚拟机的可用性](../../virtual-machines/availability.md)文档。
 
     选择页面底部的“下一步:存储 >>”选项卡转到存储设置。
 
-1. 在“存储”选项卡中，提供以下值：
+1. 在“存储”  选项卡中，提供以下值：
 
     |属性  |说明  |
     |---------|---------|
-    |主存储类型|使用默认值“Azure 存储”。|
-    |选择方法|使用默认值“从列表中选择”。|
-    |主存储帐户|使用下拉列表选择现有存储帐户，或选择“新建”。 如果创建新帐户，名称的长度必须在 3 到 24 个字符之间，并且只能包含数字和小写字母|
+    |主存储类型|使用默认值“Azure 存储”。 |
+    |选择方法|使用默认值“从列表中选择”。 |
+    |主存储帐户|使用下拉列表选择现有存储帐户，或选择“新建”  。 如果创建新帐户，名称的长度必须在 3 到 24 个字符之间，并且只能包含数字和小写字母|
     |容器|使用自动填充的值。|
 
-    ![HDInsight Linux 入门之提供群集存储值](./media/apache-kafka-get-started/azure-portal-cluster-storage.png "提供用于创建 HDInsight 群集的存储值")
+    ![HDInsight Linux 入门 - 提供群集存储值](./media/apache-kafka-get-started/azure-portal-cluster-storage.png "提供用于创建 HDInsight 群集的存储值")
 
-    选择“安全性 + 网络”选项卡。
+    选择“安全性 + 网络”选项卡。 
 
 1. 对于本快速入门，请保留默认的安全设置。 若要详细了解企业安全性套餐，请访问[使用 Azure Active Directory 域服务配置具有企业安全性套餐的 HDInsight 群集](../domain-joined/apache-domain-joined-configure-using-azure-adds.md)。 若要了解如何使用自己的密钥进行 Apache Kafka 磁盘加密，请访问[客户管理的密钥磁盘加密](../disk-encryption.md)
 
@@ -215,7 +215,7 @@ Kafka 在主题中存储数据流。 可以使用 `kafka-topics.sh` 实用工具
         
         * 在具有三个容错域的区域中，复制因子为 3 可让副本分布在容错域中。 在具有两个容错域的区域中，复制因子为 4 可将副本均匀分布在域中。
         
-        * 有关区域中容错域数的信息，请参阅 [Linux 虚拟机的可用性](../../virtual-machines/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set)文档。
+        * 有关区域中容错域数的信息，请参阅 [Linux 虚拟机的可用性](../../virtual-machines/availability.md)文档。
 
         * Apache Kafka 不识别 Azure 容错域。 在创建主题的分区副本时，它可能未针对高可用性正确分发副本。
 

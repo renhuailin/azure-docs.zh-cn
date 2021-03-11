@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: jawilley
 ms.custom: devx-track-dotnet, contperf-fy21q2
-ms.openlocfilehash: f503f132794f6d04b587a78b8f838acba26f9ac3
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
-ms.translationtype: MT
+ms.openlocfilehash: 06fb087744ff4ecd96bee7a26e4a796e87866322
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032008"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102433652"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>适用于 Azure Cosmos DB 和 .NET 的性能提示
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -172,7 +172,7 @@ SQL .NET SDK 支持并行查询，使你能够并行查询分区的容器。 有
 
 在性能测试期间，应该增加负载，直到系统对小部分请求进行限制为止。 如果请求受到限制，客户端应用程序应按照服务器指定的重试间隔在限制时退让。 允许退让有助于确保最大程度地减少等待重试的时间。 
 
-有关详细信息，请参阅 [RetryAfter](/dotnet/api/microsoft.azure.cosmos.cosmosexception.retryafter?preserve-view=true&view=azure-dotnet#Microsoft_Azure_Cosmos_CosmosException_RetryAfter)。
+有关详细信息，请参阅 [RetryAfter](/dotnet/api/microsoft.azure.cosmos.cosmosexception.retryafter#Microsoft_Azure_Cosmos_CosmosException_RetryAfter)。
     
 有一个机制可以记录附加诊断信息和排查延迟问题，如以下示例所示。 可以记录具有较高读取延迟的请求的诊断字符串。 捕获的诊断字符串可帮助你了解收到给定请求的 429 错误的次数。
 

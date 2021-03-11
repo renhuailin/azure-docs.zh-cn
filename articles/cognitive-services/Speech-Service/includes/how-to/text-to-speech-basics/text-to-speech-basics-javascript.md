@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 02/10/2021
 ms.author: trbye
 ms.custom: devx-track-js
-ms.openlocfilehash: b06defbdac0f1bddfca13db095799f3158095585
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 3fa47935721ccfccdfe18d60a66d5cc480582e7d
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100514992"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102428171"
 ---
 本快速入门介绍使用语音 SDK 进行文本到语音合成的常见设计模式。 首先，请进行基本的配置和合成，然后通过更高级的示例来了解自定义应用程序开发，其中包括：
 
@@ -29,16 +29,16 @@ ms.locfileid: "100514992"
 
 ## <a name="install-the-speech-sdk"></a>安装语音 SDK
 
-需要先安装 <a href="https://www.npmjs.com/package/microsoft-cognitiveservices-speech-sdk" target="_blank">JavaScript 语音 SDK<span class="docon docon-navigate-external x-hidden-focus"></span></a>，然后才能执行操作。 根据你的平台，使用以下说明：
+需要先安装 <a href="https://www.npmjs.com/package/microsoft-cognitiveservices-speech-sdk" target="_blank">JavaScript 语音 SDK</a>，然后才能执行操作。 根据你的平台，使用以下说明：
 - <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk?tabs=nodejs#get-the-speech-sdk" target="_blank">Node.js <span 
 class="docon docon-navigate-external x-hidden-focus"></span></a>
-- <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk?tabs=browser#get-the-speech-sdk" target="_blank">Web 浏览器 <span class="docon docon-navigate-external x-hidden-focus"></span></a>
+- <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk?tabs=browser#get-the-speech-sdk" target="_blank">Web 浏览器 </a>
 
 另外，请根据目标环境使用以下项之一：
 
 # <a name="script"></a>[script](#tab/script)
 
-下载并提取 <a href="https://aka.ms/csspeech/jsbrowserpackage" target="_blank">JavaScript 语音 SDK<span class="docon docon-navigate-external x-hidden-focus"></span></a> microsoft.cognitiveservices.speech.sdk.bundle.js 文件，将其置于可供 HTML 文件访问的文件夹中。
+下载并提取 <a href="https://aka.ms/csspeech/jsbrowserpackage" target="_blank">JavaScript 语音 SDK</a> *microsoft.cognitiveservices.speech.sdk.bundle.js* 文件，将其置于可供 HTML 文件访问的文件夹中。
 
 ```html
 <script src="microsoft.cognitiveservices.speech.sdk.bundle.js"></script>;
@@ -53,7 +53,7 @@ class="docon docon-navigate-external x-hidden-focus"></span></a>
 import * as sdk from "microsoft-cognitiveservices-speech-sdk";
 ```
 
-有关 `import` 的详细信息，请参阅 <a href="https://javascript.info/import-export" target="_blank">export 和 import <span class="docon docon-navigate-external x-hidden-focus"></span></a>。
+有关 `import` 的详细信息，请参阅 <a href="https://javascript.info/import-export" target="_blank">export 和 import </a>。
 
 # <a name="require"></a>[require](#tab/require)
 
@@ -61,7 +61,7 @@ import * as sdk from "microsoft-cognitiveservices-speech-sdk";
 const sdk = require("microsoft-cognitiveservices-speech-sdk");
 ```
 
-有关 `require` 的详细信息，请参阅<a href="https://nodejs.org/en/knowledge/getting-started/what-is-require/" target="_blank">什么是 require？<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
+有关 `require` 的详细信息，请参阅<a href="https://nodejs.org/en/knowledge/getting-started/what-is-require/" target="_blank">什么是 require？</a>。
 
 ---
 
@@ -285,7 +285,7 @@ function xmlToString(filePath) {
 }
 ```
 
-有关 `readFileSync` 的详细信息，请参阅 <a href="https://nodejs.org/api/fs.html#fs_fs_readlinksync_path_options" target="_blank">Node.js 文件系统<span class="docon docon-navigate-external x-hidden-focus"></span></a>。 在此处，结果对象与前面的示例完全相同。
+有关 `readFileSync` 的详细信息，请参阅 <a href="https://nodejs.org/api/fs.html#fs_fs_readlinksync_path_options" target="_blank">Node.js 文件系统</a>。 在此处，结果对象与前面的示例完全相同。
 
 ```javascript
 function synthesizeSpeech() {

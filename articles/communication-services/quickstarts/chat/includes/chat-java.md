@@ -10,17 +10,17 @@ ms.date: 9/1/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: b402dec76f88bfdb0bc4758f94cc6e8e279d8040
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 192970540f21905b624ce3f6e3558baa935a4d7a
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101750719"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102489684"
 ---
 ## <a name="prerequisites"></a>先决条件
 
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-- [Java 开发工具包 (JDK)](/java/azure/jdk/?preserve-view=true&view=azure-java-stable) 8 或更高版本。
+- [Java 开发工具包 (JDK)](/java/azure/jdk/) 8 或更高版本。
 - [Apache Maven](https://maven.apache.org/download.cgi)。
 - 已部署的通信服务资源和连接字符串。 [创建通信服务资源](../../create-communication-resource.md)。
 - [用户访问令牌](../../access-tokens.md)。 请确保将范围设置为“聊天”，并记下令牌字符串和 userId 字符串。
@@ -66,7 +66,7 @@ mvn archetype:generate -DgroupId=com.communication.quickstart -DartifactId=commu
 <dependency>
     <groupId>com.azure</groupId>
     <artifactId>azure-communication-common</artifactId>
-    <version>1.0.0-beta.4</version> 
+    <version>1.0.0</version> 
 </dependency>
 ```
 

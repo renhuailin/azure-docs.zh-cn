@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: ec74ca19978a4164289276d44b34eb14b694687f
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
-ms.translationtype: MT
+ms.openlocfilehash: bbac794263fec176e03c7148d860c479a2ed9d39
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99051575"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102501222"
 ---
 # <a name="author-graphical-runbooks-in-azure-automation"></a>在 Azure 自动化中创作图形 Runbook
 
@@ -61,7 +61,7 @@ Azure 自动化中的所有 Runbook 都是 Windows PowerShell 工作流。 图�
 
 参数集用于定义会接受特定 cmdlet 的值的必需参数和可选参数。 所有 cmdlet 都至少有一个参数集，有些有多个参数集。 如果 cmdlet 有多个参数集，必须先选择要使用的参数集，然后才能配置参数。 通过依次选择“参数集”和另一个参数集，可以更改活动使用的参数集。 在这种情况下，你已经配置的任何参数值都会丢失。
 
-在下面的示例中，[Get-AzVM](/powershell/module/az.compute/get-azvm?view=azps-3.5.0&preserve-view=true) cmdlet 有三个参数集。 此示例使用一个名为 ListVirtualMachineInResourceGroupParamSet 的参数集（其中带有一个可选参数），用于返回资源组中的所有虚拟机。 此示例还使用 GetVirtualMachineInResourceGroupParamSet 参数集，用于指定要返回的虚拟机。 此参数集有两个强制参数和一个可选参数。
+在下面的示例中，[Get-AzVM](/powershell/module/az.compute/get-azvm) cmdlet 有三个参数集。 此示例使用一个名为 ListVirtualMachineInResourceGroupParamSet 的参数集（其中带有一个可选参数），用于返回资源组中的所有虚拟机。 此示例还使用 GetVirtualMachineInResourceGroupParamSet 参数集，用于指定要返回的虚拟机。 此参数集有两个强制参数和一个可选参数。
 
 ![参数集](media/automation-graphical-authoring-intro/get-azvm-parameter-sets.png)
 
@@ -99,7 +99,7 @@ Azure 自动化中的所有 Runbook 都是 Windows PowerShell 工作流。 图�
 
 重试条件可以使用名为 `RetryData` 的变量，此变量提供对活动重试相关信息的访问权限。 此变量具有下表中的属性。
 
-| properties | 说明 |
+| 属性 | 说明 |
 |:--- |:--- |
 | `NumberOfAttempts` |活动已运行的次数。 |
 | `Output` |活动上次运行的输出。 |
@@ -254,7 +254,7 @@ Runbook 通过定义一个或多个输入参数来接受输入。 用户在 Runb
 
 按下表中的属性定义每个输入参数：
 
-| properties | 说明 |
+| 属性 | 说明 |
 |:--- |:--- |
 | 名称 | 必需。 参数的名称。 此名称在 Runbook 中必须是唯一的。 它必须以字母开头，且只能包含字母、数字和下划线字符。 此名称不得包含空格。 |
 | 说明 |可选。 有关输入参数用途的说明。 |
@@ -435,4 +435,4 @@ Azure 自动化中的每个图形 Runbook 都有草稿版和发布版。 只能�
 * 若要开始使用图形 Runbook，请参阅[教程：创建图形 Runbook](learn/automation-tutorial-runbook-graphical.md)。
 * 若要了解有关 Runbook 类型、其优点和限制的详细信息，请参阅 [Azure 自动化 Runbook 类型](automation-runbook-types.md)。
 * 若要了解如何使用自动化运行方式帐户进行身份验证，请参阅[运行方式帐户](automation-security-overview.md#run-as-account)。
-* 有关 PowerShell cmdlet 参考，请参阅 [Az.Automation](/powershell/module/az.automation/?view=azps-3.7.0&preserve-view=true#automation)。
+* 有关 PowerShell cmdlet 参考，请参阅 [Az.Automation](/powershell/module/az.automation/#automation)。

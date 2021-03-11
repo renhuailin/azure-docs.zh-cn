@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 12/23/2020
 ms.author: cgillum
 ms.reviewer: azfuncdf
-ms.openlocfilehash: 2079a3a7c9ce6817186e743bb09d31facdecf0e7
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 15e1dff37e1782baf5740a3fb35119bbbbffc297
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97931715"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102558791"
 ---
 # <a name="what-are-durable-functions"></a>什么是 Durable Functions？
 
@@ -23,11 +23,11 @@ Durable Functions 目前支持以下语言：
 
 * **C#**：[预编译的类库](../functions-dotnet-class-library.md)和 [C# 脚本](../functions-reference-csharp.md)。
 * **JavaScript**：仅 Azure Functions 运行时的版本 2.x 支持此语言。 要求使用 1.7.0 版或更高版本的 Durable Functions 扩展。 
-* **Python**：要求使用 2.3.1 版或更高版本的 Durable Functions 扩展。 对 Durable Functions 的支持目前为公共预览版。
-* **F#**：预编译的类库和 F# 脚本。 仅 Azure Functions 运行时的版本 1.x 支持 F# 脚本。
+* **Python**：要求使用 2.3.1 版或更高版本的 Durable Functions 扩展。
+* **F#** ：预编译的类库和 F# 脚本。 仅 Azure Functions 运行时的版本 1.x 支持 F# 脚本。
 * **PowerShell**：对 Durable Functions 的支持目前以公共预览版提供。 仅 Azure Functions 运行时的版本 3.x 和 PowerShell 7 支持。 要求使用 2.2.2 版或更高版本的 Durable Functions 扩展。 目前仅支持以下模式：[函数链](#chaining)、[扇出/扇入](#fan-in-out)和[异步 HTTP API](#async-http)。
 
-若要访问最新的功能和更新，建议使用最新版本的 Durable Functions 扩展以及语言特定的 Durable Functions 库。 请详细了解 [Durable Functions 版本](durable-functions-versions.md)。
+若要访问最新的功能和更新，建议使用最新版本的 Durable Functions 扩展和特定于语言的 Durable Functions 库。 请详细了解 [Durable Functions 版本](durable-functions-versions.md)。
 
 Durable Functions 的目标是支持所有 [Azure Functions 语言](../supported-languages.md)。 请参阅 [Durable Functions 问题列表](https://github.com/Azure/azure-functions-durable-extension/issues)，了解支持其他语言所需的最新工作状态。
 
@@ -40,7 +40,7 @@ Durable Functions 的主要用例是简化无服务器应用程序中出现的�
 * [函数链](#chaining)
 * [扇出/扇入](#fan-in-out)
 * [异步 HTTP API](#async-http)
-* [Monitoring](#monitoring)
+* [监视](#monitoring)
 * [人机交互](#human)
 * [聚合器（有状态实体）](#aggregator)
 
@@ -137,7 +137,7 @@ Invoke-ActivityFunction -FunctionName 'F4' -Input $Z
 
 ---
 
-### <a name="pattern-2-fan-outfan-in"></a>模式 2：扇出/扇入
+### <a name="pattern-2-fan-outfan-in"></a><a name="fan-in-out"></a>模式 #2：扇出/扇入
 
 在扇出/扇入模式中，将会并行执行多个函数，然后等待所有函数完成。 通常会对这些函数返回的结果执行一些聚合操作。
 

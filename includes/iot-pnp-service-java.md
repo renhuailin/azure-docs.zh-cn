@@ -4,12 +4,12 @@ ms.author: dobett
 ms.service: iot-pnp
 ms.topic: include
 ms.date: 11/20/2020
-ms.openlocfilehash: 788aa0ebe9df91caba2ee279df96cbea175975e4
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 8d3f35a733a0f78fabc33df857d911ba3cd222f5
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95487780"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102245030"
 ---
 IoT 即插即用简化了 IoT 的使用，使你无需了解底层设备实现，就能与某个设备的功能交互。 本快速入门介绍如何使用 Java 来连接和控制已与解决方案连接的 IoT 即插即用设备。
 
@@ -19,7 +19,7 @@ IoT 即插即用简化了 IoT 的使用，使你无需了解底层设备实现�
 
 要完成本快速入门，需在本地 Windows 环境上安装以下软件：
 
-* Java SE 开发工具包 8。 在[针对 Azure 和 Azure Stack 的 Java 长期支持](/java/azure/jdk/?preserve-view=true&view=azure-java-stable)中的“长期支持”下选择“Java 8”。
+* Java SE 开发工具包 8。 在[针对 Azure 和 Azure Stack 的 Java 长期支持](/java/azure/jdk/)中的“长期支持”下选择“Java 8”。
 * [Apache Maven 3](https://maven.apache.org/download.cgi)。
 
 ### <a name="clone-the-sdk-repository-with-the-sample-code"></a>使用示例代码克隆 SDK 存储库

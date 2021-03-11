@@ -1,23 +1,23 @@
 ---
-title: 为 Redis 实例的高级 Azure 缓存配置异地复制
-description: 了解如何在 Azure 区域中复制适用于 Redis 高级实例的 Azure 缓存
+title: 为高级 Azure Cache for Redis 实例配置异地复制
+description: 了解如何跨 Azure 区域复制 Azure Cache for Redis 高级实例
 author: yegu-ms
 ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
 ms.author: yegu
-ms.openlocfilehash: 130cb1d63da27010012c22dc2cdb40c3d8f03273
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
-ms.translationtype: MT
+ms.openlocfilehash: 8701f7bcb2e7ff705e4f1d1b401f4eb3e680f28b
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102178552"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102501033"
 ---
-# <a name="configure-geo-replication-for-premium-azure-cache-for-redis-instances"></a>为 Redis 实例的高级 Azure 缓存配置异地复制
+# <a name="configure-geo-replication-for-premium-azure-cache-for-redis-instances"></a>为高级 Azure Cache for Redis 实例配置异地复制
 
-本文介绍如何使用 Azure 门户配置异地复制的 Azure 缓存。
+本文将介绍如何使用 Azure 门户配置异地复制的 Azure 缓存。
 
-异地复制将 Redis 实例的两个高级 Azure 缓存链接在一起，并创建数据复制关系。 这些缓存实例通常位于不同的 Azure 区域，不过它们不需要。 一个实例充当主实例，另一个实例用作辅助实例。 主处理读取和写入请求，并将更改传播到辅助副本。 此过程将继续，直到两个实例之间的链接被删除。
+异地复制将两个高级 Azure Cache for Redis 实例链接在一起，并创建数据复制关系。 这些缓存实例通常位于不同的 Azure 区域中，尽管不是必需的。 一个实例充当主实例，另一个实例充当辅助实例。 主实例处理读取和写入请求，并将更改传播到辅助实例。 该过程将一直持续到两个实例之间的链接被删除为止。
 
 > [!NOTE]
 > 异地复制设计为灾难恢复解决方案。
@@ -170,7 +170,7 @@ ms.locfileid: "102178552"
 
 ### <a name="can-i-use-powershell-or-azure-cli-to-manage-geo-replication"></a>是否可以使用 PowerShell 或 Azure CLI管理异地复制？
 
-是的，可以使用 Azure 门户、PowerShell 或 Azure CLI 管理异地复制。 有关详细信息，请参阅 [PowerShell 文档](/powershell/module/az.rediscache/?view=azps-1.4.0#redis_cache)或 [Azure CLI 文档](/cli/azure/redis/server-link)。
+是的，可以使用 Azure 门户、PowerShell 或 Azure CLI 管理异地复制。 有关详细信息，请参阅 [PowerShell 文档](/powershell/module/az.rediscache/#redis_cache)或 [Azure CLI 文档](/cli/azure/redis/server-link)。
 
 ### <a name="how-much-does-it-cost-to-replicate-my-data-across-azure-regions"></a>跨 Azure 区域复制数据的费用是多少？
 
@@ -182,7 +182,7 @@ ms.locfileid: "102178552"
 
 ### <a name="what-region-should-i-use-for-my-secondary-linked-cache"></a>应为辅助链接缓存选择哪个区域？
 
-一般而言，建议将缓存放置在应用程序所在的同一 Azure 区域，便于应用程序访问。 对于使用单独主要区域和故障回复区域的应用程序，建议将主缓存和辅助缓存放置在这些区域。 有关配对区域的详细信息，请参阅 [最佳做法-Azure 配对区域](../best-practices-availability-paired-regions.md)。
+一般而言，建议将缓存放置在应用程序所在的同一 Azure 区域，便于应用程序访问。 对于使用单独主要区域和故障回复区域的应用程序，建议将主缓存和辅助缓存放置在这些区域。 有关配对区域的详细信息，请参阅[最佳做法 – Azure 配对区域](../best-practices-availability-paired-regions.md)。
 
 ### <a name="how-does-failing-over-to-the-secondary-linked-cache-work"></a>辅助链接缓存如何进行故障转移？
 

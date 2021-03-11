@@ -2,18 +2,19 @@
 title: Azure 磁盘加密故障排除指南
 description: 本文提供适用于 Windows VM 的 Microsoft Azure 磁盘加密的故障排除提示。
 author: msmbaldwin
-ms.service: virtual-machines-windows
-ms.subservice: security
+ms.service: virtual-machines
+ms.subservice: disks
+ms.collection: windows
 ms.topic: troubleshooting
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 45c64261b60d88557e63cb8f9af922fd7aa71ad4
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
-ms.translationtype: MT
+ms.openlocfilehash: 057aba3e49d32694563f412101be499342f2aad0
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977895"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102550597"
 ---
 # <a name="azure-disk-encryption-troubleshooting-guide"></a>Azure 磁盘加密故障排除指南
 
@@ -34,7 +35,7 @@ ms.locfileid: "91977895"
 
 ### <a name="azure-key-vault-behind-a-firewall"></a>防火墙保护下的 Azure Key Vault
 
-使用 [Azure AD 凭据](disk-encryption-windows-aad.md#)启用加密时，目标 VM 必须允许连接到 Azure Active Directory 终结点和密钥保管库终结点。 当前 Azure Active Directory 身份验证终结点保留在 [Microsoft 365 url 和 IP 地址范围](/microsoft-365/enterprise/urls-and-ip-address-ranges) 文档的56和59部分中。 在有关如何[访问防火墙保护下的 Azure 密钥保管库](../../key-vault/general/access-behind-firewall.md)的文档中提供了密钥保管库说明。
+使用 [Azure AD 凭据](disk-encryption-windows-aad.md#)启用加密时，目标 VM 必须允许连接到 Azure Active Directory 终结点和密钥保管库终结点。 当前 Azure Active Directory 身份验证终结点在 [Microsoft 365 URL 和 IP 地址范围](/microsoft-365/enterprise/urls-and-ip-address-ranges)文档中的第 56 和 59 节中进行维护。 在有关如何[访问防火墙保护下的 Azure 密钥保管库](../../key-vault/general/access-behind-firewall.md)的文档中提供了密钥保管库说明。
 
 ### <a name="azure-instance-metadata-service"></a>Azure 实例元数据服务 
 VM 必须能够访问这样的 [Azure 实例元数据服务](../windows/instance-metadata-service.md)终结点：该终结点使用只能从 VM 内访问的已知不可路由 IP 地址 (`169.254.169.254`)。  不支持将本地 HTTP 流量更改为此地址的代理配置（例如，添加 X-Forwarded-For 标头）。

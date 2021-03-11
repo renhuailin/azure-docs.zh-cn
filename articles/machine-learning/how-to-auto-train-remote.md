@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: how-to, automl
 ms.date: 03/09/2020
-ms.openlocfilehash: d6d21acc685ba840b585ada43e59230fdd73787f
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
-ms.translationtype: MT
+ms.openlocfilehash: 402af581e0ca6de9936b78106840a4fe273069d8
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97796374"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102503447"
 ---
 # <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>在云中使用自动化机器学习对模型进行训练
 
@@ -43,7 +43,7 @@ ws = Workspace.from_config()
 
 ## <a name="create-resource"></a>创建资源
 
-在工作区 (`ws`) 中创建 [`AmlCompute`](/python/api/azureml-core/azureml.core.compute.amlcompute%28class%29?preserve-view=true&view=azure-ml-py) 目标（如果它尚不存在）。
+在工作区 (`ws`) 中创建 [`AmlCompute`](/python/api/azureml-core/azureml.core.compute.amlcompute%28class%29) 目标（如果它尚不存在）。
 
 **时间估计**：创建 AmlCompute 目标需要大约 5 分钟。
 
@@ -90,7 +90,7 @@ else:
 
 ## <a name="access-data-using-tabulardataset-function"></a>使用 TabularDataset 函数访问数据
 
-将 training_data 定义为 [`TabularDataset`](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py) 和标签，并将其传递给 [`AutoMLConfig`](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?preserve-view=true&view=azure-ml-py) 中的自动 ML。 默认情况下，`TabularDataset` 方法 `from_delimited_files` 将 `infer_column_types` 设置为 true，这将自动推断列类型。 
+将 training_data 定义为 [`TabularDataset`](/python/api/azureml-core/azureml.data.tabulardataset) 和标签，并将其传递给 [`AutoMLConfig`](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig) 中的自动 ML。 默认情况下，`TabularDataset` 方法 `from_delimited_files` 将 `infer_column_types` 设置为 true，这将自动推断列类型。 
 
 如果确实希望手动设置列类型，可以设置 `set_column_types` 参数来手动设置每个列的类型。 在下面的代码示例中，数据来自 sklearn 包。
 
@@ -200,7 +200,7 @@ BEST: The best observed score thus far.
 
 ## <a name="explore-results"></a>浏览结果
 
-可以使用与[培训教程](tutorial-auto-train-models.md#explore-the-results)中显示的内容相同的 [Jupyter 小组件](/python/api/azureml-widgets/azureml.widgets?preserve-view=true&view=azure-ml-py)来查看图表和结果表格。
+可以使用与[培训教程](tutorial-auto-train-models.md#explore-the-results)中显示的内容相同的 [Jupyter 小组件](/python/api/azureml-widgets/azureml.widgets)来查看图表和结果表格。
 
 ```python
 from azureml.widgets import RunDetails

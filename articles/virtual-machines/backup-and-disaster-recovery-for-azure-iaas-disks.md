@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/19/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 01133ab5582e63c0e87d8a5cf8de12f5445394c5
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
-ms.translationtype: MT
+ms.openlocfilehash: e5ae08c23748e55a8c3b75eb8fb9c112684f022e
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91969698"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102507900"
 ---
 # <a name="backup-and-disaster-recovery-for-azure-iaas-disks"></a>Azure IaaS 磁盘的备份和灾难恢复
 
@@ -48,7 +48,7 @@ Azure 平台旨在从这些故障中复原。 重大灾难可能会导致大量�
 
 计算主机或存储平台上的本地硬件故障有时可能会导致 VM 暂时不可用，有关 VM 可用性的 [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) 对此做了介绍。 Azure 还提供了有关使用 Azure 高级 SSD 的单 VM 实例的行业领先 SLA。
 
-为了保护应用程序工作负荷不受磁盘或 VM 暂时不可用带来的故障时间影响，客户可以使用[可用性集](./manage-availability.md)。 可用性集中的两个或多个虚拟机为应用程序提供冗余。 然后，Azure 在电源、网络和服务器组件不同的单独容错域中创建这些 VM 和磁盘。
+为了保护应用程序工作负荷不受磁盘或 VM 暂时不可用带来的故障时间影响，客户可以使用[可用性集](./availability.md)。 可用性集中的两个或多个虚拟机为应用程序提供冗余。 然后，Azure 在电源、网络和服务器组件不同的单独容错域中创建这些 VM 和磁盘。
 
 由于这些单独的容错域，本地硬件故障通常不会同时影响可用性集中的多个 VM。 单独的容错域为应用程序提供了高可用性。 如果需要高可用性，最好使用可用性集。 下一部分介绍灾难恢复方面。
 
@@ -108,7 +108,7 @@ IaaS 应用程序数据问题是另一种可能的情况。 假设有一个应�
 
  下表汇总了可用于 DR 的解决方案。
 
-| 方案 | 自动复制 | DR 解决方案 |
+| 场景 | 自动复制 | DR 解决方案 |
 | --- | --- | --- |
 | 高级·SSD 磁盘 | 本地（[本地冗余存储](../storage/common/storage-redundancy.md#locally-redundant-storage)） | [Azure 备份](https://azure.microsoft.com/services/backup/) |
 | 托管磁盘 | 本地（[本地冗余存储](../storage/common/storage-redundancy.md#locally-redundant-storage)） | [Azure 备份](https://azure.microsoft.com/services/backup/) |
@@ -120,7 +120,7 @@ IaaS 应用程序数据问题是另一种可能的情况。 假设有一个应�
 
 下面展示了在应用程序或基础结构一级可选择的高可用性、备份和 DR 选项：
 
-| 级别 |   高可用性   | 备份或 DR |
+| Level |   高可用性   | 备份或 DR |
 | --- | --- | --- |
 | 应用程序 | SQL Server AlwaysOn | Azure 备份 |
 | 基础结构    | 可用性集  | 具有一致快照的异地冗余存储 |

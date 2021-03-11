@@ -1230,6 +1230,8 @@
               href: virtual-machines/linux/rhel-high-availability-stonith-tutorial.md
             - name: 为 Azure 中 RHEL 虚拟机上的 SQL Server 配置可用性组侦听器
               href: virtual-machines/linux/rhel-high-availability-listener-tutorial.md
+            - name: 使用 DH2i DxEnterprise 设置 Always On 可用性组
+              href: virtual-machines/linux/dh2i-high-availability-tutorial.md
         - name: 资源
           items:
             - name: 常见问题解答
@@ -1323,7 +1325,7 @@
       href: 'https://social.msdn.microsoft.com/Forums/home?forum=ssdsgetstarted'
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/sql-azure'
-    - name: 故障排除
+    - name: 疑难解答
       items:
         - name: 连接错误
           href: database/troubleshoot-common-errors-issues.md

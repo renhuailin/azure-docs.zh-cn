@@ -7,12 +7,12 @@ ms.service: route-server
 ms.topic: quickstart
 ms.date: 03/02/2021
 ms.author: duau
-ms.openlocfilehash: 5b40cfcde7aa1771c8a4b9025d35b2dc0c728676
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: e302cb9da410487dbea4ec5c5b256c4cb5dd186f
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102039778"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102566373"
 ---
 # <a name="quickstart-create-and-configure-route-server-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建并配置路由服务器
 
@@ -130,7 +130,7 @@ Update-AzRouteServer -RouteServerName myRouteServer -ResourceGroupName RouteServ
 Get-AzRouteServerPeerAdvertisedRoute
 Get-AzRouteServerPeerLearnedRoute
 ```
-## <a name="clean-up"></a>清除
+## <a name="clean-up-resources"></a>清理资源
 
 如果不再需要 Azure 路由服务器，请使用以下命令来删除 BGP 对等互连，然后删除该路由服务器。 
 

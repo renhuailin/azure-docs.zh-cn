@@ -2,22 +2,22 @@
 title: AMD GPU 驱动程序扩展 - Azure Windows VM
 description: 用于在运行 Windows 的 NVv4 系列 VM 上安装 AMD GPU 驱动程序的 Microsoft Azure 扩展。
 services: virtual-machines-windows
-documentationcenter: ''
 author: vikancha-MSFT
 manager: jkabat
-ms.service: virtual-machines-windows
-ms.subservice: extensions
 ms.topic: article
+ms.service: virtual-machines
+ms.subservice: hpc
+ms.collection: windows
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/10/2020
 ms.author: vikancha
-ms.openlocfilehash: aad28df218973cf07231262ccd8b9a07f263424f
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
-ms.translationtype: MT
+ms.openlocfilehash: 42dac9edc91d7cb935e8c20398c4d31343b358e1
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100652745"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102559675"
 ---
 # <a name="amd-gpu-driver-extension-for-windows"></a>适用于 Windows 的 AMD GPU 驱动程序扩展
 
@@ -71,16 +71,16 @@ ms.locfileid: "100652745"
 | 名称 | 值/示例 | 数据类型 |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| 发布者 | Microsoft.HpcCompute | 字符串 |
+| publisher | Microsoft.HpcCompute | 字符串 |
 | type | AmdGpuDriverWindows | 字符串 |
 | typeHandlerVersion | 1.0 | int |
 
 
 ## <a name="deployment"></a>部署
 
-### <a name="azure-resource-manager-template"></a>Azure 资源管理器模板 
+### <a name="azure-resource-manager-template"></a>Azure Resource Manager 模板 
 
-可使用 Azure 资源管理器模板部署 Azure VM 扩展。 部署需要部署后配置的一个或多个虚拟机时，模板是理想选择。
+可使用 Azure Resource Manager 模板部署 Azure VM 扩展。 部署需要部署后配置的一个或多个虚拟机时，模板是理想选择。
 
 虚拟机扩展的 JSON 配置可以嵌套在虚拟机资源内，或放置在资源管理器 JSON 模板的根级别或顶级别。 JSON 的位置会影响资源名称和类型的值。 有关详细信息，请参阅[设置子资源的名称和类型](../../azure-resource-manager/templates/child-resource-name-type.md)。 
 
@@ -161,7 +161,7 @@ C:\WindowsAzure\Logs\Plugins\Microsoft.HpcCompute.AmdGpuDriverMicrosoft\
 | 0 | 操作成功 |
 | 1 | 操作成功。 需要重新启动。 |
 | 100 | 操作不受支持或无法完成。 | 可能的原因：不支持 PowerShell 版本、VM 大小不是 N 系列 VM、下载数据失败。 请检查日志文件，以确定错误原因。 |
-| 240、840 | 操作超时。 | 请重试操作。 |
+| 240, 840 | 操作超时。 | 请重试操作。 |
 | -1 | 发生异常。 | 请检查日志文件，以确定异常原因。 |
 | -5x | 由于重新启动未完成，导致操作中断。 | 重新启动 VM。 重新启动后将继续安装。 应手动调用卸载。 |
 

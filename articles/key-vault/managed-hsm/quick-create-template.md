@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc, devx-track-azurecli
 ms.date: 09/15/2020
 ms.author: mbaldwin
-ms.openlocfilehash: d47935f76347b2d5272b386942a85643a732e643
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: d9fb9e0221ad6a5749899c89bbd9dc5631e7a91c
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94831746"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102213260"
 ---
 # <a name="quickstart-create-an-key-vault-managed-hsm-using-an-azure-resource-manager-template"></a>快速入门：使用 Azure 资源管理器模板创建 Key Vault 托管 HSM
 
@@ -43,7 +43,7 @@ ms.locfileid: "94831746"
 az login
 ```
 
-若要详细了解通过 CLI 使用的登录选项，请参阅[使用 Azure CLI 登录](/cli/azure/authenticate-azure-cli?view=azure-cli-latest&preserve-view=true)
+若要详细了解通过 CLI 使用的登录选项，请参阅[使用 Azure CLI 登录](/cli/azure/authenticate-azure-cli)
 
 ## <a name="create-a-manage-hsm"></a>创建托管 HSM
 
@@ -55,13 +55,13 @@ az login
 
 可在[此处](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Keyvault)找到更多的 Azure Key Vault 模板示例。
 
-模板需要与你的帐户关联的对象 ID。 若要找到它，请使用 Azure CLI [az ad user show](/cli/azure/ad/user?view=azure-cli-latest&preserve-view=true#az_ad_user_show) 命令，将电子邮件地址传递给 `--id` 参数。 可以使用 `--query` 参数将输出限制为仅对象 ID。
+模板需要与你的帐户关联的对象 ID。 若要找到它，请使用 Azure CLI [az ad user show](/cli/azure/ad/user#az_ad_user_show) 命令，将电子邮件地址传递给 `--id` 参数。 可以使用 `--query` 参数将输出限制为仅对象 ID。
 
 ```azurecli-interactive
 az ad user show --id <your-email-address> --query "objectId"
 ```
 
-可能还需要租户 ID。 若要找到它，请使用 Azure CLI [az ad user show](/cli/azure/account?view=azure-cli-latest&preserve-view=true#az_account_show) 命令。 可以使用 `--query` 参数将输出限制为仅租户 ID。
+可能还需要租户 ID。 若要找到它，请使用 Azure CLI [az ad user show](/cli/azure/account#az_account_show) 命令。 可以使用 `--query` 参数将输出限制为仅租户 ID。
 
  ```azurecli-interactive
  az account show --query "tenantId"

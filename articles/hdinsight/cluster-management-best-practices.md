@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: d326dfe3a44e5d9e9b55a888762f3878cd418850
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 40222b6a108976de9c82ffccee119b1c1c55f334
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102210948"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102505743"
 ---
 # <a name="hdinsight-cluster-management-best-practices"></a>HDInsight 群集管理最佳做法
 
@@ -28,7 +28,7 @@ ms.locfileid: "102210948"
 | Azure CLI | [使用 Azure CLI 创建 HDInsight 群集](./hdinsight-hadoop-create-linux-clusters-azure-cli.md) |
 | Azure PowerShell | [使用 Azure PowerShell 在 HDInsight 中创建基于 Linux 的群集](./hdinsight-hadoop-create-linux-clusters-azure-powershell.md) |
 | cURL | [使用 Azure REST API 创建 Apache Hadoop 群集](./hdinsight-hadoop-create-linux-clusters-curl-rest.md) |
-| SDK（.NET、Python、Java） | [.NET](/dotnet/api/overview/azure/hdinsight?view=azure-dotnet&preserve-view=true)、[Python](/python/api/overview/azure/hdinsight?preserve-view=true&view=azure-python)、[Java](/java/api/overview/azure/hdinsight)、[Go](./hdinsight-go-sdk-overview.md) |
+| SDK（.NET、Python、Java） | [.NET](/dotnet/api/overview/azure/hdinsight)、[Python](/python/api/overview/azure/hdinsight)、[Java](/java/api/overview/azure/hdinsight)、[Go](./hdinsight-go-sdk-overview.md) |
 
 > [!Note]
 > 如果要创建群集，并重新使用以前创建的群集的群集名称，请等待此前的群集删除操作完成，然后再创建群集。

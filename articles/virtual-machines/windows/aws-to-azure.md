@@ -2,17 +2,18 @@
 title: 将 Windows AWS EC2 实例移动到 Azure
 description: 将 Amazon Web Services (AWS) EC2 Windows 实例移到 Azure 虚拟机。
 author: cynthn
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.collection: windows
 ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 06/01/2018
 ms.author: cynthn
-ms.openlocfilehash: 9f66653996cb36e58054756ac877f859559609be
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: 86d3e67b121bf7d66651e1e823e5f137e918a171
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87267092"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102550784"
 ---
 # <a name="move-a-windows-vm-from-amazon-web-services-aws-to-an-azure-virtual-machine"></a>将 Windows VM 从 Amazon Web Services (AWS) 移到 Azure 虚拟机
 
@@ -31,7 +32,7 @@ ms.locfileid: "87267092"
 
  
 - **专用 VHD** - 专用 VHD 保留原始 VM 中的用户帐户、应用程序和其他状态数据。 如果想要使用当前 VHD 创建新 VM，请确保完成以下步骤。  
-    * [准备好要上传到 Azure 的 Windows VHD](prepare-for-upload-vhd-image.md)。 **不要**使用 Sysprep 通用化 VM。 
+    * [准备好要上传到 Azure 的 Windows VHD](prepare-for-upload-vhd-image.md)。 **不要** 使用 Sysprep 通用化 VM。 
     * 删除 VM 上安装的所有来宾虚拟化工具和代理（例如 VMware 工具）。 
     * 确保 VM 配置为通过 DHCP 来提取其 IP 地址和 DNS 设置。 这确保服务器在启动时在 VNet 中获取 IP 地址。  
 
@@ -57,7 +58,7 @@ aws ec2 create-instance-export-task --instance-id <instanceID> --target-environm
 
 现在，可将 VHD 上传到 Azure 并创建新的 VM。 
 
-- 如果导出之前在源上运行了 Sysprep 来将它**通用化**，请参阅[上传已通用化的 VHD 并在 Azure 中使用它来创建新的 VM](upload-generalized-managed.md)
-- 如果导出之前未运行 Sysprep，VHD 将被视为**已专用化**。请参阅[将已专用的 VHD 上传到 Azure 并创建新的 VM](create-vm-specialized.md)
+- 如果导出之前在源上运行了 Sysprep 来将它 **通用化**，请参阅 [上传已通用化的 VHD 并在 Azure 中使用它来创建新的 VM](upload-generalized-managed.md)
+- 如果导出之前未运行 Sysprep，VHD 将被视为 **已专用化**。请参阅 [将已专用的 VHD 上传到 Azure 并创建新的 VM](create-vm-specialized.md)
 
  

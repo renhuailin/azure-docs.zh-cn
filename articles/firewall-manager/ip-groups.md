@@ -1,18 +1,18 @@
 ---
 title: Azure 防火墙策略中的 IP 组
-description: IP 组允许对 Azure 防火墙策略规则的 IP 地址进行分组和管理。
+description: 通过 IP 组，你可以对 Azure 防火墙策略规则的 IP 地址进行分组和管理。
 services: firewall-manager
 author: vhorne
 ms.service: firewall-manager
 ms.topic: conceptual
 ms.date: 07/30/2020
 ms.author: victorh
-ms.openlocfilehash: 921a8b6c808d4eef2b02ef0580d5b2ea9045366d
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
-ms.translationtype: MT
+ms.openlocfilehash: 54faa0bc7d414eb15a866b8e1e6d09e15b22b071
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94659499"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102500846"
 ---
 # <a name="ip-groups-in-azure-firewall-policy"></a>Azure 防火墙策略中的 IP 组
 
@@ -66,19 +66,19 @@ ms.locfileid: "94659499"
 
 ## <a name="ip-address-limits"></a>IP 地址限制
 
-每个防火墙最多可以有100个 IP 组，每个 IP 组最多可包含5000个单独 IP 地址或 IP 前缀。
+每个防火墙最多可以有 100 个 IP 组，每个 IP 组最多可包含 5000 个单独的 IP 地址或 IP 前缀。
 
 ## <a name="related-azure-powershell-cmdlets"></a>相关的 Azure PowerShell cmdlet
 
 下面的 Azure PowerShell cmdlet 可用于创建和管理 IP 组：
 
-- [New-AzIpGroup](/powershell/module/az.network/new-azipgroup?view=azps-3.4.0)
-- [Remove-AzIPGroup](/powershell/module/az.network/remove-azipgroup?view=azps-3.4.0)
-- [Get-AzIpGroup](/powershell/module/az.network/get-azipgroup?view=azps-3.4.0)
-- [Set-AzIpGroup](/powershell/module/az.network/set-azipgroup?view=azps-3.4.0)
-- [New-AzFirewallPolicyNetworkRule](/powershell/module/az.network/new-azfirewallpolicynetworkrule?view=azps-3.4.0)
-- [New-AzFirewallPolicyApplicationRule](/powershell/module/az.network/new-azfirewallpolicyapplicationrule?view=azps-3.4.0)
-- [New-AzFirewallPolicyNatRule](/powershell/module/az.network/new-azfirewallpolicynatrule?view=azps-3.4.0)
+- [New-AzIpGroup](/powershell/module/az.network/new-azipgroup)
+- [Remove-AzIPGroup](/powershell/module/az.network/remove-azipgroup)
+- [Get-AzIpGroup](/powershell/module/az.network/get-azipgroup)
+- [Set-AzIpGroup](/powershell/module/az.network/set-azipgroup)
+- [New-AzFirewallPolicyNetworkRule](/powershell/module/az.network/new-azfirewallpolicynetworkrule)
+- [New-AzFirewallPolicyApplicationRule](/powershell/module/az.network/new-azfirewallpolicyapplicationrule)
+- [New-AzFirewallPolicyNatRule](/powershell/module/az.network/new-azfirewallpolicynatrule)
 
 ## <a name="next-steps"></a>后续步骤
 
