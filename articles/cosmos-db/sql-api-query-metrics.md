@@ -5,15 +5,15 @@ author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
-ms.date: 05/23/2019
+ms.date: 01/06/2021
 ms.author: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: fedcdd55a465f5c09c331a0fa917811c349b15b1
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
-ms.translationtype: MT
+ms.openlocfilehash: 019ca26143a4879efafa973299703f0abcb21162
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097220"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102488080"
 ---
 # <a name="tuning-query-performance-with-azure-cosmos-db"></a>优化 Azure Cosmos DB 的查询性能
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -138,12 +138,11 @@ Date: Tue, 27 Jun 2017 21:59:49 GMT
 ## <a name="best-practices-for-query-performance"></a>有关查询性能的最佳做法
 下面是影响 Azure Cosmos DB 查询性能的最常见因素。 本文深入探讨了其中的每一个主题。
 
-| 因素 | 提示 | 
+| 因子 | 提示 | 
 | ------ | -----| 
 | 预配的吞吐量 | 度量每个查询的 RU，并确保你具有查询所需的预配吞吐量。 | 
 | 分区和分区键 | 支持在查询的筛选器子句中使用分区键值以降低延迟。 |
 | SDK 和查询选项 | 遵循 SDK 最佳做法（例如直接连接）并优化客户端查询执行选项。 |
-| 网络延迟 | 在度量时考虑网络开销，并使用多宿主 API 从最近的区域进行读取。 |
 | 索引策略 | 确保具有查询所需的索引路径/策略。 |
 | 查询执行指标 | 对查询执行指标进行分析来查明潜在的查询和数据形状重写。  |
 
@@ -239,7 +238,7 @@ IReadOnlyDictionary<string, QueryMetrics> metrics = result.QueryMetrics;
 
 ```
 
-| 指标 | 单位 | 说明 | 
+| 指标 | 计价单位 | 说明 | 
 | ------ | -----| ----------- |
 | `totalExecutionTimeInMs` | 毫秒 | 查询执行时间 | 
 | `queryCompileTimeInMs` | 毫秒 | 查询编译时间  | 
@@ -251,9 +250,9 @@ IReadOnlyDictionary<string, QueryMetrics> metrics = result.QueryMetrics;
 | `documentLoadTimeInMs` | 毫秒 | 加载文档时花费的时间  | 
 | `systemFunctionExecuteTimeInMs` | 毫秒 | 执行系统（内置）函数花费的总时间（毫秒）  | 
 | `userFunctionExecuteTimeInMs` | 毫秒 | 执行用户定义的函数花费的总时间（毫秒） | 
-| `retrievedDocumentCount` | count | 检索的文档总数  | 
+| `retrievedDocumentCount` | 计数 | 检索的文档总数  | 
 | `retrievedDocumentSize` | 字节 | 检索的文档的总大小（字节）  | 
-| `outputDocumentCount` | count | 输出文档数 | 
+| `outputDocumentCount` | 计数 | 输出文档数 | 
 | `writeOutputTimeInMs` | 毫秒 | 查询执行时间（毫秒） | 
 | `indexUtilizationRatio` | 比率 (<=1) | 由筛选器匹配出的文档数与加载的文档数的比率  | 
 

@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 09/03/2020
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: d6c9bea3d0ff95a3cb9d8fcce41eaa6f8bbfed21
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: a6710a15bd0637eead0051ebb70a7cdd8bb8aa58
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093933"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102210319"
 ---
 # <a name="how-to-launch-your-spring-cloud-application-from-source-code"></a>如何从源代码启动 Spring Cloud 应用程序
 
@@ -37,7 +37,7 @@ Azure Spring Cloud 在 Azure 上启用了基于 Spring Cloud 的微服务应用�
 1. [安装 Git](https://git-scm.com/)
 2. [安装 JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 3. [安装 Maven 3.0 或更高版本](https://maven.apache.org/download.cgi)
-4. [安装 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)
+4. [安装 Azure CLI](/cli/azure/install-azure-cli)
 5. [注册 Azure 订阅](https://azure.microsoft.com/free/)
 
 > [!TIP]
@@ -144,8 +144,8 @@ az spring-cloud app show-deploy-log -n <app-name> [-d <deployment-name>]
 
 ## <a name="assign-a-public-endpoint-to-gateway"></a>将公共终结点分配到网关
 
-1. 打开“应用程序仪表板”页。****
-2. 选择 `gateway` 应用程序以显示“应用程序详细信息”页。****
+1. 打开“应用程序仪表板”页。
+2. 选择 `gateway` 应用程序以显示“应用程序详细信息”页。
 3. 选择“分配终结点”，将一个公共终结点分配到网关。 这可能需要几分钟的时间。 
 4. 在浏览器中输入分配的公共 IP 以查看正在运行的应用程序。
 

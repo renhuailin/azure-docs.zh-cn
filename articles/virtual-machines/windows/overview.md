@@ -3,17 +3,18 @@ title: Azure 中的 Windows VM 概述
 description: Azure 中的 Windows 虚拟机概述。
 author: cynthn
 ms.service: virtual-machines
+ms.collection: windows
 ms.workload: infrastructure-services
 ms.topic: overview
 ms.date: 11/14/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 9113abe14af942700a073626c5aad19dc2ebcd06
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 2432cc49d770471979e089a496b9d0351eec26fd
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101665974"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102550325"
 ---
 # <a name="windows-virtual-machines-in-azure"></a>Azure 中的 Windows 虚拟机
 

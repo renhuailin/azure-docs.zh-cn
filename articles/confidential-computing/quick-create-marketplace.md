@@ -3,17 +3,17 @@ title: 快速入门- 使用市场创建 Azure 机密计算虚拟机
 description: 了解如何使用市场快速创建机密计算虚拟机，以开始进行部署。
 author: JBCook
 ms.service: virtual-machines
-ms.subservice: workloads
+ms.subservice: confidential-computing
 ms.workload: infrastructure
 ms.topic: quickstart
 ms.date: 04/06/2020
 ms.author: JenCook
-ms.openlocfilehash: 82d9c143f84dfced639c928bf12693024079c2ba
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: aba23b67574fb74b7cd571dc5d4642bb8b991b93
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91409487"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102566628"
 ---
 # <a name="quickstart-deploy-an-azure-confidential-computing-vm-in-the-marketplace"></a>快速入门：在市场中部署 Azure 机密计算 VM
 
@@ -28,7 +28,7 @@ ms.locfileid: "91409487"
 如果还没有 Azure 订阅，可以在开始前[创建一个帐户](https://azure.microsoft.com/pricing/purchase-options/pay-as-you-go/)。
 
 > [!NOTE]
-> 免费试用帐户无法访问本教程中使用的虚拟机。 请升级到即用即付订阅。
+> 免费试用帐户无法访问本教程中使用的虚拟机。 请升级为即用即付订阅。
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
@@ -45,7 +45,7 @@ ms.locfileid: "91409487"
 
 ## <a name="configure-your-virtual-machine"></a>配置虚拟机
 
-1. 在“基本信息”选项卡中，选择自己的**订阅**和**资源组**。  资源组必须是空的，这样才能基于此模板将虚拟机部署到其中。
+1. 在“基本信息”选项卡中，选择自己的 **订阅** 和 **资源组**。  资源组必须是空的，这样才能基于此模板将虚拟机部署到其中。
 
 1. 键入或选择以下值：
 
@@ -91,7 +91,7 @@ ms.locfileid: "91409487"
 
 1. 选择“查看 + 创建”  。
 
-1. 在“查看 + 创建”窗格中，选择“创建”。  
+1. 在“查看 + 创建”窗格中，选择“创建”。 
 
 > [!NOTE]
 > 如果已部署了 Linux VM，请转到下一部分继续学习本教程。 如果部署了 Windows VM，请[遵循这些步骤连接到 Windows VM](../virtual-machines/windows/connect-logon.md)，然后[在 Windows 上安装 OE SDK](https://github.com/openenclave/openenclave/blob/master/docs/GettingStartedDocs/install_oe_sdk-Windows.md)。
@@ -99,7 +99,7 @@ ms.locfileid: "91409487"
 
 ## <a name="connect-to-the-linux-vm"></a>连接到 Linux VM
 
-如果已使用 BASH shell，请通过 ssh 命令连接到 Azure VM。  在以下命令中，替换连接到 Linux VM 所需的 VM 用户名和 IP 地址。
+如果已使用 BASH shell，请通过 ssh 命令连接到 Azure VM。 在以下命令中，替换连接到 Linux VM 所需的 VM 用户名和 IP 地址。
 
 ```bash
 ssh azureadmin@40.55.55.555
@@ -117,12 +117,12 @@ ssh azureadmin@40.55.55.555
 
 1. 在 PuTTY 配置屏幕上，输入 VM 的公共 IP 地址。
 
-1. 选择“打开”，并根据提示输入用户名和密码。 
+1. 选择“打开”，并根据提示输入用户名和密码。
 
 若要详细了解如何连接到 Linux VM，请参阅[使用门户在 Azure 上创建 Linux VM](../virtual-machines/linux/quick-create-portal.md)。
 
 > [!NOTE]
-> 如果出现有关不会在注册表中缓存服务器主机密钥的 PuTTY 安全警报，请从以下选项中进行选择。 如果你信任此主机，请选择“是”将密钥添加到 PuTTy 缓存并继续进行连接。  如果你只想建立连接一次，而无需将密钥添加到缓存，请选择“否”。  如果你不信任此主机，请选择“取消”以放弃连接。 
+> 如果出现有关不会在注册表中缓存服务器主机密钥的 PuTTY 安全警报，请从以下选项中进行选择。 如果你信任此主机，请选择“是”将密钥添加到 PuTTy 缓存并继续进行连接。 如果你只想建立连接一次，而无需将密钥添加到缓存，请选择“否”。 如果你不信任此主机，请选择“取消”以放弃连接。
 
 ## <a name="install-the-open-enclave-sdk-oe-sdk"></a>安装 Open Enclave SDK (OE SDK) <a id="Install"></a>
 

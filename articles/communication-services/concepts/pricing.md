@@ -9,14 +9,17 @@ ms.author: mikben
 ms.date: 09/29/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: bf255837a08a4810321f2f03cb97838e31a7cddc
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 5c8c4808e735a872b31deb6855646dae90c407c9
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101657751"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102487672"
 ---
 # <a name="pricing-scenarios"></a>定价方案
+
+[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
+
 
 Azure 通信服务的价格通常基于即用即付模型。 以下示例中的价格用于说明目的，可能不会反映最新的 Azure 定价。
 

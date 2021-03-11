@@ -3,17 +3,17 @@ title: 快速入门 - 在 Azure 门户中创建 Azure 机密计算虚拟机
 description: 了解如何在 Azure 门户中快速创建机密计算虚拟机，以便开始进行部署。
 author: JBCook
 ms.service: virtual-machines
-ms.subservice: workloads
+ms.subservice: confidential-computing
 ms.workload: infrastructure
 ms.topic: quickstart
 ms.date: 04/23/2020
 ms.author: JenCook
-ms.openlocfilehash: 1e417563b463d7033072b27bec505d10ef1adb47
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 3f0984acd66bd5d6c148be8451938d3152fb9ca7
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94695735"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102566662"
 ---
 # <a name="quickstart-deploy-an-azure-confidential-computing-vm-in-the-azure-portal"></a>快速入门：在 Azure 门户中部署 Azure 机密计算 VM
 
@@ -111,7 +111,7 @@ ms.locfileid: "94695735"
 
 1. 选择“查看 + 创建”。
 
-1. 在“查看 + 创建”窗格中，选择“创建”。  
+1. 在“查看 + 创建”窗格中，选择“创建”。 
 
 > [!NOTE]
 > 如果已部署了 Linux VM，请转到下一部分继续学习本教程。 如果部署了 Windows VM，请[遵循这些步骤连接到 Windows VM](../virtual-machines/windows/connect-logon.md)，然后[在 Windows 上安装 OE SDK](https://github.com/openenclave/openenclave/blob/master/docs/GettingStartedDocs/install_oe_sdk-Windows.md)。
@@ -119,7 +119,7 @@ ms.locfileid: "94695735"
 
 ## <a name="connect-to-the-linux-vm"></a>连接到 Linux VM
 
-如果已使用 BASH shell，请通过 ssh 命令连接到 Azure VM。  在以下命令中，替换连接到 Linux VM 所需的 VM 用户名和 IP 地址。
+如果已使用 BASH shell，请通过 ssh 命令连接到 Azure VM。 在以下命令中，替换连接到 Linux VM 所需的 VM 用户名和 IP 地址。
 
 ```bash
 ssh azureadmin@40.55.55.555
@@ -137,12 +137,12 @@ ssh azureadmin@40.55.55.555
 
 1. 在 PuTTY 配置屏幕上，输入 VM 的公共 IP 地址。
 
-1. 选择“打开”，并根据提示输入用户名和密码。 
+1. 选择“打开”，并根据提示输入用户名和密码。
 
 若要详细了解如何连接到 Linux VM，请参阅[使用门户在 Azure 上创建 Linux VM](../virtual-machines/linux/quick-create-portal.md)。
 
 > [!NOTE]
-> 如果出现有关不会在注册表中缓存服务器主机密钥的 PuTTY 安全警报，请从以下选项中进行选择。 如果你信任此主机，请选择“是”将密钥添加到 PuTTy 缓存并继续进行连接。  如果你只想建立连接一次，而无需将密钥添加到缓存，请选择“否”。  如果你不信任此主机，请选择“取消”以放弃连接。 
+> 如果出现有关不会在注册表中缓存服务器主机密钥的 PuTTY 安全警报，请从以下选项中进行选择。 如果你信任此主机，请选择“是”将密钥添加到 PuTTy 缓存并继续进行连接。 如果你只想建立连接一次，而无需将密钥添加到缓存，请选择“否”。 如果你不信任此主机，请选择“取消”以放弃连接。
 
 ## <a name="install-the-open-enclave-sdk-oe-sdk"></a>安装 Open Enclave SDK (OE SDK) <a id="Install"></a>
 

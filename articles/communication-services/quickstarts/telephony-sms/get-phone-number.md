@@ -9,16 +9,15 @@ ms.date: 10/05/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
 ms.custom: references_regions
-ms.openlocfilehash: 4fda626581265b4b1f6541a3b453b164ccd27963
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 4acc1cb93fb04ba190173fea05805a1a4b833ffc
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101690441"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102488760"
 ---
 # <a name="quickstart-get-a-phone-number-using-the-azure-portal"></a>快速入门：使用 Azure 门户获取电话号码
 
-[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 [!INCLUDE [Regional Availability Notice](../../includes/regional-availability-include.md)]
 
 通过 Azure 门户开始使用 Azure 通信服务来购买电话号码。
@@ -40,15 +39,15 @@ ms.locfileid: "101690441"
 
 :::image type="content" source="../media/manage-phone-azure-portal-phone-page.png" alt-text="显示通信服务资源的电话页的屏幕截图。":::
 
-按“获取”按钮启动向导。 “电话号码”边栏选项卡上的向导将引导你完成一系列问题，以帮助你选择最适合你的情况的电话号码。 
+按“获取”按钮启动向导。 “电话号码”边栏选项卡上的向导将引导你完成一系列问题，以帮助你选择最适合你的情况的电话号码。
 
-首先需要选择要在哪个“国家/地区”预配电话号码。 选择国家/地区后，需要选择最符合你需求的“用例”。 
+首先需要选择要在哪个“国家/地区”预配电话号码。 选择国家/地区后，需要选择最符合你需求的“用例”。
 
 :::image type="content" source="../media/manage-phone-azure-portal-get-numbers.png" alt-text="显示“获取电话号码”视图的屏幕截图。":::
 
 ### <a name="select-your-phone-number-features"></a>选择电话号码功能
 
-配置电话号码分为两个步骤： 
+配置电话号码分为两个步骤：
 
 1. 选择[号码类型](../../concepts/telephony-sms/plan-solution.md#phone-number-types-in-azure-communication-services)
 2. 选择[号码功能](../../concepts/telephony-sms/plan-solution.md#phone-number-features-in-azure-communication-services)

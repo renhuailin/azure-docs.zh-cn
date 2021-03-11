@@ -9,12 +9,12 @@ ms.author: migreene
 ms.topic: conceptual
 ms.date: 07/17/2019
 manager: nirb
-ms.openlocfilehash: 4430b8cdfe9414ddbfd7aad3c3fe7827adbc8705
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: 98164c20af2a5d6ae7ccac43331a2876c23ccfb7
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86186361"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102500166"
 ---
 # <a name="remediate-noncompliant-azure-automation-state-configuration-servers"></a>修正不符合条件的 Azure 自动化 State Configuration 服务器
 
@@ -43,5 +43,5 @@ Update-DscConfiguration -Wait -Verbose
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关 PowerShell cmdlet 参考，请参阅 [Az.Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation)。
+- 有关 PowerShell cmdlet 参考，请参阅 [Az.Automation](/powershell/module/az.automation/#automation)。
 - 若要查看在持续部署管道中使用 Azure Automation State Configuration 的示例，请参阅[使用 Chocolatey 设置持续部署](automation-dsc-cd-chocolatey.md)。

@@ -8,12 +8,12 @@ ms.author: mikben
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 27b1a2654a52c136c0b827b536f5cf99928e5947
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 30b075cfbd7d38ff81cdf79a05a3a95b87b0bc13
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101691580"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102488539"
 ---
 # <a name="what-is-azure-communication-services"></a>什么是 Azure 通信服务？
 
@@ -21,6 +21,7 @@ ms.locfileid: "101691580"
 
 > [!IMPORTANT]
 > 使用 Azure 通信服务构建的应用程序可与 Microsoft Teams 进行通信。 若要了解详细信息，请访问我们的 [Teams 互操作性](./quickstarts/voice-video-calling/get-started-teams-interop.md)文档。
+
 
 Azure 通信服务使你可以轻松地将实时多媒体语音、视频和 IP 电话功能添加到应用程序。 通信服务客户端库还使你可以将聊天和短信功能添加到通信解决方案。
 

@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: 70416daced2cbdebb70fb8e1defbcbcb599710f1
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 769a63819925caa50ff364869b8d9a14c3258a2e
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101705477"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102214535"
 ---
 # <a name="quickstart-azure-key-vault-secret-client-library-for-javascript-version-4"></a>快速入门：适用于 JavaScript 的 Azure Key Vault 机密客户端库（版本 4）
 
@@ -168,7 +168,7 @@ const client = new SecretClient(KVUri, credential);
 
 ### <a name="save-a-secret"></a>保存机密
 
-应用程序通过身份验证后，你可以使用 [setSecret 方法](/javascript/api/@azure/keyvault-secrets/secretclient?view=azure-node-latest#setSecret_string__string__SetSecretOptions_)将机密放入密钥保管库。此操作需要使用机密的名称，本示例中使用“mySecret”。  
+应用程序通过身份验证后，你可以使用 [setSecret 方法](/javascript/api/@azure/keyvault-secrets/secretclient#setSecret_string__string__SetSecretOptions_)将机密放入密钥保管库。此操作需要使用机密的名称，本示例中使用“mySecret”。  
 
 ```javascript
 await client.setSecret(secretName, secretValue);
@@ -176,7 +176,7 @@ await client.setSecret(secretName, secretValue);
 
 ### <a name="retrieve-a-secret"></a>检索机密
 
-现在，你可以使用 [getSecret 方法](/javascript/api/@azure/keyvault-secrets/secretclient?view=azure-node-latest#getSecret_string__GetSecretOptions_)检索以前设置的值。
+现在，你可以使用 [getSecret 方法](/javascript/api/@azure/keyvault-secrets/secretclient#getSecret_string__GetSecretOptions_)检索以前设置的值。
 
 ```javascript
 const retrievedSecret = await client.getSecret(secretName);

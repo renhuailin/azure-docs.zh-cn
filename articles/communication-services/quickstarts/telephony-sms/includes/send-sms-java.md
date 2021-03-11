@@ -10,12 +10,12 @@ ms.date: 08/20/2020
 ms.topic: include
 ms.custom: include file
 ms.author: chrwhit
-ms.openlocfilehash: cb8e6934125630590a337ed7bf7f4c81b2b73bb3
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 1c4f3c47e3ac6e1e701b673574bb664237c1a9af
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94915478"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102245058"
 ---
 通过使用通信服务 Java 短信客户端库来发送短信，开启 Azure 通信服务使用旅程。
 
@@ -28,7 +28,7 @@ ms.locfileid: "94915478"
 ## <a name="prerequisites"></a>先决条件
 
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-- [Java 开发工具包 (JDK)](/java/azure/jdk/?preserve-view=true&view=azure-java-stable) 8 或更高版本。
+- [Java 开发工具包 (JDK)](/java/azure/jdk/) 8 或更高版本。
 - [Apache Maven](https://maven.apache.org/download.cgi)。
 - 活动的通信服务资源和连接字符串。 [创建通信服务资源](../../create-communication-resource.md)。
 - 启用短信的电话号码。 [获取电话号码](../get-phone-number.md)。
@@ -136,7 +136,7 @@ SmsClient client = new SmsClientBuilder()
     .buildClient();
 ```
 
-可以用任何实现 `com.azure.core.http.HttpClient` 接口的自定义 HTTP 客户端来初始化客户端。 上面的代码演示了如何使用 `azure-core` 提供的 [Azure Core Netty HTTP 客户端](/java/api/overview/azure/core-http-netty-readme?preserve-view=true&view=azure-java-stable)。
+可以用任何实现 `com.azure.core.http.HttpClient` 接口的自定义 HTTP 客户端来初始化客户端。 上面的代码演示了如何使用 `azure-core` 提供的 [Azure Core Netty HTTP 客户端](/java/api/overview/azure/core-http-netty-readme)。
 
 你还可以使用 connectionString() 函数提供整个连接字符串，而不是提供终结点和访问密钥。 
 ```java

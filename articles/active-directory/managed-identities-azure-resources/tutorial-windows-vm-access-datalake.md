@@ -15,28 +15,28 @@ ms.workload: identity
 ms.date: 12/15/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 908fb1ac869ec2b22085af2e07ced6ff64229308
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: cd28ee509dc76ea0b2aca9264c591a7176ae2661
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97592477"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101093814"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-data-lake-store"></a>教程：使用 Windows VM 系统分配的托管标识访问 Azure Data Lake Store
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-本教程介绍了如何使用 Windows 虚拟机 (VM) 的系统分配的托管标识访问 Azure Data Lake Store。 托管服务标识由 Azure 自动管理，可用于向支持 Azure AD 身份验证的服务进行身份验证，这样就无需在代码中插入凭据了。 学习如何：
+本教程介绍了如何使用 Windows 虚拟机 (VM) 的系统分配的托管标识访问 Azure Data Lake Store。 托管服务标识由 Azure 自动管理，可用于向支持 Azure AD 身份验证的服务进行身份验证，这样就无需在代码中插入凭据了。 你将学习如何执行以下操作：
 
 > [!div class="checklist"]
 > * 授予 VM 对 Azure Data Lake Store 的访问权限
 > * 使用 VM 标识获取访问令牌，并使用它访问 Azure Data Lake Store
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - 具备托管标识相关知识。 如果不熟悉 Azure 资源功能的托管标识，请参阅此[概述](overview.md)。 
 - 一个 Azure 帐户，[注册免费 Azure 帐户](https://azure.microsoft.com/free/)。
-- 在相应范围（订阅或资源组）内具有“所有者”权限，以执行所需的资源创建和角色管理步骤。 如果需要有关角色分配的帮助，请参阅[使用基于角色的访问控制管理对 Azure 订阅资源的访问权限](../../role-based-access-control/role-assignments-portal.md)。
+- 在相应范围（订阅或资源组）内具有“所有者”权限，以执行所需的资源创建和角色管理步骤。 如需角色分配方面的帮助，请参阅[分配 Azure 角色以管理对 Azure 订阅资源的访问权限](../../role-based-access-control/role-assignments-portal.md)。
 - 还需要启用了系统分配的托管标识的 Windows 虚拟机。
   - 如需为本教程创建虚拟机，则可以按照标题为[创建启用了系统分配的标识的虚拟机](./qs-configure-portal-windows-vm.md#system-assigned-managed-identity)的文章进行操作
 
@@ -59,7 +59,7 @@ ms.locfileid: "97592477"
 2. 单击要用于本教程的 Data Lake Store。
 3. 单击命令栏中的“数据资源管理器”。
 4. 选择此 Data Lake Store 的根文件夹。  单击命令栏中的“访问权限”。
-5. 单击 **添加**。  在“选择”字段中，输入 VM 的名称，如“DevTestVM”。  单击以从搜索结果中选择 VM，然后单击“选择”。
+5. 单击“添加”。  在“选择”字段中，输入 VM 的名称，如“DevTestVM”。  单击以从搜索结果中选择 VM，然后单击“选择”。
 6. 单击“选择权限”  。  选择“读取”和“执行”，并以“仅为访问权限”的形式添加到“此文件夹”     。  单击“确定”  。  权限应已成功添加。
 7. 关闭“访问权限”边栏选项卡。
 8. 本教程将新建一个文件夹。  单击命令栏中的“新建文件夹”并为新文件夹命名，如“TestFolder”。  单击“确定”  。

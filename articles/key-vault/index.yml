@@ -13,12 +13,12 @@ metadata:
   author: msmbaldwin
   ms.author: mbaldwin
   ms.date: 04/07/2020
-  ms.openlocfilehash: cf53b3165863c6f22ce4c9a74d002eafd2dcc329
-  ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+  ms.openlocfilehash: 55495d690511c1ebfbd81b80ad9c99d76e708146
+  ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 10/28/2020
-  ms.locfileid: "92792338"
+  ms.lasthandoff: 03/10/2021
+  ms.locfileid: "102566397"
 highlightedContent:
   items:
   - title: Azure Key Vault 简介
@@ -108,16 +108,16 @@ conceptualContent:
     - url: ./general/client-libraries.md
       itemType: reference
       text: Azure Key Vault 的客户端库
-    - url: /dotnet/api/overview/azure/key-vault?view=azure-dotnet
+    - url: /dotnet/api/overview/azure/key-vault
       itemType: reference
       text: .NET 客户端库
-    - url: /python/api/overview/azure/key-vault-index?view=azure-python
+    - url: /python/api/overview/azure/key-vault-index
       itemType: reference
       text: Python 客户端库
     - url: https://azure.github.io/azure-sdk-for-java/keyvault.html
       itemType: reference
       text: Java 客户端库
-    - url: /javascript/api/overview/azure/key-vault-index?view=azure-node-latest
+    - url: /javascript/api/overview/azure/key-vault-index
       itemType: reference
       text: Node.js 客户端库
   - title: 将 Key Vault 与存储配合使用
@@ -153,7 +153,7 @@ conceptualContent:
       text: 将 Key Vault 与虚拟机规模集配合使用
   - title: Key Vault 集成
     links:
-    - url: /azure/devops/pipelines/library/variable-groups?tabs=yaml&view=azure-devops#link-secrets-from-an-azure-key-vault
+    - url: /azure/devops/pipelines/library/variable-groups?tabs=yaml#link-secrets-from-an-azure-key-vault
       itemType: overview
       text: Azure Dev Ops - 在 Azure Pipelines 中引用 Key Vault 机密
     - url: ../app-service/app-service-key-vault-references.md
