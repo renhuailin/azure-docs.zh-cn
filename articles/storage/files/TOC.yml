@@ -231,6 +231,8 @@
               href: storage-files-migration-linux-hybrid.md
             - name: 使用 Azure 文件同步从本地 NAS 迁移到混合文件服务器
               href: storage-files-migration-nas-hybrid.md
+            - name: 使用 DataBox 从本地 NAS 迁移到混合文件服务器
+              href: storage-files-migration-nas-hybrid-databox.md
         - name: 从 StorSimple
           items:
             - name: StorSimple 8100 和 8600 迁移指南

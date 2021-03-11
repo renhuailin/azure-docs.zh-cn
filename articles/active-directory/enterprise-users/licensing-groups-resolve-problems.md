@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3bba64f8c07545107d57f79ae94dab96e517815f
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
-ms.translationtype: MT
+ms.openlocfilehash: ceea2dbcf408b6b35ef7c26580278d3979244119
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97900699"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102551532"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>识别和解决 Azure Active Directory 中组的许可证分配问题
 
@@ -106,7 +106,7 @@ Azure Active Directory (Azure AD) 中基于组的许可引入了处于许可错�
 > ```
 > Get-Recipient -ResultSize unlimited | where {$_.EmailAddresses -match "user@contoso.onmicrosoft.com"} | fL Name, RecipientType,emailaddresses
 > ```
-> 有关此问题的详细信息，请参阅 [Exchange Online 中的“代理地址已被使用”错误消息](https://support.microsoft.com/help/3042584/-proxy-address-address-is-already-being-used-error-message-in-exchange-online)。 此文还包含有关[如何使用远程 PowerShell 连接到 Exchange Online](/powershell/exchange/connect-to-exchange-online-powershell?view=exchange-ps) 的信息。
+> 有关此问题的详细信息，请参阅 [Exchange Online 中的“代理地址已被使用”错误消息](https://support.microsoft.com/help/3042584/-proxy-address-address-is-already-being-used-error-message-in-exchange-online)。 此文还包含有关[如何使用远程 PowerShell 连接到 Exchange Online](/powershell/exchange/connect-to-exchange-online-powershell) 的信息。
 
 为受影响的用户解决代理地址问题之后，请确保强制对组进行许可证处理，确保现在可以应用许可证。
 

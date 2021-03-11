@@ -4,12 +4,12 @@ description: 由于 Azure HDInsight 的区域中容错域不足，群集创建�
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/09/2019
-ms.openlocfilehash: 3f7d866d1c9b8c8437bc0f84acca47e0b8631895
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.openlocfilehash: ed9e98750a469f78855096c3149254cf92c2788f
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98939047"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102501339"
 ---
 # <a name="scenario-cluster-creation-failed-due-to-not-sufficient-fault-domains-in-region-in-azure-hdinsight"></a>方案：由于 Azure HDInsight 的`not sufficient fault domains in region`，群集创建失败
 
@@ -23,7 +23,7 @@ ms.locfileid: "98939047"
 
 容错域是 Azure 数据中心基础硬件的逻辑分组。 每个容错域共享公用电源和网络交换机。 在 HDInsight 群集中实现节点的虚拟机和托管磁盘跨这些容错域分布。 此体系结构可限制物理硬件故障造成的潜在影响。
 
-每个 Azure 区域都有特定数量的容错域。 有关域的列表及其包含的容错域的数量，请参阅有关[可用性集](../../virtual-machines/manage-availability.md)的文档。
+每个 Azure 区域都有特定数量的容错域。 有关域的列表及其包含的容错域的数量，请参阅有关[可用性集](../../virtual-machines/availability.md)的文档。
 
 在 HDInsight 中，需要在至少具有三个容错域的区域中预配 Kafka 群集。
 

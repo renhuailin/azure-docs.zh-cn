@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 02/21/2020
 ms.author: cshoe
-ms.openlocfilehash: 11ad3bdcaa40c479c9358fd623edf0e6fdafa0d6
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: dadd86521a7b6c20dab2ed036555b798b869344c
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96002063"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102510804"
 ---
 使用事件中心输出绑定将事件写入到事件流。 必须具有事件中心的发送权限才可将事件写入到其中。
 
@@ -241,13 +241,13 @@ Python 不支持特性。
 
 ## <a name="configuration"></a>配置
 
-下表解释了在 function.json 文件和 `EventHub` 特性中设置的绑定配置属性。
+下表解释了在 function.json  文件和 `EventHub` 特性中设置的绑定配置属性。
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|**type** | 不适用 | 必须设置为“eventHub”。 |
+|type | 不适用 | 必须设置为“eventHub”。 |
 |**direction** | 不适用 | 必须设置为“out”。 在 Azure 门户中创建绑定时，会自动设置该参数。 |
-|name | 不适用 | 函数代码中使用的表示事件的变量名称。 |
+|**name** | 不适用 | 函数代码中使用的表示事件的变量名称。 |
 |**路径** |**EventHubName** | 仅适用于 Functions 1.x。 事件中心的名称。 当事件中心名称也出现在连接字符串中时，该值会在运行时覆盖此属性。 |
 |**eventHubName** |**EventHubName** | Functions 2.x 及更高版本。 事件中心的名称。 当事件中心名称也出现在连接字符串中时，该值会在运行时覆盖此属性。 |
 |连接 |**Connection** | 应用设置的名称，该名称中包含事件中心命名空间的连接字符串。 单击 *命名空间* （而不是事件中心本身）的“连接信息”按钮，以复制此连接字符串。 此连接字符串必须具有发送权限才可将消息发送到事件流。|
@@ -274,7 +274,7 @@ Python 不支持特性。
 
 - **返回值**：将 function.json 中的 `name` 属性  设置为 `$return`。 使用此配置时，函数的返回值将作为事件中心消息保留。
 
-- **命令性**：将值传递给声明为 [Out](/python/api/azure-functions/azure.functions.out?view=azure-python) 类型的参数的 [set](/python/api/azure-functions/azure.functions.out?view=azure-python#set-val--t-----none) 方法。 传递给 `set` 的值将作为事件中心消息保留。
+- **命令性**：将值传递给声明为 [Out](/python/api/azure-functions/azure.functions.out) 类型的参数的 [set](/python/api/azure-functions/azure.functions.out#set-val--t-----none) 方法。 传递给 `set` 的值将作为事件中心消息保留。
 
 # <a name="java"></a>[Java](#tab/java)
 

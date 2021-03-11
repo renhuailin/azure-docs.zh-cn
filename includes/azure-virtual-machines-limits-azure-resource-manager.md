@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 02/10/2020
 ms.author: cynthn
-ms.openlocfilehash: 61af1f1a97e0ffad0332a34034f5dd1d007d1a5c
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 397dd3d16fa994df29a08ff9095b4c7c6c4af815
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98900790"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102510998"
 ---
 | 资源 | 限制 |
 | --- | --- |
@@ -17,7 +17,7 @@ ms.locfileid: "98900790"
 | 每个[订阅](https://azure.microsoft.com/pricing/)的 VM 核心总数 |每个区域 20 个<sup>1</sup> 若要提高限制，请与支持人员联系。 |
 | 每个[订阅](https://azure.microsoft.com/pricing/)的 Azure 现成 VM 核心总数 |每个区域 20 个<sup>1</sup> 若要提高限制，请与支持人员联系。 |
 | VM 系列（例如 Dv2 和 F）、每个[订阅](https://azure.microsoft.com/pricing/)的核心数 |每个区域 20 个<sup>1</sup> 若要提高限制，请与支持人员联系。 |
-| 每个订阅的[可用性集数](../articles/virtual-machines/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) |每个区域 2,500 个。 |
+| 每个订阅的[可用性集数](../articles/virtual-machines/availability-set-overview.md) |每个区域 2,500 个。 |
 | 每个可用性集的虚拟机数 | 200 |
 | 每个[资源组](../articles/azure-resource-manager/management/overview.md#resource-groups)的[邻近放置组](../articles/virtual-machines/windows/proximity-placement-groups-portal.md) | 800 | 
 | 每个可用性集的证书 | 199<sup>2</sup> |

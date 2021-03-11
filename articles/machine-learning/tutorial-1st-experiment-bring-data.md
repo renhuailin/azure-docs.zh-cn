@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 02/11/2021
 ms.custom: tracking-python
-ms.openlocfilehash: 5e1af60cccb48195db38e420dfe3df01f404669c
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: bbe28f4fda32ce7d55a437e4ac944dc206f436ee
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100377987"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102522353"
 ---
 # <a name="tutorial-use-your-own-data-part-4-of-4"></a>教程：使用你自己的数据（第 4 部分，共 4 部分）
 
@@ -200,7 +200,7 @@ if __name__ == "__main__":
       `dataset = Dataset.File.from_files( ... )`
    :::column-end:::
    :::column span="2":::
-      [数据集](/python/api/azureml-core/azureml.core.dataset.dataset?preserve-view=true&view=azure-ml-py)用于引用上传到 Azure Blob 存储的数据。 数据集是基于数据的抽象层，旨在提高可靠性和可信任性。
+      [数据集](/python/api/azureml-core/azureml.core.dataset.dataset)用于引用上传到 Azure Blob 存储的数据。 数据集是基于数据的抽象层，旨在提高可靠性和可信任性。
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -208,7 +208,7 @@ if __name__ == "__main__":
       `config = ScriptRunConfig(...)`
    :::column-end:::
    :::column span="2":::
-      [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py) 已修改，包含将传递到 `train.py` 中的参数列表。 `dataset.as_named_input('input').as_mount()` 参数表示指定的目录将会被装载到计算目标。
+      [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig) 已修改，包含将传递到 `train.py` 中的参数列表。 `dataset.as_named_input('input').as_mount()` 参数表示指定的目录将会被装载到计算目标。
    :::column-end:::
 :::row-end:::
 

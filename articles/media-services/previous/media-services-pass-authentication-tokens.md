@@ -4,7 +4,7 @@ description: 了解如何将身份验证令牌从客户端发送到 Azure 媒体
 services: media-services
 keywords: 内容保护, DRM, 令牌身份验证
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 7c3b35d9-1269-4c83-8c91-490ae65b0817
@@ -13,15 +13,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2019
-ms.author: juliako
+ms.date: 03/08/2021
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 498e6d9e38468b126dbe10e0d0f59f54f1816ff0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: e9007672f9a3e505578459f63a185c8751051ce0
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89261030"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102507953"
 ---
 # <a name="learn-how-clients-pass-tokens-to-the-azure-media-services-key-delivery-service"></a>了解客户端如何将令牌传递到 Azure 媒体服务密钥传送服务
 
@@ -33,7 +33,7 @@ ms.locfileid: "89261030"
 
 - 通过 HTTP 授权标头。
     > [!NOTE]
-    > 根据 OAuth 2.0 规格，应使用“Bearer”前缀。 Azure 媒体播放器[演示页面](https://ampdemo.azureedge.net/)上提供了一个具有令牌配置的示例播放器。 若要设置视频源，请选择“AES（JWT 令牌）”或“AES（SWT 令牌）”。   令牌是通过授权标头传递的。
+    > 根据 OAuth 2.0 规格，应使用“Bearer”前缀。 Azure 媒体播放器[演示页面](https://ampdemo.azureedge.net/)上提供了一个具有令牌配置的示例播放器。 若要设置视频源，请选择“AES（JWT 令牌）”或“AES（SWT 令牌）”。 令牌是通过授权标头传递的。
 
 - 通过使用“token=tokenvalue”添加一个 URL 查询参数。  
     > [!NOTE]
@@ -55,8 +55,6 @@ ms.locfileid: "89261030"
     </CustomData>
     ```
     将身份验证令牌放入 Token 元素中。
-
-- 通过替换的 HTTP Live Streaming (HLS) 播放列表。 如果需要在 iOS/Safari 上为 AES + HLS 播放配置令牌身份验证，无法直接发送令牌。 有关如何替换播放列表来启用此方案的详细信息，请参阅此[博客文章](https://azure.microsoft.com/blog/2015/03/06/how-to-make-token-authorized-aes-encrypted-hls-stream-working-in-safari/)。
 
 ## <a name="next-steps"></a>后续步骤
 

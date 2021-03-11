@@ -586,6 +586,8 @@
           href: control-flow-system-variables.md
         - name: 将映射数据流参数化
           href: parameters-data-flow.md
+        - name: 如何参数化
+          href: how-to-expression-language-functions.md
     - name: 安全性
       items:
         - name: 数据移动安全注意事项

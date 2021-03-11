@@ -215,7 +215,7 @@
     - name: 虚拟机大小调整指南
       href: /windows-server/remote/remote-desktop-services/virtual-machine-recs?context=/azure/virtual-desktop/context/context
     - name: Azure 命令行接口 (CLI)
-      href: /cli/azure/ext/desktopvirtualization/?view=azure-cli-latest
+      href: /cli/azure/ext/desktopvirtualization/
     - name: Azure 示例方案
       href: /azure/architecture/example-scenario/wvd/windows-virtual-desktop
     - name: 电子邮件发现
@@ -223,7 +223,7 @@
 - name: 资源
   items:
     - name: PowerShell
-      href: /powershell/module/az.desktopvirtualization/?view=azps-4.2.0#desktopvirtualization
+      href: /powershell/module/az.desktopvirtualization/#desktopvirtualization
     - name: REST API 参考
       href: /rest/api/desktopvirtualization/
     - name: 体验评估器

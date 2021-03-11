@@ -10,13 +10,15 @@ ms.date: 9/1/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: eb420a8d5242cb6a122e7f7062e457b64f1fb5db
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: d3586e03a3c6214390f4a8b72b1db5871d2d1900
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101682387"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102510870"
 ---
+[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
+
 Azure 通信服务的群组呼叫英雄示例演示了如何使用通信服务呼叫 Web 客户端库来构建群组呼叫体验。
 
 在本地计算机上运行该示例之前，我们将通过本示例快速入门了解其工作原理。 然后，使用你自己的 Azure 通信服务资源将此示例部署到 Azure。

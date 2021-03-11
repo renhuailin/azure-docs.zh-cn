@@ -1,21 +1,22 @@
 ---
 title: Azure 备份的 VM 快照 Windows 扩展
 description: 使用 VM 快照扩展从 Azure 备份获取虚拟机的应用程序一致性备份
-services: backup, virtual-machines-windows
+services: backup, virtual-machines
 documentationcenter: ''
 author: trinadhkotturu
 manager: gwallace
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.subservice: extensions
+ms.collection: windows
 ms.topic: article
 ms.date: 10/15/2020
 ms.author: trinadhk
-ms.openlocfilehash: 1d1342cffc6bc8743c34cb4c028c0790de91dc50
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
-ms.translationtype: MT
+ms.openlocfilehash: 834c886c15e50870ec008dbb5ceab38132cc4649
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965861"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102561053"
 ---
 # <a name="vm-snapshot-windows-extension-for-azure-backup"></a>Azure 备份的 VM 快照 Windows 扩展
 
@@ -91,7 +92,7 @@ az backup protection enable-for-vm \
 
 ## <a name="troubleshoot-and-support"></a>故障排除和支持
 
-### <a name="troubleshoot"></a>故障排除
+### <a name="troubleshoot"></a>疑难解答
 
 有关扩展部署状态的数据可以从 Azure 门户和使用 Azure CLI 进行检索。 若要查看给定 VM 的扩展部署状态，请使用 Azure CLI 运行以下命令。
 
@@ -111,4 +112,4 @@ C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot
 
 ### <a name="support"></a>支持
 
-如果对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。 有关使用 Azure 支持的信息，请阅读 [Microsoft Azure 支持常见问题解答](https://azure.microsoft.com/support/faq/)。
+如果对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，你也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。 有关使用 Azure 支持的信息，请阅读 [Microsoft Azure 支持常见问题解答](https://azure.microsoft.com/support/faq/)。

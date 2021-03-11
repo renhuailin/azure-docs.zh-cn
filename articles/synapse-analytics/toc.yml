@@ -261,7 +261,7 @@
           items:
             - name: 概述
               href: ./sql-data-warehouse/design-elt-data-loading.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: 最佳做法
+            - name: 最佳实践
               href: sql/data-loading-best-practices.md
             - name: 列存储压缩
               href: sql/data-load-columnstore-compression.md
@@ -340,15 +340,12 @@
                 - name: 存储过程
                   href: sql/develop-stored-procedures.md
                 - name: 事务
-                  href: sql/develop-transactions.md
-                - name: 事务
                   items:
-                    - name: 无服务器 SQL 池
+                    - name: 专用 SQL 池事务
+                      href: sql/develop-transactions.md
+                    - name: 专用 SQL 池最佳做法事务
                       displayname: 'Transaction, best, practices'
                       href: sql/develop-transaction-best-practices.md
-                    - name: 专用 SQL 池
-                      displayname: 'Transactions, best, practices'
-                      href: ./sql-data-warehouse/sql-data-warehouse-develop-best-practices-transactions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
                 - name: 用户定义的架构
                   href: sql/develop-user-defined-schemas.md
                 - name: 变量赋值
@@ -750,7 +747,7 @@
               href: ../data-factory/connector-azure-databricks-delta-lake.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Azure 文件存储
               href: ../data-factory/connector-azure-file-storage.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: Azure SQL Database
+            - name: Azure SQL 数据库
               href: ../data-factory/connector-azure-sql-database.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Azure SQL 托管实例
               href: ../data-factory/connector-azure-sql-managed-instance.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json
@@ -1151,7 +1148,7 @@
 - name: 参考
   items:
     - name: Azure CLI
-      href: /cli/azure/ext/synapse/?view=azure-cli-latest
+      href: /cli/azure/ext/synapse/
     - name: 数据库排序规则类型
       href: sql/reference-collation-types.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
     - name: Go

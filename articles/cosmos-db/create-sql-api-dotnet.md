@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 10/21/2020
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: aceb26604d67f42cdbbe1395e3a4b08675d70ea1
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 4c552e6ac195555990cdbbab44f16be32b7930c8
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93078520"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102425305"
 ---
 # <a name="quickstart-build-a-net-console-app-to-manage-azure-cosmos-db-sql-api-resources"></a>快速入门：生成 .NET 控制台应用以管理 Azure Cosmos DB SQL API 资源
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -37,7 +37,7 @@ Azure Cosmos DB 是 Microsoft 的快速 NoSQL 数据库，具有适合于任何�
 * 查询数据 
 * 删除数据库
 
-[API 参考文档](/dotnet/api/microsoft.azure.cosmos?view=azure-dotnet&preserve-view=true) | [库源代码](https://github.com/Azure/azure-cosmos-dotnet-v3) | [包 (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Cosmos)
+[API 参考文档](/dotnet/api/microsoft.azure.cosmos) | [库源代码](https://github.com/Azure/azure-cosmos-dotnet-v3) | [包 (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Cosmos)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -130,7 +130,7 @@ dotnet add package Microsoft.Azure.Cosmos
 
 1. 导航到 Azure Cosmos 帐户。
 
-1. 打开“键”窗格，复制帐户的 URI 和主键  。 下一步需将 URI 和键值添加到某个环境变量。
+1. 打开“键”窗格，复制帐户的 URI 和主键    。 下一步需将 URI 和键值添加到某个环境变量。
 
 ### <a name="set-the-environment-variables"></a>设置环境变量
 
@@ -168,18 +168,18 @@ export PrimaryKey = "<Your_Azure_Cosmos_account_PRIMARY_KEY>"
 
 若要进一步了解不同实体的层次结构，请参阅[在 Azure Cosmos DB 中使用数据库、容器和项](account-databases-containers-items.md)。 使用以下 .NET 类与这些资源进行交互：
 
-* [CosmosClient](/dotnet/api/microsoft.azure.cosmos.cosmosclient?preserve-view=true&view=azure-dotnet) - 此类为 Azure Cosmos DB 服务提供客户端逻辑表示。 此客户端对象用于对服务进行配置和执行请求。
+* [CosmosClient](/dotnet/api/microsoft.azure.cosmos.cosmosclient) - 此类为 Azure Cosmos DB 服务提供客户端逻辑表示。 此客户端对象用于对服务进行配置和执行请求。
 
-* [CreateDatabaseIfNotExistsAsync](/dotnet/api/microsoft.azure.cosmos.cosmosclient.createdatabaseifnotexistsasync?view=azure-dotnet&preserve-view=true) - 若数据库资源不存在，则此方法以异步操作的形式创建数据库资源；若数据库资源已存在，则此方法以异步操作的形式获取它。 
+* [CreateDatabaseIfNotExistsAsync](/dotnet/api/microsoft.azure.cosmos.cosmosclient.createdatabaseifnotexistsasync) - 若数据库资源不存在，则此方法以异步操作的形式创建数据库资源；若数据库资源已存在，则此方法以异步操作的形式获取它。 
 
-* [CreateContainerIfNotExistsAsync](/dotnet/api/microsoft.azure.cosmos.database.createcontainerifnotexistsasync?view=azure-dotnet&preserve-view=true) - 若容器不存在，则此方法以异步操作的形式创建容器；若容器已存在，则此方法以异步操作的形式获取它。 可查看响应中的状态代码，确定是新创建了容器 (201) 还是返回了现有容器 (200)。 
-* [CreateItemAsync](/dotnet/api/microsoft.azure.cosmos.container.createitemasync?view=azure-dotnet&preserve-view=true) - 此方法在容器中创建项。 
+* [CreateContainerIfNotExistsAsync](/dotnet/api/microsoft.azure.cosmos.database.createcontainerifnotexistsasync) - 若容器不存在，则此方法以异步操作的形式创建容器；若容器已存在，则此方法以异步操作的形式获取它。 可查看响应中的状态代码，确定是新创建了容器 (201) 还是返回了现有容器 (200)。 
+* [CreateItemAsync](/dotnet/api/microsoft.azure.cosmos.container.createitemasync) - 此方法在容器中创建项。 
 
-* [UpsertItemAsync](/dotnet/api/microsoft.azure.cosmos.container.upsertitemasync?view=azure-dotnet&preserve-view=true) - 此方法在容器内创建一个项（如果该项尚不存在）或替换该项（如果该项已存在）。 
+* [UpsertItemAsync](/dotnet/api/microsoft.azure.cosmos.container.upsertitemasync) - 此方法在容器内创建一个项（如果该项尚不存在）或替换该项（如果该项已存在）。 
 
-* [GetItemQueryIterator](/dotnet/api/microsoft.azure.cosmos.container.GetItemQueryIterator?view=azure-dotnet&preserve-view=true) - 此方法使用带有参数化值的 SQL 语句在 Azure Cosmos 数据库的容器下创建项查询。 
+* [GetItemQueryIterator](/dotnet/api/microsoft.azure.cosmos.container.GetItemQueryIterator) - 此方法使用带有参数化值的 SQL 语句在 Azure Cosmos 数据库的容器下创建项查询。 
 
-* [DeleteAsync](/dotnet/api/microsoft.azure.cosmos.database.deleteasync?view=azure-dotnet&preserve-view=true) - 从 Azure Cosmos 帐户中删除指定的数据库。 `DeleteAsync` 方法只删除数据库。 应单独处理 `Cosmosclient` 实例（DeleteDatabaseandCleanupAsync 方法中如此操作）。 
+* [DeleteAsync](/dotnet/api/microsoft.azure.cosmos.database.deleteasync) - 从 Azure Cosmos 帐户中删除指定的数据库。 `DeleteAsync` 方法只删除数据库。 应单独处理 `Cosmosclient` 实例（DeleteDatabaseandCleanupAsync 方法中如此操作）。 
 
  ## <a name="code-examples"></a><a id="code-examples"></a>代码示例
 

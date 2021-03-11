@@ -16,12 +16,12 @@ ms.date: 12/23/2020
 ms.author: barclayn
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a7f0d937d41ee42bf0fe678eb2f49e78882f881
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.openlocfilehash: 4c5ab92fcc1d70d12e37ae351e768514b4e7522f
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100577858"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102501696"
 ---
 # <a name="archive-logs-and-reporting-on-azure-ad-entitlement-management-in-azure-monitor"></a>在 Azure AD 权利管理中使用 Azure Monitor 存档日志和进行报告
 
@@ -130,7 +130,7 @@ AuditLogs | where TimeGenerated > ago(3653d) | summarize OldestAuditEvent=min(Ti
 
 ### <a name="install-azure-powershell-module"></a>安装 Azure PowerShell 模块
 
-分配适当的角色后，启动 PowerShell，然后键入以下命令来[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps?view=azps-3.3.0)（如果尚未安装）：
+分配适当的角色后，启动 PowerShell，然后键入以下命令来[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)（如果尚未安装）：
 
 ```azurepowershell
 install-module -Name az -allowClobber -Scope CurrentUser
@@ -158,8 +158,7 @@ $subs = Get-AzSubscription
 $subs | ft
 ```
  
-可以使用类似于 `Connect-AzAccount –Subscription $subs[0].id` 的命令向该订阅重新进行身份验证，并将 PowerShell 会话与其关联。 若要详细了解如何通过 PowerShell 在 Azure 中进行身份验证（包括非交互式身份验证），请参阅[使用 Azure PowerShell 进行登录](/powershell/azure/authenticate-azureps?view=azps-3.3.0&viewFallbackFrom=azps-2.5.0
-)。
+可以使用类似于 `Connect-AzAccount –Subscription $subs[0].id` 的命令向该订阅重新进行身份验证，并将 PowerShell 会话与其关联。 若要详细了解如何通过 PowerShell 在 Azure 中进行身份验证（包括非交互式身份验证），请参阅[使用 Azure PowerShell 进行登录](/powershell/azure/authenticate-azureps)。
 
 如果你在该订阅中有多个 Log Analytics 工作区，则 cmdlet [Get-AzOperationalInsightsWorkspace](/powershell/module/Az.OperationalInsights/Get-AzOperationalInsightsWorkspace) 会返回工作区列表。 然后，你可以找到包含 Azure AD 日志的工作区。 此 cmdlet 返回的 `CustomerId` 字段与 Azure 门户上 Log Analytics 工作区概览中显示的“工作区 ID”值相同。
  
@@ -169,8 +168,7 @@ $wks | ft CustomerId, Name
 ```
 
 ### <a name="send-the-query-to-the-log-analytics-workspace"></a>将查询发送到 Log Analytics 工作区
-最后，在确定工作区后，可以使用 [Invoke-AzOperationalInsightsQuery](/powershell/module/az.operationalinsights/Invoke-AzOperationalInsightsQuery?view=azps-3.3.0
-) 将 Kusto 查询发送到该工作区。 这些查询以 [Kusto 查询语言](/azure/kusto/query/)编写。
+最后，在确定工作区后，可以使用 [Invoke-AzOperationalInsightsQuery](/powershell/module/az.operationalinsights/Invoke-AzOperationalInsightsQuery) 将 Kusto 查询发送到该工作区。 这些查询以 [Kusto 查询语言](/azure/kusto/query/)编写。
  
 例如，可以使用 PowerShell cmdlet 发送如下所示的查询，从 Log Analytics 工作区检索审核事件记录的日期范围：
  

@@ -7,12 +7,12 @@ ms.devlang: rest-api
 ms.topic: quickstart
 ms.date: 01/18/2021
 ms.author: jingwang
-ms.openlocfilehash: 527f8d63f2a2fd5c44e187c00c0651300eb4ad9f
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: adcefc21ac4fc8a00d97d5ac4352bad1287b60de
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100373719"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102517627"
 ---
 # <a name="quickstart-create-an-azure-data-factory-and-pipeline-by-using-the-rest-api"></a>快速入门：使用 REST API 创建 Azure 数据工厂和管道
 
@@ -300,7 +300,7 @@ $response | ConvertTo-Json
 在本示例中，此管道包含一个“复制活动”。 复制活动引用在上一步中创建的“InputDataset”和“OutputDataset”作为输入和输出。
 
 ```powershell
-$request = "https://management.azure.com/subscriptions/${subscriptionId}/resourceGroups/${resourceGroupName}/providers/Microsoft.DataFactory/factories/${dataFactoryName}/pipelines/Adfv2QuickStartPipeline?api-version=${apiVersion}"
+$request = "https://management.azure.com/subscriptions/${subscriptionId}/resourceGroups/${resourceGroupName}/providers/Microsoft.DataFactory/factories/${factoryName}/pipelines/Adfv2QuickStartPipeline?api-version=${apiVersion}"
 $body = @"
 {
     "name": "Adfv2QuickStartPipeline",

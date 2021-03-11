@@ -9,12 +9,12 @@ ms.date: 05/28/2019
 ms.author: chrande
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b31cb33e09158de5912132d0fb7bd31a62131181
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
-ms.translationtype: MT
+ms.openlocfilehash: 15e94dac02770bf28aae4cbfc4e337cb68b8be40
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360507"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102425315"
 ---
 # <a name="using-the-graph-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db-gremlin-api"></a>使用图批量执行程序 .NET 库在 Azure Cosmos DB Gremlin API 中执行批量操作
 [!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
@@ -25,12 +25,12 @@ ms.locfileid: "93360507"
 
 ## <a name="bulk-operations-with-graph-data"></a>对图形数据执行的批量操作
 
-[批量执行程序库](/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.graph?preserve-view=true&view=azure-dotnet)包含一个 `Microsoft.Azure.CosmosDB.BulkExecutor.Graph` 命名空间，用于提供创建和导入图对象所需的功能。 
+[批量执行程序库](/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.graph)包含一个 `Microsoft.Azure.CosmosDB.BulkExecutor.Graph` 命名空间，用于提供创建和导入图对象所需的功能。 
 
 以下过程概述了如何将数据迁移用于 Gremlin API 容器：
 1. 从数据源检索记录。
 2. 根据获得的记录构造 `GremlinVertex` 和 `GremlinEdge` 对象，然后将其添加到 `IEnumerable` 数据结构中。 应该在应用程序的此部分实施检测和添加关系的逻辑，以免出现数据源不是图形数据库的情况。
-3. 使用[图形 BulkImportAsync 方法](/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.graph.graphbulkexecutor.bulkimportasync?preserve-view=true&view=azure-dotnet)将图形对象插入集合中。
+3. 使用[图形 BulkImportAsync 方法](/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.graph.graphbulkexecutor.bulkimportasync)将图形对象插入集合中。
 
 与使用 Gremlin 客户端相比，此机制会提高数据迁移效率。 之所以会体验到这种效率提高，是因为使用 Gremlin 插入数据时，需要应用程序一次发送一个查询，该查询在创建数据之前需经历验证、评估和执行这几个阶段。 批量执行程序库会在应用程序中处理验证，并且会针对每个网络请求一次发送多个图对象。
 
@@ -79,7 +79,7 @@ catch (Exception e)
 
 有效负载需实例化为 `GremlinVertex` 和 `GremlinEdge` 对象。 下面是创建这些对象的方法：
 
-**顶点** ：
+**顶点**：
 ```csharp
 // Creating a vertex
 GremlinVertex v = new GremlinVertex(
@@ -93,7 +93,7 @@ v.AddProperty("customProperty", "value");
 v.AddProperty("partitioningKey", "value");
 ```
 
-**边缘** ：
+**边缘**：
 ```csharp
 // Creating an edge
 GremlinEdge e = new GremlinEdge(
@@ -140,9 +140,9 @@ git clone https://github.com/Azure-Samples/azure-cosmosdb-graph-bulkexecutor-dot
 
 设置|说明
 ---|---
-`EndPointUrl`|这是 **.NET SDK 终结点** ，位于 Azure Cosmos DB Gremlin API 数据库帐户的“概览”边栏选项卡中。 此项的格式为 `https://your-graph-database-account.documents.azure.com:443/`
+`EndPointUrl`|这是 **.NET SDK 终结点**，位于 Azure Cosmos DB Gremlin API 数据库帐户的“概览”边栏选项卡中。 此项的格式为 `https://your-graph-database-account.documents.azure.com:443/`
 `AuthorizationKey`|这是在 Azure Cosmos DB 帐户下列出的主密钥或辅助密钥。 详细了解如何[确保对 Azure Cosmos DB 数据的安全访问](./secure-access-to-data.md#primary-keys)
-`DatabaseName`, `CollectionName`|这些是 **目标数据库和集合名称** 。 当 `ShouldCleanupOnStart` 设置为 `true` 时，将会根据这些值和 `CollectionThroughput` 来删除它们并创建新的数据库和集合。 同样，如果 `ShouldCleanupOnFinish` 设置为 `true`，将会根据这些值在引入完成后立即删除数据库。 请注意，目标集合必须是 **无限制集合** 。
+`DatabaseName`, `CollectionName`|这些是 **目标数据库和集合名称**。 当 `ShouldCleanupOnStart` 设置为 `true` 时，将会根据这些值和 `CollectionThroughput` 来删除它们并创建新的数据库和集合。 同样，如果 `ShouldCleanupOnFinish` 设置为 `true`，将会根据这些值在引入完成后立即删除数据库。 请注意，目标集合必须是 **无限制集合**。
 `CollectionThroughput`|如果 `ShouldCleanupOnStart` 选项设置为 `true`，则使用此项来创建新的集合。
 `ShouldCleanupOnStart`|此项会在程序运行之前删除数据库帐户和集合，然后使用 `DatabaseName`、`CollectionName` 和 `CollectionThroughput` 值创建新的。
 `ShouldCleanupOnFinish`|此项会在程序运行之后删除具有指定 `DatabaseName` 和 `CollectionName` 的数据库帐户和集合。
@@ -160,4 +160,4 @@ git clone https://github.com/Azure-Samples/azure-cosmosdb-graph-bulkexecutor-dot
 
 * 若要了解 NuGet 包的详细信息以及 Bulk Executor .Net 库的发行说明，请参阅 [Bulk Executor SDK 详细信息](sql-api-sdk-bulk-executor-dot-net.md)。 
 * 请查看[性能提示](./bulk-executor-dot-net.md#performance-tips)，以便进一步优化批量执行程序的使用。
-* 请查看 [BulkExecutor.Graph 参考文章](/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.graph?preserve-view=true&view=azure-dotnet)，以便更详细地了解在此命名空间中定义的类和方法。
+* 请查看 [BulkExecutor.Graph 参考文章](/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.graph)，以便更详细地了解在此命名空间中定义的类和方法。

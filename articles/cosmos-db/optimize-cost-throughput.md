@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/07/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 86de3e1199b00dff4e03f3b4292f86e6c19ea491
-ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
-ms.translationtype: MT
+ms.openlocfilehash: 0c95fc9e416399b5c8fe032e0d3af0c3b7f9cf6e
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96296533"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102433567"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中优化预配的吞吐量成本
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -81,7 +81,7 @@ HTTP Status 429,
 
 如果累计有多个客户端一贯在超过请求速率的情况下运行，则当前设置为 9 的默认重试计数可能并不足够。 在这种情况下，客户端会向应用程序引发 `RequestRateTooLargeException` 并返回状态代码 429。 可以通过在 ConnectionPolicy 实例上设置 `RetryOptions` 来更改默认重试计数。 默认情况下，如果请求继续以高于请求速率的方式运行，则在 30 秒的累积等待时间后返回状态代码为 429 的 `RequestRateTooLargeException`。 即使当前的重试计数小于最大重试计数（默认值 9 或用户定义的值），也会发生这种情况。 
 
-[MaxRetryAttemptsOnThrottledRequests](/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretryattemptsonthrottledrequests?preserve-view=true&view=azure-dotnet) 设置为 3，因此在这种情况下，如果请求操作因超出容器的保留吞吐量而受到速率限制，则请求操作会重试三次，然后再向应用程序引发异常。 [MaxRetryWaitTimeInSeconds](/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretrywaittimeinseconds?preserve-view=true&view=azure-dotnet#Microsoft_Azure_Documents_Client_RetryOptions_MaxRetryWaitTimeInSeconds) 设置为 60，因此在这种情况下，如果自第一次请求以来的累积重试等待时间（以秒为单位）超过 60 秒，则会引发异常。
+[MaxRetryAttemptsOnThrottledRequests](/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretryattemptsonthrottledrequests) 设置为 3，因此在这种情况下，如果请求操作因超出容器的保留吞吐量而受到速率限制，则请求操作会重试三次，然后再向应用程序引发异常。 [MaxRetryWaitTimeInSeconds](/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretrywaittimeinseconds#Microsoft_Azure_Documents_Client_RetryOptions_MaxRetryWaitTimeInSeconds) 设置为 60，因此在这种情况下，如果自第一次请求以来的累积重试等待时间（以秒为单位）超过 60 秒，则会引发异常。
 
 ```csharp
 ConnectionPolicy connectionPolicy = new ConnectionPolicy(); 
@@ -137,7 +137,7 @@ connectionPolicy.RetryOptions.MaxRetryWaitTimeInSeconds = 60;
 
 若要确定新工作负荷的预配吞吐量，可使用以下步骤： 
 
-1. 使用容量规划器执行初始、粗略的评估，并使用 Azure 门户中 Azure Cosmos DB 资源管理器的帮助调整估计值。 
+1. 使用容量规划器执行初始的粗略评估，并借助 Azure 门户中的 Azure Cosmos DB 资源管理器调整估算值。 
 
 2. 建议使用超过预期的吞吐量创建容器，然后根据需要进行缩减。 
 

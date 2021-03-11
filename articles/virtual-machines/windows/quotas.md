@@ -3,17 +3,17 @@ title: Azure 的 vCPU 配额
 description: 了解 Azure 虚拟机的 vCPU 配额。
 author: cynthn
 ms.service: virtual-machines
-ms.subservice: sizes
+ms.subservice: quota
 ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 05/31/2018
 ms.author: cynthn
-ms.openlocfilehash: b00d84e1c2dc8f104046fe24360d79e6952dfacc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: ca7d95a9916aafdab2550eee48ea05ddfa5874c1
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88950283"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102560712"
 ---
 # <a name="check-vcpu-quotas-using-azure-powershell"></a>使用 Azure PowerShell 检查 vCPU 配额
 
@@ -22,7 +22,7 @@ ms.locfileid: "88950283"
 > [!NOTE]
 > 配额基于所使用的核心总数（已分配和已解除分配）进行计算。 如果需要额外核心，则[请求增加配额](../../azure-portal/supportability/resource-manager-core-quotas-request.md)或删除不再需要的 VM。 
  
-## <a name="check-usage"></a>检查使用情况
+## <a name="check-usage"></a>查看使用情况
 
 可以使用 [Get-AzVMUsage](/powershell/module/az.compute/get-azvmusage) cmdlet 来检查配额的使用情况。
 

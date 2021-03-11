@@ -4,13 +4,13 @@
   displayName: 'IoT, OT, getting started'
   href: overview.md
   items:
-    - name: 新增功能
-      href: release-notes.md
     - name: 无代理解决方案体系结构
       displayName: 'deployment, where to deploy'
       href: architecture.md
     - name: 基于代理的解决方案体系结构
       href: architecture-agent-based.md
+- name: 新增功能
+  href: release-notes.md
 - name: 快速入门
   expanded: true
   items:
@@ -27,12 +27,12 @@
         - name: 载入 Defender for IoT 基于代理的解决方案
           displayName: 'IoT Hub, existing, enable'
           href: quickstart-onboard-iot-hub.md
-        - name: 安装 Defender for IoT 微代理
+        - name: 安装 Defender for IoT 微代理（预览）
           displayName: 'package, authentication, methods, certificate, authenticate, version'
           href: quickstart-standalone-agent-binary-installation.md
-        - name: 创建 Defender IoT 微代理模块孪生
+        - name: 创建 Defender IoT 微代理模块孪生（预览）
           href: quickstart-create-micro-agent-module-twin.md
-        - name: 从源代码生成 Defender for IoT 微代理
+        - name: 从源代码生成 Defender for IoT 微代理（预览）
           displayName: 'baseline, configuration, customize, distribution'
           href: quickstart-building-the-defender-micro-agent-from-source.md
         - name: 配置 Azure RTOS 安全模块
@@ -56,18 +56,18 @@
           href: concept-key-concepts.md
     - name: 适用于设备构建者的基于代理的解决方案
       items:
-        - name: 代理项目组合概述和操作系统支持
+        - name: 代理组合概述和操作系统支持（预览）
           displayName: 'standalone agent, micro agent, RTOS'
           href: concept-agent-portfolio-overview-os-support.md
-        - name: 独立微代理概述
+        - name: 独立微代理概述（预览）
           displayName: 'endpoint, posture, distribution, flexible, model'
           href: concept-standalone-micro-agent-overview.md
-        - name: 安全代理身份验证
+        - name: 安全代理身份验证（预览）
           displayName: 'connection string, certificate, authentication'
           href: concept-security-agent-authentication.md
         - name: 安全状况 - CIS 基准
           href: concept-security-posture.md
-        - name: 事件聚合
+        - name: 事件聚合（预览）
           displayName: 'process events, network connection'
           href: concept-event-aggregation.md
         - name: IoT 中心的内置警报
@@ -297,7 +297,7 @@
               href: how-to-investigate-device.md
 - name: 疑难解答
   items:
-    - name: Defender IoT 微代理故障排除
+    - name: Defender IoT 微代理故障排除（预览）
       displayName: 'service status, review logs'
       href: troubleshoot-defender-micro-agent.md
 - name: 功能支持和停用

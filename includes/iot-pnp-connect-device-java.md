@@ -4,12 +4,12 @@ ms.author: dobett
 ms.service: iot-pnp
 ms.topic: include
 ms.date: 11/20/2020
-ms.openlocfilehash: 7961dae0ef227a7e321992e0b239f7a3e6e66b0a
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: e3b2731a9a607e8d421ba8d98344a60e06a511d1
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95511617"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102244488"
 ---
 本快速入门介绍如何生成示例 IoT 即插即用设备应用程序，将其连接到 IoT 中心，并使用 Azure IoT 资源管理器工具来查看它发送的遥测数据。 该示例应用程序以 Java 编写，包含在用于 Java 的 Azure IoT 设备 SDK 中。 解决方案构建者可以使用 Azure IoT 资源管理器工具来了解 IoT 即插即用设备的功能，而无需查看任何设备代码。
 
@@ -19,7 +19,7 @@ ms.locfileid: "95511617"
 
 要完成本快速入门，需在本地 Windows 环境上安装以下软件：
 
-* Java SE 开发工具包 8。 在[针对 Azure 和 Azure Stack 的 Java 长期支持](/java/azure/jdk/?preserve-view=true&view=azure-java-stable)中的“长期支持”下选择“Java 8”。
+* Java SE 开发工具包 8。 在[针对 Azure 和 Azure Stack 的 Java 长期支持](/java/azure/jdk/)中的“长期支持”下选择“Java 8”。
 * [Apache Maven 3](https://maven.apache.org/download.cgi)。
 
 ## <a name="download-the-code"></a>下载代码

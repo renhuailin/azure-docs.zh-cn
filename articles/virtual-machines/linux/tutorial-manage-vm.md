@@ -1,29 +1,30 @@
 ---
 title: 教程 - 使用 Azure CLI 创建和管理 Linux VM
 description: 本教程介绍如何使用 Azure CLI 在 Azure 中创建和管理 Linux VM
-services: virtual-machines-linux
+services: virtual-machines
 documentationcenter: virtual-machines
 author: cynthn
 manager: gwallace
 tags: azure-resource-manager
 ms.assetid: ''
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/23/2018
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: aeb44a52dc7a83321752bb00e09270fe7bfd0bbe
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 77213fe83a56a33f4d10658f85465349949be792
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91972180"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102555595"
 ---
 # <a name="tutorial-create-and-manage-linux-vms-with-the-azure-cli"></a>教程：使用 Azure CLI 创建和管理 Linux VM
 
-Azure 虚拟机提供完全可配置的灵活计算环境。 本教程介绍 Azure 虚拟机的基本部署项目，例如选择 VM 大小、选择 VM 映像和部署 VM。 你将学习如何执行以下操作：
+Azure 虚拟机提供完全可配置的灵活计算环境。 本教程介绍 Azure 虚拟机的基本部署项目，例如选择 VM 大小、选择 VM 映像和部署 VM。 学习如何：
 
 > [!div class="checklist"]
 > * 创建并连接到 VM
@@ -32,7 +33,7 @@ Azure 虚拟机提供完全可配置的灵活计算环境。 本教程介绍 Azu
 > * 调整 VM 的大小
 > * 查看并了解 VM 状态
 
-本教程在 [Azure Cloud Shell](../../cloud-shell/overview.md) 中使用 CLI，后者已不断更新到最新版本。 若要打开 Cloud Shell，请从任何代码块的顶部选择“试一试”。
+本教程在 [Azure Cloud Shell](../../cloud-shell/overview.md) 中使用 CLI，后者已不断更新到最新版本。 若要打开 Cloud Shell，请从任何代码块的顶部选择“试一试”  。
 
 如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 2.0.30 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。
 
@@ -308,7 +309,7 @@ az vm start --resource-group myResourceGroupVM --name myVM
 
 ### <a name="delete-resource-group"></a>删除资源组
 
-删除资源组还会删除其包含的所有资源，例如 VM、虚拟网络和磁盘。 `--no-wait` 参数会使光标返回提示符处，不会等待操作完成。 `--yes` 参数将确认是否希望删除资源，不会显示询问是否删除的额外提示。
+删除资源组还会删除其包含的所有资源，例如 VM、虚拟网络和磁盘。 `--no-wait` 参数会使光标返回提示符处，无需等待操作完成。 `--yes` 参数将确认是否希望删除资源，而不会有额外提示。
 
 ```azurecli-interactive
 az group delete --name myResourceGroupVM --no-wait --yes

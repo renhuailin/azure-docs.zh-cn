@@ -1,5 +1,5 @@
 ---
-title: 创建 Defender IoT 微代理模块孪生（预览）
+title: 创建 Defender IoT 微代理模块孪生
 titleSuffix: Azure Defender for IoT
 description: 了解如何为新设备创建单独的 DefenderIotMicroAgent 模块孪生。
 author: shhazam-ms
@@ -8,14 +8,14 @@ ms.author: shhazam
 ms.date: 1/20/2021
 ms.topic: quickstart
 ms.service: azure
-ms.openlocfilehash: f14f253960b628f2bf8052e92dbec3c897a205db
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: ea82fea89a9e81e66be6b3060aad067d3ceb8f5f
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820834"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102122997"
 ---
-# <a name="create-a-defender-iot-micro-agent-module-twin-preview"></a>创建 Defender IoT 微代理模块孪生（预览）
+# <a name="create-a-defender-iot-micro-agent-module-twin"></a>创建 Defender IoT 微代理模块孪生 
 
 可为新设备创建单独的 DefenderIotMicroAgent 模块孪生 **** 。 还可对 IoT 中心内的所有设备批量创建模块孪生。 
 
