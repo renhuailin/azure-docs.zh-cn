@@ -4,16 +4,16 @@ description: Azure 机密计算 (ACC) 的概述
 services: virtual-machines
 author: JBCook
 ms.service: virtual-machines
-ms.subservice: workloads
+ms.subservice: confidential-computing
 ms.topic: overview
 ms.date: 09/22/2020
 ms.author: JenCook
-ms.openlocfilehash: 44479db6b29075e87b0d2dcef6f0d9bc1881738c
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: c3ef6a764123f52583f081a3b152651b9bb8b8b7
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94560819"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102554184"
 ---
 # <a name="confidential-computing-on-azure"></a>Azure 上的机密计算
 

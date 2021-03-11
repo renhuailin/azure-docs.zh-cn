@@ -220,10 +220,10 @@
           href: media-services-metrics-diagnostic-logs.md
         - name: 诊断日志架构
           href: media-services-diagnostic-logs-schema.md
-    - name: Azure Media Player
+    - name: 兼容播放器
       items:
-        - name: Azure Media Player 概述
-          href: ../azure-media-player/azure-media-player-overview.md
+        - name: 媒体服务的媒体播放器
+          href: media-players-overview.md
     - name: 使用 v3 API 进行开发
       items:
         - name: 概述

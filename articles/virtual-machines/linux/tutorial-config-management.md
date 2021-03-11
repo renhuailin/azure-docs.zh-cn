@@ -1,32 +1,33 @@
 ---
 title: 教程 - 在 Azure 中管理 Linux 虚拟机配置
 description: 在本教程中，你将学习如何在 Linux 虚拟机上识别更改和管理包更新版
-services: virtual-machines-linux
+services: virtual-machines
 documentationcenter: virtual-machines
 author: mgoedtel
 manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/27/2019
 ms.author: magoedte
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: de038fe087e479ef1e9212c21197fbe1844d5e3b
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 979cac8fd3d2c09443d52c9142a5e7c44127713a
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101670370"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102552521"
 ---
 # <a name="tutorial-monitor-changes-and-update-a-linux-virtual-machine-in-azure"></a>教程：监视更改并更新 Azure 中的 Linux 虚拟机
 
 Azure [更改跟踪](../../automation/change-tracking/overview.md)允许你轻松识别更改，[更新管理](../../automation/update-management/overview.md)允许你管理 Azure Linux VM 的操作系统更新。
 
-在本教程中，你将了解如何执行以下操作：
+本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 管理 Linux 更新

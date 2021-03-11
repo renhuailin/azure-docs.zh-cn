@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 01/07/2021
 ms.author: damendo
 ms.custom: subject-armqs
-ms.openlocfilehash: ded7b24461fdcdbc3d020a487cafc20620633097
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: bc075e5074fe39ad38e45235af932b40fef78fce
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98019714"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102521860"
 ---
 # <a name="quickstart-configure-network-security-group-flow-logs-by-using-an-arm-template"></a>快速入门：使用 ARM 模板配置网络安全组流日志
 
@@ -82,7 +82,7 @@ ms.locfileid: "98019714"
 
 如果你是第一次使用 ARM 模板，请参阅以下文章，了解有关 ARM 模板的详细信息：
 
-- [使用 ARM 模板和 Azure PowerShell 部署资源](../azure-resource-manager/templates/deploy-powershell.md#deploy-local-template)
+- [使用 ARM 模板和 Azure PowerShell 部署资源](../azure-resource-manager/templates/deploy-powershell.md#deploy-local-template-or-bicep-file)
 - [创建并部署第一个 ARM 模板](../azure-resource-manager/templates/template-tutorial-create-first-template.md)
 
 下面的示例是一个完整的模板。 它也是最简单的模板版本。 该示例包含设置 NSG 流日志所需传递的最少参数。 有关更多示例，请参阅概述文章[根据 Azure 资源管理器模板配置 NSG 流日志](network-watcher-nsg-flow-logging-azure-resource-manager.md)。
@@ -145,7 +145,7 @@ New-AzResourceGroupDeployment -Name EnableFlowLog -ResourceGroupName NetworkWatc
 可通过两个选项来查看部署是否成功：
 
 - PowerShell 控制台将 `ProvisioningState` 显示为 `Succeeded`。
-- 转到 [NSG 流日志门户页](https://ms.portal.azure.com/#blade/Microsoft_Azure_Network/NetworkWatcherMenuBlade/flowLogs)确认所做的更改。 
+- 转到 [NSG 流日志门户页](https://ms.portal.azure.com/#blade/Microsoft_Azure_Network/NetworkWatcherMenuBlade/flowLogs)确认所做的更改。
 
 如果部署出现问题，请参阅[排查使用 Azure 资源管理器时的常见 Azure 部署错误](../azure-resource-manager/templates/common-deployment-errors.md)。
 

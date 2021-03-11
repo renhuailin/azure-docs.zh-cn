@@ -27,8 +27,6 @@
       href: cdn-custom-ssl.md
     - name: 设置缓存规则
       href: cdn-caching-rules-tutorial.md
-    - name: 使用标准规则引擎强制执行 HTTPS
-      href: cdn-standard-rules-engine.md
 - name: 示例
   items:
     - name: 代码示例
@@ -76,6 +74,8 @@
           href: cdn-improve-performance.md
         - name: 终结点多源
           href: endpoint-multiorigin.md
+        - name: 使用标准规则引擎强制执行 HTTPS
+          href: cdn-standard-rules-engine.md
         - name: 控制缓存行为
           items:
             - name: 使用缓存规则控制缓存行为

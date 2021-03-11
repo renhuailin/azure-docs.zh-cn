@@ -38,8 +38,14 @@
       items:
         - name: 应用管理示例概述
           href: app-management-powershell-samples.md
-        - name: 导出所有应用注册、机密和证书
+        - name: 导出机密和证书（应用注册）
           href: ./scripts/powershell-export-all-app-registrations-secrets-and-certs.md
+        - name: 导出机密和证书（企业应用）
+          href: ./scripts/powershell-export-all-enterprise-apps-secrets-and-certs.md
+        - name: 导出即将过期的机密和证书
+          href: ./scripts/powershell-export-apps-with-expriring-secrets.md
+        - name: 导出要求的日期后即将过期的机密和证书
+          href: ./scripts/powershell-export-apps-with-secrets-beyond-required.md
     - name: 应用代理 PowerShell 示例
       href: application-proxy-powershell-samples.md
 - name: 概念

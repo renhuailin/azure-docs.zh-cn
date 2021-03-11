@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/10/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5151f97386ebb6b06be2320505771dc8f47d59a0
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: eb31d6e25ce1c1ff5c3e4dbabb4fa53da0bd2ef3
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97107526"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101093924"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-key-vault"></a>教程：使用 Linux VM 系统分配的托管标识访问 Azure Key Vault 
 
@@ -38,7 +38,7 @@ ms.locfileid: "97107526"
 
 - 具备托管标识基础知识。 如果不熟悉 Azure 资源功能的托管标识，请参阅此[概述](overview.md)。 
 - 一个 Azure 帐户，[注册免费 Azure 帐户](https://azure.microsoft.com/free/)。
-- 在相应范围（订阅或资源组）内具有“所有者”权限，以执行所需的资源创建和角色管理步骤。 如果需要有关角色分配的帮助，请参阅[使用基于角色的访问控制管理对 Azure 订阅资源的访问权限](../../role-based-access-control/role-assignments-portal.md)。
+- 在相应范围（订阅或资源组）内具有“所有者”权限，以执行所需的资源创建和角色管理步骤。 如需角色分配方面的帮助，请参阅[分配 Azure 角色以管理对 Azure 订阅资源的访问权限](../../role-based-access-control/role-assignments-portal.md)。
 - 还需要启用了系统分配的托管标识的 Linux 虚拟机。
   - 如需为本教程创建虚拟机，则可以按照标题为[使用 Azure 门户创建 Linux 虚拟机](../../virtual-machines/linux/quick-create-portal.md#create-virtual-machine)的文章进行操作
 

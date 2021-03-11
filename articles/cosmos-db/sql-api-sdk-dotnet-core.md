@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: c6afbcebeb23889f65e5c071c3edc22e59934bbd
-ms.sourcegitcommit: ac7029597b54419ca13238f36f48c053a4492cb6
-ms.translationtype: MT
+ms.openlocfilehash: 49df1a066ef19fff15830491071755d152ddd1d0
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2020
-ms.locfileid: "93098563"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102423870"
 ---
 # <a name="azure-cosmos-db-net-core-sdk-v2-for-sql-api-release-notes-and-resources"></a>适用于 SQL API 的 Azure Cosmos DB .NET Core SDK v2：发行说明和资源
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -40,7 +40,7 @@ ms.locfileid: "93098563"
 | |  |
 |---|---|
 |**SDK 下载**| [NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core/)|
-|**API 文档**|[ 参考文档](/dotnet/api/overview/azure/cosmosdb?view=azure-dotnet&preserve-view=true)|
+|**API 文档**|[ 参考文档](/dotnet/api/overview/azure/cosmosdb)|
 |**示例**|[.NET代码示例](sql-api-dotnet-samples.md)|
 |**入门**|[Azure Cosmos DB .NET 入门](sql-api-sdk-dotnet.md)|
 |**Web 应用教程**|[使用 Azure Cosmos DB 开发 Web 应用程序](sql-api-dotnet-application.md)|

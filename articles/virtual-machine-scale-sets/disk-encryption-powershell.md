@@ -9,12 +9,12 @@ ms.subservice: disks
 ms.date: 10/15/2019
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurepowershell
-ms.openlocfilehash: cac2f57ccb5fd5d0aa251533bd4a5dd1179ec058
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: 59b015232fcfe2fd98e1b9f28c2eb4fa86606049
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89069742"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102519565"
 ---
 # <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set-with-azure-powershell"></a>通过 Azure PowerShell 对虚拟机规模集中的 OS 和附加数据磁盘进行加密
 
@@ -51,7 +51,7 @@ Set-AzKeyVaultAccessPolicy -VaultName $vaultName -EnabledForDiskEncryption
 
 ## <a name="create-a-scale-set"></a>创建规模集
 
-首先，使用 [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1) 设置 VM 实例的管理员用户名和密码：
+首先，使用 [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential) 设置 VM 实例的管理员用户名和密码：
 
 ```azurepowershell-interactive
 $cred = Get-Credential

@@ -1,27 +1,19 @@
 ---
 title: 将监视和诊断添加到 Azure 虚拟机
 description: 使用 Azure 资源管理器模板新建具有 Azure 诊断扩展的 Windows 虚拟机。
-services: virtual-machines-windows
-documentationcenter: ''
-author: mimckitt
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 8cde8fe7-977b-43d2-be74-ad46dc946058
-ms.service: virtual-machines-windows
-ms.subservice: extensions
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
 ms.topic: article
+ms.service: virtual-machines
+ms.subservice: extensions
+author: amjads1
+ms.author: amjads
+ms.collection: windows
 ms.date: 05/31/2017
-ms.author: mimckitt
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 413ea38b1694a9322742f3a76438e7b752152e24
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.openlocfilehash: 6d365c7e927c11f52b97fbb0cc01a7aa37ad5afd
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100580225"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102560049"
 ---
 # <a name="use-monitoring-and-diagnostics-with-a-windows-vm-and-azure-resource-manager-templates"></a>将监视和诊断与 Windows VM 和 Azure 资源管理器模板配合使用
 Azure 诊断扩展可在基于 Windows 的 Azure 虚拟机上提供监视和诊断功能。 通过将该扩展纳入为 Azure 资源管理器模板的一部分，可以在虚拟机上启用这些功能。 有关将任何扩展纳入为虚拟机模板一部分的详细信息，请参阅[使用 VM 扩展创作 Azure 资源管理器模板](../windows/template-description.md#extensions)。 本文介绍如何将 Azure 诊断扩展添加到 Windows 虚拟机模板中。  

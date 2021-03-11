@@ -1,6 +1,6 @@
 ---
 title: Azure Active Directory B2C 中的旧用户流版本 | Microsoft Docs
-description: 了解 Azure Active Directory B2C 中提供的旧版本用户流。
+description: 了解 Azure Active Directory B2C 中可用的旧版用户流。
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 7cdfd6cb8947fb3b56fcbfe92874c8b9b27a8db1
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
-ms.translationtype: MT
+ms.openlocfilehash: 1fbe93c93b5ede2c6b031dab53a1450da473f802
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97108121"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102517797"
 ---
 # <a name="legacy-user-flow-versions-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的旧用户流版本
 
@@ -47,8 +47,8 @@ Azure Active Directory B2C (Azure AD B2C) 中的用户流可帮助设置完全�
 
 | 用户流 | 建议 | 描述 |
 | --------- | ----------- | ----------- |
-| 密码重置 v2 | 否 | 允许用户在验证电子邮件后选择新密码。 使用此用户流，可配置： <ul><li>[多重身份验证](multi-factor-authentication.md)</li><li>令牌兼容性设置</li><li>[年龄限制](basic-age-gating.md)</li><li>[密码复杂性要求](password-complexity.md)</li></ul> |
+| 密码重置 v2 | 否 | 允许用户在验证电子邮件后选择新密码。 使用此用户流，可配置： <ul><li>[多重身份验证](multi-factor-authentication.md)</li><li>令牌兼容性设置</li><li>[年龄限制](age-gating.md)</li><li>[密码复杂性要求](password-complexity.md)</li></ul> |
 | 配置文件编辑 v2 | 是 | 允许用户配置用户特性。 使用此用户流，可配置： <ul><li>[令牌生存期](tokens-overview.md)</li><li>令牌兼容性设置</li><li>会话行为</li></ul> |
-| 登录 v2 | 否 | 允许用户登录帐户。 使用此用户流，可配置： <ul><li>[多重身份验证](multi-factor-authentication.md)</li><li>[令牌生存期](tokens-overview.md)</li><li>令牌兼容性设置</li><li>会话行为</li><li>[年龄限制](basic-age-gating.md)</li><li>登录页自定义</li></ul> |
-| 注册 v2 | 否 | 允许用户创建账户。 使用此用户流，可配置： <ul><li>[多重身份验证](multi-factor-authentication.md)</li><li>[令牌生存期](tokens-overview.md)</li><li>令牌兼容性设置</li><li>会话行为</li><li>[年龄限制](basic-age-gating.md)</li><li>[密码复杂性要求](password-complexity.md)</li></ul> |
-| 注册和登录 v2 | 否 | 允许用户创建帐户或登录帐户。 使用此用户流，可配置： <ul><li>[多重身份验证](multi-factor-authentication.md)</li><li>[年龄限制](basic-age-gating.md)</li><li>[密码复杂性要求](password-complexity.md)</li></ul> |
+| 登录 v2 | 否 | 允许用户登录帐户。 使用此用户流，可配置： <ul><li>[多重身份验证](multi-factor-authentication.md)</li><li>[令牌生存期](tokens-overview.md)</li><li>令牌兼容性设置</li><li>会话行为</li><li>[年龄限制](age-gating.md)</li><li>登录页自定义</li></ul> |
+| 注册 v2 | 否 | 允许用户创建账户。 使用此用户流，可配置： <ul><li>[多重身份验证](multi-factor-authentication.md)</li><li>[令牌生存期](tokens-overview.md)</li><li>令牌兼容性设置</li><li>会话行为</li><li>[年龄限制](age-gating.md)</li><li>[密码复杂性要求](password-complexity.md)</li></ul> |
+| 注册和登录 v2 | 否 | 允许用户创建帐户或登录帐户。 使用此用户流，可配置： <ul><li>[多重身份验证](multi-factor-authentication.md)</li><li>[年龄限制](age-gating.md)</li><li>[密码复杂性要求](password-complexity.md)</li></ul> |

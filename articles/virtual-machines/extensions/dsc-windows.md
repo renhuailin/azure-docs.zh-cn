@@ -1,25 +1,19 @@
 ---
-title: Azure 所需状态配置扩展处理程序
+title: Azure Desired State Configuration 扩展处理程序
 description: 使用 DSC 扩展在 Azure VM 中上传和应用 PowerShell DSC 配置
-services: virtual-machines-windows
-documentationcenter: ''
-author: bobbytreed
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: virtual-machines-windows
-ms.subservice: extensions
 ms.topic: article
-ms.tgt_pltfrm: windows
-ms.workload: ''
-ms.date: 03/26/2018
+ms.service: virtual-machines
+ms.subservice: extensions
+author: bobbytreed
 ms.author: robreed
-ms.openlocfilehash: 5254d83c18ddc9f2a5518ed4f711d4cd73ab6de7
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
-ms.translationtype: MT
+ms.collection: windows
+ms.date: 03/26/2018
+ms.openlocfilehash: 72f66aeee64133a13ce0e49155c4b2a90240a3fb
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97510934"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102559981"
 ---
 # <a name="powershell-dsc-extension"></a>PowerShell DSC 扩展
 
@@ -33,7 +27,7 @@ ms.locfileid: "97510934"
 
 DSC 扩展支持以下 OS：
 
-Windows Server 2019，Windows Server 2016，Windows Server 2012R2，Windows Server 2012，Windows Server 2008 R2 SP1，Windows 客户端 7/8.1/10
+Windows Server 2019、Windows Server 2016、Windows Server 2012R2、Windows Server 2012、Windows Server 2008 R2 SP1、Windows Client 7/8.1/10
 
 ### <a name="internet-connectivity"></a>Internet 连接
 
@@ -130,13 +124,13 @@ Windows Server 2019，Windows Server 2016，Windows Server 2012R2，Windows Serv
 
 ## <a name="template-deployment"></a>模板部署
 
-可使用 Azure 资源管理器模板部署 Azure VM 扩展。
+可使用 Azure Resource Manager 模板部署 Azure VM 扩展。
 部署需要部署后配置的一个或多个虚拟机时，模板是理想选择。
 包含 Windows 的 DSC 扩展的示例资源管理器模板可以在 [Azure 快速入门库](https://github.com/Azure/azure-quickstart-templates/blob/master/101-automation-configuration/nested/provisionServer.json#L91)中找到。
 
 ## <a name="troubleshoot-and-support"></a>故障排除和支持
 
-### <a name="troubleshoot"></a>故障排除
+### <a name="troubleshoot"></a>疑难解答
 
 有关扩展部署状态的数据可以从 Azure 门户和使用 Azure CLI 进行检索。 若要查看给定 VM 的扩展部署状态，请使用 Azure CLI 运行以下命令。
 

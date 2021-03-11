@@ -107,5 +107,5 @@
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-virtual-network'
-    - name: 常见问题
+    - name: 常见问题解答
       href: private-link-faq.md

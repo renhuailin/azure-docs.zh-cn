@@ -280,28 +280,26 @@
           href: ./linux/spot-template.md
         - name: 错误代码
           href: error-codes-spot.md
-    - name: 购买选项
+    - name: Azure 混合权益
       items:
-        - name: Azure 混合权益
+        - name: Linux
+          href: ./linux/azure-hybrid-benefit-linux.md
+        - name: Windows
           items:
-            - name: Linux
-              href: ./linux/azure-hybrid-benefit-linux.md
-            - name: Windows
-              items:
-                - name: 使用 Azure 混合权益许可证
-                  href: ./windows/hybrid-use-benefit-licensing.md
-                - name: 使用用于 Windows 10 的多租户托管权限
-                  href: ./windows/windows-desktop-multitenant-hosting-deployment.md
-        - name: 预留实例
-          items:
-            - name: 为 VM 预付
-              href: ./prepay-reserved-vm-instances.md
-            - name: 为专用主机预付费
-              href: prepay-dedicated-hosts-reserved-instances.md
-            - name: 什么是 Azure 预留？
-              href: ../cost-management-billing/reservations/save-compute-costs-reservations.md?context=/azure/virtual-machines/context/context
-            - name: VM 实例大小灵活性
-              href: reserved-vm-instance-size-flexibility.md
+            - name: 使用 Azure 混合权益许可证
+              href: ./windows/hybrid-use-benefit-licensing.md
+            - name: 使用用于 Windows 10 的多租户托管权限
+              href: ./windows/windows-desktop-multitenant-hosting-deployment.md
+    - name: 预留实例
+      items:
+        - name: 为 VM 预付
+          href: ./prepay-reserved-vm-instances.md
+        - name: 为专用主机预付费
+          href: prepay-dedicated-hosts-reserved-instances.md
+        - name: 什么是 Azure 预留？
+          href: ../cost-management-billing/reservations/save-compute-costs-reservations.md?context=/azure/virtual-machines/context/context
+        - name: VM 实例大小灵活性
+          href: reserved-vm-instance-size-flexibility.md
     - name: 创建 Linux VM
       items:
         - name: 认可的发行版
@@ -783,41 +781,52 @@
           href: ./windows/build-image-with-packer.md
 - name: 可用性和规模
   items:
-    - name: 规模集
-      href: ../virtual-machine-scale-sets/overview.md?context=/azure/virtual-machines/context/context
-    - name: 可用性
+    - name: 概述
       href: availability.md
-    - name: 归置
-      href: co-location.md
-    - name: 网络性能
-      href: ../virtual-network/virtual-network-optimize-network-bandwidth.md?context=/azure/virtual-machines/context/context
-    - name: 状态和生命周期
-      href: states-lifecycle.md
-    - name: 自动缩放
-      href: ../virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-overview.md?context=/azure/virtual-machines/context/context
-    - name: 高可用性
-      href: manage-availability.md
     - name: 可用性集
       items:
-        - name: Linux
+        - name: 概述
+          href: availability-set-overview.md
+        - name: CLI
           href: ./linux/tutorial-availability-sets.md
-        - name: Windows
-          items:
-            - name: 创建可用性集
-              href: ./windows/tutorial-availability-sets.md
-            - name: 更改可用性集
-              href: ./windows/change-availability-set.md
-    - name: 创建邻近放置组
-      displayName: PPG aligned colocation co-location
+        - name: PowerShell
+          href: ./windows/tutorial-availability-sets.md
+        - name: 创建可用性集
+          href: ./windows/change-availability-set.md
+    - name: 可用性区域
       items:
+        - name: 概述
+          href: ../availability-zones/az-overview.md?context=/azure/virtual-machines/context/context
+        - name: CLI
+          href: ./linux/create-cli-availability-zone.md
+        - name: PowerShell
+          href: ./windows/create-powershell-availability-zone.md
+        - name: 门户
+          href: ./windows/create-portal-availability-zone.md
+    - name: 邻近放置组
+      items:
+        - name: 概述
+          href: co-location.md
         - name: CLI
           href: ./linux/proximity-placement-groups.md
-        - name: 门户
-          href: ./windows/proximity-placement-groups-portal.md
         - name: PowerShell
           href: ./windows/proximity-placement-groups.md
-    - name: 在可用性区域中创建 VM
-      href: ./linux/create-cli-availability-zone.md
+        - name: 门户
+          href: ./windows/proximity-placement-groups-portal.md
+    - name: 虚拟机规模集
+      items:
+        - name: 概述
+          href: ../virtual-machine-scale-sets/overview.md?context=/azure/virtual-machines/context/context
+        - name: 自动缩放
+          href: ../virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-overview.md?context=/azure/virtual-machines/context/context
+        - name: 业务流程模式
+          href: ../virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes.md?context=/azure/virtual-machines/context/context
+    - name: 了解 VM 重启
+      href: understand-vm-reboots.md
+    - name: 状态和计费
+      href: states-billing.md
+    - name: Azure 区域
+      href: regions.md
 - name: 磁盘
   items:
     - name: 托管磁盘简介
@@ -1346,7 +1355,7 @@
             - name: 正式版常见问题解答
               href: ../azure-monitor/vm/vminsights-ga-release-faq.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: 常见问题解答
-              href: ../azure-monitor/faq.md
+              href: ../azure-monitor/faq.md?context=/azure/virtual-machines/context/context
             - name: 启用监视
               items:
                 - name: 启用监视概述

@@ -5,12 +5,12 @@ author: georgewallace
 ms.author: gwallace
 ms.date: 11/27/2018
 ms.topic: quickstart
-ms.openlocfilehash: f34034394d2492dba64214c612a239b92f4b9c46
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: c89cc1972a554cac85ce2a258873f6c810e45167
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99625712"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102217714"
 ---
 # <a name="quickstart-deploy-hello-world-to-service-fabric-mesh"></a>快速入门：将 Hello World 部署到 Service Fabric 网格
 
@@ -121,4 +121,4 @@ az group delete --name myResourceGroup
 
 <!-- Links / Internal -->
 [az-group-delete]: /cli/azure/group
-[azure-cli-install]: /cli/azure/install-azure-cli?view=azure-cli-latest
+[azure-cli-install]: /cli/azure/install-azure-cli

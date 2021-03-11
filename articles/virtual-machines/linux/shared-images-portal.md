@@ -3,19 +3,20 @@ title: 使用门户创建共享的 Azure Linux VM 映像
 description: 了解如何使用 Azure 门户创建和共享 Linux 虚拟机映像。
 author: cynthn
 tags: azure-resource-manager
-ms.service: virtual-machines-linux
-ms.subservice: imaging
+ms.service: virtual-machines
+ms.subservice: shared-image-gallery
+ms.collection: linux
 ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 01d095a5506ec0886cdee875b57edbbbeca6fc86
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
-ms.translationtype: MT
+ms.openlocfilehash: 90ed91caa1c4b71ae90b86f5b0783a6d5c1c669e
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878812"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102552790"
 ---
 # <a name="create-a-shared-image-gallery-using-the-portal"></a>使用门户创建共享映像库
 

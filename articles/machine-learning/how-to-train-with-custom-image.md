@@ -10,12 +10,12 @@ author: saachigopal
 ms.date: 10/20/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: ad86ebdbef8bf8c8ec00e54e15b751fd2285ad68
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
-ms.translationtype: MT
+ms.openlocfilehash: 03400173dd35660d6e7a98500b831a7c6aa4ebd7
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98601337"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102521164"
 ---
 # <a name="train-a-model-by-using-a-custom-docker-image"></a>使用自定义 Docker 映像训练模型
 
@@ -32,7 +32,7 @@ Azure 机器学习提供了一个默认的 Docker 基础映像。 你还可以�
   * 在 Azure 机器学习 [示例存储库](https://github.com/Azure/azureml-examples)中，通过导航到以下目录找到一个完整的笔记本：**notebooks** > **fastai** > **train-pets-resnet34.ipynb**。 
 * 你自己的 Jupyter Notebook 服务器：
   * 创建[工作区配置文件](how-to-configure-environment.md#workspace)。
-  * 安装 [Azure 机器学习 SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)。 
+  * 安装 [Azure 机器学习 SDK](/python/api/overview/azure/ml/install)。 
   * 创建可在 Internet 上访问的 [Azure 容器注册表](../container-registry/index.yml)或其他 Docker 注册表。
 
 ## <a name="set-up-a-training-experiment"></a>设置训练试验
@@ -41,7 +41,7 @@ Azure 机器学习提供了一个默认的 Docker 基础映像。 你还可以�
 
 ### <a name="initialize-a-workspace"></a>初始化工作区
 
-[Azure 机器学习工作区](concept-workspace.md)是服务的顶级资源。 它提供了一个集中化位置来处理你创建的所有项目。 在 Python SDK 中，可以通过创建 [`Workspace`](/python/api/azureml-core/azureml.core.workspace.workspace?preserve-view=true&view=azure-ml-py) 对象来访问工作区项目。
+[Azure 机器学习工作区](concept-workspace.md)是服务的顶级资源。 它提供了一个集中化位置来处理你创建的所有项目。 在 Python SDK 中，可以通过创建 [`Workspace`](/python/api/azureml-core/azureml.core.workspace.workspace) 对象来访问工作区项目。
 
 通过作为[先决条件](#prerequisites)创建的 config.json 文件创建一个 `Workspace` 对象。
 
@@ -169,7 +169,7 @@ run.wait_for_completion(show_output=True)
 ```
 
 > [!WARNING]
-> Azure 机器学习通过复制整个源目录来运行训练脚本。 如果你有不想上传的敏感数据，请使用 [.ignore 文件](how-to-save-write-experiment-files.md#storage-limits-of-experiment-snapshots)或不将其包含在源目录中。 请改为使用[数据存储](/python/api/azureml-core/azureml.data?preserve-view=true&view=azure-ml-py)来访问数据。
+> Azure 机器学习通过复制整个源目录来运行训练脚本。 如果你有不想上传的敏感数据，请使用 [.ignore 文件](how-to-save-write-experiment-files.md#storage-limits-of-experiment-snapshots)或不将其包含在源目录中。 请改为使用[数据存储](/python/api/azureml-core/azureml.data)来访问数据。
 
 ## <a name="next-steps"></a>后续步骤
 在本文中，你已使用自定义 Docker 映像训练了一个模型。 有关 Azure 机器学习的详细信息，请参阅下述其他文章：

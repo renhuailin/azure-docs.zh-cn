@@ -8,12 +8,12 @@ ms.date: 10/23/2020
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 123be57566a31d9831bfd0172373d571be2bf294
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: c2121f429b928d58a2df7b4e4663341cf600da3e
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102035163"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102214467"
 ---
 # <a name="quickstart-deploy-your-first-azure-spring-cloud-application"></a>快速入门：部署第一个 Azure Spring Cloud 应用程序
 
@@ -37,7 +37,7 @@ ms.locfileid: "102035163"
 
 * 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * [.NET Core 3.1 SDK](https://dotnet.microsoft.com/download/dotnet-core/3.1)。 Azure Spring Cloud 服务支持 .NET Core 3.1 及更高版本。
-* [Azure CLI 2.0.67 或更高版本](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)。
+* [Azure CLI 2.0.67 或更高版本](/cli/azure/install-azure-cli)。
 * [Git](https://git-scm.com/)。
 
 ## <a name="install-azure-cli-extension"></a>安装 Azure CLI 扩展
@@ -338,9 +338,9 @@ info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
 
 完成本快速入门教程需要：
 
-* [安装 JDK 8](/java/azure/jdk/?preserve-view=true&view=azure-java-stable)
+* [安装 JDK 8](/java/azure/jdk/)
 * [注册 Azure 订阅](https://azure.microsoft.com/free/)
-* （可选）[安装 Azure CLI 版本 2.0.67 或更高版本](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)，并使用以下命令安装 Azure Spring Cloud 扩展：`az extension add --name spring-cloud`
+* （可选）[安装 Azure CLI 版本 2.0.67 或更高版本](/cli/azure/install-azure-cli)，并使用以下命令安装 Azure Spring Cloud 扩展：`az extension add --name spring-cloud`
 * （可选）[安装 Azure Toolkit for IntelliJ](https://plugins.jetbrains.com/plugin/8053-azure-toolkit-for-intellij/) 并[登录](/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in)
 
 ## <a name="generate-a-spring-cloud-project"></a>生成 Spring Cloud 项目

@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 314404ef132c55a783ce4d2d0069eb8a930439a1
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: 7ef3535158c99226da135ad3726266023ac0690f
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101691444"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102509398"
 ---
 # <a name="configure-a-sql-server-always-on-availability-group-across-different-azure-regions"></a>在不同的 Azure 区域中配置 SQL Server Always On 可用性组
 
@@ -86,7 +86,7 @@ ms.locfileid: "101691444"
    - 使用特定于 IP 地址的 TCP 端口探测。
    - 具有特定于同一区域中 SQL Server 的负载均衡规则。  
    - 如果后端池中的虚拟机不是单个可用性集或虚拟机规模集的一部分，则为标准负载均衡器。 有关其他信息，请查看 [Azure 负载均衡器标准概述](../../../load-balancer/load-balancer-overview.md)。
-   - 如果两个不同区域中的两个虚拟网络对等互连于全局 VNet 对等互连，则为标准负载均衡器。 有关详细信息，请参阅 [Azure 虚拟网络常见问题 (FAQ) ](../../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)。
+   - 如果两个不同区域的两个虚拟网络通过全局 VNet 对等互连进行对等互连，则为标准负载均衡器。 有关详细信息，请参阅 [Azure 虚拟网络常见问题解答 (FAQ)](../../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)。
 
 1. [向新的 SQL Server 添加故障转移群集功能](availability-group-manually-configure-prerequisites-tutorial.md#add-failover-clustering-features-to-both-sql-server-vms)。
 
@@ -204,4 +204,4 @@ ms.locfileid: "101691444"
 * [Always On 可用性组](/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server)
 * [Azure 虚拟机](../../../virtual-machines/index.yml)
 * [Azure 负载均衡器](availability-group-manually-configure-tutorial.md#configure-internal-load-balancer)
-* [Azure 可用性集](../../../virtual-machines/manage-availability.md)
+* [Azure 可用性集](../../../virtual-machines/availability.md)

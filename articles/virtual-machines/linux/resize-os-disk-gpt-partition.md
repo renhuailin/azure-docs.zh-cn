@@ -1,25 +1,26 @@
 ---
 title: 调整具有 GPT 分区的 OS 磁盘的大小
 description: 本文提供了有关如何调整 Linux 中具有 GUID 分区表 (GPT) 分区的 OS 磁盘大小的说明。
-services: virtual-machines-linux
-documentationcenter: ''
+services: virtual-machines
+ms.topic: article
 author: kailashmsft
 manager: dcscontentpm
 editor: ''
 tags: ''
-ms.service: security
-ms.topic: troubleshooting
+ms.service: virtual-machines
+ms.subservice: disks
+ms.collection: linux
 ms.workload: infrastructure-services
 ms.devlang: azurecli
 ms.date: 05/03/2020
 ms.author: kaib
 ms.custom: seodec18
-ms.openlocfilehash: ab83a3b11aebdc9fed450410aa1f9bee2d25c4bb
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
-ms.translationtype: MT
+ms.openlocfilehash: 46b6ceff74dd3a296d26cc018b380c1c3f76664c
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97900665"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102552943"
 ---
 # <a name="resize-an-os-disk-that-has-a-gpt-partition"></a>调整具有 GPT 分区的 OS 磁盘的大小
 
@@ -292,9 +293,9 @@ user@myvm:~#
    1. 从门户增加 OS 磁盘的大小。
    1. 启动 VM。
 
-1. VM 重新启动后，请完成以下步骤：
+1. 重启 VM 后，请完成以下步骤：
 
-   - 安装 **utils-growpart** 包以提供 **growpart** 命令，该命令是增加 OS 磁盘大小和 GPT 磁盘布局的 gdisk 处理程序所必需的。 这些包预装在大多数 marketplace 映像上。
+   - 安装 cloud-utils-growpart 包以提供 growpart 命令。若要增加 OS 磁盘大小或用于 GPT 磁盘布局的 gdisk 处理程序，必须使用该命令。 大多数市场映像上都预安装了这些包。
 
    ```bash
    [root@dd-rhel7vm ~]# yum install cloud-utils-growpart gdisk
@@ -428,26 +429,26 @@ user@myvm:~#
     gdisk -l /dev/sda
     ```
 
-1. 你将看到通知分区类型的详细信息。 确保它是 GPT。 标识根分区。 请勿更改或删除启动分区 (BIOS 启动分区) 和系统分区 ( "EFI 系统分区" ) 
+1. 你会看到表明分区类型的详细信息。 请确保它是 GPT。 标识根分区。 请勿更改或删除启动分区（BIOS 启动分区）和系统分区（EFI 系统分区）。
 
-1. 使用以下命令首次启动分区。 
+1. 第一次请使用以下命令启动分区。 
     ```
     gdisk /dev/sda
     ```
 
-1. 现在，你将看到一条消息，要求下一个命令 ( "命令：？ 获取帮助 ") 。 
+1. 现在，你会看到要求提供下一个命令的消息 ('Command: ? for help')。 
 
    ```
    w
    ```
 
-1. 您将收到一条警告，指出 "Warning！ 磁盘上的辅助标头太早放置了！ 是否要更正此问题？  (Y/N) ： "。 必须按 "Y"
+1. 你会收到一个警告，指出“Warning！ Secondary header is placed too early on the disk! Do you want to correct this problem? (Y/N):”。 你必须按“Y”
 
    ```
    Y
    ```
 
-1. 应该会看到一条消息，通知最终检查已完成并要求确认。 按 "Y"
+1. 你应该会看到一条消息，指出已完成最终检查并要求你进行确认。 按“Y”
 
    ```
    Y
@@ -459,31 +460,31 @@ user@myvm:~#
    partprobe
    ```
 
-1. 上述步骤确保将辅助 GPT 标头置于结尾。 下一步是再次使用 gdisk 工具开始调整大小的过程。 使用以下命令。
+1. 上述步骤确保将辅助 GPT 标头置于末尾。 接下来，再次使用 gdisk 工具开始重设大小的过程。 使用以下命令。
 
    ```
    gdisk /dev/sda
    ```
-1. 在 "命令" 菜单中，按 "p" 查看分区列表。  (在步骤中标识根分区，将 sda2 视为根分区) 并且步骤中 (启动分区，sda3 被视为启动分区)  
+1. 在命令菜单中，按“p”以查看分区列表。 识别根分区（在步骤中，sda2 被视为根分区）和启动分区（在步骤中，sda3 被视为启动分区） 
 
    ```
    p
    ```
     ![根分区和启动分区](./media/resize-os-disk-rhelraw/resize-os-disk-rhelraw1.png)
 
-1. 按 "d" 删除分区，并选择分配给 boot (的分区号，在本示例中为 "3" ) 
+1. 按“d”以删除分区，并选择分配给启动分区的分区号（在本例中为“3”）
    ```
    d
    3
    ```
-1. 按 "d" 删除分区，并选择分配给 boot (的分区号，在本示例中为 "2" ) 
+1. 按“d”以删除分区，并选择分配给启动分区的分区号（在本例中为“2”）
    ```
    d
    2
    ```
     ![删除根分区和启动分区](./media/resize-os-disk-rhelraw/resize-os-disk-rhelraw2.png)
 
-1. 若要重新创建大小增加的根分区，请按 "n"，输入以前为此) 示例的根 ( "2" 删除的分区号，并选择第一个扇区为 "默认值"，最后一个扇区作为 "最后一个扇区值-启动大小扇区" ( "4096"，这种情况下，对应于 2MB boot) ，16个8300代码
+1. 若要重新创建大小增加的根分区，请按“n”，为根分区输入你之前删除的分区号（本示例为“2”），为“第一个扇区”选择“默认值”，为“最后一个扇区”选择“最后一个扇区值 - 启动大小扇区”（在本例中为 4096，对应于 2MB 启动分区），将十六进制代码指定为“8300”
    ```
    n
    2
@@ -491,7 +492,7 @@ user@myvm:~#
    (Calculateed value of Last sector value - 4096)
    8300
    ```
-1. 若要重新创建启动分区，请按 "n"，为此示例输入先前为启动 ( "3" 删除的分区号) 并选择第一个扇区作为 "默认值"，将最后一个扇区作为 "默认值"，将十六进制代码选为 "EF02"
+1. 若要重新创建启动分区，请按“n”，为启动分区输入你之前删除的分区号（本示例为“3”），为“第一个扇区”选择“默认值”，为“最后一个扇区”选择“默认值”，将十六进制代码指定为“EF02”
    ```
    n
    3
@@ -500,31 +501,31 @@ user@myvm:~#
    EF02
    ```
 
-1. 用 "w" 命令编写更改，然后按 "Y" 确认
+1. 使用“w”命令写入更改，按“Y”进行确认
    ```
    w
    Y
    ```
-1. 运行命令 ' partprobe ' 检查磁盘稳定性
+1. 运行“partprobe”命令来检查磁盘稳定性
    ```
    partprobe
    ```
-1. 重新启动 VM，根分区大小会增加
+1. 重启 VM，根分区大小会增大
    ```
    reboot
    ```
 
-   ![新建根分区和启动分区](./media/resize-os-disk-rhelraw/resize-os-disk-rhelraw3.png)
+   ![新的根分区和启动分区](./media/resize-os-disk-rhelraw/resize-os-disk-rhelraw3.png)
 
-1. 在分区上运行 xfs_growfs 命令以调整其大小
+1. 在分区上运行 xfs_growfs 命令以重设其大小
    ```
    xfs_growfs /dev/sda2
    ```
 
-   ![XFS 增长 FS](./media/resize-os-disk-rhelraw/resize-os-disk-rhelraw4.png)
+   ![XFS Grow FS](./media/resize-os-disk-rhelraw/resize-os-disk-rhelraw4.png)
 
 
-1. 验证是否使用 **df** 命令反映了新大小：
+1. 使用 df 命令验证新大小是否已反映出来：
 
    ```bash
    [root@vm-dd-cent7 ~]# df -hl

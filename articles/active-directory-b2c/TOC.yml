@@ -237,7 +237,7 @@
         - name: 配置条件访问
           href: conditional-access-user-flow.md
     - name: 配置年龄限制
-      href: basic-age-gating.md
+      href: age-gating.md
     - name: API 连接器（预览版）
       items:
         - name: 概述
@@ -291,7 +291,7 @@
                 - name: ClaimsTransformations
                   href: claimstransformations.md
                   items:
-                    - name: 布尔
+                    - name: Boolean
                       href: boolean-transformations.md
                     - name: Date
                       href: date-transformations.md
@@ -307,7 +307,7 @@
                       href: social-transformations.md
                     - name: StringCollection
                       href: stringcollection-transformations.md
-                    - name: String
+                    - name: 字符串
                       href: string-transformations.md
                 - name: 谓词
                   href: predicates.md

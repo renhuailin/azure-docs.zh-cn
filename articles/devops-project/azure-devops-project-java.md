@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 03/24/2020
 ms.author: mlearned
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 077730d63d388566bd842a4ba185bd5fd6637043
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: d76c4206ca39518c3a09d27ee470c05db108ae6d
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97588992"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102551875"
 ---
 # <a name="set-up-a-cicd-pipeline-for-a-java-app-with-azure-devops-starter"></a>使用 Azure DevOps Starter 为 Java 应用设置 CI/CD 管道
 
@@ -120,7 +120,7 @@ DevOps 入门版将在 Azure Repos 或 GitHub 中创建一个 Git 存储库。 �
 
 1. 选择“提交”。 此视图显示与特定部署相关联的代码提交。 
 
-1. 选择“日志”。 日志包含有关部署过程的有用信息。 日志可以在部署过程中以及部署以后查看。
+1. 选择“日志”。  日志包含有关部署过程的有用信息。 日志可以在部署过程中以及部署以后查看。
 
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -131,4 +131,4 @@ DevOps 入门版将在 Azure Repos 或 GitHub 中创建一个 Git 存储库。 �
 当你配置 CI/CD 过程时，系统自动创建了生成和发布管道。 可以根据你的团队的需求修改这些生成和发布管道。 若要详细了解 CI/CD 管道，请参阅：
 
 > [!div class="nextstepaction"]
-> [自定义 CD 过程](/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)
+> [自定义 CD 过程](/azure/devops/pipelines/release/define-multistage-release-process)

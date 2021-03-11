@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 08/20/2020
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: 987b56eb1b258e1c5f2fd7d5bcfdd0e95f6c0730
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
-ms.translationtype: MT
+ms.openlocfilehash: dc1954c97da0d7f40deaf0f4efa7ca99793107bb
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100091663"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102503685"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Azure 机器学习的工作原理：体系结构和概念
 
@@ -102,7 +102,7 @@ Azure 机器学习在试验中记录所有运行并存储以下信息：
 
 [工作区](#workspace) > [试验](#experiments) > [运行](#runs) > **运行配置**
 
-运行配置对应该如何在指定的计算目标中运行脚本进行定义。 可以使用配置来指定脚本、要在其上运行的计算目标和 Azure ML 环境、任何特定于分布式作业的配置以及一些其他属性。 有关运行的全套可配置选项的详细信息，请参阅 [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py)。
+运行配置对应该如何在指定的计算目标中运行脚本进行定义。 可以使用配置来指定脚本、要在其上运行的计算目标和 Azure ML 环境、任何特定于分布式作业的配置以及一些其他属性。 有关运行的全套可配置选项的详细信息，请参阅 [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig)。
 
 运行配置可以保存到包含训练脚本的目录内的文件中，   或构造为内存中对象以及用于提交运行。
 
@@ -282,7 +282,7 @@ Azure 机器学习提供以下监视和日志记录功能：
 > 下面标记了“（预览版）”的工具目前为公共预览版。
 > 该预览版在提供时没有附带服务级别协议，建议不要将其用于生产工作负载。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-+  使用[适用于 Python 的 Azure 机器学习 SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) 来与任何 Python 环境中的服务交互。
++  使用[适用于 Python 的 Azure 机器学习 SDK](/python/api/overview/azure/ml/intro) 来与任何 Python 环境中的服务交互。
 + 使用[适用于 R 的 Azure 机器学习 SDK](https://azure.github.io/azureml-sdk-for-r/reference/index.html)（预览版）与任何 R 环境中的服务交互。
 + 使用 [Azure 机器学习设计器](concept-designer.md)执行工作流步骤，无需编写代码。 
 + 使用 [Azure 机器学习 CLI](./reference-azure-machine-learning-cli.md) 实现自动化。
