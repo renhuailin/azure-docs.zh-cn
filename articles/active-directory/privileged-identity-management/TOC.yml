@@ -126,10 +126,10 @@
 - name: 参考
   items:
     - name: 图形 API
-      href: /graph/api/resources/azure-ad-overview?view=graph-rest-1.0
+      href: /graph/api/resources/azure-ad-overview
     - name: Azure AD CLI
       href: /cli/azure/ad
     - name: 用于 Graph 的 Azure AD PowerShell
-      href: /powershell/azure/active-directory/install-adv2?view=azureadps-2.0
+      href: /powershell/azure/active-directory/install-adv2
     - name: Azure AD 服务限制
       href: ../users-groups-roles/directory-service-limits-restrictions.md

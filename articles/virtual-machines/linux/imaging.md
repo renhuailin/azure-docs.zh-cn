@@ -2,19 +2,20 @@
 title: 概述 - 创建适用于 Azure 的 Linux 映像
 description: 如何将 Linux VM 映像引入到 Azure 或新建映像以在 Azure 中使用。
 author: danielsollondon
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.subservice: imaging
+ms.collection: linux
 ms.topic: overview
 ms.workload: infrastructure
 ms.date: 06/22/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 223fdc215bc391bea5cad5d4cb9999b9d14ba570
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: a77c2bc69418b821933c0b62674500f7a32e40a5
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878776"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102565200"
 ---
 # <a name="bringing-and-creating-linux-images-in-azure"></a>在 Azure 中引入和创建 Linux 映像
 

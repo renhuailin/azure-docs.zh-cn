@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/24/2020
 author: mlearned
 ms.custom: devx-track-js
-ms.openlocfilehash: de98d9db515e4ed88759efa7f22dddcca06151c8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d1bdae976d5e5b7d98311d33bb38b5035f2557ca
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91854675"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102548693"
 ---
 # <a name="deploy-nodejs-apps-powered-by-azure-cosmos-db-with-devops-starter"></a>使用 DevOps Starter 部署受 Azure Cosmos DB 支持的 Node.js 应用
 
@@ -144,7 +144,7 @@ DevOps Starter 会自动创建并配置从 Azure DevOps 组织部署到 Azure �
 
 1. 存储库已包含的代码基于在创建过程中选择的应用程序语言。 打开 **Application/views/index.pug** 文件。
 
-1. 选择“编辑”，然后对**第 15 行**进行更改。 例如，可将它更改为“我的第一个目标为 Azure Cosmos DB 支持的 Azure 应用服务的部署”。
+1. 选择“编辑”，然后对 **第 15 行** 进行更改。 例如，可将它更改为“我的第一个目标为 Azure Cosmos DB 支持的 Azure 应用服务的部署”。
 
 1. 在右上角选择“提交”，然后再次选择“提交”以推送更改。 
 
@@ -167,4 +167,4 @@ DevOps Starter 会自动创建并配置从 Azure DevOps 组织部署到 Azure �
 > * 提交对 Git 所做的更改并将其自动部署到 Azure
 > * 清理资源
 
-有关详细信息和后续步骤, 请参阅[定义多阶段持续部署 (CD) 管道](/azure/devops/pipelines/release/define-multistage-release-process?view=azure-devops&viewFallbackFrom=vsts)。
+有关详细信息和后续步骤, 请参阅[定义多阶段持续部署 (CD) 管道](/azure/devops/pipelines/release/define-multistage-release-process)。

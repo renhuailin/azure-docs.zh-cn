@@ -3,20 +3,21 @@ title: 使用 CLI 对 Azure 虚拟机进行维护控制
 description: 了解如何使用维护控制和 CLI 来控制对 Azure VM 应用维护的时间。
 author: cynthn
 ms.service: virtual-machines
+ms.subservice: maintenance-control
 ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 11/20/2020
 ms.author: cynthn
-ms.openlocfilehash: d94cd649df9da6b36ac484d4fc1e6acef7a21bb7
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
-ms.translationtype: MT
+ms.openlocfilehash: 9425759de1e08bc83cac80cd1b56c602edb59fb1
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95026159"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102562956"
 ---
 # <a name="control-updates-with-maintenance-control-and-the-azure-cli"></a>使用维护控制和 Azure CLI 来控制更新
 
-维护控制允许您决定何时将平台更新应用于隔离 Vm 和 Azure 专用主机的主机基础结构。 本主题介绍维护控制的 Azure CLI 选项。 有关使用维护控制的好处、其限制和其他管理选项的详细信息，请参阅[使用维护控制管理平台更新](maintenance-control.md)。
+利用维护控制，你可以决定何时为隔离的 VM 和 Azure 专用主机的主机基础结构应用平台更新。 本主题介绍维护控制的 Azure CLI 选项。 有关使用维护控制的好处、其限制和其他管理选项的详细信息，请参阅[使用维护控制管理平台更新](maintenance-control.md)。
 
 ## <a name="create-a-maintenance-configuration"></a>创建维护配置
 
@@ -35,9 +36,9 @@ az maintenance configuration create \
 
 复制输出中的配置 ID 供以后使用。
 
-使用 `--maintenance-scope host` 可确保将维护配置用于控制主机基础结构的更新。
+使用 `--maintenance-scope host` 可确保使用维护配置来控制对主机基础结构的更新。
 
-如果尝试创建同名的但位于不同位置的配置，则会收到错误。 配置名称在资源组中必须是唯一的。
+如果尝试创建同名的但位于不同位置的配置，则会收到错误。 配置名称对于资源组必须是唯一的。
 
 可以使用 `az maintenance configuration list` 来查询可用的维护配置。
 
@@ -45,8 +46,8 @@ az maintenance configuration create \
 az maintenance configuration list --query "[].{Name:name, ID:id}" -o table 
 ```
 
-### <a name="create-a-maintenance-configuration-with-scheduled-window"></a>使用计划的窗口创建维护配置
-你还可以在 Azure 将对资源应用更新时声明计划的窗口。 此示例将创建一个名为 Myconfig.xml 的维护配置，其中每个月的第四个星期一的计划窗口为5小时。 创建计划的窗口后，不再需要手动应用更新。
+### <a name="create-a-maintenance-configuration-with-scheduled-window"></a>创建具有计划时段的维护配置
+你也可以声明一个 Azure 将用于在资源上应用更新的计划时段。 本示例创建名为 myConfig 的维护配置，该配置的计划时段为每月第四个星期一的 5 个小时。 在创建计划时段后，不再需要手动应用更新。
 
 ```azurecli-interactive
 az maintenance configuration create \
@@ -61,12 +62,12 @@ az maintenance configuration create \
 ```
 
 > [!IMPORTANT]
-> 维护 **持续时间** 必须是 *2 小时* 或更长时间。 在35天内，必须至少将维护 **重复** 设置为一次。
+> 维护持续时间必须为 2 小时或更长时间。 维护重复周期必须设置为至少 35 天内发生一次。
 
-可以按每日、每周或每月来表示维护定期。 一些示例如下：
-- **每日** 维护时间-每隔一天： "Day" **或** "3Days"
-- **每周**-维护-每隔一天： "3Weeks" **或** "Week，星期日"
-- **每月**-维护-时间间隔-每隔： "month day23，day24" **或** "month 上月上月" **或** "month 第四个月"
+维护重复周期可以表示为每日、每周或每月。 下面是一些示例：
+- 每日 - maintenance-window-recur-every："Day" 或 "3Days"
+- 每周 - maintenance-window-recur-every："3Weeks" 或 "Week Saturday,Sunday"
+- 每月 - maintenance-window-recur-every："Month day23,day24" 或 "Month Last Sunday" 或 "Month Fourth Monday" 
 
 
 ## <a name="assign-the-configuration"></a>分配配置

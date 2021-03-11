@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 11/09/2020
+ms.date: 03/08/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 81a1263d0eacbffa77e2e35e4594e23235394183
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
-ms.translationtype: MT
+ms.openlocfilehash: e867fee753fb9db530db2b2015c3aea9280bc16f
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97108665"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102448638"
 ---
 # <a name="localization-string-ids"></a>本地化字符串 ID
 
@@ -40,7 +40,7 @@ Localization 元素使你能够在用户旅程的策略中支持多个区域设�
 | **logonIdentifier_email** | 电子邮件地址 | `< 2.0.0` |
 | **requiredField_email** | 请输入电子邮件地址 | `< 2.0.0` |
 | **invalid_email** | 请输入有效的电子邮件地址 | `< 2.0.0` |
-| **email_pattern** | ^ [A-za-z0-9.！# $% & "" \* +/=？ ^ \_ \` { \| } ~-] + @ [a-za-z0-9-] + (？： \\ . [-zA-A-za-z0-9-] +) \* $ |`< 2.0.0` |
+| **email_pattern** | ^[a-zA-Z0-9.!#$%&''\*+/=?^\_\`{\|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)\*$ | `< 2.0.0` |
 | **local_intro_username** | 使用用户名登录 | `< 2.0.0` |
 | **logonIdentifier_username** | 用户名 | `< 2.0.0` |
 | **requiredField_username** | 请输入用户名 | `< 2.0.0` |
@@ -50,21 +50,21 @@ Localization 元素使你能够在用户旅程的策略中支持多个区域设�
 | **cancel_message** | 用户忘记了密码 | `< 2.0.0` |
 | **invalid_password** | 你输入的密码格式不正确。 | `< 2.0.0` |
 | **createaccount_one_link** | 立即注册 | `>= 2.0.0` |
-| **createaccount_two_links** | 注册 {0} 或 {1} | `>= 2.0.0` |
-| **createaccount_three_links** | 注册 {0} 、 {1} 或 {2} | `>= 2.0.0` |
-| **local_intro_generic** | 登录 {0} | `>= 2.1.0` |
-| **requiredField_generic** | 请输入 {0} | `>= 2.1.0` |
+| **createaccount_two_links** | 使用 {0} 或 {1} 注册 | `>= 2.0.0` |
+| **createaccount_three_links** | 使用 {0}、{1} 或 {2} 注册 | `>= 2.0.0` |
+| **local_intro_generic** | 使用 {0} 登录 | `>= 2.1.0` |
+| **requiredField_generic** | 请输入你的 {0} | `>= 2.1.0` |
 | **invalid_generic** | 请输入有效的 {0} | `>= 2.1.1` |
-| **目** | 登录 | `>= 2.1.1` |
+| **heading** | 登录 | `>= 2.1.1` |
 
 
 > [!NOTE]
-> * 如的占位符 {0} 将自动填充为的 `DisplayName` 值 `ClaimType` 。 
-> * 若要了解如何进行本地化 `ClaimType` ，请参阅 [注册或登录示例](#signupsigninexample)。
+> * 将自动使用 `ClaimType` 的 `DisplayName` 值填充 {0} 之类的占位符。 
+> * 若要了解如何本地化 `ClaimType`，请参阅[注册或登录示例](#signupsigninexample)。
 
 下面的示例演示如何在注册或登录页中使用某些用户界面元素：
 
-:::image type="content" source="./media/localization-string-ids/localization-susi-2.png" alt-text="屏幕截图，显示注册或登录页 U X 元素。":::
+:::image type="content" source="./media/localization-string-ids/localization-susi-2.png" alt-text="显示注册或登录页 UX 元素的屏幕截图。":::
 
 ### <a name="sign-up-or-sign-in-identity-providers"></a>注册或登录标识提供者
 
@@ -357,7 +357,7 @@ Localization 元素使你能够在用户旅程的策略中支持多个区域设�
 | ID | 默认值 |
 | -- | ------------- |
 |intro_msg| 验证是必需的。 请单击“发送”按钮。|
-|success_send_code_msg | 验证码已发送到收件箱。 请将其复制到下面的输入框。|
+|success_send_code_msg | 已发送验证码。 请将其复制到下面的输入框。|
 |failure_send_code_msg | 我们无法验证你的电子邮件地址。 请输入有效的电子邮件地址，然后重试。|
 |success_verify_code_msg | 已验证电子邮件地址。 现在可以继续。|
 |failure_verify_code_msg | 我们无法验证你的电子邮件地址。 请重试。|
@@ -442,7 +442,7 @@ Localization 元素使你能够在用户旅程的策略中支持多个区域设�
 
 ## <a name="azure-ad-mfa-error-messages"></a>Azure AD MFA 错误消息
 
-下面是 [AZURE AD MFA 技术配置文件](multi-factor-auth-technical-profile.md) 的 id 错误消息：
+以下是 [Azure AD MFA 技术配置文件](multi-factor-auth-technical-profile.md)错误消息的 ID：
 
 | ID | 默认值 |
 | -- | ------------- |

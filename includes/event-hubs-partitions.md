@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/05/2021
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 780da47e6f071d854a16ca1d1c5cd02dbdd6bef0
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: f6bd0c13d5cbad802613e2bdea8fd6002f4deea2
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955632"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102444527"
 ---
 事件中心将事件序列组织到一个或多个分区中。 当较新的事件到达时，它们将添加到此序列的末尾。 可以将分区视为“提交日志”。
 
@@ -57,4 +57,3 @@ ms.locfileid: "97955632"
 
 虽然可以直接发送分区，但不建议这样做。 而应使用[事件发布者](../articles/event-hubs/event-hubs-features.md#event-publishers)部分介绍的更高级构造。 
 
-如需详细了解分区以及如何在可用性和可靠性之间进行取舍，请参阅[事件中心编程指南](../articles/event-hubs/event-hubs-programming-guide.md#partition-key)和[事件中心中的可用性和一致性](../articles/event-hubs/event-hubs-availability-and-consistency.md)这两篇文章。

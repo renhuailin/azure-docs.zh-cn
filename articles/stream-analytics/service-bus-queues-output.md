@@ -6,12 +6,12 @@ ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 9f71a0f9c6d3fdca4b81be3a69479c78236fcc31
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
-ms.translationtype: MT
+ms.openlocfilehash: ad5bb90a0df68cc6c1c230c234c1f695312da3d8
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98014206"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102451773"
 ---
 # <a name="service-bus-queues-output-from-azure-stream-analytics"></a>服务总线队列：Azure 流分析输出
 
@@ -69,9 +69,9 @@ ms.locfileid: "98014206"
 
 ## <a name="system-properties"></a>系统属性
 
-可以将查询列作为[系统属性](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet&preserve-view=true#properties)附加到传出的服务总线队列或主题消息。
+可以将查询列作为[系统属性](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#properties)附加到传出的服务总线队列或主题消息。
 
-这些列不会进入有效负载，而是将查询列值填充到相应的 BrokeredMessage [系统属性](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet&preserve-view=true#properties)中。
+这些列不会进入有效负载，而是将查询列值填充到相应的 BrokeredMessage [系统属性](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#properties)中。
 支持这些系统属性 - `MessageId, ContentType, Label, PartitionKey, ReplyTo, SessionId, CorrelationId, To, ForcePersistence, TimeToLive, ScheduledEnqueueTimeUtc`。
 
 这些列的字符串值将分析成相应的系统属性值类型，任何分析失败将被视为数据错误。

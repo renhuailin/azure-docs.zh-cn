@@ -6,12 +6,12 @@ ms.author: chugu
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 4/15/2020
-ms.openlocfilehash: c268dba51ecf2c2b246c54574ecf3838533b017e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: 62bd5d2e70d3a66998907305fecee4dcc87cdb23
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101710203"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102451721"
 ---
 # <a name="use-azure-sql-managed-instance-with-sql-server-integration-services-ssis-in-azure-data-factory"></a>在 Azure 数据工厂中结合使用 Azure SQL 托管实例和 SQL Server Integration Services (SSIS)
 
@@ -39,7 +39,7 @@ ms.locfileid: "101710203"
             - 与托管实例位于相同的虚拟网络中，但位于不同的子网。
             - 与托管实例位于不同的虚拟网络中，使用虚拟网络对等互连（由于全局 VNet 对等互联约束，这仅限于相同的区域）或从虚拟网络到虚拟网络的连接。
 
-            若要详细了解 SQL 托管实例连接性，请参阅[将应用程序连接到 Azure SQL 托管实例](https://review.docs.microsoft.com/azure/sql-database/sql-database-managed-instance-connect-app)。
+            若要详细了解 SQL 托管实例连接性，请参阅[将应用程序连接到 Azure SQL 托管实例](/azure/sql-database/sql-database-managed-instance-connect-app)。
 
         1. [配置虚拟网络](#configure-virtual-network)。
 

@@ -4,18 +4,18 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: 9a9f8fdda1bc853057f3eb858e85b938357397cd
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 778255dc7259bd66a7c7059ede855464c1e39569
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94886088"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102444602"
 ---
 ## <a name="prerequisites"></a>先决条件
 
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/dotnet/)。
 - 适用于你的操作系统的最新版本 [.NET Core 客户端库](https://dotnet.microsoft.com/download/dotnet-core)。
-- 获取最新版本的 [.NET Identity 客户端库](/dotnet/api/azure.identity?view=azure-dotnet)。
+- 获取最新版本的 [.NET Identity 客户端库](/dotnet/api/azure.identity)。
 - 获取最新版本的 [.NET Management 客户端库](../../concepts/sdk-options.md)。
 
 ## <a name="installing-the-client-library"></a>安装客户端库

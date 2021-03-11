@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/09/2020
 ms.author: mlottner
-ms.openlocfilehash: 9367cf4324d577e4dd44cb9294a8b82b1bceaf74
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
-ms.translationtype: MT
+ms.openlocfilehash: 7be6cf1df15d7afd7cb9447be68ff70ff7b14d03
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100522947"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102449214"
 ---
 # <a name="security-agent-troubleshoot-guide-linux"></a>安全代理故障排除指南 (Linux)
 
@@ -28,10 +28,9 @@ ms.locfileid: "100522947"
 
 本故障排除指南介绍如何：
 
-> [!div class="checklist"]
-> * 验证安全代理是否正在运行
-> * 获取安全代理错误
-> * 了解并修正安全代理错误
+- 验证安全代理是否正在运行
+- 获取安全代理错误
+- 了解并修正安全代理错误
 
 ## <a name="validate-if-the-security-agent-is-running"></a>验证安全代理是否正在运行
 
@@ -108,4 +107,10 @@ Defender for IoT agent encountered an error! Error in: {Error Code}, reason: {Er
 
 ## <a name="next-steps"></a>后续步骤
 
-阅读用于 IoT 的 Defender 服务[概述](overview.md)了解有关用于 Iot[体系结构](architecture.md)的 defender 的详细信息启用用于 iot 的 defender[服务](quickstart-onboard-iot-hub.md)[了解如何](resources-frequently-asked-questions.md)访问[原始安全数据](how-to-security-data-access.md)了解[建议](concept-recommendations.md)了解安全[警报](concept-security-alerts.md)
+- 阅读 Defender for IoT 服务[概述](overview.md)
+- 详细了解 Defender for IoT [体系结构](architecture.md)
+- 启用 Defender for IoT [服务](quickstart-onboard-iot-hub.md)
+- 阅读 Defender for IoT 服务[常见问题解答](resources-frequently-asked-questions.md)
+- 了解如何访问[原始安全数据](how-to-security-data-access.md)
+- 了解[建议](concept-recommendations.md)
+- 了解安全[警报](concept-security-alerts.md)

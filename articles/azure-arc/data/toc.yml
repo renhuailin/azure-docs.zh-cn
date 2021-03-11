@@ -152,7 +152,7 @@
           items:
             - name: 将 PostgreSQL 数据迁移到 Postgres 超大规模服务器组
               href: migrate-postgresql-data-into-postgresql-hyperscale-server-group.md
-            - name: 还原示例数据库 AdventureWorks
+            - name: 导入示例数据库 AdventureWorks
               href: restore-adventureworks-sample-db-into-postgresql-hyperscale-server-group.md
         - name: 故障排除
           href: troubleshoot-postgresql-hyperscale-server-group.md

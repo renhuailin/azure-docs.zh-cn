@@ -14,12 +14,12 @@ ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 03/18/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c0771864229c8a3918da076de48fb6e033d2cf5a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: 73c19b72c75d9638213f3c813a708a272cbe2a1b
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89018172"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102452333"
 ---
 # <a name="export-and-import-azure-notification-hubs-registrations-in-bulk"></a>批量导出和导入 Azure 通知中心注册
 
@@ -127,7 +127,7 @@ while (i > 0 && job.Status != NotificationHubJobStatus.Completed)
 - `ImportUpdateRegistrations`
 - `ImportDeleteRegistrations`
 
-完成调用后，通知中心会继续运行该作业，可以通过调用 [GetNotificationHubJobAsync](/dotnet/api/microsoft.azure.notificationhubs.notificationhubclient.getnotificationhubjobasync?view=azure-dotnet) 来检查作业状态。
+完成调用后，通知中心会继续运行该作业，可以通过调用 [GetNotificationHubJobAsync](/dotnet/api/microsoft.azure.notificationhubs.notificationhubclient.getnotificationhubjobasync) 来检查作业状态。
 
 完成该作业后，可以通过查看输出目录中的以下文件来检查结果：
 

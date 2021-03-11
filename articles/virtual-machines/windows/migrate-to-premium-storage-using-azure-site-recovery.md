@@ -2,17 +2,18 @@
 title: 使用 Azure Site Recovery 将 Windows VM 迁移到 Azure 高级存储
 description: 了解如何使用 Azure Site Recovery 将 VM 磁盘从标准存储帐户迁移到高级存储帐户。
 author: luywang
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.collection: windows
 ms.topic: how-to
 ms.date: 08/15/2017
 ms.author: luywang
 ms.subservice: disks
-ms.openlocfilehash: 58d4459e1869a9d1f7ccb8234c0356ac486a950c
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
-ms.translationtype: MT
+ms.openlocfilehash: aeb8028468a1e1944a4fd39275f134bfae00dfa3
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91975546"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102555340"
 ---
 # <a name="migrate-to-premium-storage-by-using-azure-site-recovery"></a>使用 Azure Site Recovery 迁移到高级存储
 
@@ -32,7 +33,7 @@ Site Recovery 支持多种类型的、停机时间极短或不造成停机的故
 
 这些是与此迁移方案相关的 Site Recovery 组件。
 
-* **配置服务器**是用于协调通信以及管理数据复制和恢复过程的 Azure VM。 在此 VM 上运行单个安装程序文件来安装配置服务器，以及一个称作进程服务器、用作复制网关的附加组件。 请阅读[配置服务器必备组件](../../site-recovery/vmware-azure-tutorial.md)。 配置服务器只需设置一次，在迁移到同一区域的所有过程中都可以使用它。
+* **配置服务器** 是用于协调通信以及管理数据复制和恢复过程的 Azure VM。 在此 VM 上运行单个安装程序文件来安装配置服务器，以及一个称作进程服务器、用作复制网关的附加组件。 请阅读[配置服务器必备组件](../../site-recovery/vmware-azure-tutorial.md)。 配置服务器只需设置一次，在迁移到同一区域的所有过程中都可以使用它。
 
 * 进程服务器是一种复制网关，其职能包括： 
 
@@ -112,7 +113,7 @@ Site Recovery 支持多种类型的、停机时间极短或不造成停机的故
 
       ![注册页][7]
 
-   3. 在“环境详细信息”中，选择是否要复制 VMware VM。 对于此迁移方案，请选择“否”。
+   3. 在“环境详细信息”中，选择是否要复制 VMware VM。  对于此迁移方案，请选择“否”。
 
       ![环境详细信息页][8]
 
@@ -129,7 +130,7 @@ Site Recovery 支持多种类型的、停机时间极短或不造成停机的故
 
 ![“目标”窗格][10]
 
-Site Recovery 会检查是否有一个或多个兼容的 Azure 存储帐户和网络。 
+Site Recovery 检查是否有一个或多个兼容的 Azure 存储帐户和网络。 
 
 > [!NOTE]
 > 如果使用高级存储帐户保存复制的数据，则需要设置附加的标准存储帐户来存储复制日志。
@@ -160,14 +161,14 @@ Site Recovery 会检查是否有一个或多个兼容的 Azure 存储帐户和�
    4. 在步骤 3 中，按 IP 地址添加受保护的 VM。 （要找到它们可能需要用到内部 IP 地址。）
    5. 在步骤 4 中，通过选择前面在进程服务器上设置的帐户来配置属性。
    6. 在步骤 5 中，选择前面在“步骤 5：设置复制设置”中创建的复制策略。
-   7. 选择“确定”  。
+   7. 选择“确定”。
 
    > [!NOTE]
    > 解除分配并再次启动 Azure VM 后，无法保证它会获得相同的 IP 地址。 如果配置服务器/进程服务器或受保护 Azure VM 的 IP 地址发生变化，此方案中的复制可能无法正常工作。
 
    ![选定了“源”的“启用复制”窗格][13]
 
-设计 Azure 存储环境时，我们建议针对可用性集中的每个 VM 使用不同的存储帐户。 我们建议按照存储层中的最佳做法[为每个可用性集使用多个存储帐户](../manage-availability.md)。 将 VM 磁盘分配到多个存储帐户有助于改善存储可用性，以及在整个 Azure 存储基础结构中分配 I/O。
+设计 Azure 存储环境时，我们建议针对可用性集中的每个 VM 使用不同的存储帐户。 我们建议按照存储层中的最佳做法[为每个可用性集使用多个存储帐户](../availability.md)。 将 VM 磁盘分配到多个存储帐户有助于改善存储可用性，以及在整个 Azure 存储基础结构中分配 I/O。
 
 如果 VM 位于可用性集中，我们强烈建议分多次迁移多个 VM，而不要将所有 VM 的磁盘都复制到一个存储帐户。 这是为了避免同一个可用性集中的 VM 共享单个存储帐户。 使用“启用复制”窗格为每个 VM 设置目标存储帐户，一次设置一个。
  

@@ -112,7 +112,7 @@
           href: exempt-resource.md
         - name: 创建自定义安全计划和策略
           href: custom-security-policies.md
-    - name: 通过适用于服务器的 Defender 保护计算机
+    - name: 保护计算机
       displayName: 'hybrid, arc, Azure Defender for machines'
       items:
         - name: 适用于服务器的 Azure Defender 的概述

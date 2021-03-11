@@ -2,21 +2,22 @@
 title: 教程 - 在 Azure 中对 Windows 虚拟机进行负载均衡
 description: 本教程介绍如何使用 Azure PowerShell 创建负载均衡器，以实现在三个 Windows 虚拟机上高度可用且安全的应用程序
 author: cynthn
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.subservice: networking
 ms.topic: tutorial
 ms.workload: infrastructure
 ms.date: 12/03/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 9d33944e046e1e5e2324f73ae26c78cf29d8f97d
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: d6c872ecfbad6cb8bb01ad5a7c3df8c47aadaebe
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98734708"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102549101"
 ---
 # <a name="tutorial-load-balance-windows-virtual-machines-in-azure-to-create-a-highly-available-application-with-azure-powershell"></a>教程：在 Azure 中使用 Azure PowerShell 均衡 Windows 虚拟机负载以创建高可用性应用程序
-负载均衡通过将传入请求分布到多个虚拟机来提供更高级别的可用性。 本教程介绍了 Azure 负载均衡器的不同组件，这些组件用于分发流量和提供高可用性。 你将学习如何执行以下操作：
+负载均衡通过将传入请求分布到多个虚拟机来提供更高级别的可用性。 本教程介绍了 Azure 负载均衡器的不同组件，这些组件用于分发流量和提供高可用性。 学习如何：
 
 > [!div class="checklist"]
 > * 创建 Azure 负载均衡器
@@ -24,7 +25,7 @@ ms.locfileid: "98734708"
 > * 创建负载均衡器流量规则
 > * 使用自定义脚本扩展创建基本的 IIS 站点
 > * 创建虚拟机并将其附加到负载均衡器
-> * 查看负载均衡器的实际运行情况
+> * 查看运行中的负载均衡器
 > * 在负载均衡器中添加和删除 VM
 
 ## <a name="azure-load-balancer-overview"></a>Azure 负载均衡器概述
