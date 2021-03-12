@@ -3,12 +3,12 @@ title: 连续视频录制 - Azure
 description: 连续视频录制 (CVR) 是指从视频源连续录制视频的过程。 本主题将讨论什么是 CVR。
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 04f09f1968e647c57ba0913a9e7f9e601d045771
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: f8b25d74db279f8cfff68f08efeab2975484a0c5
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89566682"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102453744"
 ---
 # <a name="continuous-video-recording"></a>连续视频录制  
 
@@ -19,7 +19,7 @@ ms.locfileid: "89566682"
 
 ## <a name="overview"></a>概述
 
-连续视频录制 (CVR) 是指从视频源连续录制视频的过程。 IoT Edge 上的实时视频分析通过包含 RTSP 源节点和资产接收器节点的[媒体图](media-graph-concept.md)从 CCTV 相机全天候连续录制视频。 下图显示了该媒体图的图形表示形式。 可在[此处](https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/cvr-asset)找到此类媒体图的[图形拓扑](media-graph-concept.md?branch=release-preview-media-services-lva#media-graph-topologies-and-instances)的 JSON 表示形式。
+连续视频录制 (CVR) 是指从视频源连续录制视频的过程。 IoT Edge 上的实时视频分析通过包含 RTSP 源节点和资产接收器节点的[媒体图](media-graph-concept.md)从 CCTV 相机全天候连续录制视频。 下图显示了该媒体图的图形表示形式。 可在[此处](https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/cvr-asset)找到此类媒体图的[图形拓扑](media-graph-concept.md#media-graph-topologies-and-instances)的 JSON 表示形式。
 
 > [!div class="mx-imgBorder"]
 > :::image type="content" source="./media/continuous-video-recording/continuous-video-recording-overview.svg" alt-text="连续视频录制":::

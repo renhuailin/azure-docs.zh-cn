@@ -2,17 +2,18 @@
 title: Azure 中 Windows VM 的时间同步
 description: Windows 虚拟机的时间同步。
 author: cynthn
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.collection: windows
 ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 830bdd45be4b0365ac45bc3ea366b99a34882a4c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.openlocfilehash: 85abc77757d31f3b1054a0670ea3f65a4fcb2e52
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96010616"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102555952"
 ---
 # <a name="time-sync-for-windows-vms-in-azure"></a>Azure 中 Windows VM 的时间同步
 
@@ -116,7 +117,7 @@ w32tm /query /source
 下面是可能会看到的输出及其含义：
     
 - **time.windows.com** - 在默认配置中，w32time 会从 time.windows.com 获取时间。 时间同步质量取决于到它的 Internet 连接，受数据包延迟的影响。 这是你将在物理计算机上获得的常见输出。
-- **VM IC 时间同步提供程序**  -vm 正在从主机同步时间。 这是你将在 Azure 中运行的虚拟机上获得的常见输出。 
+- VM IC 时间同步提供程序 - VM 正在与主机同步时间。 这是你将在 Azure 中运行的虚拟机上获得的常见输出。 
 - 你的域服务器 - 当前计算机位于某个域中，该域定义时间同步层次结构。
 - 某个其他的服务器 - w32time 已显式配置为从该服务器获取时间。 时间同步质量取决于该时间服务器质量。
 - **本地 CMOS 时钟** - 时钟未同步。 如果 w32time 在重启后还没有足够的时间启动，或者所有配置的时间源均不可用，则可能获得此输出。
@@ -173,6 +174,6 @@ w32tm /dumpreg /subkey:Parameters | findstr /i "ntpserver"
 下面是有关时间同步的更多详细信息的链接：
 
 - [Windows 时间服务工具和设置](/windows-server/networking/windows-time-service/windows-time-service-tools-and-settings)
-- [Windows Server 2016 改进 ](/windows-server/networking/windows-time-service/windows-server-2016-improvements)
+- [Windows Server 2016 的改进](/windows-server/networking/windows-time-service/windows-server-2016-improvements)
 - [Windows Server 2016 的准确时间](/windows-server/networking/windows-time-service/accurate-time)
 - [Support boundary to configure the Windows Time service for high-accuracy environments](/windows-server/networking/windows-time-service/support-boundary)（为高准确性环境配置 Windows 时间服务所需的支持边界）
