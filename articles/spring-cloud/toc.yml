@@ -123,6 +123,8 @@
           href: spring-cloud-howto-enable-system-assigned-managed-identity.md
         - name: 创建角色和权限
           href: spring-cloud-howto-permissions.md
+        - name: 使用 Azure AD RBAC 访问数据平面
+          href: spring-cloud-howto-access-data-plane-azure-ad-rbac.md
     - name: 集成
       items:
         - name: 将应用绑定到 Azure CosmosDB

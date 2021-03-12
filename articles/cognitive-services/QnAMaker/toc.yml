@@ -47,13 +47,17 @@
       href: choose-natural-language-processing-service.md
 - name: 操作指南
   items:
-    - name: 管理 Azure 资源
-      href: How-To/set-up-qnamaker-service-azure.md
-      displayName: 'azure, resource, key, upgrade, pricing, tier,'
-    - name: Azure 资源的网络隔离
-      href: How-To/network-isolation.md
-    - name: 管理 QnA Maker 资源访问
-      href: How-To/manage-qna-maker-app.md
+    - name: 管理 QnA Maker 资源
+      items:
+        - name: 设置 QnA Maker 资源
+          href: How-To/set-up-qnamaker-service-azure.md
+          displayName: 'azure, resource, key, upgrade, pricing, tier,'
+        - name: 管理 QnA Maker 资源访问权限
+          href: How-To/manage-qna-maker-app.md
+        - name: 配置 QnA Maker 资源
+          href: How-To/configure-qna-maker-resources.md
+        - name: Azure 资源的网络隔离
+          href: How-To/network-isolation.md
     - name: 管理知识库
       items:
         - name: 创建知识库
@@ -77,8 +81,12 @@
         - name: 更改默认答案
           href: How-To/change-default-answer.md
     - name: 查询知识库
-      href: How-To/metadata-generateanswer-usage.md
-      displayName: 'isTest, test, route, request, http, post, body, header, json, metadata, top, strictFilters, GenerateAnswer, API, answer, RankerType, id, text, question, context, 200, 2xx, 400, 401, 403, 404'
+      items:
+        - name: 使用 GenerateAnswer API
+          href: How-To/metadata-generateanswer-usage.md
+          displayName: 'isTest, test, route, request, http, post, body, header, json, metadata, top, strictFilters, GenerateAnswer, API, answer, RankerType, id, text, question, context, 200, 2xx, 400, 401, 403, 404'
+        - name: 按元数据筛选问答
+          href: How-To/query-knowledge-base-with-metadata.md
     - name: 设置主动学习以改进知识库
       items:
         - name: 启用主动学习
@@ -124,7 +132,7 @@
         - name: C#
           items:
             - name: 参考文档
-              href: /dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker?view=azure-dotnet
+              href: /dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker
             - name: NuGet 包
               href: 'https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Knowledge.QnAMaker/'
             - name: 示例
@@ -140,7 +148,7 @@
         - name: JavaScript
           items:
             - name: 参考文档
-              href: /javascript/api/%40azure/cognitiveservices-qnamaker/index?view=azure-node-latest
+              href: /javascript/api/%40azure/cognitiveservices-qnamaker/index
             - name: NPM - 创作
               href: 'https://www.npmjs.com/package/@azure/cognitiveservices-qnamaker'
             - name: NPM - 查询运行时
@@ -150,7 +158,7 @@
         - name: Python
           items:
             - name: 参考文档
-              href: /python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker?view=azure-python
+              href: /python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker
             - name: Pip
               href: 'https://pypi.org/project/azure-cognitiveservices-knowledge-qnamaker/'
             - name: 示例

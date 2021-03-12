@@ -16,12 +16,12 @@ ms.date: 09/15/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7d04a2941888592ffa37acfe6cba52a33fda528
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
-ms.translationtype: MT
+ms.openlocfilehash: 2774c63d34de3de951aa8076b56d203b976158ec
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92365504"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102548744"
 ---
 # <a name="powershell-for-azure-ad-roles-in-privileged-identity-management"></a>适用于 Privileged Identity Management 中 Azure AD 角色的 PowerShell
 
@@ -30,7 +30,7 @@ ms.locfileid: "92365504"
 > [!Note]
 > 仅当使用新版 Azure AD Privileged Identity Management 时，才支持正式版 PowerShell。 请转到“Privileged Identity Management”，并确保快速启动边栏选项卡中出现了以下横幅。
 > [![检查所用的 Privileged Identity Management 版本](media/pim-how-to-add-role-to-user/pim-new-version.png "选择“Azure AD”>“Privileged Identity Management”")](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)如果未看到此横幅，请等待几周时间，因为我们目前正在推出此项更新的体验。
-> 支持通过 Azure AD 预览版模块使用 Privileged Identity Management PowerShell cmdlet。 如果你一直使用在其他模块，而该模块现在会返回错误消息，请开始使用此新模块。 如果在不同的模块上构建了任何生产系统，请联系 [pim_preview@microsoft.com](mailto:pim_preview@microsoft.com) 。
+> 支持通过 Azure AD 预览版模块使用 Privileged Identity Management PowerShell cmdlet。 如果你一直使用在其他模块，而该模块现在会返回错误消息，请开始使用此新模块。 如果你基于另一模块构建了任何生产系统，请联系 [pim_preview@microsoft.com](mailto:pim_preview@microsoft.com)。
 
 ## <a name="installation-and-setup"></a>安装和设置
 
@@ -54,7 +54,7 @@ ms.locfileid: "92365504"
     ![在 Azure AD 组织的属性中查找组织 ID](./media/powershell-for-azure-ad-roles/tenant-id-for-Azure-ad-org.png)
 
 > [!Note]
-> 以下部分提供了简单的示例来帮助你开始操作。 可以在 [https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#privileged_role_management&preserve-view=true](/powershell/module/azuread/?view=azureadps-2.0-preview#privileged_role_management&preserve-view=true) 中找到有关以下 cmdlet 的更详细文档。 但是，必须将 providerID 参数中的“azureResources”替换为“aadRoles”。 此外，还需要记得使用 Azure AD 组织的租户 ID 作为 resourceId 参数。
+> 以下部分提供了简单的示例来帮助你开始操作。 可以在 [https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true#privileged_role_management](/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true#privileged_role_management) 中找到有关以下 cmdlet 的更详细文档。 但是，必须将 providerID 参数中的“azureResources”替换为“aadRoles”。 此外，还需要记得使用 Azure AD 组织的租户 ID 作为 resourceId 参数。
 
 ## <a name="retrieving-role-definitions"></a>检索角色定义
 

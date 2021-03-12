@@ -104,7 +104,7 @@
           href: service-fabric-tutorial-standalone-install-an-application.md
         - name: 4- 清理群集和删除基础结构
           href: service-fabric-tutorial-standalone-clean-up.md
-- name: 最佳做法
+- name: 最佳实践
   items:
     - name: Service Fabric 最佳做法概述
       href: service-fabric-best-practices-overview.md
@@ -894,7 +894,7 @@
     - name: Java API
       href: /java/api/overview/azure/servicefabric
     - name: .NET
-      href: /dotnet/api/overview/azure/service-fabric?view=azure-dotnet
+      href: /dotnet/api/overview/azure/service-fabric
     - name: REST
       href: /rest/api/servicefabric
     - name: 资源管理器模板

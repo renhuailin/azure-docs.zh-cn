@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 03/24/2020
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 9e2f7115560148a1d3b9d2671be54c1ba4d61946
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 3da2e116f1f58ca7a5c75da49f64bb8fc046e3ac
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97588907"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102548489"
 ---
 # <a name="create-a-cicd-pipeline-for-ruby-on-rails-by-using-azure-devops-starter"></a>使用 Azure DevOps Starter 创建用于 Ruby on Rails 的 CI/CD 管道
 
@@ -126,4 +126,4 @@ Azure DevOps Starter 自动在你的 Azure DevOps 组织中配置一个完整的
 若要详细了解如何根据团队的需求修改生成和发布管道，请参阅：
 
 > [!div class="nextstepaction"]
-> [Define your multi-stage continuous deployment (CD) pipeline](/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)（定义多阶段持续部署 (CD) 管道）
+> [Define your multi-stage continuous deployment (CD) pipeline](/azure/devops/pipelines/release/define-multistage-release-process)（定义多阶段持续部署 (CD) 管道）

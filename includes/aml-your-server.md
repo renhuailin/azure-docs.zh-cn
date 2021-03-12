@@ -9,14 +9,14 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 03/05/2020
-ms.openlocfilehash: 6e7580abfd113a279e2223b9cc9665f6a0b86bc8
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 0d7622217d192a100fd809c32c9e85970cf61fd7
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95558577"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102511009"
 ---
-1. 按照 [Azure 机器学习 SDK](/python/api/overview/azure/ml/install?view=azure-ml-py) 中的说明安装适用于 Python 的 Azure 机器学习 SDK
+1. 按照 [Azure 机器学习 SDK](/python/api/overview/azure/ml/install) 中的说明安装适用于 Python 的 Azure 机器学习 SDK
 
 1. 创建 [Azure 机器学习工作区](../articles/machine-learning/how-to-manage-workspace.md)。
 

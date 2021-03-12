@@ -2,18 +2,19 @@
 title: 使用 FreeBSD 的数据包筛选器在 Azure 中创建防火墙
 description: 了解如何在 Azure 中使用 FreeBSD 的 PF 部署 NAT 防火墙。
 author: KylieLiang
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.topic: how-to
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/20/2017
 ms.author: kyliel
-ms.openlocfilehash: c7027dd86945e53149b3c4daeb9d6faee3593e95
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
-ms.translationtype: MT
+ms.openlocfilehash: 673ddf30771f63f559a12dbea47a1f022ea5599a
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97702236"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102565914"
 ---
 # <a name="how-to-use-freebsds-packet-filter-to-create-a-secure-firewall-in-azure"></a>如何使用 FreeBSD 的数据包筛选器在 Azure 中创建安全防火墙
 本文介绍如何通过 Azure 资源管理器模板使用 FreeBSD 的数据包筛选器为通用 Web 服务器方案部署 NAT 防火墙。
@@ -22,7 +23,7 @@ ms.locfileid: "97702236"
 PF（数据包筛选器，也写为 pf）是 BSD 许可的有状态数据包筛选器，是用于创建防火墙的软件的中心部分。 由于 PF 的快速发展，现在相比其他可用的防火墙具有一些优势。 从一开始 PF 就包括网络地址转换 (NAT) 功能，随后通过集成 ALTQ 并可使用 PF 的配置对其进行配置，将数据包计划程序和活动队列管理功能集成到 PF。 PF 具有一些扩展功能，例如用于故障转移和冗余的 pfsync 和 CARP、用于会话身份验证的 authpf，以及用于简化使用复杂的 FTP 协议创建防火墙的 ftp-proxy 等。 简而言之，PF 是一个功能强大且丰富的防火墙。 
 
 ## <a name="get-started"></a>入门
-如果有兴趣在云中为 Web 服务器设置安全防火墙，那么让我们开始吧。 还可以将此 Azure Resource Manager 模板中使用的脚本应用于网络拓扑的设置。
+如果有兴趣在云中为 Web 服务器设置安全防火墙，那么让我们开始吧。 还可以将此 Azure 资源管理器模板中使用的脚本应用于网络拓扑的设置。
 Azure Resource Manager 模板设置一个使用 PF 执行 NAT/重定向的 FreeBSD 虚拟机和两个安装并配置了 Nginx Web 服务器的 FreeBSD 虚拟机。 除了为两个 Web 服务器出口流量执行 NAT，NAT/重定向虚拟机还在轮询机制下截获 HTTP 请求并将其重定向到这两个 Web 服务器。 VNet 使用专用的不可路由 IP 地址空间 10.0.0.2/24，可以修改模板的参数。 Azure Resource Manager 模板还为整个 VNet 定义路由表，该路由表是用于替代基于目标 IP 地址的 Azure 默认路由的各个路由的集合。 
 
 ![该图显示了 NAT 实例上的公共 IP 地址，该 IP 地址通过轮询机制方法重定向到托管 Nginx Web 服务器的两个后端虚拟机。](./media/freebsd-pf-nat/pf_topology.jpg)
@@ -34,7 +35,7 @@ Azure Resource Manager 模板设置一个使用 PF 执行 NAT/重定向的 FreeB
 az group create --name myResourceGroup --location westus
 ```
 
-接下来，通过 [az deployment group create](/cli/azure/deployment/group)部署模板 pf freebsd-设置。 在相同的路径下面下载 azuredeploy.parameters.json，然后定义你自己的资源值（如 `adminPassword`、`networkPrefix` 和 `domainNamePrefix`）。 
+接下来，使用 [az deployment group create](/cli/azure/deployment/group) 部署模板 pf-freebsd-setup。 在相同的路径下面下载 azuredeploy.parameters.json，然后定义你自己的资源值（如 `adminPassword`、`networkPrefix` 和 `domainNamePrefix`）。 
 
 ```azurecli
 az deployment group create --resource-group myResourceGroup --name myDeploymentName \
