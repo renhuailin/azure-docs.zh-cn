@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/10/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d1ece1fbd75c975f549cb9096149c2a2d562dec6
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: b81f80af69b47152f7111066070e173bb1ede5f4
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97107560"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101093957"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-cosmos-db"></a>教程：使用 Linux VM 系统分配托管标识访问 Azure Cosmos DB 
 
@@ -36,11 +36,11 @@ ms.locfileid: "97107560"
 > * 获取访问令牌，并使用它调用 Azure 资源管理器
 > * 从 Azure 资源管理器中获取访问密钥，以便进行 Cosmos DB 调用
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - 如果不熟悉 Azure 资源功能的托管标识，请参阅此[概述](overview.md)。 
 - 如果没有 Azure 帐户，请在继续操作前[注册免费帐户](https://azure.microsoft.com/free/)。
-- 要执行所需的资源创建和角色管理，帐户在相应的范围（订阅或资源组）需要“所有者”权限。 如果需要有关角色分配的帮助，请参阅[使用基于角色的访问控制管理对 Azure 订阅资源的访问权限](../../role-based-access-control/role-assignments-portal.md)。
+- 要执行所需的资源创建和角色管理，帐户在相应的范围（订阅或资源组）需要“所有者”权限。 如需角色分配方面的帮助，请参阅[分配 Azure 角色以管理对 Azure 订阅资源的访问权限](../../role-based-access-control/role-assignments-portal.md)。
 - 若要运行示例脚本，有两个选项：
     - 使用 [Azure Cloud Shell](../../cloud-shell/overview.md)，你可使用代码块右上角的“试用”按钮打开它。
     - 通过安装最新版的 [Azure CLI](/cli/azure/install-azure-cli) 在本地运行脚本，然后使用 [az login](/cli/azure/reference-index#az-login) 登录到 Azure。 使用与要在其中创建资源的 Azure 订阅关联的帐户。

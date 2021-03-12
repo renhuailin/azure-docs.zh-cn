@@ -229,7 +229,7 @@
           href: private-link-service.md
         - name: 配置客户管理的密钥
           href: configure-customer-managed-key.md
-    - name: 故障排除
+    - name: 疑难解答
       items:
         - name: 解决连接问题
           href: troubleshooting-guide.md
@@ -268,23 +268,23 @@
             - name: 从 azure-eventhubs 迁移到 azure-messaging-eventhubs
               href: 'https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/migration-guide.md'
             - name: azure-messaging-eventhubs（最新）
-              href: /java/api/overview/azure/messaging-eventhubs-readme?view=azure-java-stable
+              href: /java/api/overview/azure/messaging-eventhubs-readme
             - name: azure-eventhubs（旧版）
               href: /java/api/overview/azure/eventhubs/client?view=azure-java-legacy
         - name: 管理库
-          href: /java/api/com.microsoft.azure.management.eventhub?view=azure-java-stable
+          href: /java/api/com.microsoft.azure.management.eventhub
     - name: Python
       items:
         - name: 客户端库
-          href: /python/api/overview/azure/eventhub-readme?view=azure-python
+          href: /python/api/overview/azure/eventhub-readme
         - name: 管理库
-          href: /python/api/overview/azure/event-hub?view=azure-python
+          href: /python/api/overview/azure/event-hub
     - name: JavaScript
       items:
         - name: 客户端库
-          href: /javascript/api/overview/azure/event-hubs-readme?view=azure-node-latest
+          href: /javascript/api/overview/azure/event-hubs-readme
         - name: 管理库
-          href: /javascript/api/@azure/arm-eventhub/?view=azure-node-latest
+          href: /javascript/api/@azure/arm-eventhub/
     - name: Go
       items:
         - name: 客户端库

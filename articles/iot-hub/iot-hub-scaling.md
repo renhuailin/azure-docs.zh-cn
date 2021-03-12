@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: Operations'
-ms.openlocfilehash: e786a323cfb1ebacdf7e6693e3ca4299f10aadb3
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 7940ac3a67a0562aa0b7a21690deec30220a48a3
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102216031"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102434706"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>选择适用于解决方案的 IoT 中心层
 
@@ -85,7 +85,7 @@ IoT 中心基本层和标准层所支持的功能存在差异，也就是说，�
 | [获取服务统计信息](/javascript/api/azure-iot-digitaltwins-service/registrymanager#getservicestatistics-msrest-requestoptionsbase-) | 是 | 是 |
 | [创建或更新设备](/javascript/api/azure-iot-digitaltwins-service/registrymanager#createorupdatedevice-string--device--servicecallback-device--) | 是 | 是 |
 | [创建或更新模块](/javascript/api/azure-iot-digitaltwins-service/registrymanager#createorupdatemodule-string--string--module--models-registrymanagercreateorupdatemoduleoptionalparams-) | 是 | 是 |
-| [查询 IoT 中心](/dotnet/api/microsoft.azure.devices.registrymanager?view=azure-dotnet) | 是 | 是 |
+| [查询 IoT 中心](/dotnet/api/microsoft.azure.devices.registrymanager) | 是 | 是 |
 | [创建文件上传 SAS URI](/rest/api/iothub/device/createfileuploadsasuri) | 是 | 是 |
 | [接收发往设备的通知](/rest/api/iothub/device/receivedeviceboundnotification) | 是 | 是 |
 | [发送设备事件](/rest/api/iothub/device/senddeviceevent) | 是 | 是 |

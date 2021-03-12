@@ -80,7 +80,7 @@
     - name: 图形 API
       items:
         - name: 设备标识 API
-          href: /graph/api/resources/device?view=graph-rest-1.0
+          href: /graph/api/resources/device
 - name: 资源
   items:
     - name: Azure 反馈论坛
