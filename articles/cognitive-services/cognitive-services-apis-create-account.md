@@ -7,15 +7,15 @@ author: aahill
 manager: nitinme
 keywords: 认知服务, 认知智能, 认知解决方案, ai 服务
 ms.service: cognitive-services
-ms.topic: conceptual
+ms.topic: quickstart
 ms.date: 09/14/2020
 ms.author: aahi
-ms.openlocfilehash: 3fd1d9e708a5f1a500440f20c2947ddfe4bc7460
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
-ms.translationtype: MT
+ms.openlocfilehash: 0ad2d0a10b20aa049147d61bd4e8168ea956392c
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94368910"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102031916"
 ---
 # <a name="quickstart-create-a-cognitive-services-resource-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建认知服务资源
 
@@ -46,7 +46,7 @@ Azure 认知服务是包含 REST API 和客户端库 SDK 的基于云的服务�
     - 语言理解 (LUIS)
     - 文本分析
     - 转换器
-    - 必应搜索 v7 <br> (Web、图像、新闻、视频、视觉对象) 
+    - 必应搜索 v7 <br>（Web、图像、新闻、视频、视觉对象）
     - 必应自定义搜索
     - 必应实体搜索
     - 必应自动建议
@@ -58,51 +58,51 @@ Azure 认知服务是包含 REST API 和客户端库 SDK 的基于云的服务�
 
     | 影像                      | 语音                  | 语言                          | 决策             | 搜索                 |
     |-----------------------------|-------------------------|-----------------------------------|----------------------|------------------------|
-    | [计算机视觉](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision)         | [语音服务](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices)     | [沉浸式读者](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesImmersiveReader)              | [异常检测器](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector) | [必应搜索 API V7](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7) |
+    | [计算机视觉](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision)         | [语音服务](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices)     | [沉浸式阅读器](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesImmersiveReader)              | [异常检测器](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector) | [必应搜索 API V7](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7) |
     | [自定义视觉服务](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesCustomVision) | [说话人识别](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeakerRecognition) | [语言理解 (LUIS)](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne) | [内容审查器](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator) | [必应自定义搜索](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingCustomSearch) |
     | [人脸](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFace)                    |                         | [QnA Maker](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker)                     | [个性化体验创建服务](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer)     | [必应实体搜索](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingEntitySearch) |
     | [墨迹识别器](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesInkRecognizer)        |                         | [文本分析](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics)                |  [指标顾问](https://go.microsoft.com/fwlink/?linkid=2142156)                    | [必应拼写检查](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSpellCheck-v7)   |
     |           |                         | [翻译](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation)               |                      | [必应自动建议](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingAutosuggest-v7)                       |
 
-    **_
+    ***
 
-3. 在 _ *创建* * 页上，提供以下信息：
+3. 在“创建”页中提供以下信息： 
 
     #### <a name="multi-service-resource"></a>[多服务资源](#tab/multiservice)
 
     |    |    |
     |--|--|
-    | **名称** | 认知服务资源的描述性名称。 例如， *MyCognitiveServicesResource* 。 |
+    | **名称** | 认知服务资源的描述性名称。 例如，*MyCognitiveServicesResource*。 |
     | **订阅** | 选择一个可用的 Azure 订阅。 |
     | **位置** | 认知服务实例的位置。 不同位置可能会导致延迟，但不会影响资源的运行时可用性。 |
     | **定价层** | 认知服务帐户的费用取决于你所选的选项和你的使用情况。 有关详细信息，请参阅 API [定价详细信息](https://azure.microsoft.com/pricing/details/cognitive-services/)。
     | **资源组** | 将包含认知服务资源的 Azure 资源组。 可以创建新组或将其添加到预先存在的组。 |
 
-    ![多服务资源资源创建屏幕](media/cognitive-services-apis-create-account/resource_create_screen-multi.png)
+    ![多服务资源创建屏幕](media/cognitive-services-apis-create-account/resource_create_screen-multi.png)
 
-    单击 **创建** 。
+    单击 **创建**。
 
     #### <a name="single-service-resource"></a>[单服务资源](#tab/singleservice)
 
     |    |    |
     |--|--|
-    | **名称** | 认知服务资源的描述性名称。 例如， *TextAnalyticsResource* 。 |
+    | **名称** | 认知服务资源的描述性名称。 例如，*TextAnalyticsResource*。 |
     | **订阅** | 选择一个可用的 Azure 订阅。 |
     | **位置** | 认知服务实例的位置。 不同位置可能会导致延迟，但不会影响资源的运行时可用性。 |
     | **定价层** | 认知服务帐户的费用取决于你所选的选项和你的使用情况。 有关详细信息，请参阅 API [定价详细信息](https://azure.microsoft.com/pricing/details/cognitive-services/)。
     | **资源组** | 将包含认知服务资源的 Azure 资源组。 可以创建新组或将其添加到预先存在的组。 |
 
-    !["单服务资源创建" 屏幕](media/cognitive-services-apis-create-account/resource_create_screen.png)
+    ![单服务资源创建屏幕](media/cognitive-services-apis-create-account/resource_create_screen.png)
 
-    单击“创建”。
+    单击 **创建**。
 
-    **_
+    ***
 
 [!INCLUDE [Register Azure resource for subscription](./includes/register-resource-subscription.md)]
 
 ## <a name="get-the-keys-for-your-resource"></a>获取资源的密钥
 
-1. 成功部署资源后，单击 " **下一步** " 以打开 " *资源* *"。
+1. 成功部署资源后，单击“后续步骤”下的“转到资源”。
 
     ![搜索“认知服务”](media/cognitive-services-apis-create-account/resource-next-steps.png)
 

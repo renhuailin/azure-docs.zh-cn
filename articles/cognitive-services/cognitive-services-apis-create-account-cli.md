@@ -7,15 +7,15 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 keywords: 认知服务, 认知智能, 认知解决方案, ai 服务
-ms.topic: conceptual
+ms.topic: quickstart
 ms.date: 09/14/2020
 ms.author: aahi
-ms.openlocfilehash: c52d935738916ebc546315d9913d7a48c77cbf9a
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.openlocfilehash: 95d74601ca912647eadd1bd4e1045108be6b2adb
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98945001"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102050063"
 ---
 # <a name="quickstart-create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>快速入门：使用 Azure 命令行接口 (CLI) 创建认知服务资源
 
@@ -31,7 +31,7 @@ Azure 认知服务是包含 REST API 和客户端库 SDK 的云服务，可帮�
 
 ## <a name="prerequisites"></a>先决条件
 
-* 有效的 Azure 订阅-免费 [创建一个](https://azure.microsoft.com/free/cognitive-services) 。
+* 一个有效的 Azure 订阅 - 免费[创建订阅](https://azure.microsoft.com/free/cognitive-services)。
 * [Azure 命令行接口 (CLI)](/cli/azure/install-azure-cli)
 
 ## <a name="install-the-azure-cli-and-sign-in"></a>安装 Azure CLI 并登录
@@ -64,7 +64,7 @@ az account list-locations \
 
 选择 Azure 位置后，在 Azure CLI 中使用 [az group create](/cli/azure/group#az-group-create) 命令创建新的资源组。
 
-在下面的示例中，将 Azure 位置替换为 `westus2` 适用于订阅的 azure 位置之一。
+在以下示例中，请将 Azure 位置 `westus2` 替换为你的订阅可用的某个 Azure 位置。
 
 ```azurecli-interactive
 az group create \

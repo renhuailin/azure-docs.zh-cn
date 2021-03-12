@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: 7a6fc27321fa924b7ef8f9bd39b5824bb6fe3c72
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
-ms.translationtype: MT
+ms.openlocfilehash: be202a6016842ee82b3230c2841d416d3b53ea15
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98732572"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102505573"
 ---
 # <a name="troubleshooting-application-insights-agent-formerly-named-status-monitor-v2"></a>Application Insights 代理（以前称为状态监视器 v2）故障排除
 
@@ -53,9 +53,9 @@ ms.locfileid: "98732572"
     ```
 
 ### <a name="powershell-versions"></a>PowerShell 版本
-此产品是使用 PowerShell v2.0 编写和测试的。
-此模块与 PowerShell 版本6或7不兼容。
-建议使用 PowerShell v2.0 和更高版本。 有关详细信息，请参阅将 [powershell 7 与 powershell 5.1 并行使用](/powershell/scripting/install/migrating-from-windows-powershell-51-to-powershell-7?view=powershell-7.1#using-powershell-7-side-by-side-with-windows-powershell-51)。
+此产品是使用 PowerShell v5.1 编写和测试的。
+此模块与 PowerShell 版本 6 或 7 不兼容。
+我们建议将 PowerShell v5.1 与较新版本一起使用。 有关详细信息，请参阅[将 PowerShell 7 与 PowerShell 5.1 并排使用](/powershell/scripting/install/migrating-from-windows-powershell-51-to-powershell-7#using-powershell-7-side-by-side-with-windows-powershell-51)。
 
 ### <a name="conflict-with-iis-shared-configuration"></a>与 IIS 共享配置冲突
 
