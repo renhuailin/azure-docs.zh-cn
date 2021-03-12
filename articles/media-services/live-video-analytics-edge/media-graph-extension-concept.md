@@ -3,12 +3,12 @@ title: 什么是媒体图扩展 - Azure
 description: 使用 IoT Edge 上的实时视频分析，可以通过图形扩展节点扩展媒体图处理功能。
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: 6735148bf453cfe0afb58d51451dea65f06705d6
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 66656690e4e53508253091134a67adeb899b3dbf
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97401111"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102455833"
 ---
 # <a name="media-graph-extension"></a>媒体图扩展
 
@@ -19,11 +19,11 @@ ms.locfileid: "97401111"
 * [HTTP 扩展处理器](media-graph-concept.md#http-extension-processor)
 * [gRPC 扩展处理器](media-graph-concept.md#grpc-extension-processor)
 
-图扩展节点希望分析扩展插件以 JSON 格式返回结果。 理想情况下，结果应遵循[推理元数据架构对象模型](https://review.docs.microsoft.com/en-us/azure/media-services/live-video-analytics-edge/inference-metadata-schema?branch=release-lva-dec-update)。
+图扩展节点希望分析扩展插件以 JSON 格式返回结果。 理想情况下，结果应遵循[推理元数据架构对象模型](/azure/media-services/live-video-analytics-edge/inference-metadata-schema)。
 
 ## <a name="http-extension-processor"></a>HTTP 扩展处理器
 
-HTTP 扩展处理器支持使用 [HTTP 协议](https://review.docs.microsoft.com/en-us/azure/media-services/live-video-analytics-edge/http-extension-protocol?branch=release-lva-dec-update)的可扩展性方案，其中性能和/或最佳资源利用率不是主要问题。 可以通过 HTTP REST 终结点将自己的 AI 公开给媒体图。 
+HTTP 扩展处理器支持使用 [HTTP 协议](/azure/media-services/live-video-analytics-edge/http-extension-protocol)的可扩展性方案，其中性能和/或最佳资源利用率不是主要问题。 可以通过 HTTP REST 终结点将自己的 AI 公开给媒体图。 
 
 在以下情况下使用 HTTP 扩展处理器节点：
 
@@ -33,7 +33,7 @@ HTTP 扩展处理器支持使用 [HTTP 协议](https://review.docs.microsoft.com
 
 ## <a name="grpc-extension-processor"></a>gRPC 扩展处理器
 
-gRPC 扩展处理器使用基于 gRPC 的高性能[结构化协议](https://review.docs.microsoft.com/en-us/azure/media-services/live-video-analytics-edge/grpc-extension-protocol?branch=release-lva-dec-update)实现可扩展性方案。 它非常适用于性能和/或最佳资源利用率优先的场景。 通过 gRPC 扩展处理器，你可以充分利用结构化数据定义。 gRPC 通过以下方式提供优秀的内容传输性能：
+gRPC 扩展处理器使用基于 gRPC 的高性能[结构化协议](/azure/media-services/live-video-analytics-edge/grpc-extension-protocol)实现可扩展性方案。 它非常适用于性能和/或最佳资源利用率优先的场景。 通过 gRPC 扩展处理器，你可以充分利用结构化数据定义。 gRPC 通过以下方式提供优秀的内容传输性能：
 
 * [内置共享内存](https://en.wikipedia.org/wiki/Shared_memory)或 
 * 将内容直接嵌入到 gRPC 消息正文中。 
@@ -57,7 +57,7 @@ gRPC 扩展处理器可用于发送媒体属性以及交换推理消息。
 
 ## <a name="samples"></a>示例
 
-可以使用快速入门来入门，这些快速入门介绍了使用预生成扩展服务进行实时视频分析，该服务使用 [HTTP 扩展处理器](https://review.docs.microsoft.com/en-us/azure/media-services/live-video-analytics-edge/use-your-model-quickstart?branch=release-lva-dec-update&pivots=programming-language-csharp)低帧速率运行或使用 [gRPC 扩展处理器](https://review.docs.microsoft.com/en-us/azure/media-services/live-video-analytics-edge/analyze-live-video-use-your-grpc-model-quickstart?branch=release-lva-dec-update&pivots=programming-language-csharp)高帧速率运行
+可以使用快速入门来入门，这些快速入门介绍了使用预生成扩展服务进行实时视频分析，该服务使用 [HTTP 扩展处理器](/azure/media-services/live-video-analytics-edge/use-your-model-quickstart?pivots=programming-language-csharp)低帧速率运行或使用 [gRPC 扩展处理器](/azure/media-services/live-video-analytics-edge/analyze-live-video-use-your-grpc-model-quickstart?pivots=programming-language-csharp)高帧速率运行
 
 对于高级用户，你可查看关于实时视频分析的 [Jupyter 笔记本](https://github.com/Azure/live-video-analytics/blob/master/utilities/video-analysis/notebooks/readme.md)示例。 这些笔记本将为你提供以下方面的媒体图扩展分步说明：
 

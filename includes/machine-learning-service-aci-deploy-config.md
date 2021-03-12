@@ -4,14 +4,14 @@ ms.service: machine-learning
 ms.topic: include
 ms.date: 03/16/2020
 ms.author: larryfr
-ms.openlocfilehash: 190da8fc98f3a03499188ab173f058d15cd2dafe
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4983c1e1e7f235fa7a5b748a0ce5b1c79176c849
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96028123"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102510702"
 ---
-`deploymentconfig.json` 文档中的条目映射到 [AciWebservice.deploy_configuration](/python/api/azureml-core/azureml.core.webservice.aci.aciservicedeploymentconfiguration?view=azure-ml-py) 的参数。 下表描述了 JSON 文档中的实体与方法参数之间的映射：
+`deploymentconfig.json` 文档中的条目映射到 [AciWebservice.deploy_configuration](/python/api/azureml-core/azureml.core.webservice.aci.aciservicedeploymentconfiguration) 的参数。 下表描述了 JSON 文档中的实体与方法参数之间的映射：
 
 | JSON 实体 | 方法参数 | 说明 |
 | ----- | ----- | ----- |
@@ -19,7 +19,7 @@ ms.locfileid: "96028123"
 | `containerResourceRequirements` | 不可用 | CPU 和内存实体的容器。 |
 | &emsp;&emsp;`cpu` | `cpu_cores` | 要分配的 CPU 核心数。 默认值为 `0.1` |
 | &emsp;&emsp;`memoryInGB` | `memory_gb` | 为此 Web 服务分配的内存量 (GB)。 默认值为 `0.5` |
-| `location` | `location` | 要将此 Webservice 部署到的 Azure 区域。 如果未指定，将使用工作区位置。 有关可用区域的详细信息，请参阅：[ACI 区域](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=container-instances) |
+| `location` | `location` | 要将此 Webservice 部署到的 Azure 区域。 如果未指定，将使用工作区位置。 如需可用区域的详细信息，可查看 [ACI 区域](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=container-instances) |
 | `authEnabled` | `auth_enabled` | 是否为此 Webservice 启用身份验证。 默认为 False |
 | `sslEnabled` | `ssl_enabled` | 是否为此 Webservice 启用 SSL。 默认为 False。 |
 | `appInsightsEnabled` | `enable_app_insights` | 是否为此 Webservice 启用 AppInsights。 默认为 False |

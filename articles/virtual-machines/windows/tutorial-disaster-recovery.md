@@ -2,18 +2,19 @@
 title: 教程 - 使用 Azure Site Recovery 为 Windows VM 设置灾难恢复
 description: 了解如何使用 Azure Site Recovery 服务为 Windows VM 启用到其他 Azure 区域的灾难恢复。
 author: rayne-wiselman
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.collection: windows
 ms.subservice: recovery
 ms.topic: tutorial
 ms.date: 11/05/2020
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 53cc0b820bd2ffb9fc28b37f44bb71a7b9d3cd30
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: e9f44ea2af832729a47bf4b719b90f9b14e401b9
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93379769"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102555850"
 ---
 # <a name="tutorial-enable-disaster-recovery-for-windows-vms"></a>教程：为 Windows VM 启用灾难恢复
 

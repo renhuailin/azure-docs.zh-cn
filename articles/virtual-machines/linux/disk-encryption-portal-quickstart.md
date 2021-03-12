@@ -3,16 +3,16 @@ title: 使用 Azure 门户创建和加密 Linux VM
 description: 本快速入门介绍了如何使用 Azure 门户创建并加密 Linux 虚拟机
 author: msmbaldwin
 ms.author: mbaldwin
-ms.service: virtual-machines-linux
-ms.subservice: security
+ms.service: virtual-machines
+ms.subservice: disks
 ms.topic: quickstart
 ms.date: 10/02/2019
-ms.openlocfilehash: 13e6077ee9bd24cdfc9a7c1f405199989546680f
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 188ba72f4da4e5a24554f895473f1c74e48d50fa
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896015"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102558349"
 ---
 # <a name="quickstart-create-and-encrypt-a-virtual-machine-with-the-azure-portal"></a>快速入门：使用 Azure 门户创建并加密虚拟机
 

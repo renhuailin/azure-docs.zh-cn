@@ -18,17 +18,17 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 9ff923d0231a1b00493a54996c2fcd489012bbe7
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
-ms.translationtype: MT
+ms.openlocfilehash: 329036f3ed815eaaba94f441e372f4be86edd629
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96862031"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102558077"
 ---
 # <a name="azure-ad-powershell-cmdlets-for-reporting"></a>用于报告的 Azure AD PowerShell cmdlet
 
 > [!NOTE] 
-> 这些 PowerShell cmdlet 目前仅适用于 [Azure AD 预览](/powershell/module/azuread/?view=azureadps-2.0-preview#directory_auditing)模块。 请注意，预览模块不建议用于生产用途。 
+> 这些 PowerShell cmdlet 目前仅适用于 [Azure AD 预览](/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true#directory_auditing)模块。 请注意，预览模块不建议用于生产用途。 
 
 若要安装公共预览版，请使用以下说明。 
 

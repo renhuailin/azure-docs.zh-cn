@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: yegu
-ms.openlocfilehash: 5de4e1b465cfc3ced59f8fe34a7f397324b4a225
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
-ms.translationtype: MT
+ms.openlocfilehash: d63cafb32dc1db0a901ed3e6004446b450db10c7
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92537620"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102451517"
 ---
 # <a name="migrate-to-azure-cache-for-redis"></a>迁移到 Azure Cache for Redis
 本文介绍将在本地运行或在其他云服务中运行的现有 Redis 缓存迁移到 Azure Cache for Redis 的多种方法。
@@ -64,12 +64,12 @@ ms.locfileid: "92537620"
 2. 保存现有 Redis 缓存的快照。 可以[配置 Redis 以定期保存快照](https://redis.io/topics/persistence)，或者使用 [SAVE](https://redis.io/commands/save) 或 [BGSAVE](https://redis.io/commands/bgsave) 命令手动运行该过程。 RDB 文件默认命名为“dump.rdb”，并将位于 redis.conf 配置文件中指定的路径下。
 
     > [!NOTE]
-    > 如果要在 Azure Cache for Redis 中迁移数据，请参阅[这些有关如何导出 RDB 文件的说明](cache-how-to-import-export-data.md)，或改为使用 [PowerShell 导出 cmdlet](/powershell/module/azurerm.rediscache/export-azurermrediscache?view=azurermps-6.13.0&viewFallbackFrom=azurermps-6.4.0)。
+    > 如果要在 Azure Cache for Redis 中迁移数据，请参阅[这些有关如何导出 RDB 文件的说明](cache-how-to-import-export-data.md)，或改为使用 [PowerShell 导出 cmdlet](/powershell/module/azurerm.rediscache/export-azurermrediscache)。
     >
 
 3. 将 RDB 文件复制到新缓存所在区域中的 Azure 存储帐户。 可以将 AzCopy 用于此任务。
 
-4. 使用这些[导入说明](cache-how-to-import-export-data.md)或 [PowerShell 导入 cmdlet](/powershell/module/azurerm.rediscache/import-azurermrediscache?view=azurermps-6.13.0&viewFallbackFrom=azurermps-6.4.0) 将 RDB 文件导入新缓存。
+4. 使用这些[导入说明](cache-how-to-import-export-data.md)或 [PowerShell 导入 cmdlet](/powershell/module/azurerm.rediscache/import-azurermrediscache) 将 RDB 文件导入新缓存。
 
 5. 更新应用程序以使用新缓存实例。
 

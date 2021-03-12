@@ -25,6 +25,8 @@
       href: tutorial-respond-threats-playbook.md
 - name: 概念
   items:
+    - name: 使用实体对数据进行分类
+      href: entities-in-azure-sentinel.md
     - name: 管理访问权限
       items:
         - name: Azure Sentinel 中的权限
@@ -33,18 +35,20 @@
           href: resource-context-rbac.md
     - name: 高级多阶段攻击检测
       href: fusion.md
-    - name: 自带机器学习平台
-      href: bring-your-own-ml.md
-    - name: 跨工作区和租户扩展 Azure Sentinel
-      href: extend-sentinel-across-workspaces-tenants.md
     - name: 通过 UEBA 识别高级威胁
       href: identify-threats-with-entity-behavior-analytics.md
     - name: 将威胁情报导入 Azure Sentinel
       href: import-threat-intelligence.md
+    - name: 自带机器学习平台
+      href: bring-your-own-ml.md
     - name: 将 Microsoft 365 Defender 与 Azure Sentinel 集成
       href: microsoft-365-defender-sentinel-integration.md
     - name: 使用具有播放列表的外部数据
       href: watchlists.md
+    - name: 使用角色分配权限
+      href: roles.md
+    - name: 跨工作区和租户扩展 Azure Sentinel
+      href: extend-sentinel-across-workspaces-tenants.md
     - name: 跨表规范化数据
       href: normalization.md
     - name: 安全性
@@ -62,40 +66,46 @@
               href: connect-aws.md
             - name: Azure Active Directory
               href: connect-azure-active-directory.md
-            - name: Office 365（现带有 Teams！）
-              href: connect-office-365.md
-            - name: Dynamics 365（全新！）
-              href: connect-dynamics-365.md
-            - name: Cloud App Security
-              href: connect-cloud-app-security.md
             - name: Azure 活动日志
               href: connect-azure-activity.md
             - name: Azure AD 标识保护
               href: connect-azure-ad-identity-protection.md
-            - name: Azure 信息保护
-              href: connect-azure-information-protection.md
-            - name: Microsoft 365 Defender
-              href: connect-microsoft-365-defender.md
-            - name: 用于终结点的 Microsoft Defender（以前称为 MDATP）
-              href: connect-microsoft-defender-advanced-threat-protection.md
-            - name: 用于标识的 Microsoft Defender（以前称为 Azure ATP）
-              href: connect-azure-atp.md
-            - name: Microsoft Defender for Office 365（前身为 Office 365 ATP）
-              href: connect-office-365-advanced-threat-protection.md
             - name: ASC 中的 Azure Defender 警报
               href: connect-azure-security-center.md
-            - name: 用于 IoT 的 Azure Defender（以前称为 ASC）
-              href: connect-asc-iot.md
             - name: Azure DDoS 防护
               href: connect-azure-ddos-protection.md
             - name: Azure 防火墙
               href: connect-azure-firewall.md
-            - name: Azure Web 应用程序防火墙 (WAF)
-              href: connect-azure-waf.md
+            - name: Azure 信息保护
+              href: connect-azure-information-protection.md
+            - name: Azure Key Vault
+              href: connect-azure-key-vault.md
+            - name: Azure Kubernetes 服务 (AKS)
+              href: connect-azure-kubernetes-service.md
             - name: Azure SQL 数据库日志
               href: connect-azure-sql-logs.md
+            - name: Azure Web 应用程序防火墙 (WAF)
+              href: connect-azure-waf.md
+            - name: Defender for IoT（以前称为 ASC for IoT）
+              href: connect-asc-iot.md
             - name: 域名服务器
               href: connect-dns.md
+            - name: Dynamics 365（全新！）
+              href: connect-dynamics-365.md
+            - name: Microsoft 365 Defender
+              href: connect-microsoft-365-defender.md
+              expanded: true
+              items:
+                - name: Cloud App Security
+                  href: connect-cloud-app-security.md
+                - name: 用于终结点的 Microsoft Defender（以前称为 MDATP）
+                  href: connect-microsoft-defender-advanced-threat-protection.md
+                - name: 用于标识的 Microsoft Defender（以前称为 Azure ATP）
+                  href: connect-azure-atp.md
+                - name: Microsoft Defender for Office 365（前身为 Office 365 ATP）
+                  href: connect-office-365-advanced-threat-protection.md
+            - name: Office 365（现带有 Teams！）
+              href: connect-office-365.md
             - name: Windows 防火墙
               href: connect-windows-firewall.md
             - name: Windows 安全事件
@@ -242,12 +252,16 @@
           href: monitor-data-connector-health.md
     - name: 启用用户和实体行为分析
       href: enable-entity-behavior-analytics.md
+    - name: 将数据字段映射到实体
+      href: map-data-fields-to-entities.md
     - name: 管理多个租户 (MSSP)
       href: multiple-tenants-service-providers.md
     - name: 处理多个工作区中的事件
       href: multiple-workspace-view.md
     - name: 设置客户管理的密钥 (CMK)
       href: customer-managed-keys.md
+    - name: 警报中的 Surface 自定义详细信息
+      href: surface-custom-details-in-alerts.md
     - name: 从警报创建事件
       href: create-incidents-from-alerts.md
     - name: 利用事件指标更好地管理 SOC
@@ -265,10 +279,10 @@
           href: livestream.md
     - name: 删除 Azure Sentinel
       href: offboard.md
-    - name: 实现高级 RBAC
-      items: null
 - name: 参考
   items:
+    - name: 热门 Azure Sentinel 工作簿
+      href: top-workbooks.md
     - name: Azure RBAC 角色
       items:
         - name: 所有 Azure 角色
@@ -285,6 +299,8 @@
           href: watchlist-with-rest-api.md
     - name: Azure Sentinel 逻辑应用连接器
       href: /connectors/azuresentinel/
+    - name: 实体参考
+      href: entities-reference.md
     - name: 网络规范化架构
       href: normalization-schema.md
     - name: 数据源架构引用
