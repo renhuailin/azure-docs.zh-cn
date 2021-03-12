@@ -4,6 +4,8 @@
   items:
     - name: 关于 Azure VMware 解决方案
       href: introduction.md
+    - name: 平台更新
+      href: azure-vmware-solution-platform-updates.md
 - name: 快速入门
   items:
     - name: 0 - 规划部署
@@ -72,6 +74,8 @@
       href: public-ip-usage.md
     - name: 创建 IPSec 隧道
       href: create-ipsec-tunnel.md
+    - name: Windows Server 故障转移群集
+      href: windows-server-failover-cluster.md
     - name: Azure 本机集成
       items:
         - name: API 管理

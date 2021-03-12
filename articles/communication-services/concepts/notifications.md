@@ -9,14 +9,17 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 88948f757c41550124acf20ac1cf0e33cdb3e5ba
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 88a5ad66cb401715790bcff8c773e6d7881b103d
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101660151"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102487689"
 ---
 # <a name="communication-services-notifications"></a>通信服务通知
+
+[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
+
 
 Azure 通信服务聊天和呼叫客户端库会创建一个实时消息通道，允许以高效且可靠的方式将信号消息推送到连接的客户端。 这使你可以在应用程序中构建丰富的实时通信功能，而无需实现复杂的 HTTP 轮询逻辑。 但是，在移动应用程序中，此信号通道仅当应用程序在前台处于活动状态时才保持连接状态。 如果希望用户在应用程序处于后台时接收传入呼叫或聊天消息，则应使用推送通知。
 

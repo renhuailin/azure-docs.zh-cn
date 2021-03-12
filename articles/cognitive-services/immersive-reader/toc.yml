@@ -1,30 +1,26 @@
 - name: 沉浸式阅读器文档
   href: index.yml
-- name: 什么是沉浸式阅读器？
-  href: Overview.md
-- name: 快速入门
-  href: ./quickstarts/client-libraries.md
-- name: 教程
+- name: 概述
   items:
-    - name: 启动沉浸式阅读器 (Android)
-      href: tutorial-android.md
-    - name: 启动沉浸式阅读器 (iOS)
-      href: tutorial-ios.md
-    - name: 启动沉浸式阅读器 (Python)
-      href: tutorial-python.md
-    - name: 使用多个沉浸式阅读器资源
-      href: tutorial-multiple-resources.md
+    - name: 沉浸式阅读器概述
+      href: Overview.md
+    - name: 语言支持
+      href: language-support.md
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/immersive-reader/'
+    - name: 发行说明
+      href: release-notes.md
+- name: 沉浸式阅读器快速入门
+  href: ./quickstarts/client-libraries.md
 - name: 操作说明
   items:
     - name: 创建沉浸式阅读器资源
       href: how-to-create-immersive-reader.md
-    - name: 设置 Cookie 策略
-      href: how-to/set-cookie-policy.md
-    - name: 显示数学内容
-      href: how-to/display-math.md
-    - name: 启动沉浸式阅读器以显示 HTML 内容
-      href: how-to-launch-with-html.md
-    - name: 自定义“沉浸式阅读器”按钮
+    - name: 启动沉浸式阅读器
+      href: how-to-launch-immersive-reader.md
+    - name: 准备 HTML 内容
+      href: how-to-prepare-html.md
+    - name: 编辑沉浸式阅读器启动按钮
       href: how-to-customize-launch-button.md
     - name: 缓存身份验证令牌
       href: how-to-cache-token.md
@@ -32,21 +28,23 @@
       href: how-to-configure-read-aloud.md
     - name: 配置翻译
       href: how-to-configure-translation.md
+    - name: 显示数学内容
+      href: how-to/display-math.md
+    - name: 设置 Cookie 策略
+      href: how-to/set-cookie-policy.md
     - name: 存储用户首选项
       href: how-to-store-user-preferences.md
+    - name: 使用多个沉浸式阅读器资源
+      href: how-to-multiple-resources.md
 - name: 参考
   items:
     - name: JavaScript SDK
       href: reference.md
-    - name: 发行说明
-      href: release-notes.md
 - name: 资源
   items:
+    - name: 区域支持
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
     - name: 支持和帮助选项
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/immersive-reader/context/context
-    - name: Azure 路线图
+    - name: Azure 更新
       href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
-    - name: 语言支持
-      href: language-support.md
-    - name: 区域可用性
-      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
